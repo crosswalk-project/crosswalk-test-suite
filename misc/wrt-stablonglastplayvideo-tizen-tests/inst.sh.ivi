@@ -9,7 +9,6 @@ folderName=${folderName_tmp%%-*}
 #parse params
 USAGE="Usage: ./inst.sh [-i] [-u]
   -i install wgt and config environment
-  -u uninstall wgt and remove source file
 [-i] option was set as default."
 
 function unzippkg()
@@ -23,7 +22,7 @@ function unzippkg()
     sdb push $local_path/$NAME.zip /opt/usr/media/tct/
     sdb shell "cd /opt/usr/media/tct/;unzip $NAME.zip"
     echo "Package unzip successfully and push to /opt/usr/media/tct/"
-    sdb shell "chmod 777 /opt/usr/media/tct/opt/$NAME/$folderName/*.sh"
+
 }
 
 function cleansource()
