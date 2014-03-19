@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-stylesheet type="text/xsl" href="./testcase.xsl"?>
+<test_definition>
+  <suite name="wrt-extension-android-tests" category="Extension_System" launcher="xwalk">
+    <set name="extension">
+      <testcase purpose="Validate the Crosswalk enable to extend 'READ_CONTACTS', 'WRITE_CONTACTS' permisson on Android" type="Functional" status="approved" component="Extension System" execution_type="manual" priority="P1" id="Crosswalk_Extension_Permissions_Contacts_Write">
+        <description>
+          <pre_condition>
+            1.Make sure Crosswalk binary is installed;
+            2.Make sure package the "extension-permission-contacts-tests.apk" with argument: "--extensions={EXTENSION}";
+          </pre_condition>
+          <test_script_entry>/opt/wrt-extension-android-tests/extension/Crosswalk_Extension_Permissions_Contacts_Write.html</test_script_entry>
+        </description>
+      </testcase>
+      <testcase purpose="Validate the Crosswalk enable to extend 'READ_CONTACTS', 'WRITE_CONTACTS' permisson on Android" type="Functional" status="approved" component="Extension System" execution_type="manual" priority="P1" id="Crosswalk_Extension_Permissions_Contacts_Read">
+        <description>
+          <pre_condition>
+            1.Make sure Crosswalk binary is installed;
+            2.Make sure package the "extension-permission-contacts-tests.apk" with argument: "--extensions={EXTENSION}";
+            3.Extension permission contacts web app has installed;
+            4.Have available contacts;
+          </pre_condition>
+          <test_script_entry>/opt/wrt-extension-android-tests/extension/Crosswalk_Extension_Permissions_Contacts_Read.html</test_script_entry>
+        </description>
+      </testcase>
+      <testcase purpose="Validate if Crosswalk support the external extension install in the embedded mode" type="Functional" status="approved" component="Extension System" execution_type="manual" priority="P0" id="Crosswalk_EmbeddedMode_Extension_Install">
+        <description>
+          <pre_condition>
+            1.Make sure Crosswalk application is launched and the device connected to network;
+            2.Make sure the extension are available
+ and  package the extension with argument like: python make_apk.py --name=Example --package=org.xwalk.example --app-root=test_data/entry --app-local-path=contactextension.html --extensions=test_data//extensions/contactextension/ --mode=embedded
+          </pre_condition>
+          <test_script_entry>/opt/wrt-extension-android-tests/extension/Crosswalk_EmbeddedMode_Extension_Install.html</test_script_entry>
+        </description>
+      </testcase>
+      <testcase purpose="Validate if Crosswalk support the external extension launch in the embedded mode" type="Functional" status="approved" component="Extension System" execution_type="manual" priority="P2" id="Crosswalk_EmbeddedMode_Extension_Launch">
+        <description>
+          <pre_condition>
+            1.Make sure Crosswalk application is launched and the device connected to network;
+            2.Make sure the extension are available
+ and  package the extension with argument like: python make_apk.py --name=Example --package=org.xwalk.example --app-root=test_data/entry --app-local-path=contactextension.html --extensions=test_data//extensions/contactextension/ --mode=embedded
+          </pre_condition>
+          <test_script_entry>/opt/wrt-extension-android-tests/extension/Crosswalk_EmbeddedMode_Extension_Launch.html</test_script_entry>
+        </description>
+      </testcase>
+      <testcase purpose="Validate if Crosswalk support the external extension uninstall in the embedded mode" type="Functional" status="approved" component="Extension System" execution_type="manual" priority="P0" id="Crosswalk_EmbeddedMode_Extension_Uninstall">
+        <description>
+          <pre_condition>
+            1.Make sure Crosswalk application is launched and the device connected to network;
+            2.Make sure the extension are installed.
+          </pre_condition>
+          <test_script_entry>/opt/wrt-extension-android-tests/extension/Crosswalk_EmbeddedMode_Extension_Uninstall.html</test_script_entry>
+        </description>
+      </testcase>
+      <testcase purpose="Validate if Crosswalk support the external extension uninstall in the embedded mode" type="Functional" status="approved" component="Extension System" execution_type="manual" priority="P2" id="Crosswalk_EmbeddedMode_Extension_Close">
+        <description>
+          <pre_condition>
+            1.Make sure Crosswalk application is launched and the device connected to network;
+            2.Make sure the extension are installed.
+          </pre_condition>
+          <test_script_entry>/opt/wrt-extension-android-tests/extension/Crosswalk_EmbeddedMode_Extension_Close.html</test_script_entry>
+        </description>
+      </testcase>
+      <testcase purpose="Validate if Crosswalk support the external extension in the embedded mode" type="Functional" status="approved" component="Extension System" execution_type="manual" priority="P1" id="Crosswalk_EmbeddedMode_Extension_WriteContact">
+        <description>
+          <pre_condition>
+            1.Make sure Crosswalk application is launched and the device connected to network;
+          </pre_condition>
+          <test_script_entry>/opt/wrt-extension-android-tests/extension/Crosswalk_EmbeddedMode_Extension_WriteContact.html</test_script_entry>
+        </description>
+      </testcase>
+      <testcase purpose="Validate if Crosswalk support the external extension in the embedded mode" type="Functional" status="approved" component="Extension System" execution_type="manual" priority="P2" id="Crosswalk_EmbeddedMode_Extension_ReadContact">
+        <description>
+          <pre_condition>
+            1.Make sure Crosswalk application is launched and the device connected to network;
+          </pre_condition>
+          <test_script_entry>/opt/wrt-extension-android-tests/extension/Crosswalk_EmbeddedMode_Extension_ReadContact.html</test_script_entry>
+        </description>
+      </testcase>
+      <testcase purpose="Validate if Crosswalk support the external extension in the embedded mode with runtimelib uninstall" type="Functional" status="approved" component="Extension System" execution_type="manual" priority="P1" id="Crosswalk_EmbeddedMode_Extension_XwalkRuntimeLibUninstall">
+        <description>
+          <pre_condition>
+            1.Make sure Crosswalk application is launched and the device connected to network;
+            2.Make sure the extension are installed.
+          </pre_condition>
+          <test_script_entry>/opt/wrt-extension-android-tests/extension/Crosswalk_EmbeddedMode_Extension_XwalkRuntimeLibUninstall.html</test_script_entry>
+        </description>
+      </testcase>
+    </set>
+  </suite>
+</test_definition>

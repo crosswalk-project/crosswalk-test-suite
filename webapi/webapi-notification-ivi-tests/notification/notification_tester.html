@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<!--
+Copyright (c) 2013 Intel Corporation.
+
+Redistribution and use in source and binary forms, with or without modification,
+are permitted provided that the following conditions are met:
+
+* Redistributions of works must retain the original copyright notice, this list
+  of conditions and the following disclaimer.
+* Redistributions in binary form must reproduce the original copyright notice,
+  this list of conditions and the following disclaimer in the documentation
+  and/or other materials provided with the distribution.
+* Neither the name of Intel Corporation nor the names of its contributors
+  may be used to endorse or promote products derived from this work without
+  specific prior written permission.
+
+THIS SOFTWARE IS PROVIDED BY INTEL CORPORATION "AS IS"
+AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE
+IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE
+ARE DISCLAIMED. IN NO EVENT SHALL INTEL CORPORATION BE LIABLE FOR ANY DIRECT,
+INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING,
+BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE,
+DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY
+OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING
+NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE,
+EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
+
+Authors:
+        Lynch, Rusty <rusty.lynch@intel.com>
+-->
+<!--
+This test comes from the index.html of
+https://bugs.tizen.org/jira/secure/attachment/12332/notification-tester.wgt
+without modification.
+-->
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="description" content="Tizen IVI notifications unit tester"/>
+    <style>
+
+    </style>
+    <script>
+
+    </script>
+    <title>Tizen IVI notifications unit tester</title>
+
+    <script>
+
+document.addEventListener("DOMContentLoaded", function(event) {
+    var titleInput = document.getElementById('title-input');
+    var contentInput = document.getElementById('content-input');
+    var typeSelect = document.getElementById('type-select');
+    var sendButton = document.getElementById('send-button')
+    var clearButton = document.getElementById('clear-button');
+    var refreshButton = document.getElementById('refresh-button');
+    var notificationsContainer = document.getElementById('notifications-container');
+
+    function refreshNotifications(notifications) {
+        while(notificationsContainer.lastChild)
+            notificationsContainer.removeChild(notificationsContainer.lastChild);
+
+        for (var i = 0; i < notifications.length; i++) {
+            var div = document.createElement("div");
+            var text = document.createTextNode(notifications[i].id + " " + notifications[i].title + " : " + notifications[i].content);
+            div.appendChild(text)
+            notificationsContainer.appendChild(div);
+        }
+    }
+
+    sendButton.addEventListener("click", function(event) {
+        var titleValue = titleInput.value;
+        if (!titleValue)
+            titleValue = titleInput.placeholder;
+
+        var contentValue = contentInput.value;
+        if (!contentValue)
+            contentValue = contentInput.placeholder;
+
+        var options = {
+            content: contentValue
+        };
+        try {
+            tizen.notification.post(new tizen.StatusNotification(typeSelect.value, titleValue, options));
+            refreshNotifications(tizen.notification.getAll());
+        } catch (e) {
+            window.alert("Failed to send notification: " + e);
+        }
+    }, false);
+
+    clearButton.addEventListener("click", function(event) {
+        try {
+            tizen.notification.removeAll()
+            refreshNotifications(tizen.notification.getAll());
+        } catch (e) {
+            window.alert("Failed to clear notifications: " + e);
+        }
+    }, false);
+
+    refreshButton.addEventListener("click", function(event) {
+        try {
+            refreshNotifications(tizen.notification.getAll());
+        } catch (e) {
+            window.alert("Failed to get all notifications: " + e);
+        }
+    }, false);
+
+}, false);
+
+    </script>
+</head>
+
+<body>
+  <h1>Notification Unit Tester</h1>
+  <input style='display: block' size='75' type='text' id='title-input' placeholder='Message-Title'></input>
+  <textarea style='display: block' rows='10' cols='75' id='content-input' placeholder='Message-Content'></textarea>
+  <select id='type-select' style='display: block'>
+    <option value="SIMPLE">SIMPLE</option>
+    <option value="THUMBNAIL">THUMBNAIL</option>
+    <option value="ONGOING">ONGOING</option>
+    <option value="PROGRESS">PROGRESS</option>
+  </select>
+  <input type='button' id='send-button' value='Send'></input>
+  <input type='button' id='clear-button' value='Remove All'></input>
+  <input type='button' id='refresh-button' value='Refresh List'></input>
+  <div id='notifications-container'></div>
+</body>
+</html>

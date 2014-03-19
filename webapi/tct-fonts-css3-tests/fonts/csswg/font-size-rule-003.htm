@@ -1,0 +1,39 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html>
+    <head>
+        <title>CSS Test: Font-size and font sizes available</title>
+        <link title="Microsoft" rel="author" href="http://www.microsoft.com/">
+        <link rel="help" href="http://www.w3.org/TR/CSS21/fonts.html#font-size-props">
+        <link rel="help" href="http://www.w3.org/TR/css3-fonts/#font-size-prop">
+        <meta content="ahem" name="flags">
+        <meta content="The user agent is free to choose a font-size from the font size table entries or round off to the closest font size." name="assert">
+        <style type="text/css">
+            @font-face {
+                font-family: Ahem;
+                src: url("support/AHEM____.TTF");
+            }
+            div
+            {
+                font-size: 18px;
+            }
+            span
+            {
+                font-family: Ahem;
+            }
+            #span1
+            {
+                font-size: 24px;
+            }
+            #span2
+            {
+                font-size: larger;
+            }
+        </style>
+    </head>
+    <body>
+        <p>Test passes if the boxes below are the same size or the left box is bigger than the right.</p>
+        <div>
+            <span id="span1">X</span> <span id="span2">X</span>
+        </div>
+    </body>
+</html>

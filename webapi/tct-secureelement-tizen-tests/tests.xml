@@ -1,0 +1,171 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-stylesheet type="text/xsl"  href="./testcase.xsl"?>
+<test_definition>
+  <suite name="tct-secureelement-tizen-tests" launcher="xwalk" extension="crosswalk" category="Tizen Web Device APIs">
+    <set name="SE">
+      <capabilities>
+        <capability name="secureelement"/>
+      </capabilities>
+      <testcase purpose="Check if interface Channel exists, it should not" component="TizenAPI/Communication/SE" execution_type="auto" id="Channel_notexist">
+        <description>
+          <test_script_entry>/opt/tct-secureelement-tizen-tests/secureelement/Channel_notexist.html</test_script_entry>
+        </description>
+      </testcase>
+      <testcase purpose="Check if interface ReaderArraySuccessCallback exists, it should not" component="TizenAPI/Communication/SE" execution_type="auto" id="ReaderArraySuccessCallback_notexist">
+        <description>
+          <test_script_entry>/opt/tct-secureelement-tizen-tests/secureelement/ReaderArraySuccessCallback_notexist.html</test_script_entry>
+        </description>
+      </testcase>
+      <testcase purpose="Check if interface Reader exists, it should not" component="TizenAPI/Communication/SE" execution_type="auto" id="Reader_notexist">
+        <description>
+          <test_script_entry>/opt/tct-secureelement-tizen-tests/secureelement/Reader_notexist.html</test_script_entry>
+        </description>
+      </testcase>
+      <testcase purpose="Check if interface SEChangeListener exists, it should not" component="TizenAPI/Communication/SE" execution_type="auto" id="SEChangeListener_notexist">
+        <description>
+          <test_script_entry>/opt/tct-secureelement-tizen-tests/secureelement/SEChangeListener_notexist.html</test_script_entry>
+        </description>
+      </testcase>
+      <testcase purpose="Check if interface SEServiceManagerObject exists, it should not" component="TizenAPI/Communication/SE" execution_type="auto" id="SEServiceManagerObject_notexist">
+        <description>
+          <test_script_entry>/opt/tct-secureelement-tizen-tests/secureelement/SEServiceManagerObject_notexist.html</test_script_entry>
+        </description>
+      </testcase>
+      <testcase purpose="Check if interface SEService exists, it should not" component="TizenAPI/Communication/SE" execution_type="auto" id="SEService_notexist">
+        <description>
+          <test_script_entry>/opt/tct-secureelement-tizen-tests/secureelement/SEService_notexist.html</test_script_entry>
+        </description>
+      </testcase>
+      <testcase purpose="Check if interface SessionSuccessCallback exists, it should not" component="TizenAPI/Communication/SE" execution_type="auto" id="SessionSuccessCallback_notexist">
+        <description>
+          <test_script_entry>/opt/tct-secureelement-tizen-tests/secureelement/SessionSuccessCallback_notexist.html</test_script_entry>
+        </description>
+      </testcase>
+      <testcase purpose="Check if interface Session exists, it should not" component="TizenAPI/Communication/SE" execution_type="auto" id="Session_notexist">
+        <description>
+          <test_script_entry>/opt/tct-secureelement-tizen-tests/secureelement/Session_notexist.html</test_script_entry>
+        </description>
+      </testcase>
+      <testcase purpose="Check if Tizen implements interface SEServiceManagerObject and has attribute seService" component="TizenAPI/Communication/SE" execution_type="auto" id="Tizen_seService_exist">
+        <description>
+          <test_script_entry>/opt/tct-secureelement-tizen-tests/secureelement/Tizen_seService_exist.html</test_script_entry>
+        </description>
+      </testcase>
+      <testcase purpose="Check if interface TransmitSuccessCallback exists, it should not" component="TizenAPI/Communication/SE" execution_type="auto" id="TransmitSuccessCallback_notexist">
+        <description>
+          <test_script_entry>/opt/tct-secureelement-tizen-tests/secureelement/TransmitSuccessCallback_notexist.html</test_script_entry>
+        </description>
+      </testcase>
+      <testcase purpose="Test whether the SEServiceManager object can have new attribute added" component="TizenAPI/Communication/SE" execution_type="auto" id="SEService_extend">
+        <description>
+          <test_script_entry>/opt/tct-secureelement-tizen-tests/secureelement/SEService_extend.html</test_script_entry>
+        </description>
+      </testcase>
+      <testcase purpose="Check if getReaders method exists in SEServiceManager" component="TizenAPI/Communication/SE" execution_type="auto" id="SEService_getReaders_exist">
+        <description>
+          <test_script_entry>/opt/tct-secureelement-tizen-tests/secureelement/SEService_getReaders_exist.html</test_script_entry>
+        </description>
+      </testcase>
+      <testcase purpose="Check if registerSEListener method exists in SEServiceManager" component="TizenAPI/Communication/SE" execution_type="auto" id="SEService_registerSEListener_exist">
+        <description>
+          <test_script_entry>/opt/tct-secureelement-tizen-tests/secureelement/SEService_registerSEListener_exist.html</test_script_entry>
+        </description>
+      </testcase>
+      <testcase purpose="Check if unregisterSEListener method exists in SEServiceManager" component="TizenAPI/Communication/SE" execution_type="auto" id="SEService_unregisterSEListener_exist">
+        <description>
+          <test_script_entry>/opt/tct-secureelement-tizen-tests/secureelement/SEService_unregisterSEListener_exist.html</test_script_entry>
+        </description>
+      </testcase>
+      <testcase purpose="Check if shutdown method exists in SEServiceManager" component="TizenAPI/Communication/SE" execution_type="auto" id="SEService_shutdown_exist">
+        <description>
+          <test_script_entry>/opt/tct-secureelement-tizen-tests/secureelement/SEService_shutdown_exist.html</test_script_entry>
+        </description>
+      </testcase>
+      <testcase purpose="Check without optional arguments getReaders(getReadersSuccessCallback)" onload_delay="90" component="TizenAPI/Communication/SE" execution_type="auto" id="SEService_getReaders">
+        <description>
+          <test_script_entry>/opt/tct-secureelement-tizen-tests/secureelement/SEService_getReaders.html</test_script_entry>
+        </description>
+      </testcase>
+      <testcase purpose="Check with non-optional arguments registerSEListener" onload_delay="90" component="TizenAPI/Communication/SE" execution_type="auto" id="SEService_registerSEListener">
+        <description>
+          <test_script_entry>/opt/tct-secureelement-tizen-tests/secureelement/SEService_registerSEListener.html</test_script_entry>
+        </description>
+      </testcase>
+      <testcase purpose="Check with non-optional arguments unregisterSEListener" onload_delay="90" component="TizenAPI/Communication/SE" execution_type="auto" id="SEService_unregisterSEListener">
+        <description>
+          <test_script_entry>/opt/tct-secureelement-tizen-tests/secureelement/SEService_unregisterSEListener.html</test_script_entry>
+        </description>
+      </testcase>
+      <testcase purpose="Check if shutdown method works properly" component="TizenAPI/Communication/SE" execution_type="auto" id="SEService_shutdown">
+        <description>
+          <test_script_entry>/opt/tct-secureelement-tizen-tests/secureelement/SEService_shutdown.html</test_script_entry>
+        </description>
+      </testcase>
+      <testcase purpose="Check if onsuccess method of ReaderArraySuccessCallback works" onload_delay="90" component="TizenAPI/Communication/SE" execution_type="auto" id="ReaderArraySuccessCallback_onsuccess">
+        <description>
+          <test_script_entry>/opt/tct-secureelement-tizen-tests/secureelement/ReaderArraySuccessCallback_onsuccess.html</test_script_entry>
+        </description>
+      </testcase>
+      <testcase purpose="Check if getReaders method called with missing non-optional argument throws an exception" component="TizenAPI/Communication/SE" execution_type="auto" id="SEService_getReaders_missarg">
+        <description>
+          <test_script_entry>/opt/tct-secureelement-tizen-tests/secureelement/SEService_getReaders_missarg.html</test_script_entry>
+        </description>
+      </testcase>
+      <testcase purpose="Check argument successCallback conversions exception" onload_delay="90" component="TizenAPI/Communication/SE" execution_type="auto" id="SEService_getReaders_successCallback_TypeMismatch">
+        <description>
+          <test_script_entry>/opt/tct-secureelement-tizen-tests/secureelement/SEService_getReaders_successCallback_TypeMismatch.html</test_script_entry>
+        </description>
+      </testcase>
+      <testcase purpose="GetReaders - check argument successCallback validation - use {onsuccess: function (){}}" onload_delay="90" component="TizenAPI/Communication/SE" execution_type="auto" id="SEService_getReaders_successCallback_invalid_cb">
+        <description>
+          <test_script_entry>/opt/tct-secureelement-tizen-tests/secureelement/SEService_getReaders_successCallback_invalid_cb.html</test_script_entry>
+        </description>
+      </testcase>
+      <testcase purpose="Check method getReaders of SEService with errorCallback" onload_delay="90" component="TizenAPI/Communication/SE" execution_type="auto" id="SEService_getReaders_with_errorCallback">
+        <description>
+          <test_script_entry>/opt/tct-secureelement-tizen-tests/secureelement/SEService_getReaders_with_errorCallback.html</test_script_entry>
+        </description>
+      </testcase>
+      <testcase purpose="Check if registerSEListener of SEService throws exception when argument is incorrect" onload_delay="90" component="TizenAPI/Communication/SE" execution_type="auto" id="SEService_registerSEListener_listener_TypeMismatch">
+        <description>
+          <test_script_entry>/opt/tct-secureelement-tizen-tests/secureelement/SEService_registerSEListener_listener_TypeMismatch.html</test_script_entry>
+        </description>
+      </testcase>
+      <testcase purpose="Check if registerSEListener of SEService throws exception when listener is invalid" component="TizenAPI/Communication/SE" execution_type="auto" id="SEService_registerSEListener_listener_invalid_cb">
+        <description>
+          <test_script_entry>/opt/tct-secureelement-tizen-tests/secureelement/SEService_registerSEListener_listener_invalid_cb.html</test_script_entry>
+        </description>
+      </testcase>
+      <testcase purpose="Check if registerSEListener method of SEService called with missing non-optional argument throws an exception" component="TizenAPI/Communication/SE" execution_type="auto" id="SEService_registerSEListener_missarg">
+        <description>
+          <test_script_entry>/opt/tct-secureelement-tizen-tests/secureelement/SEService_registerSEListener_missarg.html</test_script_entry>
+        </description>
+      </testcase>
+      <testcase purpose="Check if SEService.shutdown works with extra argument" component="TizenAPI/Communication/SE" execution_type="auto" id="SEService_shutdown_extra_argument">
+        <description>
+          <test_script_entry>/opt/tct-secureelement-tizen-tests/secureelement/SEService_shutdown_extra_argument.html</test_script_entry>
+        </description>
+      </testcase>
+      <testcase purpose="Check if interface ChannelSuccessCallback exists, it should not" component="TizenAPI/Communication/SE" execution_type="auto" id="ChannelSuccessCallback_notexist">
+        <description>
+          <test_script_entry>/opt/tct-secureelement-tizen-tests/secureelement/ChannelSuccessCallback_notexist.html</test_script_entry>
+        </description>
+      </testcase>
+      <testcase purpose="GetReaders - check argument errorCallback validation - use {onerror: function (){}}" onload_delay="90" component="TizenAPI/Communication/SE" execution_type="auto" id="SEService_getReaders_errorCallback_invalid_cb">
+        <description>
+          <test_script_entry>/opt/tct-secureelement-tizen-tests/secureelement/SEService_getReaders_errorCallback_invalid_cb.html</test_script_entry>
+        </description>
+      </testcase>
+      <testcase purpose="Check argument errorCallback conversions exception" onload_delay="90" component="TizenAPI/Communication/SE" execution_type="auto" id="SEService_getReaders_errorCallback_TypeMismatch">
+        <description>
+          <test_script_entry>/opt/tct-secureelement-tizen-tests/secureelement/SEService_getReaders_errorCallback_TypeMismatch.html</test_script_entry>
+        </description>
+      </testcase>
+      <testcase purpose="Check with empty argument of registerSEListener" component="TizenAPI/Communication/SE" execution_type="auto" id="SEService_registerSEListener_listener_empty">
+        <description>
+          <test_script_entry>/opt/tct-secureelement-tizen-tests/secureelement/SEService_registerSEListener_listener_empty.html</test_script_entry>
+        </description>
+      </testcase>
+    </set>
+  </suite>
+</test_definition>

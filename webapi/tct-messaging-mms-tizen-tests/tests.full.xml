@@ -1,0 +1,1475 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-stylesheet type="text/xsl"  href="./testcase.xsl"?>
+<test_definition>
+  <suite name="tct-messaging-mms-tizen-tests" launcher="xwalk" extension="crosswalk" category="Tizen Web Device APIs">
+    <set name="Messaging-mms">
+      <capabilities>
+        <capability name="telephonyMms"/>
+      </capabilities>
+      <testcase purpose="Check if instance of interface MessageBody (MMS) can be extended with new property" type="compliance" status="approved" component="TizenAPI/Communication/Messaging" execution_type="auto" priority="P3" id="MessageBody_mms_extend">
+        <description>
+          <test_script_entry>/opt/tct-messaging-mms-tizen-tests/messaging/MessageBody_mms_extend.html</test_script_entry>
+        </description>
+        <specs>
+          <spec>
+            <spec_assertion interface="MessageBody" usage="true" specification="Messaging" section="Communication" category="Tizen Device API Specifications"/>
+            <spec_url>https://developer.tizen.org/help/topic/org.tizen.web.device.apireference/tizen/messaging.html</spec_url>
+            <spec_statement>TBD</spec_statement>
+          </spec>
+        </specs>
+      </testcase>
+      <testcase purpose="Check if attribute loaded of MessageBody (MMS) exists, has type Boolean and is readonly" type="compliance" status="approved" component="TizenAPI/Communication/Messaging" execution_type="auto" priority="P1" id="MessageBody_mms_loaded_attribute">
+        <description>
+          <test_script_entry>/opt/tct-messaging-mms-tizen-tests/messaging/MessageBody_mms_loaded_attribute.html</test_script_entry>
+        </description>
+        <specs>
+          <spec>
+            <spec_assertion interface="MessageBody" element_type="attribute" element_name="loaded" specification="Messaging" section="Communication" category="Tizen Device API Specifications"/>
+            <spec_url>https://developer.tizen.org/help/topic/org.tizen.web.device.apireference/tizen/messaging.html</spec_url>
+            <spec_statement>TBD</spec_statement>
+          </spec>
+        </specs>
+      </testcase>
+      <testcase purpose="Check if attribute messageId of MessageBody (MMS) exists, has type MessageId and is readonly" type="compliance" onload_delay="90" status="approved" component="TizenAPI/Communication/Messaging" execution_type="auto" priority="P1" id="MessageBody_mms_messageId_attribute">
+        <description>
+          <test_script_entry>/opt/tct-messaging-mms-tizen-tests/messaging/MessageBody_mms_messageId_attribute.html</test_script_entry>
+        </description>
+        <specs>
+          <spec>
+            <spec_assertion interface="MessageBody" element_type="attribute" element_name="messageId" specification="Messaging" section="Communication" category="Tizen Device API Specifications"/>
+            <spec_url>https://developer.tizen.org/help/topic/org.tizen.web.device.apireference/tizen/messaging.html</spec_url>
+            <spec_statement>TBD</spec_statement>
+          </spec>
+        </specs>
+      </testcase>
+      <testcase purpose="Check if attribute plainBody of MessageBody (MMS) exists, has type DOMString" type="compliance" status="approved" component="TizenAPI/Communication/Messaging" execution_type="auto" priority="P1" id="MessageBody_mms_plainBody_attribute">
+        <description>
+          <test_script_entry>/opt/tct-messaging-mms-tizen-tests/messaging/MessageBody_mms_plainBody_attribute.html</test_script_entry>
+        </description>
+        <specs>
+          <spec>
+            <spec_assertion interface="MessageBody" element_type="attribute" element_name="plainBody" specification="Messaging" section="Communication" category="Tizen Device API Specifications"/>
+            <spec_url>https://developer.tizen.org/help/topic/org.tizen.web.device.apireference/tizen/messaging.html</spec_url>
+            <spec_statement>TBD</spec_statement>
+          </spec>
+        </specs>
+      </testcase>
+      <testcase purpose="Check if callback is called and if its arguments have proper type - MessageConversationsChangeCallback, conversationsremoved, mms" type="compliance" onload_delay="90" status="approved" component="TizenAPI/Communication/Messaging" execution_type="auto" priority="P1" id="MessageConversationsChangeCallback_mms_conversationsremoved">
+        <description>
+          <test_script_entry>/opt/tct-messaging-mms-tizen-tests/messaging/MessageConversationsChangeCallback_mms_conversationsremoved.html</test_script_entry>
+        </description>
+        <specs>
+          <spec>
+            <spec_assertion interface="MessageConversationsChangeCallback" element_type="method" element_name="conversationsremoved" specification="Messaging" section="Communication" category="Tizen Device API Specifications"/>
+            <spec_url>https://developer.tizen.org/help/topic/org.tizen.web.device.apireference/tizen/messaging.html</spec_url>
+            <spec_statement>TBD</spec_statement>
+          </spec>
+        </specs>
+      </testcase>
+      <testcase purpose="Check if callback is called and if its arguments have proper type - MessageConversationsChangeCallback, conversationsupdated, mms" type="compliance" onload_delay="90" status="approved" component="TizenAPI/Communication/Messaging" execution_type="auto" priority="P1" id="MessageConversationsChangeCallback_mms_conversationsupdated">
+        <description>
+          <test_script_entry>/opt/tct-messaging-mms-tizen-tests/messaging/MessageConversationsChangeCallback_mms_conversationsupdated.html</test_script_entry>
+        </description>
+        <specs>
+          <spec>
+            <spec_assertion interface="MessageConversationsChangeCallback" element_type="method" element_name="conversationsupdated" specification="Messaging" section="Communication" category="Tizen Device API Specifications"/>
+            <spec_url>https://developer.tizen.org/help/topic/org.tizen.web.device.apireference/tizen/messaging.html</spec_url>
+            <spec_statement>TBD</spec_statement>
+          </spec>
+        </specs>
+      </testcase>
+      <testcase purpose="Check if MessageServiceArraySuccessCallback is called and if its arguments have proper type for mms" type="compliance" onload_delay="90" status="approved" component="TizenAPI/Communication/Messaging" execution_type="auto" priority="P1" id="MessageServiceArraySuccessCallback_mms_onsuccess">
+        <description>
+          <test_script_entry>/opt/tct-messaging-mms-tizen-tests/messaging/MessageServiceArraySuccessCallback_mms_onsuccess.html</test_script_entry>
+        </description>
+        <specs>
+          <spec>
+            <spec_assertion interface="MessageServiceArraySuccessCallback" element_type="method" element_name="onsuccess" specification="Messaging" section="Communication" category="Tizen Device API Specifications"/>
+            <spec_url>https://developer.tizen.org/help/topic/org.tizen.web.device.apireference/tizen/messaging.html</spec_url>
+            <spec_statement>TBD</spec_statement>
+          </spec>
+        </specs>
+      </testcase>
+      <testcase purpose="Check if instance of interface MessageService (MMS) can be extended with new property" type="compliance" onload_delay="90" status="approved" component="TizenAPI/Communication/Messaging" execution_type="auto" priority="P3" id="MessageService_mms_extend">
+        <description>
+          <test_script_entry>/opt/tct-messaging-mms-tizen-tests/messaging/MessageService_mms_extend.html</test_script_entry>
+        </description>
+        <specs>
+          <spec>
+            <spec_assertion interface="MessageService" usage="true" specification="Messaging" section="Communication" category="Tizen Device API Specifications"/>
+            <spec_url>https://developer.tizen.org/help/topic/org.tizen.web.device.apireference/tizen/messaging.html</spec_url>
+            <spec_statement>TBD</spec_statement>
+          </spec>
+        </specs>
+      </testcase>
+      <testcase purpose="Check if method loadMessageAttachment of MessageService (MMS) exists" type="compliance" onload_delay="90" status="approved" component="TizenAPI/Communication/Messaging" execution_type="auto" priority="P1" id="MessageService_mms_loadMessageAttachment_exist">
+        <description>
+          <test_script_entry>/opt/tct-messaging-mms-tizen-tests/messaging/MessageService_mms_loadMessageAttachment_exist.html</test_script_entry>
+        </description>
+        <specs>
+          <spec>
+            <spec_assertion interface="MessageService" element_type="method" element_name="loadMessageAttachment" specification="Messaging" section="Communication" category="Tizen Device API Specifications"/>
+            <spec_url>https://developer.tizen.org/help/topic/org.tizen.web.device.apireference/tizen/messaging.html</spec_url>
+            <spec_statement>TBD</spec_statement>
+          </spec>
+        </specs>
+      </testcase>
+      <testcase purpose="Check if method loadMessageBody of MessageService (MMS) exists" type="compliance" onload_delay="90" status="approved" component="TizenAPI/Communication/Messaging" execution_type="auto" priority="P1" id="MessageService_mms_loadMessageBody_exist">
+        <description>
+          <test_script_entry>/opt/tct-messaging-mms-tizen-tests/messaging/MessageService_mms_loadMessageBody_exist.html</test_script_entry>
+        </description>
+        <specs>
+          <spec>
+            <spec_assertion interface="MessageService" element_type="method" element_name="loadMessageBody" specification="Messaging" section="Communication" category="Tizen Device API Specifications"/>
+            <spec_url>https://developer.tizen.org/help/topic/org.tizen.web.device.apireference/tizen/messaging.html</spec_url>
+            <spec_statement>TBD</spec_statement>
+          </spec>
+        </specs>
+      </testcase>
+      <testcase purpose="Check with missing message argument - MessageService.loadMessageBody (mms)" type="compliance" onload_delay="90" status="approved" component="TizenAPI/Communication/Messaging" execution_type="auto" priority="P1" id="MessageService_mms_loadMessageBody_missarg_message">
+        <description>
+          <test_script_entry>/opt/tct-messaging-mms-tizen-tests/messaging/MessageService_mms_loadMessageBody_missarg_message.html</test_script_entry>
+        </description>
+        <specs>
+          <spec>
+            <spec_assertion interface="MessageService" element_type="method" element_name="loadMessageBody" specification="Messaging" section="Communication" category="Tizen Device API Specifications"/>
+            <spec_url>https://developer.tizen.org/help/topic/org.tizen.web.device.apireference/tizen/messaging.html</spec_url>
+            <spec_statement>TBD</spec_statement>
+          </spec>
+        </specs>
+      </testcase>
+      <testcase purpose="Check if attribute messageStorage of MessageService (MMS) exists, has type MessageStorage and is readonly" type="compliance" onload_delay="90" status="approved" component="TizenAPI/Communication/Messaging" execution_type="auto" priority="P1" id="MessageService_mms_messageStorage_attribute">
+        <description>
+          <test_script_entry>/opt/tct-messaging-mms-tizen-tests/messaging/MessageService_mms_messageStorage_attribute.html</test_script_entry>
+        </description>
+        <specs>
+          <spec>
+            <spec_assertion interface="MessageService" element_type="attribute" element_name="messageStorage" specification="Messaging" section="Communication" category="Tizen Device API Specifications"/>
+            <spec_url>https://developer.tizen.org/help/topic/org.tizen.web.device.apireference/tizen/messaging.html</spec_url>
+            <spec_statement>TBD</spec_statement>
+          </spec>
+        </specs>
+      </testcase>
+      <testcase purpose="Check type conversions for errorCallback argument of MessageService.sendMessage method (mms)" type="compliance" onload_delay="90" status="approved" component="TizenAPI/Communication/Messaging" execution_type="auto" priority="P2" id="MessageService_mms_sendMessage_errorCallback_TypeMismatch">
+        <description>
+          <test_script_entry>/opt/tct-messaging-mms-tizen-tests/messaging/MessageService_mms_sendMessage_errorCallback_TypeMismatch.html</test_script_entry>
+        </description>
+        <specs>
+          <spec>
+            <spec_assertion interface="MessageService" element_type="method" element_name="sendMessage" specification="Messaging" section="Communication" category="Tizen Device API Specifications"/>
+            <spec_url>https://developer.tizen.org/help/topic/org.tizen.web.device.apireference/tizen/messaging.html</spec_url>
+            <spec_statement>TBD</spec_statement>
+          </spec>
+        </specs>
+      </testcase>
+      <testcase purpose="Check if MessageService.sendMessage method throws exception when errorCallback is invalid" type="compliance" onload_delay="90" status="approved" component="TizenAPI/Communication/Messaging" execution_type="auto" priority="P2" id="MessageService_mms_sendMessage_errorCallback_invalid_cb">
+        <description>
+          <test_script_entry>/opt/tct-messaging-mms-tizen-tests/messaging/MessageService_mms_sendMessage_errorCallback_invalid_cb.html</test_script_entry>
+        </description>
+        <specs>
+          <spec>
+            <spec_assertion interface="MessageService" element_type="method" element_name="sendMessage" specification="Messaging" section="Communication" category="Tizen Device API Specifications"/>
+            <spec_url>https://developer.tizen.org/help/topic/org.tizen.web.device.apireference/tizen/messaging.html</spec_url>
+            <spec_statement>TBD</spec_statement>
+          </spec>
+        </specs>
+      </testcase>
+      <testcase purpose="Check if method sendMessage of MessageService (MMS) exists" type="compliance" onload_delay="90" status="approved" component="TizenAPI/Communication/Messaging" execution_type="auto" priority="P1" id="MessageService_mms_sendMessage_exist">
+        <description>
+          <test_script_entry>/opt/tct-messaging-mms-tizen-tests/messaging/MessageService_mms_sendMessage_exist.html</test_script_entry>
+        </description>
+        <specs>
+          <spec>
+            <spec_assertion interface="MessageService" element_type="method" element_name="sendMessage" specification="Messaging" section="Communication" category="Tizen Device API Specifications"/>
+            <spec_url>https://developer.tizen.org/help/topic/org.tizen.web.device.apireference/tizen/messaging.html</spec_url>
+            <spec_statement>TBD</spec_statement>
+          </spec>
+        </specs>
+      </testcase>
+      <testcase purpose="Check type conversions for message argument of MessageService.sendMessage method (mms)" type="compliance" onload_delay="90" status="approved" component="TizenAPI/Communication/Messaging" execution_type="auto" priority="P2" id="MessageService_mms_sendMessage_message_TypeMismatch">
+        <description>
+          <test_script_entry>/opt/tct-messaging-mms-tizen-tests/messaging/MessageService_mms_sendMessage_message_TypeMismatch.html</test_script_entry>
+        </description>
+        <specs>
+          <spec>
+            <spec_assertion interface="MessageService" element_type="method" element_name="sendMessage" specification="Messaging" section="Communication" category="Tizen Device API Specifications"/>
+            <spec_url>https://developer.tizen.org/help/topic/org.tizen.web.device.apireference/tizen/messaging.html</spec_url>
+            <spec_statement>TBD</spec_statement>
+          </spec>
+        </specs>
+      </testcase>
+      <testcase purpose="Check if MessageService.sendMessage method throws exception when message is invalid (mms)" type="compliance" onload_delay="90" status="approved" component="TizenAPI/Communication/Messaging" execution_type="auto" priority="P2" id="MessageService_mms_sendMessage_message_invalid_obj">
+        <description>
+          <test_script_entry>/opt/tct-messaging-mms-tizen-tests/messaging/MessageService_mms_sendMessage_message_invalid_obj.html</test_script_entry>
+        </description>
+        <specs>
+          <spec>
+            <spec_assertion interface="MessageService" element_type="method" element_name="sendMessage" specification="Messaging" section="Communication" category="Tizen Device API Specifications"/>
+            <spec_url>https://developer.tizen.org/help/topic/org.tizen.web.device.apireference/tizen/messaging.html</spec_url>
+            <spec_statement>TBD</spec_statement>
+          </spec>
+        </specs>
+      </testcase>
+      <testcase purpose="Check with missing non-optional argument - MessageService.sendMessage (mms)" type="compliance" onload_delay="90" status="approved" component="TizenAPI/Communication/Messaging" execution_type="auto" priority="P1" id="MessageService_mms_sendMessage_missarg">
+        <description>
+          <test_script_entry>/opt/tct-messaging-mms-tizen-tests/messaging/MessageService_mms_sendMessage_missarg.html</test_script_entry>
+        </description>
+        <specs>
+          <spec>
+            <spec_assertion interface="MessageService" element_type="method" element_name="sendMessage" specification="Messaging" section="Communication" category="Tizen Device API Specifications"/>
+            <spec_url>https://developer.tizen.org/help/topic/org.tizen.web.device.apireference/tizen/messaging.html</spec_url>
+            <spec_statement>TBD</spec_statement>
+          </spec>
+        </specs>
+      </testcase>
+      <testcase purpose="Check type conversions for successCallback argument of MessageService.sendMessage method (mms)" type="compliance" onload_delay="90" status="approved" component="TizenAPI/Communication/Messaging" execution_type="auto" priority="P2" id="MessageService_mms_sendMessage_successCallback_TypeMismatch">
+        <description>
+          <test_script_entry>/opt/tct-messaging-mms-tizen-tests/messaging/MessageService_mms_sendMessage_successCallback_TypeMismatch.html</test_script_entry>
+        </description>
+        <specs>
+          <spec>
+            <spec_assertion interface="MessageService" element_type="method" element_name="sendMessage" specification="Messaging" section="Communication" category="Tizen Device API Specifications"/>
+            <spec_url>https://developer.tizen.org/help/topic/org.tizen.web.device.apireference/tizen/messaging.html</spec_url>
+            <spec_statement>TBD</spec_statement>
+          </spec>
+        </specs>
+      </testcase>
+      <testcase purpose="Check if MessageService.sendMessage method throws exception when successCallback is invalid (mms)" type="compliance" onload_delay="90" status="approved" component="TizenAPI/Communication/Messaging" execution_type="auto" priority="P2" id="MessageService_mms_sendMessage_successCallback_invalid_cb">
+        <description>
+          <test_script_entry>/opt/tct-messaging-mms-tizen-tests/messaging/MessageService_mms_sendMessage_successCallback_invalid_cb.html</test_script_entry>
+        </description>
+        <specs>
+          <spec>
+            <spec_assertion interface="MessageService" element_type="method" element_name="sendMessage" specification="Messaging" section="Communication" category="Tizen Device API Specifications"/>
+            <spec_url>https://developer.tizen.org/help/topic/org.tizen.web.device.apireference/tizen/messaging.html</spec_url>
+            <spec_statement>TBD</spec_statement>
+          </spec>
+        </specs>
+      </testcase>
+      <testcase purpose="Check if MessageService.sendMessage method works properly without callbacks (mms)" type="compliance" onload_delay="90" status="approved" component="TizenAPI/Communication/Messaging" execution_type="auto" priority="P2" id="MessageService_sendMessage_mms_without_callbacks">
+        <description>
+          <test_script_entry>/opt/tct-messaging-mms-tizen-tests/messaging/MessageService_sendMessage_mms_without_callbacks.html</test_script_entry>
+        </description>
+        <specs>
+          <spec>
+            <spec_assertion interface="MessageService" element_type="method" element_name="sendMessage" specification="Messaging" section="Communication" category="Tizen Device API Specifications"/>
+            <spec_url>https://developer.tizen.org/help/topic/org.tizen.web.device.apireference/tizen/messaging.html</spec_url>
+            <spec_statement>TBD</spec_statement>
+          </spec>
+        </specs>
+      </testcase>
+      <testcase purpose="Check if MessageStorage.findMessages method works properly with filter by plainBody" type="compliance" onload_delay="90" status="approved" component="TizenAPI/Communication/Messaging" execution_type="auto" priority="P2" id="MessageStorage_findMessages_filter_body_valid">
+        <description>
+          <test_script_entry>/opt/tct-messaging-mms-tizen-tests/messaging/MessageStorage_findMessages_filter_body_valid.html</test_script_entry>
+        </description>
+        <specs>
+          <spec>
+            <spec_assertion interface="MessageStorage" element_type="method" element_name="findMessages" specification="Messaging" section="Communication" category="Tizen Device API Specifications"/>
+            <spec_url>https://developer.tizen.org/help/topic/org.tizen.web.device.apireference/tizen/messaging.html</spec_url>
+            <spec_statement>TBD</spec_statement>
+          </spec>
+        </specs>
+      </testcase>
+      <testcase purpose="Check if MessageStorage.findMessages method works properly with filter by folderId equal to 3" type="compliance" onload_delay="90" status="approved" component="TizenAPI/Communication/Messaging" execution_type="auto" priority="P2" id="MessageStorage_findMessages_filter_folderId_valid">
+        <description>
+          <test_script_entry>/opt/tct-messaging-mms-tizen-tests/messaging/MessageStorage_findMessages_filter_folderId_valid.html</test_script_entry>
+        </description>
+        <specs>
+          <spec>
+            <spec_assertion interface="MessageStorage" element_type="method" element_name="findMessages" specification="Messaging" section="Communication" category="Tizen Device API Specifications"/>
+            <spec_url>https://developer.tizen.org/help/topic/org.tizen.web.device.apireference/tizen/messaging.html</spec_url>
+            <spec_statement>TBD</spec_statement>
+          </spec>
+        </specs>
+      </testcase>
+      <testcase purpose="Check if MessageStorage.findMessages method works properly with filter by from (mms)" type="compliance" onload_delay="90" status="approved" component="TizenAPI/Communication/Messaging" execution_type="auto" priority="P2" id="MessageStorage_findMessages_filter_from_valid">
+        <description>
+          <test_script_entry>/opt/tct-messaging-mms-tizen-tests/messaging/MessageStorage_findMessages_filter_from_valid.html</test_script_entry>
+        </description>
+        <specs>
+          <spec>
+            <spec_assertion interface="MessageStorage" element_type="method" element_name="findMessages" specification="Messaging" section="Communication" category="Tizen Device API Specifications"/>
+            <spec_url>https://developer.tizen.org/help/topic/org.tizen.web.device.apireference/tizen/messaging.html</spec_url>
+            <spec_statement>TBD</spec_statement>
+          </spec>
+        </specs>
+      </testcase>
+      <testcase purpose="Check if MessageStorage.findMessages method works properly with filter by hasAttachment equal to false" type="compliance" onload_delay="90" status="approved" component="TizenAPI/Communication/Messaging" execution_type="auto" priority="P2" id="MessageStorage_findMessages_filter_hasAttachment_valid">
+        <description>
+          <test_script_entry>/opt/tct-messaging-mms-tizen-tests/messaging/MessageStorage_findMessages_filter_hasAttachment_valid.html</test_script_entry>
+        </description>
+        <specs>
+          <spec>
+            <spec_assertion interface="MessageStorage" element_type="method" element_name="findMessages" specification="Messaging" section="Communication" category="Tizen Device API Specifications"/>
+            <spec_url>https://developer.tizen.org/help/topic/org.tizen.web.device.apireference/tizen/messaging.html</spec_url>
+            <spec_statement>TBD</spec_statement>
+          </spec>
+        </specs>
+      </testcase>
+      <testcase purpose="Check if MessageStorage.findMessages method works properly with filter by isRead equal to true" type="compliance" onload_delay="90" status="approved" component="TizenAPI/Communication/Messaging" execution_type="auto" priority="P2" id="MessageStorage_findMessages_filter_isRead_valid">
+        <description>
+          <test_script_entry>/opt/tct-messaging-mms-tizen-tests/messaging/MessageStorage_findMessages_filter_isRead_valid.html</test_script_entry>
+        </description>
+        <specs>
+          <spec>
+            <spec_assertion interface="MessageStorage" element_type="method" element_name="findMessages" specification="Messaging" section="Communication" category="Tizen Device API Specifications"/>
+            <spec_url>https://developer.tizen.org/help/topic/org.tizen.web.device.apireference/tizen/messaging.html</spec_url>
+            <spec_statement>TBD</spec_statement>
+          </spec>
+        </specs>
+      </testcase>
+      <testcase purpose="Check if MessageStorage.findMessages method works properly with filter by type" type="compliance" onload_delay="90" status="approved" component="TizenAPI/Communication/Messaging" execution_type="auto" priority="P1" id="MessageStorage_findMessages_filter_mms_valid">
+        <description>
+          <test_script_entry>/opt/tct-messaging-mms-tizen-tests/messaging/MessageStorage_findMessages_filter_mms_valid.html</test_script_entry>
+        </description>
+        <specs>
+          <spec>
+            <spec_assertion interface="MessageStorage" element_type="method" element_name="findMessages" specification="Messaging" section="Communication" category="Tizen Device API Specifications"/>
+            <spec_url>https://developer.tizen.org/help/topic/org.tizen.web.device.apireference/tizen/messaging.html</spec_url>
+            <spec_statement>TBD</spec_statement>
+          </spec>
+        </specs>
+      </testcase>
+      <testcase purpose="Check if MessageStorage.findMessages method works properly with filter by subject (mms)" type="compliance" onload_delay="90" status="approved" component="TizenAPI/Communication/Messaging" execution_type="auto" priority="P2" id="MessageStorage_findMessages_filter_subject_valid">
+        <description>
+          <test_script_entry>/opt/tct-messaging-mms-tizen-tests/messaging/MessageStorage_findMessages_filter_subject_valid.html</test_script_entry>
+        </description>
+        <specs>
+          <spec>
+            <spec_assertion interface="MessageStorage" element_type="method" element_name="findMessages" specification="Messaging" section="Communication" category="Tizen Device API Specifications"/>
+            <spec_url>https://developer.tizen.org/help/topic/org.tizen.web.device.apireference/tizen/messaging.html</spec_url>
+            <spec_statement>TBD</spec_statement>
+          </spec>
+        </specs>
+      </testcase>
+      <testcase purpose="Check if MessageStorage.findMessages method works properly with filter by timestamp" type="compliance" onload_delay="90" status="approved" component="TizenAPI/Communication/Messaging" execution_type="auto" priority="P2" id="MessageStorage_findMessages_filter_timestamp_valid">
+        <description>
+          <test_script_entry>/opt/tct-messaging-mms-tizen-tests/messaging/MessageStorage_findMessages_filter_timestamp_valid.html</test_script_entry>
+        </description>
+        <specs>
+          <spec>
+            <spec_assertion interface="MessageStorage" element_type="method" element_name="findMessages" specification="Messaging" section="Communication" category="Tizen Device API Specifications"/>
+            <spec_url>https://developer.tizen.org/help/topic/org.tizen.web.device.apireference/tizen/messaging.html</spec_url>
+            <spec_statement>TBD</spec_statement>
+          </spec>
+        </specs>
+      </testcase>
+      <testcase purpose="Check if MessageStorage.findMessages method works properly with filter by to" type="compliance" onload_delay="90" status="approved" component="TizenAPI/Communication/Messaging" execution_type="auto" priority="P2" id="MessageStorage_findMessages_filter_to_valid">
+        <description>
+          <test_script_entry>/opt/tct-messaging-mms-tizen-tests/messaging/MessageStorage_findMessages_filter_to_valid.html</test_script_entry>
+        </description>
+        <specs>
+          <spec>
+            <spec_assertion interface="MessageStorage" element_type="method" element_name="findMessages" specification="Messaging" section="Communication" category="Tizen Device API Specifications"/>
+            <spec_url>https://developer.tizen.org/help/topic/org.tizen.web.device.apireference/tizen/messaging.html</spec_url>
+            <spec_statement>TBD</spec_statement>
+          </spec>
+        </specs>
+      </testcase>
+      <testcase purpose="Check if MessageStorage.addConversationChangeListener method throws exception when conversationsChangeCallback is invalid (mms)" type="compliance" onload_delay="90" status="approved" component="TizenAPI/Communication/Messaging" execution_type="auto" priority="P2" id="MessageStorage_mms_addConversationsChangeListener_conversationsChangeCallback_invalid_cb">
+        <description>
+          <test_script_entry>/opt/tct-messaging-mms-tizen-tests/messaging/MessageStorage_mms_addConversationsChangeListener_conversationsChangeCallback_invalid_cb.html</test_script_entry>
+        </description>
+        <specs>
+          <spec>
+            <spec_assertion interface="MessageStorage" element_type="method" element_name="addConversationsChangeListener" specification="Messaging" section="Communication" category="Tizen Device API Specifications"/>
+            <spec_url>https://developer.tizen.org/help/topic/org.tizen.web.device.apireference/tizen/messaging.html</spec_url>
+            <spec_statement>TBD</spec_statement>
+          </spec>
+        </specs>
+      </testcase>
+      <testcase purpose="Check if method addConversationsChangeListener of MessageStorage (MMS) exists" type="compliance" onload_delay="90" status="approved" component="TizenAPI/Communication/Messaging" execution_type="auto" priority="P1" id="MessageStorage_mms_addConversationsChangeListener_exist">
+        <description>
+          <test_script_entry>/opt/tct-messaging-mms-tizen-tests/messaging/MessageStorage_mms_addConversationsChangeListener_exist.html</test_script_entry>
+        </description>
+        <specs>
+          <spec>
+            <spec_assertion interface="MessageStorage" element_type="method" element_name="addConversationsChangeListener" specification="Messaging" section="Communication" category="Tizen Device API Specifications"/>
+            <spec_url>https://developer.tizen.org/help/topic/org.tizen.web.device.apireference/tizen/messaging.html</spec_url>
+            <spec_statement>TBD</spec_statement>
+          </spec>
+        </specs>
+      </testcase>
+      <testcase purpose="Check if MessageStorage.addDraftMessage method works properly (mms)" type="compliance" onload_delay="90" status="approved" component="TizenAPI/Communication/Messaging" execution_type="auto" priority="P1" id="MessageStorage_mms_addDraftMessage">
+        <description>
+          <test_script_entry>/opt/tct-messaging-mms-tizen-tests/messaging/MessageStorage_mms_addDraftMessage.html</test_script_entry>
+        </description>
+        <specs>
+          <spec>
+            <spec_assertion interface="MessageStorage" element_type="method" element_name="addDraftMessage" specification="Messaging" section="Communication" category="Tizen Device API Specifications"/>
+            <spec_url>https://developer.tizen.org/help/topic/org.tizen.web.device.apireference/tizen/messaging.html</spec_url>
+            <spec_statement>TBD</spec_statement>
+          </spec>
+        </specs>
+      </testcase>
+      <testcase purpose="Check type conversions for errorCallback argument of MessageStorage.addDraftMessage method (mms)" type="compliance" onload_delay="90" status="approved" component="TizenAPI/Communication/Messaging" execution_type="auto" priority="P2" id="MessageStorage_mms_addDraftMessage_errorCallback_TypeMismatch">
+        <description>
+          <test_script_entry>/opt/tct-messaging-mms-tizen-tests/messaging/MessageStorage_mms_addDraftMessage_errorCallback_TypeMismatch.html</test_script_entry>
+        </description>
+        <specs>
+          <spec>
+            <spec_assertion interface="MessageStorage" element_type="method" element_name="addDraftMessage" specification="Messaging" section="Communication" category="Tizen Device API Specifications"/>
+            <spec_url>https://developer.tizen.org/help/topic/org.tizen.web.device.apireference/tizen/messaging.html</spec_url>
+            <spec_statement>TBD</spec_statement>
+          </spec>
+        </specs>
+      </testcase>
+      <testcase purpose="Check if MessageStorage.addDraftMessage method throws exception when errorCallback is invalid (mms)" type="compliance" onload_delay="90" status="approved" component="TizenAPI/Communication/Messaging" execution_type="auto" priority="P2" id="MessageStorage_mms_addDraftMessage_errorCallback_invalid_cb">
+        <description>
+          <test_script_entry>/opt/tct-messaging-mms-tizen-tests/messaging/MessageStorage_mms_addDraftMessage_errorCallback_invalid_cb.html</test_script_entry>
+        </description>
+        <specs>
+          <spec>
+            <spec_assertion interface="MessageStorage" element_type="method" element_name="addDraftMessage" specification="Messaging" section="Communication" category="Tizen Device API Specifications"/>
+            <spec_url>https://developer.tizen.org/help/topic/org.tizen.web.device.apireference/tizen/messaging.html</spec_url>
+            <spec_statement>TBD</spec_statement>
+          </spec>
+        </specs>
+      </testcase>
+      <testcase purpose="Check if method addDraftMessage of MessageStorage (MMS) exists" type="compliance" onload_delay="90" status="approved" component="TizenAPI/Communication/Messaging" execution_type="auto" priority="P1" id="MessageStorage_mms_addDraftMessage_exist">
+        <description>
+          <test_script_entry>/opt/tct-messaging-mms-tizen-tests/messaging/MessageStorage_mms_addDraftMessage_exist.html</test_script_entry>
+        </description>
+        <specs>
+          <spec>
+            <spec_assertion interface="MessageStorage" element_type="method" element_name="addDraftMessage" specification="Messaging" section="Communication" category="Tizen Device API Specifications"/>
+            <spec_url>https://developer.tizen.org/help/topic/org.tizen.web.device.apireference/tizen/messaging.html</spec_url>
+            <spec_statement>TBD</spec_statement>
+          </spec>
+        </specs>
+      </testcase>
+      <testcase purpose="Check type conversions for message argument of MessageStorage.addDraftMessage method (mms)" type="compliance" onload_delay="90" status="approved" component="TizenAPI/Communication/Messaging" execution_type="auto" priority="P2" id="MessageStorage_mms_addDraftMessage_message_TypeMismatch">
+        <description>
+          <test_script_entry>/opt/tct-messaging-mms-tizen-tests/messaging/MessageStorage_mms_addDraftMessage_message_TypeMismatch.html</test_script_entry>
+        </description>
+        <specs>
+          <spec>
+            <spec_assertion interface="MessageStorage" element_type="method" element_name="addDraftMessage" specification="Messaging" section="Communication" category="Tizen Device API Specifications"/>
+            <spec_url>https://developer.tizen.org/help/topic/org.tizen.web.device.apireference/tizen/messaging.html</spec_url>
+            <spec_statement>TBD</spec_statement>
+          </spec>
+        </specs>
+      </testcase>
+      <testcase purpose="Check if MessageStorage.addDraftMessage method throws exception when message is invalid (mms)" type="compliance" onload_delay="90" status="approved" component="TizenAPI/Communication/Messaging" execution_type="auto" priority="P2" id="MessageStorage_mms_addDraftMessage_message_invalid_obj">
+        <description>
+          <test_script_entry>/opt/tct-messaging-mms-tizen-tests/messaging/MessageStorage_mms_addDraftMessage_message_invalid_obj.html</test_script_entry>
+        </description>
+        <specs>
+          <spec>
+            <spec_assertion interface="MessageStorage" element_type="method" element_name="addDraftMessage" specification="Messaging" section="Communication" category="Tizen Device API Specifications"/>
+            <spec_url>https://developer.tizen.org/help/topic/org.tizen.web.device.apireference/tizen/messaging.html</spec_url>
+            <spec_statement>TBD</spec_statement>
+          </spec>
+        </specs>
+      </testcase>
+      <testcase purpose="Check with missing non-optional argument - MessageStorage.addDraftMessage (mms)" type="compliance" onload_delay="90" status="approved" component="TizenAPI/Communication/Messaging" execution_type="auto" priority="P1" id="MessageStorage_mms_addDraftMessage_missarg">
+        <description>
+          <test_script_entry>/opt/tct-messaging-mms-tizen-tests/messaging/MessageStorage_mms_addDraftMessage_missarg.html</test_script_entry>
+        </description>
+        <specs>
+          <spec>
+            <spec_assertion interface="MessageStorage" element_type="method" element_name="addDraftMessage" specification="Messaging" section="Communication" category="Tizen Device API Specifications"/>
+            <spec_url>https://developer.tizen.org/help/topic/org.tizen.web.device.apireference/tizen/messaging.html</spec_url>
+            <spec_statement>TBD</spec_statement>
+          </spec>
+        </specs>
+      </testcase>
+      <testcase purpose="Check type conversions for successCallback argument of MessageStorage.addDraftMessage method (mms)" type="compliance" onload_delay="90" status="approved" component="TizenAPI/Communication/Messaging" execution_type="auto" priority="P2" id="MessageStorage_mms_addDraftMessage_successCallback_TypeMismatch">
+        <description>
+          <test_script_entry>/opt/tct-messaging-mms-tizen-tests/messaging/MessageStorage_mms_addDraftMessage_successCallback_TypeMismatch.html</test_script_entry>
+        </description>
+        <specs>
+          <spec>
+            <spec_assertion interface="MessageStorage" element_type="method" element_name="addDraftMessage" specification="Messaging" section="Communication" category="Tizen Device API Specifications"/>
+            <spec_url>https://developer.tizen.org/help/topic/org.tizen.web.device.apireference/tizen/messaging.html</spec_url>
+            <spec_statement>TBD</spec_statement>
+          </spec>
+        </specs>
+      </testcase>
+      <testcase purpose="Check if MessageStorage.addDraftMessage method throws exception when successCallback is invalid (mms)" type="compliance" onload_delay="90" status="approved" component="TizenAPI/Communication/Messaging" execution_type="auto" priority="P2" id="MessageStorage_mms_addDraftMessage_successCallback_invalid_cb">
+        <description>
+          <test_script_entry>/opt/tct-messaging-mms-tizen-tests/messaging/MessageStorage_mms_addDraftMessage_successCallback_invalid_cb.html</test_script_entry>
+        </description>
+        <specs>
+          <spec>
+            <spec_assertion interface="MessageStorage" element_type="method" element_name="addDraftMessage" specification="Messaging" section="Communication" category="Tizen Device API Specifications"/>
+            <spec_url>https://developer.tizen.org/help/topic/org.tizen.web.device.apireference/tizen/messaging.html</spec_url>
+            <spec_statement>TBD</spec_statement>
+          </spec>
+        </specs>
+      </testcase>
+      <testcase purpose="Check if MessageStorage.addDraftMessage method works properly without errorCallback argument (mms)" type="compliance" onload_delay="90" status="approved" component="TizenAPI/Communication/Messaging" execution_type="auto" priority="P1" id="MessageStorage_mms_addDraftMessage_without_errorCallback">
+        <description>
+          <test_script_entry>/opt/tct-messaging-mms-tizen-tests/messaging/MessageStorage_mms_addDraftMessage_without_errorCallback.html</test_script_entry>
+        </description>
+        <specs>
+          <spec>
+            <spec_assertion interface="MessageStorage" element_type="method" element_name="addDraftMessage" specification="Messaging" section="Communication" category="Tizen Device API Specifications"/>
+            <spec_url>https://developer.tizen.org/help/topic/org.tizen.web.device.apireference/tizen/messaging.html</spec_url>
+            <spec_statement>TBD</spec_statement>
+          </spec>
+        </specs>
+      </testcase>
+      <testcase purpose="Check if MessageStorage.addDraftMessage method works properly without successCallback argument (mms)" type="compliance" onload_delay="90" status="approved" component="TizenAPI/Communication/Messaging" execution_type="auto" priority="P1" id="MessageStorage_mms_addDraftMessage_without_successCallback">
+        <description>
+          <test_script_entry>/opt/tct-messaging-mms-tizen-tests/messaging/MessageStorage_mms_addDraftMessage_without_successCallback.html</test_script_entry>
+        </description>
+        <specs>
+          <spec>
+            <spec_assertion interface="MessageStorage" element_type="method" element_name="addDraftMessage" specification="Messaging" section="Communication" category="Tizen Device API Specifications"/>
+            <spec_url>https://developer.tizen.org/help/topic/org.tizen.web.device.apireference/tizen/messaging.html</spec_url>
+            <spec_statement>TBD</spec_statement>
+          </spec>
+        </specs>
+      </testcase>
+      <testcase purpose="Check if method addFoldersChangeListener of MessageStorage (MMS) exists" type="compliance" onload_delay="90" status="approved" component="TizenAPI/Communication/Messaging" execution_type="auto" priority="P1" id="MessageStorage_mms_addFoldersChangeListener_exist">
+        <description>
+          <test_script_entry>/opt/tct-messaging-mms-tizen-tests/messaging/MessageStorage_mms_addFoldersChangeListener_exist.html</test_script_entry>
+        </description>
+        <specs>
+          <spec>
+            <spec_assertion interface="MessageStorage" element_type="method" element_name="addFoldersChangeListener" specification="Messaging" section="Communication" category="Tizen Device API Specifications"/>
+            <spec_url>https://developer.tizen.org/help/topic/org.tizen.web.device.apireference/tizen/messaging.html</spec_url>
+            <spec_statement>TBD</spec_statement>
+          </spec>
+        </specs>
+      </testcase>
+      <testcase purpose="Check if method addMessagesChangeListener of MessageStorage (MMS) exists" type="compliance" onload_delay="90" status="approved" component="TizenAPI/Communication/Messaging" execution_type="auto" priority="P1" id="MessageStorage_mms_addMessagesChangeListener_exist">
+        <description>
+          <test_script_entry>/opt/tct-messaging-mms-tizen-tests/messaging/MessageStorage_mms_addMessagesChangeListener_exist.html</test_script_entry>
+        </description>
+        <specs>
+          <spec>
+            <spec_assertion interface="MessageStorage" element_type="method" element_name="addMessagesChangeListener" specification="Messaging" section="Communication" category="Tizen Device API Specifications"/>
+            <spec_url>https://developer.tizen.org/help/topic/org.tizen.web.device.apireference/tizen/messaging.html</spec_url>
+            <spec_statement>TBD</spec_statement>
+          </spec>
+        </specs>
+      </testcase>
+      <testcase purpose="Check type conversions for filter argument of MessageStorage.addMessagesChangeListener method (mms)" type="compliance" onload_delay="90" status="approved" component="TizenAPI/Communication/Messaging" execution_type="auto" priority="P2" id="MessageStorage_mms_addMessagesChangeListener_filter_TypeMismatch">
+        <description>
+          <test_script_entry>/opt/tct-messaging-mms-tizen-tests/messaging/MessageStorage_mms_addMessagesChangeListener_filter_TypeMismatch.html</test_script_entry>
+        </description>
+        <specs>
+          <spec>
+            <spec_assertion interface="MessageStorage" element_type="method" element_name="addMessagesChangeListener" specification="Messaging" section="Communication" category="Tizen Device API Specifications"/>
+            <spec_url>https://developer.tizen.org/help/topic/org.tizen.web.device.apireference/tizen/messaging.html</spec_url>
+            <spec_statement>TBD</spec_statement>
+          </spec>
+        </specs>
+      </testcase>
+      <testcase purpose="Check type conversions for messagesChangeCallback argument of MessageStorage.addMessagesChangeListener method (mms)" type="compliance" onload_delay="90" status="approved" component="TizenAPI/Communication/Messaging" execution_type="auto" priority="P2" id="MessageStorage_mms_addMessagesChangeListener_messagesChangeCallback_TypeMismatch">
+        <description>
+          <test_script_entry>/opt/tct-messaging-mms-tizen-tests/messaging/MessageStorage_mms_addMessagesChangeListener_messagesChangeCallback_TypeMismatch.html</test_script_entry>
+        </description>
+        <specs>
+          <spec>
+            <spec_assertion interface="MessageStorage" element_type="method" element_name="addMessagesChangeListener" specification="Messaging" section="Communication" category="Tizen Device API Specifications"/>
+            <spec_url>https://developer.tizen.org/help/topic/org.tizen.web.device.apireference/tizen/messaging.html</spec_url>
+            <spec_statement>TBD</spec_statement>
+          </spec>
+        </specs>
+      </testcase>
+      <testcase purpose="Check if MessageStorage.addMessagesChangeListener method throws exception when messagesChangeCallback is invalid (mms)" type="compliance" onload_delay="90" status="approved" component="TizenAPI/Communication/Messaging" execution_type="auto" priority="P2" id="MessageStorage_mms_addMessagesChangeListener_messagesChangeCallback_invalid_cb">
+        <description>
+          <test_script_entry>/opt/tct-messaging-mms-tizen-tests/messaging/MessageStorage_mms_addMessagesChangeListener_messagesChangeCallback_invalid_cb.html</test_script_entry>
+        </description>
+        <specs>
+          <spec>
+            <spec_assertion interface="MessageStorage" element_type="method" element_name="addMessagesChangeListener" specification="Messaging" section="Communication" category="Tizen Device API Specifications"/>
+            <spec_url>https://developer.tizen.org/help/topic/org.tizen.web.device.apireference/tizen/messaging.html</spec_url>
+            <spec_statement>TBD</spec_statement>
+          </spec>
+        </specs>
+      </testcase>
+      <testcase purpose="Check with missing non-optional argument - MessageStorage.addMessagesChangeListener (mms)" type="compliance" onload_delay="90" status="approved" component="TizenAPI/Communication/Messaging" execution_type="auto" priority="P1" id="MessageStorage_mms_addMessagesChangeListener_missarg">
+        <description>
+          <test_script_entry>/opt/tct-messaging-mms-tizen-tests/messaging/MessageStorage_mms_addMessagesChangeListener_missarg.html</test_script_entry>
+        </description>
+        <specs>
+          <spec>
+            <spec_assertion interface="MessageStorage" element_type="method" element_name="addMessagesChangeListener" specification="Messaging" section="Communication" category="Tizen Device API Specifications"/>
+            <spec_url>https://developer.tizen.org/help/topic/org.tizen.web.device.apireference/tizen/messaging.html</spec_url>
+            <spec_statement>TBD</spec_statement>
+          </spec>
+        </specs>
+      </testcase>
+      <testcase purpose="Check if MessageStorage.addMessagesChangeListener method works properly with filter (mms)" type="compliance" onload_delay="90" status="approved" component="TizenAPI/Communication/Messaging" execution_type="auto" priority="P1" id="MessageStorage_mms_addMessagesChangeListener_with_filter">
+        <description>
+          <test_script_entry>/opt/tct-messaging-mms-tizen-tests/messaging/MessageStorage_mms_addMessagesChangeListener_with_filter.html</test_script_entry>
+        </description>
+        <specs>
+          <spec>
+            <spec_assertion interface="MessageStorage" element_type="method" element_name="addMessagesChangeListener" specification="Messaging" section="Communication" category="Tizen Device API Specifications"/>
+            <spec_url>https://developer.tizen.org/help/topic/org.tizen.web.device.apireference/tizen/messaging.html</spec_url>
+            <spec_statement>TBD</spec_statement>
+          </spec>
+        </specs>
+      </testcase>
+      <testcase purpose="Check if MessageStorage.addMessagesChangeListener method works properly without filter (mms)" type="compliance" onload_delay="90" status="approved" component="TizenAPI/Communication/Messaging" execution_type="auto" priority="P1" id="MessageStorage_mms_addMessagesChangeListener_without_filter">
+        <description>
+          <test_script_entry>/opt/tct-messaging-mms-tizen-tests/messaging/MessageStorage_mms_addMessagesChangeListener_without_filter.html</test_script_entry>
+        </description>
+        <specs>
+          <spec>
+            <spec_assertion interface="MessageStorage" element_type="method" element_name="addMessagesChangeListener" specification="Messaging" section="Communication" category="Tizen Device API Specifications"/>
+            <spec_url>https://developer.tizen.org/help/topic/org.tizen.web.device.apireference/tizen/messaging.html</spec_url>
+            <spec_statement>TBD</spec_statement>
+          </spec>
+        </specs>
+      </testcase>
+      <testcase purpose="Check if instance of interface MessageStorage (MMS) can be extended with new property" type="compliance" onload_delay="90" status="approved" component="TizenAPI/Communication/Messaging" execution_type="auto" priority="P3" id="MessageStorage_mms_extend">
+        <description>
+          <test_script_entry>/opt/tct-messaging-mms-tizen-tests/messaging/MessageStorage_mms_extend.html</test_script_entry>
+        </description>
+        <specs>
+          <spec>
+            <spec_assertion interface="MessageStorage" usage="true" specification="Messaging" section="Communication" category="Tizen Device API Specifications"/>
+            <spec_url>https://developer.tizen.org/help/topic/org.tizen.web.device.apireference/tizen/messaging.html</spec_url>
+            <spec_statement>TBD</spec_statement>
+          </spec>
+        </specs>
+      </testcase>
+      <testcase purpose="Check if method findConversations of MessageStorage (MMS) exists" type="compliance" onload_delay="90" status="approved" component="TizenAPI/Communication/Messaging" execution_type="auto" priority="P1" id="MessageStorage_mms_findConversations_exist">
+        <description>
+          <test_script_entry>/opt/tct-messaging-mms-tizen-tests/messaging/MessageStorage_mms_findConversations_exist.html</test_script_entry>
+        </description>
+        <specs>
+          <spec>
+            <spec_assertion interface="MessageStorage" element_type="method" element_name="findConversations" specification="Messaging" section="Communication" category="Tizen Device API Specifications"/>
+            <spec_url>https://developer.tizen.org/help/topic/org.tizen.web.device.apireference/tizen/messaging.html</spec_url>
+            <spec_statement>TBD</spec_statement>
+          </spec>
+        </specs>
+      </testcase>
+      <testcase purpose="Check if MessageStorage.findConversations method works properly with filter by from (mms)" type="compliance" onload_delay="90" status="approved" component="TizenAPI/Communication/Messaging" execution_type="auto" priority="P2" id="MessageStorage_mms_findConversations_filter_from">
+        <description>
+          <test_script_entry>/opt/tct-messaging-mms-tizen-tests/messaging/MessageStorage_mms_findConversations_filter_from.html</test_script_entry>
+        </description>
+        <specs>
+          <spec>
+            <spec_assertion interface="MessageStorage" element_type="method" element_name="findConversations" specification="Messaging" section="Communication" category="Tizen Device API Specifications"/>
+            <spec_url>https://developer.tizen.org/help/topic/org.tizen.web.device.apireference/tizen/messaging.html</spec_url>
+            <spec_statement>TBD</spec_statement>
+          </spec>
+        </specs>
+      </testcase>
+      <testcase purpose="Check if MessageStorage.findConversations method works properly with filter by id (mms)" type="compliance" onload_delay="90" status="approved" component="TizenAPI/Communication/Messaging" execution_type="auto" priority="P2" id="MessageStorage_mms_findConversations_filter_id">
+        <description>
+          <test_script_entry>/opt/tct-messaging-mms-tizen-tests/messaging/MessageStorage_mms_findConversations_filter_id.html</test_script_entry>
+        </description>
+        <specs>
+          <spec>
+            <spec_assertion interface="MessageStorage" element_type="method" element_name="findConversations" specification="Messaging" section="Communication" category="Tizen Device API Specifications"/>
+            <spec_url>https://developer.tizen.org/help/topic/org.tizen.web.device.apireference/tizen/messaging.html</spec_url>
+            <spec_statement>TBD</spec_statement>
+          </spec>
+        </specs>
+      </testcase>
+      <testcase purpose="Check if MessageStorage.findConversations method works properly with filter by messageCount (mms)" type="compliance" onload_delay="90" status="approved" component="TizenAPI/Communication/Messaging" execution_type="auto" priority="P2" id="MessageStorage_mms_findConversations_filter_messageCount">
+        <description>
+          <test_script_entry>/opt/tct-messaging-mms-tizen-tests/messaging/MessageStorage_mms_findConversations_filter_messageCount.html</test_script_entry>
+        </description>
+        <specs>
+          <spec>
+            <spec_assertion interface="MessageStorage" element_type="method" element_name="findConversations" specification="Messaging" section="Communication" category="Tizen Device API Specifications"/>
+            <spec_url>https://developer.tizen.org/help/topic/org.tizen.web.device.apireference/tizen/messaging.html</spec_url>
+            <spec_statement>TBD</spec_statement>
+          </spec>
+        </specs>
+      </testcase>
+      <testcase purpose="Check if MessageStorage.findConversations method works properly with filter by preview (mms)" type="compliance" onload_delay="90" status="approved" component="TizenAPI/Communication/Messaging" execution_type="auto" priority="P2" id="MessageStorage_mms_findConversations_filter_preview">
+        <description>
+          <test_script_entry>/opt/tct-messaging-mms-tizen-tests/messaging/MessageStorage_mms_findConversations_filter_preview.html</test_script_entry>
+        </description>
+        <specs>
+          <spec>
+            <spec_assertion interface="MessageStorage" element_type="method" element_name="findConversations" specification="Messaging" section="Communication" category="Tizen Device API Specifications"/>
+            <spec_url>https://developer.tizen.org/help/topic/org.tizen.web.device.apireference/tizen/messaging.html</spec_url>
+            <spec_statement>TBD</spec_statement>
+          </spec>
+        </specs>
+      </testcase>
+      <testcase purpose="Check if MessageStorage.findConversations method works properly with filter by timestamp (mms)" type="compliance" onload_delay="90" status="approved" component="TizenAPI/Communication/Messaging" execution_type="auto" priority="P2" id="MessageStorage_mms_findConversations_filter_timestamp">
+        <description>
+          <test_script_entry>/opt/tct-messaging-mms-tizen-tests/messaging/MessageStorage_mms_findConversations_filter_timestamp.html</test_script_entry>
+        </description>
+        <specs>
+          <spec>
+            <spec_assertion interface="MessageStorage" element_type="method" element_name="findConversations" specification="Messaging" section="Communication" category="Tizen Device API Specifications"/>
+            <spec_url>https://developer.tizen.org/help/topic/org.tizen.web.device.apireference/tizen/messaging.html</spec_url>
+            <spec_statement>TBD</spec_statement>
+          </spec>
+        </specs>
+      </testcase>
+      <testcase purpose="Check if MessageStorage.findConversations method works properly with filter by to (mms)" type="compliance" onload_delay="90" status="approved" component="TizenAPI/Communication/Messaging" execution_type="auto" priority="P1" id="MessageStorage_mms_findConversations_filter_to">
+        <description>
+          <test_script_entry>/opt/tct-messaging-mms-tizen-tests/messaging/MessageStorage_mms_findConversations_filter_to.html</test_script_entry>
+        </description>
+        <specs>
+          <spec>
+            <spec_assertion interface="MessageStorage" element_type="method" element_name="findConversations" specification="Messaging" section="Communication" category="Tizen Device API Specifications"/>
+            <spec_url>https://developer.tizen.org/help/topic/org.tizen.web.device.apireference/tizen/messaging.html</spec_url>
+            <spec_statement>TBD</spec_statement>
+          </spec>
+        </specs>
+      </testcase>
+      <testcase purpose="Check if MessageStorage.findConversations method works properly with filter by type (mms)" type="compliance" onload_delay="90" status="approved" component="TizenAPI/Communication/Messaging" execution_type="auto" priority="P2" id="MessageStorage_mms_findConversations_filter_type">
+        <description>
+          <test_script_entry>/opt/tct-messaging-mms-tizen-tests/messaging/MessageStorage_mms_findConversations_filter_type.html</test_script_entry>
+        </description>
+        <specs>
+          <spec>
+            <spec_assertion interface="MessageStorage" element_type="method" element_name="findConversations" specification="Messaging" section="Communication" category="Tizen Device API Specifications"/>
+            <spec_url>https://developer.tizen.org/help/topic/org.tizen.web.device.apireference/tizen/messaging.html</spec_url>
+            <spec_statement>TBD</spec_statement>
+          </spec>
+        </specs>
+      </testcase>
+      <testcase purpose="Check if MessageStorage.findConversations method works properly with filter by unreadMessages (mms)" type="compliance" onload_delay="90" status="approved" component="TizenAPI/Communication/Messaging" execution_type="auto" priority="P2" id="MessageStorage_mms_findConversations_filter_unreadMessages">
+        <description>
+          <test_script_entry>/opt/tct-messaging-mms-tizen-tests/messaging/MessageStorage_mms_findConversations_filter_unreadMessages.html</test_script_entry>
+        </description>
+        <specs>
+          <spec>
+            <spec_assertion interface="MessageStorage" element_type="method" element_name="findConversations" specification="Messaging" section="Communication" category="Tizen Device API Specifications"/>
+            <spec_url>https://developer.tizen.org/help/topic/org.tizen.web.device.apireference/tizen/messaging.html</spec_url>
+            <spec_statement>TBD</spec_statement>
+          </spec>
+        </specs>
+      </testcase>
+      <testcase purpose="Check if method findFolders of MessageStorage (MMS) exists" type="compliance" onload_delay="90" status="approved" component="TizenAPI/Communication/Messaging" execution_type="auto" priority="P1" id="MessageStorage_mms_findFolders_exist">
+        <description>
+          <test_script_entry>/opt/tct-messaging-mms-tizen-tests/messaging/MessageStorage_mms_findFolders_exist.html</test_script_entry>
+        </description>
+        <specs>
+          <spec>
+            <spec_assertion interface="MessageStorage" element_type="method" element_name="findFolders" specification="Messaging" section="Communication" category="Tizen Device API Specifications"/>
+            <spec_url>https://developer.tizen.org/help/topic/org.tizen.web.device.apireference/tizen/messaging.html</spec_url>
+            <spec_statement>TBD</spec_statement>
+          </spec>
+        </specs>
+      </testcase>
+      <testcase purpose="Check if MessageStorage.findMessages method works properly (mms)" type="compliance" onload_delay="90" status="approved" component="TizenAPI/Communication/Messaging" execution_type="auto" priority="P1" id="MessageStorage_mms_findMessages">
+        <description>
+          <test_script_entry>/opt/tct-messaging-mms-tizen-tests/messaging/MessageStorage_mms_findMessages.html</test_script_entry>
+        </description>
+        <specs>
+          <spec>
+            <spec_assertion interface="MessageStorage" element_type="method" element_name="findMessages" specification="Messaging" section="Communication" category="Tizen Device API Specifications"/>
+            <spec_url>https://developer.tizen.org/help/topic/org.tizen.web.device.apireference/tizen/messaging.html</spec_url>
+            <spec_statement>TBD</spec_statement>
+          </spec>
+        </specs>
+      </testcase>
+      <testcase purpose="Check if method findMessages of MessageStorage (MMS) exists" type="compliance" onload_delay="90" status="approved" component="TizenAPI/Communication/Messaging" execution_type="auto" priority="P1" id="MessageStorage_mms_findMessages_exist">
+        <description>
+          <test_script_entry>/opt/tct-messaging-mms-tizen-tests/messaging/MessageStorage_mms_findMessages_exist.html</test_script_entry>
+        </description>
+        <specs>
+          <spec>
+            <spec_assertion interface="MessageStorage" element_type="method" element_name="findMessages" specification="Messaging" section="Communication" category="Tizen Device API Specifications"/>
+            <spec_url>https://developer.tizen.org/help/topic/org.tizen.web.device.apireference/tizen/messaging.html</spec_url>
+            <spec_statement>TBD</spec_statement>
+          </spec>
+        </specs>
+      </testcase>
+      <testcase purpose="Check if MessageStorage.findMessages method works properly with filter by folderId (mms)" type="compliance" onload_delay="90" status="approved" component="TizenAPI/Communication/Messaging" execution_type="auto" priority="P1" id="MessageStorage_mms_findMessages_folderId_with_errorCallback">
+        <description>
+          <test_script_entry>/opt/tct-messaging-mms-tizen-tests/messaging/MessageStorage_mms_findMessages_folderId_with_errorCallback.html</test_script_entry>
+        </description>
+        <specs>
+          <spec>
+            <spec_assertion interface="MessageStorage" element_type="method" element_name="findMessages" specification="Messaging" section="Communication" category="Tizen Device API Specifications"/>
+            <spec_url>https://developer.tizen.org/help/topic/org.tizen.web.device.apireference/tizen/messaging.html</spec_url>
+            <spec_statement>TBD</spec_statement>
+          </spec>
+        </specs>
+      </testcase>
+      <testcase purpose="Check if MessageStorage.findMessages method works properly with filter by from" type="compliance" onload_delay="90" status="approved" component="TizenAPI/Communication/Messaging" execution_type="auto" priority="P1" id="MessageStorage_mms_findMessages_from_with_errorCallback">
+        <description>
+          <test_script_entry>/opt/tct-messaging-mms-tizen-tests/messaging/MessageStorage_mms_findMessages_from_with_errorCallback.html</test_script_entry>
+        </description>
+        <specs>
+          <spec>
+            <spec_assertion interface="MessageStorage" element_type="method" element_name="findMessages" specification="Messaging" section="Communication" category="Tizen Device API Specifications"/>
+            <spec_url>https://developer.tizen.org/help/topic/org.tizen.web.device.apireference/tizen/messaging.html</spec_url>
+            <spec_statement>TBD</spec_statement>
+          </spec>
+        </specs>
+      </testcase>
+      <testcase purpose="Check if MessageStorage.findMessages method works properly with filter by hasAttachment (mms)" type="compliance" onload_delay="90" status="approved" component="TizenAPI/Communication/Messaging" execution_type="auto" priority="P1" id="MessageStorage_mms_findMessages_hasAttachment_with_errorCallback">
+        <description>
+          <test_script_entry>/opt/tct-messaging-mms-tizen-tests/messaging/MessageStorage_mms_findMessages_hasAttachment_with_errorCallback.html</test_script_entry>
+        </description>
+        <specs>
+          <spec>
+            <spec_assertion interface="MessageStorage" element_type="method" element_name="findMessages" specification="Messaging" section="Communication" category="Tizen Device API Specifications"/>
+            <spec_url>https://developer.tizen.org/help/topic/org.tizen.web.device.apireference/tizen/messaging.html</spec_url>
+            <spec_statement>TBD</spec_statement>
+          </spec>
+        </specs>
+      </testcase>
+      <testcase purpose="Check if MessageStorage.findMessages method works properly with filter by id (mms)" type="compliance" onload_delay="90" status="approved" component="TizenAPI/Communication/Messaging" execution_type="auto" priority="P1" id="MessageStorage_mms_findMessages_id_with_errorCallback">
+        <description>
+          <test_script_entry>/opt/tct-messaging-mms-tizen-tests/messaging/MessageStorage_mms_findMessages_id_with_errorCallback.html</test_script_entry>
+        </description>
+        <specs>
+          <spec>
+            <spec_assertion interface="MessageStorage" element_type="method" element_name="findMessages" specification="Messaging" section="Communication" category="Tizen Device API Specifications"/>
+            <spec_url>https://developer.tizen.org/help/topic/org.tizen.web.device.apireference/tizen/messaging.html</spec_url>
+            <spec_statement>TBD</spec_statement>
+          </spec>
+        </specs>
+      </testcase>
+      <testcase purpose="Check if MessageStorage.findMessages method works properly with filter by isRead (mms)" type="compliance" onload_delay="90" status="approved" component="TizenAPI/Communication/Messaging" execution_type="auto" priority="P1" id="MessageStorage_mms_findMessages_isRead_with_errorCallback">
+        <description>
+          <test_script_entry>/opt/tct-messaging-mms-tizen-tests/messaging/MessageStorage_mms_findMessages_isRead_with_errorCallback.html</test_script_entry>
+        </description>
+        <specs>
+          <spec>
+            <spec_assertion interface="MessageStorage" element_type="method" element_name="findMessages" specification="Messaging" section="Communication" category="Tizen Device API Specifications"/>
+            <spec_url>https://developer.tizen.org/help/topic/org.tizen.web.device.apireference/tizen/messaging.html</spec_url>
+            <spec_statement>TBD</spec_statement>
+          </spec>
+        </specs>
+      </testcase>
+      <testcase purpose="Check if MessageStorage.findMessages method works properly with filter by plainBody (mms)" type="compliance" onload_delay="90" status="approved" component="TizenAPI/Communication/Messaging" execution_type="auto" priority="P1" id="MessageStorage_mms_findMessages_plainBody_with_errorCallback">
+        <description>
+          <test_script_entry>/opt/tct-messaging-mms-tizen-tests/messaging/MessageStorage_mms_findMessages_plainBody_with_errorCallback.html</test_script_entry>
+        </description>
+        <specs>
+          <spec>
+            <spec_assertion interface="MessageStorage" element_type="method" element_name="findMessages" specification="Messaging" section="Communication" category="Tizen Device API Specifications"/>
+            <spec_url>https://developer.tizen.org/help/topic/org.tizen.web.device.apireference/tizen/messaging.html</spec_url>
+            <spec_statement>TBD</spec_statement>
+          </spec>
+        </specs>
+      </testcase>
+      <testcase purpose="Check if MessageStorage.findMessages method works properly with filter by timestamp (mms)" type="compliance" onload_delay="90" status="approved" component="TizenAPI/Communication/Messaging" execution_type="auto" priority="P1" id="MessageStorage_mms_findMessages_timestamp_with_errorCallback">
+        <description>
+          <test_script_entry>/opt/tct-messaging-mms-tizen-tests/messaging/MessageStorage_mms_findMessages_timestamp_with_errorCallback.html</test_script_entry>
+        </description>
+        <specs>
+          <spec>
+            <spec_assertion interface="MessageStorage" element_type="method" element_name="findMessages" specification="Messaging" section="Communication" category="Tizen Device API Specifications"/>
+            <spec_url>https://developer.tizen.org/help/topic/org.tizen.web.device.apireference/tizen/messaging.html</spec_url>
+            <spec_statement>TBD</spec_statement>
+          </spec>
+        </specs>
+      </testcase>
+      <testcase purpose="Check if MessageStorage.findMessages method works properly with filter by to (mms)" type="compliance" onload_delay="90" status="approved" component="TizenAPI/Communication/Messaging" execution_type="auto" priority="P1" id="MessageStorage_mms_findMessages_to_with_errorCallback">
+        <description>
+          <test_script_entry>/opt/tct-messaging-mms-tizen-tests/messaging/MessageStorage_mms_findMessages_to_with_errorCallback.html</test_script_entry>
+        </description>
+        <specs>
+          <spec>
+            <spec_assertion interface="MessageStorage" element_type="method" element_name="findMessages" specification="Messaging" section="Communication" category="Tizen Device API Specifications"/>
+            <spec_url>https://developer.tizen.org/help/topic/org.tizen.web.device.apireference/tizen/messaging.html</spec_url>
+            <spec_statement>TBD</spec_statement>
+          </spec>
+        </specs>
+      </testcase>
+      <testcase purpose="Check if MessageStorage.findMessages method works properly with filter by type (mms)" type="compliance" onload_delay="90" status="approved" component="TizenAPI/Communication/Messaging" execution_type="auto" priority="P1" id="MessageStorage_mms_findMessages_type_with_errorCallback">
+        <description>
+          <test_script_entry>/opt/tct-messaging-mms-tizen-tests/messaging/MessageStorage_mms_findMessages_type_with_errorCallback.html</test_script_entry>
+        </description>
+        <specs>
+          <spec>
+            <spec_assertion interface="MessageStorage" element_type="method" element_name="findMessages" specification="Messaging" section="Communication" category="Tizen Device API Specifications"/>
+            <spec_url>https://developer.tizen.org/help/topic/org.tizen.web.device.apireference/tizen/messaging.html</spec_url>
+            <spec_statement>TBD</spec_statement>
+          </spec>
+        </specs>
+      </testcase>
+      <testcase purpose="Check if method removeChangeListener of MessageStorage (MMS) exists" type="compliance" onload_delay="90" status="approved" component="TizenAPI/Communication/Messaging" execution_type="auto" priority="P1" id="MessageStorage_mms_removeChangeListener_exist">
+        <description>
+          <test_script_entry>/opt/tct-messaging-mms-tizen-tests/messaging/MessageStorage_mms_removeChangeListener_exist.html</test_script_entry>
+        </description>
+        <specs>
+          <spec>
+            <spec_assertion interface="MessageStorage" element_type="method" element_name="removeChangeListener" specification="Messaging" section="Communication" category="Tizen Device API Specifications"/>
+            <spec_url>https://developer.tizen.org/help/topic/org.tizen.web.device.apireference/tizen/messaging.html</spec_url>
+            <spec_statement>TBD</spec_statement>
+          </spec>
+        </specs>
+      </testcase>
+      <testcase purpose="Check if method removeConversations of MessageStorage (MMS) exists" type="compliance" onload_delay="90" status="approved" component="TizenAPI/Communication/Messaging" execution_type="auto" priority="P1" id="MessageStorage_mms_removeConversations_exist">
+        <description>
+          <test_script_entry>/opt/tct-messaging-mms-tizen-tests/messaging/MessageStorage_mms_removeConversations_exist.html</test_script_entry>
+        </description>
+        <specs>
+          <spec>
+            <spec_assertion interface="MessageStorage" element_type="method" element_name="removeConversations" specification="Messaging" section="Communication" category="Tizen Device API Specifications"/>
+            <spec_url>https://developer.tizen.org/help/topic/org.tizen.web.device.apireference/tizen/messaging.html</spec_url>
+            <spec_statement>TBD</spec_statement>
+          </spec>
+        </specs>
+      </testcase>
+      <testcase purpose="Check if method removeMessages of MessageStorage (MMS) exists" type="compliance" onload_delay="90" status="approved" component="TizenAPI/Communication/Messaging" execution_type="auto" priority="P1" id="MessageStorage_mms_removeMessages_exist">
+        <description>
+          <test_script_entry>/opt/tct-messaging-mms-tizen-tests/messaging/MessageStorage_mms_removeMessages_exist.html</test_script_entry>
+        </description>
+        <specs>
+          <spec>
+            <spec_assertion interface="MessageStorage" element_type="method" element_name="removeMessages" specification="Messaging" section="Communication" category="Tizen Device API Specifications"/>
+            <spec_url>https://developer.tizen.org/help/topic/org.tizen.web.device.apireference/tizen/messaging.html</spec_url>
+            <spec_statement>TBD</spec_statement>
+          </spec>
+        </specs>
+      </testcase>
+      <testcase purpose="Check if MessageStorage.updateMessages method works properly (mms)" type="compliance" onload_delay="90" status="approved" component="TizenAPI/Communication/Messaging" execution_type="auto" priority="P1" id="MessageStorage_mms_updateMessages">
+        <description>
+          <test_script_entry>/opt/tct-messaging-mms-tizen-tests/messaging/MessageStorage_mms_updateMessages.html</test_script_entry>
+        </description>
+        <specs>
+          <spec>
+            <spec_assertion interface="MessageStorage" element_type="method" element_name="updateMessages" specification="Messaging" section="Communication" category="Tizen Device API Specifications"/>
+            <spec_url>https://developer.tizen.org/help/topic/org.tizen.web.device.apireference/tizen/messaging.html</spec_url>
+            <spec_statement>TBD</spec_statement>
+          </spec>
+        </specs>
+      </testcase>
+      <testcase purpose="Check type conversions for errorCallback argument of MessageStorage.updateMessages method (mms)" type="compliance" onload_delay="90" status="approved" component="TizenAPI/Communication/Messaging" execution_type="auto" priority="P2" id="MessageStorage_mms_updateMessages_errorCallback_TypeMismatch">
+        <description>
+          <test_script_entry>/opt/tct-messaging-mms-tizen-tests/messaging/MessageStorage_mms_updateMessages_errorCallback_TypeMismatch.html</test_script_entry>
+        </description>
+        <specs>
+          <spec>
+            <spec_assertion interface="MessageStorage" element_type="method" element_name="updateMessages" specification="Messaging" section="Communication" category="Tizen Device API Specifications"/>
+            <spec_url>https://developer.tizen.org/help/topic/org.tizen.web.device.apireference/tizen/messaging.html</spec_url>
+            <spec_statement>TBD</spec_statement>
+          </spec>
+        </specs>
+      </testcase>
+      <testcase purpose="Check if MessageStorage.updateMessages method throws exception when errorCallback is invalid (mms)" type="compliance" onload_delay="90" status="approved" component="TizenAPI/Communication/Messaging" execution_type="auto" priority="P2" id="MessageStorage_mms_updateMessages_errorCallback_invalid_cb">
+        <description>
+          <test_script_entry>/opt/tct-messaging-mms-tizen-tests/messaging/MessageStorage_mms_updateMessages_errorCallback_invalid_cb.html</test_script_entry>
+        </description>
+        <specs>
+          <spec>
+            <spec_assertion interface="MessageStorage" element_type="method" element_name="updateMessages" specification="Messaging" section="Communication" category="Tizen Device API Specifications"/>
+            <spec_url>https://developer.tizen.org/help/topic/org.tizen.web.device.apireference/tizen/messaging.html</spec_url>
+            <spec_statement>TBD</spec_statement>
+          </spec>
+        </specs>
+      </testcase>
+      <testcase purpose="Check if method updateMessages of MessageStorage (MMS) exists" type="compliance" onload_delay="90" status="approved" component="TizenAPI/Communication/Messaging" execution_type="auto" priority="P1" id="MessageStorage_mms_updateMessages_exist">
+        <description>
+          <test_script_entry>/opt/tct-messaging-mms-tizen-tests/messaging/MessageStorage_mms_updateMessages_exist.html</test_script_entry>
+        </description>
+        <specs>
+          <spec>
+            <spec_assertion interface="MessageStorage" element_type="method" element_name="updateMessages" specification="Messaging" section="Communication" category="Tizen Device API Specifications"/>
+            <spec_url>https://developer.tizen.org/help/topic/org.tizen.web.device.apireference/tizen/messaging.html</spec_url>
+            <spec_statement>TBD</spec_statement>
+          </spec>
+        </specs>
+      </testcase>
+      <testcase purpose="Check type conversions for messages argument of MessageStorage.updateMessages method (mms)" type="compliance" onload_delay="90" status="approved" component="TizenAPI/Communication/Messaging" execution_type="auto" priority="P2" id="MessageStorage_mms_updateMessages_messages_TypeMismatch">
+        <description>
+          <test_script_entry>/opt/tct-messaging-mms-tizen-tests/messaging/MessageStorage_mms_updateMessages_messages_TypeMismatch.html</test_script_entry>
+        </description>
+        <specs>
+          <spec>
+            <spec_assertion interface="MessageStorage" element_type="method" element_name="updateMessages" specification="Messaging" section="Communication" category="Tizen Device API Specifications"/>
+            <spec_url>https://developer.tizen.org/help/topic/org.tizen.web.device.apireference/tizen/messaging.html</spec_url>
+            <spec_statement>TBD</spec_statement>
+          </spec>
+        </specs>
+      </testcase>
+      <testcase purpose="Check with missing non-optional argument - MessageStorage.updateMessages (mms)" type="compliance" onload_delay="90" status="approved" component="TizenAPI/Communication/Messaging" execution_type="auto" priority="P1" id="MessageStorage_mms_updateMessages_missarg">
+        <description>
+          <test_script_entry>/opt/tct-messaging-mms-tizen-tests/messaging/MessageStorage_mms_updateMessages_missarg.html</test_script_entry>
+        </description>
+        <specs>
+          <spec>
+            <spec_assertion interface="MessageStorage" element_type="method" element_name="updateMessages" specification="Messaging" section="Communication" category="Tizen Device API Specifications"/>
+            <spec_url>https://developer.tizen.org/help/topic/org.tizen.web.device.apireference/tizen/messaging.html</spec_url>
+            <spec_statement>TBD</spec_statement>
+          </spec>
+        </specs>
+      </testcase>
+      <testcase purpose="Check type conversions for successCallback argument of MessageStorage.updateMessages method (mms)" type="compliance" onload_delay="90" status="approved" component="TizenAPI/Communication/Messaging" execution_type="auto" priority="P2" id="MessageStorage_mms_updateMessages_successCallback_TypeMismatch">
+        <description>
+          <test_script_entry>/opt/tct-messaging-mms-tizen-tests/messaging/MessageStorage_mms_updateMessages_successCallback_TypeMismatch.html</test_script_entry>
+        </description>
+        <specs>
+          <spec>
+            <spec_assertion interface="MessageStorage" element_type="method" element_name="updateMessages" specification="Messaging" section="Communication" category="Tizen Device API Specifications"/>
+            <spec_url>https://developer.tizen.org/help/topic/org.tizen.web.device.apireference/tizen/messaging.html</spec_url>
+            <spec_statement>TBD</spec_statement>
+          </spec>
+        </specs>
+      </testcase>
+      <testcase purpose="Check if MessageStorage.updateMessages method throws exception when successCallback is invalid (mms)" type="compliance" onload_delay="90" status="approved" component="TizenAPI/Communication/Messaging" execution_type="auto" priority="P2" id="MessageStorage_mms_updateMessages_successCallback_invalid_cb">
+        <description>
+          <test_script_entry>/opt/tct-messaging-mms-tizen-tests/messaging/MessageStorage_mms_updateMessages_successCallback_invalid_cb.html</test_script_entry>
+        </description>
+        <specs>
+          <spec>
+            <spec_assertion interface="MessageStorage" element_type="method" element_name="updateMessages" specification="Messaging" section="Communication" category="Tizen Device API Specifications"/>
+            <spec_url>https://developer.tizen.org/help/topic/org.tizen.web.device.apireference/tizen/messaging.html</spec_url>
+            <spec_statement>TBD</spec_statement>
+          </spec>
+        </specs>
+      </testcase>
+      <testcase purpose="Check if MessageStorage.updateMessages method works properly without errorCallback argument (mms)" type="compliance" onload_delay="90" status="approved" component="TizenAPI/Communication/Messaging" execution_type="auto" priority="P1" id="MessageStorage_mms_updateMessages_without_errorCallback">
+        <description>
+          <test_script_entry>/opt/tct-messaging-mms-tizen-tests/messaging/MessageStorage_mms_updateMessages_without_errorCallback.html</test_script_entry>
+        </description>
+        <specs>
+          <spec>
+            <spec_assertion interface="MessageStorage" element_type="method" element_name="updateMessages" specification="Messaging" section="Communication" category="Tizen Device API Specifications"/>
+            <spec_url>https://developer.tizen.org/help/topic/org.tizen.web.device.apireference/tizen/messaging.html</spec_url>
+            <spec_statement>TBD</spec_statement>
+          </spec>
+        </specs>
+      </testcase>
+      <testcase purpose="Check if MessageStorage.updateMessages method works properly without successCallback argument (mms)" type="compliance" onload_delay="90" status="approved" component="TizenAPI/Communication/Messaging" execution_type="auto" priority="P1" id="MessageStorage_mms_updateMessages_without_successCallback">
+        <description>
+          <test_script_entry>/opt/tct-messaging-mms-tizen-tests/messaging/MessageStorage_mms_updateMessages_without_successCallback.html</test_script_entry>
+        </description>
+        <specs>
+          <spec>
+            <spec_assertion interface="MessageStorage" element_type="method" element_name="updateMessages" specification="Messaging" section="Communication" category="Tizen Device API Specifications"/>
+            <spec_url>https://developer.tizen.org/help/topic/org.tizen.web.device.apireference/tizen/messaging.html</spec_url>
+            <spec_statement>TBD</spec_statement>
+          </spec>
+        </specs>
+      </testcase>
+      <testcase purpose="Check if MessageStorage.removeConversations works properly for mms" type="compliance" onload_delay="90" status="approved" component="TizenAPI/Communication/Messaging" execution_type="auto" priority="P2" id="MessageStorage_removeConversations_formms">
+        <description>
+          <test_script_entry>/opt/tct-messaging-mms-tizen-tests/messaging/MessageStorage_removeConversations_formms.html</test_script_entry>
+        </description>
+        <specs>
+          <spec>
+            <spec_assertion interface="MessageStorage" element_type="method" element_name="removeConversations" specification="Messaging" section="Communication" category="Tizen Device API Specifications"/>
+            <spec_url>https://developer.tizen.org/help/topic/org.tizen.web.device.apireference/tizen/messaging.html</spec_url>
+            <spec_statement>TBD</spec_statement>
+          </spec>
+        </specs>
+      </testcase>
+      <testcase purpose="Check if attribute attachments of Message (MMS) exists, has type Array" type="compliance" status="approved" component="TizenAPI/Communication/Messaging" execution_type="auto" priority="P1" id="Message_mms_attachments_attribute">
+        <description>
+          <test_script_entry>/opt/tct-messaging-mms-tizen-tests/messaging/Message_mms_attachments_attribute.html</test_script_entry>
+        </description>
+        <specs>
+          <spec>
+            <spec_assertion interface="Message" element_type="attribute" element_name="attachments" specification="Messaging" section="Communication" category="Tizen Device API Specifications"/>
+            <spec_url>https://developer.tizen.org/help/topic/org.tizen.web.device.apireference/tizen/messaging.html</spec_url>
+            <spec_statement>TBD</spec_statement>
+          </spec>
+        </specs>
+      </testcase>
+      <testcase purpose="Check if attribute body of Message (MMS) exists, has type MessageBody" type="compliance" status="approved" component="TizenAPI/Communication/Messaging" execution_type="auto" priority="P1" id="Message_mms_body_attribute">
+        <description>
+          <test_script_entry>/opt/tct-messaging-mms-tizen-tests/messaging/Message_mms_body_attribute.html</test_script_entry>
+        </description>
+        <specs>
+          <spec>
+            <spec_assertion interface="Message" element_type="attribute" element_name="body" specification="Messaging" section="Communication" category="Tizen Device API Specifications"/>
+            <spec_url>https://developer.tizen.org/help/topic/org.tizen.web.device.apireference/tizen/messaging.html</spec_url>
+            <spec_statement>TBD</spec_statement>
+          </spec>
+        </specs>
+      </testcase>
+      <testcase purpose="Check if Message's constructor works properly (email)" type="compliance" status="approved" component="TizenAPI/Communication/Messaging" execution_type="auto" priority="P1" id="Message_mms_constructor">
+        <description>
+          <test_script_entry>/opt/tct-messaging-mms-tizen-tests/messaging/Message_mms_constructor.html</test_script_entry>
+        </description>
+        <specs>
+          <spec>
+            <spec_assertion interface="Message" element_type="constructor" element_name="constructor" specification="Messaging" section="Communication" category="Tizen Device API Specifications"/>
+            <spec_url>https://developer.tizen.org/help/topic/org.tizen.web.device.apireference/tizen/messaging.html</spec_url>
+            <spec_statement>TBD</spec_statement>
+          </spec>
+        </specs>
+      </testcase>
+      <testcase purpose="Check if Message's constructor works properly with function (mms)" type="compliance" status="approved" component="TizenAPI/Communication/Messaging" execution_type="auto" priority="P1" id="Message_mms_constructor_messageInitDict_function">
+        <description>
+          <test_script_entry>/opt/tct-messaging-mms-tizen-tests/messaging/Message_mms_constructor_messageInitDict_function.html</test_script_entry>
+        </description>
+        <specs>
+          <spec>
+            <spec_assertion interface="Message" element_type="constructor" element_name="constructor" specification="Messaging" section="Communication" category="Tizen Device API Specifications"/>
+            <spec_url>https://developer.tizen.org/help/topic/org.tizen.web.device.apireference/tizen/messaging.html</spec_url>
+            <spec_statement>TBD</spec_statement>
+          </spec>
+        </specs>
+      </testcase>
+      <testcase purpose="Check if Message's constructor works properly with empty object (mms)" type="compliance" status="approved" component="TizenAPI/Communication/Messaging" execution_type="auto" priority="P1" id="Message_mms_constructor_messageInitDict_object">
+        <description>
+          <test_script_entry>/opt/tct-messaging-mms-tizen-tests/messaging/Message_mms_constructor_messageInitDict_object.html</test_script_entry>
+        </description>
+        <specs>
+          <spec>
+            <spec_assertion interface="Message" element_type="constructor" element_name="constructor" specification="Messaging" section="Communication" category="Tizen Device API Specifications"/>
+            <spec_url>https://developer.tizen.org/help/topic/org.tizen.web.device.apireference/tizen/messaging.html</spec_url>
+            <spec_statement>TBD</spec_statement>
+          </spec>
+        </specs>
+      </testcase>
+      <testcase purpose="Check if Message's constructor works properly with minimum arguments (mms)" type="compliance" status="approved" component="TizenAPI/Communication/Messaging" execution_type="auto" priority="P1" id="Message_mms_constructor_minargs">
+        <description>
+          <test_script_entry>/opt/tct-messaging-mms-tizen-tests/messaging/Message_mms_constructor_minargs.html</test_script_entry>
+        </description>
+        <specs>
+          <spec>
+            <spec_assertion interface="Message" element_type="constructor" element_name="constructor" specification="Messaging" section="Communication" category="Tizen Device API Specifications"/>
+            <spec_url>https://developer.tizen.org/help/topic/org.tizen.web.device.apireference/tizen/messaging.html</spec_url>
+            <spec_statement>TBD</spec_statement>
+          </spec>
+        </specs>
+      </testcase>
+      <testcase purpose="Check if attribute conversationId of Message (MMS) exists, has type MessageConvId and is readonly" type="compliance" onload_delay="90" status="approved" component="TizenAPI/Communication/Messaging" execution_type="auto" priority="P1" id="Message_mms_conversationId_attribute">
+        <description>
+          <test_script_entry>/opt/tct-messaging-mms-tizen-tests/messaging/Message_mms_conversationId_attribute.html</test_script_entry>
+        </description>
+        <specs>
+          <spec>
+            <spec_assertion interface="Message" element_type="attribute" element_name="conversationId" specification="Messaging" section="Communication" category="Tizen Device API Specifications"/>
+            <spec_url>https://developer.tizen.org/help/topic/org.tizen.web.device.apireference/tizen/messaging.html</spec_url>
+            <spec_statement>TBD</spec_statement>
+          </spec>
+        </specs>
+      </testcase>
+      <testcase purpose="Check if instance of interface Message (MMS) can be extended with new property" type="compliance" status="approved" component="TizenAPI/Communication/Messaging" execution_type="auto" priority="P3" id="Message_mms_extend">
+        <description>
+          <test_script_entry>/opt/tct-messaging-mms-tizen-tests/messaging/Message_mms_extend.html</test_script_entry>
+        </description>
+        <specs>
+          <spec>
+            <spec_assertion interface="Message" usage="true" specification="Messaging" section="Communication" category="Tizen Device API Specifications"/>
+            <spec_url>https://developer.tizen.org/help/topic/org.tizen.web.device.apireference/tizen/messaging.html</spec_url>
+            <spec_statement>TBD</spec_statement>
+          </spec>
+        </specs>
+      </testcase>
+      <testcase purpose="Check if attribute folderId of Message (MMS) exists, has type MessageFolderId and is readonly" type="compliance" onload_delay="90" status="approved" component="TizenAPI/Communication/Messaging" execution_type="auto" priority="P1" id="Message_mms_folderId_attribute">
+        <description>
+          <test_script_entry>/opt/tct-messaging-mms-tizen-tests/messaging/Message_mms_folderId_attribute.html</test_script_entry>
+        </description>
+        <specs>
+          <spec>
+            <spec_assertion interface="Message" element_type="attribute" element_name="folderId" specification="Messaging" section="Communication" category="Tizen Device API Specifications"/>
+            <spec_url>https://developer.tizen.org/help/topic/org.tizen.web.device.apireference/tizen/messaging.html</spec_url>
+            <spec_statement>TBD</spec_statement>
+          </spec>
+        </specs>
+      </testcase>
+      <testcase purpose="Check if attribute from of Message (MMS) exists, has type DOMString and is readonly" type="compliance" onload_delay="90" status="approved" component="TizenAPI/Communication/Messaging" execution_type="auto" priority="P1" id="Message_mms_from_attribute">
+        <description>
+          <test_script_entry>/opt/tct-messaging-mms-tizen-tests/messaging/Message_mms_from_attribute.html</test_script_entry>
+        </description>
+        <specs>
+          <spec>
+            <spec_assertion interface="Message" element_type="attribute" element_name="from" specification="Messaging" section="Communication" category="Tizen Device API Specifications"/>
+            <spec_url>https://developer.tizen.org/help/topic/org.tizen.web.device.apireference/tizen/messaging.html</spec_url>
+            <spec_statement>TBD</spec_statement>
+          </spec>
+        </specs>
+      </testcase>
+      <testcase purpose="Check if attribute hasAttachment of Message (MMS) exists, has type Boolean and is readonly" type="compliance" status="approved" component="TizenAPI/Communication/Messaging" execution_type="auto" priority="P1" id="Message_mms_hasAttachment_attribute">
+        <description>
+          <test_script_entry>/opt/tct-messaging-mms-tizen-tests/messaging/Message_mms_hasAttachment_attribute.html</test_script_entry>
+        </description>
+        <specs>
+          <spec>
+            <spec_assertion interface="Message" element_type="attribute" element_name="hasAttachment" specification="Messaging" section="Communication" category="Tizen Device API Specifications"/>
+            <spec_url>https://developer.tizen.org/help/topic/org.tizen.web.device.apireference/tizen/messaging.html</spec_url>
+            <spec_statement>TBD</spec_statement>
+          </spec>
+        </specs>
+      </testcase>
+      <testcase purpose="Check if attribute id of Message (MMS) exists, has type MessageId and is readonly" type="compliance" onload_delay="90" status="approved" component="TizenAPI/Communication/Messaging" execution_type="auto" priority="P1" id="Message_mms_id_attribute">
+        <description>
+          <test_script_entry>/opt/tct-messaging-mms-tizen-tests/messaging/Message_mms_id_attribute.html</test_script_entry>
+        </description>
+        <specs>
+          <spec>
+            <spec_assertion interface="Message" element_type="attribute" element_name="id" specification="Messaging" section="Communication" category="Tizen Device API Specifications"/>
+            <spec_url>https://developer.tizen.org/help/topic/org.tizen.web.device.apireference/tizen/messaging.html</spec_url>
+            <spec_statement>TBD</spec_statement>
+          </spec>
+        </specs>
+      </testcase>
+      <testcase purpose="Check if attribute inResponseTo of Message (MMS) exists, has type MessageId" type="compliance" status="approved" component="TizenAPI/Communication/Messaging" execution_type="auto" priority="P1" id="Message_mms_inResponseTo_attribute">
+        <description>
+          <test_script_entry>/opt/tct-messaging-mms-tizen-tests/messaging/Message_mms_inResponseTo_attribute.html</test_script_entry>
+        </description>
+        <specs>
+          <spec>
+            <spec_assertion interface="Message" element_type="attribute" element_name="inResponseTo" specification="Messaging" section="Communication" category="Tizen Device API Specifications"/>
+            <spec_url>https://developer.tizen.org/help/topic/org.tizen.web.device.apireference/tizen/messaging.html</spec_url>
+            <spec_statement>TBD</spec_statement>
+          </spec>
+        </specs>
+      </testcase>
+      <testcase purpose="Check if attribute isRead of Message (MMS) exists, has type Boolean" type="compliance" status="approved" component="TizenAPI/Communication/Messaging" execution_type="auto" priority="P1" id="Message_mms_isRead_attribute">
+        <description>
+          <test_script_entry>/opt/tct-messaging-mms-tizen-tests/messaging/Message_mms_isRead_attribute.html</test_script_entry>
+        </description>
+        <specs>
+          <spec>
+            <spec_assertion interface="Message" element_type="attribute" element_name="isRead" specification="Messaging" section="Communication" category="Tizen Device API Specifications"/>
+            <spec_url>https://developer.tizen.org/help/topic/org.tizen.web.device.apireference/tizen/messaging.html</spec_url>
+            <spec_statement>TBD</spec_statement>
+          </spec>
+        </specs>
+      </testcase>
+      <testcase purpose="Check if attribute messageStatus of Message (MMS) exists, has type DOMString and is readonly" type="compliance" status="approved" component="TizenAPI/Communication/Messaging" execution_type="auto" priority="P1" id="Message_mms_messageStatus_attribute">
+        <description>
+          <test_script_entry>/opt/tct-messaging-mms-tizen-tests/messaging/Message_mms_messageStatus_attribute.html</test_script_entry>
+        </description>
+        <specs>
+          <spec>
+            <spec_assertion interface="Message" element_type="attribute" element_name="messageStatus" specification="Messaging" section="Communication" category="Tizen Device API Specifications"/>
+            <spec_url>https://developer.tizen.org/help/topic/org.tizen.web.device.apireference/tizen/messaging.html</spec_url>
+            <spec_statement>TBD</spec_statement>
+          </spec>
+        </specs>
+      </testcase>
+      <testcase purpose="Check if attribute subject of Message (MMS) exists, has type DOMString" type="compliance" status="approved" component="TizenAPI/Communication/Messaging" execution_type="auto" priority="P1" id="Message_mms_subject_attribute">
+        <description>
+          <test_script_entry>/opt/tct-messaging-mms-tizen-tests/messaging/Message_mms_subject_attribute.html</test_script_entry>
+        </description>
+        <specs>
+          <spec>
+            <spec_assertion interface="Message" element_type="attribute" element_name="subject" specification="Messaging" section="Communication" category="Tizen Device API Specifications"/>
+            <spec_url>https://developer.tizen.org/help/topic/org.tizen.web.device.apireference/tizen/messaging.html</spec_url>
+            <spec_statement>TBD</spec_statement>
+          </spec>
+        </specs>
+      </testcase>
+      <testcase purpose="Check if attribute timestamp of Message (MMS) exists, has type Date and is readonly" type="compliance" onload_delay="90" status="approved" component="TizenAPI/Communication/Messaging" execution_type="auto" priority="P1" id="Message_mms_timestamp_attribute">
+        <description>
+          <test_script_entry>/opt/tct-messaging-mms-tizen-tests/messaging/Message_mms_timestamp_attribute.html</test_script_entry>
+        </description>
+        <specs>
+          <spec>
+            <spec_assertion interface="Message" element_type="attribute" element_name="timestamp" specification="Messaging" section="Communication" category="Tizen Device API Specifications"/>
+            <spec_url>https://developer.tizen.org/help/topic/org.tizen.web.device.apireference/tizen/messaging.html</spec_url>
+            <spec_statement>TBD</spec_statement>
+          </spec>
+        </specs>
+      </testcase>
+      <testcase purpose="Check if attribute to of Message (MMS) exists, has type Array" type="compliance" status="approved" component="TizenAPI/Communication/Messaging" execution_type="auto" priority="P1" id="Message_mms_to_attribute">
+        <description>
+          <test_script_entry>/opt/tct-messaging-mms-tizen-tests/messaging/Message_mms_to_attribute.html</test_script_entry>
+        </description>
+        <specs>
+          <spec>
+            <spec_assertion interface="Message" element_type="attribute" element_name="to" specification="Messaging" section="Communication" category="Tizen Device API Specifications"/>
+            <spec_url>https://developer.tizen.org/help/topic/org.tizen.web.device.apireference/tizen/messaging.html</spec_url>
+            <spec_statement>TBD</spec_statement>
+          </spec>
+        </specs>
+      </testcase>
+      <testcase purpose="Check if attribute type of Message (MMS) exists, has type MessageServiceTag and is readonly" type="compliance" status="approved" component="TizenAPI/Communication/Messaging" execution_type="auto" priority="P1" id="Message_mms_type_attribute">
+        <description>
+          <test_script_entry>/opt/tct-messaging-mms-tizen-tests/messaging/Message_mms_type_attribute.html</test_script_entry>
+        </description>
+        <specs>
+          <spec>
+            <spec_assertion interface="Message" element_type="attribute" element_name="type" specification="Messaging" section="Communication" category="Tizen Device API Specifications"/>
+            <spec_url>https://developer.tizen.org/help/topic/org.tizen.web.device.apireference/tizen/messaging.html</spec_url>
+            <spec_statement>TBD</spec_statement>
+          </spec>
+        </specs>
+      </testcase>
+      <testcase purpose="Check if MessagesChangeCallback.messagesadded works properly - mms, filter" type="compliance" onload_delay="90" status="approved" component="TizenAPI/Communication/Messaging" execution_type="auto" priority="P1" id="MessagesChangeCallback_mms_messagesadded_with_filter">
+        <description>
+          <test_script_entry>/opt/tct-messaging-mms-tizen-tests/messaging/MessagesChangeCallback_mms_messagesadded_with_filter.html</test_script_entry>
+        </description>
+        <specs>
+          <spec>
+            <spec_assertion interface="MessagesChangeCallback" element_type="method" element_name="messagesadded" specification="Messaging" section="Communication" category="Tizen Device API Specifications"/>
+            <spec_url>https://developer.tizen.org/help/topic/org.tizen.web.device.apireference/tizen/messaging.html</spec_url>
+            <spec_statement>TBD</spec_statement>
+          </spec>
+        </specs>
+      </testcase>
+      <testcase purpose="Check if MessagesChangeCallback.messagesadded works properly - mms, no filter" type="compliance" onload_delay="90" status="approved" component="TizenAPI/Communication/Messaging" execution_type="auto" priority="P1" id="MessagesChangeCallback_mms_messagesadded_without_filter">
+        <description>
+          <test_script_entry>/opt/tct-messaging-mms-tizen-tests/messaging/MessagesChangeCallback_mms_messagesadded_without_filter.html</test_script_entry>
+        </description>
+        <specs>
+          <spec>
+            <spec_assertion interface="MessagesChangeCallback" element_type="method" element_name="messagesadded" specification="Messaging" section="Communication" category="Tizen Device API Specifications"/>
+            <spec_url>https://developer.tizen.org/help/topic/org.tizen.web.device.apireference/tizen/messaging.html</spec_url>
+            <spec_statement>TBD</spec_statement>
+          </spec>
+        </specs>
+      </testcase>
+      <testcase purpose="Check if MessagesChangeCallback.messagesremoved works properly - mms, filter" type="compliance" onload_delay="90" status="approved" component="TizenAPI/Communication/Messaging" execution_type="auto" priority="P1" id="MessagesChangeCallback_mms_messagesremoved_with_filter">
+        <description>
+          <test_script_entry>/opt/tct-messaging-mms-tizen-tests/messaging/MessagesChangeCallback_mms_messagesremoved_with_filter.html</test_script_entry>
+        </description>
+        <specs>
+          <spec>
+            <spec_assertion interface="MessagesChangeCallback" element_type="method" element_name="messagesremoved" specification="Messaging" section="Communication" category="Tizen Device API Specifications"/>
+            <spec_url>https://developer.tizen.org/help/topic/org.tizen.web.device.apireference/tizen/messaging.html</spec_url>
+            <spec_statement>TBD</spec_statement>
+          </spec>
+        </specs>
+      </testcase>
+      <testcase purpose="Check if MessagesChangeCallback.messagesremoved works properly - mms, no filter" type="compliance" onload_delay="90" status="approved" component="TizenAPI/Communication/Messaging" execution_type="auto" priority="P1" id="MessagesChangeCallback_mms_messagesremoved_without_filter">
+        <description>
+          <test_script_entry>/opt/tct-messaging-mms-tizen-tests/messaging/MessagesChangeCallback_mms_messagesremoved_without_filter.html</test_script_entry>
+        </description>
+        <specs>
+          <spec>
+            <spec_assertion interface="MessagesChangeCallback" element_type="method" element_name="messagesremoved" specification="Messaging" section="Communication" category="Tizen Device API Specifications"/>
+            <spec_url>https://developer.tizen.org/help/topic/org.tizen.web.device.apireference/tizen/messaging.html</spec_url>
+            <spec_statement>TBD</spec_statement>
+          </spec>
+        </specs>
+      </testcase>
+      <testcase purpose="Check if MessagesChangeCallback.messagesupdated works properly - mms, filter" type="compliance" onload_delay="90" status="approved" component="TizenAPI/Communication/Messaging" execution_type="auto" priority="P1" id="MessagesChangeCallback_mms_messagesupdated_with_filter">
+        <description>
+          <test_script_entry>/opt/tct-messaging-mms-tizen-tests/messaging/MessagesChangeCallback_mms_messagesupdated_with_filter.html</test_script_entry>
+        </description>
+        <specs>
+          <spec>
+            <spec_assertion interface="MessagesChangeCallback" element_type="method" element_name="messagesupdated" specification="Messaging" section="Communication" category="Tizen Device API Specifications"/>
+            <spec_url>https://developer.tizen.org/help/topic/org.tizen.web.device.apireference/tizen/messaging.html</spec_url>
+            <spec_statement>TBD</spec_statement>
+          </spec>
+        </specs>
+      </testcase>
+      <testcase purpose="Check if MessagesChangeCallback.messagesupdated works properly - mms, no filter" type="compliance" onload_delay="90" status="approved" component="TizenAPI/Communication/Messaging" execution_type="auto" priority="P1" id="MessagesChangeCallback_mms_messagesupdated_without_filter">
+        <description>
+          <test_script_entry>/opt/tct-messaging-mms-tizen-tests/messaging/MessagesChangeCallback_mms_messagesupdated_without_filter.html</test_script_entry>
+        </description>
+        <specs>
+          <spec>
+            <spec_assertion interface="MessagesChangeCallback" element_type="method" element_name="messagesupdated" specification="Messaging" section="Communication" category="Tizen Device API Specifications"/>
+            <spec_url>https://developer.tizen.org/help/topic/org.tizen.web.device.apireference/tizen/messaging.html</spec_url>
+            <spec_statement>TBD</spec_statement>
+          </spec>
+        </specs>
+      </testcase>
+      <testcase purpose="Check if MessageService.getMessageServices method works properly without errorCallback argument (mms)" type="compliance" onload_delay="90" status="approved" component="TizenAPI/Communication/Messaging" execution_type="auto" priority="P2" id="Messaging_getMessageServices_without_error_callback">
+        <description>
+          <test_script_entry>/opt/tct-messaging-mms-tizen-tests/messaging/Messaging_getMessageServices_without_error_callback.html</test_script_entry>
+        </description>
+        <specs>
+          <spec>
+            <spec_assertion interface="Messaging" element_type="method" element_name="getMessageServices" specification="Messaging" section="Communication" category="Tizen Device API Specifications"/>
+            <spec_url>https://developer.tizen.org/help/topic/org.tizen.web.device.apireference/tizen/messaging.html</spec_url>
+            <spec_statement>TBD</spec_statement>
+          </spec>
+        </specs>
+      </testcase>
+      <testcase purpose="Check if type attribute exists in MessageService" type="compliance" onload_delay="90" status="approved" component="TizenAPI/Communication/Messaging" execution_type="auto" priority="P1" id="Messaging_mms_getMessageServices">
+        <description>
+          <test_script_entry>/opt/tct-messaging-mms-tizen-tests/messaging/Messaging_mms_getMessageServices.html</test_script_entry>
+        </description>
+        <specs>
+          <spec>
+            <spec_assertion interface="Messaging" element_type="method" element_name="getMessageServices" specification="Messaging" section="Communication" category="Tizen Device API Specifications"/>
+            <spec_url>https://developer.tizen.org/help/topic/org.tizen.web.device.apireference/tizen/messaging.html</spec_url>
+            <spec_statement>TBD</spec_statement>
+          </spec>
+        </specs>
+      </testcase>
+      <testcase purpose="Check type conversions for errorCallback argument of MessageService.getMessageServices method (mms)" type="compliance" onload_delay="90" status="approved" component="TizenAPI/Communication/Messaging" execution_type="auto" priority="P2" id="Messaging_mms_getMessageServices_errorCallback_TypeMismatch">
+        <description>
+          <test_script_entry>/opt/tct-messaging-mms-tizen-tests/messaging/Messaging_mms_getMessageServices_errorCallback_TypeMismatch.html</test_script_entry>
+        </description>
+        <specs>
+          <spec>
+            <spec_assertion interface="Messaging" element_type="method" element_name="getMessageServices" specification="Messaging" section="Communication" category="Tizen Device API Specifications"/>
+            <spec_url>https://developer.tizen.org/help/topic/org.tizen.web.device.apireference/tizen/messaging.html</spec_url>
+            <spec_statement>TBD</spec_statement>
+          </spec>
+        </specs>
+      </testcase>
+      <testcase purpose="Check if MessageService.getMessageServices method throws exception when errorCallback is invalid (mms)" type="compliance" onload_delay="90" status="approved" component="TizenAPI/Communication/Messaging" execution_type="auto" priority="P2" id="Messaging_mms_getMessageServices_errorCallback_invalid_cb">
+        <description>
+          <test_script_entry>/opt/tct-messaging-mms-tizen-tests/messaging/Messaging_mms_getMessageServices_errorCallback_invalid_cb.html</test_script_entry>
+        </description>
+        <specs>
+          <spec>
+            <spec_assertion interface="Messaging" element_type="method" element_name="getMessageServices" specification="Messaging" section="Communication" category="Tizen Device API Specifications"/>
+            <spec_url>https://developer.tizen.org/help/topic/org.tizen.web.device.apireference/tizen/messaging.html</spec_url>
+            <spec_statement>TBD</spec_statement>
+          </spec>
+        </specs>
+      </testcase>
+      <testcase purpose="Check type conversions for successCallback argument of MessageService.getMessageServices method (mms)" type="compliance" onload_delay="90" status="approved" component="TizenAPI/Communication/Messaging" execution_type="auto" priority="P2" id="Messaging_mms_getMessageServices_successCallback_TypeMismatch">
+        <description>
+          <test_script_entry>/opt/tct-messaging-mms-tizen-tests/messaging/Messaging_mms_getMessageServices_successCallback_TypeMismatch.html</test_script_entry>
+        </description>
+        <specs>
+          <spec>
+            <spec_assertion interface="Messaging" element_type="method" element_name="getMessageServices" specification="Messaging" section="Communication" category="Tizen Device API Specifications"/>
+            <spec_url>https://developer.tizen.org/help/topic/org.tizen.web.device.apireference/tizen/messaging.html</spec_url>
+            <spec_statement>TBD</spec_statement>
+          </spec>
+        </specs>
+      </testcase>
+      <testcase purpose="Check if MessageService.getMessageServices method throws exception when successCallback is invalid (mms)" type="compliance" onload_delay="90" status="approved" component="TizenAPI/Communication/Messaging" execution_type="auto" priority="P2" id="Messaging_mms_getMessageServices_successCallback_invalid_cb">
+        <description>
+          <test_script_entry>/opt/tct-messaging-mms-tizen-tests/messaging/Messaging_mms_getMessageServices_successCallback_invalid_cb.html</test_script_entry>
+        </description>
+        <specs>
+          <spec>
+            <spec_assertion interface="Messaging" element_type="method" element_name="getMessageServices" specification="Messaging" section="Communication" category="Tizen Device API Specifications"/>
+            <spec_url>https://developer.tizen.org/help/topic/org.tizen.web.device.apireference/tizen/messaging.html</spec_url>
+            <spec_statement>TBD</spec_statement>
+          </spec>
+        </specs>
+      </testcase>
+      <testcase purpose="Check if MessageService.getMessageServices method works properly with errorCallback argument (mms)" type="compliance" onload_delay="90" status="approved" component="TizenAPI/Communication/Messaging" execution_type="auto" priority="P1" id="Messaging_mms_getMessageServices_with_errorCallback">
+        <description>
+          <test_script_entry>/opt/tct-messaging-mms-tizen-tests/messaging/Messaging_mms_getMessageServices_with_errorCallback.html</test_script_entry>
+        </description>
+        <specs>
+          <spec>
+            <spec_assertion interface="Messaging" element_type="method" element_name="getMessageServices" specification="Messaging" section="Communication" category="Tizen Device API Specifications"/>
+            <spec_url>https://developer.tizen.org/help/topic/org.tizen.web.device.apireference/tizen/messaging.html</spec_url>
+            <spec_statement>TBD</spec_statement>
+          </spec>
+        </specs>
+      </testcase>
+      <testcase purpose="Checks various message attributes upon message (mms) creation" type="compliance" status="approved" component="TizenAPI/Communication/Messaging" execution_type="auto" priority="P1" id="MessageInit_MessageInit_valid_argument_mms">
+        <description>
+          <test_script_entry>/opt/tct-messaging-mms-tizen-tests/messaging/MessageInit_MessageInit_valid_argument_mms.html</test_script_entry>
+        </description>
+        <specs>
+          <spec>
+            <spec_assertion interface="Message" element_type="constructor" element_name="constructor" specification="Messaging" section="Communication" category="Tizen Device API Specifications"/>
+            <spec_url>https://developer.tizen.org/help/topic/org.tizen.web.device.apireference/tizen/messaging.html</spec_url>
+            <spec_statement>TBD</spec_statement>
+          </spec>
+        </specs>
+      </testcase>
+      <testcase purpose="Check if attribute type of MessageService (MMS) exists, has type MessageServiceTag and is readonly" type="compliance" onload_delay="90" status="approved" component="TizenAPI/Communication/Messaging" execution_type="auto" priority="P1" id="MessageService_mms_type_attribute">
+        <description>
+          <test_script_entry>/opt/tct-messaging-mms-tizen-tests/messaging/MessageService_mms_type_attribute.html</test_script_entry>
+        </description>
+        <specs>
+          <spec>
+            <spec_assertion interface="MessageService" element_type="attribute" element_name="type" specification="Messaging" section="Communication" category="Tizen Device API Specifications"/>
+            <spec_url>https://developer.tizen.org/help/topic/org.tizen.web.device.apireference/tizen/messaging.html</spec_url>
+            <spec_statement>TBD</spec_statement>
+          </spec>
+        </specs>
+      </testcase>
+      <testcase purpose="Check type conversions for conversationsChangeCallback argument of MessageStorage.addConversationsChangeListener method (mms)" type="compliance" onload_delay="90" status="approved" component="TizenAPI/Communication/Messaging" execution_type="auto" priority="P2" id="MessageStorage_mms_addConversationsChangeListener_conversationsChangeCallback_TypeMismatch">
+        <description>
+          <test_script_entry>/opt/tct-messaging-mms-tizen-tests/messaging/MessageStorage_mms_addConversationsChangeListener_conversationsChangeCallback_TypeMismatch.html</test_script_entry>
+        </description>
+        <specs>
+          <spec>
+            <spec_assertion interface="MessageStorage" element_type="method" element_name="addConversationsChangeListener" specification="Messaging" section="Communication" category="Tizen Device API Specifications"/>
+            <spec_url>https://developer.tizen.org/help/topic/org.tizen.web.device.apireference/tizen/messaging.html</spec_url>
+            <spec_statement>TBD</spec_statement>
+          </spec>
+        </specs>
+      </testcase>
+    </set>
+  </suite>
+</test_definition>

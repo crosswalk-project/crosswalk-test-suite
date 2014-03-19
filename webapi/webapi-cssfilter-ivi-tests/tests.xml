@@ -1,0 +1,210 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-stylesheet type="text/xsl" href="./testcase.xsl" ?>
+<test_definition>
+  <suite launcher="xwalk" name="webapi-cssfilter-ivi-tests" category="WebAPI/IVI">
+    <set name="cssfilter">
+      <testcase component="WebAPI/IVI/CSS" execution_type="manual" id="filter-contrast-001" purpose="Check if css contrast filter will leave unchanged when contrast is 100%.">
+        <description>
+          <steps>
+            <step order="1">
+              <step_desc>Click "Run" button.</step_desc>
+              <expected>The test passes if there is a green box.</expected>
+            </step>
+          </steps>
+          <test_script_entry test_script_expected_result="0">/opt/webapi-cssfilter-ivi-tests/cssfilter/csswg/filter-contrast-001.html</test_script_entry>
+        </description>
+      </testcase>
+      <testcase component="WebAPI/IVI/CSS" execution_type="manual" id="filter-contrast-002" purpose="Check if css contrast filter will leave a comletely gray image when contrast is 0%.">
+        <description>
+          <steps>
+            <step order="1">
+              <step_desc>Click "Run" button.</step_desc>
+              <expected>The test passes if there is a gray box and no red.</expected>
+            </step>
+          </steps>
+          <test_script_entry test_script_expected_result="0">/opt/webapi-cssfilter-ivi-tests/cssfilter/csswg/filter-contrast-002.html</test_script_entry>
+        </description>
+      </testcase>
+      <testcase component="WebAPI/IVI/CSS" execution_type="manual" id="filter-contrast-003" purpose="Check if css contrast filter will leave a black image when contrast is 200%.">
+        <description>
+          <steps>
+            <step order="1">
+              <step_desc>Click "Run" button.</step_desc>
+              <expected>The test passes if there is a black box and no dark red.</expected>
+            </step>
+          </steps>
+          <test_script_entry test_script_expected_result="0">/opt/webapi-cssfilter-ivi-tests/cssfilter/csswg/filter-contrast-003.html</test_script_entry>
+        </description>
+      </testcase>
+      <testcase component="WebAPI/IVI/CSS" execution_type="manual" id="filter-invert-001-test" purpose="Check if css invert filter has no affect on the div when invert is 0.">
+        <description>
+          <steps>
+            <step order="1">
+              <step_desc>Click "Run" button.</step_desc>
+              <expected>The test passes if there is a yellow rectangle.</expected>
+            </step>
+          </steps>
+          <test_script_entry test_script_expected_result="0">/opt/webapi-cssfilter-ivi-tests/cssfilter/csswg/filter-invert-001-test.html</test_script_entry>
+        </description>
+      </testcase>
+      <testcase component="WebAPI/IVI/CSS" execution_type="manual" id="filter-invert-002-test" purpose="Check if css invert filter works when invert is 100%.">
+        <description>
+          <steps>
+            <step order="1">
+              <step_desc>Click "Run" button.</step_desc>
+              <expected>The test passes if there is a blue rectangle.</expected>
+            </step>
+          </steps>
+          <test_script_entry test_script_expected_result="0">/opt/webapi-cssfilter-ivi-tests/cssfilter/csswg/filter-invert-002-test.html</test_script_entry>
+        </description>
+      </testcase>
+      <testcase component="WebAPI/IVI/CSS" execution_type="manual" id="filter-saturate-001-test" purpose="Check if css saturate filter works when saturate is 0.">
+        <description>
+          <steps>
+            <step order="1">
+              <step_desc>Click "Run" button.</step_desc>
+              <expected>The test passes if there is a gray rectangle.</expected>
+            </step>
+          </steps>
+          <test_script_entry test_script_expected_result="0">/opt/webapi-cssfilter-ivi-tests/cssfilter/csswg/filter-saturate-001-test.html</test_script_entry>
+        </description>
+      </testcase>
+      <testcase component="WebAPI/IVI/CSS" execution_type="manual" id="filters-grayscale-001-test" purpose="Check if css grayscale filter works when grayscale is 1.">
+        <description>
+          <steps>
+            <step order="1">
+              <step_desc>Click "Run" button.</step_desc>
+              <expected>The test passes if there is a black olive colored rectangle.</expected>
+            </step>
+          </steps>
+          <test_script_entry test_script_expected_result="0">/opt/webapi-cssfilter-ivi-tests/cssfilter/csswg/filters-grayscale-001-test.html</test_script_entry>
+        </description>
+      </testcase>
+      <testcase component="WebAPI/IVI/CSS" execution_type="manual" id="filters-opacity-001-test" purpose="Check if css opacity filter works when opacity is 1.">
+        <description>
+          <steps>
+            <step order="1">
+              <step_desc>Click "Run" button.</step_desc>
+              <expected>The test passes if there is a green colored rectangle.</expected>
+            </step>
+          </steps>
+          <test_script_entry test_script_expected_result="0">/opt/webapi-cssfilter-ivi-tests/cssfilter/csswg/filters-opacity-001-test.html</test_script_entry>
+        </description>
+      </testcase>
+      <testcase component="WebAPI/IVI/CSS" execution_type="manual" id="filters-opacity-002-test" purpose="Check if css opacity filter works when opacity is 0.">
+        <description>
+          <steps>
+            <step order="1">
+              <step_desc>Click "Run" button.</step_desc>
+              <expected>The test passes if there is a green colored rectangle.</expected>
+            </step>
+          </steps>
+          <test_script_entry test_script_expected_result="0">/opt/webapi-cssfilter-ivi-tests/cssfilter/csswg/filters-opacity-002-test.html</test_script_entry>
+        </description>
+      </testcase>
+      <testcase component="WebAPI/IVI/CSS" execution_type="manual" id="filters-sepia-001-test" purpose="Check if css sepia filter works when sepia is 1.">
+        <description>
+          <steps>
+            <step order="1">
+              <step_desc>Click "Run" button.</step_desc>
+              <expected>The test passes if there is a field drab colored rectangle.</expected>
+            </step>
+          </steps>
+          <test_script_entry test_script_expected_result="0">/opt/webapi-cssfilter-ivi-tests/cssfilter/csswg/filters-sepia-001-test.html</test_script_entry>
+        </description>
+      </testcase>
+      <testcase component="WebAPI/IVI/CSS" execution_type="manual" id="filters-test-brightness-002" purpose="Check if css brightness filter works when brightness is 0.">
+        <description>
+          <steps>
+            <step order="1">
+              <step_desc>Click "Run" button.</step_desc>
+              <expected>The test passes if there is a black rectangle and no red.</expected>
+            </step>
+          </steps>
+          <test_script_entry test_script_expected_result="0">/opt/webapi-cssfilter-ivi-tests/cssfilter/csswg/filters-test-brightness-002.html</test_script_entry>
+        </description>
+      </testcase>
+      <testcase component="WebAPI/IVI/CSS" execution_type="manual" id="filters-test-brightness-003" purpose="Check if css brightness filter not works when brightness is not set.">
+        <description>
+          <steps>
+            <step order="1">
+              <step_desc>Click "Run" button.</step_desc>
+              <expected>The test passes if there is a green rectangle.</expected>
+            </step>
+          </steps>
+          <test_script_entry test_script_expected_result="0">/opt/webapi-cssfilter-ivi-tests/cssfilter/csswg/filters-test-brightness-003.html</test_script_entry>
+        </description>
+      </testcase>
+      <testcase component="WebAPI/IVI/CSS" execution_type="manual" id="filter_custom_shaders" purpose="Check if css custom filter works well.">
+        <description>
+          <steps>
+            <step order="1">
+              <step_desc>Click "Run" button.</step_desc>
+              <expected>The test passes if there is no square displayed.</expected>
+            </step>
+          </steps>
+          <test_script_entry test_script_expected_result="0">/opt/webapi-cssfilter-ivi-tests/cssfilter/filter_custom_shaders.html</test_script_entry>
+        </description>
+      </testcase>
+      <testcase component="WebAPI/IVI/CSS" execution_type="manual" id="position-fixed-001" purpose="Check if fixed positioned elements do not impact later siblings.">
+        <description>
+          <steps>
+            <step order="1">
+              <step_desc>Click "Run" button.</step_desc>
+              <expected>Test passes if there is a filled green square and no red.</expected>
+            </step>
+          </steps>
+          <test_script_entry test_script_expected_result="0">/opt/webapi-cssfilter-ivi-tests/cssfilter/csswg/position-fixed-001.xht</test_script_entry>
+        </description>
+      </testcase>
+      <testcase component="WebAPI/IVI/CSS" execution_type="manual" id="position-fixed-002" purpose="Check if fixed positioned elements can be sized and positioned using 'top', 'right', 'bottom' and 'left' properties.">
+        <description>
+          <steps>
+            <step order="1">
+              <step_desc>Click "Run" button.</step_desc>
+              <expected>Test passes if there is a large orange rectangle that covers the bottom-right corner of a blue square and continues to the right side and the bottom of the page.</expected>
+            </step>
+          </steps>
+          <test_script_entry test_script_expected_result="0">/opt/webapi-cssfilter-ivi-tests/cssfilter/csswg/position-fixed-002.xht</test_script_entry>
+        </description>
+      </testcase>
+      <testcase component="WebAPI/IVI/CSS" execution_type="manual" id="position-fixed-003" purpose="Check if elements that are set to 'position: fixed' are fixed with respect to the viewport.">
+        <description>
+          <steps>
+            <step order="1">
+              <step_desc>Click "Run" button.</step_desc>
+              <expected>Test passes if the blue stripe does not move when the page is scrolled.</expected>
+            </step>
+          </steps>
+          <test_script_entry test_script_expected_result="0">/opt/webapi-cssfilter-ivi-tests/cssfilter/csswg/position-fixed-003.xht</test_script_entry>
+        </description>
+      </testcase>
+      <testcase component="WebAPI/IVI/CSS" execution_type="manual" id="position-fixed-007" purpose="Check if float is computed to 'none' when 'position: fixed' is applied.">
+        <description>
+          <steps>
+            <step order="1">
+              <step_desc>Click "Run" button.</step_desc>
+              <expected>Test passes if there is a black square in the upper-left corner of the page.</expected>
+            </step>
+          </steps>
+          <test_script_entry test_script_expected_result="0">/opt/webapi-cssfilter-ivi-tests/cssfilter/csswg/position-fixed-007.xht</test_script_entry>
+        </description>
+      </testcase>
+      <testcase component="WebAPI/IVI/CSS" execution_type="manual" id="filter_position_sticky" purpose="Check if position sticky element works well.">
+        <description>
+          <steps>
+            <step order="1">
+              <step_desc>Click "Run" button.</step_desc>
+              <expected>The page displayed.</expected>
+            </step>
+            <step order="2">
+              <step_desc>Scroll down this page as much as you can.</step_desc>
+              <expected>Passes if only the green line "A" and the word "Finished" displayed.</expected>
+            </step>
+          </steps>
+          <test_script_entry test_script_expected_result="0">/opt/webapi-cssfilter-ivi-tests/cssfilter/filter_position_sticky.html</test_script_entry>
+        </description>
+      </testcase>
+    </set>
+  </suite>
+</test_definition>

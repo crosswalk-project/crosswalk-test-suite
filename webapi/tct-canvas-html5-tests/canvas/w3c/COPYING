@@ -1,0 +1,92 @@
+This test suite comes from
+https://github.com/w3c/web-platform-tests
+with modification:
+
+security.drawImage.canvas.html
+
+  -<img src="http://www2.w3c-test.org/html/tests/approved/images/yellow.png" id="yellow.png" class="resource">
+  +<img src="http://127.0.0.1:8081/opt/tct-canvas-html5-tests/canvas/w3c/yellow.png" id="yellow.png" class="resource">
+
+security.drawImage.image.html
+
+  -<img src="http://www2.w3c-test.org/html/tests/approved/images/yellow.png" id="yellow.png" class="resource">
+  +<img src="http://127.0.0.1:8081/opt/tct-canvas-html5-tests/canvas/w3c/yellow.png" id="yellow.png" class="resource">
+
+security.pattern.canvas.fillStyle.html
+
+  -<img src="http://www2.w3c-test.org/html/tests/approved/images/yellow.png" id="yellow.png" class="resource">
+  +<img src="http://127.0.0.1:8081/opt/tct-canvas-html5-tests/canvas/w3c/yellow.png" id="yellow.png" class="resource">
+
+security.pattern.canvas.strokeStyle.html
+
+  -<img src="http://www2.w3c-test.org/html/tests/approved/images/yellow.png" id="yellow.png" class="resource">
+  +<img src="http://127.0.0.1:8081/opt/tct-canvas-html5-tests/canvas/w3c/yellow.png" id="yellow.png" class="resource">
+
+security.reset.html
+
+  -<img src="http://www2.w3c-test.org/html/tests/approved/images/yellow.png" id="yellow.png" class="resource">
+  +<img src="http://127.0.0.1:8081/opt/tct-canvas-html5-tests/canvas/w3c/yellow.png" id="yellow.png" class="resource">
+
+2d.line.width.basic.html
+2d.line.width.transformed.html
+2d.path.arcTo.shape.curve1.html
+2d.path.arcTo.shape.curve2.html
+2d.text.draw.align.center.html
+2d.text.draw.align.end.ltr.html
+2d.text.draw.align.end.rtl.html
+2d.text.draw.align.left.html
+2d.text.draw.align.right.html
+2d.text.draw.align.start.ltr.html
+2d.text.draw.align.start.rtl.html
+
+  + <script src="../../resources/testharness.js"></script>
+  + <script src="../../resources/testharnessreport.js"></script>
+
+  + var t = async_test(document.title, {timeout: 3000});
+
+  + <div id="log"></div>
+
+  + setTimeout(function(){
+  +     t.step(function() {
+  +         assert_true(window._testStatus[0] == "pass", window._testStatus[1]);
+  +     });
+  +     t.done();
+  + }, 1500);
+
+canvas_colorsandstyles_addcolorstop_001.htm
+
+  + <script src="../../resources/testharness.js"></script>
+  + <script src="../../resources/testharnessreport.js"></script>
+  + var t = async_test(document.title, {timeout:5000});
+
+  + t.step(function() {
+  +     assert_true(false, "SYNTAX_ERR exception should be thrown if color cannot be parsed");
+  + });
+
+  + t.step(function() {
+  +     assert_true(e.code == DOMException.SYNTAX_ERR, "SYNTAX_ERR exception should be thrown");
+  + });
+  + t.done();
+
+  + <div id="log"></div>
+
+canvas_complexshapes_ispointInpath_001.htm
+
+  + <script src="../../resources/testharness.js"></script>
+  + <script src="../../resources/testharnessreport.js"></script>
+  + var t = async_test(document.title, {timeout:5000});
+
+  + t.step(function() {
+  +     assert_true(ctx.isPointInPath(125, 75) && !ctx.isPointInPath(25, 25), "Ensure that the coordinates passed to isPointInPath are unaffected by the current transformation matrix");
+  + });
+  + t.done();
+
+  + <div id="log"></div>
+
+These tests are copyright by W3C and/or the author listed in the test
+file. The tests are dual-licensed under the W3C Test Suite License:
+http://www.w3.org/Consortium/Legal/2008/04-testsuite-license
+and the BSD 3-clause License:
+http://www.w3.org/Consortium/Legal/2008/03-bsd-license
+under W3C's test suite licensing policy:
+http://www.w3.org/Consortium/Legal/2008/04-testsuite-copyright

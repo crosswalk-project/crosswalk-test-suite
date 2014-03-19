@@ -1,0 +1,872 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-stylesheet type="text/xsl"  href="./testcase.xsl"?>
+<test_definition>
+  <suite name="tct-touchevent-w3c-tests" launcher="xwalk" category="W3C/HTML5 APIs">
+    <set name="TouchEvent">
+      <testcase purpose="Check if document.createtouch method is defined." type="compliance" status="approved" component="WebAPI/Device/Touch Events version 1 (Partial)" execution_type="auto" priority="P0" id="document_createTouch_exist">
+        <description>
+          <test_script_entry>/opt/tct-touchevent-w3c-tests/touchevent/document_createTouch_exist.html</test_script_entry>
+        </description>
+        <specs>
+          <spec>
+            <spec_assertion element_type="method" element_name="createTouch" interface="Document" specification="Touch Events version 1 (Partial)" section="Device" category="Tizen W3C API Specifications"/>
+            <spec_url>http://www.w3.org/TR/2013/WD-touch-events-20130124/#extensions-to-the-document-interface</spec_url>
+            <spec_statement/>
+          </spec>
+        </specs>
+      </testcase>
+      <testcase purpose="Check if document.createtouchlist method is defined." type="compliance" status="approved" component="WebAPI/Device/Touch Events version 1 (Partial)" execution_type="auto" priority="P0" id="document_createTouchList_exist">
+        <description>
+          <test_script_entry>/opt/tct-touchevent-w3c-tests/touchevent/document_createTouchList_exist.html</test_script_entry>
+        </description>
+        <specs>
+          <spec>
+            <spec_assertion element_type="method" element_name="createTouchList" interface="Document" specification="Touch Events version 1 (Partial)" section="Device" category="Tizen W3C API Specifications"/>
+            <spec_url>http://www.w3.org/TR/2013/WD-touch-events-20130124/#extensions-to-the-document-interface</spec_url>
+            <spec_statement/>
+          </spec>
+        </specs>
+      </testcase>
+      <testcase purpose="Check if touchEvent.altKey attribute is defined." type="compliance" status="approved" component="WebAPI/Device/Touch Events version 1 (Partial)" execution_type="manual" priority="P1" id="TouchEvent_altKey_exist">
+        <description>
+          <steps>
+            <step order="1">
+              <step_desc>Use WRT to visit the "touchEvent_touchEvent_altKey" Check if touchEvent.altKey attribute is defined.</step_desc>
+              <expected>Pass</expected>
+            </step>
+          </steps>
+          <test_script_entry>/opt/tct-touchevent-w3c-tests/touchevent/TouchEvent_altKey_exist.html</test_script_entry>
+        </description>
+        <specs>
+          <spec>
+            <spec_assertion element_type="attribute" element_name="altKey" interface="TouchEvent" specification="Touch Events version 1 (Partial)" section="Device" category="Tizen W3C API Specifications"/>
+            <spec_url>http://www.w3.org/TR/2013/WD-touch-events-20130124/#touchevent-interface</spec_url>
+            <spec_statement/>
+          </spec>
+        </specs>
+      </testcase>
+      <testcase purpose="Check if touchEvent.ctrlKey attribute is defined." type="compliance" status="approved" component="WebAPI/Device/Touch Events version 1 (Partial)" execution_type="manual" priority="P1" id="TouchEvent_ctrlKey_exist">
+        <description>
+          <steps>
+            <step order="1">
+              <step_desc>Use WRT to visit the "touchEvent_touchEvent_ctrlKey" Check if touchEvent.ctrlKey attribute is defined.</step_desc>
+              <expected>Pass</expected>
+            </step>
+          </steps>
+          <test_script_entry>/opt/tct-touchevent-w3c-tests/touchevent/TouchEvent_ctrlKey_exist.html</test_script_entry>
+        </description>
+        <specs>
+          <spec>
+            <spec_assertion element_type="attribute" element_name="ctrlKey" interface="TouchEvent" specification="Touch Events version 1 (Partial)" section="Device" category="Tizen W3C API Specifications"/>
+            <spec_url>http://www.w3.org/TR/2013/WD-touch-events-20130124/#touchevent-interface</spec_url>
+            <spec_statement/>
+          </spec>
+        </specs>
+      </testcase>
+      <testcase purpose="Check if touchEvent.metaKey attribute is defined." type="compliance" status="approved" component="WebAPI/Device/Touch Events version 1 (Partial)" execution_type="manual" priority="P1" id="TouchEvent_metaKey_exist">
+        <description>
+          <steps>
+            <step order="1">
+              <step_desc>Use WRT to visit the "touchEvent_touchEvent_metaKey" Check if touchEvent.metaKey attribute is defined.</step_desc>
+              <expected>Pass</expected>
+            </step>
+          </steps>
+          <test_script_entry>/opt/tct-touchevent-w3c-tests/touchevent/TouchEvent_metaKey_exist.html</test_script_entry>
+        </description>
+        <specs>
+          <spec>
+            <spec_assertion element_type="attribute" element_name="metaKey" interface="TouchEvent" specification="Touch Events version 1 (Partial)" section="Device" category="Tizen W3C API Specifications"/>
+            <spec_url>http://www.w3.org/TR/2013/WD-touch-events-20130124/#touchevent-interface</spec_url>
+            <spec_statement/>
+          </spec>
+        </specs>
+      </testcase>
+      <testcase purpose="Check if touchEvent.shiftKey attribute is defined." type="compliance" status="approved" component="WebAPI/Device/Touch Events version 1 (Partial)" execution_type="manual" priority="P1" id="TouchEvent_shiftKey_exist">
+        <description>
+          <steps>
+            <step order="1">
+              <step_desc>Use WRT to visit the "touchEvent_touchEvent_shiftKey" Check if touchEvent.shiftKey attribute is defined.</step_desc>
+              <expected>Pass</expected>
+            </step>
+          </steps>
+          <test_script_entry>/opt/tct-touchevent-w3c-tests/touchevent/TouchEvent_shiftKey_exist.html</test_script_entry>
+        </description>
+        <specs>
+          <spec>
+            <spec_assertion element_type="attribute" element_name="shiftKey" interface="TouchEvent" specification="Touch Events version 1 (Partial)" section="Device" category="Tizen W3C API Specifications"/>
+            <spec_url>http://www.w3.org/TR/2013/WD-touch-events-20130124/#touchevent-interface</spec_url>
+            <spec_statement/>
+          </spec>
+        </specs>
+      </testcase>
+      <testcase purpose="Check if the Touch.identifier attribute exists" type="compliance" status="approved" component="WebAPI/Device/Touch Events version 1 (Partial)" execution_type="auto" priority="P1" id="Touch_identifier_exist">
+        <description>
+          <test_script_entry>/opt/tct-touchevent-w3c-tests/touchevent/Touch_attributes_exist.html?total_num=8&amp;amp;locator_key=id&amp;amp;value=1</test_script_entry>
+        </description>
+        <specs>
+          <spec>
+            <spec_assertion element_type="attribute" element_name="identifier" interface="Touch" specification="Touch Events version 1 (Partial)" section="Device" category="Tizen W3C API Specifications"/>
+            <spec_url>http://www.w3.org/TR/2013/WD-touch-events-20130124/#idl-def-Touch</spec_url>
+            <spec_statement/>
+          </spec>
+        </specs>
+      </testcase>
+      <testcase purpose="Check if the Touch.target attribute exists" type="compliance" status="approved" component="WebAPI/Device/Touch Events version 1 (Partial)" execution_type="auto" priority="P1" id="Touch_target_exist">
+        <description>
+          <test_script_entry>/opt/tct-touchevent-w3c-tests/touchevent/Touch_attributes_exist.html?total_num=8&amp;amp;locator_key=id&amp;amp;value=2</test_script_entry>
+        </description>
+        <specs>
+          <spec>
+            <spec_assertion element_type="attribute" element_name="target" interface="Touch" specification="Touch Events version 1 (Partial)" section="Device" category="Tizen W3C API Specifications"/>
+            <spec_url>http://www.w3.org/TR/2013/WD-touch-events-20130124/#idl-def-Touch</spec_url>
+            <spec_statement/>
+          </spec>
+        </specs>
+      </testcase>
+      <testcase purpose="Check if the Touch.screenX attribute exists" type="compliance" status="approved" component="WebAPI/Device/Touch Events version 1 (Partial)" execution_type="auto" priority="P1" id="Touch_screenX_exist">
+        <description>
+          <test_script_entry>/opt/tct-touchevent-w3c-tests/touchevent/Touch_attributes_exist.html?total_num=8&amp;amp;locator_key=id&amp;amp;value=3</test_script_entry>
+        </description>
+        <specs>
+          <spec>
+            <spec_assertion element_type="attribute" element_name="screenX" interface="Touch" specification="Touch Events version 1 (Partial)" section="Device" category="Tizen W3C API Specifications"/>
+            <spec_url>http://www.w3.org/TR/2013/WD-touch-events-20130124/#idl-def-Touch</spec_url>
+            <spec_statement/>
+          </spec>
+        </specs>
+      </testcase>
+      <testcase purpose="Check if the Touch.screenY attribute exists" type="compliance" status="approved" component="WebAPI/Device/Touch Events version 1 (Partial)" execution_type="auto" priority="P1" id="Touch_screenY_exist">
+        <description>
+          <test_script_entry>/opt/tct-touchevent-w3c-tests/touchevent/Touch_attributes_exist.html?total_num=8&amp;amp;locator_key=id&amp;amp;value=4</test_script_entry>
+        </description>
+        <specs>
+          <spec>
+            <spec_assertion element_type="attribute" element_name="screenY" interface="Touch" specification="Touch Events version 1 (Partial)" section="Device" category="Tizen W3C API Specifications"/>
+            <spec_url>http://www.w3.org/TR/2013/WD-touch-events-20130124/#idl-def-Touch</spec_url>
+            <spec_statement/>
+          </spec>
+        </specs>
+      </testcase>
+      <testcase purpose="Check if the Touch.clientX attribute exists" type="compliance" status="approved" component="WebAPI/Device/Touch Events version 1 (Partial)" execution_type="auto" priority="P1" id="Touch_clientX_exist">
+        <description>
+          <test_script_entry>/opt/tct-touchevent-w3c-tests/touchevent/Touch_attributes_exist.html?total_num=8&amp;amp;locator_key=id&amp;amp;value=5</test_script_entry>
+        </description>
+        <specs>
+          <spec>
+            <spec_assertion element_type="attribute" element_name="clientX" interface="Touch" specification="Touch Events version 1 (Partial)" section="Device" category="Tizen W3C API Specifications"/>
+            <spec_url>http://www.w3.org/TR/2013/WD-touch-events-20130124/#idl-def-Touch</spec_url>
+            <spec_statement/>
+          </spec>
+        </specs>
+      </testcase>
+      <testcase purpose="Check if the Touch.clientY attribute exists" type="compliance" status="approved" component="WebAPI/Device/Touch Events version 1 (Partial)" execution_type="auto" priority="P1" id="Touch_clientY_exist">
+        <description>
+          <test_script_entry>/opt/tct-touchevent-w3c-tests/touchevent/Touch_attributes_exist.html?total_num=8&amp;amp;locator_key=id&amp;amp;value=6</test_script_entry>
+        </description>
+        <specs>
+          <spec>
+            <spec_assertion element_type="attribute" element_name="clientY" interface="Touch" specification="Touch Events version 1 (Partial)" section="Device" category="Tizen W3C API Specifications"/>
+            <spec_url>http://www.w3.org/TR/2013/WD-touch-events-20130124/#idl-def-Touch</spec_url>
+            <spec_statement/>
+          </spec>
+        </specs>
+      </testcase>
+      <testcase purpose="Check if the Touch.pageX attribute exists" type="compliance" status="approved" component="WebAPI/Device/Touch Events version 1 (Partial)" execution_type="auto" priority="P1" id="Touch_pageX_exist">
+        <description>
+          <test_script_entry>/opt/tct-touchevent-w3c-tests/touchevent/Touch_attributes_exist.html?total_num=8&amp;amp;locator_key=id&amp;amp;value=7</test_script_entry>
+        </description>
+        <specs>
+          <spec>
+            <spec_assertion element_type="attribute" element_name="pageX" interface="Touch" specification="Touch Events version 1 (Partial)" section="Device" category="Tizen W3C API Specifications"/>
+            <spec_url>http://www.w3.org/TR/2013/WD-touch-events-20130124/#idl-def-Touch</spec_url>
+            <spec_statement/>
+          </spec>
+        </specs>
+      </testcase>
+      <testcase purpose="Check if the Touch.pageY attribute exists" type="compliance" status="approved" component="WebAPI/Device/Touch Events version 1 (Partial)" execution_type="auto" priority="P1" id="Touch_pageY_exist">
+        <description>
+          <test_script_entry>/opt/tct-touchevent-w3c-tests/touchevent/Touch_attributes_exist.html?total_num=8&amp;amp;locator_key=id&amp;amp;value=8</test_script_entry>
+        </description>
+        <specs>
+          <spec>
+            <spec_assertion element_type="attribute" element_name="pageY" interface="Touch" specification="Touch Events version 1 (Partial)" section="Device" category="Tizen W3C API Specifications"/>
+            <spec_url>http://www.w3.org/TR/2013/WD-touch-events-20130124/#idl-def-Touch</spec_url>
+            <spec_statement/>
+          </spec>
+        </specs>
+      </testcase>
+      <testcase purpose="Check if the TouchList.item method exists" type="compliance" status="approved" component="WebAPI/Device/Touch Events version 1 (Partial)" execution_type="auto" priority="P1" id="TouchList_item_exist">
+        <description>
+          <test_script_entry>/opt/tct-touchevent-w3c-tests/touchevent/TouchList_attributes_exist.html?total_num=2&amp;amp;locator_key=id&amp;amp;value=1</test_script_entry>
+        </description>
+        <specs>
+          <spec>
+            <spec_assertion element_type="method" element_name="item" interface="TouchList" specification="Touch Events version 1 (Partial)" section="Device" category="Tizen W3C API Specifications"/>
+            <spec_url>http://www.w3.org/TR/2013/WD-touch-events-20130124/#idl-def-TouchList</spec_url>
+            <spec_statement/>
+          </spec>
+        </specs>
+      </testcase>
+      <testcase purpose="Check if the TouchList.length attribute exists" type="compliance" status="approved" component="WebAPI/Device/Touch Events version 1 (Partial)" execution_type="auto" priority="P1" id="TouchList_length_exist">
+        <description>
+          <test_script_entry>/opt/tct-touchevent-w3c-tests/touchevent/TouchList_attributes_exist.html?total_num=2&amp;amp;locator_key=id&amp;amp;value=2</test_script_entry>
+        </description>
+        <specs>
+          <spec>
+            <spec_assertion element_type="attribute" element_name="length" interface="TouchList" specification="Touch Events version 1 (Partial)" section="Device" category="Tizen W3C API Specifications"/>
+            <spec_url>http://www.w3.org/TR/2013/WD-touch-events-20130124/#idl-def-TouchList</spec_url>
+            <spec_statement/>
+          </spec>
+        </specs>
+      </testcase>
+      <testcase purpose="Check if touchstart event is dispatched before any mouse event during multiple touches" type="compliance" status="approved" component="WebAPI/Device/Touch Events version 1 (Partial)" execution_type="manual" priority="P3" id="multitouch_mousedown_event">
+        <description>
+          <pre_condition>Test device supports touch.</pre_condition>
+          <post_condition/>
+          <steps>
+            <step order="1">
+              <step_desc>Open the test page: multi-touch.html</step_desc>
+              <expected>Page opened with 2 touch boxes</expected>
+            </step>
+            <step order="2">
+              <step_desc>Follow the instructions on the page</step_desc>
+              <expected>Pass</expected>
+            </step>
+          </steps>
+          <test_script_entry test_script_expected_result="0">/opt/tct-touchevent-w3c-tests/touchevent/w3c/multi-touch.html?total_num=6&amp;amp;locator_key=id&amp;amp;value=1</test_script_entry>
+        </description>
+        <specs>
+          <spec>
+            <spec_assertion usage="true" interface="TouchEvent" specification="Touch Events version 1 (Partial)" section="Device" category="Tizen W3C API Specifications"/>
+            <spec_url>http://www.w3.org/TR/2013/WD-touch-events-20130124/#touchevent-interface</spec_url>
+            <spec_statement>If the user agent dispatches both touch events and mouse events in response to a single user action, then the touchstart event type must be dispatched before any mouse event types for that action.</spec_statement>
+          </spec>
+        </specs>
+      </testcase>
+      <testcase purpose="Check if touchend event is received during multiple touches" type="compliance" status="approved" component="WebAPI/Device/Touch Events version 1 (Partial)" execution_type="manual" priority="P3" id="multitouch_touchend_event">
+        <description>
+          <pre_condition>Test device supports touch.</pre_condition>
+          <post_condition/>
+          <steps>
+            <step order="1">
+              <step_desc>Open the test page: multi-touch.html</step_desc>
+              <expected>Page opened with 2 touch boxes</expected>
+            </step>
+            <step order="2">
+              <step_desc>Follow the instructions on the page</step_desc>
+              <expected>Pass</expected>
+            </step>
+          </steps>
+          <test_script_entry test_script_expected_result="0">/opt/tct-touchevent-w3c-tests/touchevent/w3c/multi-touch.html?total_num=6&amp;amp;locator_key=id&amp;amp;value=2</test_script_entry>
+        </description>
+        <specs>
+          <spec>
+            <spec_assertion usage="true" interface="TouchEvent" specification="Touch Events version 1 (Partial)" section="Device" category="Tizen W3C API Specifications"/>
+            <spec_url>http://www.w3.org/TR/2013/WD-touch-events-20130124/#touchevent-interface</spec_url>
+            <spec_statement>This interface defines the touchstart, touchend, touchmove, and touchcancel event types. TouchEvent objects are immutable; after one is created and initialized, its attributes must not change.</spec_statement>
+          </spec>
+        </specs>
+      </testcase>
+      <testcase purpose="Check if multiple touch objects are detected with touchend event during multiple touches" type="compliance" status="ready" component="WebAPI/Device/Touch Events version 1 (Partial)" execution_type="manual" priority="P3" id="multitouch_touchend_multiple_touch_objects">
+        <description>
+          <pre_condition>Test device supports touch.</pre_condition>
+          <post_condition/>
+          <steps>
+            <step order="1">
+              <step_desc>Open the test page: multi-touch.html</step_desc>
+              <expected>Page opened with 2 touch boxes</expected>
+            </step>
+            <step order="2">
+              <step_desc>Follow the instructions on the page</step_desc>
+              <expected>Pass</expected>
+            </step>
+          </steps>
+          <test_script_entry test_script_expected_result="0">/opt/tct-touchevent-w3c-tests/touchevent/w3c/multi-touch.html?total_num=6&amp;amp;locator_key=id&amp;amp;value=3</test_script_entry>
+        </description>
+        <specs>
+          <spec>
+            <spec_assertion usage="true" interface="TouchEvent" specification="Touch Events version 1 (Partial)" section="Device" category="Tizen W3C API Specifications"/>
+            <spec_url>http://www.w3.org/TR/2013/WD-touch-events-20130124/#touchevent-interface</spec_url>
+            <spec_statement>This interface defines the touchstart, touchend, touchmove, and touchcancel event types. TouchEvent objects are immutable; after one is created and initialized, its attributes must not change.</spec_statement>
+          </spec>
+        </specs>
+      </testcase>
+      <testcase purpose="Check if touchmove event is received during multiple touches" type="compliance" status="approved" component="WebAPI/Device/Touch Events version 1 (Partial)" execution_type="manual" priority="P3" id="multitouch_touchmove_event">
+        <description>
+          <pre_condition>Test device supports touch.</pre_condition>
+          <post_condition/>
+          <steps>
+            <step order="1">
+              <step_desc>Open the test page: multi-touch.html</step_desc>
+              <expected>Page opened with 2 touch boxes</expected>
+            </step>
+            <step order="2">
+              <step_desc>Follow the instructions on the page</step_desc>
+              <expected>Pass</expected>
+            </step>
+          </steps>
+          <test_script_entry test_script_expected_result="0">/opt/tct-touchevent-w3c-tests/touchevent/w3c/multi-touch.html?total_num=6&amp;amp;locator_key=id&amp;amp;value=4</test_script_entry>
+        </description>
+        <specs>
+          <spec>
+            <spec_assertion usage="true" interface="TouchEvent" specification="Touch Events version 1 (Partial)" section="Device" category="Tizen W3C API Specifications"/>
+            <spec_url>http://www.w3.org/TR/2013/WD-touch-events-20130124/#touchevent-interface</spec_url>
+            <spec_statement>This interface defines the touchstart, touchend, touchmove, and touchcancel event types. TouchEvent objects are immutable; after one is created and initialized, its attributes must not change.</spec_statement>
+          </spec>
+        </specs>
+      </testcase>
+      <testcase purpose="Check if touchstart event is received during multiple touches" type="compliance" status="ready" component="WebAPI/Device/Touch Events version 1 (Partial)" execution_type="manual" priority="P3" id="multitouch_touchstart_event">
+        <description>
+          <pre_condition>Test device supports touch.</pre_condition>
+          <post_condition/>
+          <steps>
+            <step order="1">
+              <step_desc>Open the test page: multi-touch.html</step_desc>
+              <expected>Page opened with 2 touch boxes</expected>
+            </step>
+            <step order="2">
+              <step_desc>Follow the instructions on the page</step_desc>
+              <expected>Pass</expected>
+            </step>
+          </steps>
+          <test_script_entry test_script_expected_result="0">/opt/tct-touchevent-w3c-tests/touchevent/w3c/multi-touch.html?total_num=6&amp;amp;locator_key=id&amp;amp;value=5</test_script_entry>
+        </description>
+        <specs>
+          <spec>
+            <spec_assertion usage="true" interface="TouchEvent" specification="Touch Events version 1 (Partial)" section="Device" category="Tizen W3C API Specifications"/>
+            <spec_url>http://www.w3.org/TR/2013/WD-touch-events-20130124/#touchevent-interface</spec_url>
+            <spec_statement>This interface defines the touchstart, touchend, touchmove, and touchcancel event types. TouchEvent objects are immutable; after one is created and initialized, its attributes must not change.</spec_statement>
+          </spec>
+        </specs>
+      </testcase>
+      <testcase purpose="Check if multiple touch objects are detected with touchstart event during multiple touches" type="compliance" status="ready" component="WebAPI/Device/Touch Events version 1 (Partial)" execution_type="manual" priority="P3" id="multitouch_touchstart_multiple_touch_objects">
+        <description>
+          <pre_condition>Test device supports touch.</pre_condition>
+          <post_condition/>
+          <steps>
+            <step order="1">
+              <step_desc>Open the test page: multi-touch.html</step_desc>
+              <expected>Page opened with 2 touch boxes</expected>
+            </step>
+            <step order="2">
+              <step_desc>Follow the instructions on the page</step_desc>
+              <expected>Pass</expected>
+            </step>
+          </steps>
+          <test_script_entry test_script_expected_result="0">/opt/tct-touchevent-w3c-tests/touchevent/w3c/multi-touch.html?total_num=6&amp;amp;locator_key=id&amp;amp;value=6</test_script_entry>
+        </description>
+        <specs>
+          <spec>
+            <spec_assertion usage="true" interface="TouchEvent" specification="Touch Events version 1 (Partial)" section="Device" category="Tizen W3C API Specifications"/>
+            <spec_url>http://www.w3.org/TR/2013/WD-touch-events-20130124/#touchevent-interface</spec_url>
+            <spec_statement>This interface defines the touchstart, touchend, touchmove, and touchcancel event types. TouchEvent objects are immutable; after one is created and initialized, its attributes must not change.</spec_statement>
+          </spec>
+        </specs>
+      </testcase>
+      <testcase purpose="Check if touchstart event is dispatched before any mouse event" type="compliance" status="ready" component="WebAPI/Device/Touch Events version 1 (Partial)" execution_type="manual" priority="P3" id="singletouch_mousedown_event">
+        <description>
+          <pre_condition>Test device supports touch.</pre_condition>
+          <post_condition/>
+          <steps>
+            <step order="1">
+              <step_desc>Open the test page: single-touch.html</step_desc>
+              <expected>Page opened with 2 touch boxes</expected>
+            </step>
+            <step order="2">
+              <step_desc>Follow the instructions on the page</step_desc>
+              <expected>Pass</expected>
+            </step>
+          </steps>
+          <test_script_entry test_script_expected_result="0">/opt/tct-touchevent-w3c-tests/touchevent/w3c/single-touch.html?total_num=19&amp;amp;locator_key=id&amp;amp;value=1</test_script_entry>
+        </description>
+        <specs>
+          <spec>
+            <spec_assertion usage="true" interface="TouchEvent" specification="Touch Events version 1 (Partial)" section="Device" category="Tizen W3C API Specifications"/>
+            <spec_url>http://www.w3.org/TR/2013/WD-touch-events-20130124/#touchevent-interface</spec_url>
+            <spec_statement>If the user agent dispatches both touch events and mouse events in response to a single user action, then the touchstart event type must be dispatched before any mouse event types for that action.</spec_statement>
+          </spec>
+        </specs>
+      </testcase>
+      <testcase purpose="Check if touchend event is received" type="compliance" status="ready" component="WebAPI/Device/Touch Events version 1 (Partial)" execution_type="manual" priority="P3" id="singletouch_touchend_event">
+        <description>
+          <pre_condition>Test device supports touch.</pre_condition>
+          <post_condition/>
+          <steps>
+            <step order="1">
+              <step_desc>Open the test page: single-touch.html</step_desc>
+              <expected>Page opened with 2 touch boxes</expected>
+            </step>
+            <step order="2">
+              <step_desc>Follow the instructions on the page</step_desc>
+              <expected>Pass</expected>
+            </step>
+          </steps>
+          <test_script_entry test_script_expected_result="0">/opt/tct-touchevent-w3c-tests/touchevent/w3c/single-touch.html?total_num=19&amp;amp;locator_key=id&amp;amp;value=3</test_script_entry>
+        </description>
+        <specs>
+          <spec>
+            <spec_assertion usage="true" interface="TouchEvent" specification="Touch Events version 1 (Partial)" section="Device" category="Tizen W3C API Specifications"/>
+            <spec_url>http://www.w3.org/TR/2013/WD-touch-events-20130124/#touchevent-interface</spec_url>
+            <spec_statement>This interface defines the touchstart, touchend, touchmove, and touchcancel event types. TouchEvent objects are immutable; after one is created and initialized, its attributes must not change.</spec_statement>
+          </spec>
+        </specs>
+      </testcase>
+      <testcase purpose="Check if touchend identifier matches" type="compliance" status="ready" component="WebAPI/Device/Touch Events version 1 (Partial)" execution_type="manual" priority="P3" id="singletouch_touchend_identifier">
+        <description>
+          <pre_condition>Test device supports touch.</pre_condition>
+          <post_condition/>
+          <steps>
+            <step order="1">
+              <step_desc>Open the test page: single-touch.html</step_desc>
+              <expected>Page opened with 2 touch boxes</expected>
+            </step>
+            <step order="2">
+              <step_desc>Follow the instructions on the page</step_desc>
+              <expected>Pass</expected>
+            </step>
+          </steps>
+          <test_script_entry test_script_expected_result="0">/opt/tct-touchevent-w3c-tests/touchevent/w3c/single-touch.html?total_num=19&amp;amp;locator_key=id&amp;amp;value=4</test_script_entry>
+        </description>
+        <specs>
+          <spec>
+            <spec_assertion usage="true" interface="Touch" specification="Touch Events version 1 (Partial)" section="Device" category="Tizen W3C API Specifications"/>
+            <spec_url>http://www.w3.org/TR/2013/WD-touch-events-20130124/#touch-interface</spec_url>
+            <spec_statement/>
+          </spec>
+        </specs>
+      </testcase>
+      <testcase purpose="Check if touchend Touch location attributes are present" type="compliance" status="ready" component="WebAPI/Device/Touch Events version 1 (Partial)" execution_type="manual" priority="P3" id="singletouch_touchend_location_attributes">
+        <description>
+          <pre_condition>Test device supports touch.</pre_condition>
+          <post_condition/>
+          <steps>
+            <step order="1">
+              <step_desc>Open the test page: single-touch.html</step_desc>
+              <expected>Page opened with 2 touch boxes</expected>
+            </step>
+            <step order="2">
+              <step_desc>Follow the instructions on the page</step_desc>
+              <expected>Pass</expected>
+            </step>
+          </steps>
+          <test_script_entry test_script_expected_result="0">/opt/tct-touchevent-w3c-tests/touchevent/w3c/single-touch.html?total_num=19&amp;amp;locator_key=id&amp;amp;value=5</test_script_entry>
+        </description>
+        <specs>
+          <spec>
+            <spec_assertion usage="true" interface="Touch" specification="Touch Events version 1 (Partial)" section="Device" category="Tizen W3C API Specifications"/>
+            <spec_url>http://www.w3.org/TR/2013/WD-touch-events-20130124/#touch-interface</spec_url>
+            <spec_statement>This interface describes an individual touch point for a touch event. Touch objects are immutable; after one is created, its attributes must not change.</spec_statement>
+          </spec>
+        </specs>
+      </testcase>
+      <testcase purpose="Check if touchend TouchEvent modifier key attributes are present" type="compliance" status="ready" component="WebAPI/Device/Touch Events version 1 (Partial)" execution_type="manual" priority="P3" id="singletouch_touchend_modifier_key_attributes">
+        <description>
+          <pre_condition>Test device supports touch.</pre_condition>
+          <post_condition/>
+          <steps>
+            <step order="1">
+              <step_desc>Open the test page: single-touch.html</step_desc>
+              <expected>Page opened with 2 touch boxes</expected>
+            </step>
+            <step order="2">
+              <step_desc>Follow the instructions on the page</step_desc>
+              <expected>Pass</expected>
+            </step>
+          </steps>
+          <test_script_entry test_script_expected_result="0">/opt/tct-touchevent-w3c-tests/touchevent/w3c/single-touch.html?total_num=19&amp;amp;locator_key=id&amp;amp;value=6</test_script_entry>
+        </description>
+        <specs>
+          <spec>
+            <spec_assertion usage="true" interface="Touch" specification="Touch Events version 1 (Partial)" section="Device" category="Tizen W3C API Specifications"/>
+            <spec_url>http://www.w3.org/TR/2013/WD-touch-events-20130124/#touch-interface</spec_url>
+            <spec_statement/>
+          </spec>
+        </specs>
+      </testcase>
+      <testcase purpose="Check if touchend TouchList lengths are correct" type="compliance" status="ready" component="WebAPI/Device/Touch Events version 1 (Partial)" execution_type="manual" priority="P3" id="singletouch_touchend_touchlist_lengths">
+        <description>
+          <pre_condition>Test device supports touch.</pre_condition>
+          <post_condition/>
+          <steps>
+            <step order="1">
+              <step_desc>Open the test page: single-touch.html</step_desc>
+              <expected>Page opened with 2 touch boxes</expected>
+            </step>
+            <step order="2">
+              <step_desc>Follow the instructions on the page</step_desc>
+              <expected>Pass</expected>
+            </step>
+          </steps>
+          <test_script_entry test_script_expected_result="0">/opt/tct-touchevent-w3c-tests/touchevent/w3c/single-touch.html?total_num=19&amp;amp;locator_key=id&amp;amp;value=7</test_script_entry>
+        </description>
+        <specs>
+          <spec>
+            <spec_assertion usage="true" interface="TouchList" specification="Touch Events version 1 (Partial)" section="Device" category="Tizen W3C API Specifications"/>
+            <spec_url>http://www.w3.org/TR/2013/WD-touch-events-20130124/#touchlist-interface</spec_url>
+            <spec_statement/>
+          </spec>
+        </specs>
+      </testcase>
+      <testcase purpose="Check if touchmove event is received" type="compliance" status="ready" component="WebAPI/Device/Touch Events version 1 (Partial)" execution_type="manual" priority="P3" id="singletouch_touchmove_event">
+        <description>
+          <pre_condition>Test device supports touch.</pre_condition>
+          <post_condition/>
+          <steps>
+            <step order="1">
+              <step_desc>Open the test page: single-touch.html</step_desc>
+              <expected>Page opened with 2 touch boxes</expected>
+            </step>
+            <step order="2">
+              <step_desc>Follow the instructions on the page</step_desc>
+              <expected>Pass</expected>
+            </step>
+          </steps>
+          <test_script_entry test_script_expected_result="0">/opt/tct-touchevent-w3c-tests/touchevent/w3c/single-touch.html?total_num=19&amp;amp;locator_key=id&amp;amp;value=8</test_script_entry>
+        </description>
+        <specs>
+          <spec>
+            <spec_assertion usage="true" interface="TouchEvent" specification="Touch Events version 1 (Partial)" section="Device" category="Tizen W3C API Specifications"/>
+            <spec_url>http://www.w3.org/TR/2013/WD-touch-events-20130124/#touchevent-interface</spec_url>
+            <spec_statement>This interface defines the touchstart, touchend, touchmove, and touchcancel event types. TouchEvent objects are immutable; after one is created and initialized, its attributes must not change.</spec_statement>
+          </spec>
+        </specs>
+      </testcase>
+      <testcase purpose="Check if touchmove identifier matches touchstart identifier" type="compliance" status="ready" component="WebAPI/Device/Touch Events version 1 (Partial)" execution_type="manual" priority="P3" id="singletouch_touchmove_identifiers">
+        <description>
+          <pre_condition>Test device supports touch.</pre_condition>
+          <post_condition/>
+          <steps>
+            <step order="1">
+              <step_desc>Open the test page: single-touch.html</step_desc>
+              <expected>Page opened with 2 touch boxes</expected>
+            </step>
+            <step order="2">
+              <step_desc>Follow the instructions on the page</step_desc>
+              <expected>Pass</expected>
+            </step>
+          </steps>
+          <test_script_entry test_script_expected_result="0">/opt/tct-touchevent-w3c-tests/touchevent/w3c/single-touch.html?total_num=19&amp;amp;locator_key=id&amp;amp;value=9</test_script_entry>
+        </description>
+        <specs>
+          <spec>
+            <spec_assertion usage="true" interface="Touch" specification="Touch Events version 1 (Partial)" section="Device" category="Tizen W3C API Specifications"/>
+            <spec_url>http://www.w3.org/TR/2013/WD-touch-events-20130124/#touch-interface</spec_url>
+            <spec_statement/>
+          </spec>
+        </specs>
+      </testcase>
+      <testcase purpose="Check if touchmove TouchList lengths are correct" type="compliance" status="ready" component="WebAPI/Device/Touch Events version 1 (Partial)" execution_type="manual" priority="P3" id="singletouch_touchmove_touchlist_lengths">
+        <description>
+          <pre_condition>Test device supports touch.</pre_condition>
+          <post_condition/>
+          <steps>
+            <step order="1">
+              <step_desc>Open the test page: single-touch.html</step_desc>
+              <expected>Page opened with 2 touch boxes</expected>
+            </step>
+            <step order="2">
+              <step_desc>Follow the instructions on the page</step_desc>
+              <expected>Pass</expected>
+            </step>
+          </steps>
+          <test_script_entry test_script_expected_result="0">/opt/tct-touchevent-w3c-tests/touchevent/w3c/single-touch.html?total_num=19&amp;amp;locator_key=id&amp;amp;value=10</test_script_entry>
+        </description>
+        <specs>
+          <spec>
+            <spec_assertion usage="true" interface="TouchList" specification="Touch Events version 1 (Partial)" section="Device" category="Tizen W3C API Specifications"/>
+            <spec_url>http://www.w3.org/TR/2013/WD-touch-events-20130124/#touchlist-interface</spec_url>
+            <spec_statement/>
+          </spec>
+        </specs>
+      </testcase>
+      <testcase purpose="Check if touchstart event is received" type="compliance" status="ready" component="WebAPI/Device/Touch Events version 1 (Partial)" execution_type="manual" priority="P3" id="singletouch_touchstart_event">
+        <description>
+          <pre_condition>Test device supports touch.</pre_condition>
+          <post_condition/>
+          <steps>
+            <step order="1">
+              <step_desc>Open the test page: single-touch.html</step_desc>
+              <expected>Page opened with 2 touch boxes</expected>
+            </step>
+            <step order="2">
+              <step_desc>Follow the instructions on the page</step_desc>
+              <expected>Pass</expected>
+            </step>
+          </steps>
+          <test_script_entry test_script_expected_result="0">/opt/tct-touchevent-w3c-tests/touchevent/w3c/single-touch.html?total_num=19&amp;amp;locator_key=id&amp;amp;value=12</test_script_entry>
+        </description>
+        <specs>
+          <spec>
+            <spec_assertion usage="true" interface="TouchEvent" specification="Touch Events version 1 (Partial)" section="Device" category="Tizen W3C API Specifications"/>
+            <spec_url>http://www.w3.org/TR/2013/WD-touch-events-20130124/#touchevent-interface</spec_url>
+            <spec_statement>This interface defines the touchstart, touchend, touchmove, and touchcancel event types. TouchEvent objects are immutable; after one is created and initialized, its attributes must not change.</spec_statement>
+          </spec>
+        </specs>
+      </testcase>
+      <testcase purpose="Check if touchstart Touch identifiers are consistent" type="compliance" status="ready" component="WebAPI/Device/Touch Events version 1 (Partial)" execution_type="manual" priority="P3" id="singletouch_touchstart_identifiers">
+        <description>
+          <pre_condition>Test device supports touch.</pre_condition>
+          <post_condition/>
+          <steps>
+            <step order="1">
+              <step_desc>Open the test page: single-touch.html</step_desc>
+              <expected>Page opened with 2 touch boxes</expected>
+            </step>
+            <step order="2">
+              <step_desc>Follow the instructions on the page</step_desc>
+              <expected>Pass</expected>
+            </step>
+          </steps>
+          <test_script_entry test_script_expected_result="0">/opt/tct-touchevent-w3c-tests/touchevent/w3c/single-touch.html?total_num=19&amp;amp;locator_key=id&amp;amp;value=14</test_script_entry>
+        </description>
+        <specs>
+          <spec>
+            <spec_assertion usage="true" interface="Touch" specification="Touch Events version 1 (Partial)" section="Device" category="Tizen W3C API Specifications"/>
+            <spec_url>http://www.w3.org/TR/2013/WD-touch-events-20130124/#touch-interface</spec_url>
+            <spec_statement/>
+          </spec>
+        </specs>
+      </testcase>
+      <testcase purpose="Check if touchstart Touch location attributes are present" type="compliance" status="ready" component="WebAPI/Device/Touch Events version 1 (Partial)" execution_type="manual" priority="P3" id="singletouch_touchstart_location_attributes">
+        <description>
+          <pre_condition>Test device supports touch.</pre_condition>
+          <post_condition/>
+          <steps>
+            <step order="1">
+              <step_desc>Open the test page: single-touch.html</step_desc>
+              <expected>Page opened with 2 touch boxes</expected>
+            </step>
+            <step order="2">
+              <step_desc>Follow the instructions on the page</step_desc>
+              <expected>Pass</expected>
+            </step>
+          </steps>
+          <test_script_entry test_script_expected_result="0">/opt/tct-touchevent-w3c-tests/touchevent/w3c/single-touch.html?total_num=19&amp;amp;locator_key=id&amp;amp;value=15</test_script_entry>
+        </description>
+        <specs>
+          <spec>
+            <spec_assertion usage="true" interface="Touch" specification="Touch Events version 1 (Partial)" section="Device" category="Tizen W3C API Specifications"/>
+            <spec_url>http://www.w3.org/TR/2013/WD-touch-events-20130124/#touch-interface</spec_url>
+            <spec_statement/>
+          </spec>
+        </specs>
+      </testcase>
+      <testcase purpose="Check if touchstart TouchEvent modifier key attributes are present" type="compliance" status="ready" component="WebAPI/Device/Touch Events version 1 (Partial)" execution_type="manual" priority="P3" id="singletouch_touchstart_modifier_key_attributes">
+        <description>
+          <pre_condition>Test device supports touch.</pre_condition>
+          <post_condition/>
+          <steps>
+            <step order="1">
+              <step_desc>Open the test page: single-touch.html</step_desc>
+              <expected>Page opened with 2 touch boxes</expected>
+            </step>
+            <step order="2">
+              <step_desc>Follow the instructions on the page</step_desc>
+              <expected>Pass</expected>
+            </step>
+          </steps>
+          <test_script_entry test_script_expected_result="0">/opt/tct-touchevent-w3c-tests/touchevent/w3c/single-touch.html?total_num=19&amp;amp;locator_key=id&amp;amp;value=16</test_script_entry>
+        </description>
+        <specs>
+          <spec>
+            <spec_assertion usage="true" interface="TouchEvent" specification="Touch Events version 1 (Partial)" section="Device" category="Tizen W3C API Specifications"/>
+            <spec_url>http://www.w3.org/TR/2013/WD-touch-events-20130124/#touchevent-interface</spec_url>
+            <spec_statement/>
+          </spec>
+        </specs>
+      </testcase>
+      <testcase purpose="Check if touchstart TouchList lengths are correct" type="compliance" status="ready" component="WebAPI/Device/Touch Events version 1 (Partial)" execution_type="manual" priority="P2" id="singletouch_touchstart_touchlist_lengths">
+        <description>
+          <pre_condition>Test device supports touch.</pre_condition>
+          <post_condition/>
+          <steps>
+            <step order="1">
+              <step_desc>Open the test page: single-touch.html</step_desc>
+              <expected>Page opened with 2 touch boxes</expected>
+            </step>
+            <step order="2">
+              <step_desc>Follow the instructions on the page</step_desc>
+              <expected>Pass</expected>
+            </step>
+          </steps>
+          <test_script_entry test_script_expected_result="0">/opt/tct-touchevent-w3c-tests/touchevent/w3c/single-touch.html?total_num=19&amp;amp;locator_key=id&amp;amp;value=18</test_script_entry>
+        </description>
+        <specs>
+          <spec>
+            <spec_assertion element_type="attribute" element_name="length" interface="TouchList" specification="Touch Events version 1 (Partial)" section="Device" category="Tizen W3C API Specifications"/>
+            <spec_url>http://www.w3.org/TR/2013/WD-touch-events-20130124/#touchlist-interface</spec_url>
+            <spec_statement/>
+          </spec>
+        </specs>
+      </testcase>
+      <testcase purpose="Check if touchstart TouchEvent interface names are correct" type="compliance" status="ready" component="WebAPI/Device/Touch Events version 1 (Partial)" execution_type="manual" priority="P3" id="singletouch_touchstart_touch_names">
+        <description>
+          <pre_condition>Test device supports touch.</pre_condition>
+          <post_condition/>
+          <steps>
+            <step order="1">
+              <step_desc>Open the test page: single-touch.html</step_desc>
+              <expected>Page opened with 2 touch boxes</expected>
+            </step>
+            <step order="2">
+              <step_desc>Follow the instructions on the page</step_desc>
+              <expected>Pass</expected>
+            </step>
+          </steps>
+          <test_script_entry test_script_expected_result="0">/opt/tct-touchevent-w3c-tests/touchevent/w3c/single-touch.html?total_num=19&amp;amp;locator_key=id&amp;amp;value=19</test_script_entry>
+        </description>
+        <specs>
+          <spec>
+            <spec_assertion usage="true" interface="TouchEvent" specification="Touch Events version 1 (Partial)" section="Device" category="Tizen W3C API Specifications"/>
+            <spec_url>http://www.w3.org/TR/2013/WD-touch-events-20130124/#touchevent-interface</spec_url>
+            <spec_statement/>
+          </spec>
+        </specs>
+      </testcase>
+      <testcase purpose="Check if the event type of touchstart get TouchEvent" type="compliance" status="ready" component="WebAPI/Device/Touch Events version 1 (Partial)" execution_type="manual" priority="P3" id="TouchEvent_type_touchstart">
+        <description>
+          <pre_condition>Test device supports touch.</pre_condition>
+          <post_condition/>
+          <steps>
+            <step order="1">
+              <step_desc>Open the test page: TouchEvent-001.html</step_desc>
+              <expected>Page opened with 2 touch boxes</expected>
+            </step>
+            <step order="2">
+              <step_desc>Follow the instructions on the page</step_desc>
+              <expected>Pass</expected>
+            </step>
+          </steps>
+          <test_script_entry test_script_expected_result="0">/opt/tct-touchevent-w3c-tests/touchevent/w3c/submission/TouchEvent-001.html?total_num=9&amp;amp;locator_key=id&amp;amp;value=4</test_script_entry>
+        </description>
+        <specs>
+          <spec>
+            <spec_assertion usage="true" interface="TouchEvent" specification="Touch Events version 1 (Partial)" section="Device" category="Tizen W3C API Specifications"/>
+            <spec_url>http://www.w3.org/TR/2013/REC-touch-events-20131010/#touchevent-interface</spec_url>
+            <spec_statement/>
+          </spec>
+        </specs>
+      </testcase>
+      <testcase purpose="Check if the touchstart event can get touches" type="compliance" status="ready" component="WebAPI/Device/Touch Events version 1 (Partial)" execution_type="manual" priority="P2" id="TouchEvent_touchstart_touches">
+        <description>
+          <pre_condition>Test device supports touch.</pre_condition>
+          <post_condition/>
+          <steps>
+            <step order="1">
+              <step_desc>Open the test page: TouchEvent-001.html</step_desc>
+              <expected>Page opened with 2 touch boxes</expected>
+            </step>
+            <step order="2">
+              <step_desc>Follow the instructions on the page</step_desc>
+              <expected>Pass</expected>
+            </step>
+          </steps>
+          <test_script_entry test_script_expected_result="0">/opt/tct-touchevent-w3c-tests/touchevent/w3c/submission/TouchEvent-001.html?total_num=9&amp;amp;locator_key=id&amp;amp;value=5</test_script_entry>
+        </description>
+        <specs>
+          <spec>
+            <spec_assertion element_type="attribute" element_name="touches" interface="TouchEvent" specification="Touch Events version 1 (Partial)" section="Device" category="Tizen W3C API Specifications"/>
+            <spec_url>http://www.w3.org/TR/2013/REC-touch-events-20131010/#touchevent-interface</spec_url>
+            <spec_statement/>
+          </spec>
+        </specs>
+      </testcase>
+      <testcase purpose="Check if the touchstart event can get touch, and the attributes of touch get correct values" type="compliance" status="ready" component="WebAPI/Device/Touch Events version 1 (Partial)" execution_type="manual" priority="P2" id="TouchEvent_touch_attributes_value">
+        <description>
+          <pre_condition>Test device supports touch.</pre_condition>
+          <post_condition/>
+          <steps>
+            <step order="1">
+              <step_desc>Open the test page: TouchEvent-001.html</step_desc>
+              <expected>Page opened with 2 touch boxes</expected>
+            </step>
+            <step order="2">
+              <step_desc>Follow the instructions on the page</step_desc>
+              <expected>Pass</expected>
+            </step>
+          </steps>
+          <test_script_entry test_script_expected_result="0">/opt/tct-touchevent-w3c-tests/touchevent/w3c/submission/TouchEvent-001.html?total_num=9&amp;amp;locator_key=id&amp;amp;value=6</test_script_entry>
+        </description>
+        <specs>
+          <spec>
+            <spec_assertion element_type="attribute" element_name="touches" interface="TouchEvent" specification="Touch Events version 1 (Partial)" section="Device" category="Tizen W3C API Specifications"/>
+            <spec_url>http://www.w3.org/TR/2013/REC-touch-events-20131010/#touchevent-interface</spec_url>
+            <spec_statement/>
+          </spec>
+        </specs>
+      </testcase>
+      <testcase purpose="Check if the event type of touchmove get TouchEvent" type="compliance" status="ready" component="WebAPI/Device/Touch Events version 1 (Partial)" execution_type="manual" priority="P3" id="TouchEvent_type_touchmove">
+        <description>
+          <pre_condition>Test device supports touch.</pre_condition>
+          <post_condition/>
+          <steps>
+            <step order="1">
+              <step_desc>Open the test page: TouchEvent-001.html</step_desc>
+              <expected>Page opened with 2 touch boxes</expected>
+            </step>
+            <step order="2">
+              <step_desc>Follow the instructions on the page</step_desc>
+              <expected>Pass</expected>
+            </step>
+          </steps>
+          <test_script_entry test_script_expected_result="0">/opt/tct-touchevent-w3c-tests/touchevent/w3c/submission/TouchEvent-001.html?total_num=9&amp;amp;locator_key=id&amp;amp;value=7</test_script_entry>
+        </description>
+        <specs>
+          <spec>
+            <spec_assertion usage="true" interface="TouchEvent" specification="Touch Events version 1 (Partial)" section="Device" category="Tizen W3C API Specifications"/>
+            <spec_url>http://www.w3.org/TR/2013/REC-touch-events-20131010/#touchevent-interface</spec_url>
+            <spec_statement/>
+          </spec>
+        </specs>
+      </testcase>
+      <testcase purpose="Check if the touchstart event can get changedTouches" type="compliance" status="ready" component="WebAPI/Device/Touch Events version 1 (Partial)" execution_type="manual" priority="P2" id="TouchEvent_touchstart_changedTouches">
+        <description>
+          <pre_condition>Test device supports touch.</pre_condition>
+          <post_condition/>
+          <steps>
+            <step order="1">
+              <step_desc>Open the test page: TouchEvent-001.html</step_desc>
+              <expected>Page opened with 2 touch boxes</expected>
+            </step>
+            <step order="2">
+              <step_desc>Follow the instructions on the page</step_desc>
+              <expected>Pass</expected>
+            </step>
+          </steps>
+          <test_script_entry test_script_expected_result="0">/opt/tct-touchevent-w3c-tests/touchevent/w3c/submission/TouchEvent-001.html?total_num=9&amp;amp;locator_key=id&amp;amp;value=8</test_script_entry>
+        </description>
+        <specs>
+          <spec>
+            <spec_assertion element_type="attribute" element_name="changedTouches" interface="TouchEvent" specification="Touch Events version 1 (Partial)" section="Device" category="Tizen W3C API Specifications"/>
+            <spec_url>http://www.w3.org/TR/2013/REC-touch-events-20131010/#touchevent-interface</spec_url>
+            <spec_statement/>
+          </spec>
+        </specs>
+      </testcase>
+      <testcase purpose="Check if the event type of touchend get TouchEvent" type="compliance" status="ready" component="WebAPI/Device/Touch Events version 1 (Partial)" execution_type="manual" priority="P3" id="TouchEvent_type_touchend">
+        <description>
+          <pre_condition>Test device supports touch.</pre_condition>
+          <post_condition/>
+          <steps>
+            <step order="1">
+              <step_desc>Open the test page: TouchEvent-001.html</step_desc>
+              <expected>Page opened with 2 touch boxes</expected>
+            </step>
+            <step order="2">
+              <step_desc>Follow the instructions on the page</step_desc>
+              <expected>Pass</expected>
+            </step>
+          </steps>
+          <test_script_entry test_script_expected_result="0">/opt/tct-touchevent-w3c-tests/touchevent/w3c/submission/TouchEvent-001.html?total_num=9&amp;amp;locator_key=id&amp;amp;value=9</test_script_entry>
+        </description>
+        <specs>
+          <spec>
+            <spec_assertion usage="true" interface="TouchEvent" specification="Touch Events version 1 (Partial)" section="Device" category="Tizen W3C API Specifications"/>
+            <spec_url>http://www.w3.org/TR/2013/REC-touch-events-20131010/#touchevent-interface</spec_url>
+            <spec_statement/>
+          </spec>
+        </specs>
+      </testcase>
+    </set>
+  </suite>
+</test_definition>

@@ -1,0 +1,107 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-stylesheet type="text/xsl" href="./testcase.xsl"?>
+<test_definition>
+  <suite name="wrt-packagemgt-android-tests" category="Package_Management_on_Android" launcher="xwalk">
+    <set name="packagemgt">
+      <testcase purpose="Validate if web app icon display normally" type="Functional" status="approved" component="Package Management on Android" execution_type="manual" priority="P0" id="Crosswalk_App_Icon">
+        <description>
+          <pre_condition>
+            1.Make sure Crosswalk is installed
+            2.Make sure there some webapps are available
+          </pre_condition>
+          <test_script_entry>/opt/wrt-packagemgt-android-tests/packagemgt/Crosswalk_App_Icon.html</test_script_entry>
+        </description>
+      </testcase>
+      <testcase purpose="Validate if Crosswalk support that web app could be launched from app launcher successfully" type="Functional" status="approved" component="Package Management on Android" execution_type="manual" priority="P1" id="Crosswalk_App_Icon_Launcher">
+        <description>
+          <pre_condition>
+            1.Make sure Crosswalk is installed
+            2.Make sure there some webapps are available
+          </pre_condition>
+          <test_script_entry>/opt/wrt-packagemgt-android-tests/packagemgt/Crosswalk_App_Icon_Launcher.html</test_script_entry>
+        </description>
+      </testcase>
+      <testcase purpose="Validate if Crosswalk support web apps could be updated successfully" type="Functional" status="designed" component="Package Management on Android" execution_type="manual" priority="P0" id="Crosswalk_WebApp_Update">
+        <description>
+          <pre_condition>
+            1.Make sure Crosswalk application is launched and the device connected to network
+            2.Make sure there some webapps are available
+          </pre_condition>
+          <test_script_entry>/opt/wrt-packagemgt-android-tests/packagemgt/Crosswalk_WebApp_Update.html</test_script_entry>
+        </description>
+      </testcase>
+      <testcase purpose="Validate if Crosswalk support web apps could be installed successfully" type="Functional" status="approved" component="Package Management on Android" execution_type="manual" priority="P0" id="Crosswalk_WebApp_Install">
+        <description>
+          <pre_condition>
+            1.Make sure Crosswalk application is launched
+            2.Make sure there some webapps are available
+          </pre_condition>
+          <test_script_entry>/opt/wrt-packagemgt-android-tests/packagemgt/Crosswalk_WebApp_Install.html</test_script_entry>
+        </description>
+      </testcase>
+      <testcase purpose="Validate if Crosswalk support web apps could be uninstalled successfully" type="Functional" status="approved" component="Package Management on Android" execution_type="manual" priority="P0" id="Crosswalk_WebApp_Uninstall">
+        <description>
+          <pre_condition>
+            1.Make sure Crosswalk application is launched
+            2.Make sure there some webapps are available
+          </pre_condition>
+          <test_script_entry>/opt/wrt-packagemgt-android-tests/packagemgt/Crosswalk_WebApp_Uninstall.html</test_script_entry>
+        </description>
+      </testcase>
+      <testcase purpose="Validate if Crosswalk support multiple web apps could be installed successfully" type="Functional" status="approved" component="Package Management on Android" execution_type="manual" priority="P1" id="Crosswalk_MultipleWebApps_Install">
+        <description>
+          <pre_condition>
+            1.Make sure Crosswalk application is launched
+            2.Make sure multiple webapps are available
+          </pre_condition>
+          <test_script_entry>/opt/wrt-packagemgt-android-tests/packagemgt/Crosswalk_MultipleWebApps_Install.html</test_script_entry>
+        </description>
+      </testcase>
+      <testcase purpose="Validate Crosswalk support that uninstall the web apps when itﾒs actually running" type="Functional" status="approved" component="Package Management on Android" execution_type="manual" priority="P2" id="Crosswalk_WebApp _Uninstall_WithAppRunning">
+        <description>
+          <pre_condition>
+            1.Make sure Crosswalk application is launched
+            2.Make sure there some webapps are available
+          </pre_condition>
+          <test_script_entry>/opt/wrt-packagemgt-android-tests/packagemgt/Crosswalk_WebApp_Uninstall_WithAppRunning.html</test_script_entry>
+        </description>
+      </testcase>
+      <testcase purpose="Validate Crosswalk support that web app could be launched successfully" type="Functional" status="approved" component="Package Management on Android" execution_type="manual" priority="P0" id="Crosswalk_WebApp_Launch">
+        <description>
+          <pre_condition>
+            1.Make sure Crosswalk application is launched
+            2.Make sure there some webapps are available
+          </pre_condition>
+          <test_script_entry>/opt/wrt-packagemgt-android-tests/packagemgt/Crosswalk_WebApp_Launch.html</test_script_entry>
+        </description>
+      </testcase>
+      <testcase purpose="Validate Crosswalk support that web app could be closed successfully" type="Functional" status="approved" component="Package Management on Android" execution_type="manual" priority="P1" id="Crosswalk_WebApp_Close">
+        <description>
+          <pre_condition>
+            1.Make sure Crosswalk application is launched
+            2.Make sure have one web app is running
+          </pre_condition>
+          <test_script_entry>/opt/wrt-packagemgt-android-tests/packagemgt/Crosswalk_WebApp_Close.html</test_script_entry>
+        </description>
+      </testcase>
+      <testcase purpose="Validate if Crosswalk support multiple web apps could be launched successfully" type="Functional" status="approved" component="Package Management on Android" execution_type="manual" priority="P2" id="Crosswalk_Multiple_Apps_Launch">
+        <description>
+          <pre_condition>
+            1.Make sure Crosswalk application is launched
+            2.Make sure multiple webapps are available
+          </pre_condition>
+          <test_script_entry>/opt/wrt-packagemgt-android-tests/packagemgt/Crosswalk_Multiple_Apps_Launch.html</test_script_entry>
+        </description>
+      </testcase>
+      <testcase purpose="Validate if launch web app by command line" type="Functional" status="approved" component="Package Management on Android" execution_type="manual" priority="P1" id="Crosswalk_WebApp_Launch_Command">
+        <description>
+          <pre_condition>
+            1.Make sure Crosswalk is installed
+            2.Make sure XWalkAppTemplate.apk is installed on Android OS
+          </pre_condition>
+          <test_script_entry>/opt/wrt-packagemgt-android-tests/packagemgt/Crosswalk_WebApp_Launch_Command.html</test_script_entry>
+        </description>
+      </testcase>
+    </set>
+  </suite>
+</test_definition>

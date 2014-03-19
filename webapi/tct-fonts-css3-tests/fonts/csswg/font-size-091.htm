@@ -1,0 +1,37 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html>
+    <head>
+        <title>CSS Test: Font-size using percentages with a minimum plus one value, 1%</title>
+        <link title="Microsoft" rel="author" href="http://www.microsoft.com/">
+        <link rel="help" href="http://www.w3.org/TR/CSS21/fonts.html#propdef-font-size">
+        <link rel="help" href="http://www.w3.org/TR/CSS21/fonts.html#font-size-props">
+        <link rel="help" href="http://www.w3.org/TR/css3-fonts/#font-size-prop">
+        <meta content="ahem" name="flags">
+        <meta content="The 'font-size' property sets a minimum plus one length value in percentages." name="assert">
+        <style type="text/css">
+            @font-face {
+                font-family: Ahem;
+                src: url("support/AHEM____.TTF");
+            }
+            #reference
+            {
+                font: 2px/1em Ahem;
+            }
+            #parent
+            {
+                font: 200px/5px Ahem;
+            }
+            #test
+            {
+                font-size: 1%;
+            }
+        </style>
+    </head>
+    <body>
+        <p>Test passes if the two dots (boxes) below are the same size.</p>
+        <div id="reference">X</div>
+        <div id="parent">
+            <div id="test">X</div>
+        </div>
+    </body>
+</html>

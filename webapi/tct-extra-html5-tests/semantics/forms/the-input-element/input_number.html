@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<!--
+Copyright (c) 2013 Intel Corporation.
+
+Redistribution and use in source and binary forms, with or without modification,
+are permitted provided that the following conditions are met:
+
+* Redistributions of works must retain the original copyright notice, this list
+  of conditions and the following disclaimer.
+* Redistributions in binary form must reproduce the original copyright notice,
+  this list of conditions and the following disclaimer in the documentation
+  and/or other materials provided with the distribution.
+* Neither the name of Intel Corporation nor the names of its contributors
+  may be used to endorse or promote products derived from this work without
+  specific prior written permission.
+
+THIS SOFTWARE IS PROVIDED BY INTEL CORPORATION "AS IS"
+AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE
+IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE
+ARE DISCLAIMED. IN NO EVENT SHALL INTEL CORPORATION BE LIABLE FOR ANY DIRECT,
+INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING,
+BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE,
+DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY
+OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING
+NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE,
+EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
+
+Authors:
+        Cui, Jieqiong <jieqiongx.cui@intel.com>
+
+-->
+
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>HTML Test: input_number</title>
+    <link rel="author" title="Intel" href="http://www.intel.com/">
+    <link rel="help" href="http://www.w3.org/TR/2012/CR-html5-20121217/forms.html#number-state-%28type=number%29">
+    <script src="../../../resources/testharness.js"></script>
+    <script src="../../../resources/testharnessreport.js"></script>
+  </head>
+  <body>
+    <form id="testForm" name="testForm" style="display:none">
+      <input id="testInput1" type="number" value=10 />
+      <input id="testInput2" type="number" value=10 />
+      <input id="testInput3" type="number" max=15 min=5 value=10 />
+      <input id="testInput4" type="number" min=5 step=2 value=10 />
+      <input id="testInput5" type="number" min=5.5 value=10 />
+      <input id="testInput6" type="number" value="abc" />
+    </form>
+
+    <div id="log"></div>
+
+    <script>
+        var number1 = document.getElementById("testInput1");
+        var number2 = document.getElementById("testInput2");
+        var number3 = document.getElementById("testInput3");
+        var number4 = document.getElementById("testInput4");
+        var number5 = document.getElementById("testInput5");
+        var number6 = document.getElementById("testInput6");
+        var step = 1;
+        var step2 = 1.5;
+        var value = 10;
+        test(function() {
+            var temp = parseInt(number1.value);
+            assert_equals(temp, value, "Check if user can set number");
+        }, "Check if user can set number");
+
+        test(function() {
+            var temp1 = parseInt(number2.value);
+            number2.stepUp();
+            var temp2 = parseInt(number2.value);
+            assert_equals(temp2, temp1 + step, "Check if the default step is 1 when type is 'number'");
+        }, "Check if the default step is 1 when type is 'number'");
+
+        test(function() {
+            var value1 = parseInt(number3.value);
+            number2.value = value1 + value;
+            var value2 = parseInt(number3.value);
+            number2.value = value1 - value;
+            var value3 = parseInt(number3.value);
+            assert_true(value2 === value && value3 === value, "Check if the value can select between min and max");
+        }, "Check if the value can select between min and max");
+
+        test(function() {
+            var step1 = number4.step;
+            number4.step = step2;
+            var step3 = number4.step;
+            assert_not_equals(step3, step1, "Check if step can only set integer when min is integer");
+        }, "Check if step can only set integer when min is integer");
+
+        test(function() {
+            var step1 = number5.step;
+            number5.step = step2;
+            var step3 = parseFloat(number5.step);
+            assert_equals(step3, step2, "Check if step can set non-integer when min is non-integer");
+        }, "Check if step can set non-integer when min is non-integer");
+
+        test(function() {
+            var value = number6.value;
+            assert_not_equals(value, "abc", "Check if the value only set number");
+        }, "Check if the value only set number");
+    </script>
+  </body>
+</html>

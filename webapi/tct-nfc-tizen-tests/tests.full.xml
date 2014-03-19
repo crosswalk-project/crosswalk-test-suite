@@ -1,0 +1,1886 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-stylesheet type="text/xsl"  href="./testcase.xsl"?>
+<test_definition>
+  <suite name="tct-nfc-tizen-tests" launcher="xwalk" extension="crosswalk" category="Tizen Web Device APIs">
+    <set name="NFC">
+      <capabilities>
+        <capability name="nfc"/>
+      </capabilities>
+      <testcase purpose="Check if method NFCAdapter::setPowered(true) sets a value of attribute NFCAdapter::powered to true" type="compliance" status="approved" component="TizenAPI/Communication/NFC" execution_type="manual" priority="P2" id="NFCAdapter_setPowered_on">
+        <description>
+          <pre_condition>Turn OFF NFC adapter.</pre_condition>
+          <steps>
+            <step order="1">
+              <step_desc>Click "Run"</step_desc>
+              <expected>NFC adapter should be enabled (ON) - pass</expected>
+            </step>
+          </steps>
+          <test_script_entry>/opt/tct-nfc-tizen-tests/nfc/NFCAdapter_setPowered_on.html</test_script_entry>
+        </description>
+        <specs>
+          <spec>
+            <spec_assertion interface="NFCAdapter" element_type="method" element_name="setPowered" specification="NFC" section="Communication" category="Tizen Device API Specifications"/>
+            <spec_url>https://developer.tizen.org/help/topic/org.tizen.web.device.apireference/tizen/nfc.html</spec_url>
+            <spec_statement>TBD</spec_statement>
+          </spec>
+        </specs>
+      </testcase>
+      <testcase purpose="Check if method NFCTag::readNDEF() reports error by calling errorCallback when NFC tag was disconnected" type="compliance" status="approved" component="TizenAPI/Communication/NFC" execution_type="manual" priority="P2" id="NFCTag_readNDEF_errorCallback">
+        <description>
+          <pre_condition>Turn on NFC adapter. Prepare NFC tag.</pre_condition>
+          <steps>
+            <step order="1">
+              <step_desc>Click "Run". Move NFC tag close until it will be detected and then take it away before the expiration of 3 seconds.</step_desc>
+              <expected>pass - readNDEF reported failure by error callback</expected>
+            </step>
+          </steps>
+          <test_script_entry>/opt/tct-nfc-tizen-tests/nfc/NFCTag_readNDEF_errorCallback.html</test_script_entry>
+        </description>
+        <specs>
+          <spec>
+            <spec_assertion interface="NFCTag" element_type="method" element_name="readNDEF" specification="NFC" section="Communication" category="Tizen Device API Specifications"/>
+            <spec_url>https://developer.tizen.org/help/topic/org.tizen.web.device.apireference/tizen/nfc.html</spec_url>
+            <spec_statement>TBD</spec_statement>
+          </spec>
+        </specs>
+      </testcase>
+      <testcase purpose="Check if NFCTagDetectCallback::ondetach() callback is called when NFC tag is disconnected" type="compliance" status="approved" component="TizenAPI/Communication/NFC" execution_type="manual" priority="P1" id="NFCTagDetectCallback_ondetach">
+        <description>
+          <pre_condition>Turn on NFC adapter. Prepare NFC tag.</pre_condition>
+          <steps>
+            <step order="1">
+              <step_desc>Click "Run". Move NFC tag close until it will be detected and then take it away.</step_desc>
+              <expected>pass - after setTagListener ondetach callback is called</expected>
+            </step>
+          </steps>
+          <test_script_entry>/opt/tct-nfc-tizen-tests/nfc/NFCTagDetectCallback_ondetach.html</test_script_entry>
+        </description>
+        <specs>
+          <spec>
+            <spec_assertion interface="NFCTagDetectCallback" element_type="method" element_name="ondetach" specification="NFC" section="Communication" category="Tizen Device API Specifications"/>
+            <spec_url>https://developer.tizen.org/help/topic/org.tizen.web.device.apireference/tizen/nfc.html</spec_url>
+            <spec_statement>TBD</spec_statement>
+          </spec>
+        </specs>
+      </testcase>
+      <testcase purpose="Check if method NFCTag::transceive() reports error by calling errorCallback when NFC tag is disconnected" type="compliance" status="approved" component="TizenAPI/Communication/NFC" execution_type="manual" priority="P2" id="NFCTag_transceive_with_errorCallback">
+        <description>
+          <pre_condition>Turn on NFC adapter. Prepare NFC tag.</pre_condition>
+          <steps>
+            <step order="1">
+              <step_desc>Click "Run". Move NFC tag close until it will be detected and then take it away before the expiration of 3 seconds.</step_desc>
+              <expected>pass - transceive reported failure by error callback</expected>
+            </step>
+          </steps>
+          <test_script_entry>/opt/tct-nfc-tizen-tests/nfc/NFCTag_transceive_with_errorCallback.html</test_script_entry>
+        </description>
+        <specs>
+          <spec>
+            <spec_assertion interface="NFCTag" element_type="method" element_name="transceive" specification="NFC" section="Communication" category="Tizen Device API Specifications"/>
+            <spec_url>https://developer.tizen.org/help/topic/org.tizen.web.device.apireference/tizen/nfc.html</spec_url>
+            <spec_statement>TBD</spec_statement>
+          </spec>
+        </specs>
+      </testcase>
+      <testcase purpose="Check if method NFCTag::writeNDEF() reports error by calling errorCallback when NFC tag is disconnected" type="compliance" status="approved" component="TizenAPI/Communication/NFC" execution_type="manual" priority="P2" id="NFCTag_writeNDEF_with_errorCallback">
+        <description>
+          <pre_condition>Turn on NFC adapter. Prepare NFC tag.</pre_condition>
+          <steps>
+            <step order="1">
+              <step_desc>Click "Run". Move NFC tag close until it will be detected and then take it away before the expiration of 3 seconds.</step_desc>
+              <expected>pass - writeNDEF reported failure by error callback</expected>
+            </step>
+          </steps>
+          <test_script_entry>/opt/tct-nfc-tizen-tests/nfc/NFCTag_writeNDEF_with_errorCallback.html</test_script_entry>
+        </description>
+        <specs>
+          <spec>
+            <spec_assertion interface="NFCTag" element_type="method" element_name="writeNDEF" specification="NFC" section="Communication" category="Tizen Device API Specifications"/>
+            <spec_url>https://developer.tizen.org/help/topic/org.tizen.web.device.apireference/tizen/nfc.html</spec_url>
+            <spec_statement>TBD</spec_statement>
+          </spec>
+        </specs>
+      </testcase>
+      <testcase purpose="Check if method NFCAdapter::unsetTagListener() disables listener for detecting an NFC tag" type="compliance" status="approved" component="TizenAPI/Communication/NFC" execution_type="manual" priority="P1" id="NFCAdapter_unsetTagListener">
+        <description>
+          <pre_condition>Turn on NFC adapter. Prepare NFC tag.</pre_condition>
+          <steps>
+            <step order="1">
+              <step_desc>Click "Run". Move NFC tag close so it will be detected and then click "Tag was attached" button.</step_desc>
+              <expected>pass</expected>
+            </step>
+          </steps>
+          <test_script_entry>/opt/tct-nfc-tizen-tests/nfc/NFCAdapter_unsetTagListener.html</test_script_entry>
+        </description>
+        <specs>
+          <spec>
+            <spec_assertion interface="NFCAdapter" element_type="method" element_name="unsetTagListener" specification="NFC" section="Communication" category="Tizen Device API Specifications"/>
+            <spec_url>https://developer.tizen.org/help/topic/org.tizen.web.device.apireference/tizen/nfc.html</spec_url>
+            <spec_statement>TBD</spec_statement>
+          </spec>
+        </specs>
+      </testcase>
+      <testcase purpose="Check if method NFCAdapter::unsetPeerListener() disables listener for detecting an NFC peer-to-peer target" type="compliance" status="approved" component="TizenAPI/Communication/NFC" execution_type="manual" priority="P1" id="NFCAdapter_unsetPeerListener">
+        <description>
+          <pre_condition>Turn on NFC adapter. Prepare the other device with NFC turned on.</pre_condition>
+          <steps>
+            <step order="1">
+              <step_desc>Click "Run". Move other NFC device close so it will be detected and then click "Peer was attached" button.</step_desc>
+              <expected>Pass</expected>
+            </step>
+          </steps>
+          <test_script_entry>/opt/tct-nfc-tizen-tests/nfc/NFCAdapter_unsetPeerListener.html</test_script_entry>
+        </description>
+        <specs>
+          <spec>
+            <spec_assertion interface="NFCAdapter" element_type="method" element_name="unsetPeerListener" specification="NFC" section="Communication" category="Tizen Device API Specifications"/>
+            <spec_url>https://developer.tizen.org/help/topic/org.tizen.web.device.apireference/tizen/nfc.html</spec_url>
+            <spec_statement>TBD</spec_statement>
+          </spec>
+        </specs>
+      </testcase>
+      <testcase purpose="Check if method NFCPeer::sendNDEF(ndefMessage, onSuccess, onError) can be called successfully" type="compliance" status="approved" component="TizenAPI/Communication/NFC" execution_type="manual" priority="P1" id="NFCPeer_sendNDEF_with_errorCallback">
+        <description>
+          <pre_condition>Turn on NFC adapter. Prepare the other device with NFC turned on. Other device should be able to take NDEF message from NFC.</pre_condition>
+          <steps>
+            <step order="1">
+              <step_desc>Click "Run". Move other NFC device close so it will be detected. If other device receives message then PASS.</step_desc>
+              <expected>pass</expected>
+            </step>
+          </steps>
+          <test_script_entry>/opt/tct-nfc-tizen-tests/nfc/NFCPeer_sendNDEF_with_errorCallback.html</test_script_entry>
+        </description>
+        <specs>
+          <spec>
+            <spec_assertion interface="NFCPeer" element_type="method" element_name="sendNDEF" specification="NFC" section="Communication" category="Tizen Device API Specifications"/>
+            <spec_url>https://developer.tizen.org/help/topic/org.tizen.web.device.apireference/tizen/nfc.html</spec_url>
+            <spec_statement>TBD</spec_statement>
+          </spec>
+        </specs>
+      </testcase>
+      <testcase purpose="Check if NFCPeer::sendNDEF(ndefMessage, onSuccess) can be called successfully" type="compliance" status="approved" component="TizenAPI/Communication/NFC" execution_type="manual" priority="P1" id="NFCPeer_sendNDEF_with_successCallback">
+        <description>
+          <pre_condition>Turn on NFC adapter. Prepare the other device with NFC turned on. Other device should be able to take NDEF message from NFC.</pre_condition>
+          <steps>
+            <step order="1">
+              <step_desc>Click "Run". Move other NFC device close so it will be detected. If other device receives message then PASS.</step_desc>
+              <expected>pass</expected>
+            </step>
+          </steps>
+          <test_script_entry>/opt/tct-nfc-tizen-tests/nfc/NFCPeer_sendNDEF_with_successCallback.html</test_script_entry>
+        </description>
+        <specs>
+          <spec>
+            <spec_assertion interface="NFCPeer" element_type="method" element_name="sendNDEF" specification="NFC" section="Communication" category="Tizen Device API Specifications"/>
+            <spec_url>https://developer.tizen.org/help/topic/org.tizen.web.device.apireference/tizen/nfc.html</spec_url>
+            <spec_statement>TBD</spec_statement>
+          </spec>
+        </specs>
+      </testcase>
+      <testcase purpose="Check if method NFCPeer::sendNDEF() reports error by calling errorCallback when peer is disconnected" type="compliance" status="approved" component="TizenAPI/Communication/NFC" execution_type="manual" priority="P2" id="NFCPeer_sendNDEF_errorCallback">
+        <description>
+          <pre_condition>Turn on NFC adapter. Prepare the other device with NFC turned on. Other device should be able to take NDEF message from NFC.</pre_condition>
+          <steps>
+            <step order="1">
+              <step_desc>Click "Run". Put the other NFC device close to your device until it will be detected and then take it away before the expiration of 3 seconds.</step_desc>
+              <expected>pass</expected>
+            </step>
+          </steps>
+          <test_script_entry>/opt/tct-nfc-tizen-tests/nfc/NFCPeer_sendNDEF_errorCallback.html</test_script_entry>
+        </description>
+        <specs>
+          <spec>
+            <spec_assertion interface="NFCPeer" element_type="method" element_name="sendNDEF" specification="NFC" section="Communication" category="Tizen Device API Specifications"/>
+            <spec_url>https://developer.tizen.org/help/topic/org.tizen.web.device.apireference/tizen/nfc.html</spec_url>
+            <spec_statement>TBD</spec_statement>
+          </spec>
+        </specs>
+      </testcase>
+      <testcase purpose="Check if NFCPeerDetectCallback::ondetach() is called when NFC peer is taken away" type="compliance" status="approved" component="TizenAPI/Communication/NFC" execution_type="manual" priority="P1" id="NFCPeerDetectCallback_ondetach">
+        <description>
+          <pre_condition>Turn on NFC adapter. Prepare the other device with NFC turned on.</pre_condition>
+          <steps>
+            <step order="1">
+              <step_desc>Click "Run". Put the other NFC device close to your device until it will be detected and then take it away.</step_desc>
+              <expected>pass - peerListener ondetach callback should be invoked</expected>
+            </step>
+          </steps>
+          <test_script_entry>/opt/tct-nfc-tizen-tests/nfc/NFCPeerDetectCallback_ondetach.html</test_script_entry>
+        </description>
+        <specs>
+          <spec>
+            <spec_assertion interface="NFCPeerDetectCallback" element_type="method" element_name="ondetach" specification="NFC" section="Communication" category="Tizen Device API Specifications"/>
+            <spec_url>https://developer.tizen.org/help/topic/org.tizen.web.device.apireference/tizen/nfc.html</spec_url>
+            <spec_statement>TBD</spec_statement>
+          </spec>
+        </specs>
+      </testcase>
+      <testcase purpose="Check if method NDEFMessage::toByte() exists" type="compliance" status="approved" component="TizenAPI/Communication/NFC" execution_type="auto" priority="P1" id="NDEFMessage_toByte_exists">
+        <description>
+          <test_script_entry>/opt/tct-nfc-tizen-tests/nfc/NDEFMessage_toByte_exists.html</test_script_entry>
+        </description>
+        <specs>
+          <spec>
+            <spec_assertion interface="NDEFMessage" element_type="method" element_name="toByte" specification="NFC" section="Communication" category="Tizen Device API Specifications"/>
+            <spec_url>https://developer.tizen.org/help/topic/org.tizen.web.device.apireference/tizen/nfc.html</spec_url>
+            <spec_statement>TBD</spec_statement>
+          </spec>
+        </specs>
+      </testcase>
+      <testcase purpose="Check if method NFCAdapter::getDefaultAdapter() exists" type="compliance" status="approved" component="TizenAPI/Communication/NFC" execution_type="auto" priority="P1" id="NFCManager_getDefaultAdapter_exists">
+        <description>
+          <test_script_entry>/opt/tct-nfc-tizen-tests/nfc/NFCManager_getDefaultAdapter_exists.html</test_script_entry>
+        </description>
+        <specs>
+          <spec>
+            <spec_assertion interface="NFCManager" element_type="method" element_name="getDefaultAdapter" specification="NFC" section="Communication" category="Tizen Device API Specifications"/>
+            <spec_url>https://developer.tizen.org/help/topic/org.tizen.web.device.apireference/tizen/nfc.html</spec_url>
+            <spec_statement>TBD</spec_statement>
+          </spec>
+        </specs>
+      </testcase>
+      <testcase purpose="Check if method NFCPeer::sendNDEF() sends data to other NFC device" type="compliance" status="approved" component="TizenAPI/Communication/NFC" execution_type="manual" priority="P1" id="NFCPeer_sendNDEF_sendData">
+        <description>
+          <pre_condition>Turn on NFC adapter. Prepare the other device with NFC turned on. Other device should be able to take NDEF message from NFC.</pre_condition>
+          <steps>
+            <step order="1">
+              <step_desc>Click "Run". Move other NFC device close so it will be detected.</step_desc>
+              <expected>pass - data sent successfully</expected>
+            </step>
+          </steps>
+          <test_script_entry>/opt/tct-nfc-tizen-tests/nfc/NFCPeer_sendNDEF_sendData.html</test_script_entry>
+        </description>
+        <specs>
+          <spec>
+            <spec_assertion interface="NFCPeer" element_type="method" element_name="sendNDEF" specification="NFC" section="Communication" category="Tizen Device API Specifications"/>
+            <spec_url>https://developer.tizen.org/help/topic/org.tizen.web.device.apireference/tizen/nfc.html</spec_url>
+            <spec_statement>TBD</spec_statement>
+          </spec>
+        </specs>
+      </testcase>
+      <testcase purpose="Check if interface ByteArraySuccessCallback exists, it should not." type="compliance" status="approved" component="TizenAPI/Communication/NFC" execution_type="auto" priority="P3" id="ByteArraySuccessCallback_notexist">
+        <description>
+          <test_script_entry>/opt/tct-nfc-tizen-tests/nfc/ByteArraySuccessCallback_notexist.html</test_script_entry>
+        </description>
+        <specs>
+          <spec>
+            <spec_assertion interface="ByteArraySuccessCallback" usage="true" specification="NFC" section="Communication" category="Tizen Device API Specifications"/>
+            <spec_url>https://developer.tizen.org/help/topic/org.tizen.web.device.apireference/tizen/nfc.html</spec_url>
+            <spec_statement>TBD</spec_statement>
+          </spec>
+        </specs>
+      </testcase>
+      <testcase purpose="Check if interface NDEFMessageReadCallback exists, it should not." type="compliance" status="approved" component="TizenAPI/Communication/NFC" execution_type="auto" priority="P3" id="NDEFMessageReadCallback_notexist">
+        <description>
+          <test_script_entry>/opt/tct-nfc-tizen-tests/nfc/NDEFMessageReadCallback_notexist.html</test_script_entry>
+        </description>
+        <specs>
+          <spec>
+            <spec_assertion interface="NDEFMessageReadCallback" usage="true" specification="NFC" section="Communication" category="Tizen Device API Specifications"/>
+            <spec_url>https://developer.tizen.org/help/topic/org.tizen.web.device.apireference/tizen/nfc.html</spec_url>
+            <spec_statement>TBD</spec_statement>
+          </spec>
+        </specs>
+      </testcase>
+      <testcase purpose="Check if NDEFMessage constructor works without arguments" type="compliance" status="approved" component="TizenAPI/Communication/NFC" execution_type="auto" priority="P1" id="NDEFMessage_constructor">
+        <description>
+          <test_script_entry>/opt/tct-nfc-tizen-tests/nfc/NDEFMessage_constructor.html</test_script_entry>
+        </description>
+        <specs>
+          <spec>
+            <spec_assertion interface="NDEFMessage" element_type="constructor" element_name="constructor" specification="NFC" section="Communication" category="Tizen Device API Specifications"/>
+            <spec_url>https://developer.tizen.org/help/topic/org.tizen.web.device.apireference/tizen/nfc.html</spec_url>
+            <spec_statement>TBD</spec_statement>
+          </spec>
+        </specs>
+      </testcase>
+      <testcase purpose="Check if NDEFMessage constructor works with rawData" type="compliance" status="approved" component="TizenAPI/Communication/NFC" execution_type="auto" priority="P1" id="NDEFMessage_constructor_rawData">
+        <description>
+          <test_script_entry>/opt/tct-nfc-tizen-tests/nfc/NDEFMessage_constructor_rawData.html</test_script_entry>
+        </description>
+        <specs>
+          <spec>
+            <spec_assertion interface="NDEFMessage" element_type="constructor" element_name="constructor" specification="NFC" section="Communication" category="Tizen Device API Specifications"/>
+            <spec_url>https://developer.tizen.org/help/topic/org.tizen.web.device.apireference/tizen/nfc.html</spec_url>
+            <spec_statement>TBD</spec_statement>
+          </spec>
+        </specs>
+      </testcase>
+      <testcase purpose="Check NDEFMessage constructor with NDEF records array" type="compliance" status="approved" component="TizenAPI/Communication/NFC" execution_type="auto" priority="P1" id="NDEFMessage_constructor_records">
+        <description>
+          <test_script_entry>/opt/tct-nfc-tizen-tests/nfc/NDEFMessage_constructor_records.html</test_script_entry>
+        </description>
+        <specs>
+          <spec>
+            <spec_assertion interface="NDEFMessage" element_type="constructor" element_name="constructor" specification="NFC" section="Communication" category="Tizen Device API Specifications"/>
+            <spec_url>https://developer.tizen.org/help/topic/org.tizen.web.device.apireference/tizen/nfc.html</spec_url>
+            <spec_statement>TBD</spec_statement>
+          </spec>
+        </specs>
+      </testcase>
+      <testcase purpose="Check if NDEFMessage exists" type="compliance" status="approved" component="TizenAPI/Communication/NFC" execution_type="auto" priority="P1" id="NDEFMessage_exist">
+        <description>
+          <test_script_entry>/opt/tct-nfc-tizen-tests/nfc/NDEFMessage_exist.html</test_script_entry>
+        </description>
+        <specs>
+          <spec>
+            <spec_assertion interface="NDEFMessage" element_type="constructor" element_name="constructor" specification="NFC" section="Communication" category="Tizen Device API Specifications"/>
+            <spec_url>https://developer.tizen.org/help/topic/org.tizen.web.device.apireference/tizen/nfc.html</spec_url>
+            <spec_statement>TBD</spec_statement>
+          </spec>
+        </specs>
+      </testcase>
+      <testcase purpose="Check if instance of interface NDEFMessage can be extended with new property" type="compliance" status="approved" component="TizenAPI/Communication/NFC" execution_type="auto" priority="P3" id="NDEFMessage_extend">
+        <description>
+          <test_script_entry>/opt/tct-nfc-tizen-tests/nfc/NDEFMessage_extend.html</test_script_entry>
+        </description>
+        <specs>
+          <spec>
+            <spec_assertion interface="NDEFMessage" usage="true" specification="NFC" section="Communication" category="Tizen Device API Specifications"/>
+            <spec_url>https://developer.tizen.org/help/topic/org.tizen.web.device.apireference/tizen/nfc.html</spec_url>
+            <spec_statement>TBD</spec_statement>
+          </spec>
+        </specs>
+      </testcase>
+      <testcase purpose="Check if attribute NDEFMessage::recordCount exists, has type Number and is readonly" type="compliance" status="approved" component="TizenAPI/Communication/NFC" execution_type="auto" priority="P1" id="NDEFMessage_recordCount_attribute">
+        <description>
+          <test_script_entry>/opt/tct-nfc-tizen-tests/nfc/NDEFMessage_recordCount_attribute.html</test_script_entry>
+        </description>
+        <specs>
+          <spec>
+            <spec_assertion interface="NDEFMessage" element_type="attribute" element_name="recordCount" specification="NFC" section="Communication" category="Tizen Device API Specifications"/>
+            <spec_url>https://developer.tizen.org/help/topic/org.tizen.web.device.apireference/tizen/nfc.html</spec_url>
+            <spec_statement>TBD</spec_statement>
+          </spec>
+        </specs>
+      </testcase>
+      <testcase purpose="Check if attribute records of NDEFMessage exists, has type Array, can be overwritten" type="compliance" status="approved" component="TizenAPI/Communication/NFC" execution_type="auto" priority="P1" id="NDEFMessage_records_attribute">
+        <description>
+          <test_script_entry>/opt/tct-nfc-tizen-tests/nfc/NDEFMessage_records_attribute.html</test_script_entry>
+        </description>
+        <specs>
+          <spec>
+            <spec_assertion interface="NDEFMessage" element_type="attribute" element_name="records" specification="NFC" section="Communication" category="Tizen Device API Specifications"/>
+            <spec_url>https://developer.tizen.org/help/topic/org.tizen.web.device.apireference/tizen/nfc.html</spec_url>
+            <spec_statement>TBD</spec_statement>
+          </spec>
+        </specs>
+      </testcase>
+      <testcase purpose="Check whether NDEFMessage:toByte() returns correct byte array of the NDEF message" type="compliance" status="approved" component="TizenAPI/Communication/NFC" execution_type="auto" priority="P1" id="NDEFMessage_toByte">
+        <description>
+          <test_script_entry>/opt/tct-nfc-tizen-tests/nfc/NDEFMessage_toByte.html</test_script_entry>
+        </description>
+        <specs>
+          <spec>
+            <spec_assertion interface="NDEFMessage" element_type="method" element_name="toByte" specification="NFC" section="Communication" category="Tizen Device API Specifications"/>
+            <spec_url>https://developer.tizen.org/help/topic/org.tizen.web.device.apireference/tizen/nfc.html</spec_url>
+            <spec_statement>TBD</spec_statement>
+          </spec>
+        </specs>
+      </testcase>
+      <testcase purpose="Check whether NDEFMessage::toByte() returns empty array for empty NDEF message" type="compliance" status="approved" component="TizenAPI/Communication/NFC" execution_type="auto" priority="P1" id="NDEFMessage_toByte_empty">
+        <description>
+          <test_script_entry>/opt/tct-nfc-tizen-tests/nfc/NDEFMessage_toByte_empty.html</test_script_entry>
+        </description>
+        <specs>
+          <spec>
+            <spec_assertion interface="NDEFMessage" element_type="method" element_name="toByte" specification="NFC" section="Communication" category="Tizen Device API Specifications"/>
+            <spec_url>https://developer.tizen.org/help/topic/org.tizen.web.device.apireference/tizen/nfc.html</spec_url>
+            <spec_statement>TBD</spec_statement>
+          </spec>
+        </specs>
+      </testcase>
+      <testcase purpose="Check if method toByte of NDEFMessage accepts extra argument" type="compliance" status="approved" component="TizenAPI/Communication/NFC" execution_type="auto" priority="P1" id="NDEFMessage_toByte_extra_argument">
+        <description>
+          <test_script_entry>/opt/tct-nfc-tizen-tests/nfc/NDEFMessage_toByte_extra_argument.html</test_script_entry>
+        </description>
+        <specs>
+          <spec>
+            <spec_assertion interface="NDEFMessage" element_type="method" element_name="toByte" specification="NFC" section="Communication" category="Tizen Device API Specifications"/>
+            <spec_url>https://developer.tizen.org/help/topic/org.tizen.web.device.apireference/tizen/nfc.html</spec_url>
+            <spec_statement>TBD</spec_statement>
+          </spec>
+        </specs>
+      </testcase>
+      <testcase purpose="Check if NDEFRecordMedia constructor works" type="compliance" status="approved" component="TizenAPI/Communication/NFC" execution_type="auto" priority="P1" id="NDEFRecordMedia_constructor">
+        <description>
+          <test_script_entry>/opt/tct-nfc-tizen-tests/nfc/NDEFRecordMedia_constructor.html</test_script_entry>
+        </description>
+        <specs>
+          <spec>
+            <spec_assertion interface="NDEFRecordMedia" element_type="constructor" element_name="constructor" specification="NFC" section="Communication" category="Tizen Device API Specifications"/>
+            <spec_url>https://developer.tizen.org/help/topic/org.tizen.web.device.apireference/tizen/nfc.html</spec_url>
+            <spec_statement>TBD</spec_statement>
+          </spec>
+        </specs>
+      </testcase>
+      <testcase purpose="Check if NDEFRecordMedia exists" type="compliance" status="approved" component="TizenAPI/Communication/NFC" execution_type="auto" priority="P1" id="NDEFRecordMedia_exist">
+        <description>
+          <test_script_entry>/opt/tct-nfc-tizen-tests/nfc/NDEFRecordMedia_exist.html</test_script_entry>
+        </description>
+        <specs>
+          <spec>
+            <spec_assertion interface="NDEFRecordMedia" element_type="constructor" element_name="constructor" specification="NFC" section="Communication" category="Tizen Device API Specifications"/>
+            <spec_url>https://developer.tizen.org/help/topic/org.tizen.web.device.apireference/tizen/nfc.html</spec_url>
+            <spec_statement>TBD</spec_statement>
+          </spec>
+        </specs>
+      </testcase>
+      <testcase purpose="Check if instance of interface NDEFRecordMedia can be extended with new property" type="compliance" status="approved" component="TizenAPI/Communication/NFC" execution_type="auto" priority="P3" id="NDEFRecordMedia_extend">
+        <description>
+          <test_script_entry>/opt/tct-nfc-tizen-tests/nfc/NDEFRecordMedia_extend.html</test_script_entry>
+        </description>
+        <specs>
+          <spec>
+            <spec_assertion interface="NDEFRecordMedia" usage="true" specification="NFC" section="Communication" category="Tizen Device API Specifications"/>
+            <spec_url>https://developer.tizen.org/help/topic/org.tizen.web.device.apireference/tizen/nfc.html</spec_url>
+            <spec_statement>TBD</spec_statement>
+          </spec>
+        </specs>
+      </testcase>
+      <testcase purpose="Check if attribute id of NDEFRecordMedia exists, has type Array and is readonly" type="compliance" status="approved" component="TizenAPI/Communication/NFC" execution_type="auto" priority="P1" id="NDEFRecordMedia_id_attribute">
+        <description>
+          <test_script_entry>/opt/tct-nfc-tizen-tests/nfc/NDEFRecordMedia_id_attribute.html</test_script_entry>
+        </description>
+        <specs>
+          <spec>
+            <spec_assertion interface="NDEFRecordMedia" element_type="attribute" element_name="id" specification="NFC" section="Communication" category="Tizen Device API Specifications"/>
+            <spec_url>https://developer.tizen.org/help/topic/org.tizen.web.device.apireference/tizen/nfc.html</spec_url>
+            <spec_statement>TBD</spec_statement>
+          </spec>
+        </specs>
+      </testcase>
+      <testcase purpose="Check if attribute mimeType of NDEFRecordMedia exists, has type DOMString and is readonly" type="compliance" status="approved" component="TizenAPI/Communication/NFC" execution_type="auto" priority="P1" id="NDEFRecordMedia_mimeType_attribute">
+        <description>
+          <test_script_entry>/opt/tct-nfc-tizen-tests/nfc/NDEFRecordMedia_mimeType_attribute.html</test_script_entry>
+        </description>
+        <specs>
+          <spec>
+            <spec_assertion interface="NDEFRecordMedia" element_type="attribute" element_name="mimeType" specification="NFC" section="Communication" category="Tizen Device API Specifications"/>
+            <spec_url>https://developer.tizen.org/help/topic/org.tizen.web.device.apireference/tizen/nfc.html</spec_url>
+            <spec_statement>TBD</spec_statement>
+          </spec>
+        </specs>
+      </testcase>
+      <testcase purpose="Check if attribute payload of NDEFRecordMedia exists, has type Array and is readonly" type="compliance" status="approved" component="TizenAPI/Communication/NFC" execution_type="auto" priority="P1" id="NDEFRecordMedia_payload_attribute">
+        <description>
+          <test_script_entry>/opt/tct-nfc-tizen-tests/nfc/NDEFRecordMedia_payload_attribute.html</test_script_entry>
+        </description>
+        <specs>
+          <spec>
+            <spec_assertion interface="NDEFRecordMedia" element_type="attribute" element_name="payload" specification="NFC" section="Communication" category="Tizen Device API Specifications"/>
+            <spec_url>https://developer.tizen.org/help/topic/org.tizen.web.device.apireference/tizen/nfc.html</spec_url>
+            <spec_statement>TBD</spec_statement>
+          </spec>
+        </specs>
+      </testcase>
+      <testcase purpose="Check if attribute tnf of NDEFRecordMedia exists, has type short and is readonly" type="compliance" status="approved" component="TizenAPI/Communication/NFC" execution_type="auto" priority="P1" id="NDEFRecordMedia_tnf_attribute">
+        <description>
+          <test_script_entry>/opt/tct-nfc-tizen-tests/nfc/NDEFRecordMedia_tnf_attribute.html</test_script_entry>
+        </description>
+        <specs>
+          <spec>
+            <spec_assertion interface="NDEFRecordMedia" element_type="attribute" element_name="tnf" specification="NFC" section="Communication" category="Tizen Device API Specifications"/>
+            <spec_url>https://developer.tizen.org/help/topic/org.tizen.web.device.apireference/tizen/nfc.html</spec_url>
+            <spec_statement>TBD</spec_statement>
+          </spec>
+        </specs>
+      </testcase>
+      <testcase purpose="Check if attribute type of NDEFRecordMedia exists, has type Array and is readonly" type="compliance" status="approved" component="TizenAPI/Communication/NFC" execution_type="auto" priority="P1" id="NDEFRecordMedia_type_attribute">
+        <description>
+          <test_script_entry>/opt/tct-nfc-tizen-tests/nfc/NDEFRecordMedia_type_attribute.html</test_script_entry>
+        </description>
+        <specs>
+          <spec>
+            <spec_assertion interface="NDEFRecordMedia" element_type="attribute" element_name="type" specification="NFC" section="Communication" category="Tizen Device API Specifications"/>
+            <spec_url>https://developer.tizen.org/help/topic/org.tizen.web.device.apireference/tizen/nfc.html</spec_url>
+            <spec_statement>TBD</spec_statement>
+          </spec>
+        </specs>
+      </testcase>
+      <testcase purpose="Check if NDEFRecordText constructor works" type="compliance" status="approved" component="TizenAPI/Communication/NFC" execution_type="auto" priority="P1" id="NDEFRecordText_constructor">
+        <description>
+          <test_script_entry>/opt/tct-nfc-tizen-tests/nfc/NDEFRecordText_constructor.html</test_script_entry>
+        </description>
+        <specs>
+          <spec>
+            <spec_assertion interface="NDEFRecordText" element_type="constructor" element_name="constructor" specification="NFC" section="Communication" category="Tizen Device API Specifications"/>
+            <spec_url>https://developer.tizen.org/help/topic/org.tizen.web.device.apireference/tizen/nfc.html</spec_url>
+            <spec_statement>TBD</spec_statement>
+          </spec>
+        </specs>
+      </testcase>
+      <testcase purpose="Check if NDEFRecordText constructor called with UTF16 encoding works" type="compliance" status="approved" component="TizenAPI/Communication/NFC" execution_type="auto" priority="P1" id="NDEFRecordText_constructor_encoding_UTF16">
+        <description>
+          <test_script_entry>/opt/tct-nfc-tizen-tests/nfc/NDEFRecordText_constructor_encoding_UTF16.html</test_script_entry>
+        </description>
+        <specs>
+          <spec>
+            <spec_assertion interface="NDEFRecordText" element_type="constructor" element_name="constructor" specification="NFC" section="Communication" category="Tizen Device API Specifications"/>
+            <spec_url>https://developer.tizen.org/help/topic/org.tizen.web.device.apireference/tizen/nfc.html</spec_url>
+            <spec_statement>TBD</spec_statement>
+          </spec>
+        </specs>
+      </testcase>
+      <testcase purpose="Check if NDEFRecordText constructor called with UTF8 encoding works" type="compliance" status="approved" component="TizenAPI/Communication/NFC" execution_type="auto" priority="P1" id="NDEFRecordText_constructor_encoding_UTF8">
+        <description>
+          <test_script_entry>/opt/tct-nfc-tizen-tests/nfc/NDEFRecordText_constructor_encoding_UTF8.html</test_script_entry>
+        </description>
+        <specs>
+          <spec>
+            <spec_assertion interface="NDEFRecordText" element_type="constructor" element_name="constructor" specification="NFC" section="Communication" category="Tizen Device API Specifications"/>
+            <spec_url>https://developer.tizen.org/help/topic/org.tizen.web.device.apireference/tizen/nfc.html</spec_url>
+            <spec_statement>TBD</spec_statement>
+          </spec>
+        </specs>
+      </testcase>
+      <testcase purpose="Check if attribute encoding of NDEFRecordText exists, has type NDEFRecordTextEncoding and is readonly" type="compliance" status="approved" component="TizenAPI/Communication/NFC" execution_type="auto" priority="P1" id="NDEFRecordText_encoding_attribute">
+        <description>
+          <test_script_entry>/opt/tct-nfc-tizen-tests/nfc/NDEFRecordText_encoding_attribute.html</test_script_entry>
+        </description>
+        <specs>
+          <spec>
+            <spec_assertion interface="NDEFRecordText" element_type="attribute" element_name="encoding" specification="NFC" section="Communication" category="Tizen Device API Specifications"/>
+            <spec_url>https://developer.tizen.org/help/topic/org.tizen.web.device.apireference/tizen/nfc.html</spec_url>
+            <spec_statement>TBD</spec_statement>
+          </spec>
+        </specs>
+      </testcase>
+      <testcase purpose="Check if NDEFRecordText exists" type="compliance" status="approved" component="TizenAPI/Communication/NFC" execution_type="auto" priority="P1" id="NDEFRecordText_exist">
+        <description>
+          <test_script_entry>/opt/tct-nfc-tizen-tests/nfc/NDEFRecordText_exist.html</test_script_entry>
+        </description>
+        <specs>
+          <spec>
+            <spec_assertion interface="NDEFRecordText" element_type="constructor" element_name="constructor" specification="NFC" section="Communication" category="Tizen Device API Specifications"/>
+            <spec_url>https://developer.tizen.org/help/topic/org.tizen.web.device.apireference/tizen/nfc.html</spec_url>
+            <spec_statement>TBD</spec_statement>
+          </spec>
+        </specs>
+      </testcase>
+      <testcase purpose="Check if instance of interface NDEFRecordText can be extended with new property" type="compliance" status="approved" component="TizenAPI/Communication/NFC" execution_type="auto" priority="P3" id="NDEFRecordText_extend">
+        <description>
+          <test_script_entry>/opt/tct-nfc-tizen-tests/nfc/NDEFRecordText_extend.html</test_script_entry>
+        </description>
+        <specs>
+          <spec>
+            <spec_assertion interface="NDEFRecordText" usage="true" specification="NFC" section="Communication" category="Tizen Device API Specifications"/>
+            <spec_url>https://developer.tizen.org/help/topic/org.tizen.web.device.apireference/tizen/nfc.html</spec_url>
+            <spec_statement>TBD</spec_statement>
+          </spec>
+        </specs>
+      </testcase>
+      <testcase purpose="Check if attribute id of NDEFRecordText exists, has type Array and is readonly" type="compliance" status="approved" component="TizenAPI/Communication/NFC" execution_type="auto" priority="P1" id="NDEFRecordText_id_attribute">
+        <description>
+          <test_script_entry>/opt/tct-nfc-tizen-tests/nfc/NDEFRecordText_id_attribute.html</test_script_entry>
+        </description>
+        <specs>
+          <spec>
+            <spec_assertion interface="NDEFRecordText" element_type="attribute" element_name="id" specification="NFC" section="Communication" category="Tizen Device API Specifications"/>
+            <spec_url>https://developer.tizen.org/help/topic/org.tizen.web.device.apireference/tizen/nfc.html</spec_url>
+            <spec_statement>TBD</spec_statement>
+          </spec>
+        </specs>
+      </testcase>
+      <testcase purpose="Check if attribute languageCode of NDEFRecordText exists, has type DOMString and is readonly" type="compliance" status="approved" component="TizenAPI/Communication/NFC" execution_type="auto" priority="P1" id="NDEFRecordText_languageCode_attribute">
+        <description>
+          <test_script_entry>/opt/tct-nfc-tizen-tests/nfc/NDEFRecordText_languageCode_attribute.html</test_script_entry>
+        </description>
+        <specs>
+          <spec>
+            <spec_assertion interface="NDEFRecordText" element_type="attribute" element_name="languageCode" specification="NFC" section="Communication" category="Tizen Device API Specifications"/>
+            <spec_url>https://developer.tizen.org/help/topic/org.tizen.web.device.apireference/tizen/nfc.html</spec_url>
+            <spec_statement>TBD</spec_statement>
+          </spec>
+        </specs>
+      </testcase>
+      <testcase purpose="Check if attribute payload of NDEFRecordText exists, has type Array and is readonly" type="compliance" status="approved" component="TizenAPI/Communication/NFC" execution_type="auto" priority="P1" id="NDEFRecordText_payload_attribute">
+        <description>
+          <test_script_entry>/opt/tct-nfc-tizen-tests/nfc/NDEFRecordText_payload_attribute.html</test_script_entry>
+        </description>
+        <specs>
+          <spec>
+            <spec_assertion interface="NDEFRecordText" element_type="attribute" element_name="payload" specification="NFC" section="Communication" category="Tizen Device API Specifications"/>
+            <spec_url>https://developer.tizen.org/help/topic/org.tizen.web.device.apireference/tizen/nfc.html</spec_url>
+            <spec_statement>TBD</spec_statement>
+          </spec>
+        </specs>
+      </testcase>
+      <testcase purpose="Check if attribute text of NDEFRecordText exists, has type DOMString and is readonly" type="compliance" status="approved" component="TizenAPI/Communication/NFC" execution_type="auto" priority="P1" id="NDEFRecordText_text_attribute">
+        <description>
+          <test_script_entry>/opt/tct-nfc-tizen-tests/nfc/NDEFRecordText_text_attribute.html</test_script_entry>
+        </description>
+        <specs>
+          <spec>
+            <spec_assertion interface="NDEFRecordText" element_type="attribute" element_name="text" specification="NFC" section="Communication" category="Tizen Device API Specifications"/>
+            <spec_url>https://developer.tizen.org/help/topic/org.tizen.web.device.apireference/tizen/nfc.html</spec_url>
+            <spec_statement>TBD</spec_statement>
+          </spec>
+        </specs>
+      </testcase>
+      <testcase purpose="Check if attribute tnf of NDEFRecordText exists, has type short and is readonly" type="compliance" status="approved" component="TizenAPI/Communication/NFC" execution_type="auto" priority="P1" id="NDEFRecordText_tnf_attribute">
+        <description>
+          <test_script_entry>/opt/tct-nfc-tizen-tests/nfc/NDEFRecordText_tnf_attribute.html</test_script_entry>
+        </description>
+        <specs>
+          <spec>
+            <spec_assertion interface="NDEFRecordText" element_type="attribute" element_name="tnf" specification="NFC" section="Communication" category="Tizen Device API Specifications"/>
+            <spec_url>https://developer.tizen.org/help/topic/org.tizen.web.device.apireference/tizen/nfc.html</spec_url>
+            <spec_statement>TBD</spec_statement>
+          </spec>
+        </specs>
+      </testcase>
+      <testcase purpose="Check if attribute type of NDEFRecordText exists, has type Array and is readonly" type="compliance" status="approved" component="TizenAPI/Communication/NFC" execution_type="auto" priority="P1" id="NDEFRecordText_type_attribute">
+        <description>
+          <test_script_entry>/opt/tct-nfc-tizen-tests/nfc/NDEFRecordText_type_attribute.html</test_script_entry>
+        </description>
+        <specs>
+          <spec>
+            <spec_assertion interface="NDEFRecordText" element_type="attribute" element_name="type" specification="NFC" section="Communication" category="Tizen Device API Specifications"/>
+            <spec_url>https://developer.tizen.org/help/topic/org.tizen.web.device.apireference/tizen/nfc.html</spec_url>
+            <spec_statement>TBD</spec_statement>
+          </spec>
+        </specs>
+      </testcase>
+      <testcase purpose="Check if NDEFRecordURI constructor works" type="compliance" status="approved" component="TizenAPI/Communication/NFC" execution_type="auto" priority="P1" id="NDEFRecordURI_constructor">
+        <description>
+          <test_script_entry>/opt/tct-nfc-tizen-tests/nfc/NDEFRecordURI_constructor.html</test_script_entry>
+        </description>
+        <specs>
+          <spec>
+            <spec_assertion interface="NDEFRecordURI" element_type="constructor" element_name="constructor" specification="NFC" section="Communication" category="Tizen Device API Specifications"/>
+            <spec_url>https://developer.tizen.org/help/topic/org.tizen.web.device.apireference/tizen/nfc.html</spec_url>
+            <spec_statement>TBD</spec_statement>
+          </spec>
+        </specs>
+      </testcase>
+      <testcase purpose="Check if NDEFRecordURI exists" type="compliance" status="approved" component="TizenAPI/Communication/NFC" execution_type="auto" priority="P1" id="NDEFRecordURI_exist">
+        <description>
+          <test_script_entry>/opt/tct-nfc-tizen-tests/nfc/NDEFRecordURI_exist.html</test_script_entry>
+        </description>
+        <specs>
+          <spec>
+            <spec_assertion interface="NDEFRecordURI" element_type="constructor" element_name="constructor" specification="NFC" section="Communication" category="Tizen Device API Specifications"/>
+            <spec_url>https://developer.tizen.org/help/topic/org.tizen.web.device.apireference/tizen/nfc.html</spec_url>
+            <spec_statement>TBD</spec_statement>
+          </spec>
+        </specs>
+      </testcase>
+      <testcase purpose="Check if instance of interface NDEFRecordURI can be extended with new property" type="compliance" status="approved" component="TizenAPI/Communication/NFC" execution_type="auto" priority="P3" id="NDEFRecordURI_extend">
+        <description>
+          <test_script_entry>/opt/tct-nfc-tizen-tests/nfc/NDEFRecordURI_extend.html</test_script_entry>
+        </description>
+        <specs>
+          <spec>
+            <spec_assertion interface="NDEFRecordURI" usage="true" specification="NFC" section="Communication" category="Tizen Device API Specifications"/>
+            <spec_url>https://developer.tizen.org/help/topic/org.tizen.web.device.apireference/tizen/nfc.html</spec_url>
+            <spec_statement>TBD</spec_statement>
+          </spec>
+        </specs>
+      </testcase>
+      <testcase purpose="Check if attribute id of NDEFRecordURI exists, has type Array and is readonly" type="compliance" status="approved" component="TizenAPI/Communication/NFC" execution_type="auto" priority="P1" id="NDEFRecordURI_id_attribute">
+        <description>
+          <test_script_entry>/opt/tct-nfc-tizen-tests/nfc/NDEFRecordURI_id_attribute.html</test_script_entry>
+        </description>
+        <specs>
+          <spec>
+            <spec_assertion interface="NDEFRecordURI" element_type="attribute" element_name="id" specification="NFC" section="Communication" category="Tizen Device API Specifications"/>
+            <spec_url>https://developer.tizen.org/help/topic/org.tizen.web.device.apireference/tizen/nfc.html</spec_url>
+            <spec_statement>TBD</spec_statement>
+          </spec>
+        </specs>
+      </testcase>
+      <testcase purpose="Check if attribute payload of NDEFRecordURI exists, has type Array and is readonly" type="compliance" status="approved" component="TizenAPI/Communication/NFC" execution_type="auto" priority="P1" id="NDEFRecordURI_payload_attribute">
+        <description>
+          <test_script_entry>/opt/tct-nfc-tizen-tests/nfc/NDEFRecordURI_payload_attribute.html</test_script_entry>
+        </description>
+        <specs>
+          <spec>
+            <spec_assertion interface="NDEFRecordURI" element_type="attribute" element_name="payload" specification="NFC" section="Communication" category="Tizen Device API Specifications"/>
+            <spec_url>https://developer.tizen.org/help/topic/org.tizen.web.device.apireference/tizen/nfc.html</spec_url>
+            <spec_statement>TBD</spec_statement>
+          </spec>
+        </specs>
+      </testcase>
+      <testcase purpose="Check if attribute tnf of NDEFRecordURI exists, has type short and is readonly" type="compliance" status="approved" component="TizenAPI/Communication/NFC" execution_type="auto" priority="P1" id="NDEFRecordURI_tnf_attribute">
+        <description>
+          <test_script_entry>/opt/tct-nfc-tizen-tests/nfc/NDEFRecordURI_tnf_attribute.html</test_script_entry>
+        </description>
+        <specs>
+          <spec>
+            <spec_assertion interface="NDEFRecordURI" element_type="attribute" element_name="tnf" specification="NFC" section="Communication" category="Tizen Device API Specifications"/>
+            <spec_url>https://developer.tizen.org/help/topic/org.tizen.web.device.apireference/tizen/nfc.html</spec_url>
+            <spec_statement>TBD</spec_statement>
+          </spec>
+        </specs>
+      </testcase>
+      <testcase purpose="Check if attribute type of NDEFRecordURI exists, has type Array and is readonly" type="compliance" status="approved" component="TizenAPI/Communication/NFC" execution_type="auto" priority="P1" id="NDEFRecordURI_type_attribute">
+        <description>
+          <test_script_entry>/opt/tct-nfc-tizen-tests/nfc/NDEFRecordURI_type_attribute.html</test_script_entry>
+        </description>
+        <specs>
+          <spec>
+            <spec_assertion interface="NDEFRecordURI" element_type="attribute" element_name="type" specification="NFC" section="Communication" category="Tizen Device API Specifications"/>
+            <spec_url>https://developer.tizen.org/help/topic/org.tizen.web.device.apireference/tizen/nfc.html</spec_url>
+            <spec_statement>TBD</spec_statement>
+          </spec>
+        </specs>
+      </testcase>
+      <testcase purpose="Check if attribute uri of NDEFRecordURI exists, has type DOMString and is readonly" type="compliance" status="approved" component="TizenAPI/Communication/NFC" execution_type="auto" priority="P1" id="NDEFRecordURI_uri_attribute">
+        <description>
+          <test_script_entry>/opt/tct-nfc-tizen-tests/nfc/NDEFRecordURI_uri_attribute.html</test_script_entry>
+        </description>
+        <specs>
+          <spec>
+            <spec_assertion interface="NDEFRecordURI" element_type="attribute" element_name="uri" specification="NFC" section="Communication" category="Tizen Device API Specifications"/>
+            <spec_url>https://developer.tizen.org/help/topic/org.tizen.web.device.apireference/tizen/nfc.html</spec_url>
+            <spec_statement>TBD</spec_statement>
+          </spec>
+        </specs>
+      </testcase>
+      <testcase purpose="Check if NDEFRecord constructor works" type="compliance" status="approved" component="TizenAPI/Communication/NFC" execution_type="auto" priority="P1" id="NDEFRecord_constructor">
+        <description>
+          <test_script_entry>/opt/tct-nfc-tizen-tests/nfc/NDEFRecord_constructor.html</test_script_entry>
+        </description>
+        <specs>
+          <spec>
+            <spec_assertion interface="NDEFRecord" element_type="constructor" element_name="constructor" specification="NFC" section="Communication" category="Tizen Device API Specifications"/>
+            <spec_url>https://developer.tizen.org/help/topic/org.tizen.web.device.apireference/tizen/nfc.html</spec_url>
+            <spec_statement>TBD</spec_statement>
+          </spec>
+        </specs>
+      </testcase>
+      <testcase purpose="Check if new tizen.NDEFRecord(raw_data) works" type="compliance" status="approved" component="TizenAPI/Communication/NFC" execution_type="auto" priority="P1" id="NDEFRecord_constructor_raw_data">
+        <description>
+          <test_script_entry>/opt/tct-nfc-tizen-tests/nfc/NDEFRecord_constructor_raw_data.html</test_script_entry>
+        </description>
+        <specs>
+          <spec>
+            <spec_assertion interface="NDEFRecord" element_type="constructor" element_name="constructor" specification="NFC" section="Communication" category="Tizen Device API Specifications"/>
+            <spec_url>https://developer.tizen.org/help/topic/org.tizen.web.device.apireference/tizen/nfc.html</spec_url>
+            <spec_statement>TBD</spec_statement>
+          </spec>
+        </specs>
+      </testcase>
+      <testcase purpose="Check NDEFRecord constructor with all parameters" type="compliance" status="approved" component="TizenAPI/Communication/NFC" execution_type="auto" priority="P2" id="NDEFRecord_constructor_tnf">
+        <description>
+          <test_script_entry>/opt/tct-nfc-tizen-tests/nfc/NDEFRecord_constructor_tnf.html</test_script_entry>
+        </description>
+        <specs>
+          <spec>
+            <spec_assertion interface="NDEFRecord" element_type="constructor" element_name="constructor" specification="NFC" section="Communication" category="Tizen Device API Specifications"/>
+            <spec_url>https://developer.tizen.org/help/topic/org.tizen.web.device.apireference/tizen/nfc.html</spec_url>
+            <spec_statement>TBD</spec_statement>
+          </spec>
+        </specs>
+      </testcase>
+      <testcase purpose="Check NDEFRecord constructor with only mandatory parameters" type="compliance" status="approved" component="TizenAPI/Communication/NFC" execution_type="auto" priority="P2" id="NDEFRecord_constructor_tnf_with_id">
+        <description>
+          <test_script_entry>/opt/tct-nfc-tizen-tests/nfc/NDEFRecord_constructor_tnf_with_id.html</test_script_entry>
+        </description>
+        <specs>
+          <spec>
+            <spec_assertion interface="NDEFRecord" element_type="constructor" element_name="constructor" specification="NFC" section="Communication" category="Tizen Device API Specifications"/>
+            <spec_url>https://developer.tizen.org/help/topic/org.tizen.web.device.apireference/tizen/nfc.html</spec_url>
+            <spec_statement>TBD</spec_statement>
+          </spec>
+        </specs>
+      </testcase>
+      <testcase purpose="Check if NDEFRecord exists" type="compliance" status="approved" component="TizenAPI/Communication/NFC" execution_type="auto" priority="P1" id="NDEFRecord_exist">
+        <description>
+          <test_script_entry>/opt/tct-nfc-tizen-tests/nfc/NDEFRecord_exist.html</test_script_entry>
+        </description>
+        <specs>
+          <spec>
+            <spec_assertion interface="NDEFRecord" element_type="constructor" element_name="constructor" specification="NFC" section="Communication" category="Tizen Device API Specifications"/>
+            <spec_url>https://developer.tizen.org/help/topic/org.tizen.web.device.apireference/tizen/nfc.html</spec_url>
+            <spec_statement>TBD</spec_statement>
+          </spec>
+        </specs>
+      </testcase>
+      <testcase purpose="Check if instance of interface NDEFRecord can be extended with new property" type="compliance" status="approved" component="TizenAPI/Communication/NFC" execution_type="auto" priority="P3" id="NDEFRecord_extend">
+        <description>
+          <test_script_entry>/opt/tct-nfc-tizen-tests/nfc/NDEFRecord_extend.html</test_script_entry>
+        </description>
+        <specs>
+          <spec>
+            <spec_assertion interface="NDEFRecord" usage="true" specification="NFC" section="Communication" category="Tizen Device API Specifications"/>
+            <spec_url>https://developer.tizen.org/help/topic/org.tizen.web.device.apireference/tizen/nfc.html</spec_url>
+            <spec_statement>TBD</spec_statement>
+          </spec>
+        </specs>
+      </testcase>
+      <testcase purpose="Check if attribute id of NDEFRecord exists, has type Array and is readonly" type="compliance" status="approved" component="TizenAPI/Communication/NFC" execution_type="auto" priority="P1" id="NDEFRecord_id_attribute">
+        <description>
+          <test_script_entry>/opt/tct-nfc-tizen-tests/nfc/NDEFRecord_id_attribute.html</test_script_entry>
+        </description>
+        <specs>
+          <spec>
+            <spec_assertion interface="NDEFRecord" element_type="attribute" element_name="id" specification="NFC" section="Communication" category="Tizen Device API Specifications"/>
+            <spec_url>https://developer.tizen.org/help/topic/org.tizen.web.device.apireference/tizen/nfc.html</spec_url>
+            <spec_statement>TBD</spec_statement>
+          </spec>
+        </specs>
+      </testcase>
+      <testcase purpose="Check if attribute payload of NDEFRecord exists, has type Array and is readonly" type="compliance" status="approved" component="TizenAPI/Communication/NFC" execution_type="auto" priority="P1" id="NDEFRecord_payload_attribute">
+        <description>
+          <test_script_entry>/opt/tct-nfc-tizen-tests/nfc/NDEFRecord_payload_attribute.html</test_script_entry>
+        </description>
+        <specs>
+          <spec>
+            <spec_assertion interface="NDEFRecord" element_type="attribute" element_name="payload" specification="NFC" section="Communication" category="Tizen Device API Specifications"/>
+            <spec_url>https://developer.tizen.org/help/topic/org.tizen.web.device.apireference/tizen/nfc.html</spec_url>
+            <spec_statement>TBD</spec_statement>
+          </spec>
+        </specs>
+      </testcase>
+      <testcase purpose="Check if attribute tnf of NDEFRecord exists, has type short and is readonly" type="compliance" status="approved" component="TizenAPI/Communication/NFC" execution_type="auto" priority="P1" id="NDEFRecord_tnf_attribute">
+        <description>
+          <test_script_entry>/opt/tct-nfc-tizen-tests/nfc/NDEFRecord_tnf_attribute.html</test_script_entry>
+        </description>
+        <specs>
+          <spec>
+            <spec_assertion interface="NDEFRecord" element_type="attribute" element_name="tnf" specification="NFC" section="Communication" category="Tizen Device API Specifications"/>
+            <spec_url>https://developer.tizen.org/help/topic/org.tizen.web.device.apireference/tizen/nfc.html</spec_url>
+            <spec_statement>TBD</spec_statement>
+          </spec>
+        </specs>
+      </testcase>
+      <testcase purpose="Check if attribute type of NDEFRecord exists, has type Array and is readonly" type="compliance" status="approved" component="TizenAPI/Communication/NFC" execution_type="auto" priority="P1" id="NDEFRecord_type_attribute">
+        <description>
+          <test_script_entry>/opt/tct-nfc-tizen-tests/nfc/NDEFRecord_type_attribute.html</test_script_entry>
+        </description>
+        <specs>
+          <spec>
+            <spec_assertion interface="NDEFRecord" element_type="attribute" element_name="type" specification="NFC" section="Communication" category="Tizen Device API Specifications"/>
+            <spec_url>https://developer.tizen.org/help/topic/org.tizen.web.device.apireference/tizen/nfc.html</spec_url>
+            <spec_statement>TBD</spec_statement>
+          </spec>
+        </specs>
+      </testcase>
+      <testcase purpose="Check if instance of interface NFCAdapter can be extended with new property" type="compliance" status="approved" component="TizenAPI/Communication/NFC" execution_type="auto" priority="P3" id="NFCAdapter_extend">
+        <description>
+          <test_script_entry>/opt/tct-nfc-tizen-tests/nfc/NFCAdapter_extend.html</test_script_entry>
+        </description>
+        <specs>
+          <spec>
+            <spec_assertion interface="NFCAdapter" usage="true" specification="NFC" section="Communication" category="Tizen Device API Specifications"/>
+            <spec_url>https://developer.tizen.org/help/topic/org.tizen.web.device.apireference/tizen/nfc.html</spec_url>
+            <spec_statement>TBD</spec_statement>
+          </spec>
+        </specs>
+      </testcase>
+      <testcase purpose="Check if method getCachedMessage of NFCAdapter works" type="compliance" status="approved" component="TizenAPI/Communication/NFC" execution_type="auto" priority="P1" id="NFCAdapter_getCachedMessage">
+        <description>
+          <test_script_entry>/opt/tct-nfc-tizen-tests/nfc/NFCAdapter_getCachedMessage.html</test_script_entry>
+        </description>
+        <specs>
+          <spec>
+            <spec_assertion interface="NFCAdapter" element_type="method" element_name="getCachedMessage" specification="NFC" section="Communication" category="Tizen Device API Specifications"/>
+            <spec_url>https://developer.tizen.org/help/topic/org.tizen.web.device.apireference/tizen/nfc.html</spec_url>
+            <spec_statement>TBD</spec_statement>
+          </spec>
+        </specs>
+      </testcase>
+      <testcase purpose="Check if method getCachedMessage of NFCAdapter accepts extra argument" type="compliance" status="approved" component="TizenAPI/Communication/NFC" execution_type="auto" priority="P1" id="NFCAdapter_getCachedMessage_extra_argument">
+        <description>
+          <test_script_entry>/opt/tct-nfc-tizen-tests/nfc/NFCAdapter_getCachedMessage_extra_argument.html</test_script_entry>
+        </description>
+        <specs>
+          <spec>
+            <spec_assertion interface="NFCAdapter" element_type="method" element_name="getCachedMessage" specification="NFC" section="Communication" category="Tizen Device API Specifications"/>
+            <spec_url>https://developer.tizen.org/help/topic/org.tizen.web.device.apireference/tizen/nfc.html</spec_url>
+            <spec_statement>TBD</spec_statement>
+          </spec>
+        </specs>
+      </testcase>
+      <testcase purpose="Check if interface NFCAdapter exists, it should not." type="compliance" status="approved" component="TizenAPI/Communication/NFC" execution_type="auto" priority="P3" id="NFCAdapter_notexist">
+        <description>
+          <test_script_entry>/opt/tct-nfc-tizen-tests/nfc/NFCAdapter_notexist.html</test_script_entry>
+        </description>
+        <specs>
+          <spec>
+            <spec_assertion interface="NFCAdapter" usage="true" specification="NFC" section="Communication" category="Tizen Device API Specifications"/>
+            <spec_url>https://developer.tizen.org/help/topic/org.tizen.web.device.apireference/tizen/nfc.html</spec_url>
+            <spec_statement>TBD</spec_statement>
+          </spec>
+        </specs>
+      </testcase>
+      <testcase purpose="Check if attribute powered of NFCAdapter exists, has type Boolean and is readonly" type="compliance" status="approved" component="TizenAPI/Communication/NFC" execution_type="auto" priority="P1" id="NFCAdapter_powered_attribute">
+        <description>
+          <test_script_entry>/opt/tct-nfc-tizen-tests/nfc/NFCAdapter_powered_attribute.html</test_script_entry>
+        </description>
+        <specs>
+          <spec>
+            <spec_assertion interface="NFCAdapter" element_type="attribute" element_name="powered" specification="NFC" section="Communication" category="Tizen Device API Specifications"/>
+            <spec_url>https://developer.tizen.org/help/topic/org.tizen.web.device.apireference/tizen/nfc.html</spec_url>
+            <spec_statement>TBD</spec_statement>
+          </spec>
+        </specs>
+      </testcase>
+      <testcase purpose="Check if NFCAdapter::setPeerListener throws exception when given wrong detectCallback" type="compliance" status="approved" component="TizenAPI/Communication/NFC" execution_type="auto" priority="P2" id="NFCAdapter_setPeerListener_detectCallback_TypeMismatch">
+        <description>
+          <test_script_entry>/opt/tct-nfc-tizen-tests/nfc/NFCAdapter_setPeerListener_detectCallback_TypeMismatch.html</test_script_entry>
+        </description>
+        <specs>
+          <spec>
+            <spec_assertion interface="NFCAdapter" element_type="method" element_name="setPeerListener" specification="NFC" section="Communication" category="Tizen Device API Specifications"/>
+            <spec_url>https://developer.tizen.org/help/topic/org.tizen.web.device.apireference/tizen/nfc.html</spec_url>
+            <spec_statement>TBD</spec_statement>
+          </spec>
+        </specs>
+      </testcase>
+      <testcase purpose="Check verification of detectCallback by NFCAdapter::setPeerListener()" type="compliance" onload_delay="90" status="approved" component="TizenAPI/Communication/NFC" execution_type="auto" priority="P2" id="NFCAdapter_setPeerListener_detectCallback_invalid_cb">
+        <description>
+          <test_script_entry>/opt/tct-nfc-tizen-tests/nfc/NFCAdapter_setPeerListener_detectCallback_invalid_cb.html</test_script_entry>
+        </description>
+        <specs>
+          <spec>
+            <spec_assertion interface="NFCAdapter" element_type="method" element_name="setPeerListener" specification="NFC" section="Communication" category="Tizen Device API Specifications"/>
+            <spec_url>https://developer.tizen.org/help/topic/org.tizen.web.device.apireference/tizen/nfc.html</spec_url>
+            <spec_statement>TBD</spec_statement>
+          </spec>
+        </specs>
+      </testcase>
+      <testcase purpose="Check if adapter.setPeerListener() throws an exception when called without argument" type="compliance" status="approved" component="TizenAPI/Communication/NFC" execution_type="auto" priority="P1" id="NFCAdapter_setPeerListener_missarg">
+        <description>
+          <test_script_entry>/opt/tct-nfc-tizen-tests/nfc/NFCAdapter_setPeerListener_missarg.html</test_script_entry>
+        </description>
+        <specs>
+          <spec>
+            <spec_assertion interface="NFCAdapter" element_type="method" element_name="setPeerListener" specification="NFC" section="Communication" category="Tizen Device API Specifications"/>
+            <spec_url>https://developer.tizen.org/help/topic/org.tizen.web.device.apireference/tizen/nfc.html</spec_url>
+            <spec_statement>TBD</spec_statement>
+          </spec>
+        </specs>
+      </testcase>
+      <testcase purpose="Check NFCAdapter.setPowered() argument errorCallback conversions exception" type="compliance" status="approved" component="TizenAPI/Communication/NFC" execution_type="auto" priority="P2" id="NFCAdapter_setPowered_errorCallback_TypeMismatch">
+        <description>
+          <test_script_entry>/opt/tct-nfc-tizen-tests/nfc/NFCAdapter_setPowered_errorCallback_TypeMismatch.html</test_script_entry>
+        </description>
+        <specs>
+          <spec>
+            <spec_assertion interface="NFCAdapter" element_type="method" element_name="setPowered" specification="NFC" section="Communication" category="Tizen Device API Specifications"/>
+            <spec_url>https://developer.tizen.org/help/topic/org.tizen.web.device.apireference/tizen/nfc.html</spec_url>
+            <spec_statement>TBD</spec_statement>
+          </spec>
+        </specs>
+      </testcase>
+      <testcase purpose="Check NFCAdapter::setPowered() argument errorCallback validation - object with onerror property" type="compliance" onload_delay="90" status="approved" component="TizenAPI/Communication/NFC" execution_type="auto" priority="P2" id="NFCAdapter_setPowered_errorCallback_invalid_cb">
+        <description>
+          <test_script_entry>/opt/tct-nfc-tizen-tests/nfc/NFCAdapter_setPowered_errorCallback_invalid_cb.html</test_script_entry>
+        </description>
+        <specs>
+          <spec>
+            <spec_assertion interface="NFCAdapter" element_type="method" element_name="setPowered" specification="NFC" section="Communication" category="Tizen Device API Specifications"/>
+            <spec_url>https://developer.tizen.org/help/topic/org.tizen.web.device.apireference/tizen/nfc.html</spec_url>
+            <spec_statement>TBD</spec_statement>
+          </spec>
+        </specs>
+      </testcase>
+      <testcase purpose="Check NFCAdapter.setPowered() argument successCallback conversions exception" type="compliance" status="approved" component="TizenAPI/Communication/NFC" execution_type="auto" priority="P2" id="NFCAdapter_setPowered_successCallback_TypeMismatch">
+        <description>
+          <test_script_entry>/opt/tct-nfc-tizen-tests/nfc/NFCAdapter_setPowered_successCallback_TypeMismatch.html</test_script_entry>
+        </description>
+        <specs>
+          <spec>
+            <spec_assertion interface="NFCAdapter" element_type="method" element_name="setPowered" specification="NFC" section="Communication" category="Tizen Device API Specifications"/>
+            <spec_url>https://developer.tizen.org/help/topic/org.tizen.web.device.apireference/tizen/nfc.html</spec_url>
+            <spec_statement>TBD</spec_statement>
+          </spec>
+        </specs>
+      </testcase>
+      <testcase purpose="Check NFCAdapter::setPowered() argument successCallback validation - object with onerror property" type="compliance" onload_delay="90" status="approved" component="TizenAPI/Communication/NFC" execution_type="auto" priority="P2" id="NFCAdapter_setPowered_successCallback_invalid_cb">
+        <description>
+          <test_script_entry>/opt/tct-nfc-tizen-tests/nfc/NFCAdapter_setPowered_successCallback_invalid_cb.html</test_script_entry>
+        </description>
+        <specs>
+          <spec>
+            <spec_assertion interface="NFCAdapter" element_type="method" element_name="setPowered" specification="NFC" section="Communication" category="Tizen Device API Specifications"/>
+            <spec_url>https://developer.tizen.org/help/topic/org.tizen.web.device.apireference/tizen/nfc.html</spec_url>
+            <spec_statement>TBD</spec_statement>
+          </spec>
+        </specs>
+      </testcase>
+      <testcase purpose="Check NFCAdapter::setPowered() optional argument errorCallback - call without it" type="compliance" onload_delay="90" status="approved" component="TizenAPI/Communication/NFC" execution_type="auto" priority="P2" id="NFCAdapter_setPowered_without_errorCallback">
+        <description>
+          <test_script_entry>/opt/tct-nfc-tizen-tests/nfc/NFCAdapter_setPowered_without_errorCallback.html</test_script_entry>
+        </description>
+        <specs>
+          <spec>
+            <spec_assertion interface="NFCAdapter" element_type="method" element_name="setPowered" specification="NFC" section="Communication" category="Tizen Device API Specifications"/>
+            <spec_url>https://developer.tizen.org/help/topic/org.tizen.web.device.apireference/tizen/nfc.html</spec_url>
+            <spec_statement>TBD</spec_statement>
+          </spec>
+        </specs>
+      </testcase>
+      <testcase purpose="Check NFCAdapter::setPowered() optional argument without successCallback - call without it" type="compliance" onload_delay="90" status="approved" component="TizenAPI/Communication/NFC" execution_type="auto" priority="P2" id="NFCAdapter_setPowered_without_successCallback">
+        <description>
+          <test_script_entry>/opt/tct-nfc-tizen-tests/nfc/NFCAdapter_setPowered_without_successCallback.html</test_script_entry>
+        </description>
+        <specs>
+          <spec>
+            <spec_assertion interface="NFCAdapter" element_type="method" element_name="setPowered" specification="NFC" section="Communication" category="Tizen Device API Specifications"/>
+            <spec_url>https://developer.tizen.org/help/topic/org.tizen.web.device.apireference/tizen/nfc.html</spec_url>
+            <spec_statement>TBD</spec_statement>
+          </spec>
+        </specs>
+      </testcase>
+      <testcase purpose="Check if NFCAdapter::setTagListener throws exception when given wrong detectCallback" type="compliance" status="approved" component="TizenAPI/Communication/NFC" execution_type="auto" priority="P2" id="NFCAdapter_setTagListener_detectCallback_TypeMismatch">
+        <description>
+          <test_script_entry>/opt/tct-nfc-tizen-tests/nfc/NFCAdapter_setTagListener_detectCallback_TypeMismatch.html</test_script_entry>
+        </description>
+        <specs>
+          <spec>
+            <spec_assertion interface="NFCAdapter" element_type="method" element_name="setTagListener" specification="NFC" section="Communication" category="Tizen Device API Specifications"/>
+            <spec_url>https://developer.tizen.org/help/topic/org.tizen.web.device.apireference/tizen/nfc.html</spec_url>
+            <spec_statement>TBD</spec_statement>
+          </spec>
+        </specs>
+      </testcase>
+      <testcase purpose="Check verification of detectCallback by NFCAdapter::setTagListener()" type="compliance" onload_delay="90" status="approved" component="TizenAPI/Communication/NFC" execution_type="auto" priority="P2" id="NFCAdapter_setTagListener_detectCallback_invalid_cb">
+        <description>
+          <test_script_entry>/opt/tct-nfc-tizen-tests/nfc/NFCAdapter_setTagListener_detectCallback_invalid_cb.html</test_script_entry>
+        </description>
+        <specs>
+          <spec>
+            <spec_assertion interface="NFCAdapter" element_type="method" element_name="setTagListener" specification="NFC" section="Communication" category="Tizen Device API Specifications"/>
+            <spec_url>https://developer.tizen.org/help/topic/org.tizen.web.device.apireference/tizen/nfc.html</spec_url>
+            <spec_statement>TBD</spec_statement>
+          </spec>
+        </specs>
+      </testcase>
+      <testcase purpose="Check if adapter.setTagListener() throws an exception" type="compliance" status="approved" component="TizenAPI/Communication/NFC" execution_type="auto" priority="P1" id="NFCAdapter_setTagListener_missarg">
+        <description>
+          <test_script_entry>/opt/tct-nfc-tizen-tests/nfc/NFCAdapter_setTagListener_missarg.html</test_script_entry>
+        </description>
+        <specs>
+          <spec>
+            <spec_assertion interface="NFCAdapter" element_type="method" element_name="setTagListener" specification="NFC" section="Communication" category="Tizen Device API Specifications"/>
+            <spec_url>https://developer.tizen.org/help/topic/org.tizen.web.device.apireference/tizen/nfc.html</spec_url>
+            <spec_statement>TBD</spec_statement>
+          </spec>
+        </specs>
+      </testcase>
+      <testcase purpose="Check if TypeMismatchError is thrown when NFCAdapter::setTagListener() is given wrong tagFilter" type="compliance" onload_delay="90" status="approved" component="TizenAPI/Communication/NFC" execution_type="auto" priority="P2" id="NFCAdapter_setTagListener_tagFilter_TypeMismatch">
+        <description>
+          <test_script_entry>/opt/tct-nfc-tizen-tests/nfc/NFCAdapter_setTagListener_tagFilter_TypeMismatch.html</test_script_entry>
+        </description>
+        <specs>
+          <spec>
+            <spec_assertion interface="NFCAdapter" element_type="method" element_name="setTagListener" specification="NFC" section="Communication" category="Tizen Device API Specifications"/>
+            <spec_url>https://developer.tizen.org/help/topic/org.tizen.web.device.apireference/tizen/nfc.html</spec_url>
+            <spec_statement>TBD</spec_statement>
+          </spec>
+        </specs>
+      </testcase>
+      <testcase purpose="Check if method unsetPeerListener of NFCAdapter accepts extra argument" type="compliance" status="approved" component="TizenAPI/Communication/NFC" execution_type="auto" priority="P1" id="NFCAdapter_unsetPeerListener_extra_argument">
+        <description>
+          <test_script_entry>/opt/tct-nfc-tizen-tests/nfc/NFCAdapter_unsetPeerListener_extra_argument.html</test_script_entry>
+        </description>
+        <specs>
+          <spec>
+            <spec_assertion interface="NFCAdapter" element_type="method" element_name="unsetPeerListener" specification="NFC" section="Communication" category="Tizen Device API Specifications"/>
+            <spec_url>https://developer.tizen.org/help/topic/org.tizen.web.device.apireference/tizen/nfc.html</spec_url>
+            <spec_statement>TBD</spec_statement>
+          </spec>
+        </specs>
+      </testcase>
+      <testcase purpose="Check if method unsetTagListener of NFCAdapter accepts extra argument" type="compliance" status="approved" component="TizenAPI/Communication/NFC" execution_type="auto" priority="P1" id="NFCAdapter_unsetTagListener_extra_argument">
+        <description>
+          <test_script_entry>/opt/tct-nfc-tizen-tests/nfc/NFCAdapter_unsetTagListener_extra_argument.html</test_script_entry>
+        </description>
+        <specs>
+          <spec>
+            <spec_assertion interface="NFCAdapter" element_type="method" element_name="unsetTagListener" specification="NFC" section="Communication" category="Tizen Device API Specifications"/>
+            <spec_url>https://developer.tizen.org/help/topic/org.tizen.web.device.apireference/tizen/nfc.html</spec_url>
+            <spec_statement>TBD</spec_statement>
+          </spec>
+        </specs>
+      </testcase>
+      <testcase purpose="Check if interface NFCManagerObject exists, it should not." type="compliance" status="approved" component="TizenAPI/Communication/NFC" execution_type="auto" priority="P3" id="NFCManagerObject_notexist">
+        <description>
+          <test_script_entry>/opt/tct-nfc-tizen-tests/nfc/NFCManagerObject_notexist.html</test_script_entry>
+        </description>
+        <specs>
+          <spec>
+            <spec_assertion interface="NFCManagerObject" usage="true" specification="NFC" section="Communication" category="Tizen Device API Specifications"/>
+            <spec_url>https://developer.tizen.org/help/topic/org.tizen.web.device.apireference/tizen/nfc.html</spec_url>
+            <spec_statement>TBD</spec_statement>
+          </spec>
+        </specs>
+      </testcase>
+      <testcase purpose="Check if NFCManager has constant NFC_RECORD_TNF_EMPTY and its value is 0" type="compliance" status="approved" component="TizenAPI/Communication/NFC" execution_type="auto" priority="P2" id="NFCManager_NFC_RECORD_TNF_EMPTY_const">
+        <description>
+          <test_script_entry>/opt/tct-nfc-tizen-tests/nfc/NFCManager_NFC_RECORD_TNF_EMPTY_const.html</test_script_entry>
+        </description>
+        <specs>
+          <spec>
+            <spec_assertion interface="NFCManager" element_type="attribute" element_name="NFC_RECORD_TNF_EMPTY" specification="NFC" section="Communication" category="Tizen Device API Specifications"/>
+            <spec_url>https://developer.tizen.org/help/topic/org.tizen.web.device.apireference/tizen/nfc.html</spec_url>
+            <spec_statement>TBD</spec_statement>
+          </spec>
+        </specs>
+      </testcase>
+      <testcase purpose="Check if NFCManager has constant NFC_RECORD_TNF_EXTERNAL_RTD and its value is 4" type="compliance" status="approved" component="TizenAPI/Communication/NFC" execution_type="auto" priority="P2" id="NFCManager_NFC_RECORD_TNF_EXTERNAL_RTD_const">
+        <description>
+          <test_script_entry>/opt/tct-nfc-tizen-tests/nfc/NFCManager_NFC_RECORD_TNF_EXTERNAL_RTD_const.html</test_script_entry>
+        </description>
+        <specs>
+          <spec>
+            <spec_assertion interface="NFCManager" element_type="attribute" element_name="NFC_RECORD_TNF_EXTERNAL_RTD" specification="NFC" section="Communication" category="Tizen Device API Specifications"/>
+            <spec_url>https://developer.tizen.org/help/topic/org.tizen.web.device.apireference/tizen/nfc.html</spec_url>
+            <spec_statement>TBD</spec_statement>
+          </spec>
+        </specs>
+      </testcase>
+      <testcase purpose="Check if NFCManager has constant NFC_RECORD_TNF_MIME_MEDIA and its value is 2" type="compliance" status="approved" component="TizenAPI/Communication/NFC" execution_type="auto" priority="P2" id="NFCManager_NFC_RECORD_TNF_MIME_MEDIA_const">
+        <description>
+          <test_script_entry>/opt/tct-nfc-tizen-tests/nfc/NFCManager_NFC_RECORD_TNF_MIME_MEDIA_const.html</test_script_entry>
+        </description>
+        <specs>
+          <spec>
+            <spec_assertion interface="NFCManager" element_type="attribute" element_name="NFC_RECORD_TNF_MIME_MEDIA" specification="NFC" section="Communication" category="Tizen Device API Specifications"/>
+            <spec_url>https://developer.tizen.org/help/topic/org.tizen.web.device.apireference/tizen/nfc.html</spec_url>
+            <spec_statement>TBD</spec_statement>
+          </spec>
+        </specs>
+      </testcase>
+      <testcase purpose="Check if NFCManager has constant NFC_RECORD_TNF_UNCHANGED and its value is 6" type="compliance" status="approved" component="TizenAPI/Communication/NFC" execution_type="auto" priority="P2" id="NFCManager_NFC_RECORD_TNF_UNCHANGED_const">
+        <description>
+          <test_script_entry>/opt/tct-nfc-tizen-tests/nfc/NFCManager_NFC_RECORD_TNF_UNCHANGED_const.html</test_script_entry>
+        </description>
+        <specs>
+          <spec>
+            <spec_assertion interface="NFCManager" element_type="attribute" element_name="NFC_RECORD_TNF_UNCHANGED" specification="NFC" section="Communication" category="Tizen Device API Specifications"/>
+            <spec_url>https://developer.tizen.org/help/topic/org.tizen.web.device.apireference/tizen/nfc.html</spec_url>
+            <spec_statement>TBD</spec_statement>
+          </spec>
+        </specs>
+      </testcase>
+      <testcase purpose="Check if NFCManager has constant NFC_RECORD_TNF_UNKNOWN and its value is 5" type="compliance" status="approved" component="TizenAPI/Communication/NFC" execution_type="auto" priority="P2" id="NFCManager_NFC_RECORD_TNF_UNKNOWN_const">
+        <description>
+          <test_script_entry>/opt/tct-nfc-tizen-tests/nfc/NFCManager_NFC_RECORD_TNF_UNKNOWN_const.html</test_script_entry>
+        </description>
+        <specs>
+          <spec>
+            <spec_assertion interface="NFCManager" element_type="attribute" element_name="NFC_RECORD_TNF_UNKNOWN" specification="NFC" section="Communication" category="Tizen Device API Specifications"/>
+            <spec_url>https://developer.tizen.org/help/topic/org.tizen.web.device.apireference/tizen/nfc.html</spec_url>
+            <spec_statement>TBD</spec_statement>
+          </spec>
+        </specs>
+      </testcase>
+      <testcase purpose="Check if NFCManager has constant NFC_RECORD_TNF_URI and its value is 3" type="compliance" status="approved" component="TizenAPI/Communication/NFC" execution_type="auto" priority="P2" id="NFCManager_NFC_RECORD_TNF_URI_const">
+        <description>
+          <test_script_entry>/opt/tct-nfc-tizen-tests/nfc/NFCManager_NFC_RECORD_TNF_URI_const.html</test_script_entry>
+        </description>
+        <specs>
+          <spec>
+            <spec_assertion interface="NFCManager" element_type="attribute" element_name="NFC_RECORD_TNF_URI" specification="NFC" section="Communication" category="Tizen Device API Specifications"/>
+            <spec_url>https://developer.tizen.org/help/topic/org.tizen.web.device.apireference/tizen/nfc.html</spec_url>
+            <spec_statement>TBD</spec_statement>
+          </spec>
+        </specs>
+      </testcase>
+      <testcase purpose="Check if NFCManager has constant NFC_RECORD_TNF_WELL_KNOWN and its value is 1" type="compliance" status="approved" component="TizenAPI/Communication/NFC" execution_type="auto" priority="P2" id="NFCManager_NFC_RECORD_TNF_WELL_KNOWN_const">
+        <description>
+          <test_script_entry>/opt/tct-nfc-tizen-tests/nfc/NFCManager_NFC_RECORD_TNF_WELL_KNOWN_const.html</test_script_entry>
+        </description>
+        <specs>
+          <spec>
+            <spec_assertion interface="NFCManager" element_type="attribute" element_name="NFC_RECORD_TNF_WELL_KNOWN" specification="NFC" section="Communication" category="Tizen Device API Specifications"/>
+            <spec_url>https://developer.tizen.org/help/topic/org.tizen.web.device.apireference/tizen/nfc.html</spec_url>
+            <spec_statement>TBD</spec_statement>
+          </spec>
+        </specs>
+      </testcase>
+      <testcase purpose="Test whether the NFCManager object can have new properties added" type="compliance" status="approved" component="TizenAPI/Communication/NFC" execution_type="auto" priority="P3" id="NFCManager_extend">
+        <description>
+          <test_script_entry>/opt/tct-nfc-tizen-tests/nfc/NFCManager_extend.html</test_script_entry>
+        </description>
+        <specs>
+          <spec>
+            <spec_assertion interface="NFCManager" usage="true" specification="NFC" section="Communication" category="Tizen Device API Specifications"/>
+            <spec_url>https://developer.tizen.org/help/topic/org.tizen.web.device.apireference/tizen/nfc.html</spec_url>
+            <spec_statement>TBD</spec_statement>
+          </spec>
+        </specs>
+      </testcase>
+      <testcase purpose="Check if NFCManager::getDefaultAdapter() method returns object" type="compliance" status="approved" component="TizenAPI/Communication/NFC" execution_type="auto" priority="P1" id="NFCManager_getDefaultAdapter">
+        <description>
+          <test_script_entry>/opt/tct-nfc-tizen-tests/nfc/NFCManager_getDefaultAdapter.html</test_script_entry>
+        </description>
+        <specs>
+          <spec>
+            <spec_assertion interface="NFCManager" element_type="method" element_name="getDefaultAdapter" specification="NFC" section="Communication" category="Tizen Device API Specifications"/>
+            <spec_url>https://developer.tizen.org/help/topic/org.tizen.web.device.apireference/tizen/nfc.html</spec_url>
+            <spec_statement>TBD</spec_statement>
+          </spec>
+        </specs>
+      </testcase>
+      <testcase purpose="Check if method getDefaultAdapter of NFCManager accepts extra argument" type="compliance" status="approved" component="TizenAPI/Communication/NFC" execution_type="auto" priority="P1" id="NFCManager_getDefaultAdapter_extra_argument">
+        <description>
+          <test_script_entry>/opt/tct-nfc-tizen-tests/nfc/NFCManager_getDefaultAdapter_extra_argument.html</test_script_entry>
+        </description>
+        <specs>
+          <spec>
+            <spec_assertion interface="NFCManager" element_type="method" element_name="getDefaultAdapter" specification="NFC" section="Communication" category="Tizen Device API Specifications"/>
+            <spec_url>https://developer.tizen.org/help/topic/org.tizen.web.device.apireference/tizen/nfc.html</spec_url>
+            <spec_statement>TBD</spec_statement>
+          </spec>
+        </specs>
+      </testcase>
+      <testcase purpose="Check if interface NFCManager exists, it should not." type="compliance" status="approved" component="TizenAPI/Communication/NFC" execution_type="auto" priority="P3" id="NFCManager_notexist">
+        <description>
+          <test_script_entry>/opt/tct-nfc-tizen-tests/nfc/NFCManager_notexist.html</test_script_entry>
+        </description>
+        <specs>
+          <spec>
+            <spec_assertion interface="NFCManager" usage="true" specification="NFC" section="Communication" category="Tizen Device API Specifications"/>
+            <spec_url>https://developer.tizen.org/help/topic/org.tizen.web.device.apireference/tizen/nfc.html</spec_url>
+            <spec_statement>TBD</spec_statement>
+          </spec>
+        </specs>
+      </testcase>
+      <testcase purpose="Check if interface NFCPeerDetectCallback exists, it should not." type="compliance" status="approved" component="TizenAPI/Communication/NFC" execution_type="auto" priority="P3" id="NFCPeerDetectCallback_notexist">
+        <description>
+          <test_script_entry>/opt/tct-nfc-tizen-tests/nfc/NFCPeerDetectCallback_notexist.html</test_script_entry>
+        </description>
+        <specs>
+          <spec>
+            <spec_assertion interface="NFCPeerDetectCallback" usage="true" specification="NFC" section="Communication" category="Tizen Device API Specifications"/>
+            <spec_url>https://developer.tizen.org/help/topic/org.tizen.web.device.apireference/tizen/nfc.html</spec_url>
+            <spec_statement>TBD</spec_statement>
+          </spec>
+        </specs>
+      </testcase>
+      <testcase purpose="Check if interface NFCPeer exists, it should not." type="compliance" status="approved" component="TizenAPI/Communication/NFC" execution_type="auto" priority="P3" id="NFCPeer_notexist">
+        <description>
+          <test_script_entry>/opt/tct-nfc-tizen-tests/nfc/NFCPeer_notexist.html</test_script_entry>
+        </description>
+        <specs>
+          <spec>
+            <spec_assertion interface="NFCPeer" usage="true" specification="NFC" section="Communication" category="Tizen Device API Specifications"/>
+            <spec_url>https://developer.tizen.org/help/topic/org.tizen.web.device.apireference/tizen/nfc.html</spec_url>
+            <spec_statement>TBD</spec_statement>
+          </spec>
+        </specs>
+      </testcase>
+      <testcase purpose="Check if NFCPeer::unsetReceiveNDEFListener() method works properly" type="compliance" status="approved" component="TizenAPI/Communication/NFC" execution_type="manual" priority="P1" id="NFCPeer_unsetReceiveNDEFListener">
+        <description>
+          <pre_condition>Turn on NFC adapter. Prepare the other device with NFC turned on. Other device should be able to send NDEF message by NFC.</pre_condition>
+          <steps>
+            <step order="1">
+              <step_desc>Click "Run". Move other NFC device close so it will be detected, then send a NFC message from it. Then click the "Message was sent" button below.</step_desc>
+              <expected>pass</expected>
+            </step>
+          </steps>
+          <test_script_entry>/opt/tct-nfc-tizen-tests/nfc/NFCPeer_unsetReceiveNDEFListener.html</test_script_entry>
+        </description>
+        <specs>
+          <spec>
+            <spec_assertion interface="NFCPeer" element_type="method" element_name="unsetReceiveNDEFListener" specification="NFC" section="Communication" category="Tizen Device API Specifications"/>
+            <spec_url>https://developer.tizen.org/help/topic/org.tizen.web.device.apireference/tizen/nfc.html</spec_url>
+            <spec_statement>TBD</spec_statement>
+          </spec>
+        </specs>
+      </testcase>
+      <testcase purpose="Check if method unsetReceiveNDEFListener of NFCPeer accepts extra argument" type="compliance" status="approved" component="TizenAPI/Communication/NFC" execution_type="manual" priority="P2" id="NFCPeer_unsetReceiveNDEFListener_extra_argument">
+        <description>
+          <pre_condition>Turn on NFC adapter. Prepare the other device with NFC turned on.</pre_condition>
+          <steps>
+            <step order="1">
+              <step_desc>Click "Run". Move other NFC device close so it will be detected.</step_desc>
+              <expected>Pass</expected>
+            </step>
+          </steps>
+          <test_script_entry>/opt/tct-nfc-tizen-tests/nfc/NFCPeer_unsetReceiveNDEFListener_extra_argument.html</test_script_entry>
+        </description>
+        <specs>
+          <spec>
+            <spec_assertion interface="NFCPeer" element_type="method" element_name="unsetReceiveNDEFListener" specification="NFC" section="Communication" category="Tizen Device API Specifications"/>
+            <spec_url>https://developer.tizen.org/help/topic/org.tizen.web.device.apireference/tizen/nfc.html</spec_url>
+            <spec_statement>TBD</spec_statement>
+          </spec>
+        </specs>
+      </testcase>
+      <testcase purpose="Check if interface NFCTagDetectCallback exists, it should not." type="compliance" status="approved" component="TizenAPI/Communication/NFC" execution_type="auto" priority="P3" id="NFCTagDetectCallback_notexist">
+        <description>
+          <test_script_entry>/opt/tct-nfc-tizen-tests/nfc/NFCTagDetectCallback_notexist.html</test_script_entry>
+        </description>
+        <specs>
+          <spec>
+            <spec_assertion interface="NFCTagDetectCallback" usage="true" specification="NFC" section="Communication" category="Tizen Device API Specifications"/>
+            <spec_url>https://developer.tizen.org/help/topic/org.tizen.web.device.apireference/tizen/nfc.html</spec_url>
+            <spec_statement>TBD</spec_statement>
+          </spec>
+        </specs>
+      </testcase>
+      <testcase purpose="Check if interface NFCTag exists, it should not." type="compliance" status="approved" component="TizenAPI/Communication/NFC" execution_type="auto" priority="P3" id="NFCTag_notexist">
+        <description>
+          <test_script_entry>/opt/tct-nfc-tizen-tests/nfc/NFCTag_notexist.html</test_script_entry>
+        </description>
+        <specs>
+          <spec>
+            <spec_assertion interface="NFCTag" usage="true" specification="NFC" section="Communication" category="Tizen Device API Specifications"/>
+            <spec_url>https://developer.tizen.org/help/topic/org.tizen.web.device.apireference/tizen/nfc.html</spec_url>
+            <spec_statement>TBD</spec_statement>
+          </spec>
+        </specs>
+      </testcase>
+      <testcase purpose="Check if Tizen implements interface NFCManagerObject and has attribute nfc" type="compliance" status="approved" component="TizenAPI/Communication/NFC" execution_type="auto" priority="P3" id="Tizen_nfc_exist">
+        <description>
+          <test_script_entry>/opt/tct-nfc-tizen-tests/nfc/Tizen_nfc_exist.html</test_script_entry>
+        </description>
+        <specs>
+          <spec>
+            <spec_assertion interface="NFCManager" usage="true" specification="NFC" section="Communication" category="Tizen Device API Specifications"/>
+            <spec_url>https://developer.tizen.org/help/topic/org.tizen.web.device.apireference/tizen/nfc.html</spec_url>
+            <spec_statement>TBD</spec_statement>
+          </spec>
+        </specs>
+      </testcase>
+      <testcase purpose="Check if NFCManager::setExclusiveMode() method can be executed" type="compliance" status="approved" component="TizenAPI/Communication/NFC" execution_type="auto" priority="P1" id="NFCManager_setExclusiveMode">
+        <description>
+          <test_script_entry>/opt/tct-nfc-tizen-tests/nfc/NFCManager_setExclusiveMode.html</test_script_entry>
+        </description>
+        <specs>
+          <spec>
+            <spec_assertion interface="NFCManager" element_type="method" element_name="setExclusiveMode" specification="NFC" section="Communication" category="Tizen Device API Specifications"/>
+            <spec_url>https://developer.tizen.org/help/topic/org.tizen.web.device.apireference/tizen/nfc.html</spec_url>
+            <spec_statement>TBD</spec_statement>
+          </spec>
+        </specs>
+      </testcase>
+      <testcase purpose="Check if NFCManager object has method setExclusiveMode()" type="compliance" status="approved" component="TizenAPI/Communication/NFC" execution_type="auto" priority="P0" id="NFCManager_setExclusiveMode_exist">
+        <description>
+          <test_script_entry>/opt/tct-nfc-tizen-tests/nfc/NFCManager_setExclusiveMode_exist.html</test_script_entry>
+        </description>
+        <specs>
+          <spec>
+            <spec_assertion interface="NFCManager" element_type="method" element_name="setExclusiveMode" specification="NFC" section="Communication" category="Tizen Device API Specifications"/>
+            <spec_url>https://developer.tizen.org/help/topic/org.tizen.web.device.apireference/tizen/nfc.html</spec_url>
+            <spec_statement>TBD</spec_statement>
+          </spec>
+        </specs>
+      </testcase>
+      <testcase purpose="Check if method NFCAdapter::getCachedMessage() exists" type="compliance" status="approved" component="TizenAPI/Communication/NFC" execution_type="auto" priority="P1" id="NFCAdapter_getCachedMessage_exist">
+        <description>
+          <test_script_entry>/opt/tct-nfc-tizen-tests/nfc/NFCAdapter_getCachedMessage_exist.html</test_script_entry>
+        </description>
+        <specs>
+          <spec>
+            <spec_assertion interface="NFCAdapter" element_type="method" element_name="getCachedMessage" specification="NFC" section="Communication" category="Tizen Device API Specifications"/>
+            <spec_url>https://developer.tizen.org/help/topic/org.tizen.web.device.apireference/tizen/nfc.html</spec_url>
+            <spec_statement>TBD</spec_statement>
+          </spec>
+        </specs>
+      </testcase>
+      <testcase purpose="Check if method NFCAdapter::setPeerListener() successfully registers listener for detecting NFC peer" type="compliance" status="approved" component="TizenAPI/Communication/NFC" execution_type="manual" priority="P1" id="NFCAdapter_setPeerListener">
+        <description>
+          <pre_condition>Turn on NFC adapter. Prepare the other device with NFC turned on.</pre_condition>
+          <steps>
+            <step order="1">
+              <step_desc>Click "Run". Move other NFC device close so it will be detected.</step_desc>
+              <expected>pass - peer detected</expected>
+            </step>
+          </steps>
+          <test_script_entry>/opt/tct-nfc-tizen-tests/nfc/NFCAdapter_setPeerListener.html</test_script_entry>
+        </description>
+        <specs>
+          <spec>
+            <spec_assertion interface="NFCAdapter" element_type="method" element_name="setPeerListener" specification="NFC" section="Communication" category="Tizen Device API Specifications"/>
+            <spec_url>https://developer.tizen.org/help/topic/org.tizen.web.device.apireference/tizen/nfc.html</spec_url>
+            <spec_statement>TBD</spec_statement>
+          </spec>
+        </specs>
+      </testcase>
+      <testcase purpose="Check if method NFCAdapter::setPeerListener() exists" type="compliance" status="approved" component="TizenAPI/Communication/NFC" execution_type="auto" priority="P1" id="NFCAdapter_setPeerListener_exist">
+        <description>
+          <test_script_entry>/opt/tct-nfc-tizen-tests/nfc/NFCAdapter_setPeerListener_exist.html</test_script_entry>
+        </description>
+        <specs>
+          <spec>
+            <spec_assertion interface="NFCAdapter" element_type="method" element_name="setPeerListener" specification="NFC" section="Communication" category="Tizen Device API Specifications"/>
+            <spec_url>https://developer.tizen.org/help/topic/org.tizen.web.device.apireference/tizen/nfc.html</spec_url>
+            <spec_statement>TBD</spec_statement>
+          </spec>
+        </specs>
+      </testcase>
+      <testcase purpose="Check if method NFCAdapter::setPowered() exists" type="compliance" status="approved" component="TizenAPI/Communication/NFC" execution_type="auto" priority="P1" id="NFCAdapter_setPowered_exist">
+        <description>
+          <test_script_entry>/opt/tct-nfc-tizen-tests/nfc/NFCAdapter_setPowered_exist.html</test_script_entry>
+        </description>
+        <specs>
+          <spec>
+            <spec_assertion interface="NFCAdapter" element_type="method" element_name="setPowered" specification="NFC" section="Communication" category="Tizen Device API Specifications"/>
+            <spec_url>https://developer.tizen.org/help/topic/org.tizen.web.device.apireference/tizen/nfc.html</spec_url>
+            <spec_statement>TBD</spec_statement>
+          </spec>
+        </specs>
+      </testcase>
+      <testcase purpose="Check if NFCAdapter::setTagListener() method exists" type="compliance" status="approved" component="TizenAPI/Communication/NFC" execution_type="auto" priority="P1" id="NFCAdapter_setTagListener_exist">
+        <description>
+          <test_script_entry>/opt/tct-nfc-tizen-tests/nfc/NFCAdapter_setTagListener_exist.html</test_script_entry>
+        </description>
+        <specs>
+          <spec>
+            <spec_assertion interface="NFCAdapter" element_type="method" element_name="setTagListener" specification="NFC" section="Communication" category="Tizen Device API Specifications"/>
+            <spec_url>https://developer.tizen.org/help/topic/org.tizen.web.device.apireference/tizen/nfc.html</spec_url>
+            <spec_statement>TBD</spec_statement>
+          </spec>
+        </specs>
+      </testcase>
+      <testcase purpose="Check if method NFCAdapter::unsetPeerListener() exists" type="compliance" status="approved" component="TizenAPI/Communication/NFC" execution_type="auto" priority="P1" id="NFCAdapter_unsetPeerListener_exist">
+        <description>
+          <test_script_entry>/opt/tct-nfc-tizen-tests/nfc/NFCAdapter_unsetPeerListener_exist.html</test_script_entry>
+        </description>
+        <specs>
+          <spec>
+            <spec_assertion interface="NFCAdapter" element_type="method" element_name="unsetPeerListener" specification="NFC" section="Communication" category="Tizen Device API Specifications"/>
+            <spec_url>https://developer.tizen.org/help/topic/org.tizen.web.device.apireference/tizen/nfc.html</spec_url>
+            <spec_statement>TBD</spec_statement>
+          </spec>
+        </specs>
+      </testcase>
+      <testcase purpose="Check if method NFCAdapter::unsetTagListener() method exists" type="compliance" status="approved" component="TizenAPI/Communication/NFC" execution_type="auto" priority="P1" id="NFCAdapter_unsetTagListener_exist">
+        <description>
+          <test_script_entry>/opt/tct-nfc-tizen-tests/nfc/NFCAdapter_unsetTagListener_exist.html</test_script_entry>
+        </description>
+        <specs>
+          <spec>
+            <spec_assertion interface="NFCAdapter" element_type="method" element_name="unsetTagListener" specification="NFC" section="Communication" category="Tizen Device API Specifications"/>
+            <spec_url>https://developer.tizen.org/help/topic/org.tizen.web.device.apireference/tizen/nfc.html</spec_url>
+            <spec_statement>TBD</spec_statement>
+          </spec>
+        </specs>
+      </testcase>
+      <testcase purpose="Check if NFCPeerDetectCallback::onattach() callback is called with proper argument when NFC peer is detected" type="compliance" status="approved" component="TizenAPI/Communication/NFC" execution_type="manual" priority="P1" id="NFCPeerDetectCallback_onattach">
+        <description>
+          <pre_condition>Turn on NFC adapter. Prepare the other device with NFC turned on.</pre_condition>
+          <steps>
+            <step order="1">
+              <step_desc>Click "Run". Move other NFC device close so it will be detected.</step_desc>
+              <expected>pass - setPeerListener onSuccess called</expected>
+            </step>
+          </steps>
+          <test_script_entry>/opt/tct-nfc-tizen-tests/nfc/NFCPeerDetectCallback_onattach.html</test_script_entry>
+        </description>
+        <specs>
+          <spec>
+            <spec_assertion interface="NFCPeerDetectCallback" element_type="method" element_name="onattach" specification="NFC" section="Communication" category="Tizen Device API Specifications"/>
+            <spec_url>https://developer.tizen.org/help/topic/org.tizen.web.device.apireference/tizen/nfc.html</spec_url>
+            <spec_statement>TBD</spec_statement>
+          </spec>
+        </specs>
+      </testcase>
+      <testcase purpose="Check NFCPeer attributes, method existence and TypeMismatchError throwing" type="compliance" status="approved" component="TizenAPI/Communication/NFC" execution_type="manual" priority="P3" id="NFCPeer">
+        <description>
+          <pre_condition>Turn on NFC adapter. Prepare the other device with NFC turned on.</pre_condition>
+          <steps>
+            <step order="1">
+              <step_desc>Click "Run". Move other NFC device close so it will be detected.</step_desc>
+              <expected>Pass</expected>
+            </step>
+          </steps>
+          <test_script_entry>/opt/tct-nfc-tizen-tests/nfc/NFCPeer.html</test_script_entry>
+        </description>
+        <specs>
+          <spec>
+            <spec_assertion interface="NFCPeer" element_type="attribute" element_name="isConnected" specification="NFC" section="Communication" category="Tizen Device API Specifications"/>
+            <spec_url>https://developer.tizen.org/help/topic/org.tizen.web.device.apireference/tizen/nfc.html</spec_url>
+            <spec_statement>TBD</spec_statement>
+          </spec>
+          <spec>
+            <spec_assertion interface="NFCPeer" element_type="method" element_name="sendNDEF" specification="NFC" section="Communication" category="Tizen Device API Specifications"/>
+            <spec_url>https://developer.tizen.org/help/topic/org.tizen.web.device.apireference/tizen/nfc.html</spec_url>
+            <spec_statement>TBD</spec_statement>
+          </spec>
+          <spec>
+            <spec_assertion interface="NFCPeer" element_type="method" element_name="sendNDEF" specification="NFC" section="Communication" category="Tizen Device API Specifications"/>
+            <spec_url>https://developer.tizen.org/help/index.jsp?topic=/org.tizen.web.device.apireference/tizen/nfc.html</spec_url>
+            <spec_statement>TBD</spec_statement>
+          </spec>
+          <spec>
+            <spec_assertion interface="NFCPeer" element_type="method" element_name="sendNDEF" specification="NFC" section="Communication" category="Tizen Device API Specifications"/>
+            <spec_url>https://developer.tizen.org/help/index.jsp?topic=/org.tizen.web.device.apireference/tizen/nfc.html</spec_url>
+            <spec_statement>TBD</spec_statement>
+          </spec>
+          <spec>
+            <spec_assertion interface="NFCPeer" element_type="method" element_name="sendNDEF" specification="NFC" section="Communication" category="Tizen Device API Specifications"/>
+            <spec_url>https://developer.tizen.org/help/index.jsp?topic=/org.tizen.web.device.apireference/tizen/nfc.html</spec_url>
+            <spec_statement>TBD</spec_statement>
+          </spec>
+          <spec>
+            <spec_assertion interface="NFCPeer" element_type="method" element_name="sendNDEF" specification="NFC" section="Communication" category="Tizen Device API Specifications"/>
+            <spec_url>https://developer.tizen.org/help/index.jsp?topic=/org.tizen.web.device.apireference/tizen/nfc.html</spec_url>
+            <spec_statement>TBD</spec_statement>
+          </spec>
+          <spec>
+            <spec_assertion interface="NFCPeer" element_type="method" element_name="sendNDEF" specification="NFC" section="Communication" category="Tizen Device API Specifications"/>
+            <spec_url>https://developer.tizen.org/help/index.jsp?topic=/org.tizen.web.device.apireference/tizen/nfc.html</spec_url>
+            <spec_statement>TBD</spec_statement>
+          </spec>
+          <spec>
+            <spec_assertion interface="NFCPeer" element_type="method" element_name="sendNDEF" specification="NFC" section="Communication" category="Tizen Device API Specifications"/>
+            <spec_url>https://developer.tizen.org/help/index.jsp?topic=/org.tizen.web.device.apireference/tizen/nfc.html</spec_url>
+            <spec_statement>TBD</spec_statement>
+          </spec>
+          <spec>
+            <spec_assertion interface="NFCPeer" element_type="method" element_name="sendNDEF" specification="NFC" section="Communication" category="Tizen Device API Specifications"/>
+            <spec_url>https://developer.tizen.org/help/index.jsp?topic=/org.tizen.web.device.apireference/tizen/nfc.html</spec_url>
+            <spec_statement>TBD</spec_statement>
+          </spec>
+          <spec>
+            <spec_assertion interface="NFCPeer" element_type="method" element_name="setReceiveNDEFListener" specification="NFC" section="Communication" category="Tizen Device API Specifications"/>
+            <spec_url>https://developer.tizen.org/help/index.jsp?topic=/org.tizen.web.device.apireference/tizen/nfc.html</spec_url>
+            <spec_statement>TBD</spec_statement>
+          </spec>
+          <spec>
+            <spec_assertion interface="NFCPeer" element_type="method" element_name="setReceiveNDEFListener" specification="NFC" section="Communication" category="Tizen Device API Specifications"/>
+            <spec_url>https://developer.tizen.org/help/index.jsp?topic=/org.tizen.web.device.apireference/tizen/nfc.html</spec_url>
+            <spec_statement>TBD</spec_statement>
+          </spec>
+          <spec>
+            <spec_assertion interface="NFCPeer" element_type="method" element_name="setReceiveNDEFListener" specification="NFC" section="Communication" category="Tizen Device API Specifications"/>
+            <spec_url>https://developer.tizen.org/help/index.jsp?topic=/org.tizen.web.device.apireference/tizen/nfc.html</spec_url>
+            <spec_statement>TBD</spec_statement>
+          </spec>
+          <spec>
+            <spec_assertion interface="NFCPeer" element_type="method" element_name="setReceiveNDEFListener" specification="NFC" section="Communication" category="Tizen Device API Specifications"/>
+            <spec_url>https://developer.tizen.org/help/index.jsp?topic=/org.tizen.web.device.apireference/tizen/nfc.html</spec_url>
+            <spec_statement>TBD</spec_statement>
+          </spec>
+          <spec>
+            <spec_assertion interface="NFCPeer" element_type="method" element_name="unsetReceiveNDEFListener" specification="NFC" section="Communication" category="Tizen Device API Specifications"/>
+            <spec_url>https://developer.tizen.org/help/index.jsp?topic=/org.tizen.web.device.apireference/tizen/nfc.html</spec_url>
+            <spec_statement>TBD</spec_statement>
+          </spec>
+          <spec>
+            <spec_assertion interface="NFCPeer" usage="true" specification="NFC" section="Communication" category="Tizen Device API Specifications"/>
+            <spec_url>https://developer.tizen.org/help/index.jsp?topic=/org.tizen.web.device.apireference/tizen/nfc.html</spec_url>
+            <spec_statement>TBD</spec_statement>
+          </spec>
+        </specs>
+      </testcase>
+      <testcase purpose="Check if onattach() callback is called successfully when NFC tag is detected after NFCAdapter::setTagListener() with null tagFilter" type="compliance" status="approved" component="TizenAPI/Communication/NFC" execution_type="manual" priority="P2" id="NFCAdapter_setTagListener_tagFilter_is_null">
+        <description>
+          <pre_condition>Turn on NFC adapter. Prepare NFC tag</pre_condition>
+          <steps>
+            <step order="1">
+              <step_desc>Click "Run". Move NFC tag close to the device so it will be detected.</step_desc>
+              <expected>should be passed</expected>
+            </step>
+          </steps>
+          <test_script_entry>/opt/tct-nfc-tizen-tests/nfc/NFCAdapter_setTagListener_tagFilter_is_null.html</test_script_entry>
+        </description>
+        <specs>
+          <spec>
+            <spec_assertion interface="NFCAdapter" element_type="method" element_name="setTagListener" specification="NFC" section="Communication" category="Tizen Device API Specifications"/>
+            <spec_url>https://developer.tizen.org/help/topic/org.tizen.web.device.apireference/tizen/nfc.html</spec_url>
+            <spec_statement>TBD</spec_statement>
+          </spec>
+        </specs>
+      </testcase>
+      <testcase purpose="Check if onattach() callback is called successfully when NFC tag is detected after NFCAdapter::setTagListener() with valid tagFilter" type="compliance" status="approved" component="TizenAPI/Communication/NFC" execution_type="manual" priority="P2" id="NFCAdapter_setTagListener_with_tagFilter">
+        <description>
+          <pre_condition>Turn on NFC adapter. Prepare NFC tag.</pre_condition>
+          <steps>
+            <step order="1">
+              <step_desc>Click "Run". Move NFC tag close to the device so it will be detected.</step_desc>
+              <expected>should be passed</expected>
+            </step>
+          </steps>
+          <test_script_entry>/opt/tct-nfc-tizen-tests/nfc/NFCAdapter_setTagListener_with_tagFilter.html</test_script_entry>
+        </description>
+        <specs>
+          <spec>
+            <spec_assertion interface="NFCAdapter" element_type="method" element_name="setTagListener" specification="NFC" section="Communication" category="Tizen Device API Specifications"/>
+            <spec_url>https://developer.tizen.org/help/topic/org.tizen.web.device.apireference/tizen/nfc.html</spec_url>
+            <spec_statement>TBD</spec_statement>
+          </spec>
+        </specs>
+      </testcase>
+      <testcase purpose="Check if method NFCTag::readNDEF() successfully reads data from NFC tag" type="compliance" onload_delay="90" status="approved" component="TizenAPI/Communication/NFC" execution_type="manual" priority="P1" id="NFCTag_readNDEF_without_errorCallback">
+        <description>
+          <pre_condition>Turn on NFC adapter. Prepare NFC tag.</pre_condition>
+          <steps>
+            <step order="1">
+              <step_desc>Click "Run". Move NFC tag close so it will be detected.</step_desc>
+              <expected>pass - read the NDEF data successfully</expected>
+            </step>
+          </steps>
+          <test_script_entry>/opt/tct-nfc-tizen-tests/nfc/NFCTag_readNDEF_without_errorCallback.html</test_script_entry>
+        </description>
+        <specs>
+          <spec>
+            <spec_assertion interface="NFCTag" element_type="method" element_name="readNDEF" specification="NFC" section="Communication" category="Tizen Device API Specifications"/>
+            <spec_url>https://developer.tizen.org/help/topic/org.tizen.web.device.apireference/tizen/nfc.html</spec_url>
+            <spec_statement>TBD</spec_statement>
+          </spec>
+          <spec>
+            <spec_assertion interface="NDEFMessageReadCallback" element_type="method" element_name="onsuccess" specification="NFC" section="Communication" category="Tizen Device API Specifications"/>
+            <spec_url>https://developer.tizen.org/help/topic/org.tizen.web.device.apireference/tizen/nfc.html</spec_url>
+            <spec_statement>TBD</spec_statement>
+          </spec>
+        </specs>
+      </testcase>
+      <testcase purpose="Check if method NFCAdapter::setTagListener() successfully registers listener for detecting NFC tag" type="compliance" status="approved" component="TizenAPI/Communication/NFC" execution_type="manual" priority="P1" id="NFCAdapter_setTagListener">
+        <description>
+          <pre_condition>Turn on NFC adapter. Prepare NFC tag.</pre_condition>
+          <steps>
+            <step order="1">
+              <step_desc>Click "Run". Move NFC tag close so it will be detected.</step_desc>
+              <expected>pass - tag detected</expected>
+            </step>
+          </steps>
+          <test_script_entry>/opt/tct-nfc-tizen-tests/nfc/NFCAdapter_setTagListener.html</test_script_entry>
+        </description>
+        <specs>
+          <spec>
+            <spec_assertion interface="NFCAdapter" element_type="method" element_name="setTagListener" specification="NFC" section="Communication" category="Tizen Device API Specifications"/>
+            <spec_url>https://developer.tizen.org/help/topic/org.tizen.web.device.apireference/tizen/nfc.html</spec_url>
+            <spec_statement>TBD</spec_statement>
+          </spec>
+        </specs>
+      </testcase>
+      <testcase purpose="Check if NFCTagDetectCallback::onattach() callback is called with proper argument when NFC tag is detected" type="compliance" status="approved" component="TizenAPI/Communication/NFC" execution_type="manual" priority="P1" id="NFCTagDetectCallback_onattach">
+        <description>
+          <pre_condition>Turn on NFC adapter. Prepare NFC tag</pre_condition>
+          <steps>
+            <step order="1">
+              <step_desc>Click "Run". Move NFC tag close so it will be detected.</step_desc>
+              <expected>pass - after setTagListener onattach callback was called</expected>
+            </step>
+          </steps>
+          <test_script_entry>/opt/tct-nfc-tizen-tests/nfc/NFCTagDetectCallback_onattach.html</test_script_entry>
+        </description>
+        <specs>
+          <spec>
+            <spec_assertion interface="NFCTagDetectCallback" element_type="method" element_name="onattach" specification="NFC" section="Communication" category="Tizen Device API Specifications"/>
+            <spec_url>https://developer.tizen.org/help/topic/org.tizen.web.device.apireference/tizen/nfc.html</spec_url>
+            <spec_statement>TBD</spec_statement>
+          </spec>
+        </specs>
+      </testcase>
+      <testcase purpose="Check if method NFCTag::writeNDEF() can be called with only mandatory argument" type="compliance" status="approved" component="TizenAPI/Communication/NFC" execution_type="manual" priority="P2" id="NFCTag_writeNDEF">
+        <description>
+          <pre_condition>Turn on NFC adapter. Prepare NFC tag.</pre_condition>
+          <steps>
+            <step order="1">
+              <step_desc>Click "Run". Move NFC tag close so it will be detected.</step_desc>
+              <expected>pass - writeNDEF successfully without callback</expected>
+            </step>
+          </steps>
+          <test_script_entry>/opt/tct-nfc-tizen-tests/nfc/NFCTag_writeNDEF.html</test_script_entry>
+        </description>
+        <specs>
+          <spec>
+            <spec_assertion interface="NFCTag" element_type="method" element_name="writeNDEF" specification="NFC" section="Communication" category="Tizen Device API Specifications"/>
+            <spec_url>https://developer.tizen.org/help/topic/org.tizen.web.device.apireference/tizen/nfc.html</spec_url>
+            <spec_statement>TBD</spec_statement>
+          </spec>
+        </specs>
+      </testcase>
+      <testcase purpose="Check if method NFCTag::writeNDEF() calls successCallback" type="compliance" status="approved" component="TizenAPI/Communication/NFC" execution_type="manual" priority="P1" id="NFCTag_writeNDEF_with_successCallback">
+        <description>
+          <pre_condition>Turn on NFC adapter. Prepare NFC tag.</pre_condition>
+          <steps>
+            <step order="1">
+              <step_desc>Click "Run". Move NFC tag close so it will be detected.</step_desc>
+              <expected>pass - writing the NDEF Data successfully</expected>
+            </step>
+          </steps>
+          <test_script_entry>/opt/tct-nfc-tizen-tests/nfc/NFCTag_writeNDEF_with_successCallback.html</test_script_entry>
+        </description>
+        <specs>
+          <spec>
+            <spec_assertion interface="NFCTag" element_type="method" element_name="writeNDEF" specification="NFC" section="Communication" category="Tizen Device API Specifications"/>
+            <spec_url>https://developer.tizen.org/help/topic/org.tizen.web.device.apireference/tizen/nfc.html</spec_url>
+            <spec_statement>TBD</spec_statement>
+          </spec>
+        </specs>
+      </testcase>
+      <testcase purpose="Check NFCTag attributes, method existence and TypeMismatchError throwing" type="compliance" status="approved" component="TizenAPI/Communication/NFC" execution_type="manual" priority="P3" id="NFCTag">
+        <description>
+          <pre_condition>Turn on NFC adapter. Prepare NFC tag.</pre_condition>
+          <steps>
+            <step order="1">
+              <step_desc>Click "Run". Move NFC tag close so it will be detected.</step_desc>
+              <expected>Pass</expected>
+            </step>
+          </steps>
+          <test_script_entry>/opt/tct-nfc-tizen-tests/nfc/NFCTag.html</test_script_entry>
+        </description>
+        <specs>
+          <spec>
+            <spec_assertion interface="NFCTag" element_type="attribute" element_name="isConnected" specification="NFC" section="Communication" category="Tizen Device API Specifications"/>
+            <spec_url>https://developer.tizen.org/help/topic/org.tizen.web.device.apireference/tizen/nfc.html</spec_url>
+            <spec_statement>TBD</spec_statement>
+          </spec>
+          <spec>
+            <spec_assertion interface="NFCTag" element_type="attribute" element_name="isSupportedNDEF" specification="NFC" section="Communication" category="Tizen Device API Specifications"/>
+            <spec_url>https://developer.tizen.org/help/topic/org.tizen.web.device.apireference/tizen/nfc.html</spec_url>
+            <spec_statement>TBD</spec_statement>
+          </spec>
+          <spec>
+            <spec_assertion interface="NFCTag" element_type="attribute" element_name="ndefSize" specification="NFC" section="Communication" category="Tizen Device API Specifications"/>
+            <spec_url>https://developer.tizen.org/help/index.jsp?topic=/org.tizen.web.device.apireference/tizen/nfc.html</spec_url>
+            <spec_statement>TBD</spec_statement>
+          </spec>
+          <spec>
+            <spec_assertion interface="NFCTag" element_type="attribute" element_name="properties" specification="NFC" section="Communication" category="Tizen Device API Specifications"/>
+            <spec_url>https://developer.tizen.org/help/index.jsp?topic=/org.tizen.web.device.apireference/tizen/nfc.html</spec_url>
+            <spec_statement>TBD</spec_statement>
+          </spec>
+          <spec>
+            <spec_assertion interface="NFCTag" element_type="attribute" element_name="type" specification="NFC" section="Communication" category="Tizen Device API Specifications"/>
+            <spec_url>https://developer.tizen.org/help/index.jsp?topic=/org.tizen.web.device.apireference/tizen/nfc.html</spec_url>
+            <spec_statement>TBD</spec_statement>
+          </spec>
+          <spec>
+            <spec_assertion interface="NFCTag" element_type="method" element_name="readNDEF" specification="NFC" section="Communication" category="Tizen Device API Specifications"/>
+            <spec_url>https://developer.tizen.org/help/index.jsp?topic=/org.tizen.web.device.apireference/tizen/nfc.html</spec_url>
+            <spec_statement>TBD</spec_statement>
+          </spec>
+          <spec>
+            <spec_assertion interface="NFCTag" element_type="method" element_name="readNDEF" specification="NFC" section="Communication" category="Tizen Device API Specifications"/>
+            <spec_url>https://developer.tizen.org/help/index.jsp?topic=/org.tizen.web.device.apireference/tizen/nfc.html</spec_url>
+            <spec_statement>TBD</spec_statement>
+          </spec>
+          <spec>
+            <spec_assertion interface="NFCTag" element_type="method" element_name="readNDEF" specification="NFC" section="Communication" category="Tizen Device API Specifications"/>
+            <spec_url>https://developer.tizen.org/help/index.jsp?topic=/org.tizen.web.device.apireference/tizen/nfc.html</spec_url>
+            <spec_statement>TBD</spec_statement>
+          </spec>
+          <spec>
+            <spec_assertion interface="NFCTag" element_type="method" element_name="readNDEF" specification="NFC" section="Communication" category="Tizen Device API Specifications"/>
+            <spec_url>https://developer.tizen.org/help/index.jsp?topic=/org.tizen.web.device.apireference/tizen/nfc.html</spec_url>
+            <spec_statement>TBD</spec_statement>
+          </spec>
+          <spec>
+            <spec_assertion interface="NFCTag" element_type="method" element_name="readNDEF" specification="NFC" section="Communication" category="Tizen Device API Specifications"/>
+            <spec_url>https://developer.tizen.org/help/index.jsp?topic=/org.tizen.web.device.apireference/tizen/nfc.html</spec_url>
+            <spec_statement>TBD</spec_statement>
+          </spec>
+          <spec>
+            <spec_assertion interface="NFCTag" element_type="method" element_name="readNDEF" specification="NFC" section="Communication" category="Tizen Device API Specifications"/>
+            <spec_url>https://developer.tizen.org/help/index.jsp?topic=/org.tizen.web.device.apireference/tizen/nfc.html</spec_url>
+            <spec_statement>TBD</spec_statement>
+          </spec>
+          <spec>
+            <spec_assertion interface="NFCTag" element_type="method" element_name="writeNDEF" specification="NFC" section="Communication" category="Tizen Device API Specifications"/>
+            <spec_url>https://developer.tizen.org/help/index.jsp?topic=/org.tizen.web.device.apireference/tizen/nfc.html</spec_url>
+            <spec_statement>TBD</spec_statement>
+          </spec>
+          <spec>
+            <spec_assertion interface="NFCTag" element_type="method" element_name="writeNDEF" specification="NFC" section="Communication" category="Tizen Device API Specifications"/>
+            <spec_url>https://developer.tizen.org/help/index.jsp?topic=/org.tizen.web.device.apireference/tizen/nfc.html</spec_url>
+            <spec_statement>TBD</spec_statement>
+          </spec>
+          <spec>
+            <spec_assertion interface="NFCTag" element_type="method" element_name="writeNDEF" specification="NFC" section="Communication" category="Tizen Device API Specifications"/>
+            <spec_url>https://developer.tizen.org/help/index.jsp?topic=/org.tizen.web.device.apireference/tizen/nfc.html</spec_url>
+            <spec_statement>TBD</spec_statement>
+          </spec>
+          <spec>
+            <spec_assertion interface="NFCTag" element_type="method" element_name="writeNDEF" specification="NFC" section="Communication" category="Tizen Device API Specifications"/>
+            <spec_url>https://developer.tizen.org/help/index.jsp?topic=/org.tizen.web.device.apireference/tizen/nfc.html</spec_url>
+            <spec_statement>TBD</spec_statement>
+          </spec>
+          <spec>
+            <spec_assertion interface="NFCTag" element_type="method" element_name="writeNDEF" specification="NFC" section="Communication" category="Tizen Device API Specifications"/>
+            <spec_url>https://developer.tizen.org/help/index.jsp?topic=/org.tizen.web.device.apireference/tizen/nfc.html</spec_url>
+            <spec_statement>TBD</spec_statement>
+          </spec>
+          <spec>
+            <spec_assertion interface="NFCTag" element_type="method" element_name="writeNDEF" specification="NFC" section="Communication" category="Tizen Device API Specifications"/>
+            <spec_url>https://developer.tizen.org/help/index.jsp?topic=/org.tizen.web.device.apireference/tizen/nfc.html</spec_url>
+            <spec_statement>TBD</spec_statement>
+          </spec>
+          <spec>
+            <spec_assertion interface="NFCTag" element_type="method" element_name="writeNDEF" specification="NFC" section="Communication" category="Tizen Device API Specifications"/>
+            <spec_url>https://developer.tizen.org/help/index.jsp?topic=/org.tizen.web.device.apireference/tizen/nfc.html</spec_url>
+            <spec_statement>TBD</spec_statement>
+          </spec>
+          <spec>
+            <spec_assertion interface="NFCTag" element_type="method" element_name="writeNDEF" specification="NFC" section="Communication" category="Tizen Device API Specifications"/>
+            <spec_url>https://developer.tizen.org/help/index.jsp?topic=/org.tizen.web.device.apireference/tizen/nfc.html</spec_url>
+            <spec_statement>TBD</spec_statement>
+          </spec>
+          <spec>
+            <spec_assertion interface="NFCTag" element_type="method" element_name="transceive" specification="NFC" section="Communication" category="Tizen Device API Specifications"/>
+            <spec_url>https://developer.tizen.org/help/index.jsp?topic=/org.tizen.web.device.apireference/tizen/nfc.html</spec_url>
+            <spec_statement>TBD</spec_statement>
+          </spec>
+          <spec>
+            <spec_assertion interface="NFCTag" element_type="method" element_name="transceive" specification="NFC" section="Communication" category="Tizen Device API Specifications"/>
+            <spec_url>https://developer.tizen.org/help/index.jsp?topic=/org.tizen.web.device.apireference/tizen/nfc.html</spec_url>
+            <spec_statement>TBD</spec_statement>
+          </spec>
+          <spec>
+            <spec_assertion interface="NFCTag" element_type="method" element_name="transceive" specification="NFC" section="Communication" category="Tizen Device API Specifications"/>
+            <spec_url>https://developer.tizen.org/help/index.jsp?topic=/org.tizen.web.device.apireference/tizen/nfc.html</spec_url>
+            <spec_statement>TBD</spec_statement>
+          </spec>
+          <spec>
+            <spec_assertion interface="NFCTag" element_type="method" element_name="transceive" specification="NFC" section="Communication" category="Tizen Device API Specifications"/>
+            <spec_url>https://developer.tizen.org/help/index.jsp?topic=/org.tizen.web.device.apireference/tizen/nfc.html</spec_url>
+            <spec_statement>TBD</spec_statement>
+          </spec>
+          <spec>
+            <spec_assertion interface="NFCTag" element_type="method" element_name="transceive" specification="NFC" section="Communication" category="Tizen Device API Specifications"/>
+            <spec_url>https://developer.tizen.org/help/index.jsp?topic=/org.tizen.web.device.apireference/tizen/nfc.html</spec_url>
+            <spec_statement>TBD</spec_statement>
+          </spec>
+          <spec>
+            <spec_assertion interface="NFCTag" element_type="method" element_name="transceive" specification="NFC" section="Communication" category="Tizen Device API Specifications"/>
+            <spec_url>https://developer.tizen.org/help/index.jsp?topic=/org.tizen.web.device.apireference/tizen/nfc.html</spec_url>
+            <spec_statement>TBD</spec_statement>
+          </spec>
+          <spec>
+            <spec_assertion interface="NFCTag" element_type="method" element_name="transceive" specification="NFC" section="Communication" category="Tizen Device API Specifications"/>
+            <spec_url>https://developer.tizen.org/help/index.jsp?topic=/org.tizen.web.device.apireference/tizen/nfc.html</spec_url>
+            <spec_statement>TBD</spec_statement>
+          </spec>
+          <spec>
+            <spec_assertion interface="NFCTag" usage="true" specification="NFC" section="Communication" category="Tizen Device API Specifications"/>
+            <spec_url>https://developer.tizen.org/help/index.jsp?topic=/org.tizen.web.device.apireference/tizen/nfc.html</spec_url>
+            <spec_statement>TBD</spec_statement>
+          </spec>
+        </specs>
+      </testcase>
+      <testcase purpose="Check if method NFCAdapter::setPowered(false) sets a value of attribute NFCAdapter::powered to false" type="compliance" status="approved" component="TizenAPI/Communication/NFC" execution_type="manual" priority="P2" id="NFCAdapter_setPowered_off">
+        <description>
+          <pre_condition>Turn ON NFC adapter.</pre_condition>
+          <steps>
+            <step order="1">
+              <step_desc>Click "Run"</step_desc>
+              <expected>NFC adapter should be disabled (OFF) - pass</expected>
+            </step>
+          </steps>
+          <test_script_entry>/opt/tct-nfc-tizen-tests/nfc/NFCAdapter_setPowered_off.html</test_script_entry>
+        </description>
+        <specs>
+          <spec>
+            <spec_assertion interface="NFCAdapter" element_type="method" element_name="setPowered" specification="NFC" section="Communication" category="Tizen Device API Specifications"/>
+            <spec_url>https://developer.tizen.org/help/topic/org.tizen.web.device.apireference/tizen/nfc.html</spec_url>
+            <spec_statement>TBD</spec_statement>
+          </spec>
+        </specs>
+      </testcase>
+      <testcase purpose="Check whether NDEFMessage:toByte() throws exception when NDEFMessage.records contains invalid object" type="compliance" status="approved" component="TizenAPI/Communication/NFC" execution_type="auto" priority="P2" id="NDEFMessage_toByte_TypeMismatch">
+        <description>
+          <test_script_entry>/opt/tct-nfc-tizen-tests/nfc/NDEFMessage_toByte_TypeMismatch.html</test_script_entry>
+        </description>
+        <specs>
+          <spec>
+            <spec_assertion interface="NDEFMessage" element_type="method" element_name="toByte" specification="NFC" section="Communication" category="Tizen Device API Specifications"/>
+            <spec_url>https://developer.tizen.org/help/topic/org.tizen.web.device.apireference/tizen/nfc.html</spec_url>
+            <spec_statement>TBD</spec_statement>
+          </spec>
+        </specs>
+      </testcase>
+    </set>
+  </suite>
+</test_definition>

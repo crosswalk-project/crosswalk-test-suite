@@ -1,0 +1,632 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-stylesheet type="text/xsl" href="./testcase.xsl"?>
+<test_definition>
+  <suite name="wrt-sampleapp-android-tests" category="Crosswalk_Sample_App" launcher="xwalk">
+    <set name="SampleApp">
+      <testcase purpose="Validate if sample app HangOnMan could be installed successfully" type="Functional" status="approved" component="Crosswalk Sample App" execution_type="manual" priority="P0" id="Crosswalk_SampleApp_HangOnMan_Install">
+        <description>
+          <pre_condition>
+            1.Make sure Crosswalk packer tool 'xwalk_app_template' is downloaded and cd  xwalk_app_template path;
+            2.Make sure webapp is downloaded;
+            3.Copy your HTML/JS/CSS and related resources into the directory:"xwalk_app_template/app_src/assets";
+            4.Make sure device is connected with ubuntu.
+          </pre_condition>
+          <post_condition/>
+          <test_script_entry>/opt/wrt-sampleapp-android-tests/sampleapp/Crosswalk_SampleApp_HangOnMan_Install.html</test_script_entry>
+        </description>
+      </testcase>
+      <testcase purpose="Validate if sample app HangOnMan could be uninstalled successfully" type="Functional" status="approved" component="Crosswalk Sample App" execution_type="manual" priority="P0" id="Crosswalk_SampleApp_HangOnMan_UnInstall">
+        <description>
+          <pre_condition>
+            1.Make sure the HangOnMan webapp is installed
+          </pre_condition>
+          <post_condition/>
+          <test_script_entry>/opt/wrt-sampleapp-android-tests/sampleapp/Crosswalk_SampleApp_HangOnMan_Uninstall.html</test_script_entry>
+        </description>
+      </testcase>
+      <testcase purpose="Validate Crosswalk support that uninstall the sample app HangOnMan when it's actually running" type="Functional" status="approved" component="Crosswalk Sample App" execution_type="manual" priority="P2" id="Crosswalk_SampleApp_HangOnMan_Uninstall_WithAppRunning">
+        <description>
+          <pre_condition>
+            1.Make sure sample app HangOnMan is launched;2.Make sure there sample app HangOnMan is available
+          </pre_condition>
+          <post_condition/>
+         <test_script_entry>/opt/wrt-sampleapp-android-tests/sampleapp/Crosswalk_SampleApp_HangOnMan_Uninstall_WithAppRunning.html</test_script_entry>
+        </description>
+      </testcase>
+      <testcase purpose="Validate if sample app HangOnMan could be launched successfully" type="Functional" status="approved" component="Crosswalk Sample App" execution_type="manual" priority="P1" id="Crosswalk_SampleApp_HangOnMan_Launch">
+        <description>
+          <pre_condition>
+            1.Make sure the HangOnMan webapp is installed
+          </pre_condition>
+          <post_condition/>
+        <test_script_entry>/opt/wrt-sampleapp-android-tests/sampleapp/Crosswalk_SampleApp_HangOnMan_Launch.html</test_script_entry>
+        </description>
+      </testcase>
+      <testcase purpose="Validate if sample app HangOnMan could be closed successfully" type="Functional" status="approved" component="Crosswalk Sample App" execution_type="manual" priority="P2" id="Crosswalk_SampleApp_HangOnMan_Close">
+        <description>
+          <pre_condition>
+            1.Make sure the HangOnMan webapp is launched
+          </pre_condition>
+          <post_condition/>
+           <test_script_entry>/opt/wrt-sampleapp-android-tests/sampleapp/Crosswalk_SampleApp_HangOnMan_Close.html</test_script_entry>
+        </description>
+      </testcase>
+      <testcase purpose="Validate if sample app HangOnMan icon display normally" type="Functional" status="approved" component="Crosswalk Sample App" execution_type="manual" priority="P0" id="Crosswalk_SampleApp_HangOnMan_Icon">
+        <description>
+          <pre_condition>
+            1.Make sure HangOnMan webapp is installed;2.Make sure HangOnMan webapp is available
+          </pre_condition>
+          <post_condition/>
+        <test_script_entry>/opt/wrt-sampleapp-android-tests/sampleapp/Crosswalk_SampleApp_HangOnMan_Icon.html</test_script_entry>
+        </description>
+      </testcase>
+      <testcase purpose="Validate if sample app HangOnMan could switch back successfully" type="Functional" status="approved" component="Crosswalk Sample App" execution_type="manual" priority="P2" id="Crosswalk_SampleApp_HangOnMan_Switch">
+        <description>
+          <pre_condition>
+            1.Make sure the HangOnMan webapp is launched
+          </pre_condition>
+          <post_condition/>
+          <test_script_entry>/opt/wrt-sampleapp-android-tests/sampleapp/Crosswalk_SampleApp_HangOnMan_Switch.html</test_script_entry>
+        </description>
+      </testcase>
+      <testcase purpose="Validate if sample app HangOnMan could rotate between portrait orientation screen and landscape orientation screen" type="Functional" status="approved" component="Crosswalk Sample App" execution_type="manual" priority="P2" id="Crosswalk_SampleApp_HangOnMan_Orientation">
+        <description>
+          <pre_condition>
+            1.Make sure the HangOnMan webapp is launched
+          </pre_condition>
+          <post_condition/>
+          <test_script_entry>/opt/wrt-sampleapp-android-tests/sampleapp/Crosswalk_SampleApp_HangOnMan_Orientation.html</test_script_entry>
+        </description>
+      </testcase>
+      <testcase purpose="Validate if sample app HangOnMan function could work well" type="Functional" status="approved" component="Crosswalk Sample App" execution_type="manual" priority="P2" id="Crosswalk_SampleApp_HangOnMan_AppFunction">
+        <description>
+          <pre_condition>
+            1.Make sure the HangOnMan webapp is launched
+          </pre_condition>
+          <post_condition/>
+          <test_script_entry>/opt/wrt-sampleapp-android-tests/sampleapp/Crosswalk_SampleApp_HangOnMan_AppFunction.html</test_script_entry>
+        </description>
+      </testcase>
+      <testcase purpose="Validate if sample app iSmartbook could be installed successfully" type="Functional" status="approved" component="Crosswalk Sample App" execution_type="manual" priority="P0" id="Crosswalk_SampleApp_iSmartbook_Install">
+        <description>
+          <pre_condition>
+            1.Make sure Crosswalk packer tool 'xwalk_app_template' is downloaded and cd  xwalk_app_template path;
+            2.Make sure webapp is downloaded;
+            3.Copy your HTML/JS/CSS and related resources into the directory:"xwalk_app_template/app_src/assets";
+            4.Make sure device is connected with ubuntu.
+          </pre_condition>
+          <post_condition/>
+          <test_script_entry>/opt/wrt-sampleapp-android-tests/sampleapp/Crosswalk_SampleApp_iSmartbook_Install.html</test_script_entry>
+        </description>
+      </testcase>
+      <testcase purpose="Validate if sample app iSmartbook could be uninstalled successfully" type="Functional" status="approved" component="Crosswalk Sample App" execution_type="manual" priority="P0" id="Crosswalk_SampleApp_iSmartbook_UnInstall">
+        <description>
+          <pre_condition>
+            1.Make sure the iSmartbook webapp is installed
+          </pre_condition>
+          <post_condition/>
+          <test_script_entry>/opt/wrt-sampleapp-android-tests/sampleapp/Crosswalk_SampleApp_iSmartbook_UnInstall.html</test_script_entry>
+        </description>
+      </testcase>
+      <testcase purpose="Validate Crosswalk support that uninstall the sample app iSmartbook when it's actually running" type="Functional" status="approved" component="Crosswalk Sample App" execution_type="manual" priority="P2" id="Crosswalk_SampleApp_iSmartbook_Uninstall_WithAppRunning">
+        <description>
+          <pre_condition>
+            1.Make sure sample app iSmartbook is launched;2.Make sure there sample app iSmartbook is available
+          </pre_condition>
+          <post_condition/>
+          <test_script_entry>/opt/wrt-sampleapp-android-tests/sampleapp/Crosswalk_SampleApp_iSmartbook_Uninstall_WithAppRunning.html</test_script_entry>
+        </description>
+      </testcase>
+      <testcase purpose="Validate if sample app iSmartbook could be launched successfully" type="Functional" status="approved" component="Crosswalk Sample App" execution_type="manual" priority="P1" id="Crosswalk_SampleApp_iSmartbook_Launch">
+        <description>
+          <pre_condition>
+            1.Make sure the iSmartbook webapp is installed
+          </pre_condition>
+          <post_condition/>
+          <test_script_entry>/opt/wrt-sampleapp-android-tests/sampleapp/Crosswalk_SampleApp_iSmartbook_Launch.html</test_script_entry>
+        </description>
+      </testcase>
+      <testcase purpose="Validate if sample app iSmartbook could be closed successfully" type="Functional" status="approved" component="Crosswalk Sample App" execution_type="manual" priority="P2" id="Crosswalk_SampleApp_iSmartbook_Close">
+        <description>
+          <pre_condition>
+            1.Make sure the iSmartbook webapp is launched
+          </pre_condition>
+          <post_condition/>
+          <test_script_entry>/opt/wrt-sampleapp-android-tests/sampleapp/Crosswalk_SampleApp_iSmartbook_Close.html</test_script_entry>
+        </description>
+      </testcase>
+      <testcase purpose="Validate if sample app iSmartbook icon display normally" type="Functional" status="approved" component="Crosswalk Sample App" execution_type="manual" priority="P0" id="Crosswalk_SampleApp_iSmartbook_Icon">
+        <description>
+          <pre_condition>
+            1.Make sure iSmartbook webapp is installed;2.Make sure iSmartbook webapp is available
+          </pre_condition>
+          <post_condition/>
+          <test_script_entry>/opt/wrt-sampleapp-android-tests/sampleapp/Crosswalk_SampleApp_iSmartbook_Icon.html</test_script_entry>
+        </description>
+      </testcase>
+      <testcase purpose="Validate if sample app iSmartbook could switch back successfully" type="Functional" status="approved" component="Crosswalk Sample App" execution_type="manual" priority="P2" id="Crosswalk_SampleApp_iSmartbook_Switch">
+        <description>
+          <pre_condition>
+            1.Make sure the iSmartbook webapp is launched
+          </pre_condition>
+          <post_condition/>
+          <test_script_entry>/opt/wrt-sampleapp-android-tests/sampleapp/Crosswalk_SampleApp_iSmartbook_Switch.html</test_script_entry>
+        </description>
+      </testcase>
+      <testcase purpose="Validate if sample app iSmartbook could rotate between portrait orientation screen and landscape orientation screen" type="Functional" status="approved" component="Crosswalk Sample App" execution_type="manual" priority="P2" id="Crosswalk_SampleApp_iSmartbook_Orientation">
+        <description>
+          <pre_condition>
+            1.Make sure the iSmartbook webapp is launched
+          </pre_condition>
+          <post_condition/>
+          <test_script_entry>/opt/wrt-sampleapp-android-tests/sampleapp/Crosswalk_SampleApp_iSmartbook_Orientation.html</test_script_entry>
+        </description>
+      </testcase>
+      <testcase purpose="Validate if sample app iSmartbook function could work well" type="Functional" status="approved" component="Crosswalk Sample App" execution_type="manual" priority="P2" id="Crosswalk_SampleApp_iSmartbook_AppFunction">
+        <description>
+          <pre_condition>
+            1.Make sure the iSmartbook webapp is launched
+          </pre_condition>
+          <post_condition/>
+          <test_script_entry>/opt/wrt-sampleapp-android-tests/sampleapp/Crosswalk_SampleApp_iSmartbook_AppFunction.html</test_script_entry>
+        </description>
+      </testcase>
+      <testcase purpose="Validate if HexGL could be installed successfully" type="Functional" status="approved" component="Crosswalk Sample App" execution_type="manual" priority="P0" id="Crosswalk_SampleApp_HexGL_Install">
+        <description>
+          <pre_condition>
+            1.Make sure HexGL is available
+          </pre_condition>
+          <post_condition/>
+          <test_script_entry>/opt/wrt-sampleapp-android-tests/sampleapp/Crosswalk_SampleApp_HexGL_Install.html</test_script_entry>
+        </description>
+      </testcase>
+      <testcase purpose="Validate if sample app HexGL could be uninstalled successfully" type="Functional" status="approved" component="Crosswalk Sample App" execution_type="manual" priority="P0" id="Crosswalk_SampleApp_HexGL_Uninstall">
+        <description>
+          <pre_condition>
+            1.Make sure HexGL webapp is launched;2.Make sure HexGL webapp is available
+          </pre_condition>
+          <post_condition/>
+          <test_script_entry>/opt/wrt-sampleapp-android-tests/sampleapp/Crosswalk_SampleApp_HexGL_Uninstall.html</test_script_entry>
+        </description>
+      </testcase>
+      <testcase purpose="Validate Crosswalk support that uninstall the sample app HexGL when it's actually running" type="Functional" status="approved" component="Crosswalk Sample App" execution_type="manual" priority="P2" id="Crosswalk_SampleApp_HexGL_Uninstall_WithAppRunning">
+        <description>
+          <pre_condition>
+            1. Make sure sample app HexGL is launched;
+            2.Make sure there sample app HexGL is available
+          </pre_condition>
+          <post_condition/>
+          <test_script_entry>/opt/wrt-sampleapp-android-tests/sampleapp/Crosswalk_SampleApp_HexGL_Uninstall_WithAppRunning.html</test_script_entry>
+        </description>
+      </testcase>
+      <testcase purpose="Validate sample app HexGL could be launched successfully" type="Functional" status="approved" component="Crosswalk Sample App" execution_type="manual" priority="P1" id="Crosswalk_SampleApp_HexGL_Launch">
+        <description>
+          <pre_condition>
+            1. Make sure HexGL webapp is launched;2.Make sure HexGL webapp is installed on Android OS
+          </pre_condition>
+          <post_condition/>
+          <test_script_entry>/opt/wrt-sampleapp-android-tests/sampleapp/Crosswalk_SampleApp_HexGL_Launch.html</test_script_entry>
+        </description>
+      </testcase>
+      <testcase purpose="Validate sample app HexGL could be closed successfully" type="Functional" status="approved" component="Crosswalk Sample App" execution_type="manual" priority="P1" id="Crosswalk_SampleApp_HexGL_Close">
+        <description>
+          <pre_condition>
+            1. Make sure HexGL webapp is launched;2.Make sure HexGL is running
+          </pre_condition>
+          <post_condition/>
+          <test_script_entry>/opt/wrt-sampleapp-android-tests/sampleapp/Crosswalk_SampleApp_HexGL_Close.html</test_script_entry>
+        </description>
+      </testcase>
+      <testcase purpose="Validate if sample app HexGL icon display normally" type="Functional" status="approved" component="Crosswalk Sample App" execution_type="manual" priority="P0" id="Crosswalk_SampleApp_HexGL_Icon">
+        <description>
+          <pre_condition>
+            1. Make sure HexGL webapp is launched;2.Make sure HexGL is available
+          </pre_condition>
+          <post_condition/>
+          <test_script_entry>/opt/wrt-sampleapp-android-tests/sampleapp/Crosswalk_SampleApp_HexGL_Icon.html</test_script_entry>
+        </description>
+      </testcase>
+      <testcase purpose="Validate if sample app HexGL could switch back successfully" type="Functional" status="approved" component="Crosswalk Sample App" execution_type="manual" priority="P2" id="Crosswalk_SampleApp_HexGL_Switch">
+        <description>
+          <pre_condition>
+            1. Make sure HexGL webapp is launched
+          </pre_condition>
+          <post_condition/>
+          <test_script_entry>/opt/wrt-sampleapp-android-tests/sampleapp/Crosswalk_SampleApp_HexGL_Switch.html</test_script_entry>
+        </description>
+      </testcase>
+      <testcase purpose="Validate if sample app HexGL could rotate between portrait orientation screen and landscape orientation screen" type="Functional" status="approved" component="Crosswalk Sample App" execution_type="manual" priority="P2" id="Crosswalk_SampleApp_HexGL_Orientation">
+        <description>
+          <pre_condition>
+            1. Make sure HexGL webapp is launched
+          </pre_condition>
+          <post_condition/>
+          <test_script_entry>/opt/wrt-sampleapp-android-tests/sampleapp/Crosswalk_SampleApp_HexGL_Orientation.html</test_script_entry>
+        </description>
+      </testcase>
+      <testcase purpose="Validate if sample app HexGL function could work well" type="Functional" status="approved" component="Crosswalk Sample App" execution_type="manual" priority="P2" id="Crosswalk_SampleApp_HexGL_AppFunction">
+        <description>
+          <pre_condition>
+            1. Make sure HexGL webapp is launched
+          </pre_condition>
+          <post_condition/>
+          <test_script_entry>/opt/wrt-sampleapp-android-tests/sampleapp/Crosswalk_SampleApp_HexGL_AppFunction.html</test_script_entry>
+        </description>
+      </testcase>
+      <testcase purpose="Validate if MemoryGame could be installed successfully" type="Functional" status="approved" component="Crosswalk Sample App" execution_type="manual" priority="P0" id="Crosswalk_SampleApp_MemoryGame_Install">
+        <description>
+          <pre_condition>
+            1.Make sure MemoryGame is available
+          </pre_condition>
+          <post_condition/>
+          <test_script_entry>/opt/wrt-sampleapp-android-tests/sampleapp/Crosswalk_SampleApp_MemoryGame_Install.html</test_script_entry>
+        </description>
+      </testcase>
+      <testcase purpose="Validate if sample app MemoryGame could be uninstalled successfully" type="Functional" status="approved" component="Crosswalk Sample App" execution_type="manual" priority="P0" id="Crosswalk_SampleApp_MemoryGame_Uninstall">
+        <description>
+          <pre_condition>
+            1.Make sure MemoryGame webapp is launched;2.Make sure MemoryGame webapp is available
+          </pre_condition>
+          <post_condition/>
+          <test_script_entry>/opt/wrt-sampleapp-android-tests/sampleapp/Crosswalk_SampleApp_MemoryGame_Uninstall.html</test_script_entry>
+        </description>
+      </testcase>
+      <testcase purpose="Validate Crosswalk support that uninstall the sample app MemoryGame when it's actually running" type="Functional" status="approved" component="Crosswalk Sample App" execution_type="manual" priority="P2" id="Crosswalk_SampleApp_MemoryGame_Uninstall_WithAppRunning">
+        <description>
+          <pre_condition>
+            1. Make sure sample app MemoryGame is launched;
+            2.Make sure there sample app MemoryGame is available
+          </pre_condition>
+          <post_condition/>
+          <test_script_entry>/opt/wrt-sampleapp-android-tests/sampleapp/Crosswalk_SampleApp_MemoryGame_Uninstall_WithAppRunning.html</test_script_entry>
+        </description>
+      </testcase>
+      <testcase purpose="Validate sample app MemoryGame could be launched successfully" type="Functional" status="approved" component="Crosswalk Sample App" execution_type="manual" priority="P1" id="Crosswalk_SampleApp_MemoryGame_Launch">
+        <description>
+          <pre_condition>
+            1. Make sure MemoryGame webapp is launched;2.Make sure MemoryGame webapp is installed on Android OS
+          </pre_condition>
+          <post_condition/>
+          <test_script_entry>/opt/wrt-sampleapp-android-tests/sampleapp/Crosswalk_SampleApp_MemoryGame_Launch.html</test_script_entry>
+        </description>
+      </testcase>
+      <testcase purpose="Validate sample app MemoryGame could be closed successfully" type="Functional" status="approved" component="Crosswalk Sample App" execution_type="manual" priority="P1" id="Crosswalk_SampleApp_MemoryGame_Close">
+        <description>
+          <pre_condition>
+            1. Make sure MemoryGame webapp is launched;2.Make sure MemoryGame is running
+          </pre_condition>
+          <post_condition/>
+          <test_script_entry>/opt/wrt-sampleapp-android-tests/sampleapp/Crosswalk_SampleApp_MemoryGame_Close.html</test_script_entry>
+        </description>
+      </testcase>
+      <testcase purpose="Validate if sample app MemoryGame icon display normally" type="Functional" status="approved" component="Crosswalk Sample App" execution_type="manual" priority="P0" id="Crosswalk_SampleApp_MemoryGame_Icon">
+        <description>
+          <pre_condition>
+            1. Make sure MemoryGame webapp is launched;2.Make sure MemoryGame is available
+          </pre_condition>
+          <post_condition/>
+          <test_script_entry>/opt/wrt-sampleapp-android-tests/sampleapp/Crosswalk_SampleApp_MemoryGame_Icon.html</test_script_entry>
+        </description>
+      </testcase>
+      <testcase purpose="Validate if sample app MemoryGame could switch back successfully" type="Functional" status="approved" component="Crosswalk Sample App" execution_type="manual" priority="P2" id="Crosswalk_SampleApp_MemoryGame_Switch">
+        <description>
+          <pre_condition>
+            1. Make sure MemoryGame webapp is launched
+          </pre_condition>
+          <post_condition/>
+          <test_script_entry>/opt/wrt-sampleapp-android-tests/sampleapp/Crosswalk_SampleApp_MemoryGame_Switch.html</test_script_entry>
+        </description>
+      </testcase>
+      <testcase purpose="Validate if sample app MemoryGame could rotate between portrait orientation screen and landscape orientation screen" type="Functional" status="approved" component="Crosswalk Sample App" execution_type="manual" priority="P2" id="Crosswalk_SampleApp_MemoryGame_Orientation">
+        <description>
+          <pre_condition>
+            1. Make sure MemoryGame webapp is launched
+          </pre_condition>
+          <post_condition/>
+          <test_script_entry>/opt/wrt-sampleapp-android-tests/sampleapp/Crosswalk_SampleApp_MemoryGame_Orientation.html</test_script_entry>
+        </description>
+      </testcase>
+      <testcase purpose="Validate if sample app MemoryGame function could work well" type="Functional" status="approved" component="Crosswalk Sample App" execution_type="manual" priority="P2" id="Crosswalk_SampleApp_MemoryGame_AppFunction">
+        <description>
+          <pre_condition>
+            1. Make sure MemoryGame webapp is launched
+          </pre_condition>
+          <post_condition/>
+          <test_script_entry>/opt/wrt-sampleapp-android-tests/sampleapp/Crosswalk_SampleApp_MemoryGame_AppFunction.html</test_script_entry>
+        </description>
+      </testcase>
+      <testcase purpose="Validate if WebRTC could be installed successfully" type="Functional" status="approved" component="Crosswalk Sample App" execution_type="manual" priority="P0" id="Crosswalk_SampleApp_WebRTC_Install">
+        <description>
+          <pre_condition>
+            1.Make sure Crosswalk binary is installed;
+            2.Make sure WebRTC is available http://61.129.90.140/chatbox/login.html
+          </pre_condition>
+          <post_condition/>
+          <test_script_entry>/opt/wrt-sampleapp-android-tests/sampleapp/Crosswalk_SampleApp_WebRTC_Install.html</test_script_entry>
+        </description>
+      </testcase>
+      <testcase purpose="Validate if sample app WebRTC could be uninstalled successfully" type="Functional" status="approved" component="Crosswalk Sample App" execution_type="manual" priority="P0" id="Crosswalk_SampleApp_WebRTC_Uninstall">
+        <description>
+          <pre_condition>
+            1.Make sure Crosswalk binary is installed;
+            2.Make sure WebRTC webapp is available;
+            3.Make sure WebRTC webapp is launched
+          </pre_condition>
+          <post_condition/>
+          <test_script_entry>/opt/wrt-sampleapp-android-tests/sampleapp/Crosswalk_SampleApp_WebRTC_Uninstall.html</test_script_entry>
+        </description>
+      </testcase>
+      <testcase purpose="Validate Crosswalk support that uninstall the sample app WebRTC when it's actually running" type="Functional" status="approved" component="Crosswalk Sample App" execution_type="manual" priority="P2" id="Crosswalk_SampleApp_WebRTC_Uninstall_WithAppRunning">
+        <description>
+          <pre_condition>
+            1.Make sure Crosswalk binary is installed;
+            2.Make sure there sample app WebRTC is available;
+            3.Make sure sample app WebRTC is launched.
+          </pre_condition>
+          <post_condition/>
+          <test_script_entry>/opt/wrt-sampleapp-android-tests/sampleapp/Crosswalk_SampleApp_WebRTC_Uninstall_WithAppRunning.html</test_script_entry>
+        </description>
+      </testcase>
+      <testcase purpose="Validate sample app WebRTC could be launched successfully" type="Functional" status="approved" component="Crosswalk Sample App" execution_type="manual" priority="P1" id="Crosswalk_SampleApp_WebRTC_Launch">
+        <description>
+          <pre_condition>
+            1.Make sure Crosswalk binary is installed;
+            2.Make sure WebRTC: http://61.129.90.140/chatbox/login.html is available;
+            3.Make sure WebRTC webapp is installed on Android OS;
+            4.Make sure network can be used.
+          </pre_condition>
+          <post_condition/>
+          <test_script_entry>/opt/wrt-sampleapp-android-tests/sampleapp/Crosswalk_SampleApp_WebRTC_Launch.html</test_script_entry>
+        </description>
+      </testcase>
+      <testcase purpose="Validate sample app WebRTC could be closed successfully" type="Functional" status="approved" component="Crosswalk Sample App" execution_type="manual" priority="P1" id="Crosswalk_SampleApp_WebRTC_Close">
+        <description>
+          <pre_condition>
+            1.Make sure Crosswalk binary is installed;
+            2.Make sure WebRTC webapp is launched;
+            3.Make sure WebRTC webapp is running;
+            4.Make sure network can be used.
+          </pre_condition>
+          <post_condition/>
+          <test_script_entry>/opt/wrt-sampleapp-android-tests/sampleapp/Crosswalk_SampleApp_WebRTC_Close.html</test_script_entry>
+        </description>
+      </testcase>
+      <testcase purpose="Validate if sample app WebRTC icon display normally" type="Functional" status="approved" component="Crosswalk Sample App" execution_type="manual" priority="P2" id="Crosswalk_SampleApp_WebRTC_Icon">
+        <description>
+          <pre_condition>
+            1.Make sure Crosswalk binary is installed;
+            2.Make sure WebRTC webapp is installed and http://61.129.90.140/chatbox/login.html is available;
+            3.Make sure WebRTC webapp is available.
+          </pre_condition>
+          <post_condition/>
+          <test_script_entry>/opt/wrt-sampleapp-android-tests/sampleapp/Crosswalk_SampleApp_WebRTC_Icon.html</test_script_entry>
+        </description>
+      </testcase>
+      <testcase purpose="Validate if sample app WebRTC could switch back successfully" type="Functional" status="approved" component="Crosswalk Sample App" execution_type="manual" priority="P2" id="Crosswalk_SampleApp_WebRTC_Switch">
+        <description>
+          <pre_condition>
+            1.Make sure Crosswalk binary is installed;
+            2.Make sure WebRTC webapp is launched and http://61.129.90.140/chatbox/login.html is available;
+            3.Make sure network can be used.
+          </pre_condition>
+          <post_condition/>
+          <test_script_entry>/opt/wrt-sampleapp-android-tests/sampleapp/Crosswalk_SampleApp_WebRTC_Switch.html</test_script_entry>
+        </description>
+      </testcase>
+      <testcase purpose="Validate if sample app WebRTC could rotate between portrait orientation screen and landscape orientation screen" type="Functional" status="approved" component="Crosswalk Sample App" execution_type="manual" priority="P2" id="Crosswalk_SampleApp_WebRTC_Orientation">
+        <description>
+          <pre_condition>
+            1.Make sure Crosswalk binary is installed;
+            2.Make sure WebRTC webapp is launched and http://61.129.90.140/chatbox/login.html is available;
+            3.Make sure network can be used.
+          </pre_condition>
+            <post_condition/>
+          <test_script_entry>/opt/wrt-sampleapp-android-tests/sampleapp/Crosswalk_SampleApp_WebRTC_Orientation.html</test_script_entry>
+        </description>
+      </testcase>
+      <testcase purpose="Validate WebRTC sample app  could login successfully" type="Functional" status="approved" component="Crosswalk Sample App" execution_type="manual" priority="P2" id="Crosswalk_SampleApp_WebRTC_Login">
+        <description>
+          <pre_condition>
+            1.Make sure Crosswalk binary is installed;
+            2.Make sure WebRTC webapp is launched and http://61.129.90.140/chatbox/login.html is available;
+            3.Make sure network can be used.
+          </pre_condition>
+          <post_condition/>
+          <test_script_entry>/opt/wrt-sampleapp-android-tests/sampleapp/Crosswalk_SampleApp_WebRTC_Login.html</test_script_entry>
+        </description>
+      </testcase>
+      <testcase purpose="Validate WebRTC sample app  could text chat" type="Functional" status="approved" component="Crosswalk Sample App" execution_type="manual" priority="P1" id="Crosswalk_SampleApp_WebRTC_TextChat">
+        <description>
+          <pre_condition>
+            1.Make sure Crosswalk binary is installed;
+            2.Make sure the http://61.129.90.140/chatbox/login.html is available and WebRTC webapp is login;
+            3.Make sure network can be used.
+          </pre_condition>
+          <post_condition/>
+          <test_script_entry>/opt/wrt-sampleapp-android-tests/sampleapp/Crosswalk_SampleApp_WebRTC_TextChat.html</test_script_entry>
+        </description>
+      </testcase>
+      <testcase purpose="Validate WebRTC sample app  could video chat" type="Functional" status="approved" component="Crosswalk Sample App" execution_type="manual" priority="P2" id="Crosswalk_SampleApp_WebRTC_VideoChat">
+        <description>
+          <pre_condition>
+            1.Make sure Crosswalk binary is installed;
+            2.Make sure the http://61.129.90.140/chatbox/login.html is available and WebRTC webapp is login;
+            3.Make sure network can be used.
+          </pre_condition>
+          <post_condition/>
+          <test_script_entry>/opt/wrt-sampleapp-android-tests/sampleapp/Crosswalk_SampleApp_WebRTC_VideoChat.html</test_script_entry>
+        </description>
+      </testcase>
+      <testcase purpose="Validate if sample app Gallery could be installed successfully" type="Functional" status="approved" component="Crosswalk Sample App" execution_type="manual" priority="P0" id="Crosswalk_SampleApp_Gallery_Install">
+        <description>
+          <pre_condition>
+            1.Make sure Crosswalk binary is installed;
+            2.Make sure webapp is downloaded;
+            3.Copy your HTML/JS/CSS and related resources into the directory:"xwalk_app_template/app_src/assets";
+            4.Make sure device is connected with ubuntu.
+          </pre_condition>
+          <post_condition/>
+          <test_script_entry>/opt/wrt-sampleapp-android-tests/sampleapp/Crosswalk_SampleApp_Gallery_Install.html</test_script_entry>
+        </description>
+      </testcase>
+      <testcase purpose="Validate if sample app Gallery could be uninstalled successfully" type="Functional" status="approved" component="Crosswalk Sample App" execution_type="manual" priority="P0" id="Crosswalk_SampleApp_Gallery_UnInstall">
+        <description>
+          <pre_condition>
+            1.Make sure the Gallery webapp is installed.
+          </pre_condition>
+          <post_condition/>
+          <test_script_entry>/opt/wrt-sampleapp-android-tests/sampleapp/Crosswalk_SampleApp_Gallery_Uninstall.html</test_script_entry>
+        </description>
+      </testcase>
+      <testcase purpose="Validate Crosswalk support that uninstall the sample app Gallery when it's actually running" type="Functional" status="approved" component="Crosswalk Sample App" execution_type="manual" priority="P2" id="Crosswalk_SampleApp_Gallery_Uninstall_WithAppRunning">
+        <description>
+          <pre_condition>
+            1.Make sure sample app Gallery is launched;
+          </pre_condition>
+          <post_condition/>
+         <test_script_entry>/opt/wrt-sampleapp-android-tests/sampleapp/Crosswalk_SampleApp_Gallery_Uninstall_WithAppRunning.html</test_script_entry>
+        </description>
+      </testcase>
+      <testcase purpose="Validate if sample app Gallery could be launched successfully" type="Functional" status="approved" component="Crosswalk Sample App" execution_type="manual" priority="P1" id="Crosswalk_SampleApp_Gallery_Launch">
+        <description>
+          <pre_condition>
+            1.Make sure the Gallery webapp is installed
+          </pre_condition>
+          <post_condition/>
+        <test_script_entry>/opt/wrt-sampleapp-android-tests/sampleapp/Crosswalk_SampleApp_Gallery_Launch.html</test_script_entry>
+        </description>
+      </testcase>
+      <testcase purpose="Validate if sample app Gallery could be closed successfully" type="Functional" status="approved" component="Crosswalk Sample App" execution_type="manual" priority="P2" id="Crosswalk_SampleApp_Gallery_Close">
+        <description>
+          <pre_condition>
+            1.Make sure the Gallery webapp is launched
+          </pre_condition>
+          <post_condition/>
+           <test_script_entry>/opt/wrt-sampleapp-android-tests/sampleapp/Crosswalk_SampleApp_Gallery_Close.html</test_script_entry>
+        </description>
+      </testcase>
+      <testcase purpose="Validate if sample app Gallery icon display normally" type="Functional" status="approved" component="Crosswalk Sample App" execution_type="manual" priority="P2" id="Crosswalk_SampleApp_Gallery_Icon">
+        <description>
+          <pre_condition>
+            1.Make sure Gallery webapp is installed;
+            2.Make sure Gallery webapp is available.
+          </pre_condition>
+          <post_condition/>
+        <test_script_entry>/opt/wrt-sampleapp-android-tests/sampleapp/Crosswalk_SampleApp_Gallery_Icon.html</test_script_entry>
+        </description>
+      </testcase>
+      <testcase purpose="Validate if sample app Gallery could switch back successfully" type="Functional" status="approved" component="Crosswalk Sample App" execution_type="manual" priority="P2" id="Crosswalk_SampleApp_Gallery_Switch">
+        <description>
+          <pre_condition>
+            1.Make sure the Gallery webapp is launched.
+          </pre_condition>
+          <post_condition/>
+          <test_script_entry>/opt/wrt-sampleapp-android-tests/sampleapp/Crosswalk_SampleApp_Gallery_Switch.html</test_script_entry>
+        </description>
+      </testcase>
+      <testcase purpose="Validate if sample app Gallery could rotate between portrait orientation screen and landscape orientation screen" type="Functional" status="approved" component="Crosswalk Sample App" execution_type="manual" priority="P2" id="Crosswalk_SampleApp_Gallery_Orientation">
+        <description>
+          <pre_condition>
+            1.Make sure the Gallery webapp is launched.
+          </pre_condition>
+          <post_condition/>
+          <test_script_entry>/opt/wrt-sampleapp-android-tests/sampleapp/Crosswalk_SampleApp_Gallery_Orientation.html</test_script_entry>
+        </description>
+      </testcase>
+      <testcase purpose="Validate if sample app Gallery function could work well" type="Functional" status="approved" component="Crosswalk Sample App" execution_type="manual" priority="P2" id="Crosswalk_SampleApp_Gallery_AppFunction">
+        <description>
+          <pre_condition>
+            1.Make sure the Gallery webapp is launched.
+          </pre_condition>
+          <post_condition/>
+          <test_script_entry>/opt/wrt-sampleapp-android-tests/sampleapp/Crosswalk_SampleApp_Gallery_AppFunction.html</test_script_entry>
+        </description>
+      </testcase>
+      <testcase purpose="Validate if SysApps_DeviceCapabilities could be installed successfully" type="Functional" status="approved" component="Crosswalk Sample App" execution_type="manual" priority="P0" id="Crosswalk_SampleApp_SysApps_DeviceCapabilities_Install">
+        <description>
+          <pre_condition>
+            1.Make sure SysApps_DeviceCapabilities is available
+          </pre_condition>
+          <post_condition/>
+          <test_script_entry>/opt/wrt-sampleapp-android-tests/sampleapp/Crosswalk_SampleApp_SysApps_DeviceCapabilities_Install.html</test_script_entry>
+        </description>
+      </testcase>
+      <testcase purpose="Validate if sample app SysApps_DeviceCapabilities could be uninstalled successfully" type="Functional" status="approved" component="Crosswalk Sample App" execution_type="manual" priority="P0" id="Crosswalk_SampleApp_SysApps_DeviceCapabilities_Uninstall">
+        <description>
+          <pre_condition>
+            1.Make sure SysApps_DeviceCapabilities webapp is launched;2.Make sure SysApps_DeviceCapabilities webapp is available
+          </pre_condition>
+          <post_condition/>
+          <test_script_entry>/opt/wrt-sampleapp-android-tests/sampleapp/Crosswalk_SampleApp_SysApps_DeviceCapabilities_Uninstall.html</test_script_entry>
+        </description>
+      </testcase>
+      <testcase purpose="Validate Crosswalk support that uninstall the sample app SysApps_DeviceCapabilities when it's actually running" type="Functional" status="approved" component="Crosswalk Sample App" execution_type="manual" priority="P2" id="Crosswalk_SampleApp_SysApps_DeviceCapabilities_Uninstall_WithAppRunning">
+        <description>
+          <pre_condition>
+            1. Make sure sample app SysApps_DeviceCapabilities is launched;
+            2.Make sure there sample app SysApps_DeviceCapabilities is available
+          </pre_condition>
+          <post_condition/>
+          <test_script_entry>/opt/wrt-sampleapp-android-tests/sampleapp/Crosswalk_SampleApp_SysApps_DeviceCapabilities_Uninstall_WithAppRunning.html</test_script_entry>
+        </description>
+      </testcase>
+      <testcase purpose="Validate sample app SysApps_DeviceCapabilities could be launched successfully" type="Functional" status="approved" component="Crosswalk Sample App" execution_type="manual" priority="P1" id="Crosswalk_SampleApp_SysApps_DeviceCapabilities_Launch">
+        <description>
+          <pre_condition>
+            1.Make sure SysApps_DeviceCapabilities webapp is launched;
+            2.Make sure SysApps_DeviceCapabilities webapp is installed on Android OS
+          </pre_condition>
+          <post_condition/>
+          <test_script_entry>/opt/wrt-sampleapp-android-tests/sampleapp/Crosswalk_SampleApp_SysApps_DeviceCapabilities_Launch.html</test_script_entry>
+        </description>
+      </testcase>
+      <testcase purpose="Validate sample app SysApps_DeviceCapabilities could be closed successfully" type="Functional" status="approved" component="Crosswalk Sample App" execution_type="manual" priority="P1" id="Crosswalk_SampleApp_SysApps_DeviceCapabilities_Close">
+        <description>
+          <pre_condition>
+            1.Make sure SysApps_DeviceCapabilities webapp is launched;
+            2.Make sure SysApps_DeviceCapabilities is running
+          </pre_condition>
+          <post_condition/>
+          <test_script_entry>/opt/wrt-sampleapp-android-tests/sampleapp/Crosswalk_SampleApp_SysApps_DeviceCapabilities_Close.html</test_script_entry>
+        </description>
+      </testcase>
+      <testcase purpose="Validate if sample app SysApps_DeviceCapabilities icon display normally" type="Functional" status="approved" component="Crosswalk Sample App" execution_type="manual" priority="P0" id="Crosswalk_SampleApp_SysApps_DeviceCapabilities_Icon">
+        <description>
+          <pre_condition>
+            1.Make sure SysApps_DeviceCapabilities webapp is launched;
+            2.Make sure SysApps_DeviceCapabilities is available
+          </pre_condition>
+          <post_condition/>
+          <test_script_entry>/opt/wrt-sampleapp-android-tests/sampleapp/Crosswalk_SampleApp_SysApps_DeviceCapabilities_Icon.html</test_script_entry>
+        </description>
+      </testcase>
+      <testcase purpose="Validate if sample app SysApps_DeviceCapabilities could switch back successfully" type="Functional" status="approved" component="Crosswalk Sample App" execution_type="manual" priority="P2" id="Crosswalk_SampleApp_SysApps_DeviceCapabilities_Switch">
+        <description>
+          <pre_condition>
+            1. Make sure SysApps_DeviceCapabilities webapp is launched
+          </pre_condition>
+          <post_condition/>
+          <test_script_entry>/opt/wrt-sampleapp-android-tests/sampleapp/Crosswalk_SampleApp_SysApps_DeviceCapabilities_Switch.html</test_script_entry>
+        </description>
+      </testcase>
+      <testcase purpose="Validate if sample app SysApps_DeviceCapabilities could rotate between portrait orientation screen and landscape orientation screen" type="Functional" status="approved" component="Crosswalk Sample App" execution_type="manual" priority="P2" id="Crosswalk_SampleApp_SysApps_DeviceCapabilities_Orientation">
+        <description>
+          <pre_condition>
+            1. Make sure SysApps_DeviceCapabilities webapp is launched
+          </pre_condition>
+          <post_condition/>
+          <test_script_entry>/opt/wrt-sampleapp-android-tests/sampleapp/Crosswalk_SampleApp_SysApps_DeviceCapabilities_Orientation.html</test_script_entry>
+        </description>
+      </testcase>
+      <testcase purpose="Validate if sample app SysApps_DeviceCapabilities function could work well" type="Functional" status="approved" component="Crosswalk Sample App" execution_type="manual" priority="P2" id="Crosswalk_SampleApp_SysApps_DeviceCapabilities_AppFunction">
+        <description>
+          <pre_condition>
+            1. Make sure SysApps_DeviceCapabilities webapp is launched
+          </pre_condition>
+          <post_condition/>
+          <test_script_entry>/opt/wrt-sampleapp-android-tests/sampleapp/Crosswalk_SampleApp_SysApps_DeviceCapabilities_AppFunction.html</test_script_entry>
+        </description>
+      </testcase>
+   </set>
+ </suite>
+</test_definition>

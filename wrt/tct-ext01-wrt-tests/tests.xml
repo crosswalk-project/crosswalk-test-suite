@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+    <?xml-stylesheet type="text/xsl" href="./testcase.xsl"?>
+<test_definition>
+  <suite launcher="xwalk -iu" extension="crosswalk" name="tct-ext01-wrt-tests" category="Web Runtime">
+    <set name="application-privilege">
+      <testcase component="Web/Runtime/ConfigExtension" execution_type="auto" id="application-privilege" purpose="Check that the web runtime is able to identify the required API access privilege.">
+        <description>
+          <test_script_entry test_script_expected_result="0">test_index.html</test_script_entry>
+        </description>
+        </testcase>
+    </set>
+    <set name="setting-install-location-auto">
+      <testcase component="Web/Runtime/ConfigExtension" execution_type="auto" id="setting-install-location-auto" purpose="Check that the installation location is at &#1203;ystem&#1184;when install-location is set as 'auto'.">
+        <description>
+          <test_script_entry test_script_expected_result="0">test_index.html</test_script_entry>
+        </description>
+        </testcase>
+    </set>
+    <set name="metadata-support">
+      <testcase component="Web/Runtime/ConfigExtension" execution_type="auto" id="metadata-support" purpose="Check that the web runtime can support the metadata element.">
+        <description>
+          <test_script_entry test_script_expected_result="0">test_index.html</test_script_entry>
+        </description>
+        </testcase>
+    </set>
+  </suite>
+</test_definition>

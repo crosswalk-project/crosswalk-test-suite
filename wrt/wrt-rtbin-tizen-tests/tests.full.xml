@@ -1,0 +1,221 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-stylesheet type="text/xsl" href="./testcase.xsl"?>
+<test_definition>
+  <suite name="wrt-rtbin-tizen-tests" category="Crosswalk Runtime Binary" launcher="xwalk">
+    <set name="rtbin">
+      <testcase purpose="Validate the project name is about with Crosswalk" type="Functional" status="approved" component="Crosswalk Runtime Binary" execution_type="manual" priority="P1" id="Crosswalk_Launcher_Check_Project_Name">
+        <description>
+          <pre_condition>
+            1.Make sure Crosswalk binary is download to local.
+          </pre_condition>
+          <test_script_entry>/opt/wrt-rtbin-tizen-tests/rtbin/Crosswalk_Launcher_Check_Project_Name.html</test_script_entry>
+        </description>
+      </testcase>
+      <testcase purpose="Validate Crosswalk native UI is launced on fullscreen mode by default" type="Functional" status="approved" component="Crosswalk Runtime Binary" execution_type="manual" priority="P1" id="Crosswalk_Launcher_Fullscreen">
+        <description>
+          <pre_condition>
+            1.Make sure Crosswalk binary is installed.
+          </pre_condition>
+          <test_script_entry>/opt/wrt-rtbin-tizen-tests/rtbin/Crosswalk_Launcher_Fullscreen.html</test_script_entry>
+        </description>
+      </testcase>
+      <testcase purpose="Validate Crosswalk support Chinese language successfully" type="Functional" status="approved" component="Crosswalk Runtime Binary" execution_type="manual" priority="P2" id="Crosswalk_Launcher_i18n_Chinese">
+        <description>
+          <pre_condition>
+            1.Make sure Crosswalk binary is installed.
+          </pre_condition>
+          <test_script_entry>/opt/wrt-rtbin-tizen-tests/rtbin/Crosswalk_Launcher_i18n_Chinese.html</test_script_entry>
+        </description>
+      </testcase>
+      <testcase purpose="Validate Crosswalk support English language successfully" type="Functional" status="approved" component="Crosswalk Runtime Binary" execution_type="manual" priority="P2" id="Crosswalk_Launcher_i18n_English">
+        <description>
+          <pre_condition>
+            1.Make sure Crosswalk binary is installed.
+          </pre_condition>
+          <test_script_entry>/opt/wrt-rtbin-tizen-tests/rtbin/Crosswalk_Launcher_i18n_English.html</test_script_entry>
+        </description>
+      </testcase>
+      <testcase purpose="Validate Crosswalk support Chinese language successfully" type="Functional" status="approved" component="Crosswalk Runtime Binary" execution_type="manual" priority="P1" id="Crosswalk_Launcher_List_Apps">
+        <description>
+          <pre_condition>
+            1.Make sure Crosswalk binary is installed.
+          </pre_condition>
+          <test_script_entry>/opt/wrt-rtbin-tizen-tests/rtbin/Crosswalk_Launcher_List_Apps.html</test_script_entry>
+        </description>
+      </testcase>
+      <testcase purpose="Validate a feature is enabled  in Crosswalk" type="Functional" status="designed" component="Crosswalk Runtime Binary" execution_type="manual" priority="P1" id="Crosswalk_Launcher_Flag_Enable">
+        <description>
+          <pre_condition>
+            1.Make sure Crosswalk binary is installed;
+          </pre_condition>
+          <test_script_entry>/opt/wrt-rtbin-tizen-tests/rtbin/Crosswalk_Launcher_Flag_Enable.html</test_script_entry>
+        </description>
+      </testcase>
+      <testcase purpose="Validate if can disable a feature in Crosswalk" type="Functional" status="designed" component="Crosswalk Runtime Binary" execution_type="manual" priority="P1" id="Crosswalk_Launcher_Flag_Disable">
+        <description>
+          <pre_condition>
+            1.Make sure Crosswalk binary is installed;
+            2.Make sure the feature is supported in Crosswalk.
+          </pre_condition>
+          <test_script_entry>/opt/wrt-rtbin-tizen-tests/rtbin/Crosswalk_Launcher_Flag_Disable.html</test_script_entry>
+        </description>
+      </testcase>
+      <testcase purpose="Validate Crosswalk support '--disable-device-capabilities' flag successfully" type="Functional" status="approved" component="Crosswalk Runtime Binary" execution_type="manual" priority="P2" id="Crosswalk_Feature_Flags_disable-device-capabilities">
+        <description>
+          <pre_condition>
+            1.Make sure Crosswalk binary is installed.
+          </pre_condition>
+          <test_script_entry>/opt/wrt-rtbin-tizen-tests/rtbin/Crosswalk_Feature_Flags_disable-device-capabilities.html</test_script_entry>
+        </description>
+      </testcase>
+      <testcase purpose="Validate Crosswalk support '--disable-raw-sockets' flag successfully" type="Functional" status="designed" component="Crosswalk Runtime Binary" execution_type="manual" priority="P2" id="Crosswalk_Feature_Flags_disable-raw-sockets">
+        <description>
+          <pre_condition>
+            1.Make sure Crosswalk binary is installed.
+          </pre_condition>
+          <test_script_entry>/opt/wrt-rtbin-tizen-tests/rtbin/Crosswalk_Feature_Flags_disable-raw-sockets.html</test_script_entry>
+        </description>
+      </testcase>
+      <testcase purpose="Validate Crosswalk support '--fullscreen' flag successfully" type="Functional" status="approved" component="Crosswalk Runtime Binary" execution_type="manual" priority="P1" id="Crosswalk_Feature_Flags_fullscreen">
+        <description>
+          <pre_condition>
+            1.Make sure Crosswalk binary is installed.
+          </pre_condition>
+          <test_script_entry>/opt/wrt-rtbin-tizen-tests/rtbin/Crosswalk_Feature_Flags_fullscreen.html</test_script_entry>
+        </description>
+      </testcase>
+      <testcase purpose="Validate Crosswalk support '--list-feature-flags' flag successfully" type="Functional" status="approved" component="Crosswalk Runtime Binary" execution_type="manual" priority="P1" id="Crosswalk_Feature_Flags_list-feature-flags">
+        <description>
+          <pre_condition>
+            1.Make sure Crosswalk binary is installed.
+          </pre_condition>
+          <test_script_entry>/opt/wrt-rtbin-tizen-tests/rtbin/Crosswalk_Feature_Flags_list-feature-flags.html</test_script_entry>
+        </description>
+      </testcase>
+      <testcase purpose="Validate Crosswalk support installing apps in the 'run-as-service' mode" type="Functional" status="approved" component="Crosswalk Runtime Binary" execution_type="manual" priority="P0" id="Crosswalk_Run_As_Service_Install">
+        <description>
+          <pre_condition>
+            1.Make sure Crosswalk binary is installed
+            2.Make sure the "SysApps_DeviceCapabilities.xpk" package is available
+          </pre_condition>
+          <test_script_entry>/opt/wrt-rtbin-tizen-tests/rtbin/Crosswalk_Run_As_Service_Install.html</test_script_entry>
+        </description>
+      </testcase>
+      <testcase purpose="Validate Crosswalk support uninstalling apps in the 'run-as-service' mode" type="Functional" status="approved" component="Crosswalk Runtime Binary" execution_type="manual" priority="P0" id="Crosswalk_Run_As_Service_Uninstall">
+        <description>
+          <pre_condition>
+            1.Make sure Crosswalk binary is installed
+            2.Make sure the "SysApps_DeviceCapabilities.xpk" package is available
+          </pre_condition>
+          <test_script_entry>/opt/wrt-rtbin-tizen-tests/rtbin/Crosswalk_Run_As_Service_Uninstall.html</test_script_entry>
+        </description>
+      </testcase>
+      <testcase purpose="Validate Crosswalk can launch apps in the 'run-as-service' mode" type="Functional" status="approved" component="Crosswalk Runtime Binary" execution_type="manual" priority="P0" id="Crosswalk_Run_As_Service_Launch">
+        <description>
+          <pre_condition>
+            1.Make sure Crosswalk binary is installed
+            2.Make sure the "SysApps_DeviceCapabilities.xpk" package is installed
+          </pre_condition>
+          <test_script_entry>/opt/wrt-rtbin-tizen-tests/rtbin/Crosswalk_Run_As_Service_Launch.html</test_script_entry>
+        </description>
+      </testcase>
+      <testcase purpose="Validate Crosswalk support 'run-as-service' mode" type="Functional" status="approved" component="Crosswalk Runtime Binary" execution_type="manual" priority="P1" id="Crosswalk_Run_As_Service_Mode">
+        <description>
+          <pre_condition>
+            1.Make sure Crosswalk binary is installed
+            2.Make sure the "SysApps_DeviceCapabilities.xpk" package is available
+          </pre_condition>
+          <test_script_entry>/opt/wrt-rtbin-tizen-tests/rtbin/Crosswalk_Run_As_Service_Mode.html</test_script_entry>
+        </description>
+      </testcase>
+      <testcase purpose="Validate Crosswalk install is successfull" type="Functional" status="approved" component="Crosswalk Runtime Binary" execution_type="manual" priority="P0" id="Crosswalk_Binary_Install">
+        <description>
+          <pre_condition>
+            1.Make sure Crosswalk binary is push device.
+          </pre_condition>
+          <test_script_entry>/opt/wrt-rtbin-tizen-tests/rtbin/Crosswalk_Binary_Install.html</test_script_entry>
+        </description>
+      </testcase>
+      <testcase purpose="Validate Crosswalk unistall successfull" type="Functional" status="approved" component="Crosswalk Runtime Binary" execution_type="manual" priority="P0" id="Crosswalk_Binary_Uninstall">
+        <description>
+          <pre_condition>
+            1.Make sure Crosswalk binary is installed
+          </pre_condition>
+          <test_script_entry>/opt/wrt-rtbin-tizen-tests/rtbin/Crosswalk_Binary_Uninstall.html</test_script_entry>
+        </description>
+      </testcase>
+      <testcase purpose="Validate use run as service install webapp the db if correct" type="Functional" status="approved" component="Crosswalk Runtime Binary" execution_type="manual" priority="P2" id="Crosswalk_Run_As_Service_CheckDB">
+        <description>
+          <pre_condition>
+            1.Make sure Crosswalk binary is installed
+          </pre_condition>
+          <test_script_entry>/opt/wrt-rtbin-tizen-tests/rtbin/Crosswalk_Run_As_Service_CheckDB.html</test_script_entry>
+        </description>
+      </testcase>
+      <testcase purpose="Validate use xwalk and xwalkctl install the same app" type="Functional" status="approved" component="Crosswalk Runtime Binary" execution_type="manual" priority="P2" id="Crosswalk_Run_As_Service_InstallSameApp">
+        <description>
+          <pre_condition>
+            1.Make sure Crosswalk binary is installed
+          </pre_condition>
+          <test_script_entry>/opt/wrt-rtbin-tizen-tests/rtbin/Crosswalk_Run_As_Service_InstallSameApp.html</test_script_entry>
+        </description>
+      </testcase>
+      <testcase purpose="Validate use xwalk launch the webapp installed by xwalk" type="Functional" status="approved" component="Crosswalk Runtime Binary" execution_type="manual" priority="P2" id="Crosswalk_Run_As_Service_LauncherNegative">
+        <description>
+          <pre_condition>
+            1.Make sure Crosswalk binary is installed
+          </pre_condition>
+          <test_script_entry>/opt/wrt-rtbin-tizen-tests/rtbin/Crosswalk_Run_As_Service_LauncherNegative.html</test_script_entry>
+        </description>
+      </testcase>
+      <testcase purpose="Validate use combination flags capabilities and fullscreenthe result is normally" type="Functional" status="approved" component="Crosswalk Runtime Binary" execution_type="manual" priority="P2" id="Crosswalk_Feature_Flags_capabilitiesAndFullscreen">
+        <description>
+          <pre_condition>
+            1.Make sure Crosswalk binary is installed
+          </pre_condition>
+          <test_script_entry>/opt/wrt-rtbin-tizen-tests/rtbin/Crosswalk_Feature_Flags_capabilitiesAndFullscreen.html</test_script_entry>
+        </description>
+      </testcase>
+      <testcase purpose="Validate use combination flags all flags result is normally" type="Functional" status="designed" component="Crosswalk Runtime Binary" execution_type="manual" priority="P2" id="Crosswalk_Feature_Flags_capabilitiesAndFullscreenAndSockets">
+        <description>
+          <pre_condition>
+            1.Make sure Crosswalk binary is installed
+          </pre_condition>
+          <test_script_entry>/opt/wrt-rtbin-tizen-tests/rtbin/Crosswalk_Feature_Flags_capabilitiesAndFullscreenAndSockets.html</test_script_entry>
+        </description>
+      </testcase>
+      <testcase purpose="Validate use combination flags capabilities and socket result is normally" type="Functional" status="designed" component="Crosswalk Runtime Binary" execution_type="manual" priority="P2" id="Crosswalk_Feature_Flags_capabilitiesAndSockets">
+        <description>
+          <pre_condition>
+            1.Make sure Crosswalk binary is installed
+          </pre_condition>
+          <test_script_entry>/opt/wrt-rtbin-tizen-tests/rtbin/Crosswalk_Feature_Flags_capabilitiesAndSockets.html</test_script_entry>
+        </description>
+      </testcase>
+      <testcase purpose="Validate use combination flags fullscreen and socket result is normally" type="Functional" status="designed" component="Crosswalk Runtime Binary" execution_type="manual" priority="P2" id="Crosswalk_Feature_Flags_fullscreenAndSockets">
+        <description>
+          <pre_condition>
+            1.Make sure Crosswalk binary is installed
+          </pre_condition>
+          <test_script_entry>/opt/wrt-rtbin-tizen-tests/rtbin/Crosswalk_Feature_Flags_fullscreenAndSockets.html</test_script_entry>
+        </description>
+      </testcase>
+      <testcase purpose="Validate use negative flags the capabilities result normally" type="Functional" status="approved" component="Crosswalk Runtime Binary" execution_type="manual" priority="P3" id="Crosswalk_Feature_Flags_negativeFlagsCapabilities">
+        <description>
+          <pre_condition>
+            1.Make sure Crosswalk binary is installed
+          </pre_condition>
+          <test_script_entry>/opt/wrt-rtbin-tizen-tests/rtbin/Crosswalk_Feature_Flags_negativeFlagsCapabilities.html</test_script_entry>
+        </description>
+      </testcase>
+      <testcase purpose="Validate use negative flags the socket result normally" type="Functional" status="designed" component="Crosswalk Runtime Binary" execution_type="manual" priority="P3" id="Crosswalk_Feature_Flags_negativeFlagsSockets">
+        <description>
+          <pre_condition>
+            1.Make sure Crosswalk binary is installed
+          </pre_condition>
+          <test_script_entry>/opt/wrt-rtbin-tizen-tests/rtbin/Crosswalk_Feature_Flags_negativeFlagsSockets.html</test_script_entry>
+        </description>
+      </testcase>
+    </set>
+  </suite>
+</test_definition>

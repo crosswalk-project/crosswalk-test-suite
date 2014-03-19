@@ -1,0 +1,954 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-stylesheet type="text/xsl"  href="./testcase.xsl"?>
+<test_definition>
+  <suite name="tct-workers-w3c-tests" launcher="xwalk" category="W3C/HTML5 APIs">
+    <set name="WebWorker">
+      <testcase purpose="Check if SharedWorkerLocation URL can decompose IDL attribute: pathname." type="compliance" status="approved" component="WebAPI/Performance and Optimization/Web Workers (Partial)" execution_type="auto" priority="P2" id="WebWorker_WorkerLocation_pathname_decompose">
+        <description>
+          <test_script_entry timeout="90" test_script_expected_result="0">/opt/tct-workers-w3c-tests/workers/WebWorker_WorkerLocation_pathname_decompose.html</test_script_entry>
+        </description>
+        <specs>
+          <spec>
+            <spec_assertion element_type="attribute" element_name="pathname" interface="WorkerLocation" specification="Web Workers (Partial)" section="Performance and Optimization" category="Tizen W3C API Specifications"/>
+            <spec_url>http://www.w3.org/TR/workers/</spec_url>
+          </spec>
+        </specs>
+      </testcase>
+      <testcase purpose="Check if WorkerGlobalScope method: postMessage can send binary data." type="compliance" status="approved" component="WebAPI/Performance and Optimization/Web Workers (Partial)" execution_type="auto" priority="P2" id="WebWorker_DedicatedWorkerGlobalScope_postMessage_binary">
+        <description>
+          <test_script_entry timeout="90" test_script_expected_result="0">/opt/tct-workers-w3c-tests/workers/WebWorker_DedicatedWorkerGlobalScope_postMessage_binary.html</test_script_entry>
+        </description>
+        <specs>
+          <spec>
+            <spec_assertion element_type="method" element_name="postMessage" interface="DedicatedWorkerGlobalScope" specification="Web Workers (Partial)" section="Performance and Optimization" category="Tizen W3C API Specifications"/>
+            <spec_url>http://www.w7.org/TR/workers/</spec_url>
+          </spec>
+        </specs>
+      </testcase>
+      <testcase purpose="Check if WorkerGlobalScope method: postMessage can send structured data." type="compliance" status="approved" component="WebAPI/Performance and Optimization/Web Workers (Partial)" execution_type="auto" priority="P2" id="WebWorker_DedicatedWorkerGlobalScope_postMessage_structure">
+        <description>
+          <test_script_entry timeout="90" test_script_expected_result="0">/opt/tct-workers-w3c-tests/workers/WebWorker_DedicatedWorkerGlobalScope_postMessage_structure.html</test_script_entry>
+        </description>
+        <specs>
+          <spec>
+            <spec_assertion element_type="method" element_name="postMessage" interface="DedicatedWorkerGlobalScope" specification="Web Workers (Partial)" section="Performance and Optimization" category="Tizen W3C API Specifications"/>
+            <spec_url>http://www.w7.org/TR/workers/</spec_url>
+          </spec>
+        </specs>
+      </testcase>
+      <testcase purpose="Check if WorkerGlobalScope method: onMessage can receive binary data." type="compliance" status="approved" component="WebAPI/Performance and Optimization/Web Workers (Partial)" execution_type="auto" priority="P2" id="WebWorker_DedicatedWorkerGlobalScope_onMessage_binary">
+        <description>
+          <test_script_entry timeout="90" test_script_expected_result="0">/opt/tct-workers-w3c-tests/workers/WebWorker_DedicatedWorkerGlobalScope_onMessage_binary.html</test_script_entry>
+        </description>
+        <specs>
+          <spec>
+            <spec_assertion element_type="eventhandler" element_name="onmessage" interface="DedicatedWorkerGlobalScope" specification="Web Workers (Partial)" section="Performance and Optimization" category="Tizen W3C API Specifications"/>
+            <spec_url>http://www.w6.org/TR/workers/</spec_url>
+          </spec>
+        </specs>
+      </testcase>
+      <testcase purpose="Check if WorkerGlobalScope method: onMessage can receive structure data." type="compliance" status="approved" component="WebAPI/Performance and Optimization/Web Workers (Partial)" execution_type="auto" priority="P2" id="WebWorker_DedicatedWorkerGlobalScope_onMessage_structure">
+        <description>
+          <test_script_entry timeout="90" test_script_expected_result="0">/opt/tct-workers-w3c-tests/workers/WebWorker_DedicatedWorkerGlobalScope_onMessage_structure.html</test_script_entry>
+        </description>
+        <specs>
+          <spec>
+            <spec_assertion element_type="eventhandler" element_name="onmessage" interface="DedicatedWorkerGlobalScope" specification="Web Workers (Partial)" section="Performance and Optimization" category="Tizen W3C API Specifications"/>
+            <spec_url>http://www.w6.org/TR/workers/</spec_url>
+          </spec>
+        </specs>
+      </testcase>
+      <testcase purpose="Check if WorkerGlobalScope API: importScripts() can throw exception when importing an existent but unsupported format file." type="compliance" status="approved" component="WebAPI/Performance and Optimization/Web Workers (Partial)" execution_type="auto" priority="P2" id="WebWorker_WorkerGlobalScope_importScripts_unsupport">
+        <description>
+          <test_script_entry timeout="90" test_script_expected_result="0">/opt/tct-workers-w3c-tests/workers/WebWorker_WorkerGlobalScope_importScripts_unsupport.html</test_script_entry>
+        </description>
+        <specs>
+          <spec>
+            <spec_assertion element_type="method" element_name="importScripts" interface="WorkerGlobalScope" specification="Web Workers (Partial)" section="Performance and Optimization" category="Tizen W3C API Specifications"/>
+            <spec_url>http://www.w3.org/TR/workers/</spec_url>
+          </spec>
+        </specs>
+      </testcase>
+      <testcase purpose="Check if shared worker object can be constructed with name." type="compliance" status="approved" component="WebAPI/Performance and Optimization/Web Workers (Partial)" execution_type="auto" priority="P2" id="WebWorker_SharedWorker_constructor_name">
+        <description>
+          <test_script_entry timeout="90" test_script_expected_result="0">/opt/tct-workers-w3c-tests/workers/WebWorker_SharedWorker_constructor_name.html</test_script_entry>
+        </description>
+        <specs>
+          <spec>
+            <spec_assertion element_type="method" element_name="constructor" interface="SharedWorker" specification="Web Workers (Partial)" section="Performance and Optimization" category="Tizen W3C API Specifications"/>
+            <spec_url>http://www.w3.org/TR/workers/</spec_url>
+          </spec>
+        </specs>
+      </testcase>
+      <testcase purpose="Check if shared worker can throw exception when constructing object with an invalid URL." type="compliance" status="approved" component="WebAPI/Performance and Optimization/Web Workers (Partial)" execution_type="auto" priority="P2" id="WebWorker_SharedWorker_constructor_invalidURL">
+        <description>
+          <test_script_entry timeout="90" test_script_expected_result="0">/opt/tct-workers-w3c-tests/workers/WebWorker_SharedWorker_constructor_invalidURL.html</test_script_entry>
+        </description>
+        <specs>
+          <spec>
+            <spec_assertion element_type="method" element_name="constructor" interface="SharedWorker" specification="Web Workers (Partial)" section="Performance and Optimization" category="Tizen W3C API Specifications"/>
+            <spec_url>http://www.w3.org/TR/workers/</spec_url>
+          </spec>
+        </specs>
+      </testcase>
+      <testcase purpose="Check if WorkerNavigator.platform can return the name of the platform." type="compliance" status="approved" component="WebAPI/Performance and Optimization/Web Workers (Partial)" execution_type="auto" priority="P1" id="WorkerNavigator_platform">
+        <description>
+          <test_script_entry timeout="90" test_script_expected_result="0">/opt/tct-workers-w3c-tests/workers/w3c/WorkerNavigator_platform.htm</test_script_entry>
+        </description>
+        <specs>
+          <spec>
+            <spec_assertion element_type="attribute" element_name="platform" interface="WorkerNavigator" specification="Web Workers (Partial)" section="Performance and Optimization" category="Tizen W3C API Specifications"/>
+            <spec_url>http://www.w3.org/TR/workers/</spec_url>
+          </spec>
+        </specs>
+      </testcase>
+      <testcase purpose="Check if SharedWorkerLocation URL can decomposition IDL attribute: search." type="compliance" status="approved" component="WebAPI/Performance and Optimization/Web Workers (Partial)" execution_type="auto" priority="P2" id="SharedWorkerLocation_search">
+        <description>
+          <test_script_entry timeout="90" test_script_expected_result="0">/opt/tct-workers-w3c-tests/workers/SharedWorkerLocation_search.html</test_script_entry>
+        </description>
+        <specs>
+          <spec>
+            <spec_assertion element_type="attribute" element_name="search" interface="WorkerLocation" specification="Web Workers (Partial)" section="Performance and Optimization" category="Tizen W3C API Specifications"/>
+            <spec_url>http://www.w3.org/TR/workers/</spec_url>
+          </spec>
+        </specs>
+      </testcase>
+      <testcase purpose="Check if SharedWorkerNavigator appName can return the name of the browser." type="compliance" status="approved" component="WebAPI/Performance and Optimization/Web Workers (Partial)" execution_type="auto" priority="P2" id="SharedWorkerNavigator_appName">
+        <description>
+          <test_script_entry timeout="90" test_script_expected_result="0">/opt/tct-workers-w3c-tests/workers/SharedWorkerNavigator_appName.html</test_script_entry>
+        </description>
+        <specs>
+          <spec>
+            <spec_assertion element_type="attribute" element_name="appName" interface="WorkerNavigator" specification="Web Workers (Partial)" section="Performance and Optimization" category="Tizen W3C API Specifications"/>
+            <spec_url>http://www.w3.org/TR/workers/</spec_url>
+          </spec>
+        </specs>
+      </testcase>
+      <testcase purpose="Check if SharedWorkerNavigator.platform can return the name of the platform." type="compliance" status="approved" component="WebAPI/Performance and Optimization/Web Workers (Partial)" execution_type="auto" priority="P2" id="SharedWorkerNavigator_platform">
+        <description>
+          <test_script_entry timeout="90" test_script_expected_result="0">/opt/tct-workers-w3c-tests/workers/SharedWorkerNavigator_platform.html</test_script_entry>
+        </description>
+        <specs>
+          <spec>
+            <spec_assertion element_type="attribute" element_name="platform" interface="WorkerNavigator" specification="Web Workers (Partial)" section="Performance and Optimization" category="Tizen W3C API Specifications"/>
+            <spec_url>http://www.w3.org/TR/workers/</spec_url>
+          </spec>
+        </specs>
+      </testcase>
+      <testcase purpose="Check if onerror method of shared worker can be invoked when the JS file that is used to construct the shared worker object doesn't exist." type="compliance" status="approved" component="WebAPI/Performance and Optimization/Web Workers (Partial)" execution_type="auto" priority="P2" id="SharedWorkerLoadError">
+        <description>
+          <test_script_entry timeout="90" test_script_expected_result="0">/opt/tct-workers-w3c-tests/workers/SharedWorkerLoadError.html</test_script_entry>
+        </description>
+        <specs>
+          <spec>
+            <spec_assertion element_type="eventhandler" element_name="onerror" interface="WorkerGlobalScope" specification="Web Workers (Partial)" section="Performance and Optimization" category="Tizen W3C API Specifications"/>
+            <spec_url>http://www.w3.org/TR/workers/</spec_url>
+          </spec>
+        </specs>
+      </testcase>
+      <testcase purpose="Check if WorkerGlobalScope API: importScripts() can work correctly." type="compliance" status="approved" component="WebAPI/Performance and Optimization/Web Workers (Partial)" execution_type="auto" priority="P0" id="WorkerGlobalScope_importScripts">
+        <description>
+          <test_script_entry timeout="90" test_script_expected_result="0">/opt/tct-workers-w3c-tests/workers/w3c/WorkerGlobalScope_importScripts.htm</test_script_entry>
+        </description>
+        <specs>
+          <spec>
+            <spec_assertion element_type="method" element_name="importScripts" interface="WorkerGlobalScope" specification="Web Workers (Partial)" section="Performance and Optimization" category="Tizen W3C API Specifications"/>
+            <spec_url>http://www.w3.org/TR/workers/</spec_url>
+          </spec>
+        </specs>
+      </testcase>
+      <testcase purpose="Check if WorkerLocation URL can decompose IDL attribute: hash." type="compliance" status="approved" component="WebAPI/Performance and Optimization/Web Workers (Partial)" execution_type="auto" priority="P1" id="WorkerLocation_hash">
+        <description>
+          <test_script_entry timeout="90" test_script_expected_result="0">/opt/tct-workers-w3c-tests/workers/w3c/WorkerLocation_hash.htm</test_script_entry>
+        </description>
+        <specs>
+          <spec>
+            <spec_assertion element_type="attribute" element_name="hash" interface="WorkerLocation" specification="Web Workers (Partial)" section="Performance and Optimization" category="Tizen W3C API Specifications"/>
+            <spec_url>http://www.w3.org/TR/workers/</spec_url>
+          </spec>
+        </specs>
+      </testcase>
+      <testcase purpose="Check if SharedWorkerLocation URL can decompose IDL attribute: hostname." type="compliance" status="approved" component="WebAPI/Performance and Optimization/Web Workers (Partial)" execution_type="auto" priority="P2" id="SharedWorkerLocation_hostname">
+        <description>
+          <test_script_entry timeout="90" test_script_expected_result="0">/opt/tct-workers-w3c-tests/workers/SharedWorkerLocation_hostname.html</test_script_entry>
+        </description>
+        <specs>
+          <spec>
+            <spec_assertion element_type="attribute" element_name="hostname" interface="WorkerLocation" specification="Web Workers (Partial)" section="Performance and Optimization" category="Tizen W3C API Specifications"/>
+            <spec_url>http://www.w3.org/TR/workers/</spec_url>
+          </spec>
+        </specs>
+      </testcase>
+      <testcase purpose="Check if addEventListener method of shared worker can work correctly." type="compliance" status="approved" component="WebAPI/Performance and Optimization/Web Workers (Partial)" execution_type="auto" priority="P1" id="SharedWorkerEventListener">
+        <description>
+          <test_script_entry timeout="90" test_script_expected_result="0">/opt/tct-workers-w3c-tests/workers/SharedWorkerEventListener.html</test_script_entry>
+        </description>
+        <specs>
+          <spec>
+            <spec_assertion element_type="eventhandler" element_name="onconnect" interface="SharedWorkerGlobalScope" specification="Web Workers (Partial)" section="Performance and Optimization" category="Tizen W3C API Specifications"/>
+            <spec_url>http://www.w3.org/TR/workers/</spec_url>
+          </spec>
+        </specs>
+      </testcase>
+      <testcase purpose="Check if the postMessage() method can work correctly when the target port is entangled with source port." type="compliance" status="approved" component="WebAPI/Performance and Optimization/Web Workers (Partial)" execution_type="auto" priority="P2" id="postMessage_target_source">
+        <description>
+          <test_script_entry timeout="90" test_script_expected_result="0">/opt/tct-workers-w3c-tests/workers/w3c/postMessage_target_source.htm</test_script_entry>
+        </description>
+        <specs>
+          <spec>
+            <spec_assertion element_type="method" element_name="postMessage" interface="Worker" specification="Web Workers (Partial)" section="Performance and Optimization" category="Tizen W3C API Specifications"/>
+            <spec_url>http://www.w3.org/TR/workers/</spec_url>
+          </spec>
+        </specs>
+      </testcase>
+      <testcase purpose="Check if shared worker can work correctly." type="compliance" status="approved" component="WebAPI/Performance and Optimization/Web Workers (Partial)" execution_type="auto" priority="P0" id="SharedWorkerSimple">
+        <description>
+          <test_script_entry timeout="90" test_script_expected_result="0">/opt/tct-workers-w3c-tests/workers/SharedWorkerSimple.html</test_script_entry>
+        </description>
+        <specs>
+          <spec>
+            <spec_assertion element_type="attribute" element_name="port" interface="SharedWorker" specification="Web Workers (Partial)" section="Performance and Optimization" category="Tizen W3C API Specifications"/>
+            <spec_url>http://www.w3.org/TR/workers/</spec_url>
+          </spec>
+        </specs>
+      </testcase>
+      <testcase purpose="Check if ports is read-only." type="compliance" status="approved" component="WebAPI/Performance and Optimization/Web Workers (Partial)" execution_type="auto" priority="P2" id="postMessage_ports_readonly_array">
+        <description>
+          <test_script_entry timeout="90" test_script_expected_result="0">/opt/tct-workers-w3c-tests/workers/w3c/postMessage_ports_readonly_array.htm</test_script_entry>
+        </description>
+        <specs>
+          <spec>
+            <spec_assertion element_type="method" element_name="postMessage" interface="Worker" specification="Web Workers (Partial)" section="Performance and Optimization" category="Tizen W3C API Specifications"/>
+            <spec_url>http://www.w3.org/TR/workers/</spec_url>
+          </spec>
+        </specs>
+      </testcase>
+      <testcase purpose="Check if SharedWorkerLocation object can return the absolute URL set when it is created." type="compliance" status="approved" component="WebAPI/Performance and Optimization/Web Workers (Partial)" execution_type="auto" priority="P1" id="SharedWorkerLocation">
+        <description>
+          <test_script_entry timeout="90" test_script_expected_result="0">/opt/tct-workers-w3c-tests/workers/SharedWorkerLocation.html</test_script_entry>
+        </description>
+        <specs>
+          <spec>
+            <spec_assertion element_type="attribute" element_name="location" interface="WorkerGlobalScope" specification="Web Workers (Partial)" section="Performance and Optimization" category="Tizen W3C API Specifications"/>
+            <spec_url>http://www.w3.org/TR/workers/</spec_url>
+          </spec>
+        </specs>
+      </testcase>
+      <testcase purpose="Check if shared worker objects created by different names are distinct instances." type="compliance" status="approved" component="WebAPI/Performance and Optimization/Web Workers (Partial)" execution_type="auto" priority="P2" id="SharedWorkerShared_distinct">
+        <description>
+          <test_script_entry timeout="90" test_script_expected_result="0">/opt/tct-workers-w3c-tests/workers/SharedWorkerShared_distinct.html</test_script_entry>
+        </description>
+        <specs>
+          <spec>
+            <spec_assertion element_type="method" element_name="constructor" interface="SharedWorker" specification="Web Workers (Partial)" section="Performance and Optimization" category="Tizen W3C API Specifications"/>
+            <spec_url>http://www.w3.org/TR/workers/</spec_url>
+          </spec>
+        </specs>
+      </testcase>
+      <testcase purpose="Check if WorkerLocation URL can decompose IDL attribute: protocol." type="compliance" status="approved" component="WebAPI/Performance and Optimization/Web Workers (Partial)" execution_type="auto" priority="P1" id="WorkerLocation_protocol">
+        <description>
+          <test_script_entry timeout="90" test_script_expected_result="0">/opt/tct-workers-w3c-tests/workers/w3c/WorkerLocation_protocol.htm</test_script_entry>
+        </description>
+        <specs>
+          <spec>
+            <spec_assertion element_type="attribute" element_name=" protocol" interface="WorkerLocation" specification="Web Workers (Partial)" section="Performance and Optimization" category="Tizen W3C API Specifications"/>
+            <spec_url>http://www.w3.org/TR/workers/</spec_url>
+          </spec>
+        </specs>
+      </testcase>
+      <testcase purpose="Check if WorkerGlobalScope API: setInterval() can work correctly." type="compliance" status="approved" component="WebAPI/Performance and Optimization/Web Workers (Partial)" execution_type="auto" priority="P0" id="WorkerGlobalScope_setInterval">
+        <description>
+          <test_script_entry timeout="90" test_script_expected_result="0">/opt/tct-workers-w3c-tests/workers/w3c/WorkerGlobalScope_setInterval.htm</test_script_entry>
+        </description>
+        <specs>
+          <spec>
+            <spec_assertion element_type="method" element_name="setInterval" interface="WorkerGlobalScope" specification="Web Workers (Partial)" section="Performance and Optimization" category="Tizen W3C API Specifications"/>
+            <spec_url>http://www.w3.org/TR/workers/</spec_url>
+          </spec>
+        </specs>
+      </testcase>
+      <testcase purpose="Check if Worker always assumes the resource file to be JavaScript, regardless of the MIME type." type="compliance" status="approved" component="WebAPI/Performance and Optimization/Web Workers (Partial)" execution_type="auto" priority="P2" id="Worker_script_mimetype">
+        <description>
+          <test_script_entry timeout="90" test_script_expected_result="0">/opt/tct-workers-w3c-tests/workers/w3c/Worker_script_mimetype.htm</test_script_entry>
+        </description>
+        <specs>
+          <spec>
+            <spec_assertion element_type="method" element_name="constructor" interface="Worker" specification="Web Workers (Partial)" section="Performance and Optimization" category="Tizen W3C API Specifications"/>
+            <spec_url>http://www.w3.org/TR/workers/</spec_url>
+          </spec>
+        </specs>
+      </testcase>
+      <testcase purpose="Check if WorkerLocation URL can decompose IDL attribute: port." type="compliance" status="approved" component="WebAPI/Performance and Optimization/Web Workers (Partial)" execution_type="auto" priority="P1" id="WorkerLocation_port">
+        <description>
+          <test_script_entry timeout="90" test_script_expected_result="0">/opt/tct-workers-w3c-tests/workers/w3c/WorkerLocation_port.htm</test_script_entry>
+        </description>
+        <specs>
+          <spec>
+            <spec_assertion element_type="attribute" element_name="port" interface="WorkerLocation" specification="Web Workers (Partial)" section="Performance and Optimization" category="Tizen W3C API Specifications"/>
+            <spec_url>http://www.w3.org/TR/workers/</spec_url>
+          </spec>
+        </specs>
+      </testcase>
+      <testcase purpose="Check if AbstractWorker terminate() can clear the event queue." type="compliance" status="approved" component="WebAPI/Performance and Optimization/Web Workers (Partial)" execution_type="auto" priority="P1" id="Worker_terminate_event_queue">
+        <description>
+          <test_script_entry timeout="90" test_script_expected_result="0">/opt/tct-workers-w3c-tests/workers/w3c/Worker_terminate_event_queue.htm</test_script_entry>
+        </description>
+        <specs>
+          <spec>
+            <spec_assertion element_type="method" element_name="terminate" interface="Worker" specification="Web Workers (Partial)" section="Performance and Optimization" category="Tizen W3C API Specifications"/>
+            <spec_url>http://www.w3.org/TR/workers/</spec_url>
+          </spec>
+        </specs>
+      </testcase>
+      <testcase purpose="Check if SharedWorkerLocation href attribute can return the absolute URL that the WorkerLocation object represents." type="compliance" status="approved" component="WebAPI/Performance and Optimization/Web Workers (Partial)" execution_type="auto" priority="P2" id="SharedWorkerLocation_href">
+        <description>
+          <test_script_entry timeout="90" test_script_expected_result="0">/opt/tct-workers-w3c-tests/workers/SharedWorkerLocation_href.html</test_script_entry>
+        </description>
+        <specs>
+          <spec>
+            <spec_assertion element_type="attribute" element_name="href" interface="WorkerLocation" specification="Web Workers (Partial)" section="Performance and Optimization" category="Tizen W3C API Specifications"/>
+            <spec_url>http://www.w3.org/TR/workers/</spec_url>
+          </spec>
+        </specs>
+      </testcase>
+      <testcase purpose="Check if ErrorEvent message attribute can represent the error message." type="compliance" status="approved" component="WebAPI/Performance and Optimization/Web Workers (Partial)" execution_type="auto" priority="P1" id="Worker_ErrorEvent_message">
+        <description>
+          <test_script_entry timeout="90" test_script_expected_result="0">/opt/tct-workers-w3c-tests/workers/w3c/Worker_ErrorEvent_message.htm</test_script_entry>
+        </description>
+        <specs>
+          <spec>
+            <spec_assertion element_type="attribute" element_name="message" interface="ErrorEvent" specification="Web Workers (Partial)" section="Performance and Optimization" category="Tizen W3C API Specifications"/>
+            <spec_url>http://www.w3.org/TR/workers/</spec_url>
+          </spec>
+        </specs>
+      </testcase>
+      <testcase purpose="Check if AbstractWorker ErrorEvent.type can represent the error type." type="compliance" status="approved" component="WebAPI/Performance and Optimization/Web Workers (Partial)" execution_type="auto" priority="P1" id="Worker_ErrorEvent_type">
+        <description>
+          <test_script_entry timeout="90" test_script_expected_result="0">/opt/tct-workers-w3c-tests/workers/w3c/Worker_ErrorEvent_type.htm</test_script_entry>
+        </description>
+        <specs>
+          <spec>
+            <spec_assertion element_type="eventhandler" element_name="onerror" interface="Worker" specification="Web Workers (Partial)" section="Performance and Optimization" category="Tizen W3C API Specifications"/>
+            <spec_url>http://www.w3.org/TR/workers/</spec_url>
+          </spec>
+        </specs>
+      </testcase>
+      <testcase purpose="Check if SharedWorkerLocation URL can decompose IDL attribute: hash." type="compliance" status="approved" component="WebAPI/Performance and Optimization/Web Workers (Partial)" execution_type="auto" priority="P2" id="SharedWorkerLocation_hash">
+        <description>
+          <test_script_entry timeout="90" test_script_expected_result="0">/opt/tct-workers-w3c-tests/workers/SharedWorkerLocation_hash.html</test_script_entry>
+        </description>
+        <specs>
+          <spec>
+            <spec_assertion element_type="attribute" element_name="hash" interface="WorkerLocation" specification="Web Workers (Partial)" section="Performance and Optimization" category="Tizen W3C API Specifications"/>
+            <spec_url>http://www.w3.org/TR/workers/</spec_url>
+          </spec>
+        </specs>
+      </testcase>
+      <testcase purpose="Check if WorkerNavigator appName can return the name of the browser." type="compliance" status="approved" component="WebAPI/Performance and Optimization/Web Workers (Partial)" execution_type="auto" priority="P0" id="WorkerNavigator_appName">
+        <description>
+          <test_script_entry timeout="90" test_script_expected_result="0">/opt/tct-workers-w3c-tests/workers/w3c/WorkerNavigator_appName.htm</test_script_entry>
+        </description>
+        <specs>
+          <spec>
+            <spec_assertion element_type="attribute" element_name="appName" interface="WorkerNavigator" specification="Web Workers (Partial)" section="Performance and Optimization" category="Tizen W3C API Specifications"/>
+            <spec_url>http://www.w3.org/TR/workers/</spec_url>
+          </spec>
+        </specs>
+      </testcase>
+      <testcase purpose="Check if WorkerLocation URL can decompose IDL attribute: search." type="compliance" status="approved" component="WebAPI/Performance and Optimization/Web Workers (Partial)" execution_type="auto" priority="P0" id="WorkerLocation_search">
+        <description>
+          <test_script_entry timeout="90" test_script_expected_result="0">/opt/tct-workers-w3c-tests/workers/w3c/WorkerLocation_search.htm</test_script_entry>
+        </description>
+        <specs>
+          <spec>
+            <spec_assertion element_type="attribute" element_name="search" interface="WorkerLocation" specification="Web Workers (Partial)" section="Performance and Optimization" category="Tizen W3C API Specifications"/>
+            <spec_url>http://www.w3.org/TR/workers/</spec_url>
+          </spec>
+        </specs>
+      </testcase>
+      <testcase purpose="Check if SharedWorkerNavigator.userAgent can return the complete User-Agent header." type="compliance" status="approved" component="WebAPI/Performance and Optimization/Web Workers (Partial)" execution_type="auto" priority="P2" id="SharedWorkerNavigator_userAgent">
+        <description>
+          <test_script_entry timeout="90" test_script_expected_result="0">/opt/tct-workers-w3c-tests/workers/SharedWorkerNavigator_userAgent.html</test_script_entry>
+        </description>
+        <specs>
+          <spec>
+            <spec_assertion element_type="attribute" element_name="userAgent" interface="WorkerNavigator" specification="Web Workers (Partial)" section="Performance and Optimization" category="Tizen W3C API Specifications"/>
+            <spec_url>http://www.w3.org/TR/workers/</spec_url>
+          </spec>
+        </specs>
+      </testcase>
+      <testcase purpose="Check if WorkerLocation.search can work correctly with empty fragment." type="compliance" status="approved" component="WebAPI/Performance and Optimization/Web Workers (Partial)" execution_type="auto" priority="P2" id="WorkerLocation_search_empty">
+        <description>
+          <test_script_entry timeout="90" test_script_expected_result="0">/opt/tct-workers-w3c-tests/workers/w3c/WorkerLocation_search_empty.htm</test_script_entry>
+        </description>
+        <specs>
+          <spec>
+            <spec_assertion element_type="attribute" element_name="search" interface="WorkerLocation" specification="Web Workers (Partial)" section="Performance and Optimization" category="Tizen W3C API Specifications"/>
+            <spec_url>http://www.w3.org/TR/workers/</spec_url>
+          </spec>
+        </specs>
+      </testcase>
+      <testcase purpose="Check if SharedWorkerLocation.search can work correctly with fragment." type="compliance" status="approved" component="WebAPI/Performance and Optimization/Web Workers (Partial)" execution_type="auto" priority="P2" id="SharedWorkerLocation_search_fragment">
+        <description>
+          <test_script_entry timeout="90" test_script_expected_result="0">/opt/tct-workers-w3c-tests/workers/SharedWorkerLocation_search_fragment.html</test_script_entry>
+        </description>
+        <specs>
+          <spec>
+            <spec_assertion element_type="attribute" element_name="search" interface="WorkerLocation" specification="Web Workers (Partial)" section="Performance and Optimization" category="Tizen W3C API Specifications"/>
+            <spec_url>http://www.w3.org/TR/workers/</spec_url>
+          </spec>
+        </specs>
+      </testcase>
+      <testcase purpose="Check if WorkerLocation URL can decompose IDL attribute: hostname." type="compliance" status="approved" component="WebAPI/Performance and Optimization/Web Workers (Partial)" execution_type="auto" priority="P1" id="WorkerLocation_hostname">
+        <description>
+          <test_script_entry timeout="90" test_script_expected_result="0">/opt/tct-workers-w3c-tests/workers/w3c/WorkerLocation_hostname.htm</test_script_entry>
+        </description>
+        <specs>
+          <spec>
+            <spec_assertion element_type="attribute" element_name="hostname" interface="WorkerLocation" specification="Web Workers (Partial)" section="Performance and Optimization" category="Tizen W3C API Specifications"/>
+            <spec_url>http://www.w3.org/TR/workers/</spec_url>
+          </spec>
+        </specs>
+      </testcase>
+      <testcase purpose="Check if postMessage(): clone can clone a port correctly." type="compliance" status="approved" component="WebAPI/Performance and Optimization/Web Workers (Partial)" execution_type="auto" priority="P2" id="postMessage_clone_port">
+        <description>
+          <test_script_entry timeout="90" test_script_expected_result="0">/opt/tct-workers-w3c-tests/workers/w3c/postMessage_clone_port.htm</test_script_entry>
+        </description>
+        <specs>
+          <spec>
+            <spec_assertion element_type="method" element_name="postMessage" interface="Worker" specification="Web Workers (Partial)" section="Performance and Optimization" category="Tizen W3C API Specifications"/>
+            <spec_url>http://www.w3.org/TR/workers/</spec_url>
+          </spec>
+        </specs>
+      </testcase>
+      <testcase purpose="Check if shared worker object can be constructed correctly." type="compliance" status="approved" component="WebAPI/Performance and Optimization/Web Workers (Partial)" execution_type="auto" priority="P1" id="SharedWorkerConstructor">
+        <description>
+          <test_script_entry timeout="90" test_script_expected_result="0">/opt/tct-workers-w3c-tests/workers/SharedWorkerConstructor.html</test_script_entry>
+        </description>
+        <specs>
+          <spec>
+            <spec_assertion element_type="method" element_name="constructor" interface="SharedWorker" specification="Web Workers (Partial)" section="Performance and Optimization" category="Tizen W3C API Specifications"/>
+            <spec_url>http://www.w3.org/TR/workers/</spec_url>
+          </spec>
+        </specs>
+      </testcase>
+      <testcase purpose="Check if WorkerLocation.search can work correctly with no query component." type="compliance" status="approved" component="WebAPI/Performance and Optimization/Web Workers (Partial)" execution_type="auto" priority="P2" id="WorkerLocation_search_nonexist">
+        <description>
+          <test_script_entry timeout="90" test_script_expected_result="0">/opt/tct-workers-w3c-tests/workers/w3c/WorkerLocation_search_nonexist.htm</test_script_entry>
+        </description>
+        <specs>
+          <spec>
+            <spec_assertion element_type="attribute" element_name="search" interface="WorkerLocation" specification="Web Workers (Partial)" section="Performance and Optimization" category="Tizen W3C API Specifications"/>
+            <spec_url>http://www.w3.org/TR/workers/</spec_url>
+          </spec>
+        </specs>
+      </testcase>
+      <testcase purpose="Check if WorkerNavigator.userAgent can return the complete User-Agent header." type="compliance" status="approved" component="WebAPI/Performance and Optimization/Web Workers (Partial)" execution_type="auto" priority="P1" id="WorkerNavigator_userAgent">
+        <description>
+          <test_script_entry timeout="90" test_script_expected_result="0">/opt/tct-workers-w3c-tests/workers/w3c/WorkerNavigator_userAgent.htm</test_script_entry>
+        </description>
+        <specs>
+          <spec>
+            <spec_assertion element_type="attribute" element_name="userAgent" interface="WorkerNavigator" specification="Web Workers (Partial)" section="Performance and Optimization" category="Tizen W3C API Specifications"/>
+            <spec_url>http://www.w3.org/TR/workers/</spec_url>
+          </spec>
+        </specs>
+      </testcase>
+      <testcase purpose="Check if WorkerNavigator.onLine can represent whether the browser is online." type="compliance" status="approved" component="WebAPI/Performance and Optimization/Web Workers (Partial)" execution_type="auto" priority="P1" id="WorkerNavigator_onLine">
+        <description>
+          <test_script_entry timeout="90" test_script_expected_result="0">/opt/tct-workers-w3c-tests/workers/w3c/WorkerNavigator_onLine.htm</test_script_entry>
+        </description>
+        <specs>
+          <spec>
+            <spec_assertion element_type="attribute" element_name="online" interface="WorkerNavigator" specification="Web Workers (Partial)" section="Performance and Optimization" category="Tizen W3C API Specifications"/>
+            <spec_url>http://www.w3.org/TR/workers/</spec_url>
+          </spec>
+        </specs>
+      </testcase>
+      <testcase purpose="Check if WorkerLocation URL can decompose IDL attribute: host." type="compliance" status="approved" component="WebAPI/Performance and Optimization/Web Workers (Partial)" execution_type="auto" priority="P1" id="WorkerLocation_host">
+        <description>
+          <test_script_entry timeout="90" test_script_expected_result="0">/opt/tct-workers-w3c-tests/workers/w3c/WorkerLocation_host.htm</test_script_entry>
+        </description>
+        <specs>
+          <spec>
+            <spec_assertion element_type="attribute" element_name="host" interface="WorkerLocation" specification="Web Workers (Partial)" section="Performance and Optimization" category="Tizen W3C API Specifications"/>
+            <spec_url>http://www.w3.org/TR/workers/</spec_url>
+          </spec>
+        </specs>
+      </testcase>
+      <testcase purpose="Check if SharedWorkerNavigator appVersion can return the version of the browser." type="compliance" status="approved" component="WebAPI/Performance and Optimization/Web Workers (Partial)" execution_type="auto" priority="P2" id="SharedWorkerNavigator_appVersion">
+        <description>
+          <test_script_entry timeout="90" test_script_expected_result="0">/opt/tct-workers-w3c-tests/workers/SharedWorkerNavigator_appVersion.html</test_script_entry>
+        </description>
+        <specs>
+          <spec>
+            <spec_assertion element_type="attribute" element_name="appVersion" interface="WorkerNavigator" specification="Web Workers (Partial)" section="Performance and Optimization" category="Tizen W3C API Specifications"/>
+            <spec_url>http://www.w3.org/TR/workers/</spec_url>
+          </spec>
+        </specs>
+      </testcase>
+      <testcase purpose="Check if WorkerLocation href attribute can return the absolute URL that the WorkerLocation object represents." type="compliance" status="approved" component="WebAPI/Performance and Optimization/Web Workers (Partial)" execution_type="auto" priority="P1" id="WorkerLocation_href">
+        <description>
+          <test_script_entry timeout="90" test_script_expected_result="0">/opt/tct-workers-w3c-tests/workers/w3c/WorkerLocation_href.htm</test_script_entry>
+        </description>
+        <specs>
+          <spec>
+            <spec_assertion element_type="attribute" element_name="href" interface="WorkerLocation" specification="Web Workers (Partial)" section="Performance and Optimization" category="Tizen W3C API Specifications"/>
+            <spec_url>http://www.w3.org/TR/workers/</spec_url>
+          </spec>
+        </specs>
+      </testcase>
+      <testcase purpose="Check if SharedWorkerLocation URL can decompose IDL attribute: host." type="compliance" status="approved" component="WebAPI/Performance and Optimization/Web Workers (Partial)" execution_type="auto" priority="P2" id="SharedWorkerLocation_host">
+        <description>
+          <test_script_entry timeout="90" test_script_expected_result="0">/opt/tct-workers-w3c-tests/workers/SharedWorkerLocation_host.html</test_script_entry>
+        </description>
+        <specs>
+          <spec>
+            <spec_assertion element_type="attribute" element_name="host" interface="WorkerLocation" specification="Web Workers (Partial)" section="Performance and Optimization" category="Tizen W3C API Specifications"/>
+            <spec_url>http://www.w3.org/TR/workers/</spec_url>
+          </spec>
+        </specs>
+      </testcase>
+      <testcase purpose="Check if WorkerLocation.search can work correctly with fragment." type="compliance" status="approved" component="WebAPI/Performance and Optimization/Web Workers (Partial)" execution_type="auto" priority="P2" id="WorkerLocation_search_fragment">
+        <description>
+          <test_script_entry timeout="90" test_script_expected_result="0">/opt/tct-workers-w3c-tests/workers/w3c/WorkerLocation_search_fragment.htm</test_script_entry>
+        </description>
+        <specs>
+          <spec>
+            <spec_assertion element_type="attribute" element_name="search" interface="WorkerLocation" specification="Web Workers (Partial)" section="Performance and Optimization" category="Tizen W3C API Specifications"/>
+            <spec_url>http://www.w3.org/TR/workers/</spec_url>
+          </spec>
+        </specs>
+      </testcase>
+      <testcase purpose="Check if WorkerLocation.hash can work correctly with no fragment." type="compliance" status="approved" component="WebAPI/Performance and Optimization/Web Workers (Partial)" execution_type="auto" priority="P2" id="WorkerLocation_hash_nonexist">
+        <description>
+          <test_script_entry timeout="90" test_script_expected_result="0">/opt/tct-workers-w3c-tests/workers/w3c/WorkerLocation_hash_nonexist.htm</test_script_entry>
+        </description>
+        <specs>
+          <spec>
+            <spec_assertion element_type="attribute" element_name="hash" interface="WorkerLocation" specification="Web Workers (Partial)" section="Performance and Optimization" category="Tizen W3C API Specifications"/>
+            <spec_url>http://www.w3.org/TR/workers/</spec_url>
+          </spec>
+        </specs>
+      </testcase>
+      <testcase purpose="Check if WorkerGlobalScope ErrorEvent.message can work correctly." type="compliance" status="approved" component="WebAPI/Performance and Optimization/Web Workers (Partial)" execution_type="auto" priority="P1" id="WorkerGlobalScope_ErrorEvent_message">
+        <description>
+          <test_script_entry timeout="90" test_script_expected_result="0">/opt/tct-workers-w3c-tests/workers/w3c/WorkerGlobalScope_ErrorEvent_message.htm</test_script_entry>
+        </description>
+        <specs>
+          <spec>
+            <spec_assertion element_type="eventhandler" element_name="onerror" interface="WorkerGlobalScope" specification="Web Workers (Partial)" section="Performance and Optimization" category="Tizen W3C API Specifications"/>
+            <spec_url>http://www.w3.org/TR/workers/</spec_url>
+          </spec>
+        </specs>
+      </testcase>
+      <testcase purpose="Check if SharedWorkerLocation.hash can work correctly with no fragment." type="compliance" status="approved" component="WebAPI/Performance and Optimization/Web Workers (Partial)" execution_type="auto" priority="P2" id="SharedWorkerLocation_hash_nonexist">
+        <description>
+          <test_script_entry timeout="90" test_script_expected_result="0">/opt/tct-workers-w3c-tests/workers/SharedWorkerLocation_hash_nonexist.html</test_script_entry>
+        </description>
+        <specs>
+          <spec>
+            <spec_assertion element_type="attribute" element_name="hash" interface="WorkerLocation" specification="Web Workers (Partial)" section="Performance and Optimization" category="Tizen W3C API Specifications"/>
+            <spec_url>http://www.w3.org/TR/workers/</spec_url>
+          </spec>
+        </specs>
+      </testcase>
+      <testcase purpose="Check if SharedWorkerNavigator.onLine can work correctly." type="compliance" status="approved" component="WebAPI/Performance and Optimization/Web Workers (Partial)" execution_type="auto" priority="P2" id="SharedWorkerNavigator_online">
+        <description>
+          <test_script_entry timeout="90" test_script_expected_result="0">/opt/tct-workers-w3c-tests/workers/SharedWorkerNavigator_online.html</test_script_entry>
+        </description>
+        <specs>
+          <spec>
+            <spec_assertion element_type="attribute" element_name="online" interface="WorkerNavigator" specification="Web Workers (Partial)" section="Performance and Optimization" category="Tizen W3C API Specifications"/>
+            <spec_url>http://www.w3.org/TR/workers/</spec_url>
+          </spec>
+        </specs>
+      </testcase>
+      <testcase purpose="Check if SharedWorkerLocation.hash can work correctly with url encoding string." type="compliance" status="approved" component="WebAPI/Performance and Optimization/Web Workers (Partial)" execution_type="auto" priority="P2" id="SharedWorkerLocation_hash_encoding">
+        <description>
+          <test_script_entry timeout="90" test_script_expected_result="0">/opt/tct-workers-w3c-tests/workers/SharedWorkerLocation_hash_encoding.html</test_script_entry>
+        </description>
+        <specs>
+          <spec>
+            <spec_assertion element_type="attribute" element_name="hash" interface="WorkerLocation" specification="Web Workers (Partial)" section="Performance and Optimization" category="Tizen W3C API Specifications"/>
+            <spec_url>http://www.w3.org/TR/workers/</spec_url>
+          </spec>
+        </specs>
+      </testcase>
+      <testcase purpose="Check if SharedWorkerLocation URL can decompose IDL attribute: protocol." type="compliance" status="approved" component="WebAPI/Performance and Optimization/Web Workers (Partial)" execution_type="auto" priority="P2" id="SharedWorkerLocation_portocol">
+        <description>
+          <test_script_entry timeout="90" test_script_expected_result="0">/opt/tct-workers-w3c-tests/workers/SharedWorkerLocation_portocol.html</test_script_entry>
+        </description>
+        <specs>
+          <spec>
+            <spec_assertion element_type="attribute" element_name="protocol" interface="WorkerLocation" specification="Web Workers (Partial)" section="Performance and Optimization" category="Tizen W3C API Specifications"/>
+            <spec_url>http://www.w3.org/TR/workers/</spec_url>
+          </spec>
+        </specs>
+      </testcase>
+      <testcase purpose="Check if basic function of Web Workers can work correctly." type="compliance" status="approved" component="WebAPI/Performance and Optimization/Web Workers (Partial)" execution_type="auto" priority="P0" id="Worker_basic">
+        <description>
+          <test_script_entry timeout="90" test_script_expected_result="0">/opt/tct-workers-w3c-tests/workers/w3c/Worker_basic.htm</test_script_entry>
+        </description>
+        <specs>
+          <spec>
+            <spec_assertion element_type="eventhandler" element_name="onmessage" interface="Worker" specification="Web Workers (Partial)" section="Performance and Optimization" category="Tizen W3C API Specifications"/>
+            <spec_url>http://www.w3.org/TR/workers/</spec_url>
+          </spec>
+        </specs>
+      </testcase>
+      <testcase purpose="Check if basic usage of worker name can work correctly." type="compliance" status="approved" component="WebAPI/Performance and Optimization/Web Workers (Partial)" execution_type="auto" priority="P1" id="SharedWorkerName">
+        <description>
+          <test_script_entry timeout="90" test_script_expected_result="0">/opt/tct-workers-w3c-tests/workers/SharedWorkerName.html</test_script_entry>
+        </description>
+        <specs>
+          <spec>
+            <spec_assertion element_type="attribute" element_name="port" interface="SharedWorker" specification="Web Workers (Partial)" section="Performance and Optimization" category="Tizen W3C API Specifications"/>
+            <spec_url>http://www.w3.org/TR/workers/</spec_url>
+          </spec>
+        </specs>
+      </testcase>
+      <testcase purpose="Check if postMessage MessageEvent can work correctly." type="compliance" status="approved" component="WebAPI/Performance and Optimization/Web Workers (Partial)" execution_type="auto" priority="P1" id="postMessage_event_properties">
+        <description>
+          <test_script_entry timeout="90" test_script_expected_result="0">/opt/tct-workers-w3c-tests/workers/w3c/postMessage_event_properties.htm</test_script_entry>
+        </description>
+        <specs>
+          <spec>
+            <spec_assertion element_type="method" element_name="postMessage" interface="Worker" specification="Web Workers (Partial)" section="Performance and Optimization" category="Tizen W3C API Specifications"/>
+            <spec_url>http://www.w3.org/TR/workers/</spec_url>
+          </spec>
+        </specs>
+      </testcase>
+      <testcase purpose="Check if WorkerLocation URL can decompose IDL attribute: pathname." type="compliance" status="approved" component="WebAPI/Performance and Optimization/Web Workers (Partial)" execution_type="auto" priority="P1" id="WorkerLocation_pathname">
+        <description>
+          <test_script_entry timeout="90" test_script_expected_result="0">/opt/tct-workers-w3c-tests/workers/w3c/WorkerLocation_pathname.htm</test_script_entry>
+        </description>
+        <specs>
+          <spec>
+            <spec_assertion element_type="attribute" element_name="pathname" interface="WorkerLocation" specification="Web Workers (Partial)" section="Performance and Optimization" category="Tizen W3C API Specifications"/>
+            <spec_url>http://www.w3.org/TR/workers/</spec_url>
+          </spec>
+        </specs>
+      </testcase>
+      <testcase purpose="Check if SharedWorkerLocation.search can work correctly with no component." type="compliance" status="approved" component="WebAPI/Performance and Optimization/Web Workers (Partial)" execution_type="auto" priority="P2" id="SharedWorkerLocation_search_nonexist">
+        <description>
+          <test_script_entry timeout="90" test_script_expected_result="0">/opt/tct-workers-w3c-tests/workers/SharedWorkerLocation_search_nonexist.html</test_script_entry>
+        </description>
+        <specs>
+          <spec>
+            <spec_assertion element_type="attribute" element_name="search" interface="WorkerLocation" specification="Web Workers (Partial)" section="Performance and Optimization" category="Tizen W3C API Specifications"/>
+            <spec_url>http://www.w3.org/TR/workers/</spec_url>
+          </spec>
+        </specs>
+      </testcase>
+      <testcase purpose="Check if WorkerLocation.hash can work correctly with url encoding string." type="compliance" status="approved" component="WebAPI/Performance and Optimization/Web Workers (Partial)" execution_type="auto" priority="P2" id="WorkerLocation_hash_encoding">
+        <description>
+          <test_script_entry timeout="90" test_script_expected_result="0">/opt/tct-workers-w3c-tests/workers/w3c/WorkerLocation_hash_encoding.htm</test_script_entry>
+        </description>
+        <specs>
+          <spec>
+            <spec_assertion element_type="attribute" element_name="hash" interface="WorkerLocation" specification="Web Workers (Partial)" section="Performance and Optimization" category="Tizen W3C API Specifications"/>
+            <spec_url>http://www.w3.org/TR/workers/</spec_url>
+          </spec>
+        </specs>
+      </testcase>
+      <testcase purpose="Check if SharedWorkerLocation URL can decompose IDL attribute: port." type="compliance" status="approved" component="WebAPI/Performance and Optimization/Web Workers (Partial)" execution_type="auto" priority="P2" id="SharedWorkerLocation_port">
+        <description>
+          <test_script_entry timeout="90" test_script_expected_result="0">/opt/tct-workers-w3c-tests/workers/SharedWorkerLocation_port.html</test_script_entry>
+        </description>
+        <specs>
+          <spec>
+            <spec_assertion element_type="attribute" element_name="port" interface="WorkerLocation" specification="Web Workers (Partial)" section="Performance and Optimization" category="Tizen W3C API Specifications"/>
+            <spec_url>http://www.w3.org/TR/workers/</spec_url>
+          </spec>
+        </specs>
+      </testcase>
+      <testcase purpose="Check if WorkerGlobalScope Close() can clear events queue." type="compliance" status="approved" component="WebAPI/Performance and Optimization/Web Workers (Partial)" execution_type="auto" priority="P1" id="WorkerGlobalScope_close">
+        <description>
+          <test_script_entry timeout="90" test_script_expected_result="0">/opt/tct-workers-w3c-tests/workers/w3c/WorkerGlobalScope_close.htm</test_script_entry>
+        </description>
+        <specs>
+          <spec>
+            <spec_assertion element_type="method" element_name="close" interface="WorkerGlobalScope" specification="Web Workers (Partial)" section="Performance and Optimization" category="Tizen W3C API Specifications"/>
+            <spec_url>http://www.w3.org/TR/workers/</spec_url>
+          </spec>
+        </specs>
+      </testcase>
+      <testcase purpose="Check if WorkerNavigator appVersion can return the version of the browser." type="compliance" status="approved" component="WebAPI/Performance and Optimization/Web Workers (Partial)" execution_type="auto" priority="P1" id="WorkerNavigator_appVersion">
+        <description>
+          <test_script_entry timeout="90" test_script_expected_result="0">/opt/tct-workers-w3c-tests/workers/w3c/WorkerNavigator_appVersion.htm</test_script_entry>
+        </description>
+        <specs>
+          <spec>
+            <spec_assertion element_type="attribute" element_name="appVersion" interface="WorkerNavigator" specification="Web Workers (Partial)" section="Performance and Optimization" category="Tizen W3C API Specifications"/>
+            <spec_url>http://www.w3.org/TR/workers/</spec_url>
+          </spec>
+        </specs>
+      </testcase>
+      <testcase purpose="Check if WorkerGlobalScope_setTimeout can work correctly." type="compliance" status="approved" component="WebAPI/Performance and Optimization/Web Workers (Partial)" execution_type="auto" priority="P1" id="WorkerGlobalScope_setTimeout">
+        <description>
+          <test_script_entry timeout="90" test_script_expected_result="0">/opt/tct-workers-w3c-tests/workers/w3c/WorkerGlobalScope_setTimeout.htm</test_script_entry>
+        </description>
+        <specs>
+          <spec>
+            <spec_assertion element_type="method" element_name="setTimeout" interface="WorkerGlobalScope" specification="Web Workers (Partial)" section="Performance and Optimization" category="Tizen W3C API Specifications"/>
+            <spec_url>http://www.w3.org/TR/workers/</spec_url>
+          </spec>
+        </specs>
+      </testcase>
+      <testcase purpose="Check if WorkerGlobalScope attribute navigator can work correctly." type="compliance" status="approved" component="WebAPI/Performance and Optimization/Web Workers (Partial)" execution_type="auto" priority="P1" id="WorkerGlobalScope_navigator">
+        <description>
+          <test_script_entry timeout="90" test_script_expected_result="0">/opt/tct-workers-w3c-tests/workers/WorkerGlobalScope_navigator.html</test_script_entry>
+        </description>
+        <specs>
+          <spec>
+            <spec_assertion element_type="attribute" element_name="navigator" interface="WorkerGlobalScope" specification="Web Workers (Partial)" section="Performance and Optimization" category="Tizen W3C API Specifications"/>
+            <spec_url>http://www.w5.org/TR/workers/</spec_url>
+          </spec>
+        </specs>
+      </testcase>
+      <testcase purpose="Check if Worker constructor can work correctly." type="compliance" status="approved" component="WebAPI/Performance and Optimization/Web Workers (Partial)" execution_type="auto" priority="P1" id="Worker_constructor">
+        <description>
+          <test_script_entry timeout="90" test_script_expected_result="0">/opt/tct-workers-w3c-tests/workers/Worker_constructor.html</test_script_entry>
+        </description>
+        <specs>
+          <spec>
+            <spec_assertion element_type="method" element_name="constructor" interface="Worker" specification="Web Workers (Partial)" section="Performance and Optimization" category="Tizen W3C API Specifications"/>
+            <spec_url>http://www.w4.org/TR/workers/</spec_url>
+          </spec>
+        </specs>
+      </testcase>
+      <testcase purpose="Check if WorkerGlobalScope method: onmessage can work correctly." type="compliance" status="approved" component="WebAPI/Performance and Optimization/Web Workers (Partial)" execution_type="auto" priority="P1" id="WorkerGlobalScope_onMessage">
+        <description>
+          <test_script_entry timeout="90" test_script_expected_result="0">/opt/tct-workers-w3c-tests/workers/WorkerGlobalScope_onMessage.html</test_script_entry>
+        </description>
+        <specs>
+          <spec>
+            <spec_assertion element_type="eventhandler" element_name="onmessage" interface="DedicatedWorkerGlobalScope" specification="Web Workers (Partial)" section="Performance and Optimization" category="Tizen W3C API Specifications"/>
+            <spec_url>http://www.w6.org/TR/workers/</spec_url>
+          </spec>
+        </specs>
+      </testcase>
+      <testcase purpose="Check if WorkerGlobalScope method: postMessage can work correctly." type="compliance" status="approved" component="WebAPI/Performance and Optimization/Web Workers (Partial)" execution_type="auto" priority="P1" id="WorkerGlobalScope_postMessage">
+        <description>
+          <test_script_entry timeout="90" test_script_expected_result="0">/opt/tct-workers-w3c-tests/workers/WorkerGlobalScope_postMessage.html</test_script_entry>
+        </description>
+        <specs>
+          <spec>
+            <spec_assertion element_type="method" element_name="postMessage" interface="DedicatedWorkerGlobalScope" specification="Web Workers (Partial)" section="Performance and Optimization" category="Tizen W3C API Specifications"/>
+            <spec_url>http://www.w7.org/TR/workers/</spec_url>
+          </spec>
+        </specs>
+      </testcase>
+      <testcase purpose="Check if SharedWorkerGlobalScope attribute: name can return the worker name." type="compliance" status="approved" component="WebAPI/Performance and Optimization/Web Workers (Partial)" execution_type="auto" priority="P1" id="SharedWorkerGlobalScope_name">
+        <description>
+          <test_script_entry timeout="90" test_script_expected_result="0">/opt/tct-workers-w3c-tests/workers/SharedWorkerGlobalScope_name.html</test_script_entry>
+        </description>
+        <specs>
+          <spec>
+            <spec_assertion element_type="attribute" element_name="name" interface="SharedWorkerGlobalScope" specification="Web Workers (Partial)" section="Performance and Optimization" category="Tizen W3C API Specifications"/>
+            <spec_url>http://www.w10.org/TR/workers/</spec_url>
+          </spec>
+        </specs>
+      </testcase>
+      <testcase purpose="Check if WorkerGlobalScope attribute: self can return WorkerGlobalScope object itself." type="compliance" status="approved" component="WebAPI/Performance and Optimization/Web Workers (Partial)" execution_type="auto" priority="P1" id="WorkerGlobalScope_self">
+        <description>
+          <test_script_entry timeout="90" test_script_expected_result="0">/opt/tct-workers-w3c-tests/workers/WorkerGlobalScope_self.html</test_script_entry>
+        </description>
+        <specs>
+          <spec>
+            <spec_assertion element_type="attribute" element_name="self" interface="WorkerGlobalScope" specification="Web Workers (Partial)" section="Performance and Optimization" category="Tizen W3C API Specifications"/>
+            <spec_url>http://www.w8.org/TR/workers/</spec_url>
+          </spec>
+        </specs>
+      </testcase>
+      <testcase purpose="Check if SharedWorkerGlobalScope method: onconnect can work correctly." type="compliance" status="approved" component="WebAPI/Performance and Optimization/Web Workers (Partial)" execution_type="auto" priority="P1" id="SharedWorkerGlobalScope_onconnect">
+        <description>
+          <test_script_entry timeout="90" test_script_expected_result="0">/opt/tct-workers-w3c-tests/workers/SharedWorkerGlobalScope_onconnect.html</test_script_entry>
+        </description>
+        <specs>
+          <spec>
+            <spec_assertion element_type="eventhandler" element_name="onconnect" interface="SharedWorkerGlobalScope" specification="Web Workers (Partial)" section="Performance and Optimization" category="Tizen W3C API Specifications"/>
+            <spec_url>http://www.w11.org/TR/workers/</spec_url>
+          </spec>
+        </specs>
+      </testcase>
+      <testcase purpose="Check if Web Worker support Blob url" type="compliance" status="approved" component="WebAPI/Performance and Optimization/Web Workers (Partial)" execution_type="auto" priority="P2" id="WebWorker_Blob_url_support">
+        <description>
+          <test_script_entry timeout="90" test_script_expected_result="0">/opt/tct-workers-w3c-tests/workers/WebWorker_Blob_url_support.html</test_script_entry>
+        </description>
+        <specs>
+          <spec>
+            <spec_assertion element_type="method" element_name="constructor" interface="Worker" specification="Web Workers (Partial)" section="Performance and Optimization" category="Tizen W3C API Specifications"/>
+            <spec_url>http://www.w3.org/TR/workers/</spec_url>
+          </spec>
+        </specs>
+      </testcase>
+      <testcase purpose="check if throw exception when creating SharedWorker with different URLs but same name" type="compliance" status="approved" component="WebAPI/Performance and Optimization/Web Workers (Partial)" execution_type="auto" priority="P3" id="SharedWorkerShared_name_except">
+        <description>
+          <test_script_entry timeout="90" test_script_expected_result="0">/opt/tct-workers-w3c-tests/workers/SharedWorkerShared_name_except.html</test_script_entry>
+        </description>
+        <specs>
+          <spec>
+            <spec_assertion usage="true" interface="SharedWorkerGlobalScope" specification="Web Workers (Partial)" section="Performance and Optimization" category="Tizen W3C API Specifications"/>
+            <spec_url>http://www.w3.org/TR/workers/</spec_url>
+          </spec>
+        </specs>
+      </testcase>
+      <testcase purpose="check if WorkerGlobalScope XMLHttpRequest support" type="compliance" status="approved" component="WebAPI/Performance and Optimization/Web Workers (Partial)" execution_type="auto" priority="P3" id="WorkerGlobalScope_XMLHttpRequest">
+        <description>
+          <test_script_entry timeout="90" test_script_expected_result="0">/opt/tct-workers-w3c-tests/workers/w3c/WorkerGlobalScope_XMLHttpRequest.htm</test_script_entry>
+        </description>
+        <specs>
+          <spec>
+            <spec_assertion usage="true" interface="WorkerGlobalScope" specification="Web Workers (Partial)" section="Performance and Optimization" category="Tizen W3C API Specifications"/>
+            <spec_url>http://www.w3.org/TR/workers/</spec_url>
+          </spec>
+        </specs>
+      </testcase>
+      <testcase purpose="check if postMessage() with WorkerNavigator raises DATA_CLONE_ERR" type="compliance" status="approved" component="WebAPI/Performance and Optimization/Web Workers (Partial)" execution_type="auto" priority="P3" id="postMessage_DataCloneErr">
+        <description>
+          <test_script_entry timeout="90" test_script_expected_result="0">/opt/tct-workers-w3c-tests/workers/w3c/postMessage_DataCloneErr.htm</test_script_entry>
+        </description>
+        <specs>
+          <spec>
+            <spec_assertion usage="true" interface="Worker" specification="Web Workers (Partial)" section="Performance and Optimization" category="Tizen W3C API Specifications"/>
+            <spec_url>http://www.w3.org/TR/workers/</spec_url>
+          </spec>
+        </specs>
+      </testcase>
+      <testcase purpose="check if Access simultaneously-loaded instance of shared worker." type="compliance" status="approved" component="WebAPI/Performance and Optimization/Web Workers (Partial)" execution_type="auto" priority="P3" id="SharedWorkerShared_simultaneously">
+        <description>
+          <test_script_entry timeout="90" test_script_expected_result="0">/opt/tct-workers-w3c-tests/workers/SharedWorkerShared_simultaneously.html</test_script_entry>
+        </description>
+        <specs>
+          <spec>
+            <spec_assertion usage="true" interface="SharedWorker" specification="Web Workers (Partial)" section="Performance and Optimization" category="Tizen W3C API Specifications"/>
+            <spec_url>http://www.w3.org/TR/workers/</spec_url>
+          </spec>
+        </specs>
+      </testcase>
+      <testcase purpose="check if MessageChannel port.onmessage enables message queue" type="compliance" status="approved" component="WebAPI/Performance and Optimization/Web Workers (Partial)" execution_type="auto" priority="P3" id="MessagePort_onmessage_start">
+        <description>
+          <test_script_entry timeout="90" test_script_expected_result="0">/opt/tct-workers-w3c-tests/workers/w3c/MessagePort_onmessage_start.htm</test_script_entry>
+        </description>
+        <specs>
+          <spec>
+            <spec_assertion usage="true" interface="Worker" specification="Web Workers (Partial)" section="Performance and Optimization" category="Tizen W3C API Specifications"/>
+            <spec_url>http://www.w3.org/TR/workers/</spec_url>
+          </spec>
+        </specs>
+      </testcase>
+      <testcase purpose="check if shared worker exception Tests" type="compliance" status="approved" component="WebAPI/Performance and Optimization/Web Workers (Partial)" execution_type="auto" priority="P3" id="SharedWorkerException">
+        <description>
+          <test_script_entry timeout="90" test_script_expected_result="0">/opt/tct-workers-w3c-tests/workers/SharedWorkerException.html</test_script_entry>
+        </description>
+        <specs>
+          <spec>
+            <spec_assertion usage="true" interface="Worker" specification="Web Workers (Partial)" section="Performance and Optimization" category="Tizen W3C API Specifications"/>
+            <spec_url>http://www.w3.org/TR/workers/</spec_url>
+          </spec>
+        </specs>
+      </testcase>
+      <testcase purpose="check if  shared worker in iframe Tests" type="compliance" status="approved" component="WebAPI/Performance and Optimization/Web Workers (Partial)" execution_type="manual" priority="P3" id="SharedWorker_in_iframe">
+        <description>
+          <test_script_entry timeout="90" test_script_expected_result="0">/opt/tct-workers-w3c-tests/workers/SharedWorker_in_iframe.html</test_script_entry>
+        </description>
+        <specs>
+          <spec>
+            <spec_assertion usage="true" interface="SharedWorker" specification="Web Workers (Partial)" section="Performance and Optimization" category="Tizen W3C API Specifications"/>
+            <spec_url>http://www.w3.org/TR/workers/</spec_url>
+          </spec>
+        </specs>
+      </testcase>
+      <testcase purpose="check if WorkerLocation object" type="compliance" status="approved" component="WebAPI/Performance and Optimization/Web Workers (Partial)" execution_type="auto" priority="P3" id="WorkerLocation">
+        <description>
+          <test_script_entry timeout="90" test_script_expected_result="0">/opt/tct-workers-w3c-tests/workers/w3c/WorkerLocation.htm</test_script_entry>
+        </description>
+        <specs>
+          <spec>
+            <spec_assertion usage="true" interface="WorkerLocation" specification="Web Workers (Partial)" section="Performance and Optimization" category="Tizen W3C API Specifications"/>
+            <spec_url>http://www.w3.org/TR/workers/</spec_url>
+          </spec>
+        </specs>
+      </testcase>
+      <testcase purpose="check if shared worker script error Tests" type="compliance" status="approved" component="WebAPI/Performance and Optimization/Web Workers (Partial)" execution_type="auto" priority="P3" id="SharedWorkerScriptError">
+        <description>
+          <test_script_entry timeout="90" test_script_expected_result="0">/opt/tct-workers-w3c-tests/workers/SharedWorkerScriptError.html</test_script_entry>
+        </description>
+        <specs>
+          <spec>
+            <spec_assertion usage="true" interface="SharedWorker" specification="Web Workers (Partial)" section="Performance and Optimization" category="Tizen W3C API Specifications"/>
+            <spec_url>http://www.w3.org/TR/workers/</spec_url>
+          </spec>
+        </specs>
+      </testcase>
+      <testcase purpose="check if WorkerGlobalScope implements EventTarget" type="compliance" status="approved" component="WebAPI/Performance and Optimization/Web Workers (Partial)" execution_type="auto" priority="P3" id="WorkerGlobalScope_EventTarget">
+        <description>
+          <test_script_entry timeout="90" test_script_expected_result="0">/opt/tct-workers-w3c-tests/workers/w3c/WorkerGlobalScope_EventTarget.htm</test_script_entry>
+        </description>
+        <specs>
+          <spec>
+            <spec_assertion usage="true" interface="WorkerGlobalScope" specification="Web Workers (Partial)" section="Performance and Optimization" category="Tizen W3C API Specifications"/>
+            <spec_url>http://www.w3.org/TR/workers/</spec_url>
+          </spec>
+        </specs>
+      </testcase>
+      <testcase purpose="check if importScripts() with non-existent script file raises NETWORK_ERR" type="compliance" status="approved" component="WebAPI/Performance and Optimization/Web Workers (Partial)" execution_type="auto" priority="P3" id="WorkerGlobalScope_importScripts_NetworkErr">
+        <description>
+          <test_script_entry timeout="90" test_script_expected_result="0">/opt/tct-workers-w3c-tests/workers/w3c/WorkerGlobalScope_importScripts_NetworkErr.htm</test_script_entry>
+        </description>
+        <specs>
+          <spec>
+            <spec_assertion usage="true" interface="WorkerGlobalScope" specification="Web Workers (Partial)" section="Performance and Optimization" category="Tizen W3C API Specifications"/>
+            <spec_url>http://www.w3.org/TR/workers/</spec_url>
+          </spec>
+        </specs>
+      </testcase>
+      <testcase purpose="check if shared worker shared Tests" type="compliance" status="approved" component="WebAPI/Performance and Optimization/Web Workers (Partial)" execution_type="auto" priority="P3" id="SharedWorkerShared_loaded">
+        <description>
+          <test_script_entry timeout="90" test_script_expected_result="0">/opt/tct-workers-w3c-tests/workers/SharedWorkerShared_loaded.html</test_script_entry>
+        </description>
+        <specs>
+          <spec>
+            <spec_assertion usage="true" interface="SharedWorker" specification="Web Workers (Partial)" section="Performance and Optimization" category="Tizen W3C API Specifications"/>
+            <spec_url>http://www.w3.org/TR/workers/</spec_url>
+          </spec>
+        </specs>
+      </testcase>
+      <testcase purpose="check if MessageChannel: port message queue is initially disabled" type="compliance" status="approved" component="WebAPI/Performance and Optimization/Web Workers (Partial)" execution_type="auto" priority="P3" id="MessagePort_initial_disabled">
+        <description>
+          <test_script_entry timeout="90" test_script_expected_result="0">/opt/tct-workers-w3c-tests/workers/w3c/MessagePort_initial_disabled.htm</test_script_entry>
+        </description>
+        <specs>
+          <spec>
+            <spec_assertion usage="true" interface="Worker" specification="Web Workers (Partial)" section="Performance and Optimization" category="Tizen W3C API Specifications"/>
+            <spec_url>http://www.w3.org/TR/workers/</spec_url>
+          </spec>
+        </specs>
+      </testcase>
+      <testcase purpose="check if WorkerGlobalScope API: removeEventListener()" type="compliance" status="approved" component="WebAPI/Performance and Optimization/Web Workers (Partial)" execution_type="auto" priority="P3" id="WorkerGlobalScope_removeEventListener">
+        <description>
+          <test_script_entry timeout="90" test_script_expected_result="0">/opt/tct-workers-w3c-tests/workers/w3c/WorkerGlobalScope_removeEventListener.htm</test_script_entry>
+        </description>
+        <specs>
+          <spec>
+            <spec_assertion usage="true" interface="Worker" specification="Web Workers (Partial)" section="Performance and Optimization" category="Tizen W3C API Specifications"/>
+            <spec_url>http://www.w3.org/TR/workers/</spec_url>
+          </spec>
+        </specs>
+      </testcase>
+      <testcase purpose="check if WorkerGlobalScope API: addEventListener()" type="compliance" status="approved" component="WebAPI/Performance and Optimization/Web Workers (Partial)" execution_type="auto" priority="P3" id="WorkerGlobalScope_addEventListener">
+        <description>
+          <test_script_entry timeout="90" test_script_expected_result="0">/opt/tct-workers-w3c-tests/workers/w3c/WorkerGlobalScope_addEventListener.htm</test_script_entry>
+        </description>
+        <specs>
+          <spec>
+            <spec_assertion usage="true" interface="Worker" specification="Web Workers (Partial)" section="Performance and Optimization" category="Tizen W3C API Specifications"/>
+            <spec_url>http://www.w3.org/TR/workers/</spec_url>
+          </spec>
+        </specs>
+      </testcase>
+    </set>
+  </suite>
+</test_definition>

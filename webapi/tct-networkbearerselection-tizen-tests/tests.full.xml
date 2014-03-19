@@ -1,0 +1,313 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-stylesheet type="text/xsl"  href="./testcase.xsl"?>
+<test_definition>
+  <suite name="tct-networkbearerselection-tizen-tests" launcher="xwalk" extension="crosswalk" category="Tizen Web Device APIs">
+    <set name="NBS">
+      <capabilities>
+        <capability name="telephony"/>
+      </capabilities>
+      <testcase purpose="Check if interface NetworkBearerSelectionObject exists, it should not" type="compliance" status="approved" component="TizenAPI/Communication/NBS" execution_type="auto" priority="P3" id="NetworkBearerSelectionObject_notexist">
+        <description>
+          <test_script_entry>/opt/tct-networkbearerselection-tizen-tests/networkbearerselection/NetworkBearerSelectionObject_notexist.html</test_script_entry>
+        </description>
+        <specs>
+          <spec>
+            <spec_assertion interface="NetworkBearerSelectionObject" usage="true" specification="NBS" section="Communication" category="Tizen Device API Specifications"/>
+            <spec_url>https://developer.tizen.org/help/topic/org.tizen.web.device.apireference/tizen/networkbearerselection.html</spec_url>
+            <spec_statement>TBD</spec_statement>
+          </spec>
+        </specs>
+      </testcase>
+      <testcase purpose="Check if NetworkBearerSelection instance can have new properties added" type="compliance" status="approved" component="TizenAPI/Communication/NBS" execution_type="auto" priority="P3" id="NetworkBearerSelection_extend">
+        <description>
+          <test_script_entry>/opt/tct-networkbearerselection-tizen-tests/networkbearerselection/NetworkBearerSelection_extend.html</test_script_entry>
+        </description>
+        <specs>
+          <spec>
+            <spec_assertion interface="NetworkBearerSelection" usage="true" specification="NBS" section="Communication" category="Tizen Device API Specifications"/>
+            <spec_url>https://developer.tizen.org/help/topic/org.tizen.web.device.apireference/tizen/networkbearerselection.html</spec_url>
+            <spec_statement>TBD</spec_statement>
+          </spec>
+        </specs>
+      </testcase>
+      <testcase purpose="Check if Tizen namespace contains networkbearerselection" type="compliance" status="approved" component="TizenAPI/Communication/NBS" execution_type="auto" priority="P3" id="NetworkBearerSelection_in_tizen">
+        <description>
+          <test_script_entry>/opt/tct-networkbearerselection-tizen-tests/networkbearerselection/NetworkBearerSelection_in_tizen.html</test_script_entry>
+        </description>
+        <specs>
+          <spec>
+            <spec_assertion interface="NetworkBearerSelection" usage="true" specification="NBS" section="Communication" category="Tizen Device API Specifications"/>
+            <spec_url>https://developer.tizen.org/help/topic/org.tizen.web.device.apireference/tizen/networkbearerselection.html</spec_url>
+            <spec_statement>TBD</spec_statement>
+          </spec>
+        </specs>
+      </testcase>
+      <testcase purpose="Check if interface NetworkBearerSelection exists, it should not" type="compliance" status="approved" component="TizenAPI/Communication/NBS" execution_type="auto" priority="P3" id="NetworkBearerSelection_notexist">
+        <description>
+          <test_script_entry>/opt/tct-networkbearerselection-tizen-tests/networkbearerselection/NetworkBearerSelection_notexist.html</test_script_entry>
+        </description>
+        <specs>
+          <spec>
+            <spec_assertion interface="NetworkBearerSelection" usage="true" specification="NBS" section="Communication" category="Tizen Device API Specifications"/>
+            <spec_url>https://developer.tizen.org/help/topic/org.tizen.web.device.apireference/tizen/networkbearerselection.html</spec_url>
+            <spec_statement>TBD</spec_statement>
+          </spec>
+        </specs>
+      </testcase>
+      <testcase purpose="Check if NetworkBearerSelection::releaseRouteToHost() method called with only mandatory arguments does what it should" type="compliance" onload_delay="90" status="approved" component="TizenAPI/Communication/NBS" execution_type="auto" priority="P1" id="NetworkBearerSelection_releaseRouteToHost">
+        <description>
+          <test_script_entry>/opt/tct-networkbearerselection-tizen-tests/networkbearerselection/NetworkBearerSelection_releaseRouteToHost.html</test_script_entry>
+        </description>
+        <specs>
+          <spec>
+            <spec_assertion interface="NetworkBearerSelection" element_type="method" element_name="releaseRouteToHost" specification="NBS" section="Communication" category="Tizen Device API Specifications"/>
+            <spec_url>https://developer.tizen.org/help/topic/org.tizen.web.device.apireference/tizen/networkbearerselection.html</spec_url>
+            <spec_statement>TBD</spec_statement>
+          </spec>
+        </specs>
+      </testcase>
+      <testcase purpose="Check if NetworkBearerSelection::releaseRouteToHost() throws exception when errorCallback is incorrect" type="compliance" onload_delay="90" status="approved" component="TizenAPI/Communication/NBS" execution_type="auto" priority="P2" id="NetworkBearerSelection_releaseRouteToHost_errorCallback_TypeMismatch">
+        <description>
+          <test_script_entry>/opt/tct-networkbearerselection-tizen-tests/networkbearerselection/NetworkBearerSelection_releaseRouteToHost_errorCallback_TypeMismatch.html</test_script_entry>
+        </description>
+        <specs>
+          <spec>
+            <spec_assertion interface="NetworkBearerSelection" element_type="method" element_name="releaseRouteToHost" specification="NBS" section="Communication" category="Tizen Device API Specifications"/>
+            <spec_url>https://developer.tizen.org/help/topic/org.tizen.web.device.apireference/tizen/networkbearerselection.html</spec_url>
+            <spec_statement>TBD</spec_statement>
+          </spec>
+        </specs>
+      </testcase>
+      <testcase purpose="Check if NetworkBearerSelection::releaseRouteToHost() throws exception when errorCallback is invalid" type="compliance" onload_delay="90" status="approved" component="TizenAPI/Communication/NBS" execution_type="auto" priority="P2" id="NetworkBearerSelection_releaseRouteToHost_errorCallback_invalid_cb">
+        <description>
+          <test_script_entry>/opt/tct-networkbearerselection-tizen-tests/networkbearerselection/NetworkBearerSelection_releaseRouteToHost_errorCallback_invalid_cb.html</test_script_entry>
+        </description>
+        <specs>
+          <spec>
+            <spec_assertion interface="NetworkBearerSelection" element_type="method" element_name="releaseRouteToHost" specification="NBS" section="Communication" category="Tizen Device API Specifications"/>
+            <spec_url>https://developer.tizen.org/help/topic/org.tizen.web.device.apireference/tizen/networkbearerselection.html</spec_url>
+            <spec_statement>TBD</spec_statement>
+          </spec>
+        </specs>
+      </testcase>
+      <testcase purpose="Check if NetworkBearerSelection::releaseRouteToHost() method exists" type="compliance" status="approved" component="TizenAPI/Communication/NBS" execution_type="auto" priority="P1" id="NetworkBearerSelection_releaseRouteToHost_exist">
+        <description>
+          <test_script_entry>/opt/tct-networkbearerselection-tizen-tests/networkbearerselection/NetworkBearerSelection_releaseRouteToHost_exist.html</test_script_entry>
+        </description>
+        <specs>
+          <spec>
+            <spec_assertion interface="NetworkBearerSelection" element_type="method" element_name="releaseRouteToHost" specification="NBS" section="Communication" category="Tizen Device API Specifications"/>
+            <spec_url>https://developer.tizen.org/help/topic/org.tizen.web.device.apireference/tizen/networkbearerselection.html</spec_url>
+            <spec_statement>TBD</spec_statement>
+          </spec>
+        </specs>
+      </testcase>
+      <testcase purpose="Check if NetworkBearerSelection::releaseRouteToHost() method called with missing mandatory argument throws an exception" type="compliance" status="approved" component="TizenAPI/Communication/NBS" execution_type="auto" priority="P1" id="NetworkBearerSelection_releaseRouteToHost_missarg">
+        <description>
+          <test_script_entry>/opt/tct-networkbearerselection-tizen-tests/networkbearerselection/NetworkBearerSelection_releaseRouteToHost_missarg.html</test_script_entry>
+        </description>
+        <specs>
+          <spec>
+            <spec_assertion interface="NetworkBearerSelection" element_type="method" element_name="releaseRouteToHost" specification="NBS" section="Communication" category="Tizen Device API Specifications"/>
+            <spec_url>https://developer.tizen.org/help/topic/org.tizen.web.device.apireference/tizen/networkbearerselection.html</spec_url>
+            <spec_statement>TBD</spec_statement>
+          </spec>
+        </specs>
+      </testcase>
+      <testcase purpose="Check if NetworkBearerSelection::releaseRouteToHost() throws exception when networkType is incorrect" type="compliance" onload_delay="90" status="approved" component="TizenAPI/Communication/NBS" execution_type="auto" priority="P2" id="NetworkBearerSelection_releaseRouteToHost_networkType_TypeMismatch">
+        <description>
+          <test_script_entry>/opt/tct-networkbearerselection-tizen-tests/networkbearerselection/NetworkBearerSelection_releaseRouteToHost_networkType_TypeMismatch.html</test_script_entry>
+        </description>
+        <specs>
+          <spec>
+            <spec_assertion interface="NetworkBearerSelection" element_type="method" element_name="releaseRouteToHost" specification="NBS" section="Communication" category="Tizen Device API Specifications"/>
+            <spec_url>https://developer.tizen.org/help/topic/org.tizen.web.device.apireference/tizen/networkbearerselection.html</spec_url>
+            <spec_statement>TBD</spec_statement>
+          </spec>
+        </specs>
+      </testcase>
+      <testcase purpose="Check if NetworkBearerSelection::releaseRouteToHost() throws exception when successCallback is incorrect" type="compliance" status="approved" component="TizenAPI/Communication/NBS" execution_type="auto" priority="P2" id="NetworkBearerSelection_releaseRouteToHost_successCallback_TypeMismatch">
+        <description>
+          <test_script_entry>/opt/tct-networkbearerselection-tizen-tests/networkbearerselection/NetworkBearerSelection_releaseRouteToHost_successCallback_TypeMismatch.html</test_script_entry>
+        </description>
+        <specs>
+          <spec>
+            <spec_assertion interface="NetworkBearerSelection" element_type="method" element_name="releaseRouteToHost" specification="NBS" section="Communication" category="Tizen Device API Specifications"/>
+            <spec_url>https://developer.tizen.org/help/topic/org.tizen.web.device.apireference/tizen/networkbearerselection.html</spec_url>
+            <spec_statement>TBD</spec_statement>
+          </spec>
+        </specs>
+      </testcase>
+      <testcase purpose="Check if NetworkBearerSelection::releaseRouteToHost() throws exception when successCallback is invalid" type="compliance" onload_delay="90" status="approved" component="TizenAPI/Communication/NBS" execution_type="auto" priority="P2" id="NetworkBearerSelection_releaseRouteToHost_successCallback_invalid_cb">
+        <description>
+          <test_script_entry>/opt/tct-networkbearerselection-tizen-tests/networkbearerselection/NetworkBearerSelection_releaseRouteToHost_successCallback_invalid_cb.html</test_script_entry>
+        </description>
+        <specs>
+          <spec>
+            <spec_assertion interface="NetworkBearerSelection" element_type="method" element_name="releaseRouteToHost" specification="NBS" section="Communication" category="Tizen Device API Specifications"/>
+            <spec_url>https://developer.tizen.org/help/topic/org.tizen.web.device.apireference/tizen/networkbearerselection.html</spec_url>
+            <spec_statement>TBD</spec_statement>
+          </spec>
+        </specs>
+      </testcase>
+      <testcase purpose="Check if NetworkBearerSelection::releaseRouteToHost() called with optional errorCallback works as expected" type="compliance" onload_delay="90" status="approved" component="TizenAPI/Communication/NBS" execution_type="auto" priority="P1" id="NetworkBearerSelection_releaseRouteToHost_with_errorCallback">
+        <description>
+          <test_script_entry>/opt/tct-networkbearerselection-tizen-tests/networkbearerselection/NetworkBearerSelection_releaseRouteToHost_with_errorCallback.html</test_script_entry>
+        </description>
+        <specs>
+          <spec>
+            <spec_assertion interface="NetworkBearerSelection" element_type="method" element_name="releaseRouteToHost" specification="NBS" section="Communication" category="Tizen Device API Specifications"/>
+            <spec_url>https://developer.tizen.org/help/topic/org.tizen.web.device.apireference/tizen/networkbearerselection.html</spec_url>
+            <spec_statement>TBD</spec_statement>
+          </spec>
+        </specs>
+      </testcase>
+      <testcase purpose="Check if NetworkBearerSelection::requestRouteToHost() method called with only mandatory arguments does what it should" type="compliance" onload_delay="90" status="approved" component="TizenAPI/Communication/NBS" execution_type="auto" priority="P1" id="NetworkBearerSelection_requestRouteToHost">
+        <description>
+          <test_script_entry>/opt/tct-networkbearerselection-tizen-tests/networkbearerselection/NetworkBearerSelection_requestRouteToHost.html</test_script_entry>
+        </description>
+        <specs>
+          <spec>
+            <spec_assertion interface="NetworkBearerSelection" element_type="method" element_name="requestRouteToHost" specification="NBS" section="Communication" category="Tizen Device API Specifications"/>
+            <spec_url>https://developer.tizen.org/help/topic/org.tizen.web.device.apireference/tizen/networkbearerselection.html</spec_url>
+            <spec_statement>TBD</spec_statement>
+          </spec>
+        </specs>
+      </testcase>
+      <testcase purpose="Check if NetworkBearerSelection::requestRouteToHost() throws exception when errorCallback is incorrect" type="compliance" onload_delay="90" status="approved" component="TizenAPI/Communication/NBS" execution_type="auto" priority="P2" id="NetworkBearerSelection_requestRouteToHost_errorCallback_TypeMismatch">
+        <description>
+          <test_script_entry>/opt/tct-networkbearerselection-tizen-tests/networkbearerselection/NetworkBearerSelection_requestRouteToHost_errorCallback_TypeMismatch.html</test_script_entry>
+        </description>
+        <specs>
+          <spec>
+            <spec_assertion interface="NetworkBearerSelection" element_type="method" element_name="requestRouteToHost" specification="NBS" section="Communication" category="Tizen Device API Specifications"/>
+            <spec_url>https://developer.tizen.org/help/topic/org.tizen.web.device.apireference/tizen/networkbearerselection.html</spec_url>
+            <spec_statement>TBD</spec_statement>
+          </spec>
+        </specs>
+      </testcase>
+      <testcase purpose="Check if NetworkBearerSelection::requestRouteToHost() throws exception when errorCallback is invalid" type="compliance" onload_delay="90" status="approved" component="TizenAPI/Communication/NBS" execution_type="auto" priority="P2" id="NetworkBearerSelection_requestRouteToHost_errorCallback_invalid_cb">
+        <description>
+          <test_script_entry>/opt/tct-networkbearerselection-tizen-tests/networkbearerselection/NetworkBearerSelection_requestRouteToHost_errorCallback_invalid_cb.html</test_script_entry>
+        </description>
+        <specs>
+          <spec>
+            <spec_assertion interface="NetworkBearerSelection" element_type="method" element_name="requestRouteToHost" specification="NBS" section="Communication" category="Tizen Device API Specifications"/>
+            <spec_url>https://developer.tizen.org/help/topic/org.tizen.web.device.apireference/tizen/networkbearerselection.html</spec_url>
+            <spec_statement>TBD</spec_statement>
+          </spec>
+        </specs>
+      </testcase>
+      <testcase purpose="Check if NetworkBearerSelection::requestRouteToHost() method exists" type="compliance" status="approved" component="TizenAPI/Communication/NBS" execution_type="auto" priority="P1" id="NetworkBearerSelection_requestRouteToHost_exist">
+        <description>
+          <test_script_entry>/opt/tct-networkbearerselection-tizen-tests/networkbearerselection/NetworkBearerSelection_requestRouteToHost_exist.html</test_script_entry>
+        </description>
+        <specs>
+          <spec>
+            <spec_assertion interface="NetworkBearerSelection" element_type="method" element_name="requestRouteToHost" specification="NBS" section="Communication" category="Tizen Device API Specifications"/>
+            <spec_url>https://developer.tizen.org/help/topic/org.tizen.web.device.apireference/tizen/networkbearerselection.html</spec_url>
+            <spec_statement>TBD</spec_statement>
+          </spec>
+        </specs>
+      </testcase>
+      <testcase purpose="Check if NetworkBearerSelection::requestRouteToHost() method called with missing mandatory argument throws an exception" type="compliance" status="approved" component="TizenAPI/Communication/NBS" execution_type="auto" priority="P1" id="NetworkBearerSelection_requestRouteToHost_missarg">
+        <description>
+          <test_script_entry>/opt/tct-networkbearerselection-tizen-tests/networkbearerselection/NetworkBearerSelection_requestRouteToHost_missarg.html</test_script_entry>
+        </description>
+        <specs>
+          <spec>
+            <spec_assertion interface="NetworkBearerSelection" element_type="method" element_name="requestRouteToHost" specification="NBS" section="Communication" category="Tizen Device API Specifications"/>
+            <spec_url>https://developer.tizen.org/help/topic/org.tizen.web.device.apireference/tizen/networkbearerselection.html</spec_url>
+            <spec_statement>TBD</spec_statement>
+          </spec>
+        </specs>
+      </testcase>
+      <testcase purpose="Check if NetworkBearerSelection::requestRouteToHost() throws exception when networkType is incorrect" type="compliance" onload_delay="90" status="approved" component="TizenAPI/Communication/NBS" execution_type="auto" priority="P2" id="NetworkBearerSelection_requestRouteToHost_networkType_TypeMismatch">
+        <description>
+          <test_script_entry>/opt/tct-networkbearerselection-tizen-tests/networkbearerselection/NetworkBearerSelection_requestRouteToHost_networkType_TypeMismatch.html</test_script_entry>
+        </description>
+        <specs>
+          <spec>
+            <spec_assertion interface="NetworkBearerSelection" element_type="method" element_name="requestRouteToHost" specification="NBS" section="Communication" category="Tizen Device API Specifications"/>
+            <spec_url>https://developer.tizen.org/help/topic/org.tizen.web.device.apireference/tizen/networkbearerselection.html</spec_url>
+            <spec_statement>TBD</spec_statement>
+          </spec>
+        </specs>
+      </testcase>
+      <testcase purpose="Check if NetworkBearerSelection::requestRouteToHost() throws exception when successCallback is incorrect" type="compliance" status="approved" component="TizenAPI/Communication/NBS" execution_type="auto" priority="P2" id="NetworkBearerSelection_requestRouteToHost_successCallback_TypeMismatch">
+        <description>
+          <test_script_entry>/opt/tct-networkbearerselection-tizen-tests/networkbearerselection/NetworkBearerSelection_requestRouteToHost_successCallback_TypeMismatch.html</test_script_entry>
+        </description>
+        <specs>
+          <spec>
+            <spec_assertion interface="NetworkBearerSelection" element_type="method" element_name="requestRouteToHost" specification="NBS" section="Communication" category="Tizen Device API Specifications"/>
+            <spec_url>https://developer.tizen.org/help/topic/org.tizen.web.device.apireference/tizen/networkbearerselection.html</spec_url>
+            <spec_statement>TBD</spec_statement>
+          </spec>
+        </specs>
+      </testcase>
+      <testcase purpose="Check if NetworkBearerSelection::requestRouteToHost() throws exception when successCallback is invalid" type="compliance" onload_delay="90" status="approved" component="TizenAPI/Communication/NBS" execution_type="auto" priority="P2" id="NetworkBearerSelection_requestRouteToHost_successCallback_invalid_cb">
+        <description>
+          <test_script_entry>/opt/tct-networkbearerselection-tizen-tests/networkbearerselection/NetworkBearerSelection_requestRouteToHost_successCallback_invalid_cb.html</test_script_entry>
+        </description>
+        <specs>
+          <spec>
+            <spec_assertion interface="NetworkBearerSelection" element_type="method" element_name="requestRouteToHost" specification="NBS" section="Communication" category="Tizen Device API Specifications"/>
+            <spec_url>https://developer.tizen.org/help/topic/org.tizen.web.device.apireference/tizen/networkbearerselection.html</spec_url>
+            <spec_statement>TBD</spec_statement>
+          </spec>
+        </specs>
+      </testcase>
+      <testcase purpose="Check if NetworkBearerSelection::requestRouteToHost() called with optional errorCallback works as expected" type="compliance" onload_delay="90" status="approved" component="TizenAPI/Communication/NBS" execution_type="auto" priority="P1" id="NetworkBearerSelection_requestRouteToHost_with_errorCallback">
+        <description>
+          <test_script_entry>/opt/tct-networkbearerselection-tizen-tests/networkbearerselection/NetworkBearerSelection_requestRouteToHost_with_errorCallback.html</test_script_entry>
+        </description>
+        <specs>
+          <spec>
+            <spec_assertion interface="NetworkBearerSelection" element_type="method" element_name="requestRouteToHost" specification="NBS" section="Communication" category="Tizen Device API Specifications"/>
+            <spec_url>https://developer.tizen.org/help/topic/org.tizen.web.device.apireference/tizen/networkbearerselection.html</spec_url>
+            <spec_statement>TBD</spec_statement>
+          </spec>
+        </specs>
+      </testcase>
+      <testcase purpose="Check if interface NetworkSuccessCallback exists, it should not." type="compliance" status="approved" component="TizenAPI/Communication/NBS" execution_type="auto" priority="P3" id="NetworkSuccessCallback_notexist">
+        <description>
+          <test_script_entry>/opt/tct-networkbearerselection-tizen-tests/networkbearerselection/NetworkSuccessCallback_notexist.html</test_script_entry>
+        </description>
+        <specs>
+          <spec>
+            <spec_assertion interface="NetworkSuccessCallback" usage="true" specification="NBS" section="Communication" category="Tizen Device API Specifications"/>
+            <spec_url>https://developer.tizen.org/help/topic/org.tizen.web.device.apireference/tizen/networkbearerselection.html</spec_url>
+            <spec_statement>TBD</spec_statement>
+          </spec>
+        </specs>
+      </testcase>
+      <testcase purpose="Check if NetworkSuccessCallback::ondisconnected is called" type="compliance" status="approved" component="TizenAPI/Communication/NBS" execution_type="manual" priority="P1" id="NetworkSuccessCallback_ondisconnected">
+        <description>
+          <pre_condition>Please enable cellular data service</pre_condition>
+          <post_condition>Please re-enable cellular data service</post_condition>
+          <test_script_entry>/opt/tct-networkbearerselection-tizen-tests/networkbearerselection/NetworkSuccessCallback_ondisconnected.html</test_script_entry>
+        </description>
+        <specs>
+          <spec>
+            <spec_assertion interface="NetworkSuccessCallback" element_type="method" element_name="ondisconnected" specification="NBS" section="Communication" category="Tizen Device API Specifications"/>
+            <spec_url>https://developer.tizen.org/help/topic/org.tizen.web.device.apireference/tizen/networkbearerselection.html</spec_url>
+            <spec_statement>TBD</spec_statement>
+          </spec>
+        </specs>
+      </testcase>
+      <testcase purpose="Check if NetworkSuccessCallback::onsuccess is called" type="compliance" onload_delay="90" status="approved" component="TizenAPI/Communication/NBS" execution_type="auto" priority="P1" id="NetworkSuccessCallback_onsuccess">
+        <description>
+          <test_script_entry>/opt/tct-networkbearerselection-tizen-tests/networkbearerselection/NetworkSuccessCallback_onsuccess.html</test_script_entry>
+        </description>
+        <specs>
+          <spec>
+            <spec_assertion interface="NetworkSuccessCallback" element_type="method" element_name="onsuccess" specification="NBS" section="Communication" category="Tizen Device API Specifications"/>
+            <spec_url>https://developer.tizen.org/help/topic/org.tizen.web.device.apireference/tizen/networkbearerselection.html</spec_url>
+            <spec_statement>TBD</spec_statement>
+          </spec>
+        </specs>
+      </testcase>
+    </set>
+  </suite>
+</test_definition>

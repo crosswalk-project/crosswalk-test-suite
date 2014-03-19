@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<!--
+Copyright (c) 2013 Intel Corporation.
+
+Redistribution and use in source and binary forms, with or without modification,
+are permitted provided that the following conditions are met:
+
+* Redistributions of works must retain the original copyright notice, this list
+  of conditions and the following disclaimer.
+* Redistributions in binary form must reproduce the original copyright notice,
+  this list of conditions and the following disclaimer in the documentation
+  and/or other materials provided with the distribution.
+* Neither the name of Intel Corporation nor the names of its contributors
+  may be used to endorse or promote products derived from this work without
+  specific prior written permission.
+
+THIS SOFTWARE IS PROVIDED BY INTEL CORPORATION "AS IS"
+AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE
+IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE
+ARE DISCLAIMED. IN NO EVENT SHALL INTEL CORPORATION BE LIABLE FOR ANY DIRECT,
+INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING,
+BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE,
+DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY
+OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING
+NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE,
+EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
+
+Authors:
+        Cui, Jieqiong <jieqiongx.cui@intel.com>
+
+-->
+
+<html>
+  <head>
+    <title>HTML Test: input_type_attribute</title>
+    <link rel="author" title="Intel" href="http://www.intel.com/" />
+    <link rel="help" href="http://www.w3.org/TR/html5/the-input-element.html#the-input-element">
+    <meta name="flags" content="" />
+    <meta name="assert" content="Check if the input attributes exist and the invalid of date.value" />
+    <script src="../../../resources/testharness.js"></script>
+    <script src="../../../resources/testharnessreport.js"></script>
+  </head>
+  <body>
+    <div id="log"></div>
+	<div style="display: none">
+      <input id="date" type="date" value="foobar" />
+      <input id="time" type="time" />
+      <input id="datetime" type="datetime" />
+      <input id="month" type="month" />
+      <input id="week" type="week" />
+      <input id="number" type="number" />
+      <input id="range" type="range" />
+      <input id="file" type="file" />
+	</div>
+    <script>
+        var date = document.getElementById("date");
+        var time = document.getElementById("time");
+        var datetime = document.getElementById("datetime");
+        var month = document.getElementById("month");
+        var week = document.getElementById("week");
+        var number = document.getElementById("number");
+        var range = document.getElementById("range");
+        var file = document.getElementById("file");
+
+        test(function () {
+            assert_true("valueAsDate" in datetime, "The datetime.valueAsDate exists");
+        }, "Check if the datetime.valueAsDate exists");
+
+        test(function () {
+            assert_equals(date.value, "", "The date.value");
+        }, "Check if the date.value is set invalid");
+        test(function () {
+            assert_true("valueAsDate" in date, "The date.valueAsDate exists");
+        }, "Check if the date.valueAsDate exists");
+
+        test(function () {
+            assert_true("min" in month, "The month.min exists");
+        }, "Check if the month.min exists");
+        test(function () {
+            assert_true("max" in month, "The month.max exists");
+        }, "Check if the month.max exists");
+        test(function () {
+            assert_true("valueAsDate" in month, "The month.valueAsDate exists");
+        }, "Check if the month.valueAsDate exists");
+
+        test(function () {
+            assert_true("valueAsDate" in week, "The week.valueAsDate exists");
+        }, "Check if the week.valueAsDate exists");
+
+        test(function () {
+            assert_true("valueAsDate" in time, "The time.valueAsDate exists");
+        }, "Check if the time.valueAsDate exists");
+
+        test(function () {
+            assert_equals(number.type, "number", "The type value");
+        }, "Check if the number type support on input element");
+        test(function () {
+            assert_true("validity" in number, "The number.validity exists");
+        }, "Check if the number.validity exists");
+        test(function () {
+            assert_true("min" in number, "The number.min exists");
+        }, "Check if the number.min exists");
+        test(function () {
+            assert_true("max" in number, "The number.max exists");
+        }, "Check if the number.max exists");
+        test(function () {
+            assert_true("valueAsNumber" in number, "The number.valueAsNumber exists");
+        }, "Check if the number.valueAsNumber exists");
+        test(function () {
+            assert_true("stepDown" in number, "The number.stepDown exists");
+        }, "Check if the number.stepDown exists");
+        test(function () {
+            assert_true("stepUp" in number, "The number.stepUp exists");
+        }, "Check if the number.stepUp exists");
+
+        test(function () {
+            assert_true("valueAsNumber" in range, "The range.valueAsNumber exists");
+        }, "Check if the range.valueAsNumber exists");
+
+        test(function () {
+            assert_equals(file.type, "file", "The type value");
+        }, "Check if the file type support on input element");
+        test(function () {
+            assert_true("files" in file, "The file.files exists");
+        }, "Check if the file.files exists");
+    </script>
+  </body>
+</html>

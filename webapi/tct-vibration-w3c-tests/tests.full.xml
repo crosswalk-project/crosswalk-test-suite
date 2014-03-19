@@ -1,0 +1,116 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-stylesheet type="text/xsl"  href="./testcase.xsl"?>
+<test_definition>
+  <suite name="tct-vibration-w3c-tests" launcher="xwalk" category="W3C/HTML5 APIs">
+    <set name="Vibration">
+      <testcase purpose="Check that the vibrate() method is present" type="compliance" status="approved" component="WebAPI/Device/Vibration API" execution_type="auto" priority="P1" id="api-is-present">
+        <description>
+          <test_script_entry>/opt/tct-vibration-w3c-tests/vibration/w3c/api-is-present.html</test_script_entry>
+        </description>
+        <specs>
+          <spec>
+            <spec_assertion element_type="method" element_name="vibrate" interface="Vibration" specification="Vibration API" section="Device" category="Tizen W3C API Specifications"/>
+            <spec_url>http://www.w3.org/TR/vibration/#methods</spec_url>
+            <spec_statement/>
+          </spec>
+        </specs>
+      </testcase>
+      <testcase purpose="If pattern is 0, cancel the pre-existing instance of the processing vibration patterns algorithm" type="compliance" status="ready" component="WebAPI/Device/Vibration API" execution_type="manual" priority="P1" id="cancel-with-0">
+        <description>
+          <test_script_entry>/opt/tct-vibration-w3c-tests/vibration/w3c/cancel-with-0.html</test_script_entry>
+        </description>
+        <specs>
+          <spec>
+            <spec_assertion element_type="method" element_name="vibrate" interface="Vibration" specification="Vibration API" section="Device" category="Tizen W3C API Specifications"/>
+            <spec_url>http://www.w3.org/TR/vibration/#methods</spec_url>
+            <spec_statement/>
+          </spec>
+        </specs>
+      </testcase>
+      <testcase purpose="To check if the device does not vibrate when the argument is []" type="compliance" status="ready" component="WebAPI/Device/Vibration API" execution_type="manual" priority="P1" id="cancel-with-[]">
+        <description>
+          <test_script_entry>/opt/tct-vibration-w3c-tests/vibration/w3c/cancel-with-[].html</test_script_entry>
+        </description>
+        <specs>
+          <spec>
+            <spec_assertion element_type="method" element_name="vibrate" interface="Vibration" specification="Vibration API" section="Device" category="Tizen W3C API Specifications"/>
+            <spec_url>http://www.w3.org/TR/vibration/#methods</spec_url>
+            <spec_statement/>
+          </spec>
+        </specs>
+      </testcase>
+      <testcase purpose="Cancel the pre-existing instance of the processing vibration patterns algorithm, if any" type="compliance" status="ready" component="WebAPI/Device/Vibration API" execution_type="manual" priority="P1" id="cancel-with-new">
+        <description>
+          <test_script_entry>/opt/tct-vibration-w3c-tests/vibration/w3c/cancel-with-new.html</test_script_entry>
+        </description>
+        <specs>
+          <spec>
+            <spec_assertion element_type="method" element_name="vibrate" interface="Vibration" specification="Vibration API" section="Device" category="Tizen W3C API Specifications"/>
+            <spec_url>http://www.w3.org/TR/vibration/#methods</spec_url>
+            <spec_statement/>
+          </spec>
+        </specs>
+      </testcase>
+      <testcase purpose="To check if the device vibrates for 2 second when the argument is long[2000]" type="compliance" status="ready" component="WebAPI/Device/Vibration API" execution_type="manual" priority="P1" id="simple-array">
+        <description>
+          <test_script_entry>/opt/tct-vibration-w3c-tests/vibration/w3c/simple-array.html</test_script_entry>
+        </description>
+        <specs>
+          <spec>
+            <spec_assertion element_type="method" element_name="vibrate" interface="Vibration" specification="Vibration API" section="Device" category="Tizen W3C API Specifications"/>
+            <spec_url>http://www.w3.org/TR/vibration/#methods</spec_url>
+            <spec_statement/>
+          </spec>
+        </specs>
+      </testcase>
+      <testcase purpose="To check if the device vibrates for 2 seconds when the argument is long 2000" type="compliance" status="ready" component="WebAPI/Device/Vibration API" execution_type="manual" priority="P1" id="simple-scalar">
+        <description>
+          <test_script_entry>/opt/tct-vibration-w3c-tests/vibration/w3c/simple-scalar.html</test_script_entry>
+        </description>
+        <specs>
+          <spec>
+            <spec_assertion element_type="method" element_name="vibrate" interface="Vibration" specification="Vibration API" section="Device" category="Tizen W3C API Specifications"/>
+            <spec_url>http://www.w3.org/TR/vibration/#methods</spec_url>
+            <spec_statement/>
+          </spec>
+        </specs>
+      </testcase>
+      <testcase purpose="If the length of pattern is even, then remove the last entry in pattern" type="compliance" status="ready" component="WebAPI/Device/Vibration API" execution_type="manual" priority="P1" id="pattern-array-extra">
+        <description>
+          <test_script_entry>/opt/tct-vibration-w3c-tests/vibration/w3c/pattern-array-extra.html</test_script_entry>
+        </description>
+        <specs>
+          <spec>
+            <spec_assertion element_type="method" element_name="vibrate" interface="Vibration" specification="Vibration API" section="Device" category="Tizen W3C API Specifications"/>
+            <spec_url>http://www.w3.org/TR/vibration/#methods</spec_url>
+            <spec_statement/>
+          </spec>
+        </specs>
+      </testcase>
+      <testcase purpose="To check if the device will vibrate three times for one second, separated by one second intervals" type="compliance" status="ready" component="WebAPI/Device/Vibration API" execution_type="manual" priority="P1" id="pattern-array">
+        <description>
+          <test_script_entry>/opt/tct-vibration-w3c-tests/vibration/w3c/pattern-array.html</test_script_entry>
+        </description>
+        <specs>
+          <spec>
+            <spec_assertion element_type="method" element_name="vibrate" interface="Vibration" specification="Vibration API" section="Device" category="Tizen W3C API Specifications"/>
+            <spec_url>http://www.w3.org/TR/vibration/#methods</spec_url>
+            <spec_statement/>
+          </spec>
+        </specs>
+      </testcase>
+      <testcase purpose="If the device does not provide a vibration mechanism, or it is disabled, the user agent must silently ignore any invocations of the vibrate() method" type="compliance" status="ready" component="WebAPI/Device/Vibration API" execution_type="auto" priority="P1" id="silent-ignore">
+        <description>
+          <test_script_entry>/opt/tct-vibration-w3c-tests/vibration/w3c/silent-ignore.html</test_script_entry>
+        </description>
+        <specs>
+          <spec>
+            <spec_assertion element_type="method" element_name="vibrate" interface="Vibration" specification="Vibration API" section="Device" category="Tizen W3C API Specifications"/>
+            <spec_url>http://www.w3.org/TR/vibration/#methods</spec_url>
+            <spec_statement/>
+          </spec>
+        </specs>
+      </testcase>
+    </set>
+  </suite>
+</test_definition>

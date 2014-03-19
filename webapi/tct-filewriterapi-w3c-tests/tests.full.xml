@@ -1,0 +1,368 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-stylesheet type="text/xsl"  href="./testcase.xsl"?>
+<test_definition>
+  <suite name="tct-filewriterapi-w3c-tests" launcher="xwalk" category="W3C/HTML5 APIs">
+    <set name="FileWriter">
+      <testcase purpose="Check if FileSaver.abort exists" type="compliance" status="approved" component="WebAPI/Storage/File API: Writer (Partial)" execution_type="auto" priority="P1" id="FileSaver_abort_exist">
+        <description>
+          <test_script_entry>/opt/tct-filewriterapi-w3c-tests/filewriterapi/FileSaver_abort_exist.html</test_script_entry>
+        </description>
+        <specs>
+          <spec>
+            <spec_assertion element_type="method" element_name="abort" interface="FileSaver" specification="File API: Writer (Partial)" section="Storage" category="Tizen W3C API Specifications"/>
+            <spec_url>http://www.w3.org/TR/2011/WD-file-writer-api-20110419/#widl-FileSaver-abort</spec_url>
+            <spec_statement/>
+          </spec>
+        </specs>
+      </testcase>
+      <testcase purpose="Check if FileSaver.abort method is normal" type="compliance" status="approved" component="WebAPI/Storage/File API: Writer (Partial)" execution_type="auto" priority="P1" id="FileWriter_abort_normal">
+        <description>
+          <test_script_entry>/opt/tct-filewriterapi-w3c-tests/filewriterapi/FileWriter_abort_normal.html</test_script_entry>
+        </description>
+        <specs>
+          <spec>
+            <spec_assertion element_type="method" element_name="abort" interface="FileWriter" specification="File API: Writer (Partial)" section="Storage" category="Tizen W3C API Specifications"/>
+            <spec_url>http://dev.w3.org/2009/dap/file-system/file-writer.html#widl-FileSaver-abort-void</spec_url>
+            <spec_statement/>
+          </spec>
+        </specs>
+      </testcase>
+      <testcase purpose="Check if the parameter type of BlobBuilder.append is blob, then compare its value with blobBuilder.getBlob().Size which is 4" type="compliance" status="approved" component="WebAPI/Storage/File API: Writer (Partial)" execution_type="auto" priority="P0" id="BlobBuilder_append_blob_size">
+        <description>
+          <test_script_entry>/opt/tct-filewriterapi-w3c-tests/filewriterapi/BlobBuilder_append_blob_size.html</test_script_entry>
+        </description>
+        <specs>
+          <spec>
+            <spec_assertion element_type="method" element_name="append" interface="BlobBuilder" specification="File API: Writer (Partial)" section="Storage" category="Tizen W3C API Specifications"/>
+            <spec_url>http://www.w3.org/TR/2011/WD-file-writer-api-20110419/#widl-BlobBuilder-append</spec_url>
+            <spec_statement/>
+          </spec>
+        </specs>
+      </testcase>
+      <testcase purpose="Check if FileSaver.DONE exists" type="compliance" status="approved" component="WebAPI/Storage/File API: Writer (Partial)" execution_type="auto" priority="P1" id="FileSaver_DONE_exist">
+        <description>
+          <test_script_entry>/opt/tct-filewriterapi-w3c-tests/filewriterapi/FileSaver_DONE_exist.html</test_script_entry>
+        </description>
+        <specs>
+          <spec>
+            <spec_assertion element_type="attribute" element_name="DONE" interface="FileSaver" specification="File API: Writer (Partial)" section="Storage" category="Tizen W3C API Specifications"/>
+            <spec_url>http://www.w3.org/TR/2011/WD-file-writer-api-20110419/#widl-FileSaver-DONE</spec_url>
+            <spec_statement/>
+          </spec>
+        </specs>
+      </testcase>
+      <testcase purpose="Check if FileSaver.error exists" type="compliance" status="approved" component="WebAPI/Storage/File API: Writer (Partial)" execution_type="auto" priority="P1" id="FileSaver_error_exist">
+        <description>
+          <test_script_entry>/opt/tct-filewriterapi-w3c-tests/filewriterapi/FileSaver_error_exist.html</test_script_entry>
+        </description>
+        <specs>
+          <spec>
+            <spec_assertion element_type="attribute" element_name="error" interface="FileSaver" specification="File API: Writer (Partial)" section="Storage" category="Tizen W3C API Specifications"/>
+            <spec_url>http://www.w3.org/TR/2011/WD-file-writer-api-20110419/#widl-FileSaver-error</spec_url>
+            <spec_statement/>
+          </spec>
+        </specs>
+      </testcase>
+      <testcase purpose="Check if FileSaver.INIT exists" type="compliance" status="approved" component="WebAPI/Storage/File API: Writer (Partial)" execution_type="auto" priority="P1" id="FileSaver_INIT_exist">
+        <description>
+          <test_script_entry>/opt/tct-filewriterapi-w3c-tests/filewriterapi/FileSaver_INIT_exist.html</test_script_entry>
+        </description>
+        <specs>
+          <spec>
+            <spec_assertion element_type="attribute" element_name="INIT" interface="FileSaver" specification="File API: Writer (Partial)" section="Storage" category="Tizen W3C API Specifications"/>
+            <spec_url>http://www.w3.org/TR/2011/WD-file-writer-api-20110419/#widl-FileSaver-INIT</spec_url>
+            <spec_statement/>
+          </spec>
+        </specs>
+      </testcase>
+      <testcase purpose="Check if FileWriterSync.length attribute is normal" type="compliance" status="approved" component="WebAPI/Storage/File API: Writer (Partial)" execution_type="auto" priority="P1" id="FileWriterSync_length_normal">
+        <description>
+          <test_script_entry>/opt/tct-filewriterapi-w3c-tests/filewriterapi/FileWriterSync_length_normal.html</test_script_entry>
+        </description>
+        <specs>
+          <spec>
+            <spec_assertion element_type="attribute" element_name="length" interface="FileWriterSync" specification="File API: Writer (Partial)" section="Storage" category="Tizen W3C API Specifications"/>
+            <spec_url>http://www.w3.org/TR/2011/WD-file-writer-api-20110419/#idl-def-FileWriterSync</spec_url>
+            <spec_statement/>
+          </spec>
+        </specs>
+      </testcase>
+      <testcase purpose="Check if FileSaver.onabort exists" type="compliance" status="approved" component="WebAPI/Storage/File API: Writer (Partial)" execution_type="auto" priority="P1" id="FileSaver_onabort_exist">
+        <description>
+          <test_script_entry>/opt/tct-filewriterapi-w3c-tests/filewriterapi/FileSaver_onabort_exist.html</test_script_entry>
+        </description>
+        <specs>
+          <spec>
+            <spec_assertion element_type="eventhandler" element_name="onabort" interface="FileSaver" specification="File API: Writer (Partial)" section="Storage" category="Tizen W3C API Specifications"/>
+            <spec_url>http://www.w3.org/TR/2011/WD-file-writer-api-20110419/#widl-FileSaver-onabort</spec_url>
+            <spec_statement/>
+          </spec>
+        </specs>
+      </testcase>
+      <testcase purpose="Check if FileSaver.onerror attribute exists" type="compliance" status="approved" component="WebAPI/Storage/File API: Writer (Partial)" execution_type="auto" priority="P1" id="FileSaver_onerror_exist">
+        <description>
+          <test_script_entry>/opt/tct-filewriterapi-w3c-tests/filewriterapi/FileSaver_onerror_exist.html</test_script_entry>
+        </description>
+        <specs>
+          <spec>
+            <spec_assertion element_type="eventhandler" element_name="onerror" interface="FileSaver" specification="File API: Writer (Partial)" section="Storage" category="Tizen W3C API Specifications"/>
+            <spec_url>http://www.w3.org/TR/2011/WD-file-writer-api-20110419/#widl-FileSaver-onerror</spec_url>
+            <spec_statement/>
+          </spec>
+        </specs>
+      </testcase>
+      <testcase purpose="Check if FileSaver.onprogress attribute exists" type="compliance" status="approved" component="WebAPI/Storage/File API: Writer (Partial)" execution_type="auto" priority="P1" id="FileSaver_onprogress_exist">
+        <description>
+          <test_script_entry>/opt/tct-filewriterapi-w3c-tests/filewriterapi/FileSaver_onprogress_exist.html</test_script_entry>
+        </description>
+        <specs>
+          <spec>
+            <spec_assertion element_type="eventhandler" element_name="onprogress" interface="FileSaver" specification="File API: Writer (Partial)" section="Storage" category="Tizen W3C API Specifications"/>
+            <spec_url>http://www.w3.org/TR/2011/WD-file-writer-api-20110419/#widl-FileSaver-onprogress</spec_url>
+            <spec_statement/>
+          </spec>
+        </specs>
+      </testcase>
+      <testcase purpose="Check if FileSaver.onwrite attribute exists" type="compliance" status="approved" component="WebAPI/Storage/File API: Writer (Partial)" execution_type="auto" priority="P1" id="FileSaver_onwrite_exist">
+        <description>
+          <test_script_entry>/opt/tct-filewriterapi-w3c-tests/filewriterapi/FileSaver_onwrite_exist.html</test_script_entry>
+        </description>
+        <specs>
+          <spec>
+            <spec_assertion element_type="eventhandler" element_name="onwrite" interface="FileSaver" specification="File API: Writer (Partial)" section="Storage" category="Tizen W3C API Specifications"/>
+            <spec_url>http://www.w3.org/TR/2011/WD-file-writer-api-20110419/#widl-FileSaver-onwrite</spec_url>
+            <spec_statement/>
+          </spec>
+        </specs>
+      </testcase>
+      <testcase purpose="Check if FileSaver.onwriteend attribute exists" type="compliance" status="approved" component="WebAPI/Storage/File API: Writer (Partial)" execution_type="auto" priority="P1" id="FileSaver_onwriteend_exist">
+        <description>
+          <test_script_entry>/opt/tct-filewriterapi-w3c-tests/filewriterapi/FileSaver_onwriteend_exist.html</test_script_entry>
+        </description>
+        <specs>
+          <spec>
+            <spec_assertion element_type="eventhandler" element_name="onwriteend" interface="FileSaver" specification="File API: Writer (Partial)" section="Storage" category="Tizen W3C API Specifications"/>
+            <spec_url>http://www.w3.org/TR/2011/WD-file-writer-api-20110419/#widl-FileSaver-onwriteend</spec_url>
+            <spec_statement/>
+          </spec>
+        </specs>
+      </testcase>
+      <testcase purpose="Check if FileSaver.onwritestart attribute exists" type="compliance" status="approved" component="WebAPI/Storage/File API: Writer (Partial)" execution_type="auto" priority="P1" id="FileSaver_onwritestart_exist">
+        <description>
+          <test_script_entry>/opt/tct-filewriterapi-w3c-tests/filewriterapi/FileSaver_onwritestart_exist.html</test_script_entry>
+        </description>
+        <specs>
+          <spec>
+            <spec_assertion element_type="eventhandler" element_name="onwritestart" interface="FileSaver" specification="File API: Writer (Partial)" section="Storage" category="Tizen W3C API Specifications"/>
+            <spec_url>http://www.w3.org/TR/2011/WD-file-writer-api-20110419/#widl-FileSaver-onwritestart</spec_url>
+            <spec_statement/>
+          </spec>
+        </specs>
+      </testcase>
+      <testcase purpose="Check if FileWriterSync.position attribute is normal" type="compliance" status="approved" component="WebAPI/Storage/File API: Writer (Partial)" execution_type="auto" priority="P1" id="FileWriterSync_position_normal">
+        <description>
+          <test_script_entry>/opt/tct-filewriterapi-w3c-tests/filewriterapi/FileWriterSync_position_normal.html</test_script_entry>
+        </description>
+        <specs>
+          <spec>
+            <spec_assertion element_type="attribute" element_name="position" interface="FileWriterSync" specification="File API: Writer (Partial)" section="Storage" category="Tizen W3C API Specifications"/>
+            <spec_url>http://www.w3.org/TR/2011/WD-file-writer-api-20110419/#idl-def-FileWriterSync</spec_url>
+            <spec_statement/>
+          </spec>
+        </specs>
+      </testcase>
+      <testcase purpose="Check if FileSaver.readyState attribute exists" type="compliance" status="approved" component="WebAPI/Storage/File API: Writer (Partial)" execution_type="auto" priority="P1" id="FileSaver_readyState_exist">
+        <description>
+          <test_script_entry>/opt/tct-filewriterapi-w3c-tests/filewriterapi/FileSaver_readyState_exist.html</test_script_entry>
+        </description>
+        <specs>
+          <spec>
+            <spec_assertion element_type="attribute" element_name="readyState" interface="FileSaver" specification="File API: Writer (Partial)" section="Storage" category="Tizen W3C API Specifications"/>
+            <spec_url>http://www.w3.org/TR/2011/WD-file-writer-api-20110419/#widl-FileSaver-readyState</spec_url>
+            <spec_statement/>
+          </spec>
+        </specs>
+      </testcase>
+      <testcase purpose="Check if FileWriterSync.seek method is normal" type="compliance" status="approved" component="WebAPI/Storage/File API: Writer (Partial)" execution_type="auto" priority="P1" id="FileWriterSync_seek_normal">
+        <description>
+          <test_script_entry>/opt/tct-filewriterapi-w3c-tests/filewriterapi/FileWriterSync_seek_normal.html</test_script_entry>
+        </description>
+        <specs>
+          <spec>
+            <spec_assertion element_type="method" element_name="seek" interface="FileWriterSync" specification="File API: Writer (Partial)" section="Storage" category="Tizen W3C API Specifications"/>
+            <spec_url>http://www.w3.org/TR/2011/WD-file-writer-api-20110419/#idl-def-FileWriterSync</spec_url>
+            <spec_statement/>
+          </spec>
+        </specs>
+      </testcase>
+      <testcase purpose="Check if FileSaver.seek method is normal" type="compliance" status="approved" component="WebAPI/Storage/File API: Writer (Partial)" execution_type="auto" priority="P1" id="FileWriter_seek_normal">
+        <description>
+          <test_script_entry>/opt/tct-filewriterapi-w3c-tests/filewriterapi/FileWriter_seek_normal.html</test_script_entry>
+        </description>
+        <specs>
+          <spec>
+            <spec_assertion element_type="method" element_name="seek" interface="FileWriter" specification="File API: Writer (Partial)" section="Storage" category="Tizen W3C API Specifications"/>
+            <spec_url>http://dev.w3.org/2009/dap/file-system/file-writer.html#widl-FileWriter-seek-void-long-long-offset</spec_url>
+            <spec_statement/>
+          </spec>
+        </specs>
+      </testcase>
+      <testcase purpose="Check if FileWriterSync.truncate method is normal" type="compliance" status="approved" component="WebAPI/Storage/File API: Writer (Partial)" execution_type="auto" priority="P1" id="FileWriterSync_truncate_normal">
+        <description>
+          <test_script_entry>/opt/tct-filewriterapi-w3c-tests/filewriterapi/FileWriterSync_truncate_normal.html</test_script_entry>
+        </description>
+        <specs>
+          <spec>
+            <spec_assertion element_type="method" element_name="truncate" interface="FileWriterSync" specification="File API: Writer (Partial)" section="Storage" category="Tizen W3C API Specifications"/>
+            <spec_url>http://www.w3.org/TR/2011/WD-file-writer-api-20110419/#idl-def-FileWriterSync</spec_url>
+            <spec_statement/>
+          </spec>
+        </specs>
+      </testcase>
+      <testcase purpose="Check if FileWriter.truncate method is normal" type="compliance" status="approved" component="WebAPI/Storage/File API: Writer (Partial)" execution_type="auto" priority="P1" id="FileWriter_truncate_normal">
+        <description>
+          <test_script_entry>/opt/tct-filewriterapi-w3c-tests/filewriterapi/FileWriter_truncate_normal.html</test_script_entry>
+        </description>
+        <specs>
+          <spec>
+            <spec_assertion element_type="method" element_name="truncate" interface="FileWriter" specification="File API: Writer (Partial)" section="Storage" category="Tizen W3C API Specifications"/>
+            <spec_url>http://dev.w3.org/2009/dap/file-system/file-writer.html#widl-FileWriter-truncate-void-unsigned-long-long-size</spec_url>
+            <spec_statement/>
+          </spec>
+        </specs>
+      </testcase>
+      <testcase purpose="Check if FileWriterSync.write method is normal" type="compliance" status="approved" component="WebAPI/Storage/File API: Writer (Partial)" execution_type="auto" priority="P1" id="FileWriterSync_write_normal">
+        <description>
+          <test_script_entry>/opt/tct-filewriterapi-w3c-tests/filewriterapi/FileWriterSync_write_normal.html</test_script_entry>
+        </description>
+        <specs>
+          <spec>
+            <spec_assertion element_type="method" element_name="write" interface="FileWriterSync" specification="File API: Writer (Partial)" section="Storage" category="Tizen W3C API Specifications"/>
+            <spec_url>http://www.w3.org/TR/2011/WD-file-writer-api-20110419/#idl-def-FileWriterSync</spec_url>
+            <spec_statement/>
+          </spec>
+        </specs>
+      </testcase>
+      <testcase purpose="Check if FileWriter.write method is normal" type="compliance" status="approved" component="WebAPI/Storage/File API: Writer (Partial)" execution_type="auto" priority="P0" id="FileWriter_write_normal">
+        <description>
+          <test_script_entry>/opt/tct-filewriterapi-w3c-tests/filewriterapi/FileWriter_write_normal.html</test_script_entry>
+        </description>
+        <specs>
+          <spec>
+            <spec_assertion element_type="method" element_name="write" interface="FileWriter" specification="File API: Writer (Partial)" section="Storage" category="Tizen W3C API Specifications"/>
+            <spec_url>http://dev.w3.org/2009/dap/file-system/file-writer.html#widl-FileWriter-write-void-Blob-data</spec_url>
+            <spec_statement/>
+          </spec>
+        </specs>
+      </testcase>
+      <testcase purpose="Check if FileSaver.WRITING exists" type="compliance" status="approved" component="WebAPI/Storage/File API: Writer (Partial)" execution_type="auto" priority="P1" id="FileSaver_WRITING_exist">
+        <description>
+          <test_script_entry>/opt/tct-filewriterapi-w3c-tests/filewriterapi/FileSaver_WRITING_exist.html</test_script_entry>
+        </description>
+        <specs>
+          <spec>
+            <spec_assertion element_type="attribute" element_name="WRITING" interface="FileSaver" specification="File API: Writer (Partial)" section="Storage" category="Tizen W3C API Specifications"/>
+            <spec_url>http://www.w3.org/TR/2011/WD-file-writer-api-20110419/#widl-FileSaver-WRITING</spec_url>
+            <spec_statement/>
+          </spec>
+        </specs>
+      </testcase>
+      <testcase purpose="Check if BlobBuilder constructor must be visible when the script's global object is a Window object" type="compliance" status="approved" component="WebAPI/Storage/File API: Writer (Partial)" execution_type="auto" priority="P3" id="BlobBuilder_constructor_visible_in_window">
+        <description>
+          <test_script_entry>/opt/tct-filewriterapi-w3c-tests/filewriterapi/BlobBuilder_constructor_visible_in_window.html</test_script_entry>
+        </description>
+        <specs>
+          <spec>
+            <spec_assertion usage="true" interface="BlobBuilder" specification="File API: Writer (Partial)" section="Storage" category="Tizen W3C API Specifications"/>
+            <spec_url>http://www.w3.org/TR/2011/WD-file-writer-api-20110419/#idl-def-BlobBuilder</spec_url>
+            <spec_statement/>
+          </spec>
+        </specs>
+      </testcase>
+      <testcase purpose="Check if BlobBuilder.getBlob method set 'text/plain', then compare blobBuilder.getBlob().type is 'text/plain'" type="compliance" status="approved" component="WebAPI/Storage/File API: Writer (Partial)" execution_type="auto" priority="P2" id="BlobBuilder_getBlob_string_type">
+        <description>
+          <test_script_entry>/opt/tct-filewriterapi-w3c-tests/filewriterapi/BlobBuilder_getBlob_string_type.html</test_script_entry>
+        </description>
+        <specs>
+          <spec>
+            <spec_assertion element_type="method" element_name="getBlob" interface="BlobBuilder" specification="File API: Writer (Partial)" section="Storage" category="Tizen W3C API Specifications"/>
+            <spec_url>http://www.w3.org/TR/2011/WD-file-writer-api-20110419/#widl-BlobBuilder-getBlob</spec_url>
+            <spec_statement/>
+          </spec>
+        </specs>
+      </testcase>
+      <testcase purpose="Check if the type of const DONE is number" type="compliance" status="approved" component="WebAPI/Storage/File API: Writer (Partial)" execution_type="auto" priority="P2" id="FileSaver_const_DONE_type">
+        <description>
+          <test_script_entry>/opt/tct-filewriterapi-w3c-tests/filewriterapi/FileSaver_const_DONE_type.html</test_script_entry>
+        </description>
+        <specs>
+          <spec>
+            <spec_assertion element_type="attribute" element_name="DONE" interface="FileSaver" specification="File API: Writer (Partial)" section="Storage" category="Tizen W3C API Specifications"/>
+            <spec_url>http://www.w3.org/TR/2011/WD-file-writer-api-20110419/#widl-FileSaver-DONE</spec_url>
+            <spec_statement/>
+          </spec>
+        </specs>
+      </testcase>
+      <testcase purpose="Check if the type of const INIT is number" type="compliance" status="approved" component="WebAPI/Storage/File API: Writer (Partial)" execution_type="auto" priority="P2" id="FileSaver_const_INIT_type">
+        <description>
+          <test_script_entry>/opt/tct-filewriterapi-w3c-tests/filewriterapi/FileSaver_const_INIT_type.html</test_script_entry>
+        </description>
+        <specs>
+          <spec>
+            <spec_assertion element_type="attribute" element_name="INIT" interface="FileSaver" specification="File API: Writer (Partial)" section="Storage" category="Tizen W3C API Specifications"/>
+            <spec_url>http://www.w3.org/TR/2011/WD-file-writer-api-20110419/#widl-FileSaver-INIT</spec_url>
+            <spec_statement/>
+          </spec>
+        </specs>
+      </testcase>
+      <testcase purpose="Check if the type of FileSaver.error is FileError" type="compliance" status="approved" component="WebAPI/Storage/File API: Writer (Partial)" execution_type="auto" priority="P2" id="FileSaver_error_type">
+        <description>
+          <test_script_entry>/opt/tct-filewriterapi-w3c-tests/filewriterapi/FileSaver_error_type.html</test_script_entry>
+        </description>
+        <specs>
+          <spec>
+            <spec_assertion element_type="attribute" element_name="error" interface="FileSaver" specification="File API: Writer (Partial)" section="Storage" category="Tizen W3C API Specifications"/>
+            <spec_url>http://dev.w3.org/2009/dap/file-system/file-writer.html#idl-def-FileSaver</spec_url>
+            <spec_statement/>
+          </spec>
+        </specs>
+      </testcase>
+      <testcase purpose="Ckeck if the event type of FileSaver.onabort is abort" type="compliance" status="approved" component="WebAPI/Storage/File API: Writer (Partial)" execution_type="auto" priority="P2" id="FileSaver_onabort_event_type">
+        <description>
+          <test_script_entry>/opt/tct-filewriterapi-w3c-tests/filewriterapi/FileSaver_onabort_event_type.html</test_script_entry>
+        </description>
+        <specs>
+          <spec>
+            <spec_assertion element_type="eventhandler" element_name="onabort" interface="FileSaver" specification="File API: Writer (Partial)" section="Storage" category="Tizen W3C API Specifications"/>
+            <spec_url>http://www.w3.org/TR/2011/WD-file-writer-api-20110419/#widl-FileSaver-onabort</spec_url>
+            <spec_statement/>
+          </spec>
+        </specs>
+      </testcase>
+      <testcase purpose="Check if the value of FileWriter.length attribute is normal" type="compliance" status="approved" component="WebAPI/Storage/File API: Writer (Partial)" execution_type="auto" priority="P2" id="FileWriter_length_normal">
+        <description>
+          <test_script_entry>/opt/tct-filewriterapi-w3c-tests/filewriterapi/FileWriter_length_normal.html</test_script_entry>
+        </description>
+        <specs>
+          <spec>
+            <spec_assertion element_type="attribute" element_name="length" interface="FileWriter" specification="File API: Writer (Partial)" section="Storage" category="Tizen W3C API Specifications"/>
+            <spec_url>http://www.w3.org/TR/2011/WD-file-writer-api-20110419/#widl-FileWriter-length</spec_url>
+            <spec_statement/>
+          </spec>
+        </specs>
+      </testcase>
+      <testcase purpose="Check if the value of FileWriter.position attribute is normal" type="compliance" status="approved" component="WebAPI/Storage/File API: Writer (Partial)" execution_type="auto" priority="P2" id="FileWriter_position_normal">
+        <description>
+          <test_script_entry>/opt/tct-filewriterapi-w3c-tests/filewriterapi/FileWriter_position_normal.html</test_script_entry>
+        </description>
+        <specs>
+          <spec>
+            <spec_assertion element_type="attribute" element_name="position" interface="FileWriter" specification="File API: Writer (Partial)" section="Storage" category="Tizen W3C API Specifications"/>
+            <spec_url>http://www.w3.org/TR/2011/WD-file-writer-api-20110419/#widl-FileWriter-position</spec_url>
+            <spec_statement/>
+          </spec>
+        </specs>
+      </testcase>
+    </set>
+  </suite>
+</test_definition>

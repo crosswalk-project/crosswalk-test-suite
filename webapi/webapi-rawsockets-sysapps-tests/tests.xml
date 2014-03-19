@@ -1,0 +1,301 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-stylesheet type="text/xsl" href="./testcase.xsl"?>
+<test_definition>
+  <suite category="W3C/HTML5 APIs" launcher="xwalk" name="webapi-rawsockets-sysapps-tests">
+    <set name="idlharness">
+      <testcase component="WebAPI/System-level APIs/Raw Sockets" execution_type="auto" id="RawSockets_idlhaness_test" purpose="This test validates the WebIDL included in the Raw Sockets specification">
+        <description>
+          <test_script_entry>/opt/webapi-rawsockets-sysapps-tests/rawsockets/RawSockets_idlharness.html</test_script_entry>
+        </description>
+      </testcase>
+    </set>
+    <set name="UDPSocket">
+    </set>
+    <set name="TCPSocket1">
+      <testcase component="WebAPI/System-level APIs/Raw Sockets" execution_type="auto" id="TCPSocket_addressReuse_default" purpose="Check if the default value of TCPSocket.addressReuse is true">
+        <description>
+          <test_script_entry>/opt/webapi-rawsockets-sysapps-tests/rawsockets/TCPSocket_attribute.html?total_num=8&amp;amp;locator_key=id&amp;amp;value=1</test_script_entry>
+        </description>
+      </testcase>
+      <testcase component="WebAPI/System-level APIs/Raw Sockets" execution_type="auto" id="TCPSocket_addressReuse_false" purpose="Check if the value of TCPSocket.addressReuse can be set by the options argument in the constructor">
+        <description>
+          <test_script_entry>/opt/webapi-rawsockets-sysapps-tests/rawsockets/TCPSocket_attribute.html?total_num=8&amp;amp;locator_key=id&amp;amp;value=2</test_script_entry>
+        </description>
+      </testcase>
+      <testcase component="WebAPI/System-level APIs/Raw Sockets" execution_type="auto" id="TCPSocket_set_valid_localAddress" purpose="Check if TCPSocket.localAddress can be set by the constructors options argument s valid localAddress member">
+        <description>
+          <test_script_entry>/opt/webapi-rawsockets-sysapps-tests/rawsockets/TCPSocket_attribute.html?total_num=8&amp;amp;locator_key=id&amp;amp;value=3</test_script_entry>
+        </description>
+      </testcase>
+      <testcase component="WebAPI/System-level APIs/Raw Sockets" execution_type="auto" id="TCPSocket_set_valid_localPort" purpose="Check if TCPSocket.localPort can be set by the constructors options arguments valid localPort member">
+        <description>
+          <test_script_entry>/opt/webapi-rawsockets-sysapps-tests/rawsockets/TCPSocket_attribute.html?total_num=8&amp;amp;locator_key=id&amp;amp;value=4</test_script_entry>
+        </description>
+      </testcase>
+      <testcase component="WebAPI/System-level APIs/Raw Sockets" execution_type="auto" id="TCPSocket_noDelay_default" purpose="Check if the default value of TCPSocket.noDelay is true">
+        <description>
+          <test_script_entry>/opt/webapi-rawsockets-sysapps-tests/rawsockets/TCPSocket_attribute.html?total_num=8&amp;amp;locator_key=id&amp;amp;value=5</test_script_entry>
+        </description>
+      </testcase>
+      <testcase component="WebAPI/System-level APIs/Raw Sockets" execution_type="auto" id="TCPSocket_set_noDelay" purpose="Check if TCPSocket.noDelay can be set to false">
+        <description>
+          <test_script_entry>/opt/webapi-rawsockets-sysapps-tests/rawsockets/TCPSocket_attribute.html?total_num=8&amp;amp;locator_key=id&amp;amp;value=6</test_script_entry>
+        </description>
+      </testcase>
+      <testcase component="WebAPI/System-level APIs/Raw Sockets" execution_type="auto" id="TCPSocket_localAddress_exception" purpose="Check if TCPSocket throw a DOM exception invoked with the constructors options arguments invalid localAddress member">
+        <description>
+          <test_script_entry>/opt/webapi-rawsockets-sysapps-tests/rawsockets/TCPSocket_attribute.html?total_num=8&amp;amp;locator_key=id&amp;amp;value=7</test_script_entry>
+        </description>
+      </testcase>
+      <testcase component="WebAPI/System-level APIs/Raw Sockets" execution_type="auto" id="TCPSocket_remoteAddress_exception" purpose="Check if TCPSocket throw a DOM exception invoked with the constructors options arguments invalid remoteAddress member">
+        <description>
+          <test_script_entry>/opt/webapi-rawsockets-sysapps-tests/rawsockets/TCPSocket_attribute.html?total_num=8&amp;amp;locator_key=id&amp;amp;value=8</test_script_entry>
+        </description>
+      </testcase>
+    </set>
+    <set name="TCPSocket2">
+      <testcase component="WebAPI/System-level APIs/Raw Sockets" execution_type="auto" id="TCPSocket_onclose_with_close" purpose="Check if set up the onclose event successful for TCPSocket using the type close">
+        <description>
+          <test_script_entry>/opt/webapi-rawsockets-sysapps-tests/rawsockets/TCPSocket_event_close.html</test_script_entry>
+        </description>
+      </testcase>
+      <testcase component="WebAPI/System-level APIs/Raw Sockets" execution_type="auto" id="TCPSocket_onerror_with_error" purpose="Check if set up the onerror event successful for TCPSocket using the type error">
+        <description>
+          <test_script_entry>/opt/webapi-rawsockets-sysapps-tests/rawsockets/TCPSocket_event_error.html</test_script_entry>
+        </description>
+      </testcase>
+      <testcase component="WebAPI/System-level APIs/Raw Sockets" execution_type="auto" id="TCPSocket_onopen_with_open" purpose="Check if set up the onopen event successful for TCPSocket using the type open">
+        <description>
+          <test_script_entry>/opt/webapi-rawsockets-sysapps-tests/rawsockets/TCPSocket_event_open.html</test_script_entry>
+        </description>
+      </testcase>
+      <testcase component="WebAPI/System-level APIs/Raw Sockets" execution_type="auto" id="TCPSocket_onclose_event" purpose="Check if onclose event can be fired when the connection to the server has been closed">
+        <description>
+          <test_script_entry>/opt/webapi-rawsockets-sysapps-tests/rawsockets/TCPSocket_event_onclose.html</test_script_entry>
+        </description>
+      </testcase>
+    </set>
+    <set name="TCPSocket3">
+      <testcase component="WebAPI/System-level APIs/Raw Sockets" execution_type="auto" id="TCPSocket_localPort_absent" purpose="Check if bind the socket to an ephemeral local port decided by the system and set the localPort attribute to this port when localPort is absent">
+        <description>
+          <test_script_entry>/opt/webapi-rawsockets-sysapps-tests/rawsockets/TCPSocket_localPort_absent.html</test_script_entry>
+        </description>
+      </testcase>
+      <testcase component="WebAPI/System-level APIs/Raw Sockets" execution_type="auto" id="TCPSocket_localAddress_absent" purpose="Check if use the routing table to determine the local interface(s) that can be used to connect to the selected remoteAddress when localAddress is absent">
+        <description>
+          <test_script_entry>/opt/webapi-rawsockets-sysapps-tests/rawsockets/TCPSocket_localAddress_absent.html</test_script_entry>
+        </description>
+      </testcase>
+      <testcase component="WebAPI/System-level APIs/Raw Sockets" execution_type="auto" id="TCPSocket_ondata_DOMString" purpose="Check if ondata event can be fired when DOMString has been received and was read">
+        <description>
+          <test_script_entry>/opt/webapi-rawsockets-sysapps-tests/rawsockets/TCPSocket_event_ondata_DOMString.html</test_script_entry>
+        </description>
+      </testcase>
+      <testcase component="WebAPI/System-level APIs/Raw Sockets" execution_type="auto" id="TCPSocket_ondata_Blob" purpose="Check if ondata event can be fired when Blob has been received and was read">
+        <description>
+          <test_script_entry>/opt/webapi-rawsockets-sysapps-tests/rawsockets/TCPSocket_event_ondata_Blob.html</test_script_entry>
+        </description>
+      </testcase>
+      <testcase component="WebAPI/System-level APIs/Raw Sockets" execution_type="auto" id="TCPSocket_ondata_ArrayBufferView" purpose="Check if ondata event can be fired when ArrayBufferView has been received and was read">
+        <description>
+          <test_script_entry>/opt/webapi-rawsockets-sysapps-tests/rawsockets/TCPSocket_event_ondata_ArrayBufferView.html</test_script_entry>
+        </description>
+      </testcase>
+      <testcase component="WebAPI/System-level APIs/Raw Sockets" execution_type="auto" id="TCPSocket_ondata_ArrayBuffer" purpose="Check if ondata event can be fired when ArrayBuffer has been received and was read">
+        <description>
+          <test_script_entry>/opt/webapi-rawsockets-sysapps-tests/rawsockets/TCPSocket_event_ondata_ArrayBuffer.html</test_script_entry>
+        </description>
+      </testcase>
+    </set>
+    <set name="TCPSocket4">
+      <testcase component="WebAPI/System-level APIs/Raw Sockets" execution_type="auto" id="TCPSocket_onerror_event" purpose="Check if onerror event can be fired when there is an error">
+        <description>
+          <test_script_entry>/opt/webapi-rawsockets-sysapps-tests/rawsockets/TCPSocket_event_onerror.html</test_script_entry>
+        </description>
+      </testcase>
+      <testcase component="WebAPI/System-level APIs/Raw Sockets" execution_type="auto" id="TCPSocket_onopen_event" purpose="Check if onopen event when the socket is open and the connection to the server has been established">
+        <description>
+          <test_script_entry>/opt/webapi-rawsockets-sysapps-tests/rawsockets/TCPSocket_event_onopen.html</test_script_entry>
+        </description>
+      </testcase>
+      <testcase component="WebAPI/System-level APIs/Raw Sockets" execution_type="auto" id="TCPSocket_readyState_opening" purpose="Check if the value of readyState is opening when the socket is in opening state">
+        <description>
+          <test_script_entry>/opt/webapi-rawsockets-sysapps-tests/rawsockets/TCPSocket_readystate_opening.html</test_script_entry>
+        </description>
+      </testcase>
+      <testcase component="WebAPI/System-level APIs/Raw Sockets" execution_type="auto" id="TCPSocket_readyState_open" purpose="Check if the value of readyState is open when the socket is in open state">
+        <description>
+          <test_script_entry>/opt/webapi-rawsockets-sysapps-tests/rawsockets/TCPSocket_readystate_open.html</test_script_entry>
+        </description>
+      </testcase>
+    </set>
+    <set name="TCPSocket5">
+      <testcase component="WebAPI/System-level APIs/Raw Sockets" execution_type="auto" id="TCPSocket_readyState_closing" purpose="Check if the value of readyState is closing when the socket is in closing state">
+        <description>
+          <test_script_entry>/opt/webapi-rawsockets-sysapps-tests/rawsockets/TCPSocket_readystate_closing.html</test_script_entry>
+        </description>
+      </testcase>
+      <testcase component="WebAPI/System-level APIs/Raw Sockets" execution_type="auto" id="TCPSocket_readyState_halfclosed" purpose="Check if the value of readyState is halfclosed when the socket is in halfclosed state">
+        <description>
+          <test_script_entry>/opt/webapi-rawsockets-sysapps-tests/rawsockets/TCPSocket_readystate_halfclosed.html</test_script_entry>
+        </description>
+      </testcase>
+      <testcase component="WebAPI/System-level APIs/Raw Sockets" execution_type="auto" id="TCPSocket_readyState_closed" purpose="Check if the value of readyState is closed when the socket is in closed state">
+        <description>
+          <test_script_entry>/opt/webapi-rawsockets-sysapps-tests/rawsockets/TCPSocket_readystate_closed.html</test_script_entry>
+        </description>
+      </testcase>
+      <testcase component="WebAPI/System-level APIs/Raw Sockets" execution_type="auto" id="TCPSocket_suspend_method" purpose="Check if pause reading incoming TCP data and invocations of the ondata handler until resume is called.">
+        <description>
+          <test_script_entry>/opt/webapi-rawsockets-sysapps-tests/rawsockets/TCPSocket_method_suspend.html</test_script_entry>
+        </description>
+      </testcase>
+      <testcase component="WebAPI/System-level APIs/Raw Sockets" execution_type="auto" id="TCPSocket_close_method" purpose="Check if the value of readyState is closed after calling close method">
+        <description>
+          <test_script_entry>/opt/webapi-rawsockets-sysapps-tests/rawsockets/TCPSocket_method_close.html</test_script_entry>
+        </description>
+      </testcase>
+      <testcase component="WebAPI/System-level APIs/Raw Sockets" execution_type="auto" id="TCPSocket_halfclose_method" purpose="Check if can not send data but can receive data after calling halfclose method">
+        <description>
+          <test_script_entry>/opt/webapi-rawsockets-sysapps-tests/rawsockets/TCPSocket_method_halfclose.html</test_script_entry>
+        </description>
+      </testcase>
+      <testcase component="WebAPI/System-level APIs/Raw Sockets" execution_type="auto" id="TCPSocket_resume_method" purpose="Check if resume reading incoming TCP data and invoking ondata as usual after calling resume method">
+        <description>
+          <test_script_entry>/opt/webapi-rawsockets-sysapps-tests/rawsockets/TCPSocket_method_resume.html</test_script_entry>
+        </description>
+      </testcase>
+    </set>
+    <set name="TCPSocket6">
+      <testcase component="WebAPI/System-level APIs/Raw Sockets" execution_type="auto" id="TCPSocket_send_DOMString" purpose="Check if can send DOMString using send method">
+        <description>
+          <test_script_entry>/opt/webapi-rawsockets-sysapps-tests/rawsockets/TCPSocket_method_send_DOMString.html</test_script_entry>
+        </description>
+      </testcase>
+      <testcase component="WebAPI/System-level APIs/Raw Sockets" execution_type="auto" id="TCPSocket_send_Blob" purpose="Check if can send Blob object using send method">
+        <description>
+          <test_script_entry>/opt/webapi-rawsockets-sysapps-tests/rawsockets/TCPSocket_method_send_Blob.html</test_script_entry>
+        </description>
+      </testcase>
+      <testcase component="WebAPI/System-level APIs/Raw Sockets" execution_type="auto" id="TCPSocket_send_ArrayBufferView" purpose="Check if can send ArrayBufferView using send method">
+        <description>
+          <test_script_entry>/opt/webapi-rawsockets-sysapps-tests/rawsockets/TCPSocket_method_send_ArrayBufferView.html</test_script_entry>
+        </description>
+      </testcase>
+      <testcase component="WebAPI/System-level APIs/Raw Sockets" execution_type="auto" id="TCPSocket_send_ArrayBuffer" purpose="Check if can send ArrayBuffer using send method">
+        <description>
+          <test_script_entry>/opt/webapi-rawsockets-sysapps-tests/rawsockets/TCPSocket_method_send_ArrayBuffer.html</test_script_entry>
+        </description>
+      </testcase>
+    </set>
+    <set name="TCPSocket7">
+      <testcase component="WebAPI/System-level APIs/Raw Sockets" execution_type="auto" id="TCPSocket_bufferedAmount_zero" purpose="Check if the value of TCPSocket.bufferedAmount is zero without sending anything when connectted">
+        <description>
+          <test_script_entry>/opt/webapi-rawsockets-sysapps-tests/rawsockets/TCPSocket_bufferedAmount_zero.html</test_script_entry>
+        </description>
+      </testcase>
+      <testcase component="WebAPI/System-level APIs/Raw Sockets" execution_type="auto" id="TCPSocket_bufferedAmount_DOMString" purpose="Check if the value of TCPSocket.bufferedAmount is the number of bytes which have previously been buffered by calls to the send methods of this socket with DOMString">
+        <description>
+          <test_script_entry>/opt/webapi-rawsockets-sysapps-tests/rawsockets/TCPSocket_bufferedAmount_DOMString.html</test_script_entry>
+        </description>
+      </testcase>
+      <testcase component="WebAPI/System-level APIs/Raw Sockets" execution_type="auto" id="TCPSocket_bufferedAmount_Blob" purpose="Check if the value of TCPSocket.bufferedAmount is the number of bytes which have previously been buffered by calls to the send methods of this socket with Blob">
+        <description>
+          <test_script_entry>/opt/webapi-rawsockets-sysapps-tests/rawsockets/TCPSocket_bufferedAmount_Blob.html</test_script_entry>
+        </description>
+      </testcase>
+      <testcase component="WebAPI/System-level APIs/Raw Sockets" execution_type="auto" id="TCPSocket_bufferedAmount_ArrayBufferView" purpose="Check if the value of TCPSocket.bufferedAmount is the number of bytes which have previously been buffered by calls to the send methods of this socket with ArrayBufferView">
+        <description>
+          <test_script_entry>/opt/webapi-rawsockets-sysapps-tests/rawsockets/TCPSocket_bufferedAmount_ArrayBufferView.html</test_script_entry>
+        </description>
+      </testcase>
+      <testcase component="WebAPI/System-level APIs/Raw Sockets" execution_type="auto" id="TCPSocket_bufferedAmount_ArrayBuffer" purpose="Check if the value of TCPSocket.bufferedAmount is the number of bytes which have previously been buffered by calls to the send methods of this socket with ArrayBuffer">
+        <description>
+          <test_script_entry>/opt/webapi-rawsockets-sysapps-tests/rawsockets/TCPSocket_bufferedAmount_ArrayBuffer.html</test_script_entry>
+        </description>
+      </testcase>
+    </set>
+    <set name="TCPServerSocket">
+      <testcase component="WebAPI/System-level APIs/Raw Sockets" execution_type="auto" id="TCPServerSocket_addressReuse_default" purpose="Check if the default value of TCPServerSocket.addressReuse is true">
+        <description>
+          <test_script_entry>/opt/webapi-rawsockets-sysapps-tests/rawsockets/TCPServerSocket_attribute.html?total_num=6&amp;amp;locator_key=id&amp;amp;value=1</test_script_entry>
+        </description>
+      </testcase>
+      <testcase component="WebAPI/System-level APIs/Raw Sockets" execution_type="auto" id="TCPServerSocket_addressReuse_false" purpose="Check if the value of TCPServerSocket.addressReuse can be set by the options argument in the constructor">
+        <description>
+          <test_script_entry>/opt/webapi-rawsockets-sysapps-tests/rawsockets/TCPServerSocket_attribute.html?total_num=6&amp;amp;locator_key=id&amp;amp;value=2</test_script_entry>
+        </description>
+      </testcase>
+      <testcase component="WebAPI/System-level APIs/Raw Sockets" execution_type="auto" id="TCPServerSocket_localAddress_null" purpose="Check if the value of TCPServerSocket.localAddress is null when not set">
+        <description>
+          <test_script_entry>/opt/webapi-rawsockets-sysapps-tests/rawsockets/TCPServerSocket_attribute.html?total_num=6&amp;amp;locator_key=id&amp;amp;value=3</test_script_entry>
+        </description>
+      </testcase>
+      <testcase component="WebAPI/System-level APIs/Raw Sockets" execution_type="auto" id="TCPServerSocket_set_valid_localAddress" purpose="Check if TCPServerSocket.localAddress can be set by the constructors options arguments valid localAddress member">
+        <description>
+          <test_script_entry>/opt/webapi-rawsockets-sysapps-tests/rawsockets/TCPServerSocket_attribute.html?total_num=6&amp;amp;locator_key=id&amp;amp;value=4</test_script_entry>
+        </description>
+      </testcase>
+      <testcase component="WebAPI/System-level APIs/Raw Sockets" execution_type="auto" id="TCPServerSocket_localPort_null" purpose="Check if the value of TCPServerSocket.localPort is null when not set">
+        <description>
+          <test_script_entry>/opt/webapi-rawsockets-sysapps-tests/rawsockets/TCPServerSocket_attribute.html?total_num=6&amp;amp;locator_key=id&amp;amp;value=5</test_script_entry>
+        </description>
+      </testcase>
+      <testcase component="WebAPI/System-level APIs/Raw Sockets" execution_type="auto" id="TCPServerSocket_set_valid_localPort" purpose="Check if TCPServerSocket.localPort can be set by the constructors options arguments valid localPort member">
+        <description>
+          <test_script_entry>/opt/webapi-rawsockets-sysapps-tests/rawsockets/TCPServerSocket_attribute.html?total_num=6&amp;amp;locator_key=id&amp;amp;value=6</test_script_entry>
+        </description>
+      </testcase>
+      <testcase component="WebAPI/System-level APIs/Raw Sockets" execution_type="auto" id="TCPServerSocket_onconnect_with_connect" purpose="Check if set up the onconnect event successful for TCPServerSocket using the type connect">
+        <description>
+          <test_script_entry>/opt/webapi-rawsockets-sysapps-tests/rawsockets/TCPServerSocket_event_connect.html</test_script_entry>
+        </description>
+      </testcase>
+      <testcase component="WebAPI/System-level APIs/Raw Sockets" execution_type="auto" id="TCPServerSocket_onopen_with_open" purpose="Check if set up the onopen event successful for TCPServerSocket using the type open">
+        <description>
+          <test_script_entry>/opt/webapi-rawsockets-sysapps-tests/rawsockets/TCPServerSocket_event_open.html</test_script_entry>
+        </description>
+      </testcase>
+      <testcase component="WebAPI/System-level APIs/Raw Sockets" execution_type="auto" id="TCPServerSocket_onconnect_event" purpose="Check if onconnect event can be fired when an incoming connection attempt on the specified port and address has been accepted">
+        <description>
+          <test_script_entry>/opt/webapi-rawsockets-sysapps-tests/rawsockets/TCPServerSocket_event_onconnect.html</test_script_entry>
+        </description>
+      </testcase>
+      <testcase component="WebAPI/System-level APIs/Raw Sockets" execution_type="auto" id="TCPServerSocket_onopen_event" purpose="Check if onopen event can be fired when the socket is open and ready to receive connection attempts from clients">
+        <description>
+          <test_script_entry>/opt/webapi-rawsockets-sysapps-tests/rawsockets/TCPServerSocket_event_onopen.html</test_script_entry>
+        </description>
+      </testcase>
+      <testcase component="WebAPI/System-level APIs/Raw Sockets" execution_type="auto" id="TCPServerSocket_readyState_open" purpose="Check if the value of readyState is open when the socket is in open state">
+        <description>
+          <test_script_entry>/opt/webapi-rawsockets-sysapps-tests/rawsockets/TCPServerSocket_readystate_open.html</test_script_entry>
+        </description>
+      </testcase>
+      <testcase component="WebAPI/System-level APIs/Raw Sockets" execution_type="auto" id="TCPServerSocket_readyState_opening" purpose="Check if the value of readyState is opening when the socket is in opening state">
+        <description>
+          <test_script_entry>/opt/webapi-rawsockets-sysapps-tests/rawsockets/TCPServerSocket_readystate_opening.html</test_script_entry>
+        </description>
+      </testcase>
+      <testcase component="WebAPI/System-level APIs/Raw Sockets" execution_type="auto" id="TCPServerSocket_readyState_closed" purpose="Check if the value of readyState is closed when the socket is in closed state">
+        <description>
+          <test_script_entry>/opt/webapi-rawsockets-sysapps-tests/rawsockets/TCPServerSocket_readystate_closed.html</test_script_entry>
+        </description>
+      </testcase>
+      <testcase component="WebAPI/System-level APIs/Raw Sockets" execution_type="auto" id="TCPServerSocket_close_method" purpose="Check if close the TCP server socket after calling close method">
+        <description>
+          <test_script_entry>/opt/webapi-rawsockets-sysapps-tests/rawsockets/TCPServerSocket_method_close.html</test_script_entry>
+        </description>
+      </testcase>
+      <testcase component="WebAPI/System-level APIs/Raw Sockets" execution_type="auto" id="TCPServerSocket_suspend_method" purpose="Check if pause listening for incoming connections and invocations after calling suspend method">
+        <description>
+          <test_script_entry>/opt/webapi-rawsockets-sysapps-tests/rawsockets/TCPServerSocket_method_suspend.html</test_script_entry>
+        </description>
+      </testcase>
+      <testcase component="WebAPI/System-level APIs/Raw Sockets" execution_type="auto" id="TCPServerSocket_resume_method" purpose="Check if resume listening for incoming connections and invocations after calling resume method">
+        <description>
+          <test_script_entry>/opt/webapi-rawsockets-sysapps-tests/rawsockets/TCPServerSocket_method_resume.html</test_script_entry>
+        </description>
+      </testcase>
+    </set>
+  </suite>
+</test_definition>

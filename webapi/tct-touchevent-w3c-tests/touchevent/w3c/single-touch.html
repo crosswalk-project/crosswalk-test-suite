@@ -1,0 +1,225 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+  <title>Touch Events: Single-touch tests</title>
+  <meta name="viewport" content="width=device-width">
+
+  <script src="../../resources/testharness.js"></script>
+  <script src="../../resources/testharnessreport.js"></script>
+
+  <script>
+    setup({explicit_done: true});
+
+    function run() {
+      var target0 = document.getElementById("target0");
+      var target1 = document.getElementById("target1");
+
+      var test_touchstart = async_test("touchstart event received");
+      var test_touchmove = async_test("touchmove event received");
+      var test_touchend = async_test("touchend event received");
+      var test_mousedown = async_test("Interaction with mouse events");
+
+      var touchstart_received = false;
+      var touchmove_received = false;
+      var touchend_received = false;
+      var invalid_touchmove_received = false;
+      var touchstart_identifier;
+
+      on_event(target0, "touchstart", function onTouchStart(ev) {
+        ev.preventDefault();
+
+        touchstart_received = true;
+        test_touchstart.step(function() {
+          assert_false(touchmove_received, "touchstart precedes touchmove");
+          assert_false(touchend_received, "touchstart precedes touchend");
+        });
+        test_touchstart.done();
+        test_mousedown.done(); // If we got here, then the mouse event test is not needed.
+
+        test(function() {
+          assert_true(ev.target instanceof Element, "target must be an Element.");
+          assert_equals(ev.relatedTarget, null, "relatedTarget must be null for touchstart event.");
+        }, "touchstart TouchEvent target attributes are correct.");
+
+        test(function() {
+          var attrs = ["altKey", "metaKey", "ctrlKey", "shiftKey"];
+          for (var i = 0; i < attrs.length; i++) {
+            assert_true(attrs[i] in ev);
+          }
+        }, "touchstart TouchEvent modifier key attributes are present.");
+
+        test(function() {
+          assert_equals(ev.touches.length, 1, "One touch point.");
+          assert_equals(ev.changedTouches.length, 1, "One changed touch point.");
+          assert_equals(ev.targetTouches.length, 1, "One target touch point.");
+        }, "touchstart TouchList lengths are correct.");
+
+        var t = ev.touches[0];
+        var ct = ev.changedTouches[0];
+        var tt = ev.targetTouches[0];
+
+        test(function() {
+          assert_true(ev instanceof TouchEvent, "Event is a TouchEvent.");
+          assert_true(ev.touches instanceof TouchList, "touches is a TouchList");
+          assert_true(t instanceof Touch, "touches[0] is a Touch");
+        }, "Interface names are correct.");
+
+        touchstart_identifier = t.identifier;
+        test(function() {
+          assert_equals(ct.identifier, touchstart_identifier, "changedTouches identifier matches.");
+          assert_equals(tt.identifier, touchstart_identifier, "targetTouches identifier matches.");
+        }, "Touch identifiers are consistent.");
+
+        test(function() {
+          assert_equals(ev.touches.identifiedTouch(touchstart_identifier), t, "touches.identifiedTouch is correct.");
+        }, "identifiedTouch");
+
+        test(function() {
+          assert_true(t.rotationAngle >= 0, "rotationAngle must be >= 0.");
+          assert_true(t.rotationAngle < 90, "rotationAngle must be > 90.");
+
+          assert_true(t.radiusX > 0, "radiusX is positive.");
+          assert_true(t.radiusY > 0, "radiusY is positive.");
+
+          assert_true(t.force >= 0, "force >= 0.");
+          assert_true(t.force <= 1, "force <= 1.");
+        }, "Touch attribute values are valid");
+
+        test(function() {
+          var attrs = ["screenX", "screenY", "clientX", "clientY",
+                       "pageX", "pageY"];
+          for (var i = 0; i < attrs.length; i++) {
+            assert_true(attrs[i] in t);
+          }
+        }, "Touch location attributes are present.");
+
+      });
+
+      on_event(target0, "touchmove", function onTouchMove(ev) {
+        ev.preventDefault();
+
+        if (touchmove_received)
+          return;
+        touchmove_received = true;
+
+        test_touchmove.step(function() {
+          assert_true(touchstart_received, "touchend follows touchstart");
+          assert_false(touchend_received, "touchmove precedes touchend");
+        });
+        test_touchmove.done();
+
+        test(function() {
+          assert_equals(ev.touches.length, 1, "One touch point.");
+          assert_equals(ev.changedTouches.length, 1, "One changed touch point.");
+          assert_equals(ev.targetTouches.length, 1, "One target touch point.");
+        }, "touchmove TouchList lengths are correct.");
+
+        test(function() {
+          assert_equals(ev.touches[0].identifier, touchstart_identifier, "Touch identifier matches.");
+          assert_equals(ev.changedTouches[0].identifier, touchstart_identifier, "Changed touch identifier matches.");
+          assert_equals(ev.targetTouches[0].identifier, touchstart_identifier, "Target touch identifier matches.");
+        }, "touchmove identifier matches touchstart identifier.");
+      });
+
+      on_event(target1, "touchmove", function onTouchMove(ev) {
+        invalid_touchmove_received = true;
+      });
+
+      on_event(window, "touchend", function onTouchStart(ev) {
+        touchend_received = true;
+
+        test_touchend.step(function() {
+          assert_equals(ev.target, target0, "touchend is dispatched to the original target");
+          assert_true(touchstart_received, "touchend follows touchstart");
+          assert_true(touchmove_received, "touchend follows touchmove");
+          assert_false(invalid_touchmove_received, "touchmove dispatched to correct target");
+        });
+        test_touchend.done();
+
+        test(function() {
+          var attrs = ["altKey", "metaKey", "ctrlKey", "shiftKey"];
+          for (var i = 0; i < attrs.length; i++) {
+            assert_true(attrs[i] in ev);
+          }
+        }, "touchend TouchEvent modifier key attributes are present.");
+
+        test(function() {
+          assert_equals(ev.touches.length, 0, "Zero touch points.");
+          assert_equals(ev.changedTouches.length, 1, "One changed touch point.");
+          assert_equals(ev.targetTouches.length, 0, "Zero target touch points.");
+        }, "touchend TouchList lengths are correct.");
+
+        var t = ev.changedTouches[0];
+
+        test(function() {
+          assert_equals(t.identifier, touchstart_identifier, "changedTouches identifier matches.");
+        }, "touchend identifier matches.");
+
+        test(function() {
+          assert_true(t.rotationAngle >= 0, "rotationAngle must be >= 0.");
+          assert_true(t.rotationAngle < 90, "rotationAngle must be > 90.");
+
+          assert_true(t.radiusX > 0, "radiusX is positive.");
+          assert_true(t.radiusY > 0, "radiusY is positive.");
+
+          assert_true(t.force >= 0, "force >= 0.");
+          assert_true(t.force <= 1, "force <= 1.");
+        }, "Touch attribute values are valid");
+
+        test(function() {
+          var attrs = ["screenX", "screenY", "clientX", "clientY",
+                       "pageX", "pageY"];
+          for (var i = 0; i < attrs.length; i++) {
+            assert_true(attrs[i] in t);
+          }
+        }, "Touch location attributes are present.");
+
+        done();
+      });
+
+
+      on_event(target0, "mousedown", function onMouseDown(ev) {
+        test_mousedown.step(function() {
+          assert_true(touchstart_received,
+            "The touchstart event must be dispatched before any mouse " +
+            "events. (If this fails, it might mean that the user agent does " +
+            "not implement W3C touch events at all.)"
+          );
+        });
+        test_mousedown.done();
+
+        if (!touchstart_received) {
+          // Abort the tests.  If touch events are not supported, then most of
+          // the other event handlers will never be called, and the test will
+          // time out with misleading results.
+          done();
+        }
+      });
+    }
+  </script>
+  <style>
+    div {
+      margin: 0em;
+      padding: 2em;
+    }
+    #target0 {
+      background: yellow;
+      border: 1px solid orange;
+    }
+    #target1 {
+      background: lightblue;
+      border: 1px solid blue;
+    }
+  </style>
+</head>
+<body onload="run()">
+  <h1>Touch Events: single-touch tests</h1>
+  <div id="target0">
+    Touch this box with one finger (or other pointing device)...
+  </div>
+  <div id="target1">
+    ...then drag to this box and lift your finger.
+  </div>
+  <div id="log"></div>
+</body>
+</html>

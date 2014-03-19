@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<!--
+Test converted from blink:
+https://github.com/crosswalk-project/blink-crosswalk/blob/master/LayoutTests/fast/mediastream/RTCPeerConnection-datachannel.html
+-->
+
+<meta charset="utf-8">
+<title>WebRTC Test: RTCDataChannel</title>
+<link rel="author" title="Intel" href="http://www.intel.com">
+<link rel="help" href="http://dev.w3.org/2011/webrtc/editor/webrtc.html#rtcdatachannel">
+<link rel="help" href="http://dev.w3.org/2011/webrtc/editor/webrtc.html#rtcdatachannelevent">
+<script src="../../resources/testharness.js"></script>
+<script src="../../resources/testharnessreport.js"></script>
+<div id="log"></div>
+<script>
+var t = async_test(document.title);
+
+var pc = null;
+var dc = null;
+var data;
+var array;
+
+function dc_onclose() {
+  t.step(function () {
+    assert_equals(dc.readyState, "closed");
+  });
+  t.done();
+}
+
+function dc_onmessage_arraybufferview(e) {
+  t.step(function () {
+    data = e.data;
+    assert_equals(data.byteLength, 2);
+
+    array = new Int8Array(e.data);
+    assert_equals(array[0], 11);
+    assert_equals(array[1], 13);
+
+    dc.onclose = dc_onclose;
+    dc.close();
+  });
+}
+
+function dc_onmessage_arraybuffer(e) {
+  t.step(function () {
+    data = e.data;
+    assert_equals(data.byteLength, 2);
+    array = new Int8Array(e.data);
+    assert_equals(array[0], 17);
+    assert_equals(array[1], 19);
+
+    array[0] = 11;
+    array[1] = 13;
+    dc.onmessage = dc_onmessage_arraybufferview;
+    dc.send(array);
+  });
+}
+
+function dc_onmessage_string(e) {
+  t.step(function () {
+    data = e.data;
+    assert_equals(data, "xyzzy");
+
+    dc.binaryType = "arraybuffer";
+    buffer = new ArrayBuffer(2);
+    var array = new Int8Array(buffer);
+    array[0] = 17;
+    array[1] = 19;
+    dc.onmessage = dc_onmessage_arraybuffer;
+    dc.send(buffer);
+  });
+}
+
+function dc_onopen() {
+  t.step(function () {
+    assert_equals(dc.readyState, "open");
+    assert_equals(dc.label, "label");
+
+    dc.onmessage = dc_onmessage_string;
+    dc.send("xyzzy");
+  });
+}
+
+function pc_ondatachannel(e) {
+  test(function () {
+    assert_false(e.bubbles, "The datachannel event does not bubble");
+    assert_false(e.cancelable, "The datachannel event is not cancelable");
+    assert_not_equals(e.channel, null);
+    assert_equals(e.channel.label, "label");
+  }, "Check that a datachannel event is fired when a data channel is created and connected");
+}
+
+function pc_onicechange() {
+  if (pc.iceConnectionState === "completed") {
+    test(function () {
+      dc = pc.createDataChannel("label");
+      assert_equals(dc.readyState, "connecting");
+      dc.onopen = dc_onopen;
+    }, "Check that connecting is the initial state of a RTCDataChannel object created with createDataChannel()");
+  }
+}
+
+setup(function () {
+  pc = new webkitRTCPeerConnection(null, null);
+}, {timeout: 5000});
+
+test(function () {
+  dc = pc.createDataChannel("label1");
+  assert_not_equals(dc, null);
+  assert_equals(dc.label, "label1");
+  assert_true(dc.ordered);
+}, "RTCPeerConnection.createDataChannel('label1')");
+
+test(function () {
+  dc = pc.createDataChannel("label2", {});
+  assert_not_equals(dc, null);
+  assert_equals(dc.label, "label2");
+  assert_true(dc.ordered);
+}, "RTCPeerConnection.createDataChannel('label2', {})");
+
+test(function () {
+  dc = pc.createDataChannel("label3", {ordered:true});
+  assert_not_equals(dc, null);
+  assert_equals(dc.label, "label3");
+  assert_true(dc.ordered);
+}, "RTCPeerConnection.createDataChannel('label3', {ordered:true})");
+
+test(function () {
+  dc = pc.createDataChannel("label4", {ordered:false});
+  assert_not_equals(dc, null);
+  assert_equals(dc.label, "label4");
+  assert_false(dc.ordered);
+}, "RTCPeerConnection.createDataChannel('label4', {ordered:false})");
+
+test(function () {
+  dc = pc.createDataChannel("label5", {maxRetransmits:0});
+  assert_not_equals(dc, null);
+  assert_equals(dc.label, "label5");
+  assert_true(dc.ordered);
+  assert_equals(dc.maxRetransmits, 0);
+}, "RTCPeerConnection.createDataChannel('label5', {maxRetransmits:0})");
+
+test(function () {
+  dc = pc.createDataChannel("label6", {maxRetransmitTime:0});
+  assert_not_equals(dc, null);
+  assert_equals(dc.label, "label6");
+  assert_true(dc.ordered);
+  assert_equals(dc.maxRetransmitTime, 0);
+}, "the RTCPeerConnection.createDataChannel('label6', {maxRetransmitTime:0})");
+
+t.step(function () {
+  pc = new webkitRTCPeerConnection(null, null);
+  pc.oniceconnectionstatechange = pc_onicechange;
+  pc.ondatachannel = pc_ondatachannel;
+});
+</script>
+

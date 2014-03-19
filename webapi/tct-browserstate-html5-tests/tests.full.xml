@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-stylesheet type="text/xsl"  href="./testcase.xsl"?>
+<test_definition>
+  <suite name="tct-browserstate-html5-tests" launcher="xwalk" category="W3C/HTML5 APIs">
+    <set name="OnlineState">
+      <testcase purpose="Check if NavigatorOnLine.onLine attribute exists" type="compliance" status="approved" component="WebAPI/Device/HTML5 Browser state" execution_type="auto" priority="P1" id="navigator_onLine_exists">
+        <description>
+          <test_script_entry>/opt/tct-browserstate-html5-tests/browserstate/navigator_onLine_exists.html</test_script_entry>
+        </description>
+        <specs>
+          <spec>
+            <spec_assertion element_type="attribute" element_name="onLine" interface="NavigatorOnLine" specification="HTML5 Browser state" section="Device" category="Tizen W3C API Specifications"/>
+            <spec_url>http://www.w3.org/TR/2012/WD-html5-20120329/offline.html?path=5_4_5#dom-navigator-online</spec_url>
+            <spec_statement/>
+          </spec>
+        </specs>
+      </testcase>
+      <testcase purpose="Check if NavigatorOnLine.onLine attribute is readonly" type="compliance" status="approved" component="WebAPI/Device/HTML5 Browser state" execution_type="auto" priority="P1" id="navigator_onLine_readonly">
+        <description>
+          <test_script_entry>/opt/tct-browserstate-html5-tests/browserstate/navigator_onLine_readonly.html</test_script_entry>
+        </description>
+        <specs>
+          <spec>
+            <spec_assertion element_type="attribute" element_name="onLine" interface="NavigatorOnLine" specification="HTML5 Browser state" section="Device" category="Tizen W3C API Specifications"/>
+            <spec_url>http://www.w3.org/TR/2012/WD-html5-20120329/offline.html?path=5_4_5#dom-navigator-online</spec_url>
+            <spec_statement/>
+          </spec>
+        </specs>
+      </testcase>
+      <testcase purpose="Check if NavigatorOnLine.onLine attribute is of type boolean" type="compliance" status="approved" component="WebAPI/Device/HTML5 Browser state" execution_type="auto" priority="P2" id="navigator_onLine_type">
+        <description>
+          <test_script_entry>/opt/tct-browserstate-html5-tests/browserstate/navigator_onLine_type.html</test_script_entry>
+        </description>
+        <specs>
+          <spec>
+            <spec_assertion element_type="attribute" element_name="onLine" interface="NavigatorOnLine" specification="HTML5 Browser state" section="Device" category="Tizen W3C API Specifications"/>
+            <spec_url>http://www.w3.org/TR/2012/WD-html5-20120329/offline.html?path=5_4_5#dom-navigator-online</spec_url>
+            <spec_statement/>
+          </spec>
+        </specs>
+      </testcase>
+    </set>
+  </suite>
+</test_definition>

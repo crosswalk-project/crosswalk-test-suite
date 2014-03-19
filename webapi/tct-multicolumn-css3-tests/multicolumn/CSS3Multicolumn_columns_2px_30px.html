@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<!--
+Copyright (c) 2012 Intel Corporation.
+
+Redistribution and use in source and binary forms, with or without modification,
+are permitted provided that the following conditions are met:
+
+* Redistributions of works must retain the original copyright notice, this list
+  of conditions and the following disclaimer.
+* Redistributions in binary form must reproduce the original copyright notice,
+  this list of conditions and the following disclaimer in the documentation
+  and/or other materials provided with the distribution.
+* Neither the name of Intel Corporation nor the names of its contributors
+  may be used to endorse or promote products derived from this work without
+  specific prior written permission.
+
+THIS SOFTWARE IS PROVIDED BY INTEL CORPORATION "AS IS"
+AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE
+IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE
+ARE DISCLAIMED. IN NO EVENT SHALL INTEL CORPORATION BE LIABLE FOR ANY DIRECT,
+INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING,
+BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE,
+DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY
+OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING
+NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE,
+EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
+
+Authors:
+        Liu, Jinfeng <jinfengx.liu@intel.com>
+-->
+
+<html>
+  <head>
+    <title>CSS3 MultiColumn Test: CSS3Multicolumn_columns_2px_30px</title>
+    <link rel="author" title="Intel" href="http://www.intel.com/" />
+    <link rel="help" href="http://www.w3.org/TR/2011/CR-css3-multicol-20110412/#columns" />
+    <meta name="flags" content="" />
+    <meta name="assert" content="Check if columns property value is '2px 30px'" />
+    <script type="text/javascript" src="../resources/testharness.js"></script>
+    <script type="text/javascript" src="../resources/testharnessreport.js"></script>
+    <script type="text/javascript" src="support/cssstyle.js"></script>
+    <style>
+        #test{
+            height: 100px;
+            width: 400px;
+            padding: 5px;
+            border: 5px solid black;
+            margin: 5px;
+            background: blue;
+        }
+    </style>
+  </head>
+  <body>
+    <div id="log"></div>
+    <div class="test" id="test">welcome here! This is a column width Tests. please test it welcome here! This is a column width Tests. please test it welcome here!This is a column width Tests. please test it</div>
+    <script type="text/javascript">
+        var div = document.querySelector("#test");
+        var t = async_test(document.title, {timeout: 500});
+        t.step(function () {
+            div.style[headProp("columns")] = "2px 30px";
+            var columnCount = GetCurrentStyle("column-count");
+            var propcolumnCount = columnCount.indexOf("auto") != -1;
+            assert_true(propcolumnCount, "The element column-count should not be auto");
+            var columnWidth = GetCurrentStyle("column-width");
+            var propcolumnWidth = columnWidth.indexOf("auto") != -1;
+            assert_true(propcolumnWidth, "The element column-width should not be auto");
+        });
+        t.done();
+    </script>
+  </body>
+</html>

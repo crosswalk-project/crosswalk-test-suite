@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-stylesheet type="text/xsl"  href="./testcase.xsl"?>
+<test_definition>
+  <suite name="tct-security-tcs-tests" launcher="xwalk" extension="crosswalk" category="Compliance">
+    <set name="Security">    
+      <testcase purpose="Check if application shared directory can be resolved with mode 'r' to a file handle." type="compliance" status="approved" component="TizenAPI/IO/Filesystem" execution_type="auto" priority="P1" id="FileSystemManager_resolve_shared_directory">
+        <description>
+          <test_script_entry>/opt/tct-security-tcs-tests/security/FileSystemManager_resolve_shared_directory.html</test_script_entry>
+        </description>
+        <specs>
+          <spec>
+            <spec_assertion interface="FileSystemManager" element_type="method" element_name="resolve" specification="Filesystem" section="IO" category="Tizen Device API Specifications"/>
+            <spec_url>http://source.tizen.org/compliance/compliance-specification</spec_url>
+            <spec_statement>TBD</spec_statement>
+          </spec>
+        </specs>
+      </testcase>
+      <testcase purpose="Check if another application's wgt-package directory is NOT resolved." type="compliance" status="approved" component="TizenAPI/IO/Filesystem" execution_type="auto" priority="P1" id="FileSystemManager_resolve_wgt_package_of_another_app">
+        <description>
+          <test_script_entry>/opt/tct-security-tcs-tests/security/FileSystemManager_resolve_wgt_package_of_another_app.html</test_script_entry>
+        </description>
+        <specs>
+          <spec>
+            <spec_assertion interface="FileSystemManager" element_type="method" element_name="resolve" specification="Filesystem" section="IO" category="Tizen Device API Specifications"/>
+            <spec_url>http://source.tizen.org/compliance/compliance-specification</spec_url>
+            <spec_statement>TBD</spec_statement>
+          </spec>
+        </specs>
+      </testcase>
+      <testcase purpose="Check if resolve another application shared directory to a file handle." type="compliance" status="approved" component="TizenAPI/IO/Filesystem" execution_type="auto" priority="P1" id="FileSystemManager_resolve_shared_directory_of_another_app">
+        <description>
+          <test_script_entry>/opt/tct-security-tcs-tests/security/FileSystemManager_resolve_shared_directory_of_another_app.html</test_script_entry>
+        </description>
+        <specs>
+          <spec>
+            <spec_assertion interface="FileSystemManager" element_type="method" element_name="resolve" specification="Filesystem" section="IO" category="Tizen Device API Specifications"/>
+            <spec_url>http://source.tizen.org/compliance/compliance-specification</spec_url>
+            <spec_statement>TBD</spec_statement>
+          </spec>
+        </specs>
+      </testcase>      
+     </set>
+  </suite>
+</test_definition>

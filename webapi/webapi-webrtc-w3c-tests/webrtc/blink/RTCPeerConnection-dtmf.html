@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<!--
+Test converted from blink:
+https://github.com/crosswalk-project/blink-crosswalk/blob/master/LayoutTests/fast/mediastream/RTCPeerConnection-dtmf.html
+-->
+
+<meta charset=utf-8>
+<title>WebRTC Test: RTCDTMFSender</title>
+<link rel="author" title="Intel" href="http://www.intel.com">
+<link rel=help href="http://dev.w3.org/2011/webrtc/editor/webrtc.html#rtcdtmfsender">
+<script src=../../resources/testharness.js></script>
+<script src=../../resources/testharnessreport.js></script>
+<div id=log></div>
+<script>
+
+var pc = null;
+var stream = null;
+var dtmfsender = null;
+
+var t = async_test(document.title);
+
+function error() {
+  t.step(function () {
+    assert_unreached("Stream generation failed.");
+  });
+  t.done();
+}
+
+var firstCall = true;
+
+function ontonechange(e) {
+  event = e;
+  if (firstCall) {
+    t.step(function () {
+      assert_equals(event.tone, 1);
+    });
+    firstCall = false;
+  } else {
+    t.step(function () {
+      assert_equals(event.tone, "");
+    });
+  }
+}
+
+function pc_onicechange() {
+  if (pc.iceConnectionState === "completed") {
+    track = stream.getAudioTracks()[0];
+    t.step(function () {
+      assert_throws("InvalidMediaStreamTrackError", function () {
+        dtmfsender = pc.createDTMFSender(track);
+      }, "The RTCPeerConnection.createDTMFSender()");
+   
+      pc.addStream(stream);
+      assert_throws("InvalidMediaStreamTrackError", function () {
+        dtmfsender.canInsertDTMF;
+      }, "the method canInsertDTMF");
+
+      dtmfsender.ontonechange = ontonechange;
+      dtmfsender.insertDTMF("1");
+      assert_equals(dtmfsender.toneBuffer, 1);
+    });
+    t.done();
+  }
+}
+
+function gotStream(s) {
+  stream = s;
+  t.step(function () {
+    assert_equals(stream.getAudioTracks().length, 1);
+    assert_equals(stream.getVideoTracks().length, 0);
+  });
+
+  pc = new webkitRTCPeerConnection(null, null);
+  pc.oniceconnectionstatechange = pc_onicechange;
+}
+
+test(function() {
+  navigator.webkitGetUserMedia({audio:true}, gotStream, error);
+}, 'the webkitGetUserMedia');
+t.done();
+
+</script>
+

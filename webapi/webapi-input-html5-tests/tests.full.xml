@@ -1,0 +1,526 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-stylesheet type="text/xsl" href="./testcase.xsl"?>
+<test_definition>
+  <suite name="webapi-input-html5-tests" launcher="xwalk" category="W3C/HTML5 APIs">
+    <set name="Forms">
+      <testcase purpose="Test checks that email type supported on input element" type="compliance" status="approved" component="WebAPI/UI/HTML5 telephone, email and URL state of input element" execution_type="auto" priority="P0" id="email-support">
+        <description>
+          <test_script_entry>/opt/webapi-input-html5-tests/input/w3c/semantics/forms/the-input-element/email.html?total_num=16&amp;amp;locator_key=id&amp;amp;value=1</test_script_entry>
+        </description>
+        <specs>
+          <spec>
+            <spec_assertion element_type="element" element_name="email" interface="HTMLInputElement" specification="HTML5 telephone, email and URL state of input element" section="User Interaction" category="W3C API Specifications"/>
+            <spec_url>http://www.w3.org/TR/html5/forms.html#e-mail-state-%28type=email%29</spec_url>
+            <spec_statement/>
+          </spec>
+        </specs>
+      </testcase>
+      <testcase purpose="Test checks that multiple attribute supported for input element type attribute is in the E-mail state" type="compliance" status="approved" component="WebAPI/UI/HTML5 telephone, email and URL state of input element" execution_type="auto" priority="P1" id="email-multiple-attribute">
+        <description>
+          <test_script_entry>/opt/webapi-input-html5-tests/input/w3c/semantics/forms/the-input-element/email.html?total_num=16&amp;amp;locator_key=id&amp;amp;value=2</test_script_entry>
+        </description>
+        <specs>
+          <spec>
+            <spec_assertion element_type="element" element_name="email" interface="HTMLInputElement" specification="HTML5 telephone, email and URL state of input element" section="User Interaction" category="W3C API Specifications"/>
+            <spec_url>http://www.w3.org/TR/html5/forms.html#e-mail-state-%28type=email%29</spec_url>
+            <spec_statement/>
+          </spec>
+        </specs>
+      </testcase>
+      <testcase purpose="Test checks that user agents should allow the user to set the value to the empty string when the multiple attribute is not specified on the element" type="compliance" status="approved" component="WebAPI/UI/HTML5 telephone, email and URL state of input element" execution_type="auto" priority="P2" id="email-value-empty-string">
+        <description>
+          <test_script_entry>/opt/webapi-input-html5-tests/input/w3c/semantics/forms/the-input-element/email.html?total_num=16&amp;amp;locator_key=id&amp;amp;value=3</test_script_entry>
+        </description>
+        <specs>
+          <spec>
+            <spec_assertion element_type="element" element_name="email" interface="HTMLInputElement" specification="HTML5 telephone, email and URL state of input element" section="User Interaction" category="W3C API Specifications"/>
+            <spec_url>http://www.w3.org/TR/html5/forms.html#e-mail-state-%28type=email%29</spec_url>
+            <spec_statement/>
+          </spec>
+        </specs>
+      </testcase>
+      <testcase purpose="Test checks that user agents must not allow users to insert LF character into the value when the multiple attribute is not specified on the element" type="compliance" status="approved" component="WebAPI/UI/HTML5 telephone, email and URL state of input element" execution_type="auto" priority="P2" id="email-not-allow-insert-LF">
+        <description>
+          <test_script_entry>/opt/webapi-input-html5-tests/input/w3c/semantics/forms/the-input-element/email.html?total_num=16&amp;amp;locator_key=id&amp;amp;value=4</test_script_entry>
+        </description>
+        <specs>
+          <spec>
+            <spec_assertion element_type="element" element_name="email" interface="HTMLInputElement" specification="HTML5 telephone, email and URL state of input element" section="User Interaction" category="W3C API Specifications"/>
+            <spec_url>http://www.w3.org/TR/html5/forms.html#e-mail-state-%28type=email%29</spec_url>
+            <spec_statement/>
+          </spec>
+        </specs>
+      </testcase>
+      <testcase purpose="Test checks that user agents must not allow users to insert CR character into the value when the multiple attribute is not specified on the element" type="compliance" status="approved" component="WebAPI/UI/HTML5 telephone, email and URL state of input element" execution_type="auto" priority="P2" id="email-not-allow-insert-CR">
+        <description>
+          <test_script_entry>/opt/webapi-input-html5-tests/input/w3c/semantics/forms/the-input-element/email.html?total_num=16&amp;amp;locator_key=id&amp;amp;value=5</test_script_entry>
+        </description>
+        <specs>
+          <spec>
+            <spec_assertion element_type="element" element_name="email" interface="HTMLInputElement" specification="HTML5 telephone, email and URL state of input element" section="User Interaction" category="W3C API Specifications"/>
+            <spec_url>http://www.w3.org/TR/html5/forms.html#e-mail-state-%28type=email%29</spec_url>
+            <spec_statement/>
+          </spec>
+        </specs>
+      </testcase>
+      <testcase purpose="Test checks that the value attribute must have a value that is a single valid e-mail address if specified and not empty" type="compliance" status="approved" component="WebAPI/UI/HTML5 telephone, email and URL state of input element" execution_type="auto" priority="P2" id="email-value-not-empty">
+        <description>
+          <test_script_entry>/opt/webapi-input-html5-tests/input/w3c/semantics/forms/the-input-element/email.html?total_num=16&amp;amp;locator_key=id&amp;amp;value=6</test_script_entry>
+        </description>
+        <specs>
+          <spec>
+            <spec_assertion element_type="element" element_name="email" interface="HTMLInputElement" specification="HTML5 telephone, email and URL state of input element" section="User Interaction" category="W3C API Specifications"/>
+            <spec_url>http://www.w3.org/TR/html5/forms.html#e-mail-state-%28type=email%29</spec_url>
+            <spec_statement/>
+          </spec>
+        </specs>
+      </testcase>
+      <testcase purpose="Test checks that the element values are the result of splitting on commas the element value when the multiple attribute is specified on the element" type="compliance" status="approved" component="WebAPI/UI/HTML5 telephone, email and URL state of input element" execution_type="auto" priority="P2" id="email-multiple-attribute-specified-values">
+        <description>
+          <test_script_entry>/opt/webapi-input-html5-tests/input/w3c/semantics/forms/the-input-element/email.html?total_num=16&amp;amp;locator_key=id&amp;amp;value=7</test_script_entry>
+        </description>
+        <specs>
+          <spec>
+            <spec_assertion element_type="element" element_name="email" interface="HTMLInputElement" specification="HTML5 telephone, email and URL state of input element" section="User Interaction" category="W3C API Specifications"/>
+            <spec_url>http://www.w3.org/TR/html5/forms.html#e-mail-state-%28type=email%29</spec_url>
+            <spec_statement/>
+          </spec>
+        </specs>
+      </testcase>
+      <testcase purpose="Test checks that the user agent must run the value sanitization algorithm when the multiple attribute is removed and the multiple attribute is NOT specified on the element" type="compliance" status="approved" component="WebAPI/UI/HTML5 telephone, email and URL state of input element" execution_type="auto" priority="P2" id="email-multiple-attribute-removed">
+        <description>
+          <test_script_entry>/opt/webapi-input-html5-tests/input/w3c/semantics/forms/the-input-element/email.html?total_num=16&amp;amp;locator_key=id&amp;amp;value=8</test_script_entry>
+        </description>
+        <specs>
+          <spec>
+            <spec_assertion element_type="element" element_name="email" interface="HTMLInputElement" specification="HTML5 telephone, email and URL state of input element" section="User Interaction" category="W3C API Specifications"/>
+            <spec_url>http://www.w3.org/TR/html5/forms.html#e-mail-state-%28type=email%29</spec_url>
+            <spec_statement/>
+          </spec>
+        </specs>
+      </testcase>
+      <testcase purpose="Test checks that user agents must not allow users to set any individual value to a string containing commas when the multiple attribute is specified on the element" type="compliance" status="approved" component="WebAPI/UI/HTML5 telephone, email and URL state of input element" execution_type="auto" priority="P2" id="email-multiple-not-allow-insert-commas">
+        <description>
+          <test_script_entry>/opt/webapi-input-html5-tests/input/w3c/semantics/forms/the-input-element/email.html?total_num=16&amp;amp;locator_key=id&amp;amp;value=9</test_script_entry>
+        </description>
+        <specs>
+          <spec>
+            <spec_assertion element_type="element" element_name="email" interface="HTMLInputElement" specification="HTML5 telephone, email and URL state of input element" section="User Interaction" category="W3C API Specifications"/>
+            <spec_url>http://www.w3.org/TR/html5/forms.html#e-mail-state-%28type=email%29</spec_url>
+            <spec_statement/>
+          </spec>
+        </specs>
+      </testcase>
+      <testcase purpose="Test checks that user agents must not allow users to set any individual value to a string containing LF characters when the multiple attribute is specified on the element" type="compliance" status="approved" component="WebAPI/UI/HTML5 telephone, email and URL state of input element" execution_type="auto" priority="P2" id="email-multiple-not-allow-insert-LF">
+        <description>
+          <test_script_entry>/opt/webapi-input-html5-tests/input/w3c/semantics/forms/the-input-element/email.html?total_num=16&amp;amp;locator_key=id&amp;amp;value=10</test_script_entry>
+        </description>
+        <specs>
+          <spec>
+            <spec_assertion element_type="element" element_name="email" interface="HTMLInputElement" specification="HTML5 telephone, email and URL state of input element" section="User Interaction" category="W3C API Specifications"/>
+            <spec_url>http://www.w3.org/TR/html5/forms.html#e-mail-state-%28type=email%29</spec_url>
+            <spec_statement/>
+          </spec>
+        </specs>
+      </testcase>
+      <testcase purpose="Test checks that user agents must not allow users to set any individual value to a string containing CR characters when the multiple attribute is specified on the element" type="compliance" status="approved" component="WebAPI/UI/HTML5 telephone, email and URL state of input element" execution_type="auto" priority="P2" id="email-multiple-not-allow-insert-CR">
+        <description>
+          <test_script_entry>/opt/webapi-input-html5-tests/input/w3c/semantics/forms/the-input-element/email.html?total_num=16&amp;amp;locator_key=id&amp;amp;value=11</test_script_entry>
+        </description>
+        <specs>
+          <spec>
+            <spec_assertion element_type="element" element_name="email" interface="HTMLInputElement" specification="HTML5 telephone, email and URL state of input element" section="User Interaction" category="W3C API Specifications"/>
+            <spec_url>http://www.w3.org/TR/html5/forms.html#e-mail-state-%28type=email%29</spec_url>
+            <spec_statement/>
+          </spec>
+        </specs>
+      </testcase>
+      <testcase purpose="Test checks that the user agent must let latest values be a copy of the element values whenever the user changes the element values" type="compliance" status="approved" component="WebAPI/UI/HTML5 telephone, email and URL state of input element" execution_type="auto" priority="P2" id="email-change-value-1">
+        <description>
+          <test_script_entry>/opt/webapi-input-html5-tests/input/w3c/semantics/forms/the-input-element/email.html?total_num=16&amp;amp;locator_key=id&amp;amp;value=12</test_script_entry>
+        </description>
+        <specs>
+          <spec>
+            <spec_assertion element_type="element" element_name="email" interface="HTMLInputElement" specification="HTML5 telephone, email and URL state of input element" section="User Interaction" category="W3C API Specifications"/>
+            <spec_url>http://www.w3.org/TR/html5/forms.html#e-mail-state-%28type=email%29</spec_url>
+            <spec_statement/>
+          </spec>
+        </specs>
+      </testcase>
+      <testcase purpose="Test checks that the user agent must strip leading and trailing whitespace from each value in latest values whenever the user changes the element values" type="compliance" status="approved" component="WebAPI/UI/HTML5 telephone, email and URL state of input element" execution_type="auto" priority="P2" id="email-change-value-2">
+        <description>
+          <test_script_entry>/opt/webapi-input-html5-tests/input/w3c/semantics/forms/the-input-element/email.html?total_num=16&amp;amp;locator_key=id&amp;amp;value=13</test_script_entry>
+        </description>
+        <specs>
+          <spec>
+            <spec_assertion element_type="element" element_name="email" interface="HTMLInputElement" specification="HTML5 telephone, email and URL state of input element" section="User Interaction" category="W3C API Specifications"/>
+            <spec_url>http://www.w3.org/TR/html5/forms.html#e-mail-state-%28type=email%29</spec_url>
+            <spec_statement/>
+          </spec>
+        </specs>
+      </testcase>
+      <testcase purpose="Test checks that the user agent must let the element value be the result of concatenating all the values in latest values, separating each value from the next by a single commas character, maintaining the list order" type="compliance" status="approved" component="WebAPI/UI/HTML5 telephone, email and URL state of input element" execution_type="auto" priority="P2" id="email-change-value-3">
+        <description>
+          <test_script_entry>/opt/webapi-input-html5-tests/input/w3c/semantics/forms/the-input-element/email.html?total_num=16&amp;amp;locator_key=id&amp;amp;value=14</test_script_entry>
+        </description>
+        <specs>
+          <spec>
+            <spec_assertion element_type="element" element_name="email" interface="HTMLInputElement" specification="HTML5 telephone, email and URL state of input element" section="User Interaction" category="W3C API Specifications"/>
+            <spec_url>http://www.w3.org/TR/html5/forms.html#e-mail-state-%28type=email%29</spec_url>
+            <spec_statement/>
+          </spec>
+        </specs>
+      </testcase>
+      <testcase purpose="Test checks that the user agent must run the value sanitization algorithm when the multiple attribute is set 1" type="compliance" status="approved" component="WebAPI/UI/HTML5 telephone, email and URL state of input element" execution_type="auto" priority="P2" id="email-set-multiple-values-1">
+        <description>
+          <test_script_entry>/opt/webapi-input-html5-tests/input/w3c/semantics/forms/the-input-element/email.html?total_num=16&amp;amp;locator_key=id&amp;amp;value=15</test_script_entry>
+        </description>
+        <specs>
+          <spec>
+            <spec_assertion element_type="element" element_name="email" interface="HTMLInputElement" specification="HTML5 telephone, email and URL state of input element" section="User Interaction" category="W3C API Specifications"/>
+            <spec_url>http://www.w3.org/TR/html5/forms.html#e-mail-state-%28type=email%29</spec_url>
+            <spec_statement/>
+          </spec>
+        </specs>
+      </testcase>
+      <testcase purpose="Test checks that the user agent must run the value sanitization algorithm when the multiple attribute is set 2" type="compliance" status="approved" component="WebAPI/UI/HTML5 telephone, email and URL state of input element" execution_type="auto" priority="P2" id="email-set-multiple-values-2">
+        <description>
+          <test_script_entry>/opt/webapi-input-html5-tests/input/w3c/semantics/forms/the-input-element/email.html?total_num=16&amp;amp;locator_key=id&amp;amp;value=16</test_script_entry>
+        </description>
+        <specs>
+          <spec>
+            <spec_assertion element_type="element" element_name="email" interface="HTMLInputElement" specification="HTML5 telephone, email and URL state of input element" section="User Interaction" category="W3C API Specifications"/>
+            <spec_url>http://www.w3.org/TR/html5/forms.html#e-mail-state-%28type=email%29</spec_url>
+            <spec_statement/>
+          </spec>
+        </specs>
+      </testcase>
+      <testcase purpose="Test checks that user agents must not allow users to insert LF character into the value" type="compliance" status="approved" component="WebAPI/UI/HTML5 telephone, email and URL state of input element" execution_type="auto" priority="P1" id="tel-not allow-insert-LF">
+        <description>
+          <test_script_entry>/opt/webapi-input-html5-tests/input/w3c/semantics/forms/the-input-element/telephone.html?total_num=13&amp;amp;locator_key=id&amp;amp;value=2</test_script_entry>
+        </description>
+        <specs>
+          <spec>
+            <spec_assertion element_type="element" element_name="tel" interface="HTMLInputElement" specification="HTML5 telephone, email and URL state of input element" section="User Interaction" category="W3C API Specifications"/>
+            <spec_url>http://www.w3.org/TR/html5/forms.html#telephone-state-%28type=tel%29</spec_url>
+            <spec_statement/>
+          </spec>
+        </specs>
+      </testcase>
+      <testcase purpose="Test checks that user agents must not allow users to insert CR character into the value" type="compliance" status="approved" component="WebAPI/UI/HTML5 telephone, email and URL state of input element" execution_type="auto" priority="P2" id="tel-not allow-insert-CR">
+        <description>
+          <test_script_entry>/opt/webapi-input-html5-tests/input/w3c/semantics/forms/the-input-element/telephone.html?total_num=13&amp;amp;locator_key=id&amp;amp;value=3</test_script_entry>
+        </description>
+        <specs>
+          <spec>
+            <spec_assertion element_type="element" element_name="tel" interface="HTMLInputElement" specification="HTML5 telephone, email and URL state of input element" section="User Interaction" category="W3C API Specifications"/>
+            <spec_url>http://www.w3.org/TR/html5/forms.html#telephone-state-%28type=tel%29</spec_url>
+            <spec_statement/>
+          </spec>
+        </specs>
+      </testcase>
+      <testcase purpose="Test checks that the value attribute must have a value that contains no LF characters if specified" type="compliance" status="approved" component="WebAPI/UI/HTML5 telephone, email and URL state of input element" execution_type="auto" priority="P2" id="tel-value-1">
+        <description>
+          <test_script_entry>/opt/webapi-input-html5-tests/input/w3c/semantics/forms/the-input-element/telephone.html?total_num=13&amp;amp;locator_key=id&amp;amp;value=4</test_script_entry>
+        </description>
+        <specs>
+          <spec>
+            <spec_assertion element_type="element" element_name="tel" interface="HTMLInputElement" specification="HTML5 telephone, email and URL state of input element" section="User Interaction" category="W3C API Specifications"/>
+            <spec_url>http://www.w3.org/TR/html5/forms.html#telephone-state-%28type=tel%29</spec_url>
+            <spec_statement/>
+          </spec>
+        </specs>
+      </testcase>
+      <testcase purpose="Test checks that the value attribute must have a value that contains no CR characters if specified" type="compliance" status="approved" component="WebAPI/UI/HTML5 telephone, email and URL state of input element" execution_type="auto" priority="P2" id="tel-value-2">
+        <description>
+          <test_script_entry>/opt/webapi-input-html5-tests/input/w3c/semantics/forms/the-input-element/telephone.html?total_num=13&amp;amp;locator_key=id&amp;amp;value=5</test_script_entry>
+        </description>
+        <specs>
+          <spec>
+            <spec_assertion element_type="element" element_name="tel" interface="HTMLInputElement" specification="HTML5 telephone, email and URL state of input element" section="User Interaction" category="W3C API Specifications"/>
+            <spec_url>http://www.w3.org/TR/html5/forms.html#telephone-state-%28type=tel%29</spec_url>
+            <spec_statement/>
+          </spec>
+        </specs>
+      </testcase>
+      <testcase purpose="Test checks that the value sanitization algorithm is as follows: Strip line breaks from the value" type="compliance" status="approved" component="WebAPI/UI/HTML5 telephone, email and URL state of input element" execution_type="auto" priority="P2" id="tel-value-3">
+        <description>
+          <test_script_entry>/opt/webapi-input-html5-tests/input/w3c/semantics/forms/the-input-element/telephone.html?total_num=13&amp;amp;locator_key=id&amp;amp;value=6</test_script_entry>
+        </description>
+        <specs>
+          <spec>
+            <spec_assertion element_type="element" element_name="tel" interface="HTMLInputElement" specification="HTML5 telephone, email and URL state of input element" section="User Interaction" category="W3C API Specifications"/>
+            <spec_url>http://www.w3.org/TR/html5/forms.html#telephone-state-%28type=tel%29</spec_url>
+            <spec_statement/>
+          </spec>
+        </specs>
+      </testcase>
+      <testcase purpose="Test checks that element can accept the phone number with plus sign" type="compliance" status="approved" component="WebAPI/UI/HTML5 telephone, email and URL state of input element" execution_type="auto" priority="P2" id="tel-value-4">
+        <description>
+          <test_script_entry>/opt/webapi-input-html5-tests/input/w3c/semantics/forms/the-input-element/telephone.html?total_num=13&amp;amp;locator_key=id&amp;amp;value=7</test_script_entry>
+        </description>
+        <specs>
+          <spec>
+            <spec_assertion element_type="element" element_name="tel" interface="HTMLInputElement" specification="HTML5 telephone, email and URL state of input element" section="User Interaction" category="W3C API Specifications"/>
+            <spec_url>http://www.w3.org/TR/html5/forms.html#telephone-state-%28type=tel%29</spec_url>
+            <spec_statement/>
+          </spec>
+        </specs>
+      </testcase>
+      <testcase purpose="Test checks that element can accept the phone number with hash mark" type="compliance" status="approved" component="WebAPI/UI/HTML5 telephone, email and URL state of input element" execution_type="auto" priority="P2" id="tel-value-5">
+        <description>
+          <test_script_entry>/opt/webapi-input-html5-tests/input/w3c/semantics/forms/the-input-element/telephone.html?total_num=13&amp;amp;locator_key=id&amp;amp;value=8</test_script_entry>
+        </description>
+        <specs>
+          <spec>
+            <spec_assertion element_type="element" element_name="tel" interface="HTMLInputElement" specification="HTML5 telephone, email and URL state of input element" section="User Interaction" category="W3C API Specifications"/>
+            <spec_url>http://www.w3.org/TR/html5/forms.html#telephone-state-%28type=tel%29</spec_url>
+            <spec_statement/>
+          </spec>
+        </specs>
+      </testcase>
+      <testcase purpose="Test checks that element can accept the phone number with hyphen" type="compliance" status="approved" component="WebAPI/UI/HTML5 telephone, email and URL state of input element" execution_type="auto" priority="P2" id="tel-value-6">
+        <description>
+          <test_script_entry>/opt/webapi-input-html5-tests/input/w3c/semantics/forms/the-input-element/telephone.html?total_num=13&amp;amp;locator_key=id&amp;amp;value=9</test_script_entry>
+        </description>
+        <specs>
+          <spec>
+            <spec_assertion element_type="element" element_name="tel" interface="HTMLInputElement" specification="HTML5 telephone, email and URL state of input element" section="User Interaction" category="W3C API Specifications"/>
+            <spec_url>http://www.w3.org/TR/html5/forms.html#telephone-state-%28type=tel%29</spec_url>
+            <spec_statement/>
+          </spec>
+        </specs>
+      </testcase>
+      <testcase purpose="Test checks that element can accept the phone number with dots" type="compliance" status="approved" component="WebAPI/UI/HTML5 telephone, email and URL state of input element" execution_type="auto" priority="P2" id="tel-value-7">
+        <description>
+          <test_script_entry>/opt/webapi-input-html5-tests/input/w3c/semantics/forms/the-input-element/telephone.html?total_num=13&amp;amp;locator_key=id&amp;amp;value=10</test_script_entry>
+        </description>
+        <specs>
+          <spec>
+            <spec_assertion element_type="element" element_name="tel" interface="HTMLInputElement" specification="HTML5 telephone, email and URL state of input element" section="User Interaction" category="W3C API Specifications"/>
+            <spec_url>http://www.w3.org/TR/html5/forms.html#telephone-state-%28type=tel%29</spec_url>
+            <spec_statement/>
+          </spec>
+        </specs>
+      </testcase>
+      <testcase purpose="Test checks that element can accept the phone number with whitespace" type="compliance" status="approved" component="WebAPI/UI/HTML5 telephone, email and URL state of input element" execution_type="auto" priority="P0" id="tel-value-8">
+        <description>
+          <test_script_entry>/opt/webapi-input-html5-tests/input/w3c/semantics/forms/the-input-element/telephone.html?total_num=13&amp;amp;locator_key=id&amp;amp;value=11</test_script_entry>
+        </description>
+        <specs>
+          <spec>
+            <spec_assertion element_type="element" element_name="tel" interface="HTMLInputElement" specification="HTML5 telephone, email and URL state of input element" section="User Interaction" category="W3C API Specifications"/>
+            <spec_url>http://www.w3.org/TR/html5/forms.html#telephone-state-%28type=tel%29</spec_url>
+            <spec_statement/>
+          </spec>
+        </specs>
+      </testcase>
+      <testcase purpose="Test checks that element can accept the phone number with leading and following whitespaces" type="compliance" status="approved" component="WebAPI/UI/HTML5 telephone, email and URL state of input element" execution_type="auto" priority="P2" id="tel-value-9">
+        <description>
+          <test_script_entry>/opt/webapi-input-html5-tests/input/w3c/semantics/forms/the-input-element/telephone.html?total_num=13&amp;amp;locator_key=id&amp;amp;value=12</test_script_entry>
+        </description>
+        <specs>
+          <spec>
+            <spec_assertion element_type="element" element_name="tel" interface="HTMLInputElement" specification="HTML5 telephone, email and URL state of input element" section="User Interaction" category="W3C API Specifications"/>
+            <spec_url>http://www.w3.org/TR/html5/forms.html#telephone-state-%28type=tel%29</spec_url>
+            <spec_statement/>
+          </spec>
+        </specs>
+      </testcase>
+      <testcase purpose="Test checks that element can accept the phone number with parentheses" type="compliance" status="approved" component="WebAPI/UI/HTML5 telephone, email and URL state of input element" execution_type="auto" priority="P2" id="tel-value-10">
+        <description>
+          <test_script_entry>/opt/webapi-input-html5-tests/input/w3c/semantics/forms/the-input-element/telephone.html?total_num=13&amp;amp;locator_key=id&amp;amp;value=13</test_script_entry>
+        </description>
+        <specs>
+          <spec>
+            <spec_assertion element_type="element" element_name="tel" interface="HTMLInputElement" specification="HTML5 telephone, email and URL state of input element" section="User Interaction" category="W3C API Specifications"/>
+            <spec_url>http://www.w3.org/TR/html5/forms.html#telephone-state-%28type=tel%29</spec_url>
+            <spec_statement/>
+          </spec>
+        </specs>
+      </testcase>
+      <testcase purpose="Test checks that url type supported on input element" type="compliance" status="approved" component="WebAPI/UI/HTML5 telephone, email and URL state of input element" execution_type="auto" priority="P1" id="url-support">
+        <description>
+          <test_script_entry>/opt/webapi-input-html5-tests/input/w3c/semantics/forms/the-input-element/url.html?total_num=4&amp;amp;locator_key=id&amp;amp;value=1</test_script_entry>
+        </description>
+        <specs>
+          <spec>
+            <spec_assertion element_type="element" element_name="url" interface="HTMLInputElement" specification="HTML5 telephone, email and URL state of input element" section="User Interaction" category="W3C API Specifications"/>
+            <spec_url>http://www.w3.org/TR/html5/forms.html#url-state-%28type=url%29</spec_url>
+            <spec_statement/>
+          </spec>
+        </specs>
+      </testcase>
+      <testcase purpose="Test checks that the value must not allow users to insert LF or CR characters into the value" type="compliance" status="approved" component="WebAPI/UI/HTML5 telephone, email and URL state of input element" execution_type="auto" priority="P1" id="url-not-allow-insert-LF-CR">
+        <description>
+          <test_script_entry>/opt/webapi-input-html5-tests/input/w3c/semantics/forms/the-input-element/url.html?total_num=4&amp;amp;locator_key=id&amp;amp;value=2</test_script_entry>
+        </description>
+        <specs>
+          <spec>
+            <spec_assertion element_type="element" element_name="url" interface="HTMLInputElement" specification="HTML5 telephone, email and URL state of input element" section="User Interaction" category="W3C API Specifications"/>
+            <spec_url>http://www.w3.org/TR/html5/forms.html#url-state-%28type=url%29</spec_url>
+            <spec_statement/>
+          </spec>
+        </specs>
+      </testcase>
+      <testcase purpose="Test checks that the value sanitization algorithm is as follows: Strip line breaks from the value" type="compliance" status="approved" component="WebAPI/UI/HTML5 telephone, email and URL state of input element" execution_type="auto" priority="P2" id="url-value-1">
+        <description>
+          <test_script_entry>/opt/webapi-input-html5-tests/input/w3c/semantics/forms/the-input-element/url.html?total_num=4&amp;amp;locator_key=id&amp;amp;value=3</test_script_entry>
+        </description>
+        <specs>
+          <spec>
+            <spec_assertion element_type="element" element_name="url" interface="HTMLInputElement" specification="HTML5 telephone, email and URL state of input element" section="User Interaction" category="W3C API Specifications"/>
+            <spec_url>http://www.w3.org/TR/html5/forms.html#url-state-%28type=url%29</spec_url>
+            <spec_statement/>
+          </spec>
+        </specs>
+      </testcase>
+      <testcase purpose="Test checks that the value sanitization algorithm is as follows: Strip leading and trailing whitespace from the value" type="compliance" status="approved" component="WebAPI/UI/HTML5 telephone, email and URL state of input element" execution_type="auto" priority="P2" id="url-value-2">
+        <description>
+          <test_script_entry>/opt/webapi-input-html5-tests/input/w3c/semantics/forms/the-input-element/url.html?total_num=4&amp;amp;locator_key=id&amp;amp;value=4</test_script_entry>
+        </description>
+        <specs>
+          <spec>
+            <spec_assertion element_type="element" element_name="url" interface="HTMLInputElement" specification="HTML5 telephone, email and URL state of input element" section="User Interaction" category="W3C API Specifications"/>
+            <spec_url>http://www.w3.org/TR/html5/forms.html#url-state-%28type=url%29</spec_url>
+            <spec_statement/>
+          </spec>
+        </specs>
+      </testcase>
+    </set>
+    <set name="inputmode">
+      <testcase purpose="Check if the value of inputmode attribute is vervatim" type="compliance" status="designed" component="WebAPI/User Interaction/HTML 5.1 inputmode attribute" execution_type="auto" priority="P1" id="inputmode_vervatim_value">
+        <description>
+          <test_script_entry>/opt/webapi-input-html5-tests/input/inputmode_values.html?total_num=11&amp;amp;locator_key=id&amp;amp;value=1</test_script_entry>
+        </description>
+        <specs>
+          <spec>
+            <spec_assertion element_type="attribute" element_name="inputmode" interface="element" specification="HTML 5.1 inputmode attribute" section="User Interaction" category="W3C API Specifications"/>
+            <spec_url>http://www.w3.org/TR/html51/forms.html#input-modalities:-the-inputmode-attribute</spec_url>
+            <spec_statement/>
+          </spec>
+        </specs>
+      </testcase>
+      <testcase purpose="Check if the value of inputmode attribute is latin" type="compliance" status="designed" component="WebAPI/User Interaction/HTML 5.1 inputmode attribute" execution_type="auto" priority="P1" id="inputmode_latin_value">
+        <description>
+          <test_script_entry>/opt/webapi-input-html5-tests/input/inputmode_values.html?total_num=11&amp;amp;locator_key=id&amp;amp;value=2</test_script_entry>
+        </description>
+        <specs>
+          <spec>
+            <spec_assertion element_type="attribute" element_name="inputmode" interface="element" specification="HTML 5.1 inputmode attribute" section="User Interaction" category="W3C API Specifications"/>
+            <spec_url>http://www.w3.org/TR/html51/forms.html#input-modalities:-the-inputmode-attribute</spec_url>
+            <spec_statement/>
+          </spec>
+        </specs>
+      </testcase>
+      <testcase purpose="Check if the value of inputmode attribute is latin-name" type="compliance" status="designed" component="WebAPI/User Interaction/HTML 5.1 inputmode attribute" execution_type="auto" priority="P1" id="inputmode_latin-name_value">
+        <description>
+          <test_script_entry>/opt/webapi-input-html5-tests/input/inputmode_values.html?total_num=11&amp;amp;locator_key=id&amp;amp;value=3</test_script_entry>
+        </description>
+        <specs>
+          <spec>
+            <spec_assertion element_type="attribute" element_name="inputmode" interface="element" specification="HTML 5.1 inputmode attribute" section="User Interaction" category="W3C API Specifications"/>
+            <spec_url>http://www.w3.org/TR/html51/forms.html#input-modalities:-the-inputmode-attribute</spec_url>
+            <spec_statement/>
+          </spec>
+        </specs>
+      </testcase>
+      <testcase purpose="Check if the value of inputmode attribute is latin-prose" type="compliance" status="designed" component="WebAPI/User Interaction/HTML 5.1 inputmode attribute" execution_type="auto" priority="P1" id="inputmode_latin-prose_value">
+        <description>
+          <test_script_entry>/opt/webapi-input-html5-tests/input/inputmode_values.html?total_num=11&amp;amp;locator_key=id&amp;amp;value=4</test_script_entry>
+        </description>
+        <specs>
+          <spec>
+            <spec_assertion element_type="attribute" element_name="inputmode" interface="element" specification="HTML 5.1 inputmode attribute" section="User Interaction" category="W3C API Specifications"/>
+            <spec_url>http://www.w3.org/TR/html51/forms.html#input-modalities:-the-inputmode-attribute</spec_url>
+            <spec_statement/>
+          </spec>
+        </specs>
+      </testcase>
+      <testcase purpose="Check if the value of inputmode attribute is full-width-latin" type="compliance" status="designed" component="WebAPI/User Interaction/HTML 5.1 inputmode attribute" execution_type="auto" priority="P1" id="inputmode_full-width-latin_value">
+        <description>
+          <test_script_entry>/opt/webapi-input-html5-tests/input/inputmode_values.html?total_num=11&amp;amp;locator_key=id&amp;amp;value=5</test_script_entry>
+        </description>
+        <specs>
+          <spec>
+            <spec_assertion element_type="attribute" element_name="inputmode" interface="element" specification="HTML 5.1 inputmode attribute" section="User Interaction" category="W3C API Specifications"/>
+            <spec_url>http://www.w3.org/TR/html51/forms.html#input-modalities:-the-inputmode-attribute</spec_url>
+            <spec_statement/>
+          </spec>
+        </specs>
+      </testcase>
+      <testcase purpose="Check if the value of inputmode attribute is kana" type="compliance" status="designed" component="WebAPI/User Interaction/HTML 5.1 inputmode attribute" execution_type="auto" priority="P1" id="inputmode_kana_value">
+        <description>
+          <test_script_entry>/opt/webapi-input-html5-tests/input/inputmode_values.html?total_num=11&amp;amp;locator_key=id&amp;amp;value=6</test_script_entry>
+        </description>
+        <specs>
+          <spec>
+            <spec_assertion element_type="attribute" element_name="inputmode" interface="element" specification="HTML 5.1 inputmode attribute" section="User Interaction" category="W3C API Specifications"/>
+            <spec_url>http://www.w3.org/TR/html51/forms.html#input-modalities:-the-inputmode-attribute</spec_url>
+            <spec_statement/>
+          </spec>
+        </specs>
+      </testcase>
+      <testcase purpose="Check if the value of inputmode attribute is katakana" type="compliance" status="designed" component="WebAPI/User Interaction/HTML 5.1 inputmode attribute" execution_type="auto" priority="P0" id="inputmode_katakana_value">
+        <description>
+          <test_script_entry>/opt/webapi-input-html5-tests/input/inputmode_values.html?total_num=11&amp;amp;locator_key=id&amp;amp;value=7</test_script_entry>
+        </description>
+        <specs>
+          <spec>
+            <spec_assertion element_type="attribute" element_name="inputmode" interface="element" specification="HTML 5.1 inputmode attribute" section="User Interaction" category="W3C API Specifications"/>
+            <spec_url>http://www.w3.org/TR/html51/forms.html#input-modalities:-the-inputmode-attribute</spec_url>
+            <spec_statement/>
+          </spec>
+        </specs>
+      </testcase>
+      <testcase purpose="Check if the value of inputmode attribute is numeric" type="compliance" status="designed" component="WebAPI/User Interaction/HTML 5.1 inputmode attribute" execution_type="auto" priority="P1" id="inputmode_numeric_value">
+        <description>
+          <test_script_entry>/opt/webapi-input-html5-tests/input/inputmode_values.html?total_num=11&amp;amp;locator_key=id&amp;amp;value=8</test_script_entry>
+        </description>
+        <specs>
+          <spec>
+            <spec_assertion element_type="attribute" element_name="inputmode" interface="element" specification="HTML 5.1 inputmode attribute" section="User Interaction" category="W3C API Specifications"/>
+            <spec_url>http://www.w3.org/TR/html51/forms.html#input-modalities:-the-inputmode-attribute</spec_url>
+            <spec_statement/>
+          </spec>
+        </specs>
+      </testcase>
+      <testcase purpose="Check if the value of inputmode attribute is tel" type="compliance" status="designed" component="WebAPI/User Interaction/HTML 5.1 inputmode attribute" execution_type="auto" priority="P1" id="inputmode_tel_value">
+        <description>
+          <test_script_entry>/opt/webapi-input-html5-tests/input/inputmode_values.html?total_num=11&amp;amp;locator_key=id&amp;amp;value=9</test_script_entry>
+        </description>
+        <specs>
+          <spec>
+            <spec_assertion element_type="attribute" element_name="inputmode" interface="element" specification="HTML 5.1 inputmode attribute" section="User Interaction" category="W3C API Specifications"/>
+            <spec_url>http://www.w3.org/TR/html51/forms.html#input-modalities:-the-inputmode-attribute</spec_url>
+            <spec_statement/>
+          </spec>
+        </specs>
+      </testcase>
+      <testcase purpose="Check if the value of inputmode attribute is email" type="compliance" status="designed" component="WebAPI/User Interaction/HTML 5.1 inputmode attribute" execution_type="auto" priority="P1" id="inputmode_email_value">
+        <description>
+          <test_script_entry>/opt/webapi-input-html5-tests/input/inputmode_values.html?total_num=11&amp;amp;locator_key=id&amp;amp;value=10</test_script_entry>
+        </description>
+        <specs>
+          <spec>
+            <spec_assertion element_type="attribute" element_name="inputmode" interface="element" specification="HTML 5.1 inputmode attribute" section="User Interaction" category="W3C API Specifications"/>
+            <spec_url>http://www.w3.org/TR/html51/forms.html#input-modalities:-the-inputmode-attribute</spec_url>
+            <spec_statement/>
+          </spec>
+        </specs>
+      </testcase>
+      <testcase purpose="Check if the value of inputmode attribute is url" type="compliance" status="designed" component="WebAPI/User Interaction/HTML 5.1 inputmode attribute" execution_type="auto" priority="P1" id="inputmode_url_value">
+        <description>
+          <test_script_entry>/opt/webapi-input-html5-tests/input/inputmode_values.html?total_num=11&amp;amp;locator_key=id&amp;amp;value=11</test_script_entry>
+        </description>
+        <specs>
+          <spec>
+            <spec_assertion element_type="attribute" element_name="inputmode" interface="element" specification="HTML 5.1 inputmode attribute" section="User Interaction" category="W3C API Specifications"/>
+            <spec_url>http://www.w3.org/TR/html51/forms.html#input-modalities:-the-inputmode-attribute</spec_url>
+            <spec_statement/>
+          </spec>
+        </specs>
+      </testcase>
+    </set>
+  </suite>
+</test_definition>

@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<!--
+Test converted from blink:
+https://github.com/crosswalk-project/blink-crosswalk/blob/master/LayoutTests/fast/mediastream/RTCPeerConnection-createAnswer.html
+-->
+
+<meta charset=utf-8>
+<title>WebRTC Test: RTCPeerConnection createAnswer</title>
+<link rel="author" title="Intel" href="http://www.intel.com">
+<link rel=help href="http://dev.w3.org/2011/webrtc/editor/webrtc.html#widl-RTCPeerConnection-createAnswer-void-RTCSessionDescriptionCallback-successCallback-RTCPeerConnectionErrorCallback-failureCallback-MediaConstraints-constraints">
+<script src=../../resources/testharness.js></script>
+<script src=../../resources/testharnessreport.js></script>
+<div id=log></div>
+<script>
+
+var t = async_test();
+var pc = new webkitRTCPeerConnection(null, null);
+
+function requestFailed3(reason) {
+  t.step(function () {
+    assert_unreached("createAnswer request failed.");
+  });
+  t.done();
+}
+
+function requestSucceeded3() {
+  t.done();
+}
+
+function requestFailed2(reason) {
+  t.step(function () {
+    assert_unreached("setRemoteDescription request failed.");
+  });
+  t.done();
+}
+
+function requestSucceeded2() {
+  test(function() {
+    pc.createAnswer(requestSucceeded3, requestFailed3);
+  }, "the method of createAnswer has no exception throw");
+}
+
+function requestFailed1() {
+  sessionDescription = new RTCSessionDescription({type:"answer", sdp:"remote"});
+  test(function() {
+    pc.setRemoteDescription(sessionDescription, requestSucceeded2, requestFailed2);
+  }, "the method of setRemoteDescription has no exception throw");
+}
+
+function requestSucceeded1(sd) {
+  t.done();
+}
+pc.createOffer(requestSucceeded1, requestFailed1);
+t.done();
+
+</script>
+

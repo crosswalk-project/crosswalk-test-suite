@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<!--
+Test converted from blink:
+https://github.com/crosswalk-project/blink-crosswalk/blob/master/LayoutTests/fast/mediastream/RTCPeerConnection-localDescription.html
+-->
+
+<meta charset=utf-8>
+<title>WebRTC Test: RTCPeerConnection localDescription</title>
+<link rel="author" title="Intel" href="http://www.intel.com">
+<link rel=help href="http://dev.w3.org/2011/webrtc/editor/webrtc.html#widl-RTCPeerConnection-setLocalDescription-void-RTCSessionDescription-description-VoidFunction-successCallback-RTCPeerConnectionErrorCallback-failureCallback">
+<script src=../../resources/testharness.js></script>
+<script src=../../resources/testharnessreport.js></script>
+<div id=log></div>
+<script>
+
+var pc = null;
+
+var t = async_test(document.title);
+
+function requestFailed2() {
+  t.step(function () {
+    assert_equals(pc.localDescription.type, "offer");
+    assert_equals(pc.localDescription.sdp, "local");
+    pc.close();
+    assert_equals(pc.localDescription.type, "offer");
+    assert_equals(pc.localDescription.sdp, "local");
+  });
+  t.done();
+}
+
+function requestSucceeded2() {
+  t.step(function () {
+    assert_unreached("requestSucceeded was called.");
+  });
+  t.done();
+}
+
+function requestFailed1() {
+  t.step(function () {
+    assert_unreached("requestFailed was called.");
+  });
+  t.done();
+}
+
+function requestSucceeded1() {
+  sessionDescription = new RTCSessionDescription({type:"answer", sdp:"remote"});
+  t.step(function () {
+    pc.setLocalDescription(sessionDescription, requestSucceeded2, requestFailed2);
+  });
+}
+
+pc = new webkitRTCPeerConnection(null, null);
+var sessionDescription = new RTCSessionDescription({type:"offer", sdp:"local"});
+
+test(function() {
+  pc.setLocalDescription(sessionDescription, requestSucceeded1, requestFailed1);
+}, "Test RTCPeerConnection.setLocalDescription()");
+
+</script>
+

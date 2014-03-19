@@ -1,0 +1,24 @@
+{
+  "name": "splashscreen_app_gif_tests",
+  "version": "0.1",
+  "app": {
+    "launch": {
+            "local_path":"index.html"
+        },
+    "readyWhen": "first-paint | complete | custom",
+    "interstitials": [{
+            "baseColor": "#ff0000",
+            "backgroundSrc": "bg.png 1x",
+            "foregroundSrc": "loading.gif 1x",
+            "foregroundBorder": "30px 40px 30px 40px stretch stretch",
+            "orientation": "portrait | landscape"
+        }, {
+            "baseColor": "#ff0000",
+            "backgroundSrc": "bg2.png 2x",
+            "foregroundSrc": "loading2.gif 2x",
+            "foregroundBorder": "40px 50px 40px 50px stretch stretch",
+            "orientation": "default"
+        }]
+  },
+  "icons": { "117": "icon.png"}
+}

@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-stylesheet type="text/xsl" href="./testcase.xsl"?>
+<test_definition>
+  <suite category="Integration_With_Tizen_System" launcher="xwalk" name="wrt-integration-tizen-tests">
+    <set name="integration">
+      <testcase component="Integration with Tizen System" execution_type="manual" id="Crosswalk_System_Proxy" purpose="Validate if Crosswalk Browser works with system proxy">
+        <description>
+          <pre_condition>
+            1.Make sure system proxy are setted.
+            2.Make sure Crosswalk application is launched and the device connected to network
+            3.Package a web app,it contains below web links:http://www.sina.com.cn
+            4.Install this web app
+          </pre_condition>
+          <test_script_entry>/opt/wrt-integration-tizen-tests/integration/Crosswalk_System_Proxy.html </test_script_entry>
+        </description>
+      </testcase>
+      <testcase component="Integration with Tizen System" execution_type="manual" id="Crosswalk_WebApp_Integration_NoCursors" purpose="Validate if Crosswalk support Web Apps interface no cursors">
+        <description>
+          <pre_condition>
+            1. Make sure Crosswalk is installed
+            2. Make sure there some webapps are available
+          </pre_condition>
+          <test_script_entry>/opt/wrt-integration-tizen-tests/integration/Crosswalk_WebApp_Integration_NoCursors.html </test_script_entry>
+        </description>
+      </testcase>
+      <testcase component="Integration with Tizen System" execution_type="manual" id="Crosswalk_WebApp_Touch_Gesture_Scroll" purpose="Validate if Crosswalk support scroll gesture on Web Apps">
+        <description>
+          <pre_condition>
+            1. Make sure Crosswalk application is launched and the device connected to network
+            2. Package a Web App,it contains below web links:Open website link: http://www.hao123.com
+            3. Install this Web App
+          </pre_condition>
+          <test_script_entry>/opt/wrt-integration-tizen-tests/integration/Crosswalk_WebApp_Touch_Gesture_Scroll.html </test_script_entry>
+        </description>
+      </testcase>
+      <testcase component="Integration with Tizen System" execution_type="manual" id="Crosswalk_WebApp_Touch_Gesture_Swipe" purpose="Validate if Crosswalk support swipe gesture on Web Apps">
+        <description>
+          <pre_condition>
+            1. Make sure Crosswalk application is launched and the device connected to network
+            2. Package a Web App,it contains below web links:Open website link: http://www.hao123.com
+            3. Install this Web App
+          </pre_condition>
+          <test_script_entry>/opt/wrt-integration-tizen-tests/integration/Crosswalk_WebApp_Touch_Gesture_Swipe.html </test_script_entry>
+        </description>
+      </testcase>
+      <testcase component="Integration with Tizen System" execution_type="manual" id="Crosswalk_WebApp_Touch_Gesture_Click" purpose="Validate if Crosswalk support click gesture on Web Apps">
+        <description>
+          <pre_condition>
+            1. Make sure Crosswalk application is launched and the device connected to network
+            2. Package a Web App,it contains below web links:Open website link: http://www.hao123.com
+            3. Install this Web App
+          </pre_condition>
+          <test_script_entry>/opt/wrt-integration-tizen-tests/integration/Crosswalk_WebApp_Touch_Gesture_Click.html </test_script_entry>
+        </description>
+      </testcase>
+      <testcase component="Integration with Tizen System" execution_type="manual" id="Crosswalk_Browser_HotWebsite" purpose="Validate if Crosswalk Browser support access hotwebsite webpage">
+        <description>
+          <pre_condition>
+            1. Make sure Crosswalk application is launched and the device connected to network;
+          </pre_condition>
+          <test_script_entry>/opt/wrt-integration-tizen-tests/integration/Crosswalk_Browser_HotWebsite.html </test_script_entry>
+        </description>
+      </testcase>
+    </set>
+  </suite>
+</test_definition>

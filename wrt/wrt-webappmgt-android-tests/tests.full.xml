@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-stylesheet type="text/xsl" href="./testcase.xsl"?>
+<test_definition>
+  <suite name="wrt-webappmgt-android-tests" category="Web_App_Management" launcher="xwalk">
+    <set name="Webappmgt">
+      <testcase purpose="Validate if web app sound volume work fine on Crosswalk" type="Functional" status="approved" component="Web App Management" execution_type="manual" priority="P2" id="Crosswalk_WebApps_Volume">
+        <description>
+          <pre_condition>
+            1.Make sure a webapp with sound is installed on Android OS.
+          </pre_condition>
+          <test_script_entry>/opt/wrt-webappmgt-android-tests/webappmgt/Crosswalk_WebApps_Volume.html</test_script_entry>
+        </description>
+       </testcase>
+      <testcase purpose="Validate Crosswalk support different types of web apps" type="Functional" status="approved" component="Web App Management" execution_type="manual" priority="P2" id="Crosswalk_WebApp_Different_Types">
+        <description>
+          <pre_condition>
+            1.Make sure Crosswalk application is launched;
+            2.Make sure there some webapps are available.
+          </pre_condition>
+          <test_script_entry>/opt/wrt-webappmgt-android-tests/webappmgt/Crosswalk_WebApp_Different_Types.html</test_script_entry>
+        </description>
+      </testcase>
+      <testcase purpose="Validate Crosswalk support rotate between portrait orientation screen and landscape orientation screen" type="Functional" status="approved" component="Web App Management" execution_type="manual" priority="P1" id="Crosswalk_Rotate_WebApp">
+        <description>
+          <pre_condition>
+            1.Make sure Crosswalk application is launched.
+            2.Package a web app,it contains below web links:Open website link: http://www.baidu.com
+            3.Install this web app.
+          </pre_condition>
+          <test_script_entry>/opt/wrt-webappmgt-android-tests/webappmgt/Crosswalk_Rotate_WebApp.html</test_script_entry>
+        </description>
+      </testcase>
+      <testcase purpose="Validate if Crosswalk can check system memory" type="Functional" status="approved" component="Web App Management" execution_type="manual" priority="P2" id="Crosswalk_Check_System_Memory">
+        <description>
+          <pre_condition>
+            1. Make sure Crosswalk application is launched.
+          </pre_condition>
+          <test_script_entry>/opt/wrt-webappmgt-android-tests/webappmgt/Crosswalk_Check_System_Memory.html</test_script_entry>
+        </description>
+      </testcase>
+      <testcase purpose="Validate Crosswalk support media playback on web apps" type="Functional" status="approved" component="Web App Management" execution_type="manual" priority="P2" id="Crosswalk_Media_Playback_On_WebApp">
+        <description>
+          <pre_condition>
+            1.Make sure Crosswalk application is launched
+            2.Package a web app,it contains below web links:Open website link: http://video.baidu.com
+            3.Install this web app
+          </pre_condition>
+          <test_script_entry>/opt/wrt-webappmgt-android-tests/webappmgt/Crosswalk_Media_Playback_On_WebApp.html</test_script_entry>
+        </description>
+      </testcase>
+    </set>
+  </suite>
+</test_definition>

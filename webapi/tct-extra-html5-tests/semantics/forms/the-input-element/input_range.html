@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<!--
+Copyright (c) 2013 Intel Corporation.
+
+Redistribution and use in source and binary forms, with or without modification,
+are permitted provided that the following conditions are met:
+
+* Redistributions of works must retain the original copyright notice, this list
+  of conditions and the following disclaimer.
+* Redistributions in binary form must reproduce the original copyright notice,
+  this list of conditions and the following disclaimer in the documentation
+  and/or other materials provided with the distribution.
+* Neither the name of Intel Corporation nor the names of its contributors
+  may be used to endorse or promote products derived from this work without
+  specific prior written permission.
+
+THIS SOFTWARE IS PROVIDED BY INTEL CORPORATION "AS IS"
+AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE
+IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE
+ARE DISCLAIMED. IN NO EVENT SHALL INTEL CORPORATION BE LIABLE FOR ANY DIRECT,
+INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING,
+BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE,
+DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY
+OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING
+NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE,
+EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
+
+Authors:
+        Cui, Jieqiong <jieqiongx.cui@intel.com>
+
+-->
+
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>HTML Test: input_range</title>
+    <link rel="author" title="Intel" href="http://www.intel.com/">
+    <link rel="help" href="http://www.w3.org/TR/2012/CR-html5-20121217/forms.html#range-state-(type=range)">
+    <script src="../../../resources/testharness.js"></script>
+    <script src="../../../resources/testharnessreport.js"></script>
+  </head>
+  <body>
+    <form id="testForm" name="testForm" style="display:none">
+      <p><input id="testInput1" type="range" />
+      <p><input id="testInput2" type="range" min=10 max=50 />
+      <p><input id="testInput3" type="range" min=10 step=1.5 max=20 />
+      <p><input id="testInput4" type="range" min=11.5 step=1.5 max=20 />
+    </form>
+
+    <div id="log"></div>
+
+    <script>
+        var input1 = document.getElementById("testInput1");
+        var input2 = document.getElementById("testInput2");
+        var input3 = document.getElementById("testInput3");
+        var input4 = document.getElementById("testInput4");
+        var minValue = 0;
+        var defaultStep = 1;
+        var maxValue = 100;
+
+        test(function() {
+            var temp = -1;
+            input1.value = temp;
+            var value = parseInt(input1.value);
+            assert_equals(value, minValue, "Check if the min default value is 0");
+        }, "Check if the min default value is 0");
+
+        test(function() {
+            var temp = 110;
+            input1.value = temp;
+            var value = parseInt(input1.value);
+            assert_equals(value, maxValue, "Check if the max default value is 100");
+        }, "Check if the max default value is 100");
+
+        test(function() {
+            var value = parseFloat(input2.value);
+            var expect = parseFloat(input2.min) + (parseFloat(input2.max) - parseFloat(input2.min)) / 2;
+            assert_equals(value, expect, "Check the initial value when type is 'range'");
+        }, "Check the initial value when type is 'range'");
+
+        test(function() {
+            var value1 = parseFloat(input2.value);
+            input2.stepUp();
+            var value2 = parseFloat(input2.value);
+            assert_equals(value2, value1 + defaultStep, "Check if the step attribute default value is 1");
+        }, "Check if the step attribute default value is 1");
+
+        test(function() {
+            var expectedValue = input4.value - input4.step;
+            input4.stepDown();
+            assert_equals(parseFloat(input4.value, 10), expectedValue, "Check if value changed when stepDown called");
+        }, "Check if value changed when stepDown called");
+    </script>
+  </body>
+</html>

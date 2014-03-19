@@ -1,0 +1,27 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html>
+    <head>
+        <title>CSS Test: Background with (attachment position)</title>
+        <link title="Microsoft" rel="author" href="http://www.microsoft.com/">
+        <link title="Gérard Talbot" rel="reviewer" href="http://www.gtalbot.org/BrowserBugsSection/css21testsuite/"> <!-- 2012-03-14 -->
+        <link rel="help" href="http://www.w3.org/TR/CSS21/colors.html#propdef-background">
+        <link rel="help" href="http://www.w3.org/TR/CSS21/colors.html#background-properties">
+		<link rel="help" href="http://www.w3.org/TR/css3-background/#the-background-attachment">
+        <link rel="match" href="../reference/ref-nothing-below.xht">
+
+        <meta content="" name="flags">
+        <meta content="Background with (attachment position) does not affect the background since image is not set." name="assert">
+        <style type="text/css">
+            div
+            {
+                background: fixed bottom;
+                height: 1in;
+                width: 1in;
+            }
+        </style>
+    </head>
+    <body>
+        <p>Test passes if there is nothing below.</p>
+        <div></div>
+    </body>
+</html>

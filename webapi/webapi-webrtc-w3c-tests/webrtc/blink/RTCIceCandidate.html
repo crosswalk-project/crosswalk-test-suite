@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<!--
+Test converted from blink:
+https://github.com/crosswalk-project/blink-crosswalk/blob/master/LayoutTests/fast/mediastream/RTCIceCandidate.html
+-->
+
+<meta charset="utf-8">
+<title>WebRTC Test: RTCIceCandidate</title>
+<link rel="author" title="Intel" href="http://www.intel.com">
+<link rel=help href="http://dev.w3.org/2011/webrtc/editor/webrtc.html#rtcicecandidate-type">
+<script src=../../resources/testharness.js></script>
+<script src=../../resources/testharnessreport.js></script>
+<div id=log></div>
+<script>
+
+var initializer = {candidate:"foo", sdpMid:"bar", sdpMLineIndex:6};
+var candidate;
+
+test(function() {
+  candidate = new RTCIceCandidate(initializer);
+}, "Test new RTCIceCandidate");
+
+test(function() {
+  assert_equals(candidate.candidate, "foo");
+}, "Test candidate");
+
+test(function() {
+  assert_equals(candidate.sdpMid, "bar");
+}, "Test sdpMid");
+
+test(function() {
+  assert_equals(candidate.sdpMLineIndex, 6);
+}, "Test sdpMLineIndex");
+
+test(function() {
+  initializer = JSON.parse(JSON.stringify(candidate));
+}, "Test initializer");
+
+test(function() {
+  candidate = new RTCIceCandidate(initializer);
+}, "Test new RTCIceCandidate(initializer)");
+
+test(function() {
+  assert_equals(candidate.candidate, "foo");
+}, "Test initializer candidate");
+
+test(function() {
+  assert_equals(candidate.sdpMid, "bar");
+}, "Test initializer sdpMid");
+
+test(function() {
+  assert_equals(candidate.sdpMLineIndex, 6);
+}, "Test initializer sdpMLineIndex");
+
+test(function() {
+  assert_throws("TypeMismatchError", function () {
+    new RTCIceCandidate({});
+  }, "RTCIceCandidate threw exception");
+}, "Test RTCIceCandidate({})");
+
+test(function() {
+  assert_throws(new TypeError(), function () {
+    new RTCIceCandidate(5);
+  }, "RTCIceCandidate threw exception");
+}, "Test RTCIceCandidate(5)");
+
+test(function() {
+  assert_throws(new TypeError(), function () {
+    new RTCIceCandidate("foobar");
+  }, "RTCIceCandidate threw exception");
+}, 'Test RTCIceCandidate("foobar")');
+
+test(function() {
+  new RTCIceCandidate({candidate:"x"});
+}, "Test new RTCIceCandidate()");
+
+</script>
+

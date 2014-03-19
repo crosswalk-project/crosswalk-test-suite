@@ -1,0 +1,292 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-stylesheet type="text/xsl" href="./testcase.xsl"?>
+<test_definition>
+  <suite name="wrt-integration-tizen-tests" category="Integration_With_Tizen_System" launcher="xwalk">
+    <set name="integration">
+      <testcase purpose="Validate if Crosswalk Browser works with system proxy" type="Functional" status="approved" component="Integration with Tizen System" execution_type="manual" priority="P2" id="Crosswalk_System_Proxy">
+        <description>
+          <pre_condition>
+            1.Make sure system proxy are setted.
+            2.Make sure Crosswalk application is launched and the device connected to network
+            3.Package a web app,it contains below web links:http://www.sina.com.cn
+            4.Install this web app
+          </pre_condition>
+          <test_script_entry>/opt/wrt-integration-tizen-tests/integration/Crosswalk_System_Proxy.html </test_script_entry>
+        </description>
+      </testcase>
+      <testcase purpose="Validate Crosswalk suppor lock and unlock screen when running Web Apps" type="Functional" status="designed" component="Integration with Tizen System" execution_type="manual" priority="P1" id="Crosswalk_Lock_And_Unlock_Screen">
+        <description>
+          <pre_condition>
+            1.Make sure Crosswalk application is launched
+            2.Make sure there some webapps are available
+          </pre_condition>
+          <post_condition/>
+          <test_script_entry>/opt/wrt-integration-tizen-tests/integration/Crosswalk_Lock_And_Unlock_Screen.html </test_script_entry>
+        </description>
+      </testcase>
+      <testcase purpose="Validate Crosswalk support Web App work normally that system interruption (popup, audio effect) when running Web Apps" type="Functional" status="designed" component="Integration with Tizen System" execution_type="manual" priority="P2" id="Crosswalk_System_Interruption">
+        <description>
+          <pre_condition>
+            1. Make sure Crosswalk application is launched
+            2. Make sure there has one Web App is running
+          </pre_condition>
+          <post_condition/>
+          <test_script_entry>/opt/wrt-integration-tizen-tests/integration/Crosswalk_System_Interruption.html </test_script_entry>
+        </description>
+      </testcase>
+      <testcase purpose="Validate if Crosswalk support Web Apps interface no cursors" type="Functional" status="approved" component="Integration with Tizen System" execution_type="manual" priority="P2" id="Crosswalk_WebApp_Integration_NoCursors">
+        <description>
+          <pre_condition>
+            1. Make sure Crosswalk is installed
+            2. Make sure there some webapps are available
+          </pre_condition>
+          <post_condition/>
+          <test_script_entry>/opt/wrt-integration-tizen-tests/integration/Crosswalk_WebApp_Integration_NoCursors.html </test_script_entry>
+        </description>
+      </testcase>
+      <testcase purpose="Validate if the HW Key work well in Crosswalk App" type="Functional" status="designed" component="Integration with Tizen System" execution_type="manual" priority="P2" id="Crosswalk_WebApp_HW_KEY">
+        <description>
+          <pre_condition>
+            1. Make sure Crosswalk is installed
+            2. Make sure has some multimedia Web Apps
+          </pre_condition>
+          <post_condition/>
+          <test_script_entry>/opt/wrt-integration-tizen-tests/integration/Crosswalk_WebApp_HW_KEY.html </test_script_entry>
+        </description>
+      </testcase>
+      <testcase purpose="Validate if the Virtual keyboard  work fine in Crosswalk App" type="Functional" status="designed" component="Integration with Tizen System" execution_type="manual" priority="P2" id="Crosswalk_WebApp_VBK_Basic">
+        <description>
+          <pre_condition>
+            1. Make sure Crosswalk is installed
+            2. Make sure there some webapps are available,and webapps contains text input box
+          </pre_condition>
+          <post_condition/>
+          <test_script_entry>/opt/wrt-integration-tizen-tests/integration/Crosswalk_WebApp_VBK_Basic.html </test_script_entry>
+        </description>
+      </testcase>
+      <testcase purpose="Validate if the Virtual keyboard ContentSwitch work fine in Crosswalk App" type="Functional" status="designed" component="Integration with Tizen System" execution_type="manual" priority="P2" id="Crosswalk_WebApp_VBK_ContentSwitch">
+        <description>
+          <pre_condition>
+            1. Make sure Crosswalk is installed
+            2. Make sure there some webapps are available,and webapps contains text input box
+          </pre_condition>
+          <post_condition/>
+          <test_script_entry>/opt/wrt-integration-tizen-tests/integration/Crosswalk_WebApp_VBK_ContentSwitch.html </test_script_entry>
+        </description>
+      </testcase>
+      <testcase purpose="Validate if the Virtual keyboard Rotation  work fine in Crosswalk App" type="Functional" status="designed" component="Integration with Tizen System" execution_type="manual" priority="P2" id="Crosswalk_WebApp_VBK_Rotation">
+        <description>
+          <pre_condition>
+            1. Make sure Crosswalk is installed
+            2. Make sure there some webapps are available,and webapps contains text input box
+          </pre_condition>
+          <post_condition/>
+          <test_script_entry>/opt/wrt-integration-tizen-tests/integration/Crosswalk_WebApp_VBK_Rotation.html </test_script_entry>
+        </description>
+      </testcase>
+      <testcase purpose="Validate if Crosswalk support scroll gesture on Web Apps" type="Functional" status="approved" component="Integration with Tizen System" execution_type="manual" priority="P1" id="Crosswalk_WebApp_Touch_Gesture_Scroll">
+        <description>
+          <pre_condition>
+            1. Make sure Crosswalk application is launched and the device connected to network
+            2. Package a Web App,it contains below web links:Open website link: http://www.hao123.com
+            3. Install this Web App
+          </pre_condition>
+          <post_condition/>
+          <test_script_entry>/opt/wrt-integration-tizen-tests/integration/Crosswalk_WebApp_Touch_Gesture_Scroll.html </test_script_entry>
+        </description>
+      </testcase>
+      <testcase purpose="Validate if Crosswalk support swipe gesture on Web Apps" type="Functional" status="approved" component="Integration with Tizen System" execution_type="manual" priority="P2" id="Crosswalk_WebApp_Touch_Gesture_Swipe">
+        <description>
+          <pre_condition>
+            1. Make sure Crosswalk application is launched and the device connected to network
+            2. Package a Web App,it contains below web links:Open website link: http://www.hao123.com
+            3. Install this Web App
+          </pre_condition>
+          <test_script_entry>/opt/wrt-integration-tizen-tests/integration/Crosswalk_WebApp_Touch_Gesture_Swipe.html </test_script_entry>
+        </description>
+      </testcase>
+      <testcase purpose="Validate if Crosswalk support click gesture on Web Apps" type="Functional" status="approved" component="Integration with Tizen System" execution_type="manual" priority="P0" id="Crosswalk_WebApp_Touch_Gesture_Click">
+        <description>
+          <pre_condition>
+            1. Make sure Crosswalk application is launched and the device connected to network
+            2. Package a Web App,it contains below web links:Open website link: http://www.hao123.com
+            3. Install this Web App
+          </pre_condition>
+          <post_condition/>
+          <test_script_entry>/opt/wrt-integration-tizen-tests/integration/Crosswalk_WebApp_Touch_Gesture_Click.html </test_script_entry>
+        </description>
+      </testcase>
+      <testcase purpose="Validate Crosswalk support rotate between portrait orientation screen and landscape orientation screen" type="Functional" status="designed" component="Integration with Tizen System" execution_type="manual" priority="P1" id="Crosswalk_WebApp_Orientation">
+        <description>
+          <pre_condition>
+            1. Make sure Crosswalk is installed
+            2. Make sure there some webapps are available
+          </pre_condition>
+          <test_script_entry>/opt/wrt-integration-tizen-tests/integration/Crosswalk_WebApp_Orientation.html </test_script_entry>
+        </description>
+      </testcase>
+      <testcase purpose="Validate if screen display normally when Web App dispaly landscape orientation" type="Functional" status="designed" component="Integration with Tizen System" execution_type="manual" priority="P2" id="Crosswalk_WebApp_Orientation_UI">
+        <description>
+          <pre_condition>
+            1. Make sure Crosswalk is installed
+            2. Make sure there some webapps are available
+          </pre_condition>
+          <post_condition/>
+          <test_script_entry>/opt/wrt-integration-tizen-tests/integration/Crosswalk_WebApp_Orientation_UI.html </test_script_entry>
+        </description>
+      </testcase>
+      <testcase purpose="Validate if Crosswalk Browser support access hotwebsite webpage" type="Functional" status="approved" component="Integration with Tizen System" execution_type="manual" priority="P2" id="Crosswalk_Browser_HotWebsite">
+        <description>
+          <pre_condition>
+            1. Make sure Crosswalk application is launched and the device connected to network;
+          </pre_condition>
+          <test_script_entry>/opt/wrt-integration-tizen-tests/integration/Crosswalk_Browser_HotWebsite.html </test_script_entry>
+        </description>
+      </testcase>
+      <testcase purpose="Validate if could copy big content and paste it" type="Functional" status="designed" component="Integration with Android System" execution_type="manual" priority="P2" id="Crosswalk_CopyAndPaste_Copy_BigContent">
+        <description>
+          <pre_condition>
+            1.Make sure Crosswalk binary is installed;
+            2.Make sure at least one audio app is installed.
+          </pre_condition>
+          <test_script_entry>/opt/wrt-integration-android-tests/integration/Crosswalk_CopyAndPaste_Copy_BigContent.html </test_script_entry>
+        </description>
+      </testcase>
+      <testcase purpose="Validate if could copy hyperlink" type="Functional" status="designed" component="Integration with Android System" execution_type="manual" priority="P2" id="Crosswalk_CopyAndPaste_Copy_Hyperlink">
+        <description>
+          <pre_condition>
+            1.Make sure Crosswalk binary is installed;
+            2.Make sure at least one audio app is installed.
+          </pre_condition>
+          <test_script_entry>/opt/wrt-integration-android-tests/integration/Crosswalk_CopyAndPaste_Copy_Hyperlink.html </test_script_entry>
+        </description>
+      </testcase>
+      <testcase purpose="Validate if could copy IP" type="Functional" status="designed" component="Integration with Android System" execution_type="manual" priority="P2" id="Crosswalk_CopyAndPaste_Copy_IP">
+        <description>
+          <pre_condition>
+            1.Make sure Crosswalk binary is installed;
+            2.Make sure at least one audio app is installed.
+          </pre_condition>
+          <test_script_entry>/opt/wrt-integration-android-tests/integration/Crosswalk_CopyAndPaste_Copy_IP.html </test_script_entry>
+        </description>
+      </testcase>
+      <testcase purpose="Validate if could copy MailAddress" type="Functional" status="designed" component="Integration with Android System" execution_type="manual" priority="P2" id="Crosswalk_CopyAndPaste_Copy_MailAddress">
+        <description>
+          <pre_condition>
+            1.Make sure Crosswalk binary is installed;
+            2.Make sure at least one audio app is installed.
+          </pre_condition>
+          <test_script_entry>/opt/wrt-integration-android-tests/integration/Crosswalk_CopyAndPaste_Copy_MailAddress.html </test_script_entry>
+        </description>
+      </testcase>
+      <testcase purpose="Validate if could copy Paragraph" type="Functional" status="designed" component="Integration with Android System" execution_type="manual" priority="P2" id="Crosswalk_CopyAndPaste_Copy_Paragraph">
+        <description>
+          <pre_condition>
+            1.Make sure Crosswalk binary is installed;
+            2.Make sure at least one audio app is installed.
+          </pre_condition>
+          <test_script_entry>/opt/wrt-integration-android-tests/integration/Crosswalk_CopyAndPaste_Copy_Paragraph.html </test_script_entry>
+        </description>
+      </testcase>
+      <testcase purpose="Validate if could copy PhoneNumber" type="Functional" status="designed" component="Integration with Android System" execution_type="manual" priority="P2" id="Crosswalk_CopyAndPaste_Copy_PhoneNumber">
+        <description>
+          <pre_condition>
+            1.Make sure Crosswalk binary is installed;
+            2.Make sure at least one audio app is installed.
+          </pre_condition>
+          <test_script_entry>/opt/wrt-integration-android-tests/integration/Crosswalk_CopyAndPaste_Copy_PhoneNumber.html </test_script_entry>
+        </description>
+      </testcase>
+      <testcase purpose="Validate if could copy Photo" type="Functional" status="designed" component="Integration with Android System" execution_type="manual" priority="P3" id="Crosswalk_CopyAndPaste_Copy_Photo">
+        <description>
+          <pre_condition>
+            1.Make sure Crosswalk binary is installed;
+            2.Make sure at least one audio app is installed.
+          </pre_condition>
+          <test_script_entry>/opt/wrt-integration-android-tests/integration/Crosswalk_CopyAndPaste_Copy_Photo.html </test_script_entry>
+        </description>
+      </testcase>
+      <testcase purpose="Validate if could copy ServeralCpoies" type="Functional" status="designed" component="Integration with Android System" execution_type="manual" priority="P2" id="Crosswalk_CopyAndPaste_Copy_ServeralCpoies">
+        <description>
+          <pre_condition>
+            1.Make sure Crosswalk binary is installed;
+            2.Make sure at least one audio app is installed.
+          </pre_condition>
+          <test_script_entry>/opt/wrt-integration-android-tests/integration/Crosswalk_CopyAndPaste_Copy_ServeralCpoies.html </test_script_entry>
+        </description>
+      </testcase>
+      <testcase purpose="Validate if could copy ToNativeapp" type="Functional" status="designed" component="Integration with Android System" execution_type="manual" priority="P2" id="Crosswalk_CopyAndPaste_Copy_ToNativeapp">
+        <description>
+          <pre_condition>
+            1.Make sure Crosswalk binary is installed;
+            2.Make sure at least one audio app is installed.
+          </pre_condition>
+          <test_script_entry>/opt/wrt-integration-android-tests/integration/Crosswalk_CopyAndPaste_Copy_ToNativeapp.html </test_script_entry>
+        </description>
+      </testcase>
+      <testcase purpose="Validate if could copy ToWebapp" type="Functional" status="designed" component="Integration with Android System" execution_type="manual" priority="P2" id="Crosswalk_CopyAndPaste_Copy_ToWebapp">
+        <description>
+          <pre_condition>
+            1.Make sure Crosswalk binary is installed;
+            2.Make sure at least one audio app is installed.
+          </pre_condition>
+          <test_script_entry>/opt/wrt-integration-android-tests/integration/Crosswalk_CopyAndPaste_Copy_ToWebapp.html </test_script_entry>
+        </description>
+      </testcase>
+      <testcase purpose="Validate if could copy Select all" type="Functional" status="designed" component="Integration with Android System" execution_type="manual" priority="P1" id="Crosswalk_CopyAndPaste_SelectAll_Copy">
+        <description>
+          <pre_condition>
+            1.Make sure Crosswalk binary is installed;
+            2.Make sure at least one audio app is installed.
+          </pre_condition>
+          <test_script_entry>/opt/wrt-integration-android-tests/integration/Crosswalk_CopyAndPaste_SelectAll_Copy.html </test_script_entry>
+        </description>
+      </testcase>
+      <testcase purpose="Validate if could copy Selected_Copy" type="Functional" status="designed" component="Integration with Android System" execution_type="manual" priority="P0" id="Crosswalk_CopyAndPaste_Selected_Copy">
+        <description>
+          <pre_condition>
+            1.Make sure Crosswalk binary is installed;
+            2.Make sure at least one audio app is installed.
+          </pre_condition>
+          <test_script_entry>/opt/wrt-integration-android-tests/integration/Crosswalk_CopyAndPaste_Selected_Copy.html </test_script_entry>
+        </description>
+      </testcase>
+      <testcase purpose="Validate if could cut text" type="Functional" status="designed" component="Integration with Android System" execution_type="manual" priority="P1" id="Crosswalk_CopyAndPaste_Selected_Cut">
+        <description>
+          <pre_condition>
+            1.Make sure Crosswalk binary is installed;
+            2.Make sure at least one audio app is installed.
+          </pre_condition>
+          <test_script_entry>/opt/wrt-integration-android-tests/integration/Crosswalk_CopyAndPaste_Selected_Cut.html </test_script_entry>
+        </description>
+      </testcase>
+      <testcase purpose="Validate if the UI display normal" type="Functional" status="designed" component="Integration with Android System" execution_type="manual" priority="P1" id="Crosswalk_CopyAndPaste_Selected_UI">
+        <description>
+          <pre_condition>
+            1.Make sure Crosswalk binary is installed;
+            2.Make sure at least one audio app is installed.
+          </pre_condition>
+          <test_script_entry>/opt/wrt-integration-android-tests/integration/Crosswalk_CopyAndPaste_Selected_UI.html </test_script_entry>
+        </description>
+      </testcase>
+      <testcase purpose="Validate if select one char copy and paste" type="Functional" status="designed" component="Integration with Android System" execution_type="manual" priority="P2" id="Crosswalk_CopyAndPaste_SelectOneChar_Copy">
+        <description>
+          <pre_condition>
+            1.Make sure Crosswalk binary is installed;
+            2.Make sure at least one audio app is installed.
+          </pre_condition>
+          <test_script_entry>/opt/wrt-integration-android-tests/integration/Crosswalk_CopyAndPaste_SelectOneChar_Copy.html </test_script_entry>
+        </description>
+      </testcase>
+      <testcase purpose="Validate if select speci char copy and paste" type="Functional" status="designed" component="Integration with Android System" execution_type="manual" priority="P2" id="Crosswalk_CopyAndPaste_SelectSpecialChar_Copy">
+        <description>
+          <pre_condition>
+            1.Make sure Crosswalk binary is installed;
+            2.Make sure at least one audio app is installed.
+          </pre_condition>
+          <test_script_entry>/opt/wrt-integration-android-tests/integration/Crosswalk_CopyAndPaste_SelectSpecialChar_Copy.html </test_script_entry>
+        </description>
+      </testcase>
+    </set>
+  </suite>
+</test_definition>

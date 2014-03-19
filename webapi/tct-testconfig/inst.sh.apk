@@ -1,0 +1,45 @@
+#!/bin/bash
+
+#parse params
+USAGE="Usage: ./inst.sh [-i] [-u]
+  -i install apk and config environment
+  -u uninstall apk and remove source file
+[-i] option was set as default."
+
+#TODO:update PACKAGENAME for each suite,pay attention to use '_'
+PACKAGENAME=tct_testconfig
+SUITENAME=`echo $PACKAGENAME |sed 's/_/-/g'`
+RESOURCE_DIR=/opt/usr/media
+
+function installpkg(){
+extend=".apk"
+ls |grep x86.apk  > /dev/null 2>&1 && extend="_x86.apk"
+ls |grep arm.apk  > /dev/null 2>&1 && extend="_arm.apk"
+
+
+### copy json file ###
+adb shell cp -f /opt/usr/media/tct/opt/$SUITENAME/preconfigure.json /opt/usr/media/tct/
+
+#TODO: copy resource
+#eg:adb push xx $RESOURCE_DIR
+}
+
+function uninstallpkg(){
+
+#TODO: remove resource
+#eg:adb shell rm -rf $RESOURCE_DIR/xx
+adb shell rm -rf /opt/usr/media/tct/opt/$SUITENAME &>/dev/null
+
+###### remove preconfigure.json from /opt/usr/media/ ######
+adb shell rm -f /opt/usr/media/tct/preconfigure.json &>/dev/null
+}
+
+case "$1" in
+    -h|--help) echo "$USAGE"
+               exit ;;
+    ""|-i) installpkg;;
+    -u) uninstallpkg;;
+    *) echo "Unknown option: $1"
+       echo "$USAGE"
+       exit ;;
+esac

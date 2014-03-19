@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-stylesheet type="text/xsl" href="./testcase.xsl"?>
+<test_definition>
+  <suite name="cordova-mobilespec-android-tests" category="Cordova_Mobile_Spec" launcher="xwalk">
+    <set name="MobileSpec">
+      <testcase purpose="Validate if 'cordova_mobile_spec' app icon display normally" type="Functional" status="approved" component="Cordova_Mobile_Spec" execution_type="manual" priority="P0" id="CrossWalk_Cordova_Mobile_Spec_Icon">
+        <description>
+          <pre_condition>
+            1. Make sure 'cordova_mobile_spec-debug.apk' app is installed;
+            2. Make sure there some webapps are available.
+          </pre_condition>
+          <test_script_entry>/opt/cordova-mobilespec-android-tests/mobilespec/CrossWalk_Cordova_Mobile_Spec_Icon.html</test_script_entry>
+        </description>
+      </testcase>
+      <testcase purpose="Validate 'cordova_mobile_spec' app can be installed successfully" type="Functional" status="approved" component="Cordova_Mobile_Spec" execution_type="manual" priority="P0" id="CrossWalk_Cordova_Mobile_Spec_Install">
+        <description>
+          <pre_condition>
+            1. Make sure the 'cordova_mobile_spec-debug.apk' package has existed in the local;
+          </pre_condition>
+          <test_script_entry>/opt/cordova-mobilespec-android-tests/mobilespec/CrossWalk_Cordova_Mobile_Spec_Install.html </test_script_entry>
+        </description>
+      </testcase>
+      <testcase purpose="Validate 'cordova_mobile_spec' app can be uninstalled successfully" type="Functional" status="approved" component="Cordova_Mobile_Spec" execution_type="manual" priority="P0" id="CrossWalk_Cordova_Mobile_Spec_Uninstall">
+        <description>
+          <pre_condition>
+            1. Make sure 'cordova_mobile_spec-debug.apk' app is installed;
+            2. Make sure there some webapps are available.
+          </pre_condition>
+           <test_script_entry>/opt/cordova-mobilespec-android-tests/mobilespec/CrossWalk_Cordova_Mobile_Spec_Uninstall.html </test_script_entry>
+        </description>
+      </testcase>
+      <testcase purpose="Validate 'cordova_mobile_spec'  app can be launched successfully" type="Functional" status="approved" component="Cordova_Mobile_Spec" execution_type="manual" priority="P0" id="CrossWalk_Cordova_Mobile_Spec_Launch">
+        <description>
+          <pre_condition>
+            1. Make sure 'cordova_mobile_spec' app is installed;
+            2. Make sure there some webapps are available.
+          </pre_condition>
+           <test_script_entry>/opt/cordova-mobilespec-android-tests/mobilespec/CrossWalk_Cordova_Mobile_Spec_Launch.html </test_script_entry>
+        </description>
+      </testcase>
+      <testcase purpose="Validate 'cordova_mobile_spec' app can be closed successfully" type="Functional" status="approved" component="Cordova_Mobile_Spec" execution_type="manual" priority="P0" id="CrossWalk_Cordova_Mobile_Spec_Close">
+        <description>
+          <pre_condition>
+            1. Make sure 'cordova_mobile_spec' app is launched;
+          </pre_condition>
+          <test_script_entry>/opt/cordova-mobilespec-android-tests/mobilespec/CrossWalk_Cordova_Mobile_Spec_Close.html </test_script_entry>
+        </description>
+      </testcase>
+      <testcase purpose="Validate 'cordova_mobile_spec' app could debug by remote host" type="Functional" status="approved" component="Cordova_Mobile_Spec" execution_type="manual" priority="P0" id="CrossWalk_Cordova_Remote_Debug_Connection">
+        <description>
+          <pre_condition>
+            1. Make sure 'cordova_mobile_spec-debug.apk' is installed.
+          </pre_condition>
+          <test_script_entry>/opt/cordova-mobilespec-android-tests/mobilespec/CrossWalk_Cordova_Remote_Debug_Connection.html </test_script_entry>
+        </description>
+      </testcase>
+      <testcase purpose="Validate 'cordova_mobile_spec' app could be checked by remote debug" type="Functional" status="approved" component="Cordova_Mobile_Spec" execution_type="manual" priority="P1" id="CrossWalk_Cordova_Remote_Debug_CheckInfo">
+        <description>
+          <pre_condition>
+            1. Make sure 'cordova_mobile_spec' app info is  shown in the spection page.
+          </pre_condition>
+          <test_script_entry>/opt/cordova-mobilespec-android-tests/mobilespec/CrossWalk_Cordova_Remote_Debug_CheckInfo.html </test_script_entry>
+        </description>
+      </testcase>
+      <testcase purpose="Validate 'cordova_mobile_spec' app could be added Breakpoints by remote debug" type="Functional" status="approved" component="Cordova_Mobile_Spec" execution_type="manual" priority="P1" id="CrossWalk_Cordova_Remote_Debug_Breakpoints">
+        <description>
+          <pre_condition>
+            1. Make sure 'cordova_mobile_spec' app info is  shown in the spection page.
+          </pre_condition>
+          <test_script_entry>/opt/cordova-mobilespec-android-tests/mobilespec/CrossWalk_Cordova_Remote_Debug_Breakpoints.html </test_script_entry>
+        </description>
+      </testcase>
+      <testcase purpose="Validate CrossWalk viewed webpage could be modified by remote debug" type="Functional" status="approved" component="Cordova_Mobile_Spec" execution_type="manual" priority="P1" id="CrossWalk_Cordova_Remote_Debug_Modification">
+        <description>
+          <pre_condition>
+            1. Make sure 'cordova_mobile_spec' app lanunched by remote debug mode.
+          </pre_condition>
+          <test_script_entry>/opt/cordova-mobilespec-android-tests/mobilespec/CrossWalk_Cordova_Remote_Debug_Modification.html </test_script_entry>
+        </description>
+      </testcase>
+    </set>
+  </suite>
+</test_definition>

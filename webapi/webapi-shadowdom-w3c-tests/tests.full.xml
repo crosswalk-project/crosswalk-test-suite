@@ -1,0 +1,1184 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-stylesheet type="text/xsl" href="./testcase.xsl"?>
+<test_definition>
+  <suite name="webapi-shadowdom-w3c-tests" launcher="xwalk" category="W3C/HTML5 APIs">
+    <set name="hermind/work/xwalk/webapi-20140122-shadowdom/webapi-shadowdom-w3c-tests/tests.full.xml-ShadowDom">
+      <testcase purpose="Check if CSS styles declared in enclosing tree are not be applied in a shadow tree if the apply-author-styles flag is set to false" type="compliance" status="approved" component="WebAPI/Web Components/Shadow DOM" execution_type="auto" priority="P0" id="shadowroot_applyAuthorStyles">
+        <description>
+          <test_script_entry>/opt/webapi-shadowdom-w3c-tests/shadowdom/w3c/elements-and-dom-objects/shadowroot-object/shadowroot-attributes/test-001.html?total_num=2&amp;amp;locator_key=id&amp;amp;value=2</test_script_entry>
+        </description>
+        <specs>
+          <spec>
+            <spec_assertion element_type="property" element_name="applyAuthorStyles" interface="ShadowRoot" specification="Shadow DOM" section="Web Components" category="W3C API Specifications"/>
+            <spec_url>https://dvcs.w3.org/hg/webcomponents/raw-file/tip/spec/shadow/index.html</spec_url>
+            <spec_statement/>
+          </spec>
+        </specs>
+      </testcase>
+      <testcase purpose="Check if the attribute return the current value of the applyAuthorStyles flag" type="compliance" status="approved" component="WebAPI/Web Components/Shadow DOM" execution_type="auto" priority="P1" id="shadowroot_applyAuthorStyles_getter">
+        <description>
+          <test_script_entry>/opt/webapi-shadowdom-w3c-tests/shadowdom/w3c/elements-and-dom-objects/shadowroot-object/shadowroot-attributes/test-003.html?total_num=3&amp;amp;locator_key=id&amp;amp;value=1</test_script_entry>
+        </description>
+        <specs>
+          <spec>
+            <spec_assertion element_type="property" element_name="applyAuthorStyles" interface="ShadowRoot" specification="Shadow DOM" section="Web Components" category="W3C API Specifications"/>
+            <spec_url>https://dvcs.w3.org/hg/webcomponents/raw-file/tip/spec/shadow/index.html</spec_url>
+            <spec_statement/>
+          </spec>
+        </specs>
+      </testcase>
+      <testcase purpose="Check if the resetStyleInheritance continue to inherit CSS styles if the apply-author-styles flag is set to false" type="compliance" status="approved" component="WebAPI/Web Components/Shadow DOM" execution_type="auto" priority="P1" id="shadowroot_resetStyleInheritance">
+        <description>
+          <test_script_entry>/opt/webapi-shadowdom-w3c-tests/shadowdom/w3c/elements-and-dom-objects/shadowroot-object/shadowroot-attributes/test-004.html?total_num=2&amp;amp;locator_key=id&amp;amp;value=2</test_script_entry>
+        </description>
+        <specs>
+          <spec>
+            <spec_assertion element_type="property" element_name="resetStyleInheritance" interface="ShadowRoot" specification="Shadow DOM" section="Web Components" category="W3C API Specifications"/>
+            <spec_url>https://dvcs.w3.org/hg/webcomponents/raw-file/tip/spec/shadow/index.html</spec_url>
+            <spec_statement/>
+          </spec>
+        </specs>
+      </testcase>
+      <testcase purpose="Check if the attribute return the current value of the resetStyleInheritance flag" type="compliance" status="approved" component="WebAPI/Web Components/Shadow DOM" execution_type="auto" priority="P1" id="shadowroot_resetStyleInheritance_getter">
+        <description>
+          <test_script_entry>/opt/webapi-shadowdom-w3c-tests/shadowdom/w3c/elements-and-dom-objects/shadowroot-object/shadowroot-attributes/test-006.html?total_num=3&amp;amp;locator_key=id&amp;amp;value=1</test_script_entry>
+        </description>
+        <specs>
+          <spec>
+            <spec_assertion element_type="property" element_name="resetStyleInheritance" interface="ShadowRoot" specification="Shadow DOM" section="Web Components" category="W3C API Specifications"/>
+            <spec_url>https://dvcs.w3.org/hg/webcomponents/raw-file/tip/spec/shadow/index.html</spec_url>
+            <spec_statement/>
+          </spec>
+        </specs>
+      </testcase>
+      <testcase purpose="Check if activeElement attribute of the ShadowRoot must return the currently focused element in the shadow tree" type="compliance" status="approved" component="WebAPI/Web Components/Shadow DOM" execution_type="auto" priority="P1" id="shadowroot_activeElement">
+        <description>
+          <test_script_entry>/opt/webapi-shadowdom-w3c-tests/shadowdom/w3c/elements-and-dom-objects/shadowroot-object/shadowroot-attributes/test-007.html</test_script_entry>
+        </description>
+        <specs>
+          <spec>
+            <spec_assertion element_type="property" element_name="activeElement" interface="ShadowRoot" specification="Shadow DOM" section="Web Components" category="W3C API Specifications"/>
+            <spec_url>https://dvcs.w3.org/hg/webcomponents/raw-file/tip/spec/shadow/index.html</spec_url>
+            <spec_statement/>
+          </spec>
+        </specs>
+      </testcase>
+      <testcase purpose="Check if activeElement attribute of the ShadowRoot must return null if there's no focused element" type="compliance" status="approved" component="WebAPI/Web Components/Shadow DOM" execution_type="auto" priority="P1" id="shadowroot_activeElement_getter">
+        <description>
+          <test_script_entry>/opt/webapi-shadowdom-w3c-tests/shadowdom/w3c/elements-and-dom-objects/shadowroot-object/shadowroot-attributes/test-008.html?total_num=3&amp;amp;locator_key=id&amp;amp;value=1</test_script_entry>
+        </description>
+        <specs>
+          <spec>
+            <spec_assertion element_type="property" element_name="activeElement" interface="ShadowRoot" specification="Shadow DOM" section="Web Components" category="W3C API Specifications"/>
+            <spec_url>https://dvcs.w3.org/hg/webcomponents/raw-file/tip/spec/shadow/index.html</spec_url>
+            <spec_statement/>
+          </spec>
+        </specs>
+      </testcase>
+      <testcase purpose="Check if innerHTML attribute of the ShadowRoot return the current value of the resetStyleInheritance flag" type="compliance" status="approved" component="WebAPI/Web Components/Shadow DOM" execution_type="auto" priority="P1" id="shadowroot_innerHTML">
+        <description>
+          <test_script_entry>/opt/webapi-shadowdom-w3c-tests/shadowdom/w3c/elements-and-dom-objects/shadowroot-object/shadowroot-attributes/test-009.html</test_script_entry>
+        </description>
+        <specs>
+          <spec>
+            <spec_assertion element_type="property" element_name="innerHTML" interface="ShadowRoot" specification="Shadow DOM" section="Web Components" category="W3C API Specifications"/>
+            <spec_url>https://dvcs.w3.org/hg/webcomponents/raw-file/tip/spec/shadow/index.html</spec_url>
+            <spec_statement/>
+          </spec>
+        </specs>
+      </testcase>
+      <testcase purpose="Check if innerHTML attribute replace all content of the ShadowRoot object" type="compliance" status="approved" component="WebAPI/Web Components/Shadow DOM" execution_type="auto" priority="P1" id="shadowroot_innerHTML_setter">
+        <description>
+          <test_script_entry>/opt/webapi-shadowdom-w3c-tests/shadowdom/w3c/elements-and-dom-objects/shadowroot-object/shadowroot-attributes/test-010.html?total_num=2&amp;amp;locator_key=id&amp;amp;value=2</test_script_entry>
+        </description>
+        <specs>
+          <spec>
+            <spec_assertion element_type="property" element_name="innerHTML" interface="ShadowRoot" specification="Shadow DOM" section="Web Components" category="W3C API Specifications"/>
+            <spec_url>https://dvcs.w3.org/hg/webcomponents/raw-file/tip/spec/shadow/index.html</spec_url>
+            <spec_statement/>
+          </spec>
+        </specs>
+      </testcase>
+      <testcase purpose="Check if styleSheets attribute return the shadow root style sheets" type="compliance" status="approved" component="WebAPI/Web Components/Shadow DOM" execution_type="auto" priority="P1" id="shadowroot_styleSheets">
+        <description>
+          <test_script_entry>/opt/webapi-shadowdom-w3c-tests/shadowdom/w3c/elements-and-dom-objects/shadowroot-object/shadowroot-attributes/test-011.html?total_num=2&amp;amp;locator_key=id&amp;amp;value=2</test_script_entry>
+        </description>
+        <specs>
+          <spec>
+            <spec_assertion element_type="property" element_name="StyleSheetList" interface="ShadowRoot" specification="Shadow DOM" section="Web Components" category="W3C API Specifications"/>
+            <spec_url>https://dvcs.w3.org/hg/webcomponents/raw-file/tip/spec/shadow/index.html</spec_url>
+            <spec_statement/>
+          </spec>
+        </specs>
+      </testcase>
+      <testcase purpose="Check if ShadowRoot getElementById() return child element" type="compliance" status="approved" component="WebAPI/Web Components/Shadow DOM" execution_type="auto" priority="P1" id="shadowroot_getElementById">
+        <description>
+          <test_script_entry>/opt/webapi-shadowdom-w3c-tests/shadowdom/w3c/elements-and-dom-objects/shadowroot-object/shadowroot-methods/test-001.html?total_num=2&amp;amp;locator_key=id&amp;amp;value=1</test_script_entry>
+        </description>
+        <specs>
+          <spec>
+            <spec_assertion element_type="method" element_name="getElementById" interface="ShadowRoot" specification="Shadow DOM" section="Web Components" category="W3C API Specifications"/>
+            <spec_url>https://dvcs.w3.org/hg/webcomponents/raw-file/tip/spec/shadow/index.html</spec_url>
+            <spec_statement/>
+          </spec>
+        </specs>
+      </testcase>
+      <testcase purpose="Check if ShadowRoot getElementsByClassName() return matching child element" type="compliance" status="approved" component="WebAPI/Web Components/Shadow DOM" execution_type="auto" priority="P1" id="shadowroot_getElementsByClassName">
+        <description>
+          <test_script_entry>/opt/webapi-shadowdom-w3c-tests/shadowdom/w3c/elements-and-dom-objects/shadowroot-object/shadowroot-methods/test-002.html?total_num=3&amp;amp;locator_key=id&amp;amp;value=2</test_script_entry>
+        </description>
+        <specs>
+          <spec>
+            <spec_assertion element_type="method" element_name="getElementsByClassName" interface="ShadowRoot" specification="Shadow DOM" section="Web Components" category="W3C API Specifications"/>
+            <spec_url>https://dvcs.w3.org/hg/webcomponents/raw-file/tip/spec/shadow/index.html</spec_url>
+            <spec_statement/>
+          </spec>
+        </specs>
+      </testcase>
+      <testcase purpose="Check if ShadowRoot getElementsByTagNameNS() return matching child element" type="compliance" status="approved" component="WebAPI/Web Components/Shadow DOM" execution_type="auto" priority="P1" id="shadowroot_getElementsByTagNameNS">
+        <description>
+          <test_script_entry>/opt/webapi-shadowdom-w3c-tests/shadowdom/w3c/elements-and-dom-objects/shadowroot-object/shadowroot-methods/test-003.html?total_num=7&amp;amp;locator_key=id&amp;amp;value=2</test_script_entry>
+        </description>
+        <specs>
+          <spec>
+            <spec_assertion element_type="method" element_name="getElementsByTagNameNS" interface="ShadowRoot" specification="Shadow DOM" section="Web Components" category="W3C API Specifications"/>
+            <spec_url>https://dvcs.w3.org/hg/webcomponents/raw-file/tip/spec/shadow/index.html</spec_url>
+            <spec_statement/>
+          </spec>
+        </specs>
+      </testcase>
+      <testcase purpose="Check if getSelection() method of the shadow root object return the current selection in this shadow tree" type="compliance" status="approved" component="WebAPI/Web Components/Shadow DOM" execution_type="auto" priority="P1" id="shadowroot_getSelection">
+        <description>
+          <test_script_entry>/opt/webapi-shadowdom-w3c-tests/shadowdom/w3c/elements-and-dom-objects/shadowroot-object/shadowroot-methods/test-004.html</test_script_entry>
+        </description>
+        <specs>
+          <spec>
+            <spec_assertion element_type="method" element_name="getSelection" interface="ShadowRoot" specification="Shadow DOM" section="Web Components" category="W3C API Specifications"/>
+            <spec_url>https://dvcs.w3.org/hg/webcomponents/raw-file/tip/spec/shadow/index.html</spec_url>
+            <spec_statement/>
+          </spec>
+        </specs>
+      </testcase>
+      <testcase purpose="Check if ShadowRoot getElementsByTagName() return matching child element" type="compliance" status="approved" component="WebAPI/Web Components/Shadow DOM" execution_type="auto" priority="P1" id="shadowroot_getElementsByTagName">
+        <description>
+          <test_script_entry>/opt/webapi-shadowdom-w3c-tests/shadowdom/w3c/elements-and-dom-objects/shadowroot-object/shadowroot-methods/test-005.html?total_num=3&amp;amp;locator_key=id&amp;amp;value=2</test_script_entry>
+        </description>
+        <specs>
+          <spec>
+            <spec_assertion element_type="method" element_name="getElementsByTagNameNS" interface="ShadowRoot" specification="Shadow DOM" section="Web Components" category="W3C API Specifications"/>
+            <spec_url>https://dvcs.w3.org/hg/webcomponents/raw-file/tip/spec/shadow/index.html</spec_url>
+            <spec_statement/>
+          </spec>
+        </specs>
+      </testcase>
+      <testcase purpose="Check if elementFromPoint method return null If x argument of elementFromPoint(x, y) is less than zero" type="compliance" status="approved" component="WebAPI/Web Components/Shadow DOM" execution_type="auto" priority="P1" id="shadowroot_elementFromPoint">
+        <description>
+          <test_script_entry>/opt/webapi-shadowdom-w3c-tests/shadowdom/w3c/elements-and-dom-objects/shadowroot-object/shadowroot-methods/test-007.html?total_num=2&amp;amp;locator_key=id&amp;amp;value=1</test_script_entry>
+        </description>
+        <specs>
+          <spec>
+            <spec_assertion element_type="method" element_name="elementFromPoint" interface="ShadowRoot" specification="Shadow DOM" section="Web Components" category="W3C API Specifications"/>
+            <spec_url>https://dvcs.w3.org/hg/webcomponents/raw-file/tip/spec/shadow/index.html</spec_url>
+            <spec_statement/>
+          </spec>
+        </specs>
+      </testcase>
+      <testcase purpose="Check if attribute pseudo return the current custom pseudo-element value" type="compliance" status="approved" component="WebAPI/Web Components/Shadow DOM" execution_type="auto" priority="P0" id="element_pseudo">
+        <description>
+          <test_script_entry>/opt/webapi-shadowdom-w3c-tests/shadowdom/w3c/elements-and-dom-objects/extensions-to-element-interface/attributes/test-001.html</test_script_entry>
+        </description>
+        <specs>
+          <spec>
+            <spec_assertion element_type="property" element_name="pseudo" interface="Element" specification="Shadow DOM" section="Web Components" category="W3C API Specifications"/>
+            <spec_url>https://dvcs.w3.org/hg/webcomponents/raw-file/tip/spec/shadow/index.html</spec_url>
+            <spec_statement/>
+          </spec>
+        </specs>
+      </testcase>
+      <testcase purpose="Check if Pseudo-element style be discarded by new setter" type="compliance" status="approved" component="WebAPI/Web Components/Shadow DOM" execution_type="auto" priority="P1" id="element_pseudo_setter">
+        <description>
+          <test_script_entry>/opt/webapi-shadowdom-w3c-tests/shadowdom/w3c/elements-and-dom-objects/extensions-to-element-interface/attributes/test-003.html</test_script_entry>
+        </description>
+        <specs>
+          <spec>
+            <spec_assertion element_type="property" element_name="pseudo" interface="Element" specification="Shadow DOM" section="Web Components" category="W3C API Specifications"/>
+            <spec_url>https://dvcs.w3.org/hg/webcomponents/raw-file/tip/spec/shadow/index.html</spec_url>
+            <spec_statement/>
+          </spec>
+        </specs>
+      </testcase>
+      <testcase purpose="Check if attribute shadowRoot return the youngest tree that has the context object as its shadow host" type="compliance" status="approved" component="WebAPI/Web Components/Shadow DOM" execution_type="auto" priority="P1" id="element_shadowRoot">
+        <description>
+          <test_script_entry>/opt/webapi-shadowdom-w3c-tests/shadowdom/w3c/elements-and-dom-objects/extensions-to-element-interface/attributes/test-005.html</test_script_entry>
+        </description>
+        <specs>
+          <spec>
+            <spec_assertion element_type="property" element_name="shadowRoot" interface="Element" specification="Shadow DOM" section="Web Components" category="W3C API Specifications"/>
+            <spec_url>https://dvcs.w3.org/hg/webcomponents/raw-file/tip/spec/shadow/index.html</spec_url>
+            <spec_statement/>
+          </spec>
+        </specs>
+      </testcase>
+      <testcase purpose="Check if attribute shadowRoot return null if no shadow tree is accesible" type="compliance" status="approved" component="WebAPI/Web Components/Shadow DOM" execution_type="auto" priority="P1" id="element_shadowRoot_getter">
+        <description>
+          <test_script_entry>/opt/webapi-shadowdom-w3c-tests/shadowdom/w3c/elements-and-dom-objects/extensions-to-element-interface/attributes/test-006.html</test_script_entry>
+        </description>
+        <specs>
+          <spec>
+            <spec_assertion element_type="property" element_name="shadowRoot" interface="Element" specification="Shadow DOM" section="Web Components" category="W3C API Specifications"/>
+            <spec_url>https://dvcs.w3.org/hg/webcomponents/raw-file/tip/spec/shadow/index.html</spec_url>
+            <spec_statement/>
+          </spec>
+        </specs>
+      </testcase>
+      <testcase purpose="Check if createShadowRoot() method create new instance of ShadowRoot object" type="compliance" status="approved" component="WebAPI/Web Components/Shadow DOM" execution_type="auto" priority="P1" id="element_createShadowRoot_001">
+        <description>
+          <test_script_entry>/opt/webapi-shadowdom-w3c-tests/shadowdom/w3c/elements-and-dom-objects/extensions-to-element-interface/methods/test-001.html</test_script_entry>
+        </description>
+        <specs>
+          <spec>
+            <spec_assertion element_type="method" element_name="createShadowRoot" interface="Element" specification="Shadow DOM" section="Web Components" category="W3C API Specifications"/>
+            <spec_url>https://dvcs.w3.org/hg/webcomponents/raw-file/tip/spec/shadow/index.html</spec_url>
+            <spec_statement/>
+          </spec>
+        </specs>
+      </testcase>
+      <testcase purpose="Check if createShadowRoot() method establish the context object as the shadow host of the ShadowRoot object" type="compliance" status="approved" component="WebAPI/Web Components/Shadow DOM" execution_type="auto" priority="P1" id="element_createShadowRoot_002">
+        <description>
+          <test_script_entry>/opt/webapi-shadowdom-w3c-tests/shadowdom/w3c/elements-and-dom-objects/extensions-to-element-interface/methods/test-002.html</test_script_entry>
+        </description>
+        <specs>
+          <spec>
+            <spec_assertion element_type="method" element_name="createShadowRoot" interface="Element" specification="Shadow DOM" section="Web Components" category="W3C API Specifications"/>
+            <spec_url>https://dvcs.w3.org/hg/webcomponents/raw-file/tip/spec/shadow/index.html</spec_url>
+            <spec_statement/>
+          </spec>
+        </specs>
+      </testcase>
+      <testcase purpose="Check if the value of the type attribute is HOST_RULE, then the object that implements this interface must implement CSSHostRule interface" type="compliance" status="approved" component="WebAPI/Web Components/Shadow DOM" execution_type="auto" priority="P0" id="csshostrule_cssRules">
+        <description>
+          <test_script_entry>/opt/webapi-shadowdom-w3c-tests/shadowdom/w3c/elements-and-dom-objects/csshostrule-interface/csshostrule-attributes/test-001.html?total_num=2&amp;amp;locator_key=id&amp;amp;value=2</test_script_entry>
+        </description>
+        <specs>
+          <spec>
+            <spec_assertion element_type="property" element_name="cssRules" interface="CSSHostRule" specification="Shadow DOM" section="Web Components" category="W3C API Specifications"/>
+            <spec_url>https://dvcs.w3.org/hg/webcomponents/raw-file/tip/spec/shadow/index.html</spec_url>
+            <spec_statement/>
+          </spec>
+        </specs>
+      </testcase>
+      <testcase purpose="Check if element is rendered if select is vaild" type="compliance" status="approved" component="WebAPI/Web Components/Shadow DOM" execution_type="auto" priority="P0" id="htmlcontentelement_select_001">
+        <description>
+          <test_script_entry>/opt/webapi-shadowdom-w3c-tests/shadowdom/w3c/elements-and-dom-objects/the-content-html-element/test-002.html?total_num=2&amp;amp;locator_key=id&amp;amp;value=1</test_script_entry>
+        </description>
+        <specs>
+          <spec>
+            <spec_assertion element_type="property" element_name="select" interface="HTMLContentElement" specification="Shadow DOM" section="Web Components" category="W3C API Specifications"/>
+            <spec_url>https://dvcs.w3.org/hg/webcomponents/raw-file/tip/spec/shadow/index.html</spec_url>
+            <spec_statement/>
+          </spec>
+        </specs>
+      </testcase>
+      <testcase purpose="Check if element is not rendered if select is invaild" type="compliance" status="approved" component="WebAPI/Web Components/Shadow DOM" execution_type="auto" priority="P1" id="htmlcontentelement_select_002">
+        <description>
+          <test_script_entry>/opt/webapi-shadowdom-w3c-tests/shadowdom/w3c/elements-and-dom-objects/the-content-html-element/test-003.html?total_num=3&amp;amp;locator_key=id&amp;amp;value=1</test_script_entry>
+        </description>
+        <specs>
+          <spec>
+            <spec_assertion element_type="property" element_name="select" interface="HTMLContentElement" specification="Shadow DOM" section="Web Components" category="W3C API Specifications"/>
+            <spec_url>https://dvcs.w3.org/hg/webcomponents/raw-file/tip/spec/shadow/index.html</spec_url>
+            <spec_statement/>
+          </spec>
+        </specs>
+      </testcase>
+      <testcase purpose="Check if element is rendered if resetStyleInheritance is vaild" type="compliance" status="approved" component="WebAPI/Web Components/Shadow DOM" execution_type="auto" priority="P1" id="htmlcontentelement_resetStyleInheritance_01">
+        <description>
+          <test_script_entry>/opt/webapi-shadowdom-w3c-tests/shadowdom/w3c/elements-and-dom-objects/the-content-html-element/test-004.html?total_num=2&amp;amp;locator_key=id&amp;amp;value=1</test_script_entry>
+        </description>
+        <specs>
+          <spec>
+            <spec_assertion element_type="property" element_name="resetStyleInheritance" interface="HTMLContentElement" specification="Shadow DOM" section="Web Components" category="W3C API Specifications"/>
+            <spec_url>https://dvcs.w3.org/hg/webcomponents/raw-file/tip/spec/shadow/index.html</spec_url>
+            <spec_statement/>
+          </spec>
+        </specs>
+      </testcase>
+      <testcase purpose="Check if element is not rendered if resetStyleInheritance is invaild" type="compliance" status="approved" component="WebAPI/Web Components/Shadow DOM" execution_type="auto" priority="P1" id="htmlcontentelement_resetStyleInheritance_02">
+        <description>
+          <test_script_entry>/opt/webapi-shadowdom-w3c-tests/shadowdom/w3c/elements-and-dom-objects/the-content-html-element/test-005.html</test_script_entry>
+        </description>
+        <specs>
+          <spec>
+            <spec_assertion element_type="property" element_name="resetStyleInheritance" interface="HTMLContentElement" specification="Shadow DOM" section="Web Components" category="W3C API Specifications"/>
+            <spec_url>https://dvcs.w3.org/hg/webcomponents/raw-file/tip/spec/shadow/index.html</spec_url>
+            <spec_statement/>
+          </spec>
+        </specs>
+      </testcase>
+      <testcase purpose="Check if getDistributedNodes method return a NodeLIst consisting of nodes" type="compliance" status="approved" component="WebAPI/Web Components/Shadow DOM" execution_type="auto" priority="P1" id="htmlcontentelement_getDistributedNodes">
+        <description>
+          <test_script_entry>/opt/webapi-shadowdom-w3c-tests/shadowdom/w3c/elements-and-dom-objects/the-content-html-element/test-006.html?total_num=2&amp;amp;locator_key=id&amp;amp;value=1</test_script_entry>
+        </description>
+        <specs>
+          <spec>
+            <spec_assertion element_type="method" element_name="getDistributedNodes" interface="HTMLContentElement" specification="Shadow DOM" section="Web Components" category="W3C API Specifications"/>
+            <spec_url>https://dvcs.w3.org/hg/webcomponents/raw-file/tip/spec/shadow/index.html</spec_url>
+            <spec_statement/>
+          </spec>
+        </specs>
+      </testcase>
+      <testcase purpose="Check if fallback content of html content element can be rendered" type="compliance" status="approved" component="WebAPI/Web Components/Shadow DOM" execution_type="auto" priority="P3" id="htmlcontentelement_fallback">
+        <description>
+          <test_script_entry>/opt/webapi-shadowdom-w3c-tests/shadowdom/w3c/elements-and-dom-objects/the-content-html-element/test-001.html?total_num=2&amp;amp;locator_key=id&amp;amp;value=1</test_script_entry>
+        </description>
+        <specs>
+          <spec>
+            <spec_assertion usage="" interface="HTMLContentElement" specification="Shadow DOM" section="Web Components" category="W3C API Specifications"/>
+            <spec_url>https://dvcs.w3.org/hg/webcomponents/raw-file/tip/spec/shadow/index.html</spec_url>
+            <spec_statement/>
+          </spec>
+        </specs>
+      </testcase>
+      <testcase purpose="Check if element is rendered if resetStyleInheritance is vaild" type="compliance" status="approved" component="WebAPI/Web Components/Shadow DOM" execution_type="auto" priority="P0" id="htmlshadowelement_resetStyleInheritance_01">
+        <description>
+          <test_script_entry>/opt/webapi-shadowdom-w3c-tests/shadowdom/w3c/elements-and-dom-objects/the-shadow-html-element/test-003.html?total_num=2&amp;amp;locator_key=id&amp;amp;value=1</test_script_entry>
+        </description>
+        <specs>
+          <spec>
+            <spec_assertion element_type="property" element_name="resetStyleInheritance" interface="HTMLShadowElement" specification="Shadow DOM" section="Web Components" category="W3C API Specifications"/>
+            <spec_url>https://dvcs.w3.org/hg/webcomponents/raw-file/tip/spec/shadow/index.html</spec_url>
+            <spec_statement/>
+          </spec>
+        </specs>
+      </testcase>
+      <testcase purpose="Check if element is not rendered if resetStyleInheritance is invaild" type="compliance" status="approved" component="WebAPI/Web Components/Shadow DOM" execution_type="auto" priority="P1" id="htmlshadowelement_resetStyleInheritance_02">
+        <description>
+          <test_script_entry>/opt/webapi-shadowdom-w3c-tests/shadowdom/w3c/elements-and-dom-objects/the-shadow-html-element/test-004.html</test_script_entry>
+        </description>
+        <specs>
+          <spec>
+            <spec_assertion element_type="property" element_name="resetStyleInheritance" interface="HTMLShadowElement" specification="Shadow DOM" section="Web Components" category="W3C API Specifications"/>
+            <spec_url>https://dvcs.w3.org/hg/webcomponents/raw-file/tip/spec/shadow/index.html</spec_url>
+            <spec_statement/>
+          </spec>
+        </specs>
+      </testcase>
+      <testcase purpose="Check if olderShadowRoot is null if shadow tree does not exist" type="compliance" status="approved" component="WebAPI/Web Components/Shadow DOM" execution_type="auto" priority="P1" id="htmlshadowelement_olderShadowRoot_01">
+        <description>
+          <test_script_entry>/opt/webapi-shadowdom-w3c-tests/shadowdom/w3c/elements-and-dom-objects/the-shadow-html-element/test-005.html</test_script_entry>
+        </description>
+        <specs>
+          <spec>
+            <spec_assertion element_type="property" element_name="olderShadowRoot" interface="HTMLShadowElement" specification="Shadow DOM" section="Web Components" category="W3C API Specifications"/>
+            <spec_url>https://dvcs.w3.org/hg/webcomponents/raw-file/tip/spec/shadow/index.html</spec_url>
+            <spec_statement/>
+          </spec>
+        </specs>
+      </testcase>
+      <testcase purpose="Check if element is not rendered if olderShadowRoot is invalid" type="compliance" status="approved" component="WebAPI/Web Components/Shadow DOM" execution_type="auto" priority="P1" id="htmlshadowelement_olderShadowRoot_02">
+        <description>
+          <test_script_entry>/opt/webapi-shadowdom-w3c-tests/shadowdom/w3c/elements-and-dom-objects/the-shadow-html-element/test-006.html</test_script_entry>
+        </description>
+        <specs>
+          <spec>
+            <spec_assertion element_type="property" element_name="olderShadowRoot" interface="HTMLShadowElement" specification="Shadow DOM" section="Web Components" category="W3C API Specifications"/>
+            <spec_url>https://dvcs.w3.org/hg/webcomponents/raw-file/tip/spec/shadow/index.html</spec_url>
+            <spec_statement/>
+          </spec>
+        </specs>
+      </testcase>
+      <testcase purpose="Check if fallback content of html shadow element can be rendered" type="compliance" status="approved" component="WebAPI/Web Components/Shadow DOM" execution_type="auto" priority="P3" id="htmlshadowelement_fallback">
+        <description>
+          <test_script_entry>/opt/webapi-shadowdom-w3c-tests/shadowdom/w3c/elements-and-dom-objects/the-shadow-html-element/test-001.html?total_num=2&amp;amp;locator_key=id&amp;amp;value=1</test_script_entry>
+        </description>
+        <specs>
+          <spec>
+            <spec_assertion usage="" interface="HTMLShadowElement" specification="Shadow DOM" section="Web Components" category="W3C API Specifications"/>
+            <spec_url>https://dvcs.w3.org/hg/webcomponents/raw-file/tip/spec/shadow/index.html</spec_url>
+            <spec_statement/>
+          </spec>
+        </specs>
+      </testcase>
+      <testcase purpose="Check if the path attribute return the adjusted event path" type="compliance" status="approved" component="WebAPI/Web Components/Shadow DOM" execution_type="auto" priority="P1" id="event_path">
+        <description>
+          <test_script_entry>/opt/webapi-shadowdom-w3c-tests/shadowdom/w3c/elements-and-dom-objects/extensions-to-event-interface/event-path-001.html</test_script_entry>
+        </description>
+        <specs>
+          <spec>
+            <spec_assertion element_type="property" element_name="path" interface="Event" specification="Shadow DOM" section="Web Components" category="W3C API Specifications"/>
+            <spec_url>https://dvcs.w3.org/hg/webcomponents/raw-file/tip/spec/shadow/index.html</spec_url>
+            <spec_statement/>
+          </spec>
+        </specs>
+      </testcase>
+      <testcase purpose="Check if on setting, the attribute must set the value of the apply-author-styles flag for the shadow host's tree to specified value" type="compliance" status="approved" component="WebAPI/Web Components/Shadow DOM" execution_type="auto" priority="P0" id="shadowroot_applyAuthorStyles_setter">
+        <description>
+          <test_script_entry>/opt/webapi-shadowdom-w3c-tests/shadowdom/w3c/elements-and-dom-objects/shadowroot-object/shadowroot-attributes/test-003.html?total_num=3&amp;amp;locator_key=id&amp;amp;value=3</test_script_entry>
+        </description>
+        <specs>
+          <spec>
+            <spec_assertion element_type="property" element_name="applyAuthorStyles" interface="ShadowRoot" specification="Shadow DOM" section="Web Components" category="W3C API Specifications"/>
+            <spec_url>https://dvcs.w3.org/hg/webcomponents/raw-file/tip/spec/shadow/index.html</spec_url>
+            <spec_statement/>
+          </spec>
+        </specs>
+      </testcase>
+      <testcase purpose="Check if on setting, the attribute must set the value of the reset-style-inheritance flag for the shadow host's tree to specified value" type="compliance" status="approved" component="WebAPI/Web Components/Shadow DOM" execution_type="auto" priority="P2" id="shadowroot_resetStyleInheritance_setter">
+        <description>
+          <test_script_entry>/opt/webapi-shadowdom-w3c-tests/shadowdom/w3c/elements-and-dom-objects/shadowroot-object/shadowroot-attributes/test-006.html?total_num=3&amp;amp;locator_key=id&amp;amp;value=3</test_script_entry>
+        </description>
+        <specs>
+          <spec>
+            <spec_assertion element_type="property" element_name="resetStyleInheritance" interface="ShadowRoot" specification="Shadow DOM" section="Web Components" category="W3C API Specifications"/>
+            <spec_url>https://dvcs.w3.org/hg/webcomponents/raw-file/tip/spec/shadow/index.html</spec_url>
+            <spec_statement/>
+          </spec>
+        </specs>
+      </testcase>
+      <testcase purpose="Check if on getting, the attribute must return the result of running the HTML fragment serialization algorithm with the context object as shadow host" type="compliance" status="approved" component="WebAPI/Web Components/Shadow DOM" execution_type="auto" priority="P2" id="shadowroot_innerHTML_getter">
+        <description>
+          <test_script_entry>/opt/webapi-shadowdom-w3c-tests/shadowdom/w3c/elements-and-dom-objects/shadowroot-object/shadowroot-attributes/test-010.html?total_num=2&amp;amp;locator_key=id&amp;amp;value=1</test_script_entry>
+        </description>
+        <specs>
+          <spec>
+            <spec_assertion element_type="property" element_name="innerHTML" interface="ShadowRoot" specification="Shadow DOM" section="Web Components" category="W3C API Specifications"/>
+            <spec_url>https://dvcs.w3.org/hg/webcomponents/raw-file/tip/spec/shadow/index.html</spec_url>
+            <spec_statement/>
+          </spec>
+        </specs>
+      </testcase>
+      <testcase purpose="Check if the nodeType attribute of a ShadowRoot instance must return DOCUMENT_FRAGMENT_NODE" type="compliance" status="approved" component="WebAPI/Web Components/Shadow DOM" execution_type="auto" priority="P2" id="shadowroot_nodeType">
+        <description>
+          <test_script_entry>/opt/webapi-shadowdom-w3c-tests/shadowdom/w3c/elements-and-dom-objects/shadowroot-object/shadowroot-attributes/test-012.html</test_script_entry>
+        </description>
+        <specs>
+          <spec>
+            <spec_assertion element_type="property" element_name="nodeType" interface="ShadowRoot" specification="Shadow DOM" section="Web Components" category="W3C API Specifications"/>
+            <spec_url>https://dvcs.w3.org/hg/webcomponents/raw-file/tip/spec/shadow/index.html</spec_url>
+            <spec_statement/>
+          </spec>
+        </specs>
+      </testcase>
+      <testcase purpose="Check if the nodeName attribute of a ShadowRoot instance must return #document-fragment" type="compliance" status="approved" component="WebAPI/Web Components/Shadow DOM" execution_type="auto" priority="P2" id="shadowroot_nodeName">
+        <description>
+          <test_script_entry>/opt/webapi-shadowdom-w3c-tests/shadowdom/w3c/elements-and-dom-objects/shadowroot-object/shadowroot-attributes/test-013.html</test_script_entry>
+        </description>
+        <specs>
+          <spec>
+            <spec_assertion element_type="property" element_name="nodeName" interface="ShadowRoot" specification="Shadow DOM" section="Web Components" category="W3C API Specifications"/>
+            <spec_url>https://dvcs.w3.org/hg/webcomponents/raw-file/tip/spec/shadow/index.html</spec_url>
+            <spec_statement/>
+          </spec>
+        </specs>
+      </testcase>
+      <testcase purpose="Check if invoking the cloneNode() method on a ShadowRoot instance must always throw a DATA_CLONE_ERR exception" type="compliance" status="approved" component="WebAPI/Web Components/Shadow DOM" execution_type="auto" priority="P2" id="shadowroot_cloneNode">
+        <description>
+          <test_script_entry>/opt/webapi-shadowdom-w3c-tests/shadowdom/w3c/elements-and-dom-objects/shadowroot-object/shadowroot-methods/test-010.html</test_script_entry>
+        </description>
+        <specs>
+          <spec>
+            <spec_assertion element_type="method" element_name="cloneNode" interface="ShadowRoot" specification="Shadow DOM" section="Web Components" category="W3C API Specifications"/>
+            <spec_url>https://dvcs.w3.org/hg/webcomponents/raw-file/tip/spec/shadow/index.html</spec_url>
+            <spec_statement/>
+          </spec>
+        </specs>
+      </testcase>
+      <testcase purpose="Check if on getting, the attribute must return empty string if there is no part pseudo-element associated with this element" type="compliance" status="approved" component="WebAPI/Web Components/Shadow DOM" execution_type="auto" priority="P2" id="element_pseudo_getter">
+        <description>
+          <test_script_entry>/opt/webapi-shadowdom-w3c-tests/shadowdom/w3c/elements-and-dom-objects/extensions-to-element-interface/attributes/test-002.html?total_num=2&amp;amp;locator_key=id&amp;amp;value=1</test_script_entry>
+        </description>
+        <specs>
+          <spec>
+            <spec_assertion element_type="property" element_name="pseudo" interface="Element" specification="Shadow DOM" section="Web Components" category="W3C API Specifications"/>
+            <spec_url>https://dvcs.w3.org/hg/webcomponents/raw-file/tip/spec/shadow/index.html</spec_url>
+            <spec_statement/>
+          </spec>
+        </specs>
+      </testcase>
+      <testcase purpose="Check if on getting, the attribute must return the list of all CSS rules" type="compliance" status="approved" component="WebAPI/Web Components/Shadow DOM" execution_type="auto" priority="P0" id="csshostrule_cssRules_getter">
+        <description>
+          <test_script_entry>/opt/webapi-shadowdom-w3c-tests/shadowdom/w3c/elements-and-dom-objects/csshostrule-interface/csshostrule-attributes/CSSHostRule.html?total_num=3&amp;amp;locator_key=id&amp;amp;value=1</test_script_entry>
+        </description>
+        <specs>
+          <spec>
+            <spec_assertion element_type="property" element_name="cssRules" interface="CSSHostRule" specification="Shadow DOM" section="Web Components" category="W3C API Specifications"/>
+            <spec_url>https://dvcs.w3.org/hg/webcomponents/raw-file/tip/spec/shadow/index.html</spec_url>
+            <spec_statement/>
+          </spec>
+        </specs>
+      </testcase>
+      <testcase purpose="Check if the method must insert a CSS rule rule into the CSS rule list returned by cssRules at index when invoked" type="compliance" status="approved" component="WebAPI/Web Components/Shadow DOM" execution_type="auto" priority="P2" id="csshostrule_insertRule_method">
+        <description>
+          <test_script_entry>/opt/webapi-shadowdom-w3c-tests/shadowdom/w3c/elements-and-dom-objects/csshostrule-interface/csshostrule-attributes/CSSHostRule.html?total_num=3&amp;amp;locator_key=id&amp;amp;value=2</test_script_entry>
+        </description>
+        <specs>
+          <spec>
+            <spec_assertion element_type="method" element_name="insertRule" interface="CSSHostRule" specification="Shadow DOM" section="Web Components" category="W3C API Specifications"/>
+            <spec_url>https://dvcs.w3.org/hg/webcomponents/raw-file/tip/spec/shadow/index.html</spec_url>
+            <spec_statement/>
+          </spec>
+        </specs>
+      </testcase>
+      <testcase purpose="Check if the method must remove a CSS rule rule from the CSS rule list returned by cssRules at index when invoked" type="compliance" status="approved" component="WebAPI/Web Components/Shadow DOM" execution_type="auto" priority="P2" id="csshostrule_deleteRule_method">
+        <description>
+          <test_script_entry>/opt/webapi-shadowdom-w3c-tests/shadowdom/w3c/elements-and-dom-objects/csshostrule-interface/csshostrule-attributes/CSSHostRule.html?total_num=3&amp;amp;locator_key=id&amp;amp;value=3</test_script_entry>
+        </description>
+        <specs>
+          <spec>
+            <spec_assertion element_type="method" element_name="deleteRule" interface="CSSHostRule" specification="Shadow DOM" section="Web Components" category="W3C API Specifications"/>
+            <spec_url>https://dvcs.w3.org/hg/webcomponents/raw-file/tip/spec/shadow/index.html</spec_url>
+            <spec_statement/>
+          </spec>
+        </specs>
+      </testcase>
+      <testcase purpose="Check if the Event target and currentTarget attributes must return the relative target for the node on which event listeners are invoked" type="compliance" status="approved" component="WebAPI/Web Components/Shadow DOM" execution_type="auto" priority="P0" id="event_dispatch_01">
+        <description>
+          <test_script_entry>/opt/webapi-shadowdom-w3c-tests/shadowdom/w3c/events/event-dispatch/test-001.html?total_num=7&amp;amp;locator_key=id&amp;amp;value=1</test_script_entry>
+        </description>
+        <specs>
+          <spec>
+            <spec_assertion element_type="event" element_name="eventdispatch" interface="EventDispatch" specification="Shadow DOM" section="Web Components" category="W3C API Specifications"/>
+            <spec_url>https://dvcs.w3.org/hg/webcomponents/raw-file/tip/spec/shadow/index.html</spec_url>
+            <spec_statement/>
+          </spec>
+        </specs>
+      </testcase>
+      <testcase purpose="Check if the MouseEvent relatedTarget attribute must return the adjusted related target" type="compliance" status="approved" component="WebAPI/Web Components/Shadow DOM" execution_type="auto" priority="P2" id="event_dispatch_02">
+        <description>
+          <test_script_entry>/opt/webapi-shadowdom-w3c-tests/shadowdom/w3c/events/event-dispatch/test-002.html</test_script_entry>
+        </description>
+        <specs>
+          <spec>
+            <spec_assertion element_type="event" element_name="eventdispatch" interface="EventDispatch" specification="Shadow DOM" section="Web Components" category="W3C API Specifications"/>
+            <spec_url>https://dvcs.w3.org/hg/webcomponents/raw-file/tip/spec/shadow/index.html</spec_url>
+            <spec_statement/>
+          </spec>
+        </specs>
+      </testcase>
+      <testcase purpose="Check if the following events must always be stopped at abort which is the nearest shadow boundary" type="compliance" status="approved" component="WebAPI/Web Components/Shadow DOM" execution_type="auto" priority="P0" id="EventsStopped_abort">
+        <description>
+          <test_script_entry>/opt/webapi-shadowdom-w3c-tests/shadowdom/w3c/events/events-that-are-always-stopped/test-001.html?total_num=2&amp;amp;locator_key=id&amp;amp;value=1</test_script_entry>
+        </description>
+        <specs>
+          <spec>
+            <spec_assertion element_type="property" element_name="abort" interface="EventsthatareAlwaysStopped" specification="Shadow DOM" section="Web Components" category="W3C API Specifications"/>
+            <spec_url>https://dvcs.w3.org/hg/webcomponents/raw-file/tip/spec/shadow/index.html</spec_url>
+            <spec_statement/>
+          </spec>
+        </specs>
+      </testcase>
+      <testcase purpose="Check if the following events must always be stopped at error which is the nearest shadow boundary" type="compliance" status="approved" component="WebAPI/Web Components/Shadow DOM" execution_type="auto" priority="P1" id="EventsStopped_error">
+        <description>
+          <test_script_entry>/opt/webapi-shadowdom-w3c-tests/shadowdom/w3c/events/events-that-are-always-stopped/test-002.html</test_script_entry>
+        </description>
+        <specs>
+          <spec>
+            <spec_assertion element_type="property" element_name="error" interface="EventsthatareAlwaysStopped" specification="Shadow DOM" section="Web Components" category="W3C API Specifications"/>
+            <spec_url>https://dvcs.w3.org/hg/webcomponents/raw-file/tip/spec/shadow/index.html</spec_url>
+            <spec_statement/>
+          </spec>
+        </specs>
+      </testcase>
+      <testcase purpose="Check if the following events must always be stopped at select which is the nearest shadow boundary" type="compliance" status="approved" component="WebAPI/Web Components/Shadow DOM" execution_type="auto" priority="P1" id="EventsStopped_select">
+        <description>
+          <test_script_entry>/opt/webapi-shadowdom-w3c-tests/shadowdom/w3c/events/events-that-are-always-stopped/test-003.html</test_script_entry>
+        </description>
+        <specs>
+          <spec>
+            <spec_assertion element_type="property" element_name="select" interface="EventsthatareAlwaysStopped" specification="Shadow DOM" section="Web Components" category="W3C API Specifications"/>
+            <spec_url>https://dvcs.w3.org/hg/webcomponents/raw-file/tip/spec/shadow/index.html</spec_url>
+            <spec_statement/>
+          </spec>
+        </specs>
+      </testcase>
+      <testcase purpose="Check if the following events must always be stopped at change which is the nearest shadow boundary" type="compliance" status="approved" component="WebAPI/Web Components/Shadow DOM" execution_type="auto" priority="P1" id="EventsStopped_change">
+        <description>
+          <test_script_entry>/opt/webapi-shadowdom-w3c-tests/shadowdom/w3c/events/events-that-are-always-stopped/test-004.html</test_script_entry>
+        </description>
+        <specs>
+          <spec>
+            <spec_assertion element_type="property" element_name="change" interface="EventsthatareAlwaysStopped" specification="Shadow DOM" section="Web Components" category="W3C API Specifications"/>
+            <spec_url>https://dvcs.w3.org/hg/webcomponents/raw-file/tip/spec/shadow/index.html</spec_url>
+            <spec_statement/>
+          </spec>
+        </specs>
+      </testcase>
+      <testcase purpose="Check if the following events must always be stopped at load which is the nearest shadow boundary" type="compliance" status="approved" component="WebAPI/Web Components/Shadow DOM" execution_type="auto" priority="P1" id="EventsStopped_load">
+        <description>
+          <test_script_entry>/opt/webapi-shadowdom-w3c-tests/shadowdom/w3c/events/events-that-are-always-stopped/test-005.html</test_script_entry>
+        </description>
+        <specs>
+          <spec>
+            <spec_assertion element_type="property" element_name="load" interface="EventsthatareAlwaysStopped" specification="Shadow DOM" section="Web Components" category="W3C API Specifications"/>
+            <spec_url>https://dvcs.w3.org/hg/webcomponents/raw-file/tip/spec/shadow/index.html</spec_url>
+            <spec_statement/>
+          </spec>
+        </specs>
+      </testcase>
+      <testcase purpose="Check if the following events must always be stopped at reset which is the nearest shadow boundary" type="compliance" status="approved" component="WebAPI/Web Components/Shadow DOM" execution_type="auto" priority="P1" id="EventsStopped_reset">
+        <description>
+          <test_script_entry>/opt/webapi-shadowdom-w3c-tests/shadowdom/w3c/events/events-that-are-always-stopped/test-006.html</test_script_entry>
+        </description>
+        <specs>
+          <spec>
+            <spec_assertion element_type="property" element_name="reset" interface="EventsthatareAlwaysStopped" specification="Shadow DOM" section="Web Components" category="W3C API Specifications"/>
+            <spec_url>https://dvcs.w3.org/hg/webcomponents/raw-file/tip/spec/shadow/index.html</spec_url>
+            <spec_statement/>
+          </spec>
+        </specs>
+      </testcase>
+      <testcase purpose="Check if the following events must always be stopped at resize which is the nearest shadow boundary" type="compliance" status="approved" component="WebAPI/Web Components/Shadow DOM" execution_type="auto" priority="P1" id="EventsStopped_resize">
+        <description>
+          <test_script_entry>/opt/webapi-shadowdom-w3c-tests/shadowdom/w3c/events/events-that-are-always-stopped/test-007.html</test_script_entry>
+        </description>
+        <specs>
+          <spec>
+            <spec_assertion element_type="property" element_name="resize" interface="EventsthatareAlwaysStopped" specification="Shadow DOM" section="Web Components" category="W3C API Specifications"/>
+            <spec_url>https://dvcs.w3.org/hg/webcomponents/raw-file/tip/spec/shadow/index.html</spec_url>
+            <spec_statement/>
+          </spec>
+        </specs>
+      </testcase>
+      <testcase purpose="Check if the following events must always be stopped at scroll which is the nearest shadow boundary" type="compliance" status="approved" component="WebAPI/Web Components/Shadow DOM" execution_type="auto" priority="P1" id="EventsStopped_scroll">
+        <description>
+          <test_script_entry>/opt/webapi-shadowdom-w3c-tests/shadowdom/w3c/events/events-that-are-always-stopped/test-008.html</test_script_entry>
+        </description>
+        <specs>
+          <spec>
+            <spec_assertion element_type="property" element_name="scroll" interface="EventsthatareAlwaysStopped" specification="Shadow DOM" section="Web Components" category="W3C API Specifications"/>
+            <spec_url>https://dvcs.w3.org/hg/webcomponents/raw-file/tip/spec/shadow/index.html</spec_url>
+            <spec_statement/>
+          </spec>
+        </specs>
+      </testcase>
+      <testcase purpose="Check if the following events must always be stopped at selectstart which is the nearest shadow boundary" type="compliance" status="approved" component="WebAPI/Web Components/Shadow DOM" execution_type="auto" priority="P1" id="EventsStopped_selectstart">
+        <description>
+          <test_script_entry>/opt/webapi-shadowdom-w3c-tests/shadowdom/w3c/events/events-that-are-always-stopped/test-009.html</test_script_entry>
+        </description>
+        <specs>
+          <spec>
+            <spec_assertion element_type="property" element_name="selectstart" interface="EventsthatareAlwaysStopped" specification="Shadow DOM" section="Web Components" category="W3C API Specifications"/>
+            <spec_url>https://dvcs.w3.org/hg/webcomponents/raw-file/tip/spec/shadow/index.html</spec_url>
+            <spec_statement/>
+          </spec>
+        </specs>
+      </testcase>
+      <testcase purpose="Check if the DOMFocusIn events must be treated in the same way as events with a relatedTarget" type="compliance" status="approved" component="WebAPI/Web Components/Shadow DOM" execution_type="auto" priority="P2" id="retargeting_focus_events_DOMFocusIn_DOMFocusOut">
+        <description>
+          <test_script_entry>/opt/webapi-shadowdom-w3c-tests/shadowdom/w3c/events/retargeting-focus-events/test-001.html?total_num=6&amp;amp;locator_key=id&amp;amp;value=2</test_script_entry>
+        </description>
+        <specs>
+          <spec>
+            <spec_assertion element_type="event" element_name="DOMFocusInandDOMFocusOut" interface="RetargetingFocusEvents" specification="Shadow DOM" section="Web Components" category="W3C API Specifications"/>
+            <spec_url>https://dvcs.w3.org/hg/webcomponents/raw-file/tip/spec/shadow/index.html</spec_url>
+            <spec_statement/>
+          </spec>
+        </specs>
+      </testcase>
+      <testcase purpose="Check if the blur events must be treated in the same way as events with a relatedTarget" type="compliance" status="approved" component="WebAPI/Web Components/Shadow DOM" execution_type="auto" priority="P2" id="retargeting_focus_events_blur">
+        <description>
+          <test_script_entry>/opt/webapi-shadowdom-w3c-tests/shadowdom/w3c/events/retargeting-focus-events/test-002.html</test_script_entry>
+        </description>
+        <specs>
+          <spec>
+            <spec_assertion element_type="event" element_name="blur" interface="RetargetingFocusEvents" specification="Shadow DOM" section="Web Components" category="W3C API Specifications"/>
+            <spec_url>https://dvcs.w3.org/hg/webcomponents/raw-file/tip/spec/shadow/index.html</spec_url>
+            <spec_statement/>
+          </spec>
+        </specs>
+      </testcase>
+      <testcase purpose="Check if the focus events must be treated in the same way as events with a relatedTarget" type="compliance" status="approved" component="WebAPI/Web Components/Shadow DOM" execution_type="auto" priority="P0" id="retargeting_focus_events_focus">
+        <description>
+          <test_script_entry>/opt/webapi-shadowdom-w3c-tests/shadowdom/w3c/events/retargeting-focus-events/test-003.html</test_script_entry>
+        </description>
+        <specs>
+          <spec>
+            <spec_assertion element_type="event" element_name="focus" interface="RetargetingFocusEvents" specification="Shadow DOM" section="Web Components" category="W3C API Specifications"/>
+            <spec_url>https://dvcs.w3.org/hg/webcomponents/raw-file/tip/spec/shadow/index.html</spec_url>
+            <spec_statement/>
+          </spec>
+        </specs>
+      </testcase>
+      <testcase purpose="Check if for a given node, the relatedTarget must be changed to its ancestor (or self) that is in the same shadow tree as the node" type="compliance" status="approved" component="WebAPI/Web Components/Shadow DOM" execution_type="auto" priority="P0" id="retargeting_relatedTarget_01">
+        <description>
+          <test_script_entry>/opt/webapi-shadowdom-w3c-tests/shadowdom/w3c/events/retargeting-relatedtarget/test-002.html</test_script_entry>
+        </description>
+        <specs>
+          <spec>
+            <spec_assertion element_type="event" element_name="retargetingrelatedTarget" interface="RetargetingrelatedTarget" specification="Shadow DOM" section="Web Components" category="W3C API Specifications"/>
+            <spec_url>https://dvcs.w3.org/hg/webcomponents/raw-file/tip/spec/shadow/index.html</spec_url>
+            <spec_statement/>
+          </spec>
+        </specs>
+      </testcase>
+      <testcase purpose="Check if the mutation event types must never be dispatched in a shadow DOM subtree" type="compliance" status="approved" component="WebAPI/Web Components/Shadow DOM" execution_type="auto" priority="P2" id="events_mutation_events">
+        <description>
+          <test_script_entry>/opt/webapi-shadowdom-w3c-tests/shadowdom/w3c/events/test-001.html</test_script_entry>
+        </description>
+        <specs>
+          <spec>
+            <spec_assertion element_type="event" element_name="mutation" interface="Events" specification="Shadow DOM" section="Web Components" category="W3C API Specifications"/>
+            <spec_url>https://dvcs.w3.org/hg/webcomponents/raw-file/tip/spec/shadow/index.html</spec_url>
+            <spec_statement/>
+          </spec>
+        </specs>
+      </testcase>
+      <testcase purpose="Check if the implementation of Retargeting algorithm is valid" type="compliance" status="approved" component="WebAPI/Web Components/Shadow DOM" execution_type="auto" priority="P1" id="Retargeting_algorithm">
+        <description>
+          <test_script_entry>/opt/webapi-shadowdom-w3c-tests/shadowdom/w3c/events/event-retargeting/test-004.html?total_num=12&amp;amp;locator_key=id&amp;amp;value=1</test_script_entry>
+        </description>
+        <specs>
+          <spec>
+            <spec_assertion element_type="property" element_name="eventRetargeting" interface="EventRetargeting" specification="Shadow DOM" section="Web Components" category="W3C API Specifications"/>
+            <spec_url>https://dvcs.w3.org/hg/webcomponents/raw-file/tip/spec/shadow/index.html</spec_url>
+            <spec_statement/>
+          </spec>
+        </specs>
+      </testcase>
+      <testcase purpose="Check if the shadow host styles being inherited by the children of the shadow root must also apply to CSS Variables" type="compliance" status="approved" component="WebAPI/Web Components/Shadow DOM" execution_type="auto" priority="P0" id="styles_CSS_variables">
+        <description>
+          <test_script_entry>/opt/webapi-shadowdom-w3c-tests/shadowdom/w3c/styles/css-variables/test-001.html</test_script_entry>
+        </description>
+        <specs>
+          <spec>
+            <spec_assertion element_type="property" element_name="CSSVariables" interface="Styles" specification="Shadow DOM" section="Web Components" category="W3C API Specifications"/>
+            <spec_url>https://dvcs.w3.org/hg/webcomponents/raw-file/tip/spec/shadow/index.html</spec_url>
+            <spec_statement/>
+          </spec>
+        </specs>
+      </testcase>
+      <testcase purpose="Check if the declarations of the rules in a at host at-rule must only be matched against the shadow host of the shadow tree in which the style is specified" type="compliance" status="approved" component="WebAPI/Web Components/Shadow DOM" execution_type="auto" priority="P2" id="styles_host_rule">
+        <description>
+          <test_script_entry>/opt/webapi-shadowdom-w3c-tests/shadowdom/w3c/styles/at-host-at-rule/test-001.html?total_num=3&amp;amp;locator_key=id&amp;amp;value=3</test_script_entry>
+        </description>
+        <specs>
+          <spec>
+            <spec_assertion element_type="property" element_name="athostatrule" interface="Styles" specification="Shadow DOM" section="Web Components" category="W3C API Specifications"/>
+            <spec_url>https://dvcs.w3.org/hg/webcomponents/raw-file/tip/spec/shadow/index.html</spec_url>
+            <spec_statement/>
+          </spec>
+        </specs>
+      </testcase>
+      <testcase purpose="Check if each shadow root has an associated list of zero or more style sheets which is named shadow root style sheets" type="compliance" status="approved" component="WebAPI/Web Components/Shadow DOM" execution_type="auto" priority="P2" id="styles_sheets">
+        <description>
+          <test_script_entry>/opt/webapi-shadowdom-w3c-tests/shadowdom/w3c/styles/test-003.html?total_num=4&amp;amp;locator_key=id&amp;amp;value=1</test_script_entry>
+        </description>
+        <specs>
+          <spec>
+            <spec_assertion element_type="property" element_name="sheets" interface="Styles" specification="Shadow DOM" section="Web Components" category="W3C API Specifications"/>
+            <spec_url>https://dvcs.w3.org/hg/webcomponents/raw-file/tip/spec/shadow/index.html</spec_url>
+            <spec_statement/>
+          </spec>
+        </specs>
+      </testcase>
+      <testcase purpose="Check if the styles of the shadow host are inherited by the children of the shadow root" type="compliance" status="approved" component="WebAPI/Web Components/Shadow DOM" execution_type="auto" priority="P2" id="styles_inherited_children">
+        <description>
+          <test_script_entry>/opt/webapi-shadowdom-w3c-tests/shadowdom/w3c/styles/test-008.html?total_num=2&amp;amp;locator_key=id&amp;amp;value=1</test_script_entry>
+        </description>
+        <specs>
+          <spec>
+            <spec_assertion element_type="property" element_name="children" interface="Styles" specification="Shadow DOM" section="Web Components" category="W3C API Specifications"/>
+            <spec_url>https://dvcs.w3.org/hg/webcomponents/raw-file/tip/spec/shadow/index.html</spec_url>
+            <spec_statement/>
+          </spec>
+        </specs>
+      </testcase>
+      <testcase purpose="Check if the styles of the insertion point nodes are inherited by those child nodes of the shadow host that are assigned to this insertion point" type="compliance" status="approved" component="WebAPI/Web Components/Shadow DOM" execution_type="auto" priority="P2" id="styles_inherited_children_shadowHost">
+        <description>
+          <test_script_entry>/opt/webapi-shadowdom-w3c-tests/shadowdom/w3c/styles/test-009.html</test_script_entry>
+        </description>
+        <specs>
+          <spec>
+            <spec_assertion element_type="property" element_name="shadowHost" interface="Styles" specification="Shadow DOM" section="Web Components" category="W3C API Specifications"/>
+            <spec_url>https://dvcs.w3.org/hg/webcomponents/raw-file/tip/spec/shadow/index.html</spec_url>
+            <spec_statement/>
+          </spec>
+        </specs>
+      </testcase>
+      <testcase purpose="Check if the styles of the shadow insertion point node are inherited by the child nodes of the shadow root of the shadow tree which is distributed to this shadow insertion point" type="compliance" status="approved" component="WebAPI/Web Components/Shadow DOM" execution_type="auto" priority="P2" id="styles_inherited_children_shadowRoot">
+        <description>
+          <test_script_entry>/opt/webapi-shadowdom-w3c-tests/shadowdom/w3c/styles/test-010.html</test_script_entry>
+        </description>
+        <specs>
+          <spec>
+            <spec_assertion element_type="property" element_name="shadowRoot" interface="Styles" specification="Shadow DOM" section="Web Components" category="W3C API Specifications"/>
+            <spec_url>https://dvcs.w3.org/hg/webcomponents/raw-file/tip/spec/shadow/index.html</spec_url>
+            <spec_statement/>
+          </spec>
+        </specs>
+      </testcase>
+      <testcase purpose="Check if  the reset-style-inheritance flag is set for a shadow tree, all inheritable CSS properties must behave as if they were explicitly set to the initial value at the upper boundary of the tree" type="compliance" status="approved" component="WebAPI/Web Components/Shadow DOM" execution_type="auto" priority="P2" id="styles_resetStyleInheritance_shadowTree">
+        <description>
+          <test_script_entry>/opt/webapi-shadowdom-w3c-tests/shadowdom/w3c/styles/test-011.html?total_num=3&amp;amp;locator_key=id&amp;amp;value=1</test_script_entry>
+        </description>
+        <specs>
+          <spec>
+            <spec_assertion element_type="property" element_name="shadowTree" interface="Styles" specification="Shadow DOM" section="Web Components" category="W3C API Specifications"/>
+            <spec_url>https://dvcs.w3.org/hg/webcomponents/raw-file/tip/spec/shadow/index.html</spec_url>
+            <spec_statement/>
+          </spec>
+        </specs>
+      </testcase>
+      <testcase purpose="Check if the reset-style-inheritance flag is set for an insertion point in a shadow tree, all inheritable CSS properties must behave as if they were explicitly set to the initial value at the lower boundary of the tree" type="compliance" status="approved" component="WebAPI/Web Components/Shadow DOM" execution_type="auto" priority="P2" id="styles_resetStyleInheritance_insertion">
+        <description>
+          <test_script_entry>/opt/webapi-shadowdom-w3c-tests/shadowdom/w3c/styles/test-012.html?total_num=2&amp;amp;locator_key=id&amp;amp;value=1</test_script_entry>
+        </description>
+        <specs>
+          <spec>
+            <spec_assertion element_type="property" element_name="insertion" interface="Styles" specification="Shadow DOM" section="Web Components" category="W3C API Specifications"/>
+            <spec_url>https://dvcs.w3.org/hg/webcomponents/raw-file/tip/spec/shadow/index.html</spec_url>
+            <spec_statement/>
+          </spec>
+        </specs>
+      </testcase>
+      <testcase purpose="Check if the selection, returned by the window.getSelection() method must never return a selection within a shadow tree" type="compliance" status="approved" component="WebAPI/Web Components/Shadow DOM" execution_type="auto" priority="P0" id="ranges_and_selections_01">
+        <description>
+          <test_script_entry>/opt/webapi-shadowdom-w3c-tests/shadowdom/w3c/user-interaction/ranges-and-selections/test-001.html?total_num=2&amp;amp;locator_key=id&amp;amp;value=1</test_script_entry>
+        </description>
+        <specs>
+          <spec>
+            <spec_assertion element_type="method" element_name="getSelection" interface="UserInteraction" specification="Shadow DOM" section="Web Components" category="W3C API Specifications"/>
+            <spec_url>https://dvcs.w3.org/hg/webcomponents/raw-file/tip/spec/shadow/index.html</spec_url>
+            <spec_statement/>
+          </spec>
+        </specs>
+      </testcase>
+      <testcase purpose="Check if the getSelection() method of the shadow root object must return the current selection in this shadow tree" type="compliance" status="approved" component="WebAPI/Web Components/Shadow DOM" execution_type="auto" priority="P2" id="ranges_and_selections_02">
+        <description>
+          <test_script_entry>/opt/webapi-shadowdom-w3c-tests/shadowdom/w3c/user-interaction/ranges-and-selections/test-002.html?total_num=2&amp;amp;locator_key=id&amp;amp;value=1</test_script_entry>
+        </description>
+        <specs>
+          <spec>
+            <spec_assertion element_type="method" element_name="getSelection" interface="UserInteraction" specification="Shadow DOM" section="Web Components" category="W3C API Specifications"/>
+            <spec_url>https://dvcs.w3.org/hg/webcomponents/raw-file/tip/spec/shadow/index.html</spec_url>
+            <spec_statement/>
+          </spec>
+        </specs>
+      </testcase>
+      <testcase purpose="Check if each shadow root must also have an activeElement property to store the value of the focused element in the shadow tree" type="compliance" status="approved" component="WebAPI/Web Components/Shadow DOM" execution_type="auto" priority="P2" id="active_element">
+        <description>
+          <test_script_entry>/opt/webapi-shadowdom-w3c-tests/shadowdom/w3c/user-interaction/active-element/test-001.html</test_script_entry>
+        </description>
+        <specs>
+          <spec>
+            <spec_assertion element_type="property" element_name="activeElement" interface="UserInteraction" specification="Shadow DOM" section="Web Components" category="W3C API Specifications"/>
+            <spec_url>https://dvcs.w3.org/hg/webcomponents/raw-file/tip/spec/shadow/index.html</spec_url>
+            <spec_statement/>
+          </spec>
+        </specs>
+      </testcase>
+      <testcase purpose="Check if document's activeElement property must be adjusted" type="compliance" status="approved" component="WebAPI/Web Components/Shadow DOM" execution_type="auto" priority="P2" id="active_element_adjusted">
+        <description>
+          <test_script_entry>/opt/webapi-shadowdom-w3c-tests/shadowdom/w3c/user-interaction/active-element/test-002.html</test_script_entry>
+        </description>
+        <specs>
+          <spec>
+            <spec_assertion element_type="property" element_name="activeElement" interface="UserInteraction" specification="Shadow DOM" section="Web Components" category="W3C API Specifications"/>
+            <spec_url>https://dvcs.w3.org/hg/webcomponents/raw-file/tip/spec/shadow/index.html</spec_url>
+            <spec_statement/>
+          </spec>
+        </specs>
+      </testcase>
+      <testcase purpose="Check if shadow trees must not be propagated contentEditable attribute from shadow host" type="compliance" status="approved" component="WebAPI/Web Components/Shadow DOM" execution_type="auto" priority="P1" id="active_element_editing">
+        <description>
+          <test_script_entry>/opt/webapi-shadowdom-w3c-tests/shadowdom/w3c/user-interaction/editing/inheritance-of-content-editable-001.html</test_script_entry>
+        </description>
+        <specs>
+          <spec>
+            <spec_assertion element_type="property" element_name="editing" interface="UserInteraction" specification="Shadow DOM" section="Web Components" category="W3C API Specifications"/>
+            <spec_url>https://dvcs.w3.org/hg/webcomponents/raw-file/tip/spec/shadow/index.html</spec_url>
+            <spec_statement/>
+          </spec>
+        </specs>
+      </testcase>
+      <testcase purpose="Check if the navigation order within a shadow tree must be computed as a list of focusable elements in tree order as-rendered  with the exception of any elements" type="compliance" status="approved" component="WebAPI/Web Components/Shadow DOM" execution_type="auto" priority="P2" id="active_element_computed">
+        <description>
+          <test_script_entry>/opt/webapi-shadowdom-w3c-tests/shadowdom/w3c/user-interaction/focus-navigation/test-002.html</test_script_entry>
+        </description>
+        <specs>
+          <spec>
+            <spec_assertion element_type="property" element_name="activeElementComputed" interface="UserInteraction" specification="Shadow DOM" section="Web Components" category="W3C API Specifications"/>
+            <spec_url>https://dvcs.w3.org/hg/webcomponents/raw-file/tip/spec/shadow/index.html</spec_url>
+            <spec_statement/>
+          </spec>
+        </specs>
+      </testcase>
+      <testcase purpose="Check if for sequential focus navigation, the shadow DOM navigation order sequence must be inserted into the document navigation order in place of the shadow host as if the shadow host were assigned the value of auto for determining its position and shadow host is not focusable" type="compliance" status="approved" component="WebAPI/Web Components/Shadow DOM" execution_type="auto" priority="P3" id="active_element_inserted">
+        <description>
+          <test_script_entry>/opt/webapi-shadowdom-w3c-tests/shadowdom/w3c/user-interaction/focus-navigation/test-003.html?total_num=2&amp;amp;locator_key=id&amp;amp;value=1</test_script_entry>
+        </description>
+        <specs>
+          <spec>
+            <spec_assertion usage="property" interface="UserInteraction" specification="Shadow DOM" section="Web Components" category="W3C API Specifications"/>
+            <spec_url>https://dvcs.w3.org/hg/webcomponents/raw-file/tip/spec/shadow/index.html</spec_url>
+            <spec_statement/>
+          </spec>
+        </specs>
+      </testcase>
+      <testcase purpose="Check if the navigation order within a shadow tree must be computed as a list of focusable elements in tree order" type="compliance" status="approved" component="WebAPI/Web Components/Shadow DOM" execution_type="auto" priority="P2" id="focus_navigation_01">
+        <description>
+          <test_script_entry>/opt/webapi-shadowdom-w3c-tests/shadowdom/w3c/user-interaction/focus-navigation/test-001.html</test_script_entry>
+        </description>
+        <specs>
+          <spec>
+            <spec_assertion element_type="property" element_name="navigation" interface="UserInteraction" specification="Shadow DOM" section="Web Components" category="W3C API Specifications"/>
+            <spec_url>https://dvcs.w3.org/hg/webcomponents/raw-file/tip/spec/shadow/index.html</spec_url>
+            <spec_statement/>
+          </spec>
+        </specs>
+      </testcase>
+      <testcase purpose="Check if for sequential focus navigation, the shadow DOM navigation order sequence must be inserted into the document navigation order immediately after the shadow host, if the shadow host is focusable" type="compliance" status="approved" component="WebAPI/Web Components/Shadow DOM" execution_type="auto" priority="P2" id="focus_navigation_02">
+        <description>
+          <test_script_entry>/opt/webapi-shadowdom-w3c-tests/shadowdom/w3c/user-interaction/focus-navigation/test-004.html?total_num=4&amp;amp;locator_key=id&amp;amp;value=2</test_script_entry>
+        </description>
+        <specs>
+          <spec>
+            <spec_assertion element_type="property" element_name="navigation" interface="UserInteraction" specification="Shadow DOM" section="Web Components" category="W3C API Specifications"/>
+            <spec_url>https://dvcs.w3.org/hg/webcomponents/raw-file/tip/spec/shadow/index.html</spec_url>
+            <spec_statement/>
+          </spec>
+        </specs>
+      </testcase>
+      <testcase purpose="Check if throw an InvalidNodeTypeError, if context object is not a ShadowRoot instance" type="compliance" status="approved" component="WebAPI/Web Components/Shadow DOM" execution_type="auto" priority="P0" id="shadowroot_elementFromPoint_method">
+        <description>
+          <test_script_entry>/opt/webapi-shadowdom-w3c-tests/shadowdom/w3c/elements-and-dom-objects/shadowroot-object/shadowroot-methods/test-006.html</test_script_entry>
+        </description>
+        <specs>
+          <spec>
+            <spec_assertion element_type="true" element_name="" interface="ShadowRoot" specification="Shadow DOM" section="Web Components" category="W3C API Specifications"/>
+            <spec_url>https://dvcs.w3.org/hg/webcomponents/raw-file/tip/spec/shadow/index.html</spec_url>
+            <spec_statement/>
+          </spec>
+        </specs>
+      </testcase>
+      <testcase purpose="Check if on getting return the older shadow root relative to the root node of the context object if shadow root is accessible" type="compliance" status="approved" component="WebAPI/Web Components/Shadow DOM" execution_type="auto" priority="P3" id="htmlshadowelement_olderShadowRoot_03">
+        <description>
+          <test_script_entry>/opt/webapi-shadowdom-w3c-tests/shadowdom/w3c/elements-and-dom-objects/the-shadow-html-element/test-007.html</test_script_entry>
+        </description>
+        <specs>
+          <spec>
+            <spec_assertion usage="" interface="HTMLContentElement" specification="Shadow DOM" section="Web Components" category="W3C API Specifications"/>
+            <spec_url>https://dvcs.w3.org/hg/webcomponents/raw-file/tip/spec/shadow/index.html</spec_url>
+            <spec_statement/>
+          </spec>
+        </specs>
+      </testcase>
+      <testcase purpose="Check if on getting return null if no such shadow root is accessible" type="compliance" status="approved" component="WebAPI/Web Components/Shadow DOM" execution_type="auto" priority="P3" id="htmlshadowelement_olderShadowRoot_04">
+        <description>
+          <test_script_entry>/opt/webapi-shadowdom-w3c-tests/shadowdom/w3c/elements-and-dom-objects/the-shadow-html-element/test-008.html</test_script_entry>
+        </description>
+        <specs>
+          <spec>
+            <spec_assertion usage="" interface="HTMLContentElement" specification="Shadow DOM" section="Web Components" category="W3C API Specifications"/>
+            <spec_url>https://dvcs.w3.org/hg/webcomponents/raw-file/tip/spec/shadow/index.html</spec_url>
+            <spec_statement/>
+          </spec>
+        </specs>
+      </testcase>
+      <testcase purpose="Check if the relatedTarget and target are the same for a given node, its the event listeners must not be invoked" type="compliance" status="approved" component="WebAPI/Web Components/Shadow DOM" execution_type="auto" priority="P3" id="event_dispatch_03">
+        <description>
+          <test_script_entry>/opt/webapi-shadowdom-w3c-tests/shadowdom/w3c/events/event-dispatch/test-003.html</test_script_entry>
+        </description>
+        <specs>
+          <spec>
+            <spec_assertion usage="" interface="EventDispatch" specification="Shadow DOM" section="Web Components" category="W3C API Specifications"/>
+            <spec_url>https://dvcs.w3.org/hg/webcomponents/raw-file/tip/spec/shadow/index.html</spec_url>
+            <spec_statement/>
+          </spec>
+        </specs>
+      </testcase>
+      <testcase purpose="Check if event listeners must not be invoked on a node for which the target and relatedTarget are the same" type="compliance" status="approved" component="WebAPI/Web Components/Shadow DOM" execution_type="auto" priority="P3" id="retargeting_relatedTarget_02">
+        <description>
+          <test_script_entry>/opt/webapi-shadowdom-w3c-tests/shadowdom/w3c/events/retargeting-relatedtarget/test-003.html</test_script_entry>
+        </description>
+        <specs>
+          <spec>
+            <spec_assertion usage="" interface="RetargetingrelatedTarget" specification="Shadow DOM" section="Web Components" category="W3C API Specifications"/>
+            <spec_url>https://dvcs.w3.org/hg/webcomponents/raw-file/tip/spec/shadow/index.html</spec_url>
+            <spec_statement/>
+          </spec>
+        </specs>
+      </testcase>
+      <testcase purpose="Check if the element can have fallback content and UA should allow the shadow tree to contain at least one insertion point" type="compliance" status="approved" component="WebAPI/Web Components/Shadow DOM" execution_type="auto" priority="P2" id="HTMLAndShadowTrees_fallback">
+        <description>
+          <test_script_entry>/opt/webapi-shadowdom-w3c-tests/shadowdom/w3c/html-elements-and-their-shadow-trees/test-001.html?total_num=9&amp;amp;locator_key=id&amp;amp;value=1</test_script_entry>
+        </description>
+        <specs>
+          <spec>
+            <spec_assertion element_type="property" element_name="fallback" interface="HTMLElementsAndTheirShadowTrees" specification="Shadow DOM" section="Web Components" category="W3C API Specifications"/>
+            <spec_url>https://dvcs.w3.org/hg/webcomponents/raw-file/tip/spec/shadow/index.html</spec_url>
+            <spec_statement/>
+          </spec>
+        </specs>
+      </testcase>
+      <testcase purpose="Check if Elements that have no fallback content should allow the shadow tree to contain no insertion points or an insertion point that matches nothing" type="compliance" status="approved" component="WebAPI/Web Components/Shadow DOM" execution_type="auto" priority="P2" id="HTMLAndShadowTrees_no_fallback">
+        <description>
+          <test_script_entry>/opt/webapi-shadowdom-w3c-tests/shadowdom/w3c/html-elements-and-their-shadow-trees/test-002.html?total_num=3&amp;amp;locator_key=id&amp;amp;value=1</test_script_entry>
+        </description>
+        <specs>
+          <spec>
+            <spec_assertion element_type="property" element_name="noFallback" interface="HTMLElementsAndTheirShadowTrees" specification="Shadow DOM" section="Web Components" category="W3C API Specifications"/>
+            <spec_url>https://dvcs.w3.org/hg/webcomponents/raw-file/tip/spec/shadow/index.html</spec_url>
+            <spec_statement/>
+          </spec>
+        </specs>
+      </testcase>
+      <testcase purpose="Check if fieldset can contain at least two insertion points with matching criteria legend:first-of-type and universal selector" type="compliance" status="approved" component="WebAPI/Web Components/Shadow DOM" execution_type="auto" priority="P2" id="HTMLAndShadowTrees_fieldset">
+        <description>
+          <test_script_entry>/opt/webapi-shadowdom-w3c-tests/shadowdom/w3c/html-elements-and-their-shadow-trees/test-003.html?total_num=2&amp;amp;locator_key=id&amp;amp;value=2</test_script_entry>
+        </description>
+        <specs>
+          <spec>
+            <spec_assertion element_type="property" element_name="fieldset" interface="HTMLElementsAndTheirShadowTrees" specification="Shadow DOM" section="Web Components" category="W3C API Specifications"/>
+            <spec_url>https://dvcs.w3.org/hg/webcomponents/raw-file/tip/spec/shadow/index.html</spec_url>
+            <spec_statement/>
+          </spec>
+        </specs>
+      </testcase>
+      <testcase purpose="Check if details can contain at least two insertion points with matching criteria summary:first-of-type and universal selector" type="compliance" status="approved" component="WebAPI/Web Components/Shadow DOM" execution_type="auto" priority="P2" id="HTMLAndShadowTrees_details">
+        <description>
+          <test_script_entry>/opt/webapi-shadowdom-w3c-tests/shadowdom/w3c/html-elements-and-their-shadow-trees/test-004.html?total_num=2&amp;amp;locator_key=id&amp;amp;value=2</test_script_entry>
+        </description>
+        <specs>
+          <spec>
+            <spec_assertion element_type="property" element_name="details" interface="HTMLElementsAndTheirShadowTrees" specification="Shadow DOM" section="Web Components" category="W3C API Specifications"/>
+            <spec_url>https://dvcs.w3.org/hg/webcomponents/raw-file/tip/spec/shadow/index.html</spec_url>
+            <spec_statement/>
+          </spec>
+        </specs>
+      </testcase>
+      <testcase purpose="Check if form elements and form-associated elements in shadow tree are not accessible using document DOM object's tree accessors" type="compliance" status="approved" component="WebAPI/Web Components/Shadow DOM" execution_type="auto" priority="P2" id="HTMLInShadowTrees_documentAccessors">
+        <description>
+          <test_script_entry>/opt/webapi-shadowdom-w3c-tests/shadowdom/w3c/html-elements-in-shadow-trees/html-forms/test-001.html?total_num=2&amp;amp;locator_key=id&amp;amp;value=1</test_script_entry>
+        </description>
+        <specs>
+          <spec>
+            <spec_assertion element_type="property" element_name="documentAccessors" interface="HTMLElementsInShadowTrees" specification="Shadow DOM" section="Web Components" category="W3C API Specifications"/>
+            <spec_url>https://dvcs.w3.org/hg/webcomponents/raw-file/tip/spec/shadow/index.html</spec_url>
+            <spec_statement/>
+          </spec>
+        </specs>
+      </testcase>
+      <testcase purpose="Check if form elements and form-associated elements in shadow tree must be accessible using shadow tree accessors" type="compliance" status="approved" component="WebAPI/Web Components/Shadow DOM" execution_type="auto" priority="P2" id="HTMLInShadowTrees_shadowTreeAccessors">
+        <description>
+          <test_script_entry>/opt/webapi-shadowdom-w3c-tests/shadowdom/w3c/html-elements-in-shadow-trees/html-forms/test-002.html?total_num=3&amp;amp;locator_key=id&amp;amp;value=1</test_script_entry>
+        </description>
+        <specs>
+          <spec>
+            <spec_assertion element_type="property" element_name="shadowTreeAccessors" interface="HTMLElementsInShadowTrees" specification="Shadow DOM" section="Web Components" category="W3C API Specifications"/>
+            <spec_url>https://dvcs.w3.org/hg/webcomponents/raw-file/tip/spec/shadow/index.html</spec_url>
+            <spec_statement/>
+          </spec>
+        </specs>
+      </testcase>
+      <testcase purpose="Check if form should submit elements in shadow tree" type="compliance" status="approved" component="WebAPI/Web Components/Shadow DOM" execution_type="auto" priority="P2" id="HTMLInShadowTrees_formSubmit">
+        <description>
+          <test_script_entry>/opt/webapi-shadowdom-w3c-tests/shadowdom/w3c/html-elements-in-shadow-trees/html-forms/test-003.html</test_script_entry>
+        </description>
+        <specs>
+          <spec>
+            <spec_assertion element_type="property" element_name="formSubmit" interface="HTMLElementsInShadowTrees" specification="Shadow DOM" section="Web Components" category="W3C API Specifications"/>
+            <spec_url>https://dvcs.w3.org/hg/webcomponents/raw-file/tip/spec/shadow/index.html</spec_url>
+            <spec_statement/>
+          </spec>
+        </specs>
+      </testcase>
+      <testcase purpose="Check if base element must behave as inert, or not part of the document tree" type="compliance" status="approved" component="WebAPI/Web Components/Shadow DOM" execution_type="auto" priority="P2" id="HTMLInShadowTrees_inertHtmlElements_01">
+        <description>
+          <test_script_entry>/opt/webapi-shadowdom-w3c-tests/shadowdom/w3c/html-elements-in-shadow-trees/inert-html-elements/test-001.html</test_script_entry>
+        </description>
+        <specs>
+          <spec>
+            <spec_assertion element_type="property" element_name="baseElement" interface="HTMLElementsInShadowTrees" specification="Shadow DOM" section="Web Components" category="W3C API Specifications"/>
+            <spec_url>https://dvcs.w3.org/hg/webcomponents/raw-file/tip/spec/shadow/index.html</spec_url>
+            <spec_statement/>
+          </spec>
+        </specs>
+      </testcase>
+      <testcase purpose="Check if link element must behave as inert not as part of the document tree" type="compliance" status="approved" component="WebAPI/Web Components/Shadow DOM" execution_type="auto" priority="P2" id="HTMLInShadowTrees_inertHtmlElements_02">
+        <description>
+          <test_script_entry>/opt/webapi-shadowdom-w3c-tests/shadowdom/w3c/html-elements-in-shadow-trees/inert-html-elements/test-002.html</test_script_entry>
+        </description>
+        <specs>
+          <spec>
+            <spec_assertion element_type="property" element_name="linkElement" interface="HTMLElementsInShadowTrees" specification="Shadow DOM" section="Web Components" category="W3C API Specifications"/>
+            <spec_url>https://dvcs.w3.org/hg/webcomponents/raw-file/tip/spec/shadow/index.html</spec_url>
+            <spec_statement/>
+          </spec>
+        </specs>
+      </testcase>
+      <testcase purpose="Check if the implementation of Composition algorithm is valid" type="compliance" status="approved" component="WebAPI/Web Components/Shadow DOM" execution_type="auto" priority="P2" id="shadowTrees_composition_01">
+        <description>
+          <test_script_entry>/opt/webapi-shadowdom-w3c-tests/shadowdom/w3c/shadow-trees/composition/test-001.html</test_script_entry>
+        </description>
+        <specs>
+          <spec>
+            <spec_assertion element_type="property" element_name="composition" interface="ShadowTrees" specification="Shadow DOM" section="Web Components" category="W3C API Specifications"/>
+            <spec_url>https://dvcs.w3.org/hg/webcomponents/raw-file/tip/spec/shadow/index.html</spec_url>
+            <spec_statement/>
+          </spec>
+        </specs>
+      </testcase>
+      <testcase purpose="Check if a valid selector fragment may contain a type selector" type="compliance" status="approved" component="WebAPI/Web Components/Shadow DOM" execution_type="auto" priority="P2" id="shadowTrees_satisfyingMatchingCriteria_01">
+        <description>
+          <test_script_entry>/opt/webapi-shadowdom-w3c-tests/shadowdom/w3c/shadow-trees/satisfying-matching-criteria/test-001.html</test_script_entry>
+        </description>
+        <specs>
+          <spec>
+            <spec_assertion element_type="property" element_name="typeSelector" interface="ShadowTrees" specification="Shadow DOM" section="Web Components" category="W3C API Specifications"/>
+            <spec_url>https://dvcs.w3.org/hg/webcomponents/raw-file/tip/spec/shadow/index.html</spec_url>
+            <spec_statement/>
+          </spec>
+        </specs>
+      </testcase>
+      <testcase purpose="Check if a valid selector fragment may contain a universal selector" type="compliance" status="approved" component="WebAPI/Web Components/Shadow DOM" execution_type="auto" priority="P2" id="shadowTrees_satisfyingMatchingCriteria_02">
+        <description>
+          <test_script_entry>/opt/webapi-shadowdom-w3c-tests/shadowdom/w3c/shadow-trees/satisfying-matching-criteria/test-002.html</test_script_entry>
+        </description>
+        <specs>
+          <spec>
+            <spec_assertion element_type="property" element_name="universalSelector" interface="ShadowTrees" specification="Shadow DOM" section="Web Components" category="W3C API Specifications"/>
+            <spec_url>https://dvcs.w3.org/hg/webcomponents/raw-file/tip/spec/shadow/index.html</spec_url>
+            <spec_statement/>
+          </spec>
+        </specs>
+      </testcase>
+      <testcase purpose="Check if a valid selector fragment may contain a class selector" type="compliance" status="approved" component="WebAPI/Web Components/Shadow DOM" execution_type="auto" priority="P2" id="shadowTrees_satisfyingMatchingCriteria_03">
+        <description>
+          <test_script_entry>/opt/webapi-shadowdom-w3c-tests/shadowdom/w3c/shadow-trees/satisfying-matching-criteria/test-003.html</test_script_entry>
+        </description>
+        <specs>
+          <spec>
+            <spec_assertion element_type="property" element_name="classSelector" interface="ShadowTrees" specification="Shadow DOM" section="Web Components" category="W3C API Specifications"/>
+            <spec_url>https://dvcs.w3.org/hg/webcomponents/raw-file/tip/spec/shadow/index.html</spec_url>
+            <spec_statement/>
+          </spec>
+        </specs>
+      </testcase>
+      <testcase purpose="Check if a valid selector fragment may contain a ID selector" type="compliance" status="approved" component="WebAPI/Web Components/Shadow DOM" execution_type="auto" priority="P2" id="shadowTrees_satisfyingMatchingCriteria_04">
+        <description>
+          <test_script_entry>/opt/webapi-shadowdom-w3c-tests/shadowdom/w3c/shadow-trees/satisfying-matching-criteria/test-004.html</test_script_entry>
+        </description>
+        <specs>
+          <spec>
+            <spec_assertion element_type="property" element_name="IDSelector" interface="ShadowTrees" specification="Shadow DOM" section="Web Components" category="W3C API Specifications"/>
+            <spec_url>https://dvcs.w3.org/hg/webcomponents/raw-file/tip/spec/shadow/index.html</spec_url>
+            <spec_statement/>
+          </spec>
+        </specs>
+      </testcase>
+      <testcase purpose="Check if a valid selector fragment may contain a attribute selector" type="compliance" status="approved" component="WebAPI/Web Components/Shadow DOM" execution_type="auto" priority="P2" id="shadowTrees_satisfyingMatchingCriteria_05">
+        <description>
+          <test_script_entry>/opt/webapi-shadowdom-w3c-tests/shadowdom/w3c/shadow-trees/satisfying-matching-criteria/test-005.html</test_script_entry>
+        </description>
+        <specs>
+          <spec>
+            <spec_assertion element_type="property" element_name="attributeSelector" interface="ShadowTrees" specification="Shadow DOM" section="Web Components" category="W3C API Specifications"/>
+            <spec_url>https://dvcs.w3.org/hg/webcomponents/raw-file/tip/spec/shadow/index.html</spec_url>
+            <spec_statement/>
+          </spec>
+        </specs>
+      </testcase>
+    </set>
+  </suite>
+</test_definition>

@@ -1,0 +1,24 @@
+{
+  "name": "splashscreen_app_bmp_tests",
+  "version": "0.1",
+  "app": {
+    "launch": {
+            "local_path":"index.html"
+        },
+    "readyWhen": "first-paint | user-interactive | complete | custom",
+    "interstitials": [{
+            "baseColor": "#ff0000",
+            "backgroundSrc": "bg.png 1x",
+            "foregroundSrc": "loading.bmp 1x",
+            "foregroundBorder": "30px round",
+            "orientation": "default | portrait | landscape"
+        }, {
+            "baseColor": "#ff0000",
+            "backgroundSrc": "bg2.png 2x",
+            "foregroundSrc": "loading2.bmp 2x",
+            "foregroundBorder": "50px round",
+            "orientation": "portrait | landscape"
+        }]
+  },
+  "icons": { "117": "icon.png"}
+}

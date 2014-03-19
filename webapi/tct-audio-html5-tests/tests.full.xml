@@ -1,0 +1,2073 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-stylesheet type="text/xsl"  href="./testcase.xsl"?>
+<test_definition>
+  <suite name="tct-audio-html5-tests" launcher="xwalk" category="W3C/HTML5 APIs">
+    <set name="Audio">
+      <testcase purpose="Check that loadedmetadata event is triggered if autoplay attribute present and src attribute give right address of the media resource" type="compliance" status="approved" component="WebAPI/Media/HTML5 The audio element (Partial)" execution_type="auto" priority="P1" id="audio_event_loadedmetadata">
+        <description>
+          <test_script_entry test_script_expected_result="0">/opt/tct-audio-html5-tests/audio/w3c/event_loadedmetadata.html</test_script_entry>
+        </description>
+        <specs>
+          <spec>
+            <spec_assertion element_type="eventhandler" element_name="onloadedmetadata" interface="HTMLAudioElement" specification="HTML5 The audio element (Partial)" section="Media" category="Tizen W3C API Specifications"/>
+            <spec_url>http://www.w3.org/TR/2012/WD-html5-20121025/media-elements.html#htmlmediaelement</spec_url>
+            <spec_statement>The user agent has just determined the duration and dimensions of the media resource and the text tracks are ready.</spec_statement>
+          </spec>
+        </specs>
+      </testcase>
+      <testcase purpose="Check that audio.networkState is NETWORK_EMPTY" type="compliance" status="approved" component="WebAPI/Media/HTML5 The audio element (Partial)" execution_type="auto" priority="P1" id="audio_networkstate_initial">
+        <description>
+          <test_script_entry test_script_expected_result="0">/opt/tct-audio-html5-tests/audio/w3c/networkState_initial.html</test_script_entry>
+        </description>
+        <specs>
+          <spec>
+            <spec_assertion element_type="attribute" element_name="networkState" interface="HTMLAudioElement" specification="HTML5 The audio element (Partial)" section="Media" category="Tizen W3C API Specifications"/>
+            <spec_url>http://www.w3.org/TR/2012/WD-html5-20121025/media-elements.html#htmlmediaelement</spec_url>
+            <spec_statement>NETWORK_EMPTY (numeric value 0), The element has not yet been initialized. All attributes are in their initial states.</spec_statement>
+          </spec>
+        </specs>
+      </testcase>
+      <testcase purpose="Check if audio.preload property exists" type="compliance" status="approved" component="WebAPI/Media/HTML5 The audio element (Partial)" execution_type="auto" priority="P1" id="audio_preload_property_exists">
+        <description>
+          <test_script_entry test_script_expected_result="0">/opt/tct-audio-html5-tests/audio/w3c/preload_property_exists.html</test_script_entry>
+        </description>
+        <specs>
+          <spec>
+            <spec_assertion element_type="attribute" element_name="preload" interface="HTMLAudioElement" specification="HTML5 The audio element (Partial)" section="Media" category="Tizen W3C API Specifications"/>
+            <spec_url>http://www.w3.org/TR/2012/WD-html5-20121025/media-elements.html#htmlmediaelement</spec_url>
+            <spec_statement>The preload IDL attribute must reflect the content attribute of the same name, limited to only known values.</spec_statement>
+          </spec>
+        </specs>
+      </testcase>
+      <testcase purpose="Check that audio.src reflects the content attribute of the same name" type="compliance" status="approved" component="WebAPI/Media/HTML5 The audio element (Partial)" execution_type="auto" priority="P0" id="content_audio_src_reflects_attribute_not_source_elements">
+        <description>
+          <test_script_entry test_script_expected_result="0">/opt/tct-audio-html5-tests/audio/w3c/src_reflects_attribute_not_source_elements.html</test_script_entry>
+        </description>
+        <specs>
+          <spec>
+            <spec_assertion element_type="attribute" element_name="src" interface="HTMLAudioElement" specification="HTML5 The audio element (Partial)" section="Media" category="Tizen W3C API Specifications"/>
+            <spec_url>http://www.w3.org/TR/2012/WD-html5-20121025/media-elements.html#htmlmediaelement</spec_url>
+            <spec_statement>The src IDL attribute on media elements must reflect the content attribute of the same name.</spec_statement>
+          </spec>
+        </specs>
+      </testcase>
+      <testcase purpose="Check that  canplay event is triggered if autoplay attribute present and src attibute give right address of the media resource" type="compliance" status="approved" component="WebAPI/Media/HTML5 The audio element (Partial)" execution_type="auto" priority="P1" id="audio_event_canplay">
+        <description>
+          <test_script_entry test_script_expected_result="0">/opt/tct-audio-html5-tests/audio/w3c/event_canplay.html</test_script_entry>
+        </description>
+        <specs>
+          <spec>
+            <spec_assertion element_type="eventhandler" element_name="oncanplay" interface="HTMLAudioElement" specification="HTML5 The audio element (Partial)" section="Media" category="Tizen W3C API Specifications"/>
+            <spec_url>http://www.w3.org/TR/2012/WD-html5-20121025/media-elements.html#htmlmediaelement</spec_url>
+            <spec_statement>The user agent can resume playback of the media data, but estimates that if playback were to be started now, the media resource could not be rendered at the current playback rate up to its end without having to stop for further buffering of content.</spec_statement>
+          </spec>
+        </specs>
+      </testcase>
+      <testcase purpose="Check if audio.error property exists" type="compliance" status="approved" component="WebAPI/Media/HTML5 The audio element (Partial)" execution_type="auto" priority="P1" id="audio_error_property_exists">
+        <description>
+          <test_script_entry test_script_expected_result="0">/opt/tct-audio-html5-tests/audio/w3c/error_property_exists.html</test_script_entry>
+        </description>
+        <specs>
+          <spec>
+            <spec_assertion element_type="attribute" element_name="error" interface="HTMLAudioElement" specification="HTML5 The audio element (Partial)" section="Media" category="Tizen W3C API Specifications"/>
+            <spec_url>http://www.w3.org/TR/2012/WD-html5-20121025/media-elements.html#htmlmediaelement</spec_url>
+            <spec_statement>The error attribute, on getting, must return the MediaError object created for this last error, or null if there has not been an error.</spec_statement>
+          </spec>
+        </specs>
+      </testcase>
+      <testcase purpose="Check that audio.canPlayType method supported ogg format codecs parameter" type="compliance" status="approved" component="WebAPI/Media/HTML5 The audio element (Partial)" execution_type="auto" priority="P0" id="audio_canplaytype_ogg_supported_but_no_codecs_parameter">
+        <description>
+          <test_script_entry test_script_expected_result="0">/opt/tct-audio-html5-tests/audio/w3c/canPlayType_supported_but_no_codecs_parameter_1.html</test_script_entry>
+        </description>
+        <specs>
+          <spec>
+            <spec_assertion element_type="method" element_name="canPlayType" interface="HTMLAudioElement" specification="HTML5 The audio element (Partial)" section="Media" category="Tizen W3C API Specifications"/>
+            <spec_url>http://www.w3.org/TR/2012/WD-html5-20121025/media-elements.html#htmlmediaelement</spec_url>
+            <spec_statement>The canPlayType(type) method must return the empty string if type is a type that the user agent knows it cannot render or is the type 'application/octet-stream'; it must return 'probably' if the user agent is confident that the type represents a media resource that it can render if used in with this audio or video element; and it must return 'maybe' otherwise. Implementors are encouraged to return 'maybe' unless the type can be confidently established as being supported or not. Generally, a user agent should never return 'probably' for a type that allows the codecs parameter if that parameter is not present.</spec_statement>
+          </spec>
+        </specs>
+      </testcase>
+      <testcase purpose="Check that playing event is triggered if autoplay attribute present and src attibute give right address of the media resource" type="compliance" status="approved" component="WebAPI/Media/HTML5 The audio element (Partial)" execution_type="auto" priority="P1" id="audio_event_playing">
+        <description>
+          <test_script_entry test_script_expected_result="0">/opt/tct-audio-html5-tests/audio/w3c/event_playing.html</test_script_entry>
+        </description>
+        <specs>
+          <spec>
+            <spec_assertion element_type="eventhandler" element_name="onplaying" interface="HTMLAudioElement" specification="HTML5 The audio element (Partial)" section="Media" category="Tizen W3C API Specifications"/>
+            <spec_url>http://www.w3.org/TR/2012/WD-html5-20121025/media-elements.html#htmlmediaelement</spec_url>
+            <spec_statement>Playback is ready to start after having been paused or delayed due to lack of media data.</spec_statement>
+          </spec>
+        </specs>
+      </testcase>
+      <testcase purpose="Check that progress event is triggered if autoplay attribute present and src attibute give right address of the media resource" type="compliance" status="approved" component="WebAPI/Media/HTML5 The audio element (Partial)" execution_type="auto" priority="P1" id="audio_event_progress">
+        <description>
+          <test_script_entry test_script_expected_result="0">/opt/tct-audio-html5-tests/audio/w3c/event_progress.html</test_script_entry>
+        </description>
+        <specs>
+          <spec>
+            <spec_assertion element_type="eventhandler" element_name="onprogress" interface="HTMLAudioElement" specification="HTML5 The audio element (Partial)" section="Media" category="Tizen W3C API Specifications"/>
+            <spec_url>http://www.w3.org/TR/2012/WD-html5-20121025/media-elements.html#htmlmediaelement</spec_url>
+            <spec_statement>The user agent is fetching media data.</spec_statement>
+          </spec>
+        </specs>
+      </testcase>
+      <testcase purpose="Check that audio.readyState is greater than or equal to HAVE_FUTURE_DATA if canplay event is triggered" type="compliance" status="approved" component="WebAPI/Media/HTML5 The audio element (Partial)" execution_type="auto" priority="P0" id="content_audio_readystate_during_canplay">
+        <description>
+          <test_script_entry test_script_expected_result="0">/opt/tct-audio-html5-tests/audio/w3c/readyState_during_canplay.html</test_script_entry>
+        </description>
+        <specs>
+          <spec>
+            <spec_assertion element_type="attribute" element_name="readyState" interface="HTMLAudioElement" specification="HTML5 The audio element (Partial)" section="Media" category="Tizen W3C API Specifications"/>
+            <spec_url>http://www.w3.org/TR/2012/WD-html5-20121025/media-elements.html#htmlmediaelement</spec_url>
+            <spec_statement>readyState newly increased to HAVE_FUTURE_DATA or greater.</spec_statement>
+          </spec>
+        </specs>
+      </testcase>
+      <testcase purpose="Check that loadstart event is triggered if autoplay attribute present and src attribute give right address of the media resource" type="compliance" status="approved" component="WebAPI/Media/HTML5 The audio element (Partial)" execution_type="auto" priority="P1" id="audio_event_loadstart">
+        <description>
+          <test_script_entry test_script_expected_result="0">/opt/tct-audio-html5-tests/audio/w3c/event_loadstart.html</test_script_entry>
+        </description>
+        <specs>
+          <spec>
+            <spec_assertion element_type="eventhandler" element_name="onloadstart" interface="HTMLAudioElement" specification="HTML5 The audio element (Partial)" section="Media" category="Tizen W3C API Specifications"/>
+            <spec_url>http://www.w3.org/TR/2012/WD-html5-20121025/media-elements.html#htmlmediaelement</spec_url>
+            <spec_statement>The user agent begins looking for media data, as part of the resource selection algorithm.</spec_statement>
+          </spec>
+        </specs>
+      </testcase>
+      <testcase purpose="Check that play event is triggered if autoplay attribute present and src attribute give right address of the media resource" type="compliance" status="approved" component="WebAPI/Media/HTML5 The audio element (Partial)" execution_type="auto" priority="P1" id="audio_event_play">
+        <description>
+          <test_script_entry test_script_expected_result="0">/opt/tct-audio-html5-tests/audio/w3c/event_play.html</test_script_entry>
+        </description>
+        <specs>
+          <spec>
+            <spec_assertion element_type="eventhandler" element_name="onplay" interface="HTMLAudioElement" specification="HTML5 The audio element (Partial)" section="Media" category="Tizen W3C API Specifications"/>
+            <spec_url>http://www.w3.org/TR/2012/WD-html5-20121025/media-elements.html#htmlmediaelement</spec_url>
+            <spec_statement>The element is no longer paused. Fired after the play() method has returned, or when the autoplay attribute has caused playback to begin.</spec_statement>
+          </spec>
+        </specs>
+      </testcase>
+      <testcase purpose="Check that loadedata event is triggered if autoplay attribute present and src attribute give right address of the media resource" type="compliance" status="approved" component="WebAPI/Media/HTML5 The audio element (Partial)" execution_type="auto" priority="P1" id="audio_event_loadeddata">
+        <description>
+          <test_script_entry test_script_expected_result="0">/opt/tct-audio-html5-tests/audio/w3c/event_loadeddata.html</test_script_entry>
+        </description>
+        <specs>
+          <spec>
+            <spec_assertion element_type="eventhandler" element_name="onloadeddata" interface="HTMLAudioElement" specification="HTML5 The audio element (Partial)" section="Media" category="Tizen W3C API Specifications"/>
+            <spec_url>http://www.w3.org/TR/2012/WD-html5-20121025/media-elements.html#htmlmediaelement</spec_url>
+            <spec_statement>The user agent can render the media data at the current playback position for the first time.</spec_statement>
+          </spec>
+        </specs>
+      </testcase>
+      <testcase purpose="Check if the audio.currentSrc property exists" type="compliance" status="approved" component="WebAPI/Media/HTML5 The audio element (Partial)" execution_type="auto" priority="P1" id="audio_currentsrc_property_exists">
+        <description>
+          <test_script_entry test_script_expected_result="0">/opt/tct-audio-html5-tests/audio/w3c/currentSrc_property_exists.html</test_script_entry>
+        </description>
+        <specs>
+          <spec>
+            <spec_assertion element_type="attribute" element_name="currentSrc" interface="HTMLAudioElement" specification="HTML5 The audio element (Partial)" section="Media" category="Tizen W3C API Specifications"/>
+            <spec_url>http://www.w3.org/TR/2012/WD-html5-20121025/media-elements.html#htmlmediaelement</spec_url>
+            <spec_statement>The currentSrc IDL attribute is initially the empty string. There are two ways to specify a media resource, the src attribute, or source elements. The attribute overrides the elements.</spec_statement>
+          </spec>
+        </specs>
+      </testcase>
+      <testcase purpose="Check if the audio.readyState property exists" type="compliance" status="approved" component="WebAPI/Media/HTML5 The audio element (Partial)" execution_type="auto" priority="P1" id="audio_readystate_property_exists">
+        <description>
+          <test_script_entry test_script_expected_result="0">/opt/tct-audio-html5-tests/audio/w3c/readyState_property_exists.html</test_script_entry>
+        </description>
+        <specs>
+          <spec>
+            <spec_assertion element_type="attribute" element_name="readyState" interface="HTMLAudioElement" specification="HTML5 The audio element (Partial)" section="Media" category="Tizen W3C API Specifications"/>
+            <spec_url>http://www.w3.org/TR/2012/WD-html5-20121025/media-elements.html#htmlmediaelement</spec_url>
+            <spec_statement>Media elements have a ready state, which describes to what degree they are ready to be rendered at the current playback position.</spec_statement>
+          </spec>
+        </specs>
+      </testcase>
+      <testcase purpose="Check if new Audio() returns a new audio element" type="compliance" status="approved" component="WebAPI/Media/HTML5 The audio element (Partial)" execution_type="auto" priority="P0" id="audio_constructor">
+        <description>
+          <test_script_entry>/opt/tct-audio-html5-tests/audio/audio_constructor.html</test_script_entry>
+        </description>
+        <specs>
+          <spec>
+            <spec_assertion element_type="method" element_name="constructor" interface="HTMLAudioElement" specification="HTML5 The audio element (Partial)" section="Media" category="Tizen W3C API Specifications"/>
+            <spec_url>http://www.w3.org/TR/2012/WD-html5-20121025/media-elements.html#htmlmediaelement</spec_url>
+            <spec_statement/>
+          </spec>
+        </specs>
+      </testcase>
+      <testcase purpose="Check if the audio.load exists" type="compliance" status="approved" component="WebAPI/Media/HTML5 The audio element (Partial)" execution_type="auto" priority="P1" id="audio_load_method_exists">
+        <description>
+          <test_script_entry>/opt/tct-audio-html5-tests/audio/audio_load_method_exists.html</test_script_entry>
+        </description>
+        <specs>
+          <spec>
+            <spec_assertion element_type="method" element_name="load" interface="HTMLAudioElement" specification="HTML5 The audio element (Partial)" section="Media" category="Tizen W3C API Specifications"/>
+            <spec_url>http://www.w3.org/TR/2012/WD-html5-20121025/media-elements.html#htmlmediaelement</spec_url>
+            <spec_statement/>
+          </spec>
+        </specs>
+      </testcase>
+      <testcase purpose="Check if audio.MediaController.buffered exists" type="compliance" status="approved" component="WebAPI/Media/HTML5 The audio element (Partial)" execution_type="auto" priority="P1" id="audio_MediaController_buffered_exists">
+        <description>
+          <test_script_entry>/opt/tct-audio-html5-tests/audio/audio_MediaController_buffered_exists.html</test_script_entry>
+        </description>
+        <specs>
+          <spec>
+            <spec_assertion element_type="attribute" element_name="buffered" interface="MediaController" specification="HTML5 The audio element (Partial)" section="Media" category="Tizen W3C API Specifications"/>
+            <spec_url>http://www.w3.org/TR/2012/WD-html5-20121025/media-elements.html#mediacontroller</spec_url>
+            <spec_statement/>
+          </spec>
+        </specs>
+      </testcase>
+      <testcase purpose="Check if audio.MediaController.currentTime exists" type="compliance" status="approved" component="WebAPI/Media/HTML5 The audio element (Partial)" execution_type="auto" priority="P1" id="audio_MediaController_currentTime_exists">
+        <description>
+          <test_script_entry>/opt/tct-audio-html5-tests/audio/audio_MediaController_currentTime_exists.html</test_script_entry>
+        </description>
+        <specs>
+          <spec>
+            <spec_assertion element_type="attribute" element_name="currentTime" interface="MediaController" specification="HTML5 The audio element (Partial)" section="Media" category="Tizen W3C API Specifications"/>
+            <spec_url>http://www.w3.org/TR/2012/WD-html5-20121025/media-elements.html#mediacontroller</spec_url>
+            <spec_statement/>
+          </spec>
+        </specs>
+      </testcase>
+      <testcase purpose="Check if audio.MediaController.defaultPlaybackRate exists" type="compliance" status="approved" component="WebAPI/Media/HTML5 The audio element (Partial)" execution_type="auto" priority="P1" id="audio_MediaController_defaultPlaybackRate_exists">
+        <description>
+          <test_script_entry>/opt/tct-audio-html5-tests/audio/audio_MediaController_defaultPlaybackRate_exists.html</test_script_entry>
+        </description>
+        <specs>
+          <spec>
+            <spec_assertion element_type="attribute" element_name="defaultPlaybackRate" interface="MediaController" specification="HTML5 The audio element (Partial)" section="Media" category="Tizen W3C API Specifications"/>
+            <spec_url>http://www.w3.org/TR/2012/WD-html5-20121025/media-elements.html#mediacontroller</spec_url>
+            <spec_statement/>
+          </spec>
+        </specs>
+      </testcase>
+      <testcase purpose="Check if audio.MediaController.duration exists" type="compliance" status="approved" component="WebAPI/Media/HTML5 The audio element (Partial)" execution_type="auto" priority="P1" id="audio_MediaController_duration_exists">
+        <description>
+          <test_script_entry>/opt/tct-audio-html5-tests/audio/audio_MediaController_duration_exists.html</test_script_entry>
+        </description>
+        <specs>
+          <spec>
+            <spec_assertion element_type="attribute" element_name="duration" interface="MediaController" specification="HTML5 The audio element (Partial)" section="Media" category="Tizen W3C API Specifications"/>
+            <spec_url>http://www.w3.org/TR/2012/WD-html5-20121025/media-elements.html#mediacontroller</spec_url>
+            <spec_statement/>
+          </spec>
+        </specs>
+      </testcase>
+      <testcase purpose="Check if audio.MediaController.muted exists" type="compliance" status="approved" component="WebAPI/Media/HTML5 The audio element (Partial)" execution_type="auto" priority="P1" id="audio_MediaController_muted_exists">
+        <description>
+          <test_script_entry>/opt/tct-audio-html5-tests/audio/audio_MediaController_muted_exists.html</test_script_entry>
+        </description>
+        <specs>
+          <spec>
+            <spec_assertion element_type="attribute" element_name="muted" interface="MediaController" specification="HTML5 The audio element (Partial)" section="Media" category="Tizen W3C API Specifications"/>
+            <spec_url>http://www.w3.org/TR/2012/WD-html5-20121025/media-elements.html#mediacontroller</spec_url>
+            <spec_statement/>
+          </spec>
+        </specs>
+      </testcase>
+      <testcase purpose="Check if audio.MediaController.paused exists" type="compliance" status="approved" component="WebAPI/Media/HTML5 The audio element (Partial)" execution_type="auto" priority="P1" id="audio_MediaController_paused_exists">
+        <description>
+          <test_script_entry>/opt/tct-audio-html5-tests/audio/audio_MediaController_paused_exists.html</test_script_entry>
+        </description>
+        <specs>
+          <spec>
+            <spec_assertion element_type="attribute" element_name="paused" interface="MediaController" specification="HTML5 The audio element (Partial)" section="Media" category="Tizen W3C API Specifications"/>
+            <spec_url>http://www.w3.org/TR/2012/WD-html5-20121025/media-elements.html#mediacontroller</spec_url>
+            <spec_statement/>
+          </spec>
+        </specs>
+      </testcase>
+      <testcase purpose="Check if audio.MediaController.pause exists" type="compliance" status="approved" component="WebAPI/Media/HTML5 The audio element (Partial)" execution_type="auto" priority="P1" id="audio_MediaController_pause_exists">
+        <description>
+          <test_script_entry>/opt/tct-audio-html5-tests/audio/audio_MediaController_pause_exists.html</test_script_entry>
+        </description>
+        <specs>
+          <spec>
+            <spec_assertion element_type="method" element_name="pause" interface="MediaController" specification="HTML5 The audio element (Partial)" section="Media" category="Tizen W3C API Specifications"/>
+            <spec_url>http://www.w3.org/TR/2012/WD-html5-20121025/media-elements.html#mediacontroller</spec_url>
+            <spec_statement/>
+          </spec>
+        </specs>
+      </testcase>
+      <testcase purpose="Check if audio.MediaController.playbackRate exists" type="compliance" status="approved" component="WebAPI/Media/HTML5 The audio element (Partial)" execution_type="auto" priority="P1" id="audio_MediaController_playbackRate_exists">
+        <description>
+          <test_script_entry>/opt/tct-audio-html5-tests/audio/audio_MediaController_playbackRate_exists.html</test_script_entry>
+        </description>
+        <specs>
+          <spec>
+            <spec_assertion element_type="attribute" element_name="playbackRate" interface="MediaController" specification="HTML5 The audio element (Partial)" section="Media" category="Tizen W3C API Specifications"/>
+            <spec_url>http://www.w3.org/TR/2012/WD-html5-20121025/media-elements.html#mediacontroller</spec_url>
+            <spec_statement/>
+          </spec>
+        </specs>
+      </testcase>
+      <testcase purpose="Check if audio.MediaController.played exists" type="compliance" status="approved" component="WebAPI/Media/HTML5 The audio element (Partial)" execution_type="auto" priority="P1" id="audio_MediaController_played_exists">
+        <description>
+          <test_script_entry>/opt/tct-audio-html5-tests/audio/audio_MediaController_played_exists.html</test_script_entry>
+        </description>
+        <specs>
+          <spec>
+            <spec_assertion element_type="attribute" element_name="played" interface="MediaController" specification="HTML5 The audio element (Partial)" section="Media" category="Tizen W3C API Specifications"/>
+            <spec_url>http://www.w3.org/TR/2012/WD-html5-20121025/media-elements.html#mediacontroller</spec_url>
+            <spec_statement/>
+          </spec>
+        </specs>
+      </testcase>
+      <testcase purpose="Check if audio.MediaController.play exists" type="compliance" status="approved" component="WebAPI/Media/HTML5 The audio element (Partial)" execution_type="auto" priority="P1" id="audio_MediaController_play_exists">
+        <description>
+          <test_script_entry>/opt/tct-audio-html5-tests/audio/audio_MediaController_play_exists.html</test_script_entry>
+        </description>
+        <specs>
+          <spec>
+            <spec_assertion element_type="method" element_name="play" interface="MediaController" specification="HTML5 The audio element (Partial)" section="Media" category="Tizen W3C API Specifications"/>
+            <spec_url>http://www.w3.org/TR/2012/WD-html5-20121025/media-elements.html#mediacontroller</spec_url>
+            <spec_statement/>
+          </spec>
+        </specs>
+      </testcase>
+      <testcase purpose="Check if audio.MediaController.seekable exists" type="compliance" status="approved" component="WebAPI/Media/HTML5 The audio element (Partial)" execution_type="auto" priority="P1" id="audio_MediaController_seekable_exists">
+        <description>
+          <test_script_entry>/opt/tct-audio-html5-tests/audio/audio_MediaController_seekable_exists.html</test_script_entry>
+        </description>
+        <specs>
+          <spec>
+            <spec_assertion element_type="attribute" element_name="seekable" interface="MediaController" specification="HTML5 The audio element (Partial)" section="Media" category="Tizen W3C API Specifications"/>
+            <spec_url>http://www.w3.org/TR/2012/WD-html5-20121025/media-elements.html#mediacontroller</spec_url>
+            <spec_statement/>
+          </spec>
+        </specs>
+      </testcase>
+      <testcase purpose="Check if audio.MediaController.volume exists" type="compliance" status="approved" component="WebAPI/Media/HTML5 The audio element (Partial)" execution_type="auto" priority="P1" id="audio_MediaController_volume_exists">
+        <description>
+          <test_script_entry>/opt/tct-audio-html5-tests/audio/audio_MediaController_volume_exists.html</test_script_entry>
+        </description>
+        <specs>
+          <spec>
+            <spec_assertion element_type="attribute" element_name="volume" interface="MediaController" specification="HTML5 The audio element (Partial)" section="Media" category="Tizen W3C API Specifications"/>
+            <spec_url>http://www.w3.org/TR/2012/WD-html5-20121025/media-elements.html#mediacontroller</spec_url>
+            <spec_statement/>
+          </spec>
+        </specs>
+      </testcase>
+      <testcase purpose="Check if audio.error.code exists" type="compliance" status="approved" component="WebAPI/Media/HTML5 The audio element (Partial)" execution_type="auto" priority="P1" id="audio_MediaError_code_exists">
+        <description>
+          <test_script_entry>/opt/tct-audio-html5-tests/audio/audio_MediaError_code_exists.html</test_script_entry>
+        </description>
+        <specs>
+          <spec>
+            <spec_assertion element_type="attribute" element_name="code" interface="MediaError" specification="HTML5 The audio element (Partial)" section="Media" category="Tizen W3C API Specifications"/>
+            <spec_url>http://www.w3.org/TR/2012/WD-html5-20121025/media-elements.html#mediaerror</spec_url>
+            <spec_statement/>
+          </spec>
+        </specs>
+      </testcase>
+      <testcase purpose="Check if audio.error.MEDIA_ERR_ABORTED exists" type="compliance" status="approved" component="WebAPI/Media/HTML5 The audio element (Partial)" execution_type="auto" priority="P1" id="audio_MediaError_MEDIA_ERR_ABORTED_constant_exists">
+        <description>
+          <test_script_entry>/opt/tct-audio-html5-tests/audio/audio_MediaError_MEDIA_ERR_ABORTED_constant_exists.html</test_script_entry>
+        </description>
+        <specs>
+          <spec>
+            <spec_assertion element_type="attribute" element_name="MEDIA_ERR_ABORTED" interface="MediaError" specification="HTML5 The audio element (Partial)" section="Media" category="Tizen W3C API Specifications"/>
+            <spec_url>http://www.w3.org/TR/2012/WD-html5-20121025/media-elements.html#mediaerror</spec_url>
+            <spec_statement/>
+          </spec>
+        </specs>
+      </testcase>
+      <testcase purpose="Check if audio.error.MEDIA_ERR_DECODE exists" type="compliance" status="approved" component="WebAPI/Media/HTML5 The audio element (Partial)" execution_type="auto" priority="P1" id="audio_MediaError_MEDIA_ERR_DECODE_constant_exists">
+        <description>
+          <test_script_entry>/opt/tct-audio-html5-tests/audio/audio_MediaError_MEDIA_ERR_DECODE_constant_exists.html</test_script_entry>
+        </description>
+        <specs>
+          <spec>
+            <spec_assertion element_type="attribute" element_name="MEDIA_ERR_DECODE" interface="MediaError" specification="HTML5 The audio element (Partial)" section="Media" category="Tizen W3C API Specifications"/>
+            <spec_url>http://www.w3.org/TR/2012/WD-html5-20121025/media-elements.html#mediaerror</spec_url>
+            <spec_statement/>
+          </spec>
+        </specs>
+      </testcase>
+      <testcase purpose="Check if audio.error.MEDIA_ERR_NETWORK exists" type="compliance" status="approved" component="WebAPI/Media/HTML5 The audio element (Partial)" execution_type="auto" priority="P1" id="audio_MediaError_MEDIA_ERR_NETWORK_constant_exists">
+        <description>
+          <test_script_entry>/opt/tct-audio-html5-tests/audio/audio_MediaError_MEDIA_ERR_NETWORK_constant_exists.html</test_script_entry>
+        </description>
+        <specs>
+          <spec>
+            <spec_assertion element_type="attribute" element_name="MEDIA_ERR_NETWORK" interface="MediaError" specification="HTML5 The audio element (Partial)" section="Media" category="Tizen W3C API Specifications"/>
+            <spec_url>http://www.w3.org/TR/2012/WD-html5-20121025/media-elements.html#mediaerror</spec_url>
+            <spec_statement/>
+          </spec>
+        </specs>
+      </testcase>
+      <testcase purpose="Check if audio.error.MEDIA_ERR_SRC_NOT_SUPPORTED exists" type="compliance" status="approved" component="WebAPI/Media/HTML5 The audio element (Partial)" execution_type="auto" priority="P1" id="audio_MediaError_MEDIA_ERR_SRC_NOT_SUPPORTED_constant_exists">
+        <description>
+          <test_script_entry>/opt/tct-audio-html5-tests/audio/audio_MediaError_MEDIA_ERR_SRC_NOT_SUPPORTED_constant_exists.html</test_script_entry>
+        </description>
+        <specs>
+          <spec>
+            <spec_assertion element_type="attribute" element_name="MEDIA_ERR_SRC_NOT_SUPPORTED" interface="MediaError" specification="HTML5 The audio element (Partial)" section="Media" category="Tizen W3C API Specifications"/>
+            <spec_url>http://www.w3.org/TR/2012/WD-html5-20121025/media-elements.html#mediaerror</spec_url>
+            <spec_statement/>
+          </spec>
+        </specs>
+      </testcase>
+      <testcase purpose="Check if audio.pause method exists" type="compliance" status="approved" component="WebAPI/Media/HTML5 The audio element (Partial)" execution_type="auto" priority="P1" id="audio_pause_method_exists">
+        <description>
+          <test_script_entry>/opt/tct-audio-html5-tests/audio/audio_pause_method_exists.html</test_script_entry>
+        </description>
+        <specs>
+          <spec>
+            <spec_assertion element_type="method" element_name="pause" interface="HTMLAudioElement" specification="HTML5 The audio element (Partial)" section="Media" category="Tizen W3C API Specifications"/>
+            <spec_url>http://www.w3.org/TR/2012/WD-html5-20121025/media-elements.html#htmlmediaelement</spec_url>
+            <spec_statement/>
+          </spec>
+        </specs>
+      </testcase>
+      <testcase purpose="Check if audio.play method exists" type="compliance" status="approved" component="WebAPI/Media/HTML5 The audio element (Partial)" execution_type="auto" priority="P1" id="audio_play_method_exists">
+        <description>
+          <test_script_entry>/opt/tct-audio-html5-tests/audio/audio_play_method_exists.html</test_script_entry>
+        </description>
+        <specs>
+          <spec>
+            <spec_assertion element_type="method" element_name="play" interface="HTMLAudioElement" specification="HTML5 The audio element (Partial)" section="Media" category="Tizen W3C API Specifications"/>
+            <spec_url>http://www.w3.org/TR/2012/WD-html5-20121025/media-elements.html#htmlmediaelement</spec_url>
+            <spec_statement/>
+          </spec>
+        </specs>
+      </testcase>
+      <testcase purpose="Check if audio.TimeRanges.end exists" type="compliance" status="approved" component="WebAPI/Media/HTML5 The audio element (Partial)" execution_type="auto" priority="P1" id="audio_TimeRanges_end_exists">
+        <description>
+          <test_script_entry>/opt/tct-audio-html5-tests/audio/audio_TimeRanges_end_exists.html</test_script_entry>
+        </description>
+        <specs>
+          <spec>
+            <spec_assertion element_type="method" element_name="end" interface="TimeRanges" specification="HTML5 The audio element (Partial)" section="Media" category="Tizen W3C API Specifications"/>
+            <spec_url>http://www.w3.org/TR/2012/WD-html5-20121025/media-elements.html#timeranges</spec_url>
+            <spec_statement/>
+          </spec>
+        </specs>
+      </testcase>
+      <testcase purpose="Check if audio.TimeRanges.length exists" type="compliance" status="approved" component="WebAPI/Media/HTML5 The audio element (Partial)" execution_type="auto" priority="P1" id="audio_TimeRanges_length_exists">
+        <description>
+          <test_script_entry>/opt/tct-audio-html5-tests/audio/audio_TimeRanges_length_exists.html</test_script_entry>
+        </description>
+        <specs>
+          <spec>
+            <spec_assertion element_type="attribute" element_name="length" interface="TimeRanges" specification="HTML5 The audio element (Partial)" section="Media" category="Tizen W3C API Specifications"/>
+            <spec_url>http://www.w3.org/TR/2012/WD-html5-20121025/media-elements.html#timeranges</spec_url>
+            <spec_statement/>
+          </spec>
+        </specs>
+      </testcase>
+      <testcase purpose="Check if audio.TimeRanges.start exists" type="compliance" status="approved" component="WebAPI/Media/HTML5 The audio element (Partial)" execution_type="auto" priority="P1" id="audio_TimeRanges_start_exists">
+        <description>
+          <test_script_entry>/opt/tct-audio-html5-tests/audio/audio_TimeRanges_start_exists.html</test_script_entry>
+        </description>
+        <specs>
+          <spec>
+            <spec_assertion element_type="method" element_name="start" interface="TimeRanges" specification="HTML5 The audio element (Partial)" section="Media" category="Tizen W3C API Specifications"/>
+            <spec_url>http://www.w3.org/TR/2012/WD-html5-20121025/media-elements.html#timeranges</spec_url>
+            <spec_statement/>
+          </spec>
+        </specs>
+      </testcase>
+      <testcase purpose="Check if user agent is able to set audio.volume with new value in the range 0.0 to 1.0 inclusive" type="compliance" status="approved" component="WebAPI/Media/HTML5 The audio element (Partial)" execution_type="auto" priority="P0" id="audio_volume_normal">
+        <description>
+          <test_script_entry>/opt/tct-audio-html5-tests/audio/w3c/audio_volume_check.html?total_num=6&amp;amp;locator_key=id&amp;amp;value=2</test_script_entry>
+        </description>
+        <specs>
+          <spec>
+            <spec_assertion element_type="attribute" element_name="volume" interface="HTMLAudioElement" specification="HTML5 The audio element (Partial)" section="Media" category="Tizen W3C API Specifications"/>
+            <spec_url>http://www.w3.org/TR/2012/WD-html5-20121025/media-elements.html#htmlmediaelement</spec_url>
+            <spec_statement/>
+          </spec>
+        </specs>
+      </testcase>
+      <testcase purpose="Check if audio.MediaController.playbackState attribute exists" type="compliance" status="approved" component="WebAPI/Media/HTML5 The audio element (Partial)" execution_type="auto" priority="P1" id="audio_MediaController_playbackState_exists">
+        <description>
+          <test_script_entry>/opt/tct-audio-html5-tests/audio/audio_MediaController_playbackState_exists.html</test_script_entry>
+        </description>
+        <specs>
+          <spec>
+            <spec_assertion element_type="attribute" element_name="playbackState" interface="MediaController" specification="HTML5 The audio element (Partial)" section="Media" category="Tizen W3C API Specifications"/>
+            <spec_url>http://www.w3.org/TR/2012/WD-html5-20121025/media-elements.html#mediacontroller</spec_url>
+            <spec_statement/>
+          </spec>
+        </specs>
+      </testcase>
+      <testcase purpose="Check if the type of audio.MediaController.playbackState attribute is string" type="compliance" status="approved" component="WebAPI/Media/HTML5 The audio element (Partial)" execution_type="auto" priority="P1" id="audio_MediaController_playbackState_type">
+        <description>
+          <test_script_entry>/opt/tct-audio-html5-tests/audio/audio_MediaController_playbackState_type.html</test_script_entry>
+        </description>
+        <specs>
+          <spec>
+            <spec_assertion element_type="attribute" element_name="playbackState" interface="MediaController" specification="HTML5 The audio element (Partial)" section="Media" category="Tizen W3C API Specifications"/>
+            <spec_url>http://www.w3.org/TR/2012/WD-html5-20121025/media-elements.html#mediacontroller</spec_url>
+            <spec_statement/>
+          </spec>
+        </specs>
+      </testcase>
+      <testcase purpose="Check if audio.MediaController.unpause method exists" type="compliance" status="approved" component="WebAPI/Media/HTML5 The audio element (Partial)" execution_type="auto" priority="P1" id="audio_MediaController_unpause_exists">
+        <description>
+          <test_script_entry>/opt/tct-audio-html5-tests/audio/audio_MediaController_unpause_exists.html</test_script_entry>
+        </description>
+        <specs>
+          <spec>
+            <spec_assertion element_type="method" element_name="unpause" interface="MediaController" specification="HTML5 The audio element (Partial)" section="Media" category="Tizen W3C API Specifications"/>
+            <spec_url>http://www.w3.org/TR/2012/WD-html5-20121025/media-elements.html#mediacontroller</spec_url>
+            <spec_statement/>
+          </spec>
+        </specs>
+      </testcase>
+      <testcase purpose="Check if the type of audio.MediaController.unpause method is function" type="compliance" status="approved" component="WebAPI/Media/HTML5 The audio element (Partial)" execution_type="auto" priority="P1" id="audio_MediaController_unpause_type">
+        <description>
+          <test_script_entry>/opt/tct-audio-html5-tests/audio/audio_MediaController_unpause_type.html</test_script_entry>
+        </description>
+        <specs>
+          <spec>
+            <spec_assertion element_type="method" element_name="unpause" interface="MediaController" specification="HTML5 The audio element (Partial)" section="Media" category="Tizen W3C API Specifications"/>
+            <spec_url>http://www.w3.org/TR/2012/WD-html5-20121025/media-elements.html#mediacontroller</spec_url>
+            <spec_statement/>
+          </spec>
+        </specs>
+      </testcase>
+      <testcase purpose="Check that audio.preload reflects 'none' value" type="compliance" status="approved" component="WebAPI/Media/HTML5 The audio element (Partial)" execution_type="auto" priority="P2" id="audio_preload_reflects_none">
+        <description>
+          <test_script_entry test_script_expected_result="0">/opt/tct-audio-html5-tests/audio/w3c/preload_reflects_none.html</test_script_entry>
+        </description>
+        <specs>
+          <spec>
+            <spec_assertion element_type="attribute" element_name="preload" interface="HTMLAudioElement" specification="HTML5 The audio element (Partial)" section="Media" category="Tizen W3C API Specifications"/>
+            <spec_url>http://www.w3.org/TR/2012/WD-html5-20121025/media-elements.html#htmlmediaelement</spec_url>
+            <spec_statement>The autoplay attribute can override the preload attribute (since if the media plays, it naturally has to buffer first, regardless of the hint given by the preload attribute). Including both is not an error, however.</spec_statement>
+          </spec>
+        </specs>
+      </testcase>
+      <testcase purpose="Check that audio.canPlayType method support marks-fantasmagorical-format" type="compliance" status="approved" component="WebAPI/Media/HTML5 The audio element (Partial)" execution_type="auto" priority="P2" id="audio_canplaytype_bogus_type">
+        <description>
+          <test_script_entry test_script_expected_result="0">/opt/tct-audio-html5-tests/audio/w3c/canPlayType_bogus_type.html</test_script_entry>
+        </description>
+        <specs>
+          <spec>
+            <spec_assertion element_type="method" element_name="canPlayType" interface="HTMLAudioElement" specification="HTML5 The audio element (Partial)" section="Media" category="Tizen W3C API Specifications"/>
+            <spec_url>http://www.w3.org/TR/2012/WD-html5-20121025/media-elements.html#htmlmediaelement</spec_url>
+            <spec_statement>The canPlayType(type) method must return the empty string if type is a type that the user agent knows it cannot render or is the type 'application/octet-stream'; it must return 'probably' if the user agent is confident that the type represents a media resource that it can render if used in with this audio or video element; and it must return 'maybe' otherwise. Implementors are encouraged to return 'maybe' unless the type can be confidently established as being supported or not. Generally, a user agent should never return 'probably' for a type that allows the codecs parameter if that parameter is not present.</spec_statement>
+          </spec>
+        </specs>
+      </testcase>
+      <testcase purpose="Check that audio.preload reflects 'auto' value" type="compliance" status="approved" component="WebAPI/Media/HTML5 The audio element (Partial)" execution_type="auto" priority="P2" id="audio_preload_reflects_auto_value">
+        <description>
+          <test_script_entry test_script_expected_result="0">/opt/tct-audio-html5-tests/audio/w3c/preload_reflects_auto_value.html</test_script_entry>
+        </description>
+        <specs>
+          <spec>
+            <spec_assertion element_type="attribute" element_name="preload" interface="HTMLAudioElement" specification="HTML5 The audio element (Partial)" section="Media" category="Tizen W3C API Specifications"/>
+            <spec_url>http://www.w3.org/TR/2012/WD-html5-20121025/media-elements.html#htmlmediaelement</spec_url>
+            <spec_statement>The preload IDL attribute must reflect the content attribute of the same name, limited to only known values.</spec_statement>
+          </spec>
+        </specs>
+      </testcase>
+      <testcase purpose="Check that audio.src is empty if there is no source" type="compliance" status="approved" component="WebAPI/Media/HTML5 The audio element (Partial)" execution_type="auto" priority="P2" id="audio_src_reflects_no_value">
+        <description>
+          <test_script_entry test_script_expected_result="0">/opt/tct-audio-html5-tests/audio/w3c/src_reflects_no_value.html</test_script_entry>
+        </description>
+        <specs>
+          <spec>
+            <spec_assertion element_type="attribute" element_name="src" interface="HTMLAudioElement" specification="HTML5 The audio element (Partial)" section="Media" category="Tizen W3C API Specifications"/>
+            <spec_url>http://www.w3.org/TR/2012/WD-html5-20121025/media-elements.html#htmlmediaelement</spec_url>
+            <spec_statement>The src IDL attribute on media elements must reflect the content attribute of the same name.</spec_statement>
+          </spec>
+        </specs>
+      </testcase>
+      <testcase purpose="Check that canplaythrough event is triggered if autoplay attribute present and src attribute give right address of the media resource" type="compliance" status="approved" component="WebAPI/Media/HTML5 The audio element (Partial)" execution_type="auto" priority="P2" id="audio_event_canplaythrough">
+        <description>
+          <test_script_entry test_script_expected_result="0">/opt/tct-audio-html5-tests/audio/w3c/event_canplaythrough.html</test_script_entry>
+        </description>
+        <specs>
+          <spec>
+            <spec_assertion element_type="eventhandler" element_name="oncanplaythrough" interface="HTMLAudioElement" specification="HTML5 The audio element (Partial)" section="Media" category="Tizen W3C API Specifications"/>
+            <spec_url>http://www.w3.org/TR/2012/WD-html5-20121025/media-elements.html#htmlmediaelement</spec_url>
+            <spec_statement>The user agent estimates that if playback were to be started now, the media resource could be rendered at the current playback rate all the way to its end without having to stop for further buffering.</spec_statement>
+          </spec>
+        </specs>
+      </testcase>
+      <testcase purpose="Check that audio.readyState is greater than or equal to HAVE_FUTURE_DATA if playing event is triggered" type="compliance" status="approved" component="WebAPI/Media/HTML5 The audio element (Partial)" execution_type="auto" priority="P2" id="content_audio_readystate_during_playing">
+        <description>
+          <test_script_entry test_script_expected_result="0">/opt/tct-audio-html5-tests/audio/w3c/readyState_during_playing.html</test_script_entry>
+        </description>
+        <specs>
+          <spec>
+            <spec_assertion element_type="attribute" element_name="readyState" interface="HTMLAudioElement" specification="HTML5 The audio element (Partial)" section="Media" category="Tizen W3C API Specifications"/>
+            <spec_url>http://www.w3.org/TR/2012/WD-html5-20121025/media-elements.html#htmlmediaelement</spec_url>
+            <spec_statement>readyState is newly equal to or greater than HAVE_FUTURE_DATA</spec_statement>
+          </spec>
+        </specs>
+      </testcase>
+      <testcase purpose="Check that audio.readyState is greater than or equal to HAVE_CURRENT_DATA if loadeddata event is triggered" type="compliance" status="approved" component="WebAPI/Media/HTML5 The audio element (Partial)" execution_type="auto" priority="P2" id="content_audio_readystate_during_loadeddata">
+        <description>
+          <test_script_entry test_script_expected_result="0">/opt/tct-audio-html5-tests/audio/w3c/readyState_during_loadeddata.html</test_script_entry>
+        </description>
+        <specs>
+          <spec>
+            <spec_assertion element_type="attribute" element_name="readyState" interface="HTMLAudioElement" specification="HTML5 The audio element (Partial)" section="Media" category="Tizen W3C API Specifications"/>
+            <spec_url>http://www.w3.org/TR/2012/WD-html5-20121025/media-elements.html#htmlmediaelement</spec_url>
+            <spec_statement>readyState newly increased to HAVE_CURRENT_DATA or greater for the first time.</spec_statement>
+          </spec>
+        </specs>
+      </testcase>
+      <testcase purpose="Check that the property of audio.error is null if no source" type="compliance" status="approved" component="WebAPI/Media/HTML5 The audio element (Partial)" execution_type="auto" priority="P2" id="error_null_no_source">
+        <description>
+          <test_script_entry test_script_expected_result="0">/opt/tct-audio-html5-tests/audio/w3c/error_null.html</test_script_entry>
+        </description>
+        <specs>
+          <spec>
+            <spec_assertion element_type="attribute" element_name="error" interface="HTMLAudioElement" specification="HTML5 The audio element (Partial)" section="Media" category="Tizen W3C API Specifications"/>
+            <spec_url>http://www.w3.org/TR/2012/WD-html5-20121025/media-elements.html#htmlmediaelement</spec_url>
+            <spec_statement>The error attribute, on getting, must return the MediaError object created for this last error, or null if there has not been an error.</spec_statement>
+          </spec>
+        </specs>
+      </testcase>
+      <testcase purpose="Check that audio.preload reflects 'metadata' value" type="compliance" status="approved" component="WebAPI/Media/HTML5 The audio element (Partial)" execution_type="auto" priority="P2" id="audio_preload_reflects_metadata">
+        <description>
+          <test_script_entry test_script_expected_result="0">/opt/tct-audio-html5-tests/audio/w3c/preload_reflects_metadata.html</test_script_entry>
+        </description>
+        <specs>
+          <spec>
+            <spec_assertion element_type="attribute" element_name="preload" interface="HTMLAudioElement" specification="HTML5 The audio element (Partial)" section="Media" category="Tizen W3C API Specifications"/>
+            <spec_url>http://www.w3.org/TR/2012/WD-html5-20121025/media-elements.html#htmlmediaelement</spec_url>
+            <spec_statement>The preload IDL attribute must reflect the content attribute of the same name, limited to only known values.</spec_statement>
+          </spec>
+        </specs>
+      </testcase>
+      <testcase purpose="Check that audio.canPlayType method support vorbis format" type="compliance" status="approved" component="WebAPI/Media/HTML5 The audio element (Partial)" execution_type="auto" priority="P2" id="canplaytype_application_octet_stream_with_codecs_vorbis">
+        <description>
+          <test_script_entry test_script_expected_result="0">/opt/tct-audio-html5-tests/audio/w3c/canPlayType_application_octet_stream_with_codecs_1.html</test_script_entry>
+        </description>
+        <specs>
+          <spec>
+            <spec_assertion element_type="method" element_name="canPlayType" interface="HTMLAudioElement" specification="HTML5 The audio element (Partial)" section="Media" category="Tizen W3C API Specifications"/>
+            <spec_url>http://www.w3.org/TR/2012/WD-html5-20121025/media-elements.html#htmlmediaelement</spec_url>
+            <spec_statement>The canPlayType(type) method must return the empty string if type is a type that the user agent knows it cannot render or is the type 'application/octet-stream'; it must return 'probably' if the user agent is confident that the type represents a media resource that it can render if used in with this audio or video element; and it must return 'maybe' otherwise. Implementors are encouraged to return 'maybe' unless the type can be confidently established as being supported or not. Generally, a user agent should never return 'probably' for a type that allows the codecs parameter if that parameter is not present.</spec_statement>
+          </spec>
+        </specs>
+      </testcase>
+      <testcase purpose="Check that audio.readyState is HAVE_ENOUGH_DATA if canplaythrough event is triggered" type="compliance" status="approved" component="WebAPI/Media/HTML5 The audio element (Partial)" execution_type="auto" priority="P2" id="content_audio_readystate_during_canplaythrough">
+        <description>
+          <test_script_entry test_script_expected_result="0">/opt/tct-audio-html5-tests/audio/w3c/readyState_during_canplaythrough.html</test_script_entry>
+        </description>
+        <specs>
+          <spec>
+            <spec_assertion element_type="attribute" element_name="readyState" interface="HTMLAudioElement" specification="HTML5 The audio element (Partial)" section="Media" category="Tizen W3C API Specifications"/>
+            <spec_url>http://www.w3.org/TR/2012/WD-html5-20121025/media-elements.html#htmlmediaelement</spec_url>
+            <spec_statement>readyState is newly equal to HAVE_ENOUGH_DATA.</spec_statement>
+          </spec>
+        </specs>
+      </testcase>
+      <testcase purpose="Check that audio.canPlayType method exists" type="compliance" status="approved" component="WebAPI/Media/HTML5 The audio element (Partial)" execution_type="auto" priority="P1" id="audio_canplaytype_method_exists">
+        <description>
+          <test_script_entry test_script_expected_result="0">/opt/tct-audio-html5-tests/audio/w3c/canPlayType_method_exists.html</test_script_entry>
+        </description>
+        <specs>
+          <spec>
+            <spec_assertion element_type="method" element_name="canPlayType" interface="HTMLAudioElement" specification="HTML5 The audio element (Partial)" section="Media" category="Tizen W3C API Specifications"/>
+            <spec_url>http://www.w3.org/TR/2012/WD-html5-20121025/media-elements.html#htmlmediaelement</spec_url>
+            <spec_statement>The canPlayType(type) method must return the empty string if type is a type that the user agent knows it cannot render or is the type 'application/octet-stream'; it must return 'probably' if the user agent is confident that the type represents a media resource that it can render if used in with this audio or video element; and it must return 'maybe' otherwise. Implementors are encouraged to return 'maybe' unless the type can be confidently established as being supported or not. Generally, a user agent should never return 'probably' for a type that allows the codecs parameter if that parameter is not present.</spec_statement>
+          </spec>
+        </specs>
+      </testcase>
+      <testcase purpose="Check that audio.networkState property exists" type="compliance" status="approved" component="WebAPI/Media/HTML5 The audio element (Partial)" execution_type="auto" priority="P1" id="audio_networkstate_property_exists">
+        <description>
+          <test_script_entry test_script_expected_result="0">/opt/tct-audio-html5-tests/audio/w3c/networkState_property_exists.html</test_script_entry>
+        </description>
+        <specs>
+          <spec>
+            <spec_assertion element_type="attribute" element_name="networkState" interface="HTMLAudioElement" specification="HTML5 The audio element (Partial)" section="Media" category="Tizen W3C API Specifications"/>
+            <spec_url>http://www.w3.org/TR/2012/WD-html5-20121025/media-elements.html#htmlmediaelement</spec_url>
+            <spec_statement>As media elements interact with the network, their current network activity is represented by the networkState attribute.</spec_statement>
+          </spec>
+        </specs>
+      </testcase>
+      <testcase purpose="Check that audio.currentSrc returns non-empty after setting src attribute" type="compliance" status="approved" component="WebAPI/Media/HTML5 The audio element (Partial)" execution_type="auto" priority="P2" id="audio_currentsrc_nonempty_after_setting_src">
+        <description>
+          <test_script_entry test_script_expected_result="0">/opt/tct-audio-html5-tests/audio/w3c/currentSrc_nonempty_after_setting_src.html</test_script_entry>
+        </description>
+        <specs>
+          <spec>
+            <spec_assertion element_type="attribute" element_name="currentSrc" interface="HTMLAudioElement" specification="HTML5 The audio element (Partial)" section="Media" category="Tizen W3C API Specifications"/>
+            <spec_url>http://www.w3.org/TR/2012/WD-html5-20121025/media-elements.html#htmlmediaelement</spec_url>
+            <spec_statement>The currentSrc IDL attribute is initially the empty string. There are two ways to specify a media resource, the src attribute, or source elements. The attribute overrides the elements.</spec_statement>
+          </spec>
+        </specs>
+      </testcase>
+      <testcase purpose="Check that audio.preload reflects 'none' value even if autoplay attribute is present" type="compliance" status="approved" component="WebAPI/Media/HTML5 The audio element (Partial)" execution_type="auto" priority="P2" id="audio_preload_reflects_none_autoplay">
+        <description>
+          <test_script_entry test_script_expected_result="0">/opt/tct-audio-html5-tests/audio/w3c/preload_reflects_none_autoplay.html</test_script_entry>
+        </description>
+        <specs>
+          <spec>
+            <spec_assertion element_type="attribute" element_name="preload" interface="HTMLAudioElement" specification="HTML5 The audio element (Partial)" section="Media" category="Tizen W3C API Specifications"/>
+            <spec_url>http://www.w3.org/TR/2012/WD-html5-20121025/media-elements.html#htmlmediaelement</spec_url>
+            <spec_statement>The preload IDL attribute must reflect the content attribute of the same name, limited to only known values.</spec_statement>
+          </spec>
+        </specs>
+      </testcase>
+      <testcase purpose="Check that audio.readyState is greater than or equal to HAVE_METADATA_DATA if loadedMETAdata event is triggered" type="compliance" status="approved" component="WebAPI/Media/HTML5 The audio element (Partial)" execution_type="auto" priority="P2" id="content_audio_readystate_during_loadedmetadata">
+        <description>
+          <test_script_entry test_script_expected_result="0">/opt/tct-audio-html5-tests/audio/w3c/readyState_during_loadedmetadata.html</test_script_entry>
+        </description>
+        <specs>
+          <spec>
+            <spec_assertion element_type="attribute" element_name="readyState" interface="HTMLAudioElement" specification="HTML5 The audio element (Partial)" section="Media" category="Tizen W3C API Specifications"/>
+            <spec_url>http://www.w3.org/TR/2012/WD-html5-20121025/media-elements.html#htmlmediaelement</spec_url>
+            <spec_statement>readyState is newly equal to HAVE_METADATA or greater for the first time.</spec_statement>
+          </spec>
+        </specs>
+      </testcase>
+      <testcase purpose="Check that audio.currentSrc returns empty if there is no source" type="compliance" status="approved" component="WebAPI/Media/HTML5 The audio element (Partial)" execution_type="auto" priority="P2" id="audio_currentsrc_empty_if_no_src">
+        <description>
+          <test_script_entry test_script_expected_result="0">/opt/tct-audio-html5-tests/audio/w3c/currentSrc_empty_if_no_src.html</test_script_entry>
+        </description>
+        <specs>
+          <spec>
+            <spec_assertion element_type="attribute" element_name="currentSrc" interface="HTMLAudioElement" specification="HTML5 The audio element (Partial)" section="Media" category="Tizen W3C API Specifications"/>
+            <spec_url>http://www.w3.org/TR/2012/WD-html5-20121025/media-elements.html#htmlmediaelement</spec_url>
+            <spec_statement>The currentSrc IDL attribute is initially the empty string. There are two ways to specify a media resource, the src attribute, or source elements. The attribute overrides the elements.</spec_statement>
+          </spec>
+        </specs>
+      </testcase>
+      <testcase purpose="Check that removing audio.src attribute tiggers loadstart event" type="compliance" status="approved" component="WebAPI/Media/HTML5 The audio element (Partial)" execution_type="auto" priority="P2" id="audio_src_removal_does_not_trigger_loadstart">
+        <description>
+          <test_script_entry test_script_expected_result="0">/opt/tct-audio-html5-tests/audio/w3c/src_removal_does_not_trigger_loadstart.html</test_script_entry>
+        </description>
+        <specs>
+          <spec>
+            <spec_assertion element_type="attribute" element_name="src" interface="HTMLAudioElement" specification="HTML5 The audio element (Partial)" section="Media" category="Tizen W3C API Specifications"/>
+            <spec_url>http://www.w3.org/TR/2012/WD-html5-20121025/media-elements.html#htmlmediaelement</spec_url>
+            <spec_statement>If a src attribute of a media element is set or changed, the user agent must invoke the media element's media element load algorithm. (Removing the src attribute does not do this, even if there are source elements present.)</spec_statement>
+          </spec>
+        </specs>
+      </testcase>
+      <testcase purpose="Check that audio.currentSrc returns non-empty if add source element" type="compliance" status="approved" component="WebAPI/Media/HTML5 The audio element (Partial)" execution_type="auto" priority="P2" id="audio_currentsrc_nonempty_after_adding_source_child">
+        <description>
+          <test_script_entry test_script_expected_result="0">/opt/tct-audio-html5-tests/audio/w3c/currentSrc_nonempty_after_adding_source_child.html</test_script_entry>
+        </description>
+        <specs>
+          <spec>
+            <spec_assertion element_type="attribute" element_name="currentSrc" interface="HTMLAudioElement" specification="HTML5 The audio element (Partial)" section="Media" category="Tizen W3C API Specifications"/>
+            <spec_url>http://www.w3.org/TR/2012/WD-html5-20121025/media-elements.html#htmlmediaelement</spec_url>
+            <spec_statement>The currentSrc IDL attribute is initially the empty string. There are two ways to specify a media resource, the src attribute, or source elements. The attribute overrides the elements.</spec_statement>
+          </spec>
+        </specs>
+      </testcase>
+      <testcase purpose="Check that audio.canPlayType method supported mp4 format codecs parameter" type="compliance" status="approved" component="WebAPI/Media/HTML5 The audio element (Partial)" execution_type="auto" priority="P2" id="audio_canplaytype_mp4_supported_but_no_codecs_parameter">
+        <description>
+          <test_script_entry test_script_expected_result="0">/opt/tct-audio-html5-tests/audio/w3c/canPlayType_supported_but_no_codecs_parameter_2.html</test_script_entry>
+        </description>
+        <specs>
+          <spec>
+            <spec_assertion element_type="method" element_name="canPlayType" interface="HTMLAudioElement" specification="HTML5 The audio element (Partial)" section="Media" category="Tizen W3C API Specifications"/>
+            <spec_url>http://www.w3.org/TR/2012/WD-html5-20121025/media-elements.html#htmlmediaelement</spec_url>
+            <spec_statement>The canPlayType(type) method must return the empty string if type is a type that the user agent knows it cannot render or is the type 'application/octet-stream'; it must return 'probably' if the user agent is confident that the type represents a media resource that it can render if used in with this audio or video element; and it must return 'maybe' otherwise. Implementors are encouraged to return 'maybe' unless the type can be confidently established as being supported or not. Generally, a user agent should never return 'probably' for a type that allows the codecs parameter if that parameter is not present.</spec_statement>
+          </spec>
+        </specs>
+      </testcase>
+      <testcase purpose="Check that audio.readyState initial value is HAVE_NOTHING" type="compliance" status="approved" component="WebAPI/Media/HTML5 The audio element (Partial)" execution_type="auto" priority="P2" id="content_audio_readystate_initial">
+        <description>
+          <test_script_entry test_script_expected_result="0">/opt/tct-audio-html5-tests/audio/w3c/readyState_initial.html</test_script_entry>
+        </description>
+        <specs>
+          <spec>
+            <spec_assertion element_type="attribute" element_name="readyState" interface="HTMLAudioElement" specification="HTML5 The audio element (Partial)" section="Media" category="Tizen W3C API Specifications"/>
+            <spec_url>http://www.w3.org/TR/2012/WD-html5-20121025/media-elements.html#htmlmediaelement</spec_url>
+            <spec_statement>The ready state of a media element at any particular time is the greatest value describing the state of the element</spec_statement>
+          </spec>
+        </specs>
+      </testcase>
+      <testcase purpose="Check that audio.canPlayType method support mp4 format" type="compliance" status="approved" component="WebAPI/Media/HTML5 The audio element (Partial)" execution_type="auto" priority="P2" id="canplaytype_application_octet_stream_with_codecs_mp4a">
+        <description>
+          <test_script_entry test_script_expected_result="0">/opt/tct-audio-html5-tests/audio/w3c/canPlayType_application_octet_stream_with_codecs_2.html</test_script_entry>
+        </description>
+        <specs>
+          <spec>
+            <spec_assertion element_type="method" element_name="canPlayType" interface="HTMLAudioElement" specification="HTML5 The audio element (Partial)" section="Media" category="Tizen W3C API Specifications"/>
+            <spec_url>http://www.w3.org/TR/2012/WD-html5-20121025/media-elements.html#htmlmediaelement</spec_url>
+            <spec_statement>A type that the user agent knows it cannot render is one that describes a resource that the user agent definitely does not support, for example because it doesn't recognize the container type, or it doesn't support the listed codecs.</spec_statement>
+          </spec>
+        </specs>
+      </testcase>
+      <testcase purpose="Check that audio.canPlayType method support octet-stream" type="compliance" status="approved" component="WebAPI/Media/HTML5 The audio element (Partial)" execution_type="auto" priority="P2" id="audio_canplaytype_application_octet_stream">
+        <description>
+          <test_script_entry test_script_expected_result="0">/opt/tct-audio-html5-tests/audio/w3c/canPlayType_application_octet_stream.html</test_script_entry>
+        </description>
+        <specs>
+          <spec>
+            <spec_assertion element_type="method" element_name="canPlayType" interface="HTMLAudioElement" specification="HTML5 The audio element (Partial)" section="Media" category="Tizen W3C API Specifications"/>
+            <spec_url>http://www.w3.org/TR/2012/WD-html5-20121025/media-elements.html#htmlmediaelement</spec_url>
+            <spec_statement>The canPlayType(type) method must return the empty string if type is a type that the user agent knows it cannot render or is the type 'application/octet-stream'; it must return 'probably' if the user agent is confident that the type represents a media resource that it can render if used in with this audio or video element; and it must return 'maybe' otherwise. Implementors are encouraged to return 'maybe' unless the type can be confidently established as being supported or not. Generally, a user agent should never return 'probably' for a type that allows the codecs parameter if that parameter is not present.</spec_statement>
+          </spec>
+        </specs>
+      </testcase>
+      <testcase purpose="Check that audio.controls returns true if the controls attribute is present in the audio element" type="compliance" status="approved" component="WebAPI/Media/HTML5 The audio element (Partial)" execution_type="auto" priority="P2" id="audio_controls_true_controls_present">
+        <description>
+          <test_script_entry>/opt/tct-audio-html5-tests/audio/w3c/audio_controls_reflect.html?total_num=3&amp;amp;locator_key=id&amp;amp;value=1</test_script_entry>
+        </description>
+        <specs>
+          <spec>
+            <spec_assertion element_type="attribute" element_name="controls" interface="HTMLAudioElement" specification="HTML5 The audio element (Partial)" section="Media" category="Tizen W3C API Specifications"/>
+            <spec_url>http://www.w3.org/TR/2012/WD-html5-20121025/media-elements.html#htmlmediaelement</spec_url>
+            <spec_statement/>
+          </spec>
+        </specs>
+      </testcase>
+      <testcase purpose="Check that audio.controls returns false if the controls attribute is set to false" type="compliance" status="approved" component="WebAPI/Media/HTML5 The audio element (Partial)" execution_type="auto" priority="P2" id="audio_controls_reflects_false">
+        <description>
+          <test_script_entry>/opt/tct-audio-html5-tests/audio/w3c/audio_controls_reflect.html?total_num=3&amp;amp;locator_key=id&amp;amp;value=2</test_script_entry>
+        </description>
+        <specs>
+          <spec>
+            <spec_assertion element_type="attribute" element_name="controls" interface="HTMLAudioElement" specification="HTML5 The audio element (Partial)" section="Media" category="Tizen W3C API Specifications"/>
+            <spec_url>http://www.w3.org/TR/2012/WD-html5-20121025/media-elements.html#htmlmediaelement</spec_url>
+            <spec_statement/>
+          </spec>
+        </specs>
+      </testcase>
+      <testcase purpose="Check that audio.controls returns true if the controls attribute is set to true" type="compliance" status="approved" component="WebAPI/Media/HTML5 The audio element (Partial)" execution_type="auto" priority="P2" id="audio_controls_reflects_true">
+        <description>
+          <test_script_entry>/opt/tct-audio-html5-tests/audio/w3c/audio_controls_reflect.html?total_num=3&amp;amp;locator_key=id&amp;amp;value=3</test_script_entry>
+        </description>
+        <specs>
+          <spec>
+            <spec_assertion element_type="attribute" element_name="controls" interface="HTMLAudioElement" specification="HTML5 The audio element (Partial)" section="Media" category="Tizen W3C API Specifications"/>
+            <spec_url>http://www.w3.org/TR/2012/WD-html5-20121025/media-elements.html#htmlmediaelement</spec_url>
+            <spec_statement/>
+          </spec>
+        </specs>
+      </testcase>
+      <testcase purpose="Check that audio.defaultMuted returns true if the muted attribute is present in the audio element" type="compliance" status="approved" component="WebAPI/Media/HTML5 The audio element (Partial)" execution_type="auto" priority="P2" id="audio_defaultMuted_true_muted_present">
+        <description>
+          <test_script_entry>/opt/tct-audio-html5-tests/audio/w3c/audio_defaultMuted_reflect.html?total_num=4&amp;amp;locator_key=id&amp;amp;value=1</test_script_entry>
+        </description>
+        <specs>
+          <spec>
+            <spec_assertion element_type="attribute" element_name="defaultMuted" interface="HTMLAudioElement" specification="HTML5 The audio element (Partial)" section="Media" category="Tizen W3C API Specifications"/>
+            <spec_url>http://www.w3.org/TR/2012/WD-html5-20121025/media-elements.html#htmlmediaelement</spec_url>
+            <spec_statement/>
+          </spec>
+        </specs>
+      </testcase>
+      <testcase purpose="Check that media.defaultMuted returns true if the muted attribute is set to false and the muted attribute is present in the audio element" type="compliance" status="approved" component="WebAPI/Media/HTML5 The audio element (Partial)" execution_type="auto" priority="P2" id="audio_defaultMuted_no_dynamic_effect_muted">
+        <description>
+          <test_script_entry>/opt/tct-audio-html5-tests/audio/w3c/audio_defaultMuted_reflect.html?total_num=4&amp;amp;locator_key=id&amp;amp;value=2</test_script_entry>
+        </description>
+        <specs>
+          <spec>
+            <spec_assertion element_type="attribute" element_name="defaultMuted" interface="HTMLAudioElement" specification="HTML5 The audio element (Partial)" section="Media" category="Tizen W3C API Specifications"/>
+            <spec_url>http://www.w3.org/TR/2012/WD-html5-20121025/media-elements.html#htmlmediaelement</spec_url>
+            <spec_statement/>
+          </spec>
+        </specs>
+      </testcase>
+      <testcase purpose="Check that audio.defaultMuted returns false if the muted attribute is absent in the audio element" type="compliance" status="approved" component="WebAPI/Media/HTML5 The audio element (Partial)" execution_type="auto" priority="P2" id="audio_defaultMuted_false_muted_absent">
+        <description>
+          <test_script_entry>/opt/tct-audio-html5-tests/audio/w3c/audio_defaultMuted_reflect.html?total_num=4&amp;amp;locator_key=id&amp;amp;value=3</test_script_entry>
+        </description>
+        <specs>
+          <spec>
+            <spec_assertion element_type="attribute" element_name="defaultMuted" interface="HTMLAudioElement" specification="HTML5 The audio element (Partial)" section="Media" category="Tizen W3C API Specifications"/>
+            <spec_url>http://www.w3.org/TR/2012/WD-html5-20121025/media-elements.html#htmlmediaelement</spec_url>
+            <spec_statement/>
+          </spec>
+        </specs>
+      </testcase>
+      <testcase purpose="Check that audio.defaultMuted returns false if the muted attribute is set to true and the muted attribute is asent in the audio element" type="compliance" status="approved" component="WebAPI/Media/HTML5 The audio element (Partial)" execution_type="auto" priority="P2" id="audio_defaultMuted_no_dynamic_effect">
+        <description>
+          <test_script_entry>/opt/tct-audio-html5-tests/audio/w3c/audio_defaultMuted_reflect.html?total_num=4&amp;amp;locator_key=id&amp;amp;value=4</test_script_entry>
+        </description>
+        <specs>
+          <spec>
+            <spec_assertion element_type="attribute" element_name="defaultMuted" interface="HTMLAudioElement" specification="HTML5 The audio element (Partial)" section="Media" category="Tizen W3C API Specifications"/>
+            <spec_url>http://www.w3.org/TR/2012/WD-html5-20121025/media-elements.html#htmlmediaelement</spec_url>
+            <spec_statement/>
+          </spec>
+        </specs>
+      </testcase>
+      <testcase purpose="Check that seeking event is triggered more than once if audio.loop is set to true" type="compliance" status="approved" component="WebAPI/Media/HTML5 The audio element (Partial)" execution_type="auto" priority="P2" id="audio_loop_base" onload_delay="15">
+        <description>
+          <test_script_entry>/opt/tct-audio-html5-tests/audio/w3c/audio_loop_base.html</test_script_entry>
+        </description>
+        <specs>
+          <spec>
+            <spec_assertion element_type="attribute" element_name="loop" interface="HTMLAudioElement" specification="HTML5 The audio element (Partial)" section="Media" category="Tizen W3C API Specifications"/>
+            <spec_url>http://www.w3.org/TR/2012/WD-html5-20121025/media-elements.html#htmlmediaelement</spec_url>
+            <spec_statement/>
+          </spec>
+        </specs>
+      </testcase>
+      <testcase purpose="Check that audio.loop returns true if the loop attribute is present in the audio element" type="compliance" status="approved" component="WebAPI/Media/HTML5 The audio element (Partial)" execution_type="auto" priority="P2" id="audio_loop_true_loop_present">
+        <description>
+          <test_script_entry>/opt/tct-audio-html5-tests/audio/w3c/audio_loop_reflect.html?total_num=3&amp;amp;locator_key=id&amp;amp;value=1</test_script_entry>
+        </description>
+        <specs>
+          <spec>
+            <spec_assertion element_type="attribute" element_name="loop" interface="HTMLAudioElement" specification="HTML5 The audio element (Partial)" section="Media" category="Tizen W3C API Specifications"/>
+            <spec_url>http://www.w3.org/TR/2012/WD-html5-20121025/media-elements.html#htmlmediaelement</spec_url>
+            <spec_statement/>
+          </spec>
+        </specs>
+      </testcase>
+      <testcase purpose="Check if audio.loop can be set to false" type="compliance" status="approved" component="WebAPI/Media/HTML5 The audio element (Partial)" execution_type="auto" priority="P2" id="audio_loop_reflects_false">
+        <description>
+          <test_script_entry>/opt/tct-audio-html5-tests/audio/w3c/audio_loop_reflect.html?total_num=3&amp;amp;locator_key=id&amp;amp;value=2</test_script_entry>
+        </description>
+        <specs>
+          <spec>
+            <spec_assertion element_type="attribute" element_name="loop" interface="HTMLAudioElement" specification="HTML5 The audio element (Partial)" section="Media" category="Tizen W3C API Specifications"/>
+            <spec_url>http://www.w3.org/TR/2012/WD-html5-20121025/media-elements.html#htmlmediaelement</spec_url>
+            <spec_statement/>
+          </spec>
+        </specs>
+      </testcase>
+      <testcase purpose="Check if audio.loop can be set to true" type="compliance" status="approved" component="WebAPI/Media/HTML5 The audio element (Partial)" execution_type="auto" priority="P2" id="audio_loop_reflects_true">
+        <description>
+          <test_script_entry>/opt/tct-audio-html5-tests/audio/w3c/audio_loop_reflect.html?total_num=3&amp;amp;locator_key=id&amp;amp;value=3</test_script_entry>
+        </description>
+        <specs>
+          <spec>
+            <spec_assertion element_type="attribute" element_name="loop" interface="HTMLAudioElement" specification="HTML5 The audio element (Partial)" section="Media" category="Tizen W3C API Specifications"/>
+            <spec_url>http://www.w3.org/TR/2012/WD-html5-20121025/media-elements.html#htmlmediaelement</spec_url>
+            <spec_statement/>
+          </spec>
+        </specs>
+      </testcase>
+      <testcase purpose="Check that audio.muted returns true if the muted attribute is present in the audio element" type="compliance" status="approved" component="WebAPI/Media/HTML5 The audio element (Partial)" execution_type="auto" priority="P2" id="audio_muted_true_muted_present">
+        <description>
+          <test_script_entry>/opt/tct-audio-html5-tests/audio/w3c/audio_muted_check.html?total_num=3&amp;amp;locator_key=id&amp;amp;value=1</test_script_entry>
+        </description>
+        <specs>
+          <spec>
+            <spec_assertion element_type="attribute" element_name="muted" interface="HTMLAudioElement" specification="HTML5 The audio element (Partial)" section="Media" category="Tizen W3C API Specifications"/>
+            <spec_url>http://www.w3.org/TR/2012/WD-html5-20121025/media-elements.html#htmlmediaelement</spec_url>
+            <spec_statement/>
+          </spec>
+        </specs>
+      </testcase>
+      <testcase purpose="Check if audio.muted can be set to false" type="compliance" status="approved" component="WebAPI/Media/HTML5 The audio element (Partial)" execution_type="auto" priority="P2" id="audio_muted_false_unmuted">
+        <description>
+          <test_script_entry>/opt/tct-audio-html5-tests/audio/w3c/audio_muted_check.html?total_num=3&amp;amp;locator_key=id&amp;amp;value=2</test_script_entry>
+        </description>
+        <specs>
+          <spec>
+            <spec_assertion element_type="attribute" element_name="muted" interface="HTMLAudioElement" specification="HTML5 The audio element (Partial)" section="Media" category="Tizen W3C API Specifications"/>
+            <spec_url>http://www.w3.org/TR/2012/WD-html5-20121025/media-elements.html#htmlmediaelement</spec_url>
+            <spec_statement/>
+          </spec>
+        </specs>
+      </testcase>
+      <testcase purpose="Check if audio.muted can be set to true" type="compliance" status="approved" component="WebAPI/Media/HTML5 The audio element (Partial)" execution_type="auto" priority="P2" id="audio_muted_true_muted">
+        <description>
+          <test_script_entry>/opt/tct-audio-html5-tests/audio/w3c/audio_muted_check.html?total_num=3&amp;amp;locator_key=id&amp;amp;value=3</test_script_entry>
+        </description>
+        <specs>
+          <spec>
+            <spec_assertion element_type="attribute" element_name="muted" interface="HTMLAudioElement" specification="HTML5 The audio element (Partial)" section="Media" category="Tizen W3C API Specifications"/>
+            <spec_url>http://www.w3.org/TR/2012/WD-html5-20121025/media-elements.html#htmlmediaelement</spec_url>
+            <spec_statement/>
+          </spec>
+        </specs>
+      </testcase>
+      <testcase purpose="Check that volumechange event is triggered if audio.muted is changed" type="compliance" status="approved" component="WebAPI/Media/HTML5 The audio element (Partial)" execution_type="auto" priority="P2" id="audio_muted_volumechange">
+        <description>
+          <test_script_entry>/opt/tct-audio-html5-tests/audio/w3c/audio_muted_volumechange.html</test_script_entry>
+        </description>
+        <specs>
+          <spec>
+            <spec_assertion element_type="attribute" element_name="muted" interface="HTMLAudioElement" specification="HTML5 The audio element (Partial)" section="Media" category="Tizen W3C API Specifications"/>
+            <spec_url>http://www.w3.org/TR/2012/WD-html5-20121025/media-elements.html#htmlmediaelement</spec_url>
+            <spec_statement/>
+          </spec>
+        </specs>
+      </testcase>
+      <testcase purpose="Check if the intial value of the audio.volume is in the range 0.0 to 1.0 inclusive" type="compliance" status="approved" component="WebAPI/Media/HTML5 The audio element (Partial)" execution_type="auto" priority="P2" id="audio_volume_initial">
+        <description>
+          <test_script_entry>/opt/tct-audio-html5-tests/audio/w3c/audio_volume_check.html?total_num=6&amp;amp;locator_key=id&amp;amp;value=1</test_script_entry>
+        </description>
+        <specs>
+          <spec>
+            <spec_assertion element_type="attribute" element_name="volume" interface="HTMLAudioElement" specification="HTML5 The audio element (Partial)" section="Media" category="Tizen W3C API Specifications"/>
+            <spec_url>http://www.w3.org/TR/2012/WD-html5-20121025/media-elements.html#htmlmediaelement</spec_url>
+            <spec_statement/>
+          </spec>
+        </specs>
+      </testcase>
+      <testcase purpose="Check if user agent is able to set audio.volume with new value 0.0" type="compliance" status="approved" component="WebAPI/Media/HTML5 The audio element (Partial)" execution_type="auto" priority="P2" id="audio_volume_silent">
+        <description>
+          <test_script_entry>/opt/tct-audio-html5-tests/audio/w3c/audio_volume_check.html?total_num=6&amp;amp;locator_key=id&amp;amp;value=3</test_script_entry>
+        </description>
+        <specs>
+          <spec>
+            <spec_assertion element_type="attribute" element_name="volume" interface="HTMLAudioElement" specification="HTML5 The audio element (Partial)" section="Media" category="Tizen W3C API Specifications"/>
+            <spec_url>http://www.w3.org/TR/2012/WD-html5-20121025/media-elements.html#htmlmediaelement</spec_url>
+            <spec_statement/>
+          </spec>
+        </specs>
+      </testcase>
+      <testcase purpose="Check if user agent is able to set audio.volume with new value 1.0" type="compliance" status="approved" component="WebAPI/Media/HTML5 The audio element (Partial)" execution_type="auto" priority="P2" id="audio_volume_loudest">
+        <description>
+          <test_script_entry>/opt/tct-audio-html5-tests/audio/w3c/audio_volume_check.html?total_num=6&amp;amp;locator_key=id&amp;amp;value=4</test_script_entry>
+        </description>
+        <specs>
+          <spec>
+            <spec_assertion element_type="attribute" element_name="volume" interface="HTMLAudioElement" specification="HTML5 The audio element (Partial)" section="Media" category="Tizen W3C API Specifications"/>
+            <spec_url>http://www.w3.org/TR/2012/WD-html5-20121025/media-elements.html#htmlmediaelement</spec_url>
+            <spec_statement/>
+          </spec>
+        </specs>
+      </testcase>
+      <testcase purpose="Check that user agent is able to get an INDEX_SIZE_ERR exception if set audio.volume with new value less than 0.0" type="compliance" status="approved" component="WebAPI/Media/HTML5 The audio element (Partial)" execution_type="auto" priority="P2" id="audio_volume_exception_lower">
+        <description>
+          <test_script_entry>/opt/tct-audio-html5-tests/audio/w3c/audio_volume_check.html?total_num=6&amp;amp;locator_key=id&amp;amp;value=5</test_script_entry>
+        </description>
+        <specs>
+          <spec>
+            <spec_assertion element_type="attribute" element_name="volume" interface="HTMLAudioElement" specification="HTML5 The audio element (Partial)" section="Media" category="Tizen W3C API Specifications"/>
+            <spec_url>http://www.w3.org/TR/2012/WD-html5-20121025/media-elements.html#htmlmediaelement</spec_url>
+            <spec_statement/>
+          </spec>
+        </specs>
+      </testcase>
+      <testcase purpose="Check that user agent is able to get an INDEX_SIZE_ERR exception if set audio.volume with new value more than 1.0" type="compliance" status="approved" component="WebAPI/Media/HTML5 The audio element (Partial)" execution_type="auto" priority="P2" id="audio_volume_exception_upper">
+        <description>
+          <test_script_entry>/opt/tct-audio-html5-tests/audio/w3c/audio_volume_check.html?total_num=6&amp;amp;locator_key=id&amp;amp;value=6</test_script_entry>
+        </description>
+        <specs>
+          <spec>
+            <spec_assertion element_type="attribute" element_name="volume" interface="HTMLAudioElement" specification="HTML5 The audio element (Partial)" section="Media" category="Tizen W3C API Specifications"/>
+            <spec_url>http://www.w3.org/TR/2012/WD-html5-20121025/media-elements.html#htmlmediaelement</spec_url>
+            <spec_statement/>
+          </spec>
+        </specs>
+      </testcase>
+      <testcase purpose="Check that volumechange event is triggered if audio.volume is changed" type="compliance" status="approved" component="WebAPI/Media/HTML5 The audio element (Partial)" execution_type="auto" priority="P2" id="audio_volume_volumechange">
+        <description>
+          <test_script_entry>/opt/tct-audio-html5-tests/audio/w3c/audio_volume_volumechange.html</test_script_entry>
+        </description>
+        <specs>
+          <spec>
+            <spec_assertion element_type="attribute" element_name="volume" interface="HTMLAudioElement" specification="HTML5 The audio element (Partial)" section="Media" category="Tizen W3C API Specifications"/>
+            <spec_url>http://www.w3.org/TR/2012/WD-html5-20121025/media-elements.html#htmlmediaelement</spec_url>
+            <spec_statement/>
+          </spec>
+        </specs>
+      </testcase>
+      <testcase purpose="Check that canplay event is triggered, then playing event triggered if autoplay attribute present and src attribute give right address of the media resource" type="compliance" status="approved" component="WebAPI/Media/HTML5 The audio element (Partial)" execution_type="auto" priority="P3" id="audio_event_order_canplay_playing">
+        <description>
+          <test_script_entry test_script_expected_result="0">/opt/tct-audio-html5-tests/audio/w3c/event_order_canplay_playing.html</test_script_entry>
+        </description>
+        <specs>
+          <spec>
+            <spec_assertion usage="true" interface="HTMLAudioElement" specification="HTML5 The audio element (Partial)" section="Media" category="Tizen W3C API Specifications"/>
+            <spec_url>http://www.w3.org/TR/2012/WD-html5-20121025/media-elements.html#htmlmediaelement</spec_url>
+            <spec_statement/>
+          </spec>
+        </specs>
+      </testcase>
+      <testcase purpose="Check that audio.paused is false if play event is triggered" type="compliance" status="approved" component="WebAPI/Media/HTML5 The audio element (Partial)" execution_type="auto" priority="P3" id="audio_paused_false_during_play">
+        <description>
+          <test_script_entry test_script_expected_result="0">/opt/tct-audio-html5-tests/audio/w3c/paused_false_during_play.html</test_script_entry>
+        </description>
+        <specs>
+          <spec>
+            <spec_assertion usage="true" interface="HTMLAudioElement" specification="HTML5 The audio element (Partial)" section="Media" category="Tizen W3C API Specifications"/>
+            <spec_url>http://www.w3.org/TR/2012/WD-html5-20121025/media-elements.html#htmlmediaelement</spec_url>
+            <spec_statement>paused is newly false</spec_statement>
+          </spec>
+        </specs>
+      </testcase>
+      <testcase purpose="Check that canplay event is triggered, then canplaythrough event triggered if autoplay attribute present and src attribute give right address of the media resource" type="compliance" status="approved" component="WebAPI/Media/HTML5 The audio element (Partial)" execution_type="auto" priority="P3" id="audio_event_order_canplay_canplaythrough">
+        <description>
+          <test_script_entry test_script_expected_result="0">/opt/tct-audio-html5-tests/audio/w3c/event_order_canplay_canplaythrough.html</test_script_entry>
+        </description>
+        <specs>
+          <spec>
+            <spec_assertion usage="true" interface="HTMLAudioElement" specification="HTML5 The audio element (Partial)" section="Media" category="Tizen W3C API Specifications"/>
+            <spec_url>http://www.w3.org/TR/2012/WD-html5-20121025/media-elements.html#htmlmediaelement</spec_url>
+            <spec_statement/>
+          </spec>
+        </specs>
+      </testcase>
+      <testcase purpose="Check that audio.paused is true if pause event is triggered" type="compliance" status="approved" component="WebAPI/Media/HTML5 The audio element (Partial)" execution_type="auto" priority="P3" id="audio_paused_true_during_pause">
+        <description>
+          <test_script_entry test_script_expected_result="0">/opt/tct-audio-html5-tests/audio/w3c/paused_true_during_pause.html</test_script_entry>
+        </description>
+        <specs>
+          <spec>
+            <spec_assertion usage="true" interface="HTMLAudioElement" specification="HTML5 The audio element (Partial)" section="Media" category="Tizen W3C API Specifications"/>
+            <spec_url>http://www.w3.org/TR/2012/WD-html5-20121025/media-elements.html#htmlmediaelement</spec_url>
+            <spec_statement>paused is newly true.</spec_statement>
+          </spec>
+        </specs>
+      </testcase>
+      <testcase purpose="Check that loadedmetadata event is triggered, then loadeddata event triggered if autoplay attribute present and src attribute give right address of the media resource" type="compliance" status="approved" component="WebAPI/Media/HTML5 The audio element (Partial)" execution_type="auto" priority="P3" id="audio_event_order_loadedmetadata_loadeddata">
+        <description>
+          <test_script_entry test_script_expected_result="0">/opt/tct-audio-html5-tests/audio/w3c/event_order_loadedmetadata_loadeddata.html</test_script_entry>
+        </description>
+        <specs>
+          <spec>
+            <spec_assertion usage="true" interface="HTMLAudioElement" specification="HTML5 The audio element (Partial)" section="Media" category="Tizen W3C API Specifications"/>
+            <spec_url>http://www.w3.org/TR/2012/WD-html5-20121025/media-elements.html#htmlmediaelement</spec_url>
+            <spec_statement/>
+          </spec>
+        </specs>
+      </testcase>
+      <testcase purpose="Check that loadstart event is triggered, then progress event triggered if autoplay attribute present and src attribute give right address of the media resource" type="compliance" status="approved" component="WebAPI/Media/HTML5 The audio element (Partial)" execution_type="auto" priority="P3" id="audio_event_order_loadstart_progress">
+        <description>
+          <test_script_entry test_script_expected_result="0">/opt/tct-audio-html5-tests/audio/w3c/event_order_loadstart_progress.html</test_script_entry>
+        </description>
+        <specs>
+          <spec>
+            <spec_assertion usage="true" interface="HTMLAudioElement" specification="HTML5 The audio element (Partial)" section="Media" category="Tizen W3C API Specifications"/>
+            <spec_url>http://www.w3.org/TR/2012/WD-html5-20121025/media-elements.html#htmlmediaelement</spec_url>
+            <spec_statement/>
+          </spec>
+        </specs>
+      </testcase>
+      <testcase purpose="Check if the audio element has a current media controller that expecting the loop attribute has no effect" type="compliance" status="approved" component="WebAPI/Media/HTML5 The audio element (Partial)" execution_type="manual" priority="P2" id="audio_loop_current_media_controller">
+        <description>
+          <test_script_entry>/opt/tct-audio-html5-tests/audio/w3c/audio_loop_current_media_controller.html</test_script_entry>
+        </description>
+        <specs>
+          <spec>
+            <spec_assertion element_type="attribute" element_name="controller" interface="HTMLAudioElement" specification="HTML5 The audio element (Partial)" section="Media" category="Tizen W3C API Specifications"/>
+            <spec_url>http://www.w3.org/TR/2012/WD-html5-20121025/the-audio-element.html</spec_url>
+            <spec_statement/>
+          </spec>
+        </specs>
+      </testcase>
+      <testcase purpose="Check if the type of audio.error is object" type="compliance" status="approved" component="WebAPI/Media/HTML5 The audio element (Partial)" execution_type="auto" priority="P2" id="audio_error_attribute_type">
+        <description>
+          <test_script_entry>/opt/tct-audio-html5-tests/audio/w3c/audio_attributes.html?total_num=89&amp;amp;locator_key=id&amp;amp;value=2</test_script_entry>
+        </description>
+        <specs>
+          <spec>
+            <spec_assertion element_type="attribute" element_name="error" interface="HTMLAudioElement" specification="HTML5 The audio element (Partial)" section="Media" category="Tizen W3C API Specifications"/>
+            <spec_url>http://www.w3.org/TR/2012/WD-html5-20121025/media-elements.html#htmlmediaelement</spec_url>
+            <spec_statement/>
+          </spec>
+        </specs>
+      </testcase>
+      <testcase purpose="Check if audio.src exists" type="compliance" status="approved" component="WebAPI/Media/HTML5 The audio element (Partial)" execution_type="auto" priority="P1" id="audio_src_attribute_exists">
+        <description>
+          <test_script_entry>/opt/tct-audio-html5-tests/audio/w3c/audio_attributes.html?total_num=89&amp;amp;locator_key=id&amp;amp;value=3</test_script_entry>
+        </description>
+        <specs>
+          <spec>
+            <spec_assertion element_type="attribute" element_name="src" interface="HTMLAudioElement" specification="HTML5 The audio element (Partial)" section="Media" category="Tizen W3C API Specifications"/>
+            <spec_url>http://www.w3.org/TR/2012/WD-html5-20121025/media-elements.html#htmlmediaelement</spec_url>
+            <spec_statement/>
+          </spec>
+        </specs>
+      </testcase>
+      <testcase purpose="Check if the type of audio.src is string" type="compliance" status="approved" component="WebAPI/Media/HTML5 The audio element (Partial)" execution_type="auto" priority="P2" id="audio_src_attribute_type">
+        <description>
+          <test_script_entry>/opt/tct-audio-html5-tests/audio/w3c/audio_attributes.html?total_num=89&amp;amp;locator_key=id&amp;amp;value=4</test_script_entry>
+        </description>
+        <specs>
+          <spec>
+            <spec_assertion element_type="attribute" element_name="src" interface="HTMLAudioElement" specification="HTML5 The audio element (Partial)" section="Media" category="Tizen W3C API Specifications"/>
+            <spec_url>http://www.w3.org/TR/2012/WD-html5-20121025/media-elements.html#htmlmediaelement</spec_url>
+            <spec_statement/>
+          </spec>
+        </specs>
+      </testcase>
+      <testcase purpose="Check if the type of audio.currentsrc is string" type="compliance" status="approved" component="WebAPI/Media/HTML5 The audio element (Partial)" execution_type="auto" priority="P2" id="audio_currentSrc_attribute_type">
+        <description>
+          <test_script_entry>/opt/tct-audio-html5-tests/audio/w3c/audio_attributes.html?total_num=89&amp;amp;locator_key=id&amp;amp;value=6</test_script_entry>
+        </description>
+        <specs>
+          <spec>
+            <spec_assertion element_type="attribute" element_name="currentSrc" interface="HTMLAudioElement" specification="HTML5 The audio element (Partial)" section="Media" category="Tizen W3C API Specifications"/>
+            <spec_url>http://www.w3.org/TR/2012/WD-html5-20121025/media-elements.html#htmlmediaelement</spec_url>
+            <spec_statement/>
+          </spec>
+        </specs>
+      </testcase>
+      <testcase purpose="Check if the audio.NETWORK_EMPTY exists" type="compliance" status="approved" component="WebAPI/Media/HTML5 The audio element (Partial)" execution_type="auto" priority="P1" id="audio_NETWORK_EMPTY_constant_exists">
+        <description>
+          <test_script_entry>/opt/tct-audio-html5-tests/audio/w3c/audio_attributes.html?total_num=89&amp;amp;locator_key=id&amp;amp;value=9</test_script_entry>
+        </description>
+        <specs>
+          <spec>
+            <spec_assertion element_type="attribute" element_name="NETWORK_EMPTY" interface="HTMLAudioElement" specification="HTML5 The audio element (Partial)" section="Media" category="Tizen W3C API Specifications"/>
+            <spec_url>http://www.w3.org/TR/2012/WD-html5-20121025/media-elements.html#htmlmediaelement</spec_url>
+            <spec_statement/>
+          </spec>
+        </specs>
+      </testcase>
+      <testcase purpose="Check if the type of audio.NETWORK_EMPTY is number" type="compliance" status="approved" component="WebAPI/Media/HTML5 The audio element (Partial)" execution_type="auto" priority="P2" id="audio_NETWORK_EMPTY_constant_type">
+        <description>
+          <test_script_entry>/opt/tct-audio-html5-tests/audio/w3c/audio_attributes.html?total_num=89&amp;amp;locator_key=id&amp;amp;value=10</test_script_entry>
+        </description>
+        <specs>
+          <spec>
+            <spec_assertion element_type="attribute" element_name="NETWORK_EMPTY" interface="HTMLAudioElement" specification="HTML5 The audio element (Partial)" section="Media" category="Tizen W3C API Specifications"/>
+            <spec_url>http://www.w3.org/TR/2012/WD-html5-20121025/media-elements.html#htmlmediaelement</spec_url>
+            <spec_statement/>
+          </spec>
+        </specs>
+      </testcase>
+      <testcase purpose="Check if audio.NETWORK_EMPTY const value is 0" type="compliance" status="approved" component="WebAPI/Media/HTML5 The audio element (Partial)" execution_type="auto" priority="P2" id="audio_NETWORK_EMPTY_constant_value">
+        <description>
+          <test_script_entry>/opt/tct-audio-html5-tests/audio/w3c/audio_attributes.html?total_num=89&amp;amp;locator_key=id&amp;amp;value=11</test_script_entry>
+        </description>
+        <specs>
+          <spec>
+            <spec_assertion element_type="attribute" element_name="NETWORK_EMPTY" interface="HTMLAudioElement" specification="HTML5 The audio element (Partial)" section="Media" category="Tizen W3C API Specifications"/>
+            <spec_url>http://www.w3.org/TR/2012/WD-html5-20121025/media-elements.html#htmlmediaelement</spec_url>
+            <spec_statement/>
+          </spec>
+        </specs>
+      </testcase>
+      <testcase purpose="Check if the audio.NETWORK_IDLE exists" type="compliance" status="approved" component="WebAPI/Media/HTML5 The audio element (Partial)" execution_type="auto" priority="P1" id="audio_NETWORK_IDLE_constant_exists">
+        <description>
+          <test_script_entry>/opt/tct-audio-html5-tests/audio/w3c/audio_attributes.html?total_num=89&amp;amp;locator_key=id&amp;amp;value=12</test_script_entry>
+        </description>
+        <specs>
+          <spec>
+            <spec_assertion element_type="attribute" element_name="NETWORK_IDLE" interface="HTMLAudioElement" specification="HTML5 The audio element (Partial)" section="Media" category="Tizen W3C API Specifications"/>
+            <spec_url>http://www.w3.org/TR/2012/WD-html5-20121025/media-elements.html#htmlmediaelement</spec_url>
+            <spec_statement/>
+          </spec>
+        </specs>
+      </testcase>
+      <testcase purpose="Check if the type of audio.NETWORK_IDLE is number" type="compliance" status="approved" component="WebAPI/Media/HTML5 The audio element (Partial)" execution_type="auto" priority="P2" id="audio_NETWORK_IDLE_constant_type">
+        <description>
+          <test_script_entry>/opt/tct-audio-html5-tests/audio/w3c/audio_attributes.html?total_num=89&amp;amp;locator_key=id&amp;amp;value=13</test_script_entry>
+        </description>
+        <specs>
+          <spec>
+            <spec_assertion element_type="attribute" element_name="NETWORK_IDLE" interface="HTMLAudioElement" specification="HTML5 The audio element (Partial)" section="Media" category="Tizen W3C API Specifications"/>
+            <spec_url>http://www.w3.org/TR/2012/WD-html5-20121025/media-elements.html#htmlmediaelement</spec_url>
+            <spec_statement/>
+          </spec>
+        </specs>
+      </testcase>
+      <testcase purpose="Check if audio.NETWORK_IDLE const value is 1" type="compliance" status="approved" component="WebAPI/Media/HTML5 The audio element (Partial)" execution_type="auto" priority="P2" id="audio_NETWORK_IDLE_constant_value">
+        <description>
+          <test_script_entry>/opt/tct-audio-html5-tests/audio/w3c/audio_attributes.html?total_num=89&amp;amp;locator_key=id&amp;amp;value=14</test_script_entry>
+        </description>
+        <specs>
+          <spec>
+            <spec_assertion element_type="attribute" element_name="NETWORK_IDLE" interface="HTMLAudioElement" specification="HTML5 The audio element (Partial)" section="Media" category="Tizen W3C API Specifications"/>
+            <spec_url>http://www.w3.org/TR/2012/WD-html5-20121025/media-elements.html#htmlmediaelement</spec_url>
+            <spec_statement/>
+          </spec>
+        </specs>
+      </testcase>
+      <testcase purpose="Check if the audio.NETWORK_LOADING exists" type="compliance" status="approved" component="WebAPI/Media/HTML5 The audio element (Partial)" execution_type="auto" priority="P1" id="audio_NETWORK_LOADING_constant_exists">
+        <description>
+          <test_script_entry>/opt/tct-audio-html5-tests/audio/w3c/audio_attributes.html?total_num=89&amp;amp;locator_key=id&amp;amp;value=15</test_script_entry>
+        </description>
+        <specs>
+          <spec>
+            <spec_assertion element_type="attribute" element_name="NETWORK_LOADING" interface="HTMLAudioElement" specification="HTML5 The audio element (Partial)" section="Media" category="Tizen W3C API Specifications"/>
+            <spec_url>http://www.w3.org/TR/2012/WD-html5-20121025/media-elements.html#htmlmediaelement</spec_url>
+            <spec_statement/>
+          </spec>
+        </specs>
+      </testcase>
+      <testcase purpose="Check if the type of audio.NETWORK_LOADING is number" type="compliance" status="approved" component="WebAPI/Media/HTML5 The audio element (Partial)" execution_type="auto" priority="P2" id="audio_NETWORK_LOADING_constant_type">
+        <description>
+          <test_script_entry>/opt/tct-audio-html5-tests/audio/w3c/audio_attributes.html?total_num=89&amp;amp;locator_key=id&amp;amp;value=16</test_script_entry>
+        </description>
+        <specs>
+          <spec>
+            <spec_assertion element_type="attribute" element_name="NETWORK_LOADING" interface="HTMLAudioElement" specification="HTML5 The audio element (Partial)" section="Media" category="Tizen W3C API Specifications"/>
+            <spec_url>http://www.w3.org/TR/2012/WD-html5-20121025/media-elements.html#htmlmediaelement</spec_url>
+            <spec_statement/>
+          </spec>
+        </specs>
+      </testcase>
+      <testcase purpose="Check if audio.NETWORK_LOADING const value is 2" type="compliance" status="approved" component="WebAPI/Media/HTML5 The audio element (Partial)" execution_type="auto" priority="P2" id="audio_NETWORK_LOADING_constant_value">
+        <description>
+          <test_script_entry>/opt/tct-audio-html5-tests/audio/w3c/audio_attributes.html?total_num=89&amp;amp;locator_key=id&amp;amp;value=17</test_script_entry>
+        </description>
+        <specs>
+          <spec>
+            <spec_assertion element_type="attribute" element_name="NETWORK_LOADING" interface="HTMLAudioElement" specification="HTML5 The audio element (Partial)" section="Media" category="Tizen W3C API Specifications"/>
+            <spec_url>http://www.w3.org/TR/2012/WD-html5-20121025/media-elements.html#htmlmediaelement</spec_url>
+            <spec_statement/>
+          </spec>
+        </specs>
+      </testcase>
+      <testcase purpose="Check if the audio.NETWORK_NO_SOURCE exists" type="compliance" status="approved" component="WebAPI/Media/HTML5 The audio element (Partial)" execution_type="auto" priority="P1" id="audio_NETWORK_NO_SOURCE_constant_exists">
+        <description>
+          <test_script_entry>/opt/tct-audio-html5-tests/audio/w3c/audio_attributes.html?total_num=89&amp;amp;locator_key=id&amp;amp;value=18</test_script_entry>
+        </description>
+        <specs>
+          <spec>
+            <spec_assertion element_type="attribute" element_name="NETWORK_NO_SOURCE" interface="HTMLAudioElement" specification="HTML5 The audio element (Partial)" section="Media" category="Tizen W3C API Specifications"/>
+            <spec_url>http://www.w3.org/TR/2012/WD-html5-20121025/media-elements.html#htmlmediaelement</spec_url>
+            <spec_statement/>
+          </spec>
+        </specs>
+      </testcase>
+      <testcase purpose="Check if the type of audio.NETWORK_NO_SOURCE is number" type="compliance" status="approved" component="WebAPI/Media/HTML5 The audio element (Partial)" execution_type="auto" priority="P2" id="audio_NETWORK_NO_SOURCE_constant_type">
+        <description>
+          <test_script_entry>/opt/tct-audio-html5-tests/audio/w3c/audio_attributes.html?total_num=89&amp;amp;locator_key=id&amp;amp;value=19</test_script_entry>
+        </description>
+        <specs>
+          <spec>
+            <spec_assertion element_type="attribute" element_name="NETWORK_NO_SOURCE" interface="HTMLAudioElement" specification="HTML5 The audio element (Partial)" section="Media" category="Tizen W3C API Specifications"/>
+            <spec_url>http://www.w3.org/TR/2012/WD-html5-20121025/media-elements.html#htmlmediaelement</spec_url>
+            <spec_statement/>
+          </spec>
+        </specs>
+      </testcase>
+      <testcase purpose="Check if audio.NETWORK_NO_SOURCE const value is 3" type="compliance" status="approved" component="WebAPI/Media/HTML5 The audio element (Partial)" execution_type="auto" priority="P2" id="audio_NETWORK_NO_SOURCE_constant_value">
+        <description>
+          <test_script_entry>/opt/tct-audio-html5-tests/audio/w3c/audio_attributes.html?total_num=89&amp;amp;locator_key=id&amp;amp;value=20</test_script_entry>
+        </description>
+        <specs>
+          <spec>
+            <spec_assertion element_type="attribute" element_name="NETWORK_NO_SOURCE" interface="HTMLAudioElement" specification="HTML5 The audio element (Partial)" section="Media" category="Tizen W3C API Specifications"/>
+            <spec_url>http://www.w3.org/TR/2012/WD-html5-20121025/media-elements.html#htmlmediaelement</spec_url>
+            <spec_statement/>
+          </spec>
+        </specs>
+      </testcase>
+      <testcase purpose="Check if the type of audio.networkState is number" type="compliance" status="approved" component="WebAPI/Media/HTML5 The audio element (Partial)" execution_type="auto" priority="P2" id="audio_networkState_attribute_type">
+        <description>
+          <test_script_entry>/opt/tct-audio-html5-tests/audio/w3c/audio_attributes.html?total_num=89&amp;amp;locator_key=id&amp;amp;value=22</test_script_entry>
+        </description>
+        <specs>
+          <spec>
+            <spec_assertion element_type="attribute" element_name="networkState" interface="HTMLAudioElement" specification="HTML5 The audio element (Partial)" section="Media" category="Tizen W3C API Specifications"/>
+            <spec_url>http://www.w3.org/TR/2012/WD-html5-20121025/media-elements.html#htmlmediaelement</spec_url>
+            <spec_statement/>
+          </spec>
+        </specs>
+      </testcase>
+      <testcase purpose="Check if the type of audio.preload is string" type="compliance" status="approved" component="WebAPI/Media/HTML5 The audio element (Partial)" execution_type="auto" priority="P2" id="audio_preload_attribute_type">
+        <description>
+          <test_script_entry>/opt/tct-audio-html5-tests/audio/w3c/audio_attributes.html?total_num=89&amp;amp;locator_key=id&amp;amp;value=25</test_script_entry>
+        </description>
+        <specs>
+          <spec>
+            <spec_assertion element_type="attribute" element_name="preload" interface="HTMLAudioElement" specification="HTML5 The audio element (Partial)" section="Media" category="Tizen W3C API Specifications"/>
+            <spec_url>http://www.w3.org/TR/2012/WD-html5-20121025/media-elements.html#htmlmediaelement</spec_url>
+            <spec_statement/>
+          </spec>
+        </specs>
+      </testcase>
+      <testcase purpose="Check if the audio.buffered attribute exists" type="compliance" status="approved" component="WebAPI/Media/HTML5 The audio element (Partial)" execution_type="auto" priority="P1" id="audio_buffered_exists">
+        <description>
+          <test_script_entry>/opt/tct-audio-html5-tests/audio/w3c/audio_attributes.html?total_num=89&amp;amp;locator_key=id&amp;amp;value=26</test_script_entry>
+        </description>
+        <specs>
+          <spec>
+            <spec_assertion element_type="attribute" element_name="buffered" interface="HTMLAudioElement" specification="HTML5 The audio element (Partial)" section="Media" category="Tizen W3C API Specifications"/>
+            <spec_url>http://www.w3.org/TR/2012/WD-html5-20121025/media-elements.html#htmlmediaelement</spec_url>
+            <spec_statement/>
+          </spec>
+        </specs>
+      </testcase>
+      <testcase purpose="Check if the type of audio.buffered is object" type="compliance" status="approved" component="WebAPI/Media/HTML5 The audio element (Partial)" execution_type="auto" priority="P2" id="audio_buffered_type">
+        <description>
+          <test_script_entry>/opt/tct-audio-html5-tests/audio/w3c/audio_attributes.html?total_num=89&amp;amp;locator_key=id&amp;amp;value=27</test_script_entry>
+        </description>
+        <specs>
+          <spec>
+            <spec_assertion element_type="attribute" element_name="buffered" interface="HTMLAudioElement" specification="HTML5 The audio element (Partial)" section="Media" category="Tizen W3C API Specifications"/>
+            <spec_url>http://www.w3.org/TR/2012/WD-html5-20121025/media-elements.html#htmlmediaelement</spec_url>
+            <spec_statement/>
+          </spec>
+        </specs>
+      </testcase>
+      <testcase purpose="Check if the audio.HAVE_NOTHING exists" type="compliance" status="approved" component="WebAPI/Media/HTML5 The audio element (Partial)" execution_type="auto" priority="P1" id="audio_HAVE_NOTHING_constant_exists">
+        <description>
+          <test_script_entry>/opt/tct-audio-html5-tests/audio/w3c/audio_attributes.html?total_num=89&amp;amp;locator_key=id&amp;amp;value=28</test_script_entry>
+        </description>
+        <specs>
+          <spec>
+            <spec_assertion element_type="attribute" element_name="HAVE_NOTHING" interface="HTMLAudioElement" specification="HTML5 The audio element (Partial)" section="Media" category="Tizen W3C API Specifications"/>
+            <spec_url>http://www.w3.org/TR/2012/WD-html5-20121025/media-elements.html#htmlmediaelement</spec_url>
+            <spec_statement/>
+          </spec>
+        </specs>
+      </testcase>
+      <testcase purpose="Check if the type of audio.HAVE_NOTHING is number" type="compliance" status="approved" component="WebAPI/Media/HTML5 The audio element (Partial)" execution_type="auto" priority="P2" id="audio_HAVE_NOTHING_constant_type">
+        <description>
+          <test_script_entry>/opt/tct-audio-html5-tests/audio/w3c/audio_attributes.html?total_num=89&amp;amp;locator_key=id&amp;amp;value=29</test_script_entry>
+        </description>
+        <specs>
+          <spec>
+            <spec_assertion element_type="attribute" element_name="HAVE_NOTHING" interface="HTMLAudioElement" specification="HTML5 The audio element (Partial)" section="Media" category="Tizen W3C API Specifications"/>
+            <spec_url>http://www.w3.org/TR/2012/WD-html5-20121025/media-elements.html#htmlmediaelement</spec_url>
+            <spec_statement/>
+          </spec>
+        </specs>
+      </testcase>
+      <testcase purpose="Check if the constant value of audio.HAVE_NOTHING is 0" type="compliance" status="approved" component="WebAPI/Media/HTML5 The audio element (Partial)" execution_type="auto" priority="P2" id="audio_HAVE_NOTHING_constant_value">
+        <description>
+          <test_script_entry>/opt/tct-audio-html5-tests/audio/w3c/audio_attributes.html?total_num=89&amp;amp;locator_key=id&amp;amp;value=30</test_script_entry>
+        </description>
+        <specs>
+          <spec>
+            <spec_assertion element_type="attribute" element_name="HAVE_NOTHING" interface="HTMLAudioElement" specification="HTML5 The audio element (Partial)" section="Media" category="Tizen W3C API Specifications"/>
+            <spec_url>http://www.w3.org/TR/2012/WD-html5-20121025/media-elements.html#htmlmediaelement</spec_url>
+            <spec_statement/>
+          </spec>
+        </specs>
+      </testcase>
+      <testcase purpose="Check if the audio.HAVE_METADATA exists" type="compliance" status="approved" component="WebAPI/Media/HTML5 The audio element (Partial)" execution_type="auto" priority="P1" id="audio_HAVE_METADATA_constant_exists">
+        <description>
+          <test_script_entry>/opt/tct-audio-html5-tests/audio/w3c/audio_attributes.html?total_num=89&amp;amp;locator_key=id&amp;amp;value=31</test_script_entry>
+        </description>
+        <specs>
+          <spec>
+            <spec_assertion element_type="attribute" element_name="HAVE_METADATA" interface="HTMLAudioElement" specification="HTML5 The audio element (Partial)" section="Media" category="Tizen W3C API Specifications"/>
+            <spec_url>http://www.w3.org/TR/2012/WD-html5-20121025/media-elements.html#htmlmediaelement</spec_url>
+            <spec_statement/>
+          </spec>
+        </specs>
+      </testcase>
+      <testcase purpose="Check if the type of audio.HAVE_METADATA is number" type="compliance" status="approved" component="WebAPI/Media/HTML5 The audio element (Partial)" execution_type="auto" priority="P2" id="audio_HAVE_METADATA_constant_type">
+        <description>
+          <test_script_entry>/opt/tct-audio-html5-tests/audio/w3c/audio_attributes.html?total_num=89&amp;amp;locator_key=id&amp;amp;value=
+32</test_script_entry>
+        </description>
+        <specs>
+          <spec>
+            <spec_assertion element_type="attribute" element_name="HAVE_METADATA" interface="HTMLAudioElement" specification="HTML5 The audio element (Partial)" section="Media" category="Tizen W3C API Specifications"/>
+            <spec_url>http://www.w3.org/TR/2012/WD-html5-20121025/media-elements.html#htmlmediaelement</spec_url>
+            <spec_statement/>
+          </spec>
+        </specs>
+      </testcase>
+      <testcase purpose="Check if the constant value of audio.HAVE_METADATA is 1" type="compliance" status="approved" component="WebAPI/Media/HTML5 The audio element (Partial)" execution_type="auto" priority="P2" id="audio_HAVE_METADATA_constant_value">
+        <description>
+          <test_script_entry>/opt/tct-audio-html5-tests/audio/w3c/audio_attributes.html?total_num=89&amp;amp;locator_key=id&amp;amp;value=33</test_script_entry>
+        </description>
+        <specs>
+          <spec>
+            <spec_assertion element_type="attribute" element_name="HAVE_METADATA" interface="HTMLAudioElement" specification="HTML5 The audio element (Partial)" section="Media" category="Tizen W3C API Specifications"/>
+            <spec_url>http://www.w3.org/TR/2012/WD-html5-20121025/media-elements.html#htmlmediaelement</spec_url>
+            <spec_statement/>
+          </spec>
+        </specs>
+      </testcase>
+      <testcase purpose="Check if the audio.HAVE_CURRENT_DATA exists" type="compliance" status="approved" component="WebAPI/Media/HTML5 The audio element (Partial)" execution_type="auto" priority="P1" id="audio_HAVE_CURRENT_DATA_constant_exists">
+        <description>
+          <test_script_entry>/opt/tct-audio-html5-tests/audio/w3c/audio_attributes.html?total_num=89&amp;amp;locator_key=id&amp;amp;value=34</test_script_entry>
+        </description>
+        <specs>
+          <spec>
+            <spec_assertion element_type="attribute" element_name="HAVE_CURRENT_DATA" interface="HTMLAudioElement" specification="HTML5 The audio element (Partial)" section="Media" category="Tizen W3C API Specifications"/>
+            <spec_url>http://www.w3.org/TR/2012/WD-html5-20121025/media-elements.html#htmlmediaelement</spec_url>
+            <spec_statement/>
+          </spec>
+        </specs>
+      </testcase>
+      <testcase purpose="Check if the type of audio.HAVE_CURRENT_DATA is number" type="compliance" status="approved" component="WebAPI/Media/HTML5 The audio element (Partial)" execution_type="auto" priority="P2" id="audio_HAVE_CURRENT_DATA_constant_type">
+        <description>
+          <test_script_entry>/opt/tct-audio-html5-tests/audio/w3c/audio_attributes.html?total_num=89&amp;amp;locator_key=id&amp;amp;value=35</test_script_entry>
+        </description>
+        <specs>
+          <spec>
+            <spec_assertion element_type="attribute" element_name="HAVE_CURRENT_DATA" interface="HTMLAudioElement" specification="HTML5 The audio element (Partial)" section="Media" category="Tizen W3C API Specifications"/>
+            <spec_url>http://www.w3.org/TR/2012/WD-html5-20121025/media-elements.html#htmlmediaelement</spec_url>
+            <spec_statement/>
+          </spec>
+        </specs>
+      </testcase>
+      <testcase purpose="Check if the constant value of audio.HAVE_CURRENT_DATA is 2" type="compliance" status="approved" component="WebAPI/Media/HTML5 The audio element (Partial)" execution_type="auto" priority="P2" id="audio_HAVE_CURRENT_DATA_constant_value">
+        <description>
+          <test_script_entry>/opt/tct-audio-html5-tests/audio/w3c/audio_attributes.html?total_num=89&amp;amp;locator_key=id&amp;amp;value=36</test_script_entry>
+        </description>
+        <specs>
+          <spec>
+            <spec_assertion element_type="attribute" element_name="HAVE_CURRENT_DATA" interface="HTMLAudioElement" specification="HTML5 The audio element (Partial)" section="Media" category="Tizen W3C API Specifications"/>
+            <spec_url>http://www.w3.org/TR/2012/WD-html5-20121025/media-elements.html#htmlmediaelement</spec_url>
+            <spec_statement/>
+          </spec>
+        </specs>
+      </testcase>
+      <testcase purpose="Check if the audio.HAVE_FUTURE_DATA exists" type="compliance" status="approved" component="WebAPI/Media/HTML5 The audio element (Partial)" execution_type="auto" priority="P1" id="audio_HAVE_FUTURE_DATA_constant_exists">
+        <description>
+          <test_script_entry>/opt/tct-audio-html5-tests/audio/w3c/audio_attributes.html?total_num=89&amp;amp;locator_key=id&amp;amp;value=37</test_script_entry>
+        </description>
+        <specs>
+          <spec>
+            <spec_assertion element_type="attribute" element_name="HAVE_FUTURE_DATA" interface="HTMLAudioElement" specification="HTML5 The audio element (Partial)" section="Media" category="Tizen W3C API Specifications"/>
+            <spec_url>http://www.w3.org/TR/2012/WD-html5-20121025/media-elements.html#htmlmediaelement</spec_url>
+            <spec_statement/>
+          </spec>
+        </specs>
+      </testcase>
+      <testcase purpose="Check if the type of audio.HAVE_FUTURE_DATA is number" type="compliance" status="approved" component="WebAPI/Media/HTML5 The audio element (Partial)" execution_type="auto" priority="P2" id="audio_HAVE_FUTURE_DATA_constant_type">
+        <description>
+          <test_script_entry>/opt/tct-audio-html5-tests/audio/w3c/audio_attributes.html?total_num=89&amp;amp;locator_key=id&amp;amp;value=38</test_script_entry>
+        </description>
+        <specs>
+          <spec>
+            <spec_assertion element_type="attribute" element_name="HAVE_FUTURE_DATA" interface="HTMLAudioElement" specification="HTML5 The audio element (Partial)" section="Media" category="Tizen W3C API Specifications"/>
+            <spec_url>http://www.w3.org/TR/2012/WD-html5-20121025/media-elements.html#htmlmediaelement</spec_url>
+            <spec_statement/>
+          </spec>
+        </specs>
+      </testcase>
+      <testcase purpose="Check if the constant value of audio.HAVE_FUTURE_DATA is 3" type="compliance" status="approved" component="WebAPI/Media/HTML5 The audio element (Partial)" execution_type="auto" priority="P2" id="audio_HAVE_FUTURE_DATA_constant_value">
+        <description>
+          <test_script_entry>/opt/tct-audio-html5-tests/audio/w3c/audio_attributes.html?total_num=89&amp;amp;locator_key=id&amp;amp;value=39</test_script_entry>
+        </description>
+        <specs>
+          <spec>
+            <spec_assertion element_type="attribute" element_name="HAVE_FUTURE_DATA" interface="HTMLAudioElement" specification="HTML5 The audio element (Partial)" section="Media" category="Tizen W3C API Specifications"/>
+            <spec_url>http://www.w3.org/TR/2012/WD-html5-20121025/media-elements.html#htmlmediaelement</spec_url>
+            <spec_statement/>
+          </spec>
+        </specs>
+      </testcase>
+      <testcase purpose="Check if the audio.HAVE_ENOUGH_DATA exists" type="compliance" status="approved" component="WebAPI/Media/HTML5 The audio element (Partial)" execution_type="auto" priority="P1" id="audio_HAVE_ENOUGH_DATA_constant_exists">
+        <description>
+          <test_script_entry>/opt/tct-audio-html5-tests/audio/w3c/audio_attributes.html?total_num=89&amp;amp;locator_key=id&amp;amp;value=40</test_script_entry>
+        </description>
+        <specs>
+          <spec>
+            <spec_assertion element_type="attribute" element_name="HAVE_ENOUGH_DATA" interface="HTMLAudioElement" specification="HTML5 The audio element (Partial)" section="Media" category="Tizen W3C API Specifications"/>
+            <spec_url>http://www.w3.org/TR/2012/WD-html5-20121025/media-elements.html#htmlmediaelement</spec_url>
+            <spec_statement/>
+          </spec>
+        </specs>
+      </testcase>
+      <testcase purpose="Check if the type of audio.HAVE_ENOUGH_DATA is number" type="compliance" status="approved" component="WebAPI/Media/HTML5 The audio element (Partial)" execution_type="auto" priority="P2" id="audio_HAVE_ENOUGH_DATA_constant_type">
+        <description>
+          <test_script_entry>/opt/tct-audio-html5-tests/audio/w3c/audio_attributes.html?total_num=89&amp;amp;locator_key=id&amp;amp;value=41</test_script_entry>
+        </description>
+        <specs>
+          <spec>
+            <spec_assertion element_type="attribute" element_name="HAVE_ENOUGH_DATA" interface="HTMLAudioElement" specification="HTML5 The audio element (Partial)" section="Media" category="Tizen W3C API Specifications"/>
+            <spec_url>http://www.w3.org/TR/2012/WD-html5-20121025/media-elements.html#htmlmediaelement</spec_url>
+            <spec_statement/>
+          </spec>
+        </specs>
+      </testcase>
+      <testcase purpose="Check if the constant value of audio.HAVE_ENOUGH_DATA is 4" type="compliance" status="approved" component="WebAPI/Media/HTML5 The audio element (Partial)" execution_type="auto" priority="P2" id="audio_HAVE_ENOUGH_DATA_constant_value">
+        <description>
+          <test_script_entry>/opt/tct-audio-html5-tests/audio/w3c/audio_attributes.html?total_num=89&amp;amp;locator_key=id&amp;amp;value=42</test_script_entry>
+        </description>
+        <specs>
+          <spec>
+            <spec_assertion element_type="attribute" element_name="HAVE_ENOUGH_DATA" interface="HTMLAudioElement" specification="HTML5 The audio element (Partial)" section="Media" category="Tizen W3C API Specifications"/>
+            <spec_url>http://www.w3.org/TR/2012/WD-html5-20121025/media-elements.html#htmlmediaelement</spec_url>
+            <spec_statement/>
+          </spec>
+        </specs>
+      </testcase>
+      <testcase purpose="Check if the type of audio.readyState attribute is number" type="compliance" status="approved" component="WebAPI/Media/HTML5 The audio element (Partial)" execution_type="auto" priority="P2" id="audio_readyState_attribute_type">
+        <description>
+          <test_script_entry>/opt/tct-audio-html5-tests/audio/w3c/audio_attributes.html?total_num=89&amp;amp;locator_key=id&amp;amp;value=44</test_script_entry>
+        </description>
+        <specs>
+          <spec>
+            <spec_assertion element_type="attribute" element_name="readyState" interface="HTMLAudioElement" specification="HTML5 The audio element (Partial)" section="Media" category="Tizen W3C API Specifications"/>
+            <spec_url>http://www.w3.org/TR/2012/WD-html5-20121025/media-elements.html#htmlmediaelement</spec_url>
+            <spec_statement/>
+          </spec>
+        </specs>
+      </testcase>
+      <testcase purpose="Check if the audio.seeking attribute exists" type="compliance" status="approved" component="WebAPI/Media/HTML5 The audio element (Partial)" execution_type="auto" priority="P1" id="audio_seeking_attribute_exists">
+        <description>
+          <test_script_entry>/opt/tct-audio-html5-tests/audio/w3c/audio_attributes.html?total_num=89&amp;amp;locator_key=id&amp;amp;value=46</test_script_entry>
+        </description>
+        <specs>
+          <spec>
+            <spec_assertion element_type="attribute" element_name="seeking" interface="HTMLAudioElement" specification="HTML5 The audio element (Partial)" section="Media" category="Tizen W3C API Specifications"/>
+            <spec_url>http://www.w3.org/TR/2012/WD-html5-20121025/media-elements.html#htmlmediaelement</spec_url>
+            <spec_statement/>
+          </spec>
+        </specs>
+      </testcase>
+      <testcase purpose="Check if the type of audio.seeking attribute is boolean" type="compliance" status="approved" component="WebAPI/Media/HTML5 The audio element (Partial)" execution_type="auto" priority="P2" id="audio_seeking_attribute_type">
+        <description>
+          <test_script_entry>/opt/tct-audio-html5-tests/audio/w3c/audio_attributes.html?total_num=89&amp;amp;locator_key=id&amp;amp;value=47</test_script_entry>
+        </description>
+        <specs>
+          <spec>
+            <spec_assertion element_type="attribute" element_name="seeking" interface="HTMLAudioElement" specification="HTML5 The audio element (Partial)" section="Media" category="Tizen W3C API Specifications"/>
+            <spec_url>http://www.w3.org/TR/2012/WD-html5-20121025/media-elements.html#htmlmediaelement</spec_url>
+            <spec_statement/>
+          </spec>
+        </specs>
+      </testcase>
+      <testcase purpose="Check if the audio.seeking attribute must initially have the value false" type="compliance" status="approved" component="WebAPI/Media/HTML5 The audio element (Partial)" execution_type="auto" priority="P2" id="audio_seeking_default_value">
+        <description>
+          <test_script_entry>/opt/tct-audio-html5-tests/audio/w3c/audio_attributes.html?total_num=89&amp;amp;locator_key=id&amp;amp;value=48</test_script_entry>
+        </description>
+        <specs>
+          <spec>
+            <spec_assertion element_type="attribute" element_name="seeking" interface="HTMLAudioElement" specification="HTML5 The audio element (Partial)" section="Media" category="Tizen W3C API Specifications"/>
+            <spec_url>http://www.w3.org/TR/2012/WD-html5-20121025/media-elements.html#htmlmediaelement</spec_url>
+            <spec_statement/>
+          </spec>
+        </specs>
+      </testcase>
+      <testcase purpose="Check if the audio.currentTime attribute exists" type="compliance" status="approved" component="WebAPI/Media/HTML5 The audio element (Partial)" execution_type="auto" priority="P1" id="audio_currentTime_attribute_exists">
+        <description>
+          <test_script_entry>/opt/tct-audio-html5-tests/audio/w3c/audio_attributes.html?total_num=89&amp;amp;locator_key=id&amp;amp;value=49</test_script_entry>
+        </description>
+        <specs>
+          <spec>
+            <spec_assertion element_type="attribute" element_name="currentTime" interface="HTMLAudioElement" specification="HTML5 The audio element (Partial)" section="Media" category="Tizen W3C API Specifications"/>
+            <spec_url>http://www.w3.org/TR/2012/WD-html5-20121025/media-elements.html#htmlmediaelement</spec_url>
+            <spec_statement/>
+          </spec>
+        </specs>
+      </testcase>
+      <testcase purpose="Check if the type of audio.currentTime attribute is number" type="compliance" status="approved" component="WebAPI/Media/HTML5 The audio element (Partial)" execution_type="auto" priority="P2" id="audio_currentTime_attribute_type">
+        <description>
+          <test_script_entry>/opt/tct-audio-html5-tests/audio/w3c/audio_attributes.html?total_num=89&amp;amp;locator_key=id&amp;amp;value=50</test_script_entry>
+        </description>
+        <specs>
+          <spec>
+            <spec_assertion element_type="attribute" element_name="currentTime" interface="HTMLAudioElement" specification="HTML5 The audio element (Partial)" section="Media" category="Tizen W3C API Specifications"/>
+            <spec_url>http://www.w3.org/TR/2012/WD-html5-20121025/media-elements.html#htmlmediaelement</spec_url>
+            <spec_statement/>
+          </spec>
+        </specs>
+      </testcase>
+      <testcase purpose="Check if the audio.duration attribute exists" type="compliance" status="approved" component="WebAPI/Media/HTML5 The audio element (Partial)" execution_type="auto" priority="P1" id="audio_duration_attribute_exists">
+        <description>
+          <test_script_entry>/opt/tct-audio-html5-tests/audio/w3c/audio_attributes.html?total_num=89&amp;amp;locator_key=id&amp;amp;value=51</test_script_entry>
+        </description>
+        <specs>
+          <spec>
+            <spec_assertion element_type="attribute" element_name="duration" interface="HTMLAudioElement" specification="HTML5 The audio element (Partial)" section="Media" category="Tizen W3C API Specifications"/>
+            <spec_url>http://www.w3.org/TR/2012/WD-html5-20121025/media-elements.html#htmlmediaelement</spec_url>
+            <spec_statement/>
+          </spec>
+        </specs>
+      </testcase>
+      <testcase purpose="Check if the type of audio.duration attribute is number" type="compliance" status="approved" component="WebAPI/Media/HTML5 The audio element (Partial)" execution_type="auto" priority="P2" id="audio_duration_attribute_type">
+        <description>
+          <test_script_entry>/opt/tct-audio-html5-tests/audio/w3c/audio_attributes.html?total_num=89&amp;amp;locator_key=id&amp;amp;value=52</test_script_entry>
+        </description>
+        <specs>
+          <spec>
+            <spec_assertion element_type="attribute" element_name="duration" interface="HTMLAudioElement" specification="HTML5 The audio element (Partial)" section="Media" category="Tizen W3C API Specifications"/>
+            <spec_url>http://www.w3.org/TR/2012/WD-html5-20121025/media-elements.html#htmlmediaelement</spec_url>
+            <spec_statement/>
+          </spec>
+        </specs>
+      </testcase>
+      <testcase purpose="Check if the audio.paused attribute exists" type="compliance" status="approved" component="WebAPI/Media/HTML5 The audio element (Partial)" execution_type="auto" priority="P1" id="audio_paused_attribute_exists">
+        <description>
+          <test_script_entry>/opt/tct-audio-html5-tests/audio/w3c/audio_attributes.html?total_num=89&amp;amp;locator_key=id&amp;amp;value=55</test_script_entry>
+        </description>
+        <specs>
+          <spec>
+            <spec_assertion element_type="attribute" element_name="paused" interface="HTMLAudioElement" specification="HTML5 The audio element (Partial)" section="Media" category="Tizen W3C API Specifications"/>
+            <spec_url>http://www.w3.org/TR/2012/WD-html5-20121025/media-elements.html#htmlmediaelement</spec_url>
+            <spec_statement/>
+          </spec>
+        </specs>
+      </testcase>
+      <testcase purpose="Check if the type of audio.paused attribute is boolean" type="compliance" status="approved" component="WebAPI/Media/HTML5 The audio element (Partial)" execution_type="auto" priority="P2" id="audio_paused_attribute_type">
+        <description>
+          <test_script_entry>/opt/tct-audio-html5-tests/audio/w3c/audio_attributes.html?total_num=89&amp;amp;locator_key=id&amp;amp;value=56</test_script_entry>
+        </description>
+        <specs>
+          <spec>
+            <spec_assertion element_type="attribute" element_name="paused" interface="HTMLAudioElement" specification="HTML5 The audio element (Partial)" section="Media" category="Tizen W3C API Specifications"/>
+            <spec_url>http://www.w3.org/TR/2012/WD-html5-20121025/media-elements.html#htmlmediaelement</spec_url>
+            <spec_statement/>
+          </spec>
+        </specs>
+      </testcase>
+      <testcase purpose="Check if the audio.paused attribute must initially be true" type="compliance" status="approved" component="WebAPI/Media/HTML5 The audio element (Partial)" execution_type="auto" priority="P2" id="audio_paused_attribute_default_value">
+        <description>
+          <test_script_entry>/opt/tct-audio-html5-tests/audio/w3c/audio_attributes.html?total_num=89&amp;amp;locator_key=id&amp;amp;value=57</test_script_entry>
+        </description>
+        <specs>
+          <spec>
+            <spec_assertion element_type="attribute" element_name="paused" interface="HTMLAudioElement" specification="HTML5 The audio element (Partial)" section="Media" category="Tizen W3C API Specifications"/>
+            <spec_url>http://www.w3.org/TR/2012/WD-html5-20121025/media-elements.html#htmlmediaelement</spec_url>
+            <spec_statement/>
+          </spec>
+        </specs>
+      </testcase>
+      <testcase purpose="Check if the audio.defaultPlaybackRate attribute exists" type="compliance" status="approved" component="WebAPI/Media/HTML5 The audio element (Partial)" execution_type="auto" priority="P1" id="audio_defaultPlaybackRate_attribute_exists">
+        <description>
+          <test_script_entry>/opt/tct-audio-html5-tests/audio/w3c/audio_attributes.html?total_num=89&amp;amp;locator_key=id&amp;amp;value=58</test_script_entry>
+        </description>
+        <specs>
+          <spec>
+            <spec_assertion element_type="attribute" element_name="defaultPlaybackRate" interface="HTMLAudioElement" specification="HTML5 The audio element (Partial)" section="Media" category="Tizen W3C API Specifications"/>
+            <spec_url>http://www.w3.org/TR/2012/WD-html5-20121025/media-elements.html#htmlmediaelement</spec_url>
+            <spec_statement/>
+          </spec>
+        </specs>
+      </testcase>
+      <testcase purpose="Check if the type of audio.defaultPlaybackRate attribute is number" type="compliance" status="approved" component="WebAPI/Media/HTML5 The audio element (Partial)" execution_type="auto" priority="P2" id="audio_defaultPlaybackRate_attribute_type">
+        <description>
+          <test_script_entry>/opt/tct-audio-html5-tests/audio/w3c/audio_attributes.html?total_num=89&amp;amp;locator_key=id&amp;amp;value=59</test_script_entry>
+        </description>
+        <specs>
+          <spec>
+            <spec_assertion element_type="attribute" element_name="defaultPlaybackRate" interface="HTMLAudioElement" specification="HTML5 The audio element (Partial)" section="Media" category="Tizen W3C API Specifications"/>
+            <spec_url>http://www.w3.org/TR/2012/WD-html5-20121025/media-elements.html#htmlmediaelement</spec_url>
+            <spec_statement/>
+          </spec>
+        </specs>
+      </testcase>
+      <testcase purpose="Check if the audio.playbackRate attribute exists" type="compliance" status="approved" component="WebAPI/Media/HTML5 The audio element (Partial)" execution_type="auto" priority="P1" id="audio_playbackRate_attribute_exists">
+        <description>
+          <test_script_entry>/opt/tct-audio-html5-tests/audio/w3c/audio_attributes.html?total_num=89&amp;amp;locator_key=id&amp;amp;value=60</test_script_entry>
+        </description>
+        <specs>
+          <spec>
+            <spec_assertion element_type="attribute" element_name="playbackRate" interface="HTMLAudioElement" specification="HTML5 The audio element (Partial)" section="Media" category="Tizen W3C API Specifications"/>
+            <spec_url>http://www.w3.org/TR/2012/WD-html5-20121025/media-elements.html#htmlmediaelement</spec_url>
+            <spec_statement/>
+          </spec>
+        </specs>
+      </testcase>
+      <testcase purpose="Check if the type of audio.playbackRate attribute is number" type="compliance" status="approved" component="WebAPI/Media/HTML5 The audio element (Partial)" execution_type="auto" priority="P2" id="audio_playbackRate_attribute_type">
+        <description>
+          <test_script_entry>/opt/tct-audio-html5-tests/audio/w3c/audio_attributes.html?total_num=89&amp;amp;locator_key=id&amp;amp;value=61</test_script_entry>
+        </description>
+        <specs>
+          <spec>
+            <spec_assertion element_type="attribute" element_name="playbackRate" interface="HTMLAudioElement" specification="HTML5 The audio element (Partial)" section="Media" category="Tizen W3C API Specifications"/>
+            <spec_url>http://www.w3.org/TR/2012/WD-html5-20121025/media-elements.html#htmlmediaelement</spec_url>
+            <spec_statement/>
+          </spec>
+        </specs>
+      </testcase>
+      <testcase purpose="Check if the type of audio.played attribute is [object TimeRanges]" type="compliance" status="approved" component="WebAPI/Media/HTML5 The audio element (Partial)" execution_type="auto" priority="P1" id="audio_played_attribute_exists">
+        <description>
+          <test_script_entry>/opt/tct-audio-html5-tests/audio/w3c/audio_attributes.html?total_num=89&amp;amp;locator_key=id&amp;amp;value=62</test_script_entry>
+        </description>
+        <specs>
+          <spec>
+            <spec_assertion element_type="attribute" element_name="played" interface="HTMLAudioElement" specification="HTML5 The audio element (Partial)" section="Media" category="Tizen W3C API Specifications"/>
+            <spec_url>http://www.w3.org/TR/2012/WD-html5-20121025/media-elements.html#htmlmediaelement</spec_url>
+            <spec_statement/>
+          </spec>
+        </specs>
+      </testcase>
+      <testcase purpose="Check if the type of attribute audio.played is object" type="compliance" status="approved" component="WebAPI/Media/HTML5 The audio element (Partial)" execution_type="auto" priority="P2" id="audio_played_attribute_type">
+        <description>
+          <test_script_entry>/opt/tct-audio-html5-tests/audio/w3c/audio_attributes.html?total_num=89&amp;amp;locator_key=id&amp;amp;value=63</test_script_entry>
+        </description>
+        <specs>
+          <spec>
+            <spec_assertion element_type="attribute" element_name="played" interface="HTMLAudioElement" specification="HTML5 The audio element (Partial)" section="Media" category="Tizen W3C API Specifications"/>
+            <spec_url>http://www.w3.org/TR/2012/WD-html5-20121025/media-elements.html#htmlmediaelement</spec_url>
+            <spec_statement/>
+          </spec>
+        </specs>
+      </testcase>
+      <testcase purpose="Check if attribute audio.seekable attribute exists" type="compliance" status="approved" component="WebAPI/Media/HTML5 The audio element (Partial)" execution_type="auto" priority="P1" id="audio_seekable_attribute_exists">
+        <description>
+          <test_script_entry>/opt/tct-audio-html5-tests/audio/w3c/audio_attributes.html?total_num=89&amp;amp;locator_key=id&amp;amp;value=64</test_script_entry>
+        </description>
+        <specs>
+          <spec>
+            <spec_assertion element_type="attribute" element_name="seekable" interface="HTMLAudioElement" specification="HTML5 The audio element (Partial)" section="Media" category="Tizen W3C API Specifications"/>
+            <spec_url>http://www.w3.org/TR/2012/WD-html5-20121025/media-elements.html#htmlmediaelement</spec_url>
+            <spec_statement/>
+          </spec>
+        </specs>
+      </testcase>
+      <testcase purpose="Check if the type of audio.seekable attribute is boolean" type="compliance" status="approved" component="WebAPI/Media/HTML5 The audio element (Partial)" execution_type="auto" priority="P2" id="audio_seekable_attribute_type">
+        <description>
+          <test_script_entry>/opt/tct-audio-html5-tests/audio/w3c/audio_attributes.html?total_num=89&amp;amp;locator_key=id&amp;amp;value=65</test_script_entry>
+        </description>
+        <specs>
+          <spec>
+            <spec_assertion element_type="attribute" element_name="seekable" interface="HTMLAudioElement" specification="HTML5 The audio element (Partial)" section="Media" category="Tizen W3C API Specifications"/>
+            <spec_url>http://www.w3.org/TR/2012/WD-html5-20121025/media-elements.html#htmlmediaelement</spec_url>
+            <spec_statement/>
+          </spec>
+        </specs>
+      </testcase>
+      <testcase purpose="Check if audio.ended attribute exists" type="compliance" status="approved" component="WebAPI/Media/HTML5 The audio element (Partial)" execution_type="auto" priority="P1" id="audio_ended_attribute_exists">
+        <description>
+          <test_script_entry>/opt/tct-audio-html5-tests/audio/w3c/audio_attributes.html?total_num=89&amp;amp;locator_key=id&amp;amp;value=66</test_script_entry>
+        </description>
+        <specs>
+          <spec>
+            <spec_assertion element_type="attribute" element_name="ended" interface="HTMLAudioElement" specification="HTML5 The audio element (Partial)" section="Media" category="Tizen W3C API Specifications"/>
+            <spec_url>http://www.w3.org/TR/2012/WD-html5-20121025/media-elements.html#htmlmediaelement</spec_url>
+            <spec_statement/>
+          </spec>
+        </specs>
+      </testcase>
+      <testcase purpose="Check if the type of audio.ended is boolean" type="compliance" status="approved" component="WebAPI/Media/HTML5 The audio element (Partial)" execution_type="auto" priority="P2" id="audio_ended_attribute_type">
+        <description>
+          <test_script_entry>/opt/tct-audio-html5-tests/audio/w3c/audio_attributes.html?total_num=89&amp;amp;locator_key=id&amp;amp;value=67</test_script_entry>
+        </description>
+        <specs>
+          <spec>
+            <spec_assertion element_type="attribute" element_name="ended" interface="HTMLAudioElement" specification="HTML5 The audio element (Partial)" section="Media" category="Tizen W3C API Specifications"/>
+            <spec_url>http://www.w3.org/TR/2012/WD-html5-20121025/media-elements.html#htmlmediaelement</spec_url>
+            <spec_statement/>
+          </spec>
+        </specs>
+      </testcase>
+      <testcase purpose="Check if the default value of attribute audio.ended is false" type="compliance" status="approved" component="WebAPI/Media/HTML5 The audio element (Partial)" execution_type="auto" priority="P2" id="audio_ended_default_value">
+        <description>
+          <test_script_entry>/opt/tct-audio-html5-tests/audio/w3c/audio_attributes.html?total_num=89&amp;amp;locator_key=id&amp;amp;value=68</test_script_entry>
+        </description>
+        <specs>
+          <spec>
+            <spec_assertion element_type="attribute" element_name="ended" interface="HTMLAudioElement" specification="HTML5 The audio element (Partial)" section="Media" category="Tizen W3C API Specifications"/>
+            <spec_url>http://www.w3.org/TR/2012/WD-html5-20121025/media-elements.html#htmlmediaelement</spec_url>
+            <spec_statement/>
+          </spec>
+        </specs>
+      </testcase>
+      <testcase purpose="Check if the audio.autoplay attritbute exists" type="compliance" status="approved" component="WebAPI/Media/HTML5 The audio element (Partial)" execution_type="auto" priority="P1" id="audio_autoplay_attribute_exists">
+        <description>
+          <test_script_entry>/opt/tct-audio-html5-tests/audio/w3c/audio_attributes.html?total_num=89&amp;amp;locator_key=id&amp;amp;value=69</test_script_entry>
+        </description>
+        <specs>
+          <spec>
+            <spec_assertion element_type="attribute" element_name="autoplay" interface="HTMLAudioElement" specification="HTML5 The audio element (Partial)" section="Media" category="Tizen W3C API Specifications"/>
+            <spec_url>http://www.w3.org/TR/2012/WD-html5-20121025/media-elements.html#htmlmediaelement</spec_url>
+            <spec_statement/>
+          </spec>
+        </specs>
+      </testcase>
+      <testcase purpose="Check if the type of audio.autoplay attribute is boolean" type="compliance" status="approved" component="WebAPI/Media/HTML5 The audio element (Partial)" execution_type="auto" priority="P2" id="audio_autoplay_attribute_type">
+        <description>
+          <test_script_entry>/opt/tct-audio-html5-tests/audio/w3c/audio_attributes.html?total_num=89&amp;amp;locator_key=id&amp;amp;value=70</test_script_entry>
+        </description>
+        <specs>
+          <spec>
+            <spec_assertion element_type="attribute" element_name="autoplay" interface="HTMLAudioElement" specification="HTML5 The audio element (Partial)" section="Media" category="Tizen W3C API Specifications"/>
+            <spec_url>http://www.w3.org/TR/2012/WD-html5-20121025/media-elements.html#htmlmediaelement</spec_url>
+            <spec_statement/>
+          </spec>
+        </specs>
+      </testcase>
+      <testcase purpose="Check if audio.autoplay attribute default is false" type="compliance" status="approved" component="WebAPI/Media/HTML5 The audio element (Partial)" execution_type="auto" priority="P2" id="audio_autoplay_default_value">
+        <description>
+          <test_script_entry>/opt/tct-audio-html5-tests/audio/w3c/audio_attributes.html?total_num=89&amp;amp;locator_key=id&amp;amp;value=71</test_script_entry>
+        </description>
+        <specs>
+          <spec>
+            <spec_assertion element_type="attribute" element_name="autoplay" interface="HTMLAudioElement" specification="HTML5 The audio element (Partial)" section="Media" category="Tizen W3C API Specifications"/>
+            <spec_url>http://www.w3.org/TR/2012/WD-html5-20121025/media-elements.html#htmlmediaelement</spec_url>
+            <spec_statement/>
+          </spec>
+        </specs>
+      </testcase>
+      <testcase purpose="Check if audio.loop attribute exists" type="compliance" status="approved" component="WebAPI/Media/HTML5 The audio element (Partial)" execution_type="auto" priority="P1" id="audio_loop_attribute_exists">
+        <description>
+          <test_script_entry>/opt/tct-audio-html5-tests/audio/w3c/audio_attributes.html?total_num=89&amp;amp;locator_key=id&amp;amp;value=72</test_script_entry>
+        </description>
+        <specs>
+          <spec>
+            <spec_assertion element_type="attribute" element_name="loop" interface="HTMLAudioElement" specification="HTML5 The audio element (Partial)" section="Media" category="Tizen W3C API Specifications"/>
+            <spec_url>http://www.w3.org/TR/2012/WD-html5-20121025/media-elements.html#htmlmediaelement</spec_url>
+            <spec_statement/>
+          </spec>
+        </specs>
+      </testcase>
+      <testcase purpose="Check if the type of audio.loop is boolean" type="compliance" status="approved" component="WebAPI/Media/HTML5 The audio element (Partial)" execution_type="auto" priority="P0" id="audio_loop_attribute_type">
+        <description>
+          <test_script_entry>/opt/tct-audio-html5-tests/audio/w3c/audio_attributes.html?total_num=89&amp;amp;locator_key=id&amp;amp;value=73</test_script_entry>
+        </description>
+        <specs>
+          <spec>
+            <spec_assertion element_type="attribute" element_name="loop" interface="HTMLAudioElement" specification="HTML5 The audio element (Partial)" section="Media" category="Tizen W3C API Specifications"/>
+            <spec_url>http://www.w3.org/TR/2012/WD-html5-20121025/media-elements.html#htmlmediaelement</spec_url>
+            <spec_statement/>
+          </spec>
+        </specs>
+      </testcase>
+      <testcase purpose="Check if audio.loop initial value is false" type="compliance" status="approved" component="WebAPI/Media/HTML5 The audio element (Partial)" execution_type="auto" priority="P1" id="audio_loop_attribute_initial">
+        <description>
+          <test_script_entry>/opt/tct-audio-html5-tests/audio/w3c/audio_attributes.html?total_num=89&amp;amp;locator_key=id&amp;amp;value=74</test_script_entry>
+        </description>
+        <specs>
+          <spec>
+            <spec_assertion element_type="attribute" element_name="loop" interface="HTMLAudioElement" specification="HTML5 The audio element (Partial)" section="Media" category="Tizen W3C API Specifications"/>
+            <spec_url>http://www.w3.org/TR/2012/WD-html5-20121025/media-elements.html#htmlmediaelement</spec_url>
+            <spec_statement/>
+          </spec>
+        </specs>
+      </testcase>
+      <testcase purpose="Check if audio.mediaGroup exists" type="compliance" status="approved" component="WebAPI/Media/HTML5 The audio element (Partial)" execution_type="auto" priority="P1" id="audio_mediaGroup_attribute_exists">
+        <description>
+          <test_script_entry>/opt/tct-audio-html5-tests/audio/w3c/audio_attributes.html?total_num=89&amp;amp;locator_key=id&amp;amp;value=75</test_script_entry>
+        </description>
+        <specs>
+          <spec>
+            <spec_assertion element_type="attribute" element_name="mediaGroup" interface="HTMLAudioElement" specification="HTML5 The audio element (Partial)" section="Media" category="Tizen W3C API Specifications"/>
+            <spec_url>http://www.w3.org/TR/2012/WD-html5-20121025/media-elements.html#htmlmediaelement</spec_url>
+            <spec_statement/>
+          </spec>
+        </specs>
+      </testcase>
+      <testcase purpose="Check if the type of audio.mediagroup is string" type="compliance" status="approved" component="WebAPI/Media/HTML5 The audio element (Partial)" execution_type="auto" priority="P2" id="audio_mediaGroup_attribute_type">
+        <description>
+          <test_script_entry>/opt/tct-audio-html5-tests/audio/w3c/audio_attributes.html?total_num=89&amp;amp;locator_key=id&amp;amp;value=76</test_script_entry>
+        </description>
+        <specs>
+          <spec>
+            <spec_assertion element_type="attribute" element_name="mediaGroup" interface="HTMLAudioElement" specification="HTML5 The audio element (Partial)" section="Media" category="Tizen W3C API Specifications"/>
+            <spec_url>http://www.w3.org/TR/2012/WD-html5-20121025/media-elements.html#htmlmediaelement</spec_url>
+            <spec_statement/>
+          </spec>
+        </specs>
+      </testcase>
+      <testcase purpose="Check if the audio.controller exists" type="compliance" status="approved" component="WebAPI/Media/HTML5 The audio element (Partial)" execution_type="auto" priority="P1" id="audio_controller_attribute_exists">
+        <description>
+          <test_script_entry>/opt/tct-audio-html5-tests/audio/w3c/audio_attributes.html?total_num=89&amp;amp;locator_key=id&amp;amp;value=77</test_script_entry>
+        </description>
+        <specs>
+          <spec>
+            <spec_assertion element_type="attribute" element_name="controller" interface="HTMLAudioElement" specification="HTML5 The audio element (Partial)" section="Media" category="Tizen W3C API Specifications"/>
+            <spec_url>http://www.w3.org/TR/2012/WD-html5-20121025/media-elements.html#htmlmediaelement</spec_url>
+            <spec_statement/>
+          </spec>
+        </specs>
+      </testcase>
+      <testcase purpose="Check if the type of audio.controller is object" type="compliance" status="approved" component="WebAPI/Media/HTML5 The audio element (Partial)" execution_type="auto" priority="P2" id="audio_controller_attribute_type">
+        <description>
+          <test_script_entry>/opt/tct-audio-html5-tests/audio/w3c/audio_attributes.html?total_num=89&amp;amp;locator_key=id&amp;amp;value=78</test_script_entry>
+        </description>
+        <specs>
+          <spec>
+            <spec_assertion element_type="attribute" element_name="controller" interface="HTMLAudioElement" specification="HTML5 The audio element (Partial)" section="Media" category="Tizen W3C API Specifications"/>
+            <spec_url>http://www.w3.org/TR/2012/WD-html5-20121025/media-elements.html#htmlmediaelement</spec_url>
+            <spec_statement/>
+          </spec>
+        </specs>
+      </testcase>
+      <testcase purpose="Check if the audio.controls exists" type="compliance" status="approved" component="WebAPI/Media/HTML5 The audio element (Partial)" execution_type="auto" priority="P1" id="audio_controls_attribute_exists">
+        <description>
+          <test_script_entry>/opt/tct-audio-html5-tests/audio/w3c/audio_attributes.html?total_num=89&amp;amp;locator_key=id&amp;amp;value=79</test_script_entry>
+        </description>
+        <specs>
+          <spec>
+            <spec_assertion element_type="attribute" element_name="controls" interface="HTMLAudioElement" specification="HTML5 The audio element (Partial)" section="Media" category="Tizen W3C API Specifications"/>
+            <spec_url>http://www.w3.org/TR/2012/WD-html5-20121025/media-elements.html#htmlmediaelement</spec_url>
+            <spec_statement/>
+          </spec>
+        </specs>
+      </testcase>
+      <testcase purpose="Check if the type of audio.controls is boolean" type="compliance" status="approved" component="WebAPI/Media/HTML5 The audio element (Partial)" execution_type="auto" priority="P0" id="audio_controls_attribute_type">
+        <description>
+          <test_script_entry>/opt/tct-audio-html5-tests/audio/w3c/audio_attributes.html?total_num=89&amp;amp;locator_key=id&amp;amp;value=80</test_script_entry>
+        </description>
+        <specs>
+          <spec>
+            <spec_assertion element_type="attribute" element_name="controls" interface="HTMLAudioElement" specification="HTML5 The audio element (Partial)" section="Media" category="Tizen W3C API Specifications"/>
+            <spec_url>http://www.w3.org/TR/2012/WD-html5-20121025/media-elements.html#htmlmediaelement</spec_url>
+            <spec_statement/>
+          </spec>
+        </specs>
+      </testcase>
+      <testcase purpose="Check if audio.volume attribute exists" type="compliance" status="approved" component="WebAPI/Media/HTML5 The audio element (Partial)" execution_type="auto" priority="P1" id="audio_volume_attribute_exists">
+        <description>
+          <test_script_entry>/opt/tct-audio-html5-tests/audio/w3c/audio_attributes.html?total_num=89&amp;amp;locator_key=id&amp;amp;value=82</test_script_entry>
+        </description>
+        <specs>
+          <spec>
+            <spec_assertion element_type="attribute" element_name="volume" interface="HTMLAudioElement" specification="HTML5 The audio element (Partial)" section="Media" category="Tizen W3C API Specifications"/>
+            <spec_url>http://www.w3.org/TR/2012/WD-html5-20121025/media-elements.html#htmlmediaelement</spec_url>
+            <spec_statement/>
+          </spec>
+        </specs>
+      </testcase>
+      <testcase purpose="Check if the type of audio.volume attribute is number" type="compliance" status="approved" component="WebAPI/Media/HTML5 The audio element (Partial)" execution_type="auto" priority="P2" id="audio_volume_attribute_type">
+        <description>
+          <test_script_entry>/opt/tct-audio-html5-tests/audio/w3c/audio_attributes.html?total_num=89&amp;amp;locator_key=id&amp;amp;value=83</test_script_entry>
+        </description>
+        <specs>
+          <spec>
+            <spec_assertion element_type="attribute" element_name="volume" interface="HTMLAudioElement" specification="HTML5 The audio element (Partial)" section="Media" category="Tizen W3C API Specifications"/>
+            <spec_url>http://www.w3.org/TR/2012/WD-html5-20121025/media-elements.html#htmlmediaelement</spec_url>
+            <spec_statement/>
+          </spec>
+        </specs>
+      </testcase>
+      <testcase purpose="Check if audio.muted exists" type="compliance" status="approved" component="WebAPI/Media/HTML5 The audio element (Partial)" execution_type="auto" priority="P1" id="audio_muted_attribute_exists">
+        <description>
+          <test_script_entry>/opt/tct-audio-html5-tests/audio/w3c/audio_attributes.html?total_num=89&amp;amp;locator_key=id&amp;amp;value=84</test_script_entry>
+        </description>
+        <specs>
+          <spec>
+            <spec_assertion element_type="attribute" element_name="muted" interface="HTMLAudioElement" specification="HTML5 The audio element (Partial)" section="Media" category="Tizen W3C API Specifications"/>
+            <spec_url>http://www.w3.org/TR/2012/WD-html5-20121025/media-elements.html#htmlmediaelement</spec_url>
+            <spec_statement/>
+          </spec>
+        </specs>
+      </testcase>
+      <testcase purpose="Check if the type of audio.muted is boolean" type="compliance" status="approved" component="WebAPI/Media/HTML5 The audio element (Partial)" execution_type="auto" priority="P2" id="audio_muted_attribute_type">
+        <description>
+          <test_script_entry>/opt/tct-audio-html5-tests/audio/w3c/audio_attributes.html?total_num=89&amp;amp;locator_key=id&amp;amp;value=85</test_script_entry>
+        </description>
+        <specs>
+          <spec>
+            <spec_assertion element_type="attribute" element_name="muted" interface="HTMLAudioElement" specification="HTML5 The audio element (Partial)" section="Media" category="Tizen W3C API Specifications"/>
+            <spec_url>http://www.w3.org/TR/2012/WD-html5-20121025/media-elements.html#htmlmediaelement</spec_url>
+            <spec_statement/>
+          </spec>
+        </specs>
+      </testcase>
+      <testcase purpose="Check if audio.muted initial value is false" type="compliance" status="approved" component="WebAPI/Media/HTML5 The audio element (Partial)" execution_type="auto" priority="P1" id="audio_muted_attribute_initial">
+        <description>
+          <test_script_entry>/opt/tct-audio-html5-tests/audio/w3c/audio_attributes.html?total_num=89&amp;amp;locator_key=id&amp;amp;value=86</test_script_entry>
+        </description>
+        <specs>
+          <spec>
+            <spec_assertion element_type="attribute" element_name="muted" interface="HTMLAudioElement" specification="HTML5 The audio element (Partial)" section="Media" category="Tizen W3C API Specifications"/>
+            <spec_url>http://www.w3.org/TR/2012/WD-html5-20121025/media-elements.html#htmlmediaelement</spec_url>
+            <spec_statement/>
+          </spec>
+        </specs>
+      </testcase>
+      <testcase purpose="Check if the audio.defaultMuted attribute exists" type="compliance" status="approved" component="WebAPI/Media/HTML5 The audio element (Partial)" execution_type="auto" priority="P1" id="audio_defaultMuted_attribute_exists">
+        <description>
+          <test_script_entry>/opt/tct-audio-html5-tests/audio/w3c/audio_attributes.html?total_num=89&amp;amp;locator_key=id&amp;amp;value=87</test_script_entry>
+        </description>
+        <specs>
+          <spec>
+            <spec_assertion element_type="attribute" element_name="defaultMuted" interface="HTMLAudioElement" specification="HTML5 The audio element (Partial)" section="Media" category="Tizen W3C API Specifications"/>
+            <spec_url>http://www.w3.org/TR/2012/WD-html5-20121025/media-elements.html#htmlmediaelement</spec_url>
+            <spec_statement/>
+          </spec>
+        </specs>
+      </testcase>
+      <testcase purpose="Check if the type of audio.defaultMuted is boolean" type="compliance" status="approved" component="WebAPI/Media/HTML5 The audio element (Partial)" execution_type="auto" priority="P2" id="audio_defaultMuted_attribute_type">
+        <description>
+          <test_script_entry>/opt/tct-audio-html5-tests/audio/w3c/audio_attributes.html?total_num=89&amp;amp;locator_key=id&amp;amp;value=88</test_script_entry>
+        </description>
+        <specs>
+          <spec>
+            <spec_assertion element_type="attribute" element_name="defaultMuted" interface="HTMLAudioElement" specification="HTML5 The audio element (Partial)" section="Media" category="Tizen W3C API Specifications"/>
+            <spec_url>http://www.w3.org/TR/2012/WD-html5-20121025/media-elements.html#htmlmediaelement</spec_url>
+            <spec_statement/>
+          </spec>
+        </specs>
+      </testcase>
+      <testcase purpose="Check if audio.defaultMuted initial value is false" type="compliance" status="approved" component="WebAPI/Media/HTML5 The audio element (Partial)" execution_type="auto" priority="P1" id="audio_defaultMuted_attribute_initial">
+        <description>
+          <test_script_entry>/opt/tct-audio-html5-tests/audio/w3c/audio_attributes.html?total_num=89&amp;amp;locator_key=id&amp;amp;value=89</test_script_entry>
+        </description>
+        <specs>
+          <spec>
+            <spec_assertion element_type="attribute" element_name="defaultMuted" interface="HTMLAudioElement" specification="HTML5 The audio element (Partial)" section="Media" category="Tizen W3C API Specifications"/>
+            <spec_url>http://www.w3.org/TR/2012/WD-html5-20121025/media-elements.html#htmlmediaelement</spec_url>
+            <spec_statement/>
+          </spec>
+        </specs>
+      </testcase>
+    </set>
+  </suite>
+</test_definition>

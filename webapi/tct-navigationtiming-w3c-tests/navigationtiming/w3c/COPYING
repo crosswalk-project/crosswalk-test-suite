@@ -1,0 +1,32 @@
+This test suite comes from
+http://w3c-test.org/webperf/tests/approved/navigation-timing/html5/
+with modification:
+
+1. test_navigation_attributes_exist.htm
+
+ -   "window.performance.navigation.redirectCount is defined.": {}
+ +   "window.performance.navigation.redirectCount is defined.": {},
+ +   "window.performance.navigation.TYPE_NAVIGATE is defined.": {},
+ +   "window.performance.navigation.TYPE_RELOAD is defined.": {},
+ +   "window.performance.navigation.TYPE_BACK_FORWARD is defined.": {},
+ +   "window.performance.navigation.TYPE_RESERVED is defined.": {}
+ +   test_attribute_exists('navigation', 'TYPE_NAVIGATE');
+ +   test_attribute_exists('navigation', 'TYPE_RELOAD');
+ +   test_attribute_exists('navigation', 'TYPE_BACK_FORWARD');
+ +   test_attribute_exists('navigation', 'TYPE_RESERVED');
+
+2. test_timing_attributes_exist.htm
+
+ -   "window.performance.timing.unloadEventStart is defined.": {}
+ +   "window.performance.timing.unloadEventStart is defined.": {},
+ +   "window.performance.timing.secureConnectionStart is defined.": {}
+
+
+These tests are copyright by W3C and/or the author listed in the test
+file. The tests are dual-licensed under the W3C Test Suite License:
+http://www.w3.org/Consortium/Legal/2008/04-testsuite-license
+and the BSD 3-clause License:
+http://www.w3.org/Consortium/Legal/2008/03-bsd-license
+under W3C's test suite licensing policy:
+http://www.w3.org/Consortium/Legal/2008/04-testsuite-copyright
+

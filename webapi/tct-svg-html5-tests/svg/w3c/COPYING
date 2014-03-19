@@ -1,0 +1,75 @@
+This test suite comes from
+https://github.com/w3c/web-platform-tests
+with modification:
+
+foreign_content_009.html
+
+ +  <script src="../../resources/testharness.js"></script>
+ +  <script src="../../resources/testharnessreport.js"></script>
+
+ +  var t = async_test(document.title, {timeout: 2000});
+ -  if(parentNode.childNodes[1].localName=="circle")
+ -  {
+ -      document.getElementById("testresult").innerHTML = "PASS";
+ -  }
+ -  else
+ -  {
+ -      document.getElementById("testresult").innerHTML = "FAIL"
+ -  }
+ +  t.step(function (){
+ +      assert_true(parentNode.childNodes[1].localName=="circle", "the parentNode.childNodes[1].localName is circle");
+ +  }, document.title);
+ +  t.done();
+
+ -  document.getElementById("testresult").innerHTML = "FAIL";
+ +  t.step(function (){
+ +      assert_true(false, "there is a exception");
+ +  }, document.title);
+ +  t.done();
+
+ -  <div class="testdata">
+ -    <p id="instructions"> Test passes if the word "PASS" appears below  </p>
+ -    <p> Test Result : </p>
+ -    <p id="testresult"> RUNNING </div>
+ -  </div>
+ +  <div id="log"></div>
+
+foreign_content_010.html
+
+ +  <script src="../../resources/testharness.js"></script>
+ +  <script src="../../resources/testharnessreport.js"></script>
+
+ +  var t = async_test(document.title, {timeout: 2000});
+ -  if(parentNode.childNodes[1].localName=="rect" && parentNode.childNodes[3].localName=="circle")
+ -  {
+ -      document.getElementById("testresult").innerHTML = "PASS";
+ -  }
+ -  else
+ -  {
+ -      document.getElementById("testresult").innerHTML = "FAIL"
+ -  }
+ +  t.step(function (){
+ +      assert_true(parentNode.childNodes[1].localName=="rect" && parentNode.childNodes[3].localName=="circle", "Test to verify SVG Self Closing tags parses properly");
+ +  }, document.title);
+ +  t.done();
+
+ -  document.getElementById("testresult").innerHTML = "FAIL";
+ +  t.step(function (){
+ +      assert_true(false, "there is a exception");
+ +  }, document.title);
+ +  t.done();
+
+ -  <div class="testdata">
+ -    <p id="instructions"> Test passes if the word "PASS" appears below  </p>
+ -    <p> Test Result : </p>
+ -    <p id="testresult"> RUNNING </div>
+ -  </div>
+ +  <div id="log"></div>
+
+These tests are copyright by W3C and/or the author listed in the test
+file. The tests are dual-licensed under the W3C Test Suite License:
+http://www.w3.org/Consortium/Legal/2008/04-testsuite-license
+and the BSD 3-clause License:
+http://www.w3.org/Consortium/Legal/2008/03-bsd-license
+under W3C's test suite licensing policy:
+http://www.w3.org/Consortium/Legal/2008/04-testsuite-copyright

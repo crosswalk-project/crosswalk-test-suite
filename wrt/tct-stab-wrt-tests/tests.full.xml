@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-stylesheet type="text/xsl"  href="./testcase.xsl"?>
+<test_definition>
+<suite name="tct-stab-wrt-tests" category="Web Runtime">
+  <set name="StabilityTest">
+    <testcase purpose="Check that WRT can install and uninstall webapp roundly." type="user_experience" status="approved" component="Web/Runtime/StabilityTest" execution_type="auto" priority="P3" id="wrt-repeat-install-uninstall">
+      <description>
+        <pre_condition></pre_condition>
+        <post_condition></post_condition>
+              <steps>
+                 <step order="1">
+                   <step_desc>Check that WRT can install and uninstall webapp smoothly by 30 times.</step_desc>
+                   <expected>Widget application is able to be installed and uninstalled successfully.</expected>
+                 </step>
+              </steps>
+           <test_script_entry timeout="9000" test_script_expected_result="0">/opt/usr/media/tct/opt/tct-stab-wrt-tests/scripts/wrt_pm_WRTInstaller.sh setting-bs-enable.wgt</test_script_entry>
+      </description>
+    <specs>
+      <spec>
+       <spec_assertion element_type="attribute" element_name="Tizen Hosted Web Application" interface="Web Runtime" specification="Application" section="Tizen" category="Web Runtime Specifications" />
+       <spec_url></spec_url>
+       <spec_statement>TBD</spec_statement>
+      </spec>
+    </specs>
+    </testcase>
+    </set>
+  </suite>
+</test_definition>

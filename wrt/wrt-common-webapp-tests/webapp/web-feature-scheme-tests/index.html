@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<!--
+Copyright (c) 2013 Intel Corporation.
+
+Redistribution and use in source and binary forms, with or without modification,
+are permitted provided that the following conditions are met:
+
+* Redistributions of works must retain the original copyright notice, this list
+  of conditions and the following disclaimer.
+* Redistributions in binary form must reproduce the original copyright notice,
+  this list of conditions and the following disclaimer in the documentation
+  and/or other materials provided with the distribution.
+* Neither the name of Intel Corporation nor the names of its contributors
+  may be used to endorse or promote products derived from this work without
+  specific prior written permission.
+
+THIS SOFTWARE IS PROVIDED BY INTEL CORPORATION "AS IS"
+AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE
+IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE
+ARE DISCLAIMED. IN NO EVENT SHALL INTEL CORPORATION BE LIABLE FOR ANY DIRECT,
+INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING,
+BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE,
+DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY
+OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING
+NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE,
+EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
+
+Authors:
+        Xu,Yuhan <yuhanx.xu@intel.com>
+
+-->
+
+<meta charset="utf-8">
+<title>Web Features Test: web-feature-scheme-tests</title>
+<link rel="author" title="Intel" href="http://www.intel.com">
+<link rel="help" href="">
+<meta name="flags" content="">
+<meta name="assert" content="Check if enable the schemes.">
+<body>
+  <p>Web Features Scheme Test</p><br>
+
+  <a href="geo:">geo-1</a><br>
+  <a href="geo:0">geo-2</a><br>
+  <a href="geo:0,0">geo-3</a><br>
+  <a href="geo:100">geo-4</a><br>
+  <a href="geo:10000000.123,100000000.12345">geo-5</a><br>
+  <a href="geo:-100">geo-6</a><br>
+  <a href="geo:-100.1,0.1234">geo-7</a><br>
+  <a href="geo:address">geo-8</a><br>
+  <a href="geo:0,0.0?address">geo-9</a><br>
+  <a href="geo:/">geo-10</a><br><br>
+
+  <a href="mailto:">mailto-1</a><br>
+  <a href="mailto:/">mailto-2</a><br>
+  <a href="mailto:abc">mailto-3</a><br>
+  <a href="mailto:123456">mailto-4</a><br>
+  <a href="mailto:abc.123456">mailto-5</a><br>
+  <a href="mailto:abc@corp">mailto-6</a><br>
+  <a href="mailto:abc@gmail.com">mailto-7</a><br><br>
+
+  <a href="market://details?id=com.skyd.luckywheel">Open market</a><br><br>
+  <a href="sms:5551212?This is the message">Send sms</a><br><br>
+  <a href="tel:5551212">Make call</a>
+</body>

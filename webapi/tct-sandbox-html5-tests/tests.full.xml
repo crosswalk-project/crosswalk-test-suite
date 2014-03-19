@@ -1,0 +1,569 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-stylesheet type="text/xsl"  href="./testcase.xsl"?>
+<test_definition>
+  <suite name="tct-sandbox-html5-tests" launcher="xwalk" category="W3C/HTML5 APIs">
+    <set name="IframeSandbox">
+      <testcase purpose="Check that block the parent content to access the child iframe content of sandbox if sandbox attribute exists" type="compliance" status="approved" component="WebAPI/Security/HTML5 The iframe element" execution_type="auto" priority="P0" id="attri_default_block_child_contents">
+        <description>
+          <test_script_entry>/opt/tct-sandbox-html5-tests/sandbox/w3c/sandbox_030.htm</test_script_entry>
+        </description>
+        <specs>
+          <spec>
+            <spec_assertion element_type="attribute" element_name="sandbox" interface="HTMLIFrameElement" specification="HTML5 The iframe element" section="Security" category="Tizen W3C API Specifications"/>
+            <spec_url>http://www.w3.org/TR/2012/WD-html5-20121025/the-iframe-element.html?path=5_2_8#the-iframe-element</spec_url>
+            <spec_statement/>
+          </spec>
+        </specs>
+      </testcase>
+      <testcase purpose="Check that allow script to exec inside iframe with sandbox attribute if sandbox='allow-scripts'" type="compliance" status="approved" component="WebAPI/Security/HTML5 The iframe element" execution_type="auto" priority="P0" id="attri_allow-script_script_exec">
+        <description>
+          <test_script_entry>/opt/tct-sandbox-html5-tests/sandbox/w3c/sandbox_001.htm</test_script_entry>
+        </description>
+        <specs>
+          <spec>
+            <spec_assertion element_type="attribute" element_name="sandbox" interface="HTMLIFrameElement" specification="HTML5 The iframe element" section="Security" category="Tizen W3C API Specifications"/>
+            <spec_url>http://www.w3.org/TR/2012/WD-html5-20121025/the-iframe-element.html?path=5_2_8#the-iframe-element</spec_url>
+            <spec_statement/>
+          </spec>
+        </specs>
+      </testcase>
+      <testcase purpose="Check that allow to auto play HTML5 Video inside iframe with sandbox attribute if sandbox='allow-scripts'" type="compliance" status="approved" component="WebAPI/Security/HTML5 The iframe element" execution_type="auto" priority="P1" id="attri_allow-script_video_play" onload_delay="15">
+        <description>
+          <test_script_entry>/opt/tct-sandbox-html5-tests/sandbox/w3c/sandbox_002.htm</test_script_entry>
+        </description>
+        <specs>
+          <spec>
+            <spec_assertion element_type="attribute" element_name="sandbox" interface="HTMLIFrameElement" specification="HTML5 The iframe element" section="Security" category="Tizen W3C API Specifications"/>
+            <spec_url>http://www.w3.org/TR/2012/WD-html5-20121025/the-iframe-element.html?path=5_2_8#the-iframe-element</spec_url>
+            <spec_statement/>
+          </spec>
+        </specs>
+      </testcase>
+      <testcase purpose="Check that allow sandbox iframe to access other content from the same origin if sandbox='allow-same-origin'" type="compliance" status="approved" component="WebAPI/Security/HTML5 The iframe element" execution_type="auto" priority="P0" id="attri_allow-same-origin_content">
+        <description>
+          <test_script_entry>/opt/tct-sandbox-html5-tests/sandbox/w3c/sandbox_023.htm</test_script_entry>
+        </description>
+        <specs>
+          <spec>
+            <spec_assertion element_type="attribute" element_name="sandbox" interface="HTMLIFrameElement" specification="HTML5 The iframe element" section="Security" category="Tizen W3C API Specifications"/>
+            <spec_url>http://www.w3.org/TR/2012/WD-html5-20121025/the-iframe-element.html?path=5_2_8#the-iframe-element</spec_url>
+            <spec_statement/>
+          </spec>
+        </specs>
+      </testcase>
+      <testcase purpose="Check if the value of sandbox attribute must be an unordered set of unique space-separated tokens" type="compliance" status="approved" component="WebAPI/Security/HTML5 The iframe element" execution_type="auto" priority="P0" id="attri_format_space_4tab">
+        <description>
+          <test_script_entry>/opt/tct-sandbox-html5-tests/sandbox/w3c/sandbox_012.htm</test_script_entry>
+        </description>
+        <specs>
+          <spec>
+            <spec_assertion element_type="attribute" element_name="sandbox" interface="HTMLIFrameElement" specification="HTML5 The iframe element" section="Security" category="Tizen W3C API Specifications"/>
+            <spec_url>http://www.w3.org/TR/2012/WD-html5-20121025/the-iframe-element.html?path=5_2_8#the-iframe-element</spec_url>
+            <spec_statement/>
+          </spec>
+        </specs>
+      </testcase>
+      <testcase purpose="Check if the iframe.contentWindow attribute exists" type="compliance" status="approved" component="WebAPI/Security/HTML5 The iframe element" execution_type="auto" priority="P1" id="iframe_contentWindow_attribute_exists">
+        <description>
+          <test_script_entry>/opt/tct-sandbox-html5-tests/sandbox/iframe_contentWindow_attribute_exists.html</test_script_entry>
+        </description>
+        <specs>
+          <spec>
+            <spec_assertion element_type="attribute" element_name="contentWindow" interface="HTMLIFrameElement" specification="HTML5 The iframe element" section="Security" category="Tizen W3C API Specifications"/>
+            <spec_url>http://www.w3.org/TR/2012/WD-html5-20121025/the-iframe-element.html?path=5_2_8#the-iframe-element</spec_url>
+            <spec_statement/>
+          </spec>
+        </specs>
+      </testcase>
+      <testcase purpose="Check if the iframe.height attribute exists" type="compliance" status="approved" component="WebAPI/Security/HTML5 The iframe element" execution_type="auto" priority="P1" id="iframe_height_attribute_exists">
+        <description>
+          <test_script_entry>/opt/tct-sandbox-html5-tests/sandbox/iframe_height_attribute_exists.html</test_script_entry>
+        </description>
+        <specs>
+          <spec>
+            <spec_assertion element_type="attribute" element_name="height" interface="HTMLIFrameElement" specification="HTML5 The iframe element" section="Security" category="Tizen W3C API Specifications"/>
+            <spec_url>http://www.w3.org/TR/2012/WD-html5-20121025/the-iframe-element.html?path=5_2_8#the-iframe-element</spec_url>
+            <spec_statement/>
+          </spec>
+        </specs>
+      </testcase>
+      <testcase purpose="Check if the iframe.name attribute exists" type="compliance" status="approved" component="WebAPI/Security/HTML5 The iframe element" execution_type="auto" priority="P1" id="iframe_name_attribute_exists">
+        <description>
+          <test_script_entry>/opt/tct-sandbox-html5-tests/sandbox/iframe_name_attribute_exists.html</test_script_entry>
+        </description>
+        <specs>
+          <spec>
+            <spec_assertion element_type="attribute" element_name="name" interface="HTMLIFrameElement" specification="HTML5 The iframe element" section="Security" category="Tizen W3C API Specifications"/>
+            <spec_url>http://www.w3.org/TR/2012/WD-html5-20121025/the-iframe-element.html?path=5_2_8#the-iframe-element</spec_url>
+            <spec_statement/>
+          </spec>
+        </specs>
+      </testcase>
+      <testcase purpose="Check if the iframe.sandbox attribute exists" type="compliance" status="approved" component="WebAPI/Security/HTML5 The iframe element" execution_type="auto" priority="P1" id="iframe_sandbox_attribute_exists">
+        <description>
+          <test_script_entry>/opt/tct-sandbox-html5-tests/sandbox/iframe_sandbox_attribute_exists.html</test_script_entry>
+        </description>
+        <specs>
+          <spec>
+            <spec_assertion element_type="attribute" element_name="sandbox" interface="HTMLIFrameElement" specification="HTML5 The iframe element" section="Security" category="Tizen W3C API Specifications"/>
+            <spec_url>http://www.w3.org/TR/2012/WD-html5-20121025/the-iframe-element.html?path=5_2_8#the-iframe-element</spec_url>
+            <spec_statement/>
+          </spec>
+        </specs>
+      </testcase>
+      <testcase purpose="Check if the iframe.seamless attribute exists" type="compliance" status="approved" component="WebAPI/Security/HTML5 The iframe element" execution_type="auto" priority="P1" id="iframe_seamless_attribute_exists">
+        <description>
+          <test_script_entry>/opt/tct-sandbox-html5-tests/sandbox/iframe_seamless_attribute_exists.html</test_script_entry>
+        </description>
+        <specs>
+          <spec>
+            <spec_assertion element_type="attribute" element_name="seamless" interface="HTMLIFrameElement" specification="HTML5 The iframe element" section="Security" category="Tizen W3C API Specifications"/>
+            <spec_url>http://www.w3.org/TR/2012/WD-html5-20121025/the-iframe-element.html?path=5_2_8#the-iframe-element</spec_url>
+            <spec_statement/>
+          </spec>
+        </specs>
+      </testcase>
+      <testcase purpose="Check if the iframe.srcdoc attribute exists" type="compliance" status="approved" component="WebAPI/Security/HTML5 The iframe element" execution_type="auto" priority="P1" id="iframe_srcdoc_attribute_exists">
+        <description>
+          <test_script_entry>/opt/tct-sandbox-html5-tests/sandbox/iframe_srcdoc_attribute_exists.html</test_script_entry>
+        </description>
+        <specs>
+          <spec>
+            <spec_assertion element_type="attribute" element_name="srcdoc" interface="HTMLIFrameElement" specification="HTML5 The iframe element" section="Security" category="Tizen W3C API Specifications"/>
+            <spec_url>http://www.w3.org/TR/2012/WD-html5-20121025/the-iframe-element.html?path=5_2_8#the-iframe-element</spec_url>
+            <spec_statement/>
+          </spec>
+        </specs>
+      </testcase>
+      <testcase purpose="Check if the iframe.src attribute exists" type="compliance" status="approved" component="WebAPI/Security/HTML5 The iframe element" execution_type="auto" priority="P1" id="iframe_src_attribute_exists">
+        <description>
+          <test_script_entry>/opt/tct-sandbox-html5-tests/sandbox/iframe_src_attribute_exists.html</test_script_entry>
+        </description>
+        <specs>
+          <spec>
+            <spec_assertion element_type="attribute" element_name="src" interface="HTMLIFrameElement" specification="HTML5 The iframe element" section="Security" category="Tizen W3C API Specifications"/>
+            <spec_url>http://www.w3.org/TR/2012/WD-html5-20121025/the-iframe-element.html?path=5_2_8#the-iframe-element</spec_url>
+            <spec_statement/>
+          </spec>
+        </specs>
+      </testcase>
+      <testcase purpose="Check if the iframe.width attribute exists" type="compliance" status="approved" component="WebAPI/Security/HTML5 The iframe element" execution_type="auto" priority="P1" id="iframe_width_attribute_exists">
+        <description>
+          <test_script_entry>/opt/tct-sandbox-html5-tests/sandbox/iframe_width_attribute_exists.html</test_script_entry>
+        </description>
+        <specs>
+          <spec>
+            <spec_assertion element_type="attribute" element_name="width" interface="HTMLIFrameElement" specification="HTML5 The iframe element" section="Security" category="Tizen W3C API Specifications"/>
+            <spec_url>http://www.w3.org/TR/2012/WD-html5-20121025/the-iframe-element.html?path=5_2_8#the-iframe-element</spec_url>
+            <spec_statement/>
+          </spec>
+        </specs>
+      </testcase>
+      <testcase purpose="Block form submission inside iframe with sandbox attribute" type="compliance" status="approved" component="WebAPI/Security/HTML5 The iframe element" execution_type="manual" priority="P2" id="attri_default_block_submit">
+        <description>
+          <pre_condition/>
+          <post_condition/>
+          <steps>
+            <step order="1">
+              <step_desc>Steps:
+1. Click button "Submit Form".</step_desc>
+              <expected>Test passes if there is no red on the page and there is no navigation in the below iframe after following the above steps</expected>
+            </step>
+          </steps>
+          <test_script_entry>/opt/tct-sandbox-html5-tests/sandbox/w3c/sandbox_007.htm</test_script_entry>
+        </description>
+        <specs>
+          <spec>
+            <spec_assertion element_type="attribute" element_name="sandbox" interface="HTMLIFrameElement" specification="HTML5 The iframe element" section="Security" category="Tizen W3C API Specifications"/>
+            <spec_url>http://www.w3.org/TR/2012/WD-html5-20121025/the-iframe-element.html?path=5_2_8#the-iframe-element</spec_url>
+            <spec_statement/>
+          </spec>
+        </specs>
+      </testcase>
+      <testcase purpose="Check if the iframe.contentWindow attribute is of type object" type="compliance" status="approved" component="WebAPI/Security/HTML5 The iframe element" execution_type="auto" priority="P2" id="iframe_contentWindow_attribute_type">
+        <description>
+          <test_script_entry>/opt/tct-sandbox-html5-tests/sandbox/iframe_contentWindow_attribute_type.html</test_script_entry>
+        </description>
+        <specs>
+          <spec>
+            <spec_assertion element_type="attribute" element_name="contentWindow" interface="HTMLIFrameElement" specification="HTML5 The iframe element" section="Security" category="Tizen W3C API Specifications"/>
+            <spec_url>http://www.w3.org/TR/2012/WD-html5-20121025/the-iframe-element.html?path=5_2_8#the-iframe-element</spec_url>
+            <spec_statement/>
+          </spec>
+        </specs>
+      </testcase>
+      <testcase purpose="Check if the iframe.contentWindow attribute must return the WindowProxy object of the object element's nested browsing context, if it has one" type="compliance" status="approved" component="WebAPI/Security/HTML5 The iframe element" execution_type="auto" priority="P2" id="iframe_contentWindow_return_window">
+        <description>
+          <test_script_entry>/opt/tct-sandbox-html5-tests/sandbox/iframe_contentWindow_return_window.html</test_script_entry>
+        </description>
+        <specs>
+          <spec>
+            <spec_assertion element_type="attribute" element_name="contentWindow" interface="HTMLIFrameElement" specification="HTML5 The iframe element" section="Security" category="Tizen W3C API Specifications"/>
+            <spec_url>http://www.w3.org/TR/2012/WD-html5-20121025/the-iframe-element.html?path=5_2_8#the-iframe-element</spec_url>
+            <spec_statement/>
+          </spec>
+        </specs>
+      </testcase>
+      <testcase purpose="Check if the iframe.contentDocument attribute exists" type="compliance" status="approved" component="WebAPI/Security/HTML5 The iframe element" execution_type="auto" priority="P2" id="iframe_contentDocument_attribute_exsits">
+        <description>
+          <test_script_entry>/opt/tct-sandbox-html5-tests/sandbox/iframe_contentDocument_attribute_exsits.html</test_script_entry>
+        </description>
+        <specs>
+          <spec>
+            <spec_assertion element_type="attribute" element_name="contentDocument" interface="HTMLIFrameElement" specification="HTML5 The iframe element" section="Security" category="Tizen W3C API Specifications"/>
+            <spec_url>http://www.w3.org/TR/2012/WD-html5-20121025/the-iframe-element.html?path=5_2_8#the-iframe-element</spec_url>
+            <spec_statement/>
+          </spec>
+        </specs>
+      </testcase>
+      <testcase purpose="Check if the iframe.contentDocument attribute is of type object" type="compliance" status="approved" component="WebAPI/Security/HTML5 The iframe element" execution_type="auto" priority="P2" id="iframe_contentDocument_attribute_type">
+        <description>
+          <test_script_entry>/opt/tct-sandbox-html5-tests/sandbox/iframe_contentDocument_attribute_type.html</test_script_entry>
+        </description>
+        <specs>
+          <spec>
+            <spec_assertion element_type="attribute" element_name="contentDocument" interface="HTMLIFrameElement" specification="HTML5 The iframe element" section="Security" category="Tizen W3C API Specifications"/>
+            <spec_url>http://www.w3.org/TR/2012/WD-html5-20121025/the-iframe-element.html?path=5_2_8#the-iframe-element</spec_url>
+            <spec_statement/>
+          </spec>
+        </specs>
+      </testcase>
+      <testcase purpose="Check if the iframe.contentDocument attribute must return the Document object of the active document of the iframe element's nested browsing context" type="compliance" status="approved" component="WebAPI/Security/HTML5 The iframe element" execution_type="auto" priority="P2" id="iframe_contentDocument_return_document">
+        <description>
+          <test_script_entry>/opt/tct-sandbox-html5-tests/sandbox/iframe_contentDocument_return_document.html</test_script_entry>
+        </description>
+        <specs>
+          <spec>
+            <spec_assertion element_type="attribute" element_name="contentDocument" interface="HTMLIFrameElement" specification="HTML5 The iframe element" section="Security" category="Tizen W3C API Specifications"/>
+            <spec_url>http://www.w3.org/TR/2012/WD-html5-20121025/the-iframe-element.html?path=5_2_8#the-iframe-element</spec_url>
+            <spec_statement/>
+          </spec>
+        </specs>
+      </testcase>
+      <testcase purpose="Check if the iframe.height attribute is not readonly" type="compliance" status="approved" component="WebAPI/Security/HTML5 The iframe element" execution_type="auto" priority="P2" id="iframe_height_attribute_not_readonly">
+        <description>
+          <test_script_entry>/opt/tct-sandbox-html5-tests/sandbox/iframe_height_attribute_not_readonly.html</test_script_entry>
+        </description>
+        <specs>
+          <spec>
+            <spec_assertion element_type="attribute" element_name="height" interface="HTMLIFrameElement" specification="HTML5 The iframe element" section="Security" category="Tizen W3C API Specifications"/>
+            <spec_url>http://www.w3.org/TR/2012/WD-html5-20121025/the-iframe-element.html?path=5_2_8#the-iframe-element</spec_url>
+            <spec_statement/>
+          </spec>
+        </specs>
+      </testcase>
+      <testcase purpose="Check if the iframe.height attribute is of type DOMString" type="compliance" status="approved" component="WebAPI/Security/HTML5 The iframe element" execution_type="auto" priority="P2" id="iframe_height_attribute_type">
+        <description>
+          <test_script_entry>/opt/tct-sandbox-html5-tests/sandbox/iframe_height_attribute_type.html</test_script_entry>
+        </description>
+        <specs>
+          <spec>
+            <spec_assertion element_type="attribute" element_name="height" interface="HTMLIFrameElement" specification="HTML5 The iframe element" section="Security" category="Tizen W3C API Specifications"/>
+            <spec_url>http://www.w3.org/TR/2012/WD-html5-20121025/the-iframe-element.html?path=5_2_8#the-iframe-element</spec_url>
+            <spec_statement/>
+          </spec>
+        </specs>
+      </testcase>
+      <testcase purpose="Check if the iframe.height attribute must reflect the respective content attributes of the same name" type="compliance" status="approved" component="WebAPI/Security/HTML5 The iframe element" execution_type="auto" priority="P2" id="iframe_height_basic">
+        <description>
+          <test_script_entry>/opt/tct-sandbox-html5-tests/sandbox/iframe_height_basic.html</test_script_entry>
+        </description>
+        <specs>
+          <spec>
+            <spec_assertion element_type="attribute" element_name="height" interface="HTMLIFrameElement" specification="HTML5 The iframe element" section="Security" category="Tizen W3C API Specifications"/>
+            <spec_url>http://www.w3.org/TR/2012/WD-html5-20121025/the-iframe-element.html?path=5_2_8#the-iframe-element</spec_url>
+            <spec_statement/>
+          </spec>
+        </specs>
+      </testcase>
+      <testcase purpose="Check if the iframe.height attribute return empty string that it been set empty string" type="compliance" status="approved" component="WebAPI/Security/HTML5 The iframe element" execution_type="auto" priority="P2" id="iframe_height_value_empty_string">
+        <description>
+          <test_script_entry>/opt/tct-sandbox-html5-tests/sandbox/iframe_height_value_empty_string.html</test_script_entry>
+        </description>
+        <specs>
+          <spec>
+            <spec_assertion element_type="attribute" element_name="height" interface="HTMLIFrameElement" specification="HTML5 The iframe element" section="Security" category="Tizen W3C API Specifications"/>
+            <spec_url>http://www.w3.org/TR/2012/WD-html5-20121025/the-iframe-element.html?path=5_2_8#the-iframe-element</spec_url>
+            <spec_statement/>
+          </spec>
+        </specs>
+      </testcase>
+      <testcase purpose="Check if the iframe.name attribute is not readonly" type="compliance" status="approved" component="WebAPI/Security/HTML5 The iframe element" execution_type="auto" priority="P2" id="iframe_name_attribute_not_readonly">
+        <description>
+          <test_script_entry>/opt/tct-sandbox-html5-tests/sandbox/iframe_name_attribute_not_readonly.html</test_script_entry>
+        </description>
+        <specs>
+          <spec>
+            <spec_assertion element_type="attribute" element_name="name" interface="HTMLIFrameElement" specification="HTML5 The iframe element" section="Security" category="Tizen W3C API Specifications"/>
+            <spec_url>http://www.w3.org/TR/2012/WD-html5-20121025/the-iframe-element.html?path=5_2_8#the-iframe-element</spec_url>
+            <spec_statement/>
+          </spec>
+        </specs>
+      </testcase>
+      <testcase purpose="Check if the iframe.name attribute is of type DOMString" type="compliance" status="approved" component="WebAPI/Security/HTML5 The iframe element" execution_type="auto" priority="P2" id="iframe_name_attribute_type">
+        <description>
+          <test_script_entry>/opt/tct-sandbox-html5-tests/sandbox/iframe_name_attribute_type.html</test_script_entry>
+        </description>
+        <specs>
+          <spec>
+            <spec_assertion element_type="attribute" element_name="name" interface="HTMLIFrameElement" specification="HTML5 The iframe element" section="Security" category="Tizen W3C API Specifications"/>
+            <spec_url>http://www.w3.org/TR/2012/WD-html5-20121025/the-iframe-element.html?path=5_2_8#the-iframe-element</spec_url>
+            <spec_statement/>
+          </spec>
+        </specs>
+      </testcase>
+      <testcase purpose="Check if the iframe.name attribute must reflect the respective content attributes of the same name,the value is empty string" type="compliance" status="approved" component="WebAPI/Security/HTML5 The iframe element" execution_type="auto" priority="P2" id="iframe_name_value_empty_string">
+        <description>
+          <test_script_entry>/opt/tct-sandbox-html5-tests/sandbox/iframe_name_value_empty_string.html</test_script_entry>
+        </description>
+        <specs>
+          <spec>
+            <spec_assertion element_type="attribute" element_name="name" interface="HTMLIFrameElement" specification="HTML5 The iframe element" section="Security" category="Tizen W3C API Specifications"/>
+            <spec_url>http://www.w3.org/TR/2012/WD-html5-20121025/the-iframe-element.html?path=5_2_8#the-iframe-element</spec_url>
+            <spec_statement/>
+          </spec>
+        </specs>
+      </testcase>
+      <testcase purpose="Check if iframe.name default value is empty string" type="compliance" status="approved" component="WebAPI/Security/HTML5 The iframe element" execution_type="auto" priority="P2" id="iframe_name_default_value">
+        <description>
+          <test_script_entry>/opt/tct-sandbox-html5-tests/sandbox/iframe_name_default_value.html</test_script_entry>
+        </description>
+        <specs>
+          <spec>
+            <spec_assertion element_type="attribute" element_name="name" interface="HTMLIFrameElement" specification="HTML5 The iframe element" section="Security" category="Tizen W3C API Specifications"/>
+            <spec_url>http://www.w3.org/TR/2012/WD-html5-20121025/the-iframe-element.html?path=5_2_8#the-iframe-element</spec_url>
+            <spec_statement/>
+          </spec>
+        </specs>
+      </testcase>
+      <testcase purpose="Check if the iframe.name attribute must reflect the respective content attributes of the same name" type="compliance" status="approved" component="WebAPI/Security/HTML5 The iframe element" execution_type="auto" priority="P2" id="iframe_name_value_string">
+        <description>
+          <test_script_entry>/opt/tct-sandbox-html5-tests/sandbox/iframe_name_value_string.html</test_script_entry>
+        </description>
+        <specs>
+          <spec>
+            <spec_assertion element_type="attribute" element_name="name" interface="HTMLIFrameElement" specification="HTML5 The iframe element" section="Security" category="Tizen W3C API Specifications"/>
+            <spec_url>http://www.w3.org/TR/2012/WD-html5-20121025/the-iframe-element.html?path=5_2_8#the-iframe-element</spec_url>
+            <spec_statement/>
+          </spec>
+        </specs>
+      </testcase>
+      <testcase purpose="Check if the iframe.seamless attribute is not readonly" type="compliance" status="approved" component="WebAPI/Security/HTML5 The iframe element" execution_type="auto" priority="P2" id="iframe_seamless_attribute_not_readonly">
+        <description>
+          <test_script_entry>/opt/tct-sandbox-html5-tests/sandbox/iframe_seamless_attribute_not_readonly.html</test_script_entry>
+        </description>
+        <specs>
+          <spec>
+            <spec_assertion element_type="attribute" element_name="seamless" interface="HTMLIFrameElement" specification="HTML5 The iframe element" section="Security" category="Tizen W3C API Specifications"/>
+            <spec_url>http://www.w3.org/TR/2012/WD-html5-20121025/the-iframe-element.html?path=5_2_8#the-iframe-element</spec_url>
+            <spec_statement/>
+          </spec>
+        </specs>
+      </testcase>
+      <testcase purpose="Check if the iframe.seamless is of type boolean" type="compliance" status="approved" component="WebAPI/Security/HTML5 The iframe element" execution_type="auto" priority="P2" id="iframe_seamless_attribute_type">
+        <description>
+          <test_script_entry>/opt/tct-sandbox-html5-tests/sandbox/iframe_seamless_attribute_type.html</test_script_entry>
+        </description>
+        <specs>
+          <spec>
+            <spec_assertion element_type="attribute" element_name="seamless" interface="HTMLIFrameElement" specification="HTML5 The iframe element" section="Security" category="Tizen W3C API Specifications"/>
+            <spec_url>http://www.w3.org/TR/2012/WD-html5-20121025/the-iframe-element.html?path=5_2_8#the-iframe-element</spec_url>
+            <spec_statement/>
+          </spec>
+        </specs>
+      </testcase>
+      <testcase purpose="Check if the iframe.seamless attribute return false if absence of the attribute" type="compliance" status="approved" component="WebAPI/Security/HTML5 The iframe element" execution_type="auto" priority="P2" id="iframe_seamless_default_value">
+        <description>
+          <test_script_entry>/opt/tct-sandbox-html5-tests/sandbox/iframe_seamless_default_value.html</test_script_entry>
+        </description>
+        <specs>
+          <spec>
+            <spec_assertion element_type="attribute" element_name="seamless" interface="HTMLIFrameElement" specification="HTML5 The iframe element" section="Security" category="Tizen W3C API Specifications"/>
+            <spec_url>http://www.w3.org/TR/2012/WD-html5-20121025/the-iframe-element.html?path=5_2_8#the-iframe-element</spec_url>
+            <spec_statement/>
+          </spec>
+        </specs>
+      </testcase>
+      <testcase purpose="Check if the iframe.seamless value is true when the seamless attribute in iframe element" type="compliance" status="approved" component="WebAPI/Security/HTML5 The iframe element" execution_type="auto" priority="P2" id="iframe_seamless_value_true">
+        <description>
+          <test_script_entry>/opt/tct-sandbox-html5-tests/sandbox/iframe_seamless_value_true.html</test_script_entry>
+        </description>
+        <specs>
+          <spec>
+            <spec_assertion element_type="attribute" element_name="seamless" interface="HTMLIFrameElement" specification="HTML5 The iframe element" section="Security" category="Tizen W3C API Specifications"/>
+            <spec_url>http://www.w3.org/TR/2012/WD-html5-20121025/the-iframe-element.html?path=5_2_8#the-iframe-element</spec_url>
+            <spec_statement/>
+          </spec>
+        </specs>
+      </testcase>
+      <testcase purpose="Check if the iframe.src attribute is not readonly" type="compliance" status="approved" component="WebAPI/Security/HTML5 The iframe element" execution_type="auto" priority="P2" id="iframe_src_attribute_not_readonly">
+        <description>
+          <test_script_entry>/opt/tct-sandbox-html5-tests/sandbox/iframe_src_attribute_not_readonly.html</test_script_entry>
+        </description>
+        <specs>
+          <spec>
+            <spec_assertion element_type="attribute" element_name="src" interface="HTMLIFrameElement" specification="HTML5 The iframe element" section="Security" category="Tizen W3C API Specifications"/>
+            <spec_url>http://www.w3.org/TR/2012/WD-html5-20121025/the-iframe-element.html?path=5_2_8#the-iframe-element</spec_url>
+            <spec_statement/>
+          </spec>
+        </specs>
+      </testcase>
+      <testcase purpose="Check if the iframe.src attribute must be a valid non-empty URL potentially surrounded by spaces if the attribute present" type="compliance" status="approved" component="WebAPI/Security/HTML5 The iframe element" execution_type="auto" priority="P2" id="iframe_src_attribute_present">
+        <description>
+          <test_script_entry>/opt/tct-sandbox-html5-tests/sandbox/iframe_src_attribute_present.html</test_script_entry>
+        </description>
+        <specs>
+          <spec>
+            <spec_assertion element_type="attribute" element_name="src" interface="HTMLIFrameElement" specification="HTML5 The iframe element" section="Security" category="Tizen W3C API Specifications"/>
+            <spec_url>http://www.w3.org/TR/2012/WD-html5-20121025/the-iframe-element.html?path=5_2_8#the-iframe-element</spec_url>
+            <spec_statement/>
+          </spec>
+        </specs>
+      </testcase>
+     <testcase purpose="Check if the iframe.src attribute is of type DOMString" type="compliance" status="approved" component="WebAPI/Security/HTML5 The iframe element" execution_type="auto" priority="P2" id="iframe_src_attribute_type">
+        <description>
+          <test_script_entry>/opt/tct-sandbox-html5-tests/sandbox/iframe_src_attribute_type.html</test_script_entry>
+        </description>
+        <specs>
+          <spec>
+            <spec_assertion element_type="attribute" element_name="src" interface="HTMLIFrameElement" specification="HTML5 The iframe element" section="Security" category="Tizen W3C API Specifications"/>
+            <spec_url>http://www.w3.org/TR/2012/WD-html5-20121025/the-iframe-element.html?path=5_2_8#the-iframe-element</spec_url>
+            <spec_statement/>
+          </spec>
+        </specs>
+      </testcase>
+      <testcase purpose="Check if the iframe.srcdoc attribute is not readonly" type="compliance" status="approved" component="WebAPI/Security/HTML5 The iframe element" execution_type="auto" priority="P2" id="iframe_srcdoc_attribute_not_readonly">
+        <description>
+          <test_script_entry>/opt/tct-sandbox-html5-tests/sandbox/iframe_srcdoc_attribute_not_readonly.html</test_script_entry>
+        </description>
+        <specs>
+          <spec>
+            <spec_assertion element_type="attribute" element_name="srcdoc" interface="HTMLIFrameElement" specification="HTML5 The iframe element" section="Security" category="Tizen W3C API Specifications"/>
+            <spec_url>http://www.w3.org/TR/2012/WD-html5-20121025/the-iframe-element.html?path=5_2_8#the-iframe-element</spec_url>
+            <spec_statement/>
+          </spec>
+        </specs>
+      </testcase>
+      <testcase purpose="Check if the iframe.srcdoc attribute is of type DOMString" type="compliance" status="approved" component="WebAPI/Security/HTML5 The iframe element" execution_type="auto" priority="P2" id="iframe_srcdoc_attribute_type">
+        <description>
+          <test_script_entry>/opt/tct-sandbox-html5-tests/sandbox/iframe_srcdoc_attribute_type.html</test_script_entry>
+        </description>
+        <specs>
+          <spec>
+            <spec_assertion element_type="attribute" element_name="srcdoc" interface="HTMLIFrameElement" specification="HTML5 The iframe element" section="Security" category="Tizen W3C API Specifications"/>
+            <spec_url>http://www.w3.org/TR/2012/WD-html5-20121025/the-iframe-element.html?path=5_2_8#the-iframe-element</spec_url>
+            <spec_statement/>
+          </spec>
+        </specs>
+      </testcase>
+      <testcase purpose="Check if the srcdoc attribute default value is empty string" type="compliance" status="approved" component="WebAPI/Security/HTML5 The iframe element" execution_type="auto" priority="P2" id="iframe_srcdoc_default_value">
+        <description>
+          <test_script_entry>/opt/tct-sandbox-html5-tests/sandbox/iframe_srcdoc_default_value.html</test_script_entry>
+        </description>
+        <specs>
+          <spec>
+            <spec_assertion element_type="attribute" element_name="srcdoc" interface="HTMLIFrameElement" specification="HTML5 The iframe element" section="Security" category="Tizen W3C API Specifications"/>
+            <spec_url>http://www.w3.org/TR/2012/WD-html5-20121025/the-iframe-element.html?path=5_2_8#the-iframe-element</spec_url>
+            <spec_statement/>
+          </spec>
+        </specs>
+      </testcase>
+      <testcase purpose="Check if the iframe.srcdoc attribute return empty string if it been set empty string" type="compliance" status="approved" component="WebAPI/Security/HTML5 The iframe element" execution_type="auto" priority="P2" id="iframe_srcdoc_value_empty_string">
+        <description>
+          <test_script_entry>/opt/tct-sandbox-html5-tests/sandbox/iframe_srcdoc_value_empty_string.html</test_script_entry>
+        </description>
+        <specs>
+          <spec>
+            <spec_assertion element_type="attribute" element_name="srcdoc" interface="HTMLIFrameElement" specification="HTML5 The iframe element" section="Security" category="Tizen W3C API Specifications"/>
+            <spec_url>http://www.w3.org/TR/2012/WD-html5-20121025/the-iframe-element.html?path=5_2_8#the-iframe-element</spec_url>
+            <spec_statement/>
+          </spec>
+        </specs>
+      </testcase>
+      <testcase purpose="Check if the iframe.srcdoc attribute must reflect the respective content attributes of the same name" type="compliance" status="approved" component="WebAPI/Security/HTML5 The iframe element" execution_type="auto" priority="P2" id="iframe_srcdoc_value_string">
+        <description>
+          <test_script_entry>/opt/tct-sandbox-html5-tests/sandbox/iframe_srcdoc_value_string.html</test_script_entry>
+        </description>
+        <specs>
+          <spec>
+            <spec_assertion element_type="attribute" element_name="srcdoc" interface="HTMLIFrameElement" specification="HTML5 The iframe element" section="Security" category="Tizen W3C API Specifications"/>
+            <spec_url>http://www.w3.org/TR/2012/WD-html5-20121025/the-iframe-element.html?path=5_2_8#the-iframe-element</spec_url>
+            <spec_statement/>
+          </spec>
+        </specs>
+      </testcase>
+      <testcase purpose="Check if the iframe.width attribute is not readonly" type="compliance" status="approved" component="WebAPI/Security/HTML5 The iframe element" execution_type="auto" priority="P2" id="iframe_width_attribute_not_readonly">
+        <description>
+          <test_script_entry>/opt/tct-sandbox-html5-tests/sandbox/iframe_width_attribute_not_readonly.html</test_script_entry>
+        </description>
+        <specs>
+          <spec>
+            <spec_assertion element_type="attribute" element_name="width" interface="HTMLIFrameElement" specification="HTML5 The iframe element" section="Security" category="Tizen W3C API Specifications"/>
+            <spec_url>http://www.w3.org/TR/2012/WD-html5-20121025/the-iframe-element.html?path=5_2_8#the-iframe-element</spec_url>
+            <spec_statement/>
+          </spec>
+        </specs>
+      </testcase>
+      <testcase purpose="Check if the iframe.width attribute is of type DOMString" type="compliance" status="approved" component="WebAPI/Security/HTML5 The iframe element" execution_type="auto" priority="P2" id="iframe_width_attribute_type">
+        <description>
+          <test_script_entry>/opt/tct-sandbox-html5-tests/sandbox/iframe_width_attribute_type.html</test_script_entry>
+        </description>
+        <specs>
+          <spec>
+            <spec_assertion element_type="attribute" element_name="width" interface="HTMLIFrameElement" specification="HTML5 The iframe element" section="Security" category="Tizen W3C API Specifications"/>
+            <spec_url>http://www.w3.org/TR/2012/WD-html5-20121025/the-iframe-element.html?path=5_2_8#the-iframe-element</spec_url>
+            <spec_statement/>
+          </spec>
+        </specs>
+      </testcase>
+      <testcase purpose="Check if iframe.width attribute set null,then compare iframe.width is empty string" type="compliance" status="approved" component="WebAPI/Security/HTML5 The iframe element" execution_type="auto" priority="P2" id="iframe_width_null">
+        <description>
+          <test_script_entry>/opt/tct-sandbox-html5-tests/sandbox/iframe_width_null.html</test_script_entry>
+        </description>
+        <specs>
+          <spec>
+            <spec_assertion element_type="attribute" element_name="width" interface="HTMLIFrameElement" specification="HTML5 The iframe element" section="Security" category="Tizen W3C API Specifications"/>
+            <spec_url>http://www.w3.org/TR/2012/WD-html5-20121025/the-iframe-element.html?path=5_2_8#the-iframe-element</spec_url>
+            <spec_statement/>
+          </spec>
+        </specs>
+      </testcase>
+      <testcase purpose="Check if the iframe.width attribute return null if it been set empty string" type="compliance" status="approved" component="WebAPI/Security/HTML5 The iframe element" execution_type="auto" priority="P2" id="iframe_width_value_empty_string">
+        <description>
+          <test_script_entry>/opt/tct-sandbox-html5-tests/sandbox/iframe_width_value_empty_string.html</test_script_entry>
+        </description>
+        <specs>
+          <spec>
+            <spec_assertion element_type="attribute" element_name="width" interface="HTMLIFrameElement" specification="HTML5 The iframe element" section="Security" category="Tizen W3C API Specifications"/>
+            <spec_url>http://www.w3.org/TR/2012/WD-html5-20121025/the-iframe-element.html?path=5_2_8#the-iframe-element</spec_url>
+            <spec_statement/>
+          </spec>
+        </specs>
+      </testcase>
+      <testcase purpose="Check if the iframe.width attribute must reflect the respective content attributes of the same name" type="compliance" status="approved" component="WebAPI/Security/HTML5 The iframe element" execution_type="auto" priority="P2" id="iframe_width_value_string">
+        <description>
+          <test_script_entry>/opt/tct-sandbox-html5-tests/sandbox/iframe_width_value_string.html</test_script_entry>
+        </description>
+        <specs>
+          <spec>
+            <spec_assertion element_type="attribute" element_name="width" interface="HTMLIFrameElement" specification="HTML5 The iframe element" section="Security" category="Tizen W3C API Specifications"/>
+            <spec_url>http://www.w3.org/TR/2012/WD-html5-20121025/the-iframe-element.html?path=5_2_8#the-iframe-element</spec_url>
+            <spec_statement/>
+          </spec>
+        </specs>
+      </testcase>
+      <testcase purpose="Check if the iframe.sandbox attribute default value is empty string" type="compliance" status="approved" component="WebAPI/Security/HTML5 The iframe element" execution_type="auto" priority="P2" id="iframe_sandbox_example_default_value">
+        <description>
+          <test_script_entry>/opt/tct-sandbox-html5-tests/sandbox/iframe_sandbox_example_default_value.html</test_script_entry>
+        </description>
+        <specs>
+          <spec>
+            <spec_assertion element_type="attribute" element_name="sandbox" interface="HTMLIFrameElement" specification="HTML5 The iframe element" section="Security" category="Tizen W3C API Specifications"/>
+            <spec_url>http://www.w3.org/TR/2012/WD-html5-20121025/the-iframe-element.html?path=5_2_8#the-iframe-element</spec_url>
+            <spec_statement/>
+          </spec>
+        </specs>
+      </testcase>
+    </set>
+  </suite>
+</test_definition>

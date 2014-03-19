@@ -1,0 +1,34 @@
+This test suite comes from
+https://github.com/w3c/web-platform-tests (commit f744661dbd0c29bb6a54c1530f9843838eec1300)
+with some modifications:
+1.necessary adjustment on reference path to test harness.
+2.test modification:
+filelist-section/filelist_selected_file-manual.html
+    - <li>Download <a href='support/upload.txt'>upload.txt</a> to local.</li>
+    + <li>Download <a href='support/upload.doc'>upload.doc</a> to local.</li>
+    - <li>Select the local upload.txt file to run the test.</li>
+    + <li>Select the local upload.doc file to run the test.</li>
+    - assert_equals(fileList.item(0).name, 'upload.txt', 'file name string is "upload.txt"');
+    + assert_equals(fileList.item(0).name, 'upload.doc', 'file name string is "upload.doc"');
+    - }, 'Check if the file name string is the selected "upload.txt"');
+    + }, 'Check if the file name string is the selected "upload.doc"');
+filelist-section/filelist_multiple_selected_files-manual.html
+    - <li>Download <a href='support/upload.txt'>upload.txt</a>, <a href="support/upload.zip">upload.zip</a> to local.</li>
+    + <li>Download <a href='support/upload.doc'>upload.doc</a>, <a href="support/upload.zip">upload.zip</a> to local.</li>
+    - <li>Select the local two files (upload.txt, upload.zip) to run the test.</li>
+    + <li>Select the local two files (upload.doc, upload.zip) to run the test.</li>
+    - assert_array_equals([fileList.item(0).name, fileList.item(1).name], ['upload.txt', 'upload.zip'], 'file name string is the name of selected files "upload.txt", "upload.zip"');
+    + assert_array_equals([fileList.item(0).name, fileList.item(1).name], ['upload.doc', 'upload.zip'], 'file name string is the name of selected files "upload.doc", "upload.zip"');
+filelist-section/support
+    + upload.doc
+
+
+
+
+These tests are copyright by W3C and/or the author listed in the test
+file. The tests are dual-licensed under the W3C Test Suite License:
+http://www.w3.org/Consortium/Legal/2008/04-testsuite-license
+and the BSD 3-clause License:
+http://www.w3.org/Consortium/Legal/2008/03-bsd-license
+under W3C's test suite licensing policy:
+http://www.w3.org/Consortium/Legal/2008/04-testsuite-copyright

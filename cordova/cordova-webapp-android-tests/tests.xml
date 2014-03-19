@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-stylesheet type="text/xsl" href="./testcase.xsl"?>
+<test_definition>
+  <suite category="Cordova_Web_App" launcher="xwalk" name="cordova-webapp-android-tests">
+    <set name="WebApp">
+      <testcase component="Cordova_Web_App" execution_type="manual" id="Crosswalk_Cordova_WebApp_Project_Create" purpose="Validate Crosswalk Cordova WebApp project could be created successful">
+        <description>
+          <pre_condition>
+            1.Make sure 'cordova.tar.tz' package has existed in the local.
+          </pre_condition>
+          <test_script_entry>/opt/cordova-webapp-android-tests/webapp/Crosswalk_Cordova_WebApp_Project_Create.html</test_script_entry>
+        </description>
+      </testcase>
+      <testcase component="Cordova_Web_App" execution_type="manual" id="Crosswalk_Cordova_WebApp_Project_Build" purpose="Validate Crosswalk Cordova WebApp Project could be builded successful">
+        <description>
+          <pre_condition>
+            1. Make sure Helloworld project has existed in the local.
+          </pre_condition>
+          <test_script_entry>/opt/cordova-webapp-android-tests/webapp/Crosswalk_Cordova_WebApp_Project_Build.html </test_script_entry>
+        </description>
+      </testcase>
+      <testcase component="Cordova_Web_App" execution_type="manual" id="Crosswalk_Cordova_WebApp_Project_Run" purpose="Validate Crosswalk Cordova app project could be installed and runing on device">
+        <description>
+          <pre_condition>
+            1.  Make sure Helloworld project build success and a device connected host.
+          </pre_condition>
+          <test_script_entry>/opt/cordova-webapp-android-tests/webapp/Crosswalk_Cordova_WebApp_Project_Run.html </test_script_entry>
+        </description>
+      </testcase>
+      <testcase component="Cordova_Web_App" execution_type="manual" id="Crosswalk_Cordova_WebApp_Icon" purpose="Validate if Cordova WebApp icon display normally">
+        <description>
+          <pre_condition>
+            1. Make sure Cordova WebApp is installed;
+            2. Make sure there some webapps are available.
+          </pre_condition>
+          <test_script_entry>/opt/cordova-webapp-android-tests/webapp/Crosswalk_Cordova_WebApp_Icon.html </test_script_entry>
+        </description>
+      </testcase>
+      <testcase component="Cordova_Web_App" execution_type="manual" id="Crosswalk_Cordova_WebApp_Install" purpose="Validate Cordova WebApp could be installed successfully">
+        <description>
+          <pre_condition>
+            1. Make sure the Cordova WebApp package has existed in the local.
+          </pre_condition>
+          <test_script_entry>/opt/cordova-webapp-android-tests/webapp/Crosswalk_Cordova_WebApp_Install.html </test_script_entry>
+        </description>
+      </testcase>
+      <testcase component="Cordova_Web_App" execution_type="manual" id="Crosswalk_Cordova_WebApp_Uninstall" purpose="Validate Cordova WebApp could be uninstalled successfully">
+        <description>
+          <pre_condition>
+            1. Make sure Cordova WebApp is installed;
+            2. Make sure there some webapps are available.
+          </pre_condition>
+          <test_script_entry>/opt/cordova-webapp-android-tests/webapp/Crosswalk_Cordova_WebApp_Uninstall.html </test_script_entry>
+        </description>
+      </testcase>
+      <testcase component="Cordova_Web_App" execution_type="manual" id="Crosswalk_Cordova_WebApp_Launch" purpose="Validate Cordova WebApp could be launched successfully">
+        <description>
+          <pre_condition>
+            1. Make sure Cordova WebApp is installed;
+            2. Make sure there some webapps are available.
+          </pre_condition>
+          <test_script_entry>/opt/cordova-webapp-android-tests/webapp/Crosswalk_Cordova_WebApp_Launch.html </test_script_entry>
+        </description>
+      </testcase>
+      <testcase component="Cordova_Web_App" execution_type="manual" id="Crosswalk_Cordova_WebApp_Close" purpose="Validate Cordova WebApp could be closed successfully">
+        <description>
+          <pre_condition>
+            1. Make sure Cordova app is launched.
+          </pre_condition>
+          <test_script_entry>/opt/cordova-webapp-android-tests/webapp/Crosswalk_Cordova_WebApp_Close.html </test_script_entry>
+        </description>
+      </testcase>
+    </set>
+  </suite>
+</test_definition>

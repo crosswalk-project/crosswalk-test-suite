@@ -1,0 +1,363 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-stylesheet type="text/xsl" href="./testcase.xsl"?>
+<test_definition>
+  <suite category="W3C/HTML5 APIs" launcher="xwalk" name="webapi-resourcetiming-w3c-tests">
+    <set name="resourcetiming">
+      <testcase component="WebAPI/Performance and Optimization/Resource Timing" execution_type="auto" id="resource_frame_initiator_type" purpose="Test checks that the frame initiator type is represented">
+        <description>
+          <test_script_entry>/opt/webapi-resourcetiming-w3c-tests/resourcetiming/w3c/submission/test_resource_frame_initiator_type.html?total_num=3&amp;amp;locator_key=id&amp;amp;value=3</test_script_entry>
+        </description>
+      </testcase>
+      <testcase component="WebAPI/Performance and Optimization/Resource Timing" execution_type="auto" id="resource_ignore_data_url" purpose="Test checks that resources with data: URIs aren't present in the Resource Timing buffer">
+        <description>
+          <test_script_entry>/opt/webapi-resourcetiming-w3c-tests/resourcetiming/w3c/submission/test_resource_ignore_data_url.html?total_num=3&amp;amp;locator_key=id&amp;amp;value=3</test_script_entry>
+        </description>
+      </testcase>
+      <testcase component="WebAPI/Performance and Optimization/Resource Timing" execution_type="auto" id="performance_defined" purpose="Test checks that window.performance is defined">
+        <description>
+          <test_script_entry>/opt/webapi-resourcetiming-w3c-tests/resourcetiming/w3c/submission/test_resource_timing.html?total_num=21&amp;amp;locator_key=id&amp;amp;value=1</test_script_entry>
+        </description>
+      </testcase>
+      <testcase component="WebAPI/Performance and Optimization/Resource Timing" execution_type="auto" id="performance_getEntriesByName_defined" purpose="Test checks that window.performance.getEntriesByName is defined">
+        <description>
+          <test_script_entry>/opt/webapi-resourcetiming-w3c-tests/resourcetiming/w3c/submission/test_resource_timing.html?total_num=21&amp;amp;locator_key=id&amp;amp;value=2</test_script_entry>
+        </description>
+      </testcase>
+      <testcase component="WebAPI/Performance and Optimization/Resource Timing" execution_type="auto" id="performance_getEntriesByType_defined" purpose="Test checks that window.performance.getEntriesByType is defined">
+        <description>
+          <test_script_entry>/opt/webapi-resourcetiming-w3c-tests/resourcetiming/w3c/submission/test_resource_timing.html?total_num=21&amp;amp;locator_key=id&amp;amp;value=3</test_script_entry>
+        </description>
+      </testcase>
+      <testcase component="WebAPI/Performance and Optimization/Resource Timing" execution_type="auto" id="performance_getEntries_defined" purpose="Test checks that window.performance.getEntries is defined">
+        <description>
+          <test_script_entry>/opt/webapi-resourcetiming-w3c-tests/resourcetiming/w3c/submission/test_resource_timing.html?total_num=21&amp;amp;locator_key=id&amp;amp;value=4</test_script_entry>
+        </description>
+      </testcase>
+      <testcase component="WebAPI/Performance and Optimization/Resource Timing" execution_type="auto" id="performance_returns_PerformanceEntry_xml" purpose="Test checks that window.performance.getEntriesByName('http://.../resource_timing_test0.xml') returns a PerformanceEntry object">
+        <description>
+          <test_script_entry>/opt/webapi-resourcetiming-w3c-tests/resourcetiming/w3c/submission/test_resource_timing.html?total_num=21&amp;amp;locator_key=id&amp;amp;value=5</test_script_entry>
+        </description>
+      </testcase>
+      <testcase component="WebAPI/Performance and Optimization/Resource Timing" execution_type="auto" id="performance_returns_PerformanceEntry_png" purpose="Test checks that window.performance.getEntriesByName('resource_timing_test0.png') returns a PerformanceEntry object">
+        <description>
+          <test_script_entry>/opt/webapi-resourcetiming-w3c-tests/resourcetiming/w3c/submission/test_resource_timing.html?total_num=21&amp;amp;locator_key=id&amp;amp;value=6</test_script_entry>
+        </description>
+      </testcase>
+      <testcase component="WebAPI/Performance and Optimization/Resource Timing" execution_type="auto" id="performance_PerformanceEntry_attribute_correct" purpose="Test checks that PerformanceEntry has correct name, initiatorType, startTime, and duration">
+        <description>
+          <test_script_entry>/opt/webapi-resourcetiming-w3c-tests/resourcetiming/w3c/submission/test_resource_timing.html?total_num=21&amp;amp;locator_key=id&amp;amp;value=7</test_script_entry>
+        </description>
+      </testcase>
+      <testcase component="WebAPI/Performance and Optimization/Resource Timing" execution_type="auto" id="performance_PerformanceEntry_attribute_correct_order_png" purpose="Test checks that PerformanceEntry('/resource_timing_test0.png') has correct order of timing attributes">
+        <description>
+          <test_script_entry>/opt/webapi-resourcetiming-w3c-tests/resourcetiming/w3c/submission/test_resource_timing.html?total_num=21&amp;amp;locator_key=id&amp;amp;value=8</test_script_entry>
+        </description>
+      </testcase>
+      <testcase component="WebAPI/Performance and Optimization/Resource Timing" execution_type="auto" id="performance_PerformanceEntry_object_same_png" purpose="Test checks that PerformanceEntry object is the same when calling via getEntriesByName('/resource_timing_test0.png')">
+        <description>
+          <test_script_entry>/opt/webapi-resourcetiming-w3c-tests/resourcetiming/w3c/submission/test_resource_timing.html?total_num=21&amp;amp;locator_key=id&amp;amp;value=9</test_script_entry>
+        </description>
+      </testcase>
+      <testcase component="WebAPI/Performance and Optimization/Resource Timing" execution_type="auto" id="performance_PerformanceEntry_css" purpose="Test checks that window.performance.getEntriesByName('resource_timing_test0.css') returns a PerformanceEntry object">
+        <description>
+          <test_script_entry>/opt/webapi-resourcetiming-w3c-tests/resourcetiming/w3c/submission/test_resource_timing.html?total_num=21&amp;amp;locator_key=id&amp;amp;value=10</test_script_entry>
+        </description>
+      </testcase>
+      <testcase component="WebAPI/Performance and Optimization/Resource Timing" execution_type="auto" id="performance_PerformanceEntry_css_correct_attribute" purpose="Test checks that PerformanceEntry returned by window.performance.getEntriesByName('resource_timing_test0.css') has correct name, initiatorType, startTime, and duration.">
+        <description>
+          <test_script_entry>/opt/webapi-resourcetiming-w3c-tests/resourcetiming/w3c/submission/test_resource_timing.html?total_num=21&amp;amp;locator_key=id&amp;amp;value=11</test_script_entry>
+        </description>
+      </testcase>
+      <testcase component="WebAPI/Performance and Optimization/Resource Timing" execution_type="auto" id="performance_PerformanceEntry_css_correct_attribute_order_css" purpose="Test checks that PerformanceEntry(resource_timing_test0.css) has correct order of timing attributes.">
+        <description>
+          <test_script_entry>/opt/webapi-resourcetiming-w3c-tests/resourcetiming/w3c/submission/test_resource_timing.html?total_num=21&amp;amp;locator_key=id&amp;amp;value=12</test_script_entry>
+        </description>
+      </testcase>
+      <testcase component="WebAPI/Performance and Optimization/Resource Timing" execution_type="auto" id="performance_PerformanceEntry_same_css" purpose="Test checks that PerformanceEntry object is the same when calling via getEntriesByName('/resource_timing_test0.css') and getEntriesByName('/resource_timing_test0.css', 'resource')">
+        <description>
+          <test_script_entry>/opt/webapi-resourcetiming-w3c-tests/resourcetiming/w3c/submission/test_resource_timing.html?total_num=21&amp;amp;locator_key=id&amp;amp;value=13</test_script_entry>
+        </description>
+      </testcase>
+      <testcase component="WebAPI/Performance and Optimization/Resource Timing" execution_type="auto" id="performance_return_PerformanceEntry_html" purpose="Test checks that window.performance.getEntriesByName('/resource_timing_test0.html') returns a PerformanceEntry object">
+        <description>
+          <test_script_entry>/opt/webapi-resourcetiming-w3c-tests/resourcetiming/w3c/submission/test_resource_timing.html?total_num=21&amp;amp;locator_key=id&amp;amp;value=14</test_script_entry>
+        </description>
+      </testcase>
+      <testcase component="WebAPI/Performance and Optimization/Resource Timing" execution_type="auto" id="performance_PerformanceEntry_correct_attribute_html" purpose="Test checks that PerformanceEntry returned by window.performance.getEntriesByName('/resource_timing_test0.html') has correct name, initiatorType, startTime, and duration">
+        <description>
+          <test_script_entry>/opt/webapi-resourcetiming-w3c-tests/resourcetiming/w3c/submission/test_resource_timing.html?total_num=21&amp;amp;locator_key=id&amp;amp;value=15</test_script_entry>
+        </description>
+      </testcase>
+      <testcase component="WebAPI/Performance and Optimization/Resource Timing" execution_type="auto" id="performance_PerformanceEntry_correct_attribute_order_html" purpose="Test checks that PerformanceEntry('http://127.0.0.1http://.../resource_timing_test0.html') has correct order of timing attributes.">
+        <description>
+          <test_script_entry>/opt/webapi-resourcetiming-w3c-tests/resourcetiming/w3c/submission/test_resource_timing.html?total_num=21&amp;amp;locator_key=id&amp;amp;value=16</test_script_entry>
+        </description>
+      </testcase>
+      <testcase component="WebAPI/Performance and Optimization/Resource Timing" execution_type="auto" id="performance_PerformanceEntry_same_html" purpose="Test checks that PerformanceEntry object is the same when calling via getEntriesByName('/resource_timing_test0.html')">
+        <description>
+          <test_script_entry>/opt/webapi-resourcetiming-w3c-tests/resourcetiming/w3c/submission/test_resource_timing.html?total_num=21&amp;amp;locator_key=id&amp;amp;value=17</test_script_entry>
+        </description>
+      </testcase>
+      <testcase component="WebAPI/Performance and Optimization/Resource Timing" execution_type="auto" id="performance_returns_PerformanceEntry_js" purpose="Test checks that window.performance.getEntriesByName('/resource_timing_test0.js') returns a PerformanceEntry object">
+        <description>
+          <test_script_entry>/opt/webapi-resourcetiming-w3c-tests/resourcetiming/w3c/submission/test_resource_timing.html?total_num=21&amp;amp;locator_key=id&amp;amp;value=18</test_script_entry>
+        </description>
+      </testcase>
+      <testcase component="WebAPI/Performance and Optimization/Resource Timing" execution_type="auto" id="performance_PerformanceEntry_correct_attribute_js" purpose="Test checks that PerformanceEntry returned by window.performance.getEntriesByName('/resource_timing_test0.js') has correct name, initiatorType, startTime, and duration">
+        <description>
+          <test_script_entry>/opt/webapi-resourcetiming-w3c-tests/resourcetiming/w3c/submission/test_resource_timing.html?total_num=21&amp;amp;locator_key=id&amp;amp;value=19</test_script_entry>
+        </description>
+      </testcase>
+      <testcase component="WebAPI/Performance and Optimization/Resource Timing" execution_type="auto" id="performance_PerformanceEntry_correct_attribute_order_js" purpose="Test checks that PerformanceEntry('/resource_timing_test0.js') has correct order of timing attributes.">
+        <description>
+          <test_script_entry>/opt/webapi-resourcetiming-w3c-tests/resourcetiming/w3c/submission/test_resource_timing.html?total_num=21&amp;amp;locator_key=id&amp;amp;value=20</test_script_entry>
+        </description>
+      </testcase>
+      <testcase component="WebAPI/Performance and Optimization/Resource Timing" execution_type="auto" id="performance_PerformanceEntry_same_js" purpose="Test checks that PerformanceEntry object is the same when calling via getEntriesByName('/resource_timing_test0.js')">
+        <description>
+          <test_script_entry>/opt/webapi-resourcetiming-w3c-tests/resourcetiming/w3c/submission/test_resource_timing.html?total_num=21&amp;amp;locator_key=id&amp;amp;value=21</test_script_entry>
+        </description>
+      </testcase>
+      <testcase component="WebAPI/Performance and Optimization/Resource Timing" execution_type="auto" id="performanceEntry_match_one" purpose="Test checks that Only 1 PerformanceEntry should match">
+        <description>
+          <test_script_entry test_script_expected_result="0">/opt/webapi-resourcetiming-w3c-tests/resourcetiming/w3c/submission/test_resource_attribute_order.html?total_num=13&amp;amp;locator_key=id&amp;amp;value=3</test_script_entry>
+        </description>
+      </testcase>
+      <testcase component="WebAPI/Performance and Optimization/Resource Timing" execution_type="auto" id="redirectStart_value_zero" purpose="Test checks that redirectStart should be 0">
+        <description>
+          <test_script_entry test_script_expected_result="0">/opt/webapi-resourcetiming-w3c-tests/resourcetiming/w3c/submission/test_resource_attribute_order.html?total_num=13&amp;amp;locator_key=id&amp;amp;value=4</test_script_entry>
+        </description>
+      </testcase>
+      <testcase component="WebAPI/Performance and Optimization/Resource Timing" execution_type="auto" id="redirectEnd_value_zero" purpose="Test checks that redirectEnd should be 0">
+        <description>
+          <test_script_entry test_script_expected_result="0">/opt/webapi-resourcetiming-w3c-tests/resourcetiming/w3c/submission/test_resource_attribute_order.html?total_num=13&amp;amp;locator_key=id&amp;amp;value=5</test_script_entry>
+        </description>
+      </testcase>
+      <testcase component="WebAPI/Performance and Optimization/Resource Timing" execution_type="auto" id="fetchStart_value_non-zero" purpose="Test checks that fetchStart should be non-zero">
+        <description>
+          <test_script_entry test_script_expected_result="0">/opt/webapi-resourcetiming-w3c-tests/resourcetiming/w3c/submission/test_resource_attribute_order.html?total_num=13&amp;amp;locator_key=id&amp;amp;value=6</test_script_entry>
+        </description>
+      </testcase>
+      <testcase component="WebAPI/Performance and Optimization/Resource Timing" execution_type="auto" id="domainLookupStart_greater_or_equal_fetchStart" purpose="Test checks that domainLookupStart should be greater than or equal to fetchStart">
+        <description>
+          <test_script_entry test_script_expected_result="0">/opt/webapi-resourcetiming-w3c-tests/resourcetiming/w3c/submission/test_resource_attribute_order.html?total_num=13&amp;amp;locator_key=id&amp;amp;value=7</test_script_entry>
+        </description>
+      </testcase>
+      <testcase component="WebAPI/Performance and Optimization/Resource Timing" execution_type="auto" id="domainLookupEnd_greater_or_equal_domainLookupStart" purpose="Test checks that domainLookupEnd should be greater than or equal to domainLookupStart">
+        <description>
+          <test_script_entry test_script_expected_result="0">/opt/webapi-resourcetiming-w3c-tests/resourcetiming/w3c/submission/test_resource_attribute_order.html?total_num=13&amp;amp;locator_key=id&amp;amp;value=8</test_script_entry>
+        </description>
+      </testcase>
+      <testcase component="WebAPI/Performance and Optimization/Resource Timing" execution_type="auto" id="connectStart_greater_or_equal_domainLookupEnd" purpose="Test checks that connectStart should be greater than or equal to domainLookupEnd">
+        <description>
+          <test_script_entry test_script_expected_result="0">/opt/webapi-resourcetiming-w3c-tests/resourcetiming/w3c/submission/test_resource_attribute_order.html?total_num=13&amp;amp;locator_key=id&amp;amp;value=9</test_script_entry>
+        </description>
+      </testcase>
+      <testcase component="WebAPI/Performance and Optimization/Resource Timing" execution_type="auto" id="connectEnd_greater_or_equal_connectStart" purpose="Test checks that connectEnd should be greater than or equal to connectStart">
+        <description>
+          <test_script_entry test_script_expected_result="0">/opt/webapi-resourcetiming-w3c-tests/resourcetiming/w3c/submission/test_resource_attribute_order.html?total_num=13&amp;amp;locator_key=id&amp;amp;value=10</test_script_entry>
+        </description>
+      </testcase>
+      <testcase component="WebAPI/Performance and Optimization/Resource Timing" execution_type="auto" id="requestStart_greater_or_equal_connectEnd" purpose="Test checks that requestStart should be greater than or equal to connectEnd">
+        <description>
+          <test_script_entry test_script_expected_result="0">/opt/webapi-resourcetiming-w3c-tests/resourcetiming/w3c/submission/test_resource_attribute_order.html?total_num=13&amp;amp;locator_key=id&amp;amp;value=11</test_script_entry>
+        </description>
+      </testcase>
+      <testcase component="WebAPI/Performance and Optimization/Resource Timing" execution_type="auto" id="responseStart_greater_or_equal_requestStart" purpose="Test checks that responseStart should be greater than or equal to requestStart">
+        <description>
+          <test_script_entry test_script_expected_result="0">/opt/webapi-resourcetiming-w3c-tests/resourcetiming/w3c/submission/test_resource_attribute_order.html?total_num=13&amp;amp;locator_key=id&amp;amp;value=12</test_script_entry>
+        </description>
+      </testcase>
+      <testcase component="WebAPI/Performance and Optimization/Resource Timing" execution_type="auto" id="responseEnd_greater_or_equal_responseStart" purpose="Test checks that responseEnd should be greater than or equal to responseStart">
+        <description>
+          <test_script_entry test_script_expected_result="0">/opt/webapi-resourcetiming-w3c-tests/resourcetiming/w3c/submission/test_resource_attribute_order.html?total_num=13&amp;amp;locator_key=id&amp;amp;value=13</test_script_entry>
+        </description>
+      </testcase>
+      <testcase component="WebAPI/Performance and Optimization/Resource Timing" execution_type="auto" id="resource_cached_not_Modified" purpose="Test checks that a 304 Not Modified resource appears in the buffer">
+        <description>
+          <test_script_entry test_script_expected_result="0">/opt/webapi-resourcetiming-w3c-tests/resourcetiming/w3c/submission/test_resource_cached.html?total_num=3&amp;amp;locator_key=id&amp;amp;value=3</test_script_entry>
+        </description>
+      </testcase>
+      <testcase component="WebAPI/Performance and Optimization/Resource Timing" execution_type="auto" id="resource_connection_reuse" purpose="Test checks that connectStart and connectEnd are the same when a connection is reused">
+        <description>
+          <test_script_entry test_script_expected_result="0">/opt/webapi-resourcetiming-w3c-tests/resourcetiming/w3c/submission/test_resource_connection_reuse.html?total_num=4&amp;amp;locator_key=id&amp;amp;value=4</test_script_entry>
+        </description>
+      </testcase>
+      <testcase component="WebAPI/Performance and Optimization/Resource Timing" execution_type="auto" id="resource_dynamic_insertion_type_link" purpose="Test checks that the link initiator type is represented even when dynamically inserted">
+        <description>
+          <test_script_entry test_script_expected_result="0">/opt/webapi-resourcetiming-w3c-tests/resourcetiming/w3c/submission/test_resource_dynamic_insertion.html?total_num=5&amp;amp;locator_key=id&amp;amp;value=3</test_script_entry>
+        </description>
+      </testcase>
+      <testcase component="WebAPI/Performance and Optimization/Resource Timing" execution_type="auto" id="resource_dynamic_insertion_type_img" purpose="Test checks that the img initiator type is represented even when dynamically inserted">
+        <description>
+          <test_script_entry test_script_expected_result="0">/opt/webapi-resourcetiming-w3c-tests/resourcetiming/w3c/submission/test_resource_dynamic_insertion.html?total_num=5&amp;amp;locator_key=id&amp;amp;value=4</test_script_entry>
+        </description>
+      </testcase>
+      <testcase component="WebAPI/Performance and Optimization/Resource Timing" execution_type="auto" id="resource_dynamic_insertion_type_iframe" purpose="Test checks that the iframe initiator type is represented even when dynamically inserted">
+        <description>
+          <test_script_entry test_script_expected_result="0">/opt/webapi-resourcetiming-w3c-tests/resourcetiming/w3c/submission/test_resource_dynamic_insertion.html?total_num=5&amp;amp;locator_key=id&amp;amp;value=5</test_script_entry>
+        </description>
+      </testcase>
+      <testcase component="WebAPI/Performance and Optimization/Resource Timing" execution_type="auto" id="resource_iframe_self_navigation" purpose="Test checks that iframes that navigate themselves don't appear in the buffer">
+        <description>
+          <test_script_entry test_script_expected_result="0">/opt/webapi-resourcetiming-w3c-tests/resourcetiming/w3c/submission/test_resource_iframe_self_navigation.html?total_num=3&amp;amp;locator_key=id&amp;amp;value=3</test_script_entry>
+        </description>
+      </testcase>
+      <testcase component="WebAPI/Performance and Optimization/Resource Timing" execution_type="auto" id="resource_ignore_failures" purpose="Test checks that failed resources aren't present in the Resource Timing buffer">
+        <description>
+          <test_script_entry test_script_expected_result="0">/opt/webapi-resourcetiming-w3c-tests/resourcetiming/w3c/submission/test_resource_ignore_failures.html?total_num=3&amp;amp;locator_key=id&amp;amp;value=3</test_script_entry>
+        </description>
+      </testcase>
+      <testcase component="WebAPI/Performance and Optimization/Resource Timing" execution_type="auto" id="resource_initiator_types_001" purpose="Test checks that this initiator type('resources/Ahem.ttf') is represented">
+        <description>
+          <test_script_entry test_script_expected_result="0">/opt/webapi-resourcetiming-w3c-tests/resourcetiming/w3c/submission/test_resource_initiator_types.html?total_num=18&amp;amp;locator_key=id&amp;amp;value=3</test_script_entry>
+        </description>
+      </testcase>
+      <testcase component="WebAPI/Performance and Optimization/Resource Timing" execution_type="auto" id="resource_initiator_types_002" purpose="Test checks that this initiator type('resources/1x1-blue.png') is represented">
+        <description>
+          <test_script_entry test_script_expected_result="0">/opt/webapi-resourcetiming-w3c-tests/resourcetiming/w3c/submission/test_resource_initiator_types.html?total_num=18&amp;amp;locator_key=id&amp;amp;value=4</test_script_entry>
+        </description>
+      </testcase>
+      <testcase component="WebAPI/Performance and Optimization/Resource Timing" execution_type="auto" id="resource_initiator_types_003" purpose="Test checks that this initiator type('resources/blank_page_green.htm') is represented">
+        <description>
+          <test_script_entry test_script_expected_result="0">/opt/webapi-resourcetiming-w3c-tests/resourcetiming/w3c/submission/test_resource_initiator_types.html?total_num=18&amp;amp;locator_key=id&amp;amp;value=5</test_script_entry>
+        </description>
+      </testcase>
+      <testcase component="WebAPI/Performance and Optimization/Resource Timing" execution_type="auto" id="resource_initiator_types_004" purpose="Test checks that this initiator type('resources/empty_script.js') is represented">
+        <description>
+          <test_script_entry test_script_expected_result="0">/opt/webapi-resourcetiming-w3c-tests/resourcetiming/w3c/submission/test_resource_initiator_types.html?total_num=18&amp;amp;locator_key=id&amp;amp;value=6</test_script_entry>
+        </description>
+      </testcase>
+      <testcase component="WebAPI/Performance and Optimization/Resource Timing" execution_type="auto" id="resource_initiator_types_005" purpose="Test checks that this initiator type('resources/generate_resource.cgi?types=css id=embed') is represented">
+        <description>
+          <test_script_entry test_script_expected_result="0">/opt/webapi-resourcetiming-w3c-tests/resourcetiming/w3c/submission/test_resource_initiator_types.html?total_num=18&amp;amp;locator_key=id&amp;amp;value=7</test_script_entry>
+        </description>
+      </testcase>
+      <testcase component="WebAPI/Performance and Optimization/Resource Timing" execution_type="auto" id="resource_initiator_types_006" purpose="Test checks that this initiator type('resources/generate_resource.cgi?types=css id=n1') is represented">
+        <description>
+          <test_script_entry test_script_expected_result="0">/opt/webapi-resourcetiming-w3c-tests/resourcetiming/w3c/submission/test_resource_initiator_types.html?total_num=18&amp;amp;locator_key=id&amp;amp;value=8</test_script_entry>
+        </description>
+      </testcase>
+      <testcase component="WebAPI/Performance and Optimization/Resource Timing" execution_type="auto" id="resource_initiator_types_007" purpose="Test checks that this initiator type('resources/generate_resource.cgi?types=font id=n1') is represented">
+        <description>
+          <test_script_entry test_script_expected_result="0">/opt/webapi-resourcetiming-w3c-tests/resourcetiming/w3c/submission/test_resource_initiator_types.html?total_num=18&amp;amp;locator_key=id&amp;amp;value=9</test_script_entry>
+        </description>
+      </testcase>
+      <testcase component="WebAPI/Performance and Optimization/Resource Timing" execution_type="auto" id="resource_initiator_types_008" purpose="Test checks that this initiator type('resources/generate_resource.cgi?types=image id=1') is represented">
+        <description>
+          <test_script_entry test_script_expected_result="0">/opt/webapi-resourcetiming-w3c-tests/resourcetiming/w3c/submission/test_resource_initiator_types.html?total_num=18&amp;amp;locator_key=id&amp;amp;value=10</test_script_entry>
+        </description>
+      </testcase>
+      <testcase component="WebAPI/Performance and Optimization/Resource Timing" execution_type="auto" id="resource_initiator_types_009" purpose="Test checks that this initiator type('resources/generate_resource.cgi?types=image id=2') is represented">
+        <description>
+          <test_script_entry test_script_expected_result="0">/opt/webapi-resourcetiming-w3c-tests/resourcetiming/w3c/submission/test_resource_initiator_types.html?total_num=18&amp;amp;locator_key=id&amp;amp;value=11</test_script_entry>
+        </description>
+      </testcase>
+      <testcase component="WebAPI/Performance and Optimization/Resource Timing" execution_type="auto" id="resource_initiator_types_010" purpose="Test checks that this initiator type('resources/generate_resource.cgi?types=image id=async_xhr') is represented">
+        <description>
+          <test_script_entry test_script_expected_result="0">/opt/webapi-resourcetiming-w3c-tests/resourcetiming/w3c/submission/test_resource_initiator_types.html?total_num=18&amp;amp;locator_key=id&amp;amp;value=12</test_script_entry>
+        </description>
+      </testcase>
+      <testcase component="WebAPI/Performance and Optimization/Resource Timing" execution_type="auto" id="resource_initiator_types_011" purpose="Test checks that this initiator type('resources/generate_resource.cgi?types=image id=body') is represented">
+        <description>
+          <test_script_entry test_script_expected_result="0">/opt/webapi-resourcetiming-w3c-tests/resourcetiming/w3c/submission/test_resource_initiator_types.html?total_num=18&amp;amp;locator_key=id&amp;amp;value=13</test_script_entry>
+        </description>
+      </testcase>
+      <testcase component="WebAPI/Performance and Optimization/Resource Timing" execution_type="auto" id="resource_initiator_types_012" purpose="Test checks that this initiator type('resources/generate_resource.cgi?types=image id=input') is represented">
+        <description>
+          <test_script_entry test_script_expected_result="0">/opt/webapi-resourcetiming-w3c-tests/resourcetiming/w3c/submission/test_resource_initiator_types.html?total_num=18&amp;amp;locator_key=id&amp;amp;value=14</test_script_entry>
+        </description>
+      </testcase>
+      <testcase component="WebAPI/Performance and Optimization/Resource Timing" execution_type="auto" id="resource_initiator_types_013" purpose="Test checks that this initiator type('resources/generate_resource.cgi?types=image id=n1') is represented">
+        <description>
+          <test_script_entry test_script_expected_result="0">/opt/webapi-resourcetiming-w3c-tests/resourcetiming/w3c/submission/test_resource_initiator_types.html?total_num=18&amp;amp;locator_key=id&amp;amp;value=15</test_script_entry>
+        </description>
+      </testcase>
+      <testcase component="WebAPI/Performance and Optimization/Resource Timing" execution_type="auto" id="resource_initiator_types_014" purpose="Test checks that this initiator type('resources/generate_resource.cgi?types=image id=object') is represented">
+        <description>
+          <test_script_entry test_script_expected_result="0">/opt/webapi-resourcetiming-w3c-tests/resourcetiming/w3c/submission/test_resource_initiator_types.html?total_num=18&amp;amp;locator_key=id&amp;amp;value=16</test_script_entry>
+        </description>
+      </testcase>
+      <testcase component="WebAPI/Performance and Optimization/Resource Timing" execution_type="auto" id="resource_initiator_types_015" purpose="Test checks that this initiator type('resources/generate_resource.cgi?types=image id=poster') is represented">
+        <description>
+          <test_script_entry test_script_expected_result="0">/opt/webapi-resourcetiming-w3c-tests/resourcetiming/w3c/submission/test_resource_initiator_types.html?total_num=18&amp;amp;locator_key=id&amp;amp;value=17</test_script_entry>
+        </description>
+      </testcase>
+      <testcase component="WebAPI/Performance and Optimization/Resource Timing" execution_type="auto" id="resource_initiator_types_016" purpose="Test checks that this initiator type('resources/nested.css') is represented">
+        <description>
+          <test_script_entry test_script_expected_result="0">/opt/webapi-resourcetiming-w3c-tests/resourcetiming/w3c/submission/test_resource_initiator_types.html?total_num=18&amp;amp;locator_key=id&amp;amp;value=18</test_script_entry>
+        </description>
+      </testcase>
+      <testcase component="WebAPI/Performance and Optimization/Resource Timing" execution_type="auto" id="resource_redirects_initiatorType_link" purpose="Test checks that resource is expected to have initiatorType link">
+        <description>
+          <test_script_entry test_script_expected_result="0">/opt/webapi-resourcetiming-w3c-tests/resourcetiming/w3c/submission/test_resource_redirects.html?total_num=7&amp;amp;locator_key=id&amp;amp;value=3</test_script_entry>
+        </description>
+      </testcase>
+      <testcase component="WebAPI/Performance and Optimization/Resource Timing" execution_type="auto" id="resource_redirects_initiatorType_script" purpose="Test checks that resource is expected to have initiatorType script">
+        <description>
+          <test_script_entry test_script_expected_result="0">/opt/webapi-resourcetiming-w3c-tests/resourcetiming/w3c/submission/test_resource_redirects.html?total_num=7&amp;amp;locator_key=id&amp;amp;value=4</test_script_entry>
+        </description>
+      </testcase>
+      <testcase component="WebAPI/Performance and Optimization/Resource Timing" execution_type="auto" id="resource_redirects_img" purpose="Test checks that resource redirect img is expected to be in the Resource Timing buffer">
+        <description>
+          <test_script_entry test_script_expected_result="0">/opt/webapi-resourcetiming-w3c-tests/resourcetiming/w3c/submission/test_resource_redirects.html?total_num=7&amp;amp;locator_key=id&amp;amp;value=5</test_script_entry>
+        </description>
+      </testcase>
+      <testcase component="WebAPI/Performance and Optimization/Resource Timing" execution_type="auto" id="resource_redirects_script" purpose="Test checks that resource redirect script is expected to be in the Resource Timing buffer">
+        <description>
+          <test_script_entry test_script_expected_result="0">/opt/webapi-resourcetiming-w3c-tests/resourcetiming/w3c/submission/test_resource_redirects.html?total_num=7&amp;amp;locator_key=id&amp;amp;value=6</test_script_entry>
+        </description>
+      </testcase>
+      <testcase component="WebAPI/Performance and Optimization/Resource Timing" execution_type="auto" id="resource_reparenting" purpose="Test checks that reparenting an element doesn't change the initiator document">
+        <description>
+          <test_script_entry test_script_expected_result="0">/opt/webapi-resourcetiming-w3c-tests/resourcetiming/w3c/submission/test_resource_reparenting.html?total_num=3&amp;amp;locator_key=id&amp;amp;value=3</test_script_entry>
+        </description>
+      </testcase>
+      <testcase component="WebAPI/Performance and Optimization/Resource Timing" execution_type="auto" id="resource_script_types_001" purpose="Test checks that this type of script('resources/generate_resource.cgi?types=script id=1') loads is reported with the correct initiator">
+        <description>
+          <test_script_entry test_script_expected_result="0">/opt/webapi-resourcetiming-w3c-tests/resourcetiming/w3c/submission/test_resource_script_types.html?total_num=11&amp;amp;locator_key=id&amp;amp;value=3</test_script_entry>
+        </description>
+      </testcase>
+      <testcase component="WebAPI/Performance and Optimization/Resource Timing" execution_type="auto" id="resource_script_types_002" purpose="Test checks that this type of script('resources/generate_resource.cgi?types=script id=2') loads is reported with the correct initiator">
+        <description>
+          <test_script_entry test_script_expected_result="0">/opt/webapi-resourcetiming-w3c-tests/resourcetiming/w3c/submission/test_resource_script_types.html?total_num=11&amp;amp;locator_key=id&amp;amp;value=4</test_script_entry>
+        </description>
+      </testcase>
+      <testcase component="WebAPI/Performance and Optimization/Resource Timing" execution_type="auto" id="resource_script_types_003" purpose="Test checks that this type of script('resources/generate_resource.cgi?types=script id=3') loads is reported with the correct initiator">
+        <description>
+          <test_script_entry test_script_expected_result="0">/opt/webapi-resourcetiming-w3c-tests/resourcetiming/w3c/submission/test_resource_script_types.html?total_num=11&amp;amp;locator_key=id&amp;amp;value=5</test_script_entry>
+        </description>
+      </testcase>
+      <testcase component="WebAPI/Performance and Optimization/Resource Timing" execution_type="auto" id="resource_script_types_004" purpose="Test checks that this type of script('resources/generate_resource.cgi?types=script id=4') loads is reported with the correct initiator">
+        <description>
+          <test_script_entry test_script_expected_result="0">/opt/webapi-resourcetiming-w3c-tests/resourcetiming/w3c/submission/test_resource_script_types.html?total_num=11&amp;amp;locator_key=id&amp;amp;value=6</test_script_entry>
+        </description>
+      </testcase>
+      <testcase component="WebAPI/Performance and Optimization/Resource Timing" execution_type="auto" id="resource_script_types_005" purpose="Test checks that this type of script('resources/generate_resource.cgi?types=script id=5') loads is reported with the correct initiator">
+        <description>
+          <test_script_entry test_script_expected_result="0">/opt/webapi-resourcetiming-w3c-tests/resourcetiming/w3c/submission/test_resource_script_types.html?total_num=11&amp;amp;locator_key=id&amp;amp;value=7</test_script_entry>
+        </description>
+      </testcase>
+      <testcase component="WebAPI/Performance and Optimization/Resource Timing" execution_type="auto" id="resource_script_types_006" purpose="Test checks that this type of script('resources/generate_resource.cgi?types=script id=6') loads is reported with the correct initiator">
+        <description>
+          <test_script_entry test_script_expected_result="0">/opt/webapi-resourcetiming-w3c-tests/resourcetiming/w3c/submission/test_resource_script_types.html?total_num=11&amp;amp;locator_key=id&amp;amp;value=8</test_script_entry>
+        </description>
+      </testcase>
+      <testcase component="WebAPI/Performance and Optimization/Resource Timing" execution_type="auto" id="resource_script_types_007" purpose="Test checks that this type of script('resources/generate_resource.cgi?types=script id=7') loads is reported with the correct initiator">
+        <description>
+          <test_script_entry test_script_expected_result="0">/opt/webapi-resourcetiming-w3c-tests/resourcetiming/w3c/submission/test_resource_script_types.html?total_num=11&amp;amp;locator_key=id&amp;amp;value=9</test_script_entry>
+        </description>
+      </testcase>
+      <testcase component="WebAPI/Performance and Optimization/Resource Timing" execution_type="auto" id="resource_script_types_008" purpose="Test checks that this type of script('resources/generate_resource.cgi?types=script id=8') loads is reported with the correct initiator">
+        <description>
+          <test_script_entry test_script_expected_result="0">/opt/webapi-resourcetiming-w3c-tests/resourcetiming/w3c/submission/test_resource_script_types.html?total_num=11&amp;amp;locator_key=id&amp;amp;value=10</test_script_entry>
+        </description>
+      </testcase>
+      <testcase component="WebAPI/Performance and Optimization/Resource Timing" execution_type="auto" id="resource_script_types_009" purpose="Test checks that this type of script('resources/generate_resource.cgi?types=script id=9') loads is reported with the correct initiator">
+        <description>
+          <test_script_entry test_script_expected_result="0">/opt/webapi-resourcetiming-w3c-tests/resourcetiming/w3c/submission/test_resource_script_types.html?total_num=11&amp;amp;locator_key=id&amp;amp;value=11</test_script_entry>
+        </description>
+      </testcase>
+    </set>
+  </suite>
+</test_definition>

@@ -1,0 +1,169 @@
+<!--
+Test convert from Blink:
+https://github.com/crosswalk-project/blink-crosswalk/blob/master/LayoutTests/fast/speech/scripted/speechgrammar-basics.html
+-->
+
+<!DOCTYPE html>
+<meta charset="utf-8">
+<title>Web Speech API Test: the basics of SpeechGrammar and SpeechGrammarList</title>
+<link rel="author" title="Intel" href="http://www.intel.com">
+<link rel="help" href="http://dvcs.w3.org/hg/speech-api/raw-file/tip/speechapi.html">
+<script src="../../resources/testharness.js"></script>
+<script src="../../resources/testharnessreport.js"></script>
+<div id="log"></div>
+<script>
+
+setup(function () {
+  window.base = document.baseURI.substring(0, document.baseURI.lastIndexOf('/') + 1);
+  window.g = new webkitSpeechGrammar();
+  window.gs = new webkitSpeechGrammarList();
+});
+
+test(function () {
+  assert_true('webkitSpeechGrammar' in window);
+}, "Test SpeechGrammar existence");
+
+test(function () {
+  assert_not_equals(webkitSpeechGrammar, null);
+}, "Test SpeechGrammar is not null");
+
+test(function () {
+  assert_true('webkitSpeechGrammarList' in window);
+}, "Test SpeechGrammarList existence");
+
+test(function () {
+  assert_not_equals(webkitSpeechGrammarList, null);
+}, "Test SpeechGrammarList is not null");
+
+test(function () {
+  assert_not_equals(g, null);
+}, "Test new webkitSpeechGrammar is not null");
+
+test(function () {
+  assert_equals(g.weight, 1.0);
+}, "Test default weight of SpeechGrammar");
+
+test(function () {
+  assert_equals(g.src, "");
+}, "Test default src of SpeechGrammar");
+
+test(function () {
+  g.weight = 2;
+  assert_equals(g.weight, 2.0);
+}, "Test setting the weight attribute of SpeechGrammar");
+
+test(function () {
+  g.src = "grammar.xml";
+  assert_equals(g.src, base + "grammar.xml");
+}, "Test setting the src attribute of SpeechGrammar 1");
+
+test(function () {
+  g.src = "http://example.tld/grammar.xml";
+  assert_equals(g.src, "http://example.tld/grammar.xml");
+}, "Test setting the src attribute of SpeechGrammar 2");
+
+test(function () {
+  g.src = "foo bar";
+  assert_equals(g.src, base + "foo%20bar");
+}, "Test setting the src attribute of SpeechGrammar 3");
+
+test(function () {
+  assert_not_equals(gs, null);
+}, "Test new SpeechGrammarList is not null");
+
+test(function () {
+  assert_equals(gs.length, 0);
+}, "Test default length of SpeechGrammarList");
+
+test(function () {
+  assert_equals(gs.item(0), null);
+}, "Test item(0) of SpeechGrammarList is null");
+
+test(function () {
+  assert_equals(gs[0], undefined);
+}, "Test SpeechGrammarList[0] is undefined");
+
+test(function () {
+  assert_equals(gs.item(-1), null);
+}, "Test item(-1) of SpeechGrammarList is null");
+
+test(function () {
+  assert_equals(gs[-1], undefined);
+}, "Test SpeechGrammarList[-1] is undefined");
+
+test(function () {
+  gs.addFromUri('grammar', 2);
+  assert_equals(gs.length, 1);
+}, "Test the actual length attributes of SpeechGrammarList 1");
+
+test(function () {
+  assert_equals(gs.item(1), null);
+}, "Test the actual item(1) of SpeechGrammarList is null");
+
+test(function () {
+  assert_equals(gs[1], undefined);
+}, "Test the actual SpeechGrammarList[1] is undefined");
+
+test(function () {
+  assert_equals(gs.item(-1), null);
+}, "Test the actual item(-1) of SpeechGrammarList is null");
+
+test(function () {
+  assert_equals(gs[-1], undefined);
+}, "Test the actual SpeechGrammarList[-1] is undefined");
+
+test(function () {
+  assert_equals(gs[0], gs.item(0));
+}, "Test the item(0) of SpeechGrammarList equals SpeechGrammarList[0] 1");
+
+test(function () {
+  assert_equals(gs.item(0).src, base + "grammar");
+}, "Test the src attribute of the actual item(0) of SpeechGrammarList 1");
+
+test(function () {
+  assert_equals(gs.item(0).weight, 2);
+}, "Test the weight attribute of the actual item(0) of SpeechGrammarList 1");
+
+test(function () {
+  gs.addFromUri('http://foo.tld/grammar.xml', 3);
+  assert_equals(gs.length, 2);
+}, "Test the actual length attributes of SpeechGrammarList 2");
+
+test(function () {
+  assert_equals(gs[1], gs.item(1));
+}, "Test the item(1) of SpeechGrammarList equals SpeechGrammarList[1] 2");
+
+test(function () {
+  assert_equals(gs.item(1).src, "http://foo.tld/grammar.xml");
+}, "Test the src attribute of the actual item(1) of SpeechGrammarList 2");
+
+test(function () {
+  assert_equals(gs.item(1).weight, 3);
+}, "Test the weight attribute of the actual item(1) of SpeechGrammarList 2");
+
+test(function () {
+  gs.addFromString("<grammar>foo</grammar>", 4);
+  assert_equals(gs.length, 3);
+}, "Test the actual length attributes of SpeechGrammarList 3");
+
+test(function () {
+  assert_equals(gs[2], gs.item(2));
+}, "Test the item(2) of SpeechGrammarList equals SpeechGrammarList[2] 3");
+
+test(function () {
+  assert_equals(gs.item(2).src, "data:application/xml,%3Cgrammar%3Efoo%3C/grammar%3E");
+}, "Test the src attribute of the actual item(2) of SpeechGrammarList 3");
+
+test(function () {
+  assert_equals(gs.item(2).weight, 4);
+}, "Test the weight attribute of the actual item(2) of SpeechGrammarList 3");
+
+test(function () {
+  assert_equals(gs[2].src, "data:application/xml,%3Cgrammar%3Efoo%3C/grammar%3E");
+}, "Test the src attribute of the SpeechGrammarList[2]");
+
+test(function () {
+  assert_equals(gs[2].weight, 4);
+}, "Test the weight attribute of SpeechGrammarList[2]");
+
+</script>

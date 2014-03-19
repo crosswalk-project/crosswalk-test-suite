@@ -1,0 +1,82 @@
+<!--
+Copyright (c) 2013 Intel Corporation.
+
+Redistribution and use in source and binary forms, with or without modification,
+are permitted provided that the following conditions are met:
+
+* Redistributions of works must retain the original copyright notice, this list
+  of conditions and the following disclaimer.
+* Redistributions in binary form must reproduce the original copyright notice,
+  this list of conditions and the following disclaimer in the documentation
+  and/or other materials provided with the distribution.
+* Neither the name of Intel Corporation nor the names of its contributors
+  may be used to endorse or promote products derived from this work without
+  specific prior written permission.
+
+THIS SOFTWARE IS PROVIDED BY INTEL CORPORATION "AS IS"
+AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE
+IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE
+ARE DISCLAIMED. IN NO EVENT SHALL INTEL CORPORATION BE LIABLE FOR ANY DIRECT,
+INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING,
+BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE,
+DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY
+OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING
+NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE,
+EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
+
+Authors:
+        Cui, ZhongyouX <zhongyoux.cui@intel.com>
+
+Revision history:
+Date                        Author                                 Description
+03-13-2012         Cui, ZhongyouX <zhongyoux.cui@intel.com>       case creation
+
+-->
+
+<!DOCTYPE html>
+
+<html>
+
+<head>
+
+<title> shared worker shared Tests </title>
+
+<script src="../resources/testharness.js"></script>
+
+<script src="../resources/testharnessreport.js"></script>
+
+</head>
+
+<body>
+
+<div id=log></div>
+
+<script>
+    setup({timeout:500});
+
+    var FileName = './support/shared-worker-shared.js';
+
+    // Loading a worker named "name" tests that workers shutdown when the parent document exits, because other tests also create workers with that same name but with different URLs.
+    var worker = new SharedWorker(FileName, 'name');
+    var result = 'FAIL';
+
+    try {
+        new SharedWorker('some-other-url.js', 'name');
+        console.log("FAIL: Creating SharedWorker with different URLs but the same name should fail");
+        result = 'FAIL: Creating SharedWorker with different URLs but the same name should fail';
+    } catch (ex) {
+        console.log("PASS: Exception thrown when creating SharedWorker with different URLs but same name: " + ex);
+        result = 'PASS';
+    }
+
+    test(function()
+    {
+        assert_equals(result, 'PASS');
+
+    }, "Test Description: shared worker shared: name exception.Exception thrown when creating SharedWorker with different URLs but same name.");
+
+</script>
+
+</body>
+
+</html>

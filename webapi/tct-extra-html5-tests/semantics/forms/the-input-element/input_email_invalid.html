@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<!--
+Copyright (c) 2013 Intel Corporation.
+
+Redistribution and use in source and binary forms, with or without modification,
+are permitted provided that the following conditions are met:
+
+* Redistributions of works must retain the original copyright notice, this list
+  of conditions and the following disclaimer.
+* Redistributions in binary form must reproduce the original copyright notice,
+  this list of conditions and the following disclaimer in the documentation
+  and/or other materials provided with the distribution.
+* Neither the name of Intel Corporation nor the names of its contributors
+  may be used to endorse or promote products derived from this work without
+  specific prior written permission.
+
+THIS SOFTWARE IS PROVIDED BY INTEL CORPORATION "AS IS"
+AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE
+IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE
+ARE DISCLAIMED. IN NO EVENT SHALL INTEL CORPORATION BE LIABLE FOR ANY DIRECT,
+INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING,
+BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE,
+DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY
+OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING
+NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE,
+EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
+
+Authors:
+        Xu, YuhanX <yuhanx.xu@intel.com>
+
+-->
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>HTML Test: input_email_invalid</title>
+    <link rel="author" title="Intel" href="http://www.intel.com/">
+    <link rel="help" href="http://www.w3.org/TR/2012/CR-html5-20121217/forms.html#e-mail-state-%28type=email%29">
+    <script src="../../../resources/testharness.js"></script>
+    <script src="../../../resources/testharnessreport.js"></script>
+  </head>
+  <body>
+    <div id="log"></div>
+    <div style="display:none">
+      <form>
+        <input id="normal1" type="email" value="test1@intel.com"/>
+        <input id="normal2" type="email" value="test1@intel.com test2@intel.com" multiple/>
+      </form>
+      <form>
+        <input id="testInput1" type="email" value="testEmail"/>
+        <input id="submit1" type="submit" value="submit1" />
+      </form>
+      <form>
+        <input id="testInput2" type="email" value="test@intel.com test2@intel.com"/>
+        <input id="submit2" type="submit" value="submit2" />
+      </form>
+      <form>
+        <input id="testInput3" type="email" multiple value="testEmail"/>
+        <input id="submit3" type="submit" value="submit3" />
+      </form>
+    </div>
+    <script>
+        var nor1 = document.querySelector("#normal1");
+        var nor2 = document.querySelector("#normal2");
+        var submit1 = document.querySelector("#submit1");
+        var submit2 = document.querySelector("#submit2");
+        var submit3 = document.querySelector("#submit3");
+        test(function() {
+            assert_equals(nor1.value, "test1@intel.com", "Check if the email address is correct");
+        }, "Check if the email address is correct");
+        test(function() {
+            assert_equals(nor2.value, "test1@intel.com test2@intel.com", "Check if the email addresses are correct when multiple specified");
+        }, "Check if the email addresses are correct when multiple specified");
+
+        submit1.click();
+        test(function() {
+            var url = document.location.href;
+            var value = url.substring(url.lastIndexOf("/") + 1, url.length);
+            assert_equals(value, "input_email_invalid.html", "Check if form unable to submit when email value is invalid");
+        }, "Check if form unable to submit when email value is invalid");
+
+        submit2.click();
+        test(function() {
+            var url = document.location.href;
+            var value = url.substring(url.lastIndexOf("/") + 1, url.length);
+            assert_equals(value, "input_email_invalid.html", "Check if form unable to submit when email address is more than one");
+        }, "Check if form unable to submit when email address is more than one");
+
+        submit3.click();
+        test(function() {
+            var url = document.location.href;
+            var value = url.substring(url.lastIndexOf("/") + 1, url.length);
+            assert_equals(value, "input_email_invalid.html", "Check if form unable to submit when email address is invalid and multiple specified");
+        }, "Check if form unable to submit when email address is invalid and multiple specified");
+    </script>
+  </body>
+</html>

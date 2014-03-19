@@ -1,0 +1,467 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-stylesheet type="text/xsl"  href="./testcase.xsl"?>
+<test_definition>
+  <suite name="tct-push-tizen-tests" launcher="xwalk" extension="crosswalk" category="Tizen Web Device APIs">
+    <set name="Push">
+      <capabilities>
+        <capability name="push"/>
+      </capabilities>
+      <testcase purpose="Check if method registerService of PushManager works properly" type="compliance" onload_delay="90" status="approved" component="TizenAPI/Communication/Push" execution_type="auto" priority="P1" id="PushManager_registerService">
+        <description>
+          <test_script_entry>/opt/tct-push-tizen-tests/push/PushManager_registerService.html</test_script_entry>
+        </description>
+        <specs>
+          <spec>
+            <spec_assertion interface="PushManager" element_type="method" element_name="registerService" specification="Push" section="TBD" category="Tizen Device API Specifications"/>
+            <spec_url>https://developer.tizen.org/help/topic/org.tizen.web.device.apireference/tizen/push.html</spec_url>
+            <spec_statement>TBD</spec_statement>
+          </spec>
+        </specs>
+      </testcase>
+      <testcase purpose="Check if method registerService of PushManager works properly without errorCallback" type="compliance" onload_delay="90" status="approved" component="TizenAPI/Communication/Push" execution_type="auto" priority="P1" id="PushManager_registerService_without_errorCallback">
+        <description>
+          <test_script_entry>/opt/tct-push-tizen-tests/push/PushManager_registerService_without_errorCallback.html</test_script_entry>
+        </description>
+        <specs>
+          <spec>
+            <spec_assertion interface="PushManager" element_type="method" element_name="registerService" specification="Push" section="TBD" category="Tizen Device API Specifications"/>
+            <spec_url>https://developer.tizen.org/help/topic/org.tizen.web.device.apireference/tizen/push.html</spec_url>
+            <spec_statement>TBD</spec_statement>
+          </spec>
+        </specs>
+      </testcase>
+      <testcase purpose="Check if interface PushManagerObject exists, it should not" type="compliance" status="approved" component="TizenAPI/Communication/Push" execution_type="auto" priority="P3" id="PushManagerObject_notexist">
+        <description>
+          <test_script_entry>/opt/tct-push-tizen-tests/push/PushManagerObject_notexist.html</test_script_entry>
+        </description>
+        <specs>
+          <spec>
+            <spec_assertion interface="PushManagerObject" usage="true" specification="Push" section="TBD" category="Tizen Device API Specifications"/>
+            <spec_url>https://developer.tizen.org/help/topic/org.tizen.web.device.apireference/tizen/push.html</spec_url>
+            <spec_statement>TBD</spec_statement>
+          </spec>
+        </specs>
+      </testcase>
+      <testcase purpose="Check if method connectService of PushManager exists" type="compliance" status="approved" component="TizenAPI/Communication/Push" execution_type="auto" priority="P1" id="PushManager_connectService_exist">
+        <description>
+          <test_script_entry>/opt/tct-push-tizen-tests/push/PushManager_connectService_exist.html</test_script_entry>
+        </description>
+        <specs>
+          <spec>
+            <spec_assertion interface="PushManager" element_type="method" element_name="connectService" specification="Push" section="TBD" category="Tizen Device API Specifications"/>
+            <spec_url>https://developer.tizen.org/help/topic/org.tizen.web.device.apireference/tizen/push.html</spec_url>
+            <spec_statement>TBD</spec_statement>
+          </spec>
+        </specs>
+      </testcase>
+      <testcase purpose="Check if method disconnectService of PushManager exists" type="compliance" status="approved" component="TizenAPI/Communication/Push" execution_type="auto" priority="P1" id="PushManager_disconnectService_exist">
+        <description>
+          <test_script_entry>/opt/tct-push-tizen-tests/push/PushManager_disconnectService_exist.html</test_script_entry>
+        </description>
+        <specs>
+          <spec>
+            <spec_assertion interface="PushManager" element_type="method" element_name="disconnectService" specification="Push" section="TBD" category="Tizen Device API Specifications"/>
+            <spec_url>https://developer.tizen.org/help/topic/org.tizen.web.device.apireference/tizen/push.html</spec_url>
+            <spec_statement>TBD</spec_statement>
+          </spec>
+        </specs>
+      </testcase>
+      <testcase purpose="Check if method disconnectService of PushManager accepts extra argument" type="compliance" status="approved" component="TizenAPI/Communication/Push" execution_type="auto" priority="P1" id="PushManager_disconnectService_extra_argument">
+        <description>
+          <test_script_entry>/opt/tct-push-tizen-tests/push/PushManager_disconnectService_extra_argument.html</test_script_entry>
+        </description>
+        <specs>
+          <spec>
+            <spec_assertion interface="PushManager" element_type="method" element_name="disconnectService" specification="Push" section="TBD" category="Tizen Device API Specifications"/>
+            <spec_url>https://developer.tizen.org/help/topic/org.tizen.web.device.apireference/tizen/push.html</spec_url>
+            <spec_statement>TBD</spec_statement>
+          </spec>
+        </specs>
+      </testcase>
+      <testcase purpose="Check if PushManager is extendable" type="compliance" status="approved" component="TizenAPI/Communication/Push" execution_type="auto" priority="P3" id="PushManager_extend">
+        <description>
+          <test_script_entry>/opt/tct-push-tizen-tests/push/PushManager_extend.html</test_script_entry>
+        </description>
+        <specs>
+          <spec>
+            <spec_assertion interface="PushManager" usage="true" specification="Push" section="TBD" category="Tizen Device API Specifications"/>
+            <spec_url>https://developer.tizen.org/help/topic/org.tizen.web.device.apireference/tizen/push.html</spec_url>
+            <spec_statement>TBD</spec_statement>
+          </spec>
+        </specs>
+      </testcase>
+      <testcase purpose="Check if method getRegistrationId of PushManager exists" type="compliance" status="approved" component="TizenAPI/Communication/Push" execution_type="auto" priority="P1" id="PushManager_getRegistrationId_exist">
+        <description>
+          <test_script_entry>/opt/tct-push-tizen-tests/push/PushManager_getRegistrationId_exist.html</test_script_entry>
+        </description>
+        <specs>
+          <spec>
+            <spec_assertion interface="PushManager" element_type="method" element_name="getRegistrationId" specification="Push" section="TBD" category="Tizen Device API Specifications"/>
+            <spec_url>https://developer.tizen.org/help/topic/org.tizen.web.device.apireference/tizen/push.html</spec_url>
+            <spec_statement>TBD</spec_statement>
+          </spec>
+        </specs>
+      </testcase>
+      <testcase purpose="Check if method getRegistrationId of PushManager accepts extra argument" type="compliance" status="approved" component="TizenAPI/Communication/Push" execution_type="auto" priority="P1" id="PushManager_getRegistrationId_extra_argument">
+        <description>
+          <test_script_entry>/opt/tct-push-tizen-tests/push/PushManager_getRegistrationId_extra_argument.html</test_script_entry>
+        </description>
+        <specs>
+          <spec>
+            <spec_assertion interface="PushManager" element_type="method" element_name="getRegistrationId" specification="Push" section="TBD" category="Tizen Device API Specifications"/>
+            <spec_url>https://developer.tizen.org/help/topic/org.tizen.web.device.apireference/tizen/push.html</spec_url>
+            <spec_statement>TBD</spec_statement>
+          </spec>
+        </specs>
+      </testcase>
+      <testcase purpose="Check if method getRegistrationId of PushManager returns default value" type="compliance" onload_delay="90" status="approved" component="TizenAPI/Communication/Push" execution_type="auto" priority="P1" id="PushManager_getRegistrationId_notRegistered">
+        <description>
+          <test_script_entry>/opt/tct-push-tizen-tests/push/PushManager_getRegistrationId_notRegistered.html</test_script_entry>
+        </description>
+        <specs>
+          <spec>
+            <spec_assertion interface="PushManager" element_type="method" element_name="getRegistrationId" specification="Push" section="TBD" category="Tizen Device API Specifications"/>
+            <spec_url>https://developer.tizen.org/help/topic/org.tizen.web.device.apireference/tizen/push.html</spec_url>
+            <spec_statement>TBD</spec_statement>
+          </spec>
+        </specs>
+      </testcase>
+      <testcase purpose="Check if push exists in tizen" type="compliance" status="approved" component="TizenAPI/Communication/Push" execution_type="auto" priority="P3" id="PushManager_in_tizen">
+        <description>
+          <test_script_entry>/opt/tct-push-tizen-tests/push/PushManager_in_tizen.html</test_script_entry>
+        </description>
+        <specs>
+          <spec>
+            <spec_assertion interface="PushManager" usage="true" specification="Push" section="TBD" category="Tizen Device API Specifications"/>
+            <spec_url>https://developer.tizen.org/help/topic/org.tizen.web.device.apireference/tizen/push.html</spec_url>
+            <spec_statement>TBD</spec_statement>
+          </spec>
+        </specs>
+      </testcase>
+      <testcase purpose="Check if interface PushManager exists, it should not" type="compliance" status="approved" component="TizenAPI/Communication/Push" execution_type="auto" priority="P3" id="PushManager_notexist">
+        <description>
+          <test_script_entry>/opt/tct-push-tizen-tests/push/PushManager_notexist.html</test_script_entry>
+        </description>
+        <specs>
+          <spec>
+            <spec_assertion interface="PushManager" usage="true" specification="Push" section="TBD" category="Tizen Device API Specifications"/>
+            <spec_url>https://developer.tizen.org/help/topic/org.tizen.web.device.apireference/tizen/push.html</spec_url>
+            <spec_statement>TBD</spec_statement>
+          </spec>
+        </specs>
+      </testcase>
+      <testcase purpose="Check type conversions for appControl argument of PushManager.registerService method" type="compliance" onload_delay="90" status="approved" component="TizenAPI/Communication/Push" execution_type="auto" priority="P2" id="PushManager_registerService_appControl_TypeMismatch">
+        <description>
+          <test_script_entry>/opt/tct-push-tizen-tests/push/PushManager_registerService_appControl_TypeMismatch.html</test_script_entry>
+        </description>
+        <specs>
+          <spec>
+            <spec_assertion interface="PushManager" element_type="method" element_name="registerService" specification="Push" section="TBD" category="Tizen Device API Specifications"/>
+            <spec_url>https://developer.tizen.org/help/topic/org.tizen.web.device.apireference/tizen/push.html</spec_url>
+            <spec_statement>TBD</spec_statement>
+          </spec>
+        </specs>
+      </testcase>
+      <testcase purpose="Check if PushManager.registerService method throws exception when appControl is invalid" type="compliance" onload_delay="90" status="approved" component="TizenAPI/Communication/Push" execution_type="auto" priority="P2" id="PushManager_registerService_appControl_invalid_obj">
+        <description>
+          <test_script_entry>/opt/tct-push-tizen-tests/push/PushManager_registerService_appControl_invalid_obj.html</test_script_entry>
+        </description>
+        <specs>
+          <spec>
+            <spec_assertion interface="PushManager" element_type="method" element_name="registerService" specification="Push" section="TBD" category="Tizen Device API Specifications"/>
+            <spec_url>https://developer.tizen.org/help/topic/org.tizen.web.device.apireference/tizen/push.html</spec_url>
+            <spec_statement>TBD</spec_statement>
+          </spec>
+        </specs>
+      </testcase>
+      <testcase purpose="Check if method registerService throws exception when non-optional argument is missing" type="compliance" status="approved" component="TizenAPI/Communication/Push" execution_type="auto" priority="P1" id="PushManager_registerService_misargs">
+        <description>
+          <test_script_entry>/opt/tct-push-tizen-tests/push/PushManager_registerService_misargs.html</test_script_entry>
+        </description>
+        <specs>
+          <spec>
+            <spec_assertion interface="PushManager" element_type="method" element_name="registerService" specification="Push" section="TBD" category="Tizen Device API Specifications"/>
+            <spec_url>https://developer.tizen.org/help/topic/org.tizen.web.device.apireference/tizen/push.html</spec_url>
+            <spec_statement>TBD</spec_statement>
+          </spec>
+        </specs>
+      </testcase>
+      <testcase purpose="Check if method registerService of PushManager exists" type="compliance" status="approved" component="TizenAPI/Communication/Push" execution_type="auto" priority="P1" id="PushManager_registerService_exist">
+        <description>
+          <test_script_entry>/opt/tct-push-tizen-tests/push/PushManager_registerService_exist.html</test_script_entry>
+        </description>
+        <specs>
+          <spec>
+            <spec_assertion interface="PushManager" element_type="method" element_name="registerService" specification="Push" section="TBD" category="Tizen Device API Specifications"/>
+            <spec_url>https://developer.tizen.org/help/topic/org.tizen.web.device.apireference/tizen/push.html</spec_url>
+            <spec_statement>TBD</spec_statement>
+          </spec>
+        </specs>
+      </testcase>
+      <testcase purpose="Check type conversions for successCallback argument of PushManager.registerService method" type="compliance" onload_delay="90" status="approved" component="TizenAPI/Communication/Push" execution_type="auto" priority="P2" id="PushManager_registerService_successCallback_TypeMismatch">
+        <description>
+          <test_script_entry>/opt/tct-push-tizen-tests/push/PushManager_registerService_successCallback_TypeMismatch.html</test_script_entry>
+        </description>
+        <specs>
+          <spec>
+            <spec_assertion interface="PushManager" element_type="method" element_name="registerService" specification="Push" section="TBD" category="Tizen Device API Specifications"/>
+            <spec_url>https://developer.tizen.org/help/topic/org.tizen.web.device.apireference/tizen/push.html</spec_url>
+            <spec_statement>TBD</spec_statement>
+          </spec>
+        </specs>
+      </testcase>
+      <testcase purpose="Check if PushManager.registerService method throws exception when successCallback is invalid" type="compliance" onload_delay="90" status="approved" component="TizenAPI/Communication/Push" execution_type="auto" priority="P2" id="PushManager_registerService_successCallback_invalid_cb">
+        <description>
+          <test_script_entry>/opt/tct-push-tizen-tests/push/PushManager_registerService_successCallback_invalid_cb.html</test_script_entry>
+        </description>
+        <specs>
+          <spec>
+            <spec_assertion interface="PushManager" element_type="method" element_name="registerService" specification="Push" section="TBD" category="Tizen Device API Specifications"/>
+            <spec_url>https://developer.tizen.org/help/topic/org.tizen.web.device.apireference/tizen/push.html</spec_url>
+            <spec_statement>TBD</spec_statement>
+          </spec>
+        </specs>
+      </testcase>
+      <testcase purpose="Check if method unregisterService of PushManager exists" type="compliance" status="approved" component="TizenAPI/Communication/Push" execution_type="auto" priority="P1" id="PushManager_unregisterService_exist">
+        <description>
+          <test_script_entry>/opt/tct-push-tizen-tests/push/PushManager_unregisterService_exist.html</test_script_entry>
+        </description>
+        <specs>
+          <spec>
+            <spec_assertion interface="PushManager" element_type="method" element_name="unregisterService" specification="Push" section="TBD" category="Tizen Device API Specifications"/>
+            <spec_url>https://developer.tizen.org/help/topic/org.tizen.web.device.apireference/tizen/push.html</spec_url>
+            <spec_statement>TBD</spec_statement>
+          </spec>
+        </specs>
+      </testcase>
+      <testcase purpose="Check if interface PushMessage exists, it should not" type="compliance" status="approved" component="TizenAPI/Communication/Push" execution_type="auto" priority="P3" id="PushMessage_notexist">
+        <description>
+          <test_script_entry>/opt/tct-push-tizen-tests/push/PushMessage_notexist.html</test_script_entry>
+        </description>
+        <specs>
+          <spec>
+            <spec_assertion interface="PushMessage" usage="true" specification="Push" section="TBD" category="Tizen Device API Specifications"/>
+            <spec_url>https://developer.tizen.org/help/topic/org.tizen.web.device.apireference/tizen/push.html</spec_url>
+            <spec_statement>TBD</spec_statement>
+          </spec>
+        </specs>
+      </testcase>
+      <testcase purpose="Check if interface PushNotificationCallback exists, it should not" type="compliance" status="approved" component="TizenAPI/Communication/Push" execution_type="auto" priority="P3" id="PushNotificationCallback_notexist">
+        <description>
+          <test_script_entry>/opt/tct-push-tizen-tests/push/PushNotificationCallback_notexist.html</test_script_entry>
+        </description>
+        <specs>
+          <spec>
+            <spec_assertion interface="PushNotificationCallback" usage="true" specification="Push" section="TBD" category="Tizen Device API Specifications"/>
+            <spec_url>https://developer.tizen.org/help/topic/org.tizen.web.device.apireference/tizen/push.html</spec_url>
+            <spec_statement>TBD</spec_statement>
+          </spec>
+        </specs>
+      </testcase>
+      <testcase purpose="Check type conversions for errorCallback argument of PushManager.unregisterService method" type="compliance" onload_delay="90" status="approved" component="TizenAPI/Communication/Push" execution_type="auto" priority="P2" id="PushManager_unregisterService_errorCallback_TypeMismatch">
+        <description>
+          <test_script_entry>/opt/tct-push-tizen-tests/push/PushManager_unregisterService_errorCallback_TypeMismatch.html</test_script_entry>
+        </description>
+        <specs>
+          <spec>
+            <spec_assertion interface="PushManager" element_type="method" element_name="unregisterService" specification="Push" section="TBD" category="Tizen Device API Specifications"/>
+            <spec_url>https://developer.tizen.org/help/topic/org.tizen.web.device.apireference/tizen/push.html</spec_url>
+            <spec_statement>TBD</spec_statement>
+          </spec>
+        </specs>
+      </testcase>
+      <testcase purpose="Check if PushManager.unregisterService method throws exception when errorCallback is invalid" type="compliance" onload_delay="90" status="approved" component="TizenAPI/Communication/Push" execution_type="auto" priority="P2" id="PushManager_unregisterService_errorCallback_invalid_cb">
+        <description>
+          <test_script_entry>/opt/tct-push-tizen-tests/push/PushManager_unregisterService_errorCallback_invalid_cb.html</test_script_entry>
+        </description>
+        <specs>
+          <spec>
+            <spec_assertion interface="PushManager" element_type="method" element_name="unregisterService" specification="Push" section="TBD" category="Tizen Device API Specifications"/>
+            <spec_url>https://developer.tizen.org/help/topic/org.tizen.web.device.apireference/tizen/push.html</spec_url>
+            <spec_statement>TBD</spec_statement>
+          </spec>
+        </specs>
+      </testcase>
+      <testcase purpose="Check type conversions for errorCallback argument of PushManager.registerService method" type="compliance" onload_delay="90" status="approved" component="TizenAPI/Communication/Push" execution_type="auto" priority="P2" id="PushManager_registerService_errorCallback_TypeMismatch">
+        <description>
+          <test_script_entry>/opt/tct-push-tizen-tests/push/PushManager_registerService_errorCallback_TypeMismatch.html</test_script_entry>
+        </description>
+        <specs>
+          <spec>
+            <spec_assertion interface="PushManager" element_type="method" element_name="registerService" specification="Push" section="TBD" category="Tizen Device API Specifications"/>
+            <spec_url>https://developer.tizen.org/help/topic/org.tizen.web.device.apireference/tizen/push.html</spec_url>
+            <spec_statement>TBD</spec_statement>
+          </spec>
+        </specs>
+      </testcase>
+      <testcase purpose="Check if PushManager.registerService method throws exception when errorCallback is invalid" type="compliance" onload_delay="90" status="approved" component="TizenAPI/Communication/Push" execution_type="auto" priority="P2" id="PushManager_registerService_errorCallback_invalid_cb">
+        <description>
+          <test_script_entry>/opt/tct-push-tizen-tests/push/PushManager_registerService_errorCallback_invalid_cb.html</test_script_entry>
+        </description>
+        <specs>
+          <spec>
+            <spec_assertion interface="PushManager" element_type="method" element_name="registerService" specification="Push" section="TBD" category="Tizen Device API Specifications"/>
+            <spec_url>https://developer.tizen.org/help/topic/org.tizen.web.device.apireference/tizen/push.html</spec_url>
+            <spec_statement>TBD</spec_statement>
+          </spec>
+        </specs>
+      </testcase>
+      <testcase purpose="Check type conversions for successCallback argument of PushManager.unregisterService method" type="compliance" onload_delay="90" status="approved" component="TizenAPI/Communication/Push" execution_type="auto" priority="P2" id="PushManager_unregisterService_successCallback_TypeMismatch">
+        <description>
+          <test_script_entry>/opt/tct-push-tizen-tests/push/PushManager_unregisterService_successCallback_TypeMismatch.html</test_script_entry>
+        </description>
+        <specs>
+          <spec>
+            <spec_assertion interface="PushManager" element_type="method" element_name="unregisterService" specification="Push" section="TBD" category="Tizen Device API Specifications"/>
+            <spec_url>https://developer.tizen.org/help/topic/org.tizen.web.device.apireference/tizen/push.html</spec_url>
+            <spec_statement>TBD</spec_statement>
+          </spec>
+        </specs>
+      </testcase>
+      <testcase purpose="Check if PushManager.unregisterService method throws exception when successCallback is invalid" type="compliance" onload_delay="90" status="approved" component="TizenAPI/Communication/Push" execution_type="auto" priority="P2" id="PushManager_unregisterService_successCallback_invalid_cb">
+        <description>
+          <test_script_entry>/opt/tct-push-tizen-tests/push/PushManager_unregisterService_successCallback_invalid_cb.html</test_script_entry>
+        </description>
+        <specs>
+          <spec>
+            <spec_assertion interface="PushManager" element_type="method" element_name="unregisterService" specification="Push" section="TBD" category="Tizen Device API Specifications"/>
+            <spec_url>https://developer.tizen.org/help/topic/org.tizen.web.device.apireference/tizen/push.html</spec_url>
+            <spec_statement>TBD</spec_statement>
+          </spec>
+        </specs>
+      </testcase>
+      <testcase purpose="Check type conversions for notificationCallback argument of PushManager.connectService method" type="compliance" status="approved" component="TizenAPI/Communication/Push" execution_type="auto" priority="P2" id="PushManager_connectService_notificationCallback_TypeMismatch">
+        <description>
+          <test_script_entry>/opt/tct-push-tizen-tests/push/PushManager_connectService_notificationCallback_TypeMismatch.html</test_script_entry>
+        </description>
+        <specs>
+          <spec>
+            <spec_assertion interface="PushManager" element_type="method" element_name="connectService" specification="Push" section="TBD" category="Tizen Device API Specifications"/>
+            <spec_url>https://developer.tizen.org/help/topic/org.tizen.web.device.apireference/tizen/push.html</spec_url>
+            <spec_statement>TBD</spec_statement>
+          </spec>
+        </specs>
+      </testcase>
+      <testcase purpose="Check if PushManager.connectService method throws exception when notificationCallback is invalid" type="compliance" onload_delay="90" status="approved" component="TizenAPI/Communication/Push" execution_type="auto" priority="P2" id="PushManager_connectService_notificationCallback_invalid_cb">
+        <description>
+          <test_script_entry>/opt/tct-push-tizen-tests/push/PushManager_connectService_notificationCallback_invalid_cb.html</test_script_entry>
+        </description>
+        <specs>
+          <spec>
+            <spec_assertion interface="PushManager" element_type="method" element_name="connectService" specification="Push" section="TBD" category="Tizen Device API Specifications"/>
+            <spec_url>https://developer.tizen.org/help/topic/org.tizen.web.device.apireference/tizen/push.html</spec_url>
+            <spec_statement>TBD</spec_statement>
+          </spec>
+        </specs>
+      </testcase>
+      <testcase purpose="Check if method getRegistrationId of PushManager works correctly" type="compliance" onload_delay="90" status="approved" component="TizenAPI/Communication/Push" execution_type="auto" priority="P1" id="PushManager_getRegistrationId">
+        <description>
+          <test_script_entry>/opt/tct-push-tizen-tests/push/PushManager_getRegistrationId.html</test_script_entry>
+        </description>
+        <specs>
+          <spec>
+            <spec_assertion interface="PushManager" element_type="method" element_name="getRegistrationId" specification="Push" section="TBD" category="Tizen Device API Specifications"/>
+            <spec_url>https://developer.tizen.org/help/topic/org.tizen.web.device.apireference/tizen/push.html</spec_url>
+            <spec_statement>TBD</spec_statement>
+          </spec>
+        </specs>
+      </testcase>
+      <testcase purpose="Check if connectService method works correctly" type="compliance" onload_delay="90" status="approved" component="TizenAPI/Communication/Push" execution_type="auto" priority="P1" id="PushManager_connectService">
+        <description>
+          <test_script_entry>/opt/tct-push-tizen-tests/push/PushManager_connectService.html</test_script_entry>
+        </description>
+        <specs>
+          <spec>
+            <spec_assertion interface="PushManager" element_type="method" element_name="connectService" specification="Push" section="TBD" category="Tizen Device API Specifications"/>
+            <spec_url>https://developer.tizen.org/help/topic/org.tizen.web.device.apireference/tizen/push.html</spec_url>
+            <spec_statement>TBD</spec_statement>
+          </spec>
+        </specs>
+      </testcase>
+      <testcase purpose="Check with missing non-optional argument - PushManager.connectService method" type="compliance" onload_delay="90" status="approved" component="TizenAPI/Communication/Push" execution_type="auto" priority="P1" id="PushManager_connectService_missarg">
+        <description>
+          <test_script_entry>/opt/tct-push-tizen-tests/push/PushManager_connectService_missarg.html</test_script_entry>
+        </description>
+        <specs>
+          <spec>
+            <spec_assertion interface="PushManager" element_type="method" element_name="connectService" specification="Push" section="TBD" category="Tizen Device API Specifications"/>
+            <spec_url>https://developer.tizen.org/help/topic/org.tizen.web.device.apireference/tizen/push.html</spec_url>
+            <spec_statement>TBD</spec_statement>
+          </spec>
+        </specs>
+      </testcase>
+      <testcase purpose="Check if disconnectService method works correctly" type="compliance" onload_delay="90" status="approved" component="TizenAPI/Communication/Push" execution_type="auto" priority="P1" id="PushManager_disconnectService">
+        <description>
+          <test_script_entry>/opt/tct-push-tizen-tests/push/PushManager_disconnectService.html</test_script_entry>
+        </description>
+        <specs>
+          <spec>
+            <spec_assertion interface="PushManager" element_type="method" element_name="disconnectService" specification="Push" section="TBD" category="Tizen Device API Specifications"/>
+            <spec_url>https://developer.tizen.org/help/topic/org.tizen.web.device.apireference/tizen/push.html</spec_url>
+            <spec_statement>TBD</spec_statement>
+          </spec>
+        </specs>
+      </testcase>
+      <testcase purpose="Check if unregisterService works correctly" type="compliance" onload_delay="90" status="approved" component="TizenAPI/Communication/Push" execution_type="auto" priority="P1" id="PushManager_unregisterService">
+        <description>
+          <test_script_entry>/opt/tct-push-tizen-tests/push/PushManager_unregisterService.html</test_script_entry>
+        </description>
+        <specs>
+          <spec>
+            <spec_assertion interface="PushManager" element_type="method" element_name="unregisterService" specification="Push" section="TBD" category="Tizen Device API Specifications"/>
+            <spec_url>https://developer.tizen.org/help/topic/org.tizen.web.device.apireference/tizen/push.html</spec_url>
+            <spec_statement>TBD</spec_statement>
+          </spec>
+        </specs>
+      </testcase>
+      <testcase purpose="Check if unregisterService method works without errorCallback" type="compliance" onload_delay="90" status="approved" component="TizenAPI/Communication/Push" execution_type="auto" priority="P1" id="PushManager_unregisterService_without_errorCallback">
+        <description>
+          <test_script_entry>/opt/tct-push-tizen-tests/push/PushManager_unregisterService_without_errorCallback.html</test_script_entry>
+        </description>
+        <specs>
+          <spec>
+            <spec_assertion interface="PushManager" element_type="method" element_name="unregisterService" specification="Push" section="TBD" category="Tizen Device API Specifications"/>
+            <spec_url>https://developer.tizen.org/help/topic/org.tizen.web.device.apireference/tizen/push.html</spec_url>
+            <spec_statement>TBD</spec_statement>
+          </spec>
+        </specs>
+      </testcase>
+      <testcase purpose="Check if unregisterService method works without successCallback" type="compliance" onload_delay="90" status="approved" component="TizenAPI/Communication/Push" execution_type="auto" priority="P1" id="PushManager_unregisterService_without_successCallback">
+        <description>
+          <test_script_entry>/opt/tct-push-tizen-tests/push/PushManager_unregisterService_without_successCallback.html</test_script_entry>
+        </description>
+        <specs>
+          <spec>
+            <spec_assertion interface="PushManager" element_type="method" element_name="unregisterService" specification="Push" section="TBD" category="Tizen Device API Specifications"/>
+            <spec_url>https://developer.tizen.org/help/topic/org.tizen.web.device.apireference/tizen/push.html</spec_url>
+            <spec_statement>TBD</spec_statement>
+          </spec>
+        </specs>
+      </testcase>
+      <testcase purpose="Check if PushRegisterSuccessCallback works" type="compliance" onload_delay="90" status="approved" component="TizenAPI/Communication/Push" execution_type="auto" priority="P3" id="PushRegisterSuccessCallback_onsuccess">
+        <description>
+          <test_script_entry>/opt/tct-push-tizen-tests/push/PushRegisterSuccessCallback_onsuccess.html</test_script_entry>
+        </description>
+        <specs>
+          <spec>
+            <spec_assertion interface="PushRegisterSuccessCallback" usage="true" specification="Push" section="TBD" category="Tizen Device API Specifications"/>
+            <spec_url>https://developer.tizen.org/help/topic/org.tizen.web.device.apireference/tizen/push.html</spec_url>
+            <spec_statement>TBD</spec_statement>
+          </spec>
+        </specs>
+      </testcase>
+      <testcase purpose="Check if interface PushRegisterSuccessCallback exists, it should not" type="compliance" status="approved" component="TizenAPI/Communication/Push" execution_type="auto" priority="P3" id="PushRegisterSuccessCallback_notexist">
+        <description>
+          <test_script_entry>/opt/tct-push-tizen-tests/push/PushRegisterSuccessCallback_notexist.html</test_script_entry>
+        </description>
+        <specs>
+          <spec>
+            <spec_assertion interface="PushRegisterSuccessCallback" usage="true" specification="Push" section="TBD" category="Tizen Device API Specifications"/>
+            <spec_url>https://developer.tizen.org/help/topic/org.tizen.web.device.apireference/tizen/push.html</spec_url>
+            <spec_statement>TBD</spec_statement>
+          </spec>
+        </specs>
+      </testcase>
+    </set>
+  </suite>
+</test_definition>

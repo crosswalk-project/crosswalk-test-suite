@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<!--
+Test converted from blink:
+https://github.com/crosswalk-project/blink-crosswalk/blob/master/LayoutTests/fast/mediastream/RTCPeerConnection-state.html
+-->
+
+<meta charset=utf-8>
+<title>WebRTC Test: the RTCPeerConnection states</title>
+<link rel="author" title="Intel" href="http://www.intel.com">
+<link rel=help href="http://dev.w3.org/2011/webrtc/editor/webrtc.html#widl-RTCPeerConnection-signalingState">
+<script src=../../resources/testharness.js></script>
+<script src=../../resources/testharnessreport.js></script>
+<div id=log></div>
+<script>
+
+var pc = null;
+
+var t = async_test(document.title, {timeout: 2000});
+
+t.step(function () {
+  pc = new webkitRTCPeerConnection({ "iceServers": [{ "url": "stun:stun.example.org" }]});
+  assert_equals(pc.signalingState, 'stable');
+  pc.onsignalingstatechange = t.step_func(function (){
+    assert_equals(pc.signalingState, 'closed');
+    t.done();
+  });
+  pc.close();
+});
+
+</script>

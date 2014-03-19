@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<!--
+Copyright (c) 2013 Intel Corporation.
+
+Redistribution and use in source and binary forms, with or without modification,
+are permitted provided that the following conditions are met:
+
+* Redistributions of works must retain the original copyright notice, this list
+  of conditions and the following disclaimer.
+* Redistributions in binary form must reproduce the original copyright notice,
+  this list of conditions and the following disclaimer in the documentation
+  and/or other materials provided with the distribution.
+* Neither the name of Intel Corporation nor the names of its contributors
+  may be used to endorse or promote products derived from this work without
+  specific prior written permission.
+
+THIS SOFTWARE IS PROVIDED BY INTEL CORPORATION "AS IS"
+AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE
+IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE
+ARE DISCLAIMED. IN NO EVENT SHALL INTEL CORPORATION BE LIABLE FOR ANY DIRECT,
+INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING,
+BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE,
+DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY
+OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING
+NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE,
+EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
+
+Authors:
+        Hao, Yunfei <yunfeix.hao@intel.com>
+
+-->
+
+<html>
+  <head>
+    <title>Transmission_CONST_attribute</title>
+    <meta charset="utf-8">
+    <script src="../resources/unitcommon.js"></script>
+  </head>
+  <body>
+    <div id="log"></div>
+    <script>
+      test(function() {
+        var obj = tizen.vehicle.get("Transmission");
+        check_const(obj, "TRANSMISSIONPOSITION_NEUTRAL", obj.TRANSMISSIONPOSITION_NEUTRAL, "number", 100);
+        check_const(obj, "TRANSMISSIONPOSITION_FIRST", obj.TRANSMISSIONPOSITION_FIRST, "number", 100);
+        check_const(obj, "TRANSMISSIONPOSITION_SECOND", obj.TRANSMISSIONPOSITION_SECOND, "number", 100);
+        check_const(obj, "TRANSMISSIONPOSITION_THIRD", obj.TRANSMISSIONPOSITION_THIRD, "number", 100);
+        check_const(obj, "TRANSMISSIONPOSITION_FORTH", obj.TRANSMISSIONPOSITION_FORTH, "number", 100);
+        check_const(obj, "TRANSMISSIONPOSITION_FIFTH", obj.TRANSMISSIONPOSITION_FIFTH, "number", 100);
+        check_const(obj, "TRANSMISSIONPOSITION_SIXTH", obj.TRANSMISSIONPOSITION_SIXTH, "number", 100);
+        check_const(obj, "TRANSMISSIONPOSITION_SEVENTH", obj.TRANSMISSIONPOSITION_SEVENTH, "number", 100);
+        check_const(obj, "TRANSMISSIONPOSITION_EIGHTH", obj.TRANSMISSIONPOSITION_EIGHTH, "number", 100);
+        check_const(obj, "TRANSMISSIONPOSITION_NINTH", obj.TRANSMISSIONPOSITION_NINTH, "number", 100);
+        check_const(obj, "TRANSMISSIONPOSITION_TENTH", obj.TRANSMISSIONPOSITION_TENTH, "number", 100);
+        check_const(obj, "TRANSMISSIONPOSITION_CVT", obj.TRANSMISSIONPOSITION_CVT, "number", 100);
+        check_const(obj, "TRANSMISSIONPOSITION_REVERSE", obj.TRANSMISSIONPOSITION_REVERSE, "number", 100);
+        check_const(obj, "TRANSMISSIONPOSITION_PARK", obj.TRANSMISSIONPOSITION_PARK, "number", 100);
+        check_const(obj, "TRANSMISSIONMODE_NORMAL", obj.TRANSMISSIONMODE_NORMAL, "number", 100);
+        check_const(obj, "TRANSMISSIONMODE_SPORT", obj.TRANSMISSIONMODE_SPORT, "number", 100);
+        check_const(obj, "TRANSMISSIONMODE_ECONOMY", obj.TRANSMISSIONMODE_ECONOMY, "number", 100);
+        check_const(obj, "TRANSMISSIONMODE_OEMCUSTOM1", obj.TRANSMISSIONMODE_OEMCUSTOM1, "number", 100);
+        check_const(obj, "TRANSMISSIONMODE_OEMCUSTOM2", obj.TRANSMISSIONMODE_OEMCUSTOM2, "number", 100);
+
+        assert_true(obj.TRANSMISSIONPOSITION_NEUTRAL == 0);
+        assert_true(obj.TRANSMISSIONPOSITION_FIRST == 1);
+        assert_true(obj.TRANSMISSIONPOSITION_SECOND == 2);
+        assert_true(obj.TRANSMISSIONPOSITION_THIRD == 3);
+        assert_true(obj.TRANSMISSIONPOSITION_FORTH == 4);
+        assert_true(obj.TRANSMISSIONPOSITION_FIFTH == 5);
+        assert_true(obj.TRANSMISSIONPOSITION_SIXTH == 6);
+        assert_true(obj.TRANSMISSIONPOSITION_SEVENTH == 7);
+        assert_true(obj.TRANSMISSIONPOSITION_EIGHTH == 8);
+        assert_true(obj.TRANSMISSIONPOSITION_NINTH == 9);
+        assert_true(obj.TRANSMISSIONPOSITION_TENTH == 10);
+        assert_true(obj.TRANSMISSIONPOSITION_CVT == 64);
+        assert_true(obj.TRANSMISSIONPOSITION_REVERSE == 128);
+        assert_true(obj.TRANSMISSIONPOSITION_PARK == 255);
+        assert_true(obj.TRANSMISSIONMODE_NORMAL == 0);
+        assert_true(obj.TRANSMISSIONMODE_SPORT == 1);
+        assert_true(obj.TRANSMISSIONMODE_ECONOMY == 2);
+        assert_true(obj.TRANSMISSIONMODE_OEMCUSTOM1 == 3);
+        assert_true(obj.TRANSMISSIONMODE_OEMCUSTOM2 == 4);
+      }, "Transmission_CONST_attribute");
+    </script>
+  </body>
+</html>

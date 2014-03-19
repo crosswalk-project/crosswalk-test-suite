@@ -1,0 +1,45 @@
+This test suite comes from
+https://github.com/w3c/web-platform-tests(commit e6d26e4b220ed3c07d1449b7c18776ba07e8eac3)
+with modification:
+
+email.html
+
+ - assert_equals(element.value, 'user@example.com');
+ - assert_true(validEmailRegexp.test(element.value));
+ + //assert_equals(element.value, 'user@example.com');
+ + //assert_true(validEmailRegexp.test(element.value));
+ + assert_equals(element.value, 'user@example.com,user2@example.com');
+
+ - var values = element.values;
+ + //var values = element.values
+ + var values = element.value.split(",");
+
+ - element.value = '';
+ - assert_not_equals(typeof values, 'undefined', 'type of values');
+ - values.push('user,@example.com');
+ - assert_equals(values.length, 0);
+ + //element.value = '';
+ + //var values = element.value.split(",");
+ + //assert_not_equals(typeof values, 'undefined', 'type of values');
+ + //values.push('user,@example.com');
+ + //assert_equals(values.length, 0);
+ + //values = values==undefined||values==null||values.length==0?{}:values;
+ + element.value = 'user,@example.com';
+ + assert_false(element.checkValidity());
+
+ - values.push('user@e\u000Axample.com');
+ + //values.push('user@e\u000Axample.com');
+ + element.value = 'user@e\\U000Axample.com';
+
+ - //values.push('user@e\u000Dxample.com');
+ + //values.push('user@e\u000Dxample.com');
+ + element.value = 'user@e\\U000Dxample.com';
+
+
+These tests are copyright by W3C and/or the author listed in the test
+file. The tests are dual-licensed under the W3C Test Suite License:
+http://www.w3.org/Consortium/Legal/2008/04-testsuite-license
+and the BSD 3-clause License:
+http://www.w3.org/Consortium/Legal/2008/03-bsd-license
+under W3C's test suite licensing policy:
+http://www.w3.org/Consortium/Legal/2008/04-testsuite-copyright

@@ -1,0 +1,1 @@
+var phpLocation = "http://127.0.0.1:80/opt/tct-navigationtiming-w3c-tests/navigationtiming/w3c/support/redirect.php?location=http://127.0.0.1:80/opt/tct-navigationtiming-w3c-tests/navigationtiming/w3c/support/blank_page_green.htm";

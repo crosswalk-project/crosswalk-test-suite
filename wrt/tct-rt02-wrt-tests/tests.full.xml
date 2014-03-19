@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-stylesheet type="text/xsl" href="testcase.xsl"?>
+<test_definition>
+  <suite name="tct-rt02-wrt-tests" category="Web Runtime">
+    <set name="WebApplicationRuntime">
+      <testcase component="Web/Runtime/WebApplicationRuntime" id="lifecycle-launch-installed-app" execution_type="auto" purpose="Check if WRT is able to launch an installed application" priority="P1" status="approved" type="Functional positive">
+        <description>
+          <pre_condition></pre_condition>
+          <post_condition></post_condition>
+          <steps>
+            <step order="1">
+              <step_desc>Check if WRT is able to launch an installed application</step_desc>
+              <expected>The widget package is launched successfully.</expected>
+            </step>
+          </steps>
+          <test_script_entry test_script_expected_result="0">/opt/usr/media/tct/opt/tct-rt02-wrt-tests/scripts/wrt_rt_launch-removed-app.sh</test_script_entry>
+          <notes/>
+        </description>
+        <specs>
+          <spec>
+            <spec_assertion element_type="attribute" element_name="N/A" interface="0320" specification="Web Application Lifecycle" section="Web Application Runtime" category="Tizen WRT Core Specifications"/>
+            <spec_url/>
+            <spec_statement>TBD</spec_statement>
+          </spec>
+        </specs>
+      </testcase>
+      <testcase component="Web/Runtime/WebApplicationRuntime" id="lifecycle-launch-removed-app" execution_type="auto" purpose="Check if WRT is unable to launch a removed application" priority="P2" status="approved" type="Functional positive">
+        <description>
+          <pre_condition></pre_condition>
+          <post_condition></post_condition>
+          <steps>
+            <step order="1">
+              <step_desc>Check if WRT is unable to launch a removed application</step_desc>
+              <expected>The widget can is not launched.</expected>
+            </step>
+          </steps>
+          <test_script_entry test_script_expected_result="0">/opt/usr/media/tct/opt/tct-rt02-wrt-tests/scripts/wrt_rt_launch-installed-app.sh</test_script_entry>
+          <notes/>
+        </description>
+        <specs>
+          <spec>
+            <spec_assertion element_type="attribute" element_name="N/A" interface="0320" specification="Web Application Lifecycle" section="Web Application Runtime" category="Tizen WRT Core Specifications"/>
+            <spec_url/>
+            <spec_statement>TBD</spec_statement>
+          </spec>
+        </specs>
+      </testcase>
+      <testcase component="Web/Runtime/WebApplicationRuntime" id="lifecycle-exit-running-app" execution_type="auto" purpose="Check if WRT is able to exit a running application safely." priority="P1" status="approved" type="Functional positive">
+        <description>
+          <pre_condition></pre_condition>
+          <post_condition></post_condition>
+          <steps>
+            <step order="1">
+              <step_desc>Install the widget with the command : pkgcmd -i -t wgt -q -p /opt/usr/media/tct/opt/tct-rt02-wrt-tests/lifecycle-exit-running-app.wgt</step_desc>
+              <expected>The widget package is installed successfully. Its  icon appears on screen.</expected>
+            </step>
+          </steps>
+          <test_script_entry test_script_expected_result="0">/opt/usr/media/tct/opt/tct-rt02-wrt-tests/scripts/wrt_rt_exit-running-app.sh</test_script_entry>
+          <notes/>
+        </description>
+        <specs>
+          <spec>
+            <spec_assertion element_type="attribute" element_name="N/A" interface="0320" specification="Web Application Lifecycle" section="Web Application Runtime" category="Tizen WRT Core Specifications"/>
+            <spec_url/>
+            <spec_statement>TBD</spec_statement>
+          </spec>
+        </specs>
+      </testcase>
+    </set>
+  </suite>
+</test_definition>

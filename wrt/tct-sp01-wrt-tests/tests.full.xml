@@ -1,0 +1,98 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-stylesheet type="text/xsl"  href="testcase.xsl"?>
+<test_definition>
+<suite name="tct-sp01-wrt-tests" launcher="xwalk -iu" category="Web Runtime">
+  <set name="storage-cookies-check">
+    <testcase purpose="Check if Application has its own cookie database." type="user_experience" status="approved" component="Web/Runtime/SecurityPrivacy" execution_type="auto" priority="P1" id="storage-cookies-check">
+      <description>
+        <pre_condition></pre_condition>
+        <post_condition></post_condition>
+        <steps>
+          <step order="1">
+            <step_desc>Check if Application has its own cookie database.</step_desc>
+            <expected>Application has its own cookie database.</expected>
+          </step>
+        </steps>
+        <test_script_entry test_script_expected_result="0">test_index.html</test_script_entry>
+        <notes></notes>
+      </description>
+      <specs>
+        <spec>
+          <spec_assertion element_type="attribute" element_name="N/A" interface="0670" specification="Private Storage (HTML5 local storage and cookie) Support" section="Web Application Security and Privacy" category="Tizen WRT Core Specifications"></spec_assertion>
+          <spec_url></spec_url>
+          <spec_statement></spec_statement>
+        </spec>
+      </specs>
+    </testcase>
+  </set>
+  <set name="protection-decrypt-html">
+    <testcase purpose="Check that the WRT can decrypt html resources of widget Application successfully" type="user_experience" status="approved" component="Web/Runtime/SecurityPrivacy" execution_type="auto" priority="P1" id="protection-decrypt-html">
+      <description>
+        <pre_condition></pre_condition>
+        <post_condition></post_condition>
+        <steps>
+          <step order="1">
+            <step_desc>Check that the WRT can decrypt html resources of widget Application successfully</step_desc>
+            <expected>WRT can decrypt html resources of widget Application successfully</expected>
+          </step>
+        </steps>
+        <test_script_entry test_script_expected_result="0">test_index.html</test_script_entry>
+        <notes></notes>
+      </description>
+      <specs>
+        <spec>
+          <spec_assertion element_type="attribute" element_name="N/A" interface="0650" specification="Web Application Protection" section="Web Application Security and Privacy" category="Tizen WRT Core Specifications"></spec_assertion>
+          <spec_url></spec_url>
+          <spec_statement></spec_statement>
+        </spec>
+      </specs>
+    </testcase>
+  </set>
+  <set name="protection-decrypt-js">
+    <testcase purpose="Check that the WRT can decrypt js resources of widget Application successfully" type="user_experience" status="approved" component="Web/Runtime/SecurityPrivacy" execution_type="auto" priority="P2" id="protection-decrypt-js">
+      <description>
+        <pre_condition></pre_condition>
+        <post_condition></post_condition>
+        <steps>
+          <step order="1">
+            <step_desc>Check that the WRT can decrypt js resources of widget Application successfully</step_desc>
+            <expected>WRT can decrypt js resources of widget Application successfully</expected>
+          </step>
+        </steps>
+        <test_script_entry test_script_expected_result="0">test_index.html</test_script_entry>
+        <notes></notes>
+      </description>
+      <specs>
+        <spec>
+          <spec_assertion element_type="attribute" element_name="N/A" interface="0650" specification="Web Application Protection" section="Web Application Security and Privacy" category="Tizen WRT Core Specifications"></spec_assertion>
+          <spec_url></spec_url>
+          <spec_statement></spec_statement>
+        </spec>
+      </specs>
+    </testcase>
+  </set>
+  <set name="protection-decrypt-css">
+    <testcase purpose="Check that the WRT can decrypt css resources of widget Application successfully" type="user_experience" status="approved" component="Web/Runtime/SecurityPrivacy" execution_type="auto" priority="P2" id="protection-decrypt-css">
+      <description>
+        <pre_condition></pre_condition>
+        <post_condition></post_condition>
+        <steps>
+          <step order="1">
+            <step_desc>Check that the WRT can decrypt css resources of widget Application successfully</step_desc>
+            <expected>WRT can decrypt css resources of widget Application successfully</expected>
+          </step>
+        </steps>
+        <test_script_entry test_script_expected_result="0">test_index.html</test_script_entry>
+        <notes></notes>
+      </description>
+      <specs>
+        <spec>
+          <spec_assertion element_type="attribute" element_name="N/A" interface="0650" specification="Web Application Protection" section="Web Application Security and Privacy" category="Tizen WRT Core Specifications"></spec_assertion>
+          <spec_url></spec_url>
+          <spec_statement></spec_statement>
+        </spec>
+      </specs>
+    </testcase>
+   </set>
+</suite>
+</test_definition>

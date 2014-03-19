@@ -1,0 +1,164 @@
+#!/bin/bash
+#
+# Copyright (C) 2010 Intel Corporation
+#
+# This program is free software; you can redistribute it and/or
+# modify it under the terms of the GNU General Public License
+# as published by the Free Software Foundation; either version 2
+# of the License, or (at your option) any later version.
+#
+# This program is distributed in the hope that it will be useful,
+# but WITHOUT ANY WARRANTY; without even the implied warranty of
+# MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+# GNU General Public License for more details.
+#
+# You should have received a copy of the GNU General Public License
+# along with this program; if not, write to the Free Software
+# Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
+#
+# Author:
+#        Yue, jianhui <jianhuix.a.yue@intel.com>
+
+path=$(dirname $(dirname $0))
+source $path/scripts/xwalk_common.sh
+
+function func_install()
+{
+    PACKAGENAME="$path/$1"
+    p_name=$1
+    APP_NAME=${p_name%%.wgt}
+    if [ $# != 1 ];then
+      echo "Need to add the parameter"
+      return 1
+    fi
+    su - app -c "export DBUS_SESSION_BUS_ADDRESS=\"unix:path=/run/user/5000/dbus/user_bus_socket\";export XDG_RUNTIME_DIR=\"/run/user/5000\";xwalkctl --install $PACKAGENAME"
+    find_app $APP_NAME
+    pkgnum=`echo "$pkgids"|wc -w`
+    if [ $pkgnum -ge 1 ]; then
+      echo "The widget is installed successfully"
+      return 0
+    else
+      echo "The installation is failed"
+      return 1
+    fi
+}
+
+function func_launch()
+{
+    PACKAGENAME="$path/$1"
+    p_name=$1
+    APP_NAME=${p_name%%.wgt}
+    if [ $# != 1 ];then
+      echo "Need to add the parameter"
+      return 1
+    fi
+    find_app $APP_NAME
+    launch_app $APP_NAME
+    find_app $APP_NAME
+    pkgnum=`echo "$pkgids"|wc -w`
+    if [ $pkgnum -ge 1 ]; then
+      echo "The widget is launched successfully"
+      return 0
+    else
+      echo "The widget is not launched"
+      return 1
+    fi
+}
+
+function func_launch()
+{
+    PACKAGENAME="$path/$1"
+    p_name=$1
+    APP_NAME=${p_name%%.wgt}
+    if [ $# != 1 ];then
+      echo "Need to add the parameter"
+      return 1
+    fi
+    find_app $APP_NAME
+    launch_app $APP_NAME
+    App_Status=`wrt-launcher -r $WIDGETNAME | grep "not running"`
+    if [ -z $App_Status ];then
+      echo "The widget is launched successfully"
+      return 0
+    else
+      echo "The widget is not launched"
+      return 1
+    fi
+}
+
+function func_install_changename()
+{
+    PACKAGENAME="$path/$1"
+    p_name=$1
+    APP_NAME=${p_name%%.wgt}
+    if [ $# != 1 ];then
+      echo "Need to add the parameter"
+      return 1
+    fi
+    if [ "$APP_NAME" = "test-widget-testing" ];then
+        APP_NAME="test-widget"
+    elif [ "$APP_NAME" = "widget-version-1" -o "$APP_NAME" = "widget-version-1-1" -o "$APP_NAME" = "widget-version-1-2" ];then
+        APP_NAME="widget-version"
+    elif [ "$APP_NAME" = "widget-version-2" -o "$APP_NAME" = "widget-version-2-1" ];then
+        APP_NAME="widget-version2"
+    elif [ "$APP_NAME" = "widget-version-3" -o "$APP_NAME" = "widget-version-3-1" ];then
+        APP_NAME="widget-version3"
+    elif [ "$APP_NAME" = "WIdgetIDAppID-same1" -o "$APP_NAME" = "WIdgetIDAppID-same2" -o "$APP_NAME" = "WIdgetIDAppID-different" ];then
+        APP_NAME="WIdgetIDAppID"
+    fi
+    su - app -c "export DBUS_SESSION_BUS_ADDRESS=\"unix:path=/run/user/5000/dbus/user_bus_socket\";export XDG_RUNTIME_DIR=\"/run/user/5000\";xwalkctl --install $PACKAGENAME"
+    find_app $APP_NAME
+    pkgnum=`echo "$pkgids"|wc -w`
+    if [ $pkgnum -ge 1 ]; then
+      echo "The widget is installed successfully"
+      return 0
+    else
+      echo "The installation is failed"
+      return 1
+    fi
+}
+
+function func_uninstall_changename()
+{
+    PACKAGENAME="$path/$1"
+    p_name=$1
+    APP_NAME=${p_name%%.wgt}
+    if [ $# != 1 ];then
+      echo "Need to add the parameter"
+      return 1
+    fi
+    if [ "$APP_NAME" = "test-widget-testing" ];then
+        APP_NAME="test-widget"
+    elif [ "$APP_NAME" = "widget-version-1" -o "$APP_NAME" = "widget-version-1-1" -o "$APP_NAME" = "widget-version-1-2" ];then
+        APP_NAME="widget-version"
+    elif [ "$APP_NAME" = "widget-version-2" -o "$APP_NAME" = "widget-version-2-1" ];then
+        APP_NAME="widget-version2"
+    elif [ "$APP_NAME" = "widget-version-3" -o "$APP_NAME" = "widget-version-3-1" ];then
+        APP_NAME="widget-version3"
+    elif [ "$APP_NAME" = "WIdgetIDAppID-same1" -o "$APP_NAME" = "WIdgetIDAppID-same2" -o "$APP_NAME" = "WIdgetIDAppID-different" ];then
+        APP_NAME="WIdgetIDAppID"
+    fi
+    find_app $APP_NAME
+    pkgnum=`echo "$pkgids"|wc -w`
+    if [ $pkgnum -lt 1 ]; then
+      echo "The widget is not installed"
+      install_app $PACKAGENAME
+      find_app $APP_NAME
+      pkgnum=`echo "$pkgids"|wc -w`
+      if [ $pkgnum -lt 1 ]; then
+        echo "The installation is failed"
+        return 1
+      fi
+    fi
+    find_app $APP_NAME
+    uninstall_app $APP_NAME
+    find_app $APP_NAME
+    pkgnum=`echo "$pkgids"|wc -w`
+    if [ $pkgnum -lt 1 ]; then
+      echo "The widget is uninstalled successfully"
+      return 0
+    else
+      echo "uninstall widget failed"
+      return 1
+    fi
+}

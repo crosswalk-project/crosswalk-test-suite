@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<!--
+Test converted from blink:
+https://github.com/crosswalk-project/blink-crosswalk/blob/master/LayoutTests/fast/mediastream/RTCPeerConnection-stats.html
+-->
+
+<meta charset=utf-8>
+<title>WebRTC Test: the RTCPeerConnection stats interface</title>
+<link rel="author" title="Intel" href="http://www.intel.com">
+<link rel=help href="http://dev.w3.org/2011/webrtc/editor/webrtc.html#rtcpeerconnection-interface-extensions-2">
+<script src=../../resources/testharness.js></script>
+<script src=../../resources/testharnessreport.js></script>
+<div id=log></div>
+<script>
+
+var pc = null;
+var result;
+var timestamp;
+var local;
+
+var t = async_test(document.title, {timeout: 2000});
+
+function getUserMedia(dictionary, callback) {
+  try {
+    navigator.webkitGetUserMedia(dictionary, callback, error);
+  } catch (e) {
+    t.step(function () {
+      assert_unreached("requestSucceeded was called.");
+    });
+    t.done();
+  }
+}
+
+function error() {
+  t.step(function () {
+    assert_unreached("Stream generation failed.");
+  });
+  t.done();
+}
+
+function statsHandler1(status) {
+  t.step(function () {
+    assert_not_equals(status, null);
+
+    result = status.result();
+    assert_equals(result.length, 1);
+    getUserMedia({audio:true, video:true}, gotStream);
+  });
+}
+
+function gotStream(s) {
+  stream = s;
+  pc.addStream(stream);
+  t.step(function () {
+    pc.getStats(statsHandler2);
+  });
+}
+
+function statsHandler2(status) {
+  // Status must be a global variable to be used in test statements.
+  status_g = status;
+  result = status.result();
+  t.step(function () {
+    assert_greater_than_equal(result.length, 2);
+  });
+
+  // The "local" interface is deprecated. Keep test until interface deleted.
+  local = result[0].local;
+  timestamp = local.timestamp;
+  // Windows XP sometimes gives time that appears to go backwards.
+  // This hack will make the tests non-flaky if it never goes backwards
+  // by more than 20 milliseconds.
+  // Up to 10 milliseconds has been observed on XP, 2 milliseconds on Win7.
+  fudgeForXP = 20;
+  timediff = timestamp - startTime + fudgeForXP;
+  t.step(function () {
+    assert_greater_than_equal(timediff, 0);
+    assert_greater_than_equal(local.names().length, 1);
+    assert_greater_than_equal(local.names().indexOf("type"), 0);
+    assert_equals(local.stat("type"), "audio");
+
+    // Newer interface.
+    res = result[0];
+    assert_not_equals(res.id, null);
+    assert_not_equals(res.type, null);
+    assert_greater_than_equal(res.names().length, 1);
+    assert_greater_than_equal(res.names().indexOf("type"), 0);
+    assert_equals(res.stat("type"), "audio");
+    assert_not_equals(status_g.namedItem(res.id), null);
+    assert_not_equals(status_g[res.id], null);
+  });
+  t.done();
+}
+
+var startTime = new Date().getTime();
+
+t.step(function () {
+  pc = new webkitRTCPeerConnection(null);
+  pc.getStats(statsHandler1);
+});
+
+</script>
+

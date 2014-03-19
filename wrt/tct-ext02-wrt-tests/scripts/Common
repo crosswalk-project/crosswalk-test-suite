@@ -1,0 +1,116 @@
+#!/bin/bash
+#
+# Copyright (C) 2010 Intel Corporation
+#
+# This program is free software; you can redistribute it and/or
+# modify it under the terms of the GNU General Public License
+# as published by the Free Software Foundation; either version 2
+# of the License, or (at your option) any later version.
+#
+# This program is distributed in the hope that it will be useful,
+# but WITHOUT ANY WARRANTY; without even the implied warranty of
+# MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+# GNU General Public License for more details.
+#
+# You should have received a copy of the GNU General Public License
+# along with this program; if not, write to the Free Software
+# Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
+#
+# Author:
+#        Yue, jianhui <jianhuix.a.yue@intel.com>
+
+function func_install()
+{
+    if [ $# != 1 ];then
+      echo "Need to add the parameter"
+      return 1
+    fi
+    path=$(dirname $(dirname $0))
+    PACKAGENAME="$path/$1"
+    p_name=$1
+    APP_NAME=${p_name%.*}
+    su - app -c "export DBUS_SESSION_BUS_ADDRESS=\"unix:path=/run/user/5000/dbus/user_bus_socket\";export XDG_RUNTIME_DIR=\"/run/user/5000\";xwalkctl --install $PACKAGENAME"
+    find_app $APP_NAME
+    pkgnum=`echo "$pkgids"|wc -w`
+    if [ $pkgnum -lt 1 ]; then
+      echo "The installation is failed"
+      return 1
+    else
+      echo "The widget is installed successfully"
+      return 0
+    fi
+}
+
+function func_uninstall()
+{
+    if [ $# != 1 ];then
+      echo "Need to add the parameter"
+      return 1
+    fi
+    path=$(dirname $(dirname $0))
+    PACKAGENAME="$path/$1"
+    p_name=$1
+    APP_NAME=${p_name%.*}
+    find_app $APP_NAME
+    pkgnum=`echo "$pkgids"|wc -w`
+    if [ $pkgnum -lt 1 ]; then
+      echo "The widget is not installed"
+      return 1
+    fi
+    uninstall_app $APP_NAME
+    find_app $APP_NAME
+    pkgnum=`echo "$pkgids"|wc -w`
+    if [ $pkgnum -lt 1 ]; then
+      echo "The installation is failed"
+      return 1
+    else
+      echo "The widget is installed successfully"
+      return 0
+    fi
+}
+
+function func_check()
+{
+    if [ $# != 1 ];then
+      echo "Need to add the parameter"
+      return 1
+    fi
+    p_name=$1
+    APP_NAME=${p_name%.*}
+    find_app $APP_NAME
+    pkgnum=`echo "$pkgids"|wc -w`
+    if [ $pkgnum -lt 1 ]; then
+      echo "The application id is not exist"
+      return 1
+    else
+      echo "The application id is exist"
+      return 0
+    fi
+}
+
+##usage: uninstall_app $app_name(e.g. uninstall_app tct-sp02-wrt-tests)##
+function uninstall_app(){
+    su - app -c "export DBUS_SESSION_BUS_ADDRESS=\"unix:path=/run/user/5000/dbus/user_bus_socket\";export XDG_RUNTIME_DIR=\"/run/user/5000\";xwalkctl" >/tmp/apps.txt 2>&1
+    pkgids=`cat /tmp/apps.txt | grep $1 | awk '{print $(NF-1)}'`
+    for pkgid in $pkgids
+    do
+        su - app -c "export DBUS_SESSION_BUS_ADDRESS=\"unix:path=/run/user/5000/dbus/user_bus_socket\";export XDG_RUNTIME_DIR=\"/run/user/5000\";xwalkctl --uninstall $pkgid"
+    done
+}
+
+##usage: find_app $app_name(e.g. uninstall_app tct-sp02-wrt-tests)##
+function find_app(){
+    su - app -c "export DBUS_SESSION_BUS_ADDRESS=\"unix:path=/run/user/5000/dbus/user_bus_socket\";export XDG_RUNTIME_DIR=\"/run/user/5000\";xwalkctl" >/tmp/apps.txt 2>&1
+    pkgids=`cat /tmp/apps.txt | grep $1 | awk '{print $(NF-1)}'`
+}
+
+##usage: launch_app $app_name(e.g. launch_app tct-sp02-wrt-tests)##
+function launch_app(){
+    find_app $1
+    pkgnum=`echo "$pkgids"|wc -w`
+    if [ $pkgnum -eq 1 ]; then
+        su - app -c "export DBUS_SESSION_BUS_ADDRESS=\"unix:path=/run/user/5000/dbus/user_bus_socket\";export XDG_RUNTIME_DIR=\"/run/user/5000\";nohup xwalk-launcher $pkgids &>/dev/null &"
+    else
+        echo "launch error, please check if exists this app or there are more than one app with this app_name"
+    fi
+}

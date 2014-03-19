@@ -1,0 +1,332 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-stylesheet type="text/xsl"  href="./testcase.xsl"?>
+<test_definition>
+  <suite name="tct-gumallow-w3c-tests" launcher="xwalk" category="W3C/HTML5 APIs">
+    <set name="GetUserMedia">
+      <testcase purpose="Check if Navigator implements NavigatorUserMedia" type="compliance" status="approved" component="WebAPI/Media/getUserMedia (Partial)" execution_type="auto" priority="P0" id="navigator_getusermedia_supported">
+        <description>
+          <test_script_entry test_script_expected_result="Pass">/opt/tct-gumallow-w3c-tests/gumallow/navigator_getusermedia_supported.html</test_script_entry>
+        </description>
+        <specs>
+          <spec>
+            <spec_assertion element_type="method" element_name="getUserMedia" interface="NavigatorUserMedia" specification="getUserMedia (Partial)" section="Media" category="Tizen W3C API Specifications"/>
+            <spec_url>http://dev.w3.org/2011/webrtc/editor/getusermedia-20111130.html</spec_url>
+            <spec_statement>Navigator implements NavigatorUserMedia</spec_statement>
+          </spec>
+        </specs>
+      </testcase>
+      <testcase purpose="Check if we can access to the user's microphone by calling the API 'getUserMedia'" type="compliance" status="approved" component="WebAPI/Media/getUserMedia (Partial)" execution_type="auto" priority="P3" id="navigator_audio_getting_datastream">
+        <description>
+          <test_script_entry>/opt/tct-gumallow-w3c-tests/gumallow/navigator_audio_getting_datastream.html</test_script_entry>
+        </description>
+        <specs>
+          <spec>
+            <spec_assertion usage="true" interface="NavigatorUserMedia" specification="getUserMedia (Partial)" section="Media" category="Tizen W3C API Specifications"/>
+            <spec_url>http://dev.w3.org/2011/webrtc/editor/getusermedia-20111130.html#navigatorusermedia</spec_url>
+            <spec_statement>Set to true if a audio track is requested, default is false</spec_statement>
+          </spec>
+        </specs>
+      </testcase>
+      <testcase purpose="Check if we can access to local devices (video cameras, microphones, Web cams) that can generate multimedia stream data by calling the API 'getUserMedia'" type="compliance" status="approved" component="WebAPI/Media/getUserMedia (Partial)" execution_type="auto" priority="P3" id="navigator_audio_video_getting_datastream">
+        <description>
+          <test_script_entry>/opt/tct-gumallow-w3c-tests/gumallow/navigator_audio_video_getting_datastream.html</test_script_entry>
+        </description>
+        <specs>
+          <spec>
+            <spec_assertion usage="true" interface="NavigatorUserMedia" specification="getUserMedia (Partial)" section="Media" category="Tizen W3C API Specifications"/>
+            <spec_url>http://dev.w3.org/2011/webrtc/editor/getusermedia-20111130.html#navigatorusermedia</spec_url>
+            <spec_statement>Access to multimedia streams (video, audio, or both) from local devices (video cameras, microphones, Web cams) can have a number of uses, such as real-time communication, recording, surveillance.</spec_statement>
+          </spec>
+        </specs>
+      </testcase>
+      <testcase purpose="Check if we can not access to the user's microphone by calling the API 'getUserMedia'" type="compliance" status="approved" component="WebAPI/Media/getUserMedia (Partial)" execution_type="auto" priority="P3" id="navigator_audio_not_getting_datastream">
+        <description>
+          <test_script_entry>/opt/tct-gumallow-w3c-tests/gumallow/navigator_audio_not_getting_datastream.html</test_script_entry>
+        </description>
+        <specs>
+          <spec>
+            <spec_assertion usage="true" interface="NavigatorUserMedia" specification="getUserMedia (Partial)" section="Media" category="Tizen W3C API Specifications"/>
+            <spec_url>http://dev.w3.org/2011/webrtc/editor/getusermedia-20111130.html#navigatorusermedia</spec_url>
+            <spec_statement>Set to true if a audio track is requested, default is false</spec_statement>
+          </spec>
+        </specs>
+      </testcase>
+      <testcase purpose="Check if we can access to the user's Web cams or video cameras by calling the API 'getUserMedia'" type="compliance" status="approved" component="WebAPI/Media/getUserMedia (Partial)" execution_type="auto" priority="P3" id="navigator_video_getting_datastream">
+        <description>
+          <test_script_entry>/opt/tct-gumallow-w3c-tests/gumallow/navigator_video_getting_datastream.html</test_script_entry>
+        </description>
+        <specs>
+          <spec>
+            <spec_assertion usage="true" interface="NavigatorUserMedia" specification="getUserMedia (Partial)" section="Media" category="Tizen W3C API Specifications"/>
+            <spec_url>http://dev.w3.org/2011/webrtc/editor/getusermedia-20111130.html#navigatorusermedia</spec_url>
+            <spec_statement>Set to true if an video track is requested, default is false</spec_statement>
+          </spec>
+        </specs>
+      </testcase>
+      <testcase purpose="Check if we can not access to the user's Web cams and video cameras by calling the API 'getUserMedia'" type="compliance" status="approved" component="WebAPI/Media/getUserMedia (Partial)" execution_type="auto" priority="P3" id="navigator_video_not_getting_datastream">
+        <description>
+          <test_script_entry>/opt/tct-gumallow-w3c-tests/gumallow/navigator_video_not_getting_datastream.html</test_script_entry>
+        </description>
+        <specs>
+          <spec>
+            <spec_assertion usage="true" interface="NavigatorUserMedia" specification="getUserMedia (Partial)" section="Media" category="Tizen W3C API Specifications"/>
+            <spec_url>http://dev.w3.org/2011/webrtc/editor/getusermedia-20111130.html#navigatorusermedia</spec_url>
+            <spec_statement>Set to true if an video track is requested, default is false</spec_statement>
+          </spec>
+        </specs>
+      </testcase>
+      <testcase purpose="Test checks that the MediaStream object returned by the success callback in getUserMedia can be properly assigned to a video element via the srcObject attribute" type="compliance" status="ready" component="WebAPI/Media/getUserMedia (Partial)" execution_type="manual" priority="P2" id="video-assignment-manual">
+        <description>
+          <test_script_entry>/opt/tct-gumallow-w3c-tests/gumallow/w3c/mediastreams-as-media-elements/video-assignment-manual.html</test_script_entry>
+        </description>
+        <specs>
+          <spec>
+            <spec_assertion element_type="method" element_name="getUserMedia" interface="NavigatorUserMedia" specification="getUserMedia (Partial)" section="Media" category="Tizen W3C API Specifications"/>
+            <spec_url>http://dev.w3.org/2011/webrtc/editor/getusermedia.html#navigatorusermedia</spec_url>
+            <spec_statement/>
+          </spec>
+        </specs>
+      </testcase>
+      <testcase purpose="Test checks for the presence of the navigator.getUserMedia method, taking vendor prefixes into account" type="compliance" status="ready" component="WebAPI/Media/getUserMedia (Partial)" execution_type="auto" priority="P2" id="api-present">
+        <description>
+          <test_script_entry>/opt/tct-gumallow-w3c-tests/gumallow/w3c/obtaining-local-multimedia-content/navigatorusermedia/api-present.html</test_script_entry>
+        </description>
+        <specs>
+          <spec>
+            <spec_assertion element_type="method" element_name="getUserMedia" interface="NavigatorUserMedia" specification="getUserMedia (Partial)" section="Media" category="Tizen W3C API Specifications"/>
+            <spec_url>http://dev.w3.org/2011/webrtc/editor/getusermedia.html#navigatorusermedia</spec_url>
+            <spec_statement/>
+          </spec>
+        </specs>
+      </testcase>
+      <testcase purpose="Test checks that getUserMedia with no value in the options parameter raises a NOT_SUPPORTED_ERR exception" type="compliance" status="ready" component="WebAPI/Media/getUserMedia (Partial)" execution_type="auto" priority="P2" id="empty-option-param">
+        <description>
+          <test_script_entry>/opt/tct-gumallow-w3c-tests/gumallow/w3c/obtaining-local-multimedia-content/navigatorusermedia/empty-option-param.html</test_script_entry>
+        </description>
+        <specs>
+          <spec>
+            <spec_assertion element_type="method" element_name="getUserMedia" interface="NavigatorUserMedia" specification="getUserMedia (Partial)" section="Media" category="Tizen W3C API Specifications"/>
+            <spec_url>http://dev.w3.org/2011/webrtc/editor/getusermedia.html#navigatorusermedia</spec_url>
+            <spec_statement/>
+          </spec>
+        </specs>
+      </testcase>
+      <testcase purpose="Test checks that setting a trivial mandatory constraint (width >=0) in getUserMedia works" type="compliance" status="ready" component="WebAPI/Media/getUserMedia (Partial)" execution_type="auto" priority="P2" id="getusermedia-impossible-constraint">
+        <description>
+          <test_script_entry>/opt/tct-gumallow-w3c-tests/gumallow/w3c/obtaining-local-multimedia-content/navigatorusermedia/getusermedia-impossible-constraint.html</test_script_entry>
+        </description>
+        <specs>
+          <spec>
+            <spec_assertion element_type="method" element_name="getUserMedia" interface="NavigatorUserMedia" specification="getUserMedia (Partial)" section="Media" category="Tizen W3C API Specifications"/>
+            <spec_url>http://dev.w3.org/2011/webrtc/editor/getusermedia.html#navigatorusermedia</spec_url>
+            <spec_statement/>
+          </spec>
+        </specs>
+      </testcase>
+      <testcase purpose="Test checks that setting an optional constraint in getUserMedia is handled as optional" type="compliance" status="ready" component="WebAPI/Media/getUserMedia (Partial)" execution_type="auto" priority="P2" id="getusermedia-optional-constraint">
+        <description>
+          <test_script_entry>/opt/tct-gumallow-w3c-tests/gumallow/w3c/obtaining-local-multimedia-content/navigatorusermedia/getusermedia-optional-constraint.html</test_script_entry>
+        </description>
+        <specs>
+          <spec>
+            <spec_assertion element_type="method" element_name="getUserMedia" interface="NavigatorUserMedia" specification="getUserMedia (Partial)" section="Media" category="Tizen W3C API Specifications"/>
+            <spec_url>http://dev.w3.org/2011/webrtc/editor/getusermedia.html#navigatorusermedia</spec_url>
+            <spec_statement/>
+          </spec>
+        </specs>
+      </testcase>
+      <testcase purpose="Test checks that setting a trivial mandatory constraint (width >=0) in getUserMedia works" type="compliance" status="ready" component="WebAPI/Media/getUserMedia (Partial)" execution_type="auto" priority="P2" id="getusermedia-trivial-constraint">
+        <description>
+          <test_script_entry>/opt/tct-gumallow-w3c-tests/gumallow/w3c/obtaining-local-multimedia-content/navigatorusermedia/getusermedia-trivial-constraint.html</test_script_entry>
+        </description>
+        <specs>
+          <spec>
+            <spec_assertion element_type="method" element_name="getUserMedia" interface="NavigatorUserMedia" specification="getUserMedia (Partial)" section="Media" category="Tizen W3C API Specifications"/>
+            <spec_url>http://dev.w3.org/2011/webrtc/editor/getusermedia.html#navigatorusermedia</spec_url>
+            <spec_statement/>
+          </spec>
+        </specs>
+      </testcase>
+      <testcase purpose="Test checks that getUserMedia with an unknown value in the options parameter raises a NOT_SUPPORTED_ERR exception" type="compliance" status="ready" component="WebAPI/Media/getUserMedia (Partial)" execution_type="auto" priority="P2" id="unknownkey-option-param">
+        <description>
+          <test_script_entry>/opt/tct-gumallow-w3c-tests/gumallow/w3c/obtaining-local-multimedia-content/navigatorusermedia/unknownkey-option-param.html</test_script_entry>
+        </description>
+        <specs>
+          <spec>
+            <spec_assertion element_type="method" element_name="getUserMedia" interface="NavigatorUserMedia" specification="getUserMedia (Partial)" section="Media" category="Tizen W3C API Specifications"/>
+            <spec_url>http://dev.w3.org/2011/webrtc/editor/getusermedia.html#navigatorusermedia</spec_url>
+            <spec_statement/>
+          </spec>
+        </specs>
+      </testcase>
+      <testcase purpose="Test checks that a disabled audio track in a MediaStream is rendered as silence" type="compliance" status="ready" component="WebAPI/Media/getUserMedia (Partial)" execution_type="manual" priority="P2" id="disabled-audio-silence">
+        <description>
+          <test_script_entry>/opt/tct-gumallow-w3c-tests/gumallow/w3c/stream-api/introduction/disabled-audio-silence.html</test_script_entry>
+        </description>
+        <specs>
+          <spec>
+            <spec_assertion element_type="method" element_name="getAudioTracks" interface="MediaStream" specification="getUserMedia (Partial)" section="Media" category="Tizen W3C API Specifications"/>
+            <spec_url>http://dev.w3.org/2011/webrtc/editor/getusermedia.html#navigatorusermedia</spec_url>
+            <spec_statement/>
+          </spec>
+        </specs>
+      </testcase>
+      <testcase purpose="Test checks that a disabled video track in a MediaStream is rendered as blackness" type="compliance" status="ready" component="WebAPI/Media/getUserMedia (Partial)" execution_type="manual" priority="P2" id="disabled-video-black">
+        <description>
+          <test_script_entry>/opt/tct-gumallow-w3c-tests/gumallow/w3c/stream-api/introduction/disabled-video-black.html</test_script_entry>
+        </description>
+        <specs>
+          <spec>
+            <spec_assertion element_type="method" element_name="getVideoTracks" interface="MediaStream" specification="getUserMedia (Partial)" section="Media" category="Tizen W3C API Specifications"/>
+            <spec_url>http://dev.w3.org/2011/webrtc/editor/getusermedia.html#navigatorusermedia</spec_url>
+            <spec_statement/>
+          </spec>
+        </specs>
+      </testcase>
+      <testcase purpose="Test checks that the MediaStream object returned by the success callback in getUserMedia has exactly one audio track" type="compliance" status="ready" component="WebAPI/Media/getUserMedia (Partial)" execution_type="manual" priority="P2" id="audio">
+        <description>
+          <test_script_entry>/opt/tct-gumallow-w3c-tests/gumallow/w3c/stream-api/mediastream/audio.html</test_script_entry>
+        </description>
+        <specs>
+          <spec>
+            <spec_assertion element_type="method" element_name="getAudioTracks" interface="MediaStream" specification="getUserMedia (Partial)" section="Media" category="Tizen W3C API Specifications"/>
+            <spec_url>http://dev.w3.org/2011/webrtc/editor/getusermedia.html#navigatorusermedia</spec_url>
+            <spec_statement/>
+          </spec>
+        </specs>
+      </testcase>
+      <testcase purpose="Test checks that adding a track to a MediaStream works as expected" type="compliance" status="ready" component="WebAPI/Media/getUserMedia (Partial)" execution_type="manual" priority="P2" id="mediastream-addtrack">
+        <description>
+          <test_script_entry>/opt/tct-gumallow-w3c-tests/gumallow/w3c/stream-api/mediastream/mediastream-addtrack.html</test_script_entry>
+        </description>
+        <specs>
+          <spec>
+            <spec_assertion element_type="method" element_name="addTrack" interface="MediaStream" specification="getUserMedia (Partial)" section="Media" category="Tizen W3C API Specifications"/>
+            <spec_url>http://dev.w3.org/2011/webrtc/editor/getusermedia.html#navigatorusermedia</spec_url>
+            <spec_statement/>
+          </spec>
+        </specs>
+      </testcase>
+      <testcase purpose="Test checks that adding a track to a finished MediaStream raises an INVALID_STATE_ERR exception" type="compliance" status="ready" component="WebAPI/Media/getUserMedia (Partial)" execution_type="manual" priority="P2" id="mediastream-finished-add">
+        <description>
+          <test_script_entry>/opt/tct-gumallow-w3c-tests/gumallow/w3c/stream-api/mediastream/mediastream-finished-add.html</test_script_entry>
+        </description>
+        <specs>
+          <spec>
+            <spec_assertion element_type="method" element_name="addTrack" interface="MediaStream" specification="getUserMedia (Partial)" section="Media" category="Tizen W3C API Specifications"/>
+            <spec_url>http://dev.w3.org/2011/webrtc/editor/getusermedia.html#navigatorusermedia</spec_url>
+            <spec_statement/>
+          </spec>
+        </specs>
+      </testcase>
+      <testcase purpose="Test checks that MediaStream.getTrackById behaves as expected" type="compliance" status="ready" component="WebAPI/Media/getUserMedia (Partial)" execution_type="manual" priority="P2" id="mediastream-gettrackid">
+        <description>
+          <test_script_entry>/opt/tct-gumallow-w3c-tests/gumallow/w3c/stream-api/mediastream/mediastream-gettrackid.html</test_script_entry>
+        </description>
+        <specs>
+          <spec>
+            <spec_assertion element_type="method" element_name="getTrackById" interface="MediaStream" specification="getUserMedia (Partial)" section="Media" category="Tizen W3C API Specifications"/>
+            <spec_url>http://dev.w3.org/2011/webrtc/editor/getusermedia.html#navigatorusermedia</spec_url>
+            <spec_statement/>
+          </spec>
+        </specs>
+      </testcase>
+      <testcase purpose="Test checks that the MediaStream constructor follows the algorithm set in the spec" type="compliance" status="ready" component="WebAPI/Media/getUserMedia (Partial)" execution_type="manual" priority="P2" id="mediastream-idl">
+        <description>
+          <test_script_entry>/opt/tct-gumallow-w3c-tests/gumallow/w3c/stream-api/mediastream/mediastream-idl.html</test_script_entry>
+        </description>
+        <specs>
+          <spec>
+            <spec_assertion element_type="method" element_name="getTrackById" interface="MediaStream" specification="getUserMedia (Partial)" section="Media" category="Tizen W3C API Specifications"/>
+            <spec_url>http://dev.w3.org/2011/webrtc/editor/getusermedia.html#navigatorusermedia</spec_url>
+            <spec_statement/>
+          </spec>
+        </specs>
+      </testcase>
+      <testcase purpose="Test checks that the MediaStream object returned by the success callback in getUserMedia has a correct id" type="compliance" status="ready" component="WebAPI/Media/getUserMedia (Partial)" execution_type="manual" priority="P2" id="mediastream-id-manual">
+        <description>
+          <test_script_entry>/opt/tct-gumallow-w3c-tests/gumallow/w3c/stream-api/mediastream/mediastream-id-manual.html</test_script_entry>
+        </description>
+        <specs>
+          <spec>
+            <spec_assertion element_type="method" element_name="getTrackById" interface="MediaStream" specification="getUserMedia (Partial)" section="Media" category="Tizen W3C API Specifications"/>
+            <spec_url>http://dev.w3.org/2011/webrtc/editor/getusermedia.html#navigatorusermedia</spec_url>
+            <spec_statement/>
+          </spec>
+        </specs>
+      </testcase>
+      <testcase purpose="Test checks that removinging a track from a MediaStream works as expected" type="compliance" status="ready" component="WebAPI/Media/getUserMedia (Partial)" execution_type="manual" priority="P2" id="mediastream-removetrack">
+        <description>
+          <test_script_entry>/opt/tct-gumallow-w3c-tests/gumallow/w3c/stream-api/mediastream/mediastream-removetrack.html</test_script_entry>
+        </description>
+        <specs>
+          <spec>
+            <spec_assertion element_type="method" element_name="onremovetrack" interface="MediaStreamTrack" specification="getUserMedia (Partial)" section="Media" category="Tizen W3C API Specifications"/>
+            <spec_url>http://dev.w3.org/2011/webrtc/editor/getusermedia.html#navigatorusermedia</spec_url>
+            <spec_statement/>
+          </spec>
+        </specs>
+      </testcase>
+      <testcase purpose="Test checks that the MediaStream object returned by the success callback in getUserMedia has a ended set to false at start, and triggers 'onended' when it is set to true" type="compliance" status="ready" component="WebAPI/Media/getUserMedia (Partial)" execution_type="manual" priority="P2" id="stream-ended">
+        <description>
+          <test_script_entry>/opt/tct-gumallow-w3c-tests/gumallow/w3c/stream-api/mediastream/stream-ended.html</test_script_entry>
+        </description>
+        <specs>
+          <spec>
+            <spec_assertion element_type="method" element_name="ended" interface="MediaStreamTrack" specification="getUserMedia (Partial)" section="Media" category="Tizen W3C API Specifications"/>
+            <spec_url>http://dev.w3.org/2011/webrtc/editor/getusermedia.html#navigatorusermedia</spec_url>
+            <spec_statement/>
+          </spec>
+        </specs>
+      </testcase>
+      <testcase purpose="Test checks that the MediaStream object returned by the success callback in getUserMedia has exactly one video track and no audio" type="compliance" status="ready" component="WebAPI/Media/getUserMedia (Partial)" execution_type="manual" priority="P2" id="video">
+        <description>
+          <test_script_entry>/opt/tct-gumallow-w3c-tests/gumallow/w3c/stream-api/mediastream/video.html</test_script_entry>
+        </description>
+        <specs>
+          <spec>
+            <spec_assertion element_type="method" element_name="getVideoTracks" interface="MediaStream" specification="getUserMedia (Partial)" section="Media" category="Tizen W3C API Specifications"/>
+            <spec_url>http://dev.w3.org/2011/webrtc/editor/getusermedia.html#navigatorusermedia</spec_url>
+            <spec_statement/>
+          </spec>
+        </specs>
+      </testcase>
+      <testcase purpose="Test checks that the video and audio tracks of MediaStream object returned by the success callback in getUserMedia are correctly set into ended state when permission is revoked" type="compliance" status="ready" component="WebAPI/Media/getUserMedia (Partial)" execution_type="manual" priority="P2" id="mediastreamtrack-end">
+        <description>
+          <test_script_entry>/opt/tct-gumallow-w3c-tests/gumallow/w3c/stream-api/mediastreamtrack/mediastreamtrack-end.html</test_script_entry>
+        </description>
+        <specs>
+          <spec>
+            <spec_assertion element_type="attribute" element_name="readyState" interface="MediaStreamTrack" specification="getUserMedia (Partial)" section="Media" category="Tizen W3C API Specifications"/>
+            <spec_url>http://dev.w3.org/2011/webrtc/editor/getusermedia.html#navigatorusermedia</spec_url>
+            <spec_statement/>
+          </spec>
+        </specs>
+      </testcase>
+      <testcase purpose="Test checks that distinct mediastream tracks have distinct ids" type="compliance" status="ready" component="WebAPI/Media/getUserMedia (Partial)" execution_type="manual" priority="P2" id="mediastreamtrack-id">
+        <description>
+          <test_script_entry>/opt/tct-gumallow-w3c-tests/gumallow/w3c/stream-api/mediastreamtrack/mediastreamtrack-id.html</test_script_entry>
+        </description>
+        <specs>
+          <spec>
+            <spec_assertion element_type="attribute" element_name="id" interface="MediaStreamTrack" specification="getUserMedia (Partial)" section="Media" category="Tizen W3C API Specifications"/>
+            <spec_url>http://dev.w3.org/2011/webrtc/editor/getusermedia.html#navigatorusermedia</spec_url>
+            <spec_statement/>
+          </spec>
+        </specs>
+      </testcase>
+      <testcase purpose="Test checks that the video track of MediaStream object returned by the success callback in getUserMedia is correctly initialized" type="compliance" status="ready" component="WebAPI/Media/getUserMedia (Partial)" execution_type="manual" priority="P2" id="mediastreamtrack-init">
+        <description>
+          <test_script_entry>/opt/tct-gumallow-w3c-tests/gumallow/w3c/stream-api/mediastreamtrack/mediastreamtrack-init.html</test_script_entry>
+        </description>
+        <specs>
+          <spec>
+            <spec_assertion element_type="attribute" element_name="id" interface="MediaStreamTrack" specification="getUserMedia (Partial)" section="Media" category="Tizen W3C API Specifications"/>
+            <spec_url>http://dev.w3.org/2011/webrtc/editor/getusermedia.html#navigatorusermedia</spec_url>
+            <spec_statement/>
+          </spec>
+        </specs>
+      </testcase>
+    </set>
+  </suite>
+</test_definition>

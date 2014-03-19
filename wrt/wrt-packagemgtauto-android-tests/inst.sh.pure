@@ -1,0 +1,41 @@
+#!/bin/bash
+
+#parse params
+USAGE="Usage: ./inst.sh [-i] [-u]
+  -i clean srouce file
+  -u unzip package
+[-i] option was set as default."
+
+PACKAGENAME=wrt-packagemgtauto-android-tests
+RESOURCE_DIR=/opt/usr/media
+chmod 777 -R /opt/usr/media/opt/$PACKAGENAME.zip
+
+function installpkg()
+{
+    #environment clear
+    echo "environment clear >>>>>>>>>>>>>>>>>>>>>>>>>>>>>."
+    [ -d /opt/usr/media ] ||  mkdir -p /opt/usr/media
+    [ -e /opt/usr/media/$PACKAGENAME.zip ] && rm /opt/usr/media/$PACKAGENAME.zip
+    [ -e /opt/usr/media/opt/$PACKAGENAME ] && rm -rf /opt/usr/media/opt/$PACKAGENAME
+    cp -arf $PACKAGENAME.zip /opt/usr/media/
+    cd /opt/usr/media/
+    unzip $PACKAGENAME.zip
+    echo "Package unzip successfully and push to host /opt/usr/media/"
+}
+
+function uninstallpkg()
+{
+    [ -d /opt/usr/media/opt/$PACKAGENAME ] && rm -rf /opt/usr/media/opt/$PACKAGENAME
+    [ -e /opt/usr/media/$PACKAGENAME.zip ] && rm /opt/usr/media/$PACKAGENAME.zip
+    echo "Clean folder successfully..."
+}
+
+case "$1" in
+    -h|--help) echo "$USAGE"
+               exit ;;
+    ""|-i) installpkg;;
+    -u) uninstallpkg;;
+    *) echo "Unknown option: $1"
+       echo "$USAGE"
+       exit ;;
+esac

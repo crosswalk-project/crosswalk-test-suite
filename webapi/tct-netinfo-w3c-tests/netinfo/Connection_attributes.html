@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<!--
+Copyright (c) 2013 Intel Corporation.
+
+Redistribution and use in source and binary forms, with or without modification,
+are permitted provided that the following conditions are met:
+
+* Redistributions of works must retain the original copyright notice, this list
+  of conditions and the following disclaimer.
+* Redistributions in binary form must reproduce the original copyright notice,
+  this list of conditions and the following disclaimer in the documentation
+  and/or other materials provided with the distribution.
+* Neither the name of Intel Corporation nor the names of its contributors
+  may be used to endorse or promote products derived from this work without
+  specific prior written permission.
+
+THIS SOFTWARE IS PROVIDED BY INTEL CORPORATION "AS IS"
+AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE
+IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE
+ARE DISCLAIMED. IN NO EVENT SHALL INTEL CORPORATION BE LIABLE FOR ANY DIRECT,
+INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING,
+BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE,
+DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY
+OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING
+NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE,
+EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
+
+Authors:
+        Fan,Weiwei <weiwix.fan@intel.com>
+        Xinx, liu <xinx.liu@intel.com>
+
+-->
+
+<html>
+  <head>
+    <title>NetworkInfo Test: Connection_attributes</title>
+    <link rel="author" title="Intel" href="http://www.intel.com" />
+    <link rel="help" href="http://www.w3.org/TR/2012/WD-netinfo-api-20121129/#the-connection-interface" />
+    <meta name="flags" content="" />
+    <meta name="assert" content="Check that the Connection attributes are implemented as specified for existence, type and default value" />
+    <script src="../resources/testharness.js"></script>
+    <script src="../resources/testharnessreport.js"></script>
+  </head>
+  <body>
+  <div id="log"></div>
+    <script>
+        var connection = navigator.connection || navigator.mozConnection || navigator.webkitConnection;
+        var offset = 5.0;
+        [
+            // bandwidth
+            ["double", "bandwidth", 0, true],
+            // metered
+            ["boolean", "metered", false, true],
+            // onwebkitnetworkinfochange
+            ["EventHandler", "onwebkitnetworkinfochange", null]
+        ].forEach(function(attr) {
+            var type = attr[0];
+            var name = attr[1];
+            var isReadOnly = attr[3];
+
+            // existence check
+            test(function() {
+                assert_true(name in connection, name + " attribute exists ");
+            }, "Check if Connection." + name + " attribute exists");
+
+            // type and/or default value check
+            switch(type) {
+                case "double":
+                    test(function() {
+                        assert_equals(typeof connection[name], "number", name + " attribute of type");
+                    }, "Check if Connection." + name + " attribute is of type number");
+                    break;
+                case "boolean":
+                    test(function() {
+                        assert_equals(typeof connection[name], "boolean", name + " attribute of type");
+                    }, "Check if Connection." + name + " attribute is of type boolean");
+                    break;
+                case "EventHandler":
+                    test(function() {
+                        assert_equals(connection[name], attr[2], "the value of " + name + " attribute");
+                    }, "Check if the initial value of Connection." + name + " is " + attr[2]);
+                    break;
+                default:
+                    break;
+            }
+
+            // readonly check
+            switch(name) {
+                case "bandwidth":
+                    test(function() {
+                        var iniValue = connection.bandwidth;
+                        connection.bandwidth = iniValue + offset;
+                        assert_true(connection.bandwidth == iniValue, "Connection.bandwidth attribute is readonly");
+                    }, "Check if Connection." + name + " is readonly");
+                    break;
+                case "metered":
+                    test(function() {
+                        var iniValue = connection.metered;
+                        connection.metered = !iniValue;
+                        assert_true(connection.metered == iniValue, "Connection.metered attribute is readonly");
+                    }, "Check if Connection." + name + " is readonly");
+                    break;
+                default:
+                    break;
+            }
+        });
+    </script>
+  </body>
+</html>

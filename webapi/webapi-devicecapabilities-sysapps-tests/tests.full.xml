@@ -1,0 +1,658 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-stylesheet type="text/xsl"  href="./testcase.xsl"?>
+<test_definition>
+  <suite name="webapi-devicecapabilities-sysapps-tests" launcher="xwalk" category="W3C/HTML5 APIs">
+    <set name="idlharness">
+      <testcase purpose="This test validates the WebIDL included in the DeviceCapabilities specification" type="compliance" status="approved" component="WebAPI/System-level APIs/Device Capabilities" execution_type="auto" priority="P0" id="DeviceCapabilities_idlhaness_test">
+        <description>
+          <test_script_entry>/opt/webapi-devicecapabilities-sysapps-tests/devicecapabilities/DeviceCapabilities_idlharness.html</test_script_entry>
+        </description>
+        <specs>
+          <spec>
+            <spec_assertion element_type="TBD" element_name="TBD" interface="TBD" specification="Device Capabilities" section="System-level APIs" category="W3C API Specifications"/>
+            <spec_url>http://www.w3.org/2012/sysapps/device-capabilities/</spec_url>
+            <spec_statement/>
+          </spec>
+        </specs>
+      </testcase>
+    </set>
+    <set name="DeviceCapabilities">
+      <testcase purpose="Check if the Navigator system attribute must not be null" type="compliance" status="approved" component="WebAPI/System-level APIs/Device Capabilities" execution_type="auto" priority="P1" id="Navigator_system">
+        <description>
+          <test_script_entry>/opt/webapi-devicecapabilities-sysapps-tests/devicecapabilities/Navigator_system.html</test_script_entry>
+        </description>
+        <specs>
+          <spec>
+            <spec_assertion element_type="property" element_name="system" interface="Navigator" specification="Device Capabilities" section="System-level APIs" category="W3C API Specifications"/>
+            <spec_url>http://www.w3.org/2012/sysapps/device-capabilities/</spec_url>
+            <spec_statement/>
+          </spec>
+        </specs>
+      </testcase>
+      <testcase purpose="Check if getAVCodecs method of DeviceCapabilities can work properly" type="compliance" status="approved" component="WebAPI/System-level APIs/Device Capabilities" execution_type="auto" priority="P1" id="DeviceCapabilities_getAVCodecs">
+        <description>
+          <test_script_entry>/opt/webapi-devicecapabilities-sysapps-tests/devicecapabilities/DeviceCapabilities_getAVCodecs.html</test_script_entry>
+        </description>
+        <specs>
+          <spec>
+            <spec_assertion element_type="method" element_name="getAVCodecs" interface="DeviceCapabilities" specification="Device Capabilities" section="System-level APIs" category="W3C API Specifications"/>
+            <spec_url>http://www.w3.org/2012/sysapps/device-capabilities/</spec_url>
+            <spec_statement/>
+          </spec>
+        </specs>
+      </testcase>
+      <testcase purpose="Check if getCPUInfo method of DeviceCapabilities can work properly" type="compliance" status="approved" component="WebAPI/System-level APIs/Device Capabilities" execution_type="auto" priority="P0" id="DeviceCapabilities_getCPUInfo">
+        <description>
+          <test_script_entry>/opt/webapi-devicecapabilities-sysapps-tests/devicecapabilities/DeviceCapabilities_getCPUInfo.html</test_script_entry>
+        </description>
+        <specs>
+          <spec>
+            <spec_assertion element_type="method" element_name="getCPUInfo" interface="DeviceCapabilities" specification="Device Capabilities" section="System-level APIs" category="W3C API Specifications"/>
+            <spec_url>http://www.w3.org/2012/sysapps/device-capabilities/</spec_url>
+            <spec_statement/>
+          </spec>
+        </specs>
+      </testcase>
+      <testcase purpose="Check if getDisplayInfo method of DeviceCapabilities can work properly" type="compliance" status="approved" component="WebAPI/System-level APIs/Device Capabilities" execution_type="auto" priority="P1" id="DeviceCapabilities_getDisplayInfo">
+        <description>
+          <test_script_entry>/opt/webapi-devicecapabilities-sysapps-tests/devicecapabilities/DeviceCapabilities_getDisplayInfo.html</test_script_entry>
+        </description>
+        <specs>
+          <spec>
+            <spec_assertion element_type="method" element_name="getDisplayInfo" interface="DeviceCapabilities" specification="Device Capabilities" section="System-level APIs" category="W3C API Specifications"/>
+            <spec_url>http://www.w3.org/2012/sysapps/device-capabilities/</spec_url>
+            <spec_statement/>
+          </spec>
+        </specs>
+      </testcase>
+      <testcase purpose="Check if getMemoryInfo method of DeviceCapabilities can work properly" type="compliance" status="approved" component="WebAPI/System-level APIs/Device Capabilities" execution_type="auto" priority="P1" id="DeviceCapabilities_getMemoryInfo">
+        <description>
+          <test_script_entry>/opt/webapi-devicecapabilities-sysapps-tests/devicecapabilities/DeviceCapabilities_getMemoryInfo.html</test_script_entry>
+        </description>
+        <specs>
+          <spec>
+            <spec_assertion element_type="method" element_name="getMemoryInfo" interface="DeviceCapabilities" specification="Device Capabilities" section="System-level APIs" category="W3C API Specifications"/>
+            <spec_url>http://www.w3.org/2012/sysapps/device-capabilities/</spec_url>
+            <spec_statement/>
+          </spec>
+        </specs>
+      </testcase>
+      <testcase purpose="Check if getStorageInfo method of DeviceCapabilities can work properly" type="compliance" status="approved" component="WebAPI/System-level APIs/Device Capabilities" execution_type="auto" priority="P1" id="DeviceCapabilities_getStorageInfo">
+        <description>
+          <test_script_entry>/opt/webapi-devicecapabilities-sysapps-tests/devicecapabilities/DeviceCapabilities_getStorageInfo.html</test_script_entry>
+        </description>
+        <specs>
+          <spec>
+            <spec_assertion element_type="method" element_name="getStorageInfo" interface="DeviceCapabilities" specification="Device Capabilities" section="System-level APIs" category="W3C API Specifications"/>
+            <spec_url>http://www.w3.org/2012/sysapps/device-capabilities/</spec_url>
+            <spec_statement/>
+          </spec>
+        </specs>
+      </testcase>
+      <testcase purpose="Check if the implementation of DeviceCapabilities onstorageattach event is valid" type="compliance" status="approved" component="WebAPI/System-level APIs/Device Capabilities" execution_type="manual" priority="P1" id="DeviceCapabilities_onstorageattach">
+        <description>
+          <test_script_entry>/opt/webapi-devicecapabilities-sysapps-tests/devicecapabilities/DeviceCapabilities_onstorageattach.html</test_script_entry>
+        </description>
+        <specs>
+          <spec>
+            <spec_assertion element_type="event" element_name="onstorageattach" interface="DeviceCapabilities" specification="Device Capabilities" section="System-level APIs" category="W3C API Specifications"/>
+            <spec_url>http://www.w3.org/2012/sysapps/device-capabilities/</spec_url>
+            <spec_statement/>
+          </spec>
+        </specs>
+      </testcase>
+      <testcase purpose="Check if the implementation of DeviceCapabilities onstoragedetach event is valid" type="compliance" status="approved" component="WebAPI/System-level APIs/Device Capabilities" execution_type="manual" priority="P1" id="DeviceCapabilities_onstoragedetach">
+        <description>
+          <test_script_entry>/opt/webapi-devicecapabilities-sysapps-tests/devicecapabilities/DeviceCapabilities_onstoragedetach.html</test_script_entry>
+        </description>
+        <specs>
+          <spec>
+            <spec_assertion element_type="event" element_name="onstoragedetach" interface="DeviceCapabilities" specification="Device Capabilities" section="System-level APIs" category="W3C API Specifications"/>
+            <spec_url>http://www.w3.org/2012/sysapps/device-capabilities/</spec_url>
+            <spec_statement/>
+          </spec>
+        </specs>
+      </testcase>
+      <testcase purpose="Check if the implementation of DeviceCapabilities ondisplayconnect event is valid" type="compliance" status="approved" component="WebAPI/System-level APIs/Device Capabilities" execution_type="manual" priority="P1" id="DeviceCapabilities_ondisplayconnect">
+        <description>
+          <test_script_entry>/opt/webapi-devicecapabilities-sysapps-tests/devicecapabilities/DeviceCapabilities_ondisplayconnect.html</test_script_entry>
+        </description>
+        <specs>
+          <spec>
+            <spec_assertion element_type="event" element_name="ondisplayconnect" interface="DeviceCapabilities" specification="Device Capabilities" section="System-level APIs" category="W3C API Specifications"/>
+            <spec_url>http://www.w3.org/2012/sysapps/device-capabilities/</spec_url>
+            <spec_statement/>
+          </spec>
+        </specs>
+      </testcase>
+      <testcase purpose="Check if the implementation of DeviceCapabilities ondisplaydisconnect event is valid" type="compliance" status="approved" component="WebAPI/System-level APIs/Device Capabilities" execution_type="manual" priority="P1" id="DeviceCapabilities_ondisplaydisconnect">
+        <description>
+          <test_script_entry>/opt/webapi-devicecapabilities-sysapps-tests/devicecapabilities/DeviceCapabilities_ondisplaydisconnect.html</test_script_entry>
+        </description>
+        <specs>
+          <spec>
+            <spec_assertion element_type="event" element_name="ondisplaydisconnect" interface="DeviceCapabilities" specification="Device Capabilities" section="System-level APIs" category="W3C API Specifications"/>
+            <spec_url>http://www.w3.org/2012/sysapps/device-capabilities/</spec_url>
+            <spec_statement/>
+          </spec>
+        </specs>
+      </testcase>
+      <testcase purpose="Check if the implementation of SystemDisplayEvent DisplayUnit attribute is not null  when connect a display" type="compliance" status="approved" component="WebAPI/System-level APIs/Device Capabilities" execution_type="manual" priority="P1" id="SystemDisplayEvent_DisplayUnit_Connect">
+        <description>
+          <test_script_entry>/opt/webapi-devicecapabilities-sysapps-tests/devicecapabilities/SystemDisplayEvent_DisplayUnit_Connect.html</test_script_entry>
+        </description>
+        <specs>
+          <spec>
+            <spec_assertion element_type="property" element_name="DisplayUnit" interface="SystemDisplayEvent" specification="Device Capabilities" section="System-level APIs" category="W3C API Specifications"/>
+            <spec_url>http://www.w3.org/2012/sysapps/device-capabilities/</spec_url>
+            <spec_statement/>
+          </spec>
+        </specs>
+      </testcase>
+      <testcase purpose="Check if the implementation of SystemDisplayEvent DisplayUnit attribute is not null when disconnect a display" type="compliance" status="approved" component="WebAPI/System-level APIs/Device Capabilities" execution_type="manual" priority="P1" id="SystemDisplayEvent_DisplayUnit_Disconnect">
+        <description>
+          <test_script_entry>/opt/webapi-devicecapabilities-sysapps-tests/devicecapabilities/SystemDisplayEvent_DisplayUnit_Disconnect.html</test_script_entry>
+        </description>
+        <specs>
+          <spec>
+            <spec_assertion element_type="property" element_name="DisplayUnit" interface="SystemDisplayEvent" specification="Device Capabilities" section="System-level APIs" category="W3C API Specifications"/>
+            <spec_url>http://www.w3.org/2012/sysapps/device-capabilities/</spec_url>
+            <spec_statement/>
+          </spec>
+        </specs>
+      </testcase>
+      <testcase purpose="Check if the implementation of SystemStorageEvent StorageUnit attribute is not null when attach a storage" type="compliance" status="approved" component="WebAPI/System-level APIs/Device Capabilities" execution_type="manual" priority="P1" id="SystemStorageEvent_StorageUnit_Attach">
+        <description>
+          <test_script_entry>/opt/webapi-devicecapabilities-sysapps-tests/devicecapabilities/SystemStorageEvent_StorageUnit_Attach.html</test_script_entry>
+        </description>
+        <specs>
+          <spec>
+            <spec_assertion element_type="property" element_name="StorageUnit" interface="SystemStorageEvent" specification="Device Capabilities" section="System-level APIs" category="W3C API Specifications"/>
+            <spec_url>http://www.w3.org/2012/sysapps/device-capabilities/</spec_url>
+            <spec_statement/>
+          </spec>
+        </specs>
+      </testcase>
+      <testcase purpose="Check if the implementation of SystemStorageEvent StorageUnit attribute is not null when detach a storage" type="compliance" status="approved" component="WebAPI/System-level APIs/Device Capabilities" execution_type="manual" priority="P1" id="SystemStorageEvent_StorageUnit_Detach">
+        <description>
+          <test_script_entry>/opt/webapi-devicecapabilities-sysapps-tests/devicecapabilities/SystemStorageEvent_StorageUnit_Detach.html</test_script_entry>
+        </description>
+        <specs>
+          <spec>
+            <spec_assertion element_type="property" element_name="StorageUnit" interface="SystemStorageEvent" specification="Device Capabilities" section="System-level APIs" category="W3C API Specifications"/>
+            <spec_url>http://www.w3.org/2012/sysapps/device-capabilities/</spec_url>
+            <spec_statement/>
+          </spec>
+        </specs>
+      </testcase>
+      <testcase purpose="Check if the impelmentation of SystemCPU numOfProcessors attribute is valid" type="compliance" status="approved" component="WebAPI/System-level APIs/Device Capabilities" execution_type="auto" priority="P1" id="SystemCPU_numOfProcessors">
+        <description>
+          <test_script_entry>/opt/webapi-devicecapabilities-sysapps-tests/devicecapabilities/SystemCPU_numOfProcessors.html</test_script_entry>
+        </description>
+        <specs>
+          <spec>
+            <spec_assertion element_type="property" element_name="numOfProcessors" interface="SystemCPU" specification="Device Capabilities" section="System-level APIs" category="W3C API Specifications"/>
+            <spec_url>http://www.w3.org/2012/sysapps/device-capabilities/</spec_url>
+            <spec_statement/>
+          </spec>
+        </specs>
+      </testcase>
+      <testcase purpose="Check if the impelmentation of SystemCPU archName attribute is valid" type="compliance" status="approved" component="WebAPI/System-level APIs/Device Capabilities" execution_type="auto" priority="P1" id="SystemCPU_archName">
+        <description>
+          <test_script_entry>/opt/webapi-devicecapabilities-sysapps-tests/devicecapabilities/SystemCPU_archName.html</test_script_entry>
+        </description>
+        <specs>
+          <spec>
+            <spec_assertion element_type="property" element_name="archName" interface="SystemCPU" specification="Device Capabilities" section="System-level APIs" category="W3C API Specifications"/>
+            <spec_url>http://www.w3.org/2012/sysapps/device-capabilities/</spec_url>
+            <spec_statement/>
+          </spec>
+        </specs>
+      </testcase>
+      <testcase purpose="Check if the impelmentation of SystemCPU load attribute is valid" type="compliance" status="approved" component="WebAPI/System-level APIs/Device Capabilities" execution_type="auto" priority="P0" id="SystemCPU_load">
+        <description>
+          <test_script_entry>/opt/webapi-devicecapabilities-sysapps-tests/devicecapabilities/SystemCPU_load.html</test_script_entry>
+        </description>
+        <specs>
+          <spec>
+            <spec_assertion element_type="property" element_name="load" interface="SystemCPU" specification="Device Capabilities" section="System-level APIs" category="W3C API Specifications"/>
+            <spec_url>http://www.w3.org/2012/sysapps/device-capabilities/</spec_url>
+            <spec_statement/>
+          </spec>
+        </specs>
+      </testcase>
+      <testcase purpose="Check if the cpu load is between 0 and 1" type="compliance" status="approved" component="WebAPI/System-level APIs/Device Capabilities" execution_type="auto" priority="P2" id="SystemCPU_load_range">
+        <description>
+          <test_script_entry>/opt/webapi-devicecapabilities-sysapps-tests/devicecapabilities/SystemCPU_load.html</test_script_entry>
+        </description>
+        <specs>
+          <spec>
+            <spec_assertion element_type="property" element_name="load" interface="SystemCPU" specification="Device Capabilities" section="System-level APIs" category="W3C API Specifications"/>
+            <spec_url>http://www.w3.org/2012/sysapps/device-capabilities/</spec_url>
+            <spec_statement/>
+          </spec>
+        </specs>
+      </testcase>
+      <testcase purpose="Check if the information of SystemCPU is valid according to the test device" type="compliance" status="approved" component="WebAPI/System-level APIs/Device Capabilities" execution_type="manual" priority="P1" id="SystemCPU_m">
+        <description>
+          <test_script_entry>/opt/webapi-devicecapabilities-sysapps-tests/devicecapabilities/SystemCPU_m.html</test_script_entry>
+        </description>
+        <specs>
+          <spec>
+            <spec_assertion element_type="property" element_name="attribute" interface="SystemCPU" specification="Device Capabilities" section="System-level APIs" category="W3C API Specifications"/>
+            <spec_url>http://www.w3.org/2012/sysapps/device-capabilities/</spec_url>
+            <spec_statement/>
+          </spec>
+        </specs>
+      </testcase>
+      <testcase purpose="Check if the implementation of  SystemMemory capacity attribute is valid" type="compliance" status="approved" component="WebAPI/System-level APIs/Device Capabilities" execution_type="auto" priority="P1" id="SystemMemory_capacity">
+        <description>
+          <test_script_entry>/opt/webapi-devicecapabilities-sysapps-tests/devicecapabilities/SystemMemory_capacity.html</test_script_entry>
+        </description>
+        <specs>
+          <spec>
+            <spec_assertion element_type="property" element_name="capacity" interface="SystemMemory" specification="Device Capabilities" section="System-level APIs" category="W3C API Specifications"/>
+            <spec_url>http://www.w3.org/2012/sysapps/device-capabilities/</spec_url>
+            <spec_statement/>
+          </spec>
+        </specs>
+      </testcase>
+      <testcase purpose="Check if the impelmentation of SystemMemory availCapacity attribute is valid" type="compliance" status="approved" component="WebAPI/System-level APIs/Device Capabilities" execution_type="auto" priority="P1" id="SystemMemory_availCapacity">
+        <description>
+          <test_script_entry>/opt/webapi-devicecapabilities-sysapps-tests/devicecapabilities/SystemMemory_availCapacity.html</test_script_entry>
+        </description>
+        <specs>
+          <spec>
+            <spec_assertion element_type="property" element_name="availCapacity" interface="SystemMemory" specification="Device Capabilities" section="System-level APIs" category="W3C API Specifications"/>
+            <spec_url>http://www.w3.org/2012/sysapps/device-capabilities/</spec_url>
+            <spec_statement/>
+          </spec>
+        </specs>
+      </testcase>
+      <testcase purpose="Check if availCapacity must not be greater than capacity" type="compliance" status="approved" component="WebAPI/System-level APIs/Device Capabilities" execution_type="auto" priority="P2" id="SystemMemory_capacity_availCapacity">
+        <description>
+          <test_script_entry>/opt/webapi-devicecapabilities-sysapps-tests/devicecapabilities/SystemMemory_capacity_availCapacity.html</test_script_entry>
+        </description>
+        <specs>
+          <spec>
+            <spec_assertion element_type="property" element_name="attribute" interface="SystemMemory" specification="Device Capabilities" section="System-level APIs" category="W3C API Specifications"/>
+            <spec_url>http://www.w3.org/2012/sysapps/device-capabilities/</spec_url>
+            <spec_statement/>
+          </spec>
+        </specs>
+      </testcase>
+      <testcase purpose="Check if the information of SystemMemory is valid according to the test device" type="compliance" status="approved" component="WebAPI/System-level APIs/Device Capabilities" execution_type="manual" priority="P1" id="SystemMemory_m">
+        <description>
+          <test_script_entry>/opt/webapi-devicecapabilities-sysapps-tests/devicecapabilities/SystemMemory_m.html</test_script_entry>
+        </description>
+        <specs>
+          <spec>
+            <spec_assertion element_type="property" element_name="attribute" interface="SystemMemory" specification="Device Capabilities" section="System-level APIs" category="W3C API Specifications"/>
+            <spec_url>http://www.w3.org/2012/sysapps/device-capabilities/</spec_url>
+            <spec_statement/>
+          </spec>
+        </specs>
+      </testcase>
+      <testcase purpose="Check if the SystemStorage storages attribute must not be null when getStorageInfo method is invoked" type="compliance" status="approved" component="WebAPI/System-level APIs/Device Capabilities" execution_type="auto" priority="P0" id="SystemStorage_storages">
+        <description>
+          <test_script_entry>/opt/webapi-devicecapabilities-sysapps-tests/devicecapabilities/SystemStorage_storages.html</test_script_entry>
+        </description>
+        <specs>
+          <spec>
+            <spec_assertion element_type="property" element_name="storages" interface="SystemStorage" specification="Device Capabilities" section="System-level APIs" category="W3C API Specifications"/>
+            <spec_url>http://www.w3.org/2012/sysapps/device-capabilities/</spec_url>
+            <spec_statement/>
+          </spec>
+        </specs>
+      </testcase>
+      <testcase purpose="Check if the implementation of StorageUnit id attribute is valid" type="compliance" status="approved" component="WebAPI/System-level APIs/Device Capabilities" execution_type="auto" priority="P1" id="StorageUnit_id">
+        <description>
+          <test_script_entry>/opt/webapi-devicecapabilities-sysapps-tests/devicecapabilities/StorageUnit_id.html</test_script_entry>
+        </description>
+        <specs>
+          <spec>
+            <spec_assertion element_type="property" element_name="id" interface="StorageUnit" specification="Device Capabilities" section="System-level APIs" category="W3C API Specifications"/>
+            <spec_url>http://www.w3.org/2012/sysapps/device-capabilities/</spec_url>
+            <spec_statement/>
+          </spec>
+        </specs>
+      </testcase>
+      <testcase purpose="Check if the implementation of StorageUnit name attribute is valid" type="compliance" status="approved" component="WebAPI/System-level APIs/Device Capabilities" execution_type="auto" priority="P1" id="StorageUnit_name">
+        <description>
+          <test_script_entry>/opt/webapi-devicecapabilities-sysapps-tests/devicecapabilities/StorageUnit_name.html</test_script_entry>
+        </description>
+        <specs>
+          <spec>
+            <spec_assertion element_type="property" element_name="name" interface="StorageUnit" specification="Device Capabilities" section="System-level APIs" category="W3C API Specifications"/>
+            <spec_url>http://www.w3.org/2012/sysapps/device-capabilities/</spec_url>
+            <spec_statement/>
+          </spec>
+        </specs>
+      </testcase>
+      <testcase purpose="Check if the implementation of StorageUnit type attribute is valid" type="compliance" status="approved" component="WebAPI/System-level APIs/Device Capabilities" execution_type="auto" priority="P1" id="StorageUnit_type">
+        <description>
+          <test_script_entry>/opt/webapi-devicecapabilities-sysapps-tests/devicecapabilities/StorageUnit_type.html</test_script_entry>
+        </description>
+        <specs>
+          <spec>
+            <spec_assertion element_type="property" element_name="type" interface="StorageUnit" specification="Device Capabilities" section="System-level APIs" category="W3C API Specifications"/>
+            <spec_url>http://www.w3.org/2012/sysapps/device-capabilities/</spec_url>
+            <spec_statement/>
+          </spec>
+        </specs>
+      </testcase>
+      <testcase purpose="Check if the implementation of StorageUnit capacity attribute is valid" type="compliance" status="approved" component="WebAPI/System-level APIs/Device Capabilities" execution_type="auto" priority="P1" id="StorageUnit_capacity">
+        <description>
+          <test_script_entry>/opt/webapi-devicecapabilities-sysapps-tests/devicecapabilities/StorageUnit_capacity.html</test_script_entry>
+        </description>
+        <specs>
+          <spec>
+            <spec_assertion element_type="property" element_name="capacity" interface="StorageUnit" specification="Device Capabilities" section="System-level APIs" category="W3C API Specifications"/>
+            <spec_url>http://www.w3.org/2012/sysapps/device-capabilities/</spec_url>
+            <spec_statement/>
+          </spec>
+        </specs>
+      </testcase>
+      <testcase purpose="Check if the information of StorageUnit is valid according to the test device" type="compliance" status="approved" component="WebAPI/System-level APIs/Device Capabilities" execution_type="manual" priority="P1" id="StorageUnit_m">
+        <description>
+          <test_script_entry>/opt/webapi-devicecapabilities-sysapps-tests/devicecapabilities/StorageUnit_m.html</test_script_entry>
+        </description>
+        <specs>
+          <spec>
+            <spec_assertion element_type="property" element_name="attribute" interface="StorageUnit" specification="Device Capabilities" section="System-level APIs" category="W3C API Specifications"/>
+            <spec_url>http://www.w3.org/2012/sysapps/device-capabilities/</spec_url>
+            <spec_statement/>
+          </spec>
+        </specs>
+      </testcase>
+      <testcase purpose="Check if the SystemDisplay displays attribute must not be null when getDisplayInfo method is invoked" type="compliance" status="approved" component="WebAPI/System-level APIs/Device Capabilities" execution_type="auto" priority="P0" id="SystemDisplay_displays">
+        <description>
+          <test_script_entry>/opt/webapi-devicecapabilities-sysapps-tests/devicecapabilities/SystemDisplay_displays.html</test_script_entry>
+        </description>
+        <specs>
+          <spec>
+            <spec_assertion element_type="property" element_name="displays" interface="SystemDisplay" specification="Device Capabilities" section="System-level APIs" category="W3C API Specifications"/>
+            <spec_url>http://www.w3.org/2012/sysapps/device-capabilities/</spec_url>
+            <spec_statement/>
+          </spec>
+        </specs>
+      </testcase>
+      <testcase purpose="Check if the implementation of DisplayUnit id attribute is valid" type="compliance" status="approved" component="WebAPI/System-level APIs/Device Capabilities" execution_type="auto" priority="P1" id="DisplayUnit_id">
+        <description>
+          <test_script_entry>/opt/webapi-devicecapabilities-sysapps-tests/devicecapabilities/DisplayUnit_id.html</test_script_entry>
+        </description>
+        <specs>
+          <spec>
+            <spec_assertion element_type="property" element_name="id" interface="DisplayUnit" specification="Device Capabilities" section="System-level APIs" category="W3C API Specifications"/>
+            <spec_url>http://www.w3.org/2012/sysapps/device-capabilities/</spec_url>
+            <spec_statement/>
+          </spec>
+        </specs>
+      </testcase>
+      <testcase purpose="Check if the implementation of  DisplayUnit name attribute is valid" type="compliance" status="approved" component="WebAPI/System-level APIs/Device Capabilities" execution_type="auto" priority="P1" id="DisplayUnit_name">
+        <description>
+          <test_script_entry>/opt/webapi-devicecapabilities-sysapps-tests/devicecapabilities/DisplayUnit_name.html</test_script_entry>
+        </description>
+        <specs>
+          <spec>
+            <spec_assertion element_type="property" element_name="name" interface="DisplayUnit" specification="Device Capabilities" section="System-level APIs" category="W3C API Specifications"/>
+            <spec_url>http://www.w3.org/2012/sysapps/device-capabilities/</spec_url>
+            <spec_statement/>
+          </spec>
+        </specs>
+      </testcase>
+      <testcase purpose="Check if the implementation of  DisplayUnit primary attribute is valid" type="compliance" status="approved" component="WebAPI/System-level APIs/Device Capabilities" execution_type="auto" priority="P1" id="DisplayUnit_primary">
+        <description>
+          <test_script_entry>/opt/webapi-devicecapabilities-sysapps-tests/devicecapabilities/DisplayUnit_primary.html</test_script_entry>
+        </description>
+        <specs>
+          <spec>
+            <spec_assertion element_type="property" element_name="primary" interface="DisplayUnit" specification="Device Capabilities" section="System-level APIs" category="W3C API Specifications"/>
+            <spec_url>http://www.w3.org/2012/sysapps/device-capabilities/</spec_url>
+            <spec_statement/>
+          </spec>
+        </specs>
+      </testcase>
+      <testcase purpose="Check if the implementation of  DisplayUnit external attribute is valid" type="compliance" status="approved" component="WebAPI/System-level APIs/Device Capabilities" execution_type="auto" priority="P1" id="DisplayUnit_external">
+        <description>
+          <test_script_entry>/opt/webapi-devicecapabilities-sysapps-tests/devicecapabilities/DisplayUnit_external.html</test_script_entry>
+        </description>
+        <specs>
+          <spec>
+            <spec_assertion element_type="property" element_name="external" interface="DisplayUnit" specification="Device Capabilities" section="System-level APIs" category="W3C API Specifications"/>
+            <spec_url>http://www.w3.org/2012/sysapps/device-capabilities/</spec_url>
+            <spec_statement/>
+          </spec>
+        </specs>
+      </testcase>
+      <testcase purpose="Check if the implementation of  DisplayUnit deviceXDPI attribute is valid" type="compliance" status="approved" component="WebAPI/System-level APIs/Device Capabilities" execution_type="auto" priority="P1" id="DisplayUnit_deviceXDPI">
+        <description>
+          <test_script_entry>/opt/webapi-devicecapabilities-sysapps-tests/devicecapabilities/DisplayUnit_deviceXDPI.html</test_script_entry>
+        </description>
+        <specs>
+          <spec>
+            <spec_assertion element_type="property" element_name="deviceXDPI" interface="DisplayUnit" specification="Device Capabilities" section="System-level APIs" category="W3C API Specifications"/>
+            <spec_url>http://www.w3.org/2012/sysapps/device-capabilities/</spec_url>
+            <spec_statement/>
+          </spec>
+        </specs>
+      </testcase>
+      <testcase purpose="Check if the implementation of  DisplayUnit deviceYDPI attribute is valid" type="compliance" status="approved" component="WebAPI/System-level APIs/Device Capabilities" execution_type="auto" priority="P1" id="DisplayUnit_deviceYDPI">
+        <description>
+          <test_script_entry>/opt/webapi-devicecapabilities-sysapps-tests/devicecapabilities/DisplayUnit_deviceYDPI.html</test_script_entry>
+        </description>
+        <specs>
+          <spec>
+            <spec_assertion element_type="property" element_name="deviceYDPI" interface="DisplayUnit" specification="Device Capabilities" section="System-level APIs" category="W3C API Specifications"/>
+            <spec_url>http://www.w3.org/2012/sysapps/device-capabilities/</spec_url>
+            <spec_statement/>
+          </spec>
+        </specs>
+      </testcase>
+      <testcase purpose="Check if the implementation of  DisplayUnit availWidth attribute is valid" type="compliance" status="approved" component="WebAPI/System-level APIs/Device Capabilities" execution_type="auto" priority="P1" id="DisplayUnit_availWidth">
+        <description>
+          <test_script_entry>/opt/webapi-devicecapabilities-sysapps-tests/devicecapabilities/DisplayUnit_availWidth.html</test_script_entry>
+        </description>
+        <specs>
+          <spec>
+            <spec_assertion element_type="property" element_name="availWidth" interface="DisplayUnit" specification="Device Capabilities" section="System-level APIs" category="W3C API Specifications"/>
+            <spec_url>http://www.w3.org/2012/sysapps/device-capabilities/</spec_url>
+            <spec_statement/>
+          </spec>
+        </specs>
+      </testcase>
+      <testcase purpose="Check if the implementation of  DisplayUnit availHeight attribute is valid" type="compliance" status="approved" component="WebAPI/System-level APIs/Device Capabilities" execution_type="auto" priority="P1" id="DisplayUnit_availHeight">
+        <description>
+          <test_script_entry>/opt/webapi-devicecapabilities-sysapps-tests/devicecapabilities/DisplayUnit_availHeight.html</test_script_entry>
+        </description>
+        <specs>
+          <spec>
+            <spec_assertion element_type="property" element_name="availHeight" interface="DisplayUnit" specification="Device Capabilities" section="System-level APIs" category="W3C API Specifications"/>
+            <spec_url>http://www.w3.org/2012/sysapps/device-capabilities/</spec_url>
+            <spec_statement/>
+          </spec>
+        </specs>
+      </testcase>
+      <testcase purpose="Check if the implementation of  DisplayUnit width attribute is valid" type="compliance" status="approved" component="WebAPI/System-level APIs/Device Capabilities" execution_type="auto" priority="P1" id="DisplayUnit_width">
+        <description>
+          <test_script_entry>/opt/webapi-devicecapabilities-sysapps-tests/devicecapabilities/DisplayUnit_width.html</test_script_entry>
+        </description>
+        <specs>
+          <spec>
+            <spec_assertion element_type="property" element_name="width" interface="DisplayUnit" specification="Device Capabilities" section="System-level APIs" category="W3C API Specifications"/>
+            <spec_url>http://www.w3.org/2012/sysapps/device-capabilities/</spec_url>
+            <spec_statement/>
+          </spec>
+        </specs>
+      </testcase>
+      <testcase purpose="Check if the implementation of  DisplayUnit height attribute is valid" type="compliance" status="approved" component="WebAPI/System-level APIs/Device Capabilities" execution_type="auto" priority="P1" id="DisplayUnit_height">
+        <description>
+          <test_script_entry>/opt/webapi-devicecapabilities-sysapps-tests/devicecapabilities/DisplayUnit_height.html</test_script_entry>
+        </description>
+        <specs>
+          <spec>
+            <spec_assertion element_type="property" element_name="height" interface="DisplayUnit" specification="Device Capabilities" section="System-level APIs" category="W3C API Specifications"/>
+            <spec_url>http://www.w3.org/2012/sysapps/device-capabilities/</spec_url>
+            <spec_statement/>
+          </spec>
+        </specs>
+      </testcase>
+      <testcase purpose="Check if the implementation of  DisplayUnit colorDepth attribute is valid" type="compliance" status="approved" component="WebAPI/System-level APIs/Device Capabilities" execution_type="auto" priority="P1" id="DisplayUnit_colorDepth">
+        <description>
+          <test_script_entry>/opt/webapi-devicecapabilities-sysapps-tests/devicecapabilities/DisplayUnit_colorDepth.html</test_script_entry>
+        </description>
+        <specs>
+          <spec>
+            <spec_assertion element_type="property" element_name="colorDepth" interface="DisplayUnit" specification="Device Capabilities" section="System-level APIs" category="W3C API Specifications"/>
+            <spec_url>http://www.w3.org/2012/sysapps/device-capabilities/</spec_url>
+            <spec_statement/>
+          </spec>
+        </specs>
+      </testcase>
+      <testcase purpose="Check if the implementation of  DisplayUnit pixelDepth attribute is valid" type="compliance" status="approved" component="WebAPI/System-level APIs/Device Capabilities" execution_type="auto" priority="P1" id="DisplayUnit_pixelDepth">
+        <description>
+          <test_script_entry>/opt/webapi-devicecapabilities-sysapps-tests/devicecapabilities/DisplayUnit_pixelDepth.html</test_script_entry>
+        </description>
+        <specs>
+          <spec>
+            <spec_assertion element_type="property" element_name="pixelDepth" interface="DisplayUnit" specification="Device Capabilities" section="System-level APIs" category="W3C API Specifications"/>
+            <spec_url>http://www.w3.org/2012/sysapps/device-capabilities/</spec_url>
+            <spec_statement/>
+          </spec>
+        </specs>
+      </testcase>
+      <testcase purpose="Check if the DisplayUnit availHeight attribute must not be greater than height" type="compliance" status="approved" component="WebAPI/System-level APIs/Device Capabilities" execution_type="auto" priority="P2" id="DisplayUnit_availHeight_height">
+        <description>
+          <test_script_entry>/opt/webapi-devicecapabilities-sysapps-tests/devicecapabilities/DisplayUnit_availHeight_height.html</test_script_entry>
+        </description>
+        <specs>
+          <spec>
+            <spec_assertion element_type="property" element_name="attribute" interface="DisplayUnit" specification="Device Capabilities" section="System-level APIs" category="W3C API Specifications"/>
+            <spec_url>http://www.w3.org/2012/sysapps/device-capabilities/</spec_url>
+            <spec_statement/>
+          </spec>
+        </specs>
+      </testcase>
+      <testcase purpose="Check if the DisplayUnit availWidth attribute must not be greater than width" type="compliance" status="approved" component="WebAPI/System-level APIs/Device Capabilities" execution_type="auto" priority="P2" id="DisplayUnit_availWidth_width">
+        <description>
+          <test_script_entry>/opt/webapi-devicecapabilities-sysapps-tests/devicecapabilities/DisplayUnit_availWidth_width.html</test_script_entry>
+        </description>
+        <specs>
+          <spec>
+            <spec_assertion element_type="property" element_name="attribute" interface="DisplayUnit" specification="Device Capabilities" section="System-level APIs" category="W3C API Specifications"/>
+            <spec_url>http://www.w3.org/2012/sysapps/device-capabilities/</spec_url>
+            <spec_statement/>
+          </spec>
+        </specs>
+      </testcase>
+      <testcase purpose="Check if if the information of DisplayUnit is valid according to the test device" type="compliance" status="approved" component="WebAPI/System-level APIs/Device Capabilities" execution_type="manual" priority="P1" id="DisplayUnit_m">
+        <description>
+          <test_script_entry>/opt/webapi-devicecapabilities-sysapps-tests/devicecapabilities/DisplayUnit_m.html</test_script_entry>
+        </description>
+        <specs>
+          <spec>
+            <spec_assertion element_type="property" element_name="attribute" interface="DisplayUnit" specification="Device Capabilities" section="System-level APIs" category="W3C API Specifications"/>
+            <spec_url>http://www.w3.org/2012/sysapps/device-capabilities/</spec_url>
+            <spec_statement/>
+          </spec>
+        </specs>
+      </testcase>
+      <testcase purpose="Check if the SystemAVCodecs audioCodecs attribute must not be null when getAVCodecs method is invoked" type="compliance" status="approved" component="WebAPI/System-level APIs/Device Capabilities" execution_type="auto" priority="P0" id="SystemAVCodecs_audioCodecs">
+        <description>
+          <test_script_entry>/opt/webapi-devicecapabilities-sysapps-tests/devicecapabilities/SystemAVCodecs_audioCodecs.html</test_script_entry>
+        </description>
+        <specs>
+          <spec>
+            <spec_assertion element_type="property" element_name="audioCodecs" interface="SystemAVCodecs" specification="Device Capabilities" section="System-level APIs" category="W3C API Specifications"/>
+            <spec_url>http://www.w3.org/2012/sysapps/device-capabilities/</spec_url>
+            <spec_statement/>
+          </spec>
+        </specs>
+      </testcase>
+      <testcase purpose="Check if the SystemAVCodecs videoCodecs attribute must not be null when getAVCodecs method is invoked" type="compliance" status="approved" component="WebAPI/System-level APIs/Device Capabilities" execution_type="auto" priority="P0" id="SystemAVCodecs_videoCodecs">
+        <description>
+          <test_script_entry>/opt/webapi-devicecapabilities-sysapps-tests/devicecapabilities/SystemAVCodecs_videoCodecs.html</test_script_entry>
+        </description>
+        <specs>
+          <spec>
+            <spec_assertion element_type="property" element_name="videoCodecs" interface="SystemAVCodecs" specification="Device Capabilities" section="System-level APIs" category="W3C API Specifications"/>
+            <spec_url>http://www.w3.org/2012/sysapps/device-capabilities/</spec_url>
+            <spec_statement/>
+          </spec>
+        </specs>
+      </testcase>
+      <testcase purpose="Check if the information of AudioCodec is valid according to the test device" type="compliance" status="approved" component="WebAPI/System-level APIs/Device Capabilities" execution_type="manual" priority="P1" id="AudioCodec_m">
+        <description>
+          <test_script_entry>/opt/webapi-devicecapabilities-sysapps-tests/devicecapabilities/AudioCodec_m.html</test_script_entry>
+        </description>
+        <specs>
+          <spec>
+            <spec_assertion element_type="property" element_name="format" interface="AudioCodec" specification="Device Capabilities" section="System-level APIs" category="W3C API Specifications"/>
+            <spec_url>http://www.w3.org/2012/sysapps/device-capabilities/</spec_url>
+            <spec_statement/>
+          </spec>
+        </specs>
+      </testcase>
+      <testcase purpose="Check if the implementation of AudioCodec format attribute is valid" type="compliance" status="approved" component="WebAPI/System-level APIs/Device Capabilities" execution_type="auto" priority="P1" id="AudioCodec_format">
+        <description>
+          <test_script_entry>/opt/webapi-devicecapabilities-sysapps-tests/devicecapabilities/AudioCodec_format.html</test_script_entry>
+        </description>
+        <specs>
+          <spec>
+            <spec_assertion element_type="property" element_name="format" interface="AudioCodec" specification="Device Capabilities" section="System-level APIs" category="W3C API Specifications"/>
+            <spec_url>http://www.w3.org/2012/sysapps/device-capabilities/</spec_url>
+            <spec_statement/>
+          </spec>
+        </specs>
+      </testcase>
+      <testcase purpose="Check if the implementation of VideoCodec format attribute is vaild" type="compliance" status="approved" component="WebAPI/System-level APIs/Device Capabilities" execution_type="auto" priority="P1" id="VideoCodec_format">
+        <description>
+          <test_script_entry>/opt/webapi-devicecapabilities-sysapps-tests/devicecapabilities/VideoCodec_format.html</test_script_entry>
+        </description>
+        <specs>
+          <spec>
+            <spec_assertion element_type="property" element_name="format" interface="VideoCodec" specification="Device Capabilities" section="System-level APIs" category="W3C API Specifications"/>
+            <spec_url>http://www.w3.org/2012/sysapps/device-capabilities/</spec_url>
+            <spec_statement/>
+          </spec>
+        </specs>
+      </testcase>
+      <testcase purpose="Check if the implementation of VideoCodec hwAccel attribute is vaild" type="compliance" status="approved" component="WebAPI/System-level APIs/Device Capabilities" execution_type="auto" priority="P1" id="VideoCodec_hwAccel">
+        <description>
+          <test_script_entry>/opt/webapi-devicecapabilities-sysapps-tests/devicecapabilities/VideoCodec_hwAccel.html</test_script_entry>
+        </description>
+        <specs>
+          <spec>
+            <spec_assertion element_type="property" element_name="hwAccel" interface="VideoCodec" specification="Device Capabilities" section="System-level APIs" category="W3C API Specifications"/>
+            <spec_url>http://www.w3.org/2012/sysapps/device-capabilities/</spec_url>
+            <spec_statement/>
+          </spec>
+        </specs>
+      </testcase>
+      <testcase purpose="Check if the implementation of VideoCodec encode attribute is vaild" type="compliance" status="approved" component="WebAPI/System-level APIs/Device Capabilities" execution_type="auto" priority="P1" id="VideoCodec_encode">
+        <description>
+          <test_script_entry>/opt/webapi-devicecapabilities-sysapps-tests/devicecapabilities/VideoCodec_encode.html</test_script_entry>
+        </description>
+        <specs>
+          <spec>
+            <spec_assertion element_type="property" element_name="encode" interface="VideoCodec" specification="Device Capabilities" section="System-level APIs" category="W3C API Specifications"/>
+            <spec_url>http://www.w3.org/2012/sysapps/device-capabilities/</spec_url>
+            <spec_statement/>
+          </spec>
+        </specs>
+      </testcase>
+      <testcase purpose="Check if the information of VideoCodec is valid according to the test device" type="compliance" status="approved" component="WebAPI/System-level APIs/Device Capabilities" execution_type="manual" priority="P1" id="VideoCodec_m">
+        <description>
+          <test_script_entry>/opt/webapi-devicecapabilities-sysapps-tests/devicecapabilities/VideoCodec_encode.html</test_script_entry>
+        </description>
+        <specs>
+          <spec>
+            <spec_assertion element_type="property" element_name="attribute" interface="VideoCodec" specification="Device Capabilities" section="System-level APIs" category="W3C API Specifications"/>
+            <spec_url>http://www.w3.org/2012/sysapps/device-capabilities/</spec_url>
+            <spec_statement/>
+          </spec>
+        </specs>
+      </testcase>
+    </set>
+  </suite>
+</test_definition>

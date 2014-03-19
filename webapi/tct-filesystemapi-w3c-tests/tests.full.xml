@@ -1,0 +1,632 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-stylesheet type="text/xsl"  href="./testcase.xsl"?>
+<test_definition>
+  <suite name="tct-filesystemapi-w3c-tests" launcher="xwalk" category="W3C/HTML5 APIs">
+    <set name="FileAPIDirectoriesAndSystem">
+      <testcase purpose="Check if DirectoryEntry.createReader exists" type="compliance" status="approved" component="WebAPI/Storage/File API: Directories and System (Partial)" execution_type="auto" priority="P1" id="DirectoryEntry_createReader_exist">
+        <description>
+          <test_script_entry>/opt/tct-filesystemapi-w3c-tests/filesystemapi/DirectoryEntry_createReader_exist.html</test_script_entry>
+        </description>
+        <specs>
+          <spec>
+            <spec_assertion element_type="method" element_name="createReader" interface="DirectoryEntry" specification="File API: Directories and System (Partial)" section="Storage" category="Tizen W3C API Specifications"/>
+            <spec_url>http://dev.w3.org/2009/dap/file-system/file-dir-sys.html#the-directoryentry-interface</spec_url>
+            <spec_statement/>
+          </spec>
+        </specs>
+      </testcase>
+      <testcase purpose="Check if DirectoryEntry.getDirectory exists" type="compliance" status="approved" component="WebAPI/Storage/File API: Directories and System (Partial)" execution_type="auto" priority="P1" id="DirectoryEntry_getDirectory_exist">
+        <description>
+          <test_script_entry>/opt/tct-filesystemapi-w3c-tests/filesystemapi/DirectoryEntry_getDirectory_exist.html</test_script_entry>
+        </description>
+        <specs>
+          <spec>
+            <spec_assertion element_type="method" element_name="getDirectory" interface="DirectoryEntry" specification="File API: Directories and System (Partial)" section="Storage" category="Tizen W3C API Specifications"/>
+            <spec_url>http://dev.w3.org/2009/dap/file-system/file-dir-sys.html#the-directoryentry-interface</spec_url>
+            <spec_statement/>
+          </spec>
+        </specs>
+      </testcase>
+      <testcase purpose="Check if getFile() has all valid arguments that expecting successCallback() to be invoke" type="compliance" status="approved" component="WebAPI/Storage/File API: Directories and System (Partial)" execution_type="auto" priority="P0" id="DirectoryEntry_getFile_base">
+        <description>
+          <test_script_entry>/opt/tct-filesystemapi-w3c-tests/filesystemapi/DirectoryEntry_getFile_base.html</test_script_entry>
+        </description>
+        <specs>
+          <spec>
+            <spec_assertion element_type="method" element_name="getFile" interface="DirectoryEntry" specification="File API: Directories and System (Partial)" section="Storage" category="Tizen W3C API Specifications"/>
+            <spec_url>http://dev.w3.org/2009/dap/file-system/file-dir-sys.html#the-directoryentry-interface</spec_url>
+            <spec_statement/>
+          </spec>
+        </specs>
+      </testcase>
+      <testcase purpose="Check if DirectoryEntry.getFile exists" type="compliance" status="approved" component="WebAPI/Storage/File API: Directories and System (Partial)" execution_type="auto" priority="P1" id="DirectoryEntry_getFile_exist">
+        <description>
+          <test_script_entry>/opt/tct-filesystemapi-w3c-tests/filesystemapi/DirectoryEntry_getFile_exist.html</test_script_entry>
+        </description>
+        <specs>
+          <spec>
+            <spec_assertion element_type="method" element_name="getFile" interface="DirectoryEntry" specification="File API: Directories and System (Partial)" section="Storage" category="Tizen W3C API Specifications"/>
+            <spec_url>http://dev.w3.org/2009/dap/file-system/file-dir-sys.html#the-directoryentry-interface</spec_url>
+            <spec_statement/>
+          </spec>
+        </specs>
+      </testcase>
+      <testcase purpose="Check if DirectoryEntry.removeRecursively exists" type="compliance" status="approved" component="WebAPI/Storage/File API: Directories and System (Partial)" execution_type="auto" priority="P1" id="DirectoryEntry_removeRecursively_exist">
+        <description>
+          <test_script_entry>/opt/tct-filesystemapi-w3c-tests/filesystemapi/DirectoryEntry_removeRecursively_exist.html</test_script_entry>
+        </description>
+        <specs>
+          <spec>
+            <spec_assertion element_type="method" element_name="removeRecursively" interface="DirectoryEntry" specification="File API: Directories and System (Partial)" section="Storage" category="Tizen W3C API Specifications"/>
+            <spec_url>http://dev.w3.org/2009/dap/file-system/file-dir-sys.html#the-directoryentry-interface</spec_url>
+            <spec_statement/>
+          </spec>
+        </specs>
+      </testcase>
+      <testcase purpose="Check if DirectoryReader.readEntries exists" type="compliance" status="approved" component="WebAPI/Storage/File API: Directories and System (Partial)" execution_type="auto" priority="P1" id="DirectoryReader_readEntries_exist">
+        <description>
+          <test_script_entry>/opt/tct-filesystemapi-w3c-tests/filesystemapi/DirectoryReader_readEntries_exist.html</test_script_entry>
+        </description>
+        <specs>
+          <spec>
+            <spec_assertion element_type="method" element_name="readEntries" interface="DirectoryReader" specification="File API: Directories and System (Partial)" section="Storage" category="Tizen W3C API Specifications"/>
+            <spec_url>http://dev.w3.org/2009/dap/file-system/file-dir-sys.html#the-directoryentry-interface</spec_url>
+            <spec_statement/>
+          </spec>
+        </specs>
+      </testcase>
+      <testcase purpose="Check if the type of the parameter entries is Entry[] in EntryCallback interface" type="compliance" status="approved" component="WebAPI/Storage/File API: Directories and System (Partial)" execution_type="auto" priority="P1" id="EntriesCallback_handleEvent_entries_type">
+        <description>
+          <test_script_entry>/opt/tct-filesystemapi-w3c-tests/filesystemapi/EntriesCallback_handleEvent_entries_type.html</test_script_entry>
+        </description>
+        <specs>
+          <spec>
+            <spec_assertion element_type="eventhandler" element_name="handleEvent" interface="EntriesCallback" specification="File API: Directories and System (Partial)" section="Storage" category="Tizen W3C API Specifications"/>
+            <spec_url>http://dev.w3.org/2009/dap/file-system/file-dir-sys.html#the-entriescallback-interface</spec_url>
+            <spec_statement/>
+          </spec>
+        </specs>
+      </testcase>
+      <testcase purpose="Check if EntriesCallback.handleEvent exists" type="compliance" status="approved" component="WebAPI/Storage/File API: Directories and System (Partial)" execution_type="auto" priority="P1" id="EntriesCallback_handleEvent_exist">
+        <description>
+          <test_script_entry>/opt/tct-filesystemapi-w3c-tests/filesystemapi/EntriesCallback_handleEvent_exist.html</test_script_entry>
+        </description>
+        <specs>
+          <spec>
+            <spec_assertion element_type="eventhandler" element_name="handleEvent" interface="EntriesCallback" specification="File API: Directories and System (Partial)" section="Storage" category="Tizen W3C API Specifications"/>
+            <spec_url>http://dev.w3.org/2009/dap/file-system/file-dir-sys.html#the-entriescallback-interface</spec_url>
+            <spec_statement/>
+          </spec>
+        </specs>
+      </testcase>
+      <testcase purpose="Check if the type of the parameter entry is Entry in EntryCallback interface" type="compliance" status="approved" component="WebAPI/Storage/File API: Directories and System (Partial)" execution_type="auto" priority="P1" id="EntryCallback_handleEvent_entry_type">
+        <description>
+          <test_script_entry>/opt/tct-filesystemapi-w3c-tests/filesystemapi/EntryCallback_handleEvent_entry_type.html</test_script_entry>
+        </description>
+        <specs>
+          <spec>
+            <spec_assertion element_type="eventhandler" element_name="handleEvent" interface="EntryCallback" specification="File API: Directories and System (Partial)" section="Storage" category="Tizen W3C API Specifications"/>
+            <spec_url>http://dev.w3.org/2009/dap/file-system/file-dir-sys.html#the-entrycallback-interface</spec_url>
+            <spec_statement/>
+          </spec>
+        </specs>
+      </testcase>
+      <testcase purpose="Check if EntryCallback.handleEvent exists" type="compliance" status="approved" component="WebAPI/Storage/File API: Directories and System (Partial)" execution_type="auto" priority="P1" id="EntryCallback_handleEvent_exist">
+        <description>
+          <test_script_entry>/opt/tct-filesystemapi-w3c-tests/filesystemapi/EntryCallback_handleEvent_exist.html</test_script_entry>
+        </description>
+        <specs>
+          <spec>
+            <spec_assertion element_type="eventhandler" element_name="handleEvent" interface="EntryCallback" specification="File API: Directories and System (Partial)" section="Storage" category="Tizen W3C API Specifications"/>
+            <spec_url>http://dev.w3.org/2009/dap/file-system/file-dir-sys.html#the-entrycallback-interface</spec_url>
+            <spec_statement/>
+          </spec>
+        </specs>
+      </testcase>
+      <testcase purpose="Check if can copy a file to a different location on the file system" type="compliance" status="approved" component="WebAPI/Storage/File API: Directories and System (Partial)" execution_type="auto" priority="P0" id="Entry_copyTo_base">
+        <description>
+          <test_script_entry>/opt/tct-filesystemapi-w3c-tests/filesystemapi/Entry_copyTo_base.html</test_script_entry>
+        </description>
+        <specs>
+          <spec>
+            <spec_assertion element_type="method" element_name="copyTo" interface="Entry" specification="File API: Directories and System (Partial)" section="Storage" category="Tizen W3C API Specifications"/>
+            <spec_url>http://dev.w3.org/2009/dap/file-system/file-dir-sys.html#the-entry-interface</spec_url>
+            <spec_statement/>
+          </spec>
+        </specs>
+      </testcase>
+      <testcase purpose="Check if Entry.copyTo exists" type="compliance" status="approved" component="WebAPI/Storage/File API: Directories and System (Partial)" execution_type="auto" priority="P1" id="Entry_copyTo_exist">
+        <description>
+          <test_script_entry>/opt/tct-filesystemapi-w3c-tests/filesystemapi/Entry_copyTo_exist.html</test_script_entry>
+        </description>
+        <specs>
+          <spec>
+            <spec_assertion element_type="method" element_name="copyTo" interface="Entry" specification="File API: Directories and System (Partial)" section="Storage" category="Tizen W3C API Specifications"/>
+            <spec_url>http://dev.w3.org/2009/dap/file-system/file-dir-sys.html#the-entry-interface</spec_url>
+            <spec_statement/>
+          </spec>
+        </specs>
+      </testcase>
+      <testcase purpose="Check if Entry.filesystem exists" type="compliance" status="approved" component="WebAPI/Storage/File API: Directories and System (Partial)" execution_type="auto" priority="P1" id="Entry_filesystem_exist">
+        <description>
+          <test_script_entry>/opt/tct-filesystemapi-w3c-tests/filesystemapi/Entry_filesystem_exist.html</test_script_entry>
+        </description>
+        <specs>
+          <spec>
+            <spec_assertion element_type="attribute" element_name="filesystem" interface="Entry" specification="File API: Directories and System (Partial)" section="Storage" category="Tizen W3C API Specifications"/>
+            <spec_url>http://dev.w3.org/2009/dap/file-system/file-dir-sys.html#widl-Entry-filesystem</spec_url>
+            <spec_statement/>
+          </spec>
+        </specs>
+      </testcase>
+      <testcase purpose="Check if the Entry.filesystem attribute is readonly" type="compliance" status="approved" component="WebAPI/Storage/File API: Directories and System (Partial)" execution_type="auto" priority="P1" id="Entry_filesystem_readonly">
+        <description>
+          <test_script_entry>/opt/tct-filesystemapi-w3c-tests/filesystemapi/Entry_filesystem_readonly.html</test_script_entry>
+        </description>
+        <specs>
+          <spec>
+            <spec_assertion element_type="attribute" element_name="filesystem" interface="Entry" specification="File API: Directories and System (Partial)" section="Storage" category="Tizen W3C API Specifications"/>
+            <spec_url>http://dev.w3.org/2009/dap/file-system/file-dir-sys.html#widl-Entry-filesystem</spec_url>
+            <spec_statement/>
+          </spec>
+        </specs>
+      </testcase>
+      <testcase purpose="Check if the type of Entry.filesystem attribute is object" type="compliance" status="approved" component="WebAPI/Storage/File API: Directories and System (Partial)" execution_type="auto" priority="P1" id="Entry_filesystem_type">
+        <description>
+          <test_script_entry>/opt/tct-filesystemapi-w3c-tests/filesystemapi/Entry_filesystem_type.html</test_script_entry>
+        </description>
+        <specs>
+          <spec>
+            <spec_assertion element_type="attribute" element_name="filesystem" interface="Entry" specification="File API: Directories and System (Partial)" section="Storage" category="Tizen W3C API Specifications"/>
+            <spec_url>http://dev.w3.org/2009/dap/file-system/file-dir-sys.html#widl-Entry-filesystem</spec_url>
+            <spec_statement/>
+          </spec>
+        </specs>
+      </testcase>
+      <testcase purpose="Check if Entry.fullPath exists" type="compliance" status="approved" component="WebAPI/Storage/File API: Directories and System (Partial)" execution_type="auto" priority="P1" id="Entry_fullPath_exist">
+        <description>
+          <test_script_entry>/opt/tct-filesystemapi-w3c-tests/filesystemapi/Entry_fullPath_exist.html</test_script_entry>
+        </description>
+        <specs>
+          <spec>
+            <spec_assertion element_type="attribute" element_name="fullPath" interface="Entry" specification="File API: Directories and System (Partial)" section="Storage" category="Tizen W3C API Specifications"/>
+            <spec_url>http://dev.w3.org/2009/dap/file-system/file-dir-sys.html#widl-Entry-fullPath</spec_url>
+            <spec_statement/>
+          </spec>
+        </specs>
+      </testcase>
+      <testcase purpose="Check if the Entry.fullPath attribute is readonly" type="compliance" status="approved" component="WebAPI/Storage/File API: Directories and System (Partial)" execution_type="auto" priority="P1" id="Entry_fullPath_readonly">
+        <description>
+          <test_script_entry>/opt/tct-filesystemapi-w3c-tests/filesystemapi/Entry_fullPath_readonly.html</test_script_entry>
+        </description>
+        <specs>
+          <spec>
+            <spec_assertion element_type="attribute" element_name="fullPath" interface="Entry" specification="File API: Directories and System (Partial)" section="Storage" category="Tizen W3C API Specifications"/>
+            <spec_url>http://dev.w3.org/2009/dap/file-system/file-dir-sys.html#widl-Entry-fullPath</spec_url>
+            <spec_statement/>
+          </spec>
+        </specs>
+      </testcase>
+      <testcase purpose="Check if the type of Entry.fullPath is DOMString" type="compliance" status="approved" component="WebAPI/Storage/File API: Directories and System (Partial)" execution_type="auto" priority="P1" id="Entry_fullPath_type">
+        <description>
+          <test_script_entry>/opt/tct-filesystemapi-w3c-tests/filesystemapi/Entry_fullPath_type.html</test_script_entry>
+        </description>
+        <specs>
+          <spec>
+            <spec_assertion element_type="attribute" element_name="fullPath" interface="Entry" specification="File API: Directories and System (Partial)" section="Storage" category="Tizen W3C API Specifications"/>
+            <spec_url>http://dev.w3.org/2009/dap/file-system/file-dir-sys.html#widl-Entry-fullPath</spec_url>
+            <spec_statement/>
+          </spec>
+        </specs>
+      </testcase>
+      <testcase purpose="Check if Entry.getMetadata exists" type="compliance" status="approved" component="WebAPI/Storage/File API: Directories and System (Partial)" execution_type="auto" priority="P1" id="Entry_getMetadata_exist">
+        <description>
+          <test_script_entry>/opt/tct-filesystemapi-w3c-tests/filesystemapi/Entry_getMetadata_exist.html</test_script_entry>
+        </description>
+        <specs>
+          <spec>
+            <spec_assertion element_type="method" element_name="getMetadata" interface="Entry" specification="File API: Directories and System (Partial)" section="Storage" category="Tizen W3C API Specifications"/>
+            <spec_url>http://dev.w3.org/2009/dap/file-system/file-dir-sys.html#the-entry-interface</spec_url>
+            <spec_statement/>
+          </spec>
+        </specs>
+      </testcase>
+      <testcase purpose="Check if Entry.getParent exists" type="compliance" status="approved" component="WebAPI/Storage/File API: Directories and System (Partial)" execution_type="auto" priority="P1" id="Entry_getParent_exist">
+        <description>
+          <test_script_entry>/opt/tct-filesystemapi-w3c-tests/filesystemapi/Entry_getParent_exist.html</test_script_entry>
+        </description>
+        <specs>
+          <spec>
+            <spec_assertion element_type="method" element_name="getParent" interface="Entry" specification="File API: Directories and System (Partial)" section="Storage" category="Tizen W3C API Specifications"/>
+            <spec_url>http://dev.w3.org/2009/dap/file-system/file-dir-sys.html#the-entry-interface</spec_url>
+            <spec_statement/>
+          </spec>
+        </specs>
+      </testcase>
+      <testcase purpose="Check if Entry.isDirectory exists" type="compliance" status="approved" component="WebAPI/Storage/File API: Directories and System (Partial)" execution_type="auto" priority="P1" id="Entry_isDirectory_exist">
+        <description>
+          <test_script_entry>/opt/tct-filesystemapi-w3c-tests/filesystemapi/Entry_isDirectory_exist.html</test_script_entry>
+        </description>
+        <specs>
+          <spec>
+            <spec_assertion element_type="attribute" element_name="isDirectory" interface="Entry" specification="File API: Directories and System (Partial)" section="Storage" category="Tizen W3C API Specifications"/>
+            <spec_url>http://dev.w3.org/2009/dap/file-system/file-dir-sys.html#widl-Entry-isDirectory</spec_url>
+            <spec_statement/>
+          </spec>
+        </specs>
+      </testcase>
+      <testcase purpose="Check if the Entry is not a directory" type="compliance" status="approved" component="WebAPI/Storage/File API: Directories and System (Partial)" execution_type="auto" priority="P1" id="Entry_isDirectory_false">
+        <description>
+          <test_script_entry>/opt/tct-filesystemapi-w3c-tests/filesystemapi/Entry_isDirectory_false.html</test_script_entry>
+        </description>
+        <specs>
+          <spec>
+            <spec_assertion element_type="attribute" element_name="isDirectory" interface="Entry" specification="File API: Directories and System (Partial)" section="Storage" category="Tizen W3C API Specifications"/>
+            <spec_url>http://dev.w3.org/2009/dap/file-system/file-dir-sys.html#widl-Entry-isDirectory</spec_url>
+            <spec_statement/>
+          </spec>
+        </specs>
+      </testcase>
+      <testcase purpose="Check if the Entry.isDirectory attribute is readonly" type="compliance" status="approved" component="WebAPI/Storage/File API: Directories and System (Partial)" execution_type="auto" priority="P1" id="Entry_isDirectory_readonly">
+        <description>
+          <test_script_entry>/opt/tct-filesystemapi-w3c-tests/filesystemapi/Entry_isDirectory_readonly.html</test_script_entry>
+        </description>
+        <specs>
+          <spec>
+            <spec_assertion element_type="attribute" element_name="isDirectory" interface="Entry" specification="File API: Directories and System (Partial)" section="Storage" category="Tizen W3C API Specifications"/>
+            <spec_url>http://dev.w3.org/2009/dap/file-system/file-dir-sys.html#widl-Entry-isDirectory</spec_url>
+            <spec_statement/>
+          </spec>
+        </specs>
+      </testcase>
+      <testcase purpose="Check if the Entry is a directory" type="compliance" status="approved" component="WebAPI/Storage/File API: Directories and System (Partial)" execution_type="auto" priority="P1" id="Entry_isDirectory_true">
+        <description>
+          <test_script_entry>/opt/tct-filesystemapi-w3c-tests/filesystemapi/Entry_isDirectory_true.html</test_script_entry>
+        </description>
+        <specs>
+          <spec>
+            <spec_assertion element_type="attribute" element_name="isDirectory" interface="Entry" specification="File API: Directories and System (Partial)" section="Storage" category="Tizen W3C API Specifications"/>
+            <spec_url>http://dev.w3.org/2009/dap/file-system/file-dir-sys.html#widl-Entry-isDirectory</spec_url>
+            <spec_statement/>
+          </spec>
+        </specs>
+      </testcase>
+      <testcase purpose="Check if the type of Entry.isDirectory attribute is boolean" type="compliance" status="approved" component="WebAPI/Storage/File API: Directories and System (Partial)" execution_type="auto" priority="P1" id="Entry_isDirectory_type">
+        <description>
+          <test_script_entry>/opt/tct-filesystemapi-w3c-tests/filesystemapi/Entry_isDirectory_type.html</test_script_entry>
+        </description>
+        <specs>
+          <spec>
+            <spec_assertion element_type="attribute" element_name="isDirectory" interface="Entry" specification="File API: Directories and System (Partial)" section="Storage" category="Tizen W3C API Specifications"/>
+            <spec_url>http://dev.w3.org/2009/dap/file-system/file-dir-sys.html#widl-Entry-isDirectory</spec_url>
+            <spec_statement/>
+          </spec>
+        </specs>
+      </testcase>
+      <testcase purpose="Check if Entry.isFile exists" type="compliance" status="approved" component="WebAPI/Storage/File API: Directories and System (Partial)" execution_type="auto" priority="P1" id="Entry_isFile_exist">
+        <description>
+          <test_script_entry>/opt/tct-filesystemapi-w3c-tests/filesystemapi/Entry_isFile_exist.html</test_script_entry>
+        </description>
+        <specs>
+          <spec>
+            <spec_assertion element_type="attribute" element_name="isFile" interface="Entry" specification="File API: Directories and System (Partial)" section="Storage" category="Tizen W3C API Specifications"/>
+            <spec_url>http://dev.w3.org/2009/dap/file-system/file-dir-sys.html#widl-Entry-isFile</spec_url>
+            <spec_statement/>
+          </spec>
+        </specs>
+      </testcase>
+      <testcase purpose="Check if the Entry is not a file" type="compliance" status="approved" component="WebAPI/Storage/File API: Directories and System (Partial)" execution_type="auto" priority="P1" id="Entry_isFile_false">
+        <description>
+          <test_script_entry>/opt/tct-filesystemapi-w3c-tests/filesystemapi/Entry_isFile_false.html</test_script_entry>
+        </description>
+        <specs>
+          <spec>
+            <spec_assertion element_type="attribute" element_name="isFile" interface="Entry" specification="File API: Directories and System (Partial)" section="Storage" category="Tizen W3C API Specifications"/>
+            <spec_url>http://dev.w3.org/2009/dap/file-system/file-dir-sys.html#widl-Entry-isFile</spec_url>
+            <spec_statement/>
+          </spec>
+        </specs>
+      </testcase>
+      <testcase purpose="Check if the Entry.isFile attribute is readonly" type="compliance" status="approved" component="WebAPI/Storage/File API: Directories and System (Partial)" execution_type="auto" priority="P1" id="Entry_isFile_readonly">
+        <description>
+          <test_script_entry>/opt/tct-filesystemapi-w3c-tests/filesystemapi/Entry_isFile_readonly.html</test_script_entry>
+        </description>
+        <specs>
+          <spec>
+            <spec_assertion element_type="attribute" element_name="isFile" interface="Entry" specification="File API: Directories and System (Partial)" section="Storage" category="Tizen W3C API Specifications"/>
+            <spec_url>http://dev.w3.org/2009/dap/file-system/file-dir-sys.html#widl-Entry-isFile</spec_url>
+            <spec_statement/>
+          </spec>
+        </specs>
+      </testcase>
+      <testcase purpose="Check if the Entry is a file" type="compliance" status="approved" component="WebAPI/Storage/File API: Directories and System (Partial)" execution_type="auto" priority="P1" id="Entry_isFile_true">
+        <description>
+          <test_script_entry>/opt/tct-filesystemapi-w3c-tests/filesystemapi/Entry_isFile_true.html</test_script_entry>
+        </description>
+        <specs>
+          <spec>
+            <spec_assertion element_type="attribute" element_name="isFile" interface="Entry" specification="File API: Directories and System (Partial)" section="Storage" category="Tizen W3C API Specifications"/>
+            <spec_url>http://dev.w3.org/2009/dap/file-system/file-dir-sys.html#widl-Entry-isFile</spec_url>
+            <spec_statement/>
+          </spec>
+        </specs>
+      </testcase>
+      <testcase purpose="Check if the type of Entry.isFile attribute is boolean" type="compliance" status="approved" component="WebAPI/Storage/File API: Directories and System (Partial)" execution_type="auto" priority="P1" id="Entry_isFile_type">
+        <description>
+          <test_script_entry>/opt/tct-filesystemapi-w3c-tests/filesystemapi/Entry_isFile_type.html</test_script_entry>
+        </description>
+        <specs>
+          <spec>
+            <spec_assertion element_type="attribute" element_name="isFile" interface="Entry" specification="File API: Directories and System (Partial)" section="Storage" category="Tizen W3C API Specifications"/>
+            <spec_url>http://dev.w3.org/2009/dap/file-system/file-dir-sys.html#widl-Entry-isFile</spec_url>
+            <spec_statement/>
+          </spec>
+        </specs>
+      </testcase>
+      <testcase purpose="Check if Entry.moveTo exists" type="compliance" status="approved" component="WebAPI/Storage/File API: Directories and System (Partial)" execution_type="auto" priority="P1" id="Entry_moveTo_exist">
+        <description>
+          <test_script_entry>/opt/tct-filesystemapi-w3c-tests/filesystemapi/Entry_moveTo_exist.html</test_script_entry>
+        </description>
+        <specs>
+          <spec>
+            <spec_assertion element_type="method" element_name="moveTo" interface="Entry" specification="File API: Directories and System (Partial)" section="Storage" category="Tizen W3C API Specifications"/>
+            <spec_url>http://dev.w3.org/2009/dap/file-system/file-dir-sys.html#widl-Entry-isFile</spec_url>
+            <spec_statement/>
+          </spec>
+        </specs>
+      </testcase>
+      <testcase purpose="Check if Entry.name exists" type="compliance" status="approved" component="WebAPI/Storage/File API: Directories and System (Partial)" execution_type="auto" priority="P1" id="Entry_name_exist">
+        <description>
+          <test_script_entry>/opt/tct-filesystemapi-w3c-tests/filesystemapi/Entry_name_exist.html</test_script_entry>
+        </description>
+        <specs>
+          <spec>
+            <spec_assertion element_type="attribute" element_name="name" interface="Entry" specification="File API: Directories and System (Partial)" section="Storage" category="Tizen W3C API Specifications"/>
+            <spec_url>http://dev.w3.org/2009/dap/file-system/file-dir-sys.html#widl-Entry-name</spec_url>
+            <spec_statement/>
+          </spec>
+        </specs>
+      </testcase>
+      <testcase purpose="Check if the type of Entry.name attribute is readonly" type="compliance" status="approved" component="WebAPI/Storage/File API: Directories and System (Partial)" execution_type="auto" priority="P1" id="Entry_name_readonly">
+        <description>
+          <test_script_entry>/opt/tct-filesystemapi-w3c-tests/filesystemapi/Entry_name_readonly.html</test_script_entry>
+        </description>
+        <specs>
+          <spec>
+            <spec_assertion element_type="attribute" element_name="name" interface="Entry" specification="File API: Directories and System (Partial)" section="Storage" category="Tizen W3C API Specifications"/>
+            <spec_url>http://dev.w3.org/2009/dap/file-system/file-dir-sys.html#widl-Entry-name</spec_url>
+            <spec_statement/>
+          </spec>
+        </specs>
+      </testcase>
+      <testcase purpose="Check if the type of Entry.name attribute is DOMString" type="compliance" status="approved" component="WebAPI/Storage/File API: Directories and System (Partial)" execution_type="auto" priority="P1" id="Entry_name_type">
+        <description>
+          <test_script_entry>/opt/tct-filesystemapi-w3c-tests/filesystemapi/Entry_name_type.html</test_script_entry>
+        </description>
+        <specs>
+          <spec>
+            <spec_assertion element_type="attribute" element_name="name" interface="Entry" specification="File API: Directories and System (Partial)" section="Storage" category="Tizen W3C API Specifications"/>
+            <spec_url>http://dev.w3.org/2009/dap/file-system/file-dir-sys.html#widl-Entry-name</spec_url>
+            <spec_statement/>
+          </spec>
+        </specs>
+      </testcase>
+      <testcase purpose="Check if Entry.remove exists" type="compliance" status="approved" component="WebAPI/Storage/File API: Directories and System (Partial)" execution_type="auto" priority="P1" id="Entry_remove_exist">
+        <description>
+          <test_script_entry>/opt/tct-filesystemapi-w3c-tests/filesystemapi/Entry_remove_exist.html</test_script_entry>
+        </description>
+        <specs>
+          <spec>
+            <spec_assertion element_type="method" element_name="remove" interface="Entry" specification="File API: Directories and System (Partial)" section="Storage" category="Tizen W3C API Specifications"/>
+            <spec_url>http://dev.w3.org/2009/dap/file-system/file-dir-sys.html#widl-Entry-isFile</spec_url>
+            <spec_statement/>
+          </spec>
+        </specs>
+      </testcase>
+      <testcase purpose="Check if Entry.toURL exists" type="compliance" status="approved" component="WebAPI/Storage/File API: Directories and System (Partial)" execution_type="auto" priority="P1" id="Entry_toURL_exist">
+        <description>
+          <test_script_entry>/opt/tct-filesystemapi-w3c-tests/filesystemapi/Entry_toURL_exist.html</test_script_entry>
+        </description>
+        <specs>
+          <spec>
+            <spec_assertion element_type="method" element_name="toURL" interface="Entry" specification="File API: Directories and System (Partial)" section="Storage" category="Tizen W3C API Specifications"/>
+            <spec_url>http://dev.w3.org/2009/dap/file-system/file-dir-sys.html#widl-Entry-toURL-DOMString</spec_url>
+            <spec_statement/>
+          </spec>
+        </specs>
+      </testcase>
+      <testcase purpose="Check if FileCallback.handleEvent exists" type="compliance" status="approved" component="WebAPI/Storage/File API: Directories and System (Partial)" execution_type="auto" priority="P1" id="FileCallback_handleEvent_exist">
+        <description>
+          <test_script_entry>/opt/tct-filesystemapi-w3c-tests/filesystemapi/FileCallback_handleEvent_exist.html</test_script_entry>
+        </description>
+        <specs>
+          <spec>
+            <spec_assertion element_type="eventhandler" element_name="handleEvent" interface="FileCallback" specification="File API: Directories and System (Partial)" section="Storage" category="Tizen W3C API Specifications"/>
+            <spec_url>http://dev.w3.org/2009/dap/file-system/file-dir-sys.html#widl-FileCallback-handleEvent-void-File-file</spec_url>
+            <spec_statement/>
+          </spec>
+        </specs>
+      </testcase>
+      <testcase purpose="Check if FileEntry.createWriter exists" type="compliance" status="approved" component="WebAPI/Storage/File API: Directories and System (Partial)" execution_type="auto" priority="P1" id="FileEntry_createWriter_exist">
+        <description>
+          <test_script_entry>/opt/tct-filesystemapi-w3c-tests/filesystemapi/FileEntry_createWriter_exist.html</test_script_entry>
+        </description>
+        <specs>
+          <spec>
+            <spec_assertion element_type="method" element_name="createWriter" interface="FileEntry" specification="File API: Directories and System (Partial)" section="Storage" category="Tizen W3C API Specifications"/>
+            <spec_url>http://dev.w3.org/2009/dap/file-system/file-dir-sys.html#the-fileentry-interface</spec_url>
+            <spec_statement/>
+          </spec>
+        </specs>
+      </testcase>
+      <testcase purpose="Check if FileEntry.file exists" type="compliance" status="approved" component="WebAPI/Storage/File API: Directories and System (Partial)" execution_type="auto" priority="P1" id="FileEntry_file_exist">
+        <description>
+          <test_script_entry>/opt/tct-filesystemapi-w3c-tests/filesystemapi/FileEntry_file_exist.html</test_script_entry>
+        </description>
+        <specs>
+          <spec>
+            <spec_assertion element_type="method" element_name="file" interface="FileEntry" specification="File API: Directories and System (Partial)" section="Storage" category="Tizen W3C API Specifications"/>
+            <spec_url>http://dev.w3.org/2009/dap/file-system/file-dir-sys.html#the-fileentry-interface</spec_url>
+            <spec_statement/>
+          </spec>
+        </specs>
+      </testcase>
+      <testcase purpose="Check if FileSystem.name is the name of the file system" type="compliance" status="approved" component="WebAPI/Storage/File API: Directories and System (Partial)" execution_type="auto" priority="P1" id="FileSystem_name_base">
+        <description>
+          <test_script_entry>/opt/tct-filesystemapi-w3c-tests/filesystemapi/FileSystem_name_base.html</test_script_entry>
+        </description>
+        <specs>
+          <spec>
+            <spec_assertion element_type="attribute" element_name="name" interface="FileSystem" specification="File API: Directories and System (Partial)" section="Storage" category="Tizen W3C API Specifications"/>
+            <spec_url>http://dev.w3.org/2009/dap/file-system/file-dir-sys.html#widl-FileSystem-name</spec_url>
+            <spec_statement/>
+          </spec>
+        </specs>
+      </testcase>
+      <testcase purpose="Check if FileSystem.name exists" type="compliance" status="approved" component="WebAPI/Storage/File API: Directories and System (Partial)" execution_type="auto" priority="P1" id="FileSystem_name_exist">
+        <description>
+          <test_script_entry>/opt/tct-filesystemapi-w3c-tests/filesystemapi/FileSystem_name_exist.html</test_script_entry>
+        </description>
+        <specs>
+          <spec>
+            <spec_assertion element_type="attribute" element_name="name" interface="FileSystem" specification="File API: Directories and System (Partial)" section="Storage" category="Tizen W3C API Specifications"/>
+            <spec_url>http://dev.w3.org/2009/dap/file-system/file-dir-sys.html#widl-FileSystem-name</spec_url>
+            <spec_statement/>
+          </spec>
+        </specs>
+      </testcase>
+      <testcase purpose="Check if the FileSystem.name attribute is readonly" type="compliance" status="approved" component="WebAPI/Storage/File API: Directories and System (Partial)" execution_type="auto" priority="P1" id="FileSystem_name_readonly">
+        <description>
+          <test_script_entry>/opt/tct-filesystemapi-w3c-tests/filesystemapi/FileSystem_name_readonly.html</test_script_entry>
+        </description>
+        <specs>
+          <spec>
+            <spec_assertion element_type="attribute" element_name="name" interface="FileSystem" specification="File API: Directories and System (Partial)" section="Storage" category="Tizen W3C API Specifications"/>
+            <spec_url>http://dev.w3.org/2009/dap/file-system/file-dir-sys.html#widl-FileSystem-name</spec_url>
+            <spec_statement/>
+          </spec>
+        </specs>
+      </testcase>
+      <testcase purpose="Check if the type of FileSystem.name is string" type="compliance" status="approved" component="WebAPI/Storage/File API: Directories and System (Partial)" execution_type="auto" priority="P1" id="FileSystem_name_type">
+        <description>
+          <test_script_entry>/opt/tct-filesystemapi-w3c-tests/filesystemapi/FileSystem_name_type.html</test_script_entry>
+        </description>
+        <specs>
+          <spec>
+            <spec_assertion element_type="attribute" element_name="name" interface="FileSystem" specification="File API: Directories and System (Partial)" section="Storage" category="Tizen W3C API Specifications"/>
+            <spec_url>http://dev.w3.org/2009/dap/file-system/file-dir-sys.html#widl-FileSystem-name</spec_url>
+            <spec_statement/>
+          </spec>
+        </specs>
+      </testcase>
+      <testcase purpose="Check if FileSystem.root is the root directory of the file system" type="compliance" status="approved" component="WebAPI/Storage/File API: Directories and System (Partial)" execution_type="auto" priority="P1" id="FileSystem_root_base">
+        <description>
+          <test_script_entry>/opt/tct-filesystemapi-w3c-tests/filesystemapi/FileSystem_root_base.html</test_script_entry>
+        </description>
+        <specs>
+          <spec>
+            <spec_assertion element_type="attribute" element_name="root" interface="FileSystem" specification="File API: Directories and System (Partial)" section="Storage" category="Tizen W3C API Specifications"/>
+            <spec_url>http://dev.w3.org/2009/dap/file-system/file-dir-sys.html#widl-FileSystem-root</spec_url>
+            <spec_statement/>
+          </spec>
+        </specs>
+      </testcase>
+      <testcase purpose="Check if the FileSystem.root attribute is readonly" type="compliance" status="approved" component="WebAPI/Storage/File API: Directories and System (Partial)" execution_type="auto" priority="P1" id="FileSystem_root_readonly">
+        <description>
+          <test_script_entry>/opt/tct-filesystemapi-w3c-tests/filesystemapi/FileSystem_root_readonly.html</test_script_entry>
+        </description>
+        <specs>
+          <spec>
+            <spec_assertion element_type="attribute" element_name="root" interface="FileSystem" specification="File API: Directories and System (Partial)" section="Storage" category="Tizen W3C API Specifications"/>
+            <spec_url>http://dev.w3.org/2009/dap/file-system/file-dir-sys.html#widl-FileSystem-root</spec_url>
+            <spec_statement/>
+          </spec>
+        </specs>
+      </testcase>
+      <testcase purpose="Check if the type of FileSystem.root is DirectoryEntry" type="compliance" status="approved" component="WebAPI/Storage/File API: Directories and System (Partial)" execution_type="auto" priority="P1" id="FileSystem_root_type">
+        <description>
+          <test_script_entry>/opt/tct-filesystemapi-w3c-tests/filesystemapi/FileSystem_root_type.html</test_script_entry>
+        </description>
+        <specs>
+          <spec>
+            <spec_assertion element_type="attribute" element_name="root" interface="FileSystem" specification="File API: Directories and System (Partial)" section="Storage" category="Tizen W3C API Specifications"/>
+            <spec_url>http://dev.w3.org/2009/dap/file-system/file-dir-sys.html#widl-FileSystem-root</spec_url>
+            <spec_statement/>
+          </spec>
+        </specs>
+      </testcase>
+      <testcase purpose="Check if FileWriterCallback.handleEvent exists" type="compliance" status="approved" component="WebAPI/Storage/File API: Directories and System (Partial)" execution_type="auto" priority="P1" id="FileWriterCallback_handleEvent_exist">
+        <description>
+          <test_script_entry>/opt/tct-filesystemapi-w3c-tests/filesystemapi/FileWriterCallback_handleEvent_exist.html</test_script_entry>
+        </description>
+        <specs>
+          <spec>
+            <spec_assertion element_type="eventhandler" element_name="handleEvent" interface="FileWriterCallback" specification="File API: Directories and System (Partial)" section="Storage" category="Tizen W3C API Specifications"/>
+            <spec_url>http://dev.w3.org/2009/dap/file-system/file-dir-sys.html#the-filewritercallback-interface</spec_url>
+            <spec_statement/>
+          </spec>
+        </specs>
+      </testcase>
+      <testcase purpose="Check if MetadataCallback.handleEvent exists" type="compliance" status="approved" component="WebAPI/Storage/File API: Directories and System (Partial)" execution_type="auto" priority="P1" id="MetadataCallback_handleEvent_exist">
+        <description>
+          <test_script_entry>/opt/tct-filesystemapi-w3c-tests/filesystemapi/MetadataCallback_handleEvent_exist.html</test_script_entry>
+        </description>
+        <specs>
+          <spec>
+            <spec_assertion element_type="eventhandler" element_name="handleEvent" interface="MetadataCallback" specification="File API: Directories and System (Partial)" section="Storage" category="Tizen W3C API Specifications"/>
+            <spec_url>http://dev.w3.org/2009/dap/file-system/file-dir-sys.html#the-metadatacallback-interface</spec_url>
+            <spec_statement/>
+          </spec>
+        </specs>
+      </testcase>
+      <testcase purpose="Check if the type of the parameter metadata is Metadata in MetadataCallback interface" type="compliance" status="approved" component="WebAPI/Storage/File API: Directories and System (Partial)" execution_type="auto" priority="P1" id="MetadataCallback_handleEvent_metadata_type">
+        <description>
+          <test_script_entry>/opt/tct-filesystemapi-w3c-tests/filesystemapi/MetadataCallback_handleEvent_metadata_type.html</test_script_entry>
+        </description>
+        <specs>
+          <spec>
+            <spec_assertion element_type="eventhandler" element_name="handleEvent" interface="MetadataCallback" specification="File API: Directories and System (Partial)" section="Storage" category="Tizen W3C API Specifications"/>
+            <spec_url>http://dev.w3.org/2009/dap/file-system/file-dir-sys.html#the-metadatacallback-interface</spec_url>
+            <spec_statement/>
+          </spec>
+        </specs>
+      </testcase>
+      <testcase purpose="Check if VoidCallback.handleEvent exists" type="compliance" status="approved" component="WebAPI/Storage/File API: Directories and System (Partial)" execution_type="auto" priority="P1" id="VoidCallback_handleEvent_exists">
+        <description>
+          <test_script_entry>/opt/tct-filesystemapi-w3c-tests/filesystemapi/VoidCallback_handleEvent_exists.html</test_script_entry>
+        </description>
+        <specs>
+          <spec>
+            <spec_assertion element_type="eventhandler" element_name="handleEvent" interface="VoidCallback" specification="File API: Directories and System (Partial)" section="Storage" category="Tizen W3C API Specifications"/>
+            <spec_url>http://dev.w3.org/2009/dap/file-system/file-dir-sys.html#the-voidcallback-interface</spec_url>
+            <spec_statement/>
+          </spec>
+        </specs>
+      </testcase>
+      <testcase purpose="Check if the requestFileSystem can give access to an origin-private filesystem" type="compliance" status="approved" component="WebAPI/Storage/File API: Directories and System (Partial)" execution_type="auto" priority="P0" id="window_LocalFileSystem_requestFileSystem_base">
+        <description>
+          <test_script_entry>/opt/tct-filesystemapi-w3c-tests/filesystemapi/window_LocalFileSystem_requestFileSystem_base.html</test_script_entry>
+        </description>
+        <specs>
+          <spec>
+            <spec_assertion element_type="method" element_name="requestFileSystem" interface="LocalFileSystem" specification="File API: Directories and System (Partial)" section="Storage" category="Tizen W3C API Specifications"/>
+            <spec_url>http://dev.w3.org/2009/dap/file-system/file-dir-sys.html#using-localfilesystem</spec_url>
+            <spec_statement/>
+          </spec>
+        </specs>
+      </testcase>
+      <testcase purpose="Check if the requestFileSystem exists" type="compliance" status="approved" component="WebAPI/Storage/File API: Directories and System (Partial)" execution_type="auto" priority="P1" id="window_LocalFileSystem_requestFileSystem_exist">
+        <description>
+          <test_script_entry>/opt/tct-filesystemapi-w3c-tests/filesystemapi/window_LocalFileSystem_requestFileSystem_exist.html</test_script_entry>
+        </description>
+        <specs>
+          <spec>
+            <spec_assertion element_type="method" element_name="requestFileSystem" interface="LocalFileSystem" specification="File API: Directories and System (Partial)" section="Storage" category="Tizen W3C API Specifications"/>
+            <spec_url>http://www.w3.org/TR/2011/WD-file-system-api-20110419/#widl-LocalFileSystem-requestFileSystem</spec_url>
+            <spec_statement/>
+          </spec>
+        </specs>
+      </testcase>
+    </set>
+  </suite>
+</test_definition>

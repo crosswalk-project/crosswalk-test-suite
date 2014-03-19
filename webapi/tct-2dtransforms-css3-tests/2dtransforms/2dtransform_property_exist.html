@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<!--
+Copyright (c) 2013 Intel Corporation.
+
+Redistribution and use in source and binary forms, with or without modification,
+are permitted provided that the following conditions are met:
+
+* Redistributions of works must retain the original copyright notice, this list
+  of conditions and the following disclaimer.
+* Redistributions in binary form must reproduce the original copyright notice,
+  this list of conditions and the following disclaimer in the documentation
+  and/or other materials provided with the distribution.
+* Neither the name of Intel Corporation nor the names of its contributors
+  may be used to endorse or promote products derived from this work without
+  specific prior written permission.
+
+THIS SOFTWARE IS PROVIDED BY INTEL CORPORATION "AS IS"
+AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE
+IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE
+ARE DISCLAIMED. IN NO EVENT SHALL INTEL CORPORATION BE LIABLE FOR ANY DIRECT,
+INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING,
+BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE,
+DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY
+OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING
+NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE,
+EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
+
+Authors:
+        Cui, Jieqiong <jieqiongx.cui@intel.com>
+
+-->
+
+<html>
+  <head>
+    <title>CSS3 2D Transforms: 2dtransform_property_exist</title>
+    <link rel="author" title="Intel" href="http://www.intel.com/" />
+    <link rel="help" href="http://www.w3.org/TR/2012/WD-css3-transforms-20120911/" />
+    <meta name="flags" content="" />
+    <meta name="assert" content="Check if the 2dtransform property exists" />
+    <script src="../resources/testharness.js"></script>
+    <script src="../resources/testharnessreport.js"></script>
+    <script>
+        //style existence check
+        function hasStyle(name, styles) {
+            var arr = name.split("-");
+            var nameStr = arr[0];
+            for(i = 1; i < arr.length; i++) {
+                nameStr = nameStr + arr[i][0].toUpperCase() + arr[i].slice(1);
+            }
+            //name without prefix
+            if(nameStr in styles) {
+                return true;
+            }
+            //browser prefixes
+            var prefixes = ["ms", "Moz", "moz", "webkit", "O"];
+            //Uppercase first letter
+            nameStr = nameStr[0].toUpperCase() + nameStr.slice(1);
+            for (i in prefixes) {
+                //name with prefix
+                if ((prefixes[i] + nameStr) in styles) {
+                    return true;
+                }
+            }
+            return false;
+        }
+    </script>
+  </head>
+  <body>
+    <div id="log"></div>
+    <script>
+        var div = document.getElementById("log");
+        test(function () {
+            assert_true(hasStyle("perspective-origin", div.style), "The perspective-origin property exists");
+        }, "Check if the perspective-origin property exists");
+        test(function () {
+            assert_true(hasStyle("perspective", div.style), "The perspective property exists");
+        }, "Check if the perspective property exists");
+        test(function () {
+            assert_true(hasStyle("transform-style", div.style), "The transform-style property exists");
+        }, "Check if the transform-style property exists");
+        test(function () {
+            assert_true(hasStyle("backface-visibility", div.style), "The backface-visibility property exists");
+        }, "Check if the backface-visibility property exists");
+    </script>
+  </body>
+</html>

@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<!--
+Copyright (c) 2013 Intel Corporation.
+
+Redistribution and use in source and binary forms, with or without modification,
+are permitted provided that the following conditions are met:
+
+* Redistributions of works must retain the original copyright notice, this list
+  of conditions and the following disclaimer.
+* Redistributions in binary form must reproduce the original copyright notice,
+  this list of conditions and the following disclaimer in the documentation
+  and/or other materials provided with the distribution.
+* Neither the name of Intel Corporation nor the names of its contributors
+  may be used to endorse or promote products derived from this work without
+  specific prior written permission.
+
+THIS SOFTWARE IS PROVIDED BY INTEL CORPORATION "AS IS"
+AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE
+IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE
+ARE DISCLAIMED. IN NO EVENT SHALL INTEL CORPORATION BE LIABLE FOR ANY DIRECT,
+INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING,
+BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE,
+DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY
+OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING
+NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE,
+EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
+
+Authors:
+        Xinx, liu <xinx.liu@intel.com>
+
+-->
+
+<html>
+  <head>
+    <title>Document Test: hgroup_element_check</title>
+    <link rel="author" title="Intel" href="http://www.intel.com/">
+    <link rel="help" href="http://www.w3.org/TR/2012/CR-html5-20121217/sections.html#the-section-element">
+    <link id="testlink">
+    <meta name="flags" content="">
+    <meta name="assert" content="Check if section element exists">
+    <script src="../../../resources/testharness.js"></script>
+    <script src="../../../resources/testharnessreport.js"></script>
+  </head>
+  <body>
+    <div id="log"></div>
+    <h4>Apples</h4>
+    <p>Apples are fruit.</p>
+    <section id="testsection">
+      <h2 id="testh2">Taste</h2>
+      <p id="testp">They taste lovely.</p>
+      <h6>Sweet</h6>
+      <p>Red apples are sweeter than green ones.</p>
+      <h1>Color</h1>
+      <p>Apples come in various colors.</p>
+    </section>
+    <script type="text/javascript">
+        var testsection = document.getElementById("testsection");
+        test(function() {
+            assert_equals(typeof testsection, "object", "section element exists");
+        }, "Check if section element exists");
+
+        test(function() {
+            assert_equals(testsection.children[0].id, "testh2", "section element children");
+        }, "Check if section element contains h2 element is right");
+
+        test(function() {
+            assert_equals(testsection.children[1].id, "testp", "section element children");
+        }, "Check if section element contains p element is right");
+
+        var sub_element_length=6;
+        test(function() {
+            assert_equals(testsection.children.length, sub_element_length, "section element children");
+        }, "Check if section element contains elements number is right");
+
+        var testh2 = document.getElementById("testh2");
+        test(function() {
+            assert_equals(testh2.parentElement.id, "testsection", "section element");
+        }, "Check if h2 element parent element is section");
+
+        var testp = document.getElementById("testp");
+        test(function() {
+            assert_equals(testp.parentElement.id, "testsection", "section element");
+        }, "Check if p element parent element is section");
+
+    </script>
+  </body>
+</html>

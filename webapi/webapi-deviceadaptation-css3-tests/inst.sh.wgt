@@ -1,0 +1,70 @@
+#!/bin/bash
+wgt_installer="pkgcmd"
+NAME=$(basename $(cd $(dirname $0);pwd))
+
+#parse params
+USAGE="Usage: ./inst.sh [-i] [-u]
+  -i install wgt and config environment
+  -u uninstall wgt and remove source file
+[-i] option was set as default."
+
+function installpkg(){
+    ### install wgt ###
+    type $wgt_installer > /dev/null 2>&1
+    if [ $? -eq 0 ]; then
+        [ -e /opt/usr/media/tct/opt/$NAME/$NAME.wgt ] && $wgt_installer -i -t wgt -q -p /opt/usr/media/tct/opt/$NAME/$NAME.wgt
+        if [ $? -eq 0 ]; then
+            echo "Install /opt/usr/media/tct/opt/$NAME/$NAME.wgt to /opt/usr/apps/`wrt-launcher -l 2> /dev/null | grep $NAME | tail -n 1 | awk '{ print $(NF-1) }'` done"
+            echo "$(wrt-launcher -l | grep $NAME | awk '{ print $(NF-1) }') sdbd rw" | smackload
+        else
+            echo "Install /opt/$NAME/$NAME.wgt fail ..."
+        fi
+        sync
+    fi
+}
+
+function uninstallpkg(){
+    ### uninstall wgt ###
+    type $wgt_installer > /dev/null 2>&1
+    if [ $? -eq 0 ]; then
+        package_id=`wrt-launcher -l 2> /dev/null | grep $NAME | tail -n 1 | awk '{ print $(NF-1) }'`
+        if [ -n "$(ps -ef | grep $package_id | grep -v grep | awk '{print $2}')" ]; then
+            for i in $(ps -ef | grep $package_id | grep -v grep | awk '{print $2}')
+            do
+                kill -9 $i
+                if [ "$?" -ne 0 ]; then
+                    echo "Kill the processes of $NAME fail ..."
+                else
+                    echo "Kill the processes of $NAME done"
+                fi
+            done
+        fi
+
+        if [ -n "$package_id" ]; then
+            $wgt_installer -u -q -t wgt -n $package_id
+            if [ "$?" -ne 0 ]; then
+                echo "Uninstall $NAME fail ..."
+            else
+                echo "Uninstall $NAME done"
+            fi
+            sync
+        fi
+    fi
+
+    ### remove source file ###
+    if [ -d /opt/usr/media/tct/opt/$NAME ];then
+        rm -rf /opt/usr/media/tct/opt/$NAME
+    else
+        echo "Remove source file fail,please check if the source file exist: /opt/usr/media/tct/opt/$NAME ..."
+    fi
+}
+
+case "$1" in
+    -h|--help) echo "$USAGE"
+               exit ;;
+    ""|-i) installpkg;;
+    -u) uninstallpkg;;
+    *) echo "Unknown option: $1"
+       echo "$USAGE"
+       exit ;;
+esac

@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<!--
+Copyright (c) 2013 Intel Corporation.
+
+Redistribution and use in source and binary forms, with or without modification,
+are permitted provided that the following conditions are met:
+
+* Redistributions of works must retain the original copyright notice, this list
+  of conditions and the following disclaimer.
+* Redistributions in binary form must reproduce the original copyright notice,
+  this list of conditions and the following disclaimer in the documentation
+  and/or other materials provided with the distribution.
+* Neither the name of Intel Corporation nor the names of its contributors
+  may be used to endorse or promote products derived from this work without
+  specific prior written permission.
+
+THIS SOFTWARE IS PROVIDED BY INTEL CORPORATION "AS IS"
+AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE
+IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE
+ARE DISCLAIMED. IN NO EVENT SHALL INTEL CORPORATION BE LIABLE FOR ANY DIRECT,
+INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING,
+BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE,
+DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY
+OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING
+NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE,
+EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
+
+Authors:
+        Tan, Shiyou <shiyoux.tan@intel.com>
+
+-->
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, height=device-height, minimum-scale=1.0, maximum-scale=2.0" />
+    <title>Viewport</title>
+    <style>
+        body {
+            padding: 0px;
+            margin: 0px;
+            background-color: red;
+        }
+        p {
+            margin: 0px 10px;
+        }
+        .button {
+            background: #eee;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            font-weight: bold;
+            font-size: 15px;
+            padding: 8px 2px;
+            width: 160px;
+        }
+        #div1 {
+            background-color: green;
+            float: left;
+        }
+        #div1 {
+            background-color: yellow;
+            float: left;
+        }
+    </style>
+  </head>
+  <body>
+    <div id="div1">
+      <p>1.Zoom to minimum, the screen background is about half of green and half of yellow</p>
+      <p>2.Zoom to maximum, the screen is full of green; then slide to right, you can see yellow background</p>
+      <p><button onclick='javascript: window.history.go(-1)' class='button'>Complete Test</button></p>
+    </div>
+    <div id="div2"></div>
+    <script type="text/javascript">
+        tizen.systeminfo.getPropertyValue("DISPLAY", function(property) {
+            var property = {resolutionHeight: 1280, resolutionWidth: 720};
+            var maximum_scale = 2;
+            var adapter = 2;
+            var div1 = document.getElementById("div1");
+            var div2 = document.getElementById("div2");
+            var screenHight = property.resolutionHeight / adapter;
+            var screenWidth = property.resolutionWidth / adapter;
+            var divWidth = screenWidth / maximum_scale;
+
+            div1.style.width = divWidth + "px";
+            div1.style.height = screenHight + "px";
+            div2.style.width = divWidth + "px";
+            div2.style.height = screenHight + "px";
+        });
+    </script>
+  </body>
+</html>

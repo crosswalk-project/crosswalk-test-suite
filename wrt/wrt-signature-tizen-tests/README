@@ -1,0 +1,68 @@
+----------------------------------------------
+License
+----------------------------------------------
+Copyright (c) 2013 Intel Corporation.
+
+Redistribution and use in source and binary forms, with or without modification,
+are permitted provided that the following conditions are met:
+
+* Redistributions of works must retain the original copyright notice, this list
+  of conditions and the following disclaimer.
+* Redistributions in binary form must reproduce the original copyright notice,
+  this list of conditions and the following disclaimer in the documentation
+  and/or other materials provided with the distribution.
+* Neither the name of Intel Corporation nor the names of its contributors
+  may be used to endorse or promote products derived from this work without
+  specific prior written permission.
+
+THIS SOFTWARE IS PROVIDED BY INTEL CORPORATION "AS IS"
+AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE
+IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE
+ARE DISCLAIMED. IN NO EVENT SHALL INTEL CORPORATION BE LIABLE FOR ANY DIRECT,
+INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING,
+BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE,
+DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY
+OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING
+NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE,
+EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
+
+Authors:
+        Cici Li <cici.x.li@intel.com>
+        Ivan Chen <yufeix.chen@intel.com>
+
+----------------------------------------------
+Introduction
+----------------------------------------------
+This test suite is for testing tizen basic featrue
+
+----------------------------------------------
+Test Environment
+----------------------------------------------
+1. Pre-install Testkit-Lite package.
+2. Run these cases as "normal" user.
+
+----------------------------------------------
+Build and Run
+----------------------------------------------
+(Suppose you only get the source code and Testkit-Lite has been set up on your test machine.
+ If you have obtained wrt-signature-tizen-tests ZIP packages, you can directly go to step 3 on the test machine;
+ if you have not installed Testkit-Lite, you need to install the latest version.)
+
+Test steps:
+1. Prepare for building by running the following command:
+   cd wrt-signature-tizen-tests
+
+2. Build Zip packages by running the following command:
+   ./pack.sh
+
+3. Unzip packages and access wrt-signature-tizen-tests
+
+4. Push packages to device by running the following command:
+   sdb push bad_signature.xpk /tmp/
+   sdb push signature.xpk /tmp/
+
+5. Run test cases as "normal" user with the following command:
+   sdb root on
+   sdb shell
+   xwalkctl --install /tmp/bad_signature.xpk
+   xwalkctl --install /tmp/signature.xpk
