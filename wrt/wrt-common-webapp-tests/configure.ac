@@ -113,5 +113,7 @@ webapp/permission_extend_morevalue_tests/Makefile \
 webapp/permission_extend_nothingvalue_tests/Makefile \
 webapp/permission_negative_morefield_tests/Makefile \
 webapp/permission_negative_nullvalue_tests/Makefile \
-webapp/permission_negative_smallletter_tests/Makefile])
+webapp/permission_negative_smallletter_tests/Makefile \
+webapp/manifest_extend_html_namedhttp/Makefile \
+webapp/manifest_extend_name_withspace/Makefile])
 AC_OUTPUT
