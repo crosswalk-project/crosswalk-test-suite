@@ -1,0 +1,42 @@
+<!--
+Test convert from Blink:
+https://github.com/crosswalk-project/blink-crosswalk/blob/master/LayoutTests/fast/speechsynthesis/speech-synthesis-pause-resume.html
+-->
+
+<!DOCTYPE html>
+<meta charset="utf-8">
+<title>Web Speech API Test: pausing/resuming speech jobs works as expected</title>
+<link rel="author" title="Intel" href="http://www.intel.com">
+<link rel="help" href="http://dvcs.w3.org/hg/speech-api/raw-file/tip/speechapi.html">
+<script src="../../resources/testharness.js"></script>
+<script src="../../resources/testharnessreport.js"></script>
+<div id="log"></div>
+<script>
+
+var t = async_test("Test that pausing/resuming speech jobs works as expected", { timeout: 5000});
+t.step(function () {
+  var u = new SpeechSynthesisUtterance("this is a test");
+
+  u.onpause = function(event) {
+    assert_true(speechSynthesis.paused);
+    assert_true(speechSynthesis.speaking);
+  }
+
+  u.onresume  = function(event) {
+    assert_false(speechSynthesis.paused);
+    assert_true(speechSynthesis.speaking);
+  }
+
+  u.onend = function(event) {
+    assert_false(speechSynthesis.paused);
+    assert_false(speechSynthesis.speaking);
+    t.done();
+  }
+
+  speechSynthesis.speak(u);
+
+  setTimeout(function () {speechSynthesis.pause();}, 1);
+  setTimeout(function () {speechSynthesis.resume();}, 2);
+});
+
+</script>

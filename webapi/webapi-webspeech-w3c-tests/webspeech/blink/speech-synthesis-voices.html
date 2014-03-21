@@ -1,0 +1,40 @@
+<!--
+Test convert from Blink:
+https://github.com/crosswalk-project/blink-crosswalk/blob/master/LayoutTests/fast/speechsynthesis/speech-synthesis-voices.html
+-->
+
+<!DOCTYPE html>
+<meta charset="utf-8">
+<title>Web Speech API Test: can get synthesizer voices</title>
+<link rel="author" title="Intel" href="http://www.intel.com">
+<link rel="help" href="http://dvcs.w3.org/hg/speech-api/raw-file/tip/speechapi.html">
+<script src="../../resources/testharness.js"></script>
+<script src="../../resources/testharnessreport.js"></script>
+<div id="log"></div>
+<script>
+
+var t = async_test("Test that can get synthesizer voices", { timeout: 5000});
+t.step(function () {
+  var speech = window.speechSynthesis;
+  var list = speech.getVoices();
+
+  var foundDefaultVoice = false;
+  var foundEnglishVoice = false;
+  var voiceCount = list.length;
+
+  for (var k = 0; k < list.length; k++ ) {
+    var voice = list[k];
+    if (voice.lang == "en-US") {
+      foundEnglishVoice = true;
+    }
+    if (voice.default) {
+      foundDefaultVoice = true;
+    }
+  }
+
+  assert_greater_than(voiceCount, 0);
+  assert_true(foundEnglishVoice);
+  assert_true(foundDefaultVoice);
+});
+
+</script>
