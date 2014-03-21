@@ -1,4 +1,6 @@
 #!/bin/bash
+wgt_installer="pkgcmd"
+NAME=$(basename $(cd $(dirname $0);pwd))
 
 #parse params
 USAGE="Usage: ./inst.sh [-i] [-u]
@@ -6,36 +8,55 @@ USAGE="Usage: ./inst.sh [-i] [-u]
   -u uninstall wgt and remove source file
 [-i] option was set as default."
 
-PACKAGENAME=webapi-sanityapp-w3c-tests
-WGTNAME=${PACKAGENAME}.wgt
-RESOURCE_DIR=/opt/usr/media
-chmod 777 -R /opt/usr/media/tct/opt/$PACKAGENAME
-
 function installpkg(){
-    su - app -c "export DBUS_SESSION_BUS_ADDRESS=\"unix:path=/run/user/5000/dbus/user_bus_socket\";export XDG_RUNTIME_DIR=\"/run/user/5000\";xwalkctl --install $(dirname $0)/$WGTNAME"
-
-    #TODO: copy resource
-    #eg:cp xx $RESOURCE_DIR
+### install wgt ###
+type $wgt_installer > /dev/null 2>&1
+if [ $? -eq 0 ]; then
+    [ -e /opt/usr/media/tct/opt/$NAME/$NAME.wgt ] && $wgt_installer -i -t wgt -q -p /opt/usr/media/tct/opt/$NAME/$NAME.wgt
+    if [ $? -eq 0 ]; then
+        echo "Install /opt/usr/media/tct/opt/$NAME/$NAME.wgt to /opt/usr/apps/`wrt-launcher -l 2> /dev/null | grep $NAME | tail -n 1 | awk '{ print $(NF-1) }'` done"
+        echo "$(wrt-launcher -l | grep $NAME | awk '{ print $(NF-1) }') sdbd rw" | smackload
+    else
+        echo "Install /opt/$NAME/$NAME.wgt fail ..."
+    fi
+    sync
+fi
 }
 
 function uninstallpkg(){
-    su - app -c "export DBUS_SESSION_BUS_ADDRESS=\"unix:path=/run/user/5000/dbus/user_bus_socket\";export XDG_RUNTIME_DIR=\"/run/user/5000\";xwalkctl" >/tmp/apps.txt 2>&1
-    pkgids=`cat /tmp/apps.txt | grep $PACKAGENAME | awk '{print $(NF-1)}'`
-    for pkgid in $pkgids
-    do
-       su - app -c "export DBUS_SESSION_BUS_ADDRESS=\"unix:path=/run/user/5000/dbus/user_bus_socket\";export XDG_RUNTIME_DIR=\"/run/user/5000\";xwalkctl --uninstall $pkgid"
-    done
+### uninstall wgt ###
+type $wgt_installer > /dev/null 2>&1
+if [ $? -eq 0 ]; then
+    package_id=`wrt-launcher -l 2> /dev/null | grep $NAME | tail -n 1 | awk '{ print $(NF-1) }'`
+    if [ -n "$(ps -ef | grep $package_id | grep -v grep | awk '{print $2}')" ]; then
+        for i in $(ps -ef | grep $package_id | grep -v grep | awk '{print $2}')
+        do
+            kill -9 $i
+            if [ "$?" -ne 0 ]; then
+                echo "Kill the processes of $NAME fail ..."
+            else
+                echo "Kill the processes of $NAME done"
+            fi
+        done
+    fi
 
-    #TODO: remove resource
-    #eg:rm xx
-
-    ### remove source file ###
-    if [ -d /opt/usr/media/tct/opt/$PACKAGENAME ];then
-        rm -rf /opt/usr/media/tct/opt/$PACKAGENAME
-    else
-        echo "Remove source file fail,please check if the source file exist: /opt/usr/media/tct/opt/$PACKAGENAME ..."
+    if [ -n "$package_id" ]; then
+        $wgt_installer -u -q -t wgt -n $package_id
+        if [ "$?" -ne 0 ]; then
+                echo "Uninstall $NAME fail ..."
+        else
+                echo "Uninstall $NAME done"
+        fi
+        sync
+    fi
 fi
 
+### remove source file ###
+if [ -d /opt/usr/media/tct/opt/$NAME ];then
+	rm -rf /opt/usr/media/tct/opt/$NAME
+else
+	echo "Remove source file fail,please check if the source file exist: /opt/usr/media/tct/opt/$NAME ..."
+fi
 }
 
 case "$1" in
