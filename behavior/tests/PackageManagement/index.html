@@ -38,6 +38,7 @@ Authors:
     <script src="../../js/thirdparty/jquery.js"></script>
     <script src="../../js/thirdparty/jquery.mobile.js"></script>
     <script src="../../js/tests.js"></script>
+    <script src="../../js/main.js"></script>
     <script src="js/main.js"></script>
   </head>
   <body>
@@ -49,37 +50,37 @@ Authors:
             <ul data-role="listview" id="cspList" data-divider-theme="b" data-inset="true">
                 <li data-role="list-divider" role="heading">Test PKManagement installation</li>
                 <li id="Sample-widget1">
-                    <a href="javascript:goToApp('res/Sample-widget1.html')" data-transition="slide" style="">
+                    <a href="javascript:runApp('res/Sample-widget1.html')" data-transition="slide" style="">
                         <h2>pkmanagement-app-installed</h2>
                     </a>
                 </li>
                 <li id="Sample-widget2">
-                    <a href="javascript:goToApp('res/Sample-widget2.html')" data-transition="slide" style="">
+                    <a href="javascript:runApp('res/Sample-widget2.html')" data-transition="slide" style="">
                         <h2>pkmanagement-powerfailure-install</h2>
                     </a>
                 </li>
                 <li id="Sample-widget3">
-                    <a href="javascript:goToApp('res/Sample-widget3.html')" data-transition="slide" style="">
+                    <a href="javascript:runApp('res/Sample-widget3.html')" data-transition="slide" style="">
                         <h2>webapp-filebrowser-install</h2>
                     </a>
                 </li>
                 <li id="Sample-widget4">
-                    <a href="javascript:goToApp('res/Sample-widget4.html')" data-transition="slide" style="">
+                    <a href="javascript:runApp('res/Sample-widget4.html')" data-transition="slide" style="">
                         <h2>webapp-get-information</h2>
                     </a>
                 </li>
                 <li id="widget-version-1">
-                    <a href="javascript:goToApp('res/widget-version-1.html')" data-transition="slide" style="">
+                    <a href="javascript:runApp('res/widget-version-1.html')" data-transition="slide" style="">
                         <h2>pkmanagement-offlineupdate-closeupdate</h2>
                     </a>
                 </li>
                 <li id="npruntime-all-on-arm">
-                    <a href="javascript:goToApp('res/npruntime-all-on-arm.html')" data-transition="slide" style="">
+                    <a href="javascript:runApp('res/npruntime-all-on-arm.html')" data-transition="slide" style="">
                         <h2>npruntime-all-on-arm</h2>
                     </a>
                 </li>
                 <li id="npruntime-arm-on-x86">
-                    <a href="javascript:goToApp('res/npruntime-arm-on-x86.html')" data-transition="slide" style="">
+                    <a href="javascript:runApp('res/npruntime-arm-on-x86.html')" data-transition="slide" style="">
                         <h2>npruntime-arm-on-x86</h2>
                     </a>
                 </li>
@@ -101,6 +102,9 @@ Authors:
             <p>Test passes if all sub-tests pass.</p>
           </font>
         </div>
+    </div>
+    <div data-role="page" id="test_ui">
+        <iframe id="test_frame" width="100%" frameborder="no" border="0" src=""></iframe>
     </div>
   </body>
 </html>

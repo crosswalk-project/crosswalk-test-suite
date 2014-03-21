@@ -38,7 +38,7 @@ Authors:
     <script src="../../js/thirdparty/jquery.js"></script>
     <script src="../../js/thirdparty/jquery.mobile.js"></script>
     <script src="../../js/tests.js"></script>
-    <script src="js/main.js"></script>
+    <script src="../../js/main.js"></script>
   </head>
   <body>
     <div data-role="page" id="main">
@@ -49,27 +49,27 @@ Authors:
             <ul data-role="listview" id="cspList" data-divider-theme="b" data-inset="true">
                 <li data-role="list-divider" role="heading">Test Video Play</li>
                 <li id="Crosswalk_VideoFormat_MP4">
-                    <a href="javascript:goToApp('res/Crosswalk_VideoFormat_MP4.html')" data-transition="slide" style="">
+                    <a href="javascript:runApp('res/Crosswalk_VideoFormat_MP4.html')" data-transition="slide" style="">
                         <h2>Crosswalk_VideoFormat_MP4</h2>
                     </a>
                 </li>
                 <li id="Crosswalk_VideoFormat_OGV">
-                    <a href="javascript:goToApp('res/Crosswalk_VideoFormat_OGV.html')" data-transition="slide" style="">
+                    <a href="javascript:runApp('res/Crosswalk_VideoFormat_OGV.html')" data-transition="slide" style="">
                         <h2>Crosswalk_VideoFormat_OGV</h2>
                     </a>
                 </li>
                 <li id="Crosswalk_VideoFormat_WebM">
-                    <a href="javascript:goToApp('res/Crosswalk_VideoFormat_WebM.html')" data-transition="slide" style="">
+                    <a href="javascript:runApp('res/Crosswalk_VideoFormat_WebM.html')" data-transition="slide" style="">
                         <h2>Crosswalk_VideoFormat_WebM</h2>
                     </a>
                 </li>
                 <li id="Crosswalk_WebApp_Video_FullScreen">
-                    <a href="javascript:goToApp('res/Crosswalk_WebApp_Video_FullScreen.html')" data-transition="slide" style="">
+                    <a href="javascript:runApp('res/Crosswalk_WebApp_Video_FullScreen.html')" data-transition="slide" style="">
                         <h2>Crosswalk_WebApp_Video_FullScreen</h2>
                     </a>
                 </li>
                 <li id="Crosswalk_WebApp_Video_HWAccelerate">
-                    <a href="javascript:goToApp('res/Crosswalk_WebApp_Video_HWAccelerate.html')" data-transition="slide" style="">
+                    <a href="javascript:runApp('res/Crosswalk_WebApp_Video_HWAccelerate.html')" data-transition="slide" style="">
                         <h2>Crosswalk_WebApp_Video_HWAccelerate</h2>
                     </a>
                 </li>
@@ -85,6 +85,9 @@ Authors:
             <p>Test passes if all sub-tests pass.</p>
           </font>
         </div>
+    </div>
+    <div data-role="page" id="test_ui">
+        <iframe id="test_frame" width="100%" frameborder="no" border="0" src=""></iframe>
     </div>
   </body>
 </html>

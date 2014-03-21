@@ -28,6 +28,7 @@ Authors:
         Wang, Jing J <jing.j.wang@intel.com>
         Li, Hao <haox.li@intel.com>
         Fan, Yugang <yugang.fan@intel.com>
+        Jiazhen, Shentu <jiazhenx.shentu@intel.com>
 
 */
 
@@ -40,25 +41,20 @@ function DisablePassButton(){
 }
 
 function getAppName() {
-    var lpath = window.location.pathname;
+    var lpath = window.parent._appURL;
     var from = lpath.lastIndexOf("tests/") + 6;
     var to = lpath.lastIndexOf("/");
     return lpath.substring(from, to);
 }
 
 function backAppsHome() {
-    window.close();
+    window.parent.launchMain();
 }
 
 function reportResult(res) {
-    var jsonStr="[{\"testname\":\""+getAppName()+"\",\"result\":\""+res+"\"}]";
-    window.opener.postMessage(jsonStr, '*');
+    var storage = window.sessionStorage;
+    storage.setItem(document.title, res);
     backAppsHome();
-}
-
-function testLaunching(){
-    var jsonStr="[{\"testname\":\""+getAppName()+"\",\"result\":\"\"}]";
-    window.opener.postMessage(jsonStr, '*');
 }
 
 function updateFooterButton(){
@@ -69,8 +65,7 @@ function updateFooterButton(){
         "<a href=\"javascript:reportResult('PASS');\" id=\"pass_button\" data-role=\"button\" data-icon=\"check\" style=\"color: green\">Pass</a>" +
         "<a href=\"javascript:reportResult('FAIL');\" id=\"fail_button\" data-role=\"button\" data-icon=\"delete\" style=\"color: red\">Fail</a>" +
         "<a href=\"#popup_info\" data-role=\"button\" data-icon=\"info\" data-rel=\"popup\" data-transition=\"pop\">Info</a>" +
-        "<a href=\"javascript:backAppsHome();\" data-role=\"button\" data-icon=\"home\">Back</a></div>");
-
+        "<a href=\"javascript:backAppsHome();\" data-rel=\"popup\" data-role=\"button\" data-icon=\"home\">Back</a></div>");
     footbar.trigger("create");
     footbar.find(':jqmData(role=button) > span:first-child').css('padding', '15px 10px 15px 30px');
     $("#popup_info").popup( "option", "theme", "a");
@@ -98,7 +93,6 @@ function Parm(data, name) {
         else
             p = rawVal.split(',');
     }
-
     return p;
 }
 
@@ -120,28 +114,11 @@ function getParms() {
             }
         }
     }
-
     return parms["test_name"];
 }
 
 $(document).ready(function(){
-    testLaunching();
     var testname = getParms();
     document.title = testname
     $("#main_page_title").text(testname);
-    window.history.pushState(window.location.href);
-//    var qstr = location.search.substring(1);
-//    if (!qstr || qstr.indexOf("reenter") < 0)
-//        $("[href='#popup_info']").click();
 });
-
-function checkInstalledPkg(pkgId) {
-    var packageInfo = null;
-    try {
-        if(pkgId && (typeof(tizen) != 'undefined')) {
-            packageInfo = tizen.package.getPackageInfo(pkgId);
-        }
-    } catch (e) {}
-
-    return packageInfo === null ? false : true;
-}
