@@ -11,7 +11,7 @@ XPKNAME=${PACKAGENAME}.xpk
 RESOURCE_DIR=/opt/usr/media
 
 function installpkg(){
-xwalk --install $(dirname $0)/$XPKNAME
+xwalkctl --install $(dirname $0)/$XPKNAME
 
 #TODO: copy resource
 #eg:cp xx $RESOURCE_DIR
@@ -19,7 +19,7 @@ xwalk --install $(dirname $0)/$XPKNAME
 
 function uninstallpkg(){
 pkgid=`pkgcmd -l | grep $PACKAGENAME | cut -d '[' -f3 | cut -d ']' -f1`
-xwalk --uninstall $pkgid
+xwalkctl --uninstall $pkgid
 
 #TODO: remove resource
 #eg:rm xx

@@ -29,4 +29,4 @@
 #
 
 docdir = /opt/webapi-sanityapp-tizen-tests
-dist_doc_DATA = README
+dist_doc_DATA = LICENSE.BSD-3

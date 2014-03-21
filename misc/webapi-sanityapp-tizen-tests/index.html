@@ -29,11 +29,11 @@ Authors:
         Wang, Jing J <jing.j.wang@intel.com>
         Lin, Wanming <wanmingx.lin@intel.com>
         Fan, Yugang <yugang.fan@intel.com>
+        Jiazhen, Shentu <jiazhenx.shentu@intel.com>
 
 -->
 <html>
 <head>
-    <title>Sanityapp tizen Test Tool</title>
     <meta charset="utf-8" />
     <meta name="viewport" content="initial-scale=1.0, maximum-scale=1.0, width=device-width">
     <link rel="stylesheet" type="text/css" href="css/jquery.mobile.css" />
@@ -44,30 +44,32 @@ Authors:
 </head>
 <body>
 <div data-role="page" id="home_ui">
-    <div id="tool_title" data-role="header" data-position="fixed"></div>
-    <div id="app_selector" data-role="content">
-        <ul data-role="listview" id="mylist" data-divider-theme="b" data-inset="true"></ul>
+    <div data-role="header" data-position="fixed" data-tap-toggle="false">
+        <h1 style="width:75%; margin-left:auto; margin-right:auto;">Sanity Test Tool</h1>
+        <a id="version" class="ui-btn-right"></a>
     </div>
-    <div data-role="footer" data-position="fixed">
+    <div id="app_selector" data-role="content">
+        <ul data-role="listview" id="mylist" data-mini="true" data-inset="true"></ul>
+    </div>
+    <div data-role="footer" data-position="fixed" data-tap-toggle="false" align="center">
         <div data-role="controlgroup" data-type="horizontal">
-            <a href="javascript:exportResult();" data-role="button" data-icon="gear">Export</a>
-            <a href="javascript:resetResult();" data-role="button" data-icon="refresh">Reset</a>
+            <a id="reset" data-role="button" data-icon="refresh">Reset</a>
             <a href="#popup_exit" data-rel="popup" data-position-to="window" data-role="button" data-inline="true" data-transition="pop" data-icon="back">Exit</a>
         </div>
     </div>
-    <div data-role="popup" id="popup_exit" data-overlay-theme="a" data-theme="c" data-dismissible="false" style="max-width:400px;" class="ui-corner-all">
+    <div data-role="popup" id="popup_exit" data-overlay-theme="a" data-theme="c">
         <div data-role="header" data-theme="a" class="ui-corner-top">
             <h1>Reminder</h1>
         </div>
         <div data-role="content" data-theme="d" class="ui-corner-bottom ui-content">
-            <h3 class="ui-title">Do you want to save test result before exit?</h3>
-            <a href="javascript:SaveAndExit();" data-role="button" data-theme="c">Yes</a>
-            <a href="javascript:exitTest();" data-role="button" data-theme="e">No, thanks</a>
+            <h3 class="ui-title">Do you want to exit now?</h3>
+            <a id="exit" data-role="button" data-rel="back" data-theme="c">Yes</button>
+            <a data-role="button" data-rel="back" data-theme="e">No, thanks</a>
         </div>
     </div>
 </div>
-<script>
-    updateToolTitle();
-</script>
+<div data-role="page" id="test_ui">
+    <iframe id="test_frame" width="100%" frameborder="no" border="0" src=""></iframe>
+</div>
 </body>
 </html>

@@ -7,13 +7,16 @@ USAGE="Usage: ./inst.sh [-i] [-u]
 [-i] option was set as default."
 
 #TODO:update PACKAGENAME for each suite,pay attention to use '_'
-PACKAGENAME=webapi-sanityapp-tizen-tests
-APKNAME=${PACKAGENAME}.apk
+PACKAGENAME=webapi_sanityapp_tizen_tests
 SUITENAME=`echo $PACKAGENAME |sed 's/_/-/g'`
 RESOURCE_DIR=/opt/usr/media
 
 function installpkg(){
-adb install $APKNAME
+extend=".apk"
+ls |grep x86.apk  > /dev/null 2>&1 && extend="_x86.apk"
+ls |grep arm.apk  > /dev/null 2>&1 && extend="_arm.apk"
+
+adb install $PACKAGENAME$extend
 
 #TODO: copy resource
 #eg:adb push xx $RESOURCE_DIR

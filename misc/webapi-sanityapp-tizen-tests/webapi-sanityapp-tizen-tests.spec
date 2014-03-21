@@ -1,7 +1,7 @@
 name="webapi-sanityapp-tizen-tests"
-main_version="2.2.1"
+main_version="5.34.1.3"
 release="1"
-version="$main_version-$release"
+version="5.34.1.3"
 appname=$(echo $name|sed 's/-/_/g')
 
 # set value "1" if this suite need to sign,otherwise set "0" #
@@ -14,4 +14,7 @@ src_file="1"
 whitelist="
 inst.sh
 tests.xml
+LICENSE.Apache-2.0
+LICENSE.BSD-3
+LICENSE.CC-BY-3.0
 mediasrc"
