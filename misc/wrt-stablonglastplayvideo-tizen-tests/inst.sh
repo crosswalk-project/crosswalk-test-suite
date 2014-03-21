@@ -23,7 +23,7 @@ function unzippkg()
     sdb push $local_path/$NAME.zip /opt/usr/media/tct/
     sdb shell "cd /opt/usr/media/tct/;unzip $NAME.zip"
     echo "Package unzip successfully and push to /opt/usr/media/tct/"
-    sdb shell "chmod 777 /opt/usr/media/tct/opt/$NAME/$folderName/*.sh"
+
 }
 
 function cleansource()

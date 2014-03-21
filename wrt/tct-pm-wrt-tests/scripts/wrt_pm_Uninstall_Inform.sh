@@ -37,7 +37,7 @@ fi
 
 for pkgid in $pkgids
 do
-  su - app -c "export DBUS_SESSION_BUS_ADDRESS=\"unix:path=/run/user/5000/dbus/user_bus_socket\";export XDG_RUNTIME_DIR=\"/run/user/5000\";xwalkctl --uninstall $pkgid" 1>>/tmp/uninstaller.log 2>&1
+  xwalkctl --uninstall $pkgid 1>>/tmp/uninstaller.log 2>&1
 done
 
 RET3=`grep "invalid application id" /tmp/uninstaller.log `

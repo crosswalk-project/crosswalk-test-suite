@@ -30,7 +30,6 @@
 
 function func_xwalkservice()
 {
-            export DBUS_SESSION_BUS_ADDRESS=unix:path=/run/user/5000/dbus/user_bus_socket
             systemctl --user status xwalk.service > /dev/null
             xwalkctl > /tmp/res.txt
             cat /tmp/res.txt | grep "Application ID" >/dev/null
