@@ -58,8 +58,6 @@ echo "copy signing tool... >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>"
 cp -arf $SRC_ROOT/../../tools/signing $BUILD_ROOT/signing
 if [ $? -ne 0 ];then
     echo "No signing tool found in $SRC_ROOT/../../tools.... >>>>>>>>>>>>>>>>>>>>>>>>>"
-    clean_workspace
-    exit 1
 fi
 
 ## function for create wgt apk xpk ##
@@ -137,8 +135,6 @@ for app in $all_dirs; do
                 $BUILD_ROOT/signing/sign-widget.sh --dist platform $BUILD_ROOT/$app.wgt
             else
                 echo "Not found signing folder."
-                rm -rf $suite_dir/*.wgt
-                exit 1
             fi
             echo -e "Done\n"
         fi

@@ -138,16 +138,12 @@ if [ $sign -eq 1 ];then
     cp -arf $SRC_ROOT/../../tools/signing $BUILD_ROOT/signing
     if [ $? -ne 0 ];then
         echo "No signing tool found in $SRC_ROOT/../../tools.... >>>>>>>>>>>>>>>>>>>>>>>>>"
-        clean_workspace
-        exit 1
     fi
     wgt=$(find $BUILD_DEST/opt/$name/ -name *.wgt)
     for wgt in $(find $BUILD_DEST/opt/$name/ -name *.wgt);do
         $BUILD_ROOT/signing/sign-widget.sh --dist platform $wgt
         if [ $? -ne 0 ];then
             echo "Please check your signature files... >>>>>>>>>>>>>>>>>>>>>>>>>"
-            clean_workspace
-            exit 1
         fi
     done
 fi
@@ -177,9 +173,8 @@ do
         fi
         python make_apk.py --package=org.xwalk.$buildfolder --name=$buildfolder --app-root=$BUILD_DEST/opt/$name/$folderName/$buildfolder --app-local-path=index.html --mode=$mode
         if [ $? -ne 0 ];then
-            echo "Create $name.apk fail.... >>>>>>>>>>>>>>>>>>>>>>>>>"
+            echo "Create $buildfolder.apk fail.... >>>>>>>>>>>>>>>>>>>>>>>>>"
             #clean_workspace
-            exit 1
         fi
         #clean middle files
         rmfile $buildfolder
