@@ -45,11 +45,14 @@ Authors:
         var exit = date.getTime() + time;
         while(true){
             date = new Date();
-            if(date.getTime() > exit) return;
+            if(date.getTime() > exit) {
+                window.screen.show();
+                return;
+            }
         }
     }
 
-    sleep(5000);
+    sleep(3000);
 </script>
 <body>
   <h3>Splash Screen Tests</h3>
