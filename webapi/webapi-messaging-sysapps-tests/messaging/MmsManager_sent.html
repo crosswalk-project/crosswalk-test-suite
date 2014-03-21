@@ -44,9 +44,9 @@ var t = async_test("'Check if onsent event can be fired when a new message is se
 
 t.step(function () {
   assert_true(!!message, "The define of message");
-  message.sms.addEventListener('sent', function (smsmsg) {
+  message.mms.addEventListener('sent', function (mmsmsg) {
     t.step(function () {
-      assert_true(smsmsg instanceof SmsMessage, "the return value should be  message");
+      assert_true(mmsmsg instanceof MmsMessage, "the return value should be message");
     });
     t.done();
   });
