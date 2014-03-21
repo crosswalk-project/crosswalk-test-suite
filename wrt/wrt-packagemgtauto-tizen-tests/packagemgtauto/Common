@@ -1,0 +1,133 @@
+#!/bin/bash
+
+#Copyright (c) 2013 Intel Corporation.
+#
+#Redistribution and use in source and binary forms, with or without modification,
+#are permitted provided that the following conditions are met:
+#
+#* Redistributions of works must retain the original copyright notice, this list
+# of conditions and the following disclaimer.
+#* Redistributions in binary form must reproduce the original copyright notice,
+#  this list of conditions and the following disclaimer in the documentation
+# and/or other materials provided with the distribution.
+#* Neither the name of Intel Corporation nor the names of its contributors
+#  may be used to endorse or promote products derived from this work without
+#  specific prior written permission.
+#
+#THIS SOFTWARE IS PROVIDED BY INTEL CORPORATION "AS IS"
+#AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE
+#IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE
+#ARE DISCLAIMED. IN NO EVENT SHALL INTEL CORPORATION BE LIABLE FOR ANY DIRECT,
+#INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING,
+#BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE,
+#DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY
+#OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING
+#NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE,
+#EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
+#
+#Authors:
+#       IVAN CHEN <yufeix.chen@intel.com>
+
+function func_xwalkservice()
+{
+        export DBUS_SESSION_BUS_ADDRESS=unix:path=/run/user/5000/dbus/user_bus_socket
+        systemctl --user status xwalk.service > /dev/null
+        xwalkctl > /tmp/res.txt
+        cat /tmp/res.txt | grep "Application ID" >/dev/null
+        if [ $? -ne 0  ];then
+                echo "setting xwalk service mode fail"
+                exit 1
+        fi
+}
+
+function func_check_xwalkservice()
+{
+        xwalkctl &> /tmp/res.txt
+        cat /tmp/res.txt | grep "Application ID" > /dev/null
+        if [ $? -ne 0  ];then
+                func_xwalkservice
+        fi
+}
+
+function install_origin_xpk(){
+        xwalkctl --install  $1 &> /tmp/install
+        cat /tmp/install | grep "Application installed"
+        if [[ $? -ne 0 ]]; then
+                cat /tmp/install | grep "Installing application failed"
+                if [[ $? -eq 0 ]]; then
+                        uninstall_exist_xpk
+                        xwalkctl --install  $1 &> /tmp/install
+                else
+                        echo "The original xpk  install failure."  
+                        exit 1
+                fi
+        fi
+        # get app id
+        get_app_id
+}
+
+function update_valid_xpk(){
+        xwalkctl --install $1 &> /tmp/install
+        cat /tmp/install | grep "Application installed"
+        if [[ $? -eq 0 ]]; then
+                echo "Update xpk, install successfully"
+                else
+                        echo "Update xpk,install failure"
+                        exit 1
+        fi
+
+        get_version_name $4
+        uninstall_xpk $4
+        if [[ $version != $2 ]]; then
+                echo "Fail, Update xpk, but the version is not updated."
+                exit 1
+        fi
+        if [[ $name != $3 ]]; then
+                echo "Fail, Update xpk, but the name is not updated."
+                exit 1
+        fi
+}
+
+function update_negative_xpk(){
+        xwalkctl --install $1 &> /tmp/install
+        cat /tmp/install | grep "Application installed"
+        if [[ $? -ne 0 ]]; then
+                echo "Pass, Update negative xpk, install failure"
+        else
+                echo "Fail, Update negative xpk,install successfully"
+                exit 1
+        fi
+
+        get_version_name $4
+        uninstall_xpk $4
+        if [[ $version != $2 ]]; then
+                echo "Fail, Update negative xpk, but the version is updated."
+                exit 1
+        fi
+        if [[ $version == $3 ]]; then
+                echo "Fail, Update negative xpk, but the name is updated."
+                exit 1
+        fi
+}
+
+function uninstall_xpk(){
+#uninstall xpk
+xwalkctl --uninstall $1
+}
+
+function get_version_name(){
+        version=`sqlite3 /opt/home/app/.config/xwalk-service/applications.db "select id,manifest from applications;"| grep $1  | cut -d , -f 4 | cut -d : -f 2 | sed 's/"//g' | sed 's/}//g'`
+        name=`sqlite3 /opt/home/app/.config/xwalk-service/applications.db "select id,manifest from applications;"| grep $1  | cut -d , -f 3 | cut -d : -f 2 | sed 's/"//g' | sed 's/}//g'`
+}
+
+function get_app_id(){
+        app_id_tmp=`cat /tmp/install | cut -d / -f 4`
+        app_id=`echo $app_id_tmp | sed 's/.$//g'` > /dev/null
+}
+
+function uninstall_exist_xpk(){
+        exist_id=`xwalkctl | grep "update_original_*" | awk '{print $1}'`
+        [ -n $exist_id ] & xwalkctl --uninstall $exist_id
+        exist_id=`xwalkctl | grep "update_version_*" | awk '{print $1}'`
+        [ -n $exist_id ] & xwalkctl --uninstall $exist_id
+}
