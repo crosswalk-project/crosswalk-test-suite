@@ -38,7 +38,7 @@ Authors:
     <script src="../../js/thirdparty/jquery.js"></script>
     <script src="../../js/thirdparty/jquery.mobile.js"></script>
     <script src="../../js/tests.js"></script>
-    <script src="js/main.js"></script>
+    <script src="../../js/main.js"></script>
   </head>
   <body>
     <div data-role="page" id="main">
@@ -49,12 +49,12 @@ Authors:
             <ul data-role="listview" id="cspList" data-divider-theme="b" data-inset="true">
                 <li data-role="list-divider" role="heading">Test Scroll Indicator</li>
                 <li id="Crosswalk_WebApp_ScrollIndicators_Default">
-                    <a href="javascript:goToApp('res/Crosswalk_WebApp_ScrollIndicators_Default.html')" data-transition="slide" style="">
+                    <a href="javascript:runApp('res/Crosswalk_WebApp_ScrollIndicators_Default.html')" data-transition="slide" style="">
                         <h2>Crosswalk_WebApp_ScrollIndicators_Default</h2>
                     </a>
                 </li>
                 <li id="Crosswalk_WebApp_ScrollIndicators_LargeSize">
-                    <a href="javascript:goToApp('res/Crosswalk_WebApp_ScrollIndicators_LargeSize.html')" data-transition="slide" style="">
+                    <a href="javascript:runApp('res/Crosswalk_WebApp_ScrollIndicators_LargeSize.html')" data-transition="slide" style="">
                         <h2>Crosswalk_WebApp_ScrollIndicators_LargeSize</h2>
                     </a>
                 </li>
@@ -70,6 +70,9 @@ Authors:
             <p>Test passes if all sub-tests pass.</p>
           </font>
         </div>
+    </div>
+    <div data-role="page" id="test_ui">
+        <iframe id="test_frame" width="100%" frameborder="no" border="0" src=""></iframe>
     </div>
   </body>
 </html>

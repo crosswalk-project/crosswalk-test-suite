@@ -1,0 +1,33 @@
+<!--
+Test convert from Blink:
+https://github.com/crosswalk-project/blink-crosswalk/blob/master/LayoutTests/fast/speechsynthesis/speech-synthesis-utterance-uses-voice.html
+-->
+
+<!DOCTYPE html>
+<meta charset="utf-8">
+<title>Web Speech API Test: can get synthesizer voices</title>
+<link rel="author" title="Intel" href="http://www.intel.com">
+<link rel="help" href="http://dvcs.w3.org/hg/speech-api/raw-file/tip/speechapi.html">
+<script src="../../resources/testharness.js"></script>
+<script src="../../resources/testharnessreport.js"></script>
+<div id="log"></div>
+<script>
+
+var t = async_test("Test that can get synthesizer voices", { timeout: 5000});
+t.step(function () {
+  var list = speechSynthesis.getVoices();
+  var voice = list[0];
+
+  var u = new SpeechSynthesisUtterance("this is a test string.");
+  u.voice = voice;
+
+  assert_equals(u.voice.name, voice.name);
+
+  u.onend = function(event) {
+    t.done();
+  }
+
+  speechSynthesis.speak(u);
+});
+
+</script>
