@@ -2,7 +2,7 @@
 source $(dirname $0)/webapi-sanityapp-tizen-tests.spec
 
 #parse params
-usage="Usage: ./pack.sh [-t <package type: wgt | apk | crx | xpk>] [-p <xpk platform: mobile | ivi>]
+usage="Usage: ./pack.sh [-t <package type: wgt | crx | xpk>] [-p <xpk platform: mobile | ivi>]
 [-t wgt] option was set as default.
 [-p mobile] option was set as default."
 
@@ -23,7 +23,7 @@ do
     esac
 done
 
-if [[ $type == "wgt" || $type == "apk" || $type == "crx" || $type == "xpk" ]];then
+if [[ $type == "wgt" || $type == "crx" || $type == "xpk" ]];then
     echo "Create package with $type and raw source"
 else
     echo "Sorry,$type is not support... >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>"
@@ -53,7 +53,7 @@ mkdir -p $BUILD_ROOT $BUILD_DEST
 rm -rf *.rpm *.tar.bz2 *.tar.gz *.zip
 cp -arf $SRC_ROOT/* $BUILD_ROOT/
 
-## function for create wgt apk xpk ##
+## function for create wgt xpk ##
 
 function create_wgt(){
     # create wgt
@@ -89,35 +89,6 @@ function create_wgt(){
                 echo "Please check your signature files... >>>>>>>>>>>>>>>>>>>>>>>>>"
             fi
         done
-    fi
-}
-
-function create_apk(){
-  cd $BUILD_DEST
-cat > index.html << EOF
-<!doctype html>
-<head>
-    <meta http-equiv="Refresh" content="1; url=opt/$name/testkit/web/index.html?testsuite=../../tests.xml&testprefix=../../../..">
-</head>
-EOF
-    cp -r $SRC_ROOT/../../tools/xwalk_app_template $BUILD_ROOT/xwalk_app_template
-
-    cp -af $BUILD_ROOT/index.html $BUILD_DEST/
-    cp -af $BUILD_ROOT/config.xml $BUILD_DEST/
-    cp -af $BUILD_ROOT/icon.png $BUILD_DEST/
-    cp -af $BUILD_ROOT/tests.xml $BUILD_DEST/
-    cp -af $BUILD_ROOT/js $BUILD_DEST/
-    cp -af $BUILD_ROOT/css $BUILD_DEST/
-    cp -af $BUILD_ROOT/tests $BUILD_DEST/
-    cp -af $BUILD_ROOT/res $BUILD_DEST/
-    mkdir -p $BUILD_DEST/opt/$name/res/media
-
-    cd $BUILD_ROOT/xwalk_app_template
-    python make_apk.py --package=org.xwalk.$appname --name=$appname --app-root=$BUILD_DEST --app-local-path=index.html --icon=$BUILD_DEST/icon.png
-    if [ $? -ne 0 ];then
-        echo "Create $name.apk fail.... >>>>>>>>>>>>>>>>>>>>>>>>>"
-        clean_workspace
-        exit 1
     fi
 }
 
@@ -192,30 +163,6 @@ function zip_for_wgt(){
     fi
 }
 
-function zip_for_apk(){
-    cd $BUILD_DEST
-    # cp inst.sh script #
-    cp -af $BUILD_ROOT/inst.sh.apk $BUILD_DEST/opt/$name/inst.sh
-    mv $BUILD_ROOT/xwalk_app_template/*.apk $BUILD_DEST/opt/$name/
-
-    if [ $src_file -eq 0 ];then
-        for file in $(ls opt/$name |grep -v apk);do
-            if [[ "${whitelist[@]}" =~ $file ]];then
-                echo "$file in whitelist,keep it..."
-            else
-                echo "Remove unnessary file:$file..."
-                rm -rf opt/$name/$file
-            fi
-        done
-    fi
-    zip -Drq $BUILD_DEST/$name-$version.$type.zip opt/
-    if [ $? -ne 0 ];then
-        echo "Create zip package fail... >>>>>>>>>>>>>>>>>>>>>>>>>"
-        clean_workspace
-        exit 1
-    fi
-}
-
 function zip_for_xpk(){
     cd $BUILD_DEST
     if [ $platform == "ivi" ]; then
@@ -257,12 +204,10 @@ function zip_for_crx(){
     exit 1
 }
 
-## create wgt crx apk xpk and zip package ##
+## create wgt crx xpk and zip package ##
 case $type in
     wgt) create_wgt
          zip_for_wgt;;
-    apk) create_apk
-         zip_for_apk;;
     xpk) create_xpk
          zip_for_xpk;;
     crx) create_crx
