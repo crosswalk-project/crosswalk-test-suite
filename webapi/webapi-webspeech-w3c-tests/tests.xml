@@ -193,6 +193,51 @@
           <test_script_entry>/opt/webapi-webspeech-w3c-tests/webspeech/blink/speechgrammar-basics.html?total_num=35&amp;amp;locator_key=id&amp;amp;value=35</test_script_entry>
         </description>
       </testcase>
+      <testcase component="WebAPI/User Interaction/Web Speech" execution_type="manual" id="SpeechRecognition_manual_basic" purpose="Test checks if SpeechRecognition interface works well">
+        <description>
+          <test_script_entry>/opt/webapi-webspeech-w3c-tests/webspeech/speechrecognition_m.html</test_script_entry>
+        </description>
+      </testcase>
+      <testcase component="WebAPI/User Interaction/Web Speech" execution_type="manual" id="SpeechSynthesis_manual_basic" purpose="Test checks if SpeechSynthesis interface works well">
+        <description>
+          <test_script_entry>/opt/webapi-webspeech-w3c-tests/webspeech/speechsynthesis_m.html</test_script_entry>
+        </description>
+      </testcase>
+      <testcase component="WebAPI/User Interaction/Web Speech" execution_type="auto" id="SpeechSynthesis_boundary" purpose="Test a speech job will generate the correct boundary events">
+        <description>
+          <test_script_entry>/opt/webapi-webspeech-w3c-tests/webspeech/blink/speech-synthesis-boundary-events.html</test_script_entry>
+        </description>
+      </testcase>
+      <testcase component="WebAPI/User Interaction/Web Speech" execution_type="auto" id="SpeechSynthesis_cancel" purpose="Test that cancelling a speech job fires the right events">
+        <description>
+          <test_script_entry>/opt/webapi-webspeech-w3c-tests/webspeech/blink/speech-synthesis-cancel.html</test_script_entry>
+        </description>
+      </testcase>
+      <testcase component="WebAPI/User Interaction/Web Speech" execution_type="auto" id="SpeechSynthesis_pausing_resuming" purpose="Test that pausing/resuming speech jobs works as expected">
+        <description>
+          <test_script_entry>/opt/webapi-webspeech-w3c-tests/webspeech/blink/speech-synthesis-pause-resume.html</test_script_entry>
+        </description>
+      </testcase>
+      <testcase component="WebAPI/User Interaction/Web Speech" execution_type="auto" id="SpeechSynthesis_basic_mechanisms" purpose="Test that the basic mechanisms of speaking text work, including sending the job and receving the callback">
+        <description>
+          <test_script_entry>/opt/webapi-webspeech-w3c-tests/webspeech/blink/speech-synthesis-speak.html</test_script_entry>
+        </description>
+      </testcase>
+      <testcase component="WebAPI/User Interaction/Web Speech" execution_type="auto" id="SpeechSynthesis_TypeError_exception" purpose="Test that passing an argument other than a SpeechSynthesisUtterance to speechSynthesis.speak throws a TypeError exception">
+        <description>
+          <test_script_entry>/opt/webapi-webspeech-w3c-tests/webspeech/blink/speech-synthesis-speak-invalid-argument-throws.html</test_script_entry>
+        </description>
+      </testcase>
+      <testcase component="WebAPI/User Interaction/Web Speech" execution_type="auto" id="SpeechSynthesisUtterance_voice" purpose="Test that can get synthesizer voices from SpeechSynthesisUtterance">
+        <description>
+          <test_script_entry>/opt/webapi-webspeech-w3c-tests/webspeech/blink/speech-synthesis-utterance-uses-voice.html</test_script_entry>
+        </description>
+      </testcase>
+      <testcase component="WebAPI/User Interaction/Web Speech" execution_type="auto" id="SpeechSynthesis_voice" purpose="Test that can get synthesizer voices from SpeechSynthesis">
+        <description>
+          <test_script_entry>/opt/webapi-webspeech-w3c-tests/webspeech/blink/speech-synthesis-voices.html</test_script_entry>
+        </description>
+      </testcase>
     </set>
   </suite>
 </test_definition>

@@ -459,6 +459,114 @@
           </spec>
         </specs>
       </testcase>
+      <testcase purpose="Test checks if SpeechRecognition interface works well" type="compliance" status="approved" component="WebAPI/User Interaction/Web Speech" execution_type="manual" priority="P1" id="SpeechRecognition_manual_basic">
+        <description>
+          <test_script_entry>/opt/webapi-webspeech-w3c-tests/webspeech/speechrecognition_m.html</test_script_entry>
+        </description>
+        <specs>
+          <spec>
+            <spec_assertion element_type="TBD" element_name="TBD" interface="SpeechRecognition" specification="Web Speech" section="User Interaction" category="W3C API Specifications"/>
+            <spec_url>https://dvcs.w3.org/hg/speech-api/raw-file/tip/speechapi.html</spec_url>
+            <spec_statement/>
+          </spec>
+        </specs>
+      </testcase>
+      <testcase purpose="Test checks if SpeechSynthesis interface works well" type="compliance" status="approved" component="WebAPI/User Interaction/Web Speech" execution_type="manual" priority="P1" id="SpeechSynthesis_manual_basic">
+        <description>
+          <test_script_entry>/opt/webapi-webspeech-w3c-tests/webspeech/speechsynthesis_m.html</test_script_entry>
+        </description>
+        <specs>
+          <spec>
+            <spec_assertion element_type="TBD" element_name="TBD" interface="SpeechSynthesis" specification="Web Speech" section="User Interaction" category="W3C API Specifications"/>
+            <spec_url>https://dvcs.w3.org/hg/speech-api/raw-file/tip/speechapi.html</spec_url>
+            <spec_statement/>
+          </spec>
+        </specs>
+      </testcase>
+      <testcase purpose="Test a speech job will generate the correct boundary events" type="compliance" status="approved" component="WebAPI/User Interaction/Web Speech" execution_type="auto" priority="P1" id="SpeechSynthesis_boundary">
+        <description>
+          <test_script_entry>/opt/webapi-webspeech-w3c-tests/webspeech/blink/speech-synthesis-boundary-events.html</test_script_entry>
+        </description>
+        <specs>
+          <spec>
+            <spec_assertion element_type="event" element_name="boundary" interface="SpeechSynthesis" specification="Web Speech" section="User Interaction" category="W3C API Specifications"/>
+            <spec_url>https://dvcs.w3.org/hg/speech-api/raw-file/tip/speechapi.html</spec_url>
+            <spec_statement/>
+          </spec>
+        </specs>
+      </testcase>
+      <testcase purpose="Test that cancelling a speech job fires the right events" type="compliance" status="approved" component="WebAPI/User Interaction/Web Speech" execution_type="auto" priority="P1" id="SpeechSynthesis_cancel">
+        <description>
+          <test_script_entry>/opt/webapi-webspeech-w3c-tests/webspeech/blink/speech-synthesis-cancel.html</test_script_entry>
+        </description>
+        <specs>
+          <spec>
+            <spec_assertion element_type="method" element_name="cancel" interface="SpeechSynthesis" specification="Web Speech" section="User Interaction" category="W3C API Specifications"/>
+            <spec_url>https://dvcs.w3.org/hg/speech-api/raw-file/tip/speechapi.html</spec_url>
+            <spec_statement/>
+          </spec>
+        </specs>
+      </testcase>
+      <testcase purpose="Test that pausing/resuming speech jobs works as expected" type="compliance" status="approved" component="WebAPI/User Interaction/Web Speech" execution_type="auto" priority="P1" id="SpeechSynthesis_pausing_resuming">
+        <description>
+          <test_script_entry>/opt/webapi-webspeech-w3c-tests/webspeech/blink/speech-synthesis-pause-resume.html</test_script_entry>
+        </description>
+        <specs>
+          <spec>
+            <spec_assertion element_type="TBD" element_name="TBD" interface="SpeechSynthesis" specification="Web Speech" section="User Interaction" category="W3C API Specifications"/>
+            <spec_url>https://dvcs.w3.org/hg/speech-api/raw-file/tip/speechapi.html</spec_url>
+            <spec_statement/>
+          </spec>
+        </specs>
+      </testcase>
+      <testcase purpose="Test that the basic mechanisms of speaking text work, including sending the job and receving the callback" type="compliance" status="approved" component="WebAPI/User Interaction/Web Speech" execution_type="auto" priority="P1" id="SpeechSynthesis_basic_mechanisms">
+        <description>
+          <test_script_entry>/opt/webapi-webspeech-w3c-tests/webspeech/blink/speech-synthesis-speak.html</test_script_entry>
+        </description>
+        <specs>
+          <spec>
+            <spec_assertion element_type="TBD" element_name="TBD" interface="SpeechSynthesis" specification="Web Speech" section="User Interaction" category="W3C API Specifications"/>
+            <spec_url>https://dvcs.w3.org/hg/speech-api/raw-file/tip/speechapi.html</spec_url>
+            <spec_statement/>
+          </spec>
+        </specs>
+      </testcase>
+      <testcase purpose="Test that passing an argument other than a SpeechSynthesisUtterance to speechSynthesis.speak throws a TypeError exception" type="compliance" status="approved" component="WebAPI/User Interaction/Web Speech" execution_type="auto" priority="P1" id="SpeechSynthesis_TypeError_exception">
+        <description>
+          <test_script_entry>/opt/webapi-webspeech-w3c-tests/webspeech/blink/speech-synthesis-speak-invalid-argument-throws.html</test_script_entry>
+        </description>
+        <specs>
+          <spec>
+            <spec_assertion element_type="attribute" element_name="TypeError" interface="SpeechSynthesis" specification="Web Speech" section="User Interaction" category="W3C API Specifications"/>
+            <spec_url>https://dvcs.w3.org/hg/speech-api/raw-file/tip/speechapi.html</spec_url>
+            <spec_statement/>
+          </spec>
+        </specs>
+      </testcase>
+      <testcase purpose="Test that can get synthesizer voices from SpeechSynthesisUtterance" type="compliance" status="approved" component="WebAPI/User Interaction/Web Speech" execution_type="auto" priority="P1" id="SpeechSynthesisUtterance_voice">
+        <description>
+          <test_script_entry>/opt/webapi-webspeech-w3c-tests/webspeech/blink/speech-synthesis-utterance-uses-voice.html</test_script_entry>
+        </description>
+        <specs>
+          <spec>
+            <spec_assertion element_type="attribute" element_name="voice" interface="SpeechSynthesisUtterance" specification="Web Speech" section="User Interaction" category="W3C API Specifications"/>
+            <spec_url>https://dvcs.w3.org/hg/speech-api/raw-file/tip/speechapi.html</spec_url>
+            <spec_statement/>
+          </spec>
+        </specs>
+      </testcase>
+      <testcase purpose="Test that can get synthesizer voices from SpeechSynthesis" type="compliance" status="approved" component="WebAPI/User Interaction/Web Speech" execution_type="auto" priority="P1" id="SpeechSynthesis_voice">
+        <description>
+          <test_script_entry>/opt/webapi-webspeech-w3c-tests/webspeech/blink/speech-synthesis-voices.html</test_script_entry>
+        </description>
+        <specs>
+          <spec>
+            <spec_assertion element_type="attribute" element_name="voice" interface="SpeechSynthesis" specification="Web Speech" section="User Interaction" category="W3C API Specifications"/>
+            <spec_url>https://dvcs.w3.org/hg/speech-api/raw-file/tip/speechapi.html</spec_url>
+            <spec_statement/>
+          </spec>
+        </specs>
+      </testcase>
     </set>
   </suite>
 </test_definition>
