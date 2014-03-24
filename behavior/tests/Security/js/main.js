@@ -152,9 +152,8 @@ function deleteFile(id) {
     }
 }
 
-function backAppsHome() {
-    createdId.forEach(function(id) {
-        deleteFile(id);
-    });
-    window.close();
-}
+//function backAppsHome() {
+//    createdId.forEach(function(id) {
+//        deleteFile(id);
+//    });
+//}
