@@ -1,0 +1,87 @@
+<VirtualHost *:80>
+        ServerAdmin webmaster@localhost
+
+        DocumentRoot /opt/webtestingservice/homepage
+        <Directory />
+                Options FollowSymLinks
+                AllowOverride None
+        </Directory>
+        <Directory /opt/webtestingservice/homepage/>
+                Options Indexes FollowSymLinks MultiViews
+                AllowOverride None
+                Order allow,deny
+                allow from all
+        </Directory>
+
+        ErrorLog ${APACHE_LOG_DIR}/error.log
+
+        # Possible values include: debug, info, notice, warn, error, crit,
+        # alert, emerg.
+        LogLevel warn
+
+        CustomLog ${APACHE_LOG_DIR}/access.log combined
+
+        #For web testing server
+        ScriptAlias /opt "/opt/webtestingservice/suites/opt/"
+        <Directory "/opt/webtestingservice/suites/opt/">
+                AllowOverride None
+                Options +ExecCGI -MultiViews +SymLinksIfOwnerMatch +FollowSymLinks +Indexes
+                Order allow,deny
+                Allow from all
+                AddHandler default-handler .html .htm .css .js .png .xml .gif .ogv .mp4 .ttf .jpg .jpeg .wgt .xht .xhtml .exe .mp3 .webm .json
+       </Directory>
+
+       #For web testing service
+       Alias /webtests "/opt/webtestingservice/harness"
+       <Directory "/opt/webtestingservice/harness">
+               Options FollowSymLinks MultiViews
+               AllowOverride None
+               Order deny,allow
+               Allow from all
+       </Directory>
+
+       #For w3c tests
+       Alias /w3c "/opt/webtestingservice/suites/w3c/"
+       <Directory "/opt/webtestingservice/suites/w3c/">
+               Options Indexes
+               AllowOverride None
+               Order deny,allow
+               Allow from all
+       </Directory>
+</VirtualHost>
+
+NameVirtualHost *:8080
+Listen 8080
+
+<VirtualHost *:8080>
+        ServerAdmin webmaster@localhost
+
+        #For web testing server
+        ScriptAlias /opt "/opt/webtestingservice/suites/opt/"
+        <Directory "/opt/webtestingservice/suites/opt/">
+                AllowOverride None
+                Options +ExecCGI -MultiViews +SymLinksIfOwnerMatch +FollowSymLinks +Indexes
+                Order allow,deny
+                Allow from all
+                AddHandler default-handler .html .htm .css .js .png .xml .gif .ogv .mp4 .ttf .jpg .jpeg .wgt .xht .xhtml .exe .mp3 .webm .json
+        </Directory>
+
+        #For web testing service
+        Alias /webtests "/opt/webtestingservice/harness"
+        <Directory "/opt/webtestingservice/harness">
+                Options FollowSymLinks MultiViews
+                AllowOverride None
+                Order deny,allow
+                Allow from all
+        </Directory>
+
+       #For w3c tests
+       Alias /w3c "/opt/webtestingservice/suites/w3c/"
+       <Directory "/opt/webtestingservice/suites/w3c/">
+               Options Indexes
+               AllowOverride None
+               Order deny,allow
+               Allow from all
+       </Directory>
+
+</VirtualHost>

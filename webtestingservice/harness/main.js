@@ -327,7 +327,7 @@ function updateTestXML() {
     $.ajax({
       async: false,
       type: "GET",
-      url: "/usr/share/" + iSuite + "/tests.xml",
+      url: "/opt/" + iSuite + "/tests.xml",
       dataType: "xml",
       success: initCases,
     });
@@ -464,7 +464,7 @@ function suiteUpdate() {
   $.ajax({
     async: false,
     type: "GET",
-    url: "/usr/share/" + document.getElementById("suitelist").options[iSuiteIndex].text + "/tests.xml",
+    url: "/opt/" + document.getElementById("suitelist").options[iSuiteIndex].text + "/tests.xml",
     dataType: "xml",
     success: initSets,
   });
