@@ -40,6 +40,10 @@ jQuery(document).ready(function() {
     vibration_time = Number($("#slider-1").val())*1000;
     vibration_periods = Number($("#slider-2").val())*1000;
     vibration_number = $("#slider-3").val();
+    /* Hide input*/
+    $("#slider-1").hide();
+    $("#slider-2").hide();
+    $("#slider-3").hide();
 });
 
 function startVibration() {
