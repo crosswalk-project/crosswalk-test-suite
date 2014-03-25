@@ -157,4 +157,8 @@ $(document).ready(function(){
         }
     });
     DisablePassButton();
+
+    /* Hide input*/
+    $("#slider-1").hide();
+    $("#speed-1").hide();
 });
