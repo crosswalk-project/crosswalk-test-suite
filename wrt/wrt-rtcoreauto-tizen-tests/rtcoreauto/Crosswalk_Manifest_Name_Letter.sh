@@ -36,6 +36,6 @@ func_check_xwalkservice
 install_xpk $local_path/../source/ manifestname.xpk
 
 #check the discription
-check_db $app_id "\"name\"\:\"manifestname\""
+check_db $app_id "\"name\"\:\"manifestname\"" 0
 
 exit 0

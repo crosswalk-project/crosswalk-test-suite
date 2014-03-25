@@ -36,6 +36,6 @@ func_check_xwalkservice
 install_xpk $local_path/../source/ manifest_name_blend_tests.xpk
 
 #check the discription
-check_db $app_id "\"name\"\:\"manifest\_name\_blend\_tests\""
+check_db $app_id "\"name\"\:\"manifest\_name\_blend\_tests\"" 0
 
 exit 0

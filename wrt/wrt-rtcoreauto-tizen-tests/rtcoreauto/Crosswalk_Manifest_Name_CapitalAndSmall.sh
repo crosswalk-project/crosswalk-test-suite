@@ -36,6 +36,6 @@ func_check_xwalkservice
 install_xpk $local_path/../source/ manifest_name_capitalAndsmallLetter_tests.xpk
 
 #check the discription
-check_db $app_id "\"name\"\:\"manifest\_name\_capitalAndsmallLetter\_tests\""
+check_db $app_id "\"name\"\:\"manifest\_name\_capitalAndsmallLetter\_tests\"" 0
 
 exit 0

@@ -36,6 +36,6 @@ func_check_xwalkservice
 install_xpk $local_path/../source/ manifest_icon_jpg_tests.xpk
 
 #check the discription
-check_db $app_id "icon.jpg"
+check_db $app_id "icon.jpg" 0
 
 exit 0

@@ -176,23 +176,22 @@ for buildfolder in `ls`
 do
     if [ "${buildfolder:0:10}" == "signature" ]; then
         cp $SRC_ROOT/tools/bad_xpk_generator.sh $BUILD_ROOT/resource/bad_xpk_generator.sh
-        ./bad_xpk_generator.sh $BUILD_ROOT/resource/$buildfolder/ p.pem
+        ./bad_xpk_generator.sh $BUILD_ROOT/resource/$buildfolder/ ek
         if [ $? -eq 0 ];then
              mv $buildfolder.xpk "bad_"$buildfolder.xpk
         fi
-        cp $SRC_ROOT/tools/bad_xpk_generator.sh $BUILD_ROOT/resource/xpk_generator.sh
-        ./xpk_generator.sh $BUILD_ROOT/resource/$buildfolder/ l.pem
-        rm *.pem
-
+        cp $SRC_ROOT/tools/xpk_generator.sh $BUILD_ROOT/resource/xpk_generator.sh
+        ./xpk_generator.sh $BUILD_ROOT/resource/$buildfolder/ ee
+        rm e*
         continue
     fi
-        cp $SRC_ROOT/../../tools/make_xpk.py $BUILD_ROOT/resource/make_xpk.py
-        #echo "buildfolder" $buildfolder
-        if [ -d $buildfolder ]; then
-         echo "Use --manifest to build..."
-         python make_xpk.py $BUILD_ROOT/resource/$buildfolder/ k.pem
-         rm *.pem
-        fi
+    cp $SRC_ROOT/../../tools/make_xpk.py $BUILD_ROOT/resource/make_xpk.py
+    #echo "buildfolder" $buildfolder
+    if [ -d $buildfolder ]; then
+        echo "Use --manifest to build..."
+        python make_xpk.py $BUILD_ROOT/resource/$buildfolder/ k.pem
+        rm *.pem
+    fi
 done
 }
 

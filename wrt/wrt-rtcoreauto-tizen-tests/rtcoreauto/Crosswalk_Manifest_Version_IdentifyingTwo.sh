@@ -36,6 +36,6 @@ func_check_xwalkservice
 install_xpk $local_path/../source/ manifest_version_identifyingTwo_tests.xpk
 
 #check the discription
-check_db $app_id "\"version\"\:\"1.1\""
+check_db $app_id "\"version\"\:\"1.1\"" 0
 
 exit 0

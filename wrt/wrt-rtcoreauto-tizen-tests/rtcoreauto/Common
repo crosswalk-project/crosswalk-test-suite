@@ -61,19 +61,9 @@ function check_db(){
     exit 1
   fi
   #uninstall webapp
-  xwalkctl --uninstall $app_id
-}
-
-function check_event(){
-  sqlite3 /opt/home/app/.config/xwalk-service/applications.db "select * from registered_events;" | grep $1 | grep $2
-  if [ $? -ne 0  ];then
-    echo "cannot found $2 in applications.db"
-    #uninstall webapp
+  if [[ $3 -eq 0 ]]; then
     xwalkctl --uninstall $app_id
-    exit 1
   fi
-  #uninstall webapp
-  xwalkctl --uninstall $app_id
 }
 
 function install_xpk(){
@@ -83,7 +73,7 @@ function install_xpk(){
     cat /tmp/install | grep "Installing application failed"
     if [[ $? -eq 0 ]]; then
       uninstall_exist_xpk $2
-      xwalkctl --install  $1 &> /tmp/install
+      xwalkctl --install  $1/$2 &> /tmp/install
       if [[ $? -ne 0 ]]; then
          echo "The $2  install failure."
          exit 1

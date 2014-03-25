@@ -36,7 +36,7 @@ func_check_xwalkservice
 install_xpk $local_path/../source/ manifest_icon_Two_tests.xpk
 
 #check the discription
-check_db $app_id "green_box.png"
-check_db $app_id "50x50-green.png"
+check_db $app_id "green_box.png" 1
+check_db $app_id "50x50-green.png" 0
 
 exit 0
