@@ -18,9 +18,9 @@ RESOURCE_DIR=/opt/usr/media
 
 function installpkg(){
     xwalkctl --install $(dirname $0)/$XPKNAME
-    xwalkctl --install $(dirname $0)/$XPKNAME
-    xwalkctl --install $(dirname $0)/$XPKNAME
-    xwalkctl --install $(dirname $0)/$XPKNAME
+    xwalkctl --install $(dirname $0)/$SUBXPK1
+    xwalkctl --install $(dirname $0)/$SUBXPK2
+    xwalkctl --install $(dirname $0)/$SUBXPK3
 
     #TODO: copy resource
     #eg:cp xx $RESOURCE_DIR
