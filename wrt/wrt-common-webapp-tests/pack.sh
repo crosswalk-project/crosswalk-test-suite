@@ -3,9 +3,10 @@ suiteName=$(basename $(pwd))
 source $(dirname $0)/$suiteName.spec
 
 #parse params
-usage="Usage: ./pack.sh [-t <package type: wgt | apk | crx | xpk | pure>] [-m <apk mode: shared | embedded>] [-p <xpk platform: mobile | ivi>]
+usage="Usage: ./pack.sh [-t <package type: wgt | apk | crx | xpk | pure>] [-m <apk mode: shared | embedded>] [-p <xpk platform: mobile | ivi>] [-a <apk runtime arch: x86 | arm>]
 [-t apk] option was set as default.
 [-m shared] option was set as default.
+[-a x86] option was set as default.
 [-p mobile] option was set as default."
 
 if [[ $1 == "-h" || $1 == "--help" ]]; then
@@ -24,12 +25,14 @@ folderName=${folderName_tmp##*-}
 
 type="apk"
 mode="shared"
+arch="x86"
 platform="mobile"
-while getopts t:m:p: o
+while getopts t:m:a:p: o
 do
     case "$o" in
     t) type=$OPTARG;;
     m) mode=$OPTARG;;
+    a) arch=$OPTARG;;
     p) platform=$OPTARG;;
     *) echo "$usage"
        exit 1;;
@@ -46,7 +49,7 @@ else
 fi
 
 if [ $type == "apk" ]; then
-    apkpacktooldir=$PWD/../../tools/xwalk_app_template
+    apkpacktooldir=$PWD/../../tools/crosswalk
 fi
 
 if [ $type == "xpk" ]; then
@@ -157,7 +160,7 @@ do
         cd $apkpacktooldir
         if [ "${buildfolder:0:8}" == "manifest" ];then
             echo "Use --manifest to build..."
-            python make_apk.py --manifest=$BUILD_DEST/opt/$name/$folderName/$buildfolder/manifest.json --mode=$mode
+            python make_apk.py --manifest=$BUILD_DEST/opt/$name/$folderName/$buildfolder/manifest.json --mode=$mode --arch=$arch
             rmfile $buildfolder
             continue
         fi
@@ -167,11 +170,11 @@ do
         fi
         if [ "${buildfolder:0:9}" == "extension" ];then
             echo "build extension webapp..."
-            python make_apk.py --package=org.xwalk.$buildfolder --name=$buildfolder --app-root=$BUILD_DEST/opt/$name/$folderName/$buildfolder --app-local-path=index.html --extensions=$BUILD_DEST/opt/$name/$folderName/$buildfolder/contactextension --mode=$mode
+            python make_apk.py --package=org.xwalk.$buildfolder --name=$buildfolder --app-root=$BUILD_DEST/opt/$name/$folderName/$buildfolder --app-local-path=index.html --extensions=$BUILD_DEST/opt/$name/$folderName/$buildfolder/contactextension --mode=$mode --arch=$arch
             rmfile $buildfolder
             continue
         fi
-        python make_apk.py --package=org.xwalk.$buildfolder --name=$buildfolder --app-root=$BUILD_DEST/opt/$name/$folderName/$buildfolder --app-local-path=index.html --mode=$mode
+        python make_apk.py --package=org.xwalk.$buildfolder --name=$buildfolder --app-root=$BUILD_DEST/opt/$name/$folderName/$buildfolder --app-local-path=index.html --mode=$mode --arch=$arch
         if [ $? -ne 0 ];then
             echo "Create $buildfolder.apk fail.... >>>>>>>>>>>>>>>>>>>>>>>>>"
             #clean_workspace

@@ -31,9 +31,10 @@
 source $(dirname $0)/suite-list.sh
 
 #parse params
-usage="Usage: ./pack.sh [-t <package type: wgt | apk | crx | xpk>] [-m <apk mode: shared | embedded>] [-p <xpk platform: mobile | ivi>]
+usage="Usage: ./pack.sh [-t <package type: wgt | apk | crx | xpk>] [-m <apk mode: shared | embedded>] [-p <xpk platform: mobile | ivi>] [-a <apk runtime arch: x86 | arm>]
 [-t apk] option was set as default.
 [-m shared] option was set as default.
+[-a x86] option was set as default.
 [-p mobile] option was set as default"
 
 if [[ $1 == "-h" || $1 == "--help" ]]; then
@@ -43,12 +44,14 @@ fi
 
 type="apk"
 mode="shared"
+arch="x86"
 platform="mobile"
-while getopts t:m:p: o
+while getopts t:m:a:p: o
 do
     case "$o" in
     t) type=$OPTARG;;
     m) mode=$OPTARG;;
+    a) arch=$OPTARG;;
     p) platform=$OPTARG;;
     *) echo "$usage"
        exit 1;;
@@ -80,7 +83,7 @@ mkdir $pkg_folder
 
 for suite in $SUITE;do
     cd $suite
-    ./pack.sh -t $type -m $mode -p $platform
+    ./pack.sh -t $type -m $mode -p $platform -a $arch
     mv *.zip $root_dir/$pkg_folder
     cd $root_dir
 done

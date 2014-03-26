@@ -3,9 +3,10 @@ suiteName=$(basename $(pwd))
 source $(dirname $0)/$(basename $(pwd)).spec
 
 #parse params
-usage="Usage: ./pack.sh [-t <package type: wgt | apk | crx | xpk | pure>] [-m <apk mode: shared | embedded>] [-p <xpk platform: mobile | ivi>]
+usage="Usage: ./pack.sh [-t <package type: wgt | apk | crx | xpk | pure>] [-m <apk mode: shared | embedded>] [-p <xpk platform: mobile | ivi>] [-a <apk runtime arch: x86 | arm>]
 [-t pure] option was set as default.
 [-m shared] option was set as default.
+[-a x86] option was set as default.
 [-p mobile] option was set as default."
 
 if [[ $1 == "-h" || $1 == "--help" ]]; then
@@ -15,12 +16,14 @@ fi
 
 type="apk"
 mode="embedded"
+arch="x86"
 platform="mobile"
-while getopts t:m:p: o
+while getopts t:m:a:p: o
 do
     case "$o" in
     t) type=$OPTARG;;
     m) mode=$OPTARG;;
+    a) arch=$OPTARG;;
     p) platform=$OPTARG;;
     *) echo "$usage"
        exit 1;;
@@ -28,7 +31,7 @@ do
 done
 
 if [ $type == "apk" ]; then
-    xpkpacktooldir=$PWD/../../tools/xwalk_app_template
+    xpkpacktooldir=$PWD/../../tools/crosswalk
 fi
 #get spec name
 folderName_tmp=${suiteName#*-}
@@ -76,7 +79,7 @@ find $BUILD_DEST -name "Makefile*" -delete
 
 #create xpk
 cd $xpkpacktooldir
-python make_apk.py --package=org.xwalk.playvideo --name=playvideo --app-url="http://10.239.131.88:8086/test_video/T2H264.html" --mode=$mode
+python make_apk.py --package=org.xwalk.playvideo --name=playvideo --app-url="http://10.239.131.88:8086/test_video/T2H264.html" --mode=$mode --arch=$arch
      if [ $? -ne 0 ];then
          echo "Create $name.apk fail.... >>>>>>>>>>>>>>>>>>>>>>>>>"
         #clean_workspace
