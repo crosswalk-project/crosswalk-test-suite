@@ -2,9 +2,10 @@
 source $(dirname $0)/$(basename $(pwd)).spec
 
 #parse params
-usage="Usage: ./pack.sh [-t <package type: wgt | apk | crx | xpk >] [-m <apk mode: shared | embedded>] [-p <xpk platform: mobile | ivi | generic>]
+usage="Usage: ./pack.sh [-t <package type: wgt | apk | crx | xpk >] [-m <apk mode: shared | embedded>] [-p <xpk platform: mobile | ivi | generic>] [-a <apk runtime arch: x86 | arm>]
 [-t xpk] option was set as default.
 [-m shared] option was set as default.
+[-a x86] option was set as default.
 [-p ivi] option was set as default."
 
 if [[ $1 == "-h" || $1 == "--help" ]]; then
@@ -14,12 +15,14 @@ fi
 
 type="xpk"
 mode="embedded"
+arch="x86"
 platform="ivi"
-while getopts t:m:p: o
+while getopts t:m:a:p: o
 do
     case "$o" in
     t) type=$OPTARG;;
     m) mode=$OPTARG;;
+    a) arch=$OPTARG;;
     p) platform=$OPTARG;;
     *) echo "$usage"
        exit 1;;
@@ -66,16 +69,16 @@ function create_wgt(){
 
 function create_apk(){
     cp -arf $SRC_ROOT/* $BUILD_DEST/
-    if [ -f $SRC_ROOT/../../tools/xwalk_app_template/make_apk.py ]; then
-        cp -ar $SRC_ROOT/../../tools/xwalk_app_template $BUILD_DEST/xwalk_app_template
+    if [ -f $SRC_ROOT/../../tools/crosswalk/make_apk.py ]; then
+        cp -ar $SRC_ROOT/../../tools/crosswalk $BUILD_DEST/crosswalk
     else
         echo "Could not find the pack tool in $SRC_ROOT/../../tools/ for creating apk-package."
         clean_workspace
         exit 1
     fi
 
-    cd $BUILD_DEST/xwalk_app_template
-    python make_apk.py --package=org.xwalk.$appname --name=$appname --app-url=http://127.0.0.1:8080/index.html --icon=$BUILD_DEST/icon.png --mode=$mode
+    cd $BUILD_DEST/crosswalk
+    python make_apk.py --package=org.xwalk.$appname --name=$appname --app-url=http://127.0.0.1:8080/index.html --icon=$BUILD_DEST/icon.png --mode=$mode --arch=$arch
     if [ $? -ne 0 ];then
         echo "Create $name.apk fail.... >>>>>>>>>>>>>>>>>>>>>>>>>"
         clean_workspace
@@ -140,7 +143,7 @@ function zip_for_apk(){
     cp $SRC_ROOT/COPYING $BUILD_DEST/opt/$name/
 
     ## creat zip package ##
-    mv $BUILD_DEST/xwalk_app_template/*.apk $BUILD_DEST/opt/$name/
+    mv $BUILD_DEST/crosswalk/*.apk $BUILD_DEST/opt/$name/
     cd $BUILD_DEST
     zip -Drq $BUILD_DEST/$name-$version.apk.zip opt/
     if [ $? -ne 0 ];then

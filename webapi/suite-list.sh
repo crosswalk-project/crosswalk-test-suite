@@ -66,7 +66,6 @@ tct-contact-tizen-tests
 tct-datacontrol-tizen-tests
 tct-livebox-tizen-tests
 tct-messaging
-tct-namespace-tizen-tests
 tct-nfc-tizen-tests
 tct-package-tizen-tests
 tct-push-tizen-tests

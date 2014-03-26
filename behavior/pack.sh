@@ -2,8 +2,10 @@
 source $(dirname $0)/tct-behavior-tests.spec
 
 #parse params
-usage="Usage: ./pack.sh [-t <package type: wgt | apk | crx | xpk>] [-p <xpk platform: mobile | ivi>]
+usage="Usage: ./pack.sh [-t <package type: wgt | apk | crx | xpk>] [-m <apk mode: shared | embedded>] [-p <xpk platform: mobile | ivi>] [-a <apk runtime arch: x86 | arm>]
 [-t wgt] option was set as default.
+[-m shared] option was set as default.
+[-a x86] option was set as default.
 [-p mobile] option was set as default."
 
 if [[ $1 == "-h" || $1 == "--help" ]]; then
@@ -12,11 +14,15 @@ if [[ $1 == "-h" || $1 == "--help" ]]; then
 fi
 
 type="wgt"
+mode="shared"
+arch="x86"
 platform="mobile"
-while getopts t:p: o
+while getopts t:m:a:p: o
 do
     case "$o" in
     t) type=$OPTARG;;
+    m) mode=$OPTARG;;
+    a) arch=$OPTARG;;
     p) platform=$OPTARG;;
     *) echo "$usage"
        exit 1;;
@@ -103,7 +109,7 @@ function create_apk(){
     <meta http-equiv="Refresh" content="1; url=opt/$name/testkit/web/index.html?testsuite=../../tests.xml&testprefix=../../../..">
 </head>
 EOF
-    cp -r $SRC_ROOT/../tools/xwalk_app_template $BUILD_ROOT/xwalk_app_template
+    cp -r $SRC_ROOT/../tools/crosswalk $BUILD_ROOT/crosswalk
 
     cp -af $BUILD_ROOT/index.html $BUILD_DEST/
     cp -af $BUILD_ROOT/config.xml $BUILD_DEST/
@@ -116,8 +122,8 @@ EOF
     cp -af $BUILD_ROOT/res $BUILD_DEST/
     mkdir -p $BUILD_DEST/opt/$name/res/media
 
-    cd $BUILD_ROOT/xwalk_app_template
-    python make_apk.py --package=org.xwalk.$appname --name=$appname --app-root=$BUILD_DEST --app-local-path=index.html --icon=$BUILD_DEST/icon.png
+    cd $BUILD_ROOT/crosswalk
+    python make_apk.py --package=org.xwalk.$appname --name=$appname --app-root=$BUILD_DEST --app-local-path=index.html --icon=$BUILD_DEST/icon.png --mode=$mode --arch=$arch
     if [ $? -ne 0 ];then
         echo "Create $name.apk fail.... >>>>>>>>>>>>>>>>>>>>>>>>>"
         clean_workspace
@@ -210,7 +216,7 @@ function zip_for_apk(){
     cd $BUILD_DEST
     # cp inst.sh script #
     cp -af $BUILD_ROOT/inst.sh.apk $BUILD_DEST/opt/$name/inst.sh
-    mv $BUILD_ROOT/xwalk_app_template/$appname.apk $BUILD_DEST/opt/$name/
+    mv $BUILD_ROOT/crosswalk/$appname.apk $BUILD_DEST/opt/$name/
 
     if [ $src_file -eq 0 ];then
         for file in $(ls opt/$name |grep -v apk);do

@@ -2,9 +2,10 @@
 source $(dirname $0)/$(basename $(pwd)).spec
 
 #parse params
-usage="Usage: ./pack.sh [-t <package type: wgt | apk | crx | xpk | pure>] [-m <apk mode: shared | embedded>] [-p <xpk platform: mobile | ivi>]
+usage="Usage: ./pack.sh [-t <package type: wgt | apk | crx | xpk | pure>] [-m <apk mode: shared | embedded>] [-p <xpk platform: mobile | ivi>] [-a <apk runtime arch: x86 | arm>]
 [-t pure] option was set as default.
 [-m shared] option was set as default.
+[-a x86] option was set as default.
 [-p mobile] option was set as default."
 
 if [[ $1 == "-h" || $1 == "--help" ]]; then
@@ -14,12 +15,14 @@ fi
 
 type="pure"
 mode="shared"
+arch="x86"
 platform="mobile"
-while getopts t:m:p: o
+while getopts t:m:a:p: o
 do
     case "$o" in
     t) type=$OPTARG;;
     m) mode=$OPTARG;;
+    a) arch=$OPTARG;;
     p) platform=$OPTARG;;
     *) echo "$usage"
        exit 1;;
@@ -36,7 +39,7 @@ else
 fi
 
 if [ $type == "pure" ]; then
-    apkpacktooldir=$PWD/../../tools/xwalk_app_template
+    apkpacktooldir=$PWD/../../tools/crosswalk
 fi
 
 if [ $type == "xpk" ]; then
@@ -141,8 +144,8 @@ fi
 
 function create_apk(){
 cd $apkpacktooldir
-python make_apk.py --name=WebApp1 --package=com.xwalk.webapp1 --app-url="http://www.hao123.com" --mode=$mode
-python make_apk.py --name=WebApp2 --package=com.xwalk.webapp2 --app-url="http://www.baidu.com" --mode=$mode
+python make_apk.py --name=WebApp1 --package=com.xwalk.webapp1 --app-url="http://www.hao123.com" --mode=$mode --arch=$arch
+python make_apk.py --name=WebApp2 --package=com.xwalk.webapp2 --app-url="http://www.baidu.com" --mode=$mode --arch=$arch
 if [ $? -ne 0 ];then
     echo "Create $name.apk fail.... >>>>>>>>>>>>>>>>>>>>>>>>>"
     clean_workspace
