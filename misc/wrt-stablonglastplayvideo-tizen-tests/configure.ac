@@ -29,7 +29,7 @@
 #                      Yufei,Chen<yufeix.chen@intel.com>
 #
 
-AC_INIT([wrt-stablonglastplayvideo-tizen-tests], [5.34.1.3], [yufeix.chen@intel.com])
+AC_INIT([wrt-stablonglastplayvideo-tizen-tests], [6.34.1.1], [yufeix.chen@intel.com])
 AM_INIT_AUTOMAKE([-Wall -Werror foreign])
 
 # Checks for programs.

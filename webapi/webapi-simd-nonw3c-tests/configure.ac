@@ -1,4 +1,4 @@
-AC_INIT([webapi-simd-nonw3c-tests], [5.34.1.3], [yugang.fan@intel.com])
+AC_INIT([webapi-simd-nonw3c-tests], [6.34.1.1], [yugang.fan@intel.com])
 AM_INIT_AUTOMAKE([-Wall -Werror foreign])
 
 # Checks for programs.

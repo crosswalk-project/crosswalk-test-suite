@@ -1,3 +1,3 @@
 name="web-abat-tests"
-version="5.34.1.3"
+version="6.34.1.1"
 appname=$(echo $name|sed 's/-/_/g')

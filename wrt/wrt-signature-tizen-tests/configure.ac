@@ -29,7 +29,7 @@
 #                      Yuhan Xu <yuhanx.xu@intel.com>
 #
 
-AC_INIT([wrt-signature-tizen-tests], [5.34.1.3], [yuhanx.xu@intel.com])
+AC_INIT([wrt-signature-tizen-tests], [6.34.1.1], [yuhanx.xu@intel.com])
 AM_INIT_AUTOMAKE([-Wall -Werror foreign])
 
 # Checks for programs.
