@@ -46,7 +46,7 @@ Authors:
     <base href = "http://127.0.0.1:8081/opt/tct-csp-w3c-tests/csp/support/" />
   </head>
   <body>
-    <p>Test passes if there isn't a filled blue square.</p>
+    <p>Test passes if there is no blue.</p>
     <img src="blue-100x100.png"/>
   </body>
 </html> '

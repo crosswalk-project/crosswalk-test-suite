@@ -46,6 +46,6 @@ Authors:
   </head>
   <body>
     <p>Test passes if there is a filled green square.</p>
-    <iframe src="http://127.0.0.1:8082/opt/tct-csp-w3c-tests/csp/support/green-100x100.png"/>
+    <iframe frameborder="no" border="0" src="http://127.0.0.1:8082/opt/tct-csp-w3c-tests/csp/support/green-100x100.png"/>
   </body>
 </html> '
