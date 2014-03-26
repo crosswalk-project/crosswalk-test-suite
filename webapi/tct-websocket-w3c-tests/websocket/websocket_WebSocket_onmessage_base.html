@@ -53,12 +53,12 @@ Authors:
         webSocket.onopen = function () {
             isOpenCalled = true;
             webSocket.send("Hello");
-            webSocket.close();
         }
 
         webSocket.onmessage = t.step_func(function () {
             isMessageCalled = true;
             t.done();
+            webSocket.close();
         });
 
         webSocket.onclose = function () {

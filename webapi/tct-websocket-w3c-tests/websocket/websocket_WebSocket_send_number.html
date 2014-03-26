@@ -54,7 +54,6 @@ Authors:
         webSocket.addEventListener('open', function () {
             isOpenCalled = true;
             webSocket.send(num_data);
-            webSocket.close();
         }, true);
 
         webSocket.addEventListener('message', t.step_func(function (e) {
@@ -62,6 +61,7 @@ Authors:
             assert_true(isOpenCalled, "WebSocket connection should be opened");
             assert_equals(e.data, num_data.toString(), "WebSocket.send can send number");
             t.done();
+            webSocket.close();
         }), true);
 
         webSocket.addEventListener('close', function () {
