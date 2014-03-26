@@ -8,6 +8,7 @@ USAGE="Usage: ./inst.sh [-i] [-u]
   -u uninstall wgt and remove source file
 [-i] option was set as default."
 
+<<<<<<< HEAD
 function installpkg(){
 ### install wgt ###
 type $wgt_installer > /dev/null 2>&1
@@ -39,6 +40,26 @@ if [ $? -eq 0 ]; then
             fi
         done
     fi
+=======
+PACKAGENAME=webapi-sanityapp-w3c-tests
+WGTNAME=${PACKAGENAME}.wgt
+RESOURCE_DIR=/opt/usr/media
+
+function installpkg(){
+   xwalkctl --install $(dirname $0)/$WGTNAME
+
+    #TODO: copy resource
+    #eg:cp xx $RESOURCE_DIR
+}
+
+function uninstallpkg(){
+    xwalkctl >/tmp/apps.txt 2>&1
+    pkgids=`cat /tmp/apps.txt | grep $PACKAGENAME | awk '{print $(NF-1)}'`
+    for pkgid in $pkgids
+    do
+       xwalkctl --uninstall $pkgid
+    done
+>>>>>>> 4f9cec5aad55dddeb930ce4b04f58ea4ac463d87
 
     if [ -n "$package_id" ]; then
         $wgt_installer -u -q -t wgt -n $package_id

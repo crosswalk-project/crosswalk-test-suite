@@ -1,13 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
-    <?xml-stylesheet type="text/xsl" href="./testcase.xsl"?>
+<?xml-stylesheet type="text/xsl" href="./testcase.xsl"?>
 <test_definition>
-<suite name="tct-sp02-wrt-tests" category="Web Runtime">
-  <set name="SecurityPrivacy">
-    <testcase component="Web/Runtime/SecurityPrivacy" execution_type="auto" id="private_localstorage_check" purpose="Check that Application has its own localStorage space.">
-      <description>
-        <test_script_entry test_script_expected_result="0">/opt/usr/media/tct/opt/tct-sp02-wrt-tests/scripts/wrt_sp02_localstorage_check.sh</test_script_entry>
+  <suite category="Web Runtime" name="tct-sp02-wrt-tests">
+    <set name="SecurityPrivacy">
+      <testcase component="Web/Runtime/SecurityPrivacy" execution_type="auto" id="private_localstorage_check" purpose="Check that Application has its own localStorage space.">
+        <description>
+          <test_script_entry test_script_expected_result="0">app_user@/opt/usr/media/tct/opt/tct-sp02-wrt-tests/scripts/wrt_sp02_localstorage_check.sh</test_script_entry>
         </description>
       </testcase>
-   </set>
-</suite>
+    </set>
+  </suite>
 </test_definition>

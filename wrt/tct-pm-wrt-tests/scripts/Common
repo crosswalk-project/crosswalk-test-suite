@@ -31,7 +31,7 @@ function func_install()
       echo "Need to add the parameter"
       return 1
     fi
-    su - app -c "export DBUS_SESSION_BUS_ADDRESS=\"unix:path=/run/user/5000/dbus/user_bus_socket\";export XDG_RUNTIME_DIR=\"/run/user/5000\";xwalkctl --install $PACKAGENAME"
+    xwalkctl --install $PACKAGENAME
     find_app $APP_NAME
     pkgnum=`echo "$pkgids"|wc -w`
     if [ $pkgnum -ge 1 ]; then
@@ -106,7 +106,7 @@ function func_install_changename()
     elif [ "$APP_NAME" = "WIdgetIDAppID-same1" -o "$APP_NAME" = "WIdgetIDAppID-same2" -o "$APP_NAME" = "WIdgetIDAppID-different" ];then
         APP_NAME="WIdgetIDAppID"
     fi
-    su - app -c "export DBUS_SESSION_BUS_ADDRESS=\"unix:path=/run/user/5000/dbus/user_bus_socket\";export XDG_RUNTIME_DIR=\"/run/user/5000\";xwalkctl --install $PACKAGENAME"
+    xwalkctl --install $PACKAGENAME
     find_app $APP_NAME
     pkgnum=`echo "$pkgids"|wc -w`
     if [ $pkgnum -ge 1 ]; then

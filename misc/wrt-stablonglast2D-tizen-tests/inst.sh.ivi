@@ -9,7 +9,6 @@ folderName=${folderName_tmp%%-*}
 #parse params
 USAGE="Usage: ./inst.sh [-i] [-u]
   -i install wgt and config environment
-  -u uninstall wgt and remove source file
 [-i] option was set as default."
 
 function installpkg()
@@ -18,8 +17,7 @@ function installpkg()
     echo "environment clear >>>>>>>>>>>>>>>>>>>>>>>>>>>>>."
     pkgid=`pkgcmd -l | grep -i dynamic | grep -v Box | cut -d '[' -f3 | cut -d ']' -f1`
     xwalkctl --uninstall $pkgid > /dev/null 2>&1
-    chmod 777 $local_path/$folderName/*.sh
-    chmod 777 $local_path/$folderName/sysmon
+
     echo "Install webapp ..."
     [ -e /opt/usr/media/tct/opt/$NAME/$folderName/*.xpk ] || echo Not found xpk to install && xwalkctl --install /opt/usr/media/tct/opt/$NAME/$folderName/*.xpk 1> /tmp/installer.log 2>&1
     RET=`grep "Application installed" /tmp/installer.log`

@@ -16,8 +16,7 @@ function installpkg()
 {
     #environment clear
     echo "environment clear >>>>>>>>>>>>>>>>>>>>>>>>>>>>>."
-    chmod 777 $local_path/$folderName/*.sh
-    chmod 777 $local_path/$folderName/sysmon
+
     oldFolder=OldSysmon_`date '+%Y%m%d%H%M'`
     [ -e /tmp/sysmon.xml ] && mkdir /tmp/$oldFolder
     [ -d /tmp/$oldFolder ] && mv /tmp/sysmon* /tmp/$oldFolder/
