@@ -32,11 +32,11 @@ Authors:
 -->
 <html>
   <head>
-    <title>IndexDB Test: IDBIndex_multientry_exist</title>
+    <title>IndexDB Test: IDBIndex_multiEntry_exist</title>
     <link rel="author" title="Intel" href="http://www.intel.com" />
-    <link rel="help" href="http://www.w3.org/TR/2011/WD-IndexedDB-20111206/#widl-IDBIndex-multientry" />
+    <link rel="help" href="http://www.w3.org/TR/2011/WD-IndexedDB-20111206/#widl-IDBIndex-multiEntry" />
     <meta name="flags" content="" />
-    <meta name="assert" content="Check if IDBIndex has multientry attribute" />
+    <meta name="assert" content="Check if IDBIndex has multiEntry attribute" />
     <script src="support/util.js"></script>
     <script src="../resources/testharness.js"></script>
     <script src="../resources/testharnessreport.js"></script>
@@ -61,10 +61,10 @@ Authors:
                     }
                     var objStore = db.createObjectStore(objectStoreName, {keyPath : "key"});
                     var index = objStore.createIndex(indexName, "indexedProperty");
-                    if ("multientry" in index) {
+                    if ("multiEntry" in index) {
                         pass();
                     } else {
-                        fail("IDBIndex.multientry attribute does not exist");
+                        fail("IDBIndex.multiEntry attribute does not exist");
                     }
                 } catch (ex) {
                     fail("Throw an exception " + ex);
