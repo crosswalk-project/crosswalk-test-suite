@@ -38,7 +38,7 @@ tar -xf /path/to/html5lib-0.999.tar.gz -C /tmp
 cd /tmp/html5lib-0.999
 sudo python setup.py install
 cd
-cd web-platform-tests
+cd crosswalk-test-suite/web-platform-tests
 git checkout -b webtestingservice d0b829d58c1a4aaa1b310867f23944cadfd859a6
 git applay ../webtestingservice/misc/web-platform-tests.patch
 git add config.default.json
@@ -68,12 +68,12 @@ git clone --recursive https://github.com/w3c/wptserve.git tools/wptserve
 and use the following commands to download w3c/pywebsocket repo:
 git clone --recursive https://github.com/w3c/pywebsocket.git tools/pywebsocket
 
-execute the below command to generate wts-version.zip under crosswalk-project/webtestingservice/misc floder.
+execute the below command to generate wts-version.zip under crosswalk-test-suite/webtestingservice/misc floder.
 cd
-cd crosswalk-project/webtestingservice/misc
+cd crosswalk-test-suite/webtestingservice/misc
 ./pack.sh
 
-cd crosswalk-project
+cd crosswalk-test-suite
 git stash
 git checkout master
 git branch -D wts
