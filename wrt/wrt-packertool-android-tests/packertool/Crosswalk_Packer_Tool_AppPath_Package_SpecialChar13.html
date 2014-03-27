@@ -33,7 +33,7 @@ Authors:
 <html>
   <head>
     <meta charset='utf-8'>
-    <title>Crosswalk_Packer_Tool_MinifyJs</title>
+    <title>Crosswalk_Packer_Tool_AppPath_Package_SpecialChar13</title>
     <link rel="author" title="Intel" href="http://www.intel.com">
   </head>
   <body>
@@ -41,19 +41,13 @@ Authors:
       <strong>Test steps:</strong>
     </p>
     <ol>
-      <li>Package the "packer_tool_minify_tests" webapp with compressor option, command like: python make_apk.py --manifest=/path/to/packer_tool_minify_tests/manifest.json --compressor=js:</li>
-      <li>Check the packaging tool folder</li>
-      <li>Check the files of script.js,style.css in packer_tool_minify_tests/assets/www/resource/</li>
-      <li>Compare the two files with the original files which in /path/to/packer_tool_minify_tests/resource/</li>
+      <li>Package an web app with package option, command like: python make_apk.py --name=negative --package="'xwalk'.'negative'" --app-root=app_path --app-local-path=index.html</li>
     </ol>
     <p>
       <strong>Expected Output:</strong>
     </p>
     <ol>
-      <li>Apk could be created correctly</li>
-      <li>There generated an "packer_tool_minify_tests" folder</li>
-      <li>There are script.js,style.css files</li>
-      <li>Only the script.js files' content is different, the generated script.js file is minified; the style.css files' content is the same</li>
+      <li>Packaging failed. The error info like: exited with non-zero exit code 1</li>
     </ol>
   </body>
 </html>

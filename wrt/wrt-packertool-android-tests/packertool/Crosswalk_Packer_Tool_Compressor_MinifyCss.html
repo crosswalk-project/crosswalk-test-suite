@@ -33,7 +33,7 @@ Authors:
 <html>
   <head>
     <meta charset='utf-8'>
-    <title>Crosswalk_Packer_Tool_Minify</title>
+    <title>Crosswalk_Packer_Tool_Compressor_MinifyCss</title>
     <link rel="author" title="Intel" href="http://www.intel.com">
   </head>
   <body>
@@ -41,7 +41,7 @@ Authors:
       <strong>Test steps:</strong>
     </p>
     <ol>
-      <li>Package the "packer_tool_minify_tests" webapp with compressor option, command like: python make_apk.py --manifest=/path/to/packer_tool_minify_tests/manifest.json --compressor</li>
+      <li>Package the "packer_tool_minify_tests" webapp with compressor option, command like: python make_apk.py --manifest=/path/to/packer_tool_minify_tests/manifest.json --compressor=css:</li>
       <li>Check the packaging tool folder</li>
       <li>Check the files of script.js,style.css in packer_tool_minify_tests/assets/www/resource/</li>
       <li>Compare the two files with the original files which in /path/to/packer_tool_minify_tests/resource/</li>
@@ -53,7 +53,7 @@ Authors:
       <li>Apk could be created correctly</li>
       <li>There generated an "packer_tool_minify_tests" folder</li>
       <li>There are script.js,style.css files</li>
-      <li>Both the files' contents are different, the generated script.js,style.css files are minified</li>
+      <li>Only the style.css files' content is different, the generated style.css file is minified; the script.js files' content is the same</li>
     </ol>
   </body>
 </html>

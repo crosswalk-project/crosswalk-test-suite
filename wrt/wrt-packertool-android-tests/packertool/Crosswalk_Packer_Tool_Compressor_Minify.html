@@ -33,7 +33,7 @@ Authors:
 <html>
   <head>
     <meta charset='utf-8'>
-    <title>Crosswalk_Packer_Tool_Mode_Embeded</title>
+    <title>Crosswalk_Packer_Tool_Compressor_Minify</title>
     <link rel="author" title="Intel" href="http://www.intel.com">
   </head>
   <body>
@@ -41,17 +41,19 @@ Authors:
       <strong>Test steps:</strong>
     </p>
     <ol>
-      <li>Package an web app with 'embedded' mode type, command like: python make_apk.py --name=xxxx --package=xxxx.xwalk.org --app-root=app_path --app-local-path=index.html --mode=embedded</li>
-      <li>Install the apk packaged</li>
-      <li>Launch the webapp</li>
+      <li>Package the "packer_tool_minify_tests" webapp with compressor option, command like: python make_apk.py --manifest=/path/to/packer_tool_minify_tests/manifest.json --compressor</li>
+      <li>Check the packaging tool folder</li>
+      <li>Check the files of script.js,style.css in packer_tool_minify_tests/assets/www/resource/</li>
+      <li>Compare the two files with the original files which in /path/to/packer_tool_minify_tests/resource/</li>
     </ol>
     <p>
       <strong>Expected Output:</strong>
     </p>
     <ol>
-      <li>Apk could be created correctly with embedded mode</li>
-      <li>Web app could be installed successfull</li>
-      <li>Web app could be launched successfully</li>
+      <li>Apk could be created correctly</li>
+      <li>There generated an "packer_tool_minify_tests" folder</li>
+      <li>There are script.js,style.css files</li>
+      <li>Both the files' contents are different, the generated script.js,style.css files are minified</li>
     </ol>
   </body>
 </html>

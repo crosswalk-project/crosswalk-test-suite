@@ -33,7 +33,7 @@ Authors:
 <html>
   <head>
     <meta charset='utf-8'>
-    <title>Crosswalk_Packer_Tool_Icon</title>
+    <title>Crosswalk_Packer_Tool_TargetDir_RelativePath</title>
     <link rel="author" title="Intel" href="http://www.intel.com">
   </head>
   <body>
@@ -41,19 +41,13 @@ Authors:
       <strong>Test steps:</strong>
     </p>
     <ol>
-      <li>Package an web app with icon option, command like: python make_apk.py --name=xxxx --package=xxxx.xwalk.org --app-root=app_path --app-local-path=index.html --icon=/path/to/your/customized/icon</li>
-      <li>Install the apk packaged</li>
-      <li>Check the webapp icon</li>
-      <li>Launch the webapp</li>
+      <li>Package an web app with target-dir option, and set the target dir as relative path, command like: python make_apk.py --name=xxxx --package=xxxx.xwalk.org --app-root=app_path --app-local-path=index.html --target-dir=../</li>
     </ol>
     <p>
       <strong>Expected Output:</strong>
     </p>
     <ol>
-      <li>Apk could be created correctly</li>
-      <li>Web app could be installed successfully</li>
-      <li>The icon of the webapp is your customized icon</li>
-      <li>Web app could be launched successfully</li>
+      <li>Apk could be created in the target dir correctly</li>
     </ol>
   </body>
 </html>

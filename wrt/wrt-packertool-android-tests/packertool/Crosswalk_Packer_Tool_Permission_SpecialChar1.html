@@ -33,7 +33,7 @@ Authors:
 <html>
   <head>
     <meta charset='utf-8'>
-    <title>Crosswalk_Packer_Tool_Mode_Embeded</title>
+    <title>Crosswalk_Packer_Tool_Permission_SpecialChar1</title>
     <link rel="author" title="Intel" href="http://www.intel.com">
   </head>
   <body>
@@ -41,17 +41,13 @@ Authors:
       <strong>Test steps:</strong>
     </p>
     <ol>
-      <li>Package an web app with 'embedded' mode type, command like: python make_apk.py --name=xxxx --package=xxxx.xwalk.org --app-root=app_path --app-local-path=index.html --mode=embedded</li>
-      <li>Install the apk packaged</li>
-      <li>Launch the webapp</li>
+      <li>Package an web app with permission option, command like: python make_apk.py --name=example --package=example.xwalk.org --app-url=http://www.intel.com --permission=!@#$%^&*</li>
     </ol>
     <p>
       <strong>Expected Output:</strong>
     </p>
     <ol>
-      <li>Apk could be created correctly with embedded mode</li>
-      <li>Web app could be installed successfull</li>
-      <li>Web app could be launched successfully</li>
+      <li>Packaging failed. The error info like: bash: !@#$%^: event not found</li>
     </ol>
   </body>
 </html>

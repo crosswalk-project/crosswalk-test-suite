@@ -84,7 +84,15 @@
           <test_script_entry>/opt/wrt-packertool-android-tests/packertool/Crosswalk_ShareMode_HostApp.html</test_script_entry>
         </description>
       </testcase>
-      <testcase purpose="Validate the Crosswalk support Embedded mode of package app" type="Functional" status="approved" component="Crosswalk Packer Tool" execution_type="manual" priority="P0" id="Crosswalk_Packer_Tool_Mode_Embeded">
+      <testcase purpose="Validate the Crosswalk support embedded mode as default of package app" type="Functional" status="approved" component="Crosswalk Packer Tool" execution_type="manual" priority="P1" id="Crosswalk_Packer_Tool_Mode_Default">
+        <description>
+          <pre_condition>
+            Make sure Crosswalk lib installed.
+          </pre_condition>
+          <test_script_entry>/opt/wrt-packertool-android-tests/packertool/Crosswalk_Packer_Tool_Mode_Default.html</test_script_entry>
+        </description>
+      </testcase>
+      <testcase purpose="Validate the Crosswalk support embedded mode of package app" type="Functional" status="approved" component="Crosswalk Packer Tool" execution_type="manual" priority="P1" id="Crosswalk_Packer_Tool_Mode_Embeded">
         <description>
           <pre_condition>
             Make sure Crosswalk lib installed.
@@ -92,12 +100,20 @@
           <test_script_entry>/opt/wrt-packertool-android-tests/packertool/Crosswalk_Packer_Tool_Mode_Embeded.html</test_script_entry>
         </description>
       </testcase>
-      <testcase purpose="Validate the Crosswalk support Embedded mode as default of package app" type="Functional" status="approved" component="Crosswalk Packer Tool" execution_type="manual" priority="P1" id="Crosswalk_Packer_Tool_Mode_Default">
+      <testcase purpose="Validate the Crosswalk support shared mode of package app" type="Functional" status="approved" component="Crosswalk Packer Tool" execution_type="manual" priority="P1" id="Crosswalk_Packer_Tool_Mode_Shared">
         <description>
           <pre_condition>
             Make sure Crosswalk lib installed.
           </pre_condition>
-          <test_script_entry>/opt/wrt-packertool-android-tests/packertool/Crosswalk_Packer_Tool_Mode_Default.html</test_script_entry>
+          <test_script_entry>/opt/wrt-packertool-android-tests/packertool/Crosswalk_Packer_Tool_Mode_Shared.html</test_script_entry>
+        </description>
+      </testcase>
+      <testcase purpose="Validate the Crosswalk support undefined mode of package app" type="Functional" status="approved" component="Crosswalk Packer Tool" execution_type="manual" priority="P3" id="Crosswalk_Packer_Tool_Mode_Undefined">
+        <description>
+          <pre_condition>
+            Make sure Crosswalk lib installed.
+          </pre_condition>
+          <test_script_entry>/opt/wrt-packertool-android-tests/packertool/Crosswalk_Packer_Tool_Mode_Undefined.html</test_script_entry>
         </description>
       </testcase>
       <testcase purpose="Validate the Crosswalk enable to create apps which can be moved to sd card" type="Functional" status="approved" component="Crosswalk Packer Tool" execution_type="manual" priority="P1" id="Crosswalk_Enable_Move_App">
@@ -147,6 +163,25 @@
           <test_script_entry>/opt/wrt-packertool-android-tests/packertool/Crosswalk_Packer_Tool_XPK.html</test_script_entry>
         </description>
       </testcase>
+      <testcase purpose="Validate if the Packaging Tool enable the xpk option, but the path of the xpk file is incorrect" type="Functional" status="approved" component="Crosswalk Packer Tool" execution_type="manual" priority="P3" id="Crosswalk_Packer_Tool_XPK_NonExistFile">
+        <description>
+          <pre_condition>
+            1.Make sure packer tool download;
+            2.Make sure got the Crosswalk Packaging Tool.
+          </pre_condition>
+          <test_script_entry>/opt/wrt-packertool-android-tests/packertool/Crosswalk_Packer_Tool_XPK_NonExistFile.html</test_script_entry>
+        </description>
+      </testcase>
+      <testcase purpose="Validate if the Packaging Tool enable the xpk option, but the xpk file is invalid" type="Functional" status="approved" component="Crosswalk Packer Tool" execution_type="manual" priority="P3" id="Crosswalk_Packer_Tool_XPK_InvalidFile">
+        <description>
+          <pre_condition>
+            1.Make sure packer tool download;
+            2.Make sure got the Crosswalk Packaging Tool;
+            3.Make sure Crosswalk is installed.
+          </pre_condition>
+          <test_script_entry>/opt/wrt-packertool-android-tests/packertool/Crosswalk_Packer_Tool_XPK_InvalidFile.html</test_script_entry>
+        </description>
+      </testcase>
       <testcase purpose="Validate if the Packaging Tool enable various command line options" type="Functional" status="approved" component="Crosswalk Packer Tool" execution_type="manual" priority="P2" id="Crosswalk_Packer_Tool_Options">
         <description>
           <pre_condition>
@@ -159,7 +194,9 @@
       <testcase purpose="Validate if the Packaging Tool enable the default arch option" type="Functional" status="designed" component="Crosswalk Packer Tool" execution_type="manual" priority="P1" id="Crosswalk_Packer_Tool_Arch_Default">
         <description>
           <pre_condition>
-            Make sure Crosswalk lib installed.
+            1.Make sure packer tool download;
+            2.Make sure got the Crosswalk Packaging Tool;
+            3.Make sure Crosswalk is installed.
           </pre_condition>
           <test_script_entry>/opt/wrt-packertool-android-tests/packertool/Crosswalk_Packer_Tool_Arch_Default.html</test_script_entry>
         </description>
@@ -167,7 +204,9 @@
       <testcase purpose="Validate if the Packaging Tool enable the 'x86' arch option" type="Functional" status="approved" component="Crosswalk Packer Tool" execution_type="manual" priority="P1" id="Crosswalk_Packer_Tool_Arch_X86">
         <description>
           <pre_condition>
-            Make sure Crosswalk lib installed.
+            1.Make sure packer tool download;
+            2.Make sure got the Crosswalk Packaging Tool;
+            3.Make sure Crosswalk is installed.
           </pre_condition>
           <test_script_entry>/opt/wrt-packertool-android-tests/packertool/Crosswalk_Packer_Tool_Arch_X86.html</test_script_entry>
         </description>
@@ -175,9 +214,21 @@
       <testcase purpose="Validate if the Packaging Tool enable the 'arm' arch option" type="Functional" status="approved" component="Crosswalk Packer Tool" execution_type="manual" priority="P1" id="Crosswalk_Packer_Tool_Arch_ARM">
         <description>
           <pre_condition>
-            Make sure Crosswalk lib installed.
+            1.Make sure packer tool download;
+            2.Make sure got the Crosswalk Packaging Tool;
+            3.Make sure Crosswalk is installed.
           </pre_condition>
           <test_script_entry>/opt/wrt-packertool-android-tests/packertool/Crosswalk_Packer_Tool_Arch_ARM.html</test_script_entry>
+        </description>
+      </testcase>
+      <testcase purpose="Validate if the Packaging Tool enable the 'undefined' arch option" type="Functional" status="approved" component="Crosswalk Packer Tool" execution_type="manual" priority="P3" id="Crosswalk_Packer_Tool_Arch_Undefined">
+        <description>
+          <pre_condition>
+            1.Make sure packer tool download;
+            2.Make sure got the Crosswalk Packaging Tool;
+            3.Make sure Crosswalk is installed.
+          </pre_condition>
+          <test_script_entry>/opt/wrt-packertool-android-tests/packertool/Crosswalk_Packer_Tool_Arch_Undefined.html</test_script_entry>
         </description>
       </testcase>
       <testcase purpose="Validate if the Packaging Tool enable the description option" type="Functional" status="approved" component="Crosswalk Packer Tool" execution_type="manual" priority="P1" id="Crosswalk_Packer_Tool_Description">
@@ -189,24 +240,155 @@
           <test_script_entry>/opt/wrt-packertool-android-tests/packertool/Crosswalk_Packer_Tool_Description.html</test_script_entry>
         </description>
       </testcase>
-      <testcase purpose="Validate if the Packaging Tool enable the icon option" type="Functional" status="approved" component="Crosswalk Packer Tool" execution_type="manual" priority="P1" id="Crosswalk_Packer_Tool_Icon">
+      <testcase purpose="Validate if the Packaging Tool enable the '0123456 ' description option" type="Functional" status="approved" component="Crosswalk Packer Tool" execution_type="manual" priority="P3" id="Crosswalk_Packer_Tool_Description_SpecialChar1">
         <description>
           <pre_condition>
             1.Make sure packer tool download;
-            2.Make sure got the Crosswalk Packaging Tool;
-            3.Make sure Crosswalk is installed.
+            2.Make sure got the Crosswalk Packaging Tool.
           </pre_condition>
-          <test_script_entry>/opt/wrt-packertool-android-tests/packertool/Crosswalk_Packer_Tool_Icon.html</test_script_entry>
+          <test_script_entry>/opt/wrt-packertool-android-tests/packertool/Crosswalk_Packer_Tool_Description_SpecialChar1.html</test_script_entry>
         </description>
       </testcase>
-      <testcase purpose="Validate if the Packaging Tool enable the orientation option" type="Functional" status="approved" component="Crosswalk Packer Tool" execution_type="manual" priority="P1" id="Crosswalk_Packer_Tool_Orientation">
+      <testcase purpose="Validate if the Packaging Tool enable the '0123456()[]{}-_=+:;,./?|' description option" type="Functional" status="approved" component="Crosswalk Packer Tool" execution_type="manual" priority="P3" id="Crosswalk_Packer_Tool_Description_SpecialChar2">
+        <description>
+          <pre_condition>
+            1.Make sure packer tool download;
+            2.Make sure got the Crosswalk Packaging Tool.
+          </pre_condition>
+          <test_script_entry>/opt/wrt-packertool-android-tests/packertool/Crosswalk_Packer_Tool_Description_SpecialChar2.html</test_script_entry>
+        </description>
+      </testcase>
+      <testcase purpose="Validate if the Packaging Tool enable the '0123456()[]{}-_=+:;,./?|&lt;&gt;' description option" type="Functional" status="approved" component="Crosswalk Packer Tool" execution_type="manual" priority="P3" id="Crosswalk_Packer_Tool_Description_SpecialChar3">
+        <description>
+          <pre_condition>
+            1.Make sure packer tool download;
+            2.Make sure got the Crosswalk Packaging Tool.
+          </pre_condition>
+          <test_script_entry>/opt/wrt-packertool-android-tests/packertool/Crosswalk_Packer_Tool_Description_SpecialChar3.html</test_script_entry>
+        </description>
+      </testcase>
+      <testcase purpose="Validate if the Packaging Tool enable the '&quot;description&quot;' description option" type="Functional" status="approved" component="Crosswalk Packer Tool" execution_type="manual" priority="P3" id="Crosswalk_Packer_Tool_Description_SpecialChar4">
+        <description>
+          <pre_condition>
+            1.Make sure packer tool download;
+            2.Make sure got the Crosswalk Packaging Tool.
+          </pre_condition>
+          <test_script_entry>/opt/wrt-packertool-android-tests/packertool/Crosswalk_Packer_Tool_Description_SpecialChar4.html</test_script_entry>
+        </description>
+      </testcase>
+      <testcase purpose="Validate if the Packaging Tool enable the single quote in description option" type="Functional" status="approved" component="Crosswalk Packer Tool" execution_type="manual" priority="P3" id="Crosswalk_Packer_Tool_Description_SpecialChar5">
+        <description>
+          <pre_condition>
+            1.Make sure packer tool download;
+            2.Make sure got the Crosswalk Packaging Tool.
+          </pre_condition>
+          <test_script_entry>/opt/wrt-packertool-android-tests/packertool/Crosswalk_Packer_Tool_Description_SpecialChar5.html</test_script_entry>
+        </description>
+      </testcase>
+      <testcase purpose="Validate if the Packaging Tool enable escape description option" type="Functional" status="approved" component="Crosswalk Packer Tool" execution_type="manual" priority="P3" id="Crosswalk_Packer_Tool_Description_SpecialChar6">
+        <description>
+          <pre_condition>
+            1.Make sure packer tool download;
+            2.Make sure got the Crosswalk Packaging Tool.
+          </pre_condition>
+          <test_script_entry>/opt/wrt-packertool-android-tests/packertool/Crosswalk_Packer_Tool_Description_SpecialChar6.html</test_script_entry>
+        </description>
+      </testcase>
+      <testcase purpose="Validate if the Packaging Tool enable the '~!@#$%^&amp;*' description option" type="Functional" status="approved" component="Crosswalk Packer Tool" execution_type="manual" priority="P3" id="Crosswalk_Packer_Tool_Description_SpecialChar7">
+        <description>
+          <pre_condition>
+            1.Make sure packer tool download;
+            2.Make sure got the Crosswalk Packaging Tool.
+          </pre_condition>
+          <test_script_entry>/opt/wrt-packertool-android-tests/packertool/Crosswalk_Packer_Tool_Description_SpecialChar7.html</test_script_entry>
+        </description>
+      </testcase>
+      <testcase purpose="Validate if the Packaging Tool set the default icon for webapp" type="Functional" status="approved" component="Crosswalk Packer Tool" execution_type="manual" priority="P1" id="Crosswalk_Packer_Tool_Icon_Default">
         <description>
           <pre_condition>
             1.Make sure packer tool download;
             2.Make sure got the Crosswalk Packaging Tool;
             3.Make sure Crosswalk is installed.
           </pre_condition>
-          <test_script_entry>/opt/wrt-packertool-android-tests/packertool/Crosswalk_Packer_Tool_Orientation.html</test_script_entry>
+          <test_script_entry>/opt/wrt-packertool-android-tests/packertool/Crosswalk_Packer_Tool_Icon_Default.html</test_script_entry>
+        </description>
+      </testcase>
+      <testcase purpose="Validate if the Packaging Tool enable the 'png' icon option" type="Functional" status="approved" component="Crosswalk Packer Tool" execution_type="manual" priority="P1" id="Crosswalk_Packer_Tool_Icon_Png">
+        <description>
+          <pre_condition>
+            1.Make sure packer tool download;
+            2.Make sure got the Crosswalk Packaging Tool;
+            3.Make sure Crosswalk is installed.
+          </pre_condition>
+          <test_script_entry>/opt/wrt-packertool-android-tests/packertool/Crosswalk_Packer_Tool_Icon_Png.html</test_script_entry>
+        </description>
+      </testcase>
+      <testcase purpose="Validate if the Packaging Tool enable the 'jpg' icon option" type="Functional" status="approved" component="Crosswalk Packer Tool" execution_type="manual" priority="P2" id="Crosswalk_Packer_Tool_Icon_Jpg">
+        <description>
+          <pre_condition>
+            1.Make sure packer tool download;
+            2.Make sure got the Crosswalk Packaging Tool;
+            3.Make sure Crosswalk is installed.
+          </pre_condition>
+          <test_script_entry>/opt/wrt-packertool-android-tests/packertool/Crosswalk_Packer_Tool_Icon_Jpg.html</test_script_entry>
+        </description>
+      </testcase>
+      <testcase purpose="Validate if the Packaging Tool enable the 'bmp' icon option" type="Functional" status="approved" component="Crosswalk Packer Tool" execution_type="manual" priority="P2" id="Crosswalk_Packer_Tool_Icon_Bmp">
+        <description>
+          <pre_condition>
+            1.Make sure packer tool download;
+            2.Make sure got the Crosswalk Packaging Tool;
+            3.Make sure Crosswalk is installed.
+          </pre_condition>
+          <test_script_entry>/opt/wrt-packertool-android-tests/packertool/Crosswalk_Packer_Tool_Icon_Bmp.html</test_script_entry>
+        </description>
+      </testcase>
+      <testcase purpose="Validate if the Packaging Tool enable the icon option, but the icon file is non-exist" type="Functional" status="approved" component="Crosswalk Packer Tool" execution_type="manual" priority="P3" id="Crosswalk_Packer_Tool_Icon_NonExistFile">
+        <description>
+          <pre_condition>
+            1.Make sure packer tool download;
+            2.Make sure got the Crosswalk Packaging Tool.
+          </pre_condition>
+          <test_script_entry>/opt/wrt-packertool-android-tests/packertool/Crosswalk_Packer_Tool_Icon_NonExistFile.html</test_script_entry>
+        </description>
+      </testcase>
+      <testcase purpose="Validate if the Packaging Tool enable the default orientation option" type="Functional" status="approved" component="Crosswalk Packer Tool" execution_type="manual" priority="P1" id="Crosswalk_Packer_Tool_Orientation_Default">
+        <description>
+          <pre_condition>
+            1.Make sure packer tool download;
+            2.Make sure got the Crosswalk Packaging Tool;
+            3.Make sure Crosswalk is installed.
+          </pre_condition>
+          <test_script_entry>/opt/wrt-packertool-android-tests/packertool/Crosswalk_Packer_Tool_Orientation_Default.html</test_script_entry>
+        </description>
+      </testcase>
+      <testcase purpose="Validate if the Packaging Tool enable the 'landscape' orientation option" type="Functional" status="approved" component="Crosswalk Packer Tool" execution_type="manual" priority="P1" id="Crosswalk_Packer_Tool_Orientation_Landscape">
+        <description>
+          <pre_condition>
+            1.Make sure packer tool download;
+            2.Make sure got the Crosswalk Packaging Tool;
+            3.Make sure Crosswalk is installed.
+          </pre_condition>
+          <test_script_entry>/opt/wrt-packertool-android-tests/packertool/Crosswalk_Packer_Tool_Orientation_Landscape.html</test_script_entry>
+        </description>
+      </testcase>
+      <testcase purpose="Validate if the Packaging Tool enable the 'portrait' orientation option" type="Functional" status="approved" component="Crosswalk Packer Tool" execution_type="manual" priority="P2" id="Crosswalk_Packer_Tool_Orientation_Portrait">
+        <description>
+          <pre_condition>
+            1.Make sure packer tool download;
+            2.Make sure got the Crosswalk Packaging Tool;
+            3.Make sure Crosswalk is installed.
+          </pre_condition>
+          <test_script_entry>/opt/wrt-packertool-android-tests/packertool/Crosswalk_Packer_Tool_Orientation_Portrait.html</test_script_entry>
+        </description>
+      </testcase>
+      <testcase purpose="Validate if the Packaging Tool enable the 'undefined' orientation option" type="Functional" status="approved" component="Crosswalk Packer Tool" execution_type="manual" priority="P3" id="Crosswalk_Packer_Tool_Orientation_Undefined">
+        <description>
+          <pre_condition>
+            1.Make sure packer tool download;
+            2.Make sure got the Crosswalk Packaging Tool.
+          </pre_condition>
+          <test_script_entry>/opt/wrt-packertool-android-tests/packertool/Crosswalk_Packer_Tool_Orientation_Undefined.html</test_script_entry>
         </description>
       </testcase>
       <testcase purpose="Validate if the Packaging Tool enable the app-url option" type="Functional" status="approved" component="Crosswalk Packer Tool" execution_type="manual" priority="P1" id="Crosswalk_Packer_Tool_AppUrl">
@@ -229,6 +411,15 @@
           <test_script_entry>/opt/wrt-packertool-android-tests/packertool/Crosswalk_Packer_Tool_AppVersion.html</test_script_entry>
         </description>
       </testcase>
+      <testcase purpose="Validate if the Packaging Tool enable the special characters in app-version option" type="Functional" status="approved" component="Crosswalk Packer Tool" execution_type="manual" priority="P3" id="Crosswalk_Packer_Tool_AppVersion_SpecialChar">
+        <description>
+          <pre_condition>
+            1.Make sure packer tool download;
+            2.Make sure got the Crosswalk Packaging Tool.
+          </pre_condition>
+          <test_script_entry>/opt/wrt-packertool-android-tests/packertool/Crosswalk_Packer_Tool_AppVersion_SpecialChar.html</test_script_entry>
+        </description>
+      </testcase>
       <testcase purpose="Validate if the Packaging Tool enable the app-versionCode option" type="Functional" status="approved" component="Crosswalk Packer Tool" execution_type="manual" priority="P2" id="Crosswalk_Packer_Tool_AppVersionCode">
         <description>
           <pre_condition>
@@ -238,6 +429,15 @@
           <test_script_entry>/opt/wrt-packertool-android-tests/packertool/Crosswalk_Packer_Tool_AppVersionCode.html</test_script_entry>
         </description>
       </testcase>
+      <testcase purpose="Validate if the Packaging Tool enable the special characters in app-versionCode option" type="Functional" status="approved" component="Crosswalk Packer Tool" execution_type="manual" priority="P3" id="Crosswalk_Packer_Tool_AppVersionCode_SpecialChar">
+        <description>
+          <pre_condition>
+            1.Make sure packer tool download;
+            2.Make sure got the Crosswalk Packaging Tool.
+          </pre_condition>
+          <test_script_entry>/opt/wrt-packertool-android-tests/packertool/Crosswalk_Packer_Tool_AppVersionCode_SpecialChar.html</test_script_entry>
+        </description>
+      </testcase>
       <testcase purpose="Validate if the Packaging Tool enable the app-versionCodeBase option" type="Functional" status="approved" component="Crosswalk Packer Tool" execution_type="manual" priority="P2" id="Crosswalk_Packer_Tool_AppVersionCodeBase">
         <description>
           <pre_condition>
@@ -245,6 +445,15 @@
             2.Make sure got the Crosswalk Packaging Tool.
           </pre_condition>
           <test_script_entry>/opt/wrt-packertool-android-tests/packertool/Crosswalk_Packer_Tool_AppVersionCodeBase.html</test_script_entry>
+        </description>
+      </testcase>
+      <testcase purpose="Validate if the Packaging Tool enable the special characters in app-versionCodeBase option" type="Functional" status="approved" component="Crosswalk Packer Tool" execution_type="manual" priority="P3" id="Crosswalk_Packer_Tool_AppVersionCodeBase_SpecialChar">
+        <description>
+          <pre_condition>
+            1.Make sure packer tool download;
+            2.Make sure got the Crosswalk Packaging Tool.
+          </pre_condition>
+          <test_script_entry>/opt/wrt-packertool-android-tests/packertool/Crosswalk_Packer_Tool_AppVersionCodeBase_SpecialChar.html</test_script_entry>
         </description>
       </testcase>
       <testcase purpose="Validate Crosswalk could debug by remote host when the web app is packaged with remote debugging by default" type="Functional" status="approved" component="Crosswalk Packer Tool" execution_type="manual" priority="P1" id="Crosswalk_Remote_Debugging_Default">
@@ -425,6 +634,24 @@
           <test_script_entry>/opt/wrt-packertool-android-tests/packertool/Crosswalk_Packer_Tool_Permission_UndefinedMore.html</test_script_entry>
         </description>
       </testcase>
+      <testcase purpose="Validate if the Packaging Tool work well when there set '!@#$%^&amp;*' in permission option" type="Functional" status="approved" component="Crosswalk Packer Tool" execution_type="manual" priority="P3" id="Crosswalk_Packer_Tool_Permission_SpecialChar1">
+        <description>
+          <pre_condition>
+            1.Make sure packer tool download;
+            2.Make sure got the Crosswalk Packaging Tool.
+          </pre_condition>
+          <test_script_entry>/opt/wrt-packertool-android-tests/packertool/Crosswalk_Packer_Tool_Permission_SpecialChar1.html</test_script_entry>
+        </description>
+      </testcase>
+      <testcase purpose="Validate if the Packaging Tool work well when there set 'abc,./{}' in permission option" type="Functional" status="approved" component="Crosswalk Packer Tool" execution_type="manual" priority="P3" id="Crosswalk_Packer_Tool_Permission_SpecialChar2">
+        <description>
+          <pre_condition>
+            1.Make sure packer tool download;
+            2.Make sure got the Crosswalk Packaging Tool.
+          </pre_condition>
+          <test_script_entry>/opt/wrt-packertool-android-tests/packertool/Crosswalk_Packer_Tool_Permission_SpecialChar2.html</test_script_entry>
+        </description>
+      </testcase>
       <testcase purpose="Validate if the Packaging Tool enable the app-local-path option" type="Functional" status="approved" component="Crosswalk Packer Tool" execution_type="manual" priority="P1" id="Crosswalk_Packer_Tool_AppPath">
         <description>
           <pre_condition>
@@ -493,6 +720,72 @@
           <test_script_entry>/opt/wrt-packertool-android-tests/packertool/Crosswalk_Packer_Tool_AppPath_NoName.html</test_script_entry>
         </description>
       </testcase>
+      <testcase purpose="Validate if the Packaging Tool enable set '0123456 ' name option" type="Functional" status="approved" component="Crosswalk Packer Tool" execution_type="manual" priority="P3" id="Crosswalk_Packer_Tool_AppPath_Name_SpecialChar1">
+        <description>
+          <pre_condition>
+            1.Make sure packer tool download;
+            2.Make sure got the Crosswalk Packaging Tool;
+            3.Make sure Crosswalk is installed.
+          </pre_condition>
+          <test_script_entry>/opt/wrt-packertool-android-tests/packertool/Crosswalk_Packer_Tool_AppPath_Name_SpecialChar1.html</test_script_entry>
+        </description>
+      </testcase>
+      <testcase purpose="Validate if the Packaging Tool enable set '()[]{}' name option" type="Functional" status="approved" component="Crosswalk Packer Tool" execution_type="manual" priority="P3" id="Crosswalk_Packer_Tool_AppPath_Name_SpecialChar2">
+        <description>
+          <pre_condition>
+            1.Make sure packer tool download;
+            2.Make sure got the Crosswalk Packaging Tool.
+          </pre_condition>
+          <test_script_entry>/opt/wrt-packertool-android-tests/packertool/Crosswalk_Packer_Tool_AppPath_Name_SpecialChar2.html</test_script_entry>
+        </description>
+      </testcase>
+      <testcase purpose="Validate if the Packaging Tool enable set ':?.|&lt;&gt;' name option" type="Functional" status="approved" component="Crosswalk Packer Tool" execution_type="manual" priority="P3" id="Crosswalk_Packer_Tool_AppPath_Name_SpecialChar3">
+        <description>
+          <pre_condition>
+            1.Make sure packer tool download;
+            2.Make sure got the Crosswalk Packaging Tool;
+            3.Make sure Crosswalk is installed.
+          </pre_condition>
+          <test_script_entry>/opt/wrt-packertool-android-tests/packertool/Crosswalk_Packer_Tool_AppPath_Name_SpecialChar3.html</test_script_entry>
+        </description>
+      </testcase>
+      <testcase purpose="Validate if the Packaging Tool enable set '&quot;name&quot;' name option" type="Functional" status="approved" component="Crosswalk Packer Tool" execution_type="manual" priority="P3" id="Crosswalk_Packer_Tool_AppPath_Name_SpecialChar4">
+        <description>
+          <pre_condition>
+            1.Make sure packer tool download;
+            2.Make sure got the Crosswalk Packaging Tool;
+            3.Make sure Crosswalk is installed.
+          </pre_condition>
+          <test_script_entry>/opt/wrt-packertool-android-tests/packertool/Crosswalk_Packer_Tool_AppPath_Name_SpecialChar4.html</test_script_entry>
+        </description>
+      </testcase>
+      <testcase purpose="Validate if the Packaging Tool enable set single quote in name option" type="Functional" status="approved" component="Crosswalk Packer Tool" execution_type="manual" priority="P3" id="Crosswalk_Packer_Tool_AppPath_Name_SpecialChar5">
+        <description>
+          <pre_condition>
+            1.Make sure packer tool download;
+            2.Make sure got the Crosswalk Packaging Tool.
+          </pre_condition>
+          <test_script_entry>/opt/wrt-packertool-android-tests/packertool/Crosswalk_Packer_Tool_AppPath_Name_SpecialChar5.html</test_script_entry>
+        </description>
+      </testcase>
+      <testcase purpose="Validate if the Packaging Tool enable set '!@#$%^&amp;*' name option" type="Functional" status="approved" component="Crosswalk Packer Tool" execution_type="manual" priority="P3" id="Crosswalk_Packer_Tool_AppPath_Name_SpecialChar6">
+        <description>
+          <pre_condition>
+            1.Make sure packer tool download;
+            2.Make sure got the Crosswalk Packaging Tool.
+          </pre_condition>
+          <test_script_entry>/opt/wrt-packertool-android-tests/packertool/Crosswalk_Packer_Tool_AppPath_Name_SpecialChar6.html</test_script_entry>
+        </description>
+      </testcase>
+      <testcase purpose="Validate if the Packaging Tool enable set '=+;,' name option" type="Functional" status="approved" component="Crosswalk Packer Tool" execution_type="manual" priority="P3" id="Crosswalk_Packer_Tool_AppPath_Name_SpecialChar7">
+        <description>
+          <pre_condition>
+            1.Make sure packer tool download;
+            2.Make sure got the Crosswalk Packaging Tool.
+          </pre_condition>
+          <test_script_entry>/opt/wrt-packertool-android-tests/packertool/Crosswalk_Packer_Tool_AppPath_Name_SpecialChar7.html</test_script_entry>
+        </description>
+      </testcase>
       <testcase purpose="Validate if the Packaging Tool enable set incorrect value of app-local-path option" type="Functional" status="approved" component="Crosswalk Packer Tool" execution_type="manual" priority="P3" id="Crosswalk_Packer_Tool_AppPath_NonExistFile">
         <description>
           <pre_condition>
@@ -509,6 +802,147 @@
             2.Make sure got the Crosswalk Packaging Tool.
           </pre_condition>
           <test_script_entry>/opt/wrt-packertool-android-tests/packertool/Crosswalk_Packer_Tool_AppPath_NoPackage.html</test_script_entry>
+        </description>
+      </testcase>
+      <testcase purpose="Validate if the Packaging Tool enable set 'negative' package option" type="Functional" status="approved" component="Crosswalk Packer Tool" execution_type="manual" priority="P3" id="Crosswalk_Packer_Tool_AppPath_Package_SpecialChar1">
+        <description>
+          <pre_condition>
+            1.Make sure packer tool download;
+            2.Make sure got the Crosswalk Packaging Tool;
+            3.Make sure Crosswalk is installed.
+          </pre_condition>
+          <test_script_entry>/opt/wrt-packertool-android-tests/packertool/Crosswalk_Packer_Tool_AppPath_Package_SpecialChar1.html</test_script_entry>
+        </description>
+      </testcase>
+      <testcase purpose="Validate if the Packaging Tool enable set 'negative.xwalk' package option" type="Functional" status="approved" component="Crosswalk Packer Tool" execution_type="manual" priority="P3" id="Crosswalk_Packer_Tool_AppPath_Package_SpecialChar2">
+        <description>
+          <pre_condition>
+            1.Make sure packer tool download;
+            2.Make sure got the Crosswalk Packaging Tool;
+            3.Make sure Crosswalk is installed.
+          </pre_condition>
+          <test_script_entry>/opt/wrt-packertool-android-tests/packertool/Crosswalk_Packer_Tool_AppPath_Package_SpecialChar2.html</test_script_entry>
+        </description>
+      </testcase>
+      <testcase purpose="Validate if the Packaging Tool enable set 'negative.001' package option" type="Functional" status="approved" component="Crosswalk Packer Tool" execution_type="manual" priority="P3" id="Crosswalk_Packer_Tool_AppPath_Package_SpecialChar3">
+        <description>
+          <pre_condition>
+            1.Make sure packer tool download;
+            2.Make sure got the Crosswalk Packaging Tool.
+          </pre_condition>
+          <test_script_entry>/opt/wrt-packertool-android-tests/packertool/Crosswalk_Packer_Tool_AppPath_Package_SpecialChar3.html</test_script_entry>
+        </description>
+      </testcase>
+      <testcase purpose="Validate if the Packaging Tool enable set 'negative.xwalk.001' package option" type="Functional" status="approved" component="Crosswalk Packer Tool" execution_type="manual" priority="P3" id="Crosswalk_Packer_Tool_AppPath_Package_SpecialChar4">
+        <description>
+          <pre_condition>
+            1.Make sure packer tool download;
+            2.Make sure got the Crosswalk Packaging Tool.
+          </pre_condition>
+          <test_script_entry>/opt/wrt-packertool-android-tests/packertool/Crosswalk_Packer_Tool_AppPath_Package_SpecialChar4.html</test_script_entry>
+        </description>
+      </testcase>
+      <testcase purpose="Validate if the Packaging Tool enable set 'negative.abc.def.ghi.jkl' package option" type="Functional" status="approved" component="Crosswalk Packer Tool" execution_type="manual" priority="P3" id="Crosswalk_Packer_Tool_AppPath_Package_SpecialChar5">
+        <description>
+          <pre_condition>
+            1.Make sure packer tool download;
+            2.Make sure got the Crosswalk Packaging Tool;
+            3.Make sure Crosswalk is installed.
+          </pre_condition>
+          <test_script_entry>/opt/wrt-packertool-android-tests/packertool/Crosswalk_Packer_Tool_AppPath_Package_SpecialChar5.html</test_script_entry>
+        </description>
+      </testcase>
+      <testcase purpose="Validate if the Packaging Tool enable set '123.456.789' package option" type="Functional" status="approved" component="Crosswalk Packer Tool" execution_type="manual" priority="P3" id="Crosswalk_Packer_Tool_AppPath_Package_SpecialChar6">
+        <description>
+          <pre_condition>
+            1.Make sure packer tool download;
+            2.Make sure got the Crosswalk Packaging Tool.
+          </pre_condition>
+          <test_script_entry>/opt/wrt-packertool-android-tests/packertool/Crosswalk_Packer_Tool_AppPath_Package_SpecialChar6.html</test_script_entry>
+        </description>
+      </testcase>
+      <testcase purpose="Validate if the Packaging Tool enable set 'xwalk . negative' package option" type="Functional" status="approved" component="Crosswalk Packer Tool" execution_type="manual" priority="P3" id="Crosswalk_Packer_Tool_AppPath_Package_SpecialChar7">
+        <description>
+          <pre_condition>
+            1.Make sure packer tool download;
+            2.Make sure got the Crosswalk Packaging Tool;
+            3.Make sure Crosswalk is installed.
+          </pre_condition>
+          <test_script_entry>/opt/wrt-packertool-android-tests/packertool/Crosswalk_Packer_Tool_AppPath_Package_SpecialChar7.html</test_script_entry>
+        </description>
+      </testcase>
+      <testcase purpose="Validate if the Packaging Tool enable set 'negative,xwalk' package option" type="Functional" status="approved" component="Crosswalk Packer Tool" execution_type="manual" priority="P3" id="Crosswalk_Packer_Tool_AppPath_Package_SpecialChar8">
+        <description>
+          <pre_condition>
+            1.Make sure packer tool download;
+            2.Make sure got the Crosswalk Packaging Tool.
+          </pre_condition>
+          <test_script_entry>/opt/wrt-packertool-android-tests/packertool/Crosswalk_Packer_Tool_AppPath_Package_SpecialChar8.html</test_script_entry>
+        </description>
+      </testcase>
+      <testcase purpose="Validate if the Packaging Tool enable set 'negative,.xwalk' package option" type="Functional" status="approved" component="Crosswalk Packer Tool" execution_type="manual" priority="P3" id="Crosswalk_Packer_Tool_AppPath_Package_SpecialChar9">
+        <description>
+          <pre_condition>
+            1.Make sure packer tool download;
+            2.Make sure got the Crosswalk Packaging Tool.
+          </pre_condition>
+          <test_script_entry>/opt/wrt-packertool-android-tests/packertool/Crosswalk_Packer_Tool_AppPath_Package_SpecialChar9.html</test_script_entry>
+        </description>
+      </testcase>
+      <testcase purpose="Validate if the Packaging Tool enable set 'negative....xwalk' package option" type="Functional" status="approved" component="Crosswalk Packer Tool" execution_type="manual" priority="P3" id="Crosswalk_Packer_Tool_AppPath_Package_SpecialChar10">
+        <description>
+          <pre_condition>
+            1.Make sure packer tool download;
+            2.Make sure got the Crosswalk Packaging Tool.
+          </pre_condition>
+          <test_script_entry>/opt/wrt-packertool-android-tests/packertool/Crosswalk_Packer_Tool_AppPath_Package_SpecialChar10.html</test_script_entry>
+        </description>
+      </testcase>
+      <testcase purpose="Validate if the Packaging Tool enable set '()[]{}.negative' package option" type="Functional" status="approved" component="Crosswalk Packer Tool" execution_type="manual" priority="P3" id="Crosswalk_Packer_Tool_AppPath_Package_SpecialChar11">
+        <description>
+          <pre_condition>
+            1.Make sure packer tool download;
+            2.Make sure got the Crosswalk Packaging Tool.
+          </pre_condition>
+          <test_script_entry>/opt/wrt-packertool-android-tests/packertool/Crosswalk_Packer_Tool_AppPath_Package_SpecialChar11.html</test_script_entry>
+        </description>
+      </testcase>
+      <testcase purpose="Validate if the Packaging Tool enable set ':?.|&lt;&gt;.negative' package option" type="Functional" status="approved" component="Crosswalk Packer Tool" execution_type="manual" priority="P3" id="Crosswalk_Packer_Tool_AppPath_Package_SpecialChar12">
+        <description>
+          <pre_condition>
+            1.Make sure packer tool download;
+            2.Make sure got the Crosswalk Packaging Tool;
+            3.Make sure Crosswalk is installed.
+          </pre_condition>
+          <test_script_entry>/opt/wrt-packertool-android-tests/packertool/Crosswalk_Packer_Tool_AppPath_Package_SpecialChar12.html</test_script_entry>
+        </description>
+      </testcase>
+      <testcase purpose="Validate if the Packaging Tool enable set single quote in package option" type="Functional" status="approved" component="Crosswalk Packer Tool" execution_type="manual" priority="P3" id="Crosswalk_Packer_Tool_AppPath_Package_SpecialChar13">
+        <description>
+          <pre_condition>
+            1.Make sure packer tool download;
+            2.Make sure got the Crosswalk Packaging Tool.
+          </pre_condition>
+          <test_script_entry>/opt/wrt-packertool-android-tests/packertool/Crosswalk_Packer_Tool_AppPath_Package_SpecialChar13.html</test_script_entry>
+        </description>
+      </testcase>
+      <testcase purpose="Validate if the Packaging Tool enable set '&quot;xwalk&quot;.&quot;negative&quot;' package option" type="Functional" status="approved" component="Crosswalk Packer Tool" execution_type="manual" priority="P3" id="Crosswalk_Packer_Tool_AppPath_Package_SpecialChar14">
+        <description>
+          <pre_condition>
+            1.Make sure packer tool download;
+            2.Make sure got the Crosswalk Packaging Tool;
+            3.Make sure Crosswalk is installed.
+          </pre_condition>
+          <test_script_entry>/opt/wrt-packertool-android-tests/packertool/Crosswalk_Packer_Tool_AppPath_Package_SpecialChar14.html</test_script_entry>
+        </description>
+      </testcase>
+      <testcase purpose="Validate if the Packaging Tool enable set '!@#$%^&amp;*.negative' package option" type="Functional" status="approved" component="Crosswalk Packer Tool" execution_type="manual" priority="P3" id="Crosswalk_Packer_Tool_AppPath_Package_SpecialChar15">
+        <description>
+          <pre_condition>
+            1.Make sure packer tool download;
+            2.Make sure got the Crosswalk Packaging Tool.
+          </pre_condition>
+          <test_script_entry>/opt/wrt-packertool-android-tests/packertool/Crosswalk_Packer_Tool_AppPath_Package_SpecialChar15.html</test_script_entry>
         </description>
       </testcase>
       <testcase purpose="Validate if the Packaging Tool enable set app-local-path and undefined options at the same time" type="Functional" status="approved" component="Crosswalk Packer Tool" execution_type="manual" priority="P3" id="Crosswalk_Packer_Tool_AppPath_UndefinedOption">
@@ -692,67 +1126,76 @@
           <test_script_entry>/opt/wrt-packertool-android-tests/packertool/Crosswalk_Packer_Tool_Manifest_UndefinedOption.html</test_script_entry>
         </description>
       </testcase>
-      <testcase purpose="Validate if the Packaging Tool manify js/css files without compressor option" type="Functional" status="approved" component="Crosswalk Packer Tool" execution_type="manual" priority="P1" id="Crosswalk_Packer_Tool_NoMinify">
+      <testcase purpose="Validate if the Packaging Tool manify js/css files without compressor option" type="Functional" status="approved" component="Crosswalk Packer Tool" execution_type="manual" priority="P1" id="Crosswalk_Packer_Tool_Compressor_NoMinify">
         <description>
           <pre_condition>
             1.Make sure packer tool download;
             2.Make sure got the Crosswalk Packaging Tool.
           </pre_condition>
-          <test_script_entry>/opt/wrt-packertool-android-tests/packertool/Crosswalk_Packer_Tool_NoMinify.html</test_script_entry>
+          <test_script_entry>/opt/wrt-packertool-android-tests/packertool/Crosswalk_Packer_Tool_Compressor_NoMinify.html</test_script_entry>
         </description>
       </testcase>
-      <testcase purpose="Validate if the Packaging Tool manify js/css files with compressor option" type="Functional" status="approved" component="Crosswalk Packer Tool" execution_type="manual" priority="P1" id="Crosswalk_Packer_Tool_Minify">
+      <testcase purpose="Validate if the Packaging Tool manify js/css files with compressor option" type="Functional" status="approved" component="Crosswalk Packer Tool" execution_type="manual" priority="P1" id="Crosswalk_Packer_Tool_Compressor_Minify">
         <description>
           <pre_condition>
             1.Make sure packer tool download;
             2.Make sure got the Crosswalk Packaging Tool.
           </pre_condition>
-          <test_script_entry>/opt/wrt-packertool-android-tests/packertool/Crosswalk_Packer_Tool_Minify.html</test_script_entry>
+          <test_script_entry>/opt/wrt-packertool-android-tests/packertool/Crosswalk_Packer_Tool_Compressor_Minify.html</test_script_entry>
         </description>
       </testcase>
-      <testcase purpose="Validate if the Packaging Tool manify js/css files with apppath and compressor options at the same time" type="Functional" status="approved" component="Crosswalk Packer Tool" execution_type="manual" priority="P2" id="Crosswalk_Packer_Tool_Minify_AppPath">
+      <testcase purpose="Validate if the Packaging Tool manify js/css files with apppath and compressor options at the same time" type="Functional" status="approved" component="Crosswalk Packer Tool" execution_type="manual" priority="P2" id="Crosswalk_Packer_Tool_Compressor_AppPath">
         <description>
           <pre_condition>
             1.Make sure packer tool download;
             2.Make sure got the Crosswalk Packaging Tool.
           </pre_condition>
-          <test_script_entry>/opt/wrt-packertool-android-tests/packertool/Crosswalk_Packer_Tool_Minify_AppPath.html</test_script_entry>
+          <test_script_entry>/opt/wrt-packertool-android-tests/packertool/Crosswalk_Packer_Tool_Compressor_AppPath.html</test_script_entry>
         </description>
       </testcase>
-      <testcase purpose="Validate if the Packaging Tool manify css files with compressor option" type="Functional" status="approved" component="Crosswalk Packer Tool" execution_type="manual" priority="P1" id="Crosswalk_Packer_Tool_MinifyCss">
+      <testcase purpose="Validate if the Packaging Tool manify css files with compressor option" type="Functional" status="approved" component="Crosswalk Packer Tool" execution_type="manual" priority="P1" id="Crosswalk_Packer_Tool_Compressor_MinifyCss">
         <description>
           <pre_condition>
             1.Make sure packer tool download;
             2.Make sure got the Crosswalk Packaging Tool.
           </pre_condition>
-          <test_script_entry>/opt/wrt-packertool-android-tests/packertool/Crosswalk_Packer_Tool_MinifyCss.html</test_script_entry>
+          <test_script_entry>/opt/wrt-packertool-android-tests/packertool/Crosswalk_Packer_Tool_Compressor_MinifyCss.html</test_script_entry>
         </description>
       </testcase>
-      <testcase purpose="Validate if the Packaging Tool manify js files with compressor option" type="Functional" status="approved" component="Crosswalk Packer Tool" execution_type="manual" priority="P1" id="Crosswalk_Packer_Tool_MinifyJs">
+      <testcase purpose="Validate if the Packaging Tool manify js files with compressor option" type="Functional" status="approved" component="Crosswalk Packer Tool" execution_type="manual" priority="P1" id="Crosswalk_Packer_Tool_Compressor_MinifyJs">
         <description>
           <pre_condition>
             1.Make sure packer tool download;
             2.Make sure got the Crosswalk Packaging Tool.
           </pre_condition>
-          <test_script_entry>/opt/wrt-packertool-android-tests/packertool/Crosswalk_Packer_Tool_MinifyJs.html</test_script_entry>
+          <test_script_entry>/opt/wrt-packertool-android-tests/packertool/Crosswalk_Packer_Tool_Compressor_MinifyJs.html</test_script_entry>
         </description>
       </testcase>
-      <testcase purpose="Validate if the Packaging Tool manify js/css files with error value of compressor option" type="Functional" status="approved" component="Crosswalk Packer Tool" execution_type="manual" priority="P3" id="Crosswalk_Packer_Tool_MinifyError">
+      <testcase purpose="Validate if the Packaging Tool manify js/css files with error value of compressor option" type="Functional" status="approved" component="Crosswalk Packer Tool" execution_type="manual" priority="P3" id="Crosswalk_Packer_Tool_Compressor_MinifyError">
         <description>
           <pre_condition>
             1.Make sure packer tool download;
             2.Make sure got the Crosswalk Packaging Tool.
           </pre_condition>
-          <test_script_entry>/opt/wrt-packertool-android-tests/packertool/Crosswalk_Packer_Tool_MinifyError.html</test_script_entry>
+          <test_script_entry>/opt/wrt-packertool-android-tests/packertool/Crosswalk_Packer_Tool_Compressor_MinifyError.html</test_script_entry>
         </description>
       </testcase>
-      <testcase purpose="Validate if the Packaging Tool works well with compressor option" type="Functional" status="approved" component="Crosswalk Packer Tool" execution_type="manual" priority="P3" id="Crosswalk_Packer_Tool_Minify_Twice">
+      <testcase purpose="Validate if the Packaging Tool works well with compressor option" type="Functional" status="approved" component="Crosswalk Packer Tool" execution_type="manual" priority="P3" id="Crosswalk_Packer_Tool_Compressor_MinifyTwice">
         <description>
           <pre_condition>
             1.Make sure packer tool download;
             2.Make sure got the Crosswalk Packaging Tool.
           </pre_condition>
-          <test_script_entry>/opt/wrt-packertool-android-tests/packertool/Crosswalk_Packer_Tool_Minify_Twice.html</test_script_entry>
+          <test_script_entry>/opt/wrt-packertool-android-tests/packertool/Crosswalk_Packer_Tool_Compressor_MinifyTwice.html</test_script_entry>
+        </description>
+      </testcase>
+      <testcase purpose="Validate if the Packaging Tool works well with special characters in compressor option" type="Functional" status="approved" component="Crosswalk Packer Tool" execution_type="manual" priority="P3" id="Crosswalk_Packer_Tool_Compressor_SpecialChar">
+        <description>
+          <pre_condition>
+            1.Make sure packer tool download;
+            2.Make sure got the Crosswalk Packaging Tool.
+          </pre_condition>
+          <test_script_entry>/opt/wrt-packertool-android-tests/packertool/Crosswalk_Packer_Tool_Compressor_SpecialChar.html</test_script_entry>
         </description>
       </testcase>
       <testcase purpose="Validate if the Packaging Tool works well with the 'arm' arch and app-version options" type="Functional" status="approved" component="Crosswalk Packer Tool" execution_type="manual" priority="P1" id="Crosswalk_Packer_Tool_AppVersion_ARM">
@@ -823,6 +1266,42 @@
             3.Make sure Crosswalk is installed.
           </pre_condition>
           <test_script_entry>/opt/wrt-packertool-android-tests/packertool/Crosswalk_Packer_Tool_AppVersion_DiffUpdate.html</test_script_entry>
+        </description>
+      </testcase>
+      <testcase purpose="Validate if the Packaging Tool works well with absolute path in target-dir option" type="Functional" status="approved" component="Crosswalk Packer Tool" execution_type="manual" priority="P1" id="Crosswalk_Packer_Tool_TargetDir_AbsolutePath">
+        <description>
+          <pre_condition>
+            1.Make sure packer tool download;
+            2.Make sure got the Crosswalk Packaging Tool.
+          </pre_condition>
+          <test_script_entry>/opt/wrt-packertool-android-tests/packertool/Crosswalk_Packer_Tool_TargetDir_AbsolutePath.html</test_script_entry>
+        </description>
+      </testcase>
+      <testcase purpose="Validate if the Packaging Tool works well with relative path in target-dir option" type="Functional" status="approved" component="Crosswalk Packer Tool" execution_type="manual" priority="P2" id="Crosswalk_Packer_Tool_TargetDir_RelativePath">
+        <description>
+          <pre_condition>
+            1.Make sure packer tool download;
+            2.Make sure got the Crosswalk Packaging Tool.
+          </pre_condition>
+          <test_script_entry>/opt/wrt-packertool-android-tests/packertool/Crosswalk_Packer_Tool_TargetDir_RelativePath.html</test_script_entry>
+        </description>
+      </testcase>
+      <testcase purpose="Validate if the Packaging Tool works well with non-exist path in target-dir option" type="Functional" status="approved" component="Crosswalk Packer Tool" execution_type="manual" priority="P3" id="Crosswalk_Packer_Tool_TargetDir_NonExistPath">
+        <description>
+          <pre_condition>
+            1.Make sure packer tool download;
+            2.Make sure got the Crosswalk Packaging Tool.
+          </pre_condition>
+          <test_script_entry>/opt/wrt-packertool-android-tests/packertool/Crosswalk_Packer_Tool_TargetDir_NonExistPath.html</test_script_entry>
+        </description>
+      </testcase>
+      <testcase purpose="Validate if the Packaging Tool works well with verbose option" type="Functional" status="approved" component="Crosswalk Packer Tool" execution_type="manual" priority="P1" id="Crosswalk_Packer_Tool_Verbose">
+        <description>
+          <pre_condition>
+            1.Make sure packer tool download;
+            2.Make sure got the Crosswalk Packaging Tool.
+          </pre_condition>
+          <test_script_entry>/opt/wrt-packertool-android-tests/packertool/Crosswalk_Packer_Tool_Verbose.html</test_script_entry>
         </description>
       </testcase>
     </set>
