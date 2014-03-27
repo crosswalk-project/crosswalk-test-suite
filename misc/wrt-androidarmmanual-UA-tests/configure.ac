@@ -1,4 +1,4 @@
-AC_INIT([wrt-androidarmmanual-UA-tests], [5.34.1.3], [zhiqiang.zhang@intel.com])
+AC_INIT([wrt-androidarmmanual-UA-tests], [6.34.1.1], [zhiqiang.zhang@intel.com])
 AM_INIT_AUTOMAKE([-Wall -Werror foreign])
 
 AC_CONFIG_FILES([Makefile \
