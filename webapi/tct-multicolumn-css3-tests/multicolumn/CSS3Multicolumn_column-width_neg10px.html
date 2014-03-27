@@ -57,9 +57,10 @@ Authors:
         var div = document.querySelector("#test");
         var t = async_test(document.title, {timeout: 500});
         t.step(function () {
+            var originalPropValue = GetCurrentStyle("column-width");
             div.style[headProp("column-width")] = "-10px";
-            var colwidth = GetCurrentStyle("column-width");
-            assert_equals(colwidth, "-10px", "The div column-width");
+            var propValue = GetCurrentStyle("column-width");
+            assert_equals(propValue, originalPropValue, "column-width can not be negative");
         });
         t.done();
     </script>
