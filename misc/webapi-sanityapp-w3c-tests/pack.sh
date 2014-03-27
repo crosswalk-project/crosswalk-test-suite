@@ -67,7 +67,7 @@ function create_wgt(){
     cp -af $BUILD_ROOT/index.html $BUILD_DEST/
     cp -af $BUILD_ROOT/config.xml $BUILD_DEST/
     cp -af $BUILD_ROOT/icon.png $BUILD_DEST/
-    cp -af $BUILD_ROOT/tests.xml $BUILD_DEST/
+    cp -af $BUILD_ROOT/tests.tizen.xml $BUILD_DEST/tests.xml
     cp -af $BUILD_ROOT/js $BUILD_DEST/
     cp -af $BUILD_ROOT/css $BUILD_DEST/
     cp -af $BUILD_ROOT/tests $BUILD_DEST/
@@ -172,7 +172,7 @@ function zip_for_wgt(){
     cd $BUILD_DEST
     # cp inst.sh script and tests.xml #
     cp -af $BUILD_ROOT/inst.sh.wgt $BUILD_DEST/opt/$name/inst.sh
-    cp -af $BUILD_ROOT/tests.xml $BUILD_DEST/opt/$name/tests.xml
+    cp -af $BUILD_ROOT/tests.tizen.xml $BUILD_DEST/opt/$name/tests.xml
 
     # cp license files #
     cp -af $BUILD_ROOT/LICENSE.BSD-3 $BUILD_DEST/opt/$name/LICENSE.BSD-3
