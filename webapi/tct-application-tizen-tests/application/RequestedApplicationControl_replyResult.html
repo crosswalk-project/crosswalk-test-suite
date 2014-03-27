@@ -60,7 +60,9 @@ setup_launch(t, TCT_APPCONTROL_APPID, function () {
         })
     };
 
-    tizen.application.launchAppControl(appControl, null, null, onerror, replyCallback);
+    // In webkit default onerror is null. In Blink it is undefined API checks for undefined value.
+    // Therefore test will never pass on Blink unless it changed to null.
+    tizen.application.launchAppControl(appControl, null, null, null, replyCallback);
 });
 
 </script>
