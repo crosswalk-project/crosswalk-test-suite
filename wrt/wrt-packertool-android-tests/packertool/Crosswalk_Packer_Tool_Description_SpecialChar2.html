@@ -33,7 +33,7 @@ Authors:
 <html>
   <head>
     <meta charset='utf-8'>
-    <title>Crosswalk_Packer_Tool_Minify_Twice</title>
+    <title>Crosswalk_Packer_Tool_Description_SpecialChar2</title>
     <link rel="author" title="Intel" href="http://www.intel.com">
   </head>
   <body>
@@ -41,25 +41,19 @@ Authors:
       <strong>Test steps:</strong>
     </p>
     <ol>
-      <li>Package the "packer_tool_minify_tests" webapp with compressor option, command like: python make_apk.py --manifest=/path/to/packer_tool_minify_tests/manifest.json --compressor</li>
+      <li>Package an web app with description option, command like: python make_apk.py --name=xxxx --package=xxxx.xwalk.org --app-root=app_path --app-local-path=index.html --description="0123456()[]{}-_=+:;,./?|"</li>
       <li>Check the packaging tool folder</li>
-      <li>Remove the generated "packer_tool_minify_tests" folder in packaging tool folder</li>
-      <li>Package the "packer_tool_minify_tests" webapp without compressor option, command like: python make_apk.py --manifest=/path/to/packer_tool_minify_tests/manifest.json</li>
-      <li>Check the packaging tool folder</li>
-      <li>Check the files of script.js,style.css in packer_tool_minify_tests/assets/www/resource/</li>
-      <li>Compare the two files with the original files which in /path/to/packer_tool_minify_tests/resource/</li>
+      <li>Check the value of "android:description" in app folder/AndroidManifest.xml</li>
+      <li>Check the description in variable path (mostly in app folder/res/values/string.xml)</li>
     </ol>
     <p>
       <strong>Expected Output:</strong>
     </p>
     <ol>
       <li>Apk could be created correctly</li>
-      <li>There generated an "packer_tool_minify_tests" folder</li>
-      <li>The "packer_tool_minify_tests" folder removed successfully</li>
-      <li>Apk could be created correctly</li>
-      <li>There generated an "packer_tool_minify_tests" folder</li>
-      <li>There are script.js,style.css files</li>
-      <li>Both the files' contents are the same</li>
+      <li>There generated an app folder</li>
+      <li>There is variable path for description</li>
+      <li>The description of the webapp is: 0123456()[]{}-_=+:;,./?|</li>
     </ol>
   </body>
 </html>

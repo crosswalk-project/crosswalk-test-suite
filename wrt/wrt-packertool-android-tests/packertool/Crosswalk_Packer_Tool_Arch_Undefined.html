@@ -33,7 +33,7 @@ Authors:
 <html>
   <head>
     <meta charset='utf-8'>
-    <title>Crosswalk_Packer_Tool_MinifyError</title>
+    <title>Crosswalk_Packer_Tool_Arch_Undefined</title>
     <link rel="author" title="Intel" href="http://www.intel.com">
   </head>
   <body>
@@ -41,13 +41,17 @@ Authors:
       <strong>Test steps:</strong>
     </p>
     <ol>
-      <li>Package the "packer_tool_minify_tests" webapp with compressor option, command like: python make_apk.py --manifest=/path/to/packer_tool_minify_tests/manifest.json --compressor=error:</li>
+      <li>Package an web app with 'undefined' arch, command like: python make_apk.py --name=xxxx --package=xxxx.xwalk.org --app-root=app_path --app-local-path=index.html --arch=undefined</li>
+      <li>Install the apk packaged</li>
+      <li>Launch the webapp</li>
     </ol>
     <p>
       <strong>Expected Output:</strong>
     </p>
     <ol>
-      <li>Packaging failed. The error info like: --compressor option does not take a value.</li>
+      <li>Apk could be created correctly</li>
+      <li>Web app could be installed successfully</li>
+      <li>Web app launched failed, the error info like: Mismatch on process architecture between Crosswalk</li>
     </ol>
   </body>
 </html>
