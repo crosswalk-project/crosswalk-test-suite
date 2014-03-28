@@ -124,7 +124,7 @@ function updateFooter() {
   $(':jqmData(role=footer)').find(':jqmData(role=button) > span:first-child').css('padding', '15px 10px 15px 30px');
 }
 
-function launchMain() {
+function launchMain(node) {
   if ($("#home_ui").find("div").length > 0) {
     updateList();
     $.mobile.changePage("#home_ui", {
@@ -132,6 +132,11 @@ function launchMain() {
       'transition' : 'slide',
       'reverse' : true
     });
+    if (node != "") {
+      $("html,body").animate({
+        scrollTop:$("h2:contains(" + node +")").offset().top - 25
+      }, 500);
+    }
   } else {
     $.mobile.changePage("#main", {
       'allowSamePageTransition' : true,
