@@ -44,31 +44,58 @@ Authors:
     <div id="log"></div>
     <script>
 
+      var t = async_test("Check If the candidate parameter is malformed will throw a SyntaxError exception");
+      var t1 = async_test("Check if the setting of RTCPeerConnection.createDTMFSender is normally", {timeout: 5000});
+
       var pc;
+      var pc1;
+      var pc2;
 
       setup(function () {
-        var configuration = { "iceServers": [{ "url": "stun:stun.example.org" }] };
+        var configuration = {"iceServers": [{"url": "stun:stun.example.org"}]};
         pc = new RTCPeerConnection(configuration);
+        pc1 = new RTCPeerConnection(configuration);
+        pc2 = new RTCPeerConnection(configuration);
       });
 
-      test(function () {
-        assert_throws("NotSupportedError",
+      t.step(function () {
+        assert_throws("SyntaxError",
           function () {
             var initializer = {candidate:"nano nano"};
             var candidate = new RTCIceCandidate(initializer);
-            failureCallback = function(error){
-              assert_unreached("Error message: {" + error.message + " }");
-            };
-            pc.addIceCandidate(candidate, function(){
-              assert_true("the method of addIceCandidate is valid");
-            }, failureCallback);
-          },
-          "DOM Exception 9"
-        );
-      }, "Check if the method of addIceCandidate is valid");
+            pc1.addIceCandidate(candidate, t.step_func(function (ev) {
+              t.done();
+            }), function (error) {
+              t.step(function () {
+                assert_unreached("Error message: {" + error.message + "}");
+              });
+              t.done();
+            });
+          },"the candidate parameter is malformed throw a exception");
+      });
+
+      t1.step(function () {
+        navigator.webkitGetUserMedia({audio: true, video: true}, gotStream, error);
+      });
+
+      function gotStream(stream) {
+        pc2.addStream(stream);
+        var s = pc2.createDTMFSender(stream.getAudioTracks()[0]);
+        t1.step(function () {
+          assert_equals(Object.prototype.toString.call(s), "[object RTCDTMFSender]", "the value of RTCPeerConnection.createDTMFSender");
+        });
+        t1.done();
+      }
+
+      function error() {
+        t1.step(function () {
+          assert_unreached("Stream generation failed.");
+        });
+        t1.done();
+      }
 
       test(function () {
-        var cg = { "iceServers": [{ "url": "stun:stun.example.org" }] };
+        var cg = {"iceServers": [{"url": "stun:stun.example.org"}]};
         var rc = new RTCPeerConnection(cg);
         rc.close();
         assert_equals(rc.iceConnectionState, "closed", "the pc.close()");
@@ -78,13 +105,6 @@ Authors:
         var dc = pc.createDataChannel("label");
         assert_equals(Object.prototype.toString.call(dc), "[object RTCDataChannel]", "the RTCPeerConnection.createDataChannel");
       }, "Check if the method of RTCPeerConnection.createDataChannel is right");
-
-      test(function () {
-        var stream = null;
-        var stack = stream.getAudioTracks()[0];
-        var s = pc.createDTMFSender(stack);
-        assert_not_equals(s, null, "the value of RTCPeerConnection.createDTMFSender");
-      }, "Check if the setting of RTCPeerConnection.createDTMFSender is normally");
 
       test(function () {
         assert_equals(pc.getLocalStreams.length, 0, "the value of RTCPeerConnection.getLocalStreams");
@@ -114,6 +134,7 @@ Authors:
         pc.close();
         assert_equals(pc.signalingState, "closed", "the init value of RTCPeerConnection.signalingState");
       }, "Check if when the close() method is invoked, the signalingState value is closed");
+
     </script>
   </body>
 </html>

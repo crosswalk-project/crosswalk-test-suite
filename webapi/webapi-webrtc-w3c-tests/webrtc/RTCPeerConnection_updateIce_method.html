@@ -44,18 +44,12 @@ Authors:
     <div id="log"></div>
     <script>
       test(function () {
-        var configuration = { "iceServers": [{ "url": "stun:stun.example.org" }] };
+        var configuration = {"iceServers": [{"url": "stun:stun.example.org"}]};
         pc = new RTCPeerConnection(configuration);
-        RTCDataChannel = pc.createDataChannel("label");
         assert_throws("SyntaxError",
           function () {
-            pc.onicechang = function onIceChange(){
-              pc.oniicandidate = onIceCandidate;
-              pc.addIceCandidate(new RTCIceCandidate({candidate:"nano nano"}));
-              pc.updateIce();
-            }
-          },
-          "DOM Exception 12");
+            pc.updateIce(1);
+          }, "DOM Exception 12");
       }, "Check if the method of updateIce is valid");
     </script>
   </body>

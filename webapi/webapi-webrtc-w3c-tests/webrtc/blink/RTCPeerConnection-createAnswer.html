@@ -13,45 +13,49 @@ https://github.com/crosswalk-project/blink-crosswalk/blob/master/LayoutTests/fas
 <div id=log></div>
 <script>
 
-var t = async_test();
+var t = async_test(document.title);
+
 var pc = new webkitRTCPeerConnection(null, null);
 
 function requestFailed3(reason) {
   t.step(function () {
-    assert_unreached("createAnswer request failed.");
+    assert_unreached("createAnswer request failed");
   });
-  t.done();
-}
-
-function requestSucceeded3() {
   t.done();
 }
 
 function requestFailed2(reason) {
   t.step(function () {
-    assert_unreached("setRemoteDescription request failed.");
+    assert_unreached("setRemoteDescription request failed");
   });
   t.done();
 }
 
 function requestSucceeded2() {
-  test(function() {
-    pc.createAnswer(requestSucceeded3, requestFailed3);
-  }, "the method of createAnswer has no exception throw");
+  t.step(function () {
+    pc.createAnswer(t.step_func(function (eve) {
+      t.done();
+    }), requestFailed3);
+  });
 }
 
 function requestFailed1() {
-  sessionDescription = new RTCSessionDescription({type:"answer", sdp:"remote"});
-  test(function() {
+  sessionDescription = new RTCSessionDescription({type: "answer", sdp: "remote"});
+  t.step(function () {
     pc.setRemoteDescription(sessionDescription, requestSucceeded2, requestFailed2);
-  }, "the method of setRemoteDescription has no exception throw");
+  });
 }
 
 function requestSucceeded1(sd) {
+  t.step(function () {
+    assert_unreached("createOffer request succeeded");
+  });
   t.done();
 }
-pc.createOffer(requestSucceeded1, requestFailed1);
-t.done();
+
+t.step(function () {
+  pc.createOffer(requestSucceeded1, requestFailed1);
+});
 
 </script>
 

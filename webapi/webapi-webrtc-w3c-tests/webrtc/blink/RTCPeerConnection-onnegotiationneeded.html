@@ -13,10 +13,10 @@ https://github.com/crosswalk-project/blink-crosswalk/blob/master/LayoutTests/fas
 <div id=log></div>
 <script>
 
+var t = async_test(document.title);
+
 var stream = null;
 var pc = null;
-
-var t = async_test(document.title);
 
 function error() {
   t.step(function () {
@@ -26,24 +26,21 @@ function error() {
 }
 
 function getUserMedia(dictionary, callback) {
+  pc = new webkitRTCPeerConnection(null, null);
+  pc.onnegotiationneeded = t.step_func(function (event) {
+    t.done();
+  });
   t.step(function () {
     navigator.webkitGetUserMedia(dictionary, callback, error);
   });
 }
 
-function onNegotiationNeeded(event) {
-  t.done();
-}
-
 function gotStream(s) {
   stream = s;
-  pc = new webkitRTCPeerConnection(null, null);
-  pc.onnegotiationneeded = onNegotiationNeeded;
-
   pc.addStream(stream);
 }
+
 getUserMedia({audio:true, video:true}, gotStream);
-t.done();
 
 </script>
 

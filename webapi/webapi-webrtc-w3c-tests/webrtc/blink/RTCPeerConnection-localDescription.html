@@ -13,11 +13,65 @@ https://github.com/crosswalk-project/blink-crosswalk/blob/master/LayoutTests/fas
 <div id=log></div>
 <script>
 
-var pc = null;
-
 var t = async_test(document.title);
 
+var pc = null;
+var pc2 = null;
+var pc1_offer;
+
+function requestSucceeded1 (offer) {
+  pc1_offer = offer;
+  t.step(function() {
+    pc.setLocalDescription(offer, requestSucceeded2, requestFailed2);
+  });
+}
+
+function requestFailed1 () {
+  t.step(function () {
+    assert_unreached("requestFailed1 was called");
+  });
+  t.done();
+}
+
+function requestSucceeded2() {
+  pc2 = new webkitRTCPeerConnection(null, null);
+  pc2.setRemoteDescription(pc1_offer, requestSucceeded3, requestFailed3);
+}
+
 function requestFailed2() {
+  t.step(function () {
+    assert_unreached("requestFailed2 was called");
+  });
+  t.done();
+}
+
+function requestSucceeded3 () {
+  pc2.createAnswer(requestSucceeded4, requestFailed4);
+}
+
+function requestFailed3 () {
+    t.step(function () {
+      assert_unreached("requestFailed3 was called");
+    });
+    t.done();
+}
+
+function requestSucceeded4 (answer) {
+  t.step(function() {
+    pc2.setLocalDescription(answer, t.step_func(function (ev) {
+      t.done();
+    }), requestFailed5);
+  });
+}
+
+function requestFailed4 () {
+  t.step(function () {
+    assert_unreached("requestFailed4 was called");
+  });
+  t.done();
+}
+
+function requestFailed5() {
   t.step(function () {
     assert_equals(pc.localDescription.type, "offer");
     assert_equals(pc.localDescription.sdp, "local");
@@ -28,33 +82,10 @@ function requestFailed2() {
   t.done();
 }
 
-function requestSucceeded2() {
-  t.step(function () {
-    assert_unreached("requestSucceeded was called.");
-  });
-  t.done();
-}
-
-function requestFailed1() {
-  t.step(function () {
-    assert_unreached("requestFailed was called.");
-  });
-  t.done();
-}
-
-function requestSucceeded1() {
-  sessionDescription = new RTCSessionDescription({type:"answer", sdp:"remote"});
-  t.step(function () {
-    pc.setLocalDescription(sessionDescription, requestSucceeded2, requestFailed2);
-  });
-}
-
-pc = new webkitRTCPeerConnection(null, null);
-var sessionDescription = new RTCSessionDescription({type:"offer", sdp:"local"});
-
-test(function() {
-  pc.setLocalDescription(sessionDescription, requestSucceeded1, requestFailed1);
-}, "Test RTCPeerConnection.setLocalDescription()");
+t.step(function() {
+  pc = new webkitRTCPeerConnection(null, null);
+  pc.createOffer(requestSucceeded1, requestFailed1);
+});
 
 </script>
 
