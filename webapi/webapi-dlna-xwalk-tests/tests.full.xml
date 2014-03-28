@@ -1,0 +1,104 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-stylesheet type="text/xsl" href="./testcase.xsl"?>
+<test_definition>
+  <suite name="webapi-dlna-xwalk-tests" launcher="xwalk" category="Media Server API">
+    <set name="dlna">
+      <testcase purpose="Check if scanNetwork exist in MediaServerManager." type="compliance" status="approved" component="WebAPI/Media Server API/DLNA" execution_type="auto" priority="P1" id="MediaServerManager_scanNetwork_exist">
+        <description>
+          <test_script_entry>/opt/webapi-dlna-xwalk-tests/dlna/MediaServerManager_scanNetwork_exist.html</test_script_entry>
+        </description>
+        <specs>
+          <spec>
+            <spec_assertion element_type="method" element_name="scanNetwork" interface="MediaServerManager" specification="DLNA" section="W3C API Specifications" category="Media Server API"/>
+            <spec_url>http://01org.github.io/cloud-dleyna/mediaserver.html</spec_url>
+            <spec_statement/>
+          </spec>
+        </specs>
+      </testcase>
+      <testcase purpose="Check if MediaServerManager exist in window." type="compliance" status="approved" component="WebAPI/Media Server API/DLNA" execution_type="auto" priority="P1" id="MediaServerManager_exist">
+        <description>
+          <test_script_entry>/opt/webapi-dlna-xwalk-tests/dlna/MediaServerManager_exist.html</test_script_entry>
+        </description>
+        <specs>
+          <spec>
+            <spec_assertion element_type="interface" element_name="MediaServerManager" interface="MediaServerManager" specification="DLNA" section="W3C API Specifications" category="Media Server API"/>
+            <spec_url>http://01org.github.io/cloud-dleyna/mediaserver.html</spec_url>
+            <spec_statement/>
+          </spec>
+        </specs>
+      </testcase>
+      <testcase purpose="Check if mediaServer exists in tizen." type="compliance" status="approved" component="WebAPI/Media Server API/DLNA" execution_type="auto" priority="P1" id="Navigator_mediaServer_exist">
+        <description>
+          <test_script_entry>/opt/webapi-dlna-xwalk-tests/dlna/Navigator_mediaServer_exist.html</test_script_entry>
+        </description>
+        <specs>
+          <spec>
+            <spec_assertion element_type="attribute" element_name="mediaServer" interface="Navigator" specification="DLNA" section="W3C API Specifications" category="Media Server API"/>
+            <spec_url>http://01org.github.io/cloud-dleyna/mediaserver.html</spec_url>
+            <spec_statement/>
+          </spec>
+        </specs>
+      </testcase>
+      <testcase purpose="Check if MediaServer has id attribute with proper type, not null, readonly." type="compliance" status="approved" component="WebAPI/Media Server API/DLNA" execution_type="auto" priority="P1" id="MediaServer_id_attribute">
+        <description>
+          <test_script_entry>/opt/webapi-dlna-xwalk-tests/dlna/MediaServer_id_attribute.html</test_script_entry>
+        </description>
+        <specs>
+          <spec>
+            <spec_assertion element_type="attribute" element_name="id" interface="MediaServer" specification="DLNA" section="W3C API Specifications" category="Media Server API"/>
+            <spec_url>http://01org.github.io/cloud-dleyna/mediaserver.html</spec_url>
+            <spec_statement/>
+          </spec>
+        </specs>
+      </testcase>
+      <testcase purpose="Check if MediaServer has friendlyName attribute with proper type, not null, readonly." type="compliance" status="approved" component="WebAPI/Media Server API/DLNA" execution_type="auto" priority="P1" id="MediaServer_friendlyName_attribute">
+        <description>
+          <test_script_entry>/opt/webapi-dlna-xwalk-tests/dlna/MediaServer_friendlyName_attribute.html</test_script_entry>
+        </description>
+        <specs>
+          <spec>
+            <spec_assertion element_type="attribute" element_name="friendlyName" interface="MediaServer" specification="DLNA" section="W3C API Specifications" category="Media Server API"/>
+            <spec_url>http://01org.github.io/cloud-dleyna/mediaserver.html</spec_url>
+            <spec_statement/>
+          </spec>
+        </specs>
+      </testcase>
+      <testcase purpose="Check if MediaServer has root attribute with proper type, not null, readonly." type="compliance" status="approved" component="WebAPI/Media Server API/DLNA" execution_type="auto" priority="P1" id="MediaServer_root_attribute">
+        <description>
+          <test_script_entry>/opt/webapi-dlna-xwalk-tests/dlna/MediaServer_root_attribute.html</test_script_entry>
+        </description>
+        <specs>
+          <spec>
+            <spec_assertion element_type="attribute" element_name="root" interface="MediaServer" specification="DLNA" section="W3C API Specifications" category="Media Server API"/>
+            <spec_url>http://01org.github.io/cloud-dleyna/mediaserver.html</spec_url>
+            <spec_statement/>
+          </spec>
+        </specs>
+      </testcase>
+      <testcase purpose="Check if browse method exists in MediaServer." type="compliance" status="approved" component="WebAPI/Media Server API/DLNA" execution_type="auto" priority="P1" id="MediaServer_browse_exist">
+        <description>
+          <test_script_entry>/opt/webapi-dlna-xwalk-tests/dlna/MediaServer_browse_exist.html</test_script_entry>
+        </description>
+        <specs>
+          <spec>
+            <spec_assertion element_type="method" element_name="browse" interface="MediaServer" specification="DLNA" section="W3C API Specifications" category="Media Server API"/>
+            <spec_url>http://01org.github.io/cloud-dleyna/mediaserver.html</spec_url>
+            <spec_statement/>
+          </spec>
+        </specs>
+      </testcase>
+      <testcase purpose="Check if find method exists in MediaServer." type="compliance" status="approved" component="WebAPI/Media Server API/DLNA" execution_type="auto" priority="P1" id="MediaServer_find_exist">
+        <description>
+          <test_script_entry>/opt/webapi-dlna-xwalk-tests/dlna/MediaServer_find_exist.html</test_script_entry>
+        </description>
+        <specs>
+          <spec>
+            <spec_assertion element_type="method" element_name="find" interface="MediaServer" specification="DLNA" section="W3C API Specifications" category="Media Server API"/>
+            <spec_url>http://01org.github.io/cloud-dleyna/mediaserver.html</spec_url>
+            <spec_statement/>
+          </spec>
+        </specs>
+      </testcase>
+    </set>
+  </suite>
+</test_definition>
