@@ -48,7 +48,12 @@ function getAppName() {
 }
 
 function backAppsHome() {
-  window.parent.launchMain();
+  if (document.getElementById("wgt_name")) {
+    test = $("#wgt_name").attr("value");
+  } else {
+    test = document.title;
+  }
+  window.parent.launchMain(test);
 }
 
 function reportResult(res) {
@@ -117,5 +122,4 @@ $(document).bind('pagecreate', function () {
   var maxHeight = $(window).height() - 100 + "px";
   $("#popup_info").css("max-height", maxHeight);
   $("#popup_info").css("margin-bottom", "30px");
-  $("#popup_info").css("overflow-y", "auto");
 });
