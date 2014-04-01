@@ -21,26 +21,42 @@ RESOURCE_DIR=/opt/usr/media
 
 function installpkg(){
     xwalkctl --install $(dirname $0)/$XPKNAME
-    xwalkctl --install $(dirname $0)/$SUBXPK1
-    xwalkctl --install $(dirname $0)/$SUBXPK2
-    xwalkctl --install $(dirname $0)/$SUBXPK3
-    xwalkctl --install $(dirname $0)/$SUBXPK4
+    xwalkctl --install $(dirname $0)/$XPKNAME
+    xwalkctl --install $(dirname $0)/$XPKNAME
+    xwalkctl --install $(dirname $0)/$XPKNAME
+    xwalkctl --install $(dirname $0)/$XPKNAME
 
     #TODO: copy resource
     #eg:cp xx $RESOURCE_DIR
 }
 
 function uninstallpkg(){
-    pkgid=`pkgcmd -l | grep $PACKAGENAME | cut -d '[' -f3 | cut -d ']' -f1`
-    subpkgid1=`pkgcmd -l | grep $SUBPACKAGENAME1 | cut -d '[' -f3 | cut -d ']' -f1`
-    subpkgid2=`pkgcmd -l | grep $SUBPACKAGENAME2 | cut -d '[' -f3 | cut -d ']' -f1`
-    subpkgid3=`pkgcmd -l | grep $SUBPACKAGENAME3 | cut -d '[' -f3 | cut -d ']' -f1`
-    subpkgid4=`pkgcmd -l | grep $SUBPACKAGENAME4 | cut -d '[' -f3 | cut -d ']' -f1`
-    xwalkctl --uninstall $pkgid
-    xwalkctl --uninstall $subpkgid1
-    xwalkctl --uninstall $subpkgid2
-    xwalkctl --uninstall $subpkgid3
-    xwalkctl --uninstall $subpkgid4
+    xwalkctl >/tmp/apps.txt 2>&1
+    pkgids=`cat /tmp/apps.txt | grep $PACKAGENAME | awk '{print $(NF-1)}'`
+    subpkgid1=`cat /tmp/apps.txt | grep $SUBPACKAGENAME1 | awk '{print $(NF-1)}'`
+    subpkgid2=`cat /tmp/apps.txt | grep $SUBPACKAGENAME2 | awk '{print $(NF-1)}'`
+    subpkgid3=`cat /tmp/apps.txt | grep $SUBPACKAGENAME3 | awk '{print $(NF-1)}'`
+    subpkgid4=`cat /tmp/apps.txt | grep $SUBPACKAGENAME4 | awk '{print $(NF-1)}'`
+    for pkgid in $pkgids
+    do
+        xwalkctl --uninstall $pkgid
+    done
+    for pkgid in $subpkgid1
+    do
+        xwalkctl --uninstall $pkgid
+    done
+    for pkgid in $subpkgid2
+    do
+        xwalkctl --uninstall $pkgid
+    done
+    for pkgid in $subpkgid3
+    do
+        xwalkctl --uninstall $pkgid
+    done
+    for pkgid in $subpkgid4
+    do
+        xwalkctl --uninstall $pkgid
+    done
 
     #TODO: remove resource
     #eg:rm xx

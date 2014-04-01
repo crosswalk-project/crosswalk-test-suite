@@ -11,33 +11,36 @@ XPKNAME=${PACKAGENAME}.xpk
 RESOURCE_DIR=/opt/usr/media
 
 function installpkg(){
-xwalkctl --install $(dirname $0)/$XPKNAME
+    xwalkctl --install $(dirname $0)/$XPKNAME
 
-#TODO: copy resource
-#eg:cp xx $RESOURCE_DIR
+    #TODO: copy resource
+    #eg:cp xx $RESOURCE_DIR
 
-###### config tinyweb server ######
-if [ -e /opt/usr/media/tct/opt/$PACKAGENAME/resourcetiming/w3c/submission/resources/cgi ]; then
+    ###### config tinyweb server ######
+    if [ -e /opt/usr/media/tct/opt/$PACKAGENAME/resourcetiming/w3c/submission/resources/cgi ]; then
         cp -r /opt/usr/media/tct/opt/$PACKAGENAME/resourcetiming/w3c/submission/resources/cgi/*.cgi /opt/usr/media/tct/opt/$PACKAGENAME/resourcetiming/w3c/submission/resources
-else
+    else
         echo "cp file fail, please check if exists file: /opt/usr/media/tct/opt/$PACKAGENAME/xmlhttprequest/w3c/submission/resources/cgi/*.cgi..."
-fi
+    fi
 
 }
 
 function uninstallpkg(){
-pkgid=`pkgcmd -l | grep $PACKAGENAME | cut -d '[' -f3 | cut -d ']' -f1`
-xwalkctl --uninstall $pkgid
+    xwalkctl >/tmp/apps.txt 2>&1
+    pkgids=`cat /tmp/apps.txt | grep $PACKAGENAME | awk '{print $(NF-1)}'`
+    for pkgid in $pkgids
+    do
+        xwalkctl --uninstall $pkgid
+    done
+    #TODO: remove resource
+    #eg:rm xx
 
-#TODO: remove resource
-#eg:rm xx
-
-### remove source file ###
-if [ -d /opt/usr/media/tct/opt/$PACKAGENAME ];then
+    ### remove source file ###
+    if [ -d /opt/usr/media/tct/opt/$PACKAGENAME ];then
         rm -rf /opt/usr/media/tct/opt/$PACKAGENAME
-else
+    else
         echo "Remove source file fail,please check if the source file exist: /opt/usr/media/tct/opt/$PACKAGENAME ..."
-fi
+    fi
 
 }
 

@@ -16,32 +16,29 @@ do
  if [ ${apkfile:0:14} = "update_version" ];then
     continue
  fi
- xwalkctl --install $(dirname $0)/$xpkfile
+ xwalkctl --install $(dirname $0)/$XPKNAME
 done
-#TODO: copy resource
-#eg:cp xx $RESOURCE_DIR
+    #TODO: copy resource
+    #eg:cp xx $RESOURCE_DIR
 }
 
 function uninstallpkg(){
+    xwalkctl >/tmp/apps.txt 2>&1
+    pkgids=`cat /tmp/apps.txt | grep $PACKAGENAME | awk '{print $(NF-1)}'`
+    for pkgid in $pkgids
+    do
+        xwalkctl --uninstall $pkgid
+    done
 
+    #TODO: remove resource
+    #eg:rm xx
 
-for xpkfile in $(ls *.xpk)
-do
- pkgid=`pkgcmd -l | grep -i ${xpkfile%.*} | cut -d '[' -f3 | cut -d ']' -f1`
- xwalkctl --uninstall $pkgid
-done
-
-
-#TODO: remove resource
-#eg:rm xx
-
-### remove source file ###zz
-if [ -d /opt/usr/media/tct/opt/$PACKAGENAME ];then
-	rm -rf /opt/usr/media/tct/opt/$PACKAGENAME
-else
-	echo "Remove source file fail,please check if the source file exist: /opt/usr/media/tct/opt/$PACKAGENAME ..."
-fi
-
+    ### remove source file ###
+    if [ -d /opt/usr/media/tct/opt/$PACKAGENAME ];then
+        rm -rf /opt/usr/media/tct/opt/$PACKAGENAME
+    else
+        echo "Remove source file fail,please check if the source file exist: /opt/usr/media/tct/opt/$PACKAGENAME ..."
+    fi
 }
 
 case "$1" in

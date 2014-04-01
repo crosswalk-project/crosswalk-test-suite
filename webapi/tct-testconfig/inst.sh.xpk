@@ -11,32 +11,29 @@ XPKNAME=${PACKAGENAME}.xpk
 RESOURCE_DIR=/opt/usr/media
 
 function installpkg(){
-
-### copy json file ###
-if [ -f /opt/usr/media/tct/opt/$PACKAGENAME/preconfigure.json ];then
-    cp -f /opt/usr/media/tct/opt/$PACKAGENAME/preconfigure.json /opt/usr/media/tct/
-else
-    echo "cp file fails, please check if exists file: /opt/usr/media/tct/opt/$PACKAGENAME/preconfigure.json..."
-fi
-
+    ### copy json file ###
+    if [ -f /opt/usr/media/tct/opt/$PACKAGENAME/preconfigure.json ];then
+        cp -f /opt/usr/media/tct/opt/$PACKAGENAME/preconfigure.json /opt/usr/media/tct/
+    else
+        echo "cp file fails, please check if exists file: /opt/usr/media/tct/opt/$PACKAGENAME/preconfigure.json..."
+    fi
 }
 
 function uninstallpkg(){
-#TODO: remove resource
-#eg:rm xx
+    #TODO: remove resource
+    #eg:rm xx
 
-### remove source file ###
-if [ -d /opt/usr/media/tct/opt/$PACKAGENAME ];then
-	rm -rf /opt/usr/media/tct/opt/$PACKAGENAME
-else
-	echo "Remove source file fail,please check if the source file exist: /opt/usr/media/tct/opt/$PACKAGENAME ..."
-fi
+    ### remove source file ###
+    if [ -d /opt/usr/media/tct/opt/$PACKAGENAME ];then
+        rm -rf /opt/usr/media/tct/opt/$PACKAGENAME
+    else
+        echo "Remove source file fail,please check if the source file exist: /opt/usr/media/tct/opt/$PACKAGENAME ..."
+    fi
 
-###### remove preconfigure.json from /opt/usr/media/ ######
-if [ -f /opt/usr/media/tct/preconfigure.json ];then
-    rm -f /opt/usr/media/tct/preconfigure.json
-fi
-
+    ###### remove preconfigure.json from /opt/usr/media/ ######
+    if [ -f /opt/usr/media/tct/preconfigure.json ];then
+        rm -f /opt/usr/media/tct/preconfigure.json
+    fi
 }
 
 case "$1" in
