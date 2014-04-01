@@ -46,6 +46,6 @@ Authors:
   </head>
   <body>
     <p>Test passes if there is not a filled blue square.</p>
-    <iframe src="support/blue-100x100.png"/>
+    <iframe frameborder="no" border="0" src="support/blue-100x100.png"/>
   </body>
 </html> '

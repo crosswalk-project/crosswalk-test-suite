@@ -13,7 +13,7 @@ echo '<!DOCTYPE html>
 <script src="../../resources/testharness.js"></script>
 <script src="../../resources/testharnessreport.js"></script>
 </head>
-<div id="log"></div>
+<body>
 <script src="resources/pass.js"></script>
 <script>
 test(function() {assert_true(false)}, "Inline scripts run (1 of 3)");
