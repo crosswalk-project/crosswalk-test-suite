@@ -1,7 +1,7 @@
 name="webapi-sanityapp-w3c-tests"
-main_version="6.34.1.1"
+main_version="6.34.1.2"
 release="1"
-version="6.34.1.1"
+version="6.34.1.2"
 appname=$(echo $name|sed 's/-/_/g')
 
 # set value "1" if this suite need to sign,otherwise set "0" #
