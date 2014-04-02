@@ -81,7 +81,7 @@ function func_launch()
     fi
     find_app $APP_NAME
     launch_app $APP_NAME
-    App_Status=`wrt-launcher -r $WIDGETNAME | grep "not running"`
+    App_Status=`xwalk-launcher -r $WIDGETNAME | grep "not running"`
     if [ -z $App_Status ];then
       echo "The widget is launched successfully"
       return 0
@@ -105,10 +105,10 @@ function func_launch_other()
     sleep 3
     if [ "$APP_NAME" = "lifecycle-launch-installed-app" ];then
         WIDGETNAME = "wrt3lhr012.LifecycleHideRunningApp"
-        App_Status=`wrt-launcher -r $WIDGETNAME | grep -w "not running"`
+        App_Status=`xwalk-launcher -r $WIDGETNAME | grep -w "not running"`
     elif [ "$APP_NAME" = "lifecycle-launch-removed-app" ];then
         WIDGETNAME = "wrt3lhr012.LifecycleHideRunningApp"
-        App_Status=`wrt-launcher -r $WIDGETNAME | grep -w "failed"`
+        App_Status=`xwalk-launcher -r $WIDGETNAME | grep -w "failed"`
     fi
     if [ -z $App_Status ];then
       echo "The widget is launched successfully"
