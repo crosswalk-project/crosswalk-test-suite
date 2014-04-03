@@ -37,7 +37,7 @@ do
 	echo `date` >> /tmp/$sysmonFolder/cpu.res
 	echo `date` >> /tmp/$sysmonFolder/mem.res
 	adb shell "dumpsys cpuinfo |grep $3" >> /tmp/$sysmonFolder/cpu.res
-	adb shell "dumpsys meminfo |grep $3" | head -n 1 >> /tmp/$sysmonFolder/mem.res
+	adb shell "dumpsys meminfo |grep $3" | head -n 2 >> /tmp/$sysmonFolder/mem.res
 	echo >> /tmp/$sysmonFolder/cpu.res
 	echo >> /tmp/$sysmonFolder/mem.res
 	echo "sysmon times = "$times >> /tmp/$sysmonFolder/times
