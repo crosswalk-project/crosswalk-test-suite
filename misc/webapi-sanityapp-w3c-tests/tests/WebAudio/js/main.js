@@ -66,4 +66,4 @@ function loadAudioFile(url) {
   xhr.send();
 }
 
-loadAudioFile('../../res/media/w3c/sound_5.mp3');
+loadAudioFile('../../res/media/w3c/sound_5.oga');
