@@ -3,42 +3,57 @@
 <test_definition>
   <suite category="Media Server API" launcher="xwalk" name="webapi-dlna-xwalk-tests">
     <set name="dlna">
-      <testcase component="WebAPI/Media Server API/DLNA" execution_type="auto" id="MediaServerManager_scanNetwork_exist" purpose="Check if scanNetwork exist in MediaServerManager.">
+      <testcase component="WebAPI/Media Server API/DLNA" execution_type="auto" id="MediaServerManager_exist" purpose="Check if MediaServerManager interface exists">
         <description>
-          <test_script_entry>/opt/webapi-dlna-xwalk-tests/dlna/MediaServerManager_scanNetwork_exist.html</test_script_entry>
+          <test_script_entry>/opt/webapi-dlna-xwalk-tests/dlna/MediaServerManager_scanNetwork.html?total_num=3&amp;amp;locator_key=id&amp;amp;value=1</test_script_entry>
         </description>
       </testcase>
-      <testcase component="WebAPI/Media Server API/DLNA" execution_type="auto" id="MediaServerManager_exist" purpose="Check if MediaServerManager exist in window.">
+      <testcase component="WebAPI/Media Server API/DLNA" execution_type="auto" id="MediaServerManager_scanNetwork_exist" purpose="Check if scanNetwork exist in MediaServerManager">
         <description>
-          <test_script_entry>/opt/webapi-dlna-xwalk-tests/dlna/MediaServerManager_exist.html</test_script_entry>
+          <test_script_entry>/opt/webapi-dlna-xwalk-tests/dlna/MediaServerManager_scanNetwork.html?total_num=3&amp;amp;locator_key=id&amp;amp;value=2</test_script_entry>
         </description>
       </testcase>
-      <testcase component="WebAPI/Media Server API/DLNA" execution_type="auto" id="Navigator_mediaServer_exist" purpose="Check if mediaServer exists in tizen.">
+      <testcase component="WebAPI/Media Server API/DLNA" execution_type="auto" id="MediaServerManager_scanNetwork" purpose="Check if the method of scanNetwork is valid">
         <description>
-          <test_script_entry>/opt/webapi-dlna-xwalk-tests/dlna/Navigator_mediaServer_exist.html</test_script_entry>
+          <test_script_entry>/opt/webapi-dlna-xwalk-tests/dlna/MediaServerManager_scanNetwork.html?total_num=3&amp;amp;locator_key=id&amp;amp;value=3</test_script_entry>
         </description>
       </testcase>
-      <testcase component="WebAPI/Media Server API/DLNA" execution_type="auto" id="MediaServer_id_attribute" purpose="Check if MediaServer has id attribute with proper type, not null, readonly.">
+      <testcase component="WebAPI/Media Server API/DLNA" execution_type="auto" id="MediaServerManager_onserverfound_exist" purpose="Check if onserverfound exists in MediaServerManager">
+        <description>
+          <test_script_entry>/opt/webapi-dlna-xwalk-tests/dlna/MediaServerManager_onserverfound.html</test_script_entry>
+        </description>
+      </testcase>
+      <testcase component="WebAPI/Media Server API/DLNA" execution_type="auto" id="MediaServerManager_onserverlost" purpose="Check if onserverlost exists in MediaServerManager">
+        <description>
+          <test_script_entry>/opt/webapi-dlna-xwalk-tests/dlna/MediaServerManager_onserverlost.html</test_script_entry>
+        </description>
+      </testcase>
+      <testcase component="WebAPI/Media Server API/DLNA" execution_type="auto" id="Navigator_mediaServer" purpose="Check if the Navigator has mediaServer attribute with proper type, object and readonly">
+        <description>
+          <test_script_entry>/opt/webapi-dlna-xwalk-tests/dlna/Navigator_mediaServer.html</test_script_entry>
+        </description>
+      </testcase>
+      <testcase component="WebAPI/Media Server API/DLNA" execution_type="auto" id="MediaServer_id_attribute" purpose="Check if MediaServer has id attribute with proper type, not null, readonly">
         <description>
           <test_script_entry>/opt/webapi-dlna-xwalk-tests/dlna/MediaServer_id_attribute.html</test_script_entry>
         </description>
       </testcase>
-      <testcase component="WebAPI/Media Server API/DLNA" execution_type="auto" id="MediaServer_friendlyName_attribute" purpose="Check if MediaServer has friendlyName attribute with proper type, not null, readonly.">
+      <testcase component="WebAPI/Media Server API/DLNA" execution_type="auto" id="MediaServer_friendlyName_attribute" purpose="Check if MediaServer has friendlyName attribute with proper type, not null, readonly">
         <description>
           <test_script_entry>/opt/webapi-dlna-xwalk-tests/dlna/MediaServer_friendlyName_attribute.html</test_script_entry>
         </description>
       </testcase>
-      <testcase component="WebAPI/Media Server API/DLNA" execution_type="auto" id="MediaServer_root_attribute" purpose="Check if MediaServer has root attribute with proper type, not null, readonly.">
+      <testcase component="WebAPI/Media Server API/DLNA" execution_type="auto" id="MediaServer_root_attribute" purpose="Check if MediaServer has root attribute with proper type, not null, readonly">
         <description>
           <test_script_entry>/opt/webapi-dlna-xwalk-tests/dlna/MediaServer_root_attribute.html</test_script_entry>
         </description>
       </testcase>
-      <testcase component="WebAPI/Media Server API/DLNA" execution_type="auto" id="MediaServer_browse_exist" purpose="Check if browse method exists in MediaServer.">
+      <testcase component="WebAPI/Media Server API/DLNA" execution_type="auto" id="MediaServer_browse_exist" purpose="Check if browse method exists in MediaServer">
         <description>
           <test_script_entry>/opt/webapi-dlna-xwalk-tests/dlna/MediaServer_browse_exist.html</test_script_entry>
         </description>
       </testcase>
-      <testcase component="WebAPI/Media Server API/DLNA" execution_type="auto" id="MediaServer_find_exist" purpose="Check if find method exists in MediaServer.">
+      <testcase component="WebAPI/Media Server API/DLNA" execution_type="auto" id="MediaServer_find_exist" purpose="Check if find method exists in MediaServer">
         <description>
           <test_script_entry>/opt/webapi-dlna-xwalk-tests/dlna/MediaServer_find_exist.html</test_script_entry>
         </description>

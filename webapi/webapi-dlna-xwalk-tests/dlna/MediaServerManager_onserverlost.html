@@ -31,14 +31,14 @@ Authors:
 -->
 
 <meta charset="utf-8">
-<title>DLNA Test: MediaServerManager - scanNetwork exist</title>
+<title>DLNA Test: MediaServerManager - onserverlost</title>
 <link rel="author" title="Intel" href="http://www.intel.com">
-<link rel="help" href="http://01org.github.io/cloud-dleyna/mediaserver.html#mediaserverevent-interface">
+<link rel="help" href="http://01org.github.io/cloud-dleyna/mediaserver.html#widl-MediaServerManager-onserverlost">
 <script src="../resources/testharness.js"></script>
 <script src="../resources/testharnessreport.js"></script>
 <div id="log"></div>
 <script>
   test(function () {
-    assert_true("scanNetwork" in navigator.mediaServer, "scanNetwork exists");
-  }, "Check if scanNetwork exists in MediaServerManager");
+    assert_true("onserverlost" in navigator.mediaServer, "onserverlost exists");
+  }, "Check if onserverlost exists in MediaServerManager");
 </script>
