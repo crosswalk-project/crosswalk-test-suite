@@ -31,7 +31,7 @@ Authors:
 -->
 
 <meta charset="utf-8">
-<title>DLNA Test: Navigator - mediaServer exist</title>
+<title>DLNA Test: Navigator - mediaServer</title>
 <link rel="author" title="Intel" href="http://www.intel.com">
 <link rel="help" href="http://01org.github.io/cloud-dleyna/mediaserver.html#mediaserverevent-interface">
 <script src="../resources/testharness.js"></script>
@@ -40,5 +40,7 @@ Authors:
 <script>
   test(function () {
     assert_true("mediaServer" in navigator, "mediaServer exists");
-  }, "Check if mediaServer exists in Navigator");
+    assert_equals(typeof(navigator.mediaServer), "object", "the type of navigator.mediaServer");
+    assert_readonly(navigator, "mediaServer", "You cannot change mediaServer");
+  }, "Check if the Navigator has mediaServer attribute with proper type, object and readonly");
 </script>
