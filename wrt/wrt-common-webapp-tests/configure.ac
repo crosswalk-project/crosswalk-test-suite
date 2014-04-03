@@ -116,5 +116,24 @@ webapp/permission_negative_nullvalue_tests/Makefile \
 webapp/permission_negative_smallletter_tests/Makefile \
 webapp/manifest_extend_html_namedhttp/Makefile \
 webapp/manifest_extend_name_withspace/Makefile \
-webapp/security_url_certificate_tests/Makefile])
+webapp/security_url_certificate_tests/Makefile
+webapp/manifest_version_identifyingFourSame_tests/Makefile \
+webapp/manifest_version_identifyingFourZero_tests/Makefile \
+webapp/manifest_version_identifyingNull_tests/Makefile \
+webapp/manifest_version_identifyingSix_tests/Makefile \
+webapp/manifest_version_comma_tests/Makefile \
+webapp/manifest_version_question_tests/Makefile \
+webapp/manifest_version_semicolon_tests/Makefile \
+webapp/manifest_version_chinese_tests/Makefile \
+webapp/manifest_version_numberandchar_tests/Makefile \
+webapp/manifest_version_percent_tests/Makefile \
+webapp/manifest_version_asterisk_tests/Makefile \
+webapp/manifest_version_pointcn_tests/Makefile \
+webapp/manifest_app_launchPathNoIndex_tests/Makefile \
+webapp/manifest_app_launchPathIndexBlank_tests/Makefile \
+webapp/manifest_app_launchPathIndexChinese_tests/Makefile \
+webapp/manifest_app_mainSourceNoMain_tests/Makefile \
+webapp/manifest_app_mainSourceNoSource_tests/Makefile \
+webapp/manifest_app_MainSourceNoFile_tests/Makefile \
+webapp/manifest_app_mainSourceNullValue_tests/Makefile])
 AC_OUTPUT
