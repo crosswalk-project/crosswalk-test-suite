@@ -1,4 +1,4 @@
-AC_INIT([webapi-devicecapabilities-sysapps-tests], [6.34.1.1], [zhiqiang.zhang@intel.com])
+AC_INIT([webapi-devicecapabilities-sysapps-tests], [6.34.1.2], [zhiqiang.zhang@intel.com])
 AM_INIT_AUTOMAKE([-Wall -Werror foreign])
 
 AC_CONFIG_FILES([Makefile \

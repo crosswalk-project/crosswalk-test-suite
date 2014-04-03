@@ -29,7 +29,7 @@
 #                      Yufei,Chen<yufeix.chen@intel.com>
 #
 
-AC_INIT([wrt-autohost-android-tests], [6.34.1.1], [yufeix.chen@intel.com])
+AC_INIT([wrt-autohost-android-tests], [6.34.1.2], [yufeix.chen@intel.com])
 AM_INIT_AUTOMAKE([-Wall -Werror foreign])
 
 # Checks for programs.
