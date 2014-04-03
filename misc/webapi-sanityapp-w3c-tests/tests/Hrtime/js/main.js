@@ -33,8 +33,10 @@ Authors:
 $(document).ready(function(){
   var m = document.getElementById("media");
   var playVideo, endVideo;
-  m.play();
-  m.addEventListener("playing", function() {
+  $("#play").click(function(){
+    m.play();
+  });
+  m.addEventListener("play", function() {
     playVideo = window.performance.now();
   }, false);
 
