@@ -43,12 +43,32 @@ Authors:
   <body>
     <div id="log"></div>
     <script>
-      test(function () {
-        var configuration = { "iceServers": [{ "url": "stun:stun.example.org" }] };
-        var pc = new RTCPeerConnection(configuration);
-        RTCDTMFSender = pc.createDTMFSender(pc.getLocalStreams()[0].getAudioTracks()[0]);
-        assert_equals(RTCDTMFSender.canInsertDTMF, true, "the value of RTCDTMFSender.canInsertDTMF");
-      }, "Check if the setting of RTCDTMFSender.canInsertDTMF is normally");
+
+      var t = async_test(document.title, {timeout: 5000});
+
+      var configuration = {"iceServers": [{"url": "stun:stun.example.org"}]};
+      var pc = new webkitRTCPeerConnection(configuration);
+
+      t.step(function () {
+        navigator.webkitGetUserMedia({audio:true, video:true}, gotStream, error);
+      });
+
+      function gotStream(stream) {
+        pc.addStream(stream);
+        RTCDTMFSender = pc.createDTMFSender(stream.getAudioTracks()[0]);
+        t.step(function () {
+          assert_equals(RTCDTMFSender.canInsertDTMF, true, "the value of RTCDTMFSender.canInsertDTMF");
+        });
+        t.done();
+      }
+
+      function error() {
+        t.step(function () {
+          assert_unreached("Stream generation failed.");
+        });
+        t.done();
+      }
+
     </script>
   </body>
 </html>

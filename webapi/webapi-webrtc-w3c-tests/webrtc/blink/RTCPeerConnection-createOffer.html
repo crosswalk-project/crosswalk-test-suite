@@ -13,28 +13,21 @@ https://github.com/crosswalk-project/blink-crosswalk/blob/master/LayoutTests/fas
 <div id=log></div>
 <script>
 
-var t = async_test();
+var t = async_test(document.title);
 
 var pc = new webkitRTCPeerConnection(null, null);
 
 function requestFailed2(reason) {
   errorReason = reason;
   t.step(function () {
-    assert_equals('errorReason', '"TEST_ERROR"');
-  });
-  t.done();
-}
-
-function requestSucceeded2(sd) {
-  t.step(function () {
-    assert_unreached("requestSucceeded was called.");
+    assert_equals(errorReason, "TEST_ERROR");
   });
   t.done();
 }
 
 function requestFailed1() {
   t.step(function () {
-    assert_unreached("requestFailed was called.");
+    assert_unreached("requestFailed1 was called");
   });
   t.done();
 }
@@ -44,11 +37,14 @@ function requestSucceeded1(sd) {
   t.step(function () {
     assert_equals(sessionDescription.type, "offer");
   });
-  t.done();
-  pc.createOffer(requestSucceeded2, requestFailed2, {mandatory:{"succeed":false}});
+  pc.createOffer(t.step_func(function () {
+    t.done();
+  }), requestFailed2);
 }
-pc.createOffer(requestSucceeded1, requestFailed1, {mandatory:{"succeed":true}});
-t.done();
+
+t.step(function () {
+  pc.createOffer(requestSucceeded1, requestFailed1);
+});
 
 </script>
 

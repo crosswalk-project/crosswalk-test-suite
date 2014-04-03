@@ -43,15 +43,32 @@ Authors:
   <body>
     <div id="log"></div>
     <script>
-      var t = async_test("Check if the setting of RTCPeerConnectionIceEvent.candidate is normally", {timeout: 2000});
+      var t = async_test("Check if the setting of RTCPeerConnectionIceEvent.candidate is normally", {timeout: 10000});
+
+      var pc = new RTCPeerConnection(null, null);
+      var signalingChannel = pc.createDataChannel("label1");
+
       t.step(function () {
-        var pc = new RTCPeerConnection(null,null);
+        pc.onicecandidate = t.step_func(function (eve) {
+          assert_equals(Object.prototype.toString.call(eve.candidate), "[object RTCIceCandidate]", "the value of RTCPeerConnectionIceEvent.candidate");
+          t.done();
+        });
+        pc.createOffer(localDescCreated, logError);
+      });
+
+      function localDescCreated(desc) {
+        pc.setLocalDescription(desc, function () {
+          signalingChannel.send(JSON.stringify({"sdp": pc.localDescription}));
+        }, logError);
+      }
+
+      function logError (error) {
         t.step(function () {
-          pc.onicecandidate(RTCPeerConnectionIceEvent);
-          assert_not_equals(RTCPeerConnectionIceEvent.candidate, null, "the value of RTCPeerConnectionIceEvent.candidate");
+          assert_unreached("Error message: {" + error.message + "}");
         });
         t.done();
-      });
+      }
+
     </script>
   </body>
 </html>

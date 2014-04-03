@@ -149,9 +149,21 @@
           </spec>
         </specs>
       </testcase>
-      <testcase purpose="Check if the method of close is valid" type="compliance" status="approved" component="WebAPI/Networking/WebRTC" execution_type="auto" priority="P1" id="RTCPeerConnection_close_method">
+      <testcase purpose="Check if the setting of RTCPeerConnection.createDTMFSender is normally" type="compliance" status="approved" component="WebAPI/Networking/WebRTC" execution_type="auto" priority="P1" id="RTCPeerConnection_createDTMFSender">
         <description>
           <test_script_entry>/opt/webapi-webrtc-w3c-tests/webrtc/RTCPeerConnection.html?total_num=11&amp;amp;locator_key=id&amp;amp;value=2</test_script_entry>
+        </description>
+        <specs>
+          <spec>
+            <spec_assertion element_type="property" element_name="createDTMFSender" interface="RTCPeerConnection" specification="WebRTC" section="Networking" category="W3C API Specifications"/>
+            <spec_url>http://dev.w3.org/2011/webrtc/editor/webrtc.html#idl-def-RTCDataChannelEvent</spec_url>
+            <spec_statement/>
+          </spec>
+        </specs>
+      </testcase>
+      <testcase purpose="Check if the method of close is valid" type="compliance" status="approved" component="WebAPI/Networking/WebRTC" execution_type="auto" priority="P1" id="RTCPeerConnection_close_method">
+        <description>
+          <test_script_entry>/opt/webapi-webrtc-w3c-tests/webrtc/RTCPeerConnection.html?total_num=11&amp;amp;locator_key=id&amp;amp;value=3</test_script_entry>
         </description>
         <specs>
           <spec>
@@ -163,24 +175,12 @@
       </testcase>
       <testcase purpose="Check if the method of RTCPeerConnection.createDataChannel is valid" type="compliance" status="approved" component="WebAPI/Networking/WebRTC" execution_type="auto" priority="P1" id="RTCPeerConnection_createDataChannel_method">
         <description>
-          <test_script_entry>/opt/webapi-webrtc-w3c-tests/webrtc/RTCPeerConnection.html?total_num=11&amp;amp;locator_key=id&amp;amp;value=3</test_script_entry>
+          <test_script_entry>/opt/webapi-webrtc-w3c-tests/webrtc/RTCPeerConnection.html?total_num=11&amp;amp;locator_key=id&amp;amp;value=4</test_script_entry>
         </description>
         <specs>
           <spec>
             <spec_assertion element_type="method" element_name="createDataChannel" interface="RTCPeerConnection" specification="WebRTC" section="Networking" category="W3C API Specifications"/>
             <spec_url>http://dev.w3.org/2011/webrtc/editor/webrtc.html#rtcpeerconnection-interface</spec_url>
-            <spec_statement/>
-          </spec>
-        </specs>
-      </testcase>
-      <testcase purpose="Check if the setting of RTCPeerConnection.createDTMFSender is normally" type="compliance" status="approved" component="WebAPI/Networking/WebRTC" execution_type="auto" priority="P1" id="RTCPeerConnection_createDTMFSender">
-        <description>
-          <test_script_entry>/opt/webapi-webrtc-w3c-tests/webrtc/RTCPeerConnection.html?total_num=11&amp;amp;locator_key=id&amp;amp;value=4</test_script_entry>
-        </description>
-        <specs>
-          <spec>
-            <spec_assertion element_type="property" element_name="createDTMFSender" interface="RTCPeerConnection" specification="WebRTC" section="Networking" category="W3C API Specifications"/>
-            <spec_url>http://dev.w3.org/2011/webrtc/editor/webrtc.html#idl-def-RTCDataChannelEvent</spec_url>
             <spec_statement/>
           </spec>
         </specs>
@@ -269,30 +269,6 @@
           </spec>
         </specs>
       </testcase>
-      <testcase purpose="Check if the method of setLocalDescription is valid" type="compliance" status="approved" component="WebAPI/Networking/WebRTC" execution_type="auto" priority="P1" id="RTCPeerConnection_setLocalDescription_method">
-        <description>
-          <test_script_entry>/opt/webapi-webrtc-w3c-tests/webrtc/RTCPeerConnection_setLocalDescription_method.html</test_script_entry>
-        </description>
-        <specs>
-          <spec>
-            <spec_assertion element_type="method" element_name="setLocalDescription" interface="RTCPeerConnection" specification="WebRTC" section="Networking" category="W3C API Specifications"/>
-            <spec_url>http://dev.w3.org/2011/webrtc/editor/webrtc.html#rtcpeerconnection-interface</spec_url>
-            <spec_statement/>
-          </spec>
-        </specs>
-      </testcase>
-      <testcase purpose="Check if the method of setRemoteDescription is valid" type="compliance" status="approved" component="WebAPI/Networking/WebRTC" execution_type="auto" priority="P1" id="RTCPeerConnection_setRemoteDescription_method">
-        <description>
-          <test_script_entry>/opt/webapi-webrtc-w3c-tests/webrtc/RTCPeerConnection_setRemoteDescription_method.html</test_script_entry>
-        </description>
-        <specs>
-          <spec>
-            <spec_assertion element_type="method" element_name="setRemoteDescription" interface="RTCPeerConnection" specification="WebRTC" section="Networking" category="W3C API Specifications"/>
-            <spec_url>http://dev.w3.org/2011/webrtc/editor/webrtc.html#rtcpeerconnection-interface</spec_url>
-            <spec_statement/>
-          </spec>
-        </specs>
-      </testcase>
       <testcase purpose="Check if the method of updateIce is valid" type="compliance" status="approved" component="WebAPI/Networking/WebRTC" execution_type="auto" priority="P1" id="RTCPeerConnection_updateIce_method">
         <description>
           <test_script_entry>/opt/webapi-webrtc-w3c-tests/webrtc/RTCPeerConnection_updateIce_method.html</test_script_entry>
@@ -329,18 +305,6 @@
           </spec>
         </specs>
       </testcase>
-      <testcase purpose="Check if the event of icecandidate is valid" type="compliance" status="approved" component="WebAPI/Networking/WebRTC" execution_type="auto" priority="P1" id="RTCPeerConnection_icecandidate_event">
-        <description>
-          <test_script_entry>/opt/webapi-webrtc-w3c-tests/webrtc/RTCPeerConnection_icecandidate_event.html</test_script_entry>
-        </description>
-        <specs>
-          <spec>
-            <spec_assertion element_type="event" element_name="icecandidate" interface="RTCPeerConnection" specification="WebRTC" section="Networking" category="W3C API Specifications"/>
-            <spec_url>http://dev.w3.org/2011/webrtc/editor/webrtc.html#idl-def-RTCDataChannelEvent</spec_url>
-            <spec_statement/>
-          </spec>
-        </specs>
-      </testcase>
       <testcase purpose="Check if the event of datachannel is valid" type="compliance" status="approved" component="WebAPI/Networking/WebRTC" execution_type="auto" priority="P1" id="RTCPeerConnection_datachannel_event">
         <description>
           <test_script_entry>/opt/webapi-webrtc-w3c-tests/webrtc/RTCPeerConnection_datachannel_event.html</test_script_entry>
@@ -360,18 +324,6 @@
         <specs>
           <spec>
             <spec_assertion element_type="event" element_name="iceconnectionstatechange" interface="RTCPeerConnection" specification="WebRTC" section="Networking" category="W3C API Specifications"/>
-            <spec_url>http://dev.w3.org/2011/webrtc/editor/webrtc.html#idl-def-RTCDataChannelEvent</spec_url>
-            <spec_statement/>
-          </spec>
-        </specs>
-      </testcase>
-      <testcase purpose="Check if the event of negotiationneeded is valid" type="compliance" status="approved" component="WebAPI/Networking/WebRTC" execution_type="auto" priority="P1" id="RTCPeerConnection_negotiationneeded_event">
-        <description>
-          <test_script_entry>/opt/webapi-webrtc-w3c-tests/webrtc/RTCPeerConnection_negotiationneeded_event.html</test_script_entry>
-        </description>
-        <specs>
-          <spec>
-            <spec_assertion element_type="event" element_name="negotiationneeded" interface="RTCPeerConnection" specification="WebRTC" section="Networking" category="W3C API Specifications"/>
             <spec_url>http://dev.w3.org/2011/webrtc/editor/webrtc.html#idl-def-RTCDataChannelEvent</spec_url>
             <spec_statement/>
           </spec>
@@ -882,17 +834,17 @@
         </specs>
       </testcase>
       <testcase purpose="Check if the attribute onnegotiationneeded of RTCPeerConnection" type="compliance" status="approved" component="WebAPI/Networking/WebRTC" execution_type="auto" priority="P1" id="RTCPeerConnection-onnegotiationneeded">
-        <description>
-          <test_script_entry>/opt/webapi-webrtc-w3c-tests/webrtc/blink/RTCPeerConnection-onnegotiationneeded.html</test_script_entry>
-        </description>
-        <specs>
-          <spec>
-            <spec_assertion element_type="attribute" element_name="onnegotiationneeded" interface="RTCPeerConnection" specification="WebRTC" section="Networking" category="W3C API Specifications"/>
-            <spec_url>http://dev.w3.org/2011/webrtc/editor/webrtc.html#widl-RTCPeerConnection-onnegotiationneeded</spec_url>
-            <spec_statement/>
-          </spec>
-        </specs>
-      </testcase>
+-        <description>
+-          <test_script_entry>/opt/webapi-webrtc-w3c-tests/webrtc/blink/RTCPeerConnection-onnegotiationneeded.html</test_script_entry>
+-        </description>
+-        <specs>
+-          <spec>
+-            <spec_assertion element_type="attribute" element_name="onnegotiationneeded" interface="RTCPeerConnection" specification="WebRTC" section="Networking" category="W3C API Specifications"/>
+-            <spec_url>http://dev.w3.org/2011/webrtc/editor/webrtc.html#widl-RTCPeerConnection-onnegotiationneeded</spec_url>
+-            <spec_statement/>
+-          </spec>
+-        </specs>
+-      </testcase>
       <testcase purpose="Check if the attribute signalingState of RTCPeerConnection" type="compliance" status="approved" component="WebAPI/Networking/WebRTC" execution_type="auto" priority="P1" id="RTCPeerConnection-state">
         <description>
           <test_script_entry>/opt/webapi-webrtc-w3c-tests/webrtc/blink/RTCPeerConnection-state.html</test_script_entry>
@@ -912,18 +864,6 @@
         <specs>
           <spec>
             <spec_assertion element_type="constructor" element_name="constructor" interface="RTCPeerConnection" specification="WebRTC" section="Networking" category="W3C API Specifications"/>
-            <spec_url>http://dev.w3.org/2011/webrtc/editor/webrtc.html#rtcpeerconnection-interface-extensions-2</spec_url>
-            <spec_statement/>
-          </spec>
-        </specs>
-      </testcase>
-      <testcase purpose="Check if RTCPeerConnection stats interface" type="compliance" status="approved" component="WebAPI/Networking/WebRTC" execution_type="auto" priority="P2" id="RTCPeerConnection-stats_2">
-        <description>
-          <test_script_entry>/opt/webapi-webrtc-w3c-tests/webrtc/blink/RTCPeerConnection-stats.html?total_num=2&amp;amp;locator_key=id&amp;amp;value=2</test_script_entry>
-        </description>
-        <specs>
-          <spec>
-            <spec_assertion element_type="method" element_name="getStats" interface="RTCPeerConnection" specification="WebRTC" section="Networking" category="W3C API Specifications"/>
             <spec_url>http://dev.w3.org/2011/webrtc/editor/webrtc.html#rtcpeerconnection-interface-extensions-2</spec_url>
             <spec_statement/>
           </spec>

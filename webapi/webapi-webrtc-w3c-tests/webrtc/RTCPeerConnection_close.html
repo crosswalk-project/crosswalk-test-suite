@@ -41,11 +41,11 @@ Authors:
 <script>
 
 test(function() {
-  var configuration = { "iceServers": [{ "url": "stun:stun.example.org" }] };
+  var configuration = {"iceServers": [{"url": "stun:stun.example.org"}]};
   var pc = new RTCPeerConnection(configuration);
   pc.close();
   assert_throws("InvalidStateError", function () {
-    pc.signalingState;
+    pc.createDataChannel("lable");
   }, "RTCPeerConnection.close threw exception");
 }, "Check if the RTCPeerConnection.close throws an InvalidStateError exception");
 

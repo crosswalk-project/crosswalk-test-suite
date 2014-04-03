@@ -13,14 +13,16 @@ https://github.com/crosswalk-project/blink-crosswalk/blob/master/LayoutTests/fas
 <div id=log></div>
 <script>
 
+var t = async_test(document.title);
+
 var pc = null;
 var iceCandidate = null;
 
-var t = async_test(document.title);
-
 function onIceChange2() {
   if (pc.iceConnectionState === "closed") {
-    t.done();
+    t.step_func(function () {
+      t.done();
+    });
   }
 }
 
@@ -31,13 +33,12 @@ function addIceCandidateSuccess() {
 
 function addIceCandidateFailure() {
   t.step(function () {
-    assert_unreached("addIceCandidateFailue was called.");
+    assert_unreached("addIceCandidateFailue was called");
   });
   t.done();
 }
 
 function onIceChange1() {
-  alert(11111);
   if (pc.iceConnectionState === "completed") {
     iceCandidate = new RTCIceCandidate({candidate:"nano nano"});
 
@@ -56,11 +57,10 @@ function onIceChange1() {
   }
 }
 
-test(function() {
+t.step(function () {
   pc = new webkitRTCPeerConnection(null, null);
-}, "Test new RTCPeerConnection do not throw exception");
-pc.oniceconnectionstatechange = onIceChange1;
-t.done();
+  pc.oniceconnectionstatechange = onIceChange1;
+});
 
 </script>
 

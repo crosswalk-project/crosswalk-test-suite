@@ -13,15 +13,15 @@ https://github.com/crosswalk-project/blink-crosswalk/blob/master/LayoutTests/fas
 <div id=log></div>
 <script>
 
+var t = async_test(document.title);
+
 var pc = null;
 var stream = null;
 var dtmfsender = null;
 
-var t = async_test(document.title);
-
 function error() {
   t.step(function () {
-    assert_unreached("Stream generation failed.");
+    assert_unreached("Stream generation failed");
   });
   t.done();
 }
@@ -74,10 +74,9 @@ function gotStream(s) {
   pc.oniceconnectionstatechange = pc_onicechange;
 }
 
-test(function() {
-  navigator.webkitGetUserMedia({audio:true}, gotStream, error);
-}, 'the webkitGetUserMedia');
-t.done();
+t.step(function () {
+  navigator.webkitGetUserMedia({audio: true, video: false}, gotStream, error);
+});
 
 </script>
 

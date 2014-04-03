@@ -52,16 +52,18 @@ Authors:
           pc.addStream(stream);
         }
 
-        function getUserMedia(dictionary, callback) {
-          navigator.webkitGetUserMedia(dictionary, callback, function error() {});
-        }
-
-        pc.addEventListener("negotiationneeded", function(){
-          t.step(function(){
-            getUserMedia({audio:true, video:true}, gotStream);
-          });
+        pc.addEventListener("negotiationneeded", t.step_func(function (ev) {
           t.done();
-        }, false);
+        }), false);
+
+        t.step(function(){
+          navigator.webkitGetUserMedia({audio: true, video: true}, gotStream, function error() {
+            t.step(function () {
+              assert_unreached("GetUserMedia request failed");
+            });
+            t.done();
+          });
+        });
       });
     </script>
   </body>
