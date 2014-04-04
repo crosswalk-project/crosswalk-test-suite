@@ -2,7 +2,7 @@
 source $(dirname $0)/$(basename $(pwd)).spec
 
 #parse params
-usage="Usage: ./pack.sh [-t <package type: wgt | apk | crx | xpk | cordova>] [-p <xpk platform: mobile | ivi>] [-a <apk runtime arch: x86 | arm>]
+usage="Usage: ./pack.sh [-t <package type: wgt | apk | crx | xpk | cordova>] [-a <apk runtime arch: x86 | arm>]
 [-t wgt] option was set as default."
 
 if [[ $1 == "-h" || $1 == "--help" ]]; then
@@ -266,11 +266,7 @@ fi
 
 function zip_for_xpk(){
 cd $BUILD_DEST
-if [ $platform == "ivi" ]; then
-    cp -af $BUILD_ROOT/inst.sh.ivi $BUILD_DEST/opt/$name/inst.sh
-else
-    cp -af $BUILD_ROOT/inst.sh.xpk $BUILD_DEST/opt/$name/inst.sh
-fi
+cp -af $BUILD_ROOT/inst.sh.xpk $BUILD_DEST/opt/$name/inst.sh
 mv $BUILD_ROOT/$name.xpk $BUILD_DEST/opt/$name/
 
 if [ $src_file -eq 0 ];then

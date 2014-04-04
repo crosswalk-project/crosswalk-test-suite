@@ -2,23 +2,20 @@
 source $(dirname $0)/$(basename $(pwd)).spec
 
 #parse params
-usage="Usage: ./pack.sh [-t <package type: wgt | apk | crx | xpk>] [-p <xpk platform: mobile | ivi>]
-[-t wgt] option was set as default.
-[-p mobile] option was set as default."
+usage="Usage: ./pack.sh [-t <package type: wgt | apk | crx | xpk>]
+[-t wgt] option was set as default."
 
 if [[ $1 == "-h" || $1 == "--help" ]]; then
-    echo $usage
+    echo "$usage"
     exit 1
 fi
 
 type="wgt"
-platform="mobile"
-while getopts t:p: o
+while getopts t: o
 do
     case "$o" in
     t) type=$OPTARG;;
-    p) platform=$OPTARG;;
-    *) echo $usage
+    *) echo "$usage"
        exit 1;;
     esac
 done
@@ -183,11 +180,7 @@ function zip_for_wgt(){
 cd $BUILD_DEST
 # cp inst.sh script #
 rm -rf $BUILD_DEST/opt/$name/inst.sh.wgt
-if [ $platform == "ivi" ]; then
-    cp -af $BUILD_ROOT/inst.sh.ivi $BUILD_DEST/opt/$name/inst.sh
-else
-    cp -af $BUILD_ROOT/inst.sh.wgt $BUILD_DEST/opt/$name/inst.sh
-fi
+cp -af $BUILD_ROOT/inst.sh.wgt $BUILD_DEST/opt/$name/inst.sh
 
 zip -Drq $BUILD_DEST/$name-$version.xwalk.$type.zip opt/
 if [ $? -ne 0 ];then

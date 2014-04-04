@@ -2,9 +2,8 @@
 source $(dirname $0)/$(basename $(pwd)).spec
 
 #parse params
-usage="Usage: ./pack.sh [-t <package type: wgt | apk | crx | xpk>] [-p <xpk platform: mobile | ivi>]
-[-t wgt] option was set as default.
-[-p mobile] option was set as default."
+usage="Usage: ./pack.sh [-t <package type: wgt | apk | crx | xpk>]
+[-t wgt] option was set as default."
 
 if [[ $1 == "-h" || $1 == "--help" ]]; then
     echo "$usage"
@@ -12,12 +11,10 @@ if [[ $1 == "-h" || $1 == "--help" ]]; then
 fi
 
 type="wgt"
-platform="mobile"
-while getopts t:p: o
+while getopts t: o
 do
     case "$o" in
     t) type=$OPTARG;;
-    p) platform=$OPTARG;;
     *) echo "$usage"
        exit 1;;
     esac
@@ -213,11 +210,7 @@ fi
 
 function zip_for_xpk(){
 cd $BUILD_DEST
-if [ $platform == "ivi" ]; then
-    cp -af $BUILD_ROOT/inst.sh.ivi $BUILD_DEST/opt/$name/inst.sh
-else
-    cp -af $BUILD_ROOT/inst.sh.xpk $BUILD_DEST/opt/$name/inst.sh
-fi
+cp -af $BUILD_ROOT/inst.sh.xpk $BUILD_DEST/opt/$name/inst.sh
 mv $BUILD_ROOT/$name.xpk $BUILD_DEST/opt/$name/
 
 if [ $src_file -eq 0 ];then
