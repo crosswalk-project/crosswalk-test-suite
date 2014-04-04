@@ -567,6 +567,414 @@
           </spec>
         </specs>
       </testcase>
+      <testcase purpose="Test if the confidence represents a numeric estimate between 0 and 1 of how confident the recognition system is that the recognition is correct" type="compliance" status="approved" component="WebAPI/User Interaction/Web Speech" execution_type="manual" priority="P2" id="SpeechRecognitionAlternative_Confidence">
+        <description>
+          <test_script_entry>/opt/webapi-webspeech-w3c-tests/webspeech/speechrecognitionalternative_confidence_m.html</test_script_entry>
+        </description>
+        <specs>
+          <spec>
+            <spec_assertion element_type="attribute" element_name="Confidence" interface="SpeechRecognitionAlternative" specification="Web Speech" section="User Interaction" category="W3C API Specifications"/>
+            <spec_url>https://dvcs.w3.org/hg/speech-api/raw-file/tip/speechapi.html</spec_url>
+            <spec_statement/>
+          </spec>
+        </specs>
+      </testcase>
+      <testcase purpose="Test if the user agent must return zero or more final results representing multiple consecutive recognitions in response to starting recognition when the continuous attribute is set to true" type="compliance" status="approved" component="WebAPI/User Interaction/Web Speech" execution_type="manual" priority="P2" id="SpeechRecognition_Continuous" >
+        <description>
+          <test_script_entry>/opt/webapi-webspeech-w3c-tests/webspeech/speechrecognition_continuous_m.html</test_script_entry>
+        </description>
+        <specs>
+          <spec>
+            <spec_assertion element_type="attribute" element_name="Continuous" interface="SpeechRecognition" specification="Web Speech" section="User Interaction" category="W3C API Specifications"/>
+            <spec_url>https://dvcs.w3.org/hg/speech-api/raw-file/tip/speechapi.html</spec_url>
+            <spec_statement/>
+          </spec>
+        </specs>
+      </testcase>
+      <testcase purpose="Test if the ErrorCode of SpeechRecognitionError is language-not-supported when the language was not supported" type="compliance" status="approved" component="WebAPI/User Interaction/Web Speech" execution_type="auto" priority="P2" id="SpeechRecognitionError_ErrorCode">
+        <description>
+          <test_script_entry>/opt/webapi-webspeech-w3c-tests/webspeech/speechrecognitionerror_errorcode.html</test_script_entry>
+        </description>
+        <specs>
+          <spec>
+            <spec_assertion element_type="attribute" element_name="ErrorCode" interface="SpeechRecognitionError" specification="Web Speech" section="User Interaction" category="W3C API Specifications"/>
+            <spec_url>https://dvcs.w3.org/hg/speech-api/raw-file/tip/speechapi.html</spec_url>
+            <spec_statement/>
+          </spec>
+        </specs>
+      </testcase>
+      <testcase purpose="Test if the message of SpeechRecognitionError is null when no speech was detected" type="compliance" status="approved" component="WebAPI/User Interaction/Web Speech" execution_type="auto" priority="P2" id="SpeechRecognitionError_Message">
+        <description>
+          <test_script_entry>/opt/webapi-webspeech-w3c-tests/webspeech/speechrecognitionerror_message.html</test_script_entry>
+        </description>
+        <specs>
+          <spec>
+            <spec_assertion element_type="attribute" element_name="Message" interface="SpeechRecognitionError" specification="Web Speech" section="User Interaction" category="W3C API Specifications"/>
+            <spec_url>https://dvcs.w3.org/hg/speech-api/raw-file/tip/speechapi.html</spec_url>
+            <spec_statement/>
+          </spec>
+        </specs>
+      </testcase>
+      <testcase purpose="Test if emma attribute is EMMA 1.0 representation of this result" type="compliance" status="approved" component="WebAPI/User Interaction/Web Speech" execution_type="manual" priority="P2" id="SpeechRecognitionEvent_Emma">
+        <description>
+          <test_script_entry>/opt/webapi-webspeech-w3c-tests/webspeech/speechrecognitionevent_emma_m.html</test_script_entry>
+        </description>
+        <specs>
+          <spec>
+            <spec_assertion element_type="attribute" element_name="Emma" interface="SpeechRecognitionEvent" specification="Web Speech" section="User Interaction" category="W3C API Specifications"/>
+            <spec_url>https://dvcs.w3.org/hg/speech-api/raw-file/tip/speechapi.html</spec_url>
+            <spec_statement/>
+          </spec>
+        </specs>
+      </testcase>
+      <testcase purpose="Test if the interpretation represents the semantic meaning from what the user said, current options are null or a copy of the transcript" type="compliance" status="approved" component="WebAPI/User Interaction/Web Speech" execution_type="manual" priority="P2" id="SpeechRecognitionEvent_Interpretation">
+        <description>
+          <test_script_entry>/opt/webapi-webspeech-w3c-tests/webspeech/speechrecognitionevent_interpretation_m.html</test_script_entry>
+        </description>
+        <specs>
+          <spec>
+            <spec_assertion element_type="attribute" element_name="Interpretation" interface="SpeechRecognitionEvent" specification="Web Speech" section="User Interaction" category="W3C API Specifications"/>
+            <spec_url>https://dvcs.w3.org/hg/speech-api/raw-file/tip/speechapi.html</spec_url>
+            <spec_statement/>
+          </spec>
+        </specs>
+      </testcase>
+      <testcase purpose="Test if the resultIndex is set to the lowest index in the results array that has changed" type="compliance" status="approved" component="WebAPI/User Interaction/Web Speech" execution_type="manual" priority="P2" id="SpeechRecognitionEvent_Resultindex">
+        <description>
+          <test_script_entry>/opt/webapi-webspeech-w3c-tests/webspeech/speechrecognitionevent_resultindex_m.html</test_script_entry>
+        </description>
+        <specs>
+          <spec>
+            <spec_assertion element_type="attribute" element_name="Resultindex" interface="SpeechRecognitionEvent" specification="Web Speech" section="User Interaction" category="W3C API Specifications"/>
+            <spec_url>https://dvcs.w3.org/hg/speech-api/raw-file/tip/speechapi.html</spec_url>
+            <spec_statement/>
+          </spec>
+        </specs>
+      </testcase>
+      <testcase purpose="Test if interim results will be returned when the interim attribute is set to true" type="compliance" status="approved" component="WebAPI/User Interaction/Web Speech" execution_type="manual" priority="P2" id="SpeechRecognition_interimresults">
+        <description>
+          <test_script_entry>/opt/webapi-webspeech-w3c-tests/webspeech/speechrecognition_interimresults_m.html</test_script_entry>
+        </description>
+        <specs>
+          <spec>
+            <spec_assertion element_type="attribute" element_name="interimresults" interface="SpeechRecognition" specification="Web Speech" section="User Interaction" category="W3C API Specifications"/>
+            <spec_url>https://dvcs.w3.org/hg/speech-api/raw-file/tip/speechapi.html</spec_url>
+            <spec_statement/>
+          </spec>
+        </specs>
+      </testcase>
+      <testcase purpose="Test if default to use the lang of the html document root element when the input request opens a connection to the recognition service" type="compliance" status="approved" component="WebAPI/User Interaction/Web Speech" execution_type="auto" priority="P2" id="SpeechRecognition_lang">
+        <description>
+          <test_script_entry>/opt/webapi-webspeech-w3c-tests/webspeech/speechrecognition_lang.html</test_script_entry>
+        </description>
+        <specs>
+          <spec>
+            <spec_assertion element_type="attribute" element_name="lang" interface="SpeechRecognition" specification="Web Speech" section="User Interaction" category="W3C API Specifications"/>
+            <spec_url>https://dvcs.w3.org/hg/speech-api/raw-file/tip/speechapi.html</spec_url>
+            <spec_statement/>
+          </spec>
+        </specs>
+      </testcase>
+      <testcase purpose="Test if the maximum number of SpeechRecognitionAlternatives per result is 0 when set maxAlternatives attribute to be 0" type="compliance" status="approved" component="WebAPI/User Interaction/Web Speech" execution_type="manual" priority="P2" id="SpeechRecognition_maxalternatives">
+        <description>
+          <test_script_entry>/opt/webapi-webspeech-w3c-tests/webspeech/speechrecognition_maxalternatives_m.html</test_script_entry>
+        </description>
+        <specs>
+          <spec>
+            <spec_assertion element_type="attribute" element_name="maxalternatives" interface="SpeechRecognition" specification="Web Speech" section="User Interaction" category="W3C API Specifications"/>
+            <spec_url>https://dvcs.w3.org/hg/speech-api/raw-file/tip/speechapi.html</spec_url>
+            <spec_statement/>
+          </spec>
+        </specs>
+      </testcase>
+      <testcase purpose="Test if the final boolean is set to true if this is the final time the speech service will return this particular index value" type="compliance" status="approved" component="WebAPI/User Interaction/Web Speech" execution_type="manual" priority="P2" id="SpeechRecognitionResult_final">
+        <description>
+          <test_script_entry>/opt/webapi-webspeech-w3c-tests/webspeech/speechrecognitionresult_final_m.html</test_script_entry>
+        </description>
+        <specs>
+          <spec>
+            <spec_assertion element_type="attribute" element_name="final" interface="SpeechRecognitionResult" specification="Web Speech" section="User Interaction" category="W3C API Specifications"/>
+            <spec_url>https://dvcs.w3.org/hg/speech-api/raw-file/tip/speechapi.html</spec_url>
+            <spec_statement/>
+          </spec>
+        </specs>
+      </testcase>
+      <testcase purpose="Test if item returns null when index is greater than or equal to length" type="compliance" status="approved" component="WebAPI/User Interaction/Web Speech" execution_type="manual" priority="P2" id="SpeechRecognitionResult_item">
+        <description>
+          <test_script_entry>/opt/webapi-webspeech-w3c-tests/webspeech/speechrecognitionresult_item_m.html</test_script_entry>
+        </description>
+        <specs>
+          <spec>
+            <spec_assertion element_type="attribute" element_name="item" interface="SpeechRecognitionResult" specification="Web Speech" section="User Interaction" category="W3C API Specifications"/>
+            <spec_url>https://dvcs.w3.org/hg/speech-api/raw-file/tip/speechapi.html</spec_url>
+            <spec_statement/>
+          </spec>
+        </specs>
+      </testcase>
+      <testcase purpose="Test if the long attribute represents how many n-best alternatives are represented in the item array" type="compliance" status="approved" component="WebAPI/User Interaction/Web Speech" execution_type="manual" priority="P2" id="SpeechRecognitionResult_length">
+        <description>
+          <test_script_entry>/opt/webapi-webspeech-w3c-tests/webspeech/speechrecognitionresult_length_m.html</test_script_entry>
+        </description>
+        <specs>
+          <spec>
+            <spec_assertion element_type="attribute" element_name="length" interface="SpeechRecognitionResult" specification="Web Speech" section="User Interaction" category="W3C API Specifications"/>
+            <spec_url>https://dvcs.w3.org/hg/speech-api/raw-file/tip/speechapi.html</spec_url>
+            <spec_statement/>
+          </spec>
+        </specs>
+      </testcase>
+      <testcase purpose="Test if item returns null when index is greater than or equal to length" type="compliance" status="approved" component="WebAPI/User Interaction/Web Speech" execution_type="manual" priority="P2" id="SpeechRecognitionResultList_item">
+        <description>
+          <test_script_entry>/opt/webapi-webspeech-w3c-tests/webspeech/speechrecognitionresultlist_item_m.html</test_script_entry>
+        </description>
+        <specs>
+          <spec>
+            <spec_assertion element_type="attribute" element_name="item" interface="SpeechRecognitionResultList" specification="Web Speech" section="User Interaction" category="W3C API Specifications"/>
+            <spec_url>https://dvcs.w3.org/hg/speech-api/raw-file/tip/speechapi.html</spec_url>
+            <spec_statement/>
+          </spec>
+        </specs>
+      </testcase>
+      <testcase purpose="Test if item returns null when index is greater than or equal to length" type="compliance" status="approved" component="WebAPI/User Interaction/Web Speech" execution_type="manual" priority="P2" id="SpeechRecognitionResultList_length">
+        <description>
+          <test_script_entry>/opt/webapi-webspeech-w3c-tests/webspeech/speechrecognitionresultlist_length_m.html</test_script_entry>
+        </description>
+        <specs>
+          <spec>
+            <spec_assertion element_type="attribute" element_name="length" interface="SpeechRecognitionResultList" specification="Web Speech" section="User Interaction" category="W3C API Specifications"/>
+            <spec_url>https://dvcs.w3.org/hg/speech-api/raw-file/tip/speechapi.html</spec_url>
+            <spec_statement/>
+          </spec>
+        </specs>
+      </testcase>
+      <testcase purpose="Test if character index into the original utterance string that most closely approximates the current speaking position of the speech engine" type="compliance" status="approved" component="WebAPI/User Interaction/Web Speech" execution_type="auto" priority="P2" id="SpeechSynthesisEvent_charIndex">
+        <description>
+          <test_script_entry>/opt/webapi-webspeech-w3c-tests/webspeech/speechsynthesisevent_charIndex.html</test_script_entry>
+        </description>
+        <specs>
+          <spec>
+            <spec_assertion element_type="attribute" element_name="charIndex" interface="SpeechSynthesisEvent" specification="Web Speech" section="User Interaction" category="W3C API Specifications"/>
+            <spec_url>https://dvcs.w3.org/hg/speech-api/raw-file/tip/speechapi.html</spec_url>
+            <spec_statement/>
+          </spec>
+        </specs>
+      </testcase>
+      <testcase purpose="Test if name should return undefined for start event" type="compliance" status="approved" component="WebAPI/User Interaction/Web Speech" execution_type="auto" priority="P2" id="SpeechSynthesisEvent_name">
+        <description>
+          <test_script_entry>/opt/webapi-webspeech-w3c-tests/webspeech/speechsynthesisevent_name.html</test_script_entry>
+        </description>
+        <specs>
+          <spec>
+            <spec_assertion element_type="attribute" element_name="name" interface="SpeechSynthesisEvent" specification="Web Speech" section="User Interaction" category="W3C API Specifications"/>
+            <spec_url>https://dvcs.w3.org/hg/speech-api/raw-file/tip/speechapi.html</spec_url>
+            <spec_statement/>
+          </spec>
+        </specs>
+      </testcase>
+      <testcase component="WebAPI/User Interaction/Web Speech" execution_type="manual" id="SpeechSynthesisUtterance_error" purpose="Test if fired if there was an error that prevented successful speaking of this utterance" type="compliance" status="approved" priority="P2">
+        <description>
+          <test_script_entry>/opt/webapi-webspeech-w3c-tests/webspeech/speechsynthesisutterance_error_m.html</test_script_entry>
+        </description>
+        <specs>
+          <spec>
+            <spec_assertion element_type="event" element_name="error" interface="SpeechSynthesisUtterance" specification="Web Speech" section="User Interaction" category="W3C API Specifications"/>
+            <spec_url>https://dvcs.w3.org/hg/speech-api/raw-file/tip/speechapi.html</spec_url>
+            <spec_statement/>
+          </spec>
+        </specs>
+      </testcase>
+      <testcase component="WebAPI/User Interaction/Web Speech" execution_type="auto" id="SpeechSynthesisUtterance_lang" purpose="Test if default to use the lang of the html document root element" type="compliance" status="approved" priority="P2">
+        <description>
+          <test_script_entry>/opt/webapi-webspeech-w3c-tests/webspeech/speechsynthesisutterance_lang.html</test_script_entry>
+        </description>
+        <specs>
+          <spec>
+            <spec_assertion element_type="attribute" element_name="lang" interface="SpeechSynthesisUtterance" specification="Web Speech" section="User Interaction" category="W3C API Specifications"/>
+            <spec_url>https://dvcs.w3.org/hg/speech-api/raw-file/tip/speechapi.html</spec_url>
+            <spec_statement/>
+          </spec>
+        </specs>
+      </testcase>
+      <testcase component="WebAPI/User Interaction/Web Speech" execution_type="auto" id="SpeechSynthesisUtterance_mark" purpose="Test if fired when this utterance has begun to be spoken" type="compliance" status="approved" priority="P2">
+        <description>
+          <test_script_entry>/opt/webapi-webspeech-w3c-tests/webspeech/speechsynthesisutterance_mark.html</test_script_entry>
+        </description>
+        <specs>
+          <spec>
+            <spec_assertion element_type="event" element_name="mark" interface="SpeechSynthesisUtterance" specification="Web Speech" section="User Interaction" category="W3C API Specifications"/>
+            <spec_url>https://dvcs.w3.org/hg/speech-api/raw-file/tip/speechapi.html</spec_url>
+            <spec_statement/>
+          </spec>
+        </specs>
+      </testcase>
+      <testcase component="WebAPI/User Interaction/Web Speech" execution_type="auto" id="SpeechSynthesisUtterance_pause" purpose="Test if fired when and if this utterance is paused mid-utterance" type="compliance" status="approved" priority="P2">
+        <description>
+          <test_script_entry>/opt/webapi-webspeech-w3c-tests/webspeech/speechsynthesisutterance_pause.html</test_script_entry>
+        </description>
+        <specs>
+          <spec>
+            <spec_assertion element_type="event" element_name="pause" interface="SpeechSynthesisUtterance" specification="Web Speech" section="User Interaction" category="W3C API Specifications"/>
+            <spec_url>https://dvcs.w3.org/hg/speech-api/raw-file/tip/speechapi.html</spec_url>
+            <spec_statement/>
+          </spec>
+        </specs>
+      </testcase>
+      <testcase component="WebAPI/User Interaction/Web Speech" execution_type="auto" id="SpeechSynthesisUtterance_pitch_1" purpose="Test if pitch is a default of 1" type="compliance" status="approved" priority="P2">
+        <description>
+          <test_script_entry>/opt/webapi-webspeech-w3c-tests/webspeech/speechsynthesisutterance_pitch.html?total_num=3&amp;amp;locator_key=id&amp;amp;value=1</test_script_entry>
+        </description>
+        <specs>
+          <spec>
+            <spec_assertion element_type="attribute" element_name="pitch" interface="SpeechSynthesisUtterance" specification="Web Speech" section="User Interaction" category="W3C API Specifications"/>
+            <spec_url>https://dvcs.w3.org/hg/speech-api/raw-file/tip/speechapi.html</spec_url>
+            <spec_statement/>
+          </spec>
+        </specs>
+      </testcase>
+      <testcase component="WebAPI/User Interaction/Web Speech" execution_type="auto" id="SpeechSynthesisUtterance_pitch_2" purpose="Test if pitch is 0 being the lowest pitch" type="compliance" status="approved" priority="P2">
+        <description>
+          <test_script_entry>/opt/webapi-webspeech-w3c-tests/webspeech/speechsynthesisutterance_pitch.html?total_num=3&amp;amp;locator_key=id&amp;amp;value=2</test_script_entry>
+        </description>
+        <specs>
+          <spec>
+            <spec_assertion element_type="attribute" element_name="pitch" interface="SpeechSynthesisUtterance" specification="Web Speech" section="User Interaction" category="W3C API Specifications"/>
+            <spec_url>https://dvcs.w3.org/hg/speech-api/raw-file/tip/speechapi.html</spec_url>
+            <spec_statement/>
+          </spec>
+        </specs>
+      </testcase>
+      <testcase component="WebAPI/User Interaction/Web Speech" execution_type="auto" id="SpeechSynthesisUtterance_pitch_3" purpose="Test if pitch is 2 being the highest pitch" type="compliance" status="approved" priority="P2">
+        <description>
+          <test_script_entry>/opt/webapi-webspeech-w3c-tests/webspeech/speechsynthesisutterance_pitch.html?total_num=3&amp;amp;locator_key=id&amp;amp;value=3</test_script_entry>
+        </description>
+        <specs>
+          <spec>
+            <spec_assertion element_type="attribute" element_name="pitch" interface="SpeechSynthesisUtterance" specification="Web Speech" section="User Interaction" category="W3C API Specifications"/>
+            <spec_url>https://dvcs.w3.org/hg/speech-api/raw-file/tip/speechapi.html</spec_url>
+            <spec_statement/>
+          </spec>
+        </specs>
+      </testcase>
+      <testcase component="WebAPI/User Interaction/Web Speech" execution_type="auto" id="SpeechSynthesisUtterance_rate_1" purpose="Test if rate is a default of 1" type="compliance" status="approved" priority="P2">
+        <description>
+          <test_script_entry>/opt/webapi-webspeech-w3c-tests/webspeech/speechsynthesisutterance_rate.html?total_num=3&amp;amp;locator_key=id&amp;amp;value=1</test_script_entry>
+        </description>
+        <specs>
+          <spec>
+            <spec_assertion element_type="attribute" element_name="rate" interface="SpeechSynthesisUtterance" specification="Web Speech" section="User Interaction" category="W3C API Specifications"/>
+            <spec_url>https://dvcs.w3.org/hg/speech-api/raw-file/tip/speechapi.html</spec_url>
+            <spec_statement/>
+          </spec>
+        </specs>
+      </testcase>
+      <testcase component="WebAPI/User Interaction/Web Speech" execution_type="auto" id="SpeechSynthesisUtterance_rate_2" purpose="Test if rate is 0.1 being the lowest rate" type="compliance" status="approved" priority="P2">
+        <description>
+          <test_script_entry>/opt/webapi-webspeech-w3c-tests/webspeech/speechsynthesisutterance_rate.html?total_num=3&amp;amp;locator_key=id&amp;amp;value=2</test_script_entry>
+        </description>
+        <specs>
+          <spec>
+            <spec_assertion element_type="attribute" element_name="rate" interface="SpeechSynthesisUtterance" specification="Web Speech" section="User Interaction" category="W3C API Specifications"/>
+            <spec_url>https://dvcs.w3.org/hg/speech-api/raw-file/tip/speechapi.html</spec_url>
+            <spec_statement/>
+          </spec>
+        </specs>
+      </testcase>
+      <testcase component="WebAPI/User Interaction/Web Speech" execution_type="auto" id="SpeechSynthesisUtterance_rate_3" purpose="Test if rate is 10 being the highest rate" type="compliance" status="approved" priority="P2">
+        <description>
+          <test_script_entry>/opt/webapi-webspeech-w3c-tests/webspeech/speechsynthesisutterance_rate.html?total_num=3&amp;amp;locator_key=id&amp;amp;value=3</test_script_entry>
+        </description>
+        <specs>
+          <spec>
+            <spec_assertion element_type="attribute" element_name="rate" interface="SpeechSynthesisUtterance" specification="Web Speech" section="User Interaction" category="W3C API Specifications"/>
+            <spec_url>https://dvcs.w3.org/hg/speech-api/raw-file/tip/speechapi.html</spec_url>
+            <spec_statement/>
+          </spec>
+        </specs>
+      </testcase>
+      <testcase component="WebAPI/User Interaction/Web Speech" execution_type="auto" id="SpeechSynthesisUtterance_resume" purpose="Test if fired when and if this utterance is resumed after being paused mid-utterance" type="compliance" status="approved" priority="P2">
+        <description>
+          <test_script_entry>/opt/webapi-webspeech-w3c-tests/webspeech/speechsynthesisutterance_resume.html</test_script_entry>
+        </description>
+        <specs>
+          <spec>
+            <spec_assertion element_type="event" element_name="resume" interface="SpeechSynthesisUtterance" specification="Web Speech" section="User Interaction" category="W3C API Specifications"/>
+            <spec_url>https://dvcs.w3.org/hg/speech-api/raw-file/tip/speechapi.html</spec_url>
+            <spec_statement/>
+          </spec>
+        </specs>
+      </testcase>
+      <testcase component="WebAPI/User Interaction/Web Speech" execution_type="auto" id="SpeechSynthesisUtterance_start" purpose="Test if fired when this utterance has begun to be spoken" type="compliance" status="approved" priority="P2">
+        <description>
+          <test_script_entry>/opt/webapi-webspeech-w3c-tests/webspeech/speechsynthesisutterance_start.html</test_script_entry>
+        </description>
+        <specs>
+          <spec>
+            <spec_assertion element_type="event" element_name="start" interface="SpeechSynthesisUtterance" specification="Web Speech" section="User Interaction" category="W3C API Specifications"/>
+            <spec_url>https://dvcs.w3.org/hg/speech-api/raw-file/tip/speechapi.html</spec_url>
+            <spec_statement/>
+          </spec>
+        </specs>
+      </testcase>
+      <testcase component="WebAPI/User Interaction/Web Speech" execution_type="auto" id="SpeechSynthesisUtterance_text" purpose="Test if text can be a complete, well-formed SSML document" type="compliance" status="approved" priority="P2">
+        <description>
+          <test_script_entry>/opt/webapi-webspeech-w3c-tests/webspeech/speechsynthesisutterance_text.html</test_script_entry>
+        </description>
+        <specs>
+          <spec>
+            <spec_assertion element_type="attribute" element_name="text" interface="SpeechSynthesisUtterance" specification="Web Speech" section="User Interaction" category="W3C API Specifications"/>
+            <spec_url>https://dvcs.w3.org/hg/speech-api/raw-file/tip/speechapi.html</spec_url>
+            <spec_statement/>
+          </spec>
+        </specs>
+      </testcase>
+      <testcase component="WebAPI/User Interaction/Web Speech" execution_type="auto" id="SpeechSynthesisUtterance_volume_1" purpose="Test if volume is a default of 1" type="compliance" status="approved" priority="P2">
+        <description>
+          <test_script_entry>/opt/webapi-webspeech-w3c-tests/webspeech/speechsynthesisutterance_volume.html?total_num=3&amp;amp;locator_key=id&amp;amp;value=1</test_script_entry>
+        </description>
+        <specs>
+          <spec>
+            <spec_assertion element_type="attribute" element_name="volume" interface="SpeechSynthesisUtterance" specification="Web Speech" section="User Interaction" category="W3C API Specifications"/>
+            <spec_url>https://dvcs.w3.org/hg/speech-api/raw-file/tip/speechapi.html</spec_url>
+            <spec_statement/>
+          </spec>
+        </specs>
+      </testcase>
+      <testcase component="WebAPI/User Interaction/Web Speech" execution_type="auto" id="SpeechSynthesisUtterance_volume_2" purpose="Test if volume is 0 being the lowest volume" type="compliance" status="approved" priority="P2">
+        <description>
+          <test_script_entry>/opt/webapi-webspeech-w3c-tests/webspeech/speechsynthesisutterance_volume.html?total_num=3&amp;amp;locator_key=id&amp;amp;value=2</test_script_entry>
+        </description>
+        <specs>
+          <spec>
+            <spec_assertion element_type="attribute" element_name="volume" interface="SpeechSynthesisUtterance" specification="Web Speech" section="User Interaction" category="W3C API Specifications"/>
+            <spec_url>https://dvcs.w3.org/hg/speech-api/raw-file/tip/speechapi.html</spec_url>
+            <spec_statement/>
+          </spec>
+        </specs>
+      </testcase>
+      <testcase component="WebAPI/User Interaction/Web Speech" execution_type="auto" id="SpeechSynthesisUtterance_volume_3" purpose="Test if volume is 1 being the highest volume" type="compliance" status="approved" priority="P2">
+        <description>
+          <test_script_entry>/opt/webapi-webspeech-w3c-tests/webspeech/speechsynthesisutterance_volume.html?total_num=3&amp;amp;locator_key=id&amp;amp;value=3</test_script_entry>
+        </description>
+        <specs>
+          <spec>
+            <spec_assertion element_type="attribute" element_name="volume" interface="SpeechSynthesisUtterance" specification="Web Speech" section="User Interaction" category="W3C API Specifications"/>
+            <spec_url>https://dvcs.w3.org/hg/speech-api/raw-file/tip/speechapi.html</spec_url>
+            <spec_statement/>
+          </spec>
+        </specs>
+      </testcase>
+      <testcase component="WebAPI/User Interaction/Web Speech" execution_type="auto" id="SpeechSynthesisVoiceList_item" purpose="Test if item returns null when index is greater than or equal to length" type="compliance" status="approved" priority="P2">
+        <description>
+          <test_script_entry>/opt/webapi-webspeech-w3c-tests/webspeech/speechsynthesisvoicelist_item.html</test_script_entry>
+        </description>
+        <specs>
+          <spec>
+            <spec_assertion element_type="attribute" element_name="item" interface="SpeechSynthesisVoiceList" specification="Web Speech" section="User Interaction" category="W3C API Specifications"/>
+            <spec_url>https://dvcs.w3.org/hg/speech-api/raw-file/tip/speechapi.html</spec_url>
+            <spec_statement/>
+          </spec>
+        </specs>
+      </testcase>
     </set>
   </suite>
 </test_definition>
