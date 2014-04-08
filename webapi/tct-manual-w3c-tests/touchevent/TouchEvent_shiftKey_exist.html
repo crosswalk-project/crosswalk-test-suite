@@ -27,6 +27,7 @@ EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
 Authors:
         Cui,Jieqiong <jieqiongx.cui@intel.com>
+        Wang, Hongjuan <hongjuanx.wang@intel.com>
 
 -->
 
@@ -37,48 +38,24 @@ Authors:
     <link rel="help" href="http://www.w3.org/TR/2013/WD-touch-events-20130124/#touchevent-interface" />
     <meta name="flags" content="interact" />
     <meta name="assert" content="Check if the attribute shiftKey exists" />
-    <script src="../resources/blacklist.js" type="text/javascript"></script>
-    <script src="../resources/testharness.js" type="text/javascript"></script>
-    <script src="../resources/testharnessreport.js" type="text/javascript"></script>
+    <script src="../resources/testharness.js"></script>
+    <script src="../resources/testharnessreport.js"></script>
   </head>
-  <body onload="run()">
+  <body>
     <h1>Please touch the "Touch" button</h1>
     <button id="touchdiv">Touch</button>
     <div id="log"></div>
     <script>
-        t = async_test(document.title, { timeout: 300000000000});
-        function listener(ev) {
-            t.step(function() {
-                assert_true("shiftKey" in ev, "the attribute shiftKey exists");
-            });
-            t.done();
-        }
-        function run() {
-            if (!is_platform_supported("TouchEventsManager.createTouch")) {
-                try {
-                    document.getElementById('touchdiv').addEventListener('touchstart', listener, false);
-                } catch (err) {
-                    t.step(function() {
-                        if (err.name == "NOT_SUPPORTED_ERROR") {
-                            assert_true(true, "Mark the case as \"PASS\" because the platform actually doesn't support the interface");
-                        } else {
-                            assert_true(false, "Exception while get shiftKey attribute" + err.name + err.message);
-                        }
-                    });
-                    t.done();
-                }
-                return;
-            }
-            //The API is not in blacklist, then do normal tests
-            try {
-                document.getElementById('touchdiv').addEventListener('touchstart', listener, false);
-            } catch (err) {
-                t.step(function() {
-                    assert_true(false, "Exception while get shiftKey attribute " + err.name + err.message);
-                });
-                t.done();
-            }
-        }
+      t = async_test("Check if the attribute shiftKey exists", { timeout: 20000});
+
+      function listener(ev) {
+        t.step(function() {
+          assert_true("shiftKey" in ev, "the attribute shiftKey exists");
+        });
+        t.done();
+      }
+
+      document.getElementById('touchdiv').addEventListener('touchstart', listener, false);
     </script>
   </body>
 </html>

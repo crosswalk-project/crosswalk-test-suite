@@ -358,8 +358,8 @@ policies and contribution forms [3].
     // default timeout is 5 seconds, test can override if needed
     var settings = {
       output:true,
-      timeout:5000,
-      test_timeout:2000
+      timeout:9000,
+      test_timeout:5000
     };
 
     var xhtml_ns = "http://www.w3.org/1999/xhtml";
@@ -2219,19 +2219,4 @@ policies and contribution forms [3].
         return supports;
     }
 })();
-
-/*
- *For blacklist
- */
-
-function is_platform_supported(name)
-{
-    var ret = true;
-
-    if (not_support_list.indexOf(name) >= 0)
-        ret = false;
-
-    return ret;
-}
-
 // vim: set expandtab shiftwidth=4 tabstop=4:

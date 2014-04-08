@@ -2219,19 +2219,4 @@ policies and contribution forms [3].
         return supports;
     }
 })();
-
-/*
- *For blacklist
- */
-
-function is_platform_supported(name)
-{
-    var ret = true;
-
-    if (not_support_list.indexOf(name) >= 0)
-        ret = false;
-
-    return ret;
-}
-
 // vim: set expandtab shiftwidth=4 tabstop=4:
