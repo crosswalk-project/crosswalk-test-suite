@@ -18,9 +18,12 @@ function installpkg(){
 }
 
 function uninstallpkg(){
-    pkgid=`pkgcmd -l | grep $PACKAGENAME | cut -d '[' -f3 | cut -d ']' -f1`
-    xwalkctl --uninstall $pkgid
-
+    xwalkctl >/tmp/apps.txt 2>&1
+    pkgids=`cat /tmp/apps.txt | grep $PACKAGENAME | awk '{print $(NF-1)}'`
+    for pkgid in $pkgids
+    do
+        xwalkctl --uninstall $pkgid
+    done
     #TODO: remove resource
     #eg:rm xx
 
