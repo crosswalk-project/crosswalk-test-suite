@@ -2,11 +2,11 @@
 source $(dirname $0)/$(basename $(pwd)).spec
 
 #parse params
-usage="Usage: ./pack.sh [-t <package type: wgt | apk | crx | xpk | cordova>] [-m <apk mode: shared | embedded>] [-p <xpk platform: mobile | ivi>] [-a <apk runtime arch: x86 | arm>]
+usage="Usage: ./pack.sh [-t <package type: wgt | apk | crx | xpk | cordova>] [-m <apk mode: shared | embedded>] [-a <apk runtime arch: x86 | arm>]
 [-t wgt] option was set as default.
 [-m shared] option was set as default.
 [-a x86] option was set as default.
-[-p mobile] option was set as default."
+"
 
 if [[ $1 == "-h" || $1 == "--help" ]]; then
     echo "$usage"
@@ -16,14 +16,12 @@ fi
 type="wgt"
 mode="shared"
 arch="x86"
-platform="mobile"
-while getopts t:m:a:p: o
+while getopts t:m:a: o
 do
     case "$o" in
     t) type=$OPTARG;;
     m) mode=$OPTARG;;
     a) arch=$OPTARG;;
-    p) platform=$OPTARG;;
     *) echo "$usage"
        exit 1;;
     esac
@@ -289,11 +287,7 @@ fi
 
 function zip_for_xpk(){
 cd $BUILD_DEST
-if [ $platform == "ivi" ]; then
-    cp -af $BUILD_ROOT/inst.sh.ivi $BUILD_DEST/opt/$name/inst.sh
-else
-    cp -af $BUILD_ROOT/inst.sh.xpk $BUILD_DEST/opt/$name/inst.sh
-fi
+cp -af $BUILD_ROOT/inst.sh.xpk $BUILD_DEST/opt/$name/inst.sh
 mv $BUILD_ROOT/$name.xpk $BUILD_DEST/opt/$name/
 mv $BUILD_ROOT/$SubXpkDir.xpk $BUILD_DEST/opt/$name/
 
