@@ -76,7 +76,7 @@ function func_launch()
     fi
     find_app $APP_NAME
     launch_app $APP_NAME
-    App_Status=`wrt-launcher -r $WIDGETNAME | grep "not running"`
+    App_Status=`xwalk-launcher -r $WIDGETNAME | grep "not running"`
     if [ -z $App_Status ];then
       echo "The widget is launched successfully"
       return 0
