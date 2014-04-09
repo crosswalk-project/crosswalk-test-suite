@@ -30,16 +30,14 @@
 
 LIST=`find -maxdepth 1 -type d`
 
-APKBLACK="webapi-sanityapp-tizen-tests
-webapi-mediaqueries-css3-tests
-webapi-style-css3-tests
-webapi-ivi-tests
+APKBLACK="webapi-style-css3-tests
 webapi-ambientlight-w3c-tests
 webapi-imports-w3c-tests
-webapi-webaudio-w3c-tests
 webapi-htmltemplates-html5-tests
 webapi-shadowdom-w3c-tests
 webapi-taskscheduler-sysapps-tests
+ivi-tests
+webapi-dlna-xwalk-tests
 tizen-tests
 tct-wgtapi
 tct-widget
@@ -48,35 +46,47 @@ tct-getcapabilities
 tct-manual-w3c-tests"
 
 XPKBLACK="webapi-contactsmanager-sysapps-tests
-webapi-mediaqueries-css3-tests
 webapi-style-css3-tests
-webapi-ivi-tests
 webapi-ambientlight-w3c-tests
 webapi-imports-w3c-tests
-webapi-webaudio-w3c-tests
 webapi-htmltemplates-html5-tests
 webapi-presentation-xwalk-tests
 webapi-shadowdom-w3c-tests
 webapi-taskscheduler-sysapps-tests
 webapi-simd-nonw3c-tests
+webapi-dlna-ivi-tests
+webapi-locale-ivi-tests
+webapi-messageport-ivi-tests
+webapi-notification-ivi-tests
+webapi-speechapi-ivi-tests
+webapi-vehicleinfo-ivi-tests
+webapi-nativefileapi-xwalk-tests
+webapi-embeddingapi-xwalk-tests
 tct-alarm-tizen-tests
 tct-appcontrol-tizen-tests
 tct-calendar-tizen-tests
+tct-callhistory-tizen-tests
 tct-contact-tizen-tests
+tct-content-tizen-tests
 tct-datacontrol-tizen-tests
+tct-datasync-tizen-tests
+tct-download-tizen-tests
 tct-livebox-tizen-tests
 tct-messaging
 tct-nfc-tizen-tests
 tct-package-tizen-tests
+tct-privilege-tizen-tests
 tct-push-tizen-tests
 tct-secureelement-tizen-tests
-tct-tizen-tizen-tests
+tct-time-tizen-tests
 tct-websetting-tizen-tests
 tct-wgtapi
 tct-widget
 tct-manual-w3c-tests"
 
 WGTBLACK="webapi-
+tct-wgtapi
+tct-widget
 tct-manual-w3c-tests"
 
 for list in $LIST;do
