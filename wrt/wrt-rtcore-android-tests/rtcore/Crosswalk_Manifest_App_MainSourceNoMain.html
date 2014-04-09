@@ -41,15 +41,17 @@ Authors:
       <strong>Test steps:</strong>
     </p>
     <ol>
-      <li>Install webapp by typing "adb install manifest_app_mainSourceNoMain_tests.apk"</li>
+      <li>Install webapp by typing "python make_apk.py --manifest=webpath/manifest_app_mainSourceNoMain_tests/manifest.json"</li>
+      <li>Install this app "adb install manifest_app_mainSourceNoMain_tests.apk"</li>
       <li>Launch the app.</li>
     </ol>
     <p>
       <strong>Expected Output:</strong>
     </p>
     <ol>
-      <li>Webapp is installed successfully, no error, no warning message.</li>
-      <li>The app is launch no crash</li>
+      <li>Webapp can be packed successfully.</li>
+      <li>Install this app successfully.</li>
+      <li>The app is launch no error.</li>
     </ol>
   </body>
 </html>

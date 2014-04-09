@@ -138,18 +138,20 @@ webapp/manifest_app_MainSourceNoFile_tests/Makefile \
 
 webapp/manifest_icon_chinese_tests/Makefile \
 webapp/manifest_icon_nofile_tests/Makefile \
-webapp/manifest_icon_valueerror_tests/Makefile \
+webapp/manifest_icon_namedasterisk_tests/Makefile \
 webapp/manifest_icon_valuenull_tests/Makefile \
-webapp/manifest_extend_description_chinese/Makefile \
-webapp/manifest_extend_description_long/Makefile \
-webapp/manifest_extend_description_null/Makefile \
-webapp/manifest_extend_description_specific/Makefile \
-webapp/manifest_extend_description_number/Makefile \
+webapp/manifest_desc_chinese_tests/Makefile \
+webapp/manifest_desc_long_tests/Makefile \
+webapp/manifest_desc_null_tests/Makefile \
+webapp/manifest_desc_specific_tests/Makefile \
 webapp/permission_field_splite_tests/Makefile \
 webapp/permission_field_null_tests/Makefile \
 webapp/permission_field_noapi_tests/Makefile \
 webapp/permission_field_chinese_tests/Makefile \
 webapp/splashscreen_launchscreen_field_tests/Makefile \
+webapp/manifest_icon_nofiles_tests/Makefile \
+webapp/manifest_icon_twoicon_tests/Makefile \
+webapp/manifest_icon_threeicon_tests/Makefile \
 
 webapp/manifest_app_mainSourceNullValue_tests/Makefile])
 AC_OUTPUT
