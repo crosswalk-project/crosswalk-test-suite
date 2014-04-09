@@ -65,8 +65,7 @@ function create_wgt(){
     cp -af $BUILD_ROOT/index.html $BUILD_DEST/
     cp -af $BUILD_ROOT/config.xml $BUILD_DEST/
     cp -af $BUILD_ROOT/icon.png $BUILD_DEST/
-    cp -af $BUILD_ROOT/tests.xml $BUILD_DEST/
-    cp -af $BUILD_ROOT/tests.full.xml $BUILD_DEST/
+    cp -af $BUILD_ROOT/tests.tizen.xml $BUILD_DEST/tests.xml
     cp -af $BUILD_ROOT/subtestresult.xml $BUILD_DEST/
     cp -af $BUILD_ROOT/js $BUILD_DEST/
     cp -af $BUILD_ROOT/css $BUILD_DEST/
@@ -112,7 +111,7 @@ EOF
     cp -af $BUILD_ROOT/index.html $BUILD_DEST/
     cp -af $BUILD_ROOT/config.xml $BUILD_DEST/
     cp -af $BUILD_ROOT/icon.png $BUILD_DEST/
-    cp -af $BUILD_ROOT/tests.xml $BUILD_DEST/
+    cp -af $BUILD_ROOT/tests.android.xml $BUILD_DEST/tests.xml
     cp -af $BUILD_ROOT/subtestresult.xml $BUILD_DEST/
     cp -af $BUILD_ROOT/js $BUILD_DEST/
     cp -af $BUILD_ROOT/css $BUILD_DEST/
@@ -144,7 +143,7 @@ EOF
     cp -af $BUILD_ROOT/index.html $BUILD_DEST/
     cp -af $BUILD_ROOT/config.xml $BUILD_DEST/
     cp -af $BUILD_ROOT/icon.png $BUILD_DEST/
-    cp -af $BUILD_ROOT/tests.xml $BUILD_DEST/
+    cp -af $BUILD_ROOT/tests.tizen.xml $BUILD_DEST/tests.xml
     cp -af $BUILD_ROOT/subtestresult.xml $BUILD_DEST/
     cp -af $BUILD_ROOT/js $BUILD_DEST/
     cp -af $BUILD_ROOT/css $BUILD_DEST/
@@ -175,8 +174,7 @@ function zip_for_wgt(){
     cd $BUILD_DEST
     # cp inst.sh script and tests.xml #
     cp -af $BUILD_ROOT/inst.sh.wgt $BUILD_DEST/opt/$name/inst.sh
-    cp -af $BUILD_ROOT/tests.xml $BUILD_DEST/opt/$name/tests.xml
-    cp -af $BUILD_ROOT/tests.full.xml $BUILD_DEST/opt/$name/tests.full.xml
+    cp -af $BUILD_ROOT/tests.tizen.xml $BUILD_DEST/opt/$name/tests.xml
 
     # cp license files #
     cp -af $BUILD_ROOT/LICENSE.Apache-2.0 $BUILD_DEST/opt/$name/LICENSE.Apache-2.0
@@ -239,8 +237,7 @@ function zip_for_xpk(){
     cp -af $BUILD_ROOT/inst.sh.xpk $BUILD_DEST/opt/$name/inst.sh
     mv $BUILD_ROOT/$name.xpk $BUILD_DEST/opt/$name/
 
-    cp -af $BUILD_ROOT/tests.xml $BUILD_DEST/opt/$name/tests.xml
-    cp -af $BUILD_ROOT/tests.full.xml $BUILD_DEST/opt/$name/tests.full.xml
+    cp -af $BUILD_ROOT/tests.tizen.xml $BUILD_DEST/opt/$name/tests.xml
 
     # cp license files #
     cp -af $BUILD_ROOT/LICENSE.Apache-2.0 $BUILD_DEST/opt/$name/LICENSE.Apache-2.0
