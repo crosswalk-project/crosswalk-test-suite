@@ -41,13 +41,19 @@ Authors:
       <strong>Test steps:</strong>
     </p>
     <ol>
-      <li>Open Chrome, input 'localhost:9222' into address bar.</li>
+      <li>On IVI, typing "xwalkctl --install wepapp</li>
+      <li>Insert "--remote-debugging-port=9222" to "/usr/lib/systemd/user/xwalk.service"</li>
+      <li>Launcher webapp "xwalk-launcher $appid"</li>
+      <li>Debugg by "<xwalk_ip_adress>:9222"</li>
       <li>Click the link</li>
     </ol>
     <p>
       <strong>Expected Output:</strong>
     </p>
     <ol>
+      <li>The webapp installed successfully</li>
+      <li>Modify xwalk.service successfully</li>
+      <li>The webapp launched successfully</li>
       <li>Anspectable App information will shown on the web page.</li>
       <li>The source code of the web page launched by Crosswalk will shown.</li>
     </ol>

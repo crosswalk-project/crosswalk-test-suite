@@ -41,7 +41,11 @@ Authors:
     </p>
     <ol>
       <li>Input "xwalkctl --install disable-device-capabilities-tests.xpk" via terminal.</li>
-      <li>Input "xwalk --run-as-service --disable-capabilities id(disable-device-capabilities-tests.xpk)" via terminal.(if xwalk service process is runing, please kill the xwalk service)</li>
+      <li>Modify xwalk.service</li>
+      * Kill the service process if it is launched<br>
+      * Modify the "/usr/lib/systemd/user/xwalk.service" file (add --disable-capabilities)<br>
+      * Launch an application using xwalk-launcher $appid
+      <li>Input "xwalk-launcher $appid" via terminal.</li>
       <li>Check webapp window.</li>
     </ol>
     <p>
@@ -49,8 +53,9 @@ Authors:
     </p>
     <ol>
       <li>The webapp installed successfully.</li>
+      <li>The xwalk.service modify successfully</li>
       <li>The webapp launched successfully by command line.</li>
-      <li>DeviceCapabilities not disabled, so the result is in contrast to use "--disable-device-capabilities".</li>
+      <li>DeviceCapabilities not disabled".</li>
     </ol>
   </body>
 </html>
