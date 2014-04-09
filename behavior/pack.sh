@@ -212,7 +212,9 @@ function zip_for_apk(){
     cd $BUILD_DEST
     # cp inst.sh script #
     cp -af $BUILD_ROOT/inst.sh.apk $BUILD_DEST/opt/$name/inst.sh
-    mv $BUILD_ROOT/crosswalk/$appname.apk $BUILD_DEST/opt/$name/
+    mv $BUILD_ROOT/crosswalk/*.apk $BUILD_DEST/opt/$name/
+
+    cp -af $BUILD_ROOT/tests.android.xml $BUILD_DEST/opt/$name/tests.xml
 
     if [ $src_file -eq 0 ];then
         for file in $(ls opt/$name |grep -v apk);do
