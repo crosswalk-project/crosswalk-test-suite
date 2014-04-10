@@ -495,7 +495,7 @@
           <test_script_entry>/opt/wrt-rtcore-android-tests/rtcore/Crosswalk_Manifest_Version_Pointcn.html</test_script_entry>
         </description>
       </testcase>
-      <testcase purpose="Validate if webapp can not be installed when source value is null" type="Functional" status="approved" component="Runtime Core" execution_type="manual" priority="P2" id="Crosswalk_Manifest_App_MainSourceNullValue">
+      <testcase purpose="Validate if webapp can not be installed when source value is null" type="Functional" status="approved" component="Runtime Core" execution_type="manual" priority="P3" id="Crosswalk_Manifest_App_MainSourceNullValue">
         <description>
           <pre_condition>
             1.Make sure CrossWalk binary is installed;
@@ -551,7 +551,7 @@
           <test_script_entry>/opt/wrt-rtcore-android-tests/rtcore/Crosswalk_Manifest_App_LaunchPathNoIndex.html</test_script_entry>
         </description>
       </testcase>
-      <testcase purpose="Validate if pakaging, install, launcher successfully when version is 1.1.1.1" type="Functional" status="approved" component="Runtime Core" execution_type="manual" priority="P2" id="Crosswalk_Manifest_Version_IdentifyingSame">
+      <testcase purpose="Validate if pakaging, install, launcher successfully when version is 1.1.1.1" type="Functional" status="approved" component="Runtime Core" execution_type="manual" priority="P1" id="Crosswalk_Manifest_Version_IdentifyingSame">
         <description>
           <pre_condition>
             1.Make sure CrossWalk binary is installed;
@@ -581,6 +581,103 @@
             1.Make sure CrossWalk binary is installed;
           </pre_condition>
           <test_script_entry>/opt/wrt-rtcore-android-tests/rtcore/Crosswalk_Manifest_Version_IdentifyingFourZero.html</test_script_entry>
+        </description>
+      </testcase>
+
+      <testcase purpose="Validate if app can not be installed when icon is chinese" type="Functional" status="approved" component="Runtime Core" execution_type="manual" priority="P2" id="Crosswalk_Manifest_Icon_Chinese">
+        <description>
+          <pre_condition>
+            1.Make sure CrossWalk binary is installed;
+          </pre_condition>
+          <test_script_entry>/opt/wrt-rtcore-android-tests/rtcore/Crosswalk_Manifest_Icon_Chinese.html</test_script_entry>
+        </description>
+      </testcase>
+      <testcase purpose="Validate if app can not be packing when no icon file" type="Functional" status="approved" component="Runtime Core" execution_type="manual" priority="P3" id="Crosswalk_Manifest_Icon_NoFile">
+        <description>
+          <pre_condition>
+            1.Make sure CrossWalk binary is installed;
+          </pre_condition>
+          <test_script_entry>/opt/wrt-rtcore-android-tests/rtcore/Crosswalk_Manifest_Icon_NoFile.html</test_script_entry>
+        </description>
+      </testcase>
+      <testcase purpose="Validate if app can be packing and installed when icon value include *" type="Functional" status="approved" component="Runtime Core" execution_type="manual" priority="P2" id="Crosswalk_Manifest_Icon_NamedAsterisk">
+        <description>
+          <pre_condition>
+            1.Make sure CrossWalk binary is installed;
+          </pre_condition>
+          <test_script_entry>/opt/wrt-rtcore-android-tests/rtcore/Crosswalk_Manifest_Icon_NamedAsterisk.html</test_script_entry>
+        </description>
+      </testcase>
+      <testcase purpose="Validate if app can not be installed when icon value is null" type="Functional" status="approved" component="Runtime Core" execution_type="manual" priority="P2" id="Crosswalk_Manifest_Icon_ValueNull">
+        <description>
+          <pre_condition>
+            1.Make sure CrossWalk binary is installed;
+          </pre_condition>
+          <test_script_entry>/opt/wrt-rtcore-android-tests/rtcore/Crosswalk_Manifest_Icon_ValueNull.html</test_script_entry>
+        </description>
+      </testcase>
+      <testcase purpose="Validate if app can packing ,install and launch" type="Functional" status="approved" component="Runtime Core" execution_type="manual" priority="P2" id="Crosswalk_Manifest_Field_Combination">
+        <description>
+          <pre_condition>
+            1.Make sure CrossWalk binary is installed;
+          </pre_condition>
+          <test_script_entry>/opt/wrt-rtcore-android-tests/rtcore/Crosswalk_Manifest_Field_Combination.html</test_script_entry>
+        </description>
+      </testcase>
+      <testcase purpose="Validate if app can packing,install and launch" type="Functional" status="approved" component="Runtime Core" execution_type="manual" priority="P2" id="Crosswalk_Manifest_Description_Specific">
+        <description>
+          <pre_condition>
+            1.Make sure CrossWalk binary is installed;
+          </pre_condition>
+          <test_script_entry>/opt/wrt-rtcore-android-tests/rtcore/Crosswalk_Manifest_Description_Specific.html</test_script_entry>
+        </description>
+      </testcase>
+      <testcase purpose="Validate if app can packing,install and launch" type="Functional" status="approved" component="Runtime Core" execution_type="manual" priority="P2" id="Crosswalk_Manifest_Description_Long">
+        <description>
+          <pre_condition>
+            1.Make sure CrossWalk binary is installed;
+          </pre_condition>
+          <test_script_entry>/opt/wrt-rtcore-android-tests/rtcore/Crosswalk_Manifest_Description_Long.html</test_script_entry>
+        </description>
+      </testcase>
+      <testcase purpose="Validate if app can packing,install and launch" type="Functional" status="approved" component="Runtime Core" execution_type="manual" priority="P2" id="Crosswalk_Manifest_Description_Null">
+        <description>
+          <pre_condition>
+            1.Make sure CrossWalk binary is installed;
+          </pre_condition>
+          <test_script_entry>/opt/wrt-rtcore-android-tests/rtcore/Crosswalk_Manifest_Description_Null.html</test_script_entry>
+        </description>
+      </testcase>
+      <testcase purpose="Validate if app can packing,install and launch" type="Functional" status="approved" component="Runtime Core" execution_type="manual" priority="P1" id="Crosswalk_Manifest_Description_Chinese">
+        <description>
+          <pre_condition>
+            1.Make sure CrossWalk binary is installed;
+          </pre_condition>
+          <test_script_entry>/opt/wrt-rtcore-android-tests/rtcore/Crosswalk_Manifest_Description_Chinese.html</test_script_entry>
+        </description>
+      </testcase>
+      <testcase purpose="Validate if app can not be packing when no icon file" type="Functional" status="approved" component="Runtime Core" execution_type="manual" priority="P3" id="Crosswalk_Manifest_Icon_NoFiles">
+        <description>
+          <pre_condition>
+            1.Make sure CrossWalk binary is installed;
+          </pre_condition>
+          <test_script_entry>/opt/wrt-rtcore-android-tests/rtcore/Crosswalk_Manifest_Icon_NoFiles.html</test_script_entry>
+        </description>
+      </testcase>
+      <testcase purpose="Validate if app can not be packing when no icons file" type="Functional" status="approved" component="Runtime Core" execution_type="manual" priority="P3" id="Crosswalk_Manifest_Icon_TwoIcon">
+        <description>
+          <pre_condition>
+            1.Make sure CrossWalk binary is installed;
+          </pre_condition>
+          <test_script_entry>/opt/wrt-rtcore-android-tests/rtcore/Crosswalk_Manifest_Icon_TwoIcon.html</test_script_entry>
+        </description>
+      </testcase>
+      <testcase purpose="Validate if app can not be packing when no icon file" type="Functional" status="approved" component="Runtime Core" execution_type="manual" priority="P3" id="Crosswalk_Manifest_Icon_ThreeIcon">
+        <description>
+          <pre_condition>
+            1.Make sure CrossWalk binary is installed;
+          </pre_condition>
+          <test_script_entry>/opt/wrt-rtcore-android-tests/rtcore/Crosswalk_Manifest_Icon_ThreeIcon.html</test_script_entry>
         </description>
       </testcase>
     </set>
