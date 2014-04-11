@@ -49,6 +49,7 @@ semantics/embedded-content-0/the-video-element/Makefile \
 semantics/grouping-content/Makefile \
 semantics/grouping-content/the-figcaption-element/Makefile \
 semantics/grouping-content/the-figure-element/Makefile \
+semantics/grouping-content/the-main-element/Makefile \
 semantics/interactive-elements/Makefile \
 semantics/interactive-elements/the-details-element/Makefile \
 semantics/sections/Makefile \
@@ -60,9 +61,11 @@ semantics/sections/the-header-element/Makefile \
 semantics/sections/the-nav-element/Makefile \
 semantics/sections/the-body-element/Makefile \
 semantics/text-level-semantics/Makefile \
+semantics/text-level-semantics/the-a-element/Makefile \
 semantics/text-level-semantics/the-mark-element/Makefile \
 semantics/text-level-semantics/the-rp-element/Makefile \
 semantics/text-level-semantics/the-abbr-element/Makefile \
+semantics/text-level-semantics/the-wbr-element/Makefile \
 browsers/Makefile \
 browsers/history/Makefile \
 browsers/history/the-history-interface/Makefile \
@@ -71,6 +74,7 @@ browsers/the-window-object/the-window-object/Makefile \
 dom/Makefile \
 dom/documents/Makefile \
 dom/documents/the-document-object/Makefile \
+dom/mutationobserver/Makefile \
 rendering/Makefile \
 rendering/bindings/Makefile \
 rendering/bindings/the-keygen-element-0/Makefile \
