@@ -54,5 +54,6 @@ Or you can report an issue of the tests and/or tools in this JIRA system:
 
 ## License
 
-Test suite source code uses a BSD-style license that can be found in the
+Except as noted in `COPYING` and/or `NOTICE` files, or as headed with license
+info, test suite source code uses a BSD-style license that can be found in the
 `LICENSE` file.
