@@ -15,25 +15,33 @@ WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
 See the License for the specific language governing permissions and
 limitations under the License.
 
-Authors:
-        Mariusz Polasinski <m.polasinski@samsung.com>
--->
 
-<html lang="en">
+
+Authors:
+        Andrzej Krolikowski <a.krolikowsk@samsung.com>
+
+-->
+<html>
+
 <head>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
-    <title>Tizen basic Application UnitTest Widget</title>
+<title>SystemSettingManager_extend</title>
+<script src="support/unitcommon.js"></script>
 </head>
+
 <body>
-This application was created for some unit tests.
-<div id="divbutton1">
-    <button value="exit" onclick="window.close()" style="width: 100%; height: 3em; font-size: 13px; margin-top: 10px;">exit</button>
-</div>
-</body>
+<div id="log"></div>
 <script type="text/javascript">
-    setTimeout(function () {
-        window.close();
-    }, 15000);
+
+//==== TEST: SystemSettingManager_extend
+//==== LABEL Check if SystemSettingManager is extendable
+//==== SPEC Tizen Web API:System:SystemSetting:SystemSettingManager:SystemSettingManager U
+//==== SPEC_URL https://developer.tizen.org/help/topic/org.tizen.web.device.apireference/tizen/systemsetting.html
+//==== PRIORITY P3
+//==== TEST_CRITERIA OBX
+test(function () {
+    check_extensibility(tizen.systemsetting);
+}, document.title);
+
 </script>
+</body>
 </html>

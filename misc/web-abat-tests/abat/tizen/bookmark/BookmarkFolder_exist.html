@@ -1,7 +1,5 @@
 <!DOCTYPE html>
-
 <!--
-
 Copyright (c) 2013 Samsung Electronics Co., Ltd.
 
 Licensed under the Apache License, Version 2.0 (the License);
@@ -17,34 +15,28 @@ See the License for the specific language governing permissions and
 limitations under the License.
 
 
-
 Authors:
-        Mariusz Polasinski <m.polasinski@samsung.com>
-
+        Jakub Siewierski <j.siewierski@samsung.com>
 
 -->
-
 <html>
-
 <head>
-<title>AlarmManager_getAll_exist</title>
-<meta charset="utf-8">
-<script type="text/javascript"  src="support/unitcommon.js"></script>
+<title>BookmarkFolder_exist</title>
+<meta charset="utf-8"/>
+<script type="text/javascript" src="support/unitcommon.js"></script>
 </head>
 
 <body>
 <div id="log"></div>
-<script type="text/javascript">
-
-//==== TEST: AlarmManager_getAll_exist
-//==== LABEL Check if method getAll exists
-//==== SPEC Tizen Web API:Application:Alarm:AlarmManager:getAll M
-//==== SPEC_URL https://developer.tizen.org/help/topic/org.tizen.web.device.apireference/tizen/alarm.html
-//==== PRIORITY P0
-//==== TEST_CRITERIA ME
+<script>
+//==== TEST: BookmarkFolder_exist
+//==== LABEL Check if BookmarkFolder exists
+//==== SPEC Tizen Web API:Social:Bookmark:BookmarkFolder:constructor C
+//==== SPEC_URL https://developer.tizen.org/help/topic/org.tizen.web.device.apireference/tizen/bookmark.html
+//==== TEST_CRITERIA CONSTRF
 
 test(function () {
-    check_method_exists(tizen.alarm, "getAll");
+    check_constructor("BookmarkFolder");
 }, document.title);
 
 </script>
