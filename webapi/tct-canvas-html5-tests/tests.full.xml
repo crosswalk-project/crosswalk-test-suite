@@ -9320,6 +9320,54 @@
           </spec>
         </specs>
       </testcase>
+      <testcase purpose="Check if the method ellipse exists" type="compliance" status="ready" component="WebAPI/Graphics/HTML5 The canvas element (Partial)" execution_type="auto" priority="P1" id="canvas_ellipse_exist">
+        <description>
+          <test_script_entry test_script_expected_result="0">/opt/tct-canvas-html5-tests/canvas/canvas_attributes.html?total_num=2&amp;amp;locator_key=id&amp;amp;value=1</test_script_entry>
+        </description>
+        <specs>
+          <spec>
+            <spec_assertion element_type="method" element_name="ellipse" interface="CanvasRenderingContext2D" specification="HTML5 The canvas element (Partial)" section="Graphics" category="Tizen W3C API Specifications"/>
+            <spec_url>http://www.w3.org/TR/2dcontext/#dom-context-2d-ellipse</spec_url>
+            <spec_statement/>
+          </spec>
+        </specs>
+      </testcase>
+      <testcase purpose="Check if the method setLineDash exists" type="compliance" status="ready" component="WebAPI/Graphics/HTML5 The canvas element (Partial)" execution_type="auto" priority="P1" id="canvas_setLineDash_exist">
+        <description>
+          <test_script_entry test_script_expected_result="0">/opt/tct-canvas-html5-tests/canvas/canvas_attributes.html?total_num=2&amp;amp;locator_key=id&amp;amp;value=2</test_script_entry>
+        </description>
+        <specs>
+          <spec>
+            <spec_assertion element_type="method" element_name="setLineDash" interface="CanvasRenderingContext2D" specification="HTML5 The canvas element (Partial)" section="Graphics" category="Tizen W3C API Specifications"/>
+            <spec_url>http://www.w3.org/TR/2dcontext/#dom-context-2d-setlinedash</spec_url>
+            <spec_statement/>
+          </spec>
+        </specs>
+      </testcase>
+      <testcase purpose="Check if the canvas supports the blending modes" type="compliance" status="ready" component="WebAPI/Graphics/HTML5 The canvas element (Partial)" execution_type="auto" priority="P1" id="canvas_globalCompositeOperation_modes">
+        <description>
+          <test_script_entry test_script_expected_result="0">/opt/tct-canvas-html5-tests/canvas/canvas_globalCompositeOperation_modes.html</test_script_entry>
+        </description>
+        <specs>
+          <spec>
+            <spec_assertion element_type="attribute" element_name="globalCompositeOperation" interface="CanvasRenderingContext2D" specification="HTML5 The canvas element (Partial)" section="Graphics" category="Tizen W3C API Specifications"/>
+            <spec_url>http://www.w3.org/TR/2dcontext/#dom-context-2d-globalcompositeoperation</spec_url>
+            <spec_statement/>
+          </spec>
+        </specs>
+      </testcase>
+      <testcase purpose="Check if the toDataURL with image/jpeg returns a jpeg" type="compliance" status="ready" component="WebAPI/Graphics/HTML5 The canvas element (Partial)" execution_type="auto" priority="P1" id="canvas_toDataURL_jpeg">
+        <description>
+          <test_script_entry test_script_expected_result="0">/opt/tct-canvas-html5-tests/canvas/canvas_toDataURL_jpeg.html</test_script_entry>
+        </description>
+        <specs>
+          <spec>
+            <spec_assertion element_type="method" element_name="toDataURL" interface="HTMLCanvasElement" specification="HTML5 The canvas element (Partial)" section="Graphics" category="Tizen W3C API Specifications"/>
+            <spec_url>http://www.w3.org/TR/2012/WD-html5-20120329/the-canvas-element.html#the-canvas-element</spec_url>
+            <spec_statement/>
+          </spec>
+        </specs>
+      </testcase>
     </set>
     <set name="Canvas15">
       <testcase purpose="Check if Coordinate space goes from top-left to bottom-right" type="compliance" status="approved" component="WebAPI/Graphics/HTML5 The canvas element (Partial)" execution_type="manual" priority="P3" id="2d_coordinatespace">
