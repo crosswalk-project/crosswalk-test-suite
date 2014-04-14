@@ -175,9 +175,7 @@ function zip_for_xpk(){
     cd $BUILD_DEST
     cp $BUILD_ROOT/tests.xml.xpk $BUILD_DEST/opt/$name/tests.xml
 
-    if [ $platform == "ivi" ]; then
-        cp -af $BUILD_ROOT/inst.sh.ivi $BUILD_DEST/opt/$name/inst.sh
-    elif [ $platform == "generic" ]; then
+    if [ $platform == "generic" ]; then
         cp -af $BUILD_ROOT/inst.sh.generic $BUILD_DEST/opt/$name/inst.sh
     else
         cp -af $BUILD_ROOT/inst.sh.xpk $BUILD_DEST/opt/$name/inst.sh
