@@ -41,13 +41,13 @@ Authors:
   test(function() {
     assert_true("presentation" in navigator, "navigator.presentation interface exists");
     assert_true("requestShow" in navigator.presentation, "navigator.presentation.requestShow method exists");
-    assert_true(typeof navigator.presentation.requestShow, "function", "navigator.presentation.requestShow type of");
+    assert_equals(typeof navigator.presentation.requestShow, "function", "navigator.presentation.requestShow type of");
   }, "Test checks that navigator.presentation.requestShow method basic");
 
   test(function() {
     assert_true("presentation" in navigator, "navigator.presentation interface exists");
     assert_true("displayAvailable" in navigator.presentation, "navigator.presentation.displayAvailable attribute exists");
-    assert_true(typeof navigator.presentation.displayAvailable, "boolean", "navigator.presentation.displayAvailable type of");
+    assert_equals(typeof navigator.presentation.displayAvailable, "boolean", "navigator.presentation.displayAvailable type of");
   }, "Test checks that navigator.presentation.displayAvailable attribute basic");
 
   test(function() {
