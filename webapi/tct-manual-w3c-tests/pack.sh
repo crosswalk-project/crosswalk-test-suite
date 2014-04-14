@@ -149,7 +149,7 @@ if [ $? -ne 0 ]; then
     exit 1
 fi
 cd $BUILD_ROOT/cordova/
-bin/create $appname com.example.$appname $appname
+bin/create $appname org.xwalk.$appname $appname
 cd $BUILD_ROOT/cordova/$appname
 rm -rf $BUILD_ROOT/cordova/$appname/assets/www/*
 cp -ar $BUILD_DEST/* $BUILD_ROOT/cordova/$appname/assets/www/
