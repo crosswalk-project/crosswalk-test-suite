@@ -1157,7 +1157,7 @@
           </spec>
         </specs>
       </testcase>
-      <testcase purpose="Check if the send method of SmsManager which has no param can not work normally" type="compliance" status="approved" component="WebAPI/System-level APIs/Messaging" execution_type="auto" priority="P2" id="SmsMessage_send_zero" onload_delay="20">
+      <testcase purpose="Check if the send method of SmsManager which has no param can not work normally" type="compliance" status="approved" component="WebAPI/System-level APIs/Messaging" execution_type="auto" priority="P2" id="SmsManager_send_zero" onload_delay="20">
         <description>
           <test_script_entry>/opt/webapi-messaging-sysapps-tests/messaging/Messaging_method_reverse.html?total_num=14&amp;amp;locator_key=id&amp;amp;value=1</test_script_entry>
         </description>
@@ -1169,7 +1169,7 @@
           </spec>
         </specs>
       </testcase>
-      <testcase purpose="Check if the segmentInfo method of SmsManager which has no params can not work normally" type="compliance" status="approved" component="WebAPI/System-level APIs/Messaging" execution_type="auto" priority="P2" id="SmsMessage_segmentInfo_zero" onload_delay="20">
+      <testcase purpose="Check if the send method of SmsManager which has one param can not work normally" type="compliance" status="approved" component="WebAPI/System-level APIs/Messaging" execution_type="auto" priority="P2" id="SmsManager_send_one" onload_delay="20">
         <description>
           <test_script_entry>/opt/webapi-messaging-sysapps-tests/messaging/Messaging_method_reverse.html?total_num=14&amp;amp;locator_key=id&amp;amp;value=2</test_script_entry>
         </description>
@@ -1181,19 +1181,19 @@
           </spec>
         </specs>
       </testcase>
-      <testcase purpose="Check if the send method of MmsManager which has no params can not work normally" type="compliance" status="approved" component="WebAPI/System-level APIs/Messaging" execution_type="auto" priority="P2" id="MmsManager_send_zero" onload_delay="20">
+      <testcase purpose="Check if the segmentInfo method of SmsManager which has no params can not work normally" type="compliance" status="approved" component="WebAPI/System-level APIs/Messaging" execution_type="auto" priority="P2" id="SmsManager_segmentInfo_zero" onload_delay="20">
         <description>
           <test_script_entry>/opt/webapi-messaging-sysapps-tests/messaging/Messaging_method_reverse.html?total_num=14&amp;amp;locator_key=id&amp;amp;value=3</test_script_entry>
         </description>
         <specs>
           <spec>
-            <spec_assertion element_type="attribute" element_name="MmsManager" interface="MmsManager" specification="Messaging" section="System-level APIs" category="W3C API Specifications"/>
+            <spec_assertion element_type="attribute" element_name="segmentInfo" interface="SmsManager" specification="Messaging" section="System-level APIs" category="W3C API Specifications"/>
             <spec_url>http://www.w3.org/2012/sysapps/messaging/#smsmanager-interface</spec_url>
             <spec_statement/>
           </spec>
         </specs>
       </testcase>
-      <testcase purpose="Check if the fetch method of MmsManager which has no params can not work normally" type="compliance" status="approved" component="WebAPI/System-level APIs/Messaging" execution_type="auto" priority="P2" id="MmsManager_fetch_zero" onload_delay="20">
+      <testcase purpose="Check if the send method of MmsManager which has no params can not work normally" type="compliance" status="approved" component="WebAPI/System-level APIs/Messaging" execution_type="auto" priority="P2" id="MmsManager_send_zero" onload_delay="20">
         <description>
           <test_script_entry>/opt/webapi-messaging-sysapps-tests/messaging/Messaging_method_reverse.html?total_num=14&amp;amp;locator_key=id&amp;amp;value=4</test_script_entry>
         </description>
@@ -1205,9 +1205,21 @@
           </spec>
         </specs>
       </testcase>
-      <testcase purpose="Check if the findConversations method which has only one params can not work normally" type="compliance" status="approved" component="WebAPI/System-level APIs/Messaging" execution_type="auto" priority="P2" id="findConversations_one">
+      <testcase purpose="Check if the fetch method of MmsManager which has no params can not work normally" type="compliance" status="approved" component="WebAPI/System-level APIs/Messaging" execution_type="auto" priority="P2" id="MmsManager_fetch_zero" onload_delay="20">
         <description>
           <test_script_entry>/opt/webapi-messaging-sysapps-tests/messaging/Messaging_method_reverse.html?total_num=14&amp;amp;locator_key=id&amp;amp;value=5</test_script_entry>
+        </description>
+        <specs>
+          <spec>
+            <spec_assertion element_type="attribute" element_name="MmsManager" interface="MmsManager" specification="Messaging" section="System-level APIs" category="W3C API Specifications"/>
+            <spec_url>http://www.w3.org/2012/sysapps/messaging/#smsmanager-interface</spec_url>
+            <spec_statement/>
+          </spec>
+        </specs>
+      </testcase>
+      <testcase purpose="Check if the findConversations method which has only one params can not work normally" type="compliance" status="approved" component="WebAPI/System-level APIs/Messaging" execution_type="auto" priority="P2" id="findConversations_one">
+        <description>
+          <test_script_entry>/opt/webapi-messaging-sysapps-tests/messaging/Messaging_method_reverse.html?total_num=14&amp;amp;locator_key=id&amp;amp;value=6</test_script_entry>
         </description>
         <specs>
           <spec>
@@ -1219,7 +1231,7 @@
       </testcase>
       <testcase purpose="CCheck if the markConversationRead method which has only one params can not work normally" type="compliance" status="approved" component="WebAPI/System-level APIs/Messaging" execution_type="auto" priority="P2" id="markConversationRead_one">
         <description>
-          <test_script_entry>/opt/webapi-messaging-sysapps-tests/messaging/Messaging_method_reverse.html?total_num=14&amp;amp;locator_key=id&amp;amp;value=6</test_script_entry>
+          <test_script_entry>/opt/webapi-messaging-sysapps-tests/messaging/Messaging_method_reverse.html?total_num=14&amp;amp;locator_key=id&amp;amp;value=7</test_script_entry>
         </description>
         <specs>
           <spec>
@@ -1231,7 +1243,7 @@
       </testcase>
       <testcase purpose="Check if the deleteConversation method which has no params can not work normally" type="compliance" status="approved" component="WebAPI/System-level APIs/Messaging" execution_type="auto" priority="P2" id="deleteConversation_zero">
         <description>
-          <test_script_entry>/opt/webapi-messaging-sysapps-tests/messaging/Messaging_method_reverse.html?total_num=14&amp;amp;locator_key=id&amp;amp;value=7</test_script_entry>
+          <test_script_entry>/opt/webapi-messaging-sysapps-tests/messaging/Messaging_method_reverse.html?total_num=14&amp;amp;locator_key=id&amp;amp;value=8</test_script_entry>
         </description>
         <specs>
           <spec>
@@ -1243,7 +1255,7 @@
       </testcase>
       <testcase purpose="Check if the findMessages method which has only one params can not work normally" type="compliance" status="approved" component="WebAPI/System-level APIs/Messaging" execution_type="auto" priority="P2" id="findMessages_one">
         <description>
-          <test_script_entry>/opt/webapi-messaging-sysapps-tests/messaging/Messaging_method_reverse.html?total_num=14&amp;amp;locator_key=id&amp;amp;value=8</test_script_entry>
+          <test_script_entry>/opt/webapi-messaging-sysapps-tests/messaging/Messaging_method_reverse.html?total_num=14&amp;amp;locator_key=id&amp;amp;value=9</test_script_entry>
         </description>
         <specs>
           <spec>
@@ -1255,7 +1267,7 @@
       </testcase>
       <testcase purpose="Check if the markMessageRead method which has only one params can not work normally." type="compliance" status="approved" component="WebAPI/System-level APIs/Messaging" execution_type="auto" priority="P2" id="markMessageRead_one">
         <description>
-          <test_script_entry>/opt/webapi-messaging-sysapps-tests/messaging/Messaging_method_reverse.html?total_num=14&amp;amp;locator_key=id&amp;amp;value=9</test_script_entry>
+          <test_script_entry>/opt/webapi-messaging-sysapps-tests/messaging/Messaging_method_reverse.html?total_num=14&amp;amp;locator_key=id&amp;amp;value=10</test_script_entry>
         </description>
         <specs>
           <spec>
@@ -1267,7 +1279,7 @@
       </testcase>
       <testcase purpose="Check if the getMessage method which has no params can not work normally" type="compliance" status="approved" component="WebAPI/System-level APIs/Messaging" execution_type="auto" priority="P2" id="getMessage_zero">
         <description>
-          <test_script_entry>/opt/webapi-messaging-sysapps-tests/messaging/Messaging_method_reverse.html?total_num=14&amp;amp;locator_key=id&amp;amp;value=10</test_script_entry>
+          <test_script_entry>/opt/webapi-messaging-sysapps-tests/messaging/Messaging_method_reverse.html?total_num=14&amp;amp;locator_key=id&amp;amp;value=11</test_script_entry>
         </description>
         <specs>
           <spec>
@@ -1279,24 +1291,12 @@
       </testcase>
       <testcase purpose="Check if the deleteMessage method which has no params can not work normally" type="compliance" status="approved" component="WebAPI/System-level APIs/Messaging" execution_type="auto" priority="P2" id="deleteMessage_zero">
         <description>
-          <test_script_entry>/opt/webapi-messaging-sysapps-tests/messaging/Messaging_method_reverse.html?total_num=14&amp;amp;locator_key=id&amp;amp;value=11</test_script_entry>
+          <test_script_entry>/opt/webapi-messaging-sysapps-tests/messaging/Messaging_method_reverse.html?total_num=14&amp;amp;locator_key=id&amp;amp;value=12</test_script_entry>
         </description>
         <specs>
           <spec>
             <spec_assertion element_type="attribute" element_name="deleteMessage" interface="MessagingManager" specification="Messaging" section="System-level APIs" category="W3C API Specifications"/>
             <spec_url>http://www.w3.org/2012/sysapps/messaging/#messagingmanager-interface</spec_url>
-            <spec_statement/>
-          </spec>
-        </specs>
-      </testcase>
-      <testcase purpose="Check if the send method of SmsManager which has no params can not work normally" type="compliance" status="approved" component="WebAPI/System-level APIs/Messaging" execution_type="auto" priority="P2" id="SmsManager_send_type">
-        <description>
-          <test_script_entry>/opt/webapi-messaging-sysapps-tests/messaging/Messaging_method_reverse.html?total_num=14&amp;amp;locator_key=id&amp;amp;value=12</test_script_entry>
-        </description>
-        <specs>
-          <spec>
-            <spec_assertion element_type="attribute" element_name="SmsManager" interface="SmsManager" specification="Messaging" section="System-level APIs" category="W3C API Specifications"/>
-            <spec_url>http://www.w3.org/2012/sysapps/messaging/#smsmanager-interface</spec_url>
             <spec_statement/>
           </spec>
         </specs>
@@ -1307,7 +1307,7 @@
         </description>
         <specs>
           <spec>
-            <spec_assertion element_type="attribute" element_name="SmsManager" interface="SmsManager" specification="Messaging" section="System-level APIs" category="W3C API Specifications"/>
+            <spec_assertion element_type="attribute" element_name="send" interface="SmsManager" specification="Messaging" section="System-level APIs" category="W3C API Specifications"/>
             <spec_url>http://www.w3.org/2012/sysapps/messaging/#smsmanager-interface</spec_url>
             <spec_statement/>
           </spec>
@@ -1319,8 +1319,764 @@
         </description>
         <specs>
           <spec>
-            <spec_assertion element_type="attribute" element_name="MmsManager" interface="SmsManager" specification="Messaging" section="System-level APIs" category="W3C API Specifications"/>
+            <spec_assertion element_type="attribute" element_name="send" interface="MmsManager" specification="Messaging" section="System-level APIs" category="W3C API Specifications"/>
             <spec_url>http://www.w3.org/2012/sysapps/messaging/#smsmanager-interface</spec_url>
+            <spec_statement/>
+          </spec>
+        </specs>
+      </testcase>
+      <testcase purpose="Check if the readonly attribute sms of MessagingManager exists and type of object" type="compliance" status="approved" component="WebAPI/System-level APIs/Messaging" execution_type="auto" priority="P1" id="MessagingManager_sms_basic">
+        <description>
+          <test_script_entry>/opt/webapi-messaging-sysapps-tests/messaging/MessagingManager_basic.html?total_num=9&amp;amp;locator_key=id&amp;amp;value=1</test_script_entry>
+        </description>
+        <specs>
+          <spec>
+            <spec_assertion element_type="attribute" element_name="sms" interface="MessagingManager" specification="Messaging" section="System-level APIs" category="W3C API Specifications"/>
+            <spec_url>http://www.w3.org/2012/sysapps/messaging/#idl-def-MessagingManager</spec_url>
+            <spec_statement/>
+          </spec>
+        </specs>
+      </testcase>
+      <testcase purpose="Check if the readonly attribute mms of MessagingManager exists and type of object" type="compliance" status="approved" component="WebAPI/System-level APIs/Messaging" execution_type="auto" priority="P1" id="MessagingManager_mms_basic">
+        <description>
+          <test_script_entry>/opt/webapi-messaging-sysapps-tests/messaging/MessagingManager_basic.html?total_num=9&amp;amp;locator_key=id&amp;amp;value=2</test_script_entry>
+        </description>
+        <specs>
+          <spec>
+            <spec_assertion element_type="attribute" element_name="mms" interface="MessagingManager" specification="Messaging" section="System-level APIs" category="W3C API Specifications"/>
+            <spec_url>http://www.w3.org/2012/sysapps/messaging/#idl-def-MessagingManager</spec_url>
+            <spec_statement/>
+          </spec>
+        </specs>
+      </testcase>
+      <testcase purpose="Check if the findMessages function of MessagingManager exists and type of function" type="compliance" status="approved" component="WebAPI/System-level APIs/Messaging" execution_type="auto" priority="P1" id="MessagingManager_findMessages_basic">
+        <description>
+          <test_script_entry>/opt/webapi-messaging-sysapps-tests/messaging/MessagingManager_basic.html?total_num=9&amp;amp;locator_key=id&amp;amp;value=3</test_script_entry>
+        </description>
+        <specs>
+          <spec>
+            <spec_assertion element_type="method" element_name="findMessages" interface="MessagingManager" specification="Messaging" section="System-level APIs" category="W3C API Specifications"/>
+            <spec_url>http://www.w3.org/2012/sysapps/messaging/#idl-def-MessagingManager</spec_url>
+            <spec_statement/>
+          </spec>
+        </specs>
+      </testcase>
+      <testcase purpose="Check if the findConversations function of MessagingManager exists and type of function" type="compliance" status="approved" component="WebAPI/System-level APIs/Messaging" execution_type="auto" priority="P1" id="MessagingManager_findConversations_basic">
+        <description>
+          <test_script_entry>/opt/webapi-messaging-sysapps-tests/messaging/MessagingManager_basic.html?total_num=9&amp;amp;locator_key=id&amp;amp;value=4</test_script_entry>
+        </description>
+        <specs>
+          <spec>
+            <spec_assertion element_type="method" element_name="findConversations" interface="MessagingManager" specification="Messaging" section="System-level APIs" category="W3C API Specifications"/>
+            <spec_url>http://www.w3.org/2012/sysapps/messaging/#idl-def-MessagingManager</spec_url>
+            <spec_statement/>
+          </spec>
+        </specs>
+      </testcase>
+      <testcase purpose="Check if the getMessage function of MessagingManager exists and type of function" type="compliance" status="approved" component="WebAPI/System-level APIs/Messaging" execution_type="auto" priority="P1" id="MessagingManager_getMessage_basic">
+        <description>
+          <test_script_entry>/opt/webapi-messaging-sysapps-tests/messaging/MessagingManager_basic.html?total_num=9&amp;amp;locator_key=id&amp;amp;value=5</test_script_entry>
+        </description>
+        <specs>
+          <spec>
+            <spec_assertion element_type="method" element_name="getMessage" interface="MessagingManager" specification="Messaging" section="System-level APIs" category="W3C API Specifications"/>
+            <spec_url>http://www.w3.org/2012/sysapps/messaging/#idl-def-MessagingManager</spec_url>
+            <spec_statement/>
+          </spec>
+        </specs>
+      </testcase>
+      <testcase purpose="Check if the deleteMessage function of MessagingManager exists and type of function" type="compliance" status="approved" component="WebAPI/System-level APIs/Messaging" execution_type="auto" priority="P1" id="MessagingManager_deleteMessage_basic">
+        <description>
+          <test_script_entry>/opt/webapi-messaging-sysapps-tests/messaging/MessagingManager_basic.html?total_num=9&amp;amp;locator_key=id&amp;amp;value=6</test_script_entry>
+        </description>
+        <specs>
+          <spec>
+            <spec_assertion element_type="method" element_name="deleteMessage" interface="MessagingManager" specification="Messaging" section="System-level APIs" category="W3C API Specifications"/>
+            <spec_url>http://www.w3.org/2012/sysapps/messaging/#idl-def-MessagingManager</spec_url>
+            <spec_statement/>
+          </spec>
+        </specs>
+      </testcase>
+      <testcase purpose="Check if the deleteConversation function of MessagingManager exists and type of function" type="compliance" status="approved" component="WebAPI/System-level APIs/Messaging" execution_type="auto" priority="P1" id="MessagingManager_deleteConversation_basic">
+        <description>
+          <test_script_entry>/opt/webapi-messaging-sysapps-tests/messaging/MessagingManager_basic.html?total_num=9&amp;amp;locator_key=id&amp;amp;value=7</test_script_entry>
+        </description>
+        <specs>
+          <spec>
+            <spec_assertion element_type="method" element_name="deleteConversation" interface="MessagingManager" specification="Messaging" section="System-level APIs" category="W3C API Specifications"/>
+            <spec_url>http://www.w3.org/2012/sysapps/messaging/#idl-def-MessagingManager</spec_url>
+            <spec_statement/>
+          </spec>
+        </specs>
+      </testcase>
+      <testcase purpose="Check if the markMessageRead function of MessagingManager exists and type of function" type="compliance" status="approved" component="WebAPI/System-level APIs/Messaging" execution_type="auto" priority="P1" id="MessagingManager_markMessageRead_basic">
+        <description>
+          <test_script_entry>/opt/webapi-messaging-sysapps-tests/messaging/MessagingManager_basic.html?total_num=9&amp;amp;locator_key=id&amp;amp;value=8</test_script_entry>
+        </description>
+        <specs>
+          <spec>
+            <spec_assertion element_type="method" element_name="markMessageRead" interface="MessagingManager" specification="Messaging" section="System-level APIs" category="W3C API Specifications"/>
+            <spec_url>http://www.w3.org/2012/sysapps/messaging/#idl-def-MessagingManager</spec_url>
+            <spec_statement/>
+          </spec>
+        </specs>
+      </testcase>
+      <testcase purpose="Check if the markConversationRead function of MessagingManager exists and type of function" type="compliance" status="approved" component="WebAPI/System-level APIs/Messaging" execution_type="auto" priority="P1" id="MessagingManager_markConversationRead_basic">
+        <description>
+          <test_script_entry>/opt/webapi-messaging-sysapps-tests/messaging/MessagingManager_basic.html?total_num=9&amp;amp;locator_key=id&amp;amp;value=9</test_script_entry>
+        </description>
+        <specs>
+          <spec>
+            <spec_assertion element_type="method" element_name="markConversationRead" interface="MessagingManager" specification="Messaging" section="System-level APIs" category="W3C API Specifications"/>
+            <spec_url>http://www.w3.org/2012/sysapps/messaging/#idl-def-MessagingManager</spec_url>
+            <spec_statement/>
+          </spec>
+        </specs>
+      </testcase>
+      <testcase purpose="Check if the readonly attribute type of SmsManager exists and type of string" type="compliance" status="approved" component="WebAPI/System-level APIs/Messaging" execution_type="auto" priority="P1" id="SmsManager_type_basic">
+        <description>
+          <test_script_entry>/opt/webapi-messaging-sysapps-tests/messaging/SmsManager_basic.html?total_num=11&amp;amp;locator_key=id&amp;amp;value=1</test_script_entry>
+        </description>
+        <specs>
+          <spec>
+            <spec_assertion element_type="attribute" element_name="type" interface="SmsManager" specification="Messaging" section="System-level APIs" category="W3C API Specifications"/>
+            <spec_url>http://www.w3.org/2012/sysapps/messaging/#idl-def-SmsManager</spec_url>
+            <spec_statement/>
+          </spec>
+        </specs>
+      </testcase>
+      <testcase purpose="Check if the readonly attribute serviceIDs of SmsManager exists and type of array" type="compliance" status="approved" component="WebAPI/System-level APIs/Messaging" execution_type="auto" priority="P1" id="SmsManager_serviceIDs_basic">
+        <description>
+          <test_script_entry>/opt/webapi-messaging-sysapps-tests/messaging/SmsManager_basic.html?total_num=11&amp;amp;locator_key=id&amp;amp;value=2</test_script_entry>
+        </description>
+        <specs>
+          <spec>
+            <spec_assertion element_type="attribute" element_name="serviceIDs" interface="SmsManager" specification="Messaging" section="System-level APIs" category="W3C API Specifications"/>
+            <spec_url>http://www.w3.org/2012/sysapps/messaging/#idl-def-SmsManager</spec_url>
+            <spec_statement/>
+          </spec>
+        </specs>
+      </testcase>
+      <testcase purpose="Check if the onreceived event of SmsManager exists" type="compliance" status="approved" component="WebAPI/System-level APIs/Messaging" execution_type="auto" priority="P1" id="SmsManager_onreceived_basic">
+        <description>
+          <test_script_entry>/opt/webapi-messaging-sysapps-tests/messaging/SmsManager_basic.html?total_num=11&amp;amp;locator_key=id&amp;amp;value=3</test_script_entry>
+        </description>
+        <specs>
+          <spec>
+            <spec_assertion element_type="event" element_name="onreceived" interface="SmsManager" specification="Messaging" section="System-level APIs" category="W3C API Specifications"/>
+            <spec_url>http://www.w3.org/2012/sysapps/messaging/#idl-def-SmsManager</spec_url>
+            <spec_statement/>
+          </spec>
+        </specs>
+      </testcase>
+      <testcase purpose="Check if the onsent event of SmsManager exists" type="compliance" status="approved" component="WebAPI/System-level APIs/Messaging" execution_type="auto" priority="P1" id="SmsManager_onsent_basic">
+        <description>
+          <test_script_entry>/opt/webapi-messaging-sysapps-tests/messaging/SmsManager_basic.html?total_num=11&amp;amp;locator_key=id&amp;amp;value=4</test_script_entry>
+        </description>
+        <specs>
+          <spec>
+            <spec_assertion element_type="event" element_name="onsent" interface="SmsManager" specification="Messaging" section="System-level APIs" category="W3C API Specifications"/>
+            <spec_url>http://www.w3.org/2012/sysapps/messaging/#idl-def-SmsManager</spec_url>
+            <spec_statement/>
+          </spec>
+        </specs>
+      </testcase>
+      <testcase purpose="Check if the ondeliverysuccess event of SmsManager exists" type="compliance" status="approved" component="WebAPI/System-level APIs/Messaging" execution_type="auto" priority="P1" id="SmsManager_ondeliverysuccess_basic">
+        <description>
+          <test_script_entry>/opt/webapi-messaging-sysapps-tests/messaging/SmsManager_basic.html?total_num=11&amp;amp;locator_key=id&amp;amp;value=5</test_script_entry>
+        </description>
+        <specs>
+          <spec>
+            <spec_assertion element_type="event" element_name="ondeliverysuccess" interface="SmsManager" specification="Messaging" section="System-level APIs" category="W3C API Specifications"/>
+            <spec_url>http://www.w3.org/2012/sysapps/messaging/#idl-def-SmsManager</spec_url>
+            <spec_statement/>
+          </spec>
+        </specs>
+      </testcase>
+      <testcase purpose="Check if the ondeliveryerror event of SmsManager exists" type="compliance" status="approved" component="WebAPI/System-level APIs/Messaging" execution_type="auto" priority="P1" id="SmsManager_ondeliveryerror_basic">
+        <description>
+          <test_script_entry>/opt/webapi-messaging-sysapps-tests/messaging/SmsManager_basic.html?total_num=11&amp;amp;locator_key=id&amp;amp;value=6</test_script_entry>
+        </description>
+        <specs>
+          <spec>
+            <spec_assertion element_type="event" element_name="ondeliveryerror" interface="SmsManager" specification="Messaging" section="System-level APIs" category="W3C API Specifications"/>
+            <spec_url>http://www.w3.org/2012/sysapps/messaging/#idl-def-SmsManager</spec_url>
+            <spec_statement/>
+          </spec>
+        </specs>
+      </testcase>
+      <testcase purpose="Check if the onserviceadded event of SmsManager exists" type="compliance" status="approved" component="WebAPI/System-level APIs/Messaging" execution_type="auto" priority="P1" id="SmsManager_onserviceadded_basic">
+        <description>
+          <test_script_entry>/opt/webapi-messaging-sysapps-tests/messaging/SmsManager_basic.html?total_num=11&amp;amp;locator_key=id&amp;amp;value=7</test_script_entry>
+        </description>
+        <specs>
+          <spec>
+            <spec_assertion element_type="event" element_name="onserviceadded" interface="SmsManager" specification="Messaging" section="System-level APIs" category="W3C API Specifications"/>
+            <spec_url>http://www.w3.org/2012/sysapps/messaging/#idl-def-SmsManager</spec_url>
+            <spec_statement/>
+          </spec>
+        </specs>
+      </testcase>
+      <testcase purpose="Check if the onserviceremoved event of SmsManager exists" type="compliance" status="approved" component="WebAPI/System-level APIs/Messaging" execution_type="auto" priority="P1" id="SmsManager_onserviceremoved_basic">
+        <description>
+          <test_script_entry>/opt/webapi-messaging-sysapps-tests/messaging/SmsManager_basic.html?total_num=11&amp;amp;locator_key=id&amp;amp;value=8</test_script_entry>
+        </description>
+        <specs>
+          <spec>
+            <spec_assertion element_type="event" element_name="onserviceremoved" interface="SmsManager" specification="Messaging" section="System-level APIs" category="W3C API Specifications"/>
+            <spec_url>http://www.w3.org/2012/sysapps/messaging/#idl-def-SmsManager</spec_url>
+            <spec_statement/>
+          </spec>
+        </specs>
+      </testcase>
+      <testcase purpose="Check if the segmentInfo function of SmsManager exists and type of function" type="compliance" status="approved" component="WebAPI/System-level APIs/Messaging" execution_type="auto" priority="P1" id="SmsManager_segmentInfo_basic">
+        <description>
+          <test_script_entry>/opt/webapi-messaging-sysapps-tests/messaging/SmsManager_basic.html?total_num=11&amp;amp;locator_key=id&amp;amp;value=9</test_script_entry>
+        </description>
+        <specs>
+          <spec>
+            <spec_assertion element_type="method" element_name="segmentInfo" interface="SmsManager" specification="Messaging" section="System-level APIs" category="W3C API Specifications"/>
+            <spec_url>http://www.w3.org/2012/sysapps/messaging/#idl-def-SmsManager</spec_url>
+            <spec_statement/>
+          </spec>
+        </specs>
+      </testcase>
+      <testcase purpose="Check if the send function of SmsManager exists and type of function" type="compliance" status="approved" component="WebAPI/System-level APIs/Messaging" execution_type="auto" priority="P1" id="SmsManager_send_basic">
+        <description>
+          <test_script_entry>/opt/webapi-messaging-sysapps-tests/messaging/SmsManager_basic.html?total_num=11&amp;amp;locator_key=id&amp;amp;value=10</test_script_entry>
+        </description>
+        <specs>
+          <spec>
+            <spec_assertion element_type="method" element_name="send" interface="SmsManager" specification="Messaging" section="System-level APIs" category="W3C API Specifications"/>
+            <spec_url>http://www.w3.org/2012/sysapps/messaging/#idl-def-SmsManager</spec_url>
+            <spec_statement/>
+          </spec>
+        </specs>
+      </testcase>
+      <testcase purpose="Check if the clear function of SmsManager exists and type of function" type="compliance" status="approved" component="WebAPI/System-level APIs/Messaging" execution_type="auto" priority="P1" id="SmsManager_clear_basic">
+        <description>
+          <test_script_entry>/opt/webapi-messaging-sysapps-tests/messaging/SmsManager_basic.html?total_num=11&amp;amp;locator_key=id&amp;amp;value=11</test_script_entry>
+        </description>
+        <specs>
+          <spec>
+            <spec_assertion element_type="method" element_name="clear" interface="SmsManager" specification="Messaging" section="System-level APIs" category="W3C API Specifications"/>
+            <spec_url>http://www.w3.org/2012/sysapps/messaging/#idl-def-SmsManager</spec_url>
+            <spec_statement/>
+          </spec>
+        </specs>
+      </testcase>
+      <testcase purpose="Check if the readonly attribute type of MmsManager is exists and type of string" type="compliance" status="approved" component="WebAPI/System-level APIs/Messaging" execution_type="auto" priority="P1" id="MmsManager_type_basic">
+        <description>
+          <test_script_entry>/opt/webapi-messaging-sysapps-tests/messaging/MmsManager_basic.html?total_num=15&amp;amp;locator_key=id&amp;amp;value=1</test_script_entry>
+        </description>
+        <specs>
+          <spec>
+            <spec_assertion element_type="attribute" element_name="type" interface="MmsManager" specification="Messaging" section="System-level APIs" category="W3C API Specifications"/>
+            <spec_url>http://www.w3.org/2012/sysapps/messaging/#idl-def-MmsManager</spec_url>
+            <spec_statement/>
+          </spec>
+        </specs>
+      </testcase>
+      <testcase purpose="Check if the readonly attribute serviceIDs of MmsManager exists and type of array" type="compliance" status="approved" component="WebAPI/System-level APIs/Messaging" execution_type="auto" priority="P1" id="MmsManager_serviceIDs_basic">
+        <description>
+          <test_script_entry>/opt/webapi-messaging-sysapps-tests/messaging/MmsManager_basic.html?total_num=15&amp;amp;locator_key=id&amp;amp;value=2</test_script_entry>
+        </description>
+        <specs>
+          <spec>
+            <spec_assertion element_type="attribute" element_name="serviceIDs" interface="MmsManager" specification="Messaging" section="System-level APIs" category="W3C API Specifications"/>
+            <spec_url>http://www.w3.org/2012/sysapps/messaging/#idl-def-MmsManager</spec_url>
+            <spec_statement/>
+          </spec>
+        </specs>
+      </testcase>
+      <testcase purpose="Check if the onreceived event of MmsManager is exists" type="compliance" status="approved" component="WebAPI/System-level APIs/Messaging" execution_type="auto" priority="P1" id="MmsManager_onreceived_basic">
+        <description>
+          <test_script_entry>/opt/webapi-messaging-sysapps-tests/messaging/MmsManager_basic.html?total_num=15&amp;amp;locator_key=id&amp;amp;value=3</test_script_entry>
+        </description>
+        <specs>
+          <spec>
+            <spec_assertion element_type="event" element_name="onreceived" interface="MmsManager" specification="Messaging" section="System-level APIs" category="W3C API Specifications"/>
+            <spec_url>http://www.w3.org/2012/sysapps/messaging/#idl-def-MmsManager</spec_url>
+            <spec_statement/>
+          </spec>
+        </specs>
+      </testcase>
+      <testcase purpose="Check if the onsent event of MmsManager is exists" type="compliance" status="approved" component="WebAPI/System-level APIs/Messaging" execution_type="auto" priority="P1" id="MmsManager_onsent_basic">
+        <description>
+          <test_script_entry>/opt/webapi-messaging-sysapps-tests/messaging/MmsManager_basic.html?total_num=15&amp;amp;locator_key=id&amp;amp;value=4</test_script_entry>
+        </description>
+        <specs>
+          <spec>
+            <spec_assertion element_type="event" element_name="onsent" interface="MmsManager" specification="Messaging" section="System-level APIs" category="W3C API Specifications"/>
+            <spec_url>http://www.w3.org/2012/sysapps/messaging/#idl-def-MmsManager</spec_url>
+            <spec_statement/>
+          </spec>
+        </specs>
+      </testcase>
+      <testcase purpose="Check if the ondeliverysuccess event of MmsManager is exists" type="compliance" status="approved" component="WebAPI/System-level APIs/Messaging" execution_type="auto" priority="P1" id="MmsManager_ondeliverysuccess_basic">
+        <description>
+          <test_script_entry>/opt/webapi-messaging-sysapps-tests/messaging/MmsManager_basic.html?total_num=15&amp;amp;locator_key=id&amp;amp;value=5</test_script_entry>
+        </description>
+        <specs>
+          <spec>
+            <spec_assertion element_type="event" element_name="ondeliverysuccess" interface="MmsManager" specification="Messaging" section="System-level APIs" category="W3C API Specifications"/>
+            <spec_url>http://www.w3.org/2012/sysapps/messaging/#idl-def-MmsManager</spec_url>
+            <spec_statement/>
+          </spec>
+        </specs>
+      </testcase>
+      <testcase purpose="Check if the ondeliveryerror event of MmsManager is exists" type="compliance" status="approved" component="WebAPI/System-level APIs/Messaging" execution_type="auto" priority="P1" id="MmsManager_ondeliveryerror_basic">
+        <description>
+          <test_script_entry>/opt/webapi-messaging-sysapps-tests/messaging/MmsManager_basic.html?total_num=15&amp;amp;locator_key=id&amp;amp;value=6</test_script_entry>
+        </description>
+        <specs>
+          <spec>
+            <spec_assertion element_type="event" element_name="ondeliveryerror" interface="MmsManager" specification="Messaging" section="System-level APIs" category="W3C API Specifications"/>
+            <spec_url>http://www.w3.org/2012/sysapps/messaging/#idl-def-MmsManager</spec_url>
+            <spec_statement/>
+          </spec>
+        </specs>
+      </testcase>
+      <testcase purpose="Check if the onreadsuccess event of MmsManager is exists" type="compliance" status="approved" component="WebAPI/System-level APIs/Messaging" execution_type="auto" priority="P1" id="MmsManager_onreadsuccess_basic">
+        <description>
+          <test_script_entry>/opt/webapi-messaging-sysapps-tests/messaging/MmsManager_basic.html?total_num=15&amp;amp;locator_key=id&amp;amp;value=7</test_script_entry>
+        </description>
+        <specs>
+          <spec>
+            <spec_assertion element_type="event" element_name="onreadsuccess" interface="MmsManager" specification="Messaging" section="System-level APIs" category="W3C API Specifications"/>
+            <spec_url>http://www.w3.org/2012/sysapps/messaging/#idl-def-MmsManager</spec_url>
+            <spec_statement/>
+          </spec>
+        </specs>
+      </testcase>
+      <testcase purpose="Check if the onreaderror event of MmsManager is exists" type="compliance" status="approved" component="WebAPI/System-level APIs/Messaging" execution_type="auto" priority="P1" id="MmsManager_onreaderror_basic">
+        <description>
+          <test_script_entry>/opt/webapi-messaging-sysapps-tests/messaging/MmsManager_basic.html?total_num=15&amp;amp;locator_key=id&amp;amp;value=8</test_script_entry>
+        </description>
+        <specs>
+          <spec>
+            <spec_assertion element_type="event" element_name="onreaderror" interface="MmsManager" specification="Messaging" section="System-level APIs" category="W3C API Specifications"/>
+            <spec_url>http://www.w3.org/2012/sysapps/messaging/#idl-def-MmsManager</spec_url>
+            <spec_statement/>
+          </spec>
+        </specs>
+      </testcase>
+      <testcase purpose="Check if the onserviceadded event of MmsManager is exists" type="compliance" status="approved" component="WebAPI/System-level APIs/Messaging" execution_type="auto" priority="P1" id="MmsManager_onserviceadded_basic">
+        <description>
+          <test_script_entry>/opt/webapi-messaging-sysapps-tests/messaging/MmsManager_basic.html?total_num=15&amp;amp;locator_key=id&amp;amp;value=9</test_script_entry>
+        </description>
+        <specs>
+          <spec>
+            <spec_assertion element_type="event" element_name="onserviceadded" interface="MmsManager" specification="Messaging" section="System-level APIs" category="W3C API Specifications"/>
+            <spec_url>http://www.w3.org/2012/sysapps/messaging/#idl-def-MmsManager</spec_url>
+            <spec_statement/>
+          </spec>
+        </specs>
+      </testcase>
+      <testcase purpose="Check if the onserviceremoved event of MmsManager is exists" type="compliance" status="approved" component="WebAPI/System-level APIs/Messaging" execution_type="auto" priority="P1" id="MmsManager_onserviceremoved_basic">
+        <description>
+          <test_script_entry>/opt/webapi-messaging-sysapps-tests/messaging/MmsManager_basic.html?total_num=15&amp;amp;locator_key=id&amp;amp;value=10</test_script_entry>
+        </description>
+        <specs>
+          <spec>
+            <spec_assertion element_type="event" element_name="onserviceremoved" interface="MmsManager" specification="Messaging" section="System-level APIs" category="W3C API Specifications"/>
+            <spec_url>http://www.w3.org/2012/sysapps/messaging/#idl-def-MmsManager</spec_url>
+            <spec_statement/>
+          </spec>
+        </specs>
+      </testcase>
+      <testcase purpose="Check if the getFetchMode function of MmsManager exists and type of function" type="compliance" status="approved" component="WebAPI/System-level APIs/Messaging" execution_type="auto" priority="P1" id="MmsManager_getFetchMode_basic">
+        <description>
+          <test_script_entry>/opt/webapi-messaging-sysapps-tests/messaging/MmsManager_basic.html?total_num=15&amp;amp;locator_key=id&amp;amp;value=11</test_script_entry>
+        </description>
+        <specs>
+          <spec>
+            <spec_assertion element_type="method" element_name="getFetchMode" interface="MmsManager" specification="Messaging" section="System-level APIs" category="W3C API Specifications"/>
+            <spec_url>http://www.w3.org/2012/sysapps/messaging/#idl-def-MmsManager</spec_url>
+            <spec_statement/>
+          </spec>
+        </specs>
+      </testcase>
+      <testcase purpose="Check if the setFetchMode function of MmsManager exists and type of function" type="compliance" status="approved" component="WebAPI/System-level APIs/Messaging" execution_type="auto" priority="P1" id="MmsManager_setFetchMode_basic">
+        <description>
+          <test_script_entry>/opt/webapi-messaging-sysapps-tests/messaging/MmsManager_basic.html?total_num=15&amp;amp;locator_key=id&amp;amp;value=12</test_script_entry>
+        </description>
+        <specs>
+          <spec>
+            <spec_assertion element_type="method" element_name="setFetchMode" interface="MmsManager" specification="Messaging" section="System-level APIs" category="W3C API Specifications"/>
+            <spec_url>http://www.w3.org/2012/sysapps/messaging/#idl-def-MmsManager</spec_url>
+            <spec_statement/>
+          </spec>
+        </specs>
+      </testcase>
+      <testcase purpose="Check if the send function of MmsManager exists and type of function" type="compliance" status="approved" component="WebAPI/System-level APIs/Messaging" execution_type="auto" priority="P1" id="MmsManager_send_basic">
+        <description>
+          <test_script_entry>/opt/webapi-messaging-sysapps-tests/messaging/MmsManager_basic.html?total_num=15&amp;amp;locator_key=id&amp;amp;value=13</test_script_entry>
+        </description>
+        <specs>
+          <spec>
+            <spec_assertion element_type="method" element_name="send" interface="MmsManager" specification="Messaging" section="System-level APIs" category="W3C API Specifications"/>
+            <spec_url>http://www.w3.org/2012/sysapps/messaging/#idl-def-MmsManager</spec_url>
+            <spec_statement/>
+          </spec>
+        </specs>
+      </testcase>
+      <testcase purpose="Check if the fetch function of MmsManager exists and type of function" type="compliance" status="approved" component="WebAPI/System-level APIs/Messaging" execution_type="auto" priority="P1" id="MmsManager_fetch_basic">
+        <description>
+          <test_script_entry>/opt/webapi-messaging-sysapps-tests/messaging/MmsManager_basic.html?total_num=15&amp;amp;locator_key=id&amp;amp;value=14</test_script_entry>
+        </description>
+        <specs>
+          <spec>
+            <spec_assertion element_type="method" element_name="fetch" interface="MmsManager" specification="Messaging" section="System-level APIs" category="W3C API Specifications"/>
+            <spec_url>http://www.w3.org/2012/sysapps/messaging/#idl-def-MmsManager</spec_url>
+            <spec_statement/>
+          </spec>
+        </specs>
+      </testcase>
+      <testcase purpose="Check if the clear function of MmsManager exists and type of function" type="compliance" status="approved" component="WebAPI/System-level APIs/Messaging" execution_type="auto" priority="P1" id="MmsManager_clear_basic">
+        <description>
+          <test_script_entry>/opt/webapi-messaging-sysapps-tests/messaging/MmsManager_basic.html?total_num=15&amp;amp;locator_key=id&amp;amp;value=15</test_script_entry>
+        </description>
+        <specs>
+          <spec>
+            <spec_assertion element_type="method" element_name="clear" interface="MmsManager" specification="Messaging" section="System-level APIs" category="W3C API Specifications"/>
+            <spec_url>http://www.w3.org/2012/sysapps/messaging/#idl-def-MmsManager</spec_url>
+            <spec_statement/>
+          </spec>
+        </specs>
+      </testcase>
+      <testcase purpose="Check if the readonly attribute messageID of SmsMessage exists and type of string" type="compliance" status="approved" component="WebAPI/System-level APIs/Messaging" execution_type="auto" priority="P1" id="SmsMessage_messageID_basic">
+        <description>
+          <test_script_entry>/opt/webapi-messaging-sysapps-tests/messaging/SmsMessage_basic.html?total_num=12&amp;amp;locator_key=id&amp;amp;value=1</test_script_entry>
+        </description>
+        <specs>
+          <spec>
+            <spec_assertion element_type="attribute" element_name="messageID" interface="SmsMessage" specification="Messaging" section="System-level APIs" category="W3C API Specifications"/>
+            <spec_url>http://www.w3.org/2012/sysapps/messaging/#idl-def-SmsMessage</spec_url>
+            <spec_statement/>
+          </spec>
+        </specs>
+      </testcase>
+      <testcase purpose="Check if the readonly attribute type of SmsMessage exists and type of string" type="compliance" status="approved" component="WebAPI/System-level APIs/Messaging" execution_type="auto" priority="P1" id="SmsMessage_type_basic">
+        <description>
+          <test_script_entry>/opt/webapi-messaging-sysapps-tests/messaging/SmsMessage_basic.html?total_num=12&amp;amp;locator_key=id&amp;amp;value=2</test_script_entry>
+        </description>
+        <specs>
+          <spec>
+            <spec_assertion element_type="attribute" element_name="type" interface="SmsMessage" specification="Messaging" section="System-level APIs" category="W3C API Specifications"/>
+            <spec_url>http://www.w3.org/2012/sysapps/messaging/#idl-def-SmsMessage</spec_url>
+            <spec_statement/>
+          </spec>
+        </specs>
+      </testcase>
+      <testcase purpose="Check if the readonly attribute serviceID of SmsMessage exists and type of string" type="compliance" status="approved" component="WebAPI/System-level APIs/Messaging" execution_type="auto" priority="P1" id="SmsMessage_serviceID_basic">
+        <description>
+          <test_script_entry>/opt/webapi-messaging-sysapps-tests/messaging/SmsMessage_basic.html?total_num=12&amp;amp;locator_key=id&amp;amp;value=3</test_script_entry>
+        </description>
+        <specs>
+          <spec>
+            <spec_assertion element_type="attribute" element_name="serviceID" interface="SmsMessage" specification="Messaging" section="System-level APIs" category="W3C API Specifications"/>
+            <spec_url>http://www.w3.org/2012/sysapps/messaging/#idl-def-SmsMessage</spec_url>
+            <spec_statement/>
+          </spec>
+        </specs>
+      </testcase>
+      <testcase purpose="Check if the readonly attribute from of SmsMessage exists and type of string" type="compliance" status="approved" component="WebAPI/System-level APIs/Messaging" execution_type="auto" priority="P1" id="SmsMessage_from_basic">
+        <description>
+          <test_script_entry>/opt/webapi-messaging-sysapps-tests/messaging/SmsMessage_basic.html?total_num=12&amp;amp;locator_key=id&amp;amp;value=4</test_script_entry>
+        </description>
+        <specs>
+          <spec>
+            <spec_assertion element_type="attribute" element_name="from" interface="SmsMessage" specification="Messaging" section="System-level APIs" category="W3C API Specifications"/>
+            <spec_url>http://www.w3.org/2012/sysapps/messaging/#idl-def-SmsMessage</spec_url>
+            <spec_statement/>
+          </spec>
+        </specs>
+      </testcase>
+      <testcase purpose="Check if the readonly attribute timestamp of SmsMessage exists and type of Date" type="compliance" status="approved" component="WebAPI/System-level APIs/Messaging" execution_type="auto" priority="P1" id="SmsMessage_timestamp_basic">
+        <description>
+          <test_script_entry>/opt/webapi-messaging-sysapps-tests/messaging/SmsMessage_basic.html?total_num=12&amp;amp;locator_key=id&amp;amp;value=5</test_script_entry>
+        </description>
+        <specs>
+          <spec>
+            <spec_assertion element_type="attribute" element_name="timestamp" interface="SmsMessage" specification="Messaging" section="System-level APIs" category="W3C API Specifications"/>
+            <spec_url>http://www.w3.org/2012/sysapps/messaging/#idl-def-SmsMessage</spec_url>
+            <spec_statement/>
+          </spec>
+        </specs>
+      </testcase>
+      <testcase purpose="Check if the readonly attribute read of SmsMessage exists and type of boolean" type="compliance" status="approved" component="WebAPI/System-level APIs/Messaging" execution_type="auto" priority="P1" id="SmsMessage_read_basic">
+        <description>
+          <test_script_entry>/opt/webapi-messaging-sysapps-tests/messaging/SmsMessage_basic.html?total_num=12&amp;amp;locator_key=id&amp;amp;value=6</test_script_entry>
+        </description>
+        <specs>
+          <spec>
+            <spec_assertion element_type="attribute" element_name="read" interface="SmsMessage" specification="Messaging" section="System-level APIs" category="W3C API Specifications"/>
+            <spec_url>http://www.w3.org/2012/sysapps/messaging/#idl-def-SmsMessage</spec_url>
+            <spec_statement/>
+          </spec>
+        </specs>
+      </testcase>
+      <testcase purpose="Check if the readonly attribute to of SmsMessage exists and type of string" type="compliance" status="approved" component="WebAPI/System-level APIs/Messaging" execution_type="auto" priority="P1" id="SmsMessage_to_basic">
+        <description>
+          <test_script_entry>/opt/webapi-messaging-sysapps-tests/messaging/SmsMessage_basic.html?total_num=12&amp;amp;locator_key=id&amp;amp;value=7</test_script_entry>
+        </description>
+        <specs>
+          <spec>
+            <spec_assertion element_type="attribute" element_name="to" interface="SmsMessage" specification="Messaging" section="System-level APIs" category="W3C API Specifications"/>
+            <spec_url>http://www.w3.org/2012/sysapps/messaging/#idl-def-SmsMessage</spec_url>
+            <spec_statement/>
+          </spec>
+        </specs>
+      </testcase>
+      <testcase purpose="Check if the readonly attribute body of SmsMessage exists and type of String" type="compliance" status="approved" component="WebAPI/System-level APIs/Messaging" execution_type="auto" priority="P1" id="SmsMessage_body_basic">
+        <description>
+          <test_script_entry>/opt/webapi-messaging-sysapps-tests/messaging/SmsMessage_basic.html?total_num=12&amp;amp;locator_key=id&amp;amp;value=8</test_script_entry>
+        </description>
+        <specs>
+          <spec>
+            <spec_assertion element_type="attribute" element_name="body" interface="SmsMessage" specification="Messaging" section="System-level APIs" category="W3C API Specifications"/>
+            <spec_url>http://www.w3.org/2012/sysapps/messaging/#idl-def-SmsMessage</spec_url>
+            <spec_statement/>
+          </spec>
+        </specs>
+      </testcase>
+      <testcase purpose="Check if the readonly attribute state of SmsMessage exists and type of String" type="compliance" status="approved" component="WebAPI/System-level APIs/Messaging" execution_type="auto" priority="P1" id="SmsMessage_state_basic">
+        <description>
+          <test_script_entry>/opt/webapi-messaging-sysapps-tests/messaging/SmsMessage_basic.html?total_num=12&amp;amp;locator_key=id&amp;amp;value=9</test_script_entry>
+        </description>
+        <specs>
+          <spec>
+            <spec_assertion element_type="attribute" element_name="state" interface="SmsMessage" specification="Messaging" section="System-level APIs" category="W3C API Specifications"/>
+            <spec_url>http://www.w3.org/2012/sysapps/messaging/#idl-def-SmsMessage</spec_url>
+            <spec_statement/>
+          </spec>
+        </specs>
+      </testcase>
+      <testcase purpose="Check if the readonly attribute deliveryStatus of SmsMessage exists and type of String" type="compliance" status="approved" component="WebAPI/System-level APIs/Messaging" execution_type="auto" priority="P1" id="SmsMessage_deliveryStatus_basic">
+        <description>
+          <test_script_entry>/opt/webapi-messaging-sysapps-tests/messaging/SmsMessage_basic.html?total_num=12&amp;amp;locator_key=id&amp;amp;value=10</test_script_entry>
+        </description>
+        <specs>
+          <spec>
+            <spec_assertion element_type="attribute" element_name="deliveryStatus" interface="SmsMessage" specification="Messaging" section="System-level APIs" category="W3C API Specifications"/>
+            <spec_url>http://www.w3.org/2012/sysapps/messaging/#idl-def-SmsMessage</spec_url>
+            <spec_statement/>
+          </spec>
+        </specs>
+      </testcase>
+      <testcase purpose="Check if the readonly attribute deliveryTimestamp of SmsMessage exists and type of String" type="compliance" status="approved" component="WebAPI/System-level APIs/Messaging" execution_type="auto" priority="P1" id="SmsMessage_deliveryTimestamp_basic">
+        <description>
+          <test_script_entry>/opt/webapi-messaging-sysapps-tests/messaging/SmsMessage_basic.html?total_num=12&amp;amp;locator_key=id&amp;amp;value=11</test_script_entry>
+        </description>
+        <specs>
+          <spec>
+            <spec_assertion element_type="attribute" element_name="deliveryTimestamp" interface="SmsMessage" specification="Messaging" section="System-level APIs" category="W3C API Specifications"/>
+            <spec_url>http://www.w3.org/2012/sysapps/messaging/#idl-def-SmsMessage</spec_url>
+            <spec_statement/>
+          </spec>
+        </specs>
+      </testcase>
+      <testcase purpose="Check if the readonly attribute messageClass of SmsMessage exists and type of String" type="compliance" status="approved" component="WebAPI/System-level APIs/Messaging" execution_type="auto" priority="P1" id="SmsMessage_messageClass_basic">
+        <description>
+          <test_script_entry>/opt/webapi-messaging-sysapps-tests/messaging/SmsMessage_basic.html?total_num=12&amp;amp;locator_key=id&amp;amp;value=12</test_script_entry>
+        </description>
+        <specs>
+          <spec>
+            <spec_assertion element_type="attribute" element_name="messageClass" interface="SmsMessage" specification="Messaging" section="System-level APIs" category="W3C API Specifications"/>
+            <spec_url>http://www.w3.org/2012/sysapps/messaging/#idl-def-SmsMessage</spec_url>
+            <spec_statement/>
+          </spec>
+        </specs>
+      </testcase>
+      <testcase purpose="Check if the readonly attribute messageID of MmsMessage exists and type of String" type="compliance" status="approved" component="WebAPI/System-level APIs/Messaging" execution_type="auto" priority="P1" id="MmsMessage_messageID_basic">
+        <description>
+          <test_script_entry>/opt/webapi-messaging-sysapps-tests/messaging/MmsMessage_basic.html?total_num=16&amp;amp;locator_key=id&amp;amp;value=1</test_script_entry>
+        </description>
+        <specs>
+          <spec>
+            <spec_assertion element_type="attribute" element_name="messageID" interface="MmsMessage" specification="Messaging" section="System-level APIs" category="W3C API Specifications"/>
+            <spec_url>http://www.w3.org/2012/sysapps/messaging/#idl-def-MmsMessage</spec_url>
+            <spec_statement/>
+          </spec>
+        </specs>
+      </testcase>
+      <testcase purpose="Check if the readonly attribute type of MmsMessage exists and type of String" type="compliance" status="approved" component="WebAPI/System-level APIs/Messaging" execution_type="auto" priority="P1" id="MmsMessage_type_basic">
+        <description>
+          <test_script_entry>/opt/webapi-messaging-sysapps-tests/messaging/MmsMessage_basic.html?total_num=16&amp;amp;locator_key=id&amp;amp;value=2</test_script_entry>
+        </description>
+        <specs>
+          <spec>
+            <spec_assertion element_type="attribute" element_name="type" interface="MmsMessage" specification="Messaging" section="System-level APIs" category="W3C API Specifications"/>
+            <spec_url>http://www.w3.org/2012/sysapps/messaging/#idl-def-MmsMessage</spec_url>
+            <spec_statement/>
+          </spec>
+        </specs>
+      </testcase>
+      <testcase purpose="Check if the readonly attribute serviceID of MmsMessage exists and type of String" type="compliance" status="approved" component="WebAPI/System-level APIs/Messaging" execution_type="auto" priority="P1" id="MmsMessage_serviceID_basic">
+        <description>
+          <test_script_entry>/opt/webapi-messaging-sysapps-tests/messaging/MmsMessage_basic.html?total_num=16&amp;amp;locator_key=id&amp;amp;value=3</test_script_entry>
+        </description>
+        <specs>
+          <spec>
+            <spec_assertion element_type="attribute" element_name="serviceID" interface="MmsMessage" specification="Messaging" section="System-level APIs" category="W3C API Specifications"/>
+            <spec_url>http://www.w3.org/2012/sysapps/messaging/#idl-def-MmsMessage</spec_url>
+            <spec_statement/>
+          </spec>
+        </specs>
+      </testcase>
+      <testcase purpose="Check if the readonly attribute from of MmsMessage exists and type of String" type="compliance" status="approved" component="WebAPI/System-level APIs/Messaging" execution_type="auto" priority="P1" id="MmsMessage_from_basic">
+        <description>
+          <test_script_entry>/opt/webapi-messaging-sysapps-tests/messaging/MmsMessage_basic.html?total_num=16&amp;amp;locator_key=id&amp;amp;value=4</test_script_entry>
+        </description>
+        <specs>
+          <spec>
+            <spec_assertion element_type="attribute" element_name="from" interface="MmsMessage" specification="Messaging" section="System-level APIs" category="W3C API Specifications"/>
+            <spec_url>http://www.w3.org/2012/sysapps/messaging/#idl-def-MmsMessage</spec_url>
+            <spec_statement/>
+          </spec>
+        </specs>
+      </testcase>
+      <testcase purpose="Check if the readonly attribute timestamp of MmsMessage exists and type of date" type="compliance" status="approved" component="WebAPI/System-level APIs/Messaging" execution_type="auto" priority="P1" id="MmsMessage_timestamp_basic">
+        <description>
+          <test_script_entry>/opt/webapi-messaging-sysapps-tests/messaging/MmsMessage_basic.html?total_num=16&amp;amp;locator_key=id&amp;amp;value=5</test_script_entry>
+        </description>
+        <specs>
+          <spec>
+            <spec_assertion element_type="attribute" element_name="timestamp" interface="MmsMessage" specification="Messaging" section="System-level APIs" category="W3C API Specifications"/>
+            <spec_url>http://www.w3.org/2012/sysapps/messaging/#idl-def-MmsMessage</spec_url>
+            <spec_statement/>
+          </spec>
+        </specs>
+      </testcase>
+      <testcase purpose="Check if the readonly attribute read of MmsMessage exists and type of boolean" type="compliance" status="approved" component="WebAPI/System-level APIs/Messaging" execution_type="auto" priority="P1" id="MmsMessage_read_basic">
+        <description>
+          <test_script_entry>/opt/webapi-messaging-sysapps-tests/messaging/MmsMessage_basic.html?total_num=16&amp;amp;locator_key=id&amp;amp;value=6</test_script_entry>
+        </description>
+        <specs>
+          <spec>
+            <spec_assertion element_type="attribute" element_name="read" interface="MmsMessage" specification="Messaging" section="System-level APIs" category="W3C API Specifications"/>
+            <spec_url>http://www.w3.org/2012/sysapps/messaging/#idl-def-MmsMessage</spec_url>
+            <spec_statement/>
+          </spec>
+        </specs>
+      </testcase>
+      <testcase purpose="Check if the readonly attribute to of MmsMessage exists and type of array" type="compliance" status="approved" component="WebAPI/System-level APIs/Messaging" execution_type="auto" priority="P1" id="MmsMessage_to_basic">
+        <description>
+          <test_script_entry>/opt/webapi-messaging-sysapps-tests/messaging/MmsMessage_basic.html?total_num=16&amp;amp;locator_key=id&amp;amp;value=7</test_script_entry>
+        </description>
+        <specs>
+          <spec>
+            <spec_assertion element_type="attribute" element_name="to" interface="MmsMessage" specification="Messaging" section="System-level APIs" category="W3C API Specifications"/>
+            <spec_url>http://www.w3.org/2012/sysapps/messaging/#idl-def-MmsMessage</spec_url>
+            <spec_statement/>
+          </spec>
+        </specs>
+      </testcase>
+      <testcase purpose="Check if the readonly attribute expiry of MmsMessage exists and type of String" type="compliance" status="approved" component="WebAPI/System-level APIs/Messaging" execution_type="auto" priority="P1" id="MmsMessage_expiry_basic">
+        <description>
+          <test_script_entry>/opt/webapi-messaging-sysapps-tests/messaging/MmsMessage_basic.html?total_num=16&amp;amp;locator_key=id&amp;amp;value=8</test_script_entry>
+        </description>
+        <specs>
+          <spec>
+            <spec_assertion element_type="attribute" element_name="expiry" interface="MmsMessage" specification="Messaging" section="System-level APIs" category="W3C API Specifications"/>
+            <spec_url>http://www.w3.org/2012/sysapps/messaging/#idl-def-MmsMessage</spec_url>
+            <spec_statement/>
+          </spec>
+        </specs>
+      </testcase>
+      <testcase purpose="Check if the readonly attribute cc of MmsMessage exists and type of array" type="compliance" status="approved" component="WebAPI/System-level APIs/Messaging" execution_type="auto" priority="P1" id="MmsMessage_cc_basic">
+        <description>
+          <test_script_entry>/opt/webapi-messaging-sysapps-tests/messaging/MmsMessage_basic.html?total_num=16&amp;amp;locator_key=id&amp;amp;value=9</test_script_entry>
+        </description>
+        <specs>
+          <spec>
+            <spec_assertion element_type="attribute" element_name="cc" interface="MmsMessage" specification="Messaging" section="System-level APIs" category="W3C API Specifications"/>
+            <spec_url>http://www.w3.org/2012/sysapps/messaging/#idl-def-MmsMessage</spec_url>
+            <spec_statement/>
+          </spec>
+        </specs>
+      </testcase>
+      <testcase purpose="Check if the readonly attribute bcc of MmsMessage exists and type of array" type="compliance" status="approved" component="WebAPI/System-level APIs/Messaging" execution_type="auto" priority="P1" id="MmsMessage_bcc_basic">
+        <description>
+          <test_script_entry>/opt/webapi-messaging-sysapps-tests/messaging/MmsMessage_basic.html?total_num=16&amp;amp;locator_key=id&amp;amp;value=10</test_script_entry>
+        </description>
+        <specs>
+          <spec>
+            <spec_assertion element_type="attribute" element_name="bcc" interface="MmsMessage" specification="Messaging" section="System-level APIs" category="W3C API Specifications"/>
+            <spec_url>http://www.w3.org/2012/sysapps/messaging/#idl-def-MmsMessage</spec_url>
+            <spec_statement/>
+          </spec>
+        </specs>
+      </testcase>
+      <testcase purpose="Check if the readonly attribute subject of MmsMessage exists and type of String" type="compliance" status="approved" component="WebAPI/System-level APIs/Messaging" execution_type="auto" priority="P1" id="MmsMessage_subject_basic">
+        <description>
+          <test_script_entry>/opt/webapi-messaging-sysapps-tests/messaging/MmsMessage_basic.html?total_num=16&amp;amp;locator_key=id&amp;amp;value=11</test_script_entry>
+        </description>
+        <specs>
+          <spec>
+            <spec_assertion element_type="attribute" element_name="subject" interface="MmsMessage" specification="Messaging" section="System-level APIs" category="W3C API Specifications"/>
+            <spec_url>http://www.w3.org/2012/sysapps/messaging/#idl-def-MmsMessage</spec_url>
+            <spec_statement/>
+          </spec>
+        </specs>
+      </testcase>
+      <testcase purpose="Check if the readonly attribute smil of MmsMessage exists and type of String" type="compliance" status="approved" component="WebAPI/System-level APIs/Messaging" execution_type="auto" priority="P1" id="MmsMessage_smil_basic">
+        <description>
+          <test_script_entry>/opt/webapi-messaging-sysapps-tests/messaging/MmsMessage_basic.html?total_num=16&amp;amp;locator_key=id&amp;amp;value=12</test_script_entry>
+        </description>
+        <specs>
+          <spec>
+            <spec_assertion element_type="attribute" element_name="smil" interface="MmsMessage" specification="Messaging" section="System-level APIs" category="W3C API Specifications"/>
+            <spec_url>http://www.w3.org/2012/sysapps/messaging/#idl-def-MmsMessage</spec_url>
+            <spec_statement/>
+          </spec>
+        </specs>
+      </testcase>
+      <testcase purpose="Check if the readonly attribute attachments of MmsMessage exists and type of array" type="compliance" status="approved" component="WebAPI/System-level APIs/Messaging" execution_type="auto" priority="P1" id="MmsMessage_attachments_basic">
+        <description>
+          <test_script_entry>/opt/webapi-messaging-sysapps-tests/messaging/MmsMessage_basic.html?total_num=16&amp;amp;locator_key=id&amp;amp;value=13</test_script_entry>
+        </description>
+        <specs>
+          <spec>
+            <spec_assertion element_type="attribute" element_name="attachments" interface="MmsMessage" specification="Messaging" section="System-level APIs" category="W3C API Specifications"/>
+            <spec_url>http://www.w3.org/2012/sysapps/messaging/#idl-def-MmsMessage</spec_url>
+            <spec_statement/>
+          </spec>
+        </specs>
+      </testcase>
+      <testcase purpose="Check if the readonly attribute state of MmsMessage exists and type of String" type="compliance" status="approved" component="WebAPI/System-level APIs/Messaging" execution_type="auto" priority="P1" id="MmsMessage_state_basic">
+        <description>
+          <test_script_entry>/opt/webapi-messaging-sysapps-tests/messaging/MmsMessage_basic.html?total_num=16&amp;amp;locator_key=id&amp;amp;value=14</test_script_entry>
+        </description>
+        <specs>
+          <spec>
+            <spec_assertion element_type="attribute" element_name="state" interface="MmsMessage" specification="Messaging" section="System-level APIs" category="W3C API Specifications"/>
+            <spec_url>http://www.w3.org/2012/sysapps/messaging/#idl-def-MmsMessage</spec_url>
+            <spec_statement/>
+          </spec>
+        </specs>
+      </testcase>
+      <testcase purpose="Check if the readonly attribute deliveryInfo of MmsMessage exists and type of array" type="compliance" status="approved" component="WebAPI/System-level APIs/Messaging" execution_type="auto" priority="P1" id="MmsMessage_deliveryInfo_basic">
+        <description>
+          <test_script_entry>/opt/webapi-messaging-sysapps-tests/messaging/MmsMessage_basic.html?total_num=16&amp;amp;locator_key=id&amp;amp;value=15</test_script_entry>
+        </description>
+        <specs>
+          <spec>
+            <spec_assertion element_type="attribute" element_name="deliveryInfo" interface="MmsMessage" specification="Messaging" section="System-level APIs" category="W3C API Specifications"/>
+            <spec_url>http://www.w3.org/2012/sysapps/messaging/#idl-def-MmsMessage</spec_url>
+            <spec_statement/>
+          </spec>
+        </specs>
+      </testcase>
+      <testcase purpose="Check if the readonly attribute readReportRequested of MmsMessage exists and type of boolean" type="compliance" status="approved" component="WebAPI/System-level APIs/Messaging" execution_type="auto" priority="P1" id="MmsMessage_readReportRequested_basic">
+        <description>
+          <test_script_entry>/opt/webapi-messaging-sysapps-tests/messaging/MmsMessage_basic.html?total_num=16&amp;amp;locator_key=id&amp;amp;value=16</test_script_entry>
+        </description>
+        <specs>
+          <spec>
+            <spec_assertion element_type="attribute" element_name="readReportRequested" interface="MmsMessage" specification="Messaging" section="System-level APIs" category="W3C API Specifications"/>
+            <spec_url>http://www.w3.org/2012/sysapps/messaging/#idl-def-MmsMessage</spec_url>
             <spec_statement/>
           </spec>
         </specs>

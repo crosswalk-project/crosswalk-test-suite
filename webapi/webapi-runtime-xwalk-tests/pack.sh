@@ -173,7 +173,7 @@ if [ $? -ne 0 ]; then
     exit 1
 fi
 cd $BUILD_ROOT/cordova/
-bin/create $appname com.example.$appname $appname
+bin/create $appname org.xwalk.$appname $appname
 cd $BUILD_ROOT/cordova/$appname
 rm -rf $BUILD_ROOT/cordova/$appname/assets/www/*
 cp -ar $BUILD_DEST/* $BUILD_ROOT/cordova/$appname/assets/www/
@@ -190,7 +190,7 @@ cp -r $SubApkSrc2  $BUILD_DEST
 cp -r $SubApkSrc3  $BUILD_DEST
 
 cd $BUILD_ROOT/cordova/
-bin/create $SubApkName1 com.example.$SubApkName1 $SubApkName1
+bin/create $SubApkName1 org.xwalk.$SubApkName1 $SubApkName1
 cd $BUILD_ROOT/cordova/$SubApkName1
 rm -rf $BUILD_ROOT/cordova/$SubApkName1/assets/www/*
 cp -ar $BUILD_DEST/$SubApkSrc1/* $BUILD_ROOT/cordova/$SubApkName1/assets/www/
@@ -203,7 +203,7 @@ if [ $? -ne 0 ]; then
 fi
 
 cd $BUILD_ROOT/cordova/
-bin/create $SubApkName2 com.example.$SubApkName2 $SubApkName2
+bin/create $SubApkName2 org.xwalk.$SubApkName2 $SubApkName2
 cd $BUILD_ROOT/cordova/$SubApkName2
 rm -rf $BUILD_ROOT/cordova/$SubApkName2/assets/www/*
 cp -ar $BUILD_DEST/$SubApkSrc2/* $BUILD_ROOT/cordova/$SubApkName2/assets/www/
@@ -216,7 +216,7 @@ if [ $? -ne 0 ]; then
 fi
 
 cd $BUILD_ROOT/cordova/
-bin/create $SubApkName3 com.example.$SubApkName3 $SubApkName3
+bin/create $SubApkName3 org.xwalk.$SubApkName3 $SubApkName3
 cd $BUILD_ROOT/cordova/$SubApkName3
 rm -rf $BUILD_ROOT/cordova/$SubApkName3/assets/www/*
 cp -ar $BUILD_DEST/$SubApkSrc3/* $BUILD_ROOT/cordova/$SubApkName3/assets/www/
