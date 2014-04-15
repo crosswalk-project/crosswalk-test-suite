@@ -123,6 +123,44 @@
           </spec>
         </specs>
       </testcase>
+      <testcase purpose="Test checks that trivial example writes the connection bandwidth to the page and shows it again each time it is changing" type="compliance" status="approved" component="WebAPI/Device/The Network Information API" execution_type="manual" priority="P3" id="NetworkInformation_example1_write_bandwidth">
+        <description>
+          <test_script_entry>/opt/tct-netinfo-w3c-tests/netinfo/NetworkInformation_example1_write_bandwidth.html</test_script_entry>
+        </description>
+        <specs>
+          <spec>
+            <spec_assertion usage="true" interface="Connection" specification="The Network Information API" section="Device" category="Tizen W3C API Specifications"/>
+            <spec_url>http://www.w3.org/TR/2012/WD-netinfo-api-20121129/#widl-NetworkInformation-connection</spec_url>
+            <spec_statement/>
+          </spec>
+        </specs>
+      </testcase>
+      <testcase purpose="Test checks that the value of Connection.bandwidth attribute is 0 when the user is currently offline" type="compliance" status="approved" component="WebAPI/Device/The Network Information API" execution_type="auto" priority="P2" id="Connection_bandwidth_zero">
+        <description>
+          <pre_condition>Make sure the network connection is unavailable</pre_condition>
+          <test_script_entry>/opt/tct-netinfo-w3c-tests/netinfo/Connection_bandwidth_zero.html</test_script_entry>
+        </description>
+        <specs>
+          <spec>
+            <spec_assertion element_type="attribute" element_name="bandwidth" interface="Connection" specification="The Network Information API" section="Device" category="Tizen W3C API Specifications"/>
+            <spec_url>http://www.w3.org/TR/2012/WD-netinfo-api-20121129/#widl-Connection-bandwidth</spec_url>
+            <spec_statement/>
+          </spec>
+        </specs>
+      </testcase>
+      <testcase purpose="Test checks that the value of Connection.metered is false when the user is offline" type="compliance" status="approved" component="WebAPI/Device/The Network Information API" execution_type="auto" priority="P2" id="Connection_metered_false">
+        <description>
+          <pre_condition>Make sure the network connection is unavailable</pre_condition>
+          <test_script_entry>/opt/tct-netinfo-w3c-tests/netinfo/Connection_metered_false.html</test_script_entry>
+        </description>
+        <specs>
+          <spec>
+            <spec_assertion element_type="attribute" element_name="metered" interface="Connection" specification="The Network Information API" section="Device" category="Tizen W3C API Specifications"/>
+            <spec_url>http://www.w3.org/TR/2012/WD-netinfo-api-20121129/#widl-Connection-metered</spec_url>
+            <spec_statement/>
+          </spec>
+        </specs>
+      </testcase>
     </set>
   </suite>
 </test_definition>
