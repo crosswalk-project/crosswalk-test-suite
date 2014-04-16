@@ -1,5 +1,5 @@
 name=$(basename $(pwd))
-version="6.34.1.2"
+version="6.35.1.2"
 appname=$(echo $name|sed 's/-/_/g')
 
 # set value "1" if this suite need to sign,otherwise set "0" #
