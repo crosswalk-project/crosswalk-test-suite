@@ -136,13 +136,10 @@ webapp/manifest_app_mainSourceNoMain_tests/Makefile \
 webapp/manifest_app_mainSourceNoSource_tests/Makefile \
 webapp/manifest_app_MainSourceNoFile_tests/Makefile \
 
-webapp/manifest_icon_chinese_tests/Makefile \
 webapp/manifest_icon_nofile_tests/Makefile \
-webapp/manifest_icon_namedasterisk_tests/Makefile \
 webapp/manifest_icon_valuenull_tests/Makefile \
-webapp/manifest_desc_chinese_tests/Makefile \
+webapp/manifest_icon_namedasterisk_tests/Makefile \
 webapp/manifest_desc_long_tests/Makefile \
-webapp/manifest_desc_null_tests/Makefile \
 webapp/manifest_desc_specific_tests/Makefile \
 webapp/permission_field_splite_tests/Makefile \
 webapp/permission_field_null_tests/Makefile \

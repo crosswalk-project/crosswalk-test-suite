@@ -151,5 +151,13 @@ webapp/permission_field_lowercase_tests/Makefile \
 webapp/permission_field_more2_tests/Makefile \
 webapp/permission_field_more_tests/Makefile \
 webapp/permission_field_one_tests/Makefile \
+webapp/manifest_icon_chinese_tests/Makefile \
+webapp/manifest_desc_chinese_tests/Makefile \
+webapp/manifest_desc_null_tests/Makefile \
+webapp/manifest_app_launchPathIndexBlank_tests/Makefile \
+webapp/manifest_app_launchPathIndexChinese_tests/Makefile \
+webapp/permission_field_noapi_tests/Makefile \
+webapp/permission_field_chinese_tests/Makefile \
+webapp/permission_field_splite_tests/Makefile \
 webapp/permission_field_uppercase_tests/Makefile])
 AC_OUTPUT
