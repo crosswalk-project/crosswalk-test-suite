@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<!--
+Copyright (c) 2013 Intel Corporation.
+
+Redistribution and use in source and binary forms, with or without modification,
+are permitted provided that the following conditions are met:
+
+* Redistributions of works must retain the original copyright notice, this list
+  of conditions and the following disclaimer.
+* Redistributions in binary form must reproduce the original copyright notice,
+  this list of conditions and the following disclaimer in the documentation
+  and/or other materials provided with the distribution.
+* Neither the name of Intel Corporation nor the names of its contributors
+  may be used to endorse or promote products derived from this work without
+  specific prior written permission.
+
+THIS SOFTWARE IS PROVIDED BY INTEL CORPORATION "AS IS"
+AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE
+IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE
+ARE DISCLAIMED. IN NO EVENT SHALL INTEL CORPORATION BE LIABLE FOR ANY DIRECT,
+INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING,
+BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE,
+DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY
+OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING
+NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE,
+EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
+
+Authors:
+        Liu,Yun <yunx.liu@intel.com>
+
+-->
+
+<meta charset="utf-8">
+<title>WebRTC Test: MediaStreamEvent - stream basic</title>
+<link rel="author" title="Intel" href="http://www.intel.com">
+<link rel="help" href="http://dev.w3.org/2011/webrtc/editor/webrtc.html#mediastreamevent">
+<script src="../resources/testharness.js"></script>
+<script src="../resources/testharnessreport.js"></script>
+<script src="./support/support.js"></script>
+<div id="log"></div>
+<script>
+
+var t = async_test("Check if the readonly attribute stream of MediaStreamEvent exists and type of MediaStream", {timeout: 20000});
+
+var configuration = {"iceServers": [{"url": "stun:stun.example.org"}]};
+var pc1 = new webkitRTCPeerConnection(configuration);
+var pc2;
+var pc1_offer;
+var fake_audio;
+
+t.step(function () {
+  navigator.webkitGetUserMedia({audio: true, vedio: true}, gotStream, function () {});
+});
+
+function gotStream(stream) {
+  pc1.addStream(stream);
+  fake_audio = stream;
+  pc1.createOffer(requestSucceeded1, function () {});
+}
+
+function requestSucceeded1 (offer) {
+  pc1_offer = offer;
+  pc1.setLocalDescription(offer, requestSucceeded2, function () {});
+}
+
+
+function requestSucceeded2 () {
+  pc2 = new webkitRTCPeerConnection(null, null);
+  pc2.addStream(fake_audio);
+  pc2.onaddstream = t.step_func(function (evt) {
+    assert_true("stream" in evt, "stream attribute in MediaStreamEvent");
+    assert_equals(Object.prototype.toString.call(evt.stream), "[object MediaStream]", "stream attribute of type");
+    assert_readonly(evt, "stream", "expect attribute stream cannot be changed but");
+    t.done();
+  });
+  pc2.setRemoteDescription(pc1_offer, requestSucceeded3, function () {});
+}
+
+function requestSucceeded3 () {
+  pc2.createAnswer(requestSucceeded4, function () {});
+}
+
+function requestSucceeded4 (answer) {
+  pc2.setLocalDescription(answer, function () {}, function () {});
+}
+
+</script>
