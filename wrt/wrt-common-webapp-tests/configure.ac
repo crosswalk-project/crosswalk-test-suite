@@ -150,5 +150,7 @@ webapp/manifest_icon_nofiles_tests/Makefile \
 webapp/manifest_icon_twoicon_tests/Makefile \
 webapp/manifest_icon_threeicon_tests/Makefile \
 
-webapp/manifest_app_mainSourceNullValue_tests/Makefile])
+webapp/manifest_app_mainSourceNullValue_tests/Makefile \
+webapp/webgl_webrtc_enable_tests/Makefile \
+webapp/webgl_webrtc_disable_tests/Makefile])
 AC_OUTPUT

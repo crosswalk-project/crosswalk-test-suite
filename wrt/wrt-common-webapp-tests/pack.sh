@@ -162,6 +162,13 @@ do
             rmfile $buildfolder
             continue
         fi
+        if [ "${buildfolder:0:20}" == "webgl_webrtc_disable" ];then
+            echo "Use --manifest to build..."
+            echo "Add --xwalk-command-line option..."
+            python make_apk.py --manifest=$BUILD_DEST/opt/$name/$folderName/$buildfolder/manifest.json --mode=$mode --arch=$arch --xwalk-command-line='--disable-webgl --disable-webrtc'
+            rmfile $buildfolder
+            continue
+        fi
         if [ "${buildfolder:0:6}" == "update" ];then
             echo "This app not support android..."
             continue
