@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-stylesheet type="text/xsl"  href="./testcase.xsl"?>
+<test_definition>
+  <suite name="webapi-webcrypto-w3c-tests" launcher="xwalk" category="W3C/HTML5 APIs">
+    <set name="webcrypto">
+      <testcase purpose="Check if the readonly attribute crypto of window interface exists and its type is object" type="compliance" status="ready" component="WebAPI/Security/Web Cryptography API" execution_type="auto" priority="P1" id="window_crypto_base">
+        <description>
+          <test_script_entry>/opt/webapi-webcrypto-w3c-tests/webcrypto/window_crypto_base.html</test_script_entry>
+        </description>
+        <specs>
+          <spec>
+            <spec_assertion element_type="attribute" element_name="crypto" interface="Window" specification="Web Cryptography API" section="Security" category="W3C API Specifications"/>
+            <spec_url>https://dvcs.w3.org/hg/webcrypto-api/raw-file/tip/spec/Overview.html#dfn-Crypto</spec_url>
+            <spec_statement/>
+          </spec>
+        </specs>
+      </testcase>
+    </set>
+  </suite>
+</test_definition>
