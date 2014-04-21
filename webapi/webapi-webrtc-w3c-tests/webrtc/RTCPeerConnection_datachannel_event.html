@@ -49,6 +49,7 @@ Authors:
       var pc1_offer;
       var pc2_answer;
       var pc1 = new RTCPeerConnection(null, null);
+      var pc2;
 
       function requestSucceeded1 (offer) {
         pc1_offer = offer;
@@ -63,8 +64,8 @@ Authors:
       }
 
       function requestSucceeded2 () {
-        var pc2 = new RTCPeerConnection(null, null);
-        pc2.ondatachannel = t.step(function (event) {
+        pc2 = new RTCPeerConnection(null, null);
+        pc2.ondatachannel = t.step_func(function (event) {
           t.done();
         });
         pc2.setRemoteDescription(pc1_offer, requestSucceeded3, requestFailed3);
@@ -115,10 +116,8 @@ Authors:
         t.done();
       }
 
-      t.step(function () {
-        pc1.createDataChannel("This is pc1");
-        pc1.createOffer(requestSucceeded1, requestFailed1);
-      });
+      pc1.createDataChannel("This is pc1");
+      pc1.createOffer(requestSucceeded1, requestFailed1);
 
     </script>
   </body>
