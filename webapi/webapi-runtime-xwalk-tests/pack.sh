@@ -145,9 +145,9 @@ cp -r $SubApkSrc2  $BUILD_DEST
 cp -r $SubApkSrc3  $BUILD_DEST
 cp -r $SRC_ROOT/../../tools/crosswalk $BUILD_ROOT/crosswalk
 cd $BUILD_ROOT/crosswalk
-python make_apk.py --package=org.xwalk.$SubApkName1 --name=$SubApkName1 --app-root=$BUILD_DEST/$SubApkDir1 --app-local-path=index.html --icon=$BUILD_DEST/$SubApkDir1/icon.png --mode=$mode --arch=$arch
-python make_apk.py --package=org.xwalk.$SubApkName2 --name=$SubApkName2 --app-root=$BUILD_DEST/$SubApkDir2 --app-local-path=index.html --icon=$BUILD_DEST/$SubApkDir2/icon.png --mode=$mode --arch=$arch
-python make_apk.py --package=org.xwalk.$SubApkName3 --name=$SubApkName3 --app-root=$BUILD_DEST/$SubApkDir3 --app-local-path=index.html --icon=$BUILD_DEST/$SubApkDir3/icon.png --mode=$mode --arch=$arch
+python make_apk.py --package=org.xwalk.$SubApkName1 --name=$SubApkName1 --app-root=$BUILD_DEST/$SubApkDir1 --app-local-path=main.js --icon=$BUILD_DEST/$SubApkDir1/icon.png --mode=$mode --arch=$arch
+python make_apk.py --package=org.xwalk.$SubApkName2 --name=$SubApkName2 --app-root=$BUILD_DEST/$SubApkDir2 --app-local-path=main.js --icon=$BUILD_DEST/$SubApkDir2/icon.png --mode=$mode --arch=$arch
+python make_apk.py --package=org.xwalk.$SubApkName3 --name=$SubApkName3 --app-root=$BUILD_DEST/$SubApkDir3 --app-local-path=main.js --icon=$BUILD_DEST/$SubApkDir3/icon.png --mode=$mode --arch=$arch
 python make_apk.py --package=org.xwalk.$appname --name=$appname --app-root=$BUILD_DEST --app-local-path=index.html --icon=$BUILD_DEST/icon.png --mode=$mode --arch=$arch
 if [ $? -ne 0 ];then
     echo "Create $name.apk fail.... >>>>>>>>>>>>>>>>>>>>>>>>>"
