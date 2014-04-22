@@ -8,10 +8,14 @@ USAGE="Usage: ./inst.sh [-i] [-u]
 
 PACKAGENAME=webapi-sanityapp-w3c-tests
 XPKNAME=${PACKAGENAME}.xpk
+TESTLIST=($PACKAGENAME ViewportTest)
 RESOURCE_DIR=/opt/usr/media
 
 function installpkg(){
-    xwalkctl --install $(dirname $0)/$XPKNAME
+    for test in ${TESTLIST[@]}
+    do
+        xwalkctl --install $(dirname $0)/${test}.xpk
+    done
 
     #TODO: copy resource
     #eg:cp xx $RESOURCE_DIR
@@ -19,10 +23,13 @@ function installpkg(){
 
 function uninstallpkg(){
     xwalkctl >/tmp/apps.txt 2>&1
-    pkgids=`cat /tmp/apps.txt | grep $PACKAGENAME | awk '{print $(NF-1)}'`
-    for pkgid in $pkgids
+    for test in ${TESTLIST[@]}
     do
-       xwalkctl --uninstall $pkgid
+      pkgids=`cat /tmp/apps.txt | grep $test | awk '{print $(NF-1)}'`
+      for pkgid in $pkgids
+      do
+         xwalkctl --uninstall $pkgid
+      done
     done
 
     #TODO: remove resource
