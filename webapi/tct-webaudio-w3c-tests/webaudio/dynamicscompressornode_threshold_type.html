@@ -46,7 +46,7 @@ Authors:
     <script type="text/javascript">
         test(function () {
             try{
-                var context = window.AudioContext;
+                var context = new AudioContext();
                 var dynamicscompressornode = context.createDynamicsCompressor();
                 assert_true("threshold" in dynamicscompressornode, "threshold attribute exists in DynamicsCompressorNode interface");
                 assert_equals(typeof dynamicscompressornode.threshold, "object", "Check if DynamicsCompressorNode.threshold attribute is of type");

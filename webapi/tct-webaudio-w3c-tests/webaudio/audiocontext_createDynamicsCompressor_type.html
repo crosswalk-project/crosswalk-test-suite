@@ -45,7 +45,7 @@ Authors:
     <div id=log></div>
     <script type="text/javascript">
         test(function () {
-            var context = window.AudioContext;
+            var context = new AudioContext();
             assert_true("createDynamicsCompressor" in context, "createDynamicsCompressor method exist AudioContext interface");
             assert_equals(typeof context.createDynamicsCompressor, "function", "Check if AudioContext.createDynamicsCompressor is of type");
         }, document.title);

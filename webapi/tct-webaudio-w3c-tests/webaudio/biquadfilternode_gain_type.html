@@ -46,7 +46,7 @@ Authors:
     <script type="text/javascript">
         test(function () {
             try{
-                var context = window.AudioContext;
+                var context = new AudioContext();
                 var biquadFilterNode = context.createBiquadFilter();
                 assert_true("gain" in biquadFilterNode, "gain attribute exists in BiquadFilterNode");
                 assert_equals(typeof biquadFilterNode.gain, "object", "Check if BiquadFilterNode.gain attribute is of type");

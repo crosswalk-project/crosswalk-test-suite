@@ -45,7 +45,7 @@ Authors:
     <div id="log"></div>
     <script type="text/javascript">
         test(function () {
-            var context = window.AudioContext;
+            var context = new AudioContext();
             assert_true("createGain" in context, "createGain method exist AudioContext interface");
             assert_true(typeof context.createGain == "function", "Check if AudioContext.createGain is of type method");
         }, document.title);

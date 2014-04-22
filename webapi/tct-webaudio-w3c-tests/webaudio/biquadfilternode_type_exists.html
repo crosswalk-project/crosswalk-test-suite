@@ -46,7 +46,7 @@ Authors:
     <script type="text/javascript">
         test(function () {
             try{
-                var context = window.AudioContext;
+                var context = new AudioContext();
                 var biquadFilterNode = context.createBiquadFilter();
                 assert_true("type" in biquadFilterNode, "Check if BiquadFilterNode.type attribute exists");
             } catch (e){

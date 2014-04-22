@@ -47,7 +47,7 @@ Authors:
     <script type="text/javascript">
         test(function () {
             try{
-                var context = window.AudioContext;
+                var context = new AudioContext();
                 var pannernode = context.createPanner();
                 assert_true("setPosition" in pannernode, "Check if PannerNode.setPosition function exists");
             } catch (e) {

@@ -46,7 +46,7 @@ Authors:
     <div id=log></div>
     <script>
         test(function () {
-            var context = window.AudioContext;
+            var context = new AudioContext();
             assert_true("createPeriodicWave" in context, "createPeriodicWave method exist AudioContext interface");
             assert_equals(typeof context.createPeriodicWave, "function", "Check if AudioContext.createPeriodicWave is of type");
         }, document.title);

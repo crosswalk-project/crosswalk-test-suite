@@ -47,7 +47,7 @@ Authors:
         var t = async_test(document.title, {timeout: 100000});
         setup({timeout:100000});
         try{
-            var context = window.AudioContext;
+            var context = new AudioContext();
             var scriptAudioNode = context.createJavaScriptNode(4096,1,1);
             scriptAudioNode.onaudioprocess = process;
             var analyser=context.createAnalyser();

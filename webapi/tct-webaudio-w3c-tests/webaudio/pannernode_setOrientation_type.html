@@ -47,7 +47,7 @@ Authors:
     <script type="text/javascript">
         test(function () {
             try{
-                var context = window.AudioContext;
+                var context = new AudioContext();
                 var pannernode = context.createPanner();
                 assert_true(typeof pannernode.setOrientation == "function", "Check if PannerNode.setOrientation is method type");
             } catch (e) {

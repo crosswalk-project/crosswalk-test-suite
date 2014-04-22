@@ -45,7 +45,7 @@ Authors:
     <div id=log></div>
     <script type="text/javascript">
         test(function () {
-            var context = window.AudioContext;
+            var context = new AudioContext();
             assert_true("createBuffer" in context, "createBuffer method exist AudioContext interface");
             assert_equals(typeof context.createBuffer, "function", "Check if AudioContext.createBuffer is of type");
         }, document.title);

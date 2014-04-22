@@ -46,7 +46,7 @@ Authors:
     <script type="text/javascript">
         test(function () {
             try{
-                var context = window.AudioContext;
+                var context = new AudioContext();
                 var analysernode = context.createAnalyser();
                 var mod_value = analysernode.frequencyBinCount + 1;
                 analysernode.frequencyBinCount = mod_value;
