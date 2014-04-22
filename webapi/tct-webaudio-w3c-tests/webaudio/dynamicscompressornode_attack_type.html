@@ -46,7 +46,7 @@ Authors:
     <script type="text/javascript">
         test(function () {
             try{
-                var context = window.AudioContext;
+                var context = new AudioContext();
                 var dynamicscompressornode = context.createDynamicsCompressor();
                 assert_true("attack" in dynamicscompressornode, "attack attribute exists in DynamicsCompressorNode interface");
                 assert_equals(typeof dynamicscompressornode.attack, "object", "Check if DynamicsCompressorNode.attack attribute is AudioParam type");

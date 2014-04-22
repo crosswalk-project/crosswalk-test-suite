@@ -46,7 +46,7 @@ Authors:
     <script type="text/javascript">
         test(function () {
             try{
-                var context = window.AudioContext;
+                var context = new AudioContext();
                 var oscillatornode = context.createOscillator();
                 var mod_value = oscillatornode.detune + 1;
                 oscillatornode.detune = mod_value;

@@ -46,7 +46,7 @@ Authors:
     <div id="log"></div>
     <script>
       test(function () {
-        var context = window.AudioContext;
+        var context = new AudioContext();
         var oscillatornode = context.createOscillator();
         assert_true(typeof oscillatornode.setPeriodicWave == "function", "OscillatorNode.setPeriodicWave is method type");
       }, "Check if OscillatorNode.setPeriodicWave is method type");

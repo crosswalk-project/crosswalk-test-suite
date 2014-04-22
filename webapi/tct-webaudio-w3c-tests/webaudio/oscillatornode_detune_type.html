@@ -46,7 +46,7 @@ Authors:
     <script type="text/javascript">
         test(function () {
             try{
-                var context = window.AudioContext;
+                var context = new AudioContext();
                 var oscillatornode = context.createOscillator();
                 assert_true("detune" in oscillatornode, "detune attribute exists OscillatorNode interface");
                 assert_equals(typeof oscillatornode.detune, "object", "Check if OscillatorNode.detune attribute is of type");

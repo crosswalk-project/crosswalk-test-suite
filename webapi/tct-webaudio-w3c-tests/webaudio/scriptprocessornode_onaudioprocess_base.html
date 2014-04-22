@@ -47,7 +47,7 @@ Authors:
         var t = async_test(document.title, {timeout: 30000});
         setup({timeout: 30000});
         try {
-            var context = window.AudioContext;
+            var context = new AudioContext();
             var jsProcessor;
             var analyser;
             assert_true(!!context, "AudioContext interface exists in window");

@@ -45,7 +45,7 @@ Authors:
     <div id="log"></div>
     <script type="text/javascript">
         test(function () {
-            var context = window.AudioContext;
+            var context = new AudioContext();
             assert_true("createWaveShaper" in context, "Check if AudioContext.createWaveShaper method exists");
         }, document.title);
     </script>

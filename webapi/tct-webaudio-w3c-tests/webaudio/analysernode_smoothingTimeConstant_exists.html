@@ -46,7 +46,7 @@ Authors:
     <script type="text/javascript">
         test(function () {
             try{
-                var context = window.AudioContext;
+                var context = new AudioContext();
                 var analysernode = context.createAnalyser();
                 assert_true("smoothingTimeConstant" in analysernode, "Check if AnalyserNode.smoothingTimeConstant attribute exists");
             } catch (e){

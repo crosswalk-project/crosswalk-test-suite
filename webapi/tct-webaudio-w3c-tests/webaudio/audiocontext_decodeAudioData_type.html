@@ -45,7 +45,7 @@ Authors:
     <div id=log></div>
     <script type="text/javascript">
         test(function () {
-            var context = window.AudioContext;
+            var context = new AudioContext();
             assert_true("decodeAudioData" in context, "decodeAudioData method exist AudioContext interface");
             assert_equals(typeof context.decodeAudioData, "function", "Check if AudioContext.decodeAudioData is of type");
         }, document.title);

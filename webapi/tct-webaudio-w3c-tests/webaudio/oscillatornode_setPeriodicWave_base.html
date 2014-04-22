@@ -46,7 +46,7 @@ Authors:
     <div id="log"></div>
     <script>
       test(function () {
-        var context = window.AudioContext;
+        var context = new AudioContext();
         var oscillatornode = context.createOscillator();
         var PeriodicWave = context.createPeriodicWave(new Float32Array(16), new Float32Array(16));
         oscillatornode.setPeriodicWave(PeriodicWave);

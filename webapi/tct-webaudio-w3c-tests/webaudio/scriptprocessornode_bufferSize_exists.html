@@ -46,7 +46,7 @@ Authors:
     <script type="text/javascript">
         test(function () {
             try{
-                var context = window.AudioContext;
+                var context = new AudioContext();
                 var scriptAudioNode = context.createScriptProcessor(4096,1,1);
                 assert_true("bufferSize" in scriptAudioNode, "Check if ScriptProcessorNode.bufferSize attribute exists");
             } catch (e) {

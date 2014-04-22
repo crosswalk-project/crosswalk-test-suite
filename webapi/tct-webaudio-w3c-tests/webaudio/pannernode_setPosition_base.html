@@ -46,7 +46,7 @@ Authors:
     <div id="log"></div>
     <script type="text/javascript">
         test(function () {
-            var context = window.AudioContext;
+            var context = new AudioContext();
             assert_true(!!context, "AudioContext interface exists in window");
             assert_true("createPanner" in context, "createPanner method exists in AudioContext interface");
             var pannerNode = context.createPanner();

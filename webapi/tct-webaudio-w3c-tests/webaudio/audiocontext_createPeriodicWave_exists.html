@@ -46,7 +46,7 @@ Authors:
     <div id=log></div>
     <script>
         test(function () {
-            var context = window.AudioContext;
+            var context = new AudioContext();
             assert_true("createPeriodicWave" in context, "AudioContext.createPeriodicWave method exists");
         }, "Check if AudioContext.createPeriodicWave method exists");
     </script>

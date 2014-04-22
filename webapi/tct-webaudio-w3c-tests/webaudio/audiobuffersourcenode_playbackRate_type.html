@@ -45,7 +45,7 @@ Authors:
     <div id=log></div>
     <script type="text/javascript">
         test(function () {
-            var context = window.AudioContext;
+            var context = new AudioContext();
             if(!context) {
                 assert_true(false, "AudioContext interface exists in window");
             }

@@ -45,7 +45,7 @@ Authors:
     <div id=log></div>
     <script type="text/javascript">
         test(function () {
-            var context = window.AudioContext;
+            var context = new AudioContext();
             assert_true("createBiquadFilter" in context, "createBiquadFilter method exist AudioContext interface");
             assert_equals(typeof context.createBiquadFilter, "function", "Check if AudioContext.createBiquadFilter is of type");
         }, document.title);

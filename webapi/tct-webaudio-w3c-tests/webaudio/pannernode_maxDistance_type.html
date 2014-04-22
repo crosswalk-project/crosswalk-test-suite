@@ -47,7 +47,7 @@ Authors:
     <script type="text/javascript">
         test(function () {
             try{
-                var context = window.AudioContext;
+                var context = new AudioContext();
                 var pannernode = context.createPanner();
                 assert_equals(typeof pannernode.maxDistance, "number", "Check if PannerNode.maxDistance attribute is number type");
             } catch (e) {

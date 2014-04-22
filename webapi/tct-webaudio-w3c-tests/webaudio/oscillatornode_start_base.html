@@ -46,7 +46,7 @@ Authors:
     <script type="text/javascript">
         test(function () {
             try{
-                var context = window.AudioContext;
+                var context = new AudioContext();
                 var oscillatornode = context.createOscillator();
                 oscillatornode.start(0.1);
             } catch (e){

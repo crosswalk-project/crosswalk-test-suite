@@ -46,7 +46,7 @@ Authors:
     <script type="text/javascript">
         test(function () {
             try{
-                var context = window.AudioContext;
+                var context = new AudioContext();
                 var convolvernode = context.createConvolver();
                 assert_true("buffer" in convolvernode, "Check if ConvolverNode.buffer attribute exists");
             } catch (e){

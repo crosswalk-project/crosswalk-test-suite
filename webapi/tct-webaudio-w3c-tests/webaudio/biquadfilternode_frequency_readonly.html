@@ -46,7 +46,7 @@ Authors:
     <script type="text/javascript">
         test(function () {
             try{
-                var context = window.AudioContext;
+                var context = new AudioContext();
                 var biquadFilterNode = context.createBiquadFilter();
                 biquadFilterNode.frequency = 1;
                 assert_true(biquadFilterNode.frequency != 1, "Check if BiquadFilterNode.frequency attribute is readonly");

@@ -45,7 +45,7 @@ Authors:
     <div id=log></div>
     <script type="text/javascript">
         test(function () {
-            var context = window.AudioContext;
+            var context = new AudioContext();
             assert_true("destination" in context, "destination attribute exist AudioContext interface");
             assert_equals(typeof context.destination, "object", "Check if AudioContext.destination attribute is of type");
         }, document.title);

@@ -46,7 +46,7 @@ Authors:
     <script type="text/javascript">
         test(function () {
             try{
-                var context = window.AudioContext;
+                var context = new AudioContext();
                 var oscillatornode = context.createOscillator();
                 assert_true("frequency" in oscillatornode, "Check if OscillatorNode.frequency attribute exists");
             } catch (e){

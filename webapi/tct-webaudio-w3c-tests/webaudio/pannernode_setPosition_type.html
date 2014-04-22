@@ -47,7 +47,7 @@ Authors:
     <script type="text/javascript">
         test(function () {
             try{
-                var context = window.AudioContext;
+                var context = new AudioContext();
                 var pannernode = context.createPanner();
                 assert_true(typeof pannernode.setPosition == "function", "Check if PannerNode.setPosition is method type");
             } catch (e) {

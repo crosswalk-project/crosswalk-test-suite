@@ -46,7 +46,7 @@ Authors:
     <script type="text/javascript">
         test(function () {
             try{
-                var context = window.AudioContext;
+                var context = new AudioContext();
                 var dynamicscompressornode = context.createDynamicsCompressor();
                 dynamicscompressornode.attack = 30;
                 assert_true(dynamicscompressornode.attack != 30, "Check if DynamicsCompressorNode.attack attribute is readonly");

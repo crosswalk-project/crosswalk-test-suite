@@ -46,7 +46,7 @@ Authors:
     <script type="text/javascript">
         test(function () {
             try{
-                var context = window.AudioContext;
+                var context = new AudioContext();
                 var biquadFilterNode = context.createBiquadFilter();
                 assert_true("getFrequencyResponse" in biquadFilterNode, "getFrequencyResponse method exists in BiquadFilterNode");
                 assert_equals(typeof biquadFilterNode.getFrequencyResponse, "function", "Check if BiquadFilterNode.getFrequencyResponse is of type");
