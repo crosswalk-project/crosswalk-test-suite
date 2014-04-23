@@ -42,5 +42,5 @@ function showNotification() {
 }
 
 function closeNotification() {
-  notification.cancel();
+  notification.close();
 }
