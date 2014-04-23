@@ -1,75 +1,62 @@
 This test suite comes from
-https://github.com/w3c/web-platform-tests
+https://github.com/w3c/web-platform-tests (commit ebd226e3d58063da9ab80d7137d40bca5272c891)
 with modification:
 
 security.drawImage.canvas.html
-
-  -<img src="http://www2.w3c-test.org/html/tests/approved/images/yellow.png" id="yellow.png" class="resource">
-  +<img src="http://127.0.0.1:8081/opt/tct-canvas-html5-tests/canvas/w3c/yellow.png" id="yellow.png" class="resource">
-
 security.drawImage.image.html
-
-  -<img src="http://www2.w3c-test.org/html/tests/approved/images/yellow.png" id="yellow.png" class="resource">
-  +<img src="http://127.0.0.1:8081/opt/tct-canvas-html5-tests/canvas/w3c/yellow.png" id="yellow.png" class="resource">
-
 security.pattern.canvas.fillStyle.html
-
-  -<img src="http://www2.w3c-test.org/html/tests/approved/images/yellow.png" id="yellow.png" class="resource">
-  +<img src="http://127.0.0.1:8081/opt/tct-canvas-html5-tests/canvas/w3c/yellow.png" id="yellow.png" class="resource">
-
 security.pattern.canvas.strokeStyle.html
+security.pattern.canvas.timing.html
+security.pattern.create.html
+security.pattern.cross.html
+security.pattern.image.fillStyle.html
+security.pattern.image.strokeStyle.html
+security.reset.html:
 
   -<img src="http://www2.w3c-test.org/html/tests/approved/images/yellow.png" id="yellow.png" class="resource">
-  +<img src="http://127.0.0.1:8081/opt/tct-canvas-html5-tests/canvas/w3c/yellow.png" id="yellow.png" class="resource">
+  +<img src="http://127.0.0.1:8081/opt/tct-canvas-html5-tests/canvas/w3c/images/yellow.png" id="yellow.png" class="resource">
 
-security.reset.html
 
-  -<img src="http://www2.w3c-test.org/html/tests/approved/images/yellow.png" id="yellow.png" class="resource">
-  +<img src="http://127.0.0.1:8081/opt/tct-canvas-html5-tests/canvas/w3c/yellow.png" id="yellow.png" class="resource">
+2d.drawImage.wrongtype.html
+2d.gradient.linear.nonfinite.html
+2d.gradient.object.invalidcolour.html
+2d.gradient.object.invalidoffset.html
+2d.gradient.radial.negative.html
+2d.gradient.radial.nonfinite.html
+2d.imageData.create2.nonfinite.html
+2d.imageData.create2.zero.html
+2d.imageData.get.nonfinite.html
+2d.imageData.get.zero.html
+2d.imageData.put.nonfinite.html
+2d.path.arc.negative.html
+2d.path.arcTo.negative.html
+2d.pattern.image.string.html
+2d.pattern.image.undefined.html
+2d.pattern.repeat.case.html
+2d.pattern.repeat.undefined.html
+2d.pattern.repeat.unrecognised.html
+security.drawImage.canvas.html
+security.drawImage.image.html
+security.pattern.canvas.fillStyle.html
+security.pattern.canvas.strokeStyle.html
+security.pattern.cross.html
+security.pattern.image.fillStyle.html
+security.pattern.image.strokeStyle.html
+security.reset.html:
 
-2d.line.width.basic.html
-2d.line.width.transformed.html
-2d.path.arcTo.shape.curve1.html
-2d.path.arcTo.shape.curve2.html
-2d.text.draw.align.center.html
-2d.text.draw.align.end.ltr.html
-2d.text.draw.align.end.rtl.html
-2d.text.draw.align.left.html
-2d.text.draw.align.right.html
-2d.text.draw.align.start.ltr.html
-2d.text.draw.align.start.rtl.html
+  + _asserted = true;
 
-  + <script src="../../resources/testharness.js"></script>
-  + <script src="../../resources/testharnessreport.js"></script>
 
-  + var t = async_test(document.title, {timeout: 3000});
+2d.imageData.get.nonfinite.html
+2d.gradient.linear.nonfinite.html
+2d.imageData.put.nonfinite.html
+2d.imageData.create2.nonfinite.html
+2d.gradient.radial.nonfinite.html:
 
-  + <div id="log"></div>
+  - _assert_throws(new TypeError(), function() {
+  + _assert_throws("NotSupportedError", function() {
 
-  + setTimeout(function(){
-  +     t.step(function() {
-  +         assert_true(window._testStatus[0] == "pass", window._testStatus[1]);
-  +     });
-  +     t.done();
-  + }, 1500);
-
-canvas_colorsandstyles_addcolorstop_001.htm
-
-  + <script src="../../resources/testharness.js"></script>
-  + <script src="../../resources/testharnessreport.js"></script>
-  + var t = async_test(document.title, {timeout:5000});
-
-  + t.step(function() {
-  +     assert_true(false, "SYNTAX_ERR exception should be thrown if color cannot be parsed");
-  + });
-
-  + t.step(function() {
-  +     assert_true(e.code == DOMException.SYNTAX_ERR, "SYNTAX_ERR exception should be thrown");
-  + });
-  + t.done();
-
-  + <div id="log"></div>
-
+ 
 canvas_complexshapes_ispointInpath_001.htm
 
   + <script src="../../resources/testharness.js"></script>
@@ -80,8 +67,18 @@ canvas_complexshapes_ispointInpath_001.htm
   +     assert_true(ctx.isPointInPath(125, 75) && !ctx.isPointInPath(25, 25), "Ensure that the coordinates passed to isPointInPath are unaffected by the current transformation matrix");
   + });
   + t.done();
-
   + <div id="log"></div>
+
+
+canvas_colorsandstyles_createlineargradient_001.htm
+canvas_shadows_001.htm
+canvas_text_font_001.htm
+2d.text.draw.fill.maxWidth.zero.html
+2d.text.draw.fill.maxWidth.small.html
+
+  add "-manual" postfix.
+
+
 
 These tests are copyright by W3C and/or the author listed in the test
 file. The tests are dual-licensed under the W3C Test Suite License:
