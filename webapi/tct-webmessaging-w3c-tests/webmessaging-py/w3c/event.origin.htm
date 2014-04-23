@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title> event.origin returns the origin of the message </title>
+<script src="../../resources/testharness.js"></script>
+<script src="../../resources/testharnessreport.js"></script>
+<script src="../../resources/server.js?pipe=sub"></script>
+</head>
+<body>
+<div id=log></div>
+
+<div id=post style="display:none">
+</div>
+
+<script>
+    setup({timeout:500});
+
+    var description = "Test Description: event.origin returns the origin of the message.";
+
+    var t = async_test(description);
+
+    var div = document.getElementById("post");
+    var TARGET1 = document.createElement("iframe");
+    var TARGET2 = document.createElement("iframe");
+    div.appendChild(TARGET1);
+    div.appendChild(TARGET2);
+
+    var XORIGIN = "http://" + __SERVER__NAME + ":" + __CORS__PORT;
+    var SORIGIN = "http://" + location.host;
+    var ExpectedResult = ["#1", XORIGIN, "#2", SORIGIN];
+    var ActualResult = [];
+
+    TARGET2.onload = PostMessageTest;
+    TARGET1.src = "http://" + __SERVER__NAME + ":" + __CORS__PORT + "/tests/webmessaging/w3c/support/ChildWindowPostMessage.htm";
+    TARGET2.src = "./support/ChildWindowPostMessage.htm";
+
+    function PostMessageTest()
+    {
+        TARGET1.contentWindow.postMessage("#1", XORIGIN);
+        TARGET2.contentWindow.postMessage("#2", SORIGIN);
+    }
+
+    window.onmessage = t.step_func(function(e)
+    {
+        // testharness.js uses postMessage so we must check what data we want to receive
+        if (e.data.toString() === "#1" || e.data.toString() === "#2") {
+        	ActualResult.push(e.data, e.origin);
+            if (ActualResult.length === ExpectedResult.length) {
+            	assert_array_equals(ActualResult, ExpectedResult, "ActualResult");
+            	t.done();
+            }
+        }
+    });
+</script>
+</body>
+</html>

@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title> event.data returns the data of the message </title>
+<script src="../../resources/testharness.js"></script>
+<script src="../../resources/testharnessreport.js"></script>
+<script src="../../resources/server.js?pipe=sub"></script>
+</head>
+<body>
+<div id=log></div>
+
+<div id=post style="display:none">
+</div>
+
+<script>
+    setup({timeout:500});
+
+    var description = "Test Description: event.data returns the data of the message.";
+
+    var t = async_test(description);
+
+    var DATA = "STRING";
+    var TYPE = "string";
+
+    var div = document.getElementById("post");
+    var TARGET1 = document.createElement("iframe");
+    var TARGET2 = document.createElement("iframe");
+    div.appendChild(TARGET1);
+    div.appendChild(TARGET2);
+
+    var XORIGIN = "http://" + __SERVER__NAME + ":" + __CORS__PORT;
+    var SORIGIN = "http://" + location.host;
+    var ExpectedResult = [DATA, TYPE, DATA, TYPE];
+    var ActualResult = [];
+
+    TARGET2.onload = PostMessageTest;
+    TARGET1.src = "http://" + __SERVER__NAME + ":" + __CORS__PORT + "/tests/webmessaging/w3c/support/ChildWindowPostMessage.htm";
+    TARGET2.src = "./support/ChildWindowPostMessage.htm";
+
+    function PostMessageTest()
+    {
+        TARGET1.contentWindow.postMessage(DATA, XORIGIN);
+        TARGET2.contentWindow.postMessage(DATA, SORIGIN);
+    }
+
+    window.onmessage = t.step_func(function(e)
+    {
+        if (e.data.toString() === "STRING") {
+        	ActualResult.push(e.data, typeof(e.data));
+
+	        if (ActualResult.length >= ExpectedResult.length)
+	        {
+	            assert_array_equals(ActualResult, ExpectedResult, "ActualResult");
+	            t.done();
+	        }
+		}
+    });
+</script>
+</body>
+</html>

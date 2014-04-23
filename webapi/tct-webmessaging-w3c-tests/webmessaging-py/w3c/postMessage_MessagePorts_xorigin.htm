@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title> postMessage to cross-origin iframe with MessagePort array [100 ports] </title>
+<script src="../../resources/testharness.js"></script>
+<script src="../../resources/testharnessreport.js"></script>
+<script src="../../resources/server.js?pipe=sub"></script>
+</head>
+<body>
+<div id=log></div>
+
+<script>
+    var TOTALPORTS = 100;
+    var LocalPorts = [];
+    var RemotePorts = [];
+    var PassedResult = 0;
+    var sum = 0;
+    var TARGET, element;
+    var flag = false;
+
+    function PostMessageTest()
+    {
+        element = document.querySelector("iframe");
+        TARGET = document.querySelector("iframe").contentWindow;
+        if (flag) {
+            test(function()
+            {
+                assert_own_property(window, "MessageChannel", "window");
+
+                var channels = [];
+
+                for (var i=0; i<TOTALPORTS; i++)
+                {
+                    channels[i] = new MessageChannel();
+                    LocalPorts[i] = channels[i].port1;
+                    LocalPorts[i].foo = i;
+                    RemotePorts[i] = channels[i].port2;
+
+                    LocalPorts[i].onmessage = t.step_func(function(e)
+                    {
+                        assert_equals(e.target.foo, e.data);
+
+                        PassedResult++;
+                        sum += e.data;
+
+                        if (PassedResult == TOTALPORTS)
+                        {
+                            assert_equals(sum, 4950);
+                            t.done();
+                        }
+                    });
+                }
+
+                TARGET.postMessage("ports", "*", RemotePorts);
+
+            }, "MessageChannel is supported.");
+        }
+        flag = true;
+    }
+</script>
+
+<div style="display:none">
+    <iframe width="70%" onload="PostMessageTest()" src=""></iframe>
+</div>
+
+<script>
+    setup({timeout:500});
+
+    path = "http://" + __SERVER__NAME + ":" + __CORS__PORT + "/tests/webmessaging/w3c/support/ChildWindowPostMessage.htm";
+    element.src = path;
+
+    var description = "Test Description: postMessage to cross-origin iframe with MessagePort array containing 100 ports.";
+
+    var t = async_test(description);
+
+    window.onmessage = function(e)
+    {
+        if (e.data === "ports")
+        {
+            for (var i=0; i<TOTALPORTS; i++)
+            {
+                LocalPorts[i].postMessage(LocalPorts[i].foo);
+            }
+        }
+    }
+</script>
+</body>
+</html>

@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title> Corss-origin: event.source returns the WindowProxy of the source window </title>
+<script src="../../resources/testharness.js"></script>
+<script src="../../resources/testharnessreport.js"></script>
+<script src="../../resources/server.js?pipe=sub"></script>
+</head>
+<body>
+<div id=log></div>
+
+<script>
+    var DATA = "foo";
+
+    var TARGET;
+
+    var XORIGIN = "http://" + __SERVER__NAME + ":" + __CORS__PORT;
+
+    var ExpectedResult = [XORIGIN, "AccessCookieDenied"];
+    var ActualResult = [];
+
+    function PostMessageTest()
+    {
+        TARGET = document.querySelector("iframe");
+        TARGET.contentWindow.postMessage(DATA, XORIGIN);
+    }
+</script>
+
+<div style="display:none">
+    <iframe width="70%" onload="PostMessageTest()" src=""></iframe>
+</div>
+
+<script>
+    setup({timeout:500});
+
+    path = "http://" + __SERVER__NAME + ":" + __CORS__PORT + "/tests/webmessaging/w3c/support/ChildWindowPostMessage.htm";
+    TARGET.src = path;
+
+    var description = "Test Description: Corss-origin: event.source returns the WindowProxy of the source window.";
+
+    var t = async_test(description);
+
+    window.onmessage = t.step_func(function(e)
+    {
+        try
+        {
+            var sdomainCookie = e.source.document.cookie;
+            ActualResult.push(e.origin, "AccessCookieAllowed");
+        }
+        catch(ex)
+        {
+            ActualResult.push(e.origin, "AccessCookieDenied");
+        }
+
+        assert_true(e.source.parent === window);
+        assert_array_equals(ActualResult, ExpectedResult, "ActualResult");
+        t.done();
+    });
+</script>
+</body>
+</html>

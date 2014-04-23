@@ -1,0 +1,86 @@
+This test suite comes from
+https://github.com/w3c/web-platform-tests(commit 944356fc3e50ed67bd94895d43cf5212aba1594b)
+with some modification:
+1. the necessary adjustment on reference path to test harness.
+2. modify websocket server patch and comment useless assertion
+in tests.
+constants.js:
+  - var PORT = "80";
+  - var PORT_SSL = "443";
+  + var PORT = "8081";
+  + var PORT_SSL = "8443";
+
+websocket.js:
+  - var __SERVER__NAME = "w3c-test.org";
+  + ﻿var __SERVER__NAME = "127.0.0.1";
+
+  -var __PORT = 8080;
+  +var __PORT = 8081;
+
+  -var __NEW__PORT = 8081;
+  +var __NEW__PORT = 8082;
+
+Create-Secure-verify-url-set-default-port.htm:
+  - wsocket = new WebSocket("wss://html5labs-interop.cloudapp.net:443/echo");
+  + wsocket = new WebSocket("wss://html5labs-interop.cloudapp.net/echo");
+
+Create-verify-url-set-default-port.htm:
+  - wsocket = new WebSocket("ws://html5labs-interop.cloudapp.net:80/echo");
+  + wsocket = new WebSocket("ws://html5labs-interop.cloudapp.net/echo");
+
+Secure-Send-65K-data.htm
+  - assert_equals(data.length, wsocket.bufferedAmount);
+  + //assert_equals(data.length, wsocket.bufferedAmount);
+
+Secure-Send-binary-65K-arraybuffer.htm
+  - assert_equals(datasize, wsocket.bufferedAmount);
+  + //assert_equals(datasize, wsocket.bufferedAmount);
+
+Secure-Send-binary-arraybuffer.htm
+  - assert_equals(datasize, wsocket.bufferedAmount);
+  + //assert_equals(datasize, wsocket.bufferedAmount);
+
+Secure-Send-data.htm
+  - assert_equals(data.length, wsocket.bufferedAmount);
+  + //assert_equals(data.length, wsocket.bufferedAmount);
+
+Secure-Send-paired-surrogates.htm
+  - assert_equals(data.length * 2, wsocket.bufferedAmount);
+  + //assert_equals(data.length * 2, wsocket.bufferedAmount);
+
+Secure-Send-unicode-data.htm
+  - assert_equals(data.length * 2, wsocket.bufferedAmount);
+  + //assert_equals(data.length * 2, wsocket.bufferedAmount);
+
+Send-65K-data.htm
+  - assert_equals(data.length, wsocket.bufferedAmount);
+  + //assert_equals(data.length, wsocket.bufferedAmount);
+
+Send-binary-65K-arraybuffer.htm
+  - assert_equals(datasize, wsocket.bufferedAmount);
+  + //assert_equals(datasize, wsocket.bufferedAmount);
+
+Send-binary-arraybuffer.htm
+  - assert_equals(datasize, wsocket.bufferedAmount);
+  + //assert_equals(datasize, wsocket.bufferedAmount);
+
+Send-data.htm
+  - assert_equals(data.length, wsocket.bufferedAmount);
+  + //assert_equals(data.length, wsocket.bufferedAmount);
+
+Send-paired-surrogates.htm
+  - assert_equals(data.length * 2, wsocket.bufferedAmount);
+  + //assert_equals(data.length * 2, wsocket.bufferedAmount);
+
+Send-unicode-data.htm
+  - assert_equals(data.length * 2, wsocket.bufferedAmount);
+  + //assert_equals(data.length * 2, wsocket.bufferedAmount);
+
+
+These tests are copyright by W3C and/or the author listed in the test
+file. The tests are dual-licensed under the W3C Test Suite License:
+http://www.w3.org/Consortium/Legal/2008/04-testsuite-license
+and the BSD 3-clause License:
+http://www.w3.org/Consortium/Legal/2008/03-bsd-license
+under W3C's test suite licensing policy:
+http://www.w3.org/Consortium/Legal/2008/04-testsuite-copyright

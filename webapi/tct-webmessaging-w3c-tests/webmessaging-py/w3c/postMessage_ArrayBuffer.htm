@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title> postMessage with ArrayBuffer object </title>
+<script src="../../resources/testharness.js"></script>
+<script src="../../resources/testharnessreport.js"></script>
+<script src="../../resources/server.js?pipe=sub"></script>
+</head>
+<body>
+<div id=log></div>
+
+<script>
+    var DATA;
+    var TYPE = "object";
+    var TARGET;
+    var flag = false;
+
+    function PostMessageTest()
+    {
+        TARGET = document.querySelector("iframe");
+        if (flag) {
+            test(function()
+            {
+                DATA = new ArrayBuffer(32);
+                TARGET.contentWindow.postMessage(DATA, "*");
+            }, "ArrayBuffer is supported.");
+        }
+        flag = true;
+    }
+</script>
+
+<div style="display:none">
+    <iframe width="70%" onload="PostMessageTest()" src=""></iframe>
+</div>
+
+<script>
+    setup({timeout:500});
+
+    path = "http://" + __SERVER__NAME + ":" + __CORS__PORT + "/tests/webmessaging/w3c/support/ChildWindowPostMessage.htm";
+    TARGET.src = path;
+
+    var description = "Test Description: postMessage with ArrayBuffer object.";
+
+    var t = async_test(description);
+
+    window.onmessage = t.step_func(function(e)
+    {
+        assert_equals(typeof(e.data), TYPE);
+        assert_equals(e.data.toString(), DATA.toString());
+        assert_equals(e.data.byteLength, 32);
+        t.done();
+    });
+</script>
+</body>
+</html>
