@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title> Cross-origin postMessage with targetOrigin == "/" </title>
+<script src="../../resources/testharness.js"></script>
+<script src="../../resources/testharnessreport.js"></script>
+<script src="../../resources/server.js?pipe=sub"></script>
+</head>
+<body>
+<div id=log></div>
+
+<script>
+    var DATA = "NoExceptionRaised";
+    var TARGET;
+
+    function PostMessageTest()
+    {
+        TARGET = document.querySelector("iframe");
+        try
+        {
+            TARGET.contentWindow.postMessage("/", "/");
+            TARGET.contentWindow.postMessage(DATA, "*");
+        }
+        catch(ex)
+        {
+            TARGET.contentWindow.postMessage("ExceptionRaised", "*");
+        }
+    }
+</script>
+<div style="display:none">
+    <iframe width="70%" onload="PostMessageTest()" src=""></iframe>
+</div>
+
+<script>
+    setup({timeout:500});
+
+    path = "http://" + __SERVER__NAME + ":" + __CORS__PORT + "/tests/webmessaging/w3c/support/ChildWindowPostMessage.htm";
+    TARGET.src = path;
+
+    var description = "Test Description: " +
+                      "If the targetOrigin argument is a single literal U+002F SOLIDUS character (/), and " +
+                      "the Document of the Window object on which the method was invoked does not have the " +
+                      "same origin as the entry script's document, then abort these steps silently.";
+
+    var t = async_test(description);
+
+    window.onmessage = t.step_func(function(e)
+    {
+        assert_equals(e.data, DATA, "e.data");
+        t.done();
+    });
+</script>
+</body>
+</html>

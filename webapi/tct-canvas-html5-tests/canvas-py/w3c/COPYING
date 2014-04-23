@@ -1,0 +1,88 @@
+This test suite comes from
+https://github.com/w3c/web-platform-tests (commit ebd226e3d58063da9ab80d7137d40bca5272c891)
+with modification:
+
+security.drawImage.canvas.html
+security.drawImage.image.html
+security.pattern.canvas.fillStyle.html
+security.pattern.canvas.strokeStyle.html
+security.pattern.canvas.timing.html
+security.pattern.create.html
+security.pattern.cross.html
+security.pattern.image.fillStyle.html
+security.pattern.image.strokeStyle.html
+security.reset.html:
+
+Update cross domain with server.js.
+
+
+2d.drawImage.wrongtype.html
+2d.gradient.linear.nonfinite.html
+2d.gradient.object.invalidcolour.html
+2d.gradient.object.invalidoffset.html
+2d.gradient.radial.negative.html
+2d.gradient.radial.nonfinite.html
+2d.imageData.create2.nonfinite.html
+2d.imageData.create2.zero.html
+2d.imageData.get.nonfinite.html
+2d.imageData.get.zero.html
+2d.imageData.put.nonfinite.html
+2d.path.arc.negative.html
+2d.path.arcTo.negative.html
+2d.pattern.image.string.html
+2d.pattern.image.undefined.html
+2d.pattern.repeat.case.html
+2d.pattern.repeat.undefined.html
+2d.pattern.repeat.unrecognised.html
+security.drawImage.canvas.html
+security.drawImage.image.html
+security.pattern.canvas.fillStyle.html
+security.pattern.canvas.strokeStyle.html
+security.pattern.cross.html
+security.pattern.image.fillStyle.html
+security.pattern.image.strokeStyle.html
+security.reset.html:
+
+  + _asserted = true;
+
+
+2d.imageData.get.nonfinite.html
+2d.gradient.linear.nonfinite.html
+2d.imageData.put.nonfinite.html
+2d.imageData.create2.nonfinite.html
+2d.gradient.radial.nonfinite.html:
+
+  - _assert_throws(new TypeError(), function() {
+  + _assert_throws("NotSupportedError", function() {
+
+ 
+canvas_complexshapes_ispointInpath_001.htm
+
+  + <script src="../../resources/testharness.js"></script>
+  + <script src="../../resources/testharnessreport.js"></script>
+  + var t = async_test(document.title, {timeout:5000});
+
+  + t.step(function() {
+  +     assert_true(ctx.isPointInPath(125, 75) && !ctx.isPointInPath(25, 25), "Ensure that the coordinates passed to isPointInPath are unaffected by the current transformation matrix");
+  + });
+  + t.done();
+  + <div id="log"></div>
+
+
+canvas_colorsandstyles_createlineargradient_001.htm
+canvas_shadows_001.htm
+canvas_text_font_001.htm
+2d.text.draw.fill.maxWidth.zero.html
+2d.text.draw.fill.maxWidth.small.html
+
+  add "-manual" postfix.
+
+
+
+These tests are copyright by W3C and/or the author listed in the test
+file. The tests are dual-licensed under the W3C Test Suite License:
+http://www.w3.org/Consortium/Legal/2008/04-testsuite-license
+and the BSD 3-clause License:
+http://www.w3.org/Consortium/Legal/2008/03-bsd-license
+under W3C's test suite licensing policy:
+http://www.w3.org/Consortium/Legal/2008/04-testsuite-copyright
