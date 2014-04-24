@@ -8,16 +8,6 @@
           <test_script_entry test_script_expected_result="0">app_user@/opt/usr/media/tct/opt/tct-pm-wrt-tests/scripts/wrt_pm_WRTInstaller.sh Sample-widget.wgt</test_script_entry>
         </description>
       </testcase>
-      <testcase component="Web/Runtime/PackageManagement" execution_type="auto" id="PKManagement_local_HostedAPP_Install" purpose="Check if local hosted Web Application can be installed successfully.">
-        <description>
-          <test_script_entry test_script_expected_result="0">app_user@/opt/usr/media/tct/opt/tct-pm-wrt-tests/scripts/wrt_pm_WRTInstaller.sh test-hosted-widget.wgt</test_script_entry>
-        </description>
-      </testcase>
-      <testcase component="Web/Runtime/PackageManagement" execution_type="auto" id="PKManagement_LocalAPP_Install" purpose="Check if Web Application can be installed successfully by using command.">
-        <description>
-          <test_script_entry test_script_expected_result="0">app_user@/opt/usr/media/tct/opt/tct-pm-wrt-tests/scripts/wrt_pm_WRTInstaller.sh Sample-widget.wgt</test_script_entry>
-        </description>
-      </testcase>
       <testcase component="Web/Runtime/PackageManagement" execution_type="auto" id="PKManagement_APP_WithW3CFormat_Install" purpose="Check if Web Application which is packed with WGT format can be installed successfully.">
         <description>
           <test_script_entry test_script_expected_result="0">app_user@/opt/usr/media/tct/opt/tct-pm-wrt-tests/scripts/wrt_pm_WRTInstaller.sh Sample-widget.wgt</test_script_entry>
@@ -101,21 +91,6 @@
       <testcase component="Web/Runtime/PackageManagement" execution_type="auto" id="PKManagement_OfflineUpdate_MultiApp" purpose="Check if package management can upgrade(offline) multiple webapps respectively.">
         <description>
           <test_script_entry timeout="150">/opt/usr/media/tct/opt/tct-pm-wrt-tests/scripts/wrt_pm_OfflineUpdate_MultiApp.sh</test_script_entry>
-        </description>
-      </testcase>
-      <testcase component="Web/Runtime/PackageManagement" execution_type="auto" id="widget-distributor-sig-dsp" purpose="Check if the WRT cannot install the widget which contains distributor signature without a dsp:Role signature property.">
-        <description>
-          <test_script_entry test_script_expected_result="0">app_user@/opt/usr/media/tct/opt/tct-pm-wrt-tests/scripts/wrt_pm_InstallerFail.sh 11a.wgt</test_script_entry>
-        </description>
-      </testcase>
-      <testcase component="Web/Runtime/PackageManagement" execution_type="auto" id="widget-distributor-sig-uri" purpose="Check if the WRT cannot install the widget which contains distributor signature with a dsp:Role signature property that does not contain an URI for a distributor role.">
-        <description>
-          <test_script_entry test_script_expected_result="0">app_user@/opt/usr/media/tct/opt/tct-pm-wrt-tests/scripts/wrt_pm_InstallerFail.sh 11b.wgt</test_script_entry>
-        </description>
-      </testcase>
-      <testcase component="Web/Runtime/PackageManagement" execution_type="auto" id="widget-partner-privilege" purpose="Check if the WRT cannot install the widget which is announced with one or more partner API privileges in configuration file.">
-        <description>
-          <test_script_entry test_script_expected_result="0">app_user@/opt/usr/media/tct/opt/tct-pm-wrt-tests/scripts/wrt_pm_InstallerFail.sh widget-partner-privilege.wgt</test_script_entry>
         </description>
       </testcase>
       <testcase component="Web/Runtime/PackageManagement" execution_type="auto" id="feature-element-be-ignored" purpose="Check if the 'feature' element should be ignored during installation process.">
