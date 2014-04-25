@@ -302,5 +302,67 @@ The tct-bt-helper is included in the tct-bluetooth-tizen-tests package. Install 
         </description>
       </testcase>
     </set>
+    <set name="webapi-dlna-xwalk-tests">
+      <testcase component="WebAPI/Media Server API/DLNA" execution_type="manual" id="DlnaConfiguration" purpose="webapi-dlna-xwalk-tests Configuration">
+        <description>
+          <pre_condition/>
+          <steps>
+            <step order="1">
+              <step_desc>Modify rygel.conf on IVI device:
+                $ cp /etc/rygel.conf /home/app/.config/
+                - video-upload-folder=@VIDEOS@
+                + video-upload-folder=/home/app/Videos
+                - music-upload-folder=@MUSIC@
+                + music-upload-folder=/home/app/Sounds
+                - picture-upload-folder=@PICTURES@
+                + picture-upload-folder=/home/app/Images
+                # Allow upload of media files?
+                - allow-upload=false
+                + allow-upload=true
+                # Allow deletion of media folders and files?
+                - allow-deletion=false
+                + allow-deletion=true
+                strict-sharing=false
+                - title=@REALNAME@'s media
+                + title=iTracker
+                [MediaExport]
+                - enabled=false
+                - title=@REALNAME@'s media
+                + enabled=true
+                + title=iMediaExport
+                - uris=@MUSIC@;@VIDEOS@;@PICTURES@
+                + uris=/home/app/Videos;/home/app/Sounds;/home/app/Images;                
+                enabled=true
+                - title=My Media
+                + title=iLMS
+                enabled=true
+                - title=Audio/Video playback on @HOSTNAME@
+                + title=iPlaybin
+              </step_desc>
+              <expected>TBD</expected>
+            </step>
+            <step order="2">
+              <step_desc>Create Videos, Sounds and Images directories in /home/app/ on IVI device.
+              </step_desc>
+              <expected>TBD</expected>
+            </step>
+            <step order="3">
+              <step_desc>Add some media content to IVI device:
+                * Copy media files to /home/app/Videos, /home/app/Sounds and /home/app/Images.
+              </step_desc>
+              <expected>TBD</expected>
+            </step>
+            <step order="4">
+              <step_desc>Launch of services on IVI device:
+                $ su - app
+                $ rygel
+              </step_desc>
+              <expected>TBD</expected>
+            </step>
+          </steps>
+          <test_script_entry test_script_expected_result="0" timeout="90"/>
+        </description>
+      </testcase>
+    </set>
   </suite>
 </test_definition>
