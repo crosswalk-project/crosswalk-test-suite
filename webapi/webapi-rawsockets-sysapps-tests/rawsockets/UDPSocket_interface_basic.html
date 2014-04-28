@@ -50,7 +50,7 @@ var udpsocket = new namespace.UDPSocket();
   ["boolean", "addressReuse", "readonly"],
   ["boolean", "loopback", "readonly"],
   ["unsigned long", "bufferedAmount", "readonly"],
-  ["enum", "readyState", "readonly"],
+  ["unsigned short", "readyState", "readonly"],
   ["event", "ondrain", ""],
   ["event", "onerror", ""],
   ["event", "onmessage", ""],
@@ -74,10 +74,6 @@ var udpsocket = new namespace.UDPSocket();
 
       case "function":
         assert_equals(typeof udpsocket[name], "function", name + " attribute of type");
-        break;
-
-      case "enum":
-        assert_equals(typeof udpsocket[name], "number", name + " attribute of type");
         break;
 
       case "unsigned short":
