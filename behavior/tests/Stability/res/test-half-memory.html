@@ -76,7 +76,8 @@ Authors:
                 <li>Open the folder of "test-half-memory"(suppose you have the "test-half-memory.wgt" or you can find it in the behavior rpm, unzip the wgt as "test-half-memory").</li>
                 <li>Push a file that the size is larger than half memory into the folder and rename the file as "zipzip.png".</li>
                 <li>Use the command :"zip -rq ../test-half-memory.wgt *" to create a "test-half-memory.wgt".</li>
-                <li>Push the created widget to device with the command "sdb push 'path'/test-half-memory.wgt /opt/usr/apps/tctbhtests/res/wgt/tests/Stability/res/".</li>
+                <li>Use the command: "xwalkctl" in "app" user to get the application id of tct-behavior-tests.</li>
+                <li>Push the created widget to device with the command "sdb push 'path'/test-half-memory.wgt /opt/home/app/.config/xwalk-service/applications/'application-id'/tests/Stability/res/".</li>
               </ol>
               <li>Click the "Install" button to install the widget.</li>
               <li>Click the "Uninstall" button to uninstall the widget.</li>
