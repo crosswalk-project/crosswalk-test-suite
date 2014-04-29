@@ -43,6 +43,7 @@ fi
 SRC_ROOT=$PWD
 BUILD_ROOT=/tmp/${name}_pack
 BUILD_DEST=/tmp/${name}
+subTests="Viewport"
 
 # clean
 function clean_workspace(){
@@ -73,6 +74,24 @@ function create_wgt(){
     cp -af $BUILD_ROOT/res $BUILD_DEST/
     mkdir -p $BUILD_DEST/opt/$name/res/media
     zip -rq $BUILD_DEST/opt/$name/$name.wgt *
+
+    # create sub wgt(sub dir with config.xml)
+    for dir in `ls -l $SRC_ROOT/tests/$subTests/ |awk '{print $NF}'`
+    do
+        if [ -d $SRC_ROOT/tests/$subTests/$dir ]&&[ -f $SRC_ROOT/tests/$subTests/$dir/config.xml ];then
+            subTestSrc=$BUILD_ROOT/tests/$subTests/$dir
+            subTestDir=`basename $subTestSrc`
+            subTestName=$subTestDir
+            cp -r $subTestSrc  $BUILD_DEST
+            cp -r $BUILD_ROOT/icon.png $BUILD_DEST/$subTestDir
+            cp -r $BUILD_ROOT/manifest.json $BUILD_DEST/$subTestDir
+            old=`cat $BUILD_DEST/$subTestDir/manifest.json |grep -w name |awk -F '"' '{print $4}'`
+            sed -i "s/$old/$subTestName/" $BUILD_DEST/$subTestDir/manifest.json
+            cd $BUILD_DEST/$subTestDir
+            zip -rq $BUILD_DEST/opt/$name/$subTestName.wgt *
+        fi 
+    done
+
     if [ $? -ne 0 ];then
         echo "Create $name.wgt fail.... >>>>>>>>>>>>>>>>>>>>>>>>>"
         clean_workspace
@@ -153,9 +172,27 @@ EOF
 
     cp $SRC_ROOT/../tools/make_xpk.py $BUILD_ROOT/make_xpk.py
     cd $BUILD_ROOT
-
-
+    # create xpk
     python make_xpk.py /tmp/$name key
+
+    # create sub xpk(sub dir with config.xml)
+    i=1
+    for dir in `ls -l $SRC_ROOT/tests/$subTests/ |awk '{print $NF}'`
+    do
+        if [ -d $SRC_ROOT/tests/$subTests/$dir ]&&[ -f $SRC_ROOT/tests/$subTests/$dir/config.xml ];then
+            subTestSrc=$BUILD_ROOT/tests/$subTests/$dir
+            subTestDir=`basename $subTestSrc`
+            subTestName=$subTestDir
+            cp -r $subTestSrc  $BUILD_DEST
+            cp -r $BUILD_ROOT/icon.png $BUILD_DEST/$subTestDir
+            cp -r $BUILD_ROOT/manifest.json $BUILD_DEST/$subTestDir
+            old=`cat $BUILD_DEST/$subTestDir/manifest.json |grep -w name |awk -F '"' '{print $4}'`
+            sed -i "s/$old/$subTestName/" $BUILD_DEST/$subTestDir/manifest.json
+            python make_xpk.py $BUILD_DEST/$subTestDir key${i}
+            i=`expr $i + 1`
+        fi 
+    done
+
     if [ $? -ne 0 ];then
         echo "Create $name.xpk fail.... >>>>>>>>>>>>>>>>>>>>>>>>>"
         clean_workspace
@@ -237,7 +274,9 @@ function zip_for_apk(){
 function zip_for_xpk(){
     cd $BUILD_DEST
     cp -af $BUILD_ROOT/inst.sh.xpk $BUILD_DEST/opt/$name/inst.sh
-    mv $BUILD_ROOT/$name.xpk $BUILD_DEST/opt/$name/
+
+    # mv xpk package
+    find $BUILD_ROOT/ -name "*.xpk"| grep -v inst.sh.xpk |xargs -I% mv % $BUILD_DEST/opt/$name/
 
     cp -af $BUILD_ROOT/tests.tizen.xml $BUILD_DEST/opt/$name/tests.xml
 
