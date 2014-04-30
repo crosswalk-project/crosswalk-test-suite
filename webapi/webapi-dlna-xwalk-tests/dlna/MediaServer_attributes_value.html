@@ -31,7 +31,7 @@ Authors:
 -->
 
 <meta charset="utf-8">
-<title>DLNA Test: MediaServer - attributes basic</title>
+<title>DLNA Test: MediaServer - attributes value</title>
 <link rel="author" title="Intel" href="http://www.intel.com">
 <link rel="help" href="http://01org.github.io/cloud-dleyna/mediaserver.html#mediaserver-interface">
 <script src="../resources/testharness.js"></script>
@@ -46,42 +46,28 @@ Authors:
 
   var t = async_test("the onserverfound event can be invoked");
 
-  on_event(msga, "serverfound", function (event) {
+  msga.onserverfound = t.step_func(function (event) {
     mse = event.server;
 
-    test(function () {
-      assert_equals(mse.friendlyName, "iMediaExport", "the MediaServer.friendlyName value");
-    }, "Check if the MediaServer.friendlyName value is user-friendly name for the device");
+    [
+      ["friendlyName", "iMediaExport"],
+      ["manufacturer", "Rygel Developers."],
+      ["manufacturerURL", "http://live.gnome.org/Rygel"],
+      ["modelName", "Rygel"],
+      ["modelNumber", "0.21.1.1-a97e"],
+      ["serialNumber", "0000001"],
+      ["iconURL", "MediaExport-48x48x24.jpg"],
+      ["deviceType", "urn:schemas-upnp-org:device:MediaServer:3"]
+    ].forEach(function (attr) {
+      var name = attr[0];
+      var value = mse[name];
+      var expected = attr[1];
 
-    test(function () {
-      assert_equals(mse.manufacturer, "Rygel Developers.", "the MediaServer.manufacturer value");
-    }, "Check if the MediaServer.manufacturer value is a string identifying the manufacturer of the server");
-
-    test(function () {
-      assert_equals(mse.manufacturerURL, "http://live.gnome.org/Rygel", "the MediaServer.manufacturerURL value");
-    }, "Check if the MediaServer.manufacturerURL value is a URL pointing to the manufacturer's web site");
-
-    test(function () {
-      assert_equals(mse.modelName, "Rygel", "the MediaServer.modelName value");
-    }, "Check if the MediaServer.modelName value is model name of the server");
-
-    test(function () {
-      assert_equals(mse.modelNumber, "0.21.1.1-a97e", "the MediaServer.modelNumber value");
-    }, "Check if the MediaServer.modelNumber value is the server's version number");
-
-    test(function () {
-      assert_equals(mse.serialNumber, "0000001", "the MediaServer.serialNumber value");
-    }, "Check if the MediaServer.serialNumber value is the server's serial number");
-
-    test(function () {
-      assert_equals(mse.iconURL.substr(mse.iconURL.lastIndexOf("/")+1), "MediaExport-48x48x24.jpg",
-      "the MediaServer.iconURL value");
-    }, "Check if the MediaServer.iconURL value is the URL pointing to an icon that graphically identifies the server");
-
-    test(function () {
-      assert_equals(mse.deviceType, "urn:schemas-upnp-org:device:MediaServer:3", "the MediaServer.deviceType value");
-    }, "Check if the MediaServer.deviceType value is the UPnP type of the device");
-
+      test(function () {
+        if (name == "iconURL") value = value.substr(value.lastIndexOf("/")+1);
+        assert_equals(value, expected, "the MediaServer." + name + "value");
+      }, "Check if the MediaServer." + name + "value is " + expected);
+    });
     t.done();
   });
 </script>

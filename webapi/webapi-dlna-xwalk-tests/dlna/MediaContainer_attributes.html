@@ -38,7 +38,7 @@ Authors:
 <script src="../resources/testharnessreport.js"></script>
 <div id="log"></div>
 <script>
-  var msga, mse;
+  var msga, mc;
   setup(function () {
     msga = navigator.mediaServer;
     msga.scanNetwork();
@@ -46,7 +46,7 @@ Authors:
 
   var t = async_test("the onserverfound event can be invoked");
 
-  on_event(msga, "serverfound", function (event) {
+  msga.onserverfound = t.step_func(function (event) {
     mc = event.server.root;
     [
       ["number", "childCount", "readonly"],
@@ -66,9 +66,7 @@ Authors:
         switch(type){
           case "number":
           case "boolean":
-            if (read == "readonly") {
-              assert_readonly(mc, name, "You cannot change " + name);
-            }
+            assert_readonly(mc, name, "You cannot change " + name);
           case "function":
             assert_equals(typeof mc[name], type, name + " attribute type");
             break;
