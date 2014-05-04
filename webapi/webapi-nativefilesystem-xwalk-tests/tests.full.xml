@@ -1,0 +1,632 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-stylesheet type="text/xsl"  href="./testcase.xsl"?>
+<test_definition>
+  <suite name="webapi-nativefilesystem-xwalk-tests" launcher="xwalk" category="Native File System API">
+    <set name="NativeFileAPI">
+      <testcase purpose="Check if DirectoryEntry.createReader exists" type="compliance" status="designed" component="WebAPI/Storage/Native File System" execution_type="auto" priority="P1" id="DirectoryEntry_createReader_exist">
+        <description>
+          <test_script_entry>/opt/webapi-nativefilesystem-xwalk-tests/nativefilesystem/DirectoryEntry_createReader_exist.html</test_script_entry>
+        </description>
+        <specs>
+          <spec>
+            <spec_assertion element_type="method" element_name="createReader" interface="DirectoryEntry" specification="Native File System" section="Storage" category="Tizen W3C API Specifications"/>
+            <spec_url>https://crosswalk-project.org/jira/browse/XWALK-672</spec_url>
+            <spec_statement/>
+          </spec>
+        </specs>
+      </testcase>
+      <testcase purpose="Check if DirectoryEntry.getDirectory exists" type="compliance" status="designed" component="WebAPI/Storage/Native File System" execution_type="auto" priority="P1" id="DirectoryEntry_getDirectory_exist">
+        <description>
+          <test_script_entry>/opt/webapi-nativefilesystem-xwalk-tests/nativefilesystem/DirectoryEntry_getDirectory_exist.html</test_script_entry>
+        </description>
+        <specs>
+          <spec>
+            <spec_assertion element_type="method" element_name="getDirectory" interface="DirectoryEntry" specification="Native File System" section="Storage" category="Tizen W3C API Specifications"/>
+            <spec_url>https://crosswalk-project.org/jira/browse/XWALK-672</spec_url>
+            <spec_statement/>
+          </spec>
+        </specs>
+      </testcase>
+      <testcase purpose="Check if getFile() has all valid arguments that expecting successCallback() to be invoke" type="compliance" status="designed" component="WebAPI/Storage/Native File System" execution_type="auto" priority="P1" id="DirectoryEntry_getFile_base">
+        <description>
+          <test_script_entry>/opt/webapi-nativefilesystem-xwalk-tests/nativefilesystem/DirectoryEntry_getFile_base.html</test_script_entry>
+        </description>
+        <specs>
+          <spec>
+            <spec_assertion element_type="method" element_name="getFile" interface="DirectoryEntry" specification="Native File System" section="Storage" category="Tizen W3C API Specifications"/>
+            <spec_url>https://crosswalk-project.org/jira/browse/XWALK-672</spec_url>
+            <spec_statement/>
+          </spec>
+        </specs>
+      </testcase>
+      <testcase purpose="Check if DirectoryEntry.getFile exists" type="compliance" status="designed" component="WebAPI/Storage/Native File System" execution_type="auto" priority="P1" id="DirectoryEntry_getFile_exist">
+        <description>
+          <test_script_entry>/opt/webapi-nativefilesystem-xwalk-tests/nativefilesystem/DirectoryEntry_getFile_exist.html</test_script_entry>
+        </description>
+        <specs>
+          <spec>
+            <spec_assertion element_type="method" element_name="getFile" interface="DirectoryEntry" specification="Native File System" section="Storage" category="Tizen W3C API Specifications"/>
+            <spec_url>https://crosswalk-project.org/jira/browse/XWALK-672</spec_url>
+            <spec_statement/>
+          </spec>
+        </specs>
+      </testcase>
+      <testcase purpose="Check if DirectoryEntry.removeRecursively exists" type="compliance" status="designed" component="WebAPI/Storage/Native File System" execution_type="auto" priority="P1" id="DirectoryEntry_removeRecursively_exist">
+        <description>
+          <test_script_entry>/opt/webapi-nativefilesystem-xwalk-tests/nativefilesystem/DirectoryEntry_removeRecursively_exist.html</test_script_entry>
+        </description>
+        <specs>
+          <spec>
+            <spec_assertion element_type="method" element_name="removeRecursively" interface="DirectoryEntry" specification="Native File System" section="Storage" category="Tizen W3C API Specifications"/>
+            <spec_url>https://crosswalk-project.org/jira/browse/XWALK-672</spec_url>
+            <spec_statement/>
+          </spec>
+        </specs>
+      </testcase>
+      <testcase purpose="Check if DirectoryReader.readEntries exists" type="compliance" status="designed" component="WebAPI/Storage/Native File System" execution_type="auto" priority="P1" id="DirectoryReader_readEntries_exist">
+        <description>
+          <test_script_entry>/opt/webapi-nativefilesystem-xwalk-tests/nativefilesystem/DirectoryReader_readEntries_exist.html</test_script_entry>
+        </description>
+        <specs>
+          <spec>
+            <spec_assertion element_type="method" element_name="readEntries" interface="DirectoryReader" specification="Native File System" section="Storage" category="Tizen W3C API Specifications"/>
+            <spec_url>https://crosswalk-project.org/jira/browse/XWALK-672</spec_url>
+            <spec_statement/>
+          </spec>
+        </specs>
+      </testcase>
+      <testcase purpose="Check if the type of the parameter entries is Entry[] in EntryCallback interface" type="compliance" status="designed" component="WebAPI/Storage/Native File System" execution_type="auto" priority="P1" id="EntriesCallback_handleEvent_entries_type">
+        <description>
+          <test_script_entry>/opt/webapi-nativefilesystem-xwalk-tests/nativefilesystem/EntriesCallback_handleEvent_entries_type.html</test_script_entry>
+        </description>
+        <specs>
+          <spec>
+            <spec_assertion element_type="eventhandler" element_name="handleEvent" interface="EntriesCallback" specification="Native File System" section="Storage" category="Tizen W3C API Specifications"/>
+            <spec_url>https://crosswalk-project.org/jira/browse/XWALK-672</spec_url>
+            <spec_statement/>
+          </spec>
+        </specs>
+      </testcase>
+      <testcase purpose="Check if EntriesCallback.handleEvent exists" type="compliance" status="designed" component="WebAPI/Storage/Native File System" execution_type="auto" priority="P1" id="EntriesCallback_handleEvent_exist">
+        <description>
+          <test_script_entry>/opt/webapi-nativefilesystem-xwalk-tests/nativefilesystem/EntriesCallback_handleEvent_exist.html</test_script_entry>
+        </description>
+        <specs>
+          <spec>
+            <spec_assertion element_type="eventhandler" element_name="handleEvent" interface="EntriesCallback" specification="Native File System" section="Storage" category="Tizen W3C API Specifications"/>
+            <spec_url>https://crosswalk-project.org/jira/browse/XWALK-672</spec_url>
+            <spec_statement/>
+          </spec>
+        </specs>
+      </testcase>
+      <testcase purpose="Check if the type of the parameter entry is Entry in EntryCallback interface" type="compliance" status="designed" component="WebAPI/Storage/Native File System" execution_type="auto" priority="P1" id="EntryCallback_handleEvent_entry_type">
+        <description>
+          <test_script_entry>/opt/webapi-nativefilesystem-xwalk-tests/nativefilesystem/EntryCallback_handleEvent_entry_type.html</test_script_entry>
+        </description>
+        <specs>
+          <spec>
+            <spec_assertion element_type="eventhandler" element_name="handleEvent" interface="EntryCallback" specification="Native File System" section="Storage" category="Tizen W3C API Specifications"/>
+            <spec_url>https://crosswalk-project.org/jira/browse/XWALK-672</spec_url>
+            <spec_statement/>
+          </spec>
+        </specs>
+      </testcase>
+      <testcase purpose="Check if EntryCallback.handleEvent exists" type="compliance" status="designed" component="WebAPI/Storage/Native File System" execution_type="auto" priority="P1" id="EntryCallback_handleEvent_exist">
+        <description>
+          <test_script_entry>/opt/webapi-nativefilesystem-xwalk-tests/nativefilesystem/EntryCallback_handleEvent_exist.html</test_script_entry>
+        </description>
+        <specs>
+          <spec>
+            <spec_assertion element_type="eventhandler" element_name="handleEvent" interface="EntryCallback" specification="Native File System" section="Storage" category="Tizen W3C API Specifications"/>
+            <spec_url>https://crosswalk-project.org/jira/browse/XWALK-672</spec_url>
+            <spec_statement/>
+          </spec>
+        </specs>
+      </testcase>
+      <testcase purpose="Check if can copy a file to a different location on the file system" type="compliance" status="designed" component="WebAPI/Storage/Native File System" execution_type="auto" priority="P1" id="Entry_copyTo_base">
+        <description>
+          <test_script_entry>/opt/webapi-nativefilesystem-xwalk-tests/nativefilesystem/Entry_copyTo_base.html</test_script_entry>
+        </description>
+        <specs>
+          <spec>
+            <spec_assertion element_type="method" element_name="copyTo" interface="Entry" specification="Native File System" section="Storage" category="Tizen W3C API Specifications"/>
+            <spec_url>https://crosswalk-project.org/jira/browse/XWALK-672</spec_url>
+            <spec_statement/>
+          </spec>
+        </specs>
+      </testcase>
+      <testcase purpose="Check if Entry.copyTo exists" type="compliance" status="designed" component="WebAPI/Storage/Native File System" execution_type="auto" priority="P1" id="Entry_copyTo_exist">
+        <description>
+          <test_script_entry>/opt/webapi-nativefilesystem-xwalk-tests/nativefilesystem/Entry_copyTo_exist.html</test_script_entry>
+        </description>
+        <specs>
+          <spec>
+            <spec_assertion element_type="method" element_name="copyTo" interface="Entry" specification="Native File System" section="Storage" category="Tizen W3C API Specifications"/>
+            <spec_url>https://crosswalk-project.org/jira/browse/XWALK-672</spec_url>
+            <spec_statement/>
+          </spec>
+        </specs>
+      </testcase>
+      <testcase purpose="Check if Entry.nativefilesystem exists" type="compliance" status="designed" component="WebAPI/Storage/Native File System" execution_type="auto" priority="P1" id="Entry_nativefilesystem_exist">
+        <description>
+          <test_script_entry>/opt/webapi-nativefilesystem-xwalk-tests/nativefilesystem/Entry_nativefilesystem_exist.html</test_script_entry>
+        </description>
+        <specs>
+          <spec>
+            <spec_assertion element_type="attribute" element_name="nativefilesystem" interface="Entry" specification="Native File System" section="Storage" category="Tizen W3C API Specifications"/>
+            <spec_url>https://crosswalk-project.org/jira/browse/XWALK-672</spec_url>
+            <spec_statement/>
+          </spec>
+        </specs>
+      </testcase>
+      <testcase purpose="Check if the Entry.nativefilesystem attribute is readonly" type="compliance" status="designed" component="WebAPI/Storage/Native File System" execution_type="auto" priority="P1" id="Entry_nativefilesystem_readonly">
+        <description>
+          <test_script_entry>/opt/webapi-nativefilesystem-xwalk-tests/nativefilesystem/Entry_nativefilesystem_readonly.html</test_script_entry>
+        </description>
+        <specs>
+          <spec>
+            <spec_assertion element_type="attribute" element_name="nativefilesystem" interface="Entry" specification="Native File System" section="Storage" category="Tizen W3C API Specifications"/>
+            <spec_url>https://crosswalk-project.org/jira/browse/XWALK-672</spec_url>
+            <spec_statement/>
+          </spec>
+        </specs>
+      </testcase>
+      <testcase purpose="Check if the type of Entry.nativefilesystem attribute is object" type="compliance" status="designed" component="WebAPI/Storage/Native File System" execution_type="auto" priority="P1" id="Entry_nativefilesystem_type">
+        <description>
+          <test_script_entry>/opt/webapi-nativefilesystem-xwalk-tests/nativefilesystem/Entry_nativefilesystem_type.html</test_script_entry>
+        </description>
+        <specs>
+          <spec>
+            <spec_assertion element_type="attribute" element_name="nativefilesystem" interface="Entry" specification="Native File System" section="Storage" category="Tizen W3C API Specifications"/>
+            <spec_url>https://crosswalk-project.org/jira/browse/XWALK-672</spec_url>
+            <spec_statement/>
+          </spec>
+        </specs>
+      </testcase>
+      <testcase purpose="Check if Entry.fullPath exists" type="compliance" status="designed" component="WebAPI/Storage/Native File System" execution_type="auto" priority="P1" id="Entry_fullPath_exist">
+        <description>
+          <test_script_entry>/opt/webapi-nativefilesystem-xwalk-tests/nativefilesystem/Entry_fullPath_exist.html</test_script_entry>
+        </description>
+        <specs>
+          <spec>
+            <spec_assertion element_type="attribute" element_name="fullPath" interface="Entry" specification="Native File System" section="Storage" category="Tizen W3C API Specifications"/>
+            <spec_url>https://crosswalk-project.org/jira/browse/XWALK-672</spec_url>
+            <spec_statement/>
+          </spec>
+        </specs>
+      </testcase>
+      <testcase purpose="Check if the Entry.fullPath attribute is readonly" type="compliance" status="designed" component="WebAPI/Storage/Native File System" execution_type="auto" priority="P1" id="Entry_fullPath_readonly">
+        <description>
+          <test_script_entry>/opt/webapi-nativefilesystem-xwalk-tests/nativefilesystem/Entry_fullPath_readonly.html</test_script_entry>
+        </description>
+        <specs>
+          <spec>
+            <spec_assertion element_type="attribute" element_name="fullPath" interface="Entry" specification="Native File System" section="Storage" category="Tizen W3C API Specifications"/>
+            <spec_url>https://crosswalk-project.org/jira/browse/XWALK-672</spec_url>
+            <spec_statement/>
+          </spec>
+        </specs>
+      </testcase>
+      <testcase purpose="Check if the type of Entry.fullPath is DOMString" type="compliance" status="designed" component="WebAPI/Storage/Native File System" execution_type="auto" priority="P1" id="Entry_fullPath_type">
+        <description>
+          <test_script_entry>/opt/webapi-nativefilesystem-xwalk-tests/nativefilesystem/Entry_fullPath_type.html</test_script_entry>
+        </description>
+        <specs>
+          <spec>
+            <spec_assertion element_type="attribute" element_name="fullPath" interface="Entry" specification="Native File System" section="Storage" category="Tizen W3C API Specifications"/>
+            <spec_url>https://crosswalk-project.org/jira/browse/XWALK-672</spec_url>
+            <spec_statement/>
+          </spec>
+        </specs>
+      </testcase>
+      <testcase purpose="Check if Entry.getMetadata exists" type="compliance" status="designed" component="WebAPI/Storage/Native File System" execution_type="auto" priority="P1" id="Entry_getMetadata_exist">
+        <description>
+          <test_script_entry>/opt/webapi-nativefilesystem-xwalk-tests/nativefilesystem/Entry_getMetadata_exist.html</test_script_entry>
+        </description>
+        <specs>
+          <spec>
+            <spec_assertion element_type="method" element_name="getMetadata" interface="Entry" specification="Native File System" section="Storage" category="Tizen W3C API Specifications"/>
+            <spec_url>https://crosswalk-project.org/jira/browse/XWALK-672</spec_url>
+            <spec_statement/>
+          </spec>
+        </specs>
+      </testcase>
+      <testcase purpose="Check if Entry.getParent exists" type="compliance" status="designed" component="WebAPI/Storage/Native File System" execution_type="auto" priority="P1" id="Entry_getParent_exist">
+        <description>
+          <test_script_entry>/opt/webapi-nativefilesystem-xwalk-tests/nativefilesystem/Entry_getParent_exist.html</test_script_entry>
+        </description>
+        <specs>
+          <spec>
+            <spec_assertion element_type="method" element_name="getParent" interface="Entry" specification="Native File System" section="Storage" category="Tizen W3C API Specifications"/>
+            <spec_url>https://crosswalk-project.org/jira/browse/XWALK-672</spec_url>
+            <spec_statement/>
+          </spec>
+        </specs>
+      </testcase>
+      <testcase purpose="Check if Entry.isDirectory exists" type="compliance" status="designed" component="WebAPI/Storage/Native File System" execution_type="auto" priority="P1" id="Entry_isDirectory_exist">
+        <description>
+          <test_script_entry>/opt/webapi-nativefilesystem-xwalk-tests/nativefilesystem/Entry_isDirectory_exist.html</test_script_entry>
+        </description>
+        <specs>
+          <spec>
+            <spec_assertion element_type="attribute" element_name="isDirectory" interface="Entry" specification="Native File System" section="Storage" category="Tizen W3C API Specifications"/>
+            <spec_url>https://crosswalk-project.org/jira/browse/XWALK-672</spec_url>
+            <spec_statement/>
+          </spec>
+        </specs>
+      </testcase>
+      <testcase purpose="Check if the Entry is not a directory" type="compliance" status="designed" component="WebAPI/Storage/Native File System" execution_type="auto" priority="P1" id="Entry_isDirectory_false">
+        <description>
+          <test_script_entry>/opt/webapi-nativefilesystem-xwalk-tests/nativefilesystem/Entry_isDirectory_false.html</test_script_entry>
+        </description>
+        <specs>
+          <spec>
+            <spec_assertion element_type="attribute" element_name="isDirectory" interface="Entry" specification="Native File System" section="Storage" category="Tizen W3C API Specifications"/>
+            <spec_url>https://crosswalk-project.org/jira/browse/XWALK-672</spec_url>
+            <spec_statement/>
+          </spec>
+        </specs>
+      </testcase>
+      <testcase purpose="Check if the Entry.isDirectory attribute is readonly" type="compliance" status="designed" component="WebAPI/Storage/Native File System" execution_type="auto" priority="P1" id="Entry_isDirectory_readonly">
+        <description>
+          <test_script_entry>/opt/webapi-nativefilesystem-xwalk-tests/nativefilesystem/Entry_isDirectory_readonly.html</test_script_entry>
+        </description>
+        <specs>
+          <spec>
+            <spec_assertion element_type="attribute" element_name="isDirectory" interface="Entry" specification="Native File System" section="Storage" category="Tizen W3C API Specifications"/>
+            <spec_url>https://crosswalk-project.org/jira/browse/XWALK-672</spec_url>
+            <spec_statement/>
+          </spec>
+        </specs>
+      </testcase>
+      <testcase purpose="Check if the Entry is a directory" type="compliance" status="designed" component="WebAPI/Storage/Native File System" execution_type="auto" priority="P1" id="Entry_isDirectory_true">
+        <description>
+          <test_script_entry>/opt/webapi-nativefilesystem-xwalk-tests/nativefilesystem/Entry_isDirectory_true.html</test_script_entry>
+        </description>
+        <specs>
+          <spec>
+            <spec_assertion element_type="attribute" element_name="isDirectory" interface="Entry" specification="Native File System" section="Storage" category="Tizen W3C API Specifications"/>
+            <spec_url>https://crosswalk-project.org/jira/browse/XWALK-672</spec_url>
+            <spec_statement/>
+          </spec>
+        </specs>
+      </testcase>
+      <testcase purpose="Check if the type of Entry.isDirectory attribute is boolean" type="compliance" status="designed" component="WebAPI/Storage/Native File System" execution_type="auto" priority="P1" id="Entry_isDirectory_type">
+        <description>
+          <test_script_entry>/opt/webapi-nativefilesystem-xwalk-tests/nativefilesystem/Entry_isDirectory_type.html</test_script_entry>
+        </description>
+        <specs>
+          <spec>
+            <spec_assertion element_type="attribute" element_name="isDirectory" interface="Entry" specification="Native File System" section="Storage" category="Tizen W3C API Specifications"/>
+            <spec_url>https://crosswalk-project.org/jira/browse/XWALK-672</spec_url>
+            <spec_statement/>
+          </spec>
+        </specs>
+      </testcase>
+      <testcase purpose="Check if Entry.isFile exists" type="compliance" status="designed" component="WebAPI/Storage/Native File System" execution_type="auto" priority="P1" id="Entry_isFile_exist">
+        <description>
+          <test_script_entry>/opt/webapi-nativefilesystem-xwalk-tests/nativefilesystem/Entry_isFile_exist.html</test_script_entry>
+        </description>
+        <specs>
+          <spec>
+            <spec_assertion element_type="attribute" element_name="isFile" interface="Entry" specification="Native File System" section="Storage" category="Tizen W3C API Specifications"/>
+            <spec_url>https://crosswalk-project.org/jira/browse/XWALK-672</spec_url>
+            <spec_statement/>
+          </spec>
+        </specs>
+      </testcase>
+      <testcase purpose="Check if the Entry is not a file" type="compliance" status="designed" component="WebAPI/Storage/Native File System" execution_type="auto" priority="P1" id="Entry_isFile_false">
+        <description>
+          <test_script_entry>/opt/webapi-nativefilesystem-xwalk-tests/nativefilesystem/Entry_isFile_false.html</test_script_entry>
+        </description>
+        <specs>
+          <spec>
+            <spec_assertion element_type="attribute" element_name="isFile" interface="Entry" specification="Native File System" section="Storage" category="Tizen W3C API Specifications"/>
+            <spec_url>https://crosswalk-project.org/jira/browse/XWALK-672</spec_url>
+            <spec_statement/>
+          </spec>
+        </specs>
+      </testcase>
+      <testcase purpose="Check if the Entry.isFile attribute is readonly" type="compliance" status="designed" component="WebAPI/Storage/Native File System" execution_type="auto" priority="P1" id="Entry_isFile_readonly">
+        <description>
+          <test_script_entry>/opt/webapi-nativefilesystem-xwalk-tests/nativefilesystem/Entry_isFile_readonly.html</test_script_entry>
+        </description>
+        <specs>
+          <spec>
+            <spec_assertion element_type="attribute" element_name="isFile" interface="Entry" specification="Native File System" section="Storage" category="Tizen W3C API Specifications"/>
+            <spec_url>https://crosswalk-project.org/jira/browse/XWALK-672</spec_url>
+            <spec_statement/>
+          </spec>
+        </specs>
+      </testcase>
+      <testcase purpose="Check if the Entry is a file" type="compliance" status="designed" component="WebAPI/Storage/Native File System" execution_type="auto" priority="P1" id="Entry_isFile_true">
+        <description>
+          <test_script_entry>/opt/webapi-nativefilesystem-xwalk-tests/nativefilesystem/Entry_isFile_true.html</test_script_entry>
+        </description>
+        <specs>
+          <spec>
+            <spec_assertion element_type="attribute" element_name="isFile" interface="Entry" specification="Native File System" section="Storage" category="Tizen W3C API Specifications"/>
+            <spec_url>https://crosswalk-project.org/jira/browse/XWALK-672</spec_url>
+            <spec_statement/>
+          </spec>
+        </specs>
+      </testcase>
+      <testcase purpose="Check if the type of Entry.isFile attribute is boolean" type="compliance" status="designed" component="WebAPI/Storage/Native File System" execution_type="auto" priority="P1" id="Entry_isFile_type">
+        <description>
+          <test_script_entry>/opt/webapi-nativefilesystem-xwalk-tests/nativefilesystem/Entry_isFile_type.html</test_script_entry>
+        </description>
+        <specs>
+          <spec>
+            <spec_assertion element_type="attribute" element_name="isFile" interface="Entry" specification="Native File System" section="Storage" category="Tizen W3C API Specifications"/>
+            <spec_url>https://crosswalk-project.org/jira/browse/XWALK-672</spec_url>
+            <spec_statement/>
+          </spec>
+        </specs>
+      </testcase>
+      <testcase purpose="Check if Entry.moveTo exists" type="compliance" status="designed" component="WebAPI/Storage/Native File System" execution_type="auto" priority="P1" id="Entry_moveTo_exist">
+        <description>
+          <test_script_entry>/opt/webapi-nativefilesystem-xwalk-tests/nativefilesystem/Entry_moveTo_exist.html</test_script_entry>
+        </description>
+        <specs>
+          <spec>
+            <spec_assertion element_type="method" element_name="moveTo" interface="Entry" specification="Native File System" section="Storage" category="Tizen W3C API Specifications"/>
+            <spec_url>https://crosswalk-project.org/jira/browse/XWALK-672</spec_url>
+            <spec_statement/>
+          </spec>
+        </specs>
+      </testcase>
+      <testcase purpose="Check if Entry.name exists" type="compliance" status="designed" component="WebAPI/Storage/Native File System" execution_type="auto" priority="P1" id="Entry_name_exist">
+        <description>
+          <test_script_entry>/opt/webapi-nativefilesystem-xwalk-tests/nativefilesystem/Entry_name_exist.html</test_script_entry>
+        </description>
+        <specs>
+          <spec>
+            <spec_assertion element_type="attribute" element_name="name" interface="Entry" specification="Native File System" section="Storage" category="Tizen W3C API Specifications"/>
+            <spec_url>https://crosswalk-project.org/jira/browse/XWALK-672</spec_url>
+            <spec_statement/>
+          </spec>
+        </specs>
+      </testcase>
+      <testcase purpose="Check if the type of Entry.name attribute is readonly" type="compliance" status="designed" component="WebAPI/Storage/Native File System" execution_type="auto" priority="P1" id="Entry_name_readonly">
+        <description>
+          <test_script_entry>/opt/webapi-nativefilesystem-xwalk-tests/nativefilesystem/Entry_name_readonly.html</test_script_entry>
+        </description>
+        <specs>
+          <spec>
+            <spec_assertion element_type="attribute" element_name="name" interface="Entry" specification="Native File System" section="Storage" category="Tizen W3C API Specifications"/>
+            <spec_url>https://crosswalk-project.org/jira/browse/XWALK-672</spec_url>
+            <spec_statement/>
+          </spec>
+        </specs>
+      </testcase>
+      <testcase purpose="Check if the type of Entry.name attribute is DOMString" type="compliance" status="designed" component="WebAPI/Storage/Native File System" execution_type="auto" priority="P1" id="Entry_name_type">
+        <description>
+          <test_script_entry>/opt/webapi-nativefilesystem-xwalk-tests/nativefilesystem/Entry_name_type.html</test_script_entry>
+        </description>
+        <specs>
+          <spec>
+            <spec_assertion element_type="attribute" element_name="name" interface="Entry" specification="Native File System" section="Storage" category="Tizen W3C API Specifications"/>
+            <spec_url>https://crosswalk-project.org/jira/browse/XWALK-672</spec_url>
+            <spec_statement/>
+          </spec>
+        </specs>
+      </testcase>
+      <testcase purpose="Check if Entry.remove exists" type="compliance" status="designed" component="WebAPI/Storage/Native File System" execution_type="auto" priority="P1" id="Entry_remove_exist">
+        <description>
+          <test_script_entry>/opt/webapi-nativefilesystem-xwalk-tests/nativefilesystem/Entry_remove_exist.html</test_script_entry>
+        </description>
+        <specs>
+          <spec>
+            <spec_assertion element_type="method" element_name="remove" interface="Entry" specification="Native File System" section="Storage" category="Tizen W3C API Specifications"/>
+            <spec_url>https://crosswalk-project.org/jira/browse/XWALK-672</spec_url>
+            <spec_statement/>
+          </spec>
+        </specs>
+      </testcase>
+      <testcase purpose="Check if Entry.toURL exists" type="compliance" status="designed" component="WebAPI/Storage/Native File System" execution_type="auto" priority="P1" id="Entry_toURL_exist">
+        <description>
+          <test_script_entry>/opt/webapi-nativefilesystem-xwalk-tests/nativefilesystem/Entry_toURL_exist.html</test_script_entry>
+        </description>
+        <specs>
+          <spec>
+            <spec_assertion element_type="method" element_name="toURL" interface="Entry" specification="Native File System" section="Storage" category="Tizen W3C API Specifications"/>
+            <spec_url>https://crosswalk-project.org/jira/browse/XWALK-672</spec_url>
+            <spec_statement/>
+          </spec>
+        </specs>
+      </testcase>
+      <testcase purpose="Check if FileCallback.handleEvent exists" type="compliance" status="designed" component="WebAPI/Storage/Native File System" execution_type="auto" priority="P1" id="FileCallback_handleEvent_exist">
+        <description>
+          <test_script_entry>/opt/webapi-nativefilesystem-xwalk-tests/nativefilesystem/FileCallback_handleEvent_exist.html</test_script_entry>
+        </description>
+        <specs>
+          <spec>
+            <spec_assertion element_type="eventhandler" element_name="handleEvent" interface="FileCallback" specification="Native File System" section="Storage" category="Tizen W3C API Specifications"/>
+            <spec_url>https://crosswalk-project.org/jira/browse/XWALK-672</spec_url>
+            <spec_statement/>
+          </spec>
+        </specs>
+      </testcase>
+      <testcase purpose="Check if FileEntry.createWriter exists" type="compliance" status="designed" component="WebAPI/Storage/Native File System" execution_type="auto" priority="P1" id="FileEntry_createWriter_exist">
+        <description>
+          <test_script_entry>/opt/webapi-nativefilesystem-xwalk-tests/nativefilesystem/FileEntry_createWriter_exist.html</test_script_entry>
+        </description>
+        <specs>
+          <spec>
+            <spec_assertion element_type="method" element_name="createWriter" interface="FileEntry" specification="Native File System" section="Storage" category="Tizen W3C API Specifications"/>
+            <spec_url>https://crosswalk-project.org/jira/browse/XWALK-672</spec_url>
+            <spec_statement/>
+          </spec>
+        </specs>
+      </testcase>
+      <testcase purpose="Check if FileEntry.file exists" type="compliance" status="designed" component="WebAPI/Storage/Native File System" execution_type="auto" priority="P1" id="FileEntry_file_exist">
+        <description>
+          <test_script_entry>/opt/webapi-nativefilesystem-xwalk-tests/nativefilesystem/FileEntry_file_exist.html</test_script_entry>
+        </description>
+        <specs>
+          <spec>
+            <spec_assertion element_type="method" element_name="file" interface="FileEntry" specification="Native File System" section="Storage" category="Tizen W3C API Specifications"/>
+            <spec_url>https://crosswalk-project.org/jira/browse/XWALK-672</spec_url>
+            <spec_statement/>
+          </spec>
+        </specs>
+      </testcase>
+      <testcase purpose="Check if NativeFileSystem.name is the name of the file system" type="compliance" status="designed" component="WebAPI/Storage/Native File System" execution_type="auto" priority="P1" id="NativeFileSystem_name_base">
+        <description>
+          <test_script_entry>/opt/webapi-nativefilesystem-xwalk-tests/nativefilesystem/NativeFileSystem_name_base.html</test_script_entry>
+        </description>
+        <specs>
+          <spec>
+            <spec_assertion element_type="attribute" element_name="name" interface="NativeFileSystem" specification="Native File System" section="Storage" category="Tizen W3C API Specifications"/>
+            <spec_url>https://crosswalk-project.org/jira/browse/XWALK-672</spec_url>
+            <spec_statement/>
+          </spec>
+        </specs>
+      </testcase>
+      <testcase purpose="Check if NativeFileSystem.name exists" type="compliance" status="designed" component="WebAPI/Storage/Native File System" execution_type="auto" priority="P1" id="NativeFileSystem_name_exist">
+        <description>
+          <test_script_entry>/opt/webapi-nativefilesystem-xwalk-tests/nativefilesystem/NativeFileSystem_name_exist.html</test_script_entry>
+        </description>
+        <specs>
+          <spec>
+            <spec_assertion element_type="attribute" element_name="name" interface="NativeFileSystem" specification="Native File System" section="Storage" category="Tizen W3C API Specifications"/>
+            <spec_url>https://crosswalk-project.org/jira/browse/XWALK-672</spec_url>
+            <spec_statement/>
+          </spec>
+        </specs>
+      </testcase>
+      <testcase purpose="Check if the NativeFileSystem.name attribute is readonly" type="compliance" status="designed" component="WebAPI/Storage/Native File System" execution_type="auto" priority="P1" id="NativeFileSystem_name_readonly">
+        <description>
+          <test_script_entry>/opt/webapi-nativefilesystem-xwalk-tests/nativefilesystem/NativeFileSystem_name_readonly.html</test_script_entry>
+        </description>
+        <specs>
+          <spec>
+            <spec_assertion element_type="attribute" element_name="name" interface="NativeFileSystem" specification="Native File System" section="Storage" category="Tizen W3C API Specifications"/>
+            <spec_url>https://crosswalk-project.org/jira/browse/XWALK-672</spec_url>
+            <spec_statement/>
+          </spec>
+        </specs>
+      </testcase>
+      <testcase purpose="Check if the type of NativeFileSystem.name is string" type="compliance" status="designed" component="WebAPI/Storage/Native File System" execution_type="auto" priority="P1" id="NativeFileSystem_name_type">
+        <description>
+          <test_script_entry>/opt/webapi-nativefilesystem-xwalk-tests/nativefilesystem/NativeFileSystem_name_type.html</test_script_entry>
+        </description>
+        <specs>
+          <spec>
+            <spec_assertion element_type="attribute" element_name="name" interface="NativeFileSystem" specification="Native File System" section="Storage" category="Tizen W3C API Specifications"/>
+            <spec_url>https://crosswalk-project.org/jira/browse/XWALK-672</spec_url>
+            <spec_statement/>
+          </spec>
+        </specs>
+      </testcase>
+      <testcase purpose="Check if NativeFileSystem.root is the root directory of the file system" type="compliance" status="designed" component="WebAPI/Storage/Native File System" execution_type="auto" priority="P1" id="NativeFileSystem_root_base">
+        <description>
+          <test_script_entry>/opt/webapi-nativefilesystem-xwalk-tests/nativefilesystem/NativeFileSystem_root_base.html</test_script_entry>
+        </description>
+        <specs>
+          <spec>
+            <spec_assertion element_type="attribute" element_name="root" interface="NativeFileSystem" specification="Native File System" section="Storage" category="Tizen W3C API Specifications"/>
+            <spec_url>https://crosswalk-project.org/jira/browse/XWALK-672</spec_url>
+            <spec_statement/>
+          </spec>
+        </specs>
+      </testcase>
+      <testcase purpose="Check if the NativeFileSystem.root attribute is readonly" type="compliance" status="designed" component="WebAPI/Storage/Native File System" execution_type="auto" priority="P1" id="NativeFileSystem_root_readonly">
+        <description>
+          <test_script_entry>/opt/webapi-nativefilesystem-xwalk-tests/nativefilesystem/NativeFileSystem_root_readonly.html</test_script_entry>
+        </description>
+        <specs>
+          <spec>
+            <spec_assertion element_type="attribute" element_name="root" interface="NativeFileSystem" specification="Native File System" section="Storage" category="Tizen W3C API Specifications"/>
+            <spec_url>https://crosswalk-project.org/jira/browse/XWALK-672</spec_url>
+            <spec_statement/>
+          </spec>
+        </specs>
+      </testcase>
+      <testcase purpose="Check if the type of NativeFileSystem.root is DirectoryEntry" type="compliance" status="designed" component="WebAPI/Storage/Native File System" execution_type="auto" priority="P1" id="NativeFileSystem_root_type">
+        <description>
+          <test_script_entry>/opt/webapi-nativefilesystem-xwalk-tests/nativefilesystem/NativeFileSystem_root_type.html</test_script_entry>
+        </description>
+        <specs>
+          <spec>
+            <spec_assertion element_type="attribute" element_name="root" interface="NativeFileSystem" specification="Native File System" section="Storage" category="Tizen W3C API Specifications"/>
+            <spec_url>https://crosswalk-project.org/jira/browse/XWALK-672</spec_url>
+            <spec_statement/>
+          </spec>
+        </specs>
+      </testcase>
+      <testcase purpose="Check if FileWriterCallback.handleEvent exists" type="compliance" status="designed" component="WebAPI/Storage/Native File System" execution_type="auto" priority="P1" id="FileWriterCallback_handleEvent_exist">
+        <description>
+          <test_script_entry>/opt/webapi-nativefilesystem-xwalk-tests/nativefilesystem/FileWriterCallback_handleEvent_exist.html</test_script_entry>
+        </description>
+        <specs>
+          <spec>
+            <spec_assertion element_type="eventhandler" element_name="handleEvent" interface="FileWriterCallback" specification="Native File System" section="Storage" category="Tizen W3C API Specifications"/>
+            <spec_url>https://crosswalk-project.org/jira/browse/XWALK-672</spec_url>
+            <spec_statement/>
+          </spec>
+        </specs>
+      </testcase>
+      <testcase purpose="Check if MetadataCallback.handleEvent exists" type="compliance" status="designed" component="WebAPI/Storage/Native File System" execution_type="auto" priority="P1" id="MetadataCallback_handleEvent_exist">
+        <description>
+          <test_script_entry>/opt/webapi-nativefilesystem-xwalk-tests/nativefilesystem/MetadataCallback_handleEvent_exist.html</test_script_entry>
+        </description>
+        <specs>
+          <spec>
+            <spec_assertion element_type="eventhandler" element_name="handleEvent" interface="MetadataCallback" specification="Native File System" section="Storage" category="Tizen W3C API Specifications"/>
+            <spec_url>https://crosswalk-project.org/jira/browse/XWALK-672</spec_url>
+            <spec_statement/>
+          </spec>
+        </specs>
+      </testcase>
+      <testcase purpose="Check if the type of the parameter metadata is Metadata in MetadataCallback interface" type="compliance" status="designed" component="WebAPI/Storage/Native File System" execution_type="auto" priority="P1" id="MetadataCallback_handleEvent_metadata_type">
+        <description>
+          <test_script_entry>/opt/webapi-nativefilesystem-xwalk-tests/nativefilesystem/MetadataCallback_handleEvent_metadata_type.html</test_script_entry>
+        </description>
+        <specs>
+          <spec>
+            <spec_assertion element_type="eventhandler" element_name="handleEvent" interface="MetadataCallback" specification="Native File System" section="Storage" category="Tizen W3C API Specifications"/>
+            <spec_url>https://crosswalk-project.org/jira/browse/XWALK-672</spec_url>
+            <spec_statement/>
+          </spec>
+        </specs>
+      </testcase>
+      <testcase purpose="Check if VoidCallback.handleEvent exists" type="compliance" status="designed" component="WebAPI/Storage/Native File System" execution_type="auto" priority="P1" id="VoidCallback_handleEvent_exists">
+        <description>
+          <test_script_entry>/opt/webapi-nativefilesystem-xwalk-tests/nativefilesystem/VoidCallback_handleEvent_exists.html</test_script_entry>
+        </description>
+        <specs>
+          <spec>
+            <spec_assertion element_type="eventhandler" element_name="handleEvent" interface="VoidCallback" specification="Native File System" section="Storage" category="Tizen W3C API Specifications"/>
+            <spec_url>https://crosswalk-project.org/jira/browse/XWALK-672</spec_url>
+            <spec_statement/>
+          </spec>
+        </specs>
+      </testcase>
+      <testcase purpose="Check if the requestNativeFileSystem base" type="compliance" status="designed" component="WebAPI/Storage/Native File System" execution_type="auto" priority="P1" id="NativeFileSystem_requestNativeFileSystem_base">
+        <description>
+          <test_script_entry>/opt/webapi-nativefilesystem-xwalk-tests/nativefilesystem/NativeFileSystem_requestNativeFileSystem_base.html</test_script_entry>
+        </description>
+        <specs>
+          <spec>
+            <spec_assertion element_type="method" element_name="requestNativeFileSystem" interface="NativeFileSystem" specification="Native File System" section="Storage" category="Tizen W3C API Specifications"/>
+            <spec_url>https://crosswalk-project.org/jira/browse/XWALK-672</spec_url>
+            <spec_statement/>
+          </spec>
+        </specs>
+      </testcase>
+      <testcase purpose="Check if the requestNativeFileSystem exists" type="compliance" status="designed" component="WebAPI/Storage/Native File System" execution_type="auto" priority="P1" id="NativeFileSystem_requestNativeFileSystem_exist">
+        <description>
+          <test_script_entry>/opt/webapi-nativefilesystem-xwalk-tests/nativefilesystem/NativeFileSystem_requestNativeFileSystem_exist.html</test_script_entry>
+        </description>
+        <specs>
+          <spec>
+            <spec_assertion element_type="method" element_name="requestNativeFileSystem" interface="NativeFileSystem" specification="Native File System" section="Storage" category="Tizen W3C API Specifications"/>
+            <spec_url>https://crosswalk-project.org/jira/browse/XWALK-672</spec_url>
+            <spec_statement/>
+          </spec>
+        </specs>
+      </testcase>
+    </set>
+  </suite>
+</test_definition>
