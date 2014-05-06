@@ -31,78 +31,8 @@ Authors:
 
 */
 
-var _appURL;
-var noSupport = {};
-var isLaunching = false;
-var storage = window.sessionStorage;
-
-function updateToolTitle() {
-    var version = '';
-    $.ajax({
-        async : false,
-        type : "GET",
-        url : "config.xml",
-        dataType : "xml",
-        success : function(xml){
-            $(xml).find("widget").each(
-                function(){
-                    if ($(this).attr('version'))
-                        version = $(this).attr('version');
-                }
-            );
-        }
-    });
-    $("#tool_title").empty().append("<h1 style=\"width:75%; margin-left:auto; margin-right:auto;\">TCT Behavior Test Tool</h1><a class=\"ui-btn-right\">" + version + "</a>");
-}
-
-function updateAppDecorationStyle() {
-    $(".ui-content").css("padding", '6px');
-    $("a.ui-link-inherit").css("padding", '0px 85px 0px 10px');
-    $(".ui-li-has-thumb a.ui-link-inherit").css("padding-left", '40px');
-    $(".ui-li-heading").css("font-size", '14px');
-}
-
-function updateAppDecoration() {
-    $("#mylist").empty();
-    $(_resultXML).find("set").each(
-        function(){
-            $("#mylist").append("<li data-role=\"list-divider\" role=\"heading\">"+$(this).attr("name")+"</li>");
-            $(this).find("testcase").each(
-                function(){
-                    var url = "tests/" + $(this).attr("id") + "/index.html?test_name="+$(this).attr("purpose");
-                    var appLine = "<li id=\"" + $(this).attr("id") + "\" class=\"test_app\">" +
-                                  "<a href=\"" + url + "\">" +
-                                  "<h1>" + $(this).attr("purpose") + "</h1></a></li>";
-                    $("#mylist").append(appLine);
-                    if (noSupport[$(this).attr("id")]) {
-                        $("#mylist > li :last").find("a").attr('href', '');
-                        $("#mylist > li :last").attr('data-theme', 'a');
-                        $("#mylist > li :last").find("a").append("<span class='ui-li-count' style='color:black;'>" +
-                             "UNSUPPORTED" + "</span>");
-                    }
-                }
-            );
-        }
-    );
-    var len = storage.length;
-    if (len > 0) {
-        for(var i=0;i<len;i++){
-            var key = storage.key(i)
-            var str = "h1:contains("+ key +")";
-            var node = $(str).parent();
-            var item = storage.getItem(key);
-            if (item == "PASS") {
-                node.parent().attr('data-theme', 'g');
-                node.append("<img src='css/images/pass.png' class='ui-li-thumb'>");
-                node.append("<span class='ui-li-count' style='color:green;'>PASS</span>");
-            } else if (item == "FAIL"){
-                node.parent().attr('data-theme', 'r');
-                node.append("<img src='css/images/fail.png' class='ui-li-thumb'>");
-                node.append("<span class='ui-li-count' style='color:red;'>FAIL</span>");
-            }
-        }
-    }
-}
+var sstorage = window.sessionStorage;
+var applist;
 
 function exportResult() {
     //TODO: export the test result from the saved result in session storage.
@@ -112,93 +42,166 @@ function SaveAndExit() {
     //TODO: export the test result from the saved result in session storage, then exit the app.
 }
 
-function reset() {
-    storage.clear();
-    $("#home_ui").trigger("pageshow");
+function getVersion() {
+  var version = "";
+  $.ajax({
+    async : false,
+    type : "GET",
+    url : "config.xml",
+    dataType : "xml",
+    success : function(xml){
+      $(xml).find("widget").each(function(){version = $(this).attr("version");});
+    }
+  });
+  return version;
 }
 
-function launchMain() {
-    $("#test_frame").attr("src", "");
+function getApps() {
+  var tests = "";
+  $.ajax({
+    async : false,
+    type : "GET",
+    url : "tests.xml",
+    dataType : "xml",
+    success : function(xml){tests = xml;}
+  });
+  return tests;
+}
+
+function updateList() {
+  $("#mylist").empty();
+  $(applist).find("set").each(function(){
+    $("#mylist").append("<li data-role=\"list-divider\">"+$(this).attr("name")+"</li>");
+    $(this).find("testcase").each(function(){
+      var url = "tests/" + $(this).attr("id") + "/index.html?test_name="+$(this).attr("purpose");
+      var appLine = "<li class=\"app\" id=\"" + $(this).attr("id") + "\">"
+                  + "<a href=\"" + url + "\">" + "<h2>" + $(this).attr("purpose") + "</h2></a></li>";
+      $("#mylist").append(appLine);
+    });
+  });
+
+  for(var i=0; i<sstorage.length; i++){
+    var name = sstorage.key(i);
+    var item = sstorage.getItem(name);
+    var node = $("h2:contains('"+ name + "')").parent().parent();
+    if (item == "PASS") {
+      node.attr("data-theme", "g");
+      node.append("<img src='css/images/pass.png' class='ui-li-thumb'>");
+      node.append("<span class='ui-li-count' style='color:green;'>PASS</span>");
+      node.find("a h2").css("padding-left", "20px");
+    } else if (item == "FAIL"){
+      node.attr("data-theme", "r");
+      node.append("<img src='css/images/fail.png' class='ui-li-thumb'>");
+      node.append("<span class='ui-li-count' style='color:red;'>FAIL</span>");
+      node.find("a h2").css("padding-left", "20px");
+    } else {
+      resultnum = item.split(",");
+      if (resultnum[3] == "PASS") {
+        node.attr("data-theme", "g");
+        node.append("<img src='css/images/pass.png' class='ui-li-thumb'>");
+        node.append("<span class='ui-li-count' style='color:green;'>"  + resultnum[0] + "</span>");
+        node.append("<span class='ui-li-count' style='color:red;'>"  + resultnum[1] + "</span>");
+        node.append("<span class='ui-li-count' style='color:gray;'>"  + resultnum[2] + "</span>");
+        node.find("a h2").css("padding-left", "20px");
+      } else if (resultnum[3] == "FAIL"){
+        node.attr("data-theme", "r");
+        node.append("<img src='css/images/fail.png' class='ui-li-thumb'>");
+        node.append("<span class='ui-li-count' style='color:green;'>"  + resultnum[0] + "</span>");
+        node.append("<span class='ui-li-count' style='color:red;'>"  + resultnum[1] + "</span>");
+        node.append("<span class='ui-li-count' style='color:gray;'>"  + resultnum[2] + "</span>");
+        node.find("a h2").css("padding-left", "20px");
+      }
+    }
+  }
+  $("#mylist").listview("refresh");
+  $(".ui-li-has-count").each(function() {
+    var childs = $(this).find(".ui-li-count");
+    if (childs.length == 3) {
+      $(childs[0]).css("min-width","10px");
+      $(childs[1]).css("min-width","10px");
+      $(childs[2]).css("min-width","10px");
+      var shiftSecond = ($(childs[2]).position().left - $(childs[1]).outerWidth());
+      var shiftFirst = (shiftSecond - 23);
+      $(childs[0]).css("left", shiftFirst).css("right","auto");
+      $(childs[1]).css("left", shiftSecond).css("right","auto");
+    }
+  });
+}
+
+function updateFooter() {
+  $(':jqmData(role=footer)').find(':jqmData(role=button) > span:first-child').css('padding', '15px 10px 15px 30px');
+}
+
+function launchMain(node) {
+  if ($("#home_ui").find("div").length > 0) {
+    updateList();
     $.mobile.changePage("#home_ui", {
-        'allowSamePageTransition' : true,
-        'transition' : 'slide',
-        'reverse' : true
+      'allowSamePageTransition' : true,
+      'transition' : 'slide',
+      'reverse' : true
     });
+    if (node != "") {
+      $("html,body").animate({
+        scrollTop:$("h2:contains(" + node +")").offset().top - 25
+      }, 500);
+    }
+  } else {
     $.mobile.changePage("#main", {
-        'allowSamePageTransition' : true,
-        'transition' : 'slide',
-        'reverse' : true
+      'allowSamePageTransition' : true,
+      'transition' : 'slide',
+      'reverse' : true
     });
-}
-
-function launchApp() {
-    $("#test_frame").attr("src", _appURL);
-    $.mobile.changePage("#test_ui", {
-        'allowSamePageTransition' : true,
-        'transition' : 'slide',
-        'changeHash' : false
-    });
+  }
+  $("#test_frame").attr("src", "");
 }
 
 function runApp(url) {
-    if (isLaunching){
-        setTimeout(function(){isLaunching = false;}, 200);
-        return;
-    }
-    isLaunching = true;
-    _appURL = url;
-    _timer = setTimeout(launchApp, 200);
-    $("#test_frame").attr("height", $(window).height());
+  $.mobile.changePage("#test_ui", {
+    'allowSamePageTransition' : true,
+    'transition' : 'slide',
+    'changeHash' : false
+  });
+  $("#test_frame").attr("height", $(window).height());
+  $("#test_frame").attr("src", url);
 }
 
-function closeWindow() {
-    $("#popup_exit").popup("close");
-    window.open('', '_self', '');
-    window.close();
-}
-
-function closePop() {
-    $("#popup_exit").popup("close");
-}
-
-function refresh() {
-    $("#mylist").listview('refresh');
-    updateAppDecorationStyle();
-}
-
-function updateBar() {
-    $(':jqmData(role=header)').removeClass("slidedown");
-    $(':jqmData(role=footer)').removeClass("slideup");
-    $(':jqmData(role=footer)').attr("align", "center");
-    $(':jqmData(role=footer)').find(':jqmData(role=button) > span:first-child').css('padding', '15px 20px 15px 40px');
-}
-
-function loadTests() {
-    $.ajax({
-        async : false,
-        type : "GET",
-        url : "./tests.xml",
-        dataType : "xml",
-        success : function(xml){
-            _resultXML = xml;
-            Tests = $(xml).find("testcase");
-            updateAppDecoration();
-        }
-    });
-}
-
-$("#home_ui").live("pagecreate", function (evt) {
-  updateToolTitle();
-  loadTests();
-
+$("#home_ui").live("pagebeforecreate", function () {
+  $("#version").text(getVersion());
 });
 
-$('#home_ui').live('pageshow',function(event, ui){
-    updateAppDecoration();
-    updateBar();
-    refresh();
-    $('li').live("click", function (event) {
-        runApp($(this).find("a").attr("href"));
-        return false;
-    });
+$("#home_ui").live("pageshow", function () {
+  applist = getApps();
+  updateList();
+  updateFooter();
+});
+
+$("#exit").live("click", function () {
+  window.open('', '_self');
+  window.close();
+});
+
+$("#reset").live("click", function (event) {
+  sstorage.clear();
+  updateList();
+  return false;
+});
+
+$(".app").live("click", function () {
+  runApp($(this).find("div div a").attr("href"));
+  return false;
+});
+
+$('#main').live('pageshow',function(){
+  for(var i=0;i<sstorage.length;i++){
+    var key = sstorage.key(i);
+    var str = "h2:contains("+ key +")";
+    var node = $(str);
+    var item = sstorage.getItem(key);
+    if (item == "PASS") {
+      node.attr('style', 'color:green;');
+    } else if (item == "FAIL"){
+      node.attr('style', 'color:red;');
+    }
+  }
+  updateFooter();
 });
