@@ -135,7 +135,6 @@ webapp/manifest_app_launchPathIndexChinese_tests/Makefile \
 webapp/manifest_app_mainSourceNoMain_tests/Makefile \
 webapp/manifest_app_mainSourceNoSource_tests/Makefile \
 webapp/manifest_app_MainSourceNoFile_tests/Makefile \
-
 webapp/manifest_icon_nofile_tests/Makefile \
 webapp/manifest_icon_valuenull_tests/Makefile \
 webapp/manifest_icon_namedasterisk_tests/Makefile \
@@ -149,8 +148,11 @@ webapp/splashscreen_launchscreen_field_tests/Makefile \
 webapp/manifest_icon_nofiles_tests/Makefile \
 webapp/manifest_icon_twoicon_tests/Makefile \
 webapp/manifest_icon_threeicon_tests/Makefile \
-
 webapp/manifest_app_mainSourceNullValue_tests/Makefile \
 webapp/webgl_webrtc_enable_tests/Makefile \
-webapp/webgl_webrtc_disable_tests/Makefile])
+webapp/webgl_webrtc_disable_tests/Makefile \
+webapp/xwalk_hosts_matchpatterns1_tests/Makefile \
+webapp/xwalk_hosts_matchpatterns2_tests/Makefile \
+webapp/xwalk_hosts_matchpatterns3_tests/Makefile \
+webapp/xwalk_hosts_value_tests/Makefile])
 AC_OUTPUT
