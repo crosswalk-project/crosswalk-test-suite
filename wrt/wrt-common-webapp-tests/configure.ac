@@ -151,8 +151,8 @@ webapp/manifest_icon_threeicon_tests/Makefile \
 webapp/manifest_app_mainSourceNullValue_tests/Makefile \
 webapp/webgl_webrtc_enable_tests/Makefile \
 webapp/webgl_webrtc_disable_tests/Makefile \
-webapp/xwalk_hosts_matchpatterns1_tests/Makefile \
-webapp/xwalk_hosts_matchpatterns2_tests/Makefile \
-webapp/xwalk_hosts_matchpatterns3_tests/Makefile \
+webapp/xwalk_hosts_matchpatternstail_tests/Makefile \
+webapp/xwalk_hosts_matchpatternsmiddle_tests/Makefile \
+webapp/xwalk_hosts_matchpatterns_tests/Makefile \
 webapp/xwalk_hosts_value_tests/Makefile])
 AC_OUTPUT
