@@ -48,7 +48,7 @@ var tcpsocket = new namespace.TCPSocket(remoteAddress, remotePort);
   ["DOMString", "localAddress", "readonly"],
   ["unsigned short", "localPort", "readonly"],
   ["unsigned long", "bufferedAmount", "readonly"],
-  ["enum", "readyState", "readonly"],
+  ["unsigned short", "readyState", "readonly"],
   ["event", "ondrain", ""],
   ["event", "onopen", ""],
   ["event", "onclose", ""],
@@ -74,10 +74,6 @@ var tcpsocket = new namespace.TCPSocket(remoteAddress, remotePort);
 
       case "function":
         assert_equals(typeof tcpsocket[name], "function", name + " attribute of type");
-        break;
-
-      case "enum":
-        assert_equals(typeof tcpsocket[name], "number", name + " attribute of type");
         break;
 
       case "unsigned short":

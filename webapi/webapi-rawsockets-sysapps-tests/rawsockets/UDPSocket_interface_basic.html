@@ -50,7 +50,7 @@ var udpsocket = new namespace.UDPSocket();
   ["boolean", "addressReuse", "readonly"],
   ["boolean", "loopback", "readonly"],
   ["unsigned long", "bufferedAmount", "readonly"],
-  ["enum", "readyState", "readonly"],
+  ["unsigned short", "readyState", "readonly"],
   ["event", "ondrain", ""],
   ["event", "onerror", ""],
   ["event", "onmessage", ""],
@@ -76,10 +76,6 @@ var udpsocket = new namespace.UDPSocket();
         assert_equals(typeof udpsocket[name], "function", name + " attribute of type");
         break;
 
-      case "enum":
-        assert_equals(typeof udpsocket[name], "number", name + " attribute of type");
-        break;
-
       case "unsigned short":
         assert_equals(typeof udpsocket[name], "number", name + " attribute of type");
         var value = udpsocket[name];
@@ -87,8 +83,8 @@ var udpsocket = new namespace.UDPSocket();
         break;
 
       case "unsigned long":
-        assert_equals(typeof tcpsocket[name], "number", name + " attribute of type");
-        var value = tcpsocket[name];
+        assert_equals(typeof udpsocket[name], "number", name + " attribute of type");
+        var value = udpsocket[name];
         assert_true(0 <= value && value <= 4294967295, "unsigned long " + value + " not in range [0, 4294967295]");
         break;
 
