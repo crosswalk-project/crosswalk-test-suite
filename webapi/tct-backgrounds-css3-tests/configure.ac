@@ -7,6 +7,7 @@ backgrounds/support/Makefile \
 backgrounds/webkit/Makefile \
 backgrounds/webkit/resources/Makefile \
 backgrounds/csswg/Makefile \
+backgrounds/csswg/reference/Makefile \
 backgrounds/csswg/support/Makefile \
 resources/Makefile testkit/Makefile])
 AC_OUTPUT
