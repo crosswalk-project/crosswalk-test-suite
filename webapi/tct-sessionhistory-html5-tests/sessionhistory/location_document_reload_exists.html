@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <!--
-Copyright (c) 2013 Intel Corporation.
+Copyright (c) 2014 Intel Corporation.
 
 Redistribution and use in source and binary forms, with or without modification,
 are permitted provided that the following conditions are met:
@@ -31,22 +31,17 @@ Authors:
 
 -->
 
-<html>
-  <head>
-    <title>Session History Test: location_document_reload_exists</title>
-    <link rel="author" title="Intel" href="http://www.intel.com/" />
-    <link rel="help" href="http://www.w3.org/TR/2012/WD-html5-20121025/history.html#the-location-interface" />
-    <meta name="flags" content="" />
-    <meta name="assert" content="Check if location.reload method exists" />
-    <script src="../resources/testharness.js"></script>
-    <script src="../resources/testharnessreport.js"></script>
-  </head>
-  <body>
-    <div id="log"></div>
-    <script>
-        test(function () {
-            assert_true("reload" in document.location, "location.reload method exists");
-        }, document.title);
-    </script>
-  </body>
-</html>
+<meta charset="utf-8">
+<title>Session History Test: location_document_reload_exists</title>
+<link rel="author" title="Intel" href="http://www.intel.com">
+<link rel="help" href="http://www.w3.org/TR/2012/WD-html5-20121025/history.html#the-location-interface">
+<script src="../resources/testharness.js"></script>
+<script src="../resources/testharnessreport.js"></script>
+<div id="log"></div>
+<script>
+
+test(function () {
+  assert_true("reload" in document.location, "location.reload method exists");
+}, "Check if location.reload method exists");
+
+</script>

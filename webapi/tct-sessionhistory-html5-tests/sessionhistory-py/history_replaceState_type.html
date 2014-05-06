@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <!--
-Copyright (c) 2012 Intel Corporation.
+Copyright (c) 2014 Intel Corporation.
 
 Redistribution and use in source and binary forms, with or without modification,
 are permitted provided that the following conditions are met:
@@ -26,29 +26,21 @@ NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE,
 EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
 Authors:
-        Ge, Qing <qingx.ge@intel.com>
+        Cui, Jieqiong <jieqiongx.cui@intel.com>
 
 -->
 
-<html>
-  <head>
-    <title>Session History Test: history_replaceState_type</title>
-    <link rel="author" title="Intel" href="http://www.intel.com/" />
-    <link rel="help" href="http://www.w3.org/TR/2012/WD-html5-20121025/history.html#the-history-interface" />
-    <meta name="assert" content="Check if history.replaceState method is of type function" />
-    <script src="../resources/testharness.js"></script>
-    <script src="../resources/testharnessreport.js"></script>
-  </head>
-  <body>
-    <div id=log></div><br><br>
-    <iframe ID="testIframe" src="./support/001.html" style="display: none"></iframe><br>
-    <script>
-        var t = async_test(document.title);
-        t.step(function(){
-            var popr = document.getElementById("testIframe").contentWindow.history.replaceState.toString();
-            assert_true(popr.indexOf("function")>-1, "compare history.replaceState method is of type function");
-        });
-        t.done();
-    </script>
-  </body>
-</html>
+<meta charset="utf-8">
+<title>Session History Test: history_replaceState_type</title>
+<link rel="author" title="Intel" href="http://www.intel.com">
+<link rel="help" href="http://www.w3.org/TR/2012/WD-html5-20121025/history.html#the-history-interface">
+<script src="../resources/testharness.js"></script>
+<script src="../resources/testharnessreport.js"></script>
+<div id="log"></div>
+<script>
+
+test(function () {
+  assert_equals(typeof window.history.replaceState, "function", "the type of window.history.replaceState");
+}, "Check if the type of window.history.replaceState is function");
+
+</script>
