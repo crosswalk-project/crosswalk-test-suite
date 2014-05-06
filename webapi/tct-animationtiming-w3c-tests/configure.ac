@@ -3,6 +3,5 @@ AM_INIT_AUTOMAKE([-Wall -Werror foreign])
 
 AC_CONFIG_FILES([Makefile \
 animationtiming/Makefile \
-animationtiming/w3c/Makefile \
 resources/Makefile testkit/Makefile])
 AC_OUTPUT
