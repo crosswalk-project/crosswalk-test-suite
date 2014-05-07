@@ -117,7 +117,7 @@ function getTypeConversionExceptions(conversionType, isOptional) {
         case "enum":
             conversionTable = [
                 [undefined, exceptionName],
-                [null, exceptionName],
+             // [null, exceptionName],
                 [0, exceptionName],
                 [true, exceptionName],
                 ["dummyInvalidEnumValue", exceptionName],
