@@ -2,6 +2,8 @@
 <?xml-stylesheet type="text/xsl" href="./testcase.xsl"?>
 <test_definition>
   <suite category="W3C/HTML5 APIs" launcher="xwalk" name="webapi-webrtc-w3c-tests">
+    <set name="idlharness">
+      </set>
     <set name="webRTC_basic">
       <testcase component="WebAPI/Networking/WebRTC" execution_type="auto" id="RTCPeerConnection_localDescription_basic" purpose="Check if readonly RTCPeerConnection.localDescription exists and type of object">
         <description>
@@ -288,7 +290,7 @@
           <test_script_entry>/opt/webapi-webrtc-w3c-tests/webrtc/RTCDataChannel_basic.html?total_num=16&amp;amp;locator_key=id&amp;amp;value=16</test_script_entry>
         </description>
       </testcase>
-      <testcase component="WebAPI/Networking/WebRTC" execution_type="auto" id="RTCDataChannelEvent_channel_basic" purpose="Check if the readonly attribute channel of RTCDataChannelEvent exists and type of RTCDataChannel" onload_delay="20">
+      <testcase component="WebAPI/Networking/WebRTC" execution_type="auto" id="RTCDataChannelEvent_channel_basic" purpose="Check if the readonly attribute channel of RTCDataChannelEvent exists and type of RTCDataChannel">
         <description>
           <test_script_entry>/opt/webapi-webrtc-w3c-tests/webrtc/RTCDataChannelEvent_channel_basic.html</test_script_entry>
         </description>
@@ -490,7 +492,7 @@
           <test_script_entry>/opt/webapi-webrtc-w3c-tests/webrtc/RTCSessionDescription.html?total_num=2&amp;amp;locator_key=id&amp;amp;value=2</test_script_entry>
         </description>
       </testcase>
-      <testcase component="WebAPI/Networking/WebRTC" execution_type="auto" id="RTCPeerConnection_datachannel_event" purpose="Check if the event of datachannel is valid" onload_delay="30">
+      <testcase component="WebAPI/Networking/WebRTC" execution_type="auto" id="RTCPeerConnection_datachannel_event" purpose="Check if the event of datachannel is valid">
         <description>
           <test_script_entry>/opt/webapi-webrtc-w3c-tests/webrtc/RTCPeerConnection_datachannel_event.html</test_script_entry>
         </description>
@@ -505,7 +507,7 @@
           <test_script_entry>/opt/webapi-webrtc-w3c-tests/webrtc/RTCPeerConnection_signalingstatechange_event.html</test_script_entry>
         </description>
       </testcase>
-      <testcase component="WebAPI/Networking/WebRTC" execution_type="auto" id="RTCPeerConnectionIceEvent_candidate" purpose="Check if the setting of RTCPeerConnectionIceEvent.candidate is normally" onload_delay="20">
+      <testcase component="WebAPI/Networking/WebRTC" execution_type="auto" id="RTCPeerConnectionIceEvent_candidate" purpose="Check if the setting of RTCPeerConnectionIceEvent.candidate is normally">
         <description>
           <test_script_entry>/opt/webapi-webrtc-w3c-tests/webrtc/RTCPeerConnectionIceEvent_candidate.html</test_script_entry>
         </description>
@@ -553,6 +555,16 @@
       <testcase component="WebAPI/Networking/WebRTC" execution_type="auto" id="RTCPeerConnection_EventHandler_6" purpose="Check if the RTCPeerConnection.oniceconnectionstatechange is valid">
         <description>
           <test_script_entry>/opt/webapi-webrtc-w3c-tests/webrtc/RTCPeerConnection_EventHandler.html</test_script_entry>
+        </description>
+      </testcase>
+      <testcase component="WebAPI/Networking/WebRTC" execution_type="auto" id="RTCPeerConnection_setIdentityProvider" purpose="Check if the RTCPeerConnection.setIdentityProvider is valid">
+        <description>
+          <test_script_entry>/opt/webapi-webrtc-w3c-tests/webrtc/RTCPeerConnection_setIdentityProvider.html</test_script_entry>
+        </description>
+      </testcase>
+      <testcase component="WebAPI/Networking/WebRTC" execution_type="auto" id="RTCPeerConnection_getIdentityAssertion" purpose="Check if the RTCPeerConnection.getIdentityAssertion is valid">
+        <description>
+          <test_script_entry>/opt/webapi-webrtc-w3c-tests/webrtc/RTCPeerConnection_getIdentityAssertion.html</test_script_entry>
         </description>
       </testcase>
       <testcase component="WebAPI/Networking/WebRTC" execution_type="auto" id="RTCPeerConnection_close" purpose="Check if the RTCPeerConnection.close is valid">
@@ -630,57 +642,57 @@
           <test_script_entry>/opt/webapi-webrtc-w3c-tests/webrtc/blink/RTCPeerConnection-createOffer.html</test_script_entry>
         </description>
       </testcase>
-      <testcase component="WebAPI/Networking/WebRTC" execution_type="auto" id="RTCPeerConnection-datachannel-1" purpose="Check that connecting is the initial state of a RTCDataChannel object created with createDataChannel()" onload_delay="20">
+      <testcase component="WebAPI/Networking/WebRTC" execution_type="auto" id="RTCPeerConnection-datachannel-1" purpose="Check that connecting is the initial state of a RTCDataChannel object created with createDataChannel()">
         <description>
           <test_script_entry>/opt/webapi-webrtc-w3c-tests/webrtc/blink/RTCPeerConnection-datachannel.html?total_num=9&amp;amp;locator_key=id&amp;amp;value=1</test_script_entry>
         </description>
       </testcase>
-      <testcase component="WebAPI/Networking/WebRTC" execution_type="auto" id="RTCPeerConnection-datachannel-2" purpose="Check that RTCPeerConnection.createDataChannel('label1') creates an ordered datachannel" onload_delay="20">
+      <testcase component="WebAPI/Networking/WebRTC" execution_type="auto" id="RTCPeerConnection-datachannel-2" purpose="Check that RTCPeerConnection.createDataChannel('label1') creates an ordered datachannel">
         <description>
           <test_script_entry>/opt/webapi-webrtc-w3c-tests/webrtc/blink/RTCPeerConnection-datachannel.html?total_num=9&amp;amp;locator_key=id&amp;amp;value=2</test_script_entry>
         </description>
       </testcase>
-      <testcase component="WebAPI/Networking/WebRTC" execution_type="auto" id="RTCPeerConnection-datachannel-3" purpose="Check that RTCPeerConnection.createDataChannel('label2', {}) creates an ordered datachannel" onload_delay="20">
+      <testcase component="WebAPI/Networking/WebRTC" execution_type="auto" id="RTCPeerConnection-datachannel-3" purpose="Check that RTCPeerConnection.createDataChannel('label2', {}) creates an ordered datachannel">
         <description>
           <test_script_entry>/opt/webapi-webrtc-w3c-tests/webrtc/blink/RTCPeerConnection-datachannel.html?total_num=9&amp;amp;locator_key=id&amp;amp;value=3</test_script_entry>
         </description>
       </testcase>
-      <testcase component="WebAPI/Networking/WebRTC" execution_type="auto" id="RTCPeerConnection-datachannel-4" purpose="Check that RTCPeerConnection.createDataChannel('label3', {ordered:true}) creates an ordered datachannel" onload_delay="20">
+      <testcase component="WebAPI/Networking/WebRTC" execution_type="auto" id="RTCPeerConnection-datachannel-4" purpose="Check that RTCPeerConnection.createDataChannel('label3', {ordered:true}) creates an ordered datachannel">
         <description>
           <test_script_entry>/opt/webapi-webrtc-w3c-tests/webrtc/blink/RTCPeerConnection-datachannel.html?total_num=9&amp;amp;locator_key=id&amp;amp;value=4</test_script_entry>
         </description>
       </testcase>
-      <testcase component="WebAPI/Networking/WebRTC" execution_type="auto" id="RTCPeerConnection-datachannel-5" purpose="Check that RTCPeerConnection.createDataChannel('label3', {ordered:false}) creates a non-ordered datachannel" onload_delay="20">
+      <testcase component="WebAPI/Networking/WebRTC" execution_type="auto" id="RTCPeerConnection-datachannel-5" purpose="Check that RTCPeerConnection.createDataChannel('label3', {ordered:false}) creates a non-ordered datachannel">
         <description>
           <test_script_entry>/opt/webapi-webrtc-w3c-tests/webrtc/blink/RTCPeerConnection-datachannel.html?total_num=9&amp;amp;locator_key=id&amp;amp;value=5</test_script_entry>
         </description>
       </testcase>
-      <testcase component="WebAPI/Networking/WebRTC" execution_type="auto" id="RTCPeerConnection-datachannel-6" purpose="Check that RTCPeerConnection.createDataChannel('label3', {maxRetransmits:0}) creates a non-ordered datachannel" onload_delay="20">
+      <testcase component="WebAPI/Networking/WebRTC" execution_type="auto" id="RTCPeerConnection-datachannel-6" purpose="Check that RTCPeerConnection.createDataChannel('label3', {maxRetransmits:0}) creates a non-ordered datachannel">
         <description>
           <test_script_entry>/opt/webapi-webrtc-w3c-tests/webrtc/blink/RTCPeerConnection-datachannel.html?total_num=9&amp;amp;locator_key=id&amp;amp;value=6</test_script_entry>
         </description>
       </testcase>
-      <testcase component="WebAPI/Networking/WebRTC" execution_type="auto" id="RTCPeerConnection-datachannel-7" purpose="Check that RTCPeerConnection.createDataChannel('label3', {maxRetransmitTime:0}) creates a non-ordered datachannel" onload_delay="20">
+      <testcase component="WebAPI/Networking/WebRTC" execution_type="auto" id="RTCPeerConnection-datachannel-7" purpose="Check that RTCPeerConnection.createDataChannel('label3', {maxRetransmitTime:0}) creates a non-ordered datachannel">
         <description>
           <test_script_entry>/opt/webapi-webrtc-w3c-tests/webrtc/blink/RTCPeerConnection-datachannel.html?total_num=9&amp;amp;locator_key=id&amp;amp;value=7</test_script_entry>
         </description>
       </testcase>
-      <testcase component="WebAPI/Networking/WebRTC" execution_type="auto" id="RTCPeerConnection-datachannel-8" purpose="Check that a datachannel event is fired when a data channel is created and connected" onload_delay="20">
+      <testcase component="WebAPI/Networking/WebRTC" execution_type="auto" id="RTCPeerConnection-datachannel-8" purpose="Check that a datachannel event is fired when a data channel is created and connected">
         <description>
           <test_script_entry>/opt/webapi-webrtc-w3c-tests/webrtc/blink/RTCPeerConnection-datachannel.html?total_num=9&amp;amp;locator_key=id&amp;amp;value=8</test_script_entry>
         </description>
       </testcase>
-      <testcase component="WebAPI/Networking/WebRTC" execution_type="auto" id="RTCPeerConnection-datachannel-9" purpose="Check that a data channel is able to send and receive messages of type string and array buffer" onload_delay="20">
+      <testcase component="WebAPI/Networking/WebRTC" execution_type="auto" id="RTCPeerConnection-datachannel-9" purpose="Check that a data channel is able to send and receive messages of type string and array buffer">
         <description>
           <test_script_entry>/opt/webapi-webrtc-w3c-tests/webrtc/blink/RTCPeerConnection-datachannel.html?total_num=9&amp;amp;locator_key=id&amp;amp;value=9</test_script_entry>
         </description>
       </testcase>
-      <testcase component="WebAPI/Networking/WebRTC" execution_type="auto" id="RTCPeerConnection-dtmf" purpose="Check if the method RTCDTMFSender of RTCPeerConnection" onload_delay="20">
+      <testcase component="WebAPI/Networking/WebRTC" execution_type="auto" id="RTCPeerConnection-dtmf" purpose="Check if the method RTCDTMFSender of RTCPeerConnection">
         <description>
           <test_script_entry>/opt/webapi-webrtc-w3c-tests/webrtc/blink/RTCPeerConnection-dtmf.html</test_script_entry>
         </description>
       </testcase>
-      <testcase component="WebAPI/Networking/WebRTC" execution_type="auto" id="RTCPeerConnection-ice" purpose="Check if the method addIceCandidate of RTCPeerConnection" onload_delay="20">
+      <testcase component="WebAPI/Networking/WebRTC" execution_type="auto" id="RTCPeerConnection-ice" purpose="Check if the method addIceCandidate of RTCPeerConnection">
         <description>
           <test_script_entry>/opt/webapi-webrtc-w3c-tests/webrtc/blink/RTCPeerConnection-ice.html</test_script_entry>
         </description>
@@ -696,10 +708,10 @@
         </description>
       </testcase>
       <testcase component="WebAPI/Networking/WebRTC" execution_type="auto" id="RTCPeerConnection-onnegotiationneeded" purpose="Check if the attribute onnegotiationneeded of RTCPeerConnection">
--        <description>
--          <test_script_entry>/opt/webapi-webrtc-w3c-tests/webrtc/blink/RTCPeerConnection-onnegotiationneeded.html</test_script_entry>
--        </description>
--      </testcase>
+        <description>
+          <test_script_entry>/opt/webapi-webrtc-w3c-tests/webrtc/blink/RTCPeerConnection-onnegotiationneeded.html</test_script_entry>
+        </description>
+      </testcase>
       <testcase component="WebAPI/Networking/WebRTC" execution_type="auto" id="RTCPeerConnection-state" purpose="Check if the attribute signalingState of RTCPeerConnection">
         <description>
           <test_script_entry>/opt/webapi-webrtc-w3c-tests/webrtc/blink/RTCPeerConnection-state.html</test_script_entry>
