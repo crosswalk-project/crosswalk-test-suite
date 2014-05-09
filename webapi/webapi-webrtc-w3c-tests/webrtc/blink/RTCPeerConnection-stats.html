@@ -17,6 +17,7 @@ var pc = null;
 var result;
 var timestamp;
 var local;
+var selector;
 
 var t = async_test(document.title, {timeout: 2000});
 
@@ -38,22 +39,20 @@ function error() {
   t.done();
 }
 
-function statsHandler1(status) {
-  t.step(function () {
-    assert_not_equals(status, null);
-
-    result = status.result();
-    assert_equals(result.length, 1);
-    getUserMedia({audio:true, video:true}, gotStream);
-  });
-}
-
 function gotStream(s) {
   stream = s;
   pc.addStream(stream);
+  selector = stream.getAudioTracks()[0];
   t.step(function () {
-    pc.getStats(statsHandler2);
+    pc.getStats(selector, statsHandler2, failCallback);
   });
+}
+
+function failCallback() {
+  t.step(function () {
+    assert_unreached("getStats request failed");
+  });
+  t.done();
 }
 
 function statsHandler2(status) {
@@ -96,7 +95,7 @@ var startTime = new Date().getTime();
 
 t.step(function () {
   pc = new webkitRTCPeerConnection(null);
-  pc.getStats(statsHandler1);
+  getUserMedia({audio:true, video:true}, gotStream);
 });
 
 </script>
