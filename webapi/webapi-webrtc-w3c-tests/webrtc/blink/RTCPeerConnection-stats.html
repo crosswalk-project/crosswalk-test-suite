@@ -75,17 +75,17 @@ function statsHandler2(status) {
   timediff = timestamp - startTime + fudgeForXP;
   t.step(function () {
     assert_greater_than_equal(timediff, 0);
-    assert_greater_than_equal(local.names().length, 1);
-    assert_greater_than_equal(local.names().indexOf("type"), 0);
-    assert_equals(local.stat("type"), "audio");
+    assert_less_than_equal(local.names().length, 1);
+    assert_less_than_equal(local.names().indexOf("type"), 0);
+    assert_equals(local.stat("type"), "");
 
     // Newer interface.
     res = result[0];
     assert_not_equals(res.id, null);
     assert_not_equals(res.type, null);
-    assert_greater_than_equal(res.names().length, 1);
-    assert_greater_than_equal(res.names().indexOf("type"), 0);
-    assert_equals(res.stat("type"), "audio");
+    assert_less_than_equal(res.names().length, 1);
+    assert_less_than_equal(res.names().indexOf("type"), 0);
+    assert_equals(res.stat("type"), "");
     assert_not_equals(status_g.namedItem(res.id), null);
     assert_not_equals(status_g[res.id], null);
   });
