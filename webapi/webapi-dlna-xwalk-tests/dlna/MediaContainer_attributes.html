@@ -36,6 +36,7 @@ Authors:
 <link rel="help" href="http://01org.github.io/cloud-dleyna/mediaserver.html#mediacontainer-interface">
 <script src="../resources/testharness.js"></script>
 <script src="../resources/testharnessreport.js"></script>
+<div id="l"></div>
 <div id="log"></div>
 <script>
   var msga, mc;
@@ -48,6 +49,7 @@ Authors:
 
   msga.onserverfound = t.step_func(function (event) {
     mc = event.server.root;
+    document.getElementById('l').innerHTML = "mc: " + mc;
     [
       ["number", "childCount", "readonly"],
       ["boolean", "canCreateContainer", "readonly"],

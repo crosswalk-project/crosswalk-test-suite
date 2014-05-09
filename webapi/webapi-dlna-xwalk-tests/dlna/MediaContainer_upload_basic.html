@@ -31,39 +31,38 @@ Authors:
 -->
 
 <meta charset="utf-8">
-<title>DLNA Test: MediaContainer - attributes value</title>
+<title>DLNA Test: MediaContainer - upload basic</title>
 <link rel="author" title="Intel" href="http://www.intel.com">
-<link rel="help" href="http://01org.github.io/cloud-dleyna/mediaserver.html#mediacontainer-interface">
+<link rel="help" href="http://01org.github.io/cloud-dleyna/mediaserver.html#widl-MediaContainer-upload-Promise-DOMString-title-DOMString-path">
 <script src="../resources/testharness.js"></script>
 <script src="../resources/testharnessreport.js"></script>
 <div id="log"></div>
+<div id='serverContainer'></div>
 <script>
-  var msga, mc;
-  setup(function () {
-    msga = navigator.mediaServer;
-    msga.scanNetwork();
-  });
+  var t = async_test("Check if the MediaContainer.upload method can work well");
+  var msga = navigator.mediaServer;
+  msga.scanNetwork();
 
-  var t = async_test("the onserverfound event can be invoked");
+  function onUploadedComplete(result) {
+    t.done();
+  }
+
+  function onUploadFailure(err) {
+    t.done();
+  }
 
   msga.onserverfound = t.step_func(function (event) {
-    mc = event.server.root;  
-
-    [
-      ["childCount", 5],
-      ["canCreateContainer", true],
-      ["canDelete", true],
-      ["canRename", true],
-      ["canUpload", true]
-    ].forEach(function (attr) {
-      var name = attr[0];
-      var value = mc[name];
-      var expected = attr[1];
-
-    test(function () {
-      assert_equals(value, expected, "the MediaContainer." + name + " value");
-      }, "Check if the MediaContainer." + name + " value is " + expected);
-    });
-    t.done();
-  });
+    var mc = event.server.root;
+    var container = document.getElementById('serverContainer');
+    var uploadInputField = document.createElement('input');
+    var p = document.createElement('p')
+    uploadInputField.id = 'uploadInputField';
+    uploadInputField.serverId = event.server.id;
+    container.appendChild(p);
+    p.appendChild(uploadInputField);
+    uploadInputField.value = "/";
+    var path = uploadInputField.value;
+    var title = uploadInputField.id;
+    mc.upload(title, path).then(onUploadedComplete, onUploadFailure);
+  };
 </script>

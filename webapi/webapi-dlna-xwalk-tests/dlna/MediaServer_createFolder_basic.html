@@ -31,39 +31,37 @@ Authors:
 -->
 
 <meta charset="utf-8">
-<title>DLNA Test: MediaContainer - attributes value</title>
+<title>DLNA Test: MediaServer - createFolder basic</title>
 <link rel="author" title="Intel" href="http://www.intel.com">
-<link rel="help" href="http://01org.github.io/cloud-dleyna/mediaserver.html#mediacontainer-interface">
+<link rel="help" href="http://01org.github.io/cloud-dleyna/mediaserver.html#widl-MediaServer-createFolder-Promise-DOMString-title">
 <script src="../resources/testharness.js"></script>
 <script src="../resources/testharnessreport.js"></script>
 <div id="log"></div>
+<div id='serverContainer'></div>
 <script>
-  var msga, mc;
-  setup(function () {
-    msga = navigator.mediaServer;
-    msga.scanNetwork();
-  });
+  var t = async_test("Check if the MediaServer.createFolder method can work well");
+  var msga = navigator.mediaServer;
+  msga.scanNetwork();
 
-  var t = async_test("the onserverfound event can be invoked");
+  function onContainerCreated(result) {
+    t.done();
+  }
+
+  function onCreateFailed(err) {
+    t.done();
+  }
 
   msga.onserverfound = t.step_func(function (event) {
-    mc = event.server.root;  
-
-    [
-      ["childCount", 5],
-      ["canCreateContainer", true],
-      ["canDelete", true],
-      ["canRename", true],
-      ["canUpload", true]
-    ].forEach(function (attr) {
-      var name = attr[0];
-      var value = mc[name];
-      var expected = attr[1];
-
-    test(function () {
-      assert_equals(value, expected, "the MediaContainer." + name + " value");
-      }, "Check if the MediaContainer." + name + " value is " + expected);
-    });
-    t.done();
+    var container = document.getElementById('serverContainer');
+    var createContainerField = document.createElement('input');
+    var p = document.createElement('p')
+    createContainerField.id = 'createContainerField';
+    createContainerField.serverId = event.server.id;
+    container.serverId = createContainerField.serverId;
+    container.appendChild(p);
+    p.appendChild(createContainerField);
+    createContainerField.value = "create";
+    var title = createContainerField.value;
+    event.server.createFolder(title).then(onContainerCreated, onCreateFailed);
   });
 </script>

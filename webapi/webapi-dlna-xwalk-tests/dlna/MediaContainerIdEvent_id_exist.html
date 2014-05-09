@@ -31,39 +31,48 @@ Authors:
 -->
 
 <meta charset="utf-8">
-<title>DLNA Test: MediaContainer - attributes value</title>
+<title>DLNA Test: MediaContainerIdEvent - id exist</title>
 <link rel="author" title="Intel" href="http://www.intel.com">
-<link rel="help" href="http://01org.github.io/cloud-dleyna/mediaserver.html#mediacontainer-interface">
+<link rel="help" href="http://01org.github.io/cloud-dleyna/mediaserver.html#mediacontaineridevent-interface">
 <script src="../resources/testharness.js"></script>
 <script src="../resources/testharnessreport.js"></script>
 <div id="log"></div>
+<div id='serverContainer'></div>
 <script>
-  var msga, mc;
-  setup(function () {
-    msga = navigator.mediaServer;
-    msga.scanNetwork();
-  });
+  var t = async_test("Check if the id attribute exists in MediaContainerIdEvent");
+  var t1 = async_test("the onserverfound event can be invoked");
+  var msga = navigator.mediaServer;
+  msga.scanNetwork();
 
-  var t = async_test("the onserverfound event can be invoked");
+  function onFolderCreated(result) { }
 
-  msga.onserverfound = t.step_func(function (event) {
-    mc = event.server.root;  
-
-    [
-      ["childCount", 5],
-      ["canCreateContainer", true],
-      ["canDelete", true],
-      ["canRename", true],
-      ["canUpload", true]
-    ].forEach(function (attr) {
-      var name = attr[0];
-      var value = mc[name];
-      var expected = attr[1];
-
-    test(function () {
-      assert_equals(value, expected, "the MediaContainer." + name + " value");
-      }, "Check if the MediaContainer." + name + " value is " + expected);
+  function onCreateFailed(error) {
+    t.step(function () {
+      assert_unreached("Error message: { " + error.message + " }");
     });
     t.done();
+  }
+
+  msga.onserverfound = t1.step_func( function (event) {
+    var mse = event.server;
+    var mc = mse.root;
+    var container = document.getElementById('serverContainer');
+    var createContainerField = document.createElement('input');
+    var p = document.createElement('p')
+    createContainerField.id = 'createContainerField';
+    createContainerField.serverId = event.server.id;
+    container.serverId = createContainerField.serverId;
+    container.appendChild(p);
+    p.appendChild(createContainerField);
+    createContainerField.value = "createContainer";
+    var title = createContainerField.value;
+    mc.createFolder(title).then(onFolderCreated, onCreateFailed);
+    mse.oncontainerchanged = t.step_func( function (eve) {
+      assert_true("id" in eve, "the MediaContainerIdEvent.id exists");
+      assert_equals(typeof eve, "string", "the id type");
+      assert_readonly(eve, "id", "You cannot change id attribute");
+      t.done();
+    });
+    t1.done();
   });
 </script>

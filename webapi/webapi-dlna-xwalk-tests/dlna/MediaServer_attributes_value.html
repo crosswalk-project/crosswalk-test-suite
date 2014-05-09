@@ -57,7 +57,9 @@ Authors:
       ["modelNumber", "0.21.1.1-a97e"],
       ["serialNumber", "0000001"],
       ["iconURL", "MediaExport-48x48x24.jpg"],
-      ["deviceType", "urn:schemas-upnp-org:device:MediaServer:3"]
+      ["deviceType", "urn:schemas-upnp-org:device:MediaServer:3"],
+      ["canCreateContainer", true],
+      ["canUpload", true]
     ].forEach(function (attr) {
       var name = attr[0];
       var value = mse[name];
@@ -65,8 +67,8 @@ Authors:
 
       test(function () {
         if (name == "iconURL") value = value.substr(value.lastIndexOf("/")+1);
-        assert_equals(value, expected, "the MediaServer." + name + "value");
-      }, "Check if the MediaServer." + name + "value is " + expected);
+        assert_equals(value, expected, "the MediaServer." + name + " value");
+      }, "Check if the MediaServer." + name + " value is " + expected);
     });
     t.done();
   });
