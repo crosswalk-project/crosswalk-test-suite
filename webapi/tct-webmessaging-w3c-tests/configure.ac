@@ -9,5 +9,5 @@ webmessaging/w3c/message-channels/Makefile \
 webmessaging/w3c/support/Makefile \
 webmessaging/w3c/without-ports/Makefile \
 webmessaging/w3c/with-ports/Makefile \
-resources/Makefile testkit/Makefile])
+resources/Makefile webrunner/Makefile])
 AC_OUTPUT

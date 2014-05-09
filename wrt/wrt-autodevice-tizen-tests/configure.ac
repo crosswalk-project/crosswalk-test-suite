@@ -37,7 +37,7 @@ AM_INIT_AUTOMAKE([-Wall -Werror foreign])
 
 AC_CONFIG_FILES([\
 Makefile \
-testkit/Makefile \
+webrunner/Makefile \
 resources/Makefile \
 autodevice/Makefile \
 autodevice/log/Makefile \

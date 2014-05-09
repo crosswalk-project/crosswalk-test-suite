@@ -5,6 +5,6 @@ AC_CONFIG_FILES([Makefile \
 package/Makefile \
 package/support/Makefile \
 resources/Makefile \
-testkit/Makefile \
+webrunner/Makefile \
 ])
 AC_OUTPUT

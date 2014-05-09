@@ -7,5 +7,5 @@ presentation/Presentation_secondary_page_image/Makefile \
 presentation/Presentation_secondary_page_message/Makefile \
 presentation/Presentation_secondary_page_video/Makefile \
 presentation/Presentation_test/Makefile \
-resources/Makefile testkit/Makefile])
+resources/Makefile webrunner/Makefile])
 AC_OUTPUT

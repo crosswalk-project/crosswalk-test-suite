@@ -6,5 +6,5 @@ navigationtiming/Makefile \
 navigationtiming/support/Makefile \
 navigationtiming/w3c/Makefile \
 navigationtiming/w3c/support/Makefile \
-resources/Makefile testkit/Makefile])
+resources/Makefile webrunner/Makefile])
 AC_OUTPUT

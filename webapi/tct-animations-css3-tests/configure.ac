@@ -5,5 +5,5 @@ AC_CONFIG_FILES([Makefile \
 animations/Makefile \
 animations/csswg/Makefile \
 animations/support/Makefile \
-resources/Makefile testkit/Makefile])
+resources/Makefile webrunner/Makefile])
 AC_OUTPUT

@@ -7,5 +7,5 @@ fonts/support/Makefile \
 fonts/csswg/Makefile \
 fonts/csswg/reference/Makefile \
 fonts/csswg/support/Makefile \
-resources/Makefile testkit/Makefile])
+resources/Makefile webrunner/Makefile])
 AC_OUTPUT

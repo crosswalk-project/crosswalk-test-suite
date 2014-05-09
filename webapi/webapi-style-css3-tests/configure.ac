@@ -6,5 +6,5 @@ style/Makefile \
 style/csswg/Makefile \
 style/csswg/support/Makefile \
 style/csswg/reference/Makefile \
-resources/Makefile testkit/Makefile])
+resources/Makefile webrunner/Makefile])
 AC_OUTPUT

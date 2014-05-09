@@ -6,5 +6,5 @@ AC_CONFIG_FILES([Makefile \
 3dtransforms/support/Makefile \
 3dtransforms/csswg/submission/Makefile \
 3dtransforms/Makefile \
-resources/Makefile testkit/Makefile])
+resources/Makefile webrunner/Makefile])
 AC_OUTPUT

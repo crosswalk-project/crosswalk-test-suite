@@ -83,7 +83,7 @@ cp -a $BUILD_ROOT/icon.png     $BUILD_DEST/
 cat > index.html << EOF
 <!doctype html>
 <head>
-    <meta http-equiv="Refresh" content="1; url=opt/$name/testkit/web/index.html?testsuite=/opt/usr/media/tct/opt/$name/tests.xml">
+    <meta http-equiv="Refresh" content="1; url=opt/$name/webrunner/index.html?testsuite=/opt/usr/media/tct/opt/$name/tests.xml">
 </head>
 EOF
 cp -f $BUILD_ROOT/config.xml.wgt $BUILD_DEST/config.xml
@@ -117,7 +117,7 @@ cd $BUILD_DEST
 cat > index.html << EOF
 <!doctype html>
 <head>
-    <meta http-equiv="Refresh" content="1; url=opt/$name/testkit/web/index.html?testsuite=../../tests.xml&testprefix=../../../..">
+    <meta http-equiv="Refresh" content="1; url=opt/$name/webrunner/index.html?testsuite=../../tests.xml&testprefix=../../../..">
 </head>
 EOF
 cp -a $BUILD_ROOT/icon.png     $BUILD_DEST/
@@ -137,7 +137,7 @@ cd $BUILD_DEST
 cat > index.html << EOF
 <!doctype html>
 <head>
-    <meta http-equiv="Refresh" content="1; url=opt/$name/testkit/web/index.html?testsuite=../../tests.xml&testprefix=../../../..">
+    <meta http-equiv="Refresh" content="1; url=opt/$name/webrunner/index.html?testsuite=../../tests.xml&testprefix=../../../..">
 </head>
 EOF
 cp -a $BUILD_ROOT/icon.png     $BUILD_DEST/
@@ -171,7 +171,7 @@ cd $BUILD_DEST/$name/
 cat > index.html << EOF
 <!doctype html>
 <head>
-    <meta http-equiv="Refresh" content="1; url=http://127.0.0.1/opt/$name/testkit/web/index.html?testsuite=../../tests.xml&testprefix=../../../..">
+    <meta http-equiv="Refresh" content="1; url=http://127.0.0.1/opt/$name/webrunner/index.html?testsuite=../../tests.xml&testprefix=../../../..">
 </head>
 EOF
 

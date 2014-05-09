@@ -7,5 +7,5 @@ resourcetiming/w3c/Makefile \
 resourcetiming/w3c/submission/Makefile \
 resourcetiming/w3c/submission/resources/Makefile \
 resourcetiming/w3c/submission/resources/cgi/Makefile \
-resources/Makefile testkit/Makefile])
+resources/Makefile webrunner/Makefile])
 AC_OUTPUT

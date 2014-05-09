@@ -12,5 +12,5 @@ AM_INIT_AUTOMAKE([-Wall -Werror foreign])
 AC_CONFIG_FILES([Makefile \
 appcontrol/Makefile \
 appcontrol/support/Makefile \
-resources/Makefile testkit/Makefile])
+resources/Makefile webrunner/Makefile])
 AC_OUTPUT

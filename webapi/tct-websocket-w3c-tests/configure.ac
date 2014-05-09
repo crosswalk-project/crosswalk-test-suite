@@ -21,5 +21,5 @@ websocket/w3c/interfaces/WebSocket/readyState/Makefile \
 websocket/w3c/interfaces/WebSocket/send/Makefile \
 websocket/w3c/interfaces/WebSocket/url/Makefile \
 websocket/w3c/unload-a-document/Makefile \
-resources/Makefile testkit/Makefile])
+resources/Makefile webrunner/Makefile])
 AC_OUTPUT

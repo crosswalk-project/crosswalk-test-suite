@@ -6,5 +6,5 @@ webstorage/Makefile \
 webstorage/w3c/Makefile \
 webstorage/w3c/iframe/Makefile \
 resources/Makefile \
-testkit/Makefile])
+webrunner/Makefile])
 AC_OUTPUT

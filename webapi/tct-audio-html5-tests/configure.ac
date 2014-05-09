@@ -6,5 +6,5 @@ audio/Makefile \
 audio/media/Makefile \
 audio/support/Makefile \
 audio/w3c/Makefile \
-common/Makefile resources/Makefile testkit/Makefile])
+common/Makefile resources/Makefile webrunner/Makefile])
 AC_OUTPUT

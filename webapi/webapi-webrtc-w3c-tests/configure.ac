@@ -5,5 +5,5 @@ AC_CONFIG_FILES([Makefile \
 webrtc/Makefile \
 webrtc/blink/Makefile \
 webrtc/support/Makefile \
-resources/Makefile testkit/Makefile])
+resources/Makefile webrunner/Makefile])
 AC_OUTPUT

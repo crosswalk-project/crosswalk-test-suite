@@ -5,5 +5,5 @@ AC_CONFIG_FILES([Makefile \
 colors/Makefile \
 colors/csswg/Makefile \
 colors/support/Makefile \
-resources/Makefile testkit/Makefile])
+resources/Makefile webrunner/Makefile])
 AC_OUTPUT
