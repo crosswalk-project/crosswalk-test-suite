@@ -6,5 +6,5 @@ flexiblebox/Makefile \
 flexiblebox/support/Makefile \
 flexiblebox/csswg/Makefile \
 flexiblebox/csswg/reference/Makefile \
-resources/Makefile testkit/Makefile])
+resources/Makefile webrunner/Makefile])
 AC_OUTPUT

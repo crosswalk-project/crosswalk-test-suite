@@ -5,5 +5,5 @@ AC_CONFIG_FILES([Makefile \
 cors/Makefile \
 cors/support/Makefile \
 cors/support/cgi/Makefile \
-resources/Makefile testkit/Makefile])
+resources/Makefile webrunner/Makefile])
 AC_OUTPUT

@@ -6,5 +6,5 @@ selectorslevel2/Makefile \
 selectorslevel2/w3c/Makefile \
 selectorslevel2/w3c/submissions/Makefile \
 selectorslevel2/w3c/submissions/Opera/Makefile \
-resources/Makefile testkit/Makefile])
+resources/Makefile webrunner/Makefile])
 AC_OUTPUT

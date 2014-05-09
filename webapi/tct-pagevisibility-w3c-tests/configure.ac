@@ -5,5 +5,5 @@ AC_CONFIG_FILES([Makefile \
 pagevisibility/Makefile \
 pagevisibility/w3c/Makefile \
 pagevisibility/w3c/resources/Makefile \
-resources/Makefile testkit/Makefile])
+resources/Makefile webrunner/Makefile])
 AC_OUTPUT

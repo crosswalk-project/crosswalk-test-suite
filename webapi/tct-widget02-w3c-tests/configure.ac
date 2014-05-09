@@ -5,5 +5,5 @@ AC_CONFIG_FILES([Makefile \
 widgetpackaging/Makefile \
 widgetpackaging/w3c/Makefile \
 scripts/Makefile \
-resources/Makefile testkit/Makefile])
+resources/Makefile webrunner/Makefile])
 AC_OUTPUT

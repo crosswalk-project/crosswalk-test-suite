@@ -90,7 +90,7 @@ function create_xpk(){
     mkdir -p $BUILD_DEST/opt/$name/abat
     cp -r $BUILD_ROOT/abat/common/* $BUILD_DEST/opt/$name/abat
     cp -r $BUILD_ROOT/abat/tizen/* $BUILD_DEST/opt/$name/abat
-    cp -r $BUILD_ROOT/testkit $BUILD_DEST/opt/$name
+    cp -r $BUILD_ROOT/webrunner $BUILD_DEST/opt/$name
     cp -r $BUILD_ROOT/resources $BUILD_DEST/opt/$name/abat
 
     mkdir -p $BUILD_DEST/$name
@@ -101,7 +101,7 @@ function create_xpk(){
     cat > index.html << EOF
 <!doctype html>
 <head>
-    <meta http-equiv="Refresh" content="1; url=http://127.0.0.1/opt/$name/testkit/web/index.html?testsuite=../../tests.xml&testprefix=../../../..">
+    <meta http-equiv="Refresh" content="1; url=http://127.0.0.1/opt/$name/webrunner/index.html?testsuite=../../tests.xml&testprefix=../../../..">
 </head>
 EOF
 
@@ -157,11 +157,11 @@ function zip_for_apk(){
     cp -f $BUILD_DEST/$name-$version.apk.zip $SRC_ROOT/
 
     mkdir -p $docroot_dir/docroot
-    cp $BUILD_DEST/testkit/web/* $docroot_dir/docroot
+    cp $BUILD_DEST/webrunner/* $docroot_dir/docroot
     mkdir -p $docroot_dir/docroot/opt/$name/abat
     cp -r $BUILD_DEST/abat/common/* $docroot_dir/docroot/opt/$name/abat
     cp -r $BUILD_DEST/resources $docroot_dir/docroot/opt/$name/abat
-    cp -r $BUILD_DEST/testkit $docroot_dir/docroot/opt/$name
+    cp -r $BUILD_DEST/webrunner $docroot_dir/docroot/opt/$name
     cp $BUILD_DEST/tests.xml.apk $docroot_dir/docroot/opt/$name/tests.xml
     cd $docroot_dir
     zip -r docroot.zip docroot

@@ -15,5 +15,5 @@ xmlhttprequest/w3c/resources/auth6/Makefile \
 xmlhttprequest/w3c/resources/cgi/Makefile \
 xmlhttprequest/w3c/resources/cgi/auth5/Makefile \
 xmlhttprequest/w3c/resources/cgi/auth6/Makefile \
-resources/Makefile testkit/Makefile])
+resources/Makefile webrunner/Makefile])
 AC_OUTPUT

@@ -4,5 +4,5 @@ AM_INIT_AUTOMAKE([-Wall -Werror foreign])
 AC_CONFIG_FILES([Makefile \
 selectorslevel1/Makefile \
 selectorslevel1/w3c/Makefile \
-resources/Makefile testkit/Makefile])
+resources/Makefile webrunner/Makefile])
 AC_OUTPUT

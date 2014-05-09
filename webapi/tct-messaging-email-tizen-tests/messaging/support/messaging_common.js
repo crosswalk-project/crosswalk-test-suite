@@ -244,5 +244,5 @@ function assert_inbox_message_equals(t, messages, message, folder) {
 }
 
 // change TEST_EMAIL_RECIPIENT_1 and TEST_EMAIL_RECIPIENT_2
-document.write('<script src="../testkit/web/jquery-1.10.2.min.js"></script>');
+document.write('<script src="../webrunner/jquery-1.10.2.min.js"></script>');
 document.write('<script src="support/getJsonConf.js"></script>');

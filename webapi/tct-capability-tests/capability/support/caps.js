@@ -31,7 +31,7 @@ Authors:
 
 (function () {
     document.write('<link rel="stylesheet" href="../resources/testharness.css"></link>\n');
-    document.write('<script src="../testkit/web/jquery-1.10.2.min.js"></script>\n');
+    document.write('<script src="../webrunner/jquery-1.10.2.min.js"></script>\n');
     document.write('<script src="../resources/testharness.js"></script>\n');
     document.write('<script src="../resources/testharnessreport.js"></script>\n');
 })();

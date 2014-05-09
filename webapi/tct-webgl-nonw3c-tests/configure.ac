@@ -7,5 +7,5 @@ webgl/khronos/resources/Makefile \
 webgl/Makefile \
 webgl/support/Makefile \
 webgl/w3c/Makefile \
-resources/Makefile testkit/Makefile])
+resources/Makefile webrunner/Makefile])
 AC_OUTPUT

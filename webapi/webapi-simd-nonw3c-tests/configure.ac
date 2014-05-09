@@ -9,5 +9,5 @@ simd/ecmascript_simd/Makefile \
 simd/ecmascript_simd/src/external/Makefile \
 simd/ecmascript_simd/src/Makefile \
 simd/Makefile \
-resources/Makefile testkit/Makefile])
+resources/Makefile webrunner/Makefile])
 AC_OUTPUT

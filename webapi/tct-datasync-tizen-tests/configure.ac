@@ -5,6 +5,6 @@ AC_CONFIG_FILES([Makefile \
   datasync/Makefile \
   datasync/support/Makefile \
   resources/Makefile \
-  testkit/Makefile \
+  webrunner/Makefile \
 ])
 AC_OUTPUT

@@ -12,5 +12,5 @@ gumallow/w3c/stream-api/Makefile \
 gumallow/w3c/stream-api/introduction/Makefile \
 gumallow/w3c/stream-api/mediastream/Makefile \
 gumallow/w3c/stream-api/mediastreamtrack/Makefile \
-resources/Makefile testkit/Makefile])
+resources/Makefile webrunner/Makefile])
 AC_OUTPUT

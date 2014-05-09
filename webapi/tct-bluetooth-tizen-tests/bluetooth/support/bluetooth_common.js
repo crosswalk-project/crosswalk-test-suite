@@ -330,5 +330,5 @@ function cancelDiscovery() {
 }
 
 // change REMOTE_DEVICE_ADDRESS and REMOTE_DEVICE_NAME
-document.write('<script src="../testkit/web/jquery-1.10.2.min.js"></script>');
+document.write('<script src="../webrunner/jquery-1.10.2.min.js"></script>');
 document.write('<script src="support/getJsonConf.js"></script>');

@@ -6,5 +6,5 @@ workers/Makefile \
 workers/w3c/Makefile \
 workers/w3c/support/Makefile \
 workers/support/Makefile \
-resources/Makefile testkit/Makefile])
+resources/Makefile webrunner/Makefile])
 AC_OUTPUT

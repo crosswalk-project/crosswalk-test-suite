@@ -1,4 +1,4 @@
-commondir = resources testkit locale
+commondir = resources webrunner locale
 SUBDIRS = $(commondir)
 docdir = $(prefix)/opt/webapi-locale-ivi-tests
 dist_doc_DATA = COPYING tests.xml tests.full.xml

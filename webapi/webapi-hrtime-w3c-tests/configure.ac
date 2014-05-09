@@ -5,5 +5,5 @@ AC_CONFIG_FILES([Makefile \
 hrtime/Makefile \
 hrtime/w3c/Makefile \
 hrtime/w3c/resources/Makefile \
-resources/Makefile testkit/Makefile])
+resources/Makefile webrunner/Makefile])
 AC_OUTPUT
