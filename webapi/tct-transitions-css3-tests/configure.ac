@@ -6,5 +6,5 @@ transitions/Makefile \
 transitions/support/Makefile \
 transitions/webkit/Makefile \
 transitions/webkit/resources/Makefile \
-resources/Makefile testkit/Makefile])
+resources/Makefile webrunner/Makefile])
 AC_OUTPUT

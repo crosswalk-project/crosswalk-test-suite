@@ -10,5 +10,5 @@ sse/w3c/Makefile \
 sse/w3c/resources/Makefile \
 sse/w3c/resources/cgi/Makefile \
 sse/w3c/shared-worker/Makefile \
-resources/Makefile testkit/Makefile])
+resources/Makefile webrunner/Makefile])
 AC_OUTPUT

@@ -7,5 +7,5 @@ input/w3c/Makefile \
 input/w3c/semantics/Makefile \
 input/w3c/semantics/forms/Makefile \
 input/w3c/semantics/forms/the-input-element/Makefile \
-resources/Makefile testkit/Makefile])
+resources/Makefile webrunner/Makefile])
 AC_OUTPUT

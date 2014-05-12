@@ -30,7 +30,7 @@ Authors:
    }
 /*   TODO remove jQuery dependency */
    if (head_src.search(/\/jquery.js\W/) === -1) {
-       document.write('<script language="javascript" src="../testkit/web/jquery.js"></script>\n');
+       document.write('<script language="javascript" src="../webrunner/jquery.js"></script>\n');
    }
 })();
 

@@ -8,5 +8,5 @@ canvas/w3c/images/Makefile \
 canvas/Makefile \
 canvas/support/Makefile \
 canvas/w3c/Makefile \
-common/Makefile resources/Makefile testkit/Makefile])
+common/Makefile resources/Makefile webrunner/Makefile])
 AC_OUTPUT

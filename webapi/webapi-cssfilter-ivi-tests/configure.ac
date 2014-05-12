@@ -6,5 +6,5 @@ cssfilter/Makefile \
 cssfilter/csswg/Makefile \
 cssfilter/csswg/reference/Makefile \
 cssfilter/support/Makefile \
-resources/Makefile testkit/Makefile])
+resources/Makefile webrunner/Makefile])
 AC_OUTPUT

@@ -39,7 +39,7 @@ cd $RPM_BUILD_DIR/%name
 cat > index.html << EOF
 <!doctype html>
 <head>
-    <meta http-equiv="Refresh" content="1; url=opt/%name/testkit/web/index.html?testsuite=/usr/share/%name/tests.xml">
+    <meta http-equiv="Refresh" content="1; url=opt/%name/webrunner/index.html?testsuite=/usr/share/%name/tests.xml">
 tests.full.xml
 </head>
 EOF

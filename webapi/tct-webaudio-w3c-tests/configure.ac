@@ -8,5 +8,5 @@ webaudio/w3c/Makefile \
 webaudio/w3c/js/Makefile \
 webaudio/w3c/the-audio-api/Makefile \
 webaudio/w3c/the-audio-api/the-gainnode-interface/Makefile \
-resources/Makefile testkit/Makefile])
+resources/Makefile webrunner/Makefile])
 AC_OUTPUT

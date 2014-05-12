@@ -38,5 +38,5 @@ shadowdom/w3c/user-interaction/editing/Makefile \
 shadowdom/w3c/user-interaction/focus-navigation/Makefile \
 shadowdom/w3c/user-interaction/ranges-and-selections/Makefile \
 shadowdom/w3c/resources/Makefile \
-resources/Makefile testkit/Makefile])
+resources/Makefile webrunner/Makefile])
 AC_OUTPUT
