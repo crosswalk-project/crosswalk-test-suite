@@ -5,5 +5,5 @@ AC_CONFIG_FILES([Makefile \
 bluetooth/Makefile \
 tct-bt-helper/Makefile \
 bluetooth/support/Makefile \
-resources/Makefile testkit/Makefile])
+resources/Makefile webrunner/Makefile])
 AC_OUTPUT

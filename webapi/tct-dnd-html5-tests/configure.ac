@@ -5,5 +5,5 @@ AC_CONFIG_FILES([Makefile \
 dnd/Makefile \
 dnd/w3c/Makefile \
 dnd/images/Makefile \
-common/Makefile resources/Makefile testkit/Makefile])
+common/Makefile resources/Makefile webrunner/Makefile])
 AC_OUTPUT

@@ -6,5 +6,5 @@ sessionhistory/Makefile \
 sessionhistory/support/Makefile \
 sessionhistory/w3c/Makefile \
 sessionhistory/w3c/cgi/Makefile \
-common/Makefile resources/Makefile testkit/Makefile])
+common/Makefile resources/Makefile webrunner/Makefile])
 AC_OUTPUT

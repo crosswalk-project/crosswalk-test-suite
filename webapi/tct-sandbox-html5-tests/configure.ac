@@ -5,5 +5,5 @@ AC_CONFIG_FILES([Makefile \
 sandbox/Makefile \
 sandbox/w3c/Makefile \
 sandbox/w3c/support/Makefile \
-common/Makefile resources/Makefile testkit/Makefile])
+common/Makefile resources/Makefile webrunner/Makefile])
 AC_OUTPUT

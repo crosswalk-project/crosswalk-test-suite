@@ -122,5 +122,5 @@ function sendMessage(t, service, msg, onSuccess, onError) {
 }
 
 // change TEST_SMS_RECIPIENT and TEST_SMS_RECIPIENT_2
-document.write('<script src="../testkit/web/jquery-1.10.2.min.js"></script>');
+document.write('<script src="../webrunner/jquery-1.10.2.min.js"></script>');
 document.write('<script src="support/getJsonConf.js"></script>');

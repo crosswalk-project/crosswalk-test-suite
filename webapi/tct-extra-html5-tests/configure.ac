@@ -80,5 +80,5 @@ rendering/bindings/Makefile \
 rendering/bindings/the-keygen-element-0/Makefile \
 common/Makefile \
 resources/Makefile \
-testkit/Makefile])
+webrunner/Makefile])
 AC_OUTPUT

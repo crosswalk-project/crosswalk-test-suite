@@ -5,5 +5,5 @@ AC_CONFIG_FILES([Makefile \
 typedarrays/Makefile \
 typedarrays/w3c/Makefile \
 typedarrays/w3c/submission/Makefile \
-resources/Makefile testkit/Makefile])
+resources/Makefile webrunner/Makefile])
 AC_OUTPUT

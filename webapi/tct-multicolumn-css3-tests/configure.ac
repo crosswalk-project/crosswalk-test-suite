@@ -6,5 +6,5 @@ multicolumn/Makefile \
 multicolumn/csswg/Makefile \
 multicolumn/csswg/reference/Makefile \
 multicolumn/support/Makefile \
-resources/Makefile testkit/Makefile])
+resources/Makefile webrunner/Makefile])
 AC_OUTPUT

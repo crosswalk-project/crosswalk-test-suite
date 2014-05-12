@@ -70,5 +70,5 @@ widgetpolicy/Makefile \
 widgetpolicy/w3c/Makefile \
 notification/Makefile \
 notification/support/Makefile \
-common/Makefile resources/Makefile testkit/Makefile])
+common/Makefile resources/Makefile webrunner/Makefile])
 AC_OUTPUT

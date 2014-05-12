@@ -22,5 +22,5 @@ htmltemplates/w3c/parsing-html-templates/creating-an-element-for-the-token/Makef
 htmltemplates/w3c/resources/Makefile \
 htmltemplates/w3c/serializing-html-templates/Makefile \
 htmltemplates/w3c/template-element/Makefile \
-resources/Makefile testkit/Makefile])
+resources/Makefile webrunner/Makefile])
 AC_OUTPUT

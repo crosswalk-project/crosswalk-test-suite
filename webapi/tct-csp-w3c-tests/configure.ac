@@ -7,5 +7,5 @@ csp/support/Makefile \
 csp/support/w3c/Makefile \
 csp/support/khronos/Makefile \
 csp/w3c/Makefile \
-resources/Makefile testkit/Makefile])
+resources/Makefile webrunner/Makefile])
 AC_OUTPUT

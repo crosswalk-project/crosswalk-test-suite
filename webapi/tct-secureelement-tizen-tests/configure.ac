@@ -13,6 +13,6 @@ AC_CONFIG_FILES([Makefile \
   secureelement/Makefile \
   secureelement/support/Makefile \
   resources/Makefile \
-  testkit/Makefile \
+  webrunner/Makefile \
 ])
 AC_OUTPUT

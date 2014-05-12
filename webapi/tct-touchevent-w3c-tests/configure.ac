@@ -6,5 +6,5 @@ touchevent/Makefile \
 touchevent/support/Makefile \
 touchevent/w3c/Makefile \
 touchevent/w3c/submission/Makefile \
-resources/Makefile testkit/Makefile])
+resources/Makefile webrunner/Makefile])
 AC_OUTPUT

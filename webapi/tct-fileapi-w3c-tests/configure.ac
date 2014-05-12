@@ -8,5 +8,5 @@ fileapi/w3c/filelist-section/Makefile \
 fileapi/w3c/filelist-section/support/Makefile \
 fileapi/w3c/support/Makefile \
 fileapi/support/Makefile \
-resources/Makefile testkit/Makefile])
+resources/Makefile webrunner/Makefile])
 AC_OUTPUT
