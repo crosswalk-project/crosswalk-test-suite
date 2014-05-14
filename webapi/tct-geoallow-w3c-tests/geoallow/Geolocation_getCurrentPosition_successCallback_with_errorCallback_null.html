@@ -40,13 +40,16 @@ Authors:
   </head>
   <body>
     <div id="log"></div>
-    <script">
+    <script>
       var t = async_test(document.title);
       setup({timeout: 20000});
 
       try {
         navigator.geolocation.getCurrentPosition(successCallback, null);
-      } catch (e) {
+      } catch (err) {
+        t.step(function () {
+          assert_unreached("Error message: {" + err.message + " }");
+        });
         t.done();
       }
       function successCallback (position) {
