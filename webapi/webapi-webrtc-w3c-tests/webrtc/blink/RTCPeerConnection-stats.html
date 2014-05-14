@@ -17,6 +17,7 @@ var pc = null;
 var result;
 var timestamp;
 var local;
+var selector;
 
 var t = async_test(document.title, {timeout: 2000});
 
@@ -38,22 +39,20 @@ function error() {
   t.done();
 }
 
-function statsHandler1(status) {
-  t.step(function () {
-    assert_not_equals(status, null);
-
-    result = status.result();
-    assert_equals(result.length, 1);
-    getUserMedia({audio:true, video:true}, gotStream);
-  });
-}
-
 function gotStream(s) {
   stream = s;
   pc.addStream(stream);
+  selector = stream.getAudioTracks()[0];
   t.step(function () {
-    pc.getStats(statsHandler2);
+    pc.getStats(selector, statsHandler2, failCallback);
   });
+}
+
+function failCallback() {
+  t.step(function () {
+    assert_unreached("getStats request failed");
+  });
+  t.done();
 }
 
 function statsHandler2(status) {
@@ -75,17 +74,17 @@ function statsHandler2(status) {
   timediff = timestamp - startTime + fudgeForXP;
   t.step(function () {
     assert_greater_than_equal(timediff, 0);
-    assert_less_than_equal(local.names().length, 1);
-    assert_less_than_equal(local.names().indexOf("type"), 0);
-    assert_equals(local.stat("type"), "");
+    assert_greater_than_equal(local.names().length, 1);
+    assert_greater_than_equal(local.names().indexOf("type"), 0);
+    assert_equals(local.stat("type"), "audio");
 
     // Newer interface.
     res = result[0];
     assert_not_equals(res.id, null);
     assert_not_equals(res.type, null);
-    assert_less_than_equal(res.names().length, 1);
-    assert_less_than_equal(res.names().indexOf("type"), 0);
-    assert_equals(res.stat("type"), "");
+    assert_greater_than_equal(res.names().length, 1);
+    assert_greater_than_equal(res.names().indexOf("type"), 0);
+    assert_equals(res.stat("type"), "audio");
     assert_not_equals(status_g.namedItem(res.id), null);
     assert_not_equals(status_g[res.id], null);
   });
@@ -96,7 +95,7 @@ var startTime = new Date().getTime();
 
 t.step(function () {
   pc = new webkitRTCPeerConnection(null);
-  pc.getStats(statsHandler1);
+  getUserMedia({audio:true, video:true}, gotStream);
 });
 
 </script>
