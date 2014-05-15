@@ -90,7 +90,7 @@ function create_xpk(){
     mkdir -p $BUILD_DEST/opt/$name/abat
     cp -r $BUILD_ROOT/abat/common/* $BUILD_DEST/opt/$name/abat
     cp -r $BUILD_ROOT/abat/tizen/* $BUILD_DEST/opt/$name/abat
-    cp -r $BUILD_ROOT/testkit $BUILD_DEST/opt/$name
+    cp -r $BUILD_ROOT/webrunner $BUILD_DEST/opt/$name
     cp -r $BUILD_ROOT/resources $BUILD_DEST/opt/$name/abat
 
     mkdir -p $BUILD_DEST/$name
@@ -161,7 +161,7 @@ function zip_for_apk(){
     mkdir -p $docroot_dir/docroot/opt/$name/abat
     cp -r $BUILD_DEST/abat/common/* $docroot_dir/docroot/opt/$name/abat
     cp -r $BUILD_DEST/resources $docroot_dir/docroot/opt/$name/abat
-    cp -r $BUILD_DEST/testkit $docroot_dir/docroot/opt/$name
+    cp -r $BUILD_DEST/webrunner $docroot_dir/docroot/opt/$name
     cp $BUILD_DEST/tests.xml.apk $docroot_dir/docroot/opt/$name/tests.xml
     cd $docroot_dir
     zip -r docroot.zip docroot
