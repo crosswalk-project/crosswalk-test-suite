@@ -154,5 +154,6 @@ webapp/webgl_webrtc_disable_tests/Makefile \
 webapp/xwalk_hosts_matchpatternstail_tests/Makefile \
 webapp/xwalk_hosts_matchpatternsmiddle_tests/Makefile \
 webapp/xwalk_hosts_matchpatterns_tests/Makefile \
-webapp/xwalk_hosts_value_tests/Makefile])
+webapp/xwalk_hosts_value_tests/Makefile\
+webapp/web_openfile_thirdPart_tests/Makefile])
 AC_OUTPUT
