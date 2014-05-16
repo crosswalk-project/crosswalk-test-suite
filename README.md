@@ -2,31 +2,44 @@
 
 This is a test suite for Crosswalk, which includes:
 
-* Behavior Test Tool
-* Web API Tests
-* Web Runtime Tests
-* Web Testing Service
+* `behavior/`: behavior test tool
+* `cordova/`: Crosswalk based Cordova tests
+* `webapi/`: Web API tests
+* `wrt/`: Web Runtime Tests
+* `misc/`: miscellaneous tests
+  * `web-abat-tests` and `web-mbat-tests`: basic acceptance tests
+  * `webapi-usecase-tizen-tests`: usecase tests for Tizen Device APIs
+  * `webapi-usecase-standard-tests`: usecase tests for standard APIs, e.g.
+W3C/HTML5 APIs, Supplementary APIs, Crosswalk experimental APIs
+  * `wrt-usecase-*-tests`: usecase tests for Web Runtime
+  * `wrt-stab*-tests`: stability tests
+  * `wrt-*-UA-tests`: user acceptance tests
+  * `wrt-documentation-verification-tests`: tests for documents verification
+* `doc/`: see [documentaion](#Documentation) below
+* `tools/`: tools for this test suite
+* `webtestingservice/`: a sharing web service that can perform customized
+web tests and show test results on web platforms, OS and web browsers
 
 ## Documentation
 
-Check out our documents at `doc\`.
+Check out our documents at `doc/`.
 
 For test suite and test case development, please go through the following
 documents firstly:
 
-* `doc\Behavior_Test_Tool_Developer_Guide`
-* `doc\Coding_Style_Guide_CheatSheet`
-* `doc\Web_Test_Suite_Developer_Guide`
-* `doc\Web_Test_Suite_Packaging_Guide`
+* `doc/Behavior_Test_Tool_Developer_Guide`
+* `doc/Coding_Style_Guide_CheatSheet`
+* `doc/Web_Test_Suite_Developer_Guide`
+* `doc/Web_Test_Suite_Packaging_Guide`
 
 For testing execution and reports, please follow these user guides:
 
-* `doc\Behavior_Test_Tool_User_Guide`
-* `doc\Cordova_Test_Suite_User_Guide`
-* `doc\WebAPI_Test_Suite_User_Guide`
-* `doc\Web_BAT_Test_Suite_User_Guide`
-* `doc\Web_Runtime_Test_Suite_User_Guide`
-* `doc\Web_Testing_Service_User_Guide`
+* `doc/Behavior_Test_Tool_User_Guide`
+* `doc/Cordova_Test_Suite_User_Guide`
+* `doc/WebAPI_Test_Suite_User_Guide`
+* `doc/Web_BAT_Test_Suite_User_Guide`
+* `doc/Web_Runtime_Test_Suite_User_Guide`
+* `doc/Web_Testing_Service_User_Guide`
 
 ## Contributing
 
@@ -41,7 +54,7 @@ The way to contribute is just as usual:
 
 * fork this repository (and make sure you're still relatively in sync with it
   if you forked a while ago);
-* create a branch for your changes, `git checkout -b username\topic`;
+* create a branch for your changes, `git checkout -b username/topic`;
 * make your changes;
 * push that to your repo;
 * and send in a pull request based on the above.
