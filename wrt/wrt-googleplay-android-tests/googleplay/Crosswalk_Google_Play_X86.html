@@ -41,9 +41,13 @@ Authors:
       <strong>Test steps:</strong>
     </p>
     <ol>
-      <li>Package an web app with command: python make_apk.py --name=Test --package=org.xwalk.Test --app-url=http://www.baidu.com --app-version=1.0.0 --arch=x86</li>
-      <li>Upload the apk into Google Play</li>
-      <li>Download and install the apk into device from Google Play</li>
+      <li>Package an web app with command: python make_apk.py --name=Test --package=org.xwalk.test --app-url=http://www.baidu.com --app-versionCode=60000001 --app-version=1.0.0 --arch=x86</li>
+      <li>Login the Google Play Developer Console in Browser and click the button of Add new application in the page</li>
+      <li>Write a Title and click the button of Upload APK</li>
+      <li>Choose ALPHA TESTING or BETA TESTING, then upload the packaged apk into this application</li>
+      <li>Add related tester account google groups</li>
+      <li>Publish this application</li>
+      <li>Download and install the apk into device from Google Play using tester account</li>
       <li>Launch the webapp</li>
     </ol>
     <p>
@@ -51,9 +55,13 @@ Authors:
     </p>
     <ol>
       <li>Apk with "x86" arch could be created correctly</li>
-      <li>Apk could be uploaded into Google Play successfully</li>
-      <li>Web app could be installed successfully</li>
-      <li>Web app could be launched successfully</li>
+      <li>There popup a dialog to add new application</li>
+      <li>The application is created successfully with your wrote app name</li>
+      <li>Apk could be uploaded into application successfully</li>
+      <li>The google groups added successfully</li>
+      <li>The application published successfully</li>
+      <li>Webapp could be installed successfully</li>
+      <li>Webapp could be launched successfully</li>
     </ol>
   </body>
 </html>
