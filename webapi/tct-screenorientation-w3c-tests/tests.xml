@@ -1,73 +1,78 @@
 <?xml version="1.0" encoding="UTF-8"?>
-    <?xml-stylesheet type="text/xsl" href="./testcase.xsl"?>
+<?xml-stylesheet type="text/xsl" href="./testcase.xsl"?>
 <test_definition>
-  <suite launcher="xwalk" name="tct-screenorientation-w3c-tests" category="W3C/HTML5 APIs">
+  <suite category="W3C/HTML5 APIs" launcher="xwalk" name="tct-screenorientation-w3c-tests">
     <set name="ScreenOrientation">
-      <testcase component="WebAPI/Device/The Screen Orientation API" execution_type="auto" id="Screen_lockOrientation_exists" purpose="Check if the Screen.lockOrientation method exists">
+      <testcase component="WebAPI/Device/The Screen Orientation API" execution_type="auto" id="Screen_exists" purpose="Check if the window.screen exists">
         <description>
-          <test_script_entry>/opt/tct-screenorientation-w3c-tests/screenorientation/Screen_lockOrientation_exists.html</test_script_entry>
+          <test_script_entry>/opt/tct-screenorientation-w3c-tests/screenorientation/Screen_attributes_tests.html?total_num=10&amp;locator_key=id&amp;value=1</test_script_entry>
         </description>
-        </testcase>
-      <testcase component="WebAPI/Device/The Screen Orientation API" execution_type="auto" id="Screen_onorientationchange_exists" purpose="Check if the Screen.onorientationchange attribute exists">
+      </testcase>
+      <testcase component="WebAPI/Device/The Screen Orientation API" execution_type="auto" id="Screen_lockOrientation_exists" purpose="Check if the method lockOrientation of interface exists">
         <description>
-          <test_script_entry>/opt/tct-screenorientation-w3c-tests/screenorientation/Screen_onorientationchange_exists.html</test_script_entry>
+          <test_script_entry>/opt/tct-screenorientation-w3c-tests/screenorientation/Screen_attributes_tests.html?total_num=10&amp;locator_key=id&amp;value=2</test_script_entry>
         </description>
-        </testcase>
-      <testcase component="WebAPI/Device/The Screen Orientation API" execution_type="auto" id="Screen_orientation_exists" purpose="Check if the Screen.orientation attribute exists">
+      </testcase>
+      <testcase component="WebAPI/Device/The Screen Orientation API" execution_type="auto" id="Screen_lockOrientation_return_type" purpose="Check if the method lockOrientation of interface Screen return type of boolean">
         <description>
-          <test_script_entry>/opt/tct-screenorientation-w3c-tests/screenorientation/Screen_orientation_exists.html</test_script_entry>
+          <test_script_entry>/opt/tct-screenorientation-w3c-tests/screenorientation/Screen_attributes_tests.html?total_num=10&amp;locator_key=id&amp;value=3</test_script_entry>
         </description>
-        </testcase>
-      <testcase component="WebAPI/Device/The Screen Orientation API" execution_type="auto" id="Screen_unlockOrientation_exists" purpose="Check if the Screen.unlockOrientation method exists">
+      </testcase>
+      <testcase component="WebAPI/Device/The Screen Orientation API" execution_type="auto" id="Screen_onorientationchange_exists" purpose="Check if the attribute onorientationchange of interface exists">
         <description>
-          <test_script_entry>/opt/tct-screenorientation-w3c-tests/screenorientation/Screen_unlockOrientation_exists.html</test_script_entry>
+          <test_script_entry>/opt/tct-screenorientation-w3c-tests/screenorientation/Screen_attributes_tests.html?total_num=10&amp;locator_key=id&amp;value=4</test_script_entry>
         </description>
-        </testcase>
-      <testcase component="WebAPI/Device/The Screen Orientation API" execution_type="auto" id="Screen_lockOrientation_parameter_not_in_allowed_orientations" purpose="Check  the method lockOrientation  of interface Screen when parameter is not in allowed orientations">
+      </testcase>
+      <testcase component="WebAPI/Device/The Screen Orientation API" execution_type="auto" id="Screen_onorientationchange_return_type" purpose="Check if the attribute onorientationchange of interface Screen return type of function">
         <description>
-          <test_script_entry>/opt/tct-screenorientation-w3c-tests/screenorientation/Screen_lockOrientation_parameter_not_in_allowed_orientations.html</test_script_entry>
+          <test_script_entry>/opt/tct-screenorientation-w3c-tests/screenorientation/Screen_attributes_tests.html?total_num=10&amp;locator_key=id&amp;value=5</test_script_entry>
         </description>
-        </testcase>
-      <testcase component="WebAPI/Device/The Screen Orientation API" execution_type="auto" id="Screen_lockOrientation_parameter_null" purpose="Check  the method lockOrientation  of interface Screen when parameter is null">
+      </testcase>
+      <testcase component="WebAPI/Device/The Screen Orientation API" execution_type="auto" id="Screen_orientation_exists" purpose="Check if the attribute orientation of interface exists">
         <description>
-          <test_script_entry>/opt/tct-screenorientation-w3c-tests/screenorientation/Screen_lockOrientation_parameter_null.html</test_script_entry>
+          <test_script_entry>/opt/tct-screenorientation-w3c-tests/screenorientation/Screen_attributes_tests.html?total_num=10&amp;locator_key=id&amp;value=6</test_script_entry>
         </description>
-        </testcase>
-      <testcase component="WebAPI/Device/The Screen Orientation API" execution_type="auto" id="Screen_lockOrientation_parameter_rigth" purpose="Check  the method lockOrientation  of interface Screen when parameter is rigth">
+      </testcase>
+      <testcase component="WebAPI/Device/The Screen Orientation API" execution_type="auto" id="Screen_orientation_return_type" purpose="Check if the attribute orientation of interface Screen return type of string">
         <description>
-          <test_script_entry>/opt/tct-screenorientation-w3c-tests/screenorientation/Screen_lockOrientation_parameter_rigth.html</test_script_entry>
+          <test_script_entry>/opt/tct-screenorientation-w3c-tests/screenorientation/Screen_attributes_tests.html?total_num=10&amp;locator_key=id&amp;value=7</test_script_entry>
         </description>
-        </testcase>
-      <testcase component="WebAPI/Device/The Screen Orientation API" execution_type="auto" id="Screen_lockOrientation_return_type" purpose="Check  the method lockOrientation  of interface Screen return type">
+      </testcase>
+      <testcase component="WebAPI/Device/The Screen Orientation API" execution_type="auto" id="Screen_orientation_readonly" purpose="Check if the attribute orientation of interface Screen is readonly">
         <description>
-          <test_script_entry>/opt/tct-screenorientation-w3c-tests/screenorientation/Screen_lockOrientation_return_type.html</test_script_entry>
+          <test_script_entry>/opt/tct-screenorientation-w3c-tests/screenorientation/Screen_attributes_tests.html?total_num=10&amp;locator_key=id&amp;value=8</test_script_entry>
         </description>
-        </testcase>
-      <testcase component="WebAPI/Device/The Screen Orientation API" execution_type="auto" id="Screen_onorientationchange_return_type" purpose="Check  the attribute onorientationchange  of interface Screen return type">
+      </testcase>
+      <testcase component="WebAPI/Device/The Screen Orientation API" execution_type="auto" id="Screen_orientation_in_currentorientation" purpose="Check if the attribute orientation value of interface Screen must in current orientation">
         <description>
-          <test_script_entry>/opt/tct-screenorientation-w3c-tests/screenorientation/Screen_onorientationchange_return_type.html</test_script_entry>
+          <test_script_entry>/opt/tct-screenorientation-w3c-tests/screenorientation/Screen_attributes_tests.html?total_num=10&amp;locator_key=id&amp;value=9</test_script_entry>
         </description>
-        </testcase>
-      <testcase component="WebAPI/Device/The Screen Orientation API" execution_type="auto" id="Screen_orientation_in_currentorientation" purpose="Check  the attribute orientation value of interface Screen must in current orientation">
+      </testcase>
+      <testcase component="WebAPI/Device/The Screen Orientation API" execution_type="auto" id="Screen_unlockOrientation_exists" purpose="Check if the method unlockOrientation of interface exists">
         <description>
-          <test_script_entry>/opt/tct-screenorientation-w3c-tests/screenorientation/Screen_orientation_in_currentorientation.html</test_script_entry>
+          <test_script_entry>/opt/tct-screenorientation-w3c-tests/screenorientation/Screen_attributes_tests.html?total_num=10&amp;locator_key=id&amp;value=10</test_script_entry>
         </description>
-        </testcase>
-      <testcase component="WebAPI/Device/The Screen Orientation API" execution_type="auto" id="Screen_orientation_readonly" purpose="Check if the attribute orientation value of interface Screen is readonly">
+      </testcase>
+      <testcase component="WebAPI/Device/The Screen Orientation API" execution_type="auto" id="Screen_lockOrientation_orientation_invalid" purpose="Test checks that the method lockOrientation return false, when parameter is not in allowed orientations">
         <description>
-          <test_script_entry>/opt/tct-screenorientation-w3c-tests/screenorientation/Screen_orientation_readonly.html</test_script_entry>
+          <test_script_entry>/opt/tct-screenorientation-w3c-tests/screenorientation/Screen_lockOrientation_orientation_invalid.html</test_script_entry>
         </description>
-        </testcase>
-      <testcase component="WebAPI/Device/The Screen Orientation API" execution_type="auto" id="Screen_orientation_return_type" purpose="Check  the attribute orientation  of interface Screen return type">
+      </testcase>
+      <testcase component="WebAPI/Device/The Screen Orientation API" execution_type="auto" id="Screen_lockOrientation_orientation_null" purpose="Test checks that the method lockOrientation return false, when parameter with null">
         <description>
-          <test_script_entry>/opt/tct-screenorientation-w3c-tests/screenorientation/Screen_orientation_return_type.html</test_script_entry>
+          <test_script_entry>/opt/tct-screenorientation-w3c-tests/screenorientation/Screen_lockOrientation_orientation_null.html</test_script_entry>
         </description>
-        </testcase>
-      <testcase component="WebAPI/Device/The Screen Orientation API" execution_type="auto" id="Screen_unlockOrientation_base" purpose="Check  the method unlockOrientation  of interface Screen">
+      </testcase>
+      <testcase component="WebAPI/Device/The Screen Orientation API" execution_type="auto" id="Screen_lockOrientation_orientation_landspace" purpose="Test checks that lockOrientation('landspace') locks screen as landscape">
+        <description>
+          <test_script_entry>/opt/tct-screenorientation-w3c-tests/screenorientation/Screen_lockOrientation_orientation_landspace.html</test_script_entry>
+        </description>
+      </testcase>
+      <testcase component="WebAPI/Device/The Screen Orientation API" execution_type="auto" id="Screen_unlockOrientation_base" purpose="Check if the method unlockOrientation can disable the current lock">
         <description>
           <test_script_entry>/opt/tct-screenorientation-w3c-tests/screenorientation/Screen_unlockOrientation_base.html</test_script_entry>
         </description>
-        </testcase>
+      </testcase>
     </set>
   </suite>
 </test_definition>
