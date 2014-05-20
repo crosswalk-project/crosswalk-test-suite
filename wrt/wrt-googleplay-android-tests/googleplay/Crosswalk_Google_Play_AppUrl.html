@@ -41,27 +41,25 @@ Authors:
       <strong>Test steps:</strong>
     </p>
     <ol>
-      <li>Package an web app with command: python make_apk.py --name=Test --package=org.xwalk.test --app-url=http://www.baidu.com --app-versionCode=60000001 --app-version=1.0.0</li>
-      <li>Login the Google Play Developer Console in Browser and click the button of Add new application in the page</li>
-      <li>Write a Title and click the button of Upload APK</li>
+      <li>Package an web app with command: python make_apk.py --name=Test --package=org.xwalk.test --app-url=http://www.baidu.com --app-versionCodeBase=1 --app-version=1.0.0 --arch=x86</li>
+      <li>Login the Google Play Developer Console in Browser and click the button "Add new application"</li>
+      <li>Input a Title and click the button "Upload APK"</li>
       <li>Choose ALPHA TESTING or BETA TESTING, then upload the "x86" arch apk into this application</li>
-      <li>Upload the "arm" arch apk into the same application</li>
-      <li>Add related tester account google groups</li>
+      <li>Add the google groups of users for each test</li>
       <li>Publish this application</li>
-      <li>Download and install the apks into device from Google Play using tester account</li>
+      <li>Download the application which you have published form Google Play and install it</li>
       <li>Launch the webapp</li>
     </ol>
     <p>
       <strong>Expected Output:</strong>
     </p>
     <ol>
-      <li>Two apks created with "x86" and "arm" arch</li>
-      <li>There popup a dialog to add new application</li>
-      <li>The application is created successfully with your wrote app name</li>
-      <li>Apk could be uploaded into application successfully</li>
-      <li>Apk could be uploaded into application successfully</li>
-      <li>The google groups added successfully</li>
-      <li>The application published successfully</li>
+      <li>Installation package for x86 platform generated successfully</li>
+      <li>Dialog "ADD NEW APPLICATION" popuped successfully</li>
+      <li>Application generated successfully with the name which you input</li>
+      <li>Apk could be uploaded into the application successfully</li>
+      <li>Add google groups successfully</li>
+      <li>Application could be published successfully</li>
       <li>Webapp could be installed successfully</li>
       <li>Webapp could be launched successfully</li>
     </ol>
