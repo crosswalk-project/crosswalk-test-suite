@@ -33,10 +33,9 @@ Authors:
 <html>
   <head>
     <title>Notification Test: onshow_using</title>
-    <link rel="author" title="Intel" href="http://www.intel.com/" />
-    <link rel="help" href="http://www.w3.org/TR/2012/WD-notifications-20120614/#api" />
-    <meta name="flags" content="interact" />
-    <meta name="assert" content="Check if the attribute altKey exists" />
+    <link rel="author" title="Intel" href="http://www.intel.com/"/>
+    <link rel="help" href="http://www.w3.org/TR/2012/WD-notifications-20120614/#api"/>
+    <meta name="flags" content=""/>
     <script src="support/notifications.js"></script>
     <script src="../resources/testharness.js"></script>
     <script src="../resources/testharnessreport.js"></script>
@@ -44,18 +43,21 @@ Authors:
   <body >
     <div id="log"></div>
     <script>
-        t = async_test(document.title, { timeout: 3000 });
+      t = async_test(document.title, { timeout: 3000 });
+      t.step(function () {
         getnotification();
         notification.show();
-        notification.onshow = function(){
-            t.done();
-        }
-        setTimeout(function(){
-            t.step(function() {
-                assert_true(false, "onshow event should be fired");
-            });
-            t.done();
-        }, 3000)
+      });
+
+      notification.onshow = function() {
+        t.done();
+      }
+      setTimeout(function() {
+        t.step(function() {
+          assert_unreached("timeout should not be fired");
+        });
+        t.done();
+      }, 1000)
     </script>
   </body>
 </html>
