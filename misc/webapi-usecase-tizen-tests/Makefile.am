@@ -28,7 +28,5 @@
 #               Fan, Yugang <yugang.fan@intel.com>
 #
 
-AC_INIT([webapi-sanityapp-tizen-tests], [6.35.1.2], [yugang.fan@intel.com])
-AM_INIT_AUTOMAKE([-Wall -Werror foreign])
-AC_CONFIG_FILES([Makefile])
-AC_OUTPUT
+docdir = /opt/webapi-usecase-tizen-tests
+dist_doc_DATA = LICENSE.BSD-3

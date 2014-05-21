@@ -1,5 +1,5 @@
 #!/bin/bash
-source $(dirname $0)/webapi-sanityapp-tizen-tests.spec
+source $(dirname $0)/webapi-usecase-tizen-tests.spec
 
 #parse params
 usage="Usage: ./pack.sh [-t <package type: wgt | crx | xpk>]
