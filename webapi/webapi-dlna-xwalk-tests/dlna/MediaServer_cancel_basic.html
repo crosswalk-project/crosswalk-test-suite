@@ -31,39 +31,27 @@ Authors:
 -->
 
 <meta charset="utf-8">
-<title>DLNA Test: MediaContainer - attributes value</title>
+<title>DLNA Test: MediaServer - cancel basic</title>
 <link rel="author" title="Intel" href="http://www.intel.com">
-<link rel="help" href="http://01org.github.io/cloud-dleyna/mediaserver.html#mediacontainer-interface">
+<link rel="help" href="http://01org.github.io/cloud-dleyna/mediaserver.html#widl-MediaServer-cancel-Promise">
 <script src="../resources/testharness.js"></script>
 <script src="../resources/testharnessreport.js"></script>
 <div id="log"></div>
+<div id='serverContainer'></div>
 <script>
-  var msga, mc;
-  setup(function () {
-    msga = navigator.mediaServer;
-    msga.scanNetwork();
-  });
+  var t = async_test("Check if the MediaServer.cancel method can work well");
+  var msga = navigator.mediaServer;
+  msga.scanNetwork();
 
-  var t = async_test("the onserverfound event can be invoked");
-
-  msga.onserverfound = t.step_func(function (event) {
-    mc = event.server.root;  
-
-    [
-      ["childCount", 5],
-      ["canCreateContainer", true],
-      ["canDelete", true],
-      ["canRename", true],
-      ["canUpload", true]
-    ].forEach(function (attr) {
-      var name = attr[0];
-      var value = mc[name];
-      var expected = attr[1];
-
-    test(function () {
-      assert_equals(value, expected, "the MediaContainer." + name + " value");
-      }, "Check if the MediaContainer." + name + " value is " + expected);
-    });
+  function onCancelSuccess(result) {
     t.done();
-  });
+  }
+
+  function onCancelFailed(err) {
+    t.done();
+  }
+
+  msga.onserverfound = function (event) {
+    event.server.cancel().then(onCancelSuccess, onCancelFailed);
+  };
 </script>

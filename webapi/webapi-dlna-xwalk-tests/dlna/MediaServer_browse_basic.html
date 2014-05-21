@@ -31,39 +31,34 @@ Authors:
 -->
 
 <meta charset="utf-8">
-<title>DLNA Test: MediaContainer - attributes value</title>
+<title>DLNA Test: MediaServer - browse basic</title>
 <link rel="author" title="Intel" href="http://www.intel.com">
-<link rel="help" href="http://01org.github.io/cloud-dleyna/mediaserver.html#mediacontainer-interface">
+<link rel="help" href="http://01org.github.io/cloud-dleyna/mediaserver.html#widl-MediaServer-browse-Promise-DOMString-containerId-DOMString-sortMode-unsigned-long-count-unsigned-long-offset">
 <script src="../resources/testharness.js"></script>
 <script src="../resources/testharnessreport.js"></script>
 <div id="log"></div>
+<div id='serverContainer'></div>
+<div id='mediaObjectsContainer'></div>
 <script>
-  var msga, mc;
-  setup(function () {
-    msga = navigator.mediaServer;
-    msga.scanNetwork();
-  });
+  var t = async_test("Check if the MediaServer.browse method can work well");
+  var msga = navigator.mediaServer;
+  msga.scanNetwork();
 
-  var t = async_test("the onserverfound event can be invoked");
-
-  msga.onserverfound = t.step_func(function (event) {
-    mc = event.server.root;  
-
-    [
-      ["childCount", 5],
-      ["canCreateContainer", true],
-      ["canDelete", true],
-      ["canRename", true],
-      ["canUpload", true]
-    ].forEach(function (attr) {
-      var name = attr[0];
-      var value = mc[name];
-      var expected = attr[1];
-
-    test(function () {
-      assert_equals(value, expected, "the MediaContainer." + name + " value");
-      }, "Check if the MediaContainer." + name + " value is " + expected);
+  function listMediaObjects(response) {
+    t.step(function () {
+      assert_equals(typeof response, "object", "type");
     });
     t.done();
-  });
+  }
+
+  msga.onserverfound = function (event) {
+    var container = document.getElementById('serverContainer');
+    var browseButton = document.createElement('button');
+    container.serverId = browseButton.id;
+    var mcontainer = document.getElementById('mediaObjectsContainer');
+    while(mcontainer.hasChildNodes()){
+      mcontainer.removeChild(mcontainer.lastChild);
+    }
+    event.server.browse(event.server.root.id, '', 0 , 0).then(listMediaObjects);
+  };
 </script>

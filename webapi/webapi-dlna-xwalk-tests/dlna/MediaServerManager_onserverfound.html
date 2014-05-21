@@ -41,4 +41,11 @@ Authors:
   test(function () {
     assert_true("onserverfound" in navigator.mediaServer, "onserverfound exists");
   }, "Check if onserverfound exists in MediaServerManager");
+
+  var t = async_test("Check if the onserverfound event can be invoked");
+  var msga = navigator.mediaServer;
+  msga.scanNetwork();
+  msga.onserverfound = function () {
+    t.done();
+  }
 </script>
