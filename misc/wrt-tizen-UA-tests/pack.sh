@@ -136,7 +136,7 @@ cd $BUILD_DEST
 cat > index.html << EOF
 <!doctype html>
 <head>
-    <meta http-equiv="Refresh" content="1; url=opt/$name/webrunner/index.html?testsuite=../../tests.xml&testprefix=../../../..">
+    <meta http-equiv="Refresh" content="1; url=opt/$name/webrunner/index.html?testsuite=../tests.xml&testprefix=../../..">
 </head>
 EOF
 cp $BUILD_DEST/opt/$name/tests.xml $BUILD_DEST/
@@ -160,7 +160,7 @@ cd $BUILD_DEST
 cat > index.html << EOF
 <!doctype html>
 <head>
-    <meta http-equiv="Refresh" content="1; url=opt/$name/webrunner/index.html?testsuite=../../tests.xml&testprefix=../../../..">
+    <meta http-equiv="Refresh" content="1; url=opt/$name/webrunner/index.html?testsuite=../tests.xml&testprefix=../../..">
 </head>
 EOF
 
