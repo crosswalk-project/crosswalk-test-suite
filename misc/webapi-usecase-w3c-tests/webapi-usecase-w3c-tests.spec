@@ -1,4 +1,4 @@
-name="webapi-sanityapp-tizen-tests"
+name="webapi-usecase-w3c-tests"
 main_version="6.35.1.2"
 release="1"
 version="6.35.1.2"
@@ -14,7 +14,5 @@ src_file="1"
 whitelist="
 inst.sh
 tests.xml
-LICENSE.Apache-2.0
 LICENSE.BSD-3
-LICENSE.CC-BY-3.0
 mediasrc"

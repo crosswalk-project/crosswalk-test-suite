@@ -1,5 +1,5 @@
 #!/bin/bash
-source $(dirname $0)/webapi-sanityapp-w3c-tests.spec
+source $(dirname $0)/webapi-usecase-w3c-tests.spec
 
 #parse params
 usage="Usage: ./pack.sh [-t <package type: wgt | apk | crx | xpk>] [-m <apk mode: shared | embedded>] [-a <apk runtime arch: x86 | arm>]
