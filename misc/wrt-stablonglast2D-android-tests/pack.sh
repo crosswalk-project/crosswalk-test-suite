@@ -82,7 +82,7 @@ do
     if [ -d $BUILD_DEST/opt/$name/$folderName/$buildfolder ];then
         if [ $buildfolder == "dynamic" ];then
             cd $xpkpacktooldir
-            python make_apk.py --package=org.xwalk.$buildfolder"2D" --name=$buildfolder"2D" --app-root=$BUILD_DEST/opt/$name/$folderName/$buildfolder --app-local-path=index.html --mode=$mode --arch=$arch
+            python make_apk.py --package=org.xwalk.$buildfolder"dd" --name=$buildfolder"dd" --app-root=$BUILD_DEST/opt/$name/$folderName/$buildfolder --app-local-path=index.html --mode=$mode --arch=$arch
             if [ $? -ne 0 ];then
                 echo "Create $name.apk fail.... >>>>>>>>>>>>>>>>>>>>>>>>>"
                 #clean_workspace
@@ -91,7 +91,7 @@ do
             #clean middle files
             rm *.pyc
             rm *.stam*
-            rm -rf dynamic2D
+            rm -rf dynamicdd
             rm -rf $BUILD_DEST/opt/$name/$folderName/$buildfolder
             sleep 2
         fi
