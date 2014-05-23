@@ -158,6 +158,8 @@ fi
 cd $BUILD_ROOT/cordova/
 bin/create $appname org.xwalk.$appname $appname
 cd $BUILD_ROOT/cordova/$appname
+sed -i '/<uses-permission android:name="android.permission.INTERNET"/a <uses-permission android:name="android.permission.CAMERA" />' AndroidManifest.xml
+sed -i '/<uses-permission android:name="android.permission.INTERNET"/a <uses-permission android:name="android.permission.RECORD_AUDIO" />' AndroidManifest.xml
 rm -rf $BUILD_ROOT/cordova/$appname/assets/www/*
 cp -ar $BUILD_DEST/* $BUILD_ROOT/cordova/$appname/assets/www/
 cd $BUILD_ROOT/cordova/$appname/
