@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<!--
+Copyright (c) 2014 Intel Corporation.
+
+Redistribution and use in source and binary forms, with or without modification,
+are permitted provided that the following conditions are met:
+
+* Redistributions of works must retain the original copyright notice, this list
+  of conditions and the following disclaimer.
+* Redistributions in binary form must reproduce the original copyright notice,
+  this list of conditions and the following disclaimer in the documentation
+  and/or other materials provided with the distribution.
+* Neither the name of Intel Corporation nor the names of its contributors
+  may be used to endorse or promote products derived from this work without
+  specific prior written permission.
+
+THIS SOFTWARE IS PROVIDED BY INTEL CORPORATION "AS IS"
+AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE
+IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE
+ARE DISCLAIMED. IN NO EVENT SHALL INTEL CORPORATION BE LIABLE FOR ANY DIRECT,
+INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING,
+BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE,
+DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY
+OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING
+NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE,
+EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
+
+Authors:
+        Liu,Yun <yunx.liu@intel.com>
+
+-->
+
+<meta charset="utf-8">
+<title>Performance Timeline Test: PerformanceEntry</title>
+<link rel="author" title="Intel" href="http://www.intel.com">
+<link rel="help" href="http://www.w3.org/TR/performance-timeline/#sec-PerformanceEntry-interface">
+<script src="../resources/testharness.js"></script>
+<script src="../resources/testharnessreport.js"></script>
+<div id="log"></div>
+<script>
+
+var task1 = 1;
+window.performance.mark("startTask1");
+for(var i = 1; i <= 100; i++) {
+  task1 = 1 * i;
+}
+window.performance.mark("endTask1");
+window.performance.measure("measure", "startTask1", "endTask1");
+var perfEntries = performance.getEntries();
+for (var i = 0; i < perfEntries.length; i++) {
+  perfEntries = perfEntries[0];
+}
+[
+  //attributes of the PerformanceEntry interface
+  ["string", "name", "readonly"],
+  ["string", "entryType", "readonly"],
+  ["number", "startTime", "readonly"],
+  ["number", "duration", "readonly"]
+].forEach(function(attr) {
+  var type = attr[0];
+  var name = attr[1];
+  var read = attr[2];
+
+  test(function () {
+    assert_true(name in perfEntries, name + " attribute in PerformanceEntry");
+    assert_equals(typeof perfEntries[name], type, name + " attribute of type");
+    assert_readonly(perfEntries, name, "expect attribute " + name + " cannot be changed but");
+  }, "Check if " + read + " PerformanceEntry." + name + " exists and type of " + type);
+
+  test(function () {
+    assert_not_equals(perfEntries[name], null, name + " attribute of PerformanceEntry");
+  }, "Check if PerformanceEntry." + name + " is valid ");
+});
+
+</script>
