@@ -81,7 +81,7 @@ for buildfolder in `ls`
 do
     if [ -d $BUILD_DEST/opt/$name/$folderName/$buildfolder ];then
         cd $xpkpacktooldir
-        python make_apk.py --package=org.xwalk.dynamic3D --name=dynamic3D --app-url=http://rscohn2.herokuapp.com/sbp/ --mode=$mode --arch=$arch
+        python make_apk.py --package=org.xwalk.dynamicddd --name=dynamicddd --app-url=http://rscohn2.herokuapp.com/sbp/ --mode=$mode --arch=$arch
         if [ $? -ne 0 ];then
             echo "Create $name.apk fail.... >>>>>>>>>>>>>>>>>>>>>>>>>"
             #clean_workspace
@@ -90,7 +90,7 @@ do
         #clean middle files
         rm *.pyc
         rm *.stam*
-        rm -rf dynamic3D
+        rm -rf dynamicddd
         rm -rf $BUILD_DEST/opt/$name/$folderName/$buildfolder
         sleep 2
     fi

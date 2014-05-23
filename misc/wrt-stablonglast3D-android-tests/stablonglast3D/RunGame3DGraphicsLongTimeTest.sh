@@ -29,12 +29,12 @@
 
 local_path=$(cd "$(dirname $0)";pwd)
 #monitor sys
-WEBAPP_PACKAGE="org.xwalk.dynamic3D"
+WEBAPP_PACKAGE="org.xwalk.dynamicddd"
 SLEEP=86400
 $local_path/sysmon.sh `(basename $0)` $SLEEP $WEBAPP_PACKAGE &
 
 #launch app
-adb shell am start -a android.intent.action.View -n $WEBAPP_PACKAGE/.dynamic3DActivity &
+adb shell am start -a android.intent.action.View -n $WEBAPP_PACKAGE/.dynamicdddActivity &
 
 KILLSLEEP=$[ $SLEEP * 3 / 10 ]
 sleep $(($SLEEP + $KILLSLEEP ))

@@ -25,12 +25,12 @@ function unzippkg()
     echo "Package unzip successfully and push to /opt/usr/media/"
     chmod 777 /opt/usr/media/opt/$NAME/$folderName/*.sh
     echo "Install webapp ..."
-    adb install -r /opt/usr/media/opt/$NAME/$folderName/dynamic2D*.apk
+    adb install -r /opt/usr/media/opt/$NAME/$folderName/dynamicdd*.apk
 }
 
 function cleansource()
 {
-    adb uninstall org.xwalk.dynamic2D
+    adb uninstall org.xwalk.dynamicdd
     [ -d /opt/usr/media/opt/$NAME ] && rm -rf /opt/usr/media/opt/$NAME
     [ -e /opt/usr/media/$NAME.zip ] && rm -rf /opt/usr/media/$NAME.zip
     echo "Clean folder successfully..."
