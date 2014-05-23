@@ -40,7 +40,7 @@ do
   xwalkctl --uninstall $pkgid 1>>/tmp/uninstaller.log 2>&1
 done
 
-RET3=`grep "invalid application id" /tmp/uninstaller.log `
+RET3=`grep "not be found" /tmp/uninstaller.log `
 if [ -z "$RET3"  ]; then
   echo -e  "informed failure of uninstallation failed!"
   rm -f /tmp/uninstaller.log
