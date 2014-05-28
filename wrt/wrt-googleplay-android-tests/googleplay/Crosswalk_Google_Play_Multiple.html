@@ -42,15 +42,20 @@ Authors:
     </p>
     <ol>
       <li>Package an web app for arm platform with command: python make_apk.py --name=test --package=org.xwalk.test --app-url=http://www.baidu.com --app-versionCodeBase=1 --app-version=1.0.0 --arch=arm</li>
-      <li>Package an web app for x86 platform with command: python make_apk.py --name=test --package=org.xwalk.test --app-url=http://www.baidu.com --app-versionCodeBase=2 --app-version=1.0.0 --arch=x86</li>
+      <li>Package an web app for x86 platform with command: python make_apk.py --name=test --package=org.xwalk.test --app-url=http://www.baidu.com --app-versionCodeBase=1 --app-version=1.0.0 --arch=x86</li>
       <li>Login the Google Play Developer Console in Browser and click the button "Add new application"</li>
       <li>Input a Title as application name and click the button "Upload APK"</li>
-      <li>Choose ALPHA TESTING or BETA TESTING, then upload the "arm" arch apk into this application</li>
-      <li>Upload the "x86" arch apk into the same application</li>
-      <li>Add related tester account google groups</li>
-      <li>Publish this application</li>
-      <li>Download the application which we have published and install it</li>
-      <li>Launch the webapp</li>
+      <li>Choose ALPHA TESTING or BETA TESTING and Click the button "Upload new APK to Beta", then upload the "arm" arch apk into the application</li>
+      <li>Click the button "SWITCH TO ADVANCED MODE"</li>
+      <li>Click the button "Upload new APK to Beta", then upload the "x86" arch apk into the same application</li>
+      <li>Click the link "Manage list of testers", then add Google Groups or Google+ Communities</li>
+      <li>Enter the required information in "Store Listing" "Pricing&Distribution" "", then publish the application</li>
+      <li>Click the link "Manage list of testers" and copy the link which should be shared with testers, then forward to the link to become a tester</li>
+      <li>Click the link "View in Google Play store", then click the button "Add to Wishlist"</li>
+      <li>Launch the webapp "google play store" in test device</li>
+      <li>Login in the webapp "google play store" and choose Wishlist</li>
+      <li>Install the application which you publish</li>
+      <li>Launch the webapp which you publish</li>
     </ol>
     <p>
       <strong>Expected Output:</strong>
@@ -59,12 +64,17 @@ Authors:
       <li>Installation package for arm and x86 generated successfully</li>
       <li>Dialog "Add new application" popuped</li>
       <li>Application is created successfully with the name which you input</li>
-      <li>Apk for arm could be uploaded into application successfully</li>
-      <li>Apk for x86 could be uploaded into application successfully</li>
-      <li>Google groups is added successfully</li>
-      <li>The application is published successfully</li>
-      <li>Webapp could be installed successfully</li>
-      <li>Webapp could be launched successfully</li>
+      <li>Apk for arm platform could be uploaded into the application successfully</li>
+      <li>Switch to advanced mode successfully</li>
+      <li>Apk for x86 platform could be uploaded into the application successfully</li>
+      <li>Add Google Groups or Google+ Communities successfully</li>
+      <li>Application is published successfully</li>
+      <li>Become a tester for the application which you publish successfully</li>
+      <li>Application which you publish is added to your Wishlist successfully</li>
+      <li>Webapp "google play store" could be launched successfully</li>
+      <li>Login in the webapp "google play store" and wishlist displayed successfully</li>
+      <li>Webapp which you publish could be installed successfully</li>
+      <li>Webapp which you publish could be launched successfully</li>
     </ol>
   </body>
 </html>
