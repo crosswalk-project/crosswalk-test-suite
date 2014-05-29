@@ -27,6 +27,7 @@
 #
 #Authors:
 #       Xu,Yuhan <yuhanx.xu@intel.com>
+#       Xu, Kang <kangx.xu@intel.com>
 
 local_path=$(dirname $0)
 
@@ -35,6 +36,7 @@ adb install -r $local_path/../source/extension_*.apk > /tmp/install.txt
 grep "Success" /tmp/install.txt
 
 if [ $? -eq 0 ];then
+    adb uninstall org.xwalk.extension_permission_contacts_tests
     exit 0
 else
     exit 1
