@@ -30,34 +30,52 @@
 
 local_path=$(dirname $0)
 
-function checkdata()
+function checkps()
 {
-    adb shell am start -a android.intent.action.View -n org.xwalk.packagemgt/.packagemgtActivity > /tmp/test.txt
-    sleep 5
-    cat /tmp/test.txt | grep "Error" 2>&1 >/dev/null
-    if [ $? -eq 0 ];then
+    adb shell "ps | grep "$1"" > /tmp/check.txt
+    process_info9=`awk '{print $9}' /tmp/check.txt |tr -d [[:space:]]`
+    #echo "sencod=$process_info9"
+    if [ "${process_info9}" == "$1" ];then
         return 0
     else
         return 1
     fi
 }
 
-checkdata
+#install webapp
+adb install -r $local_path/../source/packagemgt*.apk > /tmp/install.txt
+grep "Success" /tmp/install.txt
+
 if [ $? -eq 0 ];then
-    #install apk
-    adb install -r $local_path/../source/packagemgt*.apk > /tmp/install.txt
-    checkdata
+    #launch app by terminal
+    adb shell am start -a android.intent.action.View -n org.xwalk.packagemgt/.packagemgtActivity
+    sleep 4
+    checkps "org.xwalk.packagemgt"
+
     if [ $? -eq 0 ];then
-       exit 1
+        #install webapp2
+        adb install -r $local_path/../source/apk2packagemgt*.apk > /tmp/install.txt
+        grep "Success" /tmp/install.txt
+
+        if [ $? -eq 0 ];then
+            #launch app by terminal
+            adb shell am start -a android.intent.action.View -n org.xwalk.apk2packagemgt/.apk2packagemgtActivity
+            sleep 4
+            checkps "org.xwalk.apk2packagemgt"
+
+            if [ $? -eq 0 ];then
+                adb uninstall org.xwalk.packagemgt
+                adb uninstall org.xwalk.apk2packagemgt
+                exit 0
+            else
+                exit 1
+            fi
+        else
+            exit 1
+        fi
+    else
+        exit 1
     fi
-fi
-
-#Uninstall apk
-adb uninstall org.xwalk.packagemgt
-checkdata
-
-if [ $? -eq 0 ];then
-    exit 0
 else
-   exit 1
+    exit 1
 fi

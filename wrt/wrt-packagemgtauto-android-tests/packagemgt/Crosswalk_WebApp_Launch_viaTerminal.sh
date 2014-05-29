@@ -47,16 +47,17 @@ adb install -r $local_path/../source/packagemgt*.apk > /tmp/install.txt
 grep "Success" /tmp/install.txt
 
 if [ $? -eq 0 ];then
-    #launch app by command
+    #launch app by terminal
     adb shell am start -a android.intent.action.View -n org.xwalk.packagemgt/.packagemgtActivity
     sleep 5
     checkps
 
     if [ $? -eq 0 ];then
+        adb uninstall org.xwalk.packagemgt
         exit 0
     else
         exit 1
     fi
 else
-   exit 1
+    exit 1
 fi

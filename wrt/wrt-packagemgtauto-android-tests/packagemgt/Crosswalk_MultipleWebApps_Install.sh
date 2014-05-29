@@ -40,10 +40,12 @@ if [ $? -eq 0 ];then
     grep "Success" /tmp/install.txt
 
     if [ $? -eq 0 ];then
-       exit 0
+        adb uninstall org.xwalk.packagemgt
+        adb uninstall org.xwalk.apk2packagemgt
+        exit 0
     else
-       exit 1
+        exit 1
     fi
 else
-   exit 1
+    exit 1
 fi

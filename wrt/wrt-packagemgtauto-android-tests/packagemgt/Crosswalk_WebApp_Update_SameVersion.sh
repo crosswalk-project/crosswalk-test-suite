@@ -41,6 +41,7 @@ if [ $? -eq 0 ];then
     grep "Success" /tmp/install.txt
 
     if [ $? -eq 0 ];then
+        adb uninstall org.xwalk.packagemgt
         exit 0
     else
         exit 1
