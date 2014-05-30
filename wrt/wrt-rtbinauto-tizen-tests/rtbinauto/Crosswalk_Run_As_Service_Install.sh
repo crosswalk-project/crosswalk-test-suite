@@ -49,7 +49,7 @@ else
                  exit 1
 fi
 
-app_id_tmp=`cat /tmp/install.txt | cut -d / -f 3`
+app_id_tmp=`cat /tmp/install.txt | cut -d / -f 4`
 echo "app_id_tmp" $app_id_tmp
 app_id=`echo $app_id_tmp | sed 's/.$//g'` > /dev/null
 #uninstall webapp
