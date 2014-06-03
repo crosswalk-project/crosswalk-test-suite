@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<!--
+Copyright (c) 2014 Intel Corporation.
+
+Redistribution and use in source and binary forms, with or without modification,
+are permitted provided that the following conditions are met:
+
+* Redistributions of works must retain the original copyright notice, this list
+  of conditions and the following disclaimer.
+* Redistributions in binary form must reproduce the original copyright notice,
+  this list of conditions and the following disclaimer in the documentation
+  and/or other materials provided with the distribution.
+* Neither the name of Intel Corporation nor the names of its contributors
+  may be used to endorse or promote products derived from this work without
+  specific prior written permission.
+
+THIS SOFTWARE IS PROVIDED BY INTEL CORPORATION "AS IS"
+AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE
+IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE
+ARE DISCLAIMED. IN NO EVENT SHALL INTEL CORPORATION BE LIABLE FOR ANY DIRECT,
+INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING,
+BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE,
+DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY
+OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING
+NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE,
+EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
+
+Authors:
+        Liu,Yun <yunx.liu@intel.com>
+
+-->
+
+<meta charset="utf-8">
+<title>Performance Timeline Test: Performance</title>
+<link rel="author" title="Intel" href="http://www.intel.com">
+<link rel="help" href="http://www.w3.org/TR/performance-timeline/#sec-window.performance-attribute">
+<script src="../resources/testharness.js"></script>
+<script src="../resources/testharnessreport.js"></script>
+<div id="log"></div>
+<script>
+
+[
+  //attributes of the Performance interface
+  ["function", "getEntries"],
+  ["function", "getEntriesByType"],
+  ["function", "getEntriesByName"]
+].forEach(function(attr) {
+  var type = attr[0];
+  var name = attr[1];
+
+  test(function () {
+    assert_true(name in performance, name + " attribute in Performance");
+    assert_equals(typeof performance[name], type, name + " attribute of type");
+  }, "Check if PerformanceEntry." + name + " exists and type of " + type);
+});
+
+test(function () {
+  assert_equals(performance.getEntries().length, 0, name + " attribute of PerformanceEntry");
+}, "Check if PerformanceEntry.getEntries() is valid");
+
+test(function () {
+  assert_equals(performance.getEntriesByType("navigation").length, 0, name + " attribute of PerformanceEntry");
+}, "Check if PerformanceEntry.getEntriesByType is valid when entryType does not exist");
+
+test(function () {
+  assert_equals(performance.getEntriesByName("a.jpg").length, 0, name + " attribute of PerformanceEntry");
+}, "Check if PerformanceEntry.getEntriesByName is valid when name does not exist");
+
+test(function () {
+  assert_equals(performance.getEntriesByName("a.jpg", "resource").length, 0, name + " attribute of PerformanceEntry");
+}, "Check if PerformanceEntry.getEntriesByName is valid when name does not exist and entryType exists");
+
+test(function () {
+  assert_equals(performance.getEntriesByName("http://127.0.1:8080/opt/performancetimeline/src/poster.png", "navigation").length, 0, name + " attribute of PerformanceEntry");
+}, "Check if PerformanceEntry.getEntriesByName is valid when name exists and entryType does not exist");
+
+test(function () {
+  assert_equals(performance.getEntriesByName("a.jpg", "navigation").length, 0, name + " attribute of PerformanceEntry");
+}, "Check if PerformanceEntry.getEntriesByName is valid when name and entryType do not exist");
+
+var task1 = 1;
+window.performance.mark("startTask1");
+for(var i = 1; i <= 100; i++) {
+  task1 = 1 * i;
+}
+window.performance.mark("endTask1");
+window.performance.measure("measure", "startTask1", "endTask1");
+
+test(function () {
+  assert_equals(performance.getEntriesByType("measure").length, 1, name + " attribute of PerformanceEntry");
+}, "Check if PerformanceEntry.getEntriesByType is valid when entryType exists");
+
+test(function () {
+  assert_equals(performance.getEntriesByName("measure").length, 1, name + " attribute of PerformanceEntry");
+}, "Check if PerformanceEntry.getEntriesByName is valid when name exists");
+
+test(function () {
+  assert_equals(performance.getEntriesByName("measure", "measure").length, 1, name + " attribute of PerformanceEntry");
+}, "Check if PerformanceEntry.getEntriesByName is valid when name and entryType exist");
+
+</script>
