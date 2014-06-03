@@ -32,7 +32,6 @@ $(document).ready(function () {
     var location = window.location;
     $("#uri").text(location);
     $("#protocol").text(location.protocol);
-    $("#hash").text(location.hash);
     $("#origin").text(location.origin);
     $("#pathname").text(location.pathname);
 });
