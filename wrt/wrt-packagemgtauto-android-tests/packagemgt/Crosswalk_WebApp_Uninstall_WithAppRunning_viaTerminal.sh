@@ -59,13 +59,13 @@ if [ $? -eq 0 ];then
         checkps
 
         if [ $? -ne 0 ];then
-           exit 0
+            exit 0
         else
-           exit 1
+            exit 1
         fi
     else
         exit 1
     fi
 else
-   exit 1
+    exit 1
 fi

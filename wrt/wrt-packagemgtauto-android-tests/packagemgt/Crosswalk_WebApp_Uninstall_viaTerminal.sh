@@ -30,41 +30,34 @@
 
 local_path=$(dirname $0)
 
-function checkps()
+function checkdata()
 {
-    adb shell "ps | grep "org.xwalk.packagemgt"" > /tmp/check.txt
-    process_info9=`awk '{print $9}' /tmp/check.txt |tr -d [[:space:]]`
-    #echo "sencod=$process_info9"
-    if [ "${process_info9}" == "org.xwalk.packagemgt" ];then
+    adb shell am start -a android.intent.action.View -n org.xwalk.packagemgt/.packagemgtActivity > /tmp/test.txt
+    sleep 5
+    cat /tmp/test.txt | grep "Error" 2>&1 >/dev/null
+    if [ $? -eq 0 ];then
         return 0
     else
         return 1
     fi
 }
 
-adb install -r $local_path/../source/packagemgt*.apk > /tmp/install.txt
-grep "Success" /tmp/install.txt
-
+checkdata
 if [ $? -eq 0 ];then
-    #launcher app by terminal
-    adb shell am start -a android.intent.action.View -n org.xwalk.packagemgt/.packagemgtActivity
-    sleep 5
-    checkps
-
-    if [ $? -ne 0 ];then
-        exit 1
+    #install apk
+    adb install -r $local_path/../source/packagemgt*.apk > /tmp/install.txt
+    checkdata
+    if [ $? -eq 0 ];then
+       exit 1
     fi
-else
-    exit 1
 fi
 
-#close web app via terminal
-adb shell am force-stop org.xwalk.packagemgt
-sleep 2
-checkps
+#Uninstall apk
+adb uninstall org.xwalk.packagemgt
+checkdata
 
-if [ $? -ne 0 ];then
-   exit 0
+if [ $? -eq 0 ];then
+    exit 0
 else
-   exit 1
+    exit 1
 fi

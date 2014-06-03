@@ -42,21 +42,30 @@ function checkps()
     fi
 }
 
-#install webapp
 adb install -r $local_path/../source/packagemgt*.apk > /tmp/install.txt
 grep "Success" /tmp/install.txt
 
 if [ $? -eq 0 ];then
-    #launch app by terminal
+    #launcher app by terminal
     adb shell am start -a android.intent.action.View -n org.xwalk.packagemgt/.packagemgtActivity
     sleep 5
     checkps
 
-    if [ $? -eq 0 ];then
-        exit 0
-    else
+    if [ $? -ne 0 ];then
         exit 1
     fi
 else
-   exit 1
+    exit 1
+fi
+
+#close web app via terminal
+adb shell am force-stop org.xwalk.packagemgt
+sleep 2
+checkps
+
+if [ $? -ne 0 ];then
+    adb uninstall org.xwalk.packagemgt
+    exit 0
+else
+    exit 1
 fi
