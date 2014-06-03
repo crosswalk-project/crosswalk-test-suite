@@ -33,7 +33,7 @@ source $local_path/Common
 
 func_check_xwalkservice
 
-install_xpk $local_path/../source/ wrt-system-event-tests.xpk
+install_xpk $local_path/../source/ wrt_system_event_tests.xpk
 
 #check the discription
 check_event $app_id "onLaunched"
