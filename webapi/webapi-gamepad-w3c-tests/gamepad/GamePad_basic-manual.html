@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<!--
+Copyright (c) 2014 Intel Corporation.
+
+Redistribution and use in source and binary forms, with or without modification,
+are permitted provided that the following conditions are met:
+
+* Redistributions of works must retain the original copyright notice, this list
+  of conditions and the following disclaimer.
+* Redistributions in binary form must reproduce the original copyright notice,
+  this list of conditions and the following disclaimer in the documentation
+  and/or other materials provided with the distribution.
+* Neither the name of Intel Corporation nor the names of its contributors
+  may be used to endorse or promote products derived from this work without
+  specific prior written permission.
+
+THIS SOFTWARE IS PROVIDED BY INTEL CORPORATION "AS IS"
+AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE
+IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE
+ARE DISCLAIMED. IN NO EVENT SHALL INTEL CORPORATION BE LIABLE FOR ANY DIRECT,
+INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING,
+BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE,
+DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY
+OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING
+NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE,
+EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
+
+Authors:
+        Jianfeng.Xu <jianfengx.xu@intel.com>
+
+-->
+
+<meta charset='utf-8'>
+<title>GamePad Test: GamePad_basic</title>
+<link rel="author" title="Intel" href="http://www.intel.com">
+<link rel="help" href="https://dvcs.w3.org/hg/gamepad/raw-file/default/gamepad.html">
+<meta name="assert" content="Test check if the basic of gamepad interface is valid.">
+<p>Please connect and press a button on gamepad.</p>
+<p>Test Passes if show test result is 'Pass'.</p>
+<div id = "log"></div>
+<script>
+var log =1;
+var text = "";
+function runTest(gamepads) {
+  var gamepad = gamepads[0];
+  [
+    ["string", "id", "readonly"],
+    ["long", "index", "readonly"],
+    ["boolean", "connected", "readonly"],
+    ["double", "timestamp", "readonly"],
+    ["string", "mapping", "readonly"],
+    ["object", "axes", "readonly"],
+    ["object", "buttons", "readonly"]
+  ].forEach(function(attr) {
+            var type = attr[0];
+            var name = attr[1];
+            var read = attr[2];
+            text = text + "<br>GamePad_" + name + "_basic&nbsp;&nbsp;&nbsp;Check if the  readonly attribute " + name + " in gamepad exists and type of " + type + "&nbsp;&nbsp;&nbsp;&nbsp;";
+            document.getElementById("log").innerHTML = text;
+            if(!(name in gamepad)) { 
+              text = text  + name + " does not exist&nbsp;&nbsp;&nbsp;&nbsp;fail</br>";
+              document.getElementById("log").innerHTML = text;
+            } else {
+              var typeResult = true;
+              switch(type) {
+                case "string":
+                  if(typeof gamepad[name] != "string") {
+                    typeResult = false;
+                  }
+                break;
+                case "long":
+                  if (typeof gamepad[name] != "number") {
+                    typeResult = false;
+                  }
+                break;
+                case "double":
+                  if (typeof gamepad[name] != "number") {
+                    typeResult = false;
+                  }
+                break;
+                case "boolean":
+                  if (typeof gamepad[name] != "boolean") {
+                    typeResult = false;
+                  }
+                break;
+                case "object":
+                  if (typeof gamepad[name] != "object") {
+                    typeResult = false;
+                  }
+                break;
+                default:
+                  break;
+              }
+              if (!typeResult)
+              {
+                text = text  + "The type of " + name +" is not " + type + "&nbsp;&nbsp;&nbsp;&nbsp;fail</br>";
+                document.getElementById("log").innerHTML = text;
+              } else {
+                var readResult = true;
+                switch(type) {
+                  case "string":
+                      var dc = gamepad[name];
+                      gamepad[name] = dc+ "test";
+                      if (dc != gamepad[name])
+                      {
+                        readResult = false;
+                      }
+                  break;
+                  case "long":
+                      var dc = gamepad[name];
+                      gamepad[name] = dc + 1;
+                      if (dc != gamepad[name])
+                      {
+                        readResult = false;
+                      }
+                  break;
+                  case "double":
+                      var dc = gamepad[name];
+                      gamepad[name] = dc + 1;
+                      if (dc != gamepad[name])
+                      {
+                        readResult = false;
+                      }
+                  break;
+                  case "boolean":
+                      var dc = gamepad[name];
+                      if (dc)
+                      {
+                        gamepad[name] = false;
+                      }else {
+                        gamepad[name] = true;
+                      }
+                      if (dc != gamepad[name])
+                      {
+                        readResult = false;
+                      }
+                  break;
+                  case "object":
+                      var dc = gamepad[name];
+                      gamepad[name] = null;
+                      if (dc != gamepad[name])
+                      {
+                        readResult = false;
+                      }
+                  break;
+                  default:
+                  break;
+                }
+                if (!readResult)
+                {
+                  text = text  + "The " + name +" is not readonly&nbsp;&nbsp;&nbsp;&nbsp;fail</br>";
+                  document.getElementById("log").innerHTML = text;
+                } else {
+                  text = text  + "&nbsp;&nbsp;&nbsp;&nbsppass";
+                  document.getElementById("log").innerHTML = text;
+                }
+              }
+            }
+  });
+}
+
+function runAnimation() {  
+  window.requestAnimationFrame(runAnimation);
+  
+  var gamepads =  navigator.getGamepads();
+  if(gamepads.length > 0 && log == 1) {
+    log =2;
+    runTest(gamepads);
+  };
+}
+window.requestAnimationFrame(runAnimation);
+</script>
