@@ -49,7 +49,7 @@ else
                  exit 1
 fi
 
-app_id_tmp=`cat /tmp/install.txt | cut -d / -f 3`
+app_id_tmp=`cat /tmp/install.txt | cut -d / -f 4`
 app_id=`echo $app_id_tmp | sed 's/.$//g'` > /dev/null
 sqlite3 /opt/home/app/.config/xwalk-service/applications.db "select id,manifest from applications;"| grep $app_id > /dev/null
 if [ $? -eq 0 ]; then
