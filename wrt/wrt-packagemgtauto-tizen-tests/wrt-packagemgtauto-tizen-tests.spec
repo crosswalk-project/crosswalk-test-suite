@@ -13,4 +13,6 @@ whitelist="
 inst.sh
 tests.xml
 tests.full.xml
-mediasrc"
+mediasrc
+packagemgtauto
+source"
