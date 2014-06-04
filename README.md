@@ -39,7 +39,6 @@ For testing execution and reports, please follow these user guides:
 * `doc/WebAPI_Test_Suite_User_Guide`
 * `doc/Web_BAT_Test_Suite_User_Guide`
 * `doc/Web_Runtime_Test_Suite_User_Guide`
-* `doc/Web_Testing_Service_User_Guide`
 
 ## Contributing
 
