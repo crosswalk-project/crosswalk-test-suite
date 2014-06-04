@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<!--
+Copyright (c) 2013 Intel Corporation.
+
+Redistribution and use in source and binary forms, with or without modification,
+are permitted provided that the following conditions are met:
+
+* Redistributions of works must retain the original copyright notice, this list
+  of conditions and the following disclaimer.
+* Redistributions in binary form must reproduce the original copyright notice,
+  this list of conditions and the following disclaimer in the documentation
+  and/or other materials provided with the distribution.
+* Neither the name of Intel Corporation nor the names of its contributors
+  may be used to endorse or promote products derived from this work without
+  specific prior written permission.
+
+THIS SOFTWARE IS PROVIDED BY INTEL CORPORATION "AS IS"
+AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE
+IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE
+ARE DISCLAIMED. IN NO EVENT SHALL INTEL CORPORATION BE LIABLE FOR ANY DIRECT,
+INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING,
+BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE,
+DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY
+OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING
+NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE,
+EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
+
+Authors:
+        Xu, Jianfeng <jianfengx.xu@intel.com>
+
+-->
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="initial-scale=1.0, maximum-scale=1.0, width=device-width">
+    <link rel="stylesheet" type="text/css" href="../../css/jquery.mobile.css" />
+    <link rel="stylesheet" type="text/css" href="../../css/main.css" />
+    <link rel="stylesheet" type="text/css" href="css/style.css" />
+    <script src="../../js/thirdparty/jquery.js"></script>
+    <script src="../../js/thirdparty/jquery.mobile.js"></script>
+    <script src="../../js/tests.js"></script>
+    <script src="js/gamepadtest.js"></script>
+  </head>
+  <body>
+    <div data-role="header">
+      <h1 id="main_page_title"></h1>
+    </div>
+    <div data-role="content">
+      <div id= "d">
+      <div id="GamePad">
+           <div class="button" id = "button0">0</div>
+           <div class="button" id = "button1">1</div>
+           <div class="button" id = "button2">2</div>
+           <div class="button" id = "button3">3</div>
+           <div class="button" id = "button4">4</div>
+           <div class="button" id = "button5">5</div>
+           <div class="button" id = "button6">6</div>
+           <div class="button" id = "button7">7</div>
+           <div class="button" id = "button8">8</div>
+           <div class="button" id = "button9">9</div>
+           <div class="button" id = "button10">10</div>
+           <div class="button" id = "button11">11</div>
+           <div class="button" id = "button12">12</div>
+           <div class="button" id = "button13">13</div>
+           <div class="button" id = "button14">14</div>
+           <div class="button" id = "button15">15</div>
+           <div class="button" id = "button16">16</div>
+      </div>
+      <div id="Axes">
+           <progress class="axes" id = "axes0">0</progress>
+           <progress class="axes" id = "axes1">1</progress>
+           <progress class="axes" id = "axes2">2</progress>
+           <progress class="axes" id = "axes3">3</progress>
+           <progress class="axes" id = "axes4">4</progress>
+           <progress class="axes" id = "axes5">5</progress>
+           <progress class="axes" id = "axes6">6</progress>
+           <progress class="axes" id = "axes7">7</progress>
+      </div>
+       <div id="start">Connect and press a button on your gamepad to start</div>
+      <div>
+    </div>
+    <div data-role="footer" data-position="fixed">
+    </div>
+    <div data-role="popup" id="popup_info">
+      <font class="fontSize">
+        <p>Test Purpose: </p>
+        <p>Verifies the GamePad API can receive the signal from GamePad.</p>
+        <p>Test Step: </p>
+          <ol>
+            <li>Connect gamepad to device.</li>
+            <li>Operate different buttons on the gamepad.</li>
+          </ol>
+        <p>Expected Result: </p>
+        <p>Test passes if the different signal can be captured and show on the page.</p>
+      </font>
+    </div>
+  </body>
+</html>
