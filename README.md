@@ -17,8 +17,6 @@ W3C/HTML5 APIs, Supplementary APIs, Crosswalk experimental APIs
   * `wrt-documentation-verification-tests`: tests for documents verification
 * `doc/`: see [documentaion](#Documentation) below
 * `tools/`: tools for this test suite
-* `webtestingservice/`: a sharing web service that can perform customized
-web tests and show test results on web platforms, OS and web browsers
 
 ## Documentation
 
