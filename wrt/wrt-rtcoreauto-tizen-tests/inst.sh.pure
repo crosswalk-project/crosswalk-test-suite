@@ -14,20 +14,20 @@ RESOURCE_DIR=/opt/usr/media
 function installpkg()
 {
     #environment clear
-    echo "environment clear >>>>>>>>>>>>>>>>>>>>>>>>>>>>>."
-    [ -d /opt/usr/media/tct ] ||  mkdir -p /opt/usr/media/tct
-    [ -e /opt/usr/media/tct/$PACKAGENAME.zip ] && rm /opt/usr/media/tct/$PACKAGENAME.zip
-    [ -e /opt/usr/media/tct/opt/$PACKAGENAME ] && rm -rf /opt/usr/media/tct/opt/$PACKAGENAME
-    cp -arf $PACKAGENAME.zip /opt/usr/media/tct/
-    cd /opt/usr/media/tct/
-    unzip $PACKAGENAME.zip
-    echo "Package unzip successfully and push to host /opt/usr/media/tct/"
+    #echo "environment clear >>>>>>>>>>>>>>>>>>>>>>>>>>>>>."
+    #[ -d /opt/usr/media/tct ] ||  mkdir -p /opt/usr/media/tct
+    #[ -e /opt/usr/media/tct/$PACKAGENAME.zip ] && rm /opt/usr/media/tct/$PACKAGENAME.zip
+    #[ -e /opt/usr/media/tct/opt/$PACKAGENAME ] && rm -rf /opt/usr/media/tct/opt/$PACKAGENAME
+    #cp -arf $PACKAGENAME.zip /opt/usr/media/tct/
+    #cd /opt/usr/media/tct/
+    #unzip $PACKAGENAME.zip
+    #echo "Package unzip successfully and push to host /opt/usr/media/tct/"
 }
 
 function uninstallpkg()
 {
     [ -d /opt/usr/media/tct/opt/$PACKAGENAME ] && rm -rf /opt/usr/media/tct/opt/$PACKAGENAME
-    [ -e /opt/usr/media/tct/$PACKAGENAME.zip ] && rm /opt/usr/media/tct/$PACKAGENAME.zip
+    #[ -e /opt/usr/media/tct/$PACKAGENAME.zip ] && rm /opt/usr/media/tct/$PACKAGENAME.zip
     echo "Clean folder successfully..."
 }
 
