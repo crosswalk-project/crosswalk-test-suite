@@ -33,7 +33,7 @@ source $local_path/Common
 
 func_check_xwalkservice
 
-install_xpk $local_path/../source/ manifest_name_tolerantStrike_tests.xpk
+install_xpk $local_path/../source/ manifest_name_tolerantstrike_tests.xpk
 
 #check the discription
 check_db $app_id "\"name\"\:\"manifest\_name\_tolerantStrike\-tests\"" 0

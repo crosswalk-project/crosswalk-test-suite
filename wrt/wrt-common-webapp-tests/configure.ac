@@ -3,12 +3,12 @@ AM_INIT_AUTOMAKE([-Wall -Werror foreign])
 
 AC_CONFIG_FILES([Makefile \
 webapp/Makefile \
-webapp/extension-permission-contacts-tests/Makefile \
-webapp/extension-permission-contacts-tests/contactextension/Makefile \
-webapp/web-feature-scheme-tests/Makefile \
-webapp/web-scroll-indicators-tests/Makefile \
-webapp/lifecycle-nonpers-multiwin-tests/Makefile \
-webapp/manifest_app_mainSourceAndScript2_tests/Makefile \
+webapp/extension_permission_contacts_tests/Makefile \
+webapp/extension_permission_contacts_tests/contactextension/Makefile \
+webapp/web_feature_scheme_tests/Makefile \
+webapp/web_scroll_indicators_tests/Makefile \
+webapp/lifecycle_nonpers_multiwin_tests/Makefile \
+webapp/manifest_app_mainsourceandscript2_tests/Makefile \
 webapp/manifest_manifestVersion_normal_tests/Makefile \
 webapp/manifest_name_blend_tests/Makefile \
 webapp/manifestname/Makefile \
@@ -17,7 +17,7 @@ webapp/manifest_version_identifyingOne_tests/Makefile \
 webapp/manifest_version_identifyingThree_tests/Makefile \
 webapp/manifest_version_identifyingTwo_tests/Makefile \
 webapp/manifest_name_capitalAndsmallLetter_tests/Makefile \
-webapp/manifest_name_tolerantDot_tests/Makefile \
+webapp/manifest_name_tolerantdot_tests/Makefile \
 webapp/manifest_icon_69pixel_tests/Makefile \
 webapp/manifest_icon_117pixel_tests/Makefile \
 webapp/manifest_icon_bmp_tests/Makefile \
@@ -28,14 +28,14 @@ webapp/manifest_icon_One_tests/Makefile \
 webapp/manifest_icon_Three_tests/Makefile \
 webapp/manifest_icon_Two_tests/Makefile \
 webapp/manifest_name_w123456_tests/Makefile \
-webapp/manifest_name_tolerantStrike_tests/Makefile \
+webapp/manifest_name_tolerantstrike_tests/Makefile \
 webapp/manifest_app_launchPathAndMain_tests/Makefile \
 webapp/manifest_app_launchPath_tests/Makefile \
-webapp/manifest_app_mainScript_tests/Makefile \
-webapp/manifest_app_mainSourceAndScript1_tests/Makefile \
-webapp/manifest_app_mainSource2_tests/Makefile \
-webapp/manifest_app_mainSource1_tests/Makefile \
-webapp/lifecycle-nonpers-onewin-tests/Makefile \
+webapp/manifest_app_mainscript_tests/Makefile \
+webapp/manifest_app_mainsourceandscript1_tests/Makefile \
+webapp/manifest_app_mainsource2_tests/Makefile \
+webapp/manifest_app_mainsource1_tests/Makefile \
+webapp/lifecycle_nonpers_onewin_tests/Makefile \
 webapp/disable_raw_socket_tests/Makefile \
 webapp/disable_device_capabilities_tests/Makefile \
 webapp/update_original_versionMulti_tests/Makefile \
@@ -46,17 +46,17 @@ webapp/update_versionOne_HigherMulti_tests/Makefile \
 webapp/update_versionOne_Higher_tests/Makefile \
 webapp/update_versionOne_LowerMulti_tests/Makefile \
 webapp/update_versionOne_Lower_tests/Makefile \
-webapp/web-feature-notification-tests/Makefile \
-webapp/web-feature-datetime-tests/Makefile \
-webapp/csp-directive-list-tests/Makefile \
-webapp/csp-directive-none-tests/Makefile \
-webapp/csp-script-none-tests/Makefile \
-webapp/csp-script-self-tests/Makefile \
-webapp/csp-script-unsafe-tests/Makefile \
-webapp/web-pinch-zoom-tests/Makefile \
+webapp/web_feature_notification_tests/Makefile \
+webapp/web_feature_datetime_tests/Makefile \
+webapp/csp_directive_list_tests/Makefile \
+webapp/csp_directive_none_tests/Makefile \
+webapp/csp_script_none_tests/Makefile \
+webapp/csp_script_self_tests/Makefile \
+webapp/csp_script_unsafe_tests/Makefile \
+webapp/web_pinch_zoom_tests/Makefile \
 webapp/permission_field_contacts_tests/Makefile \
-webapp/wrt-system-event-tests/Makefile \
-webapp/web-scheme-content-tests/Makefile \
+webapp/wrt_system_event_tests/Makefile \
+webapp/web_scheme_content_tests/Makefile \
 webapp/splashscreen_launchscreen_bmp_tests/Makefile \
 webapp/splashscreen_launchscreen_gif_tests/Makefile \
 webapp/splashscreen_launchscreen_jpg_tests/Makefile \
@@ -70,9 +70,9 @@ webapp/launch_fullscreen_true_tests/Makefile \
 webapp/launch_fullscreen_false_tests/Makefile \
 webapp/manifest_minimal_manifest_tests/Makefile \
 webapp/manifest_icon_null_tests/Makefile \
-webapp/web-support-copyandpaste-tests/Makefile \
-webapp/web-support-pasted-tests/Makefile \
-webapp/use-chrome-blacklist-tests/Makefile \
+webapp/web_support_copyandpaste_tests/Makefile \
+webapp/web_support_pasted_tests/Makefile \
+webapp/use_chrome_blacklist_tests/Makefile \
 webapp/permission_api_bluetooth_tests/Makefile \
 webapp/permission_api_contact_tests/Makefile \
 webapp/permission_api_messaging_tests/Makefile \
@@ -119,7 +119,7 @@ webapp/manifest_extend_name_withspace/Makefile \
 webapp/security_url_certificate_tests/Makefile
 webapp/manifest_version_identifyingFourSame_tests/Makefile \
 webapp/manifest_version_identifyingFourZero_tests/Makefile \
-webapp/manifest_version_identifyingNull_tests/Makefile \
+webapp/manifest_version_identifyingnull_tests/Makefile \
 webapp/manifest_version_identifyingSix_tests/Makefile \
 webapp/manifest_version_comma_tests/Makefile \
 webapp/manifest_version_question_tests/Makefile \
@@ -129,12 +129,12 @@ webapp/manifest_version_numberandchar_tests/Makefile \
 webapp/manifest_version_percent_tests/Makefile \
 webapp/manifest_version_asterisk_tests/Makefile \
 webapp/manifest_version_pointcn_tests/Makefile \
-webapp/manifest_app_launchPathNoIndex_tests/Makefile \
-webapp/manifest_app_launchPathIndexBlank_tests/Makefile \
-webapp/manifest_app_launchPathIndexChinese_tests/Makefile \
-webapp/manifest_app_mainSourceNoMain_tests/Makefile \
-webapp/manifest_app_mainSourceNoSource_tests/Makefile \
-webapp/manifest_app_MainSourceNoFile_tests/Makefile \
+webapp/manifest_app_launchpathnoindex_tests/Makefile \
+webapp/manifest_app_launchpathindexblank_tests/Makefile \
+webapp/manifest_app_launchpathindexchinese_tests/Makefile \
+webapp/manifest_app_mainsourcenomain_tests/Makefile \
+webapp/manifest_app_mainsourcenosource_tests/Makefile \
+webapp/manifest_app_mainsourcenofile_tests/Makefile \
 webapp/manifest_icon_nofile_tests/Makefile \
 webapp/manifest_icon_valuenull_tests/Makefile \
 webapp/manifest_icon_namedasterisk_tests/Makefile \
@@ -148,13 +148,13 @@ webapp/splashscreen_launchscreen_field_tests/Makefile \
 webapp/manifest_icon_nofiles_tests/Makefile \
 webapp/manifest_icon_twoicon_tests/Makefile \
 webapp/manifest_icon_threeicon_tests/Makefile \
-webapp/manifest_app_mainSourceNullValue_tests/Makefile \
+webapp/manifest_app_mainsourcenullvalue_tests/Makefile \
 webapp/webgl_webrtc_enable_tests/Makefile \
 webapp/webgl_webrtc_disable_tests/Makefile \
 webapp/xwalk_hosts_matchpatternstail_tests/Makefile \
 webapp/xwalk_hosts_matchpatternsmiddle_tests/Makefile \
 webapp/xwalk_hosts_matchpatterns_tests/Makefile \
-webapp/xwalk_hosts_value_tests/Makefile \
+webapp/xwalk_hosts_value_tests/Makefile\
 webapp/web_openfile_thirdpart_tests/Makefile \
-webapp/web-HWAccelerated-video-tests/Makefile])
+webapp/web_hwaccelerated_video_tests/Makefile])
 AC_OUTPUT

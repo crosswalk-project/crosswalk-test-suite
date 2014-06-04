@@ -22,14 +22,14 @@ resource/manifest_minimal_manifest_tests/Makefile \
 resource/manifestname/Makefile \
 resource/manifest_name_blend_tests/Makefile \
 resource/manifest_name_capitalAndsmallLetter_tests/Makefile \
-resource/manifest_name_tolerantDot_tests/Makefile \
-resource/manifest_name_tolerantStrike_tests/Makefile \
+resource/manifest_name_tolerantdot_tests/Makefile \
+resource/manifest_name_tolerantstrike_tests/Makefile \
 resource/manifest_name_w123456_tests/Makefile \
 resource/manifest_version_identifyingFour_tests/Makefile \
 resource/manifest_version_identifyingOne_tests/Makefile \
 resource/manifest_version_identifyingThree_tests/Makefile \
 resource/manifest_version_identifyingTwo_tests/Makefile \
-resource/wrt-system-event-tests/Makefile \
+resource/wrt_system_event_tests/Makefile \
 resource/signature/Makefile \
 resource/manifest_extend_html_namedhttp/Makefile \
 resource/manifest_extend_name_withspace/Makefile])
