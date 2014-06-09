@@ -1,0 +1,27 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html>
+    <head>
+        <title>CSS Test: Font-variant and 'display: inline' elements</title>
+        <link title="Microsoft" rel="author" href="http://www.microsoft.com/">
+        <link rel="help" href="http://www.w3.org/TR/CSS21/fonts.html#propdef-font-variant">
+        <link rel="help" href="http://www.w3.org/TR/CSS21/fonts.html#small-caps">
+        <link rel="help" href="http://www.w3.org/TR/css3-fonts/#font-variant-prop">
+        <meta content="" name="flags">
+        <meta content="The 'font-variant' property applies to 'display: inline' elements." name="assert">
+        <style type="text/css">
+            div
+            {
+                font-variant: small-caps;
+            }
+            #div1
+            {
+                display: inline;
+            }
+        </style>
+    </head>
+    <body>
+        <p>Test passes if the lines of "Filler Text" below match.</p>
+        <div>Filler Text</div>
+        <div id="div1">Filler Text</div>
+    </body>
+</html>

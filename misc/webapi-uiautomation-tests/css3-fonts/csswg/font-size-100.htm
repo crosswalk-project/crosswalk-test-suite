@@ -1,0 +1,28 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html>
+    <head>
+        <title>CSS Test: Font-size with a negative zero value and no units, -0</title>
+        <link title="Microsoft" rel="author" href="http://www.microsoft.com/">
+        <link rel="help" href="http://www.w3.org/TR/CSS21/fonts.html#propdef-font-size">
+        <link rel="help" href="http://www.w3.org/TR/CSS21/fonts.html#font-size-props">
+        <link rel="help" href="http://www.w3.org/TR/css3-fonts/#font-size-prop">
+        <meta content="ahem" name="flags">
+        <meta content="The 'font-size' property sets a negative zero length value with no units." name="assert">
+        <style type="text/css">
+            @font-face {
+                font-family: Ahem;
+                src: url("support/AHEM____.TTF");
+            }
+            div
+            {
+                color: red;
+                font-family: Ahem;
+                font-size: -0;
+            }
+        </style>
+    </head>
+    <body>
+        <p>Test passes if there is no red visible on the page.</p>
+        <div>Filler Text</div>
+    </body>
+</html>
