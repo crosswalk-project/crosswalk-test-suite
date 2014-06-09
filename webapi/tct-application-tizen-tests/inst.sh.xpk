@@ -13,6 +13,7 @@ SUBXPK2="TCTAppControlMock.xpk"
 SUBAPP1="TCTAppControl"
 SUBAPP2="TCTAppControlMock"
 RESOURCE_DIR=/opt/usr/media
+OTHERS_EXISTS=true
 
 function installpkg(){
     xwalkctl --install $(dirname $0)/$XPKNAME
@@ -24,7 +25,13 @@ function installpkg(){
 
     ### copy media files ###
     if [ -d /opt/usr/media/tct/opt/$PACKAGENAME/mediasrc ]; then
-        cp -f /opt/usr/media/tct/opt/$PACKAGENAME/mediasrc/*  /opt/usr/media/Others/
+        if [ -d /opt/usr/media/Others ]; then
+            cp -f /opt/usr/media/tct/opt/$PACKAGENAME/mediasrc/*  /opt/usr/media/Others/
+        else
+            OTHERS_EXISTS=false
+            mkdir -p /opt/usr/media/Others/
+            cp -f /opt/usr/media/tct/opt/$PACKAGENAME/mediasrc/*  /opt/usr/media/Others/
+        fi
     else
         echo "Cp media files fail, please check if exists file: /opt/usr/media/tct/opt/$PACKAGENAME/mediasrc/ ..."
     fi
@@ -38,13 +45,13 @@ function uninstallpkg(){
         xwalkctl --uninstall $pkgid
     done
 
-    subpkgids1=`cat /tmp/apps.txt | grep $SUBAPP1 | awk '{print $(NF-1)}'`
+    subpkgids1=`cat /tmp/apps.txt | grep $SUBAPP1$ | awk '{print $(NF-1)}'`
     for subpkgid1 in $subpkgids1
     do
         xwalkctl --uninstall $subpkgid1
     done
 
-    subpkgids2=`cat /tmp/apps.txt | grep $SUBAPP2 | awk '{print $(NF-1)}'`
+    subpkgids2=`cat /tmp/apps.txt | grep $SUBAPP2$ | awk '{print $(NF-1)}'`
     for subpkgid2 in $subpkgids2
     do
         xwalkctl --uninstall $subpkgid2
@@ -56,17 +63,19 @@ function uninstallpkg(){
     ### remove media files ###
     MEDIAFILE="TCTAppInfoEventTest1.wgt
 TCTAppInfoEventTest2.wgt"
-
-    for mediafile in $MEDIAFILE;do
-        if [ -f /opt/usr/media/Others/$mediafile ]; then
-            rm -f /opt/usr/media/Others/$mediafile
-        else
-            echo "Remove media files fail, please check if exists file: /opt/usr/media/Others/$mediafile ..."
-        fi
-    done
-
+    if [ !$OTHERS_EXISTS ]; then
+        rm -rf /opt/usr/media/Others
+    else
+        for mediafile in $MEDIAFILE; do
+            if [ -f /opt/usr/media/Others/$mediafile ]; then
+                rm -f /opt/usr/media/Others/$mediafile
+            else
+                echo "Remove media files fail, please check if exists file: /opt/usr/media/Others/$mediafile ..."
+            fi
+        done
+    fi
     ### remove source file ###
-    if [ -d /opt/usr/media/tct/opt/$PACKAGENAME ];then
+    if [ -d /opt/usr/media/tct/opt/$PACKAGENAME ]; then
         rm -rf /opt/usr/media/tct/opt/$PACKAGENAME
     else
         echo "Remove source file fail,please check if the source file exist: /opt/usr/media/tct/opt/$PACKAGENAME ..."
