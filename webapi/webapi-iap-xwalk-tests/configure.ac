@@ -1,4 +1,4 @@
-AC_INIT([webapi-iap-w3c-tests], [6.35.1.2], [zhiqiang.zhang@intel.com])
+AC_INIT([webapi-iap-xwalk-tests], [6.35.1.2], [zhiqiang.zhang@intel.com])
 AM_INIT_AUTOMAKE([-Wall -Werror foreign])
 
 AC_CONFIG_FILES([Makefile \
