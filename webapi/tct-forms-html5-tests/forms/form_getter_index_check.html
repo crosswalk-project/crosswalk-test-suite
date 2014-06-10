@@ -45,7 +45,8 @@ Authors:
   <body>
     <div id="log"></div>
     <form id="testform" style="display: none">
-      <input id="testpassword" type="password" value="testpassword" name="testpassword"/>
+      <!-- set autocomplete to "off" only for web security -->
+      <input id="testpassword" type="password" value="testpassword" name="testpassword" autocomplete="off"/>
     </form>
     <script>
        test(function(){
