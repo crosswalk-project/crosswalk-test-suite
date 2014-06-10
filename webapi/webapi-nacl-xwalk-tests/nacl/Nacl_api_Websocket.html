@@ -36,13 +36,16 @@ Authors:
 <body>
   <p>Test Purpose: </p>
   <p>Verifies the Websocket example demonstrates how to use the Websocket API</p>
-  <p>Test Purpose: </p>
-  <p>Make sure the tinyweb is running</p>
   <p>Test Steps: </p>
   <ol>
     <li>Execute command on IVI device with "app" user: "xwalk 'http://your_server:5103/api/websocket/index.html?tc=pnacl'"</li>
+    <li>There are two ways for testing:
+    <ul>
+    <li>Make sure the device network is available</li>
+    <li>If the device do not connect to the network, you could use the local test socket server(tinyweb) instead, method is
+    launch the tinyweb, then run the test steps, after open the page, change the url "ws://html5rocks.websocket.org/echo" to "ws://127.0.0.1:8081/echo" in the page</li>
+    </ul>
     <li>Follow the opened index.html description to execute all steps</li>
-    <li>The url "ws://html5rocks.websocket.org/echo" change to "ws://127.0.0.1:8081/echo" in the page</li>
   </ol>
   <p>Expected Result: </p>
   <ol>
