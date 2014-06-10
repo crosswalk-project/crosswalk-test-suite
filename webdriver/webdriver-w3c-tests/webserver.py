@@ -239,7 +239,8 @@ class Httpd(object):
     __del__ = stop
 
     def where_is(self, path):
-        return "http://%s:%d/%s" % (self.host, self.port, path)
+        # return tests path in android
+        return "file:///%s/%s" % ("android_asset/www", path)
 
 
 def main(args=sys.argv[1:]):
