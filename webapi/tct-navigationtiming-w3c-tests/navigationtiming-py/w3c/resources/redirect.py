@@ -19,4 +19,4 @@ def main(request, response):
 
         response.headers.set("Location", location)
     except Exception,ex:
-        return Exception,":",ex
+        return "error"

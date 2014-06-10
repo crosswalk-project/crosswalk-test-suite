@@ -23,4 +23,4 @@ def main(request, response):
 
         return status, headers, body
     except Exception,ex:
-        return Exception,":",ex
+        return "error"
