@@ -63,10 +63,10 @@ function uninstallpkg(){
     ### remove media files ###
     MEDIAFILE="TCTAppInfoEventTest1.wgt
 TCTAppInfoEventTest2.wgt"
-    if [ $OTHERS_EXISTS==false ]; then
+    if [ !$OTHERS_EXISTS ]; then
         rm -rf /opt/usr/media/Others
     else
-        for mediafile in $MEDIAFILE;do
+        for mediafile in $MEDIAFILE; do
             if [ -f /opt/usr/media/Others/$mediafile ]; then
                 rm -f /opt/usr/media/Others/$mediafile
             else
@@ -75,7 +75,7 @@ TCTAppInfoEventTest2.wgt"
         done
     fi
     ### remove source file ###
-    if [ -d /opt/usr/media/tct/opt/$PACKAGENAME ];then
+    if [ -d /opt/usr/media/tct/opt/$PACKAGENAME ]; then
         rm -rf /opt/usr/media/tct/opt/$PACKAGENAME
     else
         echo "Remove source file fail,please check if the source file exist: /opt/usr/media/tct/opt/$PACKAGENAME ..."
