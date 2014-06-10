@@ -9,14 +9,14 @@ webapp/web_feature_scheme_tests/Makefile \
 webapp/web_scroll_indicators_tests/Makefile \
 webapp/lifecycle_nonpers_multiwin_tests/Makefile \
 webapp/manifest_app_mainsourceandscript2_tests/Makefile \
-webapp/manifest_manifestVersion_normal_tests/Makefile \
+webapp/manifest_manifestversion_normal_tests/Makefile \
 webapp/manifest_name_blend_tests/Makefile \
 webapp/manifestname/Makefile \
-webapp/manifest_version_identifyingFour_tests/Makefile \
-webapp/manifest_version_identifyingOne_tests/Makefile \
-webapp/manifest_version_identifyingThree_tests/Makefile \
-webapp/manifest_version_identifyingTwo_tests/Makefile \
-webapp/manifest_name_capitalAndsmallLetter_tests/Makefile \
+webapp/manifest_version_identifyingfour_tests/Makefile \
+webapp/manifest_version_identifyingone_tests/Makefile \
+webapp/manifest_version_identifyingthree_tests/Makefile \
+webapp/manifest_version_identifyingtwo_tests/Makefile \
+webapp/manifest_name_capitalandsmallletter_tests/Makefile \
 webapp/manifest_name_tolerantdot_tests/Makefile \
 webapp/manifest_icon_69pixel_tests/Makefile \
 webapp/manifest_icon_117pixel_tests/Makefile \
@@ -24,13 +24,13 @@ webapp/manifest_icon_bmp_tests/Makefile \
 webapp/manifest_icon_gif_tests/Makefile \
 webapp/manifest_icon_ico_tests/Makefile \
 webapp/manifest_icon_jpg_tests/Makefile \
-webapp/manifest_icon_One_tests/Makefile \
-webapp/manifest_icon_Three_tests/Makefile \
-webapp/manifest_icon_Two_tests/Makefile \
+webapp/manifest_icon_one_tests/Makefile \
+webapp/manifest_icon_three_tests/Makefile \
+webapp/manifest_icon_two_tests/Makefile \
 webapp/manifest_name_w123456_tests/Makefile \
 webapp/manifest_name_tolerantstrike_tests/Makefile \
-webapp/manifest_app_launchPathAndMain_tests/Makefile \
-webapp/manifest_app_launchPath_tests/Makefile \
+webapp/manifest_app_launchpathandmain_tests/Makefile \
+webapp/manifest_app_launchpath_tests/Makefile \
 webapp/manifest_app_mainscript_tests/Makefile \
 webapp/manifest_app_mainsourceandscript1_tests/Makefile \
 webapp/manifest_app_mainsource2_tests/Makefile \
@@ -38,14 +38,14 @@ webapp/manifest_app_mainsource1_tests/Makefile \
 webapp/lifecycle_nonpers_onewin_tests/Makefile \
 webapp/disable_raw_socket_tests/Makefile \
 webapp/disable_device_capabilities_tests/Makefile \
-webapp/update_original_versionMulti_tests/Makefile \
-webapp/update_original_versionOne_tests/Makefile \
-webapp/update_versionMulti_Higher_tests/Makefile \
-webapp/update_versionMulti_Lower_tests/Makefile \
-webapp/update_versionOne_HigherMulti_tests/Makefile \
-webapp/update_versionOne_Higher_tests/Makefile \
-webapp/update_versionOne_LowerMulti_tests/Makefile \
-webapp/update_versionOne_Lower_tests/Makefile \
+webapp/update_original_versionmulti_tests/Makefile \
+webapp/update_original_versionone_tests/Makefile \
+webapp/update_versionmulti_higher_tests/Makefile \
+webapp/update_versionmulti_lower_tests/Makefile \
+webapp/update_versionone_highermulti_tests/Makefile \
+webapp/update_versionone_higher_tests/Makefile \
+webapp/update_versionone_lowermulti_tests/Makefile \
+webapp/update_versionone_lower_tests/Makefile \
 webapp/web_feature_notification_tests/Makefile \
 webapp/web_feature_datetime_tests/Makefile \
 webapp/csp_directive_list_tests/Makefile \
@@ -87,7 +87,7 @@ webapp/permission_field_one_tests/Makefile \
 webapp/permission_field_uppercase_tests/Makefile \
 webapp/manifest_extend_fullmanifest/Makefile \
 webapp/manifest_extend_requirement_csp/Makefile \
-webapp/manifest_extend_requirementCSPAndPermissions/Makefile \
+webapp/manifest_extend_requirementcspandpermissions/Makefile \
 webapp/manifest_extend_requirement_description/Makefile \
 webapp/manifest_extend_requirementpermissions/Makefile \
 webapp/manifest_negative_nullfields_app/Makefile \
@@ -116,11 +116,11 @@ webapp/permission_negative_nullvalue_tests/Makefile \
 webapp/permission_negative_smallletter_tests/Makefile \
 webapp/manifest_extend_html_namedhttp/Makefile \
 webapp/manifest_extend_name_withspace/Makefile \
-webapp/security_url_certificate_tests/Makefile
-webapp/manifest_version_identifyingFourSame_tests/Makefile \
-webapp/manifest_version_identifyingFourZero_tests/Makefile \
+webapp/security_url_certificate_tests/Makefile \
+webapp/manifest_version_identifyingfoursame_tests/Makefile \
+webapp/manifest_version_identifyingfourzero_tests/Makefile \
 webapp/manifest_version_identifyingnull_tests/Makefile \
-webapp/manifest_version_identifyingSix_tests/Makefile \
+webapp/manifest_version_identifyingsix_tests/Makefile \
 webapp/manifest_version_comma_tests/Makefile \
 webapp/manifest_version_question_tests/Makefile \
 webapp/manifest_version_semicolon_tests/Makefile \
@@ -154,7 +154,7 @@ webapp/webgl_webrtc_disable_tests/Makefile \
 webapp/xwalk_hosts_matchpatternstail_tests/Makefile \
 webapp/xwalk_hosts_matchpatternsmiddle_tests/Makefile \
 webapp/xwalk_hosts_matchpatterns_tests/Makefile \
-webapp/xwalk_hosts_value_tests/Makefile\
+webapp/xwalk_hosts_value_tests/Makefile \
 webapp/web_openfile_thirdpart_tests/Makefile \
 webapp/web_hwaccelerated_video_tests/Makefile])
 AC_OUTPUT
