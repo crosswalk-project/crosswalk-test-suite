@@ -1,0 +1,944 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-stylesheet type="text/xsl"  href="./testcase.xsl"?>
+<test_definition>
+  <suite name="webapi-audiosystem-ivi-tests" launcher="xwalk" extension="crosswalk" category="Tizen Web Device APIs">
+    <set name="audiosystem">
+      <testcase purpose="Check if AudioSystem interface exist" type="compliance" status="designed" component="TizenAPI/System/AudioSystem" execution_type="auto" priority="P0" id="AudioSystem_exist">
+        <description>
+          <test_script_entry>/opt/webapi-audiosystem-ivi-tests/audiosystem/AudioSystem_exist.html</test_script_entry>
+        </description>
+        <specs>
+          <spec>
+            <spec_assertion element_type="attribute" element_name="AudioSystem" interface="AudioSystem" specification="AudioSystem" section="System-level APIs" category="Tizen API Specifications"/>
+            <spec_url>https://wiki.tizen.org/wiki/User:Tanuk/AudioSystemAPI#The_Audio_System_API</spec_url>
+            <spec_statement/>
+          </spec>
+        </specs>
+      </testcase>
+      <testcase purpose="Check if connect attribute of AudioSystem interface exist and type of function" type="compliance" status="designed" component="TizenAPI/System/AudioSystem" execution_type="auto" priority="P0" id="AudioSystem_connect_basic">
+        <description>
+          <test_script_entry>/opt/webapi-audiosystem-ivi-tests/audiosystem/AudioSystem_connect_exist.html</test_script_entry>
+        </description>
+        <specs>
+          <spec>
+            <spec_assertion element_type="method" element_name="connect" interface="AudioSystem" specification="AudioSystem" section="System-level APIs" category="Tizen API Specifications"/>
+            <spec_url>https://wiki.tizen.org/wiki/User:Tanuk/AudioSystemAPI#The_Audio_System_API</spec_url>
+            <spec_statement/>
+          </spec>
+        </specs>
+      </testcase>
+      <testcase purpose="Check if disconnect attribute of AudioSystem interface exist and type of function" type="compliance" status="designed" component="TizenAPI/System/AudioSystem" execution_type="auto" priority="P0" id="AudioSystem_disconnect_basic">
+        <description>
+          <test_script_entry>/opt/webapi-audiosystem-ivi-tests/audiosystem/AudioSystem_disconnect_exist.html</test_script_entry>
+        </description>
+        <specs>
+          <spec>
+            <spec_assertion element_type="method" element_name="disconnect" interface="AudioSystem" specification="AudioSystem" section="System-level APIs" category="Tizen API Specifications"/>
+            <spec_url>https://wiki.tizen.org/wiki/User:Tanuk/AudioSystemAPI#The_Audio_System_API</spec_url>
+            <spec_statement/>
+          </spec>
+        </specs>
+      </testcase>
+      <testcase purpose="Check if ondisconnected attribute of AudioSystem interface exist" type="compliance" status="designed" component="TizenAPI/System/AudioSystem" execution_type="auto" priority="P0" id="AudioSystem_ondisconnected_basic">
+        <description>
+          <test_script_entry>/opt/webapi-audiosystem-ivi-tests/audiosystem/AudioSystem_ondisconnected_exist.html</test_script_entry>
+        </description>
+        <specs>
+          <spec>
+            <spec_assertion element_type="event" element_name="ondisconnected" interface="AudioSystem" specification="AudioSystem" section="System-level APIs" category="Tizen API Specifications"/>
+            <spec_url>https://wiki.tizen.org/wiki/User:Tanuk/AudioSystemAPI#The_Audio_System_API</spec_url>
+            <spec_statement/>
+          </spec>
+        </specs>
+      </testcase>
+      <testcase purpose="Check if AudioSystemContext hvae volume_controls attribute with  with proper type, and is readonly" type="compliance" status="designed" component="TizenAPI/System/AudioSystem" execution_type="auto" priority="P0" id="AudioSystemContext_volume_controls_attribute">
+        <description>
+          <test_script_entry>/opt/webapi-audiosystem-ivi-tests/audiosystem/AudioSystemContext_volume_controls_attribute.html</test_script_entry>
+        </description>
+        <specs>
+          <spec>
+            <spec_assertion element_type="attribute" element_name="volume_controls" interface="AudioSystemContext" specification="AudioSystem" section="System-level APIs" category="Tizen API Specifications"/>
+            <spec_url>https://wiki.tizen.org/wiki/User:Tanuk/AudioSystemAPI#The_Audio_System_API</spec_url>
+            <spec_statement/>
+          </spec>
+        </specs>
+      </testcase>
+      <testcase purpose="Check if AudioSystemContext hvae main_output_volume_control attribute with  with proper main_output_volume_control, and is readonly" type="compliance" status="designed" component="TizenAPI/System/AudioSystem" execution_type="auto" priority="P0" id="AudioSystemContext_main_output_volume_control_basic">
+        <description>
+          <test_script_entry>/opt/webapi-audiosystem-ivi-tests/audiosystem/AudioSystemContext_main_output_mute_control_attribute.html</test_script_entry>
+        </description>
+        <specs>
+          <spec>
+            <spec_assertion element_type="attribute" element_name="main_output_volume_control" interface="AudioSystemContext" specification="AudioSystem" section="System-level APIs" category="Tizen API Specifications"/>
+            <spec_url>https://wiki.tizen.org/wiki/User:Tanuk/AudioSystemAPI#The_Audio_System_API</spec_url>
+            <spec_statement/>
+          </spec>
+        </specs>
+      </testcase>
+      <testcase purpose="Check if readonly attribute main_input_volume_control of AudioSystemContext interface exist and type of object" type="compliance" status="designed" component="TizenAPI/System/AudioSystem" execution_type="auto" priority="P0" id="AudioSystemContext_main_input_volume_control_basic">
+        <description>
+          <test_script_entry>/opt/webapi-audiosystem-ivi-tests/audiosystem/AudioSystemContext_main_input_volume_control_attribute.html</test_script_entry>
+        </description>
+        <specs>
+          <spec>
+            <spec_assertion element_type="attribute" element_name="main_input_volume_control" interface="AudioSystemContext" specification="AudioSystem" section="System-level APIs" category="Tizen API Specifications"/>
+            <spec_url>https://wiki.tizen.org/wiki/User:Tanuk/AudioSystemAPI#The_Audio_System_API</spec_url>
+            <spec_statement/>
+          </spec>
+        </specs>
+      </testcase>
+      <testcase purpose="Check if readonly attribute mute_controls of AudioSystemContext interface exist and type of array" type="compliance" status="designed" component="TizenAPI/System/AudioSystem" execution_type="auto" priority="P0" id="AudioSystemContext_mute_controls_basic">
+        <description>
+          <test_script_entry>/opt/webapi-audiosystem-ivi-tests/audiosystem/AudioSystemContext_basic.html?total_num=24&amp;amp;locator_key=id&amp;amp;value=4</test_script_entry>
+        </description>
+        <specs>
+          <spec>
+            <spec_assertion element_type="attribute" element_name="mute_controls" interface="AudioSystemContext" specification="AudioSystem" section="System-level APIs" category="Tizen API Specifications"/>
+            <spec_url>https://wiki.tizen.org/wiki/User:Tanuk/AudioSystemAPI#The_Audio_System_API</spec_url>
+            <spec_statement/>
+          </spec>
+        </specs>
+      </testcase>
+      <testcase purpose="Check if readonly attribute main_output_mute_control of AudioSystemContext interface exist and type of object" type="compliance" status="designed" component="TizenAPI/System/AudioSystem" execution_type="auto" priority="P0" id="AudioSystemContext_main_output_mute_control_basic">
+        <description>
+          <test_script_entry>/opt/webapi-audiosystem-ivi-tests/audiosystem/AudioSystemContext_basic.html?total_num=24&amp;amp;locator_key=id&amp;amp;value=5</test_script_entry>
+        </description>
+        <specs>
+          <spec>
+            <spec_assertion element_type="attribute" element_name="main_output_mute_control" interface="AudioSystemContext" specification="AudioSystem" section="System-level APIs" category="Tizen API Specifications"/>
+            <spec_url>https://wiki.tizen.org/wiki/User:Tanuk/AudioSystemAPI#The_Audio_System_API</spec_url>
+            <spec_statement/>
+          </spec>
+        </specs>
+      </testcase>
+      <testcase purpose="Check if readonly attribute main_input_mute_control of AudioSystemContext interface exist and type of object" type="compliance" status="designed" component="TizenAPI/System/AudioSystem" execution_type="auto" priority="P0" id="AudioSystemContext_main_input_mute_control_basic">
+        <description>
+          <test_script_entry>/opt/webapi-audiosystem-ivi-tests/audiosystem/AudioSystemContext_basic.html?total_num=24&amp;amp;locator_key=id&amp;amp;value=6</test_script_entry>
+        </description>
+        <specs>
+          <spec>
+            <spec_assertion element_type="attribute" element_name="main_input_mute_control" interface="AudioSystemContext" specification="AudioSystem" section="System-level APIs" category="Tizen API Specifications"/>
+            <spec_url>https://wiki.tizen.org/wiki/User:Tanuk/AudioSystemAPI#The_Audio_System_API</spec_url>
+            <spec_statement/>
+          </spec>
+        </specs>
+      </testcase>
+      <testcase purpose="Check if readonly attribute devices of AudioSystemContext interface exist and type of array" type="compliance" status="designed" component="TizenAPI/System/AudioSystem" execution_type="auto" priority="P0" id="AudioSystemContext_devices_basic">
+        <description>
+          <test_script_entry>/opt/webapi-audiosystem-ivi-tests/audiosystem/AudioSystemContext_basic.html?total_num=24&amp;amp;locator_key=id&amp;amp;value=7</test_script_entry>
+        </description>
+        <specs>
+          <spec>
+            <spec_assertion element_type="attribute" element_name="devices" interface="AudioSystemContext" specification="AudioSystem" section="System-level APIs" category="Tizen API Specifications"/>
+            <spec_url>https://wiki.tizen.org/wiki/User:Tanuk/AudioSystemAPI#The_Audio_System_API</spec_url>
+            <spec_statement/>
+          </spec>
+        </specs>
+      </testcase>
+      <testcase purpose="Check if readonly attribute streams of AudioSystemContext interface exist and type of array" type="compliance" status="designed" component="TizenAPI/System/AudioSystem" execution_type="auto" priority="P0" id="AudioSystemContext_streams_basic">
+        <description>
+          <test_script_entry>/opt/webapi-audiosystem-ivi-tests/audiosystem/AudioSystemContext_basic.html?total_num=24&amp;amp;locator_key=id&amp;amp;value=8</test_script_entry>
+        </description>
+        <specs>
+          <spec>
+            <spec_assertion element_type="attribute" element_name="streams" interface="AudioSystemContext" specification="AudioSystem" section="System-level APIs" category="Tizen API Specifications"/>
+            <spec_url>https://wiki.tizen.org/wiki/User:Tanuk/AudioSystemAPI#The_Audio_System_API</spec_url>
+            <spec_statement/>
+          </spec>
+        </specs>
+      </testcase>
+      <testcase purpose="Check if readonly attribute audio_groups of AudioSystemContext interface exist and type of array" type="compliance" status="designed" component="TizenAPI/System/AudioSystem" execution_type="auto" priority="P0" id="AudioSystemContext_audio_groups_basic">
+        <description>
+          <test_script_entry>/opt/webapi-audiosystem-ivi-tests/audiosystem/AudioSystemContext_basic.html?total_num=24&amp;amp;locator_key=id&amp;amp;value=9</test_script_entry>
+        </description>
+        <specs>
+          <spec>
+            <spec_assertion element_type="attribute" element_name="audio_groups" interface="AudioSystemContext" specification="AudioSystem" section="System-level APIs" category="Tizen API Specifications"/>
+            <spec_url>https://wiki.tizen.org/wiki/User:Tanuk/AudioSystemAPI#The_Audio_System_API</spec_url>
+            <spec_statement/>
+          </spec>
+        </specs>
+      </testcase>
+      <testcase purpose="Check if onsync of AudioSystemContext interface exist" type="compliance" status="designed" component="TizenAPI/System/AudioSystem" execution_type="auto" priority="P0" id="AudioSystemContext_onsync_basic">
+        <description>
+          <test_script_entry>/opt/webapi-audiosystem-ivi-tests/audiosystem/AudioSystemContext_basic.html?total_num=24&amp;amp;locator_key=id&amp;amp;value=10</test_script_entry>
+        </description>
+        <specs>
+          <spec>
+            <spec_assertion element_type="event" element_name="onsync" interface="AudioSystemContext" specification="AudioSystem" section="System-level APIs" category="Tizen API Specifications"/>
+            <spec_url>https://wiki.tizen.org/wiki/User:Tanuk/AudioSystemAPI#The_Audio_System_API</spec_url>
+            <spec_statement/>
+          </spec>
+        </specs>
+      </testcase>
+      <testcase purpose="Check if onvolumecontroladded of AudioSystemContext interface exist" type="compliance" status="designed" component="TizenAPI/System/AudioSystem" execution_type="auto" priority="P0" id="AudioSystemContext_onvolumecontroladded_basic">
+        <description>
+          <test_script_entry>/opt/webapi-audiosystem-ivi-tests/audiosystem/AudioSystemContext_basic.html?total_num=24&amp;amp;locator_key=id&amp;amp;value=11</test_script_entry>
+        </description>
+        <specs>
+          <spec>
+            <spec_assertion element_type="event" element_name="onvolumecontroladded" interface="AudioSystemContext" specification="AudioSystem" section="System-level APIs" category="Tizen API Specifications"/>
+            <spec_url>https://wiki.tizen.org/wiki/User:Tanuk/AudioSystemAPI#The_Audio_System_API</spec_url>
+            <spec_statement/>
+          </spec>
+        </specs>
+      </testcase>
+      <testcase purpose="Check if onvolumecontrolremoved of AudioSystemContext interface exist" type="compliance" status="designed" component="TizenAPI/System/AudioSystem" execution_type="auto" priority="P0" id="AudioSystemContext_onvolumecontrolremoved_basic">
+        <description>
+          <test_script_entry>/opt/webapi-audiosystem-ivi-tests/audiosystem/AudioSystemContext_basic.html?total_num=24&amp;amp;locator_key=id&amp;amp;value=12</test_script_entry>
+        </description>
+        <specs>
+          <spec>
+            <spec_assertion element_type="event" element_name="onvolumecontrolremoved" interface="AudioSystemContext" specification="AudioSystem" section="System-level APIs" category="Tizen API Specifications"/>
+            <spec_url>https://wiki.tizen.org/wiki/User:Tanuk/AudioSystemAPI#The_Audio_System_API</spec_url>
+            <spec_statement/>
+          </spec>
+        </specs>
+      </testcase>
+      <testcase purpose="Check if onmainoutputvolumecontrolchanged of AudioSystemContext interface exist" type="compliance" status="designed" component="TizenAPI/System/AudioSystem" execution_type="auto" priority="P0" id="AudioSystemContext_onmainoutputvolumecontrolchanged_basic">
+        <description>
+          <test_script_entry>/opt/webapi-audiosystem-ivi-tests/audiosystem/AudioSystemContext_basic.html?total_num=24&amp;amp;locator_key=id&amp;amp;value=13</test_script_entry>
+        </description>
+        <specs>
+          <spec>
+            <spec_assertion element_type="event" element_name="onmainoutputvolumecontrolchanged" interface="AudioSystemContext" specification="AudioSystem" section="System-level APIs" category="Tizen API Specifications"/>
+            <spec_url>https://wiki.tizen.org/wiki/User:Tanuk/AudioSystemAPI#The_Audio_System_API</spec_url>
+            <spec_statement/>
+          </spec>
+        </specs>
+      </testcase>
+      <testcase purpose="Check if onmaininputvolumecontrolchanged of AudioSystemContext interface exist" type="compliance" status="designed" component="TizenAPI/System/AudioSystem" execution_type="auto" priority="P0" id="AudioSystemContext_onmaininputvolumecontrolchanged_basic">
+        <description>
+          <test_script_entry>/opt/webapi-audiosystem-ivi-tests/audiosystem/AudioSystemContext_basic.html?total_num=24&amp;amp;locator_key=id&amp;amp;value=14</test_script_entry>
+        </description>
+        <specs>
+          <spec>
+            <spec_assertion element_type="event" element_name="onmaininputvolumecontrolchanged" interface="AudioSystemContext" specification="AudioSystem" section="System-level APIs" category="Tizen API Specifications"/>
+            <spec_url>https://wiki.tizen.org/wiki/User:Tanuk/AudioSystemAPI#The_Audio_System_API</spec_url>
+            <spec_statement/>
+          </spec>
+        </specs>
+      </testcase>
+      <testcase purpose="Check if onmutecontroladded of AudioSystemContext interface exist" type="compliance" status="designed" component="TizenAPI/System/AudioSystem" execution_type="auto" priority="P0" id="AudioSystemContext_onmutecontroladded_basic">
+        <description>
+          <test_script_entry>/opt/webapi-audiosystem-ivi-tests/audiosystem/AudioSystemContext_basic.html?total_num=24&amp;amp;locator_key=id&amp;amp;value=15</test_script_entry>
+        </description>
+        <specs>
+          <spec>
+            <spec_assertion element_type="event" element_name="onmutecontroladded" interface="AudioSystemContext" specification="AudioSystem" section="System-level APIs" category="Tizen API Specifications"/>
+            <spec_url>https://wiki.tizen.org/wiki/User:Tanuk/AudioSystemAPI#The_Audio_System_API</spec_url>
+            <spec_statement/>
+          </spec>
+        </specs>
+      </testcase>
+      <testcase purpose="Check if onmutecontrolremoved of AudioSystemContext interface exist" type="compliance" status="designed" component="TizenAPI/System/AudioSystem" execution_type="auto" priority="P0" id="AudioSystemContext_onmutecontrolremoved_basic">
+        <description>
+          <test_script_entry>/opt/webapi-audiosystem-ivi-tests/audiosystem/AudioSystemContext_basic.html?total_num=24&amp;amp;locator_key=id&amp;amp;value=16</test_script_entry>
+        </description>
+        <specs>
+          <spec>
+            <spec_assertion element_type="event" element_name="onmutecontrolremoved" interface="AudioSystemContext" specification="AudioSystem" section="System-level APIs" category="Tizen API Specifications"/>
+            <spec_url>https://wiki.tizen.org/wiki/User:Tanuk/AudioSystemAPI#The_Audio_System_API</spec_url>
+            <spec_statement/>
+          </spec>
+        </specs>
+      </testcase>
+      <testcase purpose="Check if onmainoutputmutecontrolchanged of AudioSystemContext interface exist" type="compliance" status="designed" component="TizenAPI/System/AudioSystem" execution_type="auto" priority="P0" id="AudioSystemContext_onmainoutputmutecontrolchanged_basic">
+        <description>
+          <test_script_entry>/opt/webapi-audiosystem-ivi-tests/audiosystem/AudioSystemContext_basic.html?total_num=24&amp;amp;locator_key=id&amp;amp;value=17</test_script_entry>
+        </description>
+        <specs>
+          <spec>
+            <spec_assertion element_type="event" element_name="onmainoutputmutecontrolchanged" interface="AudioSystemContext" specification="AudioSystem" section="System-level APIs" category="Tizen API Specifications"/>
+            <spec_url>https://wiki.tizen.org/wiki/User:Tanuk/AudioSystemAPI#The_Audio_System_API</spec_url>
+            <spec_statement/>
+          </spec>
+        </specs>
+      </testcase>
+      <testcase purpose="Check if onmaininputmutecontrolchanged of AudioSystemContext interface exist" type="compliance" status="designed" component="TizenAPI/System/AudioSystem" execution_type="auto" priority="P0" id="AudioSystemContext_onmaininputmutecontrolchanged_basic">
+        <description>
+          <test_script_entry>/opt/webapi-audiosystem-ivi-tests/audiosystem/AudioSystemContext_basic.html?total_num=24&amp;amp;locator_key=id&amp;amp;value=18</test_script_entry>
+        </description>
+        <specs>
+          <spec>
+            <spec_assertion element_type="event" element_name="onmaininputmutecontrolchanged" interface="AudioSystemContext" specification="AudioSystem" section="System-level APIs" category="Tizen API Specifications"/>
+            <spec_url>https://wiki.tizen.org/wiki/User:Tanuk/AudioSystemAPI#The_Audio_System_API</spec_url>
+            <spec_statement/>
+          </spec>
+        </specs>
+      </testcase>
+      <testcase purpose="Check if ondeviceadded of AudioSystemContext interface exist" type="compliance" status="designed" component="TizenAPI/System/AudioSystem" execution_type="auto" priority="P0" id="AudioSystemContext_ondeviceadded_basic">
+        <description>
+          <test_script_entry>/opt/webapi-audiosystem-ivi-tests/audiosystem/AudioSystemContext_basic.html?total_num=24&amp;amp;locator_key=id&amp;amp;value=19</test_script_entry>
+        </description>
+        <specs>
+          <spec>
+            <spec_assertion element_type="event" element_name="ondeviceadded" interface="AudioSystemContext" specification="AudioSystem" section="System-level APIs" category="Tizen API Specifications"/>
+            <spec_url>https://wiki.tizen.org/wiki/User:Tanuk/AudioSystemAPI#The_Audio_System_API</spec_url>
+            <spec_statement/>
+          </spec>
+        </specs>
+      </testcase>
+      <testcase purpose="Check if ondeviceremoved of AudioSystemContext interface exist" type="compliance" status="designed" component="TizenAPI/System/AudioSystem" execution_type="auto" priority="P0" id="AudioSystemContext_ondeviceremoved_basic">
+        <description>
+          <test_script_entry>/opt/webapi-audiosystem-ivi-tests/audiosystem/AudioSystemContext_basic.html?total_num=24&amp;amp;locator_key=id&amp;amp;value=20</test_script_entry>
+        </description>
+        <specs>
+          <spec>
+            <spec_assertion element_type="event" element_name="ondeviceremoved" interface="AudioSystemContext" specification="AudioSystem" section="System-level APIs" category="Tizen API Specifications"/>
+            <spec_url>https://wiki.tizen.org/wiki/User:Tanuk/AudioSystemAPI#The_Audio_System_API</spec_url>
+            <spec_statement/>
+          </spec>
+        </specs>
+      </testcase>
+      <testcase purpose="Check if onstreamadded of AudioSystemContext interface exist" type="compliance" status="designed" component="TizenAPI/System/AudioSystem" execution_type="auto" priority="P0" id="AudioSystemContext_onstreamadded_basic">
+        <description>
+          <test_script_entry>/opt/webapi-audiosystem-ivi-tests/audiosystem/AudioSystemContext_basic.html?total_num=24&amp;amp;locator_key=id&amp;amp;value=21</test_script_entry>
+        </description>
+        <specs>
+          <spec>
+            <spec_assertion element_type="event" element_name="onstreamadded" interface="AudioSystemContext" specification="AudioSystem" section="System-level APIs" category="Tizen API Specifications"/>
+            <spec_url>https://wiki.tizen.org/wiki/User:Tanuk/AudioSystemAPI#The_Audio_System_API</spec_url>
+            <spec_statement/>
+          </spec>
+        </specs>
+      </testcase>
+      <testcase purpose="Check if onstreamremoved of AudioSystemContext interface exist" type="compliance" status="designed" component="TizenAPI/System/AudioSystem" execution_type="auto" priority="P0" id="AudioSystemContext_onstreamremoved_basic">
+        <description>
+          <test_script_entry>/opt/webapi-audiosystem-ivi-tests/audiosystem/AudioSystemContext_basic.html?total_num=24&amp;amp;locator_key=id&amp;amp;value=22</test_script_entry>
+        </description>
+        <specs>
+          <spec>
+            <spec_assertion element_type="event" element_name="onstreamremoved" interface="AudioSystemContext" specification="AudioSystem" section="System-level APIs" category="Tizen API Specifications"/>
+            <spec_url>https://wiki.tizen.org/wiki/User:Tanuk/AudioSystemAPI#The_Audio_System_API</spec_url>
+            <spec_statement/>
+          </spec>
+        </specs>
+      </testcase>
+      <testcase purpose="Check if onaudiogroupadded of AudioSystemContext interface exist" type="compliance" status="designed" component="TizenAPI/System/AudioSystem" execution_type="auto" priority="P0" id="AudioSystemContext_onaudiogroupadded_basic">
+        <description>
+          <test_script_entry>/opt/webapi-audiosystem-ivi-tests/audiosystem/AudioSystemContext_basic.html?total_num=24&amp;amp;locator_key=id&amp;amp;value=23</test_script_entry>
+        </description>
+        <specs>
+          <spec>
+            <spec_assertion element_type="event" element_name="onaudiogroupadded" interface="AudioSystemContext" specification="AudioSystem" section="System-level APIs" category="Tizen API Specifications"/>
+            <spec_url>https://wiki.tizen.org/wiki/User:Tanuk/AudioSystemAPI#The_Audio_System_API</spec_url>
+            <spec_statement/>
+          </spec>
+        </specs>
+      </testcase>
+      <testcase purpose="Check if onaudiogroupremoved of AudioSystemContext interface exist" type="compliance" status="designed" component="TizenAPI/System/AudioSystem" execution_type="auto" priority="P0" id="AudioSystemContext_onaudiogroupremoved_basic">
+        <description>
+          <test_script_entry>/opt/webapi-audiosystem-ivi-tests/audiosystem/AudioSystemContext_basic.html?total_num=24&amp;amp;locator_key=id&amp;amp;value=24</test_script_entry>
+        </description>
+        <specs>
+          <spec>
+            <spec_assertion element_type="event" element_name="onaudiogroupremoved" interface="AudioSystemContext" specification="AudioSystem" section="System-level APIs" category="Tizen API Specifications"/>
+            <spec_url>https://wiki.tizen.org/wiki/User:Tanuk/AudioSystemAPI#The_Audio_System_API</spec_url>
+            <spec_statement/>
+          </spec>
+        </specs>
+      </testcase>
+      <testcase purpose="Check if readonly attribute id of VolumeControl interface exist and type of number" type="compliance" status="designed" component="TizenAPI/System/AudioSystem" execution_type="auto" priority="P0" id="VolumeControl_id_basic">
+        <description>
+          <test_script_entry>/opt/webapi-audiosystem-ivi-tests/audiosystem/VolumeControl_basic.html?total_num=13&amp;amp;locator_key=id&amp;amp;value=1</test_script_entry>
+        </description>
+        <specs>
+          <spec>
+            <spec_assertion element_type="attribute" element_name="id" interface="VolumeControl" specification="AudioSystem" section="System-level APIs" category="Tizen API Specifications"/>
+            <spec_url>https://wiki.tizen.org/wiki/User:Tanuk/AudioSystemAPI#The_Audio_System_API</spec_url>
+            <spec_statement/>
+          </spec>
+        </specs>
+      </testcase>
+      <testcase purpose="Check if readonly attribute label of VolumeControl interface exist and type of string" type="compliance" status="designed" component="TizenAPI/System/AudioSystem" execution_type="auto" priority="P0" id="VolumeControl_label_basic">
+        <description>
+          <test_script_entry>/opt/webapi-audiosystem-ivi-tests/audiosystem/VolumeControl_basic.html?total_num=13&amp;amp;locator_key=id&amp;amp;value=2</test_script_entry>
+        </description>
+        <specs>
+          <spec>
+            <spec_assertion element_type="attribute" element_name="label" interface="VolumeControl" specification="AudioSystem" section="System-level APIs" category="Tizen API Specifications"/>
+            <spec_url>https://wiki.tizen.org/wiki/User:Tanuk/AudioSystemAPI#The_Audio_System_API</spec_url>
+            <spec_statement/>
+          </spec>
+        </specs>
+      </testcase>
+      <testcase purpose="Check if readonly attribute volume of VolumeControl interface exist and type of number" type="compliance" status="designed" component="TizenAPI/System/AudioSystem" execution_type="auto" priority="P0" id="VolumeControl_volume_basic">
+        <description>
+          <test_script_entry>/opt/webapi-audiosystem-ivi-tests/audiosystem/VolumeControl_basic.html?total_num=13&amp;amp;locator_key=id&amp;amp;value=3</test_script_entry>
+        </description>
+        <specs>
+          <spec>
+            <spec_assertion element_type="attribute" element_name="volume" interface="VolumeControl" specification="AudioSystem" section="System-level APIs" category="Tizen API Specifications"/>
+            <spec_url>https://wiki.tizen.org/wiki/User:Tanuk/AudioSystemAPI#The_Audio_System_API</spec_url>
+            <spec_statement/>
+          </spec>
+        </specs>
+      </testcase>
+      <testcase purpose="Check if readonly attribute volume_steps of VolumeControl interface exist and type of array" type="compliance" status="designed" component="TizenAPI/System/AudioSystem" execution_type="auto" priority="P0" id="VolumeControl_volume_steps_basic">
+        <description>
+          <test_script_entry>/opt/webapi-audiosystem-ivi-tests/audiosystem/VolumeControl_basic.html?total_num=13&amp;amp;locator_key=id&amp;amp;value=4</test_script_entry>
+        </description>
+        <specs>
+          <spec>
+            <spec_assertion element_type="attribute" element_name="volume_steps" interface="VolumeControl" specification="AudioSystem" section="System-level APIs" category="Tizen API Specifications"/>
+            <spec_url>https://wiki.tizen.org/wiki/User:Tanuk/AudioSystemAPI#The_Audio_System_API</spec_url>
+            <spec_statement/>
+          </spec>
+        </specs>
+      </testcase>
+      <testcase purpose="Check if readonly attribute balance of VolumeControl interface exist and type of array" type="compliance" status="designed" component="TizenAPI/System/AudioSystem" execution_type="auto" priority="P0" id="VolumeControl_balance_basic">
+        <description>
+          <test_script_entry>/opt/webapi-audiosystem-ivi-tests/audiosystem/VolumeControl_basic.html?total_num=13&amp;amp;locator_key=id&amp;amp;value=5</test_script_entry>
+        </description>
+        <specs>
+          <spec>
+            <spec_assertion element_type="attribute" element_name="balance" interface="VolumeControl" specification="AudioSystem" section="System-level APIs" category="Tizen API Specifications"/>
+            <spec_url>https://wiki.tizen.org/wiki/User:Tanuk/AudioSystemAPI#The_Audio_System_API</spec_url>
+            <spec_statement/>
+          </spec>
+        </specs>
+      </testcase>
+      <testcase purpose="Check if onlabelchanged of VolumeControl interface exist" type="compliance" status="designed" component="TizenAPI/System/AudioSystem" execution_type="auto" priority="P0" id="VolumeControl_onlabelchanged_basic">
+        <description>
+          <test_script_entry>/opt/webapi-audiosystem-ivi-tests/audiosystem/VolumeControl_basic.html?total_num=13&amp;amp;locator_key=id&amp;amp;value=6</test_script_entry>
+        </description>
+        <specs>
+          <spec>
+            <spec_assertion element_type="event" element_name="onlabelchanged" interface="VolumeControl" specification="AudioSystem" section="System-level APIs" category="Tizen API Specifications"/>
+            <spec_url>https://wiki.tizen.org/wiki/User:Tanuk/AudioSystemAPI#The_Audio_System_API</spec_url>
+            <spec_statement/>
+          </spec>
+        </specs>
+      </testcase>
+      <testcase purpose="Check if onvolumechanged of VolumeControl interface exist" type="compliance" status="designed" component="TizenAPI/System/AudioSystem" execution_type="auto" priority="P0" id="VolumeControl_onvolumechanged_basic">
+        <description>
+          <test_script_entry>/opt/webapi-audiosystem-ivi-tests/audiosystem/VolumeControl_basic.html?total_num=13&amp;amp;locator_key=id&amp;amp;value=7</test_script_entry>
+        </description>
+        <specs>
+          <spec>
+            <spec_assertion element_type="event" element_name="onvolumechanged" interface="VolumeControl" specification="AudioSystem" section="System-level APIs" category="Tizen API Specifications"/>
+            <spec_url>https://wiki.tizen.org/wiki/User:Tanuk/AudioSystemAPI#The_Audio_System_API</spec_url>
+            <spec_statement/>
+          </spec>
+        </specs>
+      </testcase>
+      <testcase purpose="Check if onvolumestepschanged of VolumeControl interface exist" type="compliance" status="designed" component="TizenAPI/System/AudioSystem" execution_type="auto" priority="P0" id="VolumeControl_onvolumestepschanged_basic">
+        <description>
+          <test_script_entry>/opt/webapi-audiosystem-ivi-tests/audiosystem/VolumeControl_basic.html?total_num=13&amp;amp;locator_key=id&amp;amp;value=8</test_script_entry>
+        </description>
+        <specs>
+          <spec>
+            <spec_assertion element_type="event" element_name="onvolumestepschanged" interface="VolumeControl" specification="AudioSystem" section="System-level APIs" category="Tizen API Specifications"/>
+            <spec_url>https://wiki.tizen.org/wiki/User:Tanuk/AudioSystemAPI#The_Audio_System_API</spec_url>
+            <spec_statement/>
+          </spec>
+        </specs>
+      </testcase>
+      <testcase purpose="Check if onbalancechanged of VolumeControl interface exist" type="compliance" status="designed" component="TizenAPI/System/AudioSystem" execution_type="auto" priority="P0" id="VolumeControl_onbalancechanged_basic">
+        <description>
+          <test_script_entry>/opt/webapi-audiosystem-ivi-tests/audiosystem/VolumeControl_basic.html?total_num=13&amp;amp;locator_key=id&amp;amp;value=9</test_script_entry>
+        </description>
+        <specs>
+          <spec>
+            <spec_assertion element_type="event" element_name="onbalancechanged" interface="VolumeControl" specification="AudioSystem" section="System-level APIs" category="Tizen API Specifications"/>
+            <spec_url>https://wiki.tizen.org/wiki/User:Tanuk/AudioSystemAPI#The_Audio_System_API</spec_url>
+            <spec_statement/>
+          </spec>
+        </specs>
+      </testcase>
+      <testcase purpose="Check if set_volume of VolumeControl interface exist and type of function" type="compliance" status="designed" component="TizenAPI/System/AudioSystem" execution_type="auto" priority="P0" id="VolumeControl_set_volume_basic">
+        <description>
+          <test_script_entry>/opt/webapi-audiosystem-ivi-tests/audiosystem/VolumeControl_basic.html?total_num=13&amp;amp;locator_key=id&amp;amp;value=10</test_script_entry>
+        </description>
+        <specs>
+          <spec>
+            <spec_assertion element_type="method" element_name="set_volume" interface="VolumeControl" specification="AudioSystem" section="System-level APIs" category="Tizen API Specifications"/>
+            <spec_url>https://wiki.tizen.org/wiki/User:Tanuk/AudioSystemAPI#The_Audio_System_API</spec_url>
+            <spec_statement/>
+          </spec>
+        </specs>
+      </testcase>
+      <testcase purpose="Check if set_balance of VolumeControl interface exist and type of function" type="compliance" status="designed" component="TizenAPI/System/AudioSystem" execution_type="auto" priority="P0" id="VolumeControl_set_balance_basic">
+        <description>
+          <test_script_entry>/opt/webapi-audiosystem-ivi-tests/audiosystem/VolumeControl_basic.html?total_num=13&amp;amp;locator_key=id&amp;amp;value=11</test_script_entry>
+        </description>
+        <specs>
+          <spec>
+            <spec_assertion element_type="method" element_name="set_balance" interface="VolumeControl" specification="AudioSystem" section="System-level APIs" category="Tizen API Specifications"/>
+            <spec_url>https://wiki.tizen.org/wiki/User:Tanuk/AudioSystemAPI#The_Audio_System_API</spec_url>
+            <spec_statement/>
+          </spec>
+        </specs>
+      </testcase>
+      <testcase purpose="Check if set_simplified_balance of VolumeControl interface exist and type of function" type="compliance" status="designed" component="TizenAPI/System/AudioSystem" execution_type="auto" priority="P0" id="VolumeControl_set_simplified_balance_basic">
+        <description>
+          <test_script_entry>/opt/webapi-audiosystem-ivi-tests/audiosystem/VolumeControl_basic.html?total_num=13&amp;amp;locator_key=id&amp;amp;value=12</test_script_entry>
+        </description>
+        <specs>
+          <spec>
+            <spec_assertion element_type="method" element_name="set_simplified_balance" interface="VolumeControl" specification="AudioSystem" section="System-level APIs" category="Tizen API Specifications"/>
+            <spec_url>https://wiki.tizen.org/wiki/User:Tanuk/AudioSystemAPI#The_Audio_System_API</spec_url>
+            <spec_statement/>
+          </spec>
+        </specs>
+      </testcase>
+      <testcase purpose="Check if get_simplified_balance of VolumeControl interface exist and type of function" type="compliance" status="designed" component="TizenAPI/System/AudioSystem" execution_type="auto" priority="P0" id="VolumeControl_get_simplified_balance_basic">
+        <description>
+          <test_script_entry>/opt/webapi-audiosystem-ivi-tests/audiosystem/VolumeControl_basic.html?total_num=13&amp;amp;locator_key=id&amp;amp;value=13</test_script_entry>
+        </description>
+        <specs>
+          <spec>
+            <spec_assertion element_type="method" element_name="get_simplified_balance" interface="VolumeControl" specification="AudioSystem" section="System-level APIs" category="Tizen API Specifications"/>
+            <spec_url>https://wiki.tizen.org/wiki/User:Tanuk/AudioSystemAPI#The_Audio_System_API</spec_url>
+            <spec_statement/>
+          </spec>
+        </specs>
+      </testcase>
+      <testcase purpose="Check if readonly attribute id of MuteControl interface exist and type of number" type="compliance" status="designed" component="TizenAPI/System/AudioSystem" execution_type="auto" priority="P0" id="MuteControl_id_basic">
+        <description>
+          <test_script_entry>/opt/webapi-audiosystem-ivi-tests/audiosystem/MuteControl_basic.html?total_num=6&amp;amp;locator_key=id&amp;amp;value=1</test_script_entry>
+        </description>
+        <specs>
+          <spec>
+            <spec_assertion element_type="attribute" element_name="id" interface="MuteControl" specification="AudioSystem" section="System-level APIs" category="Tizen API Specifications"/>
+            <spec_url>https://wiki.tizen.org/wiki/User:Tanuk/AudioSystemAPI#The_Audio_System_API</spec_url>
+            <spec_statement/>
+          </spec>
+        </specs>
+      </testcase>
+      <testcase purpose="Check if readonly attribute label of MuteControl interface exist and type of string" type="compliance" status="designed" component="TizenAPI/System/AudioSystem" execution_type="auto" priority="P0" id="MuteControl_label_basic">
+        <description>
+          <test_script_entry>/opt/webapi-audiosystem-ivi-tests/audiosystem/MuteControl_basic.html?total_num=6&amp;amp;locator_key=id&amp;amp;value=2</test_script_entry>
+        </description>
+        <specs>
+          <spec>
+            <spec_assertion element_type="attribute" element_name="label" interface="MuteControl" specification="AudioSystem" section="System-level APIs" category="Tizen API Specifications"/>
+            <spec_url>https://wiki.tizen.org/wiki/User:Tanuk/AudioSystemAPI#The_Audio_System_API</spec_url>
+            <spec_statement/>
+          </spec>
+        </specs>
+      </testcase>
+      <testcase purpose="Check if readonly attribute muted of MuteControl interface exist and type of boolean" type="compliance" status="designed" component="TizenAPI/System/AudioSystem" execution_type="auto" priority="P0" id="MuteControl_muted_basic">
+        <description>
+          <test_script_entry>/opt/webapi-audiosystem-ivi-tests/audiosystem/MuteControl_basic.html?total_num=6&amp;amp;locator_key=id&amp;amp;value=3</test_script_entry>
+        </description>
+        <specs>
+          <spec>
+            <spec_assertion element_type="attribute" element_name="muted" interface="MuteControl" specification="AudioSystem" section="System-level APIs" category="Tizen API Specifications"/>
+            <spec_url>https://wiki.tizen.org/wiki/User:Tanuk/AudioSystemAPI#The_Audio_System_API</spec_url>
+            <spec_statement/>
+          </spec>
+        </specs>
+      </testcase>
+      <testcase purpose="Check if onlabelchanged event of MuteControl interface exist" type="compliance" status="designed" component="TizenAPI/System/AudioSystem" execution_type="auto" priority="P0" id="MuteControl_onlabelchanged_basic">
+        <description>
+          <test_script_entry>/opt/webapi-audiosystem-ivi-tests/audiosystem/MuteControl_basic.html?total_num=6&amp;amp;locator_key=id&amp;amp;value=4</test_script_entry>
+        </description>
+        <specs>
+          <spec>
+            <spec_assertion element_type="event" element_name="onlabelchanged" interface="MuteControl" specification="AudioSystem" section="System-level APIs" category="Tizen API Specifications"/>
+            <spec_url>https://wiki.tizen.org/wiki/User:Tanuk/AudioSystemAPI#The_Audio_System_API</spec_url>
+            <spec_statement/>
+          </spec>
+        </specs>
+      </testcase>
+      <testcase purpose="Check if onmutedchanged event of MuteControl interface exist" type="compliance" status="designed" component="TizenAPI/System/AudioSystem" execution_type="auto" priority="P0" id="MuteControl_onmutedchanged_basic">
+        <description>
+          <test_script_entry>/opt/webapi-audiosystem-ivi-tests/audiosystem/MuteControl_basic.html?total_num=6&amp;amp;locator_key=id&amp;amp;value=5</test_script_entry>
+        </description>
+        <specs>
+          <spec>
+            <spec_assertion element_type="event" element_name="onmutedchanged" interface="MuteControl" specification="AudioSystem" section="System-level APIs" category="Tizen API Specifications"/>
+            <spec_url>https://wiki.tizen.org/wiki/User:Tanuk/AudioSystemAPI#The_Audio_System_API</spec_url>
+            <spec_statement/>
+          </spec>
+        </specs>
+      </testcase>
+      <testcase purpose="Check if set_muted of MuteControl interface exist and type of function" type="compliance" status="designed" component="TizenAPI/System/AudioSystem" execution_type="auto" priority="P0" id="MuteControl_set_muted_basic">
+        <description>
+          <test_script_entry>/opt/webapi-audiosystem-ivi-tests/audiosystem/MuteControl_basic.html?total_num=6&amp;amp;locator_key=id&amp;amp;value=6</test_script_entry>
+        </description>
+        <specs>
+          <spec>
+            <spec_assertion element_type="method" element_name="set_muted" interface="MuteControl" specification="AudioSystem" section="System-level APIs" category="Tizen API Specifications"/>
+            <spec_url>https://wiki.tizen.org/wiki/User:Tanuk/AudioSystemAPI#The_Audio_System_API</spec_url>
+            <spec_statement/>
+          </spec>
+        </specs>
+      </testcase>
+      <testcase purpose="Check if readonly attribute id of AudioDevice interface exist and type of number" type="compliance" status="designed" component="TizenAPI/System/AudioSystem" execution_type="auto" priority="P0" id="AudioDevice_id_basic">
+        <description>
+          <test_script_entry>/opt/webapi-audiosystem-ivi-tests/audiosystem/AudioDevice_basic.html?total_num=10&amp;amp;locator_key=id&amp;amp;value=1</test_script_entry>
+        </description>
+        <specs>
+          <spec>
+            <spec_assertion element_type="attribute" element_name="id" interface="AudioDevice" specification="AudioSystem" section="System-level APIs" category="Tizen API Specifications"/>
+            <spec_url>https://wiki.tizen.org/wiki/User:Tanuk/AudioSystemAPI#The_Audio_System_API</spec_url>
+            <spec_statement/>
+          </spec>
+        </specs>
+      </testcase>
+      <testcase purpose="Check if readonly attribute label of AudioDevice interface exist and type of string" type="compliance" status="designed" component="TizenAPI/System/AudioSystem" execution_type="auto" priority="P0" id="AudioDevice_label_basic">
+        <description>
+          <test_script_entry>/opt/webapi-audiosystem-ivi-tests/audiosystem/AudioDevice_basic.html?total_num=10&amp;amp;locator_key=id&amp;amp;value=2</test_script_entry>
+        </description>
+        <specs>
+          <spec>
+            <spec_assertion element_type="attribute" element_name="label" interface="AudioDevice" specification="AudioSystem" section="System-level APIs" category="Tizen API Specifications"/>
+            <spec_url>https://wiki.tizen.org/wiki/User:Tanuk/AudioSystemAPI#The_Audio_System_API</spec_url>
+            <spec_statement/>
+          </spec>
+        </specs>
+      </testcase>
+      <testcase purpose="Check if readonly attribute direction of AudioDevice interface exist and type of string" type="compliance" status="designed" component="TizenAPI/System/AudioSystem" execution_type="auto" priority="P0" id="AudioDevice_direction_basic">
+        <description>
+          <test_script_entry>/opt/webapi-audiosystem-ivi-tests/audiosystem/AudioDevice_basic.html?total_num=10&amp;amp;locator_key=id&amp;amp;value=3</test_script_entry>
+        </description>
+        <specs>
+          <spec>
+            <spec_assertion element_type="attribute" element_name="direction" interface="AudioDevice" specification="AudioSystem" section="System-level APIs" category="Tizen API Specifications"/>
+            <spec_url>https://wiki.tizen.org/wiki/User:Tanuk/AudioSystemAPI#The_Audio_System_API</spec_url>
+            <spec_statement/>
+          </spec>
+        </specs>
+      </testcase>
+      <testcase purpose="Check if readonly attribute device_types of AudioDevice interface exist and type of array" type="compliance" status="designed" component="TizenAPI/System/AudioSystem" execution_type="auto" priority="P0" id="AudioDevice_device_types_basic">
+        <description>
+          <test_script_entry>/opt/webapi-audiosystem-ivi-tests/audiosystem/AudioDevice_basic.html?total_num=10&amp;amp;locator_key=id&amp;amp;value=4</test_script_entry>
+        </description>
+        <specs>
+          <spec>
+            <spec_assertion element_type="attribute" element_name="device_types" interface="AudioDevice" specification="AudioSystem" section="System-level APIs" category="Tizen API Specifications"/>
+            <spec_url>https://wiki.tizen.org/wiki/User:Tanuk/AudioSystemAPI#The_Audio_System_API</spec_url>
+            <spec_statement/>
+          </spec>
+        </specs>
+      </testcase>
+      <testcase purpose="Check if readonly attribute volume_control of AudioDevice interface exist and type of object" type="compliance" status="designed" component="TizenAPI/System/AudioSystem" execution_type="auto" priority="P0" id="AudioDevice_volume_control_basic">
+        <description>
+          <test_script_entry>/opt/webapi-audiosystem-ivi-tests/audiosystem/AudioDevice_basic.html?total_num=10&amp;amp;locator_key=id&amp;amp;value=5</test_script_entry>
+        </description>
+        <specs>
+          <spec>
+            <spec_assertion element_type="attribute" element_name="volume_control" interface="AudioDevice" specification="AudioSystem" section="System-level APIs" category="Tizen API Specifications"/>
+            <spec_url>https://wiki.tizen.org/wiki/User:Tanuk/AudioSystemAPI#The_Audio_System_API</spec_url>
+            <spec_statement/>
+          </spec>
+        </specs>
+      </testcase>
+      <testcase purpose="Check if readonly attribute mute_control of AudioDevice interface exist and type of object" type="compliance" status="designed" component="TizenAPI/System/AudioSystem" execution_type="auto" priority="P0" id="AudioDevice_mute_control_basic">
+        <description>
+          <test_script_entry>/opt/webapi-audiosystem-ivi-tests/audiosystem/AudioDevice_basic.html?total_num=10&amp;amp;locator_key=id&amp;amp;value=6</test_script_entry>
+        </description>
+        <specs>
+          <spec>
+            <spec_assertion element_type="attribute" element_name="mute_control" interface="AudioDevice" specification="AudioSystem" section="System-level APIs" category="Tizen API Specifications"/>
+            <spec_url>https://wiki.tizen.org/wiki/User:Tanuk/AudioSystemAPI#The_Audio_System_API</spec_url>
+            <spec_statement/>
+          </spec>
+        </specs>
+      </testcase>
+      <testcase purpose="Check if onlabelchanged event of AudioDevice interface exist" type="compliance" status="designed" component="TizenAPI/System/AudioSystem" execution_type="auto" priority="P0" id="AudioDevice_onlabelchanged_basic">
+        <description>
+          <test_script_entry>/opt/webapi-audiosystem-ivi-tests/audiosystem/AudioDevice_basic.html?total_num=10&amp;amp;locator_key=id&amp;amp;value=7</test_script_entry>
+        </description>
+        <specs>
+          <spec>
+            <spec_assertion element_type="event" element_name="onlabelchanged" interface="AudioDevice" specification="AudioSystem" section="System-level APIs" category="Tizen API Specifications"/>
+            <spec_url>https://wiki.tizen.org/wiki/User:Tanuk/AudioSystemAPI#The_Audio_System_API</spec_url>
+            <spec_statement/>
+          </spec>
+        </specs>
+      </testcase>
+      <testcase purpose="Check if devicetypeschanged event of AudioDevice interface exist" type="compliance" status="designed" component="TizenAPI/System/AudioSystem" execution_type="auto" priority="P0" id="AudioDevice_devicetypeschanged_basic">
+        <description>
+          <test_script_entry>/opt/webapi-audiosystem-ivi-tests/audiosystem/AudioDevice_basic.html?total_num=10&amp;amp;locator_key=id&amp;amp;value=8</test_script_entry>
+        </description>
+        <specs>
+          <spec>
+            <spec_assertion element_type="event" element_name="devicetypeschanged" interface="AudioDevice" specification="AudioSystem" section="System-level APIs" category="Tizen API Specifications"/>
+            <spec_url>https://wiki.tizen.org/wiki/User:Tanuk/AudioSystemAPI#The_Audio_System_API</spec_url>
+            <spec_statement/>
+          </spec>
+        </specs>
+      </testcase>
+      <testcase purpose="Check if volumecontrolchanged event of AudioDevice interface exist" type="compliance" status="designed" component="TizenAPI/System/AudioSystem" execution_type="auto" priority="P0" id="AudioDevice_volumecontrolchanged_basic">
+        <description>
+          <test_script_entry>/opt/webapi-audiosystem-ivi-tests/audiosystem/AudioDevice_basic.html?total_num=10&amp;amp;locator_key=id&amp;amp;value=9</test_script_entry>
+        </description>
+        <specs>
+          <spec>
+            <spec_assertion element_type="event" element_name="volumecontrolchanged" interface="AudioDevice" specification="AudioSystem" section="System-level APIs" category="Tizen API Specifications"/>
+            <spec_url>https://wiki.tizen.org/wiki/User:Tanuk/AudioSystemAPI#The_Audio_System_API</spec_url>
+            <spec_statement/>
+          </spec>
+        </specs>
+      </testcase>
+      <testcase purpose="Check if mutecontrolchanged event of AudioDevice interface exist" type="compliance" status="designed" component="TizenAPI/System/AudioSystem" execution_type="auto" priority="P0" id="AudioDevice_mutecontrolchanged_basic">
+        <description>
+          <test_script_entry>/opt/webapi-audiosystem-ivi-tests/audiosystem/AudioDevice_basic.html?total_num=10&amp;amp;locator_key=id&amp;amp;value=10</test_script_entry>
+        </description>
+        <specs>
+          <spec>
+            <spec_assertion element_type="event" element_name="mutecontrolchanged" interface="AudioDevice" specification="AudioSystem" section="System-level APIs" category="Tizen API Specifications"/>
+            <spec_url>https://wiki.tizen.org/wiki/User:Tanuk/AudioSystemAPI#The_Audio_System_API</spec_url>
+            <spec_statement/>
+          </spec>
+        </specs>
+      </testcase>
+      <testcase purpose="Check if readonly attribute id of AudioGroup interface exist and type of number" type="compliance" status="designed" component="TizenAPI/System/AudioSystem" execution_type="auto" priority="P0" id="AudioGroup_id_basic">
+        <description>
+          <test_script_entry>/opt/webapi-audiosystem-ivi-tests/audiosystem/AudioGroup_basic.html?total_num=10&amp;amp;locator_key=id&amp;amp;value=1</test_script_entry>
+        </description>
+        <specs>
+          <spec>
+            <spec_assertion element_type="attribute" element_name="id" interface="AudioGroup" specification="AudioSystem" section="System-level APIs" category="Tizen API Specifications"/>
+            <spec_url>https://wiki.tizen.org/wiki/User:Tanuk/AudioSystemAPI#The_Audio_System_API</spec_url>
+            <spec_statement/>
+          </spec>
+        </specs>
+      </testcase>
+      <testcase purpose="Check if readonly attribute label of AudioGroup interface exist and type of string" type="compliance" status="designed" component="TizenAPI/System/AudioSystem" execution_type="auto" priority="P0" id="AudioGroup_label_basic">
+        <description>
+          <test_script_entry>/opt/webapi-audiosystem-ivi-tests/audiosystem/AudioGroup_basic.html?total_num=10&amp;amp;locator_key=id&amp;amp;value=2</test_script_entry>
+        </description>
+        <specs>
+          <spec>
+            <spec_assertion element_type="attribute" element_name="label" interface="AudioGroup" specification="AudioSystem" section="System-level APIs" category="Tizen API Specifications"/>
+            <spec_url>https://wiki.tizen.org/wiki/User:Tanuk/AudioSystemAPI#The_Audio_System_API</spec_url>
+            <spec_statement/>
+          </spec>
+        </specs>
+      </testcase>
+      <testcase purpose="Check if readonly attribute direction of AudioGroup interface exist and type of string" type="compliance" status="designed" component="TizenAPI/System/AudioSystem" execution_type="auto" priority="P0" id="AudioGroup_direction_basic">
+        <description>
+          <test_script_entry>/opt/webapi-audiosystem-ivi-tests/audiosystem/AudioGroup_basic.html?total_num=10&amp;amp;locator_key=id&amp;amp;value=3</test_script_entry>
+        </description>
+        <specs>
+          <spec>
+            <spec_assertion element_type="attribute" element_name="direction" interface="AudioGroup" specification="AudioSystem" section="System-level APIs" category="Tizen API Specifications"/>
+            <spec_url>https://wiki.tizen.org/wiki/User:Tanuk/AudioSystemAPI#The_Audio_System_API</spec_url>
+            <spec_statement/>
+          </spec>
+        </specs>
+      </testcase>
+      <testcase purpose="Check if readonly attribute device_types of AudioGroup interface exist and type of array" type="compliance" status="designed" component="TizenAPI/System/AudioSystem" execution_type="auto" priority="P0" id="AudioGroup_device_types_basic">
+        <description>
+          <test_script_entry>/opt/webapi-audiosystem-ivi-tests/audiosystem/AudioGroup_basic.html?total_num=10&amp;amp;locator_key=id&amp;amp;value=4</test_script_entry>
+        </description>
+        <specs>
+          <spec>
+            <spec_assertion element_type="attribute" element_name="device_types" interface="AudioGroup" specification="AudioSystem" section="System-level APIs" category="Tizen API Specifications"/>
+            <spec_url>https://wiki.tizen.org/wiki/User:Tanuk/AudioSystemAPI#The_Audio_System_API</spec_url>
+            <spec_statement/>
+          </spec>
+        </specs>
+      </testcase>
+      <testcase purpose="Check if readonly attribute volume_control of AudioGroup interface exist and type of object" type="compliance" status="designed" component="TizenAPI/System/AudioSystem" execution_type="auto" priority="P0" id="AudioGroup_volume_control_basic">
+        <description>
+          <test_script_entry>/opt/webapi-audiosystem-ivi-tests/audiosystem/AudioGroup_basic.html?total_num=10&amp;amp;locator_key=id&amp;amp;value=5</test_script_entry>
+        </description>
+        <specs>
+          <spec>
+            <spec_assertion element_type="attribute" element_name="volume_control" interface="AudioGroup" specification="AudioSystem" section="System-level APIs" category="Tizen API Specifications"/>
+            <spec_url>https://wiki.tizen.org/wiki/User:Tanuk/AudioSystemAPI#The_Audio_System_API</spec_url>
+            <spec_statement/>
+          </spec>
+        </specs>
+      </testcase>
+      <testcase purpose="Check if readonly attribute mute_control of AudioGroup interface exist and type of object" type="compliance" status="designed" component="TizenAPI/System/AudioSystem" execution_type="auto" priority="P0" id="AudioGroup_mute_control_basic">
+        <description>
+          <test_script_entry>/opt/webapi-audiosystem-ivi-tests/audiosystem/AudioGroup_basic.html?total_num=10&amp;amp;locator_key=id&amp;amp;value=6</test_script_entry>
+        </description>
+        <specs>
+          <spec>
+            <spec_assertion element_type="attribute" element_name="mute_control" interface="AudioGroup" specification="AudioSystem" section="System-level APIs" category="Tizen API Specifications"/>
+            <spec_url>https://wiki.tizen.org/wiki/User:Tanuk/AudioSystemAPI#The_Audio_System_API</spec_url>
+            <spec_statement/>
+          </spec>
+        </specs>
+      </testcase>
+      <testcase purpose="Check if onlabelchanged event of AudioGroup interface exist" type="compliance" status="designed" component="TizenAPI/System/AudioSystem" execution_type="auto" priority="P0" id="AudioGroup_onlabelchanged_basic">
+        <description>
+          <test_script_entry>/opt/webapi-audiosystem-ivi-tests/audiosystem/AudioGroup_basic.html?total_num=10&amp;amp;locator_key=id&amp;amp;value=7</test_script_entry>
+        </description>
+        <specs>
+          <spec>
+            <spec_assertion element_type="event" element_name="onlabelchanged" interface="AudioGroup" specification="AudioSystem" section="System-level APIs" category="Tizen API Specifications"/>
+            <spec_url>https://wiki.tizen.org/wiki/User:Tanuk/AudioSystemAPI#The_Audio_System_API</spec_url>
+            <spec_statement/>
+          </spec>
+        </specs>
+      </testcase>
+      <testcase purpose="Check if devicetypeschanged event of AudioGroup interface exist" type="compliance" status="designed" component="TizenAPI/System/AudioSystem" execution_type="auto" priority="P0" id="AudioGroup_devicetypeschanged_basic">
+        <description>
+          <test_script_entry>/opt/webapi-audiosystem-ivi-tests/audiosystem/AudioGroup_basic.html?total_num=10&amp;amp;locator_key=id&amp;amp;value=8</test_script_entry>
+        </description>
+        <specs>
+          <spec>
+            <spec_assertion element_type="event" element_name="devicetypeschanged" interface="AudioGroup" specification="AudioSystem" section="System-level APIs" category="Tizen API Specifications"/>
+            <spec_url>https://wiki.tizen.org/wiki/User:Tanuk/AudioSystemAPI#The_Audio_System_API</spec_url>
+            <spec_statement/>
+          </spec>
+        </specs>
+      </testcase>
+      <testcase purpose="Check if volumecontrolchanged event of AudioGroup interface exist" type="compliance" status="designed" component="TizenAPI/System/AudioSystem" execution_type="auto" priority="P0" id="AudioGroup_volumecontrolchanged_basic">
+        <description>
+          <test_script_entry>/opt/webapi-audiosystem-ivi-tests/audiosystem/AudioGroup_basic.html?total_num=10&amp;amp;locator_key=id&amp;amp;value=9</test_script_entry>
+        </description>
+        <specs>
+          <spec>
+            <spec_assertion element_type="event" element_name="volumecontrolchanged" interface="AudioGroup" specification="AudioSystem" section="System-level APIs" category="Tizen API Specifications"/>
+            <spec_url>https://wiki.tizen.org/wiki/User:Tanuk/AudioSystemAPI#The_Audio_System_API</spec_url>
+            <spec_statement/>
+          </spec>
+        </specs>
+      </testcase>
+      <testcase purpose="Check if mutecontrolchanged event of AudioGroup interface exist" type="compliance" status="designed" component="TizenAPI/System/AudioSystem" execution_type="auto" priority="P0" id="AudioGroup_mutecontrolchanged_basic">
+        <description>
+          <test_script_entry>/opt/webapi-audiosystem-ivi-tests/audiosystem/AudioGroup_basic.html?total_num=10&amp;amp;locator_key=id&amp;amp;value=10</test_script_entry>
+        </description>
+        <specs>
+          <spec>
+            <spec_assertion element_type="event" element_name="mutecontrolchanged" interface="AudioGroup" specification="AudioSystem" section="System-level APIs" category="Tizen API Specifications"/>
+            <spec_url>https://wiki.tizen.org/wiki/User:Tanuk/AudioSystemAPI#The_Audio_System_API</spec_url>
+            <spec_statement/>
+          </spec>
+        </specs>
+      </testcase>
+      <testcase purpose="Check if readonly attribute id of AudioStream interface exist and type of number" type="compliance" status="designed" component="TizenAPI/System/AudioSystem" execution_type="auto" priority="P0" id="AudioStream_id_basic">
+        <description>
+          <test_script_entry>/opt/webapi-audiosystem-ivi-tests/audiosystem/AudioStream_basic.html?total_num=8&amp;amp;locator_key=id&amp;amp;value=1</test_script_entry>
+        </description>
+        <specs>
+          <spec>
+            <spec_assertion element_type="attribute" element_name="id" interface="AudioStream" specification="AudioSystem" section="System-level APIs" category="Tizen API Specifications"/>
+            <spec_url>https://wiki.tizen.org/wiki/User:Tanuk/AudioSystemAPI#The_Audio_System_API</spec_url>
+            <spec_statement/>
+          </spec>
+        </specs>
+      </testcase>
+      <testcase purpose="Check if readonly attribute label of AudioStream interface exist and type of string" type="compliance" status="designed" component="TizenAPI/System/AudioSystem" execution_type="auto" priority="P0" id="AudioStream_label_basic">
+        <description>
+          <test_script_entry>/opt/webapi-audiosystem-ivi-tests/audiosystem/AudioStream_basic.html?total_num=8&amp;amp;locator_key=id&amp;amp;value=2</test_script_entry>
+        </description>
+        <specs>
+          <spec>
+            <spec_assertion element_type="attribute" element_name="label" interface="AudioStream" specification="AudioSystem" section="System-level APIs" category="Tizen API Specifications"/>
+            <spec_url>https://wiki.tizen.org/wiki/User:Tanuk/AudioSystemAPI#The_Audio_System_API</spec_url>
+            <spec_statement/>
+          </spec>
+        </specs>
+      </testcase>
+      <testcase purpose="Check if readonly attribute direction of AudioStream interface exist and type of string" type="compliance" status="designed" component="TizenAPI/System/AudioSystem" execution_type="auto" priority="P0" id="AudioStream_direction_basic">
+        <description>
+          <test_script_entry>/opt/webapi-audiosystem-ivi-tests/audiosystem/AudioStream_basic.html?total_num=8&amp;amp;locator_key=id&amp;amp;value=3</test_script_entry>
+        </description>
+        <specs>
+          <spec>
+            <spec_assertion element_type="attribute" element_name="direction" interface="AudioStream" specification="AudioSystem" section="System-level APIs" category="Tizen API Specifications"/>
+            <spec_url>https://wiki.tizen.org/wiki/User:Tanuk/AudioSystemAPI#The_Audio_System_API</spec_url>
+            <spec_statement/>
+          </spec>
+        </specs>
+      </testcase>
+      <testcase purpose="Check if readonly attribute volume_control of AudioStream interface exist and type of object" type="compliance" status="designed" component="TizenAPI/System/AudioSystem" execution_type="auto" priority="P0" id="AudioStream_volume_control_basic">
+        <description>
+          <test_script_entry>/opt/webapi-audiosystem-ivi-tests/audiosystem/AudioStream_basic.html?total_num=8&amp;amp;locator_key=id&amp;amp;value=4</test_script_entry>
+        </description>
+        <specs>
+          <spec>
+            <spec_assertion element_type="attribute" element_name="volume_control" interface="AudioStream" specification="AudioSystem" section="System-level APIs" category="Tizen API Specifications"/>
+            <spec_url>https://wiki.tizen.org/wiki/User:Tanuk/AudioSystemAPI#The_Audio_System_API</spec_url>
+            <spec_statement/>
+          </spec>
+        </specs>
+      </testcase>
+      <testcase purpose="Check if readonly attribute mute_control of AudioStream interface exist and type of object" type="compliance" status="designed" component="TizenAPI/System/AudioSystem" execution_type="auto" priority="P0" id="AudioStream_mute_control_basic">
+        <description>
+          <test_script_entry>/opt/webapi-audiosystem-ivi-tests/audiosystem/AudioStream_basic.html?total_num=8&amp;amp;locator_key=id&amp;amp;value=5</test_script_entry>
+        </description>
+        <specs>
+          <spec>
+            <spec_assertion element_type="attribute" element_name="mute_control" interface="AudioStream" specification="AudioSystem" section="System-level APIs" category="Tizen API Specifications"/>
+            <spec_url>https://wiki.tizen.org/wiki/User:Tanuk/AudioSystemAPI#The_Audio_System_API</spec_url>
+            <spec_statement/>
+          </spec>
+        </specs>
+      </testcase>
+      <testcase purpose="Check if onlabelchanged event of AudioStream interface exist" type="compliance" status="designed" component="TizenAPI/System/AudioSystem" execution_type="auto" priority="P0" id="AudioStream_onlabelchanged_basic">
+        <description>
+          <test_script_entry>/opt/webapi-audiosystem-ivi-tests/audiosystem/AudioStream_basic.html?total_num=8&amp;amp;locator_key=id&amp;amp;value=6</test_script_entry>
+        </description>
+        <specs>
+          <spec>
+            <spec_assertion element_type="event" element_name="onlabelchanged" interface="AudioStream" specification="AudioSystem" section="System-level APIs" category="Tizen API Specifications"/>
+            <spec_url>https://wiki.tizen.org/wiki/User:Tanuk/AudioSystemAPI#The_Audio_System_API</spec_url>
+            <spec_statement/>
+          </spec>
+        </specs>
+      </testcase>
+      <testcase purpose="Check if onvolumecontrolchanged event of AudioStream interface exist" type="compliance" status="designed" component="TizenAPI/System/AudioSystem" execution_type="auto" priority="P0" id="AudioStream_onvolumecontrolchanged_basic">
+        <description>
+          <test_script_entry>/opt/webapi-audiosystem-ivi-tests/audiosystem/AudioStream_basic.html?total_num=8&amp;amp;locator_key=id&amp;amp;value=7</test_script_entry>
+        </description>
+        <specs>
+          <spec>
+            <spec_assertion element_type="event" element_name="onvolumecontrolchanged" interface="AudioStream" specification="AudioSystem" section="System-level APIs" category="Tizen API Specifications"/>
+            <spec_url>https://wiki.tizen.org/wiki/User:Tanuk/AudioSystemAPI#The_Audio_System_API</spec_url>
+            <spec_statement/>
+          </spec>
+        </specs>
+      </testcase>
+      <testcase purpose="Check if onmutecontrolchanged event of AudioStream interface exist" type="compliance" status="designed" component="TizenAPI/System/AudioSystem" execution_type="auto" priority="P0" id="AudioStream_onmutecontrolchanged_basic">
+        <description>
+          <test_script_entry>/opt/webapi-audiosystem-ivi-tests/audiosystem/AudioStream_basic.html?total_num=8&amp;amp;locator_key=id&amp;amp;value=8</test_script_entry>
+        </description>
+        <specs>
+          <spec>
+            <spec_assertion element_type="event" element_name="onmutecontrolchanged" interface="AudioStream" specification="AudioSystem" section="System-level APIs" category="Tizen API Specifications"/>
+            <spec_url>https://wiki.tizen.org/wiki/User:Tanuk/AudioSystemAPI#The_Audio_System_API</spec_url>
+            <spec_statement/>
+          </spec>
+        </specs>
+      </testcase>
+      <testcase purpose="Check if connect attribute of AudioSystem interface can connect to the audiosystem" type="compliance" status="designed" component="TizenAPI/System/AudioSystem" execution_type="auto" priority="P0" id="AudioSystem_connect_fun">
+        <description>
+          <test_script_entry>/opt/webapi-audiosystem-ivi-tests/audiosystem/AudioSystem_function.html?total_num=3&amp;amp;locator_key=id&amp;amp;value=1</test_script_entry>
+        </description>
+        <specs>
+          <spec>
+            <spec_assertion element_type="method" element_name="connect" interface="AudioStream" specification="AudioSystem" section="System-level APIs" category="Tizen API Specifications"/>
+            <spec_url>https://wiki.tizen.org/wiki/User:Tanuk/AudioSystemAPI#The_Audio_System_API</spec_url>
+            <spec_statement/>
+          </spec>
+        </specs>
+      </testcase>
+      <testcase purpose="Check if disconnect attribute of AudioSystem interface disconnects the application from the platform's audio system" type="compliance" status="designed" component="TizenAPI/System/AudioSystem" execution_type="auto" priority="P0" id="AudioSystem_disconnect_fun">
+        <description>
+          <test_script_entry>/opt/webapi-audiosystem-ivi-tests/audiosystem/AudioSystem_function.html?total_num=3&amp;amp;locator_key=id&amp;amp;value=2</test_script_entry>
+        </description>
+        <specs>
+          <spec>
+            <spec_assertion element_type="method" element_name="disconnect" interface="AudioStream" specification="AudioSystem" section="System-level APIs" category="Tizen API Specifications"/>
+            <spec_url>https://wiki.tizen.org/wiki/User:Tanuk/AudioSystemAPI#The_Audio_System_API</spec_url>
+            <spec_statement/>
+          </spec>
+        </specs>
+      </testcase>
+      <testcase purpose="Check if ondisconnected attribute of AudioSystem interface can be fired when the connection to the audio system is lost" type="compliance" status="designed" component="TizenAPI/System/AudioSystem" execution_type="auto" priority="P0" id="AudioSystem_ondisconnected_fun">
+        <description>
+          <test_script_entry>/opt/webapi-audiosystem-ivi-tests/audiosystem/AudioSystem_function.html?total_num=3&amp;amp;locator_key=id&amp;amp;value=3</test_script_entry>
+        </description>
+        <specs>
+          <spec>
+            <spec_assertion element_type="event" element_name="ondisconnected" interface="AudioStream" specification="AudioSystem" section="System-level APIs" category="Tizen API Specifications"/>
+            <spec_url>https://wiki.tizen.org/wiki/User:Tanuk/AudioSystemAPI#The_Audio_System_API</spec_url>
+            <spec_statement/>
+          </spec>
+        </specs>
+      </testcase>
+    </set>
+  </suite>
+</test_definition>
