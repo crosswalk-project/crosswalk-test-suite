@@ -33,7 +33,7 @@ Authors:
 <html>
   <head>
     <meta charset='utf-8'>
-    <title>Crosswalk_WebApp_Uninstall_Resource</title>
+    <title>Crosswalk_WebApp_Launcher_Cache</title>
     <link rel="author" title="Intel" href="http://www.intel.com">
   </head>
   <body>
@@ -41,9 +41,9 @@ Authors:
       <strong>Test steps:</strong>
     </p>
     <ol>
-      <li>Install one webapp by typing "xwalkctl --install webapp</li>
-      <li>Uninstall the app by typing "xwalkctl --uninstall pkgid" in the command line</li>
-      <li>Check webapp storage patition path:/home/app/.config/xwalk-service/Storage/ext/pkgid</li>
+      <li>Install one webapp by typing "xwalkctl --install webapp"</li>
+      <li>Run the webapp "xwalk-launcher pkgids"</li>
+      <li>Check the webapp storage partition cache file/folder(path:/home/app/.config/xwalk-service/Storage/ext/pkgid/def/): ApplicationCookies Cache  Local Storage QuotaManager-journal ApplicationCookies-journal GPUCache QuotaManager</li>
     </ol>
     <p>
       <strong>Expected Output:</strong>
@@ -51,7 +51,7 @@ Authors:
     <ol>
       <li>The web app install successfully and you can get pkgid</li>
       <li>Web app is able to be uninstall successfully</li>
-      <li>Webapp isolated storage partition is deleted, only pkgid folder exist</li>
+      <li>Webapp isolated storage partition is created, cache files are created</li>
     </ol>
   </body>
 </html>

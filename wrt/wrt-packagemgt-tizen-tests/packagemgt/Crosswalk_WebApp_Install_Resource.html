@@ -41,16 +41,15 @@ Authors:
       <strong>Test steps:</strong>
     </p>
     <ol>
-      <li>Install one webapp by typing "xwalkctl --install webapp</li>
-      <li>Check webapp folder is created, path:/home/app/.config/xwalk-service/applications/pkgid</li>
-
+      <li>Install one webapp by typing "xwalkctl --install webapp"</li>
+      <li>Do not run the webapp, just check webapp have isolated storage partition, path:/home/app/.config/xwalk-service/Storage/ext/pkgid/def/</li>
     </ol>
     <p>
       <strong>Expected Output:</strong>
     </p>
     <ol>
       <li>The web app install successfully and you can get pkgid</li>
-      <li>Web app folder is created</li>
+      <li>Webapp have isolated storage partition,but no andy cach generate:such as this folder ApplicationCookies/Cache/GPUCache does not exist</li>
     </ol>
   </body>
 </html>

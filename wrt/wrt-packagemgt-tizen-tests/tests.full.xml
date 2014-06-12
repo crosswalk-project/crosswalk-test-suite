@@ -230,14 +230,6 @@
           <test_script_entry>/opt/wrt-packagemgt-tizen-tests/packagemgt/Crosswalk_Check_System_Memory.html</test_script_entry>
         </description>
       </testcase>
-      <testcase purpose="Validate if webapp folder is deleted after the webapp uninstalled successfully" type="Functional" status="approved" component="Package Management On Tizen" execution_type="manual" priority="P1" id="Crosswalk_WebApp_Uninstall_Resource">
-        <description>
-          <pre_condition>
-            1.Make sure there some webapps are available
-          </pre_condition>
-          <test_script_entry>/opt/wrt-packagemgt-tizen-tests/packagemgt/Crosswalk_WebApp_Uninstall_Resource.html</test_script_entry>
-        </description>
-      </testcase>
       <testcase purpose="Validate if webapp folder is create after the webapp installed successfully" type="Functional" status="approved" component="Package Management On Tizen" execution_type="manual" priority="P1" id="Crosswalk_WebApp_Install_Resource">
         <description>
           <pre_condition>
@@ -245,7 +237,31 @@
           </pre_condition>
           <test_script_entry>/opt/wrt-packagemgt-tizen-tests/packagemgt/Crosswalk_WebApp_Install_Resource.html</test_script_entry>
         </description>
-      </testcase>         
+      </testcase>
+      <testcase purpose="Validate if webapp cache file is deleted after the webapp uninstalled successfully" type="Functional" status="approved" component="Package Management On Tizen" execution_type="manual" priority="P1" id="Crosswalk_WebApp_Uninstall_Resource">
+        <description>
+          <pre_condition>
+            1.Make sure there some webapps are available
+          </pre_condition>
+          <test_script_entry>/opt/wrt-packagemgt-tizen-tests/packagemgt/Crosswalk_WebApp_Uninstall_Resource.html</test_script_entry>
+        </description>
+      </testcase>
+      <testcase purpose="Validate if webapp isolated partition cache is created after run the app" type="Functional" status="approved" component="Package Management On Tizen" execution_type="manual" priority="P1" id="Crosswalk_WebApp_Launcher_Cache">
+        <description>
+          <pre_condition>
+            1.Make sure there some webapps are available
+          </pre_condition>
+          <test_script_entry>/opt/wrt-packagemgt-tizen-tests/packagemgt/Crosswalk_WebApp_Launcher_Cache.html</test_script_entry>
+        </description>
+      </testcase>
+      <testcase purpose="Validate if webapp isolated partition cache is deleted after restart xwalk" type="Functional" status="approved" component="Package Management On Tizen" execution_type="manual" priority="P1" id="Crosswalk_WebApp_Partition_Delete">
+        <description>
+          <pre_condition>
+            1.Make sure there some webapps are available
+          </pre_condition>
+          <test_script_entry>/opt/wrt-packagemgt-tizen-tests/packagemgt/Crosswalk_WebApp_Partition_Delete.html</test_script_entry>
+        </description>
+      </testcase>                 
     </set>
   </suite>
 </test_definition>
