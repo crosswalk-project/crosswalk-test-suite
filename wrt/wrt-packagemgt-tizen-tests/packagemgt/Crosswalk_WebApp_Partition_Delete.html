@@ -33,7 +33,7 @@ Authors:
 <html>
   <head>
     <meta charset='utf-8'>
-    <title>Crosswalk_WebApp_Uninstall_Resource</title>
+    <title>Crosswalk_WebApp_Partition_Delete</title>
     <link rel="author" title="Intel" href="http://www.intel.com">
   </head>
   <body>
@@ -41,17 +41,25 @@ Authors:
       <strong>Test steps:</strong>
     </p>
     <ol>
-      <li>Install one webapp by typing "xwalkctl --install webapp</li>
-      <li>Uninstall the app by typing "xwalkctl --uninstall pkgid" in the command line</li>
-      <li>Check webapp storage patition path:/home/app/.config/xwalk-service/Storage/ext/pkgid</li>
+      <li>Install one webapp by typing "xwalkctl --install webapp"</li>
+      <li>Run the webapp "xwalk-launcher pkgids"</li>
+      <li>Uninstall the webapp "xwalkctl --uninstall pkgids"
+      <li>Check the webapp storage partition(path:/home/app/.config/xwalk-service/Storage/ext/pkgid/def/): ApplicationCookies Cache  Local Storage QuotaManager-journal ApplicationCookies-journal GPUCache QuotaManager</li>
+      <li>systemctl --user stop xwalk.service</li>
+      <li>systemctl --user start xwalk.service</li>
+      <li>Check the webapp isolated storage partition</li>
     </ol>
     <p>
       <strong>Expected Output:</strong>
     </p>
     <ol>
       <li>The web app install successfully and you can get pkgid</li>
+      <li>Web app is able to be run successfully</li>
       <li>Web app is able to be uninstall successfully</li>
       <li>Webapp isolated storage partition is deleted, only pkgid folder exist</li>
+      <li>xwalk.service stop successfully</li>
+      <li>xwalk.service start successfully</li>
+      <li>Webapp isolated storage partition is deleted,no any file exist</li> 
     </ol>
   </body>
 </html>
