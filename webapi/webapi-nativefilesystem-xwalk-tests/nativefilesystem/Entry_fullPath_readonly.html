@@ -49,18 +49,16 @@ function errorCallback(e) {
 }
 
 function successCallback(entry) {
-  entry.root.getFile("aa.txt", {create: true}, function(fileEntry) {
+  entry.root.getFile("/music/aa.txt", {create: true}, function(fileEntry) {
     t.step(function () {
       var fullpath = fileEntry.fullPath;
-      fileEntry.fullPath = "/tizen/aa.txt";
+      fileEntry.fullPath = "/music/aa.txt";
       assert_equals(fileEntry.fullPath, fullpath);
     });
     t.done();
   },errorCallback);
 }
 
-t.step(function () {
-  xwalk.experimental.native_file_system.requestNativeFileSystem(TEMPORARY, successCallback, errorCallback);
-});
+xwalk.experimental.native_file_system.requestNativeFileSystem("music", successCallback, errorCallback);
 
 </script>

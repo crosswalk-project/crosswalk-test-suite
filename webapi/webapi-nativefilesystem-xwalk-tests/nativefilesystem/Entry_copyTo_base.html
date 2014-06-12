@@ -48,19 +48,17 @@ function errorCallback(e) {
   t.done();
 }
 
-t.step(function () {
-  xwalk.experimental.native_file_system.requestNativeFileSystem(TEMPORARY, function(fs) {
-    fs.root.getDirectory('testDirectory', {create: true}, function(entry) {
-      fs.root.getFile("test.txt", {create: true}, function(fileentry) {
-        fileentry.copyTo(entry, "test1.txt", function(newfileEntry) {
-          t.step(function() {
-            assert_equals(newfileEntry.fullPath, "/testDirectory/test1.txt");
-          });
-          t.done();
-        }, errorCallback);
+xwalk.experimental.native_file_system.requestNativeFileSystem("music", function(fs) {
+  fs.root.getDirectory('/music/', {create: true}, function(entry) {
+    fs.root.getFile("/music/test.txt", {create: true}, function(fileentry) {
+      fileentry.copyTo(entry, "test1.txt", function(newfileEntry) {
+        t.step(function() {
+          assert_equals(newfileEntry.fullPath, "/music/test1.txt");
+        });
+        t.done();
       }, errorCallback);
-    }, errorCallback)
-  }, errorCallback);
-});
+    }, errorCallback);
+  }, errorCallback)
+}, errorCallback);
 
 </script>

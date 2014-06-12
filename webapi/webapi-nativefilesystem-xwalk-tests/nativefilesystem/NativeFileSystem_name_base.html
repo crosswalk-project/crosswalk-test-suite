@@ -48,15 +48,13 @@ function errorCallback(e) {
   t.done();
 }
 
-t.step(function () {
-  xwalk.experimental.native_file_system.requestNativeFileSystem(TEMPORARY, function(fileSystem) {
-    t.step(function () {
-      var name = fileSystem.name;
-      // The specifics of naming filesystems is unspecified
-      assert_true(name && name.length > 0, "The value of NativeFileSystem.name is " + name);
-    });
-    t.done();
-  },errorCallback);
-});
+xwalk.experimental.native_file_system.requestNativeFileSystem("music", function(fileSystem) {
+  t.step(function () {
+    var name = fileSystem.name;
+    // The specifics of naming filesystems is unspecified
+    assert_true(name && name.length > 0, "The value of NativeFileSystem.name is " + name);
+  });
+  t.done();
+},errorCallback);
 
 </script>

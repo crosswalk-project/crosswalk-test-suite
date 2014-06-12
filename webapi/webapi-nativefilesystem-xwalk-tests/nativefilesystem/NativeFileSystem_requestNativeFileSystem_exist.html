@@ -39,12 +39,9 @@ Authors:
 <div id="log"></div>
 <script>
 
-var t = async_test("Check if the requestNativeFileSystem exist", {timeout: 2000});
-
-t.step(function () {
+test(function () {
   var flag = xwalk.experimental.native_file_system.requestNativeFileSystem != undefined &&           xwalk.experimental.native_file_system.requestNativeFileSystem instanceof Function;
   assert_true(flag, "NativeFileSystem.requestNativeFileSystem exists");
-});
-t.done();
+}, "Check if the requestNativeFileSystem exist");
 
 </script>

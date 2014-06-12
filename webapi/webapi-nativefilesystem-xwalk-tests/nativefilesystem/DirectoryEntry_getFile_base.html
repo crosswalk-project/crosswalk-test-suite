@@ -51,10 +51,8 @@ function successCallback(entry) {
   t.done(); // The success callback is called when getFile() has all valid arguments
 }
 
-t.step(function () {
-  xwalk.experimental.native_file_system.requestNativeFileSystem(TEMPORARY, function(fs) {
-    fs.root.getFile("qa.txt", {create: true}, successCallback, errorCallback);
-  }, errorCallback);
-});
+xwalk.experimental.native_file_system.requestNativeFileSystem("music", function(fs) {
+  fs.root.getFile("/music/1.txt", {create: true}, successCallback, errorCallback);
+}, errorCallback);
 
 </script>

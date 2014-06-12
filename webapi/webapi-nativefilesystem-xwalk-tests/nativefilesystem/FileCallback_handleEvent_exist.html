@@ -52,12 +52,10 @@ function successCallback(fs) {
     t.done(); // FileCallback.handleEvent exists
 }
 
-t.step(function () {
-  xwalk.experimental.native_file_system.requestNativeFileSystem(TEMPORARY, function(fs) {
-    fs.root.getFile('log.txt', {create: true}, function(fileEntry) {
-      fileEntry.file(successCallback, errorCallback);
-    }, errorCallback);
+xwalk.experimental.native_file_system.requestNativeFileSystem("music", function(fs) {
+  fs.root.getFile('/music/log.txt', {create: true}, function(fileEntry) {
+    fileEntry.file(successCallback, errorCallback);
   }, errorCallback);
-});
+}, errorCallback);
 
 </script>

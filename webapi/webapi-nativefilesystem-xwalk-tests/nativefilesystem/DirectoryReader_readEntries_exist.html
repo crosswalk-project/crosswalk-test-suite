@@ -48,14 +48,14 @@ function errorCallback(e) {
   t.done();
 }
 
-t.step(function () {
-  xwalk.experimental.native_file_system.requestNativeFileSystem(TEMPORARY, function(fs) {
+xwalk.experimental.native_file_system.requestNativeFileSystem("music", function(fs) {
+  fs.root.getDirectory("/music/", {create: false}, function (entry) {
     t.step(function () {
-      var flag = fs.root.readEntries != undefined && fs.root.readEntries instanceof Function;
+      var flag = entry.createReader().readEntries != undefined && entry.createReader().readEntries instanceof Function;
       assert_true(flag, "The method entry.readEntries() exists");
     });
     t.done();
   }, errorCallback);
-});
+}, errorCallback);
 
 </script>

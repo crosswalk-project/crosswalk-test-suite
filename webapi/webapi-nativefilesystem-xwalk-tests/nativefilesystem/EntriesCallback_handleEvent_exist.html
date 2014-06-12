@@ -48,15 +48,15 @@ function errorCallback(e) {
   t.done();
 }
 
-function onInitFs(fs) {
-  var dirReader = fs.root.createReader();
+function onInitFs(entry) {
+  var dirReader = entry.createReader();
   dirReader.readEntries(function(results) {
     t.done(); // EntriesCallback.handleEvent exists
   }, errorCallback);
 }
 
-t.step(function () {
-  xwalk.experimental.native_file_system.requestNativeFileSystem(window.TEMPORARY, onInitFs, errorCallback);
-});
+xwalk.experimental.native_file_system.requestNativeFileSystem("music", function(fs) {
+  fs.root.getDirectory("/music/", {create: true}, onInitFs, errorCallback);
+}, errorCallback);
 
 </script>

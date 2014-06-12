@@ -48,16 +48,14 @@ function errorCallback(e) {
   t.done();
 }
 
-t.step(function () {
-  xwalk.experimental.native_file_system.requestNativeFileSystem(TEMPORARY, function(fs) {
-    fs.root.getDirectory('testDirectory', {create: true}, function(entry) {
-      t.step(function () {
-        var flag = entry.toURL != undefined && entry.toURL instanceof Function;
-        assert_true(flag, "The methode entry.toURL() exists");
-      });
-      t.done();
-    }, errorCallback);
+xwalk.experimental.native_file_system.requestNativeFileSystem("music", function(fs) {
+  fs.root.getDirectory('/music/', {create: true}, function(entry) {
+    t.step(function () {
+      var flag = entry.toURL != undefined && entry.toURL instanceof Function;
+      assert_true(flag, "The methode entry.toURL() exists");
+    });
+    t.done();
   }, errorCallback);
-});
+}, errorCallback);
 
 </script>

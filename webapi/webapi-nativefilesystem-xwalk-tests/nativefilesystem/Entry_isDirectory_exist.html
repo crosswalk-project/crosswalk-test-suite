@@ -48,13 +48,11 @@ function errorCallback(e) {
   t.done();
 }
 
-t.step(function () {
-  xwalk.experimental.native_file_system.requestNativeFileSystem(TEMPORARY, function(fs) {
-    t.step(function () {
-      assert_exists(fs.root, "isDirectory");
-    });
-    t.done();
-  }, errorCallback);
-});
+xwalk.experimental.native_file_system.requestNativeFileSystem("music", function(fs) {
+  t.step(function () {
+    assert_exists(fs.root, "isDirectory");
+  });
+  t.done();
+}, errorCallback);
 
 </script>

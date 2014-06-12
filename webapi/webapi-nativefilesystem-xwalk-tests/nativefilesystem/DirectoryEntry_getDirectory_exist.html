@@ -48,14 +48,12 @@ function errorCallback(e) {
   t.done();
 }
 
-t.step(function () {
-  xwalk.experimental.native_file_system.requestNativeFileSystem(TEMPORARY, function(fs) {
-    t.step(function () {
-      var flag = fs.root.getDirectory != undefined && fs.root.getDirectory instanceof Function;
-      assert_true(flag, "DirectoryEntry.getDirectory() method exists");
-    });
-    t.done();
-  }, errorCallback);
-});
+xwalk.experimental.native_file_system.requestNativeFileSystem("music", function(fs) {
+  t.step(function () {
+    var flag = fs.root.getDirectory != undefined && fs.root.getDirectory instanceof Function;
+    assert_true(flag, "DirectoryEntry.getDirectory() method exists");
+  });
+  t.done();
+}, errorCallback);
 
 </script>

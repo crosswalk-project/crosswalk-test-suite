@@ -48,14 +48,12 @@ function errorCallback(e) {
   t.done();
 }
 
-t.step(function () {
-  xwalk.experimental.native_file_system.requestNativeFileSystem(TEMPORARY, function(fs) {
-    t.step(function () {
-      var flag = fs.root.remove != undefined && fs.root.remove instanceof Function;
-      assert_true(flag, "the entry.remove() method exists");
-    });
-    t.done();
-  }, errorCallback);
-});
+xwalk.experimental.native_file_system.requestNativeFileSystem("music", function(fs) {
+  t.step(function () {
+    var flag = fs.root.remove != undefined && fs.root.remove instanceof Function;
+    assert_true(flag, "the entry.remove() method exists");
+  });
+  t.done();
+}, errorCallback);
 
 </script>
