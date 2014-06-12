@@ -118,11 +118,11 @@ webapp/manifest_name_HeadRelationalOperatorVertical_tests/Makefile \
 webapp/manifest_name_MiddleEscapeCharBackSlash_tests/Makefile \
 webapp/manifest_name_TailEscapeCharBackSlash_tests/Makefile \
 webapp/manifest_name_TailRelationalOperatorVertical_tests/Makefile \
-webapp/manifest_app_launchpathnoindex_tests/Makefile \
-webapp/manifest_app_mainsourcenofile_tests/Makefile \
-webapp/manifest_app_mainsourcenomain_tests/Makefile \
-webapp/manifest_app_mainsourcenosource_tests/Makefile \
-webapp/manifest_app_mainsourcenullvalue_tests/Makefile \
+webapp/manifest_app_launchPathNoIndex_tests/Makefile \
+webapp/manifest_app_MainSourceNoFile_tests/Makefile \
+webapp/manifest_app_mainSourceNoMain_tests/Makefile \
+webapp/manifest_app_mainSourceNoSource_tests/Makefile \
+webapp/manifest_app_mainSourceNullValue_tests/Makefile \
 webapp/manifest_extend_requirement_description/Makefile \
 webapp/manifest_icon_nofiles_tests/Makefile \
 webapp/manifest_icon_nofile_tests/Makefile \
@@ -143,7 +143,7 @@ webapp/manifest_negative_version_offlimits/Makefile \
 webapp/manifest_negative_version_prefixnegative/Makefile \
 webapp/manifest_negative_version_prefixzero/Makefile \
 webapp/manifest_version_chinese_tests/Makefile \
-webapp/manifest_version_identifyingnull_tests/Makefile \
+webapp/manifest_version_identifyingNull_tests/Makefile \
 webapp/manifest_version_pointcn_tests/Makefile \
 webapp/packer_tool_minify_tests/Makefile \
 webapp/permission_field_duplicate_tests/Makefile \
@@ -154,8 +154,8 @@ webapp/permission_field_one_tests/Makefile \
 webapp/manifest_icon_chinese_tests/Makefile \
 webapp/manifest_desc_chinese_tests/Makefile \
 webapp/manifest_desc_null_tests/Makefile \
-webapp/manifest_app_launchpathindexblank_tests/Makefile \
-webapp/manifest_app_launchpathindexchinese_tests/Makefile \
+webapp/manifest_app_launchPathIndexBlank_tests/Makefile \
+webapp/manifest_app_launchPathIndexChinese_tests/Makefile \
 webapp/permission_field_noapi_tests/Makefile \
 webapp/permission_field_chinese_tests/Makefile \
 webapp/permission_field_splite_tests/Makefile \

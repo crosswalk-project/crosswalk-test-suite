@@ -1,3 +1,3 @@
 SOURCE_SCRIPTS = *
-SOURCEdir = /opt/wrt-negative-webapp-tests/webapp/manifest_app_mainsourcenosource_tests
+SOURCEdir = /opt/wrt-negative-webapp-tests/webapp/manifest_app_mainSourceNoSource_tests
 EXTRA_DIST = $(SOURCE_SCRIPTS)
