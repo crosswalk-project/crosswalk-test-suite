@@ -49,8 +49,8 @@ Authors:
   var name = attr[1];
 
   test(function () {
-    assert_true(name in Navigator.iap, name + " attribute in InAppPurchase");
-    assert_equals(typeof Navigator.iap[name], type, name + " attribute of type");
+    assert_true(name in navigator.iap, name + " attribute in InAppPurchase");
+    assert_equals(typeof navigator.iap[name], type, name + " attribute of type");
   }, "Check if InAppPurchase." + name + " exists and type of " + type);
 });
 
