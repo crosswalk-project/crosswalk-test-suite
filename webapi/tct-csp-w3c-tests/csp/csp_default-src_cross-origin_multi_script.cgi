@@ -61,7 +61,7 @@ Authors:
         }, document.title + "_allowed_one");
 
         test(function() {
-            assert_true(typeof q == "object", "Function getVideoURI is defined");
+            assert_true(typeof q != "object", "Function getVideoURI is defined");
         }, document.title + "_allowed_two");
     </script>
   </body>

@@ -281,6 +281,28 @@
           </spec>
         </specs>
       </testcase>
+      <testcase purpose="Check if default-src is '*' and about is 'unsafe-inline, that local script will be executed" type="compliance" status="approved" component="WebAPI/Security/Content Security Policy" execution_type="auto" priority="P1" id="csp_default-src_asterisk_unsafe-inline_local">
+        <description>
+          <test_script_entry test_script_expected_result="0">/opt/tct-csp-w3c-tests/csp/csp_default-src_asterisk_script.cgi?total_num=2&amp;amp;locator_key=id&amp;amp;value=1</test_script_entry>
+        </description>
+        <specs>
+          <spec>
+            <spec_assertion element_type="attribute" element_name="default-src" interface="Content-Security-Policy" specification="Content Security Policy" section="TBD" category="Tizen W3C API Specifications"/>
+            <spec_url>http://www.w3.org/TR/2012/CR-CSP-20121115/#default-src</spec_url>
+          </spec>
+        </specs>
+      </testcase>
+      <testcase purpose="Check if default-src is '*' and about is 'unsafe-inline, that internal script will be executed" type="compliance" status="approved" component="WebAPI/Security/Content Security Policy" execution_type="auto" priority="P1" id="csp_default-src_asterisk_unsafe-inline_internal">
+        <description>
+          <test_script_entry test_script_expected_result="0">/opt/tct-csp-w3c-tests/csp/csp_default-src_asterisk_script.cgi?total_num=2&amp;amp;locator_key=id&amp;amp;value=2</test_script_entry>
+        </description>
+        <specs>
+          <spec>
+            <spec_assertion element_type="attribute" element_name="default-src" interface="Content-Security-Policy" specification="Content Security Policy" section="TBD" category="Tizen W3C API Specifications"/>
+            <spec_url>http://www.w3.org/TR/2012/CR-CSP-20121115/#default-src</spec_url>
+          </spec>
+        </specs>
+      </testcase>
       <testcase purpose="Check if default-src is 'self' and about is 'unsafe-inline, that inline script will be executed" type="compliance" status="approved" component="WebAPI/Security/Content Security Policy" execution_type="auto" priority="P2" id="csp_default-src_self_about_unsafe-inline_script">
         <description>
           <test_script_entry test_script_expected_result="0">/opt/tct-csp-w3c-tests/csp/w3c/CSP_default-src-inline-allowed.cgi?total_num=3&amp;amp;locator_key=id&amp;amp;value=1</test_script_entry>
@@ -358,6 +380,72 @@
           </spec>
         </specs>
       </testcase>
+      <testcase purpose="Check if default-src is cross-origin, that local script will be blocked" type="compliance" status="approved" component="WebAPI/Security/Content Security Policy" execution_type="auto" priority="P1" id="csp_default-src_cross-origin_unsafe-inline_local">
+        <description>
+          <test_script_entry test_script_expected_result="0">/opt/tct-csp-w3c-tests/csp/csp_default-src_cross-origin_script.cgi?total_num=3&amp;amp;locator_key=id&amp;amp;value=1</test_script_entry>
+        </description>
+        <specs>
+          <spec>
+            <spec_assertion element_type="attribute" element_name="default-src" interface="Content-Security-Policy" specification="Content Security Policy" section="TBD" category="Tizen W3C API Specifications"/>
+            <spec_url>http://www.w3.org/TR/2012/CR-CSP-20121115/#default-src</spec_url>
+          </spec>
+        </specs>
+      </testcase>
+      <testcase purpose="Check if default-src is cross-origin, that internal script with right address will be excuted" type="compliance" status="approved" component="WebAPI/Security/Content Security Policy" execution_type="auto" priority="P1" id="csp_default-src_cross-origin_unsafe-inline_right">
+        <description>
+          <test_script_entry test_script_expected_result="0">/opt/tct-csp-w3c-tests/csp/csp_default-src_cross-origin_script.cgi?total_num=3&amp;amp;locator_key=id&amp;amp;value=2</test_script_entry>
+        </description>
+        <specs>
+          <spec>
+            <spec_assertion element_type="attribute" element_name="default-src" interface="Content-Security-Policy" specification="Content Security Policy" section="TBD" category="Tizen W3C API Specifications"/>
+            <spec_url>http://www.w3.org/TR/2012/CR-CSP-20121115/#default-src</spec_url>
+          </spec>
+        </specs>
+      </testcase>
+      <testcase purpose="Check if default-src is cross-origin, that internal script with wrong address will be blocked" type="compliance" status="approved" component="WebAPI/Security/Content Security Policy" execution_type="auto" priority="P1" id="csp_default-src_cross-origin_unsafe-inline_wrong">
+        <description>
+          <test_script_entry test_script_expected_result="0">/opt/tct-csp-w3c-tests/csp/csp_default-src_cross-origin_script.cgi?total_num=3&amp;amp;locator_key=id&amp;amp;value=3</test_script_entry>
+        </description>
+        <specs>
+          <spec>
+            <spec_assertion element_type="attribute" element_name="default-src" interface="Content-Security-Policy" specification="Content Security Policy" section="TBD" category="Tizen W3C API Specifications"/>
+            <spec_url>http://www.w3.org/TR/2012/CR-CSP-20121115/#default-src</spec_url>
+          </spec>
+        </specs>
+      </testcase>
+      <testcase purpose="Check if default-src is multi cross-origin, that local script will be blocked" type="compliance" status="approved" component="WebAPI/Security/Content Security Policy" execution_type="auto" priority="P1" id="csp_default-src_multi_cross-origin_unsafe-inline_local">
+        <description>
+          <test_script_entry test_script_expected_result="0">/opt/tct-csp-w3c-tests/csp/csp_default-src_cross-origin_multi_script.cgi?total_num=3&amp;amp;locator_key=id&amp;amp;value=1</test_script_entry>
+        </description>
+        <specs>
+          <spec>
+            <spec_assertion element_type="attribute" element_name="default-src" interface="Content-Security-Policy" specification="Content Security Policy" section="TBD" category="Tizen W3C API Specifications"/>
+            <spec_url>http://www.w3.org/TR/2012/CR-CSP-20121115/#default-src</spec_url>
+          </spec>
+        </specs>
+      </testcase>
+      <testcase purpose="Check if default-src is multi cross-origin, that internal script with right address will be excuted" type="compliance" status="approved" component="WebAPI/Security/Content Security Policy" execution_type="auto" priority="P1" id="csp_default-src_multi_cross-origin_unsafe-inline_right">
+        <description>
+          <test_script_entry test_script_expected_result="0">/opt/tct-csp-w3c-tests/csp/csp_default-src_cross-origin_multi_script.cgi?total_num=3&amp;amp;locator_key=id&amp;amp;value=2</test_script_entry>
+        </description>
+        <specs>
+          <spec>
+            <spec_assertion element_type="attribute" element_name="default-src" interface="Content-Security-Policy" specification="Content Security Policy" section="TBD" category="Tizen W3C API Specifications"/>
+            <spec_url>http://www.w3.org/TR/2012/CR-CSP-20121115/#default-src</spec_url>
+          </spec>
+        </specs>
+      </testcase>
+      <testcase purpose="Check if default-src is multi cross-origin, that internal script with wrong address will be blocked" type="compliance" status="approved" component="WebAPI/Security/Content Security Policy" execution_type="auto" priority="P1" id="csp_default-src_multi_cross-origin_unsafe-inline_wrong">
+        <description>
+          <test_script_entry test_script_expected_result="0">/opt/tct-csp-w3c-tests/csp/csp_default-src_cross-origin_multi_script.cgi?total_num=3&amp;amp;locator_key=id&amp;amp;value=3</test_script_entry>
+        </description>
+        <specs>
+          <spec>
+            <spec_assertion element_type="attribute" element_name="default-src" interface="Content-Security-Policy" specification="Content Security Policy" section="TBD" category="Tizen W3C API Specifications"/>
+            <spec_url>http://www.w3.org/TR/2012/CR-CSP-20121115/#default-src</spec_url>
+          </spec>
+        </specs>
+      </testcase>
       <testcase purpose="Check if user agent is able to open first allowed resource by xhr when default-src is multi cross-origin." type="compliance" status="approved" component="WebAPI/Security/Content Security Policy" execution_type="auto" priority="P2" id="csp_default-src_cross-origin_connect_multi_xmlhttprequest_allowed_one">
         <description>
           <test_script_entry test_script_expected_result="0">/opt/tct-csp-w3c-tests/csp/csp_default-src_cross-origin_connect_multi.cgi?total_num=4&amp;amp;locator_key=id&amp;amp;value=1</test_script_entry>
@@ -402,6 +490,105 @@
           </spec>
         </specs>
       </testcase>
+      <testcase purpose="Check if user agent is able to use external style resource when default-src is cross-origin." type="compliance" status="approved" component="WebAPI/Security/Content Security Policy" execution_type="auto" priority="P2" id="csp_default-src_cross-origin_style_allow">
+        <description>
+          <test_script_entry test_script_expected_result="0">/opt/tct-csp-w3c-tests/csp/csp_default-src_cross-origin_style.cgi?total_num=4&amp;amp;locator_key=id&amp;amp;value=1</test_script_entry>
+        </description>
+        <specs>
+          <spec>
+            <spec_assertion element_type="attribute" element_name="default-src" interface="Content-Security-Policy" specification="Content Security Policy" section="TBD" category="Tizen W3C API Specifications"/>
+            <spec_url>http://www.w3.org/TR/2012/CR-CSP-20121115/#default-src</spec_url>
+          </spec>
+        </specs>
+      </testcase>
+      <testcase purpose="Check if user agent is unable to use not allowed external style resource when default-src is cross-origin." type="compliance" status="approved" component="WebAPI/Security/Content Security Policy" execution_type="auto" priority="P2" id="csp_default-src_cross-origin_style_block">
+        <description>
+          <test_script_entry test_script_expected_result="0">/opt/tct-csp-w3c-tests/csp/csp_default-src_cross-origin_style.cgi?total_num=4&amp;amp;locator_key=id&amp;amp;value=2</test_script_entry>
+        </description>
+        <specs>
+          <spec>
+            <spec_assertion element_type="attribute" element_name="default-src" interface="Content-Security-Policy" specification="Content Security Policy" section="TBD" category="Tizen W3C API Specifications"/>
+            <spec_url>http://www.w3.org/TR/2012/CR-CSP-20121115/#default-src</spec_url>
+          </spec>
+        </specs>
+      </testcase>
+      <testcase purpose="Check if user agent is unable to use internal style resource when default-src is cross-origin." type="compliance" status="approved" component="WebAPI/Security/Content Security Policy" execution_type="auto" priority="P2" id="csp_default-src_cross-origin_style_internal_block">
+        <description>
+          <test_script_entry test_script_expected_result="0">/opt/tct-csp-w3c-tests/csp/csp_default-src_cross-origin_style.cgi?total_num=4&amp;amp;locator_key=id&amp;amp;value=3</test_script_entry>
+        </description>
+        <specs>
+          <spec>
+            <spec_assertion element_type="attribute" element_name="default-src" interface="Content-Security-Policy" specification="Content Security Policy" section="TBD" category="Tizen W3C API Specifications"/>
+            <spec_url>http://www.w3.org/TR/2012/CR-CSP-20121115/#default-src</spec_url>
+          </spec>
+        </specs>
+      </testcase>
+      <testcase purpose="Check if user agent is unable to use inline style when default-src is cross-origin." type="compliance" status="approved" component="WebAPI/Security/Content Security Policy" execution_type="auto" priority="P2" id="csp_default-src_cross-origin_style_inline_block">
+        <description>
+          <test_script_entry test_script_expected_result="0">/opt/tct-csp-w3c-tests/csp/csp_default-src_cross-origin_style.cgi?total_num=4&amp;amp;locator_key=id&amp;amp;value=4</test_script_entry>
+        </description>
+        <specs>
+          <spec>
+            <spec_assertion element_type="attribute" element_name="default-src" interface="Content-Security-Policy" specification="Content Security Policy" section="TBD" category="Tizen W3C API Specifications"/>
+            <spec_url>http://www.w3.org/TR/2012/CR-CSP-20121115/#default-src</spec_url>
+          </spec>
+        </specs>
+      </testcase>
+      <testcase purpose="Check if user agent is able to use the first allowed external style resource when default-src is multi cross-origin." type="compliance" status="approved" component="WebAPI/Security/Content Security Policy" execution_type="auto" priority="P2" id="csp_default-src_multi_cross-origin_style_allow_one">
+        <description>
+          <test_script_entry test_script_expected_result="0">/opt/tct-csp-w3c-tests/csp/csp_default-src_cross-origin_style_multi.cgi?total_num=5&amp;amp;locator_key=id&amp;amp;value=1</test_script_entry>
+        </description>
+        <specs>
+          <spec>
+            <spec_assertion element_type="attribute" element_name="default-src" interface="Content-Security-Policy" specification="Content Security Policy" section="TBD" category="Tizen W3C API Specifications"/>
+            <spec_url>http://www.w3.org/TR/2012/CR-CSP-20121115/#default-src</spec_url>
+          </spec>
+        </specs>
+      </testcase>
+      <testcase purpose="Check if user agent is able to use the second allowed external style resource when default-src is multi cross-origin." type="compliance" status="approved" component="WebAPI/Security/Content Security Policy" execution_type="auto" priority="P2" id="csp_default-src_multi_cross-origin_style_allow_two">
+        <description>
+          <test_script_entry test_script_expected_result="0">/opt/tct-csp-w3c-tests/csp/csp_default-src_cross-origin_style_multi.cgi?total_num=5&amp;amp;locator_key=id&amp;amp;value=2</test_script_entry>
+        </description>
+        <specs>
+          <spec>
+            <spec_assertion element_type="attribute" element_name="default-src" interface="Content-Security-Policy" specification="Content Security Policy" section="TBD" category="Tizen W3C API Specifications"/>
+            <spec_url>http://www.w3.org/TR/2012/CR-CSP-20121115/#default-src</spec_url>
+          </spec>
+        </specs>
+      </testcase>
+      <testcase purpose="Check if user agent is unable to use not allowed external style resource when default-src is multi cross-origin." type="compliance" status="approved" component="WebAPI/Security/Content Security Policy" execution_type="auto" priority="P2" id="csp_default-src_multi_cross-origin_style_block">
+        <description>
+          <test_script_entry test_script_expected_result="0">/opt/tct-csp-w3c-tests/csp/csp_default-src_cross-origin_style_multi.cgi?total_num=5&amp;amp;locator_key=id&amp;amp;value=3</test_script_entry>
+        </description>
+        <specs>
+          <spec>
+            <spec_assertion element_type="attribute" element_name="default-src" interface="Content-Security-Policy" specification="Content Security Policy" section="TBD" category="Tizen W3C API Specifications"/>
+            <spec_url>http://www.w3.org/TR/2012/CR-CSP-20121115/#default-src</spec_url>
+          </spec>
+        </specs>
+      </testcase>
+      <testcase purpose="Check if user agent is unable to use internal style when default-src is multi cross-origin." type="compliance" status="approved" component="WebAPI/Security/Content Security Policy" execution_type="auto" priority="P2" id="csp_default-src_multi_cross-origin_style_internal_block">
+        <description>
+          <test_script_entry test_script_expected_result="0">/opt/tct-csp-w3c-tests/csp/csp_default-src_cross-origin_style_multi.cgi?total_num=5&amp;amp;locator_key=id&amp;amp;value=4</test_script_entry>
+        </description>
+        <specs>
+          <spec>
+            <spec_assertion element_type="attribute" element_name="default-src" interface="Content-Security-Policy" specification="Content Security Policy" section="TBD" category="Tizen W3C API Specifications"/>
+            <spec_url>http://www.w3.org/TR/2012/CR-CSP-20121115/#default-src</spec_url>
+          </spec>
+        </specs>
+      </testcase>
+      <testcase purpose="Check if user agent is unable to use inline style when default-src is multi cross-origin." type="compliance" status="approved" component="WebAPI/Security/Content Security Policy" execution_type="auto" priority="P2" id="csp_default-src_multi_cross-origin_style_inline_block">
+        <description>
+          <test_script_entry test_script_expected_result="0">/opt/tct-csp-w3c-tests/csp/csp_default-src_cross-origin_style_multi.cgi?total_num=5&amp;amp;locator_key=id&amp;amp;value=5</test_script_entry>
+        </description>
+        <specs>
+          <spec>
+            <spec_assertion element_type="attribute" element_name="default-src" interface="Content-Security-Policy" specification="Content Security Policy" section="TBD" category="Tizen W3C API Specifications"/>
+            <spec_url>http://www.w3.org/TR/2012/CR-CSP-20121115/#default-src</spec_url>
+          </spec>
+        </specs>
+      </testcase>
       <testcase purpose="Check if user agent is unable to open internal resource by xhr when default-src is none." type="compliance" status="approved" component="WebAPI/Security/Content Security Policy" execution_type="auto" priority="P2" id="csp_default-src_none_connect_xmlhttprequest_blocked">
         <description>
           <test_script_entry test_script_expected_result="0">/opt/tct-csp-w3c-tests/csp/csp_default-src_none_connect.cgi?total_num=2&amp;amp;locator_key=id&amp;amp;value=1</test_script_entry>
@@ -438,6 +625,61 @@
       <testcase purpose="Check if user agent is unable to open external resource by xhr when default-src is self." type="compliance" status="approved" component="WebAPI/Security/Content Security Policy" execution_type="auto" priority="P1" id="csp_default-src_self_connect_xmlhttprequest_blocked">
         <description>
           <test_script_entry test_script_expected_result="0">/opt/tct-csp-w3c-tests/csp/csp_default-src_self_connect.cgi?total_num=2&amp;amp;locator_key=id&amp;amp;value=2</test_script_entry>
+        </description>
+        <specs>
+          <spec>
+            <spec_assertion element_type="attribute" element_name="default-src" interface="Content-Security-Policy" specification="Content Security Policy" section="TBD" category="Tizen W3C API Specifications"/>
+            <spec_url>http://www.w3.org/TR/2012/CR-CSP-20121115/#default-src</spec_url>
+          </spec>
+        </specs>
+      </testcase>
+      <testcase purpose="Check if user agent is able to use internal script when default-src is self." type="compliance" status="approved" component="WebAPI/Security/Content Security Policy" execution_type="auto" priority="P1" id="csp_default-src_self_script_allowed">
+        <description>
+          <test_script_entry test_script_expected_result="0">/opt/tct-csp-w3c-tests/csp/csp_default-src_self_script.cgi?total_num=2&amp;amp;locator_key=id&amp;amp;value=1</test_script_entry>
+        </description>
+        <specs>
+          <spec>
+            <spec_assertion element_type="attribute" element_name="default-src" interface="Content-Security-Policy" specification="Content Security Policy" section="TBD" category="Tizen W3C API Specifications"/>
+            <spec_url>http://www.w3.org/TR/2012/CR-CSP-20121115/#default-src</spec_url>
+          </spec>
+        </specs>
+      </testcase>
+      <testcase purpose="Check if user agent is unable to use external script when default-src is self." type="compliance" status="approved" component="WebAPI/Security/Content Security Policy" execution_type="auto" priority="P1" id="csp_default-src_self_script_blocked">
+        <description>
+          <test_script_entry test_script_expected_result="0">/opt/tct-csp-w3c-tests/csp/csp_default-src_self_script.cgi?total_num=2&amp;amp;locator_key=id&amp;amp;value=2</test_script_entry>
+        </description>
+        <specs>
+          <spec>
+            <spec_assertion element_type="attribute" element_name="default-src" interface="Content-Security-Policy" specification="Content Security Policy" section="TBD" category="Tizen W3C API Specifications"/>
+            <spec_url>http://www.w3.org/TR/2012/CR-CSP-20121115/#default-src</spec_url>
+          </spec>
+        </specs>
+      </testcase>
+      <testcase purpose="Check if user agent is able to use internal style when default-src is self." type="compliance" status="approved" component="WebAPI/Security/Content Security Policy" execution_type="auto" priority="P1" id="csp_default-src_self_style_allowed">
+        <description>
+          <test_script_entry test_script_expected_result="0">/opt/tct-csp-w3c-tests/csp/csp_default-src_self_style.cgi?total_num=3&amp;amp;locator_key=id&amp;amp;value=1</test_script_entry>
+        </description>
+        <specs>
+          <spec>
+            <spec_assertion element_type="attribute" element_name="default-src" interface="Content-Security-Policy" specification="Content Security Policy" section="TBD" category="Tizen W3C API Specifications"/>
+            <spec_url>http://www.w3.org/TR/2012/CR-CSP-20121115/#default-src</spec_url>
+          </spec>
+        </specs>
+      </testcase>
+      <testcase purpose="Check if user agent is unable to use external style when default-src is self." type="compliance" status="approved" component="WebAPI/Security/Content Security Policy" execution_type="auto" priority="P1" id="csp_default-src_self_style_blocked">
+        <description>
+          <test_script_entry test_script_expected_result="0">/opt/tct-csp-w3c-tests/csp/csp_default-src_self_style.cgi?total_num=3&amp;amp;locator_key=id&amp;amp;value=2</test_script_entry>
+        </description>
+        <specs>
+          <spec>
+            <spec_assertion element_type="attribute" element_name="default-src" interface="Content-Security-Policy" specification="Content Security Policy" section="TBD" category="Tizen W3C API Specifications"/>
+            <spec_url>http://www.w3.org/TR/2012/CR-CSP-20121115/#default-src</spec_url>
+          </spec>
+        </specs>
+      </testcase>
+      <testcase purpose="Check if user agent is unable to use inline style when default-src is self." type="compliance" status="approved" component="WebAPI/Security/Content Security Policy" execution_type="auto" priority="P1" id="csp_default-src_self_style_inline_blocked">
+        <description>
+          <test_script_entry test_script_expected_result="0">/opt/tct-csp-w3c-tests/csp/csp_default-src_self_style.cgi?total_num=3&amp;amp;locator_key=id&amp;amp;value=3</test_script_entry>
         </description>
         <specs>
           <spec>
@@ -552,6 +794,58 @@
             </step>
           </steps>
           <test_script_entry test_script_expected_result="0">/opt/tct-csp-w3c-tests/csp/csp_default-src_cross-origin_font_blocked.cgi</test_script_entry>
+        </description>
+        <specs>
+          <spec>
+            <spec_assertion element_type="attribute" element_name="default-src" interface="Content-Security-Policy" specification="Content Security Policy" section="TBD" category="Tizen W3C API Specifications"/>
+            <spec_url>http://www.w3.org/TR/2012/CR-CSP-20121115/#default-src</spec_url>
+          </spec>
+        </specs>
+      </testcase>
+      <testcase purpose="Check if user agent is unable to use external style when default-src is none." type="compliance" status="approved" component="WebAPI/Security/Content Security Policy" execution_type="auto" priority="P1" id="csp_default-src_none_style_blocked_ext">
+        <description>
+          <test_script_entry test_script_expected_result="0">/opt/tct-csp-w3c-tests/csp/csp_default-src_none_style.cgi?total_num=3&amp;amp;locator_key=id&amp;amp;value=1</test_script_entry>
+        </description>
+        <specs>
+          <spec>
+            <spec_assertion element_type="attribute" element_name="default-src" interface="Content-Security-Policy" specification="Content Security Policy" section="TBD" category="Tizen W3C API Specifications"/>
+            <spec_url>http://www.w3.org/TR/2012/CR-CSP-20121115/#default-src</spec_url>
+          </spec>
+        </specs>
+      </testcase>
+      <testcase purpose="Check if user agent is unable to use internal style when default-src is none." type="compliance" status="approved" component="WebAPI/Security/Content Security Policy" execution_type="auto" priority="P1" id="csp_default-src_none_style_blocked_int">
+        <description>
+          <test_script_entry test_script_expected_result="0">/opt/tct-csp-w3c-tests/csp/csp_default-src_none_style.cgi?total_num=3&amp;amp;locator_key=id&amp;amp;value=2</test_script_entry>
+        </description>
+        <specs>
+          <spec>
+            <spec_assertion element_type="attribute" element_name="default-src" interface="Content-Security-Policy" specification="Content Security Policy" section="TBD" category="Tizen W3C API Specifications"/>
+            <spec_url>http://www.w3.org/TR/2012/CR-CSP-20121115/#default-src</spec_url>
+          </spec>
+        </specs>
+      </testcase>
+      <testcase purpose="Check if user agent is unable to use inline style when default-src is none." type="compliance" status="approved" component="WebAPI/Security/Content Security Policy" execution_type="auto" priority="P1" id="csp_default-src_none_style_blocked_inline">
+        <description>
+          <test_script_entry test_script_expected_result="0">/opt/tct-csp-w3c-tests/csp/csp_default-src_none_style.cgi?total_num=3&amp;amp;locator_key=id&amp;amp;value=3</test_script_entry>
+        </description>
+        <specs>
+          <spec>
+            <spec_assertion element_type="attribute" element_name="default-src" interface="Content-Security-Policy" specification="Content Security Policy" section="TBD" category="Tizen W3C API Specifications"/>
+            <spec_url>http://www.w3.org/TR/2012/CR-CSP-20121115/#default-src</spec_url>
+          </spec>
+        </specs>
+      </testcase>
+      <testcase purpose="Check if user agent is unable to use inline script when default-src is none." type="compliance" status="approved" component="WebAPI/Security/Content Security Policy" execution_type="manual" priority="P2" id="csp_default-src_none_script">
+        <description>
+          <pre_condition>Connect to PHP server</pre_condition>
+          <post_condition/>
+          <steps>
+            <step order="1">
+              <step_desc>Run the manual case: csp_default-src_none_script.</step_desc>
+              <expected>To pass, if text "PASS" appears below.</expected>
+            </step>
+          </steps>
+          <test_script_entry test_script_expected_result="0">/opt/tct-csp-w3c-tests/csp/csp_default-src_none_script.cgi</test_script_entry>
         </description>
         <specs>
           <spec>
@@ -1020,6 +1314,44 @@
       </testcase>
     </set>
     <set name="frame-src">
+      <testcase purpose="Check if user agent is able to use external frame resource when ro frame-src is self." type="compliance" status="approved" component="WebAPI/Security/Content Security Policy" execution_type="manual" priority="P2" id="csp_ro_frame-src_self_allowed_ext">
+        <description>
+          <pre_condition>Connect to PHP server</pre_condition>
+          <post_condition/>
+          <steps>
+            <step order="1">
+              <step_desc>Run the manual case: csp_ro_frame-src_self_allowed_ext.</step_desc>
+              <expected>To pass, if a filled green square is displayed.</expected>
+            </step>
+          </steps>
+          <test_script_entry test_script_expected_result="0">/opt/tct-csp-w3c-tests/csp/csp_ro_frame-src_self_allowed_ext.cgi</test_script_entry>
+        </description>
+        <specs>
+          <spec>
+            <spec_assertion element_type="attribute" element_name="frame-src" interface="Content-Security-Policy" specification="Content Security Policy" section="TBD" category="Tizen W3C API Specifications"/>
+            <spec_url>http://www.w3.org/TR/2012/CR-CSP-20121115/#frame-src</spec_url>
+          </spec>
+        </specs>
+      </testcase>
+      <testcase purpose="Check if user agent is able to use internal frame resource when ro frame-src is self." type="compliance" status="approved" component="WebAPI/Security/Content Security Policy" execution_type="manual" priority="P2" id="csp_ro_frame-src_self_allowed_int">
+        <description>
+          <pre_condition>Connect to PHP server</pre_condition>
+          <post_condition/>
+          <steps>
+            <step order="1">
+              <step_desc>Run the manual case: csp_ro_frame-src_self_allowed_int.</step_desc>
+              <expected>To pass, if a filled green square is displayed.</expected>
+            </step>
+          </steps>
+          <test_script_entry test_script_expected_result="0">/opt/tct-csp-w3c-tests/csp/csp_ro_frame-src_self_allowed_int.cgi</test_script_entry>
+        </description>
+        <specs>
+          <spec>
+            <spec_assertion element_type="attribute" element_name="frame-src" interface="Content-Security-Policy" specification="Content Security Policy" section="TBD" category="Tizen W3C API Specifications"/>
+            <spec_url>http://www.w3.org/TR/2012/CR-CSP-20121115/#frame-src</spec_url>
+          </spec>
+        </specs>
+      </testcase>
       <testcase purpose="Check if user agent is able to use external frame resource when frame-src is asterisk." type="compliance" status="approved" component="WebAPI/Security/Content Security Policy" execution_type="manual" priority="P2" id="csp_frame-src_asterisk_allowed_ext">
         <description>
           <pre_condition>Connect to PHP server</pre_condition>
@@ -1556,6 +1888,139 @@
       </testcase>
     </set>
     <set name="object-src">
+      <testcase purpose="Check if user agent is unable to use not allowed external resource when object-src is cross-origin." type="compliance" status="approved" component="WebAPI/Security/Content Security Policy" execution_type="manual" priority="P2" id="csp_object-src_cross-origin_blocked">
+        <description>
+          <pre_condition>Connect to PHP server</pre_condition>
+          <post_condition/>
+          <steps>
+            <step order="1">
+              <step_desc>Run the manual case: csp_object-src_cross-origin_blocked</step_desc>
+              <expected>To pass, if there is no red.</expected>
+            </step>
+          </steps>
+          <test_script_entry test_script_expected_result="0">/opt/tct-csp-w3c-tests/csp/csp_object-src_cross-origin_blocked.cgi</test_script_entry>
+        </description>
+        <specs>
+          <spec>
+            <spec_assertion element_type="attribute" element_name="object-src" interface="Content-Security-Policy" specification="Content Security Policy" section="TBD" category="Tizen W3C API Specifications"/>
+            <spec_url>http://www.w3.org/TR/2012/CR-CSP-20121115/#object-src</spec_url>
+          </spec>
+        </specs>
+      </testcase>
+      <testcase purpose="Check if user agent is unable to use internal resource when object-src is cross-origin." type="compliance" status="approved" component="WebAPI/Security/Content Security Policy" execution_type="manual" priority="P2" id="csp_object-src_cross-origin_blocked_int">
+        <description>
+          <pre_condition>Connect to PHP server</pre_condition>
+          <post_condition/>
+          <steps>
+            <step order="1">
+              <step_desc>Run the manual case: csp_object-src_cross-origin_blocked_int</step_desc>
+              <expected>To pass, if there is no red.</expected>
+            </step>
+          </steps>
+          <test_script_entry test_script_expected_result="0">/opt/tct-csp-w3c-tests/csp/csp_object-src_cross-origin_blocked_int.cgi</test_script_entry>
+        </description>
+        <specs>
+          <spec>
+            <spec_assertion element_type="attribute" element_name="object-src" interface="Content-Security-Policy" specification="Content Security Policy" section="TBD" category="Tizen W3C API Specifications"/>
+            <spec_url>http://www.w3.org/TR/2012/CR-CSP-20121115/#object-src</spec_url>
+          </spec>
+        </specs>
+      </testcase>
+      <testcase purpose="Check if user agent is unable to use not allowed external resource when object-src is multi cross-origin." type="compliance" status="approved" component="WebAPI/Security/Content Security Policy" execution_type="manual" priority="P2" id="csp_object-src_cross-origin_multi_blocked">
+        <description>
+          <pre_condition>Connect to PHP server</pre_condition>
+          <post_condition/>
+          <steps>
+            <step order="1">
+              <step_desc>Run the manual case: csp_object-src_cross-origin_multi_blocked</step_desc>
+              <expected>To pass, if there is no red.</expected>
+            </step>
+          </steps>
+          <test_script_entry test_script_expected_result="0">/opt/tct-csp-w3c-tests/csp/csp_object-src_cross-origin_multi_blocked.cgi</test_script_entry>
+        </description>
+        <specs>
+          <spec>
+            <spec_assertion element_type="attribute" element_name="object-src" interface="Content-Security-Policy" specification="Content Security Policy" section="TBD" category="Tizen W3C API Specifications"/>
+            <spec_url>http://www.w3.org/TR/2012/CR-CSP-20121115/#object-src</spec_url>
+          </spec>
+        </specs>
+      </testcase>
+      <testcase purpose="Check if user agent is unable to use internal resource when object-src is multi cross-origin." type="compliance" status="approved" component="WebAPI/Security/Content Security Policy" execution_type="manual" priority="P2" id="csp_object-src_cross-origin_multi_blocked_int">
+        <description>
+          <pre_condition>Connect to PHP server</pre_condition>
+          <post_condition/>
+          <steps>
+            <step order="1">
+              <step_desc>Run the manual case: csp_object-src_cross-origin_multi_blocked_int</step_desc>
+              <expected>To pass, if there is no red.</expected>
+            </step>
+          </steps>
+          <test_script_entry test_script_expected_result="0">/opt/tct-csp-w3c-tests/csp/csp_object-src_cross-origin_multi_blocked_int.cgi</test_script_entry>
+        </description>
+        <specs>
+          <spec>
+            <spec_assertion element_type="attribute" element_name="object-src" interface="Content-Security-Policy" specification="Content Security Policy" section="TBD" category="Tizen W3C API Specifications"/>
+            <spec_url>http://www.w3.org/TR/2012/CR-CSP-20121115/#object-src</spec_url>
+          </spec>
+        </specs>
+      </testcase>
+      <testcase purpose="Check if user agent is unable to use external resource when object-src is none." type="compliance" status="approved" component="WebAPI/Security/Content Security Policy" execution_type="manual" priority="P2" id="csp_object-src_none_blocked_ext">
+        <description>
+          <pre_condition>Connect to PHP server</pre_condition>
+          <post_condition/>
+          <steps>
+            <step order="1">
+              <step_desc>Run the manual case: csp_object-src_none_blocked_ext</step_desc>
+              <expected>To pass, if there is no red.</expected>
+            </step>
+          </steps>
+          <test_script_entry test_script_expected_result="0">/opt/tct-csp-w3c-tests/csp/csp_object-src_none_blocked_ext.cgi</test_script_entry>
+        </description>
+        <specs>
+          <spec>
+            <spec_assertion element_type="attribute" element_name="object-src" interface="Content-Security-Policy" specification="Content Security Policy" section="TBD" category="Tizen W3C API Specifications"/>
+            <spec_url>http://www.w3.org/TR/2012/CR-CSP-20121115/#object-src</spec_url>
+          </spec>
+        </specs>
+      </testcase>
+      <testcase purpose="Check if user agent is unable to use internal resource when object-src is none." type="compliance" status="approved" component="WebAPI/Security/Content Security Policy" execution_type="manual" priority="P2" id="csp_object-src_none_blocked_int">
+        <description>
+          <pre_condition>Connect to PHP server</pre_condition>
+          <post_condition/>
+          <steps>
+            <step order="1">
+              <step_desc>Run the manual case: csp_object-src_none_blocked_int</step_desc>
+              <expected>To pass, if there is no red.</expected>
+            </step>
+          </steps>
+          <test_script_entry test_script_expected_result="0">/opt/tct-csp-w3c-tests/csp/csp_object-src_none_blocked_int.cgi</test_script_entry>
+        </description>
+        <specs>
+          <spec>
+            <spec_assertion element_type="attribute" element_name="object-src" interface="Content-Security-Policy" specification="Content Security Policy" section="TBD" category="Tizen W3C API Specifications"/>
+            <spec_url>http://www.w3.org/TR/2012/CR-CSP-20121115/#object-src</spec_url>
+          </spec>
+        </specs>
+      </testcase>
+      <testcase purpose="Check if user agent is unable to use external resource when object-src is self." type="compliance" status="approved" component="WebAPI/Security/Content Security Policy" execution_type="manual" priority="P2" id="csp_object-src_self_blocked">
+        <description>
+          <pre_condition>Connect to PHP server</pre_condition>
+          <post_condition/>
+          <steps>
+            <step order="1">
+              <step_desc>Run the manual case: csp_object-src_self_blocked</step_desc>
+              <expected>To pass, if there is no red.</expected>
+            </step>
+          </steps>
+          <test_script_entry test_script_expected_result="0">/opt/tct-csp-w3c-tests/csp/csp_object-src_self_blocked.cgi</test_script_entry>
+        </description>
+        <specs>
+          <spec>
+            <spec_assertion element_type="attribute" element_name="object-src" interface="Content-Security-Policy" specification="Content Security Policy" section="TBD" category="Tizen W3C API Specifications"/>
+            <spec_url>http://www.w3.org/TR/2012/CR-CSP-20121115/#object-src</spec_url>
+          </spec>
+        </specs>
+      </testcase>
       <testcase purpose="Check if user agent is able to use external image resource when object-src is *." type="compliance" status="approved" component="WebAPI/Security/Content Security Policy" execution_type="manual" priority="P2" id="csp_object-src_asterisk_allowed_ext">
         <description>
           <pre_condition>Connect to PHP server</pre_condition>
