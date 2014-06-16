@@ -1,63 +1,45 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<?xml-stylesheet type="text/xsl" href="./testcase.xsl" ?>
+<?xml-stylesheet type="text/xsl" href="./testcase.xsl"?>
 <test_definition>
-  <suite launcher="xwalk" name="webapi-speechapi-ivi-tests" category="WebAPI/IVI">
+  <suite category="WebAPI/IVI" launcher="xwalk" name="webapi-speechapi-ivi-tests">
     <set name="speechapi">
-      <testcase component="WebAPI/IVI/Speech" execution_type="auto" id="SpeechRecognition_constructor_TIVI-950" purpose="Check if constructor of SpeechRecognition work well.">
+      <testcase component="WebAPI/IVI/Speech" execution_type="manual" id="Speech_vocalizeString_setCBListener-manual" purpose="Check if tizen Speech API work well.">
         <description>
-          <test_script_entry test_script_expected_result="0">/opt/webapi-speechapi-ivi-tests/speechapi/SpeechRecognition_constructor.html</test_script_entry>
-        </description>
-      </testcase>
-      <testcase component="WebAPI/IVI/Speech" execution_type="manual" id="SpeechAPI_MediaPlayer_test_TIVI-950" purpose="Check if web app MediaPlayerbasic supported basic voice commands by SpeechAPI.">
-        <description>
-          <pre_condition>1. Make sure there are musics in /opt/usr/media/ with the mp4 type.</pre_condition>
           <steps>
             <step order="1">
-              <step_desc>Plug in a USB microphone (could be a webcam with one built in).</step_desc>
-              <expected>The microphone pluged in.</expected>
+              <step_desc>Plug in a headset.</step_desc>
+              <expected>The headset pluged in.</expected>
             </step>
             <step order="2">
-              <step_desc>Call "pactl list sour ces | grep Name: | grep usb" with app user.</step_desc>
-              <expected>Get the microphone's information output on terminal</expected>
-            </step>
-            <step order="3">
-              <step_desc>Take that output and use it for the "MIKE" line in /etc/sysconfig/speech-recognition.</step_desc>
-              <expected>Modified successfully.</expected>
-            </step>
-            <step order="4">
-              <step_desc>Also add it to the "sphinx.pulsesrc" line of /etc/speech-recognition/speech-recognition.conf.</step_desc>
-              <expected>Modified successfully.</expected>
-            </step>
-            <step order="5">
-              <step_desc>Call "systemctl --user start speech-recognition", this gets the speech recognition daemon running.</step_desc>
+              <step_desc>Enable audio by cmd: "pacmd set-sink-mute 0 false".</step_desc>
               <expected>Success.</expected>
             </step>
+            <step order="3">
+              <step_desc>Type in some text in the textbox to listen, for example "OK".</step_desc>
+              <expected>Success.</expected>
+            </step>
+            <step order="4">
+              <step_desc>Press button "Speak Out".</step_desc>
+              <expected>Hear the word typed in speak out from headset.</expected>
+            </step>
+            <step order="5">
+              <step_desc>Plug in a mic(could be a headset with one built in) .</step_desc>
+              <expected>Pluged in success.</expected>
+            </step>
             <step order="6">
-              <step_desc>Launch MediaPlayer with the command: wrt-launcher -s t8j6HTRpuz.MediaPlayer</step_desc>
-              <expected>The web app MediaPlayer launched.</expected>
+              <step_desc>Press button "Record Voice".</step_desc>
+              <expected>Button turned to "Stop Recording".</expected>
             </step>
             <step order="7">
-              <step_desc>Click the "music" picture.</step_desc>
-              <expected>Music list displayed on the screen.</expected>
+              <step_desc>Speak some words to the mic, for example "OK".</step_desc>
+              <expected>Success.</expected>
             </step>
             <step order="8">
-              <step_desc>Say "play" to the microphone.</step_desc>
-              <expected>Music start to play.</expected>
-            </step>
-            <step order="9">
-              <step_desc>Say "next" to the microphone.</step_desc>
-              <expected>Play the next music.</expected>
-            </step>
-            <step order="10">
-              <step_desc>Say "previous" to the microphone.</step_desc>
-              <expected>Play the previous music.</expected>
-            </step>
-            <step order="11">
-              <step_desc>Say "stop" to the microphone.</step_desc>
-              <expected>Stop to play music.</expected>
+              <step_desc>Press button "Stop Recording".</step_desc>
+              <expected>"Found Commands: OK" displayed on the screen.</expected>
             </step>
           </steps>
-          <test_script_entry test_script_expected_result="0"/>
+          <test_script_entry test_script_expected_result="0">/opt/webapi-speechapi-ivi-tests/speechapi/Speech_vocalizeString_setCBListener-manual.html</test_script_entry>
         </description>
       </testcase>
       <testcase component="WebAPI/IVI/Speech" execution_type="auto" id="Speech_exist" purpose="Check if tizen implemented speech API.">
@@ -68,6 +50,11 @@
       <testcase component="WebAPI/IVI/Speech" execution_type="auto" id="Speech_vocalizeString_exist" purpose="Check if tizen.speech has vocalizeString method.">
         <description>
           <test_script_entry test_script_expected_result="0">/opt/webapi-speechapi-ivi-tests/speechapi/Speech_vocalizeString_exist.html</test_script_entry>
+        </description>
+      </testcase>
+      <testcase component="WebAPI/IVI/Speech" execution_type="auto" id="Speech_setCBListener_exist" purpose="Check if tizen.speech has setCBListener method.">
+        <description>
+          <test_script_entry test_script_expected_result="0">/opt/webapi-speechapi-ivi-tests/speechapi/Speech_setCBListener_exist.html</test_script_entry>
         </description>
       </testcase>
     </set>
