@@ -30,21 +30,17 @@ Authors:
 
 -->
 
-<html>
-  <head>
-    <title>SpeechRecognition_constructor</title>
-    <meta charset="utf-8">
-    <script src="../resources/unitcommon.js"></script>
-  </head>
-  <body>
-    <div id="log"></div>
-    <script>
-      test(function() {
-        var obj;
-        // assert_true('SpeechRecognition' in window, "SpeechRecognition is not in window object");
-        obj = new SpeechRecognition();
-        assert_true(obj instanceof SpeechRecognition, "object was not created properly");
-      }, "SpeechRecognition_constructor");
-    </script>
-  </body>
-</html>
+<meta charset="utf-8">
+<title>Speech Test: SpeechRecognition constructor</title>
+<link rel='author' title='Intel' href='http://www.intel.com'>
+<link rel="help" href="https://dvcs.w3.org/hg/speech-api/raw-file/tip/speechapi.html">
+<script src="../resources/unitcommon.js"></script>
+
+<div id="log"></div>
+<script>
+  test(function() {
+    var obj = new SpeechRecognition();
+    assert_true(obj instanceof SpeechRecognition, "object was not created properly");
+  }, "SpeechRecognition_constructor");
+</script>
+

@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <!--
-Copyright (c) 2013 Intel Corporation.
+Copyright (c) 2014 Intel Corporation.
 
 Redistribution and use in source and binary forms, with or without modification,
 are permitted provided that the following conditions are met:
@@ -31,7 +31,7 @@ Authors:
 -->
 
 <meta charset="utf-8">
-<title>Speech Test: tizen.speech.vocalizeString</title>
+<title>Speech Test: tizen.speech.setCBListener</title>
 <link rel='author' title='Intel' href='http://www.intel.com'>
 <link rel="help" href="https://dvcs.w3.org/hg/speech-api/raw-file/tip/speechapi.html">
 <script src="../resources/unitcommon.js"></script>
@@ -39,8 +39,9 @@ Authors:
 <div id="log"></div>
 <script>
   test(function() {
-    assert_true("vocalizeString" in tizen.speech, "Speech has vocalizeString method");
-    check_method_exists(tizen.speech, "vocalizeString");
-  }, "Speech_vocalizeString_exist");
+    assert_own_property(tizen, "speech", "Tizen should implement speech");
+    assert_true("setCBListener" in tizen.speech, "Speech has setCBListener method");
+    check_method_exists(tizen.speech, "setCBListener");
+  }, "Speech_setCBListener_exist");
 </script>
 
