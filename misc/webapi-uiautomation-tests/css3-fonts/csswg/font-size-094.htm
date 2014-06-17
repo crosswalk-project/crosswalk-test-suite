@@ -1,0 +1,44 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html>
+    <head>
+        <title>CSS Test: Font-size using percentages with a nominal value, 100%</title>
+        <link title="Microsoft" rel="author" href="http://www.microsoft.com/">
+        <link rel="help" href="http://www.w3.org/TR/CSS21/fonts.html#propdef-font-size">
+        <link rel="help" href="http://www.w3.org/TR/CSS21/fonts.html#font-size-props">
+        <link rel="help" href="http://www.w3.org/TR/css3-fonts/#font-size-prop">
+        <meta content="ahem" name="flags">
+        <meta content="The 'font-size' property sets a nominal length value in percentages." name="assert">
+        <style type="text/css">
+            @font-face {
+                font-family: Ahem;
+                src: url("support/AHEM____.TTF");
+            }
+            #div1
+            {
+                font: 1in Ahem;
+                line-height: 1em;
+                position: relative;
+            }
+            #div2
+            {
+                font-size: 100%;
+                width: 1in;
+            }
+            #div3
+            {
+                border-top: 1in solid black;
+                left: 1.1in;
+                position: absolute;
+                top: 0;
+                width: 1in;
+            }
+        </style>
+    </head>
+    <body>
+        <p>Test passes if the two boxes below are the same size.</p>
+        <div id="div1">
+            <div id="div2">X</div>
+            <div id="div3"></div>
+        </div>
+    </body>
+</html>
