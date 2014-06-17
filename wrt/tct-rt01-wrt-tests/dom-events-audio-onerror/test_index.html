@@ -44,10 +44,9 @@ Authors:
     <div id="log"></div>
     <audio controls="controls" src="/opt/media/Videos/test222.mp3" onerror="opeFun();"></audio>
     <script language="javascript" type="text/javascript">
+        var t = async_test();
         function opeFun() {
-            test(function() {
-                assert_true(true);
-            }, "Check if the WRT support W3C DOM onerror event for audio lable.");
+             t.done();
         }
     </script>
   </body>
