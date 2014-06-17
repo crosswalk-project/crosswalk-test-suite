@@ -1,9 +1,13 @@
-# XwalkDriver Tests
+# W3C WebDriver Tests
 
-This repository defines a set of conformance tests for XwalkDrirver.
+This suite integrates a set of conformance tests from [W3C WebDriver Test Suite]
+(https://github.com/w3c/web-platform-tests/tree/master/webdriver) for the
+[W3C WebDrirver Spec]
+(https://dvcs.w3.org/hg/webdriver/raw-file/default/webdriver-spec.html).
+The purpose is for the XwalkDriver implementation to be tested to determine
+whether it meets the recognized standard.
 
 ## How to run the tests
-
 
 1. It is highly recommended that you use a virtual Python environment.
    This allows you to safely make changes to your Python environment
@@ -14,27 +18,18 @@ This repository defines a set of conformance tests for XwalkDrirver.
 2. Create and enter the directory for your Python virtual environment. This 
    directory can be anywhere. It is recommended that you keep it separate
    from the webdriver tests folder, to avoid confusion with source control
-2a. Go to the directory where you store Python virtual environments. 
-   For example
-   ```
-   cd ~
-   mkdir python-virtualenv
-   cd python-virtualenv
-   ```
-2b. Create a virtual env configuration and directory: `virtualenv webdriver-w3c-tests`
-2c. Enter the directory: `cd webdriver-w3c-tests`
+  1. Go to the directory where you store Python virtual environments. 
+     For example `cd ~; mkdir python-virtualenv; cd python-virtualenv`
+  2. Create a virtual env configuration and directory: `virtualenv webdriver-w3c-tests`
+  3. Enter the directory: `cd webdriver-w3c-tests`
 3. `source bin/activate` to activate the local Python installation
 4. Install Selenium: `pip install selenium` or `easy_install selenium`
 5. Go to the WebDriver tests: `cd _WEBDRIVER_TEST_ROOT_`
-6. Install test apk to Android
-   ```
-   ./pack.sh
-   adb install XwalkDriverTest_1.0_x86.apk
-   ```
+6. Build XwalkDriverTest APK and install it onto Android, `./pack.sh;
+   adb install XwalkDriverTest_1.0_x86.apk`
 7. Run the tests: `python runtests.py`
 
-
-Note: that you will need likely need to start the driver's server before running.
+Note: that you will likely need to start the driver's server before running.
 
 ## Updating configuration
 
@@ -46,10 +41,8 @@ Be sure not to commit your _webdriver.cfg_ changes when your create or modify te
 
 ## How to write tests
 
-1. Create a test file per section from the specification.
-2. For each test there needs to be one or more corresponding HTML
-   files that will be used for testing.  HTML files are not to be
-   reused between tests. HTML files and other support files
-   should be stored in a folder named 'res'.
-3. Test name should explain the intention of the test e.g. `def
-   test_navigate_and_return_title(self):`
+Please follow the [W3C WebDriver Howto]
+(https://github.com/w3c/web-platform-tests/tree/master/webdriver#how-to-write-tests)
+to create new tests; and submit the tests to the [W3C WebDriver Test Suite]
+(https://github.com/w3c/web-platform-tests/tree/master/webdriver) directly.
+We will conutinously integrate the approved tests from there.
