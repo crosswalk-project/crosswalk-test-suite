@@ -42,10 +42,8 @@ Authors:
     </p>
     <ol>
       <li>Push the manifest_name_blend_tests.xpk to Tizen device</li>
-      <li>Install webapp by typing: "xwalkctl --install manifest_name_blend_tests.xpk"</li>
-      <li>Check result:</li>
-          * If root user typing "sqlite3 /opt/home/apps/applications.db "select id,manifest from applications;"| grep app_id"<br>
-          * If app user typing "sqlite3 /opt/home/app/.config/xwalk/applications.db "select id,manifest from applications;"| grep app_id"
+      <li>Install webapp by typing: "xwalkctl --install absolute_path/manifest_name_blend_tests.xpk"</li>
+      <li>typing "sqlite3 /home/app/.config/xwalk-service/applications.db "select id,manifest from applications;"| grep app_id"</li>
     </ol>
     <p>
       <strong>Expected Output:</strong>
