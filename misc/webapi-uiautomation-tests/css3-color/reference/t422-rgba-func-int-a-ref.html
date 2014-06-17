@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <!--
-Copyright (c) 2013 Intel Corporation.
+Copyright (c) 2014 Intel Corporation.
 
 Redistribution and use in source and binary forms, with or without modification,
 are permitted provided that the following conditions are met:
@@ -26,52 +26,24 @@ NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE,
 EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
 Authors:
-        haox.li <haox.li@intel.com>
-        Cui, Jieqiong <jieqiongx.cui@intel.com>
+        Chen, Xi <xix.a.chen@intel.com>
 
 -->
 
-<html>
-  <head>
-    <title>CSS3 Colors Test: CSS3Colors_color_hsl_value_with_space</title>
-    <link rel="author" title="Intel" href="http://www.intel.com" />
-    <link rel="help" href="http://www.w3.org/TR/2011/REC-css3-color-20110607" />
-    <link rel="match" href="reference/CSS3Colors_color_hsl_value_with_space-ref.html" />
-    <meta name="flags" content="" />
-    <meta name="assert" content="Check if hsl() can has space" />
-  </head>
-  <style>
-      #one {
-          color: hsl(120, 50%, 50%);
-      }
-      #two {
-          color: hsl(     120,       50%,       50%);
-      }
-      #three {
-          color: hsl(120      , 50%      , 50%     );
-      }
-      #four {
-          color: hsl(120,
-          50%, 50%);
-      }
-      #five {
-          color: hsl(120, 50%,
-          50%);
-      }
-      #six {
-          color: hsl(120,
-          50%,
-          50%);
-      }
-
-  </style>
-  <body>
-    <p id="one">This text should be green.</p>
-    <p id="two">This text should be green.</p>
-    <p id="three">This text should be green.</p>
-    <p id="four">This text should be green.</p>
-    <p id="five">This text should be green.</p>
-    <p id="six">This text should be green.</p>
-    <p>Test passes if you can see all lines are same in color</p>
-  </body>
-</html>
+<meta charset="utf-8">
+<title>CSS Reference: rgba() colors</title>
+<link rel="author" title="Intel" href="http://www.intel.com">
+<style>
+  #one { color: black; background: white; }
+  #two { color: white; background: black; }
+  #three { color: red; }
+  #four { color: #00FF00; }
+  #five { color: blue; }
+</style>
+<body>
+  <p id="one">This should be black text on a white background.</p>
+  <p id="two">This should be white text on a black background.</p>
+  <p id="three">This text should be red.</p>
+  <p id="four">This text should be green.</p>
+  <p id="five">This text should be blue.</p>
+</body>
