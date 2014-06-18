@@ -399,7 +399,7 @@
           <post_condition>Get the 'application id' of load_image_from_port_443.wgt with the command : xwalkctl, then uninstall the load_image_from_port_443.wgt with the command : xwalkctl --uninstall 'package id'</post_condition>
           <steps>
             <step order="1">
-              <step_desc>Launch load_image_from_port_443.wgt with the command : xwalk-launcher 'application id'</step_desc>
+              <step_desc>Launch load_image_from_port_443.wgt with the command : xwalk-launcher 'application id', if there is a pop-up box shows, click "Allow" button</step_desc>
               <expected>The screen shows "PASS" with green backgroud and a gray background of "...testing..." image is displayed.</expected>
             </step>
           </steps>
@@ -419,19 +419,6 @@
           <test_script_entry timeout="90">/opt/tct-widgetpolicy-w3c-tests/widgetpolicy/w3c/ignore_access_with_unsupported_scheme.wgt</test_script_entry>
         </description>
       </testcase>
-      <testcase component="WebAPI/Widget/Widget Access Request Policy" execution_type="manual" id="WidgetPolicy_load_image_using_toASCII" purpose="Test that the user agent processes &lt;access&gt; elements using the ToASCII algorithm as defined in RFC3490.">
-        <description>
-          <pre_condition>Make sure the device can access to the network; Make sure load_image_using_toASCII.wgt is installed with the command : xwalkctl --install /opt/usr/media/tct/opt/tct-widgetpolicy-w3c-tests/widgetpolicy/w3c/load_image_using_toASCII.wgt</pre_condition>
-          <post_condition>Get the 'application id' of load_image_using_toASCII.wgt with the command : xwalkctl, then uninstall the load_image_using_toASCII.wgt with the command : xwalkctl --uninstall 'package id'</post_condition>
-          <steps>
-            <step order="1">
-              <step_desc>Launch load_image_using_toASCII.wgt with the command : xwalk-launcher 'application id'</step_desc>
-              <expected>The "PASS" and "...testing..." logo are displayed on green backgroud.</expected>
-            </step>
-          </steps>
-          <test_script_entry timeout="90">/opt/tct-widgetpolicy-w3c-tests/widgetpolicy/w3c/load_image_using_toASCII.wgt</test_script_entry>
-        </description>
-      </testcase>
       <testcase component="WebAPI/Widget/Widget Access Request Policy" execution_type="manual" id="WidgetPolicy_HTTP_compare_hosts_in_a_case-insensitive_manner" purpose="Test that the user agent must compare hosts in a case-insensitive manner when the scheme is 'http'.">
         <description>
           <pre_condition>Make sure the device can access to the network; Make sure HTTP_compare_hosts_in_a_case-insensitive_manner.wgt is installed with the command : xwalkctl --install /opt/usr/media/tct/opt/tct-widgetpolicy-w3c-tests/widgetpolicy/w3c/HTTP_compare_hosts_in_a_case-insensitive_manner.wgt</pre_condition>
@@ -443,30 +430,6 @@
             </step>
           </steps>
           <test_script_entry timeout="90">/opt/tct-widgetpolicy-w3c-tests/widgetpolicy/w3c/HTTP_compare_hosts_in_a_case-insensitive_manner.wgt</test_script_entry>
-        </description>
-      </testcase>
-      <testcase component="WebAPI/Widget/Widget Access Request Policy" execution_type="manual" id="WidgetPolicy_HTTPS_compare_hosts_in_a_case-insensitive_manner" purpose="Test that the user agent must compare hosts in a case-insensitive manner when the scheme is 'https'.">
-        <description>
-          <pre_condition>Make sure the device under test is connecting to a network</pre_condition>
-          <steps>
-            <step order="1">
-              <step_desc>Install #.wgt by command : xwalkctl --install /opt/usr/media/tct/opt/tct-widgetpolicy-w3c-tests/widgetpolicy/w3c/HTTPS_compare_hosts_in_a_case-insensitive_manner.wgt</step_desc>
-              <expected>The wgt is installed successfully</expected>
-            </step>
-            <step order="2">
-              <step_desc>Get 'application id' of #.wgt by command : xwalkctl</step_desc>
-              <expected>The 'application id' of #.wgt is tDSECoBTzO.HTTPScomparehostsinacaseinsensitivemanner</expected>
-            </step>
-            <step order="3">
-              <step_desc>Launch #.wgt by command : xwalk-launcher 'application id'</step_desc>
-              <expected>The screen shows "PASS" on green backgroud.</expected>
-            </step>
-            <step order="4">
-              <step_desc>Un-installation #.wgt by command : xwalkctl --uninstall 'package id'</step_desc>
-              <expected>The wgt is un-installed successfully</expected>
-            </step>
-          </steps>
-          <test_script_entry timeout="90">/opt/tct-widgetpolicy-w3c-tests/widgetpolicy/w3c/HTTPS_compare_hosts_in_a_case-insensitive_manner.wgt</test_script_entry>
         </description>
       </testcase>
     </set>

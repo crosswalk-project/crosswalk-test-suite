@@ -4,5 +4,6 @@ AM_INIT_AUTOMAKE([-Wall -Werror foreign])
 AC_CONFIG_FILES([Makefile \
 widgetpolicy/Makefile \
 widgetpolicy/w3c/Makefile \
+widgetpolicy/w3c/resources/Makefile \
 resources/Makefile webrunner/Makefile])
 AC_OUTPUT
