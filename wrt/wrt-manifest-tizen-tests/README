@@ -4,7 +4,8 @@ This test suite is for wrt-manifest-tizen-tests
 
 ## Precondition
 
-1. sudo apt-get install wine
+1. download and install allpairs
+   http://sourceforge.net/projects/allpairs/files/allpairs/
 2. sdb connect to device.
 3. maybe need local root authority.
 4. Edit your input_seed.txt(in ./pict/) file to generate webapp.
@@ -38,7 +39,7 @@ Please see the COPYING file for the BSD-3-Clause License.
 
 2. ./resource/ folder is webapp resource file, such as index.html icon.png....
 
-3. ./result/ folder save testkit-lite result file.
+3. ./result/ folder save tesetcase result file.
 
 4. ./manifest_all.txt is all manifest.json content.
 
@@ -52,19 +53,7 @@ Test Step:
 3. ./inst.sh
 4. cd /opt/usr/media/tct/opt/wrt-manifest-tizen-tests/
 5. python test.py
+6. Input result(f,p,enter),enter:Pass,F:Fail,P:Pass--->
 
 report.html in /opt/usr/media/tct/opt/wrt-manifest-tizen-tests/
 
-Q&A
-1. show error message: .wine is not owned by you
-   If you have run Wine with sudo you need to sudo rm -rf ~/.wine and then run winecfg to set wine back up
-   
-2. Report.html result message: -sh: /opt/usr/media/tct/opt/wrt-manifest-tizen-tests/appinstall.sh: Permission denied 
-   1. check testkit-lite
-   2. check the device
-   3. chmod a+x appinstall.sh
-3. testkit-lite timeout, two or more deivces connected:
-   testkit-lite can not read input command, please execute the test.py by manual:
-    1. cd /opt/usr/media/tct/opt/wrt-manifest-tizen-tests/
-    2. python test.py
-   
