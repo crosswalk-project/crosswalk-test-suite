@@ -29,13 +29,8 @@ Authors:
 
 */
 
-if (!window.AudioContext) {
-  if (window.webkitAudioContext){
-    window.AudioContext = new webkitAudioContext();
-  }
-}
 
-var context = window.AudioContext;
+var context = new AudioContext();
 var source = null;
 var audioBuffer = null;
 
