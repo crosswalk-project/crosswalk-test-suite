@@ -52,8 +52,8 @@ Authors:
     <div id="bg" ></div>
     <script>
         var div = document.querySelector("#bg");
-        div.style[headProp("box-decoration-break")] = "clone";
-        var boxDecorationBreak = GetCurrentStyle("box-decoration-break");
+        div.style[headProp("-webkit-box-decoration-break")] = "clone";
+        var boxDecorationBreak = GetCurrentStyle("-webkit-box-decoration-break");
         var t = async_test(document.title, { timeout: 500 });
         t.step(function () {
             assert_equals(boxDecorationBreak, "clone", "The element box-decoration-break test")
