@@ -55,14 +55,12 @@ function successCallback(newfileEntry) {
   t.done();
 }
 
-t.step(function () {
-  xwalk.experimental.native_file_system.requestNativeFileSystem(TEMPORARY, function(fs) {
-    t.step(function() {
-      var flag = fs.root.moveTo != undefined && fs.root.moveTo instanceof Function;
-      assert_true(flag, "Entry.remove() exists");
-    });
-    t.done();
-  }, errorCallback);
-});
+xwalk.experimental.native_file_system.requestNativeFileSystem("music", function(fs) {
+  t.step(function() {
+    var flag = fs.root.moveTo != undefined && fs.root.moveTo instanceof Function;
+    assert_true(flag, "Entry.remove() exists");
+  });
+  t.done();
+}, errorCallback);
 
 </script>

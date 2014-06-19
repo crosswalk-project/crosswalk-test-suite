@@ -51,14 +51,12 @@ function successCallback(fs) {
   t.done(); // FileWriterCallback.handleEvent exist
 }
 
-t.step(function () {
-  xwalk.experimental.native_file_system.requestNativeFileSystem(TEMPORARY, function(fs) {
-    fs.root.getFile('log.txt', {create: true}, function(fileEntry) {
-      fileEntry.createWriter(function(fileWriter) {
-        fileEntry.createWriter(successCallback, errorCallback);
-      }, errorCallback);
+xwalk.experimental.native_file_system.requestNativeFileSystem("music", function(fs) {
+  fs.root.getFile('/music/log.txt', {create: true}, function(fileEntry) {
+    fileEntry.createWriter(function(fileWriter) {
+      fileEntry.createWriter(successCallback, errorCallback);
     }, errorCallback);
   }, errorCallback);
-});
+}, errorCallback);
 
 </script>

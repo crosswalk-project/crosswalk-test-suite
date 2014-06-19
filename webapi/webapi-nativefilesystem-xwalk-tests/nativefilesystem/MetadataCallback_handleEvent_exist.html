@@ -52,12 +52,10 @@ function successCallback() {
   t.done(); // MetadataCallback.handleEvent exist
 }
 
-t.step(function () {
-  xwalk.experimental.native_file_system.requestNativeFileSystem(TEMPORARY, function(fs) {
-    fs.root.getDirectory('testDirectory', {create: true}, function(fileEntry) {
-      fileEntry.getMetadata(successCallback, errorCallback);
-    }, errorCallback);
+xwalk.experimental.native_file_system.requestNativeFileSystem("music", function(fs) {
+  fs.root.getDirectory('/music/', {create: true}, function(fileEntry) {
+    fileEntry.getMetadata(successCallback, errorCallback);
   }, errorCallback);
-});
+}, errorCallback);
 
 </script>

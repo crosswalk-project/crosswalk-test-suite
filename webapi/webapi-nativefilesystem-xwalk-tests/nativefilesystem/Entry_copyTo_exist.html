@@ -48,13 +48,11 @@ function errorCallback(e) {
   t.done();
 }
 
-t.step(function () {
-  xwalk.experimental.native_file_system.requestNativeFileSystem(TEMPORARY, function(fs) {
-    t.step(function () {
-      assert_true(fs.root.copyTo != undefined && fs.root.copyTo instanceof Function, "The Entry.copyTo() exists");
-    });
-    t.done();
-  }, errorCallback);
-});
+xwalk.experimental.native_file_system.requestNativeFileSystem("music", function(fs) {
+  t.step(function () {
+    assert_true(fs.root.copyTo != undefined && fs.root.copyTo instanceof Function, "The Entry.copyTo() exists");
+  });
+  t.done();
+}, errorCallback);
 
 </script>

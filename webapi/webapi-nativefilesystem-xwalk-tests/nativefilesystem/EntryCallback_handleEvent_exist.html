@@ -52,12 +52,10 @@ function successCallback(fs) {
   t.done(); // The attribute EntryCallback.handleEvent exists
 }
 
-t.step(function () {
-  xwalk.experimental.native_file_system.requestNativeFileSystem(TEMPORARY, function(fs) {
-    fs.root.getDirectory('testDirectory', {create: true}, function(entry) {
-      entry.getParent(successCallback, errorCallback);
-    }, errorCallback);
+xwalk.experimental.native_file_system.requestNativeFileSystem("music", function(fs) {
+  fs.root.getFile('/music/aa.txt', {create: true}, function(entry) {
+    entry.file(successCallback, errorCallback);
   }, errorCallback);
-});
+}, errorCallback);
 
 </script>

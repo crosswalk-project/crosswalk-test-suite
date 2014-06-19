@@ -57,10 +57,8 @@ function successCallback(entry) {
   t.done();
 }
 
-t.step(function () {
-  xwalk.experimental.native_file_system.requestNativeFileSystem(TEMPORARY, function(fs) {
-    fs.root.getDirectory("Tizen", {create: true}, successCallback, errorCallback);
-  }, errorCallback);
-});
+xwalk.experimental.native_file_system.requestNativeFileSystem("music", function(fs) {
+  fs.root.getDirectory("/music/", {create: true}, successCallback, errorCallback);
+}, errorCallback);
 
 </script>

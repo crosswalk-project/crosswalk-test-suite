@@ -50,13 +50,11 @@ function errorCallback(e) {
   t.done();
 }
 
-t.step(function () {
-  xwalk.experimental.native_file_system.requestNativeFileSystem(TEMPORARY, function(fileSystem) {
-    t.step(function () {
-      assert_exists(fileSystem, "name");
-    });
-    t.done();
-  },errorCallback);
-});
+xwalk.experimental.native_file_system.requestNativeFileSystem("music", function(fileSystem) {
+  t.step(function () {
+    assert_exists(fileSystem, "name");
+  });
+  t.done();
+},errorCallback);
 
 </script>

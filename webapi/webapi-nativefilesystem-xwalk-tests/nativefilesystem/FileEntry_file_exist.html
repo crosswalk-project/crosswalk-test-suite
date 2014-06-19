@@ -56,16 +56,15 @@ function successCallback(file) {
   t.done();
 }
 
-t.step(function () {
-  xwalk.experimental.native_file_system.requestNativeFileSystem(TEMPORARY, function(fs) {
-    fs.root.getFile("logFile", {create: true}, function (entry) {
-      t.step(function() {
-        var flag = entry.file != undefined && entry.file instanceof Function;
-        assert_true(flag, "The FileEntry.file() method exist");
-      });
-      t.done();
-    }, errorCallback);
+xwalk.experimental.native_file_system.requestNativeFileSystem("music", function(fs) {
+  fs.root.getFile("/music/logFile.txt", {create: true}, function (entry) {
+    t.step(function() {
+      var flag = entry.file != undefined && entry.file instanceof Function;
+      assert_true(flag, "The FileEntry.file() method exist");
+    });
+    t.done();
   }, errorCallback);
-});
+}, errorCallback);
+
 
 </script>

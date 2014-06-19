@@ -49,7 +49,7 @@ function errorCallback(e) {
 }
 
 function successCallback(entry) {
-  entry.root.getFile("aa.txt", {create: true}, function(fileEntry) {
+  entry.root.getFile("/music/aa.txt", {create: true}, function(fileEntry) {
     t.step(function () {
       var name = fileEntry.name;
       fileEntry.name = "bb.txt";
@@ -59,8 +59,6 @@ function successCallback(entry) {
   }, errorCallback);
 }
 
-t.step(function () {
-  xwalk.experimental.native_file_system.requestNativeFileSystem(TEMPORARY, successCallback, errorCallback);
-});
+xwalk.experimental.native_file_system.requestNativeFileSystem("music", successCallback, errorCallback);
 
 </script>

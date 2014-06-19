@@ -48,14 +48,12 @@ function errorCallback(e) {
   t.done();
 }
 
-t.step(function () {
-  xwalk.experimental.native_file_system.requestNativeFileSystem(TEMPORARY, function(fs) {
-    t.step(function () {
-      var flag = fs.root.getMetadata != undefined && fs.root.getMetadata instanceof Function;
-      assert_true(flag, "The Entry.getMetadata exists");
-    });
-    t.done();
-  }, errorCallback);
-});
+xwalk.experimental.native_file_system.requestNativeFileSystem("music", function(fs) {
+  t.step(function () {
+    var flag = fs.root.getMetadata != undefined && fs.root.getMetadata instanceof Function;
+    assert_true(flag, "The Entry.getMetadata exists");
+  });
+  t.done();
+}, errorCallback);
 
 </script>

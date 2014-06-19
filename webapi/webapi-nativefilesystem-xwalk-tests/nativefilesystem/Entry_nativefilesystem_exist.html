@@ -50,13 +50,11 @@ function errorCallback(e) {
 
 function successCallback(fs) {
   t.step(function () {
-    assert_exists(fs.root, "nativefilesystem");
+    assert_exists(fs.root, "filesystem");
   });
   t.done();
 }
 
-t.step(function () {
-  xwalk.experimental.native_file_system.requestNativeFileSystem(TEMPORARY, successCallback, errorCallback);
-});
+xwalk.experimental.native_file_system.requestNativeFileSystem("music", successCallback, errorCallback);
 
 </script>

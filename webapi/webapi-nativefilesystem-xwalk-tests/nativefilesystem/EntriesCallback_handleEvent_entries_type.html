@@ -49,16 +49,17 @@ function errorCallback(e) {
 }
 function successCallback(entries) {
   t.step(function () {
-    assert_equals(entries.toString(), "[object EntryArray]", "entries attribute of type");
+    assert_equals(entries[0].toString(), "[object FileEntry]", "entries attribute of type");
   });
   t.done();
 }
 
-t.step(function () {
-  xwalk.experimental.native_file_system.requestNativeFileSystem(TEMPORARY, function(fs) {
-    var a = fs.root.createReader();
-    a.readEntries(successCallback);
+xwalk.experimental.native_file_system.requestNativeFileSystem("music", function(fs) {
+  fs.root.getDirectory("/music/", {create: true}, function (entry) {
+    var dirReader = entry.createReader();
+    var entries = [];
+    dirReader.readEntries(successCallback, errorCallback);
   }, errorCallback);
-});
+}, errorCallback);
 
 </script>

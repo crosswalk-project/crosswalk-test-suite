@@ -57,10 +57,8 @@ function successCallback(metadata) {
   t.done();
 }
 
-t.step(function () {
-  xwalk.experimental.native_file_system.requestNativeFileSystem(TEMPORARY, function (fs) {
-    fs.root.getMetadata(successCallback, errorCallback);
-  }, errorCallback);
-});
+xwalk.experimental.native_file_system.requestNativeFileSystem("music", function (fs) {
+  fs.root.getMetadata(successCallback, errorCallback);
+}, errorCallback);
 
 </script>
