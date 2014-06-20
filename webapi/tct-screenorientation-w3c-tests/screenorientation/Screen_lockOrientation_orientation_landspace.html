@@ -27,36 +27,22 @@ EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
 Authors:
         Peng,keli <kelix.peng@intel.com>
+        Xinx, liu <xinx.liu@intel.com>
 
 -->
-<html>
-  <head>
-    <title>Screen Test:Screen_onorientationchange_exists</title>
-    <link rel="author" title="Intel" href="http://www.intel.com/" />
-    <link rel="help" href="http://www.w3.org/TR/2012/WD-screen-orientation-20120522/#extensions-to-the-screen-interface" />
-    <meta name="flags" content="interact" />
-    <meta name="assert" content="Check  the attribute onorientationchange  of interface Screen is exists" />
-    <script type="text/javascript" src="../resources/testharness.js"></script>
-    <script type="text/javascript" src="../resources/testharnessreport.js"></script>
-  </head>
-  <body>
-    <script type="text/javascript">
-        var t = async_test(document.title);
-        function show() {
-            try {
-                t.step(function () {
-                    assert_equals("onorientationchange" in screen,true,"Check if the attribute orientation value of interface Screen is exists");
-                });
-                t.done();
-            } catch (err) {
-                t.step(function () {
-                    assert_true(err.name == "NOT_SUPPORTED_ERROR","Mark the case as \"PASS\" because the platform actually doesn't support the interface");
-                });
-                t.done();
-            }
-        }
-        show();
-    </script>
-    <div id="log"></div>
-  </body>
-</html>
+
+<meta charset="utf-8">
+<title>Screen Test:Screen_lockOrientation_orientation_landspace</title>
+<link rel="author" title="Intel" href="http://www.intel.com">
+<link rel="help" href="http://www.w3.org/TR/2012/WD-screen-orientation-20120522/#extensions-to-the-screen-interface" />
+<script src="../resources/testharness.js"></script>
+<script src="../resources/testharnessreport.js"></script>
+<div id="log"></div>
+<script>
+
+test(function() {
+  assert_true(screen.lockOrientation("landscape"), "lockOrientation('landspace') return true");
+}, "Test checks that lockOrientation('landspace') locks screen as landscape");
+
+</script>
+
