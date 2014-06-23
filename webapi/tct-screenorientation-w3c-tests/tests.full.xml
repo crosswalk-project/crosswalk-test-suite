@@ -15,7 +15,7 @@
           </spec>
         </specs>
       </testcase>
-      <testcase purpose="Check if the method lockOrientation of interface exists" type="compliance" status="approved" component="WebAPI/Device/The Screen Orientation API" execution_type="auto" priority="P1" id="Screen_lockOrientation_exists">
+      <testcase purpose="Check if screen.lockOrientation() exists" type="compliance" status="approved" component="WebAPI/Device/The Screen Orientation API" execution_type="auto" priority="P1" id="Screen_lockOrientation_exists">
         <description>
           <test_script_entry>/opt/tct-screenorientation-w3c-tests/screenorientation/Screen_attributes_tests.html?total_num=10&amp;locator_key=id&amp;value=2</test_script_entry>
         </description>
@@ -27,7 +27,7 @@
           </spec>
         </specs>
       </testcase>
-      <testcase purpose="Check if the method lockOrientation of interface Screen return type of boolean" type="compliance" status="approved" component="WebAPI/Device/The Screen Orientation API" execution_type="auto" priority="P2" id="Screen_lockOrientation_return_type">
+      <testcase purpose="Check that screen.lockOrientation() returns a Boolean" type="compliance" status="approved" component="WebAPI/Device/The Screen Orientation API" execution_type="auto" priority="P2" id="Screen_lockOrientation_return_type">
         <description>
           <test_script_entry>/opt/tct-screenorientation-w3c-tests/screenorientation/Screen_attributes_tests.html?total_num=10&amp;locator_key=id&amp;value=3</test_script_entry>
         </description>
@@ -39,7 +39,7 @@
           </spec>
         </specs>
       </testcase>
-      <testcase purpose="Check if the attribute onorientationchange of interface exists" type="compliance" status="approved" component="WebAPI/Device/The Screen Orientation API" execution_type="auto" priority="P1" id="Screen_onorientationchange_exists">
+      <testcase purpose="Check if screen.onorientationchange event exists" type="compliance" status="approved" component="WebAPI/Device/The Screen Orientation API" execution_type="auto" priority="P1" id="Screen_onorientationchange_exists">
         <description>
           <test_script_entry>/opt/tct-screenorientation-w3c-tests/screenorientation/Screen_attributes_tests.html?total_num=10&amp;locator_key=id&amp;value=4</test_script_entry>
         </description>
@@ -51,7 +51,7 @@
           </spec>
         </specs>
       </testcase>
-      <testcase purpose="Check if the attribute onorientationchange of interface Screen return type of function" type="compliance" status="approved" component="WebAPI/Device/The Screen Orientation API" execution_type="auto" priority="P2" id="Screen_onorientationchange_return_type">
+      <testcase purpose="Check that screen.onorientationchange returns function" type="compliance" status="approved" component="WebAPI/Device/The Screen Orientation API" execution_type="auto" priority="P2" id="Screen_onorientationchange_return_type">
         <description>
           <test_script_entry>/opt/tct-screenorientation-w3c-tests/screenorientation/Screen_attributes_tests.html?total_num=10&amp;locator_key=id&amp;value=5</test_script_entry>
         </description>
@@ -63,7 +63,7 @@
           </spec>
         </specs>
       </testcase>
-      <testcase purpose="Check if the attribute orientation of interface exists" type="compliance" status="approved" component="WebAPI/Device/The Screen Orientation API" execution_type="auto" priority="P1" id="Screen_orientation_exists">
+      <testcase purpose="Check if screen.orientation attribute exists" type="compliance" status="approved" component="WebAPI/Device/The Screen Orientation API" execution_type="auto" priority="P1" id="Screen_orientation_exists">
         <description>
           <test_script_entry>/opt/tct-screenorientation-w3c-tests/screenorientation/Screen_attributes_tests.html?total_num=10&amp;locator_key=id&amp;value=6</test_script_entry>
         </description>
@@ -75,7 +75,7 @@
           </spec>
         </specs>
       </testcase>
-      <testcase purpose="Check if the attribute orientation of interface Screen return type of string" type="compliance" status="approved" component="WebAPI/Device/The Screen Orientation API" execution_type="auto" priority="P2" id="Screen_orientation_return_type">
+      <testcase purpose="Check that screen.orientation returns string" type="compliance" status="approved" component="WebAPI/Device/The Screen Orientation API" execution_type="auto" priority="P2" id="Screen_orientation_return_type">
         <description>
           <test_script_entry>/opt/tct-screenorientation-w3c-tests/screenorientation/Screen_attributes_tests.html?total_num=10&amp;locator_key=id&amp;value=7</test_script_entry>
         </description>
@@ -87,7 +87,7 @@
           </spec>
         </specs>
       </testcase>
-      <testcase purpose="Check if the attribute orientation of interface Screen is readonly" type="compliance" status="approved" component="WebAPI/Device/The Screen Orientation API" execution_type="auto" priority="P2" id="Screen_orientation_readonly">
+      <testcase purpose="Check that screen.orientation is readonly" type="compliance" status="approved" component="WebAPI/Device/The Screen Orientation API" execution_type="auto" priority="P2" id="Screen_orientation_readonly">
         <description>
           <test_script_entry>/opt/tct-screenorientation-w3c-tests/screenorientation/Screen_attributes_tests.html?total_num=10&amp;locator_key=id&amp;value=8</test_script_entry>
         </description>
@@ -99,7 +99,7 @@
           </spec>
         </specs>
       </testcase>
-      <testcase purpose="Check if the attribute orientation value of interface Screen must in current orientation" type="compliance" status="approved" component="WebAPI/Device/The Screen Orientation API" execution_type="auto" priority="P2" id="Screen_orientation_in_currentorientation">
+      <testcase purpose="Check if screen.unlockOrientation() exists" type="compliance" status="approved" component="WebAPI/Device/The Screen Orientation API" execution_type="auto" priority="P2" id="Screen_orientation_in_currentorientation">
         <description>
           <test_script_entry>/opt/tct-screenorientation-w3c-tests/screenorientation/Screen_attributes_tests.html?total_num=10&amp;locator_key=id&amp;value=9</test_script_entry>
         </description>
@@ -166,6 +166,42 @@
         <specs>
           <spec>
             <spec_assertion element_type="method" element_name="unlockOrientation" interface="Screen" specification="The Screen Orientation API" section="Device" category="Tizen W3C API Specifications"/>
+            <spec_url>http://www.w3.org/TR/2012/WD-screen-orientation-20120522/#extensions-to-the-screen-interface</spec_url>
+            <spec_statement/>
+          </spec>
+        </specs>
+      </testcase>
+      <testcase purpose="Test checks that screen.lockOrientation() returns false on bad input" type="compliance" status="approved" component="WebAPI/Device/The Screen Orientation API" execution_type="auto" priority="P2" id="lockOrientation-bad-argument">
+        <description>
+          <test_script_entry>/opt/tct-screenorientation-w3c-tests/screenorientation/blink/lockOrientation-bad-argument.html</test_script_entry>
+        </description>
+        <specs>
+          <spec>
+            <spec_assertion element_type="method" element_name="lockOrientation" interface="Screen" specification="The Screen Orientation API" section="Device" category="Tizen W3C API Specifications"/>
+            <spec_url>http://www.w3.org/TR/2012/WD-screen-orientation-20120522/#extensions-to-the-screen-interface</spec_url>
+            <spec_statement/>
+          </spec>
+        </specs>
+      </testcase>
+      <testcase purpose="Test checks that lockOrientation() returns false on bad orientation value in array argument" type="compliance" status="approved" component="WebAPI/Device/The Screen Orientation API" execution_type="auto" priority="P2" id="lockOrientation-bad-array-argument">
+        <description>
+          <test_script_entry>/opt/tct-screenorientation-w3c-tests/screenorientation/blink/lockOrientation-bad-array-argument.html</test_script_entry>
+        </description>
+        <specs>
+          <spec>
+            <spec_assertion element_type="method" element_name="lockOrientation" interface="Screen" specification="The Screen Orientation API" section="Device" category="Tizen W3C API Specifications"/>
+            <spec_url>http://www.w3.org/TR/2012/WD-screen-orientation-20120522/#extensions-to-the-screen-interface</spec_url>
+            <spec_statement/>
+          </spec>
+        </specs>
+      </testcase>
+      <testcase purpose="Basic screen.lockOrientation() and screen.unlockOrientation() testing" type="compliance" status="approved" component="WebAPI/Device/The Screen Orientation API" execution_type="auto" priority="P2" id="lockOrientation-basic">
+        <description>
+          <test_script_entry>/opt/tct-screenorientation-w3c-tests/screenorientation/blink/lockOrientation-basic.html</test_script_entry>
+        </description>
+        <specs>
+          <spec>
+            <spec_assertion element_type="method" element_name="lockOrientation" interface="Screen" specification="The Screen Orientation API" section="Device" category="Tizen W3C API Specifications"/>
             <spec_url>http://www.w3.org/TR/2012/WD-screen-orientation-20120522/#extensions-to-the-screen-interface</spec_url>
             <spec_statement/>
           </spec>

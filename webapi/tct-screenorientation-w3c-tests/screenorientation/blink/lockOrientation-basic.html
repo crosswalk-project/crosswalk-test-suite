@@ -1,0 +1,26 @@
+<!--
+Test convert from Blink:
+https://github.com/crosswalk-project/blink-crosswalk/blob/master/LayoutTests/screen_orientation/lockOrientation-basic.html
+-->
+
+
+<!DOCTYPE html>
+<meta charset="utf-8">
+<title>Screen Test: screen.lockOrientation() returns true on vaild input</title>
+<link rel="author" title="Intel" href="http://www.intel.com">
+<link rel="help" href="http://www.w3.org/TR/2012/WD-screen-orientation-20120522/#extensions-to-the-screen-interface" />
+<script src="../../resources/testharness.js"></script>
+<script src="../../resources/testharnessreport.js"></script>
+<div id="log"></div>
+<script>
+
+test(function() {
+  assert_equals(screen.orientation, "landscape", "default screen orientation");
+  screen.unlockOrientation();
+  [ 'portrait', 'portrait-primary', 'portrait-secondary',
+  'landscape-primary', 'landscape-secondary' ].forEach(function(orientation) {
+    assert_true(screen.lockOrientation(orientation), "screen.lockOrientation('" + orientation + "') return value");
+  });
+}, "Basic screen.lockOrientation() / screen.unlockOrientation() testing");
+
+</script>
