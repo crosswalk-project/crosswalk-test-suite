@@ -26,7 +26,9 @@ whether it meets the recognized standard.
 4. Install Selenium: `pip install selenium` or `easy_install selenium`
 5. Go to the WebDriver tests: `cd _WEBDRIVER_TEST_ROOT_`
 6. Build XwalkDriverTest APK and install it onto Android, `./pack.sh;
-   adb install XwalkDriverTest_1.0_x86.apk`
+   adb install XwalkDriverTest_1.0_x86.apk`.
+   Please refer to `../../doc/Web_Test_Suite_Packaging_Guide_v1.0.pdf`
+   for environment setup to generate APK package.
 7. Run the tests: `python runtests.py`
 
 Note: that you will likely need to start the driver's server before running.
