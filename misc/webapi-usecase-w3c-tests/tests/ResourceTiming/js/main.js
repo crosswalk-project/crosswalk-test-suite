@@ -65,6 +65,6 @@ function loadingImg() {
 
 function resourceFetchSuccess(){
   var image1 = new Image();
-  image1.src = 'http://test.csswg.org/source/approved/support/cat.png';
+  image1.src = 'http://test.csswg.org/source/support/cat.png';
   image1.onload = resourceTiming;
 }
