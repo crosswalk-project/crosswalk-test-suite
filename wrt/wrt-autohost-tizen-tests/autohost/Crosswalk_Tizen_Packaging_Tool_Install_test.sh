@@ -46,7 +46,7 @@ echo "APP=$APP_NAME"
 
 function_creat_xpk $logName
 
-function_install_xwalk $logName
+#function_install_xwalk $logName
 
 #push xpk to device
 sdb shell "[ -e /$APP_NAME.xpk ] && rm -rf $APP_NAME.xpk"
