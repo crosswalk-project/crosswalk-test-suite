@@ -32,7 +32,7 @@ Authors:
 -->
 
 <meta charset="utf-8">
-<title>Screen Test:Screen_attributes</title>
+<title>Screen Test: Screen_attributes</title>
 <link rel="author" title="Intel" href="http://www.intel.com">
 <link rel="help" href="http://www.w3.org/TR/2012/WD-screen-orientation-20120522/#extensions-to-the-screen-interface" />
 <script src="../resources/testharness.js"></script>
@@ -49,33 +49,32 @@ test(function() {
 }, "Check if screen.lockOrientation() exists");
 
 test(function() {
-  assert_equals(typeof screen.lockOrientation("landscape"), "boolean");
-}, "Check that screen.lockOrientation() returns a Boolean");
-
-test(function() {
-  assert_true("onorientationchange" in screen);
-}, "Check if screen.onorientationchange event exists");
-
-test(function() {
-  assert_in_array(typeof screen.onorientationchange, ["function", "object"]);
-}, "Check that screen.onorientationchange returns function");
+  assert_true("onorientationchange" in window);
+}, "Check if window.onorientationchange event exists");
 
 test(function() {
   assert_true("orientation" in screen);
 }, "Check if screen.orientation attribute exists");
 
 test(function() {
-  assert_equals(typeof screen.orientation, "string");
-}, "Check that screen.orientation returns string");
+  assert_true("type" in screen.orientation);
+}, "Check if screen.orientation.type attribute exists");
 
 test(function() {
-  screen.orientation = "tests";
-  assert_not_equals(screen.orientation, "tests");
-}, "Check that screen.orientation is readonly");
+  assert_equals(typeof screen.orientation.type, "string");
+}, "Check that screen.orientation.type returns a String");
 
 test(function() {
-  assert_in_array(screen.orientation, ["portrait", "portrait-primary", "portrait-secondary", "landscape", "landscape-primary", "landscape-secondary"]);
-}, "Check that screen.orientation must be in current orientation");
+  assert_true("angle" in screen.orientation);
+}, "Check if screen.orientation.angle attribute exists");
+
+test(function() {
+  assert_equals(typeof screen.orientation.angle, "number");
+}, "Check that screen.orientation.angle returns a Number");
+
+test(function() {
+  assert_in_array(screen.orientation.type, [ "portrait-primary", "portrait-secondary", "landscape-primary", "landscape-secondary" ]);
+}, "Check that screen.orientation.type must be in current orientation");
 
 test(function() {
   assert_true("unlockOrientation" in screen);
