@@ -32,18 +32,29 @@ Authors:
 -->
 
 <meta charset="utf-8">
-<title>Screen Test:Screen_unlockOrientation_base</title>
+<title>Screen Test: Window_onorientationchange_basic</title>
 <link rel="author" title="Intel" href="http://www.intel.com">
 <link rel="help" href="http://www.w3.org/TR/2012/WD-screen-orientation-20120522/#extensions-to-the-screen-interface" />
 <script src="../resources/testharness.js"></script>
 <script src="../resources/testharnessreport.js"></script>
 <div id="log"></div>
 <script>
+var t = async_test("Test checks that window.onorientationchange is invoked when orientation changes", { timeout: 2000});
 
-test(function() {
+t.step(function () {
   screen.unlockOrientation();
-  assert_true(screen.lockOrientation("portrait"), "lockOrientation('portrait') return true");
-}, "Check if the method unlockOrientation can disable the current lock");
+  screen.lockOrientation("portrait-primary");
+});
 
+window.onorientationchange = t.step_func(function(e) {
+  t.done();
+});
+
+setTimeout(function () {
+  t.step(function () {
+    assert_unreached("unexpected timeout callback");
+  });
+  t.done();
+}, 3000)
 </script>
 
