@@ -42,18 +42,12 @@ Authors:
     </p>
     <ol>
       <li>Build app by "python make_apk.py localpath/manifest_name_longstring_tests/manifest.json"</li>
-      <li>Install webapp.</li>
-      <li>Check result in App Manager</li>
-      <li>Click icon to launch.</li>
     </ol>
     <p>
       <strong>Expected Output:</strong>
     </p>
     <ol>
-      <li>The app packed successfully, illegal character is replaced with "_"</li>
-      <li>The webapp be installed successfully</li>
-      <li>The value of "name" is correct,such as ""name":"longlonglonglong_longlonglonglong_longlonglonglong_longlonglonglong_longlonglonglong-longlonglonglong-longlonglonglong-longlonglonglong-longlonglonglong-longlonglonglong-longlonglonglong""</li>
-      <li>The app launched successfully.</li>
+      <li>The app packed failure, "To be safe, the longth of package name or app name should be less then 128"</li>
     </ol>
   </body>
 </html>
