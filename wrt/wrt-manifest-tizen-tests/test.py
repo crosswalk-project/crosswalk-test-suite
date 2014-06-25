@@ -16,14 +16,14 @@ Pack_Type = "xpk"
 def do_Selfcom(self_combin_file,out_file):
     try:
         file = open(self_combin_file)
-        pict_in = open(out_file,'a+')
+        allpairs_in = open(out_file,'a+')
         while 1:
             line = file.readline()
             if not line:
                 break
-            pict_in.writelines(line + "\n")
+            allpairs_in.writelines(line + "\n")
         file.close()
-        pict_in.close()
+        allpairs_in.close()
         return
     except Exception,e: 
         print Exception,":",e 
@@ -166,7 +166,7 @@ def del_Seed(in_file,order_count):
         # if more self combination, each self generate itself output file,finally all self_input generate one selfcomb.txt
             do_Selfcom(const.path + "/self/" + self_file[i] + "_output.txt",const.selfcomb_file)
         
-        #2*********selfcomb -> output file  by PICT
+        #2*********selfcomb -> output file  by allpairs
         print gen_selfcomb_File(const.selfcomb_file,order_count)
 
         #3*********output -> manifest.json
@@ -178,7 +178,7 @@ def del_Seed(in_file,order_count):
 
 def gen_selfcomb_File(comb_file,order_count):
     try:
-        os.system("rm ./pict/output.txt")
+        os.system("rm ./allpairs/output.txt")
         open_output_file= open(const.output_file,'a+')
         caseline = "" 
         get_items = ""
@@ -286,7 +286,7 @@ def Usage():
     print "<-------------------------test.py usage:------------------------->"
     print "-h,--help: print help message"
     print "-m, --manual: input out.txt to generate manifest.json"
-    print "-o, --order: input pict order default 2"
+    print "-o, --order: input allpairs order default 2"
     print "-p, --pack: pack xpk or wgt default wgt"
     print "--foo: Test option "
 
@@ -427,7 +427,7 @@ def manifest_Packing(pakeNo,pakeType):
         shutil.copy("./appinstall.sh","./opt/wrt-manifest-tizen-tests/")
         shutil.copy("./applaunch.sh","./opt/wrt-manifest-tizen-tests/")
         shutil.copy("./appuninstall.sh","./opt/wrt-manifest-tizen-tests/")
-        cmd_packing="python ./pict/make_xpk.py "
+        cmd_packing="python ./allpairs/make_xpk.py "
         if (pakeNo =="all"):#all is not support now,please use default 
             for i in range (1,(Manifest_Row+1)):
                 cmd_line=" ./tcs/manifest" + str(i) +" -o ./opt/wrt-manifest-tizen-tests/manifest" + str(i) + "."+ pakeType +" key.pem"
@@ -460,7 +460,7 @@ def launcher_WebApp(pakeType,Manifest_Row):
         os.system("sdb -s " + Device_Ip +" root on")
         cmd_pushxpk = "sdb -s " + Device_Ip +" push " + const.name + "-" + const.version +"." + pakeType + ".zip"+" /opt/usr/media/tct/"
         cmd_unzipxpk = "sdb -s " + Device_Ip +" shell unzip -od /opt/usr/media/tct/ /opt/usr/media/tct/" + const.name + "-" + const.version + "." + pakeType + ".zip"
-        cmd_installapp="sdb shell \"su - app -c 'export DBUS_SESSION_BUS_ADDRESS=unix:path=/run/user/5000/dbus/user_bus_socket;/opt/usr/media/tct/opt/wrt-manifest-tizen-tests/appinstall.sh manifest" + Manifest_Row +  "." + pakeType +"'\""
+        cmd_installapp="sdb -s " + Device_Ip +" shell \"su - app -c 'export DBUS_SESSION_BUS_ADDRESS=unix:path=/run/user/5000/dbus/user_bus_socket;/opt/usr/media/tct/opt/wrt-manifest-tizen-tests/appinstall.sh manifest" + Manifest_Row +  "." + pakeType +"'\""
         os.system(cmd_pushxpk)
         os.system(cmd_unzipxpk)
         cmd_chmod = "sdb -s " + Device_Ip +" shell chmod 777 /opt/usr/media/tct/opt/wrt-manifest-tizen-tests/appinstall.sh"
@@ -477,12 +477,12 @@ def launcher_WebApp(pakeType,Manifest_Row):
             print "Install---------> OK "
             #launcher app
             Pkgids = get_cmdback[1].strip("\r\n")
-            cmd_launchapp="sdb shell \"su - app -c 'export DBUS_SESSION_BUS_ADDRESS=unix:path=/run/user/5000/dbus/user_bus_socket;/opt/usr/media/tct/opt/wrt-manifest-tizen-tests/applaunch.sh " + Pkgids +"'\""
+            cmd_launchapp="sdb -s " + Device_Ip +"shell \"su - app -c 'export DBUS_SESSION_BUS_ADDRESS=unix:path=/run/user/5000/dbus/user_bus_socket;/opt/usr/media/tct/opt/wrt-manifest-tizen-tests/applaunch.sh " + Pkgids +"'\""
             get_cmdback=get_runback(cmd_launchapp)
             if ((get_cmdback[0].strip("\r\n"))=="Launch ok"):
                 print "Launch--------->OK"
                 #uninstall app
-                cmd_uninstallapp="sdb shell \"su - app -c 'export DBUS_SESSION_BUS_ADDRESS=unix:path=/run/user/5000/dbus/user_bus_socket;/opt/usr/media/tct/opt/wrt-manifest-tizen-tests/appuninstall.sh " + Pkgids +"'\""
+                cmd_uninstallapp="sdb -s " + Device_Ip +"shell \"su - app -c 'export DBUS_SESSION_BUS_ADDRESS=unix:path=/run/user/5000/dbus/user_bus_socket;/opt/usr/media/tct/opt/wrt-manifest-tizen-tests/appuninstall.sh " + Pkgids +"'\""
                 get_cmdback=get_runback(cmd_uninstallapp)
                 if ((get_cmdback[0].strip("\r\n"))=="Uninstall Pass"):
                      print "Uninstall------->OK"
@@ -565,7 +565,7 @@ def main(argv):
         if (len(opts) ==0):
              print "Auto generate manifest.json------------------------->",opts
              #input_seed -> selfcomb.txt->manifest.json
-             del_Seed(const.seed_file,const.pict_order)
+             del_Seed(const.seed_file,const.allpairs_order)
         for o, a in opts:
             if o in ('-h', '--help'):
                 Usage()
@@ -575,10 +575,10 @@ def main(argv):
                 do_Clear(const.path + "/self")
                 sys.exit(1)
             elif o in ('-o', '--order'):
-                pict_order_get = a
+                allpairs_order_get = a
                 print "Auto generate manifest.json------------------------->"
                 #input_seed -> selfcomb.txt->manifest.json
-                del_Seed(const.seed_file,pict_order_get)
+                del_Seed(const.seed_file,allpairs_order_get)
                 #manifest folder -> webapp
                 print app_Folder(const.path_tcs)
                 print do_Clear(const.path + "/self")
@@ -590,7 +590,7 @@ def main(argv):
                 #input_seed -> selfcomb.txt->manifest.json
                 Pack_Type = a
                 print "Pack_Type------------------------->",Pack_Type                
-                del_Seed(const.seed_file,const.pict_order)
+                del_Seed(const.seed_file,const.allpairs_order)
                 sys.exit(0)
             else:
                 print "***unhandled option***"

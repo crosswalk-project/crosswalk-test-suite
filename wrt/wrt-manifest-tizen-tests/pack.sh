@@ -185,8 +185,9 @@ function create_pure(){
 #create source xpk
 create_source_xpk
 #mkdir $BUILD_DEST/opt/$name/source
-cp -r $BUILD_ROOT/pict $BUILD_DEST/opt/$name/pict
+cp -r $BUILD_ROOT/allpairs $BUILD_DEST/opt/$name/allpairs
 cp -r $BUILD_ROOT/resource $BUILD_DEST/opt/$name/resource
+cp -r $BUILD_ROOT/metacomm $BUILD_DEST/opt/$name/metacomm
 #cp -r $BUILD_ROOT/*tests.xpk $BUILD_DEST/opt/$name/source
 cd $BUILD_DEST
 zip -rq $BUILD_DEST/opt/$name/$name.zip *
