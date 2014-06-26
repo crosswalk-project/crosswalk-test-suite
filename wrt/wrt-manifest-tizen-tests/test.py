@@ -477,12 +477,12 @@ def launcher_WebApp(pakeType,Manifest_Row):
             print "Install---------> OK "
             #launcher app
             Pkgids = get_cmdback[1].strip("\r\n")
-            cmd_launchapp="sdb -s " + Device_Ip +"shell \"su - app -c 'export DBUS_SESSION_BUS_ADDRESS=unix:path=/run/user/5000/dbus/user_bus_socket;/opt/usr/media/tct/opt/wrt-manifest-tizen-tests/applaunch.sh " + Pkgids +"'\""
+            cmd_launchapp="sdb -s " + Device_Ip +" shell \"su - app -c 'export DBUS_SESSION_BUS_ADDRESS=unix:path=/run/user/5000/dbus/user_bus_socket;/opt/usr/media/tct/opt/wrt-manifest-tizen-tests/applaunch.sh " + Pkgids +"'\""
             get_cmdback=get_runback(cmd_launchapp)
             if ((get_cmdback[0].strip("\r\n"))=="Launch ok"):
                 print "Launch--------->OK"
                 #uninstall app
-                cmd_uninstallapp="sdb -s " + Device_Ip +"shell \"su - app -c 'export DBUS_SESSION_BUS_ADDRESS=unix:path=/run/user/5000/dbus/user_bus_socket;/opt/usr/media/tct/opt/wrt-manifest-tizen-tests/appuninstall.sh " + Pkgids +"'\""
+                cmd_uninstallapp="sdb -s " + Device_Ip +" shell \"su - app -c 'export DBUS_SESSION_BUS_ADDRESS=unix:path=/run/user/5000/dbus/user_bus_socket;/opt/usr/media/tct/opt/wrt-manifest-tizen-tests/appuninstall.sh " + Pkgids +"'\""
                 get_cmdback=get_runback(cmd_uninstallapp)
                 if ((get_cmdback[0].strip("\r\n"))=="Uninstall Pass"):
                      print "Uninstall------->OK"
