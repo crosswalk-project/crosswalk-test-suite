@@ -11,9 +11,9 @@ else:
    path_tcs = path + "/tcs"
    path_result= path + "/result"
    path_resource = path + "/resource"
-   seed_file = path + "/pict/input_seed.txt"
-   selfcomb_file = path + "/pict/selfcomb.txt"
-   output_file = path + "/pict/output.txt"
-   pict_order = 2
+   seed_file = path + "/allpairs/input_seed.txt"
+   selfcomb_file = path + "/allpairs/selfcomb.txt"
+   output_file = path + "/allpairs/output.txt"
+   allpairs_order = 2
    version="6.35.1.2"
    name="wrt-manifest-tizen-tests"

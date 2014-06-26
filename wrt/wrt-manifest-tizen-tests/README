@@ -8,7 +8,7 @@ This test suite is for wrt-manifest-tizen-tests
    http://sourceforge.net/projects/allpairs/files/allpairs/
 2. sdb connect to device.
 3. maybe need local root authority.
-4. Edit your input_seed.txt(in ./pict/) file to generate webapp.
+4. Edit your input_seed.txt(in ./allpairs/) file to generate webapp.
 5. Make sure xwalk running on device
 
 ## Authors:
@@ -21,7 +21,7 @@ Copyright (c) 2013 Intel Corporation.
 Except as noted, this software is licensed under BSD-3-Clause License.
 Please see the COPYING file for the BSD-3-Clause License.
 
-1. pict is seed file folder:
+1. allpairs is seed file folder:
   1.1 input_seed.txt is seed file.
      1)Values separator ","
        name-1:a,b
@@ -34,18 +34,20 @@ Please see the COPYING file for the BSD-3-Clause License.
        000a-> a,a00b->a b,b000->b 
      5)The icon value include ",", so the separator is "comma",please refor to seed file:
        icon-1:{"src": "icon/lowres"comma"sizes": "64x64"comma"type": "image/webp"}
-  2.1 output.txt is pict output file.
+  2.1 output.txt is allpairs output file.
   3.1 selfcomb.txt is self combination file.
 
 2. ./resource/ folder is webapp resource file, such as index.html icon.png....
 
 3. ./result/ folder save tesetcase result file.
 
-4. ./manifest_all.txt is all manifest.json content.
+4. ./metacomm/ folder is allpairs.
 
-5. ./report.html is the result report file.
+5. ./manifest_all.txt is all manifest.json content.
 
-6. ./tests.result.xml : saved all tcs file.
+6. ./report.html is the result report file.
+
+7. ./tests.result.xml : saved all tcs file.
 
 Test Step:
 1. unzip wrt-manifest-tizen-tests<version>.zip
