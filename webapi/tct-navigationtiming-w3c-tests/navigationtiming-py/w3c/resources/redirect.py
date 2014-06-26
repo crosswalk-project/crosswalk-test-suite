@@ -1,3 +1,5 @@
+from urlparse import urlparse
+
 def main(request, response):
     """Simple handler that causes redirection.
 
@@ -16,6 +18,11 @@ def main(request, response):
         response.status = status
 
         location = request.GET.first("location")
+
+        local_parsed = urlparse(location)
+        request_parsed = urlparse(request.url)
+        if local_parsed.hostname != None and local_parsed.hostname != request_parsed.hostname:
+            return "illegal redirect url"
 
         response.headers.set("Location", location)
     except Exception,ex:
