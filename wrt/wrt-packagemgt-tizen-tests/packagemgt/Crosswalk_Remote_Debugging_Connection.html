@@ -41,19 +41,21 @@ Authors:
       <strong>Test steps:</strong>
     </p>
     <ol>
-      <li>On IVI, typing "xwalkctl --install wepapp</li>
-      <li>Insert "--remote-debugging-port=9222" to "/usr/lib/systemd/user/xwalk.service"</li>
+      <li>Add "--remote-debugging-port=9222" to "ExecStart=" and "Environment=http_proxy=http://proxy.cd.intel.com:911" on [Service] in "/usr/lib/systemd/user/xwalk.service"</li>
+      <li>Reboot device</li>
+      <li>On IVI, typing "xwalkctl --install /path/wepapp</li>
       <li>Launcher webapp "xwalk-launcher $appid"</li>
-      <li>Debugg by "xwalk_ip_adress:9222"</li>
+      <li>Debugg by use Chrome "http://your_pc_ip:9222"</li>
     </ol>
     <p>
       <strong>Expected Output:</strong>
     </p>
     <ol>
-      <li>The webapp installed successfully</li>
       <li>Modify xwalk.service successfully</li>
+      <li>Device reboot seccussfully</li>
+      <li>The webapp installed successfully</li>
       <li>The webapp launched successfully</li>
-      <li>Anspectable App information will shown on the web page</li>
+      <li>Anspectable App information will shown on the web page.</li>
     </ol>
   </body>
 </html>
