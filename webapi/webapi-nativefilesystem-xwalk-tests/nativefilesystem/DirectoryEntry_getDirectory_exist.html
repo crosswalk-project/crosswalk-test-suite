@@ -54,6 +54,14 @@ xwalk.experimental.native_file_system.requestNativeFileSystem("music", function(
     assert_true(flag, "DirectoryEntry.getDirectory() method exists");
   });
   t.done();
-}, errorCallback);
+}, function (e) {
+  xwalk.experimental.native_file_system.requestNativeFileSystem("sounds", function(fs) {
+    t.step(function () {
+      var flag = fs.root.getDirectory != undefined && fs.root.getDirectory instanceof Function;
+      assert_true(flag, "DirectoryEntry.getDirectory() method exists");
+    });
+    t.done();
+  }, errorCallback);
+});
 
 </script>

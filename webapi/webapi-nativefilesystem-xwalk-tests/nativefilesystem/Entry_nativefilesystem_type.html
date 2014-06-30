@@ -57,6 +57,17 @@ function successCallback(entry) {
   }, errorCallback);
 }
 
-xwalk.experimental.native_file_system.requestNativeFileSystem("music", successCallback, errorCallback);
+function successCallback_1(entry) {
+  entry.root.getFile("/sounds/aa.txt", {create: true}, function(fileEntry) {
+    t.step(function () {
+        assert_equals(Object.prototype.toString.call(fileEntry.filesystem), "[object DOMFileSystem]");
+    });
+    t.done();
+  }, errorCallback);
+}
+
+xwalk.experimental.native_file_system.requestNativeFileSystem("music", successCallback, function (e) {
+  xwalk.experimental.native_file_system.requestNativeFileSystem("sounds", successCallback_1, errorCallback);
+});
 
 </script>

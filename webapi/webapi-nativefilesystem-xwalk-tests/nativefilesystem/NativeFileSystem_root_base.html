@@ -54,6 +54,13 @@ xwalk.experimental.native_file_system.requestNativeFileSystem("music", function(
     assert_equals(fileSystem.root.fullPath, "/");
   });
   t.done();
-}, errorCallback);
+}, function (e) {
+  xwalk.experimental.native_file_system.requestNativeFileSystem("sounds", function(fileSystem) {
+    t.step(function () {
+      assert_equals(fileSystem.root.fullPath, "/");
+    });
+    t.done();
+  }, errorCallback);
+});
 
 </script>

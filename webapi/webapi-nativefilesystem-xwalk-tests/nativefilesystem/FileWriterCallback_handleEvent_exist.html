@@ -57,6 +57,14 @@ xwalk.experimental.native_file_system.requestNativeFileSystem("music", function(
       fileEntry.createWriter(successCallback, errorCallback);
     }, errorCallback);
   }, errorCallback);
-}, errorCallback);
+}, function (e) {
+  xwalk.experimental.native_file_system.requestNativeFileSystem("sounds", function(fs) {
+    fs.root.getFile('/sounds/log.txt', {create: true}, function(fileEntry) {
+      fileEntry.createWriter(function(fileWriter) {
+        fileEntry.createWriter(successCallback, errorCallback);
+      }, errorCallback);
+    }, errorCallback);
+  }, errorCallback);
+});
 
 </script>

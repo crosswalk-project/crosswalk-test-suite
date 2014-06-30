@@ -59,6 +59,10 @@ function successCallback(entry) {
 
 xwalk.experimental.native_file_system.requestNativeFileSystem("music", function(fs) {
   fs.root.getDirectory("/music/", {create: true}, successCallback, errorCallback);
-}, errorCallback);
+}, function (e) {
+  xwalk.experimental.native_file_system.requestNativeFileSystem("sounds", function(fs) {
+    fs.root.getDirectory("/sounds/", {create: true}, successCallback, errorCallback);
+  }, errorCallback);
+});
 
 </script>

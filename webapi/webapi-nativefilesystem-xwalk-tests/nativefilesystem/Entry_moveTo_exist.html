@@ -61,6 +61,14 @@ xwalk.experimental.native_file_system.requestNativeFileSystem("music", function(
     assert_true(flag, "Entry.remove() exists");
   });
   t.done();
-}, errorCallback);
+}, function (e) {
+  xwalk.experimental.native_file_system.requestNativeFileSystem("sounds", function(fs) {
+    t.step(function() {
+      var flag = fs.root.moveTo != undefined && fs.root.moveTo instanceof Function;
+      assert_true(flag, "Entry.remove() exists");
+    });
+    t.done();
+  }, errorCallback);
+});
 
 </script>

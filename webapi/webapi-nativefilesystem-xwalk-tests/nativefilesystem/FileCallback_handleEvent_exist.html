@@ -56,6 +56,12 @@ xwalk.experimental.native_file_system.requestNativeFileSystem("music", function(
   fs.root.getFile('/music/log.txt', {create: true}, function(fileEntry) {
     fileEntry.file(successCallback, errorCallback);
   }, errorCallback);
-}, errorCallback);
+}, function (e) {
+  xwalk.experimental.native_file_system.requestNativeFileSystem("sounds", function(fs) {
+    fs.root.getFile('/sounds/log.txt', {create: true}, function(fileEntry) {
+      fileEntry.file(successCallback, errorCallback);
+    }, errorCallback);
+  }, errorCallback);
+});
 
 </script>

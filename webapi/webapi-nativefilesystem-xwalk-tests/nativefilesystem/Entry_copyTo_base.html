@@ -59,6 +59,19 @@ xwalk.experimental.native_file_system.requestNativeFileSystem("music", function(
       }, errorCallback);
     }, errorCallback);
   }, errorCallback)
-}, errorCallback);
+}, function (e) {
+  xwalk.experimental.native_file_system.requestNativeFileSystem("sounds", function(fs) {
+    fs.root.getDirectory('/sounds/', {create: true}, function(entry) {
+      fs.root.getFile("/sounds/test.txt", {create: true}, function(fileentry) {
+        fileentry.copyTo(entry, "test1.txt", function(newfileEntry) {
+          t.step(function() {
+            assert_equals(newfileEntry.fullPath, "/sounds/test1.txt");
+          });
+          t.done();
+        }, errorCallback);
+      }, errorCallback);
+    }, errorCallback)
+  }, errorCallback);
+});
 
 </script>
