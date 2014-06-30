@@ -33,18 +33,16 @@ Authors:
 <meta charset='utf-8'>
 <link rel="author" title="Intel" href="http://www.intel.com">
 <p>
-<strong>Test steps:</strong>
+  <strong>Test steps:</strong>
 </p>
 <ol>
-<li>Packaging app by typing "python make_xpk.py localpath/wrt-comm-webapp-tests/webapp/manifest_negative_nullfields_app k.pem"</li>
-<li>Install webapp by typing "xwalkctl --install manifest_negative_nullfields_app.xpk"</li>
-<li>Launch webapp by typing "xwalk-launcher appID"</li>
+  <li>Install webapp by typing "xwalkctl --install $path/manifest_negative_nullfields_app.xpk"</li>
+  <li>Launch webapp by typing "xwalk-launcher appID"</li>
 </ol>
 <p>
-<strong>Expected Output:</strong>
+  <strong>Expected Output:</strong>
 </p>
 <ol>
-<li>The webapp packed successfully.</li>
-<li>The webapp shouldn't be installed.</li>
-<li>The webapp cannot launched,throw "Failed to find a valid launch URL for the app"</li>
+  <li>The webapp can be install successfully.</li>
+  <li>The webapp cannot launched,error massage "Couldn't call 'Launch'method:GDBus.Error:org.crosswalkproject.Running.Manager.Error: Error launching application with appID"</li>
 </ol>

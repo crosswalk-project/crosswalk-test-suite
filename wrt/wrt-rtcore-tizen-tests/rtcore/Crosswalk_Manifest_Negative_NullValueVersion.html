@@ -33,16 +33,14 @@ Authors:
 <meta charset='utf-8'>
 <link rel="author" title="Intel" href="http://www.intel.com">
 <p>
-<strong>Test steps:</strong>
+  <strong>Test steps:</strong>
 </p>
 <ol>
-<li>Packaging app by typing "python make_xpk.py localpath/wrt-comm-webapp-tests/webapp/manifest_negative_nullvalue_version k.pem"</li>
-<li>Install webapp by typing "xwalkctl --install manifest_negative_nullvalue_version.xpk"</li>
+  <li>Install webapp by typing "xwalkctl --install $path/manifest_negative_nullvalue_version.xpk"</li>
 </ol>
 <p>
-<strong>Expected Output:</strong>
+  <strong>Expected Output:</strong>
 </p>
 <ol>
-<li>The webapp packed successfully.</li>
-<li>The webapp cannot installed, throw "Required value 'version' is missing or invalid. It must be between 1-4 dot-separated integers each between 0 and 65536"</li>
+  <li>The webapp cannot installed, throw "Installing application failed: GDBus.Error:org.crosswalkproject.Installed.Manager.Error: Error installing/updating application with path: $path/manifest_negative_nullvalue_version.xpk"</li>
 </ol>

@@ -33,19 +33,18 @@ Authors:
 <meta charset='utf-8'>
 <link rel="author" title="Intel" href="http://www.intel.com">
 <p>
-<strong>Test steps:</strong>
+  <strong>Test steps:</strong>
 </p>
 <ol>
-<li>Packaging app by typing "python make_xpk.py localpath/wrt-comm-webapp-tests/webapp/manifest_version_identifyingFourSame_tests k.pem"</li>
+  <li>Install webapp by "xwalkctl --install $path/manifest_version_identifyingFourSame_tests.xpk"</li>
+  <li>Check result by typing 'sqlite3 /opt/home/app/.config/xwalk-service/applications.db "select id,manifest from applications;"| grep app_id'</li>
 </ol>
-<li>Install webapp by "xwalkctl --install manifest_version_identifyingFourSame_tests.xpk"</li>
-<li>Check result by typing "sqlite3 /opt/home/app/.config/xwalk/applications.db "select id,manifest from applications;"| grep app_id"</li>
+
 <p>
-<strong>Expected Output:</strong>
+  <strong>Expected Output:</strong>
 </p>
 <ol>
-<li>The webapp be packed successfully</li>
-<li>The webapp be installed successfully</li>
-<li>The value of "version" is: 1.1.1.1"</li>
+  <li>The webapp can be install successfully</li>
+  <li>The value of "version" is: 1.1.1.1"</li>
 </ol>
 
