@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <!--
-Copyright (c) 2013 Intel Corporation.
+Copyright (c) 2014 Intel Corporation.
 
 Redistribution and use in source and binary forms, with or without modification,
 are permitted provided that the following conditions are met:
@@ -26,36 +26,24 @@ NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE,
 EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
 Authors:
-        haox.li <haox.li@intel.com>
-        Cui, Jieqiong <jieqiongx.cui@intel.com>
+        Chen, Xi <xix.a.chen@intel.com>
 
 -->
 
-<html>
-  <head>
-    <title>CSS3 Backgrounds Test: CSS3BG_border-image-slice_left_bottom_value_miss</title>
-    <link rel="author" title="Intel" href="http://www.intel.com" />
-    <link rel="help" href="http://www.w3.org/TR/2012/CR-css3-background-20120724/" />
-    <meta name="flags" content="" />
-    <meta name="assert" content="Check if the border-image-slice left and bottom value is missing,it is the same as the right and top" />
-    <style type="text/css">
-        #test{
-            height: 200px;
-            width: 300px;
-            padding: 5px;
-            border: 100px;
-            margin: 5px;
-            background: blue;
-            border-image: url(csswg/support/ring.png);
-            -moz-border-image-slice: 20 10;
-            -ms-border-image-slice: 20 10;
-            -webkit-border-image-slice: 20 10;
-            border-image-slice: 20 10;
-        }
-    </style>
-  </head>
-  <body>
-    <div id="test"></div>
-    <p>Test passes if the left orange area is same to the right and the top orange area is same to the bottom</p>
-  </body>
-</html>
+<meta charset="utf-8">
+<title>CSS Backgrounds and Borders Reference: background-clip - padding-box keyword value</title>
+<link rel="author" title="Intel" href="http://www.intel.com">
+<style>
+  div {
+    background-color: green;
+    width: 150px;
+    height: 150px;
+    position: relative;
+    left: 5px;
+    top: 5px;
+  }
+</style>
+<body>
+  <p>Test passes if there is a filled green square and <strong>no red</strong>.</p>
+  <div></div>
+</body>
