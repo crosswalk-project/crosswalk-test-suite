@@ -41,21 +41,22 @@ Authors:
 
 setup({explicit_done: true});
 
-navigator.iap.purchase("gas").then(
+var key = 'MIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEAsEVjLWKJ5B7EKjnH5NVx4eh83xntg1WXFIQhLXgtmiCU0Ro27dN8Q7Q5HIif4ugkFcQWFhlDC/WsliDKtLZQkadmS1sUweOanIo5+ZbNaQ1ITWwtkNdnPb+tRJCjhngft1hFIfLGsKrBMxS8slaWaQ537wgex74Pv5mxuQLhsFyei5GffzDQDz4KN6sQHPqtB+GLDWqKKk2bdAiopQRFRUwYR8edAYcHiMHHZSfidOjaYD1/timhFIUnwFihtvNy4K7OStjoy6kEwCmX9/zXS3SxKkOfk2bNg/Edc8xgym8GkfObUliySSNxS9ukzp1ShDuSjdwfJVt5mvmXk+7jiQIDAQAB';
+iap.init(key);
+
+iap.buy("gas").then(
 function(transaction) {
   [
     //attributes of the IAPTransactionDetails interface
-    ["string", "id"],
-    ["number", "time"],
-    ["string", "token"]
+    ["orderId"], ["packageName"], ["productId"],
+    ["purchaseTime"], ["purchaseState"], ["token"]
   ].forEach(function(attr) {
-    var type = attr[0];
-    var name = attr[1];
+    var name = attr[0];
 
     test(function () {
       assert_true(name in transaction, name + " attribute in IAPTransactionDetails");
-      assert_equals(typeof transaction[name], type, name + " attribute of type");
-    }, "Check if IAPTransactionDetails." + name + " exists and type of " + type);
+      assert_equals(typeof transaction[name], "string", name + " attribute of type");
+    }, "Check if IAPTransactionDetails." + name + " exists and type of " + string);
 
     test(function () {
       assert_not_equals(transaction[name], null, name + " attribute of IAPTransactionDetails");

@@ -39,23 +39,26 @@ Authors:
 <div id="log"></div>
 <script>
 
+var key = 'MIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEAsEVjLWKJ5B7EKjnH5NVx4eh83xntg1WXFIQhLXgtmiCU0Ro27dN8Q7Q5HIif4ugkFcQWFhlDC/WsliDKtLZQkadmS1sUweOanIo5+ZbNaQ1ITWwtkNdnPb+tRJCjhngft1hFIfLGsKrBMxS8slaWaQ537wgex74Pv5mxuQLhsFyei5GffzDQDz4KN6sQHPqtB+GLDWqKKk2bdAiopQRFRUwYR8edAYcHiMHHZSfidOjaYD1/timhFIUnwFihtvNy4K7OStjoy6kEwCmX9/zXS3SxKkOfk2bNg/Edc8xgym8GkfObUliySSNxS9ukzp1ShDuSjdwfJVt5mvmXk+7jiQIDAQAB';
+iap.init(key);
+
 [
   //attributes of the InAppPurchase interface
   ["function", "queryProductDetails"],
-  ["function", "purchase"],
+  ["function", "buy"],
   ["function", "restore"]
 ].forEach(function(attr) {
   var type = attr[0];
   var name = attr[1];
 
   test(function () {
-    assert_true(name in Navigator.iap, name + " attribute in InAppPurchase");
-    assert_equals(typeof Navigator.iap[name], type, name + " attribute of type");
+    assert_true(name in iap, name + " attribute in InAppPurchase");
+    assert_equals(typeof iap[name], type, name + " attribute of type");
   }, "Check if InAppPurchase." + name + " exists and type of " + type);
 });
 
 test(function () {
-  navigator.iap.queryProductDetails(["gas"]).then(
+  iap.queryProductDetails(["gas", "yearly", "premium"]).then(
   function(products) {
     assert_not_equals(products, null, "queryProductDetails of InAppPurchase");
   },
@@ -65,7 +68,7 @@ test(function () {
 }, "Check if InAppPurchase.queryProductDetails is valid");
 
 test(function () {
-  navigator.iap.purchase("gas").then(
+  iap.buy("gas").then(
   function(transaction) {
     assert_not_equals(transaction, null, "purchase of InAppPurchase");
   },
@@ -75,7 +78,7 @@ test(function () {
 }, "Check if InAppPurchase.purchase is valid");
 
 test(function () {
-  navigator.iap.restore().then(
+  iap.restore().then(
   function(transactions) {
     assert_not_equals(transactions.length, 0, "restore of InAppPurchase");
   },

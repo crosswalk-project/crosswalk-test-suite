@@ -42,13 +42,11 @@ Authors:
 <script>
 
 test(function () {
-  assert_true(iap in Navigator, "iap attribute in Navigator");
-  assert_equals(typeof Navigator[iap], "InAppPurchase", "iap attribute of type");
-  assert_readonly(Navigator, iap, "expect attribute iap cannot be changed but");
-}, "Check if readonly Navigator.iap exists and type of InAppPurchase");
+  assert_equals(typeof iap, "object", "iap attribute of type");
+}, "Check if readonly Navigator.iap exists and type of object");
 
 test(function () {
-  assert_not_equals(Navigator.iap, null, "iap attribute of PerformanceEntry");
+  assert_not_equals(iap, "undefined", "iap attribute of PerformanceEntry");
 }, "Check if PerformanceEntry.iap is valid");
 
 </script>
