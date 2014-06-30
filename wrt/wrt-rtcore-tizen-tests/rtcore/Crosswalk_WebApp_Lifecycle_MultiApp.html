@@ -41,16 +41,16 @@ Authors:
       <strong>Test steps:</strong>
     </p>
     <ol>
-      <li>Install webapp by typing "xwalkctl --install lifecycle_nonpers_multiwin_tests.xpk"</li>
-      <li>Click app icon to launch another app, or launch another app with command "xwalk-launcher appID".</li>
+      <li>Install webapp by typing "xwalkctl --install $path/lifecycle_nonpers_multiwin_tests.xpk"</li>
+      <li>Click app icon to launch another app, or launch another app with command "appID".</li>
       <li>Launch test app by typing "xwalk-launcher (lifecycle_nonpers_multiwin_tests's) id"</li>
-      <li>Typing "ps -ef | grep -v "grep" | grep "xwalk-launcher appID"" in command line</li>
+      <li>Typing 'ps -ef | grep -v "grep" | grep "appID"' in command line</li>
       <li>Click "Create Window" button to create the second window</li>
-      <li>Typing "ps -ef | grep -v "grep" | grep "xwalk-launcher appID"" in command line</li>
+      <li>Typing 'ps -ef | grep -v "grep" | grep "appID"' in command line</li>
       <li>Click "Close Window" button to close window in second window</li>
-      <li>Typing "ps -ef | grep -v "grep" | grep "xwalk-launcher appID"" in command line</li>
+      <li>Typing 'ps -ef | grep -v "grep" | grep "appID"' in command line</li>
       <li>Click "Close Window" button to close window in first window</li>
-      <li>Typing "ps -ef | grep -v "grep" | grep "xwalk-launcher appID"" in command line</li>
+      <li>Typing 'ps -ef | grep -v "grep" | grep "appID"' in command line</li>
     </ol>
     <p>
       <strong>Expected Output:</strong>
@@ -65,7 +65,7 @@ Authors:
       <li>The second window should be close</li>
       <li>Should be retrieved xwalk process</li>
       <li>The first window should be closed</li>
-      <li>Should be retrieved xwalk process</li>
+      <li>Cannot retrieved xwalk process</li>
     </ol>
   </body>
 </html>
