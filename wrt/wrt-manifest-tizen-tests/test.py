@@ -72,7 +72,6 @@ def gen_Manifest_Json(output_file):
              get_self+"\n--------------------------------\n")
             Manifest_Row = Manifest_Row+1
             fp.close()
-            get_self=""
             #beging copy folder
             app_Folder(const.path_tcs)
             get_Configxml(const.path_tcs + "/manifest" +str(Manifest_Row) + "/config.xml", "manifest" +str(Manifest_Row))
@@ -80,8 +79,9 @@ def gen_Manifest_Json(output_file):
             print "Manifest ------------------------->" + str(Manifest_Row)
             manifest_Packing("manifest" + str(Manifest_Row),Pack_Type)
             #launch the app
-            launcher_WebApp(Pack_Type,str(Manifest_Row))
+            launcher_WebApp(Pack_Type,str(Manifest_Row),get_self)
             do_Clear(const.path_tcs + "/manifest" +str(Manifest_Row))
+            get_self=""
         file.close()
         fp_manifest.close()
         return "Generate manifest.json O.K"
@@ -303,8 +303,8 @@ def get_Configxml(in_file,write_name):
 def get_Result():
     print "<------------------------- Beging Generate Report ------------------------->"
     try:
-        input_sPass = 'Pass'
-        auto_sPass = 'Pass'        
+        input_sPass = 'PASS'
+        auto_sPass = 'PASS'        
         sBlock_count = 0
         input_sPass_count = 0
         input_sFail_count = 0
@@ -332,6 +332,11 @@ def get_Result():
                     auto_sFail_count = auto_sFail_count + 1                    
         file.writelines("Input_Pass: " + str(input_sPass_count) + "<br>Input_Fail: " + str(input_sFail_count) + "<br>Auto_Pass: " + str(auto_sPass_count) + "<br>Auto_Fail: " + str(auto_sFail_count) +  "<br>Block: " + str(sBlock_count) + "<th>TestcaseID</th><th>Auto_Result</th><th>Input_Result</th><th>Link</th>")            
         resultList = os.listdir(const.path_result)
+        total_case = len(resultList)
+        pass_rate = input_sPass_count / float(total_case) *100
+        fail_rate = input_sFail_count / float(total_case) *100
+        block_rate = sBlock_count / float(total_case) *100
+        insert_to_Summary("./report/summary.xml",total_case,auto_sPass_count,pass_rate,auto_sFail_count,fail_rate, sBlock_count,block_rate)
         if (len(resultList) <=0):
             print "Result folder have no file"
             sys.exit(1)
@@ -348,9 +353,10 @@ def get_Result():
                     auto_sPass_count = auto_sPass_count + 1
             else:
                     auto_sFail_count = auto_sFail_count + 1
-
+                
         file.writelines("</table></div></body></html>")
         file.close
+        
         print "<------------------------- Generate Report End------------------------->"        
     except Exception,e: 
         print Exception,"Generate the report error:",e    
@@ -368,8 +374,32 @@ def testcase_Result(resultfile):
     except Exception,e: 
         print Exception,"Get the result -------------------------> error:",e       
 
+def insert_to_Summary(sumaryfile,total_case,pass_case,pass_rate,fail_case,fail_rate,block_case,block_rate):
+    try:
+        tree = ElementTree()
+        tree.parse(sumaryfile)
+        root = tree.getroot()
+        ntotal_case = root.getiterator("total_case")
+        ntotal_case[0].text = str(total_case)
+        npass_case = root.getiterator("pass_case")
+        npass_case[0].text = str(pass_case)
+        npass_case_rate = root.getiterator("pass_rate")
+        npass_case_rate[0].text = str(pass_rate)
+        nfail_case = root.getiterator("fail_case")
+        nfail_case[0].text = str(fail_case)
+        nfail_case_rate = root.getiterator("fail_rate")
+        nfail_case_rate[0].text = str(fail_rate)
+        nblock_case = root.getiterator("block_case")
+        nblock_case[0].text = str(block_case) 
+        nblock_case_rate = root.getiterator("block_rate")
+        nblock_case_rate[0].text = str(block_rate)
+        tree.write(sumaryfile)
+    except Exception,e: 
+        print Exception,"Insert to report/summart.xml -------------------------> error:",e
+        
 
-def test_XML(webappFile,auto_Result,input_Result):
+
+def test_XML(webappFile,auto_Result,input_Result,manifest_cont):
     try:
         print "<------------------------- Beging Generate manifest.xml ------------------------->"
         tree = ElementTree()
@@ -398,23 +428,50 @@ def test_XML(webappFile,auto_Result,input_Result):
                         input_node = result_node.find("input_result")
                         input_node.text = input_Result
                         testcommand_node = result_node.find("testcommand")
-                        testcommand_node.text = "appinstall/launch/uninstall " +  webappFile.split(".")[0] + "." + Pack_Type 
+                        testcommand_node.text = manifest_cont 
         tree.write(const.path_result + "/" + webappFile)
         print "Generater result manifest.xml ------------------------->O.K"
     except Exception,e: 
-        print Exception,"Generate testkit.xml error:",e 
-        print "testkit.xml generate error"
+        print Exception,"Generate manifest.xml error:",e 
         sys.exit(1)
 
 def testcase_XML(webappName):
     tree = ElementTree()
-    tree.parse(const.path + "/tests.result.xml")
+    tree.parse(const.path + "/report/wrt-manifest-tizen-tests.xml")
     root = tree.getroot()
     lst_node = root.getiterator("set")
     for node in lst_node:
-        SubElement(node,"testcase", {'component':'core','purpose':'Check if Packaged Web Application can be installed/launch/uninstall successfully','execution_type' : 'auto', 'id' : "manifest" + webappName})
-    tree.write(const.path +"/tests.result.xml")  
+        SubElement(node,"testcase", {'component':'core','purpose':'Check if Packaged Web Application can be installed/launch/uninstall successfully','result':'PASS','execution_type' : 'auto', 'id' : "manifest" + webappName})
+    tree.write(const.path +"/report/wrt-manifest-tizen-tests.xml")  
 
+
+def testreport_auto_XML(webappName,input_Result,auto_Result,tcs_manifest):
+    try:
+        tree = ElementTree()
+        tree.parse(const.path + "/report/wrt-manifest-tizen-tests.xml")
+        root = tree.getroot()
+        lst_node = root.getiterator("set")
+        for node in lst_node:
+            SubElement(node,"testcase", {'component':'core','purpose':'Check if Packaged Web Application can be installed/launch/uninstall successfully','execution_type' : 'auto', 'id' : "manifest"+webappName ,'result': auto_Result})
+            cnode = root.getiterator("testcase")
+            desnode = cnode[-1]
+            SubElement(desnode,"description")
+            entrynode = desnode[-1]
+            SubElement(entrynode,"test_script_entry")
+            entryentrynode = root.getiterator("test_script_entry")
+            entr = entryentrynode[-1]
+            entr.text = tcs_manifest 
+            SubElement(desnode,"result_info")
+            resultinfonode = root.getiterator("result_info")
+            result_info = resultinfonode[-1] 
+            SubElement(result_info,"actual_result")
+            actualresultnode = root.getiterator("actual_result")      
+            actualresult = actualresultnode[-1]
+            actualresult.text = auto_Result
+            tree.write(const.path +"/report/wrt-manifest-tizen-tests.xml")  
+    except Exception,e: 
+        print Exception,"Generate test error:",e 
+        sys.exit(1)
 
 def manifest_Packing(pakeNo,pakeType):
     try:
@@ -422,8 +479,8 @@ def manifest_Packing(pakeNo,pakeType):
         print do_Clear("./opt")
         os.system("rm -rf *.zip")
         os.makedirs("./opt/wrt-manifest-tizen-tests")
-        shutil.copy("./tests_sample.xml","./testkit.xml")
-        shutil.copy("./testkit.xml","./opt/wrt-manifest-tizen-tests/")
+        #shutil.copy("./tests_sample.xml","./testkit.xml")
+        #shutil.copy("./testkit.xml","./opt/wrt-manifest-tizen-tests/")
         shutil.copy("./appinstall.sh","./opt/wrt-manifest-tizen-tests/")
         shutil.copy("./applaunch.sh","./opt/wrt-manifest-tizen-tests/")
         shutil.copy("./appuninstall.sh","./opt/wrt-manifest-tizen-tests/")
@@ -451,10 +508,10 @@ def manifest_Packing(pakeNo,pakeType):
         print Exception,"Packing webapp error:",e   
 
         
-def launcher_WebApp(pakeType,Manifest_Row):        
+def launcher_WebApp(pakeType,Manifest_Row, tcs_manifest):        
     try:
         dt_now = datetime.now()
-        auto_resu = "Fail"
+        auto_result = "FAIL"
         dt_format = dt_now.strftime('%m_%d_%H_%M_%S')
         print "<------------------------- Launch WebApp ------------------------->"
         os.system("sdb -s " + Device_Ip +" root on")
@@ -470,54 +527,80 @@ def launcher_WebApp(pakeType,Manifest_Row):
         cmd_chmod = "sdb -s " + Device_Ip +" shell chmod 777 /opt/usr/media/tct/opt/wrt-manifest-tizen-tests/appuninstall.sh"
         os.system(cmd_chmod)
         shutil.copy("./tests_sample.xml","./result/manifest" + Manifest_Row +".xml")
-        test_XML("manifest" + Manifest_Row + ".xml",auto_resu,"Fail")
+        test_XML("manifest" + Manifest_Row + ".xml",auto_result,"FAIL",tcs_manifest)
         #install app
-        get_cmdback=get_runback(cmd_installapp)
+        get_cmdback = get_runback(cmd_installapp,"install","")
         if ((get_cmdback[0].strip("\r\n")=="Install ok")):
             print "Install---------> OK "
             #launcher app
             Pkgids = get_cmdback[1].strip("\r\n")
+            #get_from_DB(dbfield,pkg_name,pkg_id)
             cmd_launchapp="sdb -s " + Device_Ip +" shell \"su - app -c 'export DBUS_SESSION_BUS_ADDRESS=unix:path=/run/user/5000/dbus/user_bus_socket;/opt/usr/media/tct/opt/wrt-manifest-tizen-tests/applaunch.sh " + Pkgids +"'\""
-            get_cmdback=get_runback(cmd_launchapp)
+            get_cmdback = get_runback(cmd_launchapp,"launch",Pkgids)
             if ((get_cmdback[0].strip("\r\n"))=="Launch ok"):
                 print "Launch--------->OK"
                 #uninstall app
                 cmd_uninstallapp="sdb -s " + Device_Ip +" shell \"su - app -c 'export DBUS_SESSION_BUS_ADDRESS=unix:path=/run/user/5000/dbus/user_bus_socket;/opt/usr/media/tct/opt/wrt-manifest-tizen-tests/appuninstall.sh " + Pkgids +"'\""
-                get_cmdback=get_runback(cmd_uninstallapp)
+                get_cmdback = get_runback(cmd_uninstallapp,"uninstall","")
                 if ((get_cmdback[0].strip("\r\n"))=="Uninstall Pass"):
                      print "Uninstall------->OK"
-                     auto_resu = "Pass"
+                     auto_result = "PASS"
         else:
-            print "Install Fail"
+            print "Install FAIL"
         #key input pass or faile
-        test_XML("manifest" + Manifest_Row + ".xml",auto_resu , get_Input_Result())
-        testcase_XML(Manifest_Row)
+        input_result ="PASS"# get_Input_Result()
+        test_XML("manifest" + Manifest_Row + ".xml",auto_result , input_result , tcs_manifest)
+        #testcase_XML(Manifest_Row)
+        testreport_auto_XML(Manifest_Row,input_result , auto_result ,tcs_manifest)
         os.system("sdb -s " + Device_Ip +" shell rm -rf /opt/usr/media/tct/opt/wrt-manifest-tizen-tests")
         os.system("sdb -s " + Device_Ip +" shell rm -rf /opt/usr/media/tct/wrt-manifest-tizen-tests*")
     except Exception,e: 
         print Exception,"Launch webapp error:",e 
         sys.exit(1)    
         
-def get_runback(cmdline):
-    read_line=os.popen(cmdline).readlines()  
-    return read_line     
-
+def get_runback(cmdline,step,pkgids):
+    try:
+        read_line = os.popen(cmdline).readlines()
+        return read_line     
+    except Exception,e: 
+        print Exception,"get runback error:",e 
+        sys.exit(1) 
+         
 def get_Input_Result():
     try:
         print "--------------------------------------------------------------------"
-        getinput = raw_input("Input result(f,p,enter),enter:Pass,F:Fail,P:Pass--->") 
+        getinput = raw_input("Input result(f,p,enter),enter:PASS,F:FAIL,P:PASS--->") 
         getinput =getinput.strip("")
         while not getinput in("f","p","F","P",""):
             print "--------------------------------------------------------------------"
-            getinput = raw_input("Input result(f,p,Enter),Enter:Pass,F:Fail,P:Pass--->")    
+            getinput = raw_input("Input result(f,p,Enter),Enter:PASS,F:FAIL,P:PASS--->")    
         if (getinput.lower() =="p" or getinput =="" ):
-            getinput = "Pass"    
+            getinput = "PASS"    
         if (getinput.lower() =="f"):
-            getinput = "Fail"
+            getinput = "FAIL"
         return getinput
     except Exception,e: 
         print Exception,"Input result error:",e 
         sys.exit(1)
+
+def get_from_DB(dbfield,pkg_name,pkg_id):
+    try:
+        print "Get from db"
+        cmd_line = "sdb  shell sqlite3 /opt/home/app/.config/xwalk-service/applications.db \"select " + dbfield +" from applications;\" | grep " + pkg_id
+        get_return = os.popen(cmd_line).readlines()
+        getdbsplit = get_return[0].strip("\r\n")[-32:]
+        if (getdbsplit==pkg_id):
+            cmd_line = "sdb shell 'ps -ef |grep -v \"grep\" |grep " + getdbsplit + "'"
+            get_return = os.popen(cmd_line).readlines()
+            if (len(get_return)==1):
+                return "PASS"
+            else:
+                return "FAIL"
+        else:
+            return "FAIL"
+    except Exception,e: 
+        print Exception,"Get db record error:",e 
+        sys.exit(1)        
 
 
 def get_Sdb_Devices():
@@ -548,12 +631,28 @@ def get_Sdb_Devices():
     except Exception,e: 
         print Exception,"Can not get sdb device:",e 
         sys.exit(1)
-    
+        
+def add_style_Report(file_name,style_file):
+    try:
+        fp = file(file_name)
+        lines = []
+        for line in fp:
+           lines.append(line)
+        fp.close()
+        lines.insert(0, "<?xml version=\"1.0\" encoding=\"UTF-8\"?><?xml-stylesheet type=\"text/xsl\" href=\"./style/" + style_file +"\"?>")
+        s = ''.join(lines)
+        fp = file(file_name, 'w')
+        fp.write(s)
+        fp.close()
+    except Exception,e: 
+        print Exception,"Add sytle to report error:",e 
+        sys.exit(1)
+        
 def main(argv):
     try:
         global Device_Ip 
         global Pack_Type
-        shutil.copy("./tests_sample.xml","./tests.result.xml")
+        shutil.copy("./tests.report.xml","./report/wrt-manifest-tizen-tests.xml")
         print do_Clear(const.path_tcs)
         if (os.path.isdir(const.path_result)):
             os.system("rm -rf " + const.path_result +"/*")
@@ -602,11 +701,13 @@ def main(argv):
         sys.exit(2)
     finally:
         get_Result()
+        add_style_Report("./report/wrt-manifest-tizen-tests.xml","testresult.xsl")
+        add_style_Report("./report/summary.xml","summary.xsl")
         print do_Clear(const.path + "/opt")                 
         print do_Clear(const.path + "/self")
         print do_Clear(const.path_tcs)
         os.system("rm -rf *.zip") 
-        os.system("rm -rf testkit.xml") 
+        #os.system("rm -rf testkit.xml") 
         os.system("rm -rf *.pem")
 
 if __name__=="__main__":
