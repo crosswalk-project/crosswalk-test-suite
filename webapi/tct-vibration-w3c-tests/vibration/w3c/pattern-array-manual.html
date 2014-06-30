@@ -19,13 +19,9 @@
       by one second intervals.
     </p>
     <button id='vib'>Vibrate!</button>
-    <div id='log'></div>
-    <script src='../../resources/testharness.js'></script>
-    <!-- When this test gets approved, remove a "../" below -->
-    <script src='feature-detection.js'></script>
-    <script src='helpers.js'></script>
+    <script src='vendor-prefix.js' data-prefixed-objects='[{"ancestors":["navigator"], "name":"vibrate"}]'></script>
     <script>
-      if (supportsVibration()) {
+      if (undefined !== navigator.vibrate) {
           document.getElementById("vib").onclick = function () {
               navigator.vibrate([1000, 1000, 1000, 1000, 1000]);
           };
