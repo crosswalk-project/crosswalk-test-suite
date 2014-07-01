@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <!--
-Copyright (c) 2013 Intel Corporation.
+Copyright (c) 2014 Intel Corporation.
 
 Redistribution and use in source and binary forms, with or without modification,
 are permitted provided that the following conditions are met:
@@ -26,35 +26,24 @@ NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE,
 EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
 Authors:
-        haox.li <haox.li@intel.com>
-        Cui, Jieqiong <jieqiongx.cui@intel.com>
+        Chen, Xi <xix.a.chen@intel.com>
 
 -->
 
-<html>
-  <head>
-    <title>CSS3 Backgrounds Test: CSS3BG_border-image-slice_left_value_miss</title>
-    <link rel="author" title="Intel" href="http://www.intel.com" />
-    <link rel="help" href="http://www.w3.org/TR/2012/CR-css3-background-20120724/" />
-    <meta name="flags" content="" />
-    <meta name="assert" content="Check if the border-image-slice left value is missing it is the same as the right" />
-    <style type="text/css">
-        #test{
-            height: 200px;
-            width: 300px;
-            border: 100px;
-            margin: 5px;
-            background: blue;
-            border-image: url(csswg/support/ring.png);
-            -moz-border-image-slice: 10 20 15;
-            -ms-border-image-slice: 10 20 15;
-            -webkit-border-image-slice: 10 20 15;
-            border-image-slice: 10 20 15;
-        }
-    </style>
-  </head>
-  <body>
-    <div id="test"></div>
-    <p>Test passes if the left orange area is same to the right</p>
-  </body>
-</html>
+<meta charset="utf-8">
+<title>CSS Backgrounds and Borders Reference: background-origin - inherit keyword value</title>
+<link rel="author" title="Intel" href="http://www.intel.com">
+<style>
+  div {
+    background-color: green;
+    height: 60px;
+    position: relative;
+    left: 30px;
+    top: 30px;
+    width: 60px;
+  }
+</style>
+<body>
+  <p>Test passes if there is a filled green square and <strong>no red</strong>.</p>
+  <div></div>
+</body>
