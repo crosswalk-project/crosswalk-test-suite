@@ -1,4 +1,4 @@
-SUBDIRS = w3c
+SUBDIRS = w3c reference
 tests_SCRIPTS = *
-testsdir = $(prefix)/opt/webapi-uiautomation-tests/html5-canvas/w3c
+testsdir = $(prefix)/opt/webapi-uiautomation-tests/htmls-canvas
 EXTRA_DIST = $(tests_SCRIPTS)
