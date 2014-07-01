@@ -23,22 +23,13 @@
     </p>
     <div id='log'></div>
     <script src='../../resources/testharness.js'></script>
-    <!-- When this test gets approved, remove a "../" below -->
-    <script src='feature-detection.js'></script>
-    <script src='helpers.js'></script>
+    <script src='../../resources/testharnessreport.js'></script>
+    <script src='vendor-prefix.js' data-prefixed-objects='[{"ancestors":["navigator"], "name":"vibrate"}]'></script>
     <script>
-      if (supportsVibration()) {
-          test(function () {
-              var ok = false;
-              try {
-                  navigator.vibrate(1000);
-                  ok = true;
-              }
-              catch (e) {
-                  ok = false;
-              }
-              assert_true(ok, "vibrate() should not throw");
-          }, "Calling vibrate does not throw.");
+      if (undefined !== navigator.vibrate) {
+	  test(function () {
+              assert_true(navigator.vibrate(1000), "vibrate() returns true when vibration is not supported");
+          }, "Calling vibrate returns true");
       }
     </script>
   </body>

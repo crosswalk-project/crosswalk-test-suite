@@ -20,14 +20,18 @@
     <button id='vib'>Vibrate!</button>
     <div id='log'></div>
     <script src='../../resources/testharness.js'></script>
-    <!-- When this test gets approved, remove a "../" below -->
-    <script src='feature-detection.js'></script>
-    <script src='helpers.js'></script>
+    <script src='../../resources/testharnessreport.js'></script>
+    <script src='vendor-prefix.js' data-prefixed-objects='[{"ancestors":["navigator"], "name":"vibrate"}]'></script>
     <script>
-      if (supportsVibration()) {
-          document.getElementById("vib").onclick = function () {
-              navigator.vibrate([2000]);
-          };
+      if (undefined !== navigator.vibrate) {
+          setup({explicit_done:true});
+          var t = async_test("Tests that vibrate returns true");
+
+          document.getElementById("vib").onclick = t.step_func(function () {
+              assert_true(navigator.vibrate([2000]), "vibrate() returns a boolean");
+              t.done();
+              done();
+          }, "Calling vibrate returns true");
       }
     </script>
   </body>
