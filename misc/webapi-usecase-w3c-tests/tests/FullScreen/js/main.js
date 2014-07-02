@@ -61,15 +61,14 @@ $(document).ready(function () {
      $("#cancelCssFullScreen").on(
         "click",
         function(evt) {
-            window.location.reload();
-            /**if (document.webkitIsFullScreen) {
+            if (document.webkitIsFullScreen) {
                 document.webkitCancelFullScreen();
                 if ($(document)["context"].styleSheets.length == 2) {
                     $(document)["context"].styleSheets[1].deleteRule(1);
                 }
                 document.documentElement.webkitRequestFullScreen();
                 window.location.reload();
-            }*/
+            }
      });
 });
 
