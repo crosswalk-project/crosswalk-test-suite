@@ -3,5 +3,6 @@ AM_INIT_AUTOMAKE([-Wall -Werror foreign])
 
 AC_CONFIG_FILES([Makefile \
 iap/Makefile \
-resources/Makefile webrunner/Makefile])
+resources/Makefile webrunner/Makefile \
+iapextensions/Makefile])
 AC_OUTPUT
