@@ -40,14 +40,21 @@ Authors:
   <ol>
     <li>Execute command on IVI device with "app" user: "xwalk 'http://your_server:5103/api/mouse_lock/index.html?tc=pnacl'"</li>
     <li>Follow the opened index.html description to execute all steps</li>
-    <li>Move the mouse cursor over the grey box to watch the captured mouse movement, click on the grey box, then set focus and turn on mouse lock</li>
-    <li>Click grey box, then press the Enter key, the grey box will be fullscreen, repeat step 1</li>
-    <li>Press the Esc key will cause the browser to revoke mouselock or tab fullscreen privilege</li>
-    <li>Press the F11 key will also revole mouselock or tab fullscreen privilege when in browser fullscreen</li>
+    <ul>
+      <li>Move the mouse cursor over the grey box to watch the captured mouse movement, then move the mouse cursor
+      to outside of grey box, the mouse movement unchanged;</li>
+      <li>Click on the grey box, the mouse cursor will be hidden;</li>
+      <li>Click on the grey box, then press the Enter key, the grey box will be fullscreen and the mouse cursor will
+      be hidden;</li>
+      <li>Press the Esc key will cause two phenomenons, mouse cursor displayed and exited tab fullscreen mode, but fullscreen
+      mode still valid;</li>
+      <li>Click on outside of the grey box, then press the F11 key will enter browser fullscreen mode, repeat execute step 1,
+      press F11 key again will revoke browser fullscreen mode,  but fullscreen mode still valid.</li>
+    </ul>
   </ol>
   <p>Expected Result: </p>
   <ol>
     <li>The command execute successfully</li>
-    <li>The mouse movement can be lock and revoke in in tab and/or browser fullscreen</li>
+    <li>The above steps execute successfully and the description correctly</li>
   </ol>
 </body>
