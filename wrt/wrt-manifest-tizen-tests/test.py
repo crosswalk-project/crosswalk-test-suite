@@ -12,7 +12,7 @@ all_pairs = metacomm.combinatorics.all_pairs2.all_pairs2
 Manifest_Row = 0
 Device_Ip = ""
 Pack_Type = "xpk"
-
+Test_Flag = "positive"
 def do_Selfcom(self_combin_file,out_file):
     try:
         file = open(self_combin_file)
@@ -84,7 +84,7 @@ def gen_Manifest_Json(output_file):
             get_self=""
         file.close()
         fp_manifest.close()
-        return "Generate manifest.json O.K"
+        return "<------------------------- Generate manifest.json O.K ------------------------->"
     except Exception,e: 
         print Exception,"------------------------->:",e 
         return "Generate manifest.json error"
@@ -209,7 +209,7 @@ def gen_selfcomb_File(comb_file,order_count):
                     for g in get_item:
                         lists[row].append(g)
                     row = row + 1
-                    print  lists
+                    #print  lists
             input_pair = all_pairs( lists )
             for e, v in enumerate(input_pair):
                 for c in range(0,len(v)):
@@ -237,7 +237,7 @@ def make_webapp_folder(sourceDir,targetDir):
 
 def app_Folder(path_tcs):
     try:
-        print "<-------------------------> Copy WebApp Resource ------------------------->"
+        print "<------------------------- Copy WebApp Resource ------------------------->"
         for file in os.listdir(path_tcs):
             copy_Files(const.path_resource,os.getcwd()+"/tcs/"+file)
         return "Webapp folder copy ------------------------->O.K",path_tcs
@@ -285,7 +285,7 @@ def do_Clear(sourceDir):
 def Usage():
     print "<-------------------------test.py usage:------------------------->"
     print "-h,--help: print help message"
-    print "-m, --manual: input out.txt to generate manifest.json"
+    print "-n, --nagative seed test"
     print "-o, --order: input allpairs order default 2"
     print "-p, --pack: pack xpk or wgt default wgt"
     print "--foo: Test option "
@@ -312,9 +312,9 @@ def get_Result():
         auto_sFail_count = 0        
         sResult = []
         os.system("rm -rf ./result/*.dlog")
-        file = open("./report.html",'w')
+        #file = open("./report.html",'w')
         tree = ElementTree()
-        file.writelines("<html><head><title>Report</title></head><body><h1>Report</h1><div><table style=\"BORDER-RIGHT: 1px ; BORDER-TOP: 1px ; BORDER-LEFT: 1px ; BORDER-BOTTOM: 1px \" cellSpacing=1 cellPadding=1 width=\"100%\" border=1  rules=\"rows\">")
+        #file.writelines("<html><head><title>Report</title></head><body><h1>Report</h1><div><table style=\"BORDER-RIGHT: 1px ; BORDER-TOP: 1px ; BORDER-LEFT: 1px ; BORDER-BOTTOM: 1px \" cellSpacing=1 cellPadding=1 width=\"100%\" border=1  rules=\"rows\">")
         
         resultList = os.listdir(const.path_result)
         if (len(resultList) <=0):
@@ -330,32 +330,32 @@ def get_Result():
                     auto_sPass_count = auto_sPass_count + 1
             else:
                     auto_sFail_count = auto_sFail_count + 1                    
-        file.writelines("Input_Pass: " + str(input_sPass_count) + "<br>Input_Fail: " + str(input_sFail_count) + "<br>Auto_Pass: " + str(auto_sPass_count) + "<br>Auto_Fail: " + str(auto_sFail_count) +  "<br>Block: " + str(sBlock_count) + "<th>TestcaseID</th><th>Auto_Result</th><th>Input_Result</th><th>Link</th>")            
+        #file.writelines("Input_Pass: " + str(input_sPass_count) + "<br>Input_Fail: " + str(input_sFail_count) + "<br>Auto_Pass: " + str(auto_sPass_count) + "<br>Auto_Fail: " + str(auto_sFail_count) +  "<br>Block: " + str(sBlock_count) + "<th>TestcaseID</th><th>Auto_Result</th><th>Input_Result</th><th>Link</th>")            
         resultList = os.listdir(const.path_result)
         total_case = len(resultList)
         pass_rate = input_sPass_count / float(total_case) *100
         fail_rate = input_sFail_count / float(total_case) *100
         block_rate = sBlock_count / float(total_case) *100
         insert_to_Summary("./report/summary.xml",total_case,auto_sPass_count,pass_rate,auto_sFail_count,fail_rate, sBlock_count,block_rate)
-        if (len(resultList) <=0):
-            print "Result folder have no file"
-            sys.exit(1)
-        else:
-            resultList.sort(key=None)
-        for resultfile in resultList:
-            sResult = testcase_Result(const.path_result + "/"+resultfile)
-            file.writelines("<tr><td >" + sResult[0] + "</td><td>" + sResult[1] + "</td><td>" + sResult[2] +"</td><td><a href=result/" +  resultfile+" >" + resultfile + "</a></td></tr>")
-            if input_sPass in (sResult[2].replace("\\n"," ")):
-                    input_sPass_count = input_sPass_count + 1
-            else:
-                    input_sFail_count = input_sFail_count + 1
-            if auto_sPass in (sResult[1].replace("\\n"," ")):
-                    auto_sPass_count = auto_sPass_count + 1
-            else:
-                    auto_sFail_count = auto_sFail_count + 1
+        #if (len(resultList) <=0):
+        #    print "Result folder have no file"
+        #    sys.exit(1)
+        #else:
+        #    resultList.sort(key=None)
+        #for resultfile in resultList:
+        #    sResult = testcase_Result(const.path_result + "/"+resultfile)
+        #    file.writelines("<tr><td >" + sResult[0] + "</td><td>" + sResult[1] + "</td><td>" + sResult[2] +"</td><td><a href=result/" +  resultfile+" >" + resultfile + "</a></td></tr>")
+        #    if input_sPass in (sResult[2].replace("\\n"," ")):
+        #            input_sPass_count = input_sPass_count + 1
+        #    else:
+        #            input_sFail_count = input_sFail_count + 1
+        #    if auto_sPass in (sResult[1].replace("\\n"," ")):
+        #            auto_sPass_count = auto_sPass_count + 1
+        #    else:
+        #            auto_sFail_count = auto_sFail_count + 1
                 
-        file.writelines("</table></div></body></html>")
-        file.close
+        #file.writelines("</table></div></body></html>")
+        #file.close
         
         print "<------------------------- Generate Report End------------------------->"        
     except Exception,e: 
@@ -399,7 +399,7 @@ def insert_to_Summary(sumaryfile,total_case,pass_case,pass_rate,fail_case,fail_r
         
 
 
-def test_XML(webappFile,auto_Result,input_Result,manifest_cont):
+def result_manifest_XML(webappFile,auto_Result,input_Result,manifest_cont):
     try:
         print "<------------------------- Beging Generate manifest.xml ------------------------->"
         tree = ElementTree()
@@ -430,52 +430,63 @@ def test_XML(webappFile,auto_Result,input_Result,manifest_cont):
                         testcommand_node = result_node.find("testcommand")
                         testcommand_node.text = manifest_cont 
         tree.write(const.path_result + "/" + webappFile)
-        print "Generater result manifest.xml ------------------------->O.K"
+        print "<------------------------- Generate Result ./result/manifest.xml O.K------------------------->"
     except Exception,e: 
         print Exception,"Generate manifest.xml error:",e 
         sys.exit(1)
 
-def testcase_XML(webappName):
-    tree = ElementTree()
-    tree.parse(const.path + "/report/wrt-manifest-tizen-tests.xml")
-    root = tree.getroot()
-    lst_node = root.getiterator("set")
-    for node in lst_node:
-        SubElement(node,"testcase", {'component':'core','purpose':'Check if Packaged Web Application can be installed/launch/uninstall successfully','result':'PASS','execution_type' : 'auto', 'id' : "manifest" + webappName})
-    tree.write(const.path +"/report/wrt-manifest-tizen-tests.xml")  
-
-
-def testreport_auto_XML(webappName,input_Result,auto_Result,tcs_manifest):
+def testreport_auto_XML(webappName,input_Result,auto_Result,tcs_manifest,tcs_message):
     try:
         tree = ElementTree()
         tree.parse(const.path + "/report/wrt-manifest-tizen-tests.xml")
         root = tree.getroot()
         lst_node = root.getiterator("set")
-        for node in lst_node:
-            SubElement(node,"testcase", {'component':'core','purpose':'Check if Packaged Web Application can be installed/launch/uninstall successfully','execution_type' : 'auto', 'id' : "manifest"+webappName ,'result': auto_Result})
-            cnode = root.getiterator("testcase")
-            desnode = cnode[-1]
-            SubElement(desnode,"description")
-            entrynode = desnode[-1]
-            SubElement(entrynode,"test_script_entry")
-            entryentrynode = root.getiterator("test_script_entry")
-            entr = entryentrynode[-1]
-            entr.text = tcs_manifest 
-            SubElement(desnode,"result_info")
-            resultinfonode = root.getiterator("result_info")
-            result_info = resultinfonode[-1] 
-            SubElement(result_info,"actual_result")
-            actualresultnode = root.getiterator("actual_result")      
-            actualresult = actualresultnode[-1]
-            actualresult.text = auto_Result
-            tree.write(const.path +"/report/wrt-manifest-tizen-tests.xml")  
+#        for node in lst_node:
+        if (Test_Flag=="positive"):
+              SubElement(lst_node[0],"testcase", {'component':'core','purpose':'Check if Packaged Web Application can be installed/launch/uninstall successfully','execution_type' : 'auto', 'id' : "manifest"+webappName ,'result': auto_Result})
+              cnode = root.getiterator("testcase")
+              desnode = cnode[-1]
+              SubElement(desnode,"description")
+              entrynode = desnode[-1]
+              SubElement(entrynode,"test_script_entry")
+              entryentrynode = root.getiterator("test_script_entry")
+              entr = entryentrynode[-1]
+              entr.text = tcs_manifest 
+              SubElement(desnode,"result_info")
+              resultinfonode = root.getiterator("result_info")
+              result_info = resultinfonode[-1]
+              result_info.text = tcs_message
+              SubElement(result_info,"actual_result")
+              actualresultnode = root.getiterator("actual_result")      
+              actualresult = actualresultnode[-1]
+              actualresult.text = auto_Result
+              tree.write(const.path +"/report/wrt-manifest-tizen-tests.xml")
+        else:
+              SubElement(lst_node[1],"testcase", {'component':'core','purpose':'Check if Packaged Web Application can be installed/launch/uninstall successfully','execution_type' : 'auto', 'id' : "manifest"+webappName ,'result': auto_Result})
+              cnode = root.getiterator("testcase")
+              desnode = cnode[-1]
+              SubElement(desnode,"description")
+              entrynode = desnode[-1]
+              SubElement(entrynode,"test_script_entry")
+              entryentrynode = root.getiterator("test_script_entry")
+              entr = entryentrynode[-1]
+              entr.text = tcs_manifest 
+              SubElement(desnode,"result_info")
+              resultinfonode = root.getiterator("result_info")
+              result_info = resultinfonode[-1]
+              result_info.text = tcs_message
+              SubElement(result_info,"actual_result")
+              actualresultnode = root.getiterator("actual_result")      
+              actualresult = actualresultnode[-1]
+              actualresult.text = auto_Result
+              tree.write(const.path +"/report/wrt-manifest-tizen-tests.xml")         
     except Exception,e: 
         print Exception,"Generate test error:",e 
         sys.exit(1)
 
 def manifest_Packing(pakeNo,pakeType):
     try:
-        print "Packing ------------------------->" + pakeNo
+        print "<-------------------------Packing WebApp------------------------->" + pakeNo
         print do_Clear("./opt")
         os.system("rm -rf *.zip")
         os.makedirs("./opt/wrt-manifest-tizen-tests")
@@ -484,6 +495,7 @@ def manifest_Packing(pakeNo,pakeType):
         shutil.copy("./appinstall.sh","./opt/wrt-manifest-tizen-tests/")
         shutil.copy("./applaunch.sh","./opt/wrt-manifest-tizen-tests/")
         shutil.copy("./appuninstall.sh","./opt/wrt-manifest-tizen-tests/")
+        shutil.copy("./checkdb.sh","./opt/wrt-manifest-tizen-tests/")
         cmd_packing="python ./allpairs/make_xpk.py "
         if (pakeNo =="all"):#all is not support now,please use default 
             for i in range (1,(Manifest_Row+1)):
@@ -503,7 +515,7 @@ def manifest_Packing(pakeNo,pakeType):
                     os.system("zip -rq ../../opt/wrt-manifest-tizen-tests/" + str(pakeNo) +"." + pakeType+" ./")
                     os.chdir(const.path)
         os.system("zip -rq " + const.name + "-"+const.version +"." + pakeType+".zip ./opt")
-        print "Packing-------------------------> O.K"
+        print "<-------------------------Packing WebApp O.K------------------------->"
     except Exception,e: 
         print Exception,"Packing webapp error:",e   
 
@@ -512,12 +524,13 @@ def launcher_WebApp(pakeType,Manifest_Row, tcs_manifest):
     try:
         dt_now = datetime.now()
         auto_result = "FAIL"
+        fail_message = ""
         dt_format = dt_now.strftime('%m_%d_%H_%M_%S')
         print "<------------------------- Launch WebApp ------------------------->"
         os.system("sdb -s " + Device_Ip +" root on")
         cmd_pushxpk = "sdb -s " + Device_Ip +" push " + const.name + "-" + const.version +"." + pakeType + ".zip"+" /opt/usr/media/tct/"
         cmd_unzipxpk = "sdb -s " + Device_Ip +" shell unzip -od /opt/usr/media/tct/ /opt/usr/media/tct/" + const.name + "-" + const.version + "." + pakeType + ".zip"
-        cmd_installapp="sdb -s " + Device_Ip +" shell \"su - app -c 'export DBUS_SESSION_BUS_ADDRESS=unix:path=/run/user/5000/dbus/user_bus_socket;/opt/usr/media/tct/opt/wrt-manifest-tizen-tests/appinstall.sh manifest" + Manifest_Row +  "." + pakeType +"'\""
+        cmd_installapp="sdb -s " + Device_Ip +" shell \"su - app -c 'export DBUS_SESSION_BUS_ADDRESS=unix:path=/run/user/5000/dbus/user_bus_socket;/opt/usr/media/tct/opt/wrt-manifest-tizen-tests/appinstall.sh /opt/usr/media/tct/opt/wrt-manifest-tizen-tests/manifest" + Manifest_Row +  "." + pakeType +"'\""
         os.system(cmd_pushxpk)
         os.system(cmd_unzipxpk)
         cmd_chmod = "sdb -s " + Device_Ip +" shell chmod 777 /opt/usr/media/tct/opt/wrt-manifest-tizen-tests/appinstall.sh"
@@ -526,32 +539,54 @@ def launcher_WebApp(pakeType,Manifest_Row, tcs_manifest):
         os.system(cmd_chmod)        
         cmd_chmod = "sdb -s " + Device_Ip +" shell chmod 777 /opt/usr/media/tct/opt/wrt-manifest-tizen-tests/appuninstall.sh"
         os.system(cmd_chmod)
+        cmd_chmod = "sdb -s " + Device_Ip +" shell chmod 777 /opt/usr/media/tct/opt/wrt-manifest-tizen-tests/checkdb.sh"
+        os.system(cmd_chmod)
         shutil.copy("./tests_sample.xml","./result/manifest" + Manifest_Row +".xml")
-        test_XML("manifest" + Manifest_Row + ".xml",auto_result,"FAIL",tcs_manifest)
+        result_manifest_XML("manifest" + Manifest_Row + ".xml",auto_result,"FAIL",tcs_manifest)
         #install app
         get_cmdback = get_runback(cmd_installapp,"install","")
-        if ((get_cmdback[0].strip("\r\n")=="Install ok")):
-            print "Install---------> OK "
-            #launcher app
-            Pkgids = get_cmdback[1].strip("\r\n")
-            #get_from_DB(dbfield,pkg_name,pkg_id)
-            cmd_launchapp="sdb -s " + Device_Ip +" shell \"su - app -c 'export DBUS_SESSION_BUS_ADDRESS=unix:path=/run/user/5000/dbus/user_bus_socket;/opt/usr/media/tct/opt/wrt-manifest-tizen-tests/applaunch.sh " + Pkgids +"'\""
-            get_cmdback = get_runback(cmd_launchapp,"launch",Pkgids)
-            if ((get_cmdback[0].strip("\r\n"))=="Launch ok"):
-                print "Launch--------->OK"
-                #uninstall app
-                cmd_uninstallapp="sdb -s " + Device_Ip +" shell \"su - app -c 'export DBUS_SESSION_BUS_ADDRESS=unix:path=/run/user/5000/dbus/user_bus_socket;/opt/usr/media/tct/opt/wrt-manifest-tizen-tests/appuninstall.sh " + Pkgids +"'\""
-                get_cmdback = get_runback(cmd_uninstallapp,"uninstall","")
-                if ((get_cmdback[0].strip("\r\n"))=="Uninstall Pass"):
-                     print "Uninstall------->OK"
-                     auto_result = "PASS"
+        for i in range(len(get_cmdback)):
+            if (get_cmdback[i].find("successfully")>=0):
+                fail_message = "install ok"
+                break
+            else:
+                fail_message = "install fail"
+        if ((fail_message=="install ok") & ((get_cmdback[-2].strip("\r\n")=="Install ok"))):
+          if ((get_cmdback[-2].strip("\r\n")=="Install ok") & (Test_Flag=="positive")):
+              print "Install---------> OK "
+              fail_message = "install ok"
+              #launcher app
+              Pkgids = get_cmdback[-3][-48:-16]
+              cmd_launchapp="sdb -s " + Device_Ip +" shell \"su - app -c 'export DBUS_SESSION_BUS_ADDRESS=unix:path=/run/user/5000/dbus/user_bus_socket;/opt/usr/media/tct/opt/wrt-manifest-tizen-tests/applaunch.sh " + Pkgids +"'\""
+              get_cmdback = get_runback(cmd_launchapp,"launch",Pkgids)
+              if ((get_cmdback[0].strip("\r\n"))=="Launch ok"):
+                  print "Launch--------->OK"
+                  fail_message = "launch ok"
+                  #uninstall app
+                  cmd_uninstallapp="sdb -s " + Device_Ip +" shell \"su - app -c 'export DBUS_SESSION_BUS_ADDRESS=unix:path=/run/user/5000/dbus/user_bus_socket;/opt/usr/media/tct/opt/wrt-manifest-tizen-tests/appuninstall.sh " + Pkgids +"'\""
+                  cmd_checkdb="sdb -s " + Device_Ip +" shell \"su - app -c 'export DBUS_SESSION_BUS_ADDRESS=unix:path=/run/user/5000/dbus/user_bus_socket;/opt/usr/media/tct/opt/wrt-manifest-tizen-tests/checkdb.sh " + Pkgids +"'\""
+                  get_fromdb = get_from_DB(cmd_checkdb,tcs_manifest)
+                  get_cmdback = get_runback(cmd_uninstallapp,"uninstall","")
+                  if (((get_cmdback[0].strip("\r\n"))=="Uninstall Pass")&(get_fromdb=="GET")):
+                       print "Uninstall------->OK"
+                       auto_result = "PASS"
+                       fail_message = "uninstall and db check ok"
+                  else:
+                      fail_message = "uninstall and db check fail"
+              else:
+                fail_message = "launch fail"
+        elif ((get_cmdback[-1].strip("\r\n")=="Install Fail") & (Test_Flag=="nagative")):
+              auto_result = "PASS"
+        elif ((get_cmdback[-2].strip("\r\n")=="Install ok") & (Test_Flag=="nagative")):
+              auto_result = "FAIL" 
+              fail_message = "nagative install ok"             
         else:
-            print "Install FAIL"
+            auto_result = "FAIL"
+            fail_message = "install fail" 
         #key input pass or faile
         input_result ="PASS"# get_Input_Result()
-        test_XML("manifest" + Manifest_Row + ".xml",auto_result , input_result , tcs_manifest)
-        #testcase_XML(Manifest_Row)
-        testreport_auto_XML(Manifest_Row,input_result , auto_result ,tcs_manifest)
+        result_manifest_XML("manifest" + Manifest_Row + ".xml",auto_result , auto_result , tcs_manifest)
+        testreport_auto_XML(Manifest_Row,input_result , auto_result ,tcs_manifest,fail_message)
         os.system("sdb -s " + Device_Ip +" shell rm -rf /opt/usr/media/tct/opt/wrt-manifest-tizen-tests")
         os.system("sdb -s " + Device_Ip +" shell rm -rf /opt/usr/media/tct/wrt-manifest-tizen-tests*")
     except Exception,e: 
@@ -583,21 +618,23 @@ def get_Input_Result():
         print Exception,"Input result error:",e 
         sys.exit(1)
 
-def get_from_DB(dbfield,pkg_name,pkg_id):
+def get_from_DB(cmdline,manifest):
     try:
-        print "Get from db"
-        cmd_line = "sdb  shell sqlite3 /opt/home/app/.config/xwalk-service/applications.db \"select " + dbfield +" from applications;\" | grep " + pkg_id
-        get_return = os.popen(cmd_line).readlines()
-        getdbsplit = get_return[0].strip("\r\n")[-32:]
-        if (getdbsplit==pkg_id):
-            cmd_line = "sdb shell 'ps -ef |grep -v \"grep\" |grep " + getdbsplit + "'"
-            get_return = os.popen(cmd_line).readlines()
-            if (len(get_return)==1):
-                return "PASS"
+        print "<------------------------- Get From DB ------------------------->"
+        read_line = os.popen(cmdline).readlines()
+        get_value = read_line[0].split("|")[1].split(",")
+        get_manifest = manifest.strip("\n\r\t").split(",")
+        for i in range(0,len(get_manifest)):
+          find_name = get_manifest[i].find("name")
+          if (find_name>=0):
+            get_manifest_name = get_manifest[i].split(":")[1][2:-1]
+            get_db_name = read_line[0].find(get_manifest_name)
+            if (get_db_name>=0):
+                print "<------------------------- Get From DB O.K------------------------->"
+                return "GET"
             else:
-                return "FAIL"
-        else:
-            return "FAIL"
+                return "NONE"
+          return "NONE"
     except Exception,e: 
         print Exception,"Get db record error:",e 
         sys.exit(1)        
@@ -652,6 +689,7 @@ def main(argv):
     try:
         global Device_Ip 
         global Pack_Type
+        global Test_Flag
         shutil.copy("./tests.report.xml","./report/wrt-manifest-tizen-tests.xml")
         print do_Clear(const.path_tcs)
         if (os.path.isdir(const.path_result)):
@@ -660,24 +698,29 @@ def main(argv):
             os.makedirs(const.path_result)
         print do_Clear(const.path + "/self")
         Device_Ip = get_Sdb_Devices()[0]
-        opts, args = getopt.getopt(argv[1:], 'hm:o:p:', ['help','output=', 'order=','pack='])
+        opts, args = getopt.getopt(argv[1:], 'h:o:p:n', ['help','order=','pack='])
         if (len(opts) ==0):
              print "Auto generate manifest.json------------------------->",opts
              #input_seed -> selfcomb.txt->manifest.json
              del_Seed(const.seed_file,const.allpairs_order)
+             Test_Flag = "nagative"
+             del_Seed(const.seed_file_na,const.allpairs_order)
         for o, a in opts:
             if o in ('-h', '--help'):
                 Usage()
                 sys.exit(1)
-            elif o in ('-m', '--output'):
-                gen_Manifest_Json(a)
-                do_Clear(const.path + "/self")
-                sys.exit(1)
+            elif o in ('-n'):
+                print ("**************nagative**********" )
+                Test_Flag = "nagative"
+                if (Test_Flag=="nagative"):
+                  del_Seed(const.seed_file_na,const.allpairs_order)
+                else:
+                  del_Seed(const.seed_file,const.allpairs_order)                
             elif o in ('-o', '--order'):
                 allpairs_order_get = a
                 print "Auto generate manifest.json------------------------->"
                 #input_seed -> selfcomb.txt->manifest.json
-                del_Seed(const.seed_file,allpairs_order_get)
+                #del_Seed(const.seed_file,allpairs_order_get)
                 #manifest folder -> webapp
                 print app_Folder(const.path_tcs)
                 print do_Clear(const.path + "/self")
@@ -702,7 +745,7 @@ def main(argv):
     finally:
         get_Result()
         add_style_Report("./report/wrt-manifest-tizen-tests.xml","testresult.xsl")
-        add_style_Report("./report/summary.xml","summary.xsl")
+        add_style_Report("./report/summary.xml","summary.xsl")        
         print do_Clear(const.path + "/opt")                 
         print do_Clear(const.path + "/self")
         print do_Clear(const.path_tcs)

@@ -14,7 +14,7 @@ if [ $pkgnum -eq 1 ]; then
   echo Launch Fail
   exit 1
  fi
- sleep 15s
+ sleep 2s
  echo Launch ok
 else
  echo no or more than one app launch failed

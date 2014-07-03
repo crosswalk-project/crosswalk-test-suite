@@ -7,7 +7,7 @@ Result="Pass"
 
 
 #1.**** install app
-pkgids=`xwalkctl --install $path/$xpksuite_name/$1`
+pkgids=`xwalkctl --install $1`
 if [ $? -eq 1 ];then
   echo Install Fail
   exit 1

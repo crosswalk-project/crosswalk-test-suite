@@ -22,7 +22,7 @@ Except as noted, this software is licensed under BSD-3-Clause License.
 Please see the COPYING file for the BSD-3-Clause License.
 
 1. allpairs is seed file folder:
-  1.1 input_seed.txt is seed file.
+  1.1 input_seed.txt is positive seed file.
      1)Values separator ","
        name-1:a,b
      2)The same field value separter by "-":
@@ -34,6 +34,7 @@ Please see the COPYING file for the BSD-3-Clause License.
        000a-> a,a00b->a b,b000->b 
      5)The icon value include ",", so the separator is "comma",please refor to seed file:
        icon-1:{"src": "icon/lowres"comma"sizes": "64x64"comma"type": "image/webp"}
+  1.2 input_seed_na.txt is nagative tcs seed file.
   2.1 output.txt is allpairs output file.
   3.1 selfcomb.txt is self combination file.
 
@@ -45,14 +46,12 @@ Please see the COPYING file for the BSD-3-Clause License.
 
 5. ./manifest_all.txt is all manifest.json content.
 
-6. ./report/ save the auto report.
-
-7. ./tests.result.xml : saved all tcs file.
+6. ./report/ save the auto report wrt-manifest-tizen-tests.xml file.
 
 Test Step:
 1. unzip wrt-manifest-tizen-tests<version>.zip
 2. cd opt/wrt-manifest-tizen-tests/
 3. ./inst.sh
 4. cd /opt/usr/media/tct/opt/wrt-manifest-tizen-tests/
-5. python test.py
+5. testkit-lite -f "/opt/usr/media/tct/opt/wrt-manifest-tizen-tests/tests.xml" -A --comm localhost
 
