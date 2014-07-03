@@ -33,7 +33,7 @@ Authors:
 <html>
   <head>
     <meta charset='utf-8'>
-    <title>Crosswalk_Install_dialog_arm</title>
+    <title>Crosswalk_Install_dialog_x86_embeded</title>
     <link rel="author" title="Intel" href="http://www.intel.com">
   </head>
   <body>
@@ -41,15 +41,17 @@ Authors:
       <strong>Test steps:</strong>
     </p>
     <ol>
-      <li>Package an web app with app-url option, command like: python make_apk.py --name=test --package=test.xwalk.org --app-url=http://www.baidu.com --arch=arm</li>
-      <li>Install apk in platform with "x86" architecture</li>
+      <li>Package an web app with app-url option, command like: python make_apk.py --name=test --package=test.xwalk.org --app-url=http://www.baidu.com --arch=x86</li>
+      <li>Install apk in platform with "arm" architecture</li>
+      <li>Launch web app</li>
     </ol>
     <p>
       <strong>Expected Output:</strong>
     </p>
     <ol>
       <li>Generate APK installation package successfully</li>
-      <li>Install web app failed, a dialog with descriptive error message prompt successfully</li>
+      <li>Install web app successfully</li>
+      <li>Launch web app failed , a dialog with message "Mismatch of CPU architecture for Crosswalk" prompt successfully</li>
     </ol>
   </body>
 </html>
