@@ -55,6 +55,8 @@ function successCallback(fs) {
   t.done();
 }
 
-xwalk.experimental.native_file_system.requestNativeFileSystem("music", successCallback, errorCallback);
+xwalk.experimental.native_file_system.requestNativeFileSystem("music", successCallback, function (e) {
+  xwalk.experimental.native_file_system.requestNativeFileSystem("sounds", successCallback, errorCallback);
+});
 
 </script>

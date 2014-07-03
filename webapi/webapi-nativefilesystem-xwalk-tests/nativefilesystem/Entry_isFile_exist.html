@@ -53,6 +53,13 @@ xwalk.experimental.native_file_system.requestNativeFileSystem("music", function(
     assert_exists(fs.root, "isFile");
   });
   t.done();
-}, errorCallback);
+}, function (e) {
+  xwalk.experimental.native_file_system.requestNativeFileSystem("sounds", function(fs) {
+    t.step(function () {
+      assert_exists(fs.root, "isFile");
+    });
+    t.done();
+  }, errorCallback);
+});
 
 </script>

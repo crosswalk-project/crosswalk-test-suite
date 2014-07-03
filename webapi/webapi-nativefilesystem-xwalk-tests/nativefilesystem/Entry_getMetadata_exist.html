@@ -54,6 +54,14 @@ xwalk.experimental.native_file_system.requestNativeFileSystem("music", function(
     assert_true(flag, "The Entry.getMetadata exists");
   });
   t.done();
-}, errorCallback);
+}, function (e) {
+  xwalk.experimental.native_file_system.requestNativeFileSystem("sounds", function(fs) {
+    t.step(function () {
+      var flag = fs.root.getMetadata != undefined && fs.root.getMetadata instanceof Function;
+      assert_true(flag, "The Entry.getMetadata exists");
+    });
+    t.done();
+  }, errorCallback);
+});
 
 </script>

@@ -54,6 +54,14 @@ xwalk.experimental.native_file_system.requestNativeFileSystem("music", function(
     assert_true(flag, "The method entry.removeRecursively() exists");
   });
   t.done();
-}, errorCallback);
+}, function (e) {
+  xwalk.experimental.native_file_system.requestNativeFileSystem("sounds", function(fs) {
+    t.step(function () {
+      var flag = fs.root.removeRecursively != undefined && fs.root.removeRecursively instanceof Function;
+      assert_true(flag, "The method entry.removeRecursively() exists");
+    });
+    t.done();
+  }, errorCallback);
+});
 
 </script>

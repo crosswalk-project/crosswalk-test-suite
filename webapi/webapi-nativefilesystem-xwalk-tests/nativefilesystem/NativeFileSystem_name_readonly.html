@@ -59,6 +59,19 @@ function successCallback(fs) {
   }, errorCallback);
 }
 
-xwalk.experimental.native_file_system.requestNativeFileSystem("music", successCallback, errorCallback);
+function successCallback_1(fs) {
+  fs.root.getFile("/sounds/1.txt", {create: true}, function(entry) {
+    var name = entry.name;
+    entry.name = "2.txt";
+    t.step(function () {
+        assert_equals(entry.name, name);
+    });
+    t.done();
+  }, errorCallback);
+}
+
+xwalk.experimental.native_file_system.requestNativeFileSystem("music", successCallback, function (e) {
+  xwalk.experimental.native_file_system.requestNativeFileSystem("sounds", successCallback_1, errorCallback);
+});
 
 </script>

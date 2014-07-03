@@ -55,6 +55,15 @@ xwalk.experimental.native_file_system.requestNativeFileSystem("music", function(
     assert_true(name && name.length > 0, "The value of NativeFileSystem.name is " + name);
   });
   t.done();
-},errorCallback);
+},function (e) {
+  xwalk.experimental.native_file_system.requestNativeFileSystem("sounds", function(fileSystem) {
+    t.step(function () {
+      var name = fileSystem.name;
+      // The specifics of naming filesystems is unspecified
+      assert_true(name && name.length > 0, "The value of NativeFileSystem.name is " + name);
+    });
+    t.done();
+  },errorCallback);
+});
 
 </script>
