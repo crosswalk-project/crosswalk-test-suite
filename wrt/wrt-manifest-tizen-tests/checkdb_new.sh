@@ -31,5 +31,5 @@ xpksuite_name=wrt-manifest-tizen-tests
 PACKAGENAME="$path/$1"
 Result="Pass"
 
-sqlite3 /home/app/.config/xwalk-service/applications.db "select count(*) from applications;"
+sqlite3 /home/app/.config/xwalk-service/applications.db "select id,manifest from applications limit $1,1;"
 sleep 0.5s

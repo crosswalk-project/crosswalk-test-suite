@@ -7,6 +7,7 @@ Result="Pass"
 
 #3.****uninstall app
 xwalkctl --uninstall $1
+sleep 0.5s
 if [ $? -eq 1 ];then
   echo Uninstall Fail
   exit 1
