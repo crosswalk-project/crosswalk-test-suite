@@ -33,7 +33,7 @@ def do_Selfcom(self_combin_file,out_file):
 
 def gen_Manifest_Json(output_file):
     try:
-        global Manifest_Row 
+        global Manifest_Row
         file = open(output_file)
         #fp_manifest = open(const.path + "/manifest_all.txt",'w+')
         manifest="{\n  "
@@ -170,16 +170,25 @@ def del_Seed(in_file,order_count):
         gen_selfcomb_File(const.selfcomb_file,order_count)
 
         #3*********output -> manifest.json
-        print gen_Manifest_Json(const.output_file)
+        if (Test_Flag=="negative"):
+            print gen_Manifest_Json(const.output_file_ne)
+        else:
+            print gen_Manifest_Json(const.output_file)
+        log_Log(" Generate output.txt file ok"+ "\n") 
         return "Manifest.json output ------------------------->O.K"
     except Exception,e: 
-        print Exception,":",e 
+        print Exception,":",e
+        log_Log(" Generate output.txt file error" + e + "\n") 
         return "Manifest.json output ------------------------->Error"
 
 def gen_selfcomb_File(comb_file,order_count):
     try:
-        os.system("rm ./allpairs/output.txt")
-        open_output_file= open(const.output_file,'a+')
+        if (os.path.isfile("./allpairs/output.txt") & (Test_Flag=="positive")):
+           os.system("rm ./allpairs/output.txt ./allpairs/output_negative.txt")
+        if (Test_Flag=="negative"):
+            open_output_file= open(const.output_file_ne,'a+')
+        else:
+            open_output_file= open(const.output_file,'a+')
         caseline = "" 
         get_items = ""
         get_case = ""
@@ -217,8 +226,10 @@ def gen_selfcomb_File(comb_file,order_count):
                 open_output_file.writelines(get_case.rstrip("\t") + "\n")
                 get_case=""  
             open_output_file.close()
+        log_Log(" Generate selfcombination file ok"+ "\n")    
         return "Generate selfcombination file ------------------------->O.K"
     except:
+        log_Log(" Generate selfcombination file error"+ "\n") 
         return "Generate selfcombination file ------------------------->error"
 
 def make_webapp_folder(sourceDir,targetDir):
@@ -331,8 +342,10 @@ def get_Result():
         fail_rate = input_sFail_count / float(total_case) *100
         block_rate = sBlock_count / float(total_case) *100
         insert_to_Summary("./report/summary.xml",total_case,auto_sPass_count,pass_rate,auto_sFail_count,fail_rate, sBlock_count,block_rate)
+        log_Log(" Generate report file ok" + "\n") 
         print "<------------------------- Generate Report OK------------------------->"        
-    except Exception,e: 
+    except Exception,e:
+        log_Log(" Generate report file ok" + e + "\n")  
         print Exception,"Generate the report error:",e    
     
 def testcase_Result(resultfile):
@@ -406,7 +419,7 @@ def result_manifest_XML(webappFile,auto_Result,input_Result,manifest_cont):
                         input_node = result_node.find("input_result")
                         input_node.text = input_Result
                         testcommand_node = result_node.find("testcommand")
-                        testcommand_node.text = manifest_cont 
+                        testcommand_node.text = manifest_cont.decode("utf-8")
         tree.write(const.path_result + "/" + webappFile)
     except Exception,e: 
         print Exception,"Generate manifest.xml error:",e 
@@ -427,7 +440,7 @@ def testreport_auto_XML(webappName,input_Result,auto_Result,tcs_manifest,tcs_mes
               SubElement(entrynode,"test_script_entry")
               entryentrynode = root.getiterator("test_script_entry")
               entr = entryentrynode[-1]
-              entr.text = tcs_manifest 
+              entr.text = tcs_manifest.decode("utf-8")
               SubElement(desnode,"result_info")
               resultinfonode = root.getiterator("result_info")
               result_info = resultinfonode[-1]
@@ -446,7 +459,7 @@ def testreport_auto_XML(webappName,input_Result,auto_Result,tcs_manifest,tcs_mes
               SubElement(entrynode,"test_script_entry")
               entryentrynode = root.getiterator("test_script_entry")
               entr = entryentrynode[-1]
-              entr.text = tcs_manifest 
+              entr.text = tcs_manifest.decode("utf-8") 
               SubElement(desnode,"result_info")
               resultinfonode = root.getiterator("result_info")
               result_info = resultinfonode[-1]
@@ -490,7 +503,9 @@ def manifest_Packing(pakeNo,pakeType):
                     os.system("zip -rq ../../opt/wrt-manifest-tizen-tests/" + str(pakeNo) +"." + pakeType+" ./")
                     os.chdir(const.path)
         os.system("zip -rq " + const.name + "-"+const.version +"." + pakeType+".zip ./opt")
-    except Exception,e: 
+        log_Log(" Packing webapp " + pakeNo + " ok "+ "\n") 
+    except Exception,e:
+        log_Log(" Packing webapp " + pakeNo + " error " + e +"\n")  
         print Exception,"Packing webapp error:",e   
 
         
@@ -574,8 +589,10 @@ def launcher_WebApp(pakeType,Manifest_Row, tcs_manifest):
         testreport_auto_XML(Manifest_Row,input_result , auto_result ,tcs_manifest,fail_message)
         os.system("sdb -s " + Device_Ip +" shell rm -rf /opt/usr/media/tct/opt/wrt-manifest-tizen-tests")
         os.system("sdb -s " + Device_Ip +" shell rm -rf /opt/usr/media/tct/wrt-manifest-tizen-tests*")
-        print "---------- Webapp manifest" + Manifest_Row + "." + pakeType +" test end------------>\n"                    
+        print "---------- Webapp manifest" + Manifest_Row + "." + pakeType +" test end------------>\n"
+        log_Log(" test webapp " + Manifest_Row + " ok "+ "\n")                     
     except Exception,e: 
+        log_Log(" test webapp " + Manifest_Row + " error " + e + "\n") 
         print Exception,"Launch webapp error:",e 
         sys.exit(1)    
         
@@ -644,16 +661,20 @@ def get_Sdb_Devices():
             if int(content_device) in range(len(getDeviceList)):
                 print "getdevice=",getDeviceList[int(content_device)]
                 retdeviceList = getDeviceList[int(content_device)],len(getDeviceList)
+                log_Log(" get sdb device=" + get_Sdb_Devices + "\n")
                 return retdeviceList
         else:
             getDevice = getDevice[1].split("\t")[0]  
             getDevice = getDevice.strip('\n\r')
             retdeviceList = str(getDevice),1
+            log_Log(" get sdb device=" + retdeviceList[0] + "\n")
             return retdeviceList
         #return getDevice
     except Exception,e: 
-        print Exception,"Can not get sdb device:",e 
+        print Exception,"Can not get sdb device:",e
+        log_Log(" get sdb device error\n") 
         sys.exit(1)
+
         
 def add_style_Report(file_name,style_file):
     try:
@@ -670,14 +691,26 @@ def add_style_Report(file_name,style_file):
     except Exception,e: 
         print Exception,"Add sytle to report error:",e 
         sys.exit(1)
-        
+
+def log_Log(message):
+    try:
+        log_time = datetime.now().strftime('%m-%d-%H:%M:%S')
+        logfile.write(log_time +": "+ message)
+    except Exception,e: 
+        print Exception,"Add log to log.txt error:",e 
+        sys.exit(1)
+     
 def main(argv):
     try:
         global Device_Ip 
         global Pack_Type
         global Test_Flag
+        global logfile
         shutil.copy("./tests.report.xml",const.report_file)
+        logfile = file("./log.txt","w+")
         do_Clear(const.path_tcs)
+        log_Log(" test start\n")
+        log_Log(" init summart file\n")
         insert_to_Summary(const.report_summary_file,"0","0","0","0","0","0","0")
         if (os.path.isdir(const.path_result)):
             os.system("rm -rf " + const.path_result +"/*")
@@ -729,12 +762,15 @@ def main(argv):
     except Exception,e: 
         print Exception,":",e 
         print "clear file failed"
+        log_Log(" test fail\n")
         Usage()
         sys.exit(2)
     finally:
         get_Result()
         add_style_Report(const.report_file,"testresult.xsl")
-        add_style_Report(const.report_summary_file,"summary.xsl")        
+        add_style_Report(const.report_summary_file,"summary.xsl")
+        log_Log(" test end\n")        
+        logfile.close()
         do_Clear(const.path + "/opt")                 
         do_Clear(const.path + "/self")
         do_Clear(const.path_tcs)
