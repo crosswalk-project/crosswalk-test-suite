@@ -301,14 +301,14 @@ exit 1
 
 ## create wgt crx apk xpk pure and zip package ##
 case $type in
-    wgt) create_wgt
-         zip_for_wgt;;
-    apk) create_apk
-         zip_for_apk;;
-    xpk) create_xpk
-         zip_for_xpk;;
-    crx) create_crx
-         zip_for_crx;;
+    wgt) create_pure
+         zip_for_pure;;
+    apk) create_pure
+         zip_for_pure;;
+    xpk) create_pure
+         zip_for_pure;;
+    crx) create_pure
+         zip_for_pure;;
     pure) create_pure
           zip_for_pure;;
 esac

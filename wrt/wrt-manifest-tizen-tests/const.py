@@ -12,9 +12,12 @@ else:
    path_result= path + "/result"
    path_resource = path + "/resource"
    seed_file = path + "/allpairs/input_seed.txt"
-   seed_file_na = path + "/allpairs/input_seed_nagative.txt"
+   seed_file_na = path + "/allpairs/input_seed_negative.txt"
    selfcomb_file = path + "/allpairs/selfcomb.txt"
    output_file = path + "/allpairs/output.txt"
+   report_path = path + "/report"
+   report_file = report_path + "/wrt-manifest-tizen-tests.xml"
+   report_summary_file = report_path + "/summary.xml"
    allpairs_order = 2
    version="6.35.1.2"
    name="wrt-manifest-tizen-tests"
