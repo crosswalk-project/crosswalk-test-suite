@@ -9,7 +9,7 @@ USAGE="Usage: ./inst.sh [-i] [-u]
 #TODO:update PACKAGENAME for each suite,pay attention to use '_'
 PACKAGENAME=tct_contact_tizen_tests
 SUITENAME=`echo $PACKAGENAME |sed 's/_/-/g'`
-RESOURCE_DIR=/opt/usr/media
+RESOURCE_DIR=/home/app/content
 
 function installpkg(){
 extend=".apk"
@@ -19,7 +19,7 @@ ls |grep arm.apk  > /dev/null 2>&1 && extend="_arm.apk"
 adb install $PACKAGENAME$extend
 
 ### copy media files ###
-adb shell cp -f /opt/usr/media/tct/opt/$SUITENAME/mediasrc/*  /home/app/content/
+adb shell cp -f $RESOURCE_DIR/tct/opt/$SUITENAME/mediasrc/*  $RESOURCE_DIR/
 
 #TODO: copy resource
 #eg:adb push xx $RESOURCE_DIR
@@ -35,12 +35,12 @@ webapi-tizen-contact-test_image1.png
 webapi-tizen-contact-test_image2.png"
 
 for mediafile in $MEDIAFILE;do
-	adb shell rm -f /home/app/content/$mediafile &>/dev/null
+	adb shell rm -f $RESOURCE_DIR/$mediafile &>/dev/null
 done
 
 #TODO: remove resource
 #eg:adb shell rm -rf $RESOURCE_DIR/xx
-adb shell rm -rf /opt/usr/media/tct/opt/$SUITENAME &>/dev/null
+adb shell rm -rf $RESOURCE_DIR/tct/opt/$SUITENAME &>/dev/null
 
 }
 

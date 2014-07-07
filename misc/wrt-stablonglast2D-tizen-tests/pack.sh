@@ -36,6 +36,7 @@ folderName_tmp=${suiteName#*-}
 folderName=${folderName_tmp%%-*}
 
 SRC_ROOT=$PWD
+RESOURCE_DIR=/home/app/content
 BUILD_ROOT=/tmp/${name}_pack
 BUILD_DEST=/tmp/${name}
 

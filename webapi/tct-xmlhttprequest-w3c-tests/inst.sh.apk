@@ -9,7 +9,7 @@ USAGE="Usage: ./inst.sh [-i] [-u]
 #TODO:update PACKAGENAME for each suite,pay attention to use '_'
 PACKAGENAME=tct_xmlhttprequest_w3c_tests
 SUITENAME=`echo $PACKAGENAME |sed 's/_/-/g'`
-RESOURCE_DIR=/opt/usr/media
+RESOURCE_DIR=/home/app/content
 
 function installpkg(){
 extend=".apk"
@@ -19,7 +19,7 @@ ls |grep arm.apk  > /dev/null 2>&1 && extend="_arm.apk"
 adb install $PACKAGENAME$extend
 
 ###### config tinyweb server ######
-adb shell cp -r /opt/usr/media/tct/opt/$SUITENAME/xmlhttprequest/w3c/resources/cgi/*.cgi /opt/usr/media/tct/opt/$SUITENAME/xmlhttprequest/w3c/resources
+adb shell cp -r $RESOURCE_DIR/tct/opt/$SUITENAME/xmlhttprequest/w3c/resources/cgi/*.cgi $RESOURCE_DIR/tct/opt/$SUITENAME/xmlhttprequest/w3c/resources
 
 #TODO: copy resource
 #eg:adb push xx $RESOURCE_DIR
@@ -30,7 +30,7 @@ adb uninstall org.xwalk.$PACKAGENAME
 
 #TODO: remove resource
 #eg:adb shell rm -rf $RESOURCE_DIR/xx
-adb shell rm -rf /opt/usr/media/tct/opt/$SUITENAME &>/dev/null
+adb shell rm -rf $RESOURCE_DIR/tct/opt/$SUITENAME &>/dev/null
 }
 
 case "$1" in

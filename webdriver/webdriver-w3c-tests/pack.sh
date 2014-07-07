@@ -9,6 +9,7 @@ if [[ $1 == "-h" || $1 == "--help" ]]; then
 fi
 
 SRC_ROOT=$PWD
+RESOURCE_DIR=/home/app/content
 BUILD_ROOT=/tmp/webdriver_pack
 BUILD_DEST=/tmp/webdriver
 

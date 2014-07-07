@@ -8,26 +8,26 @@ USAGE="Usage: ./inst.sh [-i] [-u]
 
 PACKAGENAME=wrt-packagemgtauto-tizen-tests
 #XPKNAME=${PACKAGENAME}.zip
-RESOURCE_DIR=/opt/usr/media
-#chmod 777 -R /opt/usr/media/tct/opt/$PACKAGENAME.zip
+RESOURCE_DIR=/home/app/content
+#chmod 777 -R $RESOURCE_DIR/tct/opt/$PACKAGENAME.zip
 
 function installpkg()
 {
     #environment clear
     #echo "environment clear >>>>>>>>>>>>>>>>>>>>>>>>>>>>>."
-    #[ -d /opt/usr/media/tct ] ||  mkdir -p /opt/usr/media/tct
-    #[ -e /opt/usr/media/tct/$PACKAGENAME.zip ] && rm /opt/usr/media/tct/$PACKAGENAME.zip
-    #[ -e /opt/usr/media/tct/opt/$PACKAGENAME ] && rm -rf /opt/usr/media/tct/opt/$PACKAGENAME
-    #cp -arf $PACKAGENAME.zip /opt/usr/media/tct/
-    #cd /opt/usr/media/tct/
+    #[ -d $RESOURCE_DIR/tct ] ||  mkdir -p $RESOURCE_DIR/tct
+    #[ -e $RESOURCE_DIR/tct/$PACKAGENAME.zip ] && rm $RESOURCE_DIR/tct/$PACKAGENAME.zip
+    #[ -e $RESOURCE_DIR/tct/opt/$PACKAGENAME ] && rm -rf $RESOURCE_DIR/tct/opt/$PACKAGENAME
+    #cp -arf $PACKAGENAME.zip $RESOURCE_DIR/tct/
+    #cd $RESOURCE_DIR/tct/
     #unzip $PACKAGENAME.zip
-    #echo "Package unzip successfully and push to host /opt/usr/media/tct/"
+    #echo "Package unzip successfully and push to host $RESOURCE_DIR/tct/"
 }
 
 function uninstallpkg()
 {
-    [ -d /opt/usr/media/tct/opt/$PACKAGENAME ] && rm -rf /opt/usr/media/tct/opt/$PACKAGENAME
-    #[ -e /opt/usr/media/tct/$PACKAGENAME.zip ] && rm /opt/usr/media/tct/$PACKAGENAME.zip
+    [ -d $RESOURCE_DIR/tct/opt/$PACKAGENAME ] && rm -rf $RESOURCE_DIR/tct/opt/$PACKAGENAME
+    #[ -e $RESOURCE_DIR/tct/$PACKAGENAME.zip ] && rm $RESOURCE_DIR/tct/$PACKAGENAME.zip
     echo "Clean folder successfully..."
 }
 

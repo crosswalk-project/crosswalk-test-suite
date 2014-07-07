@@ -10,7 +10,7 @@ USAGE="Usage: ./inst.sh [-i] [-u]
 PACKAGENAME=webapi_input_html5_tests
 APKNAME=${PACKAGENAME}.apk
 SUITENAME=`echo $PACKAGENAME |sed 's/_/-/g'`
-RESOURCE_DIR=/opt/usr/media
+RESOURCE_DIR=/home/app/content
 
 function installpkg(){
     adb install $APKNAME
@@ -24,7 +24,7 @@ function uninstallpkg(){
 
     #TODO: remove resource
     #eg:adb shell rm -rf $RESOURCE_DIR/xx
-    adb shell rm -rf /opt/usr/media/tct/opt/$SUITENAME &>/dev/null
+    adb shell rm -rf $RESOURCE_DIR/tct/opt/$SUITENAME &>/dev/null
 }
 
 case "$1" in

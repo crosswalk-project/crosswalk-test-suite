@@ -29,8 +29,9 @@ Authors:
 
 */
 
+var RESOURCE_DIR = "/home/app/content";
 $.ajax({
-  url:"/opt/usr/media/tct/preconfigure.json",
+  url:RESOURCE_DIR + "/tct/preconfigure.json",
   dataType:"json",
   data:{},
   async:false,

@@ -13,6 +13,7 @@ Manifest_Row = 0
 Device_Ip = ""
 Pack_Type = "xpk"
 Test_Flag = "positive"
+RESOURCE_DIR = "/home/app/content"
 test_start_time = datetime.now().strftime('%m-%d-%H:%M:%S')
 
 def do_Selfcom(self_combin_file,out_file):
@@ -515,30 +516,30 @@ def launcher_WebApp(pakeType,Manifest_Row, tcs_manifest):
         auto_result = "FAIL"
         fail_message = ""
         dt_format = dt_now.strftime('%m_%d_%H_%M_%S')
-        cmd_pushxpk = "sdb -s " + Device_Ip +" push " + const.name + "-" + const.version +"." + pakeType + ".zip"+" /opt/usr/media/tct/ >/dev/null"
-        cmd_unzipxpk = "sdb -s " + Device_Ip +" shell unzip -od /opt/usr/media/tct/ /opt/usr/media/tct/" + const.name + "-" + const.version + "." + pakeType + ".zip >/dev/null"
-        cmd_installapp="sdb -s " + Device_Ip +" shell \"su - app -c 'export DBUS_SESSION_BUS_ADDRESS=unix:path=/run/user/5000/dbus/user_bus_socket;/opt/usr/media/tct/opt/wrt-manifest-tizen-tests/appinstall.sh /opt/usr/media/tct/opt/wrt-manifest-tizen-tests/manifest" + Manifest_Row +  "." + pakeType +"'\""
+        cmd_pushxpk = "sdb -s " + Device_Ip +" push " + const.name + "-" + const.version +"." + pakeType + ".zip " + RESOURCE_DIR + "/tct/ >/dev/null"
+        cmd_unzipxpk = "sdb -s " + Device_Ip +" shell unzip -od " + RESOURCE_DIR + "/tct/ " + RESOURCE_DIR + "/tct/" + const.name + "-" + const.version + "." + pakeType + ".zip >/dev/null"
+        cmd_installapp="sdb -s " + Device_Ip +" shell \"su - app -c 'export DBUS_SESSION_BUS_ADDRESS=unix:path=/run/user/5000/dbus/user_bus_socket;" + RESOURCE_DIR + "/tct/opt/wrt-manifest-tizen-tests/appinstall.sh " + RESOURCE_DIR + "/tct/opt/wrt-manifest-tizen-tests/manifest" + Manifest_Row +  "." + pakeType +"'\""
         os.system(cmd_pushxpk)
         os.system(cmd_unzipxpk)
-        cmd_chmod = "sdb -s " + Device_Ip +" shell chmod 777 /opt/usr/media/tct/opt/wrt-manifest-tizen-tests/appinstall.sh"
+        cmd_chmod = "sdb -s " + Device_Ip +" shell chmod 777 " + RESOURCE_DIR + "/tct/opt/wrt-manifest-tizen-tests/appinstall.sh"
         os.system(cmd_chmod)
-        cmd_chmod = "sdb -s " + Device_Ip +" shell chmod 777 /opt/usr/media/tct/opt/wrt-manifest-tizen-tests/applaunch.sh"
+        cmd_chmod = "sdb -s " + Device_Ip +" shell chmod 777 " + RESOURCE_DIR + "/tct/opt/wrt-manifest-tizen-tests/applaunch.sh"
         os.system(cmd_chmod)        
-        cmd_chmod = "sdb -s " + Device_Ip +" shell chmod 777 /opt/usr/media/tct/opt/wrt-manifest-tizen-tests/appuninstall.sh"
+        cmd_chmod = "sdb -s " + Device_Ip +" shell chmod 777 " + RESOURCE_DIR + "/tct/opt/wrt-manifest-tizen-tests/appuninstall.sh"
         os.system(cmd_chmod)
-        cmd_chmod = "sdb -s " + Device_Ip +" shell chmod 777 /opt/usr/media/tct/opt/wrt-manifest-tizen-tests/checkdb.sh"
+        cmd_chmod = "sdb -s " + Device_Ip +" shell chmod 777 " + RESOURCE_DIR + "/tct/opt/wrt-manifest-tizen-tests/checkdb.sh"
         os.system(cmd_chmod)
-        cmd_chmod = "sdb -s " + Device_Ip +" shell chmod 777 /opt/usr/media/tct/opt/wrt-manifest-tizen-tests/checkdb_new.sh"
+        cmd_chmod = "sdb -s " + Device_Ip +" shell chmod 777 " + RESOURCE_DIR + "/tct/opt/wrt-manifest-tizen-tests/checkdb_new.sh"
         os.system(cmd_chmod)
         shutil.copy("./tests_sample.xml","./result/manifest" + Manifest_Row +".xml")
         result_manifest_XML("manifest" + Manifest_Row + ".xml",auto_result,"FAIL",tcs_manifest)
         #install app
-        cmd_checkdb="sdb -s " + Device_Ip +" shell \"su - app -c 'export DBUS_SESSION_BUS_ADDRESS=unix:path=/run/user/5000/dbus/user_bus_socket;/opt/usr/media/tct/opt/wrt-manifest-tizen-tests/checkdb.sh '\""
+        cmd_checkdb="sdb -s " + Device_Ip +" shell \"su - app -c 'export DBUS_SESSION_BUS_ADDRESS=unix:path=/run/user/5000/dbus/user_bus_socket;" + RESOURCE_DIR + "/tct/opt/wrt-manifest-tizen-tests/checkdb.sh '\""
         get_dbcount_before = get_runback(cmd_checkdb,"install","")[0].strip("\n\r")
         get_cmdback = get_runback(cmd_installapp,"install","")
         get_dbcount_after = get_runback(cmd_checkdb,"install","")[0].strip("\n\r")
         add_webapp = int(get_dbcount_after) - int(get_dbcount_before)
-        cmd_checkdb_new = "sdb -s " + Device_Ip +" shell \"su - app -c 'export DBUS_SESSION_BUS_ADDRESS=unix:path=/run/user/5000/dbus/user_bus_socket;/opt/usr/media/tct/opt/wrt-manifest-tizen-tests/checkdb_new.sh " + str(int(get_dbcount_after)-1) + "'\""
+        cmd_checkdb_new = "sdb -s " + Device_Ip +" shell \"su - app -c 'export DBUS_SESSION_BUS_ADDRESS=unix:path=/run/user/5000/dbus/user_bus_socket;" + RESOURCE_DIR + "/tct/opt/wrt-manifest-tizen-tests/checkdb_new.sh " + str(int(get_dbcount_after)-1) + "'\""
         get_fromdb = get_from_DB(cmd_checkdb_new,tcs_manifest)
         if ((add_webapp==1) & (get_fromdb[0]=="GET") & (Test_Flag=="positive")): #install ok and test =positive
               print "Install---------> OK "
@@ -546,14 +547,14 @@ def launcher_WebApp(pakeType,Manifest_Row, tcs_manifest):
               auto_result = "PASS"
               #launcher app
               Pkgids = get_fromdb[1]
-              cmd_launchapp="sdb -s " + Device_Ip +" shell \"su - app -c 'export DBUS_SESSION_BUS_ADDRESS=unix:path=/run/user/5000/dbus/user_bus_socket;/opt/usr/media/tct/opt/wrt-manifest-tizen-tests/applaunch.sh " + Pkgids +"'\""
+              cmd_launchapp="sdb -s " + Device_Ip +" shell \"su - app -c 'export DBUS_SESSION_BUS_ADDRESS=unix:path=/run/user/5000/dbus/user_bus_socket;" + RESOURCE_DIR + "/tct/opt/wrt-manifest-tizen-tests/applaunch.sh " + Pkgids +"'\""
               get_cmdback = get_runback(cmd_launchapp,"launch",Pkgids)
               if ((get_cmdback[0].strip("\r\n"))=="Launch ok"):
                   print "Launch---------> OK"
                   fail_message = "launch webapp ok"
                   #uninstall app
-                  cmd_uninstallapp="sdb -s " + Device_Ip +" shell \"su - app -c 'export DBUS_SESSION_BUS_ADDRESS=unix:path=/run/user/5000/dbus/user_bus_socket;/opt/usr/media/tct/opt/wrt-manifest-tizen-tests/appuninstall.sh " + Pkgids +"'\""
-                  cmd_checkdb="sdb -s " + Device_Ip +" shell \"su - app -c 'export DBUS_SESSION_BUS_ADDRESS=unix:path=/run/user/5000/dbus/user_bus_socket;/opt/usr/media/tct/opt/wrt-manifest-tizen-tests/checkdb.sh " + Pkgids +"'\""
+                  cmd_uninstallapp="sdb -s " + Device_Ip +" shell \"su - app -c 'export DBUS_SESSION_BUS_ADDRESS=unix:path=/run/user/5000/dbus/user_bus_socket;" + RESOURCE_DIR + "/tct/opt/wrt-manifest-tizen-tests/appuninstall.sh " + Pkgids +"'\""
+                  cmd_checkdb="sdb -s " + Device_Ip +" shell \"su - app -c 'export DBUS_SESSION_BUS_ADDRESS=unix:path=/run/user/5000/dbus/user_bus_socket;" + RESOURCE_DIR + "/tct/opt/wrt-manifest-tizen-tests/checkdb.sh " + Pkgids +"'\""
                   get_cmdback = get_runback(cmd_uninstallapp,"uninstall","")
                   get_dbcount_uninstall = get_runback(cmd_checkdb,"install","")[0].strip("\n\r")
                   uninstall_webapp = int(get_dbcount_before) - int(get_dbcount_uninstall)
@@ -587,8 +588,8 @@ def launcher_WebApp(pakeType,Manifest_Row, tcs_manifest):
         input_result ="PASS"# get_Input_Result()
         result_manifest_XML("manifest" + Manifest_Row + ".xml",auto_result , auto_result , tcs_manifest)
         testreport_auto_XML(Manifest_Row,input_result , auto_result ,tcs_manifest,fail_message)
-        os.system("sdb -s " + Device_Ip +" shell rm -rf /opt/usr/media/tct/opt/wrt-manifest-tizen-tests")
-        os.system("sdb -s " + Device_Ip +" shell rm -rf /opt/usr/media/tct/wrt-manifest-tizen-tests*")
+        os.system("sdb -s " + Device_Ip +" shell rm -rf " + RESOURCE_DIR + "/tct/opt/wrt-manifest-tizen-tests")
+        os.system("sdb -s " + Device_Ip +" shell rm -rf " + RESOURCE_DIR + "/tct/wrt-manifest-tizen-tests*")
         print "---------- Webapp manifest" + Manifest_Row + "." + pakeType +" test end------------>\n"
         log_Log(" test webapp " + Manifest_Row + " ok "+ "\n")                     
     except Exception,e: 

@@ -10,7 +10,7 @@ USAGE="Usage: ./inst.sh [-i] [-u]
 PACKAGENAME=tct_package_tizen_tests
 SUBPACKAGENAME=TCTPackageInfoTest
 SUITENAME=`echo $PACKAGENAME |sed 's/_/-/g'`
-RESOURCE_DIR=/opt/usr/media
+RESOURCE_DIR=/home/app/content
 
 function installpkg(){
 extend=".apk"
@@ -24,8 +24,8 @@ adb install $SUBPACKAGENAME$extend
 #eg:adb push xx $RESOURCE_DIR
 
 ### copy media files ###
-adb shell mkdir -p /home/app/content/Others/
-adb shell cp -f /opt/usr/media/tct/opt/$SUITENAME/mediasrc/*  /home/app/content/Others/
+adb shell mkdir -p $RESOURCE_DIR/Others/
+adb shell cp -f $RESOURCE_DIR/tct/opt/$SUITENAME/mediasrc/*  $RESOURCE_DIR/Others/
 }
 
 function uninstallpkg(){
@@ -36,12 +36,12 @@ adb uninstall org.xwalk.$SUBPACKAGENAME
 MEDIAFILE="TCTPackageManagerTest1.1.1.wgt
 TCTPackageManagerTest2.2.2.wgt"
 for mediafile in $MEDIAFILE;do
-	adb shell rm -f /home/app/content/Others/$mediafile
+	adb shell rm -f $RESOURCE_DIR/Others/$mediafile
 done
 
 #TODO: remove resource
 #eg:adb shell rm -rf $RESOURCE_DIR/xx
-adb shell rm -rf /opt/usr/media/tct/opt/$SUITENAME &>/dev/null
+adb shell rm -rf $RESOURCE_DIR/tct/opt/$SUITENAME &>/dev/null
 }
 
 case "$1" in

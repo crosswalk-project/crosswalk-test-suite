@@ -1,5 +1,6 @@
 #!/bin/bash
 wgt_installer="pkgcmd"
+RESOURCE_DIR=/home/app/content
 NAME=$(basename $(cd $(dirname $0);pwd))
 
 #parse params
@@ -12,14 +13,14 @@ function installpkg(){
 ### install wgt ###
 type $wgt_installer > /dev/null 2>&1
 if [ $? -eq 0 ]; then
-    [ -e /opt/usr/media/tct/opt/$NAME/$NAME.wgt ] && $wgt_installer -i -t wgt -q -p /opt/usr/media/tct/opt/$NAME/$NAME.wgt
+    [ -e $RESOURCE_DIR/tct/opt/$NAME/$NAME.wgt ] && $wgt_installer -i -t wgt -q -p $RESOURCE_DIR/tct/opt/$NAME/$NAME.wgt
     if [ $? -eq 0 ]; then
-        echo "Install /opt/usr/media/tct/opt/$NAME/$NAME.wgt to /opt/usr/apps/`wrt-launcher -l 2> /dev/null | grep $NAME | tail -n 1 | awk '{ print $(NF-1) }'` done"
+        echo "Install $RESOURCE_DIR/tct/opt/$NAME/$NAME.wgt to /opt/usr/apps/`wrt-launcher -l 2> /dev/null | grep $NAME | tail -n 1 | awk '{ print $(NF-1) }'` done"
         echo "$(wrt-launcher -l | grep $NAME | awk '{ print $(NF-1) }') sdbd rw" | smackload
     else
         echo "Install /opt/$NAME/$NAME.wgt fail ..."
     fi
-    [ -e /opt/usr/media/tct/opt/$NAME/sharedDirTestApp.wgt ] && $wgt_installer -i -t wgt -q -p /opt/usr/media/tct/opt/$NAME/sharedDirTestApp.wgt
+    [ -e $RESOURCE_DIR/tct/opt/$NAME/sharedDirTestApp.wgt ] && $wgt_installer -i -t wgt -q -p $RESOURCE_DIR/tct/opt/$NAME/sharedDirTestApp.wgt
     sync
 fi
 }
@@ -72,10 +73,10 @@ if [ $? -eq 0 ]; then
 fi
 
 ### remove source file ###
-if [ -d /opt/usr/media/tct/opt/$NAME ];then
-    rm -rf /opt/usr/media/tct/opt/$NAME
+if [ -d $RESOURCE_DIR/tct/opt/$NAME ];then
+    rm -rf $RESOURCE_DIR/tct/opt/$NAME
 else
-    echo "Remove source file fail,please check if the source file exist: /opt/usr/media/tct/opt/$NAME ..."
+    echo "Remove source file fail,please check if the source file exist: $RESOURCE_DIR/tct/opt/$NAME ..."
 fi
 }
 

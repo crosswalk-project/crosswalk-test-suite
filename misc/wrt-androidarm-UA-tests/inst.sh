@@ -2,6 +2,7 @@
 
 local_path=$(cd "$(dirname $0)";pwd)
 NAME=$(basename $local_path)
+RESOURCE_DIR=/home/app/content
 
 #parse params
 USAGE="Usage: ./inst.sh [-u] [-e]
@@ -13,19 +14,19 @@ function unzippkg()
 {
     #environment clear
     echo "environment clear >>>>>>>>>>>>>>>>>>>>>>>>>>>>>."
-    [ -d /opt/usr/media ] ||  mkdir -p /opt/usr/media
-    [ -e /opt/usr/media/$NAME.zip ] && rm -rf /opt/usr/media/$NAME.zip
-    [ -e /opt/usr/media/opt/$NAME ] && rm -rf /opt/usr/media/opt/$NAME
-    cp -arf $local_path/$NAME.zip /opt/usr/media/
-    cd /opt/usr/media/
+    [ -d /home/app/content ] ||  mkdir -p /home/app/content
+    [ -e $RESOURCE_DIR/$NAME.zip ] && rm -rf $RESOURCE_DIR/$NAME.zip
+    [ -e $RESOURCE_DIR/opt/$NAME ] && rm -rf $RESOURCE_DIR/opt/$NAME
+    cp -arf $local_path/$NAME.zip $RESOURCE_DIR/
+    cd $RESOURCE_DIR/
     unzip $NAME.zip
-    echo "Package unzip successfully and push to host /opt/usr/media/"
+    echo "Package unzip successfully and push to host $RESOURCE_DIR/"
 }
 
 function cleansource()
 {
-    [ -e /opt/usr/media/opt/$NAME ] && rm -rf /opt/usr/media/opt/$NAME
-    [ -e /opt/usr/media/$NAME.zip ] && rm -rf /opt/usr/media/$NAME.zip
+    [ -e $RESOURCE_DIR/opt/$NAME ] && rm -rf $RESOURCE_DIR/opt/$NAME
+    [ -e $RESOURCE_DIR/$NAME.zip ] && rm -rf $RESOURCE_DIR/$NAME.zip
     echo "Clean folder successfully..."
 }
 

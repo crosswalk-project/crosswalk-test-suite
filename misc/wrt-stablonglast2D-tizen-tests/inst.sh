@@ -2,6 +2,7 @@
 
 local_path=$(cd "$(dirname $0)";pwd)
 NAME=$(basename $local_path)
+RESOURCE_DIR=/home/app/content
 
 folderName_tmp=${NAME#*-}
 folderName=${folderName_tmp%%-*}
@@ -20,7 +21,7 @@ function installpkg()
     xwalkctl --uninstall $pkgid > /dev/null 2>&1
 
     echo "Install webapp ..."
-    [ -e /opt/usr/media/tct/opt/$NAME/$folderName/*.xpk ] || echo Not found xpk to install && xwalkctl --install /opt/usr/media/tct/opt/$NAME/$folderName/*.xpk 1> /tmp/installer.log 2>&1
+    [ -e $RESOURCE_DIR/tct/opt/$NAME/$folderName/*.xpk ] || echo Not found xpk to install && xwalkctl --install $RESOURCE_DIR/tct/opt/$NAME/$folderName/*.xpk 1> /tmp/installer.log 2>&1
     RET=`grep "Application installed" /tmp/installer.log`
     if [ -z "$RET"  ]
     then
@@ -37,10 +38,10 @@ function installpkg()
 
 function uninstallpkg(){
 #clear resouce
-if [ -d /opt/usr/media/tct/opt/$NAME ];then
-    rm -rf /opt/usr/media/tct/opt/$NAME
+if [ -d $RESOURCE_DIR/tct/opt/$NAME ];then
+    rm -rf $RESOURCE_DIR/tct/opt/$NAME
 else
-    echo "Remove source file fail,please check if the source file exist: /opt/usr/media/tct/opt/$NAME ..."
+    echo "Remove source file fail,please check if the source file exist: $RESOURCE_DIR/tct/opt/$NAME ..."
 fi
 }
 

@@ -30,11 +30,11 @@ Authors:
         Tomasz Paciorek<t.paciorek@samsung.com>
 
 */
-
-var TEST_IMAGE_1 = "file:///home/app/content/webapi-tizen-contact-test_image1.png";
-var TEST_IMAGE_2 = "file:///home/app/content/webapi-tizen-contact-test_image2.png";
-var TEST_RING_1 = "file:///home/app/content/webapi-tizen-contact-test_ring1.mp3";
-var TEST_RING_2 = "file:///home/app/content/webapi-tizen-contact-test_ring2.mp3";
+var RESOURCE_DIR = "/home/app/content";
+var TEST_IMAGE_1 = "file://" + RESOURCE_DIR + "/webapi-tizen-contact-test_image1.png";
+var TEST_IMAGE_2 = "file://" + RESOURCE_DIR + "/webapi-tizen-contact-test_image2.png";
+var TEST_RING_1 = "file://" + RESOURCE_DIR + "/webapi-tizen-contact-test_ring1.mp3";
+var TEST_RING_2 = "file://" + RESOURCE_DIR + "/webapi-tizen-contact-test_ring2.mp3";
 
 var TYPE_MISMATCH_ERR = "TypeMismatchError";
 var INVALID_VALUES_ERR = "InvalidValuesError";

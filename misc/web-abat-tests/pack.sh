@@ -43,6 +43,7 @@ if [[ -z $name || -z $version || -z $appname ]];then
 fi
 
 SRC_ROOT=$(cd $(dirname $0);pwd)
+RESOURCE_DIR=/home/app/content
 BUILD_ROOT=/tmp/${name}_pack
 BUILD_DEST=/tmp/$name
 docroot_dir=/tmp/docroot_pack

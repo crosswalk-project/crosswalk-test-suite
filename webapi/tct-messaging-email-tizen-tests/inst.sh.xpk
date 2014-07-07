@@ -8,7 +8,7 @@ USAGE="Usage: ./inst.sh [-i] [-u]
 
 PACKAGENAME=tct-messaging-email-tizen-tests
 XPKNAME=${PACKAGENAME}.xpk
-RESOURCE_DIR=/opt/usr/media
+RESOURCE_DIR=/home/app/content
 
 function installpkg(){
     xwalkctl --install $(dirname $0)/$XPKNAME
@@ -17,11 +17,11 @@ function installpkg(){
     #eg:cp xx $RESOURCE_DIR
 
     ### copy media files ###
-    if [ -d /opt/usr/media/tct/opt/$PACKAGENAME/mediasrc ]; then
-        cp -f /opt/usr/media/tct/opt/$PACKAGENAME/mediasrc/webapi-tizen-messaging-test_image.jpg  /home/app/content/Images/
-        cp -f /opt/usr/media/tct/opt/$PACKAGENAME/mediasrc/webapi-tizen-messaging-test_noise.mp3  /home/app/content/Sounds/
+    if [ -d $RESOURCE_DIR/tct/opt/$PACKAGENAME/mediasrc ]; then
+        cp -f $RESOURCE_DIR/tct/opt/$PACKAGENAME/mediasrc/webapi-tizen-messaging-test_image.jpg  $RESOURCE_DIR/Images/
+        cp -f $RESOURCE_DIR/tct/opt/$PACKAGENAME/mediasrc/webapi-tizen-messaging-test_noise.mp3  $RESOURCE_DIR/Sounds/
     else
-        echo "Cp media files fail, please check if exists file: /opt/usr/media/tct/opt/$PACKAGENAME/mediasrc/ ..."
+        echo "Cp media files fail, please check if exists file: $RESOURCE_DIR/tct/opt/$PACKAGENAME/mediasrc/ ..."
     fi
 }
 
@@ -37,14 +37,14 @@ function uninstallpkg(){
     #eg:rm xx
 
     ### remove media files ###
-    [ -f /home/app/content/Images/webapi-tizen-messaging-test_image.jpg ] && rm -f /home/app/content/Images/webapi-tizen-messaging-test_image.jpg
-    [ -f /home/app/content/Sounds/webapi-tizen-messaging-test_noise.mp3 ] && rm -f /home/app/content/Sounds/webapi-tizen-messaging-test_noise.mp3
+    [ -f $RESOURCE_DIR/Images/webapi-tizen-messaging-test_image.jpg ] && rm -f $RESOURCE_DIR/Images/webapi-tizen-messaging-test_image.jpg
+    [ -f $RESOURCE_DIR/Sounds/webapi-tizen-messaging-test_noise.mp3 ] && rm -f $RESOURCE_DIR/Sounds/webapi-tizen-messaging-test_noise.mp3
 
     ### remove source file ###
-    if [ -d /opt/usr/media/tct/opt/$PACKAGENAME ];then
-        rm -rf /opt/usr/media/tct/opt/$PACKAGENAME
+    if [ -d $RESOURCE_DIR/tct/opt/$PACKAGENAME ];then
+        rm -rf $RESOURCE_DIR/tct/opt/$PACKAGENAME
     else
-        echo "Remove source file fail,please check if the source file exist: /opt/usr/media/tct/opt/$PACKAGENAME ..."
+        echo "Remove source file fail,please check if the source file exist: $RESOURCE_DIR/tct/opt/$PACKAGENAME ..."
     fi
 }
 

@@ -2,6 +2,7 @@
 
 local_path=$(cd "$(dirname $0)";pwd)
 NAME=$(basename $local_path)
+RESOURCE_DIR=/home/app/content
 
 #parse params
 USAGE="Usage: ./inst.sh [-u] [-e]
@@ -18,12 +19,12 @@ function unzippkg()
     sdb shell "rpm -qa | grep cross  |xargs -I%  rpm -e %" &> /dev/null
     sdb shell "rpm -qa | grep extensions-crosswalk  |xargs -I%  rpm -e %" &> /dev/null
     unzip and push to device
-    sdb shell "[ -d /opt/usr/media/tct ] ||  mkdir -p /opt/usr/media/tct"
-    sdb shell "[ -d /opt/usr/media/tct/opt/$NAME ] && rm -rf /opt/usr/media/tct/opt/$NAME"
-    sdb shell "[ -e /opt/usr/media/tct/$NAME.zip ] && rm -rf /opt/usr/media/tct/$NAME.zip"
-    sdb push $local_path/$NAME.zip /opt/usr/media/tct/
-    sdb shell "cd /opt/usr/media/tct/;unzip $NAME.zip"
-    echo "Package unzip successfully and push to device /opt/usr/media/tct/"
+    sdb shell "[ -d $RESOURCE_DIR/tct ] ||  mkdir -p $RESOURCE_DIR/tct"
+    sdb shell "[ -d $RESOURCE_DIR/tct/opt/$NAME ] && rm -rf $RESOURCE_DIR/tct/opt/$NAME"
+    sdb shell "[ -e $RESOURCE_DIR/tct/$NAME.zip ] && rm -rf $RESOURCE_DIR/tct/$NAME.zip"
+    sdb push $local_path/$NAME.zip $RESOURCE_DIR/tct/
+    sdb shell "cd $RESOURCE_DIR/tct/;unzip $NAME.zip"
+    echo "Package unzip successfully and push to device $RESOURCE_DIR/tct/"
 }
 
 function cleansource()
@@ -32,8 +33,8 @@ function cleansource()
     sdb root on
     sdb shell "rpm -qa | grep cross  |xargs -I%  rpm -e %" &> /dev/null
     sdb shell "rpm -qa | grep extensions-crosswalk  |xargs -I%  rpm -e %" &> /dev/null
-    sdb shell "[ -d /opt/usr/media/tct/opt/$NAME ] && rm -rf /opt/usr/media/tct/opt/$NAME"
-    sdb shell "[ -e /opt/usr/media/tct/$NAME.zip ] && rm -rf /opt/usr/media/tct/$NAME.zip"
+    sdb shell "[ -d $RESOURCE_DIR/tct/opt/$NAME ] && rm -rf $RESOURCE_DIR/tct/opt/$NAME"
+    sdb shell "[ -e $RESOURCE_DIR/tct/$NAME.zip ] && rm -rf $RESOURCE_DIR/tct/$NAME.zip"
     echo "Clean folder successfully..."
 }
 

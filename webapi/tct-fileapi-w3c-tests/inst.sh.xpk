@@ -8,7 +8,7 @@ USAGE="Usage: ./inst.sh [-i] [-u]
 
 PACKAGENAME=tct-fileapi-w3c-tests
 XPKNAME=${PACKAGENAME}.xpk
-RESOURCE_DIR=/opt/usr/media
+RESOURCE_DIR=/home/app/content
 
 function installpkg(){
     xwalkctl --install $(dirname $0)/$XPKNAME
@@ -16,11 +16,11 @@ function installpkg(){
     #TODO: copy resource
     #eg:cp xx $RESOURCE_DIR
 
-    ###### cp sample.html to /home/app/content/ ######
-    if [ -f /opt/usr/media/tct/opt/$PACKAGENAME/fileapi/support/sample.html ]; then
-        cp -f /opt/usr/media/tct/opt/$PACKAGENAME/fileapi/support/sample.html /home/app/content/
+    ###### cp sample.html to $RESOURCE_DIR/ ######
+    if [ -f $RESOURCE_DIR/tct/opt/$PACKAGENAME/fileapi/support/sample.html ]; then
+        cp -f $RESOURCE_DIR/tct/opt/$PACKAGENAME/fileapi/support/sample.html $RESOURCE_DIR/
     else
-        echo "cp file fail, please check if exists file: /opt/usr/media/tct/opt/$PACKAGENAME/fileapi/support/sample.html..."
+        echo "cp file fail, please check if exists file: $RESOURCE_DIR/tct/opt/$PACKAGENAME/fileapi/support/sample.html..."
     fi
 }
 
@@ -36,15 +36,15 @@ function uninstallpkg(){
     #eg:rm xx
 
     ### remove source file ###
-    if [ -d /opt/usr/media/tct/opt/$PACKAGENAME ];then
-        rm -rf /opt/usr/media/tct/opt/$PACKAGENAME
+    if [ -d $RESOURCE_DIR/tct/opt/$PACKAGENAME ];then
+        rm -rf $RESOURCE_DIR/tct/opt/$PACKAGENAME
     else
-        echo "Remove source file fail,please check if the source file exist: /opt/usr/media/tct/opt/$PACKAGENAME ..."
+        echo "Remove source file fail,please check if the source file exist: $RESOURCE_DIR/tct/opt/$PACKAGENAME ..."
     fi
 
-    ###### remove sample.html from /home/app/content/ ######
-    if [ -f /home/app/content/sample.html ]; then
-        rm -f /home/app/content/sample.html
+    ###### remove sample.html from $RESOURCE_DIR/ ######
+    if [ -f $RESOURCE_DIR/sample.html ]; then
+        rm -f $RESOURCE_DIR/sample.html
     fi
 }
 
