@@ -19,8 +19,10 @@ ls |grep arm.apk  > /dev/null 2>&1 && extend="_arm.apk"
 adb install $PACKAGENAME$extend
 
 ### copy media files ###
-adb shell cp -f /opt/usr/media/tct/opt/$SUITENAME/mediasrc/webapi-tizen-messaging-test_image.jpg  /opt/usr/media/Images/
-adb shell cp -f /opt/usr/media/tct/opt/$SUITENAME/mediasrc/webapi-tizen-messaging-test_noise.mp3  /opt/usr/media/Sounds/
+adb shell mkdir -p /home/app/content/Images/
+adb shell mkdir -p /home/app/content/Sounds/
+adb shell cp -f /opt/usr/media/tct/opt/$SUITENAME/mediasrc/webapi-tizen-messaging-test_image.jpg  /home/app/content/Images/
+adb shell cp -f /opt/usr/media/tct/opt/$SUITENAME/mediasrc/webapi-tizen-messaging-test_noise.mp3  /home/app/content/Sounds/
 
 #TODO: copy resource
 #eg:adb push xx $RESOURCE_DIR
@@ -31,8 +33,8 @@ adb uninstall org.xwalk.$PACKAGENAME
 
 
 ### remove media files ###
-adb shell  rm -f /opt/usr/media/Images/webapi-tizen-messaging-test_image.jpg &>/dev/null
-adb shell  rm -f /opt/usr/media/Sounds/webapi-tizen-messaging-test_noise.mp3 &>/dev/null
+adb shell  rm -f /home/app/content/Images/webapi-tizen-messaging-test_image.jpg &>/dev/null
+adb shell  rm -f /home/app/content/Sounds/webapi-tizen-messaging-test_noise.mp3 &>/dev/null
 
 
 #TODO: remove resource

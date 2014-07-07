@@ -18,8 +18,8 @@ ls |grep arm.apk  > /dev/null 2>&1 && extend="_arm.apk"
 
 adb install $PACKAGENAME$extend
 
-adb shell mkdir -p /opt/usr/media/$SUITENAMENAME/ &>/dev/null
-adb shell cp -f /opt/usr/media/tct/opt/$SUITENAME/mediasrc/*  /opt/usr/media/$SUITENAME/
+adb shell mkdir -p /home/app/content/$SUITENAMENAME/ &>/dev/null
+adb shell cp -f /opt/usr/media/tct/opt/$SUITENAME/mediasrc/*  /home/app/content/$SUITENAME/
 #TODO: copy resource
 #eg:adb push xx $RESOURCE_DIR
 }
@@ -39,7 +39,7 @@ webapi-tizen-appcontrol-test_sound.wav
 webapi-tizen-appcontrol-test_video.mp4"
 
 for mediafile in $MEDIAFILE;do
-	adb shell rm -f /opt/usr/media/$SUITENAME/$mediafile &>/dev/null
+	adb shell rm -f /home/app/content/$SUITENAME/$mediafile &>/dev/null
 done
 
 #TODO: remove resource

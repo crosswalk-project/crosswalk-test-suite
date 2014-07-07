@@ -19,8 +19,8 @@ ls |grep arm.apk  > /dev/null 2>&1 && extend="_arm.apk"
 adb install $PACKAGENAME$extend
 
 ### copy media files ###
-adb shell  mkdir -p /opt/usr/media/$SUITENAME &>/dev/null
-adb shell cp -f /opt/usr/media/tct/opt/$SUITENAME/mediasrc/*  /opt/usr/media/$SUITENAME/
+adb shell  mkdir -p /home/app/content/$SUITENAME &>/dev/null
+adb shell cp -f /opt/usr/media/tct/opt/$SUITENAME/mediasrc/*  /home/app/content/$SUITENAME/
 
 #TODO: copy resource
 #eg:adb push xx $RESOURCE_DIR
@@ -30,7 +30,7 @@ function uninstallpkg(){
 adb uninstall org.xwalk.$PACKAGENAME
 
 ### remove media files ###
-adb shell rm -rf /opt/usr/media/$SUITENAME
+adb shell rm -rf /home/app/content/$SUITENAME
 
 #TODO: remove resource
 #eg:adb shell rm -rf $RESOURCE_DIR/xx

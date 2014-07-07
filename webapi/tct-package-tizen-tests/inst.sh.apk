@@ -24,7 +24,8 @@ adb install $SUBPACKAGENAME$extend
 #eg:adb push xx $RESOURCE_DIR
 
 ### copy media files ###
-adb shell cp -f /opt/usr/media/tct/opt/$SUITENAME/mediasrc/*  /opt/usr/media/Others/
+adb shell mkdir -p /home/app/content/Others/
+adb shell cp -f /opt/usr/media/tct/opt/$SUITENAME/mediasrc/*  /home/app/content/Others/
 }
 
 function uninstallpkg(){
@@ -35,7 +36,7 @@ adb uninstall org.xwalk.$SUBPACKAGENAME
 MEDIAFILE="TCTPackageManagerTest1.1.1.wgt
 TCTPackageManagerTest2.2.2.wgt"
 for mediafile in $MEDIAFILE;do
-	adb shell rm -f /opt/usr/media/Others/$mediafile
+	adb shell rm -f /home/app/content/Others/$mediafile
 done
 
 #TODO: remove resource

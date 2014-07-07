@@ -26,7 +26,8 @@ adb install $SUBPACKAGENAME2$extend
 #eg:adb push xx $RESOURCE_DIR
 
 ### copy media files ###
-adb shell cp -f /opt/usr/media/tct/opt/$SUITENAME/mediasrc/*  /opt/usr/media/Others/
+adb shell mkdir -p /home/app/content/Others/ &>/dev/null
+adb shell cp -f /opt/usr/media/tct/opt/$SUITENAME/mediasrc/*  /home/app/content/Others/
 }
 
 function uninstallpkg(){
@@ -39,7 +40,7 @@ MEDIAFILE="TCTAppInfoEventTest1.wgt
 TCTAppInfoEventTest2.wgt"
 
 for mediafile in $MEDIAFILE;do
-	adb shell rm -f /opt/usr/media/Others/$mediafile &>/dev/null
+	adb shell rm -f /home/app/content/Others/$mediafile &>/dev/null
 done
 
 #TODO: remove resource

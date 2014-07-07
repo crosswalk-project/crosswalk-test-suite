@@ -24,8 +24,8 @@ fi
 
 ### copy media files ###
 if [ -d /opt/usr/media/tct/opt/$NAME/mediasrc ]; then
-    mkdir -p /opt/usr/media/$NAME
-    cp -f /opt/usr/media/tct/opt/$NAME/mediasrc/*  /opt/usr/media/$NAME/
+    mkdir -p /home/app/content/$NAME
+    cp -f /opt/usr/media/tct/opt/$NAME/mediasrc/*  /home/app/content/$NAME/
 else
     echo "Cp media files fail, please check if exists file: /opt/usr/media/tct/opt/$NAME/mediasrc/ ..."
 fi
@@ -61,10 +61,10 @@ fi
 
 ### remove media files ###
 
-if [ -d /opt/usr/media/$NAME ]; then
-    rm -rf /opt/usr/media/$NAME
+if [ -d /home/app/content/$NAME ]; then
+    rm -rf /home/app/content/$NAME
 else
-    echo "Remove media files fail, please check if exists file: /opt/usr/media/$NAME ..."
+    echo "Remove media files fail, please check if exists file: /home/app/content/$NAME ..."
 fi
 
 ### remove source file ###
