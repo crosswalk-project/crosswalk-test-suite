@@ -18,8 +18,8 @@ function installpkg(){
 
     ### copy media files ###
     if [ -d /opt/usr/media/tct/opt/$PACKAGENAME/mediasrc ]; then
-        mkdir -p /opt/usr/media/$PACKAGENAME
-        cp -f /opt/usr/media/tct/opt/$PACKAGENAME/mediasrc/*  /opt/usr/media/$PACKAGENAME/
+        mkdir -p /home/app/content/$PACKAGENAME
+        cp -f /opt/usr/media/tct/opt/$PACKAGENAME/mediasrc/*  /home/app/content/$PACKAGENAME/
     else
         echo "Cp media files fail, please check if exists file: /opt/usr/media/tct/opt/$PACKAGENAME/mediasrc/ ..."
     fi
@@ -37,10 +37,10 @@ function uninstallpkg(){
     #eg:rm xx
 
     ### remove media files ###
-    if [ -d /opt/usr/media/$PACKAGENAME ]; then
-        rm -rf /opt/usr/media/$PACKAGENAME
+    if [ -d /home/app/content/$PACKAGENAME ]; then
+        rm -rf /home/app/content/$PACKAGENAME
     else
-        echo "Remove media files fail, please check if exists file: /opt/usr/media/$PACKAGENAME ..."
+        echo "Remove media files fail, please check if exists file: /home/app/content/$PACKAGENAME ..."
     fi
 
     ### remove source file ###

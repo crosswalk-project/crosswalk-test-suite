@@ -18,8 +18,8 @@ function installpkg(){
 
     ### copy media files ###
     if [ -d /opt/usr/media/tct/opt/$PACKAGENAME/mediasrc ]; then
-        cp -f /opt/usr/media/tct/opt/$PACKAGENAME/mediasrc/*.jpg  /opt/usr/media/Images/
-        cp -f /opt/usr/media/tct/opt/$PACKAGENAME/mediasrc/*.mp3  /opt/usr/media/Sounds/
+        cp -f /opt/usr/media/tct/opt/$PACKAGENAME/mediasrc/*.jpg  /home/app/content/Images/
+        cp -f /opt/usr/media/tct/opt/$PACKAGENAME/mediasrc/*.mp3  /home/app/content/Sounds/
     else
         echo "Cp media files fail, please check if exists file: /opt/usr/media/tct/opt/$PACKAGENAME/mediasrc/ ..."
     fi
@@ -37,8 +37,8 @@ function uninstallpkg(){
     #eg:rm xx
 
     ### remove media files ###
-    rm -f /opt/usr/media/Images/webapi-tizen-notification-test*.jpg
-    rm -f /opt/usr/media/Sounds/webapi-tizen-notification-test*.mp3
+    rm -f /home/app/content/Images/webapi-tizen-notification-test*.jpg
+    rm -f /home/app/content/Sounds/webapi-tizen-notification-test*.mp3
 
     ### remove source file ###
     if [ -d /opt/usr/media/tct/opt/$PACKAGENAME ];then

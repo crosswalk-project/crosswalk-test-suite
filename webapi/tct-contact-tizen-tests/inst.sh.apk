@@ -19,7 +19,7 @@ ls |grep arm.apk  > /dev/null 2>&1 && extend="_arm.apk"
 adb install $PACKAGENAME$extend
 
 ### copy media files ###
-adb shell cp -f /opt/usr/media/tct/opt/$SUITENAME/mediasrc/*  /opt/usr/media/
+adb shell cp -f /opt/usr/media/tct/opt/$SUITENAME/mediasrc/*  /home/app/content/
 
 #TODO: copy resource
 #eg:adb push xx $RESOURCE_DIR
@@ -35,7 +35,7 @@ webapi-tizen-contact-test_image1.png
 webapi-tizen-contact-test_image2.png"
 
 for mediafile in $MEDIAFILE;do
-	adb shell rm -f /opt/usr/media/$mediafile &>/dev/null
+	adb shell rm -f /home/app/content/$mediafile &>/dev/null
 done
 
 #TODO: remove resource

@@ -16,9 +16,9 @@ function installpkg(){
     #TODO: copy resource
     #eg:cp xx $RESOURCE_DIR
 
-    ###### cp sample.html to /opt/usr/media/ ######
+    ###### cp sample.html to /home/app/content/ ######
     if [ -f /opt/usr/media/tct/opt/$PACKAGENAME/fileapi/support/sample.html ]; then
-        cp -f /opt/usr/media/tct/opt/$PACKAGENAME/fileapi/support/sample.html /opt/usr/media/
+        cp -f /opt/usr/media/tct/opt/$PACKAGENAME/fileapi/support/sample.html /home/app/content/
     else
         echo "cp file fail, please check if exists file: /opt/usr/media/tct/opt/$PACKAGENAME/fileapi/support/sample.html..."
     fi
@@ -42,9 +42,9 @@ function uninstallpkg(){
         echo "Remove source file fail,please check if the source file exist: /opt/usr/media/tct/opt/$PACKAGENAME ..."
     fi
 
-    ###### remove sample.html from /opt/usr/media/ ######
-    if [ -f /opt/usr/media/sample.html ]; then
-        rm -f /opt/usr/media/sample.html
+    ###### remove sample.html from /home/app/content/ ######
+    if [ -f /home/app/content/sample.html ]; then
+        rm -f /home/app/content/sample.html
     fi
 }
 

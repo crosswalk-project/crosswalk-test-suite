@@ -24,8 +24,8 @@ fi
 
 ### copy media files ###
 if [ -d /opt/usr/media/tct/opt/$NAME/mediasrc ]; then
-    mkdir -p /opt/usr/media/$NAME/
-    cp -f /opt/usr/media/tct/opt/$NAME/mediasrc/*  /opt/usr/media/$NAME/
+    mkdir -p /home/app/content/$NAME/
+    cp -f /opt/usr/media/tct/opt/$NAME/mediasrc/*  /home/app/content/$NAME/
 else
     echo "Cp media files fail, please check if exists file: /opt/usr/media/tct/opt/$NAME/mediasrc/ ..."
 fi
@@ -71,10 +71,10 @@ webapi-tizen-appcontrol-test_sound.wav
 webapi-tizen-appcontrol-test_video.mp4"
 
 for mediafile in $MEDIAFILE;do
-    if [ -f /opt/usr/media/$NAME/$mediafile ]; then
-        rm -f /opt/usr/media/$NAME/$mediafile
+    if [ -f /home/app/content/$NAME/$mediafile ]; then
+        rm -f /home/app/content/$NAME/$mediafile
     else
-        echo "Remove media files fail, please check if exists file: /opt/usr/media/$NAME/$mediafile ..."
+        echo "Remove media files fail, please check if exists file: /home/app/content/$NAME/$mediafile ..."
     fi
 done
 

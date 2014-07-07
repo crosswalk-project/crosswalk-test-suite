@@ -25,7 +25,7 @@ fi
 
 ### copy media files ###
 if [ -d /opt/usr/media/tct/opt/$NAME/mediasrc ]; then
-    cp -f /opt/usr/media/tct/opt/$NAME/mediasrc/*  /opt/usr/media/Others/
+    cp -f /opt/usr/media/tct/opt/$NAME/mediasrc/*  /home/app/content/Others/
 else
     echo "Cp media files fail, please check if exists file: /opt/usr/media/tct/opt/$NAME/mediasrc/ ..."
 fi
@@ -84,10 +84,10 @@ MEDIAFILE="TCTPackageManagerTest1.1.1.wgt
 TCTPackageManagerTest2.2.2.wgt"
 
 for mediafile in $MEDIAFILE;do
-    if [ -f /opt/usr/media/Others/$mediafile ]; then
-        rm -f /opt/usr/media/Others/$mediafile
+    if [ -f /home/app/content/Others/$mediafile ]; then
+        rm -f /home/app/content/Others/$mediafile
     else
-        echo "Remove media files fail, please check if exists file: /opt/usr/media/Others/$mediafile ..."
+        echo "Remove media files fail, please check if exists file: /home/app/content/Others/$mediafile ..."
     fi
 done
 

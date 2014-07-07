@@ -19,5 +19,5 @@ limitations under the License.
 Authors:
 
 */
-var IMAGE_FILE_PATH = "/opt/usr/media/tct-systemsetting-tizen-tests/tct-systemsetting-tizen-tests_image.jpg";
-var SOUND_FILE_PATH = "/opt/usr/media/tct-systemsetting-tizen-tests/tct-systemsetting-tizen-tests_audio.mp3";
+var IMAGE_FILE_PATH = "/home/app/content/tct-systemsetting-tizen-tests/tct-systemsetting-tizen-tests_image.jpg";
+var SOUND_FILE_PATH = "/home/app/content/tct-systemsetting-tizen-tests/tct-systemsetting-tizen-tests_audio.mp3";

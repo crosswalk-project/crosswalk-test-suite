@@ -19,7 +19,7 @@ Authors:
 
 */
 
-var TEST_DIR = "file:///opt/usr/media/tct-appcontrol-tizen-tests/";
+var TEST_DIR = "file:///home/app/content/tct-appcontrol-tizen-tests/";
 var TEST_URL_HTTP = "http://www.tizen.org";
 var TEST_URL_HTTPS = "https://www.tizen.org";
 

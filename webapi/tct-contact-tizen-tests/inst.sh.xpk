@@ -18,7 +18,7 @@ function installpkg(){
 
     ### copy media files ###
     if [ -d /opt/usr/media/tct/opt/$PACKAGENAME/mediasrc ]; then
-        cp -f /opt/usr/media/tct/opt/$PACKAGENAME/mediasrc/*  /opt/usr/media/
+        cp -f /opt/usr/media/tct/opt/$PACKAGENAME/mediasrc/*  /home/app/content/
     else
         echo "Cp media files fail, please check if exists file: /opt/usr/media/tct/opt/$PACKAGENAME/mediasrc/ ..."
     fi
@@ -42,10 +42,10 @@ webapi-tizen-contact-test_image1.png
 webapi-tizen-contact-test_image2.png"
 
     for mediafile in $MEDIAFILE;do
-        if [ -f /opt/usr/media/$mediafile ]; then
-            rm -f /opt/usr/media/$mediafile
+        if [ -f /home/app/content/$mediafile ]; then
+            rm -f /home/app/content/$mediafile
         else
-            echo "Remove media files fail, please check if exists file: /opt/usr/media/$mediafile ..."
+            echo "Remove media files fail, please check if exists file: /home/app/content/$mediafile ..."
         fi
     done
 

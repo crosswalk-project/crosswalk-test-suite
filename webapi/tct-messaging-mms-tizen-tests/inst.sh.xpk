@@ -18,8 +18,8 @@ function installpkg(){
 
     ### copy media files ###
     if [ -d /opt/usr/media/tct/opt/$PACKAGENAME/mediasrc ]; then
-        cp -f /opt/usr/media/tct/opt/$PACKAGENAME/mediasrc/webapi-tizen-messaging-test_image.jpg  /opt/usr/media/Images/
-        cp -f /opt/usr/media/tct/opt/$PACKAGENAME/mediasrc/webapi-tizen-messaging-test_noise.mp3  /opt/usr/media/Sounds/
+        cp -f /opt/usr/media/tct/opt/$PACKAGENAME/mediasrc/webapi-tizen-messaging-test_image.jpg  /home/app/content/Images/
+        cp -f /opt/usr/media/tct/opt/$PACKAGENAME/mediasrc/webapi-tizen-messaging-test_noise.mp3  /home/app/content/Sounds/
     else
         echo "Cp media files fail, please check if exists file: /opt/usr/media/tct/opt/$PACKAGENAME/mediasrc/ ..."
     fi
@@ -37,8 +37,8 @@ function uninstallpkg(){
     #eg:rm xx
 
     ### remove media files ###
-    [ -f /opt/usr/media/Images/webapi-tizen-messaging-test_image.jpg ] && rm -f /opt/usr/media/Images/webapi-tizen-messaging-test_image.jpg
-    [ -f /opt/usr/media/Sounds/webapi-tizen-messaging-test_noise.mp3 ] && rm -f /opt/usr/media/Sounds/webapi-tizen-messaging-test_noise.mp3
+    [ -f /home/app/content/Images/webapi-tizen-messaging-test_image.jpg ] && rm -f /home/app/content/Images/webapi-tizen-messaging-test_image.jpg
+    [ -f /home/app/content/Sounds/webapi-tizen-messaging-test_noise.mp3 ] && rm -f /home/app/content/Sounds/webapi-tizen-messaging-test_noise.mp3
 
     ### remove source file ###
     if [ -d /opt/usr/media/tct/opt/$PACKAGENAME ];then
