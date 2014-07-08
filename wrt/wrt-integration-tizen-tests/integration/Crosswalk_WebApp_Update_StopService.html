@@ -43,7 +43,7 @@ Authors:      Lin,Shen <linx.a.shen@intel.com>
       <li>sdb push webapp1 and webapp2 to device(webapp2 is webapp1 update app,such version is higher)</li>
       <li>xwalkctl –-install webapp1</li>
       <li>keyinput: pgrep xwalk</li>
-      <li>keyinput: kill id</li>
+      <li>keyinput: kill -9 id</li>
       <li>xwalkctl –-install webapp2</li>
     </ol>
     <p>
@@ -54,7 +54,7 @@ Authors:      Lin,Shen <linx.a.shen@intel.com>
       <li>webapp1 can be installed successfully</li>   
       <li>list xwalk deamon id</li>
       <li>xwalk deamon service is stop(pgrep xwalk, no id list)</li>
-      <li>Webapp2 can be installed successfully, pkgid is the old webapp1 pkgid</li>
+      <li>Webapp2 can be installed successfully, check db,the version is update.(sqlite3 /opt/home/app/.config/xwalk-service/applications.db "select id,manifest from applications;" | grep pkgid)</li>
     </ol>
   </body>
 </html>
