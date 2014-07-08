@@ -41,7 +41,10 @@ Authors:
 
 setup({explicit_done: true});
 
-navigator.iap.queryProductDetails(["gas"]).then(
+var key = 'MIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEAsEVjLWKJ5B7EKjnH5NVx4eh83xntg1WXFIQhLXgtmiCU0Ro27dN8Q7Q5HIif4ugkFcQWFhlDC/WsliDKtLZQkadmS1sUweOanIo5+ZbNaQ1ITWwtkNdnPb+tRJCjhngft1hFIfLGsKrBMxS8slaWaQ537wgex74Pv5mxuQLhsFyei5GffzDQDz4KN6sQHPqtB+GLDWqKKk2bdAiopQRFRUwYR8edAYcHiMHHZSfidOjaYD1/timhFIUnwFihtvNy4K7OStjoy6kEwCmX9/zXS3SxKkOfk2bNg/Edc8xgym8GkfObUliySSNxS9ukzp1ShDuSjdwfJVt5mvmXk+7jiQIDAQAB';
+iap.init(key);
+
+iap.queryProductDetails(["gas", "yearly", "premium"]).then(
 function(products) {
   [
     //attributes of the IAPProduct interface
