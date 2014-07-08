@@ -29,7 +29,7 @@ Authors:
 */
 
 function loadimg() {
-  $("#background").attr("src", "http://w3c-test.org/images/background.png");
+  $("#background").attr("src", "http://test.csswg.org/source/support/cat.png");
   $("#background").attr("onload","sendResourceTiming()");
 }
 
