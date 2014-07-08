@@ -184,7 +184,7 @@ def del_Seed(in_file,order_count):
 def gen_selfcomb_File(comb_file,order_count):
     try:
         if (os.path.isfile("./allpairs/output.txt") & (Test_Flag=="positive")):
-           os.system("rm ./allpairs/output.txt ./allpairs/output_negative.txt")
+           os.system("rm -f ./allpairs/output.txt ./allpairs/output_negative.txt >/dev/null")
         if (Test_Flag=="negative"):
             open_output_file= open(const.output_file_ne,'a+')
         else:
@@ -423,7 +423,6 @@ def result_manifest_XML(webappFile,auto_Result,input_Result,manifest_cont):
         tree.write(const.path_result + "/" + webappFile)
     except Exception,e: 
         print Exception,"Generate manifest.xml error:",e 
-        sys.exit(1)
 
 def testreport_auto_XML(webappName,input_Result,auto_Result,tcs_manifest,tcs_message):
     try:
@@ -471,7 +470,6 @@ def testreport_auto_XML(webappName,input_Result,auto_Result,tcs_manifest,tcs_mes
               tree.write(const.report_file)         
     except Exception,e: 
         print Exception,"Generate test error:",e 
-        sys.exit(1)
 
 def manifest_Packing(pakeNo,pakeType):
     try:
@@ -602,7 +600,6 @@ def get_runback(cmdline,step,pkgids):
         return read_line     
     except Exception,e: 
         print Exception,"get runback error:",e 
-        sys.exit(1) 
          
 def get_Input_Result():
     try:
@@ -619,12 +616,10 @@ def get_Input_Result():
         return getinput
     except Exception,e: 
         print Exception,"Input result error:",e 
-        sys.exit(1)
 
 def get_from_DB(cmdline,manifest):
     try:
         read_line = os.popen(cmdline).readlines()
-        get_value = read_line[0].split("|")[1].split(",")
         get_id = read_line[0].split("|")[0]
         get_manifest = manifest.strip("\n\r\t").split(",")
         for i in range(0,len(get_manifest)):
@@ -640,7 +635,7 @@ def get_from_DB(cmdline,manifest):
           return "NONE"
     except Exception,e: 
         print Exception,"Get db record error:",e 
-        sys.exit(1)        
+  
 
 
 def get_Sdb_Devices():
@@ -654,14 +649,13 @@ def get_Sdb_Devices():
             for i in range (0,len(getDevice)):
                 getDeviceList.append(getDevice[i].split("\t")[0])
                 if i>=1:
-                    print "Device",i,":",getDeviceList[i].strip("\n")
+                    print "Device",i,":",getDeviceList[i].strip("\t")
             content_device = raw_input("input 1 or 2... to choice the device:")
-            while (not content_device.isdigit()) or (content_device=="0") or (int(content_device) > len(getDeviceList)):
+            while (not content_device.isdigit()) or (content_device=="0") or (int(content_device) > len(getDeviceList)-1):
                 content_device = raw_input("input 1 or 2... to choice the device:")
             if int(content_device) in range(len(getDeviceList)):
-                print "getdevice=",getDeviceList[int(content_device)]
                 retdeviceList = getDeviceList[int(content_device)],len(getDeviceList)
-                log_Log(" get sdb device=" + get_Sdb_Devices + "\n")
+                log_Log(" get sdb device=" + retdeviceList[0] + "\n")
                 return retdeviceList
         else:
             getDevice = getDevice[1].split("\t")[0]  
@@ -690,7 +684,6 @@ def add_style_Report(file_name,style_file):
         fp.close()
     except Exception,e: 
         print Exception,"Add sytle to report error:",e 
-        sys.exit(1)
 
 def log_Log(message):
     try:
@@ -698,7 +691,6 @@ def log_Log(message):
         logfile.write(log_time +": "+ message)
     except Exception,e: 
         print Exception,"Add log to log.txt error:",e 
-        sys.exit(1)
      
 def main(argv):
     try:
