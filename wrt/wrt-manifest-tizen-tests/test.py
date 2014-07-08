@@ -409,7 +409,7 @@ def result_manifest_XML(webappFile,auto_Result,input_Result,manifest_cont):
                     input_result[0].text = input_Result
                 else:
                     if (len(cnode)==0):
-                        SubElement(mtestcase,"testcase", {'component':'core','purpose':'Check if Packaged Web Application can be installed/launch/uninstall successfully','execution_type' : 'auto', 'id' : webappFile.split(".")[0]})
+                        SubElement(mtestcase,"testcase", {'component':'Runtime Core','purpose':'Check if packaged web application can be installed/launched/uninstalled successfully','execution_type' : 'auto', 'id' : webappFile.split(".")[0]})
                         result_node = mtestcase.find("testcase")
                         SubElement(result_node,"auto_result")
                         SubElement(result_node,"input_result")
@@ -431,7 +431,7 @@ def testreport_auto_XML(webappName,input_Result,auto_Result,tcs_manifest,tcs_mes
         root = tree.getroot()
         lst_node = root.getiterator("set")
         if (Test_Flag=="positive"):
-              SubElement(lst_node[0],"testcase", {'component':'core','purpose':'Check if Packaged Web Application can be installed/launch/uninstall successfully','execution_type' : 'auto', 'id' : "manifest"+webappName ,'result': auto_Result})
+              SubElement(lst_node[0],"testcase", {'component':'Runtime Core','purpose':'Check if packaged web application can be installed/launched/uninstalled successfully','execution_type' : 'auto', 'id' : "manifest"+webappName ,'result': auto_Result})
               cnode = root.getiterator("testcase")
               desnode = cnode[-1]
               SubElement(desnode,"description")
@@ -450,7 +450,7 @@ def testreport_auto_XML(webappName,input_Result,auto_Result,tcs_manifest,tcs_mes
               actualresult.text = auto_Result
               tree.write(const.report_file)
         else:
-              SubElement(lst_node[1],"testcase", {'component':'core','purpose':'Check if Packaged Web Application can be installed/launch/uninstall successfully','execution_type' : 'auto', 'id' : "manifest"+webappName ,'result': auto_Result})
+              SubElement(lst_node[1],"testcase", {'component':'Runtime Core','purpose':'Check if packaged web application can be installed/launched/uninstalled successfully','execution_type' : 'auto', 'id' : "manifest"+webappName ,'result': auto_Result})
               cnode = root.getiterator("testcase")
               desnode = cnode[-1]
               SubElement(desnode,"description")
@@ -711,6 +711,13 @@ def main(argv):
         do_Clear(const.path + "/self")
         Device_Ip = get_Sdb_Devices()[0]
         os.system("sdb -s " + Device_Ip +" root on")
+        cmd_createtct = "sdb -s " + Device_Ip +" push checktct_folder.sh /opt/usr/media/ >/dev/null"
+        os.system(cmd_createtct)
+        cmd_chmod = "sdb -s " + Device_Ip +" shell chmod 777 /opt/usr/media/checktct_folder.sh"
+        os.system(cmd_chmod)
+        cmd_createtctfolder = "sdb -s " + Device_Ip +" shell opt/usr/media/checktct_folder.sh "
+        os.system(cmd_createtctfolder)
+        log_Log(" create tct folder \n") 
         opts, args = getopt.getopt(argv[1:], 'h:o:p:n', ['help','order=','pack='])
         if (len(opts) ==0):
              print "Auto generate manifest.json------------------------->",opts
