@@ -8,7 +8,7 @@ USAGE="Usage: ./inst.sh [-i] [-u]
 
 PACKAGENAME=tct-flexiblebox-css3-tests
 XPKNAME=${PACKAGENAME}.xpk
-RESOURCE_DIR=/opt/usr/media
+RESOURCE_DIR=/home/app/content
 
 function installpkg(){
     xwalkctl --install $(dirname $0)/$XPKNAME
@@ -29,10 +29,10 @@ function uninstallpkg(){
     #eg:rm xx
 
     ### remove source file ###
-    if [ -d /opt/usr/media/tct/opt/$PACKAGENAME ];then
-        rm -rf /opt/usr/media/tct/opt/$PACKAGENAME
+    if [ -d $RESOURCE_DIR/tct/opt/$PACKAGENAME ];then
+        rm -rf $RESOURCE_DIR/tct/opt/$PACKAGENAME
     else
-        echo "Remove source file fail,please check if the source file exist: /opt/usr/media/tct/opt/$PACKAGENAME ..."
+        echo "Remove source file fail,please check if the source file exist: $RESOURCE_DIR/tct/opt/$PACKAGENAME ..."
     fi
 }
 

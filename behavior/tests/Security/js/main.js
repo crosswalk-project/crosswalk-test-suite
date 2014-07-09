@@ -29,7 +29,7 @@ Authors:
 
 */
 
-var SHARED_MEDIA_DIR = "file:///opt/usr/media",
+var SHARED_MEDIA_DIR = "file:///home/app/content",
     MEDIA_ID = "#media";
 var count = 0, mediaDir;
 var gFiles = [], createdId = [];

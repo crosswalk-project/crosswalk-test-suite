@@ -30,7 +30,7 @@
 
 ###below functions just for crosswalk ivi testing###
 
-##usage: install_app $app_path(e.g. uninstall_app /opt/usr/media/tct/opt/tct-sp02-wrt-tests/tct-sp02-wrt-tests.wgt)##
+##usage: install_app $app_path(e.g. uninstall_app /home/app/content/tct/opt/tct-sp02-wrt-tests/tct-sp02-wrt-tests.wgt)##
 function install_app(){
     xwalkctl --install $1
 }

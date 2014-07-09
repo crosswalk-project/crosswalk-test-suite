@@ -9,7 +9,7 @@ USAGE="Usage: ./inst.sh [-i] [-u]
 #TODO:update PACKAGENAME for each suite,pay attention to use '_'
 PACKAGENAME=tct_systemsetting_tizen_tests
 SUITENAME=`echo $PACKAGENAME |sed 's/_/-/g'`
-RESOURCE_DIR=/opt/usr/media
+RESOURCE_DIR=/home/app/content
 
 function installpkg(){
 extend=".apk"
@@ -19,8 +19,8 @@ ls |grep arm.apk  > /dev/null 2>&1 && extend="_arm.apk"
 adb install $PACKAGENAME$extend
 
 ### copy media files ###
-adb shell  mkdir -p /home/app/content/$SUITENAME &>/dev/null
-adb shell cp -f /opt/usr/media/tct/opt/$SUITENAME/mediasrc/*  /home/app/content/$SUITENAME/
+adb shell  mkdir -p $RESOURCE_DIR/$SUITENAME &>/dev/null
+adb shell cp -f $RESOURCE_DIR/tct/opt/$SUITENAME/mediasrc/*  $RESOURCE_DIR/$SUITENAME/
 
 #TODO: copy resource
 #eg:adb push xx $RESOURCE_DIR
@@ -30,11 +30,11 @@ function uninstallpkg(){
 adb uninstall org.xwalk.$PACKAGENAME
 
 ### remove media files ###
-adb shell rm -rf /home/app/content/$SUITENAME
+adb shell rm -rf $RESOURCE_DIR/$SUITENAME
 
 #TODO: remove resource
 #eg:adb shell rm -rf $RESOURCE_DIR/xx
-adb shell rm -rf /opt/usr/media/tct/opt/$SUITENAME &>/dev/null
+adb shell rm -rf $RESOURCE_DIR/tct/opt/$SUITENAME &>/dev/null
 }
 
 case "$1" in

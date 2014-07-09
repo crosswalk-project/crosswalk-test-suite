@@ -8,7 +8,7 @@ USAGE="Usage: ./inst.sh [-i] [-u]
 
 PACKAGENAME=tct-contact-tizen-tests
 XPKNAME=${PACKAGENAME}.xpk
-RESOURCE_DIR=/opt/usr/media
+RESOURCE_DIR=/home/app/content
 
 function installpkg(){
     xwalkctl --install $(dirname $0)/$XPKNAME
@@ -17,10 +17,10 @@ function installpkg(){
     #eg:cp xx $RESOURCE_DIR
 
     ### copy media files ###
-    if [ -d /opt/usr/media/tct/opt/$PACKAGENAME/mediasrc ]; then
-        cp -f /opt/usr/media/tct/opt/$PACKAGENAME/mediasrc/*  /home/app/content/
+    if [ -d $RESOURCE_DIR/tct/opt/$PACKAGENAME/mediasrc ]; then
+        cp -f $RESOURCE_DIR/tct/opt/$PACKAGENAME/mediasrc/*  $RESOURCE_DIR/
     else
-        echo "Cp media files fail, please check if exists file: /opt/usr/media/tct/opt/$PACKAGENAME/mediasrc/ ..."
+        echo "Cp media files fail, please check if exists file: $RESOURCE_DIR/tct/opt/$PACKAGENAME/mediasrc/ ..."
     fi
 }
 
@@ -42,18 +42,18 @@ webapi-tizen-contact-test_image1.png
 webapi-tizen-contact-test_image2.png"
 
     for mediafile in $MEDIAFILE;do
-        if [ -f /home/app/content/$mediafile ]; then
-            rm -f /home/app/content/$mediafile
+        if [ -f $RESOURCE_DIR/$mediafile ]; then
+            rm -f $RESOURCE_DIR/$mediafile
         else
-            echo "Remove media files fail, please check if exists file: /home/app/content/$mediafile ..."
+            echo "Remove media files fail, please check if exists file: $RESOURCE_DIR/$mediafile ..."
         fi
     done
 
     ### remove source file ###
-    if [ -d /opt/usr/media/tct/opt/$PACKAGENAME ];then
-        rm -rf /opt/usr/media/tct/opt/$PACKAGENAME
+    if [ -d $RESOURCE_DIR/tct/opt/$PACKAGENAME ];then
+        rm -rf $RESOURCE_DIR/tct/opt/$PACKAGENAME
     else
-        echo "Remove source file fail,please check if the source file exist: /opt/usr/media/tct/opt/$PACKAGENAME ..."
+        echo "Remove source file fail,please check if the source file exist: $RESOURCE_DIR/tct/opt/$PACKAGENAME ..."
     fi
 }
 

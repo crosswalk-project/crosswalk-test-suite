@@ -2,6 +2,7 @@
 
 local_path=$(cd "$(dirname $0)";pwd)
 NAME=$(basename $local_path)
+RESOURCE_DIR=/home/app/content
 
 folderName_tmp=${NAME#*-}
 folderName=${folderName_tmp%%-*}
@@ -17,19 +18,19 @@ function unzippkg()
     #environment clear
     echo "environment clear >>>>>>>>>>>>>>>>>>>>>>>>>>>>>."
     #unzip and push to device
-    sdb shell "[ -d /opt/usr/media/tct ] ||  mkdir -p /opt/usr/media/tct"
-    sdb shell "[ -d /opt/usr/media/tct/opt/$NAME ] && rm -rf /opt/usr/media/tct/opt/$NAME"
-    sdb shell "[ -e /opt/usr/media/tct/$NAME.zip ] && rm -rf /opt/usr/media/tct/$NAME.zip"
-    sdb push $local_path/$NAME.zip /opt/usr/media/tct/
-    sdb shell "cd /opt/usr/media/tct/;unzip $NAME.zip"
-    echo "Package unzip successfully and push to /opt/usr/media/tct/"
+    sdb shell "[ -d $RESOURCE_DIR/tct ] ||  mkdir -p $RESOURCE_DIR/tct"
+    sdb shell "[ -d $RESOURCE_DIR/tct/opt/$NAME ] && rm -rf $RESOURCE_DIR/tct/opt/$NAME"
+    sdb shell "[ -e $RESOURCE_DIR/tct/$NAME.zip ] && rm -rf $RESOURCE_DIR/tct/$NAME.zip"
+    sdb push $local_path/$NAME.zip $RESOURCE_DIR/tct/
+    sdb shell "cd $RESOURCE_DIR/tct/;unzip $NAME.zip"
+    echo "Package unzip successfully and push to $RESOURCE_DIR/tct/"
 
 }
 
 function cleansource()
 {
-    sdb shell "[ -d /opt/usr/media/tct/opt/$NAME ] && rm -rf /opt/usr/media/tct/opt/$NAME"
-    sdb shell "[ -e /opt/usr/media/tct/$NAME.zip ] && rm -rf /opt/usr/media/tct/$NAME.zip"
+    sdb shell "[ -d $RESOURCE_DIR/tct/opt/$NAME ] && rm -rf $RESOURCE_DIR/tct/opt/$NAME"
+    sdb shell "[ -e $RESOURCE_DIR/tct/$NAME.zip ] && rm -rf $RESOURCE_DIR/tct/$NAME.zip"
     echo "Clean folder successfully..."
 }
 

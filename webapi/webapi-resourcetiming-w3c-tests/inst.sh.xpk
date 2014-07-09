@@ -8,7 +8,7 @@ USAGE="Usage: ./inst.sh [-i] [-u]
 
 PACKAGENAME=webapi-resourcetiming-w3c-tests
 XPKNAME=${PACKAGENAME}.xpk
-RESOURCE_DIR=/opt/usr/media
+RESOURCE_DIR=/home/app/content
 
 function installpkg(){
     xwalkctl --install $(dirname $0)/$XPKNAME
@@ -17,10 +17,10 @@ function installpkg(){
     #eg:cp xx $RESOURCE_DIR
 
     ###### config tinyweb server ######
-    if [ -e /opt/usr/media/tct/opt/$PACKAGENAME/resourcetiming/w3c/submission/resources/cgi ]; then
-        cp -r /opt/usr/media/tct/opt/$PACKAGENAME/resourcetiming/w3c/submission/resources/cgi/*.cgi /opt/usr/media/tct/opt/$PACKAGENAME/resourcetiming/w3c/submission/resources
+    if [ -e $RESOURCE_DIR/tct/opt/$PACKAGENAME/resourcetiming/w3c/submission/resources/cgi ]; then
+        cp -r $RESOURCE_DIR/tct/opt/$PACKAGENAME/resourcetiming/w3c/submission/resources/cgi/*.cgi $RESOURCE_DIR/tct/opt/$PACKAGENAME/resourcetiming/w3c/submission/resources
     else
-        echo "cp file fail, please check if exists file: /opt/usr/media/tct/opt/$PACKAGENAME/xmlhttprequest/w3c/submission/resources/cgi/*.cgi..."
+        echo "cp file fail, please check if exists file: $RESOURCE_DIR/tct/opt/$PACKAGENAME/xmlhttprequest/w3c/submission/resources/cgi/*.cgi..."
     fi
 
 }
@@ -36,10 +36,10 @@ function uninstallpkg(){
     #eg:rm xx
 
     ### remove source file ###
-    if [ -d /opt/usr/media/tct/opt/$PACKAGENAME ];then
-        rm -rf /opt/usr/media/tct/opt/$PACKAGENAME
+    if [ -d $RESOURCE_DIR/tct/opt/$PACKAGENAME ];then
+        rm -rf $RESOURCE_DIR/tct/opt/$PACKAGENAME
     else
-        echo "Remove source file fail,please check if the source file exist: /opt/usr/media/tct/opt/$PACKAGENAME ..."
+        echo "Remove source file fail,please check if the source file exist: $RESOURCE_DIR/tct/opt/$PACKAGENAME ..."
     fi
 
 }

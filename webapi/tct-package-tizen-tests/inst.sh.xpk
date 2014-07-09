@@ -10,7 +10,7 @@ PACKAGENAME=tct-package-tizen-tests
 XPKNAME=${PACKAGENAME}.xpk
 SUBXPK="TCTPackageInfoTest.xpk"
 SUBAPP="TCTPackageInfoTest"
-RESOURCE_DIR=/opt/usr/media
+RESOURCE_DIR=/home/app/content
 OTHERS_EXISTS=true
 
 function installpkg(){
@@ -21,16 +21,16 @@ function installpkg(){
     #eg:cp xx $RESOURCE_DIR
 
     ### copy media files ###
-    if [ -d /opt/usr/media/tct/opt/$PACKAGENAME/mediasrc ]; then
-        if [ -d /home/app/content/Others ]; then
-            cp -f /opt/usr/media/tct/opt/$PACKAGENAME/mediasrc/*  /home/app/content/Others/
+    if [ -d $RESOURCE_DIR/tct/opt/$PACKAGENAME/mediasrc ]; then
+        if [ -d $RESOURCE_DIR/Others ]; then
+            cp -f $RESOURCE_DIR/tct/opt/$PACKAGENAME/mediasrc/*  $RESOURCE_DIR/Others/
         else
             OTHERS_EXISTS=false
-            mkdir -p /home/app/content/Others/
-            cp -f /opt/usr/media/tct/opt/$PACKAGENAME/mediasrc/*  /home/app/content/Others/
+            mkdir -p $RESOURCE_DIR/Others/
+            cp -f $RESOURCE_DIR/tct/opt/$PACKAGENAME/mediasrc/*  $RESOURCE_DIR/Others/
         fi
     else
-        echo "Cp media files fail, please check if exists file: /opt/usr/media/tct/opt/$PACKAGENAME/mediasrc/ ..."
+        echo "Cp media files fail, please check if exists file: $RESOURCE_DIR/tct/opt/$PACKAGENAME/mediasrc/ ..."
     fi
 }
 
@@ -55,22 +55,22 @@ function uninstallpkg(){
 TCTPackageManagerTest2.2.2.wgt"
 
     if [ !$OTHERS_EXISTS ]; then
-        rm -rf /home/app/content/Others
+        rm -rf $RESOURCE_DIR/Others
     else
         for mediafile in $MEDIAFILE; do
-            if [ -f /home/app/content/Others/$mediafile ]; then
-                rm -f /home/app/content/Others/$mediafile
+            if [ -f $RESOURCE_DIR/Others/$mediafile ]; then
+                rm -f $RESOURCE_DIR/Others/$mediafile
             else
-                echo "Remove media files fail, please check if exists file: /home/app/content/Others/$mediafile ..."
+                echo "Remove media files fail, please check if exists file: $RESOURCE_DIR/Others/$mediafile ..."
             fi
         done
     fi
 
     ### remove source file ###
-    if [ -d /opt/usr/media/tct/opt/$PACKAGENAME ];then
-        rm -rf /opt/usr/media/tct/opt/$PACKAGENAME
+    if [ -d $RESOURCE_DIR/tct/opt/$PACKAGENAME ];then
+        rm -rf $RESOURCE_DIR/tct/opt/$PACKAGENAME
     else
-        echo "Remove source file fail,please check if the source file exist: /opt/usr/media/tct/opt/$PACKAGENAME ..."
+        echo "Remove source file fail,please check if the source file exist: $RESOURCE_DIR/tct/opt/$PACKAGENAME ..."
     fi
 }
 

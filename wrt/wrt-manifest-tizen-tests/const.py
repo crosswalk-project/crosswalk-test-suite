@@ -1,11 +1,12 @@
 import sys, os
 import itertools, shutil
 
-if not os.path.isdir("/opt/usr/media/tct/opt/wrt-manifest-tizen-tests"):
-   print "not /opt/usr/media/tct/opt/wrt-manifest-tizen-tests. Please pack.sh -> unzip .zip->inst.sh "
+RESOURCE_DIR = "/home/app/content"
+if not os.path.isdir(RESOURCE_DIR + "/tct/opt/wrt-manifest-tizen-tests"):
+   print "not " + RESOURCE_DIR + "/tct/opt/wrt-manifest-tizen-tests. Please pack.sh -> unzip .zip->inst.sh "
    sys.exit(1)
 else:
-   os.chdir("/opt/usr/media/tct/opt/wrt-manifest-tizen-tests/") 
+   os.chdir(RESOURCE_DIR + "/tct/opt/wrt-manifest-tizen-tests/") 
    path = os.getcwd()
    print path
    path_tcs = path + "/tcs"

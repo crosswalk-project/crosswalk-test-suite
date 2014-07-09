@@ -9,7 +9,7 @@ USAGE="Usage: ./inst.sh [-i] [-u]
 #TODO:update PACKAGENAME for each suite,pay attention to use '_'
 PACKAGENAME=tct_testconfig
 SUITENAME=`echo $PACKAGENAME |sed 's/_/-/g'`
-RESOURCE_DIR=/opt/usr/media
+RESOURCE_DIR=/home/app/content
 
 function installpkg(){
 extend=".apk"
@@ -18,7 +18,7 @@ ls |grep arm.apk  > /dev/null 2>&1 && extend="_arm.apk"
 
 
 ### copy json file ###
-adb shell cp -f /opt/usr/media/tct/opt/$SUITENAME/preconfigure.json /opt/usr/media/tct/
+adb shell cp -f $RESOURCE_DIR/tct/opt/$SUITENAME/preconfigure.json $RESOURCE_DIR/tct/
 
 #TODO: copy resource
 #eg:adb push xx $RESOURCE_DIR
@@ -28,10 +28,10 @@ function uninstallpkg(){
 
 #TODO: remove resource
 #eg:adb shell rm -rf $RESOURCE_DIR/xx
-adb shell rm -rf /opt/usr/media/tct/opt/$SUITENAME &>/dev/null
+adb shell rm -rf $RESOURCE_DIR/tct/opt/$SUITENAME &>/dev/null
 
-###### remove preconfigure.json from /opt/usr/media/tct/ ######
-adb shell rm -f /opt/usr/media/tct/preconfigure.json &>/dev/null
+###### remove preconfigure.json from $RESOURCE_DIR/tct/ ######
+adb shell rm -f $RESOURCE_DIR/tct/preconfigure.json &>/dev/null
 }
 
 case "$1" in

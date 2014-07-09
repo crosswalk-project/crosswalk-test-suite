@@ -12,6 +12,7 @@ fi
 type="apk"
 
 SRC_ROOT=$PWD
+RESOURCE_DIR=/home/app/content
 
 # clean
 function clean_workspace(){

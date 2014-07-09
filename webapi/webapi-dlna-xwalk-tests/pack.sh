@@ -37,6 +37,7 @@ if [[ -z $name || -z $version || -z $appname ]];then
 fi
 
 SRC_ROOT=$PWD
+RESOURCE_DIR=/home/app/content
 BUILD_ROOT=/tmp/${name}_pack
 BUILD_DEST=/tmp/${name}
 
@@ -86,7 +87,7 @@ cp -a $BUILD_ROOT/icon.png     $BUILD_DEST/
 cat > index.html << EOF
 <!doctype html>
 <head>
-    <meta http-equiv="Refresh" content="1; url=opt/$name/webrunner/index.html?testsuite=/opt/usr/media/tct/opt/$name/tests.xml">
+    <meta http-equiv="Refresh" content="1; url=opt/$name/webrunner/index.html?testsuite=$RESOURCE_DIR/tct/opt/$name/tests.xml">
 </head>
 EOF
 cp -f $BUILD_ROOT/config.xml.wgt $BUILD_DEST/config.xml

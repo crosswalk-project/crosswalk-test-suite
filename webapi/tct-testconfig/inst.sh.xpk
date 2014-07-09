@@ -8,14 +8,14 @@ USAGE="Usage: ./inst.sh [-i] [-u]
 
 PACKAGENAME=tct-testconfig
 XPKNAME=${PACKAGENAME}.xpk
-RESOURCE_DIR=/opt/usr/media
+RESOURCE_DIR=/home/app/content
 
 function installpkg(){
     ### copy json file ###
-    if [ -f /opt/usr/media/tct/opt/$PACKAGENAME/preconfigure.json ];then
-        cp -f /opt/usr/media/tct/opt/$PACKAGENAME/preconfigure.json /opt/usr/media/tct/
+    if [ -f $RESOURCE_DIR/tct/opt/$PACKAGENAME/preconfigure.json ];then
+        cp -f $RESOURCE_DIR/tct/opt/$PACKAGENAME/preconfigure.json $RESOURCE_DIR/tct/
     else
-        echo "cp file fails, please check if exists file: /opt/usr/media/tct/opt/$PACKAGENAME/preconfigure.json..."
+        echo "cp file fails, please check if exists file: $RESOURCE_DIR/tct/opt/$PACKAGENAME/preconfigure.json..."
     fi
 }
 
@@ -24,15 +24,15 @@ function uninstallpkg(){
     #eg:rm xx
 
     ### remove source file ###
-    if [ -d /opt/usr/media/tct/opt/$PACKAGENAME ];then
-        rm -rf /opt/usr/media/tct/opt/$PACKAGENAME
+    if [ -d $RESOURCE_DIR/tct/opt/$PACKAGENAME ];then
+        rm -rf $RESOURCE_DIR/tct/opt/$PACKAGENAME
     else
-        echo "Remove source file fail,please check if the source file exist: /opt/usr/media/tct/opt/$PACKAGENAME ..."
+        echo "Remove source file fail,please check if the source file exist: $RESOURCE_DIR/tct/opt/$PACKAGENAME ..."
     fi
 
-    ###### remove preconfigure.json from /opt/usr/media/tct/ ######
-    if [ -f /opt/usr/media/tct/preconfigure.json ];then
-        rm -f /opt/usr/media/tct/preconfigure.json
+    ###### remove preconfigure.json from $RESOURCE_DIR/tct/ ######
+    if [ -f $RESOURCE_DIR/tct/preconfigure.json ];then
+        rm -f $RESOURCE_DIR/tct/preconfigure.json
     fi
 }
 

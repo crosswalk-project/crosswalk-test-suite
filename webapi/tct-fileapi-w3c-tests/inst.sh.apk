@@ -9,7 +9,7 @@ USAGE="Usage: ./inst.sh [-i] [-u]
 #TODO:update PACKAGENAME for each suite,pay attention to use '_'
 PACKAGENAME=tct_fileapi_w3c_tests
 SUITENAME=`echo $PACKAGENAME |sed 's/_/-/g'`
-RESOURCE_DIR=/opt/usr/media
+RESOURCE_DIR=/home/app/content
 
 function installpkg(){
 extend=".apk"
@@ -18,9 +18,9 @@ ls |grep arm.apk  > /dev/null 2>&1 && extend="_arm.apk"
 
 adb install $PACKAGENAME$extend
 
-###### cp sample.html to /home/app/content/ ######
- adb shell mkdir -p /home/app/content/
- adb shell cp -f /opt/usr/media/tct/opt/$SUITENAME/fileapi/support/sample.html /home/app/content/
+###### cp sample.html to $RESOURCE_DIR/ ######
+ adb shell mkdir -p $RESOURCE_DIR/
+ adb shell cp -f $RESOURCE_DIR/tct/opt/$SUITENAME/fileapi/support/sample.html $RESOURCE_DIR/
 
 #TODO: copy resource
 #eg:adb push xx $RESOURCE_DIR
@@ -31,10 +31,10 @@ adb uninstall org.xwalk.$PACKAGENAME
 
 #TODO: remove resource
 #eg:adb shell rm -rf $RESOURCE_DIR/xx
-adb shell rm -rf /opt/usr/media/tct/opt/$SUITENAME &>/dev/null
+adb shell rm -rf $RESOURCE_DIR/tct/opt/$SUITENAME &>/dev/null
 
-###### remove sample.html from /home/app/content/ ######
-adb shell rm -f /home/app/content/sample.html &>/dev/null
+###### remove sample.html from $RESOURCE_DIR/ ######
+adb shell rm -f $RESOURCE_DIR/sample.html &>/dev/null
 
 }
 

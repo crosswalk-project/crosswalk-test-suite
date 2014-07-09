@@ -11,7 +11,7 @@ PACKAGENAME=webapi_runtime_xwalk_tests
 SUBPACKAGENAME1=onLaunched_test
 SUBPACKAGENAME2=onSuspend_test
 SUITENAME=`echo $PACKAGENAME |sed 's/_/-/g'`
-RESOURCE_DIR=/opt/usr/media
+RESOURCE_DIR=/home/app/content
 
 function installpkg(){
 extend=".apk"
@@ -32,7 +32,7 @@ adb uninstall org.xwalk.$SUBPACKAGENAME2
 
 #TODO: remove resource
 #eg:adb shell rm -rf $RESOURCE_DIR/xx
-adb shell rm -rf /opt/usr/media/tct/opt/$SUITENAME &>/dev/null
+adb shell rm -rf $RESOURCE_DIR/tct/opt/$SUITENAME &>/dev/null
 }
 
 case "$1" in

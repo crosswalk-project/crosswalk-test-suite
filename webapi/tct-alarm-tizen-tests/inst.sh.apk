@@ -10,7 +10,7 @@ USAGE="Usage: ./inst.sh [-i] [-u]
 PACKAGENAME=tct_alarm_tizen_tests
 SUBPACKAGENAME=UnitTest_AlarmTest1
 SUITENAME=`echo $PACKAGENAME |sed 's/_/-/g'`
-RESOURCE_DIR=/opt/usr/media
+RESOURCE_DIR=/home/app/content
 
 function installpkg(){
 extend=".apk"
@@ -30,7 +30,7 @@ adb uninstall org.xwalk.$SUBPACKAGENAME
 
 #TODO: remove resource
 #eg:adb shell rm -rf $RESOURCE_DIR/xx
-adb shell rm -rf /opt/usr/media/tct/opt/$SUITENAME &>/dev/null
+adb shell rm -rf $RESOURCE_DIR/tct/opt/$SUITENAME &>/dev/null
 }
 
 case "$1" in

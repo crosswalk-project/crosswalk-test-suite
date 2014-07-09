@@ -2,6 +2,7 @@
 
 local_path=$(cd "$(dirname $0)";pwd)
 NAME=$(basename $local_path)
+RESOURCE_DIR=/home/app/content
 
 folderName_tmp=${NAME#*-}
 folderName=${folderName_tmp%%-*}
@@ -25,10 +26,10 @@ function installpkg()
 function uninstallpkg()
 {
 #clear resouce
-if [ -d /opt/usr/media/tct/opt/$NAME ];then
-    rm -rf /opt/usr/media/tct/opt/$NAME
+if [ -d $RESOURCE_DIR/tct/opt/$NAME ];then
+    rm -rf $RESOURCE_DIR/tct/opt/$NAME
 else
-    echo "Remove source file fail,please check if the source file exist: /opt/usr/media/tct/opt/$NAME ..."
+    echo "Remove source file fail,please check if the source file exist: $RESOURCE_DIR/tct/opt/$NAME ..."
 fi
 }
 

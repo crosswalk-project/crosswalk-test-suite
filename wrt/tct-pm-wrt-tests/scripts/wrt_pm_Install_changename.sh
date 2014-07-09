@@ -20,8 +20,9 @@
 #        Yue, jianhui <jianhuix.a.yue@intel.com>
 
 source $(dirname $0)/Common
-origin_name=/opt/usr/media/tct/opt/tct-pm-wrt-tests/test-widget.wgt
-change_name=/opt/usr/media/tct/opt/tct-pm-wrt-tests/test-widget-testing.wgt
+RESOURCE_DIR=/home/app/content
+origin_name=$RESOURCE_DIR/tct/opt/tct-pm-wrt-tests/test-widget.wgt
+change_name=$RESOURCE_DIR/tct/opt/tct-pm-wrt-tests/test-widget-testing.wgt
 if [ -f $origin_name ];then
   mv $origin_name $change_name
 else
