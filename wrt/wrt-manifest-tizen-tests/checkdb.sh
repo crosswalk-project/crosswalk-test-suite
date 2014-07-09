@@ -32,4 +32,3 @@ PACKAGENAME="$path/$1"
 Result="Pass"
 
 sqlite3 /home/app/.config/xwalk-service/applications.db "select count(*) from applications;"
-sleep 0.5s

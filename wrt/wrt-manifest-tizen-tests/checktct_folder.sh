@@ -29,6 +29,10 @@
 path=$(dirname $(dirname $0))
 xpksuite_name=wrt-manifest-tizen-tests
 PACKAGENAME="$path/$1"
-Result="Pass"
 
-sqlite3 /home/app/.config/xwalk-service/applications.db "select id,manifest from applications limit $1,1;"
+[ -d /opt/usr/media/tct ] ||  mkdir -p /opt/usr/media/tct
+if [ -e /opt/usr/media/tct ];then
+    echo "create device /opt/usr/media/tct ok"
+else
+    echo "create device /opt/usr/media/tct fail"
+fi
