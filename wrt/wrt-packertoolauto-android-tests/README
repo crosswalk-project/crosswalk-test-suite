@@ -1,0 +1,40 @@
+## Introduction
+
+This test suite is for wrt-packertoolauto-android-tests
+
+## Precondition
+
+1. download and install allpairs
+   http://sourceforge.net/projects/allpairs/files/allpairs/
+2. sdb connect to device.
+3. maybe need local root authority.
+4. Edit your input_seed.txt(in ./allpairs/) file to generate webapp.
+5. Make sure xwalk running on device
+
+## Authors:
+
+* Xu, Kang <kangx.xu@intel.com>
+
+## LICENSE
+
+Copyright (c) 2014 Intel Corporation.
+Except as noted, this software is licensed under BSD-3-Clause License.
+Please see the COPYING file for the BSD-3-Clause License.
+
+1. pict is seed file folder:
+  1.1 input_seed.txt is seed file for positive cases.
+      input_seed_negative.txt is seed file for negative cases.
+      Values separator "," name:a,b
+  2.1 output.txt is allpairs output file.
+  3.1 case.txt is cases file.
+
+2. ./result/ folder save cases result file.
+
+3. ./metacomm/ folder is allpairs resource.
+
+Test Step:
+1. unzip wrt-packertoolauto-android-tests<version>.zip
+2. cd opt/wrt-packertoolauto-android-tests/
+3. ./inst.sh
+4. cd /opt/usr/media/tct/opt/wrt-packertoolauto-android-tests/
+5. python test.py
