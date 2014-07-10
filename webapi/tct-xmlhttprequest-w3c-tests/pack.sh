@@ -91,7 +91,7 @@ cp -a $BUILD_ROOT/icon.png     $BUILD_DEST/
 cat > index.html << EOF
 <!doctype html>
 <head>
-    <meta http-equiv="Refresh" content="1; url=opt/$name/webrunner/index.html?testsuite=$RESOURCE_DIR/tct/opt/$name/tests.xml">
+    <meta http-equiv="Refresh" content="1; url=http://127.0.0.1/opt/$name/webrunner/index.html?testsuite=$RESOURCE_DIR/tct/opt/$name/tests.xml">
 </head>
 EOF
 cp -f $BUILD_ROOT/config.xml.wgt $BUILD_DEST/config.xml

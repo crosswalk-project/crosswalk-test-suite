@@ -7,11 +7,11 @@ USAGE="Usage: ./inst.sh [-i] [-u]
 [-i] option was set as default."
 
 PACKAGENAME=tct-widgetpolicy-w3c-tests
-XPKNAME=${PACKAGENAME}.wgt
+WGTNAME=${PACKAGENAME}.wgt
 RESOURCE_DIR=/home/app/content
 
 function installpkg(){
-    xwalkctl --install $(dirname $0)/$XPKNAME
+    xwalkctl --install $(dirname $0)/$WGTNAME
 
     #TODO: copy resource
     #eg:cp xx $RESOURCE_DIR

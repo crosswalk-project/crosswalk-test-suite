@@ -13,4 +13,8 @@ whitelist="
 inst.sh
 tests.xml
 tests.full.xml
+COPYING
+LICENSE.Apache-2.0
+LICENSE.CC-BY-3.0
+NOTICE
 mediasrc"
