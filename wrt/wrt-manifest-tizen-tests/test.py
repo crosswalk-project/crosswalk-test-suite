@@ -32,11 +32,14 @@ def do_Selfcom(self_combin_file,out_file):
         print Exception,":",e 
 
 
-def gen_Manifest_Json(output_file):
+def gen_Manifest_Json(output_file,in_file):
     try:
         global Manifest_Row
         file = open(output_file)
-        #fp_manifest = open(const.path + "/manifest_all.txt",'w+')
+        if (Test_Flag=="positive"):
+            fp_manifest = open(const.report_path + "/manifest_all_positive.txt" ,'w+')
+        else:
+            fp_manifest = open(const.report_path + "/manifest_all_negative.txt" ,'a+')
         manifest="{\n  "
         name_list=[]
         get_self=""
@@ -72,6 +75,8 @@ def gen_Manifest_Json(output_file):
             fp.writelines(get_self)
             print "\n-----------------------------------------------------------"
             print get_self
+            fp_manifest.writelines("manifest" + str(Manifest_Row+1) + "\n--------------------------------\n" +
+             get_self+"\n--------------------------------\n")
             Manifest_Row = Manifest_Row+1
             fp.close()
             #start copy folder
@@ -84,7 +89,7 @@ def gen_Manifest_Json(output_file):
             do_Clear(const.path_tcs + "/manifest" +str(Manifest_Row))
             get_self=""
         file.close()
-        #fp_manifest.close()
+        fp_manifest.close()
         return "<--------------- Generate manifest.json O.K ------------------>"
     except Exception,e: 
         print Exception,"------------------------->:",e 
@@ -127,8 +132,7 @@ def del_Seed(in_file,order_count):
             os.remove(const.selfcomb_file)
         for i in range (0,len(self_file)):
             line_count = fileline_count(const.path + "/self/" + self_file[i] + "_input.txt")
-            if (int(order_count) < line_count):
-                line_count = order_count
+
             if (line_count >= 2):
                 lists = [[] for m in range(line_count)]
                 open_input_file = open(const.path + "/self/" + self_file[i] + "_input.txt",'a+')
@@ -168,13 +172,13 @@ def del_Seed(in_file,order_count):
             do_Selfcom(const.path + "/self/" + self_file[i] + "_output.txt",const.selfcomb_file)
         
         #2*********selfcomb -> output file  by allpairs
-        gen_selfcomb_File(const.selfcomb_file,order_count)
+        gen_selfcomb_File(const.selfcomb_file,order_count, in_file)
 
         #3*********output -> manifest.json
         if (Test_Flag=="negative"):
-            print gen_Manifest_Json(const.output_file_ne)
+            print gen_Manifest_Json(const.output_file_ne, in_file)
         else:
-            print gen_Manifest_Json(const.output_file)
+            print gen_Manifest_Json(const.output_file, in_file)
         log_Log(" Generate output.txt file ok"+ "\n") 
         return "Manifest.json output ------------------------->O.K"
     except Exception,e: 
@@ -182,10 +186,10 @@ def del_Seed(in_file,order_count):
         log_Log(" Generate output.txt file error" + e + "\n") 
         return "Manifest.json output ------------------------->Error"
 
-def gen_selfcomb_File(comb_file,order_count):
+def gen_selfcomb_File(comb_file,order_count,in_file):
     try:
-        if (os.path.isfile("./allpairs/output.txt") & (Test_Flag=="positive")):
-           os.system("rm -f ./allpairs/output.txt ./allpairs/output_negative.txt >/dev/null")
+        #if (os.path.isfile("./allpairs/output.txt") & (Test_Flag=="positive")):
+        os.system("rm -f ./allpairs/output.txt ./allpairs/output_negative.txt >/dev/null")
         if (Test_Flag=="negative"):
             open_output_file= open(const.output_file_ne,'a+')
         else:
@@ -478,11 +482,11 @@ def manifest_Packing(pakeNo,pakeType):
         do_Clear("./opt")
         os.system("rm -rf *.zip")
         os.makedirs("./opt/wrt-manifest-tizen-tests")
-        shutil.copy("./appinstall.sh","./opt/wrt-manifest-tizen-tests/")
-        shutil.copy("./applaunch.sh","./opt/wrt-manifest-tizen-tests/")
-        shutil.copy("./appuninstall.sh","./opt/wrt-manifest-tizen-tests/")
-        shutil.copy("./checkdb.sh","./opt/wrt-manifest-tizen-tests/")
-        shutil.copy("./checkdb_new.sh","./opt/wrt-manifest-tizen-tests/")
+        shutil.copy(const.sh_path +"/appinstall.sh","./opt/wrt-manifest-tizen-tests/")
+        shutil.copy(const.sh_path +"/applaunch.sh","./opt/wrt-manifest-tizen-tests/")
+        shutil.copy(const.sh_path +"/appuninstall.sh","./opt/wrt-manifest-tizen-tests/")
+        shutil.copy(const.sh_path +"/checkdb.sh","./opt/wrt-manifest-tizen-tests/")
+        shutil.copy(const.sh_path +"/checkdb_new.sh","./opt/wrt-manifest-tizen-tests/")
         cmd_packing="python ./allpairs/make_xpk.py "
         if (pakeNo =="all"):#all is not support now,please use default 
             for i in range (1,(Manifest_Row+1)):
@@ -502,6 +506,7 @@ def manifest_Packing(pakeNo,pakeType):
                     os.system("zip -rq ../../opt/wrt-manifest-tizen-tests/" + str(pakeNo) +"." + pakeType+" ./")
                     os.chdir(const.path)
         os.system("zip -rq " + const.name + "-"+const.version +"." + pakeType+".zip ./opt")
+        os.system("rm -rf key.pem")
         log_Log(" Packing webapp " + pakeNo + " ok "+ "\n") 
     except Exception,e:
         log_Log(" Packing webapp " + pakeNo + " error " + e +"\n")  
@@ -539,8 +544,10 @@ def launcher_WebApp(pakeType,Manifest_Row, tcs_manifest):
         add_webapp = int(get_dbcount_after) - int(get_dbcount_before)
         cmd_checkdb_new = "sdb -s " + Device_Ip +" shell \"su - app -c 'export DBUS_SESSION_BUS_ADDRESS=unix:path=/run/user/5000/dbus/user_bus_socket;" + RESOURCE_DIR + "/tct/opt/wrt-manifest-tizen-tests/checkdb_new.sh " + str(int(get_dbcount_after)-1) + "'\""
         get_fromdb = get_from_DB(cmd_checkdb_new,tcs_manifest)
+        log_Log(" check DB--------->" + Manifest_Row + " get DB= " + str(get_fromdb) + "\n")
         if ((add_webapp==1) & (get_fromdb[0]=="GET") & (Test_Flag=="positive")): #install ok and test =positive
               print "Install---------> OK "
+              log_Log(" install--------->" + Manifest_Row + " OK"+ "\n") 
               fail_message = "install ok"
               auto_result = "PASS"
               #launcher app
@@ -549,6 +556,7 @@ def launcher_WebApp(pakeType,Manifest_Row, tcs_manifest):
               get_cmdback = get_runback(cmd_launchapp,"launch",Pkgids)
               if ((get_cmdback[0].strip("\r\n"))=="Launch ok"):
                   print "Launch---------> OK"
+                  log_Log(" launch--------->" + Manifest_Row + " OK"+ "\n")
                   fail_message = "launch webapp ok"
                   #uninstall app
                   cmd_uninstallapp="sdb -s " + Device_Ip +" shell \"su - app -c 'export DBUS_SESSION_BUS_ADDRESS=unix:path=/run/user/5000/dbus/user_bus_socket;" + RESOURCE_DIR + "/tct/opt/wrt-manifest-tizen-tests/appuninstall.sh " + Pkgids +"'\""
@@ -559,6 +567,7 @@ def launcher_WebApp(pakeType,Manifest_Row, tcs_manifest):
 
                   if (uninstall_webapp==0):
                        print "Uninstall-------> OK"
+                       log_Log(" uninstall--------->" + Manifest_Row + " OK"+ "\n") 
                        auto_result = "PASS"
                        fail_message = "uninstall and db check ok"
                   else:
@@ -566,20 +575,35 @@ def launcher_WebApp(pakeType,Manifest_Row, tcs_manifest):
                       print "Uninstall-------> Fail"
               else:
                 fail_message = "launch fail"
+        elif ((add_webapp==1) & (Test_Flag=="positive")): # positive install ok but test fail
+              auto_result = "FAIL"
+              fail_message = "install ok but check db fail"
+              log_Log(" install--------->" + Manifest_Row + " check DB fail"+ "\n")
+              print "Positive test ----------> install OK but check DB fail" 
+              Pkgids = get_fromdb[1]
+              cmd_uninstallapp="sdb -s " + Device_Ip +" shell \"su - app -c 'export DBUS_SESSION_BUS_ADDRESS=unix:path=/run/user/5000/dbus/user_bus_socket;/opt/usr/media/tct/opt/wrt-manifest-tizen-tests/appuninstall.sh " + Pkgids +"'\""
+              get_cmdback = get_runback(cmd_uninstallapp,"uninstall","")               
         elif ((add_webapp==0) & (Test_Flag=="positive")): #install ok and test =positive
               auto_result = "FAIL"
               fail_message = "install and db check fail"
+              log_Log(" install--------->" + Manifest_Row + " fail"+ "\n")
               print "Positive test ----------> install or check DB fail"
         elif ((add_webapp==1) & (Test_Flag=="negative")): #install ok and test =negative
               auto_result = "FAIL" 
+              log_Log(" negative test install ok:--------->" + Manifest_Row + " fail"+ "\n")
               fail_message = "negative test install ok: Fail"  
               print "Negative test-------> Install ok: Fail"
+              Pkgids = get_fromdb[1]
+              cmd_uninstallapp="sdb -s " + Device_Ip +" shell \"su - app -c 'export DBUS_SESSION_BUS_ADDRESS=unix:path=/run/user/5000/dbus/user_bus_socket;/opt/usr/media/tct/opt/wrt-manifest-tizen-tests/appuninstall.sh " + Pkgids +"'\""
+              get_cmdback = get_runback(cmd_uninstallapp,"uninstall","")  
         elif ((add_webapp==0) & (Test_Flag=="negative")): #install ok and test =negative
               auto_result = "PASS" 
+              log_Log(" negative test install fail :--------->" + Manifest_Row + " pass"+ "\n")
               fail_message = "negative install fail: Pass"
               print "Negative test-------> Install fail: Pass"                        
         else:
             auto_result = "FAIL"
+            log_Log(" other fail:--------->" + Manifest_Row + "\n")
             fail_message = "install fail"
             print "-------------Install/Launch/Uninstall Fail-------------------"
         #key input pass or faile
@@ -593,7 +617,7 @@ def launcher_WebApp(pakeType,Manifest_Row, tcs_manifest):
     except Exception,e: 
         log_Log(" test webapp " + Manifest_Row + " error " + e + "\n") 
         print Exception,"Launch webapp error:",e 
-        sys.exit(1)    
+        sys.exit(1)   
         
 def get_runback(cmdline,step,pkgids):
     try:
@@ -621,6 +645,7 @@ def get_Input_Result():
 def get_from_DB(cmdline,manifest):
     try:
         read_line = os.popen(cmdline).readlines()
+        log_Log(" get DB ="+ str(read_line))
         get_id = read_line[0].split("|")[0]
         get_manifest = manifest.strip("\n\r\t").split(",")
         for i in range(0,len(get_manifest)):
@@ -629,6 +654,9 @@ def get_from_DB(cmdline,manifest):
             get_manifest_name = get_manifest[i].split(":")[1][2:-1]
             get_db_name = read_line[0].find(get_manifest_name)
             if (get_db_name>=0):
+                print "Check From DB ------------------------->"
+                return "GET",get_id
+            elif ((str(get_manifest_name).find("<"))>=0 & (str(get_db_name).find("003C")>=0)):
                 print "Check From DB ------------------------->"
                 return "GET",get_id
             else:
@@ -700,7 +728,7 @@ def main(argv):
         global Test_Flag
         global logfile
         shutil.copy("./tests.report.xml",const.report_file)
-        logfile = file("./log.txt","w+")
+        logfile = file(const.log_path,"w+")
         do_Clear(const.path_tcs)
         log_Log(" test start\n")
         log_Log(" init summart file\n")
@@ -710,9 +738,13 @@ def main(argv):
         else:
             os.makedirs(const.path_result)
         do_Clear(const.path + "/self")
+        os.system("rm -f " + const.report_path + "/manifest_all_positive.txt")
+        os.system("rm -f " + const.report_path + "/manifest_all_negative.txt")
+        os.system("rm -f " + const.seed_negative + "/*~")
+        os.system("rm -f " + const.seed_positive + "/*~")        
         Device_Ip = get_Sdb_Devices()[0]
         os.system("sdb -s " + Device_Ip +" root on")
-        cmd_createtct = "sdb -s " + Device_Ip +" push checktct_folder.sh /opt/usr/media/ >/dev/null"
+        cmd_createtct = "sdb -s " + Device_Ip +" push " + const.sh_path +"/checktct_folder.sh /opt/usr/media/ >/dev/null"
         os.system(cmd_createtct)
         cmd_chmod = "sdb -s " + Device_Ip +" shell chmod 777 /opt/usr/media/checktct_folder.sh"
         os.system(cmd_chmod)
@@ -725,8 +757,12 @@ def main(argv):
              #input_seed -> selfcomb.txt->manifest.json
              del_Seed(const.seed_file,const.allpairs_order)
              Test_Flag = "negative"
-             if (fileline_count(const.seed_file_na) >=1) :
-               del_Seed(const.seed_file_na,const.allpairs_order)
+             for negativeseed in os.listdir(const.seed_negative):
+                 if (fileline_count(const.seed_negative+"/" + negativeseed) >=1) :
+                     do_Clear(const.path_tcs)
+                     do_Clear(const.path + "/opt")                 
+                     do_Clear(const.path + "/self")
+                     del_Seed(const.seed_negative + "/" + negativeseed,const.allpairs_order)
         for o, a in opts:
             if o in ('-h', '--help'):
                 Usage()
