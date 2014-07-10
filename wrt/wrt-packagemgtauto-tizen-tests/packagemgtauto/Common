@@ -116,8 +116,8 @@ xwalkctl --uninstall $1
 }
 
 function get_version_name(){
-        version=`sqlite3 /opt/home/app/.config/xwalk-service/applications.db "select id,manifest from applications;"| grep $1  | cut -d , -f 4 | cut -d : -f 2 | sed 's/"//g' | sed 's/}//g'`
-        name=`sqlite3 /opt/home/app/.config/xwalk-service/applications.db "select id,manifest from applications;"| grep $1  | cut -d , -f 3 | cut -d : -f 2 | sed 's/"//g' | sed 's/}//g'`
+        version=`sqlite3 /home/app/.config/xwalk-service/applications.db "select id,manifest from applications;"| grep $1  | cut -d , -f 4 | cut -d : -f 2 | sed 's/"//g' | sed 's/}//g'`
+        name=`sqlite3 /home/app/.config/xwalk-service/applications.db "select id,manifest from applications;"| grep $1  | cut -d , -f 3 | cut -d : -f 2 | sed 's/"//g' | sed 's/}//g'`
 }
 
 function get_app_id(){

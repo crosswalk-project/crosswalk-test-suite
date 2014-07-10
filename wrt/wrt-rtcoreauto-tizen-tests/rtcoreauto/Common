@@ -53,7 +53,7 @@ function get_app_id(){
 }
 
 function check_db(){
-  sqlite3 /opt/home/app/.config/xwalk-service/applications.db "select id,manifest from applications;" | grep $1 | grep $2
+  sqlite3 /home/app/.config/xwalk-service/applications.db "select id,manifest from applications;" | grep $1 | grep $2
   if [ $? -ne 0  ];then
     echo "cannot found $2 in applications.db"
     #uninstall webapp
