@@ -58,14 +58,12 @@ t.step(function () {
         assert_true("isConnected" in handler, "No isConnected in recordHandler.");
         assert_true("onconnect" in handler, "No onconnect in recordHandler.");
         assert_type(handler.unregister, "function", "Method unregister does not exist.");
-
-        assert_equals(retValue, undefined, "Method registerRFCOMMServiceByUUID returns wrong value.");
-
-        t.done();
     });
 
     powerOnSuccess = t.step_func(function () {
         retValue = adapter.registerRFCOMMServiceByUUID(CHAT_SERVICE_UUID, "Chat service", registerRFCOMMServiceByUUIDSuccess);
+        assert_equals(retValue, undefined, "Method registerRFCOMMServiceByUUID returns wrong value.");
+        t.done();
     });
 
     adapter = tizen.bluetooth.getDefaultAdapter();

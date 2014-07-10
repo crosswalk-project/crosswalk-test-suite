@@ -45,12 +45,12 @@ var adapter = null, t = async_test(document.title, {timeout: 180000}),
 t.step(function () {
     gotDeviceInfo = t.step_func(function (device) {
         check_bluetooth_device(device);
-        assert_equals(retValue, undefined, "Argument getDevice returns wrong value.");
-        t.done();
     });
 
     onBondingSuccess = t.step_func(function () {
         retValue = adapter.getDevice(REMOTE_DEVICE_ADDRESS, gotDeviceInfo);
+        assert_equals(retValue, undefined, "Argument getDevice returns wrong value.");
+        t.done();
     });
 
     onBondingError = t.step_func(function (e) {

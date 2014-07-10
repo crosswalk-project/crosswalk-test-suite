@@ -45,13 +45,12 @@ var adapter = null, t = async_test(document.title, {timeout: 180000}), createBon
 t.step(function () {
     createBondingSuccess = t.step_func(function (device) {
         check_bluetooth_device(device);
-        assert_equals(retValue, undefined, "createBonding returns wrong value");
-        t.done();
-
     });
 
     powerOnSuccess = t.step_func(function () {
         retValue = adapter.createBonding(REMOTE_DEVICE_ADDRESS, createBondingSuccess);
+        assert_equals(retValue, undefined, "createBonding returns wrong value");
+        t.done();
     });
 
     adapter = tizen.bluetooth.getDefaultAdapter();
