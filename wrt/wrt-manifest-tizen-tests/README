@@ -22,21 +22,20 @@ Except as noted, this software is licensed under BSD-3-Clause License.
 Please see the COPYING file for the BSD-3-Clause License.
 
 1. allpairs is seed file folder:
-  1.1 input_seed.txt is positive seed file.
+  1.1 allparis/positive -> positive seed folder
+      allparis/negative -> negative seed folder,support multi seed files 
+  1.2 seed file format:
      1)Values separator ","
        name-1:a,b
      2)The same field value separter by "-":
        name-1:a,b
        name-2:c,d
      3)Self combination add 'null' to each self field:
-       name-2:000,a000b,000b,b000,NULL,null
+       name-2:000,a000b,000b,b000,null
      4)The space character please use 000 to replace:
-       000a-> a,a00b->a b,b000->b 
-     5)The icon value include ",", so the separator is "comma",please refor to seed file:
+       000a-> a,a000b->a b,b000->b 
+     5)The icon value include ",", so the separator is "comma",please refer to seed file:
        icon-1:{"src": "icon/lowres"comma"sizes": "64x64"comma"type": "image/webp"}
-  1.2 input_seed_na.txt is negative tcs seed file.
-  2.1 output.txt is allpairs output file.
-  3.1 selfcomb.txt is self combination file.
 
 2. ./resource/ folder is webapp resource file, such as index.html icon.png....
 
@@ -44,9 +43,10 @@ Please see the COPYING file for the BSD-3-Clause License.
 
 4. ./metacomm/ folder is allpairs.
 
-5. ./manifest_all.txt is all manifest.json content.
-
-6. ./report/ save the auto report wrt-manifest-tizen-tests.xml file.
+5. ./report/ save the auto report wrt-manifest-tizen-tests.xml file.
+    5.1 manifest_all_positive.txt is all positive manifest.json content.
+    5.2 manifest_all_negative.txt is all negative manifest.json content.
+    5.3 log.txt is log file
 
 Test Step:
 1. unzip wrt-manifest-tizen-tests<version>.zip

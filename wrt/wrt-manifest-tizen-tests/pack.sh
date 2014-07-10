@@ -190,6 +190,7 @@ cp -r $BUILD_ROOT/allpairs $BUILD_DEST/opt/$name/allpairs
 cp -r $BUILD_ROOT/resource $BUILD_DEST/opt/$name/resource
 cp -r $BUILD_ROOT/metacomm $BUILD_DEST/opt/$name/metacomm
 cp -r $BUILD_ROOT/report $BUILD_DEST/opt/$name/report
+cp -r $BUILD_ROOT/script $BUILD_DEST/opt/$name/script
 #cp -r $BUILD_ROOT/*tests.xpk $BUILD_DEST/opt/$name/source
 cd $BUILD_DEST
 zip -rq $BUILD_DEST/opt/$name/$name.zip *
