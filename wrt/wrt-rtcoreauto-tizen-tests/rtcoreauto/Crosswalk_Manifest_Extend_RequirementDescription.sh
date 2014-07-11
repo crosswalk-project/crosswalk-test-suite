@@ -39,7 +39,7 @@ install_xpk $local_path/../source/ manifest_extend_requirement_description.xpk
 check_db $app_id "this_is_extend_test_case"
 
 #check not requirement
-sqlite3 /opt/home/app/.config/xwalk-service/applications.db "select id,manifest from applications;" | grep $app_id | grep "permission"
+sqlite3 /home/app/.config/xwalk-service/applications.db "select id,manifest from applications;" | grep $app_id | grep "permission"
 if [[ $? -eq 0 ]]; then
     echo "not defined, but the permission still in applications.db"
     xwalkctl --uninstall $app_id
