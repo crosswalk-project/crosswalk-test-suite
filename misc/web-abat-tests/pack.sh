@@ -63,9 +63,48 @@ cp -arf $SRC_ROOT/* $BUILD_ROOT/
 ## function for create wgt apk xpk ##
 
 function create_wgt(){
-    echo "Sorry,wgt is not support....... >>>>>>>>>>>>>>>>>>>>>>>>>"
+# create wgt
+cd $BUILD_DEST
+mkdir -p $BUILD_DEST/opt/$name/abat
+cp -r $BUILD_ROOT/abat/common/* $BUILD_DEST/opt/$name/abat
+cp -r $BUILD_ROOT/abat/tizen/* $BUILD_DEST/opt/$name/abat
+cp -r $BUILD_ROOT/webrunner $BUILD_DEST/opt/$name
+cp -r $BUILD_ROOT/resources $BUILD_DEST/opt/$name/abat
+
+mkdir -p $BUILD_DEST/$name
+cp -a $BUILD_ROOT/manifest.json   $BUILD_DEST/$name/
+cp -a $BUILD_ROOT/icon.png     $BUILD_DEST/$name/
+
+cat > index.html << EOF
+<!doctype html>
+<head>
+    <meta http-equiv="Refresh" content="1; url=opt/$name/webrunner/index.html?testsuite=$RESOURCE_DIR/tct/opt/$name/tests.xml">
+</head>
+EOF
+cp -f $BUILD_ROOT/config.xml.wgt $BUILD_DEST/config.xml
+zip -rq $BUILD_DEST/opt/$name/$name.wgt *
+if [ $? -ne 0 ];then
+    echo "Create $name.wgt fail.... >>>>>>>>>>>>>>>>>>>>>>>>>"
     clean_workspace
     exit 1
+fi
+
+# sign wgt
+if [ $sign -eq 1 ];then
+    # copy signing tool
+    echo "copy signing tool... >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>"
+    cp -arf $SRC_ROOT/../../tools/signing $BUILD_ROOT/signing
+    if [ $? -ne 0 ];then
+        echo "No signing tool found in $SRC_ROOT/../../tools.... >>>>>>>>>>>>>>>>>>>>>>>>>"
+    fi
+    wgt=$(find $BUILD_DEST/opt/$name/ -name *.wgt)
+    for wgt in $(find $BUILD_DEST/opt/$name/ -name *.wgt);do
+        $BUILD_ROOT/signing/sign-widget.sh --dist platform $wgt
+        if [ $? -ne 0 ];then
+            echo "Please check your signature files... >>>>>>>>>>>>>>>>>>>>>>>>>"
+        fi
+    done
+fi
 }
 
 function create_apk(){
@@ -131,9 +170,23 @@ function create_crx(){
 
 ## zip function ##
 function zip_for_wgt(){
-    echo "zip_for_crx not ready yet... >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>"
-    clean_workspace
-    exit 1
+    cd $BUILD_DEST
+    cp $BUILD_ROOT/tests.xml.xpk $BUILD_DEST/opt/$name/tests.xml
+
+    if [ $platform == "generic" ]; then
+        cp -af $BUILD_ROOT/inst.sh.wgt.generic $BUILD_DEST/opt/$name/inst.sh
+    else
+        cp -af $BUILD_ROOT/inst.sh.wgt $BUILD_DEST/opt/$name/inst.sh
+    fi
+    cp -af $BUILD_ROOT/COPYING $BUILD_DEST/opt/$name/
+    mv $BUILD_ROOT/$name.wgt $BUILD_DEST/opt/$name/
+
+    zip -Drq $BUILD_DEST/$name-$version.wgt.zip opt/
+    if [ $? -ne 0 ];then
+        echo "Create zip package fail... >>>>>>>>>>>>>>>>>>>>>>>>>"
+        clean_workspace
+        exit 1
+    fi
 }
 
 function zip_for_apk(){
