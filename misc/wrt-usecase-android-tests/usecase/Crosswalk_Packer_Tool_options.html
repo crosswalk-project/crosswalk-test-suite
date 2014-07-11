@@ -26,14 +26,14 @@ NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE,
 EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
 Authors:
-    Shen,Lin <linx.a.shen@intel.com>
+    Xu,Yuhan <yuhanx.xu@intel.com>
 
 -->
 
 <html>
   <head>
     <meta charset='utf-8'>
-    <title>Crosswalk_WebApp_Integration_Termined_BackKey</title>
+    <title>Crosswalk_Packer_Tool_options</title>
     <link rel="author" title="Intel" href="http://www.intel.com">
   </head>
   <body>
@@ -41,15 +41,29 @@ Authors:
       <strong>Test steps:</strong>
     </p>
     <ol>
-      <li>Click webapp icon in app launcher.</li>
-      <li>Press back key.</li>
+      <li>Cd into packaging tool directory in Command Prompt. Eg: "cd C:\working\Crosswalk\Crosswalk-3.32.46.0\crosswalk"</li>
+      <li>Package an web app with app-version option, command like: python make_apk.py --name=xxxx --package=xxxx.xwalk.org
+       --app-root=app_path --app-local-path=index.html --app-version=1.0.0 --description=YourApplicationDescription --fullscreen
+       --mode=embedded --orientation=landscape --target-dir=/home/path/to/</li>
+      <li>Check the webapp version</li>
+      <li>Check the packaging tool folder</li>
+      <li>Check the value of "android:description" in app folder/AndroidManifest.xml</li>
+      <li>Check the description in variable path (mostly in app folder/res/values/string.xml)</li>
+      <li>Install the apk packaged</li>
+      <li>Launch the webapp</li>
     </ol>
     <p>
       <strong>Expected Output:</strong>
     </p>
     <ol>
-      <li>Web app is able to be launch successfully.</li>
-      <li>The web app should be termined and back to app launcher.</li>
+      <li>There is a “make_apk.py” file in the folder</li>
+      <li>Two apks created with "x86" and "arm" arch and embedded mode in the target dir correctly</li>
+      <li>The version of the webapp is 1.0.0</li>
+      <li>There generated an app folder</li>
+      <li>There is variable path for description</li>
+      <li>The description of the webapp is: YourApplicationDescription</li>
+      <li>Web app could be installed successfully</li>
+      <li>Web app could be launched with fullscreen and the screen orientation is landscape</li>
     </ol>
   </body>
 </html>

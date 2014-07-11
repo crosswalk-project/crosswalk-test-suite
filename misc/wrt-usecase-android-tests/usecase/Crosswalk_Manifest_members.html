@@ -26,14 +26,14 @@ NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE,
 EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
 Authors:
-    Shen,Lin <linx.a.shen@intel.com>
+    IVAN CHEN <yufeix.chen@intel.com>
 
 -->
 
 <html>
   <head>
     <meta charset='utf-8'>
-    <title>Crosswalk_WebApp_Orientation</title>
+    <title>Crosswalk_Manifest_members</title>
     <link rel="author" title="Intel" href="http://www.intel.com">
   </head>
   <body>
@@ -41,17 +41,21 @@ Authors:
       <strong>Test steps:</strong>
     </p>
     <ol>
-      <li>Click web app icon in app launcher</li>
-      <li>Rotate device from portrait orientation to landscape orientation</li>
-      <li>Rotate device from landscape orientation to portrait orientation</li>
+      <li>Install webapp by typing "adb install launch_fullscreen_true_tests.apk"</li>
+      <li>Check the version of webapp in AppManage.</li>
+      <li>Check the icon of webapp in AppManage,Launcher screen.</li>
+      <li>Click app icon to launch the app.</li>
+      <li>Check the screen.</li>
     </ol>
     <p>
       <strong>Expected Output:</strong>
     </p>
     <ol>
-      <li>Web app is able to be launch successfully</li>
-      <li>The device display with landscape orientation</li>
-      <li>The device display with portrait orientation</li>
+      <li>Webapp installed successfully, no error, no warning message.</li>
+      <li>The version of webapp display "1.0.10.4".</li>
+      <li>The manifest icon of webapp display normally, consistent with the images in the app.</li>
+      <li>The app launched successfully</li>
+      <li>The app launched in fullscreen mode and there is a "Pass" display(or a "Fail" changes to "Pass" in a while)</li>
     </ol>
   </body>
 </html>

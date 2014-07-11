@@ -33,7 +33,7 @@ Authors:
 <html>
   <head>
     <meta charset='utf-8'>
-    <title>Crosswalk_Remote_Debugging_Not_Default</title>
+    <title>Crosswalk_Cookie_Add_Remove_Cookies</title>
     <link rel="author" title="Intel" href="http://www.intel.com">
   </head>
   <body>
@@ -41,21 +41,19 @@ Authors:
       <strong>Test steps:</strong>
     </p>
     <ol>
-      <li>Package an web app without enable-remote-debugging option, command like: python make_apk.py --name=xxxx --package=xxxx.xwalk.org --app-root=app_path --app-local-path=index.html</li>
-      <li>Install the web app on the device and launch it</li>
-      <li>Open Chrome Browser(version >=29) in the host machine and input "chrome://inspect" in the address bar</li>
-      <li>In the Host Console, input 'adb shell am broadcast -a org.xwalk.intent -e remotedebugging true'</li>
-      <li>In the Host Console, input 'adb shell am broadcast -a org.xwalk.intent -e remotedebugging false'</li>
+      <li>Input new Cookie name & value</li>
+      <li>Click "Set Test Cookie"</li>
+      <li>Continue to add new cookies for 3 times</li>
+      <li>Click "Remove Cookie" button</li>
     </ol>
     <p>
       <strong>Expected Output:</strong>
     </p>
     <ol>
-      <li>The web app could be packaged successfully</li>
-      <li>The web app could be installed and launched successfully</li>
-      <li>No web app info is showed in the inspection page.</li>
-      <li>The web app will be shown in the inspection page, Click to the button 'inspect' to inspect it.</li>
-      <li>The web app info will dispear in the inspection page.</li>
+      <li>The coodie could be removed successfully</li>
+      <li>Cookie name and value can be input</li>
+      <li>New cookie is added and showing correctly</li>
+      <li>New cookies is added and showing correctly</li>
     </ol>
   </body>
 </html>
