@@ -1,9 +1,4 @@
 #!/bin/bash
-wgt_installer="pkgcmd"
-NAME=$(basename $(cd $(dirname $0);pwd))
-TESTLIST=($NAME ViewportTest)
-RESULT_ROOT="/home/app/content/Documents"
-RESOURCE_DIR="/home/app/content"
 
 #parse params
 USAGE="Usage: ./inst.sh [-i] [-u]
@@ -11,78 +6,42 @@ USAGE="Usage: ./inst.sh [-i] [-u]
   -u uninstall wgt and remove source file
 [-i] option was set as default."
 
+PACKAGENAME=tct-behavior-tests
+WGTNAME=${PACKAGENAME}.wgt
+TESTLIST=($PACKAGENAME ViewportTest)
+RESOURCE_DIR=/home/app/content
+
 function installpkg(){
-### install wgt ###
-type $wgt_installer > /dev/null 2>&1
-for test in ${TESTLIST[@]}
-do
-    if [ $? -eq 0 ]; then
-        [ -e $RESOURCE_DIR/tct/opt/$NAME/$test.wgt ] && $wgt_installer -i -t wgt -q -p $RESOURCE_DIR/tct/opt/$NAME/$test.wgt
-        if [ $? -eq 0 ]; then
-            echo "Install $RESOURCE_DIR/tct/opt/$NAME/$test.wgt to /opt/usr/apps/`wrt-launcher -l 2> /dev/null | grep $NAME | tail -n 1 | awk '{ print $(NF-1) }'` done"
-            echo "$(wrt-launcher -l | grep $test | awk '{ print $(NF-1) }') sdbd rw" | smackload
-            ### copy test result style file ###
-            if [ -d $RESOURCE_DIR/tct/opt/$NAME/res ];then
-                # tct-behavior-result not existed
-                if [ ! -d $RESULT_ROOT/tct-behavior-result ];then
-                    mkdir -p $RESULT_ROOT/tct-behavior-result
-                fi
-                # copy test result styles
-                resarr=("css/testresult.xsl" "css/testkit/tests.css" "images/testkit/back_top.png" "js/testkit/application.js" "js/jquery.js")
-                for i in ${resarr[@]}
-                do
-                    cp $RESOURCE_DIR/tct/opt/$NAME/res/$i $RESULT_ROOT/tct-behavior-result
-                done
-            fi
-        else
-            echo "Install /opt/$NAME/$test.wgt fail ..."
-        fi
-        sync
-    fi
-done
+    for test in ${TESTLIST[@]}
+    do
+        xwalkctl --install $(dirname $0)/${test}.wgt
+    done
+
+    #TODO: copy resource
+    #eg:cp xx $RESOURCE_DIR
 }
 
 function uninstallpkg(){
-### uninstall wgt ###
-type $wgt_installer > /dev/null 2>&1
-for test in ${TESTLIST[@]}
-do
-    if [ $? -eq 0 ]; then
-        package_id=`wrt-launcher -l 2> /dev/null | grep $test | tail -n 1 | awk '{ print $(NF-1) }'`
-        if [ -n "$(ps -ef | grep $package_id | grep -v grep | awk '{print $2}')" ]; then
-            for i in $(ps -ef | grep $package_id | grep -v grep | awk '{print $2}')
-            do
-                kill -9 $i
-                if [ "$?" -ne 0 ]; then
-                    echo "Kill the processes of $test fail ..."
-                else
-                    echo "Kill the processes of $test done"
-                fi
-            done
-        fi
+    xwalkctl >/tmp/apps.txt 2>&1
+    for test in ${TESTLIST[@]}
+    do
+      pkgids=`cat /tmp/apps.txt | grep $test | awk '{print $(NF-1)}'`
+      for pkgid in $pkgids
+      do
+         xwalkctl --uninstall $pkgid
+      done
+    done
 
-        if [ -n "$package_id" ]; then
-            $wgt_installer -u -q -t wgt -n $package_id
-            if [ "$?" -ne 0 ]; then
-                    echo "Uninstall $test fail ..."
-            else
-                    echo "Uninstall $test done"
-            fi
-            sync
-        fi
-    fi
-done
+    #TODO: remove resource
+    #eg:rm xx
 
-### remove source file ###
-if [ -d $RESOURCE_DIR/tct/opt/$NAME ];then
-    rm -rf $RESOURCE_DIR/tct/opt/$NAME
-else
-    echo "Remove source file fail,please check if the source file exist: $RESOURCE_DIR/tct/opt/$NAME ..."
+    ### remove source file ###
+    if [ -d $RESOURCE_DIR/tct/opt/$PACKAGENAME ];then
+        rm -rf $RESOURCE_DIR/tct/opt/$PACKAGENAME
+    else
+        echo "Remove source file fail,please check if the source file exist: $RESOURCE_DIR/tct/opt/$PACKAGENAME ..."
 fi
-### remove test result style file ###
-if [ -d $RESULT_ROOT/tct-behavior-result ];then
-    rm -rf $RESULT_ROOT/tct-behavior-result
-fi
+
 }
 
 case "$1" in
