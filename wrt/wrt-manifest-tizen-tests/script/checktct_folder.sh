@@ -30,9 +30,9 @@ path=$(dirname $(dirname $0))
 xpksuite_name=wrt-manifest-tizen-tests
 PACKAGENAME="$path/$1"
 
-[ -d /opt/usr/media/tct ] ||  mkdir -p /opt/usr/media/tct
-if [ -e /opt/usr/media/tct ];then
-    echo "create device /opt/usr/media/tct ok"
+[ -d /home/app/content/tct/ ] ||  mkdir -p /home/app/content/tct/
+if [ -e /home/app/content/tct/ ];then
+    echo "create device /home/app/content/tct ok"
 else
-    echo "create device /opt/usr/media/tct fail"
+    echo "create device /home/app/content/tct fail"
 fi
