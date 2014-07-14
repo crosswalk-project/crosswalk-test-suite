@@ -52,9 +52,9 @@ test(function (){
     });
 
     var i, alarm, alarmAll, retVal, argumentsList = [null, undefined, "string", 1, false, ["one", "two"], {arg: 1}, function () {}];
-    tizen.alarm.removeAll();
-    alarm =  createAbsAlarm();
     for (i = 0; i < argumentsList.length; i++) {
+        tizen.alarm.removeAll();
+        alarm =  createAbsAlarm();
         tizen.alarm.add(alarm, APPLICATION_ID);
         alarmAll = tizen.alarm.getAll();
         assert_equals(alarmAll.length, 1 , "number of added alarms should be 1");
