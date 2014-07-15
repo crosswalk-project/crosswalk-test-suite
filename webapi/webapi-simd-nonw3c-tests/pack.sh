@@ -88,7 +88,7 @@ function create_wgt(){
 cd $BUILD_DEST
 cp -af $BUILD_ROOT/manifest.json   $BUILD_DEST/
 cp -af $BUILD_ROOT/icon.png $BUILD_DEST/
-cp -af $BUILD_ROOT/config.xml $BUILD_DEST/
+cp -af $BUILD_ROOT/config.xml.wgt $BUILD_DEST/config.xml
 cat > index.html << EOF
 <!doctype html>
 <head>
