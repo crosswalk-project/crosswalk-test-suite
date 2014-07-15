@@ -114,41 +114,139 @@ function create_pure()
 
 ## function for create wgt apk xpk ##
 
+#function create_wgt(){
+## create wgt
+#cd $BUILD_DEST
+#cp -a $BUILD_ROOT/manifest.json   $BUILD_DEST/
+#cp -a $BUILD_ROOT/icon.png     $BUILD_DEST/
+#cat > index.html << EOF
+#<!doctype html>
+#<head>
+#    <meta http-equiv="Refresh" content="1; url=opt/$name/webrunner/index.html?testsuite=$RESOURCE_DIR/tct/opt/$name/tests.xml">
+#</head>
+#EOF
+#cp -f $BUILD_ROOT/config.xml.wgt $BUILD_DEST/config.xml
+#zip -rq $BUILD_DEST/opt/$name/$name.wgt *
+#if [ $? -ne 0 ];then
+#    echo "Create $name.wgt fail.... >>>>>>>>>>>>>>>>>>>>>>>>>"
+#    clean_workspace
+#    exit 1
+#fi
+#
+## sign wgt
+#if [ $sign -eq 1 ];then
+#    # copy signing tool
+#    echo "copy signing tool... >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>"
+#    cp -arf $SRC_ROOT/../../tools/signing $BUILD_ROOT/signing
+#    if [ $? -ne 0 ];then
+#        echo "No signing tool found in $SRC_ROOT/../../tools.... >>>>>>>>>>>>>>>>>>>>>>>>>"
+#    fi
+#    wgt=$(find $BUILD_DEST/opt/$name/ -name *.wgt)
+#    for wgt in $(find $BUILD_DEST/opt/$name/ -name *.wgt);do
+#        $BUILD_ROOT/signing/sign-widget.sh --dist platform $wgt
+#        if [ $? -ne 0 ];then
+#            echo "Please check your signature files... >>>>>>>>>>>>>>>>>>>>>>>>>"
+#        fi
+#    done
+#fi
+#}
 function create_wgt(){
 # create wgt
-cd $BUILD_DEST
-cp -a $BUILD_ROOT/manifest.json   $BUILD_DEST/
-cp -a $BUILD_ROOT/icon.png     $BUILD_DEST/
-cat > index.html << EOF
-<!doctype html>
-<head>
-    <meta http-equiv="Refresh" content="1; url=opt/$name/webrunner/index.html?testsuite=$RESOURCE_DIR/tct/opt/$name/tests.xml">
-</head>
-EOF
-cp -f $BUILD_ROOT/config.xml.wgt $BUILD_DEST/config.xml
-zip -rq $BUILD_DEST/opt/$name/$name.wgt *
-if [ $? -ne 0 ];then
-    echo "Create $name.wgt fail.... >>>>>>>>>>>>>>>>>>>>>>>>>"
-    clean_workspace
+cd $BUILD_ROOT
+pack_fail='FALSE'
+suite_dir=${PWD}
+all_dirs=`ls -l --time-style="long-iso" $suite_dir/webapp | grep '^d' | awk '{print $8}'|grep -v signing`
+black_dirs=''
+signing_white_dirs=''
+
+#black list reserved for some non-suite folders.
+if [ -f "$suite_dir/blackdirs" ]; then
+    black_dirs=`cat $suite_dir/blackdirs`
+    echo "Got black dirs: $black_dirs"
+fi
+
+#signning white list reserved for some signing folders.
+if [ -f "$suite_dir/signing_whitedirs" ]; then
+    signing_white_dirs=`cat $suite_dir/signing_whitedirs`
+    echo "Got signing white dirs: $signing_white_dirs"
+fi
+
+function check_blackdir()
+{
+  for bdir in ${black_dirs[@]}; do
+    if [ $1 == $bdir ]; then
+      return 1;
+    fi
+  done
+  return 0
+}
+
+function check_signing_whitedir()
+{
+  for signing_wdir in ${signing_white_dirs[@]}; do
+    if [ $1 == $signing_wdir ]; then
+      return 1;
+    fi
+  done
+  return 0
+}
+
+echo "-->> Creating widgets >>--"
+echo `${PWD}`
+cd webapp
+for app in $all_dirs; do
+    check_blackdir $app
+    if [ $? == 1 ]; then
+        echo "Got a black dir: $app"
+        continue
+    elif [ $(find $app|wc -l) -eq 1 ]; then
+        echo "No files found in $app, skip it ..."
+        continue
+    else
+        if [ -f $app.wgt ]; then
+            echo "Delete old packaged file"
+            rm -rf $app.wgt
+        fi
+        cd $app
+        echo "Start pack $app ..."
+        zip -rq ../../$app.wgt *
+        if [ $? -ne 0 ]; then
+            pack_fail='TRUE'
+            echo "Create $app.wgt fail, continue to pack others"
+        else
+            check_signing_whitedir $app
+            if [ $? == 0 ];then
+               echo "$app is not in signing white dir, not sign for it."
+               cd $suite_dir/webapp
+               continue
+            fi
+            if [ -d "$BUILD_ROOT/signing" ]; then
+                echo "Start sign wgt ..."
+                $BUILD_ROOT/signing/sign-widget.sh --dist platform $BUILD_ROOT/$app.wgt
+            else
+                echo "Not found signing folder."
+            fi
+            echo -e "Done\n"
+        fi
+        cd $suite_dir
+    fi
+done
+echo "-- Create widgets done --"
+if [ $pack_fail != 'FALSE' ]; then
+    echo "Fail to pack some packages ..."
     exit 1
 fi
 
-# sign wgt
-if [ $sign -eq 1 ];then
-    # copy signing tool
-    echo "copy signing tool... >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>"
-    cp -arf $SRC_ROOT/../../tools/signing $BUILD_ROOT/signing
-    if [ $? -ne 0 ];then
-        echo "No signing tool found in $SRC_ROOT/../../tools.... >>>>>>>>>>>>>>>>>>>>>>>>>"
-    fi
-    wgt=$(find $BUILD_DEST/opt/$name/ -name *.wgt)
-    for wgt in $(find $BUILD_DEST/opt/$name/ -name *.wgt);do
-        $BUILD_ROOT/signing/sign-widget.sh --dist platform $wgt
-        if [ $? -ne 0 ];then
-            echo "Please check your signature files... >>>>>>>>>>>>>>>>>>>>>>>>>"
-        fi
-    done
+# build
+echo "build from workspace... >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>"
+cd  $BUILD_ROOT
+./autogen && ./configure --prefix=/ && make && make install DESTDIR=$BUILD_DEST
+if [ $? -ne 0 ];then
+    echo "build fail,please check Makefile.am and cofigure.ac... >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>"
+    clean_workspace
+    exit 1
 fi
+find $BUILD_DEST -name "Makefile*" -delete
 }
 
 function create_apk(){
@@ -234,6 +332,7 @@ function zip_for_wgt(){
 cd $BUILD_DEST
 # cp inst.sh script #
 cp -af $BUILD_ROOT/inst.sh.wgt $BUILD_DEST/opt/$name/inst.sh
+cp -af $BUILD_ROOT/*.wgt $BUILD_DEST/opt/$name/
 
 if [ $src_file -eq 0 ];then
     for file in $(ls opt/$name |grep -v wgt);do
