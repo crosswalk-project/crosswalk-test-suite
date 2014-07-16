@@ -6,13 +6,18 @@ USAGE="Usage: ./inst.sh [-i] [-u]
   -u uninstall xpk and remove source file
 [-i] option was set as default."
 
-PACKAGENAME=wrt-stabrecovery-tizen-tests
+PACKAGENAME=wrt-common-webapp-tests
 XPKNAME=${PACKAGENAME}.wgt
 RESOURCE_DIR=/home/app/content
 
 function installpkg(){
-    xwalkctl --install $(dirname $0)/$XPKNAME
-
+for xpkfile in $(ls *.xpk)
+do
+ if [ ${apkfile:0:14} = "update_version" ];then
+    continue
+ fi
+ xwalkctl --install $(dirname $0)/$XPKNAME
+done
     #TODO: copy resource
     #eg:cp xx $RESOURCE_DIR
 }
