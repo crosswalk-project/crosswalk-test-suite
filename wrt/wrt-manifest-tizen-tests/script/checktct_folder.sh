@@ -32,7 +32,7 @@ PACKAGENAME="$path/$1"
 
 [ -d /home/app/content/tct/ ] ||  mkdir -p /home/app/content/tct/
 if [ -e /home/app/content/tct/ ];then
-    echo "create device /home/app/content/tct ok"
+    echo "pass"
 else
-    echo "create device /home/app/content/tct fail"
+    echo "fail"
 fi
