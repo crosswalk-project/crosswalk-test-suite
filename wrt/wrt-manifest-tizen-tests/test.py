@@ -88,7 +88,7 @@ def gen_Manifest_Json(output_file,in_file):
                 #start packing
                 manifest_Packing("manifest" + str(Manifest_Row),Pack_Type)
                 get_run_back = launcher_WebApp(Pack_Type,str(Manifest_Row),get_self)
-                print "Run Webapp Times -------------------------------->",i,get_run_back
+                print "Run Webapp Times ---------------------------->",i,get_run_back
                 if (get_run_back=="testend"):
                     break
                 elif((get_run_back=="testagain") & (i==2)):
@@ -435,6 +435,7 @@ def result_manifest_XML(webappFile,auto_Result,manifest_cont):
 
 def testreport_auto_XML(webappName,auto_Result,tcs_manifest,tcs_message):
     try:
+        print "_______________________________________________",auto_Result
         tree = ElementTree()
         tree.parse(const.report_file)
         root = tree.getroot()
@@ -461,6 +462,9 @@ def testreport_auto_XML(webappName,auto_Result,tcs_manifest,tcs_message):
                     actualresult.text = auto_Result
                     tree.write(const.report_file)
                 else:
+                    cnode = root.getiterator("testcase")
+                    resultnode = cnode[-1]
+                    resultnode.set("result",auto_Result)
                     actualresultnode = root.getiterator("actual_result")
                     actualresult = actualresultnode[-1]
                     actualresult.text = auto_Result
@@ -507,10 +511,13 @@ def testreport_auto_XML(webappName,auto_Result,tcs_manifest,tcs_message):
                    actualresult.text = auto_Result
                    tree.write(const.report_file)
                else:
-                   actualresultnode = root.getiterator("actual_result")
-                   actualresult = actualresultnode[-1]
-                   actualresult.text = auto_Result
-                   tree.write(const.report_file) 
+                    cnode = root.getiterator("testcase")
+                    resultnode = cnode[-1]
+                    resultnode.set("result",auto_Result)
+                    actualresultnode = root.getiterator("actual_result")
+                    actualresult = actualresultnode[-1]
+                    actualresult.text = auto_Result
+                    tree.write(const.report_file) 
            else:
               SubElement(lst_node[1],"testcase", {'component':'Runtime Core','purpose':'Check if packaged web application can be installed/launched/uninstalled successfully','execution_type' : 'auto', 'id' : "manifest"+webappName ,'result': auto_Result})
               cnode = root.getiterator("testcase")
@@ -576,11 +583,15 @@ def launcher_WebApp(pakeType,Manifest_Row, tcs_manifest):
         auto_result = "FAIL"
         fail_message = ""
         dt_format = dt_now.strftime('%m_%d_%H_%M_%S')
-        cmd_pushxpk = "sdb -s " + Device_Ip +" push " + const.name + "-" + const.version +"." + pakeType + ".zip " +  const.device_path + " >/dev/null"
-        cmd_unzipxpk = "sdb -s " + Device_Ip +" shell unzip -od " + const.device_path + "  " + const.device_path + const.name + "-" + const.version + "." + pakeType + ".zip >/dev/null"
+        cmd_pushxpk = "sdb -s " + Device_Ip +" push " + const.name + "-" + const.version +"." + pakeType + ".zip " +  const.device_path 
+        cmd_unzipxpk = "sdb -s " + Device_Ip +" shell unzip -od " + const.device_path + "  " + const.device_path + const.name + "-" + const.version + "." + pakeType + ".zip "
         cmd_installapp="sdb -s " + Device_Ip +" shell \"su - app -c 'export DBUS_SESSION_BUS_ADDRESS=unix:path=/run/user/5000/dbus/user_bus_socket;" + const.device_path + "/opt/wrt-manifest-tizen-tests/appinstall.sh "+ const.device_path +"/opt/wrt-manifest-tizen-tests/manifest" + str(Manifest_Row) +  "." + pakeType +"'\""
-        os.system(cmd_pushxpk)
-        os.system(cmd_unzipxpk)
+        print "------------push webapp----------->"
+        get_push = get_runback(cmd_pushxpk,"push","")
+        log_Log(" push webapp--------->" + str(Manifest_Row) + str(get_push) + "\n")
+        print "------------unzip webapp----------->"        
+        get_unzip = get_runback(cmd_unzipxpk,"unzip","")
+        log_Log(" unzip webapp--------->" + str(Manifest_Row) + str(get_unzip) + "\n")        
         cmd_chmod = "sdb -s " + Device_Ip +" shell chmod 777 "+const.device_path+"/opt/wrt-manifest-tizen-tests/appinstall.sh"
         os.system(cmd_chmod)
         cmd_chmod = "sdb -s " + Device_Ip +" shell chmod 777 "+const.device_path+"/opt/wrt-manifest-tizen-tests/applaunch.sh"
@@ -597,8 +608,10 @@ def launcher_WebApp(pakeType,Manifest_Row, tcs_manifest):
         cmd_checkdb="sdb -s " + Device_Ip +" shell \"su - app -c 'export DBUS_SESSION_BUS_ADDRESS=unix:path=/run/user/5000/dbus/user_bus_socket;" + const.device_path + "/opt/wrt-manifest-tizen-tests/checkdb.sh '\""
         get_dbcount_before = get_runback(cmd_checkdb,"install","")[0].strip("\n\r")
         get_cmdback = get_runback(cmd_installapp,"install","")
+        log_Log(" check DB--------->" + str(Manifest_Row) + " install webapp info= " + str(get_cmdback) + "\n")
         get_dbcount_after = get_runback(cmd_checkdb,"install","")[0].strip("\n\r")
         add_webapp = int(get_dbcount_after) - int(get_dbcount_before)
+        log_Log(" check DB--------->" + str(Manifest_Row) + " check DB new webapp= " + str(add_webapp) + "\n")
         cmd_checkdb_new = "sdb -s " + Device_Ip +" shell \"su - app -c 'export DBUS_SESSION_BUS_ADDRESS=unix:path=/run/user/5000/dbus/user_bus_socket;"+const.device_path+"/opt/wrt-manifest-tizen-tests/checkdb_new.sh " + str(int(get_dbcount_after)-1) + "'\""
         get_fromdb = get_from_DB(cmd_checkdb_new,tcs_manifest)
         log_Log(" check DB--------->" + str(Manifest_Row) + " get DB= " + str(get_fromdb) + "\n")
@@ -695,7 +708,8 @@ def get_runback(cmdline,step,pkgids):
         read_line = os.popen(cmdline).readlines()
         return read_line     
     except Exception,e: 
-        print Exception,"get runback error:",e 
+        print Exception,"get runback error:",e
+        return "Exception-->",read_line,e
          
 def get_Input_Result():
     try:
@@ -735,6 +749,8 @@ def get_from_DB(cmdline,manifest):
           return "NONE"
     except Exception,e: 
         print Exception,"Get db record error:",e 
+        return "NONE"
+
   
 
 
@@ -815,7 +831,7 @@ def main(argv):
         os.system("rm -f " + const.seed_positive + "/*~")        
         Device_Ip = get_Sdb_Devices()[0]
         os.system("sdb -s " + Device_Ip +" root on")
-        cmd_createtct = "sdb -s " + Device_Ip +" push " + const.sh_path +"/checktct_folder.sh /home/app/content/ >/dev/null"
+        cmd_createtct = "sdb -s " + Device_Ip +" push " + const.sh_path +"/checktct_folder.sh /home/app/content/"
         os.system(cmd_createtct)
         cmd_chmod = "sdb -s " + Device_Ip +" shell chmod 777 /home/app/content/checktct_folder.sh"
         os.system(cmd_chmod)
