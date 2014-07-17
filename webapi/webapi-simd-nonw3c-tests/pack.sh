@@ -92,7 +92,7 @@ cp -af $BUILD_ROOT/config.xml.wgt $BUILD_DEST/config.xml
 cat > index.html << EOF
 <!doctype html>
 <head>
-    <meta http-equiv="Refresh" content="1; url=opt/$name/webrunner/index.html?testsuite=$RESOURCE_DIR/tct/opt/$name/tests.xml">
+    <meta http-equiv="Refresh" content="1; url=opt/$name/webrunner/index.html?testsuite=../tests.xml&testprefix=../../..">
 </head>
 EOF
 zip -rq $BUILD_DEST/opt/$name/$name.wgt *
