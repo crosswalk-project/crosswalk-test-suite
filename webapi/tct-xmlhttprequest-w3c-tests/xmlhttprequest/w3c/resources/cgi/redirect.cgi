@@ -36,7 +36,7 @@ val=`echo "$QUERY_STRING" | cgi-getfield code`
 val=`echo "$QUERY_STRING" | cgi-getfield location`
 [ $? -eq 0 ] && LOCATION="$val"
 
-[ -n "$LOCATION" ] && LOCATION="$SCRIPT_NAME?followed"
+[ -z "$LOCATION" ] && LOCATION="$SCRIPT_NAME?followed"
 
 echo "Status: $CODE WEBSRT MARKETING"
 echo "Location: $LOCATION"
