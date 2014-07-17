@@ -25,6 +25,6 @@ else:
    sh_path = path + "/script"
    log_path = report_path + "/log.txt"
    device_path = "/home/app/content/tct/"
-   allpairs_order = 2
+   run_times = 3
    version="6.35.1.2"
    name="wrt-manifest-tizen-tests"
