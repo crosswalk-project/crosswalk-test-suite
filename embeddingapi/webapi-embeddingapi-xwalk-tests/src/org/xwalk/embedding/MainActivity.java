@@ -14,27 +14,25 @@ import android.view.Window;
 import android.view.WindowManager;
 
 public class MainActivity extends Activity {
-     
+
     protected XWalkView mXWalkView;
-    
+
     public XWalkView getXWalkView()
     {
-        
         return mXWalkView;
     }
-    
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        
+
         this.requestWindowFeature(Window.FEATURE_NO_TITLE);
         this.getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN);
-        
+
         setContentView(R.layout.xwview_layout);
         mXWalkView = (XWalkView) findViewById(R.id.xwalkview);
     }
-    
-    
+
     /*
      * When the activity is paused, XWalkView.onHide() and XWalkView.pauseTimers() need to be called.
      */
@@ -69,5 +67,5 @@ public class MainActivity extends Activity {
             mXWalkView.onDestroy();
         }
     }
-    
+
 }

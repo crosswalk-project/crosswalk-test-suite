@@ -27,29 +27,29 @@ import android.os.SystemClock;
 
 
 public class XWalkViewTestBase extends ActivityInstrumentationTestCase2<MainActivity> {
-    
-     public XWalkViewTestBase(Class<MainActivity> activityClass) {
-            super(activityClass);
-        }
-     
-     final String mExpectedStr = "xwalk";
-     
+
+    public XWalkViewTestBase(Class<MainActivity> activityClass) {
+        super(activityClass);
+    }
+
+    final String mExpectedStr = "xwalk";
+
     protected final static int WAIT_TIMEOUT_SECONDS = 15;
-    
-    protected XWalkView mXWalkView ;
+
+    protected XWalkView mXWalkView;
     protected MainActivity mainActivity;
-    
+    final TestHelperBridge mTestHelperBridge = new TestHelperBridge();
+
     private String mUrls[]=new String[3];
-    
+
     protected static final int NUM_NAVIGATIONS = 3;
-    
+
     private static final String PATHS[] = {
         "file:///android_asset/p1bar.html",
         "file:///android_asset/p2bar.html",
         "file:///android_asset/p3bar.html",
 };
-    
-    
+
     protected void setResourceClient(final XWalkResourceClient client) {
         getInstrumentation().runOnMainSync(new Runnable() {
             @Override
@@ -59,7 +59,6 @@ public class XWalkViewTestBase extends ActivityInstrumentationTestCase2<MainActi
         });
     }
 
-
     public XWalkViewTestBase() {
         super(MainActivity.class);
     }
@@ -67,21 +66,15 @@ public class XWalkViewTestBase extends ActivityInstrumentationTestCase2<MainActi
     @Override
     protected void setUp() throws Exception {
         super.setUp();
-        
         mainActivity = (MainActivity) getActivity();
-        
         getInstrumentation().runOnMainSync(new Runnable() {
             @Override
             public void run() {
-                
                 mXWalkView = mainActivity.getXWalkView();
                 mXWalkView.setUIClient(new TestXWalkUIClient());
             }
         });
-        
-        
     }
-
 
     protected void loadUrlAsync(final String url) throws Exception {
         getInstrumentation().runOnMainSync(new Runnable() {
@@ -91,7 +84,7 @@ public class XWalkViewTestBase extends ActivityInstrumentationTestCase2<MainActi
             }
         });
     }
-    
+
     protected void loadUrlAsync(final String url,final String content) throws Exception {
         getInstrumentation().runOnMainSync(new Runnable() {
             @Override
@@ -100,11 +93,9 @@ public class XWalkViewTestBase extends ActivityInstrumentationTestCase2<MainActi
             }
         });
     }
-    
-    
 
     protected void loadDataAsync(final String url, final String data, final String mimeType,
-             final boolean isBase64Encoded) throws Exception {
+            final boolean isBase64Encoded) throws Exception {
         getInstrumentation().runOnMainSync(new Runnable() {
             @Override
             public void run() {
@@ -112,7 +103,6 @@ public class XWalkViewTestBase extends ActivityInstrumentationTestCase2<MainActi
             }
         });
     }
-
 
     protected String getTitleOnUiThread() throws Exception {
         return runTestOnUiThreadAndGetResult(new Callable<String>() {
@@ -160,7 +150,7 @@ public class XWalkViewTestBase extends ActivityInstrumentationTestCase2<MainActi
             }
         });
     }
-    
+
     protected boolean hasEnteredFullScreenOnUiThread() throws Throwable {
         return runTestOnUiThreadAndGetResult(new Callable<Boolean>() {
             @Override
@@ -197,7 +187,7 @@ public class XWalkViewTestBase extends ActivityInstrumentationTestCase2<MainActi
             }
         });
     }
-    
+
     protected String getCurrentItemUrlOnUiThread() throws Exception {
         return runTestOnUiThreadAndGetResult(new Callable<String>() {
             @Override
@@ -206,7 +196,7 @@ public class XWalkViewTestBase extends ActivityInstrumentationTestCase2<MainActi
             }
         });
     }
-    
+
     protected String getNavigationUrlOnUiThread() throws Exception {
         return runTestOnUiThreadAndGetResult(new Callable<String>() {
             @Override
@@ -216,7 +206,7 @@ public class XWalkViewTestBase extends ActivityInstrumentationTestCase2<MainActi
             }
         });
     }
-    
+
     protected String getNavigationOriginalUrlOnUiThread() throws Exception {
         return runTestOnUiThreadAndGetResult(new Callable<String>() {
             @Override
@@ -226,7 +216,7 @@ public class XWalkViewTestBase extends ActivityInstrumentationTestCase2<MainActi
             }
         });
     }
-    
+
     protected String getNavigationTitleOnUiThread() throws Exception {
         return runTestOnUiThreadAndGetResult(new Callable<String>() {
             @Override
@@ -235,7 +225,7 @@ public class XWalkViewTestBase extends ActivityInstrumentationTestCase2<MainActi
             }
         });
     }
-    
+
     protected String getSizeOnUiThread() throws Exception {
         return runTestOnUiThreadAndGetResult(new Callable<String>() {
             @Override
@@ -244,7 +234,7 @@ public class XWalkViewTestBase extends ActivityInstrumentationTestCase2<MainActi
             }
         });
     }
-    
+
     protected String hasItemAtOnUiThread() throws Exception {
         return runTestOnUiThreadAndGetResult(new Callable<String>() {
             @Override
@@ -253,7 +243,7 @@ public class XWalkViewTestBase extends ActivityInstrumentationTestCase2<MainActi
             }
         });
     }
-    
+
     protected String getOriginalUrlOnUiThread() throws Exception {
         return runTestOnUiThreadAndGetResult(new Callable<String>() {
             @Override
@@ -289,8 +279,8 @@ public class XWalkViewTestBase extends ActivityInstrumentationTestCase2<MainActi
             }
         });
     }
-   
-    
+
+
     protected String getUrlFromManifestOnUiThread(final String path1,final String path2) throws Exception {
         return runTestOnUiThreadAndGetResult(new Callable<String>() {
             @Override
@@ -307,7 +297,7 @@ public class XWalkViewTestBase extends ActivityInstrumentationTestCase2<MainActi
             }
         });
     }
-    
+
     private String getAssetsFileContent(AssetManager assetManager, String fileName)
             throws IOException {
         String result = "";
@@ -325,7 +315,7 @@ public class XWalkViewTestBase extends ActivityInstrumentationTestCase2<MainActi
         }
         return result;
     }
-    
+
     public class PerformExecute implements Runnable
     {
         protected StringBuffer urlBuf;
@@ -338,7 +328,7 @@ public class XWalkViewTestBase extends ActivityInstrumentationTestCase2<MainActi
             
         }
     }
-    
+
     protected void goBackSync(final int n) throws Throwable {
         runTestWaitPageFinished(new Runnable(){
             @Override
@@ -377,8 +367,7 @@ public class XWalkViewTestBase extends ActivityInstrumentationTestCase2<MainActi
             SystemClock.sleep(1000);
         }
     }
-    
-    
+
     protected void saveAndRestoreStateOnUiThread() throws Throwable {
         getInstrumentation().runOnMainSync(new Runnable() {
             @Override
@@ -389,7 +378,7 @@ public class XWalkViewTestBase extends ActivityInstrumentationTestCase2<MainActi
             }
         });
     }
-    
+
     protected void checkHistoryItemList() throws Throwable {
         XWalkNavigationHistory history = getNavigationHistoryOnUiThread(mXWalkView);
         assertEquals(6, history.size());
@@ -399,25 +388,23 @@ public class XWalkViewTestBase extends ActivityInstrumentationTestCase2<MainActi
             assertEquals(mUrls[i], history.getItemAt(i).getUrl());
         }
     }
-    
+
     private XWalkNavigationHistory getNavigationHistoryOnUiThread(
             final XWalkView content) throws Throwable{
-            return runTestOnUiThreadAndGetResult(new Callable<XWalkNavigationHistory>() {
+        return runTestOnUiThreadAndGetResult(new Callable<XWalkNavigationHistory>() {
             @Override
             public XWalkNavigationHistory call() throws Exception {
                 return content.getNavigationHistory();
             }
         });
     }
-    
+
     @Override
     protected void tearDown() throws Exception {
-        
         mainActivity.finish();
         super.tearDown();
     }
-    
-    
+
     public class TestJavascriptInterface {
         public String getTextWithoutAnnotation() {
             return mExpectedStr;
@@ -427,20 +414,14 @@ public class XWalkViewTestBase extends ActivityInstrumentationTestCase2<MainActi
             return mExpectedStr;
         }
     }
-    
-    
-    
-    
-    //-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------  
-   
-    
-     class TestXWalkUIClientBase extends XWalkUIClient {
+
+    class TestXWalkUIClientBase extends XWalkUIClient {
         TestHelperBridge mInnerContentsClient;
         public TestXWalkUIClientBase(TestHelperBridge client) {
             super(getXWalkView());
             mInnerContentsClient = client;
         }
-        
+
         @Override
         public void onPageLoadStarted(XWalkView view, String url) {
             mInnerContentsClient.onPageStarted(url);
@@ -451,44 +432,36 @@ public class XWalkViewTestBase extends ActivityInstrumentationTestCase2<MainActi
             mInnerContentsClient.onPageFinished(url);
         }
     }
-    
+
     public class TestXWalkUIClient extends TestXWalkUIClientBase {
         public TestXWalkUIClient() {
             super(mTestHelperBridge);
         }
     }
-    
-   final TestHelperBridge mTestHelperBridge = new TestHelperBridge();
+
     protected void loadUrlSync(final String url) throws Exception {
         CallbackHelper pageFinishedHelper = mTestHelperBridge.getOnPageFinishedHelper();
         int currentCallCount = pageFinishedHelper.getCallCount();
         loadUrlAsync(url);
-        
+
         pageFinishedHelper.waitForCallback(currentCallCount, 1, WAIT_TIMEOUT_SECONDS,
                 TimeUnit.SECONDS);
     }
-    
+
     protected void loadUrlSync(final String url, final String content) throws Exception {
-        CallbackHelper pageFinishedHelper = mTestHelperBridge.getOnPageFinishedHelper();
-        int currentCallCount = pageFinishedHelper.getCallCount();
         loadUrlAsync(url, content);
-        
-        pageFinishedHelper.waitForCallback(currentCallCount, 1, WAIT_TIMEOUT_SECONDS,
-                TimeUnit.SECONDS);
     }
-    
 
     protected void loadAssetFile(String fileName) throws Exception {
-         CallbackHelper pageFinishedHelper = mTestHelperBridge.getOnPageFinishedHelper();
-         int currentCallCount = pageFinishedHelper.getCallCount();
+        CallbackHelper pageFinishedHelper = mTestHelperBridge.getOnPageFinishedHelper();
+        int currentCallCount = pageFinishedHelper.getCallCount();
         String fileContent = getFileContent(fileName);
         loadDataAsync(fileName, fileContent, "text/html", false);
-        
+
         pageFinishedHelper.waitForCallback(currentCallCount, 1, WAIT_TIMEOUT_SECONDS,
                 TimeUnit.SECONDS);
     }
-    
-    
+
     protected StringBuffer loadUrlSync2(final String url) throws Exception {
         final StringBuffer urlBuf = new StringBuffer() ;
         runTestWaitPageFinished(new Runnable() {
@@ -502,10 +475,10 @@ public class XWalkViewTestBase extends ActivityInstrumentationTestCase2<MainActi
                     }
                 });
             }
-         });
-         return urlBuf;
+        });
+        return urlBuf;
     }
-    
+
     protected void runTestWaitPageFinished(Runnable runnable) throws Exception{
         CallbackHelper pageFinishedHelper = mTestHelperBridge.getOnPageFinishedHelper();
         int currentCallCount = pageFinishedHelper.getCallCount();
