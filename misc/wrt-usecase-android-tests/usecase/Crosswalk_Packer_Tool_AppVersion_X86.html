@@ -41,17 +41,27 @@ Authors:
       <strong>Test steps:</strong>
     </p>
     <ol>
-      <li>Package an web app with 'x86' arch, command like: python make_apk.py --name=xxxx --package=xxxx.xwalk.org --app-url=http://www.intel.com --arch=x86 --app-version=1.0.0</li>
+      <li>Cd into packaging tool directory in Command Prompt. Eg: "cd C:\working\Crosswalk\Crosswalk-3.32.46.0\crosswalk"</li>
+      <li>Package an web app with 'x86' arch, command like: python make_apk.py --name=xxxx --package=xxxx.xwalk.org --app-url=http://www.intel.com --arch=x86 --app-version=1.0.0 --keep-screen-on --mode=shared</li>
+      <li>Package the web app again with verbose option: python make_apk.py --name=xxxx --package=xxxx.xwalk.org --app-url=http://www.intel.com --arch=x86 --app-version=1.0.0 --keep-screen-on --mode=shared --verbose</li>
+      <li>Compare the two packaging process messages in terminal</li>
       <li>Install the apk packaged</li>
+      <li>Set the device screen off as 15 seconds(Setting->Display->Sleep: 15 seconds)</li>
       <li>Check the webapp version in setting</li>
+      <li>Launch the webapp</li>
+      <li>Check the screen</li>
     </ol>
     <p>
       <strong>Expected Output:</strong>
     </p>
     <ol>
-      <li>Apk with "x86" arch could be created correctly</li>
+      <li>There is a “make_apk.py” file in the folder</li>
+      <li>Apk with "x86" arch and shared mode could be created correctly</li>
+      <li>Apk could be created correctly</li>
+      <li>There got more detailed messages in the second packaging</li>
       <li>Web app could be installed successfully</li>
       <li>The version of the webapp is like 1.0.0.x</li>
+      <li>Web app could be launched successfully, the home page display intel and keep screen on status more than 15 seconds</li>
     </ol>
   </body>
 </html>
