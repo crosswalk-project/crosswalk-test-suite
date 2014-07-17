@@ -593,7 +593,7 @@
       </testcase>
       <testcase purpose="Check if the zero function of float32x4 can change the parameter to 0.0." type="compliance" status="approved" component="WebAPI/Supplementary API Reference/SIMD" execution_type="auto" priority="P1" id="Float32x4_zero">
         <description>
-          <test_script_entry>/opt/webapi-simd-nonw3c-tests/simd/float32x4.html?total_num=2&amp;amp;locator_key=id&amp;amp;value=1</test_script_entry>
+          <test_script_entry>/opt/webapi-simd-nonw3c-tests/simd/float32x4.html?total_num=7&amp;amp;locator_key=id&amp;amp;value=1</test_script_entry>
         </description>
         <specs>
           <spec>
@@ -605,7 +605,7 @@
       </testcase>
       <testcase purpose="Check if the splat function of float32x4 can change the parameter to specified value." type="compliance" status="approved" component="WebAPI/Supplementary API Reference/SIMD" execution_type="auto" priority="P1" id="Float32x4_splat">
         <description>
-          <test_script_entry>/opt/webapi-simd-nonw3c-tests/simd/float32x4.html?total_num=2&amp;amp;locator_key=id&amp;amp;value=2</test_script_entry>
+          <test_script_entry>/opt/webapi-simd-nonw3c-tests/simd/float32x4.html?total_num=7&amp;amp;locator_key=id&amp;amp;value=2</test_script_entry>
         </description>
         <specs>
           <spec>
@@ -615,9 +615,69 @@
           </spec>
         </specs>
       </testcase>
+      <testcase purpose="Check if the fromFloat64x2 method of float32x4 is valid." type="compliance" status="desgined" component="WebAPI/Supplementary API Reference/SIMD" execution_type="auto" priority="P1" id="Float32x4_fromFloat64x2">
+        <description>
+          <test_script_entry>/opt/webapi-simd-nonw3c-tests/simd/float32x4.html?total_num=7&amp;amp;locator_key=id&amp;amp;value=3</test_script_entry>
+        </description>
+        <specs>
+          <spec>
+            <spec_assertion element_type="method" element_name="fromFloat64x2" interface="Float32x4" specification="SIMD" section="SIMD" category="SIMD"/>
+            <spec_url>https://github.com/johnmccutchan/ecmascript_simd/blob/master/README.md</spec_url>
+            <spec_statement/>
+          </spec>
+        </specs>
+      </testcase>
+      <testcase purpose="Check if the fromFloat64x2Bits method of float32x4 is valid." type="compliance" status="desgined" component="WebAPI/Supplementary API Reference/SIMD" execution_type="auto" priority="P1" id="Float32x4_fromFloat64x2Bits">
+        <description>
+          <test_script_entry>/opt/webapi-simd-nonw3c-tests/simd/float32x4.html?total_num=7&amp;amp;locator_key=id&amp;amp;value=4</test_script_entry>
+        </description>
+        <specs>
+          <spec>
+            <spec_assertion element_type="method" element_name="fromFloat64x2Bits" interface="Float32x4" specification="SIMD" section="SIMD" category="SIMD"/>
+            <spec_url>https://github.com/johnmccutchan/ecmascript_simd/blob/master/README.md</spec_url>
+            <spec_statement/>
+          </spec>
+        </specs>
+      </testcase>
+      <testcase purpose="Check if the fromInt32x4 method of float32x4 is valid." type="compliance" status="desgined" component="WebAPI/Supplementary API Reference/SIMD" execution_type="auto" priority="P1" id="Float32x4_fromInt32x4">
+        <description>
+          <test_script_entry>/opt/webapi-simd-nonw3c-tests/simd/float32x4.html?total_num=7&amp;amp;locator_key=id&amp;amp;value=5</test_script_entry>
+        </description>
+        <specs>
+          <spec>
+            <spec_assertion element_type="method" element_name="fromInt32x4" interface="Float32x4" specification="SIMD" section="SIMD" category="SIMD"/>
+            <spec_url>https://github.com/johnmccutchan/ecmascript_simd/blob/master/README.md</spec_url>
+            <spec_statement/>
+          </spec>
+        </specs>
+      </testcase>
+      <testcase purpose="Check if the fromInt32x4Bits method of float32x4 is valid." type="compliance" status="desgined" component="WebAPI/Supplementary API Reference/SIMD" execution_type="auto" priority="P1" id="Float32x4_fromInt32x4Bits">
+        <description>
+          <test_script_entry>/opt/webapi-simd-nonw3c-tests/simd/float32x4.html?total_num=7&amp;amp;locator_key=id&amp;amp;value=6</test_script_entry>
+        </description>
+        <specs>
+          <spec>
+            <spec_assertion element_type="method" element_name="fromInt32x4Bits" interface="Float32x4" specification="SIMD" section="SIMD" category="SIMD"/>
+            <spec_url>https://github.com/johnmccutchan/ecmascript_simd/blob/master/README.md</spec_url>
+            <spec_statement/>
+          </spec>
+        </specs>
+      </testcase>
+      <testcase purpose="Check if the select method of float32x4 is valid." type="compliance" status="desgined" component="WebAPI/Supplementary API Reference/SIMD" execution_type="auto" priority="P1" id="Float32x4_select">
+        <description>
+          <test_script_entry>/opt/webapi-simd-nonw3c-tests/simd/float32x4.html?total_num=7&amp;amp;locator_key=id&amp;amp;value=7</test_script_entry>
+        </description>
+        <specs>
+          <spec>
+            <spec_assertion element_type="method" element_name="select" interface="Float32x4" specification="SIMD" section="SIMD" category="SIMD"/>
+            <spec_url>https://github.com/johnmccutchan/ecmascript_simd/blob/master/README.md</spec_url>
+            <spec_statement/>
+          </spec>
+        </specs>
+      </testcase>
       <testcase purpose="Check if int32x4 object can be creat successful." type="compliance" status="approved" component="WebAPI/Supplementary API Reference/SIMD" execution_type="auto" priority="P1" id="Int32x4_constructor">
         <description>
-          <test_script_entry>/opt/webapi-simd-nonw3c-tests/simd/int32x4.html?total_num=11&amp;amp;locator_key=id&amp;amp;value=1</test_script_entry>
+          <test_script_entry>/opt/webapi-simd-nonw3c-tests/simd/int32x4.html?total_num=15&amp;amp;locator_key=id&amp;amp;value=1</test_script_entry>
         </description>
         <specs>
           <spec>
@@ -629,7 +689,7 @@
       </testcase>
       <testcase purpose="Check if the x value of int32x4 object can be got." type="compliance" status="approved" component="WebAPI/Supplementary API Reference/SIMD" execution_type="auto" priority="P1" id="Int32x4_getX">
         <description>
-          <test_script_entry>/opt/webapi-simd-nonw3c-tests/simd/int32x4.html?total_num=11&amp;amp;locator_key=id&amp;amp;value=2</test_script_entry>
+          <test_script_entry>/opt/webapi-simd-nonw3c-tests/simd/int32x4.html?total_num=15&amp;amp;locator_key=id&amp;amp;value=2</test_script_entry>
         </description>
         <specs>
           <spec>
@@ -641,7 +701,7 @@
       </testcase>
       <testcase purpose="Check if the y value of int32x4 object can be got." type="compliance" status="approved" component="WebAPI/Supplementary API Reference/SIMD" execution_type="auto" priority="P1" id="Int32x4_getY">
         <description>
-          <test_script_entry>/opt/webapi-simd-nonw3c-tests/simd/int32x4.html?total_num=11&amp;amp;locator_key=id&amp;amp;value=3</test_script_entry>
+          <test_script_entry>/opt/webapi-simd-nonw3c-tests/simd/int32x4.html?total_num=15&amp;amp;locator_key=id&amp;amp;value=3</test_script_entry>
         </description>
         <specs>
           <spec>
@@ -653,7 +713,7 @@
       </testcase>
       <testcase purpose="Check if the z value of int32x4 object can be got." type="compliance" status="approved" component="WebAPI/Supplementary API Reference/SIMD" execution_type="auto" priority="P1" id="Int32x4_getZ">
         <description>
-          <test_script_entry>/opt/webapi-simd-nonw3c-tests/simd/int32x4.html?total_num=11&amp;amp;locator_key=id&amp;amp;value=4</test_script_entry>
+          <test_script_entry>/opt/webapi-simd-nonw3c-tests/simd/int32x4.html?total_num=15&amp;amp;locator_key=id&amp;amp;value=4</test_script_entry>
         </description>
         <specs>
           <spec>
@@ -665,7 +725,7 @@
       </testcase>
       <testcase purpose="Check if the w value of int32x4 object can be got." type="compliance" status="approved" component="WebAPI/Supplementary API Reference/SIMD" execution_type="auto" priority="P1" id="Int32x4_getW">
         <description>
-          <test_script_entry>/opt/webapi-simd-nonw3c-tests/simd/int32x4.html?total_num=11&amp;amp;locator_key=id&amp;amp;value=5</test_script_entry>
+          <test_script_entry>/opt/webapi-simd-nonw3c-tests/simd/int32x4.html?total_num=15&amp;amp;locator_key=id&amp;amp;value=5</test_script_entry>
         </description>
         <specs>
           <spec>
@@ -677,7 +737,7 @@
       </testcase>
       <testcase purpose="Check if the bool function of int32x4 can change the parameter to (-1, 0, -1, 0)." type="compliance" status="approved" component="WebAPI/Supplementary API Reference/SIMD" execution_type="auto" priority="P1" id="Int32x4_bool">
         <description>
-          <test_script_entry>/opt/webapi-simd-nonw3c-tests/simd/int32x4.html?total_num=11&amp;amp;locator_key=id&amp;amp;value=6</test_script_entry>
+          <test_script_entry>/opt/webapi-simd-nonw3c-tests/simd/int32x4.html?total_num=15&amp;amp;locator_key=id&amp;amp;value=6</test_script_entry>
         </description>
         <specs>
           <spec>
@@ -689,7 +749,7 @@
       </testcase>
       <testcase purpose="Check if the splat function of int32x4can change the parameter to specified value." type="compliance" status="approved" component="WebAPI/Supplementary API Reference/SIMD" execution_type="auto" priority="P1" id="Int32x4_splat">
         <description>
-          <test_script_entry>/opt/webapi-simd-nonw3c-tests/simd/int32x4.html?total_num=11&amp;amp;locator_key=id&amp;amp;value=7</test_script_entry>
+          <test_script_entry>/opt/webapi-simd-nonw3c-tests/simd/int32x4.html?total_num=15&amp;amp;locator_key=id&amp;amp;value=7</test_script_entry>
         </description>
         <specs>
           <spec>
@@ -701,7 +761,7 @@
       </testcase>
       <testcase purpose="Check if the flagX of int32x4 object can be got and type of boolean." type="compliance" status="approved" component="WebAPI/Supplementary API Reference/SIMD" execution_type="auto" priority="P1" id="Int32x4_flagX">
         <description>
-          <test_script_entry>/opt/webapi-simd-nonw3c-tests/simd/int32x4.html?total_num=11&amp;amp;locator_key=id&amp;amp;value=8</test_script_entry>
+          <test_script_entry>/opt/webapi-simd-nonw3c-tests/simd/int32x4.html?total_num=15&amp;amp;locator_key=id&amp;amp;value=8</test_script_entry>
         </description>
         <specs>
           <spec>
@@ -713,7 +773,7 @@
       </testcase>
       <testcase purpose="Check if the flagY of int32x4 object can be got and type of boolean." type="compliance" status="approved" component="WebAPI/Supplementary API Reference/SIMD" execution_type="auto" priority="P1" id="Int32x4_flagY">
         <description>
-          <test_script_entry>/opt/webapi-simd-nonw3c-tests/simd/int32x4.html?total_num=11&amp;amp;locator_key=id&amp;amp;value=9</test_script_entry>
+          <test_script_entry>/opt/webapi-simd-nonw3c-tests/simd/int32x4.html?total_num=15&amp;amp;locator_key=id&amp;amp;value=9</test_script_entry>
         </description>
         <specs>
           <spec>
@@ -725,7 +785,7 @@
       </testcase>
       <testcase purpose="Check if the flagZ of int32x4 object can be got and type of boolean." type="compliance" status="approved" component="WebAPI/Supplementary API Reference/SIMD" execution_type="auto" priority="P1" id="Int32x4_flagZ">
         <description>
-          <test_script_entry>/opt/webapi-simd-nonw3c-tests/simd/int32x4.html?total_num=11&amp;amp;locator_key=id&amp;amp;value=10</test_script_entry>
+          <test_script_entry>/opt/webapi-simd-nonw3c-tests/simd/int32x4.html?total_num=15&amp;amp;locator_key=id&amp;amp;value=10</test_script_entry>
         </description>
         <specs>
           <spec>
@@ -737,11 +797,443 @@
       </testcase>
       <testcase purpose="Check if the flagW of int32x4 object can be got and type of boolean." type="compliance" status="approved" component="WebAPI/Supplementary API Reference/SIMD" execution_type="auto" priority="P1" id="Int32x4_flagW">
         <description>
-          <test_script_entry>/opt/webapi-simd-nonw3c-tests/simd/int32x4.html?total_num=11&amp;amp;locator_key=id&amp;amp;value=11</test_script_entry>
+          <test_script_entry>/opt/webapi-simd-nonw3c-tests/simd/int32x4.html?total_num=15&amp;amp;locator_key=id&amp;amp;value=11</test_script_entry>
         </description>
         <specs>
           <spec>
             <spec_assertion element_type="method" element_name="Int32x4" interface="SIMD" specification="SIMD" section="SIMD" category="SIMD"/>
+            <spec_url>https://github.com/johnmccutchan/ecmascript_simd/blob/master/README.md</spec_url>
+            <spec_statement/>
+          </spec>
+        </specs>
+      </testcase>
+      <testcase purpose="Check if the fromFloat64x2 method of int32x4 is valid." type="compliance" status="desgined" component="WebAPI/Supplementary API Reference/SIMD" execution_type="auto" priority="P1" id="Int32x4_fromFloat64x2">
+        <description>
+          <test_script_entry>/opt/webapi-simd-nonw3c-tests/simd/int32x4.html?total_num=15&amp;amp;locator_key=id&amp;amp;value=12</test_script_entry>
+        </description>
+        <specs>
+          <spec>
+            <spec_assertion element_type="method" element_name="fromFloat64x2" interface="Int32x4" specification="SIMD" section="SIMD" category="SIMD"/>
+            <spec_url>https://github.com/johnmccutchan/ecmascript_simd/blob/master/README.md</spec_url>
+            <spec_statement/>
+          </spec>
+        </specs>
+      </testcase>
+      <testcase purpose="Check if the fromFloat64x2Bits method of int32x4 is valid." type="compliance" status="desgined" component="WebAPI/Supplementary API Reference/SIMD" execution_type="auto" priority="P1" id="Int32x4_fromFloat64x2Bits">
+        <description>
+          <test_script_entry>/opt/webapi-simd-nonw3c-tests/simd/int32x4.html?total_num=15&amp;amp;locator_key=id&amp;amp;value=13</test_script_entry>
+        </description>
+        <specs>
+          <spec>
+            <spec_assertion element_type="method" element_name="fromFloat64x2Bits" interface="Int32x4" specification="SIMD" section="SIMD" category="SIMD"/>
+            <spec_url>https://github.com/johnmccutchan/ecmascript_simd/blob/master/README.md</spec_url>
+            <spec_statement/>
+          </spec>
+        </specs>
+      </testcase>
+      <testcase purpose="Check if the fromFloat32x4 method of int32x4 is valid." type="compliance" status="desgined" component="WebAPI/Supplementary API Reference/SIMD" execution_type="auto" priority="P1" id="Int32x4_fromFloat32x4">
+        <description>
+          <test_script_entry>/opt/webapi-simd-nonw3c-tests/simd/int32x4.html?total_num=15&amp;amp;locator_key=id&amp;amp;value=14</test_script_entry>
+        </description>
+        <specs>
+          <spec>
+            <spec_assertion element_type="method" element_name="fromFloat32x4" interface="Int32x4" specification="SIMD" section="SIMD" category="SIMD"/>
+            <spec_url>https://github.com/johnmccutchan/ecmascript_simd/blob/master/README.md</spec_url>
+            <spec_statement/>
+          </spec>
+        </specs>
+      </testcase>
+      <testcase purpose="Check if the fromFloat32x4Bits method of int32x4 is valid." type="compliance" status="desgined" component="WebAPI/Supplementary API Reference/SIMD" execution_type="auto" priority="P1" id="Int32x4_fromFloat32x4Bits">
+        <description>
+          <test_script_entry>/opt/webapi-simd-nonw3c-tests/simd/int32x4.html?total_num=15&amp;amp;locator_key=id&amp;amp;value=15</test_script_entry>
+        </description>
+        <specs>
+          <spec>
+            <spec_assertion element_type="method" element_name="fromFloat32x4Bits" interface="Int32x4" specification="SIMD" section="SIMD" category="SIMD"/>
+            <spec_url>https://github.com/johnmccutchan/ecmascript_simd/blob/master/README.md</spec_url>
+            <spec_statement/>
+          </spec>
+        </specs>
+      </testcase>
+      <testcase purpose="Check if float64x2 object can be creat successful." type="compliance" status="desgined" component="WebAPI/Supplementary API Reference/SIMD" execution_type="auto" priority="P1" id="float64x2_construct">
+        <description>
+          <test_script_entry>/opt/webapi-simd-nonw3c-tests/simd/float64x2.html?total_num=32&amp;amp;locator_key=id&amp;amp;value=1</test_script_entry>
+        </description>
+        <specs>
+          <spec>
+            <spec_assertion element_type="method" element_name="construct" interface="float64x2" specification="SIMD" section="SIMD" category="SIMD"/>
+            <spec_url>https://github.com/johnmccutchan/ecmascript_simd/blob/master/README.md</spec_url>
+            <spec_statement/>
+          </spec>
+        </specs>
+      </testcase>
+      <testcase purpose="Check if the zero function of float64x2 can change the parameter to 0.0." type="compliance" status="desgined" component="WebAPI/Supplementary API Reference/SIMD" execution_type="auto" priority="P1" id="float64x2_zero">
+        <description>
+          <test_script_entry>/opt/webapi-simd-nonw3c-tests/simd/float64x2.html?total_num=32&amp;amp;locator_key=id&amp;amp;value=2</test_script_entry>
+        </description>
+        <specs>
+          <spec>
+            <spec_assertion element_type="method" element_name="zero" interface="float64x2" specification="SIMD" section="SIMD" category="SIMD"/>
+            <spec_url>https://github.com/johnmccutchan/ecmascript_simd/blob/master/README.md</spec_url>
+            <spec_statement/>
+          </spec>
+        </specs>
+      </testcase>
+      <testcase purpose="Check if the splat function of float64x2 can change the parameter to specified value." type="compliance" status="desgined" component="WebAPI/Supplementary API Reference/SIMD" execution_type="auto" priority="P1" id="float64x2_splat">
+        <description>
+          <test_script_entry>/opt/webapi-simd-nonw3c-tests/simd/float64x2.html?total_num=32&amp;amp;locator_key=id&amp;amp;value=3</test_script_entry>
+        </description>
+        <specs>
+          <spec>
+            <spec_assertion element_type="method" element_name="splat" interface="float64x2" specification="SIMD" section="SIMD" category="SIMD"/>
+            <spec_url>https://github.com/johnmccutchan/ecmascript_simd/blob/master/README.md</spec_url>
+            <spec_statement/>
+          </spec>
+        </specs>
+      </testcase>
+      <testcase purpose="Check if the fromFloat32x4Bits method of float64x2 is valid." type="compliance" status="designed" component="WebAPI/Supplementary API Reference/SIMD" execution_type="auto" priority="P1" id="float64x2_fromFloat32x4Bits">
+        <description>
+          <test_script_entry>/opt/webapi-simd-nonw3c-tests/simd/float64x2.html?total_num=32&amp;amp;locator_key=id&amp;amp;value=4</test_script_entry>
+        </description>
+        <specs>
+          <spec>
+            <spec_assertion element_type="method" element_name="fromFloat32x4Bits" interface="float64x2" specification="SIMD" section="SIMD" category="SIMD"/>
+            <spec_url>https://github.com/johnmccutchan/ecmascript_simd/blob/master/README.md</spec_url>
+            <spec_statement/>
+          </spec>
+        </specs>
+      </testcase>
+      <testcase purpose="Check if the fromInt32x4Bits method of float64x2 is valid." type="compliance" status="designed" component="WebAPI/Supplementary API Reference/SIMD" execution_type="auto" priority="P1" id="float64x2_fromInt32x4Bits">
+        <description>
+          <test_script_entry>/opt/webapi-simd-nonw3c-tests/simd/float64x2.html?total_num=32&amp;amp;locator_key=id&amp;amp;value=5</test_script_entry>
+        </description>
+        <specs>
+          <spec>
+            <spec_assertion element_type="method" element_name="fromInt32x4Bits" interface="float64x2" specification="SIMD" section="SIMD" category="SIMD"/>
+            <spec_url>https://github.com/johnmccutchan/ecmascript_simd/blob/master/README.md</spec_url>
+            <spec_statement/>
+          </spec>
+        </specs>
+      </testcase>
+      <testcase purpose="Check if the fromInt32x4 method of float64x2 is valid." type="compliance" status="designed" component="WebAPI/Supplementary API Reference/SIMD" execution_type="auto" priority="P1" id="float64x2_fromInt32x4">
+        <description>
+          <test_script_entry>/opt/webapi-simd-nonw3c-tests/simd/float64x2.html?total_num=32&amp;amp;locator_key=id&amp;amp;value=6</test_script_entry>
+        </description>
+        <specs>
+          <spec>
+            <spec_assertion element_type="method" element_name="fromInt32x4" interface="float64x2" specification="SIMD" section="SIMD" category="SIMD"/>
+            <spec_url>https://github.com/johnmccutchan/ecmascript_simd/blob/master/README.md</spec_url>
+            <spec_statement/>
+          </spec>
+        </specs>
+      </testcase>
+      <testcase purpose="Check if the fromFloat32x4 method of float64x2 is valid." type="compliance" status="designed" component="WebAPI/Supplementary API Reference/SIMD" execution_type="auto" priority="P1" id="float64x2_fromFloat32x4">
+        <description>
+          <test_script_entry>/opt/webapi-simd-nonw3c-tests/simd/float64x2.html?total_num=32&amp;amp;locator_key=id&amp;amp;value=7</test_script_entry>
+        </description>
+        <specs>
+          <spec>
+            <spec_assertion element_type="method" element_name="fromFloat32x4" interface="float64x2" specification="SIMD" section="SIMD" category="SIMD"/>
+            <spec_url>https://github.com/johnmccutchan/ecmascript_simd/blob/master/README.md</spec_url>
+            <spec_statement/>
+          </spec>
+        </specs>
+      </testcase>
+      <testcase purpose="Check if the abs method of float64x2 is valid." type="compliance" status="designed" component="WebAPI/Supplementary API Reference/SIMD" execution_type="auto" priority="P1" id="float64x2_abs">
+        <description>
+          <test_script_entry>/opt/webapi-simd-nonw3c-tests/simd/float64x2.html?total_num=32&amp;amp;locator_key=id&amp;amp;value=8</test_script_entry>
+        </description>
+        <specs>
+          <spec>
+            <spec_assertion element_type="method" element_name="abs" interface="float64x2" specification="SIMD" section="SIMD" category="SIMD"/>
+            <spec_url>https://github.com/johnmccutchan/ecmascript_simd/blob/master/README.md</spec_url>
+            <spec_statement/>
+          </spec>
+        </specs>
+      </testcase>
+      <testcase purpose="Check if the neg method of float64x2 is valid." type="compliance" status="designed" component="WebAPI/Supplementary API Reference/SIMD" execution_type="auto" priority="P1" id="float64x2_neg">
+        <description>
+          <test_script_entry>/opt/webapi-simd-nonw3c-tests/simd/float64x2.html?total_num=32&amp;amp;locator_key=id&amp;amp;value=9</test_script_entry>
+        </description>
+        <specs>
+          <spec>
+            <spec_assertion element_type="method" element_name="neg" interface="float64x2" specification="SIMD" section="SIMD" category="SIMD"/>
+            <spec_url>https://github.com/johnmccutchan/ecmascript_simd/blob/master/README.md</spec_url>
+            <spec_statement/>
+          </spec>
+        </specs>
+      </testcase>
+      <testcase purpose="Check if the add method of float64x2 is valid." type="compliance" status="designed" component="WebAPI/Supplementary API Reference/SIMD" execution_type="auto" priority="P1" id="float64x2_add">
+        <description>
+          <test_script_entry>/opt/webapi-simd-nonw3c-tests/simd/float64x2.html?total_num=32&amp;amp;locator_key=id&amp;amp;value=10</test_script_entry>
+        </description>
+        <specs>
+          <spec>
+            <spec_assertion element_type="method" element_name="add" interface="float64x2" specification="SIMD" section="SIMD" category="SIMD"/>
+            <spec_url>https://github.com/johnmccutchan/ecmascript_simd/blob/master/README.md</spec_url>
+            <spec_statement/>
+          </spec>
+        </specs>
+      </testcase>
+      <testcase purpose="Check if the sub method of float64x2 is valid." type="compliance" status="designed" component="WebAPI/Supplementary API Reference/SIMD" execution_type="auto" priority="P1" id="float64x2_sub">
+        <description>
+          <test_script_entry>/opt/webapi-simd-nonw3c-tests/simd/float64x2.html?total_num=32&amp;amp;locator_key=id&amp;amp;value=11</test_script_entry>
+        </description>
+        <specs>
+          <spec>
+            <spec_assertion element_type="method" element_name="sub" interface="float64x2" specification="SIMD" section="SIMD" category="SIMD"/>
+            <spec_url>https://github.com/johnmccutchan/ecmascript_simd/blob/master/README.md</spec_url>
+            <spec_statement/>
+          </spec>
+        </specs>
+      </testcase>
+      <testcase purpose="Check if the mul method of float64x2 is valid." type="compliance" status="designed" component="WebAPI/Supplementary API Reference/SIMD" execution_type="auto" priority="P1" id="float64x2_mul">
+        <description>
+          <test_script_entry>/opt/webapi-simd-nonw3c-tests/simd/float64x2.html?total_num=32&amp;amp;locator_key=id&amp;amp;value=12</test_script_entry>
+        </description>
+        <specs>
+          <spec>
+            <spec_assertion element_type="method" element_name="mul" interface="float64x2" specification="SIMD" section="SIMD" category="SIMD"/>
+            <spec_url>https://github.com/johnmccutchan/ecmascript_simd/blob/master/README.md</spec_url>
+            <spec_statement/>
+          </spec>
+        </specs>
+      </testcase>
+      <testcase purpose="Check if the div method of float64x2 is valid." type="compliance" status="designed" component="WebAPI/Supplementary API Reference/SIMD" execution_type="auto" priority="P1" id="float64x2_div">
+        <description>
+          <test_script_entry>/opt/webapi-simd-nonw3c-tests/simd/float64x2.html?total_num=32&amp;amp;locator_key=id&amp;amp;value=13</test_script_entry>
+        </description>
+        <specs>
+          <spec>
+            <spec_assertion element_type="method" element_name="div" interface="float64x2" specification="SIMD" section="SIMD" category="SIMD"/>
+            <spec_url>https://github.com/johnmccutchan/ecmascript_simd/blob/master/README.md</spec_url>
+            <spec_statement/>
+          </spec>
+        </specs>
+      </testcase>
+      <testcase purpose="Check if the clamp method of float64x2 is valid." type="compliance" status="designed" component="WebAPI/Supplementary API Reference/SIMD" execution_type="auto" priority="P1" id="float64x2_clamp">
+        <description>
+          <test_script_entry>/opt/webapi-simd-nonw3c-tests/simd/float64x2.html?total_num=32&amp;amp;locator_key=id&amp;amp;value=14</test_script_entry>
+        </description>
+        <specs>
+          <spec>
+            <spec_assertion element_type="method" element_name="clamp" interface="float64x2" specification="SIMD" section="SIMD" category="SIMD"/>
+            <spec_url>https://github.com/johnmccutchan/ecmascript_simd/blob/master/README.md</spec_url>
+            <spec_statement/>
+          </spec>
+        </specs>
+      </testcase>
+      <testcase purpose="Check if the min method of float64x2 is valid." type="compliance" status="designed" component="WebAPI/Supplementary API Reference/SIMD" execution_type="auto" priority="P1" id="float64x2_min">
+        <description>
+          <test_script_entry>/opt/webapi-simd-nonw3c-tests/simd/float64x2.html?total_num=32&amp;amp;locator_key=id&amp;amp;value=15</test_script_entry>
+        </description>
+        <specs>
+          <spec>
+            <spec_assertion element_type="method" element_name="min" interface="float64x2" specification="SIMD" section="SIMD" category="SIMD"/>
+            <spec_url>https://github.com/johnmccutchan/ecmascript_simd/blob/master/README.md</spec_url>
+            <spec_statement/>
+          </spec>
+        </specs>
+      </testcase>
+      <testcase purpose="Check if the max method of float64x2 is valid." type="compliance" status="designed" component="WebAPI/Supplementary API Reference/SIMD" execution_type="auto" priority="P1" id="float64x2_max">
+        <description>
+          <test_script_entry>/opt/webapi-simd-nonw3c-tests/simd/float64x2.html?total_num=32&amp;amp;locator_key=id&amp;amp;value=16</test_script_entry>
+        </description>
+        <specs>
+          <spec>
+            <spec_assertion element_type="method" element_name="max" interface="float64x2" specification="SIMD" section="SIMD" category="SIMD"/>
+            <spec_url>https://github.com/johnmccutchan/ecmascript_simd/blob/master/README.md</spec_url>
+            <spec_statement/>
+          </spec>
+        </specs>
+      </testcase>
+      <testcase purpose="Check if the reciprocal method of float64x2 is valid." type="compliance" status="designed" component="WebAPI/Supplementary API Reference/SIMD" execution_type="auto" priority="P1" id="float64x2_reciprocal">
+        <description>
+          <test_script_entry>/opt/webapi-simd-nonw3c-tests/simd/float64x2.html?total_num=32&amp;amp;locator_key=id&amp;amp;value=17</test_script_entry>
+        </description>
+        <specs>
+          <spec>
+            <spec_assertion element_type="method" element_name="reciprocal" interface="float64x2" specification="SIMD" section="SIMD" category="SIMD"/>
+            <spec_url>https://github.com/johnmccutchan/ecmascript_simd/blob/master/README.md</spec_url>
+            <spec_statement/>
+          </spec>
+        </specs>
+      </testcase>
+      <testcase purpose="Check if the reciprocalSqrt method of float64x2 is valid." type="compliance" status="designed" component="WebAPI/Supplementary API Reference/SIMD" execution_type="auto" priority="P1" id="float64x2_reciprocalSqrt">
+        <description>
+          <test_script_entry>/opt/webapi-simd-nonw3c-tests/simd/float64x2.html?total_num=32&amp;amp;locator_key=id&amp;amp;value=18</test_script_entry>
+        </description>
+        <specs>
+          <spec>
+            <spec_assertion element_type="method" element_name="reciprocalSqrt" interface="float64x2" specification="SIMD" section="SIMD" category="SIMD"/>
+            <spec_url>https://github.com/johnmccutchan/ecmascript_simd/blob/master/README.md</spec_url>
+            <spec_statement/>
+          </spec>
+        </specs>
+      </testcase>
+      <testcase purpose="Check if the scale method of float64x2 is valid." type="compliance" status="designed" component="WebAPI/Supplementary API Reference/SIMD" execution_type="auto" priority="P1" id="float64x2_scale">
+        <description>
+          <test_script_entry>/opt/webapi-simd-nonw3c-tests/simd/float64x2.html?total_num=32&amp;amp;locator_key=id&amp;amp;value=19</test_script_entry>
+        </description>
+        <specs>
+          <spec>
+            <spec_assertion element_type="method" element_name="scale" interface="float64x2" specification="SIMD" section="SIMD" category="SIMD"/>
+            <spec_url>https://github.com/johnmccutchan/ecmascript_simd/blob/master/README.md</spec_url>
+            <spec_statement/>
+          </spec>
+        </specs>
+      </testcase>
+      <testcase purpose="Check if the sqrt method of float64x2 is valid." type="compliance" status="designed" component="WebAPI/Supplementary API Reference/SIMD" execution_type="auto" priority="P1" id="float64x2_sqrt">
+        <description>
+          <test_script_entry>/opt/webapi-simd-nonw3c-tests/simd/float64x2.html?total_num=32&amp;amp;locator_key=id&amp;amp;value=20</test_script_entry>
+        </description>
+        <specs>
+          <spec>
+            <spec_assertion element_type="method" element_name="sqrt" interface="float64x2" specification="SIMD" section="SIMD" category="SIMD"/>
+            <spec_url>https://github.com/johnmccutchan/ecmascript_simd/blob/master/README.md</spec_url>
+            <spec_statement/>
+          </spec>
+        </specs>
+      </testcase>
+      <testcase purpose="Check if the shuffle method of float64x2 is valid." type="compliance" status="designed" component="WebAPI/Supplementary API Reference/SIMD" execution_type="auto" priority="P1" id="float64x2_shuffle">
+        <description>
+          <test_script_entry>/opt/webapi-simd-nonw3c-tests/simd/float64x2.html?total_num=32&amp;amp;locator_key=id&amp;amp;value=21</test_script_entry>
+        </description>
+        <specs>
+          <spec>
+            <spec_assertion element_type="method" element_name="shuffle" interface="float64x2" specification="SIMD" section="SIMD" category="SIMD"/>
+            <spec_url>https://github.com/johnmccutchan/ecmascript_simd/blob/master/README.md</spec_url>
+            <spec_statement/>
+          </spec>
+        </specs>
+      </testcase>
+      <testcase purpose="Check if the shuffleMix method of float64x2 is valid." type="compliance" status="designed" component="WebAPI/Supplementary API Reference/SIMD" execution_type="auto" priority="P1" id="float64x2_shuffleMix">
+        <description>
+          <test_script_entry>/opt/webapi-simd-nonw3c-tests/simd/float64x2.html?total_num=32&amp;amp;locator_key=id&amp;amp;value=22</test_script_entry>
+        </description>
+        <specs>
+          <spec>
+            <spec_assertion element_type="method" element_name="shuffleMix" interface="float64x2" specification="SIMD" section="SIMD" category="SIMD"/>
+            <spec_url>https://github.com/johnmccutchan/ecmascript_simd/blob/master/README.md</spec_url>
+            <spec_statement/>
+          </spec>
+        </specs>
+      </testcase>
+      <testcase purpose="Check if the withX method of float64x2 is valid." type="compliance" status="designed" component="WebAPI/Supplementary API Reference/SIMD" execution_type="auto" priority="P1" id="float64x2_withX">
+        <description>
+          <test_script_entry>/opt/webapi-simd-nonw3c-tests/simd/float64x2.html?total_num=32&amp;amp;locator_key=id&amp;amp;value=23</test_script_entry>
+        </description>
+        <specs>
+          <spec>
+            <spec_assertion element_type="method" element_name="withX" interface="float64x2" specification="SIMD" section="SIMD" category="SIMD"/>
+            <spec_url>https://github.com/johnmccutchan/ecmascript_simd/blob/master/README.md</spec_url>
+            <spec_statement/>
+          </spec>
+        </specs>
+      </testcase>
+      <testcase purpose="Check if the withY method of float64x2 is valid." type="compliance" status="designed" component="WebAPI/Supplementary API Reference/SIMD" execution_type="auto" priority="P1" id="float64x2_withY">
+        <description>
+          <test_script_entry>/opt/webapi-simd-nonw3c-tests/simd/float64x2.html?total_num=32&amp;amp;locator_key=id&amp;amp;value=24</test_script_entry>
+        </description>
+        <specs>
+          <spec>
+            <spec_assertion element_type="method" element_name="withY" interface="float64x2" specification="SIMD" section="SIMD" category="SIMD"/>
+            <spec_url>https://github.com/johnmccutchan/ecmascript_simd/blob/master/README.md</spec_url>
+            <spec_statement/>
+          </spec>
+        </specs>
+      </testcase>
+      <testcase purpose="Check if the lessThan method of float64x2 is valid." type="compliance" status="designed" component="WebAPI/Supplementary API Reference/SIMD" execution_type="auto" priority="P1" id="float64x2_lessThan">
+        <description>
+          <test_script_entry>/opt/webapi-simd-nonw3c-tests/simd/float64x2.html?total_num=32&amp;amp;locator_key=id&amp;amp;value=25</test_script_entry>
+        </description>
+        <specs>
+          <spec>
+            <spec_assertion element_type="method" element_name="lessThan" interface="float64x2" specification="SIMD" section="SIMD" category="SIMD"/>
+            <spec_url>https://github.com/johnmccutchan/ecmascript_simd/blob/master/README.md</spec_url>
+            <spec_statement/>
+          </spec>
+        </specs>
+      </testcase>
+      <testcase purpose="Check if the lessThanOrEqual method of float64x2 is valid." type="compliance" status="designed" component="WebAPI/Supplementary API Reference/SIMD" execution_type="auto" priority="P1" id="float64x2_lessThanOrEqual">
+        <description>
+          <test_script_entry>/opt/webapi-simd-nonw3c-tests/simd/float64x2.html?total_num=32&amp;amp;locator_key=id&amp;amp;value=26</test_script_entry>
+        </description>
+        <specs>
+          <spec>
+            <spec_assertion element_type="method" element_name="lessThanOrEqual" interface="float64x2" specification="SIMD" section="SIMD" category="SIMD"/>
+            <spec_url>https://github.com/johnmccutchan/ecmascript_simd/blob/master/README.md</spec_url>
+            <spec_statement/>
+          </spec>
+        </specs>
+      </testcase>
+      <testcase purpose="Check if the equal method of float64x2 is valid." type="compliance" status="designed" component="WebAPI/Supplementary API Reference/SIMD" execution_type="auto" priority="P1" id="float64x2_equal">
+        <description>
+          <test_script_entry>/opt/webapi-simd-nonw3c-tests/simd/float64x2.html?total_num=32&amp;amp;locator_key=id&amp;amp;value=27</test_script_entry>
+        </description>
+        <specs>
+          <spec>
+            <spec_assertion element_type="method" element_name="equal" interface="float64x2" specification="SIMD" section="SIMD" category="SIMD"/>
+            <spec_url>https://github.com/johnmccutchan/ecmascript_simd/blob/master/README.md</spec_url>
+            <spec_statement/>
+          </spec>
+        </specs>
+      </testcase>
+      <testcase purpose="Check if the notEqual method of float64x2 is valid." type="compliance" status="designed" component="WebAPI/Supplementary API Reference/SIMD" execution_type="auto" priority="P1" id="float64x2_notEqual">
+        <description>
+          <test_script_entry>/opt/webapi-simd-nonw3c-tests/simd/float64x2.html?total_num=32&amp;amp;locator_key=id&amp;amp;value=28</test_script_entry>
+        </description>
+        <specs>
+          <spec>
+            <spec_assertion element_type="method" element_name="notEqual" interface="float64x2" specification="SIMD" section="SIMD" category="SIMD"/>
+            <spec_url>https://github.com/johnmccutchan/ecmascript_simd/blob/master/README.md</spec_url>
+            <spec_statement/>
+          </spec>
+        </specs>
+      </testcase>
+      <testcase purpose="Check if the greaterThanOrEqual method of float64x2 is valid." type="compliance" status="designed" component="WebAPI/Supplementary API Reference/SIMD" execution_type="auto" priority="P1" id="float64x2_greaterThanOrEqual">
+        <description>
+          <test_script_entry>/opt/webapi-simd-nonw3c-tests/simd/float64x2.html?total_num=32&amp;amp;locator_key=id&amp;amp;value=29</test_script_entry>
+        </description>
+        <specs>
+          <spec>
+            <spec_assertion element_type="method" element_name="greaterThanOrEqual" interface="float64x2" specification="SIMD" section="SIMD" category="SIMD"/>
+            <spec_url>https://github.com/johnmccutchan/ecmascript_simd/blob/master/README.md</spec_url>
+            <spec_statement/>
+          </spec>
+        </specs>
+      </testcase>
+      <testcase purpose="Check if the greaterThan method of float64x2 is valid." type="compliance" status="designed" component="WebAPI/Supplementary API Reference/SIMD" execution_type="auto" priority="P1" id="float64x2_greaterThan">
+        <description>
+          <test_script_entry>/opt/webapi-simd-nonw3c-tests/simd/float64x2.html?total_num=32&amp;amp;locator_key=id&amp;amp;value=30</test_script_entry>
+        </description>
+        <specs>
+          <spec>
+            <spec_assertion element_type="method" element_name="greaterThan" interface="float64x2" specification="SIMD" section="SIMD" category="SIMD"/>
+            <spec_url>https://github.com/johnmccutchan/ecmascript_simd/blob/master/README.md</spec_url>
+            <spec_statement/>
+          </spec>
+        </specs>
+      </testcase>
+      <testcase purpose="Check if the select method of float64x2 is valid." type="compliance" status="desgined" component="WebAPI/Supplementary API Reference/SIMD" execution_type="auto" priority="P1" id="float64x2_select">
+        <description>
+          <test_script_entry>/opt/webapi-simd-nonw3c-tests/simd/float64x2.html?total_num=32&amp;amp;locator_key=id&amp;amp;value=31</test_script_entry>
+        </description>
+        <specs>
+          <spec>
+            <spec_assertion element_type="method" element_name="select" interface="float64x2" specification="SIMD" section="SIMD" category="SIMD"/>
+            <spec_url>https://github.com/johnmccutchan/ecmascript_simd/blob/master/README.md</spec_url>
+            <spec_statement/>
+          </spec>
+        </specs>
+      </testcase>
+      <testcase purpose="Check if the bitsToInt method of float64x2 is valid." type="compliance" status="desgined" component="WebAPI/Supplementary API Reference/SIMD" execution_type="auto" priority="P1" id="float64x2_bitsToInt">
+        <description>
+          <test_script_entry>/opt/webapi-simd-nonw3c-tests/simd/float64x2.html?total_num=32&amp;amp;locator_key=id&amp;amp;value=32</test_script_entry>
+        </description>
+        <specs>
+          <spec>
+            <spec_assertion element_type="method" element_name="bitsToInt" interface="float64x2" specification="SIMD" section="SIMD" category="SIMD"/>
             <spec_url>https://github.com/johnmccutchan/ecmascript_simd/blob/master/README.md</spec_url>
             <spec_statement/>
           </spec>
