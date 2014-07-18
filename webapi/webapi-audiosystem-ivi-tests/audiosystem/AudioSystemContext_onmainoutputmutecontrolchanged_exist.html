@@ -31,7 +31,7 @@ Authors:
 -->
 
 <meta charset='utf-8'>
-<title>AudioSystemContext Test: AudioSystemContext_onmainoutmutecontrolchanged_exist</title>
+<title>AudioSystemContext Test: AudioSystemContext_onmainoutputmutecontrolchanged_exist</title>
 <link rel="author" title="Intel" href="http://www.intel.com">
 <link rel="help" href="https://wiki.tizen.org/wiki/User:Tanuk/AudioSystemAPI">
 <script src="../resources/testharness.js"></script>
@@ -50,8 +50,8 @@ t.step(function () {
     });
 
     onSuccess = t.step_func(function (context) {
-        assert_own_property(context, "onmainoutmutecontrolchanged",
-            "AudioSystemContext does not own onmainoutmutecontrolchanged property.");
+        assert_own_property(context, "onmainoutputmutecontrolchanged",
+            "AudioSystemContext does not own onmainoutputmutecontrolchanged property.");
         t.done();
     });
 
