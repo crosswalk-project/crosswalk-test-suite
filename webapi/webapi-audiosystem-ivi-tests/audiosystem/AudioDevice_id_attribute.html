@@ -56,7 +56,7 @@ t.step(function () {
         audiodevice = context.devices[0];
         assert_own_property(audiodevice, "id",
             "AudioDevice does not own id property.");
-        check_readonly(audiodevice, "id", audiodevice.id, "number", 0);
+        check_readonly(audiodevice, "id", audiodevice.id, "number", audiodevice.id+1);
         t.done();
     });
 

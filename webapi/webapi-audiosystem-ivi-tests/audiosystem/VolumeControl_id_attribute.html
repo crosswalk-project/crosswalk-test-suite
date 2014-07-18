@@ -56,7 +56,7 @@ t.step(function () {
         volume_control = context.volume_controls[0];
         assert_own_property(volume_control, "id",
             "VolumeControl does not own id property.");
-        check_readonly(volume_control, "id", volume_control.id, "number", 0);
+        check_readonly(volume_control, "id", volume_control.id, "number", volume_control.id+1);
         t.done();
     });
 
