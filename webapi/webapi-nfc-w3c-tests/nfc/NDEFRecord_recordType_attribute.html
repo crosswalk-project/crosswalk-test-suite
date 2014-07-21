@@ -1,0 +1,70 @@
+<!DOCid html>
+<!--
+Copyright (c) 2014 Intel Corporation.
+
+Redistribution and use in source and binary forms, with or without modification,
+are permitted provided that the following conditions are met:
+
+* Redistributions of works must retain the original copyright notice, this list
+  of conditions and the following disclaimer.
+* Redistributions in binary form must reproduce the original copyright notice,
+  this list of conditions and the following disclaimer in the documentation
+  and/or other materials provided with the distribution.
+* Neither the name of Intel Corporation nor the names of its contributors
+  may be used to endorse or promote products derived from this work without
+  specific prior written permission.
+
+THIS SOFTWARE IS PROVIDED BY INTEL CORPORATION "AS IS"
+AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE
+IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE
+ARE DISCLAIMED. IN NO EVENT SHALL INTEL CORPORATION BE LIABLE FOR ANY DIRECT,
+INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING,
+BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE,
+DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY
+OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING
+NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE,
+EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
+
+Authors:
+        Zhang, Jing <jingx.zhang@intel.com>
+
+-->
+<html>
+<head>
+<meta charset="utf-8">
+<title>[NFC Test]:NDEFRecord_recordType_attribute</title>
+<link rel="author" title="Intel" href="http://www.intel.com">
+<link rel="help" href="http://www.w3.org/TR/nfc/">
+<script id="text/javascript" src="support/unitcommon.js"></script>
+<script type="text/javascript" src="support/nfc_common.js"></script>
+</head>
+
+<body>
+<div id="log"></div>
+<script>
+//==== TEST: NDEFRecord_recordType_attribute
+//==== PRIORITY P1
+//==== LABEL Check if NDEFRecord have recordType attribute with proper type and is readonly
+//==== SPEC_URL http://www.w3.org/TR/nfc/
+var t = async_test(document.title, {timeout: 10000}), onSuccess, onError, record, recordText;
+
+t.step(function () {
+    onError = t.step_func(function (error) {
+        assert_unreached("getPayload() error callback was invoked: " + error.name + " msg: " + error.message);
+    });
+
+    onSuccess = t.step_func(function (payload) {
+        record = new NDEFRecord(recordText.tnf, recordText.type, payload, recordText.id);
+        assert_own_property(record, "recordType", "NDEFRecord.recordType");
+        asset_equals(typeof record.recordType, "number", "NDEFRecord.recordType attribute of type");
+        var oldValue = record.recordType;
+        record.recordType = oldValue + 1;
+        assert_true(record.recordType == oldValue, "NDEFRecord.recordType attribute is readonly");
+        t.done();
+    });
+    recordText = new NDEFRecordText("Hi!", "en-GB");
+    recordText.getPayload().then(onSuccess, onError);
+});
+</script>
+</body>
+</html>
