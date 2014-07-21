@@ -32,12 +32,13 @@ def genSelfcom(combIn, combOut):
         print "Update selfcomb.txt ---------------->O.k"
         return
     except Exception,e:
-        print Exception,"Update selfcomb.txt error:",e
+        print Exception,":",e
         print "Update selfcomb.txt ---------------->Error"
         sys.exit(1)
 
 def processMain(seedIn):
     try:
+        print "Input Seed :" + os.path.basename(seedIn)
         print "Excute " + Flag + " cases ------------------------->Start"
         row = 0
         sectionList = []
@@ -58,15 +59,15 @@ def processMain(seedIn):
             counters = lineCount(ConstPath + "/self/" + section + "_input.txt")
             if counters >= 2:
                 lists = [[] for m in range(counters)]
-                inputTxt = open(ConstPath + "/self/" + section + "_input.txt", 'r+')
+                inputTxt = open(ConstPath + "/self/" + section + "_input.txt")
                 for line in inputTxt:
                     items = line.strip('\n\r').split(":")
                     values = items[1].split(",")
                     lists[row].extend(values)
                     row = row + 1
-                pairs = all_pairs(lists)
                 inputTxt.close()
-                outTxt = open(ConstPath + "/self/" + section + "_output.txt", 'a+')
+                pairs = all_pairs(lists)
+                outTxt = open(ConstPath + "/self/" + section + "_output.txt", 'w+')
                 for e, v in enumerate(pairs):
                     for c in range(len(v)):
                         caseline = caseline + v[c] + ","
@@ -86,8 +87,8 @@ def processMain(seedIn):
 
         print "Excute " + Flag + " cases ------------------------->O.K"
     except Exception,e:
-        print "Excute " + Flag + " cases ------------------------->Error"
         print Exception,":",e
+        print "Excute " + Flag + " cases ------------------------->Error"
         sys.exit(1)
 
 def genCases(selfcomb):
@@ -110,7 +111,7 @@ def genCases(selfcomb):
             values = items[1:]
             lists[row].extend(":".join(values).split(","))
             row = row + 1
-
+        fobj.close()
         pairs = all_pairs(lists)
         for e, v in enumerate(pairs):
             case = ""
@@ -139,7 +140,7 @@ def caseExecute(caseInput):
 
         os.chdir(ConstPath + "/tools/crosswalk")
         toolstatus = commands.getstatusoutput("python make_apk.py")
-        if toolstatus[0] !=0:
+        if toolstatus[0] != 0:
             print "Crosswalk Binary is not ready, Please attention"
             sys.exit(1)
 
@@ -151,7 +152,7 @@ def caseExecute(caseInput):
             data["start"] = time.strftime("%Y-%m-%d %H:%M:%S")
             for i in range(len(sectionList)):
                 items[i] = items[i].replace("000", " ")
-                command = command + "--" + sectionList[i] + "=" + '"' + items[i] + '" ' 
+                command = command + "--" + sectionList[i] + "=" + '"' + items[i] + '" '
             command = command.strip()
             if "target-dir" in sectionList:
                 dirIndex = sectionList.index("target-dir")
@@ -369,22 +370,25 @@ def main():
         global Flag
         os.system("rm -rf " + ConstPath + "/allpairs/negative/*~ &>/dev/null")
         os.system("rm -rf " + ConstPath + "/allpairs/positive/*~ &>/dev/null")
+        os.system("rm -rf " + ConstPath + "/allpairs/positive/case*txt &>/dev/null")
         os.system("rm -rf " + ConstPath + "/tools/crosswalk/*apk &>/dev/null")
         os.system("rm -rf " + ConstPath + "/self &>/dev/null")
-        os.mkdir(ConstPath + "/self")
+        os.system("mkdir -p " + ConstPath + "/self")
         devicesConform()
 
         #positive test
         for seed in os.listdir(ConstPath + "/allpairs/positive/"):
             os.system("rm -rf " + ConstPath + "/allpairs/selfcomb.txt &>/dev/null")
-            os.system("rm -rf " + ConstPath + "/self/* &>/dev/null")
+            os.system("rm -rf " + ConstPath + "/self &>/dev/null")
+            os.system("mkdir -p " + ConstPath + "/self")
             processMain(ConstPath + "/allpairs/positive/" + seed)
 
         #negative case
         Flag = "negative"
         for seed in os.listdir(ConstPath + "/allpairs/negative/"):
             os.system("rm -rf " + ConstPath + "/allpairs/selfcomb.txt &>/dev/null")
-            os.system("rm -rf " + ConstPath + "/self/* &>/dev/null")
+            os.system("rm -rf " + ConstPath + "/self &>/dev/null")
+            os.system("mkdir -p " + ConstPath + "/self")
             processMain(ConstPath + "/allpairs/negative/" + seed)
 
         End = time.strftime("%Y-%m-%d %H:%M:%S")
