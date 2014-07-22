@@ -41,7 +41,7 @@ BUILD_DEST=/tmp/$name
 # clean
 function clean_workspace(){
 echo "cleaning workspace... >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>"
-rm -rf $BUILD_DEST
+rm -rf $BUILD_DEST $BUILD_ROOT
 }
 
 clean_workspace
