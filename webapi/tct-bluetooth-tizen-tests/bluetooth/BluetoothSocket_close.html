@@ -46,11 +46,9 @@ t.step(function () {
 
     onSocketConnect = t.step_func(function (socket) {
         retValue = socket.close();
-        socket.onclose = t.step_func(function () {
-
-            assert_equals(retValue, undefined, "close returns wrong value");
-            t.done();
-        });
+        socket.onclose = t.step_func(function () {});
+        assert_equals(retValue, undefined, "close returns wrong value");
+        t.done();
     });
 
     onSocketConnectedError = t.step_func(function (e) {

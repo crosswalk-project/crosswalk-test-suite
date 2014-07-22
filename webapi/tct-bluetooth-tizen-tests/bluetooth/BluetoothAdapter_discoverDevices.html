@@ -50,10 +50,7 @@ t.step(function () {
         ondevicedisappeared: function (address) {
         },
         onfinished: t.step_func(function (devices) {
-            if(devices.length > 0){
-                assert_equals(retValue, undefined, "discoverDevices returns wrong value");
-                t.done();
-            }else{
+            if(devices.length <= 0){
                 setTimeout(stopDiscoverySuccess, 1000);
             }
         })
@@ -61,6 +58,8 @@ t.step(function () {
 
     stopDiscoverySuccess = t.step_func(function () {
         retValue = adapter.discoverDevices(discoverDevicesSuccessCB);
+        assert_equals(retValue, undefined, "discoverDevices returns wrong value");
+        t.done();
     });
 
     adapter = tizen.bluetooth.getDefaultAdapter();

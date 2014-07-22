@@ -47,9 +47,6 @@ t.step(function () {
     testDeviceSuccessCB = t.step_func(function (devices) {
         check_bluetooth_device_array(devices);
         check_bluetooth_device(devices[0]);
-        assert_equals(retValue, undefined, "Method getKnownDevices returns wrong value.");
-
-        t.done();
     });
 
     discoverSuccess = {
@@ -63,6 +60,8 @@ t.step(function () {
             if(devices.length > 0){
                 check_bluetooth_device_array(devices);
                 retValue = adapter.getKnownDevices(testDeviceSuccessCB);
+                assert_equals(retValue, undefined, "Method getKnownDevices returns wrong value.");
+                t.done();
             }else{
                 setTimeout(stopDiscoverySuccess, 1000);
             }

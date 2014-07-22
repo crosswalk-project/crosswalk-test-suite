@@ -45,14 +45,13 @@ t.step(function () {
     healthRegisterSuccess = t.step_func(function (app) {
         setBluetoothHandlerCleanup(app);
         assert_type(app, "object", "argument app has wrong type");
-        assert_equals(retValue, undefined, "registerSinkApplication returns wrong value");
-
-        t.done();
     });
 
     powerOnSuccess = t.step_func(function () {
         healthProfileHandler = adapter.getBluetoothProfileHandler("HEALTH");
         retValue = healthProfileHandler.registerSinkApplication(4100, "testSinkApp", healthRegisterSuccess);
+        assert_equals(retValue, undefined, "registerSinkApplication returns wrong value");
+        t.done();
     });
 
     adapter = tizen.bluetooth.getDefaultAdapter();

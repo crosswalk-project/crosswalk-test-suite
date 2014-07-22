@@ -54,16 +54,15 @@ var adapter = null, t = async_test(document.title, {timeout: 180000}), onSocketC
     onBondingSuccess, onBondingError, powerOnSuccess, retValue = null;
 t.step(function () {
     onSocketConnect = t.step_func(function (socket) {
-        if(socket.state === "OPEN"){
-            assert_equals(retValue, undefined, "connectToServiceByUUID returns wrong value");
-            t.done();
-        }else{
+        if(socket.state !== "OPEN"){
             assert_unreached("Socket is closed");
         }
     });
 
     onBondingSuccess = t.step_func(function (device) {
         retValue = device.connectToServiceByUUID(CHAT_SERVICE_UUID, onSocketConnect);
+        assert_equals(retValue, undefined, "connectToServiceByUUID returns wrong value");
+        t.done();
     });
 
     onBondingError = t.step_func(function (e) {
