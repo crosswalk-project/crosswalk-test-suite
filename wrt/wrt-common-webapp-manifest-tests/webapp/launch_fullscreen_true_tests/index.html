@@ -31,29 +31,11 @@ Authors:
 -->
 
 <meta charset="utf-8">
-<title>xwalk_hosts_value_tests</title>
+<title>launch_fullscreen_true_tests</title>
 <link rel="author" title="Intel" href="http://www.intel.com">
 <link rel="help" href="">
 <meta name="flags" content="">
-<meta name="assert" content="Check if enable the xwalk_hosts field.">
+<meta name="assert" content="Check if enable launching application in fullscreen mode.">
 <body>
-  <div id="test" style="color:red">Fail</div>
-  <script>
-      document.write("<br>");
-      var xhr = new XMLHttpRequest();
-      var t = document.getElementById('test');
-      try {
-          xhr.open("GET", "http://crosswalk-project.org/", true);
-          xhr.onreadystatechange = function() {
-              if (xhr.readyState == 4) {
-                  t.innerHTML = "Pass";
-                  t.style.color = "green";
-              }
-         }
-         xhr.send();
-      } catch(e) {
-          t.innerHTML = "Fail";
-          t.style.color = "red";
-      }
-  </script>
+  <p>Test passes if the app launched in fullscreen mode</p>
 </body>
