@@ -37,37 +37,46 @@ Authors:
     <link rel="author" title="Intel" href="http://www.intel.com/">
     <link rel="help" href="http://dom.spec.whatwg.org/#promises">
     <meta name="flags" content="">
-    <meta name="assert" content="Test checks if the implementation of  promises is vaild with a series of tasks.">
+    <meta name="assert" content="Test checks if promises work properly with a series of tasks.">
   </head>
   <body>
-    <p>Test Passes if the information of result and info is valid.</p>
-    <h2>Result:</h2>
-    <div id="result"></div>
-    <h2>Info:</h2>
-    <div id="info"></div>
+    <p>Test Passes if promise task is fulfilled and callback is called.</p>
+    <h2>Promise Task Status:</h2>
+    <div id="xhr"></div>
+    <h2>Promise CallBack Status:</h2>
+    <div id="callBack"></div>
     <script >
-      function fetchHttp(url) {
-        return new Promise(function(){
-          var xhr = new XMLHttpRequest();
-          xhr.open("GET", url,true);
-          xhr.send();
-          xhr.onreadystatechange = function(e)
-          {
-            if (xhr.readyState == 4 && xhr.status == 200)
+        var xhr;
+        var callFlag = true;
+        function stateChange () {
+            if (xhr.readyState == 4)
             {
-              document.getElementById("info").innerHTML = document.getElementById("info").innerHTML + url;
+                document.getElementById('xhr').innerHTML = "Promise task is fulfilled";
             }
-          }
-        });
-      }
-      Promise.all([fetchJSON("http://www.w3school.com.cn/"), fetchJSON("http://www.baidu.com/")]).then(
-        function(object){
-          document.getElementById("result").innerHTML = document.getElementById("result").innerHTML + "Http Succeed";
-        },
-        function(error){
-          document.getElementById("result").innerHTML = document.getElementById("result").innerHTML + "Http Failed";
         }
-      );
+
+        function fetchHttp (url) {
+            return new Promise(function () {
+              xhr = new XMLHttpRequest();
+              xhr.open("GET", url,true);
+              xhr.onreadystatechange = stateChange;
+              xhr.send();
+            });
+        }
+
+        Promise.all([fetchHttp("./test.html")]).then(
+            function (info) {
+                callFlag = false;
+                document.getElementById("callBack").innerHTML = "Promise Success CallBack is called";
+            },
+            function (error) {
+                callFlag = false;
+                document.getElementById("callBack").innerHTML = "Promise Failure CallBack is called";
+       });
+
+        if (callFlag) {
+            document.getElementById("callBack").innerHTML = "No CallBack is called";
+        }
     </script>
   </body>
 </html>
