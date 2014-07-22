@@ -1,0 +1,525 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-stylesheet type="text/xsl" href="./testcase.xsl" ?>
+<test_definition>
+  <suite launcher="xwalk" name="webapi-vehicleinfo-xwalk-tests" category="WebAPI/Automotive">
+    <set name="vehicleinfo">
+      <testcase purpose="Check if navigator.vehicle exists" type="compliance" status="designed" component="WebAPI/Automotive/Vehicle Information Access API" execution_type="auto" priority="P1" id="Vehicle_exists">
+        <description>
+          <test_script_entry>/opt/webapi-vehicleinfo-xwalk-tests/vehicleinfo/Vehicle_attributes_tests.html?total_num=4&amp;locator_key=id&amp;value=1</test_script_entry>
+        </description>
+        <specs>
+          <spec>
+            <spec_assertion element_type="attributes" element_name="vehicle" interface="Navigator" specification="Vehicle Information Access API" section="Automotive" category="WebAPI Automotive Specifications"/>
+            <spec_url>http://rawgit.com/w3c/automotive-bg/master/vehicle_spec.html</spec_url>
+            <spec_statement/>
+          </spec>
+        </specs>
+      </testcase>
+      <testcase purpose="Check if vehicle.vehicleSpeed exists" type="compliance" status="designed" component="WebAPI/Automotive/Vehicle Information Access API" execution_type="auto" priority="P1" id="Vehicle_vehicleSpeed_exists">
+        <description>
+          <test_script_entry>/opt/webapi-vehicleinfo-xwalk-tests/vehicleinfo/Vehicle_attributes_tests.html?total_num=4&amp;locator_key=id&amp;value=2</test_script_entry>
+        </description>
+        <specs>
+          <spec>
+            <spec_assertion element_type="attributes" element_name="vehicleSpeed" interface="Vehicle" specification="Vehicle Information Access API" section="Automotive" category="WebAPI Automotive Specifications"/>
+            <spec_url>http://rawgit.com/w3c/automotive-bg/master/vehicle_spec.html</spec_url>
+            <spec_statement/>
+          </spec>
+        </specs>
+      </testcase>
+      <testcase purpose="Check if vehicle.climateControl exists" type="compliance" status="designed" component="WebAPI/Automotive/Vehicle Information Access API" execution_type="auto" priority="P1" id="Vehicle_climateControl_exists">
+        <description>
+          <test_script_entry>/opt/webapi-vehicleinfo-xwalk-tests/vehicleinfo/Vehicle_attributes_tests.html?total_num=4&amp;locator_key=id&amp;value=3</test_script_entry>
+        </description>
+        <specs>
+          <spec>
+            <spec_assertion element_type="attributes" element_name="climateControl" interface="Vehicle" specification="Vehicle Information Access API" section="Automotive" category="WebAPI Automotive Specifications"/>
+            <spec_url>http://rawgit.com/w3c/automotive-bg/master/vehicle_spec.html</spec_url>
+            <spec_statement/>
+          </spec>
+        </specs>
+      </testcase>
+      <testcase purpose="Check if vehicle.door exists" type="compliance" status="designed" component="WebAPI/Automotive/Vehicle Information Access API" execution_type="auto" priority="P1" id="Vehicle_door_exists">
+        <description>
+          <test_script_entry>/opt/webapi-vehicleinfo-xwalk-tests/vehicleinfo/Vehicle_attributes_tests.html?total_num=4&amp;locator_key=id&amp;value=3</test_script_entry>
+        </description>
+        <specs>
+          <spec>
+            <spec_assertion element_type="attributes" element_name="door" interface="Vehicle" specification="Vehicle Information Access API" section="Automotive" category="WebAPI Automotive Specifications"/>
+            <spec_url>http://rawgit.com/w3c/automotive-bg/master/vehicle_spec.html</spec_url>
+            <spec_statement/>
+          </spec>
+        </specs>
+      </testcase>
+      <testcase purpose="Check if VehicleInterface.get() exists" type="compliance" status="designed" component="WebAPI/Automotive/Vehicle Information Access API" execution_type="auto" priority="P1" id="VehicleInterface_get_exists">
+        <description>
+          <test_script_entry>/opt/webapi-vehicleinfo-xwalk-tests/vehicleinfo/VehicleInterface_attributes_tests.html?total_num=10&amp;locator_key=id&amp;value=1</test_script_entry>
+        </description>
+        <specs>
+          <spec>
+            <spec_assertion element_type="method" element_name="get" interface="VehicleInterface" specification="Vehicle Information Access API" section="Automotive" category="WebAPI Automotive Specifications"/>
+            <spec_url>http://rawgit.com/w3c/automotive-bg/master/vehicle_spec.html</spec_url>
+            <spec_statement/>
+          </spec>
+        </specs>
+      </testcase>
+      <testcase purpose="Check if VehicleInterface.zones exists" type="compliance" status="designed" component="WebAPI/Automotive/Vehicle Information Access API" execution_type="auto" priority="P1" id="VehicleInterface_zones_exists">
+        <description>
+          <test_script_entry>/opt/webapi-vehicleinfo-xwalk-tests/vehicleinfo/VehicleInterface_attributes_tests.html?total_num=10&amp;locator_key=id&amp;value=2</test_script_entry>
+        </description>
+        <specs>
+          <spec>
+            <spec_assertion element_type="attribute" element_name="zones" interface="VehicleInterface" specification="Vehicle Information Access API" section="Automotive" category="WebAPI Automotive Specifications"/>
+            <spec_url>http://rawgit.com/w3c/automotive-bg/master/vehicle_spec.html</spec_url>
+            <spec_statement/>
+          </spec>
+        </specs>
+      </testcase>
+      <testcase purpose="Check if VehicleInterface.availableForRetrieval exists" type="compliance" status="designed" component="WebAPI/Automotive/Vehicle Information Access API" execution_type="auto" priority="P1" id="VehicleInterface_availableForRetrieval_exists">
+        <description>
+          <test_script_entry>/opt/webapi-vehicleinfo-xwalk-tests/vehicleinfo/VehicleInterface_attributes_tests.html?total_num=10&amp;locator_key=id&amp;value=3</test_script_entry>
+        </description>
+        <specs>
+          <spec>
+            <spec_assertion element_type="attribute" element_name="availableForRetrieval" interface="VehicleInterface" specification="Vehicle Information Access API" section="Automotive" category="WebAPI Automotive Specifications"/>
+            <spec_url>http://rawgit.com/w3c/automotive-bg/master/vehicle_spec.html</spec_url>
+            <spec_statement/>
+          </spec>
+        </specs>
+      </testcase>
+      <testcase purpose="Check if VehicleInterface.supported exists" type="compliance" status="designed" component="WebAPI/Automotive/Vehicle Information Access API" execution_type="auto" priority="P1" id="VehicleInterface_supported_exists">
+        <description>
+          <test_script_entry>/opt/webapi-vehicleinfo-xwalk-tests/vehicleinfo/VehicleInterface_attributes_tests.html?total_num=10&amp;locator_key=id&amp;value=4</test_script_entry>
+        </description>
+        <specs>
+          <spec>
+            <spec_assertion element_type="attribute" element_name="supported" interface="VehicleInterface" specification="Vehicle Information Access API" section="Automotive" category="WebAPI Automotive Specifications"/>
+            <spec_url>http://rawgit.com/w3c/automotive-bg/master/vehicle_spec.html</spec_url>
+            <spec_statement/>
+          </spec>
+        </specs>
+      </testcase>
+      <testcase purpose="Check if VehicleInterface.availabilityChangedListener exists" type="compliance" status="designed" component="WebAPI/Automotive/Vehicle Information Access API" execution_type="auto" priority="P1" id="VehicleInterface_availabilityChangedListener_exists">
+        <description>
+          <test_script_entry>/opt/webapi-vehicleinfo-xwalk-tests/vehicleinfo/VehicleInterface_attributes_tests.html?total_num=10&amp;locator_key=id&amp;value=5</test_script_entry>
+        </description>
+        <specs>
+          <spec>
+            <spec_assertion element_type="method" element_name="availabilityChangedListener" interface="VehicleInterface" specification="Vehicle Information Access API" section="Automotive" category="WebAPI Automotive Specifications"/>
+            <spec_url>http://rawgit.com/w3c/automotive-bg/master/vehicle_spec.html</spec_url>
+            <spec_statement/>
+          </spec>
+        </specs>
+      </testcase>
+      <testcase purpose="Check if VehicleInterface.removeAvailabilityChangedListener exists" type="compliance" status="designed" component="WebAPI/Automotive/Vehicle Information Access API" execution_type="auto" priority="P1" id="VehicleInterface_removeAvailabilityChangedListener_exists">
+        <description>
+          <test_script_entry>/opt/webapi-vehicleinfo-xwalk-tests/vehicleinfo/VehicleInterface_attributes_tests.html?total_num=10&amp;locator_key=id&amp;value=6</test_script_entry>
+        </description>
+        <specs>
+          <spec>
+            <spec_assertion element_type="method" element_name="removeAvailabilityChangedListener" interface="VehicleInterface" specification="Vehicle Information Access API" section="Automotive" category="WebAPI Automotive Specifications"/>
+            <spec_url>http://rawgit.com/w3c/automotive-bg/master/vehicle_spec.html</spec_url>
+            <spec_statement/>
+          </spec>
+        </specs>
+      </testcase>
+      <testcase purpose="Check if VehicleInterface.getHistory exists" type="compliance" status="designed" component="WebAPI/Automotive/Vehicle Information Access API" execution_type="auto" priority="P1" id="VehicleInterface_getHistory_exists">
+        <description>
+          <test_script_entry>/opt/webapi-vehicleinfo-xwalk-tests/vehicleinfo/VehicleInterface_attributes_tests.html?total_num=10&amp;locator_key=id&amp;value=7</test_script_entry>
+        </description>
+        <specs>
+          <spec>
+            <spec_assertion element_type="method" element_name="getHistory" interface="VehicleInterface" specification="Vehicle Information Access API" section="Automotive" category="WebAPI Automotive Specifications"/>
+            <spec_url>http://rawgit.com/w3c/automotive-bg/master/vehicle_spec.html</spec_url>
+            <spec_statement/>
+          </spec>
+        </specs>
+      </testcase>
+      <testcase purpose="Check if VehicleInterface.isLogged exists" type="compliance" status="designed" component="WebAPI/Automotive/Vehicle Information Access API" execution_type="auto" priority="P1" id="VehicleInterface_isLogged_exists">
+        <description>
+          <test_script_entry>/opt/webapi-vehicleinfo-xwalk-tests/vehicleinfo/VehicleInterface_attributes_tests.html?total_num=10&amp;locator_key=id&amp;value=8</test_script_entry>
+        </description>
+        <specs>
+          <spec>
+            <spec_assertion element_type="attribute" element_name="isLogged" interface="VehicleInterface" specification="Vehicle Information Access API" section="Automotive" category="WebAPI Automotive Specifications"/>
+            <spec_url>http://rawgit.com/w3c/automotive-bg/master/VehicleInterface_spec.html</spec_url>
+            <spec_statement/>
+          </spec>
+        </specs>
+      </testcase>
+      <testcase purpose="Check if VehicleInterface.from exists" type="compliance" status="designed" component="WebAPI/Automotive/Vehicle Information Access API" execution_type="auto" priority="P1" id="VehicleInterface_from_exists">
+        <description>
+          <test_script_entry>/opt/webapi-vehicleinfo-xwalk-tests/vehicleinfo/VehicleInterface_attributes_tests.html?total_num=10&amp;locator_key=id&amp;value=9</test_script_entry>
+        </description>
+        <specs>
+          <spec>
+            <spec_assertion element_type="attribute" element_name="from" interface="VehicleInterface" specification="Vehicle Information Access API" section="Automotive" category="WebAPI Automotive Specifications"/>
+            <spec_url>http://rawgit.com/w3c/automotive-bg/master/vehicle_spec.html</spec_url>
+            <spec_statement/>
+          </spec>
+        </specs>
+      </testcase>
+      <testcase purpose="Check if VehicleInterface.to exists" type="compliance" status="designed" component="WebAPI/Automotive/Vehicle Information Access API" execution_type="auto" priority="P1" id="VehicleInterface_to_exists">
+        <description>
+          <test_script_entry>/opt/webapi-vehicleinfo-xwalk-tests/vehicleinfo/VehicleInterface_attributes_tests.html?total_num=10&amp;locator_key=id&amp;value=10</test_script_entry>
+        </description>
+        <specs>
+          <spec>
+            <spec_assertion element_type="attribute" element_name="to" interface="VehicleInterface" specification="Vehicle Information Access API" section="Automotive" category="WebAPI Automotive Specifications"/>
+            <spec_url>http://rawgit.com/w3c/automotive-bg/master/vehicle_spec.html</spec_url>
+            <spec_statement/>
+          </spec>
+        </specs>
+      </testcase>
+      <testcase purpose="Check if VehicleSignalInterface.set() exists" type="compliance" status="designed" component="WebAPI/Automotive/Vehicle Information Access API" execution_type="auto" priority="P1" id="VehicleSignalInterface_set_exists">
+        <description>
+          <test_script_entry>/opt/webapi-vehicleinfo-xwalk-tests/vehicleinfo/VehicleSignalInterface_attributes_tests.html?total_num=5&amp;locator_key=id&amp;value=1</test_script_entry>
+        </description>
+        <specs>
+          <spec>
+            <spec_assertion element_type="method" element_name="set" interface="VehicleSignalInterface" specification="Vehicle Information Access API" section="Automotive" category="WebAPI Automotive Specifications"/>
+            <spec_url>http://rawgit.com/w3c/automotive-bg/master/vehicle_spec.html</spec_url>
+            <spec_statement/>
+          </spec>
+        </specs>
+      </testcase>
+      <testcase purpose="Check if VehicleSignalInterface.subscribe() exists" type="compliance" status="designed" component="WebAPI/Automotive/Vehicle Information Access API" execution_type="auto" priority="P1" id="VehicleSignalInterface_subscribe_exists">
+        <description>
+          <test_script_entry>/opt/webapi-vehicleinfo-xwalk-tests/vehicleinfo/VehicleSignalInterface_attributes_tests.html?total_num=5&amp;locator_key=id&amp;value=2</test_script_entry>
+        </description>
+        <specs>
+          <spec>
+            <spec_assertion element_type="method" element_name="subscribe" interface="VehicleSignalInterface" specification="Vehicle Information Access API" section="Automotive" category="WebAPI Automotive Specifications"/>
+            <spec_url>http://rawgit.com/w3c/automotive-bg/master/vehicle_spec.html</spec_url>
+            <spec_statement/>
+          </spec>
+        </specs>
+      </testcase>
+      <testcase purpose="Check if VehicleSignalInterface.unsubscribe() exists" type="compliance" status="designed" component="WebAPI/Automotive/Vehicle Information Access API" execution_type="auto" priority="P1" id="VehicleSignalInterface_unsubscribe_exists">
+        <description>
+          <test_script_entry>/opt/webapi-vehicleinfo-xwalk-tests/vehicleinfo/VehicleSignalInterface_attributes_tests.html?total_num=5&amp;locator_key=id&amp;value=3</test_script_entry>
+        </description>
+        <specs>
+          <spec>
+            <spec_assertion element_type="method" element_name="unsubscribe" interface="VehicleSignalInterface" specification="Vehicle Information Access API" section="Automotive" category="WebAPI Automotive Specifications"/>
+            <spec_url>http://rawgit.com/w3c/automotive-bg/master/vehicle_spec.html</spec_url>
+            <spec_statement/>
+          </spec>
+        </specs>
+      </testcase>
+      <testcase purpose="Check if VehicleSignalInterface.availableForSubscription() exists" type="compliance" status="designed" component="WebAPI/Automotive/Vehicle Information Access API" execution_type="auto" priority="P1" id="VehicleSignalInterface_availableForSubscription_exists">
+        <description>
+          <test_script_entry>/opt/webapi-vehicleinfo-xwalk-tests/vehicleinfo/VehicleSignalInterface_attributes_tests.html?total_num=5&amp;locator_key=id&amp;value=4</test_script_entry>
+        </description>
+        <specs>
+          <spec>
+            <spec_assertion element_type="method" element_name="availableForSubscription" interface="VehicleSignalInterface" specification="Vehicle Information Access API" section="Automotive" category="WebAPI Automotive Specifications"/>
+            <spec_url>http://rawgit.com/w3c/automotive-bg/master/vehicle_spec.html</spec_url>
+            <spec_statement/>
+          </spec>
+        </specs>
+      </testcase>
+      <testcase purpose="Check if VehicleSignalInterface.availableForSetting() exists" type="compliance" status="designed" component="WebAPI/Automotive/Vehicle Information Access API" execution_type="auto" priority="P1" id="VehicleSignalInterface_availableForSetting_exists">
+        <description>
+          <test_script_entry>/opt/webapi-vehicleinfo-xwalk-tests/vehicleinfo/VehicleSignalInterface_attributes_tests.html?total_num=5&amp;locator_key=id&amp;value=5</test_script_entry>
+        </description>
+        <specs>
+          <spec>
+            <spec_assertion element_type="method" element_name="availableForSetting" interface="VehicleSignalInterface" specification="Vehicle Information Access API" section="Automotive" category="WebAPI Automotive Specifications"/>
+            <spec_url>http://rawgit.com/w3c/automotive-bg/master/vehicle_spec.html</spec_url>
+            <spec_statement/>
+          </spec>
+        </specs>
+      </testcase>
+
+      <testcase purpose="Check if Zone can be constructor" type="compliance" status="designed" component="WebAPI/Automotive/Vehicle Information Access API" execution_type="auto" priority="P1" id="Zoen_constructor">
+        <description>
+          <test_script_entry>/opt/webapi-vehicleinfo-xwalk-tests/vehicleinfo/Zoen_attributes_tests.html?total_num=24&amp;locator_key=id&amp;value=1</test_script_entry>
+        </description>
+        <specs>
+          <spec>
+            <spec_assertion element_type="attribute" element_name="zone" interface="Zone" specification="Vehicle Information Access API" section="Automotive" category="WebAPI Automotive Specifications"/>
+            <spec_url>http://rawgit.com/w3c/automotive-bg/master/vehicle_spec.html</spec_url>
+            <spec_statement/>
+          </spec>
+        </specs>
+      </testcase>
+      <testcase purpose="Check if Zone.Front exists" type="compliance" status="designed" component="WebAPI/Automotive/Vehicle Information Access API" execution_type="auto" priority="P1" id="Zoen_Front_exists">
+        <description>
+          <test_script_entry>/opt/webapi-vehicleinfo-xwalk-tests/vehicleinfo/Zoen_attributes_tests.html?total_num=24&amp;locator_key=id&amp;value=2</test_script_entry>
+        </description>
+        <specs>
+          <spec>
+            <spec_assertion element_type="attribute" element_name="Front" interface="Zone" specification="Vehicle Information Access API" section="Automotive" category="WebAPI Automotive Specifications"/>
+            <spec_url>http://rawgit.com/w3c/automotive-bg/master/vehicle_spec.html</spec_url>
+            <spec_statement/>
+          </spec>
+        </specs>
+      </testcase>
+      <testcase purpose="Check if Zone.Front const DOMString is Front" type="compliance" status="designed" component="WebAPI/Automotive/Vehicle Information Access API" execution_type="auto" priority="P1" id="Zoen_Front_const">
+        <description>
+          <test_script_entry>/opt/webapi-vehicleinfo-xwalk-tests/vehicleinfo/Zoen_attributes_tests.html?total_num=24&amp;locator_key=id&amp;value=3</test_script_entry>
+        </description>
+        <specs>
+          <spec>
+            <spec_assertion element_type="attribute" element_name="Front" interface="Zone" specification="Vehicle Information Access API" section="Automotive" category="WebAPI Automotive Specifications"/>
+            <spec_url>http://rawgit.com/w3c/automotive-bg/master/vehicle_spec.html</spec_url>
+            <spec_statement/>
+          </spec>
+        </specs>
+      </testcase>
+      <testcase purpose="Check if Zone.Middle exists" type="compliance" status="designed" component="WebAPI/Automotive/Vehicle Information Access API" execution_type="auto" priority="P1" id="Zoen_Middle_exists">
+        <description>
+          <test_script_entry>/opt/webapi-vehicleinfo-xwalk-tests/vehicleinfo/Zoen_attributes_tests.html?total_num=24&amp;locator_key=id&amp;value=4</test_script_entry>
+        </description>
+        <specs>
+          <spec>
+            <spec_assertion element_type="attribute" element_name="Middle" interface="Zone" specification="Vehicle Information Access API" section="Automotive" category="WebAPI Automotive Specifications"/>
+            <spec_url>http://rawgit.com/w3c/automotive-bg/master/vehicle_spec.html</spec_url>
+            <spec_statement/>
+          </spec>
+        </specs>
+      </testcase>
+      <testcase purpose="Check if Zone.Middle const DOMString is Middle" type="compliance" status="designed" component="WebAPI/Automotive/Vehicle Information Access API" execution_type="auto" priority="P1" id="Zoen_Middle_const">
+        <description>
+          <test_script_entry>/opt/webapi-vehicleinfo-xwalk-tests/vehicleinfo/Zoen_attributes_tests.html?total_num=24&amp;locator_key=id&amp;value=5</test_script_entry>
+        </description>
+        <specs>
+          <spec>
+            <spec_assertion element_type="attribute" element_name="Middle" interface="Zone" specification="Vehicle Information Access API" section="Automotive" category="WebAPI Automotive Specifications"/>
+            <spec_url>http://rawgit.com/w3c/automotive-bg/master/vehicle_spec.html</spec_url>
+            <spec_statement/>
+          </spec>
+        </specs>
+      </testcase>
+      <testcase purpose="Check if Zone.Right exists" type="compliance" status="designed" component="WebAPI/Automotive/Vehicle Information Access API" execution_type="auto" priority="P1" id="Zoen_Right_exists">
+        <description>
+          <test_script_entry>/opt/webapi-vehicleinfo-xwalk-tests/vehicleinfo/Zoen_attributes_tests.html?total_num=24&amp;locator_key=id&amp;value=6</test_script_entry>
+        </description>
+        <specs>
+          <spec>
+            <spec_assertion element_type="attribute" element_name="Right" interface="Zone" specification="Vehicle Information Access API" section="Automotive" category="WebAPI Automotive Specifications"/>
+            <spec_url>http://rawgit.com/w3c/automotive-bg/master/vehicle_spec.html</spec_url>
+            <spec_statement/>
+          </spec>
+        </specs>
+      </testcase>
+      <testcase purpose="Check if Zone.Right const DOMString is Right" type="compliance" status="designed" component="WebAPI/Automotive/Vehicle Information Access API" execution_type="auto" priority="P1" id="Zoen_Right_const">
+        <description>
+          <test_script_entry>/opt/webapi-vehicleinfo-xwalk-tests/vehicleinfo/Zoen_attributes_tests.html?total_num=24&amp;locator_key=id&amp;value=7</test_script_entry>
+        </description>
+        <specs>
+          <spec>
+            <spec_assertion element_type="attribute" element_name="Right" interface="Zone" specification="Vehicle Information Access API" section="Automotive" category="WebAPI Automotive Specifications"/>
+            <spec_url>http://rawgit.com/w3c/automotive-bg/master/vehicle_spec.html</spec_url>
+            <spec_statement/>
+          </spec>
+        </specs>
+      </testcase>
+      <testcase purpose="Check if Zone.Left exists" type="compliance" status="designed" component="WebAPI/Automotive/Vehicle Information Access API" execution_type="auto" priority="P1" id="Zoen_Left_exists">
+        <description>
+          <test_script_entry>/opt/webapi-vehicleinfo-xwalk-tests/vehicleinfo/Zoen_attributes_tests.html?total_num=24&amp;locator_key=id&amp;value=8</test_script_entry>
+        </description>
+        <specs>
+          <spec>
+            <spec_assertion element_type="attribute" element_name="Left" interface="Zone" specification="Vehicle Information Access API" section="Automotive" category="WebAPI Automotive Specifications"/>
+            <spec_url>http://rawgit.com/w3c/automotive-bg/master/vehicle_spec.html</spec_url>
+            <spec_statement/>
+          </spec>
+        </specs>
+      </testcase>
+      <testcase purpose="Check if Zone.Left const DOMString is Left" type="compliance" status="designed" component="WebAPI/Automotive/Vehicle Information Access API" execution_type="auto" priority="P1" id="Zoen_Left_const">
+        <description>
+          <test_script_entry>/opt/webapi-vehicleinfo-xwalk-tests/vehicleinfo/Zoen_attributes_tests.html?total_num=24&amp;locator_key=id&amp;value=9</test_script_entry>
+        </description>
+        <specs>
+          <spec>
+            <spec_assertion element_type="attribute" element_name="Left" interface="Zone" specification="Vehicle Information Access API" section="Automotive" category="WebAPI Automotive Specifications"/>
+            <spec_url>http://rawgit.com/w3c/automotive-bg/master/vehicle_spec.html</spec_url>
+            <spec_statement/>
+          </spec>
+        </specs>
+      </testcase>
+      <testcase purpose="Check if Zone.Rear exists" type="compliance" status="designed" component="WebAPI/Automotive/Vehicle Information Access API" execution_type="auto" priority="P1" id="Zoen_Rear_exists">
+        <description>
+          <test_script_entry>/opt/webapi-vehicleinfo-xwalk-tests/vehicleinfo/Zoen_attributes_tests.html?total_num=24&amp;locator_key=id&amp;value=10</test_script_entry>
+        </description>
+        <specs>
+          <spec>
+            <spec_assertion element_type="attribute" element_name="Rear" interface="Zone" specification="Vehicle Information Access API" section="Automotive" category="WebAPI Automotive Specifications"/>
+            <spec_url>http://rawgit.com/w3c/automotive-bg/master/vehicle_spec.html</spec_url>
+            <spec_statement/>
+          </spec>
+        </specs>
+      </testcase>
+      <testcase purpose="Check if Zone.Rear const DOMString is Rear" type="compliance" status="designed" component="WebAPI/Automotive/Vehicle Information Access API" execution_type="auto" priority="P1" id="Zoen_Rear_const">
+        <description>
+          <test_script_entry>/opt/webapi-vehicleinfo-xwalk-tests/vehicleinfo/Zoen_attributes_tests.html?total_num=24&amp;locator_key=id&amp;value=11</test_script_entry>
+        </description>
+        <specs>
+          <spec>
+            <spec_assertion element_type="attribute" element_name="Rear" interface="Zone" specification="Vehicle Information Access API" section="Automotive" category="WebAPI Automotive Specifications"/>
+            <spec_url>http://rawgit.com/w3c/automotive-bg/master/vehicle_spec.html</spec_url>
+            <spec_statement/>
+          </spec>
+        </specs>
+      </testcase>
+      <testcase purpose="Check if Zone.Center exists" type="compliance" status="designed" component="WebAPI/Automotive/Vehicle Information Access API" execution_type="auto" priority="P1" id="Zoen_Center_exists">
+        <description>
+          <test_script_entry>/opt/webapi-vehicleinfo-xwalk-tests/vehicleinfo/Zoen_attributes_tests.html?total_num=24&amp;locator_key=id&amp;value=12</test_script_entry>
+        </description>
+        <specs>
+          <spec>
+            <spec_assertion element_type="attribute" element_name="Center" interface="Zone" specification="Vehicle Information Access API" section="Automotive" category="WebAPI Automotive Specifications"/>
+            <spec_url>http://rawgit.com/w3c/automotive-bg/master/vehicle_spec.html</spec_url>
+            <spec_statement/>
+          </spec>
+        </specs>
+      </testcase>
+      <testcase purpose="Check if Zone.Center const DOMString is Center" type="compliance" status="designed" component="WebAPI/Automotive/Vehicle Information Access API" execution_type="auto" priority="P1" id="Zoen_Center_const">
+        <description>
+          <test_script_entry>/opt/webapi-vehicleinfo-xwalk-tests/vehicleinfo/Zoen_attributes_tests.html?total_num=24&amp;locator_key=id&amp;value=13</test_script_entry>
+        </description>
+        <specs>
+          <spec>
+            <spec_assertion element_type="attribute" element_name="Center" interface="Zone" specification="Vehicle Information Access API" section="Automotive" category="WebAPI Automotive Specifications"/>
+            <spec_url>http://rawgit.com/w3c/automotive-bg/master/vehicle_spec.html</spec_url>
+            <spec_statement/>
+          </spec>
+        </specs>
+      </testcase>
+      <testcase purpose="Check if Zone.Hood exists" type="compliance" status="designed" component="WebAPI/Automotive/Vehicle Information Access API" execution_type="auto" priority="P1" id="Zoen_Hood_exists">
+        <description>
+          <test_script_entry>/opt/webapi-vehicleinfo-xwalk-tests/vehicleinfo/Zoen_attributes_tests.html?total_num=24&amp;locator_key=id&amp;value=14</test_script_entry>
+        </description>
+        <specs>
+          <spec>
+            <spec_assertion element_type="attribute" element_name="Hood" interface="Zone" specification="Vehicle Information Access API" section="Automotive" category="WebAPI Automotive Specifications"/>
+            <spec_url>http://rawgit.com/w3c/automotive-bg/master/vehicle_spec.html</spec_url>
+            <spec_statement/>
+          </spec>
+        </specs>
+      </testcase>
+      <testcase purpose="Check if Zone.Hood const DOMString is Hood" type="compliance" status="designed" component="WebAPI/Automotive/Vehicle Information Access API" execution_type="auto" priority="P1" id="Zoen_Hood_const">
+        <description>
+          <test_script_entry>/opt/webapi-vehicleinfo-xwalk-tests/vehicleinfo/Zoen_attributes_tests.html?total_num=24&amp;locator_key=id&amp;value=15</test_script_entry>
+        </description>
+        <specs>
+          <spec>
+            <spec_assertion element_type="attribute" element_name="Hood" interface="Zone" specification="Vehicle Information Access API" section="Automotive" category="WebAPI Automotive Specifications"/>
+            <spec_url>http://rawgit.com/w3c/automotive-bg/master/vehicle_spec.html</spec_url>
+            <spec_statement/>
+          </spec>
+        </specs>
+      </testcase>
+      <testcase purpose="Check if Zone.Trunk exists" type="compliance" status="designed" component="WebAPI/Automotive/Vehicle Information Access API" execution_type="auto" priority="P1" id="Zoen_Trunk_exists">
+        <description>
+          <test_script_entry>/opt/webapi-vehicleinfo-xwalk-tests/vehicleinfo/Zoen_attributes_tests.html?total_num=24&amp;locator_key=id&amp;value=16</test_script_entry>
+        </description>
+        <specs>
+          <spec>
+            <spec_assertion element_type="attribute" element_name="Trunk" interface="Zone" specification="Vehicle Information Access API" section="Automotive" category="WebAPI Automotive Specifications"/>
+            <spec_url>http://rawgit.com/w3c/automotive-bg/master/vehicle_spec.html</spec_url>
+            <spec_statement/>
+          </spec>
+        </specs>
+      </testcase>
+      <testcase purpose="Check if Zone.Trunk const DOMString is Trunk" type="compliance" status="designed" component="WebAPI/Automotive/Vehicle Information Access API" execution_type="auto" priority="P1" id="Zoen_Trunk_const">
+        <description>
+          <test_script_entry>/opt/webapi-vehicleinfo-xwalk-tests/vehicleinfo/Zoen_attributes_tests.html?total_num=24&amp;locator_key=id&amp;value=17</test_script_entry>
+        </description>
+        <specs>
+          <spec>
+            <spec_assertion element_type="attribute" element_name="Trunk" interface="Zone" specification="Vehicle Information Access API" section="Automotive" category="WebAPI Automotive Specifications"/>
+            <spec_url>http://rawgit.com/w3c/automotive-bg/master/vehicle_spec.html</spec_url>
+            <spec_statement/>
+          </spec>
+        </specs>
+      </testcase>
+      <testcase purpose="Check if Zone.Fuel exists" type="compliance" status="designed" component="WebAPI/Automotive/Vehicle Information Access API" execution_type="auto" priority="P1" id="Zoen_Fuel_exists">
+        <description>
+          <test_script_entry>/opt/webapi-vehicleinfo-xwalk-tests/vehicleinfo/Zoen_attributes_tests.html?total_num=24&amp;locator_key=id&amp;value=18</test_script_entry>
+        </description>
+        <specs>
+          <spec>
+            <spec_assertion element_type="attribute" element_name="Fuel" interface="Zone" specification="Vehicle Information Access API" section="Automotive" category="WebAPI Automotive Specifications"/>
+            <spec_url>http://rawgit.com/w3c/automotive-bg/master/vehicle_spec.html</spec_url>
+            <spec_statement/>
+          </spec>
+        </specs>
+      </testcase>
+      <testcase purpose="Check if Zone.Fuel const DOMString is Fuel" type="compliance" status="designed" component="WebAPI/Automotive/Vehicle Information Access API" execution_type="auto" priority="P1" id="Zoen_Fuel_const">
+        <description>
+          <test_script_entry>/opt/webapi-vehicleinfo-xwalk-tests/vehicleinfo/Zoen_attributes_tests.html?total_num=24&amp;locator_key=id&amp;value=19</test_script_entry>
+        </description>
+        <specs>
+          <spec>
+            <spec_assertion element_type="attribute" element_name="Fuel" interface="Zone" specification="Vehicle Information Access API" section="Automotive" category="WebAPI Automotive Specifications"/>
+            <spec_url>http://rawgit.com/w3c/automotive-bg/master/vehicle_spec.html</spec_url>
+            <spec_statement/>
+          </spec>
+        </specs>
+      </testcase>
+      <testcase purpose="Check if Zone.value exists" type="compliance" status="designed" component="WebAPI/Automotive/Vehicle Information Access API" execution_type="auto" priority="P1" id="Zoen_value_exists">
+        <description>
+          <test_script_entry>/opt/webapi-vehicleinfo-xwalk-tests/vehicleinfo/Zoen_attributes_tests.html?total_num=24&amp;locator_key=id&amp;value=20</test_script_entry>
+        </description>
+        <specs>
+          <spec>
+            <spec_assertion element_type="attribute" element_name="value" interface="Zone" specification="Vehicle Information Access API" section="Automotive" category="WebAPI Automotive Specifications"/>
+            <spec_url>http://rawgit.com/w3c/automotive-bg/master/vehicle_spec.html</spec_url>
+            <spec_statement/>
+          </spec>
+        </specs>
+      </testcase>
+      <testcase purpose="Check if Zone.driver exists" type="compliance" status="designed" component="WebAPI/Automotive/Vehicle Information Access API" execution_type="auto" priority="P1" id="Zoen_driver_exists">
+        <description>
+          <test_script_entry>/opt/webapi-vehicleinfo-xwalk-tests/vehicleinfo/Zoen_attributes_tests.html?total_num=24&amp;locator_key=id&amp;value=21</test_script_entry>
+        </description>
+        <specs>
+          <spec>
+            <spec_assertion element_type="attribute" element_name="driver" interface="Zone" specification="Vehicle Information Access API" section="Automotive" category="WebAPI Automotive Specifications"/>
+            <spec_url>http://rawgit.com/w3c/automotive-bg/master/vehicle_spec.html</spec_url>
+            <spec_statement/>
+          </spec>
+        </specs>
+      </testcase>
+      <testcase purpose="Check if Zone.passenger exists" type="compliance" status="designed" component="WebAPI/Automotive/Vehicle Information Access API" execution_type="auto" priority="P1" id="Zoen_passenger_exists">
+        <description>
+          <test_script_entry>/opt/webapi-vehicleinfo-xwalk-tests/vehicleinfo/Zoen_attributes_tests.html?total_num=24&amp;locator_key=id&amp;value=22</test_script_entry>
+        </description>
+        <specs>
+          <spec>
+            <spec_assertion element_type="attribute" element_name="passenger" interface="Zone" specification="Vehicle Information Access API" section="Automotive" category="WebAPI Automotive Specifications"/>
+            <spec_url>http://rawgit.com/w3c/automotive-bg/master/vehicle_spec.html</spec_url>
+            <spec_statement/>
+          </spec>
+        </specs>
+      </testcase>
+      <testcase purpose="Check if Zone.equals exists" type="compliance" status="designed" component="WebAPI/Automotive/Vehicle Information Access API" execution_type="auto" priority="P1" id="Zoen_equals_exists">
+        <description>
+          <test_script_entry>/opt/webapi-vehicleinfo-xwalk-tests/vehicleinfo/Zoen_attributes_tests.html?total_num=24&amp;locator_key=id&amp;value=23</test_script_entry>
+        </description>
+        <specs>
+          <spec>
+            <spec_assertion element_type="method" element_name="equals" interface="Zone" specification="Vehicle Information Access API" section="Automotive" category="WebAPI Automotive Specifications"/>
+            <spec_url>http://rawgit.com/w3c/automotive-bg/master/vehicle_spec.html</spec_url>
+            <spec_statement/>
+          </spec>
+        </specs>
+      </testcase>
+      <testcase purpose="Check if Zone.contains exists" type="compliance" status="designed" component="WebAPI/Automotive/Vehicle Information Access API" execution_type="auto" priority="P1" id="Zoen_contains_exists">
+        <description>
+          <test_script_entry>/opt/webapi-vehicleinfo-xwalk-tests/vehicleinfo/Zoen_attributes_tests.html?total_num=24&amp;locator_key=id&amp;value=23</test_script_entry>
+        </description>
+        <specs>
+          <spec>
+            <spec_assertion element_type="method" element_name="contains" interface="Zone" specification="Vehicle Information Access API" section="Automotive" category="WebAPI Automotive Specifications"/>
+            <spec_url>http://rawgit.com/w3c/automotive-bg/master/vehicle_spec.html</spec_url>
+            <spec_statement/>
+          </spec>
+        </specs>
+      </testcase>
+    </set>
+  </suite>
+</test_definition>
