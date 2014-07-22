@@ -4,7 +4,7 @@
         <meta charset="utf-8">
         <title>All Resource Types Test Page</title>
     </head>
-    <body background='generate_resource.cgi?type=image&id=body'>
+    <body background='generate_resource.py?type=image&id=body'>
         <script>
             if (window.parent.hasOwnProperty('on_test_body_created'))
                 window.parent.on_test_body_created();
@@ -15,7 +15,7 @@
         <script src="empty_script.js"></script>
         <script>
             var async_xhr = new XMLHttpRequest;
-            async_xhr.open("GET", "generate_resource.cgi?type=image&id=async_xhr", true);
+            async_xhr.open("GET", "generate_resource.py?type=image&id=async_xhr", true);
             async_xhr.onreadystatechange = function() {
                 if (async_xhr.readyState == 4 && async_xhr.status == 200 && parent.hasOwnProperty('on_async_xhr_done'))
                     parent.on_async_xhr_done();
@@ -28,11 +28,11 @@
                 src: url('Ahem.ttf');
             }
             iframe {
-                background: url('generate_resource.cgi?type=image&id=1');
+                background: url('generate_resource.py?type=image&id=1');
             }
             ul {
                 font-family: remoteFontAhem;
-                list-style-image: url('generate_resource.cgi?type=image&id=2');
+                list-style-image: url('generate_resource.py?type=image&id=2');
             }
         </style>
         <ul>
@@ -41,9 +41,9 @@
         <ol>
             <li>Test</li>
         </ol>
-        <embed src="generate_resource.cgi?type=css&id=embed" type="text/css"></embed>
-        <input type="image" src="generate_resource.cgi?type=image&id=input"></input>
-        <object type="image/png" data="generate_resource.cgi?type=image&id=object"></object>
-        <video poster="generate_resource.cgi?type=image&id=poster"></video>
+        <embed src="generate_resource.py?type=css&id=embed" type="text/css"></embed>
+        <input type="image" src="generate_resource.py?type=image&id=input"></input>
+        <object type="image/png" data="generate_resource.py?type=image&id=object"></object>
+        <video poster="generate_resource.py?type=image&id=poster"></video>
     </body>
 </html>
