@@ -119,6 +119,7 @@ def lineCount(fp):
 
 def processMain(seedIn):
     try:
+        print "Input Seed :" + seedIn
         print "Excute " + Flag + " cases ------------------------->Start"
         row = 0
         sectionList = []
@@ -175,13 +176,13 @@ def genPackage(direc):
     try:
         print "Generate APK ---------------->Start"
         toolstatus = commands.getstatusoutput("python make_apk.py")[0]
-        if toolstatus !=0:
+        if toolstatus != 0:
             print "Crosswalk Binary is not ready, Please attention"
             sys.exit(1)
         cmd ="python make_apk.py --name=test --package=org.xwalk.test --arch=x86 --manifest="
         manifestPath = direc + "/manifest.json"
         status = commands.getstatusoutput(cmd + manifestPath)[0]
-        if status !=0:
+        if status != 0:
             print "Generate APK ---------------->Error"
         else:
             print "Generate APK ---------------->O.K"
@@ -210,6 +211,7 @@ def genCases(selfcomb):
             values = items[1:]
             lists[row].extend(":".join(values).split(","))
             row = row + 1
+        fobj.close()
 
         pairs = all_pairs(lists)
         for e, v in enumerate(pairs):
@@ -415,24 +417,27 @@ def main():
         global Flag
         os.system("rm -rf " + ConstPath + "/allpairs/negative/*~ &>/dev/null")
         os.system("rm -rf " + ConstPath + "/allpairs/positive/*~ &>/dev/null")
+        os.system("rm -rf " + ConstPath + "/allpairs/case*txt &>/dev/null")
         os.system("rm -rf " + ConstPath + "/report/manifest* &>/dev/null")
         os.system("rm -rf " + ConstPath + "/self &>/dev/null")
         os.system("rm -rf " + ConstPath + "/tcs &>/dev/null")
-        os.mkdir(ConstPath + "/self")
-        os.mkdir(ConstPath + "/tcs")
+        os.system("mkdir -p " + ConstPath + "/self")
+        os.system("mkdir -p " + ConstPath + "/tcs")
         devicesConform()
 
         #positive case
         for seed in os.listdir(ConstPath + "/allpairs/positive/"):
             os.system("rm -rf " + ConstPath + "/allpairs/selfcomb.txt &>/dev/null")
-            os.system("rm -rf " + ConstPath + "/self/* &>/dev/null")
+            os.system("rm -rf " + ConstPath + "/self &>/dev/null")
+            os.system("mkdir -p " + ConstPath + "/self")
             processMain(ConstPath + "/allpairs/positive/" + seed)
 
         #negative case
         Flag = "negative"
         for seed in os.listdir(ConstPath + "/allpairs/negative/"):
             os.system("rm -rf " + ConstPath + "/allpairs/selfcomb.txt &>/dev/null")
-            os.system("rm -rf " + ConstPath + "/self/* &>/dev/null")
+            os.system("rm -rf " + ConstPath + "/self &>/dev/null")
+            os.system("mkdir -p " + ConstPath + "/self")
             processMain(ConstPath + "/allpairs/negative/" + seed)
         End = time.strftime("%Y-%m-%d %H:%M:%S")
 
