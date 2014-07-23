@@ -40,10 +40,11 @@ Authors:
       <strong>Test steps:</strong>
     </p>
     <ol>
-      <li>Install the widget with terminal: "xwalkctl --install widget app"</li>
-      <li>Launch widget with terminal: "xwalk-launcher wgt_ID"</li>
-      <li>Icon image show on the center of the main window, and after the content is loaded, hide the splash screen image in amincation way.</li>
-      <li>Uninstall widget via terminal: "xwalkctl --uninstall wgt_id"</li>
+      <li>Install the widget with terminal: "xwalkctl --install wgt_sample_one.wgt"</li>
+      <li>Launch widget with terminal: "xwalk-launcher wgt_id"</li>
+      <li>Icon image show on the center of the main window, and after the content is loaded, hide the splash screen image in smooth way.</li>
+      <li>Install the widget with terminal: "xwalkctl --install wgt_sample_two.wgt"</li>
+      <li>Uninstall widget via terminal: "xwalkctl --uninstall wgtsamplet.tizen"</li>
     </ol>
     <p>
       <strong>Expected Output:</strong>
@@ -52,6 +53,7 @@ Authors:
       <li>The widget be installed successfully</li>
       <li>The widget be launched successfully</li>
       <li>The splash screen image show/hide successfully</li>
+      <li>The widget be installed successfully,wgt_id is not change,"sqlite3 /home/app/.config/xwalk-service/applications.db "select id,manifest from applications;"| grep wgt_id" the version is 2.4 </li>
       <li>The widget be uninstalled successfully</li>
     </ol>
   </body>

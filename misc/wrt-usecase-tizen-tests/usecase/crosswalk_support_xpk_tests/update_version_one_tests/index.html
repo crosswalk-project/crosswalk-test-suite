@@ -26,34 +26,13 @@ NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE,
 EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
 Authors:
+             Ivan Chen <yufeix.chen@intel.com>
 
 -->
 
-<html>
-  <head>
-    <meta charset='utf-8'>
-    <title>Crosswalk_Support_XPK_Install</title>
-    <link rel="author" title="Intel" href="http://www.intel.com">
-  </head>
-  <body>
-    <p>
-      <strong>Test steps:</strong>
-    </p>
-    <ol>
-    
-      <li>Install original webapp by tpying "xwalkctl --install update_original_versionOne_tests.xpk </li>
-  <li>Update webapp by typing "xwalkctl --install update_versionOne_Higher_tests.xpk"</li>
-  <li>Check result by typing "sqlite3 /home/app/.config/xwalk-service/applications.db "select id,manifest from applications;"| grep app_id"</li>
-  <li>Uninstall the app by typing "xwalkctl --uninstall appID " on the command line</li>
-    </ol>
-    <p>
-      <strong>Expected Output:</strong>
-    </p>
-    <ol>
-      <li>Webapp is installed successfully, no error, no warning message</li>
-   <li>Webapp is installed successfully, no error, no warning message</li>
-   <li>The value of "version" is correct,such as ""version":"3""</li>
-   <li>Web app is able to be uninstall successfully</li>
-    </ol>
-  </body>
-</html>
+<meta charset="utf-8">
+<link rel="author" title="Intel" href="http://www.intel.com/">
+<meta name="flags" content="">
+<body bgcolor="#d0d0d0">
+<h1 align="center">Update Version One</h1>
+<p>Current version is '1.1.1.1'.</p>
