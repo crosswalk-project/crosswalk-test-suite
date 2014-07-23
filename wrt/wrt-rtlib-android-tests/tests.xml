@@ -3,86 +3,38 @@
 <test_definition>
   <suite category="Crosswalk_Runtime_Library" launcher="xwalk" name="wrt-rtlib-android-tests">
     <set name="rtlib">
-      <testcase component="Crosswalk Runtime Library" execution_type="manual" id="Crosswalk_Launcher_Icon" purpose="Validate if Crosswalk icon display normally">
+      <testcase component="Crosswalk Runtime Library" execution_type="manual" id="Crosswalk_Library_Icon_Check" purpose="Validate if Crosswalk icon display normally">
         <description>
           <pre_condition>
             1.Make sure Crosswalk is installed
           </pre_condition>
-          <test_script_entry>/opt/wrt-rtlib-android-tests/rtlib/Crosswalk_Launcher_Icon.html</test_script_entry>
+          <test_script_entry>/opt/wrt-rtlib-android-tests/rtlib/Crosswalk_Library_Icon_Check.html</test_script_entry>
         </description>
       </testcase>
-      <testcase component="Crosswalk Runtime Library" execution_type="manual" id="Crosswalk_Launcher_Check_Installer_Name" purpose="Validate the installer name is about with Crosswalk">
+      <testcase component="Crosswalk Runtime Library" execution_type="manual" id="Crosswalk_Library_Name_Check" purpose="Validate the installer name is about with Crosswalk">
         <description>
           <pre_condition>
             1.Make sure the Crosswalk runtime 'XwalkRuntimeLib.apk'  already exists in the Android OS
           </pre_condition>
-          <test_script_entry>/opt/wrt-rtlib-android-tests/rtlib/Crosswalk_Launcher_Check_Installer_Name.html</test_script_entry>
+          <test_script_entry>/opt/wrt-rtlib-android-tests/rtlib/Crosswalk_Library_Name_Check.html</test_script_entry>
         </description>
       </testcase>
-      <testcase component="Crosswalk Runtime Library" execution_type="manual" id="SplashScreen_LaunchScreen_Bmp" purpose="Validate the Crosswalk enable the launch screen mechanism of bmp image">
-        <description>
-          <pre_condition>
-            Make sure Crosswalk binary is installed
-          </pre_condition>
-          <test_script_entry>/opt/wrt-rtlib-android-tests/rtlib/SplashScreen_LaunchScreen_Bmp.html</test_script_entry>
-        </description>
-      </testcase>
-      <testcase component="Crosswalk Runtime Library" execution_type="manual" id="SplashScreen_LaunchScreen_Gif" purpose="Validate the Crosswalk enable the launch screen mechanism of gif image">
-        <description>
-          <pre_condition>
-            Make sure Crosswalk binary is installed
-          </pre_condition>
-          <test_script_entry>/opt/wrt-rtlib-android-tests/rtlib/SplashScreen_LaunchScreen_Gif.html</test_script_entry>
-        </description>
-      </testcase>
-      <testcase component="Crosswalk Runtime Library" execution_type="manual" id="SplashScreen_LaunchScreen_Jpg" purpose="Validate the Crosswalk enable the launch screen mechanism of jpg image">
-        <description>
-          <pre_condition>
-            Make sure Crosswalk binary is installed
-          </pre_condition>
-          <test_script_entry>/opt/wrt-rtlib-android-tests/rtlib/SplashScreen_LaunchScreen_Jpg.html</test_script_entry>
-        </description>
-      </testcase>
-      <testcase component="Crosswalk Runtime Library" execution_type="manual" id="SplashScreen_LaunchScreen_Png" purpose="Validate the Crosswalk enable the launch screen mechanism of png image">
-        <description>
-          <pre_condition>
-            Make sure Crosswalk binary is installed
-          </pre_condition>
-          <test_script_entry>/opt/wrt-rtlib-android-tests/rtlib/SplashScreen_LaunchScreen_Png.html</test_script_entry>
-        </description>
-      </testcase>
-      <testcase component="Crosswalk Runtime Library" execution_type="manual" id="SplashScreen_LaunchScreen_Landscape" purpose="Validate the Crosswalk enable the launch screen mechanism of landscape mode">
-        <description>
-          <pre_condition>
-            Make sure Crosswalk binary is installed
-          </pre_condition>
-          <test_script_entry>/opt/wrt-rtlib-android-tests/rtlib/SplashScreen_LaunchScreen_Landscape.html</test_script_entry>
-        </description>
-      </testcase>
-      <testcase component="Crosswalk Runtime Library" execution_type="manual" id="SplashScreen_LaunchScreen_Portrait" purpose="Validate the Crosswalk enable the launch screen mechanism of portrait mode">
-        <description>
-          <pre_condition>
-            Make sure Crosswalk binary is installed
-          </pre_condition>
-          <test_script_entry>/opt/wrt-rtlib-android-tests/rtlib/SplashScreen_LaunchScreen_Portrait.html</test_script_entry>
-        </description>
-      </testcase>
-      <testcase component="Crosswalk Runtime Library" execution_type="manual" id="Crosswalk_Launcher_dialog_x86_embeded" purpose="Validate descriptive error message prompt if install arm app in x86 platform">
+      <testcase component="Crosswalk Runtime Library" execution_type="manual" id="Crosswalk_arch_mismatch_x86_embeded" purpose="Validate descriptive error message prompt if install arm app in x86 platform">
         <description>
           <pre_condition>
             1.Make sure Crosswalk binary is installed
             2.Make sure test device is x86 architecture
           </pre_condition>
-          <test_script_entry>/opt/wrt-rtlib-android-tests/rtlib/Crosswalk_Launcher_dialog_x86_embeded.html</test_script_entry>
+          <test_script_entry>/opt/wrt-rtlib-android-tests/rtlib/Crosswalk_arch_mismatch_x86_embeded.html</test_script_entry>
         </description>
       </testcase>
-      <testcase component="Crosswalk Runtime Library" execution_type="manual" id="Crosswalk_Launcher_dialog_arm_embeded" purpose="Validate descriptive error message prompt if install x86 app in arm platform">
+      <testcase component="Crosswalk Runtime Library" execution_type="manual" id="Crosswalk_arch_mismatch_arm_embeded" purpose="Validate descriptive error message prompt if install x86 app in arm platform">
         <description>
           <pre_condition>
             1.Make sure Crosswalk binary is installed
             2.Make sure test device is arm architecture
           </pre_condition>
-          <test_script_entry>/opt/wrt-rtlib-android-tests/rtlib/Crosswalk_Launcher_dialog_arm_embeded.html</test_script_entry>
+          <test_script_entry>/opt/wrt-rtlib-android-tests/rtlib/Crosswalk_arch_mismatch_arm_embeded.html</test_script_entry>
         </description>
       </testcase>
     </set>
