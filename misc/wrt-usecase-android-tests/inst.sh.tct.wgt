@@ -6,31 +6,39 @@ USAGE="Usage: ./inst.sh [-i] [-u]
   -u uninstall xpk and remove source file
 [-i] option was set as default."
 
-PACKAGENAME=wrt-usecase-android-tests
+PACKAGENAME=wrt-common-webapp-tests
 XPKNAME=${PACKAGENAME}.wgt
 RESOURCE_DIR=/home/app/content
 
 function installpkg(){
-xwalkctl --install $(dirname $0)/$XPKNAME
-
-#TODO: copy resource
-#eg:cp xx $RESOURCE_DIR
+for xpkfile in $(ls *.xpk)
+do
+ if [ ${apkfile:0:14} = "update_version" ];then
+    continue
+ fi
+ xwalkctl --install $(dirname $0)/$XPKNAME
+done
+    #TODO: copy resource
+    #eg:cp xx $RESOURCE_DIR
 }
 
 function uninstallpkg(){
-pkgid=`pkgcmd -l | grep $PACKAGENAME | cut -d '[' -f3 | cut -d ']' -f1`
-xwalkctl --uninstall $pkgid
+    xwalkctl >/tmp/apps.txt 2>&1
+    pkgids=`cat /tmp/apps.txt | grep $PACKAGENAME | awk '{print $(NF-1)}'`
+    for pkgid in $pkgids
+    do
+        xwalkctl --uninstall $pkgid
+    done
 
-#TODO: remove resource
-#eg:rm xx
+    #TODO: remove resource
+    #eg:rm xx
 
-### remove source file ###
-if [ -d $RESOURCE_DIR/tct/opt/$PACKAGENAME ];then
-    rm -rf $RESOURCE_DIR/tct/opt/$PACKAGENAME
-else
-    echo "Remove source file fail,please check if the source file exist: $RESOURCE_DIR/tct/opt/$PACKAGENAME ..."
-fi
-
+    ### remove source file ###
+    if [ -d $RESOURCE_DIR/tct/opt/$PACKAGENAME ];then
+        rm -rf $RESOURCE_DIR/tct/opt/$PACKAGENAME
+    else
+        echo "Remove source file fail,please check if the source file exist: $RESOURCE_DIR/tct/opt/$PACKAGENAME ..."
+    fi
 }
 
 case "$1" in

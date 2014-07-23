@@ -1,0 +1,3 @@
+SUBDIRS = crosswalk_packer_tool_xpk crosswalk_packer_tool_version crosswalk_packer_tool_options  crosswalk_packer_tool_icon_twopic  crosswalk_packer_tool_icon_png  crosswalk_packer_tool_help  crosswalk_packer_tool_compressor_minifycss crosswalk_packer_tool_compressor_minify  crosswalk_packer_tool_appversion_x86 crosswalk_packer_tool_appversion_diffupdate
+MANIFESTdir = /opt/wrt-usecase-android-tests/usecase/crosswalk_packer_tool_tests
+EXTRA_DIST = $(MANIFEST_SCRIPTS)

@@ -1,7 +1,49 @@
-AC_INIT([wrt-usecase-android-tests], [6.35.1.2], [zhiqiang.zhang@intel.com])
+AC_INIT([wrt-usecase-android-tests], [6.35.1.2], [kangx.xu@intel.com])
 AM_INIT_AUTOMAKE([-Wall -Werror foreign])
 
 AC_CONFIG_FILES([Makefile \
 usecase/Makefile \
-resources/Makefile webrunner/Makefile])
+usecase/crosswalk_webapp_feature_tests/Makefile \
+usecase/crosswalk_webapp_feature_tests/crosswalk_cookie_add_remove_cookies/Makefile \
+usecase/crosswalk_webapp_feature_tests/crosswalk_launcher_check_installer_name_icon/Makefile \
+usecase/crosswalk_webapp_feature_tests/crosswalk_remote_debugging_default/Makefile \
+usecase/crosswalk_webapp_feature_tests/crosswalk_sharemode_packageapp/Makefile \
+usecase/crosswalk_webapp_feature_tests/crosswalk_webapp_integration_termined_taskmanager/Makefile \
+usecase/crosswalk_webapp_feature_tests/crosswalk_webapp_install_uninstall/Makefile \
+usecase/crosswalk_webapp_feature_tests/crosswalk_webapp_schemes/Makefile \
+usecase/crosswalk_webapp_feature_tests/crosswalk_webapp_touch_gesture/Makefile \
+usecase/crosswalk_webapp_feature_tests/crosswalk_webapp_video_fullscreen/Makefile \
+usecase/crosswalk_webapp_feature_tests/launch_fullscreen_true_tests/Makefile \
+usecase/crosswalk_webapp_feature_tests/webgl_webrtc_disable_tests/Makefile \
+usecase/crosswalk_webapp_feature_tests/web_openfile_thirdpart_tests/Makefile \
+usecase/crosswalk_webapp_feature_tests/web_support_copyandpaste_tests/Makefile \
+usecase/crosswalk_webapp_feature_tests/manifest_minimal_manifest_tests/Makefile \
+usecase/crosswalk_webapp_feature_tests/web_feature_notification_tests/Makefile \
+usecase/crosswalk_webapp_feature_tests/web_feature_scheme_tests/Makefile \
+
+usecase/crosswalk_splashscreen_tests/Makefile \
+usecase/crosswalk_splashscreen_tests/splashscreen_launchscreen_field_tests/Makefile \
+usecase/crosswalk_splashscreen_tests/splashscreen_launchscreen_png_tests/Makefile \
+
+usecase/crosswalk_security_tests/Makefile \
+usecase/crosswalk_security_tests/extension_permission_contacts_tests/Makefile \
+usecase/crosswalk_security_tests/extension_permission_contacts_tests/contactextension/Makefile \
+usecase/crosswalk_security_tests/security_url_certificate_tests/Makefile \
+usecase/crosswalk_security_tests/permission_field_contacts_tests/Makefile \
+
+usecase/crosswalk_embeddedmode_extension_tests/Makefile \
+usecase/crosswalk_embeddedmode_extension_tests/crosswalk_embeddedmode_extension_install/Makefile \
+
+usecase/crosswalk_packer_tool_tests/Makefile \
+usecase/crosswalk_packer_tool_tests/crosswalk_packer_tool_appversion_x86/Makefile \
+usecase/crosswalk_packer_tool_tests/crosswalk_packer_tool_compressor_minify/Makefile \
+usecase/crosswalk_packer_tool_tests/crosswalk_packer_tool_compressor_minifycss/Makefile \
+usecase/crosswalk_packer_tool_tests/crosswalk_packer_tool_help/Makefile \
+usecase/crosswalk_packer_tool_tests/crosswalk_packer_tool_icon_png/Makefile \
+usecase/crosswalk_packer_tool_tests/crosswalk_packer_tool_icon_twopic/Makefile \
+usecase/crosswalk_packer_tool_tests/crosswalk_packer_tool_options/Makefile \
+usecase/crosswalk_packer_tool_tests/crosswalk_packer_tool_version/Makefile \
+usecase/crosswalk_packer_tool_tests/crosswalk_packer_tool_xpk/Makefile \
+usecase/crosswalk_packer_tool_tests/crosswalk_packer_tool_appversion_diffupdate/Makefile \
+ ])
 AC_OUTPUT
