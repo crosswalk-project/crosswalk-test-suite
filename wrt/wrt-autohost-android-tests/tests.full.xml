@@ -3,18 +3,18 @@
 <test_definition>
   <suite name="wrt-autohost-android-tests" category="Crosswalk On Android">
     <set name="android">
-      <testcase purpose="Check install xwalk lib" type="Functional" status="approved" component="Crosswalk/Runtime/Basicfeature" execution_type="auto" priority="P1" id="Crosswalk_Android_Install_test">
+      <testcase purpose="Check install xwalk lib" type="Functional" status="approved" component="Crosswalk/Runtime/Basicfeature" execution_type="auto" priority="P1" id="Crosswalk_ShareMode_Library_Install_test">
         <description>
           <pre_condition>
           </pre_condition>
-          <test_script_entry timeout="180" test_script_expected_result="0">/opt/wrt-autohost-android-tests/autohost/Crosswalk_Android_Install_test.sh</test_script_entry>
+          <test_script_entry timeout="180" test_script_expected_result="0">/opt/wrt-autohost-android-tests/autohost/Crosswalk_ShareMode_Library_Install_test.sh</test_script_entry>
         </description>
         </testcase>
-      <testcase purpose="Check uninstall xwalk lib" type="Functional" status="approved" component="Crosswalk/Runtime/Basicfeature" execution_type="auto" priority="P1" id="Crosswalk_Android_Uninstall_test">
+      <testcase purpose="Check uninstall xwalk lib" type="Functional" status="approved" component="Crosswalk/Runtime/Basicfeature" execution_type="auto" priority="P1" id="Crosswalk_ShareMode_Library_Uninstall_test">
         <description>
           <pre_condition>
           </pre_condition>
-          <test_script_entry timeout="180" test_script_expected_result="0">/opt/wrt-autohost-android-tests/autohost/Crosswalk_Android_Uninstall_test.sh</test_script_entry>
+          <test_script_entry timeout="180" test_script_expected_result="0">/opt/wrt-autohost-android-tests/autohost/Crosswalk_ShareMode_Library_Uninstall_test.sh</test_script_entry>
         </description>
         </testcase>
         <testcase purpose="Check web app install" type="Functional" status="approved" component="Crosswalk/Runtime/Basicfeature" execution_type="auto" priority="P1" id="Crosswalk_Android_WebApp_Install_test">
@@ -31,13 +31,6 @@
           <test_script_entry timeout="180" test_script_expected_result="0">/opt/wrt-autohost-android-tests/autohost/Crosswalk_Android_WebApp_Uninstall_test.sh</test_script_entry>
         </description>
         </testcase>
-        <testcase purpose="Check install multiple web app" type="Functional" status="approved" component="Crosswalk/Runtime/Basicfeature" execution_type="auto" priority="P2" id="Crosswalk_Android_MultipleWebApp_Install_test">
-        <description>
-          <pre_condition>
-          </pre_condition>
-          <test_script_entry timeout="180" test_script_expected_result="0">/opt/wrt-autohost-android-tests/autohost/Crosswalk_Android_MultipleWebApp_Install_test.sh</test_script_entry>
-        </description>
-        </testcase>
         <testcase purpose="Check uninstall web app with app running" type="Functional" status="approved" component="Crosswalk/Runtime/Basicfeature" execution_type="auto" priority="P2" id="Crosswalk_Android_WebApp_Uninstall_WithAppRunning_test">
         <description>
           <pre_condition>
@@ -45,48 +38,20 @@
           <test_script_entry timeout="180" test_script_expected_result="0">/opt/wrt-autohost-android-tests/autohost/Crosswalk_Android_WebApp_Uninstall_WithAppRunning_test.sh</test_script_entry>
         </description>
         </testcase>
-        <testcase purpose="Check launch web app via command" type="Functional" status="approved" component="Crosswalk/Runtime/Basicfeature" execution_type="auto" priority="P1" id="Crosswalk_Android_WebApp_Command_Launch_test">
+        <testcase purpose="Check launch web app via command" type="Functional" status="approved" component="Crosswalk/Runtime/Basicfeature" execution_type="auto" priority="P1" id="Crosswalk_Android_WebApp_Launch_test">
         <description>
           <pre_condition>
           </pre_condition>
-          <test_script_entry timeout="180" test_script_expected_result="0">/opt/wrt-autohost-android-tests/autohost/Crosswalk_Android_WebApp_Command_Launch_test.sh</test_script_entry>
+          <test_script_entry timeout="180" test_script_expected_result="0">/opt/wrt-autohost-android-tests/autohost/Crosswalk_Android_WebApp_Launch_test.sh</test_script_entry>
         </description>
         </testcase>
-        <testcase purpose="Check close web app via command" type="Functional" status="approved" component="Crosswalk/Runtime/Basicfeature" execution_type="auto" priority="P1" id="Crosswalk_Android_WebApp_Command_Close_test">
+        <testcase purpose="Check close web app via command" type="Functional" status="approved" component="Crosswalk/Runtime/Basicfeature" execution_type="auto" priority="P1" id="Crosswalk_Android_WebApp_Stop_test">
         <description>
           <pre_condition>
           </pre_condition>
-          <test_script_entry timeout="180" test_script_expected_result="0">/opt/wrt-autohost-android-tests/autohost/Crosswalk_Android_WebApp_Command_Close_test.sh</test_script_entry>
+          <test_script_entry timeout="180" test_script_expected_result="0">/opt/wrt-autohost-android-tests/autohost/Crosswalk_Android_WebApp_Stop_test.sh</test_script_entry>
         </description>
         </testcase>
-        <testcase purpose="Check create APK package" type="Functional" status="approved" component="Crosswalk/Runtime/Basicfeature" execution_type="auto" priority="P1" id="Crosswalk_Android_Package_Create_test">
-        <description>
-          <pre_condition>
-          </pre_condition>
-          <test_script_entry timeout="180" test_script_expected_result="0">/opt/wrt-autohost-android-tests/autohost/Crosswalk_Android_Package_Create_test.sh</test_script_entry>
-        </description>
-        </testcase>
-        <testcase purpose="Check install create packed APK" type="Functional" status="approved" component="Crosswalk/Runtime/Basicfeature" execution_type="auto" priority="P1" id="Crosswalk_Android_Packed_Install_test">
-        <description>
-          <pre_condition>
-          </pre_condition>
-          <test_script_entry timeout="180" test_script_expected_result="0">/opt/wrt-autohost-android-tests/autohost/Crosswalk_Android_Packed_Install_test.sh</test_script_entry>
-        </description>
-        </testcase>
-        <testcase purpose="Check uninstall create packed APK" type="Functional" status="approved" component="Crosswalk/Runtime/Basicfeature" execution_type="auto" priority="P1" id="Crosswalk_Android_Packed_Uninstall_test">
-        <description>
-          <pre_condition>
-          </pre_condition>
-          <test_script_entry timeout="180" test_script_expected_result="0">/opt/wrt-autohost-android-tests/autohost/Crosswalk_Android_Packed_Uninstall_test.sh</test_script_entry>
-        </description>
-        </testcase>
-        <testcase purpose="Check install and uninstall multiple packed apk" type="Functional" status="approved" component="Crosswalk/Runtime/Basicfeature" execution_type="auto" priority="P2" id="Crosswalk_Android_Multiple_Packed_Install_Uninstall_test">
-        <description>
-          <pre_condition>
-          </pre_condition>
-          <test_script_entry timeout="180" test_script_expected_result="0">/opt/wrt-autohost-android-tests/autohost/Crosswalk_Android_Multiple_Packed_Install_Uninstall_test.sh</test_script_entry>
-        </description>
-      </testcase>
     </set>
   </suite>
 </test_definition>
