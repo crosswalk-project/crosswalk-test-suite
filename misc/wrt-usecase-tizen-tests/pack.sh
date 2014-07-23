@@ -109,12 +109,12 @@ mkdir $BUILD_DEST/opt/$folderName
 for buildfolder in `ls`
 do
     if [ -d $buildfolder ];then
-        if [ "${buildfolder:0:26}" == "crosswalk_supprt_xpk_tests" ];then
+        if [ "${buildfolder:0:27}" == "crosswalk_support_xpk_tests" ];then
             echo "Pack xpk....................."
             cd $xpkpacktooldir
             python make_xpk.py $BUILD_ROOT/$folderName/$buildfolder/crosswalk_support_xpk_tests k.pem
-            python make_xpk.py $BUILD_ROOT/$folderName/$buildfolder/update_original_versionone_tests k.pem
-            python make_xpk.py $BUILD_ROOT/$folderName/$buildfolder/update_versionone_higher_tests update.pem
+            python make_xpk.py $BUILD_ROOT/$folderName/$buildfolder/update_version_one_tests k.pem
+            python make_xpk.py $BUILD_ROOT/$folderName/$buildfolder/update_version_two_tests k.pem
             rm -rf $xpkpacktooldir/*.pem        
             zip -rq $buildfolder.xpk.zip *.xpk             
             mv *.zip $BUILD_DEST/opt/$folderName
@@ -122,7 +122,28 @@ do
             cd $BUILD_ROOT/$folderName
             continue
         fi
-
+        if [ "${buildfolder:0:27}" == "crosswalk_support_wgt_tests" ];then
+            echo "Pack wgt....................."
+            cd $buildfolder
+            cd crosswalk_support_wgt_tests
+            zip -rq crosswalk_support_wgt_tests.wgt *
+            cp crosswalk_support_wgt_tests.wgt ../
+            cd ..
+            cd wgt_sample_one
+            zip -rq wgt_sample_one.wgt *
+            cp wgt_sample_one.wgt ../
+            cd ..
+            cd wgt_sample_two
+            zip -rq wgt_sample_two.wgt *
+            cp wgt_sample_two.wgt ../
+            cd ..
+            
+            zip -rq crosswalk_support_wgt_tests.wgt.zip *.wgt
+            ls
+            cp crosswalk_support_wgt_tests.wgt.zip $BUILD_DEST/opt/$folderName
+            cd ..
+            continue
+        fi
         echo $buildfolder
         cd   $buildfolder
         zip -rq $buildfolder.wgt *
@@ -136,7 +157,7 @@ done
 
 
 function create_apk(){
-echo "only support xpk"
+echo "only support wgt"
 }
 
 function rmfile(){
@@ -160,6 +181,7 @@ function zip_for_wgt(){
 cd $BUILD_DEST
 
 echo $BUILD_DEST/$name-$version.$type.zip
+cp $BUILD_ROOT/inst.sh  $BUILD_DEST/opt/usecase
 zip -Drq $BUILD_DEST/$name-$version.$type.zip ./
 if [ $? -ne 0 ];then
     echo "Create zip package fail... >>>>>>>>>>>>>>>>>>>>>>>>>"
@@ -209,11 +231,11 @@ function create_inwgt(){
 }
 
 function zip_for_apk(){
-
+echo "no for apk"
 }
 
 function zip_for_xpk(){
-
+echo "no for xpk"
 }
 
 function zip_for_pure()
