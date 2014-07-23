@@ -34,15 +34,29 @@ Authors:
       <h1 id="main_page_title"></h1>
     </div>
     <div id="content">
-      <div>
-        <a href="javascript:showNotification()" id="showNotification" data-role="button" class="opt">Show Notification</a>
-      </div>
-      <div>
-        <a href="javascript:updateNotification()" id="updateNotification" data-role="button" class="opt">Update Notification</a>
-      </div>
-      <div>
-        <a href="javascript:removeNotification()" id="removeNotification" data-role="button" class="opt">Remove Notification</a>
-      </div>
+      <ul data-role="listview">
+         <li data-role="list-divider">Notification Add and Update</li>
+         <li>
+           <div data-role="button" id="showNotification" style="height:40px; line-height:20px;">Show Notification</div>
+           <div data-role="button" id="updateNotification" style="height:40px; line-height:20px;">Update Notification</div>
+         </li>
+      </ul>
+      <ul data-role="listview">
+         <li data-role="list-divider">Notification tester</li>
+         <li>
+           <input style='display: block' size='75' type='text' id='title-input' placeholder='Message-Title'></input>
+           <textarea style='display: block' rows='10' cols='75' id='content-input' placeholder='Message-Content'></textarea>
+           <select id='type-select' style='display: block'>
+             <option value="SIMPLE">SIMPLE</option>
+             <option value="THUMBNAIL">THUMBNAIL</option>
+             <option value="ONGOING">ONGOING</option>
+             <option value="PROGRESS">PROGRESS</option>
+           </select>
+           <div data-role="button" id="send-button" style="height:40px; line-height:20px;">Send</div>
+           <div data-role="button" id="clear-button" style="height:40px; line-height:20px;">Remove All</div>
+         </li>
+      </ul>
+      <ul data-role="listview" id="info-list1"></ul>
     </div>
     <div data-role="footer" data-position="fixed" data-tap-toggle="false">
     </div>
@@ -60,12 +74,15 @@ Authors:
               Click the "Update Notification" button.
             </li>
             <li>
-              Click the "Remove Notification" button.
+              Click the "Send" button.
+            </li>
+            <li>
+              Click the "Remove All" button.
             </li>
           </ol>
         </p>
         <p>Expected Result: </p>
-        <p>Test passes if show a notification after step 1, and then the content of notification change after step 2, and then notificaiton can be removed after setp 3.</p>
+        <p>Test passes if show a notification after step 1, and then the content of notification change after step 2, and then notifications messages show a lists afer step 3, and then notificaitons can be removed after step 4.</p>
       </font>
     </div>
   </div>
