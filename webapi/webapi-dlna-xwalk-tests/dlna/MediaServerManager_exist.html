@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <!--
-Copyright (c) 2014 Intel Corporation.
+Copyright (c) 2013 Intel Corporation.
 
 Redistribution and use in source and binary forms, with or without modification,
 are permitted provided that the following conditions are met:
@@ -26,19 +26,22 @@ NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE,
 EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
 Authors:
-        Wang, Hongjuan <hongjuanx.wang@intel.com>
+        Hao, Yunfei <yunfeix.hao@intel.com>
 
 -->
 
-<meta charset="utf-8">
-<title>DLNA Test: MediaServerManager exist</title>
-<link rel="author" title="Intel" href="http://www.intel.com">
-<link rel="help" href="http://01org.github.io/cloud-dleyna/mediaserver.html#mediaserverevent-interface">
-<script src="../resources/testharness.js"></script>
-<script src="../resources/testharnessreport.js"></script>
-<div id="log"></div>
-<script>
-  test(function () {
-    assert_true("mediaServer" in navigator, "MediaServerManager exists");
-  }, "Check if MediaServerManager exists in window");
-</script>
+<html>
+  <head>
+    <title>MediaServerManager_exist</title>
+    <meta charset="utf-8">
+    <script src="../resources/unitcommon.js"></script>
+  </head>
+  <body>
+    <div id="log"></div>
+    <script>
+      test(function() {
+        assert_true('mediaserver' in tizen, "mediaServer is not in window object");
+      }, "MediaServerManager_exist");
+    </script>
+  </body>
+</html>
