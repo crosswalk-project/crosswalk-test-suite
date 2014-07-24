@@ -7,24 +7,46 @@ USAGE="Usage: ./inst.sh [-i] [-u]
 [-i] option was set as default."
 
 #TODO:update PACKAGENAME for each suite,pay attention to use '_'
-PACKAGENAME=wrt_usecase_android_tests
+PACKAGENAME=
+APKNAME=${PACKAGENAME}.apk
 SUITENAME=`echo $PACKAGENAME |sed 's/_/-/g'`
 RESOURCE_DIR=/home/app/content
 
 function installpkg(){
-apk=`ls ${PACKAGENAME}*apk`
-adb install $apk
+for apkfile in $(ls *.apk)
+do
+ if [ ${apkfile:0:6} = "update" ];then
+    continue
+ fi
+ adb install $apkfile
+done
 
 #TODO: copy resource
 #eg:adb push xx $RESOURCE_DIR
 }
 
 function uninstallpkg(){
-adb uninstall org.xwalk.$PACKAGENAME
+
+for apkfile in $(ls *.apk)
+do
+ extend=".apk"
+ uninstallfile=`echo ${apkfile%.*} | tr A-Z a-z`
+ ls $apkfile |grep x86.apk  > /dev/null 2>&1 && extend="_x86.apk"
+ ls $apkfile |grep arm.apk  > /dev/null 2>&1 && extend="_arm.apk"
+ if [ $extend = ".apk" ];then
+   adb uninstall org.xwalk.$uninstallfile
+ else
+   adb uninstall org.xwalk.${uninstallfile%_*}
+ fi
+done
 
 #TODO: remove resource
 #eg:adb shell rm -rf $RESOURCE_DIR/xx
-adb shell rm -rf $RESOURCE_DIR/tct/opt/$SUITENAME &>/dev/null
+for apkfile in $(ls *.apk)
+do
+ SUITENAME=`echo ${apkfile%_*} |sed 's/_/-/g'`
+ adb shell rm -rf $RESOURCE_DIR/tct/opt/$SUITENAME &>/dev/null
+done
 }
 
 case "$1" in

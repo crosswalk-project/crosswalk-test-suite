@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<!--
+Copyright (c) 2013 Intel Corporation.
+
+Redistribution and use in source and binary forms, with or without modification,
+are permitted provided that the following conditions are met:
+
+* Redistributions of works must retain the original copyright notice, this list
+  of conditions and the following disclaimer.
+* Redistributions in binary form must reproduce the original copyright notice,
+  this list of conditions and the following disclaimer in the documentation
+  and/or other materials provided with the distribution.
+* Neither the name of Intel Corporation nor the names of its contributors
+  may be used to endorse or promote products derived from this work without
+  specific prior written permission.
+
+THIS SOFTWARE IS PROVIDED BY INTEL CORPORATION "AS IS"
+AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE
+IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE
+ARE DISCLAIMED. IN NO EVENT SHALL INTEL CORPORATION BE LIABLE FOR ANY DIRECT,
+INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING,
+BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE,
+DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY
+OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING
+NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE,
+EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
+
+Authors:
+    Xu,Yuhan <yuhanx.xu@intel.com>
+
+-->
+
+<html>
+  <head>
+    <meta charset='utf-8'>
+    <title>Crosswalk_WebApp_Schemes</title>
+    <link rel="author" title="Intel" href="http://www.intel.com">
+  </head>
+  <body>
+  pre_condition:
+            1.Make sure Crosswalk binary is installed;
+            2.Make sure web_feature_scheme_tests.apk is installed;
+            3.Make sure at least one Map Application is installed;
+            4.Make sure there at least 1 image in the device sdcard.
+            5.Make sure network can be used.
+<p> purpose: Validate the scheme 'app://', 'mailto:', 'market:', 'sms:', 'tel:', 'geo:' and 'content://' are implemented in Crosswalk </p>          
+    <p>
+      <strong>Test steps:</strong>
+    </p>
+    <ol>
+      <li>Click app icon to launch app</li>
+      <li>Click the link of "geo-1" to launch map app</li>
+      <li>Click the link of "mailto-1" to launch email app</li>
+      <li>Click the link of "Open Market" to launch Market app</li>
+      <li>Click the link of "Send Sms" to launch message app</li>
+      <li>Click the link of "Make call" to launch Tel app</li>
+      <li>Install webapp by typing "adb install web_scheme_content_tests.apk"</li>
+      <li>Click app icon to launch app</li>
+      <li>Run command in terminal: "adb shell content query --uri content://media/external/images/media"</li>
+      <li>Check the terminal and get a value of "_id".</li>
+      <li>Set the "_id" value to "Image Id" textarea.</li>
+      <li>Click the link of "Open Image".</li>
+    </ol>
+    <p>
+      <strong>Expected Output:</strong>
+    </p>
+    <ol>
+      <li>The app launched successfully</li>
+      <li>The map app could pop up</li>
+      <li>The email app could pop up</li>
+      <li>The Market app could pop up after click the link</li>
+      <li>The Sms app could pop up after click the link</li>
+      <li>The Tel app could pop up after click the link</li>
+      <li>Webapp is installed successfully, no error, no warning message</li>
+      <li>The app launched successfully</li>
+      <li>There display the images' info about the device sdcard in terminal</li>
+      <li>At least 1 "_id" exists.</li>
+      <li>The "_id" value was set to "Image Id" textarea.</li>
+      <li>There display the image.</li>
+    </ol>
+  </body>
+</html>
