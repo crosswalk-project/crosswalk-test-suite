@@ -63,11 +63,11 @@ $(document).ready(function () {
         function(evt) {
             if (document.webkitIsFullScreen) {
                 document.webkitCancelFullScreen();
-                if ($(document)["context"].styleSheets.length == 2) {
-                    $(document)["context"].styleSheets[1].deleteRule(1);
+                if ($(document)["context"].styleSheets.length > 2) {
+                     $(document)["context"].styleSheets[2].deleteRule(1);
                 }
                 document.documentElement.webkitRequestFullScreen();
-                window.location.reload();
+                requestElement("");
             }
      });
 });
