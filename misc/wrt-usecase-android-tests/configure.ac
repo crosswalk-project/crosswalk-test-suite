@@ -20,6 +20,7 @@ usecase/crosswalk_webapp_feature_tests/web_support_copyandpaste_tests/Makefile \
 usecase/crosswalk_webapp_feature_tests/manifest_minimal_manifest_tests/Makefile \
 usecase/crosswalk_webapp_feature_tests/web_feature_notification_tests/Makefile \
 usecase/crosswalk_webapp_feature_tests/web_feature_scheme_tests/Makefile \
+usecase/crosswalk_webapp_feature_tests/web_scheme_content_tests/Makefile \
 
 usecase/crosswalk_splashscreen_tests/Makefile \
 usecase/crosswalk_splashscreen_tests/splashscreen_launchscreen_field_tests/Makefile \
