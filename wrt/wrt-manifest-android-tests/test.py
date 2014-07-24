@@ -106,7 +106,7 @@ def caseExecute(caseInput):
         caseIn.close()
         manifestLog.close()
         print "Execute case ---------------->O.K"
-    except Exception,e: 
+    except Exception,e:
         print Exception,":",e
         print "Execute case ---------------->Error"
         sys.exit(1)
@@ -159,7 +159,7 @@ def processMain(seedIn):
 
         #1*********XX_output.txt -> selfcomb.txt
             genSelfcom(ConstPath + "/self/" + section + "_output.txt", ConstPath + "/allpairs/selfcomb.txt")
-        
+
         #2*********selfcomb.txt -> caseXX.txt
         genCases(ConstPath + "/allpairs/selfcomb.txt")
 
@@ -344,13 +344,13 @@ def genResultXml():
             caseStart = SE(resultInfo, "start")
             caseStart.text = case["start"]
             caseEnd = SE(resultInfo, "end")
-            caseEnd.text = case["end"] 
+            caseEnd.text = case["end"]
             SE(resultInfo, "stdout")
             SE(resultInfo, "stderr")
 
         tree.write(ConstPath + "/report/wrt-manifest-android-tests.xml")
         updateXmlTitle(ConstPath + "/report/wrt-manifest-android-tests.xml",'<?xml version="1.0" encoding="UTF-8"?>\n<?xml-stylesheet type="text/xsl" href="./style/testresult.xsl"?>\n<?xml-stylesheet type="text/xsl" href="testresult.xsl"?>\n')
-        
+
         print "Generate test.result.xml ---------------->O.K"
     except Exception,e:
         print Exception,":",e
