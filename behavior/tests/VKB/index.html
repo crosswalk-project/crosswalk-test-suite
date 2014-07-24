@@ -26,54 +26,54 @@ NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE,
 EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
 Authors:
-      Lin,ShenX A <linx.a.shen@intel.com>
+        Shen, LinX A <linx.a.shen@intel.com>
 
 -->
 <html>
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="initial-scale=1.0, maximum-scale=1.0, width=device-width" />
-    <link rel="stylesheet" type="text/css" href="../../../css/jquery.mobile.css" />
-    <link rel="stylesheet" type="text/css" href="../../../css/main.css" />
-    <script src="../../../js/thirdparty/jquery.js"></script>
-    <script src="../../../js/thirdparty/jquery.mobile.js"></script>
-    <script src="../../../js/tests.js"></script>
+    <link rel="stylesheet" type="text/css" href="../../css/jquery.mobile.css" />
+    <link rel="stylesheet" type="text/css" href="../../css/main.css" />
+    <script src="../../js/thirdparty/jquery.js"></script>
+    <script src="../../js/thirdparty/jquery.mobile.js"></script>
+    <script src="../../js/tests.js"></script>
+    <script src="../../js/main.js"></script>
   </head>
   <body>
-    <div data-role="page" id="Crosswalk_WebApp_VBK_ContentSwitch">
+    <input type="hidden" id="sub_test"/>
+    <div data-role="page" id="main">
+        <div data-role="header" data-position="fixed" data-tap-toggle="false">
+            <h1 id="main_page_title"></h1>
+        </div>
         <div id="content">
-          <div>
-            Input Box:<input type="hidden" id="wgt_name" value="Crosswalk_WebApp_VBK_ContentSwitch"/>
-          </div>
-        <input type="text" name="location">
+            <ul data-role="listview" id="VBK_Test" data-divider-theme="b" data-inset="true">
+                <li data-role="list-divider" role="heading">VKB_Test</li>
+                <li id="Crosswalk_VKB_Basic">
+                    <a href="javascript:runApp('res/Crosswalk_VKB_Basic.html')" data-transition="slide" style="">
+                        <h2>Crosswalk_VKB_Basic</h2>
+                    </a>
+                </li>
+                <li id="Crosswalk_VKB_ContentSwitch">
+                    <a href="javascript:runApp('res/Crosswalk_VKB_ContentSwitch.html')" data-transition="slide" style="">
+                        <h2>Crosswalk_VKB_ContentSwitch</h2>
+                    </a>
+                </li>
+            </ul>
         </div>
         <div data-role="footer" data-position="fixed" data-tap-toggle="false">
         </div>
         <div data-role="popup" id="popup_info" data-theme="a">
           <font class="fontSize">
-            <p>Pre condition: </p>
-            <ol>
-              <li>Make sure Crosswalk is installed</li>
-              <li>Make sure has some multimedia Web Apps</li>
-            </ol>
-            <p>Test Step: </p>
-    <ol>
-      <li>Click web app's icon</li>
-      <li>Click input box</li>
-      <li>Click characters on virtual keyboard</li>
-      <li>Switch to input number, symbol</li>
-    </ol>
-    <p>
-      <p>Expected Output:</p>
-    </p>
-    <ol>
-      <li>The web app is able to open normally</li>
-      <li>Popup virtual keyboard when click input box</li>
-      <li>Characters could be displayed in the input box and correctly</li>
-      <li>Connected mobile devices successfully</li>
-    </ol>
-    </font>
+            <p>Test Purpose: </p>
+            <p>Verifies the functionality of VKB supported on Crosswalk.</p>
+            <p>Expected Result: </p>
+            <p>Test passes if all sub-tests pass.</p>
+          </font>
         </div>
+    </div>
+    <div data-role="page" id="test_ui">
+        <iframe id="test_frame" width="100%" frameborder="no" border="0" src=""></iframe>
     </div>
   </body>
 </html>
