@@ -78,7 +78,7 @@ def processMain(seedIn):
 
         #1*********XX_output.txt -> selfcomb.txt
             genSelfcom(ConstPath + "/self/" + section + "_output.txt", ConstPath + "/allpairs/selfcomb.txt")
-        
+
         #2*********selfcomb.txt -> caseXX.txt
         genCases(ConstPath + "/allpairs/selfcomb.txt")
 
@@ -317,7 +317,7 @@ def genResultXml():
 
         tree.write(ConstPath + "/report/wrt-packertoolauto-android-tests.xml")
         updateXmlTitle(ConstPath + "/report/wrt-packertoolauto-android-tests.xml",'<?xml version="1.0" encoding="UTF-8"?>\n<?xml-stylesheet type="text/xsl" href="./style/testresult.xsl"?>\n<?xml-stylesheet type="text/xsl" href="testresult.xsl"?>\n')
-        
+
         print "Generate test.result.xml file ------------------------->O.K"
     except Exception,e:
         print Exception,"Generate test.result.xml error:",e
@@ -360,7 +360,7 @@ def devicesConform():
         if len(deviceList) == 2:
             print "No test devices connected, Please attention"
             sys.exit(1)
-    except Exception,e: 
+    except Exception,e:
         print Exception,"Device Connect error:",e
         sys.exit(1)
 
