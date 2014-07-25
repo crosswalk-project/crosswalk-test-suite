@@ -36,16 +36,17 @@ Authors:
     <title>Crosswalk_EmbeddedMode_Extension_Install</title>
     <link rel="author" title="Intel" href="http://www.intel.com">
   </head>
-  <body>pre_condition:
-  <li>Make sure Crosswalk application is launched and the device connected to network;</li>
-  <li>Make sure the extension are available  and  package the extension with argument like: python make_apk.py --name=Example --package=org.xwalk.example --app-root=test_data/entry --app-local-path=contactextension.html --extensions=test_data//extensions/contactextension/ --mode=embedded</li>
+  <body><p>
+  <strong>Pre_condition:</strong><ol>
+    <li>Make sure Crosswalk application is launched and the device connected to network;</li>
+    <li>Make sure the extension webapp are available in crosswalk_security_tests folder</li></ol>
     <p>
       <strong>Test steps:</strong>
     </p>
     <ol>
-      <li>Install the extension webapp.</li>
-      <li>Open the Extension(Settings-->Apps).</li>
-      <li>Select the extension and uninstall it.</li>
+      <li>Install the extension_permission_contacts_tests(.version).apk</li>
+      <li>Open the Settings to uninstall the webapp (Settings-->Apps).</li>
+      <li>Select the extension app and uninstall it.</li>
     </ol>
     <p>
       <strong>Expected Output:</strong>

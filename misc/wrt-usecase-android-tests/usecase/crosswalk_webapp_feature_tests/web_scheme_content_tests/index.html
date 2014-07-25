@@ -26,41 +26,38 @@ NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE,
 EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
 Authors:
-
+        Xu,Yuhan <yuhanx.xu@intel.com>
 
 -->
 
-<html>
-  <head>
-    <meta charset='utf-8'>
-    <title>Crosswalk_WebApp_Video_FullScreen</title>
-    <link rel="author" title="Intel" href="http://www.intel.com">
-  </head>
-  <body>
-     <strong>purpose:</strong>
-        Validate if Crosswalk Browser is able to play online video, adjust sound volume and support video full-screen play
-  <strong><p>Pre_condition:</p></strong><ol>
-      <li>Make sure Crosswalk packer tool is download</li>
-      <li>Packaged app only contain URL:"http://www.w3.org/2010/05/video/mediaevents.html"</li>
-    <p></ol>
-
-      <strong>Test steps:</strong>
-    </p>
+<meta charset="utf-8">
+<title>Web Features Test: web_scheme_content_tests</title>
+<link rel="author" title="Intel" href="http://www.intel.com">
+<link rel="help" href="">
+<meta name="flags" content="">
+<meta name="assert" content="Check if enable the scheme of content://.">
+<body>
+  <script>
+      function setImageId() {
+          var id = document.getElementById("imageId").value;
+          document.getElementById("imageUri").href = "content://media/external/images/media/" + id;
+          return true;
+      }
+  </script>
+  <p>Test steps:
     <ol>
-      <li>Click Video Play link</li>
-      <li>Click "Play" button to play the video</li>
-      <li>The volume could be adjusted with the 'volumn' Button</li>
-      <li>Click fullscreen button</li>
+      <li>Make sure there is at least 1 image in the device.</li>
+      <li>Connect the device to Ubuntu.</li>
+      <li>Run command in terminal: "adb shell content query --uri content://media/external/images/media"</li>
+      <li>Check the terminal and get a value of "_id".</li>
+      <li>Set the "_id" value to "Image Id" textarea.</li>
+      <li>Click the link of "Open Image".</li>
     </ol>
-    <p>
-      <strong>Expected Output:</strong>
-    </p>
-    <ol>
-      <li>The web app open the web site</li>
-      <li>The video played normally and can hear some sounds</li>
-      <li>The volume could be turned up when pressing 'volume+=0.1' and it could be lowered when pressing 'volume-=0.1'</li>
-      <li>The video could be switch to fullscreen and played normally</li>
-    </ol>
-        <a href="http://www.w3.org/2010/05/video/mediaevents.html">Video Play</a></p>
-  </body>
-</html>
+  </p>
+  <p>Test passes if the image display when click the link of "Open Image".</p>
+  <br>
+  Image Id: <input type="text" id="imageId" />
+  <div style="margin-top: 10px">
+    <a href="#" id="imageUri" onclick="return setImageId();">Open Image</a>
+  </div>
+</body>
