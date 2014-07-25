@@ -31,7 +31,7 @@ Authors:
 -->
 
 <meta charset='utf-8'>
-<title>AudioDevice Test: AudioDevice_mutecontrolchanged_exist</title>
+<title>AudioDevice Test: AudioDevice_onmutecontrolchanged_exist</title>
 <link rel="author" title="Intel" href="http://www.intel.com">
 <link rel="help" href="https://wiki.tizen.org/wiki/User:Tanuk/AudioSystemAPI">
 <script src="../resources/testharness.js"></script>
@@ -54,8 +54,8 @@ t.step(function () {
             "AudioSystemContext does not own volume_controls property.");
         assert_greater_than(context.devices.length, 0, "devices is not found");
         audiodevice = context.devices[0];
-        assert_own_property(audiodevice, "mutecontrolchanged",
-            "AudioDevice does not own mutecontrolchanged property.");
+        assert_own_property(audiodevice, "onmutecontrolchanged",
+            "AudioDevice does not own onmutecontrolchanged property.");
         t.done();
     });
 
