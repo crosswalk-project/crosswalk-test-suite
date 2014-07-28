@@ -1,0 +1,122 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-stylesheet type="text/xsl" href="./testcase.xsl"?>
+<test_definition>
+  <suite name="wrt-manifestspecificmanu-android-tests" category="Runtime_Core" launcher="xwalk">
+    <set name="manifestextend">
+      <testcase purpose="Validate if Crosswalk enable the fullscreen immersive mode by swiping down from top" type="Functional" status="approved" component="Runtime Core" execution_type="manual" priority="P1" id="Crosswalk_Fullscreen_Immersive_Top">
+        <description>
+          <pre_condition>
+            1.Make sure CrossWalk binary is installed;
+            2.Make sure device OS is Android 4.4 or above.
+          </pre_condition>
+          <test_script_entry>/opt/wrt-manifestspecificmanu-android-tests/manifestspecificmanu/Crosswalk_Fullscreen_Immersive_Top.html</test_script_entry>
+        </description>
+      </testcase>
+      <testcase purpose="Validate if Crosswalk enable the fullscreen immersive mode by swiping up from bottom" type="Functional" status="approved" component="Runtime Core" execution_type="manual" priority="P2" id="Crosswalk_Fullscreen_Immersive_Bottom">
+        <description>
+          <pre_condition>
+            1.Make sure CrossWalk binary is installed;
+            2.Make sure device OS is Android 4.4 or above.
+          </pre_condition>
+          <test_script_entry>/opt/wrt-manifestspecificmanu-android-tests/manifestspecificmanu/Crosswalk_Fullscreen_Immersive_Bottom.html</test_script_entry>
+        </description>
+      </testcase>
+      <testcase purpose="Validate Crosswalk enable the xwalk_hosts field in manifest" type="Functional" status="approved" component="Runtime Core" execution_type="manual" priority="P1" id="Crosswalk_Manifest_XwalkHosts_Value">
+        <description>
+          <pre_condition>
+            1.Make sure Crosswalk binary is installed on device;
+            2.Make sure device connected to network.
+          </pre_condition>
+          <post_condition/>
+          <test_script_entry>/opt/wrt-manifestspecificmanu-android-tests/manifestspecificmanu/Crosswalk_Manifest_XwalkHosts_Value.html </test_script_entry>
+        </description>
+      </testcase>
+      <testcase purpose="Validate Crosswalk enable the xwalk_hosts field with match patterns 'xxx/*' in manifest" type="Functional" status="approved" component="Runtime Core" execution_type="manual" priority="P2" id="Crosswalk_Manifest_XwalkHosts_MatchPatternsTail">
+        <description>
+          <pre_condition>
+            1.Make sure Crosswalk binary is installed on device;
+            2.Make sure device connected to network.
+          </pre_condition>
+          <post_condition/>
+          <test_script_entry>/opt/wrt-manifestspecificmanu-android-tests/manifestspecificmanu/Crosswalk_Manifest_XwalkHosts_MatchPatternsTail.html </test_script_entry>
+        </description>
+      </testcase>
+      <testcase purpose="Validate Crosswalk enable the xwalk_hosts field with match patterns 'xxx/*xxx' in manifest" type="Functional" status="approved" component="Runtime Core" execution_type="manual" priority="P2" id="Crosswalk_Manifest_XwalkHosts_MatchPatternsMiddle">
+        <description>
+          <pre_condition>
+            1.Make sure Crosswalk binary is installed on device;
+            2.Make sure device connected to network.
+          </pre_condition>
+          <post_condition/>
+          <test_script_entry>/opt/wrt-manifestspecificmanu-android-tests/manifestspecificmanu/Crosswalk_Manifest_XwalkHosts_MatchPatternsMiddle.html </test_script_entry>
+        </description>
+      </testcase>
+      <testcase purpose="Validate Crosswalk enable the xwalk_hosts field with match patterns * in manifest" type="Functional" status="approved" component="Runtime Core" execution_type="manual" priority="P2" id="Crosswalk_Manifest_XwalkHosts_MatchPatterns">
+        <description>
+          <pre_condition>
+            1.Make sure Crosswalk binary is installed on device;
+            2.Make sure device connected to network.
+          </pre_condition>
+          <post_condition/>
+          <test_script_entry>/opt/wrt-manifestspecificmanu-android-tests/manifestspecificmanu/Crosswalk_Manifest_XwalkHosts_MatchPatterns.html </test_script_entry>
+        </description>
+      </testcase>
+      <testcase purpose="Validate the Crosswalk enable the launch screen mechanism of background-color" type="Functional" status="approved" component="Crosswalk Runtime Library" execution_type="manual" priority="P2" id="SplashScreen_LaunchScreen_Bg_Color">
+        <description>
+          <pre_condition>
+            Make sure Crosswalk binary is installed
+          </pre_condition>
+          <test_script_entry>/opt/wrt-manifestspecificmanu-android-tests/manifestspecificmanu/SplashScreen_LaunchScreen_Bg_Color.html</test_script_entry>
+        </description>
+      </testcase>
+      <testcase purpose="Validate the Crosswalk enable the launch screen mechanism of bmp image" type="Functional" status="approved" component="Crosswalk Runtime Library" execution_type="manual" priority="P2" id="SplashScreen_LaunchScreen_Bmp">
+        <description>
+          <pre_condition>
+            Make sure Crosswalk binary is installed
+          </pre_condition>
+          <test_script_entry>/opt/wrt-manifestspecificmanu-android-tests/manifestspecificmanu/SplashScreen_LaunchScreen_Bmp.html</test_script_entry>
+        </description>
+      </testcase>
+      <testcase purpose="Validate the Crosswalk enable the launch screen mechanism of gif image" type="Functional" status="approved" component="Crosswalk Runtime Library" execution_type="manual" priority="P2" id="SplashScreen_LaunchScreen_Gif">
+        <description>
+          <pre_condition>
+            Make sure Crosswalk binary is installed
+          </pre_condition>
+          <test_script_entry>/opt/wrt-manifestspecificmanu-android-tests/manifestspecificmanu/SplashScreen_LaunchScreen_Gif.html</test_script_entry>
+        </description>
+      </testcase>
+      <testcase purpose="Validate the Crosswalk enable the launch screen mechanism of jpg image" type="Functional" status="approved" component="Crosswalk Runtime Library" execution_type="manual" priority="P2" id="SplashScreen_LaunchScreen_Jpg">
+        <description>
+          <pre_condition>
+            Make sure Crosswalk binary is installed
+          </pre_condition>
+          <test_script_entry>/opt/wrt-manifestspecificmanu-android-tests/manifestspecificmanu/SplashScreen_LaunchScreen_Jpg.html</test_script_entry>
+        </description>
+      </testcase>
+      <testcase purpose="Validate the Crosswalk enable the launch screen mechanism of png image" type="Functional" status="approved" component="Crosswalk Runtime Library" execution_type="manual" priority="P1" id="SplashScreen_LaunchScreen_Png">
+        <description>
+          <pre_condition>
+            Make sure Crosswalk binary is installed
+          </pre_condition>
+          <test_script_entry>/opt/wrt-manifestspecificmanu-android-tests/manifestspecificmanu/SplashScreen_LaunchScreen_Png.html</test_script_entry>
+        </description>
+      </testcase>
+      <testcase purpose="Validate the Crosswalk enable the launch screen mechanism of landscape mode" type="Functional" status="approved" component="Crosswalk Runtime Library" execution_type="manual" priority="P2" id="SplashScreen_LaunchScreen_Landscape">
+        <description>
+          <pre_condition>
+            Make sure Crosswalk binary is installed
+          </pre_condition>
+          <test_script_entry>/opt/wrt-manifestspecificmanu-android-tests/manifestspecificmanu/SplashScreen_LaunchScreen_Landscape.html</test_script_entry>
+        </description>
+      </testcase>
+      <testcase purpose="Validate the Crosswalk enable the launch screen mechanism of portrait mode" type="Functional" status="approved" component="Crosswalk Runtime Library" execution_type="manual" priority="P2" id="SplashScreen_LaunchScreen_Portrait">
+        <description>
+          <pre_condition>
+            Make sure Crosswalk binary is installed
+          </pre_condition>
+          <test_script_entry>/opt/wrt-manifestspecificmanu-android-tests/manifestspecificmanu/SplashScreen_LaunchScreen_Portrait.html</test_script_entry>
+        </description>
+      </testcase>
+    </set>
+  </suite>
+</test_definition>
