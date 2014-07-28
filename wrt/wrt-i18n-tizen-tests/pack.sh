@@ -87,10 +87,13 @@ function create_wgt(){
 # create wgt
 cd $BUILD_DEST
 cp -a $BUILD_ROOT/manifest.json   $BUILD_DEST/
-cp -a $BUILD_ROOT/index.html   $BUILD_DEST/
 cp -a $BUILD_ROOT/icon.png     $BUILD_DEST/
-cp -rf $BUILD_ROOT/locales     $BUILD_DEST/
-cp -f $BUILD_ROOT/config.xml.wgt $BUILD_DEST/config.xml
+cat > index.html << EOF
+<!doctype html>
+<head>
+    <meta http-equiv="Refresh" content="1; url=opt/$name/webrunner/index.html?testsuite=../tests.xml&testprefix=../../..">
+</head>
+EOF
 cp -f $BUILD_ROOT/config.xml.wgt $BUILD_DEST/config.xml
 zip -rq $BUILD_DEST/opt/$name/$name.wgt *
 if [ $? -ne 0 ];then
