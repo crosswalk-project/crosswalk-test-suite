@@ -161,7 +161,7 @@ do
     do
         if [ -d $BUILD_DEST/opt/$name/$folderName/$buildfolder/$build_subfolder ];then
             cd $apkpacktooldir
-            if [ "${build_subfolder:0:8}" == "manifest" ];then
+            if [ "${build_subfolder:0:8}" == "webapp manifest" ];then
                 echo "Use --manifest to build..."
                 python make_apk.py --manifest=$BUILD_DEST/opt/$name/$folderName/$buildfolder/$build_subfolder/manifest.json --mode=$mode --arch=$arch
                 rmfile $build_subfolder
@@ -169,17 +169,24 @@ do
                 rm -rf $BUILD_DEST/opt/$name/$folderName/$buildfolder/$build_subfolder
                 continue
             fi
-            if [ "${build_subfolder:0:34}" == "crosswalk_remote_debugging_default" ];then
+            if [ "${build_subfolder:0:16}" == "remote_debugging" ];then
                 echo "Use --debugging to build..."
-                python make_apk.py --name=$build_subfolder --package=org.xwalk.$build_subfolder --app-root=$BUILD_DEST/opt/$name/$folderName/$buildfolder/$build_subfolder --app-local-path=index.html --enable-remote-debugging
+                python make_apk.py --name=$build_subfolder --package=org.xwalk.$build_subfolder --app-root=$BUILD_DEST/opt/$name/$folderName/$buildfolder/$build_subfolder --mode=$mode --app-local-path=index.html --enable-remote-debugging
                 rmfile $build_subfolder
                 mv *.apk $BUILD_DEST/opt/$name/$folderName/$buildfolder
                 rm -rf $BUILD_DEST/opt/$name/$folderName/$buildfolder/$build_subfolder
                 continue
             fi
-            if [ "${build_subfolder:0:20}" == "webgl_webrtc_disable" ];then
-                echo "Use --manifest to build..."
-                echo "Add --xwalk-command-line option..."
+            if [ "${build_subfolder:0:16}" == "sharemode_webapp" ];then
+                echo "Use --share mode to build..."
+                python make_apk.py --name=$build_subfolder --package=org.xwalk.$build_subfolder --app-root=$BUILD_DEST/opt/$name/$folderName/$buildfolder/$build_subfolder --mode=shared --app-local-path=index.html
+                rmfile $build_subfolder
+                mv *.apk $BUILD_DEST/opt/$name/$folderName/$buildfolder
+                rm -rf $BUILD_DEST/opt/$name/$folderName/$buildfolder/$build_subfolder
+                continue
+            fi            
+            if [ "${build_subfolder:0:15}" == "webapp_webglrtc" ];then
+                echo "permission_API_contacts..."
                 python make_apk.py --manifest=$BUILD_DEST/opt/$name/$folderName/$buildfolder/$build_subfolder/manifest.json --mode=$mode --arch=$arch --xwalk-command-line='--disable-webgl --disable-webrtc'
                 rmfile $build_subfolder
                 mv *.apk $BUILD_DEST/opt/$name/$folderName/$buildfolder
@@ -190,9 +197,9 @@ do
                 echo "This app not support android..."
                 continue
             fi
-            if [ "${build_subfolder:0:9}" == "extension" ];then
-                echo "build extension webapp..."
-                python make_apk.py --package=org.xwalk.$build_subfolder --name=$build_subfolder --app-root=$BUILD_DEST/opt/$name/$folderName/$buildfolder/$build_subfolder --app-local-path=index.html --extensions=$BUILD_DEST/opt/$name/$folderName/$buildfolder/$build_subfolder/contactextension --mode=$mode --arch=$arch
+            if [ "${build_subfolder:0:23}" == "permission_API_contacts" ];then
+                echo "build extension permission_API_contacts webapp..."
+                python make_apk.py --package=org.xwalk.permission_api_contacts --name=$build_subfolder --app-root=$BUILD_DEST/opt/$name/$folderName/$buildfolder/$build_subfolder --app-local-path=index.html --extensions=$BUILD_DEST/opt/$name/$folderName/$buildfolder/$build_subfolder/contactextension --mode=$mode --arch=$arch
                 rmfile $build_subfolder
                 mv *.apk $BUILD_DEST/opt/$name/$folderName/$buildfolder
                 rm -rf $BUILD_DEST/opt/$name/$folderName/$buildfolder/$build_subfolder
