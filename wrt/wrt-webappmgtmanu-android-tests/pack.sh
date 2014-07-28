@@ -13,7 +13,7 @@ if [[ $1 == "-h" || $1 == "--help" ]]; then
     exit 1
 fi
 
-type="pure"
+type="apk"
 mode="shared"
 arch="x86"
 while getopts t:m:a: o
