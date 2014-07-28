@@ -3,9 +3,24 @@
 <test_definition>
   <suite category="Supplementary APIs" launcher="xwalk" name="webapi-promises-nonw3c-tests">
     <set name="Promises">
-      <testcase component="WebAPI/JavaScript/Promises" execution_type="manual" id="promise_01" purpose="Test checks if the implementation of promises work properly with then method">
+      <testcase component="WebAPI/JavaScript/Promises" execution_type="manual" id="promise_01" purpose="Test checks if the onFulfilled is called once with the implementation of promises">
         <description>
-          <test_script_entry>/opt/webapi-promises-nonw3c-tests/promises/Promises_then.html</test_script_entry>
+          <test_script_entry>/opt/webapi-promises-nonw3c-tests/promises/Promises_then_onFulfilled.html</test_script_entry>
+        </description>
+      </testcase>
+      <testcase component="WebAPI/JavaScript/Promises" execution_type="manual" id="promise_02" purpose="Test checks if the onFulfilled is called once with the implementation of promises">
+        <description>
+          <test_script_entry>/opt/webapi-promises-nonw3c-tests/promises/Promises_then_onRejected.html</test_script_entry>
+        </description>
+      </testcase>
+      <testcase component="WebAPI/JavaScript/Promises" execution_type="manual" id="promise_03" purpose="Test checks if promise resolution procedure fulfills promise with the value thenable">
+        <description>
+          <test_script_entry>/opt/webapi-promises-nonw3c-tests/promises/Promises_then_resolution_fulfill.html</test_script_entry>
+        </description>
+      </testcase>
+      <testcase component="WebAPI/JavaScript/Promises" execution_type="manual" id="promise_04" purpose="Test checks if promise resolution procedure rejects promise with the value thenable">
+        <description>
+          <test_script_entry>/opt/webapi-promises-nonw3c-tests/promises/Promises_then_resolution_reject.html</test_script_entry>
         </description>
       </testcase>
     </set>
