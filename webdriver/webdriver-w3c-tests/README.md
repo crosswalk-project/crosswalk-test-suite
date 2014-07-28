@@ -18,20 +18,52 @@ whether it meets the recognized standard.
 2. Create and enter the directory for your Python virtual environment. This 
    directory can be anywhere. It is recommended that you keep it separate
    from the webdriver tests folder, to avoid confusion with source control
-  1. Go to the directory where you store Python virtual environments. 
+  * Go to the directory where you store Python virtual environments. 
      For example `cd ~; mkdir python-virtualenv; cd python-virtualenv`
-  2. Create a virtual env configuration and directory: `virtualenv webdriver-w3c-tests`
-  3. Enter the directory: `cd webdriver-w3c-tests`
+  * Create a virtual env configuration and directory: `virtualenv webdriver-w3c-tests`
+  * Enter the directory: `cd webdriver-w3c-tests`
 3. `source bin/activate` to activate the local Python installation
 4. Install Selenium: `pip install selenium` or `easy_install selenium`
-5. Go to the WebDriver tests: `cd _WEBDRIVER_TEST_ROOT_`
-6. Build XwalkDriverTest APK and install it onto Android, `./pack.sh;
-   adb install XwalkDriverTest_1.0_x86.apk`.
-   Please refer to `../../doc/Web_Test_Suite_Packaging_Guide_v1.0.pdf`
-   for environment setup to generate APK package.
-7. Run the tests: `python runtests.py`
+5. Enable ADB and SSH on Android
+  * Make sure your ZTE V975 had rooted
+  * Connect your ZTE V975 to your Linux PC (e.g.Ubuntu 13.04)
+  * Enable debug mode on ZTE V975 UI: Click “Setting”-> Click “All” on the bottom -> Choose “Developer Options”-> Enable “USB Debugging”
+  * Setup Connect type to Share mobile network(Connect to Server by USB -> pull down Notification bar -> Click "PC connection" -> Choose "Share mobile network")
+  * Setup IP of Linux PC with 192.168.42.100.
+  ```
+  # ifconfig usb0 192.168.42.100. it's better to setup the IP on UI
+  ```
+  * On Linux PC (eth0 is the network interface for webservice visiting) 
+  ```
+  # sudo sysctl net.ipv4.ip_forward=1
+  # sudo iptables -t nat -A POSTROUTING -s 192.168.42.0/24 -o eth0 -j MASQUERADE
+  ```
+  * On adb console(#adb shell)
+   (note: if "adb shell" fails, and show error: insufficient permissions for device, you can try: "adb kill-server" then "sudo adb start-server")
+  ```
+  # su
+  # ifconfig rndis0 192.168.42.129 netmask 255.255.255.0
+  # busybox route add default gw 192.168.42.100 dev rndis0
+  # setprop net.dns1 192.168.42.129
+  # setprop net.dns2 10.239.27.228
+  # netcfg
+  ```
+  * Modify /etc/resolv.conf as below content
+  ```
+  nameserver 10.248.2.5
+  ```
+  Then your Tizen Device can connect the external network by your Linux PC net forward.
+6. Start xwalkdriver on Ubuntu:
+  ```
+  $ git clone https://github.com/iKevinHan/xwalkdriver_binary,
+  $ cd xwalkdriver/xwalkdriver_binary,
+  $ sudo ./xwalkdriver
+  ```
+7. Go to the WebDriver tests: `cd _WEBDRIVER_TEST_ROOT_`
+8. Install it onto Android: `adb install XwalkDriverTest_1.0_x86.apk`
+8. Run the tests:
+  `testkit-lite -f /path/to/opt/webdriver-w3c-tests/tests.xml -k pyunit --comm localhost -o /path/to/opt/webdriver-w3c-tests/result.xml`
 
-Note: that you will likely need to start the driver's server before running.
 
 ## Updating configuration
 
