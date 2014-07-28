@@ -32,6 +32,7 @@ Authors:
 #imageLS ul, li {list-style:none;}
 #imageHS img {margin:5px; width:65px; height:70px}
 #imageLS img {margin:5px; width:65px; height:70px}
+.text_content{border: 1px solid #000; width:100%; height:200px;}
 </style>
 </head>
 <body>
@@ -49,19 +50,22 @@ Authors:
             </ul>
             <ul data-role="listview" id="imageLS"></ul>
             <ul data-role="listview">
-                <li data-role="list-divider">Get HomeScreen Image</li>
-                <li><div data-role="button" id="imageHG">HomeScreen Image</div></li>
-                <li data-role="list-divider">Get LockScreen Image</li>
-                <li><div data-role="button" id="imageLG">LockScreen Image</div></li>
-                <li data-role="list-divider">Canvas Image</li>
+                <li>
+                  <div data-role="button" id="imageHG">HomeScreen Image</div>
+                </li>
+                <li>
+                  <div data-role="button" id="imageLG">LockScreen Image</div>
+                </li>
             </ul>
-            <canvas id="canvas" style="width:100%; height:200px;"></canvas>
+            <p>The image will show in the box below.</p>
+            <canvas id="canvas" class="text_content"></canvas>
         </div>
         <div data-role="footer" data-position="fixed" data-tap-toggle="false">
         </div>
         <div data-role="popup" id="popup_info">
             <font style="font-size:85%">
-                <p>Check if the home/lock screen image is successfully changed</p><br>
+                <p>Add some pictures to "Image folder" in the device.</p>
+                <p>Check if the home/lock screen image is successfully changed</p>
                 <p>1. Click Home/LockScreen Image</p>
                 <p>2. Select an image for the home/lock screen background</p>
                 <p>3. Check if your selection is set as a home/lock screen background with the naked eye</p>
