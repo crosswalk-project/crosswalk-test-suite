@@ -13,9 +13,10 @@ if [[ $1 == "-h" || $1 == "--help" ]]; then
     exit 1
 fi
 
-type="pure"
+type="apk"
 mode="shared"
 arch="x86"
+sourcepath=appsource
 while getopts t:m:a: o
 do
     case "$o" in
@@ -86,8 +87,8 @@ find $BUILD_DEST -name "Makefile*" -delete
 function create_wgt(){
 # create wgt
 cd $BUILD_DEST
-cp -a $BUILD_ROOT/manifest.json   $BUILD_DEST/
-cp -a $BUILD_ROOT/icon.png     $BUILD_DEST/
+cp -a $BUILD_ROOT/manifest.json $BUILD_DEST/
+cp -a $BUILD_ROOT/icon.png $BUILD_DEST/
 cat > index.html << EOF
 <!doctype html>
 <head>
@@ -128,21 +129,27 @@ cat > index.html << EOF
     <meta http-equiv="Refresh" content="1; url=opt/$name/webrunner/index.html?testsuite=../tests.xml&testprefix=../../..">
 </head>
 EOF
-cp -a $BUILD_ROOT/icon.png     $BUILD_DEST/
+cp -a $BUILD_ROOT/icon.png $BUILD_DEST/
 cp -r $SRC_ROOT/../../tools/crosswalk $BUILD_ROOT/crosswalk
 
 cd $BUILD_ROOT/crosswalk
 python make_apk.py --package=org.xwalk.$appname --name=$appname --app-root=$BUILD_DEST --app-local-path=index.html --icon=$BUILD_DEST/icon.png --mode=$mode --arch=$arch
+
+for buildfolder in `ls -l $BUILD_DEST/opt/$name/$sourcepath/ |grep web |awk '{print $NF}'`
+do
+    python make_apk.py --package=org.xwalk.$buildfolder --name=$buildfolder --app-root=$BUILD_DEST/opt/$name/$sourcepath/$buildfolder --app-local-path=index.html --mode=$mode --arch=$arch
+done
+
 if [ $? -ne 0 ];then
     echo "Create $name.apk fail.... >>>>>>>>>>>>>>>>>>>>>>>>>"
-    clean_workspace
+    #clean_workspace
     exit 1
 fi
 }
 
 function create_xpk(){
-cp -a $BUILD_ROOT/manifest.json   $BUILD_DEST/
-cp -a $BUILD_ROOT/icon.png     $BUILD_DEST/
+cp -a $BUILD_ROOT/manifest.json $BUILD_DEST/
+cp -a $BUILD_ROOT/icon.png $BUILD_DEST/
 
 cd $BUILD_DEST
 cat > index.html << EOF
