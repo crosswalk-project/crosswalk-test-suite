@@ -1,7 +1,8 @@
-AC_INIT([wrt-android-extension-tests], [6.35.1.2], [zhiqiang.zhang@intel.com])
+AC_INIT([wrt-extension-android-tests], [6.35.1.2], [zhiqiang.zhang@intel.com])
 AM_INIT_AUTOMAKE([-Wall -Werror foreign])
 
 AC_CONFIG_FILES([Makefile \
 extension/Makefile \
-resources/Makefile webrunner/Makefile])
+extension_permission_contacts_tests/Makefile \
+extension_permission_contacts_tests/contactextension/Makefile])
 AC_OUTPUT
