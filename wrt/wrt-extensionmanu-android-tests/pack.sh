@@ -13,9 +13,10 @@ if [[ $1 == "-h" || $1 == "--help" ]]; then
     exit 1
 fi
 
-type="pure"
+type="apk"
 mode="shared"
 arch="x86"
+buildfolder=extension_permission_contacts_tests
 while getopts t:m:a: o
 do
     case "$o" in
@@ -27,7 +28,7 @@ do
     esac
 done
 
-if [[ $type == "wgt" || $type == "apk" || $type == "crx" || $type == "xpk"  || $type=="pure" ]];then
+if [[ $type == "wgt" || $type == "apk" || $type == "crx" || $type == "xpk" ]];then
     echo "Create package with $type and raw source"
 else
     echo "Sorry,$type is not support... >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>"
@@ -72,7 +73,7 @@ cp -arf $SRC_ROOT/* $BUILD_ROOT/
 
 # build
 echo "build from workspace... >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>"
-cd  $BUILD_ROOT
+cd $BUILD_ROOT
 ./autogen && ./configure --prefix=/ && make && make install DESTDIR=$BUILD_DEST
 if [ $? -ne 0 ];then
     echo "build fail,please check Makefile.am and cofigure.ac... >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>"
@@ -86,8 +87,8 @@ find $BUILD_DEST -name "Makefile*" -delete
 function create_wgt(){
 # create wgt
 cd $BUILD_DEST
-cp -a $BUILD_ROOT/manifest.json   $BUILD_DEST/
-cp -a $BUILD_ROOT/icon.png     $BUILD_DEST/
+cp -a $BUILD_ROOT/manifest.json $BUILD_DEST/
+cp -a $BUILD_ROOT/icon.png $BUILD_DEST/
 cat > index.html << EOF
 <!doctype html>
 <head>
@@ -128,21 +129,23 @@ cat > index.html << EOF
     <meta http-equiv="Refresh" content="1; url=opt/$name/webrunner/index.html?testsuite=../tests.xml&testprefix=../../..">
 </head>
 EOF
-cp -a $BUILD_ROOT/icon.png     $BUILD_DEST/
+cp -a $BUILD_ROOT/icon.png $BUILD_DEST/
 cp -r $SRC_ROOT/../../tools/crosswalk $BUILD_ROOT/crosswalk
 
 cd $BUILD_ROOT/crosswalk
 python make_apk.py --package=org.xwalk.$appname --name=$appname --app-root=$BUILD_DEST --app-local-path=index.html --icon=$BUILD_DEST/icon.png --mode=$mode --arch=$arch
+
+python make_apk.py --package=org.xwalk.$buildfolder --name=$buildfolder --app-root=$BUILD_DEST/opt/$name/$buildfolder --app-local-path=$BUILD_DEST/opt/$name/$buildfolder/index.html --extensions=$BUILD_DEST/opt/$name/$buildfolder/contactextension --mode=$mode --arch=$arch
 if [ $? -ne 0 ];then
     echo "Create $name.apk fail.... >>>>>>>>>>>>>>>>>>>>>>>>>"
-    clean_workspace
+    #clean_workspace
     exit 1
 fi
 }
 
 function create_xpk(){
-cp -a $BUILD_ROOT/manifest.json   $BUILD_DEST/
-cp -a $BUILD_ROOT/icon.png     $BUILD_DEST/
+cp -a $BUILD_ROOT/manifest.json $BUILD_DEST/
+cp -a $BUILD_ROOT/icon.png $BUILD_DEST/
 
 cd $BUILD_DEST
 cat > index.html << EOF
@@ -166,58 +169,6 @@ function create_crx(){
 echo "crx is not support yet... >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>"
 clean_workspace
 exit 1
-}
-
-function create_source_apk(){
-cd $BUILD_ROOT/
-for buildfolder in `ls`
-do
-        cp -r $SRC_ROOT/../../tools/crosswalk $BUILD_ROOT/crosswalk
-        cd $BUILD_ROOT/crosswalk
-        #echo "buildfolder" $buildfolder
-        if [ "${buildfolder:0:10}" == "extension_" ];then
-            echo "build extension webapp..."
-            python make_apk.py --package=org.xwalk.$buildfolder --name=$buildfolder --app-root=$BUILD_ROOT/$buildfolder/ --app-local-path=index.html --extensions=$BUILD_ROOT/$buildfolder/contactextension --mode=$mode --arch=$arch
-            continue
-        fi
-done
-}
-
-function create_pure(){
-#create source apk
-create_source_apk
-mkdir $BUILD_DEST/opt/$name/source
-cp -r $BUILD_ROOT/crosswalk/extension*.apk $BUILD_DEST/opt/$name/source
-cd $BUILD_DEST
-zip -rq $BUILD_DEST/opt/$name/$name.zip *
-if [ $? -ne 0 ];then
-    echo "Create $name.apk fail.... >>>>>>>>>>>>>>>>>>>>>>>>>"
-    clean_workspace
-    exit 1
-fi
-}
-
-function zip_for_pure()
-{
-[ -e $SRC_ROOT/$name-$version.$type.zip ] && rm -rf $SRC_ROOT/$name-$version.$type.zip
-cd $BUILD_DEST
-if [ $src_file -eq 0 ];then
-    for file in $(ls opt/$name | grep -v zip);do
-        if [[ "${whitelist[@]}" =~ $file ]];then
-            echo "$file in whitelist,keep it..."
-        else
-            echo "Remove unnessary file:$file..."
-            rm -rf opt/$name/$file
-        fi
-    done
-fi
-cp -af $BUILD_ROOT/inst.sh.pure $BUILD_DEST/opt/$name/inst.sh
-zip -Drq $BUILD_DEST/$name-$version.$type.zip opt/
-if [ $? -ne 0 ];then
-    echo "Create zip package fail... >>>>>>>>>>>>>>>>>>>>>>>>>"
-    clean_workspace
-    exit 1
-fi
 }
 
 ## zip function ##
@@ -297,7 +248,7 @@ clean_workspace
 exit 1
 }
 
-## create wgt crx apk xpk pure and zip package ##
+## create wgt crx apk xpk and zip package ##
 case $type in
     wgt) create_wgt
          zip_for_wgt;;
@@ -307,8 +258,6 @@ case $type in
          zip_for_xpk;;
     crx) create_crx
          zip_for_crx;;
-    pure) create_pure
-          zip_for_pure;;
 esac
 
 
@@ -317,7 +266,7 @@ echo "copy package from workspace... >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
 cp -f $BUILD_DEST/$name-$version.$type.zip $SRC_ROOT/$name-$version.$type.zip
 
 # clean workspace
-clean_workspace
+#clean_workspace
 
 # validate
 echo "checking result... >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>"
