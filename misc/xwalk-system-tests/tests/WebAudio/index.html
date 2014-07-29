@@ -32,40 +32,42 @@ Authors:
 
 <html>
 <head>
-<meta charset="utf-8" />
-<meta name="viewport" content="initial-scale=1.0, maximum-scale=1.0, width=device-width" />
-<link rel="stylesheet" type="text/css" href="../../css/jquery.mobile.css" />
-<script src="../../js/thirdparty/jquery.js"></script>
-<script src="../../js/thirdparty/jquery.mobile.js"></script>
-<script src="../../js/tests.js"></script>
+  <meta charset="utf-8">
+  <meta name="viewport" content="initial-scale=1.0, maximum-scale=1.0, width=device-width">
+  <link rel="stylesheet" type="text/css" href="../../css/jquery.mobile.css">
+  <script src="../../js/thirdparty/jquery.js"></script>
+  <script src="../../js/thirdparty/jquery.mobile.js"></script>
+  <script src="../../js/tests.js"></script>
 </head>
 <body>
-    <div data-role="page" id="main">
-        <div data-role="header" data-position="fixed" data-tap-toggle="false">
-            <h1 id="main_page_title"></h1>
-        </div>
-        <div id="content" >
-          <iframe width="100%" height="500px;" src="WebAudio/index.html"></iframe>
-        </div>
-        <div data-role="footer" data-position="fixed" data-tap-toggle="false">
-        </div>
-        <div data-role="popup" id="popup_info">
-          <font style="font-size:85%">
-            <p>Test Purpose: </p>
-            <p>Verifies:</P>
-            <ol>
-              <li>when repeatedly navigating to webpages with audio playback using Audio Tag, the sample run normally and no crash.</li>
-              <li>if the app/browser crashes, when repeatedly navigating to webpages with audio playback using WebAudio, the sample run normally and no crash.</li>
-            </ol>
-            <p>Test Step: </p>
-            <ol>
-              <li>Click "Automatic WebAudio"to run the same for about 2 minutes.</li>
-              <li>Click "Automatic Audio Tag"to run the same for about 2 minutes.</li>
-            </ol>
-            <p>Expected Result: </p>
-            <p>Test passes if the sample run normally and no crash.</p>
-           </font>
-        </div>
+  <div data-role="page" id="main">
+    <div data-role="header" data-position="fixed" data-tap-toggle="false">
+      <h1 id="main_page_title"></h1>
     </div>
+
+    <div id="content">
+      <iframe width="100%" height="500px;" src="res/index.html"></iframe>
+    </div>
+
+    <div data-role="footer" data-position="fixed" data-tap-toggle="false">
+    </div>
+
+    <div data-role="popup" id="popup_info">
+      <font style="font-size:85%">
+        <p>Test purpose: </p>
+        <ol>
+          <li>Check that https://crosswalk-project.org/jira/browse/XWALK-1993 is fixed.</li>
+          <li>There is no crash while loading and playing a rather large (duration-wise) sound file using WebAudio and Audio Tag.</li>
+        </ol>
+        <p>Test step: </p>
+        <ol>
+          <li>Click "Automatic WebAudio" to run the sample for about 2 minutes.</li>
+          <li>Click "Automatic Audio Tag" to run the sample for about 2 minutes.</li>
+        </ol>
+        <p>Expected result: </p>
+        <p>Test passes if the samples run normally and no crash.</p>
+       </font>
+    </div>
+  </div>
 </body>
 </html>
