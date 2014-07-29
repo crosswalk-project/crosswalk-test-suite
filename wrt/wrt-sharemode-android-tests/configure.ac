@@ -29,7 +29,7 @@
 #                      Yufei,Chen<yufeix.chen@intel.com>
 #
 
-AC_INIT([wrt-autohost-android-tests], [6.35.1.2], [yufeix.chen@intel.com])
+AC_INIT([wrt-sharemode-android-tests], [6.35.1.2], [yufeix.chen@intel.com])
 AM_INIT_AUTOMAKE([-Wall -Werror foreign])
 
 # Checks for programs.
@@ -40,7 +40,7 @@ Makefile \
 log/Makefile \
 log/result/Makefile \
 resources/Makefile \
-autohost/Makefile \
+sharemode/Makefile \
 resources/apk/Makefile \
 resources/installer/Makefile \
 ])
