@@ -7,7 +7,7 @@ This suite integrates a set of conformance tests from [W3C WebDriver Test Suite]
 The purpose is for the XwalkDriver implementation to be tested to determine
 whether it meets the recognized standard.
 
-## How to run the tests
+## Pre-condition
 
 1. It is highly recommended that you use a virtual Python environment.
    This allows you to safely make changes to your Python environment
@@ -24,7 +24,24 @@ whether it meets the recognized standard.
   * Enter the directory: `cd webdriver-w3c-tests`
 3. `source bin/activate` to activate the local Python installation
 4. Install Selenium: `pip install selenium` or `easy_install selenium`
-5. Enable ADB and SSH on Android
+
+
+## How to run the tests
+
+Get xwalkdriver on Ubuntu (32bit/64bit):
+
+  ```
+  $ git clone https://github.com/iKevinHan/xwalkdriver_binary
+  $ cd xwalkdriver/xwalkdriver_binary
+  ```
+
+For Android:
+1. Start xwalkdriver server
+  ```
+  $ cd /path/to/xwalkdriver_binary
+  $./xwalkdriver
+  ```
+2. Enable ADB and SSH on Android
   * Make sure your ZTE V975 had rooted
   * Connect your ZTE V975 to your Linux PC (e.g.Ubuntu 13.04)
   * Enable debug mode on ZTE V975 UI: Click “Setting”-> Click “All” on the bottom -> Choose “Developer Options”-> Enable “USB Debugging”
@@ -53,16 +70,32 @@ whether it meets the recognized standard.
   nameserver 10.248.2.5
   ```
   Then your Tizen Device can connect the external network by your Linux PC net forward.
-6. Start xwalkdriver on Ubuntu:
+3. Install it onto Android: `adb install XwalkDriverTest_1.0_x86.apk`
+4. Run the tests:
+  `testkit-lite -f /path/to/opt/webdriver-w3c-tests/tests.xml -k pyunit --comm localhost -o /path/to/opt/webdriver-w3c-tests/result.xml --testenvs WD_BROWSER=android`
+
+
+For Tizen:
+1. Start xwalkdriver server
   ```
-  $ git clone https://github.com/iKevinHan/xwalkdriver_binary,
-  $ cd xwalkdriver/xwalkdriver_binary,
-  $ sudo ./xwalkdriver
+  $ cd /path/to/xwalkdriver_binary
+  $./xwalkdriver --sdb-port=26099
   ```
-7. Go to the WebDriver tests: `cd _WEBDRIVER_TEST_ROOT_`
-8. Install it onto Android: `adb install XwalkDriverTest_1.0_x86.apk`
-8. Run the tests:
-  `testkit-lite -f /path/to/opt/webdriver-w3c-tests/tests.xml -k pyunit --comm localhost -o /path/to/opt/webdriver-w3c-tests/result.xml`
+2. Install and launch the xwalk as server mode on Tizen IVI:
+  '''
+  su - app
+  export XDG_RUNTIME_DIR="/run/user/5000"
+  export DBUS_SESSION_BUS_ADDRESS=unix:path=/run/user/5000/dbus/user_bus_socket
+  systemctl --user status xwalk.service
+  xwalkctl -i /path/to/opt/webdriver-w3c-tests/XwalkDriverTest.wgt
+  '''
+3. Set remote debug port by insert "--remote-debugging-port='PORT'" into "/usr/lib/systemd/user/xwalk.service" on Tizen IVI.
+4. Connect Tizen IVI and PC with sdb
+  * Run the follow command on Tizen IVI: #systemd start sdbd_tcp
+  * Run the follow command on PC: $sdb connect <tizen ivi ip>
+  * Run the follow command on PC: $sdb root on
+5. Run the tests:
+  `testkit-lite -f /path/to/opt/webdriver-w3c-tests/tests.xml -k pyunit --comm localhost -o /path/to/opt/webdriver-w3c-tests/result.xml --testenvs WD_BROWSER=tizen`
 
 
 ## Updating configuration

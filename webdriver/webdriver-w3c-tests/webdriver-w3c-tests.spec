@@ -15,4 +15,7 @@ blacklist="
 pack.sh
 webdriver-w3c-tests.spec
 support
-crosswalk"
+crosswalk
+key
+signing
+make_xpk.py"

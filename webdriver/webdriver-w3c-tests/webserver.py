@@ -239,8 +239,13 @@ class Httpd(object):
     __del__ = stop
 
     def where_is(self, path):
-        # return tests path in android
-        return "file:///%s/%s" % ("android_asset/www", path)
+        mobile = self.__dict__['mobile']
+        if mobile == "android":
+            return "file:///%s/%s" % ("android_asset/www", path)
+        elif mobile == "tizen":
+            return "app://%s/%s" % (self.__dict__['appId'], path)
+        else:
+            return "http://%s:%d/%s" % (self.host, self.port, path)
 
 
 def main(args=sys.argv[1:]):
