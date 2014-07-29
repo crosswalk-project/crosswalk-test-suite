@@ -21,7 +21,7 @@ fi
 
 #get spec name
 folderName_tmp=${suiteName%-*}
-folderName=usecase
+folderName=wrt-usecase-tizen-tests
 
 type="apk"
 mode="shared"
@@ -109,12 +109,12 @@ mkdir $BUILD_DEST/opt/$folderName
 for buildfolder in `ls`
 do
     if [ -d $buildfolder ];then
-        if [ "${buildfolder:0:27}" == "crosswalk_support_xpk_tests" ];then
+        if [ "${buildfolder:0:15}" == "wrt_support_xpk" ];then
             echo "Pack xpk....................."
             cd $xpkpacktooldir
-            python make_xpk.py $BUILD_ROOT/$folderName/$buildfolder/crosswalk_support_xpk_tests k.pem
-            python make_xpk.py $BUILD_ROOT/$folderName/$buildfolder/update_version_one_tests k.pem
-            python make_xpk.py $BUILD_ROOT/$folderName/$buildfolder/update_version_two_tests k.pem
+            python make_xpk.py $BUILD_ROOT/$folderName/$buildfolder/wrt_support_xpk k.pem
+            python make_xpk.py $BUILD_ROOT/$folderName/$buildfolder/xpk_sample_one k.pem
+            python make_xpk.py $BUILD_ROOT/$folderName/$buildfolder/xpk_sample_two k.pem
             rm -rf $xpkpacktooldir/*.pem        
             zip -rq $buildfolder.xpk.zip *.xpk             
             mv *.zip $BUILD_DEST/opt/$folderName
@@ -122,12 +122,12 @@ do
             cd $BUILD_ROOT/$folderName
             continue
         fi
-        if [ "${buildfolder:0:27}" == "crosswalk_support_wgt_tests" ];then
+        if [ "${buildfolder:0:15}" == "wrt_support_wgt" ];then
             echo "Pack wgt....................."
             cd $buildfolder
-            cd crosswalk_support_wgt_tests
-            zip -rq crosswalk_support_wgt_tests.wgt *
-            cp crosswalk_support_wgt_tests.wgt ../
+            cd wrt_support_wgt
+            zip -rq wrt_support_wgt.wgt *
+            cp wrt_support_wgt.wgt ../
             cd ..
             cd wgt_sample_one
             zip -rq wgt_sample_one.wgt *
@@ -138,9 +138,9 @@ do
             cp wgt_sample_two.wgt ../
             cd ..
             
-            zip -rq crosswalk_support_wgt_tests.wgt.zip *.wgt
+            zip -rq wrt_support_wgt.wgt.zip *.wgt
             ls
-            cp crosswalk_support_wgt_tests.wgt.zip $BUILD_DEST/opt/$folderName
+            cp wrt_support_wgt.wgt.zip $BUILD_DEST/opt/$folderName
             cd ..
             continue
         fi
@@ -181,7 +181,7 @@ function zip_for_wgt(){
 cd $BUILD_DEST
 
 echo $BUILD_DEST/$name-$version.$type.zip
-cp $BUILD_ROOT/inst.sh  $BUILD_DEST/opt/usecase
+cp $BUILD_ROOT/inst.sh  $BUILD_DEST/opt/wrt-usecase-tizen-tests
 zip -Drq $BUILD_DEST/$name-$version.$type.zip ./
 if [ $? -ne 0 ];then
     echo "Create zip package fail... >>>>>>>>>>>>>>>>>>>>>>>>>"
