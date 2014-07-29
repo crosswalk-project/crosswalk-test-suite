@@ -138,7 +138,7 @@ python make_apk.py --package=org.xwalk.$appname --name=$appname --app-root=$BUIL
 python make_apk.py --package=org.xwalk.$buildfolder --name=$buildfolder --app-root=$BUILD_DEST/opt/$name/$buildfolder --app-local-path=$BUILD_DEST/opt/$name/$buildfolder/index.html --extensions=$BUILD_DEST/opt/$name/$buildfolder/contactextension --mode=$mode --arch=$arch
 if [ $? -ne 0 ];then
     echo "Create $name.apk fail.... >>>>>>>>>>>>>>>>>>>>>>>>>"
-    #clean_workspace
+    clean_workspace
     exit 1
 fi
 }
@@ -266,7 +266,7 @@ echo "copy package from workspace... >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
 cp -f $BUILD_DEST/$name-$version.$type.zip $SRC_ROOT/$name-$version.$type.zip
 
 # clean workspace
-#clean_workspace
+clean_workspace
 
 # validate
 echo "checking result... >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>"
