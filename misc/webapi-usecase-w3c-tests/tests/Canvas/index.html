@@ -41,11 +41,6 @@ Authors:
     <script src="../../js/thirdparty/jquery.mobile.js"></script>
     <script src="../../js/tests.js"></script>
     <script src="js/main.js"></script>
-    <script type="text/javascript">
-      function reloadTest() {
-        document.location.reload();
-      }
-    </script>
   </head>
   <body>
     <div data-role="header">
@@ -55,7 +50,7 @@ Authors:
       <div style="margin: 0px auto; width:300px;">
         <h3>Original Picture</p>
         <img src="../../res/images/w3c/poster.png" width="300" height="300" />
-        <p>Target Picture</p>
+        <p id="title">Target Picture</p>
         <canvas id="myCanvas" width="300" height="240" style="border:1px solid #c3c3c3;">
           Your browser does not support the canvas element.
         </canvas>
@@ -67,11 +62,14 @@ Authors:
         img.src="../../res/images/w3c/poster.png";
         cxt.drawImage(img,0,0);
       </script>
-      <button onclick="rotate()">Rotate Pic</button>
-      <button onclick="scale()">Scale Pic</button>
+      <button onclick="rotate_90()">Rotate Pic 90deg</button>
+      <button onclick="rotate_180()">Rotate Pic 180deg</button>
+      <button onclick="rotate_270()">Rotate Pic 270deg</button>
+      <button onclick="rotate_360()">Rotate Pic 360deg</button>
+      <button onclick="scale_half()">Scale half Pic</button>
+      <button onclick="scale_double()">Scale double Pic</button>
       <button onclick="transform()">Transform Pic</button>
       <button onclick="to_blackWhite()">Vampix Pic</button>
-      <p><a href="javascript: reloadTest();" data-role="button">Test Again</a></p>
     </div>
     <div data-role="footer" data-position="fixed">
     </div>
@@ -79,11 +77,14 @@ Authors:
       <font style="font-size:85%">
         <p>Test Purpose: </p>
         <p>Verifies picture management with HTML5 Canvas: </p>
-        <p>1.click "Rotate Pic" button to rotate pic with 20 degree, then click "Test Again" button; </p>
-        <p>2.click "Scale Pic" to enlarger with 1.5 scale, click 2 or many times to enlarge continuously, then click "Test Again" button; </p>
-        <p>3.click "Transform Pic" to check pic transformation, then click "Test Again" button; </p>
-        <p>4.click "Vampix Pic" to change pic to "black white", then click "Test Again" button; </p>
-        <p>5.Do combination test, click "Rotate Pic" + "Scale Pic" + "Vampix Pic" in order, then click "Test Again" button; </p>
+        <p>1.click "Rotate Pic 90deg" button to rotate pic with 90 degree.</p>
+        <p>2.click "Rotate Pic 180deg" button to rotate pic with 180 degree.</p>
+        <p>3.click "Rotate Pic 270deg" button to rotate pic with 270 degree.</p>
+        <p>4.click "Rotate Pic 360deg" button to rotate pic with 360 degree.</p>
+        <p>5.click "Scale half Pic" to enlarger with 1/2 scale.</p>
+        <p>6.click "Scale double Pic" to enlarger with 2 scale.</p>
+        <p>7.click "Transform Pic" to check pic transformation.</p>
+        <p>8.click "Vampix Pic" to change pic to "black white".</p>
         <p>Expected Result: </p>
         <p>This test PASS only if the pic could be rotated,scaled,transformed, vampixed well.</p>
       </font>
