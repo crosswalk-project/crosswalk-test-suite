@@ -40,6 +40,8 @@ Authors:
   <script src="../../js/thirdparty/jquery.mobile.js"></script>
   <script src="../../js/tests.js"></script>
   <script src="../../js/main.js"></script>
+  <script src="../../main.js"></script>
+  <script src="../../cordova.js"></script>
   <script src="js/main.js"></script>
 </head>
 <body>
@@ -48,17 +50,18 @@ Authors:
       <h1 id="main_page_title"></h1>
     </div>
     <div id="content">
-      <p id="text"></p>
-      <div>Exit App</div>
+      <button>Exit App</button>
     </div>
     <div data-role="footer" data-position="fixed" data-tap-toggle="false">
     </div>
     <div data-role="popup" id="popup_info" data-theme="a">
       <font class="fontSize">
+        <p>Test Steps: </p>
+        <p>Click the 'Exit App'</p>
         <p>Test Purpose: </p>
-        <p>Verifies the function navigator.app.exitApp can work well.</p>
+        <p>Verify the function navigator.app.exitApp can work well.</p>
         <p>Expected Result: </p>
-        <p>Test passes if the app can exit successfully.</p>
+        <p>Test passes if the app exits after click the 'Exit App'.</p>
       </font>
     </div>
   </div>

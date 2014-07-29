@@ -32,11 +32,9 @@ Authors:
 $(document).ready(function(){
   document.addEventListener('deviceready', myDeviceReady, false);
 
-  $("div").click(function () {
+  $("button").click(function () {
     navigator.app.exitApp();
   });
 })
 
-function myDeviceReady() {
-  $("#text").text("Test passes if the app can be exit after click the 'Exit App'");
-}
+function myDeviceReady() { }
