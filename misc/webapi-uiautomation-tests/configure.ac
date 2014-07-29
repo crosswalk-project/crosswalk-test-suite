@@ -2,6 +2,29 @@ AC_INIT([webapi-uiautomation-tests], [2.2.1], [zhiqiang.zhang@intel.com])
 AM_INIT_AUTOMAKE([-Wall -Werror foreign])
 
 AC_CONFIG_FILES([Makefile \
+crosswalk-dlna/Makefile \
+css3-transitions/Makefile \
+css3-transitions/webkit/Makefile \
+css3-transitions/webkit/resources/Makefile \
+ivi-cssfilter/Makefile \
+ivi-cssfilter/testscripts/Makefile \
+ivi-cssfilter/testscripts/steps/Makefile \
+w3c-webstorage/Makefile \
+w3c-webstorage/testscripts/Makefile \
+w3c-webstorage/testscripts/webstorage/Makefile \
+w3c-webstorage/testscripts/webstorage/steps/Makefile \
+html5-extra/testscripts/Makefile \
+html5-extra/images/Makefile \
+html5-extra/browsers/Makefile \
+html5-extra/dom/Makefile \
+html5-extra/attributes/Makefile \
+html5-extra/xhtml5/Makefile \
+html5-extra/testscripts/browsers/Makefile \
+html5-extra/testscripts/browsers/steps/Makefile \
+html5-extra/testscripts/dom/Makefile \
+html5-extra/testscripts/dom/steps/Makefile \
+html5-extra/testscripts/xhtml5/Makefile \
+html5-extra/testscripts/xhtml5/steps/Makefile \
 css3-background/Makefile \
 css3-background/csswg/Makefile \
 css3-background/reference/Makefile \
