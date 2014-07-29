@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<!--
+Copyright (c) 2014 Intel Corporation.
+
+Redistribution and use in source and binary forms, with or without modification,
+are permitted provided that the following conditions are met:
+
+* Redistributions of works must retain the original copyright notice, this list
+  of conditions and the following disclaimer.
+* Redistributions in binary form must reproduce the original copyright notice,
+  this list of conditions and the following disclaimer in the documentation
+  and/or other materials provided with the distribution.
+* Neither the name of Intel Corporation nor the names of its contributors
+  may be used to endorse or promote products derived from this work without
+  specific prior written permission.
+
+THIS SOFTWARE IS PROVIDED BY INTEL CORPORATION "AS IS"
+AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE
+IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE
+ARE DISCLAIMED. IN NO EVENT SHALL INTEL CORPORATION BE LIABLE FOR ANY DIRECT,
+INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING,
+BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE,
+DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY
+OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING
+NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE,
+EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
+
+Authors:
+        Wang, Hongjuan <hongjuanx.wang@intel.com>
+
+-->
+
+<html>
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="initial-scale=1.0, maximum-scale=1.0, width=device-width" />
+  <link rel="stylesheet" type="text/css" href="../../css/jquery.mobile.css" />
+  <link rel="stylesheet" type="text/css" href="../../css/main.css" />
+  <script src="../../js/thirdparty/jquery.js"></script>
+  <script src="../../js/thirdparty/jquery.mobile.js"></script>
+  <script src="../../js/tests.js"></script>
+  <script src="../../js/main.js"></script>
+</head>
+<body>
+  <div data-role="page" id="main">
+    <div data-role="header" data-position="fixed" data-tap-toggle="false">
+      <h1 id="main_page_title"></h1>
+    </div>
+    <div id="content">
+      <div id="testDiv">
+        <p>Test Steps: </p>
+        <ol>
+          <li>Unzip the 'crosswalk-cordova-xxx-arm.zip' -d localpath</li>
+          <li>Execute command: cd /localpath/crosswalk-cordova-xxx-arm</li>
+          <li>Execute command: ./bin/create remotedebugging com.example.remotedebugging RD --shared</li>
+          <li>Execute command: cd remotedebugging</li>
+          <li>Eidt /src/com/example/remotedebugging/RD.java
+            <ul>
+              <li>Add this.appView.enableRemoteDebugging() after super.loadUrl("file:///android_asset/www/index.html")</li>
+            </ul>
+          </li>
+          <li>Execute command: ./cordova/build --debug</li>
+          <li>Execute the command: ./cordova/run</li>
+          <li>Open chrome://inspect on host chrome browser</li>
+          <li>Click inspect button</li>
+          <li>Click 'Sources' option</li>
+          <li>Add a breakpoint</li>
+          <li>Try to click "elements" button on top</li>
+          <li>Try select one html code then click the right mouse button</li>
+          <li>Select 'Edit as HTML'</li>
+          <li>Try to modify the code 'add or remove text'</li>
+          <li>Check the page</li>
+        </ol>
+        <p>Expect Results: </p>
+        <ol>
+          <li>The unzip command execute successfully</li>
+          <li>The cd command execute successfully</li>
+          <li>The remotedebugging project created successfully</li>
+          <li>Enter the remotedebugging file</li>
+          <li>The java file can be change</li>
+          <li>Able to create 'mobilespec-debug.apk' under bin folder</li>
+          <li>The app can be built firstly, and then install and launch successfully</li>
+          <li>The 'cordova_mobile_spec' app will be shown in the inspection page and the web app name correctly</li>
+          <li>The 'cordova_mobile_spec' app source code will shown</li>
+          <li>The Debug information on the right side, such as 'Breakpoints' 'DOM Breakpoints”</li>
+          <li>The Breakpoint could be added successfully on the right side of the toolbar</li>
+          <li>The button can work well</li>
+          <li>There will display shortcut menu</li>
+          <li>There will display a edit box</li>
+          <li>The source code could be changed</li>
+          <li>The change will be taked effect.</li>
+        </ol>
+      </div>
+    </div>
+    <div data-role="footer" data-position="fixed" data-tap-toggle="false">
+    </div>
+    <div data-role="popup" id="popup_info" data-theme="a">
+      <font class="fontSize">
+        <p>Test Precondition: </p>
+        <p>Connect the Nexus mobile to the Linux PC with USB cable</p>
+        <p>The second number is the arm.zip version corresponding to chrome, the version must be consistent</p>
+        <p>Test Purpose: </p>
+        <p>Verifies the cordova package can be build, install and launch successfully.</p>
+        <p>Expected Result: </p>
+        <p>Test passes if all the steps test passed.</p>
+      </font>
+    </div>
+  </div>
+</body>
+</html>
