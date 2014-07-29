@@ -1,7 +1,7 @@
 ## Introduction
 
-Xwalk system tests is a test suite for Crosswalk system level test cases.
-Especially from Crosswalk community samples, bugs, mailing lists, etc.
+This is a test suite for Crosswalk system level test cases, especially for
+the tests from Crosswalk community samples, bugs, mailing lists, etc.
 
 ## Authors:
 
