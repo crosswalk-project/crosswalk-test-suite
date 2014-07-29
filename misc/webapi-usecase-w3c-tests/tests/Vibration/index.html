@@ -45,16 +45,13 @@ Authors:
             .vibration {
                 text-align: left
             }
-            .opt {
-                text-align: left
-            }
         </style>
     </head>
     <body>
         <div data-role="header">
           <h1 id="main_page_title"></h1>
         </div>
-        <div data-role="content">
+        <div data-role="content" class="content">
           <div class="containing-element">
             <label for="slider-1" class="vibration">Vibration Time(s)</label>
             <input type="range" name="slider-1" id="slider-1" data-highlight="true" min="0.50" max="3" step="0.10" value="1" data-show-value="true" class="hideButton">
@@ -62,9 +59,12 @@ Authors:
             <input type="range" name="slider-2" id="slider-2" data-highlight="true" min="0.10" max="2" step="0.10" value="0.50" data-show-value="true" class="hideButton">
             <label for="slider-1" class="vibration">Vibration Number</label>
             <input type="range" name="slider-3" id="slider-3" data-highlight="true" min="1" max="20" value="2" data-show-value="true" class="hideButton">
-            <p><a href="javascript:startVibration()" id="start" data-role="button" class="opt">Start Vibration</a></p>
-            <a href="javascript:stopVibration()" id="stop" data-role="button" class="opt">Stop Vibration</a>
           </div>
+          <div data-role="controlgroup" data-type="horizontal" class="q">
+            <label for="slider-1" class="vibration">Vibration</label>
+            <a id="on" data-role="button">On</a>
+            <a id="off" data-role="button">Off</a>
+          </div> 
         </div>
         <div data-role="footer" data-position="fixed">
         </div>
