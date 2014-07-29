@@ -69,10 +69,19 @@ App.query = function () {
     }else{
         App.table = document.getElementsByTagName("table")[0];
     }
+    var noRecord = true;
+    document.getElementById("noRecord").innerHTML = "";
+    $("#btnDelete").button("enable");
     cursorRequest.onsuccess = function (e) {
         var result = e.target.result;
-        if (!result || !result.value)
+        if (!result || !result.value){
+            if(noRecord){
+                document.getElementById("noRecord").innerHTML="No Record";
+                $("#btnDelete").button("disable");
+            }
             return false;
+        }
+        noRecord = false;
         render(result.value.key, result.value.value);
         result.continue();
     }
