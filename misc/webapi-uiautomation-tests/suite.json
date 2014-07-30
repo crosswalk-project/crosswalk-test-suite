@@ -1,0 +1,66 @@
+{
+    "pkg-blacklist": [
+        "pack.py", 
+        "COPYING", 
+        "testcase.xsl", 
+        "testresult.xsl", 
+        "tests.css", 
+        "icon.png", 
+        "suite.json", 
+        "inst.*.py", 
+        "config.xml", 
+        "manifest.json",
+        "VERSION"
+    ], 
+    "pkg-list": {
+        "apk,cordova": {
+            "blacklist": [
+                "*"
+            ], 
+            "copylist": {
+                "inst.apk.py": "inst.py", 
+                "html5-extra/testscripts": "html5-extra/testscripts",
+                "w3c-webstorage/testscripts":"w3c-webstorage/testscripts"
+            }, 
+            "pkg-app": {
+                "blacklist": [
+                    "html5-extra/testscripts",
+                    "w3c-webstorage/testscripts"
+                ] 
+            } 
+        }, 
+        "wgt": {
+            "blacklist": [
+                "*"
+            ], 
+            "copylist": {
+                "inst.wgt.py": "inst.py",
+                "html5-extra/testscripts": "html5-extra/testscripts",
+                "w3c-webstorage/testscripts":"w3c-webstorage/testscripts"
+            }, 
+            "pkg-app": {
+                "blacklist": [
+                    "html5-extra/testscripts",
+                    "w3c-webstorage/testscripts"
+                ] 
+            }
+        }, 
+        "xpk": {
+            "blacklist": [
+                "*"
+            ], 
+            "copylist": {
+                "inst.xpk.py": "inst.py",
+                "html5-extra/testscripts": "html5-extra/testscripts",
+                "w3c-webstorage/testscripts":"w3c-webstorage/testscripts"
+            }, 
+            "pkg-app": {
+                "blacklist": [
+                    "html5-extra/testscripts",
+                    "w3c-webstorage/testscripts"
+                ] 
+            } 
+        }
+    }, 
+    "pkg-name": "webapi-uiautomation-tests"
+}
