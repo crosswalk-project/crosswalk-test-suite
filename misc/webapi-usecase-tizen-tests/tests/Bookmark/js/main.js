@@ -29,35 +29,42 @@ Authors:
 
  */
 var bookmarkTitle;
-var bookmarkURL;
+var bookmarkTitle_1;
+var bookmarkTitle_2;
+var bookmarkURL_1;
+var bookmarkURL_2;
 var bookmarkObj;
+var bookmarkObj_1;
+var bookmarkObj_2;
 
 function Change() {
   bookmarkTitle = "right1.html";
-  bookmarkURL = "http://127.0.1.1:8081/opt/webapi-usecase-tizen-tests/tests/Bookmark/right1.html";
+  bookmarkObj = bookmarkObj_1;
   window.parent.window['iframe2'].location='right1.html';
+  show();
   $("#firstpage").addClass("ui-disabled");
   $("#secondpage").removeClass("ui-disabled");
 }
 
 function Change2() {
   bookmarkTitle = "right2.html";
-  bookmarkURL = "http://127.0.1.1:8081/opt/webapi-usecase-tizen-tests/tests/Bookmark/right2.html";
+  bookmarkObj = bookmarkObj_2;
   window.parent.window['iframe2'].location='right2.html';
+  show();
   $("#firstpage").removeClass("ui-disabled");
   $("#secondpage").addClass("ui-disabled");
 }
 
 function add() {
-  bookmarkObj = new tizen.BookmarkItem(bookmarkTitle, bookmarkURL);
   tizen.bookmark.add(bookmarkObj);
   show();
 }
 
 function show() {
   var ret = tizen.bookmark.get();
+  var a = 0;
+  $("#bookmarklist").html("");
   if (ret.length === 0) {
-    $("#bookmarklist").html("");
     $("#add").removeClass("ui-disabled");
     $("#remove").addClass("ui-disabled");
   } else {
@@ -65,11 +72,14 @@ function show() {
       if(bookmarkTitle == ret[i].title) {
         $("#add").addClass("ui-disabled");
         $("#remove").removeClass("ui-disabled");
+        a = 1;
       } else {
-        $("#remove").addClass("ui-disabled");
-        $("#add").removeClass("ui-disabled");
+        if (a == 0) {
+          $("#remove").addClass("ui-disabled");
+          $("#add").removeClass("ui-disabled");
+        }
       }
-      $("#bookmarklist").html("<p><a>" + ret[i].title + "</a></p>" + $("#bookmarklist").html());
+      $("#bookmarklist").html($("#bookmarklist").html() + "<p><a>" + ret[i].title + "</a></p>");
     }
   }
 }
@@ -80,9 +90,16 @@ function remove() {
 }
 
 $(document).ready(function() {
-  bookmarkTitle = "right1.html";
-  bookmarkURL = "http://127.0.1.1:8081/opt/webapi-usecase-tizen-tests/tests/Bookmark/right1.html";
+  bookmarkTitle_1 = "right1.html";
+  bookmarkURL_1 = "http://127.0.1.1:8081/opt/webapi-usecase-tizen-tests/tests/Bookmark/right1.html";
+  bookmarkTitle_2 = "right2.html";
+  bookmarkURL_2 = "http://127.0.1.1:8081/opt/webapi-usecase-tizen-tests/tests/Bookmark/right2.html";
+  bookmarkTitle = bookmarkTitle_1;
   tizen.bookmark.remove();
+  bookmarkObj_1 = new tizen.BookmarkItem(bookmarkTitle_1, bookmarkURL_1);
+  bookmarkObj_2 = new tizen.BookmarkItem(bookmarkTitle_2, bookmarkURL_2);
+  bookmarkObj = bookmarkObj_1;
+  show();
   $("#firstpage").addClass("ui-disabled");
   $("#secondpage").removeClass("ui-disabled");
   $("#add").removeClass("ui-disabled");
