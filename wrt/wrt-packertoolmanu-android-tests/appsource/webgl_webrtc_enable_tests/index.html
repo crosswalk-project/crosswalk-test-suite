@@ -1,4 +1,6 @@
-Copyright (c) 2014 Intel Corporation.
+<!DOCTYPE html>
+<!--
+Copyright (c) 2013 Intel Corporation.
 
 Redistribution and use in source and binary forms, with or without modification,
 are permitted provided that the following conditions are met:
@@ -22,3 +24,48 @@ DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY
 OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING
 NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE,
 EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
+
+Authors:
+        Xu,Yuhan <yuhanx.xu@intel.com>
+
+-->
+
+<meta charset="utf-8">
+<title>webgl_webrtc_enable_tests</title>
+<link rel="author" title="Intel" href="http://www.intel.com">
+<link rel="help" href="">
+<meta name="flags" content="">
+<meta name="assert" content="Check if enable the WebGL and WebRTC API.">
+<body>
+  <p>Enable WebGL:</p>
+  <div id="test1" style="color:red">Fail</div>
+  <canvas id="canvas"></canvas>
+  <p>Enable WebRTC:</p>
+  <div id="test2" style="color:red">Fail</div>
+  <script>
+      var t1 = document.getElementById('test1');
+      var t2 = document.getElementById('test2');
+
+      try{
+          var webgl = null;
+          var canvasObject = document.getElementById('canvas');
+          webgl = canvasObject.getContext("experimental-webgl");
+
+          if (webgl) {
+              t1.innerHTML = "Pass";
+              t1.style.color = "green";
+          }
+      } catch (e) {}
+
+      try{
+          var pc = null;
+          window.RTCPeerConnection = window.RTCPeerConnection || window.webkitRTCPeerConnection;
+          pc = new RTCPeerConnection({"iceServers":[]});
+
+          if (pc) {
+              t2.innerHTML = "Pass";
+              t2.style.color = "green";
+          }
+      } catch (e) {}
+  </script>
+</body>

@@ -11,6 +11,6 @@ src_file="0"
 # specified files to be kept in whitelist #
 whitelist="
 inst.sh
-README
 tests.xml
-"
+tests.full.xml
+mediasrc"
