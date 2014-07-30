@@ -30,6 +30,7 @@ Authors:
  */
 var bookmarkTitle;
 var bookmarkURL;
+var bookmarkObj;
 
 function Change() {
   bookmarkTitle = "right1.html";
@@ -48,28 +49,33 @@ function Change2() {
 }
 
 function add() {
-  var bookmark = new tizen.BookmarkItem(bookmarkTitle, bookmarkURL);
-  tizen.bookmark.add(bookmark);
+  bookmarkObj = new tizen.BookmarkItem(bookmarkTitle, bookmarkURL);
+  tizen.bookmark.add(bookmarkObj);
   show();
 }
 
 function show() {
   var ret = tizen.bookmark.get();
-  for(var i = 0; i < ret.length; i++) {
-    if(bookmarkTitle == ret[i].title) {
-      $("#add").addClass("ui-disabled");
-      $("#remove").removeClass("ui-disabled");
-    } else {
-      $("#remove").addClass("ui-disabled");
-      $("#add").removeClass("ui-disabled");
+  if (ret.length === 0) {
+    $("#bookmarklist").html("");
+    $("#add").removeClass("ui-disabled");
+    $("#remove").addClass("ui-disabled");
+  } else {
+    for(var i = 0; i < ret.length; i++) {
+      if(bookmarkTitle == ret[i].title) {
+        $("#add").addClass("ui-disabled");
+        $("#remove").removeClass("ui-disabled");
+      } else {
+        $("#remove").addClass("ui-disabled");
+        $("#add").removeClass("ui-disabled");
+      }
+      $("#bookmarklist").html("<p><a>" + ret[i].title + "</a></p>" + $("#bookmarklist").html());
     }
-    $("#bookmarklist").html("<p><a>" + ret[i].title + "</a></p>" + $("#bookmarklist").html());
   }
 }
 
-function remove() { 
-  var bookmark = new tizen.BookmarkItem(bookmarkTitle, bookmarkURL);
-  tizen.bookmark.remove(bookmark);
+function remove() {
+  tizen.bookmark.remove(bookmarkObj);
   show();
 }
 
