@@ -27,6 +27,7 @@ EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
 Authors:
         Li, Hao <haox.li@intel.com>
+        Zhang, Jing <jingx.zhang@intel.com>
 
 -->
 
@@ -47,12 +48,14 @@ Authors:
       <h1 id="main_page_title"></h1>
     </div>
     <div data-role="content">
+      <p>Below table is an ArrayBuffer which stores multiple typed array views, test pass if all the value default is 0 and can be set to 1.</p>  
       <div class="viewDiv">
         <table id="array1" cellspacing="0" cellpadding="0">
         </table>
       </div>
       <div id="buttondiv">
-        <a href="#" id="fillValue" data-role="button">Fill with 1</a>
+        <a href="#" id="setValue" data-role="button">Set Value</a>
+        <a href="#" id="getValue" data-role="button">Get Value</a>
       </div>
     </div>
     <div data-role="footer" data-position="fixed">
@@ -63,7 +66,8 @@ Authors:
         <p>Verifies the Typed Array can be created, set and got</p>
         <p>Test Steps: </p>
           <ol>
-            <li>Click the 'Fill with 1' button.</li>
+            <li>Click the 'Set Value' button.</li>
+            <li>Click the 'Get Value' button.</li>
           </ol>
         <p>Expected Result: </p>
         <p>Test passes if the array is initialized with 0 and can be filled to 1.</p>
