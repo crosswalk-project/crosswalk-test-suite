@@ -26,8 +26,17 @@ EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
 Authors:
         Wang, Hongjuan <hongjuanx.wang@intel.com>
+        Zhang, Jing <jingx.zhang@intel.com>
 
 */
+
+function result(text, color) {
+  var para=document.createElement("p");
+  var node=document.createTextNode(text);
+  para.appendChild(node);
+  document.getElementById("test1").appendChild(para);
+  document.getElementById("test1").style.color = color;
+}
 
 function doTest () {
   var ms;
@@ -44,9 +53,9 @@ function doTest () {
     ms = d.webkitMatchesSelector("div")
   }
   if (ms == true && s1.async == true) {
-    document.getElementById("test2").style.display = "block";
+    result("PASS", "green");
   } else {
-    di1.style.display = "block";
+    result("FAIL", "red");
   }
 }
 window.onload = doTest();
