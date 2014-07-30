@@ -3,6 +3,17 @@
 <test_definition>
   <suite name="tct-workers-w3c-tests" launcher="xwalk" category="W3C/HTML5 APIs">
     <set name="WebWorker">
+      <testcase purpose="Check if SharedWorkerNavigator.platform can return the name of the platform." type="compliance" status="approved" component="WebAPI/Performance and Optimization/Web Workers (Partial)" execution_type="auto" priority="P2" id="SharedWorkerNavigator_platform">
+        <description>
+          <test_script_entry timeout="90" test_script_expected_result="0">/opt/tct-workers-w3c-tests/workers/SharedWorkerNavigator_platform.html</test_script_entry>
+        </description>
+        <specs>
+          <spec>
+            <spec_assertion element_type="attribute" element_name="platform" interface="WorkerNavigator" specification="Web Workers (Partial)" section="Performance and Optimization" category="Tizen W3C API Specifications"/>
+            <spec_url>http://www.w3.org/TR/workers/</spec_url>
+          </spec>
+        </specs>
+      </testcase>
       <testcase purpose="Check if SharedWorkerLocation URL can decompose IDL attribute: pathname." type="compliance" status="approved" component="WebAPI/Performance and Optimization/Web Workers (Partial)" execution_type="auto" priority="P2" id="WebWorker_WorkerLocation_pathname_decompose">
         <description>
           <test_script_entry timeout="90" test_script_expected_result="0">/opt/tct-workers-w3c-tests/workers/WebWorker_WorkerLocation_pathname_decompose.html</test_script_entry>
@@ -120,17 +131,6 @@
         <specs>
           <spec>
             <spec_assertion element_type="attribute" element_name="appName" interface="WorkerNavigator" specification="Web Workers (Partial)" section="Performance and Optimization" category="Tizen W3C API Specifications"/>
-            <spec_url>http://www.w3.org/TR/workers/</spec_url>
-          </spec>
-        </specs>
-      </testcase>
-      <testcase purpose="Check if SharedWorkerNavigator.platform can return the name of the platform." type="compliance" status="approved" component="WebAPI/Performance and Optimization/Web Workers (Partial)" execution_type="auto" priority="P2" id="SharedWorkerNavigator_platform">
-        <description>
-          <test_script_entry timeout="90" test_script_expected_result="0">/opt/tct-workers-w3c-tests/workers/SharedWorkerNavigator_platform.html</test_script_entry>
-        </description>
-        <specs>
-          <spec>
-            <spec_assertion element_type="attribute" element_name="platform" interface="WorkerNavigator" specification="Web Workers (Partial)" section="Performance and Optimization" category="Tizen W3C API Specifications"/>
             <spec_url>http://www.w3.org/TR/workers/</spec_url>
           </spec>
         </specs>
