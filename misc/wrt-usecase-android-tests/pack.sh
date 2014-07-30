@@ -197,8 +197,8 @@ do
                 echo "This app not support android..."
                 continue
             fi
-            if [ "${build_subfolder:0:23}" == "permission_API_contacts" ];then
-                echo "build extension permission_API_contacts webapp..."
+            if [ "${build_subfolder:0:37}" == "testapp_extension_permission_contacts" ];then
+                echo "build extension permission_api_contacts webapp..."
                 python make_apk.py --package=org.xwalk.permission_api_contacts --name=$build_subfolder --app-root=$BUILD_DEST/opt/$name/$folderName/$buildfolder/$build_subfolder --app-local-path=index.html --extensions=$BUILD_DEST/opt/$name/$folderName/$buildfolder/$build_subfolder/contactextension --mode=$mode --arch=$arch
                 rmfile $build_subfolder
                 mv *.apk $BUILD_DEST/opt/$name/$folderName/$buildfolder

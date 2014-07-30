@@ -26,45 +26,46 @@ NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE,
 EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
 Authors:
-    Xu,Yuhan <yuhanx.xu@intel.com>
 
 -->
-
 <html>
   <head>
     <meta charset='utf-8'>
-    <title>schemes_check</title>
+    <title>testapp_extension_permission_contacts</title>
     <link rel="author" title="Intel" href="http://www.intel.com">
   </head>
-  <body leftmargin=30>
-   <strong><p> Purpose: </strong> </p> 
-    Validate the scheme 'app://', 'mailto:', 'market:', 'sms:', 'tel:', 'geo:'  
-    <p><strong>Pre_condition:</strong></p>   <ol>
-            <li>Make sure testapp_scheme.apk is installed;</li>
-            <li>Make sure at least one Map Application is installed on device such as google map;</li>
-            <li>Make sure network can be used. </li></ol>
-          
-    <p>
-      <strong>Test steps:</strong>
-    </p>
-    <ol>
-      <li>Click testapp_scheme app icon to launch the test app</li>
-      <li>Click the link of "geo" to launch map app</li>
-      <li>Click the link of "mailto" to launch email app</li>
-      <li>Click the link of "open market" to launch Market app</li>
-      <li>Click the link of "send sms" to launch message app</li>
-      <li>Click the link of "make call" to launch Tel app</li>
-    </ol>
-    <p>
-      <strong>Expected Output:</strong>
-    </p>
-    <ol>
-      <li>The app launched successfully</li>
-      <li>The map app could pop up after click the link</li>
-      <li>The email app could pop up after click the link</li>
-      <li>The Market app could pop up after click the link</li>
-      <li>The Sms app could pop up after click the link</li>
-      <li>The Tel app could pop up after click the link</li>
-    </ol>
-  </body>
-</html>
+<meta charset="utf-8">
+<body > <font size="4" face="Verdana">
+  <div id="test" style="color:black" >  <div style=border-style:solid ><p></p><p></p>Fail</p></div>
+  <script>
+      var t = document.getElementById('test');
+      try{
+          var contacts = navigator.contacts || xwalk.experimental.contacts;
+          contacts.clear().then(function () {}, function () {});
+          var contactName = new ContactName({
+              givenNames: ['John'],
+              familyNames: ['Doe']
+          });
+          var mobilePhone = new ContactTelField({
+              types: ['home'],
+              preferred: true,
+              value: '+34698765432'
+          });
+          var contact = new Contact({
+              name: contactName,
+              phoneNumbers: [mobilePhone]
+          });
+          contacts.addEventListener("contactschange", function (e) {
+              if (e.added[0]) {
+                  t.innerHTML = "Pass";
+                  t.style.color = "green";
+              }
+          });
+          contacts.save(contact).then(function () {}, function () {});
+      } catch (e) {}
+  </script><p></p>
+    <strong>Purpose:  </strong>
+      <p> Validate if enable the 'Contacts' permission </p>
+      <strong>Expected Output:</strong></p>
+    <p >Test passes if there is a "Pass" display in balck box</p></font>
+</body>
