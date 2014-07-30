@@ -16,7 +16,7 @@ fi
 type="apk"
 mode="shared"
 arch="x86"
-buildfolder=web_openfile_thirdpart_tests
+sourcepath="appsource"
 while getopts t:m:a: o
 do
     case "$o" in
@@ -135,7 +135,10 @@ cp -r $SRC_ROOT/../../tools/crosswalk $BUILD_ROOT/crosswalk
 cd $BUILD_ROOT/crosswalk
 python make_apk.py --package=org.xwalk.$appname --name=$appname --app-root=$BUILD_DEST --app-local-path=index.html --icon=$BUILD_DEST/icon.png --mode=$mode --arch=$arch
 
-python make_apk.py --package=org.xwalk.$buildfolder --name=$buildfolder --app-root=$BUILD_DEST/opt/$name/$buildfolder --app-local-path=index.html --mode=$mode --arch=$arch
+for buildfolder in `ls -l $BUILD_DEST/opt/$name/$sourcepath/ |grep "^d"|awk '{print $NF}'`
+do
+    python make_apk.py --package=org.xwalk.$buildfolder --name=$buildfolder --app-root=$BUILD_DEST/opt/$name/$sourcepath/$buildfolder --app-local-path=index.html --mode=$mode --arch=$arch
+done
 if [ $? -ne 0 ];then
     echo "Create $name.apk fail.... >>>>>>>>>>>>>>>>>>>>>>>>>"
     clean_workspace
