@@ -31,17 +31,18 @@ Authors:
 -->
 
 <meta charset="utf-8">
-<title>Web Features Test:scheme_content</title>
+<title>scheme_content</title>
 <link rel="author" title="Intel" href="http://www.intel.com">
 <link rel="help" href="">
 <meta name="flags" content="">
 <meta name="assert" content="Check if enable the scheme of content://.">
 <body leftmargin=30>
-<div style=border-style:solid>
- Image Id: <input type="text" id="imageId" />
+<div style=border-style:solid;text-align:center;margin-top:20px >
+    <p></p><p></p><font size="4" face="Verdana">
+ Image Id: <input type="text" id="imageId" /></font>
   <div style="margin-top: 10px">
     <a href="#" id="imageUri" onclick="return setImageId();">Open Image</a>
-  </div></div>
+  </div><p></p><p></p></div>
   <script>
       function setImageId() {
           var id = document.getElementById("imageId").value;
@@ -50,7 +51,7 @@ Authors:
       }
   </script>
       <p>
-    <strong>Purpose:</strong><p>   
+    <strong>Pre_condition:</strong><p>   
     <ol>
       <li>Make sure there is at least 1 image in the device.</li>
       <li>Connect the device to Ubuntu.</li>

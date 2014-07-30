@@ -24,7 +24,6 @@ usecase/wrt_webapp/webapp_xwalkhost/Makefile \
 usecase/wrt_webapp/webapp_video/Makefile \
 usecase/wrt_webapp/webapp_gesture/Makefile \
 usecase/wrt_webapp/webapp_openfile/Makefile \
-usecase/wrt_webapp/webapp_webglrtc/Makefile \
 usecase/wrt_webapp/webapp_manifest/Makefile \
 
 
@@ -34,13 +33,13 @@ usecase/wrt_splashscreen/splashscreen_png/Makefile \
 
 usecase/wrt_security/Makefile \
 usecase/wrt_security/security_urlcertificate/Makefile \
-usecase/wrt_security/testapp_extension_permission_contacts/Makefile \
-usecase/wrt_security/permission_API_contacts/Makefile \
-usecase/wrt_security/permission_API_contacts/contactextension/Makefile \
+usecase/wrt_security/permission_api_contacts/Makefile \
+
 
 usecase/wrt_extension/Makefile \
 usecase/wrt_extension/extension_and_permission/Makefile \
-
+usecase/wrt_extension/testapp_extension_permission_contacts/Makefile \
+usecase/wrt_extension/testapp_extension_permission_contacts/contactextension/Makefile \
 
 usecase/wrt_packertool/Makefile \
 usecase/wrt_packertool/packertool_options2/Makefile \
@@ -48,7 +47,6 @@ usecase/wrt_packertool/packertool_compressor/Makefile \
 usecase/wrt_packertool/packertool_compressor2/Makefile \
 usecase/wrt_packertool/packertool_help/Makefile \
 usecase/wrt_packertool/packertool_icon/Makefile \
-usecase/wrt_packertool/packertool_twopic/Makefile \
 usecase/wrt_packertool/packertool_options/Makefile \
 usecase/wrt_packertool/packertool_version/Makefile \
 usecase/wrt_packertool/packertool_xpk/Makefile \
