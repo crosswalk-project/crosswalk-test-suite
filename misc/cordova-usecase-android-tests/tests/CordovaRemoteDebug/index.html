@@ -50,19 +50,19 @@ Authors:
       <div id="testDiv">
         <p>Test Steps: </p>
         <ol>
-          <li>Unzip the 'crosswalk-cordova-xxx-arm.zip' -d localpath</li>
-          <li>Execute command: cd /localpath/crosswalk-cordova-xxx-arm</li>
-          <li>Execute command: ./bin/create remotedebugging com.example.remotedebugging RD --shared</li>
-          <li>Execute command: cd remotedebugging</li>
-          <li>Eidt /src/com/example/remotedebugging/RD.java
+          <li>Unzip the 'crosswalk-cordova-xxx-arm.zip'</li>
+          <li>Execute command: 'cd /localpath/crosswalk-cordova-xxx-arm'</li>
+          <li>Execute command: './bin/create remotedebugging com.example.remotedebugging RD --shared'</li>
+          <li>Execute command: 'cd remotedebugging'</li>
+          <li>Edit /src/com/example/remotedebugging/RD.java
             <ul>
               <li>Add this.appView.enableRemoteDebugging() after super.loadUrl("file:///android_asset/www/index.html")</li>
             </ul>
           </li>
-          <li>Execute command: ./cordova/build --debug</li>
-          <li>Execute the command: ./cordova/run</li>
-          <li>Open chrome://inspect on host chrome browser</li>
-          <li>Click inspect button</li>
+          <li>Execute command: './cordova/build --debug'</li>
+          <li>Execute command: './cordova/run'</li>
+          <li>Open 'chrome://inspect' on host chrome browser</li>
+          <li>Click 'inspect' button</li>
           <li>Click 'Sources' option</li>
           <li>Add a breakpoint</li>
           <li>Try to click "elements" button on top</li>
@@ -71,15 +71,15 @@ Authors:
           <li>Try to modify the code 'add or remove text'</li>
           <li>Check the page</li>
         </ol>
-        <p>Expect Results: </p>
+        <p>Expected Results: </p>
         <ol>
           <li>The unzip command execute successfully</li>
           <li>The cd command execute successfully</li>
           <li>The remotedebugging project created successfully</li>
           <li>Enter the remotedebugging file</li>
-          <li>The java file can be change</li>
+          <li>The java file could be changed</li>
           <li>Able to create 'mobilespec-debug.apk' under bin folder</li>
-          <li>The app can be built firstly, and then install and launch successfully</li>
+          <li>The app can built firstly, and then install and launch successfully</li>
           <li>The 'cordova_mobile_spec' app will be shown in the inspection page and the web app name correctly</li>
           <li>The 'cordova_mobile_spec' app source code will shown</li>
           <li>The Debug information on the right side, such as 'Breakpoints' 'DOM Breakpoints”</li>
@@ -88,7 +88,7 @@ Authors:
           <li>There will display shortcut menu</li>
           <li>There will display a edit box</li>
           <li>The source code could be changed</li>
-          <li>The change will be taked effect.</li>
+          <li>The change will be taked effect</li>
         </ol>
       </div>
     </div>
@@ -97,10 +97,10 @@ Authors:
     <div data-role="popup" id="popup_info" data-theme="a">
       <font class="fontSize">
         <p>Test Precondition: </p>
-        <p>Connect the Nexus mobile to the Linux PC with USB cable</p>
-        <p>The second number is the arm.zip version corresponding to chrome, the version must be consistent</p>
+        <p>Connect the android device to the Linux PC with USB cable;</p>
+        <p>The second number is the crosswalk-cordova-xxx-arm.zip version corresponding to chrome, the version must be consistent.</p>
         <p>Test Purpose: </p>
-        <p>Verifies the cordova package can be build, install and launch successfully.</p>
+        <p>Verify the Cordova package can remote debug successfully.</p>
         <p>Expected Result: </p>
         <p>Test passes if all the steps test passed.</p>
       </font>
