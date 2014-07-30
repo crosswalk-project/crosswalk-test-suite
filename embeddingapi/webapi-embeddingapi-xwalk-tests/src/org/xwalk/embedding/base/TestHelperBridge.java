@@ -8,10 +8,10 @@ import org.chromium.content.browser.test.util.TestCallbackHelperContainer.OnPage
 import org.chromium.content.browser.test.util.TestCallbackHelperContainer.OnPageStartedHelper;
 
 class TestHelperBridge {
-    
+
     private final OnPageStartedHelper mOnPageStartedHelper;
     private final OnPageFinishedHelper mOnPageFinishedHelper;
-    
+
     public TestHelperBridge() {
         mOnPageStartedHelper = new OnPageStartedHelper();
         mOnPageFinishedHelper = new OnPageFinishedHelper();
@@ -28,6 +28,5 @@ class TestHelperBridge {
     public void onPageFinished(String url) {
         mOnPageFinishedHelper.notifyCalled(url);
     }
-    
 
 }

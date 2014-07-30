@@ -13,12 +13,21 @@ type="apk"
 
 SRC_ROOT=$PWD
 
+# init
+function init_workspace(){
+    echo "init workspace... >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>"
+    cp libs/chromium/*.jar libs/
+    cp libs/testkit/*.jar libs/
+}
+
+
 # clean
 function clean_workspace(){
     echo "cleaning workspace... >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>"
-    rm -rf bin/ gen/ libs/
+    #rm -rf bin/ gen/ libs/
     rm local.properties build.xml project.properties
     rm -rf opt/
+    rm libs/*.jar
 }
 
 ## function for create apk ##
@@ -70,6 +79,9 @@ function zip_for_apk(){
         exit 1
     fi
 }
+
+## init workspace ##
+init_workspace
 
 ## create apk package ##
 case $type in
