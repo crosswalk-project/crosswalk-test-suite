@@ -32,7 +32,7 @@ are permitted provided that the following conditions are met:
 
 <html>
   <head>
-    <title>permission_API_contacts</title>
+    <title>testapp_extension_permission_contacts</title>
 
         
     <script type="text/javascript">
@@ -51,7 +51,8 @@ are permitted provided that the following conditions are met:
     </script>
   </head>
   <body leftmargin=30>
-  <div style=border-style:solid>
+  <div style=border-style:solid;margin-top:20px >
+    <p></p><p></p><font size="4" face="Verdana"> 
     <div><h3>Write to contact</h3></p>
       Name: <input type="text" id="writeName" value="Intel China" /><br>
       Phone: <input type="text" id="writePhone" value="8610-5751-8800" /><br>
@@ -60,7 +61,7 @@ are permitted provided that the following conditions are met:
     <div><h3>Read phone number by name</h3>
       Name: <input type="text" id="readName" value="Intel China" /><br>
       <p>Phone got from contact:&nbsp;&nbsp;<label id="showPhone" style="color:blue">no number</label></p>
-      <button type="button" onclick="readContact()">Read</button>
+      <button type="button" onclick="readContact()">Read</button> <p></p><p></p>
     </div></div>
     <strong><p>purpose:</strong></p>
          Validate the Crosswalk enable to extend 'READ_CONTACTS', 'WRITE_CONTACTS' permisson on Android
@@ -69,6 +70,7 @@ are permitted provided that the following conditions are met:
     <ol>
       <li>Click the "Write" button to write the contact info with the Name and Phone number.</li>
       <li>Click the "Read" button with writed contact Name to get the paired Phone number.</li>
+      <li>Please open native phone contacts, check the Contacts</li>
     </ol>
     <p>
       <strong>Expected Output:</strong>
@@ -76,6 +78,7 @@ are permitted provided that the following conditions are met:
     <ol>
       <li>The contact info was wrote into the telephone app.</li>
       <li>There display the contact Phone number correctly.</li>
-    </ol>    
+      <li>The new contact is add to Contacts</li>
+    </ol></font>    
   </body>
 </html>
