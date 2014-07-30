@@ -57,9 +57,11 @@ Authors:
         var div = document.querySelector("#test");
         var t = async_test(document.title, {timeout: 500});
         t.step(function () {
+            var originalColumnCount = GetCurrentStyle("column-count");
             div.style[headProp("column-count")] = "0";
             var colcount = GetCurrentStyle("column-count");
-            assert_equals(colcount, "0", "The div column-count");
+            // http://www.w3.org/TR/CSS2/syndata.html#illegalvalues states illegal values should be ignored.
+            assert_equals(colcount, originalColumnCount, "The div column-count");
         });
         t.done();
     </script>

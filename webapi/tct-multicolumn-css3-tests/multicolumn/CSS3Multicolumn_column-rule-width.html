@@ -39,7 +39,7 @@ Authors:
     <meta name="assert" content="Check if the content is divided into several columns,width of the border is 2px between each column" />
     <script src="../resources/testharness.js"></script>
     <script src="../resources/testharnessreport.js"></script>
-    <script src="support/user.js"></script>
+    <script src="support/cssstyle.js"></script>
     <style type="text/css">
         div.test {
             margin: 10px;
@@ -56,11 +56,11 @@ Authors:
         var div = document.querySelector("#test");
         var t = async_test(document.title, {timeout:500});
         t.step(function () {
-            div.style[headProp("columnRuleWidth")] = "2px";
+            div.style[headProp("column-rule-width")] = "2px";
             div.style[headProp("columns")] = "100px 3";
             div.style[headProp("column-rule-style")] = "dotted";
             div.style[headProp("column-rule-color")] = "rgb(255, 192, 203)";
-            var column_rule_width = GetCurrentStyle("columnRuleWidth");
+            var column_rule_width = GetCurrentStyle("column-rule-width");
             assert_equals(column_rule_width, "2px", "The div column-rule-width");
         });
         t.done();

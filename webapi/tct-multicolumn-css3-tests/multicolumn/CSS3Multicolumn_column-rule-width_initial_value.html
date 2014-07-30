@@ -39,7 +39,7 @@ Authors:
     <meta name="assert" content="Check if the initial value of column-rule-width is '3px' on test div" />
     <script src="../resources/testharness.js"></script>
     <script src="../resources/testharnessreport.js"></script>
-    <script src="support/user.js"></script>
+    <script src="support/cssstyle.js"></script>
     <style type="text/css">
             #test{
             height: 100px;
@@ -59,7 +59,7 @@ Authors:
         div.style[headProp("column-rule-color")] = "#F00";
         div.style[headProp("column-width")] = "150px";
         div.style[headProp("column-rule-style")] = "dotted";
-        var column_rule_width = GetCurrentStyle("columnRuleWidth");
+        var column_rule_width = GetCurrentStyle("column-rule-width");
         var t = async_test(document.title, {timeout: 500});
         t.step(function () {
             assert_equals(column_rule_width, "3px", "The div column-rule-width");

@@ -57,13 +57,13 @@ Authors:
         var div = document.querySelector("#test");
         var t = async_test(document.title, {timeout: 500});
         t.step(function () {
+            var originalColumnCount = GetCurrentStyle("column-count");
             div.style[headProp("columns")] = "auto 20px";
             var columnCount = GetCurrentStyle("column-count");
-            var propcolumnCount = columnCount.indexOf("auto") != -1;
-            assert_true(propcolumnCount, "The element column-count should not be auto");
+            assert_equals(columnCount, originalColumnCount, "The element column-count should not be 20px");
             var columnWidth = GetCurrentStyle("column-width");
             var propcolumnWidth = columnWidth.indexOf("auto") != -1;
-            assert_true(propcolumnWidth, "The element column-width should not be auto");
+            assert_false(propcolumnWidth, "The element column-width should be auto");
         });
         t.done();
     </script>
