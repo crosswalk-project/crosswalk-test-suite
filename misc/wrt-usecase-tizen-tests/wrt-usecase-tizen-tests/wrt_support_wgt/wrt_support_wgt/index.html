@@ -43,8 +43,7 @@ Authors:
       <strong>Test steps:</strong>
     </p>
     <ol>
-      <li>Launch original widget with terminal: "xwalk-launcher wgt_id"</li>
-      <li>Check the original webaapp</li>
+      <li>Check splah image when launch the app</li>
       <li>Install the sample widget with terminal: "xwalkctl --install wgt_sample_one.wgt"</li>
       <li>Install the update sample widget with terminal: "xwalkctl --install wgt_sample_two.wgt"</li>
       <li>Uninstall sample widget via terminal: "xwalkctl --uninstall wgt_id"</li>
@@ -53,8 +52,7 @@ Authors:
       <strong>Expected Output:</strong>
     </p>
     <ol>
-      <li>The widget be launched successfully,and splash screen image show/hide successfully</li>
-      <li>Webapp is fullscreen successfully</li>
+      <li>The splah image is showing when launch the webapp</li>
       <li>The widget be installed successfully,"sqlite3 /home/app/.config/xwalk-service/applications.db "select id,manifest from applications;"| grep app_id" the version is 2.2 </li>
       <li>The widget be installed successfully,"sqlite3 /home/app/.config/xwalk-service/applications.db "select id,manifest from applications;"| grep app_id" the version is 2.4 </li>
       <li>The widget be uninstalled successfully</li>
