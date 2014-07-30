@@ -1,4 +1,5 @@
-Copyright (c) 2014 Intel Corporation.
+/*
+Copyright (c) 2013 Intel Corporation.
 
 Redistribution and use in source and binary forms, with or without modification,
 are permitted provided that the following conditions are met:
@@ -22,3 +23,50 @@ DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY
 OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING
 NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE,
 EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
+
+Authors:
+        Xu,Yuhan <yuhanx.xu@intel.com>
+
+*/
+
+function testAlert(){
+    alert("just for test");
+}
+
+function accAdd(){
+    var x=1;
+    var y=2;
+
+    return x+y;
+}
+
+function accSub(){
+    var x=2;
+    var y=1;
+
+    return x-y;
+}
+
+function accMul(){
+    var x=2;
+    var y=3;
+
+    return x*y;
+}
+
+function accDiv(){
+    var x=10;
+    var y=2;
+
+    return x/y;
+}
+
+function accCom(){
+    var x=10;
+    var y=2;
+    var z;
+
+    z=x+y-x*y+x/y;
+
+    return x+accAdd()+accSub()-accMul()-accDiv();
+};
