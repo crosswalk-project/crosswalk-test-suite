@@ -87,7 +87,7 @@ function create_wgt(){
             sed -i "s/$old/$subTestName/" $BUILD_DEST/$subTestDir/manifest.json
             cd $BUILD_DEST/$subTestDir
             zip -rq $BUILD_DEST/opt/$name/$subTestName.wgt *
-        fi 
+        fi
     done
 
     if [ $? -ne 0 ];then
@@ -184,7 +184,7 @@ EOF
             sed -i "s/$old/$subTestName/" $BUILD_DEST/$subTestDir/manifest.json
             python make_xpk.py $BUILD_DEST/$subTestDir key${i}
             i=`expr $i + 1`
-        fi 
+        fi
     done
 
     if [ $? -ne 0 ];then
