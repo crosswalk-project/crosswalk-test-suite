@@ -33,15 +33,21 @@ Authors:
 $(document).ready(function(){
   var m = document.getElementById("media");
   var playVideo, endVideo;
+  
   $("#play").click(function(){
     m.play();
   });
   m.addEventListener("play", function() {
     playVideo = window.performance.now();
+    $("#playDiv").addClass("hideButton");
+    $("#play2Div").removeClass("hideButton");
+    $("#play2").button("disable");
   }, false);
 
    m.addEventListener("ended", function() {
     endVideo = window.performance.now();
     document.getElementById("testDiv").innerHTML = "The time for playing video: "+ Math.ceil(endVideo - playVideo) + "ms";
+    $("#play2Div").addClass("hideButton");
+    $("#playDiv").removeClass("hideButton");
   }, false);
 });
