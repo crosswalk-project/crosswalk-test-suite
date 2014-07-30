@@ -1,4 +1,4 @@
-AC_INIT([webapi-vehicleinfo-ivi-tests], [6.35.1.2], [zhiqiang.zhang@intel.com])
+AC_INIT([webapi-vehicleinfo-xwalk-tests], [6.35.1.2], [zhiqiang.zhang@intel.com])
 AM_INIT_AUTOMAKE([-Wall -Werror foreign])
 
 AC_CONFIG_FILES([Makefile \
