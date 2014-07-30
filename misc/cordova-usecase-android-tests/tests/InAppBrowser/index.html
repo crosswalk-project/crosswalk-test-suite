@@ -36,50 +36,40 @@ Authors:
   <meta name="viewport" content="initial-scale=1.0, maximum-scale=1.0, width=device-width" />
   <link rel="stylesheet" type="text/css" href="../../css/jquery.mobile.css" />
   <link rel="stylesheet" type="text/css" href="../../css/main.css" />
+  <link rel="stylesheet" type="text/css" href="css/style.css" />
   <script src="../../js/thirdparty/jquery.js"></script>
   <script src="../../js/thirdparty/jquery.mobile.js"></script>
   <script src="../../js/tests.js"></script>
   <script src="../../js/main.js"></script>
+  <script src="../../main.js"></script>
+  <script src="../../cordova.js"></script>
+  <script src="js/main.js"></script>
 </head>
-<body>
+<body onload="init();">
   <div data-role="page" id="main">
     <div data-role="header" data-position="fixed" data-tap-toggle="false">
       <h1 id="main_page_title"></h1>
     </div>
     <div id="content">
-      <div id="testDiv">
-        <p>Test Steps: </p>
-        <ol>
-          <li>Install 'mobilespec-debug.apk'</li>
-          <li>Launch the app</li>
-          <li>Run the 'Automatic' test</li>
-          <li>Run the 'Camera' test</li>
-          <li>Click all button</li>
-          <li>Select 'In App Browser' component</li>
-          <li>Click 'Default: CordovaWebView' or 'Target=Self:CordovaWebview' button</li>
-          <li>Click 'Check_out_my_local_PDF' Hyperlinks</li>
-        </ol>
-        <p>Expected Results: </p>
-        <ol>
-          <li>The app can install successfully</li>
-          <li>The app can launch successfully</li>
-          <li>The 'Automatic' test can run successfully</li>
-          <li>The 'Camera' test can run successfully</li>
-          <li>All button can work well</li>
-          <li>Enter the component successfully</li>
-          <li>Enter the local page</li>
-          <li>The link can open, no error</li>
-        </ol>
+      <div id="info">
+        Make sure http://www.google.com is white listed. </br>
+        Make sure http://www.apple.com is not in the white list.</br>  In iOS, starred <span style="vertical-align:super">*</span> tests will put the app in a state with no way to return.  </br>
+        <h4>User-Agent: <span id="user-agent"> </span></h4>
       </div>
+      <button onclick="doOpen('local.html');">target = Default</button>
+      <button onclick="doOpen('local.html', '_self');">target=_self</button>
     </div>
     <div data-role="footer" data-position="fixed" data-tap-toggle="false">
     </div>
     <div data-role="popup" id="popup_info" data-theme="a">
       <font class="fontSize">
+        <p>Test Precondition: </p>
+        <p>The android device can network.</p>
+        <p>The plugin inappbrowser and network-information have been installed.</p>
         <p>Test Purpose: </p>
-        <p>Verify the 'in app browser' component and 'automatic' of Cordova app can work well.</p>
+        <p>Verify the 'in app browser' can work well.</p>
         <p>Expected Result: </p>
-        <p>Test passes if all the steps test passed.</p>
+        <p>Test passes if all buttons can work well.</p>
       </font>
     </div>
   </div>
