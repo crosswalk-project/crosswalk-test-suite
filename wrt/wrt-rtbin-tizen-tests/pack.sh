@@ -27,7 +27,7 @@ do
     esac
 done
 
-if [[ $type == "wgt" || $type == "apk" || $type == "crx" || $type == "xpk" ]];then
+if [[ $type == "wgt" || $type == "apk" || $type == "crx" || $type == "xpk"  || $type=="pure" ]];then
     echo "Create package with $type and raw source"
 else
     echo "Sorry,$type is not support... >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>"
@@ -168,6 +168,55 @@ clean_workspace
 exit 1
 }
 
+function create_source_xpk(){
+cd $BUILD_ROOT/
+for buildfolder in `ls`
+do
+        cp $SRC_ROOT/../../tools/make_xpk.py $BUILD_ROOT/make_xpk.py
+        #echo "buildfolder" $buildfolder
+        if [ "${buildfolder:0:9}" == "manifest_" ];then
+            echo "Use --manifest to build..."
+            python make_xpk.py $BUILD_ROOT/$buildfolder/ k.pem
+            continue
+        fi
+done
+}
+
+function create_pure(){
+#create source xpk
+create_source_xpk
+mkdir $BUILD_DEST/opt/$name/source
+cp -r $BUILD_ROOT/*tests.xpk $BUILD_DEST/opt/$name/source
+if [ $? -ne 0 ];then
+    echo "Create $name.xpk fail.... >>>>>>>>>>>>>>>>>>>>>>>>>"
+    clean_workspace
+    exit 1
+fi
+}
+
+function zip_for_pure()
+{
+[ -e $SRC_ROOT/$name-$version.$type.zip ] && rm -rf $SRC_ROOT/$name-$version.$type.zip
+cd $BUILD_DEST
+if [ $src_file -eq 0 ];then
+    for file in $(ls opt/$name | grep -v zip);do
+        if [[ "${whitelist[@]}" =~ $file ]];then
+            echo "$file in whitelist,keep it..."
+        else
+            echo "Remove unnessary file:$file..."
+            rm -rf opt/$name/$file
+        fi
+    done
+fi
+cp -af $BUILD_ROOT/inst.sh.pure $BUILD_DEST/opt/$name/inst.sh
+zip -Drq $BUILD_DEST/$name-$version.$type.zip opt/
+if [ $? -ne 0 ];then
+    echo "Create zip package fail... >>>>>>>>>>>>>>>>>>>>>>>>>"
+    clean_workspace
+    exit 1
+fi
+}
+
 ## zip function ##
 function zip_for_wgt(){
 cd $BUILD_DEST
@@ -245,7 +294,7 @@ clean_workspace
 exit 1
 }
 
-## create wgt crx apk xpk and zip package ##
+## create wgt crx apk xpk pure and zip package ##
 case $type in
     wgt) create_wgt
          zip_for_wgt;;
@@ -255,6 +304,8 @@ case $type in
          zip_for_xpk;;
     crx) create_crx
          zip_for_crx;;
+    pure) create_pure
+          zip_for_pure;;
 esac
 
 
