@@ -29,9 +29,14 @@ Authors:
 */
 
 $(document).ready(function () {
-    var location = window.location;
-    $("#uri").text(location);
-    $("#protocol").text(location.protocol);
-    $("#origin").text(location.origin);
-    $("#pathname").text(location.pathname);
+  DisablePassButton();
 });
+
+function getURLInfo() {
+  EnablePassButton();
+  var location = window.location;
+  jQuery("#uri").text("AppURI: " + location);
+  jQuery("#protocol").text("Protocol: " + location.protocol);
+  jQuery("#origin").text("Origin: " + location.origin);
+  jQuery("#pathname").text("Pathname: " + location.pathname);
+}

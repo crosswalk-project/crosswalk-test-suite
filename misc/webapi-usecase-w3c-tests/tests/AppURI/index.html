@@ -41,29 +41,33 @@ Authors:
     <script src="../../js/tests.js"></script>
     <script src="js/main.js"></script>
   </head>
+  <style type="text/css">
+    .d{
+      border: 1px solid #000;
+      width:100%;
+      height:200px;
+    }
+    .d li{
+      margin: 10px 5px;
+    }
+  </style>
   <body>
+    <div data-role="page" id="main">
     <div data-role="header">
       <h1 id="main_page_title"></h1>
     </div>
-    <div id="content">
-      <ul data-role="listview">
-        <li data-role="list-divider">AppURI</li>
-        <li>
-          <textarea id="uri" readonly="readonly" style="height:90px"></textarea>
-        </li>
-        <li data-role="list-divider">Protocol</li>
-        <li>
-          <label id="protocol"></label>
-        </li>
-        <li data-role="list-divider">Origin</li>
-        <li>
-          <label id="origin"></label>
-        </li>
-        <li data-role="list-divider">Pathname</li>
-        <li>
-          <textarea id="pathname" readonly="readonly" style="height:90px"></textarea>
-        </li>
-      </ul>
+    <div data-role="content">
+      <div class="d">
+        <ul id="coordinate">
+          <li id="uri">AppURI: N/A</li>
+          <li id="protocol">Protocol: N/A</li>
+          <li id="origin">Origin: N/A</li>
+          <li id="pathname">Pathname: N/A</li>
+        </ul>
+      </div>
+      <div>
+        <a href="javascript:getURLInfo()" id="getURLInfo" data-role="button" class="opt">Get URL Info</a>
+      </div>
     </div>
     <div data-role="footer" data-position="fixed">
     </div>
