@@ -13,6 +13,5 @@ appsource/permission_field_one_tests/Makefile \
 appsource/permission_field_uppercase_tests/Makefile \
 appsource/webgl_webrtc_disable_tests/Makefile \
 appsource/webgl_webrtc_enable_tests/Makefile \
-appsource/web_scroll_indicators_tests/Makefile \
 resources/Makefile webrunner/Makefile])
 AC_OUTPUT
