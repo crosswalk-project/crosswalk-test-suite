@@ -1,6 +1,6 @@
 //FIXME: 
-var DOMAIN_FOR_WS_TESTS = location.hostname;
-var DOMAIN_FOR_WSS_TESTS = location.hostname;
+var DOMAIN_FOR_WS_TESTS = '127.0.0.1';
+var DOMAIN_FOR_WSS_TESTS = '127.0.0.1';
 
 var PORT = "8081";
 var PORT_SSL = "8443";
