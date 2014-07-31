@@ -42,25 +42,15 @@ function addViewport(content) {
   }
 }
 
-function result(expected) {
-  document.getElementById("test").innerText = expected;
-}
-
 function run() {
+  document.getElementById("btn1").onclick = function () {
+    addViewport("width=device-width, height=device-height");
+  }
   document.getElementById("btn2").onclick = function () {
-    addViewport(this.innerText);
-    result("The width and height of page should be same as the device, and not scale more smaller");
+    addViewport("initial-scale=2.0, user-scalable=no");
   }
   document.getElementById("btn3").onclick = function () {
-    addViewport(this.innerText);
-    result("The page will be scaled to bigger than the initial page, and not scalable");
-  }
-  document.getElementById("btn4").onclick = function () {
-    addViewport(this.innerText);
-    result("The page is scalable for 1~3 times if device support the scale");
-  }
-  document.getElementById("back").onclick = function () {
-    window.close();
+    addViewport("minimum-scale=1.0, maximum-scale=3.0, user-scalable=yes");
   }
 }
 

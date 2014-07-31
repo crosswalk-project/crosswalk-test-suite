@@ -33,17 +33,19 @@ Authors:
 <html>
   <head>
     <meta charset="utf-8"/>
+    <meta name="viewport" content="initial-scale=1.0, maximum-scale=1.0, width=device-width">
     <title>Viewport</title>
     <link rel="stylesheet" type="text/css" href="style.css" />
     <script src="support.js"></script>
   </head>
   <body onload="run()">
-    <div id="test">The initial page is no viewport, and maybe same with the viewport setting device-width and device-height, but scalable to smaller if device support the scale</div>
-    <div id="contorl">
-      <button id="btn2">width=device-width, height=device-height</button>
-      <button id="btn3">initial-scale=2.0, user-scalable=no</button>
-      <button id="btn4">minimum-scale=1.0, maximum-scale=3.0, user-scalable=yes</button>
-      <button id="back">Complete Test</button>
+    <div id="test">
+      <p>1. Test passes if the width and height of page should be same as the device, and not scale more smaller after set <viewport>with "width=device-width, height=device-height"</p>
+      <div class="contorl"><button id="btn1">Set viewport</button></div>
+      <p>2. Test passes if the page will be scaled to bigger than the initial page, and not scalable after set <viewport>with "initial-scale=2.0, user-scalable=no"</p>
+      <div class="contorl"><button id="btn2">Set viewport</button></div>
+      <p>3. Test passes if the page is scalable from 100% to 300% if device support the scale after set <viewport>with "minimum-scale=1.0, maximum-scale=3.0, user-scalable=yes"</p>
+      <div class="contorl"><button id="btn3">Set viewport</button></div>
     </div>
   </body>
 </html>
