@@ -67,5 +67,8 @@ appsource/manifest_version_pointcn_tests/Makefile \
 appsource/manifest_version_question_tests/Makefile \
 appsource/manifest_version_semicolon_tests/Makefile \
 appsource/splashscreen_launchscreen_field_tests/Makefile \
+appsource/manifest_desc_specific_tests/Makefile \
+appsource/manifest_icon_117pixel_tests/Makefile \
+appsource/manifest_icon_gif_tests/Makefile \
 resources/Makefile webrunner/Makefile])
 AC_OUTPUT
