@@ -1,0 +1,536 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-stylesheet type="text/xsl" href="./testcase.xsl"?>
+<test_definition>
+  <suite name="webapi-mediarenderer-xwalk-tests" launcher="xwalk" extension="crosswalk" category="Media Renderer API">
+    <set name="mediarenderer">
+      <testcase purpose="Check if readonly Navigator.mediaRenderer exists and type of object" type="compliance" status="approved" component="WebAPI/Media Renderer API/DLNA" execution_type="auto" priority="P1" id="Navigator_mediaRenderer">
+        <description>
+          <test_script_entry>/opt/webapi-mediarenderer-xwalk-tests/mediarenderer/Navigator_mediaRenderer.html</test_script_entry>
+        </description>
+        <specs>
+          <spec>
+            <spec_assertion element_type="interface" element_name="MediaRendererManager" interface="Navigator" specification="DLNA" section="W3C API Specifications" category="Media Renderer API"/>
+            <spec_url>http://01org.github.io/cloud-dleyna/mediarenderer.html#extensions-to-navigator-object</spec_url>
+            <spec_statement/>
+          </spec>
+        </specs>
+      </testcase>
+      <testcase purpose="Check if MediaRendererManager.scanNetwork exists and type of function" type="compliance" status="approved" component="WebAPI/Media Renderer API/DLNA" execution_type="auto" priority="P1" id="MediaRendererManager_scanNetwork">
+        <description>
+          <test_script_entry>/opt/webapi-mediarenderer-xwalk-tests/mediarenderer/MediaRendererManager.html?total_num=3&amp;amp;locator_key=id&amp;amp;value=1</test_script_entry>
+        </description>
+        <specs>
+          <spec>
+            <spec_assertion element_type="property" element_name="scanNetwork" interface="MediaRendererManager" specification="DLNA" section="W3C API Specifications" category="Media Renderer API"/>
+            <spec_url>http://01org.github.io/cloud-dleyna/mediarenderer.html#mediarenderermanager-interface</spec_url>
+            <spec_statement/>
+          </spec>
+        </specs>
+      </testcase>
+      <testcase purpose="Check if MediaRendererManager.onrendererfound exists and type of event" type="compliance" status="approved" component="WebAPI/Media Renderer API/DLNA" execution_type="auto" priority="P1" id="MediaRendererManager_onrendererfound">
+        <description>
+          <test_script_entry>/opt/webapi-mediarenderer-xwalk-tests/mediarenderer/MediaRendererManager.html?total_num=3&amp;amp;locator_key=id&amp;amp;value=2</test_script_entry>
+        </description>
+        <specs>
+          <spec>
+            <spec_assertion element_type="property" element_name="onrendererfound" interface="MediaRendererManager" specification="DLNA" section="W3C API Specifications" category="Media Renderer API"/>
+            <spec_url>http://01org.github.io/cloud-dleyna/mediarenderer.html#mediarenderermanager-interface</spec_url>
+            <spec_statement/>
+          </spec>
+        </specs>
+      </testcase>
+      <testcase purpose="Check if MediaRendererManager.onrendererlost exists and type of event" type="compliance" status="approved" component="WebAPI/Media Renderer API/DLNA" execution_type="auto" priority="P1" id="MediaRendererManager_onrendererlost">
+        <description>
+          <test_script_entry>/opt/webapi-mediarenderer-xwalk-tests/mediarenderer/MediaRendererManager.html?total_num=3&amp;amp;locator_key=id&amp;amp;value=3</test_script_entry>
+        </description>
+        <specs>
+          <spec>
+            <spec_assertion element_type="property" element_name="onrendererlost" interface="MediaRendererManager" specification="DLNA" section="W3C API Specifications" category="Media Renderer API"/>
+            <spec_url>http://01org.github.io/cloud-dleyna/mediarenderer.html#mediarenderermanager-interface</spec_url>
+            <spec_statement/>
+          </spec>
+        </specs>
+      </testcase>
+      <testcase purpose="Check if the readonly attribute renderer of MediaRendererEvent exists and type of MediaRenderer" type="compliance" status="approved" component="WebAPI/Media Renderer API/DLNA" execution_type="auto" priority="P1" id="MediaRendererEvent_renderer">
+        <description>
+          <test_script_entry>/opt/webapi-mediarenderer-xwalk-tests/mediarenderer/MediaRendererEvent_renderer.html</test_script_entry>
+        </description>
+        <specs>
+          <spec>
+            <spec_assertion element_type="property" element_name="renderer" interface="MediaRendererEvent" specification="DLNA" section="W3C API Specifications" category="Media Renderer API"/>
+            <spec_url>http://01org.github.io/cloud-dleyna/mediarenderer.html#mediarendererevent-interface</spec_url>
+            <spec_statement/>
+          </spec>
+        </specs>
+      </testcase>
+      <testcase purpose="Check if the readonly attribute id of MediaRendererIdEvent exists and type of string" type="compliance" status="approved" component="WebAPI/Media Renderer API/DLNA" execution_type="auto" priority="P1" id="MediaRendererIdEvent_id">
+        <description>
+          <test_script_entry>/opt/webapi-mediarenderer-xwalk-tests/mediarenderer/MediaRendererIdEvent_id.html</test_script_entry>
+        </description>
+        <specs>
+          <spec>
+            <spec_assertion element_type="property" element_name="id" interface="MediaRendererIdEvent" specification="DLNA" section="W3C API Specifications" category="Media Renderer API"/>
+            <spec_url>http://01org.github.io/cloud-dleyna/mediarenderer.html#mediarendereridevent-interface</spec_url>
+            <spec_statement/>
+          </spec>
+        </specs>
+      </testcase>
+      <testcase purpose="Check if readonly MediaRenderer.id exists and type of string" type="compliance" status="approved" component="WebAPI/Media Renderer API/DLNA" execution_type="auto" priority="P1" id="MediaRenderer_id">
+        <description>
+          <test_script_entry>/opt/webapi-mediarenderer-xwalk-tests/mediarenderer/MediaRenderer.html?total_num=17&amp;amp;locator_key=id&amp;amp;value=1</test_script_entry>
+        </description>
+        <specs>
+          <spec>
+            <spec_assertion element_type="property" element_name="id" interface="MediaRenderer" specification="DLNA" section="W3C API Specifications" category="Media Renderer API"/>
+            <spec_url>http://01org.github.io/cloud-dleyna/mediarenderer.html#mediarenderer-interface</spec_url>
+            <spec_statement/>
+          </spec>
+        </specs>
+      </testcase>
+      <testcase purpose="Check if readonly MediaRenderer.friendlyName exists and type of string" type="compliance" status="approved" component="WebAPI/Media Renderer API/DLNA" execution_type="auto" priority="P1" id="MediaRenderer_friendlyName">
+        <description>
+          <test_script_entry>/opt/webapi-mediarenderer-xwalk-tests/mediarenderer/MediaRenderer.html?total_num=17&amp;amp;locator_key=id&amp;amp;value=2</test_script_entry>
+        </description>
+        <specs>
+          <spec>
+            <spec_assertion element_type="property" element_name="friendlyName" interface="MediaRenderer" specification="DLNA" section="W3C API Specifications" category="Media Renderer API"/>
+            <spec_url>http://01org.github.io/cloud-dleyna/mediarenderer.html#mediarenderer-interface</spec_url>
+            <spec_statement/>
+          </spec>
+        </specs>
+      </testcase>
+      <testcase purpose="Check if readonly MediaRenderer.manufacturer exists and type of string" type="compliance" status="approved" component="WebAPI/Media Renderer API/DLNA" execution_type="auto" priority="P1" id="MediaRenderer_manufacturer">
+        <description>
+          <test_script_entry>/opt/webapi-mediarenderer-xwalk-tests/mediarenderer/MediaRenderer.html?total_num=17&amp;amp;locator_key=id&amp;amp;value=3</test_script_entry>
+        </description>
+        <specs>
+          <spec>
+            <spec_assertion element_type="property" element_name="manufacturer" interface="MediaRenderer" specification="DLNA" section="W3C API Specifications" category="Media Renderer API"/>
+            <spec_url>http://01org.github.io/cloud-dleyna/mediarenderer.html#mediarenderer-interface</spec_url>
+            <spec_statement/>
+          </spec>
+        </specs>
+      </testcase>
+      <testcase purpose="Check if readonly MediaRenderer.manufacturerURL exists and type of string" type="compliance" status="approved" component="WebAPI/Media Renderer API/DLNA" execution_type="auto" priority="P1" id="MediaRenderer_manufacturerURL">
+        <description>
+          <test_script_entry>/opt/webapi-mediarenderer-xwalk-tests/mediarenderer/MediaRenderer.html?total_num=17&amp;amp;locator_key=id&amp;amp;value=4</test_script_entry>
+        </description>
+        <specs>
+          <spec>
+            <spec_assertion element_type="property" element_name="manufacturerURL" interface="MediaRenderer" specification="DLNA" section="W3C API Specifications" category="Media Renderer API"/>
+            <spec_url>http://01org.github.io/cloud-dleyna/mediarenderer.html#mediarenderer-interface</spec_url>
+            <spec_statement/>
+          </spec>
+        </specs>
+      </testcase>
+      <testcase purpose="Check if readonly MediaRenderer.modelDescription exists and type of string" type="compliance" status="approved" component="WebAPI/Media Renderer API/DLNA" execution_type="auto" priority="P1" id="MediaRenderer_modelDescription">
+        <description>
+          <test_script_entry>/opt/webapi-mediarenderer-xwalk-tests/mediarenderer/MediaRenderer.html?total_num=17&amp;amp;locator_key=id&amp;amp;value=5</test_script_entry>
+        </description>
+        <specs>
+          <spec>
+            <spec_assertion element_type="property" element_name="modelDescription" interface="MediaRenderer" specification="DLNA" section="W3C API Specifications" category="Media Renderer API"/>
+            <spec_url>http://01org.github.io/cloud-dleyna/mediarenderer.html#mediarenderer-interface</spec_url>
+            <spec_statement/>
+          </spec>
+        </specs>
+      </testcase>
+      <testcase purpose="Check if readonly MediaRenderer.modelName exists and type of string" type="compliance" status="approved" component="WebAPI/Media Renderer API/DLNA" execution_type="auto" priority="P1" id="MediaRenderer_modelName">
+        <description>
+          <test_script_entry>/opt/webapi-mediarenderer-xwalk-tests/mediarenderer/MediaRenderer.html?total_num=17&amp;amp;locator_key=id&amp;amp;value=6</test_script_entry>
+        </description>
+        <specs>
+          <spec>
+            <spec_assertion element_type="property" element_name="modelName" interface="MediaRenderer" specification="DLNA" section="W3C API Specifications" category="Media Renderer API"/>
+            <spec_url>http://01org.github.io/cloud-dleyna/mediarenderer.html#mediarenderer-interface</spec_url>
+            <spec_statement/>
+          </spec>
+        </specs>
+      </testcase>
+      <testcase purpose="Check if readonly MediaRenderer.modelNumber exists and type of string" type="compliance" status="approved" component="WebAPI/Media Renderer API/DLNA" execution_type="auto" priority="P1" id="MediaRenderer_modelNumber">
+        <description>
+          <test_script_entry>/opt/webapi-mediarenderer-xwalk-tests/mediarenderer/MediaRenderer.html?total_num=17&amp;amp;locator_key=id&amp;amp;value=7</test_script_entry>
+        </description>
+        <specs>
+          <spec>
+            <spec_assertion element_type="property" element_name="modelNumber" interface="MediaRenderer" specification="DLNA" section="W3C API Specifications" category="Media Renderer API"/>
+            <spec_url>http://01org.github.io/cloud-dleyna/mediarenderer.html#mediarenderer-interface</spec_url>
+            <spec_statement/>
+          </spec>
+        </specs>
+      </testcase>
+      <testcase purpose="Check if readonly MediaRenderer.serialNumber exists and type of string" type="compliance" status="approved" component="WebAPI/Media Renderer API/DLNA" execution_type="auto" priority="P1" id="MediaRenderer_serialNumber">
+        <description>
+          <test_script_entry>/opt/webapi-mediarenderer-xwalk-tests/mediarenderer/MediaRenderer.html?total_num=17&amp;amp;locator_key=id&amp;amp;value=8</test_script_entry>
+        </description>
+        <specs>
+          <spec>
+            <spec_assertion element_type="property" element_name="serialNumber" interface="MediaRenderer" specification="DLNA" section="W3C API Specifications" category="Media Renderer API"/>
+            <spec_url>http://01org.github.io/cloud-dleyna/mediarenderer.html#mediarenderer-interface</spec_url>
+            <spec_statement/>
+          </spec>
+        </specs>
+      </testcase>
+      <testcase purpose="Check if readonly MediaRenderer.UDN exists and type of string" type="compliance" status="approved" component="WebAPI/Media Renderer API/DLNA" execution_type="auto" priority="P1" id="MediaRenderer_UDN">
+        <description>
+          <test_script_entry>/opt/webapi-mediarenderer-xwalk-tests/mediarenderer/MediaRenderer.html?total_num=17&amp;amp;locator_key=id&amp;amp;value=9</test_script_entry>
+        </description>
+        <specs>
+          <spec>
+            <spec_assertion element_type="property" element_name="UDN" interface="MediaRenderer" specification="DLNA" section="W3C API Specifications" category="Media Renderer API"/>
+            <spec_url>http://01org.github.io/cloud-dleyna/mediarenderer.html#mediarenderer-interface</spec_url>
+            <spec_statement/>
+          </spec>
+        </specs>
+      </testcase>
+      <testcase purpose="Check if readonly MediaRenderer.presentationURL exists and type of string" type="compliance" status="approved" component="WebAPI/Media Renderer API/DLNA" execution_type="auto" priority="P1" id="MediaRenderer_presentationURL">
+        <description>
+          <test_script_entry>/opt/webapi-mediarenderer-xwalk-tests/mediarenderer/MediaRenderer.html?total_num=17&amp;amp;locator_key=id&amp;amp;value=10</test_script_entry>
+        </description>
+        <specs>
+          <spec>
+            <spec_assertion element_type="property" element_name="presentationURL" interface="MediaRenderer" specification="DLNA" section="W3C API Specifications" category="Media Renderer API"/>
+            <spec_url>http://01org.github.io/cloud-dleyna/mediarenderer.html#mediarenderer-interface</spec_url>
+            <spec_statement/>
+          </spec>
+        </specs>
+      </testcase>
+      <testcase purpose="Check if readonly MediaRenderer.iconURL exists and type of string" type="compliance" status="approved" component="WebAPI/Media Renderer API/DLNA" execution_type="auto" priority="P1" id="MediaRenderer_iconURL">
+        <description>
+          <test_script_entry>/opt/webapi-mediarenderer-xwalk-tests/mediarenderer/MediaRenderer.html?total_num=17&amp;amp;locator_key=id&amp;amp;value=11</test_script_entry>
+        </description>
+        <specs>
+          <spec>
+            <spec_assertion element_type="property" element_name="iconURL" interface="MediaRenderer" specification="DLNA" section="W3C API Specifications" category="Media Renderer API"/>
+            <spec_url>http://01org.github.io/cloud-dleyna/mediarenderer.html#mediarenderer-interface</spec_url>
+            <spec_statement/>
+          </spec>
+        </specs>
+      </testcase>
+      <testcase purpose="Check if readonly MediaRenderer.deviceType exists and type of string" type="compliance" status="approved" component="WebAPI/Media Renderer API/DLNA" execution_type="auto" priority="P1" id="MediaRenderer_deviceType">
+        <description>
+          <test_script_entry>/opt/webapi-mediarenderer-xwalk-tests/mediarenderer/MediaRenderer.html?total_num=17&amp;amp;locator_key=id&amp;amp;value=12</test_script_entry>
+        </description>
+        <specs>
+          <spec>
+            <spec_assertion element_type="property" element_name="deviceType" interface="MediaRenderer" specification="DLNA" section="W3C API Specifications" category="Media Renderer API"/>
+            <spec_url>http://01org.github.io/cloud-dleyna/mediarenderer.html#mediarenderer-interface</spec_url>
+            <spec_statement/>
+          </spec>
+        </specs>
+      </testcase>
+      <testcase purpose="Check if readonly MediaRenderer.protocolInfo exists and type of string" type="compliance" status="approved" component="WebAPI/Media Renderer API/DLNA" execution_type="auto" priority="P1" id="MediaRenderer_protocolInfo">
+        <description>
+          <test_script_entry>/opt/webapi-mediarenderer-xwalk-tests/mediarenderer/MediaRenderer.html?total_num=17&amp;amp;locator_key=id&amp;amp;value=13</test_script_entry>
+        </description>
+        <specs>
+          <spec>
+            <spec_assertion element_type="property" element_name="protocolInfo" interface="MediaRenderer" specification="DLNA" section="W3C API Specifications" category="Media Renderer API"/>
+            <spec_url>http://01org.github.io/cloud-dleyna/mediarenderer.html#mediarenderer-interface</spec_url>
+            <spec_statement/>
+          </spec>
+        </specs>
+      </testcase>
+      <testcase purpose="Check if readonly MediaRenderer.controller exists and type of mediaController" type="compliance" status="approved" component="WebAPI/Media Renderer API/DLNA" execution_type="auto" priority="P1" id="MediaRenderer_controller">
+        <description>
+          <test_script_entry>/opt/webapi-mediarenderer-xwalk-tests/mediarenderer/MediaRenderer.html?total_num=17&amp;amp;locator_key=id&amp;amp;value=14</test_script_entry>
+        </description>
+        <specs>
+          <spec>
+            <spec_assertion element_type="property" element_name="controller" interface="MediaRenderer" specification="DLNA" section="W3C API Specifications" category="Media Renderer API"/>
+            <spec_url>http://01org.github.io/cloud-dleyna/mediarenderer.html#mediarenderer-interface</spec_url>
+            <spec_statement/>
+          </spec>
+        </specs>
+      </testcase>
+      <testcase purpose="Check if MediaRenderer.openURI exists and type of function" type="compliance" status="approved" component="WebAPI/Media Renderer API/DLNA" execution_type="auto" priority="P1" id="MediaRenderer_openURI">
+        <description>
+          <test_script_entry>/opt/webapi-mediarenderer-xwalk-tests/mediarenderer/MediaRenderer.html?total_num=17&amp;amp;locator_key=id&amp;amp;value=15</test_script_entry>
+        </description>
+        <specs>
+          <spec>
+            <spec_assertion element_type="method" element_name="openURI" interface="MediaRenderer" specification="DLNA" section="W3C API Specifications" category="Media Renderer API"/>
+            <spec_url>http://01org.github.io/cloud-dleyna/mediarenderer.html#mediarenderer-interface</spec_url>
+            <spec_statement/>
+          </spec>
+        </specs>
+      </testcase>
+      <testcase purpose="Check if MediaRenderer.prefetchURI exists and type of function" type="compliance" status="approved" component="WebAPI/Media Renderer API/DLNA" execution_type="auto" priority="P1" id="MediaRenderer_prefetchURI">
+        <description>
+          <test_script_entry>/opt/webapi-mediarenderer-xwalk-tests/mediarenderer/MediaRenderer.html?total_num=17&amp;amp;locator_key=id&amp;amp;value=16</test_script_entry>
+        </description>
+        <specs>
+          <spec>
+            <spec_assertion element_type="method" element_name="prefetchURI" interface="MediaRenderer" specification="DLNA" section="W3C API Specifications" category="Media Renderer API"/>
+            <spec_url>http://01org.github.io/cloud-dleyna/mediarenderer.html#mediarenderer-interface</spec_url>
+            <spec_statement/>
+          </spec>
+        </specs>
+      </testcase>
+      <testcase purpose="Check if MediaRenderer.cancel exists and type of function" type="compliance" status="approved" component="WebAPI/Media Renderer API/DLNA" execution_type="auto" priority="P1" id="MediaRenderer_cancel">
+        <description>
+          <test_script_entry>/opt/webapi-mediarenderer-xwalk-tests/mediarenderer/MediaRenderer.html?total_num=17&amp;amp;locator_key=id&amp;amp;value=17</test_script_entry>
+        </description>
+        <specs>
+          <spec>
+            <spec_assertion element_type="method" element_name="cancel" interface="MediaRenderer" specification="DLNA" section="W3C API Specifications" category="Media Renderer API"/>
+            <spec_url>http://01org.github.io/cloud-dleyna/mediarenderer.html#mediarenderer-interface</spec_url>
+            <spec_statement/>
+          </spec>
+        </specs>
+      </testcase>
+      <testcase purpose="Check if readonly MediaController.playbackStatus exists and type of playbackStatus" type="compliance" status="approved" component="WebAPI/Media Renderer API/DLNA" execution_type="auto" priority="P1" id="MediaController_playbackStatus">
+        <description>
+          <test_script_entry>/opt/webapi-mediarenderer-xwalk-tests/mediarenderer/MediaController.html?total_num=16&amp;amp;locator_key=id&amp;amp;value=1</test_script_entry>
+        </description>
+        <specs>
+          <spec>
+            <spec_assertion element_type="property" element_name="playbackStatus" interface="MediaController" specification="DLNA" section="W3C API Specifications" category="Media Renderer API"/>
+            <spec_url>http://01org.github.io/cloud-dleyna/mediarenderer.html#mediacontroller-interface</spec_url>
+            <spec_statement/>
+          </spec>
+        </specs>
+      </testcase>
+      <testcase purpose="Check if readonly MediaController.muted exists and type of boolean" type="compliance" status="approved" component="WebAPI/Media Renderer API/DLNA" execution_type="auto" priority="P1" id="MediaController_muted">
+        <description>
+          <test_script_entry>/opt/webapi-mediarenderer-xwalk-tests/mediarenderer/MediaController.html?total_num=16&amp;amp;locator_key=id&amp;amp;value=2</test_script_entry>
+        </description>
+        <specs>
+          <spec>
+            <spec_assertion element_type="property" element_name="muted" interface="MediaController" specification="DLNA" section="W3C API Specifications" category="Media Renderer API"/>
+            <spec_url>http://01org.github.io/cloud-dleyna/mediarenderer.html#mediacontroller-interface</spec_url>
+            <spec_statement/>
+          </spec>
+        </specs>
+      </testcase>
+      <testcase purpose="Check if readonly MediaController.volume exists and type of number" type="compliance" status="approved" component="WebAPI/Media Renderer API/DLNA" execution_type="auto" priority="P1" id="MediaController_volume">
+        <description>
+          <test_script_entry>/opt/webapi-mediarenderer-xwalk-tests/mediarenderer/MediaController.html?total_num=16&amp;amp;locator_key=id&amp;amp;value=3</test_script_entry>
+        </description>
+        <specs>
+          <spec>
+            <spec_assertion element_type="property" element_name="volume" interface="MediaController" specification="DLNA" section="W3C API Specifications" category="Media Renderer API"/>
+            <spec_url>http://01org.github.io/cloud-dleyna/mediarenderer.html#mediacontroller-interface</spec_url>
+            <spec_statement/>
+          </spec>
+        </specs>
+      </testcase>
+      <testcase purpose="Check if readonly MediaController.track exists and type of number" type="compliance" status="approved" component="WebAPI/Media Renderer API/DLNA" execution_type="auto" priority="P1" id="MediaController_track">
+        <description>
+          <test_script_entry>/opt/webapi-mediarenderer-xwalk-tests/mediarenderer/MediaController.html?total_num=16&amp;amp;locator_key=id&amp;amp;value=4</test_script_entry>
+        </description>
+        <specs>
+          <spec>
+            <spec_assertion element_type="property" element_name="track" interface="MediaController" specification="DLNA" section="W3C API Specifications" category="Media Renderer API"/>
+            <spec_url>http://01org.github.io/cloud-dleyna/mediarenderer.html#mediacontroller-interface</spec_url>
+            <spec_statement/>
+          </spec>
+        </specs>
+      </testcase>
+      <testcase purpose="Check if readonly MediaController.speed exists and type of number" type="compliance" status="approved" component="WebAPI/Media Renderer API/DLNA" execution_type="auto" priority="P1" id="MediaController_speed">
+        <description>
+          <test_script_entry>/opt/webapi-mediarenderer-xwalk-tests/mediarenderer/MediaController.html?total_num=16&amp;amp;locator_key=id&amp;amp;value=5</test_script_entry>
+        </description>
+        <specs>
+          <spec>
+            <spec_assertion element_type="property" element_name="speed" interface="MediaController" specification="DLNA" section="W3C API Specifications" category="Media Renderer API"/>
+            <spec_url>http://01org.github.io/cloud-dleyna/mediarenderer.html#mediacontroller-interface</spec_url>
+            <spec_statement/>
+          </spec>
+        </specs>
+      </testcase>
+      <testcase purpose="Check if readonly MediaController.playSpeeds exists and type of number" type="compliance" status="approved" component="WebAPI/Media Renderer API/DLNA" execution_type="auto" priority="P1" id="MediaController_playSpeeds">
+        <description>
+          <test_script_entry>/opt/webapi-mediarenderer-xwalk-tests/mediarenderer/MediaController.html?total_num=16&amp;amp;locator_key=id&amp;amp;value=6</test_script_entry>
+        </description>
+        <specs>
+          <spec>
+            <spec_assertion element_type="property" element_name="playSpeeds" interface="MediaController" specification="DLNA" section="W3C API Specifications" category="Media Renderer API"/>
+            <spec_url>http://01org.github.io/cloud-dleyna/mediarenderer.html#mediacontroller-interface</spec_url>
+            <spec_statement/>
+          </spec>
+        </specs>
+      </testcase>
+      <testcase purpose="Check if MediaController.play exists and type of function" type="compliance" status="approved" component="WebAPI/Media Renderer API/DLNA" execution_type="auto" priority="P1" id="MediaController_play">
+        <description>
+          <test_script_entry>/opt/webapi-mediarenderer-xwalk-tests/mediarenderer/MediaController.html?total_num=16&amp;amp;locator_key=id&amp;amp;value=7</test_script_entry>
+        </description>
+        <specs>
+          <spec>
+            <spec_assertion element_type="method" element_name="play" interface="MediaController" specification="DLNA" section="W3C API Specifications" category="Media Renderer API"/>
+            <spec_url>http://01org.github.io/cloud-dleyna/mediarenderer.html#mediacontroller-interface</spec_url>
+            <spec_statement/>
+          </spec>
+        </specs>
+      </testcase>
+      <testcase purpose="Check if MediaController.pause exists and type of function" type="compliance" status="approved" component="WebAPI/Media Renderer API/DLNA" execution_type="auto" priority="P1" id="MediaController_pause">
+        <description>
+          <test_script_entry>/opt/webapi-mediarenderer-xwalk-tests/mediarenderer/MediaController.html?total_num=16&amp;amp;locator_key=id&amp;amp;value=8</test_script_entry>
+        </description>
+        <specs>
+          <spec>
+            <spec_assertion element_type="method" element_name="pause" interface="MediaController" specification="DLNA" section="W3C API Specifications" category="Media Renderer API"/>
+            <spec_url>http://01org.github.io/cloud-dleyna/mediarenderer.html#mediacontroller-interface</spec_url>
+            <spec_statement/>
+          </spec>
+        </specs>
+      </testcase>
+      <testcase purpose="Check if MediaController.stop exists and type of function" type="compliance" status="approved" component="WebAPI/Media Renderer API/DLNA" execution_type="auto" priority="P1" id="MediaController_stop">
+        <description>
+          <test_script_entry>/opt/webapi-mediarenderer-xwalk-tests/mediarenderer/MediaController.html?total_num=16&amp;amp;locator_key=id&amp;amp;value=9</test_script_entry>
+        </description>
+        <specs>
+          <spec>
+            <spec_assertion element_type="method" element_name="stop" interface="MediaController" specification="DLNA" section="W3C API Specifications" category="Media Renderer API"/>
+            <spec_url>http://01org.github.io/cloud-dleyna/mediarenderer.html#mediacontroller-interface</spec_url>
+            <spec_statement/>
+          </spec>
+        </specs>
+      </testcase>
+      <testcase purpose="Check if MediaController.next exists and type of function" type="compliance" status="approved" component="WebAPI/Media Renderer API/DLNA" execution_type="auto" priority="P1" id="MediaController_next">
+        <description>
+          <test_script_entry>/opt/webapi-mediarenderer-xwalk-tests/mediarenderer/MediaController.html?total_num=16&amp;amp;locator_key=id&amp;amp;value=10</test_script_entry>
+        </description>
+        <specs>
+          <spec>
+            <spec_assertion element_type="method" element_name="next" interface="MediaController" specification="DLNA" section="W3C API Specifications" category="Media Renderer API"/>
+            <spec_url>http://01org.github.io/cloud-dleyna/mediarenderer.html#mediacontroller-interface</spec_url>
+            <spec_statement/>
+          </spec>
+        </specs>
+      </testcase>
+      <testcase purpose="Check if MediaController.previous exists and type of function" type="compliance" status="approved" component="WebAPI/Media Renderer API/DLNA" execution_type="auto" priority="P1" id="MediaController_previous">
+        <description>
+          <test_script_entry>/opt/webapi-mediarenderer-xwalk-tests/mediarenderer/MediaController.html?total_num=16&amp;amp;locator_key=id&amp;amp;value=11</test_script_entry>
+        </description>
+        <specs>
+          <spec>
+            <spec_assertion element_type="method" element_name="previous" interface="MediaController" specification="DLNA" section="W3C API Specifications" category="Media Renderer API"/>
+            <spec_url>http://01org.github.io/cloud-dleyna/mediarenderer.html#mediacontroller-interface</spec_url>
+            <spec_statement/>
+          </spec>
+        </specs>
+      </testcase>
+      <testcase purpose="Check if MediaController.mute exists and type of function" type="compliance" status="approved" component="WebAPI/Media Renderer API/DLNA" execution_type="auto" priority="P1" id="MediaController_mute">
+        <description>
+          <test_script_entry>/opt/webapi-mediarenderer-xwalk-tests/mediarenderer/MediaController.html?total_num=16&amp;amp;locator_key=id&amp;amp;value=12</test_script_entry>
+        </description>
+        <specs>
+          <spec>
+            <spec_assertion element_type="method" element_name="mute" interface="MediaController" specification="DLNA" section="W3C API Specifications" category="Media Renderer API"/>
+            <spec_url>http://01org.github.io/cloud-dleyna/mediarenderer.html#mediacontroller-interface</spec_url>
+            <spec_statement/>
+          </spec>
+        </specs>
+      </testcase>
+      <testcase purpose="Check if MediaController.setSpeed exists and type of function" type="compliance" status="approved" component="WebAPI/Media Renderer API/DLNA" execution_type="auto" priority="P1" id="MediaController_setSpeed">
+        <description>
+          <test_script_entry>/opt/webapi-mediarenderer-xwalk-tests/mediarenderer/MediaController.html?total_num=16&amp;amp;locator_key=id&amp;amp;value=13</test_script_entry>
+        </description>
+        <specs>
+          <spec>
+            <spec_assertion element_type="method" element_name="setSpeed" interface="MediaController" specification="DLNA" section="W3C API Specifications" category="Media Renderer API"/>
+            <spec_url>http://01org.github.io/cloud-dleyna/mediarenderer.html#mediacontroller-interface</spec_url>
+            <spec_statement/>
+          </spec>
+        </specs>
+      </testcase>
+      <testcase purpose="Check if MediaController.setVolume exists and type of function" type="compliance" status="approved" component="WebAPI/Media Renderer API/DLNA" execution_type="auto" priority="P1" id="MediaController_setVolume">
+        <description>
+          <test_script_entry>/opt/webapi-mediarenderer-xwalk-tests/mediarenderer/MediaController.html?total_num=16&amp;amp;locator_key=id&amp;amp;value=14</test_script_entry>
+        </description>
+        <specs>
+          <spec>
+            <spec_assertion element_type="method" element_name="setVolume" interface="MediaController" specification="DLNA" section="W3C API Specifications" category="Media Renderer API"/>
+            <spec_url>http://01org.github.io/cloud-dleyna/mediarenderer.html#mediacontroller-interface</spec_url>
+            <spec_statement/>
+          </spec>
+        </specs>
+      </testcase>
+      <testcase purpose="Check if MediaController.gotoTrack exists and type of function" type="compliance" status="approved" component="WebAPI/Media Renderer API/DLNA" execution_type="auto" priority="P1" id="MediaController_gotoTrack">
+        <description>
+          <test_script_entry>/opt/webapi-mediarenderer-xwalk-tests/mediarenderer/MediaController.html?total_num=16&amp;amp;locator_key=id&amp;amp;value=15</test_script_entry>
+        </description>
+        <specs>
+          <spec>
+            <spec_assertion element_type="method" element_name="gotoTrack" interface="MediaController" specification="DLNA" section="W3C API Specifications" category="Media Renderer API"/>
+            <spec_url>http://01org.github.io/cloud-dleyna/mediarenderer.html#mediacontroller-interface</spec_url>
+            <spec_statement/>
+          </spec>
+        </specs>
+      </testcase>
+      <testcase purpose="Check if MediaController.onstatuschanged exists and type of event" type="compliance" status="approved" component="WebAPI/Media Renderer API/DLNA" execution_type="auto" priority="P1" id="MediaController_onstatuschanged">
+        <description>
+          <test_script_entry>/opt/webapi-mediarenderer-xwalk-tests/mediarenderer/MediaController.html?total_num=16&amp;amp;locator_key=id&amp;amp;value=16</test_script_entry>
+        </description>
+        <specs>
+          <spec>
+            <spec_assertion element_type="event" element_name="onstatuschanged" interface="MediaController" specification="DLNA" section="W3C API Specifications" category="Media Renderer API"/>
+            <spec_url>http://01org.github.io/cloud-dleyna/mediarenderer.html#mediacontroller-interface</spec_url>
+            <spec_statement/>
+          </spec>
+        </specs>
+      </testcase>
+      <testcase purpose="Check if readonly MediaControllerStatusEvent.playbackStatus exists and type of playbackStatus" type="compliance" status="approved" component="WebAPI/Media Renderer API/DLNA" execution_type="auto" priority="P1" id="MediaControllerStatusEvent_playbackStatus">
+        <description>
+          <test_script_entry>/opt/webapi-mediarenderer-xwalk-tests/mediarenderer/MediaControllerStatusEvent.html?total_num=16&amp;amp;locator_key=id&amp;amp;value=1</test_script_entry>
+        </description>
+        <specs>
+          <spec>
+            <spec_assertion element_type="property" element_name="playbackStatus" interface="MediaControllerStatusEvent" specification="DLNA" section="W3C API Specifications" category="Media Renderer API"/>
+            <spec_url>http://01org.github.io/cloud-dleyna/mediarenderer.html#mediaControllerStatusEvent-interface</spec_url>
+            <spec_statement/>
+          </spec>
+        </specs>
+      </testcase>
+      <testcase purpose="Check if readonly MediaControllerStatusEvent.muted exists and type of boolean" type="compliance" status="approved" component="WebAPI/Media Renderer API/DLNA" execution_type="auto" priority="P1" id="MediaControllerStatusEvent_muted">
+        <description>
+          <test_script_entry>/opt/webapi-mediarenderer-xwalk-tests/mediarenderer/MediaControllerStatusEvent.html?total_num=16&amp;amp;locator_key=id&amp;amp;value=2</test_script_entry>
+        </description>
+        <specs>
+          <spec>
+            <spec_assertion element_type="property" element_name="muted" interface="MediaControllerStatusEvent" specification="DLNA" section="W3C API Specifications" category="Media Renderer API"/>
+            <spec_url>http://01org.github.io/cloud-dleyna/mediarenderer.html#mediaControllerStatusEvent-interface</spec_url>
+            <spec_statement/>
+          </spec>
+        </specs>
+      </testcase>
+      <testcase purpose="Check if readonly MediaControllerStatusEvent.volume exists and type of number" type="compliance" status="approved" component="WebAPI/Media Renderer API/DLNA" execution_type="auto" priority="P1" id="MediaControllerStatusEvent_volume">
+        <description>
+          <test_script_entry>/opt/webapi-mediarenderer-xwalk-tests/mediarenderer/MediaControllerStatusEvent.html?total_num=16&amp;amp;locator_key=id&amp;amp;value=3</test_script_entry>
+        </description>
+        <specs>
+          <spec>
+            <spec_assertion element_type="property" element_name="volume" interface="MediaControllerStatusEvent" specification="DLNA" section="W3C API Specifications" category="Media Renderer API"/>
+            <spec_url>http://01org.github.io/cloud-dleyna/mediarenderer.html#mediaControllerStatusEvent-interface</spec_url>
+            <spec_statement/>
+          </spec>
+        </specs>
+      </testcase>
+      <testcase purpose="Check if readonly MediaControllerStatusEvent.track exists and type of number" type="compliance" status="approved" component="WebAPI/Media Renderer API/DLNA" execution_type="auto" priority="P1" id="MediaControllerStatusEvent_track">
+        <description>
+          <test_script_entry>/opt/webapi-mediarenderer-xwalk-tests/mediarenderer/MediaControllerStatusEvent.html?total_num=16&amp;amp;locator_key=id&amp;amp;value=4</test_script_entry>
+        </description>
+        <specs>
+          <spec>
+            <spec_assertion element_type="property" element_name="track" interface="MediaControllerStatusEvent" specification="DLNA" section="W3C API Specifications" category="Media Renderer API"/>
+            <spec_url>http://01org.github.io/cloud-dleyna/mediarenderer.html#mediaControllerStatusEvent-interface</spec_url>
+            <spec_statement/>
+          </spec>
+        </specs>
+      </testcase>
+      <testcase purpose="Check if readonly MediaControllerStatusEvent.speed exists and type of number" type="compliance" status="approved" component="WebAPI/Media Renderer API/DLNA" execution_type="auto" priority="P1" id="MediaControllerStatusEvent_speed">
+        <description>
+          <test_script_entry>/opt/webapi-mediarenderer-xwalk-tests/mediarenderer/MediaControllerStatusEvent.html?total_num=16&amp;amp;locator_key=id&amp;amp;value=5</test_script_entry>
+        </description>
+        <specs>
+          <spec>
+            <spec_assertion element_type="property" element_name="speed" interface="MediaControllerStatusEvent" specification="DLNA" section="W3C API Specifications" category="Media Renderer API"/>
+            <spec_url>http://01org.github.io/cloud-dleyna/mediarenderer.html#mediaControllerStatusEvent-interface</spec_url>
+            <spec_statement/>
+          </spec>
+        </specs>
+      </testcase>
+    </set>
+  </suite>
+</test_definition>
