@@ -37,16 +37,16 @@ Authors:
     <link rel="help" href="http://www.w3.org/TR/2012/WD-css3-animations-20120403/#animation-duration-property" />
     <meta name="flags" content="" />
     <meta name="assert" content="Check if Animations.animation-duration initial value is 0s" />
-    <script src="support/user.js"></script>
+    <script src="support/support.js"></script>
     <script src="../resources/testharness.js"></script>
     <script src="../resources/testharnessreport.js"></script>
   </head>
   <body>
     <div id="log"></div>
-    <div id="testDiv"></div>
+    <div id="test"></div>
     <script>
         test(function(){
-            var div = document.querySelector("#testDiv");
+            var div = document.querySelector("#test");
             var cStyle = GetCurrentStyle("animationDuration");
             assert_equals(cStyle, "0s", "The initial value of animation-duration property");
         }, document.title);

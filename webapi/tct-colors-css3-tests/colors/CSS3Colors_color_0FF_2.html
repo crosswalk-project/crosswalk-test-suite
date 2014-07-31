@@ -40,13 +40,13 @@ Authors:
     <meta name="assert" content="Check if the color is set to 'color:#0FF'" />
     <script src="../resources/testharness.js"></script>
     <script src="../resources/testharnessreport.js"></script>
-    <script src="support/cssstyle.js"></script>
+    <script src="support/support.js"></script>
   </head>
   <body>
     <div id="log"></div>
-    <div id="testDiv">content</div>
+    <div id="test">content</div>
     <script>
-        var div = document.querySelector("#testDiv");
+        var div = document.querySelector("#test");
         div.style[headProp("color")] = "#0FF";
         var origin = GetCurrentStyle("color");
         test(function() {
