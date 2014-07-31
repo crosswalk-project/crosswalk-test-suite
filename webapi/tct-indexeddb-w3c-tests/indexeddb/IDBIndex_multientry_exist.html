@@ -61,7 +61,7 @@ Authors:
                     }
                     var objStore = db.createObjectStore(objectStoreName, {keyPath : "key"});
                     var index = objStore.createIndex(indexName, "indexedProperty");
-                    if ("multientry" in index) {
+                    if ("multiEntry" in index) {
                         pass();
                     } else {
                         fail("IDBIndex.multientry attribute does not exist");
