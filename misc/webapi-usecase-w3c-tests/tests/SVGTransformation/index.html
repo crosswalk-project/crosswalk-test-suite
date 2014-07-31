@@ -58,9 +58,21 @@ Authors:
           <animateTransform attributeName='transform' attributeType='XML' type='scale' from='1' to='2' dur='10s' additive='sum' fill='freeze' repeatCount='indefinite'/>
           <animateTransform attributeName='transform' attributeType='XML' type='skewX' by="30" dur='10s' additive='sum' fill='freeze' repeatCount='indefinite'/>
         </circle>
+        <g fill="red" stroke="none" >
+          <rect x="240" y="340" width="6" height="6" />
+          <rect x="260" y="100" width="6" height="6" />
+        </g>
+        <g font-size="14" font-family="Verdana" >
+          <text x="250" y="347">start position</text>
+          <text x="270" y="107">end position</text>
+        </g>
       </svg>
-      <p><a href="javascript: document.location.reload();" data-role="button">Test Again</a></p>
     </div>
+    <ul>
+      <li>When open the page, the blue circle will move from the start position to the end position.</li>
+      <li>The blue circle will transfer to ellipse.</li>
+      <li>Then the blue ellipse will rotate along all the time.</li>
+    <ul>
     <div data-role="footer" data-position="fixed">
     </div>
     <div data-role="popup" id="popup_info">
@@ -68,7 +80,7 @@ Authors:
         <p>Test Purpose: </p>
         <p>Verifies the blue circle could be transferred to ellipse, and rotate along with elliptical patch at the same time.</p>
         <p>Expected Result: </p>
-        <p>Test passes if the transformation and rotate function well.</p>
+        <p>Test passes if the blue circle transfers to ellipse, and rotates along at the same time.</p>
       </font>
     </div>
   </body>
