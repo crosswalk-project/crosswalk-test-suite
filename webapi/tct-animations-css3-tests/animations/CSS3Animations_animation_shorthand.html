@@ -39,14 +39,14 @@ Authors:
     <meta name="assert" content="Check if animation shorthand property combines six of the animation properties into a single property" />
     <script src="../resources/testharness.js"></script>
     <script src="../resources/testharnessreport.js"></script>
-    <script src="support/user.js"></script>
+    <script src="support/support.js"></script>
   </head>
   <body>
     <div id="log"></div>
-    <div id="testDiv"></div>
+    <div id="test"></div>
     <script>
         test(function () {
-            var div = document.querySelector("#testDiv");
+            var div = document.querySelector("#test");
             div.style[headProp("animation")] = "sample 5s linear 5s 2 alternate none";
             var animationName = div.style.getPropertyValue("animation-name") || div.style.getPropertyValue("-webkit-animation-name");
             assert_equals(animationName, "sample", "The element animation-name value Test");
