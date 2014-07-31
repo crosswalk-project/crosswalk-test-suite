@@ -47,30 +47,41 @@ Authors:
       <h1 id="main_page_title"></h1>
     </div>
     <div id="content">
-      <div id="testDiv">
-        <p>Test Steps: </p>
-        <ol>
-          <li>Unzip the 'crosswalk-cordova-xxx-arm.zip'</li>
-          <li>Execute command: 'cd /localpath/crosswalk-cordova-xxx-arm'</li>
-          <li>Execute command: './bin/create remotedebugging com.example.remotedebugging RD --shared'</li>
-          <li>Execute command: 'cd remotedebugging'</li>
-          <li>Edit /src/com/example/remotedebugging/RD.java
-            <ul>
-              <li>Add this.appView.enableRemoteDebugging() after super.loadUrl("file:///android_asset/www/index.html")</li>
-            </ul>
-          </li>
-          <li>Execute command: './cordova/build --debug'</li>
-          <li>Execute command: './cordova/run'</li>
-          <li>Open 'chrome://inspect' on host chrome browser</li>
-          <li>Click 'inspect' button</li>
-          <li>Click 'Sources' option</li>
-          <li>Add a breakpoint</li>
-          <li>Try to click "elements" button on top</li>
-          <li>Try select one html code then click the right mouse button</li>
-          <li>Select 'Edit as HTML'</li>
-          <li>Try to modify the code 'add or remove text'</li>
-          <li>Check the page</li>
-        </ol>
+      <p>Test Precondition: </p>
+      <ol>
+        <li>Connect the android device to the Linux PC with USB cable;</li>
+        <li>The second number is the crosswalk-cordova-xxx-arm.zip version corresponding to chrome, the version must be consistent.</li>
+      </ol>
+      <p>Test Steps: </p>
+      <ol>
+        <li>Unzip the 'crosswalk-cordova-xxx-arm.zip'</li>
+        <li>Execute command: 'cd /localpath/crosswalk-cordova-xxx-arm'</li>
+        <li>Execute command: './bin/create remotedebugging com.example.remotedebugging RD --shared'</li>
+        <li>Execute command: 'cd remotedebugging'</li>
+        <li>Edit /src/com/example/remotedebugging/RD.java
+          <ul>
+            <li>Add this.appView.enableRemoteDebugging() after super.loadUrl("file:///android_asset/www/index.html")</li>
+          </ul>
+        </li>
+        <li>Execute command: './cordova/build --debug'</li>
+        <li>Execute command: './cordova/run'</li>
+        <li>Open 'chrome://inspect' on host chrome browser</li>
+        <li>Click 'inspect' button</li>
+        <li>Click 'Sources' option</li>
+        <li>Add a breakpoint</li>
+        <li>Try to click "elements" button on top</li>
+        <li>Try select one html code then click the right mouse button</li>
+        <li>Select 'Edit as HTML'</li>
+        <li>Try to modify the code 'add or remove text'</li>
+        <li>Check the page</li>
+      </ol>
+    </div>
+    <div data-role="footer" data-position="fixed" data-tap-toggle="false">
+    </div>
+    <div data-role="popup" id="popup_info" data-theme="a">
+      <font class="fontSize">
+        <p>Test Purpose: </p>
+        <p>Verify the Cordova package can remote debug successfully.</p>
         <p>Expected Results: </p>
         <ol>
           <li>The unzip command execute successfully</li>
@@ -90,19 +101,6 @@ Authors:
           <li>The source code could be changed</li>
           <li>The change will be taked effect</li>
         </ol>
-      </div>
-    </div>
-    <div data-role="footer" data-position="fixed" data-tap-toggle="false">
-    </div>
-    <div data-role="popup" id="popup_info" data-theme="a">
-      <font class="fontSize">
-        <p>Test Precondition: </p>
-        <p>Connect the android device to the Linux PC with USB cable;</p>
-        <p>The second number is the crosswalk-cordova-xxx-arm.zip version corresponding to chrome, the version must be consistent.</p>
-        <p>Test Purpose: </p>
-        <p>Verify the Cordova package can remote debug successfully.</p>
-        <p>Expected Result: </p>
-        <p>Test passes if all the steps test passed.</p>
       </font>
     </div>
   </div>
