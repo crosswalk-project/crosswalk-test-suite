@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<!--
+Copyright (c) 2014 Intel Corporation.
+
+Redistribution and use in source and binary forms, with or without modification,
+are permitted provided that the following conditions are met:
+
+* Redistributions of works must retain the original copyright notice, this list
+  of conditions and the following disclaimer.
+* Redistributions in binary form must reproduce the original copyright notice,
+  this list of conditions and the following disclaimer in the documentation
+  and/or other materials provided with the distribution.
+* Neither the name of Intel Corporation nor the names of its contributors
+  may be used to endorse or promote products derived from this work without
+  specific prior written permission.
+
+THIS SOFTWARE IS PROVIDED BY INTEL CORPORATION "AS IS"
+AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE
+IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE
+ARE DISCLAIMED. IN NO EVENT SHALL INTEL CORPORATION BE LIABLE FOR ANY DIRECT,
+INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING,
+BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE,
+DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY
+OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING
+NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE,
+EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
+
+Authors:
+        Zhang, Jing <jingx.zhang@intel.com>
+
+-->
+<html>
+<head>
+<meta charset="utf-8">
+<title>[NFC Test]:NDEFRecordSmartPoster_constructor_uri</title>
+<link rel="author" title="Intel" href="http://www.intel.com">
+<link rel="help" href="http://www.w3.org/TR/nfc/">
+<script type="text/javascript" src="support/unitcommon.js"></script>
+<script type="text/javascript" src="support/nfc_common.js"></script>
+</head>
+
+<body>
+<div id="log"></div>
+<script>
+//==== TEST: NDEFRecordSmartPoster_constructor_uri
+//==== PRIORITY P1
+//==== LABEL Check NDEFRecordSmartPoster constructor works with DOMString uri parameter
+//==== SPEC_URL http://www.w3.org/TR/nfc/
+var record;
+test(function () {
+    record = new NDEFRecordSmartPoster("http://www.w3.org/TR/nfc/");
+    assert_true(record instanceof NDEFRecordSmartPoster,
+        "constructed record is instance of NDEFRecordSmartPoster");
+    assert_own_property(record, "uri", "NDEFRecordSmartPoster does not own uri property");
+    assert_own_property(record, "titles", "NDEFRecordSmartPoster does not own titles property");
+    assert_own_property(record, "action", "NDEFRecordSmartPoster does not own action property");
+    assert_own_property(record, "icons", "NDEFRecordSmartPoster does not own icons property");
+    assert_own_property(record, "targetSize", "NDEFRecordSmartPoster does not own targetSize property");
+    assert_own_property(record, "targetMIME", "NDEFRecordSmartPoster does not own targetMIME property");
+    assert_own_property(record, "recordType", "NDEFRecordSmartPoster does not own recordType property");
+    assert_own_property(record, "tnf", "NDEFRecordSmartPoster does not own tnf property");
+    assert_own_property(record, "type", "NDEFRecordSmartPoster does not own type property");
+    assert_own_property(record, "id", "NDEFRecordSmartPoster does not own id property");
+    assert_ture("getPayload" in record, "NDEFRecordSmartPoster.getPayload() method exists");
+}, document.title);
+</script>
+</body>
+</html>
