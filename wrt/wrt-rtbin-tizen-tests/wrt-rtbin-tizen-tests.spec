@@ -15,4 +15,5 @@ tests.xml
 tests.full.xml
 mediasrc
 rtbinauto
+manifest_app_mainsource1_tests.wgt
 source"

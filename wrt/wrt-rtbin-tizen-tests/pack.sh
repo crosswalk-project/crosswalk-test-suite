@@ -118,6 +118,9 @@ if [ $sign -eq 1 ];then
         fi
     done
 fi
+cd $BUILD_ROOT/manifest_app_mainsource1_tests
+zip -rq $BUILD_DEST/opt/$name/manifest_app_mainsource1_tests.wgt *
+cd ..
 }
 
 function create_apk(){

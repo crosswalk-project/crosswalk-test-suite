@@ -40,7 +40,7 @@ if [[ $? -eq 1 ]]; then
                  fi
 fi
 
-xwalkctl --install $local_path/../source/manifest_app_mainsource1_tests.xpk > /tmp/install.txt
+xwalkctl --install $local_path/../manifest_app_mainsource1_tests.xpk > /tmp/install.txt
 cat /tmp/install.txt | grep "Application installed" > /dev/null
 if [[ $? -eq 0 ]]; then
                  echo "Use run as service install successfully"
