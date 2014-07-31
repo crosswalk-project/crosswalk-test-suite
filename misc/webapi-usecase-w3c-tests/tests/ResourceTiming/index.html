@@ -35,6 +35,7 @@ Authors:
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <link rel="stylesheet" type="text/css" href="../../css/jquery.mobile.css" />
 <link rel="stylesheet" type="text/css" href="../../css/main.css" />
+<link rel="stylesheet" type="text/css" href="css/style.css" />
 <script src="../../js/thirdparty/jquery.js"></script>
 <script src="../../js/thirdparty/jquery.mobile.js"></script>
 <script src="../../js/tests.js"></script>
@@ -45,9 +46,18 @@ Authors:
     <div data-role="header" data-position="fixed" data-tap-toggle="false">
       <h1 id="main_page_title"></h1>
     </div>
-    <div id="content">
+    <div data-role="content">
+      <div class="observate" id="showDiv">
+        <ul id="coordinate">
+        <li id="fetchStart_redirectStart">Fetch start timing: </li>
+        <li id="domainLookupStart_redirectStart">Domain lookup timing: </li>
+        <li id="connectStart_domainLookupEnd">Connect start timing compare with domain end timing: </li>
+        <li id="responseEnd_requestStart">Response end timing compare with request start timing: </li>
+        <li id="responseEnd_redirectStart">End to end resource fetch: </li>
+        </ul>
+      </div>
+      <div id="imageDiv"><img id="image"/></div>
       <ul data-role="listview" id="info-list1"></ul>
-      <ul data-role="listview" id="info-list2"></ul>
     </div>
     <div data-role="footer" data-position="fixed" data-tap-toggle="false">
     </div>

@@ -48,23 +48,21 @@ function resourceTiming() {
   var connectStart_domainLookupEnd = resourceList[0].connectStart - resourceList[0].domainLookupEnd;
   var responseEnd_requestStart = resourceList[0].responseEnd - resourceList[0].requestStart;
   var responseEnd_redirectStart = resourceList[0].responseEnd - resourceList[0].redirectStart;
-  gInfo = makeDividerListItem("PerformanceResourceTiming")
-          + make1lineListItem("fetch start timing : " + fetchStart_redirectStart)
-          + make1lineListItem("domain lookup timing : " + domainLookupStart_redirectStart)
-          + make1lineListItem("connect start timing compare with domain end timing: " + connectStart_domainLookupEnd)
-          + make1lineListItem("response end timing compare with request start timing : " + responseEnd_requestStart)
-          + make1lineListItem("End to end resource fetch : " + responseEnd_redirectStart);
-  $("#info-list2").html(gInfo).trigger("create").listview("refresh");
+
+  $("#fetchStart_redirectStart").text("Prompt for upload time: " + fetchStart_redirectStart);
+  $("#domainLookupStart_redirectStart").text("Domain lookup timing: " + domainLookupStart_redirectStart);
+  $("#connectStart_domainLookupEnd").text("Connect start timing compare with domain end timing: " + connectStart_domainLookupEnd);
+  $("#responseEnd_requestStart").text("Response end timing compare with request start timing: " + responseEnd_requestStart);
+  $("#responseEnd_redirectStart").text("End to end resource fetch: " + responseEnd_redirectStart);
 }
 
 function loadingImg() {
-  gInfo = makeDividerListItem("Loading image resource")
-          +  '<a href="javascript:resourceFetchSuccess()" id="requestShow" data-role="button" class="opt">Load image</a>';
+  gInfo = '<a href="javascript:resourceFetchSuccess()" id="requestShow" data-role="button" class="opt">Load image</a>';
   $("#info-list1").html(gInfo).trigger("create").listview("refresh");
 }
 
 function resourceFetchSuccess(){
-  var image1 = new Image();
+  var image1 = document.getElementById('image');
   image1.src = 'http://test.csswg.org/source/support/cat.png';
   image1.onload = resourceTiming;
 }
