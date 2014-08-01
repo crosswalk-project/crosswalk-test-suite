@@ -47,8 +47,12 @@ Authors:
     <div data-role= "content">
       <textarea id="chatbox" readonly="readonly" style="height:200px"></textarea>
       <div class="ui-grid-a">
+        <div class="ui-block-a"><button id="connect" type="button">Connect</button></div>
+        <div class="ui-block-b"><button id="disconnect" type="button">Disconnect</button></div>
+      </div>
+      <div class="ui-grid-a">
         <div class="ui-block-a"><input type="text" id="socketinput" value=""/></div>
-        <div class="ui-block-b"><button id="send" type="button">send</button></div>
+        <div class="ui-block-b"><button id="send" type="button">Send</button></div>
       </div>
     </div>
     <div data-role="footer" data-position="fixed">
@@ -57,6 +61,12 @@ Authors:
       <font class="fontSize">
         <p>Test Purpose: </p>
         <p>Verifies TCPSocket and TCPServerSocket can send and recive message.</p>
+        <p>Test Steps: </p>
+          <ol>
+            <li>Click the 'Connect' botton, connect to TCPServersocket</li>
+            <li>When TCPServersocket connected successfully, click the 'Send' botton, to send message</li>
+            <li>Click the 'Disconnect' botton, close the connection</li>
+          </ol>
         <p>Expected Result: </p>
         <p>Test passes if TCPSocket can connect to TCPServerSocket, TCPServerSocket will send back whatever TCPSocket send to it.</p>
       </font>

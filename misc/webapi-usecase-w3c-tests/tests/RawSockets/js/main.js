@@ -29,20 +29,43 @@ Authors:
 
 */
 
+var testFlag = {
+    green: false,
+    red: false,
+    blue: false
+};
+var showId;
+
+function status() {
+    if (testFlag.green && testFlag.red && testFlag.blue) {
+        EnablePassButton();
+    }
+}
+
+function show() {
+    $("#chatbox").text("TCPServersocket - Could not connect \n" + $("#chatbox").text());
+    $("#connect").button("enable");
+    $("#disconnect").button("disable");
+    $("#send").button("disable");
+    clearTimeout(showId);
+}
+
 function ab2str(buf) {
     return String.fromCharCode.apply(null, new Uint8Array(buf));
 }
 
-$("#send").live("tap", function () {
-    TCPsocket.send($("#socketinput").attr("value"));
-    $("#chatbox").text("TCPSocket - send - " + data + "\n" + $("#chatbox").text());
-    $("#socketinput").attr("value", "");
-});
-
-$(document).live('pageshow', function () {
-    var TCPServersocket = new xwalk.experimental.raw_socket.TCPServerSocket({"localPort": 6789});
-    $("#chatbox").text("TCPServersocket - Connected");
+$("#connect").live("tap", function () {
+    testFlag.green = true;
+    $("#connect").button("disable");
+    $("#disconnect").button("enable");
+    $("#send").button("disable");
+    clearTimeout(showId);
+    showId = setTimeout("show()", 30000);
+    var TCPServersocket = new xwalk.experimental.raw_socket.TCPServerSocket({"localPort": 6789});    
     TCPServersocket.onconnect = function (connectEvent) {
+        clearTimeout(showId);
+        $("#send").button("enable");
+        $("#chatbox").text("TCPServersocket - Connected");
         connectEvent.connectedSocket.ondata = function (messageEvent) {
             var data = ab2str(messageEvent.data);
             $("#chatbox").text("TCPServersocket - recive - " + data + "\n" + $("#chatbox").text());
@@ -57,4 +80,32 @@ $(document).live('pageshow', function () {
             $("#chatbox").text("TCPSocket - recive - " + data + "\n" + $("#chatbox").text());
         };
     };
+    TCPsocket.onclose = function () {
+        $("#chatbox").text("TCPServersocket - Disconnected \n" + $("#chatbox").text());
+    };
+    status();
+});
+
+$("#disconnect").live("tap", function () {
+    testFlag.blue = true;
+    TCPsocket.close();
+    $("#connect").button("enable");
+    $("#disconnect").button("disable");
+    $("#send").button("disable");
+    status();
+});
+
+$("#send").live("tap", function () {
+    testFlag.red = true;
+    TCPsocket.send($("#socketinput").attr("value"));
+    $("#socketinput").attr("value", "");
+    $("#chatbox").text("TCPSocket - send - " + data + "\n" + $("#chatbox").text());
+    status();
+});
+
+$(document).live('pageshow', function () {
+    DisablePassButton();
+    $("#connect").button("enable");
+    $("#disconnect").button("disable");
+    $("#send").button("disable");
 });
