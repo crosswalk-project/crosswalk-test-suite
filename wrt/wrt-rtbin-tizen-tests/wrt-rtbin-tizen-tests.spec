@@ -13,4 +13,7 @@ whitelist="
 inst.sh
 tests.xml
 tests.full.xml
-mediasrc"
+mediasrc
+rtbinauto
+manifest_app_mainsource1_tests.wgt
+source"

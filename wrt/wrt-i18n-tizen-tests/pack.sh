@@ -60,7 +60,7 @@ check_precondition make
 # clean
 function clean_workspace(){
 echo "cleaning workspace... >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>"
-rm -rf $BUILD_ROOT $BUILD_DEST
+#rm -rf $BUILD_ROOT $BUILD_DEST
 }
 
 clean_workspace
@@ -118,6 +118,19 @@ if [ $sign -eq 1 ];then
         fi
     done
 fi
+cd $BUILD_ROOT
+
+ls
+cd webapp
+cd i18n_locales_chinese_tests
+zip -rq $BUILD_DEST/opt/$name/i18n_locales_chinese_tests.wgt *
+cd ..
+cd i18n_locales_language_tests
+zip -rq $BUILD_DEST/opt/$name/i18n_locales_language_tests.wgt *
+cd ..
+cd noresources
+zip -rq $BUILD_DEST/opt/$name/i18n_locales_noresources_tests.wgt *
+cd ..
 }
 
 function create_apk(){

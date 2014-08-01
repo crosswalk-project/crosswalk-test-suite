@@ -192,14 +192,14 @@ def del_Seed(in_file):
         return "Manifest.json output ------------------------->O.K"
     except Exception,e: 
         print Exception,":",e
-        log_Log(" Generate output.txt file error" + e + "\n") 
+        log_Log(" Generate output.txt file error\n") 
         return "Manifest.json output ------------------------->Error"
 
 def gen_selfcomb_File(comb_file,in_file):
     try:
         #if (os.path.isfile("./allpairs/output.txt") & (Test_Flag=="positive")):
-        do_Clear("./allpairs/output.txt")
-        do_Clear("./allpairs/output_negative.txt")
+        #do_Clear("./allpairs/output.txt")
+        #do_Clear("./allpairs/output_negative.txt")
         if (Test_Flag=="negative"):
             open_output_file= open(const.output_file_ne,'a+')
         else:
@@ -360,7 +360,7 @@ def get_Result():
         log_Log(" Generate report file ok" + "\n") 
         print "<------------------------- Generate Report OK------------------------->"        
     except Exception,e:
-        log_Log(" Generate report file ok" + e + "\n")  
+        log_Log(" Generate report file ok\n")  
         print Exception,"Generate the report error:",e    
     
 def testcase_Result(resultfile):
@@ -573,7 +573,7 @@ def manifest_Packing(pakeNo,pakeType):
         do_Clear("key.pem")
         log_Log(" Packing webapp " + pakeNo + " ok "+ "\n") 
     except Exception,e:
-        log_Log(" Packing webapp " + pakeNo + " error " + e +"\n")  
+        log_Log(" Packing webapp " + pakeNo + " error \n")  
         print Exception,"Packing webapp error:",e   
 
         
@@ -695,7 +695,7 @@ def launcher_WebApp(pakeType,Manifest_Row, tcs_manifest):
         print "---------- Webapp manifest" + str(Manifest_Row) + "." + pakeType +" test end------------>\n"
         log_Log(" test webapp " + str(Manifest_Row) + " ok "+ "\n")                    
     except Exception,e: 
-        log_Log(" test webapp " + str(Manifest_Row) + " error " + e + "\n") 
+        log_Log(" test webapp " + str(Manifest_Row) + " error \n") 
         print Exception,"Launch webapp error:",e 
     finally:
         result_manifest_XML("manifest" + str(Manifest_Row) + ".xml",auto_result , tcs_manifest)
