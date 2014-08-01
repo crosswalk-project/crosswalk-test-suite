@@ -29,13 +29,25 @@ Authors:
 
 */
 
+var showId;
+
+function show() {
+    $("#chatbox").text("Timeout, please check if WebSocket server is enable.\n" + $("#chatbox").text());
+    clearTimeout(showId);
+}
+
 $("#send").live("tap", function () {
+    EnablePassButton();
+    clearTimeout(showId);
+    showId = setTimeout("show()", 30000);
     var flag = false;
     try {
+        $("#chatbox").text("Connecting......");
         window.webSocket = new WebSocket('ws://127.0.0.1:8081');
         webSocket.addEventListener('open', function (evt) {
+            clearTimeout(showId);
             flag = true;
-            $("#chatbox").text("WebSocket - open.\n" + $("#chatbox").text());
+            $("#chatbox").text("Successfully connect to WebSocket server.\n" + $("#chatbox").text());
             webSocket.send($("#socketinput").attr("value"));
             $("#chatbox").text("WebSocket - send - "  + $("#socketinput").attr("value") + "\n" + $("#chatbox").text());
             $("#socketinput").attr("value", "");
@@ -45,10 +57,14 @@ $("#send").live("tap", function () {
         }, true);
         webSocket.addEventListener('close', function (evt) {
             if (!flag) {
-                $("#chatbox").text("WebSocket - can't open.\n" + $("#chatbox").text());
+                $("#chatbox").text("WebSocket connection is closed. "  +  evt.reason + "\n" + $("#chatbox").text());
             }
         }, true);
     } catch (err) {
         $("#chatbox").text(err + "\n" + $("#chatbox").text());
     }
+});
+
+$(document).live('pageshow', function () {
+    DisablePassButton();
 });
