@@ -30,8 +30,9 @@ Authors:
 */
 
 $(document).ready(function() {
+  $("#test").css("border", "1px solid black");
+  document.getElementById("result").innerHTML = "No Reuslt.";
   $("#compute").click(function(){
-    $("#test").css("border", "1px solid black");
     try {
       var task1 = 1;
       var n1 = document.getElementById("number1").value;
@@ -44,6 +45,7 @@ $(document).ready(function() {
       window.performance.measure("measure", "startTask1","endTask1");
       measurePerf(task1);
     }catch(e) {
+      $("#result").css("color", "red");
       document.getElementById("result").innerHTML = "Error: " + e.message;
     }
   });
@@ -51,6 +53,7 @@ $(document).ready(function() {
 
 function measurePerf(result) {
   var perfEntries = performance.getEntriesByType("measure");
+  $("#result").css("color", "black");
   for (var j = 0; j < perfEntries.length; j++) {
     document.getElementById("result").innerHTML = "Result: " + result;
     document.getElementById("start").innerHTML = "Start Time: " + Math.round(perfEntries[j].startTime) + "ms";
