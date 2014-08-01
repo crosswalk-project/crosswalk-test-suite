@@ -35,21 +35,23 @@ function loadimg() {
 
 function sendResourceTiming() {
   var resourceList = window.performance.getEntriesByType('resource');
-  for (i = 0; i < resourceList.length; i++) {
-    if (resourceList[i].initiatorType == 'img') {
-      document.getElementById("name").innerHTML = "Name: " + resourceList[i].name;
-      document.getElementById("entryType").innerHTML = "Entry Type: " + resourceList[i].entryType;
-      document.getElementById("start").innerHTML = "Start Time: " + Math.round(resourceList[i].startTime) + "ms";
-      document.getElementById("duration").innerHTML = "Duration Time: " + Math.round(resourceList[i].duration) + "ms";
+  if (resourceList.length > 0) {
+    for (i = 0; i < resourceList.length; i++) {
+      if (resourceList[i].initiatorType == 'img') {
+        $("#info").css("display", "block");
+        document.getElementById("name").innerHTML = "name: " + resourceList[i].name;
+        document.getElementById("entryType").innerHTML = "entry type: " + resourceList[i].entryType;
+        document.getElementById("start").innerHTML = "start time: " + Math.round(resourceList[i].startTime) + "ms";
+        document.getElementById("duration").innerHTML = "duration time: " + Math.round(resourceList[i].duration) + "ms";
+        EnablePassButton();
+      }
     }
   }
 }
 
 $(document).ready(function() {
+  DisablePassButton();
   $("#test").css("border", "1px solid black");
+  $("#info").css("display", "none");
   $("#loadimg").click(loadimg);
-  document.getElementById("name").innerHTML = "Name: ";
-  document.getElementById("entryType").innerHTML = "Entry Type: ";
-  document.getElementById("start").innerHTML = "Start Time: ";
-  document.getElementById("duration").innerHTML = "Duration Time: ";
 });
