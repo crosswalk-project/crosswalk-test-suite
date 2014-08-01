@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<!--
+Copyright (c) 2013 Intel Corporation.
+
+Redistribution and use in source and binary forms, with or without modification,
+are permitted provided that the following conditions are met:
+
+* Redistributions of works must retain the original copyright notice, this list
+  of conditions and the following disclaimer.
+* Redistributions in binary form must reproduce the original copyright notice,
+  this list of conditions and the following disclaimer in the documentation
+  and/or other materials provided with the distribution.
+* Neither the name of Intel Corporation nor the names of its contributors
+  may be used to endorse or promote products derived from this work without
+  specific prior written permission.
+
+THIS SOFTWARE IS PROVIDED BY INTEL CORPORATION "AS IS"
+AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE
+IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE
+ARE DISCLAIMED. IN NO EVENT SHALL INTEL CORPORATION BE LIABLE FOR ANY DIRECT,
+INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING,
+BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE,
+DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY
+OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING
+NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE,
+EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
+
+Authors:
+        Hao, Yunfei <yunfeix.hao@intel.com>
+
+-->
+
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>CSS Test: filter_position_sticky</title>
+    <link rel='author' title='Intel' href='http://www.intel.com'>
+    <script src="../resources/unitcommon.js"></script>
+    <style>
+      dl {
+          margin: 0;
+          padding: 24px 0 0 0;
+          height: 3000px;
+      }
+
+      dt {
+          background: green;
+          border-bottom: 1px solid ;
+          border-top: 1px solid ;
+          color: white;
+          margin: 0;
+          padding: 2px 0 0 12px;
+          position: -webkit-sticky;
+          position: sticky;
+          top: 0px;
+      }
+
+      dd {
+          margin: 0;
+          padding: 0 0 0 12px;
+          white-space: nowrap;
+      }
+
+      dd + dd {
+          border-top: 1px solid white
+      }
+    </style>
+  </head>
+  <body>
+    <p>Scroll down this page as much as you can.</p>
+    <p>Test passes if there is only the green line "A" and the word "Finished" displayed.</p>
+    <div>
+      <dl>
+        <dt>A</dt>
+        <dd>A1</dd>
+        <dd>A2</dd>
+        <dd>A3</dd>
+        <dd>A4</dd>
+        <dd>A5</dd>
+        <dd>A6</dd>
+        <dd>A7</dd>
+        <dd>A8</dd>
+        <dd>A9</dd>
+        <dd>A10</dd>
+      </dl>
+      <p>Finished!</p>
+    </div>
+  </body>
+</html>
