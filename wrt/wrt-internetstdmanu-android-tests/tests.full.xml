@@ -1,0 +1,337 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-stylesheet type="text/xsl" href="./testcase.xsl"?>
+<test_definition>
+  <suite name="wrt-internetstdmanu-android-tests" category="Web_Features" launcher="xwalk">
+    <set name="Webfeatures">
+      <testcase purpose="Validate the http authentication if input correct username/password (via http://httpbin.org/basic-auth/user/passwd)" type="Functional" status="approved" component="Web Features" execution_type="manual" priority="P1" id="Crosswalk_WebApp_HttpAuth_Success">
+        <description>
+          <pre_condition>
+            1.Make sure Crosswalk binary is installed;
+            2.Make sure nerwork can be used
+          </pre_condition>
+          <test_script_entry>/opt/wrt-internetstdmanu-android-tests/internetstdmanu/Crosswalk_WebApp_HttpAuth_Success.html</test_script_entry>
+        </description>
+      </testcase>
+      <testcase purpose="Validate the http authentication if input wrong username/password (via http://httpbin.org/basic-auth/user/passwd)" type="Functional" status="approved" component="Web Features" execution_type="manual" priority="P2" id="Crosswalk_WebApp_HttpAuth_Failure">
+        <description>
+          <pre_condition>
+            1.Make sure Crosswalk binary is installed;
+            2.Make sure nerwork can be used
+          </pre_condition>
+          <test_script_entry>/opt/wrt-internetstdmanu-android-tests/internetstdmanu/Crosswalk_WebApp_HttpAuth_Failure.html</test_script_entry>
+        </description>
+      </testcase>
+      <testcase purpose="Validate the scheme 'app://' is implemented in Crosswalk" type="Functional" status="approved" component="Web Features" execution_type="manual" priority="P1" id="Crosswalk_WebApp_Scheme_App">
+        <description>
+          <pre_condition>
+            Make sure Crosswalk binary is installed;
+          </pre_condition>
+          <test_script_entry>/opt/wrt-internetstdmanu-android-tests/internetstdmanu/Crosswalk_WebApp_Scheme_App.html</test_script_entry>
+        </description>
+      </testcase>
+      <testcase purpose="Validate the scheme 'content://' is implemented in Crosswalk" type="Functional" status="approved" component="Web Features" execution_type="manual" priority="P1" id="Crosswalk_WebApp_Scheme_Content">
+        <description>
+          <pre_condition>
+            1. Make sure Crosswalk binary is installed;
+            2. Make sure there at least 1 image in the device sdcard.
+          </pre_condition>
+          <test_script_entry>/opt/wrt-internetstdmanu-android-tests/internetstdmanu/Crosswalk_WebApp_Scheme_Content.html</test_script_entry>
+        </description>
+      </testcase>
+      <testcase purpose="Validate the scheme 'geo:' is implemented in Crosswalk" type="Functional" status="approved" component="Web Features" execution_type="manual" priority="P1" id="Crosswalk_WebApp_Scheme_Geo_1">
+        <description>
+          <pre_condition>
+            1.Make sure Crosswalk binary is installed;
+            2.Make sure web_feature_scheme_tests.apk is installed;
+            3.Make sure at least one Map Application is installed;
+            4.Make sure network can be used.
+          </pre_condition>
+          <test_script_entry>/opt/wrt-internetstdmanu-android-tests/internetstdmanu/Crosswalk_WebApp_Scheme_Geo_1.html</test_script_entry>
+        </description>
+      </testcase>
+      <testcase purpose="Validate the scheme 'geo:0' is implemented in Crosswalk" type="Functional" status="approved" component="Web Features" execution_type="manual" priority="P3" id="Crosswalk_WebApp_Scheme_Geo_2">
+        <description>
+          <pre_condition>
+            1.Make sure Crosswalk binary is installed;
+            2.Make sure web_feature_scheme_tests.apk is installed;
+            3.Make sure at least one Map Application is installed;
+            4.Make sure network can be used.
+          </pre_condition>
+          <test_script_entry>/opt/wrt-internetstdmanu-android-tests/internetstdmanu/Crosswalk_WebApp_Scheme_Geo_2.html</test_script_entry>
+        </description>
+      </testcase>
+      <testcase purpose="Validate the scheme 'geo:0,0' is implemented in Crosswalk" type="Functional" status="approved" component="Web Features" execution_type="manual" priority="P2" id="Crosswalk_WebApp_Scheme_Geo_3">
+        <description>
+          <pre_condition>
+            1.Make sure Crosswalk binary is installed;
+            2.Make sure web_feature_scheme_tests.apk is installed;
+            3.Make sure at least one Map Application is installed;
+            4.Make sure network can be used.
+          </pre_condition>
+          <test_script_entry>/opt/wrt-internetstdmanu-android-tests/internetstdmanu/Crosswalk_WebApp_Scheme_Geo_3.html</test_script_entry>
+        </description>
+      </testcase>
+      <testcase purpose="Validate the scheme 'geo:100' is implemented in Crosswalk" type="Functional" status="approved" component="Web Features" execution_type="manual" priority="P3" id="Crosswalk_WebApp_Scheme_Geo_4">
+        <description>
+          <pre_condition>
+            1.Make sure Crosswalk binary is installed;
+            2.Make sure web_feature_scheme_tests.apk is installed;
+            3.Make sure at least one Map Application is installed;
+            4.Make sure network can be used.
+          </pre_condition>
+          <test_script_entry>/opt/wrt-internetstdmanu-android-tests/internetstdmanu/Crosswalk_WebApp_Scheme_Geo_4.html</test_script_entry>
+        </description>
+      </testcase>
+      <testcase purpose="Validate the scheme 'geo:10000000.123,100000000.12345' is implemented in Crosswalk" type="Functional" status="approved" component="Web Features" execution_type="manual" priority="P2" id="Crosswalk_WebApp_Scheme_Geo_5">
+        <description>
+          <pre_condition>
+            1.Make sure Crosswalk binary is installed;
+            2.Make sure web_feature_scheme_tests.apk is installed;
+            3.Make sure at least one Map Application is installed;
+            4.Make sure network can be used.
+          </pre_condition>
+          <test_script_entry>/opt/wrt-internetstdmanu-android-tests/internetstdmanu/Crosswalk_WebApp_Scheme_Geo_5.html</test_script_entry>
+        </description>
+      </testcase>
+      <testcase purpose="Validate the scheme 'geo:-100' is implemented in Crosswalk" type="Functional" status="approved" component="Web Features" execution_type="manual" priority="P3" id="Crosswalk_WebApp_Scheme_Geo_6">
+        <description>
+          <pre_condition>
+            1.Make sure Crosswalk binary is installed;
+            2.Make sure web_feature_scheme_tests.apk is installed;
+            3.Make sure at least one Map Application is installed;
+            4.Make sure network can be used.
+          </pre_condition>
+          <test_script_entry>/opt/wrt-internetstdmanu-android-tests/internetstdmanu/Crosswalk_WebApp_Scheme_Geo_6.html</test_script_entry>
+        </description>
+      </testcase>
+      <testcase purpose="Validate the scheme 'geo:-100.1,0.1234' is implemented in Crosswalk" type="Functional" status="approved" component="Web Features" execution_type="manual" priority="P3" id="Crosswalk_WebApp_Scheme_Geo_7">
+        <description>
+          <pre_condition>
+            1.Make sure Crosswalk binary is installed;
+            2.Make sure web_feature_scheme_tests.apk is installed;
+            3.Make sure at least one Map Application is installed;
+            4.Make sure network can be used.
+          </pre_condition>
+          <test_script_entry>/opt/wrt-internetstdmanu-android-tests/internetstdmanu/Crosswalk_WebApp_Scheme_Geo_7.html</test_script_entry>
+        </description>
+      </testcase>
+      <testcase purpose="Validate the scheme 'geo:address' is implemented in Crosswalk" type="Functional" status="approved" component="Web Features" execution_type="manual" priority="P3" id="Crosswalk_WebApp_Scheme_Geo_8">
+        <description>
+          <pre_condition>
+            1.Make sure Crosswalk binary is installed;
+            2.Make sure web_feature_scheme_tests.apk is installed;
+            3.Make sure at least one Map Application is installed;
+            4.Make sure network can be used.
+          </pre_condition>
+          <test_script_entry>/opt/wrt-internetstdmanu-android-tests/internetstdmanu/Crosswalk_WebApp_Scheme_Geo_8.html</test_script_entry>
+        </description>
+      </testcase>
+      <testcase purpose="Validate the scheme 'geo:0,0.0?address' is implemented in Crosswalk" type="Functional" status="approved" component="Web Features" execution_type="manual" priority="P2" id="Crosswalk_WebApp_Scheme_Geo_9">
+        <description>
+          <pre_condition>
+            1.Make sure Crosswalk binary is installed;
+            2.Make sure web_feature_scheme_tests.apk is installed;
+            3.Make sure at least one Map Application is installed;
+            4.Make sure network can be used.
+          </pre_condition>
+          <test_script_entry>/opt/wrt-internetstdmanu-android-tests/internetstdmanu/Crosswalk_WebApp_Scheme_Geo_9.html</test_script_entry>
+        </description>
+      </testcase>
+      <testcase purpose="Validate the scheme 'geo:/' is implemented in Crosswalk" type="Functional" status="approved" component="Web Features" execution_type="manual" priority="P3" id="Crosswalk_WebApp_Scheme_Geo_10">
+        <description>
+          <pre_condition>
+            1.Make sure Crosswalk binary is installed;
+            2.Make sure web_feature_scheme_tests.apk is installed;
+            3.Make sure at least one Map Application is installed;
+            4.Make sure network can be used.
+          </pre_condition>
+          <test_script_entry>/opt/wrt-internetstdmanu-android-tests/internetstdmanu/Crosswalk_WebApp_Scheme_Geo_10.html</test_script_entry>
+        </description>
+      </testcase>
+      <testcase purpose="Validate the scheme 'mailto:' is implemented in Crosswalk" type="Functional" status="approved" component="Web Features" execution_type="manual" priority="P1" id="Crosswalk_WebApp_Scheme_Mailto_1">
+        <description>
+          <pre_condition>
+            1.Make sure Crosswalk binary is installed;
+            2.Make sure web_feature_scheme_tests.apk is installed;
+          </pre_condition>
+          <test_script_entry>/opt/wrt-internetstdmanu-android-tests/internetstdmanu/Crosswalk_WebApp_Scheme_Mailto_1.html</test_script_entry>
+        </description>
+      </testcase>
+      <testcase purpose="Validate the scheme 'mailto:/' is implemented in Crosswalk" type="Functional" status="approved" component="Web Features" execution_type="manual" priority="P3" id="Crosswalk_WebApp_Scheme_Mailto_2">
+        <description>
+          <pre_condition>
+            1.Make sure Crosswalk binary is installed;
+            2.Make sure web_feature_scheme_tests.apk is installed;
+          </pre_condition>
+          <test_script_entry>/opt/wrt-internetstdmanu-android-tests/internetstdmanu/Crosswalk_WebApp_Scheme_Mailto_2.html</test_script_entry>
+        </description>
+      </testcase>
+      <testcase purpose="Validate the scheme 'mailto:abc' is implemented in Crosswalk" type="Functional" status="approved" component="Web Features" execution_type="manual" priority="P3" id="Crosswalk_WebApp_Scheme_Mailto_3">
+        <description>
+          <pre_condition>
+            1.Make sure Crosswalk binary is installed;
+            2.Make sure web_feature_scheme_tests.apk is installed;
+          </pre_condition>
+          <test_script_entry>/opt/wrt-internetstdmanu-android-tests/internetstdmanu/Crosswalk_WebApp_Scheme_Mailto_3.html</test_script_entry>
+        </description>
+      </testcase>
+      <testcase purpose="Validate the scheme 'mailto:123456' is implemented in Crosswalk" type="Functional" status="approved" component="Web Features" execution_type="manual" priority="P3" id="Crosswalk_WebApp_Scheme_Mailto_4">
+        <description>
+          <pre_condition>
+            1.Make sure Crosswalk binary is installed;
+            2.Make sure web_feature_scheme_tests.apk is installed;
+          </pre_condition>
+          <test_script_entry>/opt/wrt-internetstdmanu-android-tests/internetstdmanu/Crosswalk_WebApp_Scheme_Mailto_4.html</test_script_entry>
+        </description>
+      </testcase>
+      <testcase purpose="Validate the scheme 'mailto:abc.123456' is implemented in Crosswalk" type="Functional" status="approved" component="Web Features" execution_type="manual" priority="P3" id="Crosswalk_WebApp_Scheme_Mailto_5">
+        <description>
+          <pre_condition>
+            1.Make sure Crosswalk binary is installed;
+            2.Make sure web_feature_scheme_tests.apk is installed;
+          </pre_condition>
+          <test_script_entry>/opt/wrt-internetstdmanu-android-tests/internetstdmanu/Crosswalk_WebApp_Scheme_Mailto_5.html</test_script_entry>
+        </description>
+      </testcase>
+      <testcase purpose="Validate the scheme 'mailto:abc@corp' is implemented in Crosswalk" type="Functional" status="approved" component="Web Features" execution_type="manual" priority="P3" id="Crosswalk_WebApp_Scheme_Mailto_6">
+        <description>
+          <pre_condition>
+            1.Make sure Crosswalk binary is installed;
+            2.Make sure web_feature_scheme_tests.apk is installed;
+          </pre_condition>
+          <test_script_entry>/opt/wrt-internetstdmanu-android-tests/internetstdmanu/Crosswalk_WebApp_Scheme_Mailto_6.html</test_script_entry>
+        </description>
+      </testcase>
+      <testcase purpose="Validate the scheme 'mailto:abc@gmail.com' is implemented in Crosswalk" type="Functional" status="approved" component="Web Features" execution_type="manual" priority="P2" id="Crosswalk_WebApp_Scheme_Mailto_7">
+        <description>
+          <pre_condition>
+            1.Make sure Crosswalk binary is installed;
+            2.Make sure web_feature_scheme_tests.apk is installed;
+          </pre_condition>
+          <test_script_entry>/opt/wrt-internetstdmanu-android-tests/internetstdmanu/Crosswalk_WebApp_Scheme_Mailto_7.html</test_script_entry>
+        </description>
+      </testcase>
+      <testcase purpose="Validate the scheme 'market:' is implemented in Crosswalk" type="Functional" status="approved" component="Web Features" execution_type="manual" priority="P1" id="Crosswalk_WebApp_Scheme_Market">
+        <description>
+          <pre_condition>
+            1.Make sure Crosswalk binary is installed;
+          </pre_condition>
+          <test_script_entry>/opt/wrt-internetstdmanu-android-tests/internetstdmanu/Crosswalk_WebApp_Scheme_Market.html</test_script_entry>
+        </description>
+      </testcase>
+      <testcase purpose="Validate the scheme 'sms:' is implemented in Crosswalk" type="Functional" status="approved" component="Web Features" execution_type="manual" priority="P1" id="Crosswalk_WebApp_Scheme_Sms">
+        <description>
+          <pre_condition>
+            1.Make sure Crosswalk binary is installed;
+          </pre_condition>
+          <test_script_entry>/opt/wrt-internetstdmanu-android-tests/internetstdmanu/Crosswalk_WebApp_Scheme_Sms.html</test_script_entry>
+        </description>
+      </testcase>
+      <testcase purpose="Validate the scheme 'tel:' is implemented in Crosswalk" type="Functional" status="approved" component="Web Features" execution_type="manual" priority="P1" id="Crosswalk_WebApp_Scheme_Tel">
+        <description>
+          <pre_condition>
+            1.Make sure Crosswalk binary is installed;
+          </pre_condition>
+          <test_script_entry>/opt/wrt-internetstdmanu-android-tests/internetstdmanu/Crosswalk_WebApp_Scheme_Tel.html</test_script_entry>
+        </description>
+      </testcase>
+      <testcase purpose="Validate the cookie name and value can be add" type="Functional" status="approved" component="Crosswalk_Cookie" execution_type="manual" priority="P1" id="Crosswalk_Cookie_Add_Cookies">
+        <description>
+          <pre_condition>
+            1.Make sure Crosswalk application is launched;
+            2.Package a web app,it contains web link: http://www.html-kit.com/tools/cookietester/;
+            3.Install this web app;
+          </pre_condition>
+          <test_script_entry>/opt/wrt-internetstdmanu-android-tests/internetstdmanu/Crosswalk_Cookie_Add_Cookies.html</test_script_entry>
+        </description>
+      </testcase>
+      <testcase purpose="Validate the cookie name and value can be delete" type="Functional" status="approved" component="Crosswalk_Cookie" execution_type="manual" priority="P1" id="Crosswalk_Cookie_Remove_Cookies">
+        <description>
+          <pre_condition>
+            1.Make sure Crosswalk application is launched;
+            2.Package a web app,it contains web link: http://www.html-kit.com/tools/cookietester/;
+            3.Install this web app;
+            4.There are some cookies exist.
+          </pre_condition>
+          <test_script_entry>/opt/wrt-internetstdmanu-android-tests/internetstdmanu/Crosswalk_Cookie_Remove_Cookies.html</test_script_entry>
+        </description>
+      </testcase>
+      <testcase purpose="Validate the cookie name and value can be get after refresh" type="Functional" status="approved" component="Crosswalk_Cookie" execution_type="manual" priority="P2" id="Crosswalk_Cookie_Refresh_Cookies">
+        <description>
+          <pre_condition>
+            1.Make sure Crosswalk application is launched;
+            2.Package a web app,it contains web link: http://www.html-kit.com/tools/cookietester/;
+            3.Install this web app;
+          </pre_condition>
+          <test_script_entry>/opt/wrt-internetstdmanu-android-tests/internetstdmanu/Crosswalk_Cookie_Refresh_Cookies.html</test_script_entry>
+        </description>
+      </testcase>
+      <testcase purpose="Validate the cookie name and value can be modify" type="Functional" status="approved" component="Crosswalk_Cookie" execution_type="manual" priority="P2" id="Crosswalk_Cookie_Modify_Cookies">
+        <description>
+          <pre_condition>
+            1.Make sure Crosswalk application is launched;
+            2.Package a web app,it contains web link: http://www.html-kit.com/tools/cookietester/;
+            3.Install this web app;
+            </pre_condition>
+          <test_script_entry>/opt/wrt-internetstdmanu-android-tests/internetstdmanu/Crosswalk_Cookie_Modify_Cookies.html</test_script_entry>
+        </description>
+      </testcase>
+      <testcase purpose="Validate all the cookies can be get" type="Functional" status="approved" component="Crosswalk_Cookie" execution_type="manual" priority="P1" id="Crosswalk_Cookie_App_Background">
+        <description>
+          <pre_condition>
+            1.Make sure Crosswalk application is launched;
+            2.Package a web app,it contains web link: http://www.html-kit.com/tools/cookietester/;
+            3.Install this web app;
+            4.There are some cookies exist.
+            </pre_condition>
+          <test_script_entry>/opt/wrt-internetstdmanu-android-tests/internetstdmanu/Crosswalk_Cookie_App_Background.html</test_script_entry>
+        </description>
+      </testcase>
+      <testcase purpose="Validate all the cookies can be get" type="Functional" status="approved" component="Crosswalk_Cookie" execution_type="manual" priority="P2" id="Crosswalk_Cookie_App_Close">
+        <description>
+          <pre_condition>
+            1.Make sure Crosswalk application is launched;
+            2.Package a web app,it contains web link: http://www.html-kit.com/tools/cookietester/;
+            3.Install this web app;
+            4.There are some cookies exist.
+            5.Web app launched
+            </pre_condition>
+          <test_script_entry>/opt/wrt-internetstdmanu-android-tests/internetstdmanu/Crosswalk_Cookie_App_Close.html</test_script_entry>
+        </description>
+      </testcase>
+      <testcase purpose="Validate all the cookies can be get" type="Functional" status="approved" component="Crosswalk_Cookie" execution_type="manual" priority="P3" id="Crosswalk_Cookie_App_Reboot">
+        <description>
+          <pre_condition>
+            1.Make sure Crosswalk application is launched;
+            2.Package a web app,it contains web link: http://www.html-kit.com/tools/cookietester/;
+            3.Install this web app;
+            4.There are some cookies exist.
+            </pre_condition>
+          <test_script_entry>/opt/wrt-internetstdmanu-android-tests/internetstdmanu/Crosswalk_Cookie_App_Reboot.html</test_script_entry>
+        </description>
+      </testcase>
+      <testcase purpose="Validate all the cookies can be get" type="Functional" status="approved" component="Crosswalk_Cookie" execution_type="manual" priority="P3" id="Crosswalk_Cookie_App_Reinstall">
+        <description>
+          <pre_condition>
+            1.Make sure Crosswalk application is launched;
+            2.Package a web app,it contains web link: http://www.html-kit.com/tools/cookietester/;
+            3.Install this web app;
+            4.There are some cookies exist.
+            </pre_condition>
+          <test_script_entry>/opt/wrt-internetstdmanu-android-tests/internetstdmanu/Crosswalk_Cookie_App_Reinstall.html</test_script_entry>
+        </description>
+      </testcase>
+      <testcase purpose="Validate all the cookies can be get" type="Functional" status="approved" component="Crosswalk_Cookie" execution_type="manual" priority="P2" id="Crosswalk_Cookie_XwalkRuntimeLib_Update">
+        <description>
+          <pre_condition>
+            1.Make sure Crosswalk application is launched;
+            2.Package a web app,it contains web link: http://www.html-kit.com/tools/cookietester/;
+            3.Install this web app;
+            4.There are some cookies exist.
+            </pre_condition>
+          <test_script_entry>/opt/wrt-internetstdmanu-android-tests/internetstdmanu/Crosswalk_Cookie_XwalkRuntimeLib_Update.html</test_script_entry>
+        </description>
+      </testcase>
+    </set>
+  </suite>
+</test_definition>
