@@ -13,4 +13,5 @@ whitelist="
 inst.sh
 tests.xml
 tests.full.xml
+testapp
 mediasrc"
