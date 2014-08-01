@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <!--
-Copyright (c) 2012 Intel Corporation.
+Copyright (c) 2014 Intel Corporation.
 
 Redistribution and use in source and binary forms, with or without modification,
 are permitted provided that the following conditions are met:
@@ -26,33 +26,21 @@ NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE,
 EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
 Authors:
-        Xu, Yi <yix.xu@intel.com>
+        Chen, Xi <xix.a.chen@intel.com>
 
 -->
 
-<html>
-  <head>
-    <title>Inline SVG Test: svg_label_inline</title>
-    <link rel="author" title="Intel" href="http://www.intel.com/" />
-    <link rel="help" href="http://www.w3.org/TR/2012/WD-html5-20121025/mathml.html#svg" />
-    <link rel="match" href="reference/svg_label_inline-ref.html" />
-    <meta name="flags" content="" />
-    <meta name="assert" content="Check if the SVG inside HTML label element parses correctly" />
-    <script src="../resources/testharness.js"></script>
-    <script src="../resources/testharnessreport.js"></script>
-  </head>
-  <body>
-    <label style="width:100px;height:100px;display:block; border:red 1px solid;">
-      <svg width="100px" height="100px" >
-        <rect width="100px" height="100px" fill="green"/>
-      </svg>
-    </label>
-    <p>SVG inside HTML label element</p>
-    <p id="testdetails">
-      <ul>
-        <li>Pass if appearing on the page a green rectangle with red border.</li>
-        <li>Fail if appearing on the page other.</li>
-      </ul>
-    </p>
-  </body>
-</html>
+<meta charset="utf-8">
+<title>HTML 5 Foreign Content SVG in HTML </title>
+<link rel="author" title="Intel" href="http://www.intel.com">
+<style>
+  div {
+    background: green;
+    width: 100px;
+    height: 100px;
+  }
+</style>
+<body>
+  <p> Test passes if a green rectangle is visible on the page below this line. </p>
+  <div></div>
+</body>
