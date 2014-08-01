@@ -1,0 +1,3 @@
+SUBDIRS = launch_fullscreen_true_tests splashscreen_launchscreen_bmp_tests splashscreen_launchscreen_gif_tests splashscreen_launchscreen_jpg_tests splashscreen_launchscreen_png_tests xwalk_hosts_matchpatternsmiddle_tests xwalk_hosts_matchpatternstail_tests xwalk_hosts_matchpatterns_tests xwalk_hosts_value_tests
+MANIFESTdir = /opt/wrt-manifestspecificmanu-android-tests/testapp
+EXTRA_DIST = $(MANIFEST_SCRIPTS)

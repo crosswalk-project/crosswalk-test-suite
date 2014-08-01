@@ -1,0 +1,3 @@
+SUBDIRS = packer_tool_minify_tests permission_field_duplicate_tests permission_field_lowercase_tests permission_field_more2_tests permission_field_more_tests permission_field_one_tests permission_field_uppercase_tests webgl_webrtc_disable_tests webgl_webrtc_enable_tests
+MANIFESTdir = /opt/wrt-packertoolmanu-android-tests/testapp
+EXTRA_DIST = $(MANIFEST_SCRIPTS)

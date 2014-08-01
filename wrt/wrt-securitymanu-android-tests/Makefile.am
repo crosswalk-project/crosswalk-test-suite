@@ -1,4 +1,4 @@
-commondir = resources webrunner securitymanu appsource
+commondir = resources webrunner securitymanu testapp
 SUBDIRS = $(commondir)
 docdir = /opt/wrt-securitymanu-android-tests
 dist_doc_DATA = Changelog COPYING README tests.xml tests.full.xml
