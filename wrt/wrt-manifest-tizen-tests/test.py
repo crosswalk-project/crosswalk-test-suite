@@ -59,8 +59,8 @@ def gen_Manifest_Json(output_file,in_file):
             line = line.strip('\n\r')
             items = line.split("	")
             counters = len(items)
-            os.mkdir(const.path + "/tcs/manifest" + str(Manifest_Row+1))
-            fp = open(const.path + "/tcs/manifest"+str(Manifest_Row+1) + "/manifest.json",'w')
+            os.mkdir(const.path + "/tcs/Crosswalk-Manifest-Check" + str(Manifest_Row+1))
+            fp = open(const.path + "/tcs/Crosswalk-Manifest-Check"+str(Manifest_Row+1) + "/manifest.json",'w')
             for i in range(0,len(items)):
               if ((name_list[i])!="icon" and (name_list[i])!="app"):
                     if (items[i].find("000")!=-1):
@@ -75,27 +75,27 @@ def gen_Manifest_Json(output_file,in_file):
             fp.writelines(get_self)
             print "\n-----------------------------------------------------------"
             print get_self
-            fp_manifest.writelines("manifest" + str(Manifest_Row+1) + "\n--------------------------------\n" +
+            fp_manifest.writelines("Crosswalk-Manifest-Check" + str(Manifest_Row+1) + "\n--------------------------------\n" +
              get_self+"\n--------------------------------\n")
             Manifest_Row = Manifest_Row+1
             fp.close()
             #start copy folder
             app_Folder(const.path_tcs)
-            get_Configxml(const.path_tcs + "/manifest" +str(Manifest_Row) + "/config.xml", "manifest" +str(Manifest_Row))
+            get_Configxml(const.path_tcs + "/Crosswalk-Manifest-Check" +str(Manifest_Row) + "/config.xml", "Crosswalk-Manifest-Check" +str(Manifest_Row))
             
             #launch the app
             for i in range(0,const.run_times):
                 #start packing
-                manifest_Packing("manifest" + str(Manifest_Row),Pack_Type)
+                manifest_Packing("Crosswalk-Manifest-Check" + str(Manifest_Row),Pack_Type)
                 get_run_back = launcher_WebApp(Pack_Type,str(Manifest_Row),get_self)
                 print "Run Webapp Times ---------------------------->",i,get_run_back
                 if (get_run_back=="testend"):
                     break
                 elif((get_run_back=="testagain") & (i==2)):
-                    if (os.path.isfile("opt/wrt-manifest-tizen-tests/manifest" + str(Manifest_Row) + "." + Pack_Type)):
+                    if (os.path.isfile("opt/wrt-manifest-tizen-tests/Crosswalk-Manifest-Check" + str(Manifest_Row) + "." + Pack_Type)):
                         log_Log(" webapp run fail and save webapp" + str(Manifest_Row) + "." + Pack_Type+ " to ./result" +"\n" )
-                        shutil.move("opt/wrt-manifest-tizen-tests/manifest" + str(Manifest_Row) + "." + Pack_Type ,const.path_result)
-            do_Clear(const.path_tcs + "/manifest" + str(Manifest_Row))
+                        shutil.move("opt/wrt-manifest-tizen-tests/Crosswalk-Manifest-Check" + str(Manifest_Row) + "." + Pack_Type ,const.path_result)
+            do_Clear(const.path_tcs + "/Crosswalk-Manifest-Check" + str(Manifest_Row))
             get_self=""
         file.close()
         fp_manifest.close()
@@ -316,7 +316,7 @@ def Usage():
 
 def get_Configxml(in_file,write_name):
     try:
-        line = "<?xml version=\"1.0\" encoding=\"UTF-8\"?><widget xmlns=\"http://www.w3.org/ns/widgets\" id=\"http://example.org/exampleWidget\" version=\"1.1\" height=\"200\" widtht=\"200\" viewmode=\"fullscreen\"><name short=\"manifest\">" + write_name + "</name></widget>"
+        line = "<?xml version=\"1.0\" encoding=\"UTF-8\"?><widget xmlns=\"http://www.w3.org/ns/widgets\" id=\"http://example.org/exampleWidget\" version=\"1.1\" height=\"200\" widtht=\"200\" viewmode=\"fullscreen\"><name short=\"Crosswalk-Manifest-Check\">" + write_name + "</name></widget>"
         file = open(in_file,'w+')
         file.writelines(line + "\n")
         file.close()
@@ -442,8 +442,8 @@ def testreport_auto_XML(webappName,auto_Result,tcs_manifest,tcs_message):
         lst_node = root.getiterator("set")
         if (Test_Flag=="positive"):
             if ((len(lst_node[0].getiterator("testcase"))>=1)):
-                if (lst_node[0].getiterator("testcase")[-1].get("id")<>("manifest"+webappName)):  
-                    SubElement(lst_node[0],"testcase", {'component':'Runtime Core','purpose':'Check if packaged web application can be installed/launched/uninstalled successfully','execution_type' : 'auto', 'id' : "manifest"+webappName ,'result': auto_Result})
+                if (lst_node[0].getiterator("testcase")[-1].get("id")<>("Crosswalk-Manifest-Check"+webappName)):  
+                    SubElement(lst_node[0],"testcase", {'component':'Runtime Core','purpose':'Check if packaged web application can be installed/launched/uninstalled successfully','execution_type' : 'auto', 'id' : "Crosswalk-Manifest-Check"+webappName ,'result': auto_Result})
                     cnode = root.getiterator("testcase")
                     desnode = cnode[-1]
                     SubElement(desnode,"description")
@@ -471,7 +471,7 @@ def testreport_auto_XML(webappName,auto_Result,tcs_manifest,tcs_message):
                     tree.write(const.report_file)
                     
             else:
-                SubElement(lst_node[0],"testcase", {'component':'Runtime Core','purpose':'Check if packaged web application can be installed/launched/uninstalled successfully','execution_type' : 'auto', 'id' : "manifest"+webappName ,'result': auto_Result})
+                SubElement(lst_node[0],"testcase", {'component':'Runtime Core','purpose':'Check if packaged web application can be installed/launched/uninstalled successfully','execution_type' : 'auto', 'id' : "Crosswalk-Manifest-Check"+webappName ,'result': auto_Result})
                 cnode = root.getiterator("testcase")
                 desnode = cnode[-1]
                 SubElement(desnode,"description")
@@ -491,8 +491,8 @@ def testreport_auto_XML(webappName,auto_Result,tcs_manifest,tcs_message):
                 tree.write(const.report_file) 
         else:
            if ((len(lst_node[1].getiterator("testcase"))>=1)):
-               if (lst_node[1].getiterator("testcase")[-1].get("id")<>("manifest"+webappName)):  
-                   SubElement(lst_node[1],"testcase", {'component':'Runtime Core','purpose':'Check if packaged web application can be installed/launched/uninstalled successfully','execution_type' : 'auto', 'id' : "manifest"+webappName ,'result': auto_Result})
+               if (lst_node[1].getiterator("testcase")[-1].get("id")<>("Crosswalk-Manifest-Check"+webappName)):  
+                   SubElement(lst_node[1],"testcase", {'component':'Runtime Core','purpose':'Check if packaged web application can be installed/launched/uninstalled successfully','execution_type' : 'auto', 'id' : "Crosswalk-Manifest-Check"+webappName ,'result': auto_Result})
                    cnode = root.getiterator("testcase")
                    desnode = cnode[-1]
                    SubElement(desnode,"description")
@@ -519,7 +519,7 @@ def testreport_auto_XML(webappName,auto_Result,tcs_manifest,tcs_message):
                     actualresult.text = auto_Result
                     tree.write(const.report_file) 
            else:
-              SubElement(lst_node[1],"testcase", {'component':'Runtime Core','purpose':'Check if packaged web application can be installed/launched/uninstalled successfully','execution_type' : 'auto', 'id' : "manifest"+webappName ,'result': auto_Result})
+              SubElement(lst_node[1],"testcase", {'component':'Runtime Core','purpose':'Check if packaged web application can be installed/launched/uninstalled successfully','execution_type' : 'auto', 'id' : "Crosswalk-Manifest-Check"+webappName ,'result': auto_Result})
               cnode = root.getiterator("testcase")
               desnode = cnode[-1]
               SubElement(desnode,"description")
@@ -554,12 +554,12 @@ def manifest_Packing(pakeNo,pakeType):
         cmd_packing="python ./allpairs/make_xpk.py "
         if (pakeNo =="all"):#all is not support now,please use default 
             for i in range (1,(Manifest_Row+1)):
-                cmd_line=" ./tcs/manifest" + str(i) +" -o ./opt/wrt-manifest-tizen-tests/manifest" + str(i) + "."+ pakeType +" key.pem "
+                cmd_line=" ./tcs/Crosswalk-Manifest-Check" + str(i) +" -o ./opt/wrt-manifest-tizen-tests/Crosswalk-Manifest-Check" + str(i) + "."+ pakeType +" key.pem "
                 if (pakeType=="xpk"):
                     os.system(cmd_packing + cmd_line)
                 else:
-                    os.chdir(os.getcwd() + "/tcs/manifest" + str(i))
-                    os.system("zip -rq ../../opt/wrt-manifest-tizen-tests/manifest"+ str(i) +"." + pakeType+" ./")
+                    os.chdir(os.getcwd() + "/tcs/Crosswalk-Manifest-Check" + str(i))
+                    os.system("zip -rq ../../opt/wrt-manifest-tizen-tests/Crosswalk-Manifest-Check"+ str(i) +"." + pakeType+" ./")
                     os.chdir(const.path)
         else:
              cmd_line=" ./tcs/" + str(pakeNo) +" -o ./opt/wrt-manifest-tizen-tests/" + str(pakeNo)+"."+ pakeType +" key.pem"
@@ -585,7 +585,7 @@ def launcher_WebApp(pakeType,Manifest_Row, tcs_manifest):
         dt_format = dt_now.strftime('%m_%d_%H_%M_%S')
         cmd_pushxpk = "sdb -s " + Device_Ip +" push " + const.name + "-" + const.version +"." + pakeType + ".zip " +  const.device_path 
         cmd_unzipxpk = "sdb -s " + Device_Ip +" shell unzip -od " + const.device_path + "  " + const.device_path + const.name + "-" + const.version + "." + pakeType + ".zip "
-        cmd_installapp="sdb -s " + Device_Ip +" shell \"su - app -c 'export DBUS_SESSION_BUS_ADDRESS=unix:path=/run/user/5000/dbus/user_bus_socket;" + const.device_path + "/opt/wrt-manifest-tizen-tests/appinstall.sh "+ const.device_path +"/opt/wrt-manifest-tizen-tests/manifest" + str(Manifest_Row) +  "." + pakeType +"'\""
+        cmd_installapp="sdb -s " + Device_Ip +" shell \"su - app -c 'export DBUS_SESSION_BUS_ADDRESS=unix:path=/run/user/5000/dbus/user_bus_socket;" + const.device_path + "/opt/wrt-manifest-tizen-tests/appinstall.sh "+ const.device_path +"/opt/wrt-manifest-tizen-tests/Crosswalk-Manifest-Check" + str(Manifest_Row) +  "." + pakeType +"'\""
         print "------------push webapp----------->"
         get_push = get_runback(cmd_pushxpk,"push","")
         log_Log(" push webapp--------->" + str(Manifest_Row) + str(get_push) + "\n")
@@ -602,8 +602,8 @@ def launcher_WebApp(pakeType,Manifest_Row, tcs_manifest):
         os.system(cmd_chmod)
         cmd_chmod = "sdb -s " + Device_Ip +" shell chmod 777 "+const.device_path+"/opt/wrt-manifest-tizen-tests/checkdb_new.sh"
         os.system(cmd_chmod)
-        shutil.copy("./tests_sample.xml", "./result/manifest" + str(Manifest_Row) + ".xml")
-        result_manifest_XML("manifest" + str(Manifest_Row) + ".xml",auto_result,tcs_manifest)
+        shutil.copy("./tests_sample.xml", "./result/Crosswalk-Manifest-Check" + str(Manifest_Row) + ".xml")
+        result_manifest_XML("Crosswalk-Manifest-Check" + str(Manifest_Row) + ".xml",auto_result,tcs_manifest)
         #install app
         cmd_checkdb="sdb -s " + Device_Ip +" shell \"su - app -c 'export DBUS_SESSION_BUS_ADDRESS=unix:path=/run/user/5000/dbus/user_bus_socket;" + const.device_path + "/opt/wrt-manifest-tizen-tests/checkdb.sh '\""
         get_dbcount_before = get_runback(cmd_checkdb,"install","")[0].strip("\n\r")
@@ -692,13 +692,13 @@ def launcher_WebApp(pakeType,Manifest_Row, tcs_manifest):
             print "-------------Install/Launch/Uninstall Fail-------------------"
             return "testagain"
         #key input pass or faile
-        print "---------- Webapp manifest" + str(Manifest_Row) + "." + pakeType +" test end------------>\n"
+        print "---------- Webapp Crosswalk-Manifest-Check" + str(Manifest_Row) + "." + pakeType +" test end------------>\n"
         log_Log(" test webapp " + str(Manifest_Row) + " ok "+ "\n")                    
     except Exception,e: 
         log_Log(" test webapp " + str(Manifest_Row) + " error " + e + "\n") 
         print Exception,"Launch webapp error:",e 
     finally:
-        result_manifest_XML("manifest" + str(Manifest_Row) + ".xml",auto_result , tcs_manifest)
+        result_manifest_XML("Crosswalk-Manifest-Check" + str(Manifest_Row) + ".xml",auto_result , tcs_manifest)
         testreport_auto_XML(str(Manifest_Row), auto_result ,tcs_manifest,fail_message)         
         os.system("sdb -s " + Device_Ip +" shell rm -rf "+const.device_path+"/opt/wrt-manifest-tizen-tests")
         os.system("sdb -s " + Device_Ip +" shell rm -rf "+const.device_path+"/wrt-manifest-tizen-tests*")
