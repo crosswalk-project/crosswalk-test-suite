@@ -43,22 +43,28 @@ Authors:
   </head>
   <body>
     <div id="log"></div>
-    <script language="javascript" type="text/javascript">
-        var t = async_test("Check if WRT return a response when the request is a [HTTP] GET request");
-        var xmlHttp;
-        var url = "config.xml";
-        t.step(function() {
-            xmlHttp = new XMLHttpRequest();
-            xmlHttp.open("GET", url,true);
-            xmlHttp.onreadystatechange = callback;
-            xmlHttp.send(null);
-            function callback() {
-                if (xmlHttp.readyState == 4 && xmlHttp.status == 0) {
-                    t.done();
-                } else {
-                    assert_unreached("Fail");
-                }
+    <script>
+        var t = async_test(document.title, { timeout: 3000 });
+
+        var url = "support/cors_echo.cgi?message=test";
+        var xhr = new XMLHttpRequest();
+        xhr.open('get', url);
+        xhr.send(null);
+
+        if (!xhr) {
+            assert_true(false, "supported");
+            t.done();
+        }
+        xhr.onreadystatechange = t.step_func(function() {
+            if ((xhr.readyState == 4) ||(xhr.readyState == 0)) {
+                var text = xhr.responseText;
+                assert_true(true);
+                t.done();
             }
+        });
+        xhr.onerror = t.step_func(function(e) {
+            assert_unreached("the request has failed");
+            t.done();
         });
     </script>
   </body>

@@ -1,5 +1,5 @@
-<!DOCTYPE html>
-<!--
+<?php
+/*
 Copyright (c) 2012 Intel Corporation.
 
 Redistribution and use in source and binary forms, with or without modification,
@@ -26,46 +26,18 @@ NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE,
 EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
 Authors:
-        Hao, Yunfei <yunfenx.hao@intel.com>
+        Fan,Weiwei <weiwix.fan@intel.com>
 
--->
-
-<html>
-  <head>
-    <title>WRT Test: other-uri-XMLHttpRequest-head</title>
-    <link rel="author" title="Intel" href="http://www.intel.com"/>
-    <link rel="help" href=""/>
-    <meta name="flags" content=""/>
-    <meta name="assert" content="Check if WRT return a response when the request is a [HTTP] HEAD request"/>
-    <meta charset="utf-8">
-    <script src="resources/testharness.js"></script>
-    <script src="resources/testharnessreport.js"></script>
-  </head>
-  <body>
-    <div id="log"></div>
-    <script>
-        var t = async_test(document.title, { timeout: 3000 });
-
-        var url = "support/cors_echo.cgi?message=test";
-        var xhr = new XMLHttpRequest();
-        xhr.open("HEAD", url,true);
-        xhr.send(null);
-
-        if (!xhr) {
-            assert_true(false, "supported");
-            t.done();
-        }
-        xhr.onreadystatechange = t.step_func(function() {
-            if ((xhr.readyState == 4) ||(xhr.readyState == 0)) {
-                var text = xhr.responseText;
-                assert_true(true);
-                t.done();
-            }
-        });
-        xhr.onerror = t.step_func(function(e) {
-            assert_unreached("the request has failed");
-            t.done();
-        });
-    </script>
-  </body>
-</html>
+*/
+    header("Access-Control-Allow-Origin: " . $_SERVER['HTTP_ORIGIN']); // Specify domains from which requests are allowed
+    header('Cache-Control: no-cache');
+    header('Pragma: no-cache');
+    header('Content-Type: text/plain');
+    $str = "";
+    if ($_POST['message'] == "test") {
+        $str = $_POST['message'];
+    } else if ($_GET['message'] == "test") {
+        $str = $_GET['message'];
+    }
+    echo($str);
+?>
