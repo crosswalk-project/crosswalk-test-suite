@@ -50,15 +50,14 @@ Authors:
         var isOpenCalled = false;
         var isMessageCalled = false;
 
-        webSocket.onopen = function () {
+        webSocket.onopen = t.step_func(function () {
             isOpenCalled = true;
             webSocket.send("Hello");
-            webSocket.close();
-        }
+        });
 
         webSocket.onmessage = t.step_func(function () {
             isMessageCalled = true;
-            t.done();
+            webSocket.close();
         });
 
         webSocket.onclose = function () {
