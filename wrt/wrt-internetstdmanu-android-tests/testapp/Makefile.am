@@ -1,3 +1,3 @@
-SUBDIRS = web_feature_notification_tests web_feature_scheme_tests web_hwaccelerated_video_tests web_scheme_content_tests
+SUBDIRS = web_scheme web_scheme_content
 MANIFESTdir = /opt/wrt-internetstdmanu-android-tests/testapp
 EXTRA_DIST = $(MANIFEST_SCRIPTS)

@@ -7,5 +7,7 @@ testapp/Makefile \
 testapp/use_chrome_blacklist_tests/Makefile \
 testapp/web_support_copyandpaste_tests/Makefile \
 testapp/web_support_pasted_tests/Makefile \
+testapp/web_feature_notification_tests/Makefile \
+testapp/web_hwaccelerated_video_tests/Makefile \
 resources/Makefile webrunner/Makefile])
 AC_OUTPUT
