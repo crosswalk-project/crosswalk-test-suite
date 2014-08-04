@@ -42,6 +42,9 @@ fi
 if [ $type == "xpk" ]; then
     xpkpacktooldir=$PWD/../../tools
 fi
+if [ $type == "pure" ]; then
+    xpkpacktooldir=$PWD/../../tools
+fi
 
 if [[ -z $name || -z $version || -z $appname ]];then
     echo "Package name or version not specified in setting file"
@@ -93,6 +96,8 @@ function create_pure()
 {
 # create wgt
     cd $BUILD_DEST
+    cp $xpkpacktooldir/make_xpk.py  $BUILD_DEST/opt/$name/
+    cp -arf $BUILD_ROOT/testapp/diffid_same_version_tests $BUILD_DEST/opt/$name/
     zip -rq $BUILD_DEST/opt/$name/$name.zip *
     if [ $? -ne 0 ];then
         echo "Create $name.zip fail.... >>>>>>>>>>>>>>>>>>>>>>>>>"
@@ -285,6 +290,7 @@ if [ $? -ne 0 ];then
     clean_workspace
     exit 1
 fi
+
 }
 
 function zip_for_crx(){

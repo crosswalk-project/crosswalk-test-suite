@@ -31,24 +31,15 @@
 #        IVAN CHEN <yufeix.chen@intel.com>
 #
 
-local_path=$(dirname $0)
-source $local_path/Common.sh
-
-#get current time as log file's name
-logName=Crosswalk_Tizen_Packaging_Tool_Create_test_`date '+%Y%m%d%H%M'`.log
-reportName="Crosswalk_Tizen_Test.result"
-resultName="Crosswalk_Tizen_Test.result.log"
-
-function_creat_xpk $logName
-
+python make_xpk.py diffid_same_version_tests/ key.pem 
+sleep 5
+test -f diffid_same_version_tests.xpk
 if [ $? -eq 0 ];then
-        echo "Create xpk successfully." >> $local_path/../log/result/$resultName
-        echo "Crosswalk_Tizen_Packaging_Tool_Create_Package***************************** [Pass]" >> $local_path/../log/result/$resultName
-        echo "Crosswalk_Tizen_Packaging_Tool_Create_Package                              PASS" >> $local_path/../log/result/$reportName
-        exit 0
+                rm key.pem
+                echo "Pass"
+                exit 0
 else
-        echo "Create xpk Failure,the xpk can't exist." >> $local_path/../log/result/$resultName
-        echo "Crosswalk_Tizen_Packaging_Tool_Create_Package***************************** [Fail]" >> $local_path/../log/result/$resultName
-        echo "Crosswalk_Tizen_Packaging_Tool_Create_Package                              FAIL" >> $local_path/../log/result/$reportName
-        exit 1
+                echo "Fail"
+                exit 1
 fi
+
