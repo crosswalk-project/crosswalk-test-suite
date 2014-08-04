@@ -29,23 +29,69 @@ Authors:
         Cui, Jieqiong <jieqiongx.cui@intel.com>
 */
 
-function rotate() {
-  cxt.rotate(20*Math.PI/180);
-  cxt.clearRect(0,0,500,500);
+function reset() {
+  $("#myCanvas").remove();
+  $("<canvas id='myCanvas' width='300' height='240' style='border:1px solid #c3c3c3; margin-top: 19px;'>Your browser does not support the canvas element!</canvas>").appendTo($("#title"));
+  cxt = document.getElementById("myCanvas").getContext("2d");
+  img=new Image();
+  img.src="../../res/images/w3c/poster.png";
   cxt.drawImage(img,0,0);
 }
 
-function scale() {
-  cxt.scale(1.5,1.5);
+function rotate_90() {
+  reset();
+  cxt.clearRect(0,0,500,500);
+  cxt.translate(77,0); 
+  cxt.rotate(Math.PI/2); 
+  cxt.drawImage(img,0,0);
+}
+
+function rotate_180() {
+  reset();
+  cxt.clearRect(0,0,500,500);
+  cxt.translate(102,77); 
+  cxt.rotate(Math.PI); 
+  cxt.drawImage(img,0,0);
+}
+
+function rotate_270() {
+  reset();
+  cxt.clearRect(0,0,500,500);
+  cxt.translate(0,102); 
+  cxt.rotate(Math.PI/2*3); 
+  cxt.drawImage(img,0,0);
+}
+
+function rotate_360() {
+  reset();
+  cxt.clearRect(0,0,500,500);
+  cxt.translate(0,0); 
+  cxt.rotate(Math.PI*2); 
+  cxt.drawImage(img,0,0);
+}
+
+function scale_half() {
+  reset();
+  cxt.clearRect(0,0,500,500);
+  cxt.scale(0.5,0.5);
+  cxt.drawImage(img,0,0);
+}
+function scale_double() {
+  reset();
+  cxt.clearRect(0,0,500,500);
+  cxt.scale(2,2);
   cxt.drawImage(img,0,0);
 }
 
 function transform() {
+  reset();
+  cxt.clearRect(0,0,500,500);
   cxt.transform(0.8,0.5,0.5,1,10,0);
   cxt.drawImage(img,0,0);
 }
 
 function to_blackWhite() {
+  reset();
   cxt.drawImage(img,0,0);
   var imgData = cxt.getImageData(0, 0, c.width, c.height);
   var imgD = imgData.data;
