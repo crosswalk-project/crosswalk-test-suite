@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<!--
+Copyright (c) 2013 Intel Corporation.
+
+Redistribution and use in source and binary forms, with or without modification,
+are permitted provided that the following conditions are met:
+
+* Redistributions of works must retain the original copyright notice, this list
+  of conditions and the following disclaimer.
+* Redistributions in binary form must reproduce the original copyright notice,
+  this list of conditions and the following disclaimer in the documentation
+  and/or other materials provided with the distribution.
+* Neither the name of Intel Corporation nor the names of its contributors
+  may be used to endorse or promote products derived from this work without
+  specific prior written permission.
+
+THIS SOFTWARE IS PROVIDED BY INTEL CORPORATION "AS IS"
+AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE
+IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE
+ARE DISCLAIMED. IN NO EVENT SHALL INTEL CORPORATION BE LIABLE FOR ANY DIRECT,
+INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING,
+BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE,
+DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY
+OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING
+NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE,
+EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
+
+Authors:
+        Fan,Weiwei <weiwix.fan@intel.com>
+        Xu,Yuhan <yuhanx.xu@intel.com>
+
+-->
+
+<html>
+  <head>
+    <title>WebStorage Test: Storage_example_insurance_on_trip</title>
+    <link rel="author" title="Intel" href="http://www.intel.com" />
+    <link rel="help" href="http://www.w3.org/TR/2011/CR-webstorage-20111208/" />
+    <meta name="flags" content="interact" />
+    <meta name="assert" content="Check if the user had been insurance on this trip" />
+  </head>
+  <body>
+    <span>
+      Step 1. Check if the page show "you had not been insurance on this trip" when you first access it.<br>
+      Step 2. Check the checkbox, click the 'Run' button to refresh the page, and then check if the page show "you had been insurance on this trip".<br>
+      Test passes if the above two steps are all true.<br>
+    </span>
+    <label>
+      <h3><input id="test_checkbox" type="checkbox" onchange="sessionStorage.insurance = checked ? true : false">
+        I want insurance on this trip.</h3>
+    </label>
+    <script>
+        if (sessionStorage.insurance == "true") {
+            document.write("<h2>you had been insurance on this trip.</h2>");
+        } else {
+            document.write("<h2>you had not been insurance on this trip.</h2>");
+        }
+    </script>
+  </body>
+</html>

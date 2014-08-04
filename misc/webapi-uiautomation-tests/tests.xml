@@ -2,7 +2,7 @@
 <?xml-stylesheet type="text/xsl" href="./testcase.xsl"?>
 <test_definition>
   <suite name="webapi-uiautomation-tests" category="W3C/HTML5 APIs" launcher="xwalk">
-    <set name="css3-fonts" type="webrefer">
+    <set name="css3-fonts" type="ref">
       <testcase component="WebAPI/DOM, Forms and Styles/CSS Fonts Module Level 3 (Partial)" execution_type="auto" id="font-001" purpose="Check if the 'font' shorthand property accepts and sets font-size and font-family">
         <description>
           <test_script_entry timeout="90">/opt/webapi-uiautomation-tests/css3-fonts/csswg/font-001.htm</test_script_entry>
@@ -406,7 +406,7 @@
         </description>
       </testcase>
     </set>
-    <set name="css3-background" type="webrefer">
+    <set name="css3-background" type="ref">
       <testcase component="WebAPI/DOM, Forms and Styles/CSS Backgrounds and Borders Module Level 3 (Partial)" execution_type="auto" id="background-clip-002" purpose="Check if background-clip initial value display correctly in visual">
         <description>
           <test_script_entry timeout="90">/opt/webapi-uiautomation-tests/css3-background/csswg/background-clip-002.html</test_script_entry>
@@ -564,7 +564,7 @@
         </description>
       </testcase>
     </set>
-    <set name="css3-flexiblebox" type="webrefer">
+    <set name="css3-flexiblebox" type="ref">
       <testcase execution_type="auto" id="align-content-001" purpose="This test checks that a multi-line flex container with 'align-content: center' centers lines in the flex container">
         <description>
           <test_script_entry timeout="90">/opt/webapi-uiautomation-tests/css3-flexiblebox/csswg/align-content-001.htm</test_script_entry>
@@ -680,7 +680,7 @@
         </description>
       </testcase>
     </set>
-    <set name="html5-extra" type="webrefer">
+    <set name="html5-extra" type="ref">
       <testcase component="WebAPI/W3C_EXTRAHTML5/Semantics" execution_type="auto" id="mark_background_is_yellow" purpose="Check if the mark background is yellow">
         <description>
           <test_script_entry timeout="90">/opt/webapi-uiautomation-tests/html5-extra/semantics/mark_element_base_usage.html</test_script_entry>
@@ -688,7 +688,7 @@
         </description>
       </testcase>
     </set>
-    <set name="css3-style" type="webrefer">
+    <set name="css3-style" type="ref">
       <testcase component="WebAPI/DOM, Forms and Styles/CSS Style Attribute" execution_type="auto" id="style-attr-cascade-001" purpose="Test checks that contains an !important declaration will override the corresponding declaration">
         <description>
           <test_script_entry timeout="90">/opt/webapi-uiautomation-tests/css3-style/csswg/style-attr-cascade-001.htm</test_script_entry>
@@ -732,7 +732,7 @@
         </description>
       </testcase>
     </set>
-    <set name="html5-svg" type="webrefer">
+    <set name="html5-svg" type="ref">
       <testcase component="WebAPI/Graphics/HTML5 SVG" execution_type="auto" id="svg_label_inline" purpose="Check if the SVG inside HTML label element parses correctly">
         <description>
           <test_script_entry timeout="90">/opt/webapi-uiautomation-tests/html5-svg/svg_label_inline.html</test_script_entry>
@@ -776,7 +776,7 @@
         </description>
       </testcase>
     </set>
-    <set name="css3-color" type="webrefer">
+    <set name="css3-color" type="ref">
       <testcase component="WebAPI/DOM, Forms and Styles/CSS Color Module Level 3" execution_type="auto" id="CSS3Colors_color_hsl_hus_only_number" purpose="Check if in hsl(), the hus only a number value can be given">
         <description>
           <test_script_entry timeout="90">/opt/webapi-uiautomation-tests/css3-color/CSS3Colors_color_hsl_hus_only_number.html</test_script_entry>
@@ -886,7 +886,7 @@
         </description>
       </testcase>
     </set>
-    <set name="html5-canvas" type="webrefer">
+    <set name="html5-canvas" type="ref">
       <testcase component="WebAPI/Graphics/HTML5 The canvas element (Partial)" execution_type="auto" id="canvas_compositing_globalcompositeoperation_001" purpose="Check the globalCompositeOperation attribute of CanvasRenderingContext2D interface.">
         <description>
           <test_script_entry timeout="90">/opt/webapi-uiautomation-tests/html5-canvas/w3c/canvas_compositing_globalcompositeoperation_001.htm</test_script_entry>
@@ -912,7 +912,7 @@
         </description>
       </testcase>
     </set>
- <set name="w3c-csp" type="webrefer">
+ <set name="w3c-csp" type="ref">
       <testcase component="WebAPI/Security/Content Security Policy" execution_type="auto" id="csp_default-src_cross-origin_multi_font_blocked" purpose="Check if user agent is unable to use the not allowed external font resource when default-src is multi cross origin.">
         <description>
           <test_script_entry timeout="90">/opt/webapi-uiautomation-tests/w3c-csp/csp_default-src_cross-origin_multi_font_blocked.cgi</test_script_entry>
@@ -1469,6 +1469,54 @@
         <description>
           <test_script_entry timeout="90">/opt/webapi-uiautomation-tests/w3c-csp/csp_script-src_unsafe-inline_blocked_int.cgi</test_script_entry>
           <refer_test_script_entry timeout="90">/opt/webapi-uiautomation-tests/w3c-csp/reference/csp_script-src_unsafe-inline_blocked_ext-ref.html</refer_test_script_entry>
+        </description>
+      </testcase>
+    </set>
+    <set name="browsers" type="script">
+      <testcase component="WebAPI/W3C_EXTRAHTML5/Browsers" execution_type="auto" id="window_alert_base" purpose="Check if pop the alert dialog">
+        <description>
+          <test_script_entry test_script_expected_result="0">/opt/webapi-uiautomation-tests/bddrunner html5-extra/testscripts/window_alert_base.feature</test_script_entry>
+        </description>
+      </testcase>
+      <testcase component="WebAPI/W3C_EXTRAHTML5/Browsers" execution_type="auto" id="window_confirm_base" purpose="Check if pop the confirm dialog">
+        <description>
+          <test_script_entry test_script_expected_result="0">/opt/webapi-uiautomation-tests/bddrunner html5-extra/testscripts/window_confirm_base.feature</test_script_entry>
+        </description>
+      </testcase>
+      <testcase component="WebAPI/W3C_EXTRAHTML5/Browsers" execution_type="auto" id="window_prompt_base" purpose="Check if pop the prompt dialog">
+        <description>
+          <test_script_entry test_script_expected_result="0">/opt/webapi-uiautomation-tests/bddrunner html5-extra/testscripts/window_prompt_base.feature</test_script_entry>
+        </description>
+      </testcase>
+    </set>
+    <set name="dom" type="script">
+      <testcase component="WebAPI/W3C_EXTRAHTML5/Dom" execution_type="auto" id="document_oninput_event" purpose="Check the document oninput event exists">
+        <description>
+          <test_script_entry test_script_expected_result="0">/opt/webapi-uiautomation-tests/bddrunner html5-extra/testscripts/document_oninput_event.feature</test_script_entry>
+        </description>
+      </testcase>
+      <testcase component="WebAPI/W3C_EXTRAHTML5/Dom" execution_type="auto" id="document_onchange_event" purpose="Check the document onchange event exists">
+        <description>
+          <test_script_entry test_script_expected_result="0">/opt/webapi-uiautomation-tests/bddrunner html5-extra/testscripts/document_onchange_event.feature</test_script_entry>
+        </description>
+      </testcase>
+    </set>
+    <set name="xhtml5" type="script">
+      <testcase component="WebAPI/W3C_EXTRAHTML5/Xhtml5" execution_type="auto" id="area_noref" purpose="Check if xhtml5 area element supports nohref attribute">
+        <description>
+          <test_script_entry test_script_expected_result="0">/opt/webapi-uiautomation-tests/bddrunner html5-extra/testscripts/area_noref.feature</test_script_entry>
+        </description>
+      </testcase>
+    </set>
+    <set name="webstorage" type="script">
+      <testcase component="WebAPI/Storage/Web Storage (Partial)" execution_type="auto" id="Storage_example_insurance_on_trip" purpose="Check if the user had been insurance on this trip">
+        <description>
+          <test_script_entry test_script_expected_result="0">/opt/webapi-uiautomation-tests/bddrunner w3c-webstorage/testscripts/Storage_example_insurance_on_trip.feature</test_script_entry>
+        </description>
+      </testcase>
+      <testcase component="WebAPI/Storage/Web Storage (Partial)" execution_type="auto" id="Storage_example_load_page_times" purpose="Check if the page can display a count of how many times the user has loaded it">
+        <description>
+          <test_script_entry test_script_expected_result="0">/opt/webapi-uiautomation-tests/bddrunner w3c-webstorage/testscripts/Storage_example_load_page_times.feature</test_script_entry>
         </description>
       </testcase>
     </set>
