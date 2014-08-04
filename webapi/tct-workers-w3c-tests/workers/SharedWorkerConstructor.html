@@ -41,10 +41,10 @@ Authors:
     <script>
         setup({timeout:500});
         var FileName = './support/shared-worker-constructor.js';
-        var worker = new SharedWorker(FileName);
-        worker.port.postMessage('shared worker constructor.');
         test(function()
         {
+            var worker = new SharedWorker(FileName);
+            worker.port.postMessage('shared worker constructor.');
             assert_equals(worker.toString(), "[object SharedWorker]");
         }, "Test Description: shared worker constructor Test 1: shared worker constructor.");
     </script>
