@@ -87,7 +87,6 @@ find $BUILD_DEST -name "Makefile*" -delete
 function create_wgt(){
     # create wgt
     cd $BUILD_DEST
-    cp -a $BUILD_ROOT/manifest.json   $BUILD_DEST/
     cp -a $BUILD_ROOT/icon.png     $BUILD_DEST/
 
 cat > index.html << EOF
