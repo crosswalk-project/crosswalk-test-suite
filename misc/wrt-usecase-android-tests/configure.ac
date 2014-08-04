@@ -1,55 +1,34 @@
-AC_INIT([wrt-usecase-android-tests], [6.35.1.2], [kangx.xu@intel.com])
+##
+# Copyright (c) 2012 Intel Corporation.
+#
+# Redistribution and use in source and binary forms, with or without modification,
+# are permitted provided that the following conditions are met:
+#
+# * Redistributions of works must retain the original copyright notice, this list
+#   of conditions and the following disclaimer.
+# * Redistributions in binary form must reproduce the original copyright notice,
+#   this list of conditions and the following disclaimer in the documentation
+#   and/or other materials provided with the distribution.
+# * Neither the name of Intel Corporation nor the names of its contributors
+#   may be used to endorse or promote products derived from this work without
+#   specific prior written permission.
+#
+# THIS SOFTWARE IS PROVIDED BY INTEL CORPORATION "AS IS"
+# AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE
+# IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE
+# ARE DISCLAIMED. IN NO EVENT SHALL INTEL CORPORATION BE LIABLE FOR ANY DIRECT,
+# INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING,
+# BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE,
+# DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY
+# OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING
+# NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE,
+# EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
+#
+# Authors:
+#               Fan, Yugang <yugang.fan@intel.com>
+#
+
+AC_INIT([wrt-usecase-android-tests], [6.35.1.2], [yugang.fan@intel.com])
 AM_INIT_AUTOMAKE([-Wall -Werror foreign])
-
-AC_CONFIG_FILES([Makefile \
-usecase/Makefile \
-usecase/wrt_integration/Makefile \
-usecase/wrt_integration/cookie_check/Makefile \
-usecase/wrt_integration/remote_debugging/Makefile \
-usecase/wrt_integration/schemes_check/Makefile \
-usecase/wrt_integration/testapp_scheme/Makefile \
-usecase/wrt_integration/scheme_content/Makefile \
-usecase/wrt_integration/notification_check/Makefile \
-usecase/wrt_integration/copy_paste/Makefile \
-usecase/wrt_integration/copy_paste_native/Makefile \
-
-usecase/wrt_sharemode/Makefile \
-usecase/wrt_sharemode/sharemode_webapp/Makefile \
-usecase/wrt_sharemode/sharemode_library/Makefile \
-
-usecase/wrt_webapp/Makefile \
-usecase/wrt_webapp/webapp_taskmanager/Makefile \
-usecase/wrt_webapp/webapp_operation/Makefile \
-usecase/wrt_webapp/webapp_xwalkhost/Makefile \
-usecase/wrt_webapp/webapp_video/Makefile \
-usecase/wrt_webapp/webapp_gesture/Makefile \
-usecase/wrt_webapp/webapp_openfile/Makefile \
-usecase/wrt_webapp/webapp_manifest/Makefile \
-
-
-usecase/wrt_splashscreen/Makefile \
-usecase/wrt_splashscreen/splashscreen_landscape/Makefile \
-usecase/wrt_splashscreen/splashscreen_png/Makefile \
-
-usecase/wrt_security/Makefile \
-usecase/wrt_security/security_urlcertificate/Makefile \
-usecase/wrt_security/permission_api_contacts/Makefile \
-
-
-usecase/wrt_extension/Makefile \
-usecase/wrt_extension/extension_and_permission/Makefile \
-usecase/wrt_extension/testapp_extension_permission_contacts/Makefile \
-usecase/wrt_extension/testapp_extension_permission_contacts/contactextension/Makefile \
-
-usecase/wrt_packertool/Makefile \
-usecase/wrt_packertool/packertool_options2/Makefile \
-usecase/wrt_packertool/packertool_compressor/Makefile \
-usecase/wrt_packertool/packertool_compressor2/Makefile \
-usecase/wrt_packertool/packertool_help/Makefile \
-usecase/wrt_packertool/packertool_icon/Makefile \
-usecase/wrt_packertool/packertool_options/Makefile \
-usecase/wrt_packertool/packertool_version/Makefile \
-usecase/wrt_packertool/packertool_xpk/Makefile \
-usecase/wrt_packertool/packertool_versionupdate/Makefile \
- ])
+AC_CONFIG_FILES([Makefile])
 AC_OUTPUT
