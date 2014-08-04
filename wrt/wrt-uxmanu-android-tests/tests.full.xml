@@ -3,6 +3,23 @@
 <test_definition>
   <suite name="wrt-integration-android-tests" category="Integration_with_Android_System" launcher="xwalk">
     <set name="Integration">
+      <testcase purpose="Validate if Crosswalk support HW accelerated HTML5 video" type="Functional" status="approved" component="Web Features" execution_type="manual" priority="P1" id="Crosswalk_WebApp_Video_HWAccelerate">
+        <description>
+          <pre_condition>
+            1.Make sure Crosswalk packer tool is download: crosswalk/
+            2.Packaged app only contain URL:"http://www.w3.org/2010/05/video/mediaevents.html"
+          </pre_condition>
+          <test_script_entry>/opt/wrt-uxmanu-android-tests/uxmanu/Crosswalk_WebApp_Video_HWAccelerate.html</test_script_entry>
+        </description>
+      </testcase>
+      <testcase purpose="Validate if enable the feature of HTML5 Notification in Crosswalk" type="Functional" status="approved" component="Web Features" execution_type="manual" priority="P1" id="Crosswalk_WebApp_HTML5_Notification">
+        <description>
+          <pre_condition>
+            1.Make sure Crosswalk binary is installed
+          </pre_condition>
+          <test_script_entry>/opt/wrt-uxmanu-android-tests/uxmanu/Crosswalk_WebApp_HTML5_Notification.html</test_script_entry>
+        </description>
+      </testcase>
       <testcase purpose="Validate Crosswalk suppor lock and unlock screen when running Web Apps" type="Functional" status="approved" component="Integration with Android System" execution_type="manual" priority="P1" id="Crosswalk_Lock_And_Unlock_Screen">
         <description>
           <pre_condition>
