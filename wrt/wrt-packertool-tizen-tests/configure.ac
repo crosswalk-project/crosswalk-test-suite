@@ -40,7 +40,7 @@ Makefile \
 log/Makefile \
 log/result/Makefile \
 resources/Makefile \
-packetool/Makefile \
+packertool/Makefile \
 resources/installer/Makefile \
 ])
 AC_OUTPUT

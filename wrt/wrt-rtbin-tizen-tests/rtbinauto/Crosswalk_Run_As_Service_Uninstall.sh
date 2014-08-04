@@ -28,11 +28,34 @@
 #Authors:
 #       IVAN CHEN <yufeix.chen@intel.com>
 
-local_path=$(cd $(dirname $0);pwd)
+local_path=$(dirname $0)
 source $local_path/Common
 
 func_check_xwalkservice
+if [[ $? -eq 1 ]]; then
+                 func_xwalkservice
+                 if [[ $? -eq 1 ]]; then
+                                 echo "set xwalk service failure"
+                                 exit 1
+                 fi
+fi
 
-install_xpk $local_path/../source/signature.xpk
+xwalkctl --install $local_path/../source/manifest_app_mainsource1_tests.xpk > /tmp/install.txt
+cat /tmp/install.txt | grep "Application installed"
+if [[ $? -eq 0 ]]; then
+                 echo "Use run as service mode install successfully"
+else
+                 echo "Use run  as service mode install failure"
+                 exit 1
+fi
 
-exit 0
+app_id_tmp=`cat /tmp/install.txt | cut -d / -f 4`
+app_id=`echo $app_id_tmp | sed 's/.$//g'` > /dev/null
+xwalkctl --uninstall $app_id
+if [[ $? -eq 0 ]]; then
+                 echo "Use run as service mode uninstall successfully"
+                 exit 0
+else
+                 echo "Use run  as service mode uninstall failure"
+                 exit 1
+fi

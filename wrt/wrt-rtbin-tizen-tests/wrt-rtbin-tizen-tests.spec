@@ -14,7 +14,5 @@ inst.sh
 tests.xml
 tests.full.xml
 mediasrc
-rtbin
-testapp
-manifest_app_mainsource1_tests.wgt
+rtbinauto
 source"
