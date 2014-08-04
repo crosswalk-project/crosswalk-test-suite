@@ -3,7 +3,7 @@ AM_INIT_AUTOMAKE([-Wall -Werror foreign])
 
 AC_CONFIG_FILES([Makefile \
 packagemgtmanu/Makefile \
-appsource/Makefile \
-appsource/web_openfile_thirdpart_tests/Makefile \
+testapp/Makefile \
+testapp/web_openfile_thirdpart_tests/Makefile \
 resources/Makefile webrunner/Makefile])
 AC_OUTPUT

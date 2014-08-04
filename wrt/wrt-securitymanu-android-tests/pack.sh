@@ -16,7 +16,7 @@ fi
 type="apk"
 mode="shared"
 arch="x86"
-sourcepath=appsource
+sourcepath="testapp"
 while getopts t:m:a: o
 do
     case "$o" in
