@@ -32,25 +32,25 @@ Authors:
 var vibration_time, vibration_periods, vibration_number;
 
 jQuery(document).ready(function() {
-    DisablePassButton();
-    // style setting
-    $(':jqmData(role=content)').css("text-align", "center");
-    $(':jqmData(role=content)').find(':jqmData(role=button) > span:first-child').css('padding', '15px 30px');
+  DisablePassButton();
+  // style setting
+  $(':jqmData(role=content)').css("text-align", "center");
+  $(':jqmData(role=content)').find(':jqmData(role=button) > span:first-child').css('padding', '15px 30px');
 
-    vibration_time = Number($("#slider-1").val())*1000;
-    vibration_periods = Number($("#slider-2").val())*1000;
-    vibration_number = $("#slider-3").val();
-    /* Hide input*/
-    $("#slider-1").hide();
-    $("#slider-2").hide();
-    $("#slider-3").hide();
-});
+  vibration_time = Number($("#slider-1").val())*1000;
+  vibration_periods = Number($("#slider-2").val())*1000;
+  vibration_number = $("#slider-3").val();
+  /* Hide input*/
+  $("#slider-1").hide();
+  $("#slider-2").hide();
+  $("#slider-3").hide();
 
-function startVibration() {
-    $("#start").addClass("ui-disabled");
-    var time_value=(Number(vibration_time)+Number(vibration_periods)) * Number(vibration_number);
-    setTimeout(function(){
-        $("#start").removeClass("ui-disabled");}, time_value);
+  $("#on").click(function() {
+    $("#off").removeClass("text-on");
+    $("#on").addClass("text-on");
+    $("#p").addClass("text-multi");
+    $("#h").addClass("text-h");
+
     var pattern = [];
     for(var i=0; i<2*vibration_number ;i++){
        if(i%2==0){
@@ -61,9 +61,16 @@ function startVibration() {
     }
     navigator.vibrate(pattern);
     EnablePassButton();
-}
+  });
 
-function stopVibration() {
+  $("#off").click(function() {
+    $("#on").removeClass("text-on");
+    $("#off").addClass("text-on");
+    $("#p").removeClass("text-multi");
+    $("#h").removeClass("text-h");
+
     navigator.vibrate(0);
-    $("#start").removeClass("ui-disabled");
-}
+  });
+
+});
+
