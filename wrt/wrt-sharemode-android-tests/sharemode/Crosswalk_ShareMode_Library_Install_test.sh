@@ -32,34 +32,23 @@
 
 local_path=$(dirname $0)
 
-#get current time as log file's name
-logName=Crosswalk_Android_Launcher_UI_Install_test_`date '+%Y%m%d%H%M'`.log
-reportName="Crosswalk_Android_Test.result"
-resultName="Crosswalk_Android_Test.result.log"
+CROSSWALK_APK=`cat $local_path/../Crosswalk_sharemode.conf | grep "Crosswalk_Library_Name" | cut -d "=" -f 2`
+CROSSWALK_PACKAGE=`cat $local_path/../Crosswalk_sharemode.conf | grep "Crosswalk_Library_Package" | cut -d "=" -f 2`
 
-CROSSWALK_APK=`cat $local_path/../Crosswalk_wrt_BFT.conf | grep "Android_Crosswalk_Name" | cut -d "=" -f 2`
-echo "Crosswalk APK name is " $CROSSWALK_APK 2>&1 >> $local_path/../log/$logName
-
-test -f $local_path/../resources/installer/$CROSSWALK_APK
+test -f $local_path/../resources/installer/$CROSSWALK_APK &>/dev/null
 #install
 if [ $? -eq 0 ];then
-   adb install -r $local_path/../resources/installer/$CROSSWALK_APK &> $local_path/../log/INSTALL_RESULT
-   echo "install xwalk" 2>&1 >> $local_path/../log/$logName
-   grep "Success" $local_path/../log/INSTALL_RESULT 2>&1 >> $local_path/../log/$logName
-   if [ $? -eq 0 ];then
-        echo "XwalkRuntimeLib install successflly" >> $local_path/../log/result/$resultName
-        echo "Crosswalk_Android_Launcher_UI_Install***************************** [Pass]" >> $local_path/../log/result/$resultName
-        echo "Crosswalk_Android_Launcher_UI_Install                                 PASS" >> $local_path/../log/result/$reportName
+    echo "XwalkRuntimeLibrary install"
+    adb install -r $local_path/../resources/installer/$CROSSWALK_APK &>/dev/null
+    adb shell pm list packages |grep $CROSSWALK_PACKAGE &>/dev/null
+    if [ $? -eq 0 ];then
+        echo "XwalkRuntimeLibrary install successflly"
         exit 0
-   else
-        echo "XWalkRuntimeLib.apk install fail" >> $local_path/../log/result/$resultName
-        echo "Crosswalk_Android_Launcher_UI_Install***************************** [Fail]" >> $local_path/../log/result/$resultName
-        echo "Crosswalk_Android_Launcher_UI_Install                                 FAIL" >> $local_path/../log/result/$reportName
+    else
+        echo "XwalkRuntimeLibrary install fail"
         exit 1
-   fi
+    fi
 else
-   echo "Crosswalk APK not found in $local_path/../resources/installer/" >> $local_path/../log/result/$resultName
-   echo "Crosswalk_Android_Launcher_UI_Install***************************** [Fail]" >> $local_path/../log/result/$resultName
-   echo "Crosswalk_Android_Launcher_UI_Install                                 FAIL" >> $local_path/../log/result/$reportName
-   exit 1
+    echo "XwalkRuntimeLibrary APK not found in $local_path/../resources/installer/"
+    exit 1
 fi

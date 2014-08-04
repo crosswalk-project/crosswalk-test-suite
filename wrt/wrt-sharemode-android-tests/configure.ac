@@ -37,8 +37,6 @@ AM_INIT_AUTOMAKE([-Wall -Werror foreign])
 
 AC_CONFIG_FILES([\
 Makefile \
-log/Makefile \
-log/result/Makefile \
 resources/Makefile \
 sharemode/Makefile \
 resources/apk/Makefile \

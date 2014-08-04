@@ -16,6 +16,7 @@ fi
 type="pure"
 mode="shared"
 arch="x86"
+sourcepath="testapp"
 while getopts t:m:a: o
 do
     case "$o" in
@@ -170,16 +171,16 @@ exit 1
 
 function create_source_apk(){
 cd $BUILD_ROOT/
-for buildfolder in `ls`
+cp -r $SRC_ROOT/../../tools/crosswalk $BUILD_ROOT/crosswalk
+cd $BUILD_ROOT/crosswalk
+for buildfolder in `ls -l $BUILD_DEST/opt/$name/$sourcepath/ |grep "^d"|awk '{print $NF}'`
 do
-        cp -r $SRC_ROOT/../../tools/crosswalk $BUILD_ROOT/crosswalk
-        cd $BUILD_ROOT/crosswalk
-        #echo "buildfolder" $buildfolder
-        if [ "${buildfolder:0:10}" == "extension_" ];then
-            echo "build extension webapp..."
-            python make_apk.py --package=org.xwalk.$buildfolder --name=$buildfolder --app-root=$BUILD_ROOT/$buildfolder/ --app-local-path=index.html --extensions=$BUILD_ROOT/$buildfolder/contactextension --mode=$mode --arch=$arch
-            continue
-        fi
+    #echo "buildfolder" $buildfolder
+    if [ "${buildfolder:0:10}" == "extension_" ];then
+        echo "build extension webapp..."
+        python make_apk.py --package=org.xwalk.$buildfolder --name=$buildfolder --app-root=$BUILD_DEST/opt/$name/$sourcepath/$buildfolder --app-local-path=index.html --extensions=$BUILD_DEST/opt/$name/$sourcepath/$buildfolder/contactextension --mode=$mode --arch=$arch
+        continue
+    fi
 done
 }
 
