@@ -103,53 +103,23 @@ function create_pure()
 
 ## function for create wgt apk xpk ##
 function create_wgt(){
-cd $BUILD_ROOT/$folderName
 mkdir $BUILD_DEST/opt/
 mkdir $BUILD_DEST/opt/$folderName
 for buildfolder in `ls`
 do
     if [ -d $buildfolder ];then
-        if [ "${buildfolder:0:15}" == "wrt_support_xpk" ];then
-            echo "Pack xpk....................."
-            cd $xpkpacktooldir
-            python make_xpk.py $BUILD_ROOT/$folderName/$buildfolder/wrt_support_xpk k.pem
-            python make_xpk.py $BUILD_ROOT/$folderName/$buildfolder/xpk_sample_one k.pem
-            python make_xpk.py $BUILD_ROOT/$folderName/$buildfolder/xpk_sample_two k.pem
-            rm -rf $xpkpacktooldir/*.pem        
-            zip -rq $buildfolder.xpk.zip *.xpk             
-            mv *.zip $BUILD_DEST/opt/$folderName
-            rm -rf $xpkpacktooldir/*.xpk 
-            cd $BUILD_ROOT/$folderName
-            continue
-        fi
-        if [ "${buildfolder:0:15}" == "wrt_support_wgt" ];then
-            echo "Pack wgt....................."
+        if [ "${buildfolder:0:7}" == "testapp" ];then
+            echo "zip testapp ....................."
             cd $buildfolder
-            cd wrt_support_wgt
-            zip -rq wrt_support_wgt.wgt *
-            cp wrt_support_wgt.wgt ../
-            cd ..
-            cd wgt_sample_one
-            zip -rq wgt_sample_one.wgt *
-            cp wgt_sample_one.wgt ../
-            cd ..
-            cd wgt_sample_two
-            zip -rq wgt_sample_two.wgt *
-            cp wgt_sample_two.wgt ../
-            cd ..
-            
-            zip -rq wrt_support_wgt.wgt.zip *.wgt
-            ls
-            cp wrt_support_wgt.wgt.zip $BUILD_DEST/opt/$folderName
+            #zip -rq  $BUILD_DEST/opt/$folderName/testapp.zip *
+            mv * $BUILD_DEST/opt/$folderName/
             cd ..
             continue
         fi
         echo $buildfolder
         cd   $buildfolder
-        zip -rq $buildfolder.wgt *
-        cp $buildfolder.wgt $BUILD_DEST/opt/$folderName
+        zip -rq $BUILD_DEST/opt/$folderName/$buildfolder.wgt *
         cd ..
-        sleep 2
     fi
 done
 

@@ -13,7 +13,7 @@ RESOURCE_DIR=/home/app/content
 function installpkg(){
 #unzip -o crosswalk_support_wgt_tests.wgt.zip
 #unzip -o crosswalk_support_xpk_tests.xpk.zip
-for xpkfile in $(ls *.wgt)
+for xpkfile in $(ls)
 do
  if [ ${xpkfile:0:14} = "update_version" ];then
     continue
