@@ -41,6 +41,9 @@ import signal
 import subprocess
 from optparse import OptionParser, make_option
 
+reload(sys)
+sys.setdefaultencoding('utf8')
+
 TOOL_VERSION = "v0.01"
 VERSION_FILE = "VERSION"
 SCRIPT_DIR = os.path.dirname(os.path.abspath(__file__))
@@ -326,6 +329,9 @@ def packAPP(app_name=None, app_dir=None, dest_dir=None, sign_flag=False):
                     return False
         elif BUILD_PARAMETERS.pkgtype == "apk" or BUILD_PARAMETERS.pkgtype == "apk-aio":
             app_name = app_name.replace("-", "_")
+            #activity_name = ''.join([i.capitalize() for i in app_name.split('_') if i])
+            activity_name = app_name
+
             if not os.path.exists(os.path.join(BUILD_ROOT, "crosswalk")):
                 if not doCopy(os.path.join(BUILD_PARAMETERS.pkgpacktools, "crosswalk"), os.path.join(BUILD_ROOT, "crosswalk")):
                     return False
@@ -337,15 +343,17 @@ def packAPP(app_name=None, app_dir=None, dest_dir=None, sign_flag=False):
                 os.chdir(orig_dir)
                 return False
 
-            if BUILD_PARAMETERS.pkgmode == "embedded":
-                apk_file_name = "%s_%s.apk" % (
-                    app_name, BUILD_PARAMETERS.pkgarch)
+            files = glob.glob(
+                os.path.join(BUILD_ROOT, "crosswalk", "%s[._]*apk" % activity_name))
+            if files:
+                if not doCopy(files[0], os.path.join(dest_dir, "%s.apk" % app_name)):
+                    os.chdir(orig_dir)
+                    return False
             else:
-                apk_file_name = "%s.apk" % app_name
-
-            if not doCopy(os.path.join(BUILD_ROOT, "crosswalk", apk_file_name), os.path.join(dest_dir, "%s.apk" % app_name)):
+                LOG.error("Fail to find the apk file")
                 os.chdir(orig_dir)
                 return False
+
             os.chdir(orig_dir)
         elif BUILD_PARAMETERS.pkgtype == "cordova":
             cordova_tool_path = os.path.join(BUILD_ROOT, "cordova")
@@ -467,7 +475,7 @@ def buildPKGAPP(build_json=None):
             return False
     else:
         if not build_json.has_key("blacklist"):
-            build_json.update({"blacklist":[]})
+            build_json.update({"blacklist": []})
         build_json["blacklist"].extend(PKG_BLACK_LIST)
         if not buildSRC(BUILD_ROOT_SRC, BUILD_ROOT_PKG_APP, build_json):
             return False
@@ -485,7 +493,7 @@ def buildPKGAPP(build_json=None):
 
 def buildPKG(build_json=None):
     if not build_json.has_key("blacklist"):
-        build_json.update({"blacklist":[]})
+        build_json.update({"blacklist": []})
     build_json["blacklist"].extend(PKG_BLACK_LIST)
     if not buildSRC(BUILD_ROOT_SRC, BUILD_ROOT_PKG, build_json):
         return False
