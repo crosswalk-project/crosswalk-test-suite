@@ -44,75 +44,32 @@ Authors:
   <body>
     <input type="hidden" id="sub_test"/>
     <div data-role="page" id="main">
-      <div data-role="header" data-position="fixed" data-tap-toggle="false">
-        <h1 id="main_page_title"></h1>
-      </div>
-      <div id="content">
-        <ul data-role="listview" id="cspList" data-divider-theme="b" data-inset="true">
-          <li data-role="list-divider" role="heading">display</li>
-          <li id="display-flex">
-            <a href="javascript:runApp('tests/display-flex.html')" data-transition="slide" style="">
-              <h2>display-flex</h2>
-            </a>
-          </li>
-        </ul>
-        <ul data-role="listview" id="cspList" data-divider-theme="b" data-inset="true">
-          <li data-role="list-divider" role="heading">flex-direction</li>
-          <li id="flex-direction-row">
-            <a href="javascript:runApp('tests/flex-direction-row.html')" data-transition="slide" style="">
-              <h2>flex-direction-row</h2>
-            </a>
-          </li>
-        </ul>
-        <ul data-role="listview" id="cspList" data-divider-theme="b" data-inset="true">
-          <li data-role="list-divider" role="heading">flex-wrap</li>
-          <li id="flex-wrap-nowrap">
-            <a href="javascript:runApp('tests/flex-wrap-nowrap.html')" data-transition="slide" style="">
-              <h2>flex-wrap-nowrap</h2>
-            </a>
-          </li>
-        </ul>
-        <ul data-role="listview" id="cspList" data-divider-theme="b" data-inset="true">
-          <li data-role="list-divider" role="heading">flex-flow</li>
-          <li id="flex-flow-row">
-            <a href="javascript:runApp('tests/flex-flow-row.html')" data-transition="slide" style="">
-              <h2>flex-flow-row</h2>
-            </a>
-          </li>
-        </ul>
-        <ul data-role="listview" id="cspList" data-divider-theme="b" data-inset="true">
-          <li data-role="list-divider" role="heading">align-items</li>
-          <li id="align-items-stretch">
-            <a href="javascript:runApp('tests/align-items-stretch.html')" data-transition="slide" style="">
-              <h2>align-items-stretch</h2>
-            </a>
-          </li>
-        </ul>
-        <ul data-role="listview" id="cspList" data-divider-theme="b" data-inset="true">
-          <li data-role="list-divider" role="heading">align-content</li>
-          <li id="align-content-stretch">
-            <a href="javascript:runApp('tests/align-content-stretch.html')" data-transition="slide" style="">
-              <h2>align-content-stretch</h2>
-            </a>
-          </li>
-        </ul>
-        <ul data-role="listview" id="cspList" data-divider-theme="b" data-inset="true">
-          <li data-role="list-divider" role="heading">justify-content</li>
-          <li id="justify-content-flex-start">
-            <a href="javascript:runApp('tests/justify-content-flex-start.html')" data-transition="slide" style="">
-              <h2>justify-content-flex-start</h2>
-            </a>
-          </li>
-        </ul>
-        <ul data-role="listview" id="cspList" data-divider-theme="b" data-inset="true">
-          <li data-role="list-divider" role="heading">order</li>
-          <li id="order-with-column-reverse">
-            <a href="javascript:runApp('tests/order-with-column-reverse.html')" data-transition="slide" style="">
-              <h2>order-with-column-reverse</h2>
-            </a>
-          </li>
-        </ul>
-      </div>
+
+      <p>Test 1: passes if there is no red visible.</p>
+      <iframe marginWidth=0 marginHeight=0 src="tests/display-flex.html" frameBorder=0 scrolling=no height=250></iframe>
+      <hr />
+      <p>Test 2: passes if there is a 3x3 grid of green squares, numbered 1-9 left-to-right and top-to-bottom, and there is no red.</p>
+      <iframe marginWidth=0 marginHeight=0 src="tests/flex-direction-row.html" frameBorder=0 scrolling=no height=250></iframe>
+      <hr />
+      <p>Test 3: passes if there is a green square and no red.</p>
+      <iframe marginWidth=0 marginHeight=0 src="tests/flex-wrap-nowrap.html" frameBorder=0 scrolling=no height=250></iframe>
+      <hr />
+      <p>Test 4: passes if you see a tall green box with pairs of the 1-9 and a-i listed top to bottom in two columns.</p>
+      <iframe marginWidth=0 marginHeight=0 src="tests/flex-flow-row.html" frameBorder=0 scrolling=no height=250></iframe>
+      <hr />
+      <p>Test 5: passes if the first two lines are the same in font and different from line 3.</p>
+      <iframe marginWidth=0 marginHeight=0 src="tests/align-items-stretch.html" frameBorder=0 scrolling=no height=250></iframe>
+      <hr />
+      <p>Test 6: passes if there is no red visible on the page.</p>
+      <iframe marginWidth=0 marginHeight=0 src="tests/align-content-stretch.html" frameBorder=0 scrolling=no height=250></iframe>
+      <hr />
+      <p>Test 7: passes if there is a single blue rectangle on the left, a single orange rectangle directly to its right, and there is no red visible on the page.</p>
+      <iframe marginWidth=0 marginHeight=0 src="tests/justify-content-flex-start.html" frameBorder=0 scrolling=no height=250></iframe>
+      <hr />
+      <p>Test 8: passes if the paragraph below reads 'First,Second,Third' from top.</p>
+      <iframe marginWidth=0 marginHeight=0 src="tests/order-with-column-reverse.html" frameBorder=0 scrolling=no height=250></iframe>
+      <hr />
+
       <div data-role="footer" data-position="fixed" data-tap-toggle="false">
       </div>
       <div data-role="popup" id="popup_info" data-theme="a">
