@@ -118,6 +118,7 @@ if [ $sign -eq 1 ];then
         fi
     done
 fi
+
 }
 
 function create_apk(){
@@ -173,7 +174,7 @@ function zip_for_wgt(){
 cd $BUILD_DEST
 # cp inst.sh script #
 cp -af $BUILD_ROOT/inst.sh.wgt $BUILD_DEST/opt/$name/inst.sh
-
+cp -af $BUILD_ROOT/testapp   $BUILD_DEST/opt/$name/
 if [ $src_file -eq 0 ];then
     for file in $(ls opt/$name |grep -v wgt);do
         if [[ "${whitelist[@]}" =~ $file ]];then
@@ -190,6 +191,7 @@ if [ $? -ne 0 ];then
     clean_workspace
     exit 1
 fi
+
 }
 
 function zip_for_apk(){
