@@ -50,26 +50,37 @@ Authors:
     <div data-role="header" data-position="fixed" data-tap-toggle="false">
       <h1 id="main_page_title"></h1>
     </div>
-    <div id="content">
-      <div id="info">
-        Make sure http://www.google.com is white listed. </br>
-        Make sure http://www.apple.com is not in the white list.</br>  In iOS, starred <span style="vertical-align:super">*</span> tests will put the app in a state with no way to return.  </br>
-        <h4>User-Agent: <span id="user-agent"> </span></h4>
-      </div>
-      <button onclick="doOpen('local.html');">target = Default</button>
-      <button onclick="doOpen('local.html', '_self');">target=_self</button>
+    <div data-role="content">
+      <button onclick="doOpen('https://github.com/crosswalk-project/crosswalk-test-suite/tree/master/doc');">Open remote PDF(target=Default)</button>
+      <button onclick="doOpen('local.pdf');">Open local PDF(target=Default)</button>
+      <button onclick="doOpen('https://github.com/crosswalk-project/crosswalk-test-suite/tree/master/doc', '_self');">Open remote PDF(target=_self)</button>
+      <button onclick="doOpen('local.pdf', '_self');">Open local PDF(target=_self)</button>
     </div>
     <div data-role="footer" data-position="fixed" data-tap-toggle="false">
     </div>
     <div data-role="popup" id="popup_info" data-theme="a">
       <font class="fontSize">
-        <p>Test Precondition: </p>
-        <p>The android device can network.</p>
-        <p>The plugin inappbrowser and network-information have been installed.</p>
-        <p>Test Purpose: </p>
+        <p>Pre-condition:</p>
+        <ul>
+          <li>The device can network</li>
+          <li>The plugin inappbrowser and network-information have been installed</li>
+        </ul>
+        <p>Purpose:</p>
         <p>Verify the 'in app browser' can work well.</p>
-        <p>Expected Result: </p>
-        <p>Test passes if all buttons can work well.</p>
+        <p>Test Steps:</p>
+        <ol>
+          <li>Click the button "Open remote PDF(target=Default)"</li>
+          <li>Click the button "Open local PDF(target=Default)"</li>
+          <li>Click the button "Open remote PDF(target=_self)"</li>
+          <li>Click the button "Open local PDF(target=_self)"</li>
+        </ol>
+        <p>Expected Results:</p>
+        <ol>
+          <li>Open a document list</li>
+          <li>Open local PDF</li>
+          <li>Open a document list</li>
+          <li>Open local PDF</li>
+        </ol>
       </font>
     </div>
   </div>

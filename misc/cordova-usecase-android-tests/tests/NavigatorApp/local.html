@@ -1,5 +1,6 @@
-/*
-Copyright (c) 2013 Intel Corporation.
+<!DOCTYPE html>
+<!--
+Copyright (c) 2014 Intel Corporation.
 
 Redistribution and use in source and binary forms, with or without modification,
 are permitted provided that the following conditions are met:
@@ -27,28 +28,41 @@ EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 Authors:
         Wang, Hongjuan <hongjuanx.wang@intel.com>
 
-*/
- 
-#content {
-  text-align: center;
-}
+-->
 
-#info{
-  background:#ffa;
-  border: 1px solid #ffd324;
-  border-radius: 5px;
-  clear:both;
-  display:inline-block;
-  margin:15px 6px 0;
-  margin-bottom:10px;
-  max-height: 300px;
-  max-width:97%;
-  min-width:295px;
-  min-height: 160px;
-  overflow: auto;
-  padding:4px 0px 2px 10px;
-  text-align: left;
-  -webkit-border-radius: 5px;
-  -webkit-overflow-scrolling: touch;
-  word-wrap:break-word; 
-}
+<html>
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="initial-scale=1.0, maximum-scale=1.0, width=device-width" />
+  <link rel="stylesheet" type="text/css" href="../../css/jquery.mobile.css" />
+  <link rel="stylesheet" type="text/css" href="../../css/main.css" />
+  <script src="../../js/thirdparty/jquery.js"></script>
+  <script src="../../js/thirdparty/jquery.mobile.js"></script>
+  <script src="../../js/tests.js"></script>
+  <script src="../../js/main.js"></script>
+  <script src="../../main.js"></script>
+  <script src="../../cordova.js"></script>
+  <script src="js/main.js"></script>
+</head>
+<body>
+  <div data-role="page" id="main">
+    <div data-role="header" data-position="fixed" data-tap-toggle="false">
+      <h1 id="main_page_title"></h1>
+    </div>
+    <div id="content">
+      <p style="text-align:center; font-size: 24px;">This is test page</p>
+      <button id="back">Go Back</button>
+    </div>
+    <div data-role="footer" data-position="fixed" data-tap-toggle="false">
+    </div>
+    <div data-role="popup" id="popup_info" data-theme="a">
+      <font class="fontSize">
+        <p>Test Steps: </p>
+        <p>Click the 'Go Back'</p>
+        <p>Expected Result: </p>
+        <p>The page can back previous after click the 'Go Back'.</p>
+      </font>
+    </div>
+  </div>
+</body>
+</html>

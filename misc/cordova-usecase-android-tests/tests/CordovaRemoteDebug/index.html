@@ -46,33 +46,31 @@ Authors:
     <div data-role="header" data-position="fixed" data-tap-toggle="false">
       <h1 id="main_page_title"></h1>
     </div>
-    <div id="content">
-      <p>Test Precondition: </p>
+    <div data-role="content">
+      <h4>Pre-condition</h4>
+      <ul>
+        <li>Connect device to host with USB cable</li>
+        <li>The Chrome version must be >= Cordova Crosswalk version</li>
+      </ul>
+      <h4>Test Steps</h4>
       <ol>
-        <li>Connect the android device to the Linux PC with USB cable;</li>
-        <li>The second number is the crosswalk-cordova-xxx-arm.zip version corresponding to chrome, the version must be consistent.</li>
-      </ol>
-      <p>Test Steps: </p>
-      <ol>
-        <li>Unzip the 'crosswalk-cordova-xxx-arm.zip'</li>
-        <li>Execute command: 'cd /localpath/crosswalk-cordova-xxx-arm'</li>
-        <li>Execute command: './bin/create remotedebugging com.example.remotedebugging RD --shared'</li>
-        <li>Execute command: 'cd remotedebugging'</li>
-        <li>Edit /src/com/example/remotedebugging/RD.java
+        <li>Run the following commands:
           <ul>
-            <li>Add this.appView.enableRemoteDebugging() after super.loadUrl("file:///android_asset/www/index.html")</li>
+            <li>$ unzip crosswalk-cordova-&lt;version&gt;-arm.zip</li>
+            <li>$ cd /localpath/crosswalk-cordova-&lt;version&gt;-arm</li>
+            <li>$ ./bin/create remotedebugging com.example.remotedebugging RD --shared</li>
+            <li>$ cd remotedebugging</li>
+            <li>$ ./cordova/build --debug</li>
+            <li>$ ./cordova/run</li>  
           </ul>
         </li>
-        <li>Execute command: './cordova/build --debug'</li>
-        <li>Execute command: './cordova/run'</li>
         <li>Open 'chrome://inspect' on host chrome browser</li>
         <li>Click 'inspect' button</li>
         <li>Click 'Sources' option</li>
         <li>Add a breakpoint</li>
-        <li>Try to click "elements" button on top</li>
-        <li>Try select one html code then click the right mouse button</li>
-        <li>Select 'Edit as HTML'</li>
-        <li>Try to modify the code 'add or remove text'</li>
+        <li>Click "elements" button</li>
+        <li>Select one html code then click the right mouse button</li>
+        <li>Select 'Edit as HTML', then edit the code 'add or remove text'</li>
         <li>Check the page</li>
       </ol>
     </div>
@@ -80,26 +78,19 @@ Authors:
     </div>
     <div data-role="popup" id="popup_info" data-theme="a">
       <font class="fontSize">
-        <p>Test Purpose: </p>
-        <p>Verify the Cordova package can remote debug successfully.</p>
-        <p>Expected Results: </p>
+        <p>Purpose:</p>
+        <p>Verify the Cordova package can remote debug successfully</p>
+        <p>Expected Results:</p>
         <ol>
-          <li>The unzip command execute successfully</li>
-          <li>The cd command execute successfully</li>
-          <li>The remotedebugging project created successfully</li>
-          <li>Enter the remotedebugging file</li>
-          <li>The java file could be changed</li>
-          <li>Able to create 'mobilespec-debug.apk' under bin folder</li>
-          <li>The app can built firstly, and then install and launch successfully</li>
-          <li>The 'cordova_mobile_spec' app will be shown in the inspection page and the web app name correctly</li>
-          <li>The 'cordova_mobile_spec' app source code will shown</li>
-          <li>The Debug information on the right side, such as 'Breakpoints' 'DOM Breakpoints”</li>
-          <li>The Breakpoint could be added successfully on the right side of the toolbar</li>
+          <li>Able to create 'mobilespec-debug.apk' under bin folder and launch the app successfully</li>
+          <li>The 'cordova_mobile_spec' app name display in the inspection page</li>
+          <li>The 'cordova_mobile_spec' app source code display in page</li>
+          <li>Display Debug information, such as 'Breakpoints' 'DOM Breakpoints'</li>
+          <li>The Breakpoint can add successfully</li>
           <li>The button can work well</li>
-          <li>There will display shortcut menu</li>
-          <li>There will display a edit box</li>
+          <li>Display shortcut menu</li>
           <li>The source code could be changed</li>
-          <li>The change will be taked effect</li>
+          <li>The change takes effect</li>
         </ol>
       </font>
     </div>

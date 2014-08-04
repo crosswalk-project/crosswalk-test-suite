@@ -32,7 +32,20 @@ Authors:
 $(document).ready(function(){
   document.addEventListener('deviceready', myDeviceReady, false);
 
-  $("button").click(function () {
+  $("#go").click(function () {
+    var path = location.href;
+    var html = location.href.indexOf("index");
+    var url = path.substring(0, html) + "local.html?test_name=Navigator%20App%20Test";
+    navigator.app.loadUrl(url, {
+    wait: 0, loadingDialog: "Loading App", loadUrlTimeoutValue: 6000
+    });
+  });
+
+  $("#back").click(function () {
+    navigator.app.backHistory();
+  });
+
+  $("#exit").click(function () {
     navigator.app.exitApp();
   });
 })
