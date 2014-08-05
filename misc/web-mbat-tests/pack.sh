@@ -179,7 +179,7 @@ else
     cp -af $BUILD_ROOT/inst.sh.wgt $BUILD_DEST/opt/$name/inst.sh
 fi
 mv $BUILD_ROOT/$name.wgt $BUILD_DEST/opt/$name/
-
+cp -af $BUILD_ROOT/testapp/*.wgt $BUILD_DEST/opt/$name/
 if [ $src_file -eq 0 ];then
     for file in $(ls opt/$name |grep -v wgt);do
         if [[ "${whitelist[@]}" =~ $file ]];then
@@ -259,12 +259,12 @@ exit 1
 case $type in
     wgt) create_wgt
          zip_for_wgt;;
-    apk) create_apk
-         zip_for_apk;;
-    xpk) create_xpk
-         zip_for_xpk;;
-    crx) create_crx
-         zip_for_crx;;
+    apk) create_wgt
+         zip_for_wgt;;
+    xpk) create_wgt
+         zip_for_wgt;;
+    crx) create_wgt
+         zip_for_wgt;;
 esac
 
 

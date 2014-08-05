@@ -13,4 +13,6 @@ whitelist="
 inst.sh
 tests.xml
 tests.full.xml
+manifest_name_blend_tests.wgt
+manifest_version_identifyingone_tests.wgt
 mediasrc"
