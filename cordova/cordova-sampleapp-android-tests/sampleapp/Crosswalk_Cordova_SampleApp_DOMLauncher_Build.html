@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<!--
+Copyright (c) 2014 Intel Corporation.
+
+Redistribution and use in source and binary forms, with or without modification,
+are permitted provided that the following conditions are met:
+
+* Redistributions of works must retain the original copyright notice, this list
+  of conditions and the following disclaimer.
+* Redistributions in binary form must reproduce the original copyright notice,
+  this list of conditions and the following disclaimer in the documentation
+  and/or other materials provided with the distribution.
+* Neither the name of Intel Corporation nor the names of its contributors
+  may be used to endorse or promote products derived from this work without
+  specific prior written permission.
+
+THIS SOFTWARE IS PROVIDED BY INTEL CORPORATION "AS IS"
+AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE
+IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE
+ARE DISCLAIMED. IN NO EVENT SHALL INTEL CORPORATION BE LIABLE FOR ANY DIRECT,
+INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING,
+BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE,
+DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY
+OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING
+NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE,
+EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
+
+Authors:
+        Wang, Hongjuan <hongjuanx.wang@intel.com>
+
+-->
+
+<meta charset="utf-8">
+<title>Crosswalk_Cordova_SampleApp_DOMLauncher_Build</title>
+<link rel="author" title="Intel" href="http://www.intel.com">
+<body>
+  <h4>Pre-condition</h4>
+  <ul>
+    <li>The eclipse ADT has been installed on host</li>
+    <Li>Connect the device to host with USB cable</li>
+  </ul>
+  <h4>Test Steps</h4>
+  <ol>
+    <li>Run the following commands:</li>
+    <ul>
+      <li>$ git clone https://github.com/AricwithanA/DOMLauncher2.git</li>
+      <li>$ unzip crosswalk-cordova-&lt;version&gt;-&lt;architecture&gt;.zip</li>
+    </ul>
+    <li>Launch eclipse ADT</li>
+    <li>Run step: 'File'--> 'Import' --> 'Android' --> 'Existing Android Code Into Workspace' --> 'Browse Root Directory' --> 'Finish'</li>
+    <ol>
+      <li>Import projects from crosswalk-cordova-&lt;version&gt;-&lt;architecture&gt;/framework, include 'framework' and 'xwalk_core_library'</li>
+      <li>Import project from DOMLauncher2/DOMLauncher/platforms/android</li>
+    </ol>
+    <li>Right click the project 'DOMLauncher' in eclipse package explorer, click 'preperties' --> 'Android'--> 'Add', add "framework" as the referenced project</li>
+    <li>Right click the project 'DOMLauncher' in eclipse package explorer, click 'Run As' --> 'Android Application'</li>
+    <li>Click home button in device and select DOMLauncher</li>
+  </ol>
+  <h4>Expected Results</h4>
+  <ol>
+    <li>Able to clone code and unzip zip package</li>
+    <li>Launch eclipse ADT successfully</li>
+    <li>Run the step successfully, no error</li>
+    <ol>
+      <li>The two project can be imported to eclipse</li>
+      <li>The project can be imported to eclipse</li>
+    </ol>
+    <li>Run the step successfully, no error</li>
+    <li>The app can be installed on device</li>
+    <li>The app can be launched</li>
+  </ol>
+</body>
