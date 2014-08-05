@@ -27,6 +27,14 @@ EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 Authors:
         Liu, yun <yun.liu@archermind.com>
 */
+
+var testFlag = {
+    green: false,
+    red: false,
+    blue: false,
+    yellow: false
+};
+var showId;
 var pc1, pc2, dc1, dc2;
 var num_channels = 0;
 var datachannels = new Array(0);
@@ -34,19 +42,38 @@ var pc1_offer;
 var pc2_answer;
 var fake_audio;
 
+function status() {
+  if (testFlag.green && testFlag.red && testFlag.blue && testFlag.yellow) {
+    EnablePassButton();
+  }
+}
+
+function show() {
+  fancy_log("Could not connect pc1 and pc2!", "black");
+  $("#startbutton").removeClass("ui-disabled");
+  $("#stopbutton").addClass("ui-disabled");
+  $("#pc1_send").addClass("ui-disabled");
+  $("#pc2_send").addClass("ui-disabled");
+  clearTimeout(showId);
+}
+
 function fancy_log(msg,color) {
   var message = '<span style="color: ' + color + ';">' + msg + '</span>';
   $("#datawindow").html("<p>" + message + "</p>" + $("#datawindow").html());
 }
 
 function pc1_send() {
+  testFlag.red = true;
   dc1.send($("#pc1_input").val());
   $("#pc1_input").attr("value", "");
+  status();
 }
 
 function pc2_send() {
+  testFlag.blue = true;
   dc2.send($("#pc2_input").val());
   $("#pc2_input").attr("value", "");
+  status();
 }
 
 function requestFailed(code) {
@@ -76,6 +103,7 @@ function requestSuccessed2() {
       fancy_log("pc1 said: " + evt.data, "red");
     };
     channel.onopen = function() {
+      clearTimeout(showId);
       channel.send("pc1 and pc2 are connected successfully, and can send message to each other now!");
       $("#stopbutton").removeClass("ui-disabled");
       $("#pc1_send").removeClass("ui-disabled");
@@ -111,8 +139,11 @@ function requestSuccessed6() {
 }
 
 function start() {
-  fancy_log("Connecting......", "black");
+  testFlag.green = true;
+  $("#datawindow").html("Connecting......");
   $("#startbutton").addClass("ui-disabled");
+  clearTimeout(showId);
+  showId = setTimeout("show()", 30000);
 
   pc1 = new webkitRTCPeerConnection(null, null);
 
@@ -147,11 +178,13 @@ function start() {
 
     pc1.createOffer(requestSuccessed1, requestFailed);
   }, requestFailed);
+  status();
 }
 
 function stop() {
   pc1.close();
   pc2.close();
+  status();
 
   $("#startbutton").removeClass("ui-disabled");
   $("#stopbutton").addClass("ui-disabled");
@@ -160,6 +193,7 @@ function stop() {
 }
 
 $(document).ready(function() {
+  DisablePassButton();
   $("#stopbutton").addClass("ui-disabled");
   $("#pc1_send").addClass("ui-disabled");
   $("#pc2_send").addClass("ui-disabled");
