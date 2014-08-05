@@ -14,6 +14,7 @@ xhtml5/Makefile \
 xhtml5/w3c/Makefile \
 xhtml5/images/Makefile \
 w3c/Makefile \
+w3c/collections/Makefile \
 w3c/semantics/Makefile \
 w3c/semantics/forms/Makefile \
 w3c/semantics/forms/the-input-element/Makefile \
