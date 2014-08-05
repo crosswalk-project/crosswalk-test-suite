@@ -43,42 +43,75 @@ Authors:
 </head>
 <body>
     <div data-role="page" id="main">
-        <div data-role="header" data-position="fixed" data-tap-toggle="false">
-            <h1 id="main_page_title"></h1>
-        </div>
-        <div id="content">
-            <div id="current"></div>
-            <div data-role="filedcontain">
-                 <label>setFullYear:</label>
-                 <input type="number" id="year" min="0" max="9999" value="2014"></input>
-                 <label>setMonth:</label>
-                 <input type="number" id="mon" placeholder="1-12" min="1" max="12" value="1"></input>
-                 <label>setDate:</label>
-                 <input type="number" id="date" placeholder="1-31" min="1" max="31"  value="1"></input>
-                 <label>setHours:</label>
-                 <input type="number" id="hour" placeholder="0-23" min="0" max="23" value="0"></input>
-                 <label>setMinutes:</label>
-                 <input type="number" id="min" placeholder="0-59" min="0" max="23" value="0"></input>
-                 <label>setSeconds:</label>
-                 <input type="number" id="sec" placeholder="0-59" min="0" max="23" value="0"></input>
-                 <a href="javascript: changeTime();" data-role="button">submit</a>
-            </div>
-        </div>
-        <div data-role="footer" data-position="fixed" data-tap-toggle="false">
-        </div>
-        <div data-role="popup" id="popup_info">
-          <font class="fontSize">
-            <p>Test Purpose: </p>
-            <p>Verifies use time interface can get and change time information.</p>
-            <p>Test Steps: </p>
-            <ol>
-              <li>Run the application, check if current time information can be shown vaild.</li>
-              <li>Input number and press 'submit', check if the time information is changed.</li>
-            </ol>
-            <p>Expected Result: </p>
-            <p>Test passes if time information can be shown normally and changed success.</p>
-          </font>
-        </div>
+      <div data-role="header" data-position="fixed" data-tap-toggle="false">
+        <h1 id="main_page_title"></h1>
+      </div>
+      <div data-role="content">
+        <table id="current">
+          <tr class="tr1">
+            <td class="td1">Current Time</td>
+            <td id="time" class="td2"></td>
+          </tr> 
+          <tr class="tr2">
+            <td class="td1">Time Zone</td>
+            <td class="td2" id="zone"></td>
+          </tr> 
+          <tr class="tr1">
+            <td class="td1">Support Zone Num</td>
+            <td class="td2" id="num"></td>
+          </tr> 
+          <tr class="tr2">
+            <td class="td1">Date Format</td>
+            <td class="td2" id="dateFormat"></td>
+          </tr> 
+          <tr class="tr1">
+            <td class="td1">Time Format</td>
+            <td class="td2" id="timeFormat"></td>
+          </tr> 
+          <tr class="tr2">
+            <td class="td1">Leap Year</td>
+            <td class="td2" id="leap"></td>
+          </tr>  
+        </table>
+        <table id="form">
+          <tr>
+            <td class="td3">Set Year:</td>
+            <td class="td3">Set Month:</td>
+            <td class="td3">Set Date:</td>
+          </tr>
+          <tr>
+            <td><input type="number" id="year" min="0" max="9999" value="2014"></input></td>
+            <td><input type="number" id="mon" placeholder="1-12" min="1" max="12" value="1"></input></td>
+            <td><input type="number" id="date" placeholder="1-31" min="1" max="31"  value="1"></input></td>
+          </tr>
+          <tr>
+            <td>Set Hour:</td>
+            <td>Set Minute:</td>
+            <td>Set Second:</td>
+          </tr>
+          <tr>
+            <td><input type="number" id="hour" placeholder="0-23" min="0" max="23" value="0"></input></td>
+            <td><input type="number" id="min" placeholder="0-59" min="0" max="59" value="0"></input></td>
+            <td><input type="number" id="sec" placeholder="0-59" min="0" max="59" value="0"></input></td>
+          </tr>
+        </table>
+        <a href="javascript: changeTime();" data-role="button">submit</a>
+      </div>
+      <div data-role="footer" data-position="fixed" data-tap-toggle="false">
+      </div>
+      <div data-role="popup" id="popup_info">
+        <font class="fontSize">
+          <p>Test Purpose: </p>
+          <p>Verifies use time interface can get and change time information.</p>
+          <p>Test Steps: </p>
+          <ol>
+            <li>Run the application, check if current time information can be shown vaild.</li>
+            <li>Input number and press 'submit', check if the time information is changed.</li>
+          </ol>
+          <p>Expected Result: </p>
+          <p>Test passes if time information can be shown normally and changed success.</p>
+        </font>
+      </div>
     </div>
 </body>
 </html>

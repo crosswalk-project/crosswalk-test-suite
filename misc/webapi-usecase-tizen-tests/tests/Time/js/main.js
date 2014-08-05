@@ -29,7 +29,7 @@ Authors:
 
 */
 
-var current_dt, current_zone, tzids, dateFormat, timeFormat, is_leap, text;
+var current_dt, current_zone, tzids, dateFormat, timeFormat, is_leap;
 var day, year, mon, min, sec, hour;
 
 $(document).delegate("#main", "pageinit", function() {
@@ -54,20 +54,20 @@ function changeTime() {
 }
 
 function refresh() {
-  text = "Current date / time is " + current_dt.toLocaleString();
+  var text = current_dt.toLocaleString();
+  $("#time").html(text);
   current_zone = tizen.time.getLocalTimezone();
-  text = text + "</br> The local time zone is " + current_zone;
+  $("#zone").html(current_zone);
   tzids = tizen.time.getAvailableTimezones();
-  text = text + "</br> the device supports " + tzids.length + "time zones";
+  $("#num").html(tzids.length);
   dateFormat = tizen.time.getDateFormat();
-  text = text + "</br> the date format is " + dateFormat;
+  $("#dateFormat").html(dateFormat);
   timeFormat = tizen.time.getTimeFormat();
-  text = text + "</br> the time format is " + timeFormat;
+  $("#timeFormat").html(timeFormat);
   is_leap = tizen.time.isLeapYear(current_dt.getFullYear())
   if (is_leap) {
-    text = text + "</br> This year is a leap year.";
+    $("#leap").html("Yes");
   } else {
-    text = text + "</br> This year is not a leap year.";
+    $("#leap").html("No");
   }
-  $("#current").html(text);
 }
