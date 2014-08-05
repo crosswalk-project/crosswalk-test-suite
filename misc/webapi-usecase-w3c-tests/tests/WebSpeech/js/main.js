@@ -29,13 +29,40 @@ Authors:
 
 */
 
+var testFlag = {
+    green: false,
+    red: false,
+    blue: false
+};
+var showId;
+
+function status() {
+    if (testFlag.green && testFlag.red && testFlag.blue) {
+        EnablePassButton();
+    }
+}
+
+function show() {
+    $("#infobox").text("Could not connect to speech server. \n" + $("#infobox").text());
+    $("#start").closest(".ui-btn").show();
+    $("#stop").closest(".ui-btn").hide();
+    $("#abort").button("disable");
+    clearTimeout(showId);
+}
+
 $("#start").live("tap", function () {
+    testFlag.green = true;
     $("#start").closest(".ui-btn").hide();
     $("#stop").closest(".ui-btn").show();
     $("#abort").button("enable");
+    clearTimeout(showId);
+    showId = setTimeout("show()", 10000);
     window.speechReco = new webkitSpeechRecognition();
     speechReco.continuous = true;
     speechReco.interimResults = true;
+    speechReco.onstart = function (evt) {
+        $("#infobox").text("Connecting to speech server. \n" + $("#infobox").text());
+    };
     speechReco.onresult = function (evt) {
         for (var i = evt.resultIndex; i < evt.results.length; ++i) {
             if (evt.results[i].isFinal) {
@@ -48,7 +75,7 @@ $("#start").live("tap", function () {
             "SpeechRecognition interim - " + interim_transcript + "\n" + $("#infobox").text());
     };
     speechReco.onerror = function(err) {
-        $("#infobox").text("SpeechRecognition error - " + err.error + "\n" + $("#infobox").text());
+        $("#infobox").text("Could not connect to speech server. \nSpeechRecognition error - " + err.error + "\n" + $("#infobox").text());
         $("#start").closest(".ui-btn").show();
         $("#stop").closest(".ui-btn").hide();
         $("#abort").button("disable");
@@ -59,24 +86,30 @@ $("#start").live("tap", function () {
         $("#infobox").text("SpeechRecognition end.\n" + $("#infobox").text());
     };
     speechReco.start();
-    $("#infobox").text("SpeechRecognition start.\n" + $("#infobox").text());
+    $("#infobox").text("SpeechRecognition start.");
+    clearTimeout(showId);
+    status();
 });
 
 $("#stop").live("tap", function () {
+    testFlag.red = true;
     $("#start").closest(".ui-btn").show();
     $("#stop").closest(".ui-btn").hide();
     $("#abort").button("disable");
     speechReco.stop();
     $("#infobox").text("SpeechRecognition stop.\n" + $("#infobox").text());
+    status();
 });
 
 $("#abort").live("tap", function () {
+    testFlag.blue = true;
     speechReco.abort();
     $("#infobox").text("SpeechRecognition abort.\n" + $("#infobox").text());
+    status();
 });
 
 $(document).live('pageshow', function () {
+    DisablePassButton();
     $("#stop").closest(".ui-btn").hide();
     $("#abort").button("disable");
-    $("#infobox").text("");
 });
