@@ -59,8 +59,8 @@ check_precondition make
 
 # clean
 function clean_workspace(){
-echo "cleaning workspace... >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>"
-rm -rf $BUILD_ROOT $BUILD_DEST
+    echo "cleaning workspace... >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>"
+    rm -rf $BUILD_ROOT $BUILD_DEST
 }
 
 clean_workspace
@@ -84,59 +84,63 @@ find $BUILD_DEST -name "Makefile*" -delete
 ## function for create wgt apk xpk ##
 
 function create_wgt(){
-# create wgt
-cd $BUILD_DEST
-cp -a $BUILD_ROOT/icon.png     $BUILD_DEST/
+    # create wgt
+    cd $BUILD_DEST
+    cp -a $BUILD_ROOT/icon.png     $BUILD_DEST/
+
 cat > index.html << EOF
 <!doctype html>
 <head>
-    <meta http-equiv="Refresh" content="1; url=opt/$name/testkit/web/index.html?testsuite=../tests.xml&testprefix=../../..">
+    <meta http-equiv="Refresh" content="1; url=opt/$name/webrunner/index.html?testsuite=../tests.xml&testprefix=../../..">
 </head>
 EOF
-cp -f $BUILD_ROOT/config.xml.wgt $BUILD_DEST/config.xml
-zip -rq $BUILD_DEST/opt/$name/$name.wgt *
-if [ $? -ne 0 ];then
-    echo "Create $name.wgt fail.... >>>>>>>>>>>>>>>>>>>>>>>>>"
-    clean_workspace
-    exit 1
-fi
 
-# sign wgt
-if [ $sign -eq 1 ];then
-    # copy signing tool
-    echo "copy signing tool... >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>"
-    cp -arf $SRC_ROOT/../../tools/signing $BUILD_ROOT/signing
+    cp -f $BUILD_ROOT/config.xml.wgt $BUILD_DEST/config.xml
+    zip -rq $BUILD_DEST/opt/$name/$name.wgt *
     if [ $? -ne 0 ];then
-        echo "No signing tool found in $SRC_ROOT/../../tools.... >>>>>>>>>>>>>>>>>>>>>>>>>"
+        echo "Create $name.wgt fail.... >>>>>>>>>>>>>>>>>>>>>>>>>"
+        clean_workspace
+        exit 1
     fi
-    wgt=$(find $BUILD_DEST/opt/$name/ -name *.wgt)
-    for wgt in $(find $BUILD_DEST/opt/$name/ -name *.wgt);do
-        $BUILD_ROOT/signing/sign-widget.sh --dist platform $wgt
+
+    # sign wgt
+    if [ $sign -eq 1 ];then
+        # copy signing tool
+        echo "copy signing tool... >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>"
+        cp -arf $SRC_ROOT/../../tools/signing $BUILD_ROOT/signing
         if [ $? -ne 0 ];then
-            echo "Please check your signature files... >>>>>>>>>>>>>>>>>>>>>>>>>"
+            echo "No signing tool found in $SRC_ROOT/../../tools.... >>>>>>>>>>>>>>>>>>>>>>>>>"
         fi
-    done
-fi
+        wgt=$(find $BUILD_DEST/opt/$name/ -name *.wgt)
+        for wgt in $(find $BUILD_DEST/opt/$name/ -name *.wgt);do
+            $BUILD_ROOT/signing/sign-widget.sh --dist platform $wgt
+            if [ $? -ne 0 ];then
+                echo "Please check your signature files... >>>>>>>>>>>>>>>>>>>>>>>>>"
+            fi
+        done
+    fi
 }
 
 function create_apk(){
-cd $BUILD_DEST
+    cd $BUILD_DEST
+
 cat > index.html << EOF
 <!doctype html>
 <head>
-    <meta http-equiv="Refresh" content="1; url=opt/$name/testkit/web/index.html?testsuite=../../tests.xml&testprefix=../../../..">
+    <meta http-equiv="Refresh" content="1; url=opt/$name/webrunner/index.html?testsuite=../tests.xml&testprefix=../../..">
 </head>
 EOF
-cp -a $BUILD_ROOT/icon.png     $BUILD_DEST/
-cp -r $SRC_ROOT/../../tools/crosswalk $BUILD_ROOT/crosswalk
 
-cd $BUILD_ROOT/crosswalk
-python make_apk.py --package=org.xwalk.$appname --name=$appname --app-root=$BUILD_DEST --app-local-path=index.html --icon=$BUILD_DEST/icon.png --mode=$mode --arch=$arch
-if [ $? -ne 0 ];then
-    echo "Create $name.apk fail.... >>>>>>>>>>>>>>>>>>>>>>>>>"
-    clean_workspace
-    exit 1
-fi
+    cp -a $BUILD_ROOT/icon.png     $BUILD_DEST/
+    cp -r $SRC_ROOT/../../tools/crosswalk $BUILD_ROOT/crosswalk
+
+    cd $BUILD_ROOT/crosswalk
+    python make_apk.py --package=org.xwalk.$appname --name=$appname --app-root=$BUILD_DEST --app-local-path=index.html --icon=$BUILD_DEST/icon.png --mode=$mode --arch=$arch
+    if [ $? -ne 0 ];then
+        echo "Create $name.apk fail.... >>>>>>>>>>>>>>>>>>>>>>>>>"
+        clean_workspace
+        exit 1
+    fi
 }
 
 function create_cordova_apk(){
@@ -144,7 +148,7 @@ cd $BUILD_DEST
 cat > index.html << EOF
 <!doctype html>
 <head>
-    <meta http-equiv="Refresh" content="1; url=opt/$name/testkit/web/index.html?testsuite=../../tests.xml&testprefix=../../../..">
+    <meta http-equiv="Refresh" content="1; url=opt/$name/webrunner/index.html?testsuite=../tests.xml&testprefix=../../..">
 </head>
 EOF
 cp -a $BUILD_ROOT/icon.png     $BUILD_DEST/
@@ -170,79 +174,80 @@ fi
 }
 
 function create_xpk(){
-cp -a $BUILD_ROOT/manifest.json   $BUILD_DEST/
-cp -a $BUILD_ROOT/icon.png     $BUILD_DEST/
+    cp -a $BUILD_ROOT/manifest.json   $BUILD_DEST/
+    cp -a $BUILD_ROOT/icon.png     $BUILD_DEST/
 
-cd $BUILD_DEST
+    cd $BUILD_DEST
+
 cat > index.html << EOF
 <!doctype html>
 <head>
-    <meta http-equiv="Refresh" content="1; url=opt/$name/testkit/web/index.html?testsuite=../../tests.xml&testprefix=../../../..">
+    <meta http-equiv="Refresh" content="1; url=opt/$name/webrunner/index.html?testsuite=../tests.xml&testprefix=../../..">
 </head>
 EOF
 
-cp $SRC_ROOT/../../tools/make_xpk.py $BUILD_ROOT/make_xpk.py
-cd $BUILD_ROOT
-python make_xpk.py /tmp/$name key
-if [ $? -ne 0 ];then
-    echo "Create $name.xpk fail.... >>>>>>>>>>>>>>>>>>>>>>>>>"
-    clean_workspace
-    exit 1
-fi
+    cp $SRC_ROOT/../../tools/make_xpk.py $BUILD_ROOT/make_xpk.py
+    cd $BUILD_ROOT
+    python make_xpk.py /tmp/$name key
+    if [ $? -ne 0 ];then
+        echo "Create $name.xpk fail.... >>>>>>>>>>>>>>>>>>>>>>>>>"
+        clean_workspace
+        exit 1
+    fi
 }
 
 function create_crx(){
-echo "crx is not support yet... >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>"
-clean_workspace
-exit 1
+    echo "crx is not support yet... >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>"
+    clean_workspace
+    exit 1
 }
 
 ## zip function ##
 function zip_for_wgt(){
-cd $BUILD_DEST
-# cp inst.sh script #
-cp -af $BUILD_ROOT/inst.sh.wgt $BUILD_DEST/opt/$name/inst.sh
+    cd $BUILD_DEST
+    # cp inst.sh script #
+    cp -af $BUILD_ROOT/inst.sh.wgt $BUILD_DEST/opt/$name/inst.sh
 
-if [ $src_file -eq 0 ];then
-    for file in $(ls opt/$name |grep -v wgt);do
-        if [[ "${whitelist[@]}" =~ $file ]];then
-            echo "$file in whitelist,keep it..."
-        else
-            echo "Remove unnessary file:$file..."
-            rm -rf opt/$name/$file
-        fi
-    done
-fi
-zip -Drq $BUILD_DEST/$name-$version.$type.zip opt/
-if [ $? -ne 0 ];then
-    echo "Create zip package fail... >>>>>>>>>>>>>>>>>>>>>>>>>"
-    clean_workspace
-    exit 1
-fi
+    if [ $src_file -eq 0 ];then
+        for file in $(ls opt/$name |grep -v wgt);do
+            if [[ "${whitelist[@]}" =~ $file ]];then
+                echo "$file in whitelist,keep it..."
+            else
+                echo "Remove unnessary file:$file..."
+                rm -rf opt/$name/$file
+            fi
+        done
+    fi
+    zip -Drq $BUILD_DEST/$name-$version.$type.zip opt/
+    if [ $? -ne 0 ];then
+        echo "Create zip package fail... >>>>>>>>>>>>>>>>>>>>>>>>>"
+        clean_workspace
+        exit 1
+    fi
 }
 
 function zip_for_apk(){
-cd $BUILD_DEST
-# cp inst.sh script #
-cp -af $BUILD_ROOT/inst.sh.apk $BUILD_DEST/opt/$name/inst.sh
-mv $BUILD_ROOT/crosswalk/*.apk $BUILD_DEST/opt/$name/
+    cd $BUILD_DEST
+    # cp inst.sh script #
+    cp -af $BUILD_ROOT/inst.sh.apk $BUILD_DEST/opt/$name/inst.sh
+    mv $BUILD_ROOT/crosswalk/*.apk $BUILD_DEST/opt/$name/
 
-if [ $src_file -eq 0 ];then
-    for file in $(ls opt/$name |grep -v apk);do
-        if [[ "${whitelist[@]}" =~ $file ]];then
-            echo "$file in whitelist,keep it..."
-        else
-            echo "Remove unnessary file:$file..."
-            rm -rf opt/$name/$file
-        fi
-    done
-fi
-zip -Drq $BUILD_DEST/$name-$version.$type.zip opt/
-if [ $? -ne 0 ];then
-    echo "Create zip package fail... >>>>>>>>>>>>>>>>>>>>>>>>>"
-    clean_workspace
-    exit 1
-fi
+    if [ $src_file -eq 0 ];then
+        for file in $(ls opt/$name |grep -v apk);do
+            if [[ "${whitelist[@]}" =~ $file ]];then
+                echo "$file in whitelist,keep it..."
+            else
+                echo "Remove unnessary file:$file..."
+                rm -rf opt/$name/$file
+            fi
+        done
+    fi
+    zip -Drq $BUILD_DEST/$name-$version.$type.zip opt/
+    if [ $? -ne 0 ];then
+        echo "Create zip package fail... >>>>>>>>>>>>>>>>>>>>>>>>>"
+        clean_workspace
+        exit 1
+    fi
 }
 
 function zip_for_cordova(){
@@ -270,32 +275,32 @@ fi
 }
 
 function zip_for_xpk(){
-cd $BUILD_DEST
-cp -af $BUILD_ROOT/inst.sh.xpk $BUILD_DEST/opt/$name/inst.sh
-mv $BUILD_ROOT/$name.xpk $BUILD_DEST/opt/$name/
+    cd $BUILD_DEST
+    cp -af $BUILD_ROOT/inst.sh.xpk $BUILD_DEST/opt/$name/inst.sh
+    mv $BUILD_ROOT/$name.xpk $BUILD_DEST/opt/$name/
 
-if [ $src_file -eq 0 ];then
-    for file in $(ls opt/$name |grep -v xpk);do
-        if [[ "${whitelist[@]}" =~ $file ]];then
-            echo "$file in whitelist,keep it..."
-        else
-            echo "Remove unnessary file:$file..."
-            rm -rf opt/$name/$file
-        fi
-    done
-fi
-zip -Drq $BUILD_DEST/$name-$version.$type.zip opt/
-if [ $? -ne 0 ];then
-    echo "Create zip package fail... >>>>>>>>>>>>>>>>>>>>>>>>>"
-    clean_workspace
-    exit 1
-fi
+    if [ $src_file -eq 0 ];then
+        for file in $(ls opt/$name |grep -v xpk);do
+            if [[ "${whitelist[@]}" =~ $file ]];then
+                echo "$file in whitelist,keep it..."
+            else
+                echo "Remove unnessary file:$file..."
+                rm -rf opt/$name/$file
+            fi
+        done
+    fi
+    zip -Drq $BUILD_DEST/$name-$version.$type.zip opt/
+    if [ $? -ne 0 ];then
+        echo "Create zip package fail... >>>>>>>>>>>>>>>>>>>>>>>>>"
+        clean_workspace
+        exit 1
+    fi
 }
 
 function zip_for_crx(){
-echo "zip_for_crx not ready yet... >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>"
-clean_workspace
-exit 1
+    echo "zip_for_crx not ready yet... >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>"
+    clean_workspace
+    exit 1
 }
 
 ## create wgt crx apk xpk and zip package ##
