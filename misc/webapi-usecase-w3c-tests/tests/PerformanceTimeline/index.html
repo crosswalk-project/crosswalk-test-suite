@@ -45,31 +45,36 @@ Authors:
     <div data-role="header">
       <h1 id="main_page_title"></h1>
     </div>
-    <div data-role="content">
+    <div data-role="content" style='font-weight: bold;'>
+      <div id="test" style='height: 210px; width: 100%;'>
+        <div id="info">
+          <p id="name"></p>
+          <hr style="width: 100%; height: 1px;">
+          <p id="entryType"></p>
+          <hr style="width: 100%; height: 1px;">
+          <p id="start"></p>
+          <hr style="width: 100%; height: 1px;">
+          <p id="duration"></p>
+        </div>
+      </div>
       <div id="img">
         <img id='background' style='padding-left: 45%;'>
       <div>
-      <div id="loadimg" data-role="button">download image</div>
-      <div id="test" style='width: 100%;'>
-        <p id="name"></p>
-        <p id="entryType"></p>
-        <p id="start"></p>
-        <p id="duration"></p>
-      </div>
+      <div id="loadimg" data-role="button">Load image</div>
     </div>
     <div data-role="footer" data-position="fixed">
     </div>
     <div data-role="popup" id="popup_info">
       <font class="fontSize">
         <p>Test Purpose: </p>
-        <p>Verifies network connection well, access to resources on the page of time it takes.</p>
+        <p>Verifies network connection well, performance metrics data of loading image.</p>
         <p>Test Steps: </p>
           <ol>
             <li>Connect to an available network</li>
-            <li>Click the 'download image' botton</li>
+            <li>Click the 'Load image' botton</li>
           </ol>
         <p>Expected Result: </p>
-        <p>Test passes if access to resources on the page takes longer than 0 seconds.</p>
+        <p>Test passes if performance metrics data of loading image will display on the page.</p>
       </font>
     </div>
   </body>
