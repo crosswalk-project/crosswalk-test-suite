@@ -57,10 +57,10 @@ Date                        Author                                 Description
     var FileName = './support/shared-worker-shared.js';
 
     // Loading a worker named "name" tests that workers shutdown when the parent document exits, because other tests also create workers with that same name but with different URLs.
-    var worker = new SharedWorker(FileName, 'name');
     var result = 'FAIL';
 
     try {
+        var worker = new SharedWorker(FileName, 'name');
         new SharedWorker('some-other-url.js', 'name');
         console.log("FAIL: Creating SharedWorker with different URLs but the same name should fail");
         result = 'FAIL: Creating SharedWorker with different URLs but the same name should fail';

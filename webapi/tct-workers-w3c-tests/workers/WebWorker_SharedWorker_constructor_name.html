@@ -42,9 +42,9 @@ Authors:
     <script>
         setup({timeout:500});
         var FileName = './support/shared-worker-constructor.js';
-        var worker = new SharedWorker(FileName,'name');
         test(function()
         {
+            var worker = new SharedWorker(FileName,'name');
             assert_equals(worker.toString(), "[object SharedWorker]")
         }, "Test Description: shared worker can construct object with name: shared worker constructor.");
     </script>
