@@ -26,39 +26,80 @@ EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
 Authors:
         Li, Hao <haox.li@intel.com>
+        Zhang, Jing <jingx.zhang@intel.com>
 
 */
 
+var elementSize = 2*Int8Array.BYTES_PER_ELEMENT + 2*Uint8Array.BYTES_PER_ELEMENT + 2*Int16Array.BYTES_PER_ELEMENT + 2*Uint16Array.BYTES_PER_ELEMENT + 2*Int32Array.BYTES_PER_ELEMENT + 2*Uint32Array.BYTES_PER_ELEMENT + 2*Float32Array.BYTES_PER_ELEMENT + 2*Float64Array.BYTES_PER_ELEMENT;
+
+var buffer = new ArrayBuffer(elementSize);
+var float64 = new Float64Array(buffer, 0, 2);
+var float32 = new Float32Array(buffer, float64.byteOffset + float64.byteLength, 2);
+var uint32 = new Uint32Array(buffer, float32.byteOffset + float32.byteLength, 2);
+var int32 = new Int32Array(buffer, uint32.byteOffset + uint32.byteLength, 2);
+var uint16 = new Uint16Array(buffer, int32.byteOffset + int32.byteLength, 2);
+var int16 = new Int16Array(buffer, uint16.byteOffset + uint16.byteLength, 2);
+var uint8 = new Uint8Array(buffer, int16.byteOffset + int16.byteLength, 2);
+var int8 = new Int8Array(buffer, uint8.byteOffset + uint8.byteLength, 2);
 
 $(document).ready(function () {
-    //init array
-    var elementSize = 16 * Int32Array.BYTES_PER_ELEMENT;
-    var buffer = new ArrayBuffer(elementSize);
-    var i32a = new Int32Array(buffer, 0);
-    showArray("#array1", i32a);
+    DisablePassButton();
+    getValue("#array1", 0);
 
-    $("#fillValue").click(function (){
-        fillValue(i32a, 1);
-        showArray("#array1", i32a);
+    $("#setValue").click(function (){
+        setValue();
     });
-
+    $("#getValue").click(function (){
+        getValue("#array1", 1);
+        EnablePassButton();
+    });
 });
 
-function showArray(table, array) {
-    var tab =$(table);
-    tab.html("");
-    for (var i = 0; i < 4; i++) {
-        var sub_arr = array.subarray(i, i+4);
-        var td = "";
-        for (var j = 0; j < 4; j++) {
-            td = td + "<td>" + sub_arr[j] + "</td>";
+function showArray(tab, arr1, arr2, value) {
+    var td = "";
+    for (var i = 0; i < 2; i++) 
+        if(arr1[i] == value) {
+            td = td + "<td>" + arr1[i] + "</td>";
         }
-        tab.html(tab.html() + "<tr>" + td + "</tr>");
+        else {
+            td = td + "<td>" + "U" + "</td>";
+        }
+    for (var i = 0; i < 2; i++) 
+        if(arr2[i] == value) {
+            td = td + "<td>" + arr2[i] + "</td>";
+        }
+        else {
+            td = td + "<td>" + "U" + "</td>";
+        }
+    tab.html(tab.html() + "<tr>" + td + "</tr>");
+}
+
+function fillValue(arr, num, value) {
+    for(var i = 0; i < num; i++) {
+        try {
+            arr[i] = value;
+        } catch(err) {
+            arr[i] = 0;
+        }
     }
 }
 
-function fillValue(array, value) {
-    for (var i = 0; i < array.byteLength/array.BYTES_PER_ELEMENT; i++) {
-        array[i] = value;
-   }
+function getValue(table, value) {
+    var tab =$(table);
+    tab.html("");
+    showArray(tab, float64, float32, value);
+    showArray(tab, uint32, int32, value);
+    showArray(tab, uint16, int16, value);
+    showArray(tab, uint8, int8, value);
+}
+
+function setValue() {
+    fillValue(float64, 2, 1);
+    fillValue(float32, 2, 1);
+    fillValue(uint32, 2, 1);
+    fillValue(int32, 2, 1);
+    fillValue(uint16, 2, 1);
+    fillValue(int16, 2, 1);
+    fillValue(uint8, 2, 1);
+    fillValue(int8, 2, 1);
 }
