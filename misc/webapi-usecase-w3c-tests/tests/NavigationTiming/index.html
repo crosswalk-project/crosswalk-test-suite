@@ -40,31 +40,37 @@ Authors:
     <script src="../../js/tests.js"></script>
     <script src="js/main.js"></script>
   </head>
+  <style type="text/css">
+    .d{
+      border: 1px solid #000;
+      width:100%;
+      height:300px;
+    }
+    .d li{
+      margin: 10px 5px;
+    }
+  </style>
   <body>
     <div data-role="header">
       <h1 id="main_page_title"></h1>
     </div>
     <div data-role= "content">
-      <ul data-role="listview">
-        <li data-role="list-divider">Prompt for upload</li>
-        <li id="prompt"></li>
-        <li data-role="list-divider">Redirect</li>
-        <li id="redirect"></li>
-        <li data-role="list-divider">App cache</li>
-        <li id="cache"></li>
-        <li data-role="list-divider">DNS</li>
-        <li id="dns"></li>
-        <li data-role="list-divider">TCP</li>
-        <li id="tcp"></li>
-        <li data-role="list-divider">Request</li>
-        <li id="request"></li>
-        <li data-role="list-divider">Response</li>
-        <li id="response"></li>
-        <li data-role="list-divider">Processing</li>
-        <li id="processing"></li>
-        <li data-role="list-divider">Load</li>
-        <li id="load"></li>
-      </ul>
+      <div class="d">
+        <ul id="coordinate">
+          <li id="prompt">Prompt for upload time: N/A</li>
+          <li id="redirect">Redirect time: N/A</li>
+          <li id="cache">App cache time: N/A</li>
+          <li id="dns">DNS time: N/A</li>
+          <li id="tcp">TCP time: N/A</li>
+          <li id="request">Request time: N/A</li>
+          <li id="response">Response time: N/A</li>
+          <li id="processing">Processing time: N/A</li>
+          <li id="load">Load time: N/A</li>
+        </ul>
+      </div>
+      <div>
+        <a href="javascript:getNavigationTiming()" id="getNavigationTiming" data-role="button" class="opt">Reload Navigation Timing</a>
+      </div>
     </div>
     <div data-role="footer" data-position="fixed">
     </div>

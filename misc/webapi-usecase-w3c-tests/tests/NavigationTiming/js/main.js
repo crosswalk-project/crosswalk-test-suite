@@ -29,16 +29,28 @@ Authors:
 
 */
 
-setTimeout(function(){
-    timing = window.performance.timing;
-    $("#prompt").text(timing.fetchStart - timing.navigationStart);
-    $("#redirect").text(timing.redirectEnd  - timing.redirectStart);
-    $("#cache").text(timing.domainLookupStart  - timing.fetchStart);
-    $("#dns").text(timing.domainLookupEnd - timing.domainLookupStart);
-    $("#tcp").text(timing.connectEnd - timing.connectStart);
-    $("#request").text(timing.responseEnd - timing.requestStart);
-    $("#response").text(timing.domInteractive - timing.responseEnd);
-    $("#processing").text(timing.domComplete - timing.domInteractive);
-    $("#load").text(timing.loadEventEnd - timing.navigationStart);
-    setTimeout(function(){window.location.reload();}, 5000);
-}, 500);
+$(document).ready(function () {
+  getNavigationTiming();
+});
+
+function getNavigationTiming() {
+  timing = window.performance.timing;
+  var prompt = timing.fetchStart - timing.navigationStart;
+  var redirect = timing.redirectEnd  - timing.redirectStart;
+  var app_cache = timing.domainLookupStart  - timing.fetchStart;
+  var dns = timing.domainLookupEnd - timing.domainLookupStart;
+  var tcp = timing.connectEnd - timing.connectStart;
+  var request = timing.responseEnd - timing.requestStart;
+  var response = timing.domInteractive - timing.responseEnd;
+  var processing = timing.domComplete - timing.domInteractive;
+  var load = timing.loadEventEnd - timing.navigationStart;
+  $("#prompt").text("Prompt for unload time: " + prompt);
+  $("#redirect").text("Redirect time: " + redirect);
+  $("#cache").text("App cache time: " + app_cache);
+  $("#dns").text("DNS time: " + dns);
+  $("#tcp").text("TCP time: " + tcp);
+  $("#request").text("Request time: " + request);
+  $("#response").text("Response time: " + response);
+  $("#processing").text("Processing time: " + processing);
+  $("#load").text("Load time: " + load);
+}
