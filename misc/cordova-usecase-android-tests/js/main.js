@@ -34,14 +34,6 @@ Authors:
 var sstorage = window.sessionStorage;
 var applist;
 
-function exportResult() {
-    //TODO: export the test result from the saved result in session storage.
-}
-
-function SaveAndExit() {
-    //TODO: export the test result from the saved result in session storage, then exit the app.
-}
-
 function getVersion() {
   var version = "";
   $.ajax({

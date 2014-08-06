@@ -39,11 +39,6 @@ function init() {
     deviceReady = true;
     console.log("Device="+device.platform+" "+device.version);
   }, false);
-  function updateUserAgent() {
-    document.getElementById("user-agent").textContent = navigator.userAgent;
-  }
-  updateUserAgent();
-  window.setInterval(updateUserAgent, 1500);
   window.setTimeout(function() {
   	if (!deviceReady) {
   		alert("Error: Apache Cordova did not initialize. Demo will not run correctly.");

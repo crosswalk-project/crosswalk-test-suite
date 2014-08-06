@@ -50,11 +50,11 @@ var camMediaTypeDefault = ['mediaType', 0];
 
 function log(value) {
   console.log(value);
-  document.getElementById('camera_status').textContent += (new Date() - pageStartTime) / 1000 + ': ' + value + '\n';
+ // document.getElementById('camera_status').textContent += (new Date() - pageStartTime) / 1000 + ': ' + value + '\n';
 }
 
 function clearStatus() {
-  document.getElementById('camera_status').innerHTML = '';
+  //document.getElementById('pic').innerHTML = '';
   document.getElementById('camera_image').src = 'about:blank';
   //var canvas = document.getElementById('canvas');
   // canvas.width = canvas.height = 1;
@@ -160,8 +160,12 @@ function extractOptions() {
 }
 
 function createOptionsEl(name, values, selectionDefault) {
-  var container = document.createElement('div');
-  container.style.display = 'inline-block';
+  var table = document.createElement('table');
+  var tr = document.createElement('tr');
+  var container = document.createElement('td');
+  table.appendChild(tr);
+  tr.appendChild(container);
+  table.style.cssText = "border: 1px;"
   container.appendChild(document.createTextNode(name + ': '));
   var select = document.createElement('select');
   select.keyName = name;
@@ -192,7 +196,7 @@ function createOptionsEl(name, values, selectionDefault) {
     select.appendChild(opt);
   }
   var optionsDiv = document.getElementById('image-options');
-  optionsDiv.appendChild(container);
+  optionsDiv.appendChild(table);
 }
 
 /**
@@ -201,11 +205,10 @@ function createOptionsEl(name, values, selectionDefault) {
 function init() {
     document.addEventListener("deviceready", function() {
       deviceReady = true;
-      console.log("Device="+device.platform+" "+device.version);
-      createOptionsEl('sourceType', Camera.PictureSourceType, camPictureSourceTypeDefault);
-      createOptionsEl('destinationType', Camera.DestinationType, camDestinationTypeDefault);
-      createOptionsEl('encodingType', Camera.EncodingType, camEncodingTypeDefault);
-      createOptionsEl('mediaType', Camera.MediaType, camMediaTypeDefault);
+      createOptionsEl('Encoding Type', Camera.EncodingType, camEncodingTypeDefault);
+      createOptionsEl('Media Type', Camera.MediaType, camMediaTypeDefault);
+      createOptionsEl('Destination Type', Camera.DestinationType, camDestinationTypeDefault);
+      createOptionsEl('Source Type', Camera.PictureSourceType, camPictureSourceTypeDefault); 
     }, false);
     window.setTimeout(function() {
       if (!deviceReady) {

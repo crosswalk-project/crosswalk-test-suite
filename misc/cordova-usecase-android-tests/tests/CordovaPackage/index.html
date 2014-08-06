@@ -46,32 +46,26 @@ Authors:
     <div data-role="header" data-position="fixed" data-tap-toggle="false">
       <h1 id="main_page_title"></h1>
     </div>
-    <div id="content">
-      <p>Test Steps: </p>
+    <div data-role="content">
+      <h4>Test Steps</h4>
       <ol>
-        <li>Unzip the 'crosswalk-cordova-xxx-arm.zip' -d localpath</li>
-        <li>Execute command: 'cd /localpath/crosswalk-cordova-xxx-arm'</li>
-        <li>Execute command: './bin/create hello com.example.hello hello --shared'</li>
-        <li>Execute command: 'cd hello'</li>
-        <li>Execute command: './cordova/build and then check the output in terminal'</li>
-        <li>Execute command: './cordova/run and then check the output in terminal'</li>
-        <li>Press back button to exit the app</li>
+        <li>Copy the 'cordova-usecase-android-tests/tests/CordovaPackage/res/test.py' file to crosswalk-cordova directory</li>
+        <li>Run the python script:<br/>$ python test.py</li>
+        <li>Check the command output</li>
+        <li>Quick press back button to exit 'hello' app after the app launch</li>
       </ol>
     </div>
     <div data-role="footer" data-position="fixed" data-tap-toggle="false">
     </div>
     <div data-role="popup" id="popup_info" data-theme="a">
       <font class="fontSize">
-        <p>Test Purpose: </p>
-        <p>Verify the Cordova package can build, install and launch successfully.</p>
-        <p>Expected Results: </p>
+        <p>Purpose:</p>
+        <p>Verify the Cordova package can build, install and launch successfully</p>
+        <p>Expected Results:</p>
         <ol>
-          <li>The unzip command execute successfully</li>
-          <li>The cd command execute successfully</li>
-          <li>The hello project created successfully</li>
-          <li>The cd command execute successfully</li>
-          <li>Build cordova package successfully</li>
-          <li>The app can built firstly, and then install and launch successfully</li>
+          <li>There has test.py in crosswalk-cordova directory</li>
+          <li>The command run successfully, no error</li>
+          <li>Display 'Build Package Successfully' and 'Package Name Consistent'</li>
           <li>The app can exit successfully</li>
         </ol>
       </font>
