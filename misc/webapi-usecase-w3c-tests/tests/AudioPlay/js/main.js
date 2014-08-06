@@ -32,11 +32,13 @@ Authors:
 var testTarget;
 
 $(document).ready(function(){
+    DisablePassButton();
     document.getElementById("MediaPlayback").volume = 0.6;
     $("#slider-1").hide();
 });
 
 function play() {
+    EnablePassButton();
     testTarget=document.getElementById("MediaPlayback");
     testTarget.play();
 }
@@ -48,4 +50,5 @@ function pause() {
 
 function replay() {
   document.getElementById("MediaPlayback").load();
+  testTarget.play();
 }
