@@ -12,18 +12,18 @@ RESOURCE_DIR=/home/app/content
 chmod 777 -R $RESOURCE_DIR/tct/opt/$PACKAGENAME
 
 function installpkg(){
-    su - app -c "export XDG_RUNTIME_DIR=\"/run/user/5000\";xwalk --install $(dirname $0)/$XPKNAME"
+    su - app -c "export XDG_RUNTIME_DIR=\"/run/user/5000\";xwalkctl --install $(dirname $0)/$XPKNAME"
 
     #TODO: copy resource
     #eg:cp xx $RESOURCE_DIR
 }
 
 function uninstallpkg(){
-    su - app -c "export XDG_RUNTIME_DIR=\"/run/user/5000\";xwalk --list-apps" >/tmp/apps.txt 2>&1
+    su - app -c "export XDG_RUNTIME_DIR=\"/run/user/5000\";xwalkctl --list-apps" >/tmp/apps.txt 2>&1
     pkgids=`cat /tmp/apps.txt | grep $PACKAGENAME | awk '{print $(NF-1)}'`
     for pkgid in $pkgids
     do
-        su - app -c "export XDG_RUNTIME_DIR=\"/run/user/5000\";xwalk --uninstall $pkgid"
+        su - app -c "export XDG_RUNTIME_DIR=\"/run/user/5000\";xwalkctl --uninstall $pkgid"
     done
 
     #TODO: remove resource
