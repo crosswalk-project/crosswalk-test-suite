@@ -16,6 +16,7 @@ limitations under the License.
 
 Authors:
         Ma, Yue <yuex.ma@intel.com>
+        Zhang, Jing <jingx.zhang@intel.com>
 
 -->
 <html>
@@ -36,12 +37,15 @@ Authors:
         </div>
         <div data-role="content">
             <div data-role="collapsible-set" data-inset="false" data-collapsed-icon="arrow-r" data-expanded-icon="arrow-d" data-theme="b">
+                <p>1.Press power key to lock the screen, then press power key again to unlock the screen.</p>
+                <p>2.Click "Screen-lock State" to check if the visibilitystate attribute is set to hidden and the hidden attribute is set to true when lock the screen.</p>
                 <div data-role="collapsible" data-collapsed="true" data-theme="b">
                     <h3 id="homeList1">Screen-lock State</h3>
                     <ul data-role="listview" data-inset="false">
                         <li class="ui-li ui-li-static" id="lock"></li>
                     </ul>
                 </div>
+                <p>Click "Screen-unlock State" to check if the visibilitystate attribute is set to visible and the hidden attribute is set to false when unlock the screen.</p>
                 <div data-role="collapsible" data-collapsed="true" data-theme="b">
                     <h3 id="homeList2">Screen-unlock State</h3>
                     <ul data-role="listview" data-inset="false">
@@ -57,7 +61,7 @@ Authors:
             <p>Test Purpose: </p>
             <p>Verifies the device is able to handle pageVisible event when lock and unlock the screen by gesture.</p>
             <p>Expected Result: </p>
-            <p>Test passes if the screen lock and unlock information displayed correctly on screen.</p>
+            <p>Test passes if the screen lock and unlock information displayed correctly and no "Fail" appears on screen.</p>
           </font>
         </div>
     </div>
