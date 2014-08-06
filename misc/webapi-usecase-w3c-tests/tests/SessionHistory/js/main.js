@@ -41,6 +41,9 @@ $(document).live('pageshow', function () {
     for (var i = 0; i<11;i++) {
         window.history.pushState(i);
     }
+    var state = window.history.state;
+    $("#sessionID").text(state);
+    $("#forward").button("disable");
     window.addEventListener("popstate", function(e) {
         var state = window.history.state;
         $("#sessionID").text(state);
