@@ -46,7 +46,7 @@ var beep = function(){
 };
 
 var vibrate = function() {
-  navigator.notification.vibrate(2500);
+  navigator.notification.vibrate(3000);
 }
 
 var confirmDialogB = function(message, title, buttons) {
