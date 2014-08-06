@@ -126,7 +126,7 @@ cd ..
 cd i18n_locales_language_tests
 zip -rq $BUILD_DEST/opt/$name/i18n_locales_language_tests.wgt *
 cd ..
-cd noresources
+cd i18n_locales_noresources_tests
 zip -rq $BUILD_DEST/opt/$name/i18n_locales_noresources_tests.wgt *
 cd ..
 }
