@@ -35,80 +35,93 @@ function onSuccess (applications) {
   text = "";
   if (applications.length == 0) {
     text = "<ul><li class='name'>There is no app.</li></ul>"
-     $("#app").html(text);
+     $("#result").html(text);
   } else {
     apps = applications;
+    var flag = true;
+    text = "<tr class='tr0'><td width='50%'>App ID</td><td width='50%' colspan='2'>Operation</td></tr>";
     for (var i = 0; i < applications.length; i ++) {
-      text = text + "<ul>ID : " + applications[i].id + "&nbsp;&nbsp;&nbsp;<a href='javascript: appInfo(" + i +");'>AppInfo</a>&nbsp;&nbsp;&nbsp;<a href='javascript: launch(" + i +");'>Run App</a></ul>"
+      if(flag) {
+        text = text + "<tr class='tr2'><td width='50%'>" + applications[i].id + "</td><td width='25%'><a href='javascript: appInfo(" + i +");'>AppInfo</a></td><td width='25%'><a href='javascript: launch(" + i +");'>Run App</a></td></tr>";     
+      } else {
+        text = text + "<tr class='tr1'><td width='50%'>" + applications[i].id + "</td><td width='25%'><a href='javascript: appInfo(" + i +");'>AppInfo</a></td><td width='25%'><a href='javascript: launch(" + i +");'>Run App</a></td></tr>";  
+      }
+      flag = !flag;
     }
-    $("#app").html(text);
+    $("#result").html(text);
   }
 }
 
 function onError (error) {
-    $("#app").text("error: " + error.name);
+    $("#result").text("error: " + error.name);
 }
 
 function appInfo (index) {
-  $("#app").html("Getting info for " + apps[index].id);
+  $("#result").html("Getting info for " + apps[index].id);
   try {
     var appInfo = tizen.application.getAppInfo(apps[index].id);
   
     if (appInfo) {
-      text = "<ul><li class='name'>ID : " + appInfo.id + "</li><li>Name : " + appInfo.name  + "</li><li>Version :" + appInfo.version  + "</li><li>Packageid : " + appInfo.packageId  + "</li></ul>"
-      $("#app").html(text);
+      text = "<tr class='tr0'><td width='30%'>App ID</td><td width='20%'>App Name</td><td width='20%'>App Version</td><td width='30%'>App PackageId</td></tr><tr class='tr2'><td>" + appInfo.id + "</td><td>" + appInfo.name + "</td><td>" + appInfo.version + "</td><td>" + appInfo.packageId + "</td></tr>";
+      $("#result").html(text);
     } else {
-      $("#app").html("Get info for " + id + "faild!");
+      $("#result").html("Get info for " + id + "faild!");
     }
   } catch (e) {
-    $("#app").html("error : " + e.message);
+    $("#result").html("error : " + e.message);
   }
 }
 
 function launch(index) {
-  $("#app").html("Running " + apps[index].id);
+  $("#result").html("Running " + apps[index].id);
   try {
     tizen.application.launch(apps[index].id, runSuccess, onError);
   } catch (e) {
-    $("#app").html("error : " + e.message);
+    $("#result").html("error : " + e.message);
   }
-
 }
 
 function runSuccess () {
-  $("#app").html("The application has launched successfully");
+  $("#result").html("Please checking the app launched on GUI and service process commandline");
 }
 
 function getAllApp () {
   try {
     tizen.application.getAppsInfo(onSuccess, onError);
   } catch (e) {
-    $("#app").html("error : " + e.message);
+    $("#result").html("error : " + e.message);
   }
 }
 
 function CurrentApp () {
   try {
     app = tizen.application.getCurrentApplication();
-    text = "<ul><li class='name'>ID : " + app.appInfo.id + "</li><li>Name : " + app.appInfo.name  + "</li><li>Version :" + app.appInfo.version  + "</li><li>Packageid : " + app.appInfo.packageId  + "</li></ul>"
-    $("#app").html(text);
+    text = "<tr class='tr0'><td width='30%'>Current App ID</td><td width='20%'>Current App Name</td><td width='20%'>Current App Version</td><td>Current App PackageId</td></tr><tr class='tr2'><td>" + app.appInfo.id + "</td><td>" + app.appInfo.name + "</td><td>" + app.appInfo.version + "</td><td>" + app.appInfo.packageId + "</td></tr>";  
+    $("#result").html(text);
   } catch (e) {
-    $("#app").html("error : " + e.message);
+    $("#result").html("error : " + e.message);
   }
 }
 
 function contextSuccess (contexts) {
-  $("#app").text("Getting success.");
+  $("#result").text("Getting success.");
   text = "";
   if (contexts.length == 0) {
     text = "<ul><li class='name'>There is no context.</li></ul>"
-     $("#app").html(text);
+     $("#result").html(text);
   } else {
     conts = contexts;
+    var flag = true;
+    text = "<tr class='tr0'><td width='40%'>Context ID</td><td width='40%'>Context AppId</td><td width='20%'>Operation/td></tr>";
     for (var i = 0; i < contexts.length; i ++) {
-      text = text + "<ul><li class='name'>ID : " + contexts[i].id + "</li><li>AppId : " + contexts[i].appId  + "</li><li><a href='javascript: kill(" + i +");'>Kill APP</a></li></ul>"
+      if(flag) {
+        text = text + "<tr class='tr2'><td>" + contexts[i].id + "</td><td>" + contexts[i].appId +"</td><td><a href='javascript: kill(" + i +");'>Kill App</a></td></tr>";     
+      } else {
+        text = text + "<tr class='tr1'><td>" + contexts[i].id + "</td><td>" + contexts[i].appId +"</td><td><a href='javascript: kill(" + i +");'>Kill App</a></td></tr>";
+      }
+      flag = !flag;
     }
-    $("#app").html(text);
+    $("#result").html(text);
   }
 }
 
@@ -117,31 +130,31 @@ function kill (index) {
 }
 
 function onKillSuccess () {
-  $("#app").html("Application terminated successfully");
+  $("#result").html("Application terminated successfully");
 }
 
 function allContext () {
   try {
-    $("#app").text("Getting list of application contexts for applications that are currently running on device");
+    $("#result").text("Getting list of application contexts for applications that are currently running on device");
     tizen.application.getAppsContext(contextSuccess, onError);
   } catch (e) {
-    $("#app").html("error : " + e.message);
+    $("#result").html("error : " + e.message);
   }
 }
 
 function currentContext () {
   try {
-    $("#app").text("Getting  the application context for the specified application context ID.");
+    $("#result").text("Getting  the application context for the specified application context ID.");
     var appContext = tizen.application.getAppContext();
-    text = "<ul><li class='name'>ID : " + appContext.id + "</li><li>AppId : " + appContext.appId  + "</li></ul>"
-    $("#app").html(text);
+    text = "<tr class='tr0'><td width='50%'>Current Context ID</td><td width='50%'>Current Context AppId</td</tr><tr class='tr2'><td>" + appContext.id + "</td><td>" + appContext.appId + "</td></tr>";
+    $("#result").html(text);
   } catch (e) {
-    $("#app").html("error : " + e.message);
+    $("#result").html("error : " + e.message);
   }
 }
 
 var init = function () {
-   tizen.application.getAppsInfo(onSuccess, onError);
+   CurrentApp();
 }
 
 $(document).bind("pageinit", init);

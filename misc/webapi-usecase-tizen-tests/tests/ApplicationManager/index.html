@@ -46,16 +46,19 @@ Authors:
     <div data-role="header">
       <h1 id="main_page_title"></h1>
     </div> 
-    <div data-role="content">  
+    <div data-role="content">
+      <div id="app">
+        <table id="result"></table>
+      </div>
       <div>
         <p>
+          <a href="javascript: CurrentApp();" data-role="button">Current App</a>
           <a href="javascript: getAllApp();" data-role="button">All App</a>
-          <a href="javascript: CurrentApp();" data-role="button">Curren tApp</a>
-          <a href="javascript: allContext();" data-role="button">All Context</a>
           <a href="javascript: currentContext();" data-role="button">Current Context</a>
+          <a href="javascript: allContext();" data-role="button">All Context</a>
         </p>
       </div>
-      <div id="app"></div>
+
       <div data-role="footer" data-position="fixed"></div>
     </div>
     <div data-role="popup" id="popup_info">
@@ -66,10 +69,10 @@ Authors:
         <p>Verifies ApplicationMnager.addAppinfoEventListener and install/uninstall/update events are supported and valid.</p>
         <p>Test Steps: </p>
           <ol>
-            <li>Run the application or click 'AllApp' button, check if the application list can be shown</li>
+            <li>Run the application or click the 'CurrentApp' button, check if current application information can be shown</li>
+            <li>Click 'AllApp' button, check if the application list can be shown</li>
             <li>Click the 'AppInfo' link, check if the application information which you select can be shown</li>
             <li>Click the 'Run App' link, check if the application which you select can be run and success infromation can be shown</li>
-            <li>Click the 'CurrentApp' button, check if current application information can be shown</li>
             <li>Click the 'AllContext' button, check if contextId and appId of running applications can be shown</li>
             <li>Click the 'Kill App' link, check if specified applicaion can be closed</li>
             <li>Click the 'CurrentContext' button, check if contextId and appId of current application can be shown</li>
