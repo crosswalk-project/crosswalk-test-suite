@@ -31,8 +31,8 @@ for apkfile in $(ls *.apk)
 do
  extend=".apk"
  uninstallfile=`echo ${apkfile%.*} | tr A-Z a-z`
- ls $apkfile |grep x86.apk  > /dev/null 2>&1 && extend="_x86.apk"
- ls $apkfile |grep arm.apk  > /dev/null 2>&1 && extend="_arm.apk"
+ ls $apkfile |grep x86.apk > /dev/null 2>&1 && extend="_x86.apk"
+ ls $apkfile |grep arm.apk > /dev/null 2>&1 && extend="_arm.apk"
  if [ $extend = ".apk" ];then
    adb uninstall org.xwalk.$uninstallfile
  else
