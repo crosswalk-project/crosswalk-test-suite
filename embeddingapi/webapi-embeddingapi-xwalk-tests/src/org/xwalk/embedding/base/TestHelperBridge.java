@@ -9,12 +9,15 @@ import org.chromium.content.browser.test.util.TestCallbackHelperContainer.OnPage
 
 class TestHelperBridge {
 
+	private String mChangedTitle;
     private final OnPageStartedHelper mOnPageStartedHelper;
     private final OnPageFinishedHelper mOnPageFinishedHelper;
+    private final OnTitleUpdatedHelper mOnTitleUpdatedHelper;
 
     public TestHelperBridge() {
         mOnPageStartedHelper = new OnPageStartedHelper();
         mOnPageFinishedHelper = new OnPageFinishedHelper();
+        mOnTitleUpdatedHelper = new OnTitleUpdatedHelper();
     }
 
     public OnPageFinishedHelper getOnPageFinishedHelper() {
@@ -29,4 +32,17 @@ class TestHelperBridge {
         mOnPageFinishedHelper.notifyCalled(url);
     }
 
+    public OnTitleUpdatedHelper getOnTitleUpdatedHelper() {
+        return mOnTitleUpdatedHelper;
+    }
+
+   public void onTitleChanged(String title) {
+        mChangedTitle = title;
+        mOnTitleUpdatedHelper.notifyCalled(title);
+    }
+   
+    public String getChangedTitle() {
+        return mChangedTitle;
+    }
+    
 }
