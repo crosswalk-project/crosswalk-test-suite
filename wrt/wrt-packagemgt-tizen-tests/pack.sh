@@ -313,8 +313,8 @@ case $type in
          zip_for_xpk;;
     crx) create_crx
          zip_for_crx;;
-    pure) create_pure
-          zip_for_pure;;
+    pure) create_wgt
+          zip_for_wgt;;
 esac
 
 

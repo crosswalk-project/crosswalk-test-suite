@@ -118,9 +118,6 @@ if [ $sign -eq 1 ];then
         fi
     done
 fi
-cd $BUILD_ROOT/manifest_app_mainsource1_tests
-zip -rq $BUILD_DEST/opt/$name/manifest_app_mainsource1_tests.wgt *
-cd ..
 }
 
 function create_apk(){
@@ -177,9 +174,9 @@ for buildfolder in `ls`
 do
         cp $SRC_ROOT/../../tools/make_xpk.py $BUILD_ROOT/make_xpk.py
         #echo "buildfolder" $buildfolder
-        if [ "${buildfolder:0:9}" == "manifest_" ];then
+        if [ "${buildfolder:0:7}" == "testapp" ];then
             echo "Use --manifest to build..."
-            python make_xpk.py $BUILD_ROOT/$buildfolder/ k.pem
+            python make_xpk.py $BUILD_ROOT/$buildfolder/ -o manifest_app_mainsource1_tests.xpk k.pem
             continue
         fi
 done

@@ -2,6 +2,6 @@ AC_INIT([wrt-rtbin-tizen-tests], [6.35.1.2], [zhiqiang.zhang@intel.com])
 AM_INIT_AUTOMAKE([-Wall -Werror foreign])
 
 AC_CONFIG_FILES([Makefile \
-rtbin/Makefile \
-testapp/manifest_app_mainsource1_tests/Makefile])
+rtbinauto/Makefile \
+testapp/Makefile])
 AC_OUTPUT

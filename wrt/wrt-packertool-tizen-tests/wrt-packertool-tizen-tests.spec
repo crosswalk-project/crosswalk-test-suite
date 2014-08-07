@@ -13,6 +13,4 @@ whitelist="
 init.sh
 tests.xml
 tests.full.xml
-log
-resources
 mediasrc"
