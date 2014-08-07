@@ -33,38 +33,58 @@ var text = "";
 var list;
 var dirs;
 var cons;
+var reminder;
+var flag = true;
+
+function hideDiv() {
+  setTimeout(function(){reminder.style.visibility = "hidden";},"2000");
+}
+
 function start() {
   tizen.content.getDirectories(getDirectoriesCB, errorCB);
 }
 
 function errorCB(err) {
-  list.innerHTML =  'The following error occurred: ' +  err.name;
+  reminder.innerHTML =  'The following error occurred: ' +  err.name;
+  reminder.style.visibility = "visible";
+  hideDiv();
 }
 
 function printDirectory(directory, index, directories) {
-  text = text + 'directoryURI: ' + directory.directoryURI + '&nbsp;&nbsp;Title: ' + directory.title + "&nbsp;&nbsp;&nbsp;<a href='javascript: find(" + index +");'>GETFILES</a><br>";
+  if(flag) {
+    text = text + "<tr class='tr2'><td>" + directory.directoryURI + "</td><td>" + directory.title +"</td><td><a href='javascript: find(" + index +");'>GETFILES</a></td></tr>";     
+  } else {
+    text = text + "<tr class='tr1'><td>" + directory.directoryURI + "</td><td>" + directory.title +"</td><td><a href='javascript: find(" + index +");'>GETFILES</a></td></tr>";
+  }
+  flag = !flag;
   list.innerHTML = text;
 }
 
 function find(num) {
-  list.innerHTML = dirs[num].id;
   tizen.content.find(findSuccess, findError, dirs[num].id, null, null, 20);
 }
 
 function findSuccess(contents) {
   cons = contents;
-  text = "";
+  text = "<tr class='tr0'><td width='25%'>Title</td><td width='25%'>URL</td><td width='25%'>MIME</td><td width='25%'>Operation</td></tr>";
   index = 0;
   contents.forEach(printContent);
 }
 
 function printContent(content, index, contents) {
-  text = text  + ' Title: ' + content.title  + '&nbsp;&nbsp;URL: ' + content.contentURI + '&nbsp;&nbsp;MIME: ' + content.mimeType + "&nbsp;&nbsp;&nbsp;<a href='javascript: scan(" + index +");'>SCANFILE</a><br>";
+  if(flag) {
+    text = text + "<tr class='tr2'><td>" + content.title + "</td><td>" + content.contentURI +"</td><td>" + content.mimeType + "</td><td><a href='javascript: scan(" + index +");'>SCANFILE</a></td></tr>";     
+  } else {
+    text = text + "<tr class='tr1'><td>" + content.title + "</td><td>" + content.contentURI +"</td><td>" + content.mimeType + "</td><td><a href='javascript: scan(" + index +");'>SCANFILE</a></td></tr>"; 
+  }
+  flag = !flag;
   list.innerHTML = text;
 }
 
 function findError(err) {
-  list.innerHTML =  'Find error: ' +  err.name;
+  reminder.innerHTML =  'Find Files error: ' +  err.name;
+  reminder.style.visibility = "visible";
+  hideDiv();
 }
 
 function scan(num) {
@@ -72,32 +92,43 @@ function scan(num) {
 }
 
 function scanSuccess(path) {
-  list.innerHTML = "scanning is completed. " + JSON.stringify(path);
+  reminder.innerHTML = "scanning is completed. " + JSON.stringify(path);
+  reminder.style.visibility = "visible";
+  hideDiv();
 }
 
 function scanError(err) {
-  list.innerHTML = "scanning error. " + err.name;
+  reminder.innerHTML = "scanning error. " + err.name;
+  reminder.style.visibility = "visible";
+  hideDiv();
 }
 
 function getDirectoriesCB(directories) {
-  list.innerHTML = directories.length;
   dirs = directories;
-  text = "";
+  text = "<tr class='tr0'><td width='40%'>directoryURI</td><td width='40%'>Title</td><td width='20%'>Operation</td></tr>";
   directories.forEach(printDirectory);
 }
 
 $(document).ready(function(){
-  list = document.getElementById("list");
+  list = document.getElementById("result");
+  reminder = document.getElementById("reminder");
   var listener= {
     oncontentadded: function(content) {
-        list.innerHTML = content.contentURI + ' content is added';
+      reminder.innerHTML = content.contentURI + ' content is added';
+      reminder.style.visibility = "visible";
+      hideDiv();
     },
     oncontentupdated: function(content) {
-        list.innerHTML = content.contentURI + ' content is updated';
+      reminder.innerHTML = content.contentURI + ' content is updated';
+      reminder.style.visibility = "visible";
+      hideDiv();
     },
     oncontentremoved: function(id) {
-        list.innerHTML = id + ' is removed';
+      reminder.innerHTML = id + ' is removed';
+      reminder.style.visibility = "visible";
+      hideDiv();
     }
  };
  tizen.content.setChangeListener(listener);
+ start();
 });
