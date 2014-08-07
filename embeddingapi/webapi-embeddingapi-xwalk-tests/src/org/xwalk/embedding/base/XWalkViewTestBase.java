@@ -527,4 +527,14 @@ public class XWalkViewTestBase extends ActivityInstrumentationTestCase2<MainActi
                 TimeUnit.SECONDS);
     }
 
+    public boolean checkMethodInClass(Class<?> clazz, String methodName){
+        Method[] methods = clazz.getMethods();
+        for(Method method : methods)
+        {
+            if(method.getName().equals(methodName)){
+                return true;
+            }
+        }
+        return false;
+    }
 }

@@ -4,15 +4,16 @@
 
 package org.xwalk.embedding.test;
 
-
 import org.xwalk.core.XWalkJavascriptResult;
 import org.xwalk.core.XWalkUIClient;
+import org.xwalk.core.XWalkUIClient.LoadStatus;
 import org.xwalk.embedding.MainActivity;
 import org.xwalk.embedding.base.XWalkViewTestBase;
 
 import android.annotation.SuppressLint;
 import android.net.Uri;
 import android.test.suitebuilder.annotation.SmallTest;
+import android.view.KeyEvent;
 import android.webkit.ValueCallback;
 
 @SuppressLint("NewApi")
@@ -124,7 +125,7 @@ public class XWalkUIClientTest extends XWalkViewTestBase {
     @SmallTest
     public void testOnPageStartedExist() {
         try {
-            assertTrue(false);
+            assertTrue(checkMethodInClass(XWalkUIClient.class, "onPageStarted"));
         } catch (Exception e) {
             e.printStackTrace();
             assertTrue(false);
@@ -134,7 +135,7 @@ public class XWalkUIClientTest extends XWalkViewTestBase {
     @SmallTest
     public void testOnPageFinishedExist() {
         try {
-            assertTrue(false);
+            assertTrue(checkMethodInClass(XWalkUIClient.class, "onPageFinished"));
         } catch (Exception e) {
             e.printStackTrace();
             assertTrue(false);
@@ -144,7 +145,7 @@ public class XWalkUIClientTest extends XWalkViewTestBase {
     @SmallTest
     public void testOnReceivedAppNameExist() {
         try {
-            assertTrue(false);
+            assertTrue(checkMethodInClass(XWalkUIClient.class, "onReceivedAppName"));
         } catch (Exception e) {
             e.printStackTrace();
             assertTrue(false);
@@ -154,7 +155,7 @@ public class XWalkUIClientTest extends XWalkViewTestBase {
     @SmallTest
     public void testOnReceivedIconExist() {
         try {
-            assertTrue(false);
+            assertTrue(checkMethodInClass(XWalkUIClient.class, "onReceivedIcon"));
         } catch (Exception e) {
             e.printStackTrace();
             assertTrue(false);
@@ -164,7 +165,7 @@ public class XWalkUIClientTest extends XWalkViewTestBase {
     @SmallTest
     public void testOnJsAlertExist() {
         try {
-            assertTrue(false);
+            assertTrue(checkMethodInClass(XWalkUIClient.class, "onJsAlert"));
         } catch (Exception e) {
             e.printStackTrace();
             assertTrue(false);
@@ -174,7 +175,7 @@ public class XWalkUIClientTest extends XWalkViewTestBase {
     @SmallTest
     public void testOnJsConfirmExist() {
         try {
-            assertTrue(false);
+            assertTrue(checkMethodInClass(XWalkUIClient.class, "onJsConfirm"));
         } catch (Exception e) {
             e.printStackTrace();
             assertTrue(false);
@@ -184,7 +185,7 @@ public class XWalkUIClientTest extends XWalkViewTestBase {
     @SmallTest
     public void testOnJsPromptExist() {
         try {
-            assertTrue(false);
+            assertTrue(checkMethodInClass(XWalkUIClient.class, "onJsPrompt"));
         } catch (Exception e) {
             e.printStackTrace();
             assertTrue(false);
@@ -230,5 +231,219 @@ public class XWalkUIClientTest extends XWalkViewTestBase {
             assertTrue(false);
         }
 
+    }
+
+
+    @SmallTest
+    public void testGetDefaultVideoPosterExist() {
+        try {
+            assertTrue(checkMethodInClass(XWalkUIClient.class, "getDefaultVideoPoster"));
+        } catch (Exception e) {
+            e.printStackTrace();
+            assertTrue(false);
+        }
+    }
+
+    @SmallTest
+    public void testGetVideoLoadingProgressViewExist() {
+        try {
+            assertTrue(checkMethodInClass(XWalkUIClient.class, "getVideoLoadingProgressView"));
+        } catch (Exception e) {
+            e.printStackTrace();
+            assertTrue(false);
+        }
+    }
+
+    @SmallTest
+    public void testOnCreateWindowExist() {
+        try {
+            assertTrue(checkMethodInClass(XWalkUIClient.class, "onCreateWindow"));
+        } catch (Exception e) {
+            e.printStackTrace();
+            assertTrue(false);
+        }
+    }
+
+    @SmallTest
+    public void testOnReceivedTitle() {
+        try {
+            getInstrumentation().runOnMainSync(new Runnable() {
+
+                @Override
+                public void run() {
+                    XWalkUIClient uiClient = new XWalkUIClient(mXWalkView);
+                    uiClient.onReceivedTitle(mXWalkView, "title");
+                }
+            });
+            assertTrue(true);
+        } catch (Exception e) {
+            e.printStackTrace();
+            assertTrue(false);
+        }
+    }
+
+    @SmallTest
+    public void testOnReceivedTouchIconUrlExist() {
+        try {
+            assertTrue(checkMethodInClass(XWalkUIClient.class, "onReceivedTouchIconUrl"));
+        } catch (Exception e) {
+            e.printStackTrace();
+            assertTrue(false);
+        }
+    }
+
+    @SmallTest
+    public void testShouldOverrideKeyEvent() {
+        try {
+            getInstrumentation().runOnMainSync(new Runnable() {
+
+                @Override
+                public void run() {
+                    XWalkUIClient uiClient = new XWalkUIClient(mXWalkView);
+                    uiClient.shouldOverrideKeyEvent(mXWalkView, new KeyEvent(0, 65));
+                }
+            });
+            assertTrue(true);
+        } catch (Exception e) {
+            e.printStackTrace();
+            assertTrue(false);
+        }
+    }
+
+    @SmallTest
+    public void testOnUnhandledKeyEvent() {
+        try {
+            getInstrumentation().runOnMainSync(new Runnable() {
+
+                @Override
+                public void run() {
+                    XWalkUIClient uiClient = new XWalkUIClient(mXWalkView);
+                    uiClient.onUnhandledKeyEvent(mXWalkView, new KeyEvent(0,65));
+                }
+            });
+            assertTrue(true);
+        } catch (Exception e) {
+            e.printStackTrace();
+            assertTrue(false);
+        }
+    }
+
+    @SmallTest
+    public void testOnPageStarted() {
+        try {
+            getInstrumentation().runOnMainSync(new Runnable() {
+
+                @Override
+                public void run() {
+                    XWalkUIClient uiClient = new XWalkUIClient(mXWalkView);
+                    uiClient.onPageLoadStarted(mXWalkView, "file:///android_asset/p2bar.html");
+                }
+            });
+            assertTrue(true);
+        } catch (Exception e) {
+            e.printStackTrace();
+            assertTrue(false);
+        }
+    }
+
+    @SmallTest
+    public void testOnPageStarted_nullUrl() {
+        try {
+            getInstrumentation().runOnMainSync(new Runnable() {
+
+                @Override
+                public void run() {
+                    XWalkUIClient uiClient = new XWalkUIClient(mXWalkView);
+                    uiClient.onPageLoadStarted(mXWalkView, null);
+                }
+            });
+            assertTrue(true);
+        } catch (Exception e) {
+            e.printStackTrace();
+            assertTrue(false);
+        }
+    }
+
+    @SmallTest
+    public void testShouldOverrideUrlLoading() {
+        try {
+            getInstrumentation().runOnMainSync(new Runnable() {
+
+                @Override
+                public void run() {
+                    XWalkUIClient uiClient = new XWalkUIClient(mXWalkView);
+                    uiClient.shouldOverrideKeyEvent(mXWalkView, new KeyEvent(0, 65));
+                }
+            });
+            assertTrue(true);
+        } catch (Exception e) {
+            e.printStackTrace();
+            assertTrue(false);
+        }
+    }
+
+    @SmallTest
+    public void testOnCreateWindowRequestExist() {
+        try {
+            assertTrue(checkMethodInClass(XWalkUIClient.class, "onCreateWindowRequest"));
+        } catch (Exception e) {
+            e.printStackTrace();
+            assertTrue(false);
+        }
+    }
+
+
+    @SmallTest
+    public void testOnPageStopped() {
+        try {
+            getInstrumentation().runOnMainSync(new Runnable() {
+
+                @Override
+                public void run() {
+                    XWalkUIClient uiClient = new XWalkUIClient(mXWalkView);
+                    uiClient.onPageLoadStopped(mXWalkView, "file:///android_asset/p2bar.html", LoadStatus.CANCELLED);
+                }
+            });
+            assertTrue(true);
+        } catch (Exception e) {
+            e.printStackTrace();
+            assertTrue(false);
+        }
+    }
+
+    @SmallTest
+    public void testOnPageStopped_nullUrl() {
+        try {
+            getInstrumentation().runOnMainSync(new Runnable() {
+
+                @Override
+                public void run() {
+                    XWalkUIClient uiClient = new XWalkUIClient(mXWalkView);
+                    uiClient.onPageLoadStopped(mXWalkView, null, LoadStatus.CANCELLED);
+                }
+            });
+            assertTrue(true);
+        } catch (Exception e) {
+            e.printStackTrace();
+            assertTrue(false);
+        }
+    }
+
+    @SmallTest
+    public void testOnPageStopped_nullView() {
+        try {
+            getInstrumentation().runOnMainSync(new Runnable() {
+
+                @Override
+                public void run() {
+                    XWalkUIClient uiClient = new XWalkUIClient(mXWalkView);
+                    uiClient.onPageLoadStopped(null, null, LoadStatus.CANCELLED);
+                }
+            });
+            assertTrue(true);
+        } catch (Exception e) {
+            e.printStackTrace();
+            assertTrue(false);
+        }
     }
 }
