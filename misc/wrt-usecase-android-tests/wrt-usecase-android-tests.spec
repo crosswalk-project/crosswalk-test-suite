@@ -1,15 +1,18 @@
-name=$(basename $(pwd))
+name="wrt-usecase-android-tests"
+main_version="6.35.1.2"
+release="1"
 version="6.35.1.2"
 appname=$(echo $name|sed 's/-/_/g')
 
 # set value "1" if this suite need to sign,otherwise set "0" #
-sign="0"
+sign="1"
 
 # set value "1" if this suite need to keep src_file,otherwise set "0" #
-src_file="0"
+src_file="1"
 
 # specified files to be kept in whitelist #
 whitelist="
 inst.sh
-common
-"
+tests.xml
+LICENSE.BSD-3
+mediasrc"
