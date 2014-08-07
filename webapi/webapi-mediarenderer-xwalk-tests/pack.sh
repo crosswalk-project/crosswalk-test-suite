@@ -124,9 +124,9 @@ cat > index.html << EOF
 </head>
 EOF
 cp -a $BUILD_ROOT/icon.png     $BUILD_DEST/
-cp -r $SRC_ROOT/../../tools/xwalk_app_template $BUILD_ROOT/xwalk_app_template
+cp -r $SRC_ROOT/../../tools/crosswalk $BUILD_ROOT/crosswalk
 
-cd $BUILD_ROOT/xwalk_app_template
+cd $BUILD_ROOT/crosswalk
 python make_apk.py --package=org.xwalk.$appname --name=$appname --app-root=$BUILD_DEST --app-local-path=index.html --icon=$BUILD_DEST/icon.png --mode=$mode
 if [ $? -ne 0 ];then
     echo "Create $name.apk fail.... >>>>>>>>>>>>>>>>>>>>>>>>>"
@@ -221,7 +221,7 @@ function zip_for_apk(){
 cd $BUILD_DEST
 # cp inst.sh script #
 cp -af $BUILD_ROOT/inst.sh.apk $BUILD_DEST/opt/$name/inst.sh
-mv $BUILD_ROOT/xwalk_app_template/*.apk $BUILD_DEST/opt/$name/
+mv $BUILD_ROOT/crosswalk/*.apk $BUILD_DEST/opt/$name/
 
 if [ $src_file -eq 0 ];then
     for file in $(ls opt/$name |grep -v apk);do
