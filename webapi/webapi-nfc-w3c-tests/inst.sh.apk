@@ -7,7 +7,7 @@ USAGE="Usage: ./inst.sh [-i] [-u]
 [-i] option was set as default."
 
 #TODO:update PACKAGENAME for each suite,pay attention to use '_'
-PACKAGENAME=tct_nfc_tizen_tests
+PACKAGENAME=webapi_nfc_w3c_tests
 SUITENAME=`echo $PACKAGENAME |sed 's/_/-/g'`
 RESOURCE_DIR=/home/app/content
 
@@ -15,7 +15,6 @@ function installpkg(){
 extend=".apk"
 ls |grep x86.apk  > /dev/null 2>&1 && extend="_x86.apk"
 ls |grep arm.apk  > /dev/null 2>&1 && extend="_arm.apk"
-
 adb install $PACKAGENAME$extend
 
 #TODO: copy resource
