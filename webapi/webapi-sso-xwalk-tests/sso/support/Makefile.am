@@ -1,3 +1,3 @@
-supportdir = $(prefix)/opt/webapi-sso-xwalk-tests/sso/support
+supportdir = $(prefix)/opt/webapi-audiosystem-ivi-tests/audiosystem/support
 support_SCRIPTS = *
 EXTRA_DIST = $(support_SCRIPTS)

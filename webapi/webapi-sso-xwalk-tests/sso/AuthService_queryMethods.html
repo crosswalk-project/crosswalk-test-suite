@@ -49,7 +49,7 @@ t.step(function () {
   });
 
   onSuccess = t.step_func(function (result) {
-    assert_type(result, "array", "queryMethods() should return array");
+    assert_type(result, "array", "queryMethods() should return object");
     t.done();
   });
   tizen.sso.authService.queryMethods().then(onSuccess, onError);
