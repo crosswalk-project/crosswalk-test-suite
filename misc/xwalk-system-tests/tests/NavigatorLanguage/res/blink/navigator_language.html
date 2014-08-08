@@ -1,20 +1,17 @@
 <!DOCTYPE html>
 <html>
-<head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width">
-  <title>Automatic</title>
-  <script src="../../../js/thirdparty/testharness.js"></script>
-  <script src="../../../js/thirdparty/testharnessreport.js"></script>
-  <script src="../../../js/thirdparty/testharness.css"></script>
-  <script>
-  test(function() {
+<body>
+<script src="../../../../js/blink/testharness.js"></script>
+<script src="../../../../js/blink/testharnessreport.js"></script>
+<script>
+
+test(function() {
     assert_true('language' in window.navigator);
     assert_true('languages' in window.navigator);
     assert_true('onlanguagechange' in window);
-  }, "Test that NavigatorLanguage API is present in window");
+}, "Test that NavigatorLanguage API is present in window");
 
-  test(function() {
+test(function() {
     var received = false;
     window.onlanguagechange = function() {
       received = true;
@@ -22,9 +19,9 @@
 
     window.testRunner.setAcceptLanguages('klingon');
     assert_true(received);
-  }, "Test that the languagechange event fires on window.onlanguagechange");
+}, "Test that the languagechange event fires on window.onlanguagechange");
 
-  test(function() {
+test(function() {
     var received = false;
     window.addEventListener('languagechange', function() {
         received = true;
@@ -32,17 +29,17 @@
 
     window.testRunner.setAcceptLanguages('klingon-FR');
     assert_true(received);
-  }, "Test that the languagechange event fires on window.addEventListener('languagechange')");
+}, "Test that the languagechange event fires on window.addEventListener('languagechange')");
 
-  test(function() {
+test(function() {
     window.received = false; // We need a global variable here.
     document.body.setAttribute('onlanguagechange', 'window.received = true;');
 
     window.testRunner.setAcceptLanguages('klingon-US');
     assert_true(window.received);
-  }, "Test that the languagechange event fires on body onlanguagechange attribute");
+}, "Test that the languagechange event fires on body onlanguagechange attribute");
 
-  test(function() {
+test(function() {
     window.received = 0; // We need a global variable here.
     var fromWindowHandler = false;
     document.body.setAttribute('onlanguagechange', 'window.received++;');
@@ -66,9 +63,9 @@
     window.testRunner.setAcceptLanguages('klingon-FR');
     assert_equals(window.received, 1);
     assert_false(fromWindowHandler);
-  }, "Test that the languagechange event fires on body onlanguagechange attribute XOR window.onlanguagechange");
+}, "Test that the languagechange event fires on body onlanguagechange attribute XOR window.onlanguagechange");
 
-  test(function() {
+test(function() {
     var eventsCount = 0;
     window.onlanguagechange = function() {
         eventsCount++;
@@ -78,24 +75,24 @@
     window.testRunner.setAcceptLanguages('klingon-US');
 
     assert_equals(eventsCount, 1);
-  }, "Test that changing the language to the same value doesn't fire an event.")
+}, "Test that changing the language to the same value doesn't fire an event.")
 
-  test(function() {
+test(function() {
     window.addEventListener('languagechange', function(e) {
         assert_false(e.cancelable);
         assert_false(e.bubbles);
     });
 
     window.testRunner.setAcceptLanguages('klingon');
-  }, "Test properties of the fired event.");
+}, "Test properties of the fired event.");
 
-  test(function() {
+test(function() {
     var testValues = [
         { accept_languages: 'foo', language: 'foo', languages: ['foo'] },
         { accept_languages: '', language: '', languages: [] },
         { accept_languages: 'foo,bar', language: 'foo', languages: [ 'foo', 'bar' ] },
-        { accept_languages: ' foo , bar ', language: 'foo', languages: [ 'foo', 'bar' ] },
-        { accept_languages: ' foo ; bar ', language: 'foo ; bar', languages: [ 'foo ; bar' ] },
+        { accept_languages: '  foo , bar ', language: 'foo', languages: [ 'foo', 'bar' ] },
+        { accept_languages: '  foo ; bar ', language: 'foo ; bar', languages: [ 'foo ; bar' ] },
         { accept_languages: '_foo_', language: '_foo_', languages: ['_foo_'] },
         { accept_languages: 'en_', language: 'en-', languages: ['en-'] },
         { accept_languages: 'en__', language: 'en-_', languages: ['en-_'] },
@@ -120,29 +117,17 @@
             assert_equals(navigator.languages[j], data.languages[j]);
         }
     }
-  }, "Test that navigator.languages reflects the accept languages value.");
+}, "Test that navigator.languages reflects the accept languages value.");
 
-  test(function() {
+test(function() {
     var previous = navigator.languages;
     assert_equals(navigator.languages, navigator.languages);
     assert_equals(navigator.languages, previous);
 
     window.testRunner.setAcceptLanguages('fr-FR');
     assert_not_equals(navigator.languages, previous);
-  }, "Test that navigator.languages caching behaviour.");
+}, "Test that navigator.languages caching behaviour.");
 
-  async_test(function() {
-    var worker = new Worker('#');
-    worker.onmessage = this.step_func(function(e) {
-      assert_equals(e.data, navigator.language);
-      this.done();
-    });
-  });
-  </script>
-</head>
-<body>
-  <h1>NavigatorLanguage Test</h1>
-  <p>Tests Results</p>
-  <div id=log></div>
+</script>
 </body>
 </html>
