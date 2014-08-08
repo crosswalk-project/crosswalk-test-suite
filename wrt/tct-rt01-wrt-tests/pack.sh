@@ -107,9 +107,12 @@ for app in $all_dirs; do
     if [ $? == 1 ]; then
         echo "Got a black dir: $app"
         continue
-    elif [ $(find $app|wc -l) -eq 1 ]; then
+    elif [ $app == "support" ]; then
         echo "No files found in $app, skip it ..."
         continue
+    elif [ $(find $app|wc -l) -eq 1 ]; then
+        echo "No files found in $app, skip it ..."
+        continue        
     else
         if [ -f $app.wgt ]; then
             echo "Delete old packaged file"
@@ -182,7 +185,7 @@ cd $BUILD_DEST
 # cp inst.sh script #
 rm -rf $BUILD_DEST/opt/$name/inst.sh.wgt
 cp -af $BUILD_ROOT/inst.sh.wgt $BUILD_DEST/opt/$name/inst.sh
-
+cp -af $BUILD_ROOT/support $BUILD_DEST/opt/$name/
 zip -Drq $BUILD_DEST/$name-$version.xwalk.$type.zip opt/
 if [ $? -ne 0 ];then
     echo "Create zip package fail... >>>>>>>>>>>>>>>>>>>>>>>>>"
