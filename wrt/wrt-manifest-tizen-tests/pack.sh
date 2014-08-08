@@ -193,35 +193,18 @@ cp -r $BUILD_ROOT/report $BUILD_DEST/opt/$name/report
 cp -r $BUILD_ROOT/script $BUILD_DEST/opt/$name/script
 #cp -r $BUILD_ROOT/*tests.xpk $BUILD_DEST/opt/$name/source
 cd $BUILD_DEST
-zip -rq $BUILD_DEST/opt/$name/$name.zip *
+zip -rq $SRC_ROOT/$name-$version.$type.zip opt/
 if [ $? -ne 0 ];then
     echo "Create $name.xpk fail.... >>>>>>>>>>>>>>>>>>>>>>>>>"
     clean_workspace
     exit 1
 fi
+ls
 }
 
 function zip_for_pure()
 {
-[ -e $SRC_ROOT/$name-$version.$type.zip ] && rm -rf $SRC_ROOT/$name-$version.$type.zip
-cd $BUILD_DEST
-if [ $src_file -eq 0 ];then
-    for file in $(ls opt/$name | grep -v zip);do
-        if [[ "${whitelist[@]}" =~ $file ]];then
-            echo "$file in whitelist,keep it..."
-        else
-            echo "Remove unnessary file:$file..."
-            rm -rf opt/$name/$file
-        fi
-    done
-fi
-cp -af $BUILD_ROOT/inst.sh.pure $BUILD_DEST/opt/$name/inst.sh
-zip -Drq $BUILD_DEST/$name-$version.$type.zip opt/
-if [ $? -ne 0 ];then
-    echo "Create zip package fail... >>>>>>>>>>>>>>>>>>>>>>>>>"
-    clean_workspace
-    exit 1
-fi
+echo "zip for pure"
 }
 
 ## zip function ##
@@ -318,7 +301,7 @@ esac
 
 # copy zip file
 echo "copy package from workspace... >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>"
-cp -f $BUILD_DEST/$name-$version.$type.zip $SRC_ROOT/$name-$version.$type.zip
+
 
 # clean workspace
 clean_workspace

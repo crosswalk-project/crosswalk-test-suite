@@ -1,7 +1,7 @@
 
 import sys, os, itertools, shutil, getopt, re, time 
 import const
-
+import pdb, traceback
 from xml.etree.ElementTree import ElementTree
 from xml.etree.ElementTree import Element
 from xml.etree.ElementTree import SubElement
@@ -84,17 +84,8 @@ def gen_Manifest_Json(output_file,in_file):
             get_Configxml(const.path_tcs + "/Crosswalk-Manifest-Check" +str(Manifest_Row) + "/config.xml", "Crosswalk-Manifest-Check" +str(Manifest_Row))
             
             #launch the app
-            for i in range(0,const.run_times):
-                #start packing
-                manifest_Packing("Crosswalk-Manifest-Check" + str(Manifest_Row),Pack_Type)
-                get_run_back = launcher_WebApp(Pack_Type,str(Manifest_Row),get_self)
-                print "Run Webapp Times ---------------------------->",i,get_run_back
-                if (get_run_back=="testend"):
-                    break
-                elif((get_run_back=="testagain") & (i==2)):
-                    if (os.path.isfile("opt/wrt-manifest-tizen-tests/Crosswalk-Manifest-Check" + str(Manifest_Row) + "." + Pack_Type)):
-                        log_Log(" webapp run fail and save webapp" + str(Manifest_Row) + "." + Pack_Type+ " to ./result" +"\n" )
-                        shutil.move("opt/wrt-manifest-tizen-tests/Crosswalk-Manifest-Check" + str(Manifest_Row) + "." + Pack_Type ,const.path_result)
+            manifest_Packing("Crosswalk-Manifest-Check" + str(Manifest_Row),Pack_Type)
+            get_run_back = launcher_WebApp(Pack_Type,str(Manifest_Row),get_self)
             do_Clear(const.path_tcs + "/Crosswalk-Manifest-Check" + str(Manifest_Row))
             get_self=""
         file.close()
@@ -184,6 +175,7 @@ def del_Seed(in_file):
         gen_selfcomb_File(const.selfcomb_file, in_file)
 
         #3*********output -> manifest.json
+        print "___________________>del_Seed",const.output_file, in_file
         if (Test_Flag=="negative"):
             print gen_Manifest_Json(const.output_file_ne, in_file)
         else:
@@ -198,8 +190,8 @@ def del_Seed(in_file):
 def gen_selfcomb_File(comb_file,in_file):
     try:
         #if (os.path.isfile("./allpairs/output.txt") & (Test_Flag=="positive")):
-        #do_Clear("./allpairs/output.txt")
-        #do_Clear("./allpairs/output_negative.txt")
+        do_Clear("./allpairs/output.txt")
+        do_Clear("./allpairs/output_negative.txt")
         if (Test_Flag=="negative"):
             open_output_file= open(const.output_file_ne,'a+')
         else:
@@ -399,6 +391,8 @@ def insert_to_Summary(sumaryfile,total_case,pass_case,pass_rate,fail_case,fail_r
         ntest_start_time[0].text = str(test_start_time )
         ntest_end_time = root.getiterator("end_at")
         ntest_end_time[0].text = str(test_end_time )
+        device_id_get = root.getiterator("environment")
+        device_id_get[0].set("device_id",Device_Ip)
         tree.write(sumaryfile)
     except Exception,e: 
         print Exception,"Insert to report/summart.xml -------------------------> error:",e
@@ -460,6 +454,8 @@ def testreport_auto_XML(webappName,auto_Result,tcs_manifest,tcs_message):
                     actualresultnode = root.getiterator("actual_result")      
                     actualresult = actualresultnode[-1]
                     actualresult.text = auto_Result
+                    device_id_get = root.getiterator("environment")
+                    device_id_get[0].set("device_id",Device_Ip)
                     tree.write(const.report_file)
                 else:
                     cnode = root.getiterator("testcase")
@@ -468,6 +464,8 @@ def testreport_auto_XML(webappName,auto_Result,tcs_manifest,tcs_message):
                     actualresultnode = root.getiterator("actual_result")
                     actualresult = actualresultnode[-1]
                     actualresult.text = auto_Result
+                    device_id_get = root.getiterator("environment")
+                    device_id_get[0].set("device_id",Device_Ip)
                     tree.write(const.report_file)
                     
             else:
@@ -488,6 +486,8 @@ def testreport_auto_XML(webappName,auto_Result,tcs_manifest,tcs_message):
                 actualresultnode = root.getiterator("actual_result")      
                 actualresult = actualresultnode[-1]
                 actualresult.text = auto_Result
+                device_id_get = root.getiterator("environment")
+                device_id_get[0].set("device_id",Device_Ip)
                 tree.write(const.report_file) 
         else:
            if ((len(lst_node[1].getiterator("testcase"))>=1)):
@@ -509,6 +509,8 @@ def testreport_auto_XML(webappName,auto_Result,tcs_manifest,tcs_message):
                    actualresultnode = root.getiterator("actual_result")      
                    actualresult = actualresultnode[-1]
                    actualresult.text = auto_Result
+                   device_id_get = root.getiterator("environment")
+                   device_id_get[0].set("device_id",Device_Ip)
                    tree.write(const.report_file)
                else:
                     cnode = root.getiterator("testcase")
@@ -517,6 +519,8 @@ def testreport_auto_XML(webappName,auto_Result,tcs_manifest,tcs_message):
                     actualresultnode = root.getiterator("actual_result")
                     actualresult = actualresultnode[-1]
                     actualresult.text = auto_Result
+                    device_id_get = root.getiterator("environment")
+                    device_id_get[0].set("device_id",Device_Ip)
                     tree.write(const.report_file) 
            else:
               SubElement(lst_node[1],"testcase", {'component':'Runtime Core','purpose':'Check if packaged web application can be installed/launched/uninstalled successfully','execution_type' : 'auto', 'id' : "Crosswalk-Manifest-Check"+webappName ,'result': auto_Result})
@@ -536,9 +540,12 @@ def testreport_auto_XML(webappName,auto_Result,tcs_manifest,tcs_message):
               actualresultnode = root.getiterator("actual_result")      
               actualresult = actualresultnode[-1]
               actualresult.text = auto_Result
+              device_id_get = root.getiterator("environment")
+              device_id_get[0].set("device_id",Device_Ip)
               tree.write(const.report_file)        
     except Exception,e: 
-        print Exception,"Generate test error:",e 
+        print Exception,"Generate test error:",e
+        print traceback.format_exc() 
 
 def manifest_Packing(pakeNo,pakeType):
     try:
@@ -621,7 +628,7 @@ def launcher_WebApp(pakeType,Manifest_Row, tcs_manifest):
               fail_message = "install ok"
               auto_result = "PASS"
               #launcher app
-              Pkgids = get_fromdb[1]
+              Pkgids = get_fromdb[1].replace("xwalk.","")
               cmd_launchapp="sdb -s " + Device_Ip +" shell \"su - app -c 'export DBUS_SESSION_BUS_ADDRESS=unix:path=/run/user/5000/dbus/user_bus_socket;"+const.device_path+"/opt/wrt-manifest-tizen-tests/applaunch.sh " + Pkgids +"'\""
               get_cmdback = get_runback(cmd_launchapp,"launch",Pkgids)
               if ((get_cmdback[0].strip("\r\n"))=="Launch ok"):
@@ -644,6 +651,7 @@ def launcher_WebApp(pakeType,Manifest_Row, tcs_manifest):
                   else:
                       fail_message = "uninstall and db check fail"
                       auto_result = "FAIL"
+                      log_Log(" uninstall--------->" + str(Manifest_Row) + " Fail"+ "\n") 
                       print "Uninstall-------> Fail"
                       return "testagain"
                       #shutil.move("opt/wrt-manifest-tizen-tests/manifest" + Manifest_Row + "." + pakeType ,const.path_result)
@@ -736,7 +744,7 @@ def get_from_DB(cmdline,manifest):
         for i in range(0,len(get_manifest)):
           find_name = get_manifest[i].find("name")
           if (find_name>=0):
-            get_manifest_name = get_manifest[i].split(":")[1][2:-1]
+            get_manifest_name = get_manifest[i].split(":")[1][2:-1].lstrip().rstrip()
             get_db_name = read_line[0].find(get_manifest_name)
             if (get_db_name>=0):
                 print "Check From DB ------------------------->"
@@ -744,14 +752,16 @@ def get_from_DB(cmdline,manifest):
             elif ((str(get_manifest_name).find("<"))>=0 & (str(get_db_name).find("003C")>=0)):
                 print "Check From DB ------------------------->"
                 return "GET",get_id
+            elif ((get_db_name>=0) & (str(get_db_name).find("NULL")>=0)):
+                print "Check From DB ------------------------->"
+                return "GET",get_id                            
             else:
                 return "NONE"
           return "NONE"
     except Exception,e: 
-        print Exception,"Get db record error:",e 
+        print Exception,"Get db record error:",e
+        print traceback.format_exc()
         return "NONE"
-
-  
 
 
 def get_Sdb_Devices():
