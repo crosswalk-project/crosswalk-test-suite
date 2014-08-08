@@ -64,145 +64,6 @@ function _resolve_registered_type(type) {
     return type;
 }
 
-/**
- * Method checks extra argument for none argument method.
- * The only check is that method will not throw an exception.
- * Example usage:
- * checkExtraArgument(tizen.notification, "removeAll");
- *
- * @param object object
- * @param methodName string - name of the method
- */
-function checkExtraArgument(object, methodName) {
-    var extraArgument = [
-        null,
-        undefined,
-        "Tizen",
-        1,
-        false,
-        ["one", "two"],
-        {argument: 1},
-        function () {}
-    ], i;
-
-    for (i = 0; i < extraArgument.length; i++) {
-        object[methodName](extraArgument[i]);
-    }
-}
-
-/**
- * Method to validate conversion.
- * Example usage:
- *   conversionTable = getTypeConversionExceptions("functionObject", true);
- *   for(i = 0; i < conversionTable.length; i++) {
- *       errorCallback = conversionTable[i][0];
- *       exceptionName = conversionTable[i][1];
- *
- *       assert_throws({name : exceptionName},
- *       function () {
- *           tizen.systemsetting.setProperty("HOME_SCREEN",
- *               propertyValue, successCallback, errorCallback);
- *       }, exceptionName + " should be thrown - given incorrect errorCallback.");
- *   }
- *
- * @param conversionType
- * @param isOptional
- * @returns table of tables which contain value (index 0) and exceptionName (index 1)
- *
- */
-function getTypeConversionExceptions(conversionType, isOptional) {
-    var exceptionName = "TypeMismatchError",
-        conversionTable;
-    switch (conversionType) {
-        case "enum":
-            conversionTable = [
-                [undefined, exceptionName],
-                [null, exceptionName],
-                [0, exceptionName],
-                [true, exceptionName],
-                ["dummyInvalidEnumValue", exceptionName],
-                [{ }, exceptionName]
-            ];
-            break;
-        case "double":
-            conversionTable = [
-                [undefined, exceptionName],
-                [NaN, exceptionName],
-                [Number.POSITIVE_INFINITY, exceptionName],
-                [Number.NEGATIVE_INFINITY, exceptionName],
-                ["TIZEN", exceptionName],
-                [{ name : "TIZEN" }, exceptionName],
-                [function () { }, exceptionName]
-            ];
-            break;
-        case "object":
-            conversionTable = [
-                [true, exceptionName],
-                [false, exceptionName],
-                [NaN, exceptionName],
-                [0, exceptionName],
-                ["", exceptionName],
-                ["TIZEN", exceptionName],
-                [undefined, exceptionName]
-            ];
-            if (!isOptional) {
-                conversionTable.push([null, exceptionName]);
-            }
-            break;
-        case "functionObject":
-            conversionTable = [
-                [true, exceptionName],
-                [false, exceptionName],
-                [NaN, exceptionName],
-                [0, exceptionName],
-                ["", exceptionName],
-                ["TIZEN", exceptionName],
-                [[], exceptionName],
-                [{ }, exceptionName],
-                [undefined, exceptionName]
-            ];
-            if (!isOptional) {
-                conversionTable.push([null, exceptionName]);
-            }
-            break;
-        case "array":
-            conversionTable = [
-                [true, exceptionName],
-                [false, exceptionName],
-                [NaN, exceptionName],
-                [0, exceptionName],
-                ["", exceptionName],
-                ["TIZEN", exceptionName],
-                [{ }, exceptionName],
-                [function () { }, exceptionName],
-                [undefined, exceptionName]
-            ];
-            if (!isOptional) {
-                conversionTable.push([null, exceptionName]);
-            }
-            break;
-        case "dictionary":
-            conversionTable = [
-                [true, exceptionName],
-                [false, exceptionName],
-                [NaN, exceptionName],
-                [0, exceptionName],
-                ["", exceptionName],
-                ["TIZEN", exceptionName],
-                [undefined, exceptionName]
-            ];
-            if (!isOptional) {
-                conversionTable.push([null, exceptionName]);
-            }
-            break;
-        default:
-            assert_unreached("Fix your test. Wrong conversionType '" + conversionType + "'.");
-    };
-
-    return conversionTable;
-}
-
-
 function assert_type(obj, type, description) {
     var org_type = type, prop_name, prop_type, prop_value;
 
@@ -300,14 +161,8 @@ function assert_type(obj, type, description) {
     }
 }
 
-function register_type(alias, type_spec) {
-    _registered_types[alias] = type_spec;
-}
-
 /**
  * Method to check if attribute is const.
- * Example usage:
- * check_const(tizen.bluetooth.deviceMinor, 'TOY_DOLL', 0x03, 'number', 0x29B);
  *
  * @param obj  object to test which  has const attribute
  * @param attributeName attribute name.
@@ -372,74 +227,16 @@ function check_not_nullable(obj, attributeName)
 }
 
 /**
- * Method to check NoInterfaceObject
- * Example usage:
- * check_no_interface_object("BluetoothAdapter")
- *
- * @param interfaceName interface name
- */
-function check_no_interface_object(interfaceName) {
-    assert_throws({name: "TypeError"}, function () {
-        tizen[interfaceName]();
-    },"Wrong call as a function");
-    assert_throws({name: "TypeError"}, function () {
-        new tizen[interfaceName]();
-    },"Wrong call as a new function");
-    assert_throws({name: "TypeError"}, function () {
-        ({}) instanceof tizen[interfaceName];
-    },"instanceof exception");
-    assert_equals(tizen[interfaceName], undefined, interfaceName + " is not undefined.");
-}
-
-
-/**
- * Method to check Constructors
- * Example usage:
- * check_constructor("BluetoothAdapter")
- *
- * @param constructorName constructor name
- */
-
-function check_constructor(constructorName) {
-    assert_true(constructorName in tizen, "No " + constructorName + " in tizen.");
-    assert_false({} instanceof tizen[constructorName],"Custom object is not instance of " + constructorName);
-    assert_throws({
-        name: "TypeError"
-    }, function () {
-        tizen[constructorName]();
-    }, "Constructor called as function.");
-}
-
-/**
  * Method to check if given method can be overridden in a given object - (TEMPORARY REMOVED).
  * That method also checks if given method exists in a given object.
  * Example usage:
- * check_method_exists(tizen.notification, "get");
+ * check_method_exists(Navigator.nfc, "powerOn");
  *
  * @param obj object with method
  * @param methodName name of the method to check.
  */
 function check_method_exists(obj, methodName) {
     assert_type(obj[methodName], 'function', "Method does not exist.");
-}
-
-/**
- * Method to check extensibility of given object.
- * Method checks if new attribute and method can be added.
- * Example usage:
- * check_extensibility(tizen.notification);
- *
- * @param obj object to check
- */
-function check_extensibility(obj) {
-    var dummyAttribute = "dummyAttributeValue", dummyMethodResult = "dummyMethodResultValue";
-    obj.newDummyMethod = function() {
-        return dummyMethodResult;
-    }
-    assert_equals(obj.newDummyMethod(), dummyMethodResult, "Incorrect result from added method.");
-
-    obj.newDummyAttribute = dummyAttribute;
-    assert_equals(obj.newDummyAttribute, dummyAttribute, "Incorrect result from added attribute.");
 }
 
 /**
@@ -477,86 +274,3 @@ function check_attribute(obj, attributeName, expectedValue, expectedType, valueT
     }
 }
 
-/**
- * Method to check if whole array can be overwritten with an invalid value.
- * Sample usage:
- * check_invalid_array_assignments(message, "to", false);
- *
- * @param obj object which has the array as its property
- * @param array name of the array to check
- * @param isNullable indicates if the array can be null
- */
-function check_invalid_array_assignments(obj, array, isNullable) {
-    var args = [undefined, true, false, NaN, 0, "TIZEN", {}, function () {}],
-        val = obj[array], i;
-
-    if (!isNullable) {
-        obj[array] = null;
-        assert_not_equals(obj[array], null, "Non-nullable array was set to null");
-        assert_type(obj[array], "array", "Non-nullable array type changed after assigning null");
-        assert_equals(obj[array].toString(), val.toString(), "Non-nullable array contents changed after assigning null");
-    }
-
-    for (i = 0 ; i < args.length ; i++) {
-        obj[array] = args[i];
-        assert_type(obj[array], "array", "Array type changed after assigning an invalid value");
-        assert_equals(obj[array].toString(), val.toString(), "Array contents changed after assigning an invalid value");
-    }
-}
-
-/**
- * Method to check if an object can be overwritten with an invalid value.
- * Sample usage:
- * check_invalid_object_assignments(message, "body", false);
- *
- * @param parentObj object which has the 'obj' object as its property
- * @param obj name of the object to check
- * @param isNullable indicates if the object can be null
- */
-function check_invalid_obj_assignments(parentObj, obj, isNullable) {
-    var args = [undefined, true, false, NaN, 0, "TIZEN", function () {}],
-        val = parentObj[obj], i;
-
-    if (!isNullable) {
-        parentObj[obj] = null;
-        assert_equals(parentObj[obj], val, "Non-nullable obj was modified after assigning null");
-    }
-
-    for (i = 0 ; i < args.length ; i++) {
-        parentObj[obj] = args[i];
-        assert_equals(parentObj[obj], val, "The object was set to " + args[i]);
-    }
-}
-
-/**
- * Method to validate conversion for listeners.
- * Example usage:
- * incorrectListeners = getListenerConversionExceptions(["oninstalled", "onupdated", "onuninstalled"]);
- * for(i = 0; i < incorrectListeners.length; i++) {
- *     packageInformationEventCallback  = incorrectListeners[i][0];
- *     exceptionName = incorrectListeners[i][1];
- *     assert_throws({name : exceptionName},
- *        function () {
- *             tizen.package.setPackageInfoEventListener(packageInformationEventCallback);
- *         }, exceptionName + " should be thrown - given incorrect successCallback.");
- * }
- *
- *
- * @param callbackNames Array with names
- * @returns {Array} table of tables which contain incorrect listener (index 0) and exceptionName (index 1)
- *
- */
-function getListenerConversionExceptions(callbackNames) {
-    var result = [], conversionTable, i, j, listenerName;
-    conversionTable = getTypeConversionExceptions("functionObject", false);
-
-    for (i = 0; i < callbackNames.length; i++) {
-        for (j = 0; j < conversionTable.length; j++) {
-            listenerName = {};
-            listenerName[callbackNames[i]] = conversionTable[j][0];
-            result.push([listenerName, conversionTable[j][1]]);
-        }
-    }
-
-    return result;
-}
