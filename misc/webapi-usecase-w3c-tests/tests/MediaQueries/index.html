@@ -45,6 +45,10 @@ Authors:
         height: 66px;
         text-align: center;
     }
+    #test {
+      padding: 10px;
+      margin: 5px auto;
+    }
 </style>
 </head>
 <body>
@@ -52,34 +56,20 @@ Authors:
     <div data-role="header" data-position="fixed" data-tap-toggle="false">
         <h1 id="main_page_title"></h1>
     </div>
-    <div id="content">
+    <div id="content" data-role="content">
         <div id="view">
-            <div id="media">If the device satisfy the limitation, content will display in the right color.</div>
+            <div id="media">This content display in right color if test device satisfy the CSS3 Media Queries.</div>
         </div>
-        <ul data-role="listview">
-            <li data-role="list-divider">Max Device Aspect Ratio(2/1)</li>
-            <li>
-                <div id="apply1" data-role="button">Green</div>
-            </li>
-        </ul>
-        <ul data-role="listview">
-            <li data-role="list-divider">Min Device Aspect Ratio(1/10)</li>
-            <li>
-                <div id="apply2" data-role="button">Red</div>
-            </li>
-        </ul>
-        <ul data-role="listview">
-            <li data-role="list-divider">Max Device Height(1300px)</li>
-            <li>
-                <div id="apply3" data-role="button">Blue</div>
-            </li>
-        </ul>
-        <ul data-role="listview">
-            <li data-role="list-divider">Min Device Height(100px)</li>
-            <li>
-                <div id="apply4" data-role="button">Yellow</div>
-            </li>
-        </ul>
+        <div id="test">
+          <p>1. Test passes if the content display in green color when the device aspect ratio is less than or equal to 1/2</p>
+          <div id="apply1" data-role="button">Set green</div>
+          <p>2. Test passes if the content display in green color when the device aspect ratio is more than or equal to 1/10</p>
+          <div id="apply2" data-role="button">Set red</div>
+          <p>3. Test passes if the content display in green color when the device height is less than or equal to 1300px</p>
+          <div id="apply3" data-role="button">Set blue</div>
+          <p>4. Test passes if the content display in green color when the device height is more than or equal to 100px</p>
+          <div id="apply4" data-role="button">Set yellow</div>
+        </div>
     </div>
     <div data-role="footer" data-position="fixed" data-tap-toggle="false">
     </div>
