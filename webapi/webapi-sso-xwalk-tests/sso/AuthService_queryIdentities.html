@@ -50,7 +50,7 @@ t.step(function () {
   });
 
   onSuccess = t.step_func(function (result) {
-    assert_type(result, "array", "queryIdentities() should return object");
+    assert_type(result, "array", "queryIdentities() should return array");
     t.done();
   });
   tizen.sso.authService.queryIdentities(filters).then(onSuccess, onError);

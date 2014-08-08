@@ -43,6 +43,7 @@ setup({timeout: 30000});
 
 var t = async_test(document.title, {timeout: 10000}), onSuccess, onError;
 var sessionData = {"key1":"value1","key2":"value2"};
+var id = 8L;
 var authSession = tizen.sso.authService.getIdentity(id).startSession("test")
 
 t.step(function () {

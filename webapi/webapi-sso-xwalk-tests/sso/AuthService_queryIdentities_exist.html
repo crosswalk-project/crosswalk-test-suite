@@ -40,6 +40,7 @@ Authors:
 <script>
 
 test(function () {
+    var authService = tizen.sso.authService;
     assert_true("queryIdentities" in authService, "Test method AuthService.queryIdentities exists");
     check_method_exists(authService, "queryIdentities");
 }, document.title);
