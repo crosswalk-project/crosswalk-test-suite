@@ -431,6 +431,12 @@ public class XWalkViewTestBase extends ActivityInstrumentationTestCase2<MainActi
         public void onPageLoadStopped(XWalkView view, String url, LoadStatus status) {
             mInnerContentsClient.onPageFinished(url);
         }
+
+        @Override
+        public void onReceivedTitle(XWalkView view, String title) {
+            mInnerContentsClient.onTitleChanged(title);
+        }
+
     }
 
     public class TestXWalkUIClient extends TestXWalkUIClientBase {
@@ -500,4 +506,25 @@ public class XWalkViewTestBase extends ActivityInstrumentationTestCase2<MainActi
             }
         });
     }
+
+    protected void loadDataSync(final String url, final String data, final String mimeType,
+            final boolean isBase64Encoded) throws Exception {
+        CallbackHelper pageFinishedHelper = mTestHelperBridge.getOnPageFinishedHelper();
+        int currentCallCount = pageFinishedHelper.getCallCount();
+        loadDataAsync(url, data, mimeType, isBase64Encoded);
+        pageFinishedHelper.waitForCallback(currentCallCount, 1, WAIT_TIMEOUT_SECONDS,
+                TimeUnit.SECONDS);
+    }
+
+    public void loadAssetFileAndWaitForTitle(String fileName) throws Exception {
+        CallbackHelper getTitleHelper = mTestHelperBridge.getOnTitleUpdatedHelper();
+        int currentCallCount = getTitleHelper.getCallCount();
+        String fileContent = getFileContent(fileName);
+
+        loadDataSync(fileName, fileContent, "text/html", false);
+
+        getTitleHelper.waitForCallback(currentCallCount, 1, WAIT_TIMEOUT_SECONDS,
+                TimeUnit.SECONDS);
+    }
+
 }
