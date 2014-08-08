@@ -1,3 +1,4 @@
+SUBDIRS = support
 sso_SCRIPTS = *
-ssodir = /opt/webapi-sso-xwalk-tests/sso
+ssodir = $(prefix)/opt/webapi-sso-xwalk-tests/sso
 EXTRA_DIST = $(sso_SCRIPTS)

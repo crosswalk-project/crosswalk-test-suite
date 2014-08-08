@@ -3,5 +3,6 @@ AM_INIT_AUTOMAKE([-Wall -Werror foreign])
 
 AC_CONFIG_FILES([Makefile \
 sso/Makefile \
+sso/support/Makefile \
 resources/Makefile webrunner/Makefile])
 AC_OUTPUT
