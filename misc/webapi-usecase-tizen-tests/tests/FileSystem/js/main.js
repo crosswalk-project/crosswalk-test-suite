@@ -38,20 +38,27 @@ function createfile () {
       documentsDir = dir; 
       dir.listFiles(createsuccess, onerror);
     }, function(e) {
-      $("#filePreview").html("Error " + e.message);
+      $("#filePreview").html("Error: " + e.message);
     }, "rw");
 }
 
 function createsuccess(files) {
+  for(var i = 0; i < files.length; i++) {
+    if (files[i].isDirectory == false && files[i].name == "test.txt") {
+      documentsDir.deleteFile(files[i].fullPath, function () {}, function(e) {
+        $("#filePreview").html("DeleteFile error: " + e.message);
+      });
+    }
+  }
   var testFile = documentsDir.createFile("test.txt");
   if (testFile != null) {
     testFile.openStream(
       "w",
       function(fs) {
-        fs.write($("#fileWrite").val());
+        fs.write(document.getElementById("fileWrite").value);
         fs.close();
       }, function(e) {
-        $("#filePreview").html("Error " + e.message);
+        $("#filePreview").html("CreateFile error: " + e.message);
       }, "UTF-8");
   }
 }
@@ -62,7 +69,7 @@ function readfile () {
     function(dir) { 
       dir.listFiles(onsuccess, onerror);
     }, function(e) {
-      $("#filePreview").html("Error " + e.message);
+      $("#filePreview").html("Error: " + e.message);
     }, "rw");
 }
 
@@ -73,7 +80,7 @@ function onsuccess(files) {
         function(str) {
           $("#filePreview").html("The file content " + str);
         }, function(e) {
-          $("#filePreview").html("Error " + e.message);
+          $("#filePreview").html("Readfile error: " + e.message);
         }, "UTF-8");
     }
   }
@@ -86,4 +93,5 @@ function onerror(error) {
 $(document).ready(function() {
   $("#createfile").click(createfile);
   $("#readfile").click(readfile);
+  $("#deletefile").click(deletefile);
 });
