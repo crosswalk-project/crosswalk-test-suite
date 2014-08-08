@@ -1,3 +1,3 @@
 vehicleinfo_SCRIPTS = *
-vehicleinfodir = /opt/webapi-vehicleinfo-ivi-tests/vehicleinfo
+vehicleinfodir = $(prefix)/opt/webapi-vehicleinfo-xwalk-tests/vehicleinfo
 EXTRA_DIST = $(vehicleinfo_SCRIPTS)
