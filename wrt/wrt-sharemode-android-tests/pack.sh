@@ -50,7 +50,6 @@ if [[ -z $name || -z $version || -z $appname ]];then
 fi
 
 SRC_ROOT=$PWD
-RESOURCE_DIR=/home/app/content
 BUILD_ROOT=/tmp/${name}_pack
 BUILD_DEST=/tmp/${name}
 
@@ -143,8 +142,8 @@ fi
 
 function create_apk(){
 cd $apkpacktooldir
-python make_apk.py --name=WebApp1 --package=com.xwalk.webapp1 --app-url="http://www.hao123.com" --mode=$mode --arch=$arch
-python make_apk.py --name=WebApp2 --package=com.xwalk.webapp2 --app-url="http://www.baidu.com" --mode=$mode --arch=$arch
+python make_apk.py --name=WebApp --package=com.xwalk.webappintel --app-url="http://www.hao123.com" --mode=$mode --arch=$arch
+
 if [ $? -ne 0 ];then
     echo "Create $name.apk fail.... >>>>>>>>>>>>>>>>>>>>>>>>>"
     clean_workspace

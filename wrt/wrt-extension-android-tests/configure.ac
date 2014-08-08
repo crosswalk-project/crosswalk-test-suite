@@ -3,6 +3,7 @@ AM_INIT_AUTOMAKE([-Wall -Werror foreign])
 
 AC_CONFIG_FILES([Makefile \
 extension/Makefile \
-extension_permission_contacts_tests/Makefile \
-extension_permission_contacts_tests/contactextension/Makefile])
+testapp/Makefile \
+testapp/extension_permission_contacts_tests/Makefile \
+testapp/extension_permission_contacts_tests/contactextension/Makefile])
 AC_OUTPUT

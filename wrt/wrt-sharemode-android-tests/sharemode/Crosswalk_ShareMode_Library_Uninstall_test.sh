@@ -32,36 +32,32 @@
 
 local_path=$(dirname $0)
 
-#get current time as log file's name
-logName=Crosswalk_Android_Launcher_UI_Uninstall_test_`date '+%Y%m%d%H%M'`.log
-reportName="Crosswalk_Android_Test.result"
-resultName="Crosswalk_Android_Test.result.log"
+CROSSWALK_APK=`cat $local_path/../Crosswalk_sharemode.conf | grep "Crosswalk_Library_Name" | cut -d "=" -f 2`
+CROSSWALK_PACKAGE=`cat $local_path/../Crosswalk_sharemode.conf | grep "Crosswalk_Library_Package" | cut -d "=" -f 2`
 
-CROSSWALK_APK=`cat $local_path/../Crosswalk_wrt_BFT.conf | grep "Android_Crosswalk_Name" | cut -d "=" -f 2`
-echo "Crosswalk APK name is " $CROSSWALK_APK 2>&1 >> $local_path/../log/$logName
-
-grep "Success" $local_path/../log/INSTALL_RESULT 2>&1 >> $local_path/../log/$logName
+test -f $local_path/../resources/installer/$CROSSWALK_APK &>/dev/null
 #install
 if [ $? -eq 0 ];then
-   #uninstall
-    adb uninstall org.xwalk.runtime.lib > $local_path/../log/INSTALL_RESULT
-    echo "uninstall xwalk" 2>&1 >> $local_path/../log/$logName
-    grep "Success" $local_path/../log/INSTALL_RESULT  2>&1 >> $local_path/../log/$logName
+    echo "XwalkRuntimeLibrary install"
+    adb install -r $local_path/../resources/installer/$CROSSWALK_APK &>/dev/null
+    adb shell pm list packages |grep $CROSSWALK_PACKAGE &>/dev/null
     if [ $? -eq 0 ];then
-       echo "XwalkRuntimeLib Uninstall successflly" >> $local_path/../log/result/$resultName
-       echo "Crosswalk_Android_Launcher_UI_Uninstall***************************** [Pass]" >> $local_path/../log/result/$resultName
-       echo "Crosswalk_Android_Launcher_UI_Uninstall                                PASS" >> $local_path/../log/result/$reportName
-       adb install -r $local_path/../resources/installer/$CROSSWALK_APK &> $local_path/../log/INSTALL_RESULT
-       exit 0
+        echo "XwalkRuntimeLibrary install successflly"
+        adb uninstall $CROSSWALK_PACKAGE &>/dev/null
+        adb shell pm list packages |grep $CROSSWALK_PACKAGE &>/dev/null
+        if [ $? -ne 0 ];then
+            echo "XwalkRuntimeLibrary uninstall successflly"
+            adb install -r $local_path/../resources/installer/$CROSSWALK_APK &>/dev/null
+            exit 0
+        else
+            echo "XwalkRuntimeLibrary uninstall fail"
+            exit 1
+        fi
     else
-       echo "XWalkRuntimeLib.apk Uninstall Failure" >> $local_path/../log/result/$resultName
-       echo "Crosswalk_Android_Launcher_UI_Uninstall***************************** [Fail]" >> $local_path/../log/result/$resultName
-       echo "Crosswalk_Android_Launcher_UI_Uninstall                                FAIL" >> $local_path/../log/result/$reportName
-       exit 1
+        echo "XwalkRuntimeLibrary install fail"
+        exit 1
     fi
 else
-   echo "Crosswalk installed failure" >> $local_path/../log/result/$resultName
-   echo "Crosswalk_Android_Launcher_UI_Uninstall***************************** [Fail]" >> $local_path/../log/result/$resultName
-   echo "Crosswalk_Android_Launcher_UI_Uninstall                                 FAIL" >> $local_path/../log/result/$reportName
-   exit 1
+    echo "XwalkRuntimeLibrary APK not found in $local_path/../resources/installer/"
+    exit 1
 fi
