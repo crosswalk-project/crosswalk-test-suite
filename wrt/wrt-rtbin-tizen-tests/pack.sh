@@ -176,7 +176,12 @@ do
         #echo "buildfolder" $buildfolder
         if [ "${buildfolder:0:7}" == "testapp" ];then
             echo "Use --manifest to build..."
-            python make_xpk.py $BUILD_ROOT/$buildfolder/ -o manifest_app_mainsource1_tests.xpk k.pem
+            python make_xpk.py $BUILD_ROOT/$buildfolder/ k.pem
+            continue
+        fi
+        if [ "${buildfolder:0:6}" == "diffid" ];then
+            echo "Use --manifest to build..."
+            python make_xpk.py $BUILD_ROOT/$buildfolder/ x.pem
             continue
         fi
 done
@@ -186,7 +191,7 @@ function create_pure(){
 #create source xpk
 create_source_xpk
 mkdir $BUILD_DEST/opt/$name/source
-cp -r $BUILD_ROOT/*tests.xpk $BUILD_DEST/opt/$name/source
+cp -r $BUILD_ROOT/testapp/*tests.wgt $BUILD_DEST/opt/$name/source
 if [ $? -ne 0 ];then
     echo "Create $name.xpk fail.... >>>>>>>>>>>>>>>>>>>>>>>>>"
     clean_workspace

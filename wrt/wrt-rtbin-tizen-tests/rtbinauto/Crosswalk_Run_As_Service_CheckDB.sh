@@ -22,7 +22,7 @@
 #BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE,
 #DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY
 #OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING
-#NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE,
+#NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS  SOFTWARE,
 #EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 #
 #Authors:
@@ -40,24 +40,21 @@ if [[ $? -eq 1 ]]; then
                  fi
 fi
 
-xwalkctl --install  $local_path/../source/manifest_app_mainsource1_tests.xpk > /tmp/install.txt
-cat /tmp/install.txt | grep "Application installed"
-if [[ $? -eq 0 ]]; then
+xwalkctl --install  $local_path/../source/manifest_app_mainsource_tests.wgt
+a=`sqlite3 /home/app/.applications/dbspace/.app_info.db "select package from app_info;" | grep mainsource`
+if [[ $a =~ 'mainsource' ]]; then
                  echo "Use run as service install successfully"
 else
                  echo "Use run  as service mode install failure"
                  exit 1
 fi
 
-app_id_tmp=`cat /tmp/install.txt | cut -d / -f 4`
-app_id=`echo $app_id_tmp | sed 's/.$//g'` > /dev/null
-sqlite3 /home/app/.config/xwalk-service/applications.db "select id,manifest from applications;"| grep $app_id > /dev/null
-if [ $? -eq 0 ]; then
+if [[ $a =~ 'mainsource' ]]; then
                  echo "Use run as service install app and the DB correctly"
-                 xwalkctl --uninstall $app_id
+                 xwalkctl -u mainsource.manifestappmainsourcetests
                  exit 0
 else
                  echo "Use run as service install app and the DB incorrectly"
-                 xwalkctl --uninstall $app_id
+                 xwalkctl -u mainsource.manifestappmainsourcetests
                  exit 1
 fi
