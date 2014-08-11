@@ -1,17 +1,15 @@
 #!/bin/bash
-# Program:
-#       This program install multiple web app
-#
+
 #Copyright (c) 2013 Intel Corporation.
 #
 #Redistribution and use in source and binary forms, with or without modification,
 #are permitted provided that the following conditions are met:
 #
 #* Redistributions of works must retain the original copyright notice, this list
-#  of conditions and the following disclaimer.
+# of conditions and the following disclaimer.
 #* Redistributions in binary form must reproduce the original copyright notice,
 #  this list of conditions and the following disclaimer in the documentation
-#  and/or other materials provided with the distribution.
+# and/or other materials provided with the distribution.
 #* Neither the name of Intel Corporation nor the names of its contributors
 #  may be used to endorse or promote products derived from this work without
 #  specific prior written permission.
@@ -27,20 +25,26 @@
 #NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE,
 #EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 #
-# Author:
-#        IVAN CHEN <yufeix.chen@intel.com>
+#Authors:
+#       IVAN CHEN <yufeix.chen@intel.com>
+
 
 local_path=$(cd $(dirname $0);pwd)
 source $local_path/Common
 xpk_path=$local_path/../testapp
 
-xwalkctl --install  $xpk_path/diffid_same_version_tests.xpk
+func_check_xwalkservice
+
+# install original xpk
+install_origin_xpk  $xpk_path/update_original_versionOne_tests.xpk
+
+#update valid xpk and check DB
+xwalkctl --install $xpk_path/update_original_versionOne_tests.xpk &> /tmp/install
+cat /tmp/install | grep "Application installed"
 if [[ $? -eq 0 ]]; then
-   echo "Install Pass"
-   app_id=`sqlite3 /home/app/.applications/dbspace/.app_info.db "select package from app_info where name like \"%diffid_same_version_tests%\";"`
-   xwalkctl -u $app_id
-   exit 0
-else
-   echo "Install Fail"
-   exit 1
+    echo "The  app is same version and id, install successfully."  
+    exit 1
 fi
+uninstall_xpk $app_id
+
+exit 0

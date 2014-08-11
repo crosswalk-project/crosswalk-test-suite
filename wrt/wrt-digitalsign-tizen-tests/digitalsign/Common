@@ -68,9 +68,9 @@ function check_db(){
 
 function install_xpk(){
   xwalkctl --install  $1/$2 &> /tmp/install
-  cat /tmp/install | grep "Application installed"
+  cat /tmp/install | grep "DONE"
   if [[ $? -ne 0 ]]; then
-    cat /tmp/install | grep "Installing application failed"
+    cat /tmp/install | grep "Package not valid"
     if [[ $? -eq 0 ]]; then
       uninstall_exist_xpk $2
       xwalkctl --install  $1/$2 &> /tmp/install

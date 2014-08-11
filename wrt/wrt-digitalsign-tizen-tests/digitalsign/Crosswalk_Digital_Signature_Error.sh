@@ -34,7 +34,7 @@ source $local_path/Common
 func_check_xwalkservice
 
 xwalkctl --install $local_path/../source/bad_signature.xpk > /tmp/install
-cat /tmp/install | grep "Installing application failed" > /dev/null
+cat /tmp/install | grep "Package not valid" > /dev/null
 if [[ $? -ne 0 ]]; then
     echo "The bad_signature.xpk install successfully"
     # uninstall xpk
