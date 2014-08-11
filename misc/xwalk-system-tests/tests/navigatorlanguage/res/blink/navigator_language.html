@@ -11,6 +11,9 @@ test(function() {
     assert_true('onlanguagechange' in window);
 }, "Test that NavigatorLanguage API is present in window");
 
+/*
+ * FIXME: uncomment out the test cases based on Blink test framework
+ * when the test framework works well in this test suite.
 test(function() {
     var received = false;
     window.onlanguagechange = function() {
@@ -127,7 +130,7 @@ test(function() {
     window.testRunner.setAcceptLanguages('fr-FR');
     assert_not_equals(navigator.languages, previous);
 }, "Test that navigator.languages caching behaviour.");
-
+*/
 </script>
 </body>
 </html>
