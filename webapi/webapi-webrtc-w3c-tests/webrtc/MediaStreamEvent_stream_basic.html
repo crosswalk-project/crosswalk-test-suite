@@ -43,13 +43,22 @@ Authors:
 var t = async_test("Check if the readonly attribute stream of MediaStreamEvent exists and type of MediaStream", {timeout: 20000});
 
 var configuration = {"iceServers": [{"url": "stun:stun.example.org"}]};
-var pc1 = new webkitRTCPeerConnection(configuration);
+var pc1;
+if (typeof RTCPeerConnection != "undefined") {
+  pc1 = new RTCPeerConnection(configuration);
+} else {
+  pc1 = new webkitRTCPeerConnection(configuration);
+}
 var pc2;
 var pc1_offer;
 var fake_audio;
 
 t.step(function () {
-  navigator.webkitGetUserMedia({audio: true, vedio: true}, gotStream, function () {});
+  if (typeof (navigator.getUserMedia) != "undefined") {
+    navigator.getUserMedia({audio: true, vedio: true}, gotStream, function () {});
+  } else {
+    navigator.webkitGetUserMedia({audio: true, vedio: true}, gotStream, function () {});
+  }
 });
 
 function gotStream(stream) {
@@ -65,7 +74,11 @@ function requestSucceeded1 (offer) {
 
 
 function requestSucceeded2 () {
-  pc2 = new webkitRTCPeerConnection(null, null);
+  if (typeof RTCPeerConnection != "undefined") {
+    pc2 = new RTCPeerConnection(null, null);
+  } else {
+    pc2 = new webkitRTCPeerConnection(null, null);
+  }
   pc2.addStream(fake_audio);
   pc2.onaddstream = t.step_func(function (evt) {
     assert_true("stream" in evt, "stream attribute in MediaStreamEvent");

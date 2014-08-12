@@ -23,7 +23,11 @@ var t = async_test(document.title, {timeout: 2000});
 
 function getUserMedia(dictionary, callback) {
   try {
-    navigator.webkitGetUserMedia(dictionary, callback, error);
+    if (typeof (navigator.getUserMedia) != "undefined") {
+      navigator.getUserMedia(dictionary, callback, error);
+    } else {
+      navigator.webkitGetUserMedia(dictionary, callback, error);
+    }
   } catch (e) {
     t.step(function () {
       assert_unreached("requestSucceeded was called.");
@@ -94,7 +98,11 @@ function statsHandler2(status) {
 var startTime = new Date().getTime();
 
 t.step(function () {
-  pc = new webkitRTCPeerConnection(null);
+  if (typeof RTCPeerConnection != "undefined") {
+    pc = new RTCPeerConnection(null);
+  } else {
+    pc = new webkitRTCPeerConnection(null);
+  }
   getUserMedia({audio:true, video:true}, gotStream);
 });
 

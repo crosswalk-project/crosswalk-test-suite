@@ -26,12 +26,20 @@ function error() {
 }
 
 function getUserMedia(dictionary, callback) {
-  pc = new webkitRTCPeerConnection(null, null);
+  if (typeof RTCPeerConnection != "undefined") {
+    pc = new RTCPeerConnection(null, null);
+  } else {
+    pc = new webkitRTCPeerConnection(null, null);
+  }
   pc.onnegotiationneeded = t.step_func(function (event) {
     t.done();
   });
   t.step(function () {
-    navigator.webkitGetUserMedia(dictionary, callback, error);
+    if (typeof (navigator.getUserMedia) != "undefined") {
+      navigator.getUserMedia(dictionary, callback, error);
+    } else {
+      navigator.webkitGetUserMedia(dictionary, callback, error);
+    }
   });
 }
 

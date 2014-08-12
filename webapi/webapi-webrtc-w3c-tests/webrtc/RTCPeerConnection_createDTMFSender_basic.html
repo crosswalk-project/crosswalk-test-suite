@@ -47,11 +47,19 @@ var ds;
 
 setup(function () {
   var configuration = {"iceServers": [{"url": "stun:stun.example.org"}]};
-  pc = new webkitRTCPeerConnection(configuration);
+  if (typeof RTCPeerConnection != "undefined") {
+    pc = new RTCPeerConnection(configuration);
+  } else {
+    pc = new webkitRTCPeerConnection(configuration);
+  }
 });
 
 t.step(function () {
-  navigator.webkitGetUserMedia({audio: true, video: true}, gotStream, error);
+  if (typeof (navigator.getUserMedia) != "undefined") {
+    navigator.getUserMedia({audio: true, video: true}, gotStream, error);
+  } else {
+    navigator.webkitGetUserMedia({audio: true, video: true}, gotStream, error);
+  } 
 });
 
 function gotStream(stream) {

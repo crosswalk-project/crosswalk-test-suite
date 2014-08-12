@@ -58,7 +58,11 @@ function onIceChange1() {
 }
 
 t.step(function () {
-  pc = new webkitRTCPeerConnection(null, null);
+  if (typeof RTCPeerConnection != "undefined") {
+    pc = new RTCPeerConnection(null, null);
+  } else {
+    pc = new webkitRTCPeerConnection(null, null);
+  }
   pc.oniceconnectionstatechange = onIceChange1;
 });
 

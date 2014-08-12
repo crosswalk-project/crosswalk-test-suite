@@ -34,7 +34,11 @@ function requestFailed1 () {
 }
 
 function requestSucceeded2() {
-  pc2 = new webkitRTCPeerConnection(null, null);
+  if (typeof RTCPeerConnection != "undefined") {
+    pc2 = new RTCPeerConnection(null, null);
+  } else {
+    pc2 = new webkitRTCPeerConnection(null, null);
+  }
   pc2.setRemoteDescription(pc1_offer, requestSucceeded3, requestFailed3);
 }
 
@@ -83,7 +87,11 @@ function requestFailed5() {
 }
 
 t.step(function() {
-  pc = new webkitRTCPeerConnection(null, null);
+  if (typeof RTCPeerConnection != "undefined") {
+    pc = new RTCPeerConnection(null, null);
+  } else {
+    pc = new webkitRTCPeerConnection(null, null);
+  }
   pc.createOffer(requestSucceeded1, requestFailed1);
 });
 

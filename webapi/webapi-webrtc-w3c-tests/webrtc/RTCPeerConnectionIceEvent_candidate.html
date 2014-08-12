@@ -45,7 +45,12 @@ Authors:
     <script>
       var t = async_test("Check if the setting of RTCPeerConnectionIceEvent.candidate is normally", {timeout: 10000});
 
-      var pc = new RTCPeerConnection(null, null);
+      var pc;
+      if (typeof RTCPeerConnection != "undefined") {
+        pc = new RTCPeerConnection(null, null);
+      } else {
+        pc = new webkitRTCPeerConnection(null, null);
+      }
       var signalingChannel = pc.createDataChannel("label1");
 
       t.step(function () {

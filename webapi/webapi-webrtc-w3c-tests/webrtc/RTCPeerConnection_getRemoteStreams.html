@@ -42,7 +42,12 @@ Authors:
 
 test(function() {
   var configuration = { "iceServers": [{ "url": "stun:stun.example.org" }] };
-  var pc = new RTCPeerConnection(configuration);
+  var pc;
+  if (typeof RTCPeerConnection != "undefined") {
+    pc = new RTCPeerConnection(configuration);
+  } else {
+    pc = new webkitRTCPeerConnection(configuration);
+  }
   assert_equals(Object.prototype.toString.call(pc.getRemoteStreams()), "[object Array]", "the RTCPeerConnection.getRemoteStreams()");
 }, "Check if the RTCPeerConnection.getRemoteStreams() return a sequence of MediaStream objects");
 

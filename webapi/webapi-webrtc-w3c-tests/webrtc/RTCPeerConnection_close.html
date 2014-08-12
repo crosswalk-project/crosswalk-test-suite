@@ -42,7 +42,12 @@ Authors:
 
 test(function() {
   var configuration = {"iceServers": [{"url": "stun:stun.example.org"}]};
-  var pc = new RTCPeerConnection(configuration);
+  var pc;
+  if (typeof RTCPeerConnection != "undefined") {
+    pc = new RTCPeerConnection(configuration);
+  } else {
+    pc = new webkitRTCPeerConnection(configuration);
+  }
   pc.close();
   assert_throws("InvalidStateError", function () {
     pc.createDataChannel("lable");
