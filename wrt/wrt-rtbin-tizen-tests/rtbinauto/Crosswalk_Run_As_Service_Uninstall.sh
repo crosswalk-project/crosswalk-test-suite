@@ -40,18 +40,16 @@ if [[ $? -eq 1 ]]; then
                  fi
 fi
 
-xwalkctl --install $local_path/../source/manifest_app_mainsource1_tests.xpk > /tmp/install.txt
-cat /tmp/install.txt | grep "Application installed"
-if [[ $? -eq 0 ]]; then
+xwalkctl --install $local_path/../source/manifest_app_mainsource_tests.wgt
+a=`sqlite3 /home/app/.applications/dbspace/.app_info.db "select package from app_info;" | grep mainsource`
+if [[ $a =~ 'mainsource' ]]; then
                  echo "Use run as service mode install successfully"
 else
                  echo "Use run  as service mode install failure"
                  exit 1
 fi
 
-app_id_tmp=`cat /tmp/install.txt | cut -d / -f 4`
-app_id=`echo $app_id_tmp | sed 's/.$//g'` > /dev/null
-xwalkctl --uninstall $app_id
+xwalkctl --uninstall mainsource.manifestappmainsourcetests
 if [[ $? -eq 0 ]]; then
                  echo "Use run as service mode uninstall successfully"
                  exit 0
