@@ -2,7 +2,7 @@
 <?xml-stylesheet type="text/xsl" href="./testcase.xsl"?>
 <test_definition>
   <suite name="webapi-rawsockets-sysapps-tests" launcher="xwalk" category="W3C/HTML5 APIs">
-    <set name="idlharness">
+    <set name="idlharness" type="js">
       <testcase purpose="This test validates the WebIDL included in the Raw Sockets specification" type="compliance" status="designed" component="WebAPI/System-level APIs/Raw Sockets" execution_type="auto" priority="P1" id="RawSockets_idlhaness_test">
         <description>
           <test_script_entry>/opt/webapi-rawsockets-sysapps-tests/rawsockets/RawSockets_idlharness.html</test_script_entry>
@@ -556,7 +556,7 @@
         </specs>
       </testcase>
     </set>
-    <set name="UDPSocket">
+    <set name="UDPSocket" type="js">
       <testcase purpose="Check if the default value of UDPSocket.addressReuse is true" type="compliance" status="designed" component="WebAPI/System-level APIs/Raw Sockets" execution_type="auto" priority="P1" id="UDPSocket_addressReuse_default">
         <description>
           <test_script_entry>/opt/webapi-rawsockets-sysapps-tests/rawsockets/UDPSocket_attribute.html?total_num=13&amp;amp;locator_key=id&amp;amp;value=1</test_script_entry>
@@ -918,7 +918,7 @@
         </specs>
       </testcase>
     </set>
-    <set name="TCPSocket1">
+    <set name="TCPSocket1" type="js">
       <testcase purpose="Check if the default value of TCPSocket.addressReuse is true" type="compliance" status="approved" component="WebAPI/System-level APIs/Raw Sockets" execution_type="auto" priority="P1" id="TCPSocket_addressReuse_default">
         <description>
           <test_script_entry>/opt/webapi-rawsockets-sysapps-tests/rawsockets/TCPSocket_attribute.html?total_num=8&amp;amp;locator_key=id&amp;amp;value=1</test_script_entry>
@@ -1016,7 +1016,7 @@
         </specs>
       </testcase>
     </set>
-    <set name="TCPSocket2">
+    <set name="TCPSocket2" type="js">
       <testcase purpose="Check if set up the onclose event successful for TCPSocket using the type close" type="compliance" status="approved" component="WebAPI/System-level APIs/Raw Sockets" execution_type="auto" priority="P1" id="TCPSocket_onclose_with_close">
         <description>
           <test_script_entry>/opt/webapi-rawsockets-sysapps-tests/rawsockets/TCPSocket_event_close.html</test_script_entry>
@@ -1078,7 +1078,7 @@
         </specs>
       </testcase>
     </set>
-    <set name="TCPSocket3">
+    <set name="TCPSocket3" type="js">
       <testcase purpose="Check if bind the socket to an ephemeral local port decided by the system and set the localPort attribute to this port when localPort is absent" type="compliance" status="approved" component="WebAPI/System-level APIs/Raw Sockets" execution_type="auto" priority="P1" id="TCPSocket_localPort_absent">
         <description>
           <test_script_entry>/opt/webapi-rawsockets-sysapps-tests/rawsockets/TCPSocket_localPort_absent.html</test_script_entry>
@@ -1152,7 +1152,7 @@
         </specs>
       </testcase>
     </set>
-    <set name="TCPSocket4">
+    <set name="TCPSocket4" type="js">
       <testcase purpose="Check if ondrain event can be fired upon detection that previously-buffered data has been written to the network and it is possible to buffer more data received from the application" type="compliance" status="designed" component="WebAPI/System-level APIs/Raw Sockets" execution_type="auto" priority="P1" id="TCPSocket_ondrain_event">
         <description>
           <test_script_entry>/opt/webapi-rawsockets-sysapps-tests/rawsockets/TCPSocket_event_ondrain.html</test_script_entry>
@@ -1214,7 +1214,7 @@
         </specs>
       </testcase>
     </set>
-    <set name="TCPSocket5">
+    <set name="TCPSocket5" type="js">
       <testcase purpose="Check if the value of readyState is closing when the socket is in closing state" type="compliance" status="approved" component="WebAPI/System-level APIs/Raw Sockets" execution_type="auto" priority="P1" id="TCPSocket_readyState_closing">
         <description>
           <test_script_entry>/opt/webapi-rawsockets-sysapps-tests/rawsockets/TCPSocket_readystate_closing.html</test_script_entry>
@@ -1300,7 +1300,7 @@
         </specs>
       </testcase>
     </set>
-    <set name="TCPSocket6">
+    <set name="TCPSocket6" type="js">
       <testcase purpose="Check if can send DOMString using send method" type="compliance" status="approved" component="WebAPI/System-level APIs/Raw Sockets" execution_type="auto" priority="P1" id="TCPSocket_send_DOMString">
         <description>
           <test_script_entry>/opt/webapi-rawsockets-sysapps-tests/rawsockets/TCPSocket_method_send_DOMString.html</test_script_entry>
@@ -1350,7 +1350,7 @@
         </specs>
       </testcase>
     </set>
-    <set name="TCPSocket7">
+    <set name="TCPSocket7" type="js">
       <testcase purpose="Check if the value of TCPSocket.bufferedAmount is zero without sending anything when connectted" type="compliance" status="approved" component="WebAPI/System-level APIs/Raw Sockets" execution_type="auto" priority="P1" id="TCPSocket_bufferedAmount_zero">
         <description>
           <test_script_entry>/opt/webapi-rawsockets-sysapps-tests/rawsockets/TCPSocket_bufferedAmount_zero.html</test_script_entry>
@@ -1412,7 +1412,7 @@
         </specs>
       </testcase>
     </set>
-    <set name="TCPServerSocket">
+    <set name="TCPServerSocket" type="js">
       <testcase purpose="Check if the default value of TCPServerSocket.addressReuse is true" type="compliance" status="approved" component="WebAPI/System-level APIs/Raw Sockets" execution_type="auto" priority="P1" id="TCPServerSocket_addressReuse_default">
         <description>
           <test_script_entry>/opt/webapi-rawsockets-sysapps-tests/rawsockets/TCPServerSocket_attribute.html?total_num=6&amp;amp;locator_key=id&amp;amp;value=1</test_script_entry>

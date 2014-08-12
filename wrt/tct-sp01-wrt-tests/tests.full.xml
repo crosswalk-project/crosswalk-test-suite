@@ -2,7 +2,7 @@
 <?xml-stylesheet type="text/xsl"  href="testcase.xsl"?>
 <test_definition>
 <suite name="tct-sp01-wrt-tests" launcher="xwalk -iu" category="Web Runtime">
-  <set name="storage-cookies-check">
+  <set name="storage-cookies-check" type="js">
     <testcase purpose="Check if Application has its own cookie database." type="user_experience" status="approved" component="Web/Runtime/SecurityPrivacy" execution_type="auto" priority="P1" id="storage-cookies-check">
       <description>
         <pre_condition></pre_condition>
@@ -25,7 +25,7 @@
       </specs>
     </testcase>
   </set>
-  <set name="protection-decrypt-html">
+  <set name="protection-decrypt-html" type="js">
     <testcase purpose="Check that the WRT can decrypt html resources of widget Application successfully" type="user_experience" status="designed" component="Web/Runtime/SecurityPrivacy" execution_type="auto" priority="P1" id="protection-decrypt-html">
       <description>
         <pre_condition></pre_condition>
@@ -48,7 +48,7 @@
       </specs>
     </testcase>
   </set>
-  <set name="protection-decrypt-js">
+  <set name="protection-decrypt-js" type="js">
     <testcase purpose="Check that the WRT can decrypt js resources of widget Application successfully" type="user_experience" status="designed" component="Web/Runtime/SecurityPrivacy" execution_type="auto" priority="P2" id="protection-decrypt-js">
       <description>
         <pre_condition></pre_condition>
@@ -71,7 +71,7 @@
       </specs>
     </testcase>
   </set>
-  <set name="protection-decrypt-css">
+  <set name="protection-decrypt-css" type="js">
     <testcase purpose="Check that the WRT can decrypt css resources of widget Application successfully" type="user_experience" status="designed" component="Web/Runtime/SecurityPrivacy" execution_type="auto" priority="P2" id="protection-decrypt-css">
       <description>
         <pre_condition></pre_condition>

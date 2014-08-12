@@ -2,7 +2,7 @@
 <?xml-stylesheet type="text/xsl" href="./testcase.xsl"?>
 <test_definition>
   <suite name="tct-wgtapi01-w3c-tests" launcher="xwalk -iu" category="W3C/HTML5 APIs">
-    <set name="ag">
+    <set name="ag" type="js">
       <testcase purpose="Test if widget.description is set correctly." type="compliance" status="approved" component="WebAPI/Widget/Widget Interface" execution_type="auto" priority="P3" id="WidgetInterface_ag">
         <description>
           <test_script_entry test_script_expected_result="0">test_index.html</test_script_entry>
@@ -16,7 +16,7 @@
         </specs>
       </testcase>
     </set>
-    <set name="i18nltr37">
+    <set name="i18nltr37" type="js">
       <testcase purpose="Test that LTR direction does not apply to the email attribute of the author element." type="compliance" status="approved" component="WebAPI/Widget/Widget Interface" execution_type="auto" priority="P3" id="WidgetInterface_i18nltr37">
         <description>
           <test_script_entry test_script_expected_result="0">test_index.html</test_script_entry>
@@ -30,7 +30,7 @@
         </specs>
       </testcase>
     </set>
-    <set name="i18nrlo03">
+    <set name="i18nrlo03" type="js">
       <testcase purpose="Test that RLO direction applies to the description element." type="compliance" status="approved" component="WebAPI/Widget/Widget Interface" execution_type="auto" priority="P3" id="WidgetInterface_i18nrlo03">
         <description>
           <test_script_entry test_script_expected_result="0">test_index.html</test_script_entry>
@@ -44,7 +44,7 @@
         </specs>
       </testcase>
     </set>
-    <set name="i18nrlo04">
+    <set name="i18nrlo04" type="js">
       <testcase purpose="Test that RLO direction applies to the author element." type="compliance" status="approved" component="WebAPI/Widget/Widget Interface" execution_type="auto" priority="P3" id="WidgetInterface_i18nrlo04">
         <description>
           <test_script_entry test_script_expected_result="0">test_index.html</test_script_entry>
@@ -58,7 +58,7 @@
         </specs>
       </testcase>
     </set>
-    <set name="i18nrlo11">
+    <set name="i18nrlo11" type="js">
       <testcase purpose="Test that nested RLO and LRO directions apply within the description element." type="compliance" status="approved" component="WebAPI/Widget/Widget Interface" execution_type="auto" priority="P3" id="WidgetInterface_i18nrlo11">
         <description>
           <test_script_entry test_script_expected_result="0">test_index.html</test_script_entry>
@@ -72,7 +72,7 @@
         </specs>
       </testcase>
     </set>
-    <set name="i18nrlo12">
+    <set name="i18nrlo12" type="js">
       <testcase purpose="Test that nested RLO and LRO directions apply within the author element." type="compliance" status="approved" component="WebAPI/Widget/Widget Interface" execution_type="auto" priority="P3" id="WidgetInterface_i18nrlo12">
         <description>
           <test_script_entry test_script_expected_result="0">test_index.html</test_script_entry>
@@ -86,7 +86,7 @@
         </specs>
       </testcase>
     </set>
-    <set name="i18nrlo36">
+    <set name="i18nrlo36" type="js">
       <testcase purpose="Test that RLO direction does not apply to the href attribute of the author element." type="compliance" status="approved" component="WebAPI/Widget/Widget Interface" execution_type="auto" priority="P3" id="WidgetInterface_i18nrlo36">
         <description>
           <test_script_entry test_script_expected_result="0">test_index.html</test_script_entry>
@@ -100,7 +100,7 @@
         </specs>
       </testcase>
     </set>
-    <set name="i18nrlo37">
+    <set name="i18nrlo37" type="js">
       <testcase purpose="Test that RLO direction does not apply to the email attribute of the author element." type="compliance" status="approved" component="WebAPI/Widget/Widget Interface" execution_type="auto" priority="P3" id="WidgetInterface_i18nrlo37">
         <description>
           <test_script_entry test_script_expected_result="0">test_index.html</test_script_entry>
@@ -114,7 +114,7 @@
         </specs>
       </testcase>
     </set>
-    <set name="name_attrtype" >
+    <set name="name_attrtype"  type="js">
     <testcase purpose="Test if the attribute 'name' is on the window." type="compliance" status="approved" component="WebAPI/Widget/Widget Interface" execution_type="auto" priority="P3" id="WidgetInterface_name_attrtype">
         <description>
           <test_script_entry test_script_expected_result="0">test_index.html</test_script_entry>
@@ -128,7 +128,7 @@
         </specs>
     </testcase>
   </set>
-  <set name="NoInterfaceObject" >
+  <set name="NoInterfaceObject"  type="js">
     <testcase purpose="Test that a UA correctly implements the NoInterfaceObject extended attribute." type="compliance" status="approved" component="WebAPI/Widget/Widget Interface" execution_type="auto" priority="P3" id="WidgetInterface_NoInterfaceObject">
         <description>
           <test_script_entry test_script_expected_result="0">test_index.html</test_script_entry>
@@ -142,7 +142,7 @@
         </specs>
     </testcase>
   </set>
-  <set name="preferences_attrexists" >
+  <set name="preferences_attrexists"  type="js">
     <testcase purpose="Test if the UA has an attribute called 'preferences' on the window." type="compliance" status="approved" component="WebAPI/Widget/Widget Interface" execution_type="auto" priority="P1" id="WidgetInterface_preferences_attrexists">
         <description>
           <test_script_entry test_script_expected_result="0">test_index.html</test_script_entry>
@@ -156,7 +156,7 @@
         </specs>
     </testcase>
   </set>
-  <set name="preferences_attrreadonly" >
+  <set name="preferences_attrreadonly"  type="js">
     <testcase purpose="Test if the attribute 'preferences' is readonly on the window." type="compliance" status="approved" component="WebAPI/Widget/Widget Interface" execution_type="auto" priority="P3" id="WidgetInterface_preferences_attrreadonly">
         <description>
           <test_script_entry test_script_expected_result="0">test_index.html</test_script_entry>
@@ -170,7 +170,7 @@
         </specs>
     </testcase>
   </set>
-  <set name="return-proper-strings" >
+  <set name="return-proper-strings"  type="js">
     <testcase purpose="Test that upon getting any of the attributes from the attributes column of the configuration attributes table, a user agent must return the corresponding value from the 'Values in Table of Configuration Defaults' column." type="compliance" status="approved" component="WebAPI/Widget/Widget Interface" execution_type="auto" priority="P3" id="WidgetInterface_return-proper-strings">
         <description>
           <test_script_entry test_script_expected_result="0">test_index.html</test_script_entry>
@@ -184,7 +184,7 @@
         </specs>
     </testcase>
   </set>
-  <set name="shortName_attrexists" >
+  <set name="shortName_attrexists"  type="js">
     <testcase purpose="Test if the UA has an attribute called 'shortName' on the window." type="compliance" status="approved" component="WebAPI/Widget/Widget Interface" execution_type="auto" priority="P1" id="WidgetInterface_shortName_attrexists">
         <description>
           <test_script_entry test_script_expected_result="0">test_index.html</test_script_entry>
@@ -198,7 +198,7 @@
         </specs>
     </testcase>
   </set>
-  <set name="shortName_attrreadonly" >
+  <set name="shortName_attrreadonly"  type="js">
     <testcase purpose="Test if the attribute 'shortName' is readonly on the window." type="compliance" status="approved" component="WebAPI/Widget/Widget Interface" execution_type="auto" priority="P3" id="WidgetInterface_shortName_attrreadonly">
         <description>
           <test_script_entry test_script_expected_result="0">test_index.html</test_script_entry>
@@ -212,7 +212,7 @@
         </specs>
     </testcase>
   </set>
-  <set name="shortName_attrtype" >
+  <set name="shortName_attrtype"  type="js">
     <testcase purpose="Test if the type of attribute 'shortName' is string on the window." type="compliance" status="approved" component="WebAPI/Widget/Widget Interface" execution_type="auto" priority="P3" id="WidgetInterface_shortName_attrtype">
         <description>
           <test_script_entry test_script_expected_result="0">test_index.html</test_script_entry>
@@ -226,7 +226,7 @@
         </specs>
     </testcase>
   </set>
-  <set name="version_attrexists" >
+  <set name="version_attrexists"  type="js">
     <testcase purpose="Test if the UA has an attribute called 'version' on the window." type="compliance" status="approved" component="WebAPI/Widget/Widget Interface" execution_type="auto" priority="P1" id="WidgetInterface_version_attrexists">
         <description>
           <test_script_entry test_script_expected_result="0">test_index.html</test_script_entry>
@@ -240,7 +240,7 @@
         </specs>
     </testcase>
   </set>
-  <set name="version_attrreadonly" >
+  <set name="version_attrreadonly"  type="js">
     <testcase purpose="Test if the attribute 'version' is readonly on the window." type="compliance" status="approved" component="WebAPI/Widget/Widget Interface" execution_type="auto" priority="P3" id="WidgetInterface_version_attrreadonly">
         <description>
           <test_script_entry test_script_expected_result="0">test_index.html</test_script_entry>
@@ -254,7 +254,7 @@
         </specs>
     </testcase>
   </set>
-  <set name="version_attrtype" >
+  <set name="version_attrtype"  type="js">
     <testcase purpose="Test if the type of attribute 'version' is string on the window." type="compliance" status="approved" component="WebAPI/Widget/Widget Interface" execution_type="auto" priority="P3" id="WidgetInterface_version_attrtype">
         <description>
           <test_script_entry test_script_expected_result="0">test_index.html</test_script_entry>
@@ -268,7 +268,7 @@
         </specs>
     </testcase>
   </set>
-  <set name="width_attrexists" >
+  <set name="width_attrexists"  type="js">
     <testcase purpose="Test if the UA has an attribute called 'width' on the window." type="compliance" status="approved" component="WebAPI/Widget/Widget Interface" execution_type="auto" priority="P1" id="WidgetInterface_width_attrexists">
         <description>
           <test_script_entry test_script_expected_result="0">test_index.html</test_script_entry>
@@ -282,7 +282,7 @@
         </specs>
     </testcase>
   </set>
-  <set name="width_attrreadonly" >
+  <set name="width_attrreadonly"  type="js">
     <testcase purpose="Test if the attribute 'width' is readonly on the window." type="compliance" status="approved" component="WebAPI/Widget/Widget Interface" execution_type="auto" priority="P3" id="WidgetInterface_width_attrreadonly">
         <description>
           <test_script_entry test_script_expected_result="0">test_index.html</test_script_entry>
@@ -296,7 +296,7 @@
         </specs>
     </testcase>
   </set>
-  <set name="width_attrtype" >
+  <set name="width_attrtype"  type="js">
     <testcase purpose="Test if the type of attribute 'width' is number on the window." type="compliance" status="approved" component="WebAPI/Widget/Widget Interface" execution_type="auto" priority="P3" id="WidgetInterface_width_attrtype">
         <description>
           <test_script_entry test_script_expected_result="0">test_index.html</test_script_entry>
@@ -310,7 +310,7 @@
         </specs>
     </testcase>
   </set>
-    <set name="i18nrtl03">
+    <set name="i18nrtl03" type="js">
       <testcase purpose="Test that RTL direction applies to the description element." type="compliance" status="approved" component="WebAPI/Widget/Widget Interface" execution_type="auto" priority="P3" id="WidgetInterface_i18nrtl03">
         <description>
           <test_script_entry test_script_expected_result="0">test_index.html</test_script_entry>
@@ -324,7 +324,7 @@
         </specs>
       </testcase>
     </set>
-    <set name="i18nrtl04">
+    <set name="i18nrtl04" type="js">
       <testcase purpose="Test that RTL direction applies to the author element." type="compliance" status="approved" component="WebAPI/Widget/Widget Interface" execution_type="auto" priority="P3" id="WidgetInterface_i18nrtl04">
         <description>
           <test_script_entry test_script_expected_result="0">test_index.html</test_script_entry>
@@ -338,7 +338,7 @@
         </specs>
       </testcase>
     </set>
-    <set name="i18nrtl07">
+    <set name="i18nrtl07" type="js">
       <testcase purpose="Test that RTL direction applies to the span element within the description element." type="compliance" status="approved" component="WebAPI/Widget/Widget Interface" execution_type="auto" priority="P3" id="WidgetInterface_i18nrtl07">
         <description>
           <test_script_entry test_script_expected_result="0">test_index.html</test_script_entry>
@@ -352,7 +352,7 @@
         </specs>
       </testcase>
     </set>
-    <set name="i18nrtl08">
+    <set name="i18nrtl08" type="js">
       <testcase purpose="Test that RTL direction applies to the span element within the author element." type="compliance" status="approved" component="WebAPI/Widget/Widget Interface" execution_type="auto" priority="P3" id="WidgetInterface_i18nrtl08">
         <description>
           <test_script_entry test_script_expected_result="0">test_index.html</test_script_entry>
@@ -366,7 +366,7 @@
         </specs>
       </testcase>
     </set>
-    <set name="i18nrtl11">
+    <set name="i18nrtl11" type="js">
       <testcase purpose="Test that nested RTL and RTL directions apply within the description element." type="compliance" status="approved" component="WebAPI/Widget/Widget Interface" execution_type="auto" priority="P3" id="WidgetInterface_i18nrtl11">
         <description>
           <test_script_entry test_script_expected_result="0">test_index.html</test_script_entry>
@@ -380,7 +380,7 @@
         </specs>
       </testcase>
     </set>
-    <set name="i18nrtl12">
+    <set name="i18nrtl12" type="js">
       <testcase purpose="Test that nested RTL and RTL directions apply within the author element." type="compliance" status="approved" component="WebAPI/Widget/Widget Interface" execution_type="auto" priority="P3" id="WidgetInterface_i18nrtl12">
         <description>
           <test_script_entry test_script_expected_result="0">test_index.html</test_script_entry>
@@ -394,7 +394,7 @@
         </specs>
       </testcase>
     </set>
-    <set name="i18nrtl36">
+    <set name="i18nrtl36" type="js">
       <testcase purpose="Test that RTL direction does not apply to the href attribute of the author element." type="compliance" status="approved" component="WebAPI/Widget/Widget Interface" execution_type="auto" priority="P3" id="WidgetInterface_i18nrtl36">
         <description>
           <test_script_entry test_script_expected_result="0">test_index.html</test_script_entry>
@@ -408,7 +408,7 @@
         </specs>
       </testcase>
     </set>
-    <set name="i18nrtl37">
+    <set name="i18nrtl37" type="js">
       <testcase purpose="Test that RTL direction does not apply to the email attribute of the author element." type="compliance" status="approved" component="WebAPI/Widget/Widget Interface" execution_type="auto" priority="P3" id="WidgetInterface_i18nrtl37">
         <description>
           <test_script_entry test_script_expected_result="0">test_index.html</test_script_entry>
@@ -422,7 +422,7 @@
         </specs>
       </testcase>
     </set>
-    <set name="id_attrexists">
+    <set name="id_attrexists" type="js">
       <testcase purpose="Test if the UA has an attribute called 'id' on the window." type="compliance" status="approved" component="WebAPI/Widget/Widget Interface" execution_type="auto" priority="P1" id="WidgetInterface_id_attrexists">
         <description>
           <test_script_entry test_script_expected_result="0">test_index.html</test_script_entry>
@@ -436,7 +436,7 @@
         </specs>
       </testcase>
     </set>
-    <set name="id_attrreadonly">
+    <set name="id_attrreadonly" type="js">
       <testcase purpose="Test if the attribute 'id' is readonly on the window." type="compliance" status="approved" component="WebAPI/Widget/Widget Interface" execution_type="auto" priority="P3" id="WidgetInterface_id_attrreadonly">
         <description>
           <test_script_entry test_script_expected_result="0">test_index.html</test_script_entry>
@@ -450,7 +450,7 @@
         </specs>
       </testcase>
     </set>
-    <set name="id_attrtype">
+    <set name="id_attrtype" type="js">
       <testcase purpose="Test if the type of attribute 'id' is string on the window." type="compliance" status="approved" component="WebAPI/Widget/Widget Interface" execution_type="auto" priority="P3" id="WidgetInterface_id_attrtype">
         <description>
           <test_script_entry test_script_expected_result="0">test_index.html</test_script_entry>
@@ -464,7 +464,7 @@
         </specs>
       </testcase>
     </set>
-    <set name="name_attrexists">
+    <set name="name_attrexists" type="js">
       <testcase purpose="Test if the UA has an attribute called 'name' on the window." type="compliance" status="approved" component="WebAPI/Widget/Widget Interface" execution_type="auto" priority="P1" id="WidgetInterface_name_attrexists">
         <description>
           <test_script_entry test_script_expected_result="0">test_index.html</test_script_entry>
@@ -478,7 +478,7 @@
         </specs>
       </testcase>
     </set>
-    <set name="name_attrreadonly">
+    <set name="name_attrreadonly" type="js">
       <testcase purpose="Test if the attribute 'name' is readonly on the window." type="compliance" status="approved" component="WebAPI/Widget/Widget Interface" execution_type="auto" priority="P3" id="WidgetInterface_name_attrreadonly">
         <description>
           <test_script_entry test_script_expected_result="0">test_index.html</test_script_entry>
@@ -492,7 +492,7 @@
         </specs>
       </testcase>
     </set>
-    <set name="author_attrtype">
+    <set name="author_attrtype" type="js">
       <testcase purpose="Test if the type of attribute 'author' is string on the window." type="compliance" status="approved" component="WebAPI/Widget/Widget Interface" execution_type="auto" priority="P3" id="WidgetInterface_author_attrtype">
         <description>
           <test_script_entry test_script_expected_result="0">test_index.html</test_script_entry>
@@ -506,7 +506,7 @@
         </specs>
       </testcase>
     </set>
-    <set name="ax">
+    <set name="ax" type="js">
       <testcase purpose="Test if the UA initializes the preferences attribute and not fire the storage event." type="compliance" status="approved" component="WebAPI/Widget/Widget Interface" execution_type="auto" priority="P3" id="WidgetInterface_ax">
         <description>
           <test_script_entry test_script_expected_result="0">test_index.html</test_script_entry>
@@ -520,7 +520,7 @@
         </specs>
       </testcase>
     </set>
-    <set name="description_attrexists">
+    <set name="description_attrexists" type="js">
       <testcase purpose="Test if the UA has an attribute called 'description' on the window." type="compliance" status="approved" component="WebAPI/Widget/Widget Interface" execution_type="auto" priority="P1" id="WidgetInterface_description_attrexists">
         <description>
           <test_script_entry test_script_expected_result="0">test_index.html</test_script_entry>
@@ -534,7 +534,7 @@
         </specs>
       </testcase>
     </set>
-    <set name="description_attrreadonly">
+    <set name="description_attrreadonly" type="js">
       <testcase purpose="Test if the attribute 'description' is readonly on the window." type="compliance" status="approved" component="WebAPI/Widget/Widget Interface" execution_type="auto" priority="P3" id="WidgetInterface_description_attrreadonly">
         <description>
           <test_script_entry test_script_expected_result="0">test_index.html</test_script_entry>
@@ -548,7 +548,7 @@
         </specs>
       </testcase>
     </set>
-    <set name="description_attrtype">
+    <set name="description_attrtype" type="js">
       <testcase purpose="Test if the type of attribute 'description' is string on the window." type="compliance" status="approved" component="WebAPI/Widget/Widget Interface" execution_type="auto" priority="P3" id="WidgetInterface_description_attrtype">
         <description>
           <test_script_entry test_script_expected_result="0">test_index.html</test_script_entry>
@@ -562,7 +562,7 @@
         </specs>
       </testcase>
     </set>
-    <set name="height_attrexists">
+    <set name="height_attrexists" type="js">
       <testcase purpose="Test if the UA has an attribute called 'height' on the window." type="compliance" status="approved" component="WebAPI/Widget/Widget Interface" execution_type="auto" priority="P1" id="WidgetInterface_height_attrexists">
         <description>
           <test_script_entry test_script_expected_result="0">test_index.html</test_script_entry>
@@ -576,7 +576,7 @@
         </specs>
       </testcase>
     </set>
-    <set name="height_attrreadonly">
+    <set name="height_attrreadonly" type="js">
       <testcase purpose="Test if the attribute 'height' is readonly on the window." type="compliance" status="approved" component="WebAPI/Widget/Widget Interface" execution_type="auto" priority="P3" id="WidgetInterface_height_attrreadonly">
         <description>
           <test_script_entry test_script_expected_result="0">test_index.html</test_script_entry>
@@ -590,7 +590,7 @@
         </specs>
       </testcase>
     </set>
-    <set name="height_attrtype">
+    <set name="height_attrtype" type="js">
       <testcase purpose="Test if the type of attribute 'height' is number on the window." type="compliance" status="approved" component="WebAPI/Widget/Widget Interface" execution_type="auto" priority="P3" id="WidgetInterface_height_attrtype">
         <description>
           <test_script_entry test_script_expected_result="0">test_index.html</test_script_entry>
@@ -604,7 +604,7 @@
         </specs>
       </testcase>
     </set>
-    <set name="i18nlro03">
+    <set name="i18nlro03" type="js">
       <testcase purpose="Test that LRO direction applies to the description element." type="compliance" status="approved" component="WebAPI/Widget/Widget Interface" execution_type="auto" priority="P3" id="WidgetInterface_i18nlro03">
         <description>
           <test_script_entry test_script_expected_result="0">test_index.html</test_script_entry>
@@ -618,7 +618,7 @@
         </specs>
       </testcase>
     </set>
-    <set name="i18nlro04">
+    <set name="i18nlro04" type="js">
       <testcase purpose="Test that LRO direction applies to the author element." type="compliance" status="approved" component="WebAPI/Widget/Widget Interface" execution_type="auto" priority="P3" id="WidgetInterface_i18nlro04">
         <description>
           <test_script_entry test_script_expected_result="0">test_index.html</test_script_entry>
@@ -632,7 +632,7 @@
         </specs>
       </testcase>
     </set>
-    <set name="i18nlro07">
+    <set name="i18nlro07" type="js">
       <testcase purpose="Test that LRO direction applies to the span element within the description element." type="compliance" status="approved" component="WebAPI/Widget/Widget Interface" execution_type="auto" priority="P3" id="WidgetInterface_i18nlro07">
         <description>
           <test_script_entry test_script_expected_result="0">test_index.html</test_script_entry>
@@ -646,7 +646,7 @@
         </specs>
       </testcase>
     </set>
-    <set name="i18nlro08">
+    <set name="i18nlro08" type="js">
       <testcase purpose="Test that LRO direction applies to the span element within the author element." type="compliance" status="approved" component="WebAPI/Widget/Widget Interface" execution_type="auto" priority="P3" id="WidgetInterface_i18nlro08">
         <description>
           <test_script_entry test_script_expected_result="0">test_index.html</test_script_entry>
@@ -660,7 +660,7 @@
         </specs>
       </testcase>
     </set>
-    <set name="i18nlro11">
+    <set name="i18nlro11" type="js">
       <testcase purpose="Test that nested LRO and RLO directions apply within the description element." type="compliance" status="approved" component="WebAPI/Widget/Widget Interface" execution_type="auto" priority="P3" id="WidgetInterface_i18nlro11">
         <description>
           <test_script_entry test_script_expected_result="0">test_index.html</test_script_entry>
@@ -674,7 +674,7 @@
         </specs>
       </testcase>
     </set>
-    <set name="i18nlro12">
+    <set name="i18nlro12" type="js">
       <testcase purpose="Test that nested LRO and RLO directions apply within the author element." type="compliance" status="approved" component="WebAPI/Widget/Widget Interface" execution_type="auto" priority="P3" id="WidgetInterface_i18nlro12">
         <description>
           <test_script_entry test_script_expected_result="0">test_index.html</test_script_entry>
@@ -688,7 +688,7 @@
         </specs>
       </testcase>
     </set>
-    <set name="aa">
+    <set name="aa" type="js">
       <testcase purpose="Test if the UA has an attribute called 'widget' on the window object." type="compliance" status="approved" component="WebAPI/Widget/Widget Interface" execution_type="auto" priority="P1" id="WidgetInterface_aa">
         <description>
           <test_script_entry test_script_expected_result="0">test_index.html</test_script_entry>
@@ -702,7 +702,7 @@
         </specs>
       </testcase>
     </set>
-    <set name="ab">
+    <set name="ab" type="js">
       <testcase purpose="Test if the UA initializes the preferences attribute according to the spec." type="compliance" status="approved" component="WebAPI/Widget/Widget Interface" execution_type="auto" priority="P3" id="WidgetInterface_ab">
         <description>
           <test_script_entry test_script_expected_result="0">test_index.html</test_script_entry>
@@ -716,7 +716,7 @@
         </specs>
       </testcase>
     </set>
-    <set name="ad">
+    <set name="ad" type="js">
       <testcase purpose="Test if widget.author is set correctly." type="compliance" status="approved" component="WebAPI/Widget/Widget Interface" execution_type="auto" priority="P3" id="WidgetInterface_ad">
         <description>
           <test_script_entry test_script_expected_result="0">test_index.html</test_script_entry>
@@ -730,7 +730,7 @@
         </specs>
       </testcase>
     </set>
-    <set name="ae">
+    <set name="ae" type="js">
       <testcase purpose="Test if widget.authorEmail is set correctly." type="compliance" status="approved" component="WebAPI/Widget/Widget Interface" execution_type="auto" priority="P3" id="WidgetInterface_ae">
         <description>
           <test_script_entry test_script_expected_result="0">test_index.html</test_script_entry>
@@ -744,7 +744,7 @@
         </specs>
       </testcase>
     </set>
-    <set name="af">
+    <set name="af" type="js">
       <testcase purpose="Test if widget.authorHref is set correctly." type="compliance" status="approved" component="WebAPI/Widget/Widget Interface" execution_type="auto" priority="P3" id="WidgetInterface_af">
         <description>
           <test_script_entry test_script_expected_result="0">test_index.html</test_script_entry>
@@ -758,7 +758,7 @@
         </specs>
       </testcase>
     </set>
-    <set name="ah">
+    <set name="ah" type="js">
       <testcase purpose="Test if widget.id is set correctly." type="compliance" status="approved" component="WebAPI/Widget/Widget Interface" execution_type="auto" priority="P3" id="WidgetInterface_ah">
         <description>
           <test_script_entry test_script_expected_result="0">test_index.html</test_script_entry>
@@ -772,7 +772,7 @@
         </specs>
       </testcase>
     </set>
-    <set name="aj">
+    <set name="aj" type="js">
       <testcase purpose="Test if widget.version is set correctly." type="compliance" status="approved" component="WebAPI/Widget/Widget Interface" execution_type="auto" priority="P3" id="WidgetInterface_aj">
         <description>
           <test_script_entry test_script_expected_result="0">test_index.html</test_script_entry>
@@ -786,7 +786,7 @@
         </specs>
       </testcase>
     </set>
-    <set name="ak">
+    <set name="ak" type="js">
       <testcase purpose="Test if widget.shortName is set correctly." type="compliance" status="approved" component="WebAPI/Widget/Widget Interface" execution_type="auto" priority="P3" id="WidgetInterface_ak">
         <description>
           <test_script_entry test_script_expected_result="0">test_index.html</test_script_entry>
@@ -800,7 +800,7 @@
         </specs>
       </testcase>
     </set>
-    <set name="ao">
+    <set name="ao" type="js">
       <testcase purpose="Test that the user agent returns a number as the value type of widget width." type="compliance" status="approved" component="WebAPI/Widget/Widget Interface" execution_type="auto" priority="P3" id="WidgetInterface_ao">
         <description>
           <test_script_entry test_script_expected_result="0">test_index.html</test_script_entry>
@@ -814,7 +814,7 @@
         </specs>
       </testcase>
     </set>
-    <set name="ap">
+    <set name="ap" type="js">
       <testcase purpose="Test that the user agent returns a number as the value type of widget height." type="compliance" status="approved" component="WebAPI/Widget/Widget Interface" execution_type="auto" priority="P3" id="WidgetInterface_ap">
         <description>
           <test_script_entry test_script_expected_result="0">test_index.html</test_script_entry>
@@ -828,7 +828,7 @@
         </specs>
       </testcase>
     </set>
-    <set name="ar">
+    <set name="ar" type="js">
       <testcase purpose="Test that the UA throws a NO_MODIFICATION_ALLOWED_ERR when trying to set a readonly key." type="compliance" status="approved" component="WebAPI/Widget/Widget Interface" execution_type="auto" priority="P3" id="WidgetInterface_ar">
         <description>
           <test_script_entry test_script_expected_result="0">test_index.html</test_script_entry>
@@ -842,7 +842,7 @@
         </specs>
       </testcase>
     </set>
-    <set name="as">
+    <set name="as" type="js">
       <testcase purpose="Test that the UA throws a NO_MODIFICATION_ALLOWED_ERR when trying to invoke removeItem on a readonly key." type="compliance" status="approved" component="WebAPI/Widget/Widget Interface" execution_type="auto" priority="P3" id="WidgetInterface_as">
         <description>
           <test_script_entry test_script_expected_result="0">test_index.html</test_script_entry>
@@ -856,7 +856,7 @@
         </specs>
       </testcase>
     </set>
-    <set name="at">
+    <set name="at" type="js">
       <testcase purpose="Test that the UA does not throw a NO_MODIFICATION_ALLOWED_ERR when clear() is invoked." type="compliance" status="approved" component="WebAPI/Widget/Widget Interface" execution_type="auto" priority="P3" id="WidgetInterface_at">
         <description>
           <test_script_entry test_script_expected_result="0">test_index.html</test_script_entry>
@@ -870,7 +870,7 @@
         </specs>
       </testcase>
     </set>
-    <set name="author_attrexists">
+    <set name="author_attrexists" type="js">
       <testcase purpose="Test if the UA has an attribute called 'author' on the window." type="compliance" status="approved" component="WebAPI/Widget/Widget Interface" execution_type="auto" priority="P1" id="WidgetInterface_author_attrexists">
         <description>
           <test_script_entry test_script_expected_result="0">test_index.html</test_script_entry>
@@ -884,7 +884,7 @@
         </specs>
       </testcase>
     </set>
-    <set name="author_attrreadonly">
+    <set name="author_attrreadonly" type="js">
       <testcase purpose="Test if the attribute 'author' is readonly on the window." type="compliance" status="approved" component="WebAPI/Widget/Widget Interface" execution_type="auto" priority="P3" id="WidgetInterface_author_attrreadonly">
         <description>
           <test_script_entry test_script_expected_result="0">test_index.html</test_script_entry>
@@ -898,7 +898,7 @@
         </specs>
       </testcase>
     </set>
-    <set name="authorEmail_attrexists">
+    <set name="authorEmail_attrexists" type="js">
       <testcase purpose="Test if the UA has an attribute called 'authorEmail' on the window." type="compliance" status="approved" component="WebAPI/Widget/Widget Interface" execution_type="auto" priority="P1" id="WidgetInterface_authorEmail_attrexists">
         <description>
           <test_script_entry test_script_expected_result="0">test_index.html</test_script_entry>
@@ -912,7 +912,7 @@
         </specs>
       </testcase>
     </set>
-    <set name="authorEmail_attrreadonly">
+    <set name="authorEmail_attrreadonly" type="js">
       <testcase purpose="Test if the attribute 'authorEmail' is readonly on the window." type="compliance" status="approved" component="WebAPI/Widget/Widget Interface" execution_type="auto" priority="P3" id="WidgetInterface_authorEmail_attrreadonly">
         <description>
           <test_script_entry test_script_expected_result="0">test_index.html</test_script_entry>
@@ -926,7 +926,7 @@
         </specs>
       </testcase>
     </set>
-    <set name="authorEmail_attrtype">
+    <set name="authorEmail_attrtype" type="js">
       <testcase purpose="Test if the type of attribute 'authorEmail' is string on the window." type="compliance" status="approved" component="WebAPI/Widget/Widget Interface" execution_type="auto" priority="P3" id="WidgetInterface_authorEmail_attrtype">
         <description>
           <test_script_entry test_script_expected_result="0">test_index.html</test_script_entry>
@@ -940,7 +940,7 @@
         </specs>
       </testcase>
     </set>
-    <set name="authorHref_attrexists">
+    <set name="authorHref_attrexists" type="js">
       <testcase purpose="Test if the UA has an attribute called 'authorHref' on the window." type="compliance" status="approved" component="WebAPI/Widget/Widget Interface" execution_type="auto" priority="P1" id="WidgetInterface_authorHref_attrexists">
         <description>
           <test_script_entry test_script_expected_result="0">test_index.html</test_script_entry>
@@ -954,7 +954,7 @@
         </specs>
       </testcase>
     </set>
-    <set name="authorHref_attrreadonly">
+    <set name="authorHref_attrreadonly" type="js">
       <testcase purpose="Test if the attribute 'authorHref' is readonly on the window." type="compliance" status="approved" component="WebAPI/Widget/Widget Interface" execution_type="auto" priority="P3" id="WidgetInterface_authorHref_attrreadonly">
         <description>
           <test_script_entry test_script_expected_result="0">test_index.html</test_script_entry>
@@ -968,7 +968,7 @@
         </specs>
       </testcase>
     </set>
-    <set name="authorHref_attrtype">
+    <set name="authorHref_attrtype" type="js">
       <testcase purpose="Test if the type of attribute 'authorHref' is string on the window." type="compliance" status="approved" component="WebAPI/Widget/Widget Interface" execution_type="auto" priority="P3" id="WidgetInterface_authorHref_attrtype">
         <description>
           <test_script_entry test_script_expected_result="0">test_index.html</test_script_entry>
@@ -982,7 +982,7 @@
         </specs>
       </testcase>
     </set>
-    <set name="i18nltr03">
+    <set name="i18nltr03" type="js">
       <testcase purpose="Test that LTR direction applies to the description element." type="compliance" status="approved" component="WebAPI/Widget/Widget Interface" execution_type="auto" priority="P3" id="i18nltr03">
         <description>
           <test_script_entry test_script_expected_result="0">test_index.html</test_script_entry>
@@ -996,7 +996,7 @@
         </specs>
       </testcase>
     </set>
-    <set name="i18nltr04">   
+    <set name="i18nltr04" type="js">   
       <testcase purpose="Test that LTR direction applies to the author element." type="compliance" status="approved" component="WebAPI/Widget/Widget Interface" execution_type="auto" priority="P3" id="i18nltr04">
         <description>
           <test_script_entry test_script_expected_result="0">test_index.html</test_script_entry>
@@ -1010,7 +1010,7 @@
         </specs>
       </testcase>
     </set>
-    <set name="i18nltr07">
+    <set name="i18nltr07" type="js">
       <testcase purpose="Test that LTR direction applies to the span element within the description element." type="compliance" status="approved" component="WebAPI/Widget/Widget Interface" execution_type="auto" priority="P3" id="i18nltr07">
         <description>
           <test_script_entry test_script_expected_result="0">test_index.html</test_script_entry>
@@ -1024,7 +1024,7 @@
         </specs>
       </testcase>
     </set>   
-    <set name="i18nltr08">
+    <set name="i18nltr08" type="js">
       <testcase purpose="Test that LTR direction applies to the span element within the author element." type="compliance" status="approved" component="WebAPI/Widget/Widget Interface" execution_type="auto" priority="P3" id="i18nltr08">
         <description>
           <test_script_entry test_script_expected_result="0">test_index.html</test_script_entry>
@@ -1038,7 +1038,7 @@
         </specs>
       </testcase>
     </set>
-    <set name="i18nltr11">
+    <set name="i18nltr11" type="js">
       <testcase purpose="Test that nested LTR and RTL directions apply within the description element." type="compliance" status="approved" component="WebAPI/Widget/Widget Interface" execution_type="auto" priority="P3" id="i18nltr11">
         <description>
           <test_script_entry test_script_expected_result="0">test_index.html</test_script_entry>
@@ -1052,7 +1052,7 @@
         </specs>
       </testcase>
     </set>   
-    <set name="i18nltr12">
+    <set name="i18nltr12" type="js">
       <testcase purpose="Test that nested LTR and RTL directions apply within the author element." type="compliance" status="approved" component="WebAPI/Widget/Widget Interface" execution_type="auto" priority="P3" id="i18nltr12">
         <description>
           <test_script_entry test_script_expected_result="0">test_index.html</test_script_entry>
@@ -1066,7 +1066,7 @@
         </specs>
       </testcase>
     </set>
-    <set name="i18nltr36">
+    <set name="i18nltr36" type="js">
       <testcase purpose="Test that LTR direction does not apply to the href attribute of the author element." type="compliance" status="approved" component="WebAPI/Widget/Widget Interface" execution_type="auto" priority="P3" id="i18nltr36">
         <description>
           <test_script_entry test_script_expected_result="0">test_index.html</test_script_entry>
@@ -1080,7 +1080,7 @@
         </specs>
       </testcase>
     </set>
-    <set name="i18nlro36">
+    <set name="i18nlro36" type="js">
       <testcase purpose="Test that LRO direction does not apply to the href attribute of the author element." type="compliance" status="approved" component="WebAPI/Widget/Widget Interface" execution_type="auto" priority="P3" id="i18nlro36">
         <description>
           <test_script_entry test_script_expected_result="0">test_index.html</test_script_entry>
@@ -1094,7 +1094,7 @@
         </specs>
       </testcase>
     </set>
-    <set name="i18nlro37">
+    <set name="i18nlro37" type="js">
       <testcase purpose="Test that LRO direction does not apply to the email attribute of the author element." type="compliance" status="approved" component="WebAPI/Widget/Widget Interface" execution_type="auto" priority="P3" id="i18nlro37">
         <description>
           <test_script_entry test_script_expected_result="0">test_index.html</test_script_entry>
@@ -1108,7 +1108,7 @@
         </specs>
       </testcase>
     </set>
-    <set name="i18nltr41" launcher="xwalk -iuz">
+    <set name="i18nltr41" launcher="xwalk -iuz" type="js">
       <testcase purpose="Test that LTR direction does not apply to the id attribute of the widget element." type="compliance" status="approved" component="WebAPI/Widget/Widget Interface" execution_type="auto" priority="P3" id="WidgetInterface_i18nltr41">
         <description>
           <test_script_entry test_script_expected_result="0">test_index.html</test_script_entry>
@@ -1122,7 +1122,7 @@
         </specs>
       </testcase>
     </set>
-    <set name="i18nltr42" launcher="xwalk -iuz">
+    <set name="i18nltr42" launcher="xwalk -iuz" type="js">
       <testcase purpose="Test that LTR direction applies to the version attribute of the widget element." type="compliance" status="approved" component="WebAPI/Widget/Widget Interface" execution_type="auto" priority="P3" id="WidgetInterface_i18nltr42">
         <description>
           <test_script_entry test_script_expected_result="0">test_index.html</test_script_entry>
@@ -1136,7 +1136,7 @@
         </specs>
       </testcase>
     </set>
-    <set name="i18nrlo01" launcher="xwalk -iuz">
+    <set name="i18nrlo01" launcher="xwalk -iuz" type="js">
       <testcase purpose="Test that RLO direction applies to the name element." type="compliance" status="approved" component="WebAPI/Widget/Widget Interface" execution_type="auto" priority="P3" id="WidgetInterface_i18nrlo01">
         <description>
           <test_script_entry test_script_expected_result="0">test_index.html</test_script_entry>
@@ -1150,7 +1150,7 @@
         </specs>
       </testcase>
     </set>
-    <set name="i18nrlo02" launcher="xwalk -iuz">
+    <set name="i18nrlo02" launcher="xwalk -iuz" type="js">
       <testcase purpose="Test that RLO direction applies to the short attribute of the name element." type="compliance" status="approved" component="WebAPI/Widget/Widget Interface" execution_type="auto" priority="P3" id="WidgetInterface_i18nrlo02">
         <description>
           <test_script_entry test_script_expected_result="0">test_index.html</test_script_entry>
@@ -1164,7 +1164,7 @@
         </specs>
       </testcase>
     </set>
-    <set name="i18nrlo14" launcher="xwalk -iuz">
+    <set name="i18nrlo14" launcher="xwalk -iuz" type="js">
       <testcase purpose="Test that RLO direction is inherited by the name element from the widget element." type="compliance" status="approved" component="WebAPI/Widget/Widget Interface" execution_type="auto" priority="P3" id="WidgetInterface_i18nrlo14">
         <description>
           <test_script_entry test_script_expected_result="0">test_index.html</test_script_entry>
@@ -1178,7 +1178,7 @@
         </specs>
       </testcase>
     </set>
-    <set name="i18nrlo15" launcher="xwalk -iuz">
+    <set name="i18nrlo15" launcher="xwalk -iuz" type="js">
       <testcase purpose="Test that RLO direction is inherited by the short attribute of the name element from the widget element." type="compliance" status="approved" component="WebAPI/Widget/Widget Interface" execution_type="auto" priority="P3" id="WidgetInterface_i18nrlo15">
         <description>
           <test_script_entry test_script_expected_result="0">test_index.html</test_script_entry>
@@ -1192,7 +1192,7 @@
         </specs>
       </testcase>
     </set>
-    <set name="i18nrlo16" launcher="xwalk -iuz">
+    <set name="i18nrlo16" launcher="xwalk -iuz" type="js">
       <testcase purpose="Test that RLO direction is inherited by the description element from the widget element." type="compliance" status="approved" component="WebAPI/Widget/Widget Interface" execution_type="auto" priority="P3" id="WidgetInterface_i18nrlo16">
         <description>
           <test_script_entry test_script_expected_result="0">test_index.html</test_script_entry>
@@ -1206,7 +1206,7 @@
         </specs>
       </testcase>
     </set>
-    <set name="i18nrlo17" launcher="xwalk -iuz">
+    <set name="i18nrlo17" launcher="xwalk -iuz" type="js">
       <testcase purpose="Test that RLO direction is inherited by the author element from the widget element." type="compliance" status="approved" component="WebAPI/Widget/Widget Interface" execution_type="auto" priority="P3" id="WidgetInterface_i18nrlo17">
         <description>
           <test_script_entry test_script_expected_result="0">test_index.html</test_script_entry>
@@ -1220,7 +1220,7 @@
         </specs>
       </testcase>
     </set>
-    <set name="i18nrlo41" launcher="xwalk -iuz">
+    <set name="i18nrlo41" launcher="xwalk -iuz" type="js">
       <testcase purpose="Test that RLO direction does not apply to the id attribute of widget element." type="compliance" status="approved" component="WebAPI/Widget/Widget Interface" execution_type="auto" priority="P3" id="WidgetInterface_i18nrlo41">
         <description>
           <test_script_entry test_script_expected_result="0">test_index.html</test_script_entry>
@@ -1234,7 +1234,7 @@
         </specs>
       </testcase>
     </set>
-    <set name="i18nrlo42" launcher="xwalk -iuz">
+    <set name="i18nrlo42" launcher="xwalk -iuz" type="js">
       <testcase purpose="Test that RLO direction applies to the version attribute of the widget element." type="compliance" status="approved" component="WebAPI/Widget/Widget Interface" execution_type="auto" priority="P3" id="WidgetInterface_i18nrlo42">
         <description>
           <test_script_entry test_script_expected_result="0">test_index.html</test_script_entry>
@@ -1248,7 +1248,7 @@
         </specs>
       </testcase>
     </set>
-    <set name="i18nrtl01" launcher="xwalk -iuz">
+    <set name="i18nrtl01" launcher="xwalk -iuz" type="js">
       <testcase purpose="Test that RTL direction applies to the name element." type="compliance" status="approved" component="WebAPI/Widget/Widget Interface" execution_type="auto" priority="P3" id="WidgetInterface_i18nrtl01">
         <description>
           <test_script_entry test_script_expected_result="0">test_index.html</test_script_entry>
@@ -1262,7 +1262,7 @@
         </specs>
       </testcase>
     </set>
-    <set name="i18nrtl02" launcher="xwalk -iuz">
+    <set name="i18nrtl02" launcher="xwalk -iuz" type="js">
       <testcase purpose="Test that RTL direction applies to the short attribute of the name element." type="compliance" status="approved" component="WebAPI/Widget/Widget Interface" execution_type="auto" priority="P3" id="WidgetInterface_i18nrtl02">
         <description>
           <test_script_entry test_script_expected_result="0">test_index.html</test_script_entry>
@@ -1276,7 +1276,7 @@
         </specs>
       </testcase>
     </set>
-    <set name="i18nrtl14" launcher="xwalk -iuz">
+    <set name="i18nrtl14" launcher="xwalk -iuz" type="js">
       <testcase purpose="Test that RTL direction is inherited by the name element from the widget element." type="compliance" status="approved" component="WebAPI/Widget/Widget Interface" execution_type="auto" priority="P3" id="WidgetInterface_i18nrtl14">
         <description>
           <test_script_entry test_script_expected_result="0">test_index.html</test_script_entry>
@@ -1290,7 +1290,7 @@
         </specs>
       </testcase>
     </set>
-    <set name="i18nrtl15" launcher="xwalk -iuz">
+    <set name="i18nrtl15" launcher="xwalk -iuz" type="js">
       <testcase purpose="Test that RTL direction is inherited by the short attribute of the name element from the widget element." type="compliance" status="approved" component="WebAPI/Widget/Widget Interface" execution_type="auto" priority="P3" id="WidgetInterface_i18nrtl15">
         <description>
           <test_script_entry test_script_expected_result="0">test_index.html</test_script_entry>
@@ -1304,7 +1304,7 @@
         </specs>
       </testcase>
     </set>
-    <set name="i18nrtl16" launcher="xwalk -iuz">
+    <set name="i18nrtl16" launcher="xwalk -iuz" type="js">
       <testcase purpose="Test that RTL direction is inherited by the description element from the widget element." type="compliance" status="approved" component="WebAPI/Widget/Widget Interface" execution_type="auto" priority="P3" id="WidgetInterface_i18nrtl16">
         <description>
           <test_script_entry test_script_expected_result="0">test_index.html</test_script_entry>
@@ -1318,7 +1318,7 @@
         </specs>
       </testcase>
     </set>
-    <set name="i18nrtl17" launcher="xwalk -iuz">
+    <set name="i18nrtl17" launcher="xwalk -iuz" type="js">
       <testcase purpose="Test that RTL direction is inherited by the author element from the widget element." type="compliance" status="approved" component="WebAPI/Widget/Widget Interface" execution_type="auto" priority="P3" id="WidgetInterface_i18nrtl17">
         <description>
           <test_script_entry test_script_expected_result="0">test_index.html</test_script_entry>
@@ -1332,7 +1332,7 @@
         </specs>
       </testcase>
     </set>
-    <set name="i18nrtl41" launcher="xwalk -iuz">
+    <set name="i18nrtl41" launcher="xwalk -iuz" type="js">
       <testcase purpose="Test that RTL direction does not apply to the id attribute of the widget element." type="compliance" status="approved" component="WebAPI/Widget/Widget Interface" execution_type="auto" priority="P3" id="WidgetInterface_i18nrtl41">
         <description>
           <test_script_entry test_script_expected_result="0">test_index.html</test_script_entry>
@@ -1346,7 +1346,7 @@
         </specs>
       </testcase>
     </set>
-    <set name="i18nrtl42" launcher="xwalk -iuz">
+    <set name="i18nrtl42" launcher="xwalk -iuz" type="js">
       <testcase purpose="Test that RTL direction applies to the version attribute of the widget element." type="compliance" status="approved" component="WebAPI/Widget/Widget Interface" execution_type="auto" priority="P3" id="WidgetInterface_i18nrtl42">
         <description>
           <test_script_entry test_script_expected_result="0">test_index.html</test_script_entry>
@@ -1360,7 +1360,7 @@
         </specs>
       </testcase>
     </set>
-    <set name="i18nlro16" launcher="xwalk -iuz">
+    <set name="i18nlro16" launcher="xwalk -iuz" type="js">
       <testcase purpose="Test that LRO direction is inherited by the description element from the widget element." type="compliance" status="approved" component="WebAPI/Widget/Widget Interface" execution_type="auto" priority="P3" id="WidgetInterface_i18nlro16">
         <description>
           <test_script_entry test_script_expected_result="0">test_index.html</test_script_entry>
@@ -1374,7 +1374,7 @@
         </specs>
       </testcase>
     </set>
-    <set name="i18nlro17" launcher="xwalk -iuz">
+    <set name="i18nlro17" launcher="xwalk -iuz" type="js">
       <testcase purpose="Test that LRO direction is inherited by the author element from the widget element." type="compliance" status="approved" component="WebAPI/Widget/Widget Interface" execution_type="auto" priority="P3" id="WidgetInterface_i18nlro17">
         <description>
           <test_script_entry test_script_expected_result="0">test_index.html</test_script_entry>
@@ -1388,7 +1388,7 @@
         </specs>
       </testcase>
     </set>
-    <set name="i18nlro41" launcher="xwalk -iuz">
+    <set name="i18nlro41" launcher="xwalk -iuz" type="js">
       <testcase purpose="Test that LRO direction does not apply to the id attribute of the widget element." type="compliance" status="approved" component="WebAPI/Widget/Widget Interface" execution_type="auto" priority="P3" id="i18nlro41">
         <description>
           <test_script_entry test_script_expected_result="0">test_index.html</test_script_entry>
@@ -1402,7 +1402,7 @@
         </specs>
       </testcase>
     </set>
-    <set name="i18nlro42" launcher="xwalk -iuz">
+    <set name="i18nlro42" launcher="xwalk -iuz" type="js">
       <testcase purpose="Test that LRO direction applies to the version attribute of the widget element." type="compliance" status="approved" component="WebAPI/Widget/Widget Interface" execution_type="auto" priority="P3" id="i18nlro42">
         <description>
           <test_script_entry test_script_expected_result="0">test_index.html</test_script_entry>
@@ -1416,7 +1416,7 @@
         </specs>
       </testcase>
     </set>
-    <set name="i18nltr01" launcher="xwalk -iuz">
+    <set name="i18nltr01" launcher="xwalk -iuz" type="js">
       <testcase purpose="Test that LTR direction applies to the name element." type="compliance" status="approved" component="WebAPI/Widget/Widget Interface" execution_type="auto" priority="P3" id="i18nltr01">
         <description>
           <test_script_entry test_script_expected_result="0">test_index.html</test_script_entry>
@@ -1430,7 +1430,7 @@
         </specs>
       </testcase>
     </set>
-    <set name="i18nltr02" launcher="xwalk -iuz"> 
+    <set name="i18nltr02" launcher="xwalk -iuz" type="js"> 
       <testcase purpose="Test that LTR direction applies to the short attribute of the name element." type="compliance" status="approved" component="WebAPI/Widget/Widget Interface" execution_type="auto" priority="P3" id="i18nltr02">
         <description>
           <test_script_entry test_script_expected_result="0">test_index.html</test_script_entry>
@@ -1444,7 +1444,7 @@
         </specs>
       </testcase>
     </set>
-    <set name="i18nltr14" launcher="xwalk -iuz">
+    <set name="i18nltr14" launcher="xwalk -iuz" type="js">
       <testcase purpose="Test that LTR direction is inherited by the name element from the widget element." type="compliance" status="approved" component="WebAPI/Widget/Widget Interface" execution_type="auto" priority="P3" id="i18nltr14">
         <description>
           <test_script_entry test_script_expected_result="0">test_index.html</test_script_entry>
@@ -1458,7 +1458,7 @@
         </specs>
       </testcase>
     </set>
-    <set name="i18nltr15" launcher="xwalk -iuz">
+    <set name="i18nltr15" launcher="xwalk -iuz" type="js">
       <testcase purpose="Test that LTR direction is inherited by the short attribute of the name element from the widget element." type="compliance" status="approved" component="WebAPI/Widget/Widget Interface" execution_type="auto" priority="P3" id="i18nltr15">
         <description>
           <test_script_entry test_script_expected_result="0">test_index.html</test_script_entry>
@@ -1472,7 +1472,7 @@
         </specs>
       </testcase>
     </set>
-    <set name="i18nltr16" launcher="xwalk -iuz">
+    <set name="i18nltr16" launcher="xwalk -iuz" type="js">
       <testcase purpose="Test that LTR direction is inherited by the description element from the widget element." type="compliance" status="approved" component="WebAPI/Widget/Widget Interface" execution_type="auto" priority="P3" id="i18nltr16">
         <description>
           <test_script_entry test_script_expected_result="0">test_index.html</test_script_entry>
@@ -1486,7 +1486,7 @@
         </specs>
       </testcase>
     </set>
-    <set name="i18nltr17" launcher="xwalk -iuz">
+    <set name="i18nltr17" launcher="xwalk -iuz" type="js">
       <testcase purpose="Test that LTR direction is inherited by the author element from the widget element." type="compliance" status="approved" component="WebAPI/Widget/Widget Interface" execution_type="auto" priority="P3" id="i18nltr17">
         <description>
           <test_script_entry test_script_expected_result="0">test_index.html</test_script_entry>

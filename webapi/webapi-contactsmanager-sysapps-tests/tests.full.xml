@@ -2,7 +2,7 @@
 <?xml-stylesheet type="text/xsl"  href="./testcase.xsl"?>
 <test_definition>
   <suite name="webapi-contactsmanager-sysapps-tests" launcher="xwalk" category="W3C/HTML5 APIs">
-    <set name="idlharness">
+    <set name="idlharness" type="js">
       <testcase purpose="This test validates the WebIDL included in the Contacts Manager specification" type="compliance" status="designed" component="WebAPI/System-level APIs/Contacts Manager" execution_type="auto" priority="P1" id="ContactsManager_idlhaness_test">
         <description>
           <test_script_entry>/opt/webapi-contactsmanager-sysapps-tests/contactsmanager/ContactsManager_idlharness.html</test_script_entry>
@@ -16,7 +16,7 @@
         </specs>
       </testcase>
     </set>
-    <set name="ContactsManager">
+    <set name="ContactsManager" type="js">
       <testcase purpose="Check if the Contact id attribute is null before save" type="compliance" status="approved" component="WebAPI/System-level APIs/Contacts Manager" execution_type="auto" priority="P1" id="Contact_id">
         <description>
           <test_script_entry>/opt/webapi-contactsmanager-sysapps-tests/contactsmanager/Contact.html?total_num=16&amp;amp;locator_key=id&amp;amp;value=1</test_script_entry>

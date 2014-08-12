@@ -2,7 +2,7 @@
 <?xml-stylesheet type="text/xsl" href="./testcase.xsl"?>
 <test_definition>
   <suite name="webapi-webrtc-w3c-tests" launcher="xwalk" category="W3C/HTML5 APIs">
-    <set name="idlharness">
+    <set name="idlharness" type="js">
       <testcase purpose="This test validates the WebIDL included in the WebRTC specification" type="compliance" status="designed" component="WebAPI/Networking/WebRTC" execution_type="auto" priority="P1" id="WebRTC_idlhaness_test">
         <description>
           <test_script_entry>/opt/webapi-webrtc-w3c-tests/webrtc/WebRTC_idlharness.html</test_script_entry>
@@ -16,7 +16,7 @@
         </specs>
       </testcase>
     </set>
-    <set name="webRTC_basic">
+    <set name="webRTC_basic" type="js">
       <testcase purpose="Check if readonly RTCPeerConnection.localDescription exists and type of object" type="compliance" status="approved" component="WebAPI/Networking/WebRTC" execution_type="auto" priority="P1" id="RTCPeerConnection_localDescription_basic">
         <description>
           <test_script_entry>/opt/webapi-webrtc-w3c-tests/webrtc/RTCPeerConnection_basic.html?total_num=34&amp;amp;locator_key=id&amp;amp;value=1</test_script_entry>
@@ -894,7 +894,7 @@
         </specs>
       </testcase>
     </set>
-    <set name="WebRTC">
+    <set name="WebRTC" type="js">
       <testcase purpose="Check if the setting of RTCDataChannel.binaryType is normally" type="compliance" status="approved" component="WebAPI/Networking/WebRTC" execution_type="auto" priority="P1" id="RTCDataChannel_binaryType_init_value">
         <description>
           <test_script_entry>/opt/webapi-webrtc-w3c-tests/webrtc/RTCDataChannel.html?total_num=10&amp;amp;locator_key=id&amp;amp;value=1</test_script_entry>

@@ -2,7 +2,7 @@
 <?xml-stylesheet type="text/xsl" href="./testcase.xsl"?>
 <test_definition>
   <suite category="W3C/HTML5 APIs" launcher="xwalk" name="webapi-rawsockets-sysapps-tests">
-    <set name="idlharness">
+    <set name="idlharness" type="js">
       <testcase component="WebAPI/System-level APIs/Raw Sockets" execution_type="auto" id="RawSockets_interface_basic_UDPSocket" purpose="This test validates the UDPSocket exists">
         <description>
           <test_script_entry>/opt/webapi-rawsockets-sysapps-tests/rawsockets/RawSockets_interface_basic.html?total_num=3&amp;amp;locator_key=id&amp;amp;value=1</test_script_entry>
@@ -229,9 +229,9 @@
         </description>
       </testcase>
     </set>
-    <set name="UDPSocket">
+    <set name="UDPSocket" type="js">
     </set>
-    <set name="TCPSocket1">
+    <set name="TCPSocket1" type="js">
       <testcase component="WebAPI/System-level APIs/Raw Sockets" execution_type="auto" id="TCPSocket_addressReuse_default" purpose="Check if the default value of TCPSocket.addressReuse is true">
         <description>
           <test_script_entry>/opt/webapi-rawsockets-sysapps-tests/rawsockets/TCPSocket_attribute.html?total_num=8&amp;amp;locator_key=id&amp;amp;value=1</test_script_entry>
@@ -273,7 +273,7 @@
         </description>
       </testcase>
     </set>
-    <set name="TCPSocket2">
+    <set name="TCPSocket2" type="js">
       <testcase component="WebAPI/System-level APIs/Raw Sockets" execution_type="auto" id="TCPSocket_onclose_with_close" purpose="Check if set up the onclose event successful for TCPSocket using the type close">
         <description>
           <test_script_entry>/opt/webapi-rawsockets-sysapps-tests/rawsockets/TCPSocket_event_close.html</test_script_entry>
@@ -295,7 +295,7 @@
         </description>
       </testcase>
     </set>
-    <set name="TCPSocket3">
+    <set name="TCPSocket3" type="js">
       <testcase component="WebAPI/System-level APIs/Raw Sockets" execution_type="auto" id="TCPSocket_localPort_absent" purpose="Check if bind the socket to an ephemeral local port decided by the system and set the localPort attribute to this port when localPort is absent">
         <description>
           <test_script_entry>/opt/webapi-rawsockets-sysapps-tests/rawsockets/TCPSocket_localPort_absent.html</test_script_entry>
@@ -327,7 +327,7 @@
         </description>
       </testcase>
     </set>
-    <set name="TCPSocket4">
+    <set name="TCPSocket4" type="js">
       <testcase component="WebAPI/System-level APIs/Raw Sockets" execution_type="auto" id="TCPSocket_onerror_event" purpose="Check if onerror event can be fired when there is an error">
         <description>
           <test_script_entry>/opt/webapi-rawsockets-sysapps-tests/rawsockets/TCPSocket_event_onerror.html</test_script_entry>
@@ -349,7 +349,7 @@
         </description>
       </testcase>
     </set>
-    <set name="TCPSocket5">
+    <set name="TCPSocket5" type="js">
       <testcase component="WebAPI/System-level APIs/Raw Sockets" execution_type="auto" id="TCPSocket_readyState_closing" purpose="Check if the value of readyState is closing when the socket is in closing state">
         <description>
           <test_script_entry>/opt/webapi-rawsockets-sysapps-tests/rawsockets/TCPSocket_readystate_closing.html</test_script_entry>
@@ -386,7 +386,7 @@
         </description>
       </testcase>
     </set>
-    <set name="TCPSocket6">
+    <set name="TCPSocket6" type="js">
       <testcase component="WebAPI/System-level APIs/Raw Sockets" execution_type="auto" id="TCPSocket_send_DOMString" purpose="Check if can send DOMString using send method">
         <description>
           <test_script_entry>/opt/webapi-rawsockets-sysapps-tests/rawsockets/TCPSocket_method_send_DOMString.html</test_script_entry>
@@ -408,7 +408,7 @@
         </description>
       </testcase>
     </set>
-    <set name="TCPSocket7">
+    <set name="TCPSocket7" type="js">
       <testcase component="WebAPI/System-level APIs/Raw Sockets" execution_type="auto" id="TCPSocket_bufferedAmount_zero" purpose="Check if the value of TCPSocket.bufferedAmount is zero without sending anything when connectted">
         <description>
           <test_script_entry>/opt/webapi-rawsockets-sysapps-tests/rawsockets/TCPSocket_bufferedAmount_zero.html</test_script_entry>
@@ -435,7 +435,7 @@
         </description>
       </testcase>
     </set>
-    <set name="TCPServerSocket">
+    <set name="TCPServerSocket" type="js">
       <testcase component="WebAPI/System-level APIs/Raw Sockets" execution_type="auto" id="TCPServerSocket_addressReuse_default" purpose="Check if the default value of TCPServerSocket.addressReuse is true">
         <description>
           <test_script_entry>/opt/webapi-rawsockets-sysapps-tests/rawsockets/TCPServerSocket_attribute.html?total_num=6&amp;amp;locator_key=id&amp;amp;value=1</test_script_entry>

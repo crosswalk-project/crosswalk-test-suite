@@ -2,7 +2,7 @@
 <?xml-stylesheet type="text/xsl"  href="./testcase.xsl"?>
 <test_definition>
   <suite name="tct-ext01-wrt-tests" launcher="xwalk -iu" extension="crosswalk" category="Web Runtime">
-    <set name="application-privilege">
+    <set name="application-privilege" type="js">
       <testcase purpose="Check that the web runtime is able to identify the required API access privilege." type="user_experience" status="approved" component="Web/Runtime/ConfigExtension" execution_type="auto" priority="P1" id="application-privilege">
         <description>
           <pre_condition></pre_condition>
@@ -24,7 +24,7 @@
         </specs>
       </testcase>
     </set>
-    <set name="setting-install-location-auto">
+    <set name="setting-install-location-auto" type="js">
       <testcase purpose="Check that the installation location is at ҳystemҠwhen install-location is set as 'auto'." type="user_experience" status="approved" component="Web/Runtime/ConfigExtension" execution_type="auto" priority="P3" id="setting-install-location-auto">
         <description>
           <pre_condition></pre_condition>
@@ -46,7 +46,7 @@
         </specs>
       </testcase>
     </set>
-    <set name="metadata-support">
+    <set name="metadata-support" type="js">
       <testcase purpose="Check that the web runtime can support the metadata element." type="user_experience" status="approved" component="Web/Runtime/ConfigExtension" execution_type="auto" priority="P1" id="metadata-support">
         <description>
           <pre_condition></pre_condition>

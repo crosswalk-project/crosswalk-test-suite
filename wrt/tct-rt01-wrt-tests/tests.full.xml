@@ -2,7 +2,7 @@
 <?xml-stylesheet type="text/xsl"  href="testcase.xsl"?>
 <test_definition>
 <suite name="tct-rt01-wrt-tests" launcher="xwalk -iu" extension="crosswalk" category="Web Runtime">
-  <set name="dom-events-audio-onerror">
+  <set name="dom-events-audio-onerror" type="js">
     <testcase purpose="Check if WRT supports W3C DOM onerror event for audio lable." component="Web/Runtime/WebApplicationRuntime" id="dom-events-audio-onerror" execution_type="auto" priority="P2" status="approved" type="Functional positive">
       <description>
         <pre_condition></pre_condition>
@@ -25,7 +25,7 @@
       </specs>
     </testcase>
   </set>
-  <set name="dom-events-video-onerror">
+  <set name="dom-events-video-onerror" type="js">
     <testcase purpose="Check if WRT supports W3C DOM onerror event for video lable." component="Web/Runtime/WebApplicationRuntime" id="dom-events-video-onerror" execution_type="auto" priority="P2" status="approved" type="Functional positive">
       <description>
         <pre_condition></pre_condition>
@@ -48,7 +48,7 @@
       </specs>
     </testcase>
   </set>
-  <set name="other-uri-XMLHttpRequest-get">
+  <set name="other-uri-XMLHttpRequest-get" type="js">
     <testcase purpose="Check if WRT returns a response when the request is a [HTTP] GET request." type="user_experience" status="approved" component="Web/Runtime/WebApplicationRuntime" execution_type="auto" priority="P3" id="other-uri-XMLHttpRequest-get">
       <description>
         <pre_condition></pre_condition>
@@ -70,7 +70,7 @@
       </specs>
     </testcase>
   </set>
-  <set name="other-uri-XMLHttpRequest-get-false">
+  <set name="other-uri-XMLHttpRequest-get-false" type="js">
     <testcase purpose="Check if WRT returns a [HTTP] 501 Not Implemented response when the request is a synchronous [HTTP] GET request." type="user_experience" status="approved" component="Web/Runtime/WebApplicationRuntime" execution_type="auto" priority="P3" id="other-uri-XMLHttpRequest-get-false">
       <description>
         <pre_condition></pre_condition>
@@ -92,7 +92,7 @@
       </specs>
     </testcase>
   </set>
-  <set name="other-uri-XMLHttpRequest-head">
+  <set name="other-uri-XMLHttpRequest-head" type="js">
     <testcase purpose="Check if WRT returns a [HTTP] 501 Not Implemented response when the request is a [HTTP] HEAD request." type="user_experience" status="approved" component="Web/Runtime/WebApplicationRuntime" execution_type="auto" priority="P3" id="other-uri-XMLHttpRequest-head">
       <description>
         <pre_condition></pre_condition>
@@ -114,7 +114,7 @@
       </specs>
     </testcase>
   </set>
-  <set name="other-uri-XMLHttpRequest-head-false">
+  <set name="other-uri-XMLHttpRequest-head-false" type="js">
     <testcase purpose="Check if WRT returns a [HTTP] 501 Not Implemented response when the request is a synchronous [HTTP] HEAD request." type="user_experience" status="approved" component="Web/Runtime/WebApplicationRuntime" execution_type="auto" priority="P3" id="other-uri-XMLHttpRequest-head-false">
       <description>
         <pre_condition></pre_condition>
@@ -136,7 +136,7 @@
       </specs>
     </testcase>
   </set>
-  <set name="other-uri-XMLHttpRequest-invalid">
+  <set name="other-uri-XMLHttpRequest-invalid" type="js">
     <testcase purpose="Check if WRT throws an exception when the request is an invalid request." type="user_experience" status="approved" component="Web/Runtime/WebApplicationRuntime" execution_type="auto" priority="P3" id="other-uri-XMLHttpRequest-invalid">
       <description>
         <pre_condition></pre_condition>
@@ -158,7 +158,7 @@
       </specs>
     </testcase>
   </set>
-  <set name="other-uri-XMLHttpRequest-null">
+  <set name="other-uri-XMLHttpRequest-null" type="js">
     <testcase purpose="Check if WRT throws an exception when the request is a null request." type="user_experience" status="approved" component="Web/Runtime/WebApplicationRuntime" execution_type="auto" priority="P3" id="other-uri-XMLHttpRequest-null">
       <description>
         <pre_condition></pre_condition>
@@ -180,7 +180,7 @@
       </specs>
     </testcase>
   </set>
-  <set name="other-uri-XMLHttpRequest-post">
+  <set name="other-uri-XMLHttpRequest-post" type="js">
     <testcase purpose="Check if WRT returns a response when the request is a [HTTP] POST request." type="user_experience" status="approved" component="Web/Runtime/WebApplicationRuntime" execution_type="auto" priority="P3" id="other-uri-XMLHttpRequest-post">
       <description>
         <pre_condition></pre_condition>
@@ -202,7 +202,7 @@
      </specs>
    </testcase>
   </set>
-  <set name="other-uri-XMLHttpRequest-post-false">
+  <set name="other-uri-XMLHttpRequest-post-false" type="js">
     <testcase purpose="Check if WRT returns a [HTTP] 501 Not Implemented response when the request is a synchronous [HTTP] POST request." type="user_experience" status="approved" component="Web/Runtime/WebApplicationRuntime" execution_type="auto" priority="P3" id="other-uri-XMLHttpRequest-post-false">
       <description>
         <pre_condition></pre_condition>
@@ -224,7 +224,7 @@
      </specs>
     </testcase>
   </set>
-  <set name="lifecycle-hide-running-app">
+  <set name="lifecycle-hide-running-app" type="js">
     <testcase component="Web/Runtime/WebApplicationRuntime" id="lifecycle-hide-running-app" execution_type="auto" purpose="Check if WRT is able to change the web app to keep running in the background." priority="P1" status="designed" type="Functional positive">
         <description>
           <pre_condition></pre_condition>
@@ -247,7 +247,7 @@
         </specs>
       </testcase>
   </set>
-  <set name="lifecycle-load-event">
+  <set name="lifecycle-load-event" type="js">
     <testcase component="Web/Runtime/WebApplicationRuntime" id="lifecycle-load-event" execution_type="auto" purpose="Check if WRT supports W3C DOM load event" priority="P0" status="approved" type="Functional positive">
         <description>
           <pre_condition></pre_condition>

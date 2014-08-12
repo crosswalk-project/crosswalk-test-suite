@@ -2,7 +2,7 @@
 <?xml-stylesheet type="text/xsl" href="./testcase.xsl"?>
 <test_definition>
   <suite category="W3C/HTML5 APIs" launcher="xwalk" name="tct-extra-html5-tests">
-    <set name="attributes">
+    <set name="attributes" type="js">
       <testcase component="WebAPI/W3C_EXTRAHTML5/Attributes" execution_type="manual" id="anchor_href_relative_path" purpose="Check if a.href supports simple anchor with relative path">
         <description>
           <steps>
@@ -86,7 +86,7 @@
         </description>
       </testcase>
     </set>
-    <set name="base64">
+    <set name="base64" type="js">
       <testcase component="WebAPI/W3C_EXTRAHTML5/Base64" execution_type="auto" id="base64_btoa_hebrew" purpose="Check if btoa() with non-ASCII character raises INVALID_CHARACTER_ERR exception">
         <description>
           <test_script_entry>/opt/tct-extra-html5-tests/base64/w3c/base64.html?total_num=374&amp;amp;locator_key=id&amp;amp;value=1</test_script_entry>
@@ -1958,7 +1958,7 @@
         </description>
       </testcase>
     </set>
-    <set name="dataset">
+    <set name="dataset" type="js">
       <testcase component="WebAPI/W3C_EXTRAHTML5/Semantics" execution_type="auto" id="dataset_delete_data-foo" purpose="Check that the 'data-foo' attribute should be removed if element.dataset['foo'] is deleted">
         <description>
           <test_script_entry test_script_expected_result="0">/opt/tct-extra-html5-tests/dataset/w3c/dataset-delete.html?total_num=9&amp;amp;locator_key=id&amp;amp;value=1</test_script_entry>
@@ -2135,7 +2135,7 @@
         </description>
       </testcase>
     </set>
-    <set name="foreigncontent">
+    <set name="foreigncontent" type="js">
       <testcase component="WebAPI/W3C_EXTRAHTML5/ForeignContent" execution_type="auto" id="math_parse_one_id_attribute" purpose="Check if id attribute is recognised on math elements">
         <description>
           <test_script_entry test_script_expected_result="0">/opt/tct-extra-html5-tests/foreigncontent/w3c/math-parse01.html?total_num=9&amp;amp;locator_key=id&amp;amp;value=1</test_script_entry>
@@ -2182,7 +2182,7 @@
         </description>
       </testcase>
     </set>
-    <set name="xhtml5">
+    <set name="xhtml5" type="js">
       <testcase component="WebAPI/W3C_EXTRAHTML5/Xhtml5" execution_type="manual" id="area_noref" purpose="Check if xhtml5 area element supports nohref attribute">
         <description>
           <steps>
@@ -2247,7 +2247,7 @@
         </description>
       </testcase>
     </set>
-    <set name="Forms">
+    <set name="Forms" type="js">
       <testcase component="WebAPI/W3C_EXTRAHTML5/Semantics" execution_type="auto" id="datetime_local_support" purpose="Check if the datetime-local type support on input 'datetime-local' element">
         <description>
           <test_script_entry>/opt/tct-extra-html5-tests/w3c/semantics/forms/the-input-element/datetime-local.html?total_num=18&amp;amp;amp;locator_key=id&amp;amp;amp;value=12</test_script_entry>
@@ -2509,7 +2509,7 @@
         </description>
       </testcase>
     </set>
-    <set name="semantics1">
+    <set name="semantics1" type="js">
       <testcase component="WebAPI/W3C_EXTRAHTML5/Semantics" execution_type="auto" id="track_element_support" purpose="Check if the track element supports">
         <description>
           <test_script_entry test_script_expected_result="0">/opt/tct-extra-html5-tests/semantics/embedded-content-0/the-track-element/track_attributes.html?total_num=28&amp;amp;locator_key=id&amp;amp;value=26</test_script_entry>
@@ -2936,7 +2936,7 @@
         </description>
       </testcase>
     </set>
-    <set name="semantics2">
+    <set name="semantics2" type="js">
       <testcase component="WebAPI/W3C_EXTRAHTML5/Semantics" execution_type="auto" id="input_url_support" purpose="Check input element type=url supported">
         <description>
           <test_script_entry>/opt/tct-extra-html5-tests/semantics/forms/the-input-element/input_elements.html?total_num=22&amp;amp;locator_key=id&amp;amp;value=1</test_script_entry>
@@ -3048,7 +3048,7 @@
         </description>
       </testcase>
     </set>
-    <set name="semantics3">
+    <set name="semantics3" type="js">
       <testcase component="WebAPI/W3C_EXTRAHTML5/Xhtml5" execution_type="auto" id="body_onhashchange_check" purpose="Check if the onhashchange is TreatNonCallableAsNull">
         <description>
           <test_script_entry>/opt/tct-extra-html5-tests/semantics/sections/the-body-element/body_onhashchange_check.html</test_script_entry>
@@ -3091,7 +3091,7 @@
         </description>
       </testcase>
     </set>
-    <set name="browsers">
+    <set name="browsers" type="js">
       <testcase component="WebAPI/W3C_EXTRAHTML5/Browsers" execution_type="auto" id="history_supported" purpose="Check if the history tag supported">
         <description>
           <test_script_entry>/opt/tct-extra-html5-tests/browsers/history/the-history-interface/history_supported.html</test_script_entry>
@@ -3123,7 +3123,7 @@
         </description>
       </testcase>
     </set>
-    <set name="dom">
+    <set name="dom" type="js">
       <testcase component="WebAPI/W3C_EXTRAHTML5/Dom" execution_type="manual" id="document_oninput_event" purpose="Check the document oninput event exists">
         <description>
           <test_script_entry>/opt/tct-extra-html5-tests/dom/documents/the-document-object/document_oninput_event-manual.html</test_script_entry>
@@ -3180,7 +3180,7 @@
         </description>
       </testcase>
     </set>
-    <set name="rendering">
+    <set name="rendering" type="js">
       <testcase component="WebAPI/W3C_EXTRAHTML5/Rendering" execution_type="auto" id="htmlkeygenelement_element_support" purpose="Check if the keygen element supported">
         <description>
           <test_script_entry>/opt/tct-extra-html5-tests/rendering/bindings/the-keygen-element-0/htmlkeygenelement_attributes.html?total_num=26&amp;amp;locator_key=id&amp;amp;value=1</test_script_entry>
@@ -3197,7 +3197,7 @@
         </description>
       </testcase>
     </set>
-    <set name="Common DOM Interface">
+    <set name="Common DOM Interface" type="js">
       <testcase component="WebAPI/W3C_EXTRAHTML5/Collections" execution_type="auto" id="document_all_length" purpose="Test for HTMLAllCollection size">
         <description>
           <test_script_entry>/opt/tct-extra-html5-tests/w3c/collections/htmlallcollection.html?total_num=8&amp;amp;locator_key=id&amp;amp;value=1</test_script_entry>

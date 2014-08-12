@@ -2,7 +2,7 @@
 <?xml-stylesheet type="text/xsl" href="./testcase.xsl"?>
 <test_definition>
   <suite name="webapi-messaging-sysapps-tests" launcher="xwalk" category="W3C/HTML5 APIs">
-    <set name="idlharness">
+    <set name="idlharness" type="js">
       <testcase purpose="This test validates the WebIDL included in the Messaging specification" type="compliance" status="designed" component="WebAPI/System-level APIs/Messaging" execution_type="auto" priority="P1" id="Messaging_idlhaness_test">
         <description>
           <test_script_entry>/opt/webapi-messaging-sysapps-tests/messaging/Messaging_idlharness.html</test_script_entry>
@@ -16,7 +16,7 @@
         </specs>
       </testcase>
     </set>
-    <set name="Messaging">
+    <set name="Messaging" type="js">
       <testcase purpose="Check if the conversationID attribute of conversation is valid" type="compliance" status="approved" component="WebAPI/System-level APIs/Messaging" execution_type="auto" priority="P1" id="Conversation_conversationID">
         <description>
           <test_script_entry>/opt/webapi-messaging-sysapps-tests/messaging/Conversation.html?total_num=10&amp;amp;locator_key=id&amp;amp;value=1</test_script_entry>

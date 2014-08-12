@@ -2,7 +2,7 @@
 <?xml-stylesheet type="text/xsl" href="./testcase.xsl"?>
 <test_definition>
   <suite name="webapi-usertiming-w3c-tests" launcher="xwalk" category="W3C/HTML5 APIs">
-    <set name="usertiming">
+    <set name="usertiming" type="js">
       <testcase purpose="Check if the performance.clearMarks() is called with a non-existent mark which shouldn't change the state of the Performance Timeline" type="compliance" status="approved" component="WebAPI/Performance and Optimization/User Timing" execution_type="auto" priority="P1" id="test_user_timing_clear_marks_003">
         <description>
           <test_script_entry>/opt/webapi-usertiming-w3c-tests/usertiming/w3c/test_user_timing_clear_marks.html?total_num=7&amp;amp;locator_key=id&amp;amp;value=3</test_script_entry>
@@ -256,7 +256,7 @@
         </specs>
       </testcase>
     </set>
-    <set name="idltest">
+    <set name="idltest" type="js">
       <testcase purpose="Check if the user timing idlharness tests" type="compliance" status="approved" component="WebAPI/Performance and Optimization/User Timing" execution_type="auto" priority="P1" id="user_timing_idlharness">
         <description>
           <test_script_entry>/opt/webapi-usertiming-w3c-tests/usertiming/w3c/idlharness.html</test_script_entry>
