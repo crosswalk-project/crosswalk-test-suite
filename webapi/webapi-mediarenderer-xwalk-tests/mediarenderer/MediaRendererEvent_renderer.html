@@ -39,12 +39,12 @@ Authors:
 <div id="log"></div>
 <script>
 
-var t = async_test("Check if the readonly attribute renderer of MediaRendererEvent exists and type of MediaRenderer");
+var t = async_test("Check if the readonly attribute renderer of MediaRendererEvent exists and type of object");
 setup({timeout: 20000});
 
 navigator.mediaRenderer.onrendererfound = t.step_func(function (event) {
   assert_true("renderer" in event, "renderer attribute in MediaRendererEvent");
-  assert_equals(Object.prototype.toString.call(event.renderer), "[object MediaRenderer]", "channel attribute of type");
+  assert_equals(Object.prototype.toString.call(event.renderer), "[object Object]", "renderer attribute of type");
   assert_readonly(event, "renderer", "expect attribute renderer cannot be changed but");
   t.done();
 });
