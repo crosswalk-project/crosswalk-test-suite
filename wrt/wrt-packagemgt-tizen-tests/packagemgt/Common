@@ -51,9 +51,9 @@ function func_check_xwalkservice()
 
 function install_origin_xpk(){
         xwalkctl --install  $1 &> /tmp/install
-        cat /tmp/install | grep "Application installed"
+        cat /tmp/install | grep "DONE"
         if [[ $? -ne 0 ]]; then
-                cat /tmp/install | grep "Installing application failed"
+                cat /tmp/install | grep "Already"
                 if [[ $? -eq 0 ]]; then
                         uninstall_exist_xpk
                         xwalkctl --install  $1 &> /tmp/install
@@ -63,12 +63,12 @@ function install_origin_xpk(){
                 fi
         fi
         # get app id
-        get_app_id
+        get_app_id $2
 }
 
 function update_valid_xpk(){
         xwalkctl --install $1 &> /tmp/install
-        cat /tmp/install | grep "Application installed"
+        cat /tmp/install | grep "DONE"
         if [[ $? -eq 0 ]]; then
                 echo "Update xpk, install successfully"
                 else
@@ -90,7 +90,7 @@ function update_valid_xpk(){
 
 function update_negative_xpk(){
         xwalkctl --install $1 &> /tmp/install
-        cat /tmp/install | grep "Application installed"
+        cat /tmp/install | grep "DONE"
         if [[ $? -ne 0 ]]; then
                 echo "Pass, Update negative xpk, install failure"
         else
@@ -116,13 +116,15 @@ xwalkctl --uninstall $1
 }
 
 function get_version_name(){
-        version=`sqlite3 /home/app/.config/xwalk-service/applications.db "select id,manifest from applications;"| grep $1  | cut -d , -f 4 | cut -d : -f 2 | sed 's/"//g' | sed 's/}//g'`
-        name=`sqlite3 /home/app/.config/xwalk-service/applications.db "select id,manifest from applications;"| grep $1  | cut -d , -f 3 | cut -d : -f 2 | sed 's/"//g' | sed 's/}//g'`
+
+        version=`sqlite3 /home/app/.applications/dbspace/.app_info.db "select version from app_info where name like \"%$1%\";"`
+        name=`sqlite3 /home/app/.applications/dbspace/.app_info.db "select name from app_info where name like \"%$1%\";"`
 }
 
 function get_app_id(){
         app_id_tmp=`cat /tmp/install | cut -d / -f 4`
-        app_id=`echo $app_id_tmp | sed 's/.$//g'` > /dev/null
+        app_id=`sqlite3 /home/app/.applications/dbspace/.app_info.db "select x_slp_pkgid from app_info where name like \"%$1%\";"`
+        echo "app_id=",$app_id
 }
 
 function uninstall_exist_xpk(){

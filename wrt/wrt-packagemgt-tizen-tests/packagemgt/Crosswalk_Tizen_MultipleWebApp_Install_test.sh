@@ -30,44 +30,39 @@
 # Author:
 #        IVAN CHEN <yufeix.chen@intel.com>
 
-local_path=$(dirname $0)
-source $local_path/Common.sh
-
-#get current time as log file's name
-logName=Crosswalk_Tizen_MultipleWebApp_Install_test_`date '+%Y%m%d%H%M'`.log
-reportName="Crosswalk_Tizen_Test.result"
-resultName="Crosswalk_Tizen_Test.result.log"
-webapp1result=1
-webapp2result=1
-
-xwalkctl --install $local_path/sources/WebApp1.xpk &> $local_path/log/INSTALL_RESULT
-echo "install WebApp1.xpk" 2>&1 >> $local_path/log/$logName
-grep "successfully" $local_path/log/INSTALL_RESULT 2>&1 >> $local_path/log/$logName
-if [ $? -eq 0 ];then
-    webapp1result=0
-    echo "WebApp1.xpk Installed successflly" >> $local_path/log/result/$resultName
+local_path=$(cd $(dirname $0);pwd)
+source $local_path/Common
+xpk_path=$local_path/../testapp
+# install original xpk
+xwalkctl --install $xpk_path/diffid_same_version_tests.xpk 
+if [[ $? -eq 0 ]]; then
+                echo "Install Pass"
+        else
+                echo "Install Fail"
+                exit 1
+fi
+app_id1=`sqlite3 /home/app/.applications/dbspace/.app_info.db "select package from app_info where name like \"%diffid_same_version_tests%\";"`
+xwalkctl --install $xpk_path/update_original_versionOne_tests.xpk
+if [[ $? -eq 0 ]]; then
+                echo "Install Pass"
+        else
+                echo "Install Fail"
+                exit 1
+fi
+app_id2=`sqlite3 /home/app/.applications/dbspace/.app_info.db "select package from app_info where name like \"%update_original_versionOne_tests%\";"`
+xwalkctl -u $app_id1
+if [[ $? -eq 0 ]]; then
+                echo "Uninstall Pass"
+        else
+                echo "Uninstall Fail"
+                exit 1
+fi
+xwalkctl -u $app_id2
+if [[ $? -eq 0 ]]; then
+                echo "Uninstall Pass"
+                exit 0
+        else
+                echo "Uninstall Fail"
+                exit 1
 fi
 
-webapp1ID=$(function_uninstall_xpk $logName)
-
-xwalkctl --install $local_path/sources/WebApp2.xpk &> $local_path/log/INSTALL_RESULT
-echo "install WebApp2.xpk" 2>&1 >> $local_path/log/$logName
-grep "successfully" $local_path/log/INSTALL_RESULT 2>&1 >> $local_path/log/$logName
-if [ $? -eq 0 ];then
-    webapp2result=0
-    echo "WebApp2.xpk Installed successflly" >> $local_path/log/result/$resultName
-fi
-webapp2ID=$(function_uninstall_xpk $logName)
-
-if [ $webapp1result -eq 0  ] && [ $webapp2result -eq 0 ];then
-    echo "Crosswalk_Tizen_MultipleWebApp_Install****************************************** [Pass]" >> $local_path/log/result/$resultName
-    echo "Crosswalk_Tizen_MultipleWebApp_Install                                  PASS" >> $local_path/log/result/$reportName
-    xwalkctl --uninstall $webapp1ID
-    xwalkctl --uninstall $webapp2ID
-    exit 0
-else
-   echo "Multiple APP Installed failure" >> $local_path/log/result/$resultName
-   echo "Crosswalk_Tizen_MultipleWebApp_Install******************************************* [Fail]" >> $local_path/log/result/$resultName
-   echo "Crosswalk_Tizen_MultipleWebApp_Install                                   FAIL" >> $local_path/log/result/$reportName
-   exit 1
-fi
