@@ -30,34 +30,23 @@
 # Author:
 #        IVAN CHEN <yufeix.chen@intel.com>
 
-local_path=$(dirname $0)
-source $local_path/Common.sh
+# install original xpk
+local_path=$(cd $(dirname $0);pwd)
+source $local_path/Common
+xpk_path=$local_path/../testapp
 
-#get current time as log file's name
-logName=Crosswalk_Tizen_WebApp_Install_test_`date '+%Y%m%d%H%M'`.log
-reportName="Crosswalk_Tizen_Test.result"
-resultName="Crosswalk_Tizen_Test.result.log"
-webapp1result=1
-
-xwalkctl --install $local_path/sources/WebApp1.xpk &> $local_path/log/INSTALL_RESULT
-echo "install WebApp1.xpk" 2>&1 >> $local_path/log/$logName
-grep "successfully" $local_path/log/INSTALL_RESULT 2>&1 >> $local_path/log/$logName
-if [ $? -eq 0 ];then
-    webapp1result=0
-    echo "WebApp1.xpk Installed successflly" >> $local_path/log/result/$resultName
+xwalkctl --install  $xpk_path/diffid_same_version_tests.xpk 
+if [[ $? -eq 0 ]]; then
+                echo "Install Pass"
+        else
+                echo "Install Fail"
+                exit 1
 fi
-
-webapp1ID=$(function_uninstall_xpk $logName)
-
-if [ $webapp1result -eq 0  ];then
-    echo "Web APP Installed successfully" >> $local_path/log/result/$resultName
-    echo "Crosswalk_Tizen_WebApp_Install****************************************** [Pass]" >> $local_path/log/result/$resultName
-    echo "Crosswalk_Tizen_WebApp_Install                                  PASS" >> $local_path/log/result/$reportName
-    xwalkctl --uninstall $webapp1ID
-    exit 0
-else
-   echo "Web APP Installed failure" >> $local_path/log/result/$resultName
-   echo "Crosswalk_Tizen_WebApp_Install******************************************* [Fail]" >> $local_path/log/result/$resultName
-   echo "Crosswalk_Tizen_WebApp_Install                                   FAIL" >> $local_path/log/result/$reportName
-   exit 1
+app_id1=`sqlite3 /home/app/.applications/dbspace/.app_info.db "select package from app_info where name like \"%diffid_same_version_tests%\";"`
+xwalkctl -u $app_id1
+if [[ $? -eq 0 ]]; then
+                echo "Uninstall Pass"
+        else
+                echo "Unistall Fail"
+                exit 1
 fi

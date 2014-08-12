@@ -31,43 +31,26 @@
 #        IVAN CHEN <yufeix.chen@intel.com>
 #
 
-local_path=$(dirname $0)
-source $local_path/Common.sh
+local_path=$(cd $(dirname $0);pwd)
+source $local_path/Common
+xpk_path=$local_path/../testapp
 
-#get current time as log file's name
-logName=Crosswalk_Tizen_Uninstall_WithAppRuning_test_`date '+%Y%m%d%H%M'`.log
-reportName="Crosswalk_Tizen_Test.result"
-resultName="Crosswalk_Tizen_Test.result.log"
+func_check_xwalkservice
+
+# install original xpk
+xwalkctl -i $xpk_path/diffid_same_version_tests.xpk
+
+app_id=`sqlite3 /home/app/.applications/dbspace/.app_info.db "select package from app_info where name like \"%diffid_same_version_tests%\";"`
+
+xwalk-launcher $app_id 
+sleep 2
 
 #install xwalk web app
-xwalkctl --install $local_path/sources/WebApp2.xpk &> $local_path/log/INSTALL_RESULT
-
-#get app id
-cat $local_path/log/INSTALL_RESULT | grep "OK" &> $local_path/log/INSTALL_RESULT.log
-if [ $? -eq 0 ];then
-        install_id=`head -1 $local_path/log/INSTALL_RESULT.log`
-        echo $install_id &>> $local_path/log/$logName
-        ID=${install_id##* }
-        rm -f $local_path/log/INSTALL_RESULT.log &> /dev/null
-else
-        rm -f $local_path/log/INSTALL_RESULT.log &> /dev/null
-        echo "The XPK installed Failure,so can not execute launch with command script" >> $local_path/log/result/$resultName
-        echo "Crosswalk_Tizen_WebApp_Launch_Command************************************* [Fail]" >> $local_path/log/result/$resultName
-        echo "Crosswalk_Tizen_WebApp_Launch_Command                                   FAIL" >> $local_path/log/result/$reportName
-        exit 1
+xwalkctl --uninstall $app_id
+if [[ $? -eq 0 ]]; then
+                echo "Uninstall Pass"
+                exit 0
+        else
+                echo "Uninstall Fail"
+                exit 1
 fi
-
-echo "The web app id is:$ID" &>> $local_path/log/$logName
-#run web app
-xwalk-launcher $ID &> /dev/null &
-sleep 3
-
-function_kill_process
-
-#install xwalk web app
-xwalkctl --uninstall $ID &> /dev/null
-
-echo "The xpk installed successfully and the interface display normally" >> $local_path/log/result/$resultName
-echo "Crosswalk_Tizen_Uninstall_WithAppRuning************************************* [Pass]" >> $local_path/log/result/$resultName
-echo "Crosswalk_Tizen_Uninstall_WithAppRuning                                  PASS" >> $local_path/log/result/$reportName
-exit 0

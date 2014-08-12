@@ -173,19 +173,25 @@ exit 1
 }
 
 function create_source_xpk(){
-cd $BUILD_ROOT/
+cd $BUILD_ROOT/testapp
+cp $SRC_ROOT/../../tools/make_xpk.py $BUILD_ROOT/make_xpk.py
+       
 for buildfolder in `ls`
 do
-        cp $SRC_ROOT/../../tools/make_xpk.py $BUILD_ROOT/make_xpk.py
+        
         #echo "buildfolder" $buildfolder
         if [ "${buildfolder:0:6}" == "update" ];then
             echo "Use --manifest to build..."
-            python make_xpk.py $BUILD_ROOT/$buildfolder/ k.pem
+            python $BUILD_ROOT/make_xpk.py $BUILD_ROOT/testapp/$buildfolder/ k.pem
             continue
         fi
         if [ "${buildfolder:0:6}" == "diffid" ];then
             echo "Use --manifest to build..."
-            python make_xpk.py $BUILD_ROOT/$buildfolder/ x.pem
+            python $BUILD_ROOT/make_xpk.py $BUILD_ROOT/testapp/$buildfolder/ x.pem
+            continue
+        fi
+        if [ "${buildfolder:0:7}" == "version" ];then
+            echo "wgt copy to build..."
             continue
         fi
 done
@@ -194,8 +200,9 @@ done
 function create_pure(){
 #create source xpk
 create_source_xpk
-mkdir $BUILD_DEST/opt/$name/source
-cp -r $BUILD_ROOT/*tests.xpk $BUILD_DEST/opt/$name/source
+mkdir $BUILD_DEST/opt/$name/testapp
+cp -r $BUILD_ROOT/testapp/*.xpk $BUILD_DEST/opt/$name/testapp
+cp -r $BUILD_ROOT/testapp/*.wgt $BUILD_DEST/opt/$name/testapp
 if [ $? -ne 0 ];then
     echo "Create $name.xpk fail.... >>>>>>>>>>>>>>>>>>>>>>>>>"
     clean_workspace
@@ -313,8 +320,8 @@ case $type in
          zip_for_xpk;;
     crx) create_crx
          zip_for_crx;;
-    pure) create_wgt
-          zip_for_wgt;;
+    pure) create_pure
+          zip_for_pure;;
 esac
 
 
