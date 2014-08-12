@@ -42,9 +42,9 @@ function create_apk(){
     cd ..
     rm -rf embeddingapi
 
-    echo "android.library.reference.1=../xwalk_core_library" >> project.properties
-    scp local.properties ../xwalk_core_library
-    rm -rf ../xwalk_core_library/bin/res/crunch
+    echo "android.library.reference.1=../crosswalk-webview" >> project.properties
+    scp local.properties ../crosswalk-webview
+    rm -rf ../crosswalk-webview/bin/res/crunch
     ant debug
     if [ $? -ne 0 ];then
         echo "Create $name.apk fail.... >>>>>>>>>>>>>>>>>>>>>>>>>"
