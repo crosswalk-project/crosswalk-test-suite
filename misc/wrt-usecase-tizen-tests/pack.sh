@@ -1,11 +1,10 @@
 #!/bin/bash
-suiteName=$(basename $(pwd))
-source $(dirname $0)/$suiteName.spec
+source $(dirname $0)/wrt-usecase-tizen-tests.spec
 
 #parse params
-usage="Usage: ./pack.sh [-t <package type: wgt | apk | crx | xpk | pure>] [-m <apk mode: shared | embedded>] [-a <apk runtime arch: x86 | arm>]
-[-t apk] option was set as default.
-[-m shared] option was set as default.
+usage="Usage: ./pack.sh [-t <package type: wgt | apk | crx | xpk>] [-m <apk mode: shared | embedded>] [-a <apk runtime arch: x86 | arm>]
+[-t wgt] option was set as default.
+[-m embedded] option was set as default.
 [-a x86] option was set as default.
 "
 
@@ -14,17 +13,8 @@ if [[ $1 == "-h" || $1 == "--help" ]]; then
     exit 1
 fi
 
-if [[ $1 == "-h" || $1 == "--help" ]]; then
-    echo $usage
-    exit 1
-fi
-
-#get spec name
-folderName_tmp=${suiteName%-*}
-folderName=wrt-usecase-tizen-tests
-
-type="apk"
-mode="shared"
+type="wgt"
+mode="embedded"
 arch="x86"
 while getopts t:m:a: o
 do
@@ -37,21 +27,12 @@ do
     esac
 done
 
-if [[ $type == "wgt" || $type == "apk" || $type == "crx" || $type == "xpk" || $type == "pure" ]];then
-    echo "Create package with raw source"
-    #echo "Create package with $type and raw source"
+if [[ $type == "wgt" || $type == "apk" || $type == "crx" || $type == "xpk" ]];then
+    echo "Create package with $type and raw source"
 else
     echo "Sorry,$type is not support... >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>"
     echo "$usage"
     exit 1
-fi
-
-if [ $type == "apk" ]; then
-    apkpacktooldir=$PWD/../../tools/crosswalk
-fi
-
-if [ $type == "wgt" ]; then
-    xpkpacktooldir=$PWD/../../tools
 fi
 
 if [[ -z $name || -z $version || -z $appname ]];then
@@ -63,20 +44,12 @@ SRC_ROOT=$PWD
 RESOURCE_DIR=/home/app/content
 BUILD_ROOT=/tmp/${name}_pack
 BUILD_DEST=/tmp/${name}
-
-# check precondition
-function check_precondition(){
-    which $1 > /dev/null 2>&1
-    if [ $? -ne 0 ]; then
-        echo "Error: no tool: $1"
-        exit 1
-    fi
-}
+subTests="Viewport"
 
 # clean
 function clean_workspace(){
 echo "cleaning workspace... >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>"
-rm -rf $BUILD_ROOT $BUILD_DEST $OPT
+rm -rf $BUILD_ROOT $BUILD_DEST
 }
 
 clean_workspace
@@ -86,124 +59,38 @@ mkdir -p $BUILD_ROOT $BUILD_DEST
 rm -rf *.rpm *.tar.bz2 *.tar.gz *.zip
 cp -arf $SRC_ROOT/* $BUILD_ROOT/
 
-# build
-echo "build from workspace... >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>"
-
-function create_pure()
-{
-# create wgt
-    cd $BUILD_DEST
-    zip -rq $BUILD_DEST/opt/$name/$name.zip *
-    if [ $? -ne 0 ];then
-        echo "Create $name.zip fail.... >>>>>>>>>>>>>>>>>>>>>>>>>"
-        clean_workspace
-        exit 1
-    fi
-}
-
 ## function for create wgt apk xpk ##
+
 function create_wgt(){
-cd $BUILD_ROOT/$folderName
-mkdir $BUILD_DEST/opt/
-mkdir $BUILD_DEST/opt/$folderName
-for buildfolder in `ls`
-do
-    if [ -d $buildfolder ];then
-        if [ "${buildfolder:0:15}" == "wrt_support_xpk" ];then
-            echo "Pack xpk....................."
-            cd $xpkpacktooldir
-            python make_xpk.py $BUILD_ROOT/$folderName/$buildfolder/wrt_support_xpk k.pem
-            python make_xpk.py $BUILD_ROOT/$folderName/$buildfolder/xpk_sample_one k.pem
-            python make_xpk.py $BUILD_ROOT/$folderName/$buildfolder/xpk_sample_two k.pem
-            rm -rf $xpkpacktooldir/*.pem        
-            zip -rq $buildfolder.xpk.zip *.xpk             
-            mv *.zip $BUILD_DEST/opt/$folderName
-            rm -rf $xpkpacktooldir/*.xpk 
-            cd $BUILD_ROOT/$folderName
-            continue
-        fi
-        if [ "${buildfolder:0:15}" == "wrt_support_wgt" ];then
-            echo "Pack wgt....................."
-            cd $buildfolder
-            cd wrt_support_wgt
-            zip -rq wrt_support_wgt.wgt *
-            cp wrt_support_wgt.wgt ../
-            cd ..
-            cd wgt_sample_one
-            zip -rq wgt_sample_one.wgt *
-            cp wgt_sample_one.wgt ../
-            cd ..
-            cd wgt_sample_two
-            zip -rq wgt_sample_two.wgt *
-            cp wgt_sample_two.wgt ../
-            cd ..
-            
-            zip -rq wrt_support_wgt.wgt.zip *.wgt
-            ls
-            cp wrt_support_wgt.wgt.zip $BUILD_DEST/opt/$folderName
-            cd ..
-            continue
-        fi
-        echo $buildfolder
-        cd   $buildfolder
-        zip -rq $buildfolder.wgt *
-        cp $buildfolder.wgt $BUILD_DEST/opt/$folderName
-        cd ..
-        sleep 2
-    fi
-done
-
-}
-
-
-function create_apk(){
-echo "only support wgt"
-}
-
-function rmfile(){
-rm *.pyc
-rm *.stam*
-rm -r ${1//-/_}
-}
-
-function create_xpk(){
-echo "please use pack.sh -t wgt to pack"
-}
-
-function create_crx(){
-echo "crx is not support yet... >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>"
-clean_workspace
-exit 1
-}
-
-## zip function ##
-function zip_for_wgt(){
-cd $BUILD_DEST
-
-echo $BUILD_DEST/$name-$version.$type.zip
-cp $BUILD_ROOT/inst.sh  $BUILD_DEST/opt/wrt-usecase-tizen-tests
-zip -Drq $BUILD_DEST/$name-$version.$type.zip ./
-if [ $? -ne 0 ];then
-    echo "Create zip package fail... >>>>>>>>>>>>>>>>>>>>>>>>>"
-    clean_workspace
-    exit 1
-fi
-}
-
-function create_inwgt(){
     # create wgt
     cd $BUILD_DEST
     cp -af $BUILD_ROOT/index.html $BUILD_DEST/
     cp -af $BUILD_ROOT/config.xml $BUILD_DEST/
     cp -af $BUILD_ROOT/icon.png $BUILD_DEST/
     cp -af $BUILD_ROOT/tests.tizen.xml $BUILD_DEST/tests.xml
-    cp -af $BUILD_ROOT/subtestresult.xml $BUILD_DEST/
     cp -af $BUILD_ROOT/js $BUILD_DEST/
     cp -af $BUILD_ROOT/css $BUILD_DEST/
     cp -af $BUILD_ROOT/tests $BUILD_DEST/
     cp -af $BUILD_ROOT/res $BUILD_DEST/
     mkdir -p $BUILD_DEST/opt/$name/res/media
     zip -rq $BUILD_DEST/opt/$name/$name.wgt *
+
+    # create sub wgt(sub dir with config.xml)
+    for dir in `ls -l $SRC_ROOT/tests/$subTests/ |awk '{print $NF}'`
+    do
+        if [ -d $SRC_ROOT/tests/$subTests/$dir ]&&[ -f $SRC_ROOT/tests/$subTests/$dir/config.xml ];then
+            subTestSrc=$BUILD_ROOT/tests/$subTests/$dir
+            subTestDir=`basename $subTestSrc`
+            subTestName=$subTestDir
+            cp -r $subTestSrc  $BUILD_DEST
+            cp -r $BUILD_ROOT/icon.png $BUILD_DEST/$subTestDir
+            cp -r $BUILD_ROOT/manifest.json $BUILD_DEST/$subTestDir
+            old=`cat $BUILD_DEST/$subTestDir/manifest.json |grep -w name |awk -F '"' '{print $4}'`
+            sed -i "s/$old/$subTestName/" $BUILD_DEST/$subTestDir/manifest.json
+            cd $BUILD_DEST/$subTestDir
+            zip -rq $BUILD_DEST/opt/$name/$subTestName.wgt *
+        fi 
+    done
 
     if [ $? -ne 0 ];then
         echo "Create $name.wgt fail.... >>>>>>>>>>>>>>>>>>>>>>>>>"
@@ -215,11 +102,10 @@ function create_inwgt(){
     if [ $sign -eq 1 ];then
         # copy signing tool
         echo "copy signing tool... >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>"
-        cp -arf $SRC_ROOT/../../../tools/signing $BUILD_ROOT/signing
+        cp -arf $SRC_ROOT/../../tools/signing $BUILD_ROOT/signing
         if [ $? -ne 0 ];then
-            echo "No signing tool found in $SRC_ROOT/../tools.... >>>>>>>>>>>>>>>>>>>>>>>>>"
+            echo "No signing tool found in $SRC_ROOT/../../tools.... >>>>>>>>>>>>>>>>>>>>>>>>>"
         fi
-
         wgt=$(find $BUILD_DEST/opt/$name/ -name *.wgt)
         for wgt in $(find $BUILD_DEST/opt/$name/ -name *.wgt);do
             $BUILD_ROOT/signing/sign-widget.sh --dist platform $wgt
@@ -230,41 +116,205 @@ function create_inwgt(){
     fi
 }
 
+function create_apk(){
+  # create apk
+  cd $BUILD_DEST
+cat > index.html << EOF
+<!doctype html>
+<head>
+    <meta http-equiv="Refresh" content="1; url=opt/$name/webrunner/index.html?testsuite=../tests.xml&testprefix=../../..">
+</head>
+EOF
+    cp -r $SRC_ROOT/../../tools/crosswalk $BUILD_ROOT/crosswalk
+
+    cp -af $BUILD_ROOT/index.html $BUILD_DEST/
+    cp -af $BUILD_ROOT/config.xml $BUILD_DEST/
+    cp -af $BUILD_ROOT/icon.png $BUILD_DEST/
+    cp -af $BUILD_ROOT/tests.android.xml $BUILD_DEST/tests.xml
+    cp -af $BUILD_ROOT/js $BUILD_DEST/
+    cp -af $BUILD_ROOT/css $BUILD_DEST/
+    cp -af $BUILD_ROOT/tests $BUILD_DEST/
+    cp -af $BUILD_ROOT/res $BUILD_DEST/
+    mkdir -p $BUILD_DEST/opt/$name/res/media
+
+    cd $BUILD_ROOT/crosswalk
+    python make_apk.py --package=org.xwalk.$appname --name=$appname --app-root=$BUILD_DEST --app-local-path=index.html --icon=$BUILD_DEST/icon.png --mode=$mode --arch=$arch
+
+    # No sub apk tests, keep it by comment
+    # create sub apk(sub dir with config.xml)
+    #for dir in `ls -l $SRC_ROOT/tests/$subTests/ |awk '{print $NF}'`
+    #do
+    #    if [ -d $SRC_ROOT/tests/$subTests/$dir ]&&[ -f $SRC_ROOT/tests/$subTests/$dir/config.xml ];then
+    #        subTestSrc=$BUILD_ROOT/tests/$subTests/$dir
+    #        subTestDir=`basename $subTestSrc`
+    #        subTestName=`basename $subTestSrc |sed 's/-/_/g'`
+    #        cp -r $subTestSrc  $BUILD_DEST
+    #        cp -r $BUILD_ROOT/icon.png $BUILD_DEST/$subTestDir
+    #        cd $BUILD_ROOT/crosswalk
+    #        python make_apk.py --package=org.xwalk.$subTestName --name=$subTestName --app-root=$BUILD_DEST/$subTestDir --app-local-path=index.html --icon=$BUILD_DEST/$subTestDir/icon.png --mode=$mode --arch=$arch
+    #    fi 
+    #done
+
+    if [ $? -ne 0 ];then
+        echo "Create $name.apk fail.... >>>>>>>>>>>>>>>>>>>>>>>>>"
+        clean_workspace
+        exit 1
+    fi
+}
+
+function create_xpk(){
+    cp -a $BUILD_ROOT/manifest.json   $BUILD_DEST/
+    cp -a $BUILD_ROOT/icon.png     $BUILD_DEST/
+
+    cd $BUILD_DEST
+cat > index.html << EOF
+<!doctype html>
+<head>
+    <meta http-equiv="Refresh" content="1; url=opt/$name/webrunner/index.html?testsuite=../tests.xml&testprefix=../../..">
+</head>
+EOF
+
+    cp -af $BUILD_ROOT/index.html $BUILD_DEST/
+    cp -af $BUILD_ROOT/config.xml $BUILD_DEST/
+    cp -af $BUILD_ROOT/icon.png $BUILD_DEST/
+    cp -af $BUILD_ROOT/tests.tizen.xml $BUILD_DEST/tests.xml
+    cp -af $BUILD_ROOT/js $BUILD_DEST/
+    cp -af $BUILD_ROOT/css $BUILD_DEST/
+    cp -af $BUILD_ROOT/tests $BUILD_DEST/
+    cp -af $BUILD_ROOT/res $BUILD_DEST/
+    mkdir -p $BUILD_DEST/opt/$name/res/media
+
+    cp $SRC_ROOT/../../tools/make_xpk.py $BUILD_ROOT/make_xpk.py
+    cd $BUILD_ROOT
+    # create xpk
+    python make_xpk.py /tmp/$name key
+
+    # create sub xpk(sub dir with config.xml)
+    i=1
+    for dir in `ls -l $SRC_ROOT/tests/$subTests/ |awk '{print $NF}'`
+    do
+        if [ -d $SRC_ROOT/tests/$subTests/$dir ]&&[ -f $SRC_ROOT/tests/$subTests/$dir/config.xml ];then
+            subTestSrc=$BUILD_ROOT/tests/$subTests/$dir
+            subTestDir=`basename $subTestSrc`
+            subTestName=$subTestDir
+            cp -r $subTestSrc  $BUILD_DEST
+            cp -r $BUILD_ROOT/icon.png $BUILD_DEST/$subTestDir
+            cp -r $BUILD_ROOT/manifest.json $BUILD_DEST/$subTestDir
+            old=`cat $BUILD_DEST/$subTestDir/manifest.json |grep -w name |awk -F '"' '{print $4}'`
+            sed -i "s/$old/$subTestName/" $BUILD_DEST/$subTestDir/manifest.json
+            python make_xpk.py $BUILD_DEST/$subTestDir key${i}
+            i=`expr $i + 1`
+        fi 
+    done
+
+    if [ $? -ne 0 ];then
+        echo "Create $name.xpk fail.... >>>>>>>>>>>>>>>>>>>>>>>>>"
+        clean_workspace
+        exit 1
+    fi
+}
+
+function create_crx(){
+    echo "crx is not support yet... >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>"
+    clean_workspace
+    exit 1
+}
+
+## zip function ##
+function zip_for_wgt(){
+    cd $BUILD_DEST
+    # cp inst.sh script and tests.xml #
+    cp -af $BUILD_ROOT/inst.sh.wgt $BUILD_DEST/opt/$name/inst.sh
+    cp -af $BUILD_ROOT/tests.tizen.xml $BUILD_DEST/opt/$name/tests.xml
+
+    # cp license files #
+    cp -af $BUILD_ROOT/LICENSE.BSD-3 $BUILD_DEST/opt/$name/LICENSE.BSD-3
+
+    # cp res folder #
+    cp -a $BUILD_ROOT/res/testapp $BUILD_DEST/opt/$name/res/testapp
+
+
+    if [ $src_file -eq 0 ];then
+        for file in $(ls opt/$name |grep -v wgt);do
+            if [[ "${whitelist[@]}" =~ $file ]];then
+                echo "$file in whitelist,keep it..."
+            else
+                echo "Remove unnessary file:$file..."
+                rm -rf opt/$name/$file
+            fi
+        done
+    fi
+    zip -Drq $BUILD_DEST/$name-$version.$type.zip opt/
+    if [ $? -ne 0 ];then
+        echo "Create zip package fail... >>>>>>>>>>>>>>>>>>>>>>>>>"
+        clean_workspace
+        exit 1
+    fi
+}
+
 function zip_for_apk(){
-echo "no for apk"
+    cd $BUILD_DEST
+    # cp inst.sh script #
+    cp -af $BUILD_ROOT/inst.sh.apk $BUILD_DEST/opt/$name/inst.sh
+    mv $BUILD_ROOT/crosswalk/*.apk $BUILD_DEST/opt/$name/
+
+    if [ $src_file -eq 0 ];then
+        for file in $(ls opt/$name |grep -v apk);do
+            if [[ "${whitelist[@]}" =~ $file ]];then
+                echo "$file in whitelist,keep it..."
+            else
+                echo "Remove unnessary file:$file..."
+                rm -rf opt/$name/$file
+            fi
+        done
+    fi
+    zip -Drq $BUILD_DEST/$name-$version.$type.zip opt/
+    if [ $? -ne 0 ];then
+        echo "Create zip package fail... >>>>>>>>>>>>>>>>>>>>>>>>>"
+        clean_workspace
+        exit 1
+    fi
 }
 
 function zip_for_xpk(){
-echo "no for xpk"
-}
+    cd $BUILD_DEST
+    cp -af $BUILD_ROOT/inst.sh.xpk $BUILD_DEST/opt/$name/inst.sh
 
-function zip_for_pure()
-{
-[ -e $SRC_ROOT/$name-$version.$type.zip ] && rm -rf $SRC_ROOT/$name-$version.$type.zip
-cd $BUILD_DEST
-if [ $src_file -eq 0 ];then
-    for file in $(ls opt/$name | grep -v zip);do
-        if [[ "${whitelist[@]}" =~ $file ]];then
-            echo "$file in whitelist,keep it..."
-        else
-            echo "Remove unnessary file:$file..."
-            rm -rf opt/$name/$file
-        fi
-    done
-fi
-cp -af $BUILD_ROOT/inst.sh $BUILD_DEST/opt/$name/inst.sh
-zip -Drq $BUILD_DEST/$name-$version.$type.zip opt/
-if [ $? -ne 0 ];then
-    echo "Create zip package fail... >>>>>>>>>>>>>>>>>>>>>>>>>"
-    clean_workspace
-    exit 1
-fi
+    # mv xpk package
+    find $BUILD_ROOT/ -name "*.xpk"| grep -v inst.sh.xpk |xargs -I% mv % $BUILD_DEST/opt/$name/
+
+    cp -af $BUILD_ROOT/tests.tizen.xml $BUILD_DEST/opt/$name/tests.xml
+
+    # cp license files #
+    cp -af $BUILD_ROOT/LICENSE.BSD-3 $BUILD_DEST/opt/$name/LICENSE.BSD-3
+
+    # cp res folder #
+    cp -a $BUILD_ROOT/res/font $BUILD_DEST/opt/$name/res/font
+    cp -a $BUILD_ROOT/res/images $BUILD_DEST/opt/$name/res/images
+    cp -a $BUILD_ROOT/res/css $BUILD_DEST/opt/$name/res/css
+
+    if [ $src_file -eq 0 ];then
+        for file in $(ls opt/$name |grep -v xpk);do
+            if [[ "${whitelist[@]}" =~ $file ]];then
+                echo "$file in whitelist,keep it..."
+            else
+                echo "Remove unnessary file:$file..."
+                rm -rf opt/$name/$file
+            fi
+        done
+    fi
+    zip -Drq $BUILD_DEST/$name-$version.$type.zip opt/
+    if [ $? -ne 0 ];then
+        echo "Create zip package fail... >>>>>>>>>>>>>>>>>>>>>>>>>"
+        clean_workspace
+        exit 1
+    fi
 }
 
 function zip_for_crx(){
-echo "zip_for_crx not ready yet... >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>"
-clean_workspace
-exit 1
+    echo "zip_for_crx not ready yet... >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>"
+    clean_workspace
+    exit 1
 }
 
 ## create wgt crx apk xpk and zip package ##
@@ -277,9 +327,6 @@ case $type in
          zip_for_xpk;;
     crx) create_crx
          zip_for_crx;;
-    pure)
-         create_pure
-         zip_for_pure;;
 esac
 
 
@@ -288,7 +335,7 @@ echo "copy package from workspace... >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
 cp -f $BUILD_DEST/$name-$version.$type.zip $SRC_ROOT/$name-$version.$type.zip
 
 # clean workspace
-#clean_workspace
+clean_workspace
 
 # validate
 echo "checking result... >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>"
