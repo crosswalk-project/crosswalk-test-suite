@@ -33,7 +33,6 @@ version = '0.0.1'
 setup(name='atip',
       version=version,
       description="Behavior-Driven-Development applications testing in python",
-      long_description=open("README.md").read(),
       classifiers=[
           "Development Status :: 5 - Production/Stable",
           "Intended Audience :: Developers",
