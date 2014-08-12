@@ -195,7 +195,7 @@ function create_pure(){
 #create source xpk
 create_source_xpk
 mkdir $BUILD_DEST/opt/$name/source
-cp -r $BUILD_ROOT/*tests.xpk $BUILD_DEST/opt/$name/source
+cp -r $BUILD_ROOT/testapp/*tests.wgt $BUILD_DEST/opt/$name/source
 if [ $? -ne 0 ];then
     echo "Create $name.xpk fail.... >>>>>>>>>>>>>>>>>>>>>>>>>"
     clean_workspace
