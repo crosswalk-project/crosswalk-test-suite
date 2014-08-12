@@ -92,7 +92,15 @@ function requestSuccessed1_5() {
 
 // pc1.setLocal finished, call pc2.setRemote
 function requestSuccessed2() {
-  pc2 = new webkitRTCPeerConnection(null, null);
+  if (typeof RTCPeerConnection != "undefined") {
+    pc2 = new RTCPeerConnection(null, null);
+  }
+  else if (typeof webkitRTCPeerConnection != "undefined") {
+    pc2 = new webkitRTCPeerConnection(null, null);
+  }
+  else {
+    pc2 = new mozRTCPeerConnection(null, null);
+  }
 
   pc2.ondatachannel = function(event) {
     channel = event.channel;
@@ -113,6 +121,14 @@ function requestSuccessed2() {
       fancy_log("The connection is closed, stop send message now!", "blue");
     };
   };
+
+  dc2 = pc2.createDataChannel("This is pc2");
+  channel = dc2;
+
+  channel.onmessage = function(evt) {
+    fancy_log('pc1 say: ' + evt.data, "blue");
+  }
+
   pc2.addStream(fake_audio);
   pc2.setRemoteDescription(pc1_offer, requestSuccessed3, requestFailed);
 };
@@ -145,7 +161,15 @@ function start() {
   clearTimeout(showId);
   showId = setTimeout("show()", 30000);
 
-  pc1 = new webkitRTCPeerConnection(null, null);
+  if (typeof RTCPeerConnection != "undefined") {
+    pc1 = new RTCPeerConnection(null, null);
+  }
+  else if (typeof webkitRTCPeerConnection != "undefined") {
+    pc1 = new webkitRTCPeerConnection(null, null);
+  }
+  else {
+    pc1 = new mozRTCPeerConnection(null, null);
+  }
 
   pc1.ondatachannel = function(event) {
     channel = event.channel;
@@ -156,28 +180,52 @@ function start() {
       fancy_log('pc2 say: ' + evt.data, "blue");
     }
   }
-  pc1.onconnection = function() {
-    dc2 = pc2.createDataChannel("This is pc2");
-    channel = dc2;
 
-    channel.onmessage = function(evt) {
-      fancy_log('pc1 say: ' + evt.data, "blue");
-    }
+  if (typeof (navigator.getUserMedia) != "undefined") {
+    navigator.getUserMedia({audio: true, video: true}, function(s) {
+      pc1.addStream(s);
+      fake_audio = s;
+
+      dc1 = pc1.createDataChannel("This is pc1");
+      channel = dc1;
+
+      channel.onmessage = function(evt) {
+        fancy_log('pc2 say: ' + evt.data, "blue");
+      }
+
+      pc1.createOffer(requestSuccessed1, requestFailed);
+    }, requestFailed);
   }
+  else if (typeof (navigator.webkitGetUserMedia) != "undefined") {
+    navigator.webkitGetUserMedia({audio: true, video: true}, function(s) {
+      pc1.addStream(s);
+      fake_audio = s;
 
-  navigator.webkitGetUserMedia({audio: true, fake: true}, function(s) {
-    pc1.addStream(s);
-    fake_audio = s;
+      dc1 = pc1.createDataChannel("This is pc1");
+      channel = dc1;
 
-    dc1 = pc1.createDataChannel("This is pc1");
-    channel = dc1;
+      channel.onmessage = function(evt) {
+        fancy_log('pc2 say: ' + evt.data, "blue");
+      }
 
-    channel.onmessage = function(evt) {
-      fancy_log('pc2 say: ' + evt.data, "blue");
-    }
+      pc1.createOffer(requestSuccessed1, requestFailed);
+    }, requestFailed);
+  }
+  else {
+    navigator.mozGetUserMedia({audio: true, video: true}, function(s) {
+      pc1.addStream(s);
+      fake_audio = s;
 
-    pc1.createOffer(requestSuccessed1, requestFailed);
-  }, requestFailed);
+      dc1 = pc1.createDataChannel("This is pc1");
+      channel = dc1;
+
+      channel.onmessage = function(evt) {
+        fancy_log('pc2 say: ' + evt.data, "blue");
+      }
+
+      pc1.createOffer(requestSuccessed1, requestFailed);
+    }, requestFailed);
+  }
   status();
 }
 
