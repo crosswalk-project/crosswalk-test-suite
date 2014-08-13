@@ -33,6 +33,15 @@ source $local_path/Common
 
 func_check_xwalkservice
 
-install_xpk $local_path/../source/signature.xpk
-
-exit 0
+xwalkctl --install $local_path/../source/signature.xpk
+app_name=`sqlite3 /home/app/.applications/dbspace/.app_info.db "select name from app_info where name like \"%signature%\";"`
+app_id=`sqlite3 /home/app/.applications/dbspace/.app_info.db "select package from app_info where name like \"%signature%\";"`
+if [[ $app_name =~ "signature" ]]; then
+    echo "The ignature.xpk install successfully"
+    # uninstall xpk
+    xwalkctl --uninstall $app_id
+    exit 0
+else
+   echo "Fail"
+   exit 1
+fi
