@@ -58,17 +58,17 @@ Authors:
     </div>
     <div id="content" data-role="content">
         <div id="view">
-            <div id="media">This content display in right color if test device satisfy the CSS3 Media Queries.</div>
+            <div id="media">This content display with right color if test device satisfy the CSS3 Media Queries.</div>
         </div>
+        <div id="currentInfo"></div>
         <div id="test">
-          <p>1. Test passes if the content display in green color when the device aspect ratio is less than or equal to 1/2</p>
-          <div id="apply1" data-role="button">Set green</div>
-          <p>2. Test passes if the content display in green color when the device aspect ratio is more than or equal to 1/10</p>
-          <div id="apply2" data-role="button">Set red</div>
-          <p>3. Test passes if the content display in green color when the device height is less than or equal to 1300px</p>
-          <div id="apply3" data-role="button">Set blue</div>
-          <p>4. Test passes if the content display in green color when the device height is more than or equal to 100px</p>
-          <div id="apply4" data-role="button">Set yellow</div>
+          <div class="ui-grid-a">
+            <div class="ui-block-a"><a id="apply1" data-role="button">Set Color</a></div>
+            <div class="ui-block-b"><a id="apply2" data-role="button">Area Width</a></div>
+          </div>
+          <p>1. This content will turn to green if the viewing area is less than 600px</p>
+          <p>2. This content will turn to red if the viewing area is greater than 900px</p>
+          <p>3. This content will turn to blue if the viewing area is between 600px and 900px</p>
         </div>
     </div>
     <div data-role="footer" data-position="fixed" data-tap-toggle="false">
@@ -76,9 +76,14 @@ Authors:
     <div data-role="popup" id="popup_info">
          <font style="font-size:85%">
             <p>Test Purpose: </p>
-            <p>Verifies the attributes of CSS3 Media Queries show right.</p>
+            <p>Verifies the attributes of CSS3 Media Queries show currectly.</p>
+            <p>Test Steps: </p>
+              <ol>
+                <li>Click the 'Set Color'</li>
+                <li>When the color of content is changed, click the 'Area Width' to check out the width of current viewing area</li>
+              </ol>
             <p>Expected Result: </p>
-            <p>Test passes if the device can display in the right color if the device satisfy the limitation.</p>
+            <p>Test passes if the content display with right color when change the size of viewing area.</p>
         </font>
     </div>
 </div>
