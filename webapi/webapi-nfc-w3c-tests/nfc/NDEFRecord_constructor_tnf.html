@@ -47,15 +47,15 @@ Authors:
 //==== LABEL Check NDEFRecord constructor works with byte tnf parameter
 //==== SPEC_URL http://www.w3.org/TR/nfc/
 test(function () {
-    var record;
-    record = new NDEFRecord(5);
+    var record = new NDEFRecord(0);
     assert_true(record instanceof NDEFRecord,
         "constructed record is instance of NDEFRecord");
-    assert_own_property(record, "tnf", "NDEFRecord.tnf");
-    asset_equals(record.tnf, 5, "NDEFRecord.tnf value");
-    assert_own_property(record, "type", "NDEFRecord.type");
-    assert_own_property(record, "id", "NDEFRecord.id");
-    assert_true("getPayload" in record, "NDEFRecord.getPayload()");
+    assert_true("tnf" in record, "NDEFRecord.tnf exists");
+    asset_equals(record.tnf, 0, "NDEFRecord.tnf value");
+    assert_true("type" in record, "NDEFRecord.type exists");
+    assert_true("id" in record, "NDEFRecord.id exists");
+    assert_true("recordType" in record, "NDEFRecord.recordType exists");
+    assert_true("getPayload" in record, "NDEFRecord.getPayload() exists");
 }, document.title);
 </script>
 </body>

@@ -52,14 +52,14 @@ test(function () {
     record = new NDEFRecordText("Hello World!");
     assert_true(record instanceof NDEFRecordText,
         "constructed record is instance of NDEFRecordText");
-    assert_own_property(record, "tnf", "NDEFRecordText own tnf property");
-    assert_own_property(record, "type", "NDEFRecordText own type property");
-    assert_own_property(record, "id", "NDEFRecordText own id property");
-    assert_own_property(record, "recordType", "NDEFRecordText own recordType property");
-    assert_true("getPayload" in record, "NDEFRecordText.getPayload() method exsits");
-    assert_own_property(record, "text", "NDEFRecordText own text property");
-    assert_own_property(record, "languageCode", "NDEFRecordText own languageCode property");
-    assert_own_property(record, "encoding", "NDEFRecordText own encoding property");
+    assert_true("tnf" in record, "NDEFRecordText has tnf property");
+    assert_true("type" in record, "NDEFRecordText has type property");
+    assert_true("id" in record, "NDEFRecordText has id property");
+    assert_true("recordType" in record, "NDEFRecordText has recordType property");
+    assert_true("getPayload" in record, "NDEFRecordText has getPayload method");
+    assert_true("text" in record, "NDEFRecordText has text property");
+    assert_true("languageCode" in record, "NDEFRecordText has languageCode property");
+    assert_true("encoding" in record, "NDEFRecordText has encoding property");
 }, document.title);
 </script>
 </body>
