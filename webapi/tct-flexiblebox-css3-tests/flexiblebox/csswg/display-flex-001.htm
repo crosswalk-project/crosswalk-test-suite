@@ -1,25 +1,23 @@
 ﻿<!DOCTYPE html PUBLIC "-//W3C//DTD//XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
     <head>
-        <title>CSS Test: A multi-line flex container with the 'align-content' property set to 'center'</title>
+        <title>CSS Test: An element with the 'display' property set to 'flex' establishes a new block-level flex container</title>
         <link rel="author" title="Microsoft" href="http://www.microsoft.com/" />
-        <link rel="help" href="http://www.w3.org/TR/css3-flexbox/#align-content-property" />
+        <link rel="help" href="http://www.w3.org/TR/css3-flexbox/#flex-containers" />
+        <link rel="match" href="reference/align-content-001-ref.html" />
         <meta name="flags" content="">
-        <meta name="assert" content="This test checks that a multi-line flex container with 'align-content: center' centers lines in the flex container." />
+        <meta name="assert" content="This test checks that an element with 'display' property set to 'flex' establishes a new block-level flex container." />
         <style type="text/css">
             #flexbox
             {
-                background: linear-gradient(to bottom, green 0, green 25px, red 25px, red 75px, green 75px, green 100px);
-                align-content: center;
+                background-color: red;
                 display: flex;
-                flex-flow: wrap;
                 height: 100px;
                 width: 300px;
             }
             div div
             {
                 background-color: green;
-                height: 26px;
                 width: 150px;
             }
         </style>
@@ -27,8 +25,6 @@
     <body>
         <p>Test passes if there is no red visible on the page.</p>
         <div id="flexbox">
-            <div></div>
-            <div></div>
             <div></div>
             <div></div>
         </div>

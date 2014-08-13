@@ -1,11 +1,12 @@
 ﻿<!DOCTYPE html PUBLIC "-//W3C//DTD//XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
     <head>
-        <title>CSS Test: Comparing two different elements using different values for the 'flex-grow' sub-property on the 'flex' shorthand</title>
+        <title>CSS Test: The 'flex' shorthand adjusting the 'flex-shrink' sub-property</title>
         <link rel="author" title="Microsoft" href="http://www.microsoft.com/" />
         <link rel="help" href="http://www.w3.org/TR/css3-flexbox/#flex-property" />
+        <link rel="match" href="reference/justify-content-001-ref.html" />
         <meta name="flags" content="">
-        <meta name="assert" content="This test checks that the flex items with a different flex grow factor have different flexibilities."/>
+        <meta name="assert" content="This test checks that the flex shrink factor is multiplied by the flex base size when distributing negative space."/>
         <style type="text/css">
             div
             {
@@ -19,13 +20,12 @@
             }
             #flexItem1
             {
-                flex: 1 0 auto;
-                width: 100px;
+                flex: 0 2 auto;
+                width: 300px;
             }
             #flexItem2
             {
-                flex: 2 0 auto;
-                width: 50px;
+                width: 200px;
             }
             #flexItem1, #ref1
             {
