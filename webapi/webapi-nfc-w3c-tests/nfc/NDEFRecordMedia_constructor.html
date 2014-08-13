@@ -53,12 +53,12 @@ test(function () {
     record = new NDEFRecordMedia("text/plain", payloads);
     assert_true(record instanceof NDEFRecordMedia,
         "constructed record is instance of NDEFRecordMedia");
-    assert_own_property(record, "tnf", "NDEFRecordMedia.tnf");
-    assert_own_property(record, "type", "NDEFRecordMedia.type");
-    assert_own_property(record, "id", "NDEFRecordMedia.id");
-    assert_own_property(record, "recordType", "NDEFRecordMedia.recordType");
-    assert_own_property(record, "mimeType", "NDEFRecordMedia.mimeType");
-    assert_true("getPayload" in record, "NDEFRecordMedia.getPayload()");
+    assert_true("tnf" in record, "NDEFRecordMedia.tnf exists");
+    assert_true("type" in record, "NDEFRecordMedia.type exists");
+    assert_true("id" in record, "NDEFRecordMedia.id exists");
+    assert_true("recordType" in record, "NDEFRecordMedia.recordType exists");
+    assert_true("mimeType" in record, "NDEFRecordMedia.mimeType exists");
+    assert_true("getPayload" in record, "NDEFRecordMedia.getPayload() exists");
 
     assert_equals(record.mimeType, "text/plain", "record.mimeType");
 }, document.title);

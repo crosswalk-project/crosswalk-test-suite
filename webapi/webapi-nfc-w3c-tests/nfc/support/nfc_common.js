@@ -32,4 +32,4 @@ Authors:
 document.write("<script language=\"javascript\" src=\"..\/resources\/testharness.js\"><\/script>");
 document.write("<script language=\"javascript\" src=\"..\/resources\/testharnessreport.js\"><\/script>");
 
-var nfcManager = Navigator.nfc;
+var nfcManager = navigator.nfc;

@@ -51,17 +51,17 @@ test(function () {
     record = new NDEFRecordSmartPoster("http://www.w3.org/TR/nfc/");
     assert_true(record instanceof NDEFRecordSmartPoster,
         "constructed record is instance of NDEFRecordSmartPoster");
-    assert_own_property(record, "uri", "NDEFRecordSmartPoster does not own uri property");
-    assert_own_property(record, "titles", "NDEFRecordSmartPoster does not own titles property");
-    assert_own_property(record, "action", "NDEFRecordSmartPoster does not own action property");
-    assert_own_property(record, "icons", "NDEFRecordSmartPoster does not own icons property");
-    assert_own_property(record, "targetSize", "NDEFRecordSmartPoster does not own targetSize property");
-    assert_own_property(record, "targetMIME", "NDEFRecordSmartPoster does not own targetMIME property");
-    assert_own_property(record, "recordType", "NDEFRecordSmartPoster does not own recordType property");
-    assert_own_property(record, "tnf", "NDEFRecordSmartPoster does not own tnf property");
-    assert_own_property(record, "type", "NDEFRecordSmartPoster does not own type property");
-    assert_own_property(record, "id", "NDEFRecordSmartPoster does not own id property");
-    assert_true("getPayload" in record, "NDEFRecordSmartPoster.getPayload() method exists");
+    assert_true("uri" in record, "NDEFRecordSmartPoster has uri property");
+    assert_true("titles" in record, "NDEFRecordSmartPoster has titles property");
+    assert_true("action" in record, "NDEFRecordSmartPoster has action property");
+    assert_true("icons" in record, "NDEFRecordSmartPoster has icons property");
+    assert_true("targetSize" in record, "NDEFRecordSmartPoster has targetSize property");
+    assert_true("targetMIME" in record, "NDEFRecordSmartPoster has targetMIME property");
+    assert_true("recordType" in record, "NDEFRecordSmartPoster has recordType property");
+    assert_true("tnf" in record, "NDEFRecordSmartPoster has tnf property");
+    assert_true("type" in record, "NDEFRecordSmartPoster has type property");
+    assert_true("id" in record, "NDEFRecordSmartPoster has id property");
+    assert_true("getPayload" in record, "NDEFRecordSmartPoster has getPayload method");
 }, document.title);
 </script>
 </body>

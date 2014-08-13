@@ -47,9 +47,9 @@ Authors:
 //==== LABEL Check if Navigator have nfc attribute with proper type and is readonly
 //==== SPEC_URL http://www.w3.org/TR/nfc/
 test(function () {
-    assert_own_property(Navigator, "nfc", "Navigator does not own nfc property");
-    assert_equals(typeof(Navigator.nfc), "object", "Navigator.nfc should be object");
-    check_readonly(Navigator, "nfc", Navigator.nfc, "object", "null");
+    assert_own_property(navigator, "nfc", "Navigator does not own nfc property");
+    assert_equals(typeof(navigator.nfc), "object", "navigator.nfc should be object");
+    check_readonly(navigator, "nfc", navigator.nfc, "object", "null");
 }, document.title);
 </script>
 </body>

@@ -51,11 +51,11 @@ test(function () {
     record = new NDEFRecordURI("http://www.w3.org/TR/nfc/");
     assert_true(record instanceof NDEFRecordURI,
         "constructed record is instance of NDEFRecordURI");
-    assert_own_property(record, "tnf", "NDEFRecordURI.tnf");
-    assert_own_property(record, "type", "NDEFRecordURI.type");
-    assert_own_property(record, "id", "NDEFRecordURI.id");
-    assert_true("getPayload" in record, "NDEFRecordURI.getPayload()");
-    assert_own_property(record, "uri", "NDEFRecordURI.uri");
+    assert_true("tnf" in record, "NDEFRecordURI.tnf exists");
+    assert_true("type" in record, "NDEFRecordURI.type exists");
+    assert_true("id" in record, "NDEFRecordURI.id exists");
+    assert_true("getPayload" in record, "NDEFRecordURI.getPayload() exists");
+    assert_true("uri" in record, "NDEFRecordURI.uri exists");
     assert_equals(record.uri, "http://www.w3.org/TR/nfc/", "record.uri init value");
 }, document.title);
 </script>
