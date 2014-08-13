@@ -34,42 +34,24 @@
 local_path=$(dirname $0)
 source $local_path/Common.sh
 
-#get current time as log file's name
-logName=Crosswalk_Tizen_Packaging_Tool_Uninstall_test_`date '+%Y%m%d%H%M'`.log
-reportName="Crosswalk_Tizen_Test.result"
-resultName="Crosswalk_Tizen_Test.result.log"
 
-#APP_NAME=`function_get_xpm_name $logName`
-APP_NAME=$(function_get_xpm_name $logName)
+function_creat_xpk 
 
-#check if the xpk create successfully
-test -f $PACKAGING_TOOL/$APP_NAME.xpk
-if [ $? -eq 1 ];then
-        function_creat_xpk $logName
-fi
+#function_install_xwalk $logName
 
 #push xpk to device
-sdb shell "[ -e /$APP_NAME.xpk ] && rm -rf $APP_NAME.xpk"
-sdb push $PACKAGING_TOOL/$APP_NAME.xpk /
-
-#install xwalk web app
-sdb shell "xwalkctl --install /$APP_NAME.xpk" &> $local_path/../log/INSTALL_RESULT
-
-function_uninstall_xpk $logName
-sleep 5
-cat $local_path/../log/UNINSTALL_RESULT | grep "successfully" &>> $local_path/../log/$logName
-if [ $? -ne 0 ];then
-        rm -f $local_path/../log/UNINSTALL_RESULT
-        echo "XPK uninstall unsuccessfully" >> $local_path/../log/result/$resultName
-        echo "Crosswalk_Tizen_Packaging_Tool_Uninstall_Packed**************************[Fail]" >> $local_path/../log/result/$resultName
-        echo "Crosswalk_Tizen_Packaging_Tool_Uninstall_Packed                            FAIL" >> $local_path/../log/result/$reportName
-        exit 1
+sdb push ../diffid_same_version_tests.xpk /home/app/content/tct
+sdb push appinstall.sh /home/app/content/tct
+sdb root on
+sdb shell "su - app -c 'export DBUS_SESSION_BUS_ADDRESS=unix:path=/run/user/5000/dbus/user_bus_socket;chmod a+x /home/app/content/tct/appinstall.sh'"
+sdb shell "su - app -c 'export DBUS_SESSION_BUS_ADDRESS=unix:path=/run/user/5000/dbus/user_bus_socket;/home/app/content/tct/appinstall.sh'"
+if [ $? -eq 0 ];then
+  echo "Unstall xpk Pass"
+  exit 0
 else
-        rm -f $local_path/../log/UNINSTALL_RESULT
-        rm $PACKAGING_TOOL/$APP_NAME.xpk
-        sdb shell "rm /$APP_NAME.xpk"
-        echo "The xpk installed successfully" >> $local_path/../log/result/$resultName
-        echo "Crosswalk_Tizen_Packaging_Tool_Uninstall_Packed***************************** [Pass]" >> $local_path/../log/result/$resultName
-        echo "Crosswalk_Tizen_Packaging_Tool_Uninstall_Packed                           PASS" >> $local_path/../log/result/$reportName
-        exit 0
+  exit 1
 fi
+
+
+
+

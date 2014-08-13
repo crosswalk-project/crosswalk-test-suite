@@ -31,9 +31,6 @@
 #        IVAN CHEN <yufeix.chen@intel.com>
 #
 local_path_source=$(dirname $0)
-WEB_APP_1_PATH=`cat $local_path_source/../Crosswalk_wrt_BFT.conf | grep "Tizen_WebApp_1" | cut -d "=" -f 2`
-CROSSWALK_RPM=`cat $local_path_source/../Crosswalk_wrt_BFT.conf | grep "Tizen_Crosswalk_Name" | cut -d "=" -f 2`
-PACKAGING_TOOL=`cat $local_path_source/../Crosswalk_wrt_BFT.conf | grep "Tizen_Packaging_tool_path" | cut -d "=" -f 2`
 
 function function_kill_process()
 {
@@ -80,17 +77,16 @@ function function_get_xpm_name()
 
 function function_creat_xpk()
 {
-        NAME=$(function_get_xpm_name $1 delete_old_xpm)
-
         #packaging XPK
-        cd $PACKAGING_TOOL
-        python make_xpk.py $WEB_APP_1_PATH key.pem &>> $local_path_source/../log/$1
+        python make_xpk.py ../diffid_same_version_tests/ key.pem 
         sleep 5
-        test -f $PACKAGING_TOOL/$NAME.xpk
+        test -f diffid_same_version_tests.xpk
         if [ $? -eq 0 ];then
                 rm key.pem
+                echo "Pass"
                 return 0
         else
+                echo "Fail"
                 return 1
         fi
 }
