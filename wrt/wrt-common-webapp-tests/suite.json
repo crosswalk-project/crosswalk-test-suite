@@ -1,0 +1,57 @@
+{
+    "pkg-blacklist": [
+        "config.xml", 
+        "pack.py", 
+        "testcase.xsl", 
+        "testresult.xsl", 
+        "tests.css", 
+        "icon.png", 
+        "manifest.json", 
+        "suite.json", 
+        "inst.*"
+    ], 
+    "pkg-list": {
+        "apk,cordova": {
+            "blacklist": [
+                "*"
+            ], 
+            "copylist": {
+                "inst.apk.py": "inst.py"
+            }, 
+            "subapp-list": {
+                "webapp": {
+                    "all-apps": "true"
+                }
+            }
+        }, 
+        "apk-aio": {
+            "blacklist": []
+        }, 
+        "wgt": {
+            "blacklist": [
+                "*"
+            ], 
+            "copylist": {
+                "inst.wgt.py": "inst.py"
+            }, 
+            "subapp-list": {
+                "webapp": {
+                    "all-apps": "true"
+                }
+            }
+        }, 
+        "xpk": {
+            "blacklist": [
+                "*"
+            ], 
+            "copylist": {
+                "inst.xpk.py": "inst.py", 
+                "tests.xml": "tests.xml"
+            }, 
+            "pkg-app": {
+                "blacklist": []
+            }
+        }
+    }, 
+    "pkg-name": "wrt-common-webapp-tests"
+}

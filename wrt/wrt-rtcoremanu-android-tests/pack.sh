@@ -134,7 +134,7 @@ cp -r $SRC_ROOT/../../tools/crosswalk $BUILD_ROOT/crosswalk
 
 cd $BUILD_ROOT/crosswalk
 python make_apk.py --package=org.xwalk.$appname --name=$appname --app-root=$BUILD_DEST --app-local-path=index.html --icon=$BUILD_DEST/icon.png --mode=$mode --arch=$arch
-
+exit 0
 cp -rf $BUILD_ROOT/$sourcepath $BUILD_DEST/opt/$name/
 for buildfolder in `ls -l $BUILD_DEST/opt/$name/$sourcepath/ |grep "^d"|awk '{print $NF}'`
 do

@@ -139,6 +139,8 @@ EOF
     mkdir -p $BUILD_DEST/opt/$name/res/media
 
     cd $BUILD_ROOT/crosswalk
+    echo "python make_apk.py --package=org.xwalk.$appname --name=$appname --app-root=$BUILD_DEST --app-local-path=index.html --icon=$BUILD_DEST/icon.png --mode=$mode --arch=$arch"
+exit 0
     python make_apk.py --package=org.xwalk.$appname --name=$appname --app-root=$BUILD_DEST --app-local-path=index.html --icon=$BUILD_DEST/icon.png --mode=$mode --arch=$arch
 
     for buildfolder in ${subapp[@]}

@@ -1,0 +1,40 @@
+{
+    "pkg-blacklist": [
+        "config.xml", 
+        "pack.py", 
+        "testcase.xsl", 
+        "testresult.xsl", 
+        "tests.css", 
+        "icon.png", 
+        "manifest.json", 
+        "suite.json", 
+        "inst.*"
+    ], 
+    "pkg-list": {
+        "wgt": {
+            "blacklist": [
+                "*"
+            ], 
+            "copylist": {
+                "inst.wgt.py": "inst.py", 
+                "tests.full.xml": "tests.full.xml", 
+                "tests.xml": "tests.xml"
+            }, 
+            "subapp-list": {
+                "protection-decrypt-css": {
+                    "sign-flag": "true"
+                }, 
+                "protection-decrypt-html": {
+                    "sign-flag": "true"
+                }, 
+                "protection-decrypt-js": {
+                    "sign-flag": "true"
+                }, 
+                "storage-cookies-check": {
+                    "sign-flag": "true"
+                }
+            }
+        }
+    }, 
+    "pkg-name": "tct-sp01-wrt-tests"
+}
