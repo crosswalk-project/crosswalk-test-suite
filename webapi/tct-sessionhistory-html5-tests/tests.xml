@@ -2,7 +2,7 @@
 <?xml-stylesheet type="text/xsl" href="./testcase.xsl"?>
 <test_definition>
   <suite name="tct-sessionhistory-html5-tests" category="W3C/HTML5 APIs" launcher="xwalk">
-    <set name="SessionHistory">
+    <set name="SessionHistory" type="js">
       <testcase component="WebAPI/Communication/HTML5 The session history of browsing contexts (Partial)" execution_type="auto" id="history_back_exists" purpose="Check if history.back method exists">
         <description>
           <test_script_entry>/opt/tct-sessionhistory-html5-tests/sessionhistory/history_back_exists.html</test_script_entry>
@@ -441,7 +441,7 @@
         </description>
         </testcase>
     </set>
-    <set name="SessionHistory2">
+    <set name="SessionHistory2" type="js">
       <testcase component="WebAPI/Communication/HTML5 The session history of browsing contexts (Partial)" execution_type="auto" id="location_body_onpopstate" purpose="Check if body onpopstate register a listener for the popstate event">
         <description>
           <test_script_entry>/opt/tct-sessionhistory-html5-tests/sessionhistory/w3c/005.html?total_num=3&amp;amp;locator_key=id&amp;amp;value=2</test_script_entry>

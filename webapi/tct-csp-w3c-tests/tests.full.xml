@@ -2,7 +2,7 @@
 <?xml-stylesheet type="text/xsl"  href="testcase.xsl"?>
 <test_definition>
   <suite name="tct-csp-w3c-tests" launcher="xwalk" category="W3C/HTML5 APIs">
-    <set name="sandbox">
+    <set name="sandbox" type="js">
       <testcase purpose="Check if inline function works well when sandbox is allow-same-origin allow-scripts." type="compliance" status="approved" component="WebAPI/Security/Content Security Policy" execution_type="auto" priority="P1" id="csp_sandbox_allow-same-origin_allow-scripts-inline">
         <description>
           <test_script_entry test_script_expected_result="0">/opt/tct-csp-w3c-tests/csp/csp_sandbox_allow-same-origin_allow-scripts.cgi?total_num=4&amp;amp;locator_key=id&amp;amp;value=1</test_script_entry>
@@ -124,7 +124,7 @@
         </specs>
       </testcase>
     </set>
-    <set name="connect-src">
+    <set name="connect-src" type="js">
       <testcase purpose="Check if user agent is able to open internal resource by xhr when connect-src is *." type="compliance" status="approved" component="WebAPI/Security/Content Security Policy" execution_type="auto" priority="P2" id="csp_connect-src_asterisk_allowed">
         <description>
           <test_script_entry test_script_expected_result="0">/opt/tct-csp-w3c-tests/csp/csp_connect-src_asterisk.cgi?total_num=2&amp;amp;locator_key=id&amp;amp;value=1</test_script_entry>
@@ -269,7 +269,7 @@
         </specs>
       </testcase>
     </set>
-    <set name="default-src">
+    <set name="default-src" type="js">
       <testcase purpose="Check if default-src is '*' that inline script won't be executed" type="compliance" status="approved" component="WebAPI/Security/Content Security Policy" execution_type="auto" priority="P1" id="csp_default-src_asterisk">
         <description>
           <test_script_entry test_script_expected_result="0">/opt/tct-csp-w3c-tests/csp/w3c/CSP_001.cgi</test_script_entry>
@@ -1045,7 +1045,7 @@
         </specs>
       </testcase>
     </set>
-    <set name="font-src">
+    <set name="font-src" type="js">
       <testcase purpose="Check if user agent is able to use external font resource when font-src is *." type="compliance" status="approved" component="WebAPI/Security/Content Security Policy" execution_type="manual" priority="P2" id="csp_font-src_asterisk_allowed_ext">
         <description>
           <pre_condition>Connect to PHP server</pre_condition>
@@ -1313,7 +1313,7 @@
         </specs>
       </testcase>
     </set>
-    <set name="frame-src">
+    <set name="frame-src" type="js">
       <testcase purpose="Check if user agent is able to use external frame resource when ro frame-src is self." type="compliance" status="approved" component="WebAPI/Security/Content Security Policy" execution_type="manual" priority="P2" id="csp_ro_frame-src_self_allowed_ext">
         <description>
           <pre_condition>Connect to PHP server</pre_condition>
@@ -1600,7 +1600,7 @@
         </specs>
       </testcase>
     </set>
-    <set name="img-src">
+    <set name="img-src" type="js">
       <testcase purpose="Check if user agent is able to use external image resource when img-src is *." type="compliance" status="approved" component="WebAPI/Security/Content Security Policy" execution_type="manual" priority="P2" id="csp_img-src_asterisk_allowed_ext">
         <description>
           <pre_condition>Connect to PHP server</pre_condition>
@@ -1887,7 +1887,7 @@
         </specs>
       </testcase>
     </set>
-    <set name="object-src">
+    <set name="object-src" type="js">
       <testcase purpose="Check if user agent is unable to use not allowed external resource when object-src is cross-origin." type="compliance" status="approved" component="WebAPI/Security/Content Security Policy" execution_type="manual" priority="P2" id="csp_object-src_cross-origin_blocked">
         <description>
           <pre_condition>Connect to PHP server</pre_condition>
@@ -2174,7 +2174,7 @@
         </specs>
       </testcase>
     </set>
-    <set name="media-src">
+    <set name="media-src" type="js">
       <testcase purpose="Check if video current src is null by default when media-src is self." type="compliance" status="approved" component="WebAPI/Security/Content Security Policy" execution_type="auto" priority="P2" id="csp_media-src_self_video_default">
         <description>
           <test_script_entry test_script_expected_result="0">/opt/tct-csp-w3c-tests/csp/csp_media-src_self_video.cgi?total_num=3&amp;amp;locator_key=id&amp;amp;value=1</test_script_entry>
@@ -2396,7 +2396,7 @@
         </specs>
       </testcase>
     </set>
-    <set name="style-src">
+    <set name="style-src" type="js">
       <testcase purpose="Check if user agent is able to use external style resource when style-src is *." type="compliance" status="approved" component="WebAPI/Security/Content Security Policy" execution_type="auto" priority="P2" id="csp_style-src_asterisk_allowed_ext">
         <description>
           <test_script_entry test_script_expected_result="0">/opt/tct-csp-w3c-tests/csp/csp_style-src_asterisk.cgi?total_num=3&amp;amp;locator_key=id&amp;amp;value=1</test_script_entry>
@@ -2629,7 +2629,7 @@
         </specs>
       </testcase>
     </set>
-    <set name="script-src">
+    <set name="script-src" type="js">
       <testcase purpose="Check if internal script works well when script-src is self, unsafe-inline in report only mode." type="compliance" status="approved" component="WebAPI/Security/Content Security Policy" execution_type="auto" priority="P2" id="csp_ro_script-src_self_unsafe-inline">
         <description>
           <test_script_entry test_script_expected_result="0">/opt/tct-csp-w3c-tests/csp/csp_ro_script-src_self_unsafe-inline.cgi?total_num=3&amp;amp;locator_key=id&amp;amp;value=1</test_script_entry>

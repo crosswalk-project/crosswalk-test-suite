@@ -2,7 +2,7 @@
     <?xml-stylesheet type="text/xsl" href="./testcase.xsl"?>
 <test_definition>
   <suite launcher="xwalk" name="tct-batterystatus-w3c-tests" category="W3C/HTML5 APIs">
-    <set name="Battery">
+    <set name="Battery" type="js">
       <testcase component="WebAPI/Device/Battery Status API" execution_type="auto" id="Battery_BatteryManager_chargingTime_exists" purpose="check if the navigator.battery.chargingTime attribute exists">
         <description>
           <test_script_entry>/opt/tct-batterystatus-w3c-tests/batterystatus/Battery_BatteryManager_chargingTime_exists.html</test_script_entry>
@@ -119,7 +119,7 @@
         </description>
         </testcase>
     </set>
-    <set name="idltest">
+    <set name="idltest" type="js">
       <testcase component="WebAPI/Device/Battery Status API" execution_type="auto" id="battery-interface-idlharness" purpose="check if the navigator.battery idlharness tests">
         <description>
           <test_script_entry>/opt/tct-batterystatus-w3c-tests/batterystatus/w3c/battery-interface-idlharness.html</test_script_entry>

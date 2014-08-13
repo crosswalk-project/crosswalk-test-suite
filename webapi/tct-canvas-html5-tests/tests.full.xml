@@ -2,7 +2,7 @@
 <?xml-stylesheet type="text/xsl"  href="./testcase.xsl"?>
 <test_definition>
   <suite name="tct-canvas-html5-tests" launcher="xwalk" category="W3C/HTML5 APIs">
-    <set name="Canvas1">
+    <set name="Canvas1" type="js">
       <testcase purpose="Check if createImageData(imgdata) exists and returns something" type="compliance" status="approved" component="WebAPI/Graphics/HTML5 The canvas element (Partial)" execution_type="auto" priority="P1" id="2d.imageData.create1.basic">
         <description>
           <test_script_entry test_script_expected_result="0">/opt/tct-canvas-html5-tests/canvas/w3c/2d.imageData.create1.basic.html</test_script_entry>
@@ -692,7 +692,7 @@
         </specs>
       </testcase>
     </set>
-    <set name="Canvas2">
+    <set name="Canvas2" type="js">
       <testcase purpose="Check if canvas2d.miterLimit exists" type="compliance" status="approved" component="WebAPI/Graphics/HTML5 The canvas element (Partial)" execution_type="auto" priority="P1" id="canvas2d_miterLimit_exist">
         <description>
           <test_script_entry>/opt/tct-canvas-html5-tests/canvas/canvas2d_miterLimit_exist.html</test_script_entry>
@@ -1414,7 +1414,7 @@
         </specs>
       </testcase>
     </set>
-    <set name="Canvas3">
+    <set name="Canvas3" type="js">
       <testcase purpose="Check if setting fillStyle to a pattern of a different-origin image makes the canvas origin-unclean" type="compliance" status="approved" component="WebAPI/Graphics/HTML5 The canvas element (Partial)" execution_type="auto" priority="P3" id="security.pattern.image.fillStyle">
         <description>
           <test_script_entry test_script_expected_result="0">/opt/tct-canvas-html5-tests/canvas/w3c/security.pattern.image.fillStyle.html</test_script_entry>
@@ -2106,7 +2106,7 @@
         </specs>
       </testcase>
     </set>
-    <set name="Canvas4">
+    <set name="Canvas4" type="js">
       <testcase purpose="Check if toDataURL with a syntactically invalid type returns a PNG" type="compliance" status="approved" component="WebAPI/Graphics/HTML5 The canvas element (Partial)" execution_type="auto" priority="P2" id="toDataURL.bogustype">
         <description>
           <test_script_entry test_script_expected_result="0">/opt/tct-canvas-html5-tests/canvas/w3c/toDataURL.bogustype.html</test_script_entry>
@@ -2793,7 +2793,7 @@
         </specs>
       </testcase>
     </set>
-    <set name="Canvas5">
+    <set name="Canvas5" type="js">
       <testcase purpose="Check if fillStyle parse rgba solid" type="compliance" status="approved" component="WebAPI/Graphics/HTML5 The canvas element (Partial)" execution_type="auto" priority="P2" id="2d_fillStyle_parse_rgba_4solid">
         <description>
           <test_script_entry test_script_expected_result="0">/opt/tct-canvas-html5-tests/canvas/w3c/2d.fillStyle.parse.rgba-solid-4.html</test_script_entry>
@@ -3455,7 +3455,7 @@
         </specs>
       </testcase>
     </set>
-    <set name="Canvas6">
+    <set name="Canvas6" type="js">
       <testcase purpose="Check if Miter joins are drawn correctly with obtuse angles" type="compliance" status="approved" component="WebAPI/Graphics/HTML5 The canvas element (Partial)" execution_type="auto" priority="P2" id="2d_line_miter_obtuse">
         <description>
           <test_script_entry test_script_expected_result="0">/opt/tct-canvas-html5-tests/canvas/w3c/2d.line.miter.obtuse.html</test_script_entry>
@@ -4117,7 +4117,7 @@
         </specs>
       </testcase>
     </set>
-    <set name="Canvas7">
+    <set name="Canvas7" type="js">
       <testcase purpose="Check if arc() draws nothing when end = start + 2pi-e and anticlockwise" type="compliance" status="approved" component="WebAPI/Graphics/HTML5 The canvas element (Partial)" execution_type="auto" priority="P2" id="2d_path_arc_twopie_one">
         <description>
           <test_script_entry test_script_expected_result="0">/opt/tct-canvas-html5-tests/canvas/w3c/2d.path.arc.twopie.1.html</test_script_entry>
@@ -4779,7 +4779,7 @@
         </specs>
       </testcase>
     </set>
-    <set name="Canvas8">
+    <set name="Canvas8" type="js">
       <testcase purpose="Check if Zero-leight line segments are removed before stroking with miters" type="compliance" status="approved" component="WebAPI/Graphics/HTML5 The canvas element (Partial)" execution_type="auto" priority="P2" id="2d_path_stroke_prune_corner">
         <description>
           <test_script_entry test_script_expected_result="0">/opt/tct-canvas-html5-tests/canvas/w3c/2d.path.stroke.prune.corner.html</test_script_entry>
@@ -5441,7 +5441,7 @@
         </specs>
       </testcase>
     </set>
-    <set name="Canvas9">
+    <set name="Canvas9" type="js">
       <testcase purpose="Check if the drawImage.path works" type="compliance" status="approved" component="WebAPI/Graphics/HTML5 The canvas element (Partial)" execution_type="auto" priority="P2" id="2d_drawImage_path">
         <description>
           <test_script_entry test_script_expected_result="0">/opt/tct-canvas-html5-tests/canvas/w3c/2d.drawImage.path.html</test_script_entry>
@@ -6103,7 +6103,7 @@
         </specs>
       </testcase>
     </set>
-    <set name="Canvas10">
+    <set name="Canvas10" type="js">
       <testcase purpose="Check  if the image can be displayed correctly after setting fillStyle = 'hsla(120, 100%, 200%, 1)'" type="compliance" status="approved" component="WebAPI/Graphics/HTML5 The canvas element (Partial)" execution_type="auto" priority="P2" id="2d_fillStyle_parse_hsla_clamp_three">
         <description>
           <test_script_entry test_script_expected_result="0">/opt/tct-canvas-html5-tests/canvas/w3c/2d.fillStyle.parse.hsla-clamp-3.html</test_script_entry>
@@ -6765,7 +6765,7 @@
         </specs>
       </testcase>
     </set>
-    <set name="Canvas11">
+    <set name="Canvas11" type="js">
       <testcase purpose="Check shadows can be offset with negative x" type="compliance" status="approved" component="WebAPI/Graphics/HTML5 The canvas element (Partial)" execution_type="auto" priority="P2" id="2d_shadow_offset_negativeX">
         <description>
           <test_script_entry test_script_expected_result="0">/opt/tct-canvas-html5-tests/canvas/w3c/2d.shadow.offset.negativeX.html</test_script_entry>
@@ -7427,7 +7427,7 @@
         </specs>
       </testcase>
     </set>
-    <set name="Canvas12">
+    <set name="Canvas12" type="js">
       <testcase purpose="Check if lineJoin 'bevel' is rendered correctly" type="compliance" status="approved" component="WebAPI/Graphics/HTML5 The canvas element (Partial)" execution_type="auto" priority="P2" id="2d_line_join_bevel">
         <description>
           <test_script_entry test_script_expected_result="0">/opt/tct-canvas-html5-tests/canvas/w3c/2d.line.join.bevel.html</test_script_entry>
@@ -8089,7 +8089,7 @@
         </specs>
       </testcase>
     </set>
-    <set name="Canvas13">
+    <set name="Canvas13" type="js">
       <testcase purpose="Check if negative dimensions do not affect the direction of the image" type="compliance" status="approved" component="WebAPI/Graphics/HTML5 The canvas element (Partial)" execution_type="auto" priority="P2" id="2d_drawImage_negativedir">
         <description>
           <test_script_entry test_script_expected_result="0">/opt/tct-canvas-html5-tests/canvas/w3c/2d.drawImage.negativedir.html</test_script_entry>
@@ -8751,7 +8751,7 @@
         </specs>
       </testcase>
     </set>
-    <set name="Canvas14">
+    <set name="Canvas14" type="js">
       <testcase purpose="Check if the empty clip can be displayed correctly" type="compliance" status="approved" component="WebAPI/Graphics/HTML5 The canvas element (Partial)" execution_type="auto" priority="P2" id="2d_path_clip_empty">
         <description>
           <test_script_entry test_script_expected_result="0">/opt/tct-canvas-html5-tests/canvas/w3c/2d.path.clip.empty.html</test_script_entry>
@@ -9357,7 +9357,7 @@
         </specs>
       </testcase>
     </set>
-    <set name="Canvas15">
+    <set name="Canvas15" type="js">
       <testcase purpose="Check if Coordinate space goes from top-left to bottom-right" type="compliance" status="approved" component="WebAPI/Graphics/HTML5 The canvas element (Partial)" execution_type="manual" priority="P3" id="2d_coordinatespace">
         <description>
           <test_script_entry test_script_expected_result="0">/opt/tct-canvas-html5-tests/canvas/w3c/2d.coordinatespace-manual.html</test_script_entry>
