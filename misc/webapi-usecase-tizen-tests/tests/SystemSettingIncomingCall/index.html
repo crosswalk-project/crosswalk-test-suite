@@ -38,21 +38,39 @@ Authors:
                 <li data-role="list-divider">Set Call Ringtone</li>
             </ul>
             <ul data-role="listview" id="ringtone"></ul>
-            <ul data-role="listview">
-                <li data-role="list-divider">Get Call Ringtone</li>
-                <li><div data-role="button" id="tone">Get Ringtone & Play Sound</div></li>
-            </ul>
             <audio data-controls="true" style="width:100%;" id="MyAudio"></audio>
+            <div>
+              <a href="javascript:setCall()" id="setCall" data-role="button" class="opt">set</a>
+            </div>
+            <div>
+              <a href="javascript:getPath()" id="getPath" data-role="button" class="opt">get path</a>
+            </div>
+            <div>
+              <a href="javascript:play()" id="play" data-role="button" class="opt">play</a>
+            </div>
         </div>
         <div data-role="footer" data-position="fixed" data-tap-toggle="false">
         </div>
         <div data-role="popup" id="popup_info">
             <font style="font-size:85%">
-                <p>Check if the ringtone is successfully changed</p><br>
-                <p>1. Click Set ringtone</p>
-                <p>2. Make a call to the device and check if the ringtone is successfully changed</p>
-                <p>3. Proceed the checking for other ringtones</p>
-                <p>Note. you may want to add more ringtone files in 'ringtones' virtual root</p>
+              <p>Test Purpose: </p>
+              <p>Verifies the ringtone is successfully changed.</p>
+              <p>Test Step: </p>
+              <p>
+                <ol>
+                  <li>
+                    Click "Set" button.
+                  </li>
+                  <li>
+                    Click "get path" button.
+                  </li>
+                  <li>
+                    Click "play" button.
+                  </li>
+                </ol>
+              </p>
+              <p>Expected Result: </p>
+              <p>Test passes if alert "Change of INCOMING_CALL ringtone" after step 1, and then alert "Sound(Get) path" value after step 2, and then the sound can play afer step 3.</p>
             </font>
         </div>
     </div>
