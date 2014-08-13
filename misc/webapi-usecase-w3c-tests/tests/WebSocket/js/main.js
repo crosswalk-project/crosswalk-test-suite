@@ -28,43 +28,76 @@ Authors:
         Shentu, Jiazhen <jiazhenx.shentu@intel.com>
 
 */
-
+var testFlag = {
+    green: false,
+    red: false,
+    blue: false
+};
 var showId;
+
+function status() {
+    if (testFlag.green && testFlag.red && testFlag.blue) {
+        EnablePassButton();
+    }
+}
 
 function show() {
     $("#chatbox").text("Timeout, please check if WebSocket server is enable.\n" + $("#chatbox").text());
     clearTimeout(showId);
+    showButton();
 }
 
-$("#send").live("tap", function () {
-    EnablePassButton();
+function showButton() {
+    $("#connect").button("enable");
+    $("#disconnect").button("disable");
+    $("#send").button("disable");
+}
+
+$("#connect").live("tap", function () {
+    testFlag.green = true;
     clearTimeout(showId);
-    showId = setTimeout("show()", 30000);
-    var flag = false;
+    showId = setTimeout("show()", 10000);
     try {
         $("#chatbox").text("Connecting......");
         window.webSocket = new WebSocket('ws://127.0.0.1:8081');
         webSocket.addEventListener('open', function (evt) {
             clearTimeout(showId);
-            flag = true;
+            $("#connect").button("disable");
+            $("#disconnect").button("enable");
+            $("#send").button("enable");
             $("#chatbox").text("Successfully connect to WebSocket server.\n" + $("#chatbox").text());
-            webSocket.send($("#socketinput").attr("value"));
-            $("#chatbox").text("WebSocket - send - "  + $("#socketinput").attr("value") + "\n" + $("#chatbox").text());
-            $("#socketinput").attr("value", "");
         }, true);
         webSocket.addEventListener('message', function (evt) {
             $("#chatbox").text("WebSocket - recive - "  + evt.data + "\n" + $("#chatbox").text());
         }, true);
         webSocket.addEventListener('close', function (evt) {
-            if (!flag) {
-                $("#chatbox").text("WebSocket connection is closed. "  +  evt.reason + "\n" + $("#chatbox").text());
-            }
+            clearTimeout(showId);
+            showButton();
+            $("#chatbox").text("WebSocket connection is closed. "  +  evt.reason + "\n" + $("#chatbox").text());
         }, true);
     } catch (err) {
-        $("#chatbox").text(err + "\n" + $("#chatbox").text());
+        showButton();
+        $("#chatbox").text("Error: " + err + "\n" + $("#chatbox").text());
     }
+    status();
+});
+
+$("#disconnect").live("tap", function () {
+    testFlag.blue = true;
+    webSocket.close();
+    showButton();
+    status();
+});
+
+$("#send").live("tap", function () {
+    testFlag.red = true;
+    webSocket.send($("#socketinput").attr("value"));
+    $("#chatbox").text("WebSocket - send - "  + $("#socketinput").attr("value") + "\n" + $("#chatbox").text());
+    $("#socketinput").attr("value", "");
+    status();
 });
 
 $(document).live('pageshow', function () {
     DisablePassButton();
+    showButton();
 });
