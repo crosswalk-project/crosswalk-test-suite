@@ -42,7 +42,12 @@ Authors:
 
 var t = async_test("Check if the readonly attribute sdpLineNumber of RTCSdpError exists and type of number");
 
-var pc = new webkitRTCPeerConnection(null, null);
+var pc;
+if (typeof RTCPeerConnection != "undefined") {
+  pc = new RTCPeerConnection(null, null);
+} else {
+  pc = new webkitRTCPeerConnection(null, null);
+}
 
 t.step(function () {
   pc.createOffer(localDescCreated, logError);

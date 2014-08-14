@@ -42,7 +42,12 @@ Authors:
 
 test(function() {
   var configuration = { "iceServers": [{ "url": "stun:stun.example.org" }] };
-  var pc = new RTCPeerConnection(configuration);
+  var pc;
+  if (typeof RTCPeerConnection != "undefined") {
+    pc = new RTCPeerConnection(configuration);
+  } else {
+    pc = new webkitRTCPeerConnection(configuration);
+  }
   assert_equals(pc.getIdentityAssertion(), null, "the RTCPeerConnection.setIdentityProvider");
 }, "Check if the RTCPeerConnection.getIdentityAssertion of the return value is right");
 

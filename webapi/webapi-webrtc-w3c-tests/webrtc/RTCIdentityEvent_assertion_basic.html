@@ -45,7 +45,12 @@ setup({timeout: 20000});
 
 var pc1_offer;
 var pc2_answer;
-var pc1 = new webkitRTCPeerConnection(null, null);
+var pc1;
+if (typeof RTCPeerConnection != "undefined") {
+  pc1 = new RTCPeerConnection(null, null);
+} else {
+  pc1 = new webkitRTCPeerConnection(null, null);
+}
 var pc2;
 
 function requestSucceeded1 (offer) {
@@ -61,7 +66,11 @@ function requestFailed1 () {
 }
 
 function requestSucceeded2 () {
-  pc2 = new webkitRTCPeerConnection(null, null);
+  if (typeof RTCPeerConnection != "undefined") {
+    pc2 = new RTCPeerConnection(null, null);
+  } else {
+    pc2 = new webkitRTCPeerConnection(null, null);
+  }
   pc2.setRemoteDescription(pc1_offer, requestSucceeded3, requestFailed3);
 }
 

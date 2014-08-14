@@ -47,10 +47,19 @@ Authors:
       var t = async_test(document.title, {timeout: 5000});
 
       var configuration = {"iceServers": [{"url": "stun:stun.example.org"}]};
-      var pc = new webkitRTCPeerConnection(configuration);
+      var pc;
+      if (typeof RTCPeerConnection != "undefined") {
+        pc = new RTCPeerConnection(configuration);
+      } else {
+        pc = new webkitRTCPeerConnection(configuration);
+      }
 
       t.step(function () {
-        navigator.webkitGetUserMedia({audio:true, video:true}, gotStream, error);
+        if (typeof (navigator.getUserMedia) != "undefined") {
+          navigator.getUserMedia({audio:true, video:true}, gotStream, error);
+        } else {
+          navigator.webkitGetUserMedia({audio:true, video:true}, gotStream, error);
+        }
       });
 
       function gotStream(stream) {

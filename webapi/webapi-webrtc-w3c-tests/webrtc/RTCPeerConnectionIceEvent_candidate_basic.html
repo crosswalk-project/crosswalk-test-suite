@@ -42,7 +42,12 @@ Authors:
 
 var t = async_test("Check if the readonly attribute candidate of RTCPeerConnectionIceEvent exists and type of string", {timeout: 10000});
 
-var pc = new RTCPeerConnection(null, null);
+var pc;
+if (typeof RTCPeerConnection != "undefined") {
+  pc = new RTCPeerConnection(null, null);
+} else {
+  pc = new webkitRTCPeerConnection(null, null);
+}
 var signalingChannel = pc.createDataChannel("label1");
 
 t.step(function () {

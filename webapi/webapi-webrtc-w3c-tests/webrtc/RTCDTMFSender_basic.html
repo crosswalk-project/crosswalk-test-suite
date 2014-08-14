@@ -46,8 +46,16 @@ var ds;
 
 setup(function () {
   var configuration = {"iceServers": [{"url": "stun:stun.example.org"}]};
-  pc = new webkitRTCPeerConnection(configuration);
-  navigator.webkitGetUserMedia({audio: true, video: true}, gotStream, function () {});
+  if (typeof RTCPeerConnection != "undefined") {
+    pc = new RTCPeerConnection(configuration);
+  } else {
+    pc = new webkitRTCPeerConnection(configuration);
+  }
+  if (typeof (navigator.getUserMedia) != "undefined") {
+    navigator.getUserMedia({audio: true, video: true}, gotStream, function () {});
+  } else {
+    navigator.webkitGetUserMedia({audio: true, video: true}, gotStream, function () {});
+  }
 }, {explicit_done: true});
 
 

@@ -45,7 +45,12 @@ Authors:
     <script>
       test(function () {
         var configuration = {"iceServers": [{"url": "stun:stun.example.org"}]};
-        pc = new RTCPeerConnection(configuration);
+        var pc;
+        if (typeof RTCPeerConnection != "undefined") {
+          pc = new RTCPeerConnection(configuration);
+        } else {
+          pc = new webkitRTCPeerConnection(configuration);
+        }
         assert_throws("SyntaxError",
           function () {
             pc.updateIce(1);

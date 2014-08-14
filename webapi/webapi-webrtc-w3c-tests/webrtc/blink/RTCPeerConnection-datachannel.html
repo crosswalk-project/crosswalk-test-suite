@@ -101,7 +101,11 @@ function pc_onicechange() {
 }
 
 setup(function () {
-  pc = new webkitRTCPeerConnection(null, null);
+  if (typeof RTCPeerConnection != "undefined") {
+    pc = new RTCPeerConnection(null, null);
+  } else {
+    pc = new webkitRTCPeerConnection(null, null);
+  }
 }, {timeout: 5000});
 
 test(function () {
@@ -149,7 +153,11 @@ test(function () {
 }, "the RTCPeerConnection.createDataChannel('label6', {maxRetransmitTime:0})");
 
 t.step(function () {
-  pc = new webkitRTCPeerConnection(null, null);
+  if (typeof RTCPeerConnection != "undefined") {
+    pc = new RTCPeerConnection(null, null);
+  } else {
+    pc = new webkitRTCPeerConnection(null, null);
+  }
   pc.oniceconnectionstatechange = pc_onicechange;
   pc.ondatachannel = pc_ondatachannel;
 });

@@ -18,7 +18,11 @@ var pc = null;
 var t = async_test(document.title, {timeout: 2000});
 
 t.step(function () {
-  pc = new webkitRTCPeerConnection({ "iceServers": [{ "url": "stun:stun.example.org" }]});
+  if (typeof RTCPeerConnection != "undefined") {
+    pc = new RTCPeerConnection({ "iceServers": [{ "url": "stun:stun.example.org" }]});
+  } else {
+    pc = new webkitRTCPeerConnection({ "iceServers": [{ "url": "stun:stun.example.org" }]});
+  }
   assert_equals(pc.signalingState, 'stable');
   pc.onsignalingstatechange = t.step_func(function (){
     assert_equals(pc.signalingState, 'closed');

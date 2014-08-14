@@ -45,7 +45,12 @@ Authors:
     <script>
       var t = async_test("Check if the event of iceconnectionstatechange can fire at the RTCPeerConnection object", {timeout:2000});
       t.step(function () {
-        var pc = new RTCPeerConnection(null);
+        var pc;
+        if (typeof RTCPeerConnection != "undefined") {
+          pc = new RTCPeerConnection(null);
+        } else {
+          pc = new webkitRTCPeerConnection(null);
+        }
         pc.addEventListener("iceconnectionstatechange", function () {
           t.step(function(){
             assert_equals(pc.iceConnectionState, "closed", "the event of iceconnectionstatechange");

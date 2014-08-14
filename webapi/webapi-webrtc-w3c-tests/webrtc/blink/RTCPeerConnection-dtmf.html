@@ -70,12 +70,20 @@ function gotStream(s) {
     assert_equals(stream.getVideoTracks().length, 0);
   });
 
-  pc = new webkitRTCPeerConnection(null, null);
+  if (typeof RTCPeerConnection != "undefined") {
+    pc = new RTCPeerConnection(null, null);
+  } else {
+    pc = new webkitRTCPeerConnection(null, null);
+  }
   pc.oniceconnectionstatechange = pc_onicechange;
 }
 
 t.step(function () {
-  navigator.webkitGetUserMedia({audio: true, video: false}, gotStream, error);
+  if (typeof (navigator.getUserMedia) != "undefined") {
+    navigator.getUserMedia({audio: true, video: false}, gotStream, error);
+  } else {
+    navigator.webkitGetUserMedia({audio: true, video: false}, gotStream, error);
+  }
 });
 
 </script>

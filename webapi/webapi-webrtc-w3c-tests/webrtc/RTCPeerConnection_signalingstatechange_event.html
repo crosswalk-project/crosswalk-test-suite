@@ -45,7 +45,12 @@ Authors:
     <script>
       var t = async_test("Check if the event of signalingstatechange can fire at the RTCPeerConnection object", {timeout: 2000});
       t.step(function () {
-        var pc = new RTCPeerConnection(null, null);
+        var pc;
+        if (typeof RTCPeerConnection != "undefined") {
+          pc = new RTCPeerConnection(null, null);
+        } else {
+          pc = new webkitRTCPeerConnection(null, null);
+        }
         pc.addEventListener("signalingstatechange", function () {
           t.step(function () {
              assert_equals(pc.signalingState, "closed");

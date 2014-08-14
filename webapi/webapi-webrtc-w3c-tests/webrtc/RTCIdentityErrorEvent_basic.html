@@ -44,7 +44,12 @@ setup({timeout: 20000}, {explicit_done: true});
 
 var pc1_offer;
 var pc2_answer;
-var pc1 = new webkitRTCPeerConnection(null, null);
+var pc1;
+if (typeof RTCPeerConnection != "undefined") {
+  pc1 = new RTCPeerConnection(null, null);
+} else {
+  pc1 = new webkitRTCPeerConnection(null, null);
+}
 var pc2;
 
 function requestSucceeded1 (offer) {
@@ -53,7 +58,11 @@ function requestSucceeded1 (offer) {
 }
 
 function requestSucceeded2 () {
-  pc2 = new webkitRTCPeerConnection(null, null);
+  if (typeof RTCPeerConnection != "undefined") {
+    pc2 = new RTCPeerConnection(null, null);
+  } else {
+    pc2 = new webkitRTCPeerConnection(null, null);
+  }
   pc2.addEventLister("onidpvalidationerror", function(event) {
     [
       ["idp"], ["protocol"], ["loginUrl"],

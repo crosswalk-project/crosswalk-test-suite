@@ -44,7 +44,11 @@ var pc;
 var channel;
 
 setup(function () {
-  pc = new webkitRTCPeerConnection(null,null);
+  if (typeof RTCPeerConnection != "undefined") {
+    pc = new RTCPeerConnection(null,null);
+  } else {
+    pc = new webkitRTCPeerConnection(null,null);
+  }
   channel = pc.createDataChannel("label");
 });
 

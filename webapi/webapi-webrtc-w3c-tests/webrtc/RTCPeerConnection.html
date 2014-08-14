@@ -53,9 +53,15 @@ Authors:
 
       setup(function () {
         var configuration = {"iceServers": [{"url": "stun:stun.example.org"}]};
-        pc = new RTCPeerConnection(configuration);
-        pc1 = new RTCPeerConnection(configuration);
-        pc2 = new RTCPeerConnection(configuration);
+        if (typeof RTCPeerConnection != "undefined") {
+          pc = new RTCPeerConnection(configuration);
+          pc1 = new RTCPeerConnection(configuration);
+          pc2 = new RTCPeerConnection(configuration);
+        } else {
+          pc = new webkitRTCPeerConnection(configuration);
+          pc1 = new webkitRTCPeerConnection(configuration);
+          pc2 = new webkitRTCPeerConnection(configuration);
+        }
       });
 
       t.step(function () {
@@ -75,7 +81,11 @@ Authors:
       });
 
       t1.step(function () {
-        navigator.webkitGetUserMedia({audio: true, video: true}, gotStream, error);
+        if (typeof (navigator.getUserMedia) != "undefined") {
+          navigator.getUserMedia({audio: true, video: true}, gotStream, error);
+        } else {
+          navigator.webkitGetUserMedia({audio: true, video: true}, gotStream, error);
+        }        
       });
 
       function gotStream(stream) {
@@ -96,7 +106,12 @@ Authors:
 
       test(function () {
         var cg = {"iceServers": [{"url": "stun:stun.example.org"}]};
-        var rc = new RTCPeerConnection(cg);
+        var rc;
+        if (typeof RTCPeerConnection != "undefined") {
+          rc = new RTCPeerConnection(cg);
+        } else {
+          rc = new webkitRTCPeerConnection(cg);
+        }
         rc.close();
         assert_equals(rc.iceConnectionState, "closed", "the pc.close()");
       }, "Check if the method of close is valid");

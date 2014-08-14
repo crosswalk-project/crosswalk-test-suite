@@ -47,7 +47,11 @@ Authors:
       var pc;
 
       setup(function () {
-        pc = new RTCPeerConnection(null,null);
+        if (typeof RTCPeerConnection != "undefined") {
+          pc = new RTCPeerConnection(null,null);
+        } else {
+          pc = new webkitRTCPeerConnection(null,null);
+        }
         RTCDataChannel = pc.createDataChannel("label");
       });
 

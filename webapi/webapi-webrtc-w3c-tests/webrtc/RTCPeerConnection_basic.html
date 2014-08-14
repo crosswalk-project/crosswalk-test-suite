@@ -44,7 +44,11 @@ var pc;
 
 setup(function () {
   var configuration = {"iceServers": [{"url": "stun:stun.example.org"}]};
-  pc = new webkitRTCPeerConnection(configuration);
+  if (typeof RTCPeerConnection != "undefined") {
+    pc = new RTCPeerConnection(configuration);
+  } else {
+    pc = new webkitRTCPeerConnection(configuration);
+  }
 });
 
 [

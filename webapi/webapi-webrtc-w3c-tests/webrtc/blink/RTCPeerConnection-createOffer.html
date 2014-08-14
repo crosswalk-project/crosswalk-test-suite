@@ -15,7 +15,12 @@ https://github.com/crosswalk-project/blink-crosswalk/blob/master/LayoutTests/fas
 
 var t = async_test(document.title);
 
-var pc = new webkitRTCPeerConnection(null, null);
+var pc;
+if (typeof RTCPeerConnection != "undefined") {
+  pc = new RTCPeerConnection(null, null);
+} else {
+  pc = new webkitRTCPeerConnection(null, null);
+}
 
 function requestFailed2(reason) {
   errorReason = reason;

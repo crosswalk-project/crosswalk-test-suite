@@ -28,7 +28,11 @@ function error() {
 
 function getUserMedia(dictionary, callback) {
   t.step(function () {
-    navigator.webkitGetUserMedia(dictionary, callback, error);
+    if (typeof (navigator.getUserMedia) != "undefined") {
+      navigator.getUserMedia(dictionary, callback, error);
+    } else {
+      navigator.webkitGetUserMedia(dictionary, callback, error);
+    }
   });
 }
 
@@ -70,7 +74,11 @@ function gotStream2(s) {
   stream2 = s;
   t.step(function () {
     assert_not_equals(stream.id, stream2.id);
-    pc = new webkitRTCPeerConnection(null, null);
+    if (typeof RTCPeerConnection != "undefined") {
+      pc = new RTCPeerConnection(null, null);
+    } else {
+      pc = new webkitRTCPeerConnection(null, null);
+    }
     pc.onnegotiationneeded = onAddStream;
     pc.addStream(stream);
   });
