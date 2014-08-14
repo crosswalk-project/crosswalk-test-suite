@@ -40,7 +40,7 @@ Authors:
 <script>
 
 var t = async_test("Check if the readonly attribute id of MediaRendererIdEvent exists and type of string");
-setup({timeout: 20000});
+setup({timeout: 30000});
 
 navigator.mediaRenderer.onrendererlost = t.step_func(function (event) {
   assert_true("id" in event, "id attribute in MediaRendererIdEvent");
@@ -48,6 +48,12 @@ navigator.mediaRenderer.onrendererlost = t.step_func(function (event) {
   assert_readonly(event, "id", "expect attribute id cannot be changed but");
   t.done();
 });
+
+navigator.mediaRenderer.onrendererfound = function (eve) {
+  eve.renderer.controller.pause();
+  eve.renderer.controller.stop();
+  eve.renderer.cancel();
+};
 
 navigator.mediaRenderer.scanNetwork();
 

@@ -39,12 +39,12 @@ Authors:
 <div id="log"></div>
 <script>
 
-setup({explicit_done: true});
+setup({timeout: 30000}, {explicit_done: true});
 
 navigator.mediaRenderer.onrendererfound = function (eve) {
   eve.renderer.controller.onstatuschanged = function (event) {
     [
-      ["playbackStatus", "playbackStatus", "readonly"],
+      ["object", "playbackStatus", "readonly"],
       ["boolean", "muted", "readonly"],
       ["number", "volume", "readonly"],
       ["number", "track", "readonly"],
@@ -64,8 +64,8 @@ navigator.mediaRenderer.onrendererfound = function (eve) {
           }
           assert_equals(typeof event[name], type, name + " attribute of type");      
           break;
-        case "playbackStatus":
-          assert_equals(Object.prototype.toString.call(event[name]), "[object PlaybackStatus]", name + " attribute of type");
+        case "object":
+          assert_equals(Object.prototype.toString.call(event[name]), "[object Object]", name + " attribute of type");
           assert_readonly(event, name, "expect attribute " + name + " cannot be changed but");
           break;
         default:
@@ -73,9 +73,9 @@ navigator.mediaRenderer.onrendererfound = function (eve) {
         }
       }, "Check if " + read + " MediaControllerStatusEvent." + name + " exists and type of " + type);
     });
-    eve.renderer.controller.mute(!(eve.renderer.controller.muted)).then(function(mutes) {}, function(error) {});
     done();
   };
+  eve.renderer.controller.mute(!(eve.renderer.controller.muted));
 };
 
 navigator.mediaRenderer.scanNetwork();

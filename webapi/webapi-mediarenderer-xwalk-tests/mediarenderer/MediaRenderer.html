@@ -39,7 +39,7 @@ Authors:
 <div id="log"></div>
 <script>
 
-setup({explicit_done: true});
+setup({timeout: 30000}, {explicit_done: true});
 
 navigator.mediaRenderer.onrendererfound = function (event) {
   [
@@ -56,7 +56,7 @@ navigator.mediaRenderer.onrendererfound = function (event) {
     ["string", "iconURL", "readonly"],
     ["string", "deviceType", "readonly"],
     ["string", "protocolInfo", "readonly"],
-    ["mediaController", "controller", "readonly"],
+    ["object", "controller", "readonly"],
     ["function", "openURI", ""],
     ["function", "prefetchURI", ""],
     ["function", "cancel", ""]
@@ -75,8 +75,8 @@ navigator.mediaRenderer.onrendererfound = function (event) {
       case "function":
         assert_equals(typeof event.renderer[name], type, name + " attribute of type");      
         break;
-      case "mediaController":
-        assert_equals(Object.prototype.toString.call(event.renderer[name]), "[object MediaController]", name + " attribute of type");
+      case "object":
+        assert_equals(Object.prototype.toString.call(event.renderer[name]), "[object Object]", name + " attribute of type");
         assert_readonly(event.renderer, name, "expect attribute " + name + " cannot be changed but");
         break;
       default:
