@@ -16,4 +16,6 @@ else
 fi
 pkgids=""
 pkgnum=0
+xwalkctl | grep $1
+
 

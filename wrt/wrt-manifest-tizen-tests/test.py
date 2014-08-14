@@ -736,22 +736,28 @@ def get_from_DB(cmdline,manifest):
         for i in range(0,len(get_manifest)):
           find_name = get_manifest[i].find("name")
           if (find_name>=0):
-            get_manifest_name = get_manifest[i].split(":")[1][2:-1]
+            get_manifest_name = get_manifest[i].split(":")[1][2:-1].lstrip().rstrip()
+            log_Log(" get_manifest_name =--------->" + str(get_manifest_name) + "\n")
             get_db_name = read_line[0].find(get_manifest_name)
+            get_db_null_name = read_line[0].find("NULL")
+            log_Log(" get_db_name =--------->" + str(get_db_name) + "\n")
             if (get_db_name>=0):
                 print "Check From DB ------------------------->"
                 return "GET",get_id
             elif ((str(get_manifest_name).find("<"))>=0 & (str(get_db_name).find("003C")>=0)):
                 print "Check From DB ------------------------->"
                 return "GET",get_id
+            elif ( get_db_null_name>=0 ):
+                print "Check From DB ------------------------->,NULL"
+                log_Log(" get (NUll)--------->" + "\n")
+                return "GET",get_id                            
             else:
                 return "NONE"
           return "NONE"
     except Exception,e: 
-        print Exception,"Get db record error:",e 
+        print Exception,"Get db record error:",e
+        print traceback.format_exc()
         return "NONE"
-
-  
 
 
 def get_Sdb_Devices():
