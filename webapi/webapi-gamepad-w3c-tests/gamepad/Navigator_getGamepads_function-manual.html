@@ -36,23 +36,20 @@ Authors:
 <link rel="help" href="https://dvcs.w3.org/hg/gamepadbutton/raw-file/default/gamepadbutton.html">
 <meta name="assert" content="Test check if getGamepads of navigator can return array of gamepads.">
 <p>Please connect and press a button on gamepad.</p>
-<p>Test Passes if the show result is one or more "[object Gamepad]" </p>
+<p>Test Passes if the show result is one or more "[object GamepadList]" </p>
 <div id = "log"></div>
 <script>
-var log =1;
 function runTest(gamepads) {
    var text = "";
    document.getElementById("log").innerHTML = gamepads;
 }
 
 function runAnimation() {  
-  window.requestAnimationFrame(runAnimation);
-  
   var gamepads =  navigator.getGamepads();
-  if(gamepads.length > 0 && log == 1) {
-    log =2;
+  if(gamepads.length > 0) {
     runTest(gamepads);
   };
+  window.requestAnimationFrame(runAnimation);
 }
 window.requestAnimationFrame(runAnimation);
 </script>

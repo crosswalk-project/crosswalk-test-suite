@@ -39,25 +39,27 @@ Authors:
 <p>Test Passes if the show result is the mapping in use for this device or 'pass'.</p>
 <div id = "log"></div>
 <script>
-var log =1;
 var text = "";
 function runTest(gamepads) {
-   text = gamepads[gamepads.length - 1].mapping;
-   if (text == "") {
-     document.getElementById("log").innerHTML = "pass";
-   } else {
-     document.getElementById("log").innerHTML = text;
-   }
+  for (var j = 0; j < gamepads.length; j++) {
+    var pad = gamepads[j];
+    if(pad) {
+      text = pad.mapping;
+      if (text == "") {
+        document.getElementById("log").innerHTML = "pass";
+      } else {
+        document.getElementById("log").innerHTML = text;
+      }
+    }
+  }
 }
 
 function runAnimation() {  
-  window.requestAnimationFrame(runAnimation);
-  
   var gamepads =  navigator.getGamepads();
-  if(gamepads.length > 0 && log == 1) {
-    log =2;
+  if(gamepads.length > 0) {
     runTest(gamepads);
   };
+  window.requestAnimationFrame(runAnimation);
 }
 window.requestAnimationFrame(runAnimation);
 </script>

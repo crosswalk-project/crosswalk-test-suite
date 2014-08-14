@@ -39,21 +39,23 @@ Authors:
 <p>Test Passes if the show result is the index of the gamepad in the Navigator. If there is only one gamepad has been connect, the result should be 0.</p>
 <div id = "log"></div>
 <script>
-var log =1;
 var text = "";
 function runTest(gamepads) {
-   text = gamepads[0].index;
-   document.getElementById("log").innerHTML = text;
+  for (var j = 0; j < gamepads.length; j++) {
+    var pad = gamepads[j];
+    if(pad) {
+      text = pad.index;
+      document.getElementById("log").innerHTML = text;
+    }
+  }
 }
 
 function runAnimation() {  
-  window.requestAnimationFrame(runAnimation);
-  
   var gamepads =  navigator.getGamepads();
-  if(gamepads.length > 0 && log == 1) {
-    log =2;
+  if(gamepads.length > 0) {
     runTest(gamepads);
   };
+  window.requestAnimationFrame(runAnimation);
 }
 
 window.requestAnimationFrame(runAnimation);

@@ -39,14 +39,17 @@ Authors:
 <p>Test Passes if show test result is 'Pass'.</p>
 <div id = "log"></div>
 <script>
-var log =1;
 var text = "";
-function runTest(gamepad) {
-  var gamepadbutton = gamepad[0].buttons[0];
-  [
-    ["boolean", "pressed", "readonly"],
-    ["double", "value", "readonly"]
-  ].forEach(function(attr) {
+function runTest(gamepads) {
+  text = "";
+  for (var j = 0; j < gamepads.length; j++) {
+    var pad = gamepads[j];
+    if(pad) {
+      var gamepadbutton = pad.buttons[0];
+      [
+        ["boolean", "pressed", "readonly"],
+        ["double", "value", "readonly"]
+      ].forEach(function(attr) {
             var type = attr[0];
             var name = attr[1];
             var read = attr[2];
@@ -113,17 +116,17 @@ function runTest(gamepad) {
                 }
               }
             }
-  });
+      });
+    }
+  }
 }
 
 function runAnimation() {  
-  window.requestAnimationFrame(runAnimation);
-  
-  var gamepad =  navigator.getGamepads();
-  if(gamepad.length > 0 && log == 1) {
-    log =2;
-    runTest(gamepad);
+  var gamepads =  navigator.getGamepads();
+  if(gamepads.length > 0) {
+    runTest(gamepads);
   };
+  window.requestAnimationFrame(runAnimation);
 }
 window.requestAnimationFrame(runAnimation);
 </script>
