@@ -47,14 +47,15 @@ Authors:
 //==== LABEL Check if attribute titles of NDEFRecordSmartPoster exists, has type object and is readonly
 //==== SPEC_URL http://www.w3.org/TR/nfc/
 test(function () {
-    var record, recordText1, recordText2, recordText3;
+    var record, recordText1, recordText2, recordText3, title = [];
     recordText1 = new NDEFRecordText("Hello!", "en-GB");
     recordText2 = new NDEFRecordText("Everybody!", "en-US");
-    var title = [recordText1, reocrdText2];
+    title[0] = recordText1;
+    title[1] = recordText2;
     record = new NDEFRecordSmartPoster("http://www.w3.org/TR/nfc/", title);
-    assert_own_property(record, "titles", "NDEFRecordSmartPoster does not own titles property");
+    assert_own_property(record, "titles", "NDEFRecordSmartPoster has titles property");
     assert_type(record.titles, "array", "NDEFRecordSmartPoster.titles should be array");
-    assert_equals(typeof reocrd.titles[0], "object", "NDEFRecordSmartPoster.titles attribute of type");
+    assert_equals(typeof record.titles[0], "object", "NDEFRecordSmartPoster.titles[0] attribute of type");
     assert_array_equals(record.titles, title, "NDEFRecordSmartPoster.titles array value");
     recordText3 = new NDEFRecordText("Good Job!", "en-US");
     record.titles = [recordText3];

@@ -47,19 +47,18 @@ Authors:
 //==== PRIORITY P1
 //==== LABEL Check NDEFRecordText constructor works with DOMString text parameter
 //==== SPEC_URL http://www.w3.org/TR/nfc/
-var record;
 test(function () {
-    record = new NDEFRecordText("Hello World!");
+    var record = new NDEFRecordText("Hello World!");
     assert_true(record instanceof NDEFRecordText,
         "constructed record is instance of NDEFRecordText");
-    assert_true("tnf" in record, "NDEFRecordText has tnf property");
-    assert_true("type" in record, "NDEFRecordText has type property");
-    assert_true("id" in record, "NDEFRecordText has id property");
-    assert_true("recordType" in record, "NDEFRecordText has recordType property");
-    assert_true("getPayload" in record, "NDEFRecordText has getPayload method");
-    assert_true("text" in record, "NDEFRecordText has text property");
-    assert_true("languageCode" in record, "NDEFRecordText has languageCode property");
-    assert_true("encoding" in record, "NDEFRecordText has encoding property");
+    assert_true("text" in record, "NDEFRecordText.text exists");
+    assert_true("languageCode" in record, "NDEFRecordText.languageCode exists");
+    assert_true("encoding" in record, "NDEFRecordText.encoding exists");
+    assert_true("tnf" in record, "NDEFRecordText.tnf exists");
+    assert_true("type" in record, "NDEFRecordText.type exists");
+    assert_true("recordType" in record, "NDEFRecordText.recordType exists");
+    assert_true("getPayload" in record, "NDEFRecordText.getPayload() method exists");
+    assert_true("id" in record, "NDEFRecordText.id exists");
 }, document.title);
 </script>
 </body>

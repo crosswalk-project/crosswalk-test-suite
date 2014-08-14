@@ -47,27 +47,26 @@ Authors:
 //==== LABEL Check NDEFRecordSmartPoster constructor works with DOMString uri, NDEFRecordText［］titles, DOMString action, NDEFRecordMedia［］icons parameters
 //==== SPEC_URL http://www.w3.org/TR/nfc/
 test(function () {
-    var record, recordText1, recordText2, recordMedia,
+    var record, recordText1, recordText2, recordMedia, title = [],
         payloads = [72, 101, 108, 108, 111, 9, 87, 111, 114, 108, 100, 33, 13, 10];
     recordText1 = new NDEFRecordText("Hello!", "en-GB");
     recordText2 = new NDEFRecordText("Everybody!", "en-US");
-    var title = [recordText1, reocrdText2];
+    title[0] = recordText1;
+    title[1] = recordText2;
     recordMedia = new NDEFRecordMedia("text/plain", payloads);
     record = new NDEFRecordSmartPoster("http://www.w3.org/TR/nfc/", title, "do", [recordMedia]);
     assert_true(record instanceof NDEFRecordSmartPoster,
         "constructed record is instance of NDEFRecordSmartPoster");
-    assert_own_property(record, "uri", "NDEFRecordSmartPoster does not own uri property");
-    assert_equals("record.uri", "string", "NDEFRecordSmartPoster.uri attribute of type");
-    assert_own_property(record, "titles", "NDEFRecordSmartPoster does not own titles property");
-    assert_own_property(record, "action", "NDEFRecordSmartPoster does not own action property");
-    assert_equals(record.action, "do", "NDEFRecordSmartPoster.action value");
-    assert_own_property(record, "icons", "NDEFRecordSmartPoster does not own icons property");
-    assert_own_property(record, "targetSize", "NDEFRecordSmartPoster does not own targetSize property");
-    assert_own_property(record, "targetMIME", "NDEFRecordSmartPoster does not own targetMIME property");
-    assert_own_property(record, "recordType", "NDEFRecordSmartPoster does not own recordType property");
-    assert_own_property(record, "tnf", "NDEFRecordSmartPoster does not own tnf property");
-    assert_own_property(record, "type", "NDEFRecordSmartPoster does not own type property");
-    assert_own_property(record, "id", "NDEFRecordSmartPoster does not own id property");
+    assert_true("uri" in record, "NDEFRecordSmartPoste.uri exists");
+    assert_true("titles" in record, "NDEFRecordSmartPoster.titles exists");
+    assert_true("action" in record, "NDEFRecordSmartPoster.action exists");
+    assert_true("icons" in record, "NDEFRecordSmartPoster.icons exists");
+    assert_true("targetSize" in record, "NDEFRecordSmartPoster.targetSize exists");
+    assert_true("targetMIME" in record, "NDEFRecordSmartPoster.targetMIME exists");
+    assert_true("recordType" in record, "NDEFRecordSmartPoster.recordType exists");
+    assert_true("tnf" in record, "NDEFRecordSmartPoster.tnf exists");
+    assert_true("type" in record, "NDEFRecordSmartPoster.type exists");
+    assert_true("id" in record, "NDEFRecordSmartPoster.id exists");
     assert_true("getPayload" in record, "NDEFRecordSmartPoster.getPayload() method exists");
 }, document.title);
 </script>

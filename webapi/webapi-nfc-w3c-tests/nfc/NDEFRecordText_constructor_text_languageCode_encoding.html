@@ -46,20 +46,17 @@ Authors:
 //==== PRIORITY P1
 //==== LABEL Check NDEFRecordText constructor works with DOMString text, DOMString languageCode, DOMString encoding parameters
 //==== SPEC_URL http://www.w3.org/TR/nfc/
-var record;
 test(function () {
-    record = new NDEFRecordText("Hello World!", "en-GB", "UTF-8");
+    var record = new NDEFRecordText("Hello World!", "en-GB", "UTF-8");
     assert_true(record instanceof NDEFRecordText,
         "constructed record is instance of NDEFRecordText");
-    assert_own_property(record, "tnf", "NDEFRecordText.tnf");
-    assert_own_property(record, "type", "NDEFRecordText.type");
-    assert_own_property(record, "id", "NDEFRecordText.id");
-    assert_true("getPayload" in record, "NDEFRecordText.getPayload()");
-    assert_own_property(record, "text", "NDEFRecordText.text");
-    assert_own_property(record, "languageCode", "NDEFRecordText.languageCode");
-    assert_equals(record.languageCode, "en-GB", "record.languageCode");
-    assert_own_property(record, "encoding", "NDEFRecordText.encoding");
-    assert_equals(record.encoding, "UTF8", "record.encoding");
+    assert_true("text" in record, "NDEFRecordText.text exists");
+    assert_true("languageCode" in record, "NDEFRecordText.languageCode exists");
+    assert_true("encoding" in record, "NDEFRecordText.encoding exists");
+    assert_true("tnf" in record, "NDEFRecordText.tnf exists");
+    assert_true("type" in record, "NDEFRecordText.type exists");
+    assert_true("id" in record, "NDEFRecordText.id exists");
+    assert_true("getPayload" in record, "NDEFRecordText.getPayload() method exists");
 }, document.title);
 </script>
 </body>

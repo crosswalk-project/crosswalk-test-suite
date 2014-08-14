@@ -53,7 +53,7 @@ test(function () {
     record = new NDEFRecordMedia("text/plain", payloads);
     assert_own_property(record, "mimeType", "NDEFRecordMedia own mimeType property");
     assert_equals(typeof record.mimeType, "string", "mimeType attribute of type");
-    check_readonly(record, "mimeType", "text/plain", "string", "image/jpeg");
+    check_readonly(record, "mimeType", record.mimeType, "string", "image/jpeg");
 }, document.title);
 </script>
 </body>

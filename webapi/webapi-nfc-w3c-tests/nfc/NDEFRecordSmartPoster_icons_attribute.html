@@ -47,22 +47,23 @@ Authors:
 //==== LABEL Check if attribute icons of NDEFRecordSmartPoster exists, has proper type and is readonly
 //==== SPEC_URL http://www.w3.org/TR/nfc/
 test(function () {
-    var record, recordText1, recordText2, recordMedia,
+    var record, recordText1, recordText2, recordMedia, title = [],
         payloads = [72, 101, 108, 108, 111, 9, 87, 111, 114, 108, 100, 33, 13, 10];
     recordText1 = new NDEFRecordText("Hello!", "en-GB");
     recordText2 = new NDEFRecordText("Everybody!", "en-US");
-    var title = [recordText1, reocrdText2];
+    title[0] = recordText1;
+    title[1] = recordText2;
     recordMedia = new NDEFRecordMedia("text/plain", payloads);
     record = new NDEFRecordSmartPoster("http://www.w3.org/TR/nfc/", title, "do", [recordMedia]);
 
-    assert_own_property(record, "icons", "NDEFRecordSmartPoster does not own icons property");
-    assert_equals(record.icons, [recordMedia], "NDEFRecordSmartPoster.icons value")
+    assert_own_property(record, "icons", "NDEFRecordSmartPoster has icons property");
+    assert_array_equals(record.icons, [recordMedia], "NDEFRecordSmartPoster.icons value")
 
     assert_type(record.icons, "array", "NDEFRecordSmartPoster.icons should be array");
-    assert_equals(record.icons[0], "object", "NDEFRecordSmartPoster.icons attribute of type");
+    assert_equals(typeof record.icons[0], "object", "NDEFRecordSmartPoster.icons attribute of type");
 
     record.icons = [];
-    assert_equals(reocrd.icons, [recordMedia], "NDEFRecordSmartPoster.icons attribute is readonly");
+    assert_array_equals(record.icons, [recordMedia], "NDEFRecordSmartPoster.icons attribute is readonly");
 }, document.title);
 </script>
 </body>
