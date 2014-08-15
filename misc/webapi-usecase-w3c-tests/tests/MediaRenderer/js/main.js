@@ -147,9 +147,9 @@ function onRendererFound(event) {
   addButton(rendererControls, event, 'Next', 'next(this.id)');
   addButton(rendererControls, event, 'Previous', 'openURI(this.id)');
   addButton(rendererControls, event, 'Mute', 'mute(this.id)');
-  addButton(rendererControls, event, 'setSpeed', 'setSpeed(this.id)');
-  addButton(rendererControls, event, 'setVolume', 'setVolume(this.id)');
-  addButton(rendererControls, event, 'gotoTrack', 'gotoTrack(this.id)');
+  addButton(rendererControls, event, 'Set Speed', 'setSpeed(this.id)');
+  addButton(rendererControls, event, 'Set Volume', 'setVolume(this.id)');
+  addButton(rendererControls, event, 'Goto Track', 'gotoTrack(this.id)');
 
 }
 
