@@ -62,7 +62,7 @@ def processMain(seedIn):
                 inputTxt = open(ConstPath + "/self/" + section + "_input.txt")
                 for line in inputTxt:
                     items = line.strip('\n\r').split(":")
-                    values = items[1].split(",")
+                    values = ":".join(items[1:]).split(",")
                     lists[row].extend(values)
                     row = row + 1
                 inputTxt.close()
@@ -97,27 +97,34 @@ def genCases(selfcomb):
         caseFile = open(ConstPath + "/allpairs/case_" + Flag + ".txt", 'w+')
         names = ""
         row = 0
-        counters = lineCount(selfcomb)
-        lists = [[] for m in range(counters)]
         fobj = open(selfcomb)
         for line in fobj:
             items = line.strip('\n\r').split(":")
             names = names + items[0] + "\t"
         caseFile.write(names.rstrip("\t") + "\n")
-
+        counters = lineCount(selfcomb)
         fobj.seek(0)
-        for line in fobj:
-            items = line.strip('\n\r').split(":")
-            values = items[1:]
-            lists[row].extend(":".join(values).split(","))
-            row = row + 1
-        fobj.close()
-        pairs = all_pairs(lists)
-        for e, v in enumerate(pairs):
-            case = ""
-            for c in range(0,len(v)):
-                case = case + v[c] +"\t"
-            caseFile.write(case.rstrip("\t") + "\n")
+        if counters >= 2:
+            lists = [[] for m in range(counters)]
+
+            for line in fobj:
+                items = line.strip('\n\r').split(":")
+                values = items[1:]
+                lists[row].extend(":".join(values).split(","))
+                row = row + 1
+            fobj.close()
+            pairs = all_pairs(lists)
+            for e, v in enumerate(pairs):
+                case = ""
+                for c in range(0,len(v)):
+                    case = case + v[c] +"\t"
+                caseFile.write(case.rstrip("\t") + "\n")
+        else:
+            line = fobj.readline()
+            fobj.close()
+            values = line.strip("\t\n").split(":")[1:]
+            for case in ":".join(values).split(","):
+                caseFile.write(case + "\n")
         caseFile.close()
         print "Genarate " + Flag + " case.txt file ---------------->O.k"
     except Exception,e:
@@ -134,6 +141,7 @@ def caseExecute(caseInput):
         global Flag
         global Direc
         print "Excute cases ------------------------->Start"
+        manifestLog = open(ConstPath + "/report/packertool_"+ Flag + ".txt", 'a+')
         caseIn = open(caseInput)
         line = caseIn.readline().strip('\n\r')
         sectionList = line.split("\t")
@@ -145,13 +153,15 @@ def caseExecute(caseInput):
             sys.exit(1)
 
         for line in caseIn:
+            message = ""
             totalNum = totalNum + 1
             items = line.strip("\t\n").split("\t")
             command = "python make_apk.py "
-            data = {"id":"","result":"","entry":"","start":"","end":"","set":""}
+            data = {"id":"","result":"","entry":"","start":"","end":"","set":"","message":""}
             data["start"] = time.strftime("%Y-%m-%d %H:%M:%S")
             for i in range(len(sectionList)):
                 items[i] = items[i].replace("000", " ")
+                items[i] = items[i].replace("comma", ",")
                 command = command + "--" + sectionList[i] + "=" + '"' + items[i] + '" '
             command = command.strip()
             if "target-dir" in sectionList:
@@ -159,43 +169,56 @@ def caseExecute(caseInput):
                 Direc = items[dirIndex]
             else:
                 Direc = "./"
-            nameIndex = sectionList.index("name")
-            packIndex = sectionList.index("package")
-            name = items[nameIndex]
-            package = items[packIndex]
+
+            if "name" in sectionList:
+                index = sectionList.index("name")
+                name = items[index]
+
+            if "package" in sectionList:
+                index = sectionList.index("package")
+                package = items[index]
+
+            manifestLog.write("Packertool" + str(totalNum) + "\n--------------------------------\n" + command + "\n--------------------------------\n")
             print "##########"
             print "Case" + str(totalNum) + " :"
             print "Packer Tool Command:"
             print command
             print "Genarate APK ---------------->Start"
             packstatus = commands.getstatusoutput(command)
+            message = message + "Packer Log:\n" + packstatus[1] + "\n"
             if Flag == "negative":
                 if packstatus[0] == 0:
                     print "Genarate APK ---------------->O.K"
+                    message = message + "Generate apk succeed\n"
                     result = "FAIL"
                     failNum = failNum + 1
                 else:
                     print "Genarate APK ---------------->Error"
+                    message = message + "Generate apk failed\n"
                     result = "PASS"
                     passNum = passNum + 1
             else:
                 if packstatus[0] != 0:
                     print "Genarate APK ---------------->Error"
+                    message = message + "Generate apk failed\n"
                     result = "FAIL"
                     failNum = failNum + 1
                 else:
                     print "Genarate APK ---------------->O.K"
-                    result = tryRunApp(name, package)
-
+                    message = message + "Generate apk succeed\n"
+                    result,feedback = tryRunApp(name, package)
+                    message = message + feedback + "\n"
             data["end"] = time.strftime("%Y-%m-%d %H:%M:%S")
-            data["id"] = "Case" + str(totalNum)
+            data["id"] = "Packertool" + str(totalNum)
             data["result"] = result
             data["entry"] = command
             data["set"] = Flag
+            data["message"] = message
             ResultList.append(data)
             os.system("rm -rf " + ConstPath + "/tools/crosswalk/" + Direc + "/*apk")
             print "Case Result :",result
             print "##########"
+        manifestLog.close()
         caseIn.close()
         print "Excute cases ------------------------->O.K"
     except Exception,e:
@@ -213,48 +236,58 @@ def tryRunApp(name, package):
         instatus = commands.getstatusoutput("adb install " + ConstPath + "/tools/crosswalk/" + Direc + "/*apk")
         if instatus[0] == 0:
             print "Install APK ---------------->O.K"
+            message = message + "Install apk succeed\n"
             print "Find Package in device ---------------->Start"
             pmstatus = commands.getstatusoutput("adb shell pm list packages |grep " + package)
             if pmstatus[0] == 0:
                 print "Find Package in device ---------------->O.K"
+                message = message + "Find package in device succeed\n"
                 print "Launch APK ---------------->Start"
                 launchstatus = commands.getstatusoutput("adb shell am start -n " + package + "/." + name + "Acivity")
                 if launchstatus[0] != 0:
                     print "Launch APK ---------------->Error"
+                    message = message + "Launch apk failed\n"
                     os.system("adb uninstall " + package)
                     failNum = failNum + 1
                     result = "FAIL"
                 else:
                     print "Launch APK ---------------->O.K"
+                    message = message + "Launch apk succeed\n"
                     print "Stop APK ---------------->Start"
                     stopstatus = commands.getstatusoutput("adb shell am force-stop " + package)
                     if stopstatus[0] == 0:
                         print "Stop APK ---------------->O.K"
+                        message = message + "Stop apk succeed\n"
                         print "Uninstall APK ---------------->Start"
                         unistatus = commands.getstatusoutput("adb uninstall " + package)
                         if unistatus[0] == 0:
                             print "Uninstall APK ---------------->O.K"
+                            message = message + "Stop apk succeed\n"
                             passNum = passNum + 1
                         else:
                             print "Uninstall APK ---------------->Error"
+                            message = message + "Stop apk failed\n"
                             failNum = failNum + 1
                             result = "FAIL"
                     else:
                         print "Stop APK ---------------->Error"
+                        message = message + "Stop apk failed\n"
                         failNum = failNum + 1
                         result = "FAIL"
                         os.system("adb uninstall " + package)
             else:
                 print "Find Package in device ---------------->Error"
+                message = message + "Find package in device failed\n"
                 os.system("adb uninstall " + package)
                 failNum = failNum + 1
                 result = "FAIL"
         else:
+            message = message + "Install apk failed\n"
             print "Install APK ---------------->Error"
             result = "FAIL"
             failNum = failNum + 1
         os.system("rm -rf " + ConstPath + "/tools/crosswalk/" + Direc + "/*apk" + "&>/dev/null")
-        return result
+        return result,message
     except Exception,e:
         print Exception,":",e
         print "Try run webapp ---------------->Error"
@@ -312,7 +345,11 @@ def genResultXml():
             caseStart.text = case["start"]
             caseEnd = SE(resultInfo, "end")
             caseEnd.text = case["end"]
-            SE(resultInfo, "stdout")
+            stdOut = SE(resultInfo, "stdout")
+            if case["result"] == "FAIL":
+                stdOut.text = "[message]\n" + case["message"]
+            else:
+                stdOut.text = "[message]"
             SE(resultInfo, "stderr")
 
         tree.write(ConstPath + "/report/wrt-packertool-android-tests.xml")
@@ -372,6 +409,7 @@ def main():
         os.system("rm -rf " + ConstPath + "/allpairs/positive/*~ &>/dev/null")
         os.system("rm -rf " + ConstPath + "/allpairs/positive/case*txt &>/dev/null")
         os.system("rm -rf " + ConstPath + "/tools/crosswalk/*apk &>/dev/null")
+        os.system("rm -rf " + ConstPath + "/tools/crosswalk/packertool* &>/dev/null")
         os.system("rm -rf " + ConstPath + "/self &>/dev/null")
         os.system("mkdir -p " + ConstPath + "/self")
         devicesConform()
