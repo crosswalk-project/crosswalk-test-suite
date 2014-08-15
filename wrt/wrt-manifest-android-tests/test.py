@@ -1,5 +1,6 @@
-import sys, os, shutil, time
+import sys, os, os.path, shutil, time
 import commands
+import thread, Queue
 
 from xml.etree.ElementTree import ElementTree
 from xml.etree.ElementTree import Element
@@ -7,13 +8,8 @@ from xml.etree.ElementTree import SubElement as SE
 import metacomm.combinatorics.all_pairs2
 all_pairs = metacomm.combinatorics.all_pairs2.all_pairs2
 
-totalNum = 0
-failNum = 0
-passNum = 0
-Flag = "positive"
 ConstPath = os.getcwd()
-Start = time.strftime("%Y-%m-%d %H:%M:%S")
-ResultList = []
+Devices = []
 
 def genSelfcom(combIn, combOut):
     try:
@@ -29,14 +25,13 @@ def genSelfcom(combIn, combOut):
         print "Update selfcomb.txt ---------------->Error"
         sys.exit(1)
 
-def caseExecute(caseInput):
+def caseExecute(caseInput, device, resultList, flag, summaryList):
     try:
-        global totalNum
-        global failNum
-        global passNum
-        global ResultList
+        totalNum = summaryList["TOTAL"]
+        failNum = summaryList["FAIL"]
+        passNum = summaryList["PASS"]
 
-        manifestLog = open(ConstPath + "/report/manifest_"+ Flag + ".txt", 'a+')
+        manifestLog = open(ConstPath + "/device_" + device + "/report/manifest_"+ flag + ".txt", 'a+')
 
         caseIn = open(caseInput)
         line = caseIn.readline().strip('\n\r')
@@ -50,12 +45,12 @@ def caseExecute(caseInput):
             print "Case" + str(totalNum) + " :"
             print "Generate manifest.json ---------------->Start"
             items = line.strip('\n\r').split("\t")
-            caseDir = ConstPath + "/tcs/manifest" + str(totalNum)
+            caseDir = ConstPath + "/device_" + device + "/tcs/manifest" + str(totalNum)
             os.mkdir(caseDir)
             fp = open(caseDir + "/manifest.json", 'w+')
             for i in range(len(items)):
                 items[i] = items[i].replace("null","")
-                if sectionList[i] not in ("icons", "icon", "xwalk_launch_screen", "xwalk_permissions"):
+                if sectionList[i] not in ("icons", "icon", "xwalk_launch_screen", "xwalk_permissions", "display"):
                     items[i] = items[i].replace("000", " ")
                     caseValue = caseValue + '"' + sectionList[i] + '" : "' + items[i] + '",\n'
                 else:
@@ -69,27 +64,34 @@ def caseExecute(caseInput):
             manifestLog.write("manifest" + str(totalNum) + "\n--------------------------------\n" + caseValue + "\n--------------------------------\n")
             #copy source and config
             os.system("cp -rf " + ConstPath + "/resource/* " + caseDir)
-            updateConfigXml(ConstPath + "/tcs/manifest" + str(totalNum) + "/config.xml", "manifest" + str(totalNum))
+            updateConfigXml(ConstPath + "/device_" + device + "/tcs/manifest" + str(totalNum) + "/config.xml", "manifest" + str(totalNum))
             #genarate package and execute
-            os.chdir(ConstPath + "/tools/crosswalk/")
+            os.chdir(ConstPath + "/device_" + device + "/tools/crosswalk/")
             data = {"id":"","result":"","entry":"","message":"","start":"","end":"","set":""}
             caseStart = time.strftime("%Y-%m-%d %H:%M:%S")
-            status = genPackage(caseDir)
-            if Flag == "negative":
+            status, info = genPackage(caseDir)
+            message = message + "Packer Log:\n" + info + "\n"
+            if flag == "negative":
                 if status == 0:
-                    failNum = failNum + 1
+                    message = message + "Generate apk succeed\n"
                     result = "FAIL"
-                    message = "generate apk succeed"
+                    failNum = failNum + 1
                 else:
-                    passNum = passNum + 1
+                    message = message + "Generate apk failed\n"
                     result = "PASS"
+                    passNum = passNum + 1
             else:
                 if status != 0:
-                    failNum = failNum + 1
+                    message = message + "Generate apk failed\n"
                     result = "FAIL"
-                    message = "generate apk error"
+                    failNum = failNum + 1
                 else:
-                    result, message = tryRunApp()
+                    result, feedback = tryRunApp(device)
+                    if result == "PASS":
+                        passNum = passNum + 1
+                    else:
+                        failNum = failNum + 1
+                    message = message + feedback + "\n"
             caseEnd = time.strftime("%Y-%m-%d %H:%M:%S")
             data["id"] = "manifest" + str(totalNum)
             data["result"] = result
@@ -97,12 +99,14 @@ def caseExecute(caseInput):
             data["message"] = message
             data["start"] = caseStart
             data["end"] = caseEnd
-            data["set"] = Flag
-            ResultList.append(data)
+            data["set"] = flag
+            resultList.append(data)
             print "Case Result :" + result
             print "##########"
-            os.system("rm -rf " + ConstPath + "/tcs/manifest" + str(totalNum) + "&>/dev/null")
-
+            os.system("rm -rf " + ConstPath + "/device_" + device + "/tcs/manifest" + str(totalNum) + "&>/dev/null")
+        summaryList["TOTAL"] = totalNum
+        summaryList["FAIL"] = failNum
+        summaryList["PASS"] = passNum
         caseIn.close()
         manifestLog.close()
         print "Execute case ---------------->O.K"
@@ -117,10 +121,31 @@ def lineCount(fp):
     fileTmp.close()
     return count
 
-def processMain(seedIn):
+def processMain(device, queue):
+    queue.get()
+    resultList = []
+    summaryList = {"PASS":0,"FAIL":0,"TOTAL":0}
+    totalNum = 0
+    Start = time.strftime("%Y-%m-%d %H:%M:%S")
+    for flag in ["positive", "negative"]:
+        for seedIn in os.listdir(ConstPath + "/device_" + device + "/allpairs/" + flag + "/"):
+            os.system("rm -rf " + ConstPath + "/device_" + device + "/self &>/dev/null")
+            os.system("rm -rf " + ConstPath + "/device_" + device + "/allpairs/selfcomb* &>/dev/null")
+            os.system("mkdir -p " + ConstPath + "/device_" + device + "/self")
+            processTest(ConstPath + "/device_" + device + "/allpairs/" + flag + "/" + seedIn, device, flag, resultList, summaryList)
+    End = time.strftime("%Y-%m-%d %H:%M:%S")
+    genResultXml(resultList, device, Start, End)
+    genSummaryXml(summaryList, device, Start, End)
+    queue.task_done()
+    #thread.exit_thread()
+
+def processTest(seedIn, device, flag, resultList, summaryList):
     try:
-        print "Input Seed :" + seedIn
-        print "Excute " + Flag + " cases ------------------------->Start"
+        fileName = os.path.basename(seedIn)
+        name = os.path.splitext(fileName)[0]
+        print "Input Seed : " + fileName
+        print "Test Device : " + device
+        print "Excute " + flag + " cases ------------------------->Start"
         row = 0
         sectionList = []
 
@@ -130,45 +155,46 @@ def processMain(seedIn):
             sectionName = items[0].split("-")[0]
             if sectionName not in sectionList:
                 sectionList.append(sectionName)
-            inputTxt = open(ConstPath + "/self/" + sectionName + "_input.txt", "a+")
+            inputTxt = open(ConstPath + "/device_" + device + "/self/" + sectionName + "_input.txt", "a+")
             inputTxt.write(line)
             inputTxt.close()
         fp.close()
 
         for section in sectionList:
             caseline = ""
-            counters = lineCount(ConstPath + "/self/" + section + "_input.txt")
+            counters = lineCount(ConstPath + "/device_" + device + "/self/" + section + "_input.txt")
             if counters >= 2:
                 lists = [[] for m in range(counters)]
-                inputTxt = open(ConstPath + "/self/" + section + "_input.txt", 'r+')
+                inputTxt = open(ConstPath + "/device_" + device + "/self/" + section + "_input.txt", 'r+')
                 for line in inputTxt:
                     items = line.strip('\n\r').split(":")
-                    values = items[1].split(",")
+                    values = ":".join(items[1:]).split(",")
                     lists[row].extend(values)
                     row = row + 1
                 pairs = all_pairs(lists)
                 inputTxt.close()
-                outTxt = open(ConstPath + "/self/" + section + "_output.txt", 'a+')
+                outTxt = open(ConstPath + "/device_" + device + "/self/" + section + "_output.txt", 'a+')
                 for e, v in enumerate(pairs):
                     for c in range(len(v)):
                         caseline = caseline + v[c] + ","
                 outTxt.write(section + ":" + caseline[:-1] + "\n")
                 outTxt.close()
             else:
-                shutil.copy(ConstPath + "/self/" + section + "_input.txt", ConstPath + "/self/" + section + "_output.txt")
+                shutil.copy(ConstPath + "/device_" + device + "/self/" + section + "_input.txt", ConstPath + "/device_" + device + "/self/" + section + "_output.txt")
 
         #1*********XX_output.txt -> selfcomb.txt
-            genSelfcom(ConstPath + "/self/" + section + "_output.txt", ConstPath + "/allpairs/selfcomb.txt")
+            genSelfcom(ConstPath + "/device_" + device + "/self/" + section + "_output.txt", ConstPath + "/device_" + device + "/allpairs/selfcomb.txt")
 
         #2*********selfcomb.txt -> caseXX.txt
-        genCases(ConstPath + "/allpairs/selfcomb.txt")
+        genCases(ConstPath + "/device_" + device + "/allpairs/selfcomb.txt", name, device, flag)
 
         #3*********output -> manifest.json
-        caseExecute(ConstPath + "/allpairs/case_" + Flag + ".txt")
+        caseExecute(ConstPath + "/device_" + device + "/allpairs/" + name + "_case.txt", device, resultList, flag, summaryList)
 
-        print "Excute " + Flag + " cases ------------------------->O.K"
+        print "Excute " + flag + " cases ------------------------->O.K"
+        print
     except Exception,e:
-        print "Excute " + Flag + " cases ------------------------->Error"
+        print "Excute " + flag + " cases ------------------------->Error"
         print Exception,":",e
         sys.exit(1)
 
@@ -179,22 +205,22 @@ def genPackage(direc):
         if toolstatus != 0:
             print "Crosswalk Binary is not ready, Please attention"
             sys.exit(1)
-        cmd ="python make_apk.py --name=test --package=org.xwalk.test --arch=x86 --manifest="
+        cmd ="python make_apk.py --package=org.xwalk.test --arch=x86 --manifest="
         manifestPath = direc + "/manifest.json"
-        status = commands.getstatusoutput(cmd + manifestPath)[0]
+        status, message = commands.getstatusoutput(cmd + manifestPath)
         if status != 0:
             print "Generate APK ---------------->Error"
         else:
             print "Generate APK ---------------->O.K"
-        return status
+        return status, message
     except Exception,e:
         print Exception,":",e
         sys.exit(1)
 
-def genCases(selfcomb):
+def genCases(selfcomb, name, device, flag):
     try:
-        print "Genarate " + Flag + " case.txt file ---------------->Start"
-        caseFile = open(ConstPath + "/allpairs/case_" + Flag + ".txt", 'w+')
+        print "Genarate " + flag + " case.txt file ---------------->Start"
+        caseFile = open(ConstPath + "/device_" + device + "/allpairs/" + name + "_case.txt", 'w+')
         names = ""
         row = 0
         counters = lineCount(selfcomb)
@@ -220,9 +246,9 @@ def genCases(selfcomb):
                 case = case + v[c] +"\t"
             caseFile.write(case.rstrip("\t") + "\n")
         caseFile.close()
-        print "Genarate " + Flag + " case.txt file ---------------->O.k"
+        print "Genarate " + flag + " case.txt file ---------------->O.k"
     except Exception,e:
-        print "Generate " + Flag + " case.txt file ---------------->Error"
+        print "Generate " + flag + " case.txt file ---------------->Error"
         print Exception,":",e
         sys.exit(1)
 
@@ -239,61 +265,58 @@ def updateConfigXml(manifest, name):
         print Exception,":",e
         sys.exit(1)
 
-def tryRunApp():
+def tryRunApp(device):
     try:
-        global failNum
-        global passNum
         result = "PASS"
         message = ""
         print "Install APK ---------------->Start"
-        instatus = commands.getstatusoutput("adb install *apk")
+        instatus = commands.getstatusoutput("adb -s " + device + " install *apk")
         if instatus[0] == 0:
             print "Install APK ---------------->O.K"
+            message = message + "Install apk succeed\n"
             print "Find Package in device ---------------->Start"
-            pmstatus = commands.getstatusoutput("adb shell pm list packages |grep org.xwalk.test")
+            pmstatus = commands.getstatusoutput("adb -s " + device + " shell pm list packages |grep org.xwalk.test")
             if pmstatus[0] == 0:
                 print "Find Package in device ---------------->O.K"
+                message = message + "Find package in device succeed\n"
                 print "Launch APK ---------------->Start"
-                launchstatus = commands.getstatusoutput("adb shell am start -n org.xwalk.test/.testActivity")
+                launchstatus = commands.getstatusoutput("adb -s " + device + " shell am start -n org.xwalk.test/.TestActivity")
                 if launchstatus[0] != 0:
                     print "Launch APK ---------------->Error"
-                    os.system("adb uninstall org.xwalk.test")
-                    failNum = failNum + 1
+                    message = message + "Launch apk failed\n"
+                    os.system("adb -s " + device + " uninstall org.xwalk.test")
                     result = "FAIL"
-                    message = "launch app error"
                 else:
                     print "Launch APK ---------------->O.K"
+                    message = message + "Launch apk succeed\n"
                     print "Stop APK ---------------->Start"
-                    stopstatus = commands.getstatusoutput("adb shell am force-stop org.xwalk.test")
+                    stopstatus = commands.getstatusoutput("adb -s " + device + " shell am force-stop org.xwalk.test")
                     if stopstatus[0] == 0:
                         print "Stop APK ---------------->O.K"
+                        message = message + "Stop apk succeed\n"
                         print "Uninstall APK ---------------->Start"
-                        unistatus = commands.getstatusoutput("adb uninstall org.xwalk.test")
+                        unistatus = commands.getstatusoutput("adb -s " + device + " uninstall org.xwalk.test")
                         if unistatus[0] == 0:
                             print "Uninstall APK ---------------->O.K"
-                            passNum = passNum + 1
+                            message = message + "Uninstall apk succeed\n"
                         else:
                             print "Uninstall APK ---------------->Error"
-                            failNum = failNum + 1
+                            message = message + "Uninstall apk failed\n"
                             result = "FAIL"
-                            message = "uninstall apk error"
                     else:
                         print "Stop APK ---------------->Error"
-                        failNum = failNum + 1
                         result = "FAIL"
-                        message = "stop apk error"
+                        message = message + "Stop apk failed\n"
                         os.system("adb uninstall org.xwalk.test")
             else:
                 print "Find Package in device ---------------->Error"
-                os.system("adb uninstall org.xwalk.test")
-                failNum = failNum + 1
+                message = message + "Find package in device failed\n"
+                os.system("adb -s " + device + " uninstall org.xwalk.test")
                 result = "FAIL"
-                message = "can't find package in device"
         else:
             print "Install APK ---------------->Error"
             result = "FAIL"
-            failNum = failNum + 1
-            message = "install apk error"
+            message = message + "Install apk failed\n"
         os.system("rm -rf *apk &>/dev/null")
         return result,message
     except Exception,e:
@@ -301,7 +324,7 @@ def tryRunApp():
         print "Try run webapp ---------------->Error"
         sys.exit(1)
 
-def genResultXml():
+def genResultXml(resultList, device, Start, End):
     try:
         print "Generate test.result.xml ---------------->Start"
         tree = ElementTree()
@@ -324,10 +347,10 @@ def genResultXml():
         suite = SE(root, "suite", {"category":"Runtime_Core","launcher":"xwalk",\
         "name":"wrt-manifest-android-tests"})
         setPositive = SE(suite, "set", {"name":"positive","set_debug_msg":""})
-        setNegitive = SE(suite, "set", {"name":"negitive","set_debug_msg":""})
+        setNegitive = SE(suite, "set", {"name":"negative","set_debug_msg":""})
 
         #testcase element
-        for case in ResultList:
+        for case in resultList:
             setElement = setPositive
             if case["set"] == "negative":
                 setElement = setNegitive
@@ -345,11 +368,15 @@ def genResultXml():
             caseStart.text = case["start"]
             caseEnd = SE(resultInfo, "end")
             caseEnd.text = case["end"]
-            SE(resultInfo, "stdout")
+            stdOut = SE(resultInfo, "stdout")
+            if case["result"] == "FAIL":
+                stdOut.text = "[message]\n" + case["message"].decode("utf-8")
+            else:
+                stdOut.text = "[message]"
             SE(resultInfo, "stderr")
 
-        tree.write(ConstPath + "/report/wrt-manifest-android-tests.xml")
-        updateXmlTitle(ConstPath + "/report/wrt-manifest-android-tests.xml",'<?xml version="1.0" encoding="UTF-8"?>\n<?xml-stylesheet type="text/xsl" href="./style/testresult.xsl"?>\n<?xml-stylesheet type="text/xsl" href="testresult.xsl"?>\n')
+        tree.write(ConstPath + "/device_" + device + "/report/wrt-manifest-android-tests.xml")
+        updateXmlTitle(ConstPath + "/device_" + device + "/report/wrt-manifest-android-tests.xml",'<?xml version="1.0" encoding="UTF-8"?>\n<?xml-stylesheet type="text/xsl" href="./style/testresult.xsl"?>\n<?xml-stylesheet type="text/xsl" href="testresult.xsl"?>\n')
 
         print "Generate test.result.xml ---------------->O.K"
     except Exception,e:
@@ -357,9 +384,12 @@ def genResultXml():
         print "Generate test.result.xml ---------------->Error"
         sys.exit(1)
 
-def genSummaryXml():
+def genSummaryXml(summaryList, device, Start, End):
     try:
         print "Generate summary.xml ---------------->Start"
+        passNum = summaryList["PASS"]
+        failNum = summaryList["FAIL"]
+        totalNum = summaryList["TOTAL"]
         tree = ElementTree()
         root = Element("result_summary", {"plan_name":""})
         tree._setroot(root)
@@ -384,8 +414,8 @@ def genSummaryXml():
         SE(suite, "block_rate")
         SE(suite, "na_case")
         SE(suite, "na_rate")
-        tree.write(ConstPath + "/report/summary.xml")
-        updateXmlTitle(ConstPath + "/report/summary.xml",'<?xml version="1.0" encoding="UTF-8"?>\n<?xml-stylesheet type="text/xsl" href="./style/summary.xsl"?>\n')
+        tree.write(ConstPath + "/device_" + device + "/report/summary.xml")
+        updateXmlTitle(ConstPath + "/device_" + device + "/report/summary.xml",'<?xml version="1.0" encoding="UTF-8"?>\n<?xml-stylesheet type="text/xsl" href="./style/summary.xsl"?>\n')
         print "Generate summary.xml ---------------->O.K"
     except Exception,e:
         print Exception,":",e
@@ -402,6 +432,38 @@ def devicesConform():
         print Exception,"Device Connect error:",e
         sys.exit(1)
 
+def sourceInit(Devices):
+    #os.system("rm -rf " + ConstPath + "/device_* " + "&>/dev/null")
+    for device in Devices:
+        device = device.strip("\n\t")
+        if os.path.exists(ConstPath + "/device_" + device):
+            os.system("rm -rf " + ConstPath + "/device_" + device + "/allpairs/*txt &>/dev/null")
+            os.system("rm -rf " + ConstPath + "/device_" + device + "/report/summary.xml &>/dev/null")
+            os.system("rm -rf " + ConstPath + "/device_" + device + "/report/*manifest* &>/dev/null")
+            os.system("rm -rf " + ConstPath + "/device_" + device + "/allpairs/negative/* &>/dev/null")
+            os.system("rm -rf " + ConstPath + "/device_" + device + "/allpairs/positive/* &>/dev/null")
+            os.system("rm -rf " + ConstPath + "/device_" + device + "/allpairs/tcs/* &>/dev/null")
+        else:
+            os.system("mkdir -p " + ConstPath + "/device_" + device)
+            os.system("cp -rf "+ ConstPath + "/report/ "+ ConstPath + "/device_" + device + "/")
+            os.system("mkdir -p " + ConstPath + "/device_" + device + "/tcs")
+            os.system("mkdir -p " + ConstPath + "/device_" + device + "/tools")
+            os.system("cp -rf " + ConstPath + "/tools/crosswalk " + ConstPath + "/device_" + device + "/tools")
+            os.system("mkdir -p " + ConstPath + "/device_" + device + "/allpairs/negative")
+            os.system("mkdir -p " + ConstPath + "/device_" + device + "/allpairs/positive")
+
+def seedDistribute(Devices):
+    cDevices = len(Devices)
+    fp = os.popen("find ./allpairs/ -name '*txt' |cut -d '/' -f 3-")
+    lines = fp.readlines()
+    fp.close()
+    txtCount = len(lines)
+    for index in range(txtCount):
+        deviceIndex = index % cDevices
+        device = Devices[deviceIndex]
+        line = lines[index].strip("\n\t")
+        os.system("cp " + "allpairs/" + line + " device_" + device + "/allpairs/" + line)
+
 def updateXmlTitle(fp,title):
     fobj = open(fp, "r+")
     lines = fobj.readlines()
@@ -413,42 +475,26 @@ def updateXmlTitle(fp,title):
 
 def main():
     try:
-        global End
-        global Flag
-        os.system("rm -rf " + ConstPath + "/allpairs/negative/*~ &>/dev/null")
-        os.system("rm -rf " + ConstPath + "/allpairs/positive/*~ &>/dev/null")
-        os.system("rm -rf " + ConstPath + "/allpairs/case*txt &>/dev/null")
-        os.system("rm -rf " + ConstPath + "/report/manifest* &>/dev/null")
-        os.system("rm -rf " + ConstPath + "/self &>/dev/null")
-        os.system("rm -rf " + ConstPath + "/tcs &>/dev/null")
-        os.system("mkdir -p " + ConstPath + "/self")
-        os.system("mkdir -p " + ConstPath + "/tcs")
+        global Devices
+        DeviceQueue = Queue.Queue()
+
         devicesConform()
+        if "DEVICE_ID" in os.environ:
+            for device in os.environ["DEVICE_ID"].split(","):
+                Devices.append(device)
+                DeviceQueue.put(device)
+        else:
+            print "Can't read DEVICE_ID in os.environ"
+            sys.exit(1)
 
-        #positive case
-        for seed in os.listdir(ConstPath + "/allpairs/positive/"):
-            os.system("rm -rf " + ConstPath + "/allpairs/selfcomb.txt &>/dev/null")
-            os.system("rm -rf " + ConstPath + "/self &>/dev/null")
-            os.system("mkdir -p " + ConstPath + "/self")
-            processMain(ConstPath + "/allpairs/positive/" + seed)
-
-        #negative case
-        Flag = "negative"
-        for seed in os.listdir(ConstPath + "/allpairs/negative/"):
-            os.system("rm -rf " + ConstPath + "/allpairs/selfcomb.txt &>/dev/null")
-            os.system("rm -rf " + ConstPath + "/self &>/dev/null")
-            os.system("mkdir -p " + ConstPath + "/self")
-            processMain(ConstPath + "/allpairs/negative/" + seed)
-        End = time.strftime("%Y-%m-%d %H:%M:%S")
-
-        genResultXml()
-        genSummaryXml()
+        sourceInit(Devices)
+        seedDistribute(Devices)
+        for device in Devices:
+            thread.start_new_thread(processMain, (device,DeviceQueue))
+        DeviceQueue.join()
     except Exception,e:
         print Exception,":",e
         sys.exit(1)
-    finally:
-        os.system("rm -rf " + ConstPath + "/self &>/dev/null")
-        os.system("rm -rf " + ConstPath + "/tcs &>/dev/null")
 
 if __name__ == "__main__":
     main()

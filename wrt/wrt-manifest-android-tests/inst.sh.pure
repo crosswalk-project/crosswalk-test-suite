@@ -13,7 +13,7 @@ function installpkg()
 {
     #environment clear
     echo "environment clear >>>>>>>>>>>>>>>>>>>>>>>>>>>>>."
-    [ -d $RESOURCE_DIR ] ||  mkdir -p $RESOURCE_DIR
+    [ -d $RESOURCE_DIR ] || mkdir -p $RESOURCE_DIR
     [ -e $RESOURCE_DIR/$PACKAGENAME.zip ] && rm $RESOURCE_DIR/$PACKAGENAME.zip
     [ -e $RESOURCE_DIR/opt/$PACKAGENAME ] && rm -rf $RESOURCE_DIR/opt/$PACKAGENAME
     cp -arf $PACKAGENAME.zip $RESOURCE_DIR
