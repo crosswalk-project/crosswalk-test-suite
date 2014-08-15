@@ -50,14 +50,20 @@ class WebAPP(common.APP):
         self.app_type = common.APP_TYPE_WEB
         self.app_name = app_name
         self.app_id = ""
+        apk_activity_name = ""
+        apk_pkg_name = ""
         if app_config.has_key("platform") and app_config["platform"].has_key("name"):
             if app_config["platform"]["name"].upper().find('TIZEN') >= 0:
                 app_id = tizen.get_appid_by_name(
                     self.app_name, app_config["platform"])
             if app_config["platform"]["name"].upper().find('ANDROID') >= 0:
                 self.app_name = self.app_name.replace("-", "_")
+                apk_name_update = "".join(
+                    [i.capitalize() for i in self.app_name.split("_") if i])
+                apk_activity_name = ".%sActivity" % apk_name_update
+                apk_pkg_name = "org.xwalk.%s" % self.app_name
         app_config_str = json.dumps(app_config).replace(
-            "TEST_APP_NAME", self.app_name).replace("TEST_APP_ID", self.app_id)
+            "TEST_APP_NAME", self.app_name).replace("TEST_APP_ID", self.app_id).replace("TEST_PKG_NAME", apk_pkg_name).replace("TEST_ACTIVITY_NAME", apk_activity_name)
         self.app_config = json.loads(app_config_str)
         if app_config.has_key("url-prefix"):
             self.url_prefix = app_config["url-prefix"]
