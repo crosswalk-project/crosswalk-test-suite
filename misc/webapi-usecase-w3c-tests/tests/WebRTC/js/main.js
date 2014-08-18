@@ -25,25 +25,21 @@ NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE,
 EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
 Authors:
-        Liu, yun <yun.liu@archermind.com>
+        Liu,Yun <yunx.liu@intel.com>
 */
 
 var testFlag = {
     green: false,
     red: false,
-    blue: false,
-    yellow: false
+    blue: false
 };
 var showId;
 var pc1, pc2, dc1, dc2;
-var num_channels = 0;
-var datachannels = new Array(0);
 var pc1_offer;
 var pc2_answer;
-var fake_audio;
 
 function status() {
-  if (testFlag.green && testFlag.red && testFlag.blue && testFlag.yellow) {
+  if (testFlag.green && testFlag.red && testFlag.blue) {
     EnablePassButton();
   }
 }
@@ -53,7 +49,6 @@ function show() {
   $("#startbutton").removeClass("ui-disabled");
   $("#stopbutton").addClass("ui-disabled");
   $("#pc1_send").addClass("ui-disabled");
-  $("#pc2_send").addClass("ui-disabled");
   clearTimeout(showId);
 }
 
@@ -69,13 +64,6 @@ function pc1_send() {
   status();
 }
 
-function pc2_send() {
-  testFlag.blue = true;
-  dc2.send($("#pc2_input").val());
-  $("#pc2_input").attr("value", "");
-  status();
-}
-
 function requestFailed(code) {
   fancy_log("Failure callback: " + code, "black");
 }
@@ -83,53 +71,11 @@ function requestFailed(code) {
 // pc1.createOffer finished, call pc1.setLocal
 function requestSuccessed1(offer) {
   pc1_offer = offer;
-  pc1.setLocalDescription(offer, requestSuccessed1_5, requestFailed);
-}
-
-function requestSuccessed1_5() {
-  setTimeout(requestSuccessed2,0);
+  pc1.setLocalDescription(offer, requestSuccessed2, requestFailed);
 }
 
 // pc1.setLocal finished, call pc2.setRemote
 function requestSuccessed2() {
-  if (typeof RTCPeerConnection != "undefined") {
-    pc2 = new RTCPeerConnection(null, null);
-  }
-  else if (typeof webkitRTCPeerConnection != "undefined") {
-    pc2 = new webkitRTCPeerConnection(null, null);
-  }
-  else {
-    pc2 = new mozRTCPeerConnection(null, null);
-  }
-
-  pc2.ondatachannel = function(event) {
-    channel = event.channel;
-    datachannels[num_channels] = channel;
-    num_channels++;
-
-    channel.onmessage = function(evt) {
-      fancy_log("pc1 said: " + evt.data, "red");
-    };
-    channel.onopen = function() {
-      clearTimeout(showId);
-      channel.send("pc1 and pc2 are connected successfully, and can send message to each other now!");
-      $("#stopbutton").removeClass("ui-disabled");
-      $("#pc1_send").removeClass("ui-disabled");
-      $("#pc2_send").removeClass("ui-disabled");
-    };
-    channel.onclose = function() {
-      fancy_log("The connection is closed, stop send message now!", "blue");
-    };
-  };
-
-  dc2 = pc2.createDataChannel("This is pc2");
-  channel = dc2;
-
-  channel.onmessage = function(evt) {
-    fancy_log('pc1 say: ' + evt.data, "blue");
-  }
-
-  pc2.addStream(fake_audio);
   pc2.setRemoteDescription(pc1_offer, requestSuccessed3, requestFailed);
 };
 
@@ -146,12 +92,33 @@ function requestSuccessed4(answer) {
 
 // pc2.setLocal finished, call pc1.setRemote
 function requestSuccessed5() {
-  pc1.setRemoteDescription(pc2_answer, requestSuccessed6, requestFailed);
+  pc1.setRemoteDescription(pc2_answer, function() {}, requestFailed);
 }
 
-// pc1.setRemote finished, make a data channel
-function requestSuccessed6() {
-  fancy_log("Created pc1 and pc2 data channel", "black");
+function gotLocalCandidate(event) {
+  if (event.candidate) {
+    pc2.addIceCandidate(event.candidate);
+  }
+}
+
+function gotRemoteIceCandidate(event) {
+  if (event.candidate) {
+    pc1.addIceCandidate(event.candidate);
+  }
+}
+
+function handleSendChannelStateChange() {
+  var readyState = dc1.readyState;
+  fancy_log("Channel state is: " + readyState, "black");
+  if (readyState == "open") {
+    $("#startbutton").addClass("ui-disabled");
+    $("#stopbutton").removeClass("ui-disabled");
+    $("#pc1_send").removeClass("ui-disabled");
+  } else {
+    $("#startbutton").removeClass("ui-disabled");
+    $("#stopbutton").addClass("ui-disabled");
+    $("#pc1_send").addClass("ui-disabled");
+  }
 }
 
 function start() {
@@ -162,92 +129,50 @@ function start() {
   showId = setTimeout("show()", 30000);
 
   if (typeof RTCPeerConnection != "undefined") {
-    pc1 = new RTCPeerConnection(null, null);
+    pc1 = new RTCPeerConnection(null, {optional: [{RtpDataChannels: true}]});
+    pc2 = new RTCPeerConnection(null, {optional: [{RtpDataChannels: true}]});
+  } else {
+    pc1 = new webkitRTCPeerConnection(null, {optional: [{RtpDataChannels: true}]});
+    pc2 = new webkitRTCPeerConnection(null, {optional: [{RtpDataChannels: true}]});
   }
-  else if (typeof webkitRTCPeerConnection != "undefined") {
-    pc1 = new webkitRTCPeerConnection(null, null);
-  }
-  else {
-    pc1 = new mozRTCPeerConnection(null, null);
-  }
+  dc1 = pc1.createDataChannel("pc1");
+  pc1.onicecandidate = gotLocalCandidate;
+  dc1.onopen = handleSendChannelStateChange;
+  dc1.onclose = handleSendChannelStateChange;
+  pc2.onicecandidate = gotRemoteIceCandidate;
+  pc2.ondatachannel = function(event) {
+    dc2 = event.channel;
 
-  pc1.ondatachannel = function(event) {
-    channel = event.channel;
-    // In case pc2 opens a channel
-    datachannels[num_channels] = channel;
-    num_channels++;
-    channel.onmessage = function(evt) {
-      fancy_log('pc2 say: ' + evt.data, "blue");
-    }
-  }
-
-  if (typeof (navigator.getUserMedia) != "undefined") {
-    navigator.getUserMedia({audio: true, video: true}, function(s) {
-      pc1.addStream(s);
-      fake_audio = s;
-
-      dc1 = pc1.createDataChannel("This is pc1");
-      channel = dc1;
-
-      channel.onmessage = function(evt) {
-        fancy_log('pc2 say: ' + evt.data, "blue");
-      }
-
-      pc1.createOffer(requestSuccessed1, requestFailed);
-    }, requestFailed);
-  }
-  else if (typeof (navigator.webkitGetUserMedia) != "undefined") {
-    navigator.webkitGetUserMedia({audio: true, video: true}, function(s) {
-      pc1.addStream(s);
-      fake_audio = s;
-
-      dc1 = pc1.createDataChannel("This is pc1");
-      channel = dc1;
-
-      channel.onmessage = function(evt) {
-        fancy_log('pc2 say: ' + evt.data, "blue");
-      }
-
-      pc1.createOffer(requestSuccessed1, requestFailed);
-    }, requestFailed);
-  }
-  else {
-    navigator.mozGetUserMedia({audio: true, video: true}, function(s) {
-      pc1.addStream(s);
-      fake_audio = s;
-
-      dc1 = pc1.createDataChannel("This is pc1");
-      channel = dc1;
-
-      channel.onmessage = function(evt) {
-        fancy_log('pc2 say: ' + evt.data, "blue");
-      }
-
-      pc1.createOffer(requestSuccessed1, requestFailed);
-    }, requestFailed);
-  }
+    dc2.onmessage = function(evt) {
+      fancy_log("Received message: " + evt.data, "blue");
+    };
+    dc2.onopen = function() {
+      clearTimeout(showId);
+      fancy_log("pc1 and pc2 are connected successfully, and can send message now!", "black");
+    };
+    dc2.onclose = function() {
+      fancy_log("The connection is closed, stop send message now!", "black");
+    };
+  };
+  pc1.createOffer(requestSuccessed1, requestFailed);
   status();
 }
 
 function stop() {
+  testFlag.blue = true;
+  dc1.close();
+  dc2.close();
   pc1.close();
   pc2.close();
   status();
-
-  $("#startbutton").removeClass("ui-disabled");
-  $("#stopbutton").addClass("ui-disabled");
-  $("#pc1_send").addClass("ui-disabled");
-  $("#pc2_send").addClass("ui-disabled");
 }
 
 $(document).ready(function() {
   DisablePassButton();
   $("#stopbutton").addClass("ui-disabled");
   $("#pc1_send").addClass("ui-disabled");
-  $("#pc2_send").addClass("ui-disabled");
 
   $("#startbutton").click(start);
   $("#stopbutton").click(stop);
   $("#pc1_send").click(pc1_send);
-  $("#pc2_send").click(pc2_send);
 });
