@@ -38,11 +38,15 @@ Authors:
 <script src="../resources/testharnessreport.js"></script>
 <script src="support/unitcommon.js"></script>
 <div id="log"></div>
+<audio id="MediaPlayback" autoplay loop controls="controls" src="support/sound_5.oga">
+  Not Support ...
+</audio>
 <script>
 setup({timeout: 30000});
 
 var t = async_test(document.title, {timeout: 10000}),
     onSuccess, onError, audiostream;
+var audio=document.getElementById("MediaPlayback");
 
 t.step(function () {
     onError = t.step_func(function (error) {
@@ -59,7 +63,11 @@ t.step(function () {
         t.done();
     });
 
-    tizen.audiosystem.connect(onSuccess, onError);
+    audioPlay = t.step_func(function () {
+        tizen.audiosystem.connect(onSuccess, onError);
+    });
+
+    audio.addEventListener('play', audioPlay, false);
 });
 
 </script>
