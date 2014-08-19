@@ -39,19 +39,22 @@ Authors:
 <p>Test Passes if show test result is 'Pass'.</p>
 <div id = "log"></div>
 <script>
-var log =1;
 var text = "";
 function runTest(gamepads) {
-  var gamepad = gamepads[0];
-  [
-    ["string", "id", "readonly"],
-    ["long", "index", "readonly"],
-    ["boolean", "connected", "readonly"],
-    ["double", "timestamp", "readonly"],
-    ["string", "mapping", "readonly"],
-    ["object", "axes", "readonly"],
-    ["object", "buttons", "readonly"]
-  ].forEach(function(attr) {
+  text = "";
+  for (var j = 0; j < gamepads.length; j++) {
+   var pad = gamepads[j];
+   if(pad) {
+     var gamepad = pad;
+     [
+       ["string", "id", "readonly"],
+       ["long", "index", "readonly"],
+       ["boolean", "connected", "readonly"],
+       ["double", "timestamp", "readonly"],
+       ["string", "mapping", "readonly"],
+       ["object", "axes", "readonly"],
+       ["object", "buttons", "readonly"]
+     ].forEach(function(attr) {
             var type = attr[0];
             var name = attr[1];
             var read = attr[2];
@@ -136,9 +139,8 @@ function runTest(gamepads) {
                       }
                   break;
                   case "object":
-                      var dc = gamepad[name];
                       gamepad[name] = null;
-                      if (dc != gamepad[name])
+                      if (null == gamepad[name])
                       {
                         readResult = false;
                       }
@@ -155,18 +157,19 @@ function runTest(gamepads) {
                   document.getElementById("log").innerHTML = text;
                 }
               }
-            }
-  });
+            } 
+      });            
+    }        
+  }
 }
 
-function runAnimation() {  
-  window.requestAnimationFrame(runAnimation);
-  
+function runAnimation()
+{  
   var gamepads =  navigator.getGamepads();
-  if(gamepads.length > 0 && log == 1) {
-    log =2;
+  if(gamepads.length > 0) {
     runTest(gamepads);
   };
+  window.requestAnimationFrame(runAnimation);
 }
 window.requestAnimationFrame(runAnimation);
 </script>

@@ -39,26 +39,28 @@ Authors:
 <p>Test Passes if the show result is array of values for all axes of the gamepad and if you manipulate the axes the result will be changed.</p>
 <div id = "log"></div>
 <script>
-var log =1;
-
 function runTest(gamepads) {
    var text = "";
-   var axes = gamepads[gamepads.length - 1].axes;
-   for ( var i = 0; i< axes.length; i ++ )
-   {
-       text = text + axes[i] + ";";
+   for (var j = 0; j < gamepads.length; j++) {
+     var pad = gamepads[j];
+     if(pad) {
+       var axes = pad.axes;
+       for ( var i = 0; i< axes.length; i ++ )
+       {
+         text = text + axes[i] + ";";
+       }
+       document.getElementById("log").innerHTML = text;
+     }
    }
-   document.getElementById("log").innerHTML = text;
 }
 
-function runAnimation() {  
-  window.requestAnimationFrame(runAnimation);
-  
+function runAnimation()
+{  
   var gamepads =  navigator.getGamepads();
-  if(gamepads.length > 0 && log == 1) {
-    //log =2;
+  if(gamepads.length > 0) {
     runTest(gamepads);
   };
+  window.requestAnimationFrame(runAnimation);
 }
 window.requestAnimationFrame(runAnimation);
 </script>
