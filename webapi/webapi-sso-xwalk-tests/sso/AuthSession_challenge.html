@@ -43,12 +43,12 @@ setup({timeout: 30000});
 
 var t = async_test(document.title, {timeout: 10000}), onSuccess, onError;
 var sessionData = {"key1":"value1","key2":"value2"};
-var id = 8L;
-var authSession = tizen.sso.authService.getIdentity(id).startSession("test")
+var authSession = tizen.sso.authService.getIdentity(10000).startSession("test")
 
 t.step(function () {
   onError = t.step_func(function (error) {
     assert_unreached("connect() error callback was invoked: " + error.name + " msg: " + error.message);
+    t.done();
   });
 
   onSuccess = t.step_func(function (result) {

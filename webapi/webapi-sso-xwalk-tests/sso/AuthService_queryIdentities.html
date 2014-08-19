@@ -47,6 +47,7 @@ var filters = {"a":"b","c":"d"};
 t.step(function () {
   onError = t.step_func(function (error) {
     assert_unreached("connect() error callback was invoked: " + error.name + " msg: " + error.message);
+    t.done();
   });
 
   onSuccess = t.step_func(function (result) {
