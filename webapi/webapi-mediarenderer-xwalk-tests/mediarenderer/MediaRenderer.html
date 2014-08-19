@@ -56,7 +56,7 @@ navigator.mediaRenderer.onrendererfound = function (event) {
     ["string", "iconURL", "readonly"],
     ["string", "deviceType", "readonly"],
     ["string", "protocolInfo", "readonly"],
-    ["object", "controller", "readonly"],
+    ["mediaController", "controller", "readonly"],
     ["function", "openURI", ""],
     ["function", "prefetchURI", ""],
     ["function", "cancel", ""]
@@ -69,15 +69,15 @@ navigator.mediaRenderer.onrendererfound = function (event) {
       assert_true(name in event.renderer, name + " attribute in MediaRenderer");
       switch(type) {
       case "string":
+      case "function":
         if(read == "readonly") {
           assert_readonly(event.renderer, name, "expect attribute " + name + " cannot be changed but");
         }
-      case "function":
         assert_equals(typeof event.renderer[name], type, name + " attribute of type");      
         break;
-      case "object":
-        assert_equals(Object.prototype.toString.call(event.renderer[name]), "[object Object]", name + " attribute of type");
-        assert_readonly(event.renderer, name, "expect attribute " + name + " cannot be changed but");
+      case "mediaController":
+        assert_equals(Object.prototype.toString.call(event.renderer.controller[name]), "[object MediaController]", name + " attribute of type");
+        assert_readonly(event.renderer.controller, name, "expect attribute " + name + " cannot be changed but");
         break;
       default:
         break;
