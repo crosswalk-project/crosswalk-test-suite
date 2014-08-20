@@ -16,6 +16,7 @@ SRC_ROOT=$PWD
 # init
 function init_workspace(){
     echo "init workspace... >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>"
+    clean_workspace
     cp libs/chromium/*.jar libs/
     cp libs/testkit/*.jar libs/
 }
@@ -60,6 +61,7 @@ function zip_for_apk(){
     mkdir $name
     cd ..
     cp -af $SRC_ROOT/inst.sh.apk opt/$name/inst.sh
+    cp -af $SRC_ROOT/tests.xml opt/$name/tests.xml
     cp -af $SRC_ROOT/bin/embeddingapi-debug.apk opt/$name/
 
     if [ $src_file -eq 0 ];then

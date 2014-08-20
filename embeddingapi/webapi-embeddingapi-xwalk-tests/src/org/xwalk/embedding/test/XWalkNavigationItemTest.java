@@ -5,6 +5,7 @@
 package org.xwalk.embedding.test;
 
 
+import org.xwalk.core.XWalkNavigationItem;
 import org.xwalk.embedding.MainActivity;
 import org.xwalk.embedding.base.XWalkViewTestBase;
 
@@ -75,7 +76,7 @@ public class XWalkNavigationItemTest extends XWalkViewTestBase {
     @SmallTest
     public void testGetFaviconExist() {
         try {
-            assertTrue(false);
+            assertTrue(checkMethodInClass(XWalkNavigationItem.class, "getFaviconExist"));
         } catch (Exception e) {
             e.printStackTrace();
             assertTrue(false);

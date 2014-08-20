@@ -6,6 +6,7 @@ package org.xwalk.embedding.base;
 
 import java.io.IOException;
 import java.io.InputStream;
+import java.lang.reflect.Method;
 import java.util.concurrent.Callable;
 import java.util.concurrent.FutureTask;
 import java.util.concurrent.TimeUnit;
@@ -23,7 +24,6 @@ import com.test.server.ActivityInstrumentationTestCase2;
 import android.content.Context;
 import android.content.res.AssetManager;
 import android.os.Bundle;
-import android.os.SystemClock;
 
 
 public class XWalkViewTestBase extends ActivityInstrumentationTestCase2<MainActivity> {
@@ -363,8 +363,7 @@ public class XWalkViewTestBase extends ActivityInstrumentationTestCase2<MainActi
     protected void setServerResponseAndLoad(int upto) throws Throwable {
         for (int i = 0; i < upto; ++i) {
             mUrls[i] = PATHS[i];
-            loadUrlAsync(mUrls[i].toString());
-            SystemClock.sleep(1000);
+            loadUrlSync(mUrls[i].toString());
         }
     }
 
@@ -455,7 +454,11 @@ public class XWalkViewTestBase extends ActivityInstrumentationTestCase2<MainActi
     }
 
     protected void loadUrlSync(final String url, final String content) throws Exception {
+        CallbackHelper pageFinishedHelper = mTestHelperBridge.getOnPageFinishedHelper();
+        int currentCallCount = pageFinishedHelper.getCallCount();
         loadUrlAsync(url, content);
+        pageFinishedHelper.waitForCallback(currentCallCount, 1, WAIT_TIMEOUT_SECONDS,
+                TimeUnit.SECONDS);
     }
 
     protected void loadAssetFile(String fileName) throws Exception {
@@ -466,23 +469,6 @@ public class XWalkViewTestBase extends ActivityInstrumentationTestCase2<MainActi
 
         pageFinishedHelper.waitForCallback(currentCallCount, 1, WAIT_TIMEOUT_SECONDS,
                 TimeUnit.SECONDS);
-    }
-
-    protected StringBuffer loadUrlSync2(final String url) throws Exception {
-        final StringBuffer urlBuf = new StringBuffer() ;
-        runTestWaitPageFinished(new Runnable() {
-            @Override
-            public void run() {
-                getInstrumentation().runOnMainSync(new PerformExecute(urlBuf) {
-                    @Override
-                    public void run() {
-                        mXWalkView.load(url, null);
-                        urlBuf = urlBuf.append(mXWalkView.getUrl());
-                    }
-                });
-            }
-        });
-        return urlBuf;
     }
 
     protected void runTestWaitPageFinished(Runnable runnable) throws Exception{
@@ -530,6 +516,13 @@ public class XWalkViewTestBase extends ActivityInstrumentationTestCase2<MainActi
     public boolean checkMethodInClass(Class<?> clazz, String methodName){
         Method[] methods = clazz.getMethods();
         for(Method method : methods)
+        {
+            if(method.getName().equals(methodName)){
+                return true;
+            }
+        }
+        Method[] methods2 = clazz.getDeclaredMethods();
+        for(Method method : methods2)
         {
             if(method.getName().equals(methodName)){
                 return true;

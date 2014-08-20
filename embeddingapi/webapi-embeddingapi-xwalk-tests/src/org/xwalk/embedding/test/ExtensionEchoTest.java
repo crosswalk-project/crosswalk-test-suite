@@ -11,7 +11,6 @@ import org.xwalk.embedding.base.ExtensionEcho;
 import org.xwalk.embedding.base.XWalkViewTestBase;
 
 import android.annotation.SuppressLint;
-import android.os.SystemClock;
 import android.test.suitebuilder.annotation.SmallTest;
 
 @SuppressLint("NewApi")

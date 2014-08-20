@@ -19,25 +19,12 @@ public class LoadTest extends XWalkViewTestBase {
     }
 
     @SmallTest
-    public void testLoadUrl1()
+    public void testLoadUrl()
     {
         try {
             String url = "file:///android_asset/p2bar.html";
             loadUrlSync(url,"Hello");
             assertEquals("about:blank", getUrlOnUiThread());
-        } catch (Exception e) {
-            e.printStackTrace();
-            assertTrue(false);
-        }
-    }
-
-    @SmallTest
-    public void testLoadUrl2()
-    {
-        try {
-            String url = "file:///android_asset/p1bar.html";
-            StringBuffer sb = loadUrlSync2(url);
-            assertEquals(url, sb.toString());
         } catch (Exception e) {
             e.printStackTrace();
             assertTrue(false);
@@ -59,7 +46,7 @@ public class LoadTest extends XWalkViewTestBase {
     }
 
     @SmallTest
-    public void testReload() {
+    public void testReload_ignoreCache() {
         try {
             String url = "file:///android_asset/p1bar.html";
             loadUrlSync(url);
@@ -75,7 +62,7 @@ public class LoadTest extends XWalkViewTestBase {
     }
 
     @SmallTest
-    public void testReload2() {
+    public void testReload_normal() {
         try {
             String url = "file:///android_asset/p1bar.html";
             loadUrlSync(url);
@@ -136,7 +123,7 @@ public class LoadTest extends XWalkViewTestBase {
     }
 
     @SmallTest
-    public void testGetTitle() {
+    public void testGetTitle_fileName() {
         try {
             final String name = "p1bar.html";
             loadAssetFile(name);
@@ -149,7 +136,7 @@ public class LoadTest extends XWalkViewTestBase {
     }
 
     @SmallTest
-    public void testGetTitle2() {
+    public void testGetTitle_url() {
         try {
             loadUrlSync("file:///android_asset/p1bar.html");
             String title = getTitleOnUiThread();
