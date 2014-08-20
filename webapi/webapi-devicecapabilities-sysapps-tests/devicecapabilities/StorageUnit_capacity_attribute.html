@@ -52,7 +52,7 @@ t.step(function () {
         assert_equals(typeof storage.capacity, "number", "The type of StorageUnit.capacity");
         var value = storage.capacity;
         storage.capacity = value + 1;
-        assert_equals(storage.id, value, "The StorageUnit.capacity");
+        assert_equals(storage.capacity, value, "The StorageUnit.capacity");
       });
       t.done();
     }, function (error) {
