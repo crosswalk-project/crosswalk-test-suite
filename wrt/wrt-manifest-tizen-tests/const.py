@@ -8,6 +8,8 @@ else:
    os.chdir("/opt/usr/media/tct/opt/wrt-manifest-tizen-tests/") 
    path = os.getcwd()
    print path
+   device_ssh_ip = ""
+   ssh_device = device_ssh_ip.split(",")
    path_tcs = path + "/tcs"
    path_result= path + "/result"
    path_allpairs = path + "/allpairs"
