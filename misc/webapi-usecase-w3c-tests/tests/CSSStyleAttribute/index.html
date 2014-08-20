@@ -36,10 +36,23 @@ Authors:
   <meta name="viewport" content="initial-scale=1.0, maximum-scale=1.0, width=device-width" />
   <link rel="stylesheet" type="text/css" href="../../css/jquery.mobile.css" />
   <link rel="stylesheet" type="text/css" href="../../css/main.css" />
+  <link rel="stylesheet" type="text/css" href="css/style.css" />
   <script src="../../js/thirdparty/jquery.js"></script>
   <script src="../../js/thirdparty/jquery.mobile.js"></script>
   <script src="../../js/tests.js"></script>
   <script src="../../js/main.js"></script>
+  <style>
+      #div {
+        color: green ! important;
+        margin: 35px auto;
+        text-align: center;
+      }
+      #p1, .p1, p, p[style] {
+        background: transparent;
+        color: white;
+        text-align: left;
+      }
+    </style>
 </head>
 <body>
   <input type="hidden" id="sub_test"/>
@@ -47,39 +60,38 @@ Authors:
     <div data-role="header" data-position="fixed" data-tap-toggle="false">
       <h1 id="main_page_title"></h1>
     </div>
-    <div id="content">
-      <ul data-role="listview" id="cspList" data-divider-theme="b" data-inset="true">
-        <li data-role="list-divider" role="heading">Test syntax and interpret</li>
-        <li id="style-attr-braces">
-          <a href="javascript:runApp('tests/style-attr-braces.html')" data-transition="slide" style="">
-            <h2>style-attr-braces</h2>
-          </a>
-        </li>
-        <li id="style-attr-cascade">
-          <a href="javascript:runApp('tests/style-attr-cascade.html')" data-transition="slide" style="">
-            <h2>style-attr-cascade</h2>
-          </a>
-        </li>
-        <li id="style-attr-specificity">
-          <a href="javascript:runApp('tests/style-attr-specificity.html')" data-transition="slide" style="">
-            <h2>style-attr-specificity</h2>
-          </a>
-        </li>
-        <li id="style-attr-urls">
-          <a href="javascript:runApp('tests/style-attr-urls.html')" data-transition="slide" style="">
-            <h2>style-attr-urls</h2>
-          </a>
-        </li>
-      </ul>
+    <div data-role="content">
+      <h3>Test passes if the below sentence is green on a green background.</h2>
+        <div id="testBox">
+          <div id="testDiv" style="color: green; color: red }; background: lime;">
+            This sentence must be green on a green background.
+          </div>
+        </div>
+      <hr />
+      <h3>Test passes if the below sentence is green.</h3>
+        <div id="testDiv">
+          <div style="color: red" id="div">This sentence must be green.</div>
+        </div>
+      <hr />      
+      <h3>Test passes if the below sentence is green on a green background.</h3>
+        <div id="testDiv">
+          <p class="p1" id="p1" style="background: lime; color: green; text-align: center;">This sentence must be green on a green background.</p>
+        </div>
+      <hr />  
+      <h3>Test passes if the below sentence is white on a green background.</h3>
+        <div id="testDiv">
+        <p class="p2" style="background-image: url(../../res/images/green-100x100.png)">This sentence must be black on a green background.</p>
+        </div>
+      <hr /> 
     </div>
     <div data-role="footer" data-position="fixed" data-tap-toggle="false">
     </div>
     <div data-role="popup" id="popup_info" data-theme="a">
       <font class="fontSize">
         <p>Test Purpose: </p>
-        <p>Verifies the syntax and interpret of CSS Style Attribute is correctly.</p>
+        <p>Verifies the syntax and interpret of CSS Style Attribute is correct.</p>
         <p>Expected Result: </p>
-        <p>Test passes if the style can normally display and the description is correctly.</p>
+        <p>Test passes if all the subtests are passed.</p>
       </font>
     </div>
   </div>
