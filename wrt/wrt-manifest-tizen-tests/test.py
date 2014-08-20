@@ -12,8 +12,10 @@ all_pairs = metacomm.combinatorics.all_pairs2.all_pairs2
 Manifest_Row = 0
 Device_Ip = ""
 Device_Ip_List = []
+Device_SSH_List = []
 Pack_Type = "xpk"
 Test_Flag = "positive"
+Test_Device_Type = "ssh"
 test_start_time = datetime.now().strftime('%m-%d-%H:%M:%S')
 reload(sys)
 sys.setdefaultencoding( "utf-8" )
@@ -325,7 +327,7 @@ def endWith(s,*endstring):
                 return False
 def get_Result():
   try:
-     for i in range(1,len(Device_Ip_List)):
+     for i in range(0,len(Device_Ip_List)):
         auto_sPass = 'PASS'        
         sBlock_count = 0
         auto_sPass_count = 0
@@ -347,13 +349,13 @@ def get_Result():
             else:
                     auto_sFail_count = auto_sFail_count + 1 
             
-            testreport_auto_XML(const.path + "/device_" + Device_Ip_List[i] + "/wrt-manifest-tizen-tests.xml",sResult[0].replace("\\n"," "),sResult[1].replace("\\n"," "),sResult[2].replace("\\n"," "),"" ,sResult[3].replace("\\n"," "))                   
+            testreport_auto_XML(const.path + "/device_" + Device_Ip_List[i] + "/wrt-manifest-tizen-tests.xml",sResult[0].replace("\\n"," "),sResult[1].replace("\\n"," "),sResult[2].replace("\\n"," "),"" ,sResult[3].replace("\\n"," "),Device_Ip_List[i])                   
        
         resultList = os.listdir(const.path + "/device_" + Device_Ip_List[i] + "/result")
         pass_rate = auto_sPass_count / float(total_case) *100
         fail_rate = auto_sFail_count / float(total_case) *100
         block_rate = sBlock_count / float(total_case) *100
-        insert_to_Summary(const.path + "/device_" + Device_Ip_List[i] + "/summary.xml",total_case,auto_sPass_count,pass_rate,auto_sFail_count,fail_rate, sBlock_count,block_rate)
+        insert_to_Summary(const.path + "/device_" + Device_Ip_List[i] + "/summary.xml",total_case,auto_sPass_count,pass_rate,auto_sFail_count,fail_rate, sBlock_count,block_rate,Device_Ip_List[i])
         log_Log(" Generate report file ok" + "\n") 
         print "<------------------------- Generate Report OK------------------------->"        
   except Exception,e:
@@ -380,7 +382,7 @@ def testcase_Result(resultfile):
     except Exception,e: 
         print Exception,"Get the result -------------------------> error:",e       
 
-def insert_to_Summary(sumaryfile,total_case,pass_case,pass_rate,fail_case,fail_rate,block_case,block_rate):
+def insert_to_Summary(sumaryfile,total_case,pass_case,pass_rate,fail_case,fail_rate,block_case,block_rate,device_id):
     try:
         tree = ElementTree()
         tree.parse(sumaryfile)
@@ -405,7 +407,7 @@ def insert_to_Summary(sumaryfile,total_case,pass_case,pass_rate,fail_case,fail_r
         ntest_end_time = root.getiterator("end_at")
         ntest_end_time[0].text = str(test_end_time)
         device_id_get = root.getiterator("environment")
-        device_id_get[0].set("device_id",Device_Ip)
+        device_id_get[0].set("device_id",device_id)
         tree.write(sumaryfile)
     except Exception,e: 
         print Exception,"Insert to report/summart.xml -------------------------> error:",e
@@ -441,7 +443,7 @@ def result_manifest_XML(result_manifest_xml_file_path,webappFile,auto_Result,man
     except Exception,e: 
         print Exception,"Generate manifest.xml error:",e 
 
-def testreport_auto_XML(report_path,webappName,auto_Result,tcs_manifest,tcs_message,positive_negative):
+def testreport_auto_XML(report_path,webappName,auto_Result,tcs_manifest,tcs_message,positive_negative,device_id):
     try:
         tree = ElementTree()
         tree.parse(report_path)
@@ -468,7 +470,7 @@ def testreport_auto_XML(report_path,webappName,auto_Result,tcs_manifest,tcs_mess
                     actualresult = actualresultnode[-1]
                     actualresult.text = auto_Result
                     device_id_get = root.getiterator("environment")
-                    device_id_get[0].set("device_id",Device_Ip)
+                    device_id_get[0].set("device_id",device_id)
                     tree.write(report_path)
                 else:
                     cnode = root.getiterator("testcase")
@@ -498,7 +500,7 @@ def testreport_auto_XML(report_path,webappName,auto_Result,tcs_manifest,tcs_mess
                 actualresult = actualresultnode[-1]
                 actualresult.text = auto_Result
                 device_id_get = root.getiterator("environment")
-                device_id_get[0].set("device_id",Device_Ip)
+                device_id_get[0].set("device_id",device_id)
                 tree.write(report_path) 
         else:
            if ((len(lst_node[1].getiterator("testcase"))>=1)):
@@ -521,7 +523,7 @@ def testreport_auto_XML(report_path,webappName,auto_Result,tcs_manifest,tcs_mess
                    actualresult = actualresultnode[-1]
                    actualresult.text = auto_Result
                    device_id_get = root.getiterator("environment")
-                   device_id_get[0].set("device_id",Device_Ip)
+                   device_id_get[0].set("device_id",device_id)
                    tree.write(report_path)
                else:
                     cnode = root.getiterator("testcase")
@@ -531,7 +533,7 @@ def testreport_auto_XML(report_path,webappName,auto_Result,tcs_manifest,tcs_mess
                     actualresult = actualresultnode[-1]
                     actualresult.text = auto_Result
                     device_id_get = root.getiterator("environment")
-                    device_id_get[0].set("device_id",Device_Ip)
+                    device_id_get[0].set("device_id",device_id)
                     tree.write(report_paths) 
            else:
               SubElement(lst_node[1],"testcase", {'component':'Runtime Core','purpose':'Check if packaged web application can be installed/launched/uninstalled successfully','execution_type' : 'auto', 'id' : "Crosswalk-Manifest-Check"+webappName ,'result': auto_Result})
@@ -552,7 +554,7 @@ def testreport_auto_XML(report_path,webappName,auto_Result,tcs_manifest,tcs_mess
               actualresult = actualresultnode[-1]
               actualresult.text = auto_Result
               device_id_get = root.getiterator("environment")
-              device_id_get[0].set("device_id",Device_Ip)
+              device_id_get[0].set("device_id",device_id)
               tree.write(report_path)        
     except Exception,e: 
         print Exception,"Generate test error:",e 
@@ -600,14 +602,16 @@ def launcher_WebApp(pakeType,Manifest_Row, tcs_manifest):
         auto_result = "FAIL"
         fail_message = ""
         dt_format = dt_now.strftime('%m_%d_%H_%M_%S')
-        for i in range(1,len(Device_Ip_List)): 
+        if (Test_Device_Type=="sdb"):
+          print "use sdb device-------------->"
+          for i in range(0,len(Device_Ip_List)): 
             cmd_pushxpk = "sdb -s " + Device_Ip_List[i] +" push " + const.name + "-" + const.version +"." + pakeType + ".zip " +  const.device_path 
             cmd_unzipxpk = "sdb -s " + Device_Ip_List[i] +" shell unzip -od " + const.device_path + "  " + const.device_path + const.name + "-" + const.version + "." + pakeType + ".zip "
             cmd_installapp="sdb -s " + Device_Ip_List[i] +" shell \"su - app -c 'export DBUS_SESSION_BUS_ADDRESS=unix:path=/run/user/5000/dbus/user_bus_socket;" + const.device_path + "/opt/wrt-manifest-tizen-tests/appinstall.sh "+ const.device_path +"/opt/wrt-manifest-tizen-tests/Crosswalk-Manifest-Check" + str(Manifest_Row) +  "." + pakeType +"'\""
             print "------------push webapp----------->",Device_Ip_List[i]
             get_push = get_runback(cmd_pushxpk,"push","")
             log_Log(" push webapp--------->" + str(Manifest_Row) + str(get_push) + "\n")
-            print "------------unzip webapp----------->",Device_Ip_List[i]       
+            print "------------unzip webapp---------->",Device_Ip_List[i]       
             get_unzip = get_runback(cmd_unzipxpk,"unzip","")
             log_Log(" unzip webapp--------->" + str(Manifest_Row) + str(get_unzip) + "\n")        
             cmd_chmod = "sdb -s " + Device_Ip_List[i] +" shell chmod 777 "+const.device_path+"/opt/wrt-manifest-tizen-tests/appinstall.sh"
@@ -659,73 +663,151 @@ def launcher_WebApp(pakeType,Manifest_Row, tcs_manifest):
                            log_Log(" uninstall--------->" + str(Manifest_Row) + " OK"+ "\n") 
                            auto_result = "PASS"
                            fail_message = "uninstall and db check ok"
-                           #return "testend"
                       else:
                           fail_message = "uninstall and db check fail"
                           auto_result = "FAIL"
                           print "Uninstall-------> Fail"
-                          #return "testagain"
-                          #shutil.move("opt/wrt-manifest-tizen-tests/manifest" + Manifest_Row + "." + pakeType ,const.path_result)
                   else:
                     fail_message = "launch fail"
-                    #shutil.move("opt/wrt-manifest-tizen-tests/manifest" + Manifest_Row + "." + pakeType ,const.path_result)
             elif ((add_webapp==1) & (Test_Flag=="positive")): # positive install ok but test fail
                   auto_result = "FAIL"
                   fail_message = "install ok but check db fail"
                   log_Log(" install--------->" + str(Manifest_Row) + " check DB fail"+ "\n")
                   print "Positive test ----------> install OK but check DB fail" 
-                  #shutil.move("opt/wrt-manifest-tizen-tests/manifest" + Manifest_Row + "." + pakeType ,const.path_result)
                   Pkgids = get_fromdb[1]
                   cmd_uninstallapp="sdb -s " + Device_Ip_List[i] +" shell \"su - app -c 'export DBUS_SESSION_BUS_ADDRESS=unix:path=/run/user/5000/dbus/user_bus_socket;"+const.device_path+"/opt/wrt-manifest-tizen-tests/appuninstall.sh " + Pkgids +"'\""
                   get_cmdback = get_runback(cmd_uninstallapp,"uninstall","")
                   auto_result = "FAIL"
-                  #return "testagain"              
             elif ((add_webapp==0) & (Test_Flag=="positive")): #install ok and test =positive
                   auto_result = "FAIL"
                   fail_message = "install and db check fail"
-                  #shutil.move("opt/wrt-manifest-tizen-tests/manifest" + Manifest_Row + "." + pakeType ,const.path_result)
                   log_Log(" install--------->" + str(Manifest_Row) + " fail"+ "\n")
                   print "Positive test ----------> install or check DB fail"
-                  #return "testagain"
             elif ((add_webapp==1) & (Test_Flag=="negative")): #install ok and test =negative
                   auto_result = "FAIL" 
-                  #shutil.move("opt/wrt-manifest-tizen-tests/manifest" + Manifest_Row + "." + pakeType ,const.path_result)
                   log_Log(" negative test install ok:--------->" + str(Manifest_Row) + " fail"+ "\n")
                   fail_message = "negative test install ok: Fail"  
                   print "Negative test-------> Install ok: Fail"
                   Pkgids = get_fromdb[1]
                   cmd_uninstallapp="sdb -s " + Device_Ip_List[i] +" shell \"su - app -c 'export DBUS_SESSION_BUS_ADDRESS=unix:path=/run/user/5000/dbus/user_bus_socket;"+const.device_path+"/opt/wrt-manifest-tizen-tests/appuninstall.sh " + Pkgids +"'\""
                   get_cmdback = get_runback(cmd_uninstallapp,"uninstall","")
-                  #return "testagain" 
             elif ((add_webapp==0) & (Test_Flag=="negative")): #install ok and test =negative
                   auto_result = "PASS"
                   log_Log(" negative test install fail :--------->" + str(Manifest_Row) + " pass"+ "\n")
                   fail_message = "negative install fail: Pass"
                   print "Negative test-------> Install fail: Pass"
-                  #return "testend"                       
             else:
                 auto_result = "FAIL"
-                #shutil.move("opt/wrt-manifest-tizen-tests/manifest" + Manifest_Row + "." + pakeType ,const.path_result)
                 log_Log(" other fail:--------->" + str(Manifest_Row) + "\n")
                 fail_message = "install fail"
                 print "-------------Install/Launch/Uninstall Fail-------------------"
-                #return "testagain"
                 #key input pass or faile
             print "---------- Webapp Crosswalk-Manifest-Check" + str(Manifest_Row) + "." + pakeType +" test end------------>\n"
             log_Log(" test webapp " + str(Manifest_Row) + " ok "+ "\n")
             result_manifest_XML(const.path + "/device_" + Device_Ip_List[i] , "Crosswalk-Manifest-Check" + str(Manifest_Row) + ".xml",auto_result , tcs_manifest)
-            #testreport_auto_XML(const.path + "/device_" + Device_Ip_List[i] + "/wrt-manifest-tizen-tests.xml" , str(Manifest_Row), auto_result ,tcs_manifest,fail_message)  
             os.system("sdb -s " + Device_Ip_List[i] +" shell rm -rf "+const.device_path+"/opt/wrt-manifest-tizen-tests")
-            os.system("sdb -s " + Device_Ip_List[i] +" shell rm -rf "+const.device_path+"/wrt-manifest-tizen-tests*")                 
+            os.system("sdb -s " + Device_Ip_List[i] +" shell rm -rf "+const.device_path+"/wrt-manifest-tizen-tests*")
+        else:
+          print "use ssh device-------------->"
+          for i in range(0,len(Device_Ip_List)): 
+            cmd_pushxpk = "scp " + const.name + "-" + const.version +"." + pakeType + ".zip " + Device_Ip_List[i] + ":"+ const.device_path 
+            cmd_unzipxpk = "ssh " + Device_Ip_List[i] +" 'unzip -od " + const.device_path + "  " + const.device_path + const.name + "-" + const.version + "." + pakeType + ".zip'"
+            cmd_installapp="ssh " + Device_Ip_List[i] +" \"su - app -c 'export DBUS_SESSION_BUS_ADDRESS=unix:path=/run/user/5000/dbus/user_bus_socket;bash " + const.device_path + "/opt/wrt-manifest-tizen-tests/appinstall.sh "+ const.device_path +"/opt/wrt-manifest-tizen-tests/Crosswalk-Manifest-Check" + str(Manifest_Row) +  "." + pakeType +"'\""
+            print "------------push webapp----------->",Device_Ip_List[i]
+            get_push = get_runback(cmd_pushxpk,"push","")
+            log_Log(" push webapp--------->" + str(Manifest_Row) + str(get_push) + "\n")
+            print "------------unzip webapp----------->",Device_Ip_List[i]       
+            get_unzip = get_runback(cmd_unzipxpk,"unzip","")
+            log_Log(" unzip webapp--------->" + str(Manifest_Row) + str(get_unzip) + "\n")        
+            shutil.copy("./tests_sample.xml", const.path + "/device_" + Device_Ip_List[i] +"/result/Crosswalk-Manifest-Check" + str(Manifest_Row) + ".xml")
+            
+            result_manifest_XML(const.path + "/device_" + Device_Ip_List[i], "Crosswalk-Manifest-Check" + str(Manifest_Row) + ".xml",auto_result,tcs_manifest)
+            #install app
+            cmd_checkdb="ssh " + Device_Ip_List[i] +" \"su - app -c 'export DBUS_SESSION_BUS_ADDRESS=unix:path=/run/user/5000/dbus/user_bus_socket;bash " + const.device_path + "/opt/wrt-manifest-tizen-tests/checkdb.sh '\""
+            get_dbcount_before = get_runback(cmd_checkdb,"install","")[0].strip("\n\r")
+            get_cmdback = get_runback(cmd_installapp,"install","")
+            log_Log(" check DB--------->" + str(Manifest_Row) + " install webapp info= " + str(get_cmdback) + "\n")
+            get_dbcount_after = get_runback(cmd_checkdb,"install","")[0].strip("\n\r")
+            add_webapp = int(get_dbcount_after) - int(get_dbcount_before)
+            log_Log(" check DB--------->" + str(Manifest_Row) + " check DB new webapp= " + str(add_webapp) + "\n")
+            cmd_checkdb_new = "ssh " + Device_Ip_List[i] +" \"su - app -c 'export DBUS_SESSION_BUS_ADDRESS=unix:path=/run/user/5000/dbus/user_bus_socket;bash "+const.device_path+"/opt/wrt-manifest-tizen-tests/checkdb_new.sh " + str(int(get_dbcount_after)-1) + "'\""
+            get_fromdb = get_from_DB(cmd_checkdb_new,tcs_manifest)
+            log_Log(" check DB--------->" + str(Manifest_Row) + " get DB= " + str(get_fromdb) + "\n")
+            if ((add_webapp==1) & (get_fromdb[0]=="GET") & (Test_Flag=="positive")): #install ok and test =positive
+                  print "Install---------> OK "
+                  log_Log(" install--------->" + str(Manifest_Row) + " OK"+ "\n") 
+                  fail_message = "install ok"
+                  auto_result = "PASS"
+                  #launcher app
+                  Pkgids = get_fromdb[1]
+                  cmd_launchapp="ssh " + Device_Ip_List[i] +" \"su - app -c 'export DBUS_SESSION_BUS_ADDRESS=unix:path=/run/user/5000/dbus/user_bus_socket;bash "+const.device_path+"/opt/wrt-manifest-tizen-tests/applaunch.sh " + Pkgids +"'\""
+                  get_cmdback = get_runback(cmd_launchapp,"launch",Pkgids)
+                  if ((get_cmdback[0].strip("\r\n"))=="Launch ok"):
+                      print "Launch---------> OK"
+                      log_Log(" launch--------->" + str(Manifest_Row) + " OK"+ "\n")
+                      fail_message = "launch webapp ok"
+                      #uninstall app
+                      cmd_uninstallapp="ssh " + Device_Ip_List[i] +"  \"su - app -c 'export DBUS_SESSION_BUS_ADDRESS=unix:path=/run/user/5000/dbus/user_bus_socket;bash "+const.device_path+"/opt/wrt-manifest-tizen-tests/appuninstall.sh " + Pkgids +"'\""
+                      cmd_checkdb="ssh " + Device_Ip_List[i] +"  \"su - app -c 'export DBUS_SESSION_BUS_ADDRESS=unix:path=/run/user/5000/dbus/user_bus_socket;bash "+const.device_path+"/opt/wrt-manifest-tizen-tests/checkdb.sh " + Pkgids +"'\""
+                      get_cmdback = get_runback(cmd_uninstallapp,"uninstall","")
+                      get_dbcount_uninstall = get_runback(cmd_checkdb,"install","")[0].strip("\n\r")
+                      uninstall_webapp = int(get_dbcount_before) - int(get_dbcount_uninstall)
+
+                      if (((get_cmdback[0].find("Pass")>0) or (uninstall_webapp==0))>0):
+                           print "Uninstall-------> OK"
+                           log_Log(" uninstall--------->" + str(Manifest_Row) + " OK"+ "\n") 
+                           auto_result = "PASS"
+                           fail_message = "uninstall and db check ok"
+                      else:
+                          fail_message = "uninstall and db check fail"
+                          auto_result = "FAIL"
+                          print "Uninstall-------> Fail"
+                  else:
+                    fail_message = "launch fail"
+            elif ((add_webapp==1) & (Test_Flag=="positive")): # positive install ok but test fail
+                  auto_result = "FAIL"
+                  fail_message = "install ok but check db fail"
+                  log_Log(" install--------->" + str(Manifest_Row) + " check DB fail"+ "\n")
+                  print "Positive test ----------> install OK but check DB fail" 
+                  Pkgids = get_fromdb[1]
+                  cmd_uninstallapp="ssh " + Device_Ip_List[i] +" \"su - app -c 'export DBUS_SESSION_BUS_ADDRESS=unix:path=/run/user/5000/dbus/user_bus_socket;bash "+const.device_path+"/opt/wrt-manifest-tizen-tests/appuninstall.sh " + Pkgids +"'\""
+                  get_cmdback = get_runback(cmd_uninstallapp,"uninstall","")
+                  auto_result = "FAIL"
+           
+            elif ((add_webapp==0) & (Test_Flag=="positive")): #install ok and test =positive
+                  auto_result = "FAIL"
+                  fail_message = "install and db check fail"
+                  log_Log(" install--------->" + str(Manifest_Row) + " fail"+ "\n")
+                  print "Positive test ----------> install or check DB fail"
+            elif ((add_webapp==1) & (Test_Flag=="negative")): #install ok and test =negative
+                  auto_result = "FAIL" 
+                  log_Log(" negative test install ok:--------->" + str(Manifest_Row) + " fail"+ "\n")
+                  fail_message = "negative test install ok: Fail"  
+                  print "Negative test-------> Install ok: Fail"
+                  Pkgids = get_fromdb[1]
+                  cmd_uninstallapp="ssh " + Device_Ip_List[i] +" \"su - app -c 'export DBUS_SESSION_BUS_ADDRESS=unix:path=/run/user/5000/dbus/user_bus_socket;bash "+const.device_path+"/opt/wrt-manifest-tizen-tests/appuninstall.sh " + Pkgids +"'\""
+                  get_cmdback = get_runback(cmd_uninstallapp,"uninstall","")
+            elif ((add_webapp==0) & (Test_Flag=="negative")): #install ok and test =negative
+                  auto_result = "PASS"
+                  log_Log(" negative test install fail :--------->" + str(Manifest_Row) + " pass"+ "\n")
+                  fail_message = "negative install fail: Pass"
+                  print "Negative test-------> Install fail: Pass"
+            else:
+                auto_result = "FAIL"
+                log_Log(" other fail:--------->" + str(Manifest_Row) + "\n")
+                fail_message = "install fail"
+                print "-------------Install/Launch/Uninstall Fail-------------------"
+            print "---------- Webapp Crosswalk-Manifest-Check" + str(Manifest_Row) + "." + pakeType +" test end------------>\n"
+            log_Log(" test webapp " + str(Manifest_Row) + " ok "+ "\n")
+            result_manifest_XML(const.path + "/device_" + Device_Ip_List[i] , "Crosswalk-Manifest-Check" + str(Manifest_Row) + ".xml",auto_result , tcs_manifest)
+            os.system("ssh " + Device_Ip_List[i] +" 'rm -rf "+const.device_path+"/opt/wrt-manifest-tizen-tests'")
+            os.system("ssh  " + Device_Ip_List[i] +" 'rm -rf "+const.device_path+"/wrt-manifest-tizen-tests*'")
+        
+            
     except Exception,e: 
         log_Log(" test webapp " + str(Manifest_Row) + " error \n") 
         print Exception,"Launch webapp error:",e 
         print traceback.format_exc() 
-    #finally:
-    #    result_manifest_XML("Crosswalk-Manifest-Check" + str(Manifest_Row) + ".xml",auto_result , tcs_manifest)
-    #    testreport_auto_XML(str(Manifest_Row), auto_result ,tcs_manifest,fail_message) 
-    #    for i in range(1,len(Device_Ip_List)):          
-            
                 
 def get_runback(cmdline,step,pkgids):
     try:
@@ -782,72 +864,7 @@ def get_from_DB(cmdline,manifest):
         print Exception,"Get db record error:",e
         print traceback.format_exc()
         return "NONE"
-
-  
-
-
-def get_Sdb_Devices():
-    try:
-        content_device = 1
-        getDeviceList = []
-        retdeviceList = []
-        getDevice = os.popen("sdb devices").readlines(1)
-        if (len(getDevice)>2):
-            print "2 or more devices connect!"
-            for i in range (0,len(getDevice)):
-                getDeviceList.append(getDevice[i].split("\t")[0])
-                if i>=1:
-                    print "Device",i,":",getDeviceList[i].strip("\t")
-            content_device = raw_input("input 1 or 2... to choice the device:")
-            while (not content_device.isdigit()) or (content_device=="0") or (int(content_device) > len(getDeviceList)-1):
-                content_device = raw_input("input 1 or 2... to choice the device:")
-            if int(content_device) in range(len(getDeviceList)):
-                retdeviceList = getDeviceList[int(content_device)],len(getDeviceList)
-                log_Log(" get sdb device=" + retdeviceList[0] + "\n")
-                return retdeviceList
-        else:
-            getDevice = getDevice[1].split("\t")[0]  
-            getDevice = getDevice.strip('\n\r')
-            retdeviceList = str(getDevice),1
-            log_Log(" get sdb device=" + retdeviceList[0] + "\n")
-            return retdeviceList
-        #return getDevice
-    except Exception,e: 
-        print Exception,"Can not get sdb device:",e
-        log_Log(" get sdb device error\n") 
-        sys.exit(1)
-
-def get_Sdb_Devices_List():
-    try:
-        content_device = 1
-        getDeviceList = []
-        retdeviceList = []
-        getDevice = os.popen("sdb devices").readlines(1)
-        getEnv = os.environ.get('deviceid')
-        if getEnv:
-           print "getEnv device=",getEnv
-           return getEnv
-           log_Log(" get env sdb devices=" + str(getEnv) + "\n")
-        else:
-           print "no env device,use list"
-           if (len(getDevice)>2):
-               for i in range (0,len(getDevice)):
-                   getDeviceList.append((getDevice[i].split("\t")[0]).strip())
-                   retdeviceList.append(getDeviceList[i])
-               log_Log(" get sdb devices=" + str(retdeviceList) + "\n")
-               return getDeviceList
-           else:
-               getDevice = getDevice[1].split("\t")[0] 
-               getDevice = getDevice.strip('\n\r').strip()
-               retdeviceList = "List of devices attached \n",str(getDevice)
-               log_Log(" get sdb devices=" + str(retdeviceList) + "\n")
-               return retdeviceList
-        #return getDevice
-    except Exception,e: 
-        print Exception,"Can not get sdb device:",e
-        log_Log(" get sdb device error\n") 
-        sys.exit(1)
-        
+ 
 def add_style_Report(file_name,style_file):
     try:
         fp = file(file_name)
@@ -869,51 +886,84 @@ def log_Log(message):
         logfile.write(log_time +": "+ message)
     except Exception,e: 
         print Exception,"Add log to log.txt error:",e 
-         
-def main(argv):
+
+def run_ssh_sdb(run_device,run_id):
     try:
         global Device_Ip_List
+        global Device_SSH_List
+        Device_Ip_List = run_id.split(",")
+        print "getdevice: ",Device_Ip_List[0],type(Device_Ip_List[0])
+        log_Log(" get Device_Ip_List =" + str(Device_Ip_List) + "\n")
+        if (run_device=="sdb"):
+            for i in range(0,len(Device_Ip_List)):
+                if (os.path.isdir(os.getcwd() + "/device_" + Device_Ip_List[i])):
+                    os.system("rm -rf " + os.getcwd() + "/device_" + Device_Ip_List[i] )
+                    os.makedirs(const.path + "/device_" + Device_Ip_List[i])
+                    copy_Files(const.path + "/report",const.path + "/device_" + Device_Ip_List[i])
+                else:
+                    os.makedirs(const.path + "/device_" + Device_Ip_List[i])
+                    copy_Files(const.path + "/report",const.path + "/device_" + Device_Ip_List[i])
+                insert_to_Summary(const.path + "/device_" + Device_Ip_List[i] + "/summary.xml","0","0","0","0","0","0","0","")    
+                shutil.copy(const.path +"/tests.report.xml",const.path + "/device_" + Device_Ip_List[i] + "/wrt-manifest-tizen-tests.xml")
+                if (os.path.isdir(const.path + "/device_" + Device_Ip_List[i] + "/result")):
+                    os.system("rm -rf " + const.path + "/device_" + Device_Ip_List[i] + "/result")
+                else:
+                    os.makedirs(const.path + "/device_" + Device_Ip_List[i] + "/result")
+                print run_device
+                os.system("sdb -s " + Device_Ip_List[i] +" root on")
+                cmd_createtct = "sdb -s " + Device_Ip_List[i] +" push " + const.sh_path +"/checktct_folder.sh /home/app/content/"
+                os.system(cmd_createtct)
+                cmd_chmod = "sdb -s " + Device_Ip_List[i] +" shell chmod 777 /home/app/content/checktct_folder.sh"
+                os.system(cmd_chmod)
+                cmd_createtctfolder = "sdb -s " + Device_Ip_List[i] +" shell /home/app/content/checktct_folder.sh "
+                os.system(cmd_createtctfolder)
+        else:
+            for i in range(0,len(Device_Ip_List)):
+                if (os.path.isdir(os.getcwd() + "/device_" + Device_Ip_List[i])):
+                    os.system("rm -rf " + os.getcwd() + "/device_" + Device_Ip_List[i] )
+                    os.makedirs(const.path + "/device_" + Device_Ip_List[i])
+                    copy_Files(const.path + "/report",const.path + "/device_" + Device_Ip_List[i])
+                else:
+                    os.makedirs(const.path + "/device_" + Device_Ip_List[i])
+                    copy_Files(const.path + "/report",const.path + "/device_" + Device_Ip_List[i])
+                insert_to_Summary(const.path + "/device_" + Device_Ip_List[i] + "/summary.xml","0","0","0","0","0","0","0",Device_Ip_List[i])    
+                shutil.copy(const.path +"/tests.report.xml",const.path + "/device_" + Device_Ip_List[i] + "/wrt-manifest-tizen-tests.xml")
+                if (os.path.isdir(const.path + "/device_" + Device_Ip_List[i] + "/result")):
+                    os.system("rm -rf " + const.path + "/device_" + Device_Ip_List[i] + "/result")
+                else:
+                    os.makedirs(const.path + "/device_" + Device_Ip_List[i] + "/result")
+            
+                os.system("scp " + const.sh_path +"/checktct_folder.sh " + Device_Ip_List[i] + ":/home/app/content/")
+                os.system("ssh " + Device_Ip_List[i] + " 'bash /home/app/content/checktct_folder.sh'")      
+    except Exception,e: 
+        print Exception,"Add log to log.txt error:",e
+        print traceback.format_exc()  
+        
+                 
+def main(argv):
+    try:
         global Pack_Type
         global Test_Flag
         global logfile
-        #shutil.copy("./tests.report.xml",const.report_file)
+        global Test_Device_Type
         logfile = file(const.log_path,"w+")
         do_Clear(const.path_tcs)
         log_Log(" test start\n")
         log_Log(" init summart file\n")
-        #insert_to_Summary(const.report_summary_file,"0","0","0","0","0","0","0")
         do_Clear(const.path + "/self")
         do_Clear(const.report_path + "/manifest_all_positive.txt")
         do_Clear(const.report_path + "/manifest_all_negative.txt")
         os.system("rm -f " + const.seed_negative + "/*~")
         os.system("rm -f " + const.seed_positive + "/*~") 
-        #os.system("rm -rf ./device_*")        
-        Device_Ip_List = get_Sdb_Devices_List()
-        print Device_Ip_List
-        if type(Device_Ip_List)==str:
-            Device_Ip_List = 1,Device_Ip_List
-        for i in range(1,len(Device_Ip_List)):
-            if (os.path.isdir(os.getcwd() + "/device_" + Device_Ip_List[i])):
-                os.system("rm -rf " + os.getcwd() + "/device_" + Device_Ip_List[i] )
-                os.makedirs(const.path + "/device_" + Device_Ip_List[i])
-                copy_Files(const.path + "/report",const.path + "/device_" + Device_Ip_List[i])
-            else:
-                os.makedirs(const.path + "/device_" + Device_Ip_List[i])
-                copy_Files(const.path + "/report",const.path + "/device_" + Device_Ip_List[i])
-            insert_to_Summary(const.path + "/device_" + Device_Ip_List[i] + "/summary.xml","0","0","0","0","0","0","0")    
-            shutil.copy(const.path +"/tests.report.xml",const.path + "/device_" + Device_Ip_List[i] + "/wrt-manifest-tizen-tests.xml")
-            if (os.path.isdir(const.path + "/device_" + Device_Ip_List[i] + "/result")):
-                os.system("rm -rf " + const.path + "/device_" + Device_Ip_List[i] + "/result")
-            else:
-                os.makedirs(const.path + "/device_" + Device_Ip_List[i] + "/result")
-            
-            os.system("sdb -s " + Device_Ip_List[i] +" root on")
-            cmd_createtct = "sdb -s " + Device_Ip_List[i] +" push " + const.sh_path +"/checktct_folder.sh /home/app/content/"
-            os.system(cmd_createtct)
-            cmd_chmod = "sdb -s " + Device_Ip_List[i] +" shell chmod 777 /home/app/content/checktct_folder.sh"
-            os.system(cmd_chmod)
-            cmd_createtctfolder = "sdb -s " + Device_Ip_List[i] +" shell /home/app/content/checktct_folder.sh "
-            os.system(cmd_createtctfolder)
+        #os.system("rm -rf ./device_*")
+        getEnv_Id = os.environ.get('DEVICE_ID')
+        Test_Device_Type = os.environ.get('CONNECT_TYPE')
+        log_Log(" get env =" + str(getEnv_Id) + str(Test_Device_Type) + "\n")
+        if (not getEnv_Id):
+            log_Log(" get env error\n")
+            sys.exit(1)
+        else:
+            run_ssh_sdb(Test_Device_Type,getEnv_Id)
         log_Log(" create tct folder \n") 
         opts, args = getopt.getopt(argv[1:], 'h:o:p:n', ['help','order=','pack='])
         if (len(opts) ==0):
@@ -967,8 +1017,7 @@ def main(argv):
         sys.exit(2)
     finally:
         get_Result()
-        #testreport_auto_XML(const.path + "/device_" + Device_Ip_List[i] + "/wrt-manifest-tizen-tests.xml" , str(Manifest_Row), auto_result ,tcs_manifest,fail_message)
-        for i in range(1,len(Device_Ip_List)):
+        for i in range(0,len(Device_Ip_List)):
           add_style_Report(const.path + "/device_" + Device_Ip_List[i] + "/wrt-manifest-tizen-tests.xml" ,"testresult.xsl")
           add_style_Report(const.path + "/device_" + Device_Ip_List[i] + "/summary.xml" ,"summary.xsl")
         
