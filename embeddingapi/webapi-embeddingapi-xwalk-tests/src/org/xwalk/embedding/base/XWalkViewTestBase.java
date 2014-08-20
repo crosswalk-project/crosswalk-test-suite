@@ -6,6 +6,7 @@ package org.xwalk.embedding.base;
 
 import java.io.IOException;
 import java.io.InputStream;
+import java.lang.reflect.Method;
 import java.util.concurrent.Callable;
 import java.util.concurrent.FutureTask;
 import java.util.concurrent.TimeUnit;
