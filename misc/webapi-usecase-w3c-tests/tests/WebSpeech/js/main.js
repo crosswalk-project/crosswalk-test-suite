@@ -57,13 +57,16 @@ $("#start").live("tap", function () {
     $("#abort").button("enable");
     clearTimeout(showId);
     showId = setTimeout("show()", 10000);
+    $("#infobox").text("Connecting......");
     window.speechReco = new webkitSpeechRecognition();
     speechReco.continuous = true;
     speechReco.interimResults = true;
     speechReco.onstart = function (evt) {
+        clearTimeout(showId);
         $("#infobox").text("Connecting to speech server. \n" + $("#infobox").text());
     };
     speechReco.onresult = function (evt) {
+        clearTimeout(showId);
         for (var i = evt.resultIndex; i < evt.results.length; ++i) {
             if (evt.results[i].isFinal) {
                 final_transcript += evt.results[i][0].transcript;
@@ -75,6 +78,7 @@ $("#start").live("tap", function () {
             "SpeechRecognition interim - " + interim_transcript + "\n" + $("#infobox").text());
     };
     speechReco.onerror = function(err) {
+        clearTimeout(showId);
         $("#infobox").text("Could not connect to speech server. \nSpeechRecognition error - " + err.error + "\n" + $("#infobox").text());
         $("#start").closest(".ui-btn").show();
         $("#stop").closest(".ui-btn").hide();
@@ -83,11 +87,10 @@ $("#start").live("tap", function () {
         $("#infobox").text("SpeechRecognition stop.\n" + $("#infobox").text());
     };
     speechReco.onend = function() {
+        clearTimeout(showId);
         $("#infobox").text("SpeechRecognition end.\n" + $("#infobox").text());
     };
     speechReco.start();
-    $("#infobox").text("SpeechRecognition start.");
-    clearTimeout(showId);
     status();
 });
 
