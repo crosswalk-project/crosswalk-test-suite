@@ -38,7 +38,7 @@ var bookmarkObj_1;
 var bookmarkObj_2;
 
 function Change() {
-  bookmarkTitle = "right1.html";
+  bookmarkTitle = "Page A";
   bookmarkObj = bookmarkObj_1;
   window.parent.window['iframe2'].location='right1.html';
   show();
@@ -47,7 +47,7 @@ function Change() {
 }
 
 function Change2() {
-  bookmarkTitle = "right2.html";
+  bookmarkTitle = "Page B";
   bookmarkObj = bookmarkObj_2;
   window.parent.window['iframe2'].location='right2.html';
   show();
@@ -90,9 +90,9 @@ function remove() {
 }
 
 $(document).ready(function() {
-  bookmarkTitle_1 = "right1.html";
+  bookmarkTitle_1 = "Page A";
   bookmarkURL_1 = "http://127.0.1.1:8081/opt/webapi-usecase-tizen-tests/tests/Bookmark/right1.html";
-  bookmarkTitle_2 = "right2.html";
+  bookmarkTitle_2 = "Page B";
   bookmarkURL_2 = "http://127.0.1.1:8081/opt/webapi-usecase-tizen-tests/tests/Bookmark/right2.html";
   bookmarkTitle = bookmarkTitle_1;
   tizen.bookmark.remove();
