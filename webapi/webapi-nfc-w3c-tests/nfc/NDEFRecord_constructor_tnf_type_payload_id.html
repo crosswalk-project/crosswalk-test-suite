@@ -57,13 +57,11 @@ t.step(function () {
         record = new NDEFRecord(recordText.tnf, recordText.type, payload, recordText.id);
         assert_true(record instanceof NDEFRecord,
         "constructed record is instance of NDEFRecord");
-        assert_own_property(record, "tnf", "NDEFRecord.tnf");
-        asset_equals(record.tnf, recordText.tnf, "NDEFRecord.tnf value");
-        assert_own_property(record, "type", "NDEFRecord.type");
-        asset_equals(record.type, recordText.type, "NDEFRecord.type value");
-        assert_own_property(record, "id", "NDEFRecord.id");
-        asset_equals(record.id, recordText.id, "NDEFRecord.id value");
-        assert_true("getPayload" in record, "NDEFRecord.getPayload()");
+        assert_true("recordType" in record, "NDEFRecord.recordType exists");
+        assert_true("tnf" in record, "NDEFRecord.tnf exists");
+        assert_true("type" in record, "NDEFRecord.type exists");
+        assert_true("id" in record, "NDEFRecord.id exists");
+        assert_true("getPayload" in record, "NDEFRecord.getPayload() method exists");
         t.done();
     });
     recordText = new NDEFRecordText("Hi!", "en-GB");

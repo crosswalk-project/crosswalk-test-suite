@@ -47,15 +47,16 @@ Authors:
 //==== LABEL Check if attribute action of NDEFRecordSmartPoster exists, has type DOMString and is readonly
 //==== SPEC_URL http://www.w3.org/TR/nfc/
 test(function () {
-    var record, recordText1, recordText2, recordText3;
+    var record, recordText1, recordText2, title = [];
     recordText1 = new NDEFRecordText("Hello!", "en-GB");
     recordText2 = new NDEFRecordText("Everybody!", "en-US");
-    var title = [recordText1, reocrdText2];
+    title[0] = recordText1;
+    title[1] = recordText2;
     record = new NDEFRecordSmartPoster("http://www.w3.org/TR/nfc/", title, "do");
-    assert_own_property(record, "action", "NDEFRecordSmartPoster does not own action property");
+    assert_own_property(record, "action", "NDEFRecordSmartPoster has action property");
 
     assert_equals(typeof record.action, "string", "action attribute of type");
-    assert_equals(record.action, "do", "NDEFRecordSmartPoster.action value");
+    assert_equals(record.action, "do", "NDEFRecordSmartPoster.action init value");
 
     check_readonly(record, "action", record.action, "string", "save");
 }, document.title);

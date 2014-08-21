@@ -55,11 +55,9 @@ t.step(function () {
 
     onSuccess = t.step_func(function (payload) {
         record = new NDEFRecord(recordText.tnf, recordText.type, payload, recordText.id);
-        assert_own_property(record, "recordType", "NDEFRecord.recordType");
-        asset_equals(typeof record.recordType, "number", "NDEFRecord.recordType attribute of type");
-        var oldValue = record.recordType;
-        record.recordType = oldValue + 1;
-        assert_true(record.recordType == oldValue, "NDEFRecord.recordType attribute is readonly");
+        assert_true("recordType" in record, "NDEFRecord.recordType exists");
+        assert_equals(typeof record.recordType, "string", "NDEFRecord.recordType attribute of type");
+        check_readonly(record, "recordType", record.recordType, "string", "dummy");
         t.done();
     });
     recordText = new NDEFRecordText("Hi!", "en-GB");

@@ -46,12 +46,12 @@ Authors:
 //==== PRIORITY P1
 //==== LABEL Check if attribute text of NDEFRecordText exists, has type DOMString and is readonly
 //==== SPEC_URL http://www.w3.org/TR/nfc/
-var record;
 test(function () {
-    record = new NDEFRecordText("Hello World!", "en-GB");
-    assert_own_property(record, "text", "NDEFRecordText own text property.");
-    assert_equals("record.text", "string", "NDEFRecordText.text attribute of type");
-    check_readonly(record, "text", "Hello World!", "string", "dummy");
+    var record = new NDEFRecordText("Hello World!", "en-GB");
+    assert_own_property(record, "text", "NDEFRecordText has text property.");
+    assert_equals(typeof record.text, "string", "NDEFRecordText.text attribute of type");
+    assert_equals(record.text, "Hello World!", "NDEFRecordText.text init value");
+    check_readonly(record, "text", record.text, "string", "dummy");
 }, document.title);
 </script>
 </body>

@@ -46,13 +46,24 @@ Authors:
 //==== PRIORITY P1
 //==== LABEL Check if NDEFRecord have tnf attribute with proper type and is readonly
 //==== SPEC_URL http://www.w3.org/TR/nfc/
-test(function () {
-    var record;
-    record = new NDEFRecord(1);
-    assert_own_property(record, "tnf", "NDEFRecord owen tnf property");
-    asset_equals(typeof record.tnf, "number", "NDEFRecord.tnf attribute of type");
-    check_readonly(record, "tnf", record.tnf, "number", 3);
-}, document.title);
+var t = async_test(document.title, {timeout: 10000}), onSuccess, onError, record, recordText;
+
+t.step(function () {
+    onError = t.step_func(function (error) {
+        assert_unreached("getPayload() error callback was invoked: " + error.name + " msg: " + error.message);
+    });
+
+    onSuccess = t.step_func(function (payload) {
+        record = new NDEFRecord(recordText.tnf, recordText.type, payload, recordText.id);
+        assert_true("tnf" in record, "NDEFRecord.tnf exists");
+        assert_equals(record.tnf, recordText.tnf, "NDEFRecord.tnf init value");
+        assert_equals(typeof record.tnf, "number", "NDEFRecord.tnf attribute of type");
+        check_readonly(record, "tnf", record.tnf, "number", 3);
+        t.done();
+    });
+    recordText = new NDEFRecordText("Hi!", "en-GB");
+    recordText.getPayload().then(onSuccess, onError);
+});
 </script>
 </body>
 </html>

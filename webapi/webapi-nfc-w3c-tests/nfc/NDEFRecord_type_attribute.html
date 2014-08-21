@@ -46,14 +46,24 @@ Authors:
 //==== PRIORITY P1
 //==== LABEL Check if NDEFRecord have type attribute with proper type and is readonly
 //==== SPEC_URL http://www.w3.org/TR/nfc/
-test(function () {
-    var record, recordText;
+var t = async_test(document.title, {timeout: 10000}), onSuccess, onError, record, recordText;
+
+t.step(function () {
+    onError = t.step_func(function (error) {
+        assert_unreached("getPayload() error callback was invoked: " + error.name + " msg: " + error.message);
+    });
+
+    onSuccess = t.step_func(function (payload) {
+        record = new NDEFRecord(recordText.tnf, recordText.type, payload, recordText.id);
+        assert_true("type" in record, "NDEFRecord.type exists");
+        assert_equals(record.type, recordText.type, "NDEFRecord.type init value");
+        assert_equals(typeof record.type, "string", "NDEFRecord.type attribute of type");
+        check_readonly(record, "type", record.type, "string", "dummy");
+        t.done();
+    });
     recordText = new NDEFRecordText("Hi!", "en-GB");
-    record = new NDEFRecord(recordText.tnf, recordText.type);
-    assert_own_property(record, "type", "NDEFRecord own type prorerty");
-    asset_equals(typeof record.type, "string", "NDEFRecord.type attribute of type");
-    check_readonly(record, "type", record.type, "string", "dummy");
-}, document.title);
+    recordText.getPayload().then(onSuccess, onError);
+});
 </script>
 </body>
 </html>

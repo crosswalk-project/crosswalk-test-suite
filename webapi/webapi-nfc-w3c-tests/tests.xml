@@ -11,9 +11,24 @@
           <test_script_entry>/opt/webapi-nfc-w3c-tests/nfc/Navigator_nfc_attribute.html</test_script_entry>
         </description>
       </testcase>
+      <testcase component="WebAPI/Communication/NFC" execution_type="auto" id="NDEFMessage_constructor_bytes" purpose="Check NDEFMessage constructor works with byte array">
+        <description>
+          <test_script_entry>/opt/webapi-nfc-w3c-tests/nfc/NDEFMessage_constructor_bytes.html</test_script_entry>
+        </description>
+      </testcase>
       <testcase component="WebAPI/Communication/NFC" execution_type="auto" id="NDEFMessage_constructor_records" purpose="Check NDEFMessage constructor works with NDEF records array">
         <description>
           <test_script_entry>/opt/webapi-nfc-w3c-tests/nfc/NDEFMessage_constructor_records.html</test_script_entry>
+        </description>
+      </testcase>
+      <testcase component="WebAPI/Communication/NFC" execution_type="auto" id="NDEFMessage_getBytes" purpose="Check if NDEFMessage::getBytes() exists">
+        <description>
+          <test_script_entry>/opt/webapi-nfc-w3c-tests/nfc/NDEFMessage_getBytes.html</test_script_entry>
+        </description>
+      </testcase>
+      <testcase component="WebAPI/Communication/NFC" execution_type="auto" id="NDEFMessage_records_attribute" purpose="Check if attribute records of NDEFMessage exists, has type Array and is readonly">
+        <description>
+          <test_script_entry>/opt/webapi-nfc-w3c-tests/nfc/NDEFMessage_records_attribute.html</test_script_entry>
         </description>
       </testcase>
       <testcase component="WebAPI/Communication/NFC" execution_type="auto" id="NDEFRecord_constructor_tnf" purpose="Check NDEFRecord constructor works with byte tnf parameter">
@@ -21,9 +36,59 @@
           <test_script_entry>/opt/webapi-nfc-w3c-tests/nfc/NDEFRecord_constructor_tnf.html</test_script_entry>
         </description>
       </testcase>
+      <testcase component="WebAPI/Communication/NFC" execution_type="auto" id="NDEFRecord_constructor_tnf_type" purpose="Check NDEFRecord constructor works with byte tnf, DOMString type parameters">
+        <description>
+          <test_script_entry>/opt/webapi-nfc-w3c-tests/nfc/NDEFRecord_constructor_tnf_type.html</test_script_entry>
+        </description>
+      </testcase>
+      <testcase component="WebAPI/Communication/NFC" execution_type="auto" id="NDEFRecord_constructor_tnf_type_payload" purpose="Check NDEFRecord constructor works with byte tnf, DOMString type, byte [] payload parameters">
+        <description>
+          <test_script_entry>/opt/webapi-nfc-w3c-tests/nfc/NDEFRecord_constructor_tnf_type_payload.html</test_script_entry>
+        </description>
+      </testcase>
+      <testcase component="WebAPI/Communication/NFC" execution_type="auto" id="NDEFRecord_constructor_tnf_type_payload_id" purpose="Check NDEFRecord constructor works with byte tnf, DOMString type, byte [] payload, DOMString id parameters">
+        <description>
+          <test_script_entry>/opt/webapi-nfc-w3c-tests/nfc/NDEFRecord_constructor_tnf_type_payload_id.html</test_script_entry>
+        </description>
+      </testcase>
+      <testcase component="WebAPI/Communication/NFC" execution_type="auto" id="NDEFRecord_getPayload" purpose="Check if method NDEFRecord::getPayload() exists">
+        <description>
+          <test_script_entry>/opt/webapi-nfc-w3c-tests/nfc/NDEFRecord_getPayload.html</test_script_entry>
+        </description>
+      </testcase>
+      <testcase component="WebAPI/Communication/NFC" execution_type="auto" id="NDEFRecord_id_attribute" purpose="Check if NDEFRecord have id attribute with proper id and is readonly">
+        <description>
+          <test_script_entry>/opt/webapi-nfc-w3c-tests/nfc/NDEFRecord_id_attribute.html</test_script_entry>
+        </description>
+      </testcase>
       <testcase component="WebAPI/Communication/NFC" execution_type="auto" id="NDEFRecordMedia_constructor" purpose="Check if NDEFRecordMedia constructor works">
         <description>
           <test_script_entry>/opt/webapi-nfc-w3c-tests/nfc/NDEFRecordMedia_constructor.html</test_script_entry>
+        </description>
+      </testcase>
+      <testcase component="WebAPI/Communication/NFC" execution_type="auto" id="NDEFRecordMedia_mimeType_attribute" purpose="Check if NDEFRecordMedia have mimeType attribute with proper type and is readonly">
+        <description>
+          <test_script_entry>/opt/webapi-nfc-w3c-tests/nfc/NDEFRecordMedia_mimeType_attribute.html</test_script_entry>
+        </description>
+      </testcase>
+      <testcase component="WebAPI/Communication/NFC" execution_type="auto" id="NDEFRecord_recordType_attribute" purpose="Check if NDEFRecord have recordType attribute with proper type and is readonly">
+        <description>
+          <test_script_entry>/opt/webapi-nfc-w3c-tests/nfc/NDEFRecord_recordType_attribute.html</test_script_entry>
+        </description>
+      </testcase>
+      <testcase component="WebAPI/Communication/NFC" execution_type="auto" id="NDEFRecord_tnf_attribute" purpose="Check if NDEFRecord have tnf attribute with proper type and is readonly">
+        <description>
+          <test_script_entry>/opt/webapi-nfc-w3c-tests/nfc/NDEFRecord_tnf_attribute.html</test_script_entry>
+        </description>
+      </testcase>
+      <testcase component="WebAPI/Communication/NFC" execution_type="auto" id="NDEFRecord_type_attribute" purpose="Check if NDEFRecord have type attribute with proper type and is readonly">
+        <description>
+          <test_script_entry>/opt/webapi-nfc-w3c-tests/nfc/NDEFRecord_type_attribute.html</test_script_entry>
+        </description>
+      </testcase>
+      <testcase component="WebAPI/Communication/NFC" execution_type="auto" id="NDEFRecordSmartPoster_action_attribute" purpose="Check if attribute action of NDEFRecordSmartPoster exists, has proper type and is readonly">
+        <description>
+          <test_script_entry>/opt/webapi-nfc-w3c-tests/nfc/NDEFRecordSmartPoster_action_attribute.html</test_script_entry>
         </description>
       </testcase>
       <testcase component="WebAPI/Communication/NFC" execution_type="auto" id="NDEFRecordSmartPoster_constructor_uri" purpose="Check NDEFRecordSmartPoster constructor works with DOMString uri parameter">
@@ -31,9 +96,84 @@
           <test_script_entry>/opt/webapi-nfc-w3c-tests/nfc/NDEFRecordSmartPoster_constructor_uri.html</test_script_entry>
         </description>
       </testcase>
+      <testcase component="WebAPI/Communication/NFC" execution_type="auto" id="NDEFRecordSmartPoster_constructor_uri_titles" purpose="Check NDEFRecordSmartPoster constructor works with DOMString uri, NDEFRecordText［］titles parameters">
+        <description>
+          <test_script_entry>/opt/webapi-nfc-w3c-tests/nfc/NDEFRecordSmartPoster_constructor_uri_titles.html</test_script_entry>
+        </description>
+      </testcase>
+      <testcase component="WebAPI/Communication/NFC" execution_type="auto" id="NDEFRecordSmartPoster_constructor_uri_titles_action" purpose="Check NDEFRecordSmartPoster constructor works with DOMString uri, NDEFRecordText［］titles, DOMString action parameters">
+        <description>
+          <test_script_entry>/opt/webapi-nfc-w3c-tests/nfc/NDEFRecordSmartPoster_constructor_uri_titles_action.html</test_script_entry>
+        </description>
+      </testcase>
+      <testcase component="WebAPI/Communication/NFC" execution_type="auto" id="NDEFRecordSmartPoster_constructor_uri_titles_action_icons" purpose="Check NDEFRecordSmartPoster constructor works with DOMString uri, NDEFRecordText［］titles, DOMString action, NDEFRecordMedia［］icons parameters">
+        <description>
+          <test_script_entry>/opt/webapi-nfc-w3c-tests/nfc/NDEFRecordSmartPoster_constructor_uri_titles_action_icons.html</test_script_entry>
+        </description>
+      </testcase>
+      <testcase component="WebAPI/Communication/NFC" execution_type="auto" id="NDEFRecordSmartPoster_constructor_uri_titles_action_icons_targetSize" purpose="Check NDEFRecordSmartPoster constructor works with DOMString uri, NDEFRecordText［］titles, DOMString action, NDEFRecordMedia［］icons, unsigned long targetSize parameters">
+        <description>
+          <test_script_entry>/opt/webapi-nfc-w3c-tests/nfc/NDEFRecordSmartPoster_constructor_uri_titles_action_icons_targetSize.html</test_script_entry>
+        </description>
+      </testcase>
+      <testcase component="WebAPI/Communication/NFC" execution_type="auto" id="NDEFRecordSmartPoster_constructor_uri_titles_action_icons_targetSize_targetMIME" purpose="Check NDEFRecordSmartPoster constructor works with DOMString uri, NDEFRecordText［］titles, DOMString action, NDEFRecordMedia［］icons, unsigned long targetSize, DOMString targetMIME parameters">
+        <description>
+          <test_script_entry>/opt/webapi-nfc-w3c-tests/nfc/NDEFRecordSmartPoster_constructor_uri_titles_action_icons_targetSize_targetMIME.html</test_script_entry>
+        </description>
+      </testcase>
+      <testcase component="WebAPI/Communication/NFC" execution_type="auto" id="NDEFRecordSmartPoster_icons_attribute" purpose="Check if attribute icons of NDEFRecordSmartPoster exists, has proper type and is readonly">
+        <description>
+          <test_script_entry>/opt/webapi-nfc-w3c-tests/nfc/NDEFRecordSmartPoster_icons_attribute.html</test_script_entry>
+        </description>
+      </testcase>
+      <testcase component="WebAPI/Communication/NFC" execution_type="auto" id="NDEFRecordSmartPoster_targetMIME_attribute" purpose="Check if attribute targetMIME of NDEFRecordSmartPoster exists, has proper type and is readonly">
+        <description>
+          <test_script_entry>/opt/webapi-nfc-w3c-tests/nfc/NDEFRecordSmartPoster_targetMIME_attribute.html</test_script_entry>
+        </description>
+      </testcase>
+      <testcase component="WebAPI/Communication/NFC" execution_type="auto" id="NDEFRecordSmartPoster_targetSize_attribute" purpose="Check if attribute targetSize of NDEFRecordSmartPoster exists, has proper type and is readonly">
+        <description>
+          <test_script_entry>/opt/webapi-nfc-w3c-tests/nfc/NDEFRecordSmartPoster_targetSize_attribute.html</test_script_entry>
+        </description>
+      </testcase>
+      <testcase component="WebAPI/Communication/NFC" execution_type="auto" id="NDEFRecordSmartPoster_titles_attribute" purpose="Check if attribute titles of NDEFRecordSmartPoster exists, has type object and is readonly">
+        <description>
+          <test_script_entry>/opt/webapi-nfc-w3c-tests/nfc/NDEFRecordSmartPoster_titles_attribute.html</test_script_entry>
+        </description>
+      </testcase>
+      <testcase component="WebAPI/Communication/NFC" execution_type="auto" id="NDEFRecordSmartPoster_uri_attribute" purpose="Check if attribute uri of NDEFRecordSmartPoster exists, has type DOMString and is readonly">
+        <description>
+          <test_script_entry>/opt/webapi-nfc-w3c-tests/nfc/NDEFRecordSmartPoster_uri_attribute.html</test_script_entry>
+        </description>
+      </testcase>
       <testcase component="WebAPI/Communication/NFC" execution_type="auto" id="NDEFRecordText_constructor_text" purpose="Check NDEFRecordText constructor works with DOMString text parameter">
         <description>
           <test_script_entry>/opt/webapi-nfc-w3c-tests/nfc/NDEFRecordText_constructor_text.html</test_script_entry>
+        </description>
+      </testcase>
+      <testcase component="WebAPI/Communication/NFC" execution_type="auto" id="NDEFRecordText_constructor_text_languageCode" purpose="Check NDEFRecordText constructor works with DOMString text, DOMString languageCode parameters">
+        <description>
+          <test_script_entry>/opt/webapi-nfc-w3c-tests/nfc/NDEFRecordText_constructor_text_languageCode.html</test_script_entry>
+        </description>
+      </testcase>
+      <testcase component="WebAPI/Communication/NFC" execution_type="auto" id="NDEFRecordText_constructor_text_languageCode_encoding" purpose="Check NDEFRecordText constructor works with DOMString text, DOMString languageCode, DOMString encoding parameters">
+        <description>
+          <test_script_entry>/opt/webapi-nfc-w3c-tests/nfc/NDEFRecordText_constructor_text_languageCode_encoding.html</test_script_entry>
+        </description>
+      </testcase>
+      <testcase component="WebAPI/Communication/NFC" execution_type="auto" id="NDEFRecordText_encoding_attribute" purpose="Check if attribute encoding of NDEFRecordText exists, has type DOMString and is readonly">
+        <description>
+          <test_script_entry>/opt/webapi-nfc-w3c-tests/nfc/NDEFRecordText_encoding_attribute.html</test_script_entry>
+        </description>
+      </testcase>
+      <testcase component="WebAPI/Communication/NFC" execution_type="auto" id="NDEFRecordText_languageCode_attribute" purpose="Check if attribute languageCode of NDEFRecordText exists, has type DOMString and is readonly">
+        <description>
+          <test_script_entry>/opt/webapi-nfc-w3c-tests/nfc/NDEFRecordText_languageCode_attribute.html</test_script_entry>
+        </description>
+      </testcase>
+      <testcase component="WebAPI/Communication/NFC" execution_type="auto" id="NDEFRecordText_text_attribute" purpose="Check if attribute text of NDEFRecordText exists, has type DOMString and is readonly">
+        <description>
+          <test_script_entry>/opt/webapi-nfc-w3c-tests/nfc/NDEFRecordText_text_attribute.html</test_script_entry>
         </description>
       </testcase>
       <testcase component="WebAPI/Communication/NFC" execution_type="auto" id="NDEFRecordURI_constructor" purpose="Check NDEFRecordURI constructor works">
@@ -41,9 +181,79 @@
           <test_script_entry>/opt/webapi-nfc-w3c-tests/nfc/NDEFRecordURI_constructor.html</test_script_entry>
         </description>
       </testcase>
+      <testcase component="WebAPI/Communication/NFC" execution_type="auto" id="NDEFRecordURI_uri_attribute" purpose="Check if NDEFRecordURI have uri attribute with proper type and is readonly">
+        <description>
+          <test_script_entry>/opt/webapi-nfc-w3c-tests/nfc/NDEFRecordURI_uri_attribute.html</test_script_entry>
+        </description>
+      </testcase>
+      <testcase component="WebAPI/Communication/NFC" execution_type="auto" id="NFCManager_onpeerfound_attribute" purpose="Check if NFCManager have onpeerfound attribute with proper type">
+        <description>
+          <test_script_entry>/opt/webapi-nfc-w3c-tests/nfc/NFCManager_onpeerfound_attribute.html</test_script_entry>
+        </description>
+      </testcase>
+      <testcase component="WebAPI/Communication/NFC" execution_type="auto" id="NFCManager_onpeerlost_attribute" purpose="Check if NFCManager have onpeerlost attribute with proper type">
+        <description>
+          <test_script_entry>/opt/webapi-nfc-w3c-tests/nfc/NFCManager_onpeerlost_attribute.html</test_script_entry>
+        </description>
+      </testcase>
+      <testcase component="WebAPI/Communication/NFC" execution_type="auto" id="NFCManager_onpollstart_attribute" purpose="Check if NFCManager have onpollstart attribute with proper type">
+        <description>
+          <test_script_entry>/opt/webapi-nfc-w3c-tests/nfc/NFCManager_onpollstart_attribute.html</test_script_entry>
+        </description>
+      </testcase>
+      <testcase component="WebAPI/Communication/NFC" execution_type="auto" id="NFCManager_onpollstop_attribute" purpose="Check if NFCManager have onpollstop attribute with proper type">
+        <description>
+          <test_script_entry>/opt/webapi-nfc-w3c-tests/nfc/NFCManager_onpollstop_attribute.html</test_script_entry>
+        </description>
+      </testcase>
+      <testcase component="WebAPI/Communication/NFC" execution_type="auto" id="NFCManager_onpoweroff_attribute" purpose="Check if NFCManager have onpoweroff attribute with proper type">
+        <description>
+          <test_script_entry>/opt/webapi-nfc-w3c-tests/nfc/NFCManager_onpoweroff_attribute.html</test_script_entry>
+        </description>
+      </testcase>
+      <testcase component="WebAPI/Communication/NFC" execution_type="auto" id="NFCManager_onpoweron_attribute" purpose="Check if NFCManager have onpoweron attribute with proper type">
+        <description>
+          <test_script_entry>/opt/webapi-nfc-w3c-tests/nfc/NFCManager_onpoweron_attribute.html</test_script_entry>
+        </description>
+      </testcase>
+      <testcase component="WebAPI/Communication/NFC" execution_type="auto" id="NFCManager_ontagfound_attribute" purpose="Check if NFCManager have ontagfound attribute with proper type">
+        <description>
+          <test_script_entry>/opt/webapi-nfc-w3c-tests/nfc/NFCManager_ontagfound_attribute.html</test_script_entry>
+        </description>
+      </testcase>
+      <testcase component="WebAPI/Communication/NFC" execution_type="auto" id="NFCManager_ontaglost_attribute" purpose="Check if NFCManager have ontaglost attribute with proper type">
+        <description>
+          <test_script_entry>/opt/webapi-nfc-w3c-tests/nfc/NFCManager_ontaglost_attribute.html</test_script_entry>
+        </description>
+      </testcase>
+      <testcase component="WebAPI/Communication/NFC" execution_type="auto" id="NFCManager_polling_attribute" purpose="Check if NFCManager have polling attribute with proper type">
+        <description>
+          <test_script_entry>/opt/webapi-nfc-w3c-tests/nfc/NFCManager_polling_attribute.html</test_script_entry>
+        </description>
+      </testcase>
       <testcase component="WebAPI/Communication/NFC" execution_type="auto" id="NFCManager_powered_attribute" purpose="Check if NFCManager have powered attribute with proper type">
         <description>
           <test_script_entry>/opt/webapi-nfc-w3c-tests/nfc/NFCManager_powered_attribute.html</test_script_entry>
+        </description>
+      </testcase>
+      <testcase component="WebAPI/Communication/NFC" execution_type="auto" id="NFCManager_powerOff" purpose="Check if method NFCManager::powerOff() exists">
+        <description>
+          <test_script_entry>/opt/webapi-nfc-w3c-tests/nfc/NFCManager_powerOff.html</test_script_entry>
+        </description>
+      </testcase>
+      <testcase component="WebAPI/Communication/NFC" execution_type="auto" id="NFCManager_powerOn" purpose="Check if method NFCManager::powerOn() exists">
+        <description>
+          <test_script_entry>/opt/webapi-nfc-w3c-tests/nfc/NFCManager_powerOn.html</test_script_entry>
+        </description>
+      </testcase>
+      <testcase component="WebAPI/Communication/NFC" execution_type="auto" id="NFCManager_startPoll" purpose="Check if method NFCManager::startPoll() exists">
+        <description>
+          <test_script_entry>/opt/webapi-nfc-w3c-tests/nfc/NFCManager_startPoll.html</test_script_entry>
+        </description>
+      </testcase>
+      <testcase component="WebAPI/Communication/NFC" execution_type="auto" id="NFCManager_stopPoll" purpose="Check if method NFCManager::stopPoll() exists">
+        <description>
+          <test_script_entry>/opt/webapi-nfc-w3c-tests/nfc/NFCManager_stopPoll.html</test_script_entry>
         </description>
       </testcase>
     </set>

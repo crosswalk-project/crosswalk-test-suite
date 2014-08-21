@@ -46,11 +46,11 @@ Authors:
 //==== PRIORITY P1
 //==== LABEL Check if attribute languageCode of NDEFRecordText exists, has type DOMString and is readonly
 //==== SPEC_URL http://www.w3.org/TR/nfc/
-var record;
 test(function () {
-    record = new NDEFRecordText("Hello World!", "en-GB");
-    assert_own_property(record, "languageCode", "NDEFRecordText own languageCode property");
-    assert_equals("record.languageCode", "string", "NDEFRecordText.languageCode attribute of type");
+    var record = new NDEFRecordText("Hello World!", "en-GB");
+    assert_own_property(record, "languageCode", "NDEFRecordText has languageCode property");
+    assert_equals(typeof record.languageCode, "string", "NDEFRecordText.languageCode attribute of type");
+    assert_equals(record.languageCode, "en-GB", "NDEFRecordText.languageCode init value");
     check_readonly(record, "languageCode", record.languageCode, "string", "en-US");
 }, document.title);
 </script>

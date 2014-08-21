@@ -38,19 +38,40 @@ Authors:
 <script type="text/javascript" src="support/unitcommon.js"></script>
 <script type="text/javascript" src="support/nfc_common.js"></script>
 </head>
-
 <body>
+<p>Test step:</p>
+<p>Use other NFC enabled device tap to share some data(such as contacts or coupons) to the NFC Manager.</p>
 <div id="log"></div>
 <script>
 //==== TEST: NDEFMessageEvent_message_attribute
 //==== PRIORITY P1
 //==== LABEL Check if NDEFMessageEvent have message attribute with proper type and is readonly
 //==== SPEC_URL http://www.w3.org/TR/nfc/
-test(function () {
-    assert_true("message" in NDEFMessageEvent, "message attribute exists");
-    assert_equals(typeof NDEFMessageEvent.message, "object", "message attribute of type");
-    check_readonly(NDEFMessageEvent, "message", NDEFMessageEvent.message, "object", "null");
-}, document.title);
+setup({timeout: 100000});
+
+async_test(function (t) {
+    onError = t.step_func(function (error) {
+        assert_unreached("startPoll() error callback was invoked: " + error.name + " msg: " + error.message);
+        t.done();
+    });
+
+    onSuccess = function () {
+       //After NFC manager start polling, then peer device can be detected.
+    }
+
+    navigator.nfc.onpeerfound = function (e) {
+        e.peer.onmessageread = function (messageEvent) {
+            t.step(function () {
+                assert_true("message" in messageEvent, "message attribute exists");
+                assert_equals(typeof messageEvent.message, "object", "message attribute of type");
+                check_readonly(messageEvent, "message", messageEvent.message, "object", "null");
+            });
+            t.done();
+        }   
+    }
+
+    navigator.nfc.startPoll().then(onSuccess, onError);         
+}, document.title, {timeout: 100000});
 </script>
 </body>
 </html>

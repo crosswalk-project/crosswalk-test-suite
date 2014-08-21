@@ -47,15 +47,16 @@ Authors:
 //==== LABEL Check if attribute targetMIME of NDEFRecordSmartPoster exists, has proper type and is readonly
 //==== SPEC_URL http://www.w3.org/TR/nfc/
 test(function () {
-    var record, recordText1, recordText2, recordMedia,
+    var record, recordText1, recordText2, recordMedia, title = [],
         payloads = [72, 101, 108, 108, 111, 9, 87, 111, 114, 108, 100, 33, 13, 10];
     recordText1 = new NDEFRecordText("Hello!", "en-GB");
     recordText2 = new NDEFRecordText("Everybody!", "en-US");
-    var title = [recordText1, reocrdText2];
+    title[0] = recordText1;
+    title[1] = recordText2;
     recordMedia = new NDEFRecordMedia("text/plain", payloads);
     record = new NDEFRecordSmartPoster("http://www.w3.org/TR/nfc/", title, "do", [recordMedia], 100, "text/plain");
 
-    assert_own_property(record, "targetMIME", "NDEFRecordSmartPoster does not own targetMIME property");
+    assert_own_property(record, "targetMIME", "NDEFRecordSmartPoster has targetMIME property");
     assert_equals(record.targetMIME, "text/plain", "NDEFRecordSmartPoster.targetMIME value");
 
     assert_equals(typeof record.targetMIME, "string", "NDEFRecordSmartPoster.targetMIME attribute of type");

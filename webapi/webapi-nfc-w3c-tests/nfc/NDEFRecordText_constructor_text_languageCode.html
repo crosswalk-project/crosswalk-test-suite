@@ -47,19 +47,17 @@ Authors:
 //==== LABEL Check NDEFRecordText constructor works with DOMString text, DOMString languageCode parameters
 //==== SPEC_URL http://www.w3.org/TR/nfc/
 test(function () {
-    var record;
-    record = new NDEFRecordText("Hello World!", "en-GB");
+    var record = new NDEFRecordText("Hello World!", "en-GB");
     assert_true(record instanceof NDEFRecordText,
         "constructed record is instance of NDEFRecordText");
-    assert_own_property(record, "tnf", "NDEFRecordText own tnf property");
-    assert_own_property(record, "type", "NDEFRecordText own type property");
-    assert_own_property(record, "id", "NDEFRecordText own id property");
-    assert_own_property(record, "recordType", "NDEFRecordText own recordType property");
+    assert_true("text" in record, "NDEFRecordText.text exists");
+    assert_true("languageCode" in record, "NDEFRecordText.languageCode exists");
+    assert_true("encoding" in record, "NDEFRecordText.encoding exists");
+    assert_true("tnf" in record, "NDEFRecordText.tnf exists");
+    assert_true("type" in record, "NDEFRecordText.type exists");
+    assert_true("recordType" in record, "NDEFRecordText.recordType exists");
     assert_true("getPayload" in record, "NDEFRecordText.getPayload() method exists");
-    assert_own_property(record, "text", "NDEFRecordText own text property");
-    assert_own_property(record, "languageCode", "NDEFRecordText own languageCode property");
-    assert_equals(record.languageCode, "en-GB", "record.languageCode init value");
-    assert_own_property(record, "encoding", "NDEFRecordText own encoding property");
+    assert_true("id" in record, "NDEFRecordText.id exists");
 }, document.title);
 </script>
 </body>

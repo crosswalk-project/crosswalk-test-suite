@@ -38,18 +38,38 @@ Authors:
 <script type="text/javascript" src="support/unitcommon.js"></script>
 <script type="text/javascript" src="support/nfc_common.js"></script>
 </head>
-
 <body>
+<p>Test step:</p>
+<p>Tap NFC tag to the NFC Manager.</p>
 <div id="log"></div>
 <script>
 //==== TEST: NFCTag_readNDEF
 //==== PRIORITY P1
 //==== LABEL Check if NFCTag::readNDEF() exists
 //==== SPEC_URL http://www.w3.org/TR/nfc/
-test(function () {
-    assert_true("readNDEF" in NFCTagEvent.tag, "Check if NFCTag.readNDEF() method exists");
-    check_method_exists(NFCTagEvent.tag, "readNDEF");
-}, document.title);
+setup({timeout: 60000});
+
+async_test(function (t) {
+    onError = t.step_func(function (error) {
+        assert_unreached("startPoll() error callback was invoked: " + error.name + " msg: " + error.message);
+        t.done();
+    });
+
+    onSuccess = function () { 
+       //After NFC manager start polling, then NFC tag can be detected.
+    }
+
+    function tagFound (e) {
+        t.step(function () {
+            assert_true("readNDEF" in e.tag, "NFCTag.readNDEF() method exists");
+            check_method_exists(e.tag, "readNDEF");
+        });
+        t.done();
+    }
+
+    navigator.nfc.addEventListener('tagfound', tagFound);
+    navigator.nfc.startPoll().then(onSuccess, onError);
+}, document.title, {timeout: 60000});
 </script>
 </body>
 </html>

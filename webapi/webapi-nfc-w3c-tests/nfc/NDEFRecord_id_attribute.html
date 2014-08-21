@@ -55,8 +55,8 @@ t.step(function () {
 
     onSuccess = t.step_func(function (payload) {
         record = new NDEFRecord(recordText.tnf, recordText.type, payload, recordText.id);
-        assert_own_property(record, "id", "NDEFRecord.id");
-        asset_equals(typeof record.id, "string", "NDEFRecord.id attribute of type");
+        assert_true("id" in record, "NDEFRecord.id exists");
+        assert_equals(typeof record.id, "string", "NDEFRecord.id attribute of type");
         check_readonly(record, "id", record.id, "string", "dummy");
         t.done();
     });

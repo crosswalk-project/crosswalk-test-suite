@@ -46,11 +46,11 @@ Authors:
 //==== PRIORITY P1
 //==== LABEL Check if attribute encoding of NDEFRecordText exists, has type DOMString and is readonly
 //==== SPEC_URL http://www.w3.org/TR/nfc/
-var record;
 test(function () {
-    record = new NDEFRecordText("Hello World!", "en-GB", "UTF-8");
-    assert_own_property(record, "encoding", "NDEFRecordText own encoding property.");
-    assert_equals("record.encoding", "string", "NDEFRecordText.encoding attribute of type");
+    var record = new NDEFRecordText("Hello World!", "en-GB", "UTF-8");
+    assert_own_property(record, "encoding", "NDEFRecordText has encoding property.");
+    assert_equals(typeof record.encoding, "string", "NDEFRecordText.encoding attribute of type");
+    assert_equals(record.encoding, "UTF-8", "NDEFRecordText.encoding init value");
     check_readonly(record, "encoding", record.encoding, "string", "UTF-16");
 }, document.title);
 </script>

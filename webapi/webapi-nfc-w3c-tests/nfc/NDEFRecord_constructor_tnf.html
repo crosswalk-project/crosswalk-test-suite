@@ -51,7 +51,6 @@ test(function () {
     assert_true(record instanceof NDEFRecord,
         "constructed record is instance of NDEFRecord");
     assert_true("tnf" in record, "NDEFRecord.tnf exists");
-    asset_equals(record.tnf, 0, "NDEFRecord.tnf value");
     assert_true("type" in record, "NDEFRecord.type exists");
     assert_true("id" in record, "NDEFRecord.id exists");
     assert_true("recordType" in record, "NDEFRecord.recordType exists");

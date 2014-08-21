@@ -46,12 +46,11 @@ Authors:
 //==== PRIORITY P1
 //==== LABEL Check if attribute uri of NDEFRecordSmartPoster exists, has type DOMString and is readonly
 //==== SPEC_URL http://www.w3.org/TR/nfc/
-var record;
 test(function () {
-    record = new NDEFRecordSmartPoster("http://www.w3.org/TR/nfc/");
-    assert_own_property(record, "uri", "NDEFRecordSmartPoster does not own uri property.");
-    assert_equals("record.uri", "string", "NDEFRecordSmartPoster.uri attribute of type");
-    check_readonly(record, "uri", "http://www.w3.org/TR/nfc/", "string", "http://www.baidu.com/");
+    var record = new NDEFRecordSmartPoster("http://www.w3.org/TR/nfc/");
+    assert_own_property(record, "uri", "NDEFRecordSmartPoster has uri property.");
+    assert_equals(typeof record.uri, "string", "NDEFRecordSmartPoster.uri attribute of type");
+    check_readonly(record, "uri", record.uri, "string", "http://www.baidu.com/");
 }, document.title);
 </script>
 </body>
