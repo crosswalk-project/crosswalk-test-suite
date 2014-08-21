@@ -16,6 +16,7 @@ SRC_ROOT=$PWD
 # init
 function init_workspace(){
     echo "init workspace... >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>"
+    clean_workspace
     cp libs/chromium/*.jar libs/
     cp libs/testkit/*.jar libs/
 }

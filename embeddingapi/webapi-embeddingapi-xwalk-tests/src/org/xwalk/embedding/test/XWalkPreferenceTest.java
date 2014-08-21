@@ -19,7 +19,7 @@ public class XWalkPreferenceTest extends XWalkViewTestBase {
 
      
     @SmallTest
-    public void testSetValue1() {
+    public void testSetValue_falseParam() {
         try {
             getInstrumentation().runOnMainSync(new Runnable() {
 
@@ -36,7 +36,7 @@ public class XWalkPreferenceTest extends XWalkViewTestBase {
     }
 
     @SmallTest
-    public void testSetValue2() {
+    public void testSetValue_trueParam() {
         try {
             getInstrumentation().runOnMainSync(new Runnable() {
 
@@ -53,7 +53,7 @@ public class XWalkPreferenceTest extends XWalkViewTestBase {
     }
 
     @SmallTest
-    public void testGetValue1() {
+    public void testGetValue_falseParam() {
         try {
             getInstrumentation().runOnMainSync(new Runnable() {
 
@@ -71,7 +71,7 @@ public class XWalkPreferenceTest extends XWalkViewTestBase {
     }
 
     @SmallTest
-    public void testGetValue2() {
+    public void testGetValue_trueParam() {
         try {
             getInstrumentation().runOnMainSync(new Runnable() {
 

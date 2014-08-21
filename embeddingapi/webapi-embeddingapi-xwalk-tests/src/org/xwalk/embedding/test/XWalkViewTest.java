@@ -74,7 +74,7 @@ public class XWalkViewTest extends XWalkViewTestBase {
     }
     
     @SmallTest
-    public void testClearCache() throws Throwable {
+    public void testClearCache_falseParam() throws Throwable {
 
         try {
             String url = "file:///android_asset/p1bar.html/";
@@ -88,7 +88,7 @@ public class XWalkViewTest extends XWalkViewTestBase {
     }
 
     @SmallTest
-    public void testClearCache2() throws Throwable {
+    public void testClearCache_trueParam() throws Throwable {
 
         try {
             String url = "file:///android_asset/p1bar.html";
@@ -238,14 +238,14 @@ public class XWalkViewTest extends XWalkViewTestBase {
     }
 
     @SmallTest
-    public void testSaveState2() throws Throwable {
+    public void testSaveState_loadUrl() throws Throwable {
         setServerResponseAndLoad(NUM_NAVIGATIONS);
         saveAndRestoreStateOnUiThread();
         checkHistoryItemList();
     }
 
     @SmallTest
-    public void testRestoreStateTrue() throws Throwable {
+    public void testRestoreState_trueResult() throws Throwable {
         try {
             final Bundle state = new Bundle();
             state.putByteArray("XWALKVIEW_STATE", "valid state".getBytes());
@@ -265,7 +265,7 @@ public class XWalkViewTest extends XWalkViewTestBase {
     }
 
     @SmallTest
-    public void testRestoreStateFalse() throws Throwable {
+    public void testRestoreState_falseResult() throws Throwable {
         try {
             final Bundle state = new Bundle();
             state.putByteArray("XWALKVIEW_STATE", "valid state".getBytes());
@@ -284,7 +284,7 @@ public class XWalkViewTest extends XWalkViewTestBase {
      }
 
     @SmallTest
-    public void testRestoreStateFalse2() throws Throwable {
+    public void testRestoreState_notLoadFirst() throws Throwable {
         try {
             final Bundle state = new Bundle();
             state.putByteArray("XWALKVIEW_STATE", "valid state".getBytes());

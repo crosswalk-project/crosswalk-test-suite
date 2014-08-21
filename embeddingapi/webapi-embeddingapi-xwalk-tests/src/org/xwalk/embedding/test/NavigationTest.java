@@ -177,7 +177,7 @@ public class NavigationTest extends XWalkViewTestBase {
     }
 
     @SmallTest
-    public void testNavigateBack() {
+    public void testNavigateBack_backOneStep() {
         try {
             final String url1 = "about:blank";
             final String url2 = "file:///android_asset/manifest.json";
@@ -195,7 +195,7 @@ public class NavigationTest extends XWalkViewTestBase {
      }
 
     @SmallTest
-    public void testNavigateForward() {
+    public void testNavigateForward_forwardOneStep() {
         try {
             final String url1 = "about:blank";
             final String url2 = "file:///android_asset/manifest.json";
@@ -214,7 +214,7 @@ public class NavigationTest extends XWalkViewTestBase {
     }
 
     @SmallTest
-    public void testNavigateBack2() {
+    public void testNavigateBack_backTwoStep() {
         try {
             final String url1 = "about:blank";
             final String url2 = "file:///android_asset/manifest.json";
@@ -234,7 +234,7 @@ public class NavigationTest extends XWalkViewTestBase {
     }
 
     @SmallTest
-    public void testNavigateForward2() {
+    public void testNavigateForward_forwardTwoStep() {
         try {
             final String url1 = "about:blank";
             final String url2 = "file:///android_asset/manifest.json";

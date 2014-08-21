@@ -367,15 +367,7 @@ public class XWalkUIClientTest extends XWalkViewTestBase {
     @SmallTest
     public void testShouldOverrideUrlLoading() {
         try {
-            getInstrumentation().runOnMainSync(new Runnable() {
-
-                @Override
-                public void run() {
-                    XWalkUIClient uiClient = new XWalkUIClient(mXWalkView);
-                    uiClient.shouldOverrideKeyEvent(mXWalkView, new KeyEvent(0, 65));
-                }
-            });
-            assertTrue(true);
+            assertTrue(checkMethodInClass(XWalkUIClient.class, "shouldOverrideUrlLoading"));
         } catch (Exception e) {
             e.printStackTrace();
             assertTrue(false);
