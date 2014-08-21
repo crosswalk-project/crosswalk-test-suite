@@ -155,6 +155,17 @@ EOF
     #    fi 
     #done
 
+    # Pack IAP apk
+    if [ -d $SRC_ROOT/tests/InAppPayment/iap ]&&[ -f $SRC_ROOT/tests/InAppPayment/iap/iap.jar ]; then
+        subTestSrc=$BUILD_ROOT/tests/InAppPayment/iap
+        subTestDir=`basename $subTestSrc`
+        subTestName=`basename $subTestSrc |sed 's/-/_/g'`
+        cp -r $subTestSrc  $BUILD_DEST
+        cp -r $BUILD_ROOT/icon.png $BUILD_DEST/$subTestDir
+        cd $BUILD_ROOT/crosswalk
+        python make_apk.py --package=org.xwalk.$subTestName --name=$subTestName --app-root=$BUILD_DEST/$subTestDir --app-local-path=index.html --icon=$BUILD_DEST/$subTestDir/icon.png --mode=$mode --arch=$arch  --extensions=$BUILD_ROOT/tests/InAppPayment/iap --permissions=iap
+    fi 
+
     if [ $? -ne 0 ];then
         echo "Create $name.apk fail.... >>>>>>>>>>>>>>>>>>>>>>>>>"
         clean_workspace

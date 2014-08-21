@@ -8,6 +8,7 @@ USAGE="Usage: ./inst.sh [-i] [-u]
 
 #TODO:update PACKAGENAME for each suite,pay attention to use '_'
 PACKAGENAME=webapi_usecase_w3c_tests
+SUBNAME=iap_0.0.1
 SUITENAME=`echo $PACKAGENAME |sed 's/_/-/g'`
 RESOURCE_DIR=/home/app/content
 
@@ -17,6 +18,7 @@ ls |grep x86.apk  > /dev/null 2>&1 && extend="_x86.apk"
 ls |grep arm.apk  > /dev/null 2>&1 && extend="_arm.apk"
 
 adb install $PACKAGENAME$extend
+adb install $SUBNAME$extend
 
 #TODO: copy resource
 #eg:adb push xx $RESOURCE_DIR
