@@ -13,5 +13,6 @@ testapp/xwalk_hosts_matchpatternsmiddle_tests/Makefile \
 testapp/xwalk_hosts_matchpatternstail_tests/Makefile \
 testapp/xwalk_hosts_matchpatterns_tests/Makefile \
 testapp/xwalk_hosts_value_tests/Makefile \
+testapp/launch_immersive_fullscreen/Makefile \
 resources/Makefile webrunner/Makefile])
 AC_OUTPUT
