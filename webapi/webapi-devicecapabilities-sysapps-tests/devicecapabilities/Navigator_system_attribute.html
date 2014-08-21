@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <!--
-Copyright (c) 2013 Intel Corporation.
+Copyright (c) 2014 Intel Corporation.
 
 Redistribution and use in source and binary forms, with or without modification,
 are permitted provided that the following conditions are met:
@@ -33,17 +33,20 @@ Authors:
 <meta charset='utf-8'>
 <title>DeviceCapabilities Test: Navigator_system_attribute</title>
 <link rel="author" title="Intel" href="http://www.intel.com/">
-<link rel="help" href="http://www.w3.org/2012/sysapps/device-capabilities/">
+<link rel="help" href="http://www.w3.org/2012/sysapps/device-capabilities/#devicecapabilities-interface">
 <script src="../resources/testharness.js"></script>
 <script src="../resources/testharnessreport.js"></script>
 <div id="log"></div>
 <script>
 test(function () {
-  var  system = navigator.system || xwalk.experimental.system;
-  assert_true(!!system, "The Navigator.system exists");
-  assert_equals(typeof system, "object", "The type of Navigator.system");
-  var value = system;
-  system = null;
-  assert_equals(system, value, "The Navigator.system");
-}, "Check if the readonly attribute Navigator.system exists and typeof object");
+  if ("system" in navigator) {
+    assert_equals(typeof navigator.system, "object", "Navigator.system shall be type of object");
+    assert_readonly(navigator, "system", "Navigator.system shall be readonly");
+  } else if ("system" in xwalk.experimental) {
+    assert_equals(typeof xwalk.experimental.system, "object", "xwalk.experimental.system shall be type of object");
+    assert_readonly(xwalk.experimental, "system", "xwalk.experimental.system shall be readonly");
+  } else {
+    assert_unreached("Navigator.system is unsupported");
+  }
+}, "Check that Navigator.system is type of object and readonly");
 </script>
