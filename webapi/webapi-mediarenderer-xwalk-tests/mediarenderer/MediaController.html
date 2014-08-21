@@ -67,17 +67,14 @@ navigator.mediaRenderer.onrendererfound = function (event) {
     test(function () {
       assert_true(name in event.renderer.controller, name + " attribute in MediaController");
       switch(type) {
+      case "object":
       case "boolean":
       case "number":
+      case "function":
         if(read == "readonly") {
           assert_readonly(event.renderer.controller, name, "expect attribute " + name + " cannot be changed but");
         }
-      case "function":
         assert_equals(typeof event.renderer.controller[name], type, name + " attribute of type");      
-        break;
-      case "object":
-        assert_equals(Object.prototype.toString.call(event.renderer.controller[name]), "[object Object]", name + " attribute of type");
-        assert_readonly(event.renderer.controller, name, "expect attribute " + name + " cannot be changed but");
         break;
       default:
         break;

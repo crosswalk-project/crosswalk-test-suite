@@ -56,21 +56,8 @@ navigator.mediaRenderer.onrendererfound = function (eve) {
 
       test(function () {
         assert_true(name in event, name + " attribute in MediaControllerStatusEvent");
-        switch(type) {
-        case "boolean":
-        case "number":
-          if(read == "readonly") {
-            assert_readonly(event, name, "expect attribute " + name + " cannot be changed but");
-          }
-          assert_equals(typeof event[name], type, name + " attribute of type");      
-          break;
-        case "object":
-          assert_equals(Object.prototype.toString.call(event[name]), "[object Object]", name + " attribute of type");
-          assert_readonly(event, name, "expect attribute " + name + " cannot be changed but");
-          break;
-        default:
-          break;
-        }
+        assert_readonly(event, name, "expect attribute " + name + " cannot be changed but");
+        assert_equals(typeof event[name], type, name + " attribute of type");
       }, "Check if " + read + " MediaControllerStatusEvent." + name + " exists and type of " + type);
     });
     done();
