@@ -38,17 +38,16 @@ test -f diffid_same_version_tests.xpk
 if [ $? -eq 0 ];then
                 rm key.pem
                 echo "Pass"
-                return 0
 else
                 echo "Fail"
-                return 1
+                exit 1
 fi
 
 #function_install_xwalk $logName
 
 #push xpk to device
-sdb push ../diffid_same_version_tests.xpk /home/app/content/tct
-sdb push appinstall.sh /home/app/content/tct
+sdb push diffid_same_version_tests.xpk /home/app/content/tct
+sdb push ./packertool/appinstall.sh /home/app/content/tct
 sdb root on
 sdb shell "su - app -c 'export DBUS_SESSION_BUS_ADDRESS=unix:path=/run/user/5000/dbus/user_bus_socket;chmod a+x /home/app/content/tct/appinstall.sh'"
 sdb shell "su - app -c 'export DBUS_SESSION_BUS_ADDRESS=unix:path=/run/user/5000/dbus/user_bus_socket;/home/app/content/tct/appinstall.sh'"

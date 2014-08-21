@@ -31,22 +31,24 @@
 #        IVAN CHEN <yufeix.chen@intel.com>
 #
 
-local_path=$(dirname $0)
-source $local_path/Common.sh
-
-
-function_creat_xpk 
-
-#function_install_xwalk $logName
-
-#push xpk to device
-sdb push ../diffid_same_version_tests.xpk /home/app/content/tct
-sdb push appinstall.sh /home/app/content/tct
+python make_xpk.py diffid_same_version_tests/ key.pem 
+sleep 5
+test -f diffid_same_version_tests.xpk
+if [ $? -eq 0 ];then
+                rm key.pem
+                echo "Pass"
+else
+                echo "Fail"
+                exit 1
+fi
+#install app and uninstall it 
+sdb push diffid_same_version_tests.xpk /home/app/content/tct
+sdb push ./packertool/appinstall.sh /home/app/content/tct
 sdb root on
 sdb shell "su - app -c 'export DBUS_SESSION_BUS_ADDRESS=unix:path=/run/user/5000/dbus/user_bus_socket;chmod a+x /home/app/content/tct/appinstall.sh'"
 sdb shell "su - app -c 'export DBUS_SESSION_BUS_ADDRESS=unix:path=/run/user/5000/dbus/user_bus_socket;/home/app/content/tct/appinstall.sh'"
 if [ $? -eq 0 ];then
-  echo "Unstall xpk Pass"
+  echo "Uninstall xpk Pass"
   exit 0
 else
   exit 1
