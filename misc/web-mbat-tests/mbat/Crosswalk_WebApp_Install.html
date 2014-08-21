@@ -41,15 +41,21 @@ Authors:
       <strong>Test steps:</strong>
     </p>
     <ol>
-      <li>Push manifest_name_blend_tests.wgt into Tizen device</li>
-      <li>Install webapp by terminal:"xwalkctl --install manifest_name_blend_tests.wgt"
+      <li>Push testappone.wgt into Tizen device</li>
+      <li>Execute command: "sdb shell"</li>
+      <li>Execute command: "su" , Password:"tizen"</li>
+      <li>Execute command: "su app"</li>
+      <li>Install the widget with terminal: " xwalkctl -i path/to/testappone.wgt"</li>
     </ol>
     <p>
       <strong>Expected Output:</strong>
     </p>
     <ol>
-      <li>The webapp be pushed into Tizen device successfully</li>
-      <li>Web app is able to be installed successfully</li>
+      <li>The webapp is pushed into Tizen device successfully</li>
+      <li>The command execute successfully, no error</li>
+      <li>The command execute successfully, no error</li>
+      <li>The command execute successfully, no error</li>
+      <li>The webapp is installed successfully</li>
     </ol>
   </body>
 </html>
