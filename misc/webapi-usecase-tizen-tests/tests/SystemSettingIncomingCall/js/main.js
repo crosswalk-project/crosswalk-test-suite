@@ -21,17 +21,27 @@ Authors:
 var path;
 
 $(document).delegate("#main", "pageinit", function() {
-    $("#ringtone").delegate("li", "vclick", function() {
-        path = $(this).data("url");
-        setSystemProperty("INCOMING_CALL", path, onIncomingCallSetSuccess);
-        return false;
-    });
-    $("#tone").bind("vclick", function() {
-        getSystemProperty("INCOMING_CALL", onIncomingCallGetSuccess);
-        return false;
-    });
-    fileAudio();
+  fileAudio();
 });
+
+function setCall() {
+  path = $("#ringtone").find("li").data("url");
+  setSystemProperty("INCOMING_CALL", path, onIncomingCallSetSuccess);
+}
+
+function getPath() {
+  try {
+    tizen.systemsetting.getProperty("INCOMING_CALL", function(value) {
+      alert("Sound(Get) path : " + value);
+    }, onError);
+  } catch (e) {
+    console.log("Exception: " + e.message);
+  }
+}
+
+function play() {
+  getSystemProperty("INCOMING_CALL", onIncomingCallGetSuccess);
+}
 
 function onError(e) {
     alert("Error: " + e.message);
@@ -42,7 +52,6 @@ function onIncomingCallSetSuccess() {
 }
 
 function onIncomingCallGetSuccess(value) {
-    alert("Sound(Get) path : " + value);
     var audio = document.getElementById("MyAudio");
     audio.src = value;
     audio.type = "audio/*";
