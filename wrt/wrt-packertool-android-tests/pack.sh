@@ -56,6 +56,7 @@ cp -r $BUILD_ROOT/allpairs $BUILD_DEST/opt/$name/allpairs
 cp -r $BUILD_ROOT/metacomm $BUILD_DEST/opt/$name/metacomm
 cp -r $BUILD_ROOT/report $BUILD_DEST/opt/$name/report
 cp -r $BUILD_ROOT/tools $BUILD_DEST/opt/$name/tools
+cp -r $BUILD_ROOT/resource $BUILD_DEST/opt/$name/resource
 cp -r ../../tools/crosswalk $BUILD_DEST/opt/$name/tools/
 cp -r $BUILD_ROOT/test.py $BUILD_DEST/opt/$name
 cp -r $BUILD_ROOT/*.xml $BUILD_DEST/opt/$name
