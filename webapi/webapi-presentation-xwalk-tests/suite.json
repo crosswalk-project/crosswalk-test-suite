@@ -1,0 +1,97 @@
+{
+    "pkg-blacklist": [
+        "config.xml", 
+        "pack.py", 
+        "testcase.xsl", 
+        "testresult.xsl", 
+        "tests.css", 
+        "icon.png", 
+        "manifest.json", 
+        "suite.json", 
+        "inst.*"
+    ], 
+    "pkg-list": {
+        "apk,cordova": {
+            "blacklist": [
+                "*"
+            ], 
+            "copylist": {
+                "inst.apk.py": "inst.py", 
+                "tests.xml": "tests.xml"
+            }, 
+            "pkg-app": {
+                "blacklist": [
+                    "config.xml", 
+                    "manifest.json"
+                ]
+            }, 
+            "subapp-list": {
+                "presentation/presentation_secondary_page_image": {
+                    "app-name": "presentation_secondary_page_image", 
+                    "blacklist": [
+                        "config.xml"
+                    ], 
+                    "install-path": "apps"
+                }, 
+                "presentation/presentation_secondary_page_message": {
+                    "app-name": "presentation_secondary_page_message", 
+                    "blacklist": [
+                        "config.xml"
+                    ], 
+                    "install-path": "apps"
+                }, 
+                "presentation/presentation_secondary_page_video": {
+                    "app-name": "presentation_secondary_page_video", 
+                    "blacklist": [
+                        "config.xml"
+                    ], 
+                    "install-path": "apps"
+                }, 
+                "presentation/presentation_test": {
+                    "app-name": "presentation_test", 
+                    "blacklist": [
+                        "config.xml"
+                    ], 
+                    "install-path": "apps"
+                }
+            }
+        }, 
+        "apk-aio": {
+            "blacklist": [
+                "config.xml", 
+                "manifest.json"
+            ], 
+            "subapp-list": {
+                "presentation/presentation_secondary_page_image": {
+                    "app-name": "presentation_secondary_page_image", 
+                    "blacklist": [
+                        "config.xml"
+                    ], 
+                    "install-path": "apps"
+                }, 
+                "presentation/presentation_secondary_page_message": {
+                    "app-name": "presentation_secondary_page_message", 
+                    "blacklist": [
+                        "config.xml"
+                    ], 
+                    "install-path": "apps"
+                }, 
+                "presentation/presentation_secondary_page_video": {
+                    "app-name": "presentation_secondary_page_video", 
+                    "blacklist": [
+                        "config.xml"
+                    ], 
+                    "install-path": "apps"
+                }, 
+                "presentation/presentation_test": {
+                    "app-name": "presentation_test", 
+                    "blacklist": [
+                        "config.xml"
+                    ], 
+                    "install-path": "apps"
+                }
+            }
+        }
+    }, 
+    "pkg-name": "webapi-presentation-xwalk-tests"
+}

@@ -1,0 +1,68 @@
+{
+    "pkg-blacklist": [
+        "config.xml", 
+        "pack.py", 
+        "testcase.xsl", 
+        "testresult.xsl", 
+        "tests.css", 
+        "icon.png", 
+        "manifest.json", 
+        "suite.json", 
+        "inst.*"
+    ], 
+    "pkg-list": {
+        "apk,cordova": {
+            "blacklist": [
+                "*"
+            ], 
+            "copylist": {
+                "inst.apk.py": "inst.py", 
+                "tests.full.xml": "tests.full.xml", 
+                "tests.xml": "tests.xml"
+            }, 
+            "pkg-app": {}, 
+            "subapp-list": {
+                "testapp/packer_tool_minify_tests": {}, 
+                "testapp/permission_field_duplicate_tests": {}, 
+                "testapp/permission_field_lowercase_tests": {}, 
+                "testapp/permission_field_more2_tests": {}, 
+                "testapp/permission_field_more_tests": {}, 
+                "testapp/permission_field_one_tests": {}, 
+                "testapp/permission_field_uppercase_tests": {}, 
+                "testapp/webgl_webrtc_disable_tests": {
+                    "apk-cmd-opt": "--disable-webgl --disable-webrtc", 
+                    "apk-type": "MANIFEST"
+                }, 
+                "testapp/webgl_webrtc_enable_tests": {}
+            }
+        }, 
+        "apk-aio": {
+            "blacklist": []
+        }, 
+        "wgt": {
+            "blacklist": [
+                "*"
+            ], 
+            "copylist": {
+                "inst.wgt.py": "inst.py", 
+                "tests.full.xml": "tests.full.xml", 
+                "tests.xml": "tests.xml"
+            }, 
+            "pkg-app": {}
+        }, 
+        "xpk": {
+            "blacklist": [
+                "*"
+            ], 
+            "copylist": {
+                "inst.xpk.py": "inst.py", 
+                "tests.full.xml": "tests.full.xml", 
+                "tests.xml": "tests.xml"
+            }, 
+            "pkg-app": {
+                "blacklist": []
+            }
+        }
+    }, 
+    "pkg-name": "wrt-packertoolmanu-android-tests"
+}

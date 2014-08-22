@@ -1,0 +1,57 @@
+{
+    "pkg-blacklist": [
+        "config.xml", 
+        "pack.py", 
+        "testcase.xsl", 
+        "testresult.xsl", 
+        "tests.css", 
+        "icon.png", 
+        "manifest.json", 
+        "suite.json", 
+        "inst.*"
+    ], 
+    "pkg-list": {
+        "apk,cordova": {
+            "blacklist": [
+                "*"
+            ], 
+            "copylist": {
+                "inst.apk.py": "inst.py", 
+                "tests.xml.apk": "tests.xml"
+            }, 
+            "pkg-app": {
+                "apk-type": "HOSTEDAPP", 
+                "apk-url-opt": "http://127.0.0.1:8080/index.html"
+            }
+        }, 
+        "apk-aio": {
+            "blacklist": []
+        }, 
+        "wgt": {
+            "blacklist": [
+                "*"
+            ], 
+            "copylist": {
+                "inst.wgt.py": "inst.py", 
+                "tests.xml.xpk": "tests.xml"
+            }, 
+            "pkg-app": {
+                "hosted-app": "true"
+            }
+        }, 
+        "xpk": {
+            "blacklist": [
+                "*"
+            ], 
+            "copylist": {
+                "inst.xpk.py": "inst.py", 
+                "tests.xml.xpk": "tests.xml"
+            }, 
+            "pkg-app": {
+                "blacklist": [], 
+                "hosted-app": "true"
+            }
+        }
+    }, 
+    "pkg-name": "web-abat-tests"
+}
