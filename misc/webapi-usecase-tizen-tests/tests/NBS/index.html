@@ -39,25 +39,31 @@ Authors:
     <script src="../../js/thirdparty/jquery.mobile.js"></script>
     <script src="../../js/tests.js"></script>
     <script src="js/main.js"></script>
+    <style type="text/css">
+        .text_content{
+            border: 1px solid #000;
+            width:100%;
+        }
+    </style>
   </head>
   <body>
     <div data-role="header">
       <h1 id="main_page_title"></h1>
     </div>
     <div data-role="content">
-      <div>
-        <p>
-         <a href="#" id="btn_request" data-role="button">Request</a>
-         <a href="#" id="btn_release" data-role="button">Release</a>
-        </p>
-      </div>
-	  <div id="networkbearerselection">No result</div>
+      <form name='form_out'>
+        <textarea name="form_text" id="form_text" style="height: 200px;" class="text_content">Make sure the device is connect to a Clellular network or Wifi network before test.</textarea>
+      </form>
+      <p>
+       <a href="#" id="btn_request" data-role="button">Request to setup network connection</a>
+       <a href="#" id="btn_release" data-role="button">Release the network connection</a>
+      </p>
       <div data-role="footer" data-position="fixed"></div>
     </div>
     <div data-role="popup" id="popup_info">
       <font class="fontSize">
         <p>Test Purpose: </p>
-        <p>Check if the network bearer selection communication supported</p>
+        <p>Check if the network connection is supported</p>
         <p>Test Steps: </p>
           <ol>
             <li>When open the page or click the 'Request' button, check if the communication can be succeed</li>

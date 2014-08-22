@@ -30,38 +30,49 @@ Authors:
 */
 
 
-
-$(document).ready(function() {
-
   var errorLog = "";
-  var networkbearerselection = document.getElementById("networkbearerselection");
+
+  function _logData(data) {
+    var old = document.form_out.form_text.value;
+    document.form_out.form_text.value = old + '\n\n' + data;
+  }
 
   function scb() {
-    networkbearerselection.innerHTML = "Release Route Success";
+    _logData("Data network connection is released");
   }
 
   function ecb(e) {
-    networkbearerselection.innerHTML =  errorLog + ": " + e.message;
+     _logData(errorLog + '\n\n' + "error callback is called! " + e.message + " : " + e.code);
   }
 
-  var startscb = {
+  var statuscb = {
     onsuccess: function() {
-      networkbearerselection.innerHTML = "Request Route Success";
+      _logData("Data network connection is connected");
     },
     ondisconnected: function() {
-      networkbearerselection.innerHTML = "Route network is disconnected";
+      _logData("Data network connection is disconnected");
     }
-  };
+  }
 
-  
+  var statuscba = {
+    onsuccess: function() {
+      _logData("Data network connection is connected");
+      tizen.networkbearerselection.releaseRouteToHost("CELLULAR", "crosswalk-project.org", scb, ecb)
+    },
+    ondisconnected: function() {
+      _logData("Data network connection is disconnected");
+    }
+  }
+
+$(document).ready(function() {
+ 
   $('#btn_request').click(function() {
-    errorLog = "Request Route To Host Fail";
-    tizen.networkbearerselection.requestRouteToHost("CELLULAR", "www.baidu.com", statuscb, ecb);
-  });
+    errorLog = "Request to set up the network connection.";
+    tizen.networkbearerselection.requestRouteToHost("CELLULAR", "crosswalk-project.org", statuscb, ecb);
+  })
 
   $('#btn_release').click(function() {
-    errorLog = "Release Route To Host Fail";
-    tizen.networkbearerselection.releaseRouteToHost("CELLULAR", "www.baidu.com", scb, ecb);
-  });
+    errorLog = "Request to release the network connection.";
+    tizen.networkbearerselection.requestRouteToHost("CELLULAR", "crosswalk-project.org", statuscba, ecb);
+  })
 });
-
