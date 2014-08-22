@@ -50,11 +50,11 @@ t.step(function () {
 
   system.addEventListener("storageattach", function (e) {
     t.step(function () {
-      assert_true("StorageUnit" in e, "The SystemStorageEvent.StorageUnit exists");
-      assert_equals(typeof e.StorageUnit, "object", "The type of SystemStorageEvent.StorageUnit");
-      var value = e.StorageUnit;
-      e.StorageUnit = null;
-      assert_equals(e.StorageUnit, value, "The SystemStorageEvent.StorageUnit");
+      assert_true("storage" in e, "The SystemStorageEvent.StorageUnit exists");
+      assert_equals(typeof e.storage, "object", "The type of SystemStorageEvent.StorageUnit");
+      var value = e.storage;
+      e.storage= null;
+      assert_equals(e.storage, value, "The SystemStorageEvent.StorageUnit");
     });
     t.done();
   });

@@ -51,8 +51,8 @@ t.step(function () {
   system.addEventListener("displayconnect", function (e) {
     t.step(function () {
       assert_true(e instanceof SystemDisplayEvent, "The SystemDisplayEvent initialized");
-      assert_not_equals(e.DisplayUnit, undefined, "The SystemDisplayEvent.DisplayUnit");
-      assert_not_equals(e.DisplayUnit, null, "The SystemDisplayEvent.DisplayUnit");
+      assert_not_equals(e.display, undefined, "The SystemDisplayEvent.DisplayUnit");
+      assert_not_equals(e.display, null, "The SystemDisplayEvent.DisplayUnit");
     });
     t.done();
   });

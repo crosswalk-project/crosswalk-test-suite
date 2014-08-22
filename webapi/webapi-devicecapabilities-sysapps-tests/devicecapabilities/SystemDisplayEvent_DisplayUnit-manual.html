@@ -50,11 +50,11 @@ t.step(function () {
 
   system.addEventListener("displayconnect", function (e) {
     t.step(function () {
-      assert_true("DisplayUnit" in e, "The SystemDisplayEvent.DisplayUnit exists");
-      assert_equals(typeof e.DisplayUnit, "object", "The type of SystemDisplayEvent.DisplayUnit");
-      var value = e.DisplayUnit;
-      e.DisplayUnit = null;
-      assert_equals(e.DisplayUnit, value, "The SystemDisplayEvent.DisplayUnit");
+      assert_true("display" in e, "The SystemDisplayEvent.DisplayUnit exists");
+      assert_equals(typeof e.display, "object", "The type of SystemDisplayEvent.DisplayUnit");
+      var value = e.display;
+      e.display= null;
+      assert_equals(e.display, value, "The SystemDisplayEvent.DisplayUnit");
     });
     t.done();
   });
