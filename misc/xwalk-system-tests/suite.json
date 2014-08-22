@@ -8,38 +8,38 @@
         "icon.png", 
         "manifest.json", 
         "suite.json", 
+        "*-py", 
         "inst.*"
     ], 
     "pkg-list": {
         "apk,cordova": {
-            "blacklist": [
-                "*"
-            ], 
+            "blacklist": [], 
             "copylist": {
                 "inst.apk.py": "inst.py", 
                 "tests.full.xml": "tests.full.xml", 
                 "tests.xml": "tests.xml"
             }, 
-            "pkg-app": {}
+            "pkg-app": {
+                "blacklist": []
+            }
         }, 
         "apk-aio": {
             "blacklist": []
         }, 
         "wgt": {
-            "blacklist": [
-                "*"
-            ], 
+            "blacklist": [], 
             "copylist": {
                 "inst.wgt.py": "inst.py", 
                 "tests.full.xml": "tests.full.xml", 
                 "tests.xml": "tests.xml"
             }, 
-            "pkg-app": {}
+            "pkg-app": {
+                "blacklist": [], 
+                "sign-flag": "true"
+            }
         }, 
         "xpk": {
-            "blacklist": [
-                "*"
-            ], 
+            "blacklist": [], 
             "copylist": {
                 "inst.xpk.py": "inst.py", 
                 "tests.full.xml": "tests.full.xml", 
@@ -50,5 +50,5 @@
             }
         }
     }, 
-    "pkg-name": "webapi-uiautomation-tests"
+    "pkg-name": "xwalk-system-tests"
 }
