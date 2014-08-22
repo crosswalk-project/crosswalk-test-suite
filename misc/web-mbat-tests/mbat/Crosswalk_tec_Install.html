@@ -26,14 +26,14 @@ NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE,
 EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
 Authors:
-        Yuhan, Xu <yuhanx.xu@intel.com>
+        Lin, ShenX A <linx.a.shen@intel.com>
 
 -->
 
 <html>
   <head>
     <meta charset='utf-8'>
-    <title>Crosswalk_Run_As_Service_Uninstall</title>
+    <title>Crosswalk_tec_Install</title>
     <link rel="author" title="Intel" href="http://www.intel.com">
   </head>
   <body>
@@ -41,14 +41,10 @@ Authors:
       <strong>Test steps:</strong>
     </p>
     <ol>
-      <li>Push the "SysApps_DeviceCapabilities.xpk" into Tizen device</li>
+      <li>Push the tizen-extensions-crosswalk-version.rpm into Tizen device</li>
       <li>Execute command: "sdb shell"</li>
-      <li>Execute command: "su app"</li>
-      <li>Execute command: "whoami"</li>
-      <li>Execute command: "systemctl --user status xwalk.service"</li>
-      <li>Install the webapp with terminal: "xwalkctl --install {/path/to}/SysApps_DeviceCapabilities.xpk"</li>
-      <li>Execute command: "xwalkctl"</li>
-      <li>Uninstall the webapp with terminal: "xwalkctl --uninstall app_id"</li>
+      <li>Execute command: "su" "tizen"</li>
+      <li>Execute command: "zypper in -f tizen-extensions-crosswalk-version.rpm" to install crosswalk</li>
     </ol>
     <p>
       <strong>Expected Output:</strong>
@@ -57,11 +53,7 @@ Authors:
       <li>The package be pushed into Tizen device successfully</li>
       <li>The command execute successfully, no error</li>
       <li>The command execute successfully, no error</li>
-      <li>There display "app"</li>
-      <li>There display "xwalk.service - Crosswalk"</li>
-      <li>There display webapp be installed successfully</li>
-      <li>There display the installed apps</li>
-      <li>The webapp be uninstalled successfully, and removing it from the Tizen launcher</li>
+      <li>Press 'y' to continue install tizen-extensions-crosswalk, and it should be installed successfully</li>
     </ol>
   </body>
 </html>

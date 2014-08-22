@@ -25,14 +25,15 @@ OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING
 NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE,
 EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
-Authors:      Lin,Shen <linx.a.shen@intel.com>
+Authors:
+        Lin, ShenX A <linx.a.shen@intel.com>
 
 -->
 
 <html>
   <head>
     <meta charset='utf-8'>
-    <title>Crosswalk_WebApp_Touch_Gesture_Click</title>
+    <title>Crosswalk_tec_Uninstall</title>
     <link rel="author" title="Intel" href="http://www.intel.com">
   </head>
   <body>
@@ -40,15 +41,19 @@ Authors:      Lin,Shen <linx.a.shen@intel.com>
       <strong>Test steps:</strong>
     </p>
     <ol>
-      <li>Open web app</li>
-      <li>Click "Search Button" or other links</li>
+      <li>Execute command: "sdb shell"</li>
+      <li>Execute command: "su" "tizen"</li>
+      <li>Execute command: "rpm -qa | grep crosswalk"</li>
+      <li>Execute command: "rpm -e tizen-extensions-crosswalk-version " to uninstall crosswalk</li>
     </ol>
     <p>
       <strong>Expected Output:</strong>
     </p>
     <ol>
-      <li>The page display normally</li>
-      <li>Should access to corresponding web page</li>
+      <li>The command execute successfully, no error</li>
+      <li>The command execute successfully, no error</li>
+      <li>List the tizen-extensions-crosswalk-version successfully</li>
+      <li>The Tizen-extensions-crosswalk is uninstalled from device successfully</li>
     </ol>
   </body>
 </html>

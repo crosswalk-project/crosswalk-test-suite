@@ -26,14 +26,14 @@ NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE,
 EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
 Authors:
-        Yuhan, Xu <yuhanx.xu@intel.com>
+      linx.a.shen@intel.com
 
 -->
 
 <html>
   <head>
     <meta charset='utf-8'>
-    <title>Crosswalk_Run_As_Service_Install</title>
+    <title>Crosswalk_WebApp_Update</title>
     <link rel="author" title="Intel" href="http://www.intel.com">
   </head>
   <body>
@@ -41,27 +41,21 @@ Authors:
       <strong>Test steps:</strong>
     </p>
     <ol>
-      <li>Push the "SysApps_DeviceCapabilities.xpk" into Tizen device</li>
-      <li>Execute command: "sdb shell"</li>
-      <li>Execute command: "su app"</li>
-      <li>Execute command: "whoami"</li>
-      <li>Execute command: "systemctl --user status xwalk.service"</li>
-      <li>Install the webapp with terminal: "xwalkctl --install {/path/to}/SysApps_DeviceCapabilities.xpk"</li>
-      <li>Execute command: "xwalkctl"</li>
-      <li>Launch the webapp and check the basic function for example button click and drag etc</li>
+      <li>Push the testappone.wgt testapptwo.wgt(version is higher) to Tizen device</li>
+      <li>Install testappone.wgt by typing: "xwalkctl --install testappone.wgt"</li>
+      <li>typing "xwalkctl"</li>
+      <li>Install testapptwo.wgt by typing: "xwalkctl --install testapptwo.wgt"</li>
+      <li>typing "xwalkctl"</li>
     </ol>
     <p>
       <strong>Expected Output:</strong>
     </p>
     <ol>
-      <li>The package be pushed into Tizen device successfully</li>
-      <li>The command execute successfully, no error</li>
-      <li>The command execute successfully, no error</li>
-      <li>There display "app"</li>
-      <li>There display "xwalk.service - Crosswalk"</li>
-      <li>There display webapp be installed successfully, and its icon should appear on the Tizen launcher</li>
-      <li>There display the installed apps</li>
-      <li>Basic function works fine</li>
+      <li>The webapp be pushed into Tizen device successfully</li>
+      <li>The testappone installed successfully</li>
+      <li>The Application Name list webapp name :test_app_one</li>
+      <li>The testapptwo installed successfully</li>
+      <li>The Application Name list webapp name :test_app_one</li>
     </ol>
   </body>
 </html>

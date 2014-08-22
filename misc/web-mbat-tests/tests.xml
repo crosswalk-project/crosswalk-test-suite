@@ -19,40 +19,36 @@
           <test_script_entry>/opt/web-mbat-tests/mbat/Crosswalk_Binary_Uninstall.html</test_script_entry>
         </description>
       </testcase>
-      <testcase component="Crosswalk Runtime Binary" execution_type="manual" id="Crosswalk_Run_As_Service_Launch" purpose="Validate Crosswalk can launch apps in the 'run-as-service' mode">
+      <testcase component="Crosswalk Runtime Binary" execution_type="manual" id="Crosswalk_tec_Install" purpose="Validate Crosswalk tec install is successfull">
+        <description>
+          <pre_condition>
+            1.Make sure Crosswalk binary is push device.
+          </pre_condition>
+          <test_script_entry>/opt/web-mbat-tests/mbat/Crosswalk_tec_Install.html</test_script_entry>
+        </description>
+      </testcase>
+      <testcase component="Crosswalk Runtime Binary" execution_type="manual" id="Crosswalk_tec_Uninstall" purpose="Validate Crosswalk tec unistall successfull">
         <description>
           <pre_condition>
             1.Make sure Crosswalk binary is installed
-            2.Make sure the "SysApps_DeviceCapabilities.xpk" package is installed
           </pre_condition>
-          <test_script_entry>/opt/web-mbat-tests/mbat/Crosswalk_Run_As_Service_Launch.html</test_script_entry>
+          <test_script_entry>/opt/web-mbat-tests/mbat/Crosswalk_tec_Uninstall.html</test_script_entry>
         </description>
       </testcase>
-      <testcase component="Crosswalk/Runtime/Basicfeature" execution_type="manual" id="Crosswalk_WebApp_Launch_CommandLine" purpose="Check launch web app via command line">
-        <description>
-          <pre_condition>
-            1.Make sure Crosswalk is installed.
-            1.Make sure webapp is installed.
-          </pre_condition>
-          <test_script_entry>/opt/web-mbat-tests/mbat/Crosswalk_WebApp_Launch_CommandLine.html</test_script_entry>
-        </description>
-      </testcase>
-      <testcase component="Integration with Tizen System" execution_type="manual" id="Crosswalk_WebApp_Touch_Gesture_Click" purpose="Validate if Crosswalk support click gesture on Web Apps">
+      <testcase component="Integration with Tizen System" execution_type="manual" id="Crosswalk_Launch_URL" purpose="Validate if Crosswalk support launch url">
         <description>
           <pre_condition>
             1. Make sure Crosswalk application is launched and the device connected to network
-            2. Package a Web App,it contains below web links:Open website link: http://www.hao123.com
-            3. Install this Web App
           </pre_condition>
-          <test_script_entry>/opt/web-mbat-tests/mbat/Crosswalk_WebApp_Touch_Gesture_Click.html </test_script_entry>
+          <test_script_entry>/opt/web-mbat-tests/mbat/Crosswalk_Launch_URL.html </test_script_entry>
         </description>
       </testcase>
-      <testcase component="Package Management On Tizen" execution_type="manual" id="Crosswalk_WebApp_Uninstall" purpose="Validate if Crosswalk support web apps could be uninstalled successfully">
+      <testcase component="Package Management On Tizen" execution_type="manual" id="Crosswalk_WebApp_Install" purpose="Validate if Crosswalk support to install Widget">
         <description>
           <pre_condition>
-            1.Make sure there some webapps are available
+            1.Make sure Crosswalk is installed;
           </pre_condition>
-          <test_script_entry>/opt/web-mbat-tests/mbat/Crosswalk_WebApp_Uninstall.html</test_script_entry>
+          <test_script_entry>/opt/web-mbat-tests/mbat/Crosswalk_WebApp_Install.html</test_script_entry>
         </description>
       </testcase>
       <testcase component="Package Management On Tizen" execution_type="manual" id="Crosswalk_WebApp_Launch" purpose="Validate Crosswalk support that web app could be launched successfully">
@@ -64,86 +60,20 @@
           <test_script_entry>/opt/web-mbat-tests/mbat/Crosswalk_WebApp_Launch.html</test_script_entry>
         </description>
       </testcase>
-      <testcase component="Package Management On Tizen" execution_type="manual" id="Crosswalk_WebApp_Close" purpose="Validate Crosswalk support that web app could be closed successfully">
-        <description>
-          <pre_condition>
-            1.Make sure Crosswalk application is launched
-            2.Make sure have one web app is running
-          </pre_condition>
-          <test_script_entry>/opt/web-mbat-tests/mbat/Crosswalk_WebApp_Close.html</test_script_entry>
-        </description>
-      </testcase>
-      <testcase component="Package Management On Tizen" execution_type="manual" id="Crosswalk_Wiget_Install" purpose="Validate if Crosswalk support to install Widget">
+      <testcase component="Package Management On Tizen" execution_type="manual" id="Crosswalk_WebApp_Update" purpose="Validate if Crosswalk support to update WebApp">
         <description>
           <pre_condition>
             1.Make sure Crosswalk is installed;
-            2.Make sure the wgt tct-2dtransforms-css3-tests.wgt available.
           </pre_condition>
-          <test_script_entry>/opt/web-mbat-tests/mbat/Crosswalk_Wiget_Install.html</test_script_entry>
+          <test_script_entry>/opt/web-mbat-tests/mbat/Crosswalk_WebApp_Update.html</test_script_entry>
         </description>
       </testcase>
-      <testcase component="Package Management On Tizen" execution_type="manual" id="Crosswalk_Wiget_Launch" purpose="Validate if Crosswalk support to launch the installed Widget">
+      <testcase component="Package Management On Tizen" execution_type="manual" id="Crosswalk_WebApp_Uninstall" purpose="Validate if Crosswalk support web apps could be uninstalled successfully">
         <description>
           <pre_condition>
-            1.Make sure Crosswalk is installed;
-            2.Make sure the wgt tct-2dtransforms-css3-tests.wgt is installed.
+            1.Make sure there some webapps are available
           </pre_condition>
-          <test_script_entry>/opt/web-mbat-tests/mbat/Crosswalk_Wiget_Launch.html</test_script_entry>
-        </description>
-      </testcase>
-      <testcase component="Package Management On Tizen" execution_type="manual" id="Crosswalk_Wiget_Uninstall" purpose="Validate if Crosswalk support to Uninstall the installed Widget">
-        <description>
-          <pre_condition>
-            1.Make sure Crosswalk is installed;
-            2.Make sure the wgt tct-2dtransforms-css3-tests.wgt is installed.
-          </pre_condition>
-          <test_script_entry>/opt/web-mbat-tests/mbat/Crosswalk_Wiget_Uninstall.html</test_script_entry>
-        </description>
-      </testcase>
-      <testcase component="Crosswalk Runtime Binary" execution_type="manual" id="Crosswalk_Run_As_Service_Install" purpose="Validate Crosswalk support installing apps in the 'run-as-service' mode">
-        <description>
-          <pre_condition>
-            1.Make sure Crosswalk binary is installed
-            2.Make sure the "SysApps_DeviceCapabilities.xpk" package is available
-          </pre_condition>
-          <test_script_entry>/opt/web-mbat-tests/mbat/Crosswalk_Run_As_Service_Install.html</test_script_entry>
-        </description>
-      </testcase>
-      <testcase component="Crosswalk Runtime Binary" execution_type="manual" id="Crosswalk_Run_As_Service_Uninstall" purpose="Validate Crosswalk support uninstalling apps in the 'run-as-service' mode">
-        <description>
-          <pre_condition>
-            1.Make sure Crosswalk binary is installed
-            2.Make sure the "SysApps_DeviceCapabilities.xpk" package is available
-          </pre_condition>
-          <test_script_entry>/opt/web-mbat-tests/mbat/Crosswalk_Run_As_Service_Uninstall.html</test_script_entry>
-        </description>
-      </testcase>
-      <testcase component="Runtime Core" execution_type="manual" id="Crosswalk_Manifest_Version_IdentifyingOne" purpose="Validate the version of web app is 1">
-        <description>
-          <pre_condition>
-            1.Make sure Crosswalk binary is installed on device.
-            2.Download package resources from otcqa to local
-          </pre_condition>
-          <test_script_entry>/opt/web-mbat-tests/mbat/Crosswalk_Manifest_Version_IdentifyingOne.html </test_script_entry>
-        </description>
-      </testcase>
-      <testcase component="Runtime Core" execution_type="manual" id="Crosswalk_Manifest_Name_Blend" purpose="Validate the Manifest name of web app is manifest_name_blend_tests">
-        <description>
-          <pre_condition>
-            1.Make sure Crosswalk binary is installed on device;
-            2.Download package resources from otcqa to local;
-            3.Push package resources to device,run "sdb push xxxx /".
-          </pre_condition>
-          <test_script_entry>/opt/web-mbat-tests/mbat/Crosswalk_Manifest_Name_Blend.html </test_script_entry>
-        </description>
-      </testcase>
-      <testcase component="Package Management On Tizen" execution_type="manual" id="Crosswalk_WebApp_Install" purpose="Validate if Crosswalk support to install WebApp">
-        <description>
-          <pre_condition>
-            1.Make sure Crosswalk is installed;
-            2.Make sure the webapp wrt-system-event-tests is available.
-          </pre_condition>
-          <test_script_entry>/opt/web-mbat-tests/mbat/Crosswalk_WebApp_Install.html</test_script_entry>
+          <test_script_entry>/opt/web-mbat-tests/mbat/Crosswalk_WebApp_Uninstall.html</test_script_entry>
         </description>
       </testcase>
     </set>

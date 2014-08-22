@@ -43,7 +43,8 @@ Authors:
     <ol>
       <li>Execute command: "sdb shell"</li>
       <li>Execute command: "su" "tizen"</li>
-      <li>Execute command: "rpm -e crosswalk-version.rpm" to uninstall crosswalk</li>
+      <li>Execute command: "rpm -qa | grep crosswalk"</li>
+      <li>Execute command: "rpm -e crosswalk-version --nodeps" to uninstall crosswalk</li>
     </ol>
     <p>
       <strong>Expected Output:</strong>
@@ -51,7 +52,8 @@ Authors:
     <ol>
       <li>The command execute successfully, no error</li>
       <li>The command execute successfully, no error</li>
-      <li>Crosswalk can be uninstall to device successfully</li>
+      <li>List the crosswalk-version successfully</li>
+      <li>The crosswalk binary is uninstalled from device successfully</li>
     </ol>
   </body>
 </html>
