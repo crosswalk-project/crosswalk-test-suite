@@ -51,8 +51,8 @@ t.step(function () {
   system.addEventListener("storageattach", function (e) {
     t.step(function () {
       assert_true(e instanceof SystemStorageEvent, "The SystemStorageEvent initialized");
-      assert_not_equals(e.StorageUnit, undefined, "The SystemStorageEvent.StorageUnit");
-      assert_not_equals(e.StorageUnit, null, "The SystemStorageEvent.StorageUnit");
+      assert_not_equals(e.storage, undefined, "The SystemStorageEvent.StorageUnit");
+      assert_not_equals(e.storage, null, "The SystemStorageEvent.StorageUnit");
     });
     t.done();
   });
