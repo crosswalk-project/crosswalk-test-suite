@@ -23,9 +23,9 @@
                 test_feature_exists(subDoc, 'windowless subdocument');
               
                 // check that the subdocument has a hidden visibility state
-                test_true(subDoc.webkitHidden,
+                test_true(subDoc.hidden,
                           "hidden == true for windowless subdocuments with a null default view");
-                test_equals(subDoc.webkitVisibilityState, VISIBILITY_STATES.HIDDEN,
+                test_equals(subDoc.visibilityState, VISIBILITY_STATES.HIDDEN,
                             "visibilityState == " + VISIBILITY_STATES.HIDDEN + 
                             " for windowless subdocuments with a null default view");
 
