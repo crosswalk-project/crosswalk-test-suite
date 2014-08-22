@@ -85,17 +85,9 @@ function showmsg(msg) {
 }
 
 function binaryToBlob(data) {
-    var bb;
-    if (browser == "webkit") {
-        bb = new WebKitBlobBuilder();
-    }
-    else {
-        bb = new BlobBuilder();
-    }
     var arr = new Uint8Array(data.length);
     for (var i = 0, l = data.length; i < l; i++) {
         arr[i] = data.charCodeAt(i);
     }
-    bb.append(arr.buffer);
-    return bb.getBlob();
+    return new Blob([arr.buffer]);
 }

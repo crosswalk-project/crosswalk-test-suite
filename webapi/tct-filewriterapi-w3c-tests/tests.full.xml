@@ -27,13 +27,13 @@
           </spec>
         </specs>
       </testcase>
-      <testcase purpose="Check if the parameter type of BlobBuilder.append is blob, then compare its value with blobBuilder.getBlob().Size which is 4" type="compliance" status="approved" component="WebAPI/Storage/File API: Writer (Partial)" execution_type="auto" priority="P1" id="BlobBuilder_append_blob_size">
+      <testcase purpose="Check if the Blob append an exist blob, then compare its value with blob.Size which is 4" type="compliance" status="approved" component="WebAPI/Storage/File API: Writer (Partial)" execution_type="auto" priority="P1" id="Blob_append_blob_size">
         <description>
-          <test_script_entry>/opt/tct-filewriterapi-w3c-tests/filewriterapi/BlobBuilder_append_blob_size.html</test_script_entry>
+          <test_script_entry>/opt/tct-filewriterapi-w3c-tests/filewriterapi/Blob_append_blob_size.html</test_script_entry>
         </description>
         <specs>
           <spec>
-            <spec_assertion element_type="method" element_name="append" interface="BlobBuilder" specification="File API: Writer (Partial)" section="Storage" category="Tizen W3C API Specifications"/>
+            <spec_assertion element_type="method" element_name="append" interface="Blob" specification="File API: Writer (Partial)" section="Storage" category="Tizen W3C API Specifications"/>
             <spec_url>http://www.w3.org/TR/2011/WD-file-writer-api-20110419/#widl-BlobBuilder-append</spec_url>
             <spec_statement/>
           </spec>
@@ -267,25 +267,25 @@
           </spec>
         </specs>
       </testcase>
-      <testcase purpose="Check if BlobBuilder constructor must be visible when the script's global object is a Window object" type="compliance" status="approved" component="WebAPI/Storage/File API: Writer (Partial)" execution_type="auto" priority="P3" id="BlobBuilder_constructor_visible_in_window">
+      <testcase purpose="Check if Blob constructor must be visible when the script's global object is a Window object" type="compliance" status="approved" component="WebAPI/Storage/File API: Writer (Partial)" execution_type="auto" priority="P3" id="Blob_constructor_visible_in_window">
         <description>
-          <test_script_entry>/opt/tct-filewriterapi-w3c-tests/filewriterapi/BlobBuilder_constructor_visible_in_window.html</test_script_entry>
+          <test_script_entry>/opt/tct-filewriterapi-w3c-tests/filewriterapi/Blob_constructor_visible_in_window.html</test_script_entry>
         </description>
         <specs>
           <spec>
-            <spec_assertion usage="true" interface="BlobBuilder" specification="File API: Writer (Partial)" section="Storage" category="Tizen W3C API Specifications"/>
+            <spec_assertion usage="true" interface="Blob" specification="File API: Writer (Partial)" section="Storage" category="Tizen W3C API Specifications"/>
             <spec_url>http://www.w3.org/TR/2011/WD-file-writer-api-20110419/#idl-def-BlobBuilder</spec_url>
             <spec_statement/>
           </spec>
         </specs>
       </testcase>
-      <testcase purpose="Check if BlobBuilder.getBlob method set 'text/plain', then compare blobBuilder.getBlob().type is 'text/plain'" type="compliance" status="approved" component="WebAPI/Storage/File API: Writer (Partial)" execution_type="auto" priority="P2" id="BlobBuilder_getBlob_string_type">
+      <testcase purpose="Check if Blob() method set 'text/plain', then compare blob.type is 'text/plain'" type="compliance" status="approved" component="WebAPI/Storage/File API: Writer (Partial)" execution_type="auto" priority="P2" id="Blob_getBlob_string_type">
         <description>
-          <test_script_entry>/opt/tct-filewriterapi-w3c-tests/filewriterapi/BlobBuilder_getBlob_string_type.html</test_script_entry>
+          <test_script_entry>/opt/tct-filewriterapi-w3c-tests/filewriterapi/Blob_getBlob_string_type.html</test_script_entry>
         </description>
         <specs>
           <spec>
-            <spec_assertion element_type="method" element_name="getBlob" interface="BlobBuilder" specification="File API: Writer (Partial)" section="Storage" category="Tizen W3C API Specifications"/>
+            <spec_assertion element_type="method" element_name="getBlob" interface="Blob" specification="File API: Writer (Partial)" section="Storage" category="Tizen W3C API Specifications"/>
             <spec_url>http://www.w3.org/TR/2011/WD-file-writer-api-20110419/#widl-BlobBuilder-getBlob</spec_url>
             <spec_statement/>
           </spec>

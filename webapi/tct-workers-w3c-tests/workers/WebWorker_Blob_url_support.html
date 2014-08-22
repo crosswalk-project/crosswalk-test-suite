@@ -39,44 +39,19 @@ Authors:
     <meta name="assert" content="Check if Web Worker support Blob url" />
     <script src="../resources/testharness.js"></script>
     <script src="../resources/testharnessreport.js"></script>
-    <script>
-        function initBlobBuilder() {
-            var blockbuilder;
-            if (!blockbuilder) {
-                try {
-                    blockbuilder = new BlobBuilder();
-                } catch (e) {}
-
-                try {
-                    blockbuilder = new MSBlobBuilder();
-                } catch (e) {}
-
-                try {
-                    blockbuilder = new WebKitBlobBuilder();
-                } catch (e) {}
-
-                try {
-                    blockbuilder = new MozBlobBuilder();
-                } catch (e) {}
-            }
-             return blockbuilder;
-        }
-    </script>
   </head>
   <body>
     <div id=log></div>
     <script>
         var t = async_test(document.title, {timeout: 2000});
         setup({timeout: 2000});
-        var builder = initBlobBuilder();
-        builder.append("onmessage = function( event ) { postMessage( event.data ) };");
-        var blob = builder.getBlob("text/plain");
+        var blob = new Blob(["onmessage = function( event ) { postMessage( event.data ) };"], {type: "text/plain"});
         window.URL = window.URL || window.webkitURL;
         var worker = new Worker(window.URL.createObjectURL(blob));
         worker.postMessage("Blob URL!");
         worker.onmessage = function( event ) {
             t.step(function() {
-                assert_true( event.data === "Blob URL!", "Web Worker supports Blob url");
+                assert_equals(event.data, "Blob URL!", "Web Worker supports Blob url");
             });
             t.done();
         };

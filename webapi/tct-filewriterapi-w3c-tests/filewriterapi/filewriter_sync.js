@@ -34,65 +34,41 @@ Date                        Author                        Description
 */
 
 var fileSystem = webkitRequestFileSystemSync(this.TEMPORARY, 100);
-var blockbuilder;
-function getBlobBuilder() {
-    if (!blockbuilder) {
-        try {
-            blockbuilder = new MSBlobBuilder();
-        } catch (e) {}
-
-        try {
-            blockbuilder = new WebKitBlobBuilder();
-        } catch (e) {}
-
-        try {
-            blockbuilder = new MozBlobBuilder();
-        } catch (e) { }
-
-    }
-    return blockbuilder;
-}
 
 onmessage = function(event) {
    if(event.data == "fileWriterSynclength"){
-   	   var fileEntrySync = fileSystem.root.getFile('test_length.txt',{create:true});
-   	   var fileWriterSync = fileEntrySync.createWriter();
-       var bb = getBlobBuilder();
-       bb.append('test fileWriterSync length attribute');
-       fileWriterSync.write(bb.getBlob('text/plain'));
+       var fileEntrySync = fileSystem.root.getFile('test_length.txt',{create:true});
+       var fileWriterSync = fileEntrySync.createWriter();
+       var bb = new Blob(['test fileWriterSync length attribute'], {type: 'text/plain'});
+       fileWriterSync.write(bb);
        postMessage(fileWriterSync.length);
    } else if(event.data == "fileWriterSyncposition"){
-   	   var fileEntrySync = fileSystem.root.getFile('test_position.txt',{create:true});
-   	   var fileWriterSync = fileEntrySync.createWriter();
-       var bb = getBlobBuilder();
-       bb.append('test fileWriterSync position attribute');
-       fileWriterSync.write(bb.getBlob('text/plain'));
-   	   fileWriterSync.seek(5);
+       var fileEntrySync = fileSystem.root.getFile('test_position.txt',{create:true});
+       var fileWriterSync = fileEntrySync.createWriter();
+       var bb = new Blob(['test fileWriterSync position attribute'], {type: 'text/plain'});
+       fileWriterSync.write(bb);
+       fileWriterSync.seek(5);
        postMessage(fileWriterSync.position);
    } else if(event.data == "fileWriterSyncseek"){
-   	   var fileEntrySync = fileSystem.root.getFile('test_seek.txt',{create:true});
-   	   var fileWriterSync = fileEntrySync.createWriter();
-       var bb = getBlobBuilder();
-       bb.append('test fileWriterSync seek attribute');
-       fileWriterSync.write(bb.getBlob('text/plain'));
-   	   fileWriterSync.seek(10);
+       var fileEntrySync = fileSystem.root.getFile('test_seek.txt',{create:true});
+       var fileWriterSync = fileEntrySync.createWriter();
+       var bb = new Blob(['test fileWriterSync seek attribute'], {type: 'text/plain'});
+       fileWriterSync.write(bb);
+       fileWriterSync.seek(10);
        postMessage(fileWriterSync.position);
    } else if(event.data == "fileWriterSyncwrite"){
-   	   var fileEntrySync = fileSystem.root.getFile('test_write.txt',{create:true});
-   	   var fileWriterSync = fileEntrySync.createWriter();
-   	   var aa = getBlobBuilder();
-   	   aa.append("test fileWriterSync write method");
-       blob = aa.getBlob('text/plain');
+       var fileEntrySync = fileSystem.root.getFile('test_write.txt',{create:true});
+       var fileWriterSync = fileEntrySync.createWriter();
+       var blob = new Blob(["test fileWriterSync write method"], {type: 'text/plain'});
        fileWriterSync.write(blob);
        postMessage(fileWriterSync.length);
-    } else if(event.data == "fileWriterSynctruncate"){
+   } else if(event.data == "fileWriterSynctruncate"){
        var fileEntrySync = fileSystem.root.getFile('test_truncate.txt',{create:true});
        var fileWriterSync = fileEntrySync.createWriter();
-       var bb = getBlobBuilder();
-       bb.append('test fileWriterSync truncate attribute');
-       fileWriterSync.write(bb.getBlob('text/plain'));
+       var bb = new Blob(['test fileWriterSync truncate attribute'], {type: 'text/plain'});
+       fileWriterSync.write(bb);
        fileWriterSync.truncate(15);
        postMessage(fileWriterSync.length);
    } else
-   	   postMessage("There is a wrong");
+       postMessage("There is a wrong");
 }

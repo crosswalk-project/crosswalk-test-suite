@@ -63,14 +63,13 @@ Authors:
         requestFileSystem(TEMPORARY, 1024*1024, function (fs) {
             fs.root.getFile('log.txt', {create: true}, function (fileEntry) {
                 fileEntry.createWriter(function (fileWriter) {
-                    var bb = initBlobBuilder();
-                    bb.append('the value of FileWriter.length attribute is normal');
+                    var bb = new Blob(['the value of FileWriter.length attribute is normal'], {type: 'text/plain'});
                     t.step(function () {
                         initial_length = fileWriter.length;
                         assert_equals(fileWriter.length, initial_length);
                     });
                     t.done();
-                    fileWriter.write(bb.getBlob('text/plain'));
+                    fileWriter.write(bb);
                 }, errorCallback);
             }, errorCallback);
         }, errorCallback);

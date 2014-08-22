@@ -33,33 +33,21 @@ Authors:
 
 <html>
   <head>
-    <title>File Writer Test: BlobBuilder_append_blob_size</title>
+    <title>File Writer Test: Blob_string_type</title>
     <link rel="author" title="Intel" href="http://www.intel.com" />
-    <link rel="help" href="http://www.w3.org/TR/2011/WD-file-writer-api-20110419/#widl-BlobBuilder-append" />
+    <link rel="help" href="http://www.w3.org/TR/2011/WD-file-writer-api-20110419/#widl-BlobBuilder-getBlob" />
     <meta name="flags" content="" />
-    <meta name="assert" content="Check if BlobBuilder.append method parameter type is blob, then compare blobBuilder.getBlob().Size is 4" />
-    <script src="support/support.js"></script>
+    <meta name="assert" content="Check if Blob set 'text/plain', then compare Blob.type is 'text/plain'" />
     <script src="../resources/testharness.js"></script>
     <script src="../resources/testharnessreport.js"></script>
   </head>
   <body>
     <div id="log"></div>
     <script>
-        var t = async_test(document.title);
-        t.step(function () {
-            try {
-                window.BlobBuilder = window.BlobBuilder || window.WebKitBlobBuilder || window.MSBlobBuilder || window.MozBlobBuilder;
-                var blob1 = new BlobBuilder();
-                var blob2 = new BlobBuilder();
-                blob1.append("test");
-                blob2.append(blob1.getBlob("text/plain"));
-                var size = blob2.getBlob().size;
-                assert_equals(size, 4);
-            } catch (e) {
-                assert_false(true, e.message);
-            }
-        }, "compare blobBuilder.getBlob().Size is 4");
-        t.done();
+        test(function () {
+            var type = new Blob([], {type: "text/plain"}).type;
+            assert_equals(type, "text/plain");
+        }, "compare Blob().type is 'text/plain'");
     </script>
   </body>
 </html>
