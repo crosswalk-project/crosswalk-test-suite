@@ -137,7 +137,7 @@ t.step(function () {
 
         //isConnected AE AT ARO
         test(function () {
-            check_readonly(device, "isConnected", true, "boolean", false);
+            check_readonly(device, "isConnected", device.isConnected, "boolean", !device.isConnected);
         } , "BluetoothDevice_isConnected_attribute");
 
         //isTrusted AE AT ARO
