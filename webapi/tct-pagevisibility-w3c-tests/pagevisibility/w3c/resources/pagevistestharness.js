@@ -39,8 +39,8 @@ function pv_test(func, msg, doc)
     {
         feature_check = true;
 
-        var hiddenVal = doc.webkitHidden;
-        var visStateVal = doc.webkitVisibilityState;
+        var hiddenVal = doc.hidden;
+        var visStateVal = doc.visibilityState;
 
         // show a single error that the Page Visibility feature is undefined
         test(function()
@@ -72,8 +72,8 @@ function test_feature_exists(doc, msg)
     }
     var hiddenMsg = "document.hidden is defined" + msg + ".";
     var stateMsg = "document.visibilityState is defined" + msg + ".";
-    pv_test(function(){assert_true(document.webkitHidden !== undefined, hiddenMsg);}, hiddenMsg, doc);
-    pv_test(function(){assert_true(document.webkitVisibilityState !== undefined, stateMsg);}, stateMsg, doc);
+    pv_test(function(){assert_true(document.hidden !== undefined, hiddenMsg);}, hiddenMsg, doc);
+    pv_test(function(){assert_true(document.visibilityState !== undefined, stateMsg);}, stateMsg, doc);
 }
 
 //
