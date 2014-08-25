@@ -66,7 +66,7 @@ def gen_Manifest_Json(output_file,in_file):
             os.mkdir(const.path + "/tcs/Crosswalk-Manifest-Check" + str(Manifest_Row+1))
             fp = open(const.path + "/tcs/Crosswalk-Manifest-Check"+str(Manifest_Row+1) + "/manifest.json",'w')
             for i in range(0,len(items)):
-              if ((name_list[i])!="icon" and (name_list[i])!="xwalk_permissions"  and (name_list[i])!="xwalk_launch_screen"):
+              if ((name_list[i])!="icons" and (name_list[i])!="xwalk_permissions"  and (name_list[i])!="xwalk_launch_screen"):
                     if (items[i].find("000")!=-1):
                         items[i] = items[i].replace("000"," ")
                         get_self = get_self + "\"" + name_list[i] + "\"" + " : " + "\"" +items[i].replace("null","") + "\",\n"
