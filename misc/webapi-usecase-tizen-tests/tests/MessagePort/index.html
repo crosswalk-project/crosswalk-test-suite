@@ -40,18 +40,27 @@ Authors:
         <script src="../../js/thirdparty/jquery.mobile.js"></script>
         <script src="../../js/tests.js"></script>
         <script src="js/main.js"></script>
+        <style>
+            #test {
+               width: 98%;
+               height: 100px;
+               overflow: auto;
+               border: 1px solid;
+               margin: 0px auto;
+            }
+        </style>
     </head>
     <body>
         <div data-role="header">
             <h1 id="main_page_title"></h1>
         </div>
         <div data-role="content">
-            <label for="pc1_input">send message:</label>
+            <div id="test"></div>
+            <label for="pc1_input" style="margin-left: 5px;">send message:</label>
             <div class="ui-grid-a">
               <div class="ui-block-a"><input type="text" id="pc1_input"/></div>
               <div class="ui-block-b"><a id="pc1_send" data-role="button">Send</a></div>
             </div>
-            <div id="test" style='width: 100%; color: red'></div>
         </div>
         <div data-role="footer" data-position="fixed"></div>
         <div data-role="popup" id="popup_info">
@@ -60,10 +69,10 @@ Authors:
             <p>Test Steps: </p>
               <ol>
                 <li>Write message in the input box</li>
-                <li>Click the 'Send' botton, the message is send</li>
+                <li>Click the 'Send'</li>
               </ol>
             <p>Expected Result: </p>
-            <p>Test passes if 'Success to send message!' is display</p>
+            <p>Test passes if 'Success to send message!' is showed in the textarea above</p>
         </div>
     </body>
 </html>
