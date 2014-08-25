@@ -1,24 +1,29 @@
+<!DOCTYPE html>
 <!--
 Test convert from Blink:
 https://github.com/crosswalk-project/blink-crosswalk/blob/master/LayoutTests/screen_orientation/lockOrientation-basic.html
+
+Use of this source code is governed by a BSD-style license:
+https://chromium.googlesource.com/chromium/blink/+/master/LICENSE
 -->
 
-
-<!DOCTYPE html>
 <meta charset="utf-8">
 <title>Screen Test: lockOrientation-basic</title>
-<link rel="author" title="Intel" href="http://www.intel.com">
-<link rel="help" href="http://www.w3.org/TR/2012/WD-screen-orientation-20120522/#extensions-to-the-screen-interface" />
+<link rel="help" href="https://w3c.github.io/screen-orientation/#screenorientation-interface">
 <script src="../../resources/testharness.js"></script>
 <script src="../../resources/testharnessreport.js"></script>
+
 <div id="log"></div>
 <script>
-var t = async_test("Basic screen.lockOrientation() / screen.unlockOrientation() testing", { timeout: 2000});
-
+var t = async_test("Basic screen.lockOrientation() and screen.unlockOrientation() testing", {timeout: 2000});
 var orientation_num = 0;
+
 t.step(function () {
   screen.unlockOrientation();
-  [ "any", "landscape", "portrait", "portrait-primary", "portrait-secondary", "landscape-primary", "landscape-secondary", "0",  "90", "180", "270" ].forEach(function(orientation) {
+  [
+    "any", "landscape", "portrait", "portrait-primary", "portrait-secondary",
+    "landscape-primary", "landscape-secondary", "0",  "90", "180", "270"
+  ].forEach(function(orientation) {
     orientation_num++;
     screen.lockOrientation(orientation).then(t.step_func(function(e) {
       if(orientation_num == 11) {
