@@ -50,7 +50,7 @@ Authors:
       <h4>Test Steps:</h4>
       <ol>
         <li>Install and launch the wgt_sample_one.wgt(sample app in res/testapp folder)</li>
-        <li>Check the version of the sample one WebApp with command:$sqlite3 /home/app/.applications/dbspace/.app_info.db "select * from app_info;"| grep $app_id</li>
+        <li>Check the version of the sample one WebApp with command:$pkginfo --listpkg | more</li>
         <li>Install the updated wgt_sample_two.wgt WebApp</li>
         <li>Uninstall wgt_sample_two.wgt WebApp</li>
       </ol>
@@ -64,8 +64,8 @@ Authors:
         <p>Expected Result:</p>
         <ol>
          <li>The wgt WebApp is launched successfully and splah image is showing when launching the WebApp</li>
-         <li>The widget version is 2.2</li>
-         <li>The widget is installed successfully, and it version is 2.4</li>
+         <li>The widget version is 1.0.0.1</li>
+         <li>The widget is installed successfully, and the version update to 1.0.0.2</li>
          <li>The WebApp is uninstalled successfully</li>
         </ol>
       </font>

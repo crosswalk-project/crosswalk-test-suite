@@ -50,7 +50,7 @@ Authors:
       <h4>Test Steps:</h4>
       <ol>
         <li>Install and launch the WebApp xpk_sample_one.xpk(sample app in res/testapp folder)</li>
-        <li>Check the version of the sample one WebApp with command:$sqlite3 /home/app/.applications/dbspace/.app_info.db "select * from app_info;"| grep $app_id
+        <li>Check the version of the sample one WebApp with command:$pkginfo --listpkg | more </li>
         <li>Install the update xpk_sample_two.xpk WebApp</li>
         <li>Launch xpk_sample_two.xpk WebApp</li>
         <li>Uninstall the xpk_sample_two.xpk WebApp</li>
