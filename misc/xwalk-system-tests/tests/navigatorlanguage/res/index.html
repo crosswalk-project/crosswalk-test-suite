@@ -36,11 +36,17 @@ Authors:
 
 <h1>NavigatorLanguage Tests</h1>
 <p>
-  These tests demonstrate that Crosswalk 8 supports NavigatorLanguage attributs
-  <code>navigator.language</code>, <code>navigator.languages</code> and event
-  <code>languagechange</code> since rebasing to Chromium 37 at
+  These tests demonstrate that Crosswalk 8 supports <code>navigator.language</code>,
+  <code>navigator.languages</code> and <code>languagechange</code> event fired
+  on the Window object after rebase to Chromium 37 at
   <a href="https://crosswalk-project.org/jira/browse/XWALK-1969">XWALK-1969</a>.
 </p>
 <a href="blink/navigator_language.html">Blink Layout Tests</a>
-<br><br>
+<br>
+<p>
+  These tests are to check <code>navigator.language</code>,
+  <code>navigator.languages</code> and <code>languagechange</code> event for
+  web workers. These features are not supported yet. Blink implementation at
+  <a href="http://code.google.com/p/chromium/issues/detail?id=276159">Bug276159</a>.
+</p>
 <a href="w3c/language.html">W3C Web Platform Tests</a>
