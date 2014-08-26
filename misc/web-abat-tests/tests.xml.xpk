@@ -3,11 +3,6 @@
   <test_definition>
     <suite category="W3C/HTML5 APIs" launcher="xwalk" name="web-abat-tests">
       <set name="abat" type="js">
-        <testcase component="WebAPI/Performance and Optimization/Timing control for script-based animations" execution_type="auto" id="AnimationTiming_WindowAnimationTiming_cancelAnimationFrame_exist" purpose="Check if window.cancelAnimationFrame is defined and not null.">
-          <description>
-            <test_script_entry test_script_expected_result="0" timeout="90">/opt/web-abat-tests/abat/animationtiming/AnimationTiming_WindowAnimationTiming_cancelAnimationFrame_exist.html</test_script_entry>
-          </description>
-        </testcase>
         <testcase component="WebAPI/Media/HTML5 The audio element (Partial)" execution_type="auto" id="audio_canplaytype_ogg_supported_but_no_codecs_parameter" purpose="Check that audio.canPlayType method supported ogg format codecs parameter">
           <description>
             <test_script_entry test_script_expected_result="0">/opt/web-abat-tests/abat/audio/w3c/canPlayType_supported_but_no_codecs_parameter_1.html</test_script_entry>
@@ -18,19 +13,9 @@
             <test_script_entry test_script_expected_result="0">/opt/web-abat-tests/abat/canvas/w3c/2d.transformation.scale.basic.html</test_script_entry>
           </description>
         </testcase>
-        <testcase component="WebAPI/Storage/File API" execution_type="auto" id="Blob_slice_overflow" purpose="Check the value of Blob.slice when processing the slice call with user agent normalized from 1998 to 2999">
+        <testcase component="WebAPI/Storage/File API" execution_type="auto" id="FileReader_constructor_base" purpose="Check if the user agent must return a new FileReader object when the FileReader() constructor is invoked">
           <description>
-            <test_script_entry>/opt/web-abat-tests/abat/fileapi/Blob_slice_overflow.html</test_script_entry>
-          </description>
-        </testcase>
-        <testcase component="WebAPI/Storage/File API: Directories and System (Partial)" execution_type="auto" id="window_LocalFileSystem_requestFileSystem_base" purpose="Check if the requestFileSystem can give access to an origin-private filesystem">
-          <description>
-            <test_script_entry>/opt/web-abat-tests/abat/filesystemapi/window_LocalFileSystem_requestFileSystem_base.html</test_script_entry>
-          </description>
-        </testcase>
-        <testcase component="WebAPI/Storage/File API: Writer (Partial)" execution_type="auto" id="FileWriter_write_normal" purpose="Check if FileWriter.write method is normal">
-          <description>
-            <test_script_entry>/opt/web-abat-tests/abat/filewriterapi/FileWriter_write_normal.html</test_script_entry>
+            <test_script_entry>/opt/web-abat-tests/abat/fileapi/FileReader_constructor_base.html</test_script_entry>
           </description>
         </testcase>
         <testcase component="WebAPI/Storage/Indexed Database API (Partial)" execution_type="auto" id="IDBCursor_advance_exists" purpose="Check if IDBCursor.advance method exists">
@@ -46,11 +31,6 @@
         <testcase component="WebAPI/Storage/Indexed Database API (Partial)" execution_type="auto" id="IDBObjectStore_add_exist" purpose="Check if IDBObjectStore.add method exists">
           <description>
             <test_script_entry>/opt/web-abat-tests/abat/indexeddb/IDBObjectStore_add_exist.html</test_script_entry>
-          </description>
-        </testcase>
-        <testcase component="WebAPI/TBD/Navigation Timing" execution_type="auto" id="test_performance_attributes_exist_in_object" purpose="This test validates that the window.performance object exists in an object element. (But it does not validate the values are whether correct)">
-          <description>
-            <test_script_entry test_script_expected_result="0" timeout="90">/opt/web-abat-tests/abat/navigationtiming/w3c/test_performance_attributes_exist_in_object.htm</test_script_entry>
           </description>
         </testcase>
         <testcase component="WebAPI/Security/HTML5 The iframe element" execution_type="auto" id="attri_allow-same-origin_content" purpose="Check that allow sandbox iframe to access other content from the same origin if sandbox='allow-same-origin'">
@@ -73,9 +53,9 @@
             <test_script_entry test_script_expected_result="0">/opt/web-abat-tests/abat/video/w3c/canPlayType_codecs_order_2.html</test_script_entry>
           </description>
         </testcase>
-        <testcase component="WebAPI/Supplementary API Reference/WebGL - Khronos (Partial)" execution_type="auto" id="getContext" purpose="Check if getContext function works">
+        <testcase component="WebAPI/Supplementary API Reference/WebGL - Khronos (Partial)" execution_type="auto" id="webglrenderingcontext_canvas_type" purpose="Check if the type of WebGLRenderingContext.canvas is a HTMLCanvasElement object">
           <description>
-            <test_script_entry test_script_expected_result="0">/opt/web-abat-tests/abat/webgl/khronos/getContext.html</test_script_entry>
+            <test_script_entry test_script_expected_result="0">/opt/web-abat-tests/abat/webgl/webglrenderingcontext_canvas_type.html</test_script_entry>
           </description>
         </testcase>
         <testcase component="WebAPI/Communication/HTML5 Web Messaging" execution_type="auto" id="webmessaging_MessageChannel_port1_exists" purpose="Check if the MessageChannel.port1 attribute exists">
@@ -118,14 +98,9 @@
             <test_script_entry>/opt/web-abat-tests/abat/rawsockets/TCPSocket_event_open.html</test_script_entry>
           </description>
         </testcase>
-        <testcase component="WebAPI/Web Components/Shadow DOM" execution_type="auto" id="shadowroot_applyAuthorStyles" purpose="Check if CSS styles declared in enclosing tree are not be applied in a shadow tree if the apply-author-styles flag is set to false">
+        <testcase component="WebAPI/Networking/WebRTC" execution_type="auto" id="RTCPeerConnection_createOffer_basic" purpose="Check if RTCPeerConnection.createOffer exists and type of function">
           <description>
-            <test_script_entry>/opt/web-abat-tests/abat/shadowdom/w3c/elements-and-dom-objects/shadowroot-object/shadowroot-attributes/test-001.html?total_num=2&amp;amp;locator_key=id&amp;amp;value=2</test_script_entry>
-          </description>
-        </testcase>
-        <testcase component="WebAPI/Networking/WebRTC" execution_type="auto" id="RTCPeerConnection_signalingState_init_value" purpose="Check if the init value of RTCPeerConnection.signalingState is stable">
-          <description>
-            <test_script_entry>/opt/web-abat-tests/abat/webrtc/RTCPeerConnection.html?total_num=11&amp;amp;locator_key=id&amp;amp;value=10</test_script_entry>
+            <test_script_entry>/opt/web-abat-tests/abat/webrtc/RTCPeerConnection_basic.html?total_num=34&amp;amp;locator_key=id&amp;amp;value=13</test_script_entry>
           </description>
         </testcase>
         <testcase component="TizenAPI/Application/Application" execution_type="auto" id="ApplicationManager_getAppInfo_exist" purpose="Check if method getAppInfo exist">

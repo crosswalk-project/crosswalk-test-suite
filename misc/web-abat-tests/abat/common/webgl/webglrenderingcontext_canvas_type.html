@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <!--
-Copyright (c) 2013 Intel Corporation.
+Copyright (c) 2012 Intel Corporation.
 
 Redistribution and use in source and binary forms, with or without modification,
 are permitted provided that the following conditions are met:
@@ -26,38 +26,29 @@ NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE,
 EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
 Authors:
-        Jin,Weihu <weihux.jin@intel.com>
-        Xu,Yuhan <yuhanx.xu@intel.com>
+         Cao, Jun <junx.cao@intel.com>
 
 -->
+
 <html>
   <head>
-    <title>File API Test: Blob_slice_overflow</title>
-    <link rel="author" title="Intel" href="http://www.intel.com/" />
-    <link rel="help" href="http://www.w3.org/TR/2011/WD-FileAPI-20111020/#dfn-slice" />
+    <title>WebGL Test: webglrenderingcontext_canvas_type</title>
+    <link rel="author" title="Intel" href="http://www.intel.com" />
+    <link rel="help" href="https://www.khronos.org/registry/webgl/specs/1.0/" />
     <meta name="flags" content="" />
-    <meta name="assert" content="Check the value of Blob.slice when processing the slice call with user agent normalized from 1998 to 2999" />
-    <script src="filesupport.js"></script>
+    <meta name="assert" content="Check if the type of WebGLRenderingContext.canvas is a HTMLCanvasElement object"/>
     <script src="../resources/testharness.js"></script>
     <script src="../resources/testharnessreport.js"></script>
+    <script src="support/webgl.js"></script>
   </head>
   <body>
-    <div id=log></div>
-    <script>
-        var bb = initBlobBuilder();
-        var text = '';
-        test(function() {
-            try {
-                for (var i = 0; i < 2000; ++i) text +='A';
-                bb.append(text);
-                blob = bb.getBlob();
-                blob.slice = blob.slice || blob.webkitSlice || blob.mozSlice;
-                sliceBlob = blob.slice(1998, 2999);
-                assert_equals(sliceBlob.size, 2000-1998, "Bolb slice");
-            } catch (e) {
-                assert_true(false, "Occur an exception " + e);
-            }
-        }, document.title);
+    <div id="log"></div>
+    <canvas id="canvas" width="200" height="100" style="border:1px solid #c3c3c3;">
+      Your browser does not support the canvas element.
+    </canvas>
+    <script type="text/javascript">
+        getwebgl();
+        webgl_property_type(webgl, 'canvas', HTMLCanvasElement, true);
     </script>
   </body>
 </html>
