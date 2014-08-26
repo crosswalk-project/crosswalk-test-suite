@@ -17,10 +17,12 @@
             ], 
             "copylist": {
                 "inst.apk.py": "inst.py", 
-                "tests.full.xml": "tests.full.xml", 
-                "tests.xml": "tests.xml"
+                "tests.xml.apk": "tests.xml"
             }, 
-            "pkg-app": {}
+            "pkg-app": {
+                "apk-type": "HOSTEDAPP", 
+                "apk-url-opt": "http://127.0.0.1:8080/index.html"
+            }
         }, 
         "apk-aio": {
             "blacklist": []
@@ -30,11 +32,14 @@
                 "*"
             ], 
             "copylist": {
+                "abat": "abat", 
                 "inst.wgt.py": "inst.py", 
-                "tests.full.xml": "tests.full.xml", 
-                "tests.xml": "tests.xml"
+                "tests.xml.xpk": "tests.xml", 
+                "webrunner": "webrunner"
             }, 
-            "pkg-app": {}
+            "pkg-app": {
+                "hosted-app": "true"
+            }
         }, 
         "xpk": {
             "blacklist": [
@@ -42,13 +47,13 @@
             ], 
             "copylist": {
                 "inst.xpk.py": "inst.py", 
-                "tests.full.xml": "tests.full.xml", 
-                "tests.xml": "tests.xml"
+                "tests.xml.xpk": "tests.xml"
             }, 
             "pkg-app": {
-                "blacklist": []
+                "blacklist": [], 
+                "hosted-app": "true"
             }
         }
     }, 
-    "pkg-name": "webapi-uiautomation-tests"
+    "pkg-name": "web-abat-tests"
 }

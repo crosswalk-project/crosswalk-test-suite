@@ -8,19 +8,20 @@
         "icon.png", 
         "manifest.json", 
         "suite.json", 
+        "*-py", 
         "inst.*"
     ], 
     "pkg-list": {
         "apk,cordova": {
-            "blacklist": [
-                "*"
-            ], 
+            "blacklist": [], 
             "copylist": {
                 "inst.apk.py": "inst.py", 
                 "tests.full.xml": "tests.full.xml", 
                 "tests.xml": "tests.xml"
             }, 
-            "pkg-app": {}
+            "pkg-app": {
+                "blacklist": []
+            }
         }, 
         "apk-aio": {
             "blacklist": []
@@ -30,16 +31,23 @@
                 "*"
             ], 
             "copylist": {
+                "LICENSE.Apache-2.0": "LICENSE.Apache-2.0", 
+                "LICENSE.BSD-3": "LICENSE.BSD-3", 
+                "LICENSE.CC-BY-3.0": "LICENSE.CC-BY-3.0", 
                 "inst.wgt.py": "inst.py", 
                 "tests.full.xml": "tests.full.xml", 
                 "tests.xml": "tests.xml"
             }, 
-            "pkg-app": {}
+            "subapp-list": {
+                ".": {
+                    "app-name": "webapi-usecase-tizen-tests", 
+                    "install-path": ".", 
+                    "sign-flag": "true"
+                }
+            }
         }, 
         "xpk": {
-            "blacklist": [
-                "*"
-            ], 
+            "blacklist": [], 
             "copylist": {
                 "inst.xpk.py": "inst.py", 
                 "tests.full.xml": "tests.full.xml", 
@@ -50,5 +58,5 @@
             }
         }
     }, 
-    "pkg-name": "webapi-uiautomation-tests"
+    "pkg-name": "webapi-usecase-tizen-tests"
 }

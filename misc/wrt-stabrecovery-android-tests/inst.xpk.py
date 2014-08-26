@@ -37,6 +37,7 @@ def doCMD(cmd):
 
     return (cmd_return_code, output)
 
+
 def updateCMD(cmd=None):
     if "xwalkctl" in cmd:
         cmd = "su - app -c '%s;%s'" % (XW_ENV, cmd)
@@ -100,7 +101,7 @@ def uninstPKGs():
             continue
 
         for file in files:
-            if file.endswith(".wgt"):
+            if file.endswith(".xpk"):
                 pkg_id = getPKGID(os.path.basename(os.path.splitext(file)[0]))
                 if not pkg_id:
                     action_status = False
@@ -131,7 +132,7 @@ def instPKGs():
             continue
 
         for file in files:
-            if file.endswith(".wgt"):
+            if file.endswith(".xpk"):
                 if not doRemoteCopy(os.path.join(root, file), "%s/%s" % (SRC_DIR, file)):
                     action_status = False
                 (return_code, output) = doRemoteCMD(

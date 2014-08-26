@@ -8,19 +8,20 @@
         "icon.png", 
         "manifest.json", 
         "suite.json", 
+        "*-py", 
         "inst.*"
     ], 
     "pkg-list": {
         "apk,cordova": {
-            "blacklist": [
-                "*"
-            ], 
+            "blacklist": [], 
             "copylist": {
                 "inst.apk.py": "inst.py", 
                 "tests.full.xml": "tests.full.xml", 
                 "tests.xml": "tests.xml"
             }, 
-            "pkg-app": {}
+            "pkg-app": {
+                "blacklist": []
+            }
         }, 
         "apk-aio": {
             "blacklist": []
@@ -31,15 +32,20 @@
             ], 
             "copylist": {
                 "inst.wgt.py": "inst.py", 
+                "res/testapp": "res/testapp", 
                 "tests.full.xml": "tests.full.xml", 
-                "tests.xml": "tests.xml"
+                "tests.tizen.xml": "tests.xml"
             }, 
-            "pkg-app": {}
+            "subapp-list": {
+                ".": {
+                    "app-name": "wrt-usecase-tizen-tests", 
+                    "install-path": ".", 
+                    "sign-flag": "true"
+                }
+            }
         }, 
         "xpk": {
-            "blacklist": [
-                "*"
-            ], 
+            "blacklist": [], 
             "copylist": {
                 "inst.xpk.py": "inst.py", 
                 "tests.full.xml": "tests.full.xml", 
@@ -50,5 +56,5 @@
             }
         }
     }, 
-    "pkg-name": "webapi-uiautomation-tests"
+    "pkg-name": "wrt-usecase-tizen-tests"
 }
