@@ -1,6 +1,6 @@
-<!DOCTYPE HTML>
+<!DOCTYPE html>
 <!--
-Copyright (c) 2012 Intel Corporation.
+Copyright (c) 2013 Intel Corporation.
 
 Redistribution and use in source and binary forms, with or without modification,
 are permitted provided that the following conditions are met:
@@ -26,24 +26,35 @@ NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE,
 EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
 Authors:
-        Yu, XiaoyanX <xiaoyanx.yu@intel.com>
+        Fan,Weiwei <weiwix.fan@intel.com>
+        Xu,Yuhan <yuhanx.xu@intel.com>
 
 -->
 
 <html>
   <head>
-    <title>check if window.cancelRequestAnimationFrame ||  window.webkitCancelRequestAnimationFrame || window.mozCancelAnimationFrame || window.msCancelAnimationFrame || window.oCancelAnimationFrame; is defined and not null</title>
-    <script type="text/javascript" src="../resources/testharness.js"></script>
+    <title>File API Test: FileReader_constructor_base</title>
+    <link rel="author" title="Intel" href="http://www.intel.com" />
+    <link rel="help" href="http://www.w3.org/TR/2011/WD-FileAPI-20111020/#dfn-filereader" />
+    <meta name="flags" content="" />
+    <meta name="assert" content="Check if the user agent must return a new FileReader object when the FileReader() constructor is invoked" />
+    <script src="filesupport.js"></script>
+    <script src="../resources/testharness.js"></script>
+    <script src="../resources/testharnessreport.js"></script>
   </head>
   <body>
     <div id="log"></div>
-    <script type="text/javascript">
-        setup({timeout:500});
-        var reqAnimAPI = window.cancelRequestAnimationFrame ||  window.webkitCancelRequestAnimationFrame || window.mozCancelAnimationFrame || window.msCancelAnimationFrame || window.oCancelAnimationFrame;;
-        test(function(){
-            assert_true(reqAnimAPI !== undefined && reqAnimAPI != null,
-                "check if window.cancelRequestAnimationFrame || window.webkitCancelRequestAnimationFrame || window.mozCancelAnimationFrame || window.msCancelAnimationFrame || window.oCancelAnimationFrame; is defined and not null");
-        }, "check if window.cancelRequestAnimationFrame || window.webkitCancelRequestAnimationFrame || window.mozCancelAnimationFrame || window.msCancelAnimationFrame || window.oCancelAnimationFrame; is defined and not null");
+    <script>
+        var t = async_test(document.title, {timeout: 10000});
+        function RunTest() {
+            var fileReader = new FileReader();
+            if (fileReader && fileReader instanceof FileReader) {
+                PassTest();
+            } else {
+                FailTest("Not return a FileReader object");
+            }
+        }
+        RunTest();
     </script>
   </body>
 </html>
