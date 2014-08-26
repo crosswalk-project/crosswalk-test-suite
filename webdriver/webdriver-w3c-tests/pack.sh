@@ -76,12 +76,12 @@ function create_apk(){
     cp -r $SRC_ROOT/../../tools/crosswalk $BUILD_ROOT/crosswalk
 
     # enable remote debugging
-    temp=$BUILD_ROOT/crosswalk/app_src/src/org/xwalk/app/template/AppTemplateActivity.java
+    temp=$BUILD_ROOT/crosswalk/template/src/org/xwalk/app/template/AppTemplateActivity.java
     line=`sed -n '/super.onCreate/=' $temp | tail -n1`
     sed -i "${line}s/.*/setRemoteDebugging(true);\n&/" $temp
 
     cd $BUILD_ROOT/crosswalk
-    python make_apk.py --manifest=$BUILD_ROOT/support/XwalkDriverTest/manifest.json --arch=$arch
+    python make_apk.py --manifest=$BUILD_ROOT/support/XwalkDriverTest/manifest.json --arch=$arch --package=org.xwalk.xwalkdrivertest
 
     if [ $? -ne 0 ];then
         echo "Create $name.apk fail.... >>>>>>>>>>>>>>>>>>>>>>>>>"
