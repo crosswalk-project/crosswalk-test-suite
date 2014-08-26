@@ -30,9 +30,13 @@ Authors:
 
 -->
 
-<html>
-  <head>
-    <title>Page with a message</title>
-  </head>
-  <body>Hello World</body>
-</html>
+<meta charset="utf-8">
+<title>Support file of sandbox allow-scripts</title>
+
+<img src="../../../res/images/red-100x100.png"
+     alt="User agent does not support .png image">
+
+<script>
+  document.querySelector("img").src = "../../../res/images/green-100x100.png";
+</script>
+
