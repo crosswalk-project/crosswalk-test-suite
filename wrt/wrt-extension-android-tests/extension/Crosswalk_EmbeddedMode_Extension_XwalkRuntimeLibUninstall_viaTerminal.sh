@@ -43,6 +43,11 @@ function checkps()
     fi
 }
 
+if [ ! -f adb install $local_path/../resources/XWalkRuntimeLib.apk ];then
+    echo "XWalk Runtime Library not found"
+    exit 1
+fi
+
 adb install -r $local_path/../source/extension_*.apk > /tmp/install.txt
 grep "Success" /tmp/install.txt
 
@@ -59,8 +64,10 @@ if [ $? -eq 0 ];then
 
         if [ $? -eq 0 ];then
             adb uninstall org.xwalk.extension_permission_contacts_tests
+            adb install $local_path/../resources/XWalkRuntimeLib.apk
             exit 0
         else
+            adb install $local_path/../resources/XWalkRuntimeLib.apk
             exit 1
         fi
     else
