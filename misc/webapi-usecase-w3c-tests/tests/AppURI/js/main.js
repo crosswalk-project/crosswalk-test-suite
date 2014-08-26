@@ -35,8 +35,21 @@ $(document).ready(function () {
 function getURLInfo() {
   EnablePassButton();
   var location = window.location;
-  jQuery("#uri").text("AppURI: " + location);
-  jQuery("#protocol").text("Protocol: " + location.protocol);
-  jQuery("#origin").text("Origin: " + location.origin);
-  jQuery("#pathname").text("Pathname: " + location.pathname);
+  jQuery("#uri").html(setBR("AppURI: " + location));
+  jQuery("#protocol").html(setBR("Protocol: " + location.protocol));
+  jQuery("#origin").html(setBR("Origin: " + location.origin));
+  jQuery("#pathname").html(setBR("Pathname: " + location.pathname));
+}
+
+function setBR(str) {
+  var newStr = "";
+  var brlength = 40;
+  var num = str.length / brlength;
+  var i = 0;
+  while(i < num) {
+    var start = i * brlength;
+    newStr += str.substr(start, brlength) + "<br/>";
+    i++;
+  }
+  return newStr;
 }
