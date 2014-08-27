@@ -16,7 +16,7 @@ SRC_ROOT=$PWD
 # init
 function init_workspace(){
     echo "init workspace... >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>"
-    clean_workspace
+    rm -rf opt/
     cp libs/chromium/*.jar libs/
     cp libs/testkit/*.jar libs/
 }
@@ -25,20 +25,19 @@ function init_workspace(){
 # clean
 function clean_workspace(){
     echo "cleaning workspace... >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>"
-    #rm -rf bin/ gen/ libs/
+    rm -rf bin/ gen/
     rm local.properties build.xml project.properties
     rm -rf opt/
     rm libs/*.jar
 }
 
 ## function for create apk ##
-
 function create_apk(){
-    targetID=$(android list |grep "API level" |awk -F ":" '{print $NF}' |sed 's/^[ \t]*//g')
+    targetID=$(android list |grep "API level:" |awk -F ":" '{print $NF}' |sed 's/^[ \t]*//g')
     mkdir embeddingapi
     cd embeddingapi
     android create project --name embeddingapi --target android-$targetID --path . --package com.embeddingapi --activity MainActivity
-
+    echo "targetID:" $targetID
     scp build.xml local.properties project.properties ../
     cd ..
     rm -rf embeddingapi
