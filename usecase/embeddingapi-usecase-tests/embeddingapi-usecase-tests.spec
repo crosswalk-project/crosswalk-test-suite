@@ -1,4 +1,4 @@
-name="webapi-sampleapp-embedding-tests"
+name="embeddingapi-usecase-tests"
 main_version="1.1.1"
 release="1"
 version="$main_version-$release"

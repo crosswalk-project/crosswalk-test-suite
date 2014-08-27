@@ -1,5 +1,5 @@
 #!/bin/bash
-source $(dirname $0)/webapi-sampleapp-embedding-tests.spec
+source $(dirname $0)/embeddingapi-usecase-tests.spec
 
 #parse params
 usage="Usage: ./pack.sh"
