@@ -75,7 +75,11 @@ function getWebAPIException(kind) {
         if (kind === "NotFoundError") {
             tizen.application.getAppInfo("111AppID88.WhichWillNotBeFound");
         } else {
-            tizen.application.findAppControl();
+
+            //tizen.application.findAppControl();
+            // AppControl is not supported in Crosswalk at now.
+            // Use launch() instead to throw WebAPIException
+            tizen.application.launch();
         }
     } catch(error) {
         return error;
@@ -95,11 +99,14 @@ function getWebAPIError(test_obj, callback, kind) {
 
     currentApplication = tizen.application.getCurrentApplication();
     if (kind === "NotFoundError") {
-        tizen.application.launchAppControl(
-            new tizen.ApplicationControl("WRONG_NOT_IMPLEMENTED_OPERATION"),
-            "111AppID88.WhichWillNotBeFound",
-            onSuccess, onError
-        );
+        //tizen.application.launchAppControl(
+        //    new tizen.ApplicationControl("WRONG_NOT_IMPLEMENTED_OPERATION"),
+        //    "111AppID88.WhichWillNotBeFound",
+        //    onSuccess, onError
+        //);
+        // AppControl is not supported in Crosswalk at now.
+        // Use launch() instead to throw WebAPIError
+        tizen.application.launch("111AppID88.WhichWillNotBeFound", onSuccess, onError);
     } else {
         assert_equals(kind, undefined, "Fix the test. Requested kind of error is not available");
         tizen.application.kill(currentApplication.contextId, onSuccess, onError);
