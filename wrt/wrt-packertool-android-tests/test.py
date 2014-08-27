@@ -8,7 +8,7 @@ import metacomm.combinatorics.all_pairs2
 all_pairs = metacomm.combinatorics.all_pairs2.all_pairs2
 
 Devices = []
-ConstPath = os.getcwd()
+ConstPath = os.environ['HOME'] + "/tct/opt/wrt-packertool-android-tests"
 
 def lineCount(fp):
     fileTmp = open(fp)
@@ -393,6 +393,7 @@ def genSummaryXml(summaryList, device, Start, End):
         root = Element("result_summary", {"plan_name":""})
         tree._setroot(root)
         env = SE(root,"environment",{"build_id":"","cts_version":"","device_id":"","device_model":"","device_name":"","host":"","resolution":"","screen_size":"","manufacturer":""})
+        env.set("device_id", device)
         summary = SE(root, "summary")
         startTime = SE(summary, "start_at")
         endTime = SE(summary, "end_at")
@@ -431,7 +432,7 @@ def devicesConform():
 
 def seedDistribute(Devices):
     cDevices = len(Devices)
-    fp = os.popen("find ./allpairs/ -name '*txt' |cut -d '/' -f 3-")
+    fp = os.popen("find " + ConstPath + "/allpairs/ -name '*txt' |awk -F 'allpairs' '{print $2}'")
     lines = fp.readlines()
     fp.close()
     txtCount = len(lines)
@@ -439,7 +440,7 @@ def seedDistribute(Devices):
         deviceIndex = index % cDevices
         device = Devices[deviceIndex]
         line = lines[index].strip("\n\t")
-        os.system("cp " + "allpairs/" + line + " device_" + device + "/allpairs/" + line)
+        os.system("cp " + ConstPath + "/allpairs" + line + " " + ConstPath + "/device_" + device + "/allpairs" + line)
 
 def sourceInit(Devices):
     #os.system("rm -rf " + ConstPath + "/device_* " + "&>/dev/null")
