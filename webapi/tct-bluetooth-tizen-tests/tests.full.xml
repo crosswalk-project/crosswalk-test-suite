@@ -6,6 +6,78 @@
       <capabilities>
         <capability name="bluetooth"/>
       </capabilities>
+      <testcase purpose="Method of createBonding exists in bluetooth adapter" type="compliance" status="approved" component="TizenAPI/Communication/Bluetooth" execution_type="auto" priority="P1" id="BluetoothAdapter_createBonding_exist" onload_delay="180">
+        <description>
+          <test_script_entry>/opt/tct-bluetooth-tizen-tests/bluetooth/BluetoothAdapter_createBonding_exist.html</test_script_entry>
+        </description>
+        <specs>
+          <spec>
+            <spec_assertion interface="BluetoothAdapter" element_type="method" element_name="createBonding" specification="Bluetooth" section="Communication" category="Tizen Device API Specifications"/>
+            <spec_url>https://developer.tizen.org/help/topic/org.tizen.web.device.apireference/tizen/bluetooth.html</spec_url>
+            <spec_statement>TBD</spec_statement>
+          </spec>
+        </specs>
+      </testcase>
+      <testcase purpose="Method of discoverDevices exists in bluetooth adapter" type="compliance" status="approved" component="TizenAPI/Communication/Bluetooth" execution_type="auto" priority="P1" id="BluetoothAdapter_discoverDevices_exist" onload_delay="180">
+        <description>
+          <test_script_entry>/opt/tct-bluetooth-tizen-tests/bluetooth/BluetoothAdapter_discoverDevices_exist.html</test_script_entry>
+        </description>
+        <specs>
+          <spec>
+            <spec_assertion interface="BluetoothAdapter" element_type="method" element_name="discoverDevices" specification="Bluetooth" section="Communication" category="Tizen Device API Specifications"/>
+            <spec_url>https://developer.tizen.org/help/topic/org.tizen.web.device.apireference/tizen/bluetooth.html</spec_url>
+            <spec_statement>TBD</spec_statement>
+          </spec>
+        </specs>
+      </testcase>
+      <testcase purpose="Check if registerRFCOMMServiceByUUID method exists" type="compliance" status="approved" component="TizenAPI/Communication/Bluetooth" execution_type="auto" priority="P1" id="BluetoothAdapter_registerRFCOMMServiceByUUID_exist" onload_delay="180">
+        <description>
+          <test_script_entry>/opt/tct-bluetooth-tizen-tests/bluetooth/BluetoothAdapter_registerRFCOMMServiceByUUID_exist.html</test_script_entry>
+        </description>
+        <specs>
+          <spec>
+            <spec_assertion interface="BluetoothAdapter" element_type="method" element_name="registerRFCOMMServiceByUUID" specification="Bluetooth" section="Communication" category="Tizen Device API Specifications"/>
+            <spec_url>https://developer.tizen.org/help/topic/org.tizen.web.device.apireference/tizen/bluetooth.html</spec_url>
+            <spec_statement>TBD</spec_statement>
+          </spec>
+        </specs>
+      </testcase>
+      <testcase purpose="Check if setName method exists" type="compliance" status="approved" component="TizenAPI/Communication/Bluetooth" execution_type="auto" priority="P1" id="BluetoothAdapter_setName_exist" onload_delay="180">
+        <description>
+          <test_script_entry>/opt/tct-bluetooth-tizen-tests/bluetooth/BluetoothAdapter_setName_exist.html</test_script_entry>
+        </description>
+        <specs>
+          <spec>
+            <spec_assertion interface="BluetoothAdapter" element_type="method" element_name="setName" specification="Bluetooth" section="Communication" category="Tizen Device API Specifications"/>
+            <spec_url>https://developer.tizen.org/help/topic/org.tizen.web.device.apireference/tizen/bluetooth.html</spec_url>
+            <spec_statement>TBD</spec_statement>
+          </spec>
+        </specs>
+      </testcase>
+      <testcase purpose="Check if setVisible method exists" type="compliance" status="approved" component="TizenAPI/Communication/Bluetooth" execution_type="auto" priority="P1" id="BluetoothAdapter_setVisible_exist" onload_delay="180">
+        <description>
+          <test_script_entry>/opt/tct-bluetooth-tizen-tests/bluetooth/BluetoothAdapter_setVisible_exist.html</test_script_entry>
+        </description>
+        <specs>
+          <spec>
+            <spec_assertion interface="BluetoothAdapter" element_type="method" element_name="setVisible" specification="Bluetooth" section="Communication" category="Tizen Device API Specifications"/>
+            <spec_url>https://developer.tizen.org/help/topic/org.tizen.web.device.apireference/tizen/bluetooth.html</spec_url>
+            <spec_statement>TBD</spec_statement>
+          </spec>
+        </specs>
+      </testcase>
+      <testcase purpose="Check if stopDiscovery method exists" type="compliance" status="approved" component="TizenAPI/Communication/Bluetooth" execution_type="auto" priority="P1" id="BluetoothAdapter_stopDiscovery_exist" onload_delay="180">
+        <description>
+          <test_script_entry>/opt/tct-bluetooth-tizen-tests/bluetooth/BluetoothAdapter_stopDiscovery_exist.html</test_script_entry>
+        </description>
+        <specs>
+          <spec>
+            <spec_assertion interface="BluetoothAdapter" element_type="method" element_name="stopDiscovery" specification="Bluetooth" section="Communication" category="Tizen Device API Specifications"/>
+            <spec_url>https://developer.tizen.org/help/topic/org.tizen.web.device.apireference/tizen/bluetooth.html</spec_url>
+            <spec_statement>TBD</spec_statement>
+          </spec>
+        </specs>
+      </testcase>
       <testcase purpose="Check if onfinish method of successful callback of discoverDevices method invoked" type="compliance" onload_delay="180" status="approved" component="TizenAPI/Communication/Bluetooth" execution_type="auto" priority="P2" id="BluetoothAdapter_discoverDevices_onfinish_successful">
         <description>
           <pre_condition>The bluetooth of the remote device MUST be turned on and discoverable from other devices.</pre_condition>
@@ -76,18 +148,6 @@
         <specs>
           <spec>
             <spec_assertion interface="BluetoothAdapter" usage="true" specification="Bluetooth" section="Communication" category="Tizen Device API Specifications"/>
-            <spec_url>https://developer.tizen.org/help/topic/org.tizen.web.device.apireference/tizen/bluetooth.html</spec_url>
-            <spec_statement>TBD</spec_statement>
-          </spec>
-        </specs>
-      </testcase>
-      <testcase purpose="Check if setName method exists" type="compliance" status="approved" component="TizenAPI/Communication/Bluetooth" execution_type="auto" priority="P1" id="BluetoothAdapter_setName_exist">
-        <description>
-          <test_script_entry>/opt/tct-bluetooth-tizen-tests/bluetooth/BluetoothAdapter_setName_exist.html</test_script_entry>
-        </description>
-        <specs>
-          <spec>
-            <spec_assertion interface="BluetoothAdapter" element_type="method" element_name="setName" specification="Bluetooth" section="Communication" category="Tizen Device API Specifications"/>
             <spec_url>https://developer.tizen.org/help/topic/org.tizen.web.device.apireference/tizen/bluetooth.html</spec_url>
             <spec_statement>TBD</spec_statement>
           </spec>
@@ -229,18 +289,6 @@
           </spec>
         </specs>
       </testcase>
-      <testcase purpose="Method of createBonding exists in bluetooth adapter" type="compliance" status="approved" component="TizenAPI/Communication/Bluetooth" execution_type="auto" priority="P1" id="BluetoothAdapter_createBonding_exist">
-        <description>
-          <test_script_entry>/opt/tct-bluetooth-tizen-tests/bluetooth/BluetoothAdapter_createBonding_exist.html</test_script_entry>
-        </description>
-        <specs>
-          <spec>
-            <spec_assertion interface="BluetoothAdapter" element_type="method" element_name="createBonding" specification="Bluetooth" section="Communication" category="Tizen Device API Specifications"/>
-            <spec_url>https://developer.tizen.org/help/topic/org.tizen.web.device.apireference/tizen/bluetooth.html</spec_url>
-            <spec_statement>TBD</spec_statement>
-          </spec>
-        </specs>
-      </testcase>
       <testcase purpose="Check if successful callback of getKnownDevices method invoked" type="compliance" onload_delay="180" status="approved" component="TizenAPI/Communication/Bluetooth" execution_type="auto" priority="P1" id="BluetoothAdapter_getKnownDevices_callback_successful">
         <description>
           <test_script_entry>/opt/tct-bluetooth-tizen-tests/bluetooth/BluetoothAdapter_getKnownDevices_callback_successful.html</test_script_entry>
@@ -357,18 +405,6 @@
           </spec>
         </specs>
       </testcase>
-      <testcase purpose="Check if stopDiscovery method exists" type="compliance" status="approved" component="TizenAPI/Communication/Bluetooth" execution_type="auto" priority="P1" id="BluetoothAdapter_stopDiscovery_exist">
-        <description>
-          <test_script_entry>/opt/tct-bluetooth-tizen-tests/bluetooth/BluetoothAdapter_stopDiscovery_exist.html</test_script_entry>
-        </description>
-        <specs>
-          <spec>
-            <spec_assertion interface="BluetoothAdapter" element_type="method" element_name="stopDiscovery" specification="Bluetooth" section="Communication" category="Tizen Device API Specifications"/>
-            <spec_url>https://developer.tizen.org/help/topic/org.tizen.web.device.apireference/tizen/bluetooth.html</spec_url>
-            <spec_statement>TBD</spec_statement>
-          </spec>
-        </specs>
-      </testcase>
       <testcase purpose="Check if address attribute exists in device" type="compliance" status="approved" component="TizenAPI/Communication/Bluetooth" execution_type="auto" priority="P1" id="BluetoothAdapter_address_attribute">
         <description>
           <test_script_entry>/opt/tct-bluetooth-tizen-tests/bluetooth/BluetoothAdapter_address_attribute.html</test_script_entry>
@@ -376,18 +412,6 @@
         <specs>
           <spec>
             <spec_assertion interface="BluetoothAdapter" element_type="attribute" element_name="address" specification="Bluetooth" section="Communication" category="Tizen Device API Specifications"/>
-            <spec_url>https://developer.tizen.org/help/topic/org.tizen.web.device.apireference/tizen/bluetooth.html</spec_url>
-            <spec_statement>TBD</spec_statement>
-          </spec>
-        </specs>
-      </testcase>
-      <testcase purpose="Method of discoverDevices exists in bluetooth adapter" type="compliance" status="approved" component="TizenAPI/Communication/Bluetooth" execution_type="auto" priority="P1" id="BluetoothAdapter_discoverDevices_exist">
-        <description>
-          <test_script_entry>/opt/tct-bluetooth-tizen-tests/bluetooth/BluetoothAdapter_discoverDevices_exist.html</test_script_entry>
-        </description>
-        <specs>
-          <spec>
-            <spec_assertion interface="BluetoothAdapter" element_type="method" element_name="discoverDevices" specification="Bluetooth" section="Communication" category="Tizen Device API Specifications"/>
             <spec_url>https://developer.tizen.org/help/topic/org.tizen.web.device.apireference/tizen/bluetooth.html</spec_url>
             <spec_statement>TBD</spec_statement>
           </spec>
@@ -413,18 +437,6 @@
         <specs>
           <spec>
             <spec_assertion interface="BluetoothAdapter" element_type="attribute" element_name="name" specification="Bluetooth" section="Communication" category="Tizen Device API Specifications"/>
-            <spec_url>https://developer.tizen.org/help/topic/org.tizen.web.device.apireference/tizen/bluetooth.html</spec_url>
-            <spec_statement>TBD</spec_statement>
-          </spec>
-        </specs>
-      </testcase>
-      <testcase purpose="Check if registerRFCOMMServiceByUUID method exists" type="compliance" status="approved" component="TizenAPI/Communication/Bluetooth" execution_type="auto" priority="P1" id="BluetoothAdapter_registerRFCOMMServiceByUUID_exist">
-        <description>
-          <test_script_entry>/opt/tct-bluetooth-tizen-tests/bluetooth/BluetoothAdapter_registerRFCOMMServiceByUUID_exist.html</test_script_entry>
-        </description>
-        <specs>
-          <spec>
-            <spec_assertion interface="BluetoothAdapter" element_type="method" element_name="registerRFCOMMServiceByUUID" specification="Bluetooth" section="Communication" category="Tizen Device API Specifications"/>
             <spec_url>https://developer.tizen.org/help/topic/org.tizen.web.device.apireference/tizen/bluetooth.html</spec_url>
             <spec_statement>TBD</spec_statement>
           </spec>
@@ -2089,18 +2101,6 @@
         <specs>
           <spec>
             <spec_assertion interface="BluetoothSocket" usage="true" specification="Bluetooth" section="Communication" category="Tizen Device API Specifications"/>
-            <spec_url>https://developer.tizen.org/help/topic/org.tizen.web.device.apireference/tizen/bluetooth.html</spec_url>
-            <spec_statement>TBD</spec_statement>
-          </spec>
-        </specs>
-      </testcase>
-      <testcase purpose="Check if setVisible method exists" type="compliance" status="approved" component="TizenAPI/Communication/Bluetooth" execution_type="auto" priority="P1" id="BluetoothAdapter_setVisible_exist">
-        <description>
-          <test_script_entry>/opt/tct-bluetooth-tizen-tests/bluetooth/BluetoothAdapter_setVisible_exist.html</test_script_entry>
-        </description>
-        <specs>
-          <spec>
-            <spec_assertion interface="BluetoothAdapter" element_type="method" element_name="setVisible" specification="Bluetooth" section="Communication" category="Tizen Device API Specifications"/>
             <spec_url>https://developer.tizen.org/help/topic/org.tizen.web.device.apireference/tizen/bluetooth.html</spec_url>
             <spec_statement>TBD</spec_statement>
           </spec>
