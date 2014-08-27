@@ -6,10 +6,9 @@ This test suite is for wrt-manifest-android-tests
 
 1. download and install allpairs
    http://sourceforge.net/projects/allpairs/files/allpairs/
-2. sdb connect to device.
-3. Connect a Android device to your localhost
-4. Edit your input_seed.txt(in ./allpairs/) file to generate webapp.
-5. Make sure xwalk running on device
+2. Connect a Android device to your localhost
+3. Edit your input_seed.txt(in ./allpairs/) file to generate webapp.
+4. Make sure xwalk running on device
 
 ## Authors:
 
@@ -41,17 +40,21 @@ Please see the COPYING file for the BSD-3-Clause License.
 
 3. ./metacomm/ folder is allpairs.
 
-4. ./report/ save the auto report wrt-manifest-android-tests.xml file.
+4. After start test, new folders would be created. And names of the folder are the same
+with DEVICE_ID which you input.
+   In each new folder, there are several folders like report and allparis.
+ ./[DEVICE_ID]/report/ save the auto report wrt-manifest-android-tests.xml file.
     4.1 manifest_positive.txt is all positive manifest.json content.
     4.2 manifest_negative.txt is all negative manifest.json content.
+ ./[DEVICE_ID]/allparis/ save test seed file which would be tested on the device.
 
 Test Step:
 1. unzip wrt-manifest-android-tests<version>.zip
 2. cd opt/wrt-manifest-android-tests/
 3. ./inst.sh
 4. cd $HOME/tct/opt/wrt-manifest-android-tests/
-5. run test.py
-   5.1 python test.py
-   or 5.2 testkit-lite -f $HOME/tct/opt/wrt-manifest-android-tests/tests.xml -A -o ./result.xml --comm localhost
+5. run test case
+   testkit-lite -f $HOME/tct/opt/wrt-manifest-android-tests/tests.xml -A -o $HOME/tct/opt/wrt-manifest-android-tests/tests.xml/result.xml --comm localhost --testenvs "DEVICE_ID=Medfield3C6DFF2E CONNECT_TYPE=adb",DEVICE_ID can also be multiple ids like "DEVICE_ID=Medfield3C6DFF2E,Medfield3C6DFF00".
+Query device id by command "adb devices -l" in host.
 
-Base on the seed file, the total case number is 253.
+Base on the seed file, the total case number is 265.
