@@ -442,6 +442,7 @@ def packAPK(build_json=None, app_src=None, app_dest=None, app_name=None):
     cmd_opt = ""
     url_opt = ""
     mode_opt = ""
+    icon_opt = ""
 
     tmp_opt = safelyGetValue(build_json, "apk-ext-opt")
     if tmp_opt:
@@ -465,6 +466,14 @@ def packAPK(build_json=None, app_src=None, app_dest=None, app_name=None):
     else:
         mode_opt = "--mode=%s" % BUILD_PARAMETERS.pkgmode
 
+    tmp_opt = safelyGetValue(build_json, "apk-icon-opt")
+    if tmp_opt:
+        icon_opt = "--icon=%s" % tmp_opt
+    elif tmp_opt == "":
+        icon_opt = ""
+    else:
+        icon_opt = "--icon=%s/icon.png" % app_src
+
     if safelyGetValue(build_json, "apk-type") == "MANIFEST":
         pack_cmd = "python make_apk.py --package=org.xwalk.%s --manifest=%s/manifest.json  %s --arch=%s %s %s" % (
             app_name, app_src, mode_opt, BUILD_PARAMETERS.pkgarch, ext_opt, cmd_opt)
@@ -476,8 +485,8 @@ def packAPK(build_json=None, app_src=None, app_dest=None, app_name=None):
         pack_cmd = "python make_apk.py --package=org.xwalk.%s --name=%s %s --arch=%s %s %s %s" % (
             app_name, app_name, mode_opt, BUILD_PARAMETERS.pkgarch, ext_opt, cmd_opt, url_opt)
     else:
-        pack_cmd = "python make_apk.py --package=org.xwalk.%s --name=%s --app-root=%s --app-local-path=index.html --icon=%s/icon.png %s --arch=%s %s %s" % (
-            app_name, app_name, app_src, app_src, mode_opt, BUILD_PARAMETERS.pkgarch, ext_opt, cmd_opt)
+        pack_cmd = "python make_apk.py --package=org.xwalk.%s --name=%s --app-root=%s --app-local-path=index.html %s %s --arch=%s %s %s" % (
+            app_name, app_name, app_src, icon_opt, mode_opt, BUILD_PARAMETERS.pkgarch, ext_opt, cmd_opt)
 
     orig_dir = os.getcwd()
     os.chdir(os.path.join(BUILD_ROOT, "crosswalk"))
@@ -586,13 +595,11 @@ def packEmbeddingAPI(build_json=None, app_src=None, app_dest=None, app_name=None
             break
     if not api_level:
         LOG.error("Fail to get Android API Level")
-        os.chdir(orig_dir)
         return False
 
     android_project_cmd = "android create project --name %s --target android-%s --path %s --package com.%s --activity MainActivity" % (
         app_name, api_level, android_project_path,  app_name)
     if not doCMD(android_project_cmd):
-        os.chdir(orig_dir)
         return False
 
     try:
@@ -604,34 +611,31 @@ def packEmbeddingAPI(build_json=None, app_src=None, app_dest=None, app_name=None
     except Exception, e:
         LOG.error("Fail to update %s: %s" %
                   (os.path.join(android_project_path, "project.properties"), e))
-        os.chdir(orig_dir)
         return False
 
     if not doCopy(os.path.join(android_project_path, "build.xml"), os.path.join(app_src, "build.xml")):
-        os.chdir(orig_dir)
         return False
 
     if not doCopy(os.path.join(android_project_path, "project.properties"), os.path.join(app_src, "project.properties")):
-        os.chdir(orig_dir)
         return False
 
     if not doCopy(os.path.join(android_project_path, "local.properties"), os.path.join(app_src, "local.properties")):
-        os.chdir(orig_dir)
         return False
 
     if not doCopy(os.path.join(android_project_path, "local.properties"), os.path.join(pack_tool, "local.properties")):
-        os.chdir(orig_dir)
+        return False
+
+    if not doRemove([android_project_path]):
         return False
 
     os.chdir(app_src)
     if not doCMD("ant debug"):
-        os.chdir(orig_dir)
         return False
 
-    if not doCopy(os.path.join(orig_dir, "bin", "%s-debug.apk" % app_name), os.path.join(app_dest, "%s.apk" % app_name)):
-        os.chdir(orig_dir)
-        return False
     os.chdir(orig_dir)
+
+    if not doCopy(os.path.join(app_src, "bin", "%s-debug.apk" % app_name), os.path.join(app_dest, "%s.apk" % app_name)):
+        return False
     return True
 
 
