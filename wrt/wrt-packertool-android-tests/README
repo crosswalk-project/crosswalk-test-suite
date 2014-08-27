@@ -6,10 +6,9 @@ This test suite is for wrt-packertool-android-tests
 
 1. download and install allpairs
    http://sourceforge.net/projects/allpairs/files/allpairs/
-2. maybe need local root authority.
-3. Connect a Android device to your localhost
-4. Edit your input_seed.txt(in ./allpairs/) file to generate webapp.
-5. Make sure xwalk running on device
+2. Connect a Android device to your localhost
+3. Edit your input_seed.txt(in ./allpairs/) file to generate webapp.
+4. Since there are "Shared Mode" test cases during the automation, make sure crosswalk library (XWalkRuntimeLib.apk) has been installed on device
 
 ## Authors:
 
@@ -39,7 +38,15 @@ Please see the COPYING file for the BSD-3-Clause License.
 
 2. ./metacomm/ folder is allpairs.
 
-3. ./report/ save the auto report wrt-manifest-android-tests.xml file.
+3. After start test, new folders would be created. And names of the folder are the same
+with DEVICE_ID which you input.
+   In each new folder, there are several folders like report and allparis.
+ ./[DEVICE_ID]/report/ save the auto wrt-packertool-android-tests.xml file.
+    3.1 packertool_positive.txt is all positive packertool case content.
+    3.2 packertool_negative.txt is all negative packertool case content.
+ ./[DEVICE_ID]/allparis/ save test seed file which would be tested on the device.
+
+4. Get the detailed information in a file like xxxx_stdout.log in home directory
 
 Test Step:
 1. unzip wrt-packertool-android-tests<version>.zip
@@ -47,7 +54,7 @@ Test Step:
 3. ./inst.sh
 4. cd $HOME/tct/opt/wrt-packertool-android-tests/
 5. run test case
-   testkit-lite -f $HOME/tct/opt/wrt-packertool-android-tests/tests.xml -A -o $HOME/tct/opt/wrt-packertool-android-tests/result.xml --comm localhost --testenvs  "DEVICE_ID=Medfield3C6DFF2E CONNECT_TYPE=adb", DEVICE_ID can also be multiple ids like "Medfield3C6DFF2E,Medfield3C6DFF00".
+   testkit-lite -f $HOME/tct/opt/wrt-packertool-android-tests/tests.xml -A -o $HOME/tct/opt/wrt-packertool-android-tests/result.xml --comm localhost --testenvs "DEVICE_ID=Medfield3C6DFF2E CONNECT_TYPE=adb", DEVICE_ID can also be multiple ids like "Medfield3C6DFF2E,Medfield3C6DFF00".
 Query device id by commmand "adb devices -l" in host
 
 Base on the seed file, the total case number is 262.

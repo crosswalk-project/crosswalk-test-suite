@@ -8,7 +8,7 @@ from xml.etree.ElementTree import SubElement as SE
 import metacomm.combinatorics.all_pairs2
 all_pairs = metacomm.combinatorics.all_pairs2.all_pairs2
 
-ConstPath = os.getcwd()
+ConstPath = os.environ['HOME'] + "/tct/opt/wrt-manifest-android-tests"
 Devices = []
 
 def genSelfcom(combIn, combOut):
@@ -394,6 +394,7 @@ def genSummaryXml(summaryList, device, Start, End):
         root = Element("result_summary", {"plan_name":""})
         tree._setroot(root)
         env = SE(root,"environment",{"build_id":"","cts_version":"","device_id":"","device_model":"","device_name":"","host":"","resolution":"","screen_size":"","manufacturer":""})
+        env.set("device_id", device)
         summary = SE(root, "summary")
         startTime = SE(summary, "start_at")
         endTime = SE(summary, "end_at")
@@ -454,7 +455,7 @@ def sourceInit(Devices):
 
 def seedDistribute(Devices):
     cDevices = len(Devices)
-    fp = os.popen("find ./allpairs/ -name '*txt' |cut -d '/' -f 3-")
+    fp = os.popen("find " + ConstPath + "/allpairs/ -name '*txt' |awk -F 'allpairs' '{print $2}'")
     lines = fp.readlines()
     fp.close()
     txtCount = len(lines)
@@ -462,7 +463,7 @@ def seedDistribute(Devices):
         deviceIndex = index % cDevices
         device = Devices[deviceIndex]
         line = lines[index].strip("\n\t")
-        os.system("cp " + "allpairs/" + line + " device_" + device + "/allpairs/" + line)
+        os.system("cp " + ConstPath + "/allpairs" + line + " " + ConstPath + "/device_" + device + "/allpairs" + line)
 
 def updateXmlTitle(fp,title):
     fobj = open(fp, "r+")
