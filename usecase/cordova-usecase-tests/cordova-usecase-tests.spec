@@ -1,4 +1,4 @@
-name="cordova-usecase-android-tests"
+name="cordova-usecase-tests"
 main_version="2.2.1"
 release="1"
 version="$main_version-$release"
