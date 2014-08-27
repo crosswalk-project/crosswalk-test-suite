@@ -61,6 +61,8 @@ def instPKGs():
                     if "Failure" in line:
                         action_status = False
                         break
+    (return_code, output) = doCMD("adb shell mkdir -p /mnt/sdcard1/wrtdoc &>/dev/null")
+    (return_code, output) = doCMD("adb push %s/res/doc /mnt/sdcard1/wrtdoc/" % SCRIPT_DIR)
     return action_status
 
 
