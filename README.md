@@ -4,14 +4,11 @@ This is a test suite for Crosswalk, which includes:
 
 * `behavior/`: behavior test tool
 * `cordova/`: Crosswalk based Cordova tests
+* `usecase/`: use-case samples as tests
 * `webapi/`: Web API tests
 * `wrt/`: Web Runtime Tests
 * `misc/`: miscellaneous tests
   * `web-abat-tests` and `web-mbat-tests`: basic acceptance tests
-  * `webapi-usecase-tizen-tests`: usecase tests for Tizen Device APIs
-  * `webapi-usecase-standard-tests`: usecase tests for standard APIs, e.g.
-W3C/HTML5 APIs, Supplementary APIs, Crosswalk experimental APIs
-  * `wrt-usecase-*-tests`: usecase tests for Web Runtime
   * `wrt-stab*-tests`: stability tests
   * `wrt-*-UA-tests`: user acceptance tests
   * `wrt-documentation-verification-tests`: tests for documents verification
