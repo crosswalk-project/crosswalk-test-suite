@@ -39,7 +39,7 @@ def do_cmd(cmd):
         cmd, stdout=subprocess.PIPE, stderr=subprocess.PIPE, shell=True)
     while True:
         cmd_return_code = cmd_proc.poll()
-        if cmd_return_code != None:
+        if cmd_return_code is not None:
             break
 
     if not cmd.endswith("&"):
@@ -61,11 +61,12 @@ def update_cmd(cmd=None):
 
 def get_appid_by_name(app_name=None, platform=None):
     mode = "SDB"
-    if platform.has_key("comm-mode") and platform["comm-mode"] != "" and platform["comm-mode"].upper().find('SSH') >= 0:
+    if "comm-mode" in platform and platform["comm-mode"] != "" and platform[
+            "comm-mode"].upper().find('SSH') >= 0:
         mode = "SSH"
 
     device = ""
-    if not platform.has_key("device") or platform["device"] == "":
+    if "device" not in platform or platform["device"] == "":
         (return_code, output) = do_cmd("sdb devices")
         for line in output:
             if str.find(line, "\tdevice") != -1:

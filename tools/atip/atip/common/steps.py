@@ -43,7 +43,7 @@ def launch_app_by_name(context, app_name):
 
 @step(u'switch to "{app_name}"')
 def switch_to_app_name(context, app_name):
-    if context.apps.has_key(app_name):
+    if app_name in context.apps:
         context.app = context.apps[app_name]
         assert True
     else:

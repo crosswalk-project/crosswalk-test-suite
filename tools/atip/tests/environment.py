@@ -66,19 +66,19 @@ def load_default_config():
         webdriver_json.update(
             {"desired-capabilities": webdriver_envs["desired_capabilities"]})
         webdriver_json.update({"driver-url": webdriver_envs["webdriver_url"]})
-        if webdriver_envs.has_key("test_prefix"):
+        if "test_prefix" in webdriver_envs:
             webdriver_json.update(
                 {"url-prefix": webdriver_envs["test_prefix"]})
         else:
             webdriver_json.update({"url-prefix": ""})
-    except Exception, e:
+    except Exception as e:
         print "Failed to get test envs: %s, switch to webdriver.json" % e
         try:
             with open(webdriver_json_path, "rt") as webdriver_json_file:
                 webdriver_json_raw = webdriver_json_file.read()
                 webdriver_json_file.close()
                 webdriver_json = json.loads(webdriver_json_raw)
-        except Exception, e:
+        except Exception as e:
             print "Failed to read webdriver json: %s" % e
             return None
 
