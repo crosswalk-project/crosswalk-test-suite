@@ -1,0 +1,120 @@
+{
+    "pkg-blacklist": [
+        "config.xml", 
+        "pack.py", 
+        "testcase.xsl", 
+        "testresult.xsl", 
+        "tests.css", 
+        "tests.*.xml", 
+        "icon.png", 
+        "manifest.json", 
+        "suite.json", 
+        "inst.*"
+    ], 
+    "pkg-list": {
+        "apk,cordova": {
+            "blacklist": [
+                "*"
+            ], 
+            "copylist": {
+                "inst.apk.py": "inst.py"
+            }, 
+            "subapp-list": {
+                ".": {
+                    "app-name": "webapi-sample-tests", 
+                    "blacklist": [
+                        "*"
+                    ], 
+                    "copylist": {
+                        "tests": "tests", 
+                        "css": "css", 
+                        "js": "js", 
+                        "res": "res", 
+                        "icon.png": "icon.png", 
+                        "index.android.html": "index.html", 
+                        "tests.android.xml": "tests.xml",
+                        "config.xml": "config.xml"
+                    }, 
+                    "install-path": "."
+                }
+            }
+        }, 
+        "wgt": {
+            "blacklist": [
+                "*"
+            ], 
+            "copylist": {
+                "LICENSE.BSD-3": "LICENSE.BSD-3", 
+                "inst.wgt.py": "inst.py", 
+                "res/css": "res/css", 
+                "res/font": "res/font", 
+                "res/images": "res/images"
+            }, 
+            "subapp-list": {
+                ".": {
+                    "app-name": "webapi-sample-tests", 
+                    "blacklist": [
+                        "*"
+                    ], 
+                    "copylist": {
+                        "tests": "tests", 
+                        "css": "css", 
+                        "js": "js", 
+                        "res": "res", 
+                        "icon.png": "icon.png", 
+                        "index.tizen.html": "index.html", 
+                        "tests.tizen.xml": "tests.xml", 
+                        "config.xml": "config.xml"
+                    }, 
+                    "install-path": ".", 
+                    "sign-flag": "true"
+                }, 
+                "tests/Viewport/ViewportTest": {
+                    "app-name": "ViewportTest", 
+                    "blacklist": [], 
+                    "install-path": ".", 
+                    "sign-flag": "true"
+                }
+            }
+        }, 
+        "xpk": {
+            "blacklist": [
+                "*"
+            ], 
+            "copylist": {
+                "LICENSE.BSD-3": "LICENSE.BSD-3", 
+                "inst.xpk.py": "inst.py", 
+                "res/css": "res/css", 
+                "res/font": "res/font", 
+                "res/images": "res/images"
+            }, 
+            "subapp-list": {
+                ".": {
+                    "app-name": "webapi-sample-tests", 
+                    "blacklist": [
+                        "*"
+                    ], 
+                    "copylist": {
+                        "tests": "tests", 
+                        "css": "css", 
+                        "js": "js", 
+                        "res": "res", 
+                        "icon.png": "icon.png", 
+                        "index.tizen.html": "index.html", 
+                        "tests.tizen.xml": "tests.xml",
+                        "config.xml": "config.xml",
+                        "manifest.json": "manifest.json"
+                    }, 
+                    "install-path": ".", 
+                    "sign-flag": "true"
+                }, 
+                "tests/Viewport/ViewportTest": {
+                    "app-name": "ViewportTest", 
+                    "blacklist": [], 
+                    "install-path": "."
+                }
+            }
+        }
+    }, 
+    "pkg-name": "webapi-sample-tests"
+}
