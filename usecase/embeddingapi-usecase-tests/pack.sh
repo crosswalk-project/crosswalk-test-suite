@@ -25,7 +25,7 @@ function clean_workspace(){
 ## function for create apk ##
 
 function create_apk(){
-    targetID=$(android list |grep "API level" |awk -F ":" '{print $NF}' |sed 's/^[ \t]*//g')
+    targetID=$(android list |grep "API level:" |awk -F ":" '{print $NF}' |sed 's/^[ \t]*//g')
     mkdir EmbeddedAPI
     cd EmbeddedAPI
     android create project --name EmbeddedAPI --target android-$targetID --path . --package com.embeddedapi --activity MainActivity
@@ -34,9 +34,9 @@ function create_apk(){
     cd ..
     rm -rf EmbeddedAPI
 
-    echo "android.library.reference.1=../xwalk_core_library" >> project.properties
-    scp local.properties ../xwalk_core_library
-    rm -rf ../xwalk_core_library/bin/res/crunch
+    echo "android.library.reference.1=../crosswalk-webview" >> project.properties
+    scp local.properties ../crosswalk-webview
+    rm -rf ../crosswalk-webview/bin/res/crunch
     ant debug
     if [ $? -ne 0 ];then
         echo "Create $name.apk fail.... >>>>>>>>>>>>>>>>>>>>>>>>>"
@@ -72,6 +72,7 @@ function zip_for_apk(){
     fi
 }
 
+rm -rf opt/
 ## create apk package ##
 case $type in
     apk) create_apk
