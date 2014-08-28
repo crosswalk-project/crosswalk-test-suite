@@ -1,14 +1,16 @@
 {
     "pkg-blacklist": [
-        "config.xml", 
         "pack.py", 
+        "COPYING", 
         "testcase.xsl", 
         "testresult.xsl", 
         "tests.css", 
         "icon.png", 
-        "manifest.json", 
         "suite.json", 
-        "inst.*"
+        "inst.*.py", 
+        "config.xml", 
+        "manifest.json", 
+        "VERSION"
     ], 
     "pkg-list": {
         "apk,cordova": {
@@ -16,37 +18,53 @@
                 "*"
             ], 
             "copylist": {
+                "bddrunner": "bddrunner", 
+                "html5-extra/testscripts": "html5-extra/testscripts", 
                 "inst.apk.py": "inst.py", 
-                "tests.full.xml": "tests.full.xml", 
-                "tests.xml": "tests.xml"
+                "tests.xml": "tests.xml", 
+                "w3c-webstorage/testscripts": "w3c-webstorage/testscripts"
             }, 
-            "pkg-app": {}
-        }, 
-        "apk-aio": {
-            "blacklist": []
+            "pkg-app": {
+                "blacklist": [
+                    "html5-extra/testscripts", 
+                    "w3c-webstorage/testscripts"
+                ]
+            }
         }, 
         "wgt": {
             "blacklist": [
                 "*"
             ], 
             "copylist": {
+                "bddrunner": "bddrunner", 
+                "html5-extra/testscripts": "html5-extra/testscripts", 
                 "inst.wgt.py": "inst.py", 
-                "tests.full.xml": "tests.full.xml", 
-                "tests.xml": "tests.xml"
+                "tests.xml": "tests.xml", 
+                "w3c-webstorage/testscripts": "w3c-webstorage/testscripts"
             }, 
-            "pkg-app": {}
+            "pkg-app": {
+                "blacklist": [
+                    "html5-extra/testscripts", 
+                    "w3c-webstorage/testscripts"
+                ]
+            }
         }, 
         "xpk": {
             "blacklist": [
                 "*"
             ], 
             "copylist": {
+                "bddrunner": "bddrunner", 
+                "html5-extra/testscripts": "html5-extra/testscripts", 
                 "inst.xpk.py": "inst.py", 
-                "tests.full.xml": "tests.full.xml", 
-                "tests.xml": "tests.xml"
+                "tests.xml": "tests.xml", 
+                "w3c-webstorage/testscripts": "w3c-webstorage/testscripts"
             }, 
             "pkg-app": {
-                "blacklist": []
+                "blacklist": [
+                    "html5-extra/testscripts", 
+                    "w3c-webstorage/testscripts"
+                ]
             }
         }
     }, 
