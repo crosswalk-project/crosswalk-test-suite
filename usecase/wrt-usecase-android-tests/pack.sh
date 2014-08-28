@@ -16,7 +16,7 @@ fi
 type="apk"
 mode="shared"
 arch="x86"
-subapp=("ExtensionPermission" "PermissionApiContacts" "RemoteDebugging" "SchemesCheck" "SharemodeLibrary" "WebAppManifest" "WebAppXwalkHost" "SplashscreenLandscape" "SplashscreenPng" "CopyPasteNative")
+subapp=("ExtensionPermission" "PermissionApiContacts" "RemoteDebugging" "SchemesCheck" "SharemodeLibrary" "WebAppManifest" "WebAppXwalkHost" "SplashscreenLandscape" "SplashscreenPng" "CopyPasteNative" "OpenFile")
 while getopts t:m:a: o
 do
     case "$o" in
