@@ -44,7 +44,7 @@ def doCMD(cmd):
 
     while True:
         cmd_return_code = cmd_proc.poll()
-        if cmd_return_code != None:
+        if cmd_return_code is not None:
             break
 
     return cmd_return_code

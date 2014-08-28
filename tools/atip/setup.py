@@ -30,26 +30,30 @@ from setuptools import setup, find_packages
 
 version = '0.0.1'
 
-setup(name='atip',
-      version=version,
-      description="Behavior-Driven-Development applications testing in python",
-      classifiers=[
-          "Development Status :: 5 - Production/Stable",
-          "Intended Audience :: Developers",
-          "Topic :: Software Development :: Testing",
-          "Topic :: Software Development :: Libraries",
-          "Programming Language :: Python",
-          "Programming Language :: Python :: 2.6",
-          "Programming Language :: Python :: 2.7",
-      ],
-      keywords='BDD Behavior-Driven-Development test framework python atip applications',
-      author='Yugang Fan',
-      author_email='yugang.fan@intel.com',
-      url='http://github.com/*/atip',
-      license='BSD',
-      packages=find_packages(),
-      include_package_data=True,
-      namespace_packages=['atip'],
-      zip_safe=False,
-      install_requires=['setuptools', 'behave', 'selenium'],
-      )
+setup(
+    name='atip',
+    version=version,
+    description="Behavior-Driven-Development applications testing in python",
+    classifiers=[
+        "Development Status :: 5 - Production/Stable",
+        "Intended Audience :: Developers",
+        "Topic :: Software Development :: Testing",
+        "Topic :: Software Development :: Libraries",
+        "Programming Language :: Python",
+        "Programming Language :: Python :: 2.6",
+        "Programming Language :: Python :: 2.7",
+    ],
+    keywords='BDD Behavior-Driven-Development test framework python atip applications',
+    author='Yugang Fan',
+    author_email='yugang.fan@intel.com',
+    url='http://github.com/*/atip',
+    license='BSD',
+    packages=find_packages(),
+    include_package_data=True,
+    namespace_packages=['atip'],
+    zip_safe=False,
+    install_requires=[
+            'setuptools',
+            'behave',
+            'selenium'],
+)

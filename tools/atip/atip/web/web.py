@@ -52,7 +52,7 @@ class WebAPP(common.APP):
         self.app_id = ""
         apk_activity_name = ""
         apk_pkg_name = ""
-        if app_config.has_key("platform") and app_config["platform"].has_key("name"):
+        if "platform" in app_config and "name" in app_config["platform"]:
             if app_config["platform"]["name"].upper().find('TIZEN') >= 0:
                 app_id = tizen.get_appid_by_name(
                     self.app_name, app_config["platform"])
@@ -63,9 +63,12 @@ class WebAPP(common.APP):
                 apk_activity_name = ".%sActivity" % apk_name_update
                 apk_pkg_name = "org.xwalk.%s" % self.app_name
         app_config_str = json.dumps(app_config).replace(
-            "TEST_APP_NAME", self.app_name).replace("TEST_APP_ID", self.app_id).replace("TEST_PKG_NAME", apk_pkg_name).replace("TEST_ACTIVITY_NAME", apk_activity_name)
+            "TEST_APP_NAME", self.app_name).replace(
+            "TEST_APP_ID", self.app_id).replace(
+            "TEST_PKG_NAME", apk_pkg_name).replace(
+            "TEST_ACTIVITY_NAME", apk_activity_name)
         self.app_config = json.loads(app_config_str)
-        if app_config.has_key("url-prefix"):
+        if "url-prefix" in app_config:
             self.url_prefix = app_config["url-prefix"]
         else:
             self.url_prefix = ""
@@ -82,7 +85,7 @@ class WebAPP(common.APP):
             else:
                 return element
             print "Failed to get element"
-        except Exception, e:
+        except Exception as e:
             print "Failed to get element: %s" % e
         return None
 
@@ -90,7 +93,7 @@ class WebAPP(common.APP):
         try:
             element = self.__driver.find_element_by_tag(key)
             return element
-        except Exception, e:
+        except Exception as e:
             print "Failed to get element: %s" % e
             return None
 
@@ -114,7 +117,7 @@ class WebAPP(common.APP):
                 else:
                     return i_element
             print "Failed to get element"
-        except Exception, e:
+        except Exception as e:
             print "Failed to get element: %s" % e
         return None
 
@@ -132,7 +135,7 @@ class WebAPP(common.APP):
                         pass
                 else:
                     return i_element
-        except Exception, e:
+        except Exception as e:
             print "Failed to get element: %s" % e
         return None
 
@@ -152,7 +155,7 @@ class WebAPP(common.APP):
                             pass
                     else:
                         return i_element
-            except Exception, e:
+            except Exception as e:
                 print "Failed to get element: %s" % e
         return None
 
@@ -161,7 +164,7 @@ class WebAPP(common.APP):
             desired_capabilities = self.app_config["desired-capabilities"]
             self.__driver = WebDriver(
                 str(self.app_config["driver-url"]), desired_capabilities)
-        except Exception, e:
+        except Exception as e:
             print "Failed to launch %s: %s" % (self.app_name, e)
             return False
         return True
@@ -171,7 +174,7 @@ class WebAPP(common.APP):
             url = urljoin(self.url_prefix, url)
         try:
             self.__driver.get(url)
-        except Exception, e:
+        except Exception as e:
             print "Failed to visit %s: %s" % (url, e)
             return False
         return True
@@ -179,14 +182,14 @@ class WebAPP(common.APP):
     def title(self):
         try:
             return self.__driver.title
-        except Exception, e:
+        except Exception as e:
             print "Failed to get title: %s" % e
             return None
 
     def current_url(self):
         try:
             return self.__driver.current_url
-        except Exception, e:
+        except Exception as e:
             print "Failed to get current url: %s" % e
             return None
 
@@ -210,7 +213,8 @@ class WebAPP(common.APP):
             time.sleep(0.2)
         return False
 
-    def check_normal_text_element_timeout(self, text=None, key=None, display=True, timeout=2):
+    def check_normal_text_element_timeout(
+            self, text=None, key=None, display=True, timeout=2):
         end_time = time.time() + timeout
         while time.time() < end_time:
             if self.__check_normal_text_element(text, key, display):
@@ -273,7 +277,7 @@ class WebAPP(common.APP):
             alert_element = self.__driver.switch_to_alert()
             if alert_element:
                 return alert_element.text
-        except Exception, e:
+        except Exception as e:
             print "Failed to get alert text: %s" % e
 
         return None
@@ -290,7 +294,7 @@ class WebAPP(common.APP):
             alert_element = self.__driver.switch_to_alert()
             alert_element.accept()
             return True
-        except Exception, e:
+        except Exception as e:
             print "Failed to accept alert: %s" % e
             return False
 
@@ -303,7 +307,7 @@ def launch_webapp_by_name(context, app_name):
     if not context.web_config:
         assert False
 
-    if context.apps.has_key(app_name):
+    if app_name in context.apps:
         context.apps[app_name].quit()
     context.apps.update({app_name: WebAPP(context.web_config, app_name)})
     context.app = context.apps[app_name]
