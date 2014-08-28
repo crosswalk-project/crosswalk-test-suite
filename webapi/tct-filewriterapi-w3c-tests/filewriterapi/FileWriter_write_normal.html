@@ -75,9 +75,8 @@ Authors:
                         t.done();
                     }
                     try {
-                        var bb = initBlobBuilder();
-                        bb.append('test write method');// length : 17
-                        fileWriter.write(bb.getBlob('text/plain'));
+                        var bb = new Blob(['test write method'], {type: 'text/plain'});
+                        fileWriter.write(bb);
                     } catch (e) {
                         t.step(function() {
                             assert_unreached("Occur an exception " + e);

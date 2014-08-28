@@ -29,26 +29,6 @@
 
 */
 
-var blockbuilder;
-
-function initBlobBuilder(){
-    if(!blockbuilder){
-        try {
-            blockbuilder = new MSBlobBuilder();
-        } catch (e) {}
-
-        try {
-            blockbuilder = new WebKitBlobBuilder();
-        } catch (e) {}
-
-        try {
-            blockbuilder = new MozBlobBuilder();
-        } catch (e) { }
-
-    }
-    return blockbuilder;
-}
-
 function saveAs(blob){
     if(!("FileSaver" in window))
         FailTest("FileSaver is not in window.");

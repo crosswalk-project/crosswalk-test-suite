@@ -84,9 +84,7 @@ Authors:
                         fileWriter.abort();
                     }
                     try {
-                        var bb = initBlobBuilder();
-                        bb.append('test length attribute');
-                        fileWriter.write(bb.getBlob('text/plain'));
+                        fileWriter.write(new Blob(['test length attribute'], {type: 'text/plain'}));
                     } catch (ex) {
                         t.step(function() {
                            assert_unreached("Occur an exception " + ex);

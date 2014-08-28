@@ -26,36 +26,28 @@ NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE,
 EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
 Authors:
-        Ge, Qing <qingx.ge@intel.com>
+        Liu,Chunting <chuntingx.liu@intel.com>
         Xu,Yuhan <yuhanx.xu@intel.com>
 
 -->
 
 <html>
   <head>
-    <title>File Writer Test: BlobBuilder_getBlob_string_type</title>
+    <title>File Writer Test: Blob_constructor_visible_in_window</title>
     <link rel="author" title="Intel" href="http://www.intel.com" />
-    <link rel="help" href="http://www.w3.org/TR/2011/WD-file-writer-api-20110419/#widl-BlobBuilder-getBlob" />
+    <link rel="help" href="http://www.w3.org/TR/2011/WD-file-writer-api-20110419/#idl-def-BlobBuilder" />
     <meta name="flags" content="" />
-    <meta name="assert" content="Check if BlobBuilder.getBlob method set 'text/plain', then compare blobBuilder.getBlob().type is 'text/plain'" />
-    <script src="support/support.js"></script>
+    <meta name="assert" content="Check if Blob constructor must be visible when the script's global object is a Window object" />
     <script src="../resources/testharness.js"></script>
     <script src="../resources/testharnessreport.js"></script>
   </head>
   <body>
     <div id="log"></div>
     <script>
-        var t = async_test(document.title, {timeout:2000});
-        t.step(function () {
-            try {
-                var bb = initBlobBuilder();
-                var type = bb.getBlob("text/plain").type;
-                assert_equals(type, "text/plain");
-            } catch (e) {
-                assert_false(true, e.message);
-            }
-        }, "compare blobBuilder.getBlob().type is 'text/plain'");
-        t.done();
+        test(function () {
+            var blob = new Blob();
+            assert_not_equals(blob, null, "Blob exists");
+        }, document.title);
     </script>
   </body>
 </html>

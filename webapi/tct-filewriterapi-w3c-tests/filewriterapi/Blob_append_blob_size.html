@@ -26,18 +26,18 @@ NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE,
 EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
 Authors:
-        Liu,Chunting <chuntingx.liu@intel.com>
+        Ge, Qing <qingx.ge@intel.com>
         Xu,Yuhan <yuhanx.xu@intel.com>
 
 -->
 
 <html>
   <head>
-    <title>File Writer Test: BlobBuilder_constructor_visible_in_window</title>
+    <title>File Writer Test: Blob_blob_size</title>
     <link rel="author" title="Intel" href="http://www.intel.com" />
-    <link rel="help" href="http://www.w3.org/TR/2011/WD-file-writer-api-20110419/#idl-def-BlobBuilder" />
+    <link rel="help" href="http://www.w3.org/TR/2011/WD-file-writer-api-20110419/#widl-BlobBuilder-append" />
     <meta name="flags" content="" />
-    <meta name="assert" content="Check if BlobBuilder constructor must be visible when the script's global object is a Window object" />
+    <meta name="assert" content="Check compare Blob.size length" />
     <script src="support/support.js"></script>
     <script src="../resources/testharness.js"></script>
     <script src="../resources/testharnessreport.js"></script>
@@ -45,19 +45,11 @@ Authors:
   <body>
     <div id="log"></div>
     <script>
-        var t = async_test(document.title, {timeout:2000});
-        try {
-            var blob = initBlobBuilder();
-            t.step(function () {
-                assert_true(blob != null, "WorkerUtils.BlobBuilder exists");
-            });
-            t.done();
-        } catch (ex) {
-            t.step(function () {
-                assert_true(false, "Throw an exception " + ex);
-            });
-            t.done();
-        }
+        test(function () {
+            var blob1 = new Blob(["test"]);
+            var blob2 = new Blob([blob1], {type: "text/plain"});
+            assert_equals(blob2.size, 4);
+        }, document.title);
     </script>
   </body>
 </html>

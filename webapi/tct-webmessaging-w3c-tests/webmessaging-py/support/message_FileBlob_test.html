@@ -42,20 +42,9 @@ Authors:
     <script>
         var origin = document.location;
         var channel = new MessageChannel();
-        var bb = BlobBuilder();
-        var message = bb.getBlob("text/xml"); // the blob
+        var message = new Blob([], {type: "text/xml"}); // the blob
         var ports = [channel.port1, channel.port2];
         window.parent.postMessage(message, origin, ports);
-        function BlobBuilder() {
-	        if (window.WebKitBlobBuilder) {
-	            blobbuilder = new WebKitBlobBuilder();
-	        } else if (window.MozBlobBuilder) {
-	            blobbuilder = new MozBlobBuilder();
-	        } else if (window.MSBlobBuilder) {
-	            blobbuilder = new MSBlobBuilder();
-	        }
-	        return blobbuilder;
-        }
     </script>
   </body>
 </html>

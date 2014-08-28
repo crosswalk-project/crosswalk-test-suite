@@ -38,7 +38,6 @@ Authors:
     <link rel="help" href="http://www.w3.org/TR/2011/WD-file-writer-api-20110419/#widl-FileSaver-onabort" />
     <meta name="flags" content="" />
     <meta name="assert" content="Ckeck if the event type of FileSaver.onabort is abort" />
-    <script src="support/support.js"></script>
     <script src="../resources/testharness.js"></script>
     <script src="../resources/testharnessreport.js"></script>
   </head>
@@ -64,18 +63,16 @@ Authors:
             fs.root.getFile('seek_log.txt', {create: true},
             function(fileEntry) {
                 fileEntry.createWriter(function(fileWriter) {
-                    var bb = initBlobBuilder();
                     fileWriter.onwritestart = function (e) {
                        fileWriter.abort();
                     };
                     fileWriter.onabort = function(event) {
                         t.step(function() {
-                            assert_true(event.type == "abort", "The event type of FileSaver.onabort should be abort");
+                            assert_equals(event.type, "abort", "The event type of FileSaver.onabort should be abort");
                         });
                         t.done();
                     };
-                    bb.append('test case');
-                    fileWriter.write(bb.getBlob());
+                    fileWriter.write(new Blob(["test case"]));
                 },errorCallback);
             },errorCallback);
         },errorCallback);

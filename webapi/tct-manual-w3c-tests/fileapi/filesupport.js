@@ -30,28 +30,6 @@ Authors:
 
 */
 
-    var blockbuilder;
-    function initBlobBuilder() {
-        if (!blockbuilder) {
-            try {
-                blockbuilder = new BlobBuilder();
-            } catch (e) {}
-
-            try {
-                blockbuilder = new MSBlobBuilder();
-            } catch (e) {}
-
-            try {
-                blockbuilder = new WebKitBlobBuilder();
-            } catch (e) {}
-
-            try {
-                blockbuilder = new MozBlobBuilder();
-            } catch (e) {}
-        }
-        return blockbuilder;
-    }
-
     function PassTest(desc) {
         t.step(function() { assert_true(true, desc); } );
         t.done();

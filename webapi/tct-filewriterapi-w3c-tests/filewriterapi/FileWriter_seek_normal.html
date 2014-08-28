@@ -74,9 +74,8 @@ Authors:
                         assert_unreached('Write failed:' + e);
                     }
                     try {
-                        var bb = initBlobBuilder();
-                        bb.append('test seek method');
-                        fileWriter.write(bb.getBlob('text/plain'));// length: 16
+                        var bb = new Blob(['test seek method'], {type: 'text/plain'});
+                        fileWriter.write(bb);// length: 16
                     } catch (ex) {
                         t.step(function() {
                            assert_unreached("Occur an exception " + ex);

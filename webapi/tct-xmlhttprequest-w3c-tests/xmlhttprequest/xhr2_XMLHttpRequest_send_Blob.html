@@ -44,45 +44,16 @@ Authors:
   <body>
     <div id="log"></div>
     <script type="text/javascript">
-        var t = async_test(document.title);
-
-        var client = new XMLHttpRequest();
-        try {
+        async_test(function (t) {
+            var client = new XMLHttpRequest();
             client.open("GET", "support/test.xml");
-            var bb = getBlobBuilder();
-            if (bb == undefined) {
-                t.step(function () {
-                    assert_true(false, "BlobBuilder support");
-                });
-                t.done();
+            if (!Blob) {
+                assert_unreach("Blob is not supported!");
             }
-            var blob = bb.getBlob("text/xml");// the blob
+            var blob = new Blob([], {type: "text/xml"});// the blob
             client.send(blob);
-            t.step(function () {
-                assert_true(true, "send blob data normally");
-            });
             t.done();
-        } catch (ex) {
-            t.step(function () {
-                assert_true(false, "throw an exception " + ex.name);
-            });
-            t.done();
-        }
-        function getBlobBuilder() {
-            var blobbuilder;
-            if (window.BlobBuilder) {
-                blobbuilder = new BlobBuilder();
-            } else if (window.WebKitBlobBuilder) {
-                blobbuilder = new WebKitBlobBuilder();
-            } else if (window.MozBlobBuilder) {
-                blobbuilder = new MozBlobBuilder();
-            } else if (window.MSBlobBuilder){
-                blobbuilder = new MSBlobBuilder();
-            } else {
-                blobbuilder = undefined;
-            }
-                return blobbuilder;
-        }
+        }, document.title);
     </script>
   </body>
 </html>

@@ -37,26 +37,19 @@ Authors:
     <link rel="help" href="http://www.w3.org/TR/2011/WD-FileAPI-20111020/#dfn-slice" />
     <meta name="flags" content="" />
     <meta name="assert" content="Check the value of Blob.slice when processing the slice call with user agent normalized from 1998 to 2999" />
-    <script src="filesupport.js"></script>
     <script src="../resources/testharness.js"></script>
     <script src="../resources/testharnessreport.js"></script>
   </head>
   <body>
     <div id=log></div>
     <script>
-        var bb = initBlobBuilder();
         var text = '';
         test(function() {
-            try {
-                for (var i = 0; i < 2000; ++i) text +='A';
-                bb.append(text);
-                blob = bb.getBlob();
-                blob.slice = blob.slice || blob.webkitSlice || blob.mozSlice;
-                sliceBlob = blob.slice(1998, 2999);
-                assert_equals(sliceBlob.size, 2000-1998, "Bolb slice");
-            } catch (e) {
-                assert_true(false, "Occur an exception " + e);
-            }
+            for (var i = 0; i < 2000; ++i) text +='A';
+            blob = new Blob([text]);
+            blob.slice = blob.slice || blob.webkitSlice || blob.mozSlice;
+            sliceBlob = blob.slice(1998, 2999);
+            assert_equals(sliceBlob.size, 2000-1998, "Bolb slice");
         }, document.title);
     </script>
   </body>

@@ -37,27 +37,18 @@ Authors:
     <link rel="help" href="http://www.w3.org/TR/2011/WD-FileAPI-20111020/#dfn-size" />
     <meta name="flags" content="" />
     <meta name="assert" content="Check the attribute of the interface Blob size is not null" />
-    <script type="text/javascript" src="filesupport.js"></script>
     <script type="text/javascript" src="../resources/testharness.js"></script>
     <script type="text/javascript" src="../resources/testharnessreport.js"></script>
   </head>
   <body>
     <div id=log></div>
     <script>
-        var t = async_test(document.title);
-        try {
+        test(function () {
             var expected = 10;
-            var bb = initBlobBuilder();
             var text = '0123456789';
-            bb.append(text);
-            blob = bb.getBlob();
-            t.step(function() {
-                assert_true(blob.size == expected);
-            });
-            t.done();
-        } catch (ex) {
-            FailTest("Throw an exception " + ex);
-        }
+            blob = new Blob([text]);
+            assert_equals(blob.size, expected);
+        }, document.title);
     </script>
   </body>
 </html>
