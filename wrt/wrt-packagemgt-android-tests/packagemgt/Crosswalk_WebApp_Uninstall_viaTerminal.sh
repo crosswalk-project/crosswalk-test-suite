@@ -32,7 +32,7 @@ local_path=$(dirname $0)
 
 function checkdata()
 {
-    adb shell am start -a android.intent.action.View -n org.xwalk.packagemgt/.packagemgtActivity > /tmp/test.txt
+    adb shell am start -a android.intent.action.View -n org.xwalk.packagemgt/.PackagemgtActivity > /tmp/test.txt
     sleep 5
     cat /tmp/test.txt | grep "Error" 2>&1 >/dev/null
     if [ $? -eq 0 ];then
@@ -45,7 +45,7 @@ function checkdata()
 checkdata
 if [ $? -eq 0 ];then
     #install apk
-    adb install -r $local_path/../source/packagemgt*.apk > /tmp/install.txt
+    adb install -r $local_path/../source/Packagemgt*.apk > /tmp/install.txt
     checkdata
     if [ $? -eq 0 ];then
        exit 1

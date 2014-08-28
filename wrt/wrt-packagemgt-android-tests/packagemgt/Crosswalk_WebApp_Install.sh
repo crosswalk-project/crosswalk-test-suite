@@ -31,7 +31,7 @@
 local_path=$(dirname $0)
 
 #install webapp
-adb install -r $local_path/../source/packagemgt*.apk > /tmp/install.txt
+adb install -r $local_path/../source/Packagemgt*.apk > /tmp/install.txt
 grep "Success" /tmp/install.txt
 
 if [ $? -eq 0 ];then

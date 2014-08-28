@@ -43,12 +43,12 @@ function checkps()
 }
 
 #install webapp
-adb install -r $local_path/../source/packagemgt*.apk > /tmp/install.txt
+adb install -r $local_path/../source/Packagemgt*.apk > /tmp/install.txt
 grep "Success" /tmp/install.txt
 
 if [ $? -eq 0 ];then
     #launch app by terminal
-    adb shell am start -a android.intent.action.View -n org.xwalk.packagemgt/.packagemgtActivity
+    adb shell am start -a android.intent.action.View -n org.xwalk.packagemgt/.PackagemgtActivity
     sleep 5
     checkps
 

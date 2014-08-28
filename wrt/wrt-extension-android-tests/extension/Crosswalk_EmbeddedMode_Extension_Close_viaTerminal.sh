@@ -49,7 +49,7 @@ grep "Success" /tmp/install.txt
 if [ $? -eq 0 ];then
     exit 0
     #launcher app by terminal
-    adb shell am start -a android.intent.action.View -n org.xwalk.extension_permission_contacts_tests/.extension_permission_contacts_testsActivity
+    adb shell am start -a android.intent.action.View -n org.xwalk.extension_permission_contacts_tests/.ExtensionPermissionContactsTestsActivity
     sleep 5
     checkps
 
