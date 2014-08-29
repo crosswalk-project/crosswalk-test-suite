@@ -1,0 +1,46 @@
+{
+  "name": "maximize_tests",
+  "xwalk_version": "1.0.0",
+  "start_url": "index.html",
+  "xwalk_description": "Test description",
+  "icons": [
+    {
+      "src": "icon.png",
+      "sizes": "128x128"
+    },
+    {
+      "src": "crosswalk.jpg",
+      "sizes": "64x64"
+    }
+  ],
+  "xwalk_launch_screen": {
+    "ready_when": "first-paint",
+    "default": {
+      "background_color": "#000000",
+      "background_image": "bg.png",
+      "image": "loading.gif",
+      "image_border": "30px repeat stretch"
+    },
+    "portrait": {
+      "background_color": "#000001",
+      "background_image": "bg.png",
+      "image": "loading.jpg",
+      "image_border": "30px repeat stretch"
+    },
+    "landscape": {
+      "background_color": "#000002",
+      "background_image": "bg.png",
+      "image": "loading.png",
+      "image_border": "30px repeat stretch"
+    }
+  },
+  "xwalk_permissions": [
+    "Contacts",
+    "Geolocation",
+    "Messaging",
+    "Vibration"],
+  "orientation": "landscape",
+  "display": ["fullscreen"],
+  "xwalk_hosts": "http://crosswalk-project.org/",
+  "csp": "script-src 'self' 'unsafe-inline' 'unsafe-eval'"
+}
