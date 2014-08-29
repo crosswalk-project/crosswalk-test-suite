@@ -32,14 +32,33 @@
 #
 local_path_source=$(dirname $0)
 
+sdbcommand=""
+
+if [ "$CONNECT_TYPE""x" == "x" ];then
+   connect_type="sdb"
+   echo $connect_type
+else
+   connect_type=$CONNECT_TYPE
+   echo $connect_type
+fi
+if [ "$DEVICE_ID""x" == "x" ];then
+    if [ `sdb devices |wc -l` -ne 1 ];then
+        device_id=`sdb devices |sed -n '2p' |awk '{print $1}'`
+        echo $device_id
+    fi
+else
+    device_id=$DEVICE_ID
+    echo $device_id
+fi
+
 function function_kill_process()
 {
         #kill xwalk process
-        sdb shell "ps -ef | grep xwalk" &> $local_path_source/../log/PROCESS_FILE1
+        $sdbcommand shell "ps -ef | grep xwalk" &> $local_path_source/../log/PROCESS_FILE1
         awk '{print $2}' $local_path_source/../log/PROCESS_FILE1 &> $local_path_source/../log/PROCESS_FILE
         cat $local_path_source/../log/PROCESS_FILE | while read allline
         do
-                sdb shell "kill -9 $allline" &>/dev/null
+                $sdbcommand shell "kill -9 $allline" &>/dev/null
         done
         rm -rf $local_path_source/../log/PROCESS_FILE1
         rm -rf $local_path_source/../log/PROCESS_FILE
@@ -47,10 +66,10 @@ function function_kill_process()
 
 function function_install_xwalk()
 {
-        sdb shell "rpm -qa | grep cross  |xargs -I%  rpm -e %" &> /dev/null
-        sdb shell "[ -e $CROSSWALK_RPM ] && rm -rf $CROSSWALK_RPM"
-        sdb push $local_path_source/../resources/installer/$CROSSWALK_RPM /
-        sdb shell "rpm -ivh /$CROSSWALK_RPM" &>> $local_path_source/../log/$1
+        $sdbcommand shell "rpm -qa | grep cross  |xargs -I%  rpm -e %" &> /dev/null
+        $sdbcommand shell "[ -e $CROSSWALK_RPM ] && rm -rf $CROSSWALK_RPM"
+        $sdbcommand push $local_path_source/../resources/installer/$CROSSWALK_RPM /
+        $sdbcommand shell "rpm -ivh /$CROSSWALK_RPM" &>> $local_path_source/../log/$1
 }
 
 function function_get_xpm_name()
@@ -103,5 +122,5 @@ function function_uninstall_xpk()
 
         echo "The web app id is:$ID" &>> $local_path_source/../log/$1
         #install xwalk web app
-        sdb shell "xwalkctl --uninstall $ID" &> $local_path_source/../log/UNINSTALL_RESULT
+        $sdbcommand shell "xwalkctl --uninstall $ID" &> $local_path_source/../log/UNINSTALL_RESULT
 }
