@@ -100,11 +100,6 @@ def instPKGs():
     #        if file.endswith(".apk"):
     #            cmd = "%s -s %s install %s" % (ADB_CMD,
     #                                           PARAMETERS.device, os.path.join(root, file))
-    (return_code, output) = doCMD("adb uninstall org.xwalk.runtime.lib &> /dev/null")
-    for line in output:
-        if "Failure" in line:
-            action_status = False
-            break
     for item in glob.glob("%s/*" % SCRIPT_DIR):
         if item.endswith(".apk"):
             continue

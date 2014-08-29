@@ -30,10 +30,15 @@
 #       Xu, Kang <kangx.xu@intel.com>
 
 local_path=$(dirname $0)
+source $local_path/common
+
+if [ "${command}""x" == "x" ];then
+    exit 1
+fi
 
 function checkps()
 {
-    adb shell "ps | grep "org.xwalk.extension_permission_contacts_tests"" > /tmp/install.txt
+    $command shell "ps | grep "org.xwalk.extension_permission_contacts_tests"" > /tmp/install.txt
     process_info9=`awk '{print $9}' /tmp/install.txt |tr -d [[:space:]]`
     #echo "sencod=$process_info9"
     if [ "${process_info9}" == "org.xwalk.extension_permission_contacts_tests" ];then
@@ -43,13 +48,13 @@ function checkps()
     fi
 }
 
-adb install -r $local_path/../source/extension_*.apk > /tmp/install.txt
+$command install -r $local_path/../source/extension_*.apk > /tmp/install.txt
 grep "Success" /tmp/install.txt
 
 if [ $? -eq 0 ];then
     exit 0
     #launcher app by terminal
-    adb shell am start -a android.intent.action.View -n org.xwalk.extension_permission_contacts_tests/.extension_permission_contacts_testsActivity
+    $command shell am start -a android.intent.action.View -n org.xwalk.extension_permission_contacts_tests/.ExtensionPermissionContactsTestsActivity
     sleep 5
     checkps
 
@@ -61,12 +66,12 @@ else
 fi
 
 #close web app via terminal
-adb shell am force-stop org.xwalk.extension_permission_contacts_tests
+$command shell am force-stop org.xwalk.extension_permission_contacts_tests
 sleep 2
 checkps
 
 if [ $? -ne 0 ];then
-        adb uninstall org.xwalk.extension_permission_contacts_tests
+        $command uninstall org.xwalk.extension_permission_contacts_tests
         exit 0
 else
         exit 1

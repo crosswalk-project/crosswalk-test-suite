@@ -30,13 +30,18 @@
 #       Xu, Kang <kangx.xu@intel.com>
 
 local_path=$(dirname $0)
+source $local_path/common
+
+if [ "${command}""x" == "x" ];then
+    exit 1
+fi
 
 #install webapp
-adb install -r $local_path/../source/extension_*.apk > /tmp/install.txt
+$command install -r $local_path/../source/extension_*.apk > /tmp/install.txt
 grep "Success" /tmp/install.txt
 
 if [ $? -eq 0 ];then
-    adb uninstall org.xwalk.extension_permission_contacts_tests
+    $command uninstall org.xwalk.extension_permission_contacts_tests
     exit 0
 else
     exit 1
