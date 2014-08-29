@@ -26,7 +26,7 @@ function unzippkg()
     echo "Package unzip successfully and push to $RESOURCE_DIR/"
     chmod 777 $RESOURCE_DIR/opt/$NAME/$folderName/*.sh
     echo "Install webapp ..."
-    adb install -r $RESOURCE_DIR/opt/$NAME/$folderName/dynamicdd*.apk
+    adb install -r $RESOURCE_DIR/opt/$NAME/$folderName/Dynamicdd*.apk
 }
 
 function cleansource()
