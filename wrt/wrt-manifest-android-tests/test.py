@@ -307,7 +307,7 @@ def tryRunApp(device):
                         print "Stop APK ---------------->Error"
                         result = "FAIL"
                         message = message + "Stop apk failed\n"
-                        os.system("adb uninstall org.xwalk.test")
+                        os.system("adb -s " + device + " uninstall org.xwalk.test")
             else:
                 print "Find Package in device ---------------->Error"
                 message = message + "Find package in device failed\n"

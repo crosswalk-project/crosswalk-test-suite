@@ -278,7 +278,7 @@ def tryRunApp(name, package, device, apkDir):
                 if launchstatus[0] != 0:
                     print "Launch APK ---------------->Error"
                     message = message + "Launch apk failed\n"
-                    os.system("adb uninstall " + package)
+                    os.system("adb -s " + device + " uninstall " + package)
                     result = "FAIL"
                 else:
                     print "Launch APK ---------------->O.K"
