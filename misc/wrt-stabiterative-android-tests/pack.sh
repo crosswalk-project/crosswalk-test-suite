@@ -3,7 +3,7 @@ source $(dirname $0)/$(basename $(pwd)).spec
 
 #parse params
 usage="Usage: ./pack.sh [-t <package type: wgt | apk | crx | xpk | pure>] [-m <apk mode: shared | embedded>] [-a <apk runtime arch: x86 | arm>]
-[-t pure] option was set as default.
+[-t apk] option was set as default.
 [-m shared] option was set as default.
 [-a x86] option was set as default.
 "
@@ -13,7 +13,7 @@ if [[ $1 == "-h" || $1 == "--help" ]]; then
     exit 1
 fi
 
-type="pure"
+type="apk"
 mode="embedded"
 arch="x86"
 while getopts t:m:a: o
@@ -131,9 +131,13 @@ EOF
 cp $BUILD_DEST/opt/$name/tests.xml $BUILD_DEST/
 cp -a $BUILD_ROOT/icon.png     $BUILD_DEST/
 cp -r $SRC_ROOT/../../tools/crosswalk $BUILD_ROOT/crosswalk
+mkdir -p $BUILD_ROOT/apkfolder/
 
 cd $BUILD_ROOT/crosswalk
 python make_apk.py --package=org.xwalk.$appname --name=$appname --app-root=$BUILD_DEST --app-local-path=index.html --icon=$BUILD_DEST/icon.png --mode=$mode --arch=$arch
+if [ $? -eq 0 ];then
+    mv *apk $BUILD_ROOT/apkfolder/${appname}_${arch}.apk
+fi
 if [ $? -ne 0 ];then
     echo "Create $name.apk fail.... >>>>>>>>>>>>>>>>>>>>>>>>>"
     clean_workspace
@@ -197,7 +201,7 @@ function zip_for_apk(){
 cd $BUILD_DEST
 # cp inst.sh script #
 cp -af $BUILD_ROOT/inst.sh.apk $BUILD_DEST/opt/$name/inst.sh
-mv $BUILD_ROOT/crosswalk/*.apk $BUILD_DEST/opt/$name/
+mv $BUILD_ROOT/apkfolder/*.apk $BUILD_DEST/opt/$name/
 
 if [ $src_file -eq 0 ];then
     for file in $(ls opt/$name |grep -v apk);do
