@@ -100,8 +100,8 @@ function func_launch_other()
       echo "Need to add the parameter"
       return 1
     fi
-    APP_WIDGETNAME=`wrt-launcher -l|grep -w $APP_NAME|awk '{print $NF}'`
-    wrt-launcher -s $APP_WIDGETNAME
+    APP_WIDGETNAME=`xwalk-launcher -l|grep -w $APP_NAME|awk '{print $NF}'`
+    xwalk-launcher -s $APP_WIDGETNAME
     sleep 3
     if [ "$APP_NAME" = "lifecycle-launch-installed-app" ];then
         WIDGETNAME = "wrt3lhr012.LifecycleHideRunningApp"

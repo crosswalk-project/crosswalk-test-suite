@@ -27,21 +27,21 @@ if [ $? -eq 1 ];then
   exit 1
 fi
 
-func_install lifecycle-hide-running-app.wgt
-if [ $? -eq 1 ];then
-  echo "The installation of lifecycle-hide-running-app.wgt is failed"
-  exit 1
-fi
+#func_install lifecycle-hide-running-app.wgt
+#if [ $? -eq 1 ];then
+#  echo "The installation of lifecycle-hide-running-app.wgt is failed"
+#  exit 1
+#fi
 
 func_launch_other lifecycle-launch-installed-app.wgt
 if [ $? -eq 1 ];then
   echo "The launch is failed"
   func_uninstall lifecycle-launch-installed-app.wgt
-  func_uninstall lifecycle-hide-running-app.wgt
+#  func_uninstall lifecycle-hide-running-app.wgt
   exit 1
 fi
 
 func_uninstall lifecycle-launch-installed-app.wgt
-func_uninstall lifecycle-hide-running-app.wgt
+#func_uninstall lifecycle-hide-running-app.wgt
 
 exit 0
