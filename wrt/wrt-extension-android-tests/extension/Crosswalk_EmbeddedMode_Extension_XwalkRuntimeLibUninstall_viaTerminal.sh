@@ -58,7 +58,7 @@ if [ $? -eq 0 ];then
 
     if [ $? -eq 0 ];then
         #launcher app by terminal
-        adb shell am start -a android.intent.action.View -n org.xwalk.extension_permission_contacts_tests/.extension_permission_contacts_testsActivity
+        adb shell am start -a android.intent.action.View -n org.xwalk.extension_permission_contacts_tests/.ExtensionPermissionContactsTestsActivity
         sleep 8
         checkps
 

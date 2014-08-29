@@ -32,7 +32,7 @@ local_path=$(dirname $0)
 
 function checkdata()
 {
-    adb shell am start -a android.intent.action.View -n org.xwalk.extension_permission_contacts_tests/.extension_permission_contacts_testsActivity > /tmp/test.txt
+    adb shell am start -a android.intent.action.View -n org.xwalk.extension_permission_contacts_tests/.ExtensionPermissionContactsTestsActivity > /tmp/test.txt
     sleep 5
     cat /tmp/test.txt | grep "Error" 2>&1 >/dev/null
     if [ $? -eq 0 ];then

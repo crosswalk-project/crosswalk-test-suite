@@ -32,10 +32,10 @@
 
 local_path=$(dirname $0)
 PACKAGE="com.xwalk.webappintel"
-NAME="WebApp"
+NAME="Webappintel"
 
 echo "WebApp Install"
-adb install -r $local_path/../resources/apk/WebApp*.apk 
+adb install -r $local_path/../resources/apk/Web*.apk 
 adb shell pm list packages |grep $PACKAGE &>/dev/null
 if [ $? -eq 0 ];then
     echo "Web App Install successflly"

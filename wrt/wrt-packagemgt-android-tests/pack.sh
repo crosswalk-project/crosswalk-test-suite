@@ -178,7 +178,7 @@ do
         if [ "$buildfolder" == "packagemgt" ];then
             echo "build extension webapp..."
             python make_apk.py --package=org.xwalk.$buildfolder --name=$buildfolder --app-url=http://www.baidu.com --arch=$arch
-            python make_apk.py --package=org.xwalk.apk2$buildfolder --name=apk2$buildfolder --app-url=http://www.baidu.com --arch=$arch
+            #python make_apk.py --package=org.xwalk.apk2$buildfolder --name=apk2$buildfolder --app-url=http://www.baidu.com --arch=$arch
             continue
         fi
 done
@@ -188,7 +188,7 @@ function create_pure(){
 #create source apk
 create_source_apk
 mkdir $BUILD_DEST/opt/$name/source
-cp -r $BUILD_ROOT/crosswalk/*packagemgt*.apk $BUILD_DEST/opt/$name/source
+cp -r $BUILD_ROOT/crosswalk/*.apk $BUILD_DEST/opt/$name/source
 cd $BUILD_DEST
 zip -rq $BUILD_DEST/opt/$name/$name.zip *
 if [ $? -ne 0 ];then

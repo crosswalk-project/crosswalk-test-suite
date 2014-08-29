@@ -172,6 +172,7 @@ exit 1
 function create_source_apk(){
 cd $BUILD_ROOT/
 cp -r $SRC_ROOT/../../tools/crosswalk $BUILD_ROOT/crosswalk
+mkdir -p $BUILD_ROOT/apkfolder/
 cd $BUILD_ROOT/crosswalk
 for buildfolder in `ls -l $BUILD_DEST/opt/$name/$sourcepath/ |grep "^d"|awk '{print $NF}'`
 do
@@ -179,6 +180,9 @@ do
     if [ "${buildfolder:0:10}" == "extension_" ];then
         echo "build extension webapp..."
         python make_apk.py --package=org.xwalk.$buildfolder --name=$buildfolder --app-root=$BUILD_DEST/opt/$name/$sourcepath/$buildfolder --app-local-path=index.html --extensions=$BUILD_DEST/opt/$name/$sourcepath/$buildfolder/contactextension --mode=$mode --arch=$arch
+        if [ $? -eq 0 ];then
+            mv *apk $BUILD_ROOT/apkfolder/${buildfolder}_${arch}.apk
+        fi
         continue
     fi
 done
@@ -188,7 +192,7 @@ function create_pure(){
 #create source apk
 create_source_apk
 mkdir $BUILD_DEST/opt/$name/source
-cp -r $BUILD_ROOT/crosswalk/extension*.apk $BUILD_DEST/opt/$name/source
+cp -r $BUILD_ROOT/apkfolder/*.apk $BUILD_DEST/opt/$name/source
 cd $BUILD_DEST
 zip -rq $BUILD_DEST/opt/$name/$name.zip *
 if [ $? -ne 0 ];then
