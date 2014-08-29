@@ -39,15 +39,20 @@ Authors:
 <div id="log"></div>
 <script>
 
-var t = async_test("Check if the readonly attribute id of MediaRendererIdEvent exists and type of string");
-setup({timeout: 30000});
+setup({timeout: 30000}, {explicit_done: true});
 
-navigator.mediaRenderer.onrendererlost = t.step_func(function (event) {
-  assert_true("id" in event, "id attribute in MediaRendererIdEvent");
-  assert_equals(typeof event.id, "string", "id attribute of type");
-  assert_readonly(event, "id", "expect attribute id cannot be changed but");
-  t.done();
-});
+navigator.mediaRenderer.onrendererlost = function (event) {
+  test(function () {
+    assert_true("id" in event, "id attribute in MediaRendererIdEvent");
+    assert_equals(typeof event.id, "string", "id attribute of type");
+    assert_readonly(event, "id", "expect attribute id cannot be changed but");
+  }, "Check if the readonly attribute id of MediaRendererIdEvent exists and type of string");
+
+  test(function () {
+    assert_not_equals(event.id, null, "id attribute of MediaRendererIdEvent");
+  }, "Check if MediaRendererIdEvent.id is valid");
+  done();
+};
 
 navigator.mediaRenderer.onrendererfound = function (eve) {
   eve.renderer.controller.pause();

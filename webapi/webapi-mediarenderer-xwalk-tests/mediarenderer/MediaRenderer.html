@@ -76,13 +76,24 @@ navigator.mediaRenderer.onrendererfound = function (event) {
         assert_equals(typeof event.renderer[name], type, name + " attribute of type");      
         break;
       case "mediaController":
-        assert_equals(Object.prototype.toString.call(event.renderer.controller[name]), "[object MediaController]", name + " attribute of type");
-        assert_readonly(event.renderer.controller, name, "expect attribute " + name + " cannot be changed but");
+        assert_equals(Object.prototype.toString.call(event.renderer[name]), "[object MediaController]", name + " attribute of type");
+        assert_readonly(event.renderer, name, "expect attribute " + name + " cannot be changed but");
         break;
       default:
         break;
       }
     }, "Check if " + read + " MediaRenderer." + name + " exists and type of " + type);
+
+    switch(type) {
+    case "string":
+    case "mediaController":
+      test(function () {
+        assert_not_equals(event.renderer[name], null, name + " attribute of MediaRenderer");
+      }, "Check if MediaRenderer." + name + " is valid");
+      break;
+    default:
+      break;
+    }
   });
   done();
 };

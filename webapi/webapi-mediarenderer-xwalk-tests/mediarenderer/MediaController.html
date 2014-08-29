@@ -43,7 +43,7 @@ setup({timeout: 30000}, {explicit_done: true});
 
 navigator.mediaRenderer.onrendererfound = function (event) {
   [
-    ["object", "playbackStatus", "readonly"],
+    ["string", "playbackStatus", "readonly"],
     ["boolean", "muted", "readonly"],
     ["number", "volume", "readonly"],
     ["number", "track", "readonly"],
@@ -67,7 +67,7 @@ navigator.mediaRenderer.onrendererfound = function (event) {
     test(function () {
       assert_true(name in event.renderer.controller, name + " attribute in MediaController");
       switch(type) {
-      case "object":
+      case "string":
       case "boolean":
       case "number":
       case "function":
@@ -80,6 +80,18 @@ navigator.mediaRenderer.onrendererfound = function (event) {
         break;
       }
     }, "Check if " + read + " MediaController." + name + " exists and type of " + type);
+
+    switch(type) {
+    case "string":
+    case "boolean":
+    case "number":
+      test(function () {
+        assert_not_equals(event.renderer.controller[name], null, name + " attribute of MediaController");
+      }, "Check if MediaController." + name + " is valid");
+      break;
+    default:
+      break;
+    }
   });
   done();
 };

@@ -44,7 +44,7 @@ setup({timeout: 30000}, {explicit_done: true});
 navigator.mediaRenderer.onrendererfound = function (eve) {
   eve.renderer.controller.onstatuschanged = function (event) {
     [
-      ["object", "playbackStatus", "readonly"],
+      ["string", "playbackStatus", "readonly"],
       ["boolean", "muted", "readonly"],
       ["number", "volume", "readonly"],
       ["number", "track", "readonly"],
@@ -59,6 +59,10 @@ navigator.mediaRenderer.onrendererfound = function (eve) {
         assert_readonly(event, name, "expect attribute " + name + " cannot be changed but");
         assert_equals(typeof event[name], type, name + " attribute of type");
       }, "Check if " + read + " MediaControllerStatusEvent." + name + " exists and type of " + type);
+
+      test(function () {
+        assert_not_equals(event[name], null, name + " attribute of MediaControllerStatusEvent");
+      }, "Check if MediaControllerStatusEvent." + name + " is valid");
     });
     done();
   };
