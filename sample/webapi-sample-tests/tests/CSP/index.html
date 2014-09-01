@@ -47,17 +47,12 @@ Authors:
             <h1 id="main_page_title"></h1>
         </div>
         <div data-role="content">
-            <h4>This sample demonstrates a policy language used to declare a set of content restrictions for a web resource, and a mechanism for transmitting the policy from a server to a client where the policy is enforced..</h4>
+            <h4>This sample demonstrates a policy language used to declare a set of content restrictions for a web resource, and a mechanism for transmitting the policy from a server to a client where the policy is enforced.</h4>
             <ul data-role="listview" id="cspList" data-divider-theme="b" data-inset="true">
                 <li data-role="list-divider" role="heading">common directives</li>
                 <li id="csp-none">
                     <a href="javascript:runApp('res/csp-none/index.html')" data-transition="slide" style="">
                         <h2>csp-none</h2>
-                    </a>
-                </li>
-                <li id="csp-self">
-                    <a href="javascript:runApp('res/csp-self/index.html')" data-transition="slide" style="">
-                        <h2>csp-self</h2>
                     </a>
                 </li>
                 <li id="csp-asterisk">
@@ -71,11 +66,6 @@ Authors:
                     </a>
                 </li>
                 <li data-role="list-divider" role="heading">default-src directive</li>
-                <li id="default-src-self">
-                    <a href="javascript:runApp('res/default-src_self/index.html')" data-transition="slide" style="">
-                        <h2>default-src-self</h2>
-                    </a>
-                </li>
                 <li id="default-src-asterisk">
                     <a href="javascript:runApp('res/default-src_asterisk/index.html')" data-transition="slide" style="">
                         <h2>default-src-asterisk</h2>
@@ -87,18 +77,6 @@ Authors:
                         <h2>sandbox-same-origin-allow-scripts</h2>
                     </a>
                 </li>
-                <li data-role="list-divider" role="heading">script-src directive</li>
-                <li id="script-src-inline-eval">
-                    <a href="javascript:runApp('res/script-src_inline_eval/index.html')" data-transition="slide" style="">
-                        <h2>script-src-inline-eval</h2>
-                    </a>
-                </li>
-                <li data-role="list-divider" role="heading">style-src directive</li>
-                <li id="style-src-self">
-                    <a href="javascript:runApp('res/style-src_self/index.html')" data-transition="slide" style="">
-                        <h2>style-src-self</h2>
-                    </a>
-                </li>
             </ul>
         </div>
         <div data-role="footer" data-position="fixed" data-tap-toggle="false">
@@ -106,7 +84,6 @@ Authors:
         <div data-role="popup" id="popup_info" data-theme="a">
           <font class="fontSize">
             <p>This sample is designed by content security policy rules: connect-src, frame-src, style-src, media-src, img-src, font-src, object-src, default-src, sandbox.</p>
-            <p>Make sure tinyweb server is starting, you can refer to "Deploy Tinyweb" section in path/webapi-sample-tests/README.md</p>
           </font>
         </div>
     </div>
