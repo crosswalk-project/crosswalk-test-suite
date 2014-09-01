@@ -13,11 +13,13 @@ class TestHelperBridge {
     private final OnPageStartedHelper mOnPageStartedHelper;
     private final OnPageFinishedHelper mOnPageFinishedHelper;
     private final OnTitleUpdatedHelper mOnTitleUpdatedHelper;
+    private final OnEvaluateJavaScriptResultHelper mOnEvaluateJavaScriptResultHelper;
 
     public TestHelperBridge() {
         mOnPageStartedHelper = new OnPageStartedHelper();
         mOnPageFinishedHelper = new OnPageFinishedHelper();
         mOnTitleUpdatedHelper = new OnTitleUpdatedHelper();
+        mOnEvaluateJavaScriptResultHelper = new OnEvaluateJavaScriptResultHelper();
     }
 
     public OnPageFinishedHelper getOnPageFinishedHelper() {
@@ -34,6 +36,10 @@ class TestHelperBridge {
 
     public OnTitleUpdatedHelper getOnTitleUpdatedHelper() {
         return mOnTitleUpdatedHelper;
+    }
+
+    public OnEvaluateJavaScriptResultHelper getOnEvaluateJavaScriptResultHelper() {
+        return mOnEvaluateJavaScriptResultHelper;
     }
 
    public void onTitleChanged(String title) {

@@ -11,7 +11,11 @@ import java.util.concurrent.Callable;
 import java.util.concurrent.FutureTask;
 import java.util.concurrent.TimeUnit;
 
+import junit.framework.Assert;
+
 import org.chromium.content.browser.test.util.CallbackHelper;
+import org.chromium.content.browser.test.util.Criteria;
+import org.chromium.content.browser.test.util.CriteriaHelper;
 import org.xwalk.core.XWalkNavigationHistory;
 import org.xwalk.core.XWalkNavigationItem;
 import org.xwalk.core.XWalkResourceClient;
@@ -25,7 +29,6 @@ import android.content.Context;
 import android.content.res.AssetManager;
 import android.os.Bundle;
 
-
 public class XWalkViewTestBase extends ActivityInstrumentationTestCase2<MainActivity> {
 
     public XWalkViewTestBase(Class<MainActivity> activityClass) {
@@ -35,7 +38,9 @@ public class XWalkViewTestBase extends ActivityInstrumentationTestCase2<MainActi
     final String mExpectedStr = "xwalk";
 
     protected final static int WAIT_TIMEOUT_SECONDS = 15;
-
+    protected final static long WAIT_TIMEOUT_MS = 2000;
+    private final static int CHECK_INTERVAL = 100;
+    
     protected XWalkView mXWalkView;
     protected MainActivity mainActivity;
     final TestHelperBridge mTestHelperBridge = new TestHelperBridge();
@@ -178,6 +183,18 @@ public class XWalkViewTestBase extends ActivityInstrumentationTestCase2<MainActi
         });
     }
 
+    protected String executeJavaScriptAndWaitForResult(final String code) throws Exception {
+        final OnEvaluateJavaScriptResultHelper helper = mTestHelperBridge.getOnEvaluateJavaScriptResultHelper();
+        getInstrumentation().runOnMainSync(new Runnable() {
+            @Override
+            public void run() {
+                helper.evaluateJavascript(mXWalkView, code);
+            }
+        });
+        helper.waitUntilHasValue();
+        Assert.assertTrue("Failed to retrieve JavaScript evaluation results.", helper.hasValue());
+        return helper.getJsonResultAndClear();
+        }
 
     protected String getUrlOnUiThread() throws Exception {
         return runTestOnUiThreadAndGetResult(new Callable<String>() {
@@ -442,6 +459,15 @@ public class XWalkViewTestBase extends ActivityInstrumentationTestCase2<MainActi
                 TimeUnit.SECONDS);
     }
 
+    protected void loadJavaScriptSync(final String url, final String code) throws Exception {
+        CallbackHelper pageFinishedHelper = mTestHelperBridge.getOnPageFinishedHelper();
+        int currentCallCount = pageFinishedHelper.getCallCount();
+        loadUrlAsync(url);
+        loadUrlAsync(code);
+        pageFinishedHelper.waitForCallback(currentCallCount, 1, WAIT_TIMEOUT_SECONDS,
+                TimeUnit.SECONDS);
+    }
+
     protected void loadFromManifestSync(final String path, final String name) throws Exception {
         CallbackHelper pageFinishedHelper = mTestHelperBridge.getOnPageFinishedHelper();
         int currentCallCount = pageFinishedHelper.getCallCount();
@@ -533,5 +559,32 @@ public class XWalkViewTestBase extends ActivityInstrumentationTestCase2<MainActi
             }
         }
         return false;
+    }
+
+    public void clickOnElementId_changeTitle(final String id) throws Exception {
+        Assert.assertTrue(CriteriaHelper.pollForCriteria(new Criteria() {
+            @Override
+            public boolean isSatisfied() {
+                try {
+                    String idIsNotNull = executeJavaScriptAndWaitForResult(
+                        "document.getElementById('" + id + "') != null");
+                    return idIsNotNull.equals("true");
+                } catch (Throwable t) {
+                    t.printStackTrace();
+                    Assert.fail("Failed to check if DOM is loaded: " + t.toString());
+                    return false;
+                }
+            }
+        }, WAIT_TIMEOUT_MS, CHECK_INTERVAL));
+
+        CallbackHelper getTitleHelper = mTestHelperBridge.getOnTitleUpdatedHelper();
+        int currentCallCount = getTitleHelper.getCallCount();
+        executeJavaScriptAndWaitForResult(
+                "var evObj = document.createEvent('Events'); " +
+                "evObj.initEvent('click', true, false); " +
+                "document.getElementById('" + id + "').dispatchEvent(evObj);" +
+                "console.log('element with id [" + id + "] clicked');");
+        getTitleHelper.waitForCallback(currentCallCount, 1, WAIT_TIMEOUT_SECONDS,
+                TimeUnit.SECONDS);
     }
 }

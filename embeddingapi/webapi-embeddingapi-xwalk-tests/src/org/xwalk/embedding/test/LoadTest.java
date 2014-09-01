@@ -166,4 +166,33 @@ public class LoadTest extends XWalkViewTestBase {
         }
     }
 
+    @SmallTest
+    public void testLoadJs()
+    {
+        try {
+            final String changedTitle = "testLoadJs_ChangeTitle";
+            String url = "file:///android_asset/p2bar.html";
+            String code = "javascript:document.title='"+changedTitle+"';";
+            loadJavaScriptSync(url, code);
+            assertEquals(changedTitle, getTitleOnUiThread());
+        } catch (Exception e) {
+            e.printStackTrace();
+            assertTrue(false);
+        }
+    }
+
+    @SmallTest
+    public void testLoadXHR()
+    {
+        final String changedTitle = "testLoadXHR_ChangeTitle";
+        try {
+            String url = "file:///android_asset/testXHR.html";
+            loadUrlSync(url);
+            clickOnElementId_changeTitle("AJAX_Read");
+            assertEquals(changedTitle, getTitleOnUiThread());
+        } catch (Exception e) {
+            e.printStackTrace();
+            assertTrue(false);
+        }
+    }
 }

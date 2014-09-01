@@ -19,7 +19,6 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.test.suitebuilder.annotation.SmallTest;
 import android.view.KeyEvent;
-import android.webkit.ValueCallback;
 
 @SuppressLint("NewApi")
 public class XWalkViewTest extends XWalkViewTestBase {
@@ -50,29 +49,17 @@ public class XWalkViewTest extends XWalkViewTestBase {
     @SmallTest
     public void testEvaluateJavascript() {
         try {
-            final String name = "p1bar.html";
-            final String code = "document.title=\"xwalk\"";
-            loadAssetFile(name);
-            getInstrumentation().runOnMainSync(new Runnable() {
-
-                @Override
-                public void run() {
-                    mXWalkView.evaluateJavascript(code, new ValueCallback<String>() {
-
-                        @Override
-                        public void onReceiveValue(String arg0) {
-
-                        }
-                    });
-                }
-            });
-            assertTrue(true);
-       } catch (Exception e) {
-           e.printStackTrace();
-           assertTrue(false);
-       }
+            String changedTitle = "testEvaluateJavascript_ChangeTitle";
+            String url = "file:///android_asset/p2bar.html";
+            loadUrlSync(url,null);
+            executeJavaScriptAndWaitForResult("document.title='"+changedTitle+"';");
+            assertEquals(changedTitle, getTitleOnUiThread());
+        } catch (Exception e) {
+            e.printStackTrace();
+            assertTrue(false);
+        }
     }
-    
+
     @SmallTest
     public void testClearCache_falseParam() throws Throwable {
 
