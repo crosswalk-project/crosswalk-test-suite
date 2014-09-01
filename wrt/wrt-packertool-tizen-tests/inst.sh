@@ -14,9 +14,6 @@ function unzippkg()
 {
     #environment clear
     echo "environment clear >>>>>>>>>>>>>>>>>>>>>>>>>>>>>."
-    sdb root on
-    sdb shell "rpm -qa | grep cross  |xargs -I%  rpm -e %" &> /dev/null
-    sdb shell "rpm -qa | grep extensions-crosswalk  |xargs -I%  rpm -e %" &> /dev/null
     [ -d $RESOURCE_DIR/tct ] ||  mkdir -p $RESOURCE_DIR/tct
     [ -e $RESOURCE_DIR/tct/$NAME.zip ] && rm $RESOURCE_DIR/tct/$NAME.zip
     [ -e $RESOURCE_DIR/tct/opt/$NAME ] && rm -rf $RESOURCE_DIR/tct/opt/$NAME

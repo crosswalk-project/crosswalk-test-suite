@@ -12,7 +12,8 @@ if [ $? -eq 1 ];then
   exit 1
 else
   echo "Install ok"
-  webapp_id=`sqlite3 /home/app/.applications/dbspace/.app_info.db "select package from app_info where name like \"%diffid_same_version_tests%\";"`
+  pkg_id_tmp=`pkginfo --listpkg | head -n 5 | grep Appid`
+  webapp_id=${pkg_id_tmp:7}
   echo $webapp_id
   xwalkctl -u $webapp_id
   if [ $? -eq 0 ];then
