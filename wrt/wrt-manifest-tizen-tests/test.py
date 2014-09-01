@@ -605,6 +605,7 @@ def launcher_WebApp(pakeType,Manifest_Row, tcs_manifest):
         if (Test_Device_Type=="sdb"):
           print "use sdb device-------------->"
           for i in range(0,len(Device_Ip_List)): 
+            print "god---------->",Device_Ip_List
             cmd_pushxpk = "sdb -s " + Device_Ip_List[i] +" push " + const.name + "-" + const.version +"." + pakeType + ".zip " +  const.device_path 
             cmd_unzipxpk = "sdb -s " + Device_Ip_List[i] +" shell unzip -od " + const.device_path + "  " + const.device_path + const.name + "-" + const.version + "." + pakeType + ".zip "
             cmd_installapp="sdb -s " + Device_Ip_List[i] +" shell \"su - app -c 'export DBUS_SESSION_BUS_ADDRESS=unix:path=/run/user/5000/dbus/user_bus_socket;" + const.device_path + "/opt/wrt-manifest-tizen-tests/appinstall.sh "+ const.device_path +"/opt/wrt-manifest-tizen-tests/Crosswalk-Manifest-Check" + str(Manifest_Row) +  "." + pakeType +"'\""
@@ -628,23 +629,20 @@ def launcher_WebApp(pakeType,Manifest_Row, tcs_manifest):
             
             result_manifest_XML(const.path + "/device_" + Device_Ip_List[i], "Crosswalk-Manifest-Check" + str(Manifest_Row) + ".xml",auto_result,tcs_manifest)
             #install app
-            cmd_checkdb="sdb -s " + Device_Ip_List[i] +" shell \"su - app -c 'export DBUS_SESSION_BUS_ADDRESS=unix:path=/run/user/5000/dbus/user_bus_socket;" + const.device_path + "/opt/wrt-manifest-tizen-tests/checkdb.sh '\""
-            get_dbcount_before = get_runback(cmd_checkdb,"install","")[0].strip("\n\r")
             get_cmdback = get_runback(cmd_installapp,"install","")
             log_Log(" check DB--------->" + str(Manifest_Row) + " install webapp info= " + str(get_cmdback) + "\n")
-            get_dbcount_after = get_runback(cmd_checkdb,"install","")[0].strip("\n\r")
-            add_webapp = int(get_dbcount_after) - int(get_dbcount_before)
-            log_Log(" check DB--------->" + str(Manifest_Row) + " check DB new webapp= " + str(add_webapp) + "\n")
-            cmd_checkdb_new = "sdb -s " + Device_Ip_List[i] +" shell \"su - app -c 'export DBUS_SESSION_BUS_ADDRESS=unix:path=/run/user/5000/dbus/user_bus_socket;"+const.device_path+"/opt/wrt-manifest-tizen-tests/checkdb_new.sh " + str(int(get_dbcount_after)-1) + "'\""
-            get_fromdb = get_from_DB(cmd_checkdb_new,tcs_manifest)
-            log_Log(" check DB--------->" + str(Manifest_Row) + " get DB= " + str(get_fromdb) + "\n")
-            if ((add_webapp==1) & (get_fromdb[0]=="GET") & (Test_Flag=="positive")): #install ok and test =positive
+            cmd_checkpkginfo = "sdb -s " + Device_Ip_List[i] +" shell \"su - app -c 'export DBUS_SESSION_BUS_ADDRESS=unix:path=/run/user/5000/dbus/user_bus_socket;pkginfo --listpkg | head -n 20'\""
+            
+            get_fromdb = get_from_DB(cmd_checkpkginfo,tcs_manifest)
+            log_Log(" get_from--------->" + str(get_fromdb) + "\n")
+            if ((get_fromdb[0]=="GET") & (Test_Flag=="positive")): #install ok and test =positive
                   print "Install---------> OK "
                   log_Log(" install--------->" + str(Manifest_Row) + " OK"+ "\n") 
                   fail_message = "install ok"
                   auto_result = "PASS"
                   #launcher app
-                  Pkgids = get_fromdb[1]
+                  Pkgids = get_fromdb[1].strip("\n").lstrip().rstrip()
+                  log_Log(" launch--------->" + str(Pkgids) + "\n")
                   cmd_launchapp="sdb -s " + Device_Ip_List[i] +" shell \"su - app -c 'export DBUS_SESSION_BUS_ADDRESS=unix:path=/run/user/5000/dbus/user_bus_socket;"+const.device_path+"/opt/wrt-manifest-tizen-tests/applaunch.sh " + Pkgids +"'\""
                   get_cmdback = get_runback(cmd_launchapp,"launch",Pkgids)
                   if ((get_cmdback[0].strip("\r\n"))=="Launch ok"):
@@ -652,12 +650,10 @@ def launcher_WebApp(pakeType,Manifest_Row, tcs_manifest):
                       log_Log(" launch--------->" + str(Manifest_Row) + " OK"+ "\n")
                       fail_message = "launch webapp ok"
                       #uninstall app
-                      cmd_uninstallapp="sdb -s " + Device_Ip_List[i] +" shell \"su - app -c 'export DBUS_SESSION_BUS_ADDRESS=unix:path=/run/user/5000/dbus/user_bus_socket;"+const.device_path+"/opt/wrt-manifest-tizen-tests/appuninstall.sh " + Pkgids +"'\""
-                      cmd_checkdb="sdb -s " + Device_Ip_List[i] +" shell \"su - app -c 'export DBUS_SESSION_BUS_ADDRESS=unix:path=/run/user/5000/dbus/user_bus_socket;"+const.device_path+"/opt/wrt-manifest-tizen-tests/checkdb.sh " + Pkgids +"'\""
+                      cmd_uninstallapp="sdb -s " + Device_Ip_List[i] +" shell \"su - app -c 'export DBUS_SESSION_BUS_ADDRESS=unix:path=/run/user/5000/dbus/user_bus_socket;bash "+const.device_path+"/opt/wrt-manifest-tizen-tests/appuninstall.sh " + Pkgids + "'\""
                       get_cmdback = get_runback(cmd_uninstallapp,"uninstall","")
-                      get_dbcount_uninstall = get_runback(cmd_checkdb,"install","")[0].strip("\n\r")
-                      uninstall_webapp = int(get_dbcount_before) - int(get_dbcount_uninstall)
 
+                      log_Log(" uninstall--------->" + cmd_uninstallapp + "\n") 
                       if (((get_cmdback[0].find("Pass")>0) or (uninstall_webapp==0))>0):
                            print "Uninstall-------> OK"
                            log_Log(" uninstall--------->" + str(Manifest_Row) + " OK"+ "\n") 
@@ -669,7 +665,7 @@ def launcher_WebApp(pakeType,Manifest_Row, tcs_manifest):
                           print "Uninstall-------> Fail"
                   else:
                     fail_message = "launch fail"
-            elif ((add_webapp==1) & (Test_Flag=="positive")): # positive install ok but test fail
+            elif ((Test_Flag=="positive")): # positive install ok but test fail
                   auto_result = "FAIL"
                   fail_message = "install ok but check db fail"
                   log_Log(" install--------->" + str(Manifest_Row) + " check DB fail"+ "\n")
@@ -678,12 +674,7 @@ def launcher_WebApp(pakeType,Manifest_Row, tcs_manifest):
                   cmd_uninstallapp="sdb -s " + Device_Ip_List[i] +" shell \"su - app -c 'export DBUS_SESSION_BUS_ADDRESS=unix:path=/run/user/5000/dbus/user_bus_socket;"+const.device_path+"/opt/wrt-manifest-tizen-tests/appuninstall.sh " + Pkgids +"'\""
                   get_cmdback = get_runback(cmd_uninstallapp,"uninstall","")
                   auto_result = "FAIL"
-            elif ((add_webapp==0) & (Test_Flag=="positive")): #install ok and test =positive
-                  auto_result = "FAIL"
-                  fail_message = "install and db check fail"
-                  log_Log(" install--------->" + str(Manifest_Row) + " fail"+ "\n")
-                  print "Positive test ----------> install or check DB fail"
-            elif ((add_webapp==1) & (Test_Flag=="negative")): #install ok and test =negative
+            elif ((get_fromdb[0]=="GET") & (Test_Flag=="negative")): #install ok and test =negative
                   auto_result = "FAIL" 
                   log_Log(" negative test install ok:--------->" + str(Manifest_Row) + " fail"+ "\n")
                   fail_message = "negative test install ok: Fail"  
@@ -691,7 +682,7 @@ def launcher_WebApp(pakeType,Manifest_Row, tcs_manifest):
                   Pkgids = get_fromdb[1]
                   cmd_uninstallapp="sdb -s " + Device_Ip_List[i] +" shell \"su - app -c 'export DBUS_SESSION_BUS_ADDRESS=unix:path=/run/user/5000/dbus/user_bus_socket;"+const.device_path+"/opt/wrt-manifest-tizen-tests/appuninstall.sh " + Pkgids +"'\""
                   get_cmdback = get_runback(cmd_uninstallapp,"uninstall","")
-            elif ((add_webapp==0) & (Test_Flag=="negative")): #install ok and test =negative
+            elif ((Test_Flag=="negative")): #install ok and test =negative
                   auto_result = "PASS"
                   log_Log(" negative test install fail :--------->" + str(Manifest_Row) + " pass"+ "\n")
                   fail_message = "negative install fail: Pass"
@@ -728,12 +719,13 @@ def launcher_WebApp(pakeType,Manifest_Row, tcs_manifest):
             get_cmdback = get_runback(cmd_installapp,"install","")
             log_Log(" check DB--------->" + str(Manifest_Row) + " install webapp info= " + str(get_cmdback) + "\n")
             get_dbcount_after = get_runback(cmd_checkdb,"install","")[0].strip("\n\r")
-            add_webapp = int(get_dbcount_after) - int(get_dbcount_before)
-            log_Log(" check DB--------->" + str(Manifest_Row) + " check DB new webapp= " + str(add_webapp) + "\n")
             cmd_checkdb_new = "ssh " + Device_Ip_List[i] +" \"su - app -c 'export DBUS_SESSION_BUS_ADDRESS=unix:path=/run/user/5000/dbus/user_bus_socket;bash "+const.device_path+"/opt/wrt-manifest-tizen-tests/checkdb_new.sh " + str(int(get_dbcount_after)-1) + "'\""
-            get_fromdb = get_from_DB(cmd_checkdb_new,tcs_manifest)
+            cmd_checkpkginfo = "ssh " + Device_Ip_List[i] +" \"su - app -c 'export DBUS_SESSION_BUS_ADDRESS=unix:path=/run/user/5000/dbus/user_bus_socket;pkginfo --listpkg | head -n 20 '\""
+            
+            get_fromdb = get_from_DB(cmd_checkpkginfo,tcs_manifest)
             log_Log(" check DB--------->" + str(Manifest_Row) + " get DB= " + str(get_fromdb) + "\n")
-            if ((add_webapp==1) & (get_fromdb[0]=="GET") & (Test_Flag=="positive")): #install ok and test =positive
+            print "install result ------------>",get_fromdb[0],Test_Flag
+            if ((get_fromdb[0]=="GET") & (Test_Flag=="positive")): #install ok and test =positive
                   print "Install---------> OK "
                   log_Log(" install--------->" + str(Manifest_Row) + " OK"+ "\n") 
                   fail_message = "install ok"
@@ -748,11 +740,7 @@ def launcher_WebApp(pakeType,Manifest_Row, tcs_manifest):
                       fail_message = "launch webapp ok"
                       #uninstall app
                       cmd_uninstallapp="ssh " + Device_Ip_List[i] +"  \"su - app -c 'export DBUS_SESSION_BUS_ADDRESS=unix:path=/run/user/5000/dbus/user_bus_socket;bash "+const.device_path+"/opt/wrt-manifest-tizen-tests/appuninstall.sh " + Pkgids +"'\""
-                      cmd_checkdb="ssh " + Device_Ip_List[i] +"  \"su - app -c 'export DBUS_SESSION_BUS_ADDRESS=unix:path=/run/user/5000/dbus/user_bus_socket;bash "+const.device_path+"/opt/wrt-manifest-tizen-tests/checkdb.sh " + Pkgids +"'\""
                       get_cmdback = get_runback(cmd_uninstallapp,"uninstall","")
-                      get_dbcount_uninstall = get_runback(cmd_checkdb,"install","")[0].strip("\n\r")
-                      uninstall_webapp = int(get_dbcount_before) - int(get_dbcount_uninstall)
-
                       if (((get_cmdback[0].find("Pass")>0) or (uninstall_webapp==0))>0):
                            print "Uninstall-------> OK"
                            log_Log(" uninstall--------->" + str(Manifest_Row) + " OK"+ "\n") 
@@ -764,7 +752,7 @@ def launcher_WebApp(pakeType,Manifest_Row, tcs_manifest):
                           print "Uninstall-------> Fail"
                   else:
                     fail_message = "launch fail"
-            elif ((add_webapp==1) & (Test_Flag=="positive")): # positive install ok but test fail
+            elif (Test_Flag=="positive"): # positive install ok but test fail
                   auto_result = "FAIL"
                   fail_message = "install ok but check db fail"
                   log_Log(" install--------->" + str(Manifest_Row) + " check DB fail"+ "\n")
@@ -773,13 +761,7 @@ def launcher_WebApp(pakeType,Manifest_Row, tcs_manifest):
                   cmd_uninstallapp="ssh " + Device_Ip_List[i] +" \"su - app -c 'export DBUS_SESSION_BUS_ADDRESS=unix:path=/run/user/5000/dbus/user_bus_socket;bash "+const.device_path+"/opt/wrt-manifest-tizen-tests/appuninstall.sh " + Pkgids +"'\""
                   get_cmdback = get_runback(cmd_uninstallapp,"uninstall","")
                   auto_result = "FAIL"
-           
-            elif ((add_webapp==0) & (Test_Flag=="positive")): #install ok and test =positive
-                  auto_result = "FAIL"
-                  fail_message = "install and db check fail"
-                  log_Log(" install--------->" + str(Manifest_Row) + " fail"+ "\n")
-                  print "Positive test ----------> install or check DB fail"
-            elif ((add_webapp==1) & (Test_Flag=="negative")): #install ok and test =negative
+            elif ((get_fromdb[0]=="GET") & (Test_Flag=="negative")): #install ok and test =negative
                   auto_result = "FAIL" 
                   log_Log(" negative test install ok:--------->" + str(Manifest_Row) + " fail"+ "\n")
                   fail_message = "negative test install ok: Fail"  
@@ -787,11 +769,11 @@ def launcher_WebApp(pakeType,Manifest_Row, tcs_manifest):
                   Pkgids = get_fromdb[1]
                   cmd_uninstallapp="ssh " + Device_Ip_List[i] +" \"su - app -c 'export DBUS_SESSION_BUS_ADDRESS=unix:path=/run/user/5000/dbus/user_bus_socket;bash "+const.device_path+"/opt/wrt-manifest-tizen-tests/appuninstall.sh " + Pkgids +"'\""
                   get_cmdback = get_runback(cmd_uninstallapp,"uninstall","")
-            elif ((add_webapp==0) & (Test_Flag=="negative")): #install ok and test =negative
+            elif (Test_Flag=="negative"): #install ok and test =negative
                   auto_result = "PASS"
                   log_Log(" negative test install fail :--------->" + str(Manifest_Row) + " pass"+ "\n")
                   fail_message = "negative install fail: Pass"
-                  print "Negative test-------> Install fail: Pass"
+                  print "Negative test-------> Install fail: Pass"                  
             else:
                 auto_result = "FAIL"
                 log_Log(" other fail:--------->" + str(Manifest_Row) + "\n")
@@ -836,30 +818,32 @@ def get_Input_Result():
 def get_from_DB(cmdline,manifest):
     try:
         read_line = os.popen(cmdline).readlines()
-        log_Log(" get DB ="+ str(read_line) +"\n")
+        
+        log_Log(" get from pkginfo ="+ cmdline + "|"+ str(read_line) +"\n")
         get_id = read_line[0].split("|")[0]
         get_manifest = manifest.strip("\n\r\t").split(",")
         for i in range(0,len(get_manifest)):
           find_name = get_manifest[i].find("name")
           if (find_name>=0):
-            get_manifest_name = get_manifest[i].split(":")[1][2:-1].lstrip().rstrip()
-            log_Log(" get_manifest_name =--------->" + str(get_manifest_name) + "\n")
-            get_db_name = read_line[0].find(get_manifest_name)
-            get_db_null_name = read_line[0].find("NULL")
-            log_Log(" get_db_name =--------->" + str(get_db_name) + "\n")
-            if (get_db_name>=0):
-                print "Check From DB ------------------------->"
-                return "GET",get_id
-            elif ((str(get_manifest_name).find("<"))>=0 & (str(get_db_name).find("003C")>=0)):
-                print "Check From DB ------------------------->"
-                return "GET",get_id
-            elif ( get_db_null_name>=0 ):
-                print "Check From DB ------------------------->,NULL"
-                log_Log(" get (NUll)--------->" + "\n")
-                return "GET",get_id                            
-            else:
-                return "NONE"
-          return "NONE"
+            get_manifest_name = get_manifest[i].split(":")[1][2:-1].strip()
+            log_Log(" get_manifest_name --------->" + str(get_manifest_name) + "\n")
+            for i in range(0,len(read_line)):
+                find_id = read_line[i].find("Appid:")
+                if (find_id>=0):
+                   get_id = read_line[i].strip("\n").split(":")[1].lstrip()
+                   log_Log(" get_pkgid =--------->" + str(get_id) + "\n")
+                find_label = read_line[i].find("Label")
+                if (find_label>=0):
+                    log_Log(" read_line--------->" + str(read_line[i]) + "\n")
+                    get_label = read_line[i].strip("\n").split(":")[1].strip()
+                    get_name = get_manifest_name.find(get_label)
+                    log_Log(" get_name =--------->" + str(get_name) +get_manifest_name + "\n")
+                    if (get_name>=0):
+                        log_Log(" get_pkginfo_name --------->" + str(get_name) + "\n")
+                        return "GET",get_id
+          else:
+              return "NONE",get_id
+        return "NONE",get_id
     except Exception,e: 
         print Exception,"Get db record error:",e
         print traceback.format_exc()
