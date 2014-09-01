@@ -38,13 +38,6 @@ Authors:
     <script src="../../js/thirdparty/jquery.js"></script>
     <script src="../../js/thirdparty/jquery.mobile.js"></script>
     <script src="../../js/tests.js"></script>
-    <script>
-      function setImageId() {
-          var id = document.getElementById("imageId").value;
-          document.getElementById("imageUri").href = "content://media/external/images/media/" + id;
-          return true;
-      }
-    </script>
   </head>
   <body>
     <div data-role="page" id="main">
@@ -52,14 +45,14 @@ Authors:
         <h1 id="main_page_title"></h1>
       </div>
       <div data-role="content">
-        <div style="border:1px solid black;padding: 10px" >
-          <font size="4" face="Verdana">
-            Image Id: <input type="text" id="imageId" />
-          </font>
-          <div style="margin-top: 10px">
-            <a href="#" id="imageUri" onclick="return setImageId();">Open Image</a>
-          </div>
-      </div>
+        <h4>Test Steps</h4>
+        <ol>
+          <li>Launch web app named "schemecontent" in your device</li>
+          <li>Run command in terminal:<br/>
+              $ adb shell content query --uri content://media/external/images/media</li>
+          <li>Set the "_id" value to "Image Id" textarea</li>
+          <li>Click the link "Open Image"</li>
+        </ol>
       </div>
       <div data-role="footer" data-position="fixed">
       </div>
@@ -72,15 +65,9 @@ Authors:
             <li>There is at least 1 image in the device</li>
             <li>Connect a device to host by usb</li>
           </ol>
-        <p>Test Steps:</p>
-        <ol>
-          <li>Run command in terminal:<br/>
-              $ adb shell content query --uri content://media/external/images/media"</li>
-          <li>Set the "_id" value to "Image Id" textarea</li>
-          <li>Click the link "Open Image"</li>
-        </ol>
           <p>Expected Result:</p>
           <ol>
+            <li>The web app is launched successfully</li>
             <li>List all image id successfully</li>
             <li>Input "_id" value to "Image Id" textarea successfully</li>
             <li>Selected image is displayed successfully</li>
