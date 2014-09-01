@@ -39,7 +39,7 @@ Authors:
 <script src="../resources/testharnessreport.js"></script>
 <div id="log"></div>
 <script>
-var t = async_test("Test checks that window.onorientationchange is invoked when orientation changes", { timeout: 2000});
+var t = async_test("Test checks that window.onorientationchange is invoked when orientation changes", { timeout: 1000});
 
 t.step(function () {
   screen.unlockOrientation();
@@ -51,10 +51,7 @@ window.onorientationchange = t.step_func(function(e) {
 });
 
 setTimeout(function () {
-  t.step(function () {
-    assert_unreached("unexpected timeout callback");
-  });
-  t.done();
-}, 1000)
+  screen.lockOrientation("landscape-primary");
+}, 100)
 </script>
 
