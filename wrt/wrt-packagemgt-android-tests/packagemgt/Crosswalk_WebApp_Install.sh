@@ -29,13 +29,18 @@
 #       Xu,Yuhan <yuhanx.xu@intel.com>
 
 local_path=$(dirname $0)
+source $local_path/common
+
+if [ "${command}""x" == "x" ];then
+    exit 1
+fi
 
 #install webapp
-adb install -r $local_path/../source/packagemgt*.apk > /tmp/install.txt
+$command install -r $local_path/../source/packagemgt*.apk > /tmp/install.txt
 grep "Success" /tmp/install.txt
 
 if [ $? -eq 0 ];then
-    adb uninstall org.xwalk.packagemgt
+    $command uninstall org.xwalk.packagemgt
     exit 0
 else
     exit 1

@@ -28,12 +28,16 @@
 #Authors:
 #       Xu,Yuhan <yuhanx.xu@intel.com>
 
-
 local_path=$(dirname $0)
+source $local_path/common
+
+if [ "${command}""x" == "x" ];then
+    exit 1
+fi
 
 function checkps()
 {
-    adb shell "ps | grep "org.xwalk.extension_permission_contacts_tests"" > /tmp/check.txt
+    $command shell "ps | grep "org.xwalk.extension_permission_contacts_tests"" > /tmp/check.txt
     process_info9=`awk '{print $9}' /tmp/check.txt |tr -d [[:space:]]`
     #echo "sencod=$process_info9"
     if [ "${process_info9}" == "org.xwalk.extension_permission_contacts_tests" ];then
@@ -43,31 +47,31 @@ function checkps()
     fi
 }
 
-if [ ! -f adb install $local_path/../resources/XWalkRuntimeLib.apk ];then
+if [ ! -f $local_path/../resources/XWalkRuntimeLib.apk ];then
     echo "XWalk Runtime Library not found"
     exit 1
 fi
 
-adb install -r $local_path/../source/extension_*.apk > /tmp/install.txt
+$command install -r $local_path/../source/extension_*.apk > /tmp/install.txt
 grep "Success" /tmp/install.txt
 
 if [ $? -eq 0 ];then
     #Uninstall apk
-    adb uninstall org.xwalk.runtime.lib > /tmp/uninstall.txt
+    $command uninstall org.xwalk.runtime.lib > /tmp/uninstall.txt
     grep "Success" /tmp/uninstall.txt
 
     if [ $? -eq 0 ];then
         #launcher app by terminal
-        adb shell am start -a android.intent.action.View -n org.xwalk.extension_permission_contacts_tests/.extension_permission_contacts_testsActivity
+        $command shell am start -a android.intent.action.View -n org.xwalk.extension_permission_contacts_tests/.ExtensionPermissionContactsTestsActivity
         sleep 8
         checkps
 
         if [ $? -eq 0 ];then
-            adb uninstall org.xwalk.extension_permission_contacts_tests
-            adb install $local_path/../resources/XWalkRuntimeLib.apk
+            $command uninstall org.xwalk.extension_permission_contacts_tests
+            $command install $local_path/../resources/XWalkRuntimeLib.apk
             exit 0
         else
-            adb install $local_path/../resources/XWalkRuntimeLib.apk
+            $command install $local_path/../resources/XWalkRuntimeLib.apk
             exit 1
         fi
     else

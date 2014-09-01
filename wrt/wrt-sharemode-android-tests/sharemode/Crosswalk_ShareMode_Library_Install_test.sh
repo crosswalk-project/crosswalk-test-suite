@@ -31,6 +31,11 @@
 #        IVAN CHEN <yufeix.chen@intel.com>
 
 local_path=$(dirname $0)
+source $local_path/common
+
+if [ "${command}""x" == "x" ];then
+    exit 1
+fi
 
 CROSSWALK_APK=`cat $local_path/../Crosswalk_sharemode.conf | grep "Crosswalk_Library_Name" | cut -d "=" -f 2`
 CROSSWALK_PACKAGE=`cat $local_path/../Crosswalk_sharemode.conf | grep "Crosswalk_Library_Package" | cut -d "=" -f 2`
@@ -39,8 +44,8 @@ test -f $local_path/../resources/installer/$CROSSWALK_APK &>/dev/null
 #install
 if [ $? -eq 0 ];then
     echo "XwalkRuntimeLibrary install"
-    adb install -r $local_path/../resources/installer/$CROSSWALK_APK &>/dev/null
-    adb shell pm list packages |grep $CROSSWALK_PACKAGE &>/dev/null
+    $command install -r $local_path/../resources/installer/$CROSSWALK_APK &>/dev/null
+    $command shell pm list packages |grep $CROSSWALK_PACKAGE &>/dev/null
     if [ $? -eq 0 ];then
         echo "XwalkRuntimeLibrary install successflly"
         exit 0

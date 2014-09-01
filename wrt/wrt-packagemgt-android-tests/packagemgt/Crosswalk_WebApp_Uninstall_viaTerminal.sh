@@ -29,10 +29,15 @@
 #       Xu,Yuhan <yuhanx.xu@intel.com>
 
 local_path=$(dirname $0)
+source $local_path/common
+
+if [ "${command}""x" == "x" ];then
+    exit 1
+fi
 
 function checkdata()
 {
-    adb shell am start -a android.intent.action.View -n org.xwalk.packagemgt/.packagemgtActivity > /tmp/test.txt
+    $command shell am start -a android.intent.action.View -n org.xwalk.packagemgt/.PackagemgtActivity > /tmp/test.txt
     sleep 5
     cat /tmp/test.txt | grep "Error" 2>&1 >/dev/null
     if [ $? -eq 0 ];then
@@ -45,7 +50,7 @@ function checkdata()
 checkdata
 if [ $? -eq 0 ];then
     #install apk
-    adb install -r $local_path/../source/packagemgt*.apk > /tmp/install.txt
+    $command install -r $local_path/../source/packagemgt*.apk > /tmp/install.txt
     checkdata
     if [ $? -eq 0 ];then
        exit 1
@@ -53,7 +58,7 @@ if [ $? -eq 0 ];then
 fi
 
 #Uninstall apk
-adb uninstall org.xwalk.packagemgt
+$command uninstall org.xwalk.packagemgt
 checkdata
 
 if [ $? -eq 0 ];then

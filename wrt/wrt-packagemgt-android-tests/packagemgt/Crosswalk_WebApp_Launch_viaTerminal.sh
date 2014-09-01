@@ -29,10 +29,15 @@
 #       Xu,Yuhan <yuhanx.xu@intel.com>
 
 local_path=$(dirname $0)
+source $local_path/common
+
+if [ "${command}""x" == "x" ];then
+    exit 1
+fi
 
 function checkps()
 {
-    adb shell "ps | grep "org.xwalk.packagemgt"" > /tmp/check.txt
+    $command shell "ps | grep "org.xwalk.packagemgt"" > /tmp/check.txt
     process_info9=`awk '{print $9}' /tmp/check.txt |tr -d [[:space:]]`
     #echo "sencod=$process_info9"
     if [ "${process_info9}" == "org.xwalk.packagemgt" ];then
@@ -43,17 +48,17 @@ function checkps()
 }
 
 #install webapp
-adb install -r $local_path/../source/packagemgt*.apk > /tmp/install.txt
+$command install -r $local_path/../source/packagemgt*.apk > /tmp/install.txt
 grep "Success" /tmp/install.txt
 
 if [ $? -eq 0 ];then
     #launch app by terminal
-    adb shell am start -a android.intent.action.View -n org.xwalk.packagemgt/.packagemgtActivity
+    $command shell am start -a android.intent.action.View -n org.xwalk.packagemgt/.PackagemgtActivity
     sleep 5
     checkps
 
     if [ $? -eq 0 ];then
-        adb uninstall org.xwalk.packagemgt
+        $command uninstall org.xwalk.packagemgt
         exit 0
     else
         exit 1

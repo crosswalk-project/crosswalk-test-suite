@@ -31,22 +31,27 @@
 #        IVAN CHEN <yufeix.chen@intel.com>
 
 local_path=$(dirname $0)
-PACKAGE="com.xwalk.webappintel"
-NAME="WebApp"
+PACKAGE="org.xwalk.webappintel"
+NAME="Webappintel"
+source $local_path/common
+
+if [ "${command}""x" == "x" ];then
+    exit 1
+fi
 
 echo "WebApp Install"
-adb install -r $local_path/../resources/apk/WebApp*.apk 
-adb shell pm list packages |grep $PACKAGE &>/dev/null
+$command install -r $local_path/../resources/apk/Web*.apk 
+$command shell pm list packages |grep $PACKAGE &>/dev/null
 if [ $? -eq 0 ];then
     echo "Web App Install successflly"
     #launcher app by terminal
     echo "Web App Launch"
-    adb shell am start -a android.intent.action.View -n $PACKAGE/.${NAME}Activity
+    $command shell am start -a android.intent.action.View -n $PACKAGE/.${NAME}Activity
     sleep 8
 
     #Uninstall apk
-    adb uninstall $PACKAGE &>/dev/null
-    adb shell pm list packages |grep $CROSSWALK_PACKAGE &>/dev/null
+    $command uninstall $PACKAGE &>/dev/null
+    $command shell pm list packages |grep $CROSSWALK_PACKAGE &>/dev/null
     if [ $? -ne 0 ];then
         echo "Web App APK Uninstall successflly"
         exit 0
