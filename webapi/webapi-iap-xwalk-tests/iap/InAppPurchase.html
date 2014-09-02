@@ -40,6 +40,9 @@ Authors:
 <script>
 
 var key = 'MIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEAilsT4AI9UxDvQFhromcryUC5iF4uTO4PN3eRaiZteCeZwFlYTsl+9CzQlcp7JiNFPSgnYKM4QKsfsTRL4DP/oH5vOpSv6qA3GVlOUjKbOjDJlSjvQfXUSwuoLuUYwFZW7AwpPdD5aJytVjqVtIv3o1ZhHATkLyy4O6/kl0HXCAIUmTmfJdwnxHoqPcI0BDWR1qXf/Y+S+fItIFoqaZaCuVQQBqw9zLlt9oJVqq0C4C9fG+ZZFCAwSQi3xb9qMuF5EaPw0oJL/uKNvbcRRkPDo/ud/e3/rabHP0d0g5erwbwlRiu/R62Ds9bs5hIbPLWRGyiHj8Rw3tiIfi/3zrWIcQIDAQAB';
+var t1 = async_test("Check if InAppPurchase.queryProductDetails is valid", { timeout: 2000});
+var t2 = async_test("Check if InAppPurchase.purchase is valid", { timeout: 2000});
+var t3 = async_test("Check if InAppPurchase.restore is valid", { timeout: 2000});
 iap.init(key);
 
 [
@@ -57,34 +60,40 @@ iap.init(key);
   }, "Check if InAppPurchase." + name + " exists and type of " + type);
 });
 
-test(function () {
+t1.step(function () {
   iap.queryProductDetails(["gas", "yearly", "premium"]).then(
-  function(products) {
+  t1.step_func(function(products) {
     assert_not_equals(products, null, "queryProductDetails of InAppPurchase");
-  },
-  function(error) {
+    t1.done();
+  }),
+  t1.step_func(function(error) {
     assert_unreached("queryProductDetails request failed");
-  });
-}, "Check if InAppPurchase.queryProductDetails is valid");
+    t1.done();
+  }));
+});
 
-test(function () {
+t2.step(function () {
   iap.buy("gas").then(
-  function(transaction) {
+  t2.step_func(function(transaction) {
     assert_not_equals(transaction, null, "purchase of InAppPurchase");
-  },
-  function(error) {
+    t2.done();
+  }),
+  t2.step_func(function(error) {
     assert_unreached("purchase request failed");
-  });
-}, "Check if InAppPurchase.purchase is valid");
+    t2.done();
+  }));
+});
 
-test(function () {
+t3.step(function () {
   iap.restore().then(
-  function(transactions) {
+  t3.step_func(function(transactions) {
     assert_not_equals(transactions.length, 0, "restore of InAppPurchase");
-  },
-  function(error) {
+    t3.done();
+  }),
+  t3.step_func(function(error) {
     assert_unreached("restore request failed");
-  });
-}, "Check if InAppPurchase.restore is valid");
+    t3.done();
+  }));
+});
 
 </script>
