@@ -40,30 +40,42 @@ Authors:
     <script src="../../js/thirdparty/jquery.mobile.js"></script>
     <script src="../../js/tests.js"></script>
     <script src="js/main.js"></script>
+    <style>
+      #view {
+        border: 1px solid black;
+        margin: 15px;
+        height: 100px;
+        text-align: left;
+      }
+    </style>
   </head>
   <body>
     <div data-role="header">
       <h1 id="main_page_title"></h1>
     </div>
-    <div data-role="content" class="content">
-      <a href="javascript: powerOff()" data-role="button">Turn OFF NFC</a>
-      <a href="javascript: powerOn()" data-role="button">Turn ON NFC</a>
+    <div data-role="content" class="content">  
+      <div id="view">
+        <div id='power'></div>
+        <div id='polling'></div>
+        <div id='tag'></div>
+        <div id='peer'></div>
+        <div id='eventLog'></div>
+      </div>
+      <div class="ui-grid-a">
+        <div class="ui-block-a">  
+          <button type="button" id="off" onclick="powerOff()">Turn OFF NFC</button>
+        </div>
+        <div class="ui-block-b">
+          <button type="button" id="on" onclick ="powerOn()">Turn ON NFC</button>
+        </div>
+      </div>
       <div id='tag_methods'>
-        <p>click "Tap to Read NDEF", then move NFC tag close to the device so it will be detected.</p>
-        <a href="javascript: readNDEF()" data-role="button">Tap to Read NDEF</a>
-        <p>click "Tap to Write text NDEF", then move NFC tag close to the device so it will be detected.</p>
-        <a href="javascript: writeTextNDEF()" data-role="button">Tap to Write text NDEF</a>
-        <p>click "Tap to Write text NDEF", then move NFC tag close to the device so it will be detected.</p>
-        <a href="javascript: writeURINDEF()" data-role="button">Tap to Write URI NDEF</a>
-        <p>click "Tap to Write text NDEF", then move NFC tag close to the device so it wil be detected.</p>
-        <a href="javascript: writeMediaNDEF()" data-role="button">Tap to Write Media NDEF</a>
+        <button type="button" id="write" onclick="writeTextNDEF()">Tap to Write</button>
+        <button type="button" id="read" onclick="readNDEF()">Tap to Read</button>
       </div>
       <div id='peer_methods'>
-        <p>click "Send URI NDEF to peer", then move other NFC device close to the device so it will be detected.</p>
-        <a href="javascript: sendURINDEF()" data-role="button">Send URI NDEF to peer</a>
+        <button type="button" id="send" onclick="sendURINDEF()">Send URI NDEF to peer</button>
       </div>
-      <div id='log'></div>
-      <div id='eventLog'></div>
     </div>
     <div data-role="footer" data-position="fixed">
     </div>
@@ -71,10 +83,22 @@ Authors:
       <font class="fontSize">
         <p>Test Purpose: </p>
         <p>Verifies the functionality of NFC works well.</p>
-        <p>Test Note: </p>
-        <p>Please confirm NFC is truned on before doing read or wirte operation.</p>
+        <p>Test Steps: </p>
+        <ol>
+          <li>Click "Turn OFF NFC".</li>
+          <li>Click "Turn ON NFC".</li>
+          <li>Click "Tap to Write", then tap NFC tag to the NFC adapter.</li>
+          <li>Click "Tap to Read", then tap NFC tag to the NFC adapter.</li>
+          <li>Click "Send URI NDEF to peer", then tap other NFC device to the NFC adapter.</li>
+        </ol>
         <p>Expected Result: </p>
-        <p>Test passes if all sub-tests prompt succeeded.</p>
+        <ol>
+          <li>Print "Power off succeeded"</li>
+          <li>Print "Power on succeeded"</li>
+          <li>Print "Write nfc tag succeeded"</li>
+          <li>Print "Read nfc tag succeeded"</li>
+          <li>Print "Send URI NDEF succeeded"</li>
+        </ol>
       </font>
     </div>
   </body>
