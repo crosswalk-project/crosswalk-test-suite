@@ -66,6 +66,74 @@
           </spec>
         </specs>
       </testcase>
+      <testcase purpose="Check if widget have valid signature, the widget can be install." type="Functional positive" status="designed" component="Web/Runtime/WebAppWidget" execution_type="auto" priority="P1" id="sp-widget-valid-signature">
+        <description>
+          <steps>
+            <step order="1">
+              <step_desc>Install sp-widget-valid-signature.wgt.</step_desc>
+              <expected>Widget application can be installed.</expected>
+            </step>
+          </steps>
+          <test_script_entry test_script_expected_result="0">/opt/usr/media/tct/opt/tct-appwgt-wrt-tests/scripts/wrt_appwgt_install_valid_signature.sh</test_script_entry>
+        </description>
+        <specs>
+          <spec>
+            <spec_assertion element_type="attribute" element_name="N/A" interface="0640" specification="Widget Signature" section="Web AppWidget" category="Tizen WRT Core Specifications"></spec_assertion>
+            <spec_statement>When Web Application is unstalled, instances of its Web AppWidget on AppWidget Viewer SHOULD be all removed</spec_statement>
+          </spec>
+        </specs>
+      </testcase>
+      <testcase purpose="Check if widget only contained author signature, the widget can be install." type="Functional positive" status="designed" component="Web/Runtime/WebAppWidget" execution_type="auto" priority="P1" id="sp-widget-only-author-signature">
+        <description>
+          <steps>
+            <step order="1">
+              <step_desc>Install sp-widget-only-author-signature.wgt.</step_desc>
+              <expected>Widget application can be installed.</expected>
+            </step>
+          </steps>
+          <test_script_entry test_script_expected_result="0">/opt/usr/media/tct/opt/tct-appwgt-wrt-tests/scripts/wrt_appwgt_install_only_author_signature.sh</test_script_entry>
+        </description>
+        <specs>
+          <spec>
+            <spec_assertion element_type="attribute" element_name="N/A" interface="0640" specification="Widget Signature" section="Web AppWidget" category="Tizen WRT Core Specifications"></spec_assertion>
+            <spec_statement>When Web Application is unstalled, instances of its Web AppWidget on AppWidget Viewer SHOULD be all removed</spec_statement>
+          </spec>
+        </specs>
+      </testcase>
+      <testcase purpose="Check if widget does not included signature, the widget can be install." type="Functional positive" status="designed" component="Web/Runtime/WebAppWidget" execution_type="auto" priority="P1" id="sp-widget-no-signature">
+        <description>
+          <steps>
+            <step order="1">
+              <step_desc>Install sp-widget-no-signature.wgt.</step_desc>
+              <expected>Widget application can be installed.</expected>
+            </step>
+          </steps>
+          <test_script_entry test_script_expected_result="0">/opt/usr/media/tct/opt/tct-appwgt-wrt-tests/scripts/wrt_appwgt_install_no_signature.sh</test_script_entry>
+        </description>
+        <specs>
+          <spec>
+            <spec_assertion element_type="attribute" element_name="N/A" interface="0630" specification="Widget Signature" section="Web AppWidget" category="Tizen WRT Core Specifications"></spec_assertion>
+            <spec_statement>When Web Application is unstalled, instances of its Web AppWidget on AppWidget Viewer SHOULD be all removed</spec_statement>
+          </spec>
+        </specs>
+      </testcase>
+      <testcase purpose="Check if widget have invalid signature, the widget can not be install." type="Functional positive" status="designed" component="Web/Runtime/WebAppWidget" execution_type="auto" priority="P1" id="sp-widget-invalid-signature">
+        <description>
+          <steps>
+            <step order="1">
+              <step_desc>Install sp-widget-invalid-signature.wgt.</step_desc>
+              <expected>Widget application can not be installed.</expected>
+            </step>
+          </steps>
+          <test_script_entry test_script_expected_result="0">/opt/usr/media/tct/opt/tct-appwgt-wrt-tests/scripts/wrt_appwgt_installfail.sh sp-widget-invalid-signature.wgt</test_script_entry>
+        </description>
+        <specs>
+          <spec>
+            <spec_assertion element_type="attribute" element_name="N/A" interface="0620" specification="Widget Signature" section="Web AppWidget" category="Tizen WRT Core Specifications"></spec_assertion>
+            <spec_statement>When Web Application is unstalled, instances of its Web AppWidget on AppWidget Viewer SHOULD be all removed</spec_statement>
+          </spec>
+        </specs>
+      </testcase>
     </set>
   </suite>
 </test_definition>
