@@ -32,26 +32,21 @@ Authors:
 -->
 
 <meta charset="utf-8">
-<title>Screen Test: Window_onorientationchange_basic</title>
+<title>Screen Test: ScreenOrientation_lock_orientation_invalid</title>
 <link rel="author" title="Intel" href="http://www.intel.com">
 <link rel="help" href="http://www.w3.org/TR/2012/WD-screen-orientation-20120522/#extensions-to-the-screen-interface" />
 <script src="../resources/testharness.js"></script>
 <script src="../resources/testharnessreport.js"></script>
 <div id="log"></div>
 <script>
-var t = async_test("Test checks that window.onorientationchange is invoked when orientation changes", { timeout: 1000});
+var t = async_test("Test checks that screen.orientation.lock(invalid) invoke error callback", { timeout: 2000});
 
 t.step(function () {
-  screen.unlockOrientation();
-  screen.lockOrientation("portrait-primary");
+  var p = screen.orientation.lock("invalid-landsapce");
+  p.then(t.unreached_func("Unexpected success callback"), t.step_func(function(e) {
+    t.done();
+  }));
 });
 
-window.onorientationchange = t.step_func(function(e) {
-  t.done();
-});
-
-setTimeout(function () {
-  screen.lockOrientation("landscape-primary");
-}, 100)
 </script>
 
