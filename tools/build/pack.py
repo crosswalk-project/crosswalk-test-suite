@@ -451,6 +451,7 @@ def packAPK(build_json=None, app_src=None, app_dest=None, app_name=None):
     cmd_opt = ""
     url_opt = ""
     mode_opt = ""
+    icon_opt = ""
 
     tmp_opt = safelyGetValue(build_json, "apk-ext-opt")
     if tmp_opt:
@@ -474,6 +475,14 @@ def packAPK(build_json=None, app_src=None, app_dest=None, app_name=None):
     else:
         mode_opt = "--mode=%s" % BUILD_PARAMETERS.pkgmode
 
+    tmp_opt = safelyGetValue(build_json, "apk-icon-opt")
+    if tmp_opt:
+        icon_opt = "--icon=%s" % tmp_opt
+    elif tmp_opt == "":
+        icon_opt = ""
+    else:
+        icon_opt = "--icon=%s/icon.png" % app_src
+
     if safelyGetValue(build_json, "apk-type") == "MANIFEST":
         pack_cmd = "python make_apk.py --package=org.xwalk.%s --manifest=%s/manifest.json  %s --arch=%s %s %s" % (
             app_name, app_src, mode_opt, BUILD_PARAMETERS.pkgarch, ext_opt, cmd_opt)
@@ -486,7 +495,7 @@ def packAPK(build_json=None, app_src=None, app_dest=None, app_name=None):
             app_name, app_name, mode_opt, BUILD_PARAMETERS.pkgarch, ext_opt, cmd_opt, url_opt)
     else:
         pack_cmd = "python make_apk.py --package=org.xwalk.%s --name=%s --app-root=%s --app-local-path=index.html --icon=%s/icon.png %s --arch=%s %s %s" % (
-            app_name, app_name, app_src, app_src, mode_opt, BUILD_PARAMETERS.pkgarch, ext_opt, cmd_opt)
+            app_name, app_name, app_src, icon_opt, mode_opt, BUILD_PARAMETERS.pkgarch, ext_opt, cmd_opt)
 
     orig_dir = os.getcwd()
     os.chdir(os.path.join(BUILD_ROOT, "crosswalk"))
