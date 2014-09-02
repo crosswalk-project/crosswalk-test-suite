@@ -494,7 +494,7 @@ def packAPK(build_json=None, app_src=None, app_dest=None, app_name=None):
         pack_cmd = "python make_apk.py --package=org.xwalk.%s --name=%s %s --arch=%s %s %s %s" % (
             app_name, app_name, mode_opt, BUILD_PARAMETERS.pkgarch, ext_opt, cmd_opt, url_opt)
     else:
-        pack_cmd = "python make_apk.py --package=org.xwalk.%s --name=%s --app-root=%s --app-local-path=index.html --icon=%s/icon.png %s --arch=%s %s %s" % (
+        pack_cmd = "python make_apk.py --package=org.xwalk.%s --name=%s --app-root=%s --app-local-path=index.html %s %s --arch=%s %s %s" % (
             app_name, app_name, app_src, icon_opt, mode_opt, BUILD_PARAMETERS.pkgarch, ext_opt, cmd_opt)
 
     orig_dir = os.getcwd()
