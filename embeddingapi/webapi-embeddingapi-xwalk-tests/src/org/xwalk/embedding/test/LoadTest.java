@@ -22,9 +22,11 @@ public class LoadTest extends XWalkViewTestBase {
     public void testLoadUrl()
     {
         try {
-            String url = "file:///android_asset/p2bar.html";
-            loadUrlSync(url,"Hello");
-            assertEquals("about:blank", getUrlOnUiThread());
+            String filename = "index.html";
+            String expectedLocalTitle = "Crosswalk Sample Application";
+            String content = getFileContent(filename);
+            loadUrlSync(filename, content);
+            assertEquals(expectedLocalTitle, getTitleOnUiThread());
         } catch (Exception e) {
             e.printStackTrace();
             assertTrue(false);
@@ -38,7 +40,8 @@ public class LoadTest extends XWalkViewTestBase {
             String path = "file:///android_asset/";
             String name = "manifest.json";
             String url = "file:///android_asset/index.html";
-            assertEquals(url, getUrlFromManifestOnUiThread(path,name));
+            loadFromManifestSync(path, name);
+            assertEquals(url, getUrlOnUiThread());
         } catch (Exception e) {
             e.printStackTrace();
             assertTrue(false);

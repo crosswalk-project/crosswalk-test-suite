@@ -280,24 +280,6 @@ public class XWalkViewTestBase extends ActivityInstrumentationTestCase2<MainActi
         });
     }
 
-
-    protected String getUrlFromManifestOnUiThread(final String path1,final String path2) throws Exception {
-        return runTestOnUiThreadAndGetResult(new Callable<String>() {
-            @Override
-            public String call() throws Exception {
-                String manifestContent = "";
-                try {
-                    manifestContent = getAssetsFileContent(mainActivity.getAssets(), path2);
-                } catch (IOException e) {
-                    e.printStackTrace();
-                    return "";
-                }
-                mXWalkView.loadAppFromManifest(path1, manifestContent);
-                return mXWalkView.getUrl();
-            }
-        });
-    }
-
     private String getAssetsFileContent(AssetManager assetManager, String fileName)
             throws IOException {
         String result = "";
@@ -448,7 +430,6 @@ public class XWalkViewTestBase extends ActivityInstrumentationTestCase2<MainActi
         CallbackHelper pageFinishedHelper = mTestHelperBridge.getOnPageFinishedHelper();
         int currentCallCount = pageFinishedHelper.getCallCount();
         loadUrlAsync(url);
-
         pageFinishedHelper.waitForCallback(currentCallCount, 1, WAIT_TIMEOUT_SECONDS,
                 TimeUnit.SECONDS);
     }
@@ -459,6 +440,29 @@ public class XWalkViewTestBase extends ActivityInstrumentationTestCase2<MainActi
         loadUrlAsync(url, content);
         pageFinishedHelper.waitForCallback(currentCallCount, 1, WAIT_TIMEOUT_SECONDS,
                 TimeUnit.SECONDS);
+    }
+
+    protected void loadFromManifestSync(final String path, final String name) throws Exception {
+        CallbackHelper pageFinishedHelper = mTestHelperBridge.getOnPageFinishedHelper();
+        int currentCallCount = pageFinishedHelper.getCallCount();
+        loadFromManifestAsync(path, name);
+        pageFinishedHelper.waitForCallback(currentCallCount, 1, WAIT_TIMEOUT_SECONDS,
+                TimeUnit.SECONDS);
+    }
+    
+    protected void loadFromManifestAsync(final String path, final String name) throws Exception {
+        getInstrumentation().runOnMainSync(new Runnable() {
+            @Override
+            public void run() {
+                String manifestContent = "";
+                try {
+                    manifestContent = getAssetsFileContent(mainActivity.getAssets(), name);
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
+                mXWalkView.loadAppFromManifest(path, manifestContent);
+            }
+        });
     }
 
     protected void loadAssetFile(String fileName) throws Exception {
