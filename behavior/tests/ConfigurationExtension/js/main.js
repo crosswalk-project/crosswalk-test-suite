@@ -43,7 +43,8 @@ var allId=new Array('wrt2apc001',
                     'wrt2skd041',
                     'wrt2ske042',
                     'wrt2sed028',
-                    'wrt2see029');
+                    'wrt2see029',
+                    'wrt2apc002');
 
 var installedId = new Array();
 var resultXML, tests;
