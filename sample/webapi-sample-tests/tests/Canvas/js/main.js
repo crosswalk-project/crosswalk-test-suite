@@ -34,14 +34,14 @@ function reset() {
   $("<canvas id='myCanvas' width='300' height='240' style='border:1px solid #c3c3c3; margin-top: 19px;'>Your browser does not support the canvas element!</canvas>").appendTo($("#title"));
   cxt = document.getElementById("myCanvas").getContext("2d");
   img=new Image();
-  img.src="../../res/images/w3c/cat.png";
+  img.src="../../res/images/ryb-100x100.png";
   cxt.drawImage(img,0,0);
 }
 
 function rotate_90() {
   reset();
   cxt.clearRect(0,0,500,500);
-  cxt.translate(99,0); 
+  cxt.translate(100,0); 
   cxt.rotate(Math.PI/2); 
   cxt.drawImage(img,0,0);
 }
@@ -49,7 +49,7 @@ function rotate_90() {
 function rotate_180() {
   reset();
   cxt.clearRect(0,0,500,500);
-  cxt.translate(98,99); 
+  cxt.translate(100,100); 
   cxt.rotate(Math.PI); 
   cxt.drawImage(img,0,0);
 }
@@ -57,7 +57,7 @@ function rotate_180() {
 function rotate_270() {
   reset();
   cxt.clearRect(0,0,500,500);
-  cxt.translate(0,98); 
+  cxt.translate(0,100); 
   cxt.rotate(Math.PI/2*3); 
   cxt.drawImage(img,0,0);
 }
