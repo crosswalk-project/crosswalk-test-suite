@@ -33,14 +33,14 @@ $(document).ready( function() {
   $("#b1").click( function() {
     screen.lockOrientation("portrait-primary");
   });
+  $("#b2").click( function() {
+    screen.lockOrientation("portrait-secondary");
+  });
   $("#b3").click( function() {
     screen.lockOrientation("landscape-primary");
   });
   $("#b4").click( function() {
     screen.lockOrientation("landscape-secondary");
-  });
-  $("#b2").click( function() {
-    screen.lockOrientation("portrait-secondary");
   });
   $("#b5").click( function() {
     screen.unlockOrientation();
