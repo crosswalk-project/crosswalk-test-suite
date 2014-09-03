@@ -5,13 +5,10 @@
 package org.xwalk.embedding.test;
 
 import org.xwalk.core.XWalkResourceClient;
-import org.xwalk.core.internal.XWalkClient;
 import org.xwalk.embedding.MainActivity;
 import org.xwalk.embedding.base.XWalkViewTestBase;
 
-import android.annotation.SuppressLint;
 import android.test.suitebuilder.annotation.SmallTest;
-import android.webkit.ValueCallback;
 
 public class XWalkResourceClientTest extends XWalkViewTestBase {
 
@@ -129,34 +126,6 @@ public class XWalkResourceClientTest extends XWalkViewTestBase {
                 }
             });
 
-        } catch (Exception e) {
-            e.printStackTrace();
-            assertTrue(false);
-        }
-    }
-
-    @SmallTest
-    public void testOnReceivedSslError() {
-        try {
-            loadUrlSync("about:blank");
-            getInstrumentation().runOnMainSync(new Runnable() {
-
-                @SuppressLint("NewApi")
-                @Override
-                public void run() {
-                    XWalkClient client = new XWalkClient(mXWalkView);
-                    ValueCallback<Boolean> callback =
-                            new ValueCallback<Boolean>() {
-
-                        @Override
-                        public void onReceiveValue(Boolean arg0) {
-
-                        }
-                    };
-                    client.onReceivedSslError(mXWalkView, callback, null);
-                }
-            });
-            assertTrue(true);
         } catch (Exception e) {
             e.printStackTrace();
             assertTrue(false);
