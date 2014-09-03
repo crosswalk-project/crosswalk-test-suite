@@ -40,6 +40,7 @@ Authors:
     <title>CSP Test: csp_base-uri_cross-orign</title>
     <link rel="author" title="Intel" href="http://www.intel.com"/>
     <link rel="help" href="http://w3c.github.io/webappsec/specs/content-security-policy/csp-specification.dev.html#base-uri"/>
+    <link rel="match" href="reference/csp_base-uri_asterisk-ref.html"/>
     <meta name="flags" content=""/>
     <meta name="assert" content="base-uri http://www.w3.org"/>
     <meta charset="utf-8"/>

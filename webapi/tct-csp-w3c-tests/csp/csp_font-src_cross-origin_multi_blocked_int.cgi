@@ -40,6 +40,7 @@ Authors:
     <title>CSP Test: csp_font-src_cross-origin_multi_blocked_int</title>
     <link rel="author" title="Intel" href="http://www.intel.com"/>
     <link rel="help" href="http://www.w3.org/TR/2012/CR-CSP-20121115/#font-src"/>
+    <link rel="match" href="reference/csp_font-src_cross-origin_multi_blocked-ref.html"/>
     <meta name="flags" content=""/>
     <meta name="assert" content="font-src http://127.0.0.1:8081 http://tizen.org; style-src 'unsafe-inline'"/>
     <meta charset="utf-8"/>

@@ -40,6 +40,7 @@ Authors:
     <title>CSP Test: csp_plugin-types_allowed</title>
     <link rel="author" title="Intel" href="http://www.intel.com"/>
     <link rel="help" href="http://w3c.github.io/webappsec/specs/content-security-policy/csp-specification.dev.html#plugin-types"/>
+    <link rel="match" href="reference/csp_base-uri_asterisk-ref.html"/>
     <meta name="flags" content=""/>
     <meta name="assert" content="object-src 'self'"/>
     <meta charset="utf-8"/>

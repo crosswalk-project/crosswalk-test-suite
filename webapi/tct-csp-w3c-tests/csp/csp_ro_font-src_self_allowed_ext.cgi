@@ -40,6 +40,7 @@ Authors:
     <title>CSP Test: csp_ro_font-src_self_allowed_ext</title>
     <link rel="author" title="Intel" href="http://www.intel.com"/>
     <link rel="help" href="http://www.w3.org/TR/2012/CR-CSP-20121115/#font-src"/>
+    <link rel="match" href="reference/csp_default-src_self_font_allowed-ref.html"/>
     <meta name="flags" content=""/>
     <meta name="assert" content="font-src 'self'"/>
     <meta charset="utf-8"/>
