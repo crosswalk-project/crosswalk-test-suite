@@ -29,40 +29,42 @@ Authors:
         Tan, Shiyou <shiyoux.tan@intel.com>
 
 -->
-<html>
-  <head>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, height=device-height"/>
-    <title>DragandDrop</title>
-      <style>
-        img {
-            width: 300px;
-            height: 100px;
-            border: 1px blue solid;
-        }
-        .button {
-            background: #eee;
-            border: 1px solid #ccc;
-            border-radius: 5px;
-            font-weight: bold;
-            font-size: 15px;
-            padding: 8px 2px;
-            width: 100%;
-        }
-      </style>
-  </head>
-  <body>
-    <div>
-      <p>1) Long press the blue rectangle</p>
-      <p>2) Choose "Drag" in the popup menu</p>
-      <p id="content"><img id="dragImage" src="resource/blue.png" /></p>
-      <p>1) Drag and drop the blue rectangle to below white box</p>
-      <p><img id="dropImage" webkitdropzone="copy file:image/png"></img></p>
-      <p>
-        <button onclick="javascript:document.location.reload()" class="button">Retest</button><br>
-        <button id="exit" class="button">Complete&nbsp;Test</button>
-      </p>
-    </div>
-    <script type="text/javascript" src="js/main.js"></script>
-  </body>
-</html>
+
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, height=device-height">
+<title>DragandDrop</title>
+<style>
+  img {
+    border: 1px blue solid;
+    height: 100px;
+    width:  100px;
+  }
+
+  .button {
+    background:    #eee;
+    border:        1px solid #ccc;
+    border-radius: 5px;
+    font-size:     15px;
+    font-weight:   bold;
+    padding:       8px 2px;
+    width:         100%;
+  }
+</style>
+
+<div>
+  <p>1) Long press the blue square</p>
+  <p>2) Choose "Drag" in the popup menu</p>
+  <p id="content">
+    <img id="dragImage" src="resource/blue-100x100.png">
+  </p>
+  <p>3) Drop the blue square below</p>
+  <p>
+    <img id="dropImage" webkitdropzone="copy file:image/png">
+  </p>
+  <p>
+    <button onclick="javascript:document.location.reload()" class="button">Retest</button><br>
+    <button id="exit" class="button">Complete Test</button>
+  </p>
+</div>
+<script src="js/main.js"></script>
+
