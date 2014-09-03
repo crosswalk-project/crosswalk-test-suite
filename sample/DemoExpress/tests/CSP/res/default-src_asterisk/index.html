@@ -37,8 +37,8 @@ Authors:
     <meta name="viewport" content="initial-scale=1.0, maximum-scale=1.0, width=device-width" />
     <link rel="stylesheet" type="text/css" href="../../../../css/jquery.mobile.css" />
     <link rel="stylesheet" type="text/css" href="../../../../css/main.css" />
-    <script src="../../../../js/thirdparty/jquery.js"></script>
-    <script src="../../../../js/thirdparty/jquery.mobile.js"></script>
+    <script src="../../../../js/jquery/jquery.js"></script>
+    <script src="../../../../js/jquery/jquery.mobile.js"></script>
     <script src="../../../../js/tests.js"></script>
     <script src="support/csp.js"></script>
     <meta http-equiv="Content-Security-Policy" content="default-src * 'unsafe-inline'">
@@ -61,7 +61,7 @@ Authors:
     <input type="hidden" id="wgt_name" value="default-src-asterisk"/>
     <h4>This sample demonstrates the default-src-asterisk of CSP is supported if there is a green "PASS".</h4>
     <div id="script"></div>
-    <script language="javascript" type="text/javascript">
+    <script>
         if(typeof X == "number") {
           document.getElementById("script").innerHTML = "<span style='color:green'>PASS</span>";
         }else {
