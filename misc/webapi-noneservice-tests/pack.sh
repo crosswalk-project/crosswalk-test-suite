@@ -101,6 +101,8 @@ cp -a $BUILD_ROOT/apps $BUILD_DEST/opt/$name
 for suite in `ls $BUILD_ROOT |grep "\-tests" |grep -v spec$`;do
     cp $BUILD_ROOT/$suite/tests.xml  $BUILD_DEST/opt/$name/$suite.tests.xml
     cp $BUILD_ROOT/$suite/tests.full.xml  $BUILD_DEST/opt/$name/$suite.tests.full.xml
+    sed -i "s/<suite/<suite widget=\"$name\"/g" $BUILD_DEST/opt/$name/$suite.tests.xml
+    sed -i "s/<suite/<suite widget=\"$name\"/g" $BUILD_DEST/opt/$name/$suite.tests.full.xml
     rm -rf $BUILD_DEST/opt/$suite
 done
 
