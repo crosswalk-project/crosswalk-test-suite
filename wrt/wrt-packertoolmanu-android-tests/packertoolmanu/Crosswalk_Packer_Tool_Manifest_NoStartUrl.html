@@ -26,14 +26,14 @@ NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE,
 EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
 Authors:
-    Xu, Kang <kangx.xu@intel.com>
+    Xu,Yuhan <yuhanx.xu@intel.com>
 
 -->
 
 <html>
   <head>
     <meta charset='utf-8'>
-    <title>Crosswalk_WebApp_openfile_docx</title>
+    <title>Crosswalk_Packer_Tool_Manifest_NoStartUrl</title>
     <link rel="author" title="Intel" href="http://www.intel.com">
   </head>
   <body>
@@ -41,19 +41,13 @@ Authors:
       <strong>Test steps:</strong>
     </p>
     <ol>
-      <li>Push a file name "test.docx" to device directory "/mnt/sdcard1/"</li>
-      <li>Install app by typing "adb install web_openfile_thirdpart_tests.apk".</li>
-      <li>Launch the app.</li>
-      <li>Click the "Open docx file in the third part app" link.</li>
+      <li>Package an web app with manifest file, but there isn't "start_url" field in the manifest.json, command like: python make_apk.py --package=[package] --manifest=/path/to/manifest.json</li>
     </ol>
     <p>
       <strong>Expected Output:</strong>
     </p>
     <ol>
-      <li>Push data to device successfully.</li>
-      <li>The app install successfully.</li>
-      <li>The app launch successfully.</li>
-      <li>File can be opened successfully.</li>
+      <li>Packaging failed. The error info like: there is no app launch path defined in manifest.json.</li>
     </ol>
   </body>
 </html>

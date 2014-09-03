@@ -8,18 +8,15 @@ testapp/manifest_app_launchpathindexblank_tests/Makefile \
 testapp/manifest_app_launchpathindexchinese_tests/Makefile \
 testapp/manifest_app_launchpathnoindex_tests/Makefile \
 testapp/manifest_desc_long_tests/Makefile \
-testapp/manifest_extend_description_chinese/Makefile \
-testapp/manifest_extend_description_null/Makefile \
-testapp/manifest_extend_description_specific/Makefile \
+testapp/manifest_desc_chinese_tests/Makefile \
+testapp/manifest_desc_null_tests/Makefile \
 testapp/manifest_extend_html_namedhttp/Makefile \
 testapp/manifest_icon_69pixel_tests/Makefile \
 testapp/manifest_icon_namedasterisk_tests/Makefile \
-testapp/manifest_icon_nofiles_tests/Makefile \
 testapp/manifest_icon_nofile_tests/Makefile \
 testapp/manifest_icon_null_tests/Makefile \
 testapp/manifest_icon_threeicon_tests/Makefile \
 testapp/manifest_icon_twoicon_tests/Makefile \
-testapp/manifest_icon_valueerror_tests/Makefile \
 testapp/manifest_icon_valuenull_tests/Makefile \
 testapp/manifest_minimal_manifest_tests/Makefile \
 testapp/manifest_negative_nullfields_app/Makefile \
@@ -30,6 +27,7 @@ testapp/manifest_negative_nullvalue_name/Makefile \
 testapp/manifest_negative_nullvalue_version/Makefile \
 testapp/splashscreen_launchscreen_field_tests/Makefile \
 testapp/manifest_desc_specific_tests/Makefile \
+testapp/manifest_name_nullvalue_tests/Makefile \
 testapp/manifest_icon_117pixel_tests/Makefile \
 resources/Makefile webrunner/Makefile])
 AC_OUTPUT

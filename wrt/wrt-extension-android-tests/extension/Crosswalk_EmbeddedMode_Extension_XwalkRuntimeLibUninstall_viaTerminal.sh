@@ -52,6 +52,12 @@ if [ ! -f $local_path/../resources/XWalkRuntimeLib.apk ];then
     exit 1
 fi
 
+$command install -r $local_path/../resources/XWalkRuntimeLib.apk > /tmp/install.txt
+grep "Success" /tmp/install.txt
+if [ $? -ne 0 ];then
+    exit 1
+fi
+
 $command install -r $local_path/../source/extension_*.apk > /tmp/install.txt
 grep "Success" /tmp/install.txt
 
@@ -68,10 +74,10 @@ if [ $? -eq 0 ];then
 
         if [ $? -eq 0 ];then
             $command uninstall org.xwalk.extension_permission_contacts_tests
-            $command install $local_path/../resources/XWalkRuntimeLib.apk
+            $command install -r $local_path/../resources/XWalkRuntimeLib.apk
             exit 0
         else
-            $command install $local_path/../resources/XWalkRuntimeLib.apk
+            $command install -r $local_path/../resources/XWalkRuntimeLib.apk
             exit 1
         fi
     else
