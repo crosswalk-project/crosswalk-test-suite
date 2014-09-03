@@ -47,29 +47,4 @@ public class MultiXWalkViewActivity extends XWalkBaseActivity {
         mXWalkView2.load("http://www.baidu.com", null);
     }
 
-    @Override
-    public void onPause() {
-        super.onPause();
-        if (mXWalkView2 != null) {
-            mXWalkView2.onHide();
-            mXWalkView2.pauseTimers();
-        }
-    }
-
-    @Override
-    public void onResume() {
-        super.onResume();
-        if (mXWalkView2 != null) {
-            mXWalkView2.onShow();
-            mXWalkView2.resumeTimers();
-        }
-    }
-
-    @Override
-    public void onDestroy() {
-        super.onDestroy();
-        if (mXWalkView2 != null) {
-            mXWalkView2.onDestroy();
-        }
-    }
 }
