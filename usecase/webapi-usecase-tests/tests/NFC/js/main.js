@@ -33,11 +33,24 @@ Authors:
 var tag = null;
 var peer = null;
 
-function addMessage(obj) {
-    if(typeof obj === 'string')
-        document.getElementById('log').innerHTML = obj;
-    else
-        document.getElementById('eventLog').innerHTML = "Received event: " + obj.type;
+$(document).ready(function () {
+    if(navigator.nfc.powered) {
+        $("#on").button("disable");
+        $("#off").button("enable");
+        $("#write").button("enable");
+        $("#read").button("enable");
+        $("#send").button("enable");
+    } else {
+        $("#off").button=("disable");
+        $("#on").button=("enable");
+        $("#write").button("disable");
+        $("#read").button("disable");
+        $("#send").button("disable");
+    }
+});
+
+function addMessage(obj, id) {
+    document.getElementById(id).innerHTML = obj;
 }
 
 var events = [
@@ -51,14 +64,6 @@ var events = [
     'peerlost'
 ];
 
-function handleEvent(e) {
-    addMessage(e);
-}
-
-events.forEach(function(event) {
-    navigator.nfc.addEventListener(event, handleEvent);
-});
-
 navigator.nfc.addEventListener('tagfound', tagFound);
 navigator.nfc.addEventListener('taglost', tagLost);
 navigator.nfc.addEventListener('peerfound', peerFound);
@@ -66,81 +71,98 @@ navigator.nfc.addEventListener('peerlost', peerLost);
 
 function tagFound(e) {
     tag = e.tag;
-    document.getElementById('tag_methods').style.display = 'block';
+    addMessage("Tag found",'tag');
 }
 
 function tagLost(e) {
     tag = null;
-    document.getElementById('tag_methods').style.display = 'none';
+    addMessage("Tag lost", 'tag');
 }
 
 function peerFound(e) {
     peer = e.peer;
     peer.addEventListener('messageread', onMessageRead);
-    document.getElementById('peer_methods').style.display = 'block';
+    addMessage("Found peer device", 'peer');
 }
 
 function peerLost(e) {
     peer = null;
-    document.getElementById('peer_methods').style.display = 'none';
+    addMessage("Peer device lost", 'peer');
 }
 
 function onMessageRead(e) {
-    addMessage("Received message: " + JSON.stringify(e.message));
+    addMessage("Received message: " + JSON.stringify(e.message, 'eventLog'));
 }
 
 function readNDEF() {
+    setEnvironment();
+    addMessage("Waiting to read nfc tag...", 'eventLog');
     tag.readNDEF().then(function(record) {
-    addMessage("readNDEF succeeded: " + JSON.stringify(record));},
-function(){ addMessage("Cannot read tag"); });
+    addMessage("Read tag succeeded: " + JSON.stringify(record), 'eventLog'); },
+function(){ addMessage("Read tag failed", 'eventLog'); });
 }
 
 function writeTextNDEF() {
-    var text = new NDEFRecordText("hello world", "en-US", "UTF-8");
-    tag.writeNDEF(new NDEFMessage([text])).then(function(){ addMessage("writeTextNDEF Succeeded"); },
-function(){ addMessage("writeTextNDEF Failed"); });
-}
-
-function writeURINDEF() {
-    var uri = new NDEFRecordURI("http://www.intel.com");
-    tag.writeNDEF(new NDEFMessage([uri])).then(function(){ addMessage("writeURINDEF Succeeded"); },
-function(){ addMessage("writeURINDEF Failed"); });
+    setEnvironment();
+    addMessage("Waiting to write nfc tag...", 'eventLog');
+    var text = new NDEFRecordText("Hello World!", "en-US", "UTF-8");
+    tag.writeNDEF(new NDEFMessage([text])).then(function(){addMessage("Write tag succeeded", 'eventLog'); },
+function(){ addMessage("Write tag failed", 'eventLog'); });
 }
 
 function sendURINDEF() {
-    var uri = new NDEFRecordURI("http://www.google.com");
-    peer.sendNDEF(new NDEFMessage([uri])).then(function(){ addMessage("sendURINDEF Succeeded"); },
-function(){ addMessage("sendURINDEF Failed"); });
-}
-
-function writeMediaNDEF() {
-    var media = new NDEFRecordMedia("text/plain", [104, 101, 108, 108, 111]);
-    tag.writeNDEF(new NDEFMessage([media])).then(function(){ addMessage("NDEFRecordMedia Succeeded"); },
-function(){ addMessage("NDEFRecordMedia Failed"); });
-}
-
-function createNDEFRecord() {
-    var uri = new NDEFRecordURI("http://www.intel.com");
-    uri.getPayload().then(function(res){ addMessage("payload: " + res); },
-function(){ addMessage("getPayload Failed"); });
+    setEnvironment();
+    addMessage("Waiting to send URI NDEF to the peer device...", 'eventLog');
+    var uri = new NDEFRecordURI("http://www.baidu.com");
+    peer.sendNDEF(new NDEFMessage([uri])).then(function(){ addMessage("Send URI NDEF succeeded", 'eventLog'); },
+function(){ addMessage("Send URI NDEF failed", 'eventLog'); });
 }
 
 function powerOn() {
-    navigator.nfc.powerOn().then(function(){ addMessage("powerOn Succeeded"); },
-function(){ addMessage("powerOn Failed"); });
+    clearLog();
+    navigator.nfc.powerOn().then(function(){
+        addMessage("Power on succeeded", 'power');
+        $("#on").button("disable");
+        $("#off").button("enable");
+        $("#write").button("enable");
+        $("#read").button("enable");
+        $("#send").button("enable"); },
+function(){ addMessage("Power on failed", 'power'); });
 }
 
 function powerOff() {
-    navigator.nfc.powerOff().then(function(){ addMessage("powerOff Succeeded"); },
-function(){ addMessage("powerOff Failed"); });
+    clearLog();
+    navigator.nfc.powerOff().then(function(){
+        addMessage("Power off succeeded", 'power');
+        $("#on").button("enable");
+        $("#off").button("disable");
+        $("#write").button("disable");
+        $("#read").button("disable");
+        $("#send").button("disable"); },
+function(){ addMessage("Power off failed", 'power'); });
 }
 
 function startPoll() {
-    navigator.nfc.startPoll().then(function(){addMessage("startPoll Succeeded");},
-function(){addMessage("startPoll Failed"); });
+    navigator.nfc.startPoll().then(function(){addMessage("Start poll succeeded", 'polling'); },
+function(){addMessage("Start poll failed", 'polling'); });
 }
 
 function stopPoll() {
-    navigator.nfc.stopPoll().then(function(){addMessage("stopPoll Succeeded");},
-function(){addMessage("stopPoll Failed"); });
+    navigator.nfc.stopPoll().then(function(){addMessage("Stop poll succeeded", 'polling'); },
+function(){addMessage("Stop poll failed", 'polling'); });
+}
+
+function clearLog() {
+    document.getElementById('power').innerHTML = "";
+    document.getElementById('polling').innerHTML = "";
+    document.getElementById('tag').innerHTML = "";
+    document.getElementById('peer').innerHTML = "";
+    document.getElementById('eventLog').innerHTML = "";
+}
+
+function setEnvironment() {
+    clearLog();
+    if(!navigator.nfc.polling) {
+        startPoll();
+    }
 }
