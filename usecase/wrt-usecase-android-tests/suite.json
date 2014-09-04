@@ -1,135 +1,135 @@
 {
     "pkg-blacklist": [
-        "config.xml", 
-        "pack.py", 
-        "testcase.xsl", 
-        "testresult.xsl", 
-        "tests.css", 
-        "icon.png", 
-        "manifest.json", 
-        "suite.json", 
-        "*-py", 
+        "config.xml",
+        "pack.py",
+        "testcase.xsl",
+        "testresult.xsl",
+        "tests.css",
+        "icon.png",
+        "manifest.json",
+        "suite.json",
+        "*-py",
         "inst.*"
-    ], 
+    ],
     "pkg-list": {
         "apk,cordova": {
-            "blacklist": [], 
+            "blacklist": [],
             "copylist": {
-                "inst.apk.py": "inst.py", 
-                "tests.android.xml": "tests.xml", 
+                "inst.apk.py": "inst.py",
+                "tests.android.xml": "tests.xml",
                 "tests.full.xml": "tests.full.xml"
-            }, 
+            },
             "subapp-list": {
                 ".": {
-                    "app-name": "wrt-usecase-android-tests", 
+                    "app-name": "wrt-usecase-android-tests",
+                    "blacklist": [
+                        "manifest.json"
+                    ],
                     "copylist": {
                         "tests.android.xml": "tests.xml"
                     },
-                    "blacklist": [
-                        "manifest.json"
-                    ], 
                     "install-path": "."
-                }, 
+                },
                 "tests/CopyPasteNative/res": {
-                    "app-name": "copypastenative", 
-                    "apk-icon-opt": "", 
+                    "apk-icon-opt": "",
+                    "app-name": "copypastenative",
                     "install-path": "."
-                }, 
+                },
                 "tests/ExtensionPermission/res": {
-                    "apk-ext-opt": "tests/ExtensionPermission/res/contactextension", 
-                    "app-name": "extensionpermission", 
+                    "apk-ext-opt": "tests/ExtensionPermission/res/contactextension",
+                    "app-name": "extensionpermission",
                     "install-path": "."
-                }, 
+                },
                 "tests/OpenFile/res": {
-                    "app-name": "openfile", 
-                    "apk-icon-opt": "", 
+                    "apk-icon-opt": "",
+                    "app-name": "openfile",
                     "install-path": "."
-                }, 
-                "tests/SchemeContent/res": {
-                    "app-name": "schemecontent", 
-                    "apk-icon-opt": "", 
-                    "install-path": "."
-                }, 
+                },
                 "tests/PermissionApiContacts/res": {
-                    "app-name": "permissionapicontacts", 
-                    "apk-icon-opt": "", 
+                    "apk-icon-opt": "",
+                    "app-name": "permissionapicontacts",
                     "install-path": "."
-                }, 
+                },
                 "tests/RemoteDebugging/res": {
-                    "apk-cmd-opt": "--enable-remote-debugging", 
-                    "apk-icon-opt": "", 
-                    "app-name": "remotedebugging", 
+                    "apk-cmd-opt": "--enable-remote-debugging",
+                    "apk-icon-opt": "",
+                    "app-name": "remotedebugging",
                     "install-path": "."
-                }, 
+                },
+                "tests/SchemeContent/res": {
+                    "apk-icon-opt": "",
+                    "app-name": "schemecontent",
+                    "install-path": "."
+                },
                 "tests/SchemesCheck/res": {
-                    "app-name": "schemescheck", 
-                    "apk-icon-opt": "", 
+                    "apk-icon-opt": "",
+                    "app-name": "schemescheck",
                     "install-path": "."
-                }, 
+                },
                 "tests/SharemodeLibrary/res": {
-                    "apk-mode-opt": "shared", 
-                    "apk-icon-opt": "", 
-                    "app-name": "sharemodelibrary", 
+                    "apk-icon-opt": "",
+                    "apk-mode-opt": "shared",
+                    "app-name": "sharemodelibrary",
                     "install-path": "."
-                }, 
+                },
                 "tests/SplashscreenLandscape/res": {
-                    "app-name": "splashscreenlandscape", 
-                    "apk-icon-opt": "", 
+                    "apk-icon-opt": "",
+                    "app-name": "splashscreenlandscape",
                     "install-path": "."
-                }, 
+                },
                 "tests/SplashscreenPng/res": {
-                    "app-name": "splashscreenpng", 
-                    "apk-icon-opt": "", 
+                    "apk-icon-opt": "",
+                    "app-name": "splashscreenpng",
                     "install-path": "."
-                }, 
+                },
                 "tests/WebAppGesture/res": {
-                    "app-name": "webappgesture", 
-                    "apk-icon-opt": "", 
+                    "apk-icon-opt": "",
+                    "app-name": "webappgesture",
                     "install-path": "."
-                }, 
+                },
                 "tests/WebAppHWKey/res": {
-                    "app-name": "webapphwkey", 
-                    "apk-icon-opt": "", 
+                    "apk-icon-opt": "",
+                    "app-name": "webapphwkey",
                     "install-path": "."
-                }, 
+                },
                 "tests/WebAppManifest/res": {
-                    "apk-type": "MANIFEST", 
-                    "app-name": "webappmanifest", 
+                    "apk-type": "MANIFEST",
+                    "app-name": "webappmanifest",
                     "install-path": "."
-                }, 
+                },
                 "tests/WebAppXwalkHost/res": {
-                    "app-name": "webappxwalkhost", 
-                    "apk-icon-opt": "", 
+                    "apk-icon-opt": "",
+                    "app-name": "webappxwalkhost",
                     "install-path": "."
                 }
             }
-        }, 
+        },
         "apk-aio": {
             "blacklist": []
-        }, 
+        },
         "wgt": {
-            "blacklist": [], 
+            "blacklist": [],
             "copylist": {
-                "inst.wgt.py": "inst.py", 
-                "tests.full.xml": "tests.full.xml", 
+                "inst.wgt.py": "inst.py",
+                "tests.full.xml": "tests.full.xml",
                 "tests.xml": "tests.xml"
-            }, 
+            },
             "pkg-app": {
-                "blacklist": [], 
+                "blacklist": [],
                 "sign-flag": "true"
             }
-        }, 
+        },
         "xpk": {
-            "blacklist": [], 
+            "blacklist": [],
             "copylist": {
-                "inst.xpk.py": "inst.py", 
-                "tests.full.xml": "tests.full.xml", 
+                "inst.xpk.py": "inst.py",
+                "tests.full.xml": "tests.full.xml",
                 "tests.xml": "tests.xml"
-            }, 
+            },
             "pkg-app": {
                 "blacklist": []
             }
         }
-    }, 
+    },
     "pkg-name": "wrt-usecase-android-tests"
 }
