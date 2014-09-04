@@ -2,14 +2,14 @@
 #
 # Copyright (c) 2014 Intel Corporation.
 #
-# Redistribution and use in source and binary forms, with or without modification,
-# are permitted provided that the following conditions are met:
+# Redistribution and use in source and binary forms, with or without
+# modification, are permitted provided that the following conditions are met:
 #
-# * Redistributions of works must retain the original copyright notice, this list
-#   of conditions and the following disclaimer.
-# * Redistributions in binary form must reproduce the original copyright notice,
-#   this list of conditions and the following disclaimer in the documentation
-#   and/or other materials provided with the distribution.
+# * Redistributions of works must retain the original copyright notice, this
+#   list of conditions and the following disclaimer.
+# * Redistributions in binary form must reproduce the original copyright
+#   notice, this list of conditions and the following disclaimer in the
+#   documentation and/or other materials provided with the distribution.
 # * Neither the name of Intel Corporation nor the names of its contributors
 #   may be used to endorse or promote products derived from this work without
 #   specific prior written permission.
@@ -397,7 +397,8 @@ def packXPK(build_json=None, app_src=None, app_dest=None, app_name=None):
     key_file = safelyGetValue(build_json, "key-file")
     if key_file == "key.file":
         LOG.error(
-            "\"key.file\" is reserved name for default key file, pls change the key file name ...")
+            "\"key.file\" is reserved name for default key file, "
+            "pls change the key file name ...")
         os.chdir(orig_dir)
         return False
     if key_file:
@@ -453,6 +454,10 @@ def packAPK(build_json=None, app_src=None, app_dest=None, app_name=None):
     mode_opt = ""
     icon_opt = ""
 
+    common_opts = safelyGetValue(build_json, "apk-common-opts")
+    if common_opts is None:
+        common_opts = ""
+
     tmp_opt = safelyGetValue(build_json, "apk-ext-opt")
     if tmp_opt:
         ext_opt = "--extensions='%s'" % os.path.join(BUILD_ROOT_SRC, tmp_opt)
@@ -484,18 +489,25 @@ def packAPK(build_json=None, app_src=None, app_dest=None, app_name=None):
         icon_opt = "--icon=%s/icon.png" % app_src
 
     if safelyGetValue(build_json, "apk-type") == "MANIFEST":
-        pack_cmd = "python make_apk.py --package=org.xwalk.%s --manifest=%s/manifest.json  %s --arch=%s %s %s" % (
-            app_name, app_src, mode_opt, BUILD_PARAMETERS.pkgarch, ext_opt, cmd_opt)
+        pack_cmd = "python make_apk.py --package=org.xwalk.%s " \
+            "--manifest=%s/manifest.json  %s --arch=%s %s %s %s" % (
+                app_name, app_src, mode_opt, BUILD_PARAMETERS.pkgarch,
+                ext_opt, cmd_opt, common_opts)
     elif safelyGetValue(build_json, "apk-type") == "HOSTEDAPP":
         if not url_opt:
             LOG.error(
                 "Fail to find the key \"apk-url-opt\" for hosted APP packing")
             return False
-        pack_cmd = "python make_apk.py --package=org.xwalk.%s --name=%s %s --arch=%s %s %s %s" % (
-            app_name, app_name, mode_opt, BUILD_PARAMETERS.pkgarch, ext_opt, cmd_opt, url_opt)
+        pack_cmd = "python make_apk.py --package=org.xwalk.%s --name=%s %s " \
+                   "--arch=%s %s %s %s %s" % (
+                       app_name, app_name, mode_opt, BUILD_PARAMETERS.pkgarch, ext_opt,
+                       cmd_opt, url_opt, common_opts)
     else:
-        pack_cmd = "python make_apk.py --package=org.xwalk.%s --name=%s --app-root=%s --app-local-path=index.html %s %s --arch=%s %s %s" % (
-            app_name, app_name, app_src, icon_opt, mode_opt, BUILD_PARAMETERS.pkgarch, ext_opt, cmd_opt)
+        pack_cmd = "python make_apk.py --package=org.xwalk.%s --name=%s " \
+                   "--app-root=%s --app-local-path=index.html %s %s " \
+                   "--arch=%s %s %s %s" % (
+                       app_name, app_name, app_src, icon_opt, mode_opt,
+                       BUILD_PARAMETERS.pkgarch, ext_opt, cmd_opt, common_opts)
 
     orig_dir = os.getcwd()
     os.chdir(os.path.join(BUILD_ROOT, "crosswalk"))
@@ -545,7 +557,8 @@ def packCordova(build_json=None, app_src=None, app_dest=None, app_name=None):
     plugin_dirs = os.listdir(plugin_tool)
     for i_dir in plugin_dirs:
         i_plugin_dir = os.path.join(plugin_tool, i_dir)
-        plugin_install_cmd = "plugman install --platform android --project ./ --plugin %s" % i_plugin_dir
+        plugin_install_cmd = "plugman install --platform android --project " \
+                             "./ --plugin %s" % i_plugin_dir
         if not doCMD(plugin_install_cmd, DEFAULT_CMD_TIMEOUT):
             os.chdir(orig_dir)
             return False
@@ -617,8 +630,10 @@ def packEmbeddingAPI(
         os.chdir(orig_dir)
         return False
 
-    android_project_cmd = "android create project --name %s --target android-%s --path %s --package com.%s --activity MainActivity" % (
-        app_name, api_level, android_project_path, app_name)
+    android_project_cmd = "android create project --name %s --target " \
+                          "android-%s --path %s --package com.%s " \
+                          "--activity MainActivity" % (
+                              app_name, api_level, android_project_path, app_name)
     if not doCMD(android_project_cmd):
         os.chdir(orig_dir)
         return False
@@ -713,10 +728,13 @@ def packAPP(build_json=None, app_src=None, app_dest=None, app_name=None):
 def createIndexFile(index_file_path=None, hosted_app=None):
     try:
         if hosted_app:
-            index_url = "http://127.0.0.1/opt/%s/webrunner/index.html?testsuite=../tests.xml&testprefix=../../.." % PKG_NAME
+            index_url = "http://127.0.0.1/opt/%s/webrunner/index.html?" \
+                "testsuite=../tests.xml&testprefix=../../.." % PKG_NAME
         else:
-            index_url = "opt/%s/webrunner/index.html?testsuite=../tests.xml&testprefix=../../.." % PKG_NAME
-        html_content = "<!doctype html><head><meta http-equiv='Refresh' content='1; url=%s'></head>" % index_url
+            index_url = "opt/%s/webrunner/index.html?testsuite=../tests.xml" \
+                        "&testprefix=../../.." % PKG_NAME
+        html_content = "<!doctype html><head><meta http-equiv='Refresh' " \
+                       "content='1; url=%s'></head>" % index_url
         index_file = open(index_file_path, "w")
         index_file.write(html_content)
         index_file.close()
@@ -940,7 +958,8 @@ def main():
                   PKG_TYPES)
         sys.exit(1)
 
-    if BUILD_PARAMETERS.pkgtype == "apk" or BUILD_PARAMETERS.pkgtype == "apk-aio":
+    if BUILD_PARAMETERS.pkgtype == "apk" or \
+       BUILD_PARAMETERS.pkgtype == "apk-aio":
         if not BUILD_PARAMETERS.pkgmode:
             LOG.error("No pkg mode option provided, exit ...")
             sys.exit(1)
@@ -990,7 +1009,8 @@ def main():
     if not PKG_NAME:
         PKG_NAME = os.path.basename(BUILD_PARAMETERS.srcdir)
         LOG.warning(
-            "Fail to read pkg name from json, using src dir name as pkg name ...")
+            "Fail to read pkg name from json, "
+            "using src dir name as pkg name ...")
 
     LOG.info("================= %s (%s-%s) ================" %
              (PKG_NAME, pkg_main_version, pkg_release_version))

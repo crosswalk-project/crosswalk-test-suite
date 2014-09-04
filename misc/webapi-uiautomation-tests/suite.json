@@ -1,72 +1,48 @@
 {
     "pkg-blacklist": [
-        "pack.py", 
-        "COPYING", 
-        "testcase.xsl", 
-        "testresult.xsl", 
-        "tests.css", 
-        "icon.png", 
-        "suite.json", 
-        "inst.*.py", 
-        "config.xml", 
-        "manifest.json", 
-        "VERSION"
-    ], 
+        "pack.py",
+        "COPYING",
+        "testcase.xsl",
+        "testresult.xsl",
+        "tests.css",
+        "icon.png",
+        "suite.json",
+        "inst.*.py",
+        "config.xml",
+        "manifest.json"
+    ],
     "pkg-list": {
-        "apk,cordova": {
+        "apk": {
             "blacklist": [
                 "*"
-            ], 
+            ],
             "copylist": {
-                "bddrunner": "bddrunner", 
-                "html5-extra/testscripts": "html5-extra/testscripts", 
-                "inst.apk.py": "inst.py", 
-                "tests.xml": "tests.xml", 
-                "w3c-webstorage/testscripts": "w3c-webstorage/testscripts"
-            }, 
+                "bddrunner": "bddrunner",
+                "html5-extra-app/testscripts": "html5-extra-app/testscripts",
+                "inst.apk.py": "inst.py",
+                "tests.xml": "tests.xml",
+                "w3c-webstorage-app/testscripts": "w3c-webstorage-app/testscripts"
+            },
             "pkg-app": {
+                "apk-common-opts": "--enable-remote-debugging",
                 "blacklist": [
-                    "html5-extra/testscripts", 
-                    "w3c-webstorage/testscripts"
+                    "html5-extra-app",
+                    "w3c-webstorage-app"
                 ]
-            }
-        }, 
-        "wgt": {
-            "blacklist": [
-                "*"
-            ], 
-            "copylist": {
-                "bddrunner": "bddrunner", 
-                "html5-extra/testscripts": "html5-extra/testscripts", 
-                "inst.wgt.py": "inst.py", 
-                "tests.xml": "tests.xml", 
-                "w3c-webstorage/testscripts": "w3c-webstorage/testscripts"
-            }, 
-            "pkg-app": {
-                "blacklist": [
-                    "html5-extra/testscripts", 
-                    "w3c-webstorage/testscripts"
-                ]
-            }
-        }, 
-        "xpk": {
-            "blacklist": [
-                "*"
-            ], 
-            "copylist": {
-                "bddrunner": "bddrunner", 
-                "html5-extra/testscripts": "html5-extra/testscripts", 
-                "inst.xpk.py": "inst.py", 
-                "tests.xml": "tests.xml", 
-                "w3c-webstorage/testscripts": "w3c-webstorage/testscripts"
-            }, 
-            "pkg-app": {
-                "blacklist": [
-                    "html5-extra/testscripts", 
-                    "w3c-webstorage/testscripts"
-                ]
+            },
+            "subapp-list": {
+                "html5-extra-app": {
+                    "apk-common-opts": "--enable-remote-debugging",
+                    "app-name": "html5-extra-app",
+                    "install-path": "apps"
+                },
+                "w3c-webstorage-app": {
+                    "apk-common-opts": "--enable-remote-debugging",
+                    "app-name": "w3c-webstorage-app",
+                    "install-path": "apps"
+                }
             }
         }
-    }, 
+    },
     "pkg-name": "webapi-uiautomation-tests"
 }
