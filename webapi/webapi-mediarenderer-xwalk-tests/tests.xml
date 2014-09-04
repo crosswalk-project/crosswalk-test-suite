@@ -1,226 +1,366 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <?xml-stylesheet type="text/xsl" href="./testcase.xsl"?>
 <test_definition>
-  <suite category="Media Renderer API" extension="crosswalk" launcher="xwalk" name="webapi-mediarenderer-xwalk-tests">
+  <suite category="DLNA" extension="crosswalk" launcher="xwalk" name="webapi-mediarenderer-xwalk-tests">
     <set name="mediarenderer" type="js">
-      <testcase component="WebAPI/Media Renderer API/DLNA" execution_type="auto" id="Navigator_mediaRenderer" purpose="Check if readonly Navigator.mediaRenderer exists and type of object">
+      <testcase component="WebAPI/DLNA/MediaRenderer" execution_type="auto" id="Navigator_mediaRenderer" purpose="Check if readonly Navigator.mediaRenderer exists and type of object" onload_delay="30">
         <description>
-          <test_script_entry>/opt/webapi-mediarenderer-xwalk-tests/mediarenderer/Navigator_mediaRenderer.html</test_script_entry>
+          <test_script_entry>/opt/webapi-mediarenderer-xwalk-tests/mediarenderer/Navigator_mediaRenderer.html?total_num=2&amp;amp;locator_key=id&amp;amp;value=1</test_script_entry>
         </description>
       </testcase>
-      <testcase component="WebAPI/Media Renderer API/DLNA" execution_type="auto" id="MediaRendererManager_scanNetwork" purpose="Check if MediaRendererManager.scanNetwork exists and type of function">
+      <testcase component="WebAPI/DLNA/MediaRenderer" execution_type="auto" id="Navigator_mediaRenderer_basic" purpose="Check if Navigator.mediaRenderer is valid" onload_delay="30">
+        <description>
+          <test_script_entry>/opt/webapi-mediarenderer-xwalk-tests/mediarenderer/Navigator_mediaRenderer.html?total_num=2&amp;amp;locator_key=id&amp;amp;value=2</test_script_entry>
+        </description>
+      </testcase>
+      <testcase component="WebAPI/DLNA/MediaRenderer" execution_type="auto" id="MediaRendererManager_scanNetwork" purpose="Check if MediaRendererManager.scanNetwork exists and type of function" onload_delay="30">
         <description>
           <test_script_entry>/opt/webapi-mediarenderer-xwalk-tests/mediarenderer/MediaRendererManager.html?total_num=3&amp;amp;locator_key=id&amp;amp;value=1</test_script_entry>
         </description>
       </testcase>
-      <testcase component="WebAPI/Media Renderer API/DLNA" execution_type="auto" id="MediaRendererManager_onrendererfound" purpose="Check if MediaRendererManager.onrendererfound exists and type of event">
+      <testcase component="WebAPI/DLNA/MediaRenderer" execution_type="auto" id="MediaRendererManager_onrendererfound" purpose="Check if MediaRendererManager.onrendererfound exists and type of event" onload_delay="30">
         <description>
           <test_script_entry>/opt/webapi-mediarenderer-xwalk-tests/mediarenderer/MediaRendererManager.html?total_num=3&amp;amp;locator_key=id&amp;amp;value=2</test_script_entry>
         </description>
       </testcase>
-      <testcase component="WebAPI/Media Renderer API/DLNA" execution_type="auto" id="MediaRendererManager_onrendererlost" purpose="Check if MediaRendererManager.onrendererlost exists and type of event">
+      <testcase component="WebAPI/DLNA/MediaRenderer" execution_type="auto" id="MediaRendererManager_onrendererlost" purpose="Check if MediaRendererManager.onrendererlost exists and type of event" onload_delay="30">
         <description>
           <test_script_entry>/opt/webapi-mediarenderer-xwalk-tests/mediarenderer/MediaRendererManager.html?total_num=3&amp;amp;locator_key=id&amp;amp;value=3</test_script_entry>
         </description>
       </testcase>
-      <testcase component="WebAPI/Media Renderer API/DLNA" execution_type="auto" id="MediaRendererEvent_renderer" purpose="Check if the readonly attribute renderer of MediaRendererEvent exists and type of object" onload_delay="30">
+      <testcase component="WebAPI/DLNA/MediaRenderer" execution_type="auto" id="MediaRendererEvent_renderer" purpose="Check if the readonly attribute renderer of MediaRendererEvent exists and type of object" onload_delay="30">
         <description>
-          <test_script_entry>/opt/webapi-mediarenderer-xwalk-tests/mediarenderer/MediaRendererEvent_renderer.html</test_script_entry>
+          <test_script_entry>/opt/webapi-mediarenderer-xwalk-tests/mediarenderer/MediaRendererEvent_renderer.html?total_num=2&amp;amp;locator_key=id&amp;amp;value=1</test_script_entry>
         </description>
       </testcase>
-      <testcase component="WebAPI/Media Renderer API/DLNA" execution_type="auto" id="MediaRendererIdEvent_id" purpose="Check if the readonly attribute id of MediaRendererIdEvent exists and type of string" onload_delay="30">
+      <testcase component="WebAPI/DLNA/MediaRenderer" execution_type="auto" id="MediaRendererEvent_renderer_basic" purpose="Check if MediaRendererEvent.renderer is valid" onload_delay="30">
         <description>
-          <test_script_entry>/opt/webapi-mediarenderer-xwalk-tests/mediarenderer/MediaRendererIdEvent_id.html</test_script_entry>
+          <test_script_entry>/opt/webapi-mediarenderer-xwalk-tests/mediarenderer/MediaRendererEvent_renderer.html?total_num=2&amp;amp;locator_key=id&amp;amp;value=2</test_script_entry>
         </description>
       </testcase>
-      <testcase component="WebAPI/Media Renderer API/DLNA" execution_type="auto" id="MediaRenderer_id" purpose="Check if readonly MediaRenderer.id exists and type of string" onload_delay="30">
+      <testcase component="WebAPI/DLNA/MediaRenderer" execution_type="auto" id="MediaRendererIdEvent_id" purpose="Check if the readonly attribute id of MediaRendererIdEvent exists and type of string" onload_delay="30">
         <description>
-          <test_script_entry>/opt/webapi-mediarenderer-xwalk-tests/mediarenderer/MediaRenderer.html?total_num=17&amp;amp;locator_key=id&amp;amp;value=1</test_script_entry>
+          <test_script_entry>/opt/webapi-mediarenderer-xwalk-tests/mediarenderer/MediaRendererIdEvent_id.html?total_num=2&amp;amp;locator_key=id&amp;amp;value=1</test_script_entry>
         </description>
       </testcase>
-      <testcase component="WebAPI/Media Renderer API/DLNA" execution_type="auto" id="MediaRenderer_friendlyName" purpose="Check if readonly MediaRenderer.friendlyName exists and type of string" onload_delay="30">
+      <testcase component="WebAPI/DLNA/MediaRenderer" execution_type="auto" id="MediaRendererIdEvent_id_basic" purpose="Check if MediaRendererIdEvent.id is valid" onload_delay="30">
         <description>
-          <test_script_entry>/opt/webapi-mediarenderer-xwalk-tests/mediarenderer/MediaRenderer.html?total_num=17&amp;amp;locator_key=id&amp;amp;value=2</test_script_entry>
+          <test_script_entry>/opt/webapi-mediarenderer-xwalk-tests/mediarenderer/MediaRendererIdEvent_id.html?total_num=2&amp;amp;locator_key=id&amp;amp;value=2</test_script_entry>
         </description>
       </testcase>
-      <testcase component="WebAPI/Media Renderer API/DLNA" execution_type="auto" id="MediaRenderer_manufacturer" purpose="Check if readonly MediaRenderer.manufacturer exists and type of string" onload_delay="30">
+      <testcase component="WebAPI/DLNA/MediaRenderer" execution_type="auto" id="MediaRenderer_id" purpose="Check if readonly MediaRenderer.id exists and type of string" onload_delay="30">
         <description>
-          <test_script_entry>/opt/webapi-mediarenderer-xwalk-tests/mediarenderer/MediaRenderer.html?total_num=17&amp;amp;locator_key=id&amp;amp;value=3</test_script_entry>
+          <test_script_entry>/opt/webapi-mediarenderer-xwalk-tests/mediarenderer/MediaRenderer.html?total_num=31&amp;amp;locator_key=id&amp;amp;value=1</test_script_entry>
         </description>
       </testcase>
-      <testcase component="WebAPI/Media Renderer API/DLNA" execution_type="auto" id="MediaRenderer_manufacturerURL" purpose="Check if readonly MediaRenderer.manufacturerURL exists and type of string" onload_delay="30">
+      <testcase component="WebAPI/DLNA/MediaRenderer" execution_type="auto" id="MediaRenderer_id_basic" purpose="Check if MediaRenderer.id is valid" onload_delay="30">
         <description>
-          <test_script_entry>/opt/webapi-mediarenderer-xwalk-tests/mediarenderer/MediaRenderer.html?total_num=17&amp;amp;locator_key=id&amp;amp;value=4</test_script_entry>
+          <test_script_entry>/opt/webapi-mediarenderer-xwalk-tests/mediarenderer/MediaRenderer.html?total_num=31&amp;amp;locator_key=id&amp;amp;value=2</test_script_entry>
         </description>
       </testcase>
-      <testcase component="WebAPI/Media Renderer API/DLNA" execution_type="auto" id="MediaRenderer_modelDescription" purpose="Check if readonly MediaRenderer.modelDescription exists and type of string" onload_delay="30">
+      <testcase component="WebAPI/DLNA/MediaRenderer" execution_type="auto" id="MediaRenderer_friendlyName" purpose="Check if readonly MediaRenderer.friendlyName exists and type of string" onload_delay="30">
         <description>
-          <test_script_entry>/opt/webapi-mediarenderer-xwalk-tests/mediarenderer/MediaRenderer.html?total_num=17&amp;amp;locator_key=id&amp;amp;value=5</test_script_entry>
+          <test_script_entry>/opt/webapi-mediarenderer-xwalk-tests/mediarenderer/MediaRenderer.html?total_num=31&amp;amp;locator_key=id&amp;amp;value=3</test_script_entry>
         </description>
       </testcase>
-      <testcase component="WebAPI/Media Renderer API/DLNA" execution_type="auto" id="MediaRenderer_modelName" purpose="Check if readonly MediaRenderer.modelName exists and type of string" onload_delay="30">
+      <testcase component="WebAPI/DLNA/MediaRenderer" execution_type="auto" id="MediaRenderer_friendlyName_basic" purpose="Check if MediaRenderer.friendlyName is valid" onload_delay="30">
         <description>
-          <test_script_entry>/opt/webapi-mediarenderer-xwalk-tests/mediarenderer/MediaRenderer.html?total_num=17&amp;amp;locator_key=id&amp;amp;value=6</test_script_entry>
+          <test_script_entry>/opt/webapi-mediarenderer-xwalk-tests/mediarenderer/MediaRenderer.html?total_num=31&amp;amp;locator_key=id&amp;amp;value=4</test_script_entry>
         </description>
       </testcase>
-      <testcase component="WebAPI/Media Renderer API/DLNA" execution_type="auto" id="MediaRenderer_modelNumber" purpose="Check if readonly MediaRenderer.modelNumber exists and type of string" onload_delay="30">
+      <testcase component="WebAPI/DLNA/MediaRenderer" execution_type="auto" id="MediaRenderer_manufacturer" purpose="Check if readonly MediaRenderer.manufacturer exists and type of string" onload_delay="30">
         <description>
-          <test_script_entry>/opt/webapi-mediarenderer-xwalk-tests/mediarenderer/MediaRenderer.html?total_num=17&amp;amp;locator_key=id&amp;amp;value=7</test_script_entry>
+          <test_script_entry>/opt/webapi-mediarenderer-xwalk-tests/mediarenderer/MediaRenderer.html?total_num=31&amp;amp;locator_key=id&amp;amp;value=5</test_script_entry>
         </description>
       </testcase>
-      <testcase component="WebAPI/Media Renderer API/DLNA" execution_type="auto" id="MediaRenderer_serialNumber" purpose="Check if readonly MediaRenderer.serialNumber exists and type of string" onload_delay="30">
+      <testcase component="WebAPI/DLNA/MediaRenderer" execution_type="auto" id="MediaRenderer_manufacturer_basic" purpose="Check if MediaRenderer.manufacturer is valid" onload_delay="30">
         <description>
-          <test_script_entry>/opt/webapi-mediarenderer-xwalk-tests/mediarenderer/MediaRenderer.html?total_num=17&amp;amp;locator_key=id&amp;amp;value=8</test_script_entry>
+          <test_script_entry>/opt/webapi-mediarenderer-xwalk-tests/mediarenderer/MediaRenderer.html?total_num=31&amp;amp;locator_key=id&amp;amp;value=6</test_script_entry>
         </description>
       </testcase>
-      <testcase component="WebAPI/Media Renderer API/DLNA" execution_type="auto" id="MediaRenderer_UDN" purpose="Check if readonly MediaRenderer.UDN exists and type of string" onload_delay="30">
+      <testcase component="WebAPI/DLNA/MediaRenderer" execution_type="auto" id="MediaRenderer_manufacturerURL" purpose="Check if readonly MediaRenderer.manufacturerURL exists and type of string" onload_delay="30">
         <description>
-          <test_script_entry>/opt/webapi-mediarenderer-xwalk-tests/mediarenderer/MediaRenderer.html?total_num=17&amp;amp;locator_key=id&amp;amp;value=9</test_script_entry>
+          <test_script_entry>/opt/webapi-mediarenderer-xwalk-tests/mediarenderer/MediaRenderer.html?total_num=31&amp;amp;locator_key=id&amp;amp;value=7</test_script_entry>
         </description>
       </testcase>
-      <testcase component="WebAPI/Media Renderer API/DLNA" execution_type="auto" id="MediaRenderer_presentationURL" purpose="Check if readonly MediaRenderer.presentationURL exists and type of string" onload_delay="30">
+      <testcase component="WebAPI/DLNA/MediaRenderer" execution_type="auto" id="MediaRenderer_manufacturerURL_basic" purpose="Check if MediaRenderer.manufacturerURL is valid" onload_delay="30">
         <description>
-          <test_script_entry>/opt/webapi-mediarenderer-xwalk-tests/mediarenderer/MediaRenderer.html?total_num=17&amp;amp;locator_key=id&amp;amp;value=10</test_script_entry>
+          <test_script_entry>/opt/webapi-mediarenderer-xwalk-tests/mediarenderer/MediaRenderer.html?total_num=31&amp;amp;locator_key=id&amp;amp;value=8</test_script_entry>
         </description>
       </testcase>
-      <testcase component="WebAPI/Media Renderer API/DLNA" execution_type="auto" id="MediaRenderer_iconURL" purpose="Check if readonly MediaRenderer.iconURL exists and type of string" onload_delay="30">
+      <testcase component="WebAPI/DLNA/MediaRenderer" execution_type="auto" id="MediaRenderer_modelDescription" purpose="Check if readonly MediaRenderer.modelDescription exists and type of string" onload_delay="30">
         <description>
-          <test_script_entry>/opt/webapi-mediarenderer-xwalk-tests/mediarenderer/MediaRenderer.html?total_num=17&amp;amp;locator_key=id&amp;amp;value=11</test_script_entry>
+          <test_script_entry>/opt/webapi-mediarenderer-xwalk-tests/mediarenderer/MediaRenderer.html?total_num=31&amp;amp;locator_key=id&amp;amp;value=9</test_script_entry>
         </description>
       </testcase>
-      <testcase component="WebAPI/Media Renderer API/DLNA" execution_type="auto" id="MediaRenderer_deviceType" purpose="Check if readonly MediaRenderer.deviceType exists and type of string" onload_delay="30">
+      <testcase component="WebAPI/DLNA/MediaRenderer" execution_type="auto" id="MediaRenderer_modelDescription_basic" purpose="Check if MediaRenderer.modelDescription is valid" onload_delay="30">
         <description>
-          <test_script_entry>/opt/webapi-mediarenderer-xwalk-tests/mediarenderer/MediaRenderer.html?total_num=17&amp;amp;locator_key=id&amp;amp;value=12</test_script_entry>
+          <test_script_entry>/opt/webapi-mediarenderer-xwalk-tests/mediarenderer/MediaRenderer.html?total_num=31&amp;amp;locator_key=id&amp;amp;value=10</test_script_entry>
         </description>
       </testcase>
-      <testcase component="WebAPI/Media Renderer API/DLNA" execution_type="auto" id="MediaRenderer_protocolInfo" purpose="Check if readonly MediaRenderer.protocolInfo exists and type of string" onload_delay="30">
+      <testcase component="WebAPI/DLNA/MediaRenderer" execution_type="auto" id="MediaRenderer_modelName" purpose="Check if readonly MediaRenderer.modelName exists and type of string" onload_delay="30">
         <description>
-          <test_script_entry>/opt/webapi-mediarenderer-xwalk-tests/mediarenderer/MediaRenderer.html?total_num=17&amp;amp;locator_key=id&amp;amp;value=13</test_script_entry>
+          <test_script_entry>/opt/webapi-mediarenderer-xwalk-tests/mediarenderer/MediaRenderer.html?total_num=31&amp;amp;locator_key=id&amp;amp;value=11</test_script_entry>
         </description>
       </testcase>
-      <testcase component="WebAPI/Media Renderer API/DLNA" execution_type="auto" id="MediaRenderer_controller" purpose="Check if readonly MediaRenderer.controller exists and type of mediaController" onload_delay="30">
+      <testcase component="WebAPI/DLNA/MediaRenderer" execution_type="auto" id="MediaRenderer_modelName_basic" purpose="Check if MediaRenderer.modelName is valid" onload_delay="30">
         <description>
-          <test_script_entry>/opt/webapi-mediarenderer-xwalk-tests/mediarenderer/MediaRenderer.html?total_num=17&amp;amp;locator_key=id&amp;amp;value=14</test_script_entry>
+          <test_script_entry>/opt/webapi-mediarenderer-xwalk-tests/mediarenderer/MediaRenderer.html?total_num=31&amp;amp;locator_key=id&amp;amp;value=12</test_script_entry>
         </description>
       </testcase>
-      <testcase component="WebAPI/Media Renderer API/DLNA" execution_type="auto" id="MediaRenderer_openURI" purpose="Check if MediaRenderer.openURI exists and type of function" onload_delay="30">
+      <testcase component="WebAPI/DLNA/MediaRenderer" execution_type="auto" id="MediaRenderer_modelNumber" purpose="Check if readonly MediaRenderer.modelNumber exists and type of string" onload_delay="30">
         <description>
-          <test_script_entry>/opt/webapi-mediarenderer-xwalk-tests/mediarenderer/MediaRenderer.html?total_num=17&amp;amp;locator_key=id&amp;amp;value=15</test_script_entry>
+          <test_script_entry>/opt/webapi-mediarenderer-xwalk-tests/mediarenderer/MediaRenderer.html?total_num=31&amp;amp;locator_key=id&amp;amp;value=13</test_script_entry>
         </description>
       </testcase>
-      <testcase component="WebAPI/Media Renderer API/DLNA" execution_type="auto" id="MediaRenderer_prefetchURI" purpose="Check if MediaRenderer.prefetchURI exists and type of function" onload_delay="30">
+      <testcase component="WebAPI/DLNA/MediaRenderer" execution_type="auto" id="MediaRenderer_modelNumber_basic" purpose="Check if MediaRenderer.modelNumber is valid" onload_delay="30">
         <description>
-          <test_script_entry>/opt/webapi-mediarenderer-xwalk-tests/mediarenderer/MediaRenderer.html?total_num=17&amp;amp;locator_key=id&amp;amp;value=16</test_script_entry>
+          <test_script_entry>/opt/webapi-mediarenderer-xwalk-tests/mediarenderer/MediaRenderer.html?total_num=31&amp;amp;locator_key=id&amp;amp;value=14</test_script_entry>
         </description>
       </testcase>
-      <testcase component="WebAPI/Media Renderer API/DLNA" execution_type="auto" id="MediaRenderer_cancel" purpose="Check if MediaRenderer.cancel exists and type of function" onload_delay="30">
+      <testcase component="WebAPI/DLNA/MediaRenderer" execution_type="auto" id="MediaRenderer_serialNumber" purpose="Check if readonly MediaRenderer.serialNumber exists and type of string" onload_delay="30">
         <description>
-          <test_script_entry>/opt/webapi-mediarenderer-xwalk-tests/mediarenderer/MediaRenderer.html?total_num=17&amp;amp;locator_key=id&amp;amp;value=17</test_script_entry>
+          <test_script_entry>/opt/webapi-mediarenderer-xwalk-tests/mediarenderer/MediaRenderer.html?total_num=31&amp;amp;locator_key=id&amp;amp;value=15</test_script_entry>
         </description>
       </testcase>
-      <testcase component="WebAPI/Media Renderer API/DLNA" execution_type="auto" id="MediaController_playbackStatus" purpose="Check if readonly MediaController.playbackStatus exists and type of object" onload_delay="30">
+      <testcase component="WebAPI/DLNA/MediaRenderer" execution_type="auto" id="MediaRenderer_serialNumber_basic" purpose="Check if MediaRenderer.serialNumber is valid" onload_delay="30">
         <description>
-          <test_script_entry>/opt/webapi-mediarenderer-xwalk-tests/mediarenderer/MediaController.html?total_num=16&amp;amp;locator_key=id&amp;amp;value=1</test_script_entry>
+          <test_script_entry>/opt/webapi-mediarenderer-xwalk-tests/mediarenderer/MediaRenderer.html?total_num=31&amp;amp;locator_key=id&amp;amp;value=16</test_script_entry>
         </description>
       </testcase>
-      <testcase component="WebAPI/Media Renderer API/DLNA" execution_type="auto" id="MediaController_muted" purpose="Check if readonly MediaController.muted exists and type of boolean" onload_delay="30">
+      <testcase component="WebAPI/DLNA/MediaRenderer" execution_type="auto" id="MediaRenderer_UDN" purpose="Check if readonly MediaRenderer.UDN exists and type of string" onload_delay="30">
         <description>
-          <test_script_entry>/opt/webapi-mediarenderer-xwalk-tests/mediarenderer/MediaController.html?total_num=16&amp;amp;locator_key=id&amp;amp;value=2</test_script_entry>
+          <test_script_entry>/opt/webapi-mediarenderer-xwalk-tests/mediarenderer/MediaRenderer.html?total_num=31&amp;amp;locator_key=id&amp;amp;value=17</test_script_entry>
         </description>
       </testcase>
-      <testcase component="WebAPI/Media Renderer API/DLNA" execution_type="auto" id="MediaController_volume" purpose="Check if readonly MediaController.volume exists and type of number" onload_delay="30">
+      <testcase component="WebAPI/DLNA/MediaRenderer" execution_type="auto" id="MediaRenderer_UDN_basic" purpose="Check if MediaRenderer.UDN is valid" onload_delay="30">
         <description>
-          <test_script_entry>/opt/webapi-mediarenderer-xwalk-tests/mediarenderer/MediaController.html?total_num=16&amp;amp;locator_key=id&amp;amp;value=3</test_script_entry>
+          <test_script_entry>/opt/webapi-mediarenderer-xwalk-tests/mediarenderer/MediaRenderer.html?total_num=31&amp;amp;locator_key=id&amp;amp;value=18</test_script_entry>
         </description>
       </testcase>
-      <testcase component="WebAPI/Media Renderer API/DLNA" execution_type="auto" id="MediaController_track" purpose="Check if readonly MediaController.track exists and type of number" onload_delay="30">
+      <testcase component="WebAPI/DLNA/MediaRenderer" execution_type="auto" id="MediaRenderer_presentationURL" purpose="Check if readonly MediaRenderer.presentationURL exists and type of string" onload_delay="30">
         <description>
-          <test_script_entry>/opt/webapi-mediarenderer-xwalk-tests/mediarenderer/MediaController.html?total_num=16&amp;amp;locator_key=id&amp;amp;value=4</test_script_entry>
+          <test_script_entry>/opt/webapi-mediarenderer-xwalk-tests/mediarenderer/MediaRenderer.html?total_num=31&amp;amp;locator_key=id&amp;amp;value=19</test_script_entry>
         </description>
       </testcase>
-      <testcase component="WebAPI/Media Renderer API/DLNA" execution_type="auto" id="MediaController_speed" purpose="Check if readonly MediaController.speed exists and type of number" onload_delay="30">
+      <testcase component="WebAPI/DLNA/MediaRenderer" execution_type="auto" id="MediaRenderer_presentationURL_basic" purpose="Check if MediaRenderer.presentationURL is valid" onload_delay="30">
         <description>
-          <test_script_entry>/opt/webapi-mediarenderer-xwalk-tests/mediarenderer/MediaController.html?total_num=16&amp;amp;locator_key=id&amp;amp;value=5</test_script_entry>
+          <test_script_entry>/opt/webapi-mediarenderer-xwalk-tests/mediarenderer/MediaRenderer.html?total_num=31&amp;amp;locator_key=id&amp;amp;value=20</test_script_entry>
         </description>
       </testcase>
-      <testcase component="WebAPI/Media Renderer API/DLNA" execution_type="auto" id="MediaController_playSpeeds" purpose="Check if readonly MediaController.playSpeeds exists and type of number" onload_delay="30">
+      <testcase component="WebAPI/DLNA/MediaRenderer" execution_type="auto" id="MediaRenderer_iconURL" purpose="Check if readonly MediaRenderer.iconURL exists and type of string" onload_delay="30">
         <description>
-          <test_script_entry>/opt/webapi-mediarenderer-xwalk-tests/mediarenderer/MediaController.html?total_num=16&amp;amp;locator_key=id&amp;amp;value=6</test_script_entry>
+          <test_script_entry>/opt/webapi-mediarenderer-xwalk-tests/mediarenderer/MediaRenderer.html?total_num=31&amp;amp;locator_key=id&amp;amp;value=21</test_script_entry>
         </description>
       </testcase>
-      <testcase component="WebAPI/Media Renderer API/DLNA" execution_type="auto" id="MediaController_play" purpose="Check if MediaController.play exists and type of function" onload_delay="30">
+      <testcase component="WebAPI/DLNA/MediaRenderer" execution_type="auto" id="MediaRenderer_iconURL_basic" purpose="Check if MediaRenderer.iconURL is valid" onload_delay="30">
         <description>
-          <test_script_entry>/opt/webapi-mediarenderer-xwalk-tests/mediarenderer/MediaController.html?total_num=16&amp;amp;locator_key=id&amp;amp;value=7</test_script_entry>
+          <test_script_entry>/opt/webapi-mediarenderer-xwalk-tests/mediarenderer/MediaRenderer.html?total_num=31&amp;amp;locator_key=id&amp;amp;value=22</test_script_entry>
         </description>
       </testcase>
-      <testcase component="WebAPI/Media Renderer API/DLNA" execution_type="auto" id="MediaController_pause" purpose="Check if MediaController.pause exists and type of function" onload_delay="30">
+      <testcase component="WebAPI/DLNA/MediaRenderer" execution_type="auto" id="MediaRenderer_deviceType" purpose="Check if readonly MediaRenderer.deviceType exists and type of string" onload_delay="30">
         <description>
-          <test_script_entry>/opt/webapi-mediarenderer-xwalk-tests/mediarenderer/MediaController.html?total_num=16&amp;amp;locator_key=id&amp;amp;value=8</test_script_entry>
+          <test_script_entry>/opt/webapi-mediarenderer-xwalk-tests/mediarenderer/MediaRenderer.html?total_num=31&amp;amp;locator_key=id&amp;amp;value=23</test_script_entry>
         </description>
       </testcase>
-      <testcase component="WebAPI/Media Renderer API/DLNA" execution_type="auto" id="MediaController_stop" purpose="Check if MediaController.stop exists and type of function" onload_delay="30">
+      <testcase component="WebAPI/DLNA/MediaRenderer" execution_type="auto" id="MediaRenderer_deviceType_basic" purpose="Check if MediaRenderer.deviceType is valid" onload_delay="30">
         <description>
-          <test_script_entry>/opt/webapi-mediarenderer-xwalk-tests/mediarenderer/MediaController.html?total_num=16&amp;amp;locator_key=id&amp;amp;value=9</test_script_entry>
+          <test_script_entry>/opt/webapi-mediarenderer-xwalk-tests/mediarenderer/MediaRenderer.html?total_num=31&amp;amp;locator_key=id&amp;amp;value=24</test_script_entry>
         </description>
       </testcase>
-      <testcase component="WebAPI/Media Renderer API/DLNA" execution_type="auto" id="MediaController_next" purpose="Check if MediaController.next exists and type of function" onload_delay="30">
+      <testcase component="WebAPI/DLNA/MediaRenderer" execution_type="auto" id="MediaRenderer_protocolInfo" purpose="Check if readonly MediaRenderer.protocolInfo exists and type of string" onload_delay="30">
         <description>
-          <test_script_entry>/opt/webapi-mediarenderer-xwalk-tests/mediarenderer/MediaController.html?total_num=16&amp;amp;locator_key=id&amp;amp;value=10</test_script_entry>
+          <test_script_entry>/opt/webapi-mediarenderer-xwalk-tests/mediarenderer/MediaRenderer.html?total_num=31&amp;amp;locator_key=id&amp;amp;value=25</test_script_entry>
         </description>
       </testcase>
-      <testcase component="WebAPI/Media Renderer API/DLNA" execution_type="auto" id="MediaController_previous" purpose="Check if MediaController.previous exists and type of function" onload_delay="30">
+      <testcase component="WebAPI/DLNA/MediaRenderer" execution_type="auto" id="MediaRenderer_protocolInfo_basic" purpose="Check if MediaRenderer.protocolInfo is valid" onload_delay="30">
         <description>
-          <test_script_entry>/opt/webapi-mediarenderer-xwalk-tests/mediarenderer/MediaController.html?total_num=16&amp;amp;locator_key=id&amp;amp;value=11</test_script_entry>
+          <test_script_entry>/opt/webapi-mediarenderer-xwalk-tests/mediarenderer/MediaRenderer.html?total_num=31&amp;amp;locator_key=id&amp;amp;value=26</test_script_entry>
         </description>
       </testcase>
-      <testcase component="WebAPI/Media Renderer API/DLNA" execution_type="auto" id="MediaController_mute" purpose="Check if MediaController.mute exists and type of function" onload_delay="30">
+      <testcase component="WebAPI/DLNA/MediaRenderer" execution_type="auto" id="MediaRenderer_controller" purpose="Check if readonly MediaRenderer.controller exists and type of mediaController" onload_delay="30">
         <description>
-          <test_script_entry>/opt/webapi-mediarenderer-xwalk-tests/mediarenderer/MediaController.html?total_num=16&amp;amp;locator_key=id&amp;amp;value=12</test_script_entry>
+          <test_script_entry>/opt/webapi-mediarenderer-xwalk-tests/mediarenderer/MediaRenderer.html?total_num=31&amp;amp;locator_key=id&amp;amp;value=27</test_script_entry>
         </description>
       </testcase>
-      <testcase component="WebAPI/Media Renderer API/DLNA" execution_type="auto" id="MediaController_setSpeed" purpose="Check if MediaController.setSpeed exists and type of function" onload_delay="30">
+      <testcase component="WebAPI/DLNA/MediaRenderer" execution_type="auto" id="MediaRenderer_controller_basic" purpose="Check if MediaRenderer.controller is valid" onload_delay="30">
         <description>
-          <test_script_entry>/opt/webapi-mediarenderer-xwalk-tests/mediarenderer/MediaController.html?total_num=16&amp;amp;locator_key=id&amp;amp;value=13</test_script_entry>
+          <test_script_entry>/opt/webapi-mediarenderer-xwalk-tests/mediarenderer/MediaRenderer.html?total_num=31&amp;amp;locator_key=id&amp;amp;value=28</test_script_entry>
         </description>
       </testcase>
-      <testcase component="WebAPI/Media Renderer API/DLNA" execution_type="auto" id="MediaController_setVolume" purpose="Check if MediaController.setVolume exists and type of function" onload_delay="30">
+      <testcase component="WebAPI/DLNA/MediaRenderer" execution_type="auto" id="MediaRenderer_openURI" purpose="Check if MediaRenderer.openURI exists and type of function" onload_delay="30">
         <description>
-          <test_script_entry>/opt/webapi-mediarenderer-xwalk-tests/mediarenderer/MediaController.html?total_num=16&amp;amp;locator_key=id&amp;amp;value=14</test_script_entry>
+          <test_script_entry>/opt/webapi-mediarenderer-xwalk-tests/mediarenderer/MediaRenderer.html?total_num=31&amp;amp;locator_key=id&amp;amp;value=29</test_script_entry>
         </description>
       </testcase>
-      <testcase component="WebAPI/Media Renderer API/DLNA" execution_type="auto" id="MediaController_gotoTrack" purpose="Check if MediaController.gotoTrack exists and type of function" onload_delay="30">
+      <testcase component="WebAPI/DLNA/MediaRenderer" execution_type="auto" id="MediaRenderer_prefetchURI" purpose="Check if MediaRenderer.prefetchURI exists and type of function" onload_delay="30">
         <description>
-          <test_script_entry>/opt/webapi-mediarenderer-xwalk-tests/mediarenderer/MediaController.html?total_num=16&amp;amp;locator_key=id&amp;amp;value=15</test_script_entry>
+          <test_script_entry>/opt/webapi-mediarenderer-xwalk-tests/mediarenderer/MediaRenderer.html?total_num=31&amp;amp;locator_key=id&amp;amp;value=30</test_script_entry>
         </description>
       </testcase>
-      <testcase component="WebAPI/Media Renderer API/DLNA" execution_type="auto" id="MediaController_onstatuschanged" purpose="Check if MediaController.onstatuschanged exists and type of event" onload_delay="30">
+      <testcase component="WebAPI/DLNA/MediaRenderer" execution_type="auto" id="MediaRenderer_cancel" purpose="Check if MediaRenderer.cancel exists and type of function" onload_delay="30">
         <description>
-          <test_script_entry>/opt/webapi-mediarenderer-xwalk-tests/mediarenderer/MediaController.html?total_num=16&amp;amp;locator_key=id&amp;amp;value=16</test_script_entry>
+          <test_script_entry>/opt/webapi-mediarenderer-xwalk-tests/mediarenderer/MediaRenderer.html?total_num=31&amp;amp;locator_key=id&amp;amp;value=31</test_script_entry>
         </description>
       </testcase>
-      <testcase component="WebAPI/Media Renderer API/DLNA" execution_type="auto" id="MediaControllerStatusEvent_playbackStatus" purpose="Check if readonly MediaControllerStatusEvent.playbackStatus exists and type of object" onload_delay="30">
+      <testcase component="WebAPI/DLNA/MediaRenderer" execution_type="auto" id="MediaController_playbackStatus" purpose="Check if readonly MediaController.playbackStatus exists and type of string" onload_delay="30">
         <description>
-          <test_script_entry>/opt/webapi-mediarenderer-xwalk-tests/mediarenderer/MediaControllerStatusEvent.html?total_num=16&amp;amp;locator_key=id&amp;amp;value=1</test_script_entry>
+          <test_script_entry>/opt/webapi-mediarenderer-xwalk-tests/mediarenderer/MediaController.html?total_num=22&amp;amp;locator_key=id&amp;amp;value=1</test_script_entry>
         </description>
       </testcase>
-      <testcase component="WebAPI/Media Renderer API/DLNA" execution_type="auto" id="MediaControllerStatusEvent_muted" purpose="Check if readonly MediaControllerStatusEvent.muted exists and type of boolean" onload_delay="30">
+      <testcase component="WebAPI/DLNA/MediaRenderer" execution_type="auto" id="MediaController_playbackStatus_basic" purpose="Check if MediaController.playbackStatus is valid" onload_delay="30">
         <description>
-          <test_script_entry>/opt/webapi-mediarenderer-xwalk-tests/mediarenderer/MediaControllerStatusEvent.html?total_num=16&amp;amp;locator_key=id&amp;amp;value=2</test_script_entry>
+          <test_script_entry>/opt/webapi-mediarenderer-xwalk-tests/mediarenderer/MediaController.html?total_num=22&amp;amp;locator_key=id&amp;amp;value=2</test_script_entry>
         </description>
       </testcase>
-      <testcase component="WebAPI/Media Renderer API/DLNA" execution_type="auto" id="MediaControllerStatusEvent_volume" purpose="Check if readonly MediaControllerStatusEvent.volume exists and type of number" onload_delay="30">
+      <testcase component="WebAPI/DLNA/MediaRenderer" execution_type="auto" id="MediaController_muted" purpose="Check if readonly MediaController.muted exists and type of boolean" onload_delay="30">
         <description>
-          <test_script_entry>/opt/webapi-mediarenderer-xwalk-tests/mediarenderer/MediaControllerStatusEvent.html?total_num=16&amp;amp;locator_key=id&amp;amp;value=3</test_script_entry>
+          <test_script_entry>/opt/webapi-mediarenderer-xwalk-tests/mediarenderer/MediaController.html?total_num=22&amp;amp;locator_key=id&amp;amp;value=3</test_script_entry>
         </description>
       </testcase>
-      <testcase component="WebAPI/Media Renderer API/DLNA" execution_type="auto" id="MediaControllerStatusEvent_track" purpose="Check if readonly MediaControllerStatusEvent.track exists and type of number" onload_delay="30">
+      <testcase component="WebAPI/DLNA/MediaRenderer" execution_type="auto" id="MediaController_muted_basic" purpose="Check if MediaController.muted is valid" onload_delay="30">
         <description>
-          <test_script_entry>/opt/webapi-mediarenderer-xwalk-tests/mediarenderer/MediaControllerStatusEvent.html?total_num=16&amp;amp;locator_key=id&amp;amp;value=4</test_script_entry>
+          <test_script_entry>/opt/webapi-mediarenderer-xwalk-tests/mediarenderer/MediaController.html?total_num=22&amp;amp;locator_key=id&amp;amp;value=4</test_script_entry>
         </description>
       </testcase>
-      <testcase component="WebAPI/Media Renderer API/DLNA" execution_type="auto" id="MediaControllerStatusEvent_speed" purpose="Check if readonly MediaControllerStatusEvent.speed exists and type of number" onload_delay="30">
+      <testcase component="WebAPI/DLNA/MediaRenderer" execution_type="auto" id="MediaController_volume" purpose="Check if readonly MediaController.volume exists and type of number" onload_delay="30">
         <description>
-          <test_script_entry>/opt/webapi-mediarenderer-xwalk-tests/mediarenderer/MediaControllerStatusEvent.html?total_num=16&amp;amp;locator_key=id&amp;amp;value=5</test_script_entry>
+          <test_script_entry>/opt/webapi-mediarenderer-xwalk-tests/mediarenderer/MediaController.html?total_num=22&amp;amp;locator_key=id&amp;amp;value=5</test_script_entry>
+        </description>
+      </testcase>
+      <testcase component="WebAPI/DLNA/MediaRenderer" execution_type="auto" id="MediaController_volume_basic" purpose="Check if MediaController.volume is valid" onload_delay="30">
+        <description>
+          <test_script_entry>/opt/webapi-mediarenderer-xwalk-tests/mediarenderer/MediaController.html?total_num=22&amp;amp;locator_key=id&amp;amp;value=6</test_script_entry>
+        </description>
+      </testcase>
+      <testcase component="WebAPI/DLNA/MediaRenderer" execution_type="auto" id="MediaController_track" purpose="Check if readonly MediaController.track exists and type of number" onload_delay="30">
+        <description>
+          <test_script_entry>/opt/webapi-mediarenderer-xwalk-tests/mediarenderer/MediaController.html?total_num=22&amp;amp;locator_key=id&amp;amp;value=7</test_script_entry>
+        </description>
+      </testcase>
+      <testcase component="WebAPI/DLNA/MediaRenderer" execution_type="auto" id="MediaController_track_basic" purpose="Check if MediaController.track is valid" onload_delay="30">
+        <description>
+          <test_script_entry>/opt/webapi-mediarenderer-xwalk-tests/mediarenderer/MediaController.html?total_num=22&amp;amp;locator_key=id&amp;amp;value=8</test_script_entry>
+        </description>
+      </testcase>
+      <testcase component="WebAPI/DLNA/MediaRenderer" execution_type="auto" id="MediaController_speed" purpose="Check if readonly MediaController.speed exists and type of number" onload_delay="30">
+        <description>
+          <test_script_entry>/opt/webapi-mediarenderer-xwalk-tests/mediarenderer/MediaController.html?total_num=22&amp;amp;locator_key=id&amp;amp;value=9</test_script_entry>
+        </description>
+      </testcase>
+      <testcase component="WebAPI/DLNA/MediaRenderer" execution_type="auto" id="MediaController_speed_basic" purpose="Check if MediaController.speed is valid" onload_delay="30">
+        <description>
+          <test_script_entry>/opt/webapi-mediarenderer-xwalk-tests/mediarenderer/MediaController.html?total_num=22&amp;amp;locator_key=id&amp;amp;value=10</test_script_entry>
+        </description>
+      </testcase>
+      <testcase component="WebAPI/DLNA/MediaRenderer" execution_type="auto" id="MediaController_playSpeeds" purpose="Check if readonly MediaController.playSpeeds exists and type of number" onload_delay="30">
+        <description>
+          <test_script_entry>/opt/webapi-mediarenderer-xwalk-tests/mediarenderer/MediaController.html?total_num=22&amp;amp;locator_key=id&amp;amp;value=11</test_script_entry>
+        </description>
+      </testcase>
+      <testcase component="WebAPI/DLNA/MediaRenderer" execution_type="auto" id="MediaController_playSpeeds_basic" purpose="Check if MediaController.playSpeeds is valid" onload_delay="30">
+        <description>
+          <test_script_entry>/opt/webapi-mediarenderer-xwalk-tests/mediarenderer/MediaController.html?total_num=22&amp;amp;locator_key=id&amp;amp;value=12</test_script_entry>
+        </description>
+      </testcase>
+      <testcase component="WebAPI/DLNA/MediaRenderer" execution_type="auto" id="MediaController_play" purpose="Check if MediaController.play exists and type of function" onload_delay="30">
+        <description>
+          <test_script_entry>/opt/webapi-mediarenderer-xwalk-tests/mediarenderer/MediaController.html?total_num=22&amp;amp;locator_key=id&amp;amp;value=13</test_script_entry>
+        </description>
+      </testcase>
+      <testcase component="WebAPI/DLNA/MediaRenderer" execution_type="auto" id="MediaController_pause" purpose="Check if MediaController.pause exists and type of function" onload_delay="30">
+        <description>
+          <test_script_entry>/opt/webapi-mediarenderer-xwalk-tests/mediarenderer/MediaController.html?total_num=22&amp;amp;locator_key=id&amp;amp;value=14</test_script_entry>
+        </description>
+      </testcase>
+      <testcase component="WebAPI/DLNA/MediaRenderer" execution_type="auto" id="MediaController_stop" purpose="Check if MediaController.stop exists and type of function" onload_delay="30">
+        <description>
+          <test_script_entry>/opt/webapi-mediarenderer-xwalk-tests/mediarenderer/MediaController.html?total_num=22&amp;amp;locator_key=id&amp;amp;value=15</test_script_entry>
+        </description>
+      </testcase>
+      <testcase component="WebAPI/DLNA/MediaRenderer" execution_type="auto" id="MediaController_next" purpose="Check if MediaController.next exists and type of function" onload_delay="30">
+        <description>
+          <test_script_entry>/opt/webapi-mediarenderer-xwalk-tests/mediarenderer/MediaController.html?total_num=22&amp;amp;locator_key=id&amp;amp;value=16</test_script_entry>
+        </description>
+      </testcase>
+      <testcase component="WebAPI/DLNA/MediaRenderer" execution_type="auto" id="MediaController_previous" purpose="Check if MediaController.previous exists and type of function" onload_delay="30">
+        <description>
+          <test_script_entry>/opt/webapi-mediarenderer-xwalk-tests/mediarenderer/MediaController.html?total_num=22&amp;amp;locator_key=id&amp;amp;value=17</test_script_entry>
+        </description>
+      </testcase>
+      <testcase component="WebAPI/DLNA/MediaRenderer" execution_type="auto" id="MediaController_mute" purpose="Check if MediaController.mute exists and type of function" onload_delay="30">
+        <description>
+          <test_script_entry>/opt/webapi-mediarenderer-xwalk-tests/mediarenderer/MediaController.html?total_num=22&amp;amp;locator_key=id&amp;amp;value=18</test_script_entry>
+        </description>
+      </testcase>
+      <testcase component="WebAPI/DLNA/MediaRenderer" execution_type="auto" id="MediaController_setSpeed" purpose="Check if MediaController.setSpeed exists and type of function" onload_delay="30">
+        <description>
+          <test_script_entry>/opt/webapi-mediarenderer-xwalk-tests/mediarenderer/MediaController.html?total_num=22&amp;amp;locator_key=id&amp;amp;value=19</test_script_entry>
+        </description>
+      </testcase>
+      <testcase component="WebAPI/DLNA/MediaRenderer" execution_type="auto" id="MediaController_setVolume" purpose="Check if MediaController.setVolume exists and type of function" onload_delay="30">
+        <description>
+          <test_script_entry>/opt/webapi-mediarenderer-xwalk-tests/mediarenderer/MediaController.html?total_num=22&amp;amp;locator_key=id&amp;amp;value=20</test_script_entry>
+        </description>
+      </testcase>
+      <testcase component="WebAPI/DLNA/MediaRenderer" execution_type="auto" id="MediaController_gotoTrack" purpose="Check if MediaController.gotoTrack exists and type of function" onload_delay="30">
+        <description>
+          <test_script_entry>/opt/webapi-mediarenderer-xwalk-tests/mediarenderer/MediaController.html?total_num=22&amp;amp;locator_key=id&amp;amp;value=21</test_script_entry>
+        </description>
+      </testcase>
+      <testcase component="WebAPI/DLNA/MediaRenderer" execution_type="auto" id="MediaController_onstatuschanged" purpose="Check if MediaController.onstatuschanged exists and type of event" onload_delay="30">
+        <description>
+          <test_script_entry>/opt/webapi-mediarenderer-xwalk-tests/mediarenderer/MediaController.html?total_num=22&amp;amp;locator_key=id&amp;amp;value=22</test_script_entry>
+        </description>
+      </testcase>
+      <testcase component="WebAPI/DLNA/MediaRenderer" execution_type="auto" id="MediaControllerStatusEvent_playbackStatus" purpose="Check if readonly MediaControllerStatusEvent.playbackStatus exists and type of string" onload_delay="30">
+        <description>
+          <test_script_entry>/opt/webapi-mediarenderer-xwalk-tests/mediarenderer/MediaControllerStatusEvent.html?total_num=10&amp;amp;locator_key=id&amp;amp;value=1</test_script_entry>
+        </description>
+      </testcase>
+      <testcase component="WebAPI/DLNA/MediaRenderer" execution_type="auto" id="MediaControllerStatusEvent_playbackStatus_basic" purpose="Check if MediaControllerStatusEvent.playbackStatus is valid" onload_delay="30">
+        <description>
+          <test_script_entry>/opt/webapi-mediarenderer-xwalk-tests/mediarenderer/MediaControllerStatusEvent.html?total_num=10&amp;amp;locator_key=id&amp;amp;value=2</test_script_entry>
+        </description>
+      </testcase>
+      <testcase component="WebAPI/DLNA/MediaRenderer" execution_type="auto" id="MediaControllerStatusEvent_muted" purpose="Check if readonly MediaControllerStatusEvent.muted exists and type of boolean" onload_delay="30">
+        <description>
+          <test_script_entry>/opt/webapi-mediarenderer-xwalk-tests/mediarenderer/MediaControllerStatusEvent.html?total_num=10&amp;amp;locator_key=id&amp;amp;value=3</test_script_entry>
+        </description>
+      </testcase>
+      <testcase component="WebAPI/DLNA/MediaRenderer" execution_type="auto" id="MediaControllerStatusEvent_muted_basic" purpose="Check if MediaControllerStatusEvent.muted is valid" onload_delay="30">
+        <description>
+          <test_script_entry>/opt/webapi-mediarenderer-xwalk-tests/mediarenderer/MediaControllerStatusEvent.html?total_num=10&amp;amp;locator_key=id&amp;amp;value=4</test_script_entry>
+        </description>
+      </testcase>
+      <testcase component="WebAPI/DLNA/MediaRenderer" execution_type="auto" id="MediaControllerStatusEvent_volume" purpose="Check if readonly MediaControllerStatusEvent.volume exists and type of number" onload_delay="30">
+        <description>
+          <test_script_entry>/opt/webapi-mediarenderer-xwalk-tests/mediarenderer/MediaControllerStatusEvent.html?total_num=10&amp;amp;locator_key=id&amp;amp;value=5</test_script_entry>
+        </description>
+      </testcase>
+      <testcase component="WebAPI/DLNA/MediaRenderer" execution_type="auto" id="MediaControllerStatusEvent_volume_basic" purpose="Check if MediaControllerStatusEvent.volume is valid" onload_delay="30">
+        <description>
+          <test_script_entry>/opt/webapi-mediarenderer-xwalk-tests/mediarenderer/MediaControllerStatusEvent.html?total_num=10&amp;amp;locator_key=id&amp;amp;value=6</test_script_entry>
+        </description>
+      </testcase>
+      <testcase component="WebAPI/DLNA/MediaRenderer" execution_type="auto" id="MediaControllerStatusEvent_track" purpose="Check if readonly MediaControllerStatusEvent.track exists and type of number" onload_delay="30">
+        <description>
+          <test_script_entry>/opt/webapi-mediarenderer-xwalk-tests/mediarenderer/MediaControllerStatusEvent.html?total_num=10&amp;amp;locator_key=id&amp;amp;value=7</test_script_entry>
+        </description>
+      </testcase>
+      <testcase component="WebAPI/DLNA/MediaRenderer" execution_type="auto" id="MediaControllerStatusEvent_track_basic" purpose="Check if MediaControllerStatusEvent.track is valid" onload_delay="30">
+        <description>
+          <test_script_entry>/opt/webapi-mediarenderer-xwalk-tests/mediarenderer/MediaControllerStatusEvent.html?total_num=10&amp;amp;locator_key=id&amp;amp;value=8</test_script_entry>
+        </description>
+      </testcase>
+      <testcase component="WebAPI/DLNA/MediaRenderer" execution_type="auto" id="MediaControllerStatusEvent_speed" purpose="Check if readonly MediaControllerStatusEvent.speed exists and type of number" onload_delay="30">
+        <description>
+          <test_script_entry>/opt/webapi-mediarenderer-xwalk-tests/mediarenderer/MediaControllerStatusEvent.html?total_num=10&amp;amp;locator_key=id&amp;amp;value=9</test_script_entry>
+        </description>
+      </testcase>
+      <testcase component="WebAPI/DLNA/MediaRenderer" execution_type="auto" id="MediaControllerStatusEvent_speed_basic" purpose="Check if MediaControllerStatusEvent.speed is valid" onload_delay="30">
+        <description>
+          <test_script_entry>/opt/webapi-mediarenderer-xwalk-tests/mediarenderer/MediaControllerStatusEvent.html?total_num=10&amp;amp;locator_key=id&amp;amp;value=10</test_script_entry>
         </description>
       </testcase>
     </set>

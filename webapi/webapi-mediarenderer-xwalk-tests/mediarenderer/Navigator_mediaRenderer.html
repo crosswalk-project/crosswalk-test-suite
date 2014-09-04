@@ -45,4 +45,8 @@ test(function () {
   assert_readonly(navigator, "mediaRenderer", "expect attribute mediaRenderer cannot be changed but");
 }, "Check if readonly Navigator.mediaRenderer exists and type of object");
 
+test(function () {
+  assert_not_equals(navigator.mediaRenderer, null, "mediaRenderer attribute of Navigator");
+}, "Check if Navigator.mediaRenderer is valid");
+
 </script>

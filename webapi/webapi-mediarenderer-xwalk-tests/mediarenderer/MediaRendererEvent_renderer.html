@@ -39,15 +39,20 @@ Authors:
 <div id="log"></div>
 <script>
 
-var t = async_test("Check if the readonly attribute renderer of MediaRendererEvent exists and type of object");
-setup({timeout: 30000});
+setup({timeout: 30000}, {explicit_done: true});
 
-navigator.mediaRenderer.onrendererfound = t.step_func(function (event) {
-  assert_true("renderer" in event, "renderer attribute in MediaRendererEvent");
-  assert_equals(typeof (event.renderer), "object", "renderer attribute of type");
-  assert_readonly(event, "renderer", "expect attribute renderer cannot be changed but");
-  t.done();
-});
+navigator.mediaRenderer.onrendererfound = function (event) {
+  test(function () {
+    assert_true("renderer" in event, "renderer attribute in MediaRendererEvent");
+    assert_equals(typeof (event.renderer), "object", "renderer attribute of type");
+    assert_readonly(event, "renderer", "expect attribute renderer cannot be changed but");
+  }, "Check if the readonly attribute renderer of MediaRendererEvent exists and type of object");
+
+  test(function () {
+    assert_not_equals(event.renderer, null, "renderer attribute of MediaRendererEvent");
+  }, "Check if MediaRendererEvent.renderer is valid");
+  done();
+};
 
 navigator.mediaRenderer.scanNetwork();
 
