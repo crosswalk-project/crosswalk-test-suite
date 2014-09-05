@@ -1,4 +1,4 @@
-
+#!/usr/bin/env python
 import sys, os, itertools, shutil, getopt, re, time 
 import const
 import pdb, traceback
@@ -930,10 +930,8 @@ def main(argv):
         global Test_Flag
         global logfile
         global Test_Device_Type
-        logfile = file(const.log_path,"w+")
         do_Clear(const.path_tcs)
-        log_Log(" test start\n")
-        log_Log(" init summart file\n")
+        
         do_Clear(const.path + "/self")
         do_Clear(const.report_path + "/manifest_all_positive.txt")
         do_Clear(const.report_path + "/manifest_all_negative.txt")
@@ -943,6 +941,10 @@ def main(argv):
         getEnv_Id = os.environ.get('DEVICE_ID')
         Test_Device_Type = os.environ.get('CONNECT_TYPE')
         log_Log(" get env =" + str(getEnv_Id) + str(Test_Device_Type) + "\n")
+        log_Log(" logfile =" + const.log_path + str(getEnv_Id) + ".txt" + "\n")
+        logfile = file(const.log_path + str(getEnv_Id) + ".txt","w+")
+        log_Log(" test start\n")
+        log_Log(" init summart file\n")
         if (not getEnv_Id):
             log_Log(" get env error\n")
             sys.exit(1)

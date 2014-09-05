@@ -56,9 +56,8 @@ Test Step:
 2. cd opt/wrt-manifest-tizen-tests/
 3. ./inst.sh
 4. cd /opt/usr/media/tct/opt/wrt-manifest-tizen-tests/
-5. run test.py as below sample:
-   1. testkit-lite -f "/opt/usr/media/tct/opt/wrt-manifest-tizen-tests/tests.xml" -A -o ./result.xml --comm localhost --testenvs "DEVICE_ID=10.239.250.183 CONNECT_TYPE=sdb"
-   2. testkit-lite -f "/opt/usr/media/tct/opt/wrt-manifest-tizen-tests/tests.xml" -A -o ./result.xml --comm localhost --testenvs "DEVICE_ID=root@10.239.250.205 CONNECT_TYPE=ssh"
-   3. testkit-lite -f "/opt/usr/media/tct/opt/wrt-manifest-tizen-tests/tests.xml" -A -o ./result.xml --comm localhost --testenvs "DEVICE_ID=10.239.250.183,10.239.250.180 CONNECT_TYPE=sdb"
+5. run test.py as below sample:(note:--testprefix path is the test.py path)
+   1. testkit-lite -f "/path/opt/wrt-manifest-tizen-tests/tests.xml" -A -o ./result.xml --comm localhost --testenvs "DEVICE_ID=10.239.250.183 CONNECT_TYPE=sdb" --testprefix '/path/'
+   2. testkit-lite -f "/path/opt/wrt-manifest-tizen-tests/tests.xml" -A -o ./result.xml --comm localhost --testenvs "DEVICE_ID=root@10.239.250.205 CONNECT_TYPE=ssh" --testprefix '/path/'
    
 Base on the seed file, the total case number is 272.
