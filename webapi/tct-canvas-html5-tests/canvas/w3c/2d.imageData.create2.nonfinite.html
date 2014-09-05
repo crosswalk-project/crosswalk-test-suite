@@ -9,7 +9,7 @@
 <body class="show_output">
 
 <h1>2d.imageData.create2.nonfinite</h1>
-<p class="desc">createImageData() throws NotSupportedError if arguments are not finite</p>
+<p class="desc">createImageData() throws TypeError if arguments are not finite</p>
 
 <p class="notes">Defined in "Web IDL" (draft)
 <p class="output">Actual output:</p>
@@ -17,26 +17,26 @@
 
 <ul id="d"></ul>
 <script>
-var t = async_test("createImageData() throws NotSupportedError if arguments are not finite");
+var t = async_test("createImageData() throws TypeError if arguments are not finite");
 _addTest(function(canvas, ctx) {
 
-assert_throws("NotSupportedError", function() { ctx.createImageData(Infinity, 10); });
-assert_throws("NotSupportedError", function() { ctx.createImageData(-Infinity, 10); });
-assert_throws("NotSupportedError", function() { ctx.createImageData(NaN, 10); });
-assert_throws("NotSupportedError", function() { ctx.createImageData(10, Infinity); });
-assert_throws("NotSupportedError", function() { ctx.createImageData(10, -Infinity); });
-assert_throws("NotSupportedError", function() { ctx.createImageData(10, NaN); });
-assert_throws("NotSupportedError", function() { ctx.createImageData(Infinity, Infinity); });
+assert_throws(new TypeError(), function() { ctx.createImageData(Infinity, 10); });
+assert_throws(new TypeError(), function() { ctx.createImageData(-Infinity, 10); });
+assert_throws(new TypeError(), function() { ctx.createImageData(NaN, 10); });
+assert_throws(new TypeError(), function() { ctx.createImageData(10, Infinity); });
+assert_throws(new TypeError(), function() { ctx.createImageData(10, -Infinity); });
+assert_throws(new TypeError(), function() { ctx.createImageData(10, NaN); });
+assert_throws(new TypeError(), function() { ctx.createImageData(Infinity, Infinity); });
 var posinfobj = { valueOf: function() { return Infinity; } },
     neginfobj = { valueOf: function() { return -Infinity; } },
     nanobj = { valueOf: function() { return -Infinity; } };
-assert_throws("NotSupportedError", function() { ctx.createImageData(posinfobj, 10); });
-assert_throws("NotSupportedError", function() { ctx.createImageData(neginfobj, 10); });
-assert_throws("NotSupportedError", function() { ctx.createImageData(nanobj, 10); });
-assert_throws("NotSupportedError", function() { ctx.createImageData(10, posinfobj); });
-assert_throws("NotSupportedError", function() { ctx.createImageData(10, neginfobj); });
-assert_throws("NotSupportedError", function() { ctx.createImageData(10, nanobj); });
-assert_throws("NotSupportedError", function() { ctx.createImageData(posinfobj, posinfobj); });
+assert_throws(new TypeError(), function() { ctx.createImageData(posinfobj, 10); });
+assert_throws(new TypeError(), function() { ctx.createImageData(neginfobj, 10); });
+assert_throws(new TypeError(), function() { ctx.createImageData(nanobj, 10); });
+assert_throws(new TypeError(), function() { ctx.createImageData(10, posinfobj); });
+assert_throws(new TypeError(), function() { ctx.createImageData(10, neginfobj); });
+assert_throws(new TypeError(), function() { ctx.createImageData(10, nanobj); });
+assert_throws(new TypeError(), function() { ctx.createImageData(posinfobj, posinfobj); });
 _asserted = true;
 
 });
