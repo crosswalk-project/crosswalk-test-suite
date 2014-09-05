@@ -50,13 +50,12 @@ Authors:
           <li>Pack the web app with several options, command like:<br/>
               $ python make_apk.py --name=[name] --package=[package] --app-url=http://www.intel.com --arch=x86 --app-version=1.0.0 --keep-screen-on --mode=shared</li>
           <li>Pack the web app with several options, command like:<br/>
-              $ python make_apk.py --name=[name] --package=[package] --app-url=http://www.intel.com --arch=x86 --app-version=1.0.0 --keep-screen-on --mode=shared --verbose</li>
+              $ python make_apk.py --name=[name] --package=[package] --app-url=http://www.intel.com --arch=arm --app-version=1.0.0 --keep-screen-on --mode=shared --verbose</li>
           <li>Compare the two packaging process messages in terminal</li>
-          <li>Install the packaged apk</li>
+          <li>Install the first apk in "x86" platform, and the second one in "arm" platform</li>
           <li>Set the device screen off as 15 seconds(Setting->Display->Sleep: 15 seconds)</li>
           <li>Check the web app version in Setting</li>
-          <li>Launch the web app</li>
-          <li>Check the screen</li>
+          <li>Launch the web app and check the screen</li>
         </ol>
       </div>
       <div data-role="footer" data-position="fixed">
@@ -68,10 +67,10 @@ Authors:
           <p>Expected Result:</p>
           <ol>
             <li>Apk with "x86" arch and shared mode could be created successfully</li>
-            <li>Apk could be created successfully</li>
+            <li>Apk with "arm" arch and shared mode could be created successfully</li>
             <li>More detailed messages can be got in the second packaging process</li>
             <li>Web App could be installed successfully</li>
-            <li>The version of the web app is like 1.0.0.x</li>
+            <li>Version of the two web apps are both 1.0.0</li>
             <li>Web App could be launched successfully, the home page display intel and keep screen on status more than 15 seconds</li>
           </ol>
         </font>
