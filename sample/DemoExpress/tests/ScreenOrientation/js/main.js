@@ -31,22 +31,22 @@ Authors:
 
 $(document).ready( function() {
   $("#b1").click( function() {
-    screen.lockOrientation("portrait-primary");
+    screen.orientation.lock("portrait-primary");
   });
   $("#b2").click( function() {
-    screen.lockOrientation("portrait-secondary");
+    screen.orientation.lock("portrait-secondary");
   });
   $("#b3").click( function() {
-    screen.lockOrientation("landscape-primary");
+    screen.orientation.lock("landscape-primary");
   });
   $("#b4").click( function() {
-    screen.lockOrientation("landscape-secondary");
+    screen.orientation.lock("landscape-secondary");
   });
   $("#b5").click( function() {
-    screen.unlockOrientation();
+    screen.orientation.unlock();
   });
 });
 
 $(window).unload( function() {
-  screen.unlockOrientation();
+  screen.orientation.unlock();
 });
