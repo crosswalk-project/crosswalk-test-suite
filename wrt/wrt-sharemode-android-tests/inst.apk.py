@@ -11,6 +11,7 @@ from optparse import OptionParser, make_option
 
 SCRIPT_DIR = os.path.dirname(os.path.abspath(__file__))
 PKG_NAME = os.path.basename(SCRIPT_DIR)
+TEST_PREFIX = os.environ['HOME']
 PARAMETERS = None
 ADB_CMD = "adb"
 
@@ -88,8 +89,8 @@ def uninstPKGs():
                     if "Failure" in line:
                         action_status = False
                         break
-    if os.path.isdir("%s/tct/opt/%s/" % (os.environ['HOME'], PKG_NAME)):
-        shutil.rmtree("%s/tct/opt/%s/" % (os.environ['HOME'], PKG_NAME))
+    #if os.path.isdir("%s/opt/%s/" % (TEST_PREFIX, PKG_NAME)):
+        #shutil.rmtree("%s/opt/%s/" % (TEST_PREFIX, PKG_NAME))
     return action_status
 
 
@@ -107,15 +108,15 @@ def instPKGs():
             continue
         else:
             item_name = os.path.basename(item)
-            if not doCopy(item, "%s/tct/opt/%s/%s" % (os.environ['HOME'], PKG_NAME, item_name)):
+            if not doCopy(item, "%s/opt/%s/%s" % (TEST_PREFIX, PKG_NAME, item_name)):
                 action_status = False
-    os.rename("%s/tct/opt/%s/resources/apk/webappintel.apk" % (os.environ['HOME'], PKG_NAME),"%s/tct/opt/%s/resources/apk/WebApp.apk" % (os.environ['HOME'], PKG_NAME))
-    print "Package push to host %s/tct/opt/%s successfully!" % (os.environ['HOME'], PKG_NAME)
+    os.rename("%s/opt/%s/resources/apk/webappintel.apk" % (TEST_PREFIX, PKG_NAME),"%s/opt/%s/resources/apk/WebApp.apk" % (TEST_PREFIX, PKG_NAME))
+    print "Package push to host %s/opt/%s successfully!" % (TEST_PREFIX, PKG_NAME)
     path = "/tmp/Crosswalk_sharemode.conf"
     if os.path.exists(path):
-        if not doCopy(path, "%s/tct/opt/%s/Crosswalk_sharemode.conf" % (os.environ['HOME'], PKG_NAME)):
+        if not doCopy(path, "%s/opt/%s/Crosswalk_sharemode.conf" % (TEST_PREFIX, PKG_NAME)):
             action_status = False
-        (return_code, output) = doCMD("cat \"%s/tct/opt/%s/Crosswalk_sharemode.conf\" | grep \"Android_Crosswalk_Path\" | cut -d \"=\" -f 2" % (os.environ['HOME'], PKG_NAME))
+        (return_code, output) = doCMD("cat \"%s/opt/%s/Crosswalk_sharemode.conf\" | grep \"Android_Crosswalk_Path\" | cut -d \"=\" -f 2" % (TEST_PREFIX, PKG_NAME))
         for line in output:
             if "Failure" in line:
                 action_status = False
@@ -123,7 +124,7 @@ def instPKGs():
         if not output == []:
             ANDROID_CROSSWALK_PATH = output[0]
             CROSSWALK = os.path.basename(ANDROID_CROSSWALK_PATH)
-            if not doCopy(ANDROID_CROSSWALK_PATH, "%s/tct/opt/%s/resources/installer/%s" % (os.environ['HOME'], PKG_NAME, CROSSWALK)):
+            if not doCopy(ANDROID_CROSSWALK_PATH, "%s/opt/%s/resources/installer/%s" % (TEST_PREFIX, PKG_NAME, CROSSWALK)):
                 action_status = False    
         
     return action_status
@@ -131,6 +132,7 @@ def instPKGs():
 
 def main():
     try:
+        global TEST_PREFIX
         usage = "usage: inst.py -i"
         opts_parser = OptionParser(usage=usage)
         opts_parser.add_option(
@@ -139,6 +141,8 @@ def main():
             "-i", dest="binstpkg", action="store_true", help="Install package")
         opts_parser.add_option(
             "-u", dest="buninstpkg", action="store_true", help="Uninstall package")
+        opts_parser.add_option(
+            "-t", dest="testprefix", action="store", help="unzip path prefix", default=os.environ["HOME"])
         global PARAMETERS
         (PARAMETERS, args) = opts_parser.parse_args()
     except Exception, e:
@@ -152,6 +156,8 @@ def main():
                 PARAMETERS.device = line.split("\t")[0]
                 break
 
+    TEST_PREFIX = PARAMETERS.testprefix
+
     if not PARAMETERS.device:
         print "No device found"
         sys.exit(1)
@@ -164,8 +170,9 @@ def main():
         if not uninstPKGs():
             sys.exit(1)
     else:
-        if not instPKGs():
-            sys.exit(1)
+        pass
+        #if not instPKGs():
+            #sys.exit(1)
 
 if __name__ == "__main__":
     main()

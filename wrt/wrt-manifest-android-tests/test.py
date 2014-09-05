@@ -1,3 +1,4 @@
+#!/usr/bin/env python
 import sys, os, os.path, shutil, time
 import commands
 import thread, Queue
@@ -8,8 +9,9 @@ from xml.etree.ElementTree import SubElement as SE
 import metacomm.combinatorics.all_pairs2
 all_pairs = metacomm.combinatorics.all_pairs2.all_pairs2
 
-ConstPath = os.environ['HOME'] + "/tct/opt/wrt-manifest-android-tests"
 Devices = []
+SCRIPT_PATH = os.path.realpath(__file__)
+ConstPath = os.path.dirname(SCRIPT_PATH)
 
 def genSelfcom(combIn, combOut):
     try:
@@ -423,16 +425,6 @@ def genSummaryXml(summaryList, device, Start, End):
         print "Generate summary.xml ---------------->Error"
         sys.exit(1)
 
-def devicesConform():
-    try:
-        deviceList = os.popen("adb devices").readlines()
-        if len(deviceList) == 2:
-            print "No test devices connected, Please attention"
-            sys.exit(1)
-    except Exception,e:
-        print Exception,"Device Connect error:",e
-        sys.exit(1)
-
 def sourceInit(Devices):
     #os.system("rm -rf " + ConstPath + "/device_* " + "&>/dev/null")
     for device in Devices:
@@ -479,7 +471,6 @@ def main():
         global Devices
         DeviceQueue = Queue.Queue()
 
-        devicesConform()
         if "DEVICE_ID" in os.environ:
             for device in os.environ["DEVICE_ID"].split(","):
                 Devices.append(device)
