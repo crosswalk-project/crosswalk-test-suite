@@ -166,7 +166,7 @@ def uninstPKGs():
 
 
 def instPKGs():
-    action_status = True
+   """ action_status = True
     (return_code, output) = doCMD(
         "mkdir -p %s" % PKG_SRC_DIR)
     if return_code != 0:
@@ -191,7 +191,7 @@ def instPKGs():
                 action_status = False
     print "Package push to host /opt/usr/media/tct/ successfully!"
     return action_status
-
+"""
 
 def main():
     try:
