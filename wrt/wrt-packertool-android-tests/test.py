@@ -1,3 +1,4 @@
+#!/usr/bin/env python
 import sys, os, os.path, time, shutil
 import commands, Queue, thread
 
@@ -8,7 +9,8 @@ import metacomm.combinatorics.all_pairs2
 all_pairs = metacomm.combinatorics.all_pairs2.all_pairs2
 
 Devices = []
-ConstPath = os.environ['HOME'] + "/tct/opt/wrt-packertool-android-tests"
+SCRIPT_PATH = os.path.realpath(__file__)
+ConstPath = os.path.dirname(SCRIPT_PATH)
 
 def lineCount(fp):
     fileTmp = open(fp)
@@ -349,7 +351,7 @@ def genResultXml(resultList, device, Start, End):
         suite = SE(root, "suite", {"category":"Crosswalk_Packer_Tool","launcher":"xwalk",\
         "name":"wrt-packertool-android-tests"})
         setPositive = SE(suite, "set", {"name":"positive","set_debug_msg":""})
-        setNegitive = SE(suite, "set", {"name":"negitive","set_debug_msg":""})
+        setNegitive = SE(suite, "set", {"name":"negative","set_debug_msg":""})
 
         #testcase element
         for case in resultList:
@@ -420,16 +422,6 @@ def genSummaryXml(summaryList, device, Start, End):
     except Exception,e:
         print Exception,"Generate summary.xml error:",e
 
-def devicesConform():
-    try:
-        deviceList = os.popen("adb devices").readlines()
-        if len(deviceList) == 2:
-            print "No test devices connected, Please attention"
-            sys.exit(1)
-    except Exception,e:
-        print Exception,"Device Connect error:",e
-        sys.exit(1)
-
 def seedDistribute(Devices):
     cDevices = len(Devices)
     fp = os.popen("find " + ConstPath + "/allpairs/ -name '*txt' |awk -F 'allpairs' '{print $2}'")
@@ -467,7 +459,6 @@ def main():
         global Devices
         DeviceQueue = Queue.Queue()
 
-        devicesConform()
         if "DEVICE_ID" in os.environ:
             for device in os.environ["DEVICE_ID"].split(","):
                 Devices.append(device)

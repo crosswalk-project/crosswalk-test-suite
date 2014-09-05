@@ -11,6 +11,7 @@ from optparse import OptionParser, make_option
 
 SCRIPT_DIR = os.path.dirname(os.path.abspath(__file__))
 PKG_NAME = os.path.basename(SCRIPT_DIR)
+TEST_PREFIX = os.environ['HOME']
 PARAMETERS = None
 ADB_CMD = "adb"
 
@@ -110,15 +111,16 @@ def instPKGs():
             continue
         else:
             item_name = os.path.basename(item)
-            if not doCopy(item, "%s/tct/opt/%s/%s" % (os.environ['HOME'], PKG_NAME, item_name)):
+            if not doCopy(item, "%s/opt/%s/%s" % (TEST_PREFIX, PKG_NAME, item_name)):
             #if not doRemoteCopy(item, PKG_SRC_DIR):
                 action_status = False
-    print "Package push to host %s/tct/opt/%s successfully!" % (os.environ['HOME'], PKG_NAME)
+    print "Package push to host %s/opt/%s successfully!" % (TEST_PREFIX, PKG_NAME)
     return action_status
 
 
 def main():
     try:
+        global TEST_PREFIX
         usage = "usage: inst.py -i"
         opts_parser = OptionParser(usage=usage)
         opts_parser.add_option(
@@ -127,6 +129,8 @@ def main():
             "-i", dest="binstpkg", action="store_true", help="Install package")
         opts_parser.add_option(
             "-u", dest="buninstpkg", action="store_true", help="Uninstall package")
+        opts_parser.add_option(
+            "-t", dest="testprefix", action="store", help="unzip path prefix", default=os.environ["HOME"])
         global PARAMETERS
         (PARAMETERS, args) = opts_parser.parse_args()
     except Exception, e:
@@ -140,6 +144,8 @@ def main():
                 PARAMETERS.device = line.split("\t")[0]
                 break
 
+    TEST_PREFIX = PARAMETERS.testprefix
+
     if not PARAMETERS.device:
         print "No device found"
         sys.exit(1)
@@ -152,8 +158,9 @@ def main():
         if not uninstPKGs():
             sys.exit(1)
     else:
-        if not instPKGs():
-            sys.exit(1)
+        pass
+        #if not instPKGs():
+            #sys.exit(1)
 
 if __name__ == "__main__":
     main()
