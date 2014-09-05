@@ -39,10 +39,10 @@ function sendResourceTiming() {
     for (i = 0; i < resourceList.length; i++) {
       if (resourceList[i].initiatorType == 'img') {
         $("#info").css("display", "block");
-        document.getElementById("name").innerHTML = "name: " + resourceList[i].name;
-        document.getElementById("entryType").innerHTML = "entry type: " + resourceList[i].entryType;
-        document.getElementById("start").innerHTML = "start time: " + Math.round(resourceList[i].startTime) + "ms";
-        document.getElementById("duration").innerHTML = "duration time: " + Math.round(resourceList[i].duration) + "ms";
+        document.getElementById("name").innerHTML = "Name: " + resourceList[i].name;
+        document.getElementById("entryType").innerHTML = "Entry type: " + resourceList[i].entryType;
+        document.getElementById("start").innerHTML = "Start time: " + Math.round(resourceList[i].startTime) + "ms";
+        document.getElementById("duration").innerHTML = "Duration time: " + Math.round(resourceList[i].duration) + "ms";
         EnablePassButton();
       }
     }
