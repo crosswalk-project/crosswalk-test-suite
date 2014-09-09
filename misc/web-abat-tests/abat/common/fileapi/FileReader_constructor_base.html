@@ -38,23 +38,16 @@ Authors:
     <link rel="help" href="http://www.w3.org/TR/2011/WD-FileAPI-20111020/#dfn-filereader" />
     <meta name="flags" content="" />
     <meta name="assert" content="Check if the user agent must return a new FileReader object when the FileReader() constructor is invoked" />
-    <script src="filesupport.js"></script>
     <script src="../resources/testharness.js"></script>
     <script src="../resources/testharnessreport.js"></script>
   </head>
   <body>
     <div id="log"></div>
     <script>
-        var t = async_test(document.title, {timeout: 10000});
-        function RunTest() {
+        test(function () {
             var fileReader = new FileReader();
-            if (fileReader && fileReader instanceof FileReader) {
-                PassTest();
-            } else {
-                FailTest("Not return a FileReader object");
-            }
-        }
-        RunTest();
+            assert_true(fileReader && fileReader instanceof FileReader);
+        }, document.title);
     </script>
   </body>
 </html>
