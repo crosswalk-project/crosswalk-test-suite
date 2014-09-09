@@ -8,8 +8,8 @@ https://chromium.googlesource.com/chromium/blink/+/master/LICENSE
 -->
 
 <meta charset="utf-8">
-<title>Screen Test: lockOrientation-basic</title>
-<link rel="help" href="https://w3c.github.io/screen-orientation/#screenorientation-interface">
+<title>Screen Orientation API Test: basic lock/unlock</title>
+<link rel="help" href="https://w3c.github.io/screen-orientation/">
 <script src="../../resources/testharness.js"></script>
 <script src="../../resources/testharnessreport.js"></script>
 
@@ -26,7 +26,7 @@ t.step(function () {
   ].forEach(function(orientation) {
     orientation_num++;
     screen.orientation.lock(orientation).then(t.step_func(function(e) {
-      if(orientation_num == 11) {
+      if (orientation_num == 11) {
         t.done();
       }
     }), t.unreached_func("Unexpected error callback"));
