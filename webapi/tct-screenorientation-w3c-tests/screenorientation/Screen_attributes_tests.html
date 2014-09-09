@@ -45,12 +45,12 @@ test(function() {
 }, "Check if the window.screen exists");
 
 test(function() {
-  assert_true("lockOrientation" in screen);
-}, "Check if screen.lockOrientation() exists");
+  assert_true("lock" in screen.orientation);
+}, "Check if screen.orientation.lock() exists");
 
 test(function() {
-  assert_true("onorientationchange" in window);
-}, "Check if window.onorientationchange event exists");
+  assert_true("onchange" in screen.orientation);
+}, "Check if screen.orientation.onchange event exists");
 
 test(function() {
   assert_true("orientation" in screen);
@@ -77,7 +77,7 @@ test(function() {
 }, "Check that screen.orientation.type must be in current orientation");
 
 test(function() {
-  assert_true("unlockOrientation" in screen);
-}, "Check if screen.unlockOrientation() exists");
+  assert_true("unlock" in screen.orientation);
+}, "Check if screen.orientation.unlock() exists");
 
 </script>

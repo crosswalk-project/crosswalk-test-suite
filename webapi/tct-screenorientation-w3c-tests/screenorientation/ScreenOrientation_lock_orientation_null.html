@@ -32,17 +32,17 @@ Authors:
 -->
 
 <meta charset="utf-8">
-<title>Screen Test: Screen_lockOrientation_orientation_null</title>
+<title>Screen Test: ScreenOrientation_lock_orientation_null</title>
 <link rel="author" title="Intel" href="http://www.intel.com">
 <link rel="help" href="http://www.w3.org/TR/2012/WD-screen-orientation-20120522/#extensions-to-the-screen-interface" />
 <script src="../resources/testharness.js"></script>
 <script src="../resources/testharnessreport.js"></script>
 <div id="log"></div>
 <script>
-var t = async_test("Test checks that screen.lockOrientation(null) invoke error callback", { timeout: 2000});
+var t = async_test("Test checks that screen.orientation.lock(null) invoke error callback", { timeout: 2000});
 
 t.step(function () {
-  var p = screen.lockOrientation(null);
+  var p = screen.orientation.lock(null);
   p.then(t.unreached_func("Unexpected success callback"), t.step_func(function(e) {
     t.done();
   }));
