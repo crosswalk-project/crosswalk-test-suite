@@ -29,7 +29,7 @@ def create_driver():
     capabilities = {
         'xwalkOptions': {
             'androidPackage': 'org.xwalk.xwalkdrivertest',
-            'androidActivity': '.XwalkDriverTestActivity',
+            'androidActivity': '.XwalkdrivertestActivity',
         }
     }
     return webdriver.Remote('http://localhost:9515', capabilities)
