@@ -1,6 +1,6 @@
 name="webapi-noneservice-tests"
-version=$(grep main-version ../../VERSION |awk -F \" '{print $4}')
-sub_version=$(grep release-version ../../VERSION |awk -F \" '{print $4}')
+version=$(grep main-version $(dirname $0)/../../VERSION |awk -F \" '{print $4}')
+sub_version=$(grep release-version $(dirname $0)/../../VERSION |awk -F \" '{print $4}')
 appname=$(echo $name|sed 's/-/_/g')
 
 LIST=`find $(dirname $0)/../../../crosswalk-test-suite/webapi/ -maxdepth 1 -type d |awk '/-tests$/'`
@@ -23,7 +23,9 @@ tct-csp-w3c-tests
 tct-navigationtiming-w3c-tests
 tct-sandbox-html5-tests
 tct-sessionhistory-html5-tests
+tct-security-tcs-tests
 tct-sse-w3c-tests
+tct-webgl-nonw3c-tests
 tct-webmessaging-w3c-tests
 tct-websocket-w3c-tests
 tct-xmlhttprequest-w3c-tests

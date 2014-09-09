@@ -32,7 +32,7 @@ cp -a $SRC_ROOT/icon.png     $BUILD_ROOT/
 cp -ar $SRC_ROOT/../../tools/crosswalk $BUILD_ROOT/crosswalk
 
 cd $BUILD_ROOT/crosswalk
-python make_apk.py --package=org.xwalk.$appname --name=$appname --app-url=http://127.0.0.1:8080/index.html --icon=$BUILD_ROOT/icon.png --mode=embedded --arch=$arch
+python make_apk.py --package=org.xwalk.$appname --name=$appname --app-url=http://127.0.0.1:8080/index.html --icon=$BUILD_ROOT/icon.png --mode=embedded --arch=$arch --enable-remote-debugging
 if [ $? -ne 0 ];then
     echo "Create $name.apk fail.... >>>>>>>>>>>>>>>>>>>>>>>>>"
     clean_workspace
