@@ -1,3 +1,0 @@
-SUBDIRS = lifecycle_nonpers_onewin_tests web_scroll_indicators_tests disable_raw_socket_tests disable_device_capabilities_tests web_feature_datetime_tests web_pinch_zoom_tests splashscreen_app_bmp_tests splashscreen_app_gif_tests splashscreen_app_jpg_tests splashscreen_app_png_tests
-MANIFESTdir = /opt/wrt-common-webapp-tests/webapp
-EXTRA_DIST = $(MANIFEST_SCRIPTS)
