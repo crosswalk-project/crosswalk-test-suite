@@ -67,31 +67,12 @@ cp -a $BUILD_ROOT/webrunner/*     $BUILD_DEST/
 
 cp -ar $SRC_ROOT/../../tools/crosswalk $BUILD_ROOT/crosswalk
 cd $BUILD_ROOT/crosswalk
-python make_apk.py --package=org.xwalk.$appname --name=$appname --app-root=$BUILD_DEST --app-local-path=entry.html --icon=$BUILD_DEST/icon.png --mode=embedded --arch=$arch
+python make_apk.py --package=org.xwalk.$appname --name=$appname --app-root=$BUILD_DEST --app-local-path=entry.html --icon=$BUILD_DEST/icon.png --mode=embedded --arch=$arch --enable-remote-debugging
 if [ $? -ne 0 ];then
     echo "Create $name.apk fail.... >>>>>>>>>>>>>>>>>>>>>>>>>"
     clean_workspace
     exit 1
 fi
-#TODO: handle sub apk 8888888888888888888
-### creat sub apk ##
-#
-for suite in `ls $BUILD_ROOT |grep "\-tests" |grep -v spec$`;do
-    if [ "$suite" == "webapi-presentation-xwalk-tests" ];then 
-        specDir="presentation"
-#    elif [ "$suite" == "webapi-runtime-xwalk-tests" ];then
-#        specDir="runtime"
-    elif [ "$suite" == "tct-security-tcs-tests" ];then
-        specDir="security/support"
-    else
-        continue
-    fi
-    for dir in `ls -l $BUILD_ROOT/$suite/$specDir/ |awk '/^d/ {print $NF}'`;do
-        SubApkSrc=$BUILD_ROOT/$suite/$specDir/$dir
-        SubApkName=`basename $SubApkSrc |sed 's/-/_/g'`
-        python make_apk.py --package=org.xwalk.$SubApkName --name=$SubApkName --app-root=$SubApkSrc --app-local-path=index.html --icon=$SubApkSrc/icon.png --mode=embedded --arch=$arch
-    done
-done
 
 ## cp tests.xml and inst.sh ##
 mkdir -p $BUILD_DEST/opt/$name
@@ -108,6 +89,9 @@ done
 
 ## creat zip package ##
 mv $BUILD_ROOT/crosswalk/*.apk $BUILD_DEST/opt/$name/
+if [ -f $BUILD_DEST/opt/$name/WebapiNoneserviceTests_$arch.apk ];then
+    mv $BUILD_DEST/opt/$name/WebapiNoneserviceTests_$arch.apk $BUILD_DEST/opt/$name/webapi_noneservice_tests.apk
+fi
 cd $BUILD_DEST
 
 zip -Drq $BUILD_DEST/$name-$version-$sub_version.apk.zip opt/
