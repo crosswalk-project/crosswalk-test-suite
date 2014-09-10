@@ -29,7 +29,7 @@ Authors:
 
 */
 
-var videoFileList = new Array("3GP_h263_CIF_30FPS_507Kbps_eAAC+_Stereo_64Kbps_60sec(4.1Mb)_BBB.3gp", "MP4_h264_CIF_15FPS_387Kbps_MP3_44.1KHz_64Kbps_60sec(3.4Mb)_BBB(hinted).mp4", "MP4_MPEG4_CIF_15FPS_387Kbps_MP3_44.1KHz_64Kbps_60sec(3Mb)_BBB(hinted).mp4");
+var videoFileList = new Array("3GP_h263_CIF_30FPS_507Kbps_HE-AAC_Stereo_64Kbps_60sec(4.1Mb)_BBB.3gp", "MP4_h264_CIF_15FPS_387Kbps_MP3_44.1KHz_64Kbps_60sec(3.4Mb)_BBB(hinted).mp4", "MP4_MPEG4_CIF_15FPS_387Kbps_MP3_44.1KHz_64Kbps_60sec(3Mb)_BBB(hinted).mp4");
 var testTarget='';
 
 $(document).ready(function(){
