@@ -9,7 +9,7 @@
 <body class="show_output">
 
 <h1>2d.gradient.linear.nonfinite</h1>
-<p class="desc">createLinearGradient() throws NotSupportedError if arguments are not finite</p>
+<p class="desc">createLinearGradient() throws TypeError if arguments are not finite</p>
 
 <p class="notes">Defined in "Web IDL" (draft)
 <p class="output">Actual output:</p>
@@ -17,32 +17,32 @@
 
 <ul id="d"></ul>
 <script>
-var t = async_test("createLinearGradient() throws NotSupportedError if arguments are not finite");
+var t = async_test("createLinearGradient() throws TypeError if arguments are not finite");
 _addTest(function(canvas, ctx) {
 
-assert_throws("NotSupportedError", function() { ctx.createLinearGradient(Infinity, 0, 1, 0); });
-assert_throws("NotSupportedError", function() { ctx.createLinearGradient(-Infinity, 0, 1, 0); });
-assert_throws("NotSupportedError", function() { ctx.createLinearGradient(NaN, 0, 1, 0); });
-assert_throws("NotSupportedError", function() { ctx.createLinearGradient(0, Infinity, 1, 0); });
-assert_throws("NotSupportedError", function() { ctx.createLinearGradient(0, -Infinity, 1, 0); });
-assert_throws("NotSupportedError", function() { ctx.createLinearGradient(0, NaN, 1, 0); });
-assert_throws("NotSupportedError", function() { ctx.createLinearGradient(0, 0, Infinity, 0); });
-assert_throws("NotSupportedError", function() { ctx.createLinearGradient(0, 0, -Infinity, 0); });
-assert_throws("NotSupportedError", function() { ctx.createLinearGradient(0, 0, NaN, 0); });
-assert_throws("NotSupportedError", function() { ctx.createLinearGradient(0, 0, 1, Infinity); });
-assert_throws("NotSupportedError", function() { ctx.createLinearGradient(0, 0, 1, -Infinity); });
-assert_throws("NotSupportedError", function() { ctx.createLinearGradient(0, 0, 1, NaN); });
-assert_throws("NotSupportedError", function() { ctx.createLinearGradient(Infinity, Infinity, 1, 0); });
-assert_throws("NotSupportedError", function() { ctx.createLinearGradient(Infinity, Infinity, Infinity, 0); });
-assert_throws("NotSupportedError", function() { ctx.createLinearGradient(Infinity, Infinity, Infinity, Infinity); });
-assert_throws("NotSupportedError", function() { ctx.createLinearGradient(Infinity, Infinity, 1, Infinity); });
-assert_throws("NotSupportedError", function() { ctx.createLinearGradient(Infinity, 0, Infinity, 0); });
-assert_throws("NotSupportedError", function() { ctx.createLinearGradient(Infinity, 0, Infinity, Infinity); });
-assert_throws("NotSupportedError", function() { ctx.createLinearGradient(Infinity, 0, 1, Infinity); });
-assert_throws("NotSupportedError", function() { ctx.createLinearGradient(0, Infinity, Infinity, 0); });
-assert_throws("NotSupportedError", function() { ctx.createLinearGradient(0, Infinity, Infinity, Infinity); });
-assert_throws("NotSupportedError", function() { ctx.createLinearGradient(0, Infinity, 1, Infinity); });
-assert_throws("NotSupportedError", function() { ctx.createLinearGradient(0, 0, Infinity, Infinity); });
+assert_throws(new TypeError(), function() { ctx.createLinearGradient(Infinity, 0, 1, 0); });
+assert_throws(new TypeError(), function() { ctx.createLinearGradient(-Infinity, 0, 1, 0); });
+assert_throws(new TypeError(), function() { ctx.createLinearGradient(NaN, 0, 1, 0); });
+assert_throws(new TypeError(), function() { ctx.createLinearGradient(0, Infinity, 1, 0); });
+assert_throws(new TypeError(), function() { ctx.createLinearGradient(0, -Infinity, 1, 0); });
+assert_throws(new TypeError(), function() { ctx.createLinearGradient(0, NaN, 1, 0); });
+assert_throws(new TypeError(), function() { ctx.createLinearGradient(0, 0, Infinity, 0); });
+assert_throws(new TypeError(), function() { ctx.createLinearGradient(0, 0, -Infinity, 0); });
+assert_throws(new TypeError(), function() { ctx.createLinearGradient(0, 0, NaN, 0); });
+assert_throws(new TypeError(), function() { ctx.createLinearGradient(0, 0, 1, Infinity); });
+assert_throws(new TypeError(), function() { ctx.createLinearGradient(0, 0, 1, -Infinity); });
+assert_throws(new TypeError(), function() { ctx.createLinearGradient(0, 0, 1, NaN); });
+assert_throws(new TypeError(), function() { ctx.createLinearGradient(Infinity, Infinity, 1, 0); });
+assert_throws(new TypeError(), function() { ctx.createLinearGradient(Infinity, Infinity, Infinity, 0); });
+assert_throws(new TypeError(), function() { ctx.createLinearGradient(Infinity, Infinity, Infinity, Infinity); });
+assert_throws(new TypeError(), function() { ctx.createLinearGradient(Infinity, Infinity, 1, Infinity); });
+assert_throws(new TypeError(), function() { ctx.createLinearGradient(Infinity, 0, Infinity, 0); });
+assert_throws(new TypeError(), function() { ctx.createLinearGradient(Infinity, 0, Infinity, Infinity); });
+assert_throws(new TypeError(), function() { ctx.createLinearGradient(Infinity, 0, 1, Infinity); });
+assert_throws(new TypeError(), function() { ctx.createLinearGradient(0, Infinity, Infinity, 0); });
+assert_throws(new TypeError(), function() { ctx.createLinearGradient(0, Infinity, Infinity, Infinity); });
+assert_throws(new TypeError(), function() { ctx.createLinearGradient(0, Infinity, 1, Infinity); });
+assert_throws(new TypeError(), function() { ctx.createLinearGradient(0, 0, Infinity, Infinity); });
 _asserted = true;
 
 });
