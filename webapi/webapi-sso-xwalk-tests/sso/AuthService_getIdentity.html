@@ -42,18 +42,18 @@ Authors:
 setup({timeout: 30000});
 
 var t = async_test(document.title, {timeout: 10000}), onSuccess, onError;
-var id = 8L;
 
 t.step(function () {
   onError = t.step_func(function (error) {
     assert_unreached("connect() error callback was invoked: " + error.name + " msg: " + error.message);
+    t.done();
   });
 
   onSuccess = t.step_func(function (result) {
     assert_type(result, "object", "getIdentity() should return object");
     t.done();
   });
-  tizen.sso.authService.getIdentity(id).then(onSuccess, onError);
+  tizen.sso.authService.getIdentity(10000).then(onSuccess, onError);
 });
 
 </script>

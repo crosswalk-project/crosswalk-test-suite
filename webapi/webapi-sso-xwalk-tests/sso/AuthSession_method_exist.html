@@ -42,10 +42,11 @@ Authors:
 setup({timeout: 30000});
 
 var t = async_test(document.title, {timeout: 10000}), onSuccess, onError;
-var id = 8L;
+
 t.step(function () {
   onError = t.step_func(function (error) {
     assert_unreached("connect() error callback was invoked: " + error.name + " msg: " + error.message);
+    t.done();
   });
 
   onSuccess = t.step_func(function (result) {
@@ -54,7 +55,7 @@ t.step(function () {
     check_readonly(result, "method", AuthSession.method, "string", "null");
     t.done();
   });
- tizen.sso.authService.getIdentity(id).startSession("test").then(onSuccess, onError);
+ tizen.sso.authService.getIdentity(10000).startSession("test").then(onSuccess, onError);
 });
 
 </script>
