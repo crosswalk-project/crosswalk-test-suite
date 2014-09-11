@@ -7,16 +7,11 @@ package org.xwalk.embedding.test;
 
 import org.xwalk.core.XWalkNavigationHistory;
 import org.xwalk.core.XWalkView;
-import org.xwalk.embedding.MainActivity;
 import org.xwalk.embedding.base.XWalkViewTestBase;
 
 import android.test.suitebuilder.annotation.SmallTest;
 
 public class LoadTest extends XWalkViewTestBase {
-
-    public LoadTest() {
-        super(MainActivity.class);
-    }
 
     @SmallTest
     public void testLoadUrl()
@@ -37,41 +32,54 @@ public class LoadTest extends XWalkViewTestBase {
     public void testLoadAppFromManifest()
     {
         try {
+            String title = "Crosswalk Sample Application";
             String path = "file:///android_asset/";
             String name = "manifest.json";
             String url = "file:///android_asset/index.html";
             loadFromManifestSync(path, name);
             assertEquals(url, getUrlOnUiThread());
+            assertEquals(title, getTitleOnUiThread());
         } catch (Exception e) {
-            e.printStackTrace();
             assertTrue(false);
+            e.printStackTrace();
         }
     }
 
     @SmallTest
     public void testReload_ignoreCache() {
         try {
-            String url = "file:///android_asset/p1bar.html";
+            String title1 = "title1";
+            String title2 = "title2";
+            String html1 = "<html><head><title>" + title1 + "</title></head></html><body></body>";
+            String html2 = "<html><head><title>" + title2 + "</title></head></html><body></body>";
+            String url = mWebServer.setResponse("/reload.html", html1, null);
             loadUrlSync(url);
+            mWebServer.setResponse("/reload.html", html2, null);
             reloadSync(XWalkView.RELOAD_IGNORE_CACHE);
-            assertEquals("Test", getTitleOnUiThread());
+            Thread.sleep(1000);
+            assertEquals(title2, getTitleOnUiThread());
         } catch (InterruptedException e) {
             assertTrue(false);
             e.printStackTrace();
         } catch (Exception e) {
             assertTrue(false);
             e.printStackTrace();
-       }
+        }
     }
 
     @SmallTest
     public void testReload_normal() {
         try {
-            String url = "file:///android_asset/p1bar.html";
+            String title1 = "title1";
+            String title2 = "title2";
+            String html1 = "<html><head><title>" + title1 + "</title></head></html><body></body>";
+            String html2 = "<html><head><title>" + title2 + "</title></head></html><body></body>";
+            String url = mWebServer.setResponse("/reload.html", html1, null);
             loadUrlSync(url);
+            mWebServer.setResponse("/reload.html", html2, null);
             reloadSync(XWalkView.RELOAD_NORMAL);
-            assertEquals("Test", getTitleOnUiThread());
-
+            Thread.sleep(1000);
+            assertEquals(title2, getTitleOnUiThread());
         } catch (InterruptedException e) {
             assertTrue(false);
             e.printStackTrace();
@@ -120,8 +128,11 @@ public class LoadTest extends XWalkViewTestBase {
             loadUrlSync(url);
             assertEquals(originalUrl, getOriginalUrlOnUiThread());
         } catch (Exception e) {
-            e.printStackTrace();
             assertTrue(false);
+            e.printStackTrace();
+        } catch (Throwable e) {
+            assertTrue(false);
+            e.printStackTrace();
         }
     }
 

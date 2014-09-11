@@ -7,7 +7,7 @@ package org.xwalk.embedding.test;
 
 import org.chromium.base.test.util.Feature;
 import org.xwalk.core.XWalkExtension;
-import org.xwalk.embedding.MainActivity;
+import org.xwalk.embedding.base.ExtensionEcho;
 import org.xwalk.embedding.base.XWalkViewTestBase;
 
 import android.annotation.SuppressLint;
@@ -15,11 +15,7 @@ import android.test.suitebuilder.annotation.SmallTest;
 
 @SuppressLint("NewApi")
 public class XWalkExtensionTest extends XWalkViewTestBase {
-
-    public XWalkExtensionTest() {
-        super(MainActivity.class);
-    }
-
+    private final static String PASS_STRING = "Pass";
 
     @SmallTest
     public void testXWalkExtension() {
@@ -99,16 +95,6 @@ public class XWalkExtensionTest extends XWalkViewTestBase {
                     assertTrue(true);
                 }
             });
-        } catch (Exception e) {
-            e.printStackTrace();
-            assertTrue(false);
-        }
-    }
-
-    @SmallTest
-    public void testDestoryExtensionExist() {
-        try {
-            assertTrue(checkMethodInClass(XWalkExtension.class, "destoryExtension"));
         } catch (Exception e) {
             e.printStackTrace();
             assertTrue(false);
@@ -236,64 +222,40 @@ public class XWalkExtensionTest extends XWalkViewTestBase {
 
     @SmallTest
     @Feature({"ExtensionEcho"})
-    public void testOnMessage() throws Throwable {
-    	try {
-            getInstrumentation().runOnMainSync(new Runnable() {
-
-                @Override
-                public void run() {
-                    XWalkExtension xwalkExtension= new XWalkExtension("xwalkExtension", "xwalkExtension") {
-
-                        @Override
-                        public void onMessage(int arg0, String arg1) {
-
-                        }
-
-                        @Override
-                        public String onSyncMessage(int arg0, String arg1) {
-
-                            return null;
-                        }
-                    };
-                    xwalkExtension.onMessage(4, "Pass");
-                }
-            });
-            assertTrue(true);
+    public void testOnMessage() {
+        try {
+            ExtensionEcho echo = new ExtensionEcho();
+            loadAssetFileAndWaitForTitle("echo.html");
+            assertEquals(PASS_STRING, getTitleOnUiThread());
         } catch (Exception e) {
-            e.printStackTrace();
             assertTrue(false);
+            e.printStackTrace();
         }
     }
 
     @SmallTest
     @Feature({"ExtensionEcho"})
-    public void testOnSyncMessage() throws Throwable {
+    public void testOnSyncMessage() {
     	try {
-            getInstrumentation().runOnMainSync(new Runnable() {
-
-                @Override
-                public void run() {
-                    XWalkExtension xwalkExtension= new XWalkExtension("xwalkExtension", "xwalkExtension") {
-
-                        @Override
-                        public void onMessage(int arg0, String arg1) {
-
-                        }
-
-                        @Override
-                        public String onSyncMessage(int arg0, String arg1) {
-
-                            return null;
-                        }
-                    };
-                    xwalkExtension.onSyncMessage(2, "Pass");
-                }
-            });
-            assertTrue(true);
+    	    ExtensionEcho echo = new ExtensionEcho();
+            loadAssetFile("echoSync.html");
+            assertEquals(PASS_STRING, getTitleOnUiThread());
         } catch (Exception e) {
-            e.printStackTrace();
             assertTrue(false);
+            e.printStackTrace();
         }
     }
 
+    @SmallTest
+    @Feature({"ExtensionEcho"})
+    public void testOnSyncMessage_MultiFrames() {
+        try {
+            ExtensionEcho echo = new ExtensionEcho();
+            loadAssetFileAndWaitForTitle("framesEcho.html");
+            assertEquals(PASS_STRING, getTitleOnUiThread());
+        } catch (Exception e) {
+            assertTrue(false);
+            e.printStackTrace();
+        }
+    }
 }

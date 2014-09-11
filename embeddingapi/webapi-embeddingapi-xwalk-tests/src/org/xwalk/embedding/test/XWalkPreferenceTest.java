@@ -6,18 +6,12 @@ package org.xwalk.embedding.test;
 
 
 import org.xwalk.core.XWalkPreferences;
-import org.xwalk.embedding.MainActivity;
 import org.xwalk.embedding.base.XWalkViewTestBase;
 
 import android.test.suitebuilder.annotation.SmallTest;
 
 public class XWalkPreferenceTest extends XWalkViewTestBase {
 
-    public XWalkPreferenceTest() {
-        super(MainActivity.class);
-    }
-
-     
     @SmallTest
     public void testSetValue_falseParam() {
         try {
@@ -47,8 +41,8 @@ public class XWalkPreferenceTest extends XWalkViewTestBase {
             });
             assertTrue(true);
         } catch (Exception e) {
-            e.printStackTrace();
             assertTrue(false);
+            e.printStackTrace();
         }
     }
 

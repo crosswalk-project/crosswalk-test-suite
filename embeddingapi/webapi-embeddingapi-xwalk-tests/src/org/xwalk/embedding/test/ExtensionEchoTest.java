@@ -17,10 +17,6 @@ import android.test.suitebuilder.annotation.SmallTest;
 public class ExtensionEchoTest extends XWalkViewTestBase {
 	private final static String PASS_STRING = "Pass";
 
-    public ExtensionEchoTest() {
-        super(MainActivity.class);
-    }
-
     @SmallTest
     @Feature({"ExtensionEcho"})
     public void testOnMessage() throws Throwable {

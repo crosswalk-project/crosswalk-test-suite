@@ -4,46 +4,24 @@
 
 package org.xwalk.embedding.test;
 
-import org.xwalk.core.XWalkUIClient;
-import org.xwalk.embedding.MainActivity;
 import org.xwalk.embedding.base.XWalkViewTestBase;
 
 import android.test.suitebuilder.annotation.SmallTest;
 
 public class FullScreenTest extends XWalkViewTestBase {
 
-
-    public FullScreenTest() {
-        super(MainActivity.class);
-    }
-
-    /**
-     * fail
-     */
     @SmallTest
     public void testHasEnteredFullScreen() {
         try {
-            loadUrlSync("file:///android_asset/p1bar.html");
-            assertEquals(true, hasEnteredFullScreenOnUiThread());
+            final String name = "fullscreen_enter_exit.html";
+            String fileContent = getFileContent(name);
+            loadDataSync(name, fileContent, "text/html", false);
+            assertFalse(hasEnteredFullScreenOnUiThread());
+            clickOnElementId("enter_fullscreen",null);
+            assertTrue(hasEnteredFullScreenOnUiThread());
         } catch (Exception e) {
-            e.printStackTrace();
-            assertTrue(false);
-        } catch (Throwable e) {
             assertTrue(false);
             e.printStackTrace();
-        }
-    }
-
-    @SmallTest
-    public void testHasEnteredFullScreen2() {
-        try {
-            XWalkUIClient client = new XWalkUIClient(mXWalkView);
-            client.onFullscreenToggled(mXWalkView, true);
-            loadUrlSync("file:///android_asset/p1bar.html");
-            assertEquals(true, hasEnteredFullScreenOnUiThread());
-        } catch (Exception e) {
-            e.printStackTrace();
-            assertTrue(false);
         } catch (Throwable e) {
             assertTrue(false);
             e.printStackTrace();
@@ -53,16 +31,20 @@ public class FullScreenTest extends XWalkViewTestBase {
     @SmallTest
     public void testLeaveFullScreen() {
         try {
-            getInstrumentation().runOnMainSync(new Runnable() {
-                @Override
-                public void run() {
-                    mXWalkView.leaveFullscreen();
-                }
-            });
-            assertEquals(false, hasEnteredFullScreenOnUiThread());
+            final String name = "fullscreen_enter_exit.html";
+            String fileContent = getFileContent(name);
+            loadDataSync(name, fileContent, "text/html", false);
+            assertFalse(hasEnteredFullScreenOnUiThread());
+            clickOnElementId("enter_fullscreen",null);
+            assertTrue(hasEnteredFullScreenOnUiThread());
+            leaveFullscreenOnUiThread();
+            assertFalse(hasEnteredFullScreenOnUiThread());
+            clickOnElementId("enter_fullscreen",null);
+            clickOnElementId("exit_fullscreen",null);
+            assertFalse(hasEnteredFullScreenOnUiThread());
         } catch (Exception e) {
-            e.printStackTrace();
             assertTrue(false);
+            e.printStackTrace();
         } catch (Throwable e) {
             assertTrue(false);
             e.printStackTrace();

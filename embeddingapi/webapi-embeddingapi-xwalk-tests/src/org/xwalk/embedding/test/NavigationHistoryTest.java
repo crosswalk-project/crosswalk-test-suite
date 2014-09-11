@@ -5,18 +5,12 @@
 package org.xwalk.embedding.test;
 
 import org.xwalk.core.XWalkNavigationItem;
-import org.xwalk.embedding.MainActivity;
 import org.xwalk.embedding.base.XWalkViewTestBase;
 
-import android.os.SystemClock;
 import android.test.suitebuilder.annotation.SmallTest;
 
 
-public class NavigationTest extends XWalkViewTestBase {
-
-    public NavigationTest() {
-        super(MainActivity.class);
-    }
+public class NavigationHistoryTest extends XWalkViewTestBase {
 
     @SmallTest
     public void testSize() {
@@ -57,11 +51,11 @@ public class NavigationTest extends XWalkViewTestBase {
             loadUrlSync(url2);
             goBackSync(1);
             getInstrumentation().runOnMainSync(new Runnable() {
-
                 @Override
                 public void run() {
                     XWalkNavigationItem item = mXWalkView.getNavigationHistory().getItemAt(1);
                     assertNotNull(item);
+                    assertEquals(url2, item.getUrl());
                 }
             });
         }catch (Throwable e) {
@@ -71,7 +65,7 @@ public class NavigationTest extends XWalkViewTestBase {
     }
 
     @SmallTest
-    public void testGetCurrentItem() {
+    public void testGetCurrentItem_withBack() {
         try {
             final String url1 = "about:blank";
             final String url2 = "file:///android_asset/manifest.json";
@@ -94,7 +88,7 @@ public class NavigationTest extends XWalkViewTestBase {
     }
 
     @SmallTest
-    public void testGetCurrentItem2() {
+    public void testGetCurrentItem_noBack() {
         try {
             final String url1 = "about:blank";
             final String url2 = "file:///android_asset/manifest.json";
@@ -165,7 +159,6 @@ public class NavigationTest extends XWalkViewTestBase {
             getUrlOnUiThread();
             assertFalse(canGoForwardOnUiThread());
             goBackSync(1);
-            SystemClock.sleep(1000);
             assertTrue(canGoForwardOnUiThread());
         } catch (Exception e) {
             assertTrue(false);
@@ -177,7 +170,7 @@ public class NavigationTest extends XWalkViewTestBase {
     }
 
     @SmallTest
-    public void testNavigateBack_backOneStep() {
+    public void testNavigate_backOneStep() {
         try {
             final String url1 = "about:blank";
             final String url2 = "file:///android_asset/manifest.json";
@@ -195,7 +188,7 @@ public class NavigationTest extends XWalkViewTestBase {
      }
 
     @SmallTest
-    public void testNavigateForward_forwardOneStep() {
+    public void testNavigate_forwardOneStep() {
         try {
             final String url1 = "about:blank";
             final String url2 = "file:///android_asset/manifest.json";
@@ -214,7 +207,7 @@ public class NavigationTest extends XWalkViewTestBase {
     }
 
     @SmallTest
-    public void testNavigateBack_backTwoStep() {
+    public void testNavigate_backTwoStep() {
         try {
             final String url1 = "about:blank";
             final String url2 = "file:///android_asset/manifest.json";
@@ -234,7 +227,7 @@ public class NavigationTest extends XWalkViewTestBase {
     }
 
     @SmallTest
-    public void testNavigateForward_forwardTwoStep() {
+    public void testNavigate_forwardTwoStep() {
         try {
             final String url1 = "about:blank";
             final String url2 = "file:///android_asset/manifest.json";

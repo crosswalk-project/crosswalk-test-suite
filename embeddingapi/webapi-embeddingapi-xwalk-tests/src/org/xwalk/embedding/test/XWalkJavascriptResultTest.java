@@ -6,8 +6,6 @@ package org.xwalk.embedding.test;
 
 
 import org.xwalk.core.XWalkJavascriptResult;
-import org.xwalk.core.XWalkUIClient;
-import org.xwalk.embedding.MainActivity;
 import org.xwalk.embedding.base.XWalkViewTestBase;
 
 import android.annotation.SuppressLint;
@@ -16,85 +14,20 @@ import android.test.suitebuilder.annotation.SmallTest;
 @SuppressLint("NewApi")
 public class XWalkJavascriptResultTest extends XWalkViewTestBase {
 
-    public XWalkJavascriptResultTest() {
-        super(MainActivity.class);
-    }
-
     @SmallTest
     public void testConfirmWithResult() {
         try {
-            final String url1 = "file:///android_asset/p1bar.html";
-            final String url2 = "file:///android_asset/p2bar.html";
-
-            getInstrumentation().runOnMainSync(new Runnable() {
-
-                XWalkUIClient client = new XWalkUIClient(mXWalkView);
-                XWalkJavascriptResult result = new XWalkJavascriptResult() {
-
-                    @Override
-                    public void confirmWithResult(String arg0) {
-
-                    }
-                    
-                    @Override
-                    public void confirm() {
-                        mXWalkView.load(url2, null);
-                    }
-                    
-                    @Override
-                    public void cancel() {
-
-                    }
-                };
-
-                @Override
-                public void run() {
-                    client.onJavascriptModalDialog(mXWalkView, XWalkUIClient.JavascriptMessageType.JAVASCRIPT_PROMPT, url1, "11", "22", result);
-
-                }
-            });
-            assertTrue(true);
+            assertTrue(checkMethodInClass(XWalkJavascriptResult.class, "confirmWithResult"));
         } catch (Exception e) {
             assertTrue(false);
             e.printStackTrace();
         }
      }
 
-
     @SmallTest
     public void testConfirm() {
         try {
-            final String url1 = "file:///android_asset/p1bar.html";
-            final String url2 = "file:///android_asset/p2bar.html";
-
-            getInstrumentation().runOnMainSync(new Runnable() {
-
-                XWalkUIClient client = new XWalkUIClient(mXWalkView);
-                XWalkJavascriptResult result = new XWalkJavascriptResult() {
-
-                    @Override
-                    public void confirmWithResult(String arg0) {
-
-                    }
-
-                    @Override
-                    public void confirm() {
-                        mXWalkView.load(url2, null);
-                    }
-                    
-                    @Override
-                    public void cancel() {
-
-                    }
-                };
-
-                @Override
-                public void run() {
-                    client.onJavascriptModalDialog(mXWalkView, XWalkUIClient.JavascriptMessageType.JAVASCRIPT_PROMPT, url1, "11", "22", result);
-                    result.confirm();
-                }
-            });
-            assertEquals(url2, getUrlOnUiThread());
+            assertTrue(checkMethodInClass(XWalkJavascriptResult.class, "confirm"));
         } catch (Exception e) {
             assertTrue(false);
             e.printStackTrace();
@@ -104,37 +37,7 @@ public class XWalkJavascriptResultTest extends XWalkViewTestBase {
     @SmallTest
     public void testCancel() {
         try {
-            final String url1 = "file:///android_asset/p1bar.html";
-            final String url2 = "file:///android_asset/p2bar.html";
-
-            getInstrumentation().runOnMainSync(new Runnable() {
-
-                XWalkUIClient client = new XWalkUIClient(mXWalkView);
-                XWalkJavascriptResult result = new XWalkJavascriptResult() {
-
-                    @Override
-                    public void confirmWithResult(String arg0) {
-
-                    }
-
-                    @Override
-                    public void confirm() {
-
-                    }
-
-                    @Override
-                    public void cancel() {
-                        mXWalkView.load(url2, null);
-                    }
-                };
-
-                @Override
-                public void run() {
-                    client.onJavascriptModalDialog(mXWalkView, XWalkUIClient.JavascriptMessageType.JAVASCRIPT_PROMPT, url1, "11", "22", result);
-                    result.cancel();
-                }
-            });
-            assertEquals(url2, getUrlOnUiThread());
+            assertTrue(checkMethodInClass(XWalkJavascriptResult.class, "cancel"));
         } catch (Exception e) {
             assertTrue(false);
             e.printStackTrace();

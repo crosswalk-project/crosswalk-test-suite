@@ -4,9 +4,6 @@
 
 package org.xwalk.embedding.test;
 
-
-import org.xwalk.core.XWalkNavigationItem;
-import org.xwalk.embedding.MainActivity;
 import org.xwalk.embedding.base.XWalkViewTestBase;
 
 import android.annotation.SuppressLint;
@@ -15,12 +12,8 @@ import android.test.suitebuilder.annotation.SmallTest;
 @SuppressLint("NewApi")
 public class XWalkNavigationItemTest extends XWalkViewTestBase {
 
-    public XWalkNavigationItemTest() {
-        super(MainActivity.class);
-    }
-
     @SmallTest
-    public void testGetNavigationItemUrl() {
+    public void test_navigationItem_getUrl() {
         try {
             final String url1 = "about:blank";
             final String url2 = "file:///android_asset/manifest.json";
@@ -35,7 +28,7 @@ public class XWalkNavigationItemTest extends XWalkViewTestBase {
     }
 
     @SmallTest
-    public void testGetNavigationItemOriginalUrl() {
+    public void test_navigationItem_getOriginalUrl() {
         try {
             final String url1 = "about:blank";
             final String url2 = "file:///android_asset/manifest.json";
@@ -55,7 +48,7 @@ public class XWalkNavigationItemTest extends XWalkViewTestBase {
     }
 
     @SmallTest
-    public void testGetNavigationItemTitle() {
+    public void test_navigationItem_getTitle() {
         try {
             final String url1 = "about:blank";
             final String url2 = "file:///android_asset/manifest.json";
@@ -71,15 +64,5 @@ public class XWalkNavigationItemTest extends XWalkViewTestBase {
         } catch (Throwable e) {
             e.printStackTrace();
         }
-    }
-
-    @SmallTest
-    public void testGetFaviconExist() {
-        try {
-            assertTrue(checkMethodInClass(XWalkNavigationItem.class, "getFaviconExist"));
-        } catch (Exception e) {
-            e.printStackTrace();
-            assertTrue(false);
-        } 
     }
 }

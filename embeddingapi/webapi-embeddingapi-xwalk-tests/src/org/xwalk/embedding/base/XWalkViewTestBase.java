@@ -7,15 +7,21 @@ package org.xwalk.embedding.base;
 import java.io.IOException;
 import java.io.InputStream;
 import java.lang.reflect.Method;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.concurrent.Callable;
 import java.util.concurrent.FutureTask;
 import java.util.concurrent.TimeUnit;
+import java.util.concurrent.atomic.AtomicBoolean;
 
 import junit.framework.Assert;
 
 import org.chromium.content.browser.test.util.CallbackHelper;
 import org.chromium.content.browser.test.util.Criteria;
 import org.chromium.content.browser.test.util.CriteriaHelper;
+import org.chromium.net.test.util.TestWebServer;
+import org.xwalk.core.JavascriptInterface;
+import org.xwalk.core.XWalkJavascriptResult;
 import org.xwalk.core.XWalkNavigationHistory;
 import org.xwalk.core.XWalkNavigationItem;
 import org.xwalk.core.XWalkResourceClient;
@@ -28,6 +34,7 @@ import com.test.server.ActivityInstrumentationTestCase2;
 import android.content.Context;
 import android.content.res.AssetManager;
 import android.os.Bundle;
+import android.util.Pair;
 
 public class XWalkViewTestBase extends ActivityInstrumentationTestCase2<MainActivity> {
 
@@ -35,7 +42,7 @@ public class XWalkViewTestBase extends ActivityInstrumentationTestCase2<MainActi
         super(activityClass);
     }
 
-    final String mExpectedStr = "xwalk";
+    protected final String mExpectedStr = "xwalk";
 
     protected final static int WAIT_TIMEOUT_SECONDS = 15;
     protected final static long WAIT_TIMEOUT_MS = 2000;
@@ -43,7 +50,8 @@ public class XWalkViewTestBase extends ActivityInstrumentationTestCase2<MainActi
     
     protected XWalkView mXWalkView;
     protected MainActivity mainActivity;
-    final TestHelperBridge mTestHelperBridge = new TestHelperBridge();
+    protected TestWebServer mWebServer;
+    protected final TestHelperBridge mTestHelperBridge = new TestHelperBridge();
 
     private String mUrls[]=new String[3];
 
@@ -53,7 +61,16 @@ public class XWalkViewTestBase extends ActivityInstrumentationTestCase2<MainActi
         "file:///android_asset/p1bar.html",
         "file:///android_asset/p2bar.html",
         "file:///android_asset/p3bar.html",
-};
+    };
+
+    protected final String ALERT_TEXT = "Hello World!";
+    protected final String PROMPT_TEXT = "How do you like your eggs in the morning?";
+    protected final String PROMPT_DEFAULT = "Scrambled";
+    protected final String PROMPT_RESULT = "I like mine with a kiss";
+    final String CONFIRM_TEXT = "Would you like a cookie?";
+    protected final AtomicBoolean callbackCalled = new AtomicBoolean(false);
+    final CallbackHelper jsBeforeUnloadHelper = new CallbackHelper();
+    boolean flagForConfirmCancelled = false;
 
     protected void setResourceClient(final XWalkResourceClient client) {
         getInstrumentation().runOnMainSync(new Runnable() {
@@ -72,6 +89,7 @@ public class XWalkViewTestBase extends ActivityInstrumentationTestCase2<MainActi
     protected void setUp() throws Exception {
         super.setUp();
         mainActivity = (MainActivity) getActivity();
+        mWebServer = new TestWebServer(false);
         getInstrumentation().runOnMainSync(new Runnable() {
             @Override
             public void run() {
@@ -161,6 +179,15 @@ public class XWalkViewTestBase extends ActivityInstrumentationTestCase2<MainActi
             @Override
             public Boolean call() {
                 return mXWalkView.hasEnteredFullscreen();
+            }
+        });
+    }
+
+    protected void leaveFullscreenOnUiThread() throws Throwable {
+        getInstrumentation().runOnMainSync(new Runnable() {
+            @Override
+            public void run() {
+                mXWalkView.leaveFullscreen();
             }
         });
     }
@@ -399,18 +426,45 @@ public class XWalkViewTestBase extends ActivityInstrumentationTestCase2<MainActi
 
     @Override
     protected void tearDown() throws Exception {
-        mainActivity.finish();
+        if (mWebServer != null) {
+            mWebServer.shutdown();
+        }
+        if(mainActivity != null)
+        {
+            mainActivity.finish();
+        }
         super.tearDown();
     }
 
     public class TestJavascriptInterface {
+        @JavascriptInterface
         public String getTextWithoutAnnotation() {
             return mExpectedStr;
         }
 
+        @JavascriptInterface
         public String getText() {
             return mExpectedStr;
         }
+    }
+
+    protected void addJavascriptInterface() {
+        getInstrumentation().runOnMainSync(new Runnable() {
+            @Override
+            public void run() {
+                getXWalkView().addJavascriptInterface(new TestJavascriptInterface(),
+                        "testInterface");
+            }
+        });
+    }
+
+    protected void raisesExceptionAndSetTitle(String script) throws Throwable {
+        executeJavaScriptAndWaitForResult("try { var title = " +
+                                          script + ";" +
+                                          "  document.title = title;" +
+                                          "} catch (exception) {" +
+                                          "  document.title = \"xwalk\";" +
+                                          "}");
     }
 
     class TestXWalkUIClientBase extends XWalkUIClient {
@@ -435,6 +489,56 @@ public class XWalkViewTestBase extends ActivityInstrumentationTestCase2<MainActi
             mInnerContentsClient.onTitleChanged(title);
         }
 
+        @Override
+        public void onJavascriptCloseWindow(XWalkView view) {
+            mInnerContentsClient.onJavascriptCloseWindow();
+        }
+
+        @Override
+        public void onScaleChanged(XWalkView view, float oldScale,
+                float newScale) {
+            mInnerContentsClient.onScaleChanged(newScale);
+        }
+
+        @Override
+        public void onRequestFocus(XWalkView view) {
+            mInnerContentsClient.onRequestFocus();
+        }
+
+        @Override
+        public boolean onJavascriptModalDialog(XWalkView view, JavascriptMessageType type,
+                String url, String message, String defaultValue, XWalkJavascriptResult result) {
+            switch(type) {
+                case JAVASCRIPT_ALERT:
+                    callbackCalled.set(true);
+                    result.confirm();
+                    assertEquals(ALERT_TEXT, message);
+                    return false;
+                case JAVASCRIPT_CONFIRM:
+                    assertEquals(CONFIRM_TEXT, message);
+                    if (flagForConfirmCancelled == true) {
+                        result.cancel();
+                    } else {
+                        result.confirm();
+                    }
+                    callbackCalled.set(true);
+                    return false;
+                case JAVASCRIPT_PROMPT:
+                    assertEquals(PROMPT_TEXT, message);
+                    assertEquals(PROMPT_DEFAULT, defaultValue);
+                    result.confirmWithResult(PROMPT_RESULT);
+                    callbackCalled.set(true);
+                    return false;
+                case JAVASCRIPT_BEFOREUNLOAD:
+                    result.cancel();
+                    jsBeforeUnloadHelper.notifyCalled();
+                    return false;
+                default:
+                    break;
+                }
+            assert(false);
+            return false;
+        }
     }
 
     public class TestXWalkUIClient extends TestXWalkUIClientBase {
@@ -586,5 +690,46 @@ public class XWalkViewTestBase extends ActivityInstrumentationTestCase2<MainActi
                 "console.log('element with id [" + id + "] clicked');");
         getTitleHelper.waitForCallback(currentCallCount, 1, WAIT_TIMEOUT_SECONDS,
                 TimeUnit.SECONDS);
+    }
+
+    public void clickOnElementId(final String id, String frameName) throws Exception {
+        String str;
+        if (frameName != null) {
+            str = "top.window." + frameName + ".document.getElementById('" + id + "')";
+        } else {
+            str = "document.getElementById('" + id + "')";
+        }
+        final String script1 = str + " != null";
+        final String script2 = str + ".dispatchEvent(evObj);";
+        Assert.assertTrue(CriteriaHelper.pollForCriteria(new Criteria() {
+            @Override
+            public boolean isSatisfied() {
+                try {
+                    String idIsNotNull = executeJavaScriptAndWaitForResult(script1);
+                    return idIsNotNull.equals("true");
+                } catch (Throwable t) {
+                    t.printStackTrace();
+                    Assert.fail("Failed to check if DOM is loaded: " + t.toString());
+                    return false;
+                }
+            }
+        }, WAIT_TIMEOUT_MS, CHECK_INTERVAL));
+
+        try {
+            executeJavaScriptAndWaitForResult(
+                "var evObj = document.createEvent('Events'); " +
+                "evObj.initEvent('click', true, false); " +
+                script2 +
+                "console.log('element with id [" + id + "] clicked');");
+        } catch (Throwable t) {
+            t.printStackTrace();
+        }
+    }
+
+    protected String addPageToTestServer(TestWebServer webServer, String httpPath, String html) {
+        List<Pair<String, String>> headers = new ArrayList<Pair<String, String>>();
+        headers.add(Pair.create("Content-Type", "text/html"));
+        headers.add(Pair.create("Cache-Control", "no-store"));
+        return webServer.setResponse(httpPath, html, headers);
     }
 }
