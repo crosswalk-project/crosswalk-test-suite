@@ -31,19 +31,20 @@ Authors:
 -->
 
 <meta charset='utf-8'>
-<title>GamepadEvent Test: GamepadEvent_exit</title>
+<title>Navigator Test: getGamepads_basic</title>
 <link rel="author" title="Intel" href="http://www.intel.com">
-<link rel="help" href="http://www.w3.org/TR/gamepad/#idl-def-GamepadEvent">
-<meta name="assert" content="Test check if the gamepadconnected event can be fired.">
-<p>Please reconnect gamepad and press button on gamepad.</p>
-<p>Test Passes if the show result is "pass" </p>
+<link rel="help" href="http://www.w3.org/TR/gamepad/#navigator-interface-extension">
+<script src="../resources/testharness.js"></script>
+<script src="../resources/testharnessreport.js"></script>
 <div id="log"></div>
 <script>
-function runTest(e) {
-  var text = "";
-  document.getElementById("log").innerHTML = "pass";
-
-}
-
-window.addEventListener("gamepadconnected", runTest);
+  test(function () {
+    assert_true("getGamepads" in navigator, "GamepadEvent exists");
+    assert_equals(typeof(navigator.getGamepads), "function", "type of navigator.getGamepads");
+  });
+  
+  test(function () {
+    var gamepads =  navigator.getGamepads();
+    assert_equals(typeof(gamepads), "object", "the value type of navigator.getGamepads()");
+  });
 </script>
