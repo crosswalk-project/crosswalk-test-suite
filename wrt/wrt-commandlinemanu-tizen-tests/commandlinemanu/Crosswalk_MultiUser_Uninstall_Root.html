@@ -41,21 +41,20 @@ Authors:
       <strong>Test steps:</strong>
     </p>
     <ol>
-      <li>Push the webapp "xxxx.xpk" into Tizen device</li>
-      <li>Execute command: "sdb shell"</li>
-      <li>Current if it is not root user, execute command "su"</li>
-      <li>Execute command: "xwalkctl --install xxxx.xpk"</li>
-      <li>Execute command: "xwalkctl --uninstall id"</li>
+      <li>Switch to app user: 'su','su app'</li>
+      <li>List the webapp:'xwalkctl'</li>
+      <li>Switch to root user: "su"</li>
+      <li>Execute command: "xwalkctl --uninstall webappid"</li>
     </ol>
     <p>
       <strong>Expected Output:</strong>
     </p>
     <ol>
-      <li>The package be pushed into Tizen device successfully</li>
-      <li>The command execute successfully, no error</li>
+      <li>Switch to app user successfully, no error</li>
+      <li>Listed installed webapp. If no webapp listed, please install one</li>
       <li>If need switch to the "root" users, input password "tizen" if need</li>
-      <li>There app installed successfully</li>
-      <li>There app uninstalled successfully</li>
+      <li>Switch to root user successfully, no error</li>      
+      <li>There app should not be uninstalled successfully</li>
     </ol>
   </body>
 </html>
