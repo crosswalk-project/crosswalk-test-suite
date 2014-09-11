@@ -43,7 +43,7 @@ var t = async_test("Check if the readonly attribute ContactsChangeEvent.added ex
 
 t.step(function () {
   assert_true(!!contacts, "The Navigator support contacts");
-  contacts.clear().then(function () {/* Do Nothing */}, function () {/* Do Nothing */});
+  contacts.clear();
 
   var contactName = new ContactName({
     givenNames: ['John'],
@@ -59,15 +59,17 @@ t.step(function () {
     phoneNumbers: [mobilePhone]
   });
   contacts.addEventListener("contactschange", function (e) {
-    t.step(function () {
-      assert_true("added" in e, "The ContactsChangeEvent.added exists");
-      assert_equals(typeof e.added, "object", "The type of ContactsChangeEvent.added");
-      var value = e.added;
-      e.added = null;
-      assert_equals(e.added, value, "The ContactsChangeEvent.added");
-    });
-    t.done();
+    if (e.added[0]) {
+      t.step(function () {
+        assert_true("added" in e, "The ContactsChangeEvent.added exists");
+        assert_equals(typeof e.added, "object", "The type of ContactsChangeEvent.added");
+        var value = e.added;
+        e.added = null;
+        assert_equals(e.added, value, "The ContactsChangeEvent.added");
+      });
+      t.done();
+    }
   });
-  contacts.save(contact).then(function () {/* Do Nothing */}, function () {/* Do Nothing */});
+  contacts.save(contact);
 });
  </script>
