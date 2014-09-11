@@ -26,7 +26,7 @@ NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE,
 EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
 Authors:
-        Xu, Yuhan <yuhanx.xu@intel.com>
+
 
 -->
 <html>
@@ -41,7 +41,7 @@ Authors:
     <script src="../../js/main.js"></script>
   </head>
   <body>
-    <input type="hidden" id="SupportWgt"/>
+    <input type="hidden" id="MultiUser"/>
     <div data-role="page" id="main">
       <div data-role="header" data-position="fixed" data-tap-toggle="false">
       <h1 id="main_page_title"></h1>
@@ -49,14 +49,10 @@ Authors:
     <div data-role="content">
       <h4>Test Steps:</h4>
       <ol>
-        <li>Install and launch the res/testapp/wgt_sample_one.wgt</li>
-        <!--<li>Click the "sms","mmsto","mailto" link button</li>-->
-        <li>Check the version of the sample one WebApp with command:$pkginfo --listpkg | more</li>
-        <li>Install the updated wgt_sample_two.wgt WebApp</li>
-        <li>Uninstall wgt_sample_two.wgt WebApp</li>
-        <li>Install the res/testapp/11a.wgt</li>
-        <li>Install the res/testapp/sp-widget-valid-signature.wgt</li>
-        <li>Uninstall the sp-widget-valid-signature webapp</li>
+        <li>Switch to guest account by: "su guest"</li>
+        <li>Install the webapp res/testapp/wgt_sample_two.wgt </li>
+        <li>Switch to app account by: "su app"</li>
+        <li>'$xwalkctl' to list the installed webapp </li>
       </ol>
     </div>
     <div data-role="footer" data-position="fixed" data-tap-toggle="false">
@@ -64,17 +60,13 @@ Authors:
     <div data-role="popup" id="popup_info" data-theme="a">
       <font class="fontSize">
         <p>Purpose:</p>
-        <p>Verifies that the WebApp common operation and version update</p>
+        <p>Verifies account permissions</p>
         <p>Expected Result:</p>
         <ol>
-         <li>The wgt WebApp is launched as landscape mode successfully and splash image is showing when launching the WebApp</li>
-         <!--<li>Test passes if the sms module, mms module and email module of the device are requested when click the links "sms", "mmsto" and "mailto".</li>-->
-         <li>The widget version is 1.0.0.1</li>         
-         <li>The widget is installed successfully, and the version update to 1.0.0.2</li>
-         <li>The WebApp is uninstalled successfully</li>
-         <li>The WebApp with invalid signature file should not be installed successfully</li>
-         <li>The WebApp with valid signature file is installed successfully</li>
-         <li>The WebApp with valid signature file is uninstalled successfully</li>
+         <li>Input pwd, the 'guest' account can be switch successfully</li>
+         <li>The webapp should be installed successfully</li>
+         <li>The 'app' account can be switch successfully</li>
+         <li>The wgt_sample_two webapp should not be listed</li>         
         </ol>
       </font>
     </div>
