@@ -155,8 +155,9 @@ def main():
         sys.exit(1)
 
     if PARAMETERS.buninstpkg:
-        if not uninstPKGs():
-            sys.exit(1)
+        pass
+        #if not uninstPKGs():
+            #sys.exit(1)
     else:
         pass
         #if not instPKGs():
