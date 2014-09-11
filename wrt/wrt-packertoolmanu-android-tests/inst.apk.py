@@ -43,6 +43,8 @@ def uninstPKGs():
             if file.endswith("%s.apk" % PKG_NAME):
                 cmd = "%s -s %s uninstall org.xwalk.%s" % (
                     ADB_CMD, PARAMETERS.device, os.path.basename(os.path.splitext(file)[0]))
+                if os.path.basename(os.path.splitext(file)[0]) == "XWalkRuntimeLib":
+                    cmd = "%s -s %s uninstall %s" % (ADB_CMD, PARAMETERS.device, "org.xwalk.runtime.lib")
                 (return_code, output) = doCMD(cmd)
                 for line in output:
                     if "Failure" in line:
@@ -98,9 +100,11 @@ def main():
         sys.exit(1)
 
     if PARAMETERS.buninstpkg:
+        os.system("%s -s %s uninstall %s" % (ADB_CMD, PARAMETERS.device, "org.xwalk.runtime.lib"))
         if not uninstPKGs():
             sys.exit(1)
     else:
+        os.system("%s -s %s install -r %s" % (ADB_CMD, PARAMETERS.device, "resource/XWalkRuntimeLib.apk"))
         if not instPKGs():
             sys.exit(1)
 

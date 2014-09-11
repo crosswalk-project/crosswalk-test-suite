@@ -167,10 +167,11 @@ def main():
         sys.exit(1)
 
     if PARAMETERS.buninstpkg:
-        if not uninstPKGs():
-            sys.exit(1)
+        os.system("%s -s %s uninstall %s" % (ADB_CMD, PARAMETERS.device, "org.xwalk.runtime.lib"))
+        #if not uninstPKGs():
+            #sys.exit(1)
     else:
-        pass
+        os.system("%s -s %s install -r %s" % (ADB_CMD, PARAMETERS.device, "resources/installer/XWalkRuntimeLib.apk"))
         #if not instPKGs():
             #sys.exit(1)
 
