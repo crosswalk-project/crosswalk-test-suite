@@ -4,11 +4,16 @@
 
 package org.xwalk.embedding.test;
 
-import org.xwalk.core.XWalkJavascriptResult;
+import java.util.concurrent.TimeoutException;
+
 import org.xwalk.core.XWalkUIClient;
 import org.xwalk.core.XWalkUIClient.LoadStatus;
-import org.xwalk.embedding.MainActivity;
+import org.xwalk.embedding.base.OnJavascriptCloseWindowHelper;
+import org.xwalk.embedding.base.OnRequestFocusHelper;
+import org.xwalk.embedding.base.OnScaleChangedHelper;
+import org.xwalk.embedding.base.OnTitleUpdatedHelper;
 import org.xwalk.embedding.base.XWalkViewTestBase;
+import org.xwalk.embedding.util.CommonResources;
 
 import android.annotation.SuppressLint;
 import android.net.Uri;
@@ -19,44 +24,40 @@ import android.webkit.ValueCallback;
 @SuppressLint("NewApi")
 public class XWalkUIClientTest extends XWalkViewTestBase {
 
-    public XWalkUIClientTest() {
-        super(MainActivity.class);
-    }
-
-
     @SmallTest
     public void testOnRequestFocus() {
         try {
-            getInstrumentation().runOnMainSync(new Runnable() {
-
-                @Override
-                public void run() {
-                    XWalkUIClient uiClient = new XWalkUIClient(mXWalkView);
-                    uiClient.onRequestFocus(mXWalkView);
-                }
-            });
-            assertTrue(true);
+            final String url = "file:///android_asset/request_focus_main.html";
+            OnRequestFocusHelper mOnRequestFocusHelper = mTestHelperBridge.getOnRequestFocusHelper();
+            int count = mOnRequestFocusHelper.getCallCount();
+            loadUrlSync(url);
+            clickOnElementId("left_frame", "LeftFrame");
+            mOnRequestFocusHelper.waitForCallback(count);
+            assertTrue(mOnRequestFocusHelper.getCalled());
         } catch (Exception e) {
-            e.printStackTrace();
             assertTrue(false);
+            e.printStackTrace();
         }
     }
 
     @SmallTest
     public void testOnJavascriptCloseWindow() {
         try {
-            getInstrumentation().runOnMainSync(new Runnable() {
-
-                @Override
-                public void run() {
-                    XWalkUIClient uiClient = new XWalkUIClient(mXWalkView);
-                    uiClient.onJavascriptCloseWindow(mXWalkView);
-                }
-            });
-            assertTrue(true);
-        } catch (Exception e) {
-            e.printStackTrace();
+            final String url = "window.close.html";
+            OnJavascriptCloseWindowHelper mCloseWindowHelper = mTestHelperBridge.getOnJavascriptCloseWindowHelper();
+            int count = mCloseWindowHelper.getCallCount();
+            loadAssetFile(url);
+            mCloseWindowHelper.waitForCallback(count);
+            assertTrue(mCloseWindowHelper.getCalled());
+        } catch (InterruptedException e) {
             assertTrue(false);
+            e.printStackTrace();
+        } catch (TimeoutException e) {
+            assertTrue(false);
+            e.printStackTrace();
+        } catch (Exception e) {
+            assertTrue(false);
+            e.printStackTrace();
         }
     }
 
@@ -107,188 +108,74 @@ public class XWalkUIClientTest extends XWalkViewTestBase {
     @SmallTest
     public void testOnScaleChanged() {
         try {
-            getInstrumentation().runOnMainSync(new Runnable() {
-
-                @Override
-                public void run() {
-                    XWalkUIClient uiClient = new XWalkUIClient(mXWalkView);
-                    uiClient.onScaleChanged(mXWalkView, WAIT_TIMEOUT_SECONDS, NUM_NAVIGATIONS);
-                }
-            });
-            assertTrue(true);
+            final String name = "scale_changed.html";
+            String fileContent = getFileContent(name);
+            OnScaleChangedHelper mOnScaleChangedHelper = mTestHelperBridge.getOnScaleChangedHelper();
+            int count = mOnScaleChangedHelper.getCallCount();
+            loadDataAsync(null, fileContent, "text/html", false);
+            mOnScaleChangedHelper.waitForCallback(count);
+            assertTrue(Float.compare(mOnScaleChangedHelper.getScale(), 0.0f) > 0);
         } catch (Exception e) {
-            e.printStackTrace();
             assertTrue(false);
+            e.printStackTrace();
         }
     }
 
     @SmallTest
-    public void testOnPageStartedExist() {
+    public void testOnJavascriptModalDialog() {
         try {
-            assertTrue(checkMethodInClass(XWalkUIClient.class, "onPageStarted"));
+            String EMPTY_PAGE = "<!doctype html>" +
+                    "<title>Modal Dialog Test</title><p>Testcase.</p>";
+            loadDataSync(null, EMPTY_PAGE, "text/html", false);
+            executeJavaScriptAndWaitForResult("alert('" + ALERT_TEXT + "')");
+            assertTrue(callbackCalled.get());
         } catch (Exception e) {
-            e.printStackTrace();
             assertTrue(false);
+            e.printStackTrace();
         }
     }
 
-    @SmallTest
-    public void testOnPageFinishedExist() {
+    public void testOnReceivedTitle_WithUrl() {
         try {
-            assertTrue(checkMethodInClass(XWalkUIClient.class, "onPageFinished"));
-        } catch (Exception e) {
-            e.printStackTrace();
+            String path = "/test.html";
+            String pageContent = CommonResources.makeHtmlPageFrom("<title>Test</title>",
+                    "<div> The title is: Test </div>");
+            String url = addPageToTestServer(mWebServer, path, pageContent);
+            OnTitleUpdatedHelper mOnTitleUpdatedHelper = mTestHelperBridge.getOnTitleUpdatedHelper();
+            int onReceivedTitleCallCount = mOnTitleUpdatedHelper.getCallCount();
+            loadUrlAsync(url);
+            mOnTitleUpdatedHelper.waitForCallback(onReceivedTitleCallCount);
+            assertNotNull(mOnTitleUpdatedHelper.getTitle());
+        } catch (InterruptedException e) {
             assertTrue(false);
+            e.printStackTrace();
+        } catch (TimeoutException e) {
+            assertTrue(false);
+            e.printStackTrace();
+        } catch (Exception e) {
+            assertTrue(false);
+            e.printStackTrace();
         }
     }
 
-    @SmallTest
-    public void testOnReceivedAppNameExist() {
+    public void testOnReceivedTitle_WithData() {
         try {
-            assertTrue(checkMethodInClass(XWalkUIClient.class, "onReceivedAppName"));
-        } catch (Exception e) {
+            final String name = "index.html";
+            final String fileContent = getFileContent(name);
+            OnTitleUpdatedHelper mOnTitleUpdatedHelper = mTestHelperBridge.getOnTitleUpdatedHelper();
+            int onReceivedTitleCallCount = mOnTitleUpdatedHelper.getCallCount();
+            loadDataSync(name, fileContent, "text/html", false);
+            mOnTitleUpdatedHelper.waitForCallback(onReceivedTitleCallCount);
+            assertNotNull(mOnTitleUpdatedHelper.getTitle());
+        } catch (InterruptedException e) {
+            assertTrue(false);
             e.printStackTrace();
+        } catch (TimeoutException e) {
             assertTrue(false);
-        }
-    }
-
-    @SmallTest
-    public void testOnReceivedIconExist() {
-        try {
-            assertTrue(checkMethodInClass(XWalkUIClient.class, "onReceivedIcon"));
-        } catch (Exception e) {
             e.printStackTrace();
-            assertTrue(false);
-        }
-    }
-
-    @SmallTest
-    public void testOnJsAlertExist() {
-        try {
-            assertTrue(checkMethodInClass(XWalkUIClient.class, "onJsAlert"));
         } catch (Exception e) {
+            assertTrue(false);
             e.printStackTrace();
-            assertTrue(false);
-        }
-    }
-
-    @SmallTest
-    public void testOnJsConfirmExist() {
-        try {
-            assertTrue(checkMethodInClass(XWalkUIClient.class, "onJsConfirm"));
-        } catch (Exception e) {
-            e.printStackTrace();
-            assertTrue(false);
-        }
-    }
-
-    @SmallTest
-    public void testOnJsPromptExist() {
-        try {
-            assertTrue(checkMethodInClass(XWalkUIClient.class, "onJsPrompt"));
-        } catch (Exception e) {
-            e.printStackTrace();
-            assertTrue(false);
-        }
-    }
-
-    @SmallTest
-    public void testTOnJavascriptModalDialog() {
-        try {
-            getInstrumentation().runOnMainSync(new Runnable() {
-
-                @Override
-                public void run() {
-                XWalkUIClient uiClient = new XWalkUIClient(mXWalkView);
-
-                    XWalkJavascriptResult result = new XWalkJavascriptResult() {
-
-                        @Override
-                        public void confirmWithResult(String arg0) {
-
-                        }
-
-                        @Override
-                        public void confirm() {
-
-                        }
-
-                        @Override
-                        public void cancel() {
-
-                        }
-                    };
-
-                    uiClient.onJavascriptModalDialog(mXWalkView, XWalkUIClient.JavascriptMessageType.JAVASCRIPT_ALERT, "http://www.baidu.com/", "11", "22", result);
-                }
-            });
-            assertTrue(true);
-        } catch (Exception e) {
-            e.printStackTrace();
-            assertTrue(false);
-        }catch (Throwable t)
-        {
-            assertTrue(false);
-        }
-
-    }
-
-
-    @SmallTest
-    public void testGetDefaultVideoPosterExist() {
-        try {
-            assertTrue(checkMethodInClass(XWalkUIClient.class, "getDefaultVideoPoster"));
-        } catch (Exception e) {
-            e.printStackTrace();
-            assertTrue(false);
-        }
-    }
-
-    @SmallTest
-    public void testGetVideoLoadingProgressViewExist() {
-        try {
-            assertTrue(checkMethodInClass(XWalkUIClient.class, "getVideoLoadingProgressView"));
-        } catch (Exception e) {
-            e.printStackTrace();
-            assertTrue(false);
-        }
-    }
-
-    @SmallTest
-    public void testOnCreateWindowExist() {
-        try {
-            assertTrue(checkMethodInClass(XWalkUIClient.class, "onCreateWindow"));
-        } catch (Exception e) {
-            e.printStackTrace();
-            assertTrue(false);
-        }
-    }
-
-    @SmallTest
-    public void testOnReceivedTitle() {
-        try {
-            getInstrumentation().runOnMainSync(new Runnable() {
-
-                @Override
-                public void run() {
-                    XWalkUIClient uiClient = new XWalkUIClient(mXWalkView);
-                    uiClient.onReceivedTitle(mXWalkView, "title");
-                }
-            });
-            assertTrue(true);
-        } catch (Exception e) {
-            e.printStackTrace();
-            assertTrue(false);
-        }
-    }
-
-    @SmallTest
-    public void testOnReceivedTouchIconUrlExist() {
-        try {
-            assertTrue(checkMethodInClass(XWalkUIClient.class, "onReceivedTouchIconUrl"));
-        } catch (Exception e) {
-            e.printStackTrace();
-            assertTrue(false);
         }
     }
 
@@ -329,7 +216,7 @@ public class XWalkUIClientTest extends XWalkViewTestBase {
     }
 
     @SmallTest
-    public void testOnPageStarted() {
+    public void testOnPageLoadStarted() {
         try {
             getInstrumentation().runOnMainSync(new Runnable() {
 
@@ -341,8 +228,8 @@ public class XWalkUIClientTest extends XWalkViewTestBase {
             });
             assertTrue(true);
         } catch (Exception e) {
-            e.printStackTrace();
             assertTrue(false);
+            e.printStackTrace();
         }
     }
 
@@ -363,27 +250,6 @@ public class XWalkUIClientTest extends XWalkViewTestBase {
             assertTrue(false);
         }
     }
-
-    @SmallTest
-    public void testShouldOverrideUrlLoading() {
-        try {
-            assertTrue(checkMethodInClass(XWalkUIClient.class, "shouldOverrideUrlLoading"));
-        } catch (Exception e) {
-            e.printStackTrace();
-            assertTrue(false);
-        }
-    }
-
-    @SmallTest
-    public void testOnCreateWindowRequestExist() {
-        try {
-            assertTrue(checkMethodInClass(XWalkUIClient.class, "onCreateWindowRequest"));
-        } catch (Exception e) {
-            e.printStackTrace();
-            assertTrue(false);
-        }
-    }
-
 
     @SmallTest
     public void testOnPageStopped() {
@@ -412,24 +278,6 @@ public class XWalkUIClientTest extends XWalkViewTestBase {
                 public void run() {
                     XWalkUIClient uiClient = new XWalkUIClient(mXWalkView);
                     uiClient.onPageLoadStopped(mXWalkView, null, LoadStatus.CANCELLED);
-                }
-            });
-            assertTrue(true);
-        } catch (Exception e) {
-            e.printStackTrace();
-            assertTrue(false);
-        }
-    }
-
-    @SmallTest
-    public void testOnPageStopped_nullView() {
-        try {
-            getInstrumentation().runOnMainSync(new Runnable() {
-
-                @Override
-                public void run() {
-                    XWalkUIClient uiClient = new XWalkUIClient(mXWalkView);
-                    uiClient.onPageLoadStopped(null, null, LoadStatus.CANCELLED);
                 }
             });
             assertTrue(true);

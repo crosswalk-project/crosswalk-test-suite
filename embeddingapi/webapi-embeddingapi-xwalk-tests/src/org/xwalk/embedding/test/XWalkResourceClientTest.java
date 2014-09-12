@@ -5,18 +5,11 @@
 package org.xwalk.embedding.test;
 
 import org.xwalk.core.XWalkResourceClient;
-import org.xwalk.embedding.MainActivity;
 import org.xwalk.embedding.base.XWalkViewTestBase;
 
 import android.test.suitebuilder.annotation.SmallTest;
 
 public class XWalkResourceClientTest extends XWalkViewTestBase {
-
-
-    public XWalkResourceClientTest() {
-        super(MainActivity.class);
-    }
-
 
     @SmallTest
     public void testOnLoadStarted() {
@@ -32,8 +25,8 @@ public class XWalkResourceClientTest extends XWalkViewTestBase {
             });
             assertTrue(true);
         } catch (Exception e) {
-            e.printStackTrace();
             assertTrue(false);
+            e.printStackTrace();
         }
     }
 
@@ -51,8 +44,8 @@ public class XWalkResourceClientTest extends XWalkViewTestBase {
             });
             assertTrue(true);
         } catch (Exception e) {
-            e.printStackTrace();
             assertTrue(false);
+            e.printStackTrace();
         }
     }
 
@@ -70,8 +63,8 @@ public class XWalkResourceClientTest extends XWalkViewTestBase {
             });
             assertTrue(true);
         } catch (Exception e) {
-            e.printStackTrace();
             assertTrue(false);
+            e.printStackTrace();
         }
     }
 
@@ -89,8 +82,8 @@ public class XWalkResourceClientTest extends XWalkViewTestBase {
             });
             assertTrue(true);
         } catch (Exception e) {
-            e.printStackTrace();
             assertTrue(false);
+            e.printStackTrace();
         }
     }
 
@@ -108,8 +101,8 @@ public class XWalkResourceClientTest extends XWalkViewTestBase {
             });
             assertTrue(true);
         } catch (Exception e) {
-            e.printStackTrace();
             assertTrue(false);
+            e.printStackTrace();
         }
     }
 
@@ -127,8 +120,8 @@ public class XWalkResourceClientTest extends XWalkViewTestBase {
             });
 
         } catch (Exception e) {
-            e.printStackTrace();
             assertTrue(false);
+            e.printStackTrace();
         }
     }
 }

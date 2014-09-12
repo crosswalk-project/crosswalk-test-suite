@@ -5,6 +5,8 @@
 package org.xwalk.embedding.test;
 
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.concurrent.Callable;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
@@ -18,30 +20,41 @@ import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.os.Bundle;
 import android.test.suitebuilder.annotation.SmallTest;
+import android.util.Pair;
 import android.view.KeyEvent;
 
 @SuppressLint("NewApi")
 public class XWalkViewTest extends XWalkViewTestBase {
 
-
-    public XWalkViewTest() {
-        super(MainActivity.class);
-    }
-
     @SmallTest
     public void testAddJavascriptInterface() {
         try {
-            getInstrumentation().runOnMainSync(new Runnable() {
-
-                @Override
-                public void run()  {
-                    mXWalkView.addJavascriptInterface(new TestJavascriptInterface(), "testInterface");
-
-                }
-            });
-            assertTrue(true);
+            final String name = "add_js_interface.html";
+            addJavascriptInterface();
+            loadAssetFile(name);
+            assertEquals(mExpectedStr, getTitleOnUiThread());
         } catch (Exception e) {
             e.printStackTrace();
+            assertTrue(false);
+        }
+    }
+
+    public void testAddJavascriptInterfaceWithAnnotation() {
+        try {
+            final String name = "index.html";
+            final String xwalkStr = "\"xwalk\"";
+            String result;
+            addJavascriptInterface();
+            loadAssetFile(name);
+            result = executeJavaScriptAndWaitForResult("testInterface.getText()");
+            assertEquals(xwalkStr, result);
+            raisesExceptionAndSetTitle("testInterface.getTextWithoutAnnotation()");
+            String title = getTitleOnUiThread();
+            assertEquals(mExpectedStr, title);
+        } catch (Exception e) {
+            assertTrue(false);
+            e.printStackTrace();
+        } catch (Throwable e) {
             assertTrue(false);
         }
     }
@@ -55,33 +68,50 @@ public class XWalkViewTest extends XWalkViewTestBase {
             executeJavaScriptAndWaitForResult("document.title='"+changedTitle+"';");
             assertEquals(changedTitle, getTitleOnUiThread());
         } catch (Exception e) {
-            e.printStackTrace();
-            assertTrue(false);
-        }
-    }
-
-    @SmallTest
-    public void testClearCache_falseParam() throws Throwable {
-
-        try {
-            String url = "file:///android_asset/p1bar.html/";
-            loadUrlSync(url);
-            clearCacheOnUiThread(false);
-            assertTrue(true);
-        } catch (Exception e) {
             assertTrue(false);
             e.printStackTrace();
         }
     }
 
     @SmallTest
-    public void testClearCache_trueParam() throws Throwable {
-
+    public void testClearCache() {
         try {
-            String url = "file:///android_asset/p1bar.html";
-            loadUrlSync(url);
+            final String pagePath = "/clear_cache_test.html";
+            List<Pair<String, String>> headers = new ArrayList<Pair<String, String>>();
+            // Set Cache-Control headers to cache this request. One century should be long enough.
+            headers.add(Pair.create("Cache-Control", "max-age=3153600000"));
+            headers.add(Pair.create("Last-Modified", "Tues, 12 September 2014 00:00:00 GMT"));
+            final String pageUrl = mWebServer.setResponse(
+                    pagePath, "<html><body>foo</body></html>", headers);
+
+            // First load to populate cache.
             clearCacheOnUiThread(true);
-            assertTrue(true);
+            loadUrlSync(pageUrl);
+            assertEquals(1, mWebServer.getRequestCount(pagePath));
+
+            // Load about:blank so next load is not treated as reload by XWalkView and force
+            // revalidate with the server.
+            loadUrlSync("about:blank");
+
+            // No clearCache call, so should be loaded from cache.
+            loadUrlSync(pageUrl);
+            assertEquals(1, mWebServer.getRequestCount(pagePath));
+
+            // Same as above.
+            loadUrlSync("about:blank");
+
+            // Clear cache, so should hit server again.
+            clearCacheOnUiThread(true);
+            loadUrlSync(pageUrl);
+            assertEquals(2, mWebServer.getRequestCount(pagePath));
+
+            // Same as above.
+            loadUrlSync("about:blank");
+
+            // Do not clear cache, so should be loaded from cache.
+            clearCacheOnUiThread(false);
+            loadUrlSync(pageUrl);
+            assertEquals(2, mWebServer.getRequestCount(pagePath));
         } catch (Exception e) {
             assertTrue(false);
             e.printStackTrace();
@@ -212,27 +242,37 @@ public class XWalkViewTest extends XWalkViewTestBase {
     }
 
     @SmallTest
-    public void testSaveState() throws Throwable {
-        final Bundle state = new Bundle();
-        state.putByteArray("XWALKVIEW_STATE", "valid state".getBytes());
-        boolean result = runTestOnUiThreadAndGetResult(new Callable<Boolean>() {
-            @Override
-            public Boolean call() throws Exception {
-                return mXWalkView.saveState(state);
-            }
-        });
-        assertTrue(result);
+    public void testSaveState() {
+        try {
+            final Bundle state = new Bundle();
+            state.putByteArray("XWALKVIEW_STATE", "valid state".getBytes());
+            boolean result = runTestOnUiThreadAndGetResult(new Callable<Boolean>() {
+                @Override
+                public Boolean call() throws Exception {
+                    return mXWalkView.saveState(state);
+                }
+            });
+            assertTrue(result);
+        } catch (Exception e) {
+            assertTrue(false);
+            e.printStackTrace();
+        }
     }
 
     @SmallTest
-    public void testSaveState_loadUrl() throws Throwable {
-        setServerResponseAndLoad(NUM_NAVIGATIONS);
-        saveAndRestoreStateOnUiThread();
-        checkHistoryItemList();
+    public void testSaveState_loadUrl() {
+        try {
+            setServerResponseAndLoad(NUM_NAVIGATIONS);
+            saveAndRestoreStateOnUiThread();
+            checkHistoryItemList();
+        } catch (Throwable e) {
+            assertTrue(false);
+            e.printStackTrace();
+        }
     }
 
     @SmallTest
-    public void testRestoreState_trueResult() throws Throwable {
+    public void testRestoreState_trueResult() {
         try {
             final Bundle state = new Bundle();
             state.putByteArray("XWALKVIEW_STATE", "valid state".getBytes());
@@ -252,7 +292,7 @@ public class XWalkViewTest extends XWalkViewTestBase {
     }
 
     @SmallTest
-    public void testRestoreState_falseResult() throws Throwable {
+    public void testRestoreState_falseResult() {
         try {
             final Bundle state = new Bundle();
             state.putByteArray("XWALKVIEW_STATE", "valid state".getBytes());
@@ -271,7 +311,7 @@ public class XWalkViewTest extends XWalkViewTestBase {
      }
 
     @SmallTest
-    public void testRestoreState_notLoadFirst() throws Throwable {
+    public void testRestoreState_notLoadFirst() {
         try {
             final Bundle state = new Bundle();
             state.putByteArray("XWALKVIEW_STATE", "valid state".getBytes());
@@ -290,7 +330,7 @@ public class XWalkViewTest extends XWalkViewTestBase {
     }
 
     @SmallTest
-    public void testGetAPIVersion() throws Throwable {
+    public void testGetAPIVersion() {
         try {
             String version = getAPIVersionOnUiThread();
             Pattern pattern = Pattern.compile("^[0-9]+(.[0-9]+)$");
@@ -303,7 +343,7 @@ public class XWalkViewTest extends XWalkViewTestBase {
      }
 
     @SmallTest
-    public void testGetXWalkVersion() throws Throwable {
+    public void testGetXWalkVersion() {
         try {
             String version = getXWalkVersionOnUiThread();
             Pattern pattern = Pattern.compile("\\d+\\.\\d+\\.\\d+\\.\\d+");
