@@ -49,17 +49,11 @@ Authors:
   </head>
   <body>
     <div id="log"></div>
-    <div id="media" >the values of the max-color property can not be negative.when set "max-color:-1" on the CSS3 Media color attr, this text will not displays in red</div>
+    <div id="media">The text should be black.</div>
     <script>
       var t = async_test(document.title, { timeout: 2000 });
       try {
-        var div = document.querySelector("#media");
-        var color = GetCurrentStyle("color");
-        if(screen.colorDepth <= -1) {
-          EqualTest(color, "rgb(255, 0, 0)", "The text color");
-        }else {
-          EqualTest(color, "rgb(0, 0, 0)", "The text color");
-        }
+        EqualTest(GetCurrentStyle("color"), "rgb(0, 0, 0)", "The text color");
       }catch(err) {
         TrueTest(false, "Exception while get " + err.name + err.message);
       }

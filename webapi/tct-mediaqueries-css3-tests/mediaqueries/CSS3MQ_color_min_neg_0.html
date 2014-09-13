@@ -48,17 +48,11 @@ Authors:
  </head>
   <body>
     <div id="log"></div>
-    <div id="media" >set "min-color:-0" on the CSS3 Media color attr, when the number of bits per color component of the output device is greater than or equals to 0, this text will displays in red</div>
+    <div id="media">The text should be red.</div>
     <script>
       var t = async_test(document.title, { timeout: 2000 });
       try {
-        var div = document.querySelector("#media");
-        var color = GetCurrentStyle("color");
-        if(screen.colorDepth >= -0) {
-          EqualTest(color, "rgb(255, 0, 0)", "The text color");
-        }else {
-          EqualTest(color, "rgb(0, 0, 0)", "The text color");
-        }
+        EqualTest(GetCurrentStyle("color"), "rgb(255, 0, 0)", "The text color");
       }catch(err) {
         TrueTest(false, "Exception while get " + err.name + err.message);
       }

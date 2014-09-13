@@ -49,17 +49,11 @@ Authors:
   </head>
   <body>
     <div id="log"></div>
-    <div id="media" >Set "min-width:-0; max-width:700px" on the Media Queries width attr, when the page is visible and the width is less than or equal to 700px, this text will displays in red. Try to adjust your viewport to make the page width between this interval to see the effect</div>
+    <div id="media">The text should be red.</div>
     <script>
       var t = async_test(document.title, { timeout: 2000 });
       try {
-        var div = document.querySelector("#media");
-        var color = GetCurrentStyle("color");
-        if(document.body.scrollWidth >= -0 ) {
-          EqualTest(color, "rgb(255, 0, 0)", "The text color");
-        } else{
-          EqualTest(color, "rgb(0, 0, 0)", "The text color");
-        }
+        EqualTest(GetCurrentStyle("color"), "rgb(255, 0, 0)", "The text color");
       }catch (err) {
         TrueTest(false, "Exception while get " + err.name + err.message);
       }
