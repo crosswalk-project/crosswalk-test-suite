@@ -65,7 +65,7 @@ function updateList() {
   $(applist).find("set").each(function(){
     $("#mylist").append("<li data-role=\"list-divider\">"+$(this).attr("name")+"</li>");
     $(this).find("testcase").each(function(){
-      var url = "tests/" + $(this).attr("id") + "/index.html?test_name="+$(this).attr("purpose");
+      var url = "samples/" + $(this).attr("id") + "/index.html?test_name="+$(this).attr("purpose");
       var appLine = "<li class=\"app\" id=\"" + $(this).attr("id") + "\">"
                   + "<a href=\"" + url + "\">" + "<h2>" + $(this).attr("purpose") + "</h2></a></li>";
       $("#mylist").append(appLine);

@@ -32,6 +32,8 @@ Authors:
 
 */
 
+var helpInfo;
+
 function EnablePassButton(){
   $('#pass_button').removeClass("ui-disabled");
 }
@@ -42,7 +44,7 @@ function DisablePassButton(){
 
 function getAppName() {
   var lpath = window.parent._appURL;
-  var from = lpath.lastIndexOf("tests/") + 6;
+  var from = lpath.lastIndexOf("samples/") + 8;
   var to = lpath.lastIndexOf("/");
   return lpath.substring(from, to);
 }
@@ -101,10 +103,29 @@ function getParms() {
   return parms["test_name"];
 }
 
+function initStep(testname) {
+  var script = document.createElement("script");
+  script.type = "text/javascript";
+  var addr = window.location.href;
+  var str = addr.substring(addr.indexOf("/samples/") + 9,addr.indexOf("/index.html"))
+  script.src = "../../steps/" + str + "/step.js";
+  document.body.appendChild(script);
+}
+
+function changeContent(num) {
+  if(num == 1) {
+    $("#popup_info").html(step);
+  }else {
+   $("#popup_info").html(helpInfo)
+  }
+}
+
 $(document).ready(function(){
   var testname = getParms();
   document.title = testname;
   $("#main_page_title").text(testname);
+  helpInfo = $("#popup_info").html();
+  initStep(testname);
 });
 
 $(document).bind('pagecreate', function () {
@@ -114,7 +135,8 @@ $(document).bind('pagecreate', function () {
   footbar.append("<div data-role=\"controlgroup\" data-type=\"horizontal\" align=\"center\">" +
       "<a href=\"javascript:reportResult('PASS');\" id=\"pass_button\" data-role=\"button\" data-icon=\"check\" style=\"color: green\">Pass</a>" +
       "<a href=\"javascript:reportResult('FAIL');\" id=\"fail_button\" data-role=\"button\" data-icon=\"delete\" style=\"color: red\">Fail</a>" +
-      "<a href=\"#popup_info\" data-icon=\"info\" data-role=\"button\" data-rel=\"popup\" data-transition=\"pop\">Info</a>" +
+      "<a href=\"#popup_info\" data-icon=\"info\" data-role=\"button\" data-rel=\"popup\" data-transition=\"pop\" onclick=\"javascript:changeContent(1);\">Info</a>" +
+      "<a href=\"#popup_info\" data-icon=\"info\" data-role=\"button\" data-rel=\"popup\" data-transition=\"pop\" onclick=\"javascript:changeContent(2);\">Help</a>" +
       "<a href=\"javascript:backAppsHome();\" data-role=\"button\" data-rel=\"popup\" data-icon=\"home\">Back</a></div>");
   footbar.trigger("create");
   $(':jqmData(role=footer)').find(':jqmData(role=button) > span:first-child').css('padding', '15px 10px 15px 30px');

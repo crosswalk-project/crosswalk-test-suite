@@ -1,0 +1,6 @@
+var step = "<font class='fontSize'>"
+         + "  <p>Test Purpose: </p>"
+         + "  <p>Verifies the CSS Transitions can change CSS properties smoothly from one value to another over a given duration.</p>"
+         + "  <p>Expected Result: </p>"
+         + "  <p>Test passes if the transitions work well.</p>"
+         + "</font>"
