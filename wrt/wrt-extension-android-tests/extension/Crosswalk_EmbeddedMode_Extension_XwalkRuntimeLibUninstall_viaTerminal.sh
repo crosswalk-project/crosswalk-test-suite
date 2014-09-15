@@ -63,7 +63,7 @@ grep "Success" /tmp/install.txt
 
 if [ $? -eq 0 ];then
     #Uninstall apk
-    $command uninstall org.xwalk.runtime.lib > /tmp/uninstall.txt
+    $command uninstall org.xwalk.core > /tmp/uninstall.txt
     grep "Success" /tmp/uninstall.txt
 
     if [ $? -eq 0 ];then
