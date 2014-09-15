@@ -44,11 +44,11 @@ var tcpsocket = new namespace.TCPSocket(remoteAddress, remotePort);
 
 [
   ["DOMString", "remoteAddress", "readonly"],
-  ["DOMString", "remotePort", "readonly"],
+  ["unsigned short", "remotePort", "readonly"],
   ["DOMString", "localAddress", "readonly"],
   ["unsigned short", "localPort", "readonly"],
   ["unsigned long", "bufferedAmount", "readonly"],
-  ["unsigned short", "readyState", "readonly"],
+  ["ReadyState", "readyState", "readonly"],
   ["event", "ondrain", ""],
   ["event", "onopen", ""],
   ["event", "onclose", ""],
@@ -56,7 +56,7 @@ var tcpsocket = new namespace.TCPSocket(remoteAddress, remotePort);
   ["event", "onerror", ""],
   ["event", "onmessage", ""],
   ["function", "close", ""],
-  ["function", "halfClose", ""],
+  ["function", "halfclose", ""],
   ["function", "suspend", ""],
   ["function", "resume", ""],
   ["function", "send", ""]
@@ -80,6 +80,10 @@ var tcpsocket = new namespace.TCPSocket(remoteAddress, remotePort);
         assert_equals(typeof tcpsocket[name], "number", name + " attribute of type");
         var value = tcpsocket[name];
         assert_true(0 <= value && value <= 65535, "unsigned short " + value + " not in range [0, 65535]");
+        break;
+
+      case "ReadyState":
+        assert_equals(typeof tcpsocket[name], "string", name + " attribute of type");
         break;
 
       case "unsigned long":
