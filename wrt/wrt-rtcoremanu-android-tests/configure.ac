@@ -29,5 +29,6 @@ testapp/splashscreen_launchscreen_field_tests/Makefile \
 testapp/manifest_desc_specific_tests/Makefile \
 testapp/manifest_name_nullvalue_tests/Makefile \
 testapp/manifest_icon_117pixel_tests/Makefile \
+testapp/manifest_icon_chinese_tests/Makefile \+
 resources/Makefile webrunner/Makefile])
 AC_OUTPUT
