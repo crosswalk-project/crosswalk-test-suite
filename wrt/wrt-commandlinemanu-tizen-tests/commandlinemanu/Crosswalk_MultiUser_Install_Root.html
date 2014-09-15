@@ -26,7 +26,7 @@ NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE,
 EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
 Authors:
-        IVAN CHEN <yufeix.chen@intel.com>
+
 
 -->
 
@@ -41,10 +41,9 @@ Authors:
       <strong>Test steps:</strong>
     </p>
     <ol>
-      <li>Push the webapp "xxxx.xpk" into Tizen device</li>
-      <li>Execute command: "sdb shell"</li>
+      <li>Push the webapp "disable_device_capabilities_tests.wgt" into Tizen device</li>
       <li>Current if it is not root user, execute command "su"</li>
-      <li>Execute command: "xwalkctl --install xxxx.xpk"</li>
+      <li>Execute command: "xwalkctl --install disable_device_capabilities_tests.wgt"</li>
     </ol>
     <p>
       <strong>Expected Output:</strong>
@@ -53,7 +52,7 @@ Authors:
       <li>The package be pushed into Tizen device successfully</li>
       <li>The command execute successfully, no error</li>
       <li>If need switch to the "root" users, input password "tizen" if need</li>
-      <li>There app installed successfully</li>
+      <li>There app should not be installed successfully</li>
     </ol>
   </body>
 </html>

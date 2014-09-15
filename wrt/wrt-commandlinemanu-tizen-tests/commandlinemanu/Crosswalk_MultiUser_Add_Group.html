@@ -26,14 +26,14 @@ NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE,
 EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
 Authors:
-        IVAN CHEN <yufeix.chen@intel.com>
+
 
 -->
 
 <html>
   <head>
     <meta charset='utf-8'>
-    <title>Crosswalk_MultiUser_xwalkctl_Root</title>
+    <title>Crosswalk_MultiUser_Add_Group</title>
     <link rel="author" title="Intel" href="http://www.intel.com">
   </head>
   <body>
@@ -41,18 +41,23 @@ Authors:
       <strong>Test steps:</strong>
     </p>
     <ol>
-      <li>Push the webapp "disable_device_capabilities_tests.wgt" into Tizen device</li>
-      <li>Current if it is not root user, execute command "su"</li>
-      <li>Execute command: "xwalkctl --install disable_device_capabilities_tests.wgt"</li>
+      <li>Switch to 'root' user: "su"</li>
+      <li>Add new group: "groupadd test"</li>
+      <li>Add new account: "useradd -d /home/addusertest -m addusertest"</li>
+      <li>Change the 'addusertest' group to 'test' group: 'usermod -g test addusertest '</li>
+      <li>Switch to 'addusertest' user: 'su','su addusertest'</li>
+      <li>Install webapp by : xwalkctl -i /path/disable_device_capabilities_tests.wgt</li>
     </ol>
     <p>
       <strong>Expected Output:</strong>
     </p>
     <ol>
-      <li>The package be pushed into Tizen device successfully</li>
-      <li>The command execute successfully, no error</li>
-      <li>If need switch to the "root" users, input password "tizen" if need</li>
-      <li>There app should not be installed successfully</li>
+      <li>Switch to 'root' user successfully</li>
+      <li>The new group add successfully, no error</li>
+      <li>Add new account successfully</li>
+      <li>The 'addusertest' user group change to 'test' group successfully, no error</li>
+      <li>Switch to 'addusertest' user successfully</li>
+      <li>The webapp can not be installed successfully</li>
     </ol>
   </body>
 </html>

@@ -26,14 +26,14 @@ NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE,
 EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
 Authors:
-        IVAN CHEN <yufeix.chen@intel.com>
+
 
 -->
 
 <html>
   <head>
     <meta charset='utf-8'>
-    <title>Crosswalk_MultiUser_xwalkctl_Root</title>
+    <title>Crosswalk_MultiUser_Account_App</title>
     <link rel="author" title="Intel" href="http://www.intel.com">
   </head>
   <body>
@@ -42,17 +42,20 @@ Authors:
     </p>
     <ol>
       <li>Push the webapp "disable_device_capabilities_tests.wgt" into Tizen device</li>
-      <li>Current if it is not root user, execute command "su"</li>
-      <li>Execute command: "xwalkctl --install disable_device_capabilities_tests.wgt"</li>
+      <li>Switch to 'app' user: "su","su app"</li>
+      <li>Execute command: "xwalkctl -i disable_device_capabilities_tests.wgt"</li>
+      <li>Switch to 'guest' user: "su guest"</li>  
+      <li>Execute command: "xwalkctl -i disable_device_capabilities_tests.wgt"</li> 
     </ol>
     <p>
       <strong>Expected Output:</strong>
     </p>
     <ol>
       <li>The package be pushed into Tizen device successfully</li>
-      <li>The command execute successfully, no error</li>
-      <li>If need switch to the "root" users, input password "tizen" if need</li>
-      <li>There app should not be installed successfully</li>
+      <li>Switch to 'app' user successfully</li>
+      <li>The webapp should be installed successfully</li>
+      <li>Switch to 'guest' user successfully</li>
+      <li>The disable_device_capabilities_tests webapp should not be installed or updated</li>
     </ol>
   </body>
 </html>
