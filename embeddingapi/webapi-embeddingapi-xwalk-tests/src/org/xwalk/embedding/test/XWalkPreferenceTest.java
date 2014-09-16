@@ -6,20 +6,13 @@ package org.xwalk.embedding.test;
 
 
 import org.xwalk.core.XWalkPreferences;
-import org.xwalk.embedding.MainActivity;
 import org.xwalk.embedding.base.XWalkViewTestBase;
-
 import android.test.suitebuilder.annotation.SmallTest;
 
 public class XWalkPreferenceTest extends XWalkViewTestBase {
 
-    public XWalkPreferenceTest() {
-        super(MainActivity.class);
-    }
-
-     
     @SmallTest
-    public void testSetValue_falseParam() {
+    public void testSetValue_false_REMOTE_DEBUGGING() {
         try {
             getInstrumentation().runOnMainSync(new Runnable() {
 
@@ -36,7 +29,7 @@ public class XWalkPreferenceTest extends XWalkViewTestBase {
     }
 
     @SmallTest
-    public void testSetValue_trueParam() {
+    public void testSetValue_true_REMOTE_DEBUGGING() {
         try {
             getInstrumentation().runOnMainSync(new Runnable() {
 
@@ -47,19 +40,19 @@ public class XWalkPreferenceTest extends XWalkViewTestBase {
             });
             assertTrue(true);
         } catch (Exception e) {
-            e.printStackTrace();
             assertTrue(false);
+            e.printStackTrace();
         }
     }
 
     @SmallTest
-    public void testGetValue_falseParam() {
+    public void testGetBooleanValue_false_REMOTE_DEBUGGING() {
         try {
             getInstrumentation().runOnMainSync(new Runnable() {
 
                 @Override
                 public void run()  {
-                    boolean flag = XWalkPreferences.getValue(XWalkPreferences.REMOTE_DEBUGGING);
+                    boolean flag = XWalkPreferences.getBooleanValue(XWalkPreferences.REMOTE_DEBUGGING);
                     assertEquals(false, flag);
                 }
             });
@@ -71,14 +64,14 @@ public class XWalkPreferenceTest extends XWalkViewTestBase {
     }
 
     @SmallTest
-    public void testGetValue_trueParam() {
+    public void testGetBooleanValue_true_REMOTE_DEBUGGING() {
         try {
             getInstrumentation().runOnMainSync(new Runnable() {
 
                 @Override
                 public void run()  {
                     XWalkPreferences.setValue(XWalkPreferences.REMOTE_DEBUGGING, true);
-                    boolean flag = XWalkPreferences.getValue(XWalkPreferences.REMOTE_DEBUGGING);
+                    boolean flag = XWalkPreferences.getBooleanValue(XWalkPreferences.REMOTE_DEBUGGING);
                     assertEquals(true, flag);
                 }
             });
@@ -89,4 +82,107 @@ public class XWalkPreferenceTest extends XWalkViewTestBase {
         }
     }
 
+    @SmallTest
+    public void testSetValue_String_ALLOW_UNIVERSAL_ACCESS_FROM_FILE() {
+        try {
+            getInstrumentation().runOnMainSync(new Runnable() {
+
+                @Override
+                public void run() {
+                    String value = "testSetValue_String";
+                    XWalkPreferences.setValue(XWalkPreferences.ALLOW_UNIVERSAL_ACCESS_FROM_FILE, value);
+                }
+            });
+            assertTrue(true);
+        } catch (Exception e) {
+            e.printStackTrace();
+            assertTrue(false);
+        }
+    }
+
+    @SmallTest
+    public void testSetValue_boolean_JAVASCRIPT_CAN_OPEN_WINDOW() {
+        try {
+            getInstrumentation().runOnMainSync(new Runnable() {
+
+                @Override
+                public void run() {
+                    XWalkPreferences.setValue(XWalkPreferences.JAVASCRIPT_CAN_OPEN_WINDOW, true);
+                }
+            });
+            assertTrue(true);
+        } catch (Exception e) {
+            e.printStackTrace();
+            assertTrue(false);
+        }
+    }
+
+    @SmallTest
+    public void testSetValue_int_SUPPORT_MULTIPLE_WINDOWS() {
+        try {
+            getInstrumentation().runOnMainSync(new Runnable() {
+
+                @Override
+                public void run() {
+                    XWalkPreferences.setValue(XWalkPreferences.SUPPORT_MULTIPLE_WINDOWS, 3);
+                }
+            });
+            assertTrue(true);
+        } catch (Exception e) {
+            e.printStackTrace();
+            assertTrue(false);
+        }
+    }
+
+    @SmallTest
+    public void testGetStringValue_String_ALLOW_UNIVERSAL_ACCESS_FROM_FILE() {
+        try {
+            getInstrumentation().runOnMainSync(new Runnable() {
+
+                @Override
+                public void run() {
+                    String value = "testSetValue_String";
+                    XWalkPreferences.setValue(XWalkPreferences.ALLOW_UNIVERSAL_ACCESS_FROM_FILE, value);
+                    assertEquals(value, XWalkPreferences.getStringValue(XWalkPreferences.ALLOW_UNIVERSAL_ACCESS_FROM_FILE));
+                }
+            });
+        } catch (Exception e) {
+            e.printStackTrace();
+            assertTrue(false);
+        }
+    }
+
+    @SmallTest
+    public void testGetBooleanValue_boolean_JAVASCRIPT_CAN_OPEN_WINDOW() {
+        try {
+            getInstrumentation().runOnMainSync(new Runnable() {
+
+                @Override
+                public void run() {
+                    XWalkPreferences.setValue(XWalkPreferences.JAVASCRIPT_CAN_OPEN_WINDOW, false);
+                    assertEquals(false, XWalkPreferences.getBooleanValue(XWalkPreferences.JAVASCRIPT_CAN_OPEN_WINDOW));
+                }
+            });
+        } catch (Exception e) {
+            e.printStackTrace();
+            assertTrue(false);
+        }
+    }
+
+    @SmallTest
+    public void testGetIntegerValue_int_SUPPORT_MULTIPLE_WINDOWS() {
+        try {
+            getInstrumentation().runOnMainSync(new Runnable() {
+
+                @Override
+                public void run() {
+                    XWalkPreferences.setValue(XWalkPreferences.SUPPORT_MULTIPLE_WINDOWS, 3);
+                    assertEquals(3, XWalkPreferences.getIntegerValue(XWalkPreferences.SUPPORT_MULTIPLE_WINDOWS));
+                }
+            });
+        } catch (Exception e) {
+            e.printStackTrace();
+            assertTrue(false);
+        }
+    }
 }
