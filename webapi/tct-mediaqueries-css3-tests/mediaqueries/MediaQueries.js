@@ -41,35 +41,35 @@ function GetCurrentStyle(prop) {
 }
 function headProp(s) {
 var div = document.querySelector("#media");
-	if (s in div.style) {
-		return s;
-	}
-	s = s[0].toUpperCase() + s.slice(1);
-	var prefixes = ["ms", "Moz", "moz", "webkit", "O"];
-	for (var i = 0; i < prefixes.length; i++) {
-		if ((prefixes[i] + s) in div.style) {
-			return prefixes[i] + s;
-		}
-	}
-	return s;
+    if (s in div.style) {
+        return s;
+    }
+    s = s[0].toUpperCase() + s.slice(1);
+    var prefixes = ["ms", "Moz", "moz", "webkit", "O"];
+    for (var i = 0; i < prefixes.length; i++) {
+        if ((prefixes[i] + s) in div.style) {
+            return prefixes[i] + s;
+        }
+    }
+    return s;
 }
 //
 function getfilename(path)
 {
-   var indexlast=path.lastIndexOf("/");
-   var indexlast1=path.lastIndexOf("\"");
-   var indexlast2=path.lastIndexOf(")");
-   indexlast1=indexlast1>indexlast2?indexlast1:indexlast2;
-   return path.substring(indexlast+1,indexlast1);
+    var indexlast=path.lastIndexOf("/");
+    var indexlast1=path.lastIndexOf("\"");
+    var indexlast2=path.lastIndexOf(")");
+    indexlast1=indexlast1>indexlast2?indexlast1:indexlast2;
+    return path.substring(indexlast+1,indexlast1);
 }
 //
 
-function EqualTest(color,expected,disc) {
+function assert_equals(color,expected,disc) {
     t.step(function () { assert_equals(color, expected, disc); } );
     t.done();
 }
 
-function TrueTest(expected, disc) {
+function assert_true(expected, disc) {
     t.step(function () { assert_true(expected, disc); } );
     t.done();
 }

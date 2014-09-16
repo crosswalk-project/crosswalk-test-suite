@@ -36,33 +36,26 @@ Authors:
     <title>CSS3MediaQueries Test: CSS3MQ_height_value_between_900px_and_1200px</title>
     <link rel="author" title="Intel" href="http://www.intel.com/" />
     <link rel="help" href="http://www.w3.org/TR/2012/REC-css3-mediaqueries-20120619/#height" />
-    <meta name="flags" content="" />
-    <meta name="assert" content="Set 'max-height: 1200px;min-height: 900px' on the Media Queries height attr; When your output device is between 900px and 1200px in height, the text will display in red" />
     <style>
       @media all and (max-height: 1200px) and (min-height: 900px) {
         #media{color:#f00;}
       }
     </style>
-    <script src="MediaQueries.js"></script>
     <script src="../resources/testharness.js"></script>
     <script src="../resources/testharnessreport.js"></script>
   </head>
   <body>
     <div id="log"></div>
-    <div id="media" >Set 'max-height: 1200px;min-height: 900px' on the Media Queries height attr; When your output device is between 900px and 1200px in height, the text will display in red</div>
+    <div id="media">If your output device's height is between 900px and 1200px, the text should be red.</div>
     <script>
-      var t = async_test(document.title, { timeout: 2000 });
-      try {
-        var div = document.querySelector("#media");
-        var color = GetCurrentStyle("color");
+      test(function () {
+        var color = getComputedStyle(document.getElementById("media"))["color"];
         if(document.body.scrollHeight <= 1200 && document.body.scrollHeight >= 900 ) {
-          EqualTest(color, "rgb(255, 0, 0)", "The text color");
+          assert_equals(color, "rgb(255, 0, 0)", "The text color");
         } else{
-          EqualTest(color, "rgb(0, 0, 0)", "The text color");
+          assert_equals(color, "rgb(0, 0, 0)", "The text color");
         }
-      }catch (err) {
-        TrueTest(false, "Exception while get " + err.name + err.message);
-      }
+      })
     </script>
   </body>
 </html>

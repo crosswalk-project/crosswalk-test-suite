@@ -45,24 +45,19 @@ Authors:
     </style>
     <script src="../resources/testharness.js"></script>
     <script src="../resources/testharnessreport.js"></script>
-    <script src="MediaQueries.js"></script>
   </head>
   <body>
     <div id="log"></div>
-    <div id="media" >Set 'screen; aspect-ratio:59/80' on CSS3 Media Queries, When the page is visible in the output device and the page width and height ratio equal to 59/80, this text will displays in red. Try to adjust your viewport to make the page width between this interval to see the effect</div>
+    <div id="media">Set 'screen; aspect-ratio:59/80' on CSS3 Media Queries, When the page is visible in the output device and the page width and height ratio equal to 59/80, this text will displays in red. Try to adjust your viewport to make the page width between this interval to see the effect</div>
     <script>
-      var t = async_test(document.title, { timeout: 2000 });
-      try {
-        var div = document.querySelector("#media");
-        var color = GetCurrentStyle("color");
+      test(function () {
+        var color = getComputedStyle(document.getElementById("media"))["color"];
         if(document.body.scrollWidth/document.body.scrollHeight == 59/80) {
-          EqualTest(color, "rgb(255, 0, 0)", "The text color");
+          assert_equals(color, "rgb(255, 0, 0)", "The text color");
         }else {
-          EqualTest(color, "rgb(0, 0, 0)", "The text color");
+          assert_equals(color, "rgb(0, 0, 0)", "The text color");
         }
-      }catch (err) {
-        TrueTest(false, "Exception while get " + err.name + err.message);
-      }
+      })
     </script>
   </body>
 </html>

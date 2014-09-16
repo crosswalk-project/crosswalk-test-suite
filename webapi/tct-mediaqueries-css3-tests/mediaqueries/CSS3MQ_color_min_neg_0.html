@@ -42,7 +42,6 @@ Authors:
         #media{color:#f00;}
       }
     </style>
-    <script src="MediaQueries.js"></script>
     <script src="../resources/testharness.js"></script>
     <script src="../resources/testharnessreport.js"></script>
  </head>
@@ -50,12 +49,10 @@ Authors:
     <div id="log"></div>
     <div id="media">The text should be red.</div>
     <script>
-      var t = async_test(document.title, { timeout: 2000 });
-      try {
-        EqualTest(GetCurrentStyle("color"), "rgb(255, 0, 0)", "The text color");
-      }catch(err) {
-        TrueTest(false, "Exception while get " + err.name + err.message);
-      }
+      test(function () {
+        var color = getComputedStyle(document.getElementById("media"))["color"];
+        assert_equals(color, "rgb(255, 0, 0)", "The text color");
+      })
     </script>
   </body>
 </html>

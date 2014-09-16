@@ -39,30 +39,25 @@ Authors:
     <meta name="flags" content="" />
     <meta name="assert" content="Set 'max-height: 1300px' on CSS3 Media Queries width attr; When the browser height is less than or equal to 1300px, the text will displays in red" />
     <style>
-      @media  screen and (max-height: 1300px) {
+      @media screen and (max-height: 1300px) {
         #media{color:#f00;}
       }
     </style>
-    <script src="MediaQueries.js"></script>
     <script src="../resources/testharness.js"></script>
     <script src="../resources/testharnessreport.js"></script>
   </head>
   <body>
     <div id="log"></div>
-    <div id="media" >Set 'max-height: 1300px' on CSS3 Media Queries width attr; When the browser height is less than or equal to 1300px the text will displays in red</div>
+    <div id="media">If the browser height is less than or equal to 1300px, the text should be red.</div>
     <script>
-      var t = async_test(document.title, { timeout: 2000 });
-      try {
-        var div = document.querySelector("#media");
-        var color = GetCurrentStyle("color");
+      test(function () {
+        var color = getComputedStyle(document.getElementById("media"))["color"];
         if(document.body.scrollHeight <= 1300 ) {
-          EqualTest(color, "rgb(255, 0, 0)", "The text color");
+          assert_equals(color, "rgb(255, 0, 0)", "The text color");
         } else{
-          EqualTest(color, "rgb(0, 0, 0)", "The text color");
+          assert_equals(color, "rgb(0, 0, 0)", "The text color");
         }
-      }catch (err) {
-        TrueTest(false, "Exception while get " + err.name + err.message);
-      }
+      }, document.title)
     </script>
   </body>
 </html>
