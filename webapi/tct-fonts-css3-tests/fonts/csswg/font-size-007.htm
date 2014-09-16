@@ -1,13 +1,14 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html>
     <head>
-        <title>CSS Test: Font-size set to 'inherit'</title>
+        <title>CSS Test: Font-size using pixels with a positive nominal value, +96px</title>
         <link title="Microsoft" rel="author" href="http://www.microsoft.com/">
         <link rel="help" href="http://www.w3.org/TR/CSS21/fonts.html#propdef-font-size">
         <link rel="help" href="http://www.w3.org/TR/CSS21/fonts.html#font-size-props">
         <link rel="help" href="http://www.w3.org/TR/css3-fonts/#font-size-prop">
+        <link rel="match" href="reference/font-size-006-ref.html" />
         <meta content="ahem" name="flags">
-        <meta content="The 'font-size' property sets a value of 'inherit' and inherits its value from its parent." name="assert">
+        <meta content="The 'font-size' property sets a positive nominal length value in pixels." name="assert">
         <style type="text/css">
             @font-face {
                 font-family: Ahem;
@@ -16,22 +17,28 @@
             div
             {
                 font-family: Ahem;
-                font-size: 3in;
+                line-height: 1em;
+                position: relative;
             }
-            span
+            #div2
             {
-                font-size: 0;
+                font-size: +96px;
             }
-            div span
+            #div3
             {
-                font-size: inherit;
+                border-top: 96px solid black;
+                left: 1.1in;
+                position: absolute;
+                top: 0;
+                width: 96px;
             }
         </style>
     </head>
     <body>
-        <p>Test passes if there is a box below.</p>
-        <div>
-            <span>X</span>
+        <p>Test passes if the two boxes below are the same size.</p>
+        <div id="div1">
+            <div id="div2">X</div>
+            <div id="div3"></div>
         </div>
     </body>
 </html>
