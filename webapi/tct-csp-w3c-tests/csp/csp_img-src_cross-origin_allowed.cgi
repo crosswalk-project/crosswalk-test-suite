@@ -40,6 +40,7 @@ Authors:
     <title>CSP Test: csp_img-src_cross-origin_allowed</title>
     <link rel="author" title="Intel" href="http://www.intel.com"/>
     <link rel="help" href="http://www.w3.org/TR/2012/CR-CSP-20121115/#img-src"/>
+    <link rel="match" href="reference/csp_frame-src_asterisk_allowed_ext-ref.html"/>
     <meta name="flags" content=""/>
     <meta name="assert" content="img-src http://127.0.0.1:8081"/>
     <meta charset="utf-8"/>

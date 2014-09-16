@@ -40,6 +40,7 @@ Authors:
     <title>CSP Test: csp_frame-src_cross-origin_blocked</title>
     <link rel="author" title="Intel" href="http://www.intel.com"/>
     <link rel="help" href="http://www.w3.org/TR/2012/CR-CSP-20121115/#frame-src"/>
+    <link rel="match" href="reference/csp_chidl-src_asterisk-ref.html"/>
     <meta name="flags" content=""/>
     <meta name="assert" content="frame-src http://127.0.0.1:8081"/>
     <meta charset="utf-8"/>

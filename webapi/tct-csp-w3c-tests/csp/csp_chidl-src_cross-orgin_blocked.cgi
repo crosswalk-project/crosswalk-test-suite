@@ -40,6 +40,7 @@ Authors:
     <title>CSP Test: csp_child-src_cross-orgin_blocked</title>
     <link rel="author" title="Intel" href="http://www.intel.com"/>
     <link rel="help" href="http://w3c.github.io/webappsec/specs/content-security-policy/csp-specification.dev.html#child-src"/>
+    <link rel="match" href="reference/csp_chidl-src_asterisk-ref.html"/>
     <meta name="flags" content=""/>
     <meta name="assert" content="child-src http://www.w3c.com"/>
     <meta charset="utf-8"/>

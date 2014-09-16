@@ -40,6 +40,7 @@ Authors:
     <title>CSP Test: csp_ro_object-src_self_allowed_int</title>
     <link rel="author" title="Intel" href="http://www.intel.com"/>
     <link rel="help" href="http://www.w3.org/TR/2012/CR-CSP-20121115/#object-src"/>
+    <link rel="match" href="reference/csp_base-uri_asterisk-ref.html"/>
     <meta name="flags" content=""/>
     <meta name="assert" content="object-src 'self'"/>
     <meta charset="utf-8"/>

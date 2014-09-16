@@ -40,6 +40,7 @@ Authors:
     <title>CSP Test: csp_object-src_asterisk_allowed_ext</title>
     <link rel="author" title="Intel" href="http://www.intel.com"/>
     <link rel="help" href="http://www.w3.org/TR/2012/CR-CSP-20121115/#object-src"/>
+    <link rel="match" href="reference/csp_frame-src_asterisk_allowed_ext-ref.html"/>
     <meta name="flags" content=""/>
     <meta name="assert" content="object-src *"/>
     <meta charset="utf-8"/>

@@ -40,6 +40,7 @@ Authors:
     <title>CSP Test: csp_default-src_cross-origin_multi_font_allowed_two</title>
     <link rel="author" title="Intel" href="http://www.intel.com"/>
     <link rel="help" href="http://www.w3.org/TR/2012/CR-CSP-20121115/#default-src"/>
+    <link rel="match" href="reference/csp_default-src_none_font_blocked_int-ref.html"/>
     <meta name="flags" content=""/>
     <meta name="assert" content="default-src http://127.0.0.1:8081 http://127.0.0.1:8082; style-src 'unsafe-inline'"/>
     <meta charset="utf-8"/>
