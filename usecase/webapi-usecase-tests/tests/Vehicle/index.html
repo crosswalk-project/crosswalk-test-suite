@@ -50,10 +50,15 @@ Authors:
           <li id="vehicleSpeed">vehicle vehicleSpeed: N/A</li>
           <li id="zones">vehicleSpeed zones: N/A</li>
           <li id="speed">vehicleSpeed speed: N/A</li>
+          <li id="speedChange">vehicle speed changed to: N/A</li>
+          <li id="historyData">history data: N/A</li>
         </ul>
       </div>
       <div>
         <a href="javascript:getVehicle()" id="getVehicle" data-role="button" class="opt">Get vehicle</a>
+      </div>
+      <div>
+        <a href="javascript:setVehicleDoor()" id="setVehicleDoor" data-role="button" class="opt">Set vehicle door</a>
       </div>
     </div>
     <div data-role="footer" data-position="fixed" data-tap-toggle="false">
@@ -68,10 +73,13 @@ Authors:
             <li>
               Click the "Get vehicle" button.
             </li>
+            <li>
+              Click the "Set vehicle door" button.
+            </li>
           </ol>
         </p>
         <p>Expected Result: </p>
-        <p>Test passes if the detected direction reflects the actual vehicle information.</p>
+        <p>Test passes if the detected direction reflects the actual vehicle information after step 1, and show "Set door lock success" after step 2.</p>
       </font>
     </div>
   </div>
