@@ -48,10 +48,10 @@ Authors:
     </div>
     <div data-role="content">
       <ol>
-        <li>Click "Play" button,drag the volume to adjust the volume</li>
-        <li>Play the native audio during the step 1 audio is playing.</li>
-        <li>Background the native audio play app,let the setp 1 audio on the top layer</li>
-        <li>Click "Play" button to play audio and launch native Alarm Clock to start one clock alarm </li>
+        <li>sdb push one audio file to device</li>      
+        <li>Click "Play" button,drag the volume to adjust the volume,keep the audio playing</li>
+        <li>Open another terminal window: "paplay --property=media.role=phone audio_file".</li>
+        <li>ctrl + c to stop the paplay audio</li>        
       </ol>  
       <div id="contentdiv">
         <audio id="MediaPlayback" controls="controls">
@@ -77,10 +77,10 @@ Authors:
         <p>Verifies the audio policy feature.</p>
         <p>Expected Result: </p>
          <ol>
+           <li>The audio file push to device successfully</li>           
            <li>The audio is playing and volume can be adjusted successfully</li>
-           <li>The step 1 audio stop when the native audio is playing</li>
-           <li>The step 1 audio is resumed</li>
-           <li>The step 1 audio stop when the Clock alarm is starting</li>
+           <li>The paplay audio is playing and the step 2 webapp audio have been forced to suspend successfully</li>
+           <li>The paplay audio is stop successfully and the step 2 webapp audio is resumed to playing successfully</li>
         </ol>
       </font>
     </div>
