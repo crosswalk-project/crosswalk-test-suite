@@ -3,84 +3,19 @@
 <test_definition>
   <suite category="W3C/HTML5 APIs" launcher="xwalk" name="webapi-gamepad-w3c-tests">
     <set name="Gamepad" type="js">
-      <testcase component="WebAPI/Device APIs/Gamepad" execution_type="manual" id="GamePad_basic" purpose="Check if the basic of gamepad is valid.">
-        <description>
-          <test_script_entry>/opt/webapi-gamepad-w3c-tests/gamepad/GamePad_basic-manual.html</test_script_entry>
-        </description>
-      </testcase>
-      <testcase component="WebAPI/Device APIs/Gamepad" execution_type="manual" id="GamePad_axes" purpose="check if the axes attribute of gamepad interface can return array of values for all axes of the gamepad.">
-        <description>
-          <test_script_entry>/opt/webapi-gamepad-w3c-tests/gamepad/GamePad_axes-manual.html</test_script_entry>
-        </description>
-      </testcase>
-      <testcase component="WebAPI/Device APIs/Gamepad" execution_type="manual" id="GamePad_buttons" purpose="check if the buttons attribute of gamepad interface can return the array of buttons on gamepad.">
-        <description>
-          <test_script_entry>/opt/webapi-gamepad-w3c-tests/gamepad/GamePad_buttons-manual.html</test_script_entry>
-        </description>
-      </testcase>
-      <testcase component="WebAPI/Device APIs/Gamepad" execution_type="manual" id="GamePad_connected" purpose="check if the connected attribute of gamepad interface can return whether the gamepad is connected.">
-        <description>
-          <test_script_entry>/opt/webapi-gamepad-w3c-tests/gamepad/GamePad_connected-manual.html</test_script_entry>
-        </description>
-      </testcase>
-      <testcase component="WebAPI/Device APIs/Gamepad" execution_type="manual" id="GamePad_id" purpose="check if the id attribute of gamepad interface can return the name of gamepad.">
-        <description>
-          <test_script_entry>/opt/webapi-gamepad-w3c-tests/gamepad/GamePad_id-manual.html</test_script_entry>
-        </description>
-      </testcase>
-      <testcase component="WebAPI/Device APIs/Gamepad" execution_type="manual" id="GamePad_index" purpose="check if the index attribute of gamepad interface can return the index of the gamepad in the Navigator.">
-        <description>
-          <test_script_entry>/opt/webapi-gamepad-w3c-tests/gamepad/GamePad_index-manual.html</test_script_entry>
-        </description>
-      </testcase>
-      <testcase component="WebAPI/Device APIs/Gamepad" execution_type="manual" id="GamePad_mapping" purpose="check if the mapping attribute of gamepad interface can return the mapping in use for this device.">
-        <description>
-          <test_script_entry>/opt/webapi-gamepad-w3c-tests/gamepad/GamePad_mapping-manual.html</test_script_entry>
-        </description>
-      </testcase>
-      <testcase component="WebAPI/Device APIs/Gamepad" execution_type="manual" id="GamePad_timestamp" purpose="check if the timestamp attribute of gamepad interface can return last time the data for this gamepad was updated.">
-        <description>
-          <test_script_entry>/opt/webapi-gamepad-w3c-tests/gamepad/GamePad_timestamp-manual.html</test_script_entry>
-        </description>
-      </testcase>
-      <testcase component="WebAPI/Device APIs/Gamepad" execution_type="manual" id="GamePadButton_basic" purpose="check if the basic of gamepadbutton interface is valid.">
-        <description>
-          <test_script_entry>/opt/webapi-gamepad-w3c-tests/gamepad/GamePadButton_basic-manual.html</test_script_entry>
-        </description>
-      </testcase>
-      <testcase component="WebAPI/Device APIs/Gamepad" execution_type="manual" id="GamePadButton_function" purpose="check if the function of gamepadbutton interface is valid.">
-        <description>
-          <test_script_entry>/opt/webapi-gamepad-w3c-tests/gamepad/GamePadButton_function-manual.html</test_script_entry>
-        </description>
-      </testcase>
       <testcase component="WebAPI/System-level APIs/Gamepad" execution_type="auto" id="GamepadEvent_basic" purpose="Check if GamepadEvent exist">
         <description>
           <test_script_entry>/opt/webapi-gamepad-w3c-tests/gamepad/GamepadEvent_basic.html</test_script_entry>
         </description>
       </testcase>
-      <testcase component="WebAPI/Device APIs/Gamepad" execution_type="manual" id="GamepadEvent_gamepad" purpose="Check if the gamepad of gamepadevent can return the gamepad which fire the event.">
+      <testcase component="WebAPI/System-level APIs/Gamepad" execution_type="auto" id="Navigator_getGamepads_basic" purpose="Check if getGamepads attribute of navigator exist and type of function">
         <description>
-          <test_script_entry>/opt/webapi-gamepad-w3c-tests/gamepad/GamepadEvent_gamepad-manual.html</test_script_entry>
+          <test_script_entry>/opt/webapi-gamepad-w3c-tests/gamepad/Navigator_getGamepads_basic.html?total_num=2&amp;amp;locator_key=id&amp;amp;value=1</test_script_entry>
         </description>
       </testcase>
-      <testcase component="WebAPI/Device APIs/Gamepad" execution_type="manual" id="GamepadEvent_gamepadconnected" purpose="Check if the gamepadconnected event can be fired.">
+      <testcase component="WebAPI/System-level APIs/Gamepad" execution_type="auto" id="Navigator_getGamepads_value" purpose="Check if the value of navigator.getGamepads() type of object">
         <description>
-          <test_script_entry>/opt/webapi-gamepad-w3c-tests/gamepad/GamepadEvent_gamepadconnected-manual.html</test_script_entry>
-        </description>
-      </testcase>
-      <testcase component="WebAPI/Device APIs/Gamepad" execution_type="manual" id="GamepadEvent_gamepaddisconnected" purpose="Check if the gamepaddisconnected event can be fired.">
-        <description>
-          <test_script_entry>/opt/webapi-gamepad-w3c-tests/gamepad/GamepadEvent_gamepaddisconnected-manual.html</test_script_entry>
-        </description>
-      </testcase>
-      <testcase component="WebAPI/Device APIs/Gamepad" execution_type="manual" id="Navigator_getGamepads_basic" purpose="Check if the getGamepads attribute of navigator exist and type of function.">
-        <description>
-          <test_script_entry>/opt/webapi-gamepad-w3c-tests/gamepad/Navigator_getGamepads_basic-manual.html</test_script_entry>
-        </description>
-      </testcase>
-      <testcase component="WebAPI/Device APIs/Gamepad" execution_type="manual" id="Navigator_getGamepads_function" purpose="Check if getGamepads of navigator can return array of gamepads">
-        <description>
-          <test_script_entry>/opt/webapi-gamepad-w3c-tests/gamepad/Navigator_getGamepads_function-manual.html</test_script_entry>
+          <test_script_entry>/opt/webapi-gamepad-w3c-tests/gamepad/Navigator_getGamepads_basic.html?total_num=2&amp;amp;locator_key=id&amp;amp;value=2</test_script_entry>
         </description>
       </testcase>
     </set>

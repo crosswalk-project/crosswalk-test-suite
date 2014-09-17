@@ -30,33 +30,41 @@ Authors:
 
 -->
 
-<meta charset='utf-8'>
-<title>GamePad Test: GamePad_index</title>
-<link rel="author" title="Intel" href="http://www.intel.com">
-<meta name="assert" content="Test check if the index attribute of gamepad interface can return the index of the gamepad in the Navigator.">
-<link rel="help" href="https://dvcs.w3.org/hg/gamepad/raw-file/default/gamepad.html">
-<p>Please connect and press a button on gamepad.</p>
-<p>Test Passes if the show result is the index of the gamepad in the Navigator. If there is only one gamepad has been connect, the result should be 0.</p>
-<div id = "log"></div>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="initial-scale=1.0, maximum-scale=1.0, width=device-width" />
+    <link rel="stylesheet" type="text/css" href="../../../css/jquery.mobile.css" />
+    <link rel="stylesheet" type="text/css" href="../../../css/main.css" />
+    <script src="../../../js/thirdparty/jquery.js"></script>
+    <script src="../../../js/thirdparty/jquery.mobile.js"></script>
+    <script src="../../../js/tests.js"></script>
+  </head>
+  <body>
+    <div data-role="page" id="Crosswalk_WebApp_ScrollIndicators_Default">
+      <div id="content">
+        <p>Please reconnect gamepad and press button on gamepad.</p>
+        <p>Test Passes if the show result is "[object Gamepad]". </p>
+        <div id="log"></div>
+      </div>
+      <div data-role="footer" data-position="fixed" data-tap-toggle="false">
+      </div>
+      <div data-role="popup" id="popup_info" data-theme="a">
+        <font class="fontSize">
+          <p>Test Step: </p>
+          <p>Connect and press button on gamepad.</p>
+          <p>Expected Result: </p>
+          <p>Test Passes if the show result is "[object Gamepad]".</p>
+        </font>
+      </div>
+    </div>
+  </body>
 <script>
-var text = "";
-function runTest(gamepads) {
-  for (var j = 0; j < gamepads.length; j++) {
-    var pad = gamepads[j];
-    if(pad) {
-      text = pad.index;
-      document.getElementById("log").innerHTML = text;
-    }
-  }
+function runTest(e) {
+  var text = "";
+  document.getElementById("log").innerHTML = e.gamepad;
 }
 
-function runAnimation() {  
-  var gamepads =  navigator.getGamepads();
-  if(gamepads.length > 0) {
-    runTest(gamepads);
-  };
-  window.requestAnimationFrame(runAnimation);
-}
-
-window.requestAnimationFrame(runAnimation);
+window.addEventListener("gamepadconnected", runTest);
 </script>
+</html>

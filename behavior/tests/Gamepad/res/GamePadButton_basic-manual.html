@@ -30,14 +30,36 @@ Authors:
 
 -->
 
-<meta charset='utf-8'>
-<title>gamepadbutton Test: gamepadbuttonbutton_basic</title>
-<link rel="author" title="Intel" href="http://www.intel.com">
-<link rel="help" href="https://dvcs.w3.org/hg/gamepadbutton/raw-file/default/gamepadbutton.html">
-<meta name="assert" content="Test check if the basic of gamepadbutton interface is valid.">
-<p>Please connect and press a button on gamepadbutton.</p>
-<p>Test Passes if show test result is 'Pass'.</p>
-<div id = "log"></div>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="initial-scale=1.0, maximum-scale=1.0, width=device-width" />
+    <link rel="stylesheet" type="text/css" href="../../../css/jquery.mobile.css" />
+    <link rel="stylesheet" type="text/css" href="../../../css/main.css" />
+    <script src="../../../js/thirdparty/jquery.js"></script>
+    <script src="../../../js/thirdparty/jquery.mobile.js"></script>
+    <script src="../../../js/tests.js"></script>
+  </head>
+  <body>
+    <div data-role="page" id="Crosswalk_WebApp_ScrollIndicators_Default">
+      <div id="content">
+        <p>Please connect and press a button on gamepad.</p>
+        <p>Test Passes if show test result is 'Pass'.</p>
+        <div id = "log"></div>
+      </div>
+      <div data-role="footer" data-position="fixed" data-tap-toggle="false">
+      </div>
+      <div data-role="popup" id="popup_info" data-theme="a">
+        <font class="fontSize">
+          <p>Test Step: </p>
+          <p>Connect and press button on gamepad.</p>
+          </ol>
+          <p>Expected Result: </p>
+          <p>Test Passes if show test result is 'Pass'.</p>
+        </font>
+      </div>
+    </div>
+  </body>
 <script>
 var text = "";
 function runTest(gamepads) {
@@ -130,3 +152,4 @@ function runAnimation() {
 }
 window.requestAnimationFrame(runAnimation);
 </script>
+</html>
