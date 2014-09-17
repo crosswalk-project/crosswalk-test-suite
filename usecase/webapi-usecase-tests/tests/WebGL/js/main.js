@@ -144,6 +144,59 @@ function checkEnable() {
     }
 }
 
+function refreshData(o, newValue, handle, _popup, _handleText, element) {
+  var ID = element[0].id;
+  if (ID == "slider-1") {
+    var value = 7 + 23*(4 - (parseInt(newValue, 10) - 1))/5;
+    setSize(value);
+    if (parseInt(newValue, 10) != 3) {
+      testFlag.size = true;
+      checkEnable();
+    }
+  } else if (ID == "speed-1") {
+    setSpeed(parseInt(newValue, 10));
+    if (parseInt(newValue, 10) != 5) {
+      testFlag.speed = true;
+      checkEnable();
+    }
+  } else if (ID == "flip-1") {
+    if (newValue == "0") {
+      stop();
+      $("input[type='radio']").checkboxradio('disable');
+      $("#slider-1").slider('disable');
+      $("#speed-1").slider('disable');
+      testFlag.status = true;
+      checkEnable();
+    } else if (newValue == "1"){
+      if (!isInit) {
+        reStart();
+        $("input[type='radio']").checkboxradio('enable');
+        $("#slider-1").slider('enable');
+        $("#speed-1").slider('enable');
+      } else {
+        isInit = false;
+      }
+    }
+  }
+	if (o.popupEnabled) {
+		_positionPopup(handle, _popup);
+    _popup.html(Math.round(newValue));
+	}
+
+	if (o.showValue) {
+    _handleText.html(Math.round(newValue));
+	}
+}
+
+// position the popup centered 5px above the handle
+function _positionPopup(handle, _popup) {
+	var dstOffset = handle.offset();
+	_popup.offset( {
+		left: dstOffset.left + (handle.width() - _popup.width()) / 2,
+		top: dstOffset.top - _popup.outerHeight() - 5
+	});
+}
+
 $(document).ready(function(){
     start();
     // animation-left-right status changes

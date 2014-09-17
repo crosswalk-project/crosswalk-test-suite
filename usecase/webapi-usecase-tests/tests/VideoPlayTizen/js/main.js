@@ -51,3 +51,25 @@ function pause() {
 function Replay() {
     document.getElementById("MediaPlayback").load();
 }
+
+function refreshData(o, newValue, handle, _popup, _handleText, element) {
+  if (o.popupEnabled) {
+		_positionPopup(handle, _popup);
+    _popup.html(Math.round(newValue*100)+"%");
+    document.getElementById("MediaPlayback").volume = newValue;
+	}
+
+	if (o.showValue) {
+    _handleText.html(Math.round(newValue*100)+"%");
+    document.getElementById("MediaPlayback").volume = newValue;
+	}
+}
+
+// position the popup centered 5px above the handle
+function _positionPopup(handle, _popup) {
+	var dstOffset = handle.offset();
+	_popup.offset( {
+		left: dstOffset.left + (handle.width() - _popup.width()) / 2,
+		top: dstOffset.top - _popup.outerHeight() - 5
+	});
+}

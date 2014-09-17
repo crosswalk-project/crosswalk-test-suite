@@ -5,17 +5,14 @@ with some modifications.
 -  define( [ "jquery", "./slider" ], function( $ ) {
 +  //define( [ "jquery", "./slider" ], function( $ ) {
 
-        if (o.popupEnabled) {
-             this._positionPopup();
+-       if (o.popupEnabled) {
+-            this._positionPopup();
 -            this._popup.html(Math.round(newValue));
-+            this._popup.html(Math.round(newValue*100)+"%" );
-+            document.getElementById("MediaPlayback").volume = newValue;
-         }
-         if (o.showValue) {
+-        }
+-        if (o.showValue) {
 -            this._handleText.html(Math.round(newValue));
-+            this._handleText.html(Math.round(newValue*100)+"%");
-+            document.getElementById("MediaPlayback").volume = newValue;
-         }
+-        }
++        refreshData(o, newValue, this.handle, this._popup, this._handleText, this.element);
 
 jQuery Mobile v@VERSION
 http://jquerymobile.com
