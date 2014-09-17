@@ -18,21 +18,36 @@
             "copylist": {
                 "inst.apk.py": "inst.py",
                 "tests.full.xml": "tests.full.xml",
-                "tests.xml": "tests.xml"
+                "tests.xml": "tests.xml",
+                "bddrunner": "bddrunner",
+                "html5-extra-app/testscripts": "html5-extra-app/testscripts"
             },
-            "pkg-app": {}
+            "pkg-app": {
+                "apk-common-opts":"--enable-remote-debugging"
+            },
+            "subapp-list": {
+                "html5-extra-app": {
+                    "apk-common-opts":"--enable-remote-debugging"
+                }
+            }
         },
         "apk-aio": {
-            "blacklist": []
-        },
+                "blacklist": [],
+                "subapp-list": {
+                     "html5-extra-app": {
+                     "apk-common-opts":"--enable-remote-debugging",
+                     "install-path": "app"
+                    }
+                }
+         },
         "wgt": {
             "blacklist": [
                 "*"
             ],
             "copylist": {
                 "inst.wgt.py": "inst.py",
-                "tests.full.xml": "tests.full.xml",
-                "tests.xml": "tests.xml"
+                "tests.tizen.full.xml": "tests.full.xml",
+                "tests.tizen.xml": "tests.xml"
             },
             "pkg-app": {}
         },
@@ -42,8 +57,8 @@
             ],
             "copylist": {
                 "inst.xpk.py": "inst.py",
-                "tests.full.xml": "tests.full.xml",
-                "tests.xml": "tests.xml"
+                "tests.tizen.full.xml": "tests.full.xml",
+                "tests.tizen.xml": "tests.xml"
             },
             "pkg-app": {
                 "blacklist": []
