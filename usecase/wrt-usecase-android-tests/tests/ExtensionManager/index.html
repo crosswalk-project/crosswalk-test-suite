@@ -45,28 +45,46 @@ Authors:
         <h1 id="main_page_title"></h1>
       </div>
       <div data-role="content">
+        <h4>Pre-conditions</h4>
+        <ol>
+          <li>Install git</li>
+          <li>Install gyp by "sudo apt-get install gyp" on Ubuntu or "svn co http://gyp.googlecode.com/svn/trunk build/gyp --revision 1831", add gyp path to PATH</li>
+          <li>Add path to make_apk.py to PATH</li>
+          <li>Add path to aidl to PATH. Example, "/home/belem/adt-bundle-linux/sdk/build-tools/19.0.0"</li>
+          <li>Install depot_tools by "git clone https://chromium.googlesource.com/chromium/tools/depot_tools.git", add depot_tools path to PATH</li>
+          <li>cd /path/to/crosswalk binary folder, e.g. /home/belem/crosswalk/canary/crosswalk-9.38.207.0,<br/>
+              $ chmod +x extension_manager.py<br/>
+              $ chmod +x make_apk.py
+          </li>
+          <p>Besides the original environment path config for Android, you may add more PATH contents like:<br/>
+          /home/belem/crosswalk/canary/crosswalk-9.38.207.0:/home/belem/adt-bundle-linux/sdk/build-tools/19.0.0:/home/belem/github/depot_tools</p>
+        </ol>
         <h4>Test Steps</h4>
         <ol>
-          <li>Enter package source directory and Add extension, execute terminal command:<br/>
-              $ python extension_manager.py --add=https://github.com/crosswalk-project/crosswalk-android-extensions.git
+          <li>Enter package source directory, execute terminal command:<br/>
+              $ ./extension_manager.py --add=https://github.com/crosswalk-project/crosswalk-android-extensions.git<br/>
+              OR<br/>
+              $ ./extension_manager.py --add=github:crosswalk-project/crosswalk-android-extensions.git (depends on your github .ssh config)
           </li>
           <li>List all extensions, execute terminal command:<br/>
-              $ python extension_manager.py -l
+              $ ./extension_manager.py -l
           </li>
-          <li>Search extension, execute terminal command:<br/>
-              $ python extension_manager.py --search=crosswalk*
+          <li>Search extensions, execute terminal command:<br/>
+              $ ./extension_manager.py --search=crosswalk*
           </li>
-          <li>Remove extension, execute terminal command:<br/>
-              $ python extension_manager.py --remove=crosswalk-android-extensions
+          <li>Disable extensions, execute terminal command:<br/>
+              $ ./extension_manager.py --disable=crosswalk*<br/>
+              $ ./extension_manager.py -l
           </li>
-          <li>Search extension, execute terminal command:<br/>
-              $ python extension_manager.py --search=crosswalk*
+          <li>Enable extensions, execute terminal command:<br/>
+              $ ./extension_manager.py --enable=crosswalk*<br/>
+              $ ./extension_manager.py -l
           </li>
-          <li>Enable extension, execute terminal command:<br/>
-              $ python extension_manager.py --enable=crosswalk*
+          <li>Usage of make_apk.py, execute terminal command:<br/>
+              $ ./make_apk.py --package=your.app.name --manifest=&lt;your_manifest_path&gt;
           </li>
-          <li>Disable extension, execute terminal command:<br/>
-              $ python extension_manager.py --disable=crosswalk*
+          <li>Remove extensions, execute terminal command:<br/>
+              $ ./extension_manager.py --remove=crosswalk-android-extensions
           </li>
         </ol>
       </div>
@@ -78,13 +96,13 @@ Authors:
           <p>Verifies that extension_manager.py should work properly</p>
           <p>Expected Result:</p>
           <ol>
-            <li>Add extension successfully</li>
-            <li>List the added extension successfully</li>
-            <li>Search the added extension successfully</li>
-            <li>Remove extension successfully</li>
-            <li>Don't search any extension successfully</li>
-            <li>Enable extension successfully</li>
-            <li>Disable extension successfully</li>
+            <li>The file "&lt;path to extension_manager.py&gt;/extensions/crosswalk-android-extensions/out/Default/gen/iap/iap.jar" exists</li>
+            <li>Display "+ crosswalk-android-extensions/iap" successfully</li>
+            <li>Display "+ crosswalk-android-extensions/iap" successfully</li>
+            <li>Display "- crosswalk-android-extensions/iap" successfully</li>
+            <li>Display "+ crosswalk-android-extensions/iap" successfully</li>
+            <li>Generated apk successfully, no error message</li>
+            <li>Remove the path "&lt;path to extension_manager.py&gt;/extensions/crosswalk-android-extensions" successfully</li>
           </ol>
         </font>
       </div>
