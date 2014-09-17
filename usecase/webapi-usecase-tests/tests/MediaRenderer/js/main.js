@@ -58,11 +58,11 @@ function emptyContainer(id) {
 }
 
 function openURI(id) {
-  renderers[id].openURI("../../res/media/w3c/green-at-15.mp4", "");
+  renderers[id].openURI("/home/app/content/tct/opt/webapi-usecase-tests/res/media/w3c/green-at-15.mp4", "");
 }
 
 function prefetchURI(id) {
-  renderers[id].prefetchURI("../../res/media/w3c/movie_300.mp4", "");
+  renderers[id].prefetchURI("/home/app/content/tct/opt/webapi-usecase-tests/res/media/w3c/movie_300.mp4", "");
 }
 
 function cancel(id) {
