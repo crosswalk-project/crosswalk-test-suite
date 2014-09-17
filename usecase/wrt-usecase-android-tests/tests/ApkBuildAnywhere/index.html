@@ -47,21 +47,43 @@ Authors:
       <div data-role="content">
         <h4>Test Steps</h4>
         <ol>
-          <li>Execute terminal command in one directory:<br/> 
-              $ python make_apk.py --name=[name] --package=[package] --app-url=http://www.baidu.com --arch=x86
-          </li>
-          <li>Install the packaged apk</li>
-          <li>Launch the web app</li>
-          <li>Change work directory, execute terminal command in another directory:<br/> 
-              $ python make_apk.py --package=[package] --manifest=[manifest-path] --arch=arm
-          </li>
-          <li>Install the packaged apk</li>
-          <li>Launch the web app</li>
-          <li>Change work directory, execute terminal command in another directory:<br/> 
-              $ python make_apk.py --app-local-path=index.html --app-root=[app-root-path]
-          </li>
-          <li>Install the packaged apk</li>
-          <li>Launch the web app</li>
+          <li>Using an absolute path to run the steps:</li>
+          <ol>
+            <li>Execute terminal command in the directory where make_apk.py:<br/> 
+                $ python &lt;absolute path of make_apk.py&gt;/make_apk.py --name=[name] --package=[package] --app-url=http://www.baidu.com --arch=x86
+            </li>
+            <li>Install the packaged apk</li>
+            <li>Launch the web app</li>
+            <li>Change work directory, execute terminal command in another directory:<br/> 
+                $ python &lt;absolute path of make_apk.py&gt;/make_apk.py --package=[package] --manifest=[manifest-path] --arch=arm
+            </li>
+            <li>Install the packaged apk</li>
+            <li>Launch the web app</li>
+            <li>Change work directory, execute terminal command in another directory:<br/> 
+                $ python &lt;absolute path of make_apk.py&gt;/make_apk.py --app-local-path=index.html --app-root=[app-root-path]
+            </li>
+            <li>Install the packaged apk</li>
+            <li>Launch the web app</li>
+          </ol>
+          <li>Set the PATH variable and run the steps from a different directory:</li>
+          <ol>
+            <li>Execute terminal command in the directory where the file make_apk.py:<br/>
+                $ export PATH=$PATH:&lt;absolute path of make_apk.py&gt;<br/>
+                $ python make_apk.py --name=[name] --package=[package] --app-url=http://www.baidu.com --arch=x86
+            </li>
+            <li>Install the packaged apk</li>
+            <li>Launch the web app</li>
+            <li>Change work directory, execute terminal command in another directory:<br/> 
+                $ python make_apk.py --package=[package] --manifest=[manifest-path] --arch=arm
+            </li>
+            <li>Install the packaged apk</li>
+            <li>Launch the web app</li>
+            <li>Change work directory, execute terminal command in another directory:<br/> 
+                $ python make_apk.py --app-local-path=index.html --app-root=[app-root-path]
+            </li>
+            <li>Install the packaged apk</li>
+            <li>Launch the web app</li>
+          </ol>
         </ol>
       </div>
       <div data-role="footer" data-position="fixed">
@@ -72,15 +94,20 @@ Authors:
           <p>Verifies that make_apk.py should be runnable from any location</p>
           <p>Expected Result:</p>
           <ol>
-            <li>Apk is generated successfully</li>
-            <li>Web app is installed successfully</li>
-            <li>Web app is launched successfully</li>
-            <li>Apk is generated successfully</li>
-            <li>Web app is installed successfully</li>
-            <li>Web app is launched successfully</li>
-            <li>Apk is generated successfully</li>
-            <li>Web app is installed successfully</li>
-            <li>Web app is launched successfully</li>
+            <li>Step 1</li>
+              <ol>
+                <li>Apk is generated successfully</li>
+                <li>Web app is installed successfully</li>
+                <li>Web app is launched successfully</li>
+                <li>Apk is generated successfully</li>
+                <li>Web app is installed successfully</li>
+                <li>Web app is launched successfully</li>
+                <li>Apk is generated successfully</li>
+                <li>Web app is installed successfully</li>
+                <li>Web app is launched successfully</li>
+              </ol>
+            
+            <li>The results same as step 1</li>
           </ol>
         </font>
       </div>

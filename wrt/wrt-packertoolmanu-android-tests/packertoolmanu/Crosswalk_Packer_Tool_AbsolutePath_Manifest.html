@@ -26,30 +26,22 @@ NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE,
 EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
 Authors:
-    Xu, Kang <kangx.xu@intel.com>
+    Wang, Hongjuan <hongjuanx.wang@intel.com>
 
 -->
 
 <html>
   <head>
     <meta charset='utf-8'>
-    <title>Crosswalk_Packer_Tool_AnyLocation_HostApp</title>
+    <title>Crosswalk_Packer_Tool_AbsolutePath_Manifest</title>
     <link rel="author" title="Intel" href="http://www.intel.com">
   </head>
   <body>
     <p>
-      <strong>Pre_condition:</strong>
-    </p>
-    <ol>
-      <li>Set the PATH variable and run the steps from a different directory:<br/>
-          $ export PATH=$PATH:&lt;absolute path of make_apk.py&gt;
-      </li>
-    </ol>
-    <p>
       <strong>Test steps:</strong>
     </p>
     <ol>
-      <li>Package an web app with command like: python make_apk.py --name=[name] --package=[package] --app-url=http://www.baidu.com --arch=x86</li>
+      <li>Package an web app with command like: python &lt;absolute path of make_apk.py&gt;/make_apk.py --package=[package] --manifest=[manifest-path]/manifest.json --arch=arm</li>
       <li>Install the apk packaged</li>
       <li>Launch the webapp</li>
       <li>Uninstall the webapp</li>
