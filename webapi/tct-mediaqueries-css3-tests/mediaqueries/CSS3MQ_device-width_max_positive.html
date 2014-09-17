@@ -43,26 +43,21 @@ Authors:
         #media{color:#f60;}
       }
     </style>
-    <script src="MediaQueries.js"></script>
     <script src="../resources/testharness.js"></script>
     <script src="../resources/testharnessreport.js"></script>
   </head>
   <body >
     <div id="log"></div>
-    <div id="media" >Set "max-width: 480px;" on CSS3 Media Queries height attr; When the broswer width is less than 960px the text will displays in orange</div>
+    <div id="media">Set "max-width: 480px;" on CSS3 Media Queries height attr; When the broswer width is less than 960px the text will displays in orange</div>
     <script>
-      var t = async_test(document.title, { timeout: 2000 });
-      try {
-        var div = document.querySelector("#media");
-        var color = GetCurrentStyle("color");
+      test(function () {
+        var color = getComputedStyle(document.getElementById("media"))["color"];
         if(window.screen.width <= 960) {
-          EqualTest(color, "rgb(255, 102, 0)", "The text color");
+          assert_equals(color, "rgb(255, 102, 0)", "The text color");
         }else {
-          EqualTest(color, "rgb(0, 0, 0)", "The text color");
+          assert_equals(color, "rgb(0, 0, 0)", "The text color");
         }
-      }catch(err) {
-        TrueTest(false, "Exception while get " + err.name + err.message);
-      }
+      })
     </script>
   </body>
 </html>

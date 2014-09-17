@@ -43,26 +43,17 @@ Authors:
         #media{color:#f00;}
       }
     </style>
-    <script src="MediaQueries.js"></script>
     <script src="../resources/testharness.js"></script>
     <script src="../resources/testharnessreport.js"></script>
   </head>
   <body>
     <div id="log"></div>
-    <div id="media" >Set "min-device-width:-0;" on CSS3 Media Queries device-width attr, When your output device resolution is set greater than or equal to 0px in width, this text will displays in red</div>
+    <div id="media">The text should be red.</div>
     <script>
-      var t = async_test(document.title, { timeout: 2000 });
-      try {
-        var div = document.querySelector("#media");
-        var color = GetCurrentStyle("color");
-        if(window.screen.width >= -0) {
-          EqualTest(color, "rgb(255, 0, 0)", "The text color");
-        }else {
-          EqualTest(color, "rgb(0, 0, 0)", "The text color");
-        }
-      }catch(err) {
-        TrueTest(false, "Exception while get " + err.name + err.message);
-      }
+      test(function () {
+        var color = getComputedStyle(document.getElementById("media"))["color"];
+        assert_equals(color, "rgb(255, 0, 0)", "The text color");
+      })
     </script>
   </body>
 </html>

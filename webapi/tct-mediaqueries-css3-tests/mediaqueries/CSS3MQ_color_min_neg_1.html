@@ -36,33 +36,23 @@ Authors:
     <title>CSS3MediaQueries Test: CSS3MQ_color_max_neg_1</title>
     <link rel="author" title="Intel" href="http://www.intel.com/" />
     <link rel="help" href="http://www.w3.org/TR/2012/REC-css3-mediaqueries-20120619/#color" />
-    <meta name="flags" content="" />
-    <meta name="assert" content="set 'min-color:-1' on the CSS3 Media color attr, when your device is greater than -1 in color, this text will displays in red" />
     <style>
       @media screen and (min-color:-1) {
         #media{color:#f00;}
       }
     </style>
-    <script src="MediaQueries.js"></script>
+
     <script src="../resources/testharness.js"></script>
     <script src="../resources/testharnessreport.js"></script>
   </head>
   <body>
     <div id="log"></div>
-    <div id="media" >set "min-color:-1" on the CSS3 Media color attr, when your device is greater than -1 in color, this text will displays in red</div>
+    <div id="media">The text should be black.</div>
     <script>
-      var t = async_test(document.title, { timeout: 2000 });
-      try {
-        var div = document.querySelector("#media");
-        var color = GetCurrentStyle("color");
-        if(screen.colorDepth >= -1) {
-          EqualTest(color, "rgb(255, 0, 0)", "The text color");
-        }else {
-          EqualTest(color, "rgb(0, 0, 0)", "The text color");
-        }
-      }catch(err) {
-        TrueTest(false, "Exception while get " + err.name + err.message);
-      }
+      test(function () {
+        var color = getComputedStyle(document.getElementById("media"))["color"];
+        assert_equals(color, "rgb(0, 0, 0)", "The text color");
+      })
     </script>
   </body>
 </html>

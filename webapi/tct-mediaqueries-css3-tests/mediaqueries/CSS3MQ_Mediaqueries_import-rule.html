@@ -38,7 +38,6 @@ Authors:
     <link rel="help" href="http://www.w3.org/TR/2012/REC-css3-mediaqueries-20120619/#media0" />
     <meta name="flags" content="" />
     <meta name="assert" content="CHeck that with '@import url(example.css) screen and (color), projection and (color);' mode to test the media queries syntax" />
-    <script src="MediaQueries.js"></script>
     <script src="../resources/testharness.js"></script>
     <script src="../resources/testharnessreport.js"></script>
     <style>
@@ -47,17 +46,12 @@ Authors:
   </head>
   <body>
     <div id="log"></div>
-    <div id="media" ></div>
+    <div id="media"></div>
     <script>
       test(function () {
-        try {
-          var div = document.querySelector("#media");
-          var color = GetCurrentStyle("color");
-          assert_equals(color, "rgb(255, 102, 0)", "The text color");
-        } catch (err) {
-          assert_unreached(err.name + err.message);
-        }
-      }, document.title);
+        var color = getComputedStyle(document.getElementById("media"))["color"];
+        assert_equals(color, "rgb(255, 102, 0)", "The text color");
+      })
     </script>
   </body>
 </html>

@@ -37,32 +37,27 @@ Authors:
     <link rel="author" title="Intel" href="http://www.intel.com/" />
     <link rel="help" href="http://www.w3.org/TR/2012/REC-css3-mediaqueries-20120619/#device-aspect-ratio" />
     <meta name="flags" content="" />
-    <meta name="assert" content="When the output device screen resolution of 16:10, the Bank text is displayed in red" />
+    <meta name="assert" content="When the output device screen resolution of 16:10, the text is displayed in red" />
     <style>
       @media screen and (device-aspect-ratio:16/10) {
         #media{color:#f00;}
       }
     </style>
-    <script src="MediaQueries.js"></script>
     <script src="../resources/testharness.js"></script>
     <script src="../resources/testharnessreport.js"></script>
   </head>
   <body>
     <div id="log"></div>
-    <div id="media" >When the output device screen resolution of 16:10, the Bank text is displayed in red</div>
+    <div id="media">When the output device screen resolution of 16:10, the text is displayed in red</div>
     <script>
-      var t = async_test(document.title, { timeout: 2000 });
-      try {
-        var div = document.querySelector("#media");
-        var color = GetCurrentStyle("color");
+      test(function () {
+        var color = getComputedStyle(document.getElementById("media"))["color"];
         if(window.screen.width/window.screen.height == 16/10) {
-          EqualTest(color, "rgb(255, 0, 0)", "The text color");
+          assert_equals(color, "rgb(255, 0, 0)", "The text color");
         }else {
-          EqualTest(color, "rgb(0, 0, 0)", "The text color");
+          assert_equals(color, "rgb(0, 0, 0)", "The text color");
         }
-      }catch(err) {
-        TrueTest(false, "Exception while get " + err.name + err.message);
-      }
+      }, document.title)
     </script>
   </body>
 </html>

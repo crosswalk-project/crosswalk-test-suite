@@ -36,29 +36,22 @@ Authors:
     <title>CSS3MediaQueries Test: CSS3MQ_media_color</title>
     <link rel="author" title="Intel" href="http://www.intel.com/" />
     <link rel="help" href="http://www.w3.org/TR/2012/REC-css3-mediaqueries-20120619/#color" />
-    <meta name="flags" content="" />
-    <meta name="assert" content="When your output device is the color of, the Bank text is displayed in red" />
     <style>
       @media screen and (color) {
         #media{color:#f00;}
       }
     </style>
-    <script src="MediaQueries.js"></script>
     <script src="../resources/testharness.js"></script>
     <script src="../resources/testharnessreport.js"></script>
   </head>
   <body>
     <div id="log"></div>
-    <div id="media" >When your output device is the color of, the Bank text is displayed in red</div>
+    <div id="media">The text should be red.</div>
     <script>
-      var t = async_test(document.title, { timeout: 2000 });
-      try {
-        var div = document.querySelector("#media");
-        var color = GetCurrentStyle("color");
-        EqualTest(color, "rgb(255, 0, 0)", "The text color");
-      }catch(err) {
-        TrueTest(false, "Exception while get " + err.name + err.message);
-      }
+      test(function () {
+        var color = getComputedStyle(document.getElementById("media"))["color"];
+        assert_equals(color, "rgb(255, 0, 0)", "The text color");
+      }, document.title)
     </script>
   </body>
 </html>
