@@ -45,7 +45,7 @@ var tcpserversocket = new namespace.TCPServerSocket(socketOptions);
 [
   ["DOMString", "localAddress", "readonly"],
   ["unsigned short", "localPort", "readonly"],
-  ["enum", "readyState", "readonly"],
+  ["ReadyState", "readyState", "readonly"],
   ["event", "onconnect", ""],
   ["event", "onerror", ""],
   ["function", "close", ""],
@@ -67,8 +67,8 @@ var tcpserversocket = new namespace.TCPServerSocket(socketOptions);
         assert_equals(typeof tcpserversocket[name], "function", name + " attribute of type");
         break;
 
-      case "enum":
-        assert_equals(typeof tcpserversocket[name], "number", name + " attribute of type");
+      case "ReadyState":
+        assert_equals(typeof tcpserversocket[name], "string", name + " attribute of type");
         break;
 
       case "unsigned short":

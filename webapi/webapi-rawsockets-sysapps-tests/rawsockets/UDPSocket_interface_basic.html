@@ -50,7 +50,7 @@ var udpsocket = new namespace.UDPSocket();
   ["boolean", "addressReuse", "readonly"],
   ["boolean", "loopback", "readonly"],
   ["unsigned long", "bufferedAmount", "readonly"],
-  ["unsigned short", "readyState", "readonly"],
+  ["ReadyState", "readyState", "readonly"],
   ["event", "ondrain", ""],
   ["event", "onerror", ""],
   ["event", "onmessage", ""],
@@ -80,6 +80,10 @@ var udpsocket = new namespace.UDPSocket();
         assert_equals(typeof udpsocket[name], "number", name + " attribute of type");
         var value = udpsocket[name];
         assert_true(0 <= value && value <= 65535, "unsigned short " + value + " not in range [0, 65535]");
+        break;
+
+      case "ReadyState":
+        assert_equals(typeof udpsocket[name], "string", name + " attribute of type");
         break;
 
       case "unsigned long":
