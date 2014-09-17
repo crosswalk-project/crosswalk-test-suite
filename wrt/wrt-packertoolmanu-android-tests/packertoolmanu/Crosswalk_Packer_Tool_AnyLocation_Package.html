@@ -41,7 +41,8 @@ Authors:
       <strong>Pre_condition:</strong>
     </p>
     <ol>
-      <li>Set the PATH variable and run the steps from a different directory:<br/>
+      <li>Set the PATH variable and run the steps from a different directory with file make_apk.py:<br/>
+          $ chmod +x make_apk.py<br/>
           $ export PATH=$PATH:&lt;absolute path of make_apk.py&gt;
       </li>
     </ol>
@@ -49,8 +50,7 @@ Authors:
       <strong>Test steps:</strong>
     </p>
     <ol>
-      <li>Package an web app with embedded mode, command like: python make_apk.py --name=[name] --package=[package] --app-root=[app-root-path] --app-local-path=index.html</li>
-      <li>Check system "temp" localtion</li>
+      <li>Package an web app with different directory, command like: make_apk.py --name=[name] --package=[package] --app-root=[app-root-path] --app-local-path=index.html</li>
       <li>Install the apk packaged</li>
       <li>Launch the webapp</li>
     </ol>
@@ -59,7 +59,6 @@ Authors:
     </p>
     <ol>
       <li>Generate APK installation package successfully</li>
-      <li>Temporary build directory is created in system "temp" location successfully</li>
       <li>Install web app successfully</li>
       <li>Launch web app successfully</li>
     </ol>

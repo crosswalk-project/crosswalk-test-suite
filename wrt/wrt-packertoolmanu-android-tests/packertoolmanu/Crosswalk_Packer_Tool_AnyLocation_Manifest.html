@@ -41,7 +41,8 @@ Authors:
       <strong>Pre_condition:</strong>
     </p>
     <ol>
-      <li>Set the PATH variable and run the steps from a different directory:<br/>
+      <li>Set the PATH variable and run the steps from a different directory with file make_apk.py:<br/>
+          $ chmod +x make_apk.py<br/>
           $ export PATH=$PATH:&lt;absolute path of make_apk.py&gt;
       </li>
     </ol>
@@ -49,13 +50,10 @@ Authors:
       <strong>Test steps:</strong>
     </p>
     <ol>
-      <li>Package an web app with command like: python make_apk.py --package=[package] --manifest=[manifest-path]/manifest.json --arch=arm</li>
+      <li>Package an web app with command like: make_apk.py --package=[package] --manifest=[manifest-path]/manifest.json --arch=arm</li>
       <li>Install the apk packaged</li>
       <li>Launch the webapp</li>
       <li>Uninstall the webapp</li>
-      <li>Enter another location and package an web app with the same command as first step</li>
-      <li>Install the apk packaged</li>
-      <li>Launch the webapp</li>
     </ol>
     <p>
       <strong>Expected Output:</strong>
@@ -65,9 +63,6 @@ Authors:
       <li>Install web app successfully</li>
       <li>Launch web app successfully</li>
       <li>Uninstall web app successfully</li>
-      <li>Generate APK installation package successfully</li>
-      <li>Install web app successfully</li>
-      <li>Launch web app successfully</li>
     </ol>
   </body>
 </html>
