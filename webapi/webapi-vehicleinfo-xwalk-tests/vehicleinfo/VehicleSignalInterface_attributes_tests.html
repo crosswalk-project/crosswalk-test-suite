@@ -26,26 +26,37 @@ NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE,
 EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
 Authors:
-        Hao, Yunfei <yunfeix.hao@intel.com>
+        Liu,xin <xinx.liu@intel.com>
 
 -->
 
-<html>
-  <head>
-    <title>VehiclePowerMode_CONST_attribute</title>
-    <meta charset="utf-8">
-    <script src="../resources/unitcommon.js"></script>
-  </head>
-  <body>
-    <div id="log"></div>
-    <script>
-      test(function() {
-        var vehiclePowerMode = tizen.vehicle.get("VehiclePowerMode");
-        check_const(vehiclePowerMode, "VEHICLEPOWERMODE_OFF", vehiclePowerMode.VEHICLEPOWERMODE_OFF, "number", 4);
-        check_const(vehiclePowerMode, "VEHICLEPOWERMODE_ACCESSORY1", vehiclePowerMode.VEHICLEPOWERMODE_ACCESSORY1, "number", 4);
-        check_const(vehiclePowerMode, "VEHICLEPOWERMODE_ACCESSORY2", vehiclePowerMode.VEHICLEPOWERMODE_ACCESSORY2, "number", 4);
-        check_const(vehiclePowerMode, "VEHICLEPOWERMODE_RUN", vehiclePowerMode.VEHICLEPOWERMODE_RUN, "number", 4);
-      }, "VehiclePowerMode_CONST_attribute");
-    </script>
-  </body>
-</html>
+<meta charset="utf-8">
+<title>Vehicle Test: VehicleInterface_attributes</title>
+<link rel="author" title="Intel" href="http://www.intel.com">
+<link rel="help" href="http://www.w3.org/TR/2012/WD-screen-orientation-20120522/#extensions-to-the-screen-interface" />
+<script src="../resources/testharness.js"></script>
+<script src="../resources/testharnessreport.js"></script>
+<div id="log"></div>
+<script>
+
+test(function() {
+  assert_true("set" in tizen.vehicle.door);
+}, "Check if VehicleSignalInterface.set() exists");
+
+test(function() {
+  assert_true("subscribe" in tizen.vehicle.vehicleSpeed);
+}, "Check if VehicleSignalInterface.subscribe() exists");
+
+test(function() {
+  assert_true("unsubscribe" in tizen.vehicle.vehicleSpeed);
+}, "Check if VehicleSignalInterface.unsubscribe() exists");
+
+test(function() {
+  assert_true("availableForSubscription" in tizen.vehicle.vehicleSpeed);
+}, "Check if VehicleSignalInterface.availableForSubscription() exists");
+
+test(function() {
+  assert_true("availableForSetting" in tizen.vehicle.vehicleSpeed);
+}, "Check if VehicleSignalInterface.availableForSetting() exists");
+
+</script>
