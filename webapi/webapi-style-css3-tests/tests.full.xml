@@ -3,42 +3,6 @@
 <test_definition>
   <suite name="webapi-style-css3-tests" launcher="xwalk" category="W3C API Specifications">
     <set name="Style" type="js">
-      <testcase purpose="Test checks that a close brace (}) in the style attribute value does not terminate the style data when there is no open brace delimiting the declaration list in the CSS style attribute syntax" type="compliance" status="approved" component="WebAPI/DOM, Forms and Styles/CSS Style Attribute" execution_type="manual" priority="P1" id="style-attr-braces-001">
-        <description>
-          <test_script_entry>/opt/webapi-style-css3-tests/style/csswg/style-attr-braces-001.htm</test_script_entry>
-        </description>
-        <specs>
-          <spec>
-            <spec_assertion element_type="attribute" element_name="style" interface="CSS" specification="CSS Style Attributes" section="DOM, Forms and Styles" category="W3C API Specifications"/>
-            <spec_url>http://www.w3.org/TR/css-style-attr/#syntax</spec_url>
-            <spec_statement/>
-          </spec>
-        </specs>
-      </testcase>
-      <testcase purpose="Test checks that the braces must not be included and are therefore invalid when style attribute values are the content of a declaration block" type="compliance" status="approved" component="WebAPI/DOM, Forms and Styles/CSS Style Attribute" execution_type="manual" priority="P1" id="style-attr-braces-002">
-        <description>
-          <test_script_entry>/opt/webapi-style-css3-tests/style/csswg/style-attr-braces-002.htm</test_script_entry>
-        </description>
-        <specs>
-          <spec>
-            <spec_assertion element_type="attribute" element_name="style" interface="CSS" specification="CSS Style Attributes" section="DOM, Forms and Styles" category="W3C API Specifications"/>
-            <spec_url>http://www.w3.org/TR/css-style-attr/#syntax</spec_url>
-            <spec_statement/>
-          </spec>
-        </specs>
-      </testcase>
-      <testcase purpose="Test checks that the braces in a style attribute are treated as an invalid tokens and must be paired when dropping declarations" type="compliance" status="approved" component="WebAPI/DOM, Forms and Styles/CSS Style Attribute" execution_type="manual" priority="P1" id="style-attr-braces-003">
-        <description>
-          <test_script_entry>/opt/webapi-style-css3-tests/style/csswg/style-attr-braces-003.htm</test_script_entry>
-        </description>
-        <specs>
-          <spec>
-            <spec_assertion element_type="attribute" element_name="style" interface="CSS" specification="CSS Style Attributes" section="DOM, Forms and Styles" category="W3C API Specifications"/>
-            <spec_url>http://www.w3.org/TR/css-style-attr/#syntax</spec_url>
-            <spec_statement/>
-          </spec>
-        </specs>
-      </testcase>
       <testcase purpose="Test checks that contains an !important declaration will override the corresponding declaration" type="compliance" status="approved" component="WebAPI/DOM, Forms and Styles/CSS Style Attribute" execution_type="manual" priority="P1" id="style-attr-cascade-001">
         <description>
           <test_script_entry>/opt/webapi-style-css3-tests/style/csswg/style-attr-cascade-001.htm</test_script_entry>
@@ -111,9 +75,51 @@
           </spec>
         </specs>
       </testcase>
-      <testcase purpose="Test checks that the style attribute has a higher specificity than any other selector" type="compliance" status="approved" component="WebAPI/DOM, Forms and Styles/CSS Style Attribute" execution_type="manual" priority="P1" id="style-attr-specificity-001">
+    </set>
+    <set name="Style-ref" type="ref">
+      <testcase purpose="Test checks that a close brace (}) in the style attribute value does not terminate the style data when there is no open brace delimiting the declaration list in the CSS style attribute syntax" type="compliance" status="approved" component="WebAPI/DOM, Forms and Styles/CSS Style Attribute" execution_type="auto" priority="P1" id="style-attr-braces-001">
+        <description>
+          <test_script_entry>/opt/webapi-style-css3-tests/style/csswg/style-attr-braces-001.htm</test_script_entry>
+          <refer_test_script_entry timeout="90">/opt/webapi-style-css3-tests/style/csswg/reference/ref-green-on-green.htm</refer_test_script_entry>
+        </description>
+        <specs>
+          <spec>
+            <spec_assertion element_type="attribute" element_name="style" interface="CSS" specification="CSS Style Attributes" section="DOM, Forms and Styles" category="W3C API Specifications"/>
+            <spec_url>http://www.w3.org/TR/css-style-attr/#syntax</spec_url>
+            <spec_statement/>
+          </spec>
+        </specs>
+      </testcase>
+      <testcase purpose="Test checks that the braces must not be included and are therefore invalid when style attribute values are the content of a declaration block" type="compliance" status="approved" component="WebAPI/DOM, Forms and Styles/CSS Style Attribute" execution_type="auto" priority="P1" id="style-attr-braces-002">
+        <description>
+          <test_script_entry>/opt/webapi-style-css3-tests/style/csswg/style-attr-braces-002.htm</test_script_entry>
+          <refer_test_script_entry timeout="90">/opt/webapi-style-css3-tests/style/csswg/reference/ref-green-on-green.htm</refer_test_script_entry>
+        </description>
+        <specs>
+          <spec>
+            <spec_assertion element_type="attribute" element_name="style" interface="CSS" specification="CSS Style Attributes" section="DOM, Forms and Styles" category="W3C API Specifications"/>
+            <spec_url>http://www.w3.org/TR/css-style-attr/#syntax</spec_url>
+            <spec_statement/>
+          </spec>
+        </specs>
+      </testcase>
+      <testcase purpose="Test checks that the braces in a style attribute are treated as an invalid tokens and must be paired when dropping declarations" type="compliance" status="approved" component="WebAPI/DOM, Forms and Styles/CSS Style Attribute" execution_type="auto" priority="P1" id="style-attr-braces-003">
+        <description>
+          <test_script_entry>/opt/webapi-style-css3-tests/style/csswg/style-attr-braces-003.htm</test_script_entry>
+          <refer_test_script_entry timeout="90">/opt/webapi-style-css3-tests/style/csswg/reference/ref-green-on-green.htm</refer_test_script_entry>
+        </description>
+        <specs>
+          <spec>
+            <spec_assertion element_type="attribute" element_name="style" interface="CSS" specification="CSS Style Attributes" section="DOM, Forms and Styles" category="W3C API Specifications"/>
+            <spec_url>http://www.w3.org/TR/css-style-attr/#syntax</spec_url>
+            <spec_statement/>
+          </spec>
+        </specs>
+      </testcase>
+      <testcase purpose="Test checks that the style attribute has a higher specificity than any other selector" type="compliance" status="approved" component="WebAPI/DOM, Forms and Styles/CSS Style Attribute" execution_type="auto" priority="P1" id="style-attr-specificity-001">
         <description>
           <test_script_entry>/opt/webapi-style-css3-tests/style/csswg/style-attr-specificity-001.htm</test_script_entry>
+          <refer_test_script_entry timeout="90">/opt/webapi-style-css3-tests/style/csswg/reference/ref-green-on-green.htm</refer_test_script_entry>
         </description>
         <specs>
           <spec>
@@ -123,9 +129,10 @@
           </spec>
         </specs>
       </testcase>
-      <testcase purpose="Test checks that the style attribute has a higher specificity than all selectors including ID selectors no matter how many" type="compliance" status="approved" component="WebAPI/DOM, Forms and Styles/CSS Style Attribute" execution_type="manual" priority="P1" id="style-attr-specificity-002">
+      <testcase purpose="Test checks that the style attribute has a higher specificity than all selectors including ID selectors no matter how many" type="compliance" status="approved" component="WebAPI/DOM, Forms and Styles/CSS Style Attribute" execution_type="auto" priority="P1" id="style-attr-specificity-002">
         <description>
           <test_script_entry>/opt/webapi-style-css3-tests/style/csswg/style-attr-specificity-002.htm</test_script_entry>
+          <refer_test_script_entry timeout="90">/opt/webapi-style-css3-tests/style/csswg/reference/ref-green-on-green.htm</refer_test_script_entry>
         </description>
         <specs>
           <spec>
@@ -135,9 +142,10 @@
           </spec>
         </specs>
       </testcase>
-      <testcase purpose="Test checks that in the absence of any base URL manipulation URLs in style attributes are relative to the document" type="compliance" status="approved" component="WebAPI/DOM, Forms and Styles/CSS Style Attribute" execution_type="manual" priority="P1" id="style-attr-urls-001">
+      <testcase purpose="Test checks that in the absence of any base URL manipulation URLs in style attributes are relative to the document" type="compliance" status="approved" component="WebAPI/DOM, Forms and Styles/CSS Style Attribute" execution_type="auto" priority="P1" id="style-attr-urls-001">
         <description>
           <test_script_entry>/opt/webapi-style-css3-tests/style/csswg/style-attr-urls-001.htm</test_script_entry>
+          <refer_test_script_entry timeout="90">/opt/webapi-style-css3-tests/style/csswg/reference/ref-green-on-green.htm</refer_test_script_entry>
         </description>
         <specs>
           <spec>
@@ -147,9 +155,10 @@
           </spec>
         </specs>
       </testcase>
-      <testcase purpose="Test checks that in the presence of base URL manipulation URLs in style attributes are relative to the specified base" type="compliance" status="approved" component="WebAPI/DOM, Forms and Styles/CSS Style Attribute" execution_type="manual" priority="P1" id="style-attr-urls-002">
+      <testcase purpose="Test checks that in the presence of base URL manipulation URLs in style attributes are relative to the specified base" type="compliance" status="approved" component="WebAPI/DOM, Forms and Styles/CSS Style Attribute" execution_type="auto" priority="P1" id="style-attr-urls-002">
         <description>
           <test_script_entry>/opt/webapi-style-css3-tests/style/csswg/style-attr-urls-002.htm</test_script_entry>
+          <refer_test_script_entry timeout="90">/opt/webapi-style-css3-tests/style/csswg/reference/ref-green-on-green.htm</refer_test_script_entry>
         </description>
         <specs>
           <spec>
