@@ -42,7 +42,7 @@ Authors:
 
 var t = async_test("Check if the implementation of ContactsChangeEvent added attribute is valid", { timeout: 2000});
 t.step(function () {
-  contacts.clear().then(function () {/* Do Nothing */}, function () {/* Do Nothing */});
+  contacts.clear();
   var contactName = new ContactName({
     givenNames: ['John'],
     familyNames: ['Doe']
@@ -57,12 +57,14 @@ t.step(function () {
     phoneNumbers: [mobilePhone]
   });
   contacts.addEventListener("contactschange", function (e) {
-    t.step(function () {
-      assert_not_equals(e.added[0], null, "The ContactsChangeEvent.added[0]");
-    });
-    t.done();
+    if (e.added[0]) {
+      t.step(function () {
+        assert_not_equals(e.added[0], null, "The ContactsChangeEvent.added[0]");
+      });
+      t.done();
+    }
   });
-  contacts.save(contact).then(function () {/* Do Nothing */}, function () {/* Do Nothing */});
+  contacts.save(contact);
 });
 
  </script>

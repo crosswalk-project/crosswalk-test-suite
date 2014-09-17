@@ -40,10 +40,11 @@ Authors:
 <div id="log"></div>
 <script>
 var t = async_test("Check if the implementation of ContactsChangeEvent modified attribute is valid", {timeout: 2000});
+var id;
 
 t.step(function () {
   assert_true(!!contacts, "The Navigator support contacts");
-  contacts.clear().then(function () {/* Do Nothing */}, function () {/* Do Nothing */});
+  contacts.clear();
 
   var contactName = new ContactName({
     givenNames: ['John'],
@@ -58,15 +59,21 @@ t.step(function () {
     name: contactName,
     phoneNumbers: [mobilePhone]
   });
-  contacts.save(contact).then(function () {/* Do Nothing */}, function () {/* Do Nothing */});
-  contacts.addEventListener("contactschange", function (e) {
-    t.step(function () {
-     assert_not_equals(e.modified[0], null, "The ContactsChangeEvent.modified[0]");
-     assert_equals(e.modified[0], contact.id, "The ContactsChangeEvent.modified[0]");
+  contacts.save(contact).then(function () {
+    contacts.find().then(function (cons) {
+      cons[0].name.familyNames[0] = "kobe";
+      id = cons[0].id;
+      contacts.save(cons[0]);
     });
-    t.done();
   });
-  contact.name.familyNames[0] = "kobe";
-  contacts.save(contact).then(function () {/* Do Nothing */}, function () {/* Do Nothing */});
+  contacts.addEventListener("contactschange", function (e) {
+    if (e.modified[0]) {
+      t.step(function () {
+       assert_not_equals(e.modified[0], null, "The ContactsChangeEvent.modified[0]");
+       assert_equals(e.modified[0], id, "The ContactsChangeEvent.modified[0]");
+      });
+      t.done();
+    }
+  });
 });
 </script>

@@ -40,10 +40,11 @@ Authors:
 <div id="log"></div>
 <script>
 var t = async_test("Check if the readonly attribute ContactsChangeEvent.modified exists and typeof object", {timeout: 2000});
+var id;
 
 t.step(function () {
   assert_true(!!contacts, "The Navigator support contacts");
-  contacts.clear().then(function () {/* Do Nothing */}, function () {/* Do Nothing */});
+  contacts.clear();
 
   var contactName = new ContactName({
     givenNames: ['John'],
@@ -58,18 +59,24 @@ t.step(function () {
     name: contactName,
     phoneNumbers: [mobilePhone]
   });
-  contacts.save(contact).then(function () {/* Do Nothing */}, function () {/* Do Nothing */});
-  contacts.addEventListener("contactschange", function (e) {
-    t.step(function () {
-      assert_true("modified" in e, "The ContactsChangeEvent.modified exists");
-      assert_equals(typeof e.modified, "object", "The type of ContactsChangeEvent.modified");
-      var value = e.modified;
-      e.modified = null;
-      assert_equals(e.modified, value, "The ContactsChangeEvent.modified");
+  contacts.save(contact).then(function () {
+    contacts.find().then(function (cons) {
+      cons[0].name.familyNames[0] = "kobe";
+      id = cons[0].id;
+      contacts.save(cons[0]);
     });
-    t.done();
   });
-  contact.name.familyNames[0] = "kobe";
-  contacts.save(contact).then(function () {/* Do Nothing */}, function () {/* Do Nothing */});
+  contacts.addEventListener("contactschange", function (e) {
+    if (e.modified[0]) {
+      t.step(function () {
+        assert_true("modified" in e, "The ContactsChangeEvent.modified exists");
+        assert_equals(typeof e.modified, "object", "The type of ContactsChangeEvent.modified");
+        var value = e.modified;
+        e.modified = null;
+        assert_equals(e.modified, value, "The ContactsChangeEvent.modified");
+      });
+      t.done();
+    }
+  });
 });
 </script>
