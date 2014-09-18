@@ -26,32 +26,36 @@ NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE,
 EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
 Authors:
-        IVAN CHEN <yufeix.chen@intel.com>
+
 
 -->
 
 <html>
   <head>
     <meta charset='utf-8'>
-    <title>Crosswalk_MultiUser_xwalkctl_Root</title>
+    <title>Crosswalk_AudioPolicy_PhoneAndMusic</title>
     <link rel="author" title="Intel" href="http://www.intel.com">
   </head>
   <body>
+    <div >wav format
+        <audio id="MediaPlayback2" controls="controls">  
+          <source src="../resources/wavsound.wav" type="audio/wav">          
+          Not Support ...
+        </audio>
+    </div>
     <p>
       <strong>Test steps:</strong>
     </p>
     <ol>
-      <li>Push the webapp "disable_device_capabilities_tests.wgt" into Tizen device</li>
-      <li>Current if it is not root user, execute command "su"</li>
-      <li>Execute command: "xwalkctl --install disable_device_capabilities_tests.wgt"</li>
+      <li>Open terminal window: "paplay --property=media.role=phone audio_file"</li>
+      <li>Click the play button on the audio control</li>
     </ol>
     <p>
       <strong>Expected Output:</strong>
     </p>
     <ol>
-      <li>The package be pushed into Tizen device successfully</li>
-      <li>Switch to the "root" user successfully, input password "tizen" if need</li>
-      <li>There app should not be installed successfully</li>
+      <li>The paplay audio is playing successfully</li>
+      <li>The audio is playing but volume is attenuated successfully</li>       
     </ol>
   </body>
 </html>
