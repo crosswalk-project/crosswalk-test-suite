@@ -29,6 +29,12 @@ almostEqual = function(a, b) {
 test('float32x4 constructor', function() {
   notEqual(undefined, SIMD.float32x4);  // Type.
   notEqual(undefined, SIMD.float32x4(1.0, 2.0, 3.0, 4.0));  // New object.
+  var f1 = SIMD.float32x4(1.0, 2.0, 3.0, 4.0);
+  var f2 = SIMD.float32x4(f1);
+  equal(f1.x, f2.x, "the value of x should equal");
+  equal(f1.y, f2.y, "the value of y should equal");
+  equal(f1.z, f2.z, "the value of z should equal");
+  equal(f1.w, f2.w, "the value of w should equal");
 });
 
 test('float32x4 scalar getters', function() {
@@ -271,13 +277,13 @@ test('float32x4 withW', function() {
 
 test('float32x4 int32x4 conversion', function() {
   var m = SIMD.int32x4(0x3F800000, 0x40000000, 0x40400000, 0x40800000);
-  var n = SIMD.int32x4.bitsToFloat32x4(m);
+  var n = SIMD.float32x4.fromInt32x4Bits(m);
   equal(1.0, n.x);
   equal(2.0, n.y);
   equal(3.0, n.z);
   equal(4.0, n.w);
   n = SIMD.float32x4(5.0, 6.0, 7.0, 8.0);
-  m = SIMD.float32x4.bitsToInt32x4(n);
+  m = SIMD.int32x4.fromFloat32x4Bits(n);
   equal(0x40A00000, m.x);
   equal(0x40C00000, m.y);
   equal(0x40E00000, m.z);
@@ -285,23 +291,23 @@ test('float32x4 int32x4 conversion', function() {
   // Flip sign using bit-wise operators.
   n = SIMD.float32x4(9.0, 10.0, 11.0, 12.0);
   m = SIMD.int32x4(0x80000000, 0x80000000, 0x80000000, 0x80000000);
-  var nMask = SIMD.float32x4.bitsToInt32x4(n);
+  var nMask = SIMD.int32x4.fromFloat32x4Bits(n);
   nMask = SIMD.int32x4.xor(nMask, m); // flip sign.
-  n = SIMD.int32x4.bitsToFloat32x4(nMask);
+  n = SIMD.float32x4.fromInt32x4Bits(nMask);
   equal(-9.0, n.x);
   equal(-10.0, n.y);
   equal(-11.0, n.z);
   equal(-12.0, n.w);
-  nMask = SIMD.float32x4.bitsToInt32x4(n);
+  nMask = SIMD.int32x4.fromFloat32x4Bits(n);
   nMask = SIMD.int32x4.xor(nMask, m); // flip sign.
-  n = SIMD.int32x4.bitsToFloat32x4(nMask);
+  n = SIMD.float32x4.fromInt32x4Bits(nMask);
   equal(9.0, n.x);
   equal(10.0, n.y);
   equal(11.0, n.z);
   equal(12.0, n.w);
   // Should stay unmodified across bit conversions
   m = SIMD.int32x4(0xFFFFFFFF, 0xFFFF0000, 0x80000000, 0x0);
-  var m2 = SIMD.float32x4.bitsToInt32x4(SIMD.int32x4.bitsToFloat32x4(m));
+  var m2 = SIMD.int32x4.fromFloat32x4Bits(SIMD.float32x4.fromInt32x4Bits(m));
   equal(m.x, m2.x);
   equal(m.y, m2.y);
   equal(m.z, m2.z);
@@ -351,13 +357,13 @@ test('float32x4 comparisons', function() {
 
 test('int32x4 select', function() {
   var m = SIMD.int32x4.bool(true, true, false, false);
-  var t = SIMD.float32x4(1.0, 2.0, 3.0, 4.0);
-  var f = SIMD.float32x4(5.0, 6.0, 7.0, 8.0);
+  var t = SIMD.int32x4(1, 2, 3, 4);
+  var f = SIMD.int32x4(5, 6, 7, 8);
   var s = SIMD.int32x4.select(m, t, f);
-  equal(1.0, s.x);
-  equal(2.0, s.y);
-  equal(7.0, s.z);
-  equal(8.0, s.w);
+  equal(1, s.x);
+  equal(2, s.y);
+  equal(7, s.z);
+  equal(8, s.w);
 });
 
 test('int32x4 withX', function() {
