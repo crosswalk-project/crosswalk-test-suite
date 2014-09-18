@@ -903,6 +903,10 @@ def main():
             dest="bversion",
             action="store_true",
             help="show this tool's version")
+        opts_parser.add_option(
+            "--pkg-version",
+            dest="pkgversion",
+            help="specify the pkg version, e.g. 0.0.0.1")
 
         if len(sys.argv) == 1:
             sys.argv.append("-h")
@@ -926,8 +930,8 @@ def main():
                 os.path.join(BUILD_PARAMETERS.srcdir, "..", VERSION_FILE)):
             if not os.path.exists(
                     os.path.join(BUILD_PARAMETERS.srcdir, VERSION_FILE)):
-                LOG.error("Not found pkg version file, exit ...")
-                sys.exit(1)
+                LOG.info("Not found pkg version file, try to use option --pkg-version")
+                pkg_version_file_path = None
             else:
                 pkg_version_file_path = os.path.join(
                     BUILD_PARAMETERS.srcdir, VERSION_FILE)
@@ -939,13 +943,20 @@ def main():
             BUILD_PARAMETERS.srcdir, "..", "..", VERSION_FILE)
 
     try:
-        LOG.info("Using pkg version file: %s" % pkg_version_file_path)
-        with open(pkg_version_file_path, "rt") as pkg_version_file:
-            pkg_version_raw = pkg_version_file.read()
-            pkg_version_file.close()
-            pkg_version_json = json.loads(pkg_version_raw)
-            pkg_main_version = pkg_version_json["main-version"]
-            pkg_release_version = pkg_version_json["release-version"]
+        pkg_main_version = 0
+        pkg_release_version = 1
+        if BUILD_PARAMETERS.pkgversion:
+            LOG.info("Using %s as pkg version " % BUILD_PARAMETERS.pkgversion)
+            pkg_main_version = BUILD_PARAMETERS.pkgversion
+        else:
+            if pkg_version_file_path is not None:
+                LOG.info("Using pkg version file: %s" % pkg_version_file_path)
+                with open(pkg_version_file_path, "rt") as pkg_version_file:
+                    pkg_version_raw = pkg_version_file.read()
+                    pkg_version_file.close()
+                    pkg_version_json = json.loads(pkg_version_raw)
+                    pkg_main_version = pkg_version_json["main-version"]
+                    pkg_release_version = pkg_version_json["release-version"]
     except Exception as e:
         LOG.error("Fail to read pkg version file: %s, exit ..." % e)
         sys.exit(1)
