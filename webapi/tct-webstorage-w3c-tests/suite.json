@@ -18,13 +18,29 @@
             "copylist": {
                 "inst.apk.py": "inst.py",
                 "tests.full.xml": "tests.full.xml",
-                "tests.xml": "tests.xml"
+                "tests.xml": "tests.xml",
+                "bddrunner": "bddrunner",
+                "w3c-webstorage-app/testscripts": "w3c-webstorage-app/testscripts"
             },
-            "pkg-app": {}
+            "pkg-app": { 
+                "apk-common-opts":"--enable-remote-debugging"
+            },
+            "subapp-list": {
+                "w3c-webstorage-app": {
+                    "apk-common-opts":"--enable-remote-debugging",
+                    "apk-icon-opt": ""
+                }
+            }
         },
-        "apk-aio": {
-            "blacklist": []
-        },
+    "apk-aio": {
+             "blacklist": [],
+             "subapp-list": {
+                 "w3c-webstorage-app": {
+                     "apk-common-opts":"--enable-remote-debugging",
+                     "install-path": "app"
+                  }
+                }
+           },
         "wgt": {
             "blacklist": [
                 "*"
@@ -42,8 +58,8 @@
             ],
             "copylist": {
                 "inst.xpk.py": "inst.py",
-                "tests.full.xml": "tests.full.xml",
-                "tests.xml": "tests.xml"
+                "tests.tizen.full.xml": "tests.tizen.full.xml",
+                "tests.tizen.xml": "tests.tizen.xml"
             },
             "pkg-app": {
                 "blacklist": []
