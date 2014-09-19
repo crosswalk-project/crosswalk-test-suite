@@ -48,16 +48,16 @@ Authors:
     <script>
         var v = document.getElementById("m");
         test(function() {
-            assert_true(v.canPlayType('video/mp4; codecs="avc1.42E01E, mp4a.40.8"') !== "", "MPEG-4 supported (codecs='avc1.42E01E, mp4a.40.8')");
-        }, "Check if the video.canPlayType supports video/mp4 of codecs's parameter(avc1.42E01E, mp4a.40.8)");
+            assert_true(v.canPlayType('video/mp4; codecs="avc1.42E01E, mp4a.40.2"') !== "", "MPEG-4 supported (codecs='avc1.42E01E, mp4a.40.2')");
+        }, "Check if the video.canPlayType supports video/mp4 of codecs's parameter(avc1.42E01E, mp4a.40.2)");
 
         test(function() {
             assert_true(v.canPlayType('video/mp4; codecs="avc1.42E01E"') !== "", 'H.264 supported (codecs="avc1.42E01E")');
         }, "Check if the video.canPlayType supports video/mp4 of codecs's parameter(avc1.42E01E)");
 
         test(function() {
-            assert_true(v.canPlayType('video/mp4; codecs="avc1.42E01E, mp4v.20.8"') !== "", "MPEG-4 supported (codecs='avc1.42E01E, mp4v.20.8')");
-        }, "Check if the video.canPlayType supports video/mp4 of codecs's parameter(avc1.42E01E, mp4v.20.8)");
+            assert_true(v.canPlayType('video/mp4; codecs="avc1.42E01E, mp4a.40"') !== "", "MPEG-4 supported (codecs='avc1.42E01E, mp4a.40')");
+        }, "Check if the video.canPlayType supports video/mp4 of codecs's parameter(avc1.42E01E, mp4a.40)");
     </script>
   </body>
 </html>
