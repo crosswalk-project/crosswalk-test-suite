@@ -2,7 +2,9 @@
 import sys, os
 import itertools, shutil
 
-path = os.getcwd()
+path = os.path.abspath(__file__)
+path = os.path.split(path)[0]
+os.chdir(path)
 print path
 device_ssh_ip = ""
 ssh_device = device_ssh_ip.split(",")

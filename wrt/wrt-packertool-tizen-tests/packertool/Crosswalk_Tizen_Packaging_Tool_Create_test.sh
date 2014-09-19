@@ -30,16 +30,16 @@
 # Author:
 #        IVAN CHEN <yufeix.chen@intel.com>
 #
-
-python make_xpk.py diffid_same_version_tests/ key.pem 
+local_path=$(dirname $0)
+python $local_path/../make_xpk.py $local_path/../diffid_same_version_tests/ key.pem 
 sleep 5
 test -f diffid_same_version_tests.xpk
 if [ $? -eq 0 ];then
                 rm key.pem
                 echo "Pass"
+                rm diffid_same_version_tests.xpk
                 exit 0
 else
                 echo "Fail"
                 exit 1
 fi
-
