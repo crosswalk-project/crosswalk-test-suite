@@ -3,720 +3,522 @@
 <test_definition>
   <suite launcher="xwalk" name="webapi-vehicleinfo-xwalk-tests" category="WebAPI/IVI">
     <set name="vehicleinfo" type="js">
-      <testcase component="WebAPI/IVI/Vehicle" execution_type="auto" priority="P1" id="Navigator_vehicle_exist_TIVI-960" purpose="Check if Tizen has attribute vehicle.">
+      <testcase purpose="Check if navigator.vehicle exists" type="compliance" status="approved" component="WebAPI/Automotive/Vehicle Information Access API" execution_type="auto" priority="P1" id="Vehicle_exists">
         <description>
-          <test_script_entry test_script_expected_result="0">/opt/webapi-vehicleinfo-xwalk-tests/vehicleinfo/Navigator_vehicle_exist.html</test_script_entry>
+          <test_script_entry>/opt/webapi-vehicleinfo-xwalk-tests/vehicleinfo/Vehicle_attributes_tests.html?total_num=4&amp;locator_key=id&amp;value=1</test_script_entry>
         </description>
+        <specs>
+          <spec>
+            <spec_assertion element_type="attributes" element_name="vehicle" interface="Navigator" specification="Vehicle Information Access API" section="Automotive" category="WebAPI Automotive Specifications"/>
+            <spec_url>http://rawgit.com/w3c/automotive-bg/master/vehicle_spec.html</spec_url>
+            <spec_statement/>
+          </spec>
+        </specs>
       </testcase>
-      <testcase component="WebAPI/IVI/Vehicle" execution_type="auto" priority="P1" id="Vehicle_get_exist_TIVI-958" purpose="Check if get method is exist.">
+      <testcase purpose="Check if vehicle.vehicleSpeed exists" type="compliance" status="approved" component="WebAPI/Automotive/Vehicle Information Access API" execution_type="auto" priority="P1" id="Vehicle_vehicleSpeed_exists">
         <description>
-          <test_script_entry test_script_expected_result="0">/opt/webapi-vehicleinfo-xwalk-tests/vehicleinfo/Vehicle_get_exist.html</test_script_entry>
+          <test_script_entry>/opt/webapi-vehicleinfo-xwalk-tests/vehicleinfo/Vehicle_attributes_tests.html?total_num=4&amp;locator_key=id&amp;value=2</test_script_entry>
         </description>
+        <specs>
+          <spec>
+            <spec_assertion element_type="attributes" element_name="vehicleSpeed" interface="Vehicle" specification="Vehicle Information Access API" section="Automotive" category="WebAPI Automotive Specifications"/>
+            <spec_url>http://rawgit.com/w3c/automotive-bg/master/vehicle_spec.html</spec_url>
+            <spec_statement/>
+          </spec>
+        </specs>
       </testcase>
-      <testcase component="WebAPI/IVI/Vehicle" execution_type="auto" priority="P2" id="Vehicle_get_ButtonEvent_attribute_TIVI-964" purpose="Check if vehicle is able to assign DOM event name for bezel buttons.">
+      <testcase purpose="Check if vehicle.climateControl exists" type="compliance" status="approved" component="WebAPI/Automotive/Vehicle Information Access API" execution_type="auto" priority="P1" id="Vehicle_climateControl_exists">
         <description>
-          <test_script_entry test_script_expected_result="0">/opt/webapi-vehicleinfo-xwalk-tests/vehicleinfo/Vehicle_get_ButtonEvent_attribute.html</test_script_entry>
+          <test_script_entry>/opt/webapi-vehicleinfo-xwalk-tests/vehicleinfo/Vehicle_attributes_tests.html?total_num=4&amp;locator_key=id&amp;value=3</test_script_entry>
         </description>
+        <specs>
+          <spec>
+            <spec_assertion element_type="attributes" element_name="climateControl" interface="Vehicle" specification="Vehicle Information Access API" section="Automotive" category="WebAPI Automotive Specifications"/>
+            <spec_url>http://rawgit.com/w3c/automotive-bg/master/vehicle_spec.html</spec_url>
+            <spec_statement/>
+          </spec>
+        </specs>
       </testcase>
-      <testcase component="WebAPI/IVI/Vehicle" execution_type="auto" priority="P1" id="LightStatus_Brake_attribute_TIVI-954" purpose="Check if LightStatus has Brake attribute with proper type, readonly, not null">
+      <testcase purpose="Check if vehicle.door exists" type="compliance" status="approved" component="WebAPI/Automotive/Vehicle Information Access API" execution_type="auto" priority="P1" id="Vehicle_door_exists">
         <description>
-          <test_script_entry test_script_expected_result="0">/opt/webapi-vehicleinfo-xwalk-tests/vehicleinfo/LightStatus_Brake_attribute.html</test_script_entry>
+          <test_script_entry>/opt/webapi-vehicleinfo-xwalk-tests/vehicleinfo/Vehicle_attributes_tests.html?total_num=4&amp;locator_key=id&amp;value=3</test_script_entry>
         </description>
+        <specs>
+          <spec>
+            <spec_assertion element_type="attributes" element_name="door" interface="Vehicle" specification="Vehicle Information Access API" section="Automotive" category="WebAPI Automotive Specifications"/>
+            <spec_url>http://rawgit.com/w3c/automotive-bg/master/vehicle_spec.html</spec_url>
+            <spec_statement/>
+          </spec>
+        </specs>
       </testcase>
-      <testcase component="WebAPI/IVI/Vehicle" execution_type="auto" priority="P1" id="LightStatus_Fog_attribute_TIVI-954" purpose="Check if LightStatus has Fog attribute with proper type, readonly, not null.">
+      <testcase purpose="Check if VehicleInterface.get() exists" type="compliance" status="approved" component="WebAPI/Automotive/Vehicle Information Access API" execution_type="auto" priority="P1" id="VehicleInterface_get_exists">
         <description>
-          <test_script_entry test_script_expected_result="0">/opt/webapi-vehicleinfo-xwalk-tests/vehicleinfo/LightStatus_Fog_attribute.html</test_script_entry>
+          <test_script_entry>/opt/webapi-vehicleinfo-xwalk-tests/vehicleinfo/VehicleInterface_attributes_tests.html?total_num=10&amp;locator_key=id&amp;value=1</test_script_entry>
         </description>
+        <specs>
+          <spec>
+            <spec_assertion element_type="method" element_name="get" interface="VehicleInterface" specification="Vehicle Information Access API" section="Automotive" category="WebAPI Automotive Specifications"/>
+            <spec_url>http://rawgit.com/w3c/automotive-bg/master/vehicle_spec.html</spec_url>
+            <spec_statement/>
+          </spec>
+        </specs>
       </testcase>
-      <testcase component="WebAPI/IVI/Vehicle" execution_type="auto" priority="P1" id="LightStatus_Hazard_attribute_TIVI-954" purpose="Check if LightStatus has Hazard attribute with proper type, readonly, not null.">
+      <testcase purpose="Check if VehicleInterface.zones exists" type="compliance" status="approved" component="WebAPI/Automotive/Vehicle Information Access API" execution_type="auto" priority="P1" id="VehicleInterface_zones_exists">
         <description>
-          <test_script_entry test_script_expected_result="0">/opt/webapi-vehicleinfo-xwalk-tests/vehicleinfo/LightStatus_Hazard_attribute.html</test_script_entry>
+          <test_script_entry>/opt/webapi-vehicleinfo-xwalk-tests/vehicleinfo/VehicleInterface_attributes_tests.html?total_num=10&amp;locator_key=id&amp;value=2</test_script_entry>
         </description>
+        <specs>
+          <spec>
+            <spec_assertion element_type="attribute" element_name="zones" interface="VehicleInterface" specification="Vehicle Information Access API" section="Automotive" category="WebAPI Automotive Specifications"/>
+            <spec_url>http://rawgit.com/w3c/automotive-bg/master/vehicle_spec.html</spec_url>
+            <spec_statement/>
+          </spec>
+        </specs>
       </testcase>
-      <testcase component="WebAPI/IVI/Vehicle" execution_type="auto" priority="P1" id="LightStatus_Head_attribute_TIVI-954" purpose="Check if LightStatus has Head attribute with proper type, readonly, not null.">
+      <testcase purpose="Check if VehicleInterface.availableForRetrieval exists" type="compliance" status="approved" component="WebAPI/Automotive/Vehicle Information Access API" execution_type="auto" priority="P1" id="VehicleInterface_availableForRetrieval_exists">
         <description>
-          <test_script_entry test_script_expected_result="0">/opt/webapi-vehicleinfo-xwalk-tests/vehicleinfo/LightStatus_Head_attribute.html</test_script_entry>
+          <test_script_entry>/opt/webapi-vehicleinfo-xwalk-tests/vehicleinfo/VehicleInterface_attributes_tests.html?total_num=10&amp;locator_key=id&amp;value=3</test_script_entry>
         </description>
+        <specs>
+          <spec>
+            <spec_assertion element_type="attribute" element_name="availableForRetrieval" interface="VehicleInterface" specification="Vehicle Information Access API" section="Automotive" category="WebAPI Automotive Specifications"/>
+            <spec_url>http://rawgit.com/w3c/automotive-bg/master/vehicle_spec.html</spec_url>
+            <spec_statement/>
+          </spec>
+        </specs>
       </testcase>
-      <testcase component="WebAPI/IVI/Vehicle" execution_type="auto" priority="P1" id="LightStatus_HighBeam_attribute_TIVI-954" purpose="Check if LightStatus has HighBeam attribute with proper type, readonly, not null.">
+      <testcase purpose="Check if VehicleInterface.supported exists" type="compliance" status="approved" component="WebAPI/Automotive/Vehicle Information Access API" execution_type="auto" priority="P1" id="VehicleInterface_supported_exists">
         <description>
-          <test_script_entry test_script_expected_result="0">/opt/webapi-vehicleinfo-xwalk-tests/vehicleinfo/LightStatus_HighBeam_attribute.html</test_script_entry>
+          <test_script_entry>/opt/webapi-vehicleinfo-xwalk-tests/vehicleinfo/VehicleInterface_attributes_tests.html?total_num=10&amp;locator_key=id&amp;value=4</test_script_entry>
         </description>
+        <specs>
+          <spec>
+            <spec_assertion element_type="attribute" element_name="supported" interface="VehicleInterface" specification="Vehicle Information Access API" section="Automotive" category="WebAPI Automotive Specifications"/>
+            <spec_url>http://rawgit.com/w3c/automotive-bg/master/vehicle_spec.html</spec_url>
+            <spec_statement/>
+          </spec>
+        </specs>
       </testcase>
-      <testcase component="WebAPI/IVI/Vehicle" execution_type="auto" priority="P1" id="LightStatus_LeftTurn_attribute_TIVI-954" purpose="Check if LightStatus has LeftTurn attribute with proper type, readonly, not null.">
+      <testcase purpose="Check if VehicleInterface.availabilityChangedListener exists" type="compliance" status="approved" component="WebAPI/Automotive/Vehicle Information Access API" execution_type="auto" priority="P1" id="VehicleInterface_availabilityChangedListener_exists">
         <description>
-          <test_script_entry test_script_expected_result="0">/opt/webapi-vehicleinfo-xwalk-tests/vehicleinfo/LightStatus_LeftTurn_attribute.html</test_script_entry>
+          <test_script_entry>/opt/webapi-vehicleinfo-xwalk-tests/vehicleinfo/VehicleInterface_attributes_tests.html?total_num=10&amp;locator_key=id&amp;value=5</test_script_entry>
         </description>
-      </testcase>
-      <testcase component="WebAPI/IVI/Vehicle" execution_type="auto" priority="P1" id="LightStatus_Parking_attribute_TIVI-954" purpose="Check if LightStatus has Parking attribute with proper type, readonly, not null.">
-        <description>
-          <test_script_entry test_script_expected_result="0">/opt/webapi-vehicleinfo-xwalk-tests/vehicleinfo/LightStatus_Parking_attribute.html</test_script_entry>
-        </description>
-      </testcase>
-      <testcase component="WebAPI/IVI/Vehicle" execution_type="auto" priority="P1" id="LightStatus_RightTurn_attribute_TIVI-954" purpose="Check if LightStatus has RightTurn attribute with proper type, readonly, not null.">
-        <description>
-          <test_script_entry test_script_expected_result="0">/opt/webapi-vehicleinfo-xwalk-tests/vehicleinfo/LightStatus_RightTurn_attribute.html</test_script_entry>
-        </description>
-      </testcase>
-      <testcase component="WebAPI/IVI/Vehicle" execution_type="auto" priority="P1" id="SeatBeltStatus_SeatBeltStatus_attribute_TIVI-954" purpose="Check if SeatBeltStatus has SeatBeltStatus attribute with proper type, readonly, not null.">
-        <description>
-          <test_script_entry test_script_expected_result="0">/opt/webapi-vehicleinfo-xwalk-tests/vehicleinfo/SeatBeltStatus_SeatBeltStatus_attribute.html</test_script_entry>
-        </description>
-      </testcase>
-      <testcase component="WebAPI/IVI/Vehicle" execution_type="auto" priority="P1" id="Temperature_Exterior_attribute_TIVI-954" purpose="Check if Temperature has Exterior attribute with proper type, readonly, not null.">
-        <description>
-          <test_script_entry test_script_expected_result="0">/opt/webapi-vehicleinfo-xwalk-tests/vehicleinfo/Temperature_Exterior_attribute.html</test_script_entry>
-        </description>
-      </testcase>
-      <testcase component="WebAPI/IVI/Vehicle" execution_type="auto" priority="P1" id="Temperature_Interior_attribute_TIVI-954" purpose="Check if Temperature has Interior attribute with proper type, readonly, not null.">
-        <description>
-          <test_script_entry test_script_expected_result="0">/opt/webapi-vehicleinfo-xwalk-tests/vehicleinfo/Temperature_Interior_attribute.html</test_script_entry>
-        </description>
-      </testcase>
-      <testcase component="WebAPI/IVI/Vehicle" execution_type="auto" priority="P1" id="DoorStatus_ChildLockStatus_attribute_TIVI-954" purpose="Check if DoorStatus has ChildLockStatus attribute with proper type, readonly, not null.">
-        <description>
-          <test_script_entry test_script_expected_result="0">/opt/webapi-vehicleinfo-xwalk-tests/vehicleinfo/DoorStatus_ChildLockStatus_attribute.html</test_script_entry>
-        </description>
-      </testcase>
-      <testcase component="WebAPI/IVI/Vehicle" execution_type="auto" priority="P1" id="DoorStatus_DoorLockStatus_attribute_TIVI-954" purpose="Check if DoorStatus has DoorLockStatus attribute with proper type, readonly, not null.">
-        <description>
-          <test_script_entry test_script_expected_result="0">/opt/webapi-vehicleinfo-xwalk-tests/vehicleinfo/DoorStatus_DoorLockStatus_attribute.html</test_script_entry>
-        </description>
-      </testcase>
-      <testcase component="WebAPI/IVI/Vehicle" execution_type="auto" priority="P1" id="DoorStatus_DoorStatus_attribute_TIVI-954" purpose="Check if DoorStatus has DoorStatus attribute with proper type, readonly, not null.">
-        <description>
-          <test_script_entry test_script_expected_result="0">/opt/webapi-vehicleinfo-xwalk-tests/vehicleinfo/DoorStatus_DoorStatus_attribute.html</test_script_entry>
-        </description>
-      </testcase>
-      <testcase component="WebAPI/IVI/Vehicle" execution_type="auto" priority="P1" id="VehiclePowerMode_VehiclePowerMode_attribute_TIVI-954" purpose="Check if VehiclePowerMode has VehiclePowerMode attribute with proper type, readonly, not null.">
-        <description>
-          <test_script_entry test_script_expected_result="0">/opt/webapi-vehicleinfo-xwalk-tests/vehicleinfo/VehiclePowerMode_VehiclePowerMode_attribute.html</test_script_entry>
-        </description>
-      </testcase>
-      <testcase component="WebAPI/IVI/Vehicle" execution_type="auto" priority="P1" id="WindowStatus_openness_attribute" purpose="Check if WindowStatus has WindowStatus attribute with proper type, readonly, not null.">
-        <description>
-          <test_script_entry test_script_expected_result="0">/opt/webapi-vehicleinfo-xwalk-tests/vehicleinfo/WindowStatus_openness_attribute.html</test_script_entry>
-        </description>
-      </testcase>
-      <testcase component="WebAPI/IVI/Vehicle" execution_type="auto" priority="P1" id="VehicleSpeed_VehicleSpeed_attribute_TIVI-953" purpose="Check if VehicleSpeed has VehicleSpeed attribute with proper type, readonly, not null.">
-        <description>
-          <test_script_entry test_script_expected_result="0">/opt/webapi-vehicleinfo-xwalk-tests/vehicleinfo/VehicleSpeed_VehicleSpeed_attribute.html</test_script_entry>
-        </description>
-      </testcase>
-      <testcase component="WebAPI/IVI/Vehicle" execution_type="auto" priority="P1" id="Acceleration_X_attribute_TIVI-953" purpose="Check if Acceleration has X attribute with proper type, readonly, not null.">
-        <description>
-          <test_script_entry test_script_expected_result="0">/opt/webapi-vehicleinfo-xwalk-tests/vehicleinfo/Acceleration_X_attribute.html</test_script_entry>
-        </description>
-      </testcase>
-      <testcase component="WebAPI/IVI/Vehicle" execution_type="auto" priority="P1" id="Acceleration_Y_attribute_TIVI-953" purpose="Check if Acceleration has Y attribute with proper type, readonly, not null.">
-        <description>
-          <test_script_entry test_script_expected_result="0">/opt/webapi-vehicleinfo-xwalk-tests/vehicleinfo/Acceleration_Y_attribute.html</test_script_entry>
-        </description>
-      </testcase>
-      <testcase component="WebAPI/IVI/Vehicle" execution_type="auto" priority="P1" id="Acceleration_Z_attribute_TIVI-953" purpose="Check if Acceleration has Z attribute with proper type, readonly, not null.">
-        <description>
-          <test_script_entry test_script_expected_result="0">/opt/webapi-vehicleinfo-xwalk-tests/vehicleinfo/Acceleration_Z_attribute.html</test_script_entry>
-        </description>
-      </testcase>
-      <testcase component="WebAPI/IVI/Vehicle" execution_type="auto" priority="P1" id="Fuel_AverageEconomy_attribute_TIVI-953" purpose="Check if Fuel has AverageEconomy attribute with proper type, readonly, not null.">
-        <description>
-          <test_script_entry test_script_expected_result="0">/opt/webapi-vehicleinfo-xwalk-tests/vehicleinfo/Fuel_AverageEconomy_attribute.html</test_script_entry>
-        </description>
-      </testcase>
-      <testcase component="WebAPI/IVI/Vehicle" execution_type="auto" priority="P1" id="Fuel_InstantConsumption_attribute_TIVI-953" purpose="Check if Fuel has InstantConsumption attribute with proper type, readonly, not null.">
-        <description>
-          <test_script_entry test_script_expected_result="0">/opt/webapi-vehicleinfo-xwalk-tests/vehicleinfo/Fuel_InstantConsumption_attribute.html</test_script_entry>
-        </description>
-      </testcase>
-      <testcase component="WebAPI/IVI/Vehicle" execution_type="auto" priority="P1" id="Fuel_Level_attribute_TIVI-953" purpose="Check if Fuel has Level attribute with proper type, readonly, not null.">
-        <description>
-          <test_script_entry test_script_expected_result="0">/opt/webapi-vehicleinfo-xwalk-tests/vehicleinfo/Fuel_Level_attribute.html</test_script_entry>
-        </description>
-      </testcase>
-      <testcase component="WebAPI/IVI/Vehicle" execution_type="auto" priority="P1" id="Fuel_Range_attribute_TIVI-953" purpose="Check if Fuel has Range attribute with proper type, readonly, not null.">
-        <description>
-          <test_script_entry test_script_expected_result="0">/opt/webapi-vehicleinfo-xwalk-tests/vehicleinfo/Fuel_Range_attribute.html</test_script_entry>
-        </description>
-      </testcase>
-      <testcase component="WebAPI/IVI/Vehicle" execution_type="auto" priority="P1" id="Fuel_InstantEconomy_attribute_TIVI-953" purpose="Check if Fuel has InstantEconomy attribute with proper type, readonly, not null.">
-        <description>
-          <test_script_entry test_script_expected_result="0">/opt/webapi-vehicleinfo-xwalk-tests/vehicleinfo/Fuel_InstantEconomy_attribute.html</test_script_entry>
-        </description>
-      </testcase>
-      <testcase component="WebAPI/IVI/Vehicle" execution_type="auto" priority="P1" id="EngineSpeed_EngineSpeed_attribute_TIVI-953" purpose="Check if EngineSpeed has EngineSpeed attribute with proper type, readonly, not null.">
-        <description>
-          <test_script_entry test_script_expected_result="0">/opt/webapi-vehicleinfo-xwalk-tests/vehicleinfo/EngineSpeed_EngineSpeed_attribute.html</test_script_entry>
-        </description>
-      </testcase>
-      <testcase component="WebAPI/IVI/Vehicle" execution_type="auto" priority="P1" id="VehicleId_VIN_attribute_TIVI-952" purpose="Check if VehicleId has VIN attribute with proper type, readonly, not null.">
-        <description>
-          <test_script_entry test_script_expected_result="0">/opt/webapi-vehicleinfo-xwalk-tests/vehicleinfo/VehicleId_VIN_attribute.html</test_script_entry>
-        </description>
-      </testcase>
-      <testcase component="WebAPI/IVI/Vehicle" execution_type="auto" priority="P1" id="VehicleId_WMI_attribute_TIVI-952" purpose="Check if VehicleId has WMI attribute with proper type, readonly, not null.">
-        <description>
-          <test_script_entry test_script_expected_result="0">/opt/webapi-vehicleinfo-xwalk-tests/vehicleinfo/VehicleId_WMI_attribute.html</test_script_entry>
-        </description>
-      </testcase>
-      <testcase component="WebAPI/IVI/Vehicle" execution_type="auto" priority="P1" id="Size_Width_attribute_TIVI-952" purpose="Check if Size has Width attribute with proper type, readonly, not null.">
-        <description>
-          <test_script_entry test_script_expected_result="0">/opt/webapi-vehicleinfo-xwalk-tests/vehicleinfo/Size_Width_attribute.html</test_script_entry>
-        </description>
-      </testcase>
-      <testcase component="WebAPI/IVI/Vehicle" execution_type="auto" priority="P1" id="Size_Height_attribute_TIVI-952" purpose="Check if Size has Height attribute with proper type, readonly, not null.">
-        <description>
-          <test_script_entry test_script_expected_result="0">/opt/webapi-vehicleinfo-xwalk-tests/vehicleinfo/Size_Height_attribute.html</test_script_entry>
-        </description>
-      </testcase>
-      <testcase component="WebAPI/IVI/Vehicle" execution_type="auto" priority="P1" id="Size_Length_attribute_TIVI-952" purpose="Check if Size has Length attribute with proper type, readonly, not null.">
-        <description>
-          <test_script_entry test_script_expected_result="0">/opt/webapi-vehicleinfo-xwalk-tests/vehicleinfo/Size_Length_attribute.html</test_script_entry>
-        </description>
-      </testcase>
-      <testcase component="WebAPI/IVI/Vehicle" execution_type="auto" priority="P2" id="Vehicle_get_MachineGunTurretStatus_attribute_TIVI-957" purpose="Check if get() method can get the OEM properties in AMB.">
-        <description>
-          <test_script_entry test_script_expected_result="0">/opt/webapi-vehicleinfo-xwalk-tests/vehicleinfo/Vehicle_get_MachineGunTurretStatus_attribute.html</test_script_entry>
-        </description>
-      </testcase>
-      <testcase component="WebAPI/IVI/Vehicle" execution_type="auto" priority="P1" id="InteriorLightStatus_Passenger_attribute_TIVI-954" purpose="Check if InteriorLightStatus has Passenger attribute with proper type, readonly, not null">
-        <description>
-          <test_script_entry test_script_expected_result="0">/opt/webapi-vehicleinfo-xwalk-tests/vehicleinfo/InteriorLightStatus_Passenger_attribute.html</test_script_entry>
-        </description>
-      </testcase>
-      <testcase component="WebAPI/IVI/Vehicle" execution_type="auto" priority="P1" id="InteriorLightStatus_Driver_attribute_TIVI-954" purpose="Check if InteriorLightStatus has Driver attribute with proper type, readonly, not null">
-        <description>
-          <test_script_entry test_script_expected_result="0">/opt/webapi-vehicleinfo-xwalk-tests/vehicleinfo/InteriorLightStatus_Driver_attribute.html</test_script_entry>
-        </description>
-      </testcase>
-      <testcase component="WebAPI/IVI/Vehicle" execution_type="auto" priority="P1" id="InteriorLightStatus_Center_attribute_TIVI-954" purpose="Check if InteriorLightStatus has Center attribute with proper type, readonly, not null">
-        <description>
-          <test_script_entry test_script_expected_result="0">/opt/webapi-vehicleinfo-xwalk-tests/vehicleinfo/InteriorLightStatus_Center_attribute.html</test_script_entry>
-        </description>
-      </testcase>
-      <testcase component="WebAPI/IVI/Vehicle" execution_type="auto" priority="P1" id="Vehicle_subscribe_exist_TIVI-957" purpose="Check if subscribe method is exist.">
-        <description>
-          <test_script_entry test_script_expected_result="0">/opt/webapi-vehicleinfo-xwalk-tests/vehicleinfo/Vehicle_subscribe_exist.html</test_script_entry>
-        </description>
-      </testcase>
-      <testcase component="WebAPI/IVI/Vehicle" execution_type="auto" priority="P1" id="Vehicle_get_attribute" purpose="Check if attribute are exist and type correct.">
-        <description>
-          <test_script_entry test_script_expected_result="0">/opt/webapi-vehicleinfo-xwalk-tests/vehicleinfo/Vehicle_get_attribute.html</test_script_entry>
-        </description>
-      </testcase>
-      <testcase component="WebAPI/IVI/Vehicle" execution_type="auto" priority="P1" id="Vehicle_supported_exist_TIVI-1252" purpose="Check if supported method is exist.">
-        <description>
-          <test_script_entry test_script_expected_result="0">/opt/webapi-vehicleinfo-xwalk-tests/vehicleinfo/Vehicle_supported_exist.html</test_script_entry>
-        </description>
-      </testcase>
-      <testcase component="WebAPI/IVI/Vehicle" execution_type="auto" priority="P1" id="Vehicle_getHistory_exist_TIVI-1252" purpose="Check if getHistory method is exist.">
-        <description>
-          <test_script_entry test_script_expected_result="0">/opt/webapi-vehicleinfo-xwalk-tests/vehicleinfo/Vehicle_getHistory_exist.html</test_script_entry>
-        </description>
-      </testcase>
-      <testcase component="WebAPI/IVI/Vehicle" execution_type="auto" priority="P1" id="Vehicle_set_exist_TIVI-1252" purpose="Check if set method is exist.">
-        <description>
-          <test_script_entry test_script_expected_result="0">/opt/webapi-vehicleinfo-xwalk-tests/vehicleinfo/Vehicle_set_exist.html</test_script_entry>
-        </description>
-      </testcase>
-      <testcase component="WebAPI/IVI/Vehicle" execution_type="auto" priority="P1" id="VehiclePowerMode_CONST_attribute_TIVI-954" purpose="Check if VehiclePowerMode has const attribute with proper type, readonly, not null.">
-        <description>
-          <test_script_entry test_script_expected_result="0">/opt/webapi-vehicleinfo-xwalk-tests/vehicleinfo/VehiclePowerMode_CONST_attribute.html</test_script_entry>
-        </description>
-      </testcase>
-      <testcase component="WebAPI/IVI/Vehicle" execution_type="auto" priority="P1" id="TripMeter_tripMeters_attribute" purpose="Check if TripMeter has tripMeters attribute with proper type, not null.">
-        <description>
-          <test_script_entry test_script_expected_result="0">/opt/webapi-vehicleinfo-xwalk-tests/vehicleinfo/TripMeter_tripMeters_attribute.html</test_script_entry>
-        </description>
-      </testcase>
-      <testcase component="WebAPI/IVI/Vehicle" execution_type="auto" priority="P1" id="Transmission_gearPosition_attribute" purpose="Check if Transmission has gearPosition attribute with proper type, not null.">
-        <description>
-          <test_script_entry test_script_expected_result="0">/opt/webapi-vehicleinfo-xwalk-tests/vehicleinfo/Transmission_gearPosition_attribute.html</test_script_entry>
-        </description>
-      </testcase>
-      <testcase component="WebAPI/IVI/Vehicle" execution_type="auto" priority="P1" id="Transmission_mode_attribute" purpose="Check if Transmission has mode attribute with proper type, not null.">
-        <description>
-          <test_script_entry test_script_expected_result="0">/opt/webapi-vehicleinfo-xwalk-tests/vehicleinfo/Transmission_mode_attribute.html</test_script_entry>
-        </description>
-      </testcase>
-      <testcase component="WebAPI/IVI/Vehicle" execution_type="auto" priority="P1" id="Transmission_CONST_attribute" purpose="Check if Transmission has CONST attribute with proper type, not null.">
-        <description>
-          <test_script_entry test_script_expected_result="0">/opt/webapi-vehicleinfo-xwalk-tests/vehicleinfo/Transmission_CONST_attribute.html</test_script_entry>
-        </description>
-      </testcase>
-      <testcase component="WebAPI/IVI/Vehicle" execution_type="auto" priority="P1" id="CruiseControlStatus_activated_attribute" purpose="Check if CruiseControlStatus has activated attribute with proper type, not null.">
-        <description>
-          <test_script_entry test_script_expected_result="0">/opt/webapi-vehicleinfo-xwalk-tests/vehicleinfo/CruiseControlStatus_activated_attribute.html</test_script_entry>
-        </description>
-      </testcase>
-      <testcase component="WebAPI/IVI/Vehicle" execution_type="auto" priority="P1" id="CruiseControlStatus_speed_attribute" purpose="Check if CruiseControlStatus has speed attribute with proper type, not null.">
-        <description>
-          <test_script_entry test_script_expected_result="0">/opt/webapi-vehicleinfo-xwalk-tests/vehicleinfo/CruiseControlStatus_speed_attribute.html</test_script_entry>
-        </description>
-      </testcase>
-      <testcase component="WebAPI/IVI/Vehicle" execution_type="auto" priority="P1" id="WheelBrake_engaged_attribute" purpose="Check if WheelBrake has engaged attribute with proper type, not null.">
-        <description>
-          <test_script_entry test_script_expected_result="0">/opt/webapi-vehicleinfo-xwalk-tests/vehicleinfo/WheelBrake_engaged_attribute.html</test_script_entry>
-        </description>
-      </testcase>
-      <testcase component="WebAPI/IVI/Vehicle" execution_type="auto" priority="P1" id="Horn_on_attribute" purpose="Check if Horn has on attribute with proper type, not null.">
-        <description>
-          <test_script_entry test_script_expected_result="0">/opt/webapi-vehicleinfo-xwalk-tests/vehicleinfo/Horn_on_attribute.html</test_script_entry>
-        </description>
-      </testcase>
-      <testcase component="WebAPI/IVI/Vehicle" execution_type="auto" priority="P1" id="EngineOil_remaining_attribute" purpose="Check if EngineOil has remaining attribute with proper type, not null.">
-        <description>
-          <test_script_entry test_script_expected_result="0">/opt/webapi-vehicleinfo-xwalk-tests/vehicleinfo/EngineOil_remaining_attribute.html</test_script_entry>
-        </description>
-      </testcase>
-      <testcase component="WebAPI/IVI/Vehicle" execution_type="auto" priority="P1" id="EngineOil_temperature_attribute" purpose="Check if EngineOil has temperature attribute with proper type, not null.">
-        <description>
-          <test_script_entry test_script_expected_result="0">/opt/webapi-vehicleinfo-xwalk-tests/vehicleinfo/EngineOil_temperature_attribute.html</test_script_entry>
-        </description>
-      </testcase>
-      <testcase component="WebAPI/IVI/Vehicle" execution_type="auto" priority="P1" id="EngineOil_pressure_attribute" purpose="Check if EngineOil has pressure attribute with proper type, not null.">
-        <description>
-          <test_script_entry test_script_expected_result="0">/opt/webapi-vehicleinfo-xwalk-tests/vehicleinfo/EngineOil_pressure_attribute.html</test_script_entry>
-        </description>
-      </testcase>
-      <testcase component="WebAPI/IVI/Vehicle" execution_type="auto" priority="P1" id="Location_latitude_attribute" purpose="Check if Location has latitude attribute with proper type, not null.">
-        <description>
-          <test_script_entry test_script_expected_result="0">/opt/webapi-vehicleinfo-xwalk-tests/vehicleinfo/Location_latitude_attribute.html</test_script_entry>
-        </description>
-      </testcase>
-      <testcase component="WebAPI/IVI/Vehicle" execution_type="auto" priority="P1" id="Location_longitude_attribute" purpose="Check if Location has longitude attribute with proper type, not null.">
-        <description>
-          <test_script_entry test_script_expected_result="0">/opt/webapi-vehicleinfo-xwalk-tests/vehicleinfo/Location_longitude_attribute.html</test_script_entry>
-        </description>
-      </testcase>
-      <testcase component="WebAPI/IVI/Vehicle" execution_type="auto" priority="P1" id="Location_altitude_attribute" purpose="Check if Location has altitude attribute with proper type, not null.">
-        <description>
-          <test_script_entry test_script_expected_result="0">/opt/webapi-vehicleinfo-xwalk-tests/vehicleinfo/Location_altitude_attribute.html</test_script_entry>
-        </description>
-      </testcase>
-      <testcase component="WebAPI/IVI/Vehicle" execution_type="auto" priority="P1" id="Location_direction_attribute" purpose="Check if Location has direction attribute with proper type, not null.">
-        <description>
-          <test_script_entry test_script_expected_result="0">/opt/webapi-vehicleinfo-xwalk-tests/vehicleinfo/Location_direction_attribute.html</test_script_entry>
-        </description>
-      </testcase>
-      <testcase component="WebAPI/IVI/Vehicle" execution_type="auto" priority="P1" id="ExteriorBrightness_exteriorBrightness_attribute" purpose="Check if ExteriorBrightness has exteriorBrightness attribute with proper type, not null.">
-        <description>
-          <test_script_entry test_script_expected_result="0">/opt/webapi-vehicleinfo-xwalk-tests/vehicleinfo/ExteriorBrightness_exteriorBrightness_attribute.html</test_script_entry>
-        </description>
-      </testcase>
-      <testcase component="WebAPI/IVI/Vehicle" execution_type="auto" priority="P1" id="RainSensor_rainSensor_attribute" purpose="Check if RainSensor has rainSensor attribute with proper type, not null.">
-        <description>
-          <test_script_entry test_script_expected_result="0">/opt/webapi-vehicleinfo-xwalk-tests/vehicleinfo/RainSensor_rainSensor_attribute.html</test_script_entry>
-        </description>
-      </testcase>
-      <testcase component="WebAPI/IVI/Vehicle" execution_type="auto" priority="P1" id="WindshieldWiper_windshieldWiper_attribute" purpose="Check if WindshieldWiper has windshieldWiper attribute with proper type, not null.">
-        <description>
-          <test_script_entry test_script_expected_result="0">/opt/webapi-vehicleinfo-xwalk-tests/vehicleinfo/WindshieldWiper_windshieldWiper_attribute.html</test_script_entry>
-        </description>
-      </testcase>
-      <testcase component="WebAPI/IVI/Vehicle" execution_type="auto" priority="P1" id="WindshieldWiper_CONST_attribute" purpose="Check if WindshieldWiper has CONST attribute with proper type, not null.">
-        <description>
-          <test_script_entry test_script_expected_result="0">/opt/webapi-vehicleinfo-xwalk-tests/vehicleinfo/WindshieldWiper_CONST_attribute.html</test_script_entry>
-        </description>
-      </testcase>
-      <testcase component="WebAPI/IVI/Vehicle" execution_type="auto" priority="P1" id="HVAC_airflowDirection_attribute" purpose="Check if HVAC has airflowDirection attribute with proper type, not null.">
-        <description>
-          <test_script_entry test_script_expected_result="0">/opt/webapi-vehicleinfo-xwalk-tests/vehicleinfo/HVAC_airflowDirection_attribute.html</test_script_entry>
-        </description>
-      </testcase>
-      <testcase component="WebAPI/IVI/Vehicle" execution_type="auto" priority="P1" id="HVAC_fanSpeed_attribute" purpose="Check if HVAC has fanSpeed attribute with proper type, not null.">
-        <description>
-          <test_script_entry test_script_expected_result="0">/opt/webapi-vehicleinfo-xwalk-tests/vehicleinfo/HVAC_fanSpeed_attribute.html</test_script_entry>
-        </description>
-      </testcase>
-      <testcase component="WebAPI/IVI/Vehicle" execution_type="auto" priority="P1" id="HVAC_targetTemperature_attribute" purpose="Check if HVAC has targetTemperature attribute with proper type, not null.">
-        <description>
-          <test_script_entry test_script_expected_result="0">/opt/webapi-vehicleinfo-xwalk-tests/vehicleinfo/HVAC_targetTemperature_attribute.html</test_script_entry>
-        </description>
-      </testcase>
-      <testcase component="WebAPI/IVI/Vehicle" execution_type="auto" priority="P1" id="HVAC_airConditioning_attribute" purpose="Check if HVAC has airConditioning attribute with proper type, not null.">
-        <description>
-          <test_script_entry test_script_expected_result="0">/opt/webapi-vehicleinfo-xwalk-tests/vehicleinfo/HVAC_airConditioning_attribute.html</test_script_entry>
-        </description>
-      </testcase>
-      <testcase component="WebAPI/IVI/Vehicle" execution_type="auto" priority="P1" id="HVAC_airRecirculation_attribute" purpose="Check if HVAC has airRecirculation attribute with proper type, not null.">
-        <description>
-          <test_script_entry test_script_expected_result="0">/opt/webapi-vehicleinfo-xwalk-tests/vehicleinfo/HVAC_airRecirculation_attribute.html</test_script_entry>
-        </description>
-      </testcase>
-      <testcase component="WebAPI/IVI/Vehicle" execution_type="auto" priority="P1" id="HVAC_heater_attribute" purpose="Check if HVAC has heater attribute with proper type, not null.">
-        <description>
-          <test_script_entry test_script_expected_result="0">/opt/webapi-vehicleinfo-xwalk-tests/vehicleinfo/HVAC_heater_attribute.html</test_script_entry>
-        </description>
-      </testcase>
-      <testcase component="WebAPI/IVI/Vehicle" execution_type="auto" priority="P1" id="WindowStatus_defrost_attribute" purpose="Check if WindowStatus has defrost attribute with proper type, not null.">
-        <description>
-          <test_script_entry test_script_expected_result="0">/opt/webapi-vehicleinfo-xwalk-tests/vehicleinfo/WindowStatus_defrost_attribute.html</test_script_entry>
-        </description>
-      </testcase>
-      <testcase component="WebAPI/IVI/Vehicle" execution_type="auto" priority="P1" id="HVAC_steeringWheelHeater_attribute" purpose="Check if HVAC has steeringWheelHeater attribute with proper type, not null.">
-        <description>
-          <test_script_entry test_script_expected_result="0">/opt/webapi-vehicleinfo-xwalk-tests/vehicleinfo/HVAC_steeringWheelHeater_attribute.html</test_script_entry>
-        </description>
-      </testcase>
-      <testcase component="WebAPI/IVI/Vehicle" execution_type="auto" priority="P1" id="HVAC_seatHeater_attribute" purpose="Check if HVAC has seatHeater attribute with proper type, not null.">
-        <description>
-          <test_script_entry test_script_expected_result="0">/opt/webapi-vehicleinfo-xwalk-tests/vehicleinfo/HVAC_seatHeater_attribute.html</test_script_entry>
-        </description>
-      </testcase>
-      <testcase component="WebAPI/IVI/Vehicle" execution_type="auto" priority="P1" id="HVAC_seatCooler_attribute" purpose="Check if HVAC has seatCooler attribute with proper type, not null.">
-        <description>
-          <test_script_entry test_script_expected_result="0">/opt/webapi-vehicleinfo-xwalk-tests/vehicleinfo/HVAC_seatCooler_attribute.html</test_script_entry>
-        </description>
-      </testcase>
-      <testcase component="WebAPI/IVI/Vehicle" execution_type="auto" priority="P1" id="HVAC_CONST_attribute" purpose="Check if HVAC has CONST attribute with proper type, not null.">
-        <description>
-          <test_script_entry test_script_expected_result="0">/opt/webapi-vehicleinfo-xwalk-tests/vehicleinfo/HVAC_CONST_attribute.html</test_script_entry>
-        </description>
-      </testcase>
-      <testcase component="WebAPI/IVI/Vehicle" execution_type="auto" priority="P1" id="WindowStatus_CONST_attribute" purpose="Check if WindowStatus has CONST attribute with proper type, not null.">
-        <description>
-          <test_script_entry test_script_expected_result="0">/opt/webapi-vehicleinfo-xwalk-tests/vehicleinfo/WindowStatus_CONST_attribute.html</test_script_entry>
-        </description>
-      </testcase>
-      <testcase component="WebAPI/IVI/Vehicle" execution_type="auto" priority="P1" id="AirbagStatus_airbagStatus_attribute" purpose="Check if AirbagStatus has airbagStatus attribute with proper type, not null.">
-        <description>
-          <test_script_entry test_script_expected_result="0">/opt/webapi-vehicleinfo-xwalk-tests/vehicleinfo/AirbagStatus_airbagStatus_attribute.html</test_script_entry>
-        </description>
-      </testcase>
-      <testcase component="WebAPI/IVI/Vehicle" execution_type="auto" priority="P1" id="AirbagStatus_CONST_attribute" purpose="Check if AirbagStatus has CONST attribute with proper type, not null.">
-        <description>
-          <test_script_entry test_script_expected_result="0">/opt/webapi-vehicleinfo-xwalk-tests/vehicleinfo/AirbagStatus_CONST_attribute.html</test_script_entry>
-        </description>
-      </testcase>
-      <testcase component="WebAPI/IVI/Vehicle" execution_type="auto" priority="P1" id="Battery_voltage_attribute" purpose="Check if Battery has voltage attribute with proper type, not null.">
-        <description>
-          <test_script_entry test_script_expected_result="0">/opt/webapi-vehicleinfo-xwalk-tests/vehicleinfo/Battery_voltage_attribute.html</test_script_entry>
-        </description>
-      </testcase>
-      <testcase component="WebAPI/IVI/Vehicle" execution_type="auto" priority="P1" id="Battery_current_attribute" purpose="Check if Battery has current attribute with proper type, not null.">
-        <description>
-          <test_script_entry test_script_expected_result="0">/opt/webapi-vehicleinfo-xwalk-tests/vehicleinfo/Battery_current_attribute.html</test_script_entry>
-        </description>
-      </testcase>
-      <testcase component="WebAPI/IVI/Vehicle" execution_type="auto" priority="P1" id="Doors_doorsPerRow_attribute" purpose="Check if Doors has doorsPerRow attribute with proper type, not null.">
-        <description>
-          <test_script_entry test_script_expected_result="0">/opt/webapi-vehicleinfo-xwalk-tests/vehicleinfo/Doors_doorsPerRow_attribute.html</test_script_entry>
-        </description>
-      </testcase>
-      <testcase component="WebAPI/IVI/Vehicle" execution_type="auto" priority="P1" id="Sunroof_openness_attribute" purpose="Check if Sunroof has openness attribute with proper type, not null.">
-        <description>
-          <test_script_entry test_script_expected_result="0">/opt/webapi-vehicleinfo-xwalk-tests/vehicleinfo/Sunroof_openness_attribute.html</test_script_entry>
-        </description>
-      </testcase>
-      <testcase component="WebAPI/IVI/Vehicle" execution_type="auto" priority="P1" id="Sunroof_tilt_attribute" purpose="Check if Sunroof has tilt attribute with proper type, not null.">
-        <description>
-          <test_script_entry test_script_expected_result="0">/opt/webapi-vehicleinfo-xwalk-tests/vehicleinfo/Sunroof_tilt_attribute.html</test_script_entry>
-        </description>
-      </testcase>
-      <testcase component="WebAPI/IVI/Vehicle" execution_type="auto" priority="P1" id="ConvertibleRoof_openness_attribute" purpose="Check if ConvertibleRoof has openness attribute with proper type, not null.">
-        <description>
-          <test_script_entry test_script_expected_result="0">/opt/webapi-vehicleinfo-xwalk-tests/vehicleinfo/ConvertibleRoof_openness_attribute.html</test_script_entry>
-        </description>
-      </testcase>
-      <testcase component="WebAPI/IVI/Vehicle" execution_type="auto" priority="P1" id="FuelInfo_type_attribute" purpose="Check if FuelInfo has type attribute with proper type, not null.">
-        <description>
-          <test_script_entry test_script_expected_result="0">/opt/webapi-vehicleinfo-xwalk-tests/vehicleinfo/FuelInfo_type_attribute.html</test_script_entry>
-        </description>
-      </testcase>
-      <testcase component="WebAPI/IVI/Vehicle" execution_type="auto" priority="P1" id="FuelInfo_refuelPosition_attribute" purpose="Check if FuelInfo has refuelPosition attribute with proper type, not null.">
-        <description>
-          <test_script_entry test_script_expected_result="0">/opt/webapi-vehicleinfo-xwalk-tests/vehicleinfo/FuelInfo_refuelPosition_attribute.html</test_script_entry>
-        </description>
-      </testcase>
-      <testcase component="WebAPI/IVI/Vehicle" execution_type="auto" priority="P1" id="VehicleType_type_attribute" purpose="Check if VehicleType has type attribute with proper type, not null.">
-        <description>
-          <test_script_entry test_script_expected_result="0">/opt/webapi-vehicleinfo-xwalk-tests/vehicleinfo/VehicleType_type_attribute.html</test_script_entry>
-        </description>
-      </testcase>
-      <testcase component="WebAPI/IVI/Vehicle" execution_type="auto" priority="P1" id="TransmissionGearType_transmissionGearType_attribute" purpose="Check if TransmissionGearType has transmissionGearType attribute with proper type, not null.">
-        <description>
-          <test_script_entry test_script_expected_result="0">/opt/webapi-vehicleinfo-xwalk-tests/vehicleinfo/TransmissionGearType_transmissionGearType_attribute.html</test_script_entry>
-        </description>
-      </testcase>
-      <testcase component="WebAPI/IVI/Vehicle" execution_type="auto" priority="P1" id="WheelInformation_frontWheelRadius_attribute" purpose="Check if WheelInformation has frontWheelRadius attribute with proper type, not null.">
-        <description>
-          <test_script_entry test_script_expected_result="0">/opt/webapi-vehicleinfo-xwalk-tests/vehicleinfo/WheelInformation_frontWheelRadius_attribute.html</test_script_entry>
-        </description>
-      </testcase>
-      <testcase component="WebAPI/IVI/Vehicle" execution_type="auto" priority="P1" id="WheelInformation_rearWheelRadius_attribute" purpose="Check if WheelInformation has rearWheelRadius attribute with proper type, not null.">
-        <description>
-          <test_script_entry test_script_expected_result="0">/opt/webapi-vehicleinfo-xwalk-tests/vehicleinfo/WheelInformation_rearWheelRadius_attribute.html</test_script_entry>
-        </description>
-      </testcase>
-      <testcase component="WebAPI/IVI/Vehicle" execution_type="auto" priority="P1" id="WheelInformation_wheelTrack_attribute" purpose="Check if WheelInformation has wheelTrack attribute with proper type, not null.">
-        <description>
-          <test_script_entry test_script_expected_result="0">/opt/webapi-vehicleinfo-xwalk-tests/vehicleinfo/WheelInformation_wheelTrack_attribute.html</test_script_entry>
-        </description>
-      </testcase>
-      <testcase component="WebAPI/IVI/Vehicle" execution_type="auto" priority="P1" id="WheelInformation_ABS_attribute" purpose="Check if WheelInformation has ABS attribute with proper type, not null.">
-        <description>
-          <test_script_entry test_script_expected_result="0">/opt/webapi-vehicleinfo-xwalk-tests/vehicleinfo/WheelInformation_ABS_attribute.html</test_script_entry>
-        </description>
-      </testcase>
-      <testcase component="WebAPI/IVI/Vehicle" execution_type="auto" priority="P1" id="Odometer_odometer_attribute" purpose="Check if Odometer has odometer attribute with proper type, not null.">
-        <description>
-          <test_script_entry test_script_expected_result="0">/opt/webapi-vehicleinfo-xwalk-tests/vehicleinfo/Odometer_odometer_attribute.html</test_script_entry>
-        </description>
-      </testcase>
-      <testcase component="WebAPI/IVI/Vehicle" execution_type="auto" priority="P1" id="Fluid_transmission_attribute" purpose="Check if Fluid has transmission attribute with proper type, not null.">
-        <description>
-          <test_script_entry test_script_expected_result="0">/opt/webapi-vehicleinfo-xwalk-tests/vehicleinfo/Fluid_transmission_attribute.html</test_script_entry>
-        </description>
-      </testcase>
-      <testcase component="WebAPI/IVI/Vehicle" execution_type="auto" priority="P1" id="Fluid_brake_attribute" purpose="Check if Fluid has brake attribute with proper type, not null.">
-        <description>
-          <test_script_entry test_script_expected_result="0">/opt/webapi-vehicleinfo-xwalk-tests/vehicleinfo/Fluid_brake_attribute.html</test_script_entry>
-        </description>
-      </testcase>
-      <testcase component="WebAPI/IVI/Vehicle" execution_type="auto" priority="P1" id="Fluid_washer_attribute" purpose="Check if Fluid has washer attribute with proper type, not null.">
-        <description>
-          <test_script_entry test_script_expected_result="0">/opt/webapi-vehicleinfo-xwalk-tests/vehicleinfo/Fluid_washer_attribute.html</test_script_entry>
-        </description>
-      </testcase>
-      <testcase component="WebAPI/IVI/Vehicle" execution_type="auto" priority="P1" id="TirePressure_leftFront_attribute" purpose="Check if TirePressure has leftFront attribute with proper type, not null.">
-        <description>
-          <test_script_entry test_script_expected_result="0">/opt/webapi-vehicleinfo-xwalk-tests/vehicleinfo/TirePressure_leftFront_attribute.html</test_script_entry>
-        </description>
-      </testcase>
-      <testcase component="WebAPI/IVI/Vehicle" execution_type="auto" priority="P1" id="TirePressure_rightFront_attribute" purpose="Check if TirePressure has rightFront attribute with proper type, not null.">
-        <description>
-          <test_script_entry test_script_expected_result="0">/opt/webapi-vehicleinfo-xwalk-tests/vehicleinfo/TirePressure_rightFront_attribute.html</test_script_entry>
-        </description>
-      </testcase>
-      <testcase component="WebAPI/IVI/Vehicle" execution_type="auto" priority="P1" id="TirePressure_leftRear_attribute" purpose="Check if TirePressure has leftRear attribute with proper type, not null.">
-        <description>
-          <test_script_entry test_script_expected_result="0">/opt/webapi-vehicleinfo-xwalk-tests/vehicleinfo/TirePressure_leftRear_attribute.html</test_script_entry>
-        </description>
-      </testcase>
-      <testcase component="WebAPI/IVI/Vehicle" execution_type="auto" priority="P1" id="TirePressure_rightRear_attribute" purpose="Check if TirePressure has rightRear attribute with proper type, not null.">
-        <description>
-          <test_script_entry test_script_expected_result="0">/opt/webapi-vehicleinfo-xwalk-tests/vehicleinfo/TirePressure_rightRear_attribute.html</test_script_entry>
-        </description>
-      </testcase>
-      <testcase component="WebAPI/IVI/Vehicle" execution_type="auto" priority="P1" id="TireTemperature_leftFront_attribute" purpose="Check if TireTemperature has leftFront attribute with proper type, not null.">
-        <description>
-          <test_script_entry test_script_expected_result="0">/opt/webapi-vehicleinfo-xwalk-tests/vehicleinfo/TireTemperature_leftFront_attribute.html</test_script_entry>
-        </description>
-      </testcase>
-      <testcase component="WebAPI/IVI/Vehicle" execution_type="auto" priority="P1" id="TireTemperature_rightFront_attribute" purpose="Check if TireTemperature has rightFront attribute with proper type, not null.">
-        <description>
-          <test_script_entry test_script_expected_result="0">/opt/webapi-vehicleinfo-xwalk-tests/vehicleinfo/TireTemperature_rightFront_attribute.html</test_script_entry>
-        </description>
-      </testcase>
-      <testcase component="WebAPI/IVI/Vehicle" execution_type="auto" priority="P1" id="TireTemperature_leftRear_attribute" purpose="Check if TireTemperature has leftRear attribute with proper type, not null.">
-        <description>
-          <test_script_entry test_script_expected_result="0">/opt/webapi-vehicleinfo-xwalk-tests/vehicleinfo/TireTemperature_leftRear_attribute.html</test_script_entry>
-        </description>
-      </testcase>
-      <testcase component="WebAPI/IVI/Vehicle" execution_type="auto" priority="P1" id="TireTemperature_rightRear_attribute" purpose="Check if TireTemperature has rightRear attribute with proper type, not null.">
-        <description>
-          <test_script_entry test_script_expected_result="0">/opt/webapi-vehicleinfo-xwalk-tests/vehicleinfo/TireTemperature_rightRear_attribute.html</test_script_entry>
-        </description>
-      </testcase>
-      <testcase component="WebAPI/IVI/Vehicle" execution_type="auto" priority="P1" id="SecurityAlert_securityAlert_attribute" purpose="Check if SecurityAlert has securityAlert attribute with proper type, not null.">
-        <description>
-          <test_script_entry test_script_expected_result="0">/opt/webapi-vehicleinfo-xwalk-tests/vehicleinfo/SecurityAlert_securityAlert_attribute.html</test_script_entry>
-        </description>
-      </testcase>
-      <testcase component="WebAPI/IVI/Vehicle" execution_type="auto" priority="P1" id="ParkingBrake_parkingBrake_attribute" purpose="Check if ParkingBrake has parkingBrake attribute with proper type, not null.">
-        <description>
-          <test_script_entry test_script_expected_result="0">/opt/webapi-vehicleinfo-xwalk-tests/vehicleinfo/ParkingBrake_parkingBrake_attribute.html</test_script_entry>
-        </description>
-      </testcase>
-      <testcase component="WebAPI/IVI/Vehicle" execution_type="auto" priority="P1" id="ParkingLight_parkingLight_attribute" purpose="Check if ParkingLight has parkingLight attribute with proper type, not null.">
-        <description>
-          <test_script_entry test_script_expected_result="0">/opt/webapi-vehicleinfo-xwalk-tests/vehicleinfo/ParkingLight_parkingLight_attribute.html</test_script_entry>
-        </description>
-      </testcase>
-      <testcase component="WebAPI/IVI/Vehicle" execution_type="auto" priority="P1" id="HazardLight_hazardLight_attribute" purpose="Check if HazardLight has hazardLight attribute with proper type, not null.">
-        <description>
-          <test_script_entry test_script_expected_result="0">/opt/webapi-vehicleinfo-xwalk-tests/vehicleinfo/HazardLight_hazardLight_attribute.html</test_script_entry>
-        </description>
-      </testcase>
-      <testcase component="WebAPI/IVI/Vehicle" execution_type="auto" priority="P1" id="AntilockBrakingSystem_antilockBrakingSystem_attribute" purpose="Check if AntilockBrakingSystem has antilockBrakingSystem attribute with proper type, not null.">
-        <description>
-          <test_script_entry test_script_expected_result="0">/opt/webapi-vehicleinfo-xwalk-tests/vehicleinfo/AntilockBrakingSystem_antilockBrakingSystem_attribute.html</test_script_entry>
-        </description>
-      </testcase>
-      <testcase component="WebAPI/IVI/Vehicle" execution_type="auto" priority="P1" id="TractionControlSystem_tractionControlSystem_attribute" purpose="Check if TractionControlSystem has tractionControlSystem attribute with proper type, not null.">
-        <description>
-          <test_script_entry test_script_expected_result="0">/opt/webapi-vehicleinfo-xwalk-tests/vehicleinfo/TractionControlSystem_tractionControlSystem_attribute.html</test_script_entry>
-        </description>
-      </testcase>
-      <testcase component="WebAPI/IVI/Vehicle" execution_type="auto" priority="P1" id="VehicleTopSpeedLimit_vehicleTopSpeedLimit_attribute" purpose="Check if VehicleTopSpeedLimit has vehicleTopSpeedLimit attribute with proper type, not null.">
-        <description>
-          <test_script_entry test_script_expected_result="0">/opt/webapi-vehicleinfo-xwalk-tests/vehicleinfo/VehicleTopSpeedLimit_vehicleTopSpeedLimit_attribute.html</test_script_entry>
-        </description>
-      </testcase>
-      <testcase component="WebAPI/IVI/Vehicle" execution_type="auto" priority="P1" id="OccupantStatus_occupantStatus_attribute" purpose="Check if OccupantStatus has occupantStatus attribute with proper type, not null.">
-        <description>
-          <test_script_entry test_script_expected_result="0">/opt/webapi-vehicleinfo-xwalk-tests/vehicleinfo/OccupantStatus_occupantStatus_attribute.html</test_script_entry>
-        </description>
-      </testcase>
-      <testcase component="WebAPI/IVI/Vehicle" execution_type="auto" priority="P1" id="ObstacleDistance_obstacleDistance_attribute" purpose="Check if ObstacleDistance has obstacleDistance attribute with proper type, not null.">
-        <description>
-          <test_script_entry test_script_expected_result="0">/opt/webapi-vehicleinfo-xwalk-tests/vehicleinfo/ObstacleDistance_obstacleDistance_attribute.html</test_script_entry>
-        </description>
-      </testcase>
-      <testcase component="WebAPI/IVI/Vehicle" execution_type="auto" priority="P1" id="Vehicle_supported" purpose="Check if tizen.vehicle.supported worked well.">
-        <description>
-          <test_script_entry test_script_expected_result="0">/opt/webapi-vehicleinfo-xwalk-tests/vehicleinfo/Vehicle_supported.html</test_script_entry>
-        </description>
-      </testcase>
-      <testcase component="WebAPI/IVI/Vehicle" execution_type="auto" priority="P1" id="Vehicle_set" purpose="Check if tizen.vehicle.set worked well.">
-        <description>
-          <test_script_entry test_script_expected_result="0">/opt/webapi-vehicleinfo-xwalk-tests/vehicleinfo/Vehicle_set.html</test_script_entry>
-        </description>
-      </testcase>
-      <testcase component="WebAPI/IVI/Vehicle" execution_type="auto" priority="P2" id="Vehicle_set_permission_denied" purpose="Check if tizen.vehicle.set worked well when set a protected property.">
-        <description>
-          <test_script_entry test_script_expected_result="0">/opt/webapi-vehicleinfo-xwalk-tests/vehicleinfo/Vehicle_set_permission_denied.html</test_script_entry>
-        </description>
-      </testcase>
-      <testcase component="WebAPI/IVI/Vehicle" execution_type="auto" priority="P1" id="Vehicle_subscribe" purpose="Check if tizen.vehicle.subscribe worked well.">
-        <description>
-          <test_script_entry test_script_expected_result="0">/opt/webapi-vehicleinfo-xwalk-tests/vehicleinfo/Vehicle_subscribe.html</test_script_entry>
-        </description>
-      </testcase>
-      <testcase component="WebAPI/IVI/Vehicle" execution_type="manual" priority="P1" id="Vehicle_getHistory" purpose="Check if tizen.vehicle.getHistory worked well.">
-        <description>
-          <pre_condition>Make sure automotive-message-broker-plugins-database installed: zypper in automotive-message-broker-plugins-database</pre_condition>
-          <post_condition>Recover the config file by command: mv /etc/ambd/config-bak /etc/ambd/config and restart ambd process(i.e. kill -9 159;ambd -D).</post_condition>
-          <steps>
-            <step order="1">
-              <step_desc>Make a copy of origin ambd config file:cp /etc/ambd/config /etc/ambd/config-bak</step_desc>
-              <expected>Execute success.</expected>
-            </step>
-            <step order="2">
-              <step_desc>Make AMB database sink to be installed an enabled for testing: cp /etc/ambd/examples/databaseconfig /etc/ambd/config</step_desc>
-              <expected>Execute success.</expected>
-            </step>
-            <step order="3">
-              <step_desc>Restart the ambd process(i.e. kill -9 'pid of ambd'; ambd -D )</step_desc>
-              <expected>Execute success.</expected>
-            </step>
-            <step order="4">
-              <step_desc>Click Run button</step_desc>
-              <expected>Pass.</expected>
-            </step>
-          </steps>
-          <test_script_entry test_script_expected_result="0">/opt/webapi-vehicleinfo-xwalk-tests/vehicleinfo/Vehicle_getHistory-manual.html</test_script_entry>
-        </description>
-      </testcase>
-      <testcase component="WebAPI/IVI/Vehicle" execution_type="auto" priority="P1" id="VehiclePropertyType_time_attribute" purpose="Check if VehiclePropertyType has time attribute with proper type, not null.">
-        <description>
-          <test_script_entry test_script_expected_result="0">/opt/webapi-vehicleinfo-xwalk-tests/vehicleinfo/VehiclePropertyType_time_attribute.html</test_script_entry>
-        </description>
-      </testcase>
-      <testcase component="WebAPI/IVI/Vehicle" execution_type="auto" priority="P1" id="VehiclePropertyType_zone_attribute" purpose="Check if VehiclePropertyType has zone attribute with proper type, not null.">
-        <description>
-          <test_script_entry test_script_expected_result="0">/opt/webapi-vehicleinfo-xwalk-tests/vehicleinfo/VehiclePropertyType_zone_attribute.html</test_script_entry>
-        </description>
-      </testcase>
-      <testcase component="WebAPI/IVI/Vehicle" execution_type="auto" priority="P1" id="VehiclePropertyType_source_attribute" purpose="Check if VehiclePropertyType has source attribute with proper type, not null.">
-        <description>
-          <test_script_entry test_script_expected_result="0">/opt/webapi-vehicleinfo-xwalk-tests/vehicleinfo/VehiclePropertyType_source_attribute.html</test_script_entry>
-        </description>
-      </testcase>
-      <testcase component="WebAPI/IVI/Vehicle" execution_type="auto" priority="P1" id="Vehicle_CONST_attribute" purpose="Check if Vehicle has CONST attribute with proper type, not null.">
-        <description>
-          <test_script_entry test_script_expected_result="0">/opt/webapi-vehicleinfo-xwalk-tests/vehicleinfo/Vehicle_CONST_attribute.html</test_script_entry>
-        </description>
-      </testcase>
-      <testcase component="WebAPI/IVI/Vehicle" execution_type="auto" priority="P2" id="Vehicle_get_zone" purpose="Check if Vehicle.get() worked well when using the zone attribute.">
-        <description>
-          <test_script_entry test_script_expected_result="0">/opt/webapi-vehicleinfo-xwalk-tests/vehicleinfo/Vehicle_get_zone.html</test_script_entry>
-        </description>
-      </testcase>
-      <testcase component="WebAPI/IVI/Vehicle" execution_type="auto" priority="P1" id="ClutchStatus_clutchStatus_attribute" purpose="Check if ClutchStatus has clutchStatus attribute with proper type, not null.">
-        <description>
-          <test_script_entry test_script_expected_result="0">/opt/webapi-vehicleinfo-xwalk-tests/vehicleinfo/ClutchStatus_clutchStatus_attribute.html</test_script_entry>
-        </description>
-      </testcase>
-      <testcase component="WebAPI/IVI/Vehicle" execution_type="auto" priority="P1" id="AirIntakeTemperature_airIntakeTemperature_attribute" purpose="Check if AirIntakeTemperature has airIntakeTemperature attribute with proper type, not null.">
-        <description>
-          <test_script_entry test_script_expected_result="0">/opt/webapi-vehicleinfo-xwalk-tests/vehicleinfo/AirIntakeTemperature_airIntakeTemperature_attribute.html</test_script_entry>
-        </description>
-      </testcase>
-      <testcase component="WebAPI/IVI/Vehicle" execution_type="auto" priority="P1" id="EngineLoad_engineLoad_attribute" purpose="Check if EngineLoad has engineLoad attribute with proper type, not null.">
-        <description>
-          <test_script_entry test_script_expected_result="0">/opt/webapi-vehicleinfo-xwalk-tests/vehicleinfo/EngineLoad_engineLoad_attribute.html</test_script_entry>
-        </description>
-      </testcase>
-      <testcase component="WebAPI/IVI/Vehicle" execution_type="auto" priority="P1" id="InteriorLightPassenger_interiorLightPassenger_attribute" purpose="Check if InteriorLightPassenger has interiorLightPassenger attribute with proper type, not null.">
-        <description>
-          <test_script_entry test_script_expected_result="0">/opt/webapi-vehicleinfo-xwalk-tests/vehicleinfo/InteriorLightPassenger_interiorLightPassenger_attribute.html</test_script_entry>
-        </description>
-      </testcase>
-      <testcase component="WebAPI/IVI/Vehicle" execution_type="auto" priority="P1" id="InteriorLightCenter_interiorLightCenter_attribute" purpose="Check if InteriorLightCenter has interiorLightCenter attribute with proper type, not null.">
-        <description>
-          <test_script_entry test_script_expected_result="0">/opt/webapi-vehicleinfo-xwalk-tests/vehicleinfo/InteriorLightCenter_interiorLightCenter_attribute.html</test_script_entry>
-        </description>
-      </testcase>
-      <testcase component="WebAPI/IVI/Vehicle" execution_type="auto" priority="P1" id="ThrottlePosition_throttlePosition_attribute" purpose="Check if ThrottlePosition has throttlePosition attribute with proper type, not null.">
-        <description>
-          <test_script_entry test_script_expected_result="0">/opt/webapi-vehicleinfo-xwalk-tests/vehicleinfo/ThrottlePosition_throttlePosition_attribute.html</test_script_entry>
-        </description>
-      </testcase>
-      <testcase component="WebAPI/IVI/Vehicle" execution_type="auto" priority="P1" id="WheelBrakePressure_wheelBrakePressure_attribute" purpose="Check if WheelBrakePressure has wheelBrakePressure attribute with proper type, not null.">
-        <description>
-          <test_script_entry test_script_expected_result="0">/opt/webapi-vehicleinfo-xwalk-tests/vehicleinfo/WheelBrakePressure_wheelBrakePressure_attribute.html</test_script_entry>
-        </description>
-      </testcase>
-      <testcase component="WebAPI/IVI/Vehicle" execution_type="auto" priority="P1" id="SteeringWheelAngle_steeringWheelAngle_attribute" purpose="Check if SteeringWheelAngle has steeringWheelAngle attribute with proper type, not null.">
-        <description>
-          <test_script_entry test_script_expected_result="0">/opt/webapi-vehicleinfo-xwalk-tests/vehicleinfo/SteeringWheelAngle_steeringWheelAngle_attribute.html</test_script_entry>
-        </description>
-      </testcase>
-      <testcase component="WebAPI/IVI/Vehicle" execution_type="auto" priority="P1" id="MassAirFlow_massAirFlow_attribute" purpose="Check if MassAirFlow has massAirFlow attribute with proper type, not null.">
-        <description>
-          <test_script_entry test_script_expected_result="0">/opt/webapi-vehicleinfo-xwalk-tests/vehicleinfo/MassAirFlow_massAirFlow_attribute.html</test_script_entry>
-        </description>
-      </testcase>
-      <testcase component="WebAPI/IVI/Vehicle" execution_type="auto" priority="P1" id="NightMode_nightMode_attribute" purpose="Check if NightMode has nightMode attribute with proper type, not null.">
-        <description>
-          <test_script_entry test_script_expected_result="0">/opt/webapi-vehicleinfo-xwalk-tests/vehicleinfo/NightMode_nightMode_attribute.html</test_script_entry>
-        </description>
-      </testcase>
-      <testcase component="WebAPI/IVI/Vehicle" execution_type="auto" priority="P1" id="TurnSignal_turnSignal_attribute" purpose="Check if TurnSignal has turnSignal attribute with proper type, not null.">
-        <description>
-          <test_script_entry test_script_expected_result="0">/opt/webapi-vehicleinfo-xwalk-tests/vehicleinfo/TurnSignal_turnSignal_attribute.html</test_script_entry>
-        </description>
-      </testcase>
-      <testcase component="WebAPI/IVI/Vehicle" execution_type="auto" priority="P1" id="EngineCoolantTemperature_engineCoolantTemperature_attribute" purpose="Check if EngineCoolantTemperature has engineCoolantTemperature attribute with proper type, not null.">
-        <description>
-          <test_script_entry test_script_expected_result="0">/opt/webapi-vehicleinfo-xwalk-tests/vehicleinfo/EngineCoolantTemperature_engineCoolantTemperature_attribute.html</test_script_entry>
-        </description>
-      </testcase>
-      <testcase component="WebAPI/IVI/Vehicle" execution_type="auto" priority="P1" id="DrivingMode_drivingMode_attribute" purpose="Check if DrivingMode has drivingMode attribute with proper type, not null.">
-        <description>
-          <test_script_entry test_script_expected_result="0">/opt/webapi-vehicleinfo-xwalk-tests/vehicleinfo/DrivingMode_drivingMode_attribute.html</test_script_entry>
-        </description>
-      </testcase>
-      <testcase component="WebAPI/IVI/Vehicle" execution_type="auto" priority="P1" id="InteriorLightDriver_interiorLightDriver_attribute" purpose="Check if InteriorLightDriver has interiorLightDriver attribute with proper type, not null.">
-        <description>
-          <test_script_entry test_script_expected_result="0">/opt/webapi-vehicleinfo-xwalk-tests/vehicleinfo/InteriorLightDriver_interiorLightDriver_attribute.html</test_script_entry>
-        </description>
-      </testcase>
-      <testcase component="WebAPI/IVI/Vehicle" execution_type="auto" priority="P1" id="Vehicle_listZones_exist" purpose="Check if listZones method is exist.">
-        <description>
-          <test_script_entry test_script_expected_result="0">/opt/webapi-vehicleinfo-xwalk-tests/vehicleinfo/Vehicle_listZones_exist.html</test_script_entry>
-        </description>
-      </testcase>
-      <testcase component="WebAPI/IVI/Vehicle" execution_type="auto" priority="P1" id="Vehicle_listZones" purpose="Check if tizen.vehicle.listZones worked well.">
-        <description>
-          <test_script_entry test_script_expected_result="0">/opt/webapi-vehicleinfo-xwalk-tests/vehicleinfo/Vehicle_listZones.html</test_script_entry>
-        </description>
-      </testcase>
-      <testcase component="WebAPI/IVI/Vehicle" execution_type="auto" priority="P1" id="Vehicle_getAsync_exist" purpose="Check if getAsync method is exist. ">
-        <description>
-          <test_script_entry test_script_expected_result="0">/opt/webapi-vehicleinfo-xwalk-tests/vehicleinfo/Vehicle_getAsync_exist.html</test_script_entry>
-        </description>
+        <specs>
+          <spec>
+            <spec_assertion element_type="method" element_name="availabilityChangedListener" interface="VehicleInterface" specification="Vehicle Information Access API" section="Automotive" category="WebAPI Automotive Specifications"/>
+            <spec_url>http://rawgit.com/w3c/automotive-bg/master/vehicle_spec.html</spec_url>
+            <spec_statement/>
+          </spec>
+        </specs>
+      </testcase>
+      <testcase purpose="Check if VehicleInterface.removeAvailabilityChangedListener exists" type="compliance" status="approved" component="WebAPI/Automotive/Vehicle Information Access API" execution_type="auto" priority="P1" id="VehicleInterface_removeAvailabilityChangedListener_exists">
+        <description>
+          <test_script_entry>/opt/webapi-vehicleinfo-xwalk-tests/vehicleinfo/VehicleInterface_attributes_tests.html?total_num=10&amp;locator_key=id&amp;value=6</test_script_entry>
+        </description>
+        <specs>
+          <spec>
+            <spec_assertion element_type="method" element_name="removeAvailabilityChangedListener" interface="VehicleInterface" specification="Vehicle Information Access API" section="Automotive" category="WebAPI Automotive Specifications"/>
+            <spec_url>http://rawgit.com/w3c/automotive-bg/master/vehicle_spec.html</spec_url>
+            <spec_statement/>
+          </spec>
+        </specs>
+      </testcase>
+      <testcase purpose="Check if VehicleInterface.getHistory exists" type="compliance" status="approved" component="WebAPI/Automotive/Vehicle Information Access API" execution_type="auto" priority="P1" id="VehicleInterface_getHistory_exists">
+        <description>
+          <test_script_entry>/opt/webapi-vehicleinfo-xwalk-tests/vehicleinfo/VehicleInterface_attributes_tests.html?total_num=10&amp;locator_key=id&amp;value=7</test_script_entry>
+        </description>
+        <specs>
+          <spec>
+            <spec_assertion element_type="method" element_name="getHistory" interface="VehicleInterface" specification="Vehicle Information Access API" section="Automotive" category="WebAPI Automotive Specifications"/>
+            <spec_url>http://rawgit.com/w3c/automotive-bg/master/vehicle_spec.html</spec_url>
+            <spec_statement/>
+          </spec>
+        </specs>
+      </testcase>
+      <testcase purpose="Check if VehicleInterface.isLogged exists" type="compliance" status="approved" component="WebAPI/Automotive/Vehicle Information Access API" execution_type="auto" priority="P1" id="VehicleInterface_isLogged_exists">
+        <description>
+          <test_script_entry>/opt/webapi-vehicleinfo-xwalk-tests/vehicleinfo/VehicleInterface_attributes_tests.html?total_num=10&amp;locator_key=id&amp;value=8</test_script_entry>
+        </description>
+        <specs>
+          <spec>
+            <spec_assertion element_type="attribute" element_name="isLogged" interface="VehicleInterface" specification="Vehicle Information Access API" section="Automotive" category="WebAPI Automotive Specifications"/>
+            <spec_url>http://rawgit.com/w3c/automotive-bg/master/VehicleInterface_spec.html</spec_url>
+            <spec_statement/>
+          </spec>
+        </specs>
+      </testcase>
+      <testcase purpose="Check if VehicleInterface.from exists" type="compliance" status="approved" component="WebAPI/Automotive/Vehicle Information Access API" execution_type="auto" priority="P1" id="VehicleInterface_from_exists">
+        <description>
+          <test_script_entry>/opt/webapi-vehicleinfo-xwalk-tests/vehicleinfo/VehicleInterface_attributes_tests.html?total_num=10&amp;locator_key=id&amp;value=9</test_script_entry>
+        </description>
+        <specs>
+          <spec>
+            <spec_assertion element_type="attribute" element_name="from" interface="VehicleInterface" specification="Vehicle Information Access API" section="Automotive" category="WebAPI Automotive Specifications"/>
+            <spec_url>http://rawgit.com/w3c/automotive-bg/master/vehicle_spec.html</spec_url>
+            <spec_statement/>
+          </spec>
+        </specs>
+      </testcase>
+      <testcase purpose="Check if VehicleInterface.to exists" type="compliance" status="approved" component="WebAPI/Automotive/Vehicle Information Access API" execution_type="auto" priority="P1" id="VehicleInterface_to_exists">
+        <description>
+          <test_script_entry>/opt/webapi-vehicleinfo-xwalk-tests/vehicleinfo/VehicleInterface_attributes_tests.html?total_num=10&amp;locator_key=id&amp;value=10</test_script_entry>
+        </description>
+        <specs>
+          <spec>
+            <spec_assertion element_type="attribute" element_name="to" interface="VehicleInterface" specification="Vehicle Information Access API" section="Automotive" category="WebAPI Automotive Specifications"/>
+            <spec_url>http://rawgit.com/w3c/automotive-bg/master/vehicle_spec.html</spec_url>
+            <spec_statement/>
+          </spec>
+        </specs>
+      </testcase>
+      <testcase purpose="Check if VehicleSignalInterface.set() exists" type="compliance" status="approved" component="WebAPI/Automotive/Vehicle Information Access API" execution_type="auto" priority="P1" id="VehicleSignalInterface_set_exists">
+        <description>
+          <test_script_entry>/opt/webapi-vehicleinfo-xwalk-tests/vehicleinfo/VehicleSignalInterface_attributes_tests.html?total_num=5&amp;locator_key=id&amp;value=1</test_script_entry>
+        </description>
+        <specs>
+          <spec>
+            <spec_assertion element_type="method" element_name="set" interface="VehicleSignalInterface" specification="Vehicle Information Access API" section="Automotive" category="WebAPI Automotive Specifications"/>
+            <spec_url>http://rawgit.com/w3c/automotive-bg/master/vehicle_spec.html</spec_url>
+            <spec_statement/>
+          </spec>
+        </specs>
+      </testcase>
+      <testcase purpose="Check if VehicleSignalInterface.subscribe() exists" type="compliance" status="approved" component="WebAPI/Automotive/Vehicle Information Access API" execution_type="auto" priority="P1" id="VehicleSignalInterface_subscribe_exists">
+        <description>
+          <test_script_entry>/opt/webapi-vehicleinfo-xwalk-tests/vehicleinfo/VehicleSignalInterface_attributes_tests.html?total_num=5&amp;locator_key=id&amp;value=2</test_script_entry>
+        </description>
+        <specs>
+          <spec>
+            <spec_assertion element_type="method" element_name="subscribe" interface="VehicleSignalInterface" specification="Vehicle Information Access API" section="Automotive" category="WebAPI Automotive Specifications"/>
+            <spec_url>http://rawgit.com/w3c/automotive-bg/master/vehicle_spec.html</spec_url>
+            <spec_statement/>
+          </spec>
+        </specs>
+      </testcase>
+      <testcase purpose="Check if VehicleSignalInterface.unsubscribe() exists" type="compliance" status="approved" component="WebAPI/Automotive/Vehicle Information Access API" execution_type="auto" priority="P1" id="VehicleSignalInterface_unsubscribe_exists">
+        <description>
+          <test_script_entry>/opt/webapi-vehicleinfo-xwalk-tests/vehicleinfo/VehicleSignalInterface_attributes_tests.html?total_num=5&amp;locator_key=id&amp;value=3</test_script_entry>
+        </description>
+        <specs>
+          <spec>
+            <spec_assertion element_type="method" element_name="unsubscribe" interface="VehicleSignalInterface" specification="Vehicle Information Access API" section="Automotive" category="WebAPI Automotive Specifications"/>
+            <spec_url>http://rawgit.com/w3c/automotive-bg/master/vehicle_spec.html</spec_url>
+            <spec_statement/>
+          </spec>
+        </specs>
+      </testcase>
+      <testcase purpose="Check if VehicleSignalInterface.availableForSubscription() exists" type="compliance" status="approved" component="WebAPI/Automotive/Vehicle Information Access API" execution_type="auto" priority="P1" id="VehicleSignalInterface_availableForSubscription_exists">
+        <description>
+          <test_script_entry>/opt/webapi-vehicleinfo-xwalk-tests/vehicleinfo/VehicleSignalInterface_attributes_tests.html?total_num=5&amp;locator_key=id&amp;value=4</test_script_entry>
+        </description>
+        <specs>
+          <spec>
+            <spec_assertion element_type="method" element_name="availableForSubscription" interface="VehicleSignalInterface" specification="Vehicle Information Access API" section="Automotive" category="WebAPI Automotive Specifications"/>
+            <spec_url>http://rawgit.com/w3c/automotive-bg/master/vehicle_spec.html</spec_url>
+            <spec_statement/>
+          </spec>
+        </specs>
+      </testcase>
+      <testcase purpose="Check if VehicleSignalInterface.availableForSetting() exists" type="compliance" status="approved" component="WebAPI/Automotive/Vehicle Information Access API" execution_type="auto" priority="P1" id="VehicleSignalInterface_availableForSetting_exists">
+        <description>
+          <test_script_entry>/opt/webapi-vehicleinfo-xwalk-tests/vehicleinfo/VehicleSignalInterface_attributes_tests.html?total_num=5&amp;locator_key=id&amp;value=5</test_script_entry>
+        </description>
+        <specs>
+          <spec>
+            <spec_assertion element_type="method" element_name="availableForSetting" interface="VehicleSignalInterface" specification="Vehicle Information Access API" section="Automotive" category="WebAPI Automotive Specifications"/>
+            <spec_url>http://rawgit.com/w3c/automotive-bg/master/vehicle_spec.html</spec_url>
+            <spec_statement/>
+          </spec>
+        </specs>
+      </testcase>
+
+      <testcase purpose="Check if Zone can be constructor" type="compliance" status="approved" component="WebAPI/Automotive/Vehicle Information Access API" execution_type="auto" priority="P1" id="Zoen_constructor">
+        <description>
+          <test_script_entry>/opt/webapi-vehicleinfo-xwalk-tests/vehicleinfo/Zoen_attributes_tests.html?total_num=24&amp;locator_key=id&amp;value=1</test_script_entry>
+        </description>
+        <specs>
+          <spec>
+            <spec_assertion element_type="attribute" element_name="zone" interface="Zone" specification="Vehicle Information Access API" section="Automotive" category="WebAPI Automotive Specifications"/>
+            <spec_url>http://rawgit.com/w3c/automotive-bg/master/vehicle_spec.html</spec_url>
+            <spec_statement/>
+          </spec>
+        </specs>
+      </testcase>
+      <testcase purpose="Check if Zone.Front exists" type="compliance" status="approved" component="WebAPI/Automotive/Vehicle Information Access API" execution_type="auto" priority="P1" id="Zoen_Front_exists">
+        <description>
+          <test_script_entry>/opt/webapi-vehicleinfo-xwalk-tests/vehicleinfo/Zoen_attributes_tests.html?total_num=24&amp;locator_key=id&amp;value=2</test_script_entry>
+        </description>
+        <specs>
+          <spec>
+            <spec_assertion element_type="attribute" element_name="Front" interface="Zone" specification="Vehicle Information Access API" section="Automotive" category="WebAPI Automotive Specifications"/>
+            <spec_url>http://rawgit.com/w3c/automotive-bg/master/vehicle_spec.html</spec_url>
+            <spec_statement/>
+          </spec>
+        </specs>
+      </testcase>
+      <testcase purpose="Check if Zone.Front const DOMString is Front" type="compliance" status="approved" component="WebAPI/Automotive/Vehicle Information Access API" execution_type="auto" priority="P1" id="Zoen_Front_const">
+        <description>
+          <test_script_entry>/opt/webapi-vehicleinfo-xwalk-tests/vehicleinfo/Zoen_attributes_tests.html?total_num=24&amp;locator_key=id&amp;value=3</test_script_entry>
+        </description>
+        <specs>
+          <spec>
+            <spec_assertion element_type="attribute" element_name="Front" interface="Zone" specification="Vehicle Information Access API" section="Automotive" category="WebAPI Automotive Specifications"/>
+            <spec_url>http://rawgit.com/w3c/automotive-bg/master/vehicle_spec.html</spec_url>
+            <spec_statement/>
+          </spec>
+        </specs>
+      </testcase>
+      <testcase purpose="Check if Zone.Middle exists" type="compliance" status="approved" component="WebAPI/Automotive/Vehicle Information Access API" execution_type="auto" priority="P1" id="Zoen_Middle_exists">
+        <description>
+          <test_script_entry>/opt/webapi-vehicleinfo-xwalk-tests/vehicleinfo/Zoen_attributes_tests.html?total_num=24&amp;locator_key=id&amp;value=4</test_script_entry>
+        </description>
+        <specs>
+          <spec>
+            <spec_assertion element_type="attribute" element_name="Middle" interface="Zone" specification="Vehicle Information Access API" section="Automotive" category="WebAPI Automotive Specifications"/>
+            <spec_url>http://rawgit.com/w3c/automotive-bg/master/vehicle_spec.html</spec_url>
+            <spec_statement/>
+          </spec>
+        </specs>
+      </testcase>
+      <testcase purpose="Check if Zone.Middle const DOMString is Middle" type="compliance" status="approved" component="WebAPI/Automotive/Vehicle Information Access API" execution_type="auto" priority="P1" id="Zoen_Middle_const">
+        <description>
+          <test_script_entry>/opt/webapi-vehicleinfo-xwalk-tests/vehicleinfo/Zoen_attributes_tests.html?total_num=24&amp;locator_key=id&amp;value=5</test_script_entry>
+        </description>
+        <specs>
+          <spec>
+            <spec_assertion element_type="attribute" element_name="Middle" interface="Zone" specification="Vehicle Information Access API" section="Automotive" category="WebAPI Automotive Specifications"/>
+            <spec_url>http://rawgit.com/w3c/automotive-bg/master/vehicle_spec.html</spec_url>
+            <spec_statement/>
+          </spec>
+        </specs>
+      </testcase>
+      <testcase purpose="Check if Zone.Right exists" type="compliance" status="approved" component="WebAPI/Automotive/Vehicle Information Access API" execution_type="auto" priority="P1" id="Zoen_Right_exists">
+        <description>
+          <test_script_entry>/opt/webapi-vehicleinfo-xwalk-tests/vehicleinfo/Zoen_attributes_tests.html?total_num=24&amp;locator_key=id&amp;value=6</test_script_entry>
+        </description>
+        <specs>
+          <spec>
+            <spec_assertion element_type="attribute" element_name="Right" interface="Zone" specification="Vehicle Information Access API" section="Automotive" category="WebAPI Automotive Specifications"/>
+            <spec_url>http://rawgit.com/w3c/automotive-bg/master/vehicle_spec.html</spec_url>
+            <spec_statement/>
+          </spec>
+        </specs>
+      </testcase>
+      <testcase purpose="Check if Zone.Right const DOMString is Right" type="compliance" status="approved" component="WebAPI/Automotive/Vehicle Information Access API" execution_type="auto" priority="P1" id="Zoen_Right_const">
+        <description>
+          <test_script_entry>/opt/webapi-vehicleinfo-xwalk-tests/vehicleinfo/Zoen_attributes_tests.html?total_num=24&amp;locator_key=id&amp;value=7</test_script_entry>
+        </description>
+        <specs>
+          <spec>
+            <spec_assertion element_type="attribute" element_name="Right" interface="Zone" specification="Vehicle Information Access API" section="Automotive" category="WebAPI Automotive Specifications"/>
+            <spec_url>http://rawgit.com/w3c/automotive-bg/master/vehicle_spec.html</spec_url>
+            <spec_statement/>
+          </spec>
+        </specs>
+      </testcase>
+      <testcase purpose="Check if Zone.Left exists" type="compliance" status="approved" component="WebAPI/Automotive/Vehicle Information Access API" execution_type="auto" priority="P1" id="Zoen_Left_exists">
+        <description>
+          <test_script_entry>/opt/webapi-vehicleinfo-xwalk-tests/vehicleinfo/Zoen_attributes_tests.html?total_num=24&amp;locator_key=id&amp;value=8</test_script_entry>
+        </description>
+        <specs>
+          <spec>
+            <spec_assertion element_type="attribute" element_name="Left" interface="Zone" specification="Vehicle Information Access API" section="Automotive" category="WebAPI Automotive Specifications"/>
+            <spec_url>http://rawgit.com/w3c/automotive-bg/master/vehicle_spec.html</spec_url>
+            <spec_statement/>
+          </spec>
+        </specs>
+      </testcase>
+      <testcase purpose="Check if Zone.Left const DOMString is Left" type="compliance" status="approved" component="WebAPI/Automotive/Vehicle Information Access API" execution_type="auto" priority="P1" id="Zoen_Left_const">
+        <description>
+          <test_script_entry>/opt/webapi-vehicleinfo-xwalk-tests/vehicleinfo/Zoen_attributes_tests.html?total_num=24&amp;locator_key=id&amp;value=9</test_script_entry>
+        </description>
+        <specs>
+          <spec>
+            <spec_assertion element_type="attribute" element_name="Left" interface="Zone" specification="Vehicle Information Access API" section="Automotive" category="WebAPI Automotive Specifications"/>
+            <spec_url>http://rawgit.com/w3c/automotive-bg/master/vehicle_spec.html</spec_url>
+            <spec_statement/>
+          </spec>
+        </specs>
+      </testcase>
+      <testcase purpose="Check if Zone.Rear exists" type="compliance" status="approved" component="WebAPI/Automotive/Vehicle Information Access API" execution_type="auto" priority="P1" id="Zoen_Rear_exists">
+        <description>
+          <test_script_entry>/opt/webapi-vehicleinfo-xwalk-tests/vehicleinfo/Zoen_attributes_tests.html?total_num=24&amp;locator_key=id&amp;value=10</test_script_entry>
+        </description>
+        <specs>
+          <spec>
+            <spec_assertion element_type="attribute" element_name="Rear" interface="Zone" specification="Vehicle Information Access API" section="Automotive" category="WebAPI Automotive Specifications"/>
+            <spec_url>http://rawgit.com/w3c/automotive-bg/master/vehicle_spec.html</spec_url>
+            <spec_statement/>
+          </spec>
+        </specs>
+      </testcase>
+      <testcase purpose="Check if Zone.Rear const DOMString is Rear" type="compliance" status="approved" component="WebAPI/Automotive/Vehicle Information Access API" execution_type="auto" priority="P1" id="Zoen_Rear_const">
+        <description>
+          <test_script_entry>/opt/webapi-vehicleinfo-xwalk-tests/vehicleinfo/Zoen_attributes_tests.html?total_num=24&amp;locator_key=id&amp;value=11</test_script_entry>
+        </description>
+        <specs>
+          <spec>
+            <spec_assertion element_type="attribute" element_name="Rear" interface="Zone" specification="Vehicle Information Access API" section="Automotive" category="WebAPI Automotive Specifications"/>
+            <spec_url>http://rawgit.com/w3c/automotive-bg/master/vehicle_spec.html</spec_url>
+            <spec_statement/>
+          </spec>
+        </specs>
+      </testcase>
+      <testcase purpose="Check if Zone.Center exists" type="compliance" status="approved" component="WebAPI/Automotive/Vehicle Information Access API" execution_type="auto" priority="P1" id="Zoen_Center_exists">
+        <description>
+          <test_script_entry>/opt/webapi-vehicleinfo-xwalk-tests/vehicleinfo/Zoen_attributes_tests.html?total_num=24&amp;locator_key=id&amp;value=12</test_script_entry>
+        </description>
+        <specs>
+          <spec>
+            <spec_assertion element_type="attribute" element_name="Center" interface="Zone" specification="Vehicle Information Access API" section="Automotive" category="WebAPI Automotive Specifications"/>
+            <spec_url>http://rawgit.com/w3c/automotive-bg/master/vehicle_spec.html</spec_url>
+            <spec_statement/>
+          </spec>
+        </specs>
+      </testcase>
+      <testcase purpose="Check if Zone.Center const DOMString is Center" type="compliance" status="approved" component="WebAPI/Automotive/Vehicle Information Access API" execution_type="auto" priority="P1" id="Zoen_Center_const">
+        <description>
+          <test_script_entry>/opt/webapi-vehicleinfo-xwalk-tests/vehicleinfo/Zoen_attributes_tests.html?total_num=24&amp;locator_key=id&amp;value=13</test_script_entry>
+        </description>
+        <specs>
+          <spec>
+            <spec_assertion element_type="attribute" element_name="Center" interface="Zone" specification="Vehicle Information Access API" section="Automotive" category="WebAPI Automotive Specifications"/>
+            <spec_url>http://rawgit.com/w3c/automotive-bg/master/vehicle_spec.html</spec_url>
+            <spec_statement/>
+          </spec>
+        </specs>
+      </testcase>
+      <testcase purpose="Check if Zone.Hood exists" type="compliance" status="approved" component="WebAPI/Automotive/Vehicle Information Access API" execution_type="auto" priority="P1" id="Zoen_Hood_exists">
+        <description>
+          <test_script_entry>/opt/webapi-vehicleinfo-xwalk-tests/vehicleinfo/Zoen_attributes_tests.html?total_num=24&amp;locator_key=id&amp;value=14</test_script_entry>
+        </description>
+        <specs>
+          <spec>
+            <spec_assertion element_type="attribute" element_name="Hood" interface="Zone" specification="Vehicle Information Access API" section="Automotive" category="WebAPI Automotive Specifications"/>
+            <spec_url>http://rawgit.com/w3c/automotive-bg/master/vehicle_spec.html</spec_url>
+            <spec_statement/>
+          </spec>
+        </specs>
+      </testcase>
+      <testcase purpose="Check if Zone.Hood const DOMString is Hood" type="compliance" status="approved" component="WebAPI/Automotive/Vehicle Information Access API" execution_type="auto" priority="P1" id="Zoen_Hood_const">
+        <description>
+          <test_script_entry>/opt/webapi-vehicleinfo-xwalk-tests/vehicleinfo/Zoen_attributes_tests.html?total_num=24&amp;locator_key=id&amp;value=15</test_script_entry>
+        </description>
+        <specs>
+          <spec>
+            <spec_assertion element_type="attribute" element_name="Hood" interface="Zone" specification="Vehicle Information Access API" section="Automotive" category="WebAPI Automotive Specifications"/>
+            <spec_url>http://rawgit.com/w3c/automotive-bg/master/vehicle_spec.html</spec_url>
+            <spec_statement/>
+          </spec>
+        </specs>
+      </testcase>
+      <testcase purpose="Check if Zone.Trunk exists" type="compliance" status="approved" component="WebAPI/Automotive/Vehicle Information Access API" execution_type="auto" priority="P1" id="Zoen_Trunk_exists">
+        <description>
+          <test_script_entry>/opt/webapi-vehicleinfo-xwalk-tests/vehicleinfo/Zoen_attributes_tests.html?total_num=24&amp;locator_key=id&amp;value=16</test_script_entry>
+        </description>
+        <specs>
+          <spec>
+            <spec_assertion element_type="attribute" element_name="Trunk" interface="Zone" specification="Vehicle Information Access API" section="Automotive" category="WebAPI Automotive Specifications"/>
+            <spec_url>http://rawgit.com/w3c/automotive-bg/master/vehicle_spec.html</spec_url>
+            <spec_statement/>
+          </spec>
+        </specs>
+      </testcase>
+      <testcase purpose="Check if Zone.Trunk const DOMString is Trunk" type="compliance" status="approved" component="WebAPI/Automotive/Vehicle Information Access API" execution_type="auto" priority="P1" id="Zoen_Trunk_const">
+        <description>
+          <test_script_entry>/opt/webapi-vehicleinfo-xwalk-tests/vehicleinfo/Zoen_attributes_tests.html?total_num=24&amp;locator_key=id&amp;value=17</test_script_entry>
+        </description>
+        <specs>
+          <spec>
+            <spec_assertion element_type="attribute" element_name="Trunk" interface="Zone" specification="Vehicle Information Access API" section="Automotive" category="WebAPI Automotive Specifications"/>
+            <spec_url>http://rawgit.com/w3c/automotive-bg/master/vehicle_spec.html</spec_url>
+            <spec_statement/>
+          </spec>
+        </specs>
+      </testcase>
+      <testcase purpose="Check if Zone.Fuel exists" type="compliance" status="approved" component="WebAPI/Automotive/Vehicle Information Access API" execution_type="auto" priority="P1" id="Zoen_Fuel_exists">
+        <description>
+          <test_script_entry>/opt/webapi-vehicleinfo-xwalk-tests/vehicleinfo/Zoen_attributes_tests.html?total_num=24&amp;locator_key=id&amp;value=18</test_script_entry>
+        </description>
+        <specs>
+          <spec>
+            <spec_assertion element_type="attribute" element_name="Fuel" interface="Zone" specification="Vehicle Information Access API" section="Automotive" category="WebAPI Automotive Specifications"/>
+            <spec_url>http://rawgit.com/w3c/automotive-bg/master/vehicle_spec.html</spec_url>
+            <spec_statement/>
+          </spec>
+        </specs>
+      </testcase>
+      <testcase purpose="Check if Zone.Fuel const DOMString is Fuel" type="compliance" status="approved" component="WebAPI/Automotive/Vehicle Information Access API" execution_type="auto" priority="P1" id="Zoen_Fuel_const">
+        <description>
+          <test_script_entry>/opt/webapi-vehicleinfo-xwalk-tests/vehicleinfo/Zoen_attributes_tests.html?total_num=24&amp;locator_key=id&amp;value=19</test_script_entry>
+        </description>
+        <specs>
+          <spec>
+            <spec_assertion element_type="attribute" element_name="Fuel" interface="Zone" specification="Vehicle Information Access API" section="Automotive" category="WebAPI Automotive Specifications"/>
+            <spec_url>http://rawgit.com/w3c/automotive-bg/master/vehicle_spec.html</spec_url>
+            <spec_statement/>
+          </spec>
+        </specs>
+      </testcase>
+      <testcase purpose="Check if Zone.value exists" type="compliance" status="approved" component="WebAPI/Automotive/Vehicle Information Access API" execution_type="auto" priority="P1" id="Zoen_value_exists">
+        <description>
+          <test_script_entry>/opt/webapi-vehicleinfo-xwalk-tests/vehicleinfo/Zoen_attributes_tests.html?total_num=24&amp;locator_key=id&amp;value=20</test_script_entry>
+        </description>
+        <specs>
+          <spec>
+            <spec_assertion element_type="attribute" element_name="value" interface="Zone" specification="Vehicle Information Access API" section="Automotive" category="WebAPI Automotive Specifications"/>
+            <spec_url>http://rawgit.com/w3c/automotive-bg/master/vehicle_spec.html</spec_url>
+            <spec_statement/>
+          </spec>
+        </specs>
+      </testcase>
+      <testcase purpose="Check if Zone.driver exists" type="compliance" status="approved" component="WebAPI/Automotive/Vehicle Information Access API" execution_type="auto" priority="P1" id="Zoen_driver_exists">
+        <description>
+          <test_script_entry>/opt/webapi-vehicleinfo-xwalk-tests/vehicleinfo/Zoen_attributes_tests.html?total_num=24&amp;locator_key=id&amp;value=21</test_script_entry>
+        </description>
+        <specs>
+          <spec>
+            <spec_assertion element_type="attribute" element_name="driver" interface="Zone" specification="Vehicle Information Access API" section="Automotive" category="WebAPI Automotive Specifications"/>
+            <spec_url>http://rawgit.com/w3c/automotive-bg/master/vehicle_spec.html</spec_url>
+            <spec_statement/>
+          </spec>
+        </specs>
+      </testcase>
+      <testcase purpose="Check if Zone.passenger exists" type="compliance" status="approved" component="WebAPI/Automotive/Vehicle Information Access API" execution_type="auto" priority="P1" id="Zoen_passenger_exists">
+        <description>
+          <test_script_entry>/opt/webapi-vehicleinfo-xwalk-tests/vehicleinfo/Zoen_attributes_tests.html?total_num=24&amp;locator_key=id&amp;value=22</test_script_entry>
+        </description>
+        <specs>
+          <spec>
+            <spec_assertion element_type="attribute" element_name="passenger" interface="Zone" specification="Vehicle Information Access API" section="Automotive" category="WebAPI Automotive Specifications"/>
+            <spec_url>http://rawgit.com/w3c/automotive-bg/master/vehicle_spec.html</spec_url>
+            <spec_statement/>
+          </spec>
+        </specs>
+      </testcase>
+      <testcase purpose="Check if Zone.equals exists" type="compliance" status="approved" component="WebAPI/Automotive/Vehicle Information Access API" execution_type="auto" priority="P1" id="Zoen_equals_exists">
+        <description>
+          <test_script_entry>/opt/webapi-vehicleinfo-xwalk-tests/vehicleinfo/Zoen_attributes_tests.html?total_num=24&amp;locator_key=id&amp;value=23</test_script_entry>
+        </description>
+        <specs>
+          <spec>
+            <spec_assertion element_type="method" element_name="equals" interface="Zone" specification="Vehicle Information Access API" section="Automotive" category="WebAPI Automotive Specifications"/>
+            <spec_url>http://rawgit.com/w3c/automotive-bg/master/vehicle_spec.html</spec_url>
+            <spec_statement/>
+          </spec>
+        </specs>
+      </testcase>
+      <testcase purpose="Check if Zone.contains exists" type="compliance" status="approved" component="WebAPI/Automotive/Vehicle Information Access API" execution_type="auto" priority="P1" id="Zoen_contains_exists">
+        <description>
+          <test_script_entry>/opt/webapi-vehicleinfo-xwalk-tests/vehicleinfo/Zoen_attributes_tests.html?total_num=24&amp;locator_key=id&amp;value=23</test_script_entry>
+        </description>
+        <specs>
+          <spec>
+            <spec_assertion element_type="method" element_name="contains" interface="Zone" specification="Vehicle Information Access API" section="Automotive" category="WebAPI Automotive Specifications"/>
+            <spec_url>http://rawgit.com/w3c/automotive-bg/master/vehicle_spec.html</spec_url>
+            <spec_statement/>
+          </spec>
+        </specs>
       </testcase>
     </set>
   </suite>
