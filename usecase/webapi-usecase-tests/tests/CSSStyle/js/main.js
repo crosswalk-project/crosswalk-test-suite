@@ -48,6 +48,29 @@ function status(){
         EnablePassButton();
 }
 
+function refreshData(o, newValue, handle, _popup, _handleText, element) {
+  var ID = element[0].id;
+  if (ID == "slider-1") {
+    if (o.showValue) {
+      _handleText.html(Math.round(newValue*100)+"%");
+      $("#p").css("opacity", newValue);
+      if(newValue != 1){
+          testFlag.Transparency = true;
+          status();
+      }
+    }
+  }else if(ID == "slider-2"){
+    if (o.showValue) {
+      _handleText.html(Math.round(newValue));
+      $("#text-div").css("outline-offset", newValue);
+      if(newValue != 5){
+        testFlag.Outline = true;
+        status();
+      }
+    }
+  }
+}
+
 $(document).ready(function(){
     DisablePassButton();
     /** CSS Multicolumn */
