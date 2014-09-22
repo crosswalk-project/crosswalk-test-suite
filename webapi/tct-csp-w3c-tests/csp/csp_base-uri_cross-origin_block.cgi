@@ -1,7 +1,7 @@
 #!/bin/sh
-echo "Content-Security-Policy:child-src *"
-echo "X-Content-Security-Policy:child-src *"
-echo "X-WebKit-CSP:child-src *"
+echo "Content-Security-Policy: base-uri http://www.w3.org 'unsafe-inline'"
+echo "X-Content-Security-Policy: base-uri http://www.w3.org 'unsafe-inline'"
+echo "X-WebKit-CSP: base-uri http://www.w3.org 'unsafe-inline'"
 echo
 echo '<!DOCTYPE html>
 <!--
@@ -37,16 +37,17 @@ Authors:
 
 <html>
   <head>
-    <title>CSP Test: csp_child-src_self_blocked</title>
+    <title>CSP Test: csp_base-uri_cross-origin</title>
     <link rel="author" title="Intel" href="http://www.intel.com"/>
-    <link rel="help" href="http://w3c.github.io/webappsec/specs/content-security-policy/csp-specification.dev.html#child-src"/>
+    <link rel="help" href="http://w3c.github.io/webappsec/specs/content-security-policy/csp-specification.dev.html#base-uri"/>
+    <link rel="match" href="reference/csp_base-uri_cross-origin_block-ref.html"/>
     <meta name="flags" content=""/>
-    <meta name="assert" content="child-src *"/>
+    <meta name="assert" content="base-uri http://www.w3.org"/>
     <meta charset="utf-8"/>
-    <link rel="match" href="reference/csp_chidl-src_asterisk-ref.html">
+    <base href = "http://127.0.0.1:8081/opt/tct-csp-w3c-tests/csp/support/" />
   </head>
   <body>
-    <p>Test passes if there is <strong>red</strong>.</p>
-    <iframe frameborder="no" border="0" src="http://127.0.0.1:8081/opt/webapi-uiautomation-tests/w3c-csp/support/red-100x100.png"/>
+    <p>Test passes if there is no blue.</p>
+    <img src="blue-100x100.png"/>
   </body>
 </html> '

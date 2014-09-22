@@ -759,7 +759,7 @@
       <testcase component="WebAPI/Security/Content Security Policy" execution_type="auto" id="csp_default-src_self_object_blocked" purpose="Check if user agent is unable to use external object resource when default-src is self.">
         <description>
           <test_script_entry test_script_expected_result="0">/opt/tct-csp-w3c-tests/csp/csp_default-src_self_object_blocked.cgi</test_script_entry>
-          <refer_test_script_entry timeout="90">/opt/tct-csp-w3c-tests/csp/reference/csp_chidl-src_asterisk-ref.html</refer_test_script_entry>
+          <refer_test_script_entry timeout="90">/opt/tct-csp-w3c-tests/csp/reference/csp_child-src_asterisk-ref.html</refer_test_script_entry>
         </description>
       </testcase>
       <testcase component="WebAPI/Security/Content Security Policy" execution_type="auto" id="csp_default-src_cross-origin_font_blocked" purpose="Check if user agent is unable to use internal font resource when default-src is cross origin.">
@@ -981,7 +981,7 @@
       <testcase component="WebAPI/Security/Content Security Policy" execution_type="auto" id="csp_img-src_cross-origin_blocked_int" purpose="Check if user agent is unable to use internal image resource when img-src is cross-origin.">
         <description>
           <test_script_entry test_script_expected_result="0">/opt/tct-csp-w3c-tests/csp/csp_img-src_cross-origin_blocked_int.cgi</test_script_entry>
-          <refer_test_script_entry timeout="90">/opt/tct-csp-w3c-tests/csp/reference/csp_chidl-src_asterisk-ref.html</refer_test_script_entry>
+          <refer_test_script_entry timeout="90">/opt/tct-csp-w3c-tests/csp/reference/csp_child-src_asterisk-ref.html</refer_test_script_entry>
         </description>
       </testcase>
       <testcase component="WebAPI/Security/Content Security Policy" execution_type="auto" id="csp_img-src_cross-origin_multi_allowed_one" purpose="Check if user agent is able to use the first allowed external image resource when img-src is multi cross-origin.">
@@ -1029,7 +1029,7 @@
       <testcase component="WebAPI/Security/Content Security Policy" execution_type="auto" id="csp_img-src_self_blocked" purpose="Check if user agent is unable to use the external image resource when img-src is 'self'.">
         <description>
           <test_script_entry test_script_expected_result="0">/opt/tct-csp-w3c-tests/csp/csp_img-src_self_blocked.cgi</test_script_entry>
-          <refer_test_script_entry timeout="90">/opt/tct-csp-w3c-tests/csp/reference/csp_chidl-src_asterisk-ref.html</refer_test_script_entry>
+          <refer_test_script_entry timeout="90">/opt/tct-csp-w3c-tests/csp/reference/csp_child-src_asterisk-ref.html</refer_test_script_entry>
         </description>
       </testcase>
       <testcase component="WebAPI/Security/Content Security Policy" execution_type="auto" id="csp_ro_img-src_self_allowed_ext" purpose="Check if user agent is able to use the external image resource when img-src is 'self' in report-only mode.">
@@ -1146,39 +1146,39 @@
           <refer_test_script_entry timeout="90">/opt/tct-csp-w3c-tests/csp/reference/csp_base-uri_asterisk-ref.html</refer_test_script_entry>
         </description>
       </testcase>
-      <testcase component="WebAPI/Security/Content Security Policy" execution_type="auto" id="csp_base-uri_cross-orgin_block" purpose="Check if base-uri is orign, that local img will not display.">
+      <testcase component="WebAPI/Security/Content Security Policy" execution_type="auto" id="csp_base-uri_cross-origin_block" purpose="Check if base-uri is origin, that local img will not display.">
         <description>
-          <test_script_entry test_script_expected_result="0">/opt/tct-csp-w3c-tests/csp/csp_base-uri_cross-orign_block.cgi</test_script_entry>
-          <refer_test_script_entry timeout="90">/opt/tct-csp-w3c-tests/csp/reference/csp_base-uri_cross-orign_block-ref.html</refer_test_script_entry>
+          <test_script_entry test_script_expected_result="0">/opt/tct-csp-w3c-tests/csp/csp_base-uri_cross-origin_block.cgi</test_script_entry>
+          <refer_test_script_entry timeout="90">/opt/tct-csp-w3c-tests/csp/reference/csp_base-uri_cross-origin_block-ref.html</refer_test_script_entry>
         </description>
       </testcase>
-      <testcase component="WebAPI/Security/Content Security Policy" execution_type="auto" id="csp_base-uri_allow" purpose="Check if base-uri is orign, that img with right address will display.">
+      <testcase component="WebAPI/Security/Content Security Policy" execution_type="auto" id="csp_base-uri_allow" purpose="Check if base-uri is origin, that img with right address will display.">
         <description>
-          <test_script_entry test_script_expected_result="0">/opt/tct-csp-w3c-tests/csp/csp_base-uri_cross-orign_allow.cgi</test_script_entry>
+          <test_script_entry test_script_expected_result="0">/opt/tct-csp-w3c-tests/csp/csp_base-uri_cross-origin_allow.cgi</test_script_entry>
           <refer_test_script_entry timeout="90">/opt/tct-csp-w3c-tests/csp/reference/csp_base-uri_asterisk-ref.html</refer_test_script_entry>
         </description>
       </testcase>
       <testcase component="WebAPI/Security/Content Security Policy" execution_type="auto" id="csp_child-src_asterisk" purpose="Check if child-src is asterisk, that red image will display.">
         <description>
-          <test_script_entry test_script_expected_result="0">/opt/tct-csp-w3c-tests/csp/csp_chidl-src_asterisk.cgi</test_script_entry>
-          <refer_test_script_entry timeout="90">/opt/tct-csp-w3c-tests/csp/reference/csp_chidl-src_cross-orgin_blocked-ref.html</refer_test_script_entry>
+          <test_script_entry test_script_expected_result="0">/opt/tct-csp-w3c-tests/csp/csp_child-src_asterisk.cgi</test_script_entry>
+          <refer_test_script_entry timeout="90">/opt/tct-csp-w3c-tests/csp/reference/csp_child-src_cross-origin_blocked-ref.html</refer_test_script_entry>
         </description>
       </testcase>
-      <testcase component="WebAPI/Security/Content Security Policy" execution_type="auto" id="csp_child-src_cross-orgin_allowed" purpose="Check if child-src is orgin, that red image from the orgin address will display.">
+      <testcase component="WebAPI/Security/Content Security Policy" execution_type="auto" id="csp_child-src_cross-origin_allowed" purpose="Check if child-src is origin, that red image from the origin address will display.">
         <description>
-          <test_script_entry test_script_expected_result="0">/opt/tct-csp-w3c-tests/csp/csp_chidl-src_cross-orgin_allowed.cgi</test_script_entry>
-          <refer_test_script_entry timeout="90">/opt/tct-csp-w3c-tests/csp/reference/csp_chidl-src_cross-orgin_blocked-ref.html</refer_test_script_entry>
+          <test_script_entry test_script_expected_result="0">/opt/tct-csp-w3c-tests/csp/csp_child-src_cross-origin_allowed.cgi</test_script_entry>
+          <refer_test_script_entry timeout="90">/opt/tct-csp-w3c-tests/csp/reference/csp_child-src_cross-origin_blocked-ref.html</refer_test_script_entry>
         </description>
       </testcase>
-      <testcase component="WebAPI/Security/Content Security Policy" execution_type="auto" id="csp_child-src_cross-orgin_blocked" purpose="Check if child-src is orgin, that red image from other address should not display.">
+      <testcase component="WebAPI/Security/Content Security Policy" execution_type="auto" id="csp_child-src_cross-origin_blocked" purpose="Check if child-src is origin, that red image from other address should not display.">
         <description>
-          <test_script_entry test_script_expected_result="0">/opt/tct-csp-w3c-tests/csp/csp_chidl-src_cross-orgin_blocked.cgi</test_script_entry>
-          <refer_test_script_entry timeout="90">/opt/tct-csp-w3c-tests/csp/reference/csp_chidl-src_asterisk-ref.html</refer_test_script_entry>
+          <test_script_entry test_script_expected_result="0">/opt/tct-csp-w3c-tests/csp/csp_child-src_cross-origin_blocked.cgi</test_script_entry>
+          <refer_test_script_entry timeout="90">/opt/tct-csp-w3c-tests/csp/reference/csp_child-src_asterisk-ref.html</refer_test_script_entry>
         </description>
       </testcase>
       <testcase component="WebAPI/Security/Content Security Policy" execution_type="auto" id="csp_child-src_self" purpose="Check if child-src is self, that red image from self site should display.">
         <description>
-          <test_script_entry test_script_expected_result="0">/opt/tct-csp-w3c-tests/csp/csp_chidl-src_self.cgi</test_script_entry>
+          <test_script_entry test_script_expected_result="0">/opt/tct-csp-w3c-tests/csp/csp_child-src_self.cgi</test_script_entry>
           <refer_test_script_entry timeout="90">/opt/tct-csp-w3c-tests/csp/reference/csp_base-uri_asterisk-ref.html</refer_test_script_entry>
         </description>
       </testcase>
@@ -1206,13 +1206,13 @@
           <refer_test_script_entry timeout="90">/opt/tct-csp-w3c-tests/csp/reference/csp_referrer_always-ref.html</refer_test_script_entry>
         </description>
       </testcase>
-      <testcase component="WebAPI/Security/Content Security Policy" execution_type="auto" id="csp_plugin-types_allowed" purpose="Check if plugin-types is orgin, the image with right format will display.">
+      <testcase component="WebAPI/Security/Content Security Policy" execution_type="auto" id="csp_plugin-types_allowed" purpose="Check if plugin-types is origin, the image with right format will display.">
         <description>
           <test_script_entry test_script_expected_result="0">/opt/tct-csp-w3c-tests/csp/csp_plugin-types_allowed.cgi</test_script_entry>
           <refer_test_script_entry timeout="90">/opt/tct-csp-w3c-tests/csp/reference/csp_base-uri_asterisk-ref.html</refer_test_script_entry>
         </description>
       </testcase>
-      <testcase component="WebAPI/Security/Content Security Policy" execution_type="auto" id="csp_plugin-types_blocked" purpose="Check if plugin-types is orgin, the image with wrong format will not display.">
+      <testcase component="WebAPI/Security/Content Security Policy" execution_type="auto" id="csp_plugin-types_blocked" purpose="Check if plugin-types is origin, the image with wrong format will not display.">
         <description>
           <test_script_entry test_script_expected_result="0">/opt/tct-csp-w3c-tests/csp/csp_plugin-types_blocked.cgi</test_script_entry>
           <refer_test_script_entry timeout="90">/opt/tct-csp-w3c-tests/csp/reference/csp_plugin-types_blocked-ref.html</refer_test_script_entry>

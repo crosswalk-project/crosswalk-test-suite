@@ -1,13 +1,9 @@
-def main(request, response):
-    import simplejson as json
-    f = file('config.json')
-    source = f.read()
-    s = json.JSONDecoder().decode(source)
-    url1 = "http://" + s['host'] + ":" + str(s['ports']['http'][1])
-    response.headers.set("Content-Security-Policy", "base-uri http://www.w3.org 'unsafe-inline'")
-    response.headers.set("X-Content-Security-Policy", "base-uri http://www.w3.org 'unsafe-inline'")
-    response.headers.set("X-WebKit-CSP", "base-uri http://www.w3.org 'unsafe-inline'")
-    return """<!DOCTYPE html>
+#!/bin/sh
+echo "Content-Security-Policy: base-uri http://www.w3.org 'unsafe-inline'"
+echo "X-Content-Security-Policy: base-uri http://www.w3.org 'unsafe-inline'"
+echo "X-WebKit-CSP: base-uri http://www.w3.org 'unsafe-inline'"
+echo
+echo '<!DOCTYPE html>
 <!--
 Copyright (c) 2013 Intel Corporation.
 
@@ -41,16 +37,17 @@ Authors:
 
 <html>
   <head>
-    <title>CSP Test: csp_base-uri_cross-orign</title>
+    <title>CSP Test: csp_base-uri_cross-origin</title>
     <link rel="author" title="Intel" href="http://www.intel.com"/>
     <link rel="help" href="http://w3c.github.io/webappsec/specs/content-security-policy/csp-specification.dev.html#base-uri"/>
     <meta name="flags" content=""/>
     <meta name="assert" content="base-uri http://www.w3.org"/>
     <meta charset="utf-8"/>
-    <base id="test" href='""" + url1 +"""/tests/csp/support/'/>
+    <base href = "http://127.0.0.1:8081/opt/webapi-uiautomation-tests/w3c-csp/support/" />
+    <link rel="match" href="reference/csp_base-uri_asterisk-ref.html">
   </head>
   <body>
     <p>Test passes if there is no blue.</p>
     <img src="blue-100x100.png"/>
   </body>
-</html> """
+</html> '
