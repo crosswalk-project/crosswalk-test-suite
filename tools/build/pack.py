@@ -257,6 +257,9 @@ def updateCopylistPrefix(src_default, dest_default, src_sub, dest_sub):
 
 
 def buildSRC(src=None, dest=None, build_json=None):
+    if not os.path.exists(src):
+        LOG.info("+Src dir does not exist, skip build src process ...")
+        return True
     if not doCopy(src, dest):
         return False
     if "blacklist" in build_json:
@@ -685,7 +688,7 @@ def packEmbeddingAPI(
         return False
 
     if not doCopy(
-            os.path.join(orig_dir, "bin", "%s-debug.apk" % app_name),
+            os.path.join(app_src, "bin", "%s-debug.apk" % app_name),
             os.path.join(app_dest, "%s.apk" % app_name)):
         os.chdir(orig_dir)
         return False
@@ -745,7 +748,8 @@ def createIndexFile(index_file_path=None, hosted_app=None):
     return True
 
 
-def buildSubAPP(app_dir=None, build_json=None, app_dest_default=None):
+def buildSubAPP(build_json=None, app_dest_default=None):
+    app_dir = safelyGetValue(build_json, "app-dir")
     LOG.info("+Building sub APP(s) from %s ..." % app_dir)
     app_dir = os.path.join(BUILD_ROOT_SRC, app_dir)
     app_name = safelyGetValue(build_json, "app-name")
@@ -813,7 +817,7 @@ def buildPKGAPP(build_json=None):
         if "subapp-list" in build_json:
             for i_sub_app in build_json["subapp-list"].keys():
                 if not buildSubAPP(
-                        i_sub_app, build_json["subapp-list"][i_sub_app],
+                        build_json["subapp-list"][i_sub_app],
                         BUILD_ROOT_PKG_APP):
                     return False
 
@@ -834,7 +838,7 @@ def buildPKG(build_json=None):
     if "subapp-list" in build_json:
         for i_sub_app in build_json["subapp-list"].keys():
             if not buildSubAPP(
-                    i_sub_app, build_json["subapp-list"][i_sub_app],
+                    build_json["subapp-list"][i_sub_app],
                     BUILD_ROOT_PKG):
                 return False
 
