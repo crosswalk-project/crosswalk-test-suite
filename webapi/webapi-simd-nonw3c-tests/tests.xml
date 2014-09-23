@@ -3,7 +3,7 @@
 <test_definition>
   <suite category="SIMD" launcher="xwalk" name="webapi-simd-nonw3c-tests">
     <set name="webapi-simd-nonw3c-tests" type="js">
-      <testcase component="WebAPI/Supplementary API Reference/SIMD" execution_type="auto" id="float32x4_constructor" purpose="Check float32x4 constructor (0, 2, 2)" subcase="2">
+      <testcase component="WebAPI/Supplementary API Reference/SIMD" execution_type="auto" id="float32x4_constructor" purpose="Check float32x4 constructor (0, 2, 2)" subcase="6">
         <description>
           <test_script_entry>/opt/webapi-simd-nonw3c-tests/simd/ecmascript_simd/src/index.html?testNumber=1</test_script_entry>
         </description>
@@ -258,7 +258,22 @@
           <test_script_entry>/opt/webapi-simd-nonw3c-tests/simd/float32x4.html?testNumber=2</test_script_entry>
         </description>
       </testcase>
-      <testcase component="WebAPI/Supplementary API Reference/SIMD" execution_type="auto" id="Int32x4_constructor" purpose="Check if int32x4 object can be creat successful." subcase="2">
+      <testcase component="WebAPI/Supplementary API Reference/SIMD" execution_type="auto" id="Float32x4_fromInt32x4" purpose="Check if the fromInt32x4 method of float32x4 is valid." subcase="4">
+        <description>
+          <test_script_entry>/opt/webapi-simd-nonw3c-tests/simd/float32x4.html?testNumber=5</test_script_entry>
+        </description>
+      </testcase>
+      <testcase component="WebAPI/Supplementary API Reference/SIMD" execution_type="auto" id="Float32x4_fromInt32x4Bits" purpose="Check if the fromInt32x4Bits method of float32x4 is valid." subcase="4">
+        <description>
+          <test_script_entry>/opt/webapi-simd-nonw3c-tests/simd/float32x4.html?testNumber=6</test_script_entry>
+        </description>
+      </testcase>
+      <testcase component="WebAPI/Supplementary API Reference/SIMD" execution_type="auto" id="Float32x4_select" purpose="Check if the select method of float32x4 is valid." subcase="4">
+        <description>
+          <test_script_entry>/opt/webapi-simd-nonw3c-tests/simd/float32x4.html?testNumber=7</test_script_entry>
+        </description>
+      </testcase>
+      <testcase component="WebAPI/Supplementary API Reference/SIMD" execution_type="auto" id="Int32x4_constructor" purpose="Check if int32x4 object can be creat successful." subcase="6">
         <description>
           <test_script_entry>/opt/webapi-simd-nonw3c-tests/simd/int32x4.html?testNumber=1</test_script_entry>
         </description>
@@ -311,6 +326,96 @@
       <testcase component="WebAPI/Supplementary API Reference/SIMD" execution_type="auto" id="Int32x4_flagW" purpose="Check if the flagW of int32x4 object can be got and type of boolean." subcase="2">
         <description>
           <test_script_entry>/opt/webapi-simd-nonw3c-tests/simd/int32x4.html?testNumber=11</test_script_entry>
+        </description>
+      </testcase>
+      <testcase component="WebAPI/Supplementary API Reference/SIMD" execution_type="auto" id="Int32x4_fromFloat32x4" purpose="Check if the fromFloat32x4 method of int32x4 is valid." subcase="4">
+        <description>
+          <test_script_entry>/opt/webapi-simd-nonw3c-tests/simd/int32x4.html?testNumber=14</test_script_entry>
+        </description>
+      </testcase>
+      <testcase component="WebAPI/Supplementary API Reference/SIMD" execution_type="auto" id="Int32x4_fromFloat32x4Bits" purpose="Check if the fromFloat32x4Bits method of int32x4 is valid." subcase="4">
+        <description>
+          <test_script_entry>/opt/webapi-simd-nonw3c-tests/simd/int32x4.html?testNumber=15</test_script_entry>
+        </description>
+      </testcase>
+      <testcase component="WebAPI/Supplementary API Reference/SIMD" execution_type="auto" id="float64x2_construct" purpose="Check if float64x2 object can be creat successful." subcase="4">
+        <description>
+          <test_script_entry>/opt/webapi-simd-nonw3c-tests/simd/float64x2.html?testNumber=1</test_script_entry>
+        </description>
+      </testcase>
+      <testcase component="WebAPI/Supplementary API Reference/SIMD" execution_type="auto" id="float64x2_zero" purpose="Check if the zero function of float64x2 can change the parameter to 0.0." subcase="2">
+        <description>
+          <test_script_entry>/opt/webapi-simd-nonw3c-tests/simd/float64x2.html?testNumber=2</test_script_entry>
+        </description>
+      </testcase>
+      <testcase component="WebAPI/Supplementary API Reference/SIMD" execution_type="auto" id="float64x2_splat" purpose="Check if the splat function of float64x2 can change the parameter to specified value." subcase="2">
+        <description>
+          <test_script_entry>/opt/webapi-simd-nonw3c-tests/simd/float64x2.html?testNumber=3</test_script_entry>
+        </description>
+      </testcase>
+      <testcase component="WebAPI/Supplementary API Reference/SIMD" execution_type="auto" id="float64x2_abs" purpose="Check if the abs method of float64x2 is valid." subcase="2">
+        <description>
+          <test_script_entry>/opt/webapi-simd-nonw3c-tests/simd/float64x2.html?testNumber=8</test_script_entry>
+        </description>
+      </testcase>
+      <testcase component="WebAPI/Supplementary API Reference/SIMD" execution_type="auto" id="float64x2_neg" purpose="Check if the neg method of float64x2 is valid." subcase="2">
+        <description>
+          <test_script_entry>/opt/webapi-simd-nonw3c-tests/simd/float64x2.html?testNumber=9</test_script_entry>
+        </description>
+      </testcase>
+      <testcase component="WebAPI/Supplementary API Reference/SIMD" execution_type="auto" id="float64x2_add" purpose="Check if the add method of float64x2 is valid." subcase="2">
+        <description>
+          <test_script_entry>/opt/webapi-simd-nonw3c-tests/simd/float64x2.html?testNumber=10</test_script_entry>
+        </description>
+      </testcase>
+      <testcase component="WebAPI/Supplementary API Reference/SIMD" execution_type="auto" id="float64x2_sub" purpose="Check if the sub method of float64x2 is valid." subcase="2">
+        <description>
+          <test_script_entry>/opt/webapi-simd-nonw3c-tests/simd/float64x2.html?testNumber=11</test_script_entry>
+        </description>
+      </testcase>
+      <testcase component="WebAPI/Supplementary API Reference/SIMD" execution_type="auto" id="float64x2_mul" purpose="Check if the mul method of float64x2 is valid." subcase="2">
+        <description>
+          <test_script_entry>/opt/webapi-simd-nonw3c-tests/simd/float64x2.html?testNumber=12</test_script_entry>
+        </description>
+      </testcase>
+      <testcase component="WebAPI/Supplementary API Reference/SIMD" execution_type="auto" id="float64x2_div" purpose="Check if the div method of float64x2 is valid." subcase="2">
+        <description>
+          <test_script_entry>/opt/webapi-simd-nonw3c-tests/simd/float64x2.html?testNumber=13</test_script_entry>
+        </description>
+      </testcase>
+      <testcase component="WebAPI/Supplementary API Reference/SIMD" execution_type="auto" id="float64x2_clamp" purpose="Check if the clamp method of float64x2 is valid." subcase="2">
+        <description>
+          <test_script_entry>/opt/webapi-simd-nonw3c-tests/simd/float64x2.html?testNumber=14</test_script_entry>
+        </description>
+      </testcase>
+      <testcase component="WebAPI/Supplementary API Reference/SIMD" execution_type="auto" id="float64x2_min" purpose="Check if the min method of float64x2 is valid." subcase="2">
+        <description>
+          <test_script_entry>/opt/webapi-simd-nonw3c-tests/simd/float64x2.html?testNumber=15</test_script_entry>
+        </description>
+      </testcase>
+      <testcase component="WebAPI/Supplementary API Reference/SIMD" execution_type="auto" id="float64x2_max" purpose="Check if the max method of float64x2 is valid." subcase="2">
+        <description>
+          <test_script_entry>/opt/webapi-simd-nonw3c-tests/simd/float64x2.html?testNumber=16</test_script_entry>
+        </description>
+      </testcase>
+      <testcase component="WebAPI/Supplementary API Reference/SIMD" execution_type="auto" id="float64x2_scale" purpose="Check if the scale method of float64x2 is valid." subcase="2">
+        <description>
+          <test_script_entry>/opt/webapi-simd-nonw3c-tests/simd/float64x2.html?testNumber=19</test_script_entry>
+        </description>
+      </testcase>
+      <testcase component="WebAPI/Supplementary API Reference/SIMD" execution_type="auto" id="float64x2_sqrt" purpose="Check if the sqrt method of float64x2 is valid." subcase="2">
+        <description>
+          <test_script_entry>/opt/webapi-simd-nonw3c-tests/simd/float64x2.html?testNumber=20</test_script_entry>
+        </description>
+      </testcase>
+      <testcase component="WebAPI/Supplementary API Reference/SIMD" execution_type="auto" id="float64x2_withX" purpose="Check if the withX method of float64x2 is valid." subcase="2">
+        <description>
+          <test_script_entry>/opt/webapi-simd-nonw3c-tests/simd/float64x2.html?testNumber=23</test_script_entry>
+        </description>
+      </testcase>
+      <testcase component="WebAPI/Supplementary API Reference/SIMD" execution_type="auto" id="float64x2_withY" purpose="Check if the withY method of float64x2 is valid." subcase="2">
+        <description>
+          <test_script_entry>/opt/webapi-simd-nonw3c-tests/simd/float64x2.html?testNumber=24</test_script_entry>
         </description>
       </testcase>
     </set>

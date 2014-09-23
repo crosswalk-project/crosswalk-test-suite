@@ -43,6 +43,10 @@ Authors:
 test("Check if float64x2 object can be creat successful", function () {
   notEqual(undefined, SIMD.float64x2, "the type of float64x2 should not be undefined");
   notEqual(undefined, SIMD.float64x2(1, 2), "the float64x2 object should not be undefined");
+  var f1 = SIMD.float64x2(1.0, 2.0);
+  var f2 = SIMD.float64x2(f1);
+  equal(f1.x, f2.x, "the value of x should equal");
+  equal(f1.y, f2.y, "the value of y should equal");
 });
 
 test("Check if the zero function of float64x2 can change the parameter to 0.0", function () {
@@ -147,7 +151,7 @@ test("Check if the clamp method of float64x2 is valid", function () {
   var a = SIMD.float64x2(-20.0, 10.0);
   var lower = SIMD.float64x2(2.0, 1.0);
   var upper = SIMD.float64x2(2.5, 5.0);
-  var c = SIMD.float32x4.clamp(a, lower, upper);
+  var c = SIMD.float64x2.clamp(a, lower, upper);
   equal(2.0, c.x, "the value of c.x should be 2.0");
   equal(5.0, c.y, "the value of c.y should be 5.0");
 });
