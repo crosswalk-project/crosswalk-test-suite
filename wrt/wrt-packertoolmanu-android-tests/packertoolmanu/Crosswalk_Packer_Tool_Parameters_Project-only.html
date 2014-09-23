@@ -26,14 +26,14 @@ NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE,
 EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
 Authors:
-    Xu, Kang <kangx.xu@intel.com>
+    Wang, Hongjuan <hongjuanx.wang@intel.com>
 
 -->
 
 <html>
   <head>
     <meta charset='utf-8'>
-    <title>Crosswalk_Packer_Tool_TempFile_HostApp</title>
+    <title>Crosswalk_Packer_Tool_Parameters_Project-only</title>
     <link rel="author" title="Intel" href="http://www.intel.com">
   </head>
   <body>
@@ -41,25 +41,20 @@ Authors:
       <strong>Test steps:</strong>
     </p>
     <ol>
-      <li>Open one terminal command line window run terminal command:<br/>
-        $ python make_apk.py --name=[name] --package=[package] --app-url=http://www.baidu.com --arch=x86</li>
-      <li>Run below commands in another terminal command window during the step 1 is running in first window<br/>
-          $ cd /tmp<br/>
-          $ ls
+      <li>Run the command:<br>
+          $ python make_apk.py --package=&lt;package&gt; --manifest=&lt;manifest-path&gt; --project-only
       </li>
-      <li>Install the apk packaged</li>
-      <li>Launch the webapp</li>
+      <li>Run the command:<br>
+          $ python make_apk.py --package=&lt;package&gt; --manifest=&lt;manifest-path&gt; --project-only
+          --project-dir=&lt;dest_dir&gt;
+      </li>
     </ol>
     <p>
       <strong>Expected Output:</strong>
     </p>
     <ol>
-      <li>Create web app successfully</li>
-      <li>Display the created app project folder<br/>
-          For example: --package=org.hello.tmptest, the folder in /tmp should be "Tmptest"
-      </li>
-      <li>Install the app successfully</li>
-      <li>Launch the app successfully</li>
+      <li>Display the error message like '--project-only must be used with --project-dir'</li>
+      <li>Display the folder &lt;dest_dir&gt;/&lt;project_name&gt;, no create apk package</li>
     </ol>
   </body>
 </html>
