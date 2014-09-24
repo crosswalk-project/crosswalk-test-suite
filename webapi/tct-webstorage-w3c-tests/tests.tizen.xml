@@ -2,7 +2,7 @@
 <?xml-stylesheet type="text/xsl" href="./testcase.xsl"?>
 <test_definition>
   <suite category="W3C/HTML5 APIs" launcher="xwalk" name="tct-webstorage-w3c-tests">
-    <set name="WebStorage" type="js">
+    <set name="WebStorage">
       <testcase component="WebAPI/Storage/Web Storage (Partial)" execution_type="auto" id="Storage_getItem_base" purpose="Check if the current value associated with the given key returned when Storage.getItem has a valid argument">
         <description>
           <test_script_entry>/opt/tct-webstorage-w3c-tests/webstorage/Storage_getItem_base.html</test_script_entry>
@@ -763,6 +763,16 @@
           <test_script_entry>/opt/tct-webstorage-w3c-tests/webstorage/Storage_clear_empty_storage.html</test_script_entry>
         </description>
       </testcase>
+      <testcase component="WebAPI/Storage/Web Storage (Partial)" execution_type="manual" id="Storage_example_insurance_on_trip" purpose="Check if the user had been insurance on this trip">
+        <description>
+          <test_script_entry>/opt/tct-webstorage-w3c-tests/w3c-webstorage-app/Storage_example_insurance_on_trip-manual.html</test_script_entry>
+        </description>
+      </testcase>
+      <testcase component="WebAPI/Storage/Web Storage (Partial)" execution_type="manual" id="Storage_example_load_page_times" purpose="Check if the page can display a count of how many times the user has loaded it">
+        <description>
+          <test_script_entry>/opt/tct-webstorage-w3c-tests/w3c-webstorage-app/Storage_example_load_page_times-manual.html</test_script_entry>
+        </description>
+      </testcase>
       <testcase component="WebAPI/Storage/Web Storage (Partial)" execution_type="auto" id="Storage_keys_case_sensitive" purpose="Check if storage key is case sensitive or not">
         <description>
           <test_script_entry>/opt/tct-webstorage-w3c-tests/webstorage/Storage_keys_case_sensitive.html</test_script_entry>
@@ -971,18 +981,6 @@
       <testcase component="WebAPI/Storage/Web Storage (Partial)" execution_type="auto" id="storage_session_index_js" purpose="Check if the sessionStorage key(index) get the value">
         <description>
           <test_script_entry>/opt/tct-webstorage-w3c-tests/webstorage/w3c/storage_session_index_js.html</test_script_entry>
-        </description>
-      </testcase>
-    </set>
-    <set name="webstorage-bdd" type="script">
-      <testcase component="WebAPI/Storage/Web Storage (Partial)" execution_type="auto" id="Storage_example_insurance_on_trip" purpose="Check if the user had been insurance on this trip">
-        <description>
-          <test_script_entry test_script_expected_result="0">/opt/tct-webstorage-w3c-tests/bddrunner w3c-webstorage-app/testscripts/Storage_example_insurance_on_trip.feature</test_script_entry>
-        </description>
-      </testcase>
-      <testcase component="WebAPI/Storage/Web Storage (Partial)" execution_type="auto" id="Storage_example_load_page_times" purpose="Check if the page can display a count of how many times the user has loaded it">
-        <description>
-          <test_script_entry test_script_expected_result="0">/opt/tct-webstorage-w3c-tests/bddrunner w3c-webstorage-app/testscripts/Storage_example_load_page_times.feature</test_script_entry>
         </description>
       </testcase>
     </set>
