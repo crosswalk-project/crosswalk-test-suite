@@ -65,19 +65,10 @@ Authors:
       });
 
       t.step(function () {
-        assert_throws("SyntaxError",
-          function () {
-            var initializer = {candidate:"nano nano"};
-            var candidate = new RTCIceCandidate(initializer);
-            pc1.addIceCandidate(candidate, t.step_func(function (ev) {
-              t.done();
-            }), function (error) {
-              t.step(function () {
-                assert_unreached("Error message: {" + error.message + "}");
-              });
-              t.done();
-            });
-          },"the candidate parameter is malformed throw a exception");
+        assert_throws("SyntaxError", function () {
+          pc1.addIceCandidate("", function () {}, function () {});
+        },"the candidate parameter is malformed throw a exception");
+        t.done();
       });
 
       t1.step(function () {
