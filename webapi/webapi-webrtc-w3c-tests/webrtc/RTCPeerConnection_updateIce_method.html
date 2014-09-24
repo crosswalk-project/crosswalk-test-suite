@@ -53,7 +53,8 @@ Authors:
         }
         assert_throws("SyntaxError",
           function () {
-            pc.updateIce(1);
+            var configure = { "iceServers": [{ "url": "stun:stun.example.org.pps.xpk" }] };
+            pc.updateIce(configure);
           }, "DOM Exception 12");
       }, "Check if the method of updateIce is valid");
     </script>
