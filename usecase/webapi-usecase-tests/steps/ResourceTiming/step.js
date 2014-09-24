@@ -1,0 +1,8 @@
+var step = '<font class="fontSize">'
+           + '<p>Test Purpose: </p>'
+           + '<p>Verifies the device supports PerformanceResourceTiming interface.</p>'
+           + '<p>Precondition: </p>'
+           + '<p>Connect to an available network.</p>'
+           + '<p>Expected Result: </p>'
+           + '<p>Test passes if resource timing datas will display and have no any negative values after clicking "Load image".</p>'
+         + '</font>'

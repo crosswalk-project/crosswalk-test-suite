@@ -1,0 +1,6 @@
+var step = '<font class="fontSize">'
+           + '<p>Test Purpose: </p>'
+           + '<p>Verifies the vibration is able to adjust vibration time from 500ms to 3000ms, vibration period from 100ms to 2000ms, and vibration number from 1 to 20. E.g, if vibration time is 1000ms, vibration period is 2000ms and vibration number is 3, then the test device vibrates 3 times in 6 seconds, and vibrates 1 second a time.</p>'
+           + '<p>Expected Result: </p>'
+           + '<p>Test passes if the vibration functions work well.</p>'
+         + '</font>'

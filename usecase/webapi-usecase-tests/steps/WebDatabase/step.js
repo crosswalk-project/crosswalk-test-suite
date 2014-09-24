@@ -1,0 +1,6 @@
+var step = '<font class="fontSize">'
+           + '<p>Test Purpose: </p>'
+           + '<p>Verifies web database sql can be executed.</p>'
+           + '<p>Expected Result: </p>'
+           + '<p>Test passes if the add, query and delete operation work well.</p>'
+         + '</font>'
