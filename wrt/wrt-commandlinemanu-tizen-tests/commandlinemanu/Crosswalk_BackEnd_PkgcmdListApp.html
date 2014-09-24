@@ -33,31 +33,23 @@ Authors:
 <html>
   <head>
     <meta charset='utf-8'>
-    <title>Crosswalk_AudioPolicy_WebappAudioPlay</title>
+    <title>Crosswalk_BackEnd_PkgcmdListApp</title>
     <link rel="author" title="Intel" href="http://www.intel.com">
   </head>
   <body>
-    <div >wav format
-        <audio id="MediaPlayback2" controls="controls">  
-          <source src="../resources/wavsound.wav" type="audio/wav">          
-          Not Support ...
-        </audio>
-    </div>
     <p>
       <strong>Test steps:</strong>
     </p>
     <ol>
-      <li>Click the play button on the audio control</li>
-      <li>Launch the audioplaytest.wgt,and click the play button to play the audio,keep this webapp on the top screen</li>
-      <li>Check the step 1 audio</li>
+        <li>pkgcmd -l -t wgt</li>   
+        <li>pkgcmd -s -n $webappid -t wgt</li>  
     </ol>
     <p>
       <strong>Expected Output:</strong>
     </p>
     <ol>
-      <li>The audio is playing automatic successfully</li> 
-      <li>The audioplaytest webapp is playing audio on the front, and the step1 audio is suspend</li>    
-      <li>The step 1 audio is suspend when step 2 audio is playing</li>
+         <li>All wgt or xpk webapp can be listed successfully</li> 
+         <li>The webapp information should be displayed successfully</li> 
     </ol>
   </body>
 </html>
