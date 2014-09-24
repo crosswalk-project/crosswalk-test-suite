@@ -43,7 +43,7 @@ Authors:
     <meta name="flags" content=""/>
     <meta name="assert" content="img-src 'none'"/>
     <meta charset="utf-8"/>
-    <link rel="match" href="reference/csp_chidl-src_asterisk-ref.html">
+    <link rel="match" href="reference/csp_child-src_asterisk-ref.html">
   </head>
   <body>
     <p>Test passes if there is <strong>no red</strong>.</p>

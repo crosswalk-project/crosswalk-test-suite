@@ -1,15 +1,9 @@
-def main(request, response):
-    import simplejson as json
-    f = file('config.json')
-    source = f.read()
-    s = json.JSONDecoder().decode(source)
-    url1 = "http://" + s['host'] + ":" + str(s['ports']['http'][1])
-    url2 = "http://" + s['host'] + ":" + str(s['ports']['http'][0])
-    _CSP = "base-uri " + url1 + "/tests/csp/support/"
-    response.headers.set("Content-Security-Policy", _CSP)
-    response.headers.set("X-Content-Security-Policy", _CSP)
-    response.headers.set("X-WebKit-CSP", _CSP)
-    return """<!DOCTYPE html>
+#!/bin/sh
+echo "Content-Security-Policy:child-src *"
+echo "X-Content-Security-Policy:child-src *"
+echo "X-WebKit-CSP:child-src *"
+echo
+echo '<!DOCTYPE html>
 <!--
 Copyright (c) 2013 Intel Corporation.
 
@@ -43,16 +37,16 @@ Authors:
 
 <html>
   <head>
-    <title>CSP Test: csp_base-uri_cross-orign</title>
+    <title>CSP Test: csp_child-src_self_blocked</title>
     <link rel="author" title="Intel" href="http://www.intel.com"/>
-    <link rel="help" href="http://w3c.github.io/webappsec/specs/content-security-policy/csp-specification.dev.html#base-uri"/>
+    <link rel="help" href="http://w3c.github.io/webappsec/specs/content-security-policy/csp-specification.dev.html#child-src"/>
     <meta name="flags" content=""/>
-    <meta name="assert" content="base-uri http://www.w3.org"/>
+    <meta name="assert" content="child-src *"/>
     <meta charset="utf-8"/>
-    <base href = '""" + url1 + """/tests/csp/support/' />
+    <link rel="match" href="reference/csp_child-src_asterisk-ref.html">
   </head>
   <body>
-    <p>Test passes if there is a filled blue square.</p>
-    <img src="blue-100x100.png"/>
+    <p>Test passes if there is <strong>red</strong>.</p>
+    <iframe frameborder="no" border="0" src="http://127.0.0.1:8081/opt/webapi-uiautomation-tests/w3c-csp/support/red-100x100.png"/>
   </body>
-</html> """
+</html> '

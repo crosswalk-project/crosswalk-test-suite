@@ -1,9 +1,11 @@
-#!/bin/sh
-echo "Content-Security-Policy: base-uri http://www.w3.org 'unsafe-inline'"
-echo "X-Content-Security-Policy: base-uri http://www.w3.org 'unsafe-inline'"
-echo "X-WebKit-CSP: base-uri http://www.w3.org 'unsafe-inline'"
-echo
-echo '<!DOCTYPE html>
+def main(request, response):
+    _URL = request.url
+    _CSP = "child-src " + _URL[:_URL.index('/csp')+1]
+    print _CSP
+    response.headers.set("Content-Security-Policy", _CSP)
+    response.headers.set("X-Content-Security-Policy", _CSP)
+    response.headers.set("X-WebKit-CSP", _CSP)
+    return """<!DOCTYPE html>
 <!--
 Copyright (c) 2013 Intel Corporation.
 
@@ -37,17 +39,19 @@ Authors:
 
 <html>
   <head>
-    <title>CSP Test: csp_base-uri_cross-orign</title>
+    <title>CSP Test: csp_child-sr_cross-origin_allowed</title>
     <link rel="author" title="Intel" href="http://www.intel.com"/>
-    <link rel="help" href="http://w3c.github.io/webappsec/specs/content-security-policy/csp-specification.dev.html#base-uri"/>
+    <link rel="help" href="http://w3c.github.io/webappsec/specs/content-security-policy/csp-specification.dev.html#child-src"/>
     <meta name="flags" content=""/>
-    <meta name="assert" content="base-uri http://www.w3.org"/>
+    <meta name="assert" content="child-src http://www.w3c.com"/>
     <meta charset="utf-8"/>
-    <base href = "http://127.0.0.1:8081/opt/webapi-uiautomation-tests/w3c-csp/support/" />
-    <link rel="match" href="reference/csp_base-uri_asterisk-ref.html">
+    <script src="../resources/server.js?pipe=sub"></script>
   </head>
   <body>
-    <p>Test passes if there is no blue.</p>
-    <img src="blue-100x100.png"/>
+    <p>Test passes if there is <strong>red</strong>.</p>
+    <iframe id="test" frameborder="no" border="0"></iframe>
+    <script>
+      document.getElementById("test").src =' """+ _URL[:_URL.index('/csp')+1] +"""csp/support/red-100x100.png';
+    </script>
   </body>
-</html> '
+</html> """
