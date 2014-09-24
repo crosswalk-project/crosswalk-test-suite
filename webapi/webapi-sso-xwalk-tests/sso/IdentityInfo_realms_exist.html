@@ -41,7 +41,18 @@ Authors:
 setup({timeout: 30000});
 
 var t = async_test(document.title, {timeout: 10000}), onSuccess, onError;
-var filters = {"a":"b","c":"d"};
+var filters = {"Type":"WEB"};
+var info = {
+    'type': "WEB",
+    'username': "test",
+    'secret': "test", 
+    'storeSecret': true, 
+    'caption': "cap", 
+    'realms': ["realm1"], 
+    'owner': {"sysContext":"*","appContext":"*"}, 
+    'accessControlList': [{"secContext":{"sysContext":"*","appContext":"*"},
+    "method":"password","mechanisms":["password"]}]  
+  };
 
 t.step(function () {
   onError = t.step_func(function (error) {
@@ -50,11 +61,19 @@ t.step(function () {
   });
 
   onSuccess = t.step_func(function (result) {
-    assert_own_property(result, "realms", "IdentityInfo own realms property.");
-    assert_equals(typeof(result.realms), "array", "Type of realms property ");
+    assert_own_property(result[0], "realms", "IdentityInfo own realms property.");
+    assert_equals(typeof(result[0].realms), "object", "Type of realms property ");
     t.done();
   });
-  tizen.sso.authService.queryIdentities(filters)[0].then(onSuccess, onError);
+
+  var res = tizen.sso.authService.createIdentity(info);
+  if (res.syncOpErrorMsg != null) {
+    assert_unreached('Identity creation FAILED with error: ' + res.asyncOpErrorMsg);
+    t.done();
+  }
+  res.identity.store().then(function(msg) {
+    tizen.sso.authService.queryIdentities(filters).then(onSuccess, onError);},
+    function(err) {});
 });
 
 </script>
