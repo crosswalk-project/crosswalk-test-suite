@@ -3,66 +3,6 @@
 <test_definition>
   <suite name="webapi-style-css3-tests" launcher="xwalk" category="W3C API Specifications">
     <set name="Style" type="js">
-      <testcase purpose="Test checks that contains an !important declaration will override the corresponding declaration" type="compliance" status="approved" component="WebAPI/DOM, Forms and Styles/CSS Style Attribute" execution_type="manual" priority="P1" id="style-attr-cascade-001">
-        <description>
-          <test_script_entry>/opt/webapi-style-css3-tests/style/csswg/style-attr-cascade-001.htm</test_script_entry>
-        </description>
-        <specs>
-          <spec>
-            <spec_assertion element_type="attribute" element_name="style" interface="CSS" specification="CSS Style Attributes" section="DOM, Forms and Styles" category="W3C API Specifications"/>
-            <spec_url>http://www.w3.org/TR/css-style-attr/#syntax</spec_url>
-            <spec_statement/>
-          </spec>
-        </specs>
-      </testcase>
-      <testcase purpose="Test checks that an !important declaration takes precedence over a normal declaration 1" type="compliance" status="approved" component="WebAPI/DOM, Forms and Styles/CSS Style Attribute" execution_type="manual" priority="P1" id="style-attr-cascade-002">
-        <description>
-          <test_script_entry>/opt/webapi-style-css3-tests/style/csswg/style-attr-cascade-002.htm</test_script_entry>
-        </description>
-        <specs>
-          <spec>
-            <spec_assertion element_type="attribute" element_name="style" interface="CSS" specification="CSS Style Attributes" section="DOM, Forms and Styles" category="W3C API Specifications"/>
-            <spec_url>http://www.w3.org/TR/css-style-attr/#syntax</spec_url>
-            <spec_statement/>
-          </spec>
-        </specs>
-      </testcase>
-      <testcase purpose="Test checks that the declaration in the style attribute will override the one in the style element" type="compliance" status="approved" component="WebAPI/DOM, Forms and Styles/CSS Style Attribute" execution_type="manual" priority="P1" id="style-attr-cascade-003">
-        <description>
-          <test_script_entry>/opt/webapi-style-css3-tests/style/csswg/style-attr-cascade-003.htm</test_script_entry>
-        </description>
-        <specs>
-          <spec>
-            <spec_assertion element_type="attribute" element_name="style" interface="CSS" specification="CSS Style Attributes" section="DOM, Forms and Styles" category="W3C API Specifications"/>
-            <spec_url>http://www.w3.org/TR/css-style-attr/#syntax</spec_url>
-            <spec_statement/>
-          </spec>
-        </specs>
-      </testcase>
-      <testcase purpose="Test checks that an !important declaration takes precedence over a normal declaration 2" type="compliance" status="approved" component="WebAPI/DOM, Forms and Styles/CSS Style Attribute" execution_type="manual" priority="P1" id="style-attr-cascade-004">
-        <description>
-          <test_script_entry>/opt/webapi-style-css3-tests/style/csswg/style-attr-cascade-004.htm</test_script_entry>
-        </description>
-        <specs>
-          <spec>
-            <spec_assertion element_type="attribute" element_name="style" interface="CSS" specification="CSS Style Attributes" section="DOM, Forms and Styles" category="W3C API Specifications"/>
-            <spec_url>http://www.w3.org/TR/css-style-attr/#syntax</spec_url>
-            <spec_statement/>
-          </spec>
-        </specs>
-      </testcase>
-      <testcase purpose="Test checks that an !important declaration takes precedence over a normal declaration 3" type="compliance" status="approved" component="WebAPI/DOM, Forms and Styles/CSS Style Attribute" execution_type="manual" priority="P1" id="style-attr-cascade-005">
-        <description>
-          <test_script_entry>/opt/webapi-style-css3-tests/style/csswg/style-attr-cascade-005.htm</test_script_entry>
-        </description>
-        <specs>
-          <spec>
-            <spec_assertion element_type="attribute" element_name="style" interface="CSS" specification="CSS Style Attributes" section="DOM, Forms and Styles" category="W3C API Specifications"/>
-            <spec_url>http://www.w3.org/TR/css-style-attr/#syntax</spec_url>
-            <spec_statement/>
-          </spec>
-        </specs>
-      </testcase>
       <testcase purpose="Test checks that if a property inherits it also inherits when declared via style attribute" type="compliance" status="approved" component="WebAPI/DOM, Forms and Styles/CSS Style Attribute" execution_type="manual" priority="P1" id="style-attr-cascade-007">
         <description>
           <test_script_entry>/opt/webapi-style-css3-tests/style/csswg/style-attr-cascade-007.htm</test_script_entry>
@@ -164,6 +104,71 @@
           <spec>
             <spec_assertion element_type="attribute" element_name="style" interface="CSS" specification="CSS Style Attributes" section="DOM, Forms and Styles" category="W3C API Specifications"/>
             <spec_url>http://www.w3.org/TR/css-style-attr/#interpret</spec_url>
+            <spec_statement/>
+          </spec>
+        </specs>
+      </testcase>
+      <testcase purpose="Test checks that contains an !important declaration will override the corresponding declaration" type="compliance" status="approved" component="WebAPI/DOM, Forms and Styles/CSS Style Attribute" execution_type="auto" priority="P1" id="style-attr-cascade-001">
+        <description>
+          <test_script_entry>/opt/webapi-style-css3-tests/style/csswg/style-attr-cascade-001.htm</test_script_entry>
+          <refer_test_script_entry timeout="90">/opt/webapi-style-css3-tests/style/csswg/reference/style-attr-cascade-001-ref.html</refer_test_script_entry>
+        </description>
+        <specs>
+          <spec>
+            <spec_assertion element_type="attribute" element_name="style" interface="CSS" specification="CSS Style Attributes" section="DOM, Forms and Styles" category="W3C API Specifications"/>
+            <spec_url>http://www.w3.org/TR/css-style-attr/#syntax</spec_url>
+            <spec_statement/>
+          </spec>
+        </specs>
+      </testcase>
+      <testcase purpose="Test checks that an !important declaration takes precedence over a normal declaration 1" type="compliance" status="approved" component="WebAPI/DOM, Forms and Styles/CSS Style Attribute" execution_type="auto" priority="P1" id="style-attr-cascade-002">
+        <description>
+          <test_script_entry>/opt/webapi-style-css3-tests/style/csswg/style-attr-cascade-002.htm</test_script_entry>
+          <refer_test_script_entry timeout="90">/opt/webapi-style-css3-tests/style/csswg/reference/style-attr-cascade-002-ref.html</refer_test_script_entry>
+        </description>
+        <specs>
+          <spec>
+            <spec_assertion element_type="attribute" element_name="style" interface="CSS" specification="CSS Style Attributes" section="DOM, Forms and Styles" category="W3C API Specifications"/>
+            <spec_url>http://www.w3.org/TR/css-style-attr/#syntax</spec_url>
+            <spec_statement/>
+          </spec>
+        </specs>
+      </testcase>
+      <testcase purpose="Test checks that the declaration in the style attribute will override the one in the style element" type="compliance" status="approved" component="WebAPI/DOM, Forms and Styles/CSS Style Attribute" execution_type="auto" priority="P1" id="style-attr-cascade-003">
+        <description>
+          <test_script_entry>/opt/webapi-style-css3-tests/style/csswg/style-attr-cascade-003.htm</test_script_entry>
+          <refer_test_script_entry timeout="90">/opt/webapi-style-css3-tests/style/csswg/reference/style-attr-cascade-003-ref.html</refer_test_script_entry>
+        </description>
+        <specs>
+          <spec>
+            <spec_assertion element_type="attribute" element_name="style" interface="CSS" specification="CSS Style Attributes" section="DOM, Forms and Styles" category="W3C API Specifications"/>
+            <spec_url>http://www.w3.org/TR/css-style-attr/#syntax</spec_url>
+            <spec_statement/>
+          </spec>
+        </specs>
+      </testcase>
+      <testcase purpose="Test checks that an !important declaration takes precedence over a normal declaration 2" type="compliance" status="approved" component="WebAPI/DOM, Forms and Styles/CSS Style Attribute" execution_type="auto" priority="P1" id="style-attr-cascade-004">
+        <description>
+          <test_script_entry>/opt/webapi-style-css3-tests/style/csswg/style-attr-cascade-004.htm</test_script_entry>
+          <refer_test_script_entry timeout="90">/opt/webapi-style-css3-tests/style/csswg/reference/style-attr-cascade-004-ref.html</refer_test_script_entry>
+        </description>
+        <specs>
+          <spec>
+            <spec_assertion element_type="attribute" element_name="style" interface="CSS" specification="CSS Style Attributes" section="DOM, Forms and Styles" category="W3C API Specifications"/>
+            <spec_url>http://www.w3.org/TR/css-style-attr/#syntax</spec_url>
+            <spec_statement/>
+          </spec>
+        </specs>
+      </testcase>
+      <testcase purpose="Test checks that an !important declaration takes precedence over a normal declaration 3" type="compliance" status="approved" component="WebAPI/DOM, Forms and Styles/CSS Style Attribute" execution_type="auto" priority="P1" id="style-attr-cascade-005">
+        <description>
+          <test_script_entry>/opt/webapi-style-css3-tests/style/csswg/style-attr-cascade-005.htm</test_script_entry>
+          <refer_test_script_entry timeout="90">/opt/webapi-style-css3-tests/style/csswg/reference/style-attr-cascade-004-ref.html</refer_test_script_entry>
+        </description>
+        <specs>
+          <spec>
+            <spec_assertion element_type="attribute" element_name="style" interface="CSS" specification="CSS Style Attributes" section="DOM, Forms and Styles" category="W3C API Specifications"/>
+            <spec_url>http://www.w3.org/TR/css-style-attr/#syntax</spec_url>
             <spec_statement/>
           </spec>
         </specs>
