@@ -33,31 +33,32 @@ Authors:
 
 <html>
   <head>
-    <title>CSS3 Colors Test: CSS3Colors_color_transprent_rgba_0_0_0_0</title>
+    <title>CSS3 Colors Test: CSS3Colors_color_hsl_hus_only_number</title>
     <link rel="author" title="Intel" href="http://www.intel.com" />
     <link rel="help" href="http://www.w3.org/TR/2011/REC-css3-color-20110607" />
+    <link rel="match" href="CSS3Colors_color_hsl_hus_only_number-ref.html" />
     <meta name="flags" content="" />
-    <meta name="assert" content="Check if the color keyword transparent and color value rgba(0,0,0,0) have same effect" />
+    <meta name="assert" content="Check if in hsl(), the hus only a number value can be given" />
   </head>
   <style>
-      #test {
-          width: 200px;
-          height: 100px;
-          border: 1px solid black;
-          margin: 10px;
-      }
       #span1 {
-          color: transparent;
+          display: block;
       }
       #span2 {
-          color: rgba(0, 0, 0, 0);
+          color: hsl(50%, 25%, 50%);
+          display: block;
+      }
+      #span3 {
+          color: hsl(0, 25%, 50%);
+          display: block;
       }
   </style>
   <body>
     <div id="test">
-      <span id="span1">this line is invisible</span><br>
-      <span id="span2">this line is invisible too</span>
+      <span id="span1">this is text words</span>
+      <span id="span2">this is text words</span>
+      <span id="span3">this is text words</span>
     </div>
-    <p>Test passes if you can not see any words in the black border box</p>
+    <p>Test passes if the first and second lines have same color,and the third line is different.</p>
   </body>
 </html>
