@@ -1,0 +1,12 @@
+var step = '<font class="fontSize">'
+            +'<p>Test Purpose: </p>'
+            +'<p>Verifies the functionality of File Reader. Tests the functionality of loading one or multiple files, opening the files one by one by clicking the hyperlink in file name.</p>'
+            +'<p>Test Pre-configuration: </p>'
+            +'<p>Ensure at least one txt file is located in the device.</p>'
+            +'<p>Expected Result: </p>'
+            +'<ul>'
+              +'<li>File upload successfully.</li>'
+              +'<li>File size show correctly.</li>'
+              +'<li>File content print on the screen.</li>'
+            +'</ul>'
+          +'</font>';
