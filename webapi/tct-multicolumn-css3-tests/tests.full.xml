@@ -1599,54 +1599,6 @@
           </spec>
         </specs>
       </testcase>
-      <testcase purpose="Check if multicol column with integer display correctly in visual" type="compliance" status="approved" component="WebAPI/DOM, Forms and Styles/CSS Multi-column Layout Module (Partial)" execution_type="manual" priority="P2" id="multicol-basic-001">
-        <description>
-          <test_script_entry>/opt/tct-multicolumn-css3-tests/multicolumn/csswg/multicol-basic-001.html</test_script_entry>
-        </description>
-        <specs>
-          <spec>
-            <spec_assertion element_type="property" element_name="column-count" interface="CSS" specification="CSS Multi-column Layout Module (Partial)" section="DOM, Forms and Styles" category="Tizen W3C API Specifications"/>
-            <spec_url>http://www.w3.org/TR/2011/CR-css3-multicol-20110412/#cc</spec_url>
-            <spec_statement/>
-          </spec>
-        </specs>
-      </testcase>
-      <testcase purpose="Check if multicol column-count with integer display correctly in visual" type="compliance" status="approved" component="WebAPI/DOM, Forms and Styles/CSS Multi-column Layout Module (Partial)" execution_type="manual" priority="P2" id="multicol-basic-002">
-        <description>
-          <test_script_entry>/opt/tct-multicolumn-css3-tests/multicolumn/csswg/multicol-basic-002.html</test_script_entry>
-        </description>
-        <specs>
-          <spec>
-            <spec_assertion element_type="property" element_name="column-count" interface="CSS" specification="CSS Multi-column Layout Module (Partial)" section="DOM, Forms and Styles" category="Tizen W3C API Specifications"/>
-            <spec_url>http://www.w3.org/TR/2011/CR-css3-multicol-20110412/#cc</spec_url>
-            <spec_statement/>
-          </spec>
-        </specs>
-      </testcase>
-      <testcase purpose="Check if multicol column with width display correctly in visual" type="compliance" status="approved" component="WebAPI/DOM, Forms and Styles/CSS Multi-column Layout Module (Partial)" execution_type="manual" priority="P2" id="multicol-basic-003">
-        <description>
-          <test_script_entry>/opt/tct-multicolumn-css3-tests/multicolumn/csswg/multicol-basic-003.html</test_script_entry>
-        </description>
-        <specs>
-          <spec>
-            <spec_assertion element_type="property" element_name="column-count" interface="CSS" specification="CSS Multi-column Layout Module (Partial)" section="DOM, Forms and Styles" category="Tizen W3C API Specifications"/>
-            <spec_url>http://www.w3.org/TR/2011/CR-css3-multicol-20110412/#cc</spec_url>
-            <spec_statement/>
-          </spec>
-        </specs>
-      </testcase>
-      <testcase purpose="Check if multicol column-count with width display correctly in visual" type="compliance" status="approved" component="WebAPI/DOM, Forms and Styles/CSS Multi-column Layout Module (Partial)" execution_type="manual" priority="P2" id="multicol-basic-004">
-        <description>
-          <test_script_entry>/opt/tct-multicolumn-css3-tests/multicolumn/csswg/multicol-basic-004.html</test_script_entry>
-        </description>
-        <specs>
-          <spec>
-            <spec_assertion element_type="property" element_name="column-count" interface="CSS" specification="CSS Multi-column Layout Module (Partial)" section="DOM, Forms and Styles" category="Tizen W3C API Specifications"/>
-            <spec_url>http://www.w3.org/TR/2011/CR-css3-multicol-20110412/#cc</spec_url>
-            <spec_statement/>
-          </spec>
-        </specs>
-      </testcase>
       <testcase purpose="Check if the element is set to have the number of columns,the width of columns,and both the number and width are set" type="compliance" status="approved" component="WebAPI/DOM, Forms and Styles/CSS Multi-column Layout Module (Partial)" execution_type="auto" priority="P3" id="CSS3Multicolumn_columns_shorthand">
         <description>
           <test_script_entry>/opt/tct-multicolumn-css3-tests/multicolumn/CSS3Multicolumn_columns_shorthand.html</test_script_entry>
@@ -1908,6 +1860,60 @@
             <spec_assertion usage="true" interface="CSS" specification="CSS Multi-column Layout Module (Partial)" section="DOM, Forms and Styles" category="Tizen W3C API Specifications"/>
             <spec_url>http://www.w3.org/TR/2011/CR-css3-multicol-20110412/</spec_url>
             <spec_statement>All column rules in the same row are also equal, if they appear; column rules only appear between columns that both have content</spec_statement>
+          </spec>
+        </specs>
+      </testcase>
+    </set>
+    <set name="MultiColumn-ref" type="ref">
+             <testcase purpose="Check if multicol column with integer display correctly in visual" type="compliance" status="approved" component="WebAPI/DOM, Forms and Styles/CSS Multi-column Layout Module (Partial)" execution_type="auto" priority="P2" id="multicol-basic-001">
+        <description>
+          <test_script_entry>/opt/tct-multicolumn-css3-tests/multicolumn/csswg/multicol-basic-001.html</test_script_entry>
+          <refer_test_script_entry timeout="90">/opt/tct-multicolumn-css3-tests/multicolumn/csswg/reference/multicol-basic-ref.html</refer_test_script_entry>
+        </description>
+        <specs>
+          <spec>
+            <spec_assertion element_type="property" element_name="column-count" interface="CSS" specification="CSS Multi-column Layout Module (Partial)" section="DOM, Forms and Styles" category="Tizen W3C API Specifications"/>
+            <spec_url>http://www.w3.org/TR/2011/CR-css3-multicol-20110412/#cc</spec_url>
+            <spec_statement/>
+          </spec>
+        </specs>
+      </testcase>
+      <testcase purpose="Check if multicol column-count with integer display correctly in visual" type="compliance" status="approved" component="WebAPI/DOM, Forms and Styles/CSS Multi-column Layout Module (Partial)" execution_type="auto" priority="P2" id="multicol-basic-002">
+        <description>
+          <test_script_entry>/opt/tct-multicolumn-css3-tests/multicolumn/csswg/multicol-basic-002.html</test_script_entry>
+          <refer_test_script_entry timeout="90">/opt/tct-multicolumn-css3-tests/multicolumn/csswg/reference/multicol-basic-ref.html</refer_test_script_entry>
+        </description>
+        <specs>
+          <spec>
+            <spec_assertion element_type="property" element_name="column-count" interface="CSS" specification="CSS Multi-column Layout Module (Partial)" section="DOM, Forms and Styles" category="Tizen W3C API Specifications"/>
+            <spec_url>http://www.w3.org/TR/2011/CR-css3-multicol-20110412/#cc</spec_url>
+            <spec_statement/>
+          </spec>
+        </specs>
+      </testcase>
+      <testcase purpose="Check if multicol column with width display correctly in visual" type="compliance" status="approved" component="WebAPI/DOM, Forms and Styles/CSS Multi-column Layout Module (Partial)" execution_type="auto" priority="P2" id="multicol-basic-003">
+        <description>
+          <test_script_entry>/opt/tct-multicolumn-css3-tests/multicolumn/csswg/multicol-basic-003.html</test_script_entry>
+          <refer_test_script_entry timeout="90">/opt/tct-multicolumn-css3-tests/multicolumn/csswg/reference/multicol-basic-ref.html</refer_test_script_entry>
+        </description>
+        <specs>
+          <spec>
+            <spec_assertion element_type="property" element_name="column-count" interface="CSS" specification="CSS Multi-column Layout Module (Partial)" section="DOM, Forms and Styles" category="Tizen W3C API Specifications"/>
+            <spec_url>http://www.w3.org/TR/2011/CR-css3-multicol-20110412/#cc</spec_url>
+            <spec_statement/>
+          </spec>
+        </specs>
+      </testcase>
+      <testcase purpose="Check if multicol column-count with width display correctly in visual" type="compliance" status="approved" component="WebAPI/DOM, Forms and Styles/CSS Multi-column Layout Module (Partial)" execution_type="auto" priority="P2" id="multicol-basic-004">
+        <description>
+          <test_script_entry>/opt/tct-multicolumn-css3-tests/multicolumn/csswg/multicol-basic-004.html</test_script_entry>
+          <refer_test_script_entry timeout="90">/opt/tct-multicolumn-css3-tests/multicolumn/csswg/reference/multicol-basic-ref.html</refer_test_script_entry>
+        </description>
+        <specs>
+          <spec>
+            <spec_assertion element_type="property" element_name="column-count" interface="CSS" specification="CSS Multi-column Layout Module (Partial)" section="DOM, Forms and Styles" category="Tizen W3C API Specifications"/>
+            <spec_url>http://www.w3.org/TR/2011/CR-css3-multicol-20110412/#cc</spec_url>
+            <spec_statement/>
           </spec>
         </specs>
       </testcase>
