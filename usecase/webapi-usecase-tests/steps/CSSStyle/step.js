@@ -1,0 +1,13 @@
+var step = '<font class="fontSize">'
+            +'<p>Test Purpose: </p>'
+            +'<p>Verifies</p>'
+            +'<ul>'
+              +'<li>the dotted line box has a white background, red first letter, green dotted border.</li>'
+              +'<li>the general description uses default font in browser.</li>'
+              +'<li>the functionality of all the text color in red, green or blue, background transparence from 0% to 100%, outline offset from 0 to 15, multicolumn enabling and disabling.</li>'
+              +'<li>the text align in left or right, text in uppercase or lowercase, text and box shadow in two effects, text decoration in three effects and word break in two effects.</li>'
+              +'<li>the "column span" text shows in random code when using uppercase.</li>'
+            +'</ul>'
+            +'<p>Expected Result: </p>'
+            +'<p>Test passes if all the check points work well in the dotted line box.</p>'
+          +'</font>';

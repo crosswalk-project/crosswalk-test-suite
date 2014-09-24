@@ -1,0 +1,10 @@
+var step = '<font class="fontSize">'
+            +'<p>Test Purpose: </p>'
+            +'<p>Verifies the device supports clipboard to copy, cut and paste texts. Tests the functionality by long pressing the selected text, choose the "Copy", "Cut" and "Paste" in popup menu.</p>'
+            +'<p>Test Step: </p>'
+            +'<ol>'
+              +'<li>Click the "Launch clipboard test" button to launch the test html.</li>'
+            +'</ol>'
+            +'<p>Expected Result: </p>'
+            +'<p>Test passes if the copy, cut and paste functions all work well.</p>'
+          +'</font>';

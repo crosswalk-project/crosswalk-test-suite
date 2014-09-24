@@ -1,0 +1,11 @@
+var step = '<font class="fontSize">'
+            +'<p>Test Purpose: </p>'
+            +'<p>Verifies the forms can be submitted and reset</p>'
+            +'<p>Test Steps: </p>'
+            +'<ol>'
+              +'<li>Click the \'Submit\'</li>'
+              +'<li>Enter some characters to text box, click the \'Reset\'</li>'
+            +'</ol>'
+            +'<p>Expected Result: </p>'
+            +'<p>Test passes if jump to the pass page and reset the input text box</p>'
+          +'</font>';

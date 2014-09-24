@@ -1,0 +1,12 @@
+var step = '<font class="fontSize">'
+            +'<p>Test Purpose: </p>'
+            +'<p>Verifies the device supports connention and browerstatus.</p>'
+            +'<p>Test Step: </p>'
+            +'<p>'
+              +'<ol>'
+                +'<li>Connect to an available network, test step passes if online status show true, bandwidth show doblue number, and metered show true.</li>'
+                +'<li>Disconnect from this network, test step passes if online status show false, bandwidth show 0, and metered show false.</li>'
+              +'</ol>'
+            +'<p>Expected Result: </p>'
+            +'<p>Test passes if all the test steps pass.</p>'
+          +'</font>';

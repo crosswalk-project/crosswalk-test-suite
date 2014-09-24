@@ -1,0 +1,11 @@
+var step = '<font class="fontSize">'
+            +'<p>Test Purpose: </p>'
+            +'<p>Verifies the functionality of enabling and disabling the Camera preview.</p>'
+            +'<p>Test Step: </p>'
+            +'<ol>'
+              +'<li>Click the "Start camera preview" button to launch the preview.</li>'
+              +'<li>Click the "Stop camera preview" button to close the preview.</li>'
+            +'</ol>'
+            +'<p>Expected Result: </p>'
+            +'<p>Test passes if the Camera preview works well.</p>'
+          +'</font>';

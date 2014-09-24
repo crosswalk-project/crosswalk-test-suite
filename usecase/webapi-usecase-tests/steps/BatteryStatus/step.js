@@ -1,0 +1,13 @@
+var step = '<font class="fontSize">'
+            +'<p>Test Purpose: </p>'
+            +'<p>Verifies the device supports battery attributes.</p>'
+            +'<p>Test Step: </p>'
+            +'<p>'
+              +'<ol>'
+                +'<li>Charge the device,</li>'
+                +'<li>Discharge the device.</li>'
+              +'</ol>'
+            +'</p>'
+            +'<p>Expected Result: </p>'
+            +'<p>Test passes if show battery status, and the battery level, charging, dischargingTime with dynamic values.</p>'
+          +'</font>';

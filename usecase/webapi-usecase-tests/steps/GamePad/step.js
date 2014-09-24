@@ -1,0 +1,11 @@
+var step = '<font class="fontSize">'
+            +'<p>Test Purpose: </p>'
+            +'<p>Verifies the GamePad API can receive the signal from GamePad.</p>'
+            +'<p>Test Step: </p>'
+            +'<ol>'
+              +'<li>Connect gamepad to device.</li>'
+              +'<li>Operate different buttons on the gamepad.</li>'
+            +'</ol>'
+            +'<p>Expected Result: </p>'
+            +'<p>Test passes if the different signal can be captured and show on the page.</p>'
+          +'</font>';
