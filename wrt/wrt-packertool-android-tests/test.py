@@ -11,6 +11,7 @@ all_pairs = metacomm.combinatorics.all_pairs2.all_pairs2
 Devices = []
 SCRIPT_PATH = os.path.realpath(__file__)
 ConstPath = os.path.dirname(SCRIPT_PATH)
+ARCH = "x86"
 
 def lineCount(fp):
     fileTmp = open(fp)
@@ -149,6 +150,7 @@ def genCases(selfcomb, name, device, flag):
 
 def caseExecute(caseInput, device, resultList, flag, summaryList):
     try:
+        global ARCH
         totalNum = summaryList["TOTAL"]
         failNum = summaryList["FAIL"]
         passNum = summaryList["PASS"]
@@ -183,6 +185,9 @@ def caseExecute(caseInput, device, resultList, flag, summaryList):
                     command = command + "--" + sectionList[i] + "=" + '"' + items[i] + '" '
             command = command.strip()
 
+            if not "arch" in sectionList:
+                command = command + " --arch=" + ARCH
+
             if "target-dir" in sectionList:
                 dirIndex = sectionList.index("target-dir")
                 if items[dirIndex] != "DEFAULT":
@@ -191,10 +196,12 @@ def caseExecute(caseInput, device, resultList, flag, summaryList):
                     direc = "./"
             else:
                 direc = "./"
+
             if direc.startswith("/"):
                 apkDir = direc
             else:
                 apkDir = ConstPath + "/device_" + device + "/tools/crosswalk/" + direc
+            os.system("rm -rf " + apkDir + "/*.apk")
 
             if "name" in sectionList:
                 index = sectionList.index("name")
@@ -245,7 +252,7 @@ def caseExecute(caseInput, device, resultList, flag, summaryList):
             data["set"] = flag
             data["message"] = message
             resultList.append(data)
-            os.system("rm -rf " + apkDir + "/*apk")
+            os.system("rm -rf " + apkDir + "/*.apk")
             print "Case Result :",result
             print "##########"
         summaryList["TOTAL"] = totalNum
@@ -266,7 +273,7 @@ def tryRunApp(name, package, device, apkDir):
         print "Install APK ---------------->Start"
         androidName = package.split(".")[-1].split("_")
         acivityName = ''.join([i.capitalize() for i in androidName if i])
-        instatus = commands.getstatusoutput("adb -s " + device + " install " + apkDir + "/*apk")
+        instatus = commands.getstatusoutput("adb -s " + device + " install -r " + apkDir + "/*.apk")
         if instatus[0] == 0:
             print "Install APK ---------------->O.K"
             message = message + "Install apk succeed\n"
@@ -313,7 +320,7 @@ def tryRunApp(name, package, device, apkDir):
             message = message + "Install apk failed\n"
             print "Install APK ---------------->Error"
             result = "FAIL"
-        os.system("rm -rf " + apkDir + "/*apk" + "&>/dev/null")
+        os.system("rm -rf " + apkDir + "/*.apk" + "&>/dev/null")
         return result,message
     except Exception,e:
         print Exception,":",e
@@ -457,7 +464,13 @@ def sourceInit(Devices):
 def main():
     try:
         global Devices
+        global ARCH
         DeviceQueue = Queue.Queue()
+
+        fp = open(ConstPath + "/arch.txt")
+        if fp.read().strip("\n\t") != "x86":
+            ARCH = "arm"
+        fp.close()
 
         if "DEVICE_ID" in os.environ:
             for device in os.environ["DEVICE_ID"].split(","):
