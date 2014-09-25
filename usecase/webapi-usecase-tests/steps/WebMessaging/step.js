@@ -1,0 +1,6 @@
+var step = '<font class="fontSize">'
+           + '<p>Test Purpose: </p>'
+           + '<p>Verifies the message can be transmitted between pages.</p>'
+           + '<p>Expected Result: </p>'
+           + '<p>Test passes if the input content on the over frame can show on the below frame after click the confim button.</p>'
+         + '</font>'

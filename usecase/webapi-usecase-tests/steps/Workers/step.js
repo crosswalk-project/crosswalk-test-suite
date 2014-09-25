@@ -1,0 +1,6 @@
+var step = '<font class="fontSize">'
+           + '<p>Test Purpose: </p>'
+           + '<p>Verifies the functionality of Workers work properly.</p>'
+           + '<p>Expected Result: </p>'
+           + '<p>Test passes if the result of calculation is 5000050000.</p>'
+         + '</font>'

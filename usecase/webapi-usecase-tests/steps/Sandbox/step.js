@@ -1,0 +1,8 @@
+var step = '<font class="fontSize">'
+           + '<p>Test Purpose:</p>'
+           + '<p>Verifies that iframe sandbox supports tokens "allow-scripts", "allow-forms" and "allow-same-origin".</p>'
+           + '<p>Test Steps:</p>'
+           + '<p>Check sub test cases.</p>'
+           + '<p>Expected Result:</p>'
+           + '<p>All sub test cases pass.</p>'
+         + '</font>'

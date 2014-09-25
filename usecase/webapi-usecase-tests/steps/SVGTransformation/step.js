@@ -1,0 +1,6 @@
+var step = '<font class="fontSize">'
+           + '<p>Test Purpose: </p>'
+           + '<p>Verifies the blue circle could be transferred to ellipse, and rotate along with elliptical patch at the same time.</p>'
+           + '<p>Expected Result: </p>'
+           + '<p>Test passes if the blue circle transfers to ellipse, and rotates along at the same time.</p>'
+         + '</font>'

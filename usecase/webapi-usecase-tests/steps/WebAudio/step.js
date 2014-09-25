@@ -1,0 +1,6 @@
+var step = '<font class="fontSize">'
+           + '<p>Test Purpose: </p>'
+           + '<p>Verifies Web Auido can get and play audio file.</p>'
+           + '<p>Expected Result: </p>'
+           + '<p>Test passes if the aduio file can be played.</p>'
+         + '</font>'
