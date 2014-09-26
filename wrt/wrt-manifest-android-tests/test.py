@@ -12,6 +12,7 @@ all_pairs = metacomm.combinatorics.all_pairs2.all_pairs2
 Devices = []
 SCRIPT_PATH = os.path.realpath(__file__)
 ConstPath = os.path.dirname(SCRIPT_PATH)
+ARCH = "x86"
 
 def genSelfcom(combIn, combOut):
     try:
@@ -69,6 +70,7 @@ def caseExecute(caseInput, device, resultList, flag, summaryList):
             updateConfigXml(ConstPath + "/device_" + device + "/tcs/manifest" + str(totalNum) + "/config.xml", "manifest" + str(totalNum))
             #genarate package and execute
             os.chdir(ConstPath + "/device_" + device + "/tools/crosswalk/")
+            os.system("rm -rf " + ConstPath + "/device_" + device + "/tools/crosswalk/*.apk &>/dev/null")
             data = {"id":"","result":"","entry":"","message":"","start":"","end":"","set":""}
             caseStart = time.strftime("%Y-%m-%d %H:%M:%S")
             status, info = genPackage(caseDir)
@@ -111,6 +113,7 @@ def caseExecute(caseInput, device, resultList, flag, summaryList):
         summaryList["PASS"] = passNum
         caseIn.close()
         manifestLog.close()
+        os.system("rm -rf " + ConstPath + "/device_" + device + "/tools/crosswalk/*.apk &>/dev/null")
         print "Execute case ---------------->O.K"
     except Exception,e:
         print Exception,":",e
@@ -202,12 +205,13 @@ def processTest(seedIn, device, flag, resultList, summaryList):
 
 def genPackage(direc):
     try:
+        global ARCH
         print "Generate APK ---------------->Start"
         toolstatus = commands.getstatusoutput("python make_apk.py")[0]
         if toolstatus != 0:
             print "Crosswalk Binary is not ready, Please attention"
             sys.exit(1)
-        cmd ="python make_apk.py --package=org.xwalk.test --arch=x86 --manifest="
+        cmd ="python make_apk.py --package=org.xwalk.test --arch=" + ARCH + " --manifest="
         manifestPath = direc + "/manifest.json"
         status, message = commands.getstatusoutput(cmd + manifestPath)
         if status != 0:
@@ -272,7 +276,7 @@ def tryRunApp(device):
         result = "PASS"
         message = ""
         print "Install APK ---------------->Start"
-        instatus = commands.getstatusoutput("adb -s " + device + " install *apk")
+        instatus = commands.getstatusoutput("adb -s " + device + " install -r *.apk")
         if instatus[0] == 0:
             print "Install APK ---------------->O.K"
             message = message + "Install apk succeed\n"
@@ -319,7 +323,7 @@ def tryRunApp(device):
             print "Install APK ---------------->Error"
             result = "FAIL"
             message = message + "Install apk failed\n"
-        os.system("rm -rf *apk &>/dev/null")
+        os.system("rm -rf " + ConstPath + "/device_" + device + "/tools/crosswalk/*.apk &>/dev/null")
         return result,message
     except Exception,e:
         print Exception,":",e
@@ -470,6 +474,11 @@ def main():
     try:
         global Devices
         DeviceQueue = Queue.Queue()
+
+        fp = open(ConstPath + "/arch.txt")
+        if fp.read().strip("\n\t") != "x86":
+            ARCH = "arm"
+        fp.close()
 
         if "DEVICE_ID" in os.environ:
             for device in os.environ["DEVICE_ID"].split(","):
