@@ -1,1 +1,0 @@
-SUBDIRS = resource-metadata-management

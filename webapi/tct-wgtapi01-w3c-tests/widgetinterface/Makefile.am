@@ -1,1 +1,0 @@
-SUBDIRS = w3c

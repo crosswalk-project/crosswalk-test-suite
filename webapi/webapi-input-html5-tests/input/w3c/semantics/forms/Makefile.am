@@ -1,1 +1,0 @@
-SUBDIRS = the-input-element
