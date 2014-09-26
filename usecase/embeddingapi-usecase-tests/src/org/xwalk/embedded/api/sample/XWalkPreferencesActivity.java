@@ -31,7 +31,13 @@ public class XWalkPreferencesActivity extends XWalkBaseActivity {
         // Enable remote debugging.
         // You can debug the web content via PC chrome.
         XWalkPreferences.setValue(XWalkPreferences.REMOTE_DEBUGGING, true);
-
+        XWalkPreferences.setValue(XWalkPreferences.JAVASCRIPT_CAN_OPEN_WINDOW, true);
+        XWalkPreferences.setValue(XWalkPreferences.SUPPORT_MULTIPLE_WINDOWS, 3);
+        XWalkPreferences.setValue(XWalkPreferences.ALLOW_UNIVERSAL_ACCESS_FROM_FILE, "testSetValue_String");
+        XWalkPreferences.getBooleanValue(XWalkPreferences.REMOTE_DEBUGGING);
+        XWalkPreferences.getBooleanValue(XWalkPreferences.JAVASCRIPT_CAN_OPEN_WINDOW);
+        XWalkPreferences.getIntegerValue(XWalkPreferences.SUPPORT_MULTIPLE_WINDOWS);
+        XWalkPreferences.getStringValue(XWalkPreferences.ALLOW_UNIVERSAL_ACCESS_FROM_FILE);
         mXWalkView.load("http://www.baidu.com/", null);
     }
 }
