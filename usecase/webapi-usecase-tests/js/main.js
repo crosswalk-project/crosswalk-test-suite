@@ -63,13 +63,15 @@ function getApps() {
 function updateList() {
   $("#mylist").empty();
   $(applist).find("set").each(function(){
-    $("#mylist").append("<li data-role=\"list-divider\">"+$(this).attr("name")+"</li>");
+    var appLine = "<div data-role=\"collapsible\" data-theme=\"b\"><h3>"+$(this).attr("name")+"</h3>\n    <ul data-role=\"listview\" data-inset=\"false\">\n";
     $(this).find("testcase").each(function(){
       var url = "samples/" + $(this).attr("id") + "/index.html?test_name="+$(this).attr("purpose");
-      var appLine = "<li class=\"app\" id=\"" + $(this).attr("id") + "\">"
-                  + "<a href=\"" + url + "\">" + "<h2>" + $(this).attr("purpose") + "</h2></a></li>";
-      $("#mylist").append(appLine);
+      appLine += "<li class=\"app\" id=\"" + $(this).attr("id") + "\">"
+                  + "<a href=\"" + url + "\">" + "<h2 style=\"margin-left:25px\">" + $(this).attr("purpose") + "</h2></a></li>\n";
     });
+    appLine += "</ul></div>";
+
+    $("#mylist").append(appLine);
   });
 
   for(var i=0; i<sstorage.length; i++){
@@ -105,7 +107,7 @@ function updateList() {
       }
     }
   }
-  $("#mylist").listview("refresh");
+  $("#mylist").trigger("create");
   $(".ui-li-has-count").each(function() {
     var childs = $(this).find(".ui-li-count");
     if (childs.length == 3) {
