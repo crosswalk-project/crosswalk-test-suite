@@ -34,7 +34,7 @@ if [ $? -ne 0 ]
 then
   exit 1
 fi
-widgetpath="/opt/home/app/.config/xwalk-service/applications/$pkgids"
+widgetpath="/home/app/.config/xwalk-service/applications/$pkgids"
 if [ ! -d $widgetpath ]
 then
   existbh "The path of the application does not exist." 1
