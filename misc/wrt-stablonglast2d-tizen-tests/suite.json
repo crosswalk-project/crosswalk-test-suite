@@ -1,0 +1,33 @@
+{
+    "pkg-blacklist": [
+        "config.xml",
+        "pack.py",
+        "testcase.xsl",
+        "testresult.xsl",
+        "tests.css",
+        "icon.png",
+        "manifest.json",
+        "suite.json",
+        "inst.*"
+    ],
+    "pkg-list": {
+        "xpk": {
+            "blacklist": [
+                "*"
+            ],
+            "copylist": {
+                "inst.xpk.py": "inst.py",
+                "tests.xml": "tests.xml",
+                "stablonglast2d/sysmon": "stablonglast2d/sysmon",
+                "stablonglast2d/RunGame2DGraphicsLongTimeTest.sh": "stablonglast2d/RunGame2DGraphicsLongTimeTest.sh",
+                "stablonglast2d/Generatesysmon.sh": "stablonglast2d/Generatesysmon.sh"
+            },
+            "subapp-list": {
+                "stablonglast2d/dynamic": {
+                    "install-path": "stablonglast2d"
+                }
+            }
+        }
+    },
+    "pkg-name": "wrt-stablonglast2d-tizen-tests"
+}
