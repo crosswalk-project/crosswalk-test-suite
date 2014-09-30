@@ -923,6 +923,7 @@ def main():
 
     if not BUILD_PARAMETERS.srcdir:
         BUILD_PARAMETERS.srcdir = os.getcwd()
+    BUILD_PARAMETERS.srcdir = os.path.expanduser(BUILD_PARAMETERS.srcdir)
 
     if not os.path.exists(
             os.path.join(BUILD_PARAMETERS.srcdir, "..", "..", VERSION_FILE)):
@@ -930,7 +931,8 @@ def main():
                 os.path.join(BUILD_PARAMETERS.srcdir, "..", VERSION_FILE)):
             if not os.path.exists(
                     os.path.join(BUILD_PARAMETERS.srcdir, VERSION_FILE)):
-                LOG.info("Not found pkg version file, try to use option --pkg-version")
+                LOG.info(
+                    "Not found pkg version file, try to use option --pkg-version")
                 pkg_version_file_path = None
             else:
                 pkg_version_file_path = os.path.join(
@@ -995,9 +997,15 @@ def main():
             LOG.error("No all-in-one installation dest dir found, exit ...")
             sys.exit(1)
 
+    elif not BUILD_PARAMETERS.destdir:
+        BUILD_PARAMETERS.destdir = BUILD_PARAMETERS.srcdir
+    BUILD_PARAMETERS.destdir = os.path.expanduser(BUILD_PARAMETERS.destdir)
+
     if not BUILD_PARAMETERS.pkgpacktools:
         BUILD_PARAMETERS.pkgpacktools = os.path.join(
             BUILD_PARAMETERS.srcdir, "..", "..", "tools")
+    BUILD_PARAMETERS.pkgpacktools = os.path.expanduser(
+        BUILD_PARAMETERS.pkgpacktools)
 
     config_json = None
     if BUILD_PARAMETERS.pkgcfg:
@@ -1058,13 +1066,8 @@ def main():
                     os.path.join(BUILD_PARAMETERS.destdir, i_file)):
                 exitHandler(1)
     else:
-        if not BUILD_PARAMETERS.destdir:
-            dest_dir = BUILD_PARAMETERS.srcdir
-        else:
-            dest_dir = BUILD_PARAMETERS.destdir
-
         pkg_file = os.path.join(
-            dest_dir,
+            BUILD_PARAMETERS.destdir,
             "%s-%s-%s.%s.zip" %
             (PKG_NAME,
              pkg_main_version,
