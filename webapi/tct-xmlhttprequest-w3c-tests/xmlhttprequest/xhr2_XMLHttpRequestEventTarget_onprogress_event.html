@@ -27,32 +27,27 @@ EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
 Authors:
          Cao, Jun <junx.cao@intel.com>
+         Xu, Kang <kangx.xu@intel.com>
 
 -->
 
-<html>
-  <head>
-    <title>XMLHttpRequest Test: xhr2_XMLHttpRequestEventTarget_onprogress_event</title>
-    <link rel="author" title="Intel" href="http://www.intel.com" />
-    <link rel="help" href="http://www.w3.org/TR/2012/WD-XMLHttpRequest-20121206/#handler-xhr-onprogress" />
-    <meta name="flags" content="" />
-    <meta name="assert" content="Check if the onprogress event while sending and loading data" />
-    <script src="./support.js"></script>
-    <script src="../resources/testharness.js"></script>
-    <script src="../resources/testharnessreport.js"></script>
-  </head>
-  <body>
-    <div id="log"></div>
-    <script type="text/javascript">
-        var t = async_test(document.title);
-
-        var client = new XMLHttpRequest();
-        client.onprogress = function () {
-            PassTest();
-        };
-        window.setTimeout(FailTest, 2000);
-        client.open("GET", "support/test.xml");
-        client.send("null");
-    </script>
-  </body>
-</html>
+<meta charset="utf-8">
+<title>XMLHttpRequest Test: xhr2_XMLHttpRequestEventTarget_onprogress_event</title>
+<link rel="author" title="Intel" href="http://www.intel.com">
+<link rel="help" href="http://www.w3.org/TR/2012/WD-XMLHttpRequest-20121206/#handler-xhr-onprogress">
+<script src="../resources/testharness.js"></script>
+<script src="../resources/testharnessreport.js"></script>
+<div id="log"></div>
+<script>
+async_test(function (t) {
+  var client = new XMLHttpRequest();
+  client.onprogress = t.step_func(function () {
+    t.done();
+  });
+  window.setTimeout(t.step_func(function () {
+    assert_unreached("There is no trigger the onprogress event");
+  }), 2000);
+  client.open("GET", "support/test.xml");
+  client.send("null");
+}, "Check if the onprogress event can be invoked while sending and loading data");
+</script>

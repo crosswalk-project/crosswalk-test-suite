@@ -26,45 +26,37 @@ NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE,
 EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
 Authors:
-        Xu,Yuhan <yuhanx.xu@intel.com>
+         Xu,Yuhan <yuhanx.xu@intel.com>
+         Xu, Kang <kangx.xu@intel.com>
 
 -->
-<html>
-  <head>
-    <title>XMLHttpRequest Test: xhr2_XMLHttpRequest_response_byteLength_type</title>
-    <link rel="author" title="Intel" href="http://www.intel.com" />
-    <link rel="help" href="http://www.w3.org/TR/XMLHttpRequest/" />
-    <meta name="flags" content="" />
-    <meta name="assert" content="Check if the type of XMLHttpRequest.response is number" />
-    <script src="./support.js"></script>
-    <script src="../resources/testharness.js"></script>
-    <script src="../resources/testharnessreport.js"></script>
-  </head>
-  <body>
-    <div id="log"></div>
-    <script>
-        var t = async_test(document.title, {timeout:2000});
-        var client = new XMLHttpRequest();
-        client.onload = function (event) {
-            var data = this;
-            if (data.status === 200 ) {
-                t.step(function () {
-                    assert_true(data.response instanceof ArrayBuffer, "ArrayBuffer data.response supported");
-                    assert_true("byteLength" in data.response, "data.response.byteLength supported");
-                    assert_true(typeof data.response.byteLength === "number", "Check the type of XMLHttpRequest.response");
-                });
-                t.done();
-            } else {
-                FailTest("XMLHttpRequest.response.byteLength exists");
-            }
-        };
-        client.onerror = function() {
-            FailTest("XMLHttpRequest.response.byteLength exists");
-        };
-        window.setTimeout(FailTest, 2000);
-        client.open("GET", "support/test.xml");
-        client.responseType = "arraybuffer";
-        client.send("null");
-    </script>
-  </body>
-</html>
+
+<meta charset="utf-8">
+<title>XMLHttpRequest Test: xhr2_XMLHttpRequest_response_byteLength_type</title>
+<link rel="author" title="Intel" href="http://www.intel.com">
+<link rel="help" href="http://www.w3.org/TR/XMLHttpRequest/">
+<script src="../resources/testharness.js"></script>
+<script src="../resources/testharnessreport.js"></script>
+<div id="log"></div>
+<script>
+async_test(function (t) {
+  var client = new XMLHttpRequest();
+  client.onload = t.step_func(function (event) {
+    var data = this;
+    assert_equals(data.status, 200, "The status value");
+    assert_true(data.response instanceof ArrayBuffer, "ArrayBuffer data.response supported");
+    assert_true("byteLength" in data.response, "data.response.byteLength supported");
+    assert_equals(typeof data.response.byteLength, "number", "The type of XMLHttpRequest.response");
+    t.done();
+  });
+  client.onerror = t.step_func(function () {
+    assert_unreached("There is no trigger the onload event");
+  });
+  window.setTimeout(t.step_func(function () {
+    assert_unreached("There is no trigger the onload event");
+  }), 2000);
+  client.open("GET", "support/test.xml");
+  client.responseType = "arraybuffer";
+  client.send("null");
+}, "Check if the type of XMLHttpRequest.response is number");
+</script>
