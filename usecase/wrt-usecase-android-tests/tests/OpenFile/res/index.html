@@ -38,10 +38,32 @@ Authors:
 <meta name="flags" content="">
 <meta name="assert" content="Check if enable open a file with third part app.">
 <body>
-  <label>Open DOCX:<label/>
-  <a href="/mnt/sdcard1/wrtdoc/test.docx">DOCX file</a><br/>
-  <label>Open PNG:<label/>
-  <a href="/mnt/sdcard1/wrtdoc/test.png">PNG file</a><br/>
-  <label>Open PDF:<label/>
-  <a href="/mnt/sdcard1/wrtdoc/test.pdf">PDF file</a>
+  <a href="javascript:void(0)" onclick="sdcard1();">Push resource to /mnt/sdcard1/</a><br/>
+  <a href="javascript:void(0)" onclick="sdcard();">Push resource to /mnt/sdcard/</a><br/>
+  <div id="sdcard1" style="display: none">
+    <label>Open DOCX(/mnt/sdcard1):<label/>
+    <a href="/mnt/sdcard1/wrtdoc/test.docx">DOCX file</a><br/>
+    <label>Open PNG(/mnt/sdcard1):<label/>
+    <a href="/mnt/sdcard1/wrtdoc/test.png">PNG file</a><br/>
+    <label>Open PDF(/mnt/sdcard1):<label/>
+    <a href="/mnt/sdcard1/wrtdoc/test.pdf">PDF file</a>
+  </div>
+  <div id="sdcard" style="display: none">
+    <label>Open DOCX(/mnt/sdcard):<label/>
+    <a href="/mnt/sdcard/wrtdoc/test.docx">DOCX file</a><br/>
+    <label>Open PNG(/mnt/sdcard):<label/>
+    <a href="/mnt/sdcard/wrtdoc/test.png">PNG file</a><br/>
+    <label>Open PDF(/mnt/sdcard):<label/>
+    <a href="/mnt/sdcard/wrtdoc/test.pdf">PDF file</a>
+  </div>
+  <script>
+    function sdcard1(){
+      document.getElementById("sdcard").style.display = "none";
+      document.getElementById("sdcard1").style.display = "inline";
+    }
+    function sdcard(){
+      document.getElementById("sdcard1").style.display = "none";
+      document.getElementById("sdcard").style.display = "inline";
+    }
+  </script>
 </body>

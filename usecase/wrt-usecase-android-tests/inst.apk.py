@@ -1,6 +1,6 @@
 #!/usr/bin/env python
 
-import os
+import os, commands
 import shutil
 import glob
 import time
@@ -61,8 +61,11 @@ def instPKGs():
                     if "Failure" in line:
                         action_status = False
                         break
-    (return_code, output) = doCMD("adb shell mkdir -p /mnt/sdcard1/wrtdoc &>/dev/null")
-    (return_code, output) = doCMD("adb push %s/res/doc /mnt/sdcard1/wrtdoc/" % SCRIPT_DIR)
+    pushstatus = commands.getstatusoutput("adb push %s/res/doc /mnt/sdcard/wrtdoc/" % SCRIPT_DIR)
+    print pushstatus[1]
+    if pushstatus[0] != 0:
+        (return_code, output) = doCMD("adb shell mkdir -p /mnt/sdcard1/wrtdoc &>/dev/null")
+        (return_code, output) = doCMD("adb push %s/res/doc /mnt/sdcard1/wrtdoc/" % SCRIPT_DIR)
     return action_status
 
 
