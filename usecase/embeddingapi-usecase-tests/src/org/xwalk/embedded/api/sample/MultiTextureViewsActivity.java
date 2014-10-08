@@ -21,9 +21,9 @@ public class MultiTextureViewsActivity extends XWalkBaseActivity {
         .append("1. Rotate the device screen 90 degrees.\n")
         .append("2. Restore the device screen.\n\n")
         .append("Expected Result:\n\n")
-        .append("1. Test passes if the sort order of A, B, C views are the same with the  sort order of D, E, F views at first.\n")
-        .append("2. Test passes if the sort order of A, B, C views are the same with the  sort order of D, E, F views when rotating the device screen 90 degrees.\n")
-        .append("3. Test passes if the sort order of A, B, C views are the same with the  sort order of D, E, F views when restoring the device screen.");
+        .append("1. Test passes if the sort order of A, B, C views are the same with the  sort order of D, E, F views which are correct and created by WebView at first.\n")
+        .append("2. Test passes if the sort order of A, B, C views are the same with the  sort order of D, E, F views which are correct and created by WebView when rotating the device screen 90 degrees.\n")
+        .append("3. Test passes if the sort order of A, B, C views are the same with the  sort order of D, E, F views which are correct and created by WebView when restoring the device screen.");
         new  AlertDialog.Builder(this)
         .setTitle("Info" )
         .setMessage(mess.toString())
