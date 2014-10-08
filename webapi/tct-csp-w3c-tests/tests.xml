@@ -303,55 +303,6 @@
         </description>
       </testcase>
     </set>
-    <set name="frame-src" type="js">
-      <testcase component="WebAPI/Security/Content Security Policy" execution_type="manual" id="csp_ro_frame-src_self_allowed_ext" purpose="Check if user agent is able to use external frame resource when ro frame-src is self.">
-        <description>
-          <test_script_entry test_script_expected_result="0">/opt/tct-csp-w3c-tests/csp/csp_ro_frame-src_self_allowed_ext.cgi</test_script_entry>
-        </description>
-      </testcase>
-      <testcase component="WebAPI/Security/Content Security Policy" execution_type="manual" id="csp_ro_frame-src_self_allowed_int" purpose="Check if user agent is able to use internal frame resource when ro frame-src is self.">
-        <description>
-          <test_script_entry test_script_expected_result="0">/opt/tct-csp-w3c-tests/csp/csp_ro_frame-src_self_allowed_int.cgi</test_script_entry>
-        </description>
-      </testcase>
-    </set>
-    <set name="object-src" type="js">
-      <testcase component="WebAPI/Security/Content Security Policy" execution_type="manual" id="csp_object-src_cross-origin_blocked" purpose="Check if user agent is unable to use not allowed external resource when object-src is cross-origin.">
-        <description>
-          <test_script_entry test_script_expected_result="0">/opt/tct-csp-w3c-tests/csp/csp_object-src_cross-origin_blocked.cgi</test_script_entry>
-        </description>
-      </testcase>
-      <testcase component="WebAPI/Security/Content Security Policy" execution_type="manual" id="csp_object-src_cross-origin_blocked_int" purpose="Check if user agent is unable to use internal resource when object-src is cross-origin.">
-        <description>
-          <test_script_entry test_script_expected_result="0">/opt/tct-csp-w3c-tests/csp/csp_object-src_cross-origin_blocked_int.cgi</test_script_entry>
-        </description>
-      </testcase>
-      <testcase component="WebAPI/Security/Content Security Policy" execution_type="manual" id="csp_object-src_cross-origin_multi_blocked" purpose="Check if user agent is unable to use not allowed external resource when object-src is multi cross-origin.">
-        <description>
-          <test_script_entry test_script_expected_result="0">/opt/tct-csp-w3c-tests/csp/csp_object-src_cross-origin_multi_blocked.cgi</test_script_entry>
-        </description>
-      </testcase>
-      <testcase component="WebAPI/Security/Content Security Policy" execution_type="manual" id="csp_object-src_cross-origin_multi_blocked_int" purpose="Check if user agent is unable to use internal resource when object-src is multi cross-origin.">
-        <description>
-          <test_script_entry test_script_expected_result="0">/opt/tct-csp-w3c-tests/csp/csp_object-src_cross-origin_multi_blocked_int.cgi</test_script_entry>
-        </description>
-      </testcase>
-      <testcase component="WebAPI/Security/Content Security Policy" execution_type="manual" id="csp_object-src_none_blocked_ext" purpose="Check if user agent is unable to use external resource when object-src is none.">
-        <description>
-          <test_script_entry test_script_expected_result="0">/opt/tct-csp-w3c-tests/csp/csp_object-src_none_blocked_ext.cgi</test_script_entry>
-        </description>
-      </testcase>
-      <testcase component="WebAPI/Security/Content Security Policy" execution_type="manual" id="csp_object-src_none_blocked_int" purpose="Check if user agent is unable to use internal resource when object-src is none.">
-        <description>
-          <test_script_entry test_script_expected_result="0">/opt/tct-csp-w3c-tests/csp/csp_object-src_none_blocked_int.cgi</test_script_entry>
-        </description>
-      </testcase>
-      <testcase component="WebAPI/Security/Content Security Policy" execution_type="manual" id="csp_object-src_self_blocked" purpose="Check if user agent is unable to use external resource when object-src is self.">
-        <description>
-          <test_script_entry test_script_expected_result="0">/opt/tct-csp-w3c-tests/csp/csp_object-src_self_blocked.cgi</test_script_entry>
-        </description>
-      </testcase>
-    </set>
     <set name="media-src" type="js">
       <testcase component="WebAPI/Security/Content Security Policy" execution_type="auto" id="csp_media-src_self_video_default" purpose="Check if video current src is null by default when media-src is self.">
         <description>
@@ -876,7 +827,7 @@
           <refer_test_script_entry timeout="90">/opt/tct-csp-w3c-tests/csp/reference/csp_default-src_none_font_blocked_int-ref.html</refer_test_script_entry>
         </description>
       </testcase>
- <testcase component="WebAPI/Security/Content Security Policy" execution_type="auto" id="csp_frame-src_asterisk_allowed_ext" purpose="Check if user agent is able to use external frame resource when frame-src is asterisk.">
+      <testcase component="WebAPI/Security/Content Security Policy" execution_type="auto" id="csp_frame-src_asterisk_allowed_ext" purpose="Check if user agent is able to use external frame resource when frame-src is asterisk.">
         <description>
           <test_script_entry test_script_expected_result="0">/opt/tct-csp-w3c-tests/csp/csp_frame-src_asterisk_allowed_ext.cgi</test_script_entry>
           <refer_test_script_entry timeout="90">/opt/tct-csp-w3c-tests/csp/reference/csp_frame-src_asterisk_allowed_ext-ref.html</refer_test_script_entry>
@@ -1228,6 +1179,151 @@
         <description>
           <test_script_entry test_script_expected_result="0">/opt/tct-csp-w3c-tests/csp/csp_frame-ancestors_none.cgi</test_script_entry>
           <refer_test_script_entry timeout="90">/opt/tct-csp-w3c-tests/csp/reference/csp_frame-ancestors_none-ref.html</refer_test_script_entry>
+        </description>
+      </testcase>
+      <testcase component="WebAPI/Security/Content Security Policy" execution_type="auto" id="csp_default-src_cross-origin_font_allowed" purpose="Check if user agent is able to use external font resource when default-src is cross origin.">
+        <description>
+          <pre_condition>Connect to PHP server</pre_condition>
+          <steps>
+            <step order="1">
+              <step_desc>Run the manual case: csp_default-src_cross-origin_font_allowed.</step_desc>
+              <expected>To pass, if two lines are different in font</expected>
+            </step>
+          </steps>
+          <test_script_entry test_script_expected_result="0">/opt/tct-csp-w3c-tests/csp/csp_default-src_cross-origin_font_allowed.cgi</test_script_entry>
+          <refer_test_script_entry timeout="90">/opt/tct-csp-w3c-tests/csp/reference/csp_default-src_none_font_blocked_int-ref.html</refer_test_script_entry>
+        </description>
+      </testcase>
+      <testcase component="WebAPI/Security/Content Security Policy" execution_type="auto" id="csp_default-src_cross-origin_multi_font_allowed_one" purpose="Check if user agent is able to use the first allowed external font resource when default-src is multi cross origin.">
+        <description>
+          <pre_condition>Connect to PHP server</pre_condition>
+          <steps>
+            <step order="1">
+              <step_desc>Run the manual case: csp_default-src_cross-origin_multi_font_allowed_one.</step_desc>
+              <expected>To pass, if two lines are different in font</expected>
+            </step>
+          </steps>
+          <test_script_entry test_script_expected_result="0">/opt/tct-csp-w3c-tests/csp/csp_default-src_cross-origin_multi_font_allowed_one.cgi</test_script_entry>
+          <refer_test_script_entry timeout="90">/opt/tct-csp-w3c-tests/csp/reference/csp_default-src_none_font_blocked_int-ref.html</refer_test_script_entry>
+        </description>
+      </testcase>
+      <testcase component="WebAPI/Security/Content Security Policy" execution_type="auto" id="csp_default-src_cross-origin_multi_font_allowed_two" purpose="Check if user agent is able to use the second allowed external font resource when default-src is multi cross origin.">
+        <description>
+          <pre_condition>Connect to PHP server</pre_condition>
+          <steps>
+            <step order="1">
+              <step_desc>Run the manual case: csp_default-src_cross-origin_multi_font_allowed_two.</step_desc>
+              <expected>To pass, if two lines are different in font</expected>
+            </step>
+          </steps>
+          <test_script_entry test_script_expected_result="0">/opt/tct-csp-w3c-tests/csp/csp_default-src_cross-origin_multi_font_allowed_two.cgi</test_script_entry>
+          <refer_test_script_entry timeout="90">/opt/tct-csp-w3c-tests/csp/reference/csp_default-src_none_font_blocked_int-ref.html</refer_test_script_entry>
+        </description>
+      </testcase>
+      <testcase component="WebAPI/Security/Content Security Policy" execution_type="auto" id="csp_font-src_asterisk_allowed_ext" purpose="Check if user agent is able to use external font resource when font-src is *.">
+        <description>
+          <pre_condition>Connect to PHP server</pre_condition>
+          <steps>
+            <step order="1">
+              <step_desc>Run the manual case: csp_font-src_asterisk_allowed_ext.</step_desc>
+              <expected>To pass, if two lines are different in font</expected>
+            </step>
+          </steps>
+          <test_script_entry test_script_expected_result="0">/opt/tct-csp-w3c-tests/csp/csp_font-src_asterisk_allowed_ext.cgi</test_script_entry>
+          <refer_test_script_entry timeout="90">/opt/tct-csp-w3c-tests/csp/reference/csp_default-src_none_font_blocked_int-ref.html</refer_test_script_entry>
+        </description>
+      </testcase>
+      <testcase component="WebAPI/Security/Content Security Policy" execution_type="auto" id="csp_font-src_cross-origin_allowed" purpose="Check if user agent is able to use external font resource when font-src is cross origin.">
+        <description>
+          <pre_condition>Connect to PHP server</pre_condition>
+          <steps>
+            <step order="1">
+              <step_desc>Run the manual case: csp_font-src_cross-origin_allowed.</step_desc>
+              <expected>To pass, if two lines are different in font</expected>
+            </step>
+          </steps>
+          <test_script_entry test_script_expected_result="0">/opt/tct-csp-w3c-tests/csp/csp_font-src_cross-origin_allowed.cgi</test_script_entry>
+          <refer_test_script_entry timeout="90">/opt/tct-csp-w3c-tests/csp/reference/csp_default-src_none_font_blocked_int-ref.html</refer_test_script_entry>
+        </description>
+      </testcase>
+      <testcase component="WebAPI/Security/Content Security Policy" execution_type="auto" id="csp_font-src_cross-origin_multi_allowed_one" purpose="Check if user agent is able to use the first allowed external font resource when font-src is multi cross origin.">
+        <description>
+          <pre_condition>Connect to PHP server</pre_condition>
+          <steps>
+            <step order="1">
+              <step_desc>Run the manual case: csp_font-src_cross-origin_multi_allowed_one.</step_desc>
+              <expected>To pass, if two lines are different in font</expected>
+            </step>
+          </steps>
+          <test_script_entry test_script_expected_result="0">/opt/tct-csp-w3c-tests/csp/csp_font-src_cross-origin_multi_allowed_one.cgi</test_script_entry>
+          <refer_test_script_entry timeout="90">/opt/tct-csp-w3c-tests/csp/reference/csp_default-src_none_font_blocked_int-ref.html</refer_test_script_entry>
+        </description>
+      </testcase>
+      <testcase component="WebAPI/Security/Content Security Policy" execution_type="auto" id="csp_font-src_cross-origin_multi_allowed_two" purpose="Check if user agent is able to use the second allowed external font resource when font-src is multi cross origin.">
+        <description>
+          <pre_condition>Connect to PHP server</pre_condition>
+          <steps>
+            <step order="1">
+              <step_desc>Run the manual case: csp_font-src_cross-origin_multi_allowed_two.</step_desc>
+              <expected>To pass, if two lines are different in font</expected>
+            </step>
+          </steps>
+          <test_script_entry test_script_expected_result="0">/opt/tct-csp-w3c-tests/csp/csp_font-src_cross-origin_multi_allowed_two.cgi</test_script_entry>
+          <refer_test_script_entry timeout="90">/opt/tct-csp-w3c-tests/csp/reference/csp_default-src_none_font_blocked_int-ref.html</refer_test_script_entry>
+        </description>
+      </testcase>
+      <testcase component="WebAPI/Security/Content Security Policy" execution_type="auto" id="csp_ro_frame-src_self_allowed_int" purpose="Check if user agent is able to use internal frame resource when ro frame-src is self.">
+        <description>
+          <test_script_entry test_script_expected_result="0">/opt/tct-csp-w3c-tests/csp/csp_ro_frame-src_self_allowed_int.cgi</test_script_entry>
+          <refer_test_script_entry timeout="90">/opt/tct-csp-w3c-tests/csp/reference/csp_ro_frame-src_self_allowed_int-ref.html</refer_test_script_entry>
+        </description>
+      </testcase>
+      <testcase component="WebAPI/Security/Content Security Policy" execution_type="auto" id="csp_ro_frame-src_self_allowed_ext" purpose="Check if user agent is able to use external frame resource when ro frame-src is self.">
+        <description>
+          <test_script_entry test_script_expected_result="0">/opt/tct-csp-w3c-tests/csp/csp_ro_frame-src_self_allowed_ext.cgi</test_script_entry>
+          <refer_test_script_entry timeout="90">/opt/tct-csp-w3c-tests/csp/reference/csp_ro_frame-src_self_allowed_ext-ref.html</refer_test_script_entry>
+        </description>
+      </testcase>
+      <testcase component="WebAPI/Security/Content Security Policy" execution_type="auto" id="csp_object-src_cross-origin_blocked_int" purpose="Check if user agent is unable to use internal resource when object-src is cross-origin.">
+        <description>
+          <test_script_entry test_script_expected_result="0">/opt/tct-csp-w3c-tests/csp/csp_object-src_cross-origin_blocked_int.cgi</test_script_entry>
+          <refer_test_script_entry timeout="90">/opt/tct-csp-w3c-tests/csp/reference/csp_child-src_asterisk-ref.html</refer_test_script_entry>
+        </description>
+      </testcase>
+      <testcase component="WebAPI/Security/Content Security Policy" execution_type="auto" id="csp_object-src_cross-origin_multi_blocked" purpose="Check if user agent is unable to use not allowed external resource when object-src is multi cross-origin.">
+        <description>
+          <test_script_entry test_script_expected_result="0">/opt/tct-csp-w3c-tests/csp/csp_object-src_cross-origin_multi_blocked.cgi</test_script_entry>
+          <refer_test_script_entry timeout="90">/opt/tct-csp-w3c-tests/csp/reference/csp_child-src_asterisk-ref.html</refer_test_script_entry>
+        </description>
+      </testcase>
+      <testcase component="WebAPI/Security/Content Security Policy" execution_type="auto" id="csp_object-src_cross-origin_multi_blocked_int" purpose="Check if user agent is unable to use internal resource when object-src is multi cross-origin.">
+        <description>
+          <test_script_entry test_script_expected_result="0">/opt/tct-csp-w3c-tests/csp/csp_object-src_cross-origin_multi_blocked_int.cgi</test_script_entry>
+          <refer_test_script_entry timeout="90">/opt/tct-csp-w3c-tests/csp/reference/csp_child-src_asterisk-ref.html</refer_test_script_entry>
+        </description>
+      </testcase>
+      <testcase component="WebAPI/Security/Content Security Policy" execution_type="auto" id="csp_object-src_none_blocked_int" purpose="Check if user agent is unable to use internal resource when object-src is none.">
+        <description>
+          <test_script_entry test_script_expected_result="0">/opt/tct-csp-w3c-tests/csp/csp_object-src_none_blocked_int.cgi</test_script_entry>
+          <refer_test_script_entry timeout="90">/opt/tct-csp-w3c-tests/csp/reference/csp_child-src_asterisk-ref.html</refer_test_script_entry>
+        </description>
+      </testcase>
+      <testcase component="WebAPI/Security/Content Security Policy" execution_type="auto" id="csp_object-src_none_blocked_ext" purpose="Check if user agent is unable to use external resource when object-src is none.">
+        <description>
+          <test_script_entry test_script_expected_result="0">/opt/tct-csp-w3c-tests/csp/csp_object-src_none_blocked_ext.cgi</test_script_entry>
+          <refer_test_script_entry timeout="90">/opt/tct-csp-w3c-tests/csp/reference/csp_child-src_asterisk-ref.html</refer_test_script_entry>
+        </description>
+      </testcase>
+      <testcase component="WebAPI/Security/Content Security Policy" execution_type="auto" id="csp_object-src_self_blocked" purpose="Check if user agent is unable to use external resource when object-src is self.">
+        <description>
+          <test_script_entry test_script_expected_result="0">/opt/tct-csp-w3c-tests/csp/csp_object-src_self_blocked.cgi</test_script_entry>
+          <refer_test_script_entry timeout="90">/opt/tct-csp-w3c-tests/csp/reference/csp_child-src_asterisk-ref.html</refer_test_script_entry>
+        </description>
+      </testcase>
+      <testcase component="WebAPI/Security/Content Security Policy" execution_type="auto" id="csp_object-src_cross-origin_blocked" purpose="Check if user agent is unable to use not allowed external resource when object-src is cross-origin.">
+        <description>
+          <test_script_entry test_script_expected_result="0">/opt/tct-csp-w3c-tests/csp/csp_object-src_cross-origin_blocked.cgi</test_script_entry>
+          <refer_test_script_entry timeout="90">/opt/tct-csp-w3c-tests/csp/reference/csp_child-src_asterisk-ref.html</refer_test_script_entry>
         </description>
       </testcase>
     </set>
