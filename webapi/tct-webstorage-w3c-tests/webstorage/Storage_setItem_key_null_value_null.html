@@ -27,47 +27,26 @@ EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
 Authors:
         Fan,Weiwei <weiwix.fan@intel.com>
+        Xie,Yunxiao <yunxiaox.xie@intel.com>
 
 -->
 
-<html>
-  <head>
-    <title>WebStorage Test: Storage_setItem_key_null_value_null</title>
-    <link rel="author" title="Intel" href="http://www.intel.com" />
-    <link rel="help" href="http://www.w3.org/TR/2011/CR-webstorage-20111208/#dom-storage-setItem" />
-    <meta name="flags" content="" />
-    <meta name="assert" content="Check if the argument of the method Storage.setItem are all null that expecting a new key/value pair is to be added to the list" />
-    <script type="text/javascript" src="support.js"></script>
-    <script src="../resources/testharness.js"></script>
-    <script src="../resources/testharnessreport.js"></script>
-  </head>
-  <body>
-    <div id="log"></div>
-    <script type="text/javascript">
-        var t = async_test(document.title);
-        var result = 0;
-        var EXPECT_RESULT = 2;
-        function RunTest(store) {
-            try {
-                if (!("Storage" in window)) {
-                    FailTest("Storage is not in window");
-                }
-                store.clear();
-                var key = store.setItem(null, null);
-                if (store.getItem("null") === "null") {
-                    result ++;
-                } else {
-                    FailTest("The new key/value pair is not to be added to the list");
-                }
-                if (result === EXPECT_RESULT) {
-                    PassTest();
-                }
-            } catch (ex) {
-                FailTest("{Error Name: " + ex.name +"}");
-            }
-        }
-        RunTest(sessionStorage);
-        RunTest(localStorage);
-    </script>
-  </body>
-</html>
+<meta charset="utf-8">
+<title>WebStorage Test: Storage_setItem_key_null_value_null</title>
+<link rel="author" title="Intel" href="http://www.intel.com" >
+<link rel="help" href="http://www.w3.org/TR/2011/CR-webstorage-20111208/#dom-storage-setItem" >
+<script src="../resources/testharness.js"></script>
+<script src="../resources/testharnessreport.js"></script>
+<div id="log"></div>
+<script>
+  test(function () {
+    function RunTest(store) {
+      assert_true("Storage" in window);
+      store.clear();
+      var key = store.setItem(null, null);
+      assert_equals(store.getItem("null"), "null");
+    }
+    RunTest(sessionStorage);
+    RunTest(localStorage);
+  }, "Check if the argument of the method Storage.setItem are all null that expecting a new key/value pair is to be added to the list");
+</script>

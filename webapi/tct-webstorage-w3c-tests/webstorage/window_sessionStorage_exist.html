@@ -27,53 +27,25 @@
 
  Authors:
          Lei Yang <lei.a.yang@intel.com>
+         Xie,Yunxiao <yunxiaox.xie@intel.com>
 
  -->
 
-<html>
-  <head>
-    <title>WebStorage Test: window_sessionStorage_exist</title>
-    <link rel="author" title="Intel" href="http://www.intel.com" />
-    <link rel="help" href="http://www.w3.org/TR/2011/CR-webstorage-20111208/#dom-sessionStorage" />
-    <meta name="flags" content="" />
-    <meta name="assert" content="Check if sessionStorage Attributes exist" />
-    <script type="text/javascript" src="support.js"></script>
-    <script src="../resources/testharness.js"></script>
-    <script src="../resources/testharnessreport.js"></script>
-  </head>
-  <body>
-    <div id="log"></div>
-    <script type="text/javascript">
-	    var t = async_test(document.title);
-	    function RunTest() {
-	        try
-	        {
-		        if(!("sessionStorage" in window))
-		            FailTest("sessionStorage is no in window");
-		        if(!("length" in window.sessionStorage))
-		            FailTest("length is not in sessionStorage");
-		        if(!("key" in window.sessionStorage))
-		            FailTest("key is not in sessionStorage");
-		        if(!("getItem" in window.sessionStorage))
-		            FailTest("getItem is not in sessionStorage");
-		        if(!("setItem" in window.sessionStorage))
-		            FailTest("setItem is not in sessionStorage");
-		        if(!("removeItem" in window.sessionStorage))
-		            FailTest("removeItem is not in sessionStorage");
-		        if(!("clear" in window.sessionStorage))
-		            FailTest("clear is not in sessionStorage");
-
-		        PassTest();
-	        }
-	        catch (ex)
-	        {
-		        FailTest("{Exception code: " + ex.code + "}");
-	        }
-	    }
-
-	    Initialize();
-	    RunTest();
-	    Deinitialize();
-    </script>
-  </body>
-</html>
+<meta charset="utf-8">
+<title>WebStorage Test: window_sessionStorage_exist</title>
+<link rel="author" title="Intel" href="http://www.intel.com" >
+<link rel="help" href="http://www.w3.org/TR/2011/CR-webstorage-20111208/#dom-sessionStorage" >
+<script src="../resources/testharness.js"></script>
+<script src="../resources/testharnessreport.js"></script>
+<div id="log"></div>
+<script>
+  test(function () {
+    assert_true("sessionStorage" in window, "sessionStorage is no in window");
+    assert_true("length" in window.sessionStorage, "length is not in sessionStorage");
+    assert_true("key" in window.sessionStorage, "key is not in sessionStorage");
+    assert_true("getItem" in window.sessionStorage, "getItem is not in sessionStorage");
+    assert_true("setItem" in window.sessionStorage, "setItem is not in sessionStorage");
+    assert_true("removeItem" in window.sessionStorage, "removeItem is not in sessionStorage");
+    assert_true("clear" in window.sessionStorage, "clear is not in sessionStorage");
+  }, "Check if sessionStorage Attributes exist");
+</script>

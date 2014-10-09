@@ -27,41 +27,23 @@ EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
 Authors:
         Fan,Weiwei <weiwix.fan@intel.com>
+        Xie,Yunxiao <yunxiaox.xie@intel.com>
 
 -->
 
-<html>
-  <head>
-    <title>WebStorage Test: window_localStorage_readonly</title>
-    <link rel="author" title="Intel" href="http://www.intel.com" />
-    <link rel="help" href="http://www.w3.org/TR/2011/CR-webstorage-20111208/#dom-localStorage" />
-    <meta name="flags" content="" />
-    <meta name="assert" content="Check if window.localStorage is readonly" />
-    <script type="text/javascript" src="support.js"></script>
-    <script src="../resources/testharness.js"></script>
-    <script src="../resources/testharnessreport.js"></script>
-  </head>
-  <body>
-    <div id="log"></div>
-    <script type="text/javascript">
-        var t = async_test(document.title);
-        function RunTest() {
-            try {
-                if (!("Storage" in window)) {
-                    FailTest("Storage is not in window");
-                }
-                var iniLocalStorage = window.localStorage;
-                window.localStorage = null;
-                if (window.localStorage === iniLocalStorage && window.localStorage !== null) {
-                    PassTest();
-                } else {
-                    FailTest("window.localStorage is not readonly");
-                }
-            } catch (ex) {
-                FailTest("{Error Name: " + ex.name +"}");
-            }
-        }
-        RunTest();
-    </script>
-  </body>
-</html>
+<meta charset="utf-8">
+<title>WebStorage Test: window_localStorage_readonly</title>
+<link rel="author" title="Intel" href="http://www.intel.com" >
+<link rel="help" href="http://www.w3.org/TR/2011/CR-webstorage-20111208/#dom-localStorage" >
+<script src="../resources/testharness.js"></script>
+<script src="../resources/testharnessreport.js"></script>
+<div id="log"></div>
+<script>
+  test(function () {
+    assert_true("Storage" in window);
+    var iniLocalStorage = window.localStorage;
+    window.localStorage = null;
+    assert_equals(window.localStorage, iniLocalStorage);
+    assert_not_equals(window.localStorage, null);
+  }, "Check if window.localStorage is readonly");
+</script>

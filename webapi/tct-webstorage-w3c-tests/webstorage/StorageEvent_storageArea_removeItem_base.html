@@ -27,45 +27,34 @@ EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
 Authors:
         Fan,Weiwei <weiwix.fan@intel.com>
+        Xie,Yunxiao <yunxiaox.xie@intel.com>
 
 -->
 
-<html>
-  <head>
-    <title>WebStorage Test: StorageEvent_storageArea_removeItem_base</title>
-    <link rel="author" title="Intel" href="http://www.intel.com" />
-    <link rel="help" href="http://www.w3.org/TR/2011/CR-webstorage-20111208/#dom-storageevent-storageArea" />
-    <meta name="flags" content="" />
-    <meta name="assert" content="Check if StorageEvent.storageArea.clear must atomically cause the list associated with the object to be emptied of all key/value pairs" />
-    <script type="text/javascript" src="support.js"></script>
-    <script src="../resources/testharness.js"></script>
-    <script src="../resources/testharnessreport.js"></script>
-  </head>
-  <body>
-    <div id="log"></div>
-    <script type="text/javascript">
-        var t = async_test(document.title);
-        var result = 0;
-        var EXPECT_RESULT = 2;
-        function RunTest(store) {
-            if (store.length != 0) {
-                store.clear();
-            }
-            store.setItem("test", "localStorage");
-            var storageEvent = new StorageEvent("StorageEvent", {key : "key", oldValue : "oldValue", newValue : "newValue", url : "url", storageArea : store});
-            storageEvent.storageArea.removeItem("test");
-            if ((storageEvent.storageArea.key(0) == null)) {
-                result ++;
-            } else {
-                FailTest("fail to remove the item from the list");
-            }
-            if (result === EXPECT_RESULT) {
-                PassTest();
-            }
-        }
-
-        RunTest(sessionStorage);
-	    RunTest(localStorage);
-    </script>
-  </body>
-</html>
+<meta charset="utf-8">
+<title>WebStorage Test: StorageEvent_storageArea_removeItem_base</title>
+<link rel="author" title="Intel" href="http://www.intel.com" >
+<link rel="help" href="http://www.w3.org/TR/2011/CR-webstorage-20111208/#dom-storageevent-storageArea" >
+<script src="../resources/testharness.js"></script>
+<script src="../resources/testharnessreport.js"></script>
+<div id="log"></div>
+<script>
+  test(function () {
+    function RunTest(store) {
+      if (store.length != 0) {
+        store.clear();
+      }
+      store.setItem("test", "localStorage");
+      var storageEvent = new StorageEvent("StorageEvent",
+                              {key : "key",
+                               oldValue : "oldValue",
+                               newValue : "newValue",
+                               url : "url",
+                               storageArea : store});
+      storageEvent.storageArea.removeItem("test");
+      assert_equals(storageEvent.storageArea.key(0), null);
+    }
+    RunTest(localStorage);
+    RunTest(sessionStorage);
+  }, "Check if StorageEvent.storageArea.clear must atomically cause the list associated with the object to be emptied of all key/value pairs");
+</script>

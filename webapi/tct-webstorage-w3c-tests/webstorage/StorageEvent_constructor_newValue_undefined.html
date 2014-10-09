@@ -28,34 +28,25 @@ EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 Authors:
         Fan,Weiwei <weiwix.fan@intel.com>
         Xu,Yuhan <yuhanx.xu@intel.com>
+        Xie,Yunxiao <yunxiaox.xie@intel.com>
 
 -->
 
-<html>
-  <head>
-    <title>WebStorage Test: StorageEvent_constructor_newValue_undefined</title>
-    <link rel="author" title="Intel" href="http://www.intel.com" />
-    <link rel="help" href="http://www.w3.org/TR/2011/CR-webstorage-20111208/#dom-storageevent-key" />
-    <meta name="flags" content="" />
-    <meta name="assert" content="Check if the value of StorageEvent.newValue is 'undefined' when set it undefined" />
-    <script src="support.js"></script>
-    <script src="../resources/testharness.js"></script>
-    <script src="../resources/testharnessreport.js"></script>
-  </head>
-  <body>
-    <div id="log"></div>
-    <script>
-        var t = async_test(document.title);
-        function RunTest() {
-            var storageEvent = new StorageEvent("StorageEvent", {key : "key", oldValue : "oldValue", newValue : "undefined", url : "url", storageArea : sessionStorage});
-            if ((storageEvent.newValue == "undefined")) {
-                PassTest();
-            } else {
-                FailTest("StorageEvent.newValue is not 'undefined'");
-            }
-        }
-
-        RunTest();
-    </script>
-  </body>
-</html>
+<meta charset="utf-8">
+<title>WebStorage Test: StorageEvent_constructor_newValue_undefined</title>
+<link rel="author" title="Intel" href="http://www.intel.com" >
+<link rel="help" href="http://www.w3.org/TR/2011/CR-webstorage-20111208/#dom-storageevent-key" >
+<script src="../resources/testharness.js"></script>
+<script src="../resources/testharnessreport.js"></script>
+<div id="log"></div>
+<script>
+  test(function () {
+    var storageEvent = new StorageEvent("StorageEvent",
+                            {key : "key",
+                             oldValue : "oldValue",
+                             newValue : "undefined",
+                             url : "url",
+                             storageArea : sessionStorage});
+    assert_equals(storageEvent.newValue, "undefined");
+  }, "Check if the value of StorageEvent.newValue is 'undefined' when set it undefined");
+</script>

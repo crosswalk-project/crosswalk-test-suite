@@ -27,43 +27,21 @@
 
  Authors:
          Lei Yang <lei.a.yang@intel.com>
+         Xie,Yunxiao <yunxiaox.xie@intel.com>
 
  -->
 
-<html>
-  <head>
-    <title>WebStorage: window_localStorage_getItem_exist</title>
-    <link rel="author" title="Intel" href="http://www.intel.com" />
-    <link rel="help" href="http://www.w3.org/TR/2011/CR-webstorage-20111208/#dom-localStorage-getitem" />
-    <meta name="flags" content="" />
-    <meta name="assert" content="Check if the getItem method exist in localStorage interface" />
-    <script type="text/javascript" src="support.js"></script>
-    <script src="../resources/testharness.js"></script>
-    <script src="../resources/testharnessreport.js"></script>
-  </head>
-  <body>
-    <div id="log"></div>
-    <script type="text/javascript">
-        var t = async_test(document.title);
-        function RunTest() {
-            try
-            {
-                if(!("localStorage" in window))
-                    FailTest("localStorage is not in window.");
-                var store = window.localStorage;
-		        if(!("getItem" in store))
-                    FailTest("no getItem method in localStorage.");
-                PassTest();
-            }
-            catch (ex)
-            {
-                FailTest("{Excetion code: " + ex.code + "}");
-            }
-        }
-        Initialize();
-        RunTest();
-        Deinitialize();
-
-    </script>
-  </body>
-</html>
+<meta charset="utf-8">
+<title>WebStorage: window_localStorage_getItem_exist</title>
+<link rel="author" title="Intel" href="http://www.intel.com" >
+<link rel="help" href="http://www.w3.org/TR/2011/CR-webstorage-20111208/#dom-localStorage-getitem" >
+<script src="../resources/testharness.js"></script>
+<script src="../resources/testharnessreport.js"></script>
+<div id="log"></div>
+<script>
+  test(function () {
+    assert_true("localStorage" in window);
+    var store = window.localStorage;
+    assert_true("getItem" in store);
+  }, "Check if the getItem method exist in localStorage interface");
+</script>

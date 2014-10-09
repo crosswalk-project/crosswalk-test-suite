@@ -27,52 +27,25 @@
 
  Authors:
          Lei Yang <lei.a.yang@intel.com>
+         Xie,Yunxiao <yunxiaox.xie@intel.com>
 
  -->
 
-<html>
-  <head>
-    <title>WebStorage: window_localStorage_exist</title>
-    <link rel="author" title="Intel" href="http://www.intel.com" />
-    <link rel="help" href="http://www.w3.org/TR/2011/CR-webstorage-20111208/#dom-localStorage" />
-    <meta name="flags" content="" />
-    <meta name="assert" content="Check if localStorage Attributes exist" />
-    <script type="text/javascript" src="support.js"></script>
-    <script src="../resources/testharness.js"></script>
-    <script src="../resources/testharnessreport.js"></script>
-  </head>
-  <body>
-    <div id="log"></div>
-    <script type="text/javascript">
-	    var t = async_test(document.title);
-	    function RunTest() {
-	        try
-	        {
-	            if(!("localStorage" in window))
-		            FailTest("no localStorage in window");
-		        if(!("length" in window.localStorage))
-		            FailTest("no length in localStorage");
-		        if(!("key" in window.localStorage))
-		            FailTest("no key in localStorage");
-		        if(!("getItem" in window.localStorage))
-		            FailTest("no getItem in localStorage");
-		        if(!("setItem" in window.localStorage))
-		            FailTest("no setItem in localStorage");
-		        if(!("removeItem" in window.localStorage))
-		            FailTest("no removeItem in localStorage");
-		        if(!("clear" in window.localStorage))
-		            FailTest("no clear in localStorage");
-
-		        PassTest();
-	        }
-	        catch (ex)
-	        {
-		        FailTest("{Excetion code: " + ex.code + "}");
-	        }
-	    }
-	    Initialize();
-	    RunTest();
-	    Deinitialize();
-    </script>
-  </body>
-</html>
+<meta charset="utf-8">
+<title>WebStorage: window_localStorage_exist</title>
+<link rel="author" title="Intel" href="http://www.intel.com" >
+<link rel="help" href="http://www.w3.org/TR/2011/CR-webstorage-20111208/#dom-localStorage" >
+<script src="../resources/testharness.js"></script>
+<script src="../resources/testharnessreport.js"></script>
+<div id="log"></div>
+<script>
+  test(function () {
+    assert_true("localStorage" in window, "no localStorage in window");
+    assert_true("length" in window.localStorage, "no length in localStorage");
+    assert_true("key" in window.localStorage, "no key in localStorage");
+    assert_true("getItem" in window.localStorage, "no getItem in localStorage");
+    assert_true("setItem" in window.localStorage, "no setItem in localStorage");
+    assert_true("removeItem" in window.localStorage, "no removeItem in localStorage");
+    assert_true("clear" in window.localStorage, "no clear in localStorage");
+  }, "Check if localStorage Attributes exist");
+</script>

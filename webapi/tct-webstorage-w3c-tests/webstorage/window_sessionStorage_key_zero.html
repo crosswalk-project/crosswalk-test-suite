@@ -27,41 +27,23 @@ EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
 Authors:
         Xu,Liyu <liyux.xu@intel.com>
+        Xie,Yunxiao <yunxiaox.xie@intel.com>
 
 -->
 
-<html>
-  <head>
-    <title>WebStorage Test: window_sessionStorage_key_zero</title>
-    <link rel="author" title="Intel" href="http://www.intel.com" />
-    <link rel="help" href="http://www.w3.org/TR/2011/CR-webstorage-20111208/#dom-sessionStorage-key" />
-    <meta name="flags" content="" />
-    <meta name="assert" content="Check if the sessionStorage.key(0) value" />
-    <script type="text/javascript" src="support.js"></script>
-    <script src="../resources/testharness.js"></script>
-    <script src="../resources/testharnessreport.js"></script>
-  </head>
-  <body>
-    <div id="log"></div>
-    <script type="text/javascript">
-        var sessionstorage = function () {
-            try {
-                if(!("sessionStorage" in window)) {
-                    FailTest("sessionStorage not exist");
-                }
-                var store = window.localStorage;
-                store.clear();
-                store.setItem("test", "sessionStorage:setItem");
-                test(function () {
-                    assert_equals(store.key(0), "test");
-                }, document.title);
-            } catch (e) {
-                test(function () {
-                    assert_false(true, e.message);
-                }, document.title);
-            }
-        };
-        sessionstorage();
-    </script>
-  </body>
-</html>
+<meta charset="utf-8">
+<title>WebStorage Test: window_sessionStorage_key_zero</title>
+<link rel="author" title="Intel" href="http://www.intel.com" >
+<link rel="help" href="http://www.w3.org/TR/2011/CR-webstorage-20111208/#dom-sessionStorage-key" >
+<script src="../resources/testharness.js"></script>
+<script src="../resources/testharnessreport.js"></script>
+<div id="log"></div>
+<script>
+  test(function () {
+    assert_true("sessionStorage" in window);
+    var store = window.localStorage;
+    store.clear();
+    store.setItem("test", "sessionStorage:setItem");
+    assert_equals(store.key(0), "test");
+  }, "Check if the sessionStorage.key(0) value");
+</script>

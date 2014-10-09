@@ -27,41 +27,23 @@ EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
 Authors:
         Xu,Liyu <liyux.xu@intel.com>
+        Xie,Yunxiao <yunxiaox.xie@intel.com>
 
 -->
 
-<html>
-  <head>
-    <title>WebStorage Test: window_localStorage_setItem_update_value</title>
-    <link rel="author" title="Intel" href="http://www.intel.com" />
-    <link rel="help" href="http://www.w3.org/TR/2011/CR-webstorage-20111208/#dom-localStorage-setItem" />
-    <meta name="flags" content="" />
-    <meta name="assert" content="Check if the localStorage.setItem update value" />
-    <script type="text/javascript" src="support.js"></script>
-    <script src="../resources/testharness.js"></script>
-    <script src="../resources/testharnessreport.js"></script>
-  </head>
-  <body>
-    <div id="log"></div>
-    <script type="text/javascript">
-        var localstorage = function () {
-            try {
-                if(!("localStorage" in window)) {
-                    FailTest("localStorage not exist");
-                }
-                var store=window.localStorage;
-                store.setItem("test", "localStorage:setItem");
-                store.setItem("test", "all");
-                test(function () {
-                    assert_equals(store.getItem("test"), "all");
-                }, document.title);
-            } catch (e) {
-                test(function () {
-                    assert_false(true, e.message);
-                }, document.title);
-            }
-        };
-        localstorage();
-    </script>
-  </body>
-</html>
+<meta charset="utf-8">
+<title>WebStorage Test: window_localStorage_setItem_update_value</title>
+<link rel="author" title="Intel" href="http://www.intel.com" >
+<link rel="help" href="http://www.w3.org/TR/2011/CR-webstorage-20111208/#dom-localStorage-setItem" >
+<script src="../resources/testharness.js"></script>
+<script src="../resources/testharnessreport.js"></script>
+<div id="log"></div>
+<script>
+  test(function () {
+    assert_true("localStorage" in window);
+    var store=window.localStorage;
+    store.setItem("test", "localStorage:setItem");
+    store.setItem("test", "all");
+    assert_equals(store.getItem("test"), "all");
+  }, "Check if the localStorage.setItem update value");
+</script>

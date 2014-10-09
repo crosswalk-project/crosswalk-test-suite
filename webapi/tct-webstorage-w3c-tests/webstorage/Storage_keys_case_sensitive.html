@@ -28,55 +28,32 @@ EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 Authors:
         Lei Yang <lei.a.yang@intel.com>
         Xu,Yuhan <yuhanx.xu@intel.com>
+        Xie,Yunxiao <yunxiaox.xie@intel.com>
 
 -->
 
-<html>
-  <head>
-    <title>WebStorage Test: Storage_keys_case_sensitive</title>
-    <link rel="author" title="Intel" href="http://www.intel.com" />
-    <link rel="help" href="http://www.w3.org/TR/2011/CR-webstorage-20111208/#dom-storage-key" />
-    <meta name="flags" content="" />
-    <meta name="assert" content="Check if storage key is case sensitive or not" />
-    <script src="support.js"></script>
-    <script src="../resources/testharness.js"></script>
-    <script src="../resources/testharnessreport.js"></script>
-  </head>
-  <body>
-    <div id="log"></div>
-    <script>
-        var t = async_test(document.title);
-        var result = 0;
-
-        function test_storage_keys(store) {
-            if (!store) {
-                FailTest("FAIL to get correct storage object");
-            }
-            store.clear();
-            if (store.length != 0) FailTest("clear storage fail");
-            try
-            {
-                // test uppercase and lowercase sensitive
-                store.setItem('FOO', 'upper_foo');
-                if ("upper_foo" != store.getItem('FOO'))
-                    FailTest("restored a key fail");
-                if (null != store.getItem('Foo'))
-                    FailTest("not case sensitive on keys");
-                result++;
-                if(result >= 2)
-                    PassTest();
-            } catch (ex) {
-                FailTest("{Exception code: " + ex.code + "}");
-            }
-        }
-
-        function RunTest() {
-            test_storage_keys(localStorage);
-            test_storage_keys(sessionStorage);
-        }
-        Initialize();
-        RunTest();
-        Deinitialize();
-    </script>
-  </body>
-</html>
+<meta charset="utf-8">
+<title>WebStorage Test: Storage_keys_case_sensitive</title>
+<link rel="author" title="Intel" href="http://www.intel.com" >
+<link rel="help" href="http://www.w3.org/TR/2011/CR-webstorage-20111208/#dom-storage-key" >
+<script src="../resources/testharness.js"></script>
+<script src="../resources/testharnessreport.js"></script>
+<div id="log"></div>
+<script>
+  test(function () {
+    function RunTest(store) {
+      if (!store) {
+        assert_unreached("FAIL to get correct storage object");
+      }
+      store.clear();
+      if (store.length != 0)
+        assert_unreached("clear storage fail");
+      // test uppercase and lowercase sensitive
+      store.setItem('FOO', 'upper_foo');
+      assert_equals("upper_foo", store.getItem('FOO'));
+      assert_equals(null, store.getItem('Foo'));
+    }
+    RunTest(localStorage);
+    RunTest(sessionStorage);
+  }, "Check if storage key is case sensitive or not");
+</script>

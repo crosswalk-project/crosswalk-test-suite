@@ -27,60 +27,33 @@ EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
 Authors:
         Lei Yang <lei.a.yang@intel.com>
+        Xie,Yunxiao <yunxiaox.xie@intel.com>
 
 -->
 
-<html>
-  <head>
-    <title>WebStorage Test: Storage_keys_numeric</title>
-    <link rel="author" title="Intel" href="http://www.intel.com" />
-    <link rel="help" href="http://www.w3.org/TR/2011/CR-webstorage-20111208/#dom-storage-key" />
-    <meta name="flags" content="" />
-    <meta name="assert" content="Check if use numbers in keys" />
-    <script type="text/javascript" src="support.js"></script>
-    <script src="../resources/testharness.js"></script>
-    <script src="../resources/testharnessreport.js"></script>
-  </head>
-  <body>
-    <div id="log"></div>
-    <script type="text/javascript">
-	    var t = async_test(document.title);
-	    var result = 0;
-
-	    function test_storage_keys(store) {
-	        if (!store) {
-		        FailTest("FAIL to get correct storage object");
-	        }
-	        store.clear();
-	        if (store.length != 0) FailTest("clear storage fail");
-	        try
-	        {
-		    // test 'numeric' key
-		        store[1] = "number1";
-		        if ("number1" != store.getItem(1))
-		            FailTest("set/get numeric key fail");
-		        store['2'] = "number2";
-		        if ("number2" != store.getItem('2'))
-		            FailTest("set/get numeric key fail");
-
-		        if (result >= 1)
-		            PassTest();
-		        else result += 1;
-	        }
-	        catch (ex)
-	        {
-		        FailTest("{Exception code: " + ex.code + "}");
-	        }
-	    }
-
-	    function RunTest() {
-            test_storage_keys(localStorage);
-            test_storage_keys(sessionStorage);
-	    }
-	    Initialize();
-	    RunTest();
-	    Deinitialize();
-
-    </script>
-  </body>
-</html>
+<meta charset="utf-8">
+<title>WebStorage Test: Storage_keys_numeric</title>
+<link rel="author" title="Intel" href="http://www.intel.com" >
+<link rel="help" href="http://www.w3.org/TR/2011/CR-webstorage-20111208/#dom-storage-key" >
+<script src="../resources/testharness.js"></script>
+<script src="../resources/testharnessreport.js"></script>
+<div id="log"></div>
+<script>
+  test(function () {
+    function RunTest(store) {
+      if (!store) {
+        assert_unreached("FAIL to get correct storage object");
+      }
+      store.clear();
+      if (store.length != 0)
+        assert_unreached("clear storage fail");
+      // test 'numeric' key
+      store[1] = "number1";
+      assert_equals("number1", store.getItem(1));
+      store['2'] = "number2";
+      assert_equals("number2", store.getItem('2'));
+    }
+    RunTest(localStorage);
+    RunTest(sessionStorage);
+  }, "Check if use numbers in keys");
+</script>
