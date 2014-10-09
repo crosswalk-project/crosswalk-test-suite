@@ -1,1019 +1,803 @@
-#!/usr/bin/env python
-import sys, os, itertools, shutil, getopt, re, time 
-import const
-import pdb, traceback
-from xml.etree.ElementTree import ElementTree
-from xml.etree.ElementTree import Element
-from xml.etree.ElementTree import SubElement
-from datetime import *  
-import metacomm.combinatorics.all_pairs2
-all_pairs = metacomm.combinatorics.all_pairs2.all_pairs2
-
-Manifest_Row = 0
-Device_Ip = ""
-Device_Ip_List = []
-Device_SSH_List = []
-Pack_Type = "xpk"
-Test_Flag = "positive"
-Test_Device_Type = "ssh"
-test_start_time = datetime.now().strftime('%m-%d-%H:%M:%S')
-reload(sys)
-sys.setdefaultencoding( "utf-8" )
-def do_Selfcom(self_combin_file,out_file):
-    try:
-        file = open(self_combin_file)
-        allpairs_in = open(out_file,'a+')
-        while 1:
-            line = file.readline()
-            if not line:
-                break
-            allpairs_in.writelines(line + "\n")
-        file.close()
-        allpairs_in.close()
-        return
-    except Exception,e: 
-        print Exception,":",e 
-
-
-def gen_Manifest_Json(output_file,in_file):
-    try:
-        global Manifest_Row
-        global Pack_Type
-        file = open(output_file)
-        if (Test_Flag=="positive"):
-            fp_manifest = open(const.report_path + "/manifest_all_positive.txt" ,'w+')
-        else:
-            fp_manifest = open(const.report_path + "/manifest_all_negative.txt" ,'a+')
-        manifest="{\n  "
-        name_list=[]
-        get_self=""
-        line = file.readline().strip('\n\r')
-        items = line.split("	")
-        counters = len(items)
-        try:
-            os.mkdir(const.path + "/tcs")
-        except:
-            print  "make tcs folder error"
-        for i in items:
-            name_list.append(i)
-        while 1:
-            line = file.readline()
-            if not line:
-                break
-            line = line.strip('\n\r')
-            items = line.split("	")
-            counters = len(items)
-            os.mkdir(const.path + "/tcs/Crosswalk-Manifest-Check" + str(Manifest_Row+1))
-            fp = open(const.path + "/tcs/Crosswalk-Manifest-Check"+str(Manifest_Row+1) + "/manifest.json",'w')
-            for i in range(0,len(items)):
-              if ((name_list[i])!="icons" and (name_list[i])!="xwalk_permissions"  and (name_list[i])!="xwalk_launch_screen"):
-                    if (items[i].find("000")!=-1):
-                        items[i] = items[i].replace("000"," ")
-                        get_self = get_self + "\"" + name_list[i] + "\"" + " : " + "\"" +items[i].replace("null","") + "\",\n"
-                    else:
-                        get_self = get_self + "\"" + name_list[i].strip() + "\"" + " : " + "\""+items[i].replace("null","") + "\",\n"
-              else:
-                    items[i] = items[i].replace("comma",",")
-                    get_self = get_self + "\"" + name_list[i] + "\"" + " : "+items[i].replace("null","") + ",\n" 
-            get_self = "{\n" + get_self[:-2] + "\n}" 
-            fp.writelines(get_self)
-            print "\n-----------------------------------------------------------"
-            print get_self
-            fp_manifest.writelines("Crosswalk-Manifest-Check" + str(Manifest_Row+1) + "\n--------------------------------\n" +
-             get_self+"\n--------------------------------\n")
-            Manifest_Row = Manifest_Row+1
-            fp.close()
-            #start copy folder
-            app_Folder(const.path_tcs)
-            get_Configxml(const.path_tcs + "/Crosswalk-Manifest-Check" +str(Manifest_Row) + "/config.xml", "Crosswalk-Manifest-Check" +str(Manifest_Row))
-            
-            #launch the app
-            manifest_Packing("Crosswalk-Manifest-Check" + str(Manifest_Row),Pack_Type)
-            get_run_back = launcher_WebApp(Pack_Type,str(Manifest_Row),get_self)
-                
-            do_Clear(const.path_tcs + "/Crosswalk-Manifest-Check" + str(Manifest_Row))
-            get_self=""
-        file.close()
-        fp_manifest.close()
-        return "<--------------- Generate manifest.json O.K ------------------>"
-    except Exception,e: 
-        print Exception,"------------------------->:",e 
-        return "Generate manifest.json error"
-        
-def fileline_count(fp):
-     return len(open(fp).readlines()) 
-
-
-def del_Seed(in_file):
-    try:
-        caseline = "" 
-        row = 0
-        file = open(in_file)
-        items = []
-        self_file = []
-        s_name = p_name = ""
-        if (os.path.isdir("self")):
-            do_Clear(const.path +"/self")
-        os.mkdir(const.path + "/self")
-        while 1:
-            p_name = s_name
-            line = file.readline()
-            if not line:
-                break
-            line = line.strip('\n\r')
-            items = line.split(":")
-            s_name = items[0].split("-")[0]
-            if ((p_name!=s_name) and (p_name!="")):
-                fp=open(const.path + "/self/" + s_name + "_input.txt",'a+')
-                fp.writelines(line + "\n")
-            else:
-                fp= open(const.path + "/self/" + s_name + "_input.txt",'a+')
-                fp.writelines(line + "\n")
-            if (s_name!=p_name):
-                self_file.append(s_name)
-        fp.close()
-        file.close()
-        if (os.path.isfile(const.selfcomb_file)):
-            os.remove(const.selfcomb_file)
-        for i in range (0,len(self_file)):
-            line_count = fileline_count(const.path + "/self/" + self_file[i] + "_input.txt")
-
-            if (line_count >= 2):
-                lists = [[] for m in range(line_count)]
-                open_input_file = open(const.path + "/self/" + self_file[i] + "_input.txt",'a+')
-                while 1:
-                    line = open_input_file.readline()
-                    if not line:
-                        break
-                    line = line.strip('\n\r')
-                    items = line.split(":")
-                    get_item= items[1].split(",")
-                    for g in get_item:
-                        lists[row].append(g)
-                    row = row + 1
-                input_pair = all_pairs( lists )
-                open_input_file.close()
-                output_pair = open(const.path + "/self/" + self_file[i] + "_output.txt",'a+')
-                for e, v in enumerate(input_pair):
-                      for c in range(0,len(v)):
-                          caseline = caseline + v[c]
-                      caseline = caseline  + ","
-                output_pair.writelines(self_file[i] + ":" + caseline[:-1])
-                output_pair.close()
-            else:
-                open_input_file = open(const.path + "/self/" + self_file[i] + "_input.txt",'r')
-                output_pair = open(const.path + "/self/" + self_file[i] + "_output.txt",'a+')
-                while 1:
-                    line = open_input_file.readline()
-                    if not line:
-                        break
-                    line = line.strip('\n\r')
-                    output_pair.writelines(line)
-                output_pair.close()
-                open_input_file .close()
-              
-        #1*********input_seed -> selfcomb.txt
-        # if more self combination, each self generate itself output file,finally all self_input generate one selfcomb.txt
-            do_Selfcom(const.path + "/self/" + self_file[i] + "_output.txt",const.selfcomb_file)
-        
-        #2*********selfcomb -> output file  by allpairs
-        gen_selfcomb_File(const.selfcomb_file, in_file)
-
-        #3*********output -> manifest.json
-        if (Test_Flag=="negative"):
-            print gen_Manifest_Json(const.output_file_ne, in_file)
-        else:
-            print gen_Manifest_Json(const.output_file, in_file)
-        log_Log(" Generate output.txt file ok"+ "\n") 
-        return "Manifest.json output ------------------------->O.K"
-    except Exception,e: 
-        print Exception,":",e
-        log_Log(" Generate output.txt file error\n") 
-        return "Manifest.json output ------------------------->Error"
-
-def gen_selfcomb_File(comb_file,in_file):
-    try:
-        #if (os.path.isfile("./allpairs/output.txt") & (Test_Flag=="positive")):
-        do_Clear("./allpairs/output.txt")
-        do_Clear("./allpairs/output_negative.txt")
-        if (Test_Flag=="negative"):
-            open_output_file= open(const.output_file_ne,'a+')
-        else:
-            open_output_file= open(const.output_file,'a+')
-        caseline = "" 
-        get_items = ""
-        get_case = ""
-        row = 0
-        line_count = fileline_count(comb_file)
-        if (line_count >= 2):
-            lists = [[] for m in range(line_count)]
-            open_input_file= open(comb_file)
-            while 1:
-                  line = open_input_file.readline()
-                  if not line:
-                        break
-                  line = line.strip('\n\r')
-                  items = line.split(":")
-                  get_items = get_items + items[0].split("-")[0] + "\t"
-            open_output_file.writelines(get_items.rstrip("\t") + "\n")
-            open_input_file.close()
-            open_input_file= open(comb_file)
-            for i in range(0,len(lists)):
-                    line = open_input_file.readline()
-                    if not line:
-                        break
-                    line = line.strip('\n\r')
-                    items = line.split(":")#items[0]=field;#item[1]=value
-                    value = line[len(items[0])+1:]
-                    get_item= value.split(",")
-                    for g in get_item:
-                        lists[row].append(g)
-                    row = row + 1
-                    #print  lists
-            input_pair = all_pairs( lists )
-            for e, v in enumerate(input_pair):
-                for c in range(0,len(v)):
-                    get_case = get_case +  v[c]+"\t"
-                open_output_file.writelines(get_case.rstrip("\t") + "\n")
-                get_case=""  
-            open_output_file.close()
-        log_Log(" Generate selfcombination file ok"+ "\n")    
-        return "Generate selfcombination file ------------------------->O.K"
-    except:
-        log_Log(" Generate selfcombination file error"+ "\n") 
-        return "Generate selfcombination file ------------------------->error"
-
-def make_webapp_folder(sourceDir,targetDir):
-    print "copy source file...."
-    try:
-        for file in os.listdir(targetDir):
-            for fp in os.listdir(sourceDir):
-                sourceFile = os.path.join(sourceDir, fp) 
-                targetFile = os.path.join(targetDir, file) 
-                #copy resource to the manifest
-                if os.path.isfile(sourceFile):
-                    shutil.copy(sourceFile, targetFile)
-    except:
-        print "manifest resource copy error"
-
-
-def app_Folder(path_tcs):
-    try:
-        for file in os.listdir(path_tcs):
-            copy_Files(const.path_resource,os.getcwd()+"/tcs/"+file)
-        return "Webapp folder copy ------------------------->O.K",path_tcs
-    except Exception,e: 
-        print Exception,":",e 
-        return "Webapp folder copy ------------------------->error",path_tcs
-
-def copy_Files(sourceDir, targetDir):
-    try:
-        copyFileCounts = 0
-        for f in os.listdir(sourceDir):  
-            sourceF = os.path.join(sourceDir, f)  
-            targetF = os.path.join(targetDir, f)  
-            if os.path.isfile(sourceF):  
-                #create folder 
-                if not os.path.exists(targetDir): 
-                    os.makedirs(targetDir)  
-                copyFileCounts = copyFileCounts + 1  
-                #if not exist to copy
-                if not os.path.exists(targetF):  
-                    #copy file
-                    open(targetF, "wb").write(open(sourceF, "rb").read())  
-                else:  
-                    print ("file exist do not copy")  
-            if os.path.isdir(sourceF):
-                copy_Files(sourceF, targetF)  
-        return "Copy File O.k",sourceDir,"------------------------->", targetDir
-    except Exception,e: 
-        print Exception,":",e 
-        return "Copy File error",sourceDir,"------------------------->", targetDir
-
-
-def do_Clear(sourceDir):
-    try:
-        if (os.path.exists(sourceDir)):
-            if (os.path.isdir(sourceDir)):
-                shutil.rmtree(sourceDir)
-            else:
-                os.remove(sourceDir)
-    except IOError,e: 
-        print Exception,"Clear :"+ sourceDir + " ------------------------->error",e 
-
-def Usage():
-    print "<-------------------------test.py usage:------------------------->"
-    print "-h,--help: print help message"
-    print "-n, --negative seed test"
-    print "-o, --order: input allpairs order default 2"
-    print "-p, --pack: pack xpk or wgt default wgt"
-    print "--foo: Test option "
-
-
-def get_Configxml(in_file,write_name):
-    try:
-        line = "<?xml version=\"1.0\" encoding=\"UTF-8\"?><widget xmlns=\"http://www.w3.org/ns/widgets\" id=\"http://example.org/exampleWidget\" version=\"1.1\" height=\"200\" widtht=\"200\" viewmode=\"fullscreen\"><name short=\"Crosswalk-Manifest-Check\">" + write_name + "</name></widget>"
-        file = open(in_file,'w+')
-        file.writelines(line + "\n")
-        file.close()
-    except Exception,e: 
-        print Exception,"Generate the report error:",e    
-
-def endWith(s,*endstring):
-        array = map(s.endswith,endstring)
-        if True in array:
-                return True
-        else:
-                return False
-def get_Result():
-  try:
-     for i in range(0,len(Device_Ip_List)):
-        auto_sPass = 'PASS'        
-        sBlock_count = 0
-        auto_sPass_count = 0
-        total_case = 0
-        auto_sFail_count = 0        
-        sResult = []
-        os.system("rm -rf " + const.path + "/device_" + Device_Ip_List[i]+"/result/*.dlog")
-        resultList = os.listdir(const.path + "/device_" + Device_Ip_List[i] + "/result")
-        resultList.sort()
-        resultList.sort(key=lambda x:str(x[:-14]))
-        if (len(resultList) <=0):
-            print "Result folder have no file"
-        for resultfile in resultList:
-          if (endWith(resultfile,'.xml')):
-            sResult = testcase_Result(const.path + "/device_" + Device_Ip_List[i] + "/result/" + resultfile)
-            total_case = total_case +1
-            if auto_sPass in (sResult[1].replace("\\n"," ")):
-                    auto_sPass_count = auto_sPass_count + 1
-            else:
-                    auto_sFail_count = auto_sFail_count + 1 
-            
-            testreport_auto_XML(const.path + "/device_" + Device_Ip_List[i] + "/wrt-manifest-tizen-tests.xml",sResult[0].replace("\\n"," "),sResult[1].replace("\\n"," "),sResult[2].replace("\\n"," "),"" ,sResult[3].replace("\\n"," "),Device_Ip_List[i])                   
-       
-        resultList = os.listdir(const.path + "/device_" + Device_Ip_List[i] + "/result")
-        pass_rate = auto_sPass_count / float(total_case) *100
-        fail_rate = auto_sFail_count / float(total_case) *100
-        block_rate = sBlock_count / float(total_case) *100
-        insert_to_Summary(const.path + "/device_" + Device_Ip_List[i] + "/summary.xml",total_case,auto_sPass_count,pass_rate,auto_sFail_count,fail_rate, sBlock_count,block_rate,Device_Ip_List[i])
-        log_Log(" Generate report file ok" + "\n") 
-        print "<------------------------- Generate Report OK------------------------->"        
-  except Exception,e:
-      log_Log(" Generate report file ok\n")
-      print traceback.format_exc()  
-      print Exception,"Generate the report error:",e    
-    
-def testcase_Result(resultfile):
-    try:
-        tree = ElementTree()
-        tree.parse(resultfile)
-        root = tree.getroot()
-        
-        rset = root.getchildren() 
-        for mset in rset:
-            testcase = mset.findall("set")
-            get_positive = testcase[0].get("name")
-      
-        en = root.getiterator("testcase")
-        enid=en[0]
-        e_auto = root.getiterator("auto_result")
-        e_manifest= root.getiterator("testcommand")
-        return enid.attrib["id"],e_auto[0].text,e_manifest[0].text,get_positive.strip()
-    except Exception,e: 
-        print Exception,"Get the result -------------------------> error:",e       
-
-def insert_to_Summary(sumaryfile,total_case,pass_case,pass_rate,fail_case,fail_rate,block_case,block_rate,device_id):
-    try:
-        tree = ElementTree()
-        tree.parse(sumaryfile)
-        root = tree.getroot()
-        ntotal_case = root.getiterator("total_case")
-        ntotal_case[0].text = str(total_case)
-        npass_case = root.getiterator("pass_case")
-        npass_case[0].text = str(pass_case)
-        npass_case_rate = root.getiterator("pass_rate")
-        npass_case_rate[0].text = str(pass_rate)
-        nfail_case = root.getiterator("fail_case")
-        nfail_case[0].text = str(fail_case)
-        nfail_case_rate = root.getiterator("fail_rate")
-        nfail_case_rate[0].text = str(fail_rate)
-        nblock_case = root.getiterator("block_case")
-        nblock_case[0].text = str(block_case) 
-        nblock_case_rate = root.getiterator("block_rate")
-        nblock_case_rate[0].text = str(block_rate)
-        test_end_time = datetime.now().strftime('%m-%d-%H:%M:%S')
-        ntest_start_time = root.getiterator("start_at")
-        ntest_start_time[0].text = str(test_start_time)
-        ntest_end_time = root.getiterator("end_at")
-        ntest_end_time[0].text = str(test_end_time)
-        device_id_get = root.getiterator("environment")
-        device_id_get[0].set("device_id",device_id)
-        tree.write(sumaryfile)
-    except Exception,e: 
-        print Exception,"Insert to report/summart.xml -------------------------> error:",e
-        
-
-
-def result_manifest_XML(result_manifest_xml_file_path,webappFile,auto_Result,manifest_cont):
-    try:
-        tree = ElementTree()
-        tree.parse(result_manifest_xml_file_path + "/result/" + webappFile)
-        root = tree.getroot()
-        rset = root.getchildren() 
-        for mset in rset:
-            testcase = mset.findall("set")
-            testcase[0].set("name",Test_Flag)
-            for mtestcase in testcase:
-                cnode = mtestcase.getiterator("testcase")
-                if (len(cnode)==1):
-                    auto_result =  root.getiterator("auto_result")
-                    #auto_result = cnode.getiterator("auto_result")
-                    auto_result[0].text = auto_Result
-                else:
-                    if (len(cnode)==0):
-                        SubElement(mtestcase,"testcase", {'component':'Runtime Core','purpose':'Check if packaged web application can be installed/launched/uninstalled successfully','execution_type' : 'auto', 'id' : webappFile.split(".")[0]})
-                        result_node = mtestcase.find("testcase")
-                        SubElement(result_node,"auto_result")
-                        SubElement(result_node,"testcommand")
-                        auto_node = result_node.find("auto_result")
-                        auto_node.text = auto_Result
-                        testcommand_node = result_node.find("testcommand")
-                        testcommand_node.text = manifest_cont.decode("utf-8")
-        tree.write(result_manifest_xml_file_path + "/result/" + webappFile)
-    except Exception,e: 
-        print Exception,"Generate manifest.xml error:",e 
-
-def testreport_auto_XML(report_path,webappName,auto_Result,tcs_manifest,tcs_message,positive_negative,device_id):
-    try:
-        tree = ElementTree()
-        tree.parse(report_path)
-        root = tree.getroot()
-        lst_node = root.getiterator("set")
-        if (positive_negative=="positive"):
-            if ((len(lst_node[0].getiterator("testcase"))>=1)):
-                if (lst_node[0].getiterator("testcase")[-1].get("id")<>("Crosswalk-Manifest-Check"+webappName)):  
-                    SubElement(lst_node[0],"testcase", {'component':'Runtime Core','purpose':'Check if packaged web application can be installed/launched/uninstalled successfully','execution_type' : 'auto', 'id' : "Crosswalk-Manifest-Check"+webappName ,'result': auto_Result})
-                    cnode = root.getiterator("testcase")
-                    desnode = cnode[-1]
-                    SubElement(desnode,"description")
-                    entrynode = desnode[-1]
-                    SubElement(entrynode,"test_script_entry")
-                    entryentrynode = root.getiterator("test_script_entry")
-                    entr = entryentrynode[-1]
-                    entr.text = tcs_manifest.decode("utf-8")
-                    SubElement(desnode,"result_info")
-                    resultinfonode = root.getiterator("result_info")
-                    result_info = resultinfonode[-1]
-                    result_info.text = tcs_message
-                    SubElement(result_info,"actual_result")
-                    actualresultnode = root.getiterator("actual_result")      
-                    actualresult = actualresultnode[-1]
-                    actualresult.text = auto_Result
-                    device_id_get = root.getiterator("environment")
-                    device_id_get[0].set("device_id",device_id)
-                    tree.write(report_path)
-                else:
-                    cnode = root.getiterator("testcase")
-                    resultnode = cnode[-1]
-                    resultnode.set("result",auto_Result)
-                    actualresultnode = root.getiterator("actual_result")
-                    actualresult = actualresultnode[-1]
-                    actualresult.text = auto_Result
-                    tree.write(report_path)
-                    
-            else:
-                SubElement(lst_node[0],"testcase", {'component':'Runtime Core','purpose':'Check if packaged web application can be installed/launched/uninstalled successfully','execution_type' : 'auto', 'id' : "Crosswalk-Manifest-Check"+webappName ,'result': auto_Result})
-                cnode = root.getiterator("testcase")
-                desnode = cnode[-1]
-                SubElement(desnode,"description")
-                entrynode = desnode[-1]
-                SubElement(entrynode,"test_script_entry")
-                entryentrynode = root.getiterator("test_script_entry")
-                entr = entryentrynode[-1]
-                entr.text = tcs_manifest.decode("utf-8")
-                SubElement(desnode,"result_info")
-                resultinfonode = root.getiterator("result_info")
-                result_info = resultinfonode[-1]
-                result_info.text = tcs_message
-                SubElement(result_info,"actual_result")
-                actualresultnode = root.getiterator("actual_result")      
-                actualresult = actualresultnode[-1]
-                actualresult.text = auto_Result
-                device_id_get = root.getiterator("environment")
-                device_id_get[0].set("device_id",device_id)
-                tree.write(report_path) 
-        else:
-           if ((len(lst_node[1].getiterator("testcase"))>=1)):
-               if (lst_node[1].getiterator("testcase")[-1].get("id")<>("Crosswalk-Manifest-Check"+webappName)):  
-                   SubElement(lst_node[1],"testcase", {'component':'Runtime Core','purpose':'Check if packaged web application can be installed/launched/uninstalled successfully','execution_type' : 'auto', 'id' : "Crosswalk-Manifest-Check"+webappName ,'result': auto_Result})
-                   cnode = root.getiterator("testcase")
-                   desnode = cnode[-1]
-                   SubElement(desnode,"description")
-                   entrynode = desnode[-1]
-                   SubElement(entrynode,"test_script_entry")
-                   entryentrynode = root.getiterator("test_script_entry")
-                   entr = entryentrynode[-1]
-                   entr.text = tcs_manifest.decode("utf-8") 
-                   SubElement(desnode,"result_info")
-                   resultinfonode = root.getiterator("result_info")
-                   result_info = resultinfonode[-1]
-                   result_info.text = tcs_message
-                   SubElement(result_info,"actual_result")
-                   actualresultnode = root.getiterator("actual_result")      
-                   actualresult = actualresultnode[-1]
-                   actualresult.text = auto_Result
-                   device_id_get = root.getiterator("environment")
-                   device_id_get[0].set("device_id",device_id)
-                   tree.write(report_path)
-               else:
-                    cnode = root.getiterator("testcase")
-                    resultnode = cnode[-1]
-                    resultnode.set("result",auto_Result)
-                    actualresultnode = root.getiterator("actual_result")
-                    actualresult = actualresultnode[-1]
-                    actualresult.text = auto_Result
-                    device_id_get = root.getiterator("environment")
-                    device_id_get[0].set("device_id",device_id)
-                    tree.write(report_paths) 
-           else:
-              SubElement(lst_node[1],"testcase", {'component':'Runtime Core','purpose':'Check if packaged web application can be installed/launched/uninstalled successfully','execution_type' : 'auto', 'id' : "Crosswalk-Manifest-Check"+webappName ,'result': auto_Result})
-              cnode = root.getiterator("testcase")
-              desnode = cnode[-1]
-              SubElement(desnode,"description")
-              entrynode = desnode[-1]
-              SubElement(entrynode,"test_script_entry")
-              entryentrynode = root.getiterator("test_script_entry")
-              entr = entryentrynode[-1]
-              entr.text = tcs_manifest.decode("utf-8") 
-              SubElement(desnode,"result_info")
-              resultinfonode = root.getiterator("result_info")
-              result_info = resultinfonode[-1]
-              result_info.text = tcs_message
-              SubElement(result_info,"actual_result")
-              actualresultnode = root.getiterator("actual_result")      
-              actualresult = actualresultnode[-1]
-              actualresult.text = auto_Result
-              device_id_get = root.getiterator("environment")
-              device_id_get[0].set("device_id",device_id)
-              tree.write(report_path)        
-    except Exception,e: 
-        print Exception,"Generate test error:",e 
-
-def manifest_Packing(pakeNo,pakeType):
-    try:
-        print "-------------- Packing WebApp: "+ pakeNo +" -----------------"
-        do_Clear("./opt")
-        os.system("rm -rf *.zip")
-        os.makedirs("./opt/wrt-manifest-tizen-tests")
-        shutil.copy(const.sh_path +"/appinstall.sh","./opt/wrt-manifest-tizen-tests/")
-        shutil.copy(const.sh_path +"/applaunch.sh","./opt/wrt-manifest-tizen-tests/")
-        shutil.copy(const.sh_path +"/appuninstall.sh","./opt/wrt-manifest-tizen-tests/")
-        shutil.copy(const.sh_path +"/checkdb.sh","./opt/wrt-manifest-tizen-tests/")
-        shutil.copy(const.sh_path +"/checkdb_new.sh","./opt/wrt-manifest-tizen-tests/")
-        cmd_packing="python ./allpairs/make_xpk.py "
-        if (pakeNo =="all"):#all is not support now,please use default 
-            for i in range (1,(Manifest_Row+1)):
-                cmd_line=" ./tcs/Crosswalk-Manifest-Check" + str(i) +" -o ./opt/wrt-manifest-tizen-tests/Crosswalk-Manifest-Check" + str(i) + "."+ pakeType +" key.pem "
-                if (pakeType=="xpk"):
-                    os.system(cmd_packing + cmd_line)
-                else:
-                    os.chdir(os.getcwd() + "/tcs/Crosswalk-Manifest-Check" + str(i))
-                    os.system("zip -rq ../../opt/wrt-manifest-tizen-tests/Crosswalk-Manifest-Check"+ str(i) +"." + pakeType+" ./")
-                    os.chdir(const.path)
-        else:
-             cmd_line=" ./tcs/" + str(pakeNo) +" -o ./opt/wrt-manifest-tizen-tests/" + str(pakeNo)+"."+ pakeType +" key.pem"
-             if (pakeType=="xpk"):
-                    os.system(cmd_packing + cmd_line)
-             else:
-                    os.chdir(os.getcwd()+"/tcs/" + str(pakeNo))
-                    os.system("zip -rq ../../opt/wrt-manifest-tizen-tests/" + str(pakeNo) +"." + pakeType+" ./")
-                    os.chdir(const.path)
-        os.system("zip -rq " + const.name + "-"+const.version +"." + pakeType+".zip ./opt")
-        do_Clear("key.pem")
-        log_Log(" Packing webapp " + pakeNo + " ok "+ "\n") 
-    except Exception,e:
-        log_Log(" Packing webapp " + pakeNo + " error \n")  
-        print Exception,"Packing webapp error:",e   
-
-        
-def launcher_WebApp(pakeType,Manifest_Row, tcs_manifest):        
-    try:
-        dt_now = datetime.now()
-        auto_result = "FAIL"
-        fail_message = ""
-        dt_format = dt_now.strftime('%m_%d_%H_%M_%S')
-        if (Test_Device_Type=="sdb"):
-          print "use sdb device-------------->"
-          for i in range(0,len(Device_Ip_List)): 
-            print "god---------->",Device_Ip_List
-            cmd_pushxpk = "sdb -s " + Device_Ip_List[i] +" push " + const.name + "-" + const.version +"." + pakeType + ".zip " +  const.device_path 
-            cmd_unzipxpk = "sdb -s " + Device_Ip_List[i] +" shell unzip -od " + const.device_path + "  " + const.device_path + const.name + "-" + const.version + "." + pakeType + ".zip "
-            cmd_installapp="sdb -s " + Device_Ip_List[i] +" shell \"su - app -c 'export DBUS_SESSION_BUS_ADDRESS=unix:path=/run/user/5000/dbus/user_bus_socket;" + const.device_path + "/opt/wrt-manifest-tizen-tests/appinstall.sh "+ const.device_path +"/opt/wrt-manifest-tizen-tests/Crosswalk-Manifest-Check" + str(Manifest_Row) +  "." + pakeType +"'\""
-            print "------------push webapp----------->",Device_Ip_List[i]
-            get_push = get_runback(cmd_pushxpk,"push","")
-            log_Log(" push webapp--------->" + str(Manifest_Row) + str(get_push) + "\n")
-            print "------------unzip webapp---------->",Device_Ip_List[i]       
-            get_unzip = get_runback(cmd_unzipxpk,"unzip","")
-            log_Log(" unzip webapp--------->" + str(Manifest_Row) + str(get_unzip) + "\n")        
-            cmd_chmod = "sdb -s " + Device_Ip_List[i] +" shell chmod 777 "+const.device_path+"/opt/wrt-manifest-tizen-tests/appinstall.sh"
-            os.system(cmd_chmod)
-            cmd_chmod = "sdb -s " + Device_Ip_List[i] +" shell chmod 777 "+const.device_path+"/opt/wrt-manifest-tizen-tests/applaunch.sh"
-            os.system(cmd_chmod)        
-            cmd_chmod = "sdb -s " + Device_Ip_List[i] +" shell chmod 777 "+const.device_path+"/opt/wrt-manifest-tizen-tests/appuninstall.sh"
-            os.system(cmd_chmod)
-            cmd_chmod = "sdb -s " + Device_Ip_List[i] +" shell chmod 777 "+const.device_path+"/opt/wrt-manifest-tizen-tests/checkdb.sh"
-            os.system(cmd_chmod)
-            cmd_chmod = "sdb -s " + Device_Ip_List[i] +" shell chmod 777 "+const.device_path+"/opt/wrt-manifest-tizen-tests/checkdb_new.sh"
-            os.system(cmd_chmod)
-            shutil.copy("./tests_sample.xml", const.path + "/device_" + Device_Ip_List[i] +"/result/Crosswalk-Manifest-Check" + str(Manifest_Row) + ".xml")
-            
-            result_manifest_XML(const.path + "/device_" + Device_Ip_List[i], "Crosswalk-Manifest-Check" + str(Manifest_Row) + ".xml",auto_result,tcs_manifest)
-            #install app
-            get_cmdback = get_runback(cmd_installapp,"install","")
-            log_Log(" check DB--------->" + str(Manifest_Row) + " install webapp info= " + str(get_cmdback) + "\n")
-            cmd_checkpkginfo = "sdb -s " + Device_Ip_List[i] +" shell \"su - app -c 'export DBUS_SESSION_BUS_ADDRESS=unix:path=/run/user/5000/dbus/user_bus_socket;pkginfo --listpkg | head -n 20'\""
-            
-            get_fromdb = get_from_DB(cmd_checkpkginfo,tcs_manifest)
-            log_Log(" get_from--------->" + str(get_fromdb) + "\n")
-            if ((get_fromdb[0]=="GET") & (Test_Flag=="positive")): #install ok and test =positive
-                  print "Install---------> OK "
-                  log_Log(" install--------->" + str(Manifest_Row) + " OK"+ "\n") 
-                  fail_message = "install ok"
-                  auto_result = "PASS"
-                  #launcher app
-                  Pkgids = get_fromdb[1].strip("\n").lstrip().rstrip()
-                  log_Log(" launch--------->" + str(Pkgids) + "\n")
-                  cmd_launchapp="sdb -s " + Device_Ip_List[i] +" shell \"su - app -c 'export DBUS_SESSION_BUS_ADDRESS=unix:path=/run/user/5000/dbus/user_bus_socket;"+const.device_path+"/opt/wrt-manifest-tizen-tests/applaunch.sh " + Pkgids +"'\""
-                  get_cmdback = get_runback(cmd_launchapp,"launch",Pkgids)
-                  if ((get_cmdback[0].strip("\r\n"))=="Launch ok"):
-                      print "Launch---------> OK"
-                      log_Log(" launch--------->" + str(Manifest_Row) + " OK"+ "\n")
-                      fail_message = "launch webapp ok"
-                      #uninstall app
-                      cmd_uninstallapp="sdb -s " + Device_Ip_List[i] +" shell \"su - app -c 'export DBUS_SESSION_BUS_ADDRESS=unix:path=/run/user/5000/dbus/user_bus_socket;bash "+const.device_path+"/opt/wrt-manifest-tizen-tests/appuninstall.sh " + Pkgids + "'\""
-                      get_cmdback = get_runback(cmd_uninstallapp,"uninstall","")
-
-                      log_Log(" uninstall--------->" + cmd_uninstallapp + "\n") 
-                      if (((get_cmdback[0].find("Pass")>0) or (uninstall_webapp==0))>0):
-                           print "Uninstall-------> OK"
-                           log_Log(" uninstall--------->" + str(Manifest_Row) + " OK"+ "\n") 
-                           auto_result = "PASS"
-                           fail_message = "uninstall and db check ok"
-                      else:
-                          fail_message = "uninstall and db check fail"
-                          auto_result = "FAIL"
-                          print "Uninstall-------> Fail"
-                  else:
-                    fail_message = "launch fail"
-            elif ((Test_Flag=="positive")): # positive install ok but test fail
-                  auto_result = "FAIL"
-                  fail_message = "install ok but check db fail"
-                  log_Log(" install--------->" + str(Manifest_Row) + " check DB fail"+ "\n")
-                  print "Positive test ----------> install OK but check DB fail" 
-                  Pkgids = get_fromdb[1]
-                  cmd_uninstallapp="sdb -s " + Device_Ip_List[i] +" shell \"su - app -c 'export DBUS_SESSION_BUS_ADDRESS=unix:path=/run/user/5000/dbus/user_bus_socket;"+const.device_path+"/opt/wrt-manifest-tizen-tests/appuninstall.sh " + Pkgids +"'\""
-                  get_cmdback = get_runback(cmd_uninstallapp,"uninstall","")
-                  auto_result = "FAIL"
-            elif ((get_fromdb[0]=="GET") & (Test_Flag=="negative")): #install ok and test =negative
-                  auto_result = "FAIL" 
-                  log_Log(" negative test install ok:--------->" + str(Manifest_Row) + " fail"+ "\n")
-                  fail_message = "negative test install ok: Fail"  
-                  print "Negative test-------> Install ok: Fail"
-                  Pkgids = get_fromdb[1]
-                  cmd_uninstallapp="sdb -s " + Device_Ip_List[i] +" shell \"su - app -c 'export DBUS_SESSION_BUS_ADDRESS=unix:path=/run/user/5000/dbus/user_bus_socket;"+const.device_path+"/opt/wrt-manifest-tizen-tests/appuninstall.sh " + Pkgids +"'\""
-                  get_cmdback = get_runback(cmd_uninstallapp,"uninstall","")
-            elif ((Test_Flag=="negative")): #install ok and test =negative
-                  auto_result = "PASS"
-                  log_Log(" negative test install fail :--------->" + str(Manifest_Row) + " pass"+ "\n")
-                  fail_message = "negative install fail: Pass"
-                  print "Negative test-------> Install fail: Pass"
-            else:
-                auto_result = "FAIL"
-                log_Log(" other fail:--------->" + str(Manifest_Row) + "\n")
-                fail_message = "install fail"
-                print "-------------Install/Launch/Uninstall Fail-------------------"
-                #key input pass or faile
-            print "---------- Webapp Crosswalk-Manifest-Check" + str(Manifest_Row) + "." + pakeType +" test end------------>\n"
-            log_Log(" test webapp " + str(Manifest_Row) + " ok "+ "\n")
-            result_manifest_XML(const.path + "/device_" + Device_Ip_List[i] , "Crosswalk-Manifest-Check" + str(Manifest_Row) + ".xml",auto_result , tcs_manifest)
-            os.system("sdb -s " + Device_Ip_List[i] +" shell rm -rf "+const.device_path+"/opt/wrt-manifest-tizen-tests")
-            os.system("sdb -s " + Device_Ip_List[i] +" shell rm -rf "+const.device_path+"/wrt-manifest-tizen-tests*")
-        else:
-          print "use ssh device-------------->"
-          for i in range(0,len(Device_Ip_List)): 
-            cmd_pushxpk = "scp " + const.name + "-" + const.version +"." + pakeType + ".zip " + Device_Ip_List[i] + ":"+ const.device_path 
-            cmd_unzipxpk = "ssh " + Device_Ip_List[i] +" 'unzip -od " + const.device_path + "  " + const.device_path + const.name + "-" + const.version + "." + pakeType + ".zip'"
-            cmd_installapp="ssh " + Device_Ip_List[i] +" \"su - app -c 'export DBUS_SESSION_BUS_ADDRESS=unix:path=/run/user/5000/dbus/user_bus_socket;bash " + const.device_path + "/opt/wrt-manifest-tizen-tests/appinstall.sh "+ const.device_path +"/opt/wrt-manifest-tizen-tests/Crosswalk-Manifest-Check" + str(Manifest_Row) +  "." + pakeType +"'\""
-            print "------------push webapp----------->",Device_Ip_List[i]
-            get_push = get_runback(cmd_pushxpk,"push","")
-            log_Log(" push webapp--------->" + str(Manifest_Row) + str(get_push) + "\n")
-            print "------------unzip webapp----------->",Device_Ip_List[i]       
-            get_unzip = get_runback(cmd_unzipxpk,"unzip","")
-            log_Log(" unzip webapp--------->" + str(Manifest_Row) + str(get_unzip) + "\n")        
-            shutil.copy("./tests_sample.xml", const.path + "/device_" + Device_Ip_List[i] +"/result/Crosswalk-Manifest-Check" + str(Manifest_Row) + ".xml")
-            
-            result_manifest_XML(const.path + "/device_" + Device_Ip_List[i], "Crosswalk-Manifest-Check" + str(Manifest_Row) + ".xml",auto_result,tcs_manifest)
-            #install app
-            cmd_checkdb="ssh " + Device_Ip_List[i] +" \"su - app -c 'export DBUS_SESSION_BUS_ADDRESS=unix:path=/run/user/5000/dbus/user_bus_socket;bash " + const.device_path + "/opt/wrt-manifest-tizen-tests/checkdb.sh '\""
-            get_dbcount_before = get_runback(cmd_checkdb,"install","")[0].strip("\n\r")
-            get_cmdback = get_runback(cmd_installapp,"install","")
-            log_Log(" check DB--------->" + str(Manifest_Row) + " install webapp info= " + str(get_cmdback) + "\n")
-            get_dbcount_after = get_runback(cmd_checkdb,"install","")[0].strip("\n\r")
-            cmd_checkdb_new = "ssh " + Device_Ip_List[i] +" \"su - app -c 'export DBUS_SESSION_BUS_ADDRESS=unix:path=/run/user/5000/dbus/user_bus_socket;bash "+const.device_path+"/opt/wrt-manifest-tizen-tests/checkdb_new.sh " + str(int(get_dbcount_after)-1) + "'\""
-            cmd_checkpkginfo = "ssh " + Device_Ip_List[i] +" \"su - app -c 'export DBUS_SESSION_BUS_ADDRESS=unix:path=/run/user/5000/dbus/user_bus_socket;pkginfo --listpkg | head -n 20 '\""
-            
-            get_fromdb = get_from_DB(cmd_checkpkginfo,tcs_manifest)
-            log_Log(" check DB--------->" + str(Manifest_Row) + " get DB= " + str(get_fromdb) + "\n")
-            print "install result ------------>",get_fromdb[0],Test_Flag
-            if ((get_fromdb[0]=="GET") & (Test_Flag=="positive")): #install ok and test =positive
-                  print "Install---------> OK "
-                  log_Log(" install--------->" + str(Manifest_Row) + " OK"+ "\n") 
-                  fail_message = "install ok"
-                  auto_result = "PASS"
-                  #launcher app
-                  Pkgids = get_fromdb[1]
-                  cmd_launchapp="ssh " + Device_Ip_List[i] +" \"su - app -c 'export DBUS_SESSION_BUS_ADDRESS=unix:path=/run/user/5000/dbus/user_bus_socket;bash "+const.device_path+"/opt/wrt-manifest-tizen-tests/applaunch.sh " + Pkgids +"'\""
-                  get_cmdback = get_runback(cmd_launchapp,"launch",Pkgids)
-                  if ((get_cmdback[0].strip("\r\n"))=="Launch ok"):
-                      print "Launch---------> OK"
-                      log_Log(" launch--------->" + str(Manifest_Row) + " OK"+ "\n")
-                      fail_message = "launch webapp ok"
-                      #uninstall app
-                      cmd_uninstallapp="ssh " + Device_Ip_List[i] +"  \"su - app -c 'export DBUS_SESSION_BUS_ADDRESS=unix:path=/run/user/5000/dbus/user_bus_socket;bash "+const.device_path+"/opt/wrt-manifest-tizen-tests/appuninstall.sh " + Pkgids +"'\""
-                      get_cmdback = get_runback(cmd_uninstallapp,"uninstall","")
-                      if (((get_cmdback[0].find("Pass")>0) or (uninstall_webapp==0))>0):
-                           print "Uninstall-------> OK"
-                           log_Log(" uninstall--------->" + str(Manifest_Row) + " OK"+ "\n") 
-                           auto_result = "PASS"
-                           fail_message = "uninstall and db check ok"
-                      else:
-                          fail_message = "uninstall and db check fail"
-                          auto_result = "FAIL"
-                          print "Uninstall-------> Fail"
-                  else:
-                    fail_message = "launch fail"
-            elif (Test_Flag=="positive"): # positive install ok but test fail
-                  auto_result = "FAIL"
-                  fail_message = "install ok but check db fail"
-                  log_Log(" install--------->" + str(Manifest_Row) + " check DB fail"+ "\n")
-                  print "Positive test ----------> install OK but check DB fail" 
-                  Pkgids = get_fromdb[1]
-                  cmd_uninstallapp="ssh " + Device_Ip_List[i] +" \"su - app -c 'export DBUS_SESSION_BUS_ADDRESS=unix:path=/run/user/5000/dbus/user_bus_socket;bash "+const.device_path+"/opt/wrt-manifest-tizen-tests/appuninstall.sh " + Pkgids +"'\""
-                  get_cmdback = get_runback(cmd_uninstallapp,"uninstall","")
-                  auto_result = "FAIL"
-            elif ((get_fromdb[0]=="GET") & (Test_Flag=="negative")): #install ok and test =negative
-                  auto_result = "FAIL" 
-                  log_Log(" negative test install ok:--------->" + str(Manifest_Row) + " fail"+ "\n")
-                  fail_message = "negative test install ok: Fail"  
-                  print "Negative test-------> Install ok: Fail"
-                  Pkgids = get_fromdb[1]
-                  cmd_uninstallapp="ssh " + Device_Ip_List[i] +" \"su - app -c 'export DBUS_SESSION_BUS_ADDRESS=unix:path=/run/user/5000/dbus/user_bus_socket;bash "+const.device_path+"/opt/wrt-manifest-tizen-tests/appuninstall.sh " + Pkgids +"'\""
-                  get_cmdback = get_runback(cmd_uninstallapp,"uninstall","")
-            elif (Test_Flag=="negative"): #install ok and test =negative
-                  auto_result = "PASS"
-                  log_Log(" negative test install fail :--------->" + str(Manifest_Row) + " pass"+ "\n")
-                  fail_message = "negative install fail: Pass"
-                  print "Negative test-------> Install fail: Pass"                  
-            else:
-                auto_result = "FAIL"
-                log_Log(" other fail:--------->" + str(Manifest_Row) + "\n")
-                fail_message = "install fail"
-                print "-------------Install/Launch/Uninstall Fail-------------------"
-            print "---------- Webapp Crosswalk-Manifest-Check" + str(Manifest_Row) + "." + pakeType +" test end------------>\n"
-            log_Log(" test webapp " + str(Manifest_Row) + " ok "+ "\n")
-            result_manifest_XML(const.path + "/device_" + Device_Ip_List[i] , "Crosswalk-Manifest-Check" + str(Manifest_Row) + ".xml",auto_result , tcs_manifest)
-            os.system("ssh " + Device_Ip_List[i] +" 'rm -rf "+const.device_path+"/opt/wrt-manifest-tizen-tests'")
-            os.system("ssh  " + Device_Ip_List[i] +" 'rm -rf "+const.device_path+"/wrt-manifest-tizen-tests*'")
-        
-            
-    except Exception,e: 
-        log_Log(" test webapp " + str(Manifest_Row) + " error \n") 
-        print Exception,"Launch webapp error:",e 
-        print traceback.format_exc() 
-                
-def get_runback(cmdline,step,pkgids):
-    try:
-        read_line = os.popen(cmdline).readlines()
-        return read_line     
-    except Exception,e: 
-        print Exception,"get runback error:",e
-        return "Exception-->",read_line,e
-         
-def get_Input_Result():
-    try:
-        print "--------------------------------------------------------------------"
-        getinput = raw_input("Input result(f,p,enter),enter:PASS,F:FAIL,P:PASS--->") 
-        getinput =getinput.strip("")
-        while not getinput in("f","p","F","P",""):
-            print "--------------------------------------------------------------------"
-            getinput = raw_input("Input result(f,p,Enter),Enter:PASS,F:FAIL,P:PASS--->")    
-        if (getinput.lower() =="p" or getinput =="" ):
-            getinput = "PASS"    
-        if (getinput.lower() =="f"):
-            getinput = "FAIL"
-        return getinput
-    except Exception,e: 
-        print Exception,"Input result error:",e 
-
-def get_from_DB(cmdline,manifest):
-    try:
-        read_line = os.popen(cmdline).readlines()
-        
-        log_Log(" get from pkginfo ="+ cmdline + "|"+ str(read_line) +"\n")
-        get_id = read_line[0].split("|")[0]
-        get_manifest = manifest.strip("\n\r\t").split(",")
-        for i in range(0,len(get_manifest)):
-          find_name = get_manifest[i].find("name")
-          if (find_name>=0):
-            get_manifest_name = get_manifest[i].split(":")[1][2:-1].strip()
-            log_Log(" get_manifest_name --------->" + str(get_manifest_name) + "\n")
-            for i in range(0,len(read_line)):
-                find_id = read_line[i].find("Appid:")
-                if (find_id>=0):
-                   get_id = read_line[i].strip("\n").split(":")[1].lstrip()
-                   log_Log(" get_pkgid =--------->" + str(get_id) + "\n")
-                find_label = read_line[i].find("Label")
-                if (find_label>=0):
-                    log_Log(" read_line--------->" + str(read_line[i]) + "\n")
-                    get_label = read_line[i].strip("\n").split(":")[1].strip()
-                    get_name = get_manifest_name.find(get_label)
-                    log_Log(" get_name =--------->" + str(get_name) +get_manifest_name + "\n")
-                    if (get_name>=0):
-                        log_Log(" get_pkginfo_name --------->" + str(get_name) + "\n")
-                        return "GET",get_id
-          else:
-              return "NONE",get_id
-        return "NONE",get_id
-    except Exception,e: 
-        print Exception,"Get db record error:",e
-        print traceback.format_exc()
-        return "NONE"
+#!/usr/bin/env python 
+# coding=utf-8 
+import random,os,sys,unittest,run_test,codecs 
+reload(sys) 
+sys.setdefaultencoding( "utf-8" ) 
+class TestCaseUnit(unittest.TestCase): 
  
-def add_style_Report(file_name,style_file):
-    try:
-        fp = file(file_name)
-        lines = []
-        for line in fp:
-           lines.append(line)
-        fp.close()
-        lines.insert(0, "<?xml version=\"1.0\" encoding=\"UTF-8\"?><?xml-stylesheet type=\"text/xsl\" href=\"./style/" + style_file +"\"?>")
-        s = ''.join(lines)
-        fp = file(file_name, 'w')
-        fp.write(s)
-        fp.close()
-    except Exception,e: 
-        print Exception,"Add sytle to report error:",e 
-
-def log_Log(message):
-    try:
-        log_time = datetime.now().strftime('%m-%d-%H:%M:%S')
-        logfile.write(log_time +": "+ message)
-    except Exception,e: 
-        print Exception,"Add log to log.txt error:",e 
-
-def run_ssh_sdb(run_device,run_id):
-    try:
-        global Device_Ip_List
-        global Device_SSH_List
-        Device_Ip_List = run_id.split(",")
-        print "getdevice: ",Device_Ip_List[0],type(Device_Ip_List[0])
-        log_Log(" get Device_Ip_List =" + str(Device_Ip_List) + "\n")
-        if (run_device=="sdb"):
-            for i in range(0,len(Device_Ip_List)):
-                if (os.path.isdir(os.getcwd() + "/device_" + Device_Ip_List[i])):
-                    os.system("rm -rf " + os.getcwd() + "/device_" + Device_Ip_List[i] )
-                    os.makedirs(const.path + "/device_" + Device_Ip_List[i])
-                    copy_Files(const.path + "/report",const.path + "/device_" + Device_Ip_List[i])
-                else:
-                    os.makedirs(const.path + "/device_" + Device_Ip_List[i])
-                    copy_Files(const.path + "/report",const.path + "/device_" + Device_Ip_List[i])
-                insert_to_Summary(const.path + "/device_" + Device_Ip_List[i] + "/summary.xml","0","0","0","0","0","0","0","")    
-                shutil.copy(const.path +"/tests.report.xml",const.path + "/device_" + Device_Ip_List[i] + "/wrt-manifest-tizen-tests.xml")
-                if (os.path.isdir(const.path + "/device_" + Device_Ip_List[i] + "/result")):
-                    os.system("rm -rf " + const.path + "/device_" + Device_Ip_List[i] + "/result")
-                else:
-                    os.makedirs(const.path + "/device_" + Device_Ip_List[i] + "/result")
-                print run_device
-                os.system("sdb -s " + Device_Ip_List[i] +" root on")
-                cmd_createtct = "sdb -s " + Device_Ip_List[i] +" push " + const.sh_path +"/checktct_folder.sh /home/app/content/"
-                os.system(cmd_createtct)
-                cmd_chmod = "sdb -s " + Device_Ip_List[i] +" shell chmod 777 /home/app/content/checktct_folder.sh"
-                os.system(cmd_chmod)
-                cmd_createtctfolder = "sdb -s " + Device_Ip_List[i] +" shell /home/app/content/checktct_folder.sh "
-                os.system(cmd_createtctfolder)
-        else:
-            for i in range(0,len(Device_Ip_List)):
-                if (os.path.isdir(os.getcwd() + "/device_" + Device_Ip_List[i])):
-                    os.system("rm -rf " + os.getcwd() + "/device_" + Device_Ip_List[i] )
-                    os.makedirs(const.path + "/device_" + Device_Ip_List[i])
-                    copy_Files(const.path + "/report",const.path + "/device_" + Device_Ip_List[i])
-                else:
-                    os.makedirs(const.path + "/device_" + Device_Ip_List[i])
-                    copy_Files(const.path + "/report",const.path + "/device_" + Device_Ip_List[i])
-                insert_to_Summary(const.path + "/device_" + Device_Ip_List[i] + "/summary.xml","0","0","0","0","0","0","0",Device_Ip_List[i])    
-                shutil.copy(const.path +"/tests.report.xml",const.path + "/device_" + Device_Ip_List[i] + "/wrt-manifest-tizen-tests.xml")
-                if (os.path.isdir(const.path + "/device_" + Device_Ip_List[i] + "/result")):
-                    os.system("rm -rf " + const.path + "/device_" + Device_Ip_List[i] + "/result")
-                else:
-                    os.makedirs(const.path + "/device_" + Device_Ip_List[i] + "/result")
-            
-                os.system("scp " + const.sh_path +"/checktct_folder.sh " + Device_Ip_List[i] + ":/home/app/content/")
-                os.system("ssh " + Device_Ip_List[i] + " 'bash /home/app/content/checktct_folder.sh'")      
-    except Exception,e: 
-        print Exception,"Add log to log.txt error:",e
-        print traceback.format_exc()  
-        
-                 
-def main(argv):
-    try:
-        global Pack_Type
-        global Test_Flag
-        global logfile
-        global Test_Device_Type
-        do_Clear(const.path_tcs)
-        
-        do_Clear(const.path + "/self")
-        do_Clear(const.report_path + "/manifest_all_positive.txt")
-        do_Clear(const.report_path + "/manifest_all_negative.txt")
-        os.system("rm -f " + const.seed_negative + "/*~")
-        os.system("rm -f " + const.seed_positive + "/*~") 
-        #os.system("rm -rf ./device_*")
-        getEnv_Id = os.environ.get('DEVICE_ID')
-        Test_Device_Type = os.environ.get('CONNECT_TYPE')
-        log_Log(" get env =" + str(getEnv_Id) + str(Test_Device_Type) + "\n")
-        log_Log(" logfile =" + const.log_path + str(getEnv_Id) + ".txt" + "\n")
-        logfile = file(const.log_path + str(getEnv_Id) + ".txt","w+")
-        log_Log(" test start\n")
-        log_Log(" init summart file\n")
-        if (not getEnv_Id):
-            log_Log(" get env error\n")
-            sys.exit(1)
-        else:
-            run_ssh_sdb(Test_Device_Type,getEnv_Id)
-        log_Log(" create tct folder \n") 
-        opts, args = getopt.getopt(argv[1:], 'h:o:p:n', ['help','order=','pack='])
-        if (len(opts) ==0):
-            print "Auto generate manifest.json------------------------->",opts
-            #input_seed -> selfcomb.txt->manifest.json
-            del_Seed(const.seed_file)
-            Test_Flag = "negative"
-            for negativeseed in os.listdir(const.seed_negative):
-                if (fileline_count(const.seed_negative+"/" + negativeseed) >=1) :
-                     do_Clear(const.path_tcs)
-                     do_Clear(const.path + "/opt")                 
-                     do_Clear(const.path + "/self")
-                     del_Seed(const.seed_negative + "/" + negativeseed)
-        for o, a in opts:
-            if o in ('-h', '--help'):
-                Usage()
-                sys.exit(1)
-            elif o in ('-n'):
-                print ("**************negative**********" )
-                Test_Flag = "negative"
-                if (Test_Flag=="negative"):
-                  del_Seed(const.seed_file_na)
-                else:
-                  del_Seed(const.seed_file)                
-            elif o in ('-o', '--order'):
-                allpairs_order_get = a
-                print "Auto generate manifest.json------------------------->"
-                #input_seed -> selfcomb.txt->manifest.json
-                #del_Seed(const.seed_file)
-                #manifest folder -> webapp
-                app_Folder(const.path_tcs)
-                do_Clear(const.path + "/self")
-                sys.exit(0)
-            elif o in ('--foo', ):
-                sys.exit(0)
-            elif o in ('-p','--pack' ):
-                print "Auto generate manifest.json------------------------->",opts
-                #input_seed -> selfcomb.txt->manifest.json
-                Pack_Type = a
-                print "Pack_Type------------------------->",Pack_Type                
-                del_Seed(const.seed_file)
-                sys.exit(0)
-            else:
-                print "***unhandled option***"
-                sys.exit(3)
-    except Exception,e: 
-        print Exception,":",e 
-        print traceback.format_exc() 
-        log_Log(" test fail\n")
-        Usage()
-        sys.exit(2)
-    finally:
-        get_Result()
-        for i in range(0,len(Device_Ip_List)):
-          add_style_Report(const.path + "/device_" + Device_Ip_List[i] + "/wrt-manifest-tizen-tests.xml" ,"testresult.xsl")
-          add_style_Report(const.path + "/device_" + Device_Ip_List[i] + "/summary.xml" ,"summary.xsl")
-        
-        log_Log(" test end\n")        
-        logfile.close()
-        do_Clear(const.path + "/opt")                 
-        do_Clear(const.path + "/self")
-        do_Clear(const.path_tcs)
-        os.system("rm -rf *.zip") 
-        os.system("rm -rf *.pem")
-
-if __name__=="__main__":
-    main(sys.argv)
+  def test_case_1(self):
+     self.assertEqual("Pass", run_test.run_test_result("Crosswalk-Manifest-Check1"," birds"))
+ 
+  def test_case_2(self):
+     self.assertEqual("Pass", run_test.run_test_result("Crosswalk-Manifest-Check2","Angrybirds"))
+ 
+  def test_case_3(self):
+     self.assertEqual("Pass", run_test.run_test_result("Crosswalk-Manifest-Check3","123456birds"))
+ 
+  def test_case_4(self):
+     self.assertEqual("Pass", run_test.run_test_result("Crosswalk-Manifest-Check4","_a-bbirds"))
+ 
+  def test_case_5(self):
+     self.assertEqual("Pass", run_test.run_test_result("Crosswalk-Manifest-Check5","<>birds"))
+ 
+  def test_case_6(self):
+     self.assertEqual("Pass", run_test.run_test_result("Crosswalk-Manifest-Check6",".CAPITALbirds"))
+ 
+  def test_case_7(self):
+     self.assertEqual("Pass", run_test.run_test_result("Crosswalk-Manifest-Check7","\nbirds"))
+ 
+  def test_case_8(self):
+     self.assertEqual("Pass", run_test.run_test_result("Crosswalk-Manifest-Check8","*&^%!@#$%^&*()birds"))
+ 
+  def test_case_9(self):
+     self.assertEqual("Pass", run_test.run_test_result("Crosswalk-Manifest-Check9","+-birds"))
+ 
+  def test_case_10(self):
+     self.assertEqual("Pass", run_test.run_test_result("Crosswalk-Manifest-Check10","'birds"))
+ 
+  def test_case_11(self):
+     self.assertEqual("Pass", run_test.run_test_result("Crosswalk-Manifest-Check11","中文birds"))
+ 
+  def test_case_12(self):
+     self.assertEqual("Pass", run_test.run_test_result("Crosswalk-Manifest-Check12","中文 "))
+ 
+  def test_case_13(self):
+     self.assertEqual("Pass", run_test.run_test_result("Crosswalk-Manifest-Check13","' "))
+ 
+  def test_case_14(self):
+     self.assertEqual("Pass", run_test.run_test_result("Crosswalk-Manifest-Check14","+- "))
+ 
+  def test_case_15(self):
+     self.assertEqual("Pass", run_test.run_test_result("Crosswalk-Manifest-Check15","*&^%!@#$%^&*() "))
+ 
+  def test_case_16(self):
+     self.assertEqual("Pass", run_test.run_test_result("Crosswalk-Manifest-Check16","\n "))
+ 
+  def test_case_17(self):
+     self.assertEqual("Pass", run_test.run_test_result("Crosswalk-Manifest-Check17",".CAPITAL "))
+ 
+  def test_case_18(self):
+     self.assertEqual("Pass", run_test.run_test_result("Crosswalk-Manifest-Check18","<> "))
+ 
+  def test_case_19(self):
+     self.assertEqual("Pass", run_test.run_test_result("Crosswalk-Manifest-Check19","_a-b "))
+ 
+  def test_case_20(self):
+     self.assertEqual("Pass", run_test.run_test_result("Crosswalk-Manifest-Check20","123456 "))
+ 
+  def test_case_21(self):
+     self.assertEqual("Pass", run_test.run_test_result("Crosswalk-Manifest-Check21","Angry "))
+ 
+  def test_case_22(self):
+     self.assertEqual("Pass", run_test.run_test_result("Crosswalk-Manifest-Check22","  "))
+ 
+  def test_case_23(self):
+     self.assertEqual("Pass", run_test.run_test_result("Crosswalk-Manifest-Check23"," a b"))
+ 
+  def test_case_24(self):
+     self.assertEqual("Pass", run_test.run_test_result("Crosswalk-Manifest-Check24","Angrya b"))
+ 
+  def test_case_25(self):
+     self.assertEqual("Pass", run_test.run_test_result("Crosswalk-Manifest-Check25","123456a b"))
+ 
+  def test_case_26(self):
+     self.assertEqual("Pass", run_test.run_test_result("Crosswalk-Manifest-Check26","_a-ba b"))
+ 
+  def test_case_27(self):
+     self.assertEqual("Pass", run_test.run_test_result("Crosswalk-Manifest-Check27","<>a b"))
+ 
+  def test_case_28(self):
+     self.assertEqual("Pass", run_test.run_test_result("Crosswalk-Manifest-Check28",".CAPITALa b"))
+ 
+  def test_case_29(self):
+     self.assertEqual("Pass", run_test.run_test_result("Crosswalk-Manifest-Check29","\na b"))
+ 
+  def test_case_30(self):
+     self.assertEqual("Pass", run_test.run_test_result("Crosswalk-Manifest-Check30","*&^%!@#$%^&*()a b"))
+ 
+  def test_case_31(self):
+     self.assertEqual("Pass", run_test.run_test_result("Crosswalk-Manifest-Check31","+-a b"))
+ 
+  def test_case_32(self):
+     self.assertEqual("Pass", run_test.run_test_result("Crosswalk-Manifest-Check32","'a b"))
+ 
+  def test_case_33(self):
+     self.assertEqual("Pass", run_test.run_test_result("Crosswalk-Manifest-Check33","中文a b"))
+ 
+  def test_case_34(self):
+     self.assertEqual("Pass", run_test.run_test_result("Crosswalk-Manifest-Check34","中文b "))
+ 
+  def test_case_35(self):
+     self.assertEqual("Pass", run_test.run_test_result("Crosswalk-Manifest-Check35","'b "))
+ 
+  def test_case_36(self):
+     self.assertEqual("Pass", run_test.run_test_result("Crosswalk-Manifest-Check36","+-b "))
+ 
+  def test_case_37(self):
+     self.assertEqual("Pass", run_test.run_test_result("Crosswalk-Manifest-Check37","*&^%!@#$%^&*()b "))
+ 
+  def test_case_38(self):
+     self.assertEqual("Pass", run_test.run_test_result("Crosswalk-Manifest-Check38","\nb "))
+ 
+  def test_case_39(self):
+     self.assertEqual("Pass", run_test.run_test_result("Crosswalk-Manifest-Check39",".CAPITALb "))
+ 
+  def test_case_40(self):
+     self.assertEqual("Pass", run_test.run_test_result("Crosswalk-Manifest-Check40","<>b "))
+ 
+  def test_case_41(self):
+     self.assertEqual("Pass", run_test.run_test_result("Crosswalk-Manifest-Check41","_a-bb "))
+ 
+  def test_case_42(self):
+     self.assertEqual("Pass", run_test.run_test_result("Crosswalk-Manifest-Check42","123456b "))
+ 
+  def test_case_43(self):
+     self.assertEqual("Pass", run_test.run_test_result("Crosswalk-Manifest-Check43","Angryb "))
+ 
+  def test_case_44(self):
+     self.assertEqual("Pass", run_test.run_test_result("Crosswalk-Manifest-Check44"," b "))
+ 
+  def test_case_45(self):
+     self.assertEqual("Pass", run_test.run_test_result("Crosswalk-Manifest-Check45"," BIRDS."))
+ 
+  def test_case_46(self):
+     self.assertEqual("Pass", run_test.run_test_result("Crosswalk-Manifest-Check46","AngryBIRDS."))
+ 
+  def test_case_47(self):
+     self.assertEqual("Pass", run_test.run_test_result("Crosswalk-Manifest-Check47","123456BIRDS."))
+ 
+  def test_case_48(self):
+     self.assertEqual("Pass", run_test.run_test_result("Crosswalk-Manifest-Check48","_a-bBIRDS."))
+ 
+  def test_case_49(self):
+     self.assertEqual("Pass", run_test.run_test_result("Crosswalk-Manifest-Check49","<>BIRDS."))
+ 
+  def test_case_50(self):
+     self.assertEqual("Pass", run_test.run_test_result("Crosswalk-Manifest-Check50",".CAPITALBIRDS."))
+ 
+  def test_case_51(self):
+     self.assertEqual("Pass", run_test.run_test_result("Crosswalk-Manifest-Check51","\nBIRDS."))
+ 
+  def test_case_52(self):
+     self.assertEqual("Pass", run_test.run_test_result("Crosswalk-Manifest-Check52","*&^%!@#$%^&*()BIRDS."))
+ 
+  def test_case_53(self):
+     self.assertEqual("Pass", run_test.run_test_result("Crosswalk-Manifest-Check53","+-BIRDS."))
+ 
+  def test_case_54(self):
+     self.assertEqual("Pass", run_test.run_test_result("Crosswalk-Manifest-Check54","'BIRDS."))
+ 
+  def test_case_55(self):
+     self.assertEqual("Pass", run_test.run_test_result("Crosswalk-Manifest-Check55","中文BIRDS."))
+ 
+  def test_case_56(self):
+     self.assertEqual("Pass", run_test.run_test_result("Crosswalk-Manifest-Check56","中文asdfasdfasdfasdfdfghfggfhjhjerewrtrtyyuivghxvasdaetsdfgxcvbrtysadawfasdfasdewrtwer"))
+ 
+  def test_case_57(self):
+     self.assertEqual("Pass", run_test.run_test_result("Crosswalk-Manifest-Check57","'asdfasdfasdfasdfdfghfggfhjhjerewrtrtyyuivghxvasdaetsdfgxcvbrtysadawfasdfasdewrtwer"))
+ 
+  def test_case_58(self):
+     self.assertEqual("Pass", run_test.run_test_result("Crosswalk-Manifest-Check58","+-asdfasdfasdfasdfdfghfggfhjhjerewrtrtyyuivghxvasdaetsdfgxcvbrtysadawfasdfasdewrtwer"))
+ 
+  def test_case_59(self):
+     self.assertEqual("Pass", run_test.run_test_result("Crosswalk-Manifest-Check59","*&^%!@#$%^&*()asdfasdfasdfasdfdfghfggfhjhjerewrtrtyyuivghxvasdaetsdfgxcvbrtysadawfasdfasdewrtwer"))
+ 
+  def test_case_60(self):
+     self.assertEqual("Pass", run_test.run_test_result("Crosswalk-Manifest-Check60","\nasdfasdfasdfasdfdfghfggfhjhjerewrtrtyyuivghxvasdaetsdfgxcvbrtysadawfasdfasdewrtwer"))
+ 
+  def test_case_61(self):
+     self.assertEqual("Pass", run_test.run_test_result("Crosswalk-Manifest-Check61",".CAPITALasdfasdfasdfasdfdfghfggfhjhjerewrtrtyyuivghxvasdaetsdfgxcvbrtysadawfasdfasdewrtwer"))
+ 
+  def test_case_62(self):
+     self.assertEqual("Pass", run_test.run_test_result("Crosswalk-Manifest-Check62","<>asdfasdfasdfasdfdfghfggfhjhjerewrtrtyyuivghxvasdaetsdfgxcvbrtysadawfasdfasdewrtwer"))
+ 
+  def test_case_63(self):
+     self.assertEqual("Pass", run_test.run_test_result("Crosswalk-Manifest-Check63","_a-basdfasdfasdfasdfdfghfggfhjhjerewrtrtyyuivghxvasdaetsdfgxcvbrtysadawfasdfasdewrtwer"))
+ 
+  def test_case_64(self):
+     self.assertEqual("Pass", run_test.run_test_result("Crosswalk-Manifest-Check64","123456asdfasdfasdfasdfdfghfggfhjhjerewrtrtyyuivghxvasdaetsdfgxcvbrtysadawfasdfasdewrtwer"))
+ 
+  def test_case_65(self):
+     self.assertEqual("Pass", run_test.run_test_result("Crosswalk-Manifest-Check65","Angryasdfasdfasdfasdfdfghfggfhjhjerewrtrtyyuivghxvasdaetsdfgxcvbrtysadawfasdfasdewrtwer"))
+ 
+  def test_case_66(self):
+     self.assertEqual("Pass", run_test.run_test_result("Crosswalk-Manifest-Check66"," asdfasdfasdfasdfdfghfggfhjhjerewrtrtyyuivghxvasdaetsdfgxcvbrtysadawfasdfasdewrtwer"))
+ 
+  def test_case_67(self):
+     self.assertEqual("Pass", run_test.run_test_result("Crosswalk-Manifest-Check67"," asdfasdfasdfasdfdfghfggfhjhjerewrtrtyyuivghxvasdaetsdfgxcvbrtysadawfasdfasdewrtwer"))
+ 
+  def test_case_68(self):
+     self.assertEqual("Pass", run_test.run_test_result("Crosswalk-Manifest-Check68","Angryasdfasdfasdfasdfdfghfggfhjhjerewrtrtyyuivghxvasdaetsdfgxcvbrtysadawfasdfasdewrtwer"))
+ 
+  def test_case_69(self):
+     self.assertEqual("Pass", run_test.run_test_result("Crosswalk-Manifest-Check69","123456asdfasdfasdfasdfdfghfggfhjhjerewrtrtyyuivghxvasdaetsdfgxcvbrtysadawfasdfasdewrtwer"))
+ 
+  def test_case_70(self):
+     self.assertEqual("Pass", run_test.run_test_result("Crosswalk-Manifest-Check70","_a-basdfasdfasdfasdfdfghfggfhjhjerewrtrtyyuivghxvasdaetsdfgxcvbrtysadawfasdfasdewrtwer"))
+ 
+  def test_case_71(self):
+     self.assertEqual("Pass", run_test.run_test_result("Crosswalk-Manifest-Check71","<>asdfasdfasdfasdfdfghfggfhjhjerewrtrtyyuivghxvasdaetsdfgxcvbrtysadawfasdfasdewrtwer"))
+ 
+  def test_case_72(self):
+     self.assertEqual("Pass", run_test.run_test_result("Crosswalk-Manifest-Check72",".CAPITALasdfasdfasdfasdfdfghfggfhjhjerewrtrtyyuivghxvasdaetsdfgxcvbrtysadawfasdfasdewrtwer"))
+ 
+  def test_case_73(self):
+     self.assertEqual("Pass", run_test.run_test_result("Crosswalk-Manifest-Check73","\nasdfasdfasdfasdfdfghfggfhjhjerewrtrtyyuivghxvasdaetsdfgxcvbrtysadawfasdfasdewrtwer"))
+ 
+  def test_case_74(self):
+     self.assertEqual("Pass", run_test.run_test_result("Crosswalk-Manifest-Check74","*&^%!@#$%^&*()asdfasdfasdfasdfdfghfggfhjhjerewrtrtyyuivghxvasdaetsdfgxcvbrtysadawfasdfasdewrtwer"))
+ 
+  def test_case_75(self):
+     self.assertEqual("Pass", run_test.run_test_result("Crosswalk-Manifest-Check75","+-asdfasdfasdfasdfdfghfggfhjhjerewrtrtyyuivghxvasdaetsdfgxcvbrtysadawfasdfasdewrtwer"))
+ 
+  def test_case_76(self):
+     self.assertEqual("Pass", run_test.run_test_result("Crosswalk-Manifest-Check76","'asdfasdfasdfasdfdfghfggfhjhjerewrtrtyyuivghxvasdaetsdfgxcvbrtysadawfasdfasdewrtwer"))
+ 
+  def test_case_77(self):
+     self.assertEqual("Pass", run_test.run_test_result("Crosswalk-Manifest-Check77","中文asdfasdfasdfasdfdfghfggfhjhjerewrtrtyyuivghxvasdaetsdfgxcvbrtysadawfasdfasdewrtwer"))
+ 
+  def test_case_78(self):
+     self.assertEqual("Pass", run_test.run_test_result("Crosswalk-Manifest-Check78","中文BIRDS."))
+ 
+  def test_case_79(self):
+     self.assertEqual("Pass", run_test.run_test_result("Crosswalk-Manifest-Check79","'BIRDS."))
+ 
+  def test_case_80(self):
+     self.assertEqual("Pass", run_test.run_test_result("Crosswalk-Manifest-Check80","+-BIRDS."))
+ 
+  def test_case_81(self):
+     self.assertEqual("Pass", run_test.run_test_result("Crosswalk-Manifest-Check81","*&^%!@#$%^&*()BIRDS."))
+ 
+  def test_case_82(self):
+     self.assertEqual("Pass", run_test.run_test_result("Crosswalk-Manifest-Check82","\nBIRDS."))
+ 
+  def test_case_83(self):
+     self.assertEqual("Pass", run_test.run_test_result("Crosswalk-Manifest-Check83",".CAPITALBIRDS."))
+ 
+  def test_case_84(self):
+     self.assertEqual("Pass", run_test.run_test_result("Crosswalk-Manifest-Check84","<>BIRDS."))
+ 
+  def test_case_85(self):
+     self.assertEqual("Pass", run_test.run_test_result("Crosswalk-Manifest-Check85","_a-bBIRDS."))
+ 
+  def test_case_86(self):
+     self.assertEqual("Pass", run_test.run_test_result("Crosswalk-Manifest-Check86","123456BIRDS."))
+ 
+  def test_case_87(self):
+     self.assertEqual("Pass", run_test.run_test_result("Crosswalk-Manifest-Check87","AngryBIRDS."))
+ 
+  def test_case_88(self):
+     self.assertEqual("Pass", run_test.run_test_result("Crosswalk-Manifest-Check88"," BIRDS."))
+ 
+  def test_case_89(self):
+     self.assertEqual("Pass", run_test.run_test_result("Crosswalk-Manifest-Check89"," b "))
+ 
+  def test_case_90(self):
+     self.assertEqual("Pass", run_test.run_test_result("Crosswalk-Manifest-Check90","Angryb "))
+ 
+  def test_case_91(self):
+     self.assertEqual("Pass", run_test.run_test_result("Crosswalk-Manifest-Check91","123456b "))
+ 
+  def test_case_92(self):
+     self.assertEqual("Pass", run_test.run_test_result("Crosswalk-Manifest-Check92","_a-bb "))
+ 
+  def test_case_93(self):
+     self.assertEqual("Pass", run_test.run_test_result("Crosswalk-Manifest-Check93","<>b "))
+ 
+  def test_case_94(self):
+     self.assertEqual("Pass", run_test.run_test_result("Crosswalk-Manifest-Check94",".CAPITALb "))
+ 
+  def test_case_95(self):
+     self.assertEqual("Pass", run_test.run_test_result("Crosswalk-Manifest-Check95","\nb "))
+ 
+  def test_case_96(self):
+     self.assertEqual("Pass", run_test.run_test_result("Crosswalk-Manifest-Check96","*&^%!@#$%^&*()b "))
+ 
+  def test_case_97(self):
+     self.assertEqual("Pass", run_test.run_test_result("Crosswalk-Manifest-Check97","+-b "))
+ 
+  def test_case_98(self):
+     self.assertEqual("Pass", run_test.run_test_result("Crosswalk-Manifest-Check98","'b "))
+ 
+  def test_case_99(self):
+     self.assertEqual("Pass", run_test.run_test_result("Crosswalk-Manifest-Check99","中文b "))
+ 
+  def test_case_100(self):
+     self.assertEqual("Pass", run_test.run_test_result("Crosswalk-Manifest-Check100","中文a b"))
+ 
+  def test_case_101(self):
+     self.assertEqual("Pass", run_test.run_test_result("Crosswalk-Manifest-Check101","'a b"))
+ 
+  def test_case_102(self):
+     self.assertEqual("Pass", run_test.run_test_result("Crosswalk-Manifest-Check102","+-a b"))
+ 
+  def test_case_103(self):
+     self.assertEqual("Pass", run_test.run_test_result("Crosswalk-Manifest-Check103","*&^%!@#$%^&*()a b"))
+ 
+  def test_case_104(self):
+     self.assertEqual("Pass", run_test.run_test_result("Crosswalk-Manifest-Check104","\na b"))
+ 
+  def test_case_105(self):
+     self.assertEqual("Pass", run_test.run_test_result("Crosswalk-Manifest-Check105",".CAPITALa b"))
+ 
+  def test_case_106(self):
+     self.assertEqual("Pass", run_test.run_test_result("Crosswalk-Manifest-Check106","<>a b"))
+ 
+  def test_case_107(self):
+     self.assertEqual("Pass", run_test.run_test_result("Crosswalk-Manifest-Check107","_a-ba b"))
+ 
+  def test_case_108(self):
+     self.assertEqual("Pass", run_test.run_test_result("Crosswalk-Manifest-Check108","123456a b"))
+ 
+  def test_case_109(self):
+     self.assertEqual("Pass", run_test.run_test_result("Crosswalk-Manifest-Check109","Angrya b"))
+ 
+  def test_case_110(self):
+     self.assertEqual("Pass", run_test.run_test_result("Crosswalk-Manifest-Check110"," a b"))
+ 
+  def test_case_111(self):
+     self.assertEqual("Pass", run_test.run_test_result("Crosswalk-Manifest-Check111","  "))
+ 
+  def test_case_112(self):
+     self.assertEqual("Pass", run_test.run_test_result("Crosswalk-Manifest-Check112","Angry "))
+ 
+  def test_case_113(self):
+     self.assertEqual("Pass", run_test.run_test_result("Crosswalk-Manifest-Check113","123456 "))
+ 
+  def test_case_114(self):
+     self.assertEqual("Pass", run_test.run_test_result("Crosswalk-Manifest-Check114","_a-b "))
+ 
+  def test_case_115(self):
+     self.assertEqual("Pass", run_test.run_test_result("Crosswalk-Manifest-Check115","<> "))
+ 
+  def test_case_116(self):
+     self.assertEqual("Pass", run_test.run_test_result("Crosswalk-Manifest-Check116",".CAPITAL "))
+ 
+  def test_case_117(self):
+     self.assertEqual("Pass", run_test.run_test_result("Crosswalk-Manifest-Check117","\n "))
+ 
+  def test_case_118(self):
+     self.assertEqual("Pass", run_test.run_test_result("Crosswalk-Manifest-Check118","*&^%!@#$%^&*() "))
+ 
+  def test_case_119(self):
+     self.assertEqual("Pass", run_test.run_test_result("Crosswalk-Manifest-Check119","+- "))
+ 
+  def test_case_120(self):
+     self.assertEqual("Pass", run_test.run_test_result("Crosswalk-Manifest-Check120","' "))
+ 
+  def test_case_121(self):
+     self.assertEqual("Pass", run_test.run_test_result("Crosswalk-Manifest-Check121","中文 "))
+ 
+  def test_case_122(self):
+     self.assertEqual("Pass", run_test.run_test_result("Crosswalk-Manifest-Check122","中文birds"))
+ 
+  def test_case_123(self):
+     self.assertEqual("Pass", run_test.run_test_result("Crosswalk-Manifest-Check123","'birds"))
+ 
+  def test_case_124(self):
+     self.assertEqual("Pass", run_test.run_test_result("Crosswalk-Manifest-Check124","+-birds"))
+ 
+  def test_case_125(self):
+     self.assertEqual("Pass", run_test.run_test_result("Crosswalk-Manifest-Check125","*&^%!@#$%^&*()birds"))
+ 
+  def test_case_126(self):
+     self.assertEqual("Pass", run_test.run_test_result("Crosswalk-Manifest-Check126","\nbirds"))
+ 
+  def test_case_127(self):
+     self.assertEqual("Pass", run_test.run_test_result("Crosswalk-Manifest-Check127",".CAPITALbirds"))
+ 
+  def test_case_128(self):
+     self.assertEqual("Pass", run_test.run_test_result("Crosswalk-Manifest-Check128","<>birds"))
+ 
+  def test_case_129(self):
+     self.assertEqual("Pass", run_test.run_test_result("Crosswalk-Manifest-Check129","_a-bbirds"))
+ 
+  def test_case_130(self):
+     self.assertEqual("Pass", run_test.run_test_result("Crosswalk-Manifest-Check130","123456birds"))
+ 
+  def test_case_131(self):
+     self.assertEqual("Pass", run_test.run_test_result("Crosswalk-Manifest-Check131","Angrybirds"))
+ 
+  def test_case_132(self):
+     self.assertEqual("Pass", run_test.run_test_result("Crosswalk-Manifest-Check132"," birds"))
+ 
+  def test_case_133(self):
+     self.assertEqual("Pass", run_test.run_test_result("Crosswalk-Manifest-Check133"," birds"))
+ 
+  def test_case_134(self):
+     self.assertEqual("Pass", run_test.run_test_result("Crosswalk-Manifest-Check134","Angrybirds"))
+ 
+  def test_case_135(self):
+     self.assertEqual("Pass", run_test.run_test_result("Crosswalk-Manifest-Check135","123456birds"))
+ 
+  def test_case_136(self):
+     self.assertEqual("Pass", run_test.run_test_result("Crosswalk-Manifest-Check136","_a-bbirds"))
+ 
+  def test_case_137(self):
+     self.assertEqual("Pass", run_test.run_test_result("Crosswalk-Manifest-Check137","<>birds"))
+ 
+  def test_case_138(self):
+     self.assertEqual("Pass", run_test.run_test_result("Crosswalk-Manifest-Check138",".CAPITALbirds"))
+ 
+  def test_case_139(self):
+     self.assertEqual("Pass", run_test.run_test_result("Crosswalk-Manifest-Check139","\nbirds"))
+ 
+  def test_case_140(self):
+     self.assertEqual("Pass", run_test.run_test_result("Crosswalk-Manifest-Check140","*&^%!@#$%^&*()birds"))
+ 
+  def test_case_141(self):
+     self.assertEqual("Pass", run_test.run_test_result("Crosswalk-Manifest-Check141","+-birds"))
+ 
+  def test_case_142(self):
+     self.assertEqual("Pass", run_test.run_test_result("Crosswalk-Manifest-Check142","'birds"))
+ 
+  def test_case_143(self):
+     self.assertEqual("Pass", run_test.run_test_result("Crosswalk-Manifest-Check143","中文birds"))
+ 
+  def test_case_144(self):
+     self.assertEqual("Pass", run_test.run_test_result("Crosswalk-Manifest-Check144","中文 "))
+ 
+  def test_case_145(self):
+     self.assertEqual("Pass", run_test.run_test_result("Crosswalk-Manifest-Check145","' "))
+ 
+  def test_case_146(self):
+     self.assertEqual("Pass", run_test.run_test_result("Crosswalk-Manifest-Check146","+- "))
+ 
+  def test_case_147(self):
+     self.assertEqual("Pass", run_test.run_test_result("Crosswalk-Manifest-Check147","*&^%!@#$%^&*() "))
+ 
+  def test_case_148(self):
+     self.assertEqual("Pass", run_test.run_test_result("Crosswalk-Manifest-Check148","\n "))
+ 
+  def test_case_149(self):
+     self.assertEqual("Pass", run_test.run_test_result("Crosswalk-Manifest-Check149",".CAPITAL "))
+ 
+  def test_case_150(self):
+     self.assertEqual("Pass", run_test.run_test_result("Crosswalk-Manifest-Check150","<> "))
+ 
+  def test_case_151(self):
+     self.assertEqual("Pass", run_test.run_test_result("Crosswalk-Manifest-Check151","_a-b "))
+ 
+  def test_case_152(self):
+     self.assertEqual("Pass", run_test.run_test_result("Crosswalk-Manifest-Check152","123456 "))
+ 
+  def test_case_153(self):
+     self.assertEqual("Pass", run_test.run_test_result("Crosswalk-Manifest-Check153","Angry "))
+ 
+  def test_case_154(self):
+     self.assertEqual("Pass", run_test.run_test_result("Crosswalk-Manifest-Check154","  "))
+ 
+  def test_case_155(self):
+     self.assertEqual("Pass", run_test.run_test_result("Crosswalk-Manifest-Check155"," a b"))
+ 
+  def test_case_156(self):
+     self.assertEqual("Pass", run_test.run_test_result("Crosswalk-Manifest-Check156","Angrya b"))
+ 
+  def test_case_157(self):
+     self.assertEqual("Pass", run_test.run_test_result("Crosswalk-Manifest-Check157","123456a b"))
+ 
+  def test_case_158(self):
+     self.assertEqual("Pass", run_test.run_test_result("Crosswalk-Manifest-Check158","_a-ba b"))
+ 
+  def test_case_159(self):
+     self.assertEqual("Pass", run_test.run_test_result("Crosswalk-Manifest-Check159","<>a b"))
+ 
+  def test_case_160(self):
+     self.assertEqual("Pass", run_test.run_test_result("Crosswalk-Manifest-Check160",".CAPITALa b"))
+ 
+  def test_case_161(self):
+     self.assertEqual("Pass", run_test.run_test_result("Crosswalk-Manifest-Check161","\na b"))
+ 
+  def test_case_162(self):
+     self.assertEqual("Pass", run_test.run_test_result("Crosswalk-Manifest-Check162","*&^%!@#$%^&*()a b"))
+ 
+  def test_case_163(self):
+     self.assertEqual("Pass", run_test.run_test_result("Crosswalk-Manifest-Check163","+-a b"))
+ 
+  def test_case_164(self):
+     self.assertEqual("Pass", run_test.run_test_result("Crosswalk-Manifest-Check164","'a b"))
+ 
+  def test_case_165(self):
+     self.assertEqual("Pass", run_test.run_test_result("Crosswalk-Manifest-Check165","中文a b"))
+ 
+  def test_case_166(self):
+     self.assertEqual("Pass", run_test.run_test_result("Crosswalk-Manifest-Check166","中文b "))
+ 
+  def test_case_167(self):
+     self.assertEqual("Pass", run_test.run_test_result("Crosswalk-Manifest-Check167","'b "))
+ 
+  def test_case_168(self):
+     self.assertEqual("Pass", run_test.run_test_result("Crosswalk-Manifest-Check168","+-b "))
+ 
+  def test_case_169(self):
+     self.assertEqual("Pass", run_test.run_test_result("Crosswalk-Manifest-Check169","*&^%!@#$%^&*()b "))
+ 
+  def test_case_170(self):
+     self.assertEqual("Pass", run_test.run_test_result("Crosswalk-Manifest-Check170","\nb "))
+ 
+  def test_case_171(self):
+     self.assertEqual("Pass", run_test.run_test_result("Crosswalk-Manifest-Check171",".CAPITALb "))
+ 
+  def test_case_172(self):
+     self.assertEqual("Pass", run_test.run_test_result("Crosswalk-Manifest-Check172","<>b "))
+ 
+  def test_case_173(self):
+     self.assertEqual("Pass", run_test.run_test_result("Crosswalk-Manifest-Check173","_a-bb "))
+ 
+  def test_case_174(self):
+     self.assertEqual("Pass", run_test.run_test_result("Crosswalk-Manifest-Check174","123456b "))
+ 
+  def test_case_175(self):
+     self.assertEqual("Pass", run_test.run_test_result("Crosswalk-Manifest-Check175","Angryb "))
+ 
+  def test_case_176(self):
+     self.assertEqual("Pass", run_test.run_test_result("Crosswalk-Manifest-Check176"," b "))
+ 
+  def test_case_177(self):
+     self.assertEqual("Pass", run_test.run_test_result("Crosswalk-Manifest-Check177"," BIRDS."))
+ 
+  def test_case_178(self):
+     self.assertEqual("Pass", run_test.run_test_result("Crosswalk-Manifest-Check178","AngryBIRDS."))
+ 
+  def test_case_179(self):
+     self.assertEqual("Pass", run_test.run_test_result("Crosswalk-Manifest-Check179","123456BIRDS."))
+ 
+  def test_case_180(self):
+     self.assertEqual("Pass", run_test.run_test_result("Crosswalk-Manifest-Check180","_a-bBIRDS."))
+ 
+  def test_case_181(self):
+     self.assertEqual("Pass", run_test.run_test_result("Crosswalk-Manifest-Check181","<>BIRDS."))
+ 
+  def test_case_182(self):
+     self.assertEqual("Pass", run_test.run_test_result("Crosswalk-Manifest-Check182",".CAPITALBIRDS."))
+ 
+  def test_case_183(self):
+     self.assertEqual("Pass", run_test.run_test_result("Crosswalk-Manifest-Check183","\nBIRDS."))
+ 
+  def test_case_184(self):
+     self.assertEqual("Pass", run_test.run_test_result("Crosswalk-Manifest-Check184","*&^%!@#$%^&*()BIRDS."))
+ 
+  def test_case_185(self):
+     self.assertEqual("Pass", run_test.run_test_result("Crosswalk-Manifest-Check185","+-BIRDS."))
+ 
+  def test_case_186(self):
+     self.assertEqual("Pass", run_test.run_test_result("Crosswalk-Manifest-Check186","'BIRDS."))
+ 
+  def test_case_187(self):
+     self.assertEqual("Pass", run_test.run_test_result("Crosswalk-Manifest-Check187","中文BIRDS."))
+ 
+  def test_case_188(self):
+     self.assertEqual("Pass", run_test.run_test_result("Crosswalk-Manifest-Check188","中文asdfasdfasdfasdfdfghfggfhjhjerewrtrtyyuivghxvasdaetsdfgxcvbrtysadawfasdfasdewrtwer"))
+ 
+  def test_case_189(self):
+     self.assertEqual("Pass", run_test.run_test_result("Crosswalk-Manifest-Check189","'asdfasdfasdfasdfdfghfggfhjhjerewrtrtyyuivghxvasdaetsdfgxcvbrtysadawfasdfasdewrtwer"))
+ 
+  def test_case_190(self):
+     self.assertEqual("Pass", run_test.run_test_result("Crosswalk-Manifest-Check190","+-asdfasdfasdfasdfdfghfggfhjhjerewrtrtyyuivghxvasdaetsdfgxcvbrtysadawfasdfasdewrtwer"))
+ 
+  def test_case_191(self):
+     self.assertEqual("Pass", run_test.run_test_result("Crosswalk-Manifest-Check191","*&^%!@#$%^&*()asdfasdfasdfasdfdfghfggfhjhjerewrtrtyyuivghxvasdaetsdfgxcvbrtysadawfasdfasdewrtwer"))
+ 
+  def test_case_192(self):
+     self.assertEqual("Pass", run_test.run_test_result("Crosswalk-Manifest-Check192","\nasdfasdfasdfasdfdfghfggfhjhjerewrtrtyyuivghxvasdaetsdfgxcvbrtysadawfasdfasdewrtwer"))
+ 
+  def test_case_193(self):
+     self.assertEqual("Pass", run_test.run_test_result("Crosswalk-Manifest-Check193",".CAPITALasdfasdfasdfasdfdfghfggfhjhjerewrtrtyyuivghxvasdaetsdfgxcvbrtysadawfasdfasdewrtwer"))
+ 
+  def test_case_194(self):
+     self.assertEqual("Pass", run_test.run_test_result("Crosswalk-Manifest-Check194","<>asdfasdfasdfasdfdfghfggfhjhjerewrtrtyyuivghxvasdaetsdfgxcvbrtysadawfasdfasdewrtwer"))
+ 
+  def test_case_195(self):
+     self.assertEqual("Pass", run_test.run_test_result("Crosswalk-Manifest-Check195","_a-basdfasdfasdfasdfdfghfggfhjhjerewrtrtyyuivghxvasdaetsdfgxcvbrtysadawfasdfasdewrtwer"))
+ 
+  def test_case_196(self):
+     self.assertEqual("Pass", run_test.run_test_result("Crosswalk-Manifest-Check196","123456asdfasdfasdfasdfdfghfggfhjhjerewrtrtyyuivghxvasdaetsdfgxcvbrtysadawfasdfasdewrtwer"))
+ 
+  def test_case_197(self):
+     self.assertEqual("Pass", run_test.run_test_result("Crosswalk-Manifest-Check197","Angryasdfasdfasdfasdfdfghfggfhjhjerewrtrtyyuivghxvasdaetsdfgxcvbrtysadawfasdfasdewrtwer"))
+ 
+  def test_case_198(self):
+     self.assertEqual("Pass", run_test.run_test_result("Crosswalk-Manifest-Check198"," asdfasdfasdfasdfdfghfggfhjhjerewrtrtyyuivghxvasdaetsdfgxcvbrtysadawfasdfasdewrtwer"))
+ 
+  def test_case_199(self):
+     self.assertEqual("Pass", run_test.run_test_result("Crosswalk-Manifest-Check199"," asdfasdfasdfasdfdfghfggfhjhjerewrtrtyyuivghxvasdaetsdfgxcvbrtysadawfasdfasdewrtwer"))
+ 
+  def test_case_200(self):
+     self.assertEqual("Pass", run_test.run_test_result("Crosswalk-Manifest-Check200","Angryasdfasdfasdfasdfdfghfggfhjhjerewrtrtyyuivghxvasdaetsdfgxcvbrtysadawfasdfasdewrtwer"))
+ 
+  def test_case_201(self):
+     self.assertEqual("Pass", run_test.run_test_result("Crosswalk-Manifest-Check201","123456asdfasdfasdfasdfdfghfggfhjhjerewrtrtyyuivghxvasdaetsdfgxcvbrtysadawfasdfasdewrtwer"))
+ 
+  def test_case_202(self):
+     self.assertEqual("Pass", run_test.run_test_result("Crosswalk-Manifest-Check202","_a-basdfasdfasdfasdfdfghfggfhjhjerewrtrtyyuivghxvasdaetsdfgxcvbrtysadawfasdfasdewrtwer"))
+ 
+  def test_case_203(self):
+     self.assertEqual("Pass", run_test.run_test_result("Crosswalk-Manifest-Check203","<>asdfasdfasdfasdfdfghfggfhjhjerewrtrtyyuivghxvasdaetsdfgxcvbrtysadawfasdfasdewrtwer"))
+ 
+  def test_case_204(self):
+     self.assertEqual("Pass", run_test.run_test_result("Crosswalk-Manifest-Check204",".CAPITALasdfasdfasdfasdfdfghfggfhjhjerewrtrtyyuivghxvasdaetsdfgxcvbrtysadawfasdfasdewrtwer"))
+ 
+  def test_case_205(self):
+     self.assertEqual("Pass", run_test.run_test_result("Crosswalk-Manifest-Check205","\nasdfasdfasdfasdfdfghfggfhjhjerewrtrtyyuivghxvasdaetsdfgxcvbrtysadawfasdfasdewrtwer"))
+ 
+  def test_case_206(self):
+     self.assertEqual("Pass", run_test.run_test_result("Crosswalk-Manifest-Check206","*&^%!@#$%^&*()asdfasdfasdfasdfdfghfggfhjhjerewrtrtyyuivghxvasdaetsdfgxcvbrtysadawfasdfasdewrtwer"))
+ 
+  def test_case_207(self):
+     self.assertEqual("Pass", run_test.run_test_result("Crosswalk-Manifest-Check207","+-asdfasdfasdfasdfdfghfggfhjhjerewrtrtyyuivghxvasdaetsdfgxcvbrtysadawfasdfasdewrtwer"))
+ 
+  def test_case_208(self):
+     self.assertEqual("Pass", run_test.run_test_result("Crosswalk-Manifest-Check208","'asdfasdfasdfasdfdfghfggfhjhjerewrtrtyyuivghxvasdaetsdfgxcvbrtysadawfasdfasdewrtwer"))
+ 
+  def test_case_209(self):
+     self.assertEqual("Pass", run_test.run_test_result("Crosswalk-Manifest-Check209","中文asdfasdfasdfasdfdfghfggfhjhjerewrtrtyyuivghxvasdaetsdfgxcvbrtysadawfasdfasdewrtwer"))
+ 
+  def test_case_210(self):
+     self.assertEqual("Pass", run_test.run_test_result("Crosswalk-Manifest-Check210","中文BIRDS."))
+ 
+  def test_case_211(self):
+     self.assertEqual("Pass", run_test.run_test_result("Crosswalk-Manifest-Check211","'BIRDS."))
+ 
+  def test_case_212(self):
+     self.assertEqual("Pass", run_test.run_test_result("Crosswalk-Manifest-Check212","+-BIRDS."))
+ 
+  def test_case_213(self):
+     self.assertEqual("Pass", run_test.run_test_result("Crosswalk-Manifest-Check213","*&^%!@#$%^&*()BIRDS."))
+ 
+  def test_case_214(self):
+     self.assertEqual("Pass", run_test.run_test_result("Crosswalk-Manifest-Check214","\nBIRDS."))
+ 
+  def test_case_215(self):
+     self.assertEqual("Pass", run_test.run_test_result("Crosswalk-Manifest-Check215",".CAPITALBIRDS."))
+ 
+  def test_case_216(self):
+     self.assertEqual("Pass", run_test.run_test_result("Crosswalk-Manifest-Check216","<>BIRDS."))
+ 
+  def test_case_217(self):
+     self.assertEqual("Pass", run_test.run_test_result("Crosswalk-Manifest-Check217","_a-bBIRDS."))
+ 
+  def test_case_218(self):
+     self.assertEqual("Pass", run_test.run_test_result("Crosswalk-Manifest-Check218","123456BIRDS."))
+ 
+  def test_case_219(self):
+     self.assertEqual("Pass", run_test.run_test_result("Crosswalk-Manifest-Check219","AngryBIRDS."))
+ 
+  def test_case_220(self):
+     self.assertEqual("Pass", run_test.run_test_result("Crosswalk-Manifest-Check220"," BIRDS."))
+ 
+  def test_case_221(self):
+     self.assertEqual("Pass", run_test.run_test_result("Crosswalk-Manifest-Check221"," b "))
+ 
+  def test_case_222(self):
+     self.assertEqual("Pass", run_test.run_test_result("Crosswalk-Manifest-Check222","Angryb "))
+ 
+  def test_case_223(self):
+     self.assertEqual("Pass", run_test.run_test_result("Crosswalk-Manifest-Check223","123456b "))
+ 
+  def test_case_224(self):
+     self.assertEqual("Pass", run_test.run_test_result("Crosswalk-Manifest-Check224","_a-bb "))
+ 
+  def test_case_225(self):
+     self.assertEqual("Pass", run_test.run_test_result("Crosswalk-Manifest-Check225","<>b "))
+ 
+  def test_case_226(self):
+     self.assertEqual("Pass", run_test.run_test_result("Crosswalk-Manifest-Check226",".CAPITALb "))
+ 
+  def test_case_227(self):
+     self.assertEqual("Pass", run_test.run_test_result("Crosswalk-Manifest-Check227","\nb "))
+ 
+  def test_case_228(self):
+     self.assertEqual("Pass", run_test.run_test_result("Crosswalk-Manifest-Check228","*&^%!@#$%^&*()b "))
+ 
+  def test_case_229(self):
+     self.assertEqual("Pass", run_test.run_test_result("Crosswalk-Manifest-Check229","+-b "))
+ 
+  def test_case_230(self):
+     self.assertEqual("Pass", run_test.run_test_result("Crosswalk-Manifest-Check230","'b "))
+ 
+  def test_case_231(self):
+     self.assertEqual("Pass", run_test.run_test_result("Crosswalk-Manifest-Check231","中文b "))
+ 
+  def test_case_232(self):
+     self.assertEqual("Pass", run_test.run_test_result("Crosswalk-Manifest-Check232","中文a b"))
+ 
+  def test_case_233(self):
+     self.assertEqual("Pass", run_test.run_test_result("Crosswalk-Manifest-Check233","'a b"))
+ 
+  def test_case_234(self):
+     self.assertEqual("Pass", run_test.run_test_result("Crosswalk-Manifest-Check234","+-a b"))
+ 
+  def test_case_235(self):
+     self.assertEqual("Pass", run_test.run_test_result("Crosswalk-Manifest-Check235","*&^%!@#$%^&*()a b"))
+ 
+  def test_case_236(self):
+     self.assertEqual("Pass", run_test.run_test_result("Crosswalk-Manifest-Check236","\na b"))
+ 
+  def test_case_237(self):
+     self.assertEqual("Pass", run_test.run_test_result("Crosswalk-Manifest-Check237",".CAPITALa b"))
+ 
+  def test_case_238(self):
+     self.assertEqual("Pass", run_test.run_test_result("Crosswalk-Manifest-Check238","<>a b"))
+ 
+  def test_case_239(self):
+     self.assertEqual("Pass", run_test.run_test_result("Crosswalk-Manifest-Check239","_a-ba b"))
+ 
+  def test_case_240(self):
+     self.assertEqual("Pass", run_test.run_test_result("Crosswalk-Manifest-Check240","123456a b"))
+ 
+  def test_case_241(self):
+     self.assertEqual("Pass", run_test.run_test_result("Crosswalk-Manifest-Check241","Angrya b"))
+ 
+  def test_case_242(self):
+     self.assertEqual("Pass", run_test.run_test_result("Crosswalk-Manifest-Check242"," a b"))
+ 
+  def test_case_243(self):
+     self.assertEqual("Pass", run_test.run_test_result("Crosswalk-Manifest-Check243","  "))
+ 
+  def test_case_244(self):
+     self.assertEqual("Pass", run_test.run_test_result("Crosswalk-Manifest-Check244","Angry "))
+ 
+  def test_case_245(self):
+     self.assertEqual("Pass", run_test.run_test_result("Crosswalk-Manifest-Check245","123456 "))
+ 
+  def test_case_246(self):
+     self.assertEqual("Pass", run_test.run_test_result("Crosswalk-Manifest-Check246","_a-b "))
+ 
+  def test_case_247(self):
+     self.assertEqual("Pass", run_test.run_test_result("Crosswalk-Manifest-Check247","<> "))
+ 
+  def test_case_248(self):
+     self.assertEqual("Pass", run_test.run_test_result("Crosswalk-Manifest-Check248",".CAPITAL "))
+ 
+  def test_case_249(self):
+     self.assertEqual("Pass", run_test.run_test_result("Crosswalk-Manifest-Check249","\n "))
+ 
+  def test_case_250(self):
+     self.assertEqual("Pass", run_test.run_test_result("Crosswalk-Manifest-Check250","*&^%!@#$%^&*() "))
+ 
+  def test_case_251(self):
+     self.assertEqual("Pass", run_test.run_test_result("Crosswalk-Manifest-Check251","+- "))
+ 
+  def test_case_252(self):
+     self.assertEqual("Pass", run_test.run_test_result("Crosswalk-Manifest-Check252","' "))
+ 
+  def test_case_253(self):
+     self.assertEqual("Pass", run_test.run_test_result("Crosswalk-Manifest-Check253","中文 "))
+ 
+  def test_case_254(self):
+     self.assertEqual("Pass", run_test.run_test_result("Crosswalk-Manifest-Check254","中文birds"))
+ 
+  def test_case_255(self):
+     self.assertEqual("Pass", run_test.run_test_result("Crosswalk-Manifest-Check255","'birds"))
+ 
+  def test_case_256(self):
+     self.assertEqual("Pass", run_test.run_test_result("Crosswalk-Manifest-Check256","+-birds"))
+ 
+  def test_case_257(self):
+     self.assertEqual("Pass", run_test.run_test_result("Crosswalk-Manifest-Check257","*&^%!@#$%^&*()birds"))
+ 
+  def test_case_258(self):
+     self.assertEqual("Pass", run_test.run_test_result("Crosswalk-Manifest-Check258","\nbirds"))
+ 
+  def test_case_259(self):
+     self.assertEqual("Pass", run_test.run_test_result("Crosswalk-Manifest-Check259",".CAPITALbirds"))
+ 
+  def test_case_260(self):
+     self.assertEqual("Pass", run_test.run_test_result("Crosswalk-Manifest-Check260","<>birds"))
+ 
+  def test_case_261(self):
+     self.assertEqual("Pass", run_test.run_test_result("Crosswalk-Manifest-Check261","_a-bbirds"))
+ 
+  def test_case_262(self):
+     self.assertEqual("Pass", run_test.run_test_result("Crosswalk-Manifest-Check262","123456birds"))
+ 
+  def test_case_263(self):
+     self.assertEqual("Pass", run_test.run_test_result("Crosswalk-Manifest-Check263","Angrybirds"))
+ 
+  def test_case_264(self):
+     self.assertEqual("Pass", run_test.run_test_result("Crosswalk-Manifest-Check264"," birds"))
+ 
+if __name__ == '__main__':
+    suite1 = unittest.TestLoader().loadTestsFromTestCase(TestCaseUnit)
+    suite = unittest.TestSuite([suite1])
+    unittest.TextTestRunner(verbosity=2).run(suite) 
