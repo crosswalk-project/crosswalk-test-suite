@@ -3,126 +3,49 @@
 <test_definition>
   <suite launcher="xwalk" name="tct-batterystatus-w3c-tests" category="W3C/HTML5 APIs">
     <set name="Battery" type="js">
-      <testcase component="WebAPI/Device/Battery Status API" execution_type="auto" id="Battery_BatteryManager_chargingTime_exists" purpose="check if the navigator.battery.chargingTime attribute exists">
+      <testcase component="WebAPI/Device/Battery Status API" execution_type="auto" id="Navigator_getBattery" purpose="Check if the Navigator.getBattery exists and return BatteryManager object">
         <description>
-          <test_script_entry>/opt/tct-batterystatus-w3c-tests/batterystatus/Battery_BatteryManager_chargingTime_exists.html</test_script_entry>
+          <test_script_entry>/opt/tct-batterystatus-w3c-tests/batterystatus/Navigator_getBattery.html</test_script_entry>
         </description>
-        </testcase>
-      <testcase component="WebAPI/Device/Battery Status API" execution_type="auto" id="Battery_BatteryManager_chargingTime_readonly" purpose="check if the navigator.battery.chargingTime is readonly">
+      </testcase>
+      <testcase component="WebAPI/Device/Battery Status API" execution_type="auto" id="BatteryManager_charging" purpose="Check if the BatteryManager.charging attribute exists, readonly and typeof boolean">
         <description>
-          <test_script_entry>/opt/tct-batterystatus-w3c-tests/batterystatus/Battery_BatteryManager_chargingTime_readonly.html</test_script_entry>
+          <test_script_entry>/opt/tct-batterystatus-w3c-tests/batterystatus/BatteryManager_charging.html</test_script_entry>
         </description>
-        </testcase>
-      <testcase component="WebAPI/Device/Battery Status API" execution_type="auto" id="Battery_BatteryManager_chargingTime_type" purpose="check if the type of navigator.battery.chargingTime is number">
+      </testcase>
+      <testcase component="WebAPI/Device/Battery Status API" execution_type="auto" id="BatteryManager_chargingTime" purpose="Check if the BatteryManager.chargingTime attribute exists, readonly and typeof number">
         <description>
-          <test_script_entry>/opt/tct-batterystatus-w3c-tests/batterystatus/Battery_BatteryManager_chargingTime_type.html</test_script_entry>
+          <test_script_entry>/opt/tct-batterystatus-w3c-tests/batterystatus/BatteryManager_chargingTime.html</test_script_entry>
         </description>
-        </testcase>
-      <testcase component="WebAPI/Device/Battery Status API" execution_type="auto" id="Battery_BatteryManager_charging_exists" purpose="check if the navigator.battery.charging attribute exists">
+      </testcase>
+      <testcase component="WebAPI/Device/Battery Status API" execution_type="auto" id="BatteryManager_dischargingTime" purpose="Check if the BatteryManager.dischargingTime attribute exists, readonly and typeof number">
         <description>
-          <test_script_entry>/opt/tct-batterystatus-w3c-tests/batterystatus/Battery_BatteryManager_charging_exists.html</test_script_entry>
+          <test_script_entry>/opt/tct-batterystatus-w3c-tests/batterystatus/BatteryManager_dischargingTime.html</test_script_entry>
         </description>
-        </testcase>
-      <testcase component="WebAPI/Device/Battery Status API" execution_type="auto" id="Battery_BatteryManager_charging_readonly" purpose="check if the navigator.battery.charging is readonly">
+      </testcase>
+      <testcase component="WebAPI/Device/Battery Status API" execution_type="auto" id="BatteryManager_level" purpose="Check if the BatteryManager.level attribute exists, readonly and typeof number">
         <description>
-          <test_script_entry>/opt/tct-batterystatus-w3c-tests/batterystatus/Battery_BatteryManager_charging_readonly.html</test_script_entry>
+          <test_script_entry>/opt/tct-batterystatus-w3c-tests/batterystatus/BatteryManager_level.html</test_script_entry>
         </description>
-        </testcase>
-      <testcase component="WebAPI/Device/Battery Status API" execution_type="auto" id="Battery_BatteryManager_charging_type" purpose="check if the type of navigator.battery.charging is boolean">
+      </testcase>
+      <testcase component="WebAPI/Device/Battery Status API" execution_type="auto" id="BatteryManager_onchargingchange" purpose="Check if the BatteryManager.onchargingchange attribute exists and typeof object">
         <description>
-          <test_script_entry>/opt/tct-batterystatus-w3c-tests/batterystatus/Battery_BatteryManager_charging_type.html</test_script_entry>
+          <test_script_entry>/opt/tct-batterystatus-w3c-tests/batterystatus/BatteryManager_onchargingchange.html</test_script_entry>
         </description>
-        </testcase>
-      <testcase component="WebAPI/Device/Battery Status API" execution_type="auto" id="Battery_BatteryManager_dischargingTime_exists" purpose="check if the navigator.battery.dischargingTime attribute exists">
+      </testcase>
+      <testcase component="WebAPI/Device/Battery Status API" execution_type="auto" id="BatteryManager_onchargingtimechange" purpose="Check if the BatteryManager.onchargingtimechange attribute exists and typeof object">
         <description>
-          <test_script_entry>/opt/tct-batterystatus-w3c-tests/batterystatus/Battery_BatteryManager_dischargingTime_exists.html</test_script_entry>
+          <test_script_entry>/opt/tct-batterystatus-w3c-tests/batterystatus/BatteryManager_onchargingtimechange.html</test_script_entry>
         </description>
-        </testcase>
-      <testcase component="WebAPI/Device/Battery Status API" execution_type="auto" id="Battery_BatteryManager_dischargingTime_readonly" purpose="check if the navigator.battery.dischargingTime is readonly">
+      </testcase>
+      <testcase component="WebAPI/Device/Battery Status API" execution_type="auto" id="BatteryManager_ondischargingtimechange" purpose="Check if the BatteryManager.ondischargingtimechange attribute exists and typeof object">
         <description>
-          <test_script_entry>/opt/tct-batterystatus-w3c-tests/batterystatus/Battery_BatteryManager_dischargingTime_readonly.html</test_script_entry>
+          <test_script_entry>/opt/tct-batterystatus-w3c-tests/batterystatus/BatteryManager_ondischargingtimechange.html</test_script_entry>
         </description>
-        </testcase>
-      <testcase component="WebAPI/Device/Battery Status API" execution_type="auto" id="Battery_BatteryManager_dischargingTime_type" purpose="check if the type of navigator.battery.dischargingTime is number">
+      </testcase>
+      <testcase component="WebAPI/Device/Battery Status API" execution_type="auto" id="BatteryManager_onlevelchange" purpose="Check if the BatteryManager.onlevelchange attribute exists and typeof object">
         <description>
-          <test_script_entry>/opt/tct-batterystatus-w3c-tests/batterystatus/Battery_BatteryManager_dischargingTime_type.html</test_script_entry>
-        </description>
-        </testcase>
-      <testcase component="WebAPI/Device/Battery Status API" execution_type="auto" id="Battery_BatteryManager_level_exists" purpose="check if the navigator.battery.level attribute exists">
-        <description>
-          <test_script_entry>/opt/tct-batterystatus-w3c-tests/batterystatus/Battery_BatteryManager_level_exists.html</test_script_entry>
-        </description>
-        </testcase>
-      <testcase component="WebAPI/Device/Battery Status API" execution_type="auto" id="Battery_BatteryManager_level_readonly" purpose="check if the navigator.battery.level is readonly">
-        <description>
-          <test_script_entry>/opt/tct-batterystatus-w3c-tests/batterystatus/Battery_BatteryManager_level_readonly.html</test_script_entry>
-        </description>
-        </testcase>
-      <testcase component="WebAPI/Device/Battery Status API" execution_type="auto" id="Battery_BatteryManager_level_type" purpose="check if the type of navigator.battery.level is number">
-        <description>
-          <test_script_entry>/opt/tct-batterystatus-w3c-tests/batterystatus/Battery_BatteryManager_level_type.html</test_script_entry>
-        </description>
-        </testcase>
-      <testcase component="WebAPI/Device/Battery Status API" execution_type="auto" id="Battery_BatteryManager_onchargingchange_exists" purpose="check if the navigator.battery.onchargingchange event exists">
-        <description>
-          <test_script_entry>/opt/tct-batterystatus-w3c-tests/batterystatus/Battery_BatteryManager_onchargingchange_exists.html</test_script_entry>
-        </description>
-        </testcase>
-      <testcase component="WebAPI/Device/Battery Status API" execution_type="auto" id="Battery_BatteryManager_onchargingchange_type" purpose="check if the type of navigator.battery.onchargingchange is object">
-        <description>
-          <test_script_entry>/opt/tct-batterystatus-w3c-tests/batterystatus/Battery_BatteryManager_onchargingchange_type.html</test_script_entry>
-        </description>
-        </testcase>
-      <testcase component="WebAPI/Device/Battery Status API" execution_type="auto" id="Battery_BatteryManager_onchargingtimechange_exists" purpose="check if the navigator.battery.onchargingtimechange exists">
-        <description>
-          <test_script_entry>/opt/tct-batterystatus-w3c-tests/batterystatus/Battery_BatteryManager_onchargingtimechange_exists.html</test_script_entry>
-        </description>
-        </testcase>
-      <testcase component="WebAPI/Device/Battery Status API" execution_type="auto" id="Battery_BatteryManager_onchargingtimechange_type" purpose="check if the type of navigator.battery.onchargingtimechange is object">
-        <description>
-          <test_script_entry>/opt/tct-batterystatus-w3c-tests/batterystatus/Battery_BatteryManager_onchargingtimechange_type.html</test_script_entry>
-        </description>
-        </testcase>
-      <testcase component="WebAPI/Device/Battery Status API" execution_type="auto" id="Battery_BatteryManager_ondischargingtimechange_exists" purpose="check if the navigator.battery.ondischargingtimechange event exists">
-        <description>
-          <test_script_entry>/opt/tct-batterystatus-w3c-tests/batterystatus/Battery_BatteryManager_ondischargingtimechange_exists.html</test_script_entry>
-        </description>
-        </testcase>
-      <testcase component="WebAPI/Device/Battery Status API" execution_type="auto" id="Battery_BatteryManager_ondischargingtimechange_type" purpose="check if the type of navigator.battery.ondischargingtimechange is object">
-        <description>
-          <test_script_entry>/opt/tct-batterystatus-w3c-tests/batterystatus/Battery_BatteryManager_ondischargingtimechange_type.html</test_script_entry>
-        </description>
-        </testcase>
-      <testcase component="WebAPI/Device/Battery Status API" execution_type="auto" id="Battery_BatteryManager_onlevelchange_exists" purpose="check if the navigator.battery.onlevelchange event exists">
-        <description>
-          <test_script_entry>/opt/tct-batterystatus-w3c-tests/batterystatus/Battery_BatteryManager_onlevelchange_exists.html</test_script_entry>
-        </description>
-        </testcase>
-      <testcase component="WebAPI/Device/Battery Status API" execution_type="auto" id="Battery_BatteryManager_onlevelchange_type" purpose="check if the type of navigator.battery.onlevelchange is object">
-        <description>
-          <test_script_entry>/opt/tct-batterystatus-w3c-tests/batterystatus/Battery_BatteryManager_onlevelchange_type.html</test_script_entry>
-        </description>
-        </testcase>
-      <testcase component="WebAPI/Device/Battery Status API" execution_type="auto" id="Battery_NavigatorBattery_battery_exists" purpose="check if the navigator.battery interface exists">
-        <description>
-          <test_script_entry>/opt/tct-batterystatus-w3c-tests/batterystatus/Battery_NavigatorBattery_battery_exists.html</test_script_entry>
-        </description>
-        </testcase>
-      <testcase component="WebAPI/Device/Battery Status API" execution_type="auto" id="Battery_NavigatorBattery_battery_type" purpose="check if the type of navigator.battery is object">
-        <description>
-          <test_script_entry>/opt/tct-batterystatus-w3c-tests/batterystatus/Battery_NavigatorBattery_battery_type.html</test_script_entry>
-        </description>
-        </testcase>
-      <testcase component="WebAPI/Device/Battery Status API" execution_type="auto" id="Battery_NavigatorBattery_battery_readonly" purpose="check if the navigator.battery is readonly">
-        <description>
-          <test_script_entry>/opt/tct-batterystatus-w3c-tests/batterystatus/Battery_NavigatorBattery_battery_readonly.html</test_script_entry>
-        </description>
-        </testcase>
-    </set>
-    <set name="idltest" type="js">
-      <testcase component="WebAPI/Device/Battery Status API" execution_type="auto" id="battery-interface-idlharness" purpose="check if the navigator.battery idlharness tests">
-        <description>
-          <test_script_entry>/opt/tct-batterystatus-w3c-tests/batterystatus/w3c/battery-interface-idlharness.html</test_script_entry>
+          <test_script_entry>/opt/tct-batterystatus-w3c-tests/batterystatus/BatteryManager_onlevelchange.html</test_script_entry>
         </description>
       </testcase>
     </set>
