@@ -33,6 +33,9 @@ Authors:
 
 var sstorage = window.sessionStorage;
 var applist;
+var listArray = [];
+var caseArray = [];
+var setNum = -1;
 
 function getVersion() {
   var version = "";
@@ -43,6 +46,15 @@ function getVersion() {
     dataType : "xml",
     success : function(xml){
       $(xml).find("widget").each(function(){version = $(this).attr("version");});
+    }
+  });
+  $.ajax({
+    async : false,
+    type : "GET",
+    url : "manifest.json",
+    dataType : "json",
+    success : function(json){
+      $(json).each(function(){version = $(this).attr("version");});
     }
   });
   return version;
@@ -60,20 +72,61 @@ function getApps() {
   return tests;
 }
 
+function checkRepeat() {
+  var i = 0; 
+  var j = 0;
+  var isRepeat, reapeatIndex;
+  $(applist).find("set").each(function(){
+    j = 0;
+    if(listArray.indexOf($(this).attr("name")) == -1) {
+      listArray[i] = $(this).attr("name");
+      caseArray[i] = [];
+      isRepeat = false;
+    } else {
+      reapeatIndex = listArray.indexOf($(this).attr("name"));
+      isRepeat = true;
+    }
+    $(this).find("testcase").each(function(){
+      if(isRepeat) {
+        for(var k = 0; k < caseArray[reapeatIndex].length; k++) {
+           if(caseArray[reapeatIndex][k].id != $(this).attr("id")) {
+             isRepeat = false;
+           }else {
+             isRepeat = true;
+           }
+        }
+        if(!isRepeat) {
+          caseArray[reapeatIndex][caseArray[reapeatIndex].length]={"id":$(this).attr("id"), "name":$(this).attr("purpose")};
+        }
+        isRepeat = true;
+      } else {
+         caseArray[i][j] = {"id":$(this).attr("id"), "name":$(this).attr("purpose")} ;
+      }
+      j++;
+    });
+    if(!isRepeat) {
+      i++;
+    }
+  });
+  //document.write(JSON.stringify(caseArray));
+}
+
 function updateList() {
   $("#mylist").empty();
-  $(applist).find("set").each(function(){
-    var appLine = "<div data-role=\"collapsible\" data-theme=\"b\"><h3>"+$(this).attr("name")+"</h3>\n    <ul data-role=\"listview\" data-inset=\"false\">\n";
-    $(this).find("testcase").each(function(){
-      var url = "samples/" + $(this).attr("id") + "/index.html?test_name="+$(this).attr("purpose");
-      appLine += "<li class=\"app\" id=\"" + $(this).attr("id") + "\">"
-                  + "<a href=\"" + url + "\">" + "<h2 style=\"margin-left:25px\">" + $(this).attr("purpose") + "</h2></a></li>\n";
-    });
+  for(var i = 0; i < listArray.length; i++) {
+    if(i != setNum) {
+      var appLine = "<div data-role=\"collapsible\" data-theme=\"b\"><h3>"+listArray[i]+"</h3>\n    <ul data-role=\"listview\" data-inset=\"false\">\n";
+    }else {
+      var appLine = "<div data-role=\"collapsible\" data-collapsed = \"false\" data-theme=\"b\"><h3>"+listArray[i]+"</h3>\n    <ul data-role=\"listview\" data-inset=\"false\">\n";
+    }
+    for(var j = 0; j < caseArray[i].length; j++) {
+      var url = "samples/" + caseArray[i][j].id + "/index.html?test_name="+caseArray[i][j].name;
+      appLine += "<li class=\"app\" id=\"" + caseArray[i][j].id + "\">"
+                  + "<a href=\"" + url + "\">" + "<h2 style=\"margin-left:25px\">" + caseArray[i][j].name + "</h2></a></li>\n";
+    }
     appLine += "</ul></div>";
-
     $("#mylist").append(appLine);
-  });
-
+  }
   for(var i=0; i<sstorage.length; i++){
     var name = sstorage.key(i);
     var item = sstorage.getItem(name);
@@ -106,7 +159,9 @@ function updateList() {
         node.find("a h2").css("padding-left", "20px");
       }
     }
+    setNum = -2;
   }
+
   $("#mylist").trigger("create");
   $(".ui-li-has-count").each(function() {
     var childs = $(this).find(".ui-li-count");
@@ -124,6 +179,10 @@ function updateList() {
 
 function updateFooter() {
   $(':jqmData(role=footer)').find(':jqmData(role=button) > span:first-child').css('padding', '15px 10px 15px 30px');
+  $("#popup_info").popup( "option", "theme", "a");
+  var maxHeight = $(window).height() - 100 + "px";
+  $("#popup_info").css("max-height", maxHeight);
+  $("#popup_info").css("margin-bottom", "30px");
 }
 
 function launchMain(node) {
@@ -159,12 +218,26 @@ function runApp(url) {
   $("#test_frame").attr("src", url);
 }
 
+function findSet(name) {
+   for(var i = 0; i < caseArray.length; i++) {
+     for(var j = 0; j < caseArray[i].length; j ++) {
+       if(name == caseArray[i][j].id) { 
+          setNum = i;
+       }   
+     }
+   }
+   return j;
+}
+
 $("#home_ui").live("pagebeforecreate", function () {
   $("#version").text(getVersion());
 });
 
 $("#home_ui").live("pageshow", function () {
   applist = getApps();
+  if(setNum == -1) {
+    checkRepeat();
+  }
   updateList();
   updateFooter();
 });
@@ -181,6 +254,9 @@ $("#reset").live("click", function (event) {
 });
 
 $(".app").live("click", function () {
+  findSet($(this).attr("id"));
+  //var caseUrl = "samples/" + caseArray[setNum][caseindex].id + "/index.html?test_name="+caseArray[setNum][caseindex].name;
+ // ruanApp(caseUrl); 
   runApp($(this).find("div div a").attr("href"));
   return false;
 });
