@@ -145,7 +145,7 @@ public class XWalkUIClientTest extends XWalkViewTestBase {
             int onReceivedTitleCallCount = mOnTitleUpdatedHelper.getCallCount();
             loadUrlAsync(url);
             mOnTitleUpdatedHelper.waitForCallback(onReceivedTitleCallCount);
-            assertNotNull(mOnTitleUpdatedHelper.getTitle());
+            assertEquals("Test", mOnTitleUpdatedHelper.getTitle());
         } catch (InterruptedException e) {
             assertTrue(false);
             e.printStackTrace();
@@ -153,6 +153,49 @@ public class XWalkUIClientTest extends XWalkViewTestBase {
             assertTrue(false);
             e.printStackTrace();
         } catch (Exception e) {
+            assertTrue(false);
+            e.printStackTrace();
+        }
+    }
+
+    public void testOnReceivedTitle_Callback() {
+        try {
+            String path = "/test.html";
+            String pageContent = CommonResources.makeHtmlPageFrom("<title>Test</title>",
+                    "<div> The title is: Test </div>");
+            String url = addPageToTestServer(mWebServer, path, pageContent);
+            loadUrlSync(url);
+            loadUrlSync("file:///android_asset/index.html");
+            OnTitleUpdatedHelper mOnTitleUpdatedHelper = mTestHelperBridge.getOnTitleUpdatedHelper();
+            int onReceivedTitleCallCount = mOnTitleUpdatedHelper.getCallCount();
+            goBackSync(1);
+            mOnTitleUpdatedHelper.waitForCallback(onReceivedTitleCallCount);
+            assertEquals("Test",mOnTitleUpdatedHelper.getTitle());
+        } catch (InterruptedException e) {
+            assertTrue(false);
+            e.printStackTrace();
+        } catch (TimeoutException e) {
+            assertTrue(false);
+            e.printStackTrace();
+        } catch (Exception e) {
+            assertTrue(false);
+            e.printStackTrace();
+        } catch (Throwable e) {
+            assertTrue(false);
+            e.printStackTrace();
+        }
+    }
+
+    @SmallTest
+    public void testOnReceivedTitle_TitleChanged() {
+        try {
+            final String url1 = "file:///android_asset/p1bar.html";
+            final String url2 = "file:///android_asset/index.html";
+            loadUrlSync(url1);
+            loadUrlSync(url2);
+            goBackSync(1);
+            assertEquals("Test", getTitleOnUiThread());
+        }catch (Throwable e) {
             assertTrue(false);
             e.printStackTrace();
         }
