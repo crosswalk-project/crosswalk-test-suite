@@ -28,26 +28,35 @@ EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 Authors:
         Cui,Jieqiong <jieqiongx.cui@intel.com>
         Xinx, liu <xinx.liu@intel.com>
+        Xu, Kang <kangx.xu@intel.com>
 
 -->
 
-<html>
-  <head>
-    <title>BatteryTest: Battery_BatteryManager_ondischargingtimechange_exists</title>
-    <link rel="author" title="Intel" href="http://www.intel.com" />
-    <link rel="help" href="http://www.w3.org/TR/2012/CR-battery-status-20120508/#dfn-dischargingtimechange" />
-    <meta name="flags" content="" />
-    <meta name="assert" content="check if the navigator.battery.ondischargingtimechange event exists" />
-    <script src="../resources/testharness.js"></script>
-    <script src="../resources/testharnessreport.js"></script>
-  </head>
-  <body>
-    <div id="log"></div>
-    <script>
-        test(function() {
-            var newBattery = navigator.battery||navigator.webkitBattery||navigator.webkitbattery;
-            assert_true("ondischargingtimechange" in newBattery, "the ondischargingtimechange attribute exists");
-        }, document.title);
-    </script>
-  </body>
-</html>
+<meta charset="utf-8">
+<title>Battery Status Test: BatteryManager - onchargingtimechange</title>
+<link rel="author" title="Intel" href="http://www.intel.com">
+<link rel="help" href="https://dvcs.w3.org/hg/dap/raw-file/default/battery/Overview.html#the-batterymanager-interface">
+<script src="../resources/testharness.js"></script>
+<script src="../resources/testharnessreport.js"></script>
+<div id="log"></div>
+<script>
+
+async_test(function (t) {
+  navigator.getBattery().then(
+    function (battery) {
+      t.step(function () {
+        assert_true("onchargingtimechange" in battery, "the onchargingtimechange attribute exists");
+        assert_equals(typeof battery.onchargingtimechange, "object", "the type of onchargingtimechange attribute");
+      });
+      t.done();
+    },
+    function (error) {
+      t.step(function () {
+        assert_unreached(error.message);
+      });
+      t.done();
+    }
+  )
+}, "Check if the BatteryManager.onchargingtimechange attribute exists and typeof object");
+
+</script>

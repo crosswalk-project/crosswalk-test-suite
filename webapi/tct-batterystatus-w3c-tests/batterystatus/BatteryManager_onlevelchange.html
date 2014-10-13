@@ -28,26 +28,35 @@ EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 Authors:
         Cui,Jieqiong <jieqiongx.cui@intel.com>
         Xinx, liu <xinx.liu@intel.com>
+        Xu, Kang <kangx.xu@intel.com>
 
 -->
 
-<html>
-  <head>
-    <title>BatteryTest: Battery_BatteryManager_onlevelchange_exists</title>
-    <link rel="author" title="Intel" href="http://www.intel.com" />
-    <link rel="help" href="http://www.w3.org/TR/2012/CR-battery-status-20120508/#dfn-levelchange" />
-    <meta name="flags" content="" />
-    <meta name="assert" content="check if the navigator.battery.onlevelchange event exists" />
-    <script src="../resources/testharness.js"></script>
-    <script src="../resources/testharnessreport.js"></script>
-  </head>
-  <body>
-    <div id="log"></div>
-    <script>
-        test(function() {
-            var newBattery = navigator.battery||navigator.webkitBattery||navigator.webkitbattery;
-            assert_true("onlevelchange" in newBattery, "the onlevelchange attribute exists");
-        }, document.title);
-    </script>
-  </body>
-</html>
+<meta charset="utf-8">
+<title>Battery Status Test: BatteryManager - onlevelchange</title>
+<link rel="author" title="Intel" href="http://www.intel.com">
+<link rel="help" href="https://dvcs.w3.org/hg/dap/raw-file/default/battery/Overview.html#the-batterymanager-interface">
+<script src="../resources/testharness.js"></script>
+<script src="../resources/testharnessreport.js"></script>
+<div id="log"></div>
+<script>
+
+async_test(function (t) {
+  navigator.getBattery().then(
+    function (battery) {
+      t.step(function () {
+        assert_true("onlevelchange" in battery, "the onlevelchange attribute exists");
+        assert_equals(typeof battery.onlevelchange, "object", "the type of onlevelchange attribute");
+      });
+      t.done();
+    },
+    function (error) {
+      t.step(function () {
+        assert_unreached(error.message);
+      });
+      t.done();
+    }
+  )
+}, "Check if the BatteryManager.onlevelchange attribute exists and typeof object");
+
+</script>
