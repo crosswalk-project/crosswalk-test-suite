@@ -38,7 +38,7 @@ def doCMD(cmd):
     return (cmd_return_code, output)
 
 def updateCMD(cmd=None):
-    if "xwalkctl" in cmd:
+    if "xwalkctl" in cmd or "pkgcmd" in cmd:
         cmd = "su - app -c '%s;%s'" % (XW_ENV, cmd)
     return cmd
 
@@ -125,11 +125,11 @@ def instPKGs():
         action_status = False
     for root, dirs, files in os.walk(SCRIPT_DIR):
         for file in files:
-            if file.endswith(".wgt"):
+            if file.endswith(PKG_NAME + ".wgt"):
                 if not doRemoteCopy(os.path.join(root, file), "%s/%s" % (SRC_DIR, file)):
                     action_status = False
                 (return_code, output) = doRemoteCMD(
-                    "xwalkctl -i %s/%s" % (SRC_DIR, file))
+                    "pkgcmd -i -t wgt -q -p %s/%s" % (SRC_DIR, file))
                 doRemoteCMD("rm -rf %s/%s" % (SRC_DIR, file))
                 for line in output:
                     if "Failure" in line:
