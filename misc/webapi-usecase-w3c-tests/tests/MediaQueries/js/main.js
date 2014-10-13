@@ -31,13 +31,11 @@ Authors:
 
 var testFlag = {
     green: false,
-    red: false,
-    blue: false,
-    yellow: false
+    red: false
 };
 
 function status() {
-    if (testFlag.green && testFlag.red && testFlag.blue && testFlag.yellow) {
+    if (testFlag.green && testFlag.red) {
         EnablePassButton();
     }
 }
@@ -47,25 +45,16 @@ $(document).ready(function () {
     $("#apply1").click(function () {
         testFlag.green = true;
         $("style")[0].innerHTML = $("style")[0].innerHTML +
-            "@media screen and (max-device-aspect-ratio:2/1) {#media{color:green;}}";
+            "@media screen and (max-width: 600px) {#media{color:yellow;}}";
+        $("style")[0].innerHTML = $("style")[0].innerHTML +
+            "@media screen and (min-width: 900px) {#media{color:purple;}}";
+        $("style")[0].innerHTML = $("style")[0].innerHTML +
+            "@media screen and (min-width: 600px) and (max-width: 900px) {#media{color:blue;}}";
         status();
     });
     $("#apply2").click(function () {
         testFlag.red = true;
-        $("style")[0].innerHTML = $("style")[0].innerHTML +
-            "@media screen and (min-device-aspect-ratio:1/10) {#media{color:red;}}";
-        status();
-    });
-    $("#apply3").click(function () {
-        testFlag.blue = true;
-        $("style")[0].innerHTML = $("style")[0].innerHTML +
-            "@media screen and (max-device-height: 1300px) {#media{color:blue;}}";
-        status();
-    });
-    $("#apply4").click(function () {
-        testFlag.yellow = true;
-        $("style")[0].innerHTML = $("style")[0].innerHTML +
-            "@media screen and (min-device-height: 100px) {#media{color:yellow;}}";
+        $("#currentInfo").html("<b>Your current viewing area is: </b>" + document.body.clientWidth + "px");
         status();
     });
 });
