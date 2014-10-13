@@ -34,7 +34,7 @@ local_path=$(cd $(dirname $0);pwd)
 source $local_path/Common
 xpk_path=$local_path/../testapp
 # install original xpk
-xwalkctl --install $xpk_path/diffid_same_version_tests.xpk 
+pkgcmd -i -t wgt -p $xpk_path/diffid_same_version_tests.wgt -q
 if [[ $? -eq 0 ]]; then
                 echo "Install Pass"
         else
@@ -42,7 +42,7 @@ if [[ $? -eq 0 ]]; then
                 exit 1
 fi
 app_id1=`sqlite3 /home/app/.applications/dbspace/.app_info.db "select package from app_info where name like \"%diffid_same_version_tests%\";"`
-xwalkctl --install $xpk_path/update_original_versionOne_tests.xpk
+pkgcmd -i -t wgt -p $xpk_path/update_original_versionOne_tests.wgt -q
 if [[ $? -eq 0 ]]; then
                 echo "Install Pass"
         else
@@ -50,14 +50,14 @@ if [[ $? -eq 0 ]]; then
                 exit 1
 fi
 app_id2=`sqlite3 /home/app/.applications/dbspace/.app_info.db "select package from app_info where name like \"%update_original_versionOne_tests%\";"`
-xwalkctl -u $app_id1
+pkgcmd -u -n  $app_id1 -q
 if [[ $? -eq 0 ]]; then
                 echo "Uninstall Pass"
         else
                 echo "Uninstall Fail"
                 exit 1
 fi
-xwalkctl -u $app_id2
+pkgcmd -u -n  $app_id2 -q
 if [[ $? -eq 0 ]]; then
                 echo "Uninstall Pass"
                 exit 0

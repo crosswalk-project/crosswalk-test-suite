@@ -37,7 +37,7 @@ fi
 
 for pkgid in $pkgids
 do
-  xwalkctl --uninstall $pkgid 1>>/tmp/uninstaller.log 2>&1
+  pkgcmd -u -n  $pkgid -q 1>>/tmp/uninstaller.log 2>&1
 done
 
 RET3=`grep "not be found" /tmp/uninstaller.log `

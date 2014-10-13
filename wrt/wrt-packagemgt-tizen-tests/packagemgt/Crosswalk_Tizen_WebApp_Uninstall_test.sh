@@ -34,11 +34,11 @@ local_path=$(cd $(dirname $0);pwd)
 source $local_path/Common
 xpk_path=$local_path/../testapp
 
-xwalkctl --install  $xpk_path/diffid_same_version_tests.xpk
+pkgcmd -i -t wgt -p  $xpk_path/diffid_same_version_tests.wgt -q
 if [[ $? -eq 0 ]]; then
    echo "Install Pass"
    app_id=`sqlite3 /home/app/.applications/dbspace/.app_info.db "select package from app_info where name like \"%diffid_same_version_tests%\";"`
-   xwalkctl -u $app_id
+   pkgcmd -u -n $app_id -q
    exit 0
 else
    echo "Install Fail"

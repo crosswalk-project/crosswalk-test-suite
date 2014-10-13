@@ -32,7 +32,7 @@ function func_xwalkservice()
 {
         export DBUS_SESSION_BUS_ADDRESS=unix:path=/run/user/5000/dbus/user_bus_socket
         systemctl --user status xwalk.service > /dev/null
-        xwalkctl > /tmp/res.txt
+        pkgcmd -l > /tmp/res.txt
         cat /tmp/res.txt | grep "Application ID" >/dev/null
         if [ $? -ne 0  ];then
                 echo "setting xwalk service mode fail"
@@ -42,7 +42,7 @@ function func_xwalkservice()
 
 function func_check_xwalkservice()
 {
-        xwalkctl &> /tmp/res.txt
+        pkgcmd -l &> /tmp/res.txt
         cat /tmp/res.txt | grep "Application ID" > /dev/null
         if [ $? -ne 0  ];then
                 func_xwalkservice
@@ -50,13 +50,13 @@ function func_check_xwalkservice()
 }
 
 function install_origin_xpk(){
-        xwalkctl --install  $1 &> /tmp/install
+        pkgcmd -i -t wgt -p  $1 &> /tmp/install -q
         cat /tmp/install | grep "DONE"
         if [[ $? -ne 0 ]]; then
                 cat /tmp/install | grep "Already"
                 if [[ $? -eq 0 ]]; then
                         uninstall_exist_xpk
-                        xwalkctl --install  $1 &> /tmp/install
+                        pkgcmd -i -t wgt -p  $1 &> /tmp/install -q
                 else
                         echo "The original xpk  install failure."  
                         exit 1
@@ -67,7 +67,7 @@ function install_origin_xpk(){
 }
 
 function update_valid_xpk(){
-        xwalkctl --install $1 &> /tmp/install
+        pkgcmd -i -t wgt -p $1 &> /tmp/install -q
         cat /tmp/install | grep "DONE"
         if [[ $? -eq 0 ]]; then
                 echo "Update xpk, install successfully"
@@ -89,7 +89,7 @@ function update_valid_xpk(){
 }
 
 function update_negative_xpk(){
-        xwalkctl --install $1 &> /tmp/install
+        pkgcmd -i -t wgt -p $1 &> /tmp/install -q
         cat /tmp/install | grep "DONE"
         if [[ $? -ne 0 ]]; then
                 echo "Pass, Update negative xpk, install failure"
@@ -112,7 +112,7 @@ function update_negative_xpk(){
 
 function uninstall_xpk(){
 #uninstall xpk
-xwalkctl --uninstall $1
+pkgcmd -u -n  $1 -q
 }
 
 function get_version_name(){
@@ -128,8 +128,8 @@ function get_app_id(){
 }
 
 function uninstall_exist_xpk(){
-        exist_id=`xwalkctl | grep "update_original_*" | awk '{print $1}'`
-        [ -n $exist_id ] & xwalkctl --uninstall $exist_id
-        exist_id=`xwalkctl | grep "update_version_*" | awk '{print $1}'`
-        [ -n $exist_id ] & xwalkctl --uninstall $exist_id
+        exist_id=`pkgcmd -l | grep "update_original_*" | awk '{print $4}'`
+        [ -n $exist_id ] & pkgcmd -u -n  ${exist_id:1:-1}
+        exist_id=`pkgcmd -l | grep "update_version_*" | awk '{print $4}'`
+        [ -n $exist_id ] & pkgcmd -u -n  ${exist_id:1:-1}
 }

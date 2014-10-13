@@ -36,13 +36,13 @@ xpk_path=$local_path/../testapp
 func_check_xwalkservice
 
 # install original xpk
-install_origin_xpk  $xpk_path/update_original_versionOne_tests.xpk
+install_origin_xpk  $xpk_path/update_original_versionOne_tests.wgt
 
 #update valid xpk and check DB
-exist_id=`xwalkctl | grep "diffid_same_version_tests" | awk '{print $1}'`
-[ -n $exist_id ] & xwalkctl --uninstall $exist_id
-xwalkctl --install $xpk_path/diffid_same_version_tests.xpk &> /tmp/install
-cat /tmp/install | grep "Application installed"
+exist_id=`pkgcmd -l | grep "diffid_same_version_tests" | awk '{print $4}'`
+[ -n $exist_id ] & pkgcmd -u -n  ${exist_id:1:-1} -q
+pkgcmd -i -t wgt -p $xpk_path/diffid_same_version_tests.wgt -q &> /tmp/install
+cat /tmp/install | grep "val[ok]"
 if [[ $? -ne 0 ]]; then
     echo "The diffid_same_version_tests xpk  install failure."  
     exit 1

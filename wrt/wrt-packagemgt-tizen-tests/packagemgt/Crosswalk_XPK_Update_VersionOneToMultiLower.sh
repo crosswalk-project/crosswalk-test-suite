@@ -36,9 +36,9 @@ xpk_path=$local_path/../testapp
 func_check_xwalkservice
 
 # install original xpk
-install_origin_xpk  $xpk_path/update_original_versionOne_tests.xpk
+install_origin_xpk  $xpk_path/update_original_versionOne_tests.wgt
 
 #update valid xpk and check DB
-update_negative_xpk $xpk_path/pdate_versionOne_LowerMulti_test.xpk 2 pdate_versionOne_LowerMulti_test $app_id
+update_negative_xpk $xpk_path/update_versionOne_LowerMulti_test.wgt 2 pdate_versionOne_LowerMulti_test $app_id
 
 exit 0

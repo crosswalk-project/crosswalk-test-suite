@@ -38,7 +38,7 @@ resultName="Crosswalk_Tizen_Gallery_Test.result.log"
 Gallery_XPK=`cat $local_path/../Crosswalk_wrt_BFT.conf | grep "Sampleapp_Gallery_Tizen_name" | cut -d "=" -f 2`
 webapp1result=1
 
-xwalkctl --install $local_path/../resources/$Gallery_XPK &> $local_path/../log/INSTALL_RESULT
+pkgcmd -i -t xpk -p $local_path/../resources/$Gallery_XPK -q&> $local_path/../log/INSTALL_RESULT
 echo "install Gallery.xpk" 2>&1 >> $local_path/../log/$logName
 grep "successfully" $local_path/../log/INSTALL_RESULT 2>&1 >> $local_path/../log/$logName
 if [ $? -eq 0 ];then

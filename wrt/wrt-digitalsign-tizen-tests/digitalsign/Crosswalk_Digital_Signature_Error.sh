@@ -33,14 +33,14 @@ source $local_path/Common
 
 func_check_xwalkservice
 
-xwalkctl --install $local_path/../source/bad_signature.xpk > /tmp/install
+pkgcmd -i -t xpk -p $local_path/../source/bad_signature.xpk -q > /tmp/install
 app_name=`sqlite3 /home/app/.applications/dbspace/.app_info.db "select package,name from app_info where name like \"%bad_signature%\";"`
 app_id=`sqlite3 /home/app/.applications/dbspace/.app_info.db "select package,name from app_info where name like \"%bad_signature%\";"`
 if [[ $app_name =~ "bad_signature" ]]; then
     echo "The bad_signature.xpk install successfully"
     # uninstall xpk
     get_app_id
-    xwalkctl --uninstall $app_id
+    pkgcmd -u -n $webappid -q
     exit 1
 else
    echo "Pass"

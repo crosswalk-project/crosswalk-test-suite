@@ -40,7 +40,7 @@ if [[ $? -eq 1 ]]; then
                  fi
 fi
 
-xwalkctl --install $local_path/../source/manifest_app_mainsource_tests.wgt
+pkgcmd -i -t wgt -p $local_path/../source/manifest_app_mainsource_tests.wgt -q
 a=`sqlite3 /home/app/.applications/dbspace/.app_info.db "select package from app_info;" | grep mainsource`
 if [[ $a =~ 'mainsource' ]]; then
                  echo "Use run as service install successfully"
@@ -50,7 +50,7 @@ else
 fi
 
 
-xwalkctl -u mainsource.manifestappmainsourcetests
+pkgcmd -u -n  mainsource.manifestappmainsourcetests -q
 if [[ $? -eq 0 ]]; then
                  echo "Use run as service mode uninstall successfully"
                  exit 0

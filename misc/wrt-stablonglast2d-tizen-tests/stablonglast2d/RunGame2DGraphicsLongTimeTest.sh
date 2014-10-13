@@ -41,5 +41,5 @@ sleep $SLEEP
 #kill test case progress
 tcProgressPID=`ps aux | grep "$pkgid" | grep -v "grep" | grep -v disable | awk '{print $2}'`
 kill -9 $tcProgressPID
-xwalkctl --uninstall $pkgid
+pkgcmd -u -n  $pkgid -q
 echo "End........"

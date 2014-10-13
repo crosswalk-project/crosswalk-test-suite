@@ -40,12 +40,12 @@ Authors:
       <strong>Test steps:</strong>
     </p>
     <ol>
-      <li>Input "xwalkctl --install disable-device-capabilities-tests.wgt" via terminal.</li>
+      <li>Input "pkgcmd -i -t wgt -p disable-device-capabilities-tests.wgt -q" via terminal.</li>
       <li>Modify xwalk.service</li>
       * Kill the service process if it is launched <br>
       * Modify the "/usr/lib/systemd/user/xwalk.service" file (add --disable-device-capabilities)<br>
-      * Launch an application using xwalk-launcher $appid
-      <li>Input "xwalk-launcher $appid --fullscreen" via terminal.</li>
+      * Launch an application using open_app $appid
+      <li>Input "open_app $appid --fullscreen" via terminal.</li>
       <li>Check webapp window.</li>
     </ol>
     <p>
