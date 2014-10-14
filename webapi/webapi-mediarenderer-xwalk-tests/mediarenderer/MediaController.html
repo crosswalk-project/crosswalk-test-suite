@@ -48,7 +48,7 @@ navigator.mediaRenderer.onrendererfound = function (event) {
     ["number", "volume", "readonly"],
     ["number", "track", "readonly"],
     ["number", "speed", "readonly"],
-    ["number", "playSpeeds", "readonly"],
+    ["object", "playSpeeds", "readonly"],
     ["function", "play", ""],
     ["function", "pause", ""],
     ["function", "stop", ""],
@@ -70,6 +70,7 @@ navigator.mediaRenderer.onrendererfound = function (event) {
       case "string":
       case "boolean":
       case "number":
+      case "object":
       case "function":
         if(read == "readonly") {
           assert_readonly(event.renderer.controller, name, "expect attribute " + name + " cannot be changed but");
