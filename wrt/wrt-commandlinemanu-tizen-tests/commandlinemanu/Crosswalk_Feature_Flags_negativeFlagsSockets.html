@@ -40,7 +40,7 @@ Authors:
       <strong>Test steps:</strong>
     </p>
     <ol>
-      <li>Input "xwalkctl --install disable-raw-socket-tests.wgt" via terminal.</li>
+      <li>Input "pkgcmd -i -t wgt -p disable-raw-socket-tests.wgt -q" via terminal.</li>
       <li>Modify xwalk.service</li>
       * Kill the service process if it is launched<br>
       * Modify the "/usr/lib/systemd/user/xwalk.service" file (add --disable-sockets)<br>
