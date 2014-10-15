@@ -49,8 +49,9 @@ Authors:
     <div data-role="content">
       <h4>Test Steps:</h4>
       <ol>
+        <li>Create /opt/share folder on device</li>
         <li>Install the webapp setting-encrypt-enable.wgt and setting-encrypt-disable.wgt in testapp folder.</li>
-        <li>"cat /home/app/.config/xwalk-service/applications/'enable_pkgid'/index.html" to show the webapp index.html</li>
+        <li>"ls /home/app/.config/xwalk-service/applications/'enable_pkgid'" to list the webapp file</li>
         <li>"cat /home/app/.config/xwalk-service/applications/'disable_pkgid'/index.html" to show the webapp index.html</li>
         <li>Uninstall the widget.</li>        
       </ol>
@@ -63,8 +64,9 @@ Authors:
         <p>Confirm the widget application is encrypted or not.</p>
         <p>Expected Result:</p>
         <ol>
+         <li>Folder can be created successfully.</li>
          <li>The webapp can be installed successfully.</li>
-         <li>The index.html is encrypted successfully.</li> 
+         <li>The webapp file can not be listed successfully.</li> 
          <li>The index.html is showing normally.</li>
          <li>Webapp can be uninstalled successfully.</li>          
         </ol>
