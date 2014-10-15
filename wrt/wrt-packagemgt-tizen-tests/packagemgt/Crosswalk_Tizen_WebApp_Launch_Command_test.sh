@@ -38,15 +38,16 @@ xpk_path=$local_path/../testapp
 func_check_xwalkservice
 
 # install original xpk
-xwalkctl -i $xpk_path/diffid_same_version_tests.xpk
+pkgcmd -i -t xpk -p $xpk_path/diffid_same_version_tests.xpk -q
 
-app_id=`sqlite3 /home/app/.applications/dbspace/.app_info.db "select package from app_info where name like \"%diffid_same_version_tests%\";"`
-
+app_id=`pkgcmd -l | grep "diffid_same_version_tests" | awk '{print $4}'`
+app_id=`echo $app_id | awk '{print $1}'`
+app_id=${app_id:1:-1}
 xwalk-launcher $app_id 
 sleep 2
 
 #install xwalk web app
-xwalkctl --uninstall $app_id
+pkgcmd -u -n  $app_id -q
 if [[ $? -eq 0 ]]; then
                 echo "Uninstall Pass"
                 exit 0

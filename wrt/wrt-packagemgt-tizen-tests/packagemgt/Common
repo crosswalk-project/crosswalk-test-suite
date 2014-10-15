@@ -32,8 +32,8 @@ function func_xwalkservice()
 {
         export DBUS_SESSION_BUS_ADDRESS=unix:path=/run/user/5000/dbus/user_bus_socket
         systemctl --user status xwalk.service > /dev/null
-        xwalkctl > /tmp/res.txt
-        cat /tmp/res.txt | grep "Application ID" >/dev/null
+        pkgcmd -l > /tmp/res.txt
+        cat /tmp/res.txt | grep "APPS" >/dev/null
         if [ $? -ne 0  ];then
                 echo "setting xwalk service mode fail"
                 exit 1
@@ -42,21 +42,21 @@ function func_xwalkservice()
 
 function func_check_xwalkservice()
 {
-        xwalkctl &> /tmp/res.txt
-        cat /tmp/res.txt | grep "Application ID" > /dev/null
+        pkgcmd -l &> /tmp/res.txt
+        cat /tmp/res.txt | grep "APPS" > /dev/null
         if [ $? -ne 0  ];then
                 func_xwalkservice
         fi
 }
 
 function install_origin_xpk(){
-        xwalkctl --install  $1 &> /tmp/install
-        cat /tmp/install | grep "DONE"
+        pkgcmd -i -t xpk -p  $1 -q &> /tmp/install
+        cat /tmp/install | grep "ok"
         if [[ $? -ne 0 ]]; then
-                cat /tmp/install | grep "Already"
+                cat /tmp/install | grep "ok"
                 if [[ $? -eq 0 ]]; then
                         uninstall_exist_xpk
-                        xwalkctl --install  $1 &> /tmp/install
+                        pkgcmd -i -t wgt -p  $1 -q &> /tmp/install 
                 else
                         echo "The original xpk  install failure."  
                         exit 1
@@ -67,8 +67,8 @@ function install_origin_xpk(){
 }
 
 function update_valid_xpk(){
-        xwalkctl --install $1 &> /tmp/install
-        cat /tmp/install | grep "DONE"
+        pkgcmd -i -t xpk -p $1 -q &> /tmp/install 
+        cat /tmp/install | grep "ok"
         if [[ $? -eq 0 ]]; then
                 echo "Update xpk, install successfully"
                 else
@@ -89,8 +89,8 @@ function update_valid_xpk(){
 }
 
 function update_negative_xpk(){
-        xwalkctl --install $1 &> /tmp/install
-        cat /tmp/install | grep "DONE"
+        pkgcmd -i -t xpk -p $1 -q &> /tmp/install
+        cat /tmp/install | grep "ok"
         if [[ $? -ne 0 ]]; then
                 echo "Pass, Update negative xpk, install failure"
         else
@@ -112,24 +112,35 @@ function update_negative_xpk(){
 
 function uninstall_xpk(){
 #uninstall xpk
-xwalkctl --uninstall $1
+pkgcmd -u -n  $1 -q
 }
 
 function get_version_name(){
 
-        version=`sqlite3 /home/app/.applications/dbspace/.app_info.db "select version from app_info where name like \"%$1%\";"`
-        name=`sqlite3 /home/app/.applications/dbspace/.app_info.db "select name from app_info where name like \"%$1%\";"`
+        #version=`sqlite3 /home/app/.applications/dbspace/.app_info.db "select version from app_info where name like \"%$1%\";"`
+        #name=`sqlite3 /home/app/.applications/dbspace/.app_info.db "select name from app_info where name like \"%$1%\";"`
+        version=`pkgcmd -l | grep $1 | awk '{print $8}'`
+        version=`echo $version | awk '{print $1}'`
+        version=${version:1:-1}
+        name=`pkgcmd -l | grep diffid_same_version_tests | awk '{print $6}'`
+        name=`echo $name | awk '{print $1}'`
+        name=${name:1:-1}
 }
 
 function get_app_id(){
-        app_id_tmp=`cat /tmp/install | cut -d / -f 4`
-        app_id=`sqlite3 /home/app/.applications/dbspace/.app_info.db "select x_slp_pkgid from app_info where name like \"%$1%\";"`
+        app_id=`pkgcmd -l | grep $1 | awk '{print $4}'`
+        app_id=`echo $app_id | awk '{print $1}'`
+        app_id=${app_id:1:-1}
         echo "app_id=",$app_id
 }
 
 function uninstall_exist_xpk(){
-        exist_id=`xwalkctl | grep "update_original_*" | awk '{print $1}'`
-        [ -n $exist_id ] & xwalkctl --uninstall $exist_id
-        exist_id=`xwalkctl | grep "update_version_*" | awk '{print $1}'`
-        [ -n $exist_id ] & xwalkctl --uninstall $exist_id
+    exist_id=`pkgcmd -l | grep "update_original" | awk '{print $4}'`
+    exist_id=`echo $app_id | awk '{print $1}'`
+    exist_id=${app_id:1:-1}
+    pkgcmd -u -n  $app_id
+    exist_id=`pkgcmd -l | grep "update_original" | awk '{print $4}'`
+    exist_id=`echo $app_id | awk '{print $1}'`
+    exist_id=${app_id:1:-1}
+    pkgcmd -u -n  $app_id
 }
