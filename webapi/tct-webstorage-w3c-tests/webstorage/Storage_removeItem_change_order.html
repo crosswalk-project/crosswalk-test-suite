@@ -28,53 +28,31 @@ EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 Authors:
         Fan,Weiwei <weiwix.fan@intel.com>
         Xu,Yuhan <yuhanx.xu@intel.com>
+        Xie,Yunxiao <yunxiaox.xie@intel.com>
 
 -->
 
-<html>
-  <head>
-    <title>WebStorage Test: Storage_removeItem_change_order</title>
-    <link rel="author" title="Intel" href="http://www.intel.com" />
-    <link rel="help" href="http://www.w3.org/TR/2011/CR-webstorage-20111208/#dom-storage-removeItem" />
-    <meta name="flags" content="" />
-    <meta name="assert" content="Check if Storage.removeItem can change the order of keys" />
-    <script src="support.js"></script>
-    <script src="../resources/testharness.js"></script>
-    <script src="../resources/testharnessreport.js"></script>
-  </head>
-  <body>
-    <div id="log"></div>
-    <script>
-        var t = async_test(document.title);
-        var result = 0;
-        var EXPECT_RESULT = 2;
-        function RunTest(store) {
-            try {
-                if(!("Storage" in window)) {
-                    FailTest("Storage is not in window");
-                }
-                if (store.length != 0) {
-                    store.clear();
-                }
-                store.setItem("key1", "value1");
-                store.setItem("key2", "value2");
-                var key0 = store.key(0);
-                store.removeItem(key0);
-
-                if (key0 != store.key(0)) {
-                    result ++;
-                } else {
-                    FailTest("Storage.removeItem can not change the order of the keys");
-                }
-                if (result === EXPECT_RESULT) {
-                    PassTest();
-                }
-            } catch (ex) {
-                FailTest("occur an exception " + ex.name);
-            }
-        }
-        RunTest(sessionStorage);
-            RunTest(localStorage);
-    </script>
-  </body>
-</html>
+<meta charset="utf-8">
+<title>WebStorage Test: Storage_removeItem_change_order</title>
+<link rel="author" title="Intel" href="http://www.intel.com" >
+<link rel="help" href="http://www.w3.org/TR/2011/CR-webstorage-20111208/#dom-storage-removeItem" >
+<script src="../resources/testharness.js"></script>
+<script src="../resources/testharnessreport.js"></script>
+<div id="log"></div>
+<script>
+  test(function () {
+    function RunTest(store) {
+      assert_true("Storage" in window);
+      if (store.length != 0) {
+        store.clear();
+      }
+      store.setItem("key1", "value1");
+      store.setItem("key2", "value2");
+      var key0 = store.key(0);
+      store.removeItem(key0);
+      assert_not_equals(key0, store.key(0));
+    }
+    RunTest(sessionStorage);
+    RunTest(localStorage);
+  }, "Check if Storage.removeItem can change the order of keys");
+</script>

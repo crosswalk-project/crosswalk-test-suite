@@ -27,35 +27,29 @@ EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
 Authors:
         Xu,Liyu <liyux.xu@intel.com>
+        Xie,Yunxiao <yunxiaox.xie@intel.com>
 
 -->
 
-<html>
-  <head>
-    <title>WebStorage Test: StorageEvent_key_normal_value</title>
-    <link rel="author" title="Intel" href="http://www.intel.com" />
-    <link rel="help" href="http://www.w3.org/TR/2011/CR-webstorage-20111208/#dom-storageevent-key" />
-    <meta name="flags" content="" />
-    <meta name="assert" content="Check if the value of StorageEvent.key is normal value" />
-    <script type="text/javascript" src="support.js"></script>
-    <script src="../resources/testharness.js"></script>
-    <script src="../resources/testharnessreport.js"></script>
-  </head>
-  <body>
-    <div id="log"></div>
-    <script type="text/javascript">
-        var t = async_test(document.title);
-
-        function RunTest(store) {
-            var storageEvent = new StorageEvent("StorageEvent", {key : "key", oldValue : "oldValue", newValue : "newValue", url : "url", storageArea : store});
-            if ((storageEvent.key == "key")) {
-                PassTest();
-            } else {
-                FailTest("StorageEvent.key does not have a normal value");
-            }
-        }
-
-        RunTest(sessionStorage);
-    </script>
-  </body>
-</html>
+<meta charset="utf-8">
+<title>WebStorage Test: StorageEvent_key_normal_value</title>
+<link rel="author" title="Intel" href="http://www.intel.com" >
+<link rel="help" href="http://www.w3.org/TR/2011/CR-webstorage-20111208/#dom-storageevent-key" >
+<script src="../resources/testharness.js"></script>
+<script src="../resources/testharnessreport.js"></script>
+<div id="log"></div>
+<script>
+  test(function () {
+    function RunTest(store) {
+      var storageEvent = new StorageEvent("StorageEvent",
+                              {key : "key",
+                               oldValue : "oldValue",
+                               newValue : "newValue",
+                               url : "url",
+                               storageArea : store});
+      assert_equals(storageEvent.key, "key");
+    }
+    RunTest(localStorage);
+    RunTest(sessionStorage);
+  }, "Check if the value of StorageEvent.key is normal value");
+</script>

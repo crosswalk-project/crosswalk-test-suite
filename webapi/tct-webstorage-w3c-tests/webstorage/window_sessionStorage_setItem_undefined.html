@@ -27,40 +27,22 @@ EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
 Authors:
         Yan,Changci <changci.yan@intel.com>
+        Xie,Yunxiao <yunxiaox.xie@intel.com>
 
 -->
 
-<html>
-  <head>
-    <title>WebStorage Test: window_sessionStorage_setItem_undefined</title>
-    <link rel="author" title="Intel" href="http://www.intel.com" />
-    <link rel="help" href="http://www.w3.org/TR/2011/CR-webstorage-20111208/#dom-sessionStorage-setItem" />
-    <meta name="flags" content="" />
-    <meta name="assert" content="Check if the sessionStorage.setItem value is undefind" />
-    <script type="text/javascript" src="support.js"></script>
-    <script src="../resources/testharness.js"></script>
-    <script src="../resources/testharnessreport.js"></script>
-  </head>
-  <body>
-    <div id="log"></div>
-    <script type="text/javascript">
-        var sessionstorage = function () {
-            try {
-                if(!("sessionStorage" in window)) {
-                    FailTest("sessionStorage not exist");
-                }
-                var store=window.sessionStorage;
-                store.setItem("test", undefined);
-                test(function () {
-                    assert_equals(store.getItem("test"), "undefined");
-                }, document.title);
-            } catch (e) {
-                test(function () {
-                    assert_false(true, e.message);
-                }, document.title);
-            }
-        };
-        sessionstorage();
-    </script>
-  </body>
-</html>
+<meta charset="utf-8">
+<title>WebStorage Test: window_sessionStorage_setItem_undefined</title>
+<link rel="author" title="Intel" href="http://www.intel.com" >
+<link rel="help" href="http://www.w3.org/TR/2011/CR-webstorage-20111208/#dom-sessionStorage-setItem" >
+<script src="../resources/testharness.js"></script>
+<script src="../resources/testharnessreport.js"></script>
+<div id="log"></div>
+<script>
+  test(function () {
+    assert_true("sessionStorage" in window);
+    var store=window.sessionStorage;
+    store.setItem("test", undefined);
+    assert_equals(store.getItem("test"), "undefined");
+  }, "Check if the sessionStorage.setItem value is undefind");
+</script>

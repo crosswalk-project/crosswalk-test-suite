@@ -27,37 +27,24 @@ EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
 Authors:
         Xu,Liyu <liyux.xu@intel.com>
+        Xie,Yunxiao <yunxiaox.xie@intel.com>
 
 -->
 
-<html>
-  <head>
-    <title>WebStorage Test: window_sessionstorage_length_zero</title>
-    <link rel="author" title="Intel" href="http://www.intel.com" />
-    <link rel="help" href="http://www.w3.org/TR/2011/CR-webstorage-20111208/#dom-storage-length" />
-    <meta name="flags" content="" />
-    <meta name="assert" content="Check if the clear of interface Storage with localStorage  , compare length attribute value equal to 0." />
-    <script type="text/javascript" src="support.js"></script>
-    <script src="../resources/testharness.js"></script>
-    <script src="../resources/testharnessreport.js"></script>
-  </head>
-<body>
-    <div id="log"></div>
-    <script type="text/javascript">
-        var t = async_test(document.title, { timeout: 500 });
-        t.step(function () {
-            if(!("localStorage" in window))
-            {
-                assert_true(false, "The element localStorage  not exist");
-            }
-            var store = window.localStorage;
-            store.clear();
-            store.setItem(null,"value");
-            store.removeItem(null);
-            var prop=store.length==0;
-            assert_true(prop, "The element localStorage.length should not be 0.");
-        });
-        t.done();
-    </script>
-</body>
-</html>
+<meta charset="utf-8">
+<title>WebStorage Test: window_sessionstorage_length_zero</title>
+<link rel="author" title="Intel" href="http://www.intel.com" >
+<link rel="help" href="http://www.w3.org/TR/2011/CR-webstorage-20111208/#dom-storage-length" >
+<script src="../resources/testharness.js"></script>
+<script src="../resources/testharnessreport.js"></script>
+<div id="log"></div>
+<script>
+  test(function () {
+    assert_true("localStorage" in window);
+    var store = window.localStorage;
+    store.clear();
+    store.setItem(null,"value");
+    store.removeItem(null);
+    assert_equals(store.length, 0, "The element localStorage.length should not be 0.");
+  }, "Check if the clear of interface Storage with localStorage  , compare length attribute value equal to 0.");
+</script>

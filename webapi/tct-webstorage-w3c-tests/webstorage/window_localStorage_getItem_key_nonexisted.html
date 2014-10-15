@@ -27,39 +27,23 @@ EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
 Authors:
         Fan,Weiwei <weiwix.fan@intel.com>
+        Xie,Yunxiao <yunxiaox.xie@intel.com>
 
 -->
 
-<html>
-  <head>
-    <title>WebStorage Test: window_localStorage_getItem_key_nonexisted</title>
-    <link rel="author" title="Intel" href="http://www.intel.com" />
-    <link rel="help" href="http://www.w3.org/TR/2011/CR-webstorage-20111208/#dom-localStorage-getitem" />
-    <meta name="flags" content="" />
-    <meta name="assert" content="Check if localStorage.getItem must return null when the given key does not exist in the list associated with the object" />
-    <script type="text/javascript" src="support.js"></script>
-    <script src="../resources/testharness.js"></script>
-    <script src="../resources/testharnessreport.js"></script>
-  </head>
-  <body>
-    <div id="log"></div>
-    <script type="text/javascript">
-        var t = async_test(document.title, { timeout: 500 });
-        function RunTest() {
-            if (!("localStorage" in window)) {
-                FailTest("localStorage not exist");
-            }
-            var store = window.localStorage;
-            store.setItem("test", "value");
-            store.clear();
-            var test = store.getItem("test");
-            if (test == null) {
-                PassTest();
-            } else {
-                FailTest("localStorage.getItem not return null");
-            }
-        }
-        RunTest();
-    </script>
-  </body>
-</html>
+<meta charset="utf-8">
+<title>WebStorage Test: window_localStorage_getItem_key_nonexisted</title>
+<link rel="author" title="Intel" href="http://www.intel.com" >
+<link rel="help" href="http://www.w3.org/TR/2011/CR-webstorage-20111208/#dom-localStorage-getitem" >
+<script src="../resources/testharness.js"></script>
+<script src="../resources/testharnessreport.js"></script>
+<div id="log"></div>
+<script>
+  test(function () {
+    assert_true("localStorage" in window);
+    var store = window.localStorage;
+    store.setItem("test", "value");
+    store.clear();
+    assert_equals(store.getItem("test"), null);
+  }, "Check if localStorage.getItem must return null when the given key does not exist in the list associated with the object");
+</script>

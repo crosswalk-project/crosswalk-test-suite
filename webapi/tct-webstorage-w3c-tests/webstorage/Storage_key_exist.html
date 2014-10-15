@@ -27,46 +27,19 @@ EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
 Authors:
         YanChangCi <changci.yan@intel.com>
+        Xie,Yunxiao <yunxiaox.xie@intel.com>
 
 -->
 
-<html>
-  <head>
-    <title>WebStorage Test: Storage_key_exist</title>
-    <link rel="author" title="Intel" href="http://www.intel.com" />
-    <link rel="help" href="http://www.w3.org/TR/2011/CR-webstorage-20111208/#dom-storage-key" />
-    <meta name="flags" content="" />
-    <meta name="assert" content="Check if key Attibute exist is storage interface" />
-    <script type="text/javascript" src="support.js"></script>
-    <script src="../resources/testharness.js"></script>
-    <script src="../resources/testharnessreport.js"></script>
-  </head>
-  <body>
-    <div id="log"></div>
-    <script type="text/javascript">
-	    var t = async_test(document.title);
-	    var result = 0;
-	    function test_exist(store) {
-	        try
-	        {
-		        if(!("key" in store))
-		            FailTest("no key in DOM storage");
-		        else
-		            PassTest();
-	        }
-	        catch (ex)
-	        {
-		        FailTest("{Excetion code: " + ex.code + "}");
-	        }
-	    }
-	    function RunTest() {
-		    //test_exit(Storage);
-		    test_exist(localStorage);
-		    test_exist(sessionStorage);
-	    }
-	    Initialize();
-	    RunTest();
-	    Deinitialize();
-    </script>
-  </body>
-</html>
+<meta charset="utf-8">
+<title>WebStorage Test: Storage_key_exist</title>
+<link rel="author" title="Intel" href="http://www.intel.com" >
+<link rel="help" href="http://www.w3.org/TR/2011/CR-webstorage-20111208/#dom-storage-key" >
+<script src="../resources/testharness.js"></script>
+<script src="../resources/testharnessreport.js"></script>
+<div id="log"></div>
+<script>
+  test(function () {
+    assert_true("key" in localStorage && "key" in sessionStorage);
+  }, "Check if key Attibute exist is storage interface");
+</script>

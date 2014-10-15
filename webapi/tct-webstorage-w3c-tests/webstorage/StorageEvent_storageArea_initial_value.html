@@ -28,41 +28,21 @@ EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 Authors:
         Fan,Weiwei <weiwix.fan@intel.com>
         Xu,Yuhan <yuhanx.xu@intel.com>
+        Xie,Yunxiao <yunxiaox.xie@intel.com>
 
 -->
 
-<html>
-  <head>
-    <title>WebStorage Test: StorageEvent_storageArea_initial_value</title>
-    <link rel="author" title="Intel" href="http://www.intel.com" />
-    <link rel="help" href="http://www.w3.org/TR/2011/CR-webstorage-20111208/#dom-storageevent-storagearea" />
-    <meta name="flags" content="" />
-    <meta name="assert" content="Check if the initial value of StorageEvent.storageArea is null" />
-    <script src="support.js"></script>
-    <script src="../resources/testharness.js"></script>
-    <script src="../resources/testharnessreport.js"></script>
-  </head>
-  <body>
-    <div id="log"></div>
-    <script>
-        var t = async_test(document.title);
-        function RunTest() {
-            try {
-                if (!("Storage" in window)) {
-                    FailTest("Storage is not in window");
-                }
-                var storageEvent = new StorageEvent("StorageEvent");
-                var iniStorageArea = storageEvent.storageArea;
-                if (iniStorageArea === null) {
-                    PassTest();
-                } else {
-                    FailTest("the initial value of StorageEvent.storageArea is not null");
-                }
-            } catch (ex) {
-                FailTest("{Error Name: " + ex.name +"}");
-            }
-        }
-        RunTest();
-    </script>
-  </body>
-</html>
+<meta charset="utf-8">
+<title>WebStorage Test: StorageEvent_storageArea_initial_value</title>
+<link rel="author" title="Intel" href="http://www.intel.com" >
+<link rel="help" href="http://www.w3.org/TR/2011/CR-webstorage-20111208/#dom-storageevent-storagearea" >
+<script src="../resources/testharness.js"></script>
+<script src="../resources/testharnessreport.js"></script>
+<div id="log"></div>
+<script>
+  test(function () {
+    assert_true("Storage" in window);
+    var storageEvent = new StorageEvent("StorageEvent");
+    assert_equals(storageEvent.storageArea, null);
+  }, "Check if the initial value of StorageEvent.storageArea is null");
+</script>

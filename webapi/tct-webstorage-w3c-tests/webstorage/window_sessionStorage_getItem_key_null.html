@@ -27,40 +27,22 @@ EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
 Authors:
         Fan,Weiwei <weiwix.fan@intel.com>
+        Xie,Yunxiao <yunxiaox.xie@intel.com>
 
 -->
 
-<html>
-  <head>
-    <title>WebStorage Test: window_sessionStorage_getItem_key_null</title>
-    <link rel="author" title="Intel" href="http://www.intel.com" />
-    <link rel="help" href="http://www.w3.org/TR/2011/CR-webstorage-20111208/#dom-sessionStorage-getitem" />
-    <meta name="flags" content="" />
-    <meta name="assert" content="Check if sessionStorage.getItem has argument null that expecting the current value associated with the given key is to be returned" />
-    <script type="text/javascript" src="support.js"></script>
-    <script src="../resources/testharness.js"></script>
-    <script src="../resources/testharnessreport.js"></script>
-  </head>
-  <body>
-    <div id="log"></div>
-    <script type="text/javascript">
-        function sessionstorage() {
-            try {
-                if(!("sessionStorage" in window)) {
-                    FailTest("sessionStorage is not in window");
-                }
-                var store = window.sessionStorage;
-                store.setItem(null, "value");
-                test(function () {
-                    assert_equals(store.getItem(null), "value");
-                }, document.title);
-            } catch (e) {
-                test(function () {
-                    assert_false(true, e.message);
-                }, document.title);
-            }
-        }
-	    sessionstorage();
-    </script>
-  </body>
-</html>
+<meta charset="utf-8">
+<title>WebStorage Test: window_sessionStorage_getItem_key_null</title>
+<link rel="author" title="Intel" href="http://www.intel.com" >
+<link rel="help" href="http://www.w3.org/TR/2011/CR-webstorage-20111208/#dom-sessionStorage-getitem" >
+<script src="../resources/testharness.js"></script>
+<script src="../resources/testharnessreport.js"></script>
+<div id="log"></div>
+<script>
+  test(function () {
+    assert_true("sessionStorage" in window);
+    var store = window.sessionStorage;
+    store.setItem(null, "value");
+    assert_equals(store.getItem(null), "value");
+  }, "Check if sessionStorage.getItem has argument null that expecting the current value associated with the given key is to be returned");
+</script>
