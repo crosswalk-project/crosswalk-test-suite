@@ -36,11 +36,11 @@ xpk_path=$local_path/../testapp
 func_check_xwalkservice
 
 # install original xpk
-install_origin_xpk  $xpk_path/update_original_versionOne_tests.xpk
+install_origin_xpk  $xpk_path/update_original_versionOne_tests.wgt
 
 #update valid xpk and check DB
-xwalkctl --install $xpk_path/update_original_versionOne_tests.xpk &> /tmp/install
-cat /tmp/install | grep "Application installed"
+pkgcmd -i -t wgt -p $xpk_path/update_original_versionOne_tests.wgt -q &> /tmp/install
+cat /tmp/install | grep "val[ok]"
 if [[ $? -eq 0 ]]; then
     echo "The  app is same version and id, install successfully."  
     exit 1

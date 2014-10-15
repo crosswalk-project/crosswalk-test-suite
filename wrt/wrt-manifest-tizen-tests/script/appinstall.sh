@@ -7,14 +7,16 @@ Result="Pass"
 
 
 #1.**** install app
-pkgids=`xwalkctl --install $1`
+pkgids=`pkgcmd -i -t xpk -p $1 -q`
 if [ $? -eq 1 ];then
   echo Install Fail
   exit 1
 else
   echo Install ok
   #get installed app id
-  pkgids=${pkgids:(-33):32}
+  p=`pkgcmd -i -t xpk -p $1 -q`
+  appid=`echo $p | awk '{print $7}'`
+  pkgid=${appid:6:-1}
   echo $pkgids
   pkgids=""
   pkgnum=0

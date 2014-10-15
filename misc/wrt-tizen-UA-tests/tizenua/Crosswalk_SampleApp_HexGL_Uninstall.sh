@@ -51,7 +51,7 @@ if [ $webapp1result -eq 1  ];then
   echo "Web APP HexGL Uninstalled successfully" >> $local_path/../log/result/$resultName
   echo "Crosswalk_Tizen_HexGL_Uninstall****************************************** [Pass]" >> $local_path/../log/result/$resultName
   echo "Crosswalk_Tizen_HexGL_Uninstall                                  PASS" >> $local_path/../log/result/$reportName
-  xwalkctl --uninstall $webapp1ID
+  pkgcmd -u -n  $webapp1ID -q
   exit 0
 else
   echo "Web APP HexGL Uninstalled failure" >> $local_path/../log/result/$resultName

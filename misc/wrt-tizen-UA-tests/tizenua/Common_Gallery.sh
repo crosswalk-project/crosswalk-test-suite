@@ -36,7 +36,7 @@ PACKAGING_TOOL=`cat $local_path_source/../Crosswalk_wrt_BFT.conf | grep "Tizen_P
 function function_launch_xwalk()
 {
   rm -rf $local_path_source/../log/LAUNCH_RESULT
-  xwalk &> $local_path_source/../log/LAUNCH_RESULT &
+  pkgcmd -l &> $local_path_source/../log/LAUNCH_RESULT &
   sleep 5
   cat $local_path_source/../log/LAUNCH_RESULT | grep "xwalk: command not found" &
 }

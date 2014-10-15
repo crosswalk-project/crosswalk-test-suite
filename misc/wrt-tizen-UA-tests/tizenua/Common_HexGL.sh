@@ -55,7 +55,7 @@ function function_install_xwalk()
   rpm -qa | grep cross  |xargs -I%  rpm -e % &> /dev/null
   rpm -ivh $local_path_source/../resources/$CROSSWALK_APK &>> $local_path_source/../log/$1
   sleep 2
-  xwalk &> $local_path_source/../log/INSTALL_RESULT &
+  pkgcmd -l &> $local_path_source/../log/INSTALL_RESULT &
   sleep 5
 
   cat $local_path_source/../log/INSTALL_RESULT | grep "command not found" &>> $local_path_source/../log/$1
@@ -149,5 +149,5 @@ function function_uninstall_xpk()
 
   #echo "The web app id is:$ID" &>> $local_path_source/../log/$1
   #install xwalk web app
-  #xwalkctl --uninstall $ID &> $local_path_source/../log/UNINSTALL_RESULT
+  #pkgcmd -u -n  $ID -q &> $local_path_source/../log/UNINSTALL_RESULT
 }

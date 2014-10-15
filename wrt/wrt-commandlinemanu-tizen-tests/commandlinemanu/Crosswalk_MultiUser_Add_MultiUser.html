@@ -44,8 +44,8 @@ Authors:
       <li>Switch to 'root' user: "su"</li>
       <li>Add new account: "useradd -d /home/addusertest -m addusertest"</li>  
       <li>Switch account:'su addusertest','whoami'</li>  
-      <li>Use custom account to install webapp:'xwalkctl -i disable_device_capabilities_tests.wgt'</li>
-      <li>Uninstall the webapp:'xwalkctl -u webappid'</li>    
+      <li>Use custom account to install webapp:'pkgcmd -i -t wgt -p disable_device_capabilities_tests.wgt -q'</li>
+      <li>Uninstall the webapp:'pkgcmd -u -n $webappid -q'</li>    
     </ol>
     <p>
       <strong>Expected Output:</strong>
