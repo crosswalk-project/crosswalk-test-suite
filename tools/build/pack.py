@@ -564,9 +564,6 @@ def packCordova(build_json=None, app_src=None, app_dest=None, app_name=None):
             return False
     os.chdir(pack_tool)
 
-    if not doRemove([os.path.join(pack_tool, app_name, "assets", "www")]):
-        os.chdir(orig_dir)
-        return False
     if not doCopy(app_src, os.path.join(pack_tool, app_name, "assets", "www")):
         os.chdir(orig_dir)
         return False
@@ -685,7 +682,7 @@ def packEmbeddingAPI(
         return False
 
     if not doCopy(
-            os.path.join(orig_dir, "bin", "%s-debug.apk" % app_name),
+            os.path.join(app_src, "bin", "%s-debug.apk" % app_name),
             os.path.join(app_dest, "%s.apk" % app_name)):
         os.chdir(orig_dir)
         return False
