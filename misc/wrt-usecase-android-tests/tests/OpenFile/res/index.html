@@ -36,39 +36,33 @@ Authors:
 <link rel="help" href="">
 <meta name="flags" content="">
 <meta name="assert" content="Check if enable open a file with third part app.">
-<style>
-  .button {
-      background: #eee;
-      border: 1px solid #ccc;
-      border-radius: 5px;
-      font-weight: bold;
-      font-size: 15px;
-      padding: 8px 2px;
-      width: 100%;
-  }
-  #show {
-      border: 1px solid #000;
-      padding: 10px;
-  }
-</style>
 <body>
-  <div id="show">
-    <label>Open DOCX:<label/>
+  <a href="javascript:void(0)" onclick="sdcard1();">Push resource to /mnt/sdcard1/</a><br/>
+  <a href="javascript:void(0)" onclick="sdcard();">Push resource to /mnt/sdcard/</a><br/>
+  <div id="sdcard1" style="display: none">
+    <label>Open DOCX(/mnt/sdcard1):<label/>
     <a href="/mnt/sdcard1/wrtdoc/test.docx">DOCX file</a><br/>
-    <label>Open PNG: <label/>
+    <label>Open PNG(/mnt/sdcard1):<label/>
     <a href="/mnt/sdcard1/wrtdoc/test.png">PNG file</a><br/>
-    <label>Open PDF: <label/>
-    <a href="/mnt/sdcard1/wrtdoc/test.pdf">PDF file</a><br/>
+    <label>Open PDF(/mnt/sdcard1):<label/>
+    <a href="/mnt/sdcard1/wrtdoc/test.pdf">PDF file</a>
   </div>
-  <p>
-    <h4>Test steps</h4>
-    <ol>
-      <li>Click the "DOCX file" link</li>
-      <li>Click the "PNG file" link</li>
-      <li>Click the "PDF file" link</li>
-    </ol>
-  </p>
-  <p>
-    <button id="exitApp" class="button" onclick="window.history.go(-1)">Complete&nbspTest</button>
-  </p>
+  <div id="sdcard" style="display: none">
+    <label>Open DOCX(/mnt/sdcard):<label/>
+    <a href="/mnt/sdcard/wrtdoc/test.docx">DOCX file</a><br/>
+    <label>Open PNG(/mnt/sdcard):<label/>
+    <a href="/mnt/sdcard/wrtdoc/test.png">PNG file</a><br/>
+    <label>Open PDF(/mnt/sdcard):<label/>
+    <a href="/mnt/sdcard/wrtdoc/test.pdf">PDF file</a>
+  </div>
+  <script>
+    function sdcard1(){
+      document.getElementById("sdcard").style.display = "none";
+      document.getElementById("sdcard1").style.display = "inline";
+    }
+    function sdcard(){
+      document.getElementById("sdcard1").style.display = "none";
+      document.getElementById("sdcard").style.display = "inline";
+    }
+  </script>
 </body>

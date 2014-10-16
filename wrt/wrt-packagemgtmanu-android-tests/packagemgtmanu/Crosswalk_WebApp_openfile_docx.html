@@ -27,6 +27,7 @@ EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
 Authors:
     Xu, Kang <kangx.xu@intel.com>
+    Wang, Hongjuan<hongjuanx.wang@intel.com>
 
 -->
 
@@ -38,13 +39,20 @@ Authors:
   </head>
   <body>
     <p>
+      <strong>Pre-condition:</strong>
+    </p>
+      <ul>
+        <li>Install WPS or other thirdpart app to open docx/png/pdf file</li>
+        <li>Make sure there is a sdcard folder named "/mnt/sdcard1" in test device</li>
+      </ul>
+    <p>
       <strong>Test steps:</strong>
     </p>
     <ol>
-      <li>Push a file name "test.docx" to device directory "/mnt/sdcard1/"</li>
+      <li>Push a file name "test.docx" to device directory "/mnt/sdcard/" or "/mnt/sdcard1", just need one of them"</li>
       <li>Install app by typing "adb install web_openfile_thirdPart_tests.apk".</li>
       <li>Launch the app.</li>
-      <li>Click the "Open docx file in the third part app" link.</li>
+      <li>Click the "Open docx file in the third part app(/mnt/sdcard1 or /mnt/sdcard)" link.</li>
     </ol>
     <p>
       <strong>Expected Output:</strong>

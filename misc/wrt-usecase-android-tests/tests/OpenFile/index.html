@@ -45,24 +45,28 @@ Authors:
         <h1 id="main_page_title"></h1>
       </div>
       <div data-role="content">
-        <a data-role="button" href="res/index.html" class="wgtButton" data-ajax="false">Launch</a>
+        <h4>Pre-condition</h4>
+        <ol>
+          <li>Install WPS or other thirdpart app to open docx/png/pdf file</li>
+          <li>Make sure there is a sdcard folder named "/mnt/sdcard" or "/mnt/sdcard1" in test device, just need one of them</li>
+        </ol>
+        <h4>Test Steps</h4>
+        <ol>
+          <li>Launch web app named "openfile" in your device</li>
+          <li>Click link "DOCX file" to open doc file</li>
+          <li>Click link "PNG file" to open png file</li>
+          <li>Click link "PDF file" to open pdf file</li>
+        </ol>
       </div>
       <div data-role="footer" data-position="fixed">
       </div>
       <div data-role="popup" id="popup_info">
         <font class="fontSize">
-          <p>Purpose:</p>
+          <p>Purpose</p>
           <p>Verifies that enable open a file with third part app</p>
-          <p>Pre-condition:</p>
-          <ul>
-            <li>Install WPS or other thirdpart app to open docx/png/pdf file</li>
-          </ul>
-          <p>Test Steps:</p>
+          <p>Expected Results</p>
           <ol>
-            <li>Click the "Launch" button to launch the test html</li>
-          </ol>
-          <p>Expected Result:</p>
-          <ol>
+            <li>The web app is launched successfully</li>
             <li>DOCX file can be opened successfully</li>
             <li>PNG file can be opened successfully</li>
             <li>PDF file can be opened successfully</li>

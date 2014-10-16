@@ -10,7 +10,8 @@ USAGE="Usage: ./inst.sh [-i] [-u]
 PACKAGENAME=wrt_usecase_android_tests
 SUITENAME=`echo $PACKAGENAME |sed 's/_/-/g'`
 RESOURCE_DIR=/home/app/content
-DOC_DIR=/mnt/sdcard1
+DOC_DIR=/mnt/sdcard
+DOC_DIR1=/mnt/sdcard1
 function installpkg(){
 for apk in `ls -l |grep "apk$" |awk '{print $NF}'`
 do
@@ -19,8 +20,13 @@ done
 
 #TODO: copy resource
 #eg:adb push xx $RESOURCE_DIR
-adb shell mkdir -p $DOC_DIR/wrtdoc &>/dev/null
-adb push $PWD/res/doc $DOC_DIR/wrtdoc/
+if [ ! -d $DOC_DIR ];then
+    adb shell mkdir -p $DOC_DIR/wrtdoc &>/dev/null
+    adb push $PWD/res/doc $DOC_DIR/wrtdoc/
+else
+    adb shell mkdir -p $DOC_DIR1/wrtdoc &>/dev/null
+    adb push $PWD/res/doc $DOC_DIR1/wrtdoc/
+fi
 }
 
 function uninstallpkg(){
@@ -29,7 +35,11 @@ adb uninstall org.xwalk.$PACKAGENAME
 #TODO: remove resource
 #eg:adb shell rm -rf $RESOURCE_DIR/xx
 adb shell rm -rf $RESOURCE_DIR/tct/opt/$SUITENAME &>/dev/null
-adb shell rm -rf $DOC_DIR/wrtdoc &>/dev/null
+if [ ! -d $DOC_DIR/wrtdoc ];then
+    adb shell rm -rf $DOC_DIR/wrtdoc &>/dev/null
+else
+    adb shell rm -rf $DOC_DIR1/wrtdoc &>/dev/null
+fi
 }
 
 case "$1" in
