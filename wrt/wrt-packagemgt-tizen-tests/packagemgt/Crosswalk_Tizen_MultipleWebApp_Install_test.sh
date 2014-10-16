@@ -34,30 +34,39 @@ local_path=$(cd $(dirname $0);pwd)
 source $local_path/Common
 xpk_path=$local_path/../testapp
 # install original xpk
-xwalkctl --install $xpk_path/diffid_same_version_tests.xpk 
+app_id1=`pkgcmd -l | grep "diffid_same_version_tests" | awk '{print $4}'`
+app_id1=`echo $app_id | awk '{print $1}'`
+app_id1=${app_id:1:-1}
+pkgcmd -u -n  $app_id1 -q
+
+pkgcmd -i -t xpk -p $xpk_path/diffid_same_version_tests.xpk -q
 if [[ $? -eq 0 ]]; then
                 echo "Install Pass"
         else
                 echo "Install Fail"
                 exit 1
 fi
-app_id1=`sqlite3 /home/app/.applications/dbspace/.app_info.db "select package from app_info where name like \"%diffid_same_version_tests%\";"`
-xwalkctl --install $xpk_path/update_original_versionOne_tests.xpk
+app_id1=`pkgcmd -l | grep "diffid_same_version_tests" | awk '{print $4}'`
+app_id1=`echo $app_id | awk '{print $1}'`
+app_id1=${app_id:1:-1}
+pkgcmd -i -t xpk -p $xpk_path/update_original_versionOne_tests.xpk -q
 if [[ $? -eq 0 ]]; then
                 echo "Install Pass"
         else
                 echo "Install Fail"
                 exit 1
 fi
-app_id2=`sqlite3 /home/app/.applications/dbspace/.app_info.db "select package from app_info where name like \"%update_original_versionOne_tests%\";"`
-xwalkctl -u $app_id1
+app_id2=`pkgcmd -l | grep "update_original_versionOne_tests" | awk '{print $4}'`
+app_id2=`echo $app_id | awk '{print $1}'`
+app_id2=${app_id:1:-1}
+pkgcmd -u -n  $app_id1 -q
 if [[ $? -eq 0 ]]; then
                 echo "Uninstall Pass"
         else
                 echo "Uninstall Fail"
                 exit 1
 fi
-xwalkctl -u $app_id2
+pkgcmd -u -n  $app_id2 -q
 if [[ $? -eq 0 ]]; then
                 echo "Uninstall Pass"
                 exit 0
