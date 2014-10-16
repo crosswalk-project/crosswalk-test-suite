@@ -31,7 +31,7 @@ function func_install()
       echo "Need to add the parameter"
       return 1
     fi
-    xwalkctl --install $PACKAGENAME
+    pkgcmd -i -t wgt -q -p $PACKAGENAME
     find_app $APP_NAME
     pkgnum=`echo "$pkgids"|wc -w`
     if [ $pkgnum -ge 1 ]; then
@@ -106,7 +106,7 @@ function func_install_changename()
     elif [ "$APP_NAME" = "WIdgetIDAppID-same1" -o "$APP_NAME" = "WIdgetIDAppID-same2" -o "$APP_NAME" = "WIdgetIDAppID-different" ];then
         APP_NAME="WIdgetIDAppID"
     fi
-    xwalkctl --install $PACKAGENAME
+    pkgcmd -i -t wgt -q -p $PACKAGENAME
     find_app $APP_NAME
     pkgnum=`echo "$pkgids"|wc -w`
     if [ $pkgnum -ge 1 ]; then

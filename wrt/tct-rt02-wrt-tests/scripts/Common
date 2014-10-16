@@ -31,7 +31,7 @@ function func_install()
       echo "Need to add the parameter"
       return 1
     fi
-    xwalkctl --install $PACKAGENAME
+    pkgcmd -i -t wgt -q -p $PACKAGENAME
     find_app $APP_NAME
     pkgnum=`echo "$pkgids"|wc -w`
     if [ $pkgnum -lt 1 ]; then
