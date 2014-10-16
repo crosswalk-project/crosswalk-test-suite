@@ -41,8 +41,8 @@ Authors:
       <strong>Test steps:</strong>
     </p>
     <ol>
-      <li>Package an web app with app-url option, command like: python make_apk.py --name=test --package=test.xwalk.org --app-url=http://www.baidu.com --arch=arm</li>
-      <li>Install apk in platform with "x86" architecture</li>
+      <li>Package an embedded app with --arch=arm --mode=embedded</li>
+      <li>Install apk on x86 devices</li>
       <li>Launch web app</li>
     </ol>
     <p>
@@ -51,7 +51,7 @@ Authors:
     <ol>
       <li>Generate APK installation package successfully</li>
       <li>Install web app successfully</li>
-      <li>Launch web app failed , a dialog with message "Mismatch of CPU architecture for Crosswalk" prompt successfully</li>
+      <li>Launch web app failed, popup a message like "Crosswalk Runtime Library not found"</li>
     </ol>
   </body>
 </html>
