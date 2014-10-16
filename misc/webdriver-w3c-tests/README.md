@@ -87,7 +87,7 @@ For Tizen:
   export XDG_RUNTIME_DIR="/run/user/5000"
   export DBUS_SESSION_BUS_ADDRESS=unix:path=/run/user/5000/dbus/user_bus_socket
   systemctl --user status xwalk.service
-  xwalkctl -i /path/to/opt/webdriver-w3c-tests/XwalkDriverTest.wgt
+  pkgcmd -i -t wgt -q -p /path/to/opt/webdriver-w3c-tests/XwalkDriverTest.wgt
   '''
 3. Set remote debug port by insert "--remote-debugging-port='PORT'" into "/usr/lib/systemd/user/xwalk.service" on Tizen IVI.
 4. Connect Tizen IVI and PC with sdb
