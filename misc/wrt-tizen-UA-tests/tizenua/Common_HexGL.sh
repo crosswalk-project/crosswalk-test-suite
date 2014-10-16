@@ -149,5 +149,5 @@ function function_uninstall_xpk()
 
   #echo "The web app id is:$ID" &>> $local_path_source/../log/$1
   #install xwalk web app
-  #xwalkctl --uninstall $ID &> $local_path_source/../log/UNINSTALL_RESULT
+  #pkgcmd -u -t wgt -q -n $ID &> $local_path_source/../log/UNINSTALL_RESULT
 }

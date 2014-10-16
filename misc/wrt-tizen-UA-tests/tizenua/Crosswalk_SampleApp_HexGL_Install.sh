@@ -38,7 +38,7 @@ resultName="Crosswalk_Tizen_HexGL_Test.result.log"
 HexGL_XPK=`cat $local_path/../Crosswalk_wrt_BFT.conf | grep "Sampleapp_HexGL_Tizen_name" | cut -d "=" -f 2`
 webapp1result=1
 
-xwalkctl --install $local_path/../resources/$HexGL_XPK &> $local_path/../log/INSTALL_RESULT
+pkgcmd -i -t xpk -q -p $local_path/../resources/$HexGL_XPK &> $local_path/../log/INSTALL_RESULT
 echo "install HexGL.xpk" 2>&1 >> $local_path/../log/$logName
 grep "successfully" $local_path/../log/INSTALL_RESULT 2>&1 >> $local_path/../log/$logName
 if [ $? -eq 0 ];then
@@ -52,7 +52,7 @@ if [ $webapp1result -eq 0  ];then
   echo "Web APP HexGL Installed successfully" >> $local_path/../log/result/$resultName
   echo "Crosswalk_Tizen_HexGL_Install****************************************** [Pass]" >> $local_path/../log/result/$resultName
   echo "Crosswalk_Tizen_HexGL_Install                                  PASS" >> $local_path/../log/result/$reportName
-  #xwalkctl --uninstall $webapp1ID
+  #pkgcmd -u -t xpk -q -n $webapp1ID
   exit 0
 else
   echo "Web APP HexGL Installed failure" >> $local_path/../log/result/$resultName

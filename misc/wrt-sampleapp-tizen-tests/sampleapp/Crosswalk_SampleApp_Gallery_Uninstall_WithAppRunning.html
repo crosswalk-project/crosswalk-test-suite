@@ -40,15 +40,15 @@ Authors:
       <strong>Test steps:</strong>
     </p>
     <ol>
-      <li>In service mode install the app by typing "xwalkctl --install XXXX.xpk.</li>
+      <li>In service mode install the app by typing "pkgcmd -i -t xpk -q -p XXXX.xpk.</li>
       <li>Click app icon to launch app, or launch app with command "xwalk-launcher app_id".</li>
-      <li>Uninstall the app by typing "xwalkctl --uninstall < id> " on the command line when the app running.</li>
+      <li>Uninstall the app by typing "pkgcmd -u -t xpk -q -n $pkgid" on the command line when the app running.</li>
     </ol>
     <p>
       <strong>Expected Output:</strong>
     </p>
     <ol>
-      <li>The web app install successfully and you can get app's id(xxxxxxxxxxx).</li>
+      <li>The web app install successfully and you can get app's pkgid[xxxxxxxxxxx].</li>
       <li>Web app is able to be launch successfully.</li>
       <li>The web app uninstalled successfully.</li>
     </ol>
