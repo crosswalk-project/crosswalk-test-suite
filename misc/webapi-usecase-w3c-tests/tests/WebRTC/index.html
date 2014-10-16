@@ -26,7 +26,7 @@ NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE,
 EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
 Authors:
-        Liu, yun <yun.liu@archermind.com>
+        Liu,Yun <yunx.liu@intel.com>
 
 -->
 
@@ -62,15 +62,9 @@ Authors:
            <div class="ui-block-a"><a id="startbutton" data-role="button">Start Connect</a></div>
            <div class="ui-block-b"><a id="stopbutton" data-role="button">Stop Connect</a></div>
          </div>
-         <label for="pc1_input">pc1 say:</label>
          <div class="ui-grid-a">
            <div class="ui-block-a"><input type="text" id="pc1_input"/></div>
            <div class="ui-block-b"><a id="pc1_send" data-role="button">Send</a></div>
-         </div>
-         <label for="pc2_input">pc2 say:</label>
-         <div class="ui-grid-a">
-           <div class="ui-block-a"><input type="text" id="pc2_input"/></div>
-           <div class="ui-block-b"><a id="pc2_send" data-role="button">Send</a></div>
          </div>
       </div>
     </div>
@@ -79,9 +73,15 @@ Authors:
     <div data-role="popup" id="popup_info">
       <font class="fontSize">
         <p>Test Purpose: </p>
-        <p>Verifies the RTC connection connect successfully, and can transport data by peers.</p>
+        <p>Verifies the RTC connection can connect successfully, and transport data by peers.</p>
+        <p>Test Steps: </p>
+          <ol>
+            <li>Click the 'Start Connect' button, to connect PC1 and PC2</li>
+            <li>When "pc1 and pc2 are connected successfully" display in the textarea above, input the message, click the 'Send' button, to send message</li>
+            <li>Click the 'Stop Connect' button, to close the connection</li>
+          </ol>
         <p>Expected Result: </p>
-        <p>Peers(PC1 and PC2) can send out message successfully.</p>
+        <p>Peers(PC1 and PC2) can send message successfully.</p>
       </font>
     </div>
   </body>
