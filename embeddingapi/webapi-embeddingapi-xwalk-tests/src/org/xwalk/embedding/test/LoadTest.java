@@ -9,12 +9,13 @@ import org.xwalk.core.XWalkNavigationHistory;
 import org.xwalk.core.XWalkView;
 import org.xwalk.embedding.base.XWalkViewTestBase;
 
+import android.os.SystemClock;
 import android.test.suitebuilder.annotation.SmallTest;
 
 public class LoadTest extends XWalkViewTestBase {
 
     @SmallTest
-    public void testLoadUrl()
+    public void testLoad_html_content()
     {
         try {
             String filename = "index.html";
@@ -22,6 +23,51 @@ public class LoadTest extends XWalkViewTestBase {
             String content = getFileContent(filename);
             loadUrlSync(filename, content);
             assertEquals(expectedLocalTitle, getTitleOnUiThread());
+        } catch (Exception e) {
+            e.printStackTrace();
+            assertTrue(false);
+        }
+    }
+
+    @SmallTest
+    public void testLoad_xhtml_content()
+    {
+        try {
+            String filename = "index.xhtml";
+            String expectedLocalTitle = "Crosswalk Sample Application";
+            String content = getFileContent(filename);
+            loadUrlSync(filename, content);
+            assertEquals(expectedLocalTitle, getTitleOnUiThread());
+        } catch (Exception e) {
+            e.printStackTrace();
+            assertTrue(false);
+        }
+    }
+
+    @SmallTest
+    public void testLoad_html_url()
+    {
+        try {
+            String url = "file:///android_asset/index.html";
+            loadUrlSync(url);
+            String title = "Crosswalk Sample Application";
+            assertEquals(title, getTitleOnUiThread());
+            assertEquals(url, getUrlOnUiThread());
+        } catch (Exception e) {
+            e.printStackTrace();
+            assertTrue(false);
+        }
+    }
+
+    @SmallTest
+    public void testLoad_xhtml_url() {
+        try {
+            String url = "file:///android_asset/index.xhtml";
+            mXWalkView.load(url, null);
+            SystemClock.sleep(2000);
+            String title = "Crosswalk Sample Application";
+            assertEquals(title, getTitleOnUiThread());
+            assertEquals(url, getUrlOnUiThread());
         } catch (Exception e) {
             e.printStackTrace();
             assertTrue(false);
