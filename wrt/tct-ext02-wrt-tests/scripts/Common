@@ -29,7 +29,7 @@ function func_install()
     PACKAGENAME="$path/$1"
     p_name=$1
     APP_NAME=${p_name%.*}
-    xwalkctl --install $PACKAGENAME
+    pkgcmd -i -t wgt -q -p $PACKAGENAME
     find_app $APP_NAME
     pkgnum=`echo "$pkgids"|wc -w`
     if [ $pkgnum -lt 1 ]; then
@@ -90,18 +90,18 @@ function func_check()
 
 ##usage: uninstall_app $app_name(e.g. uninstall_app tct-sp02-wrt-tests)##
 function uninstall_app(){
-    xwalkctl >/tmp/apps.txt 2>&1
-    pkgids=`cat /tmp/apps.txt | grep $1 | awk '{print $(NF-1)}'`
+    pkgcmd -l >/tmp/apps.txt 2>&1
+    pkgids=`cat /tmp/apps.txt | grep $1 | awk -F '[\],\[]' '{print $4}'`
     for pkgid in $pkgids
     do
-        xwalkctl --uninstall $pkgid
+        pkgcmd -u -t wgt -q -n $pkgid
     done
 }
 
-##usage: find_app $app_name(e.g. uninstall_app tct-sp02-wrt-tests)##
+##usage: find_app $app_name(e.g. find_app tct-sp02-wrt-tests)##
 function find_app(){
-    xwalkctl >/tmp/apps.txt 2>&1
-    pkgids=`cat /tmp/apps.txt | grep $1 | awk '{print $(NF-1)}'`
+    pkgcmd -l >/tmp/apps.txt 2>&1
+    pkgids=`cat /tmp/apps.txt | grep $1 | awk -F '[\],\[]' '{print $4}'`
 }
 
 ##usage: launch_app $app_name(e.g. launch_app tct-sp02-wrt-tests)##
