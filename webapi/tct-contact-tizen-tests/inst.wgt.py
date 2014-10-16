@@ -39,7 +39,7 @@ def doCMD(cmd):
 
 
 def updateCMD(cmd=None):
-    if "xwalkctl" in cmd:
+    if "pkgcmd" in cmd:
         cmd = "su - app -c '%s;%s'" % (XW_ENV, cmd)
     return cmd
 
@@ -47,26 +47,29 @@ def updateCMD(cmd=None):
 def getPKGID(pkg_name=None):
     if PARAMETERS.mode == "SDB":
         cmd = "sdb -s %s shell %s" % (
-            PARAMETERS.device, updateCMD('xwalkctl'))
+            PARAMETERS.device, updateCMD('pkgcmd -l'))
     else:
         cmd = "ssh %s \"%s\"" % (
-            PARAMETERS.device, updateCMD('xwalkctl'))
+            PARAMETERS.device, updateCMD('pkgcmd -l'))
 
     (return_code, output) = doCMD(cmd)
     if return_code != 0:
         return None
 
-    test_app_id = None
+    test_pkg_id = None
     for line in output:
         pkg_infos = line.split()
-        if len(pkg_infos) == 1:
+        if len(pkg_infos) == 4:
             continue
-        name = pkg_infos[1]
+        name = pkg_infos[5]
+        name = name.lstrip('[').rstrip(']')
+        print "name is: %s" % name
         if pkg_name == name:
-            test_app_id = pkg_infos[0]
-            print test_app_id
+            test_pkg_id = pkg_infos[3]
+            test_pkg_id = test_pkg_id.lstrip('[').rstrip(']')
+            print test_pkg_id
             break
-    return test_app_id
+    return test_pkg_id
 
 
 def doRemoteCMD(cmd=None):
@@ -104,7 +107,7 @@ def uninstPKGs():
                     action_status = False
                     continue
                 (return_code, output) = doRemoteCMD(
-                    "xwalkctl -u %s" % pkg_id)
+                    "pkgcmd -u -t wgt -q -n %s" % pkg_id)
                 for line in output:
                     if "Failure" in line:
                         action_status = False
@@ -135,7 +138,7 @@ def instPKGs():
                 if not doRemoteCopy(os.path.join(root, file), "%s/%s" % (SRC_DIR, file)):
                     action_status = False
                 (return_code, output) = doRemoteCMD(
-                    "xwalkctl -i %s/%s" % (SRC_DIR, file))
+                    "pkgcmd -i -t wgt -q -p %s/%s" % (SRC_DIR, file))
                 doRemoteCMD("rm -rf %s/%s" % (SRC_DIR, file))
                 for line in output:
                     if "Failure" in line:
