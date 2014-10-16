@@ -128,7 +128,7 @@ def instPKGs():
         action_status = False
     for root, dirs, files in os.walk(SCRIPT_DIR):
         for file in files:
-            if file.endswith(".wgt"):
+            if file.endswith(PKG_NAME + ".wgt"):
                 if not doRemoteCopy(os.path.join(root, file), "%s/%s" % (SRC_DIR, file)):
                     action_status = False
                 (return_code, output) = doRemoteCMD(

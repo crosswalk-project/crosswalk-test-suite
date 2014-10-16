@@ -134,17 +134,17 @@ def instPKGs():
         if root.endswith("mediasrc"):
             continue
 
-        for file in files:
-            if file.endswith(".xpk"):
-                if not doRemoteCopy(os.path.join(root, file), "%s/%s" % (SRC_DIR, file)):
-                    action_status = False
-                (return_code, output) = doRemoteCMD(
-                    "pkgcmd -i -t xpk -q -p %s/%s" % (SRC_DIR, file))
-                doRemoteCMD("rm -rf %s/%s" % (SRC_DIR, file))
-                for line in output:
-                    if "Failure" in line:
-                        action_status = False
-                        break
+#        for file in files:
+#            if file.endswith(".xpk"):
+#                if not doRemoteCopy(os.path.join(root, file), "%s/%s" % (SRC_DIR, file)):
+#                    action_status = False
+#                (return_code, output) = doRemoteCMD(
+#                    "pkgcmd -i -t xpk -q -p %s/%s" % (SRC_DIR, file))
+#                doRemoteCMD("rm -rf %s/%s" % (SRC_DIR, file))
+#                for line in output:
+#                    if "Failure" in line:
+#                        action_status = False
+#                        break
 
     # Do some special copy/delete... steps
     '''

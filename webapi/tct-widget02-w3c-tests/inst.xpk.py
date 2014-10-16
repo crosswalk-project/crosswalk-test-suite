@@ -135,7 +135,7 @@ def instPKGs():
             continue
 
         for file in files:
-            if file.endswith(".xpk"):
+            if file.endswith(PKG_NAME + ".xpk"):
                 if not doRemoteCopy(os.path.join(root, file), "%s/%s" % (SRC_DIR, file)):
                     action_status = False
                 (return_code, output) = doRemoteCMD(
