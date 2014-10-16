@@ -26,23 +26,29 @@ NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE,
 EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
 Authors:
-    Xu, Kang <kangx.xu@intel.com>
+    Wang, Hongjuan <hongjuanx.wang@intel.com>
 
 -->
 
 <html>
   <head>
     <meta charset='utf-8'>
-    <title>Crosswalk_arch_mismatch_x86_embeded</title>
+    <title>Crosswalk_arch_mismatch_x86_shared_arm_crosswalk</title>
     <link rel="author" title="Intel" href="http://www.intel.com">
   </head>
   <body>
     <p>
+      <strong>Precondition:</strong>
+    </p>
+    <ul>
+      <li>Install RuntimeLib for arm on x86 devices</li>
+    </ul>
+    <p>
       <strong>Test steps:</strong>
     </p>
     <ol>
-      <li>Package an embedded app with --arch=x86 --mode=embedded</li>
-      <li>Install apk on arm devices</li>
+      <li>Package an embedded app with --arch=x86 --mode=shared</li>
+      <li>Install apk on x86 devices</li>
       <li>Launch web app</li>
     </ol>
     <p>
@@ -51,7 +57,7 @@ Authors:
     <ol>
       <li>Generate APK installation package successfully</li>
       <li>Install web app successfully</li>
-      <li>Launch web app failed, popup a message like "Crosswalk Runtime Library not found"</li>
+      <li>Launch web app failed and prompt: Architecture Mismatch</li>
     </ol>
   </body>
 </html>
