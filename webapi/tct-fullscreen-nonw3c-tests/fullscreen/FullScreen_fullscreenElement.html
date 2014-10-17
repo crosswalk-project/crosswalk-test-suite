@@ -26,26 +26,25 @@ NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE,
 EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
 Authors:
-        Ge, WeiX A <weix.a.ge@intel.com>
+        Xu, Kang <kangx.xu@intel.com>
 
 -->
 
-<html>
-  <head>
-    <title>FullScreen Test: FullScreen_fullScreenKeyboardInputAllowed_exists</title>
-    <link rel="author" title="Intel" href="http://www.intel.com" />
-    <link rel="help" href="https://wiki.mozilla.org/index.php?title=Gecko:FullScreenAPI" />
-    <meta name="flags" content="" />
-    <meta name="assert" content="Check if document has fullScreenKeyboardInputAllowed attribute" />
-    <script src="../resources/testharness.js"></script>
-    <script src="../resources/testharnessreport.js"></script>
-  </head>
-  <body>
-    <div id="log"></div>
-    <script>
-        test(function(){
-            assert_true(("fullScreenKeyboardInputAllowed" in document) || ("mozFullScreenKeyboardInputAllowed" in document) || ("webkitFullScreenKeyboardInputAllowed" in document), "Document has fullScreenKeyboardInputAllowed attribute");
-      },"Document has fullScreenKeyboardInputAllowed attribute");
-    </script>
-  </body>
-</html>
+<meta charset="utf-8">
+<title>FullScreen Test: FullScreen_fullscreenElement</title>
+<link rel="author" title="Intel" href="http://www.intel.com">
+<link rel="help" href="https://fullscreen.spec.whatwg.org/">
+<script src="../resources/testharness.js"></script>
+<script src="../resources/testharnessreport.js"></script>
+<div id="log"></div>
+<script>
+
+test(function() {
+    assert_true("fullscreenElement" in document, "the document.fullscreenElement attribute exists");
+    assert_equals(typeof document.fullscreenElement, "object", "the type of document.fullscreenElement");
+    var fullscreen = document.fullscreenElement;
+    document.fullscreenElement = null;
+    assert_true(document.fullscreenElement == fullscreen, "the document.fullscreenElement is readonly");
+}, "Check if the document.fullscreenElement attribute exists, readonly and type of object");
+
+</script>
