@@ -43,9 +43,9 @@ Authors:
     <ol>
       <li>Push the webapp "disable_device_capabilities_tests.wgt" into Tizen device</li>
       <li>Switch to 'app' user: "su","su app"</li>
-      <li>Execute command: "pkgcmd -i -t wgt -p /path/disable_device_capabilities_tests.wgt"</li>
+      <li>Execute command: "pkgcmd -i -t wgt -p /path/disable_device_capabilities_tests.wgt -q"</li>
       <li>Switch to 'guest' user: "su guest"</li>
-      <li>Execute command: "pkgcmd -u -n $appid(disable_device_capabilities_tests wbapp id)"</li>
+      <li>Execute command: "pkgcmd -u -n $appid(disable_device_capabilities_tests wbapp id) -q"</li>
       <li>Switch to 'app' user and check the installed webapp</li> 
     </ol>
     <p>
