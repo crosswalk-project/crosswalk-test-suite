@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <!--
-Copyright (c) 2013 Intel Corporation.
+Copyright (c) 2014 Intel Corporation.
 
 Redistribution and use in source and binary forms, with or without modification,
 are permitted provided that the following conditions are met:
@@ -26,38 +26,24 @@ NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE,
 EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
 Authors:
-        Liu.Xin <xinx.liu@intel.com>
+        Xu, Kang <kangx.xu@intel.com>
 
 -->
 
 <meta charset="utf-8">
-<title>NetworkInfo Test: NetworkInformation_example1_write_bandwidth</title>
-<link rel="author" title="Intel" href="http://www.intel.com"/>
-<link rel="help" href="http://www.w3.org/TR/2012/WD-netinfo-api-20121129/#widl-NetworkInformation-connection"/>
-<meta name="flags" content=""/>
-<meta name="assert" content="Test checks that trivial example writes the connection bandwidth to the page and shows it again each time it is changing"/>
-<p>
-  This test case passes if the yellow area shows the current connection bandwidth.<br/>
-  <pre>
-    Note:
-      0 if the user is currently offline;
-      Infinity if the bandwidth is unknown;
-      an estimation of the current bandwidth in MB/s if the user is currently online.
-  </pre>
-</p>
-<div id="result" style="background-color: yellow"></div>
+<title>NetworkInfo Test: NetworkInformation - downlinkMax</title>
+<link rel="author" title="Intel" href="http://www.intel.com">
+<link rel="help" href="http://w3c.github.io/netinfo/">
+<script src="../resources/testharness.js"></script>
+<script src="../resources/testharnessreport.js"></script>
+<div id="log"></div>
 <script>
-  var connection = navigator.connection || navigator.mozConnection || navigator.webkitConnection;
 
-  if (!!connection) {
-    connection.addEventListener('change', show, false);
-    show();
-  } else {
-    document.getElementById('result').innerHTML = "NetworkInformation.connection attribute does not exist.";
-  }
+test(function () {
+    var connection = navigator.connection;
+    assert_true("downlinkMax" in connection,"the NetworkInformation.downlinkMax attribute exists");
+    assert_equals(typeof connection.downlinkMax, "number","the type of NetworkInformation.downlinkMax attribute");
+    assert_readonly(connection, "downlinkMax", "the NetworkInformation.downlinkMax attribute is readonly");
+}, "Check if the NetworkInformation.downlinkMax attribute exists, readonly and type of number");
 
-  function show() {
-    document.getElementById('result').innerHTML = "The current bandwidth is " + connection.bandwidth + " MB/s.";
-  }
 </script>
-

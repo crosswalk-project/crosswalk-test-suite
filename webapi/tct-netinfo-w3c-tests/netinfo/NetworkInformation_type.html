@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <!--
-Copyright (c) 2013 Intel Corporation.
+Copyright (c) 2014 Intel Corporation.
 
 Redistribution and use in source and binary forms, with or without modification,
 are permitted provided that the following conditions are met:
@@ -26,25 +26,24 @@ NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE,
 EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
 Authors:
-        Liu.Xin <xinx.liu@intel.com>
+        Xu, Kang <kangx.xu@intel.com>
 
 -->
 
 <meta charset="utf-8">
-<title>NetworkInfo Test: Connection_bandwidth_zero</title>
-<link rel="author" title="Intel" href="http://www.intel.com"/>
-<link rel="help" href="http://www.w3.org/TR/2012/WD-netinfo-api-20121129/#widl-Connection-bandwidth"/>
+<title>NetworkInfo Test: NetworkInformation - type</title>
+<link rel="author" title="Intel" href="http://www.intel.com">
+<link rel="help" href="http://w3c.github.io/netinfo/">
 <script src="../resources/testharness.js"></script>
 <script src="../resources/testharnessreport.js"></script>
-<p>
-  Pre-condition: Make sure the network connection is unavailable.<br/>
-</p>
 <div id="log"></div>
 <script>
-  test(function() {
-    var connection = navigator.connection || navigator.mozConnection || navigator.webkitConnection;
-    assert_true(!!connection, "NetworkInformation.connection attribute exists");
-    assert_equals(connection.bandwidth, 0, "the value of Connection.bandwidth attribute");
-  }, "Test checks that the value of Connection.bandwidth attribute is 0 when the user is currently offline");
-</script>
 
+test(function () {
+    var connection = navigator.connection;
+    assert_true("type" in connection,"the NetworkInformation.type attribute exists");
+    assert_equals(typeof connection.type, "string","the type of NetworkInformation.type attribute");
+    assert_readonly(connection, "type", "the NetworkInformation.type attribute is readonly");
+}, "Check if the NetworkInformation.type attribute exists, readonly and type of string");
+
+</script>

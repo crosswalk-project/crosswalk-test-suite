@@ -3,160 +3,50 @@
 <test_definition>
   <suite name="tct-netinfo-w3c-tests" launcher="xwalk" category="W3C/HTML5 APIs">
     <set name="NetworkInfo" type="js">
-      <testcase purpose="Check if the NetworkInformation.connection attribute exists" type="compliance" status="approved" component="WebAPI/Device/The Network Information API" execution_type="auto" priority="P1" id="NetworkInformation_connection_exist">
+      <testcase purpose="Check if the navigator.connection attribute exists, readonly and type of NetworkInformation" type="compliance" status="approved" component="WebAPI/Device/The Network Information API" execution_type="auto" priority="P1" id="Navigator_connection">
         <description>
-          <test_script_entry>/opt/tct-netinfo-w3c-tests/netinfo/NetworkInformation_connection_exist.html</test_script_entry>
+          <test_script_entry>/opt/tct-netinfo-w3c-tests/netinfo/Navigator_connection.html</test_script_entry>
         </description>
         <specs>
           <spec>
-            <spec_assertion element_type="attribute" element_name="connection" interface="NetworkInformation" specification="The Network Information API" section="Device" category="Tizen W3C API Specifications"/>
-            <spec_url>http://www.w3.org/TR/2012/WD-netinfo-api-20121129/#widl-NetworkInformation-connection</spec_url>
+            <spec_assertion element_type="attribute" element_name="connection" interface="Navigator" specification="The Network Information API" section="Device" category="Tizen W3C API Specifications"/>
+            <spec_url>http://w3c.github.io/netinfo/</spec_url>
             <spec_statement/>
           </spec>
         </specs>
       </testcase>
-      <testcase purpose="Check if the NetworkInformation.connection attribute is readonly" type="compliance" status="approved" component="WebAPI/Device/The Network Information API" execution_type="auto" priority="P1" id="NetworkInformation_connection_readonly">
+      <testcase purpose="Check if the NetworkInformation.type attribute exists, readonly and type of string" type="compliance" status="approved" component="WebAPI/Device/The Network Information API" execution_type="auto" priority="P1" id="NetworkInformation_type">
         <description>
-          <test_script_entry>/opt/tct-netinfo-w3c-tests/netinfo/NetworkInformation_connection_readonly.html</test_script_entry>
+          <test_script_entry>/opt/tct-netinfo-w3c-tests/netinfo/NetworkInformation_type.html</test_script_entry>
         </description>
         <specs>
           <spec>
-            <spec_assertion element_type="attribute" element_name="connection" interface="NetworkInformation" specification="The Network Information API" section="Device" category="Tizen W3C API Specifications"/>
-            <spec_url>http://www.w3.org/TR/2012/WD-netinfo-api-20121129/#widl-NetworkInformation-connection</spec_url>
+            <spec_assertion element_type="attribute" element_name="type" interface="NetworkInformation" specification="The Network Information API" section="Device" category="Tizen W3C API Specifications"/>
+            <spec_url>http://http://w3c.github.io/netinfo/</spec_url>
             <spec_statement/>
           </spec>
         </specs>
       </testcase>
-      <testcase purpose="Check if the type of NetworkInformation.connection is 'object'" type="compliance" status="approved" component="WebAPI/Device/The Network Information API" execution_type="auto" priority="P1" id="NetworkInformation_connection_type">
+      <testcase purpose="Check if the NetworkInformation.onchange attribute exists, readonly and type of object" type="compliance" status="approved" component="WebAPI/Device/The Network Information API" execution_type="auto" priority="P1" id="NetworkInformation_onchange">
         <description>
-          <test_script_entry>/opt/tct-netinfo-w3c-tests/netinfo/NetworkInformation_connection_type.html</test_script_entry>
+          <test_script_entry>/opt/tct-netinfo-w3c-tests/netinfo/NetworkInformation_onchange.html</test_script_entry>
         </description>
         <specs>
           <spec>
-            <spec_assertion element_type="attribute" element_name="connection" interface="NetworkInformation" specification="The Network Information API" section="Device" category="Tizen W3C API Specifications"/>
-            <spec_url>http://www.w3.org/TR/2012/WD-netinfo-api-20121129/#widl-NetworkInformation-connection</spec_url>
+            <spec_assertion element_type="attribute" element_name="onchange" interface="NetworkInformation" specification="The Network Information API" section="Device" category="Tizen W3C API Specifications"/>
+            <spec_url>http://http://w3c.github.io/netinfo/</spec_url>
             <spec_statement/>
           </spec>
         </specs>
       </testcase>
-      <testcase purpose="Check if the Connection.bandwidth attribute exists" type="compliance" status="approved" component="WebAPI/Device/The Network Information API" execution_type="auto" priority="P1" id="Connection_bandwidth_exist">
+      <testcase purpose="Check if the NetworkInformation.downlinkMax attribute exists, readonly and type of number" type="compliance" status="approved" component="WebAPI/Device/The Network Information API" execution_type="auto" priority="P1" id="NetworkInformation_downlinkMax">
         <description>
-          <test_script_entry>/opt/tct-netinfo-w3c-tests/netinfo/Connection_attributes.html?total_num=8&amp;amp;locator_key=id&amp;amp;value=1</test_script_entry>
+          <test_script_entry>/opt/tct-netinfo-w3c-tests/netinfo/NetworkInformation_downlinkMax.html</test_script_entry>
         </description>
         <specs>
           <spec>
-            <spec_assertion element_type="attribute" element_name="bandwidth" interface="Connection" specification="The Network Information API" section="Device" category="Tizen W3C API Specifications"/>
-            <spec_url>http://www.w3.org/TR/2012/WD-netinfo-api-20121129/#widl-Connection-bandwidth</spec_url>
-            <spec_statement/>
-          </spec>
-        </specs>
-      </testcase>
-      <testcase purpose="Check if the type of Connection.bandwidth is 'number'" type="compliance" status="approved" component="WebAPI/Device/The Network Information API" execution_type="auto" priority="P1" id="Connection_bandwidth_type">
-        <description>
-          <test_script_entry>/opt/tct-netinfo-w3c-tests/netinfo/Connection_attributes.html?total_num=8&amp;amp;locator_key=id&amp;amp;value=2</test_script_entry>
-        </description>
-        <specs>
-          <spec>
-            <spec_assertion element_type="attribute" element_name="bandwidth" interface="Connection" specification="The Network Information API" section="Device" category="Tizen W3C API Specifications"/>
-            <spec_url>http://www.w3.org/TR/2012/WD-netinfo-api-20121129/#widl-Connection-bandwidth</spec_url>
-            <spec_statement/>
-          </spec>
-        </specs>
-      </testcase>
-      <testcase purpose="Check if the Connection.bandwidth attribute is readonly" type="compliance" status="approved" component="WebAPI/Device/The Network Information API" execution_type="auto" priority="P1" id="Connection_bandwidth_readonly">
-        <description>
-          <test_script_entry>/opt/tct-netinfo-w3c-tests/netinfo/Connection_attributes.html?total_num=8&amp;amp;locator_key=id&amp;amp;value=3</test_script_entry>
-        </description>
-        <specs>
-          <spec>
-            <spec_assertion element_type="attribute" element_name="bandwidth" interface="Connection" specification="The Network Information API" section="Device" category="Tizen W3C API Specifications"/>
-            <spec_url>http://www.w3.org/TR/2012/WD-netinfo-api-20121129/#widl-Connection-bandwidth</spec_url>
-            <spec_statement/>
-          </spec>
-        </specs>
-      </testcase>
-      <testcase purpose="Check if the Connection.metered attribute exists" type="compliance" status="approved" component="WebAPI/Device/The Network Information API" execution_type="auto" priority="P1" id="Connection_metered_exist">
-        <description>
-          <test_script_entry>/opt/tct-netinfo-w3c-tests/netinfo/Connection_attributes.html?total_num=8&amp;amp;locator_key=id&amp;amp;value=4</test_script_entry>
-        </description>
-        <specs>
-          <spec>
-            <spec_assertion element_type="attribute" element_name="metered" interface="Connection" specification="The Network Information API" section="Device" category="Tizen W3C API Specifications"/>
-            <spec_url>http://www.w3.org/TR/2012/WD-netinfo-api-20121129/#widl-Connection-metered</spec_url>
-            <spec_statement/>
-          </spec>
-        </specs>
-      </testcase>
-      <testcase purpose="Check if the type of Connection.metered is 'boolean'" type="compliance" status="approved" component="WebAPI/Device/The Network Information API" execution_type="auto" priority="P1" id="Connection_metered_type">
-        <description>
-          <test_script_entry>/opt/tct-netinfo-w3c-tests/netinfo/Connection_attributes.html?total_num=8&amp;amp;locator_key=id&amp;amp;value=5</test_script_entry>
-        </description>
-        <specs>
-          <spec>
-            <spec_assertion element_type="attribute" element_name="metered" interface="Connection" specification="The Network Information API" section="Device" category="Tizen W3C API Specifications"/>
-            <spec_url>http://www.w3.org/TR/2012/WD-netinfo-api-20121129/#widl-Connection-metered</spec_url>
-            <spec_statement/>
-          </spec>
-        </specs>
-      </testcase>
-      <testcase purpose="Check if the Connection.metered attribute is readonly" type="compliance" status="approved" component="WebAPI/Device/The Network Information API" execution_type="auto" priority="P1" id="Connection_metered_readonly">
-        <description>
-          <test_script_entry>/opt/tct-netinfo-w3c-tests/netinfo/Connection_attributes.html?total_num=8&amp;amp;locator_key=id&amp;amp;value=6</test_script_entry>
-        </description>
-        <specs>
-          <spec>
-            <spec_assertion element_type="attribute" element_name="metered" interface="Connection" specification="The Network Information API" section="Device" category="Tizen W3C API Specifications"/>
-            <spec_url>http://www.w3.org/TR/2012/WD-netinfo-api-20121129/#widl-Connection-metered</spec_url>
-            <spec_statement/>
-          </spec>
-        </specs>
-      </testcase>
-      <testcase purpose="Check if the Connection.onchange attribute exists" type="compliance" status="approved" component="WebAPI/Device/The Network Information API" execution_type="auto" priority="P1" id="Connection_onchange_exist">
-        <description>
-          <test_script_entry>/opt/tct-netinfo-w3c-tests/netinfo/Connection_attributes.html?total_num=8&amp;amp;locator_key=id&amp;amp;value=7</test_script_entry>
-        </description>
-        <specs>
-          <spec>
-            <spec_assertion element_type="eventhandler" element_name="onchange" interface="Connection" specification="The Network Information API" section="Device" category="Tizen W3C API Specifications"/>
-            <spec_url>http://www.w3.org/TR/2012/WD-netinfo-api-20121129/#widl-Connection-onchange</spec_url>
-            <spec_statement/>
-          </spec>
-        </specs>
-      </testcase>
-      <testcase purpose="Test checks that trivial example writes the connection bandwidth to the page and shows it again each time it is changing" type="compliance" status="approved" component="WebAPI/Device/The Network Information API" execution_type="manual" priority="P3" id="NetworkInformation_example1_write_bandwidth">
-        <description>
-          <test_script_entry>/opt/tct-netinfo-w3c-tests/netinfo/NetworkInformation_example1_write_bandwidth-manual.html</test_script_entry>
-        </description>
-        <specs>
-          <spec>
-            <spec_assertion usage="true" interface="Connection" specification="The Network Information API" section="Device" category="Tizen W3C API Specifications"/>
-            <spec_url>http://www.w3.org/TR/2012/WD-netinfo-api-20121129/#widl-NetworkInformation-connection</spec_url>
-            <spec_statement/>
-          </spec>
-        </specs>
-      </testcase>
-      <testcase purpose="Test checks that the value of Connection.bandwidth attribute is 0 when the user is currently offline" type="compliance" status="approved" component="WebAPI/Device/The Network Information API" execution_type="auto" priority="P2" id="Connection_bandwidth_zero">
-        <description>
-          <pre_condition>Make sure the network connection is unavailable</pre_condition>
-          <test_script_entry>/opt/tct-netinfo-w3c-tests/netinfo/Connection_bandwidth_zero.html</test_script_entry>
-        </description>
-        <specs>
-          <spec>
-            <spec_assertion element_type="attribute" element_name="bandwidth" interface="Connection" specification="The Network Information API" section="Device" category="Tizen W3C API Specifications"/>
-            <spec_url>http://www.w3.org/TR/2012/WD-netinfo-api-20121129/#widl-Connection-bandwidth</spec_url>
-            <spec_statement/>
-          </spec>
-        </specs>
-      </testcase>
-      <testcase purpose="Test checks that the value of Connection.metered is false when the user is offline" type="compliance" status="approved" component="WebAPI/Device/The Network Information API" execution_type="auto" priority="P2" id="Connection_metered_false">
-        <description>
-          <pre_condition>Make sure the network connection is unavailable</pre_condition>
-          <test_script_entry>/opt/tct-netinfo-w3c-tests/netinfo/Connection_metered_false.html</test_script_entry>
-        </description>
-        <specs>
-          <spec>
-            <spec_assertion element_type="attribute" element_name="metered" interface="Connection" specification="The Network Information API" section="Device" category="Tizen W3C API Specifications"/>
-            <spec_url>http://www.w3.org/TR/2012/WD-netinfo-api-20121129/#widl-Connection-metered</spec_url>
+            <spec_assertion element_type="attribute" element_name="downlinkMax" interface="NetworkInformation" specification="The Network Information API" section="Device" category="Tizen W3C API Specifications"/>
+            <spec_url>http://http://w3c.github.io/netinfo/</spec_url>
             <spec_statement/>
           </spec>
         </specs>
