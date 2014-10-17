@@ -43,8 +43,8 @@ Authors:
     <ol>
       <li>Push the webapp "disable_device_capabilities_tests.wgt" into Tizen device</li>
       <li>Execute command: "su app"</li>
-      <li>Execute command: "xwalkctl --install disable_device_capabilities_tests.wgt"</li>
-      <li>Execute command: "xwalkctl --uninstall id"</li>
+      <li>Execute command: "pkgcmd -i -t wgt -p disable_device_capabilities_tests.wgt -q"</li>
+      <li>Execute command: "pkgcmd -u -n $webappid -q "</li>
     </ol>
     <p>
       <strong>Expected Output:</strong>
