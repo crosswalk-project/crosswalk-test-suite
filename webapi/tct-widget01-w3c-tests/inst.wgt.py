@@ -140,9 +140,7 @@ def instPKGs():
                         break
 
     for item in glob.glob("%s/*" % SCRIPT_DIR):
-        if item.endswith(".wgt"):
-            continue
-        elif item.endswith("inst.py"):
+        if item.endswith("inst.py"):
             continue
         else:
             item_name = os.path.basename(item)
