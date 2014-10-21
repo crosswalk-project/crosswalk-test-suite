@@ -399,6 +399,18 @@
           </spec>
         </specs>
       </testcase>
+      <testcase purpose="Check if a system font sets all of the font subproperties at the same time; then font value is changed to 'message-box'" type="compliance" status="approved" component="WebAPI/DOM, Forms and Styles/CSS Fonts Module Level 3 (Partial)" execution_type="manual" priority="P2" id="font-044">
+        <description>
+          <test_script_entry>/opt/tct-fonts-css3-tests/fonts/csswg/font-044-manual.htm</test_script_entry>
+        </description>
+        <specs>
+          <spec>
+            <spec_assertion element_type="property" element_name="font" interface="CSS" specification="CSS Fonts Module Level 3 (Partial)" section="DOM, Forms and Styles" category="Tizen W3C API Specifications"/>
+            <spec_url>http://www.w3.org/TR/2012/WD-css3-fonts-20120823/#font-prop</spec_url>
+            <spec_statement/>
+          </spec>
+        </specs>
+      </testcase>
       <testcase purpose="Check if the 'font-family' property set to 'serif' correctly renders the user agent's serif font" type="compliance" status="approved" component="WebAPI/DOM, Forms and Styles/CSS Fonts Module Level 3 (Partial)" execution_type="manual" priority="P2" id="font-family-002">
         <description>
           <test_script_entry>/opt/tct-fonts-css3-tests/fonts/csswg/font-family-002-manual.htm</test_script_entry>
@@ -450,6 +462,30 @@
       <testcase purpose="Check if the 'font-family' property set to 'monospace' correctly renders the user agent's monospace font" type="compliance" status="approved" component="WebAPI/DOM, Forms and Styles/CSS Fonts Module Level 3 (Partial)" execution_type="manual" priority="P2" id="font-family-006">
         <description>
           <test_script_entry>/opt/tct-fonts-css3-tests/fonts/csswg/font-family-006-manual.htm</test_script_entry>
+        </description>
+        <specs>
+          <spec>
+            <spec_assertion element_type="property" element_name="font-family" interface="CSS" specification="CSS Fonts Module Level 3 (Partial)" section="DOM, Forms and Styles" category="Tizen W3C API Specifications"/>
+            <spec_url>http://www.w3.org/TR/2012/WD-css3-fonts-20120823/#font-family-prop</spec_url>
+            <spec_statement/>
+          </spec>
+        </specs>
+      </testcase>
+      <testcase purpose="Check if glyphs that are missing render as the missing glyph character and still report their initial character location, not the missing glyph location" type="compliance" status="approved" component="WebAPI/DOM, Forms and Styles/CSS Fonts Module Level 3 (Partial)" execution_type="manual" priority="P2" id="font-family-rule-005">
+        <description>
+          <test_script_entry>/opt/tct-fonts-css3-tests/fonts/csswg/font-family-rule-005-manual.htm</test_script_entry>
+        </description>
+        <specs>
+          <spec>
+            <spec_assertion element_type="property" element_name="font-family" interface="CSS" specification="CSS Fonts Module Level 3 (Partial)" section="DOM, Forms and Styles" category="Tizen W3C API Specifications"/>
+            <spec_url>http://www.w3.org/TR/2012/WD-css3-fonts-20120823/#font-family-prop</spec_url>
+            <spec_statement/>
+          </spec>
+        </specs>
+      </testcase>
+      <testcase purpose="Check if the invalid characters in font family names invalidate entire declaration" type="compliance" status="approved" component="WebAPI/DOM, Forms and Styles/CSS Fonts Module Level 3 (Partial)" execution_type="manual" priority="P2" id="font-family-invalid-characters-001">
+        <description>
+          <test_script_entry>/opt/tct-fonts-css3-tests/fonts/csswg/font-family-invalid-characters-001-manual.htm</test_script_entry>
         </description>
         <specs>
           <spec>
@@ -1166,36 +1202,10 @@
           </spec>
         </specs>
       </testcase>
-      <testcase purpose="Check if a system font sets all of the font subproperties at the same time; then font value is changed to 'message-box'" type="compliance" status="approved" component="WebAPI/DOM, Forms and Styles/CSS Fonts Module Level 3 (Partial)" execution_type="auto" priority="P2" id="font-044">
-        <description>
-          <test_script_entry>/opt/tct-fonts-css3-tests/fonts/csswg/font-044.htm</test_script_entry>
-          <refer_test_script_entry timeout="90">/opt/tct-fonts-css3-tests/fonts/csswg/reference/font-044-ref.html</refer_test_script_entry>
-        </description>
-        <specs>
-          <spec>
-            <spec_assertion element_type="property" element_name="font" interface="CSS" specification="CSS Fonts Module Level 3 (Partial)" section="DOM, Forms and Styles" category="Tizen W3C API Specifications"/>
-            <spec_url>http://www.w3.org/TR/2012/WD-css3-fonts-20120823/#font-prop</spec_url>
-            <spec_statement/>
-          </spec>
-        </specs>
-      </testcase>
       <testcase purpose="Check if the font-family names must not contain unescaped parentheses or unescaped curly braces" type="compliance" status="approved" component="WebAPI/DOM, Forms and Styles/CSS Fonts Module Level 3 (Partial)" execution_type="auto" priority="P2" id="font-family-008">
         <description>
           <test_script_entry>/opt/tct-fonts-css3-tests/fonts/csswg/font-family-008.htm</test_script_entry>
           <refer_test_script_entry timeout="90">/opt/tct-fonts-css3-tests/fonts/csswg/reference/font-family-008-ref.html</refer_test_script_entry>
-        </description>
-        <specs>
-          <spec>
-            <spec_assertion element_type="property" element_name="font-family" interface="CSS" specification="CSS Fonts Module Level 3 (Partial)" section="DOM, Forms and Styles" category="Tizen W3C API Specifications"/>
-            <spec_url>http://www.w3.org/TR/2012/WD-css3-fonts-20120823/#font-family-prop</spec_url>
-            <spec_statement/>
-          </spec>
-        </specs>
-      </testcase>
-      <testcase purpose="Check if the invalid characters in font family names invalidate entire declaration" type="compliance" status="approved" component="WebAPI/DOM, Forms and Styles/CSS Fonts Module Level 3 (Partial)" execution_type="auto" priority="P2" id="font-family-invalid-characters-001">
-        <description>
-          <test_script_entry>/opt/tct-fonts-css3-tests/fonts/csswg/font-family-invalid-characters-001.htm</test_script_entry>
-          <refer_test_script_entry timeout="90">/opt/tct-fonts-css3-tests/fonts/csswg/reference/font-family-invalid-characters-001-ref.html</refer_test_script_entry>
         </description>
         <specs>
           <spec>
@@ -1222,19 +1232,6 @@
         <description>
           <test_script_entry>/opt/tct-fonts-css3-tests/fonts/csswg/font-family-rule-001.htm</test_script_entry>
           <refer_test_script_entry timeout="90">/opt/tct-fonts-css3-tests/fonts/csswg/reference/font-family-rule-001-ref.html</refer_test_script_entry>
-        </description>
-        <specs>
-          <spec>
-            <spec_assertion element_type="property" element_name="font-family" interface="CSS" specification="CSS Fonts Module Level 3 (Partial)" section="DOM, Forms and Styles" category="Tizen W3C API Specifications"/>
-            <spec_url>http://www.w3.org/TR/2012/WD-css3-fonts-20120823/#font-family-prop</spec_url>
-            <spec_statement/>
-          </spec>
-        </specs>
-      </testcase>
-      <testcase purpose="Check if glyphs that are missing render as the missing glyph character and still report their initial character location, not the missing glyph location" type="compliance" status="approved" component="WebAPI/DOM, Forms and Styles/CSS Fonts Module Level 3 (Partial)" execution_type="auto" priority="P2" id="font-family-rule-005">
-        <description>
-          <test_script_entry>/opt/tct-fonts-css3-tests/fonts/csswg/font-family-rule-005.htm</test_script_entry>
-          <refer_test_script_entry timeout="90">/opt/tct-fonts-css3-tests/fonts/csswg/reference/font-family-rule-005-ref.html</refer_test_script_entry>
         </description>
         <specs>
           <spec>
