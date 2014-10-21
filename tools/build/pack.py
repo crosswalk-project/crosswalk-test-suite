@@ -48,7 +48,7 @@ sys.setdefaultencoding('utf8')
 TOOL_VERSION = "v0.1"
 VERSION_FILE = "VERSION"
 DEFAULT_CMD_TIMEOUT = 600
-PKG_TYPES = ["apk", "xpk", "wgt", "apk-aio", "cordova", "embeddingapi"]
+PKG_TYPES = ["apk", "xpk", "wgt", "apk-aio", "cordova-aio", "cordova", "embeddingapi"]
 PKG_MODES = ["shared", "embedded"]
 PKG_ARCHS = ["x86", "arm"]
 PKG_BLACK_LIST = []
@@ -988,7 +988,8 @@ def main():
                 PKG_ARCHS)
             sys.exit(1)
 
-    if BUILD_PARAMETERS.pkgtype == "apk-aio":
+    if BUILD_PARAMETERS.pkgtype == "apk-aio" or \
+       BUILD_PARAMETERS.pkgtype == "cordova-aio":
         if not BUILD_PARAMETERS.destdir or not os.path.exists(
                 BUILD_PARAMETERS.destdir):
             LOG.error("No all-in-one installation dest dir found, exit ...")
@@ -1055,7 +1056,8 @@ def main():
         exitHandler(1)
 
     LOG.info("+Building package ...")
-    if BUILD_PARAMETERS.pkgtype == "apk-aio":
+    if BUILD_PARAMETERS.pkgtype == "apk-aio" or \
+       BUILD_PARAMETERS.pkgtype == "cordova-aio":
         pkg_file_list = os.listdir(os.path.join(BUILD_ROOT, "pkg"))
         for i_file in pkg_file_list:
             if not doCopy(
