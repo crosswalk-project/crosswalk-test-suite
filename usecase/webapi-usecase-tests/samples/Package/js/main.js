@@ -220,7 +220,7 @@ function packagePre() {
     }
 
     tizen.filesystem.resolve(
-        'wgt-package/tests/Package/res/',
+        'wgt-package/samples/Package/res/',
         function(dir){
             documentsDir = dir;
             dir.listFiles(onsuccess, onerror);
