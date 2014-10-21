@@ -232,9 +232,3 @@ function packagePre(wgt_name) {
         }, "r"
     );
 }
-
-function reportResult(res) {
-    var jsonStr="[{\"testname\":\"" + wgt_name + "\",\"result\":\"" + res + "\"}]";
-    window.opener.postMessage(jsonStr, '*');
-    backAppsHome();
-}

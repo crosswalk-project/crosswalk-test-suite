@@ -27,6 +27,7 @@ EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
 Authors:
         Feng, GangX <gangx.feng@intel.com>
+        Xu, Kang <kangx.xu@intel.com>
 
 -->
 <html>
@@ -38,9 +39,11 @@ Authors:
     <script src="../../js/thirdparty/jquery.js"></script>
     <script src="../../js/thirdparty/jquery.mobile.js"></script>
     <script src="../../js/tests.js"></script>
+    <script src="../../js/main.js"></script>
     <script src="js/main.js"></script>
   </head>
   <body>
+    <input type="hidden" id="sub_test"/>
     <div data-role="page" id="main">
         <div data-role="header" data-position="fixed" data-tap-toggle="false">
             <h1 id="main_page_title"></h1>
@@ -49,14 +52,14 @@ Authors:
             <ul data-role="listview" id="cspList" data-divider-theme="b" data-inset="true">
                 <li data-role="list-divider" role="heading">Test half memory</li>
                 <li id="test-half-memory">
-                    <a href="javascript:goToApp('res/test-half-memory.html')" data-transition="slide" style="">
-                        <h2>wrt-install-large-webapp</h2>
+                    <a href="javascript:runApp('res/test-half-memory.html')" data-transition="slide" style="">
+                        <h2>test-half-memory</h2>
                     </a>
                 </li>
                 <li data-role="list-divider" role="heading">Test hd image</li>
                 <li id="test-hd-image">
-                    <a href="javascript:goToApp('res/test-hd-image.html')" data-transition="slide" style="">
-                        <h2>wrt-high-resolution-picture</h2>
+                    <a href="javascript:runApp('res/test-hd-image.html')" data-transition="slide" style="">
+                        <h2>test-hd-image</h2>
                     </a>
                 </li>
                 <li data-role="list-divider" role="heading">Clean all the installed packages</li>
@@ -77,6 +80,9 @@ Authors:
             <p>Test passes if the large widget installed successfully and high resolution picture displayed well.</p>
           </font>
         </div>
+    </div>
+    <div data-role="page" id="test_ui">
+        <iframe id="test_frame" width="100%" frameborder="no" border="0" src=""></iframe>
     </div>
   </body>
 </html>

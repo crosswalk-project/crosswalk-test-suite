@@ -27,6 +27,7 @@ EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
 Authors:
         Feng, GangX <gangx.feng@intel.com>
+        Xu, Kang <kangx.xu@intel.com>
 
 -->
 <html>
@@ -38,9 +39,11 @@ Authors:
     <script src="../../js/thirdparty/jquery.js"></script>
     <script src="../../js/thirdparty/jquery.mobile.js"></script>
     <script src="../../js/tests.js"></script>
+    <script src="../../js/main.js"></script>
     <script src="js/main.js"></script>
   </head>
   <body>
+    <input type="hidden" id="sub_test"/>
     <div data-role="page" id="main">
         <div data-role="header" data-position="fixed" data-tap-toggle="false">
             <h1 id="main_page_title"></h1>
@@ -49,94 +52,94 @@ Authors:
             <ul data-role="listview" id="cspList" data-divider-theme="b" data-inset="true">
                 <li data-role="list-divider" role="heading">Test src content</li>
                 <li id="application-content">
-                    <a href="javascript:goToApp('res/application-content.html')" data-transition="slide" style="">
+                    <a href="javascript:runApp('res/application-content.html')" data-transition="slide" style="">
                         <h2>application-content</h2>
                     </a>
                 </li>
                 <li id="application-content-crosswalksite">
-                    <a href="javascript:goToApp('res/application-content-crosswalksite.html')" data-transition="slide" style="">
+                    <a href="javascript:runApp('res/application-content-crosswalksite.html')" data-transition="slide" style="">
                         <h2>application-content-crosswalksite</h2>
                     </a>
                 </li>                 
                 <li data-role="list-divider" role="heading">Test auto rotation</li>
                 <li id="setting-ar-true">
-                    <a href="javascript:goToApp('res/setting-ar-true.html')" data-transition="slide" style="">
+                    <a href="javascript:runApp('res/setting-ar-true.html')" data-transition="slide" style="">
                         <h2>setting-ar-true</h2>
                     </a>
                 </li>
                 <li data-role="list-divider" role="heading">Test background support</li>
                 <li id="setting-bs-disable">
-                    <a href="javascript:goToApp('res/setting-bs-disable.html')" data-transition="slide" style="">
+                    <a href="javascript:runApp('res/setting-bs-disable.html')" data-transition="slide" style="">
                         <h2>setting-bs-disable</h2>
                     </a>
                 </li>
                 <li data-role="list-divider" role="heading">Test context menu</li>
                 <li id="setting-cm-disable">
-                    <a href="javascript:goToApp('res/setting-cm-disable.html')" data-transition="slide" style="">
+                    <a href="javascript:runApp('res/setting-cm-disable.html')" data-transition="slide" style="">
                         <h2>setting-cm-disable</h2>
                     </a>
                 </li>
                 <li id="setting-cm-enable">
-                    <a href="javascript:goToApp('res/setting-cm-enable.html')" data-transition="slide" style="">
+                    <a href="javascript:runApp('res/setting-cm-enable.html')" data-transition="slide" style="">
                         <h2>setting-cm-enable</h2>
                     </a>
                 </li>
                 <li data-role="list-divider" role="heading">Test encryption</li>
                 <li id="setting-encrypt-disable">
-                    <a href="javascript:goToApp('res/setting-encrypt-disable.html')" data-transition="slide" style="">
+                    <a href="javascript:runApp('res/setting-encrypt-disable.html')" data-transition="slide" style="">
                         <h2>setting-encrypt-disable</h2>
                     </a>
                 </li>
                 <li id="setting-encrypt-enable">
-                    <a href="javascript:goToApp('res/setting-encrypt-enable.html')" data-transition="slide" style="">
+                    <a href="javascript:runApp('res/setting-encrypt-enable.html')" data-transition="slide" style="">
                         <h2>setting-encrypt-enable</h2>
                     </a>
                 </li>
                 <li data-role="list-divider" role="heading">Test allow navigation</li>
                 <li id="setting-an-more">
-                    <a href="javascript:goToApp('res/setting-an-more.html')" data-transition="slide" style="">
+                    <a href="javascript:runApp('res/setting-an-more.html')" data-transition="slide" style="">
                         <h2>setting-an-more</h2>
                     </a>
                 </li>
                 <li id="setting-an-one">
-                    <a href="javascript:goToApp('res/setting-an-one.html')" data-transition="slide" style="">
+                    <a href="javascript:runApp('res/setting-an-one.html')" data-transition="slide" style="">
                         <h2>setting-an-one</h2>
                     </a>
                 </li>
                 <li id="setting-an-zero">
-                    <a href="javascript:goToApp('res/setting-an-zero.html')" data-transition="slide" style="">
+                    <a href="javascript:runApp('res/setting-an-zero.html')" data-transition="slide" style="">
                         <h2>setting-an-zero</h2>
                     </a>
                 </li>
                 <li data-role="list-divider" role="heading">Test hwkey</li>
                 <li id="setting-hwkey-default">
-                    <a href="javascript:goToApp('res/setting-hwkey-default.html')" data-transition="slide" style="">
+                    <a href="javascript:runApp('res/setting-hwkey-default.html')" data-transition="slide" style="">
                         <h2>setting-hwkey-default</h2>
                     </a>
                 </li>
                 <li id="setting-hwkey-disable">
-                    <a href="javascript:goToApp('res/setting-hwkey-disable.html')" data-transition="slide" style="">
+                    <a href="javascript:runApp('res/setting-hwkey-disable.html')" data-transition="slide" style="">
                         <h2>setting-hwkey-disable</h2>
                     </a>
                 </li>
                 <li id="setting-hwkey-enable">
-                    <a href="javascript:goToApp('res/setting-hwkey-enable.html')" data-transition="slide" style="">
+                    <a href="javascript:runApp('res/setting-hwkey-enable.html')" data-transition="slide" style="">
                         <h2>setting-hwkey-enable</h2>
                     </a>
                 </li>
                 <li data-role="list-divider" role="heading">Test install location</li>
                 <li id="setting-install-location-internal-only-with-card">
-                    <a href="javascript:goToApp('res/setting-install-location-internal-only-with-card.html')" data-transition="slide" style="">
+                    <a href="javascript:runApp('res/setting-install-location-internal-only-with-card.html')" data-transition="slide" style="">
                         <h2>setting-install-location-internal-only-with-card</h2>
                     </a>
                 </li>
                 <li id="setting-install-location-prefer-external-no-card">
-                    <a href="javascript:goToApp('res/setting-install-location-prefer-external-no-card.html')" data-transition="slide" style="">
+                    <a href="javascript:runApp('res/setting-install-location-prefer-external-no-card.html')" data-transition="slide" style="">
                         <h2>setting-install-location-prefer-external-no-card</h2>
                     </a>
                 </li>
                 <li id="setting-install-location-prefer-external-with-card">
-                    <a href="javascript:goToApp('res/setting-install-location-prefer-external-with-card.html')" data-transition="slide" style="">
+                    <a href="javascript:runApp('res/setting-install-location-prefer-external-with-card.html')" data-transition="slide" style="">
                         <h2>setting-install-location-prefer-external-with-card</h2>
                     </a>
                 </li>
@@ -158,6 +161,9 @@ Authors:
             <p>Test passes if all sub-tests pass.</p>
           </font>
         </div>
+    </div>
+    <div data-role="page" id="test_ui">
+        <iframe id="test_frame" width="100%" frameborder="no" border="0" src=""></iframe>
     </div>
   </body>
 </html>
