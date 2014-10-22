@@ -44,8 +44,9 @@ Authors:
       <li>Push the webapp "disable_device_capabilities_tests.wgt" into Tizen device</li>
       <li>Switch to 'app' user: "su","su app"</li>
       <li>Execute command: "pkgcmd -i -t wgt -p /path/disable_device_capabilities_tests.wgt -q"</li>
+      <li>Please get the pkgid for next step use</li>
       <li>Switch to 'guest' user: "su guest"</li>
-      <li>Execute command: "pkgcmd -u -n $appid(disable_device_capabilities_tests wbapp id) -q"</li>
+      <li>Execute command: "pkgcmd -u -n $appid(the pkgid is the step 4 got) -q"</li>
       <li>Switch to 'app' user and check the installed webapp</li> 
     </ol>
     <p>
@@ -55,6 +56,7 @@ Authors:
       <li>The package be pushed into Tizen device successfully</li>
       <li>Switch to 'app' user successfully</li>
       <li>The webapp should be installed successfully</li>
+      <li>Get the pkgid successfully</li>
       <li>Switch to 'guest' user successfully</li>
       <li>Command execute successfully</li>
       <li>The disable_device_capabilities_tests webapp should not be uninsatlled</li>

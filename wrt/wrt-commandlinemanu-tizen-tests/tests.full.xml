@@ -132,30 +132,6 @@
           <test_script_entry>/opt/wrt-commandlinemanu-tizen-tests/commandlinemanu/Crosswalk_MultiUser_Uninstall_Root.html</test_script_entry>
         </description>
       </testcase>
-      <testcase purpose="Validate via app user the xwalkctl function normal" type="Functional" status="approved" component="Crosswalk Runtime Binary" execution_type="manual" priority="P2" id="Crosswalk_MultiUser_xwalkctl_App">
-        <description>
-          <pre_condition>
-            1.Make sure Crosswalk binary is installed
-          </pre_condition>
-          <test_script_entry>/opt/wrt-commandlinemanu-tizen-tests/commandlinemanu/Crosswalk_MultiUser_xwalkctl_App.html</test_script_entry>
-        </description>
-      </testcase>
-      <testcase purpose="Validate via root user can not insall webapp function normal" type="Functional" status="approved" component="Crosswalk Runtime Binary" execution_type="manual" priority="P2" id="Crosswalk_MultiUser_xwalkctl_Root">
-        <description>
-          <pre_condition>
-            1.Make sure Crosswalk binary is installed
-          </pre_condition>
-          <test_script_entry>/opt/wrt-commandlinemanu-tizen-tests/commandlinemanu/Crosswalk_MultiUser_xwalkctl_Root.html</test_script_entry>
-        </description>
-      </testcase>      
-      <testcase purpose="Validate if root user install webapp by pkgcmd fail" type="Functional" status="approved" component="Crosswalk Runtime Binary" execution_type="manual" priority="P2" id="Crosswalk_MultiUser_Root_Pkgcmd">
-        <description>
-          <pre_condition>
-            1.Make sure Crosswalk binary is installed
-          </pre_condition>
-          <test_script_entry>/opt/wrt-commandlinemanu-tizen-tests/commandlinemanu/Crosswalk_MultiUser_Root_Pkgcmd.html</test_script_entry>
-        </description>
-      </testcase>
       <testcase purpose="Validate different account install webapp permission" type="Functional" status="approved" component="Crosswalk Runtime Binary" execution_type="manual" priority="P2" id="Crosswalk_MultiUser_Account_App">
         <description>
           <pre_condition>
@@ -226,6 +202,22 @@
             1.Make sure Crosswalk binary is installed
           </pre_condition>
           <test_script_entry>/opt/wrt-commandlinemanu-tizen-tests/commandlinemanu/Crosswalk_BackEnd_PkgcmdInstall_Global.html</test_script_entry>
+        </description>
+      </testcase>
+      <testcase purpose="Validate via app installed webapp can not be listed by guest successfully" type="Functional" status="approved" component="Crosswalk Runtime Binary" execution_type="manual" priority="P2" id="Crosswalk_MultiUser_List_App">
+        <description>
+          <pre_condition>
+            1.Make sure Crosswalk binary is installed
+          </pre_condition>
+          <test_script_entry>/opt/wrt-commandlinemanu-tizen-tests/commandlinemanu/Crosswalk_MultiUser_List_App.html</test_script_entry>
+        </description>
+      </testcase> 
+      <testcase purpose="Validate via app user the pkgcmd function normal" type="Functional" status="approved" component="Crosswalk Runtime Binary" execution_type="manual" priority="P2" id="Crosswalk_MultiUser_pkgcmd_App">
+        <description>
+          <pre_condition>
+            1.Make sure Crosswalk binary is installed
+          </pre_condition>
+          <test_script_entry>/opt/wrt-commandlinemanu-tizen-tests/commandlinemanu/Crosswalk_MultiUser_pkgcmd_App.html</test_script_entry>
         </description>
       </testcase>
      </set>

@@ -33,7 +33,7 @@ Authors:
 <html>
   <head>
     <meta charset='utf-8'>
-    <title>Crosswalk_MultiUser_xwalkctl_Root</title>
+    <title>Crosswalk_MultiUser_pkgcmd_App</title>
     <link rel="author" title="Intel" href="http://www.intel.com">
   </head>
   <body>
@@ -42,16 +42,16 @@ Authors:
     </p>
     <ol>
       <li>Push the webapp "disable_device_capabilities_tests.wgt" into Tizen device</li>
-      <li>Current if it is not root user, execute command "su"</li>
-      <li>Execute command: "pkgcmd -i -t wgt -p disable_device_capabilities_tests.wgt -q"</li>
+      <li>Execute command: "su","su app"</li>
+      <li>Execute command: "pkgcmd -l"</li>
     </ol>
     <p>
       <strong>Expected Output:</strong>
     </p>
     <ol>
       <li>The package be pushed into Tizen device successfully</li>
-      <li>Switch to the "root" user successfully, input password "tizen" if need</li>
-      <li>There app should not be installed successfully</li>
+      <li>Switch to the "app" users</li>
+      <li>There display the installed apps list</li>
     </ol>
   </body>
 </html>
