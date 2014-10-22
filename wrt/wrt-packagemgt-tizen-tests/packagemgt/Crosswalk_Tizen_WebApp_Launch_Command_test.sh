@@ -43,7 +43,11 @@ pkgcmd -i -t xpk -p $xpk_path/diffid_same_version_tests.xpk -q
 app_id=`pkgcmd -l | grep "diffid_same_version_tests" | awk '{print $4}'`
 app_id=`echo $app_id | awk '{print $1}'`
 app_id=${app_id:1:-1}
-xwalk-launcher $app_id 
+
+appids=`ail_list | grep diffid_same_version_tests | awk '{print $1}'`
+appids=${appids:1:-1}
+
+open_app $appids
 sleep 2
 
 #install xwalk web app

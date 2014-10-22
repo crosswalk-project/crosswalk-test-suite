@@ -27,9 +27,9 @@ if [ $? -eq 1 ];then
   exit 1
 fi
 
-find_app uninstallation-application-erased
-mkdir /home/app/.config/xwalk-service/applications/$pkgids/data
-myPath="/home/app/.config/xwalk-service/applications/$pkgids/data"
+find_appid uninstallation-application-erased
+mkdir /home/app/.config/xwalk-service/applications/$appids/data
+myPath="/home/app/.config/xwalk-service/applications/$appids/data"
 if [ ! -d $myPath ];then
   echo -e  "created folder data failed!"
   exit 1
