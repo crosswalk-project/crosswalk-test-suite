@@ -33,8 +33,11 @@ import com.test.server.ActivityInstrumentationTestCase2;
 
 import android.content.Context;
 import android.content.res.AssetManager;
+import android.graphics.Bitmap;
 import android.os.Bundle;
+import android.os.Message;
 import android.util.Pair;
+import android.webkit.ValueCallback;
 
 public class XWalkViewTestBase extends ActivityInstrumentationTestCase2<MainActivity> {
 
@@ -503,6 +506,26 @@ public class XWalkViewTestBase extends ActivityInstrumentationTestCase2<MainActi
         @Override
         public void onRequestFocus(XWalkView view) {
             mInnerContentsClient.onRequestFocus();
+        }
+
+        @Override
+        public boolean onCreateWindowRequested(XWalkView view,
+                InitiateBy initiator, ValueCallback<XWalkView> callback) {
+            mInnerContentsClient.onCreateWindowRequested();
+            return true;
+        }
+
+        @Override
+        public void onIconAvailable(XWalkView view, String url,
+                Message startDownload) {
+            startDownload.sendToTarget();
+            mInnerContentsClient.onIconAvailable();
+        }
+
+        @Override
+        public void onReceivedIcon(XWalkView view, String url, Bitmap icon) {
+            System.out.println("KKKKKo");
+            mInnerContentsClient.onReceivedIcon();
         }
 
         @Override

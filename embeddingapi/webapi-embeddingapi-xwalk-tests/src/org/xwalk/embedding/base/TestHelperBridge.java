@@ -17,6 +17,9 @@ public class TestHelperBridge {
     private final OnJavascriptCloseWindowHelper mOnJavascriptCloseWindowHelper;
     private final OnScaleChangedHelper mOnScaleChangedHelper;
     private final OnRequestFocusHelper mOnRequestFocusHelper;
+    private final OnCreateWindowRequestedHelper mOnCreateWindowRequestedHelper;
+    private final OnIconAvailableHelper mOnIconAvailableHelper;
+    private final OnReceivedIconHelper mOnReceivedIconHelper;
 
     TestHelperBridge() {
         mOnPageStartedHelper = new OnPageStartedHelper();
@@ -26,6 +29,9 @@ public class TestHelperBridge {
         mOnJavascriptCloseWindowHelper = new OnJavascriptCloseWindowHelper();
         mOnScaleChangedHelper = new OnScaleChangedHelper();
         mOnRequestFocusHelper = new OnRequestFocusHelper();
+        mOnCreateWindowRequestedHelper = new OnCreateWindowRequestedHelper();
+        mOnIconAvailableHelper = new OnIconAvailableHelper();
+        mOnReceivedIconHelper = new OnReceivedIconHelper();
     }
 
     public OnPageFinishedHelper getOnPageFinishedHelper() {
@@ -79,5 +85,29 @@ public class TestHelperBridge {
 
     public void onRequestFocus() {
         mOnRequestFocusHelper.notifyCalled(true);
+    }
+
+    public OnCreateWindowRequestedHelper getOnCreateWindowRequestedHelper() {
+        return mOnCreateWindowRequestedHelper;
+    }
+
+    public void onCreateWindowRequested() {
+        mOnCreateWindowRequestedHelper.notifyCalled(true);
+    }
+
+    public OnIconAvailableHelper getOnIconAvailableHelper() {
+        return mOnIconAvailableHelper;
+    }
+
+    public void onIconAvailable() {
+        mOnIconAvailableHelper.notifyCalled(true);
+    }
+
+    public OnReceivedIconHelper getOnReceivedIconHelper() {
+        return mOnReceivedIconHelper;
+    }
+
+    public void onReceivedIcon() {
+        mOnReceivedIconHelper.notifyCalled(true);
     }
 }
