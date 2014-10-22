@@ -162,7 +162,7 @@ function updateList() {
     setNum = -2;
   }
 
-  $("#mylist").trigger("create");
+  $("#mylist").collapsibleset().trigger("create");
   $(".ui-li-has-count").each(function() {
     var childs = $(this).find(".ui-li-count");
     if (childs.length == 3) {
