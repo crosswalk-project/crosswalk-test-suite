@@ -26,14 +26,14 @@ NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE,
 EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
 Authors:
-        IVAN CHEN <yufeix.chen@intel.com>
+
 
 -->
 
 <html>
   <head>
     <meta charset='utf-8'>
-    <title>Crosswalk_MultiUser_xwalkctl_App</title>
+    <title>Crosswalk_MultiUser_List_App</title>
     <link rel="author" title="Intel" href="http://www.intel.com">
   </head>
   <body>
@@ -42,7 +42,9 @@ Authors:
     </p>
     <ol>
       <li>Push the webapp "disable_device_capabilities_tests.wgt" into Tizen device</li>
-      <li>Execute command: "su","su app"</li>
+      <li>Execute command: "su app"</li>
+      <li>Execute command: "pkgcmd -i -t wgt -p $webapp -q"</li>
+      <li>Execute command: "su","su - guest"</li>
       <li>Execute command: "pkgcmd -l"</li>
     </ol>
     <p>
@@ -51,7 +53,9 @@ Authors:
     <ol>
       <li>The package be pushed into Tizen device successfully</li>
       <li>Switch to the "app" users</li>
-      <li>There display the installed apps list</li>
+      <li>There app installed successfully</li>
+      <li>Switch to the "guest" users</li>  
+      <li>Should not list the app user webapp</li>            
     </ol>
   </body>
 </html>
