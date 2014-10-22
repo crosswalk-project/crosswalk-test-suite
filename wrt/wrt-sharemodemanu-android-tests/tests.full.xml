@@ -1,14 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <?xml-stylesheet type="text/xsl" href="./testcase.xsl"?>
 <test_definition>
-  <suite name="wrt-rtlib-android-tests" category="Crosswalk_Runtime_Library">
-    <set name="rtlib" type="js">
+  <suite name="wrt-sharemodemanu-android-tests" category="Crosswalk_Runtime_Library">
+    <set name="sharemodemanu" type="js">
       <testcase purpose="Validate if Crosswalk icon display normally" type="Functional" status="approved" component="Crosswalk Runtime Library" execution_type="manual" priority="P1" id="Crosswalk_Library_Icon_Check">
         <description>
           <pre_condition>
             1.Make sure Crosswalk is installed
           </pre_condition>
-          <test_script_entry>/opt/wrt-rtlib-android-tests/rtlib/Crosswalk_Library_Icon_Check.html</test_script_entry>
+          <test_script_entry>/opt/wrt-sharemodemanu-android-tests/sharemodemanu/Crosswalk_Library_Icon_Check.html</test_script_entry>
         </description>
       </testcase>
       <testcase purpose="Validate the installer name is about with Crosswalk" type="Functional" status="approved" component="Crosswalk Runtime Library" execution_type="manual" priority="P1" id="Crosswalk_Library_Name_Check">
@@ -16,7 +16,7 @@
           <pre_condition>
             1.Make sure the Crosswalk runtime 'XwalkRuntimeLib.apk'  already exists in the Android OS
           </pre_condition>
-          <test_script_entry>/opt/wrt-rtlib-android-tests/rtlib/Crosswalk_Library_Name_Check.html</test_script_entry>
+          <test_script_entry>/opt/wrt-sharemodemanu-android-tests/sharemodemanu/Crosswalk_Library_Name_Check.html</test_script_entry>
         </description>
       </testcase>
       <testcase purpose="Validate descriptive error message prompt if install arm app in x86 platform" type="Functional" status="approved" component="Crosswalk Runtime Library" execution_type="manual" priority="P2" id="Crosswalk_arch_mismatch_x86_embeded">
@@ -25,7 +25,7 @@
             1.Make sure Crosswalk binary is installed
             2.Make sure test device is arm architecture
           </pre_condition>
-          <test_script_entry>/opt/wrt-rtlib-android-tests/rtlib/Crosswalk_arch_mismatch_x86_embeded.html</test_script_entry>
+          <test_script_entry>/opt/wrt-sharemodemanu-android-tests/sharemodemanu/Crosswalk_arch_mismatch_x86_embeded.html</test_script_entry>
         </description>
       </testcase>
       <testcase purpose="Validate descriptive error message prompt if install x86 app in arm platform" type="Functional" status="approved" component="Crosswalk Runtime Library" execution_type="manual" priority="P2" id="Crosswalk_arch_mismatch_arm_embeded">
@@ -34,7 +34,27 @@
             1.Make sure Crosswalk binary is installed
             2.Make sure test device is x86 architecture
           </pre_condition>
-          <test_script_entry>/opt/wrt-rtlib-android-tests/rtlib/Crosswalk_arch_mismatch_arm_embeded.html</test_script_entry>
+          <test_script_entry>/opt/wrt-sharemodemanu-android-tests/sharemodemanu/Crosswalk_arch_mismatch_arm_embeded.html</test_script_entry>
+        </description>
+      </testcase>
+      <testcase purpose="Validate descriptive error message prompt if install shared arm app in arm platform" type="Functional" status="approved" component="Crosswalk Runtime Library" execution_type="manual" priority="P2" id="Crosswalk_arch_mismatch_arm_embeded">
+        <description>
+          <test_script_entry>/opt/wrt-sharemodemanu-android-tests/sharemodemanu/Crosswalk_arch_mismatch_arm_shared.html</test_script_entry>
+        </description>
+      </testcase>
+      <testcase purpose="Validate descriptive error message prompt if install shared arm app in arm platform with x86 RuntimeLib" type="Functional" status="approved" component="Crosswalk Runtime Library" execution_type="manual" priority="P2" id="Crosswalk_arch_mismatch_arm_embeded">
+        <description>
+          <test_script_entry>/opt/wrt-sharemodemanu-android-tests/sharemodemanu/Crosswalk_arch_mismatch_arm_shared_x86_crosswalk.html</test_script_entry>
+        </description>
+      </testcase>
+      <testcase purpose="Validate descriptive error message prompt if install shared x86 app in x86 platform" type="Functional" status="approved" component="Crosswalk Runtime Library" execution_type="manual" priority="P2" id="Crosswalk_arch_mismatch_arm_embeded">
+        <description>
+          <test_script_entry>/opt/wrt-sharemodemanu-android-tests/sharemodemanu/Crosswalk_arch_mismatch_x86_shared.html</test_script_entry>
+        </description>
+      </testcase>
+      <testcase purpose="Validate descriptive error message prompt if install shared x86 app in x86 platform with arm RuntimeLib" type="Functional" status="approved" component="Crosswalk Runtime Library" execution_type="manual" priority="P2" id="Crosswalk_arch_mismatch_arm_embeded">
+        <description>
+          <test_script_entry>/opt/wrt-sharemodemanu-android-tests/sharemodemanu/Crosswalk_arch_mismatch_x86_shared_arm_crosswalk.html</test_script_entry>
         </description>
       </testcase>
     </set>
