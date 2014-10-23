@@ -36,6 +36,7 @@ var deviceReady = false;
 */
 function init() {
   document.addEventListener("deviceready", function() {
+    document.cookie = "main page cookie";
     deviceReady = true;
     console.log("Device="+device.platform+" "+device.version);
   }, false);
@@ -67,16 +68,16 @@ function doOpen(url, target, params, numExpectedRedirects) {
   }
   reset();
 
-function logEvent(e) {
-  console.log('IAB event=' + JSON.stringify(e));
-  counts[e.type]++;
-  // Verify that event.url gets updated on redirects.
-  if (e.type == 'loadstart') {
-    if (e.url == lastLoadStartURL) {
-      alert('Unexpected: loadstart fired multiple times for the same URL.');
+  function logEvent(e) {
+    console.log('IAB event=' + JSON.stringify(e));
+    counts[e.type]++;
+    // Verify that event.url gets updated on redirects.
+    if (e.type == 'loadstart') {
+      if (e.url == lastLoadStartURL) {
+        alert('Unexpected: loadstart fired multiple times for the same URL.');
+      }
+      lastLoadStartURL = e.url;
     }
-    lastLoadStartURL = e.url;
-  }
     // Verify the right number of loadstart events were fired.
     if (e.type == 'loadstop' || e.type == 'loaderror') {
       if (e.url != lastLoadStartURL) {
@@ -90,9 +91,9 @@ function logEvent(e) {
       } else if (numExpectedRedirects > 0 && counts['loadstart'] < (numExpectedRedirects+1)) {
         alert('Unexpected: should have got at least ' + (numExpectedRedirects+1) + ' loadstart events, but got ' + counts['loadstart']);
       }
-    wasReset = true;
-    numExpectedRedirects = 0;
-    reset();
+      wasReset = true;
+      numExpectedRedirects = 0;
+      reset();
     }
     // Verify that loadend / loaderror was called.
     if (e.type == 'exit') {
