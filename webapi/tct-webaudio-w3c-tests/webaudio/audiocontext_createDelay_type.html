@@ -27,16 +27,17 @@ EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
 Authors:
         Ge, Qing <qingx.ge@intel.com>
+        Xu, Kang <kangx.xu@intel.com>
 
 -->
 
 <html>
   <head>
-    <title>WebAudio Test: audiocontext_createDelayNode_exists</title>
+    <title>WebAudio Test: audiocontext_createDelay_type</title>
     <link rel="author" title="Intel" href="http://www.intel.com" />
     <link rel="help" href="http://www.w3.org/TR/2012/WD-webaudio-20121213/#AudioContext-section" />
     <meta name="flags" content="" />
-    <meta name="assert" content="Check if AudioContext.createDelayNode method exists" />
+    <meta name="assert" content="Check if AudioContext.createDelay is of type method" />
     <script src="../resources/testharness.js"></script>
     <script src="../resources/testharnessreport.js"></script>
     <script src="./support/webaudio.js"></script>
@@ -46,7 +47,8 @@ Authors:
     <script type="text/javascript">
         test(function () {
             var context = new AudioContext();
-            assert_true("createDelayNode" in context, "Check if AudioContext.createDelayNode method exists");
+            assert_true("createDelay" in context, "createDelay method exist AudioContext interface");
+            assert_equals(typeof context.createDelay, "function", "Check if AudioContext.createDelay is of type");
         }, document.title);
     </script>
   </body>

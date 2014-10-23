@@ -27,6 +27,7 @@ EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
 Authors:
         Ge, Qing <qingx.ge@intel.com>
+        Xu, Kang <kangx.xu@intel.com>
 
 -->
 
@@ -48,7 +49,7 @@ Authors:
         setup({timeout:100000});
         try{
             var context = new AudioContext();
-            var scriptAudioNode = context.createJavaScriptNode(2048,1,1);
+            var scriptAudioNode = context.createScriptProcessor(2048,1,1);
             scriptAudioNode.onaudioprocess = process;
             var analyser=context.createAnalyser();
             analyser.fftSize = 1024;
