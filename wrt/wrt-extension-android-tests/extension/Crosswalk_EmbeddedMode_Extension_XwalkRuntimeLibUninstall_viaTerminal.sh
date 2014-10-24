@@ -74,10 +74,8 @@ if [ $? -eq 0 ];then
 
         if [ $? -eq 0 ];then
             $command uninstall org.xwalk.extension_permission_contacts_tests
-            $command install -r $local_path/../resources/XWalkRuntimeLib.apk
             exit 0
         else
-            $command install -r $local_path/../resources/XWalkRuntimeLib.apk
             exit 1
         fi
     else
