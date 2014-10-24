@@ -130,7 +130,11 @@ function updateList() {
   for(var i=0; i<sstorage.length; i++){
     var name = sstorage.key(i);
     var item = sstorage.getItem(name);
-    var node = $("h2:contains('"+ name + "')").parent().parent();
+    var node = $("h2:contains('"+ name + "')").map(function() {
+                 if ($(this).text() == name) {
+                   return this;
+                 }
+               }).parent().parent();
     if (item == "PASS") {
       node.attr("data-theme", "g");
       node.append("<img src='css/images/pass.png' class='ui-li-thumb'>");
@@ -265,7 +269,11 @@ $('#main').live('pageshow',function(){
   for(var i=0;i<sstorage.length;i++){
     var key = sstorage.key(i);
     var str = "h2:contains("+ key +")";
-    var node = $(str);
+    var node = $(str).map(function() {
+                 if ($(this).text() == name) {
+                   return this;
+                 }
+               });
     var item = sstorage.getItem(key);
     if (item == "PASS") {
       node.attr('style', 'color:green;');
