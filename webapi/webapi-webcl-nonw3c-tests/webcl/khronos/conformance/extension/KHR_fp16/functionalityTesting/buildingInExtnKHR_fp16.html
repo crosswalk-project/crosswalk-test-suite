@@ -1,0 +1,85 @@
+<!--
+ Copyright (C) 2014 Samsung Electronics Corporation. All rights reserved.
+
+ Redistribution and use in source and binary forms, with or without
+ modification, are permitted provided the following conditions
+ are met:
+
+ 1.  Redistributions of source code must retain the above copyright
+     notice, this list of conditions and the following disclaimer.
+
+ 2.  Redistributions in binary form must reproduce the above copyright
+     notice, this list of conditions and the following disclaimer in the
+     documentation and/or other materials provided with the distribution.
+
+ THIS SOFTWARE IS PROVIDED BY SAMSUNG ELECTRONICS CORPORATION AND ITS
+ CONTRIBUTORS "AS IS", AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING
+ BUT NOT LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS
+ FOR A PARTICULAR PURPOSE ARE DISCLAIMED. IN NO EVENT SHALL SAMSUNG
+ ELECTRONICS CORPORATION OR ITS CONTRIBUTORS BE LIABLE FOR ANY DIRECT,
+ INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES(INCLUDING
+ BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE,
+ DATA, OR PROFITS, OR BUSINESS INTERRUPTION), HOWEVER CAUSED AND ON ANY THEORY
+ OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT(INCLUDING
+ NEGLIGENCE OR OTHERWISE ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE,
+ EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
+ -->
+<html>
+<head>
+<meta charset="utf-8">
+    <title>Running a kernel to copy half value, in KHR_fp16 extension.</title>
+    <link rel="stylesheet" href="../../../../resources/js-test-style.css"/>
+    <script src="../../../../resources/js-test-pre.js"></script>
+    <script src="../../../../resources/cl_utils.js"></script>
+</head>
+<body>
+<div id="description"></div>
+<div id="console"></div>
+<script>
+try {
+    debug("Running a kernel to copy half value, in KHR_fp16 extension.");
+
+    var wtu = WebCLTestUtils;
+    if (!wtu.enableExtension(webcl, "KHR_fp16")) {
+        throw { description : "Failed to enable extension : KHR_fp16. Exitting..."};
+    }
+
+    var webCLContext = wtu.createContext();
+    var webCLPlatform = wtu.getPlatform();
+    var webCLDevices = wtu.getDevices(webCLPlatform);
+    var webCLCommandQueue = wtu.createCommandQueue(webCLContext);
+    var kernelSource = wtu.readKernel("../../../../resources/kernels/half.cl");
+    var webCLProgram = wtu.createProgram(webCLContext, kernelSource);
+    wtu.build(webCLProgram, webCLDevices);
+    var webCLKernel = webCLProgram.createKernel("kernelHalf");
+
+    var maxHalf = 65504;
+    // FIXME Float16Array is not supported yet.
+    // So, temporarily Float32Array is used and in kernel convert_half() function is used.
+    var result = new Float32Array(1);
+    var input = new Float32Array([maxHalf + 10]);
+    var output = wtu.createBuffer(webCLContext, webcl.MEM_WRITE_ONLY, Float32Array.BYTES_PER_ELEMENT);
+
+    wtu.setArg(webCLKernel, 0, input);
+    wtu.setArg(webCLKernel, 1, output);
+
+    var workGroupSize = webCLKernel.getWorkGroupInfo(webCLDevices[0], webcl.KERNEL_WORK_GROUP_SIZE);
+    var globalWorkSize = [1];
+    var localWorkSize = [];
+
+    wtu.enqueueNDRangeKernel(webCLCommandQueue, webCLKernel, globalWorkSize.length, null, globalWorkSize, localWorkSize);
+    wtu.enqueueReadBuffer(webCLCommandQueue, output, true, 0, Float32Array.BYTES_PER_ELEMENT, result);
+
+    if (result[0] == maxHalf)
+        testPassed("Test passed for sending a half value to kernel and reading it back");
+    else
+        testFailed("Test failed for sending a half value to kernel and reading it back");
+
+} catch(e) {
+    testFailed(e.description);
+}
+successfullyParsed = true;
+</script>
+<script src="../../../../resources/js-test-post.js"></script>
+</body>
+</html>
