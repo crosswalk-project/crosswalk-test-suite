@@ -42,9 +42,9 @@ Authors:
     </p>
     <ol>
       <li>Push the webapp "disable_device_capabilities_tests.wgt" into Tizen device</li>
-      <li>Execute command: "su app"</li>
+      <li>Switch to user A(A is available and has install/uninstall/open_app privilege)</li>
       <li>Execute command: "pkgcmd -i -t wgt -p $webapp -q"</li>
-      <li>Execute command: "su","su - guest"</li>
+      <li>Switch to user B(B is available and has install/uninstall/open_app privilege)</li>
       <li>Execute command: "pkgcmd -l"</li>
     </ol>
     <p>
@@ -52,10 +52,10 @@ Authors:
     </p>
     <ol>
       <li>The package be pushed into Tizen device successfully</li>
-      <li>Switch to the "app" users</li>
-      <li>There app installed successfully</li>
-      <li>Switch to the "guest" users</li>  
-      <li>Should not list the app user webapp</li>            
+      <li>Switch to the user A successfully</li>
+      <li>The webapp is installed successfully</li>
+      <li>Switch to the user B successfully</li>
+      <li>Should not list the A user webapp</li>            
     </ol>
   </body>
 </html>
