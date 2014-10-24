@@ -21,7 +21,7 @@ public class OnCreateWindowRequestedActivity extends XWalkBaseActivity {
 
         StringBuffer mess = new StringBuffer();
         mess.append("Test Purpose: \n\n")
-        .append("Verifies onIconAvailable and onReceivedIcon methods can be triggered when icon is available.\n\n")
+        .append("Verifies onCreateWindowRequested method can be triggered when icon is available.\n\n")
         .append("Test  Step:\n\n")
         .append("1. Click the 'Create Window Self' button.\n")
         .append("2. Click the 'Create Window Parent' button.\n")
