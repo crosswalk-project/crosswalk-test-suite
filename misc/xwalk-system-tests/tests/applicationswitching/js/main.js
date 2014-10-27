@@ -32,6 +32,8 @@ var resume1Url, resume2Url;
 var flag = false;
 var resume1_flag = false , resume2_flag = false;
 $(document).delegate("#main", "pageinit", function() {
+  resume1Url = "/home/app/.config/xwalk-service/applications/xwalktests.XwalkSysTests/tests/applicationswitching/res/TestResume1.wgt";
+  resume2Url = "/home/app/.config/xwalk-service/applications/xwalktests.XwalkSysTests/tests/applicationswitching/res/TestResume2.wgt";
   $("#install1").bind("vclick", function() {
     install(resume1Url, "install1");
     resume1_flag = true;
@@ -67,7 +69,7 @@ $(document).delegate("#main", "pageinit", function() {
   } catch (e) {
     alert("Exception: " + e.message);
   }
-  packagePre();
+  //packagePre();
   $("#launch1").addClass("ui-disabled");
   $("#uninstall1").addClass("ui-disabled");
   $("#uninstall2").addClass("ui-disabled");
@@ -248,8 +250,9 @@ function packagePre() {
   function onerror(error) {
     alert("The error " + error.message + " occurred when listing the files in the selected folder");
   }
-
-  tizen.filesystem.resolve(
+  
+  // FIXME(babu): https://crosswalk-project.org/jira/browse/XWALK-2564
+  /*tizen.filesystem.resolve(
     'wgt-package/tests/applicationswitching/res/',
      function(dir){
        documentsDir = dir;
@@ -257,5 +260,5 @@ function packagePre() {
      }, function(e) {
        alert("Error " + e.message);
      }, "r"
-  );
+  );*/
 }
