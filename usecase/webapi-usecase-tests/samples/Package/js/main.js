@@ -21,6 +21,8 @@ Authors:
 var installUrl, updateUrl;
 var flag = false;
 $(document).delegate("#main", "pageinit", function() {
+    installUrl = "/home/app/.config/xwalk-service/applications/usecaseweb.WebAPIWEBUseCaseTests/samples/Package/res/TestPackage1.wgt";
+    updateUrl = "/home/app/.config/xwalk-service/applications/usecaseweb.WebAPIWEBUseCaseTests/samples/Package/res/TestPackage2.wgt";
     $("#install").bind("vclick", function() {
         install(installUrl, "install");
         $("#launch1").removeClass("ui-disabled");
@@ -51,7 +53,7 @@ $(document).delegate("#main", "pageinit", function() {
     } catch (e) {
         alert("Exception: " + e.message);
     }
-    packagePre();
+    //packagePre();
     $("#launch1").addClass("ui-disabled");
     $("#launch2").addClass("ui-disabled");
     $("#launch3").addClass("ui-disabled");
@@ -218,8 +220,8 @@ function packagePre() {
     function onerror(error) {
         alert("The error " + error.message + " occurred when listing the files in the selected folder");
     }
-
-    tizen.filesystem.resolve(
+    // FIXME(babu): https://crosswalk-project.org/jira/browse/XWALK-2564
+    /*tizen.filesystem.resolve(
         'wgt-package/samples/Package/res/',
         function(dir){
             documentsDir = dir;
@@ -227,5 +229,5 @@ function packagePre() {
         }, function(e) {
             alert("Error " + e.message);
         }, "r"
-    );
+    );*/
 }
