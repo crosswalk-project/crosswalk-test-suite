@@ -117,6 +117,13 @@ function emptyContainer(id) {
 }
 
 function onServerFound(event) {
+  var mediaserverInfo = document.getElementById("mediaserverInfo");
+  mediaserverInfo.innerHTML = "<p><h4>MediaServer Information</h4></p>"
+  var title = ["MediaServer.id: ", "MediaServer.modelDescription: ", "MediaServer.UDN: ", "MediaServer.presentationURL: ", "MediaServer.root: ", "MediaServer.searchAttrs: ", "MediaServer.sortAttrs: ", "MediaServer.friendlyName: ", "MediaServer.manufacturer: ", "MediaServer.manufacturerURL: ", "MediaServer.modelName: ", "MediaServer.modelNumber: ", "MediaServer.serialNumber: ", "MediaServer.iconURL: ", "MediaServer.deviceType: ", "MediaServer.canCreateContainer: ", "MediaServer.canUpload: "];
+  var value = [event.server.id, event.server.modelDescription, event.server.UDN, event.server.presentationURL, event.server.root, event.server.searchAttrs, event.server.sortAttrs, event.server.friendlyName, event.server.manufacturer, event.server.manufacturer, event.server.manufacturerURL, event.server.modelName, event.server.modelNumber, event.server.serialNumber, event.server.iconURL, event.server.deviceType, event.server.canCreateContainer, event.server.canUpload];
+  for (var i = 0; i < 17; i++) {
+    mediaserverInfo.innerHTML += "<p><b>" + title[i] + "</b>" + value[i] + "</p>"
+  }
   var container = document.getElementById('serverContainer');
   var browseButton = document.createElement('button');
   servers[event.server.id] = event.server;
