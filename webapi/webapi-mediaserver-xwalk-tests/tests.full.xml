@@ -435,18 +435,6 @@
           </spec>
         </specs>
       </testcase>
-      <testcase purpose="Check if the MediaContainer.childCount will return the number of child media items and containers" type="compliance" status="approved" component="WebAPI/DLNA/MediaServer" execution_type="auto" priority="P1" id="MediaContainer_childCount_value">
-        <description>
-          <test_script_entry>/opt/webapi-mediaserver-xwalk-tests/mediaserver/MediaContainer_attributes_value.html?total_num=6&amp;amp;locator_key=id&amp;amp;value=2</test_script_entry>
-        </description>
-        <specs>
-          <spec>
-            <spec_assertion element_type="attribute" element_name="childCount" interface="MediaServer" specification="MediaServer" section="W3C API Specifications" category="DLNA"/>
-            <spec_url>http://01org.github.io/cloud-dleyna/mediaserver.html</spec_url>
-            <spec_statement/>
-          </spec>
-        </specs>
-      </testcase>
       <testcase purpose="Check if the MediaServer.cancel method work well" type="compliance" status="approved" component="WebAPI/DLNA/MediaServer" execution_type="auto" priority="P1" id="MediaServer_cancel_basic">
         <description>
           <test_script_entry>/opt/webapi-mediaserver-xwalk-tests/mediaserver/MediaServer_cancel_basic.html</test_script_entry>
@@ -514,54 +502,6 @@
         <specs>
           <spec>
             <spec_assertion element_type="event" element_name="oncontainerchanged" interface="MediaServer" specification="MediaServer" section="W3C API Specifications" category="DLNA"/>
-            <spec_url>http://01org.github.io/cloud-dleyna/mediaserver.html</spec_url>
-            <spec_statement/>
-          </spec>
-        </specs>
-      </testcase>
-      <testcase purpose="Check if the MediaContainer.canCreateContainer is true if a container can be created in this container" type="compliance" status="approved" component="WebAPI/DLNA/MediaServer" execution_type="auto" priority="P1" id="MediaContainer_canCreateContainer_value">
-        <description>
-          <test_script_entry>/opt/webapi-mediaserver-xwalk-tests/mediaserver/MediaContainer_attributes_value.html?total_num=6&amp;amp;locator_key=id&amp;amp;value=3</test_script_entry>
-        </description>
-        <specs>
-          <spec>
-            <spec_assertion element_type="attribute" element_name="canCreateContainer" interface="MediaContainer" specification="MediaServer" section="W3C API Specifications" category="DLNA"/>
-            <spec_url>http://01org.github.io/cloud-dleyna/mediaserver.html</spec_url>
-            <spec_statement/>
-          </spec>
-        </specs>
-      </testcase>
-      <testcase purpose="Check if the MediaContainer.canDelete is true if an item can be deleted in this container" type="compliance" status="approved" component="WebAPI/DLNA/MediaServer" execution_type="auto" priority="P1" id="MediaContainer_canDelete_value">
-        <description>
-          <test_script_entry>/opt/webapi-mediaserver-xwalk-tests/mediaserver/MediaContainer_attributes_value.html?total_num=6&amp;amp;locator_key=id&amp;amp;value=4</test_script_entry>
-        </description>
-        <specs>
-          <spec>
-            <spec_assertion element_type="attribute" element_name="canDelete" interface="MediaContainer" specification="MediaServer" section="W3C API Specifications" category="DLNA"/>
-            <spec_url>http://01org.github.io/cloud-dleyna/mediaserver.html</spec_url>
-            <spec_statement/>
-          </spec>
-        </specs>
-      </testcase>
-      <testcase purpose="Check if the MediaContainer.canRename is true if an item can be renamed in this container" type="compliance" status="approved" component="WebAPI/DLNA/MediaServer" execution_type="auto" priority="P1" id="MediaContainer_canRename_value">
-        <description>
-          <test_script_entry>/opt/webapi-mediaserver-xwalk-tests/mediaserver/MediaContainer_attributes_value.html?total_num=6&amp;amp;locator_key=id&amp;amp;value=5</test_script_entry>
-        </description>
-        <specs>
-          <spec>
-            <spec_assertion element_type="attribute" element_name="canRename" interface="MediaContainer" specification="MediaServer" section="W3C API Specifications" category="DLNA"/>
-            <spec_url>http://01org.github.io/cloud-dleyna/mediaserver.html</spec_url>
-            <spec_statement/>
-          </spec>
-        </specs>
-      </testcase>
-      <testcase purpose="Check if the MediaContainer.canUpload is true if an item can be uploaded in this container" type="compliance" status="approved" component="WebAPI/DLNA/MediaServer" execution_type="auto" priority="P1" id="MediaContainer_canUpload_value">
-        <description>
-          <test_script_entry>/opt/webapi-mediaserver-xwalk-tests/mediaserver/MediaContainer_attributes_value.html?total_num=6&amp;amp;locator_key=id&amp;amp;value=6</test_script_entry>
-        </description>
-        <specs>
-          <spec>
-            <spec_assertion element_type="attribute" element_name="canUpload" interface="MediaContainer" specification="MediaServer" section="W3C API Specifications" category="DLNA"/>
             <spec_url>http://01org.github.io/cloud-dleyna/mediaserver.html</spec_url>
             <spec_statement/>
           </spec>
@@ -658,6 +598,18 @@
         <specs>
           <spec>
             <spec_assertion element_type="attribute" element_name="id" interface="MediaContainerIdEvent" specification="MediaServer" section="W3C API Specifications" category="DLNA"/>
+            <spec_url>http://01org.github.io/cloud-dleyna/mediaserver.html</spec_url>
+            <spec_statement/>
+          </spec>
+        </specs>
+      </testcase>
+      <testcase purpose="Check if the value of MediaContainer attributes" type="compliance" status="approved" component="WebAPI/DLNA/MediaServer" execution_type="manual" priority="P1" id="MediaContainer_attributes_value">
+        <description>
+          <test_script_entry>/opt/webapi-mediaserver-xwalk-tests/mediaserver/MediaContainer_attributes_value-manual.html</test_script_entry>
+        </description>
+        <specs>
+          <spec>
+            <spec_assertion element_type="attribute" element_name="id" interface="MediaContainer" specification="MediaServer" section="W3C API Specifications" category="DLNA"/>
             <spec_url>http://01org.github.io/cloud-dleyna/mediaserver.html</spec_url>
             <spec_statement/>
           </spec>

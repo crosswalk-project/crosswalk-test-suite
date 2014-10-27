@@ -34,36 +34,32 @@ Authors:
 <title>DLNA Test: MediaContainer - attributes value</title>
 <link rel="author" title="Intel" href="http://www.intel.com">
 <link rel="help" href="http://01org.github.io/cloud-dleyna/mediaserver.html#mediacontainer-interface">
-<script src="../resources/testharness.js"></script>
-<script src="../resources/testharnessreport.js"></script>
-<div id="log"></div>
-<script>
-  var msga, mc;
-  setup(function () {
+<meta name="flags" content="">
+<meta name="assert" content="Test checks that the value of MediaContainer attributes.">
+<style>
+  #testDiv {
+    border: solid 1px #000;
+    height: 300px;
+    word-break: break-all;
+  }
+</style>
+<body>
+  <p>Test passes if we can get value of MediaContainer attributes.</p>
+  <div id="testDiv"></div>
+  <script>
+    var msga, mc;
     msga = navigator.mediaServer;
+
+    msga.onserverfound = function (event) {
+      mc = event.server.root;
+      var d = document.getElementById("testDiv");
+      d.innerHTML = "<p>MediaContainer.childCount: " + mc.childCount + "</p>" +
+      "<p>MediaContainer.canCreateContainer: " + mc.canCreateContainer + "</p>" +
+      "<p>MediaContainer.canDelete: " + mc.canDelete + "</p>" +
+      "<p>MediaContainer.canRename: " + mc.canRename + "</p>" +
+      "<p>MediaContainer.canUpload: " + mc.canUpload + "</p>";
+    };
+
     msga.scanNetwork();
-  });
-
-  var t = async_test("the onserverfound event can be invoked");
-
-  msga.onserverfound = t.step_func(function (event) {
-    mc = event.server.root;  
-
-    [
-      ["childCount", 5],
-      ["canCreateContainer", true],
-      ["canDelete", true],
-      ["canRename", true],
-      ["canUpload", true]
-    ].forEach(function (attr) {
-      var name = attr[0];
-      var value = mc[name];
-      var expected = attr[1];
-
-    test(function () {
-      assert_equals(value, expected, "the MediaContainer." + name + " value");
-      }, "Check if the MediaContainer." + name + " value is " + expected);
-    });
-    t.done();
-  });
-</script>
+  </script>
+</body>
