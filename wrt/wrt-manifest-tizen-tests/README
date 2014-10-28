@@ -43,13 +43,7 @@ Please see the COPYING file for the BSD-3-Clause License.
 
 4. ./metacomm/ folder is allpairs.
 
-5. ./report/
-    5.1 manifest_all_positive.txt is all positive manifest.json content.
-    5.2 manifest_all_negative.txt is all negative manifest.json content.
-    5.3 log.txt is log file
-
-6. ./device_XXX/
-    report file: summary.xml    wrt-manifest-tizen-tests.xml
+5. ./ge_case.py python ge_case.py to generate the tcs folder and test.py
 
 Test Step:
 1. unzip wrt-manifest-tizen-tests<version>.zip
@@ -57,7 +51,8 @@ Test Step:
 3. ./inst.sh
 4. cd /opt/usr/media/tct/opt/wrt-manifest-tizen-tests/
 5. run test.py as below sample:(note:--testprefix path is the test.py path)
-   1. testkit-lite -f "/path/opt/wrt-manifest-tizen-tests/tests.xml" -A -o ./result.xml --comm localhost --testenvs "DEVICE_ID=10.239.250.183 CONNECT_TYPE=sdb" --testprefix '/path'
-   2. testkit-lite -f "/path/opt/wrt-manifest-tizen-tests/tests.xml" -A -o ./result.xml --comm localhost --testenvs "DEVICE_ID=root@10.239.250.205 CONNECT_TYPE=ssh" --testprefix '/path'
+   1. testkit-lite -f "/opt/wrt-manifest-tizen-tests/tests.xml" -A -o ./result.xml --comm localhost --testenvs "DEVICE_ID=10.239.250.183 CONNECT_TYPE=sdb" 
+   2. testkit-lite -f "/path/opt/wrt-manifest-tizen-tests/tests.xml" -A -o ./result.xml --comm localhost --testenvs "DEVICE_ID=10.239.250.183 CONNECT_TYPE=sdb" --testprefix '/path'
+   3. testkit-lite -f "/path/opt/wrt-manifest-tizen-tests/tests.xml" -A -o ./result.xml --comm localhost --testenvs "DEVICE_ID=root@10.239.250.205 CONNECT_TYPE=ssh" --testprefix '/path'
    
-Base on the seed file, the total case number is 272.
+Base on the seed file, the total case number is 264.
