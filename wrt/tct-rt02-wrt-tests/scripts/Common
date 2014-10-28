@@ -31,7 +31,7 @@ function func_install()
       echo "Need to add the parameter"
       return 1
     fi
-    pkgcmd -i -t wgt -q -p $PACKAGENAME
+    pkgcmd -i -t wgt -p $PACKAGENAME -q
     find_app $APP_NAME
     pkgnum=`echo "$pkgids"|wc -w`
     if [ $pkgnum -lt 1 ]; then
@@ -81,7 +81,7 @@ function func_launch()
     fi
     find_app $APP_NAME
     launch_app $APP_NAME
-    App_Status=`xwalk-launcher -r $WIDGETNAME | grep "not running"`
+    App_Status=`open_app $appids | grep "not running"`
     if [ -z $App_Status ];then
       echo "The widget is launched successfully"
       return 0
@@ -100,15 +100,14 @@ function func_launch_other()
       echo "Need to add the parameter"
       return 1
     fi
-    APP_WIDGETNAME=`xwalk-launcher -l|grep -w $APP_NAME|awk '{print $NF}'`
-    xwalk-launcher -s $APP_WIDGETNAME
+    launch_app $APP_NAME
     sleep 3
     if [ "$APP_NAME" = "lifecycle-launch-installed-app" ];then
         WIDGETNAME = "wrt3lhr012.LifecycleHideRunningApp"
-        App_Status=`xwalk-launcher -r $WIDGETNAME | grep -w "not running"`
+        App_Status=`open_app  $WIDGETNAME | grep -w "not running"`
     elif [ "$APP_NAME" = "lifecycle-launch-removed-app" ];then
         WIDGETNAME = "wrt3lhr012.LifecycleHideRunningApp"
-        App_Status=`xwalk-launcher -r $WIDGETNAME | grep -w "failed"`
+        App_Status=``open_app $WIDGETNAME | grep -w "failed"`
     fi
     if [ -z $App_Status ];then
       echo "The widget is launched successfully"

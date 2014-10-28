@@ -29,12 +29,12 @@ function existbh()
   exit $2
 }
 $(dirname $0)/wrt_sp02_installer.sh $APP_NAME.wgt
-find_app $APP_NAME
+find_appid $APP_NAME
 if [ $? -ne 0 ]
 then
   exit 1
 fi
-widgetpath="/home/app/.config/xwalk-service/applications/$pkgids"
+widgetpath="/home/app/.config/xwalk-service/applications/$appids"
 if [ ! -d $widgetpath ]
 then
   existbh "The path of the application does not exist." 1
