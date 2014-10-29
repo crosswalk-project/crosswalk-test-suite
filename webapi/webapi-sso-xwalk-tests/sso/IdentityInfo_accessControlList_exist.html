@@ -62,7 +62,7 @@ t.step(function () {
 
   onSuccess = t.step_func(function (result) {
     assert_own_property(result[0], "accessControlList", "IdentityInfo own accessControlList property.");
-    assert_equals(typeof(result[0].accessControlList), "array", "Type of accessControlList property ");
+    assert_equals(typeof(result[0].accessControlList), "object", "Type of accessControlList property ");
     t.done();
   });
 
