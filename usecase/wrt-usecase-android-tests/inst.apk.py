@@ -1,6 +1,6 @@
 #!/usr/bin/env python
 
-import os
+import os, commands
 import shutil
 import glob
 import time
