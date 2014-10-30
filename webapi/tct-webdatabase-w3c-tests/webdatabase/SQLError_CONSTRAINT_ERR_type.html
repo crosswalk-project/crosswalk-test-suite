@@ -27,46 +27,28 @@ EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
 Authors:
         Fan,Weiwei <weiwix.fan@intel.com>
-
+        Xie, Yunxiao <yunxiaox.xie@intel.com>
 -->
 
-<html>
-  <head>
-    <title>WebSQL Database Test: SQLError_CONSTRAINT_ERR_type</title>
-    <link rel="author" title="Intel" href="http://www.intel.com" />
-    <link rel="help" href="http://www.w3.org/TR/2010/NOTE-webdatabase-20101118/#dom-sqlexception-code-constraint" />
-    <meta name="flags" content="" />
-    <meta name="assert" content="Check if the constant SQLError.CONSTRAINT_ERR is of type number" />
-    <script type="text/javascript" src="support.js"></script>
-    <script src="../resources/testharness.js"></script>
-    <script src="../resources/testharnessreport.js"></script>
-  </head>
-  <body>
-    <div id="log"></div>
-    <script type="text/javascript">
-        var t = async_test(document.title);
-        function errorCallback(error) {
-            if (!error) {
-                FailTest("Fail to get SQLError object");
-            }
-            if (typeof error.CONSTRAINT_ERR === "number") {
-                PassTest();
-            } else {
-                FailTest("The constant SQLError.CONSTRAINT_ERR is not of type number");
-            }
-        }
-        function successCallback(t, r) {
-            FailTest("Not invoke errorCallback");
-        }
-        try {
-            db = openDB();
-            db.transaction(function (t) {
-                t.executeSql("INSERT INTO test_table VALUES (1, 'text 1', 0.1);");
-                t.executeSql("INSERT INTO test_table VALUES (1, 'text 1', 0.1);");
-            }, errorCallback, successCallback);
-        } catch (ex) {
-            FailTest("{Exception message: " + ex.message + "}");
-        }
-    </script>
-  </body>
-</html>
+<meta charset="utf-8">
+<title>WebSQL Database Test: SQLError_CONSTRAINT_ERR_type</title>
+<link rel="author" title="Intel" href="http://www.intel.com" />
+<link rel="help" href="http://www.w3.org/TR/2010/NOTE-webdatabase-20101118/#dom-sqlexception-code-constraint" />
+<script src="support.js"></script>
+<script src="../resources/testharness.js"></script>
+<script src="../resources/testharnessreport.js"></script>
+<div id="log"></div>
+<script>
+    async_test(function (t) {
+        db = openDB();
+        db.transaction(function (t) {
+            t.executeSql("INSERT INTO test_table VALUES (1, 'text 1', 0.1);");
+            t.executeSql("INSERT INTO test_table VALUES (1, 'text 1', 0.1);");
+        }, function (error) { // error
+            assert_equals(typeof error.CONSTRAINT_ERR, "number");
+            t.done();
+        }, function () {
+            assert_unreached("cannot reach here.");
+        });
+    }, "Check if the constant SQLError.CONSTRAINT_ERR is of type number");
+</script>

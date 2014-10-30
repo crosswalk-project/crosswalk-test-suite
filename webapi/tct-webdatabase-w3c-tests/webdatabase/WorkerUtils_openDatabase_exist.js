@@ -28,9 +28,9 @@ Authors:
         Fan,Weiwei <weiwix.fan@intel.com>
 
 */
-    importScripts("./support.js");
-    if (self.openDatabase != "undefined" && self.openDatabase instanceof Function) {
-        self.postMessage("PASS");
-    } else {
-        self.postMessage("The method WorkerUtils.openDatabase is not exist");
-    }
+
+if (self.openDatabase != "undefined" && self.openDatabase instanceof Function) {
+    self.postMessage("PASS");
+} else {
+    self.postMessage("The method WorkerUtils.openDatabase is not exist");
+}

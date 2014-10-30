@@ -27,50 +27,35 @@ EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
 Authors:
         Fan,Weiwei <weiwix.fan@intel.com>
+        Cui, Jieqiong <jieqiongx.cui@intel.com>
 
 -->
 
-<html>
-  <head>
-    <title>WebSQL Database Test: SQLError_code_exist</title>
-    <link rel="author" title="Intel" href="http://www.intel.com" />
-    <link rel="help" href="http://www.w3.org/TR/2010/NOTE-webdatabase-20101118/#dom-sqlerror-code" />
-    <meta name="flags" content="" />
-    <meta name="assert" content="Check if SQLError.code attribute is exist" />
-    <script type="text/javascript" src="support.js"></script>
-    <script src="../resources/testharness.js"></script>
-    <script src="../resources/testharnessreport.js"></script>
-  </head>
-  <body>
-    <div id="log"></div>
-    <script type="text/javascript">
-        var t = async_test(document.title);
-        function RunTest() {
-            try {
-                var db = GenerateDatabase();
-                db.readTransaction(
-                    function(t) {
-                        t.executeSql('SELECT * FORM test_table;'); //here we use a wrong sql to make SQLError
-                    },
-                    function(e) {
-                        t.step(function() {
-                            assert_exists(e, "code");
-                        });
-                        t.done();
-                    },
-                    function() {
-                        FailTest("execute a right sql. ");
-                    }
-                );
-                //update database version to let the transaction done
-                db.changeVersion('', '1.1');
-            } catch (ex) {
-                FailTest("{Exception code: " + ex.code + "}");
-            }
-        }
-        Initialize();
-        RunTest();
-        Deinitialize();
-    </script>
-  </body>
-</html>
+<meta charset="utf-8">
+<title>WebSQL Database Test: SQLError_code_exist</title>
+<link rel="author" title="Intel" href="http://www.intel.com">
+<link rel="help" href="http://www.w3.org/TR/2010/NOTE-webdatabase-20101118/#dom-sqlerror-code">
+<script src="../resources/testharness.js"></script>
+<script src="../resources/testharnessreport.js"></script>
+<div id="log"></div>
+<script>
+async_test(function (t1) {
+  var now = new Date();
+  var dbname = "db" + now.getTime();
+  // create 1024b database on the phone
+  var db = openDatabase (dbname, '1.0', 'database for websql test', 1024);
+  db.transaction(function (tx) {
+      tx.executeSql("CREATE TABLE test_table(col_int, col_str, col_float);");
+      tx.executeSql("INSERT INTO test_table VALUES (1, 'text 1', 0.1);");
+  });
+  db.transaction(function (t) {
+    t.executeSql('SELECT * FROM test_table;', function (t, r) { }, function (t, e) { });
+  }, t1.step_func(function (e) {
+    assert_true("code" in e, "The e.code exists");
+    t1.done();
+  }), t1.step_func(function () {
+    assert_unreached("It should enter errorCallback");
+    t1.done();
+  }));
+}, "Check if the SQLError.code exists");
+</script>

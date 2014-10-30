@@ -27,53 +27,37 @@ EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
 Authors:
         Fan,Weiwei <weiwix.fan@intel.com>
-
+        Xie, Yunxiao <yunxiaox.xie@intel.com>
 -->
 
-<html>
-  <head>
-    <title>WebSQL Database Test: SQLStatementCallback_handleEvent_exist</title>
-    <link rel="author" title="Intel" href="http://www.intel.com" />
-    <link rel="help" href="http://www.w3.org/TR/2010/NOTE-webdatabase-20101118/" />
-    <meta name="flags" content="" />
-    <meta name="assert" content="Check if SQLStatementCallback.handleEvent is exist" />
-    <script type="text/javascript" src="support.js"></script>
-    <script src="../resources/testharness.js"></script>
-    <script src="../resources/testharnessreport.js"></script>
-  </head>
-  <body>
-    <div id="log"></div>
-    <script type="text/javascript">
-        var t = async_test(document.title, { timeout: 500 });
-        function database() {
-            try {
-                var db = GenerateDatabase();
-                db.readTransaction(
-                    function (t) {
-                        t.executeSql('SELECT * FROM test_table;',
-				        [],
-				        function (t, r) {
-				            PassTest();
-                        },
-				        function (t, e) {
-				            FailTest("Exception while get SQLStatementCallback handleEvent1");
-				        });
-                    },
-			        function (e) {
-			            FailTest("Exception while get SQLStatementCallback handleEvent2");
-			        },
-			        function () {
-			            FailTest("Exception while get SQLStatementCallback handleEvent3");
-			        }
-                );
-            } catch (ex) {
-                t.step(function () {
-                    assert_true(false, "Exception while get SQLStatementCallback handleEvent4");
+<meta charset="utf-8">
+<title>WebSQL Database Test: SQLStatementCallback_handleEvent_exist</title>
+<link rel="author" title="Intel" href="http://www.intel.com" />
+<link rel="help" href="http://www.w3.org/TR/2010/NOTE-webdatabase-20101118/" />
+<script src="support.js"></script>
+<script src="../resources/testharness.js"></script>
+<script src="../resources/testharnessreport.js"></script>
+<div id="log"></div>
+<script>
+    async_test(function (_t) {
+        var db = GenerateDatabase();
+        db.readTransaction(
+            function (t) {
+                t.executeSql('SELECT * FROM test_table;',
+                [],
+                function (t, r) {
+                    _t.done();
+                },
+                function (t, e) {
+                    assert_unreached("cannot reach here.");
                 });
-                t.done();
+            },
+            function (e) {
+                assert_unreached("cannot reach here.");
+            },
+            function () {
+                assert_unreached("cannot reach here.");
             }
-        }
-        database();
-    </script>
-  </body>
-</html>
+        );
+    }, "Check if SQLStatementCallback.handleEvent is exist", { timeout: 500 });
+</script>

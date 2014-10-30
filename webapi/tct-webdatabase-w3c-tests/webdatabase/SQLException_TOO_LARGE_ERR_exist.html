@@ -27,42 +27,23 @@ EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
 Authors:
         Fan,Weiwei <weiwix.fan@intel.com>
+        Cui, Jieqiong <jieqiongx.cui@intel.com>
 
 -->
 
-<html>
-  <head>
-    <title>WebSQL Database Test: SQLException_TOO_LARGE_ERR_exist</title>
-    <link rel="author" title="Intel" href="http://www.intel.com" />
-    <link rel="help" href="http://www.w3.org/TR/2010/NOTE-webdatabase-20101118/#dom-sqlexception-code-too_large" />
-    <meta name="flags" content="" />
-    <meta name="assert" content="Check if the constant SQLException.TOO_LARGE_ERR is exist" />
-    <script type="text/javascript" src="support.js"></script>
-    <script src="../resources/testharness.js"></script>
-    <script src="../resources/testharnessreport.js"></script>
-  </head>
-  <body>
-    <div id="log"></div>
-    <script type="text/javascript">
-        var t = async_test(document.title);
-
-        function RunTest() {
-            try {
-                var worker = new Worker("./SQLException_TOO_LARGE_ERR_exist.js");
-                worker.onmessage = function (event) {
-                    if (event.data == "PASS")
-                        PassTest();
-                    else
-                        FailTest(event.data);
-                };
-            } catch (ex) {
-                FailTest("{Exception code: " + ex.code + "}");
-            }
-        }
-
-        Initialize();
-        RunTest();
-        Deinitialize();
-    </script>
-  </body>
-</html>
+<meta charset="utf-8">
+<title>WebSQL Database Test: SQLException_TOO_LARGE_ERR_exist</title>
+<link rel="author" title="Intel" href="http://www.intel.com">
+<link rel="help" href="http://www.w3.org/TR/2010/NOTE-webdatabase-20101118/#dom-sqlexception-code-too_large">
+<script src="../resources/testharness.js"></script>
+<script src="../resources/testharnessreport.js"></script>
+<div id="log"></div>
+<script>
+async_test(function (t) {
+  var worker = new Worker("./SQLException_TOO_LARGE_ERR_exist.js");
+  worker.onmessage = t.step_func(function (event) {
+    assert_equals(event.data, "PASS", "The value of event.data");
+    t.done();
+  });
+}, "Check if the constant SQLException.TOO_LARGE_ERR exists");
+</script>

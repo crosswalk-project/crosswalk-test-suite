@@ -1,6 +1,5 @@
-<!DOCTYPE html>
-<!--
-Copyright (c) 2012 Intel Corporation.
+/*
+Copyright (c) 2014 Intel Corporation.
 
 Redistribution and use in source and binary forms, with or without modification,
 are permitted provided that the following conditions are met:
@@ -26,33 +25,14 @@ NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE,
 EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
 Authors:
-        Fan,Weiwei <weiwix.fan@intel.com>
-        Xie, Yunxiao <yunxiaox.xie@intel.com>
--->
+        Cui, Jieqiong <jieqiongx.cui@intel.com>
 
-<meta charset="utf-8">
-<title>WebSQL Database Test: SQLStatementErrorCallback_handleEvent_exist</title>
-<link rel="author" title="Intel" href="http://www.intel.com" />
-<link rel="help" href="http://www.w3.org/TR/2010/NOTE-webdatabase-20101118/#sqlstatementcallback" />
-<script src="support.js"></script>
-<script src="../resources/testharness.js"></script>
-<script src="../resources/testharnessreport.js"></script>
-<div id="log"></div>
-<script>
-    async_test(function (t) {
-        var db = GenerateDatabase();
-        db.readTransaction(
-            function (tr) {
-                tr.executeSql('SELECT * FROM test_table1',
-                    [],
-                    function (e) { // success
-                        assert_unreached("cannot reach here.");
-                    },
-                    function (e) { // error
-                        t.done();
-                    }
-                );
-            }
-        );
-    }, "Check if the SQLStatementErrorCallback.handleEvent() is exist");
-</script>
+*/
+var now = new Date();
+var dbname = "dbsync" + now.getTime();
+// create 2MB database on the phone
+var db = openDatabaseSync(dbname, '1.0', 'database for websql test', 1024);
+if (!("transaction" in db)) {
+    postMessage("DatabaseSync.transaction does not exist");
+}
+postMessage("PASS");

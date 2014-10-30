@@ -27,37 +27,23 @@ EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
 Authors:
         Fan,Weiwei <weiwix.fan@intel.com>
+        Cui, Jieqiong <jieqiongx.cui@intel.com>
 
 -->
 
-<html>
-  <head>
-    <title>WebSQL Database Test: Database_readTransaction_exist</title>
-    <link rel="author" title="Intel" href="http://www.intel.com" />
-    <link rel="help" href="http://www.w3.org/TR/2010/NOTE-webdatabase-20101118/#dom-database-readtransaction" />
-    <meta name="flags" content="" />
-    <meta name="assert" content="Check if Database.readTransaction is exist" />
-    <script type="text/javascript" src="support.js"></script>
-    <script src="../resources/testharness.js"></script>
-    <script src="../resources/testharnessreport.js"></script>
-  </head>
-  <body>
-    <div id="log"></div>
-    <script type="text/javascript">
-        var t = async_test(document.title);
-        try {
-            db = openDB();
-            if (!db) {
-                FailTest("Fail to get database");
-            }
-            if (db.readTransaction != "undefined" && db.readTransaction instanceof Function) {
-                PassTest();
-            } else {
-                FailTest("Database.readTransaction is not exist");
-            }
-        } catch (ex) {
-            FailTest("{Exception message: " + ex.message + "}");
-        }
-    </script>
-  </body>
-</html>
+<meta charset="utf-8">
+<title>WebSQL Database Test: Database_readTransaction_exist</title>
+<link rel="author" title="Intel" href="http://www.intel.com">
+<link rel="help" href="http://www.w3.org/TR/2010/NOTE-webdatabase-20101118/#dom-database-readtransaction">
+<script src="../resources/testharness.js"></script>
+<script src="../resources/testharnessreport.js"></script>
+<div id="log"></div>
+<script>
+test(function () {
+  assert_true("openDatabase" in window, "Exception while get WindowDatabase DatabaseCallback");
+  var now = new Date();
+  var dbname = "db" + now.getTime();
+  var db = openDatabase (dbname, "1.0", "demodb", 1024);
+  assert_true("readTransaction" in db, "The Database.readTransaction exists");
+}, "Check if the Database.readTransaction exists");
+</script>

@@ -27,57 +27,26 @@ EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
 Authors:
         Fan,Weiwei <weiwix.fan@intel.com>
-
+        Xie, Yunxiao <yunxiaox.xie@intel.com>
 -->
 
-<html>
-  <head>
-    <title>WebSQL Database Test: SQLTransactionErrorCallback_handleEvent_exist</title>
-    <link rel="author" title="Intel" href="http://www.intel.com" />
-    <link rel="help" href="http://www.w3.org/TR/2010/NOTE-webdatabase-20101118/#sqltransactionerrorcallback" />
-    <meta name="flags" content="" />
-    <meta name="assert" content="Check if SQLTransactionErrorCallback.handleEvent() is exist" />
-    <script src="../resources/testharness.js"></script>
-    <script src="../resources/testharnessreport.js"></script>
-    <script type="text/javascript" src="support.js"></script>
-  </head>
-  <body>
-    <div id="log"></div>
-    <script type="text/javascript">
-        var t = async_test(document.title);
-        function errorCallback() {
-            t.step(function () {
-                assert_true(true, "SQLTransactionCallback handleEvent tests");
-            });
+<meta charset="utf-8">
+<title>WebSQL Database Test: SQLTransactionErrorCallback_handleEvent_exist</title>
+<link rel="author" title="Intel" href="http://www.intel.com" />
+<link rel="help" href="http://www.w3.org/TR/2010/NOTE-webdatabase-20101118/#sqltransactionerrorcallback" />
+<script src="support.js"></script>
+<script src="../resources/testharness.js"></script>
+<script src="../resources/testharnessreport.js"></script>
+<div id="log"></div>
+<script>
+    async_test(function (t) {
+        var db = GenerateDatabase();
+        db.transaction(function (t) {
+            t.executeSql("INSERT INTO test_table VALUES (1, 'text 1', 0.1,1);");
+        }, function (e) { // error
             t.done();
-        }
-        function successCallback() {
-            t.step(function () {
-                assert_true(false, "SQLTransactionCallback handleEvent tests");
-            });
-            t.done();
-        }
-        function database() {
-            try {
-                if (!("openDatabase" in window)) {
-                    t.step(function () {
-                        assert_true(false, "Exception while get SQLTransactionCallback handleEvent");
-                    });
-                    t.done();
-                    return;
-                }
-                var db = GenerateDatabase();
-                db.transaction(function (t) {
-                    t.executeSql("INSERT INTO test_table VALUES (1, 'text 1', 0.1,1);");
-                }, errorCallback, successCallback);
-            } catch (ex) {
-                t.step(function () {
-                    assert_true(false, "Exception while get SQLTransactionCallback handleEvent");
-                });
-                t.done();
-            }
-        }
-        database();
-    </script>
-  </body>
-</html>
+        }, function () { // success
+            assert_unreached("cannot reach here.");
+        });
+    }, "Check if SQLTransactionErrorCallback.handleEvent() is exist");
+</script>

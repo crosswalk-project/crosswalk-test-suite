@@ -29,7 +29,7 @@ Authors:
         Fan,Weiwei <weiwix.fan@intel.com>
 
 */
-importScripts("./support.js");
+
 self.addEventListener('message', MessageHandler, false);
 function MessageHandler(evt) {
     try {

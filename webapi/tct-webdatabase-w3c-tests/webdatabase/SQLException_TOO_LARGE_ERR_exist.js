@@ -28,18 +28,23 @@ Authors:
         Fan,Weiwei <weiwix.fan@intel.com>
 
 */
-    importScripts("./support.js");
-    var db = openDBSync();
-    db.transaction(function(t) {
-        try {
-            t.executeSql("INSERT INTO test_table VALUES (1, 'text 1', 0.1)");
-            t.executeSql("INSERT INTO test_table VALUES (1, 'text 1', 0.1)");
-            postMessage("No SQLException be thrown");
-        } catch (ex) {
-            if ("TOO_LARGE_ERR" in ex) {
-                postMessage("PASS");
-            } else {
-                postMessage("The constant SQLException.TOO_LARGE_ERR is not exist");
-            }
+
+var now = new Date();
+var dbname = "db" + now.getTime();
+var db = openDatabaseSync(dbname, '1.0', 'database for websql test', 1024);
+db.transaction(function (tx) {
+    tx.executeSql("CREATE TABLE test_table(col_int PRIMARY KEY, col_str, col_float);");
+});
+db.transaction(function(t) {
+    try {
+        t.executeSql("INSERT INTO test_table VALUES (1, 'text 1', 0.1)");
+        t.executeSql("INSERT INTO test_table VALUES (1, 'text 1', 0.1)");
+        postMessage("No SQLException be thrown");
+    } catch (ex) {
+        if ("TOO_LARGE_ERR" in ex) {
+            postMessage("PASS");
+        } else {
+            postMessage("The constant SQLException.TOO_LARGE_ERR is not exist");
         }
-    });
+    }
+});

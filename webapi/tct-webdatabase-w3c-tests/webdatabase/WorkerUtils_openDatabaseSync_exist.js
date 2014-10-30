@@ -28,9 +28,9 @@ Authors:
         Fan,Weiwei <weiwix.fan@intel.com>
 
 */
-    importScripts("./support.js");
-    if (self.openDatabaseSync != "undefined" && self.openDatabaseSync instanceof Function) {
-        self.postMessage("PASS");
-    } else {
-        self.postMessage("The method WorkerUtils.openDatabaseSync is not exist");
-    }
+
+if (self.openDatabaseSync != "undefined" && self.openDatabaseSync instanceof Function) {
+    self.postMessage("PASS");
+} else {
+    self.postMessage("The method WorkerUtils.openDatabaseSync is not exist");
+}
