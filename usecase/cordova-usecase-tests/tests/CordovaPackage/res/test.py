@@ -1,6 +1,6 @@
 import os,commands
 
-os.system("./bin/create hello com.example.hello hello --shared");
+os.system("./bin/create hello com.example.hello hello");
 os.chdir("./hello");
 os.system("./cordova/build");
 os.system("./cordova/run");
