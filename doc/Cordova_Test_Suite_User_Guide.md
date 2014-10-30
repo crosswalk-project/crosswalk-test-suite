@@ -141,7 +141,7 @@ The Cordova developer tooling is split between general tooling and project level
         $ unzip /path/to/crosswalk-cordova-<version>-<arch>.zip
         ```
 
-    * `$ /path/to/crosswalk-cordova-<version>-<arch>/bin/create testapp com.example.testapp testapp --shared`
+    * `$ /path/to/crosswalk-cordova-<version>-<arch>/bin/create testapp com.example.testapp testapp`
     * `$ cd testapp`
     * Copy web source code (e.g. index.html with some contents) to assets/www
     * `$ . /cordova/build`
@@ -252,7 +252,7 @@ The Cordova Mobile Spec test doesn't need testkit-lite etc., tools to run the te
         $ upzip /path/to/crosswalk-cordova-<version>-<arch>.zip
 
         $ /path/to/crosswalk-cordova-<version>-<arch>/bin/create mobilespec
-        org.apache.mobilespec mobilespec --shared
+        org.apache.mobilespec mobilespec
 
         $ cd mobilespec
 
