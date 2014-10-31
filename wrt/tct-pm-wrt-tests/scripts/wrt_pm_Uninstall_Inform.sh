@@ -37,10 +37,10 @@ fi
 
 for pkgid in $pkgids
 do
-  pkgcmd -u -t wgt -q -n $pkgid 1>>/tmp/uninstaller.log 2>&1
+  pkgcmd -u -n $pkgid -q 1>>/tmp/uninstaller.log 2>&1
 done
 
-RET3=`grep "not be found" /tmp/uninstaller.log `
+RET3=`grep "Unknown Error" /tmp/uninstaller.log `
 if [ -z "$RET3"  ]; then
   echo -e  "informed failure of uninstallation failed!"
   rm -f /tmp/uninstaller.log
