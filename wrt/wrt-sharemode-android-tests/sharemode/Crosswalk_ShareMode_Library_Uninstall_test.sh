@@ -50,7 +50,7 @@ if [ $? -eq 0 ];then
         echo "XwalkRuntimeLibrary install successflly"
         $command uninstall $CROSSWALK_PACKAGE &>/dev/null
         $command shell pm list packages |grep $CROSSWALK_PACKAGE &>/dev/null
-        if [ $? -eq 0 ];then
+        if [ $? -ne 0 ];then
             echo "XwalkRuntimeLibrary uninstall successflly"
             $command install -r $local_path/../resources/installer/$CROSSWALK_APK &>/dev/null
             exit 0
