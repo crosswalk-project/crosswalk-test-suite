@@ -49,10 +49,10 @@ Authors:
     <div data-role="content">
       <h4>Test Steps:</h4>
       <ol>
-        <li>Switch to guest account by: "su guest"</li>
+        <li>Switch to user A(A is available and has install/uninstall/app_launcher privilege)</li>
         <li>Install the webapp res/testapp/wgt_sample_two.wgt </li>
-        <li>Switch to app account by: "su app"</li>
-        <li>'$xwalkctl' to list the installed webapp </li>
+        <li>Switch to user B(B is available and has install/uninstall/app_launcher privilege)</li>
+        <li>'$app_launcher -l' to list the installed webapp </li>
       </ol>
     </div>
     <div data-role="footer" data-position="fixed" data-tap-toggle="false">
@@ -63,9 +63,9 @@ Authors:
         <p>Verifies account permissions</p>
         <p>Expected Result:</p>
         <ol>
-         <li>Input pwd, the 'guest' account can be switch successfully</li>
+         <li>The A account can be switch successfully</li>
          <li>The webapp should be installed successfully</li>
-         <li>The 'app' account can be switch successfully</li>
+         <li>The B account can be switch successfully</li>
          <li>The wgt_sample_two webapp should not be listed</li>         
         </ol>
       </font>
