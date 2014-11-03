@@ -34,7 +34,7 @@ SLEEP=86400
 $local_path/sysmon.sh `(basename $0)` $SLEEP $WEBAPP_PACKAGE &
 
 #launch app
-adb shell am start -a android.intent.action.View -n $WEBAPP_PACKAGE/.dynamicdddActivity &
+adb shell am start -a android.intent.action.View -n $WEBAPP_PACKAGE/.DynamicdddActivity &
 
 KILLSLEEP=$[ $SLEEP * 3 / 10 ]
 sleep $(($SLEEP + $KILLSLEEP ))
