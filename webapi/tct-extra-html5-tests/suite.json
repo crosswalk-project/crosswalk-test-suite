@@ -16,40 +16,51 @@
                 "*"
             ],
             "copylist": {
+                "bddrunner": "bddrunner",
+                "html5-extra-app/testscripts": "html5-extra-app/testscripts",
                 "inst.apk.py": "inst.py",
                 "tests.full.xml": "tests.full.xml",
-                "tests.xml": "tests.xml",
-                "bddrunner": "bddrunner",
-                "html5-extra-app/testscripts": "html5-extra-app/testscripts"
+                "tests.xml": "tests.xml"
             },
             "pkg-app": {
-                "apk-common-opts":"--enable-remote-debugging"
+                "apk-common-opts": "--enable-remote-debugging"
             },
             "subapp-list": {
                 "html5-extra-app": {
-                    "apk-common-opts":"--enable-remote-debugging"
+                    "apk-common-opts": "--enable-remote-debugging"
                 }
             }
         },
         "apk-aio": {
-                "blacklist": [],
-                "subapp-list": {
-                     "html5-extra-app": {
-                     "apk-common-opts":"--enable-remote-debugging",
-                     "install-path": "app"
-                    }
+            "blacklist": [],
+            "subapp-list": {
+                "html5-extra-app": {
+                    "apk-common-opts": "--enable-remote-debugging",
+                    "install-path": "app"
                 }
-         },
+            }
+        },
         "wgt": {
             "blacklist": [
                 "*"
             ],
             "copylist": {
                 "inst.wgt.py": "inst.py",
-                "tests.tizen.full.xml": "tests.full.xml",
-                "tests.tizen.xml": "tests.xml"
+                "tests.full.xml": "tests.full.xml",
+                "tests.xml": "tests.xml"
             },
-            "pkg-app": {}
+            "pkg-app": {},
+            "subapp-list": {
+                "html5-extra-app": {
+                    "apk-icon-opt": "",
+                    "blacklist": [
+                        "manifest.json"
+                    ],
+                    "copylist": {
+                        "bdd.config.xml": "config.xml"
+                    }
+                }
+            }
         },
         "xpk": {
             "blacklist": [
@@ -57,11 +68,22 @@
             ],
             "copylist": {
                 "inst.xpk.py": "inst.py",
-                "tests.tizen.full.xml": "tests.full.xml",
-                "tests.tizen.xml": "tests.xml"
+                "tests.full.xml": "tests.full.xml",
+                "tests.xml": "tests.xml"
             },
             "pkg-app": {
                 "blacklist": []
+            },
+            "subapp-list": {
+                "html5-extra-app": {
+                    "apk-icon-opt": "",
+                    "blacklist": [
+                        "manifest.json"
+                    ],
+                    "copylist": {
+                        "bdd.config.xml": "config.xml"
+                    }
+                }
             }
         }
     },
