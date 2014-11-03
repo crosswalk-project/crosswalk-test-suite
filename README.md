@@ -48,7 +48,7 @@ The way to contribute is just as usual:
 
 * fork this repository (and make sure you're still relatively in sync with it
   if you forked a while ago);
-* create a branch for your changes, `git checkout -b username/topic`;
+* create a branch for your changes, `git checkout -b topic`;
 * make your changes;
 * push that to your repo;
 * and send in a pull request based on the above.
