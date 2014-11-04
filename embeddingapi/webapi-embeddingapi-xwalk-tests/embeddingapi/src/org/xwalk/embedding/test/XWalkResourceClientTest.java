@@ -5,6 +5,7 @@
 package org.xwalk.embedding.test;
 
 import org.xwalk.core.XWalkResourceClient;
+import org.xwalk.embedding.base.OnReceivedSslHelper;
 import org.xwalk.embedding.base.XWalkViewTestBase;
 
 import android.test.suitebuilder.annotation.SmallTest;
@@ -119,6 +120,21 @@ public class XWalkResourceClientTest extends XWalkViewTestBase {
                 }
             });
 
+        } catch (Exception e) {
+            assertTrue(false);
+            e.printStackTrace();
+        }
+    }
+
+    @SmallTest
+    public void testOnReceivedSslError() {
+        try {
+            String url = "https://webmail.archermind.com/";
+            OnReceivedSslHelper mOnReceivedSslHelper = mTestHelperBridge.getOnReceivedSslHelper();
+            int count = mOnReceivedSslHelper.getCallCount();
+            loadUrlAsync(url);
+            mOnReceivedSslHelper.waitForCallback(count);
+            assertTrue(mOnReceivedSslHelper.getCalled());
         } catch (Exception e) {
             assertTrue(false);
             e.printStackTrace();

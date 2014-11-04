@@ -6,6 +6,7 @@ package org.xwalk.embedding.base;
 
 import org.chromium.content.browser.test.util.TestCallbackHelperContainer.OnPageFinishedHelper;
 import org.chromium.content.browser.test.util.TestCallbackHelperContainer.OnPageStartedHelper;
+import org.chromium.content.browser.test.util.TestCallbackHelperContainer.OnReceivedErrorHelper;
 
 public class TestHelperBridge {
 
@@ -20,6 +21,8 @@ public class TestHelperBridge {
     private final OnCreateWindowRequestedHelper mOnCreateWindowRequestedHelper;
     private final OnIconAvailableHelper mOnIconAvailableHelper;
     private final OnReceivedIconHelper mOnReceivedIconHelper;
+    private final OnReceivedErrorHelper mOnReceivedErrorHelper;
+    private final OnReceivedSslHelper mOnReceivedSslHelper;
 
     TestHelperBridge() {
         mOnPageStartedHelper = new OnPageStartedHelper();
@@ -32,6 +35,8 @@ public class TestHelperBridge {
         mOnCreateWindowRequestedHelper = new OnCreateWindowRequestedHelper();
         mOnIconAvailableHelper = new OnIconAvailableHelper();
         mOnReceivedIconHelper = new OnReceivedIconHelper();
+        mOnReceivedErrorHelper = new OnReceivedErrorHelper();
+        mOnReceivedSslHelper = new OnReceivedSslHelper();
     }
 
     public OnPageFinishedHelper getOnPageFinishedHelper() {
@@ -109,5 +114,21 @@ public class TestHelperBridge {
 
     public void onReceivedIcon() {
         mOnReceivedIconHelper.notifyCalled(true);
+    }
+
+    public OnReceivedErrorHelper getOnReceivedErrorHelper() {
+        return mOnReceivedErrorHelper;
+    }
+
+    public void onReceivedLoadError(int errorCode, String description, String failingUrl) {
+        mOnReceivedErrorHelper.notifyCalled(errorCode, description, failingUrl);
+    }
+
+    public OnReceivedSslHelper getOnReceivedSslHelper() {
+        return mOnReceivedSslHelper;
+    }
+
+    public void onReceivedSsl() {
+        mOnReceivedSslHelper.notifyCalled(true);
     }
 }

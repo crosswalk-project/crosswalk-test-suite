@@ -11,6 +11,7 @@ import java.util.concurrent.Callable;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
+import org.xwalk.core.XWalkPreferences;
 import org.xwalk.core.XWalkResourceClient;
 import org.xwalk.core.XWalkUIClient;
 import org.xwalk.embedding.MainActivity;
@@ -418,6 +419,49 @@ public class XWalkViewTest extends XWalkViewTestBase {
                 }
             });
             assertTrue(true);
+        } catch (Exception e) {
+            e.printStackTrace();
+            assertTrue(false);
+        }
+    }
+
+    @SmallTest
+    public void testGetRemoteDebuggingUrl_enable() {
+        try {
+            String url = "file:///android_asset/index.html";
+            loadUrlSync(url);
+            getInstrumentation().runOnMainSync(new Runnable() {
+                @Override
+                public void run() {
+                    XWalkPreferences.setValue(XWalkPreferences.REMOTE_DEBUGGING, true);
+                }
+            });
+            String path = getRemoteDebuggingUrlOnUiThread();
+            if(path != null && path.contains("devtools/page"))
+            {
+                assertTrue(true);
+            } else {
+                assertTrue(false);
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+            assertTrue(false);
+        }
+    }
+
+    @SmallTest
+    public void testGetRemoteDebuggingUrl_disbale() {
+        try {
+            String url = "file:///android_asset/index.html";
+            loadUrlSync(url);
+            getInstrumentation().runOnMainSync(new Runnable() {
+                @Override
+                public void run() {
+                    XWalkPreferences.setValue(XWalkPreferences.REMOTE_DEBUGGING, false);
+                }
+            });
+            String path = getRemoteDebuggingUrlOnUiThread();
+            assertEquals("", path);
         } catch (Exception e) {
             e.printStackTrace();
             assertTrue(false);

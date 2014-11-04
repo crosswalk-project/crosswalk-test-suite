@@ -34,6 +34,7 @@ import com.test.server.ActivityInstrumentationTestCase2;
 import android.content.Context;
 import android.content.res.AssetManager;
 import android.graphics.Bitmap;
+import android.net.http.SslError;
 import android.os.Bundle;
 import android.os.Message;
 import android.util.Pair;
@@ -75,15 +76,6 @@ public class XWalkViewTestBase extends ActivityInstrumentationTestCase2<MainActi
     final CallbackHelper jsBeforeUnloadHelper = new CallbackHelper();
     boolean flagForConfirmCancelled = false;
 
-    protected void setResourceClient(final XWalkResourceClient client) {
-        getInstrumentation().runOnMainSync(new Runnable() {
-            @Override
-            public void run() {
-                getXWalkView().setResourceClient(client);
-            }
-        });
-    }
-
     public XWalkViewTestBase() {
         super(MainActivity.class);
     }
@@ -98,6 +90,7 @@ public class XWalkViewTestBase extends ActivityInstrumentationTestCase2<MainActi
             public void run() {
                 mXWalkView = mainActivity.getXWalkView();
                 mXWalkView.setUIClient(new TestXWalkUIClient());
+                mXWalkView.setResourceClient(new TestXWalkResourceClient());
             }
         });
     }
@@ -231,6 +224,19 @@ public class XWalkViewTestBase extends ActivityInstrumentationTestCase2<MainActi
             @Override
             public String call() throws Exception {
                 return mXWalkView.getUrl();
+            }
+        });
+    }
+
+    protected String getRemoteDebuggingUrlOnUiThread() throws Exception {
+        return runTestOnUiThreadAndGetResult(new Callable<String>() {
+            @Override
+            public String call() throws Exception {
+                if(mXWalkView.getRemoteDebuggingUrl() == null)
+                {
+                    return "";
+                }
+                return mXWalkView.getRemoteDebuggingUrl().getPath();
             }
         });
     }
@@ -524,7 +530,6 @@ public class XWalkViewTestBase extends ActivityInstrumentationTestCase2<MainActi
 
         @Override
         public void onReceivedIcon(XWalkView view, String url, Bitmap icon) {
-            System.out.println("KKKKKo");
             mInnerContentsClient.onReceivedIcon();
         }
 
@@ -566,6 +571,32 @@ public class XWalkViewTestBase extends ActivityInstrumentationTestCase2<MainActi
 
     public class TestXWalkUIClient extends TestXWalkUIClientBase {
         public TestXWalkUIClient() {
+            super(mTestHelperBridge);
+        }
+    }
+
+    class TestXWalkResourceClientBase extends XWalkResourceClient {
+        TestHelperBridge mInnerContentsClient;
+        public TestXWalkResourceClientBase(TestHelperBridge client) {
+            super(mXWalkView);
+            mInnerContentsClient = client;
+        }
+
+        @Override
+        public void onReceivedLoadError(XWalkView view, int errorCode,
+                String description, String failingUrl) {
+            mInnerContentsClient.onReceivedLoadError(errorCode, description, failingUrl);
+        }
+
+        @Override
+        public void onReceivedSslError(XWalkView view,
+                ValueCallback<Boolean> callback, SslError error) {
+            mInnerContentsClient.onReceivedSsl();
+        }
+    }
+
+    class TestXWalkResourceClient extends TestXWalkResourceClientBase {
+        public TestXWalkResourceClient() {
             super(mTestHelperBridge);
         }
     }
