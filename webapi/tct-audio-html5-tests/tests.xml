@@ -393,19 +393,54 @@
           <test_script_entry>/opt/tct-audio-html5-tests/audio/w3c/audio_loop_reflect.html?total_num=3&amp;amp;locator_key=id&amp;amp;value=3</test_script_entry>
         </description>
       </testcase>
-      <testcase component="WebAPI/Media/HTML5 The audio element (Partial)" execution_type="auto" id="audio_muted_true_muted_present" purpose="Check that audio.muted returns true if the muted attribute is present in the audio element">
+      <testcase component="WebAPI/Media/HTML5 The audio element (Partial)" execution_type="auto" id="audio_muted_present_get" purpose="Check that audio.muted returns true if the muted attribute is present in the audio element">
         <description>
-          <test_script_entry>/opt/tct-audio-html5-tests/audio/w3c/audio_muted_check.html?total_num=3&amp;amp;locator_key=id&amp;amp;value=1</test_script_entry>
+          <test_script_entry>/opt/tct-audio-html5-tests/audio/w3c/muted.html?total_num=21&amp;amp;locator_key=id&amp;amp;value=3</test_script_entry>
         </description>
       </testcase>
-      <testcase component="WebAPI/Media/HTML5 The audio element (Partial)" execution_type="auto" id="audio_muted_false_unmuted" purpose="Check if audio.muted can be set to false">
+      <testcase component="WebAPI/Media/HTML5 The audio element (Partial)" execution_type="auto" id="audio_muted_notpresent_get" purpose="Check that audio.muted returns false if the muted attribute is not present in the audio element">
         <description>
-          <test_script_entry>/opt/tct-audio-html5-tests/audio/w3c/audio_muted_check.html?total_num=3&amp;amp;locator_key=id&amp;amp;value=2</test_script_entry>
+          <test_script_entry>/opt/tct-audio-html5-tests/audio/w3c/muted.html?total_num=21&amp;amp;locator_key=id&amp;amp;value=1</test_script_entry>
         </description>
       </testcase>
-      <testcase component="WebAPI/Media/HTML5 The audio element (Partial)" execution_type="auto" id="audio_muted_true_muted" purpose="Check if audio.muted can be set to true">
+      <testcase component="WebAPI/Media/HTML5 The audio element (Partial)" execution_type="auto" id="audio_muted_present_set" purpose="Check if the audio.muted can be set if the muted attribute is present in the audio element">
         <description>
-          <test_script_entry>/opt/tct-audio-html5-tests/audio/w3c/audio_muted_check.html?total_num=3&amp;amp;locator_key=id&amp;amp;value=3</test_script_entry>
+          <test_script_entry>/opt/tct-audio-html5-tests/audio/w3c/muted.html?total_num=21&amp;amp;locator_key=id&amp;amp;value=4</test_script_entry>
+        </description>
+      </testcase>
+      <testcase component="WebAPI/Media/HTML5 The audio element (Partial)" execution_type="auto" id="audio_muted_notpresenet_set" purpose="Check if the audio.muted can be set if the muted attribute is not present in the audio element">
+        <description>
+          <test_script_entry>/opt/tct-audio-html5-tests/audio/w3c/muted.html?total_num=21&amp;amp;locator_key=id&amp;amp;value=2</test_script_entry>
+        </description>
+      </testcase>
+      <testcase component="WebAPI/Media/HTML5 The audio element (Partial)" execution_type="auto" id="audio_muted_script_get1" purpose="Check that audio.muted can be get (script-created)">
+        <description>
+          <test_script_entry>/opt/tct-audio-html5-tests/audio/w3c/muted.html?total_num=21&amp;amp;locator_key=id&amp;amp;value=10</test_script_entry>
+        </description>
+      </testcase>
+      <testcase component="WebAPI/Media/HTML5 The audio element (Partial)" execution_type="auto" id="audio_muted_script_set1" purpose="Check that audio.muted can be set (script-created)">
+        <description>
+          <test_script_entry>/opt/tct-audio-html5-tests/audio/w3c/muted.html?total_num=21&amp;amp;locator_key=id&amp;amp;value=11</test_script_entry>
+        </description>
+      </testcase>
+      <testcase component="WebAPI/Media/HTML5 The audio element (Partial)" execution_type="auto" id="audio_muted_script_get2" purpose="Check that audio.muted can be get with muted='' (script-created)">
+        <description>
+          <test_script_entry>/opt/tct-audio-html5-tests/audio/w3c/muted.html?total_num=21&amp;amp;locator_key=id&amp;amp;value=12</test_script_entry>
+        </description>
+      </testcase>
+      <testcase component="WebAPI/Media/HTML5 The audio element (Partial)" execution_type="auto" id="audio_muted_script_set2" purpose="Check that audio.muted can be set with muted='' (script-created)">
+        <description>
+          <test_script_entry>/opt/tct-audio-html5-tests/audio/w3c/muted.html?total_num=21&amp;amp;locator_key=id&amp;amp;value=13</test_script_entry>
+        </description>
+      </testcase>
+      <testcase component="WebAPI/Media/HTML5 The audio element (Partial)" execution_type="auto" id="audio_muted_innerHTML_get" purpose="Check that audio.muted can be get with muted='' (innerHTML-created)">
+        <description>
+          <test_script_entry>/opt/tct-audio-html5-tests/audio/w3c/muted.html?total_num=21&amp;amp;locator_key=id&amp;amp;value=14</test_script_entry>
+        </description>
+      </testcase>
+      <testcase component="WebAPI/Media/HTML5 The audio element (Partial)" execution_type="auto" id="audio_muted_write_get" purpose="Check that audio.muted can be get with muted='' (document.write-created)">
+        <description>
+          <test_script_entry>/opt/tct-audio-html5-tests/audio/w3c/muted.html?total_num=21&amp;amp;locator_key=id&amp;amp;value=15</test_script_entry>
         </description>
       </testcase>
       <testcase component="WebAPI/Media/HTML5 The audio element (Partial)" execution_type="auto" id="audio_muted_volumechange" purpose="Check that volumechange event is triggered if audio.muted is changed">

@@ -939,9 +939,9 @@
           </spec>
         </specs>
       </testcase>
-      <testcase purpose="Check that audio.muted returns true if the muted attribute is present in the audio element" type="compliance" status="approved" component="WebAPI/Media/HTML5 The audio element (Partial)" execution_type="auto" priority="P2" id="audio_muted_true_muted_present">
+      <testcase purpose="Check that audio.muted returns true if the muted attribute is present in the audio element" type="compliance" status="approved" component="WebAPI/Media/HTML5 The audio element (Partial)" execution_type="auto" priority="P2" id="audio_muted_present_get">
         <description>
-          <test_script_entry>/opt/tct-audio-html5-tests/audio/w3c/audio_muted_check.html?total_num=3&amp;amp;locator_key=id&amp;amp;value=1</test_script_entry>
+          <test_script_entry>/opt/tct-audio-html5-tests/audio/w3c/muted.html?total_num=21&amp;amp;locator_key=id&amp;amp;value=3</test_script_entry>
         </description>
         <specs>
           <spec>
@@ -951,9 +951,9 @@
           </spec>
         </specs>
       </testcase>
-      <testcase purpose="Check if audio.muted can be set to false" type="compliance" status="approved" component="WebAPI/Media/HTML5 The audio element (Partial)" execution_type="auto" priority="P2" id="audio_muted_false_unmuted">
+      <testcase purpose="Check that audio.muted returns false if the muted attribute is not present in the audio element" type="compliance" status="approved" component="WebAPI/Media/HTML5 The audio element (Partial)" execution_type="auto" priority="P2" id="audio_muted_notpresent_get">
         <description>
-          <test_script_entry>/opt/tct-audio-html5-tests/audio/w3c/audio_muted_check.html?total_num=3&amp;amp;locator_key=id&amp;amp;value=2</test_script_entry>
+          <test_script_entry>/opt/tct-audio-html5-tests/audio/w3c/muted.html?total_num=21&amp;amp;locator_key=id&amp;amp;value=1</test_script_entry>
         </description>
         <specs>
           <spec>
@@ -963,9 +963,93 @@
           </spec>
         </specs>
       </testcase>
-      <testcase purpose="Check if audio.muted can be set to true" type="compliance" status="approved" component="WebAPI/Media/HTML5 The audio element (Partial)" execution_type="auto" priority="P2" id="audio_muted_true_muted">
+      <testcase purpose="Check if the audio.muted can be set if the muted attribute is present in the audio element" type="compliance" status="approved" component="WebAPI/Media/HTML5 The audio element (Partial)" execution_type="auto" priority="P2" id="audio_muted_present_set">
         <description>
-          <test_script_entry>/opt/tct-audio-html5-tests/audio/w3c/audio_muted_check.html?total_num=3&amp;amp;locator_key=id&amp;amp;value=3</test_script_entry>
+          <test_script_entry>/opt/tct-audio-html5-tests/audio/w3c/muted.html?total_num=21&amp;amp;locator_key=id&amp;amp;value=4</test_script_entry>
+        </description>
+        <specs>
+          <spec>
+            <spec_assertion element_type="attribute" element_name="muted" interface="HTMLAudioElement" specification="HTML5 The audio element (Partial)" section="Media" category="Tizen W3C API Specifications"/>
+            <spec_url>http://www.w3.org/TR/2012/WD-html5-20121025/media-elements.html#htmlmediaelement</spec_url>
+            <spec_statement/>
+          </spec>
+        </specs>
+      </testcase>
+      <testcase purpose="Check if the audio.muted can be set if the muted attribute is not present in the audio element" type="compliance" status="approved" component="WebAPI/Media/HTML5 The audio element (Partial)" execution_type="auto" priority="P2" id="audio_muted_notpresent_set">
+        <description>
+          <test_script_entry>/opt/tct-audio-html5-tests/audio/w3c/muted.html?total_num=21&amp;amp;locator_key=id&amp;amp;value=2</test_script_entry>
+        </description>
+        <specs>
+          <spec>
+            <spec_assertion element_type="attribute" element_name="muted" interface="HTMLAudioElement" specification="HTML5 The audio element (Partial)" section="Media" category="Tizen W3C API Specifications"/>
+            <spec_url>http://www.w3.org/TR/2012/WD-html5-20121025/media-elements.html#htmlmediaelement</spec_url>
+            <spec_statement/>
+          </spec>
+        </specs>
+      </testcase>
+      <testcase purpose="Check that audio.muted can be get (script-created)" type="compliance" status="approved" component="WebAPI/Media/HTML5 The audio element (Partial)" execution_type="auto" priority="P2" id="audio_muted_script_get1">
+        <description>
+          <test_script_entry>/opt/tct-audio-html5-tests/audio/w3c/muted.html?total_num=21&amp;amp;locator_key=id&amp;amp;value=10</test_script_entry>
+        </description>
+        <specs>
+          <spec>
+            <spec_assertion element_type="attribute" element_name="muted" interface="HTMLAudioElement" specification="HTML5 The audio element (Partial)" section="Media" category="Tizen W3C API Specifications"/>
+            <spec_url>http://www.w3.org/TR/2012/WD-html5-20121025/media-elements.html#htmlmediaelement</spec_url>
+            <spec_statement/>
+          </spec>
+        </specs>
+      </testcase>
+      <testcase purpose="Check that audio.muted can be set (script-created)" type="compliance" status="approved" component="WebAPI/Media/HTML5 The audio element (Partial)" execution_type="auto" priority="P2" id="audio_muted_script_set1">
+        <description>
+          <test_script_entry>/opt/tct-audio-html5-tests/audio/w3c/muted.html?total_num=21&amp;amp;locator_key=id&amp;amp;value=11</test_script_entry>
+        </description>
+        <specs>
+          <spec>
+            <spec_assertion element_type="attribute" element_name="muted" interface="HTMLAudioElement" specification="HTML5 The audio element (Partial)" section="Media" category="Tizen W3C API Specifications"/>
+            <spec_url>http://www.w3.org/TR/2012/WD-html5-20121025/media-elements.html#htmlmediaelement</spec_url>
+            <spec_statement/>
+          </spec>
+        </specs>
+      </testcase>
+      <testcase purpose="Check that audio.muted can be get with muted='' (script-created)" type="compliance" status="approved" component="WebAPI/Media/HTML5 The audio element (Partial)" execution_type="auto" priority="P2" id="audio_muted_script_get2">
+        <description>
+          <test_script_entry>/opt/tct-audio-html5-tests/audio/w3c/muted.html?total_num=21&amp;amp;locator_key=id&amp;amp;value=12</test_script_entry>
+        </description>
+        <specs>
+          <spec>
+            <spec_assertion element_type="attribute" element_name="muted" interface="HTMLAudioElement" specification="HTML5 The audio element (Partial)" section="Media" category="Tizen W3C API Specifications"/>
+            <spec_url>http://www.w3.org/TR/2012/WD-html5-20121025/media-elements.html#htmlmediaelement</spec_url>
+            <spec_statement/>
+          </spec>
+        </specs>
+      </testcase>
+      <testcase purpose="Check that audio.muted can be set with muted='' (script-created)" type="compliance" status="approved" component="WebAPI/Media/HTML5 The audio element (Partial)" execution_type="auto" priority="P2" id="audio_muted_script_set2">
+        <description>
+          <test_script_entry>/opt/tct-audio-html5-tests/audio/w3c/muted.html?total_num=21&amp;amp;locator_key=id&amp;amp;value=13</test_script_entry>
+        </description>
+        <specs>
+          <spec>
+            <spec_assertion element_type="attribute" element_name="muted" interface="HTMLAudioElement" specification="HTML5 The audio element (Partial)" section="Media" category="Tizen W3C API Specifications"/>
+            <spec_url>http://www.w3.org/TR/2012/WD-html5-20121025/media-elements.html#htmlmediaelement</spec_url>
+            <spec_statement/>
+          </spec>
+        </specs>
+      </testcase>
+      <testcase purpose="Check that audio.muted can be get with muted='' (innerHTML-created)" type="compliance" status="approved" component="WebAPI/Media/HTML5 The audio element (Partial)" execution_type="auto" priority="P2" id="audio_muted_innerHTML_get">
+        <description>
+          <test_script_entry>/opt/tct-audio-html5-tests/audio/w3c/muted.html?total_num=21&amp;amp;locator_key=id&amp;amp;value=14</test_script_entry>
+        </description>
+        <specs>
+          <spec>
+            <spec_assertion element_type="attribute" element_name="muted" interface="HTMLAudioElement" specification="HTML5 The audio element (Partial)" section="Media" category="Tizen W3C API Specifications"/>
+            <spec_url>http://www.w3.org/TR/2012/WD-html5-20121025/media-elements.html#htmlmediaelement</spec_url>
+            <spec_statement/>
+          </spec>
+        </specs>
+      </testcase>
+      <testcase purpose="Check that audio.muted can be get with muted='' (document.write-created)" type="compliance" status="approved" component="WebAPI/Media/HTML5 The audio element (Partial)" execution_type="auto" priority="P2" id="audio_muted_write_get">
+        <description>
+          <test_script_entry>/opt/tct-audio-html5-tests/audio/w3c/muted.html?total_num=21&amp;amp;locator_key=id&amp;amp;value=15</test_script_entry>
         </description>
         <specs>
           <spec>
