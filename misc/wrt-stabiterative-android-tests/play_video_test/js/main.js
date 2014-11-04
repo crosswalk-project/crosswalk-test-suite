@@ -74,14 +74,15 @@ function musicplaypause1500() {
     });
 
 }
+
 function pausewait() {
     testTarget= document.getElementById("MediaPlayback");
-    setTimeout("testTarget.pause();",2000)
+    setTimeout("testTarget.pause();",5000)
 }
 
 function playwait() {
     testTarget= document.getElementById("MediaPlayback");
-    setTimeout("testTarget.play();",2000)
+    setTimeout("testTarget.play();",5000)
 }
 function musicplay() {
     testTarget=document.getElementById("MediaPlayback");

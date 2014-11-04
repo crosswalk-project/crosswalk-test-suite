@@ -73,7 +73,7 @@ function musicplaypause1500() {
     var ps = document.getElementById("MediaPlayback");
     ps.addEventListener("playing", function() {
         if (cc <=1500) {
-　　       a.pause();
+　　       pausewait();
         }
         
     });
@@ -85,10 +85,14 @@ function musicplaypause1500() {
     });
 
 }
+function pausewait() {
+    testTarget= document.getElementById("MediaPlayback");
+    setTimeout("testTarget.pause();",1000)
+}
 
 function playwait() {
     testTarget= document.getElementById("MediaPlayback");
-    setTimeout("testTarget.play();",100)
+    setTimeout("testTarget.play();",1000)
 }
 
 function musicplay() {
