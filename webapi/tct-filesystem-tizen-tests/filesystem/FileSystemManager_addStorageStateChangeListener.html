@@ -17,6 +17,7 @@ limitations under the License.
 
 Authors:
         Beata Koziarek <b.koziarek@samsung.com>
+        Xu, Kang <kangx.xu@intel.com>
 
 -->
 <html>
@@ -35,16 +36,9 @@ Authors:
 //==== SPEC_URL https://developer.tizen.org/help/topic/org.tizen.web.device.apireference/tizen/filesystem.html
 //==== TEST_CRITERIA MMINA MR
 
-var t = async_test(document.title),
-    successCallback, retValue = null;
-t.step(function () {
-    successCallback = t.step_func(function (storages) {
-        assert_type(retValue, "long", "addStorageStateChangeListener returns wrong value");
-
-        t.done();
-    });
-
-    retValue = tizen.filesystem.addStorageStateChangeListener(successCallback);
+test(function () {
+    var retValue = tizen.filesystem.addStorageStateChangeListener(function () {});
+    assert_equals(typeof retValue , "number", "the return type of FileSystemManager.addStorageStateChangeListener");
 });
 
 </script>
