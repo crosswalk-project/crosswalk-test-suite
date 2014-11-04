@@ -27,13 +27,14 @@ EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
 Authors:
         Liu,Yun <yunx.liu@intel.com>
+        Xu, Kang <kangx.xu@intel.com>
 
 -->
 
 <meta charset="utf-8">
 <title>WebRTC Test: RTCPeerConnection basic</title>
 <link rel="author" title="Intel" href="http://www.intel.com">
-<link rel="help" href="http://dev.w3.org/2011/webrtc/editor/webrtc.html#rtcpeerconnection-interface">
+<link rel="help" href="http://www.w3.org/TR/webrtc">
 <script src="../resources/testharness.js"></script>
 <script src="../resources/testharnessreport.js"></script>
 <script src="./support/support.js"></script>
@@ -75,7 +76,6 @@ setup(function () {
   ["function", "setRemoteDescription", ""],
   ["function", "updateIce", ""],
   ["function", "addIceCandidate", ""],
-  ["function", "getConfiguration", ""],
   ["function", "getLocalStreams", ""],
   ["function", "getRemoteStreams", ""],
   ["function", "getStreamById", ""],
@@ -88,9 +88,6 @@ setup(function () {
   //the Identity API extends the RTCPeerConnection interface
   ["rtcIdentityAssertion", "peerIdentity", "readonly"],
   ["event", "onidentityresult", ""],
-  ["event", "onpeeridentity", ""],
-  ["event", "onidpassertionerror", ""],
-  ["event", "onidpvalidationerror", ""],
   ["function", "setIdentityProvider", ""],
   ["function", "getIdentityAssertion", ""]
 ].forEach(function(attr) {
