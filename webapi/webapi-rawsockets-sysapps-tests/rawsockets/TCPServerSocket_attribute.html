@@ -54,21 +54,9 @@ test(function () {
 
 test(function () {
   assert_true(!!namespace, "TCPServerSocket interface support");
-  var socket = new namespace.TCPServerSocket();
-  assert_equals(socket.localAddress, null, "TCPServerSocket.localAddress");
-}, "Check if the value of TCPServerSocket.localAddress is null when not set");
-
-test(function () {
-  assert_true(!!namespace, "TCPServerSocket interface support");
   var socket = new namespace.TCPServerSocket(socketOptions);
   assert_equals(socket.localAddress, socketOptions.localAddress, "TCPServerSocket.localAddress");
 }, "Check if TCPServerSocket.localAddress can be set by the constructor's options argument's valid localAddress member");
-
-test(function () {
-  assert_true(!!namespace, "TCPServerSocket interface support");
-  var socket = new namespace.TCPServerSocket();
-  assert_equals(socket.localPort, null, "TCPServerSocket.localPort");
-}, "Check if the value of TCPServerSocket.localPort is null when not set");
 
 test(function () {
   assert_true(!!namespace, "TCPServerSocket interface support");
