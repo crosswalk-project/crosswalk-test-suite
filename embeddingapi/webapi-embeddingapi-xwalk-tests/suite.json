@@ -1,0 +1,33 @@
+{
+    "pkg-blacklist": [
+        "pack.py", 
+        "COPYING", 
+        "suite.json", 
+        "inst.*.py"
+    ], 
+    "pkg-list": {
+        "embeddingapi": {
+            "blacklist": [
+                "*"
+            ], 
+            "copylist": {
+                "inst.apk.py": "inst.py", 
+                "tests.xml": "tests.xml"
+            }, 
+            "subapp-list": {
+                "embeddingapi": {
+                    "app-name": "embeddingapi", 
+                    "app-type": "EMBEDDINGAPI", 
+                    "embeddingapi-library-name": "crosswalk-webview",
+                    "copylist": {
+                        "libs/chromium/base_java_test_support.jar": "libs/base_java_test_support.jar",
+                        "libs/chromium/content_java_test_support.jar": "libs/content_java_test_support.jar",
+                        "libs/chromium/net_java_test_support.jar": "libs/net_java_test_support.jar",
+                        "libs/testkit/testkit-junit.jar": "libs/testkit-junit.jar"
+                    }
+                }
+            }
+        }
+    }, 
+    "pkg-name": "webapi-embeddingapi-xwalk-tests"
+}
