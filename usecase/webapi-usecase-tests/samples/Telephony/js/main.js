@@ -508,6 +508,10 @@ function getEmergencyNumbers() {
   });
 }
 
+function clearConsole() {
+  $("#consolelog").html("");
+}
+
 $(document).ready(function() {
   $("#consolelog").html("");
   $("#add_service_listener_btn").click(addServiceListeners);
@@ -532,9 +536,10 @@ $(document).ready(function() {
   $("#remove_service_listeners_btn").click(removeServiceListeners);
   $("#sendtones_btn").click(sendTones);
   $("#starttone_btn").click(startTone);
-  $("#endtone_btn").click(endTone);
+  $("#endtone_btn").click(stopTone);
   $("#get_service_btn").click(getService);
   $("#set_dservice_btn").click(setDefaultService);
   $("#enable_service_btn").click(enableService);
   $("#disable_service_btn").click(disableService);
+  $("#clearconsole_btn").click(clearConsole);
 });
