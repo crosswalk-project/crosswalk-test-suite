@@ -27,50 +27,33 @@ EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
 Authors:
         Fan,Weiwei <weiwix.fan@intel.com>
-
+        Xie, Yunxiao <yunxiaox.xie@intel.com>
 -->
 
-<html>
-  <head>
-    <title>WebSQL Database Test: SQLError_message_exist</title>
-    <link rel="author" title="Intel" href="http://www.intel.com" />
-    <link rel="help" href="http://www.w3.org/TR/2010/NOTE-webdatabase-20101118/#dom-sqlerror-message" />
-    <meta name="flags" content="" />
-    <meta name="assert" content="Check if the attribute SQLError.message is exist" />
-    <script type="text/javascript" src="support.js"></script>
-    <script src="../resources/testharness.js"></script>
-    <script src="../resources/testharnessreport.js"></script>
-  </head>
-  <body>
-    <div id="log"></div>
-    <script type="text/javascript">
-        var t = async_test(document.title);
-        function RunTest() {
-            try {
-                var db = GenerateDatabase();
-                db.readTransaction(
-                    function(t) {
-                        t.executeSql('SELECT * FORM test_table;'); //here we use a wrong sql to make SQLError
-                    },
-                    function(e) {
-                        t.step(function() {
-                            assert_exists(e, "message");
-                        });
-                        t.done();
-                    },
-                    function() {
-                        FailTest("execute a right sql. ");
-                    }
-                );
-                //update database version to let the transaction done
-                db.changeVersion('', '1.1');
-            } catch (ex) {
-                FailTest("{Exception code: " + ex.code + "}");
+<meta charset="utf-8">
+<title>WebSQL Database Test: SQLError_message_exist</title>
+<link rel="author" title="Intel" href="http://www.intel.com" />
+<link rel="help" href="http://www.w3.org/TR/2010/NOTE-webdatabase-20101118/#dom-sqlerror-message" />
+<script src="support.js"></script>
+<script src="../resources/testharness.js"></script>
+<script src="../resources/testharnessreport.js"></script>
+<div id="log"></div>
+<script>
+    async_test(function (t) {
+        var db = GenerateDatabase();
+        db.readTransaction(
+            function(t) {
+                t.executeSql('SELECT * FORM test_table;'); //here we use a wrong sql to make SQLError
+            },
+            function(e) {
+                assert_exists(e, "message");
+                t.done();
+            },
+            function() {
+                assert_unreached("cannot reach here.");
             }
-        }
-        Initialize();
-        RunTest();
-        Deinitialize();
-    </script>
-  </body>
-</html>
+        );
+        //update database version to let the transaction done
+        db.changeVersion('', '1.1');
+    }, "Check if the attribute SQLError.message is exist");
+</script>

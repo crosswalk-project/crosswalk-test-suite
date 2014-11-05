@@ -28,16 +28,18 @@ Authors:
         Fan,Weiwei <weiwix.fan@intel.com>
 
 */
-    importScripts("./support.js");
-    var db = GenerateDatabaseSync();
-    var TEN = 10;
-    if (!("version" in db)) {
-        postMessage("DatabaseSync.version is not exist");
-    }
-    var iniValue = db.version;
-    db.version = iniValue + TEN;
-    if (db.version === iniValue && db.version !== iniValue + TEN) {
-        postMessage("PASS");
-    } else {
-        postMessage("DatabaseSync.version is not readonly");
-    }
+var now = new Date();
+var dbname = "dbsync" + now.getTime();
+// create 2MB database on the phone
+var db = openDatabaseSync(dbname, '1.0', 'database for websql test', 1024);
+var TEN = 10;
+if (!("version" in db)) {
+    postMessage("DatabaseSync.version is not exist");
+}
+var iniValue = db.version;
+db.version = iniValue + TEN;
+if (db.version === iniValue && db.version !== iniValue + TEN) {
+    postMessage("PASS");
+} else {
+    postMessage("DatabaseSync.version is not readonly");
+}

@@ -28,17 +28,23 @@ Authors:
         Fan,Weiwei <weiwix.fan@intel.com>
 
 */
-    importScripts("./support.js");
-    var db = GenerateDatabaseSync();
-    db.readTransaction(function(t) {
-        try {
-            t.executeSql("INSERT INTO test_table VALUES (1, 'text 1', 0.1)");
-            postMessage("No SQLException be thrown");
-        } catch (ex) {
-            if ("code" in ex) {
-                postMessage("PASS");
-            } else {
-                postMessage("SQLException.code is not exist");
-            }
+var now = new Date();
+var dbname = "dbsync" + now.getTime();
+// create 2MB database on the phone
+db = openDatabaseSync (dbname, '1.0', 'database for websql test', 1024);
+db.transaction(function (tx) {
+    tx.executeSql("CREATE TABLE test_table(col_int, col_str, col_float)");
+    tx.executeSql("INSERT INTO test_table VALUES (1, 'text 1', 0.1)");
+});
+db.readTransaction(function(t) {
+    try {
+        t.executeSql("INSERT INTO test_table VALUES (1, 'text 1', 0.1)");
+        postMessage("No SQLException be thrown");
+    } catch (ex) {
+        if ("code" in ex) {
+            postMessage("PASS");
+        } else {
+            postMessage("SQLException.code is not exist");
         }
-    });
+    }
+});

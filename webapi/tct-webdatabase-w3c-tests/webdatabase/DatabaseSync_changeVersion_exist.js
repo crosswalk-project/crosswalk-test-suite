@@ -28,10 +28,12 @@ Authors:
         Fan,Weiwei <weiwix.fan@intel.com>
 
 */
-    importScripts("./support.js");
-    var db = GenerateDatabaseSync();
-    if ("changeVersion" in db) {
-        postMessage("PASS");
-    } else {
-        postMessage("DatabaseSync.changeVersion is not exist");
-    }
+var now = new Date();
+var dbname = "dbsync" + now.getTime();
+// create 2MB database on the phone
+var db = openDatabaseSync(dbname, '1.0', 'database for websql test', 1024);
+if ("changeVersion" in db) {
+    postMessage("PASS");
+} else {
+    postMessage("DatabaseSync.changeVersion is not exist");
+}

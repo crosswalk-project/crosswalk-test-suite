@@ -29,52 +29,22 @@ Authors:
         Fan,Weiwei <weiwix.fan@intel.com>
 
 */
-function PassTest(desc) {
-    t.step(function() { assert_true(true, desc); });
-    t.done();
-}
-
-function FailTest(desc) {
-    t.step(function() { assert_true(false, desc); });
-    t.done();
-}
-
-function ExistTest(obj, propertyName, desc) {
-    t.step(function() { assert_exists(obj, propertyName, desc); });
-    t.done();
-}
-
-function Initialize() {
-}
-
-function Deinitialize() {
-}
-
-function sleep(mSec) {
-    var sTime = new Date().getTime();
-    while (new Date().getTime() < sTime + mSec);
-}
 
 function GenerateDatabase() {
-    try {
-        if (!("openDatabase" in window))
-            FailTest("openDatabase not in window");
-        var now = new Date();
-        var dbname = "db" + now.getTime();
-        // create 1024b database on the phone
-        db = openDatabase (dbname, '1.0', 'database for websql test', 1024);
-        db.transaction(function (tx) {
-            tx.executeSql("CREATE TABLE test_table(col_int, col_str, col_float);");
-            tx.executeSql("INSERT INTO test_table VALUES (1, 'text 1', 0.1);");
-            tx.executeSql("INSERT INTO test_table VALUES (2, null, 0.0);");
-            tx.executeSql("INSERT INTO test_table VALUES (3, '', -0.1);");
-        });
-        if (!db)
-            FailTest("Initiation: create db fail - testdatabase is null");
-        return db;
-    } catch (e) {
-        FailTest("{Exception code: " + e + "}");
-    }
+    if (!("openDatabase" in window))
+        return ;
+    var now = new Date();
+    var dbname = "db" + now.getTime();
+    // create 1024b database on the phone
+    db = openDatabase (dbname, '1.0', 'database for websql test', 1024);
+    db.transaction(function (tx) {
+        tx.executeSql("CREATE TABLE test_table(col_int, col_str, col_float);");
+        tx.executeSql("INSERT INTO test_table VALUES (1, 'text 1', 0.1);");
+        tx.executeSql("INSERT INTO test_table VALUES (2, null, 0.0);");
+        tx.executeSql("INSERT INTO test_table VALUES (3, '', -0.1);");
+    });
+
+    return db;
 }
 
 function GenerateDatabaseSync() {
@@ -110,22 +80,13 @@ function GenerateDatabaseSync() {
  * create db with PK constraint
  */
 function openDB() {
-    try {
-        var now = new Date();
-        var dbname = "db" + now.getTime();
-        db = openDatabase(dbname, '1.0', 'database for websql test', 1024);
-        db.transaction(function (tx) {
-            tx.executeSql("CREATE TABLE test_table(col_int PRIMARY KEY, col_str, col_float);");
-        });
-        if (!db) {
-            FailTest("Initiation: create db fail - testdatabase is null");
-            return;
-        } else {
-            return db;
-        }
-    } catch (e) {
-        FailTest("{Exception code: " + e.message + "}");
-    }
+    var now = new Date();
+    var dbname = "db" + now.getTime();
+    db = openDatabase(dbname, '1.0', 'database for websql test', 1024);
+    db.transaction(function (tx) {
+        tx.executeSql("CREATE TABLE test_table(col_int PRIMARY KEY, col_str, col_float);");
+    });
+    return db;
 }
 
 /**

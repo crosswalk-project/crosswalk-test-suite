@@ -27,33 +27,21 @@ EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
 Authors:
         Fan,Weiwei <weiwix.fan@intel.com>
+        Cui, Jieqiong <jieqiongx.cui@intel.com>
 
 -->
 
-<html>
-  <head>
-    <title>WebSQL Database Test: Database_version_exist</title>
-    <link rel="author" title="Intel" href="http://www.intel.com" />
-    <link rel="help" href="http://www.w3.org/TR/2010/NOTE-webdatabase-20101118/#dom-database-version" />
-    <meta name="flags" content="" />
-    <meta name="assert" content="Check if Database.version is exist" />
-    <script type="text/javascript" src="support.js"></script>
-    <script src="../resources/testharness.js"></script>
-    <script src="../resources/testharnessreport.js"></script>
-  </head>
-  <body>
-    <div id="log"></div>
-    <script type="text/javascript">
-        var t = async_test(document.title);
-        try {
-            db = openDB();
-            if (!db) {
-                FailTest("Fail to get database");
-            }
-            ExistTest(db, "version");
-        } catch (ex) {
-            FailTest("{Exception message: " + ex.message + "}");
-        }
-    </script>
-  </body>
-</html>
+<meta charset="utf-8">
+<title>WebSQL Database Test: Database_version_exist</title>
+<link rel="author" title="Intel" href="http://www.intel.com">
+<link rel="help" href="http://www.w3.org/TR/2010/NOTE-webdatabase-20101118/#dom-database-version">
+<script src="../resources/testharness.js"></script>
+<script src="../resources/testharnessreport.js"></script>
+<div id="log"></div>
+<script>
+test(function () {
+  assert_true("openDatabase" in window, "The window.openDatabase exists");
+  var db = openDatabase('mydb', '1.0', 'mydb', 1024);
+  assert_true("version" in db, "The db.version exists");
+}, "Check if the db.version exists");
+</script>

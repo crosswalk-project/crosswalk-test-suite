@@ -27,29 +27,19 @@ EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
 Authors:
         Fan,Weiwei <weiwix.fan@intel.com>
+        Cui, Jieqiong <jieqiongx.cui@intel.com>
 
 -->
 
-<html>
-  <head>
-    <title>WebSQL Database Test: window_openDatabase_exist</title>
-    <link rel="author" title="Intel" href="http://www.intel.com" />
-    <link rel="help" href="http://www.w3.org/TR/2010/NOTE-webdatabase-20101118/#dom-opendatabase" />
-    <meta name="flags" content="" />
-    <meta name="assert" content="Check if window.openDatabase is exist" />
-    <script type="text/javascript" src="support.js"></script>
-    <script src="../resources/testharness.js"></script>
-    <script src="../resources/testharnessreport.js"></script>
-  </head>
-  <body>
-    <div id="log"></div>
-    <script type="text/javascript">
-        var t = async_test(document.title);
-        if (window.openDatabase != "undefined" && window.openDatabase instanceof Function) {
-            PassTest();
-        } else {
-            FailTest("The method window.openDatabase id not exist");
-        }
-    </script>
-  </body>
-</html>
+<meta charset="utf-8">
+<title>WebSQL Database Test: window_openDatabase_exist</title>
+<link rel="author" title="Intel" href="http://www.intel.com">
+<link rel="help" href="http://www.w3.org/TR/2010/NOTE-webdatabase-20101118/#databases">
+<script src="../resources/testharness.js"></script>
+<script src="../resources/testharnessreport.js"></script>
+<div id="log"></div>
+<script>
+test(function () {
+  assert_true("openDatabase" in window, "The window.openDatabase exists");
+}, "heck if the window.openDatabase exists");
+</script>

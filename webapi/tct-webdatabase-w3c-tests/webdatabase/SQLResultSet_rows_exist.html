@@ -26,43 +26,35 @@ NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE,
 EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
 Authors:
+        Xu, Yi <yix.xu@intel.com>
         Fan,Weiwei <weiwix.fan@intel.com>
+        Cui, Jieqiong <jieqiongx.cui@intel.com>
 
 -->
 
-<html>
-  <head>
-    <title>WebSQL Database Test: SQLResultSet_rows_exist</title>
-    <link rel="author" title="Intel" href="http://www.intel.com" />
-    <link rel="help" href="http://www.w3.org/TR/2010/NOTE-webdatabase-20101118/#dom-sqlresultset-rows" />
-    <meta name="flags" content="" />
-    <meta name="assert" content="Check if the attribute SQLResultSet.rows is exist" />
-    <script type="text/javascript" src="support.js"></script>
-    <script src="../resources/testharness.js"></script>
-    <script src="../resources/testharnessreport.js"></script>
-  </head>
-  <body>
-    <div id="log"></div>
-    <script type="text/javascript">
-        var t = async_test(document.title);
-        function errorCallback(error) {
-            FailTest("Fail to execute the sql statement");
-        }
-        function successCallback(t, r) {
-            if (r) {
-                ExistTest(r, "rows");
-            } else {
-                FailTest("Fail to get result set");
-            }
-        }
-        try {
-            db = GenerateDatabase();
-            db.transaction(function (t) {
-                t.executeSql("SELECT * from test_table", [], successCallback, errorCallback);
-            });
-        } catch (ex) {
-            FailTest("{Exception name: " + ex.name + "}");
-        }
-    </script>
-  </body>
-</html>
+<meta charset="utf-8">
+<title>WebSQL Database Test: SQLResultSet_rows_exist</title>
+<link rel="author" title="Intel" href="http://www.intel.com">
+<link rel="help" href="http://www.w3.org/TR/2010/NOTE-webdatabase-20101118/#dom-sqlresultset-rows">
+<script src="../resources/testharness.js"></script>
+<script src="../resources/testharnessreport.js"></script>
+<div id="log"></div>
+<script>
+async_test(function (t1) {
+  assert_true("openDatabase" in window, "The window.openDatabase exists");
+  var now = new Date();
+  var dbname = "db" + now.getTime();
+  db = openDatabase(dbname, '1.0', 'database for websql test', 1024);
+  db.transaction(function (t) {
+    t.executeSql('CREATE TABLE mytable (id_number, content_string);');
+    t.executeSql("INSERT INTO mytable VALUES(1, 'test1');");
+    t.executeSql("SELECT * FROM mytable;", [], t1.step_func(function (t, r) {
+      assert_true("rows" in r, "The r.rows exists");
+      t1.done();
+    }), t1.step_func(function (e) {
+      assert_unreached("It should enter callback");
+      t1.done();
+    }));
+  });
+}, "Check if the attribute SQLResultSet.rows exists");
+</script>
