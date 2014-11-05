@@ -394,7 +394,7 @@ Note:
 
 - Each test should have an entry HTML file.
 - The test script can be embedded into the HTML file or be used as separate JavaScript file.
-- For details on how to use W3C test harness, see http://w3c-test.org/resources/testharness.js.
+- For details on how to use W3C test harness, see [testharness.js API document](https://github.com/w3c/testharness.js/blob/master/docs/api.md).
 
 **Example**
 
