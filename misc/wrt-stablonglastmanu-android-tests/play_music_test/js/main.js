@@ -53,7 +53,7 @@ function musicplay1500() {
     var a = document.getElementById("MediaPlayback");
     a.addEventListener("ended", function() {
         cc++;
-        if (cc <=1500) {
+        if (cc <=2880) {
 　　       a.play();
         }
     });
@@ -66,20 +66,20 @@ function musicplaypause1500() {
     var a = document.getElementById("MediaPlayback");
     a.addEventListener("ended", function() {
         cc++;
-        if (cc <=1500) {
+        if (cc <=2880) {
 　　       a.play();
         }
     });
     var ps = document.getElementById("MediaPlayback");
     ps.addEventListener("playing", function() {
-        if (cc <=1500) {
+        if (cc <=2880) {
 　　       pausewait();
         }
         
     });
     var rp = document.getElementById("MediaPlayback");
     rp.addEventListener("pause", function() {
-        if (cc <=1500) {
+        if (cc <=2880) {
 　　      playwait();
         }
     });

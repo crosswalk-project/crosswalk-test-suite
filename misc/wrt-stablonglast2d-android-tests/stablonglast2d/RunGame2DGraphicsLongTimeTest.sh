@@ -36,8 +36,7 @@ $local_path/sysmon.sh `(basename $0)` $SLEEP $WEBAPP_PACKAGE &
 #launch app
 adb shell am start -a android.intent.action.View -n $WEBAPP_PACKAGE/.DynamicddActivity &
 
-KILLSLEEP=$[ $SLEEP * 3 / 10 ]
-sleep $(($SLEEP + $KILLSLEEP ))
+sleep $(($SLEEP + 1 ))
 
 #kill test case progress
 adb shell am force-stop $WEBAPP_PACKAGE

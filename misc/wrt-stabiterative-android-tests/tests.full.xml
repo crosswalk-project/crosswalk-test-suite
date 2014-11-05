@@ -2,25 +2,12 @@
 <?xml-stylesheet type="text/xsl" href="./testcase.xsl"?>
 <test_definition>
   <suite name="wrt-stabiterative-android-tests" category="Stability">
-    <set name="stabiterative" type="js">
-      <testcase purpose="Validate launch and exit web apps repeatedly no error" type="Functional" status="approved" component="Stability" execution_type="manual" priority="P1" id="Crosswalk_Stabiterative_LaunchAndExit_Repeatedly">
+    <set name="stabiterative" type="script">
+      <testcase purpose="Validate the app can be install/uninstall 50 times" type="Functional" status="approved" component="Stability" execution_type="manual" priority="P1" id="Crosswalk_Stabiterative_Install_Uninstall">
         <description>
-          <pre_condition>
-            1.Make sure Crosswalk binary is installed on device;
-            2.Download package resources from otcqa to local;
-            3.Push package resources to device,run "sdb push xxxx /".
-          </pre_condition>
-          <test_script_entry>/opt/wrt-stabiterative-android-tests/stabiterative/Crosswalk_Stabiterative_LaunchAndExit_Repeatedly.html </test_script_entry>
-          </description>
-          </testcase>
-      <testcase purpose="Validate Suspend Resume System WithVideoPlaying" type="Functional" status="approved" component="Stability" execution_type="auto" priority="P1" id="Suspend_Resume_System_WithVideoPlaying">
-        <description>
-          <pre_condition>
-            1.Make sure Crosswalk binary is installed on device;
-          </pre_condition>
-          <test_script_entry>/opt/wrt-stabiterative-android-tests/stabiterative/Suspend_Resume_System_WithVideoPlaying.sh </test_script_entry>
-          </description>
-          </testcase>
+          <test_script_entry test_script_expected_result="0" timeout="1800">/opt/wrt-stabiterative-android-tests/stabiterative/Crosswalk_Stabiterative_Install_Uninstall.sh</test_script_entry>
+        </description>
+      </testcase>
     </set>
   </suite>
 </test_definition>
