@@ -28,26 +28,23 @@ EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 Authors:
         Fan,Weiwei <weiwix.fan@intel.com>
         Xinx, liu <xinx.liu@intel.com>
+        Xu, Kang <kangx.xu@intel.com>
 
 -->
 
-<html>
-  <head>
-    <title>NetworkInfo Test: NetworkInformation_connection_type</title>
-    <link rel="author" title="Intel" href="http://www.intel.com" />
-    <link rel="help" href="http://www.w3.org/TR/2012/WD-netinfo-api-20121129/#widl-NetworkInformation-connection" />
-    <meta name="flags" content="" />
-    <meta name="assert" content="Check if the type of NetworkInformation.connection is 'object'" />
-    <script src="../resources/testharness.js"></script>
-    <script src="../resources/testharnessreport.js"></script>
-  </head>
-  <body>
-  <div id="log"></div>
-    <script>
-        test(function() {
-            var connection = navigator.connection || navigator.mozConnection || navigator.webkitConnection;
-            assert_equals(typeof connection, "object", "The type of NetworkInformation.connection");
-        }, document.title);
-    </script>
-  </body>
-</html>
+<meta charset="utf-8">
+<title>NetworkInfo Test: Navigator - connection</title>
+<link rel="author" title="Intel" href="http://www.intel.com">
+<link rel="help" href="http://w3c.github.io/netinfo/">
+<script src="../resources/testharness.js"></script>
+<script src="../resources/testharnessreport.js"></script>
+<div id="log"></div>
+<script>
+
+test(function () {
+    assert_true("connection" in navigator,"the navigator.connection attribute exists");
+    assert_true(navigator.connection instanceof NetworkInformation,"the navigator.connection attribute is an object of NetworkInformation");
+    assert_readonly(navigator, "connection", "the navigator.connection attribute is readonly");
+}, "Check if the navigator.connection attribute exists, readonly and type of NetworkInformation");
+
+</script>
