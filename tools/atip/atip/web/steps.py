@@ -32,9 +32,34 @@ try:
 except ImportError:
     from urllib.parse import urljoin, urlparse
 
+def get_page_url(context, text):
+    url = ''
+    test_prefix = ''
+    try:
+        url_components = urlparse(context.app.current_url())
+        if str(context.app.app_config).upper().find('TIZEN') >= 0: 
+           test_prefix = '%s://%s//' % (url_components.scheme, url_components.netloc)
+        elif str(context.app.app_config).upper().find('ANDROID') >= 0: 
+           if url_components.scheme == 'http':
+              test_prefix = '%s://%s/' % (url_components.scheme,url_components.netloc)
+    except Exception, e: 
+        print "Failed to get page url: %s" % e
+        return None
+    try:
+        nPos = text[0]
+        while nPos == '/' :
+            text = text[1:]
+            nPos = text[0]
+    except Exception, e:
+        print  "Test page URL error: %s" % e
+        return None
+    url = "%s%s" % (test_prefix,text)  
+    return url
+
 
 @step(u'I go to "{url}"')
 def i_visit_url(context, url):
+    url = get_page_url(context, url)
     assert context.app.switch_url(url, True)
 
 
@@ -55,8 +80,8 @@ def go_forward(context):
 
 @step(u'The current URL should be "{text}"')
 def url_should_be_text(context, text):
-    url = urljoin(context.app.url_prefix, text)
-    assert context.app.current_url() == url
+    url = get_page_url(context, text)
+    assert context.app.current_url().upper() == url.upper()
 
 
 @step(u'I should see title "{text}"')
