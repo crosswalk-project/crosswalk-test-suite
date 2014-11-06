@@ -27,6 +27,7 @@ EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
 Authors:
         Feng, GangX <gangx.feng@intel.com>
+        Xu, Kang <kangx.xu@intel.com>
 
 -->
 <html>
@@ -38,9 +39,11 @@ Authors:
     <script src="../../js/thirdparty/jquery.js"></script>
     <script src="../../js/thirdparty/jquery.mobile.js"></script>
     <script src="../../js/tests.js"></script>
+    <script src="../../js/main.js"></script>
     <script src="js/main.js"></script>
   </head>
   <body>
+    <input type="hidden" id="sub_test"/>
     <div data-role="page" id="main">
         <div data-role="header" data-position="fixed" data-tap-toggle="false">
             <h1 id="main_page_title"></h1>
@@ -49,73 +52,73 @@ Authors:
             <ul data-role="listview" id="cspList" data-divider-theme="b" data-inset="true">
                 <li data-role="list-divider" role="heading">Test localization</li>
                 <li id="other-localization">
-                    <a href="javascript:goToApp('res/other-localization.html')" data-transition="slide" style="">
+                    <a href="javascript:runApp('res/other-localization.html')" data-transition="slide" style="">
                         <h2>other-localization</h2>
                     </a>
                 </li>
                 <li data-role="list-divider" role="heading">Test unload event</li>
                 <li id="lifecycle-unload-event">
-                    <a href="javascript:goToApp('res/lifecycle-unload-event.html')" data-transition="slide" style="">
+                    <a href="javascript:runApp('res/lifecycle-unload-event.html')" data-transition="slide" style="">
                         <h2>lifecycle-unload-event</h2>
                     </a>
                 </li>
                 <li data-role="list-divider" role="heading">Test access policy</li>
                 <li id="other-widget-access-policy">
-                    <a href="javascript:goToApp('res/other-widget-access-policy.html')" data-transition="slide" style="">
+                    <a href="javascript:runApp('res/other-widget-access-policy.html')" data-transition="slide" style="">
                         <h2>other-widget-access-policy</h2>
                     </a>
                 </li>
                 <li data-role="list-divider" role="heading">Test uri schemes</li>
                 <li id="other-uri-schemes">
-                    <a href="javascript:goToApp('res/other-uri-schemes.html')" data-transition="slide" style="">
+                    <a href="javascript:runApp('res/other-uri-schemes.html')" data-transition="slide" style="">
                         <h2>other-uri-schemes</h2>
                     </a>
                 </li>
                 <li id="other-uri-schemes-mailto">
-                    <a href="javascript:goToApp('res/other-uri-schemes-mailto.html')" data-transition="slide" style="">
+                    <a href="javascript:runApp('res/other-uri-schemes-mailto.html')" data-transition="slide" style="">
                         <h2>other-uri-schemes-mailto</h2>
                     </a>
                 </li>
                 <li data-role="list-divider" role="heading">Test debug web inspector</li>
                 <li id="debug-web-inspector-ubuntu">
-                    <a href="javascript:goToApp('res/debug-web-inspector-ubuntu.html')" data-transition="slide" style="">
+                    <a href="javascript:runApp('res/debug-web-inspector-ubuntu.html')" data-transition="slide" style="">
                         <h2>debug-web-inspector-ubuntu</h2>
                     </a>
                 </li>
                 <li id="debug-web-inspector-windows7">
-                    <a href="javascript:goToApp('res/debug-web-inspector-windows7.html')" data-transition="slide" style="">
+                    <a href="javascript:runApp('res/debug-web-inspector-windows7.html')" data-transition="slide" style="">
                         <h2>debug-web-inspector-windows7</h2>
                     </a>
                 </li>
                 <li data-role="list-divider" role="heading">Test access multiple</li>
                 <li id="url-access-multi">
-                    <a href="javascript:goToApp('res/url-access-multi.html')" data-transition="slide" style="">
+                    <a href="javascript:runApp('res/url-access-multi.html')" data-transition="slide" style="">
                         <h2>url-access-multi</h2>
                     </a>
                 </li>
                 <li id="url-access-multi-all">
-                    <a href="javascript:goToApp('res/url-access-multi-all.html')" data-transition="slide" style="">
+                    <a href="javascript:runApp('res/url-access-multi-all.html')" data-transition="slide" style="">
                         <h2>url-access-multi-all</h2>
                     </a>
                 </li>
                 <li id="url-access-multi-subdomains">
-                    <a href="javascript:goToApp('res/url-access-multi-subdomains.html')" data-transition="slide" style="">
+                    <a href="javascript:runApp('res/url-access-multi-subdomains.html')" data-transition="slide" style="">
                         <h2>url-access-multi-subdomains</h2>
                     </a>
                 </li>
                 <li data-role="list-divider" role="heading">Test security permission and encryption</li>
                 <li id="security-policy">
-                    <a href="javascript:goToApp('res/security-policy.html')" data-transition="slide" style="">
+                    <a href="javascript:runApp('res/security-policy.html')" data-transition="slide" style="">
                         <h2>security-policy</h2>
                     </a>
                 </li>
                 <li id="security-permission">
-                    <a href="javascript:goToApp('res/security-permission.html')" data-transition="slide" style="">
+                    <a href="javascript:runApp('res/security-permission.html')" data-transition="slide" style="">
                         <h2>security-permission</h2>
                     </a>
                 </li>
                 <li id="protection-encryption-check">
-                    <a href="javascript:goToApp('res/protection-encryption-check.html')" data-transition="slide" style="">
+                    <a href="javascript:runApp('res/protection-encryption-check.html')" data-transition="slide" style="">
                         <h2>protection-encryption-check</h2>
                     </a>
                 </li>
@@ -137,6 +140,9 @@ Authors:
             <p>Test passes if all sub-tests pass.</p>
           </font>
         </div>
+    </div>
+    <div data-role="page" id="test_ui">
+        <iframe id="test_frame" width="100%" frameborder="no" border="0" src=""></iframe>
     </div>
   </body>
 </html>

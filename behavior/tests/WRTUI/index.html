@@ -27,6 +27,7 @@ EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
 Authors:
         Feng, GangX <gangx.feng@intel.com>
+        Xu, Kang <kangx.xu@intel.com>
 
 -->
 <html>
@@ -38,9 +39,11 @@ Authors:
     <script src="../../js/thirdparty/jquery.js"></script>
     <script src="../../js/thirdparty/jquery.mobile.js"></script>
     <script src="../../js/tests.js"></script>
+    <script src="../../js/main.js"></script>
     <script src="js/main.js"></script>
   </head>
   <body>
+    <input type="hidden" id="sub_test"/>
     <div data-role="page" id="main">
         <div data-role="header" data-position="fixed" data-tap-toggle="false">
             <h1 id="main_page_title"></h1>
@@ -49,23 +52,23 @@ Authors:
             <ul data-role="listview" id="cspList" data-divider-theme="b" data-inset="true">
                 <li data-role="list-divider" role="heading">Test multiple browsing</li>
                 <li id="multiple-browsing-context">
-                    <a href="javascript:goToApp('res/multiple-browsing-context.html')" data-transition="slide" style="">
+                    <a href="javascript:runApp('res/multiple-browsing-context.html')" data-transition="slide" style="">
                         <h2>multiple-browsing-context</h2>
                     </a>
                 </li>
                 <li data-role="list-divider" role="heading">Test rotation</li>
                 <li id="view-mode-maximized-rotation">
-                    <a href="javascript:goToApp('res/view-mode-maximized-rotation.html')" data-transition="slide" style="">
+                    <a href="javascript:runApp('res/view-mode-maximized-rotation.html')" data-transition="slide" style="">
                         <h2>view-mode-maximized-rotation</h2>
                     </a>
                 </li>
                 <li id="view-mode-fullscreen-rotation">
-                    <a href="javascript:goToApp('res/view-mode-fullscreen-rotation.html')" data-transition="slide" style="">
+                    <a href="javascript:runApp('res/view-mode-fullscreen-rotation.html')" data-transition="slide" style="">
                         <h2>view-mode-fullscreen-rotation</h2>
                     </a>
                 </li>
                 <li id="application-rotation-sensor-enable">
-                    <a href="javascript:goToApp('res/application-rotation-sensor-enable.html')" data-transition="slide" style="">
+                    <a href="javascript:runApp('res/application-rotation-sensor-enable.html')" data-transition="slide" style="">
                         <h2>application-rotation-sensor-enable</h2>
                     </a>
                 </li>
@@ -87,6 +90,9 @@ Authors:
             <p>Test passes if all sub-tests pass.</p>
           </font>
         </div>
+    </div>
+    <div data-role="page" id="test_ui">
+        <iframe id="test_frame" width="100%" frameborder="no" border="0" src=""></iframe>
     </div>
   </body>
 </html>

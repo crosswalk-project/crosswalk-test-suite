@@ -131,10 +131,6 @@ function uninstall(val) {
     }
 }
 
-function goToApp(path) {
-    window.open(path);
-}
-
 function recordResultToXML(test_name, result){
     tests.each(
         function() {
@@ -284,20 +280,6 @@ function updateAppDecoration() {
         }
     );
     $("#cspList").listview( "refresh" );
-}
-
-function backAppsHome() {
-    window.close();
-}
-
-function successBackAppsHome() {
-    window.close();
-}
-
-function reportResult(res) {
-    var jsonStr="[{\"testname\":\""+getAppName()+"\",\"result\":\""+res+"\"}]";
-    window.opener.postMessage(jsonStr, '*');
-    successBackAppsHome();
 }
 
 window.addEventListener('load', initTests, false);

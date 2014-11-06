@@ -27,6 +27,7 @@ EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
 Authors:
         Feng, GangX <gangx.feng@intel.com>
+        Xu, Kang <kangx.xu@intel.com>
 
 -->
 <html>
@@ -38,9 +39,11 @@ Authors:
     <script src="../../js/thirdparty/jquery.js"></script>
     <script src="../../js/thirdparty/jquery.mobile.js"></script>
     <script src="../../js/tests.js"></script>
+    <script src="../../js/main.js"></script>
     <script src="js/main.js"></script>
   </head>
   <body>
+    <input type="hidden" id="sub_test"/>
     <div data-role="page" id="main">
         <div data-role="header" data-position="fixed" data-tap-toggle="false">
             <h1 id="main_page_title"></h1>
@@ -49,92 +52,92 @@ Authors:
             <ul data-role="listview" id="cspList" data-divider-theme="b" data-inset="true">
                 <li data-role="list-divider" role="heading">Test common directives</li>
                 <li id="csp-none">
-                    <a href="javascript:goToApp('res/csp-none.html')" data-transition="slide" style="">
+                    <a href="javascript:runApp('res/csp-none.html')" data-transition="slide" style="">
                         <h2>csp-none</h2>
                     </a>
                 </li>
                 <li id="csp-self">
-                    <a href="javascript:goToApp('res/csp-self.html')" data-transition="slide" style="">
+                    <a href="javascript:runApp('res/csp-self.html')" data-transition="slide" style="">
                         <h2>csp-self</h2>
                     </a>
                 </li>
                 <li id="csp-asterisk">
-                    <a href="javascript:goToApp('res/csp-asterisk.html')" data-transition="slide" style="">
+                    <a href="javascript:runApp('res/csp-asterisk.html')" data-transition="slide" style="">
                         <h2>csp-asterisk</h2>
                     </a>
                 </li>
                 <li id="csp-cross-origin">
-                    <a href="javascript:goToApp('res/csp-cross-origin.html')" data-transition="slide" style="">
+                    <a href="javascript:runApp('res/csp-cross-origin.html')" data-transition="slide" style="">
                         <h2>csp-cross-origin</h2>
                     </a>
                 </li>
                 <li id="default-policy-by-directives-csp">
-                    <a href="javascript:goToApp('res/default-policy-by-directives-csp.html')" data-transition="slide" style="">
+                    <a href="javascript:runApp('res/default-policy-by-directives-csp.html')" data-transition="slide" style="">
                         <h2>default-policy-by-directives-csp</h2>
                     </a>
                 </li>
                 <li id="default-policy-by-directives-report-only">
-                    <a href="javascript:goToApp('res/default-policy-by-directives-report-only.html')" data-transition="slide" style="">
+                    <a href="javascript:runApp('res/default-policy-by-directives-report-only.html')" data-transition="slide" style="">
                         <h2>default-policy-by-directives-report-only</h2>
                     </a>
                 </li>
                 <li data-role="list-divider" role="heading">Test default-src directive</li>
                 <li id="default-src_none">
-                    <a href="javascript:goToApp('res/default-src_none.html')" data-transition="slide" style="">
-                        <h2>default-src-none</h2>
+                    <a href="javascript:runApp('res/default-src_none.html')" data-transition="slide" style="">
+                        <h2>default-src_none</h2>
                     </a>
                 </li>
                 <li id="default-src_self">
-                    <a href="javascript:goToApp('res/default-src_self.html')" data-transition="slide" style="">
-                        <h2>default-src-self</h2>
+                    <a href="javascript:runApp('res/default-src_self.html')" data-transition="slide" style="">
+                        <h2>default-src_self</h2>
                     </a>
                 </li>
                 <li id="default-src_asterisk">
-                    <a href="javascript:goToApp('res/default-src_asterisk.html')" data-transition="slide" style="">
-                        <h2>default-src-asterisk</h2>
+                    <a href="javascript:runApp('res/default-src_asterisk.html')" data-transition="slide" style="">
+                        <h2>default-src_asterisk</h2>
                     </a>
                 </li>
                 <li id="default-src_cross_origin">
-                    <a href="javascript:goToApp('res/default-src_cross_origin.html')" data-transition="slide" style="">
-                        <h2>default-src-cross-origin</h2>
+                    <a href="javascript:runApp('res/default-src_cross_origin.html')" data-transition="slide" style="">
+                        <h2>default-src_cross_origin</h2>
                     </a>
                 </li>
                 <li data-role="list-divider" role="heading">Test sandbox directive</li>
                 <li id="sandbox-empty-ext">
-                    <a href="javascript:goToApp('res/sandbox-empty-ext.html')" data-transition="slide" style="">
+                    <a href="javascript:runApp('res/sandbox-empty-ext.html')" data-transition="slide" style="">
                         <h2>sandbox-empty-ext</h2>
                     </a>
                 </li>
                 <li id="sandbox-empty-int">
-                    <a href="javascript:goToApp('res/sandbox-empty-int.html')" data-transition="slide" style="">
+                    <a href="javascript:runApp('res/sandbox-empty-int.html')" data-transition="slide" style="">
                         <h2>sandbox-empty-int</h2>
                     </a>
                 </li>
                 <li id="sandbox-empty-inline">
-                    <a href="javascript:goToApp('res/sandbox-empty-inline.html')" data-transition="slide" style="">
+                    <a href="javascript:runApp('res/sandbox-empty-inline.html')" data-transition="slide" style="">
                         <h2>sandbox-empty-inline</h2>
                     </a>
                 </li>
                 <li id="sandbox-same-origin-allow-scripts">
-                    <a href="javascript:goToApp('res/sandbox-same-origin-allow-scripts.html')" data-transition="slide" style="">
+                    <a href="javascript:runApp('res/sandbox-same-origin-allow-scripts.html')" data-transition="slide" style="">
                         <h2>sandbox-same-origin-allow-scripts</h2>
                     </a>
                 </li>
                 <li data-role="list-divider" role="heading">Test script-src directive</li>
                 <li id="script-src_none">
-                    <a href="javascript:goToApp('res/script-src_none.html')" data-transition="slide" style="">
-                        <h2>script-src-none</h2>
+                    <a href="javascript:runApp('res/script-src_none.html')" data-transition="slide" style="">
+                        <h2>script-src_none</h2>
                     </a>
                 </li>
                 <li id="script-src_inline_eval">
-                    <a href="javascript:goToApp('res/script-src_inline_eval.html')" data-transition="slide" style="">
-                        <h2>script-src-inline-eval</h2>
+                    <a href="javascript:runApp('res/script-src_inline_eval.html')" data-transition="slide" style="">
+                        <h2>script-src_inline_eval</h2>
                     </a>
                 </li>
                 <li data-role="list-divider" role="heading">Test style-src directive</li>
                 <li id="style-src_self">
-                    <a href="javascript:goToApp('res/style-src_self.html')" data-transition="slide" style="">
-                        <h2>style-src-self</h2>
+                    <a href="javascript:runApp('res/style-src_self.html')" data-transition="slide" style="">
+                        <h2>style-src_self</h2>
                     </a>
                 </li>
                 <li data-role="list-divider" role="heading">Clean all the installed packages</li>
@@ -157,6 +160,9 @@ Authors:
             <p>Test passes if all sub-tests pass.</p>
           </font>
         </div>
+    </div>
+    <div data-role="page" id="test_ui">
+        <iframe id="test_frame" width="100%" frameborder="no" border="0" src=""></iframe>
     </div>
   </body>
 </html>
