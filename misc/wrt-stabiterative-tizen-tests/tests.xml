@@ -2,27 +2,17 @@
 <?xml-stylesheet type="text/xsl" href="./testcase.xsl"?>
 <test_definition>
   <suite category="Stability" name="wrt-stabiterative-tizen-tests">
-    <set name="stabiterative" type="js">
-      <testcase component="Stability" execution_type="manual" id="Crosswalk_Stabiterative_LaunchAndExit_Repeatedly" purpose="Validate launch and exit web apps repeatedly no error">
+    <set name="stabiterative" type="script">
+      <testcase component="Stability" execution_type="auto" id="Crosswalk_Stabiterative_LaunchAndExit_Repeatedly" purpose="Validate launch and exit web apps repeatedly no error">
         <description>
-          <pre_condition>
-            1.Make sure Crosswalk binary is installed on device;
-            2.Download package resources from otcqa to local;
-            3.Push package resources to device,run "sdb push xxxx /".
-          </pre_condition>
-          <test_script_entry>/opt/wrt-stabiterative-tizen-tests/stabiterative/Crosswalk_Stabiterative_LaunchAndExit_Repeatedly.html </test_script_entry>
+          <test_script_entry>app_user@/home/app/content/tct/opt/wrt-stabiterative-tizen-tests/stabiterative/Crosswalk_Stabiterative_LaunchAndExit_Repeatedly.sh </test_script_entry>
         </description>
       </testcase>
-      <testcase component="Stability" execution_type="manual" id="Crosswalk_Stabiterative_OpenAndClose_Repeatedly" purpose="Validate open and close window repeatedly no error">
+      <testcase component="Stability" execution_type="auto" id="Install_Uninstall_Webapp_Repeatly" purpose="Validate install and uninstall web apps repeatedly no error">
         <description>
-          <pre_condition>
-            1.Make sure Crosswalk binary is installed on device;
-            2.Download package resources from otcqa to local;
-            3.Push package resources to device,run "sdb push xxxx /".
-          </pre_condition>
-          <test_script_entry>/opt/wrt-stabiterative-tizen-tests/stabiterative/Crosswalk_Stabiterative_OpenAndClose_Repeatedly.html </test_script_entry>
+          <test_script_entry>app_user@/home/app/content/tct/opt/wrt-stabiterative-tizen-tests/stabiterative/Install_Uninstall_Webapp_Repeatly.sh </test_script_entry>
         </description>
-      </testcase>
+      </testcase>      
     </set>
   </suite>
 </test_definition>

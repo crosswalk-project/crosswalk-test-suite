@@ -76,6 +76,37 @@ if [ $? -ne 0 ];then
 fi
 find $BUILD_DEST -name "Makefile*" -delete
 
+#create dynamic xpk
+cd $BUILD_ROOT/$folderName
+for buildfolder in `ls`
+do
+    if [ -d $BUILD_DEST/opt/$name/$folderName/$buildfolder ];then
+        cd $xpkpacktooldir
+        python make_xpk.py $BUILD_DEST/opt/$name/$folderName/$buildfolder k.pem
+        if [ $? -ne 0 ];then
+            echo "Create $name.apk fail.... >>>>>>>>>>>>>>>>>>>>>>>>>"
+            #clean_workspace
+            exit 1
+        fi
+        #clean middle files
+        rm k.pem
+        rm -rf $BUILD_DEST/opt/$name/$folderName/$buildfolder
+        sleep 2
+    fi
+done
+
+# zip for resource
+#mv $xpkpacktooldir/*.xpk $BUILD_DEST/opt/$name/$folderName
+#cd $BUILD_DEST
+#zip -rq $BUILD_DEST/opt/$name/$name.zip *
+#if [ $? -ne 0 ];then
+#   echo "Create $name.zip fail.... >>>>>>>>>>>>>>>>>>>>>>>>>"
+#   clean_workspace
+#   exit 1
+#fi
+
+# zip_for_xpk
+mv $xpkpacktooldir/*.xpk $BUILD_DEST/opt/$name/$folderName
 cp -af $BUILD_ROOT/inst.sh $BUILD_DEST/opt/$name/inst.sh
 cd $BUILD_DEST
 if [ $src_file -eq 0 ];then

@@ -29,7 +29,7 @@
 #                      Yufei,Chen<yufeix.chen@intel.com>
 #
 
-AC_INIT([wrt-stablonglast3d-tizen-tests], [6.35.1.2], [yufeix.chen@intel.com])
+AC_INIT([wrt-stablonglast2d-tizen-tests], [6.35.1.2], [yufeix.chen@intel.com])
 AM_INIT_AUTOMAKE([-Wall -Werror foreign])
 
 # Checks for programs.
@@ -37,5 +37,6 @@ AM_INIT_AUTOMAKE([-Wall -Werror foreign])
 
 AC_CONFIG_FILES([\
 Makefile \
-stablonglast3d/Makefile])
+stablonglast2d/Makefile \
+stablonglast2d/dynamic/Makefile])
 AC_OUTPUT

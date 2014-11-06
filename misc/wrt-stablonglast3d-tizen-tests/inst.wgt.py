@@ -124,17 +124,27 @@ def uninstPKGs():
 
 
 def instPKGs():
+
     action_status = True
     (return_code, output) = doRemoteCMD(
         "mkdir -p %s" % PKG_SRC_DIR)
     if return_code != 0:
         action_status = False
+
+    (return_code, output) = doRemoteCMD(
+        "mkdir -p %s/stablonglast3d" % PKG_SRC_DIR)
+    if return_code != 0:
+        action_status = False
+ 
+    if not doRemoteCopy("stablonglast3d", "%s/stablonglast3d" % PKG_SRC_DIR):
+        action_status = False
+    
     for root, dirs, files in os.walk(SCRIPT_DIR):
         if root.endswith("mediasrc"):
             continue
 
         for file in files:
-            if file.endswith(".wgt"):
+            if file.endswith("%s.wgt" % PKG_NAME):
                 if not doRemoteCopy(os.path.join(root, file), "%s/%s" % (SRC_DIR, file)):
                     action_status = False
                 (return_code, output) = doRemoteCMD(
@@ -155,7 +165,13 @@ def instPKGs():
     if not doRemoteCopy("specname/tests", "%s/tests" % PKG_SRC_DIR):
         action_status = False
     '''
-
+    for item in glob.glob("%s/*" % SCRIPT_DIR):
+        if item.endswith("inst.py"):
+            continue
+        else:
+            item_name = os.path.basename(item)
+            if not doRemoteCopy(item, PKG_SRC_DIR):
+                action_status = False
     return action_status
 
 
