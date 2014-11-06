@@ -49,7 +49,7 @@ test(function () {
     };
 
     statusNotification = new tizen.StatusNotification(statusNotificationType, titleToSet, notificationDict);
-    assert_array_equals(statusNotification.iconPath, invalidIconPath,
+    assert_equals(statusNotification.iconPath, invalidIconPath,
             "StatusNotification.iconPath has wrong value.");
 }, document.title);
 
