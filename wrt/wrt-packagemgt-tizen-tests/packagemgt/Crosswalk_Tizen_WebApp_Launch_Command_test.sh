@@ -40,10 +40,10 @@ func_check_xwalkservice
 # install original xpk
 pkgcmd -i -t xpk -p $xpk_path/diffid_same_version_tests.xpk -q
 
-app_id=`pkgcmd -l | grep "diffid_same_version_tests" | awk '{print $4}'`
-app_id=`echo $app_id | awk '{print $1}'`
+app_id=`app_launcher -l | grep diffid_same_version_tests`
+app_id=`echo $app_id | awk '{print $(NF-1)}'`
 app_id=${app_id:1:-1}
-xwalk-launcher $app_id 
+app_launcher -s $app_id 
 sleep 2
 
 #install xwalk web app

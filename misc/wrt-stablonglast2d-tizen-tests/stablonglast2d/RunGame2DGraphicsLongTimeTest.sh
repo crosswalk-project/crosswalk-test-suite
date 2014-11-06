@@ -34,8 +34,10 @@ SLEEP=120
 $local_path/Generatesysmon.sh $SLEEP `(basename $0)` &
 
 #run HerokuApp
-pkgid=`pkgcmd -l | grep -i dynamic | grep -v Box | cut -d '[' -f3 | cut -d ']' -f1`
-xwalk-launcher $pkgid &
+appid=`app_launcher -l | grep dynamic`
+appid=`echo $appid | awk '{print $(NF-1)}'`
+appid=${appid:1:-1}
+app_launcher -s $appid &
 
 sleep $SLEEP
 #kill test case progress
