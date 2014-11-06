@@ -17,14 +17,26 @@ function installpkg()
 {
     #environment clear
     echo "environment clear >>>>>>>>>>>>>>>>>>>>>>>>>>>>>."
+    pkgid=`pkgcmd -l | grep -i dynamic | grep -v Box | cut -d '[' -f3 | cut -d ']' -f1`
+    xwalkctl --uninstall $pkgid > /dev/null 2>&1
+
+    echo "Install webapp ..."
+    [ -e $RESOURCE_DIR/tct/opt/$NAME/$folderName/*.xpk ] || echo Not found xpk to install && xwalkctl --install $RESOURCE_DIR/tct/opt/$NAME/$folderName/*.xpk 1> /tmp/installer.log 2>&1
+    RET=`grep "Application installed" /tmp/installer.log`
+    if [ -z "$RET"  ]
+    then
+      echo "Dynamic webapp installed failed!"
+      exit 1
+    else
+      echo "Dynamic webapp installed successfully!"
+    fi
 
     oldFolder=OldSysmon_`date '+%Y%m%d%H%M'`
     [ -e /tmp/sysmon.xml ] && mkdir /tmp/$oldFolder
     [ -d /tmp/$oldFolder ] && mv /tmp/sysmon* /tmp/$oldFolder/
 }
 
-function uninstallpkg()
-{
+function uninstallpkg(){
 #clear resouce
 if [ -d $RESOURCE_DIR/tct/opt/$NAME ];then
     rm -rf $RESOURCE_DIR/tct/opt/$NAME

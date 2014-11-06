@@ -25,21 +25,24 @@
 #EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 #
 #Authors:
-#       Yufei, Chen <yufeix.chen@intel.com>
+#
 
-local_path=$(cd "$(dirname $0)";pwd)
-
-SLEEP=120
-#monitor device info
-$local_path/Generatesysmon.sh $SLEEP `(basename $0)` &
-
-#run HerokuApp
-pkgid=`pkgcmd -l | grep -i dynamic | grep -v Box | cut -d '[' -f3 | cut -d ']' -f1`
-xwalk-launcher $pkgid &
-
-sleep $SLEEP
-#kill test case progress
-tcProgressPID=`ps aux | grep "$pkgid" | grep -v "grep" | grep -v disable | awk '{print $2}'`
-kill -9 $tcProgressPID
-pkgcmd -u -t xpk -q -n $pkgid
-echo "End........"
+path=$(dirname $(dirname $0))
+PACKAGENAME="2d_test.wgt"
+source $path/stablonglast2d/xwalk_common.sh
+APP_NAME="2d_test"
+uninstall_app $APP_NAME
+install_app $PACKAGENAME
+launch_app $APP_NAME
+sleep 2
+if [[ "$launch_statue" =~ "launched" ]];then
+   sleep 86400
+   get_app_statu=`app_launcher -r twodoptest.twodframeplaytest`
+   if [[ "$get_app_statu" =~ "running" ]];then
+       app_launcher -k twodoptest.twodframeplaytest
+   else
+       exit 1
+   fi
+else
+    exit 1
+fi

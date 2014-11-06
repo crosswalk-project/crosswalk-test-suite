@@ -25,23 +25,24 @@
 #EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 #
 #Authors:
-#       Yufei, Chen <yufeix.chen@intel.com>
+#
 
-local_path=$(cd "$(dirname $0)";pwd)
-
-APPURL="http://rscohn2.herokuapp.com/sbp/"
-
-SLEEP=120
-#monitor device info
-$local_path/Generatesysmon.sh $SLEEP `(basename $0)` &
-
-#run HerokuApp
-xwalk $APPURL > /dev/null 2>&1 &
-
-sleep $SLEEP
-
-#kill test case progress
-tcProgressPID=`ps aux | grep "$APPURL" | grep -v "grep" | grep -v disable | awk '{print $2}'`
-kill -9 $tcProgressPID
-
-echo "End........"
+path=$(dirname $(dirname $0))
+PACKAGENAME="3d_test.wgt"
+source $path/stablonglast3d/xwalk_common.sh
+APP_NAME="3d_test"
+uninstall_app $APP_NAME
+install_app $PACKAGENAME
+launch_app $APP_NAME
+sleep 2
+if [[ "$launch_statue" =~ "launched" ]];then
+   sleep 86400
+   get_app_statu=`app_launcher -r thrdoptest.twodframeplaytest`
+   if [[ "$get_app_statu" =~ "running" ]];then
+       app_launcher -k thrdoptest.twodframeplaytest
+   else
+       exit 1
+   fi
+else
+    exit 1
+fi

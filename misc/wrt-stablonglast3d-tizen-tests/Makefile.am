@@ -1,4 +1,4 @@
-commondir = stablonglast3d
+commondir = stablonglast2d
 SUBDIRS = $(commondir)
-docdir = /opt/wrt-stablonglast3d-tizen-tests
+docdir = /opt/wrt-stablonglast2d-tizen-tests
 dist_doc_DATA=Changelog COPYING tests.xml README

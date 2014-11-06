@@ -11,21 +11,44 @@
         "inst.*"
     ],
     "pkg-list": {
+        "apk,cordova": {
+            "blacklist": [
+                "*"
+            ],
+            "copylist": {
+                "inst.apk.py": "inst.py",
+                "tests.full.xml": "tests.full.xml",
+                "tests.xml": "tests.xml"
+            },
+            "pkg-app": {}
+        },
+        "apk-aio": {
+            "blacklist": []
+        },
+        "wgt": {
+            "blacklist": [
+                "*"
+            ],
+            "copylist": {
+                "inst.wgt.py": "inst.py",
+                "tests.full.xml": "tests.full.xml",
+                "tests.xml": "tests.xml",
+                "stablonglast2d":"stablonglast2d"
+            },
+            "subapp-list": {"2d_test": {}}
+
+        },
         "xpk": {
             "blacklist": [
                 "*"
             ],
             "copylist": {
                 "inst.xpk.py": "inst.py",
-                "tests.xml": "tests.xml",
-                "stablonglast2d/sysmon": "stablonglast2d/sysmon",
-                "stablonglast2d/RunGame2DGraphicsLongTimeTest.sh": "stablonglast2d/RunGame2DGraphicsLongTimeTest.sh",
-                "stablonglast2d/Generatesysmon.sh": "stablonglast2d/Generatesysmon.sh"
+                "tests.full.xml": "tests.full.xml",
+                "tests.xml": "tests.xml"
             },
-            "subapp-list": {
-                "stablonglast2d/dynamic": {
-                    "install-path": "stablonglast2d"
-                }
+            "pkg-app": {
+                "blacklist": []
             }
         }
     },
