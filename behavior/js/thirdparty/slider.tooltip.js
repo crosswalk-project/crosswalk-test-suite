@@ -89,35 +89,7 @@ $.widget( "mobile.slider", $.mobile.slider, {
 		}
 		this._currentValue = newValue;
 
-        var ID = this.element[0].id;
-        if (ID == "slider-1") {
-            if ( o.showValue ) {
-                this._handleText.html(Math.round(newValue*100)+"%");
-                $("#p").css("opacity", newValue);
-                if(newValue != 1){
-                    testFlag.Transparency = true;
-                    status();
-                }
-            }
-        }else if(ID == "slider-2"){
-            if ( o.showValue ) {
-                this._handleText.html(Math.round(newValue));
-                $("#text-div").css("outline-offset", newValue);
-                if(newValue != 5){
-                    testFlag.Outline = true;
-                    status();
-                }
-            }
-        }
-
-		//if ( o.popupEnabled ) {
-		//	this._positionPopup();
-		//	this._popup.html( newValue );
-		//}
-
-		//if ( o.showValue ) {
-		//	this._handleText.html( newValue );
-		//}
+    refreshData(o, newValue, this.handle, this._popup, this._handleText, this.element);
 	},
 
 	_showPopup: function() {

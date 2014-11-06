@@ -63,3 +63,32 @@ function stopVibration() {
     navigator.vibrate(0);
     $("#start").removeClass("ui-disabled");
 }
+
+function refreshData(o, newValue, handle, _popup, _handleText, element) {
+    var ID = element[0].id;
+    if (ID == "slider-1") {
+        vibration_time = Number($("#slider-1").val())*1000;
+    } else if (ID == "slider-2") {
+        vibration_periods = Number($("#slider-2").val())*1000;
+    } else if (ID == "slider-3") {
+       vibration_number = $("#slider-3").val();
+    }
+
+	  if (o.popupEnabled) {
+		    _positionPopup(handle, _popup);
+		    _popup.html(newValue);
+	  }
+
+	  if (o.showValue) {
+		    _handleText.html(newValue);
+	  }
+}
+
+// position the popup centered 5px above the handle
+function _positionPopup(handle, _popup) {
+	  var dstOffset = handle.offset();
+	  _popup.offset( {
+		    left: dstOffset.left + (handle.width() - _popup.width()) / 2,
+		    top: dstOffset.top - _popup.outerHeight() - 5
+	  });
+}
