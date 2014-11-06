@@ -257,6 +257,9 @@ def updateCopylistPrefix(src_default, dest_default, src_sub, dest_sub):
 
 
 def buildSRC(src=None, dest=None, build_json=None):
+    if not os.path.exists(src):
+        LOG.info("+Src dir does not exist, skip build src process ...")
+        return True
     if not doCopy(src, dest):
         return False
     if "blacklist" in build_json:
@@ -452,6 +455,7 @@ def packAPK(build_json=None, app_src=None, app_dest=None, app_name=None):
     cmd_opt = ""
     url_opt = ""
     mode_opt = ""
+    arch_opt = ""
     icon_opt = ""
 
     common_opts = safelyGetValue(build_json, "apk-common-opts")
@@ -480,6 +484,16 @@ def packAPK(build_json=None, app_src=None, app_dest=None, app_name=None):
     else:
         mode_opt = "--mode=%s" % BUILD_PARAMETERS.pkgmode
 
+    tmp_opt = safelyGetValue(build_json, "apk-arch-opt")
+    if tmp_opt:
+        if tmp_opt in PKG_ARCHS:
+            arch_opt = "--arch=%s" % tmp_opt
+        else:
+            LOG.error("Got wrong app arch: %s" % tmp_opt)
+            return False
+    else:
+        arch_opt = "--arch=%s" % BUILD_PARAMETERS.pkgarch
+
     tmp_opt = safelyGetValue(build_json, "apk-icon-opt")
     if tmp_opt:
         icon_opt = "--icon=%s" % tmp_opt
@@ -490,8 +504,8 @@ def packAPK(build_json=None, app_src=None, app_dest=None, app_name=None):
 
     if safelyGetValue(build_json, "apk-type") == "MANIFEST":
         pack_cmd = "python make_apk.py --package=org.xwalk.%s " \
-            "--manifest=%s/manifest.json  %s --arch=%s %s %s %s" % (
-                app_name, app_src, mode_opt, BUILD_PARAMETERS.pkgarch,
+            "--manifest=%s/manifest.json  %s %s %s %s %s" % (
+                app_name, app_src, mode_opt, arch_opt,
                 ext_opt, cmd_opt, common_opts)
     elif safelyGetValue(build_json, "apk-type") == "HOSTEDAPP":
         if not url_opt:
@@ -499,15 +513,15 @@ def packAPK(build_json=None, app_src=None, app_dest=None, app_name=None):
                 "Fail to find the key \"apk-url-opt\" for hosted APP packing")
             return False
         pack_cmd = "python make_apk.py --package=org.xwalk.%s --name=%s %s " \
-                   "--arch=%s %s %s %s %s" % (
-                       app_name, app_name, mode_opt, BUILD_PARAMETERS.pkgarch, ext_opt,
+                   "%s %s %s %s %s" % (
+                       app_name, app_name, mode_opt, arch_opt, ext_opt,
                        cmd_opt, url_opt, common_opts)
     else:
         pack_cmd = "python make_apk.py --package=org.xwalk.%s --name=%s " \
                    "--app-root=%s --app-local-path=index.html %s %s " \
-                   "--arch=%s %s %s %s" % (
+                   "%s %s %s %s" % (
                        app_name, app_name, app_src, icon_opt, mode_opt,
-                       BUILD_PARAMETERS.pkgarch, ext_opt, cmd_opt, common_opts)
+                       arch_opt, ext_opt, cmd_opt, common_opts)
 
     orig_dir = os.getcwd()
     os.chdir(os.path.join(BUILD_ROOT, "crosswalk"))
@@ -743,6 +757,9 @@ def createIndexFile(index_file_path=None, hosted_app=None):
 
 
 def buildSubAPP(app_dir=None, build_json=None, app_dest_default=None):
+    app_dir_inside = safelyGetValue(build_json, "app-dir")
+    if app_dir_inside:
+        app_dir = app_dir_inside
     LOG.info("+Building sub APP(s) from %s ..." % app_dir)
     app_dir = os.path.join(BUILD_ROOT_SRC, app_dir)
     app_name = safelyGetValue(build_json, "app-name")
