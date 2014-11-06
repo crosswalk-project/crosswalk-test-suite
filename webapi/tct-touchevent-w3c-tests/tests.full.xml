@@ -867,6 +867,54 @@
           </spec>
         </specs>
       </testcase>
+      <testcase purpose="Check if document.createTouch exists and creates a Touch object with requested properties" type="compliance" status="approved" component="WebAPI/Device/Touch Events version 1 (Partial)" execution_type="auto" priority="P3" id="Touch_interface">
+        <description>
+          <test_script_entry>/opt/tct-touchevent-w3c-tests/touchevent/w3c/create-touch-touchlist.html?total_num=73&amp;locator_key=id&amp;value=1</test_script_entry>
+        </description>
+        <specs>
+          <spec>
+            <spec_assertion usage="true" interface="Touch" specification="Touch Events version 1 (Partial)" section="Device" category="Tizen W3C API Specifications"/>
+            <spec_url>http://www.w3.org/TR/2013/WD-touch-events-20130124/#touch-interface</spec_url>
+            <spec_statement/>
+          </spec>
+        </specs>
+      </testcase>
+      <testcase purpose="Check if document.createTouchList with arguments negative the length is default value" type="compliance" status="approved" component="WebAPI/Device/Touch Events version 1 (Partial)" execution_type="auto" priority="P2" id="document_createTouchList_null">
+        <description>
+          <test_script_entry>/opt/tct-touchevent-w3c-tests/touchevent/w3c/create-touch-touchlist.html?total_num=73&amp;locator_key=id&amp;value=2</test_script_entry>
+        </description>
+        <specs>
+          <spec>
+            <spec_assertion lement_type="method" element_name="createTouchList" interface="Document" specification="Touch Events version 1 (Partial)" section="Device" category="Tizen W3C API Specifications"/>
+            <spec_url>http://www.w3.org/TR/2013/WD-touch-events-20130124/#widl-Document-createTouchList-TouchList-Touch-touches</spec_url>
+            <spec_statement/>
+          </spec>
+        </specs>
+      </testcase>
+      <testcase purpose="Check if createTouchList length is one, when parameter be set to one Touch" type="compliance" status="approved" component="WebAPI/Device/Touch Events version 1 (Partial)" execution_type="auto" priority="P2" id="document_createTouchList_one_arguments">
+        <description>
+          <test_script_entry>/opt/tct-touchevent-w3c-tests/touchevent/w3c/create-touch-touchlist.html?total_num=73&amp;locator_key=id&amp;value=9</test_script_entry>
+        </description>
+        <specs>
+          <spec>
+            <spec_assertion lement_type="method" element_name="createTouchList" interface="Document" specification="Touch Events version 1 (Partial)" section="Device" category="Tizen W3C API Specifications"/>
+            <spec_url>http://www.w3.org/TR/2013/WD-touch-events-20130124/#widl-Document-createTouchList-TouchList-Touch-touches</spec_url>
+            <spec_statement/>
+          </spec>
+        </specs>
+      </testcase>
+      <testcase purpose="Check if createTouchList length is two, when parameter be set to two Touch" type="compliance" status="approved" component="WebAPI/Device/Touch Events version 1 (Partial)" execution_type="auto" priority="P2" id="document_createTouchList_two_arguments">
+        <description>
+          <test_script_entry>/opt/tct-touchevent-w3c-tests/touchevent/w3c/create-touch-touchlist.html?total_num=73&amp;locator_key=id&amp;value=33</test_script_entry>
+        </description>
+        <specs>
+          <spec>
+            <spec_assertion lement_type="method" element_name="createTouchList" interface="Document" specification="Touch Events version 1 (Partial)" section="Device" category="Tizen W3C API Specifications"/>
+            <spec_url>http://www.w3.org/TR/2013/WD-touch-events-20130124/#widl-Document-createTouchList-TouchList-Touch-touches</spec_url>
+            <spec_statement/>
+          </spec>
+        </specs>
+      </testcase>
     </set>
   </suite>
 </test_definition>
