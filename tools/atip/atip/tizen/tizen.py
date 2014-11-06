@@ -30,7 +30,7 @@ import os
 import subprocess
 import string
 
-XW_ENV = "export DBUS_SESSION_BUS_ADDRESS=unix:path=/run/user/5000/dbus/user_bus_socket"
+#XW_ENV = "export DBUS_SESSION_BUS_ADDRESS=unix:path=/run/user/5000/dbus/user_bus_socket"
 
 
 def do_cmd(cmd):
@@ -52,12 +52,24 @@ def do_cmd(cmd):
 
     return (cmd_return_code, output)
 
-
-def update_cmd(cmd=None):
+def get_user_id(mode,device):
+    cmd = ''
+    try:
+       if mode == "SDB" :
+          cmd = "sdb -s %s shell id -u app" % device
+       else:
+          cmd = "ssh %s \"id -u app\"" % device
+       user_info =  do_cmd(cmd)
+       user_id = user_info[1][0]
+    except Exception as e:
+       print "Failed to get user_id: %s" % e 
+       return None
+    return  user_id
+    
+def update_cmd(xw_env,cmd=None):
     if "xwalkctl" in cmd:
-        cmd = "su - app -c '%s;%s'" % (XW_ENV, cmd)
+        cmd = "su - app -c '%s;%s'" % (xw_env, cmd)
     return cmd
-
 
 def get_appid_by_name(app_name=None, platform=None):
     mode = "SDB"
@@ -75,12 +87,15 @@ def get_appid_by_name(app_name=None, platform=None):
     else:
         device = platform["device"]
 
+    user_id = get_user_id(mode,device)
+    xw_env = "export DBUS_SESSION_BUS_ADDRESS=unix:path=/run/user/" + str(user_id) + "/dbus/user_bus_socket"
+
     if mode == "SSH":
         cmd = "ssh %s \"%s\"" % (
-            device, update_cmd('xwalkctl'))
+            device, update_cmd(xw_env,'xwalkctl'))
     else:
         cmd = "sdb -s %s shell %s" % (
-            device, update_cmd('xwalkctl'))
+            device, update_cmd(xw_env,'xwalkctl'))
 
     (return_code, output) = do_cmd(cmd)
     if return_code != 0:
