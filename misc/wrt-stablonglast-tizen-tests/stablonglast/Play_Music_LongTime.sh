@@ -28,9 +28,9 @@
 #Authors:
 
 path=$(dirname $(dirname $0))
-PACKAGENAME="play_test.wgt"
+PACKAGENAME="play_test_music.wgt"
 source $path/stablonglast/xwalk_common.sh
-APP_NAME="play_test"
+APP_NAME="play_test_music"
 uninstall_app $APP_NAME
 install_app $PACKAGENAME
 launch_app $APP_NAME
