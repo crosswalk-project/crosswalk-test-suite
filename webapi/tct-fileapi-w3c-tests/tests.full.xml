@@ -789,14 +789,770 @@
           </spec>
         </specs>
       </testcase>
-      <testcase purpose="Check if Blob method slice exists" type="compliance" status="ready" component="WebAPI/Storage/File API" execution_type="auto" priority="P1" id="Blob-slice">
+      <testcase purpose="Check if the method slice value of interface Blob,when processing the slice call,user agents must normalize start to 2 and end to 5" type="compliance" status="approved" component="WebAPI/Storage/File API" execution_type="auto" priority="P2" id="Blob_slice_two_five">
         <description>
-          <test_script_entry>/opt/tct-fileapi-w3c-tests/fileapi/w3c/Blob-slice.html</test_script_entry>
+          <test_script_entry>/opt/tct-fileapi-w3c-tests/fileapi/w3c/Blob-slice.html?total_num=124&amp;amp;locator_key=id&amp;amp;value=13</test_script_entry>
         </description>
         <specs>
           <spec>
             <spec_assertion element_type="method" element_name="slice" interface="Blob" specification="File API" section="Storage" category="Tizen W3C API Specifications"/>
-            <spec_url>http://dev.w3.org/2006/webapi/FileAPI/#dfn-slice</spec_url>
+            <spec_url>http://www.w3.org/TR/2011/WD-FileAPI-20111020/#dfn-slice</spec_url>
+            <spec_statement/>
+          </spec>
+        </specs>
+      </testcase>
+      <testcase purpose="Check if the method slice value of interface Blob, when processing the slice call, user agents must normalize start to 0 and end to 10" type="compliance" status="approved" component="WebAPI/Storage/File API" execution_type="auto" priority="P2" id="Blob_slice_zero">
+        <description>
+          <test_script_entry>/opt/tct-fileapi-w3c-tests/fileapi/w3c/Blob-slice.html?total_num=124&amp;amp;locator_key=id&amp;amp;value=5</test_script_entry>
+        </description>
+        <specs>
+          <spec>
+            <spec_assertion element_type="method" element_name="slice" interface="Blob" specification="File API" section="Storage" category="Tizen W3C API Specifications"/>
+            <spec_url>http://www.w3.org/TR/2011/WD-FileAPI-20111020/#dfn-slice</spec_url>
+            <spec_statement/>
+          </spec>
+        </specs>
+      </testcase>
+      <testcase purpose="Check if the method slice value of interface Blob,when processing the slice call,user agents must normalize start to 0 and end to 5" type="compliance" status="approved" component="WebAPI/Storage/File API" execution_type="auto" priority="P2" id="Blob_slice_zero_five">
+        <description>
+          <test_script_entry>/opt/tct-fileapi-w3c-tests/fileapi/w3c/Blob-slice.html?total_num=124&amp;amp;locator_key=id&amp;amp;value=7</test_script_entry>
+        </description>
+        <specs>
+          <spec>
+            <spec_assertion element_type="method" element_name="slice" interface="Blob" specification="File API" section="Storage" category="Tizen W3C API Specifications"/>
+            <spec_url>http://www.w3.org/TR/2011/WD-FileAPI-20111020/#dfn-slice</spec_url>
+            <spec_statement/>
+          </spec>
+        </specs>
+      </testcase>
+      <testcase purpose="Check if the method slice value of interface Blob, when processing the slice call, user agents must normalize start to 0 and end to size" type="compliance" status="approved" component="WebAPI/Storage/File API" execution_type="auto" priority="P2" id="Blob_slice_zero_size">
+        <description>
+          <test_script_entry>/opt/tct-fileapi-w3c-tests/fileapi/w3c/Blob-slice.html?total_num=124&amp;amp;locator_key=id&amp;amp;value=7</test_script_entry>
+        </description>
+        <specs>
+          <spec>
+            <spec_assertion element_type="method" element_name="slice" interface="Blob" specification="File API" section="Storage" category="Tizen W3C API Specifications"/>
+            <spec_url>http://www.w3.org/TR/2011/WD-FileAPI-20111020/#dfn-slice</spec_url>
+            <spec_statement/>
+          </spec>
+        </specs>
+      </testcase>
+      <testcase purpose="Check if obtain an ArrayBuffer object using the readAsArrayBuffer method by FileReaderSync interface" type="compliance" status="approved" component="WebAPI/Storage/File API" execution_type="auto" priority="P2" id="FileReaderSync_readAsArrayBuffer_base">
+        <description>
+          <test_script_entry>/opt/tct-fileapi-w3c-tests/fileapi/FileReaderSync_readAsArrayBuffer_base.html</test_script_entry>
+        </description>
+        <specs>
+          <spec>
+            <spec_assertion element_type="method" element_name="readAsArrayBuffer" interface="FileReaderSync" specification="File API" section="Storage" category="Tizen W3C API Specifications"/>
+            <spec_url>http://www.w3.org/TR/2011/WD-FileAPI-20111020/#dfn-readAsDataURLSync</spec_url>
+            <spec_statement/>
+          </spec>
+        </specs>
+      </testcase>
+      <testcase purpose="Check if FileReaderSync.readAsArrayBuffer throws an exception when the argument is invalid" type="compliance" status="approved" component="WebAPI/Storage/File API" execution_type="auto" priority="P2" id="FileReaderSync_readAsArrayBuffer_Blob_invalid">
+        <description>
+          <test_script_entry>/opt/tct-fileapi-w3c-tests/fileapi/FileReaderSync_readAsArrayBuffer_Blob_invalid.html</test_script_entry>
+        </description>
+        <specs>
+          <spec>
+            <spec_assertion element_type="method" element_name="readAsArrayBuffer" interface="FileReaderSync" specification="File API" section="Storage" category="Tizen W3C API Specifications"/>
+            <spec_url>http://www.w3.org/TR/2011/WD-FileAPI-20111020/#dfn-readAsArrayBufferSync</spec_url>
+            <spec_statement/>
+          </spec>
+        </specs>
+      </testcase>
+      <testcase purpose="Check if FileReaderSync.readAsArrayBuffer throws an exception when the argument is empty string" type="compliance" status="approved" component="WebAPI/Storage/File API" execution_type="auto" priority="P2" id="FileReaderSync_readAsArrayBuffer_empty_string">
+        <description>
+          <test_script_entry>/opt/tct-fileapi-w3c-tests/fileapi/FileReaderSync_readAsArrayBuffer_empty_string.html</test_script_entry>
+        </description>
+        <specs>
+          <spec>
+            <spec_assertion element_type="method" element_name="readAsArrayBuffer" interface="FileReaderSync" specification="File API" section="Storage" category="Tizen W3C API Specifications"/>
+            <spec_url>http://www.w3.org/TR/2011/WD-FileAPI-20111020/#dfn-readAsArrayBufferSync</spec_url>
+            <spec_statement/>
+          </spec>
+        </specs>
+      </testcase>
+      <testcase purpose="Check if FileReaderSync.readAsArrayBuffer has no argument that expecting an exception is to be thrown" type="compliance" status="approved" component="WebAPI/Storage/File API" execution_type="auto" priority="P2" id="FileReaderSync_readAsArrayBuffer_no_argument">
+        <description>
+          <test_script_entry>/opt/tct-fileapi-w3c-tests/fileapi/FileReaderSync_readAsArrayBuffer_no_argument.html</test_script_entry>
+        </description>
+        <specs>
+          <spec>
+            <spec_assertion element_type="method" element_name="readAsArrayBuffer" interface="FileReaderSync" specification="File API" section="Storage" category="Tizen W3C API Specifications"/>
+            <spec_url>http://www.w3.org/TR/2011/WD-FileAPI-20111020/#dfn-readAsArrayBufferSync</spec_url>
+            <spec_statement/>
+          </spec>
+        </specs>
+      </testcase>
+      <testcase purpose="Check if FileReaderSync.readAsArrayBuffer has a valid argument that expecting the data contents of blob as an ArrayBuffer is to be returned" type="compliance" status="approved" component="WebAPI/Storage/File API" execution_type="auto" priority="P2" id="FileReaderSync_readAsArrayBuffer_return_arraybuffer">
+        <description>
+          <test_script_entry>/opt/tct-fileapi-w3c-tests/fileapi/FileReaderSync_readAsArrayBuffer_return_arraybuffer.html</test_script_entry>
+        </description>
+        <specs>
+          <spec>
+            <spec_assertion element_type="method" element_name="readAsArrayBuffer" interface="FileReaderSync" specification="File API" section="Storage" category="Tizen W3C API Specifications"/>
+            <spec_url>http://www.w3.org/TR/2011/WD-FileAPI-20111020/#dfn-readAsArrayBufferSync</spec_url>
+            <spec_statement/>
+          </spec>
+        </specs>
+      </testcase>
+      <testcase purpose="Check if the return value of FileReaderSync.readAsArrayBuffer is of ArrayBuffer object type" type="compliance" status="approved" component="WebAPI/Storage/File API" execution_type="auto" priority="P2" id="FileReaderSync_readAsArrayBuffer_return_type">
+        <description>
+          <test_script_entry>/opt/tct-fileapi-w3c-tests/fileapi/FileReaderSync_readAsArrayBuffer_return_type.html</test_script_entry>
+        </description>
+        <specs>
+          <spec>
+            <spec_assertion element_type="method" element_name="readAsArrayBuffer" interface="FileReaderSync" specification="File API" section="Storage" category="Tizen W3C API Specifications"/>
+            <spec_url>http://www.w3.org/TR/2011/WD-FileAPI-20111020/#dfn-readAsArrayBufferSync</spec_url>
+            <spec_statement/>
+          </spec>
+        </specs>
+      </testcase>
+      <testcase purpose="Check if FileReaderSync.readAsArrayBuffer throws an exception when the argument is null" type="compliance" status="approved" component="WebAPI/Storage/File API" execution_type="auto" priority="P2" id="FileReaderSync_readAsArrayBuffer_set_null">
+        <description>
+          <test_script_entry>/opt/tct-fileapi-w3c-tests/fileapi/FileReaderSync_readAsArrayBuffer_set_null.html</test_script_entry>
+        </description>
+        <specs>
+          <spec>
+            <spec_assertion element_type="method" element_name="readAsArrayBuffer" interface="FileReaderSync" specification="File API" section="Storage" category="Tizen W3C API Specifications"/>
+            <spec_url>http://www.w3.org/TR/2011/WD-FileAPI-20111020/#dfn-readAsArrayBufferSync</spec_url>
+            <spec_statement/>
+          </spec>
+        </specs>
+      </testcase>
+      <testcase purpose="Check if read a blob text using readAsBinaryString method by FileReaderSync interface" type="compliance" status="approved" component="WebAPI/Storage/File API" execution_type="auto" priority="P2" id="FileReaderSync_readAsBinaryString_base">
+        <description>
+          <test_script_entry>/opt/tct-fileapi-w3c-tests/fileapi/FileReaderSync_readAsBinaryString_base.html</test_script_entry>
+        </description>
+        <specs>
+          <spec>
+            <spec_assertion element_type="method" element_name="readAsBinaryString" interface="FileReaderSync" specification="File API" section="Storage" category="Tizen W3C API Specifications"/>
+            <spec_url>http://www.w3.org/TR/2011/WD-FileAPI-20111020/#dfn-readAsBinaryStringSync</spec_url>
+            <spec_statement/>
+          </spec>
+        </specs>
+      </testcase>
+      <testcase purpose="Check if FileReaderSync.readAsBinaryString has a invalid argument that expecting an exception is to be thrown" type="compliance" status="approved" component="WebAPI/Storage/File API" execution_type="auto" priority="P2" id="FileReaderSync_readAsBinaryString_Blob_invalid">
+        <description>
+          <test_script_entry>/opt/tct-fileapi-w3c-tests/fileapi/FileReaderSync_readAsBinaryString_Blob_invalid.html</test_script_entry>
+        </description>
+        <specs>
+          <spec>
+            <spec_assertion element_type="method" element_name="readAsBinaryString" interface="FileReaderSync" specification="File API" section="Storage" category="Tizen W3C API Specifications"/>
+            <spec_url>http://www.w3.org/TR/2011/WD-FileAPI-20111020/#dfn-readAsBinaryStringSync</spec_url>
+            <spec_statement/>
+          </spec>
+        </specs>
+      </testcase>
+      <testcase purpose="Check if FileReaderSync.readAsBinaryString throws an exception when the argument is empty string" type="compliance" status="approved" component="WebAPI/Storage/File API" execution_type="auto" priority="P2" id="FileReaderSync_readAsBinaryString_empty_string">
+        <description>
+          <test_script_entry>/opt/tct-fileapi-w3c-tests/fileapi/FileReaderSync_readAsBinaryString_empty_string.html</test_script_entry>
+        </description>
+        <specs>
+          <spec>
+            <spec_assertion element_type="method" element_name="readAsBinaryString" interface="FileReaderSync" specification="File API" section="Storage" category="Tizen W3C API Specifications"/>
+            <spec_url>http://www.w3.org/TR/2011/WD-FileAPI-20111020/#dfn-readAsBinaryStringSync</spec_url>
+            <spec_statement/>
+          </spec>
+        </specs>
+      </testcase>
+      <testcase purpose="Check if FileReaderSync.readAsBinaryString has no argument that expecting an exception is to be thrown" type="compliance" status="approved" component="WebAPI/Storage/File API" execution_type="auto" priority="P2" id="FileReaderSync_readAsBinaryString_no_argument">
+        <description>
+          <test_script_entry>/opt/tct-fileapi-w3c-tests/fileapi/FileReaderSync_readAsBinaryString_no_argument.html</test_script_entry>
+        </description>
+        <specs>
+          <spec>
+            <spec_assertion element_type="method" element_name="readAsBinaryString" interface="FileReaderSync" specification="File API" section="Storage" category="Tizen W3C API Specifications"/>
+            <spec_url>http://www.w3.org/TR/2011/WD-FileAPI-20111020/#dfn-readAsBinaryStringSync</spec_url>
+            <spec_statement/>
+          </spec>
+        </specs>
+      </testcase>
+      <testcase purpose="Check if FileReaderSync.readAsBinaryString has a valid argument that expecting the data contents of blob as an binary string is to be returned" type="compliance" status="approved" component="WebAPI/Storage/File API" execution_type="auto" priority="P2" id="FileReaderSync_readAsBinaryString_return_string">
+        <description>
+          <test_script_entry>/opt/tct-fileapi-w3c-tests/fileapi/FileReaderSync_readAsBinaryString_return_string.html</test_script_entry>
+        </description>
+        <specs>
+          <spec>
+            <spec_assertion element_type="method" element_name="readAsBinaryString" interface="FileReaderSync" specification="File API" section="Storage" category="Tizen W3C API Specifications"/>
+            <spec_url>http://www.w3.org/TR/2011/WD-FileAPI-20111020/#dfn-readAsBinaryStringSync</spec_url>
+            <spec_statement/>
+          </spec>
+        </specs>
+      </testcase>
+      <testcase purpose="Check if the return value of FileReaderSync.readAsBinaryString is of type string" type="compliance" status="approved" component="WebAPI/Storage/File API" execution_type="auto" priority="P2" id="FileReaderSync_readAsBinaryString_return_type">
+        <description>
+          <test_script_entry>/opt/tct-fileapi-w3c-tests/fileapi/FileReaderSync_readAsBinaryString_return_type.html</test_script_entry>
+        </description>
+        <specs>
+          <spec>
+            <spec_assertion element_type="method" element_name="readAsBinaryString" interface="FileReaderSync" specification="File API" section="Storage" category="Tizen W3C API Specifications"/>
+            <spec_url>http://www.w3.org/TR/2011/WD-FileAPI-20111020/#dfn-readAsBinaryStringSync</spec_url>
+            <spec_statement/>
+          </spec>
+        </specs>
+      </testcase>
+      <testcase purpose="Check if FileReaderSync.readAsBinaryString throws an exception when the argument is null" type="compliance" status="approved" component="WebAPI/Storage/File API" execution_type="auto" priority="P2" id="FileReaderSync_readAsBinaryString_set_null">
+        <description>
+          <test_script_entry>/opt/tct-fileapi-w3c-tests/fileapi/FileReaderSync_readAsBinaryString_set_null.html</test_script_entry>
+        </description>
+        <specs>
+          <spec>
+            <spec_assertion element_type="method" element_name="readAsBinaryString" interface="FileReaderSync" specification="File API" section="Storage" category="Tizen W3C API Specifications"/>
+            <spec_url>http://www.w3.org/TR/2011/WD-FileAPI-20111020/#dfn-readAsBinaryStringSync</spec_url>
+            <spec_statement/>
+          </spec>
+        </specs>
+      </testcase>
+      <testcase purpose="Check if returns the data of blob as a Data URL by FileReaderSync interface" type="compliance" status="approved" component="WebAPI/Storage/File API" execution_type="auto" priority="P2" id="FileReaderSync_readAsDataURL_base">
+        <description>
+          <test_script_entry>/opt/tct-fileapi-w3c-tests/fileapi/FileReaderSync_readAsDataURL_base.html</test_script_entry>
+        </description>
+        <specs>
+          <spec>
+            <spec_assertion element_type="method" element_name="readAsDataURL" interface="FileReaderSync" specification="File API" section="Storage" category="Tizen W3C API Specifications"/>
+            <spec_url>http://www.w3.org/TR/2011/WD-FileAPI-20111020/#dfn-readAsDataURLSync</spec_url>
+            <spec_statement/>
+          </spec>
+        </specs>
+      </testcase>
+      <testcase purpose="Check if FileReaderSync.readAsDataURL throws an exception when the argument is invalid" type="compliance" status="approved" component="WebAPI/Storage/File API" execution_type="auto" priority="P2" id="FileReaderSync_readAsDataURL_Blob_invalid">
+        <description>
+          <test_script_entry>/opt/tct-fileapi-w3c-tests/fileapi/FileReaderSync_readAsDataURL_Blob_invalid.html</test_script_entry>
+        </description>
+        <specs>
+          <spec>
+            <spec_assertion element_type="method" element_name="readAsDataURL" interface="FileReaderSync" specification="File API" section="Storage" category="Tizen W3C API Specifications"/>
+            <spec_url>http://www.w3.org/TR/2011/WD-FileAPI-20111020/#dfn-readAsDataURLSync</spec_url>
+            <spec_statement/>
+          </spec>
+        </specs>
+      </testcase>
+      <testcase purpose="Check if FileReaderSync.readAsDataURL throws an exception when the argument is empty string" type="compliance" status="approved" component="WebAPI/Storage/File API" execution_type="auto" priority="P2" id="FileReaderSync_readAsDataURL_empty_string">
+        <description>
+          <test_script_entry>/opt/tct-fileapi-w3c-tests/fileapi/FileReaderSync_readAsDataURL_empty_string.html</test_script_entry>
+        </description>
+        <specs>
+          <spec>
+            <spec_assertion element_type="method" element_name="readAsDataURL" interface="FileReaderSync" specification="File API" section="Storage" category="Tizen W3C API Specifications"/>
+            <spec_url>http://www.w3.org/TR/2011/WD-FileAPI-20111020/#dfn-readAsDataURLSync</spec_url>
+            <spec_statement/>
+          </spec>
+        </specs>
+      </testcase>
+      <testcase purpose="Check if FileReaderSync.readAsDataURL has no argument that expecting an exception is to be thrown" type="compliance" status="approved" component="WebAPI/Storage/File API" execution_type="auto" priority="P2" id="FileReaderSync_readAsDataURL_no_argument">
+        <description>
+          <test_script_entry>/opt/tct-fileapi-w3c-tests/fileapi/FileReaderSync_readAsDataURL_no_argument.html</test_script_entry>
+        </description>
+        <specs>
+          <spec>
+            <spec_assertion element_type="method" element_name="readAsDataURL" interface="FileReaderSync" specification="File API" section="Storage" category="Tizen W3C API Specifications"/>
+            <spec_url>http://www.w3.org/TR/2011/WD-FileAPI-20111020/#dfn-readAsDataURLSync</spec_url>
+            <spec_statement/>
+          </spec>
+        </specs>
+      </testcase>
+      <testcase purpose="Check if FileReaderSync.readAsDataURL has a valid argument that expecting the data contents of blob as a Data URL is to be returned" type="compliance" status="approved" component="WebAPI/Storage/File API" execution_type="auto" priority="P2" id="FileReaderSync_readAsDataURL_return_string">
+        <description>
+          <test_script_entry>/opt/tct-fileapi-w3c-tests/fileapi/FileReaderSync_readAsDataURL_return_string.html</test_script_entry>
+        </description>
+        <specs>
+          <spec>
+            <spec_assertion element_type="method" element_name="readAsDataURL" interface="FileReaderSync" specification="File API" section="Storage" category="Tizen W3C API Specifications"/>
+            <spec_url>http://www.w3.org/TR/2011/WD-FileAPI-20111020/#dfn-readAsDataURLSync</spec_url>
+            <spec_statement/>
+          </spec>
+        </specs>
+      </testcase>
+      <testcase purpose="Check if the return value of FileReaderSync.readAsDataURL is of type string" type="compliance" status="approved" component="WebAPI/Storage/File API" execution_type="auto" priority="P2" id="FileReaderSync_readAsDataURL_return_type">
+        <description>
+          <test_script_entry>/opt/tct-fileapi-w3c-tests/fileapi/FileReaderSync_readAsDataURL_return_type.html</test_script_entry>
+        </description>
+        <specs>
+          <spec>
+            <spec_assertion element_type="method" element_name="readAsDataURL" interface="FileReaderSync" specification="File API" section="Storage" category="Tizen W3C API Specifications"/>
+            <spec_url>http://www.w3.org/TR/2011/WD-FileAPI-20111020/#dfn-readAsDataURLSync</spec_url>
+            <spec_statement/>
+          </spec>
+        </specs>
+      </testcase>
+      <testcase purpose="Check if FileReaderSync.readAsDataURL throws an exception when the argument is null" type="compliance" status="approved" component="WebAPI/Storage/File API" execution_type="auto" priority="P2" id="FileReaderSync_readAsDataURL_set_null">
+        <description>
+          <test_script_entry>/opt/tct-fileapi-w3c-tests/fileapi/FileReaderSync_readAsDataURL_set_null.html</test_script_entry>
+        </description>
+        <specs>
+          <spec>
+            <spec_assertion element_type="method" element_name="readAsDataURL" interface="FileReaderSync" specification="File API" section="Storage" category="Tizen W3C API Specifications"/>
+            <spec_url>http://www.w3.org/TR/2011/WD-FileAPI-20111020/#dfn-readAsDataURLSync</spec_url>
+            <spec_statement/>
+          </spec>
+        </specs>
+      </testcase>
+      <testcase purpose="Check if read a blob text using readAsText by FileReaderSync interface" type="compliance" status="approved" component="WebAPI/Storage/File API" execution_type="auto" priority="P2" id="FileReaderSync_readAsText_base">
+        <description>
+          <test_script_entry>/opt/tct-fileapi-w3c-tests/fileapi/FileReaderSync_readAsText_base.html</test_script_entry>
+        </description>
+        <specs>
+          <spec>
+            <spec_assertion element_type="method" element_name="readAsText" interface="FileReaderSync" specification="File API" section="Storage" category="Tizen W3C API Specifications"/>
+            <spec_url>http://www.w3.org/TR/2011/WD-FileAPI-20111020/#dfn-readAsTextSync</spec_url>
+            <spec_statement/>
+          </spec>
+        </specs>
+      </testcase>
+      <testcase purpose="Check if FileReaderSync.readAsText throws an exception when the argument is invalid" type="compliance" status="approved" component="WebAPI/Storage/File API" execution_type="auto" priority="P2" id="FileReaderSync_readAsText_Blob_invalid">
+        <description>
+          <test_script_entry>/opt/tct-fileapi-w3c-tests/fileapi/FileReaderSync_readAsText_Blob_invalid.html</test_script_entry>
+        </description>
+        <specs>
+          <spec>
+            <spec_assertion element_type="method" element_name="readAsText" interface="FileReaderSync" specification="File API" section="Storage" category="Tizen W3C API Specifications"/>
+            <spec_url>http://www.w3.org/TR/2011/WD-FileAPI-20111020/#dfn-readAsTextSync</spec_url>
+            <spec_statement/>
+          </spec>
+        </specs>
+      </testcase>
+      <testcase purpose="Check if FileReaderSync.readAsText throws an exception when the argument is empty string" type="compliance" status="approved" component="WebAPI/Storage/File API" execution_type="auto" priority="P2" id="FileReaderSync_readAsText_empty_string">
+        <description>
+          <test_script_entry>/opt/tct-fileapi-w3c-tests/fileapi/FileReaderSync_readAsText_empty_string.html</test_script_entry>
+        </description>
+        <specs>
+          <spec>
+            <spec_assertion element_type="method" element_name="readAsText" interface="FileReaderSync" specification="File API" section="Storage" category="Tizen W3C API Specifications"/>
+            <spec_url>http://www.w3.org/TR/2011/WD-FileAPI-20111020/#dfn-readAsTextSync</spec_url>
+            <spec_statement/>
+          </spec>
+        </specs>
+      </testcase>
+      <testcase purpose="Check if FileReaderSync.readAsText has no argument that expecting an exception is to be thrown" type="compliance" status="approved" component="WebAPI/Storage/File API" execution_type="auto" priority="P2" id="FileReaderSync_readAsText_no_argument">
+        <description>
+          <test_script_entry>/opt/tct-fileapi-w3c-tests/fileapi/FileReaderSync_readAsText_no_argument.html</test_script_entry>
+        </description>
+        <specs>
+          <spec>
+            <spec_assertion element_type="method" element_name="readAsText" interface="FileReaderSync" specification="File API" section="Storage" category="Tizen W3C API Specifications"/>
+            <spec_url>http://www.w3.org/TR/2011/WD-FileAPI-20111020/#dfn-readAsTextSync</spec_url>
+            <spec_statement/>
+          </spec>
+        </specs>
+      </testcase>
+      <testcase purpose="Check if FileReaderSync.readAsText has a valid argument that expecting the data contents of blob using the encoding determination algorithm is to be returned" type="compliance" status="approved" component="WebAPI/Storage/File API" execution_type="auto" priority="P2" id="FileReaderSync_readAsText_return_string">
+        <description>
+          <test_script_entry>/opt/tct-fileapi-w3c-tests/fileapi/FileReaderSync_readAsText_return_string.html</test_script_entry>
+        </description>
+        <specs>
+          <spec>
+            <spec_assertion element_type="method" element_name="readAsText" interface="FileReaderSync" specification="File API" section="Storage" category="Tizen W3C API Specifications"/>
+            <spec_url>http://www.w3.org/TR/2011/WD-FileAPI-20111020/#dfn-readAsTextSync</spec_url>
+            <spec_statement/>
+          </spec>
+        </specs>
+      </testcase>
+      <testcase purpose="Check if the return value of FileReaderSync.readAsText is of type string" type="compliance" status="approved" component="WebAPI/Storage/File API" execution_type="auto" priority="P2" id="FileReaderSync_readAsText_return_type">
+        <description>
+          <test_script_entry>/opt/tct-fileapi-w3c-tests/fileapi/FileReaderSync_readAsText_return_type.html</test_script_entry>
+        </description>
+        <specs>
+          <spec>
+            <spec_assertion element_type="method" element_name="readAsText" interface="FileReaderSync" specification="File API" section="Storage" category="Tizen W3C API Specifications"/>
+            <spec_url>http://www.w3.org/TR/2011/WD-FileAPI-20111020/#dfn-readAsTextSync</spec_url>
+            <spec_statement/>
+          </spec>
+        </specs>
+      </testcase>
+      <testcase purpose="Check if FileReaderSync.readAsText throws an exception when the argument is null" type="compliance" status="approved" component="WebAPI/Storage/File API" execution_type="auto" priority="P2" id="FileReaderSync_readAsText_set_null">
+        <description>
+          <test_script_entry>/opt/tct-fileapi-w3c-tests/fileapi/FileReaderSync_readAsText_set_null.html</test_script_entry>
+        </description>
+        <specs>
+          <spec>
+            <spec_assertion element_type="method" element_name="readAsText" interface="FileReaderSync" specification="File API" section="Storage" category="Tizen W3C API Specifications"/>
+            <spec_url>http://www.w3.org/TR/2011/WD-FileAPI-20111020/#dfn-readAsTextSync</spec_url>
+            <spec_statement/>
+          </spec>
+        </specs>
+      </testcase>
+      <testcase purpose="Check if the attribute length value of interface FileList return 0" type="compliance" status="approved" component="WebAPI/Storage/File API" execution_type="auto" priority="P2" id="FileList_length_zero">
+        <description>
+          <test_script_entry>/opt/tct-fileapi-w3c-tests/fileapi/FileList_length_zero.html</test_script_entry>
+        </description>
+        <specs>
+          <spec>
+            <spec_assertion element_type="attribute" element_name="length" interface="FileList" specification="File API" section="Storage" category="Tizen W3C API Specifications"/>
+            <spec_url>http://www.w3.org/TR/2011/WD-FileAPI-20111020/#dfn-length</spec_url>
+            <spec_statement/>
+          </spec>
+        </specs>
+      </testcase>
+      <testcase purpose="Check if FileReader.abort is called when readyState is EMPTY that expecting FileReader.result is to be set null" type="compliance" status="designed" component="WebAPI/Storage/File API" execution_type="auto" priority="P3" id="FileReader_abort_when_readyState_EMPTY">
+        <description>
+          <test_script_entry>/opt/tct-fileapi-w3c-tests/fileapi/FileReader_abort_when_readyState_EMPTY.html</test_script_entry>
+        </description>
+        <specs>
+          <spec>
+            <spec_assertion element_type="TRUE" element_name="" interface="FileReader" specification="File API" section="Storage" category="Tizen W3C API Specifications"/>
+            <spec_url>http://www.w3.org/TR/2011/WD-FileAPI-20111020/#dfn-filereader</spec_url>
+            <spec_statement/>
+          </spec>
+        </specs>
+      </testcase>
+      <testcase purpose="Check if the construct of the interface FileReader" type="compliance" status="approved" component="WebAPI/Storage/File API" execution_type="auto" priority="P3" id="FileReader_construct">
+        <description>
+          <test_script_entry>/opt/tct-fileapi-w3c-tests/fileapi/FileReader_construct.html</test_script_entry>
+        </description>
+        <specs>
+          <spec>
+            <spec_assertion element_type="TRUE" element_name="" interface="FileReader" specification="File API" section="Storage" category="Tizen W3C API Specifications"/>
+            <spec_url>http://www.w3.org/TR/2011/WD-FileAPI-20111020/#dfn-filereader</spec_url>
+            <spec_statement/>
+          </spec>
+        </specs>
+      </testcase>
+      <testcase purpose="Check if FileReader's constructor must be available when in environments where the global object is represented by a WorkerGlobalScope object" type="compliance" status="approved" component="WebAPI/Storage/File API" execution_type="auto" priority="P3" id="FileReader_constructor_in_worker">
+        <description>
+          <test_script_entry>/opt/tct-fileapi-w3c-tests/fileapi/FileReader_constructor_in_worker.html</test_script_entry>
+        </description>
+        <specs>
+          <spec>
+            <spec_assertion element_type="TRUE" element_name="" interface="FileReader" specification="File API" section="Storage" category="Tizen W3C API Specifications"/>
+            <spec_url>http://www.w3.org/TR/2011/WD-FileAPI-20111020/#dfn-filereader</spec_url>
+            <spec_statement/>
+          </spec>
+        </specs>
+      </testcase>
+      <testcase purpose="Check if the value of constant FileReader.DONE is 2" type="compliance" status="approved" component="WebAPI/Storage/File API" execution_type="auto" priority="P2" id="FileReader_DONE_value">
+        <description>
+          <test_script_entry>/opt/tct-fileapi-w3c-tests/fileapi/FileReader_DONE_value.html</test_script_entry>
+        </description>
+        <specs>
+          <spec>
+            <spec_assertion element_type="attribute" element_name="DONE" interface="FileReader" specification="File API" section="Storage" category="Tizen W3C API Specifications"/>
+            <spec_url>http://www.w3.org/TR/2011/WD-FileAPI-20111020/#dfn-done</spec_url>
+            <spec_statement/>
+          </spec>
+        </specs>
+      </testcase>
+      <testcase purpose="Check if the value of constant FileReader.EMPTY is 0" type="compliance" status="approved" component="WebAPI/Storage/File API" execution_type="auto" priority="P2" id="FileReader_EMPTY_value">
+        <description>
+          <test_script_entry>/opt/tct-fileapi-w3c-tests/fileapi/FileReader_EMPTY_value.html</test_script_entry>
+        </description>
+        <specs>
+          <spec>
+            <spec_assertion element_type="attribute" element_name="EMPTY" interface="FileReader" specification="File API" section="Storage" category="Tizen W3C API Specifications"/>
+            <spec_url>http://www.w3.org/TR/2011/WD-FileAPI-20111020/#dfn-empty</spec_url>
+            <spec_statement/>
+          </spec>
+        </specs>
+      </testcase>
+      <testcase purpose="Check if the value of constant FileReader.EMPTY is 1" type="compliance" status="approved" component="WebAPI/Storage/File API" execution_type="auto" priority="P2" id="FileReader_LOADING_value">
+        <description>
+          <test_script_entry>/opt/tct-fileapi-w3c-tests/fileapi/FileReader_LOADING_value.html</test_script_entry>
+        </description>
+        <specs>
+          <spec>
+            <spec_assertion element_type="attribute" element_name="LOADING" interface="FileReader" specification="File API" section="Storage" category="Tizen W3C API Specifications"/>
+            <spec_url>http://www.w3.org/TR/2011/WD-FileAPI-20111020/#dfn-loading</spec_url>
+            <spec_statement/>
+          </spec>
+        </specs>
+      </testcase>
+      <testcase purpose="Check if the method readAsArrayBuffer value of FileReader interface set invalid value blo has error" type="compliance" status="approved" component="WebAPI/Storage/File API" execution_type="auto" priority="P2" id="FileReader_readAsArrayBuffer_Blob_invalid">
+        <description>
+          <test_script_entry>/opt/tct-fileapi-w3c-tests/fileapi/FileReader_readAsArrayBuffer_Blob_invalid.html</test_script_entry>
+        </description>
+        <specs>
+          <spec>
+            <spec_assertion element_type="method" element_name="readAsArrayBuffer" interface="FileReader" specification="File API" section="Storage" category="Tizen W3C API Specifications"/>
+            <spec_url>http://www.w3.org/TR/2011/WD-FileAPI-20111020/#dfn-readAsArrayBuffer</spec_url>
+            <spec_statement/>
+          </spec>
+        </specs>
+      </testcase>
+      <testcase purpose="Check if the method readAsArrayBuffer value of FileReader interface set empty string will Normal execution" type="compliance" status="approved" component="WebAPI/Storage/File API" execution_type="auto" priority="P2" id="FileReader_readAsArrayBuffer_empty_string">
+        <description>
+          <test_script_entry>/opt/tct-fileapi-w3c-tests/fileapi/FileReader_readAsArrayBuffer_empty_string.html</test_script_entry>
+        </description>
+        <specs>
+          <spec>
+            <spec_assertion element_type="method" element_name="readAsArrayBuffer" interface="FileReader" specification="File API" section="Storage" category="Tizen W3C API Specifications"/>
+            <spec_url>http://www.w3.org/TR/2011/WD-FileAPI-20111020/#dfn-readAsArrayBuffer</spec_url>
+            <spec_statement/>
+          </spec>
+        </specs>
+      </testcase>
+      <testcase purpose="Check if the method readAsArrayBuffer value of FileReader interface is not Parameter" type="compliance" status="approved" component="WebAPI/Storage/File API" execution_type="auto" priority="P2" id="FileReader_readAsArrayBuffer_no_argument">
+        <description>
+          <test_script_entry>/opt/tct-fileapi-w3c-tests/fileapi/FileReader_readAsArrayBuffer_no_argument.html</test_script_entry>
+        </description>
+        <specs>
+          <spec>
+            <spec_assertion element_type="method" element_name="readAsArrayBuffer" interface="FileReader" specification="File API" section="Storage" category="Tizen W3C API Specifications"/>
+            <spec_url>http://www.w3.org/TR/2011/WD-FileAPI-20111020/#dfn-readAsArrayBuffer</spec_url>
+            <spec_statement/>
+          </spec>
+        </specs>
+      </testcase>
+      <testcase purpose="Check if the method readAsArrayBuffer value of FileReader interface set null" type="compliance" status="designed" component="WebAPI/Storage/File API" execution_type="auto" priority="P2" id="FileReader_readAsArrayBuffer_set_null">
+        <description>
+          <test_script_entry>/opt/tct-fileapi-w3c-tests/fileapi/FileReader_readAsArrayBuffer_set_null.html</test_script_entry>
+        </description>
+        <specs>
+          <spec>
+            <spec_assertion element_type="method" element_name="readAsArrayBuffer" interface="FileReader" specification="File API" section="Storage" category="Tizen W3C API Specifications"/>
+            <spec_url>http://www.w3.org/TR/2011/WD-FileAPI-20111020/#dfn-readAsArrayBuffer</spec_url>
+            <spec_statement/>
+          </spec>
+        </specs>
+      </testcase>
+      <testcase purpose="Check if the method readAsBinaryString value of FileReader interface set blo" type="compliance" status="approved" component="WebAPI/Storage/File API" execution_type="auto" priority="P2" id="FileReader_readAsBinaryString_Blob_invalid">
+        <description>
+          <test_script_entry>/opt/tct-fileapi-w3c-tests/fileapi/FileReader_readAsBinaryString_Blob_invalid.html</test_script_entry>
+        </description>
+        <specs>
+          <spec>
+            <spec_assertion element_type="method" element_name="readAsBinaryString" interface="FileReader" specification="File API" section="Storage" category="Tizen W3C API Specifications"/>
+            <spec_url>http://www.w3.org/TR/2011/WD-FileAPI-20111020/#dfn-readAsBinaryStringAsync</spec_url>
+            <spec_statement/>
+          </spec>
+        </specs>
+      </testcase>
+      <testcase purpose="Check if the method readAsBinaryString value of FileReader interface set empty string will Normal execution" type="compliance" status="approved" component="WebAPI/Storage/File API" execution_type="auto" priority="P2" id="FileReader_readAsBinaryString_empty_string">
+        <description>
+          <test_script_entry>/opt/tct-fileapi-w3c-tests/fileapi/FileReader_readAsBinaryString_empty_string.html</test_script_entry>
+        </description>
+        <specs>
+          <spec>
+            <spec_assertion element_type="method" element_name="readAsBinaryString" interface="FileReader" specification="File API" section="Storage" category="Tizen W3C API Specifications"/>
+            <spec_url>http://www.w3.org/TR/2011/WD-FileAPI-20111020/#dfn-readAsBinaryStringAsync</spec_url>
+            <spec_statement/>
+          </spec>
+        </specs>
+      </testcase>
+      <testcase purpose="To check the method readAsBinaryString value of FileReader interface is not Parameter" type="compliance" status="approved" component="WebAPI/Storage/File API" execution_type="auto" priority="P2" id="FileReader_readAsBinaryString_no_argument">
+        <description>
+          <test_script_entry>/opt/tct-fileapi-w3c-tests/fileapi/FileReader_readAsBinaryString_no_argument.html</test_script_entry>
+        </description>
+        <specs>
+          <spec>
+            <spec_assertion element_type="method" element_name="readAsBinaryString" interface="FileReader" specification="File API" section="Storage" category="Tizen W3C API Specifications"/>
+            <spec_url>http://www.w3.org/TR/2011/WD-FileAPI-20111020/#dfn-readAsBinaryStringAsync</spec_url>
+            <spec_statement/>
+          </spec>
+        </specs>
+      </testcase>
+      <testcase purpose="Check if the method readAsBinaryString value of FileReader interface set null" type="compliance" status="designed" component="WebAPI/Storage/File API" execution_type="auto" priority="P2" id="FileReader_readAsBinaryString_set_blob_null">
+        <description>
+          <test_script_entry>/opt/tct-fileapi-w3c-tests/fileapi/FileReader_readAsBinaryString_set_blob_null.html</test_script_entry>
+        </description>
+        <specs>
+          <spec>
+            <spec_assertion element_type="method" element_name="readAsBinaryString" interface="FileReader" specification="File API" section="Storage" category="Tizen W3C API Specifications"/>
+            <spec_url>http://www.w3.org/TR/2011/WD-FileAPI-20111020/#dfn-readAsBinaryStringAsync</spec_url>
+            <spec_statement/>
+          </spec>
+        </specs>
+      </testcase>
+      <testcase purpose="Check if the method readAsDataURL value of FileReader interface set blo" type="compliance" status="approved" component="WebAPI/Storage/File API" execution_type="auto" priority="P2" id="FileReader_readAsDataURL_Blob_invalid">
+        <description>
+          <test_script_entry>/opt/tct-fileapi-w3c-tests/fileapi/FileReader_readAsDataURL_Blob_invalid.html</test_script_entry>
+        </description>
+        <specs>
+          <spec>
+            <spec_assertion element_type="method" element_name="readAsDataURL" interface="FileReader" specification="File API" section="Storage" category="Tizen W3C API Specifications"/>
+            <spec_url>http://www.w3.org/TR/2011/WD-FileAPI-20111020/#dfn-readAsDataURL</spec_url>
+            <spec_statement/>
+          </spec>
+        </specs>
+      </testcase>
+      <testcase purpose="Check if the method readAsDataURL value of FileReader interface set empty string will Normal execution" type="compliance" status="approved" component="WebAPI/Storage/File API" execution_type="auto" priority="P2" id="FileReader_readAsDataURL_empty_string">
+        <description>
+          <test_script_entry>/opt/tct-fileapi-w3c-tests/fileapi/FileReader_readAsDataURL_empty_string.html</test_script_entry>
+        </description>
+        <specs>
+          <spec>
+            <spec_assertion element_type="method" element_name="readAsDataURL" interface="FileReader" specification="File API" section="Storage" category="Tizen W3C API Specifications"/>
+            <spec_url>http://www.w3.org/TR/2011/WD-FileAPI-20111020/#dfn-readAsDataURL</spec_url>
+            <spec_statement/>
+          </spec>
+        </specs>
+      </testcase>
+      <testcase purpose="Check if the method readAsDataURL of FileReader interface is not parameter" type="compliance" status="approved" component="WebAPI/Storage/File API" execution_type="auto" priority="P2" id="FileReader_readAsDataURL_no_argument">
+        <description>
+          <test_script_entry>/opt/tct-fileapi-w3c-tests/fileapi/FileReader_readAsDataURL_no_argument.html</test_script_entry>
+        </description>
+        <specs>
+          <spec>
+            <spec_assertion element_type="method" element_name="readAsDataURL" interface="FileReader" specification="File API" section="Storage" category="Tizen W3C API Specifications"/>
+            <spec_url>http://www.w3.org/TR/2011/WD-FileAPI-20111020/#dfn-readAsDataURL</spec_url>
+            <spec_statement/>
+          </spec>
+        </specs>
+      </testcase>
+      <testcase purpose="Check if the method readAsDataURL value of FileReader interface set null" type="compliance" status="designed" component="WebAPI/Storage/File API" execution_type="auto" priority="P2" id="FileReader_readAsDataURL_set_blob_null">
+        <description>
+          <test_script_entry>/opt/tct-fileapi-w3c-tests/fileapi/FileReader_readAsDataURL_set_blob_null.html</test_script_entry>
+        </description>
+        <specs>
+          <spec>
+            <spec_assertion element_type="method" element_name="readAsDataURL" interface="FileReader" specification="File API" section="Storage" category="Tizen W3C API Specifications"/>
+            <spec_url>http://www.w3.org/TR/2011/WD-FileAPI-20111020/#dfn-readAsDataURL</spec_url>
+            <spec_statement/>
+          </spec>
+        </specs>
+      </testcase>
+      <testcase purpose="Check if the method readAsText value of FileReader interface set blo" type="compliance" status="approved" component="WebAPI/Storage/File API" execution_type="auto" priority="P2" id="FileReader_readAsText_Blob_invalid">
+        <description>
+          <test_script_entry>/opt/tct-fileapi-w3c-tests/fileapi/FileReader_readAsText_Blob_invalid.html</test_script_entry>
+        </description>
+        <specs>
+          <spec>
+            <spec_assertion element_type="method" element_name="readAsText" interface="FileReader" specification="File API" section="Storage" category="Tizen W3C API Specifications"/>
+            <spec_url>http://www.w3.org/TR/2011/WD-FileAPI-20111020/#dfn-readAsText</spec_url>
+            <spec_statement/>
+          </spec>
+        </specs>
+      </testcase>
+      <testcase purpose="Check if the method readAsText value of FileReader interface set empty string will Normal execution" type="compliance" status="approved" component="WebAPI/Storage/File API" execution_type="auto" priority="P2" id="FileReader_readAsText_empty_string">
+        <description>
+          <test_script_entry>/opt/tct-fileapi-w3c-tests/fileapi/FileReader_readAsText_empty_string.html</test_script_entry>
+        </description>
+        <specs>
+          <spec>
+            <spec_assertion element_type="method" element_name="readAsText" interface="FileReader" specification="File API" section="Storage" category="Tizen W3C API Specifications"/>
+            <spec_url>http://www.w3.org/TR/2011/WD-FileAPI-20111020/#dfn-readAsText</spec_url>
+            <spec_statement/>
+          </spec>
+        </specs>
+      </testcase>
+      <testcase purpose="Check if the method readAsText value of FileReader interface is not parameter" type="compliance" status="approved" component="WebAPI/Storage/File API" execution_type="auto" priority="P2" id="FileReader_readAsText_no_argument">
+        <description>
+          <test_script_entry>/opt/tct-fileapi-w3c-tests/fileapi/FileReader_readAsText_no_argument.html</test_script_entry>
+        </description>
+        <specs>
+          <spec>
+            <spec_assertion element_type="method" element_name="readAsText" interface="FileReader" specification="File API" section="Storage" category="Tizen W3C API Specifications"/>
+            <spec_url>http://www.w3.org/TR/2011/WD-FileAPI-20111020/#dfn-readAsText</spec_url>
+            <spec_statement/>
+          </spec>
+        </specs>
+      </testcase>
+      <testcase purpose="Check if the method readAsText value of FileReader interface set null" type="compliance" status="designed" component="WebAPI/Storage/File API" execution_type="auto" priority="P2" id="FileReader_readAsText_set_blob_null">
+        <description>
+          <test_script_entry>/opt/tct-fileapi-w3c-tests/fileapi/FileReader_readAsText_set_blob_null.html</test_script_entry>
+        </description>
+        <specs>
+          <spec>
+            <spec_assertion element_type="method" element_name="readAsText" interface="FileReader" specification="File API" section="Storage" category="Tizen W3C API Specifications"/>
+            <spec_url>http://www.w3.org/TR/2011/WD-FileAPI-20111020/#dfn-readAsText</spec_url>
+            <spec_statement/>
+          </spec>
+        </specs>
+      </testcase>
+      <testcase purpose="To check the method readAsText value of FileReader interface set null" type="compliance" status="designed" component="WebAPI/Storage/File API" execution_type="auto" priority="P2" id="FileReader_readAsText_set_blob_null_optional">
+        <description>
+          <test_script_entry>/opt/tct-fileapi-w3c-tests/fileapi/FileReader_readAsText_set_blob_null_optional.html</test_script_entry>
+        </description>
+        <specs>
+          <spec>
+            <spec_assertion element_type="method" element_name="readAsText" interface="FileReader" specification="File API" section="Storage" category="Tizen W3C API Specifications"/>
+            <spec_url>http://www.w3.org/TR/2011/WD-FileAPI-20111020/#dfn-readAsText</spec_url>
+            <spec_statement/>
+          </spec>
+        </specs>
+      </testcase>
+      <testcase purpose="Check if FileReader.readyState is readonly" type="compliance" status="approved" component="WebAPI/Storage/File API" execution_type="auto" priority="P2" id="FileReader_readyState_readonly">
+        <description>
+          <test_script_entry>/opt/tct-fileapi-w3c-tests/fileapi/FileReader_readyState_readonly.html</test_script_entry>
+        </description>
+        <specs>
+          <spec>
+            <spec_assertion element_type="attribute" element_name="readyState" interface="FileReader" specification="File API" section="Storage" category="Tizen W3C API Specifications"/>
+            <spec_url>http://www.w3.org/TR/2011/WD-FileAPI-20111020/#dfn-readyState</spec_url>
+            <spec_statement/>
+          </spec>
+        </specs>
+      </testcase>
+      <testcase purpose="Check if the default value of FileReader.result is null" type="compliance" status="approved" component="WebAPI/Storage/File API" execution_type="auto" priority="P2" id="FileReader_result_default_value">
+        <description>
+          <test_script_entry>/opt/tct-fileapi-w3c-tests/fileapi/FileReader_result_default_value.html</test_script_entry>
+        </description>
+        <specs>
+          <spec>
+            <spec_assertion element_type="attribute" element_name="result" interface="FileReader" specification="File API" section="Storage" category="Tizen W3C API Specifications"/>
+            <spec_url>http://www.w3.org/TR/2011/WD-FileAPI-20111020/#dfn-result</spec_url>
+            <spec_statement/>
+          </spec>
+        </specs>
+      </testcase>
+      <testcase purpose="Check if the value of result is null when the readState is EMPTY" type="compliance" status="approved" component="WebAPI/Storage/File API" execution_type="auto" priority="P2" id="FileReader_result_when_readyState_zero">
+        <description>
+          <test_script_entry>/opt/tct-fileapi-w3c-tests/fileapi/FileReader_result_when_readyState_zero.html</test_script_entry>
+        </description>
+        <specs>
+          <spec>
+            <spec_assertion element_type="attribute" element_name="result" interface="FileReader" specification="File API" section="Storage" category="Tizen W3C API Specifications"/>
+            <spec_url>http://www.w3.org/TR/2011/WD-FileAPI-20111020/#dfn-result</spec_url>
+            <spec_statement/>
+          </spec>
+        </specs>
+      </testcase>
+      <testcase purpose="Check if URL.createObjectURL returns null when this method is called with a Blob argument that is NOT valid" type="compliance" status="approved" component="WebAPI/Storage/File API" execution_type="auto" priority="P2" id="URL_createObjectURL_blob_invalid">
+        <description>
+          <test_script_entry>/opt/tct-fileapi-w3c-tests/fileapi/URL_createObjectURL_blob_invalid.html</test_script_entry>
+        </description>
+        <specs>
+          <spec>
+            <spec_assertion element_type="method" element_name="createObjectURL" interface="URL" specification="File API" section="Storage" category="Tizen W3C API Specifications"/>
+            <spec_url>http://www.w3.org/TR/2011/WD-FileAPI-20111020/#dfn-createObjectURL</spec_url>
+            <spec_statement/>
+          </spec>
+        </specs>
+      </testcase>
+      <testcase purpose="Check if URL.createObjectURL has no argument that expecting a exception is to be thrown" type="compliance" status="approved" component="WebAPI/Storage/File API" execution_type="auto" priority="P2" id="URL_createObjectURL_no_argument">
+        <description>
+          <test_script_entry>/opt/tct-fileapi-w3c-tests/fileapi/URL_createObjectURL_no_argument.html</test_script_entry>
+        </description>
+        <specs>
+          <spec>
+            <spec_assertion element_type="method" element_name="createObjectURL" interface="URL" specification="File API" section="Storage" category="Tizen W3C API Specifications"/>
+            <spec_url>http://www.w3.org/TR/2011/WD-FileAPI-20111020/#dfn-createObjectURL</spec_url>
+            <spec_statement/>
+          </spec>
+        </specs>
+      </testcase>
+      <testcase purpose="Check if URL.revokeObjectURL has no argument that expecting a exception is to be thrown" type="compliance" status="approved" component="WebAPI/Storage/File API" execution_type="auto" priority="P2" id="URL_revokeObjectURL_no_argument">
+        <description>
+          <test_script_entry>/opt/tct-fileapi-w3c-tests/fileapi/URL_revokeObjectURL_no_argument.html</test_script_entry>
+        </description>
+        <specs>
+          <spec>
+            <spec_assertion element_type="method" element_name="revokeObjectURL" interface="URL" specification="File API" section="Storage" category="Tizen W3C API Specifications"/>
+            <spec_url>http://www.w3.org/TR/2011/WD-FileAPI-20111020/#dfn-revokeObjectURL</spec_url>
+            <spec_statement/>
+          </spec>
+        </specs>
+      </testcase>
+      <testcase purpose="Check if URL.revokeObjectURL call does nothing and user agents MAY display a message on the error console when the url refers to a Blob that is NOT valid" type="compliance" status="approved" component="WebAPI/Storage/File API" execution_type="auto" priority="P2" id="URL_revokeObjectURL_url_invalid">
+        <description>
+          <test_script_entry>/opt/tct-fileapi-w3c-tests/fileapi/URL_revokeObjectURL_url_invalid.html</test_script_entry>
+        </description>
+        <specs>
+          <spec>
+            <spec_assertion element_type="method" element_name="revokeObjectURL" interface="URL" specification="File API" section="Storage" category="Tizen W3C API Specifications"/>
+            <spec_url>http://www.w3.org/TR/2011/WD-FileAPI-20111020/#dfn-revokeObjectURL</spec_url>
+            <spec_statement/>
+          </spec>
+        </specs>
+      </testcase>
+      <testcase purpose="Check if WorkerUtils implements URL" type="compliance" status="approved" component="WebAPI/Storage/File API" execution_type="auto" priority="P3" id="URL_in_webworker">
+        <description>
+          <test_script_entry>/opt/tct-fileapi-w3c-tests/fileapi/URL_in_webworker.html</test_script_entry>
+        </description>
+        <specs>
+          <spec>
+            <spec_assertion element_type="TRUE" element_name="" interface="URL" specification="File API" section="Storage" category="Tizen W3C API Specifications"/>
+            <spec_url>http://www.w3.org/TR/2011/WD-FileAPI-20111020/#URL-object</spec_url>
             <spec_statement/>
           </spec>
         </specs>
