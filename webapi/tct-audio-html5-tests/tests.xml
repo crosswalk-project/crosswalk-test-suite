@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <?xml-stylesheet type="text/xsl" href="./testcase.xsl"?>
 <test_definition>
-  <suite name="tct-audio-html5-tests" category="W3C/HTML5 APIs">
+  <suite category="W3C/HTML5 APIs" name="tct-audio-html5-tests">
     <set name="Audio" type="js">
       <testcase component="WebAPI/Media/HTML5 The audio element (Partial)" execution_type="auto" id="audio_event_loadedmetadata" purpose="Check that loadedmetadata event is triggered if autoplay attribute present and src attribute give right address of the media resource">
         <description>
@@ -408,7 +408,7 @@
           <test_script_entry>/opt/tct-audio-html5-tests/audio/w3c/muted.html?total_num=21&amp;amp;locator_key=id&amp;amp;value=4</test_script_entry>
         </description>
       </testcase>
-      <testcase component="WebAPI/Media/HTML5 The audio element (Partial)" execution_type="auto" id="audio_muted_notpresenet_set" purpose="Check if the audio.muted can be set if the muted attribute is not present in the audio element">
+      <testcase component="WebAPI/Media/HTML5 The audio element (Partial)" execution_type="auto" id="audio_muted_notpresent_set" purpose="Check if the audio.muted can be set if the muted attribute is not present in the audio element">
         <description>
           <test_script_entry>/opt/tct-audio-html5-tests/audio/w3c/muted.html?total_num=21&amp;amp;locator_key=id&amp;amp;value=2</test_script_entry>
         </description>
@@ -635,7 +635,8 @@
       </testcase>
       <testcase component="WebAPI/Media/HTML5 The audio element (Partial)" execution_type="auto" id="audio_HAVE_METADATA_constant_type" purpose="Check if the type of audio.HAVE_METADATA is number">
         <description>
-          <test_script_entry>/opt/tct-audio-html5-tests/audio/w3c/audio_attributes.html?total_num=89&amp;amp;locator_key=id&amp;amp;value=32</test_script_entry>
+          <test_script_entry>/opt/tct-audio-html5-tests/audio/w3c/audio_attributes.html?total_num=89&amp;amp;locator_key=id&amp;amp;value=
+32</test_script_entry>
         </description>
       </testcase>
       <testcase component="WebAPI/Media/HTML5 The audio element (Partial)" execution_type="auto" id="audio_HAVE_METADATA_constant_value" purpose="Check if the constant value of audio.HAVE_METADATA is 1">
@@ -901,6 +902,561 @@
       <testcase component="WebAPI/Media/HTML5 The audio element (Partial)" execution_type="auto" id="audio_canPlayType_mp3" purpose="Check if the browser really supports playing MP3s">
         <description>
           <test_script_entry>/opt/tct-audio-html5-tests/audio/audio_canPlayType_mp3.html</test_script_entry>
+        </description>
+      </testcase>
+      <testcase component="WebAPI/Media/HTML5 The audio element (Partial)" execution_type="auto" id="audio_src_changed_trigger_loadstart" purpose="Check if a audio.src attribute of a media element is set or changed, the user agent must invoke the media element's media element load algorithm">
+        <description>
+          <test_script_entry>/opt/tct-audio-html5-tests/audio/audio_src_changed_trigger_loadstart.html</test_script_entry>
+        </description>
+      </testcase>
+      <testcase component="WebAPI/Media/HTML5 The audio element (Partial)" execution_type="auto" id="audio_TimeRanges_end_INDEX_SIZE_ERR" purpose="Check if throw INDEX_SIZE_ERR exception when if the audio.TimeRanges.end method index is out of range">
+        <description>
+          <test_script_entry>/opt/tct-audio-html5-tests/audio/audio_TimeRanges_end_INDEX_SIZE_ERR.html</test_script_entry>
+        </description>
+      </testcase>
+      <testcase component="WebAPI/Media/HTML5 The audio element (Partial)" execution_type="auto" id="audio_TimeRanges_start_INDEX_SIZE_ERR" purpose="Check if throw INDEX_SIZE_ERR exception when if the audio.TimeRanges.start method index is out of range">
+        <description>
+          <test_script_entry>/opt/tct-audio-html5-tests/audio/audio_TimeRanges_start_INDEX_SIZE_ERR.html</test_script_entry>
+        </description>
+      </testcase>
+      <testcase component="WebAPI/Media/HTML5 The audio element (Partial)" execution_type="auto" id="audio_element" purpose="Check if audio element returns same audio element twice">
+        <description>
+          <test_script_entry>/opt/tct-audio-html5-tests/audio/audio_element.html</test_script_entry>
+        </description>
+      </testcase>
+      <testcase component="WebAPI/Media/HTML5 The audio element (Partial)" execution_type="auto" id="audio_pause_ogg_vorbis" purpose="Check if user agent is able to pause playing audio playback for stream ogg vorbis">
+        <description>
+          <test_script_entry>/opt/tct-audio-html5-tests/audio/audio_pause_ogg_vorbis.html</test_script_entry>
+        </description>
+      </testcase>
+      <testcase component="WebAPI/Media/HTML5 The audio element (Partial)" execution_type="auto" id="audio_pause_wav_pcm" purpose="Check if user agent is able to pause playing audio playback for stream wav pcm">
+        <description>
+          <test_script_entry>/opt/tct-audio-html5-tests/audio/audio_pause_wav_pcm.html</test_script_entry>
+        </description>
+      </testcase>
+      <testcase component="WebAPI/Media/HTML5 The audio element (Partial)" execution_type="auto" id="audio_pause_webm_vorbis" purpose="Check if user agent is able to pause playing audio playback for stream webm vorbis">
+        <description>
+          <test_script_entry>/opt/tct-audio-html5-tests/audio/audio_pause_webm_vorbis.html</test_script_entry>
+        </description>
+      </testcase>
+      <testcase component="WebAPI/Media/HTML5 The audio element (Partial)" execution_type="auto" id="audio_play_wav_pcm" purpose="Check if user agent is able to play audio stream wav pcm with event ended fired when ended playback">
+        <description>
+          <test_script_entry>/opt/tct-audio-html5-tests/audio/audio_play_wav_pcm.html</test_script_entry>
+        </description>
+      </testcase>
+      <testcase component="WebAPI/Media/HTML5 The audio element (Partial)" execution_type="auto" id="audio_play_webm_vorbis" purpose="Check if user agent is able to play audio stream webm vorbis with event ended fired when ended playback">
+        <description>
+          <test_script_entry>/opt/tct-audio-html5-tests/audio/audio_play_webm_vorbis.html</test_script_entry>
+        </description>
+      </testcase>
+      <testcase component="WebAPI/Media/HTML5 The audio element (Partial)" execution_type="auto" id="audio_resume_ogg_vorbis" purpose="Check if user agent is able to resume paused audio playback for stream ogg vorbis">
+        <description>
+          <test_script_entry>/opt/tct-audio-html5-tests/audio/audio_resume_ogg_vorbis.html</test_script_entry>
+        </description>
+      </testcase>
+      <testcase component="WebAPI/Media/HTML5 The audio element (Partial)" execution_type="auto" id="audio_resume_wav_pcm" purpose="Check if user agent is able to resume paused audio playback for stream wav pcm">
+        <description>
+          <test_script_entry>/opt/tct-audio-html5-tests/audio/audio_resume_wav_pcm.html</test_script_entry>
+        </description>
+      </testcase>
+      <testcase component="WebAPI/Media/HTML5 The audio element (Partial)" execution_type="auto" id="audio_resume_webm_vorbis" purpose="Check if user agent is able to resume paused audio playback for stream webm vorbis">
+        <description>
+          <test_script_entry>/opt/tct-audio-html5-tests/audio/audio_resume_webm_vorbis.html</test_script_entry>
+        </description>
+      </testcase>
+      <testcase component="WebAPI/Media/HTML5 The audio element (Partial)" execution_type="auto" id="audio_seek_ogg_vorbis" purpose="Check if user agent is able to seek audio playback with currentTime attribute for stream ogg vorbis">
+        <description>
+          <test_script_entry>/opt/tct-audio-html5-tests/audio/audio_seek_ogg_vorbis.html</test_script_entry>
+        </description>
+      </testcase>
+      <testcase component="WebAPI/Media/HTML5 The audio element (Partial)" execution_type="auto" id="audio_seek_wav_pcm" purpose="Check if user agent is able to seek audio playback with currentTime attribute for stream wav pcm">
+        <description>
+          <test_script_entry>/opt/tct-audio-html5-tests/audio/audio_seek_wav_pcm.html</test_script_entry>
+        </description>
+      </testcase>
+      <testcase component="WebAPI/Media/HTML5 The audio element (Partial)" execution_type="auto" id="audio_seek_webm_vorbis" purpose="Check if user agent is able to seek audio playback with currentTime attribute for stream webm vorbis">
+        <description>
+          <test_script_entry>/opt/tct-audio-html5-tests/audio/audio_seek_webm_vorbis.html</test_script_entry>
+        </description>
+      </testcase>
+      <testcase component="WebAPI/Media/HTML5 The audio element (Partial)" execution_type="auto" id="audio_stop_ogg_vorbis" purpose="Check if user agent is able to stop audio playback for stream ogg vorbis">
+        <description>
+          <test_script_entry>/opt/tct-audio-html5-tests/audio/audio_stop_ogg_vorbis.html</test_script_entry>
+        </description>
+      </testcase>
+      <testcase component="WebAPI/Media/HTML5 The audio element (Partial)" execution_type="auto" id="audio_stop_wav_pcm" purpose="Check if user agent is able to stop audio playback for stream wav pcm">
+        <description>
+          <test_script_entry>/opt/tct-audio-html5-tests/audio/audio_stop_wav_pcm.html</test_script_entry>
+        </description>
+      </testcase>
+      <testcase component="WebAPI/Media/HTML5 The audio element (Partial)" execution_type="auto" id="audio_stop_webm_vorbis" purpose="Check if user agent is able to stop audio playback for stream webm vorbis">
+        <description>
+          <test_script_entry>/opt/tct-audio-html5-tests/audio/audio_stop_webm_vorbis.html</test_script_entry>
+        </description>
+      </testcase>
+      <testcase component="WebAPI/Media/HTML5 The audio element (Partial)" execution_type="auto" id="audio_autoplay_empty_string" purpose="Check if the attribute audio.autoplay is false when set it empty string">
+        <description>
+          <test_script_entry>/opt/tct-audio-html5-tests/audio/audio_autoplay_empty_string.html</test_script_entry>
+        </description>
+      </testcase>
+      <testcase component="WebAPI/Media/HTML5 The audio element (Partial)" execution_type="auto" id="audio_autoplay_null" purpose="Check if the value of attribute of audio.autoplay is false when you set it null">
+        <description>
+          <test_script_entry>/opt/tct-audio-html5-tests/audio/audio_autoplay_null.html</test_script_entry>
+        </description>
+      </testcase>
+      <testcase component="WebAPI/Media/HTML5 The audio element (Partial)" execution_type="auto" id="audio_autoplay_onloadedmetadata" purpose="Check if audio.autoplay attribute invoked,then audio.onloadedmetadata() function triggered">
+        <description>
+          <test_script_entry>/opt/tct-audio-html5-tests/audio/audio_autoplay_onloadedmetadata.html</test_script_entry>
+        </description>
+      </testcase>
+      <testcase component="WebAPI/Media/HTML5 The audio element (Partial)" execution_type="auto" id="audio_autoplay_true_autoplay_present" purpose="Check if audio.autoplay returns true when the controls attribute is present in the audio element">
+        <description>
+          <test_script_entry>/opt/tct-audio-html5-tests/audio/audio_autoplay_true_autoplay_present.html</test_script_entry>
+        </description>
+      </testcase>
+      <testcase component="WebAPI/Media/HTML5 The audio element (Partial)" execution_type="auto" id="audio_buffered_end_type" purpose="Check if the type of audio.buffered.end is function">
+        <description>
+          <test_script_entry>/opt/tct-audio-html5-tests/audio/audio_buffered_end_type.html</test_script_entry>
+        </description>
+      </testcase>
+      <testcase component="WebAPI/Media/HTML5 The audio element (Partial)" execution_type="auto" id="audio_buffered_length_default_value" purpose="Check if the audio.buffered length is zero,typically this will be a single range anchored at the zero point">
+        <description>
+          <test_script_entry>/opt/tct-audio-html5-tests/audio/audio_buffered_length_default_value.html</test_script_entry>
+        </description>
+      </testcase>
+      <testcase component="WebAPI/Media/HTML5 The audio element (Partial)" execution_type="auto" id="audio_buffered_readonly" purpose="Check if the audio.buffered attribute is readonly">
+        <description>
+          <test_script_entry>/opt/tct-audio-html5-tests/audio/audio_buffered_readonly.html</test_script_entry>
+        </description>
+      </testcase>
+      <testcase component="WebAPI/Media/HTML5 The audio element (Partial)" execution_type="auto" id="audio_buffered_start_type" purpose="Check if the type of audio.buffered.start is function">
+        <description>
+          <test_script_entry>/opt/tct-audio-html5-tests/audio/audio_buffered_start_type.html</test_script_entry>
+        </description>
+      </testcase>
+      <testcase component="WebAPI/Media/HTML5 The audio element (Partial)" execution_type="auto" id="audio_canPlayType_codecs_order" purpose="Check if the codecs parameter order of audio.canPlayType">
+        <description>
+          <test_script_entry>/opt/tct-audio-html5-tests/audio/audio_canPlayType_codecs_order.html</test_script_entry>
+        </description>
+      </testcase>
+      <testcase component="WebAPI/Media/HTML5 The audio element (Partial)" execution_type="auto" id="audio_canPlayType_empty_string" purpose="Check if audio.canPlayType return empty string if arguments is a empty string">
+        <description>
+          <test_script_entry>/opt/tct-audio-html5-tests/audio/audio_canPlayType_empty_string.html</test_script_entry>
+        </description>
+      </testcase>
+      <testcase component="WebAPI/Media/HTML5 The audio element (Partial)" execution_type="auto" id="audio_canPlayType_method_type" purpose="Check if the type of audio.canplayType is 'function'">
+        <description>
+          <test_script_entry>/opt/tct-audio-html5-tests/audio/audio_canPlayType_method_type.html</test_script_entry>
+        </description>
+      </testcase>
+      <testcase component="WebAPI/Media/HTML5 The audio element (Partial)" execution_type="auto" id="audio_canPlayType_return_maybe" purpose="Check if audio.canPlayType() return maybe if the argument is 'audio/ogg'">
+        <description>
+          <test_script_entry>/opt/tct-audio-html5-tests/audio/audio_canPlayType_return_maybe.html</test_script_entry>
+        </description>
+      </testcase>
+      <testcase component="WebAPI/Media/HTML5 The audio element (Partial)" execution_type="auto" id="audio_canPlayType_return_probably" purpose="Check if the method audio.canPlayType() return probably if video can play the ogg type">
+        <description>
+          <test_script_entry>/opt/tct-audio-html5-tests/audio/audio_canPlayType_return_probably.html</test_script_entry>
+        </description>
+      </testcase>
+      <testcase component="WebAPI/Media/HTML5 The audio element (Partial)" execution_type="auto" id="audio_constructor_src" purpose="Check if new Audio( url ) returns a new audio element">
+        <description>
+          <test_script_entry>/opt/tct-audio-html5-tests/audio/audio_constructor_src.html</test_script_entry>
+        </description>
+      </testcase>
+      <testcase component="WebAPI/Media/HTML5 The audio element (Partial)" execution_type="auto" id="audio_controls_empty_string" purpose="Check if the value of attribute audio.controls is false when set it empty string">
+        <description>
+          <test_script_entry>/opt/tct-audio-html5-tests/audio/audio_controls_empty_string.html</test_script_entry>
+        </description>
+      </testcase>
+      <testcase component="WebAPI/Media/HTML5 The audio element (Partial)" execution_type="auto" id="audio_controls_false_controls_absent" purpose="Check if audio.controls returns false when the controls attribute is absent in the audio element">
+        <description>
+          <test_script_entry>/opt/tct-audio-html5-tests/audio/audio_controls_false_controls_absent.html</test_script_entry>
+        </description>
+      </testcase>
+      <testcase component="WebAPI/Media/HTML5 The audio element (Partial)" execution_type="auto" id="audio_controls_null" purpose="Check if the value of attribute audio.controls is false when set it null">
+        <description>
+          <test_script_entry>/opt/tct-audio-html5-tests/audio/audio_controls_null.html</test_script_entry>
+        </description>
+      </testcase>
+      <testcase component="WebAPI/Media/HTML5 The audio element (Partial)" execution_type="auto" id="audio_currentSrc_default_value" purpose="Check if the default value of audio.currentSrc is a empty string">
+        <description>
+          <test_script_entry>/opt/tct-audio-html5-tests/audio/audio_currentSrc_default_value.html</test_script_entry>
+        </description>
+      </testcase>
+      <testcase component="WebAPI/Media/HTML5 The audio element (Partial)" execution_type="auto" id="audio_currentSrc_readonly" purpose="Check if the audio.currentSrc attribute is readonly">
+        <description>
+          <test_script_entry>/opt/tct-audio-html5-tests/audio/audio_currentSrc_readonly.html</test_script_entry>
+        </description>
+      </testcase>
+      <testcase component="WebAPI/Media/HTML5 The audio element (Partial)" execution_type="auto" id="audio_currentSrc_src_empty_string" purpose="Check if audio.currentSrc is empty string when set the audio.src empty string">
+        <description>
+          <test_script_entry>/opt/tct-audio-html5-tests/audio/audio_currentSrc_src_empty_string.html</test_script_entry>
+        </description>
+      </testcase>
+      <testcase component="WebAPI/Media/HTML5 The audio element (Partial)" execution_type="auto" id="audio_currentSrc_src_null" purpose="Check if audio.currentSrc is empty string when set the audio.src null">
+        <description>
+          <test_script_entry>/opt/tct-audio-html5-tests/audio/audio_currentSrc_src_null.html</test_script_entry>
+        </description>
+      </testcase>
+      <testcase component="WebAPI/Media/HTML5 The audio element (Partial)" execution_type="auto" id="audio_currentTime_basic" purpose="Check if the audio.currentTime attribute return the current playback position it was set to 10">
+        <description>
+          <test_script_entry>/opt/tct-audio-html5-tests/audio/audio_currentTime_basic.html</test_script_entry>
+        </description>
+      </testcase>
+      <testcase component="WebAPI/Media/HTML5 The audio element (Partial)" execution_type="auto" id="audio_currentTime_default_value" purpose="Check if the audio.currentTime attribute initially be zero seconds in the absence of media data">
+        <description>
+          <test_script_entry>/opt/tct-audio-html5-tests/audio/audio_currentTime_default_value.html</test_script_entry>
+        </description>
+      </testcase>
+      <testcase component="WebAPI/Media/HTML5 The audio element (Partial)" execution_type="auto" id="audio_currentTime_exception_INVALID_STATE_ERR" purpose="Check if the audio.currentTime attribute on setting that expecting TYPE_MISMATCH_ERR exception is to be thrown">
+        <description>
+          <test_script_entry>/opt/tct-audio-html5-tests/audio/audio_currentTime_exception_INVALID_STATE_ERR.html</test_script_entry>
+        </description>
+      </testcase>
+      <testcase component="WebAPI/Media/HTML5 The audio element (Partial)" execution_type="auto" id="audio_currentTime_value_duration" purpose="Check if the audio.currentTime attribute return the end playback position it was set to duration">
+        <description>
+          <test_script_entry>/opt/tct-audio-html5-tests/audio/audio_currentTime_value_duration.html</test_script_entry>
+        </description>
+      </testcase>
+      <testcase component="WebAPI/Media/HTML5 The audio element (Partial)" execution_type="auto" id="audio_currentTime_value_null" purpose="Check if the audio.currentTime attribute on getting it must return 0 it was set to null">
+        <description>
+          <test_script_entry>/opt/tct-audio-html5-tests/audio/audio_currentTime_value_null.html</test_script_entry>
+        </description>
+      </testcase>
+      <testcase component="WebAPI/Media/HTML5 The audio element (Partial)" execution_type="auto" id="audio_defaultMuted_empty_string" purpose="Check if the value of the attribute audio.defaultMuted set empty string,then compare media.defaultMuted is false">
+        <description>
+          <test_script_entry>/opt/tct-audio-html5-tests/audio/audio_defaultMuted_empty_string.html</test_script_entry>
+        </description>
+      </testcase>
+      <testcase component="WebAPI/Media/HTML5 The audio element (Partial)" execution_type="auto" id="audio_defaultMuted_null" purpose="Check if the value of the attribute audio.defaultMuted set null,then compare media.defaultMuted is false">
+        <description>
+          <test_script_entry>/opt/tct-audio-html5-tests/audio/audio_defaultMuted_null.html</test_script_entry>
+        </description>
+      </testcase>
+      <testcase component="WebAPI/Media/HTML5 The audio element (Partial)" execution_type="auto" id="audio_defaultPlaybackRate_basic" purpose="Check if the audio.defaultPlaybackRate attribute that on getting it must return 0.5 it was set to 0.5">
+        <description>
+          <test_script_entry>/opt/tct-audio-html5-tests/audio/audio_defaultPlaybackRate_basic.html</test_script_entry>
+        </description>
+      </testcase>
+      <testcase component="WebAPI/Media/HTML5 The audio element (Partial)" execution_type="auto" id="audio_defaultPlaybackRate_default_value" purpose="Check if the audio.defaultPlaybackRate attribute return 1.0 if it hasn't yet been set">
+        <description>
+          <test_script_entry>/opt/tct-audio-html5-tests/audio/audio_defaultPlaybackRate_default_value.html</test_script_entry>
+        </description>
+      </testcase>
+      <testcase component="WebAPI/Media/HTML5 The audio element (Partial)" execution_type="auto" id="audio_defaultPlaybackRate_value_null" purpose="Check if the audio.defaultPlaybackRate attribute that on getting it must return 0 it was set to null">
+        <description>
+          <test_script_entry>/opt/tct-audio-html5-tests/audio/audio_defaultPlaybackRate_value_null.html</test_script_entry>
+        </description>
+      </testcase>
+      <testcase component="WebAPI/Media/HTML5 The audio element (Partial)" execution_type="auto" id="audio_defaultPlaybackRate_value_zero" purpose="Check if the audio.defaultPlaybackRate attribute that on getting it must return 0 it was set to 0">
+        <description>
+          <test_script_entry>/opt/tct-audio-html5-tests/audio/audio_defaultPlaybackRate_value_zero.html</test_script_entry>
+        </description>
+      </testcase>
+      <testcase component="WebAPI/Media/HTML5 The audio element (Partial)" execution_type="auto" id="audio_duration_attribute_readonly" purpose="Check if the audio.duration attribute is readonly">
+        <description>
+          <test_script_entry>/opt/tct-audio-html5-tests/audio/audio_duration_attribute_readonly.html</test_script_entry>
+        </description>
+      </testcase>
+      <testcase component="WebAPI/Media/HTML5 The audio element (Partial)" execution_type="auto" id="audio_duration_attribute_value_NaN" purpose="Check if the audio.duration attribute return the Not-a-Number (NaN) value if no media data is available">
+        <description>
+          <test_script_entry>/opt/tct-audio-html5-tests/audio/audio_duration_attribute_value_NaN.html</test_script_entry>
+        </description>
+      </testcase>
+      <testcase component="WebAPI/Media/HTML5 The audio element (Partial)" execution_type="auto" id="audio_duration_attribute_value_resource" purpose="Check if the audio.duration attribute return the time of the end of the media resource">
+        <description>
+          <test_script_entry>/opt/tct-audio-html5-tests/audio/audio_duration_attribute_value_resource.html</test_script_entry>
+        </description>
+      </testcase>
+      <testcase component="WebAPI/Media/HTML5 The audio element (Partial)" execution_type="auto" id="audio_ended_attribute_readonly" purpose="Check if audio.ended is readonly">
+        <description>
+          <test_script_entry>/opt/tct-audio-html5-tests/audio/audio_ended_attribute_readonly.html</test_script_entry>
+        </description>
+      </testcase>
+      <testcase component="WebAPI/Media/HTML5 The audio element (Partial)" execution_type="auto" id="audio_ended_canplaythrough" purpose="Check if the attribute audio.ended should be false during canplaythrough event">
+        <description>
+          <test_script_entry>/opt/tct-audio-html5-tests/audio/audio_ended_canplaythrough.html</test_script_entry>
+        </description>
+      </testcase>
+      <testcase component="WebAPI/Media/HTML5 The audio element (Partial)" execution_type="auto" id="audio_ended_currentTime_duration" purpose="Check if the value of attribute audio.ended is true when set currentTime audio.durations">
+        <description>
+          <test_script_entry>/opt/tct-audio-html5-tests/audio/audio_ended_currentTime_duration.html</test_script_entry>
+        </description>
+      </testcase>
+      <testcase component="WebAPI/Media/HTML5 The audio element (Partial)" execution_type="auto" id="audio_ended_loaddata" purpose="Check if the value of attribute audio.ended is false during loadeddata event">
+        <description>
+          <test_script_entry>/opt/tct-audio-html5-tests/audio/audio_ended_loaddata.html</test_script_entry>
+        </description>
+      </testcase>
+      <testcase component="WebAPI/Media/HTML5 The audio element (Partial)" execution_type="auto" id="audio_ended_playing" purpose="Check if the value of attribute audio.ended is false during playing event">
+        <description>
+          <test_script_entry>/opt/tct-audio-html5-tests/audio/audio_ended_playing.html</test_script_entry>
+        </description>
+      </testcase>
+      <testcase component="WebAPI/Media/HTML5 The audio element (Partial)" execution_type="auto" id="audio_error_MEDIA_ERR_SRC_NOT_SUPPORTED" purpose="Check if audio.error.code is MEDIA_ERR_SRC_NOT_SUPPORTED if the source not support">
+        <description>
+          <test_script_entry>/opt/tct-audio-html5-tests/audio/audio_error_MEDIA_ERR_SRC_NOT_SUPPORTED.html</test_script_entry>
+        </description>
+      </testcase>
+      <testcase component="WebAPI/Media/HTML5 The audio element (Partial)" execution_type="auto" id="audio_error_readonly" purpose="Check if the audio.error attribute is readonly">
+        <description>
+          <test_script_entry>/opt/tct-audio-html5-tests/audio/audio_error_readonly.html</test_script_entry>
+        </description>
+      </testcase>
+      <testcase component="WebAPI/Media/HTML5 The audio element (Partial)" execution_type="auto" id="audio_load_method" purpose="Check if audio.load can start selecting and loading a new media resource from scratch">
+        <description>
+          <test_script_entry>/opt/tct-audio-html5-tests/audio/audio_load_method.html</test_script_entry>
+        </description>
+      </testcase>
+      <testcase component="WebAPI/Media/HTML5 The audio element (Partial)" execution_type="auto" id="audio_load_method_type" purpose="Check if the type of audio.load is 'function'">
+        <description>
+          <test_script_entry>/opt/tct-audio-html5-tests/audio/audio_load_method_type.html</test_script_entry>
+        </description>
+      </testcase>
+      <testcase component="WebAPI/Media/HTML5 The audio element (Partial)" execution_type="auto" id="audio_loop_empty_string" purpose="Check if the value of the attribute audio.loop is false if set it empty string">
+        <description>
+          <test_script_entry>/opt/tct-audio-html5-tests/audio/audio_loop_empty_string.html</test_script_entry>
+        </description>
+      </testcase>
+      <testcase component="WebAPI/Media/HTML5 The audio element (Partial)" execution_type="auto" id="audio_loop_false_loop_absent" purpose="Check if audio.loop returns false when the loop attribute is absent in the audio element">
+        <description>
+          <test_script_entry>/opt/tct-audio-html5-tests/audio/audio_loop_false_loop_absent.html</test_script_entry>
+        </description>
+      </testcase>
+      <testcase component="WebAPI/Media/HTML5 The audio element (Partial)" execution_type="auto" id="audio_loop_null" purpose="Check if the value of the attribute audio.loop is false if set it null">
+        <description>
+          <test_script_entry>/opt/tct-audio-html5-tests/audio/audio_loop_null.html</test_script_entry>
+        </description>
+      </testcase>
+      <testcase component="WebAPI/Media/HTML5 The audio element (Partial)" execution_type="auto" id="audio_MediaError_code_readonly" purpose="Check if audio.error.code is readonly">
+        <description>
+          <test_script_entry>/opt/tct-audio-html5-tests/audio/audio_MediaError_code_readonly.html</test_script_entry>
+        </description>
+      </testcase>
+      <testcase component="WebAPI/Media/HTML5 The audio element (Partial)" execution_type="auto" id="audio_MediaError_code_type" purpose="Check if the type of audio.error.code is 'number'">
+        <description>
+          <test_script_entry>/opt/tct-audio-html5-tests/audio/audio_MediaError_code_type.html</test_script_entry>
+        </description>
+      </testcase>
+      <testcase component="WebAPI/Media/HTML5 The audio element (Partial)" execution_type="auto" id="audio_MediaError_MEDIA_ERR_ABORTED_constant_type" purpose="Check if the type of audio.error.MEDIA_ERR_ABORTED is 'number'">
+        <description>
+          <test_script_entry>/opt/tct-audio-html5-tests/audio/audio_MediaError_MEDIA_ERR_ABORTED_constant_type.html</test_script_entry>
+        </description>
+      </testcase>
+      <testcase component="WebAPI/Media/HTML5 The audio element (Partial)" execution_type="auto" id="audio_MediaError_MEDIA_ERR_ABORTED_constant_value" purpose="Check if audio.error.MEDIA_ERR_ABORTED const value is 1">
+        <description>
+          <test_script_entry>/opt/tct-audio-html5-tests/audio/audio_MediaError_MEDIA_ERR_ABORTED_constant_value.html</test_script_entry>
+        </description>
+      </testcase>
+      <testcase component="WebAPI/Media/HTML5 The audio element (Partial)" execution_type="auto" id="audio_MediaError_MEDIA_ERR_DECODE_constant_type" purpose="Check if the type of audio.error.MEDIA_ERR_DECODE is 'number'">
+        <description>
+          <test_script_entry>/opt/tct-audio-html5-tests/audio/audio_MediaError_MEDIA_ERR_DECODE_constant_type.html</test_script_entry>
+        </description>
+      </testcase>
+      <testcase component="WebAPI/Media/HTML5 The audio element (Partial)" execution_type="auto" id="audio_MediaError_MEDIA_ERR_DECODE_constant_value" purpose="Check if audio.error.MEDIA_ERR_DECODE const value is 3">
+        <description>
+          <test_script_entry>/opt/tct-audio-html5-tests/audio/audio_MediaError_MEDIA_ERR_DECODE_constant_value.html</test_script_entry>
+        </description>
+      </testcase>
+      <testcase component="WebAPI/Media/HTML5 The audio element (Partial)" execution_type="auto" id="audio_MediaError_MEDIA_ERR_NETWORK_constant_type" purpose="Check if the type of audio.error.MEDIA_ERR_NETWORK is 'number'">
+        <description>
+          <test_script_entry>/opt/tct-audio-html5-tests/audio/audio_MediaError_MEDIA_ERR_NETWORK_constant_type.html</test_script_entry>
+        </description>
+      </testcase>
+      <testcase component="WebAPI/Media/HTML5 The audio element (Partial)" execution_type="auto" id="audio_MediaError_MEDIA_ERR_NETWORK_constant_value" purpose="Check if audio.error.MEDIA_ERR_NETWORK const value is 2">
+        <description>
+          <test_script_entry>/opt/tct-audio-html5-tests/audio/audio_MediaError_MEDIA_ERR_NETWORK_constant_value.html</test_script_entry>
+        </description>
+      </testcase>
+      <testcase component="WebAPI/Media/HTML5 The audio element (Partial)" execution_type="auto" id="audio_MediaError_MEDIA_ERR_SRC_NOT_SUPPORTED_constant_type" purpose="Check if the type of audio.error.MEDIA_ERR_SRC_NOT_SUPPORTED is 'number'">
+        <description>
+          <test_script_entry>/opt/tct-audio-html5-tests/audio/audio_MediaError_MEDIA_ERR_SRC_NOT_SUPPORTED_constant_type.html</test_script_entry>
+        </description>
+      </testcase>
+      <testcase component="WebAPI/Media/HTML5 The audio element (Partial)" execution_type="auto" id="audio_MediaError_MEDIA_ERR_SRC_NOT_SUPPORTED_constant_value" purpose="Check if audio.error.MEDIA_ERR_SRC_NOT_SUPPORTED const value is 4">
+        <description>
+          <test_script_entry>/opt/tct-audio-html5-tests/audio/audio_MediaError_MEDIA_ERR_SRC_NOT_SUPPORTED_constant_value.html</test_script_entry>
+        </description>
+      </testcase>
+      <testcase component="WebAPI/Media/HTML5 The audio element (Partial)" execution_type="auto" id="audio_mediaGroup_empty_string" purpose="Check if the value of attribute of audio.mediaGroup is empty string when you set it empty string">
+        <description>
+          <test_script_entry>/opt/tct-audio-html5-tests/audio/audio_mediaGroup_empty_string.html</test_script_entry>
+        </description>
+      </testcase>
+      <testcase component="WebAPI/Media/HTML5 The audio element (Partial)" execution_type="auto" id="audio_mediaGroup_valid_value" purpose="Check if the value of audio.mediaGroup is valid">
+        <description>
+          <test_script_entry>/opt/tct-audio-html5-tests/audio/audio_mediaGroup_valid_value.html</test_script_entry>
+        </description>
+      </testcase>
+      <testcase component="WebAPI/Media/HTML5 The audio element (Partial)" execution_type="auto" id="audio_muted_false_muted_absent" purpose="Check if audio.muted returns false when the muted attribute is absent in the audio element">
+        <description>
+          <test_script_entry>/opt/tct-audio-html5-tests/audio/audio_muted_false_muted_absent.html</test_script_entry>
+        </description>
+      </testcase>
+      <testcase component="WebAPI/Media/HTML5 The audio element (Partial)" execution_type="auto" id="audio_networkState_NETWORK_LOADING" purpose="Check if audio.networkState is NETWORK_LOADING when the user agent is actively trying to download data">
+        <description>
+          <test_script_entry>/opt/tct-audio-html5-tests/audio/audio_networkState_NETWORK_LOADING.html</test_script_entry>
+        </description>
+      </testcase>
+      <testcase component="WebAPI/Media/HTML5 The audio element (Partial)" execution_type="auto" id="audio_networkState_NETWORK_NO_SOURCE" purpose="Check if audio.networkState is NETWORK_NO_SOURCE when not yet found a resource to use">
+        <description>
+          <test_script_entry>/opt/tct-audio-html5-tests/audio/audio_networkState_NETWORK_NO_SOURCE.html</test_script_entry>
+        </description>
+      </testcase>
+      <testcase component="WebAPI/Media/HTML5 The audio element (Partial)" execution_type="auto" id="audio_networkState_readonly" purpose="Check if the audio.networkState attribute is readonly">
+        <description>
+          <test_script_entry>/opt/tct-audio-html5-tests/audio/audio_networkState_readonly.html</test_script_entry>
+        </description>
+      </testcase>
+      <testcase component="WebAPI/Media/HTML5 The audio element (Partial)" execution_type="auto" id="audio_ondurationchange_event" purpose="Check if the event audio.ondurationchange occurs">
+        <description>
+          <test_script_entry>/opt/tct-audio-html5-tests/audio/audio_ondurationchange_event.html</test_script_entry>
+        </description>
+      </testcase>
+      <testcase component="WebAPI/Media/HTML5 The audio element (Partial)" execution_type="auto" id="audio_onemptied_event" purpose="Check if the event audio.onemptied occurs">
+        <description>
+          <test_script_entry>/opt/tct-audio-html5-tests/audio/audio_onemptied_event.html</test_script_entry>
+        </description>
+      </testcase>
+      <testcase component="WebAPI/Media/HTML5 The audio element (Partial)" execution_type="auto" id="audio_onerror_event" purpose="Check if the event audio.onerror occurs">
+        <description>
+          <test_script_entry>/opt/tct-audio-html5-tests/audio/audio_onerror_event.html</test_script_entry>
+        </description>
+      </testcase>
+      <testcase component="WebAPI/Media/HTML5 The audio element (Partial)" execution_type="auto" id="audio_onpause_event" purpose="Check if the event audio.onpause occurs">
+        <description>
+          <test_script_entry>/opt/tct-audio-html5-tests/audio/audio_onpause_event.html</test_script_entry>
+        </description>
+      </testcase>
+      <testcase component="WebAPI/Media/HTML5 The audio element (Partial)" execution_type="auto" id="audio_onratechange_event_defaultPlaybackRate" purpose="Check if the event audio.onratechange occurs when defaultPlaybackRate changed">
+        <description>
+          <test_script_entry>/opt/tct-audio-html5-tests/audio/audio_onratechange_event_defaultPlaybackRate.html</test_script_entry>
+        </description>
+      </testcase>
+      <testcase component="WebAPI/Media/HTML5 The audio element (Partial)" execution_type="auto" id="audio_onratechange_event_playbackRate" purpose="Check if the event audio.onratechange occurs when playbackRate changed">
+        <description>
+          <test_script_entry>/opt/tct-audio-html5-tests/audio/audio_onratechange_event_playbackRate.html</test_script_entry>
+        </description>
+      </testcase>
+      <testcase component="WebAPI/Media/HTML5 The audio element (Partial)" execution_type="auto" id="audio_onseeking_event" purpose="Check if the event audio.onseeking occurs">
+        <description>
+          <test_script_entry>/opt/tct-audio-html5-tests/audio/audio_onseeking_event.html</test_script_entry>
+        </description>
+      </testcase>
+      <testcase component="WebAPI/Media/HTML5 The audio element (Partial)" execution_type="auto" id="audio_onvolumechange_event_muted" purpose="Check if the event audio.onvolumechange occurs when muted changed">
+        <description>
+          <test_script_entry>/opt/tct-audio-html5-tests/audio/audio_onvolumechange_event_muted.html</test_script_entry>
+        </description>
+      </testcase>
+      <testcase component="WebAPI/Media/HTML5 The audio element (Partial)" execution_type="auto" id="audio_onvolumechange_event_volume" purpose="Check if the event audio.onvolumechange occurs when volume changed">
+        <description>
+          <test_script_entry>/opt/tct-audio-html5-tests/audio/audio_onvolumechange_event_volume.html</test_script_entry>
+        </description>
+      </testcase>
+      <testcase component="WebAPI/Media/HTML5 The audio element (Partial)" execution_type="auto" id="audio_onwaiting_event" purpose="Check if the event audio.onwaiting occurs">
+        <description>
+          <test_script_entry>/opt/tct-audio-html5-tests/audio/audio_onwaiting_event.html</test_script_entry>
+        </description>
+      </testcase>
+      <testcase component="WebAPI/Media/HTML5 The audio element (Partial)" execution_type="auto" id="audio_paused_attribute_readonly" purpose="Check if the audio.paused attribute is readonly">
+        <description>
+          <test_script_entry>/opt/tct-audio-html5-tests/audio/audio_paused_attribute_readonly.html</test_script_entry>
+        </description>
+      </testcase>
+      <testcase component="WebAPI/Media/HTML5 The audio element (Partial)" execution_type="auto" id="audio_pause_method_type" purpose="Check if audio.pause is of type function">
+        <description>
+          <test_script_entry>/opt/tct-audio-html5-tests/audio/audio_pause_method_type.html</test_script_entry>
+        </description>
+      </testcase>
+      <testcase component="WebAPI/Media/HTML5 The audio element (Partial)" execution_type="auto" id="audio_playbackRate_basic" purpose="Check if the audio.playbackRate attribute that on getting it must return 4.0 it was set to 4.0">
+        <description>
+          <test_script_entry>/opt/tct-audio-html5-tests/audio/audio_playbackRate_basic.html</test_script_entry>
+        </description>
+      </testcase>
+      <testcase component="WebAPI/Media/HTML5 The audio element (Partial)" execution_type="auto" id="audio_playbackRate_default_value" purpose="Check if the audio.playbackRate attribute value is 1.0 if it hasn't yet been set">
+        <description>
+          <test_script_entry>/opt/tct-audio-html5-tests/audio/audio_playbackRate_default_value.html</test_script_entry>
+        </description>
+      </testcase>
+      <testcase component="WebAPI/Media/HTML5 The audio element (Partial)" execution_type="auto" id="audio_playbackRate_value_null" purpose="Check if the audio.playbackRate attribute return 0 it was set to null">
+        <description>
+          <test_script_entry>/opt/tct-audio-html5-tests/audio/audio_playbackRate_value_null.html</test_script_entry>
+        </description>
+      </testcase>
+      <testcase component="WebAPI/Media/HTML5 The audio element (Partial)" execution_type="auto" id="audio_playbackRate_value_zero" purpose="Check if the audio.playbackRate attribute that on getting it must return 0 it was set to 0">
+        <description>
+          <test_script_entry>/opt/tct-audio-html5-tests/audio/audio_playbackRate_value_zero.html</test_script_entry>
+        </description>
+      </testcase>
+      <testcase component="WebAPI/Media/HTML5 The audio element (Partial)" execution_type="auto" id="audio_played_attribute_readonly" purpose="Check if audio.played attribute is readonly">
+        <description>
+          <test_script_entry>/opt/tct-audio-html5-tests/audio/audio_played_attribute_readonly.html</test_script_entry>
+        </description>
+      </testcase>
+      <testcase component="WebAPI/Media/HTML5 The audio element (Partial)" execution_type="auto" id="audio_played_length_default_value" purpose="Check if default value of the attribute audio.played.length is 0">
+        <description>
+          <test_script_entry>/opt/tct-audio-html5-tests/audio/audio_played_length_default_value.html</test_script_entry>
+        </description>
+      </testcase>
+      <testcase component="WebAPI/Media/HTML5 The audio element (Partial)" execution_type="auto" id="audio_play_method_type" purpose="Check if audio.play method is of type function">
+        <description>
+          <test_script_entry>/opt/tct-audio-html5-tests/audio/audio_play_method_type.html</test_script_entry>
+        </description>
+      </testcase>
+      <testcase component="WebAPI/Media/HTML5 The audio element (Partial)" execution_type="auto" id="audio_preload_auto" purpose="Check if audio.preload can be set to 'auto'">
+        <description>
+          <test_script_entry>/opt/tct-audio-html5-tests/audio/audio_preload_auto.html</test_script_entry>
+        </description>
+      </testcase>
+      <testcase component="WebAPI/Media/HTML5 The audio element (Partial)" execution_type="auto" id="audio_seekable_attribute_readonly" purpose="Check if audio.seekable attribute is readonly">
+        <description>
+          <test_script_entry>/opt/tct-audio-html5-tests/audio/audio_seekable_attribute_readonly.html</test_script_entry>
+        </description>
+      </testcase>
+      <testcase component="WebAPI/Media/HTML5 The audio element (Partial)" execution_type="auto" id="audio_seekable_length_default_value" purpose="Check if the default value of attribute audio.seekable.length is 0">
+        <description>
+          <test_script_entry>/opt/tct-audio-html5-tests/audio/audio_seekable_length_default_value.html</test_script_entry>
+        </description>
+      </testcase>
+      <testcase component="WebAPI/Media/HTML5 The audio element (Partial)" execution_type="auto" id="audio_seeking_attribute_readonly" purpose="Check if the audio.seeking attribute is readonly">
+        <description>
+          <test_script_entry>/opt/tct-audio-html5-tests/audio/audio_seeking_attribute_readonly.html</test_script_entry>
+        </description>
+      </testcase>
+      <testcase component="WebAPI/Media/HTML5 The audio element (Partial)" execution_type="auto" id="audio_seeking_value_true" purpose="Check if the audio.seeking attribute returns true if the user agent is currently seeking">
+        <description>
+          <test_script_entry>/opt/tct-audio-html5-tests/audio/audio_seeking_value_true.html</test_script_entry>
+        </description>
+      </testcase>
+      <testcase component="WebAPI/Media/HTML5 The audio element (Partial)" execution_type="auto" id="audio_src_basic" purpose="Check if audio.src can get src attibute value">
+        <description>
+          <test_script_entry>/opt/tct-audio-html5-tests/audio/audio_src_basic.html</test_script_entry>
+        </description>
+      </testcase>
+      <testcase component="WebAPI/Media/HTML5 The audio element (Partial)" execution_type="auto" id="audio_src_default_value" purpose="Check if the default value of audio.src is a empty string">
+        <description>
+          <test_script_entry>/opt/tct-audio-html5-tests/audio/audio_src_default_value.html</test_script_entry>
+        </description>
+      </testcase>
+      <testcase component="WebAPI/Media/HTML5 The audio element (Partial)" execution_type="auto" id="audio_src_modify" purpose="Check if audio.src can be modified">
+        <description>
+          <test_script_entry>/opt/tct-audio-html5-tests/audio/audio_src_modify.html</test_script_entry>
+        </description>
+      </testcase>
+      <testcase component="WebAPI/Media/HTML5 The audio element (Partial)" execution_type="auto" id="audio_TimeRanges_length_readonly" purpose="Check if audio.TimeRanges.length is readonly">
+        <description>
+          <test_script_entry>/opt/tct-audio-html5-tests/audio/audio_TimeRanges_length_readonly.html</test_script_entry>
+        </description>
+      </testcase>
+      <testcase component="WebAPI/Media/HTML5 The audio element (Partial)" execution_type="auto" id="audio_TimeRanges_length_type" purpose="Check if audio.TimeRanges.length is of type number">
+        <description>
+          <test_script_entry>/opt/tct-audio-html5-tests/audio/audio_TimeRanges_length_type.html</test_script_entry>
+        </description>
+      </testcase>
+      <testcase component="WebAPI/Media/HTML5 The audio element (Partial)" execution_type="auto" id="audio_canPlayType_null" purpose="Check if audio.canPlayType return empty string if arguments is null">
+        <description>
+          <test_script_entry>/opt/tct-audio-html5-tests/audio/audio_canPlayType_null.html</test_script_entry>
         </description>
       </testcase>
     </set>
