@@ -2820,5 +2820,2751 @@
         </specs>
       </testcase>
     </set>
+    <set name="video6" type="js">
+      <testcase purpose="Check if user agent displays correctly when browser does not support media elements (Seeking to a value less than 'startTime' seeks to 'startTime')" type="compliance" status="designed" component="WebAPI/Media/HTML5 The video element (Partial)" execution_type="auto" priority="P3" id="video_currentTime_less_than_zero">
+        <description>
+          <pre_condition/>
+          <post_condition/>
+          <steps>
+            <step order="1">
+              <step_desc>Check if user agent displays correctly when browser does not support media elements (Seeking to a value less than 'startTime' seeks to 'startTime')</step_desc>
+              <expected>Pass</expected>
+            </step>
+          </steps>
+          <test_script_entry>/opt/tct-video-html5-tests/video/video_currentTime_less_than_zero.html</test_script_entry>
+        </description>
+        <specs>
+          <spec>
+            <spec_assertion usage="true" interface="HTMLVideoElement" specification="HTML5 The video element (Partial)" section="Media" category="Tizen W3C API Specifications"/>
+            <spec_url>http://www.w3.org/TR/2012/WD-html5-20121025/the-video-element.html#the-video-element</spec_url>
+            <spec_statement>If the new playback position is less than the earliest possible position, let it be that position instead.</spec_statement>
+          </spec>
+        </specs>
+      </testcase>
+      <testcase purpose="Check that a video loads but is not playing, since the default state is paused" type="compliance" status="approved" component="WebAPI/Media/HTML5 The video element (Partial)" execution_type="auto" priority="P3" id="video_zero_default_state">
+        <description>
+          <pre_condition/>
+          <post_condition/>
+          <steps>
+            <step order="1">
+              <step_desc>Check that a video loads but is not playing, since the default state is paused</step_desc>
+              <expected>Pass</expected>
+            </step>
+          </steps>
+          <test_script_entry>/opt/tct-video-html5-tests/video/video_zero_default_state.html</test_script_entry>
+        </description>
+        <specs>
+          <spec>
+            <spec_assertion usage="true" interface="HTMLVideoElement" specification="HTML5 The video element (Partial)" section="Media" category="Tizen W3C API Specifications"/>
+            <spec_url>http://www.w3.org/TR/2012/WD-html5-20121025/the-video-element.html#the-video-element</spec_url>
+            <spec_statement>Content attributes:</spec_statement>
+          </spec>
+        </specs>
+      </testcase>
+      <testcase purpose="Check if video.defaultPlaybackRate attributes have no effect when the media element has a current media controller" type="compliance" status="designed" component="WebAPI/Media/HTML5 The video element (Partial)" execution_type="auto" priority="P3" id="video_defaultPlaybackRate_not_effect_by_controller">
+        <description>
+          <pre_condition/>
+          <post_condition/>
+          <steps>
+            <step order="1">
+              <step_desc>Check if video.defaultPlaybackRate attributes have no effect when the media element has a current media controller</step_desc>
+              <expected>Pass</expected>
+            </step>
+          </steps>
+          <test_script_entry>/opt/tct-video-html5-tests/video/video_defaultPlaybackRate_not_effect_by_controller.html</test_script_entry>
+        </description>
+        <specs>
+          <spec>
+            <spec_assertion usage="true" interface="HTMLVideoElement" specification="HTML5 The video element (Partial)" section="Media" category="Tizen W3C API Specifications"/>
+            <spec_url>http://www.w3.org/TR/2012/WD-html5-20121025/the-video-element.html#the-video-element</spec_url>
+            <spec_statement>The defaultPlaybackRate and playbackRate attributes have no effect when the media element has a current media controller; the namesake attributes on the MediaController object are used instead in that situation.</spec_statement>
+          </spec>
+        </specs>
+      </testcase>
+      <testcase purpose="Check if video.playbackRate attributes have no effect when the media element has a current media controller" type="compliance" status="designed" component="WebAPI/Media/HTML5 The video element (Partial)" execution_type="auto" priority="P3" id="video_playbackRate_not_effect_by_controller">
+        <description>
+          <pre_condition/>
+          <post_condition/>
+          <steps>
+            <step order="1">
+              <step_desc>Check if video.playbackRate attributes have no effect when the media element has a current media controller</step_desc>
+              <expected>Pass</expected>
+            </step>
+          </steps>
+          <test_script_entry>/opt/tct-video-html5-tests/video/video_playbackRate_not_effect_by_controller.html</test_script_entry>
+        </description>
+        <specs>
+          <spec>
+            <spec_assertion usage="true" interface="HTMLVideoElement" specification="HTML5 The video element (Partial)" section="Media" category="Tizen W3C API Specifications"/>
+            <spec_url>http://www.w3.org/TR/2012/WD-html5-20121025/the-video-element.html#the-video-element</spec_url>
+            <spec_statement>The defaultPlaybackRate and playbackRate attributes have no effect when the media element has a current media controller; the namesake attributes on the MediaController object are used instead in that situation.</spec_statement>
+          </spec>
+        </specs>
+      </testcase>
+      <testcase purpose="Check if throw INDEX_SIZE_ERR exception when if the video.TimeRanges.end method index is out of range" type="compliance" status="approved" component="WebAPI/Media/HTML5 The video element (Partial)" execution_type="auto" priority="P3" id="video_TimeRanges_end_INDEX_SIZE_ERR">
+        <description>
+          <pre_condition/>
+          <post_condition/>
+          <steps>
+            <step order="1">
+              <step_desc>Check if throw INDEX_SIZE_ERR exception when if the video.TimeRanges.end method index is out of range</step_desc>
+              <expected>Pass</expected>
+            </step>
+          </steps>
+          <test_script_entry>/opt/tct-video-html5-tests/video/video_TimeRanges_end_INDEX_SIZE_ERR.html</test_script_entry>
+        </description>
+        <specs>
+          <spec>
+            <spec_assertion usage="true" interface="HTMLVideoElement" specification="HTML5 The video element (Partial)" section="Media" category="Tizen W3C API Specifications"/>
+            <spec_url>http://www.w3.org/TR/2012/WD-html5-20121025/the-video-element.html#the-video-element</spec_url>
+            <spec_statement>Throws an INDEX_SIZE_ERR if the index is out of range.</spec_statement>
+          </spec>
+        </specs>
+      </testcase>
+      <testcase purpose="Check if throw INDEX_SIZE_ERR exception when if the video.TimeRanges.start method index is out of range" type="compliance" status="approved" component="WebAPI/Media/HTML5 The video element (Partial)" execution_type="auto" priority="P3" id="video_TimeRanges_start_INDEX_SIZE_ERR">
+        <description>
+          <pre_condition/>
+          <post_condition/>
+          <steps>
+            <step order="1">
+              <step_desc>Check if throw INDEX_SIZE_ERR exception when if the video.TimeRanges.start method index is out of range</step_desc>
+              <expected>Pass</expected>
+            </step>
+          </steps>
+          <test_script_entry>/opt/tct-video-html5-tests/video/video_TimeRanges_start_INDEX_SIZE_ERR.html</test_script_entry>
+        </description>
+        <specs>
+          <spec>
+            <spec_assertion usage="true" interface="HTMLVideoElement" specification="HTML5 The video element (Partial)" section="Media" category="Tizen W3C API Specifications"/>
+            <spec_url>http://www.w3.org/TR/2012/WD-html5-20121025/the-video-element.html#the-video-element</spec_url>
+            <spec_statement>Throws an INDEX_SIZE_ERR if the index is out of range.</spec_statement>
+          </spec>
+        </specs>
+      </testcase>
+      <testcase purpose="Check if video.videoheight return the intrinsic height of the video when have a media resource" type="compliance" status="approved" component="WebAPI/Media/HTML5 The video element (Partial)" execution_type="auto" priority="P3" id="video_videoHeght_media_resource_available">
+        <description>
+          <pre_condition/>
+          <post_condition/>
+          <steps>
+            <step order="1">
+              <step_desc>Check if video.videoheight return the intrinsic height of the video when have a media resource</step_desc>
+              <expected>Pass</expected>
+            </step>
+          </steps>
+          <test_script_entry>/opt/tct-video-html5-tests/video/video_videoHeght_media_resource_available.html</test_script_entry>
+        </description>
+        <specs>
+          <spec>
+            <spec_assertion usage="true" interface="HTMLVideoElement" specification="HTML5 The video element (Partial)" section="Media" category="Tizen W3C API Specifications"/>
+            <spec_url>http://www.w3.org/TR/2012/WD-html5-20121025/the-video-element.html#the-video-element</spec_url>
+            <spec_statement>The intrinsic height of a video element's playback area is the intrinsic height of the video resource, if that is available; otherwise it is the intrinsic height of the poster frame, if that is available; otherwise it is 150 CSS pixels</spec_statement>
+          </spec>
+        </specs>
+      </testcase>
+      <testcase purpose="Check if readyState attribute is HAVE_NOTHING, then video.videoHeight must return 0" type="compliance" status="approved" component="WebAPI/Media/HTML5 The video element (Partial)" execution_type="auto" priority="P3" id="video_videoHeight_readState_HAVE_NOTHING">
+        <description>
+          <pre_condition/>
+          <post_condition/>
+          <steps>
+            <step order="1">
+              <step_desc>Check if readyState attribute is HAVE_NOTHING, then video.videoHeight must return 0</step_desc>
+              <expected>Pass</expected>
+            </step>
+          </steps>
+          <test_script_entry>/opt/tct-video-html5-tests/video/video_videoHeight_readState_HAVE_NOTHING.html</test_script_entry>
+        </description>
+        <specs>
+          <spec>
+            <spec_assertion usage="true" interface="HTMLVideoElement" specification="HTML5 The video element (Partial)" section="Media" category="Tizen W3C API Specifications"/>
+            <spec_url>http://www.w3.org/TR/2012/WD-html5-20121025/the-video-element.html#the-video-element</spec_url>
+            <spec_statement>If the element's readyState attribute is HAVE_NOTHING, then the attributes must return 0;</spec_statement>
+          </spec>
+        </specs>
+      </testcase>
+      <testcase purpose="Check if video.videoWidth return the intrinsic width of the video when have a media resource" type="compliance" status="approved" component="WebAPI/Media/HTML5 The video element (Partial)" execution_type="auto" priority="P3" id="video_videoWidth_media_resource_available">
+        <description>
+          <pre_condition/>
+          <post_condition/>
+          <steps>
+            <step order="1">
+              <step_desc>check if video.videoWidth return the intrinsic width of the video when have a media resource</step_desc>
+              <expected>Pass</expected>
+            </step>
+          </steps>
+          <test_script_entry>/opt/tct-video-html5-tests/video/video_videoWidth_media_resource_available.html</test_script_entry>
+        </description>
+        <specs>
+          <spec>
+            <spec_assertion usage="true" interface="HTMLVideoElement" specification="HTML5 The video element (Partial)" section="Media" category="Tizen W3C API Specifications"/>
+            <spec_url>http://www.w3.org/TR/2012/WD-html5-20121025/the-video-element.html#the-video-element</spec_url>
+            <spec_statement>The intrinsic width of a video element's playback area is the intrinsic width of the video resource, if that is available; otherwise it is the intrinsic width of the poster frame, if that is available; otherwise it is 300 CSS pixels.</spec_statement>
+          </spec>
+        </specs>
+      </testcase>
+      <testcase purpose="Check if video.canPlayType return empty string if not have arguments" type="compliance" status="designed" component="WebAPI/Media/HTML5 The video element (Partial)" execution_type="auto" priority="P3" id="video_canPlayType_no_argument">
+        <description>
+          <steps>
+            <step order="1">
+              <step_desc>Check if video.canPlayType return empty string if not have arguments</step_desc>
+              <expected>Pass</expected>
+            </step>
+          </steps>
+          <test_script_entry>/opt/tct-video-html5-tests/video/video_canPlayType_no_argument.html</test_script_entry>
+        </description>
+        <specs>
+          <spec>
+            <spec_assertion usage="true" interface="HTMLVideoElement" specification="HTML5 The video element (Partial)" section="Media" category="Tizen W3C API Specifications"/>
+            <spec_url>http://www.w3.org/TR/2012/WD-html5-20121025/the-video-element.html#the-video-element</spec_url>
+            <spec_statement/>
+          </spec>
+        </specs>
+      </testcase>
+      <testcase purpose="Check if element returns same video element twice" type="compliance" status="designed" component="WebAPI/Media/HTML5 The video element (Partial)" execution_type="auto" priority="P3" id="video_element">
+        <description>
+          <steps>
+            <step order="1">
+              <step_desc>Check if element returns same video element twice</step_desc>
+              <expected>Pass</expected>
+            </step>
+          </steps>
+          <test_script_entry>/opt/tct-video-html5-tests/video/video_element.html</test_script_entry>
+        </description>
+        <specs>
+          <spec>
+            <spec_assertion usage="true" interface="HTMLVideoElement" specification="HTML5 The video element (Partial)" section="Media" category="Tizen W3C API Specifications"/>
+            <spec_url>http://www.w3.org/TR/2012/WD-html5-20121025/the-video-element.html#the-video-element</spec_url>
+            <spec_statement>The video element is a media element whose media data is ostensibly video data, possibly with associated audio data.</spec_statement>
+          </spec>
+        </specs>
+      </testcase>
+      <testcase purpose="Check if user agent is able to pause playing video playback for stream ogg theora vorbis" type="compliance" status="approved" component="WebAPI/Media/HTML5 The video element (Partial)" execution_type="auto" priority="P3" id="video_pause_ogg_theora_vorbis">
+        <description>
+          <steps>
+            <step order="1">
+              <step_desc>Check if user agent is able to pause playing video playback for stream ogg theora vorbis</step_desc>
+              <expected>Pass</expected>
+            </step>
+          </steps>
+          <test_script_entry>/opt/tct-video-html5-tests/video/video_pause_ogg_theora_vorbis.html</test_script_entry>
+        </description>
+        <specs>
+          <spec>
+            <spec_assertion usage="true" interface="HTMLVideoElement" specification="HTML5 The video element (Partial)" section="Media" category="Tizen W3C API Specifications"/>
+            <spec_url>http://www.w3.org/TR/2012/WD-html5-20121025/the-video-element.html#the-video-element</spec_url>
+            <spec_statement/>
+          </spec>
+        </specs>
+      </testcase>
+      <testcase purpose="Check if user agent is able to pause playing video playback for stream webm vp8 vorbis" type="compliance" status="approved" component="WebAPI/Media/HTML5 The video element (Partial)" execution_type="auto" priority="P3" id="video_pause_webm_vp8_vorbis">
+        <description>
+          <steps>
+            <step order="1">
+              <step_desc>Check if user agent is able to pause playing video playback for stream webm vp8 vorbis</step_desc>
+              <expected>Pass</expected>
+            </step>
+          </steps>
+          <test_script_entry>/opt/tct-video-html5-tests/video/video_pause_webm_vp8_vorbis.html</test_script_entry>
+        </description>
+        <specs>
+          <spec>
+            <spec_assertion usage="true" interface="HTMLVideoElement" specification="HTML5 The video element (Partial)" section="Media" category="Tizen W3C API Specifications"/>
+            <spec_url>http://www.w3.org/TR/2012/WD-html5-20121025/the-video-element.html#the-video-element</spec_url>
+            <spec_statement/>
+          </spec>
+        </specs>
+      </testcase>
+      <testcase purpose="Check if user agent is able to play video stream ogg theora vorbis with event ended fired when ended playback" type="compliance" status="approved" component="WebAPI/Media/HTML5 The video element (Partial)" execution_type="auto" priority="P3" id="video_play_ogg_theora_vorbis">
+        <description>
+          <steps>
+            <step order="1">
+              <step_desc>Check if user agent is able to play video stream ogg theora vorbis with event ended fired when ended playback</step_desc>
+              <expected>Pass</expected>
+            </step>
+          </steps>
+          <test_script_entry>/opt/tct-video-html5-tests/video/video_play_ogg_theora_vorbis.html</test_script_entry>
+        </description>
+        <specs>
+          <spec>
+            <spec_assertion usage="true" interface="HTMLVideoElement" specification="HTML5 The video element (Partial)" section="Media" category="Tizen W3C API Specifications"/>
+            <spec_url>http://www.w3.org/TR/2012/WD-html5-20121025/the-video-element.html#the-video-element</spec_url>
+            <spec_statement/>
+          </spec>
+        </specs>
+      </testcase>
+      <testcase purpose="Check if user agent is able to play video stream webm vp8 vorbis with event ended fired when ended playback" type="compliance" status="approved" component="WebAPI/Media/HTML5 The video element (Partial)" execution_type="auto" priority="P3" id="video_play_webm_vp8_vorbis">
+        <description>
+          <steps>
+            <step order="1">
+              <step_desc>Check if user agent is able to play video stream webm vp8 vorbis with event ended fired when ended playback</step_desc>
+              <expected>Pass</expected>
+            </step>
+          </steps>
+          <test_script_entry>/opt/tct-video-html5-tests/video/video_play_webm_vp8_vorbis.html</test_script_entry>
+        </description>
+        <specs>
+          <spec>
+            <spec_assertion usage="true" interface="HTMLVideoElement" specification="HTML5 The video element (Partial)" section="Media" category="Tizen W3C API Specifications"/>
+            <spec_url>http://www.w3.org/TR/2012/WD-html5-20121025/the-video-element.html#the-video-element</spec_url>
+            <spec_statement/>
+          </spec>
+        </specs>
+      </testcase>
+      <testcase purpose="Check if user agent is able to resume paused video playback for stream ogg theora vorbis" type="compliance" status="approved" component="WebAPI/Media/HTML5 The video element (Partial)" execution_type="auto" priority="P3" id="video_resume_ogg_theora_vorbis">
+        <description>
+          <steps>
+            <step order="1">
+              <step_desc>Check if user agent is able to resume paused video playback for stream ogg theora vorbis</step_desc>
+              <expected>Pass</expected>
+            </step>
+          </steps>
+          <test_script_entry>/opt/tct-video-html5-tests/video/video_resume_ogg_theora_vorbis.html</test_script_entry>
+        </description>
+        <specs>
+          <spec>
+            <spec_assertion usage="true" interface="HTMLVideoElement" specification="HTML5 The video element (Partial)" section="Media" category="Tizen W3C API Specifications"/>
+            <spec_url>http://www.w3.org/TR/2012/WD-html5-20121025/the-video-element.html#the-video-element</spec_url>
+            <spec_statement/>
+          </spec>
+        </specs>
+      </testcase>
+      <testcase purpose="Check if user agent is able to resume paused video playback for stream webm vp8 vorbis" type="compliance" status="approved" component="WebAPI/Media/HTML5 The video element (Partial)" execution_type="auto" priority="P3" id="video_resume_webm_vp8_vorbis">
+        <description>
+          <steps>
+            <step order="1">
+              <step_desc>Check if user agent is able to resume paused video playback for stream webm vp8 vorbis</step_desc>
+              <expected>Pass</expected>
+            </step>
+          </steps>
+          <test_script_entry>/opt/tct-video-html5-tests/video/video_resume_webm_vp8_vorbis.html</test_script_entry>
+        </description>
+        <specs>
+          <spec>
+            <spec_assertion usage="true" interface="HTMLVideoElement" specification="HTML5 The video element (Partial)" section="Media" category="Tizen W3C API Specifications"/>
+            <spec_url>http://www.w3.org/TR/2012/WD-html5-20121025/the-video-element.html#the-video-element</spec_url>
+            <spec_statement/>
+          </spec>
+        </specs>
+      </testcase>
+      <testcase purpose="Check if user agent is able to seek video playback with currentTime attribute for stream ogg theora vorbis" type="compliance" status="approved" component="WebAPI/Media/HTML5 The video element (Partial)" execution_type="auto" priority="P3" id="video_seek_ogg_theora_vorbis">
+        <description>
+          <steps>
+            <step order="1">
+              <step_desc>Check if user agent is able to seek video playback with currentTime attribute for stream ogg theora vorbis</step_desc>
+              <expected>Pass</expected>
+            </step>
+          </steps>
+          <test_script_entry>/opt/tct-video-html5-tests/video/video_seek_ogg_theora_vorbis.html</test_script_entry>
+        </description>
+        <specs>
+          <spec>
+            <spec_assertion usage="true" interface="HTMLVideoElement" specification="HTML5 The video element (Partial)" section="Media" category="Tizen W3C API Specifications"/>
+            <spec_url>http://www.w3.org/TR/2012/WD-html5-20121025/the-video-element.html#the-video-element</spec_url>
+            <spec_statement/>
+          </spec>
+        </specs>
+      </testcase>
+      <testcase purpose="Check if user agent is able to seek video playback with currentTime attribute for stream webm vp8 vorbis" type="compliance" status="approved" component="WebAPI/Media/HTML5 The video element (Partial)" execution_type="auto" priority="P3" id="video_seek_webm_vp8_vorbis">
+        <description>
+          <steps>
+            <step order="1">
+              <step_desc>Check if user agent is able to seek video playback with currentTime attribute for stream webm vp8 vorbis</step_desc>
+              <expected>Pass</expected>
+            </step>
+          </steps>
+          <test_script_entry>/opt/tct-video-html5-tests/video/video_seek_webm_vp8_vorbis.html</test_script_entry>
+        </description>
+        <specs>
+          <spec>
+            <spec_assertion usage="true" interface="HTMLVideoElement" specification="HTML5 The video element (Partial)" section="Media" category="Tizen W3C API Specifications"/>
+            <spec_url>http://www.w3.org/TR/2012/WD-html5-20121025/the-video-element.html#the-video-element</spec_url>
+            <spec_statement/>
+          </spec>
+        </specs>
+      </testcase>
+      <testcase purpose="Check if user agent is able to stop video playback for stream ogg theora vorbis" type="compliance" status="approved" component="WebAPI/Media/HTML5 The video element (Partial)" execution_type="auto" priority="P3" id="video_stop_ogg_theora_vorbis">
+        <description>
+          <steps>
+            <step order="1">
+              <step_desc>Check if user agent is able to stop video playback for stream ogg theora vorbis</step_desc>
+              <expected>Pass</expected>
+            </step>
+          </steps>
+          <test_script_entry>/opt/tct-video-html5-tests/video/video_stop_ogg_theora_vorbis.html</test_script_entry>
+        </description>
+        <specs>
+          <spec>
+            <spec_assertion usage="true" interface="HTMLVideoElement" specification="HTML5 The video element (Partial)" section="Media" category="Tizen W3C API Specifications"/>
+            <spec_url>http://www.w3.org/TR/2012/WD-html5-20121025/the-video-element.html#the-video-element</spec_url>
+            <spec_statement/>
+          </spec>
+        </specs>
+      </testcase>
+      <testcase purpose="Check if user agent is able to stop video playback for stream webm vp8 vorbis" type="compliance" status="approved" component="WebAPI/Media/HTML5 The video element (Partial)" execution_type="auto" priority="P3" id="video_stop_webm_vp8_vorbis">
+        <description>
+          <steps>
+            <step order="1">
+              <step_desc>Check if user agent is able to stop video playback for stream webm vp8 vorbis</step_desc>
+              <expected>Pass</expected>
+            </step>
+          </steps>
+          <test_script_entry>/opt/tct-video-html5-tests/video/video_stop_webm_vp8_vorbis.html</test_script_entry>
+        </description>
+        <specs>
+          <spec>
+            <spec_assertion usage="true" interface="HTMLVideoElement" specification="HTML5 The video element (Partial)" section="Media" category="Tizen W3C API Specifications"/>
+            <spec_url>http://www.w3.org/TR/2012/WD-html5-20121025/the-video-element.html#the-video-element</spec_url>
+            <spec_statement/>
+          </spec>
+        </specs>
+      </testcase>
+      <testcase purpose="Check if the user agent supports mp4-h264-acc video playing, pause" type="compliance" status="designed" component="WebAPI/Media/HTML5 The video element (Partial)" execution_type="auto" priority="P3" id="video_pause_mp4_h264_aac">
+        <description>
+          <steps>
+            <step order="1">
+              <step_desc>Check if the user agent supports mp4-h264-acc video playing, pause</step_desc>
+              <expected>Pass</expected>
+            </step>
+          </steps>
+          <test_script_entry>/opt/tct-video-html5-tests/video/video_pause_mp4_h264_aac.html</test_script_entry>
+        </description>
+        <specs>
+          <spec>
+            <spec_assertion usage="true" interface="HTMLVideoElement" specification="HTML5 The video element (Partial)" section="Media" category="Tizen W3C API Specifications"/>
+            <spec_url>http://www.w3.org/TR/2012/WD-html5-20121025/the-video-element.html#the-video-element</spec_url>
+            <spec_statement/>
+          </spec>
+        </specs>
+      </testcase>
+      <testcase purpose="Check if the user agent supports mp4-h264-acc video playing" type="compliance" status="designed" component="WebAPI/Media/HTML5 The video element (Partial)" execution_type="auto" priority="P3" id="video_play_mp4_h264_aac">
+        <description>
+          <steps>
+            <step order="1">
+              <step_desc>Check if the user agent supports mp4-h264-acc video playing</step_desc>
+              <expected>Pass</expected>
+            </step>
+          </steps>
+          <test_script_entry>/opt/tct-video-html5-tests/video/video_play_mp4_h264_aac.html</test_script_entry>
+        </description>
+        <specs>
+          <spec>
+            <spec_assertion usage="true" interface="HTMLVideoElement" specification="HTML5 The video element (Partial)" section="Media" category="Tizen W3C API Specifications"/>
+            <spec_url>http://www.w3.org/TR/2012/WD-html5-20121025/the-video-element.html#the-video-element</spec_url>
+            <spec_statement/>
+          </spec>
+        </specs>
+      </testcase>
+      <testcase purpose="Check if the video element can pause the H.263 decoding format video file" type="compliance" status="designed" component="WebAPI/Media/HTML5 The video element (Partial)" execution_type="auto" priority="P3" id="video_pause_3gp_h263_aac">
+        <description>
+          <pre_condition/>
+          <post_condition/>
+          <steps>
+            <step order="1">
+              <step_desc>Check if the video element can pause the H.263 decoding format video file</step_desc>
+              <expected>Pass</expected>
+            </step>
+          </steps>
+          <test_script_entry>/opt/tct-video-html5-tests/video/video_pause_3gp_h263_aac.html</test_script_entry>
+        </description>
+        <specs>
+          <spec>
+            <spec_assertion usage="true" interface="HTMLVideoElement" specification="HTML5 The video element (Partial)" section="Media" category="Tizen W3C API Specifications"/>
+            <spec_url>http://www.w3.org/TR/2012/WD-html5-20121025/the-video-element.html#the-video-element</spec_url>
+            <spec_statement/>
+          </spec>
+        </specs>
+      </testcase>
+      <testcase purpose="Check if the video element can play the H.263 decoding format video file" type="compliance" status="designed" component="WebAPI/Media/HTML5 The video element (Partial)" execution_type="auto" priority="P3" id="video_play_3gp_h263_aac">
+        <description>
+          <pre_condition/>
+          <post_condition/>
+          <steps>
+            <step order="1">
+              <step_desc>Check if the video element can play the H.263 decoding format video file</step_desc>
+              <expected>Pass</expected>
+            </step>
+          </steps>
+          <test_script_entry>/opt/tct-video-html5-tests/video/video_play_3gp_h263_aac.html</test_script_entry>
+        </description>
+        <specs>
+          <spec>
+            <spec_assertion usage="true" interface="HTMLVideoElement" specification="HTML5 The video element (Partial)" section="Media" category="Tizen W3C API Specifications"/>
+            <spec_url>http://www.w3.org/TR/2012/WD-html5-20121025/the-video-element.html#the-video-element</spec_url>
+            <spec_statement/>
+          </spec>
+        </specs>
+      </testcase>
+      <testcase purpose="Check if the video element can pause the MPEG-4 part 2 decoding format video file" type="compliance" status="designed" component="WebAPI/Media/HTML5 The video element (Partial)" execution_type="auto" priority="P3" id="video_pause_3gp_mpeg4_amr">
+        <description>
+          <pre_condition/>
+          <post_condition/>
+          <steps>
+            <step order="1">
+              <step_desc>Check if the video element can pause the MPEG-4 part 2 decoding format video file</step_desc>
+              <expected>Pass</expected>
+            </step>
+          </steps>
+          <test_script_entry>/opt/tct-video-html5-tests/video/video_pause_3gp_mpeg4_amr.html</test_script_entry>
+        </description>
+        <specs>
+          <spec>
+            <spec_assertion usage="true" interface="HTMLVideoElement" specification="HTML5 The video element (Partial)" section="Media" category="Tizen W3C API Specifications"/>
+            <spec_url>http://www.w3.org/TR/2012/WD-html5-20121025/the-video-element.html#the-video-element</spec_url>
+            <spec_statement/>
+          </spec>
+        </specs>
+      </testcase>
+      <testcase purpose="Check if the video element can play the MPEG-4 part 2 decoding format video file" type="compliance" status="designed" component="WebAPI/Media/HTML5 The video element (Partial)" execution_type="auto" priority="P3" id="video_play_3gp_mpeg4_amr">
+        <description>
+          <pre_condition/>
+          <post_condition/>
+          <steps>
+            <step order="1">
+              <step_desc>Check if the video element can play the MPEG-4 part 2 decoding format video file</step_desc>
+              <expected>Pass</expected>
+            </step>
+          </steps>
+          <test_script_entry>/opt/tct-video-html5-tests/video/video_play_3gp_mpeg4_amr.html</test_script_entry>
+        </description>
+        <specs>
+          <spec>
+            <spec_assertion usage="true" interface="HTMLVideoElement" specification="HTML5 The video element (Partial)" section="Media" category="Tizen W3C API Specifications"/>
+            <spec_url>http://www.w3.org/TR/2012/WD-html5-20121025/the-video-element.html#the-video-element</spec_url>
+            <spec_statement/>
+          </spec>
+        </specs>
+      </testcase>
+      <testcase purpose="Check if the vedio.addTextTrack attribute is of type function" type="compliance" status="approved" component="WebAPI/Media/HTML5 The video element (Partial)" execution_type="auto" priority="P2" id="video_addTextTrack_type">
+        <description>
+          <steps>
+            <step order="1">
+              <step_desc>Check if the vedio.addTextTrack attribute is of type function</step_desc>
+              <expected>Pass</expected>
+            </step>
+          </steps>
+          <test_script_entry>/opt/tct-video-html5-tests/video/video_addTextTrack_type.html</test_script_entry>
+        </description>
+        <specs>
+          <spec>
+            <spec_assertion element_type="method" element_name="addTextTrack" interface="HTMLVideoElement" specification="HTML5 The video element (Partial)" section="Media" category="Tizen W3C API Specifications"/>
+            <spec_url>http://www.w3.org/TR/2012/WD-html5-20121025/the-video-element.html#the-video-element</spec_url>
+            <spec_statement/>
+          </spec>
+        </specs>
+      </testcase>
+      <testcase purpose="Check if the attribute video.autoplay is false when set it empty string" type="compliance" status="approved" component="WebAPI/Media/HTML5 The video element (Partial)" execution_type="auto" priority="P2" id="video_autoplay_empty_string">
+        <description>
+          <steps>
+            <step order="1">
+              <step_desc>Check if the attribute video.autoplay is false when set it empty string</step_desc>
+              <expected>Pass</expected>
+            </step>
+          </steps>
+          <test_script_entry>/opt/tct-video-html5-tests/video/video_autoplay_empty_string.html</test_script_entry>
+        </description>
+        <specs>
+          <spec>
+            <spec_assertion element_type="attribute" element_name="autoplay" interface="HTMLVideoElement" specification="HTML5 The video element (Partial)" section="Media" category="Tizen W3C API Specifications"/>
+            <spec_url>http://www.w3.org/TR/2012/WD-html5-20121025/the-video-element.html#the-video-element</spec_url>
+            <spec_statement/>
+          </spec>
+        </specs>
+      </testcase>
+      <testcase purpose="Check if the value of attribute of video.autoplay is false when you set it null" type="compliance" status="approved" component="WebAPI/Media/HTML5 The video element (Partial)" execution_type="auto" priority="P2" id="video_autoplay_null">
+        <description>
+          <steps>
+            <step order="1">
+              <step_desc>Check if the value of attribute of video.autoplay is false when you set it null</step_desc>
+              <expected>Pass</expected>
+            </step>
+          </steps>
+          <test_script_entry>/opt/tct-video-html5-tests/video/video_autoplay_null.html</test_script_entry>
+        </description>
+        <specs>
+          <spec>
+            <spec_assertion element_type="attribute" element_name="autoplay" interface="HTMLVideoElement" specification="HTML5 The video element (Partial)" section="Media" category="Tizen W3C API Specifications"/>
+            <spec_url>http://www.w3.org/TR/2012/WD-html5-20121025/the-video-element.html#the-video-element</spec_url>
+            <spec_statement/>
+          </spec>
+        </specs>
+      </testcase>
+      <testcase purpose="Check if video.autoplay attribute invoked,then video.onloadedmetadata() function triggered" type="compliance" status="approved" component="WebAPI/Media/HTML5 The video element (Partial)" execution_type="auto" priority="P2" id="video_autoplay_onloadedmetadata">
+        <description>
+          <steps>
+            <step order="1">
+              <step_desc>Check if video.autoplay attribute invoked,then video.onloadedmetadata() function triggered</step_desc>
+              <expected>Pass</expected>
+            </step>
+          </steps>
+          <test_script_entry>/opt/tct-video-html5-tests/video/video_autoplay_onloadedmetadata.html</test_script_entry>
+        </description>
+        <specs>
+          <spec>
+            <spec_assertion element_type="attribute" element_name="autoplay" interface="HTMLVideoElement" specification="HTML5 The video element (Partial)" section="Media" category="Tizen W3C API Specifications"/>
+            <spec_url>http://www.w3.org/TR/2012/WD-html5-20121025/the-video-element.html#the-video-element</spec_url>
+            <spec_statement/>
+          </spec>
+        </specs>
+      </testcase>
+      <testcase purpose="Check if video.autoplay returns true when the controls attribute is present in the video element" type="compliance" status="approved" component="WebAPI/Media/HTML5 The video element (Partial)" execution_type="auto" priority="P2" id="video_autoplay_true_autoplay_present">
+        <description>
+          <steps>
+            <step order="1">
+              <step_desc>Check if video.autoplay returns true when the controls attribute is present in the video element</step_desc>
+              <expected>Pass</expected>
+            </step>
+          </steps>
+          <test_script_entry>/opt/tct-video-html5-tests/video/video_autoplay_true_autoplay_present.html</test_script_entry>
+        </description>
+        <specs>
+          <spec>
+            <spec_assertion element_type="attribute" element_name="autoplay" interface="HTMLVideoElement" specification="HTML5 The video element (Partial)" section="Media" category="Tizen W3C API Specifications"/>
+            <spec_url>http://www.w3.org/TR/2012/WD-html5-20121025/the-video-element.html#the-video-element</spec_url>
+            <spec_statement/>
+          </spec>
+        </specs>
+      </testcase>
+      <testcase purpose="Check if the type of video.buffered.end is function" type="compliance" status="approved" component="WebAPI/Media/HTML5 The video element (Partial)" execution_type="auto" priority="P2" id="video_buffered_end_type">
+        <description>
+          <steps>
+            <step order="1">
+              <step_desc>Check if the type of video.buffered.end is function</step_desc>
+              <expected>Pass</expected>
+            </step>
+          </steps>
+          <test_script_entry>/opt/tct-video-html5-tests/video/video_buffered_end_type.html</test_script_entry>
+        </description>
+        <specs>
+          <spec>
+            <spec_assertion element_type="attribute" element_name="buffered" interface="HTMLVideoElement" specification="HTML5 The video element (Partial)" section="Media" category="Tizen W3C API Specifications"/>
+            <spec_url>http://www.w3.org/TR/2012/WD-html5-20121025/the-video-element.html#the-video-element</spec_url>
+            <spec_statement/>
+          </spec>
+        </specs>
+      </testcase>
+      <testcase purpose="Check if the video.buffered length is zero,typically this will be a single range anchored at the zero point" type="compliance" status="approved" component="WebAPI/Media/HTML5 The video element (Partial)" execution_type="auto" priority="P2" id="video_buffered_length_default_value">
+        <description>
+          <steps>
+            <step order="1">
+              <step_desc>Check if the video.buffered length is zero,typically this will be a single range anchored at the zero point</step_desc>
+              <expected>Pass</expected>
+            </step>
+          </steps>
+          <test_script_entry>/opt/tct-video-html5-tests/video/video_buffered_length_default_value.html</test_script_entry>
+        </description>
+        <specs>
+          <spec>
+            <spec_assertion element_type="attribute" element_name="buffered" interface="HTMLVideoElement" specification="HTML5 The video element (Partial)" section="Media" category="Tizen W3C API Specifications"/>
+            <spec_url>http://www.w3.org/TR/2012/WD-html5-20121025/the-video-element.html#the-video-element</spec_url>
+            <spec_statement/>
+          </spec>
+        </specs>
+      </testcase>
+      <testcase purpose="Check if the video.buffered attribute is readonly" type="compliance" status="approved" component="WebAPI/Media/HTML5 The video element (Partial)" execution_type="auto" priority="P2" id="video_buffered_readonly">
+        <description>
+          <steps>
+            <step order="1">
+              <step_desc>Check if the video.buffered attribute is readonly</step_desc>
+              <expected>Pass</expected>
+            </step>
+          </steps>
+          <test_script_entry>/opt/tct-video-html5-tests/video/video_buffered_readonly.html</test_script_entry>
+        </description>
+        <specs>
+          <spec>
+            <spec_assertion element_type="attribute" element_name="buffered" interface="HTMLVideoElement" specification="HTML5 The video element (Partial)" section="Media" category="Tizen W3C API Specifications"/>
+            <spec_url>http://www.w3.org/TR/2012/WD-html5-20121025/the-video-element.html#the-video-element</spec_url>
+            <spec_statement/>
+          </spec>
+        </specs>
+      </testcase>
+      <testcase purpose="Check if the type of video.buffered.start is function" type="compliance" status="approved" component="WebAPI/Media/HTML5 The video element (Partial)" execution_type="auto" priority="P2" id="video_buffered_start_type">
+        <description>
+          <steps>
+            <step order="1">
+              <step_desc>Check if the type of video.buffered.start is function</step_desc>
+              <expected>Pass</expected>
+            </step>
+          </steps>
+          <test_script_entry>/opt/tct-video-html5-tests/video/video_buffered_start_type.html</test_script_entry>
+        </description>
+        <specs>
+          <spec>
+            <spec_assertion element_type="attribute" element_name="buffered" interface="HTMLVideoElement" specification="HTML5 The video element (Partial)" section="Media" category="Tizen W3C API Specifications"/>
+            <spec_url>http://www.w3.org/TR/2012/WD-html5-20121025/the-video-element.html#the-video-element</spec_url>
+            <spec_statement/>
+          </spec>
+        </specs>
+      </testcase>
+      <testcase purpose="Check if video.canPlayType return empty string if arguments is a empty string" type="compliance" status="approved" component="WebAPI/Media/HTML5 The video element (Partial)" execution_type="auto" priority="P2" id="video_canPlayType_empty_string">
+        <description>
+          <steps>
+            <step order="1">
+              <step_desc>Check if video.canPlayType return empty string if arguments is a empty string</step_desc>
+              <expected>Pass</expected>
+            </step>
+          </steps>
+          <test_script_entry>/opt/tct-video-html5-tests/video/video_canPlayType_empty_string.html</test_script_entry>
+        </description>
+        <specs>
+          <spec>
+            <spec_assertion element_type="method" element_name="canPlayType" interface="HTMLVideoElement" specification="HTML5 The video element (Partial)" section="Media" category="Tizen W3C API Specifications"/>
+            <spec_url>http://www.w3.org/TR/2012/WD-html5-20121025/the-video-element.html#the-video-element</spec_url>
+            <spec_statement/>
+          </spec>
+        </specs>
+      </testcase>
+      <testcase purpose="Check if the type of video.canPlayType is 'function'" type="compliance" status="approved" component="WebAPI/Media/HTML5 The video element (Partial)" execution_type="auto" priority="P2" id="video_canPlayType_method_type">
+        <description>
+          <steps>
+            <step order="1">
+              <step_desc>Check if the type of video.canplayType is 'function'</step_desc>
+              <expected>Pass</expected>
+            </step>
+          </steps>
+          <test_script_entry>/opt/tct-video-html5-tests/video/video_canPlayType_method_type.html</test_script_entry>
+        </description>
+        <specs>
+          <spec>
+            <spec_assertion element_type="method" element_name="canPlayType" interface="HTMLVideoElement" specification="HTML5 The video element (Partial)" section="Media" category="Tizen W3C API Specifications"/>
+            <spec_url>http://www.w3.org/TR/2012/WD-html5-20121025/the-video-element.html#the-video-element</spec_url>
+            <spec_statement/>
+          </spec>
+        </specs>
+      </testcase>
+      <testcase purpose="Check if video.canPlayType return empty string if arguments is null" type="compliance" status="approved" component="WebAPI/Media/HTML5 The video element (Partial)" execution_type="auto" priority="P2" id="video_canPlayType_null">
+        <description>
+          <steps>
+            <step order="1">
+              <step_desc>Check if video.canPlayType return empty string if arguments is null</step_desc>
+              <expected>Pass</expected>
+            </step>
+          </steps>
+          <test_script_entry>/opt/tct-video-html5-tests/video/video_canPlayType_null.html</test_script_entry>
+        </description>
+        <specs>
+          <spec>
+            <spec_assertion element_type="method" element_name="canPlayType" interface="HTMLVideoElement" specification="HTML5 The video element (Partial)" section="Media" category="Tizen W3C API Specifications"/>
+            <spec_url>http://www.w3.org/TR/2012/WD-html5-20121025/the-video-element.html#the-video-element</spec_url>
+            <spec_statement/>
+          </spec>
+        </specs>
+      </testcase>
+      <testcase purpose="Check if the defaut value of video.controller is null" type="compliance" status="designed" component="WebAPI/Media/HTML5 The video element (Partial)" execution_type="auto" priority="P2" id="video_controller_default_value">
+        <description>
+          <steps>
+            <step order="1">
+              <step_desc>Check if the defaut value of video.controller is null</step_desc>
+              <expected>Pass</expected>
+            </step>
+          </steps>
+          <test_script_entry>/opt/tct-video-html5-tests/video/video_controller_default_value.html</test_script_entry>
+        </description>
+        <specs>
+          <spec>
+            <spec_assertion element_type="attribute" element_name="controller" interface="HTMLVideoElement" specification="HTML5 The video element (Partial)" section="Media" category="Tizen W3C API Specifications"/>
+            <spec_url>http://www.w3.org/TR/2012/WD-html5-20121025/the-video-element.html#the-video-element</spec_url>
+            <spec_statement/>
+          </spec>
+        </specs>
+      </testcase>
+      <testcase purpose="Check if the attribute video.controller is not null when set it an object MediaController" type="compliance" status="designed" component="WebAPI/Media/HTML5 The video element (Partial)" execution_type="auto" priority="P2" id="video_controller_MediaControllerl">
+        <description>
+          <steps>
+            <step order="1">
+              <step_desc>Check if the attribute video.controller is not null when set it an object MediaController</step_desc>
+              <expected>Pass</expected>
+            </step>
+          </steps>
+          <test_script_entry>/opt/tct-video-html5-tests/video/video_controller_MediaControllerl.html</test_script_entry>
+        </description>
+        <specs>
+          <spec>
+            <spec_assertion element_type="attribute" element_name="controller" interface="HTMLVideoElement" specification="HTML5 The video element (Partial)" section="Media" category="Tizen W3C API Specifications"/>
+            <spec_url>http://www.w3.org/TR/2012/WD-html5-20121025/the-video-element.html#the-video-element</spec_url>
+            <spec_statement/>
+          </spec>
+        </specs>
+      </testcase>
+      <testcase purpose="Check if the value of attribute video.controls is false when set it empty string" type="compliance" status="approved" component="WebAPI/Media/HTML5 The video element (Partial)" execution_type="auto" priority="P2" id="video_controls_empty_string">
+        <description>
+          <steps>
+            <step order="1">
+              <step_desc>Check if the value of attribute video.controls is false when set it empty string</step_desc>
+              <expected>Pass</expected>
+            </step>
+          </steps>
+          <test_script_entry>/opt/tct-video-html5-tests/video/video_controls_empty_string.html</test_script_entry>
+        </description>
+        <specs>
+          <spec>
+            <spec_assertion element_type="attribute" element_name="controls" interface="HTMLVideoElement" specification="HTML5 The video element (Partial)" section="Media" category="Tizen W3C API Specifications"/>
+            <spec_url>http://www.w3.org/TR/2012/WD-html5-20121025/the-video-element.html#the-video-element</spec_url>
+            <spec_statement/>
+          </spec>
+        </specs>
+      </testcase>
+      <testcase purpose="Check if video.controls returns false when the controls attribute is absent in the video element" type="compliance" status="approved" component="WebAPI/Media/HTML5 The video element (Partial)" execution_type="auto" priority="P2" id="video_controls_false_controls_absent">
+        <description>
+          <steps>
+            <step order="1">
+              <step_desc>Check if video.controls returns false when the controls attribute is absent in the video element</step_desc>
+              <expected>Pass</expected>
+            </step>
+          </steps>
+          <test_script_entry>/opt/tct-video-html5-tests/video/video_controls_false_controls_absent.html</test_script_entry>
+        </description>
+        <specs>
+          <spec>
+            <spec_assertion element_type="attribute" element_name="controls" interface="HTMLVideoElement" specification="HTML5 The video element (Partial)" section="Media" category="Tizen W3C API Specifications"/>
+            <spec_url>http://www.w3.org/TR/2012/WD-html5-20121025/the-video-element.html#the-video-element</spec_url>
+            <spec_statement/>
+          </spec>
+        </specs>
+      </testcase>
+      <testcase purpose="Check if the value of attribute video.controls is false when set it null" type="compliance" status="approved" component="WebAPI/Media/HTML5 The video element (Partial)" execution_type="auto" priority="P2" id="video_controls_null">
+        <description>
+          <steps>
+            <step order="1">
+              <step_desc>Check if the value of attribute video.controls is false when set it null</step_desc>
+              <expected>Pass</expected>
+            </step>
+          </steps>
+          <test_script_entry>/opt/tct-video-html5-tests/video/video_controls_null.html</test_script_entry>
+        </description>
+        <specs>
+          <spec>
+            <spec_assertion element_type="attribute" element_name="controls" interface="HTMLVideoElement" specification="HTML5 The video element (Partial)" section="Media" category="Tizen W3C API Specifications"/>
+            <spec_url>http://www.w3.org/TR/2012/WD-html5-20121025/the-video-element.html#the-video-element</spec_url>
+            <spec_statement/>
+          </spec>
+        </specs>
+      </testcase>
+      <testcase purpose="Check if the video.currentSrc attribute is readonly" type="compliance" status="approved" component="WebAPI/Media/HTML5 The video element (Partial)" execution_type="auto" priority="P2" id="video_currentSrc_readonly">
+        <description>
+          <steps>
+            <step order="1">
+              <step_desc>Check if the video.currentSrc attribute is readonly</step_desc>
+              <expected>Pass</expected>
+            </step>
+          </steps>
+          <test_script_entry>/opt/tct-video-html5-tests/video/video_currentSrc_readonly.html</test_script_entry>
+        </description>
+        <specs>
+          <spec>
+            <spec_assertion element_type="attribute" element_name="currentSrc" interface="HTMLVideoElement" specification="HTML5 The video element (Partial)" section="Media" category="Tizen W3C API Specifications"/>
+            <spec_url>http://www.w3.org/TR/2012/WD-html5-20121025/the-video-element.html#the-video-element</spec_url>
+            <spec_statement/>
+          </spec>
+        </specs>
+      </testcase>
+      <testcase purpose="Check if video.currentSrc is empty string when set the video.src null" type="compliance" status="approved" component="WebAPI/Media/HTML5 The video element (Partial)" execution_type="auto" priority="P2" id="video_currentSrc_src_null">
+        <description>
+          <steps>
+            <step order="1">
+              <step_desc>Check if video.currentSrc is empty string when set the video.src null</step_desc>
+              <expected>Pass</expected>
+            </step>
+          </steps>
+          <test_script_entry>/opt/tct-video-html5-tests/video/video_currentSrc_src_null.html</test_script_entry>
+        </description>
+        <specs>
+          <spec>
+            <spec_assertion element_type="attribute" element_name="currentSrc" interface="HTMLVideoElement" specification="HTML5 The video element (Partial)" section="Media" category="Tizen W3C API Specifications"/>
+            <spec_url>http://www.w3.org/TR/2012/WD-html5-20121025/the-video-element.html#the-video-element</spec_url>
+            <spec_statement/>
+          </spec>
+        </specs>
+      </testcase>
+      <testcase purpose="Check if the video.currentTime attribute return the current playback position it was set to 10" type="compliance" status="approved" component="WebAPI/Media/HTML5 The video element (Partial)" execution_type="auto" priority="P2" id="video_currentTime_basic">
+        <description>
+          <steps>
+            <step order="1">
+              <step_desc>Check if the video.currentTime attribute return the current playback position it was set to 10</step_desc>
+              <expected>Pass</expected>
+            </step>
+          </steps>
+          <test_script_entry>/opt/tct-video-html5-tests/video/video_currentTime_basic.html</test_script_entry>
+        </description>
+        <specs>
+          <spec>
+            <spec_assertion element_type="attribute" element_name="currentTime" interface="HTMLVideoElement" specification="HTML5 The video element (Partial)" section="Media" category="Tizen W3C API Specifications"/>
+            <spec_url>http://www.w3.org/TR/2012/WD-html5-20121025/the-video-element.html#the-video-element</spec_url>
+            <spec_statement/>
+          </spec>
+        </specs>
+      </testcase>
+      <testcase purpose="Check if the video.currentTime attribute return the end playback position it was set to duration" type="compliance" status="approved" component="WebAPI/Media/HTML5 The video element (Partial)" execution_type="auto" priority="P2" id="video_currentTime_value_duration">
+        <description>
+          <steps>
+            <step order="1">
+              <step_desc>Check if the video.currentTime attribute return the end playback position it was set to duration</step_desc>
+              <expected>Pass</expected>
+            </step>
+          </steps>
+          <test_script_entry>/opt/tct-video-html5-tests/video/video_currentTime_value_duration.html</test_script_entry>
+        </description>
+        <specs>
+          <spec>
+            <spec_assertion element_type="attribute" element_name="currentTime" interface="HTMLVideoElement" specification="HTML5 The video element (Partial)" section="Media" category="Tizen W3C API Specifications"/>
+            <spec_url>http://www.w3.org/TR/2012/WD-html5-20121025/the-video-element.html#the-video-element</spec_url>
+            <spec_statement/>
+          </spec>
+        </specs>
+      </testcase>
+      <testcase purpose="Check if the video.currentTime attribute return the end playback position it was set to later than the end of the media resource" type="compliance" status="designed" component="WebAPI/Media/HTML5 The video element (Partial)" execution_type="auto" priority="P2" id="video_currentTime_value_later_end">
+        <description>
+          <steps>
+            <step order="1">
+              <step_desc>Check if the video.currentTime attribute return the end playback position it was set to later than the end of the media resource</step_desc>
+              <expected>Pass</expected>
+            </step>
+          </steps>
+          <test_script_entry>/opt/tct-video-html5-tests/video/video_currentTime_value_later_end.html</test_script_entry>
+        </description>
+        <specs>
+          <spec>
+            <spec_assertion element_type="attribute" element_name="currentTime" interface="HTMLVideoElement" specification="HTML5 The video element (Partial)" section="Media" category="Tizen W3C API Specifications"/>
+            <spec_url>http://www.w3.org/TR/2012/WD-html5-20121025/the-video-element.html#the-video-element</spec_url>
+            <spec_statement/>
+          </spec>
+        </specs>
+      </testcase>
+      <testcase purpose="Check if the video.currentTime attribute on getting it must return 0 it was set to null" type="compliance" status="approved" component="WebAPI/Media/HTML5 The video element (Partial)" execution_type="auto" priority="P2" id="video_currentTime_value_null">
+        <description>
+          <steps>
+            <step order="1">
+              <step_desc>Check if the video.currentTime attribute on getting it must return 0 it was set to null</step_desc>
+              <expected>Pass</expected>
+            </step>
+          </steps>
+          <test_script_entry>/opt/tct-video-html5-tests/video/video_currentTime_value_null.html</test_script_entry>
+        </description>
+        <specs>
+          <spec>
+            <spec_assertion element_type="attribute" element_name="currentTime" interface="HTMLVideoElement" specification="HTML5 The video element (Partial)" section="Media" category="Tizen W3C API Specifications"/>
+            <spec_url>http://www.w3.org/TR/2012/WD-html5-20121025/the-video-element.html#the-video-element</spec_url>
+            <spec_statement/>
+          </spec>
+        </specs>
+      </testcase>
+      <testcase purpose="Check if the value of the attribute video.defaultMuted set empty string,then compare media.defaultMuted is false" type="compliance" status="approved" component="WebAPI/Media/HTML5 The video element (Partial)" execution_type="auto" priority="P2" id="video_defaultMuted_empty_string">
+        <description>
+          <steps>
+            <step order="1">
+              <step_desc>Check if the value of the attribute video.defaultMuted set empty string,then compare media.defaultMuted is false</step_desc>
+              <expected>Pass</expected>
+            </step>
+          </steps>
+          <test_script_entry>/opt/tct-video-html5-tests/video/video_defaultMuted_empty_string.html</test_script_entry>
+        </description>
+        <specs>
+          <spec>
+            <spec_assertion element_type="attribute" element_name="defaultMuted" interface="HTMLVideoElement" specification="HTML5 The video element (Partial)" section="Media" category="Tizen W3C API Specifications"/>
+            <spec_url>http://www.w3.org/TR/2012/WD-html5-20121025/the-video-element.html#the-video-element</spec_url>
+            <spec_statement/>
+          </spec>
+        </specs>
+      </testcase>
+      <testcase purpose="Check if the value of the attribute video.defaultMuted set null,then compare media.defaultMuted is false" type="compliance" status="approved" component="WebAPI/Media/HTML5 The video element (Partial)" execution_type="auto" priority="P2" id="video_defaultMuted_null">
+        <description>
+          <steps>
+            <step order="1">
+              <step_desc>Check if the value of the attribute video.defaultMuted set null,then compare media.defaultMuted is false</step_desc>
+              <expected>Pass</expected>
+            </step>
+          </steps>
+          <test_script_entry>/opt/tct-video-html5-tests/video/video_defaultMuted_null.html</test_script_entry>
+        </description>
+        <specs>
+          <spec>
+            <spec_assertion element_type="attribute" element_name="defaultMuted" interface="HTMLVideoElement" specification="HTML5 The video element (Partial)" section="Media" category="Tizen W3C API Specifications"/>
+            <spec_url>http://www.w3.org/TR/2012/WD-html5-20121025/the-video-element.html#the-video-element</spec_url>
+            <spec_statement/>
+          </spec>
+        </specs>
+      </testcase>
+      <testcase purpose="Check if the video.defaultPlaybackRate attribute that on getting it must return 0.5 it was set to 0.5" type="compliance" status="approved" component="WebAPI/Media/HTML5 The video element (Partial)" execution_type="auto" priority="P2" id="video_defaultPlaybackRate_basic">
+        <description>
+          <steps>
+            <step order="1">
+              <step_desc>Check if the video.defaultPlaybackRate attribute that on getting it must return 0.5 it was set to 0.5</step_desc>
+              <expected>Pass</expected>
+            </step>
+          </steps>
+          <test_script_entry>/opt/tct-video-html5-tests/video/video_defaultPlaybackRate_basic.html</test_script_entry>
+        </description>
+        <specs>
+          <spec>
+            <spec_assertion element_type="attribute" element_name="defaultPlaybackRate" interface="HTMLVideoElement" specification="HTML5 The video element (Partial)" section="Media" category="Tizen W3C API Specifications"/>
+            <spec_url>http://www.w3.org/TR/2012/WD-html5-20121025/the-video-element.html#the-video-element</spec_url>
+            <spec_statement/>
+          </spec>
+        </specs>
+      </testcase>
+      <testcase purpose="Check if the video.defaultPlaybackRate attribute return 1.0 if it hasn't yet been set" type="compliance" status="approved" component="WebAPI/Media/HTML5 The video element (Partial)" execution_type="auto" priority="P2" id="video_defaultPlaybackRate_default_value">
+        <description>
+          <steps>
+            <step order="1">
+              <step_desc>Check if the video.defaultPlaybackRate attribute return 1.0 if it hasn't yet been set</step_desc>
+              <expected>Pass</expected>
+            </step>
+          </steps>
+          <test_script_entry>/opt/tct-video-html5-tests/video/video_defaultPlaybackRate_default_value.html</test_script_entry>
+        </description>
+        <specs>
+          <spec>
+            <spec_assertion element_type="attribute" element_name="defaultPlaybackRate" interface="HTMLVideoElement" specification="HTML5 The video element (Partial)" section="Media" category="Tizen W3C API Specifications"/>
+            <spec_url>http://www.w3.org/TR/2012/WD-html5-20121025/the-video-element.html#the-video-element</spec_url>
+            <spec_statement/>
+          </spec>
+        </specs>
+      </testcase>
+      <testcase purpose="Check if the video.defaultPlaybackRate attribute that on getting it must return 0 it was set to null" type="compliance" status="approved" component="WebAPI/Media/HTML5 The video element (Partial)" execution_type="auto" priority="P2" id="video_defaultPlaybackRate_value_null">
+        <description>
+          <steps>
+            <step order="1">
+              <step_desc>Check if the video.defaultPlaybackRate attribute that on getting it must return 0 it was set to null</step_desc>
+              <expected>Pass</expected>
+            </step>
+          </steps>
+          <test_script_entry>/opt/tct-video-html5-tests/video/video_defaultPlaybackRate_value_null.html</test_script_entry>
+        </description>
+        <specs>
+          <spec>
+            <spec_assertion element_type="attribute" element_name="defaultPlaybackRate" interface="HTMLVideoElement" specification="HTML5 The video element (Partial)" section="Media" category="Tizen W3C API Specifications"/>
+            <spec_url>http://www.w3.org/TR/2012/WD-html5-20121025/the-video-element.html#the-video-element</spec_url>
+            <spec_statement/>
+          </spec>
+        </specs>
+      </testcase>
+      <testcase purpose="Check if the video.defaultPlaybackRate attribute that on getting it must return 0 it was set to 0" type="compliance" status="approved" component="WebAPI/Media/HTML5 The video element (Partial)" execution_type="auto" priority="P2" id="video_defaultPlaybackRate_value_zero">
+        <description>
+          <steps>
+            <step order="1">
+              <step_desc>Check if the video.defaultPlaybackRate attribute that on getting it must return 0 it was set to 0</step_desc>
+              <expected>Pass</expected>
+            </step>
+          </steps>
+          <test_script_entry>/opt/tct-video-html5-tests/video/video_defaultPlaybackRate_value_zero.html</test_script_entry>
+        </description>
+        <specs>
+          <spec>
+            <spec_assertion element_type="attribute" element_name="defaultPlaybackRate" interface="HTMLVideoElement" specification="HTML5 The video element (Partial)" section="Media" category="Tizen W3C API Specifications"/>
+            <spec_url>http://www.w3.org/TR/2012/WD-html5-20121025/the-video-element.html#the-video-element</spec_url>
+            <spec_statement/>
+          </spec>
+        </specs>
+      </testcase>
+      <testcase purpose="Check if the video.duration attribute is readonly" type="compliance" status="approved" component="WebAPI/Media/HTML5 The video element (Partial)" execution_type="auto" priority="P2" id="video_duration_attribute_readonly">
+        <description>
+          <steps>
+            <step order="1">
+              <step_desc>Check if the video.duration attribute is readonly</step_desc>
+              <expected>Pass</expected>
+            </step>
+          </steps>
+          <test_script_entry>/opt/tct-video-html5-tests/video/video_duration_attribute_readonly.html</test_script_entry>
+        </description>
+        <specs>
+          <spec>
+            <spec_assertion element_type="attribute" element_name="duration" interface="HTMLVideoElement" specification="HTML5 The video element (Partial)" section="Media" category="Tizen W3C API Specifications"/>
+            <spec_url>http://www.w3.org/TR/2012/WD-html5-20121025/the-video-element.html#the-video-element</spec_url>
+            <spec_statement/>
+          </spec>
+        </specs>
+      </testcase>
+      <testcase purpose="Check if the video.duration attribute return the time of the end of the media resource" type="compliance" status="approved" component="WebAPI/Media/HTML5 The video element (Partial)" execution_type="auto" priority="P2" id="video_duration_attribute_value_resource">
+        <description>
+          <steps>
+            <step order="1">
+              <step_desc>Check if the video.duration attribute return the time of the end of the media resource</step_desc>
+              <expected>Pass</expected>
+            </step>
+          </steps>
+          <test_script_entry>/opt/tct-video-html5-tests/video/video_duration_attribute_value_resource.html</test_script_entry>
+        </description>
+        <specs>
+          <spec>
+            <spec_assertion element_type="attribute" element_name="duration" interface="HTMLVideoElement" specification="HTML5 The video element (Partial)" section="Media" category="Tizen W3C API Specifications"/>
+            <spec_url>http://www.w3.org/TR/2012/WD-html5-20121025/the-video-element.html#the-video-element</spec_url>
+            <spec_statement/>
+          </spec>
+        </specs>
+      </testcase>
+      <testcase purpose="Check if video.ended is readonly" type="compliance" status="approved" component="WebAPI/Media/HTML5 The video element (Partial)" execution_type="auto" priority="P2" id="video_ended_attribute_readonly">
+        <description>
+          <steps>
+            <step order="1">
+              <step_desc>Check if video.ended is readonly</step_desc>
+              <expected>Pass</expected>
+            </step>
+          </steps>
+          <test_script_entry>/opt/tct-video-html5-tests/video/video_ended_attribute_readonly.html</test_script_entry>
+        </description>
+        <specs>
+          <spec>
+            <spec_assertion element_type="attribute" element_name="ended" interface="HTMLVideoElement" specification="HTML5 The video element (Partial)" section="Media" category="Tizen W3C API Specifications"/>
+            <spec_url>http://www.w3.org/TR/2012/WD-html5-20121025/the-video-element.html#the-video-element</spec_url>
+            <spec_statement/>
+          </spec>
+        </specs>
+      </testcase>
+      <testcase purpose="Check if the attribute video.ended should be false during canplaythrough event" type="compliance" status="approved" component="WebAPI/Media/HTML5 The video element (Partial)" execution_type="auto" priority="P2" id="video_ended_canplaythrough">
+        <description>
+          <steps>
+            <step order="1">
+              <step_desc>Check if the attribute video.ended should be false during canplaythrough event</step_desc>
+              <expected>Pass</expected>
+            </step>
+          </steps>
+          <test_script_entry>/opt/tct-video-html5-tests/video/video_ended_canplaythrough.html</test_script_entry>
+        </description>
+        <specs>
+          <spec>
+            <spec_assertion element_type="attribute" element_name="ended" interface="HTMLVideoElement" specification="HTML5 The video element (Partial)" section="Media" category="Tizen W3C API Specifications"/>
+            <spec_url>http://www.w3.org/TR/2012/WD-html5-20121025/the-video-element.html#the-video-element</spec_url>
+            <spec_statement/>
+          </spec>
+        </specs>
+      </testcase>
+      <testcase purpose="Check if the value of attribute video.ended is true when set currentTime video.durations" type="compliance" status="approved" component="WebAPI/Media/HTML5 The video element (Partial)" execution_type="auto" priority="P2" id="video_ended_currentTime_duration">
+        <description>
+          <steps>
+            <step order="1">
+              <step_desc>Check if the value of attribute video.ended is true when set currentTime video.durations</step_desc>
+              <expected>Pass</expected>
+            </step>
+          </steps>
+          <test_script_entry>/opt/tct-video-html5-tests/video/video_ended_currentTime_duration.html</test_script_entry>
+        </description>
+        <specs>
+          <spec>
+            <spec_assertion element_type="attribute" element_name="ended" interface="HTMLVideoElement" specification="HTML5 The video element (Partial)" section="Media" category="Tizen W3C API Specifications"/>
+            <spec_url>http://www.w3.org/TR/2012/WD-html5-20121025/the-video-element.html#the-video-element</spec_url>
+            <spec_statement/>
+          </spec>
+        </specs>
+      </testcase>
+      <testcase purpose="Check if the value of attribute video.ended is false during loadeddata event" type="compliance" status="approved" component="WebAPI/Media/HTML5 The video element (Partial)" execution_type="auto" priority="P2" id="video_ended_loaddata">
+        <description>
+          <steps>
+            <step order="1">
+              <step_desc>Check if the value of attribute video.ended is false during loadeddata event</step_desc>
+              <expected>Pass</expected>
+            </step>
+          </steps>
+          <test_script_entry>/opt/tct-video-html5-tests/video/video_ended_loaddata.html</test_script_entry>
+        </description>
+        <specs>
+          <spec>
+            <spec_assertion element_type="attribute" element_name="ended" interface="HTMLVideoElement" specification="HTML5 The video element (Partial)" section="Media" category="Tizen W3C API Specifications"/>
+            <spec_url>http://www.w3.org/TR/2012/WD-html5-20121025/the-video-element.html#the-video-element</spec_url>
+            <spec_statement/>
+          </spec>
+        </specs>
+      </testcase>
+      <testcase purpose="Check if the value of attribute video.ended is false during playing event" type="compliance" status="approved" component="WebAPI/Media/HTML5 The video element (Partial)" execution_type="auto" priority="P2" id="video_ended_playing">
+        <description>
+          <steps>
+            <step order="1">
+              <step_desc>Check if the value of attribute video.ended is false during playing event</step_desc>
+              <expected>Pass</expected>
+            </step>
+          </steps>
+          <test_script_entry>/opt/tct-video-html5-tests/video/video_ended_playing.html</test_script_entry>
+        </description>
+        <specs>
+          <spec>
+            <spec_assertion element_type="attribute" element_name="ended" interface="HTMLVideoElement" specification="HTML5 The video element (Partial)" section="Media" category="Tizen W3C API Specifications"/>
+            <spec_url>http://www.w3.org/TR/2012/WD-html5-20121025/the-video-element.html#the-video-element</spec_url>
+            <spec_statement/>
+          </spec>
+        </specs>
+      </testcase>
+      <testcase purpose="Check if the video.error attribute is readonly" type="compliance" status="approved" component="WebAPI/Media/HTML5 The video element (Partial)" execution_type="auto" priority="P2" id="video_error_readonly">
+        <description>
+          <steps>
+            <step order="1">
+              <step_desc>Check if the video.error attribute is readonly</step_desc>
+              <expected>Pass</expected>
+            </step>
+          </steps>
+          <test_script_entry>/opt/tct-video-html5-tests/video/video_error_readonly.html</test_script_entry>
+        </description>
+        <specs>
+          <spec>
+            <spec_assertion element_type="attribute" element_name="error" interface="HTMLVideoElement" specification="HTML5 The video element (Partial)" section="Media" category="Tizen W3C API Specifications"/>
+            <spec_url>http://www.w3.org/TR/2012/WD-html5-20121025/the-video-element.html#the-video-element</spec_url>
+            <spec_statement/>
+          </spec>
+        </specs>
+      </testcase>
+      <testcase purpose="Check if video.load can start selecting and loading a new media resource from scratch" type="compliance" status="approved" component="WebAPI/Media/HTML5 The video element (Partial)" execution_type="auto" priority="P2" id="video_load_method">
+        <description>
+          <steps>
+            <step order="1">
+              <step_desc>Check if video.load can start selecting and loading a new media resource from scratch</step_desc>
+              <expected>Pass</expected>
+            </step>
+          </steps>
+          <test_script_entry>/opt/tct-video-html5-tests/video/video_load_method.html</test_script_entry>
+        </description>
+        <specs>
+          <spec>
+            <spec_assertion element_type="method" element_name="load" interface="HTMLVideoElement" specification="HTML5 The video element (Partial)" section="Media" category="Tizen W3C API Specifications"/>
+            <spec_url>http://www.w3.org/TR/2012/WD-html5-20121025/the-video-element.html#the-video-element</spec_url>
+            <spec_statement/>
+          </spec>
+        </specs>
+      </testcase>
+      <testcase purpose="Check if the type of video.load is 'function'" type="compliance" status="approved" component="WebAPI/Media/HTML5 The video element (Partial)" execution_type="auto" priority="P2" id="video_load_method_type">
+        <description>
+          <steps>
+            <step order="1">
+              <step_desc>Check if the type of video.load is 'function'</step_desc>
+              <expected>Pass</expected>
+            </step>
+          </steps>
+          <test_script_entry>/opt/tct-video-html5-tests/video/video_load_method_type.html</test_script_entry>
+        </description>
+        <specs>
+          <spec>
+            <spec_assertion element_type="method" element_name="load" interface="HTMLVideoElement" specification="HTML5 The video element (Partial)" section="Media" category="Tizen W3C API Specifications"/>
+            <spec_url>http://www.w3.org/TR/2012/WD-html5-20121025/the-video-element.html#the-video-element</spec_url>
+            <spec_statement/>
+          </spec>
+        </specs>
+      </testcase>
+      <testcase purpose="Check if the video element has a current media controller that expecting the loop attribute has no effect" type="compliance" status="designed" component="WebAPI/Media/HTML5 The video element (Partial)" execution_type="auto" priority="P2" id="video_loop_no_effect_by_controller" onload_delay="10">
+        <description>
+          <steps>
+            <step order="1">
+              <step_desc>Check if the video element has a current media controller that expecting the loop attribute has no effect</step_desc>
+              <expected>Pass</expected>
+            </step>
+          </steps>
+          <test_script_entry>/opt/tct-video-html5-tests/video/video_loop_no_effect_by_controller.html</test_script_entry>
+        </description>
+        <specs>
+          <spec>
+            <spec_assertion element_type="attribute" element_name="loop" interface="HTMLVideoElement" specification="HTML5 The video element (Partial)" section="Media" category="Tizen W3C API Specifications"/>
+            <spec_url>http://www.w3.org/TR/2012/WD-html5-20121025/the-video-element.html#the-video-element</spec_url>
+            <spec_statement/>
+          </spec>
+        </specs>
+      </testcase>
+      <testcase purpose="Check if the value of the attribute video.loop is false if set it empty string" type="compliance" status="approved" component="WebAPI/Media/HTML5 The video element (Partial)" execution_type="auto" priority="P2" id="video_loop_empty_string">
+        <description>
+          <steps>
+            <step order="1">
+              <step_desc>Check if the value of the attribute video.loop is false if set it empty string</step_desc>
+              <expected>Pass</expected>
+            </step>
+          </steps>
+          <test_script_entry>/opt/tct-video-html5-tests/video/video_loop_empty_string.html</test_script_entry>
+        </description>
+        <specs>
+          <spec>
+            <spec_assertion element_type="attribute" element_name="loop" interface="HTMLVideoElement" specification="HTML5 The video element (Partial)" section="Media" category="Tizen W3C API Specifications"/>
+            <spec_url>http://www.w3.org/TR/2012/WD-html5-20121025/the-video-element.html#the-video-element</spec_url>
+            <spec_statement/>
+          </spec>
+        </specs>
+      </testcase>
+      <testcase purpose="Check if video.loop returns false when the loop attribute is absent in the video element" type="compliance" status="approved" component="WebAPI/Media/HTML5 The video element (Partial)" execution_type="auto" priority="P2" id="video_loop_false_loop_absent">
+        <description>
+          <steps>
+            <step order="1">
+              <step_desc>Check if video.loop returns false when the loop attribute is absent in the video element</step_desc>
+              <expected>Pass</expected>
+            </step>
+          </steps>
+          <test_script_entry>/opt/tct-video-html5-tests/video/video_loop_false_loop_absent.html</test_script_entry>
+        </description>
+        <specs>
+          <spec>
+            <spec_assertion element_type="attribute" element_name="loop" interface="HTMLVideoElement" specification="HTML5 The video element (Partial)" section="Media" category="Tizen W3C API Specifications"/>
+            <spec_url>http://www.w3.org/TR/2012/WD-html5-20121025/the-video-element.html#the-video-element</spec_url>
+            <spec_statement/>
+          </spec>
+        </specs>
+      </testcase>
+      <testcase purpose="Check if the value of the attribute video.loop is false if set it null" type="compliance" status="approved" component="WebAPI/Media/HTML5 The video element (Partial)" execution_type="auto" priority="P2" id="video_loop_null">
+        <description>
+          <steps>
+            <step order="1">
+              <step_desc>Check if the value of the attribute video.loop is false if set it null</step_desc>
+              <expected>Pass</expected>
+            </step>
+          </steps>
+          <test_script_entry>/opt/tct-video-html5-tests/video/video_loop_null.html</test_script_entry>
+        </description>
+        <specs>
+          <spec>
+            <spec_assertion element_type="attribute" element_name="loop" interface="HTMLVideoElement" specification="HTML5 The video element (Partial)" section="Media" category="Tizen W3C API Specifications"/>
+            <spec_url>http://www.w3.org/TR/2012/WD-html5-20121025/the-video-element.html#the-video-element</spec_url>
+            <spec_statement/>
+          </spec>
+        </specs>
+      </testcase>
+      <testcase purpose="Check if video.MediaController.buffered is readonly" type="compliance" status="designed" component="WebAPI/Media/HTML5 The video element (Partial)" execution_type="auto" priority="P2" id="video_MediaController_buffered_readonly">
+        <description>
+          <steps>
+            <step order="1">
+              <step_desc>Check if video.MediaController.buffered is readonly</step_desc>
+              <expected>Pass</expected>
+            </step>
+          </steps>
+          <test_script_entry>/opt/tct-video-html5-tests/video/video_MediaController_buffered_readonly.html</test_script_entry>
+        </description>
+        <specs>
+          <spec>
+            <spec_assertion element_type="attribute" element_name="buffered" interface="MediaController" specification="HTML5 The video element (Partial)" section="Media" category="Tizen W3C API Specifications"/>
+            <spec_url>http://www.w3.org/TR/2012/WD-html5-20121025/media-elements.html#mediacontroller</spec_url>
+            <spec_statement/>
+          </spec>
+        </specs>
+      </testcase>
+      <testcase purpose="Check if video.MediaController.buffered is of type object" type="compliance" status="designed" component="WebAPI/Media/HTML5 The video element (Partial)" execution_type="auto" priority="P2" id="video_MediaController_buffered_type">
+        <description>
+          <steps>
+            <step order="1">
+              <step_desc>Check if video.MediaController.buffered is of type object</step_desc>
+              <expected>Pass</expected>
+            </step>
+          </steps>
+          <test_script_entry>/opt/tct-video-html5-tests/video/video_MediaController_buffered_type.html</test_script_entry>
+        </description>
+        <specs>
+          <spec>
+            <spec_assertion element_type="attribute" element_name="buffered" interface="MediaController" specification="HTML5 The video element (Partial)" section="Media" category="Tizen W3C API Specifications"/>
+            <spec_url>http://www.w3.org/TR/2012/WD-html5-20121025/media-elements.html#mediacontroller</spec_url>
+            <spec_statement/>
+          </spec>
+        </specs>
+      </testcase>
+      <testcase purpose="Check if video.controller.canplaythrough event occurs" type="compliance" status="designed" component="WebAPI/Media/HTML5 The video element (Partial)" execution_type="auto" priority="P2" id="video_MediaController_oncanplaythrough_event">
+        <description>
+          <steps>
+            <step order="1">
+              <step_desc>Check if video.controller.canplaythrough event occurs</step_desc>
+              <expected>Pass</expected>
+            </step>
+          </steps>
+          <test_script_entry>/opt/tct-video-html5-tests/video/video_MediaController_oncanplaythrough_event.html</test_script_entry>
+        </description>
+        <specs>
+          <spec>
+            <spec_assertion element_type="attribute" element_name="oncanplaythrough" interface="MediaController" specification="HTML5 The video element (Partial)" section="Media" category="Tizen W3C API Specifications"/>
+            <spec_url>http://www.w3.org/TR/2012/WD-html5-20121025/media-elements.html#mediacontroller</spec_url>
+            <spec_statement/>
+          </spec>
+        </specs>
+      </testcase>
+      <testcase purpose="Check if video.controller.canplay event occurs" type="compliance" status="designed" component="WebAPI/Media/HTML5 The video element (Partial)" execution_type="auto" priority="P2" id="video_MediaController_oncanplay_event">
+        <description>
+          <steps>
+            <step order="1">
+              <step_desc>Check if video.controller.canplay event occurs</step_desc>
+              <expected>Pass</expected>
+            </step>
+          </steps>
+          <test_script_entry>/opt/tct-video-html5-tests/video/video_MediaController_oncanplay_event.html</test_script_entry>
+        </description>
+        <specs>
+          <spec>
+            <spec_assertion element_type="attribute" element_name="oncanplay" interface="MediaController" specification="HTML5 The video element (Partial)" section="Media" category="Tizen W3C API Specifications"/>
+            <spec_url>http://www.w3.org/TR/2012/WD-html5-20121025/media-elements.html#mediacontroller</spec_url>
+            <spec_statement/>
+          </spec>
+        </specs>
+      </testcase>
+      <testcase purpose="Check if video.MediaController.currentTime is of type number" type="compliance" status="designed" component="WebAPI/Media/HTML5 The video element (Partial)" execution_type="auto" priority="P2" id="video_MediaController_currentTime_type">
+        <description>
+          <steps>
+            <step order="1">
+              <step_desc>Check if video.MediaController.currentTime is of type number</step_desc>
+              <expected>Pass</expected>
+            </step>
+          </steps>
+          <test_script_entry>/opt/tct-video-html5-tests/video/video_MediaController_currentTime_type.html</test_script_entry>
+        </description>
+        <specs>
+          <spec>
+            <spec_assertion element_type="attribute" element_name="currentTime" interface="MediaController" specification="HTML5 The video element (Partial)" section="Media" category="Tizen W3C API Specifications"/>
+            <spec_url>http://www.w3.org/TR/2012/WD-html5-20121025/media-elements.html#mediacontroller</spec_url>
+            <spec_statement/>
+          </spec>
+        </specs>
+      </testcase>
+      <testcase purpose="Check if video.MediaController.defaultPlaybackRate is of type number" type="compliance" status="designed" component="WebAPI/Media/HTML5 The video element (Partial)" execution_type="auto" priority="P2" id="video_MediaController_defaultPlaybackRate_type">
+        <description>
+          <steps>
+            <step order="1">
+              <step_desc>Check if video.MediaController.defaultPlaybackRate is of type number</step_desc>
+              <expected>Pass</expected>
+            </step>
+          </steps>
+          <test_script_entry>/opt/tct-video-html5-tests/video/video_MediaController_defaultPlaybackRate_type.html</test_script_entry>
+        </description>
+        <specs>
+          <spec>
+            <spec_assertion element_type="attribute" element_name="defaultPlaybackRate" interface="MediaController" specification="HTML5 The video element (Partial)" section="Media" category="Tizen W3C API Specifications"/>
+            <spec_url>http://www.w3.org/TR/2012/WD-html5-20121025/media-elements.html#mediacontroller</spec_url>
+            <spec_statement/>
+          </spec>
+        </specs>
+      </testcase>
+      <testcase purpose="Check if video.MediaController.duration is readonly" type="compliance" status="designed" component="WebAPI/Media/HTML5 The video element (Partial)" execution_type="auto" priority="P2" id="video_MediaController_duration_readonly">
+        <description>
+          <steps>
+            <step order="1">
+              <step_desc>Check if video.MediaController.duration is readonly</step_desc>
+              <expected>Pass</expected>
+            </step>
+          </steps>
+          <test_script_entry>/opt/tct-video-html5-tests/video/video_MediaController_duration_readonly.html</test_script_entry>
+        </description>
+        <specs>
+          <spec>
+            <spec_assertion element_type="attribute" element_name="duration" interface="MediaController" specification="HTML5 The video element (Partial)" section="Media" category="Tizen W3C API Specifications"/>
+            <spec_url>http://www.w3.org/TR/2012/WD-html5-20121025/media-elements.html#mediacontroller</spec_url>
+            <spec_statement/>
+          </spec>
+        </specs>
+      </testcase>
+      <testcase purpose="Check if video.MediaController.duration is of type number" type="compliance" status="designed" component="WebAPI/Media/HTML5 The video element (Partial)" execution_type="auto" priority="P2" id="video_MediaController_duration_type">
+        <description>
+          <steps>
+            <step order="1">
+              <step_desc>Check if video.MediaController.duration is of type number</step_desc>
+              <expected>Pass</expected>
+            </step>
+          </steps>
+          <test_script_entry>/opt/tct-video-html5-tests/video/video_MediaController_duration_type.html</test_script_entry>
+        </description>
+        <specs>
+          <spec>
+            <spec_assertion element_type="attribute" element_name="duration" interface="MediaController" specification="HTML5 The video element (Partial)" section="Media" category="Tizen W3C API Specifications"/>
+            <spec_url>http://www.w3.org/TR/2012/WD-html5-20121025/media-elements.html#mediacontroller</spec_url>
+            <spec_statement/>
+          </spec>
+        </specs>
+      </testcase>
+      <testcase purpose="Check if video.controller.emptied event occurs" type="compliance" status="designed" component="WebAPI/Media/HTML5 The video element (Partial)" execution_type="auto" priority="P2" id="video_MediaController_onemptied_event">
+        <description>
+          <steps>
+            <step order="1">
+              <step_desc>Check if video.controller.emptied event occurs</step_desc>
+              <expected>Pass</expected>
+            </step>
+          </steps>
+          <test_script_entry>/opt/tct-video-html5-tests/video/video_MediaController_onemptied_event.html</test_script_entry>
+        </description>
+        <specs>
+          <spec>
+            <spec_assertion element_type="attribute" element_name="onemptied" interface="MediaController" specification="HTML5 The video element (Partial)" section="Media" category="Tizen W3C API Specifications"/>
+            <spec_url>http://www.w3.org/TR/2012/WD-html5-20121025/media-elements.html#mediacontroller</spec_url>
+            <spec_statement/>
+          </spec>
+        </specs>
+      </testcase>
+      <testcase purpose="Check if video.controller.loadeddata event occurs" type="compliance" status="designed" component="WebAPI/Media/HTML5 The video element (Partial)" execution_type="auto" priority="P2" id="video_MediaController_onloadeddata_event">
+        <description>
+          <steps>
+            <step order="1">
+              <step_desc>Check if video.controller.loadeddata event occurs</step_desc>
+              <expected>Pass</expected>
+            </step>
+          </steps>
+          <test_script_entry>/opt/tct-video-html5-tests/video/video_MediaController_onloadeddata_event.html</test_script_entry>
+        </description>
+        <specs>
+          <spec>
+            <spec_assertion element_type="attribute" element_name="onloadeddata" interface="MediaController" specification="HTML5 The video element (Partial)" section="Media" category="Tizen W3C API Specifications"/>
+            <spec_url>http://www.w3.org/TR/2012/WD-html5-20121025/media-elements.html#mediacontroller</spec_url>
+            <spec_statement/>
+          </spec>
+        </specs>
+      </testcase>
+      <testcase purpose="Check if video.controller.loadedmetadata event occurs" type="compliance" status="designed" component="WebAPI/Media/HTML5 The video element (Partial)" execution_type="auto" priority="P2" id="video_MediaController_onloadedmetadata_event">
+        <description>
+          <steps>
+            <step order="1">
+              <step_desc>Check if video.controller.loadedmetadata event occurs</step_desc>
+              <expected>Pass</expected>
+            </step>
+          </steps>
+          <test_script_entry>/opt/tct-video-html5-tests/video/video_MediaController_onloadedmetadata_event.html</test_script_entry>
+        </description>
+        <specs>
+          <spec>
+            <spec_assertion element_type="attribute" element_name="onloadedmetadata" interface="MediaController" specification="HTML5 The video element (Partial)" section="Media" category="Tizen W3C API Specifications"/>
+            <spec_url>http://www.w3.org/TR/2012/WD-html5-20121025/media-elements.html#mediacontroller</spec_url>
+            <spec_statement/>
+          </spec>
+        </specs>
+      </testcase>
+      <testcase purpose="Check if video.MediaController.muted is of type boolean" type="compliance" status="designed" component="WebAPI/Media/HTML5 The video element (Partial)" execution_type="auto" priority="P2" id="video_MediaController_muted_type">
+        <description>
+          <steps>
+            <step order="1">
+              <step_desc>Check if video.MediaController.muted is of type boolean</step_desc>
+              <expected>Pass</expected>
+            </step>
+          </steps>
+          <test_script_entry>/opt/tct-video-html5-tests/video/video_MediaController_muted_type.html</test_script_entry>
+        </description>
+        <specs>
+          <spec>
+            <spec_assertion element_type="attribute" element_name="muted" interface="MediaController" specification="HTML5 The video element (Partial)" section="Media" category="Tizen W3C API Specifications"/>
+            <spec_url>http://www.w3.org/TR/2012/WD-html5-20121025/media-elements.html#mediacontroller</spec_url>
+            <spec_statement/>
+          </spec>
+        </specs>
+      </testcase>
+      <testcase purpose="Check if video.MediaController.paused is readonly" type="compliance" status="designed" component="WebAPI/Media/HTML5 The video element (Partial)" execution_type="auto" priority="P2" id="video_MediaController_paused_readonly">
+        <description>
+          <steps>
+            <step order="1">
+              <step_desc>Check if video.MediaController.paused is readonly</step_desc>
+              <expected>Pass</expected>
+            </step>
+          </steps>
+          <test_script_entry>/opt/tct-video-html5-tests/video/video_MediaController_paused_readonly.html</test_script_entry>
+        </description>
+        <specs>
+          <spec>
+            <spec_assertion element_type="attribute" element_name="paused" interface="MediaController" specification="HTML5 The video element (Partial)" section="Media" category="Tizen W3C API Specifications"/>
+            <spec_url>http://www.w3.org/TR/2012/WD-html5-20121025/media-elements.html#mediacontroller</spec_url>
+            <spec_statement/>
+          </spec>
+        </specs>
+      </testcase>
+      <testcase purpose="Check if video.MediaController.paused is of type boolean" type="compliance" status="designed" component="WebAPI/Media/HTML5 The video element (Partial)" execution_type="auto" priority="P2" id="video_MediaController_paused_type">
+        <description>
+          <steps>
+            <step order="1">
+              <step_desc>Check if video.MediaController.paused is of type boolean</step_desc>
+              <expected>Pass</expected>
+            </step>
+          </steps>
+          <test_script_entry>/opt/tct-video-html5-tests/video/video_MediaController_paused_type.html</test_script_entry>
+        </description>
+        <specs>
+          <spec>
+            <spec_assertion element_type="attribute" element_name="paused" interface="MediaController" specification="HTML5 The video element (Partial)" section="Media" category="Tizen W3C API Specifications"/>
+            <spec_url>http://www.w3.org/TR/2012/WD-html5-20121025/media-elements.html#mediacontroller</spec_url>
+            <spec_statement/>
+          </spec>
+        </specs>
+      </testcase>
+      <testcase purpose="Check if video.controller.pause event occurs" type="compliance" status="designed" component="WebAPI/Media/HTML5 The video element (Partial)" execution_type="auto" priority="P2" id="video_MediaController_onpause_event">
+        <description>
+          <steps>
+            <step order="1">
+              <step_desc>Check if video.controller.pause event occurs</step_desc>
+              <expected>Pass</expected>
+            </step>
+          </steps>
+          <test_script_entry>/opt/tct-video-html5-tests/video/video_MediaController_onpause_event.html</test_script_entry>
+        </description>
+        <specs>
+          <spec>
+            <spec_assertion element_type="attribute" element_name="onpause" interface="MediaController" specification="HTML5 The video element (Partial)" section="Media" category="Tizen W3C API Specifications"/>
+            <spec_url>http://www.w3.org/TR/2012/WD-html5-20121025/media-elements.html#mediacontroller</spec_url>
+            <spec_statement/>
+          </spec>
+        </specs>
+      </testcase>
+      <testcase purpose="Check if video.MediaController.pause is of type function" type="compliance" status="designed" component="WebAPI/Media/HTML5 The video element (Partial)" execution_type="auto" priority="P2" id="video_MediaController_pause_type">
+        <description>
+          <steps>
+            <step order="1">
+              <step_desc>Check if video.MediaController.pause is of type function</step_desc>
+              <expected>Pass</expected>
+            </step>
+          </steps>
+          <test_script_entry>/opt/tct-video-html5-tests/video/video_MediaController_pause_type.html</test_script_entry>
+        </description>
+        <specs>
+          <spec>
+            <spec_assertion element_type="method" element_name="pause" interface="MediaController" specification="HTML5 The video element (Partial)" section="Media" category="Tizen W3C API Specifications"/>
+            <spec_url>http://www.w3.org/TR/2012/WD-html5-20121025/media-elements.html#mediacontroller</spec_url>
+            <spec_statement/>
+          </spec>
+        </specs>
+      </testcase>
+      <testcase purpose="Check if video.MediaController.playbackRate is of type number" type="compliance" status="designed" component="WebAPI/Media/HTML5 The video element (Partial)" execution_type="auto" priority="P2" id="video_MediaController_playbackRate_type">
+        <description>
+          <steps>
+            <step order="1">
+              <step_desc>Check if video.MediaController.playbackRate is of type number</step_desc>
+              <expected>Pass</expected>
+            </step>
+          </steps>
+          <test_script_entry>/opt/tct-video-html5-tests/video/video_MediaController_playbackRate_type.html</test_script_entry>
+        </description>
+        <specs>
+          <spec>
+            <spec_assertion element_type="attribute" element_name="playbackRate" interface="MediaController" specification="HTML5 The video element (Partial)" section="Media" category="Tizen W3C API Specifications"/>
+            <spec_url>http://www.w3.org/TR/2012/WD-html5-20121025/media-elements.html#mediacontroller</spec_url>
+            <spec_statement/>
+          </spec>
+        </specs>
+      </testcase>
+      <testcase purpose="Check if video.MediaController.played is readonly" type="compliance" status="designed" component="WebAPI/Media/HTML5 The video element (Partial)" execution_type="auto" priority="P2" id="video_MediaController_played_readonly">
+        <description>
+          <steps>
+            <step order="1">
+              <step_desc>Check if video.MediaController.played is readonly</step_desc>
+              <expected>Pass</expected>
+            </step>
+          </steps>
+          <test_script_entry>/opt/tct-video-html5-tests/video/video_MediaController_played_readonly.html</test_script_entry>
+        </description>
+        <specs>
+          <spec>
+            <spec_assertion element_type="attribute" element_name="played" interface="MediaController" specification="HTML5 The video element (Partial)" section="Media" category="Tizen W3C API Specifications"/>
+            <spec_url>http://www.w3.org/TR/2012/WD-html5-20121025/media-elements.html#mediacontroller</spec_url>
+            <spec_statement/>
+          </spec>
+        </specs>
+      </testcase>
+      <testcase purpose="Check if video.MediaController.played is of type object" type="compliance" status="designed" component="WebAPI/Media/HTML5 The video element (Partial)" execution_type="auto" priority="P2" id="video_MediaController_played_type">
+        <description>
+          <steps>
+            <step order="1">
+              <step_desc>Check if video.MediaController.played is of type object</step_desc>
+              <expected>Pass</expected>
+            </step>
+          </steps>
+          <test_script_entry>/opt/tct-video-html5-tests/video/video_MediaController_played_type.html</test_script_entry>
+        </description>
+        <specs>
+          <spec>
+            <spec_assertion element_type="attribute" element_name="played" interface="MediaController" specification="HTML5 The video element (Partial)" section="Media" category="Tizen W3C API Specifications"/>
+            <spec_url>http://www.w3.org/TR/2012/WD-html5-20121025/media-elements.html#mediacontroller</spec_url>
+            <spec_statement/>
+          </spec>
+        </specs>
+      </testcase>
+      <testcase purpose="Check if video.controller.onplaying is exists" type="compliance" status="designed" component="WebAPI/Media/HTML5 The video element (Partial)" execution_type="auto" priority="P2" id="video_MediaController_onplaying_event">
+        <description>
+          <steps>
+            <step order="1">
+              <step_desc>Check if video.controller.onplaying is exists</step_desc>
+              <expected>Pass</expected>
+            </step>
+          </steps>
+          <test_script_entry>/opt/tct-video-html5-tests/video/video_MediaController_onplaying_event.html</test_script_entry>
+        </description>
+        <specs>
+          <spec>
+            <spec_assertion element_type="attribute" element_name="onplaying" interface="MediaController" specification="HTML5 The video element (Partial)" section="Media" category="Tizen W3C API Specifications"/>
+            <spec_url>http://www.w3.org/TR/2012/WD-html5-20121025/media-elements.html#mediacontroller</spec_url>
+            <spec_statement/>
+          </spec>
+        </specs>
+      </testcase>
+      <testcase purpose="Check if video.controller.onplay occurs" type="compliance" status="designed" component="WebAPI/Media/HTML5 The video element (Partial)" execution_type="auto" priority="P2" id="video_MediaController_onplay_event">
+        <description>
+          <steps>
+            <step order="1">
+              <step_desc>Check if video.controller.onplay occurs</step_desc>
+              <expected>Pass</expected>
+            </step>
+          </steps>
+          <test_script_entry>/opt/tct-video-html5-tests/video/video_MediaController_onplay_event.html</test_script_entry>
+        </description>
+        <specs>
+          <spec>
+            <spec_assertion element_type="attribute" element_name="onplay" interface="MediaController" specification="HTML5 The video element (Partial)" section="Media" category="Tizen W3C API Specifications"/>
+            <spec_url>http://www.w3.org/TR/2012/WD-html5-20121025/media-elements.html#mediacontroller</spec_url>
+            <spec_statement/>
+          </spec>
+        </specs>
+      </testcase>
+      <testcase purpose="Check if video.MediaController.play is of type function" type="compliance" status="designed" component="WebAPI/Media/HTML5 The video element (Partial)" execution_type="auto" priority="P2" id="video_MediaController_play_type">
+        <description>
+          <steps>
+            <step order="1">
+              <step_desc>Check if video.MediaController.play is of type function</step_desc>
+              <expected>Pass</expected>
+            </step>
+          </steps>
+          <test_script_entry>/opt/tct-video-html5-tests/video/video_MediaController_play_type.html</test_script_entry>
+        </description>
+        <specs>
+          <spec>
+            <spec_assertion element_type="method" element_name="play" interface="MediaController" specification="HTML5 The video element (Partial)" section="Media" category="Tizen W3C API Specifications"/>
+            <spec_url>http://www.w3.org/TR/2012/WD-html5-20121025/media-elements.html#mediacontroller</spec_url>
+            <spec_statement/>
+          </spec>
+        </specs>
+      </testcase>
+      <testcase purpose="Check if video.controller.onratechange is exists" type="compliance" status="designed" component="WebAPI/Media/HTML5 The video element (Partial)" execution_type="auto" priority="P2" id="video_MediaController_onratechange_event">
+        <description>
+          <steps>
+            <step order="1">
+              <step_desc>Check if video.controller.onratechange is exists</step_desc>
+              <expected>Pass</expected>
+            </step>
+          </steps>
+          <test_script_entry>/opt/tct-video-html5-tests/video/video_MediaController_onratechange_event.html</test_script_entry>
+        </description>
+        <specs>
+          <spec>
+            <spec_assertion element_type="attribute" element_name="onratechange" interface="MediaController" specification="HTML5 The video element (Partial)" section="Media" category="Tizen W3C API Specifications"/>
+            <spec_url>http://www.w3.org/TR/2012/WD-html5-20121025/media-elements.html#mediacontroller</spec_url>
+            <spec_statement/>
+          </spec>
+        </specs>
+      </testcase>
+      <testcase purpose="Check if video.MediaController.seekable is readonly" type="compliance" status="designed" component="WebAPI/Media/HTML5 The video element (Partial)" execution_type="auto" priority="P2" id="video_MediaController_seekable_readonly">
+        <description>
+          <steps>
+            <step order="1">
+              <step_desc>Check if video.MediaController.seekable is readonly</step_desc>
+              <expected>Pass</expected>
+            </step>
+          </steps>
+          <test_script_entry>/opt/tct-video-html5-tests/video/video_MediaController_seekable_readonly.html</test_script_entry>
+        </description>
+        <specs>
+          <spec>
+            <spec_assertion element_type="attribute" element_name="seekable" interface="MediaController" specification="HTML5 The video element (Partial)" section="Media" category="Tizen W3C API Specifications"/>
+            <spec_url>http://www.w3.org/TR/2012/WD-html5-20121025/media-elements.html#mediacontroller</spec_url>
+            <spec_statement/>
+          </spec>
+        </specs>
+      </testcase>
+      <testcase purpose="Check if video.MediaController.seekable is of type object" type="compliance" status="designed" component="WebAPI/Media/HTML5 The video element (Partial)" execution_type="auto" priority="P2" id="video_MediaController_seekable_type">
+        <description>
+          <steps>
+            <step order="1">
+              <step_desc>Check if video.MediaController.seekable is of type object</step_desc>
+              <expected>Pass</expected>
+            </step>
+          </steps>
+          <test_script_entry>/opt/tct-video-html5-tests/video/video_MediaController_seekable_type.html</test_script_entry>
+        </description>
+        <specs>
+          <spec>
+            <spec_assertion element_type="attribute" element_name="seekable" interface="MediaController" specification="HTML5 The video element (Partial)" section="Media" category="Tizen W3C API Specifications"/>
+            <spec_url>http://www.w3.org/TR/2012/WD-html5-20121025/media-elements.html#mediacontroller</spec_url>
+            <spec_statement/>
+          </spec>
+        </specs>
+      </testcase>
+      <testcase purpose="Check if video.controller.onvolumechange is exists" type="compliance" status="designed" component="WebAPI/Media/HTML5 The video element (Partial)" execution_type="auto" priority="P2" id="video_MediaController_onvolumechange_event">
+        <description>
+          <steps>
+            <step order="1">
+              <step_desc>Check if video.controller.onvolumechange is exists</step_desc>
+              <expected>Pass</expected>
+            </step>
+          </steps>
+          <test_script_entry>/opt/tct-video-html5-tests/video/video_MediaController_onvolumechange_event.html</test_script_entry>
+        </description>
+        <specs>
+          <spec>
+            <spec_assertion element_type="attribute" element_name="onvolumechange" interface="MediaController" specification="HTML5 The video element (Partial)" section="Media" category="Tizen W3C API Specifications"/>
+            <spec_url>http://www.w3.org/TR/2012/WD-html5-20121025/media-elements.html#mediacontroller</spec_url>
+            <spec_statement/>
+          </spec>
+        </specs>
+      </testcase>
+      <testcase purpose="Check if video.MediaController.volume is of type number" type="compliance" status="designed" component="WebAPI/Media/HTML5 The video element (Partial)" execution_type="auto" priority="P2" id="video_MediaController_volume_type">
+        <description>
+          <steps>
+            <step order="1">
+              <step_desc>Check if video.MediaController.volume is of type number</step_desc>
+              <expected>Pass</expected>
+            </step>
+          </steps>
+          <test_script_entry>/opt/tct-video-html5-tests/video/video_MediaController_volume_type.html</test_script_entry>
+        </description>
+        <specs>
+          <spec>
+            <spec_assertion element_type="attribute" element_name="volume" interface="MediaController" specification="HTML5 The video element (Partial)" section="Media" category="Tizen W3C API Specifications"/>
+            <spec_url>http://www.w3.org/TR/2012/WD-html5-20121025/media-elements.html#mediacontroller</spec_url>
+            <spec_statement/>
+          </spec>
+        </specs>
+      </testcase>
+      <testcase purpose="Check if video.controller.onwaiting occurs" type="compliance" status="designed" component="WebAPI/Media/HTML5 The video element (Partial)" execution_type="auto" priority="P2" id="video_MediaController_onwaiting_event">
+        <description>
+          <steps>
+            <step order="1">
+              <step_desc>Check if video.controller.onwaiting occurs</step_desc>
+              <expected>Pass</expected>
+            </step>
+          </steps>
+          <test_script_entry>/opt/tct-video-html5-tests/video/video_MediaController_onwaiting_event.html</test_script_entry>
+        </description>
+        <specs>
+          <spec>
+            <spec_assertion element_type="attribute" element_name="onwaiting" interface="MediaController" specification="HTML5 The video element (Partial)" section="Media" category="Tizen W3C API Specifications"/>
+            <spec_url>http://www.w3.org/TR/2012/WD-html5-20121025/media-elements.html#mediacontroller</spec_url>
+            <spec_statement/>
+          </spec>
+        </specs>
+      </testcase>
+      <testcase purpose="Check if video.error.code is readonly" type="compliance" status="approved" component="WebAPI/Media/HTML5 The video element (Partial)" execution_type="auto" priority="P2" id="video_MediaError_code_readonly">
+        <description>
+          <steps>
+            <step order="1">
+              <step_desc>Check if video.error.code is readonly</step_desc>
+              <expected>Pass</expected>
+            </step>
+          </steps>
+          <test_script_entry>/opt/tct-video-html5-tests/video/video_MediaError_code_readonly.html</test_script_entry>
+        </description>
+        <specs>
+          <spec>
+            <spec_assertion element_type="attribute" element_name="code" interface="MediaError" specification="HTML5 The video element (Partial)" section="Media" category="Tizen W3C API Specifications"/>
+            <spec_url>http://www.w3.org/TR/2012/WD-html5-20121025/media-elements.html#mediaerror</spec_url>
+            <spec_statement/>
+          </spec>
+        </specs>
+      </testcase>
+      <testcase purpose="Check if the type of video.error.code is 'number'" type="compliance" status="approved" component="WebAPI/Media/HTML5 The video element (Partial)" execution_type="auto" priority="P2" id="video_MediaError_code_type">
+        <description>
+          <steps>
+            <step order="1">
+              <step_desc>Check if the type of video.error.code is 'number'</step_desc>
+              <expected>Pass</expected>
+            </step>
+          </steps>
+          <test_script_entry>/opt/tct-video-html5-tests/video/video_MediaError_code_type.html</test_script_entry>
+        </description>
+        <specs>
+          <spec>
+            <spec_assertion element_type="attribute" element_name="code" interface="MediaError" specification="HTML5 The video element (Partial)" section="Media" category="Tizen W3C API Specifications"/>
+            <spec_url>http://www.w3.org/TR/2012/WD-html5-20121025/media-elements.html#mediaerror</spec_url>
+            <spec_statement/>
+          </spec>
+        </specs>
+      </testcase>
+      <testcase purpose="Check if the type of video.error.MEDIA_ERR_ABORTED is 'number'" type="compliance" status="approved" component="WebAPI/Media/HTML5 The video element (Partial)" execution_type="auto" priority="P2" id="video_MediaError_MEDIA_ERR_ABORTED_constant_type">
+        <description>
+          <steps>
+            <step order="1">
+              <step_desc>Check if the type of video.error.MEDIA_ERR_ABORTED is 'number'</step_desc>
+              <expected>Pass</expected>
+            </step>
+          </steps>
+          <test_script_entry>/opt/tct-video-html5-tests/video/video_MediaError_MEDIA_ERR_ABORTED_constant_type.html</test_script_entry>
+        </description>
+        <specs>
+          <spec>
+            <spec_assertion element_type="attribute" element_name="MEDIA_ERR_ABORTED" interface="MediaError" specification="HTML5 The video element (Partial)" section="Media" category="Tizen W3C API Specifications"/>
+            <spec_url>http://www.w3.org/TR/2012/WD-html5-20121025/media-elements.html#mediaerror</spec_url>
+            <spec_statement/>
+          </spec>
+        </specs>
+      </testcase>
+      <testcase purpose="Check if video.error.MEDIA_ERR_ABORTED const value is 1" type="compliance" status="approved" component="WebAPI/Media/HTML5 The video element (Partial)" execution_type="auto" priority="P2" id="video_MediaError_MEDIA_ERR_ABORTED_constant_value">
+        <description>
+          <steps>
+            <step order="1">
+              <step_desc>Check if video.error.MEDIA_ERR_ABORTED const value is 1</step_desc>
+              <expected>Pass</expected>
+            </step>
+          </steps>
+          <test_script_entry>/opt/tct-video-html5-tests/video/video_MediaError_MEDIA_ERR_ABORTED_constant_value.html</test_script_entry>
+        </description>
+        <specs>
+          <spec>
+            <spec_assertion element_type="attribute" element_name="MEDIA_ERR_ABORTED" interface="MediaError" specification="HTML5 The video element (Partial)" section="Media" category="Tizen W3C API Specifications"/>
+            <spec_url>http://www.w3.org/TR/2012/WD-html5-20121025/media-elements.html#mediaerror</spec_url>
+            <spec_statement/>
+          </spec>
+        </specs>
+      </testcase>
+      <testcase purpose="Check if the type of video.error.MEDIA_ERR_DECODE is 'number'" type="compliance" status="approved" component="WebAPI/Media/HTML5 The video element (Partial)" execution_type="auto" priority="P2" id="video_MediaError_MEDIA_ERR_DECODE_constant_type">
+        <description>
+          <steps>
+            <step order="1">
+              <step_desc>Check if the type of video.error.MEDIA_ERR_DECODE is 'number'</step_desc>
+              <expected>Pass</expected>
+            </step>
+          </steps>
+          <test_script_entry>/opt/tct-video-html5-tests/video/video_MediaError_MEDIA_ERR_DECODE_constant_type.html</test_script_entry>
+        </description>
+        <specs>
+          <spec>
+            <spec_assertion element_type="attribute" element_name="MEDIA_ERR_DECODE" interface="MediaError" specification="HTML5 The video element (Partial)" section="Media" category="Tizen W3C API Specifications"/>
+            <spec_url>http://www.w3.org/TR/2012/WD-html5-20121025/media-elements.html#mediaerror</spec_url>
+            <spec_statement/>
+          </spec>
+        </specs>
+      </testcase>
+      <testcase purpose="Check if video.error.MEDIA_ERR_DECODE const value is 3" type="compliance" status="approved" component="WebAPI/Media/HTML5 The video element (Partial)" execution_type="auto" priority="P2" id="video_MediaError_MEDIA_ERR_DECODE_constant_value">
+        <description>
+          <steps>
+            <step order="1">
+              <step_desc>Check if video.error.MEDIA_ERR_DECODE const value is 3</step_desc>
+              <expected>Pass</expected>
+            </step>
+          </steps>
+          <test_script_entry>/opt/tct-video-html5-tests/video/video_MediaError_MEDIA_ERR_DECODE_constant_value.html</test_script_entry>
+        </description>
+        <specs>
+          <spec>
+            <spec_assertion element_type="attribute" element_name="MEDIA_ERR_DECODE" interface="MediaError" specification="HTML5 The video element (Partial)" section="Media" category="Tizen W3C API Specifications"/>
+            <spec_url>http://www.w3.org/TR/2012/WD-html5-20121025/media-elements.html#mediaerror</spec_url>
+            <spec_statement/>
+          </spec>
+        </specs>
+      </testcase>
+      <testcase purpose="Check if the type of video.error.MEDIA_ERR_NETWORK is 'number'" type="compliance" status="approved" component="WebAPI/Media/HTML5 The video element (Partial)" execution_type="auto" priority="P2" id="video_MediaError_MEDIA_ERR_NETWORK_constant_type">
+        <description>
+          <steps>
+            <step order="1">
+              <step_desc>Check if the type of video.error.MEDIA_ERR_NETWORK is 'number'</step_desc>
+              <expected>Pass</expected>
+            </step>
+          </steps>
+          <test_script_entry>/opt/tct-video-html5-tests/video/video_MediaError_MEDIA_ERR_NETWORK_constant_type.html</test_script_entry>
+        </description>
+        <specs>
+          <spec>
+            <spec_assertion element_type="attribute" element_name="MEDIA_ERR_NETWORK" interface="MediaError" specification="HTML5 The video element (Partial)" section="Media" category="Tizen W3C API Specifications"/>
+            <spec_url>http://www.w3.org/TR/2012/WD-html5-20121025/media-elements.html#mediaerror</spec_url>
+            <spec_statement/>
+          </spec>
+        </specs>
+      </testcase>
+      <testcase purpose="Check if video.error.MEDIA_ERR_NETWORK const value is 2" type="compliance" status="approved" component="WebAPI/Media/HTML5 The video element (Partial)" execution_type="auto" priority="P2" id="video_MediaError_MEDIA_ERR_NETWORK_constant_value">
+        <description>
+          <steps>
+            <step order="1">
+              <step_desc>Check if video.error.MEDIA_ERR_NETWORK const value is 2</step_desc>
+              <expected>Pass</expected>
+            </step>
+          </steps>
+          <test_script_entry>/opt/tct-video-html5-tests/video/video_MediaError_MEDIA_ERR_NETWORK_constant_value.html</test_script_entry>
+        </description>
+        <specs>
+          <spec>
+            <spec_assertion element_type="attribute" element_name="MEDIA_ERR_NETWORK" interface="MediaError" specification="HTML5 The video element (Partial)" section="Media" category="Tizen W3C API Specifications"/>
+            <spec_url>http://www.w3.org/TR/2012/WD-html5-20121025/media-elements.html#mediaerror</spec_url>
+            <spec_statement/>
+          </spec>
+        </specs>
+      </testcase>
+      <testcase purpose="Check if the value of attribute of video.mediaGroup is empty string when you set it empty string" type="compliance" status="approved" component="WebAPI/Media/HTML5 The video element (Partial)" execution_type="auto" priority="P2" id="video_mediaGroup_empty_string">
+        <description>
+          <steps>
+            <step order="1">
+              <step_desc>Check if the value of attribute of video.mediaGroup is empty string when you set it empty string</step_desc>
+              <expected>Pass</expected>
+            </step>
+          </steps>
+          <test_script_entry>/opt/tct-video-html5-tests/video/video_mediaGroup_empty_string.html</test_script_entry>
+        </description>
+        <specs>
+          <spec>
+            <spec_assertion element_type="attribute" element_name="mediaGroup" interface="HTMLVideoElement" specification="HTML5 The video element (Partial)" section="Media" category="Tizen W3C API Specifications"/>
+            <spec_url>http://www.w3.org/TR/2012/WD-html5-20121025/the-video-element.html#the-video-element</spec_url>
+            <spec_statement/>
+          </spec>
+        </specs>
+      </testcase>
+      <testcase purpose="Check if the value of attribute video.mediaGroup when set it null" type="compliance" status="approved" component="WebAPI/Media/HTML5 The video element (Partial)" execution_type="auto" priority="P2" id="video_mediaGroup_null">
+        <description>
+          <steps>
+            <step order="1">
+              <step_desc>Check if the value of attribute video.mediaGroup when set it null</step_desc>
+              <expected>Pass</expected>
+            </step>
+          </steps>
+          <test_script_entry>/opt/tct-video-html5-tests/video/video_mediaGroup_null.html</test_script_entry>
+        </description>
+        <specs>
+          <spec>
+            <spec_assertion element_type="attribute" element_name="mediaGroup" interface="HTMLVideoElement" specification="HTML5 The video element (Partial)" section="Media" category="Tizen W3C API Specifications"/>
+            <spec_url>http://www.w3.org/TR/2012/WD-html5-20121025/the-video-element.html#the-video-element</spec_url>
+            <spec_statement/>
+          </spec>
+        </specs>
+      </testcase>
+      <testcase purpose="Check if the value of video.mediaGroup is valid" type="compliance" status="approved" component="WebAPI/Media/HTML5 The video element (Partial)" execution_type="auto" priority="P2" id="video_mediaGroup_valid_value">
+        <description>
+          <steps>
+            <step order="1">
+              <step_desc>Check if the value of video.mediaGroup is valid</step_desc>
+              <expected>Pass</expected>
+            </step>
+          </steps>
+          <test_script_entry>/opt/tct-video-html5-tests/video/video_mediaGroup_valid_value.html</test_script_entry>
+        </description>
+        <specs>
+          <spec>
+            <spec_assertion element_type="attribute" element_name="mediaGroup" interface="HTMLVideoElement" specification="HTML5 The video element (Partial)" section="Media" category="Tizen W3C API Specifications"/>
+            <spec_url>http://www.w3.org/TR/2012/WD-html5-20121025/the-video-element.html#the-video-element</spec_url>
+            <spec_statement/>
+          </spec>
+        </specs>
+      </testcase>
+      <testcase purpose="Check if the video.networkState attribute is readonly" type="compliance" status="approved" component="WebAPI/Media/HTML5 The video element (Partial)" execution_type="auto" priority="P2" id="video_networkState_readonly">
+        <description>
+          <steps>
+            <step order="1">
+              <step_desc>Check if the video.networkState attribute is readonly</step_desc>
+              <expected>Pass</expected>
+            </step>
+          </steps>
+          <test_script_entry>/opt/tct-video-html5-tests/video/video_networkState_readonly.html</test_script_entry>
+        </description>
+        <specs>
+          <spec>
+            <spec_assertion element_type="attribute" element_name="networkState" interface="HTMLVideoElement" specification="HTML5 The video element (Partial)" section="Media" category="Tizen W3C API Specifications"/>
+            <spec_url>http://www.w3.org/TR/2012/WD-html5-20121025/the-video-element.html#the-video-element</spec_url>
+            <spec_statement/>
+          </spec>
+        </specs>
+      </testcase>
+      <testcase purpose="Check if the event video.ondurationchange occurs" type="compliance" status="approved" component="WebAPI/Media/HTML5 The video element (Partial)" execution_type="auto" priority="P2" id="video_ondurationchange_event">
+        <description>
+          <steps>
+            <step order="1">
+              <step_desc>Check if the event video.ondurationchange occurs</step_desc>
+              <expected>Pass</expected>
+            </step>
+          </steps>
+          <test_script_entry>/opt/tct-video-html5-tests/video/video_ondurationchange_event.html</test_script_entry>
+        </description>
+        <specs>
+          <spec>
+            <spec_assertion element_type="eventhandler" element_name="ondurationchange" interface="HTMLVideoElement" specification="HTML5 The video element (Partial)" section="Media" category="Tizen W3C API Specifications"/>
+            <spec_url>http://www.w3.org/TR/2012/WD-html5-20121025/the-video-element.html#the-video-element</spec_url>
+            <spec_statement/>
+          </spec>
+        </specs>
+      </testcase>
+      <testcase purpose="Check if the event video.onemptied occurs" type="compliance" status="approved" component="WebAPI/Media/HTML5 The video element (Partial)" execution_type="auto" priority="P2" id="video_onemptied_event">
+        <description>
+          <steps>
+            <step order="1">
+              <step_desc>Check if the event video.onemptied occurs</step_desc>
+              <expected>Pass</expected>
+            </step>
+          </steps>
+          <test_script_entry>/opt/tct-video-html5-tests/video/video_onemptied_event.html</test_script_entry>
+        </description>
+        <specs>
+          <spec>
+            <spec_assertion element_type="eventhandler" element_name="onemptied" interface="HTMLVideoElement" specification="HTML5 The video element (Partial)" section="Media" category="Tizen W3C API Specifications"/>
+            <spec_url>http://www.w3.org/TR/2012/WD-html5-20121025/the-video-element.html#the-video-element</spec_url>
+            <spec_statement/>
+          </spec>
+        </specs>
+      </testcase>
+      <testcase purpose="Check if the event video.onended occurs when media resource is end" type="compliance" status="approved" component="WebAPI/Media/HTML5 The video element (Partial)" execution_type="auto" priority="P2" id="video_onended_event">
+        <description>
+          <steps>
+            <step order="1">
+              <step_desc>Check if the event video.onended occurs when media resource is end</step_desc>
+              <expected>Pass</expected>
+            </step>
+          </steps>
+          <test_script_entry>/opt/tct-video-html5-tests/video/video_onended_event.html</test_script_entry>
+        </description>
+        <specs>
+          <spec>
+            <spec_assertion element_type="eventhandler" element_name="onended" interface="HTMLVideoElement" specification="HTML5 The video element (Partial)" section="Media" category="Tizen W3C API Specifications"/>
+            <spec_url>http://www.w3.org/TR/2012/WD-html5-20121025/the-video-element.html#the-video-element</spec_url>
+            <spec_statement/>
+          </spec>
+        </specs>
+      </testcase>
+      <testcase purpose="Check if the event video.onerror occurs" type="compliance" status="approved" component="WebAPI/Media/HTML5 The video element (Partial)" execution_type="auto" priority="P2" id="video_onerror_event">
+        <description>
+          <steps>
+            <step order="1">
+              <step_desc>Check if the event video.onerror occurs</step_desc>
+              <expected>Pass</expected>
+            </step>
+          </steps>
+          <test_script_entry>/opt/tct-video-html5-tests/video/video_onerror_event.html</test_script_entry>
+        </description>
+        <specs>
+          <spec>
+            <spec_assertion element_type="eventhandler" element_name="onerror" interface="HTMLVideoElement" specification="HTML5 The video element (Partial)" section="Media" category="Tizen W3C API Specifications"/>
+            <spec_url>http://www.w3.org/TR/2012/WD-html5-20121025/the-video-element.html#the-video-element</spec_url>
+            <spec_statement/>
+          </spec>
+        </specs>
+      </testcase>
+      <testcase purpose="Check if the event video.onpause occurs" type="compliance" status="approved" component="WebAPI/Media/HTML5 The video element (Partial)" execution_type="auto" priority="P2" id="video_onpause_event">
+        <description>
+          <steps>
+            <step order="1">
+              <step_desc>Check if the event video.onpause occurs</step_desc>
+              <expected>Pass</expected>
+            </step>
+          </steps>
+          <test_script_entry>/opt/tct-video-html5-tests/video/video_onpause_event.html</test_script_entry>
+        </description>
+        <specs>
+          <spec>
+            <spec_assertion element_type="eventhandler" element_name="onpause" interface="HTMLVideoElement" specification="HTML5 The video element (Partial)" section="Media" category="Tizen W3C API Specifications"/>
+            <spec_url>http://www.w3.org/TR/2012/WD-html5-20121025/the-video-element.html#the-video-element</spec_url>
+            <spec_statement/>
+          </spec>
+        </specs>
+      </testcase>
+      <testcase purpose="Check if the event video.onratechange occurs when defaultPlaybackRate changed" type="compliance" status="approved" component="WebAPI/Media/HTML5 The video element (Partial)" execution_type="auto" priority="P2" id="video_onratechange_event_defaultPlaybackRate">
+        <description>
+          <steps>
+            <step order="1">
+              <step_desc>Check if the event video.onratechange occurs when defaultPlaybackRate changed</step_desc>
+              <expected>Pass</expected>
+            </step>
+          </steps>
+          <test_script_entry>/opt/tct-video-html5-tests/video/video_onratechange_event_defaultPlaybackRate.html</test_script_entry>
+        </description>
+        <specs>
+          <spec>
+            <spec_assertion element_type="eventhandler" element_name="onratechange" interface="HTMLVideoElement" specification="HTML5 The video element (Partial)" section="Media" category="Tizen W3C API Specifications"/>
+            <spec_url>http://www.w3.org/TR/2012/WD-html5-20121025/the-video-element.html#the-video-element</spec_url>
+            <spec_statement/>
+          </spec>
+        </specs>
+      </testcase>
+      <testcase purpose="Check if the event video.onratechange occurs when playbackRate changed" type="compliance" status="approved" component="WebAPI/Media/HTML5 The video element (Partial)" execution_type="auto" priority="P2" id="video_onratechange_event_playbackRate">
+        <description>
+          <steps>
+            <step order="1">
+              <step_desc>Check if the event video.onratechange occurs when playbackRate changed</step_desc>
+              <expected>Pass</expected>
+            </step>
+          </steps>
+          <test_script_entry>/opt/tct-video-html5-tests/video/video_onratechange_event_playbackRate.html</test_script_entry>
+        </description>
+        <specs>
+          <spec>
+            <spec_assertion element_type="eventhandler" element_name="onratechange" interface="HTMLVideoElement" specification="HTML5 The video element (Partial)" section="Media" category="Tizen W3C API Specifications"/>
+            <spec_url>http://www.w3.org/TR/2012/WD-html5-20121025/the-video-element.html#the-video-element</spec_url>
+            <spec_statement/>
+          </spec>
+        </specs>
+      </testcase>
+      <testcase purpose="Check if the event video.onseeking occurs" type="compliance" status="approved" component="WebAPI/Media/HTML5 The video element (Partial)" execution_type="auto" priority="P2" id="video_onseeking_event">
+        <description>
+          <steps>
+            <step order="1">
+              <step_desc>Check if the event video.onseeking occurs</step_desc>
+              <expected>Pass</expected>
+            </step>
+          </steps>
+          <test_script_entry>/opt/tct-video-html5-tests/video/video_onseeking_event.html</test_script_entry>
+        </description>
+        <specs>
+          <spec>
+            <spec_assertion element_type="eventhandler" element_name="onseeking" interface="HTMLVideoElement" specification="HTML5 The video element (Partial)" section="Media" category="Tizen W3C API Specifications"/>
+            <spec_url>http://www.w3.org/TR/2012/WD-html5-20121025/the-video-element.html#the-video-element</spec_url>
+            <spec_statement/>
+          </spec>
+        </specs>
+      </testcase>
+      <testcase purpose="Check if the event video.ontimeupdate occurs" type="compliance" status="approved" component="WebAPI/Media/HTML5 The video element (Partial)" execution_type="auto" priority="P2" id="video_ontimeupdate_event">
+        <description>
+          <steps>
+            <step order="1">
+              <step_desc>Check if the event video.ontimeupdate occurs</step_desc>
+              <expected>Pass</expected>
+            </step>
+          </steps>
+          <test_script_entry>/opt/tct-video-html5-tests/video/video_ontimeupdate_event.html</test_script_entry>
+        </description>
+        <specs>
+          <spec>
+            <spec_assertion element_type="eventhandler" element_name="ontimeupdate" interface="HTMLVideoElement" specification="HTML5 The video element (Partial)" section="Media" category="Tizen W3C API Specifications"/>
+            <spec_url>http://www.w3.org/TR/2012/WD-html5-20121025/the-video-element.html#the-video-element</spec_url>
+            <spec_statement/>
+          </spec>
+        </specs>
+      </testcase>
+      <testcase purpose="Check if the event video.onvolumechange occurs when muted changed" type="compliance" status="approved" component="WebAPI/Media/HTML5 The video element (Partial)" execution_type="auto" priority="P2" id="video_onvolumechange_event_muted">
+        <description>
+          <steps>
+            <step order="1">
+              <step_desc>Check if the event video.onvolumechange occurs when muted changed</step_desc>
+              <expected>Pass</expected>
+            </step>
+          </steps>
+          <test_script_entry>/opt/tct-video-html5-tests/video/video_onvolumechange_event_muted.html</test_script_entry>
+        </description>
+        <specs>
+          <spec>
+            <spec_assertion element_type="eventhandler" element_name="onvolumechange" interface="HTMLVideoElement" specification="HTML5 The video element (Partial)" section="Media" category="Tizen W3C API Specifications"/>
+            <spec_url>http://www.w3.org/TR/2012/WD-html5-20121025/the-video-element.html#the-video-element</spec_url>
+            <spec_statement/>
+          </spec>
+        </specs>
+      </testcase>
+      <testcase purpose="Check if the event video.onvolumechange occurs when volume changed" type="compliance" status="approved" component="WebAPI/Media/HTML5 The video element (Partial)" execution_type="auto" priority="P2" id="video_onvolumechange_event_volume">
+        <description>
+          <steps>
+            <step order="1">
+              <step_desc>Check if the event video.onvolumechange occurs when volume changed</step_desc>
+              <expected>Pass</expected>
+            </step>
+          </steps>
+          <test_script_entry>/opt/tct-video-html5-tests/video/video_onvolumechange_event_volume.html</test_script_entry>
+        </description>
+        <specs>
+          <spec>
+            <spec_assertion element_type="eventhandler" element_name="onvolumechange" interface="HTMLVideoElement" specification="HTML5 The video element (Partial)" section="Media" category="Tizen W3C API Specifications"/>
+            <spec_url>http://www.w3.org/TR/2012/WD-html5-20121025/the-video-element.html#the-video-element</spec_url>
+            <spec_statement/>
+          </spec>
+        </specs>
+      </testcase>
+      <testcase purpose="Check if the event video.onwaiting occurs" type="compliance" status="approved" component="WebAPI/Media/HTML5 The video element (Partial)" execution_type="auto" priority="P2" id="video_onwaiting_event">
+        <description>
+          <steps>
+            <step order="1">
+              <step_desc>Check if the event video.onwaiting occurs</step_desc>
+              <expected>Pass</expected>
+            </step>
+          </steps>
+          <test_script_entry>/opt/tct-video-html5-tests/video/video_onwaiting_event.html</test_script_entry>
+        </description>
+        <specs>
+          <spec>
+            <spec_assertion element_type="eventhandler" element_name="onwaiting" interface="HTMLVideoElement" specification="HTML5 The video element (Partial)" section="Media" category="Tizen W3C API Specifications"/>
+            <spec_url>http://www.w3.org/TR/2012/WD-html5-20121025/the-video-element.html#the-video-element</spec_url>
+            <spec_statement/>
+          </spec>
+        </specs>
+      </testcase>
+      <testcase purpose="Check if the video.paused attribute is readonly" type="compliance" status="approved" component="WebAPI/Media/HTML5 The video element (Partial)" execution_type="auto" priority="P2" id="video_paused_attribute_readonly">
+        <description>
+          <steps>
+            <step order="1">
+              <step_desc>Check if the video.paused attribute is readonly</step_desc>
+              <expected>Pass</expected>
+            </step>
+          </steps>
+          <test_script_entry>/opt/tct-video-html5-tests/video/video_paused_attribute_readonly.html</test_script_entry>
+        </description>
+        <specs>
+          <spec>
+            <spec_assertion element_type="attribute" element_name="paused" interface="HTMLVideoElement" specification="HTML5 The video element (Partial)" section="Media" category="Tizen W3C API Specifications"/>
+            <spec_url>http://www.w3.org/TR/2012/WD-html5-20121025/the-video-element.html#the-video-element</spec_url>
+            <spec_statement/>
+          </spec>
+        </specs>
+      </testcase>
+      <testcase purpose="Check if video.pause is of type function" type="compliance" status="approved" component="WebAPI/Media/HTML5 The video element (Partial)" execution_type="auto" priority="P2" id="video_pause_method_type">
+        <description>
+          <steps>
+            <step order="1">
+              <step_desc>Check if video.pause is of type function</step_desc>
+              <expected>Pass</expected>
+            </step>
+          </steps>
+          <test_script_entry>/opt/tct-video-html5-tests/video/video_pause_method_type.html</test_script_entry>
+        </description>
+        <specs>
+          <spec>
+            <spec_assertion element_type="method" element_name="pause" interface="HTMLVideoElement" specification="HTML5 The video element (Partial)" section="Media" category="Tizen W3C API Specifications"/>
+            <spec_url>http://www.w3.org/TR/2012/WD-html5-20121025/the-video-element.html#the-video-element</spec_url>
+            <spec_statement/>
+          </spec>
+        </specs>
+      </testcase>
+      <testcase purpose="Check if the video.playbackRate attribute return 0 it was set to null" type="compliance" status="approved" component="WebAPI/Media/HTML5 The video element (Partial)" execution_type="auto" priority="P2" id="video_playbackRate_value_null">
+        <description>
+          <steps>
+            <step order="1">
+              <step_desc>Check if the video.playbackRate attribute return 0 it was set to null</step_desc>
+              <expected>Pass</expected>
+            </step>
+          </steps>
+          <test_script_entry>/opt/tct-video-html5-tests/video/video_playbackRate_value_null.html</test_script_entry>
+        </description>
+        <specs>
+          <spec>
+            <spec_assertion element_type="attribute" element_name="playbackRate" interface="HTMLVideoElement" specification="HTML5 The video element (Partial)" section="Media" category="Tizen W3C API Specifications"/>
+            <spec_url>http://www.w3.org/TR/2012/WD-html5-20121025/the-video-element.html#the-video-element</spec_url>
+            <spec_statement/>
+          </spec>
+        </specs>
+      </testcase>
+      <testcase purpose="Check if the video.playbackRate attribute that on getting it must return 0 it was set to 0" type="compliance" status="approved" component="WebAPI/Media/HTML5 The video element (Partial)" execution_type="auto" priority="P2" id="video_playbackRate_value_zero">
+        <description>
+          <steps>
+            <step order="1">
+              <step_desc>Check if the video.playbackRate attribute that on getting it must return 0 it was set to 0</step_desc>
+              <expected>Pass</expected>
+            </step>
+          </steps>
+          <test_script_entry>/opt/tct-video-html5-tests/video/video_playbackRate_value_zero.html</test_script_entry>
+        </description>
+        <specs>
+          <spec>
+            <spec_assertion element_type="attribute" element_name="playbackRate" interface="HTMLVideoElement" specification="HTML5 The video element (Partial)" section="Media" category="Tizen W3C API Specifications"/>
+            <spec_url>http://www.w3.org/TR/2012/WD-html5-20121025/the-video-element.html#the-video-element</spec_url>
+            <spec_statement/>
+          </spec>
+        </specs>
+      </testcase>
+      <testcase purpose="Check if video.played attribute is readonly" type="compliance" status="approved" component="WebAPI/Media/HTML5 The video element (Partial)" execution_type="auto" priority="P2" id="video_played_attribute_readonly">
+        <description>
+          <steps>
+            <step order="1">
+              <step_desc>Check if video.played attribute is readonly</step_desc>
+              <expected>Pass</expected>
+            </step>
+          </steps>
+          <test_script_entry>/opt/tct-video-html5-tests/video/video_played_attribute_readonly.html</test_script_entry>
+        </description>
+        <specs>
+          <spec>
+            <spec_assertion element_type="attribute" element_name="played" interface="HTMLVideoElement" specification="HTML5 The video element (Partial)" section="Media" category="Tizen W3C API Specifications"/>
+            <spec_url>http://www.w3.org/TR/2012/WD-html5-20121025/the-video-element.html#the-video-element</spec_url>
+            <spec_statement/>
+          </spec>
+        </specs>
+      </testcase>
+      <testcase purpose="Check if default value of the attribute video.played.length is 0" type="compliance" status="approved" component="WebAPI/Media/HTML5 The video element (Partial)" execution_type="auto" priority="P2" id="video_played_length_default_value">
+        <description>
+          <steps>
+            <step order="1">
+              <step_desc>Check if default value of the attribute video.played.length is 0</step_desc>
+              <expected>Pass</expected>
+            </step>
+          </steps>
+          <test_script_entry>/opt/tct-video-html5-tests/video/video_played_length_default_value.html</test_script_entry>
+        </description>
+        <specs>
+          <spec>
+            <spec_assertion element_type="attribute" element_name="played" interface="HTMLVideoElement" specification="HTML5 The video element (Partial)" section="Media" category="Tizen W3C API Specifications"/>
+            <spec_url>http://www.w3.org/TR/2012/WD-html5-20121025/the-video-element.html#the-video-element</spec_url>
+            <spec_statement/>
+          </spec>
+        </specs>
+      </testcase>
+      <testcase purpose="Check if video.play method is of type function" type="compliance" status="approved" component="WebAPI/Media/HTML5 The video element (Partial)" execution_type="auto" priority="P2" id="video_play_method_type">
+        <description>
+          <steps>
+            <step order="1">
+              <step_desc>Check if video.play method is of type function</step_desc>
+              <expected>Pass</expected>
+            </step>
+          </steps>
+          <test_script_entry>/opt/tct-video-html5-tests/video/video_play_method_type.html</test_script_entry>
+        </description>
+        <specs>
+          <spec>
+            <spec_assertion element_type="method" element_name="play" interface="HTMLVideoElement" specification="HTML5 The video element (Partial)" section="Media" category="Tizen W3C API Specifications"/>
+            <spec_url>http://www.w3.org/TR/2012/WD-html5-20121025/the-video-element.html#the-video-element</spec_url>
+            <spec_statement/>
+          </spec>
+        </specs>
+      </testcase>
+      <testcase purpose="Check if video.preload can be set to 'auto'" type="compliance" status="approved" component="WebAPI/Media/HTML5 The video element (Partial)" execution_type="auto" priority="P2" id="video_preload_auto">
+        <description>
+          <steps>
+            <step order="1">
+              <step_desc>Check if video.preload can be set to 'auto'</step_desc>
+              <expected>Pass</expected>
+            </step>
+          </steps>
+          <test_script_entry>/opt/tct-video-html5-tests/video/video_preload_auto.html</test_script_entry>
+        </description>
+        <specs>
+          <spec>
+            <spec_assertion element_type="attribute" element_name="preload" interface="HTMLVideoElement" specification="HTML5 The video element (Partial)" section="Media" category="Tizen W3C API Specifications"/>
+            <spec_url>http://www.w3.org/TR/2012/WD-html5-20121025/the-video-element.html#the-video-element</spec_url>
+            <spec_statement/>
+          </spec>
+        </specs>
+      </testcase>
+      <testcase purpose="Check if video.seekable attribute is readonly" type="compliance" status="approved" component="WebAPI/Media/HTML5 The video element (Partial)" execution_type="auto" priority="P2" id="video_seekable_attribute_readonly">
+        <description>
+          <steps>
+            <step order="1">
+              <step_desc>Check if video.seekable attribute is readonly</step_desc>
+              <expected>Pass</expected>
+            </step>
+          </steps>
+          <test_script_entry>/opt/tct-video-html5-tests/video/video_seekable_attribute_readonly.html</test_script_entry>
+        </description>
+        <specs>
+          <spec>
+            <spec_assertion element_type="attribute" element_name="seekable" interface="HTMLVideoElement" specification="HTML5 The video element (Partial)" section="Media" category="Tizen W3C API Specifications"/>
+            <spec_url>http://www.w3.org/TR/2012/WD-html5-20121025/the-video-element.html#the-video-element</spec_url>
+            <spec_statement/>
+          </spec>
+        </specs>
+      </testcase>
+      <testcase purpose="Check if the default value of attribute video.seekable.length is 0" type="compliance" status="approved" component="WebAPI/Media/HTML5 The video element (Partial)" execution_type="auto" priority="P2" id="video_seekable_length_default_value">
+        <description>
+          <steps>
+            <step order="1">
+              <step_desc>Check if the default value of attribute video.seekable.length is 0</step_desc>
+              <expected>Pass</expected>
+            </step>
+          </steps>
+          <test_script_entry>/opt/tct-video-html5-tests/video/video_seekable_length_default_value.html</test_script_entry>
+        </description>
+        <specs>
+          <spec>
+            <spec_assertion element_type="attribute" element_name="seekable" interface="HTMLVideoElement" specification="HTML5 The video element (Partial)" section="Media" category="Tizen W3C API Specifications"/>
+            <spec_url>http://www.w3.org/TR/2012/WD-html5-20121025/the-video-element.html#the-video-element</spec_url>
+            <spec_statement/>
+          </spec>
+        </specs>
+      </testcase>
+      <testcase purpose="Check if the video.seeking attribute is readonly" type="compliance" status="approved" component="WebAPI/Media/HTML5 The video element (Partial)" execution_type="auto" priority="P2" id="video_seeking_attribute_readonly">
+        <description>
+          <steps>
+            <step order="1">
+              <step_desc>Check if the video.seeking attribute is readonly</step_desc>
+              <expected>Pass</expected>
+            </step>
+          </steps>
+          <test_script_entry>/opt/tct-video-html5-tests/video/video_seeking_attribute_readonly.html</test_script_entry>
+        </description>
+        <specs>
+          <spec>
+            <spec_assertion element_type="attribute" element_name="seeking" interface="HTMLVideoElement" specification="HTML5 The video element (Partial)" section="Media" category="Tizen W3C API Specifications"/>
+            <spec_url>http://www.w3.org/TR/2012/WD-html5-20121025/the-video-element.html#the-video-element</spec_url>
+            <spec_statement/>
+          </spec>
+        </specs>
+      </testcase>
+      <testcase purpose="Check if the video.seeking attribute returns true if the user agent is currently seeking" type="compliance" status="approved" component="WebAPI/Media/HTML5 The video element (Partial)" execution_type="auto" priority="P2" id="video_seeking_value_true">
+        <description>
+          <steps>
+            <step order="1">
+              <step_desc>Check if the video.seeking attribute returns true if the user agent is currently seeking</step_desc>
+              <expected>Pass</expected>
+            </step>
+          </steps>
+          <test_script_entry>/opt/tct-video-html5-tests/video/video_seeking_value_true.html</test_script_entry>
+        </description>
+        <specs>
+          <spec>
+            <spec_assertion element_type="attribute" element_name="seeking" interface="HTMLVideoElement" specification="HTML5 The video element (Partial)" section="Media" category="Tizen W3C API Specifications"/>
+            <spec_url>http://www.w3.org/TR/2012/WD-html5-20121025/the-video-element.html#the-video-element</spec_url>
+            <spec_statement/>
+          </spec>
+        </specs>
+      </testcase>
+      <testcase purpose="Check if video.src can get src attibute value" type="compliance" status="approved" component="WebAPI/Media/HTML5 The video element (Partial)" execution_type="auto" priority="P2" id="video_src_basic">
+        <description>
+          <steps>
+            <step order="1">
+              <step_desc>Check if video.src can get src attibute value</step_desc>
+              <expected>Pass</expected>
+            </step>
+          </steps>
+          <test_script_entry>/opt/tct-video-html5-tests/video/video_src_basic.html</test_script_entry>
+        </description>
+        <specs>
+          <spec>
+            <spec_assertion element_type="attribute" element_name="src" interface="HTMLVideoElement" specification="HTML5 The video element (Partial)" section="Media" category="Tizen W3C API Specifications"/>
+            <spec_url>http://www.w3.org/TR/2012/WD-html5-20121025/the-video-element.html#the-video-element</spec_url>
+            <spec_statement/>
+          </spec>
+        </specs>
+      </testcase>
+      <testcase purpose="Check if video.src return empty string when you set it null" type="compliance" status="designed" component="WebAPI/Media/HTML5 The video element (Partial)" execution_type="auto" priority="P2" id="video_src_null">
+        <description>
+          <steps>
+            <step order="1">
+              <step_desc>Check if video.src return empty string when you set it null</step_desc>
+              <expected>Pass</expected>
+            </step>
+          </steps>
+          <test_script_entry>/opt/tct-video-html5-tests/video/video_src_null.html</test_script_entry>
+        </description>
+        <specs>
+          <spec>
+            <spec_assertion element_type="attribute" element_name="src" interface="HTMLVideoElement" specification="HTML5 The video element (Partial)" section="Media" category="Tizen W3C API Specifications"/>
+            <spec_url>http://www.w3.org/TR/2012/WD-html5-20121025/the-video-element.html#the-video-element</spec_url>
+            <spec_statement/>
+          </spec>
+        </specs>
+      </testcase>
+      <testcase purpose="Check if must return the position of the video.TimeRanges.end of the index" type="compliance" status="designed" component="WebAPI/Media/HTML5 The video element (Partial)" execution_type="auto" priority="P2" id="video_TimeRanges_end">
+        <description>
+          <steps>
+            <step order="1">
+              <step_desc>Check if must return the position of the video.TimeRanges.end of the index</step_desc>
+              <expected>Pass</expected>
+            </step>
+          </steps>
+          <test_script_entry>/opt/tct-video-html5-tests/video/video_TimeRanges_end.html</test_script_entry>
+        </description>
+        <specs>
+          <spec>
+            <spec_assertion element_type="method" element_name="end" interface="TimeRanges" specification="HTML5 The video element (Partial)" section="Media" category="Tizen W3C API Specifications"/>
+            <spec_url>http://www.w3.org/TR/2012/WD-html5-20121025/media-elements.html#timeranges</spec_url>
+            <spec_statement/>
+          </spec>
+        </specs>
+      </testcase>
+      <testcase purpose="Check if video.TimeRanges.length is readonly" type="compliance" status="approved" component="WebAPI/Media/HTML5 The video element (Partial)" execution_type="auto" priority="P2" id="video_TimeRanges_length_readonly">
+        <description>
+          <steps>
+            <step order="1">
+              <step_desc>Check if video.TimeRanges.length is readonly</step_desc>
+              <expected>Pass</expected>
+            </step>
+          </steps>
+          <test_script_entry>/opt/tct-video-html5-tests/video/video_TimeRanges_length_readonly.html</test_script_entry>
+        </description>
+        <specs>
+          <spec>
+            <spec_assertion element_type="attribute" element_name="length" interface="TimeRanges" specification="HTML5 The video element (Partial)" section="Media" category="Tizen W3C API Specifications"/>
+            <spec_url>http://www.w3.org/TR/2012/WD-html5-20121025/media-elements.html#timeranges</spec_url>
+            <spec_statement/>
+          </spec>
+        </specs>
+      </testcase>
+      <testcase purpose="Check if video.TimeRanges.length is of type number" type="compliance" status="approved" component="WebAPI/Media/HTML5 The video element (Partial)" execution_type="auto" priority="P2" id="video_TimeRanges_length_type">
+        <description>
+          <steps>
+            <step order="1">
+              <step_desc>Check if video.TimeRanges.length is of type number</step_desc>
+              <expected>Pass</expected>
+            </step>
+          </steps>
+          <test_script_entry>/opt/tct-video-html5-tests/video/video_TimeRanges_length_type.html</test_script_entry>
+        </description>
+        <specs>
+          <spec>
+            <spec_assertion element_type="attribute" element_name="length" interface="TimeRanges" specification="HTML5 The video element (Partial)" section="Media" category="Tizen W3C API Specifications"/>
+            <spec_url>http://www.w3.org/TR/2012/WD-html5-20121025/media-elements.html#timeranges</spec_url>
+            <spec_statement/>
+          </spec>
+        </specs>
+      </testcase>
+      <testcase purpose="Check if must return the position of the video.TimeRanges.start of the index" type="compliance" status="designed" component="WebAPI/Media/HTML5 The video element (Partial)" execution_type="auto" priority="P2" id="video_TimeRanges_start">
+        <description>
+          <steps>
+            <step order="1">
+              <step_desc>Check if must return the position of the video.TimeRanges.start of the index</step_desc>
+              <expected>Pass</expected>
+            </step>
+          </steps>
+          <test_script_entry>/opt/tct-video-html5-tests/video/video_TimeRanges_start.html</test_script_entry>
+        </description>
+        <specs>
+          <spec>
+            <spec_assertion element_type="method" element_name="start" interface="TimeRanges" specification="HTML5 The video element (Partial)" section="Media" category="Tizen W3C API Specifications"/>
+            <spec_url>http://www.w3.org/TR/2012/WD-html5-20121025/media-elements.html#timeranges</spec_url>
+            <spec_statement/>
+          </spec>
+        </specs>
+      </testcase>
+      <testcase purpose="Check if the videoHeight attribute is readonly" type="compliance" status="designed" component="WebAPI/Media/HTML5 The video element (Partial)" execution_type="auto" priority="P2" id="video_videoHeight_readonly">
+        <description>
+          <steps>
+            <step order="1">
+              <step_desc>Check if the videoHeight attribute is readonly</step_desc>
+              <expected>Pass</expected>
+            </step>
+          </steps>
+          <test_script_entry>/opt/tct-video-html5-tests/video/video_videoHeight_readonly.html</test_script_entry>
+        </description>
+        <specs>
+          <spec>
+            <spec_assertion element_type="attribute" element_name="videoHeight" interface="HTMLVideoElement" specification="HTML5 The video element (Partial)" section="Media" category="Tizen W3C API Specifications"/>
+            <spec_url>http://www.w3.org/TR/2012/WD-html5-20121025/the-video-element.html#the-video-element</spec_url>
+            <spec_statement/>
+          </spec>
+        </specs>
+      </testcase>
+      <testcase purpose="Check if the videoWidth attribute is readonly" type="compliance" status="designed" component="WebAPI/Media/HTML5 The video element (Partial)" execution_type="auto" priority="P2" id="video_videoWidth_readonly">
+        <description>
+          <steps>
+            <step order="1">
+              <step_desc>Check if the videoWidth attribute is readonly</step_desc>
+              <expected>Pass</expected>
+            </step>
+          </steps>
+          <test_script_entry>/opt/tct-video-html5-tests/video/video_videoWidth_readonly.html</test_script_entry>
+        </description>
+        <specs>
+          <spec>
+            <spec_assertion element_type="attribute" element_name="videoWidth" interface="HTMLVideoElement" specification="HTML5 The video element (Partial)" section="Media" category="Tizen W3C API Specifications"/>
+            <spec_url>http://www.w3.org/TR/2012/WD-html5-20121025/the-video-element.html#the-video-element</spec_url>
+            <spec_statement/>
+          </spec>
+        </specs>
+      </testcase>
+      <testcase purpose="Check if video.controller.onended event occurs" type="compliance" status="designed" component="WebAPI/Media/HTML5 The video element (Partial)" execution_type="auto" priority="P2" id="video_MediaController_ended">
+        <description>
+          <pre_condition/>
+          <post_condition/>
+          <steps>
+            <step order="1">
+              <step_desc>Check if video.controller.onended event occurs</step_desc>
+              <expected>Pass</expected>
+            </step>
+          </steps>
+          <test_script_entry>/opt/tct-video-html5-tests/video/video_MediaController_ended.html</test_script_entry>
+        </description>
+        <specs>
+          <spec>
+            <spec_assertion element_type="attribute" element_name="onended" interface="MediaController" specification="HTML5 The video element (Partial)" section="Media" category="Tizen W3C API Specifications"/>
+            <spec_url>http://www.w3.org/TR/2012/WD-html5-20121025/media-elements.html#mediacontroller</spec_url>
+            <spec_statement/>
+          </spec>
+        </specs>
+      </testcase>
+      <testcase purpose="Check if video.MediaController.playbackState attribute is ended" type="compliance" status="designed" component="WebAPI/Media/HTML5 The video element (Partial)" execution_type="auto" priority="P2" id="video_MediaController_playbackState_ended">
+        <description>
+          <pre_condition/>
+          <post_condition/>
+          <steps>
+            <step order="1">
+              <step_desc>Check if video.MediaController.playbackState attribute is ended</step_desc>
+              <expected>Pass</expected>
+            </step>
+          </steps>
+          <test_script_entry>/opt/tct-video-html5-tests/video/video_MediaController_playbackState_ended.html</test_script_entry>
+        </description>
+        <specs>
+          <spec>
+            <spec_assertion element_type="attribute" element_name="playbackState" interface="MediaController" specification="HTML5 The video element (Partial)" section="Media" category="Tizen W3C API Specifications"/>
+            <spec_url>http://www.w3.org/TR/2012/WD-html5-20121025/media-elements.html#mediacontroller</spec_url>
+            <spec_statement/>
+          </spec>
+        </specs>
+      </testcase>
+      <testcase purpose="Check if video.MediaController.playbackState attribute is playing" type="compliance" status="designed" component="WebAPI/Media/HTML5 The video element (Partial)" execution_type="auto" priority="P2" id="video_MediaController_playbackState_playing">
+        <description>
+          <pre_condition/>
+          <post_condition/>
+          <steps>
+            <step order="1">
+              <step_desc>Check if video.MediaController.playbackState attribute is playing</step_desc>
+              <expected>Pass</expected>
+            </step>
+          </steps>
+          <test_script_entry>/opt/tct-video-html5-tests/video/video_MediaController_playbackState_playing.html</test_script_entry>
+        </description>
+        <specs>
+          <spec>
+            <spec_assertion element_type="attribute" element_name="playbackState" interface="MediaController" specification="HTML5 The video element (Partial)" section="Media" category="Tizen W3C API Specifications"/>
+            <spec_url>http://www.w3.org/TR/2012/WD-html5-20121025/media-elements.html#mediacontroller</spec_url>
+            <spec_statement/>
+          </spec>
+        </specs>
+      </testcase>
+      <testcase purpose="Check if video.MediaController.playbackState attribute is readonly" type="compliance" status="designed" component="WebAPI/Media/HTML5 The video element (Partial)" execution_type="auto" priority="P2" id="video_MediaController_playbackState_readonly">
+        <description>
+          <pre_condition/>
+          <post_condition/>
+          <steps>
+            <step order="1">
+              <step_desc>Check if video.MediaController.playbackState attribute is readonly</step_desc>
+              <expected>Pass</expected>
+            </step>
+          </steps>
+          <test_script_entry>/opt/tct-video-html5-tests/video/video_MediaController_playbackState_readonly.html</test_script_entry>
+        </description>
+        <specs>
+          <spec>
+            <spec_assertion element_type="attribute" element_name="playbackState" interface="MediaController" specification="HTML5 The video element (Partial)" section="Media" category="Tizen W3C API Specifications"/>
+            <spec_url>http://www.w3.org/TR/2012/WD-html5-20121025/media-elements.html#mediacontroller</spec_url>
+            <spec_statement/>
+          </spec>
+        </specs>
+      </testcase>
+      <testcase purpose="Check if video.MediaController.playbackState attribute is waiting" type="compliance" status="designed" component="WebAPI/Media/HTML5 The video element (Partial)" execution_type="auto" priority="P2" id="video_MediaController_playbackState_waiting">
+        <description>
+          <pre_condition/>
+          <post_condition/>
+          <steps>
+            <step order="1">
+              <step_desc>Check if video.MediaController.playbackState attribute is waiting</step_desc>
+              <expected>Pass</expected>
+            </step>
+          </steps>
+          <test_script_entry>/opt/tct-video-html5-tests/video/video_MediaController_playbackState_waiting.html</test_script_entry>
+        </description>
+        <specs>
+          <spec>
+            <spec_assertion element_type="attribute" element_name="playbackState" interface="MediaController" specification="HTML5 The video element (Partial)" section="Media" category="Tizen W3C API Specifications"/>
+            <spec_url>http://www.w3.org/TR/2012/WD-html5-20121025/media-elements.html#mediacontroller</spec_url>
+            <spec_statement/>
+          </spec>
+        </specs>
+      </testcase>
+      <testcase purpose="Check if video.MediaController.unpause method, calling unpause method paused false callback play event" type="compliance" status="designed" component="WebAPI/Media/HTML5 The video element (Partial)" execution_type="auto" priority="P2" id="video_MediaController_unpause_base">
+        <description>
+          <pre_condition/>
+          <post_condition/>
+          <steps>
+            <step order="1">
+              <step_desc>Check if video.MediaController.unpause method, calling unpause method paused false callback play event</step_desc>
+              <expected>Pass</expected>
+            </step>
+          </steps>
+          <test_script_entry>/opt/tct-video-html5-tests/video/video_MediaController_unpause_base.html</test_script_entry>
+        </description>
+        <specs>
+          <spec>
+            <spec_assertion element_type="method" element_name="unpause" interface="MediaController" specification="HTML5 The video element (Partial)" section="Media" category="Tizen W3C API Specifications"/>
+            <spec_url>http://www.w3.org/TR/2012/WD-html5-20121025/media-elements.html#mediacontroller</spec_url>
+            <spec_statement/>
+          </spec>
+        </specs>
+      </testcase>
+      <testcase purpose="Check if the video.duration attribute return the Not-a-Number (NaN) value if no media data is available" type="compliance" status="approved" component="WebAPI/Media/HTML5 The video element (Partial)" execution_type="auto" priority="P2" id="video_duration_attribute_value_NaN">
+        <description>
+          <steps>
+            <step order="1">
+              <step_desc>Check if the video.duration attribute return the Not-a-Number (NaN) value if no media data is available</step_desc>
+              <expected>Pass</expected>
+            </step>
+          </steps>
+          <test_script_entry>/opt/tct-video-html5-tests/video/w3c/duration.html</test_script_entry>
+        </description>
+        <specs>
+          <spec>
+            <spec_assertion element_type="attribute" element_name="duration" interface="HTMLVideoElement" specification="HTML5 The video element (Partial)" section="Media" category="Tizen W3C API Specifications"/>
+            <spec_url>http://www.w3.org/TR/2012/WD-html5-20121025/the-video-element.html#the-video-element</spec_url>
+            <spec_statement/>
+          </spec>
+        </specs>
+      </testcase>
+      <testcase purpose="Check if the video.playbackRate attribute value is 1.0 if it hasn't yet been set" type="compliance" status="approved" component="WebAPI/Media/HTML5 The video element (Partial)" execution_type="auto" priority="P2" id="video_playbackRate_default_value" onload_delay="20">
+        <description>
+          <test_script_entry>/opt/tct-video-html5-tests/video/w3c/playbackRate.html?total_num=2&amp;amp;locator_key=id&amp;amp;value=1</test_script_entry>
+        </description>
+        <specs>
+          <spec>
+            <spec_assertion element_type="attribute" element_name="playbackRate" interface="HTMLVideoElement" specification="HTML5 The video element (Partial)" section="Media" category="Tizen W3C API Specifications"/>
+            <spec_url>http://www.w3.org/TR/2012/WD-html5-20121025/the-video-element.html#the-video-element</spec_url>
+            <spec_statement/>
+          </spec>
+        </specs>
+      </testcase>
+      <testcase purpose="Check if the video.playbackRate attribute that on getting it must return 2.0 it was set to 2.0" type="compliance" status="approved" component="WebAPI/Media/HTML5 The video element (Partial)" execution_type="auto" priority="P2" id="video_playbackRate_basic" onload_delay="20">
+        <description>
+          <test_script_entry>/opt/tct-video-html5-tests/video/w3c/playbackRate.html?total_num=2&amp;amp;locator_key=id&amp;amp;value=2</test_script_entry>
+        </description>
+        <specs>
+          <spec>
+            <spec_assertion element_type="attribute" element_name="playbackRate" interface="HTMLVideoElement" specification="HTML5 The video element (Partial)" section="Media" category="Tizen W3C API Specifications"/>
+            <spec_url>http://www.w3.org/TR/2012/WD-html5-20121025/the-video-element.html#the-video-element</spec_url>
+            <spec_statement/>
+          </spec>
+        </specs>
+      </testcase>
+    </set>
   </suite>
 </test_definition>

@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<!--
+Copyright (c) 2014 Intel Corporation.
+
+Redistribution and use in source and binary forms, with or without modification,
+are permitted provided that the following conditions are met:
+
+* Redistributions of works must retain the original copyright notice, this lis
+  of conditions and the following disclaimer.
+* Redistributions in binary form must reproduce the original copyright notice,
+  this list of conditions and the following disclaimer in the documentation
+  and/or other materials provided with the distribution.
+* Neither the name of Intel Corporation nor the names of its contributors
+  may be used to endorse or promote products derived from this work withou
+  specific prior written permission.
+
+THIS SOFTWARE IS PROVIDED BY INTEL CORPORATION "AS IS"
+AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE
+IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE
+ARE DISCLAIMED. IN NO EVENT SHALL INTEL CORPORATION BE LIABLE FOR ANY DIRECT,
+INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING,
+BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE,
+DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY
+OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING
+NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE,
+EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
+
+Authors:
+         Zhang, Zhiqiang <zhiqiang.zhang@intel.com>
+         Cao, Jun <junx.cao@intel.com>
+
+-->
+
+<html>
+  <head>
+    <title>Video Test: video_resume_ogg_theora_vorbis</title>
+    <link rel="author" title="Intel" href="http://www.intel.com" />
+    <link rel="help" href="http://www.w3.org/TR/2012/WD-html5-20121025/the-video-element.html#the-video-element" />
+    <meta name="flags" content="" />
+    <meta name="assert" content="Check if  user agent is able to resume paused video playback for stream ogg theora vorbis" />
+    <script src="../resources/testharness.js"></script>
+    <script src="../resources/testharnessreport.js"></script>
+  </head>
+  <body>
+    <div id="log"></div>
+    <video id="v">
+        Your browser does not support media elements.
+    </video>
+    <script>
+        var t = async_test("video.play()/pause() - to verify if user agent is able to resume paused video playback for stream ogg theora vorbis", {timeout:30000});
+        setup({timeout:1000000});
+
+        var v = document.getElementById("v");
+
+        function startTest() {
+            t.step(function() {
+                v.currentTime = v.duration - 2;
+                v.play();
+            });
+            return false;
+        }
+
+        var resumed = false;
+
+        function playpause() {
+            if (resumed)
+               return false;
+
+            t.step(function() {
+                if (v.paused) {
+                    v.play();
+                resumed = true;
+                assert_false(v.paused, "paused is newly false after resume");
+                } else {
+                    v.pause();
+                    assert_true(v.paused, "paused is newly true after pause");
+                }
+           });
+           return false;
+        }
+
+        function endTest() {
+            t.step(function() {
+                assert_true(true, "ended event");
+            });
+            t.done();
+            return false;
+        }
+
+        v.addEventListener("loadedmetadata", startTest, false);
+        v.addEventListener("play", playpause, false);
+        v.addEventListener("pause", playpause, false);
+        v.addEventListener("ended", endTest, false);
+
+        v.src="media/movie_5.ogv";
+    </script>
+  </body>
+</html>
