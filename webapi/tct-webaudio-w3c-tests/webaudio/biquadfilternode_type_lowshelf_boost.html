@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<!--
+Copyright (c) 2014 Intel Corporation.
+
+Redistribution and use in source and binary forms, with or without modification,
+are permitted provided that the following conditions are met:
+
+* Redistributions of works must retain the original copyright notice, this list
+  of conditions and the following disclaimer.
+* Redistributions in binary form must reproduce the original copyright notice,
+  this list of conditions and the following disclaimer in the documentation
+  and/or other materials provided with the distribution.
+* Neither the name of Intel Corporation nor the names of its contributors
+  may be used to endorse or promote products derived from this work without
+  specific prior written permission.
+
+THIS SOFTWARE IS PROVIDED BY INTEL CORPORATION "AS IS"
+AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE
+IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE
+ARE DISCLAIMED. IN NO EVENT SHALL INTEL CORPORATION BE LIABLE FOR ANY DIRECT,
+INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING,
+BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE,
+DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY
+OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING
+NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE,
+EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
+
+Authors:
+        Tan, Shiyou <shiyoux.tan@intel.com>
+        Cui, Jieqiong <jieqiongx.cui@intel.com>
+-->
+
+<meta charset="utf-8">
+<title>WebAudio Test: biquadfilternode_type_lowshelf_boost</title>
+<link rel="author" title="Intel" href="http://www.intel.com">
+<link rel="help" href="http://www.w3.org/TR/2012/WD-webaudio-20121213/">
+<script src="../resources/testharness.js"></script>
+<script src="../resources/testharnessreport.js"></script>
+<script src="./support/webaudio.js"></script>
+<div id="log"></div>
+<script>
+var buffer1, buffer2, context1, context2, numberOfFrames, filter1, source1, source2, fre1, mag1, pha1, filter2, fre2, mag2, pha2;
+var duration = 2.0;
+var sampleRate = 44100.0;
+var res = true;
+var input_fre = 20;
+try {
+  context1 = new AudioContext();
+  context2 = new AudioContext();
+  numberOfFrames = duration * sampleRate;
+  filter1 = context1.createBiquadFilter();
+  filter2 = context2.createBiquadFilter();
+  source1 = context1.createBufferSource();
+  source2 = context2.createBufferSource();
+  fre1 = new Float32Array(input_fre);
+  mag1 = new Float32Array(input_fre);
+  pha1 = new Float32Array(input_fre);
+  fre2 = new Float32Array(input_fre);
+  mag2 = new Float32Array(input_fre);
+  pha2 = new Float32Array(input_fre);
+  buffer1 = context1.createBuffer(1, numberOfFrames, sampleRate);
+  buffer2 = context2.createBuffer(1, numberOfFrames, sampleRate);
+  data1 = buffer1.getChannelData(0);
+  data2 = buffer2.getChannelData(0);
+  for(var f = 0; f < input_fre; ++f) fre1[f] = f + 430.0;
+  for(var f = 0; f < input_fre; ++f) fre2[f] = f + 430.0;
+  source1.buffer = buffer1;
+  source2.buffer = buffer2;
+  filter1.type = "lowshelf";
+  filter1.frequency.value = 440.0;
+  filter1.gain.value = 2.0;
+  filter1.getFrequencyResponse(fre1, mag1, pha1);
+  source1.connect(filter1);
+  filter1.connect(context1.destination);
+  source1.noteOn(0);
+  filter2.type = "lowshelf";
+  filter2.frequency.value = 440.0;
+  filter2.gain.value = 10.0;
+  filter2.getFrequencyResponse(fre2, mag2, pha2);
+  source2.connect(filter2);
+  filter2.connect(context2.destination);
+  source2.noteOn(0);
+} catch(e) {
+ res = false;
+}
+test(function(){
+  var result = true;
+  if(res){
+    for(var i = 0; i < 10; i++){
+      if(mag1[i] > mag2[i] || mag1[i] == mag2[i]){
+        result = false;
+        break;
+      }
+    }
+  }
+  assert_true(res && result, "BiquadFilterNode lowshelf filter adds a boost to the lower frequencies");
+  filter1.disconnect();
+  source1.disconnect();
+  source1.noteOff(0);
+  filter2.disconnect();
+  source2.disconnect();
+  source2.noteOff(0);
+}, "Check if BiquadFilterNode lowshelf filter adds a boost to the lower frequencies");
+</script>
