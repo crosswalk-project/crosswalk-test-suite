@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<!--
+Copyright (c) 2014 Intel Corporation.
+
+Redistribution and use in source and binary forms, with or without modification,
+are permitted provided that the following conditions are met:
+
+* Redistributions of works must retain the original copyright notice, this list
+  of conditions and the following disclaimer.
+* Redistributions in binary form must reproduce the original copyright notice,
+  this list of conditions and the following disclaimer in the documentation
+  and/or other materials provided with the distribution.
+* Neither the name of Intel Corporation nor the names of its contributors
+  may be used to endorse or promote products derived from this work without
+  specific prior written permission.
+
+THIS SOFTWARE IS PROVIDED BY INTEL CORPORATION "AS IS"
+AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE
+IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE
+ARE DISCLAIMED. IN NO EVENT SHALL INTEL CORPORATION BE LIABLE FOR ANY DIRECT,
+INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING,
+BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE,
+DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY
+OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING
+NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE,
+EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
+
+Authors:
+        Tan, Shiyou <shiyoux.tan@intel.com>
+        Cui, Jieqiong <jieqiongx.cui@intel.com>
+-->
+
+<meta charset="utf-8">
+<title>WebAudio Test: audionode_connect_output_input_no_argument</title>
+<link rel="author" title="Intel" href="http://www.intel.com">
+<link rel="help" href="http://www.w3.org/TR/2012/WD-webaudio-20121213/">
+<script src="../resources/testharness.js"></script>
+<script src="../resources/testharnessreport.js"></script>
+<script src="./support/webaudio.js"></script>
+<div id="log"></div>
+<script>
+test(function () {
+  var context = new AudioContext();
+  var buffer, context, numberOfFrames, filter, source, fre, mag, pha;
+  var duration = 2.0;
+  var sampleRate = 44100.0;
+  assert_true("createBufferSource" in context, "createBufferSource method exist AudioContext interface");
+  try {
+    context = new AudioContext();
+    numberOfFrames = duration * sampleRate;
+    filter = context.createBiquadFilter();
+    source = context.createBufferSource();
+    fre = new Float32Array(numberOfFrames);
+    mag = new Float32Array(numberOfFrames);
+    pha = new Float32Array(numberOfFrames);
+    buffer = context.createBuffer(1,numberOfFrames, sampleRate);
+    data = buffer.getChannelData(0);
+    for(var i = 0; i < numberOfFrames; ++i) {
+      data[i] = Math.sin(440.0 * Math.PI * i / sampleRate);
+    }
+    source.buffer = buffer;
+    filter.type = 2;
+    filter.frequency.value = 340.0;
+    filter.getFrequencyResponse(fre, mag, pha);
+    source.connect(filter);
+    filter.connect(context.destination);
+    source.disconnect();
+    filter.disconnect();
+  } catch (e) {
+    assert_unreached("Not throw exception");
+  }
+}, "Check if AudioNode.connect method does not throw exception if input and output are not be set");
+</script>
