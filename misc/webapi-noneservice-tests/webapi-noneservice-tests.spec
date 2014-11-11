@@ -16,7 +16,7 @@ webapi-taskscheduler-sysapps-tests
 webapi-cssfilter-w3c-tests
 webapi-locale-xwalk-tests
 webapi-speechapi-xwalk-tests
-webapi-vehicleinfo-xwalk-tests
+webapi-vehicleinfo-ivi-tests
 webapi-nacl-xwalk-tests
 webapi-audiosystem-xwalk-tests
 webapi-sso-xwalk-tests
