@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<!--
+Copyright (c) 2014 Intel Corporation.
+
+Redistribution and use in source and binary forms, with or without modification,
+are permitted provided that the following conditions are met:
+
+* Redistributions of works must retain the original copyright notice, this list
+  of conditions and the following disclaimer.
+* Redistributions in binary form must reproduce the original copyright notice,
+  this list of conditions and the following disclaimer in the documentation
+  and/or other materials provided with the distribution.
+* Neither the name of Intel Corporation nor the names of its contributors
+  may be used to endorse or promote products derived from this work without
+  specific prior written permission.
+
+THIS SOFTWARE IS PROVIDED BY INTEL CORPORATION "AS IS"
+AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE
+IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE
+ARE DISCLAIMED. IN NO EVENT SHALL INTEL CORPORATION BE LIABLE FOR ANY DIRECT,
+INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING,
+BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE,
+DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY
+OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING
+NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE,
+EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
+
+Authors:
+        Fan,Weiwei <weiwix.fan@intel.com>
+        Cui, Jieqiong <jieqiongx.cui@intel.com>
+
+-->
+
+<meta charset="utf-8">
+<title>WebSQL Database Test: SQLError_QUOTA_ERR_basic</title>
+<link rel="author" title="Intel" href="http://www.intel.com">
+<link rel="help" href="http://www.w3.org/TR/2010/NOTE-webdatabase-20101118/">
+<script src="../resources/testharness.js"></script>
+<script src="../resources/testharnessreport.js"></script>
+<div id="log"></div>
+<script>
+async_test(function (t1) {
+  var now = new Date();
+  var dbname = "db" + now.getTime();
+  // create 1024b database on the phone
+  var db = openDatabase (dbname, '1.0', 'database for websql test', 1024);
+  db.transaction(function (tx) {
+      tx.executeSql("CREATE TABLE test_table(col_int, col_str, col_float);");
+  });
+  db.transaction(function (t) {
+    t.executeSql('SELECT * FROM test_table;', function (t, r) { }, function (t, e) { });
+  }, t1.step_func(function (e) {
+    assert_true("QUOTA_ERR" in e, "The e.QUOTA_ERR exists");
+    assert_equals(typeof e.QUOTA_ERR, "number", "The type of e.QUOTA_ERR");
+    assert_equals(e.QUOTA_ERR, 4, "The value of e.QUOTA_ERR");
+    t1.done();
+  }), t1.step_func(function () {
+    assert_unreached("It should enter errorCallback");
+    t1.done();
+  }));
+}, "Check if the e.QUOTA_ERR exists and its type is number and its value is 4");
+</script>
