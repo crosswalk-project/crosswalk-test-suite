@@ -41,6 +41,7 @@ do
     echo `date` >> /tmp/$sysmonFolder/fd.res
     echo `date` >> /tmp/$sysmonFolder/mem.res
     ps aux |grep -w $pid | grep -v 'grep' >> /tmp/$sysmonFolder/cpu.res
+    ps aux | grep xwalk | grep -v "grep" >> /tmp/$sysmonFolder/cpumem.res
     uptime >> /tmp/$sysmonFolder/uptime.res
     ls -l /proc/$pid/fd >> /tmp/$sysmonFolder/fd.res
     cat /proc/$pid/status |grep -E 'VmSize|VmRSS' >> /tmp/$sysmonFolder/mem.res
