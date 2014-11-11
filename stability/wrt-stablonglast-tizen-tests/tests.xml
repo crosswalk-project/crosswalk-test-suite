@@ -1,24 +1,18 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <?xml-stylesheet type="text/xsl" href="./testcase.xsl"?>
 <test_definition>
-  <suite category="Stability" name="wrt-stablonglast-tizen-tests">
-    <set name="stabiterative" type="script">
-      <testcase purpose="Validate play music long time" component="Stability" execution_type="audo" id="Play_Music_LongTime">
+  <suite category="Stablonglast" name="wrt-stablonglast-tizen-tests">
+    <set name="stablonglast" type="script">
+      <testcase component="Stablonglast" execution_type="auto" id="Play_Music_LongTime" purpose="Validate play music long time">
         <description>
-          <pre_condition>
-            1.Make sure Crosswalk binary is installed on device;
-          </pre_condition>
-          <test_script_entry test_script_expected_result="0" timeout="5000">app_user@/home/app/content/tct/opt/wrt-stablonglast-tizen-tests/stablonglast/Play_Music_LongTime.sh</test_script_entry>
-          </description>
-          </testcase>
-      <testcase purpose="Validate play video long time" component="Stability" execution_type="audo" id="Play_Video_LongTime">
+          <test_script_entry test_script_expected_result="0" timeout="14401">app_user@/home/app/content/tct/opt/wrt-stablonglast-tizen-tests/stablonglast/Play_Music_LongTime.sh</test_script_entry>
+        </description>
+      </testcase>
+      <testcase purpose="Validate play video long time" execution_type="auto" component="Stablonglast" id="RunPlayVideoLongTime">
         <description>
-          <pre_condition>
-            1.Make sure Crosswalk binary is installed on device;
-          </pre_condition>
-          <test_script_entry test_script_expected_result="0" timeout="5000">app_user@/home/app/content/tct/opt/wrt-stablonglast-tizen-tests/stablonglast/Play_Video_LongTime.sh</test_script_entry>
+          <test_script_entry test_script_expected_result="0" timeout="14401">app_user@/home/app/content/tct/opt/wrt-stablonglast-tizen-tests/stablonglast/RunPlayVideoLongTime.sh</test_script_entry>
           </description>
-          </testcase>          
+          </testcase>        
     </set>
   </suite>
 </test_definition>

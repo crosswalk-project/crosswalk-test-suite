@@ -20,20 +20,28 @@
 # 
 
 path=$(dirname $(dirname $0))
-PACKAGENAME="play_test.wgt"
+PACKAGENAME=$path/"launch_exist_test.wgt"
 source $path/stabiterative/xwalk_common.sh
-APP_NAME="play_test"
-uninstall_app $APP_NAME
+APP_NAME="launch_exist_test"
+get_uninstall_status=`pkgcmd -u -n launchandt -q`
 for (( i=1; i<=50; i=i+1 ))
 do
-  install_app $PACKAGENAME
+  get_install_status=`pkgcmd -i -t wgt -p $PACKAGENAME -q`
+  get_install_status=` echo $get_install_status | awk '{print $15}'`
+  echo $get_install_status
   sleep 1
-  find_app $APP_NAME
-  pkgnum=`echo "$pkgids"|wc -w`
-  if [ $pkgnum -ge 1 ]; then
-      uninstall_app $APP_NAME
+  if [[ "$get_install_status" =~ "val[ok]" ]];then
+       get_uninstall_status=`pkgcmd -u -n launchandt -q`
+       sleep 1
+       if [[ "$get_install_status" =~ "val[ok]" ]];then
+         echo "install/uninstall ok"
+       else
+         echo "install/uninstall fail"
+         exit 1
+       fi
   else
-      exit 1
+    echo "install fail"
+    exit 1
   fi
 done
 exit 0

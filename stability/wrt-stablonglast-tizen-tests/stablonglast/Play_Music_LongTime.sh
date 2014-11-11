@@ -28,9 +28,23 @@
 #Authors:
 
 path=$(dirname $(dirname $0))
-PACKAGENAME="play_test_music.wgt"
-source $path/stablonglast/xwalk_common.sh
+SLEEP=14400
+PACKAGENAME=$path/"play_test_music.wgt"
 APP_NAME="play_test_music"
-uninstall_app $APP_NAME
-install_app $PACKAGENAME
-launch_app $APP_NAME
+source $path/stablonglast/xwalk_common.sh
+pkgcmd -u -n playtestmu -q
+pkgcmd -i -t wgt -p $PACKAGENAME -q
+
+#monitor device info
+$path/sysmon-seperateRun.sh $SLEEP playtestmu &
+echo "beging..."
+launch_statue=`open_app playtestmu.playwebappmusictest`
+sleep 2
+if [[ "$launch_statue" =~ "launched" ]];then
+   sleep 14400
+   pkgcmd -u -n playtestmu -q
+   echo "end..."
+else
+    exit 1
+fi
+

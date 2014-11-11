@@ -26,23 +26,23 @@
 #
 #Authors:
 #
-
 path=$(dirname $(dirname $0))
-PACKAGENAME="2d_test.wgt"
-source $path/stablonglast2d/xwalk_common.sh
+SLEEP=86400
+PACKAGENAME=$path/"2d_test.wgt"
 APP_NAME="2d_test"
-uninstall_app $APP_NAME
-install_app $PACKAGENAME
-launch_app $APP_NAME
+source $path/stablonglast2d/xwalk_common.sh
+pkgcmd -u -n twodoptest -q
+pkgcmd -i -t wgt -p $PACKAGENAME -q
+
+#monitor device info
+$path/sysmon-seperateRun.sh $SLEEP twodoptest &
+echo "beging..."
+launch_statue=`open_app twodoptest.twodframeplaytest`
 sleep 2
 if [[ "$launch_statue" =~ "launched" ]];then
    sleep 86400
-   get_app_statu=`app_launcher -r twodoptest.twodframeplaytest`
-   if [[ "$get_app_statu" =~ "running" ]];then
-       app_launcher -k twodoptest.twodframeplaytest
-   else
-       exit 1
-   fi
+   pkgcmd -u -n twodoptest -q
+   echo "end..."
 else
     exit 1
 fi
