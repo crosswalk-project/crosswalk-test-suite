@@ -303,6 +303,138 @@
           </spec>
         </specs>
       </testcase>
+      <testcase purpose="Check if window.applicationCache returns the ApplicationCache object that applies to the active document of that Window" type="compliance" status="approved" component="WebAPI/Storage/HTML5 Application caches" execution_type="auto" priority="P3" id="appcache_cache_in_window">
+        <description>
+          <test_script_entry>/opt/tct-appcache-html5-tests/appcache/appcache_cache_in_window.html</test_script_entry>
+        </description>
+        <specs>
+          <spec>
+            <spec_assertion element_type="true" element_name="" interface="ApplicationCache" specification="HTML5 Application caches" section="Storage" category="Tizen W3C API Specifications"/>
+            <spec_url>http://www.w3.org/TR/2012/WD-html5-20121025/offline.html#applicationcache</spec_url>
+            <spec_statement/>
+          </spec>
+        </specs>
+      </testcase>
+      <testcase purpose="Check if the value of constant appcache.CHECKING is 2" type="compliance" status="approved" component="WebAPI/Storage/HTML5 Application caches" execution_type="auto" priority="P2" id="appcache_CHECKING_value">
+        <description>
+          <test_script_entry>/opt/tct-appcache-html5-tests/appcache/appcache_CHECKING_value.html</test_script_entry>
+        </description>
+        <specs>
+          <spec>
+            <spec_assertion element_type="attribute" element_name="CHECKING" interface="ApplicationCache" specification="HTML5 Application caches" section="Storage" category="Tizen W3C API Specifications"/>
+            <spec_url>http://www.w3.org/TR/2012/WD-html5-20121025/offline.html#applicationcache</spec_url>
+            <spec_statement/>
+          </spec>
+        </specs>
+      </testcase>
+      <testcase purpose="Check if the value of constant appcache.DOWNLOADING is 3" type="compliance" status="approved" component="WebAPI/Storage/HTML5 Application caches" execution_type="auto" priority="P2" id="appcache_DOWNLOADING_value">
+        <description>
+          <test_script_entry>/opt/tct-appcache-html5-tests/appcache/appcache_DOWNLOADING_value.html</test_script_entry>
+        </description>
+        <specs>
+          <spec>
+            <spec_assertion element_type="attribute" element_name="DOWNLOADING" interface="ApplicationCache" specification="HTML5 Application caches" section="Storage" category="Tizen W3C API Specifications"/>
+            <spec_url>http://www.w3.org/TR/2012/WD-html5-20121025/offline.html#applicationcache</spec_url>
+            <spec_statement/>
+          </spec>
+        </specs>
+      </testcase>
+      <testcase purpose="Check if the value of constant appcache.IDLE is 1" type="compliance" status="approved" component="WebAPI/Storage/HTML5 Application caches" execution_type="auto" priority="P2" id="appcache_IDLE_value">
+        <description>
+          <test_script_entry>/opt/tct-appcache-html5-tests/appcache/appcache_IDLE_value.html</test_script_entry>
+        </description>
+        <specs>
+          <spec>
+            <spec_assertion element_type="attribute" element_name="IDLE" interface="ApplicationCache" specification="HTML5 Application caches" section="Storage" category="Tizen W3C API Specifications"/>
+            <spec_url>http://www.w3.org/TR/2012/WD-html5-20121025/offline.html#applicationcache</spec_url>
+            <spec_statement/>
+          </spec>
+        </specs>
+      </testcase>
+      <testcase purpose="Check if the value of constant appcache.OBSOLETE is 5" type="compliance" status="approved" component="WebAPI/Storage/HTML5 Application caches" execution_type="auto" priority="P2" id="appcache_OBSOLETE_value">
+        <description>
+          <test_script_entry>/opt/tct-appcache-html5-tests/appcache/appcache_OBSOLETE_value.html</test_script_entry>
+        </description>
+        <specs>
+          <spec>
+            <spec_assertion element_type="attribute" element_name="OBSOLETE" interface="ApplicationCache" specification="HTML5 Application caches" section="Storage" category="Tizen W3C API Specifications"/>
+            <spec_url>http://www.w3.org/TR/2012/WD-html5-20121025/offline.html#applicationcache</spec_url>
+            <spec_statement/>
+          </spec>
+        </specs>
+      </testcase>
+      <testcase purpose="Check if appcache.status attribute is readonly" type="compliance" status="approved" component="WebAPI/Storage/HTML5 Application caches" execution_type="auto" priority="P2" id="appcache_status_readonly">
+        <description>
+          <test_script_entry>/opt/tct-appcache-html5-tests/appcache/appcache_status_readonly.html</test_script_entry>
+        </description>
+        <specs>
+          <spec>
+            <spec_assertion element_type="attribute" element_name="status" interface="ApplicationCache" specification="HTML5 Application caches" section="Storage" category="Tizen W3C API Specifications"/>
+            <spec_url>http://www.w3.org/TR/2012/WD-html5-20121025/offline.html#applicationcache</spec_url>
+            <spec_statement/>
+          </spec>
+        </specs>
+      </testcase>
+      <testcase purpose="Check if the value of appcache.status is applicationCache.UNCACHED" type="compliance" status="approved" component="WebAPI/Storage/HTML5 Application caches" execution_type="auto" priority="P2" id="appcache_status_UNCACHED">
+        <description>
+          <test_script_entry>/opt/tct-appcache-html5-tests/appcache/appcache_status_UNCACHED.html</test_script_entry>
+        </description>
+        <specs>
+          <spec>
+            <spec_assertion element_type="attribute" element_name="status" interface="ApplicationCache" specification="HTML5 Application caches" section="Storage" category="Tizen W3C API Specifications"/>
+            <spec_url>http://www.w3.org/TR/2012/WD-html5-20121025/offline.html#applicationcache</spec_url>
+            <spec_statement/>
+          </spec>
+        </specs>
+      </testcase>
+      <testcase purpose="Check if ApplicationCache.swapCache() throws InvalidStateError exception when there is no newer application cache" type="compliance" status="approved" component="WebAPI/Storage/HTML5 Application caches" execution_type="auto" priority="P2" id="appcache_swapCache_newcache_execption_InvalidStateError">
+        <description>
+          <test_script_entry>/opt/tct-appcache-html5-tests/appcache/appcache_swapCache_newcache_execption_InvalidStateError.html</test_script_entry>
+        </description>
+        <specs>
+          <spec>
+            <spec_assertion element_type="method" element_name="swapCache" interface="ApplicationCache" specification="HTML5 Application caches" section="Storage" category="Tizen W3C API Specifications"/>
+            <spec_url>http://www.w3.org/TR/2012/WD-html5-20121025/offline.html#applicationcache</spec_url>
+            <spec_statement/>
+          </spec>
+        </specs>
+      </testcase>
+      <testcase purpose="Check if the value of constant appcache.UNCACHED is 0" type="compliance" status="approved" component="WebAPI/Storage/HTML5 Application caches" execution_type="auto" priority="P2" id="appcache_UNCACHED_value">
+        <description>
+          <test_script_entry>/opt/tct-appcache-html5-tests/appcache/appcache_UNCACHED_value.html</test_script_entry>
+        </description>
+        <specs>
+          <spec>
+            <spec_assertion element_type="attribute" element_name="UNCACHED" interface="ApplicationCache" specification="HTML5 Application caches" section="Storage" category="Tizen W3C API Specifications"/>
+            <spec_url>http://www.w3.org/TR/2012/WD-html5-20121025/offline.html#applicationcache</spec_url>
+            <spec_statement/>
+          </spec>
+        </specs>
+      </testcase>
+      <testcase purpose="Check if the value of constant appcache.UPDATEREADY is 4" type="compliance" status="approved" component="WebAPI/Storage/HTML5 Application caches" execution_type="auto" priority="P2" id="appcache_UPDATEREADY_value">
+        <description>
+          <test_script_entry>/opt/tct-appcache-html5-tests/appcache/appcache_UPDATEREADY_value.html</test_script_entry>
+        </description>
+        <specs>
+          <spec>
+            <spec_assertion element_type="attribute" element_name="UPDATEREADY" interface="ApplicationCache" specification="HTML5 Application caches" section="Storage" category="Tizen W3C API Specifications"/>
+            <spec_url>http://www.w3.org/TR/2012/WD-html5-20121025/offline.html#applicationcache</spec_url>
+            <spec_statement/>
+          </spec>
+        </specs>
+      </testcase>
+      <testcase purpose="Check if ApplicationCache.update() method throws InvalidStateError exception when no application cache to update" type="compliance" status="approved" component="WebAPI/Storage/HTML5 Application caches" execution_type="auto" priority="P2" id="appcache_update_nocache_execption_InvalidStateError">
+        <description>
+          <test_script_entry>/opt/tct-appcache-html5-tests/appcache/appcache_update_nocache_execption_InvalidStateError.html</test_script_entry>
+        </description>
+        <specs>
+          <spec>
+            <spec_assertion element_type="method" element_name="update" interface="ApplicationCache" specification="HTML5 Application caches" section="Storage" category="Tizen W3C API Specifications"/>
+            <spec_url>http://www.w3.org/TR/2012/WD-html5-20121025/offline.html#applicationcache</spec_url>
+            <spec_statement/>
+          </spec>
+        </specs>
+      </testcase>
     </set>
   </suite>
 </test_definition>
