@@ -1345,6 +1345,846 @@
           </spec>
         </specs>
       </testcase>
+      <testcase purpose="Check if history.pushState method param url set null,then compare location.href is '001.html'" type="compliance" status="approved" component="WebAPI/Communication/HTML5 The session history of browsing contexts (Partial)" execution_type="auto" priority="P3" id="history_pushState_url_null">
+        <description>
+          <pre_condition/>
+          <post_condition/>
+          <steps>
+            <step order="1">
+              <step_desc>Check if history.pushState method param url set null,then compare location.href is '001.html'</step_desc>
+              <expected>Pass</expected>
+            </step>
+          </steps>
+          <test_script_entry>/opt/tct-sessionhistory-html5-tests/sessionhistory/history_pushState_url_null.html</test_script_entry>
+        </description>
+        <specs>
+          <spec>
+            <spec_assertion usage="true" interface="History" specification="HTML5 The session history of browsing contexts (Partial)" section="Communication" category="Tizen W3C API Specifications"/>
+            <spec_url>http://www.w3.org/TR/2012/WD-html5-20121025/history.html#the-history-interface</spec_url>
+            <spec_statement/>
+          </spec>
+        </specs>
+      </testcase>
+      <testcase purpose="Check if history.replacestate method param url set null,then compare location.href is '001.html'" type="compliance" status="approved" component="WebAPI/Communication/HTML5 The session history of browsing contexts (Partial)" execution_type="auto" priority="P3" id="history_replaceState_url_null">
+        <description>
+          <pre_condition/>
+          <post_condition/>
+          <steps>
+            <step order="1">
+              <step_desc>Check if history.replacestate method param url set null,then compare location.href is '001.html'</step_desc>
+              <expected>Pass</expected>
+            </step>
+          </steps>
+          <test_script_entry>/opt/tct-sessionhistory-html5-tests/sessionhistory/history_replaceState_url_null.html</test_script_entry>
+        </description>
+        <specs>
+          <spec>
+            <spec_assertion usage="true" interface="History" specification="HTML5 The session history of browsing contexts (Partial)" section="Communication" category="Tizen W3C API Specifications"/>
+            <spec_url>http://www.w3.org/TR/2012/WD-html5-20121025/history.html#the-history-interface</spec_url>
+            <spec_statement/>
+          </spec>
+        </specs>
+      </testcase>
+      <testcase purpose="Check if History.go method not set,then compare Location.href is '001.html'" type="compliance" status="approved" component="WebAPI/Communication/HTML5 The session history of browsing contexts (Partial)" execution_type="auto" priority="P3" id="history_go_no_argument">
+        <description>
+          <pre_condition/>
+          <post_condition/>
+          <steps>
+            <step order="1">
+              <step_desc>Check if History.go method not set,then compare Location.href is '001.html'</step_desc>
+              <expected>Pass</expected>
+            </step>
+          </steps>
+          <test_script_entry>/opt/tct-sessionhistory-html5-tests/sessionhistory/history_go_no_argument.html</test_script_entry>
+        </description>
+        <specs>
+          <spec>
+            <spec_assertion usage="true" interface="History" specification="HTML5 The session history of browsing contexts (Partial)" section="Communication" category="Tizen W3C API Specifications"/>
+            <spec_url>http://www.w3.org/TR/2012/WD-html5-20121025/history.html#the-history-interface</spec_url>
+            <spec_statement/>
+          </spec>
+        </specs>
+      </testcase>
+      <testcase purpose="Check if History.go method set 10000 out of range navigates will do nothing" type="compliance" status="approved" component="WebAPI/Communication/HTML5 The session history of browsing contexts (Partial)" execution_type="auto" priority="P3" id="history_go_outOfRange">
+        <description>
+          <pre_condition/>
+          <post_condition/>
+          <steps>
+            <step order="1">
+              <step_desc>Check if History.go method set 10000 out of range navigates will do nothing</step_desc>
+              <expected>Pass</expected>
+            </step>
+          </steps>
+          <test_script_entry>/opt/tct-sessionhistory-html5-tests/sessionhistory/history_go_outOfRange.html</test_script_entry>
+        </description>
+        <specs>
+          <spec>
+            <spec_assertion usage="true" interface="History" specification="HTML5 The session history of browsing contexts (Partial)" section="Communication" category="Tizen W3C API Specifications"/>
+            <spec_url>http://www.w3.org/TR/2012/WD-html5-20121025/history.html#the-history-interface</spec_url>
+            <spec_statement/>
+          </spec>
+        </specs>
+      </testcase>
+      <testcase purpose="Check if History.go method set 0,then compare Location.href is '001.html'" type="compliance" status="approved" component="WebAPI/Communication/HTML5 The session history of browsing contexts (Partial)" execution_type="auto" priority="P3" id="history_go_zero">
+        <description>
+          <pre_condition/>
+          <post_condition/>
+          <steps>
+            <step order="1">
+              <step_desc>Check if History.go method set 0,then compare Location.href is '001.html'</step_desc>
+              <expected>Pass</expected>
+            </step>
+          </steps>
+          <test_script_entry>/opt/tct-sessionhistory-html5-tests/sessionhistory/history_go_zero.html</test_script_entry>
+        </description>
+        <specs>
+          <spec>
+            <spec_assertion usage="true" interface="History" specification="HTML5 The session history of browsing contexts (Partial)" section="Communication" category="Tizen W3C API Specifications"/>
+            <spec_url>http://www.w3.org/TR/2012/WD-html5-20121025/history.html#the-history-interface</spec_url>
+            <spec_statement/>
+          </spec>
+        </specs>
+      </testcase>
+      <testcase purpose="Check if history.back method is of type function" type="compliance" status="approved" component="WebAPI/Communication/HTML5 The session history of browsing contexts (Partial)" execution_type="auto" priority="P2" id="history_back_type">
+        <description>
+          <pre_condition/>
+          <post_condition/>
+          <steps>
+            <step order="1">
+              <step_desc>Check if history.back method is of type function</step_desc>
+              <expected>Pass</expected>
+            </step>
+          </steps>
+          <test_script_entry>/opt/tct-sessionhistory-html5-tests/sessionhistory/history_back_type.html</test_script_entry>
+        </description>
+        <specs>
+          <spec>
+            <spec_assertion element_type="method" element_name="back" interface="History" specification="HTML5 The session history of browsing contexts (Partial)" section="Communication" category="Tizen W3C API Specifications"/>
+            <spec_url>http://www.w3.org/TR/2012/WD-html5-20121025/history.html#the-history-interface</spec_url>
+            <spec_statement/>
+          </spec>
+        </specs>
+      </testcase>
+      <testcase purpose="Check if history.forward is of type function" type="compliance" status="approved" component="WebAPI/Communication/HTML5 The session history of browsing contexts (Partial)" execution_type="auto" priority="P2" id="history_forward_type">
+        <description>
+          <pre_condition/>
+          <post_condition/>
+          <steps>
+            <step order="1">
+              <step_desc>Check if history.forward is of type function</step_desc>
+              <expected>Pass</expected>
+            </step>
+          </steps>
+          <test_script_entry>/opt/tct-sessionhistory-html5-tests/sessionhistory/history_forward_type.html</test_script_entry>
+        </description>
+        <specs>
+          <spec>
+            <spec_assertion element_type="method" element_name="forward" interface="History" specification="HTML5 The session history of browsing contexts (Partial)" section="Communication" category="Tizen W3C API Specifications"/>
+            <spec_url>http://www.w3.org/TR/2012/WD-html5-20121025/history.html#the-history-interface</spec_url>
+            <spec_statement/>
+          </spec>
+        </specs>
+      </testcase>
+      <testcase purpose="Check if history.go method is of type function" type="compliance" status="approved" component="WebAPI/Communication/HTML5 The session history of browsing contexts (Partial)" execution_type="auto" priority="P2" id="history_go_type">
+        <description>
+          <pre_condition/>
+          <post_condition/>
+          <steps>
+            <step order="1">
+              <step_desc>Check if history.go method is of type function</step_desc>
+              <expected>Pass</expected>
+            </step>
+          </steps>
+          <test_script_entry>/opt/tct-sessionhistory-html5-tests/sessionhistory/history_go_type.html</test_script_entry>
+        </description>
+        <specs>
+          <spec>
+            <spec_assertion element_type="method" element_name="go" interface="History" specification="HTML5 The session history of browsing contexts (Partial)" section="Communication" category="Tizen W3C API Specifications"/>
+            <spec_url>http://www.w3.org/TR/2012/WD-html5-20121025/history.html#the-history-interface</spec_url>
+            <spec_statement/>
+          </spec>
+        </specs>
+      </testcase>
+      <testcase purpose="Check if history.length attribute is of type number" type="compliance" status="approved" component="WebAPI/Communication/HTML5 The session history of browsing contexts (Partial)" execution_type="auto" priority="P2" id="history_length_type">
+        <description>
+          <pre_condition/>
+          <post_condition/>
+          <steps>
+            <step order="1">
+              <step_desc>Check if history.length attribute is of type number</step_desc>
+              <expected>Pass</expected>
+            </step>
+          </steps>
+          <test_script_entry>/opt/tct-sessionhistory-html5-tests/sessionhistory/history_length_type.html</test_script_entry>
+        </description>
+        <specs>
+          <spec>
+            <spec_assertion element_type="attribute" element_name="length" interface="History" specification="HTML5 The session history of browsing contexts (Partial)" section="Communication" category="Tizen W3C API Specifications"/>
+            <spec_url>http://www.w3.org/TR/2012/WD-html5-20121025/history.html#the-history-interface</spec_url>
+            <spec_statement/>
+          </spec>
+        </specs>
+      </testcase>
+      <testcase purpose="Check if location.hostname is of type string" type="compliance" status="approved" component="WebAPI/Communication/HTML5 The session history of browsing contexts (Partial)" execution_type="auto" priority="P2" id="location_document_hostname_type">
+        <description>
+          <pre_condition/>
+          <post_condition/>
+          <steps>
+            <step order="1">
+              <step_desc>Check if location.hostname is of type string</step_desc>
+              <expected>Pass</expected>
+            </step>
+          </steps>
+          <test_script_entry>/opt/tct-sessionhistory-html5-tests/sessionhistory/location_document_hostname_type.html</test_script_entry>
+        </description>
+        <specs>
+          <spec>
+            <spec_assertion element_type="attribute" element_name="hostname" interface="Location" specification="HTML5 The session history of browsing contexts (Partial)" section="Communication" category="Tizen W3C API Specifications"/>
+            <spec_url>http://www.w3.org/TR/2012/WD-html5-20121025/history.html#the-location-interface</spec_url>
+            <spec_statement/>
+          </spec>
+        </specs>
+      </testcase>
+      <testcase purpose="Check if location.protocol is of type string" type="compliance" status="approved" component="WebAPI/Communication/HTML5 The session history of browsing contexts (Partial)" execution_type="auto" priority="P2" id="location_document_protocol_type">
+        <description>
+          <pre_condition/>
+          <post_condition/>
+          <steps>
+            <step order="1">
+              <step_desc>Check if location.protocol is of type string</step_desc>
+              <expected>Pass</expected>
+            </step>
+          </steps>
+          <test_script_entry>/opt/tct-sessionhistory-html5-tests/sessionhistory/location_document_protocol_type.html</test_script_entry>
+        </description>
+        <specs>
+          <spec>
+            <spec_assertion element_type="attribute" element_name="protocol" interface="Location" specification="HTML5 The session history of browsing contexts (Partial)" section="Communication" category="Tizen W3C API Specifications"/>
+            <spec_url>http://www.w3.org/TR/2012/WD-html5-20121025/history.html#the-location-interface</spec_url>
+            <spec_statement/>
+          </spec>
+        </specs>
+      </testcase>
+      <testcase purpose="Check if location.reload method is if type function" type="compliance" status="approved" component="WebAPI/Communication/HTML5 The session history of browsing contexts (Partial)" execution_type="auto" priority="P2" id="location_document_reload_type">
+        <description>
+          <pre_condition/>
+          <post_condition/>
+          <steps>
+            <step order="1">
+              <step_desc>Check if location.reload method is if type function</step_desc>
+              <expected>Pass</expected>
+            </step>
+          </steps>
+          <test_script_entry>/opt/tct-sessionhistory-html5-tests/sessionhistory/location_document_reload_type.html</test_script_entry>
+        </description>
+        <specs>
+          <spec>
+            <spec_assertion element_type="method" element_name="reload" interface="Location" specification="HTML5 The session history of browsing contexts (Partial)" section="Communication" category="Tizen W3C API Specifications"/>
+            <spec_url>http://www.w3.org/TR/2012/WD-html5-20121025/history.html#the-location-interface</spec_url>
+            <spec_statement/>
+          </spec>
+        </specs>
+      </testcase>
+      <testcase purpose="Check if location.search attribute is of type string" type="compliance" status="approved" component="WebAPI/Communication/HTML5 The session history of browsing contexts (Partial)" execution_type="auto" priority="P2" id="location_document_search_type">
+        <description>
+          <pre_condition/>
+          <post_condition/>
+          <steps>
+            <step order="1">
+              <step_desc>Check if location.search attribute is of type string</step_desc>
+              <expected>Pass</expected>
+            </step>
+          </steps>
+          <test_script_entry>/opt/tct-sessionhistory-html5-tests/sessionhistory/location_document_search_type.html</test_script_entry>
+        </description>
+        <specs>
+          <spec>
+            <spec_assertion element_type="attribute" element_name="search" interface="Location" specification="HTML5 The session history of browsing contexts (Partial)" section="Communication" category="Tizen W3C API Specifications"/>
+            <spec_url>http://www.w3.org/TR/2012/WD-html5-20121025/history.html#the-location-interface</spec_url>
+            <spec_statement/>
+          </spec>
+        </specs>
+      </testcase>
+      <testcase purpose="Check if Location.assign attribute is of type function" type="compliance" status="approved" component="WebAPI/Communication/HTML5 The session history of browsing contexts (Partial)" execution_type="auto" priority="P2" id="location_window_assign_type">
+        <description>
+          <pre_condition/>
+          <post_condition/>
+          <steps>
+            <step order="1">
+              <step_desc>Check if Location.assign attribute is of type function</step_desc>
+              <expected>Pass</expected>
+            </step>
+          </steps>
+          <test_script_entry>/opt/tct-sessionhistory-html5-tests/sessionhistory/location_window_assign_type.html</test_script_entry>
+        </description>
+        <specs>
+          <spec>
+            <spec_assertion element_type="method" element_name="assign" interface="Location" specification="HTML5 The session history of browsing contexts (Partial)" section="Communication" category="Tizen W3C API Specifications"/>
+            <spec_url>http://www.w3.org/TR/2012/WD-html5-20121025/history.html#the-location-interface</spec_url>
+            <spec_statement/>
+          </spec>
+        </specs>
+      </testcase>
+      <testcase purpose="Check if Location.host attribute is of type string" type="compliance" status="approved" component="WebAPI/Communication/HTML5 The session history of browsing contexts (Partial)" execution_type="auto" priority="P2" id="location_window_host_type">
+        <description>
+          <pre_condition/>
+          <post_condition/>
+          <steps>
+            <step order="1">
+              <step_desc>Check if Location.host attribute is of type string</step_desc>
+              <expected>Pass</expected>
+            </step>
+          </steps>
+          <test_script_entry>/opt/tct-sessionhistory-html5-tests/sessionhistory/location_window_host_type.html</test_script_entry>
+        </description>
+        <specs>
+          <spec>
+            <spec_assertion element_type="attribute" element_name="host" interface="Location" specification="HTML5 The session history of browsing contexts (Partial)" section="Communication" category="Tizen W3C API Specifications"/>
+            <spec_url>http://www.w3.org/TR/2012/WD-html5-20121025/history.html#the-location-interface</spec_url>
+            <spec_statement/>
+          </spec>
+        </specs>
+      </testcase>
+      <testcase purpose="Check if Location.href attribute is of type string" type="compliance" status="approved" component="WebAPI/Communication/HTML5 The session history of browsing contexts (Partial)" execution_type="auto" priority="P2" id="location_window_href_type">
+        <description>
+          <pre_condition/>
+          <post_condition/>
+          <steps>
+            <step order="1">
+              <step_desc>Check if Location.href attribute is of type string</step_desc>
+              <expected>Pass</expected>
+            </step>
+          </steps>
+          <test_script_entry>/opt/tct-sessionhistory-html5-tests/sessionhistory/location_window_href_type.html</test_script_entry>
+        </description>
+        <specs>
+          <spec>
+            <spec_assertion element_type="attribute" element_name="href" interface="Location" specification="HTML5 The session history of browsing contexts (Partial)" section="Communication" category="Tizen W3C API Specifications"/>
+            <spec_url>http://www.w3.org/TR/2012/WD-html5-20121025/history.html#the-location-interface</spec_url>
+            <spec_statement/>
+          </spec>
+        </specs>
+      </testcase>
+      <testcase purpose="Check if Location.pathname attribute is of type string" type="compliance" status="approved" component="WebAPI/Communication/HTML5 The session history of browsing contexts (Partial)" execution_type="auto" priority="P2" id="location_window_pathname_type">
+        <description>
+          <pre_condition/>
+          <post_condition/>
+          <steps>
+            <step order="1">
+              <step_desc>Check if Location.pathname attribute is of type string</step_desc>
+              <expected>Pass</expected>
+            </step>
+          </steps>
+          <test_script_entry>/opt/tct-sessionhistory-html5-tests/sessionhistory/location_window_pathname_type.html</test_script_entry>
+        </description>
+        <specs>
+          <spec>
+            <spec_assertion element_type="attribute" element_name="pathname" interface="Location" specification="HTML5 The session history of browsing contexts (Partial)" section="Communication" category="Tizen W3C API Specifications"/>
+            <spec_url>http://www.w3.org/TR/2012/WD-html5-20121025/history.html#the-location-interface</spec_url>
+            <spec_statement/>
+          </spec>
+        </specs>
+      </testcase>
+      <testcase purpose="Check if Location.port attribute is of type string" type="compliance" status="approved" component="WebAPI/Communication/HTML5 The session history of browsing contexts (Partial)" execution_type="auto" priority="P2" id="location_window_port_type">
+        <description>
+          <pre_condition/>
+          <post_condition/>
+          <steps>
+            <step order="1">
+              <step_desc>Check if Location.port attribute is of type string</step_desc>
+              <expected>Pass</expected>
+            </step>
+          </steps>
+          <test_script_entry>/opt/tct-sessionhistory-html5-tests/sessionhistory/location_window_port_type.html</test_script_entry>
+        </description>
+        <specs>
+          <spec>
+            <spec_assertion element_type="attribute" element_name="port" interface="Location" specification="HTML5 The session history of browsing contexts (Partial)" section="Communication" category="Tizen W3C API Specifications"/>
+            <spec_url>http://www.w3.org/TR/2012/WD-html5-20121025/history.html#the-location-interface</spec_url>
+            <spec_statement/>
+          </spec>
+        </specs>
+      </testcase>
+      <testcase purpose="Check if location.replace method is of type function" type="compliance" status="approved" component="WebAPI/Communication/HTML5 The session history of browsing contexts (Partial)" execution_type="auto" priority="P2" id="location_window_replace_type">
+        <description>
+          <pre_condition/>
+          <post_condition/>
+          <steps>
+            <step order="1">
+              <step_desc>Check if location.replace method is of type function</step_desc>
+              <expected>Pass</expected>
+            </step>
+          </steps>
+          <test_script_entry>/opt/tct-sessionhistory-html5-tests/sessionhistory/location_window_replace_type.html</test_script_entry>
+        </description>
+        <specs>
+          <spec>
+            <spec_assertion element_type="method" element_name="replace" interface="Location" specification="HTML5 The session history of browsing contexts (Partial)" section="Communication" category="Tizen W3C API Specifications"/>
+            <spec_url>http://www.w3.org/TR/2012/WD-html5-20121025/history.html#the-location-interface</spec_url>
+            <spec_statement/>
+          </spec>
+        </specs>
+      </testcase>
+      <testcase purpose="Check if history.length attribute set history.length+10.then compare history.length is history.leng+10" type="compliance" status="approved" component="WebAPI/Communication/HTML5 The session history of browsing contexts (Partial)" execution_type="auto" priority="P2" id="history_length_readonly">
+        <description>
+          <pre_condition/>
+          <post_condition/>
+          <steps>
+            <step order="1">
+              <step_desc>Check if history.length attribute set history.length+10.then compare history.length is history.leng+10</step_desc>
+              <expected>Pass</expected>
+            </step>
+          </steps>
+          <test_script_entry>/opt/tct-sessionhistory-html5-tests/sessionhistory/history_length_readonly.html</test_script_entry>
+        </description>
+        <specs>
+          <spec>
+            <spec_assertion element_type="attribute" element_name="length" interface="History" specification="HTML5 The session history of browsing contexts (Partial)" section="Communication" category="Tizen W3C API Specifications"/>
+            <spec_url>http://www.w3.org/TR/2012/WD-html5-20121025/history.html#the-history-interface</spec_url>
+            <spec_statement/>
+          </spec>
+        </specs>
+      </testcase>
+      <testcase purpose="Check if history.state attribute is readonly" type="compliance" status="approved" component="WebAPI/Communication/HTML5 The session history of browsing contexts (Partial)" execution_type="auto" priority="P2" id="history_state_readonly">
+        <description>
+          <pre_condition/>
+          <post_condition/>
+          <steps>
+            <step order="1">
+              <step_desc>Check if history.state attribute is readonly</step_desc>
+              <expected>Pass</expected>
+            </step>
+          </steps>
+          <test_script_entry>/opt/tct-sessionhistory-html5-tests/sessionhistory/history_state_readonly.html</test_script_entry>
+        </description>
+        <specs>
+          <spec>
+            <spec_assertion element_type="attribute" element_name="state" interface="History" specification="HTML5 The session history of browsing contexts (Partial)" section="Communication" category="Tizen W3C API Specifications"/>
+            <spec_url>http://www.w3.org/TR/2012/WD-html5-20121025/history.html#the-history-interface</spec_url>
+            <spec_statement/>
+          </spec>
+        </specs>
+      </testcase>
+      <testcase purpose="Check if location.hostname attribute calling location.assign,then compare location.hostname" type="compliance" status="approved" component="WebAPI/Communication/HTML5 The session history of browsing contexts (Partial)" execution_type="auto" priority="P2" id="location_document_hostname_assign">
+        <description>
+          <pre_condition>Http server needed, refer to README</pre_condition>
+          <post_condition/>
+          <steps>
+            <step order="1">
+              <step_desc>Check if location.hostname attribute calling location.assign,then compare location.hostname</step_desc>
+              <expected>Pass</expected>
+            </step>
+          </steps>
+          <test_script_entry>/opt/tct-sessionhistory-html5-tests/sessionhistory/location_document_hostname_assign.html</test_script_entry>
+        </description>
+        <specs>
+          <spec>
+            <spec_assertion element_type="attribute" element_name="hostname" interface="Location" specification="HTML5 The session history of browsing contexts (Partial)" section="Communication" category="Tizen W3C API Specifications"/>
+            <spec_url>http://www.w3.org/TR/2012/WD-html5-20121025/history.html#the-location-interface</spec_url>
+            <spec_statement/>
+          </spec>
+        </specs>
+      </testcase>
+      <testcase purpose="Check if location.hostname attribute default value should not ne null" type="compliance" status="approved" component="WebAPI/Communication/HTML5 The session history of browsing contexts (Partial)" execution_type="auto" priority="P2" id="location_document_hostname_default_value">
+        <description>
+          <pre_condition>Http server needed, refer to README</pre_condition>
+          <post_condition/>
+          <steps>
+            <step order="1">
+              <step_desc>Check if location.hostname attribute default value should not ne null</step_desc>
+              <expected>Pass</expected>
+            </step>
+          </steps>
+          <test_script_entry>/opt/tct-sessionhistory-html5-tests/sessionhistory/location_document_hostname_default_value.html</test_script_entry>
+        </description>
+        <specs>
+          <spec>
+            <spec_assertion element_type="attribute" element_name="hostname" interface="Location" specification="HTML5 The session history of browsing contexts (Partial)" section="Communication" category="Tizen W3C API Specifications"/>
+            <spec_url>http://www.w3.org/TR/2012/WD-html5-20121025/history.html#the-location-interface</spec_url>
+            <spec_statement/>
+          </spec>
+        </specs>
+      </testcase>
+      <testcase purpose="Check if location.protocol attribute calling location.assign,then compare location.protocol" type="compliance" status="approved" component="WebAPI/Communication/HTML5 The session history of browsing contexts (Partial)" execution_type="auto" priority="P2" id="location_document_protocol_assign">
+        <description>
+          <pre_condition/>
+          <post_condition/>
+          <steps>
+            <step order="1">
+              <step_desc>Check if location.protocol attribute calling location.assign,then compare location.protocol</step_desc>
+              <expected>Pass</expected>
+            </step>
+          </steps>
+          <test_script_entry>/opt/tct-sessionhistory-html5-tests/sessionhistory/location_document_protocol_assign.html</test_script_entry>
+        </description>
+        <specs>
+          <spec>
+            <spec_assertion element_type="attribute" element_name="protocol" interface="Location" specification="HTML5 The session history of browsing contexts (Partial)" section="Communication" category="Tizen W3C API Specifications"/>
+            <spec_url>http://www.w3.org/TR/2012/WD-html5-20121025/history.html#the-location-interface</spec_url>
+            <spec_statement/>
+          </spec>
+        </specs>
+      </testcase>
+      <testcase purpose="Check if location.search attribute calling location.assign,then compare location.search" type="compliance" status="approved" component="WebAPI/Communication/HTML5 The session history of browsing contexts (Partial)" execution_type="auto" priority="P2" id="location_document_search_assign">
+        <description>
+          <pre_condition/>
+          <post_condition/>
+          <steps>
+            <step order="1">
+              <step_desc>Check if location.search attribute calling location.assign,then compare location.search</step_desc>
+              <expected>Pass</expected>
+            </step>
+          </steps>
+          <test_script_entry>/opt/tct-sessionhistory-html5-tests/sessionhistory/location_document_search_assign.html</test_script_entry>
+        </description>
+        <specs>
+          <spec>
+            <spec_assertion element_type="attribute" element_name="search" interface="Location" specification="HTML5 The session history of browsing contexts (Partial)" section="Communication" category="Tizen W3C API Specifications"/>
+            <spec_url>http://www.w3.org/TR/2012/WD-html5-20121025/history.html#the-location-interface</spec_url>
+            <spec_statement/>
+          </spec>
+        </specs>
+      </testcase>
+      <testcase purpose="Check if Location.hash attribute not set,then compare Location.hash is ''" type="compliance" status="approved" component="WebAPI/Communication/HTML5 The session history of browsing contexts (Partial)" execution_type="auto" priority="P2" id="location_window_hash_default_value">
+        <description>
+          <pre_condition/>
+          <post_condition/>
+          <steps>
+            <step order="1">
+              <step_desc>Check if Location.hash attribute not set,then compare Location.hash is ''</step_desc>
+              <expected>Pass</expected>
+            </step>
+          </steps>
+          <test_script_entry>/opt/tct-sessionhistory-html5-tests/sessionhistory/location_window_hash_default_value.html</test_script_entry>
+        </description>
+        <specs>
+          <spec>
+            <spec_assertion element_type="attribute" element_name="hash" interface="Location" specification="HTML5 The session history of browsing contexts (Partial)" section="Communication" category="Tizen W3C API Specifications"/>
+            <spec_url>http://www.w3.org/TR/2012/WD-html5-20121025/history.html#the-location-interface</spec_url>
+            <spec_statement/>
+          </spec>
+        </specs>
+      </testcase>
+      <testcase purpose="Check if Location.hash attribute set 'test hash' then set empty string,finally compare is Location.hash is ''" type="compliance" status="approved" component="WebAPI/Communication/HTML5 The session history of browsing contexts (Partial)" execution_type="auto" priority="P2" id="location_window_hash_empty_string">
+        <description>
+          <pre_condition/>
+          <post_condition/>
+          <steps>
+            <step order="1">
+              <step_desc>Check if Location.hash attribute set 'test hash' then set empty string,finally compare is Location.hash is ''</step_desc>
+              <expected>Pass</expected>
+            </step>
+          </steps>
+          <test_script_entry>/opt/tct-sessionhistory-html5-tests/sessionhistory/location_window_hash_empty_string.html</test_script_entry>
+        </description>
+        <specs>
+          <spec>
+            <spec_assertion element_type="attribute" element_name="hash" interface="Location" specification="HTML5 The session history of browsing contexts (Partial)" section="Communication" category="Tizen W3C API Specifications"/>
+            <spec_url>http://www.w3.org/TR/2012/WD-html5-20121025/history.html#the-location-interface</spec_url>
+            <spec_statement/>
+          </spec>
+        </specs>
+      </testcase>
+      <testcase purpose="Check if Location.hash attribute set null,then compare Location.hash is '#null'" type="compliance" status="approved" component="WebAPI/Communication/HTML5 The session history of browsing contexts (Partial)" execution_type="auto" priority="P2" id="location_window_hash_null">
+        <description>
+          <pre_condition/>
+          <post_condition/>
+          <steps>
+            <step order="1">
+              <step_desc>Check if Location.hash attribute set null,then compare Location.hash is '#null'</step_desc>
+              <expected>Pass</expected>
+            </step>
+          </steps>
+          <test_script_entry>/opt/tct-sessionhistory-html5-tests/sessionhistory/location_window_hash_null.html</test_script_entry>
+        </description>
+        <specs>
+          <spec>
+            <spec_assertion element_type="attribute" element_name="hash" interface="Location" specification="HTML5 The session history of browsing contexts (Partial)" section="Communication" category="Tizen W3C API Specifications"/>
+            <spec_url>http://www.w3.org/TR/2012/WD-html5-20121025/history.html#the-location-interface</spec_url>
+            <spec_statement/>
+          </spec>
+        </specs>
+      </testcase>
+      <testcase purpose="Check if Location.hash attribute set random,then compare Location.hash is '#'+random" type="compliance" status="approved" component="WebAPI/Communication/HTML5 The session history of browsing contexts (Partial)" execution_type="auto" priority="P2" id="location_window_hash_random">
+        <description>
+          <pre_condition/>
+          <post_condition/>
+          <steps>
+            <step order="1">
+              <step_desc>Check if Location.hash attribute set random,then compare Location.hash is '#'+random</step_desc>
+              <expected>Pass</expected>
+            </step>
+          </steps>
+          <test_script_entry>/opt/tct-sessionhistory-html5-tests/sessionhistory/location_window_hash_random.html</test_script_entry>
+        </description>
+        <specs>
+          <spec>
+            <spec_assertion element_type="attribute" element_name="hash" interface="Location" specification="HTML5 The session history of browsing contexts (Partial)" section="Communication" category="Tizen W3C API Specifications"/>
+            <spec_url>http://www.w3.org/TR/2012/WD-html5-20121025/history.html#the-location-interface</spec_url>
+            <spec_statement/>
+          </spec>
+        </specs>
+      </testcase>
+      <testcase purpose="Check if Location.host attribute calling assign method,then compare now host is after host" type="compliance" status="approved" component="WebAPI/Communication/HTML5 The session history of browsing contexts (Partial)" execution_type="auto" priority="P2" id="location_window_host_assign">
+        <description>
+          <pre_condition/>
+          <post_condition/>
+          <steps>
+            <step order="1">
+              <step_desc>Check if Location.host attribute calling assign method,then compare now host is after host</step_desc>
+              <expected>Pass</expected>
+            </step>
+          </steps>
+          <test_script_entry>/opt/tct-sessionhistory-html5-tests/sessionhistory/location_window_host_assign.html</test_script_entry>
+        </description>
+        <specs>
+          <spec>
+            <spec_assertion element_type="attribute" element_name="host" interface="Location" specification="HTML5 The session history of browsing contexts (Partial)" section="Communication" category="Tizen W3C API Specifications"/>
+            <spec_url>http://www.w3.org/TR/2012/WD-html5-20121025/history.html#the-location-interface</spec_url>
+            <spec_statement/>
+          </spec>
+        </specs>
+      </testcase>
+      <testcase purpose="Check if Location.href attribute,then compare location.href equals 'location_window_href_default_value.html'" type="compliance" status="approved" component="WebAPI/Communication/HTML5 The session history of browsing contexts (Partial)" execution_type="auto" priority="P2" id="location_window_href_default_value">
+        <description>
+          <pre_condition/>
+          <post_condition/>
+          <steps>
+            <step order="1">
+              <step_desc>Check if Location.href attribute,then compare location.href equals 'location_window_href_default_value.html'</step_desc>
+              <expected>Pass</expected>
+            </step>
+          </steps>
+          <test_script_entry>/opt/tct-sessionhistory-html5-tests/sessionhistory/location_window_href_default_value.html</test_script_entry>
+        </description>
+        <specs>
+          <spec>
+            <spec_assertion element_type="attribute" element_name="href" interface="Location" specification="HTML5 The session history of browsing contexts (Partial)" section="Communication" category="Tizen W3C API Specifications"/>
+            <spec_url>http://www.w3.org/TR/2012/WD-html5-20121025/history.html#the-location-interface</spec_url>
+            <spec_statement/>
+          </spec>
+        </specs>
+      </testcase>
+      <testcase purpose="Check if location.pathname attribute calling location.assign,then compare location.pathname" type="compliance" status="approved" component="WebAPI/Communication/HTML5 The session history of browsing contexts (Partial)" execution_type="auto" priority="P2" id="location_window_pathname_assign">
+        <description>
+          <pre_condition/>
+          <post_condition/>
+          <steps>
+            <step order="1">
+              <step_desc>Check if location.pathname attribute calling location.assign,then compare location.pathname</step_desc>
+              <expected>Pass</expected>
+            </step>
+          </steps>
+          <test_script_entry>/opt/tct-sessionhistory-html5-tests/sessionhistory/location_window_pathname_assign.html</test_script_entry>
+        </description>
+        <specs>
+          <spec>
+            <spec_assertion element_type="attribute" element_name="pathname" interface="Location" specification="HTML5 The session history of browsing contexts (Partial)" section="Communication" category="Tizen W3C API Specifications"/>
+            <spec_url>http://www.w3.org/TR/2012/WD-html5-20121025/history.html#the-location-interface</spec_url>
+            <spec_statement/>
+          </spec>
+        </specs>
+      </testcase>
+      <testcase purpose="Check if Location.pathname attribute default value is file name" type="compliance" status="approved" component="WebAPI/Communication/HTML5 The session history of browsing contexts (Partial)" execution_type="auto" priority="P2" id="location_window_pathname_default_value">
+        <description>
+          <pre_condition/>
+          <post_condition/>
+          <steps>
+            <step order="1">
+              <step_desc>Check if Location.pathname attribute default value is file name</step_desc>
+              <expected>Pass</expected>
+            </step>
+          </steps>
+          <test_script_entry>/opt/tct-sessionhistory-html5-tests/sessionhistory/location_window_pathname_default_value.html</test_script_entry>
+        </description>
+        <specs>
+          <spec>
+            <spec_assertion element_type="attribute" element_name="pathname" interface="Location" specification="HTML5 The session history of browsing contexts (Partial)" section="Communication" category="Tizen W3C API Specifications"/>
+            <spec_url>http://www.w3.org/TR/2012/WD-html5-20121025/history.html#the-location-interface</spec_url>
+            <spec_statement/>
+          </spec>
+        </specs>
+      </testcase>
+      <testcase purpose="Check if Location.port attribute calling Location.assign,then compare location.port" type="compliance" status="approved" component="WebAPI/Communication/HTML5 The session history of browsing contexts (Partial)" execution_type="auto" priority="P2" id="location_window_port_assign">
+        <description>
+          <pre_condition>Http server needed, refer to README</pre_condition>
+          <post_condition/>
+          <steps>
+            <step order="1">
+              <step_desc>Check if Location.port attribute calling Location.assign,then compare location.port</step_desc>
+              <expected>Pass</expected>
+            </step>
+          </steps>
+          <test_script_entry>/opt/tct-sessionhistory-html5-tests/sessionhistory/location_window_port_assign.html</test_script_entry>
+        </description>
+        <specs>
+          <spec>
+            <spec_assertion element_type="attribute" element_name="port" interface="Location" specification="HTML5 The session history of browsing contexts (Partial)" section="Communication" category="Tizen W3C API Specifications"/>
+            <spec_url>http://www.w3.org/TR/2012/WD-html5-20121025/history.html#the-location-interface</spec_url>
+            <spec_statement/>
+          </spec>
+        </specs>
+      </testcase>
+      <testcase purpose="Check if location.host attribute,calling location.href,then compare location.host" type="compliance" status="approved" component="WebAPI/Communication/HTML5 The session history of browsing contexts (Partial)" execution_type="auto" priority="P2" id="location_window_host_href">
+        <description>
+          <pre_condition/>
+          <post_condition/>
+          <steps>
+            <step order="1">
+              <step_desc>Check if location.host attribute,calling location.href,then compare location.host</step_desc>
+              <expected>Pass</expected>
+            </step>
+          </steps>
+          <test_script_entry>/opt/tct-sessionhistory-html5-tests/sessionhistory/w3c/location_host.html</test_script_entry>
+        </description>
+        <specs>
+          <spec>
+            <spec_assertion element_type="attribute" element_name="host" interface="Location" specification="HTML5 The session history of browsing contexts (Partial)" section="Communication" category="Tizen W3C API Specifications"/>
+            <spec_url>http://www.w3.org/TR/2012/WD-html5-20121025/history.html#the-location-interface</spec_url>
+            <spec_statement/>
+          </spec>
+        </specs>
+      </testcase>
+      <testcase purpose="Check if Location.href value equals to document.URL" type="compliance" status="approved" component="WebAPI/Communication/HTML5 The session history of browsing contexts (Partial)" execution_type="auto" priority="P2" id="location_window_href_basic">
+        <description>
+          <pre_condition/>
+          <post_condition/>
+          <steps>
+            <step order="1">
+              <step_desc>Check if Location.href value equals to document.URL</step_desc>
+              <expected>Pass</expected>
+            </step>
+          </steps>
+          <test_script_entry>/opt/tct-sessionhistory-html5-tests/sessionhistory/w3c/location_href.html</test_script_entry>
+        </description>
+        <specs>
+          <spec>
+            <spec_assertion element_type="attribute" element_name="href" interface="Location" specification="HTML5 The session history of browsing contexts (Partial)" section="Communication" category="Tizen W3C API Specifications"/>
+            <spec_url>http://www.w3.org/TR/2012/WD-html5-20121025/history.html#the-location-interface</spec_url>
+            <spec_statement/>
+          </spec>
+        </specs>
+      </testcase>
+      <testcase purpose="Check if Location.pathname attibute calling location.href,then compare location.pathname" type="compliance" status="approved" component="WebAPI/Communication/HTML5 The session history of browsing contexts (Partial)" execution_type="auto" priority="P2" id="location_window_pathname_href">
+        <description>
+          <pre_condition/>
+          <post_condition/>
+          <steps>
+            <step order="1">
+              <step_desc>Check if Location.pathname attibute calling location.href,then compare location.pathname</step_desc>
+              <expected>Pass</expected>
+            </step>
+          </steps>
+          <test_script_entry>/opt/tct-sessionhistory-html5-tests/sessionhistory/w3c/location_pathname.html</test_script_entry>
+        </description>
+        <specs>
+          <spec>
+            <spec_assertion element_type="attribute" element_name="pathname" interface="Location" specification="HTML5 The session history of browsing contexts (Partial)" section="Communication" category="Tizen W3C API Specifications"/>
+            <spec_url>http://www.w3.org/TR/2012/WD-html5-20121025/history.html#the-location-interface</spec_url>
+            <spec_statement/>
+          </spec>
+        </specs>
+      </testcase>
+      <testcase purpose="Check if Location.port attribute calling location.href,then compare location.port" type="compliance" status="approved" component="WebAPI/Communication/HTML5 The session history of browsing contexts (Partial)" execution_type="auto" priority="P2" id="location_window_port_href">
+        <description>
+          <pre_condition/>
+          <post_condition/>
+          <steps>
+            <step order="1">
+              <step_desc>Check if Location.port attribute calling location.href,then compare location.port</step_desc>
+              <expected>Pass</expected>
+            </step>
+          </steps>
+          <test_script_entry>/opt/tct-sessionhistory-html5-tests/sessionhistory/w3c/location_port.html</test_script_entry>
+        </description>
+        <specs>
+          <spec>
+            <spec_assertion element_type="attribute" element_name="port" interface="Location" specification="HTML5 The session history of browsing contexts (Partial)" section="Communication" category="Tizen W3C API Specifications"/>
+            <spec_url>http://www.w3.org/TR/2012/WD-html5-20121025/history.html#the-location-interface</spec_url>
+            <spec_statement/>
+          </spec>
+        </specs>
+      </testcase>
+      <testcase purpose="Check if location.search attribute calling location.href,then comapre location.search is '?test=a'" type="compliance" status="approved" component="WebAPI/Communication/HTML5 The session history of browsing contexts (Partial)" execution_type="auto" priority="P2" id="location_document_search_href">
+        <description>
+          <pre_condition/>
+          <post_condition/>
+          <steps>
+            <step order="1">
+              <step_desc>Check if location.search attribute calling location.href,then comapre location.search is '?test=a'</step_desc>
+              <expected>Pass</expected>
+            </step>
+          </steps>
+          <test_script_entry>/opt/tct-sessionhistory-html5-tests/sessionhistory/w3c/location_search.html</test_script_entry>
+        </description>
+        <specs>
+          <spec>
+            <spec_assertion element_type="attribute" element_name="search" interface="Location" specification="HTML5 The session history of browsing contexts (Partial)" section="Communication" category="Tizen W3C API Specifications"/>
+            <spec_url>http://www.w3.org/TR/2012/WD-html5-20121025/history.html#the-location-interface</spec_url>
+            <spec_statement/>
+          </spec>
+        </specs>
+      </testcase>
+      <testcase purpose="Check if location.hostname attribute calling location.href,then compare location.hostname" type="compliance" status="approved" component="WebAPI/Communication/HTML5 The session history of browsing contexts (Partial)" execution_type="auto" priority="P2" id="location_document_hostname_href">
+        <description>
+          <pre_condition>Http server needed, refer to README</pre_condition>
+          <post_condition/>
+          <steps>
+            <step order="1">
+              <step_desc>Check if location.hostname attribute calling location.href,then compare location.hostname</step_desc>
+              <expected>Pass</expected>
+            </step>
+          </steps>
+          <test_script_entry>/opt/tct-sessionhistory-html5-tests/sessionhistory/w3c/location_hostname.html</test_script_entry>
+        </description>
+        <specs>
+          <spec>
+            <spec_assertion element_type="attribute" element_name="hostname" interface="Location" specification="HTML5 The session history of browsing contexts (Partial)" section="Communication" category="Tizen W3C API Specifications"/>
+            <spec_url>http://www.w3.org/TR/2012/WD-html5-20121025/history.html#the-location-interface</spec_url>
+            <spec_statement/>
+          </spec>
+        </specs>
+      </testcase>
+      <testcase purpose="Check if location.protocol attribute calling location.href,then compare location.protocol" type="compliance" status="approved" component="WebAPI/Communication/HTML5 The session history of browsing contexts (Partial)" execution_type="auto" priority="P2" id="location_document_protocol_href">
+        <description>
+          <pre_condition/>
+          <post_condition/>
+          <steps>
+            <step order="1">
+              <step_desc>Check if location.protocol attribute calling location.href,then compare location.protocol</step_desc>
+              <expected>Pass</expected>
+            </step>
+          </steps>
+          <test_script_entry>/opt/tct-sessionhistory-html5-tests/sessionhistory/w3c/location_protocol.html</test_script_entry>
+        </description>
+        <specs>
+          <spec>
+            <spec_assertion element_type="attribute" element_name="protocol" interface="Location" specification="HTML5 The session history of browsing contexts (Partial)" section="Communication" category="Tizen W3C API Specifications"/>
+            <spec_url>http://www.w3.org/TR/2012/WD-html5-20121025/history.html#the-location-interface</spec_url>
+            <spec_statement/>
+          </spec>
+        </specs>
+      </testcase>
+      <testcase purpose="Check if Location.hash attribute set '#x=1',then compare Location.hash is '#x=1'" type="compliance" status="approved" component="WebAPI/Communication/HTML5 The session history of browsing contexts (Partial)" execution_type="auto" priority="P2" id="location_window_hash_basic">
+        <description>
+          <pre_condition/>
+          <post_condition/>
+          <steps>
+            <step order="1">
+              <step_desc>Check if Location.hash attribute set '#x=1',then compare Location.hash is '#x=1'</step_desc>
+              <expected>Pass</expected>
+            </step>
+          </steps>
+          <test_script_entry>/opt/tct-sessionhistory-html5-tests/sessionhistory/w3c/location_hash.html</test_script_entry>
+        </description>
+        <specs>
+          <spec>
+            <spec_assertion element_type="attribute" element_name="hash" interface="Location" specification="HTML5 The session history of browsing contexts (Partial)" section="Communication" category="Tizen W3C API Specifications"/>
+            <spec_url>http://www.w3.org/TR/2012/WD-html5-20121025/history.html#the-location-interface</spec_url>
+            <spec_statement/>
+          </spec>
+        </specs>
+      </testcase>
     </set>
   </suite>
 </test_definition>
