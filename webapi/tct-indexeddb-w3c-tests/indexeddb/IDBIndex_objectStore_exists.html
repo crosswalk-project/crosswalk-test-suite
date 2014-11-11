@@ -59,7 +59,7 @@ Authors:
                         db.deleteObjectStore(objectStoreName);
                     }
                     var objStore = db.createObjectStore(objectStoreName, {keyPath : "key"});
-                    var index = objStore.createIndex(indexName, "indexedProperty", {multiEntry : true});
+                    var index = objStore.createIndex(indexName, "indexedProperty", {multientry : true});
                     if ("objectStore" in index) {
                         pass();
                     } else {
