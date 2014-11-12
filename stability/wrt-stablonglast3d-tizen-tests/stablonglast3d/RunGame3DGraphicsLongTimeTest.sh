@@ -26,23 +26,30 @@
 #
 #Authors:
 #
-
 path=$(dirname $(dirname $0))
-PACKAGENAME="3d_test.wgt"
-source $path/stablonglast3d/xwalk_common.sh
+SLEEP=86400
+PACKAGENAME=$path/"3d_test.wgt"
 APP_NAME="3d_test"
-uninstall_app $APP_NAME
-install_app $PACKAGENAME
-launch_app $APP_NAME
+#source $path/stablonglast2d/xwalk_common.sh
+#pkgcmd -u -n thrdoptest -q
+#pkgcmd -i -t wgt -p $PACKAGENAME -q
+
+#monitor device info
+#$path/sysmon-seperateRun.sh $SLEEP twodoptest &
+echo "beging..."
+#launch_statue=`open_app thrdoptest.twodframeplaytest`
+$path/stablonglast3d/sysmon-seperateRun.sh 86400 "rscohn2.herokuapp" &
 sleep 2
-if [[ "$launch_statue" =~ "launched" ]];then
-   sleep 86400
-   get_app_statu=`app_launcher -r thrdoptest.twodframeplaytest`
-   if [[ "$get_app_statu" =~ "running" ]];then
-       app_launcher -k thrdoptest.twodframeplaytest
-   else
-       exit 1
-   fi
-else
-    exit 1
-fi
+nohup xwalk-launcher  http://rscohn2.herokuapp.com/sbp/ &>/dev/null &
+sleep 86400
+get_pid=`ps aux | grep rscohn2.herokuapp | grep -v "grep" | head -n 1 | awk '{print $2}' `
+kill $get_pid
+echo "end..."
+exit 0
+#if [[ "$launch_statue" =~ "launched" ]];then
+#   sleep 86400
+#   pkgcmd -u -n twodoptest -q
+#   echo "end..."
+#else
+#    exit 1
+#fi
