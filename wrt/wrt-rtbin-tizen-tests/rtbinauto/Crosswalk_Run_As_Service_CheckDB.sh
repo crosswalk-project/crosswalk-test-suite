@@ -51,10 +51,10 @@ fi
 
 if [[ $a =~ 'mainsource' ]]; then
                  echo "Use run as service install app and the DB correctly"
-                 pkgcmd -u -n  mainsource.manifestappmainsourcetests -q
+                 pkgcmd -u -n  mainsource -q
                  exit 0
 else
                  echo "Use run as service install app and the DB incorrectly"
-                 pkgcmd -u -n  mainsource.manifestappmainsourcetests -q
+                 pkgcmd -u -n  mainsource -q
                  exit 1
 fi
