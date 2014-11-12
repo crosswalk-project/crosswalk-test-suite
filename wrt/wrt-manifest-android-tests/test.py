@@ -134,7 +134,11 @@ def processMain(device, queue):
     Start = time.strftime("%Y-%m-%d %H:%M:%S")
     for flag in ["positive", "negative"]:
         for seedIn in os.listdir(ConstPath + "/device_" + device + "/allpairs/" + flag + "/"):
-            os.system("rm -rf " + ConstPath + "/device_" + device + "/self &>/dev/null")
+            try:
+                shutil.rmtree(ConstPath + "/device_" + device + "/self")
+            except Exception,e:
+                os.system("rm -rf " + ConstPath + "/device_" + device + "/self/*txt &>/dev/null")
+                os.system("rm -rf " + ConstPath + "/device_" + device + "/self &>/dev/null")
             os.system("rm -rf " + ConstPath + "/device_" + device + "/allpairs/selfcomb* &>/dev/null")
             os.system("mkdir -p " + ConstPath + "/device_" + device + "/self")
             processTest(ConstPath + "/device_" + device + "/allpairs/" + flag + "/" + seedIn, device, flag, resultList, summaryList)
@@ -440,6 +444,9 @@ def sourceInit(Devices):
             os.system("rm -rf " + ConstPath + "/device_" + device + "/allpairs/negative/* &>/dev/null")
             os.system("rm -rf " + ConstPath + "/device_" + device + "/allpairs/positive/* &>/dev/null")
             os.system("rm -rf " + ConstPath + "/device_" + device + "/allpairs/tcs/* &>/dev/null")
+            os.system("rm -rf " + ConstPath + "/device_" + device + "/self/*txt &>/dev/null")
+            os.system("rm -rf " + ConstPath + "/device_" + device + "/self &>/dev/null")
+            os.system("rm -rf " + ConstPath + "/device_" + device + "/tcs/* &>/dev/null")
         else:
             os.system("mkdir -p " + ConstPath + "/device_" + device)
             os.system("cp -rf "+ ConstPath + "/report/ "+ ConstPath + "/device_" + device + "/")
