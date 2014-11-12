@@ -31,7 +31,7 @@ sysmonFolder=$1"_sysmon_"`date '+%Y%m%d%H%M'`
 mkdir /tmp/$sysmonFolder
 echo "Create result folder: /tmp/$sysmonFolder"
 
-times=`expr $2 / 5`
+times=`expr $2 / 10`
 while [ $times -ne "0" ]
 do
 	echo `date` >> /tmp/$sysmonFolder/cpu.res
