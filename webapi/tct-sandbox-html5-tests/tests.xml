@@ -1,76 +1,76 @@
 <?xml version="1.0" encoding="UTF-8"?>
-    <?xml-stylesheet type="text/xsl" href="./testcase.xsl"?>
+<?xml-stylesheet type="text/xsl" href="./testcase.xsl"?>
 <test_definition>
-  <suite name="tct-sandbox-html5-tests" category="W3C/HTML5 APIs">
+  <suite category="W3C/HTML5 APIs" name="tct-sandbox-html5-tests">
     <set name="IframeSandbox" type="js">
       <testcase component="WebAPI/Security/HTML5 The iframe element" execution_type="auto" id="attri_default_block_child_contents" purpose="Check that block the parent content to access the child iframe content of sandbox if sandbox attribute exists">
         <description>
           <test_script_entry>/opt/tct-sandbox-html5-tests/sandbox/w3c/sandbox_030.htm</test_script_entry>
         </description>
-        </testcase>
+      </testcase>
       <testcase component="WebAPI/Security/HTML5 The iframe element" execution_type="auto" id="attri_allow-script_script_exec" purpose="Check that allow script to exec inside iframe with sandbox attribute if sandbox='allow-scripts'">
         <description>
           <test_script_entry>/opt/tct-sandbox-html5-tests/sandbox/w3c/sandbox_001.htm</test_script_entry>
         </description>
-        </testcase>
+      </testcase>
       <testcase component="WebAPI/Security/HTML5 The iframe element" execution_type="auto" id="attri_allow-script_video_play" onload_delay="15" purpose="Check that allow to auto play HTML5 Video inside iframe with sandbox attribute if sandbox='allow-scripts'">
         <description>
           <test_script_entry>/opt/tct-sandbox-html5-tests/sandbox/w3c/sandbox_002.htm</test_script_entry>
         </description>
-        </testcase>
+      </testcase>
       <testcase component="WebAPI/Security/HTML5 The iframe element" execution_type="auto" id="attri_allow-same-origin_content" purpose="Check that allow sandbox iframe to access other content from the same origin if sandbox='allow-same-origin'">
         <description>
           <test_script_entry>/opt/tct-sandbox-html5-tests/sandbox/w3c/sandbox_023.htm</test_script_entry>
         </description>
-        </testcase>
+      </testcase>
       <testcase component="WebAPI/Security/HTML5 The iframe element" execution_type="auto" id="attri_format_space_4tab" purpose="Check if the value of sandbox attribute must be an unordered set of unique space-separated tokens">
         <description>
           <test_script_entry>/opt/tct-sandbox-html5-tests/sandbox/w3c/sandbox_012.htm</test_script_entry>
         </description>
-        </testcase>
+      </testcase>
       <testcase component="WebAPI/Security/HTML5 The iframe element" execution_type="auto" id="iframe_contentWindow_attribute_exists" purpose="Check if the iframe.contentWindow attribute exists">
         <description>
           <test_script_entry>/opt/tct-sandbox-html5-tests/sandbox/iframe_contentWindow_attribute_exists.html</test_script_entry>
         </description>
-        </testcase>
+      </testcase>
       <testcase component="WebAPI/Security/HTML5 The iframe element" execution_type="auto" id="iframe_height_attribute_exists" purpose="Check if the iframe.height attribute exists">
         <description>
           <test_script_entry>/opt/tct-sandbox-html5-tests/sandbox/iframe_height_attribute_exists.html</test_script_entry>
         </description>
-        </testcase>
+      </testcase>
       <testcase component="WebAPI/Security/HTML5 The iframe element" execution_type="auto" id="iframe_name_attribute_exists" purpose="Check if the iframe.name attribute exists">
         <description>
           <test_script_entry>/opt/tct-sandbox-html5-tests/sandbox/iframe_name_attribute_exists.html</test_script_entry>
         </description>
-        </testcase>
+      </testcase>
       <testcase component="WebAPI/Security/HTML5 The iframe element" execution_type="auto" id="iframe_sandbox_attribute_exists" purpose="Check if the iframe.sandbox attribute exists">
         <description>
           <test_script_entry>/opt/tct-sandbox-html5-tests/sandbox/iframe_sandbox_attribute_exists.html</test_script_entry>
         </description>
-        </testcase>
+      </testcase>
       <testcase component="WebAPI/Security/HTML5 The iframe element" execution_type="auto" id="iframe_seamless_attribute_exists" purpose="Check if the iframe.seamless attribute exists">
         <description>
           <test_script_entry>/opt/tct-sandbox-html5-tests/sandbox/iframe_seamless_attribute_exists.html</test_script_entry>
         </description>
-        </testcase>
+      </testcase>
       <testcase component="WebAPI/Security/HTML5 The iframe element" execution_type="auto" id="iframe_srcdoc_attribute_exists" purpose="Check if the iframe.srcdoc attribute exists">
         <description>
           <test_script_entry>/opt/tct-sandbox-html5-tests/sandbox/iframe_srcdoc_attribute_exists.html</test_script_entry>
         </description>
-        </testcase>
+      </testcase>
       <testcase component="WebAPI/Security/HTML5 The iframe element" execution_type="auto" id="iframe_src_attribute_exists" purpose="Check if the iframe.src attribute exists">
         <description>
           <test_script_entry>/opt/tct-sandbox-html5-tests/sandbox/iframe_src_attribute_exists.html</test_script_entry>
         </description>
-        </testcase>
+      </testcase>
       <testcase component="WebAPI/Security/HTML5 The iframe element" execution_type="auto" id="iframe_width_attribute_exists" purpose="Check if the iframe.width attribute exists">
         <description>
           <test_script_entry>/opt/tct-sandbox-html5-tests/sandbox/iframe_width_attribute_exists.html</test_script_entry>
         </description>
-        </testcase>
+      </testcase>
       <testcase component="WebAPI/Security/HTML5 The iframe element" execution_type="manual" id="attri_default_block_submit" purpose="Block form submission inside iframe with sandbox attribute">
         <description>
-          <pre_condition />
+          <pre_condition/>
           <steps>
             <step order="1">
               <step_desc>Steps:
@@ -80,167 +80,297 @@
           </steps>
           <test_script_entry>/opt/tct-sandbox-html5-tests/sandbox/w3c/sandbox_007-manual.htm</test_script_entry>
         </description>
-        </testcase>
+      </testcase>
       <testcase component="WebAPI/Security/HTML5 The iframe element" execution_type="auto" id="iframe_contentWindow_attribute_type" purpose="Check if the iframe.contentWindow attribute is of type object">
         <description>
           <test_script_entry>/opt/tct-sandbox-html5-tests/sandbox/iframe_contentWindow_attribute_type.html</test_script_entry>
         </description>
-        </testcase>
+      </testcase>
       <testcase component="WebAPI/Security/HTML5 The iframe element" execution_type="auto" id="iframe_contentWindow_return_window" purpose="Check if the iframe.contentWindow attribute must return the WindowProxy object of the object element's nested browsing context, if it has one">
         <description>
           <test_script_entry>/opt/tct-sandbox-html5-tests/sandbox/iframe_contentWindow_return_window.html</test_script_entry>
         </description>
-        </testcase>
+      </testcase>
       <testcase component="WebAPI/Security/HTML5 The iframe element" execution_type="auto" id="iframe_contentDocument_attribute_exsits" purpose="Check if the iframe.contentDocument attribute exists">
         <description>
           <test_script_entry>/opt/tct-sandbox-html5-tests/sandbox/iframe_contentDocument_attribute_exsits.html</test_script_entry>
         </description>
-        </testcase>
+      </testcase>
       <testcase component="WebAPI/Security/HTML5 The iframe element" execution_type="auto" id="iframe_contentDocument_attribute_type" purpose="Check if the iframe.contentDocument attribute is of type object">
         <description>
           <test_script_entry>/opt/tct-sandbox-html5-tests/sandbox/iframe_contentDocument_attribute_type.html</test_script_entry>
         </description>
-        </testcase>
+      </testcase>
       <testcase component="WebAPI/Security/HTML5 The iframe element" execution_type="auto" id="iframe_contentDocument_return_document" purpose="Check if the iframe.contentDocument attribute must return the Document object of the active document of the iframe element's nested browsing context">
         <description>
           <test_script_entry>/opt/tct-sandbox-html5-tests/sandbox/iframe_contentDocument_return_document.html</test_script_entry>
         </description>
-        </testcase>
+      </testcase>
       <testcase component="WebAPI/Security/HTML5 The iframe element" execution_type="auto" id="iframe_height_attribute_not_readonly" purpose="Check if the iframe.height attribute is not readonly">
         <description>
           <test_script_entry>/opt/tct-sandbox-html5-tests/sandbox/iframe_height_attribute_not_readonly.html</test_script_entry>
         </description>
-        </testcase>
+      </testcase>
       <testcase component="WebAPI/Security/HTML5 The iframe element" execution_type="auto" id="iframe_height_attribute_type" purpose="Check if the iframe.height attribute is of type DOMString">
         <description>
           <test_script_entry>/opt/tct-sandbox-html5-tests/sandbox/iframe_height_attribute_type.html</test_script_entry>
         </description>
-        </testcase>
+      </testcase>
       <testcase component="WebAPI/Security/HTML5 The iframe element" execution_type="auto" id="iframe_height_basic" purpose="Check if the iframe.height attribute must reflect the respective content attributes of the same name">
         <description>
           <test_script_entry>/opt/tct-sandbox-html5-tests/sandbox/iframe_height_basic.html</test_script_entry>
         </description>
-        </testcase>
+      </testcase>
       <testcase component="WebAPI/Security/HTML5 The iframe element" execution_type="auto" id="iframe_height_value_empty_string" purpose="Check if the iframe.height attribute return empty string that it been set empty string">
         <description>
           <test_script_entry>/opt/tct-sandbox-html5-tests/sandbox/iframe_height_value_empty_string.html</test_script_entry>
         </description>
-        </testcase>
+      </testcase>
       <testcase component="WebAPI/Security/HTML5 The iframe element" execution_type="auto" id="iframe_name_attribute_not_readonly" purpose="Check if the iframe.name attribute is not readonly">
         <description>
           <test_script_entry>/opt/tct-sandbox-html5-tests/sandbox/iframe_name_attribute_not_readonly.html</test_script_entry>
         </description>
-        </testcase>
+      </testcase>
       <testcase component="WebAPI/Security/HTML5 The iframe element" execution_type="auto" id="iframe_name_attribute_type" purpose="Check if the iframe.name attribute is of type DOMString">
         <description>
           <test_script_entry>/opt/tct-sandbox-html5-tests/sandbox/iframe_name_attribute_type.html</test_script_entry>
         </description>
-        </testcase>
+      </testcase>
       <testcase component="WebAPI/Security/HTML5 The iframe element" execution_type="auto" id="iframe_name_value_empty_string" purpose="Check if the iframe.name attribute must reflect the respective content attributes of the same name,the value is empty string">
         <description>
           <test_script_entry>/opt/tct-sandbox-html5-tests/sandbox/iframe_name_value_empty_string.html</test_script_entry>
         </description>
-        </testcase>
+      </testcase>
       <testcase component="WebAPI/Security/HTML5 The iframe element" execution_type="auto" id="iframe_name_default_value" purpose="Check if iframe.name default value is empty string">
         <description>
           <test_script_entry>/opt/tct-sandbox-html5-tests/sandbox/iframe_name_default_value.html</test_script_entry>
         </description>
-        </testcase>
+      </testcase>
       <testcase component="WebAPI/Security/HTML5 The iframe element" execution_type="auto" id="iframe_name_value_string" purpose="Check if the iframe.name attribute must reflect the respective content attributes of the same name">
         <description>
           <test_script_entry>/opt/tct-sandbox-html5-tests/sandbox/iframe_name_value_string.html</test_script_entry>
         </description>
-        </testcase>
+      </testcase>
       <testcase component="WebAPI/Security/HTML5 The iframe element" execution_type="auto" id="iframe_seamless_attribute_not_readonly" purpose="Check if the iframe.seamless attribute is not readonly">
         <description>
           <test_script_entry>/opt/tct-sandbox-html5-tests/sandbox/iframe_seamless_attribute_not_readonly.html</test_script_entry>
         </description>
-        </testcase>
+      </testcase>
       <testcase component="WebAPI/Security/HTML5 The iframe element" execution_type="auto" id="iframe_seamless_attribute_type" purpose="Check if the iframe.seamless is of type boolean">
         <description>
           <test_script_entry>/opt/tct-sandbox-html5-tests/sandbox/iframe_seamless_attribute_type.html</test_script_entry>
         </description>
-        </testcase>
+      </testcase>
       <testcase component="WebAPI/Security/HTML5 The iframe element" execution_type="auto" id="iframe_seamless_default_value" purpose="Check if the iframe.seamless attribute return false if absence of the attribute">
         <description>
           <test_script_entry>/opt/tct-sandbox-html5-tests/sandbox/iframe_seamless_default_value.html</test_script_entry>
         </description>
-        </testcase>
+      </testcase>
       <testcase component="WebAPI/Security/HTML5 The iframe element" execution_type="auto" id="iframe_seamless_value_true" purpose="Check if the iframe.seamless value is true when the seamless attribute in iframe element">
         <description>
           <test_script_entry>/opt/tct-sandbox-html5-tests/sandbox/iframe_seamless_value_true.html</test_script_entry>
         </description>
-        </testcase>
+      </testcase>
       <testcase component="WebAPI/Security/HTML5 The iframe element" execution_type="auto" id="iframe_src_attribute_not_readonly" purpose="Check if the iframe.src attribute is not readonly">
         <description>
           <test_script_entry>/opt/tct-sandbox-html5-tests/sandbox/iframe_src_attribute_not_readonly.html</test_script_entry>
         </description>
-        </testcase>
+      </testcase>
       <testcase component="WebAPI/Security/HTML5 The iframe element" execution_type="auto" id="iframe_src_attribute_present" purpose="Check if the iframe.src attribute must be a valid non-empty URL potentially surrounded by spaces if the attribute present">
         <description>
           <test_script_entry>/opt/tct-sandbox-html5-tests/sandbox/iframe_src_attribute_present.html</test_script_entry>
         </description>
-        </testcase>
-     <testcase component="WebAPI/Security/HTML5 The iframe element" execution_type="auto" id="iframe_src_attribute_type" purpose="Check if the iframe.src attribute is of type DOMString">
+      </testcase>
+      <testcase component="WebAPI/Security/HTML5 The iframe element" execution_type="auto" id="iframe_src_attribute_type" purpose="Check if the iframe.src attribute is of type DOMString">
         <description>
           <test_script_entry>/opt/tct-sandbox-html5-tests/sandbox/iframe_src_attribute_type.html</test_script_entry>
         </description>
-        </testcase>
+      </testcase>
       <testcase component="WebAPI/Security/HTML5 The iframe element" execution_type="auto" id="iframe_srcdoc_attribute_not_readonly" purpose="Check if the iframe.srcdoc attribute is not readonly">
         <description>
           <test_script_entry>/opt/tct-sandbox-html5-tests/sandbox/iframe_srcdoc_attribute_not_readonly.html</test_script_entry>
         </description>
-        </testcase>
+      </testcase>
       <testcase component="WebAPI/Security/HTML5 The iframe element" execution_type="auto" id="iframe_srcdoc_attribute_type" purpose="Check if the iframe.srcdoc attribute is of type DOMString">
         <description>
           <test_script_entry>/opt/tct-sandbox-html5-tests/sandbox/iframe_srcdoc_attribute_type.html</test_script_entry>
         </description>
-        </testcase>
+      </testcase>
       <testcase component="WebAPI/Security/HTML5 The iframe element" execution_type="auto" id="iframe_srcdoc_default_value" purpose="Check if the srcdoc attribute default value is empty string">
         <description>
           <test_script_entry>/opt/tct-sandbox-html5-tests/sandbox/iframe_srcdoc_default_value.html</test_script_entry>
         </description>
-        </testcase>
+      </testcase>
       <testcase component="WebAPI/Security/HTML5 The iframe element" execution_type="auto" id="iframe_srcdoc_value_empty_string" purpose="Check if the iframe.srcdoc attribute return empty string if it been set empty string">
         <description>
           <test_script_entry>/opt/tct-sandbox-html5-tests/sandbox/iframe_srcdoc_value_empty_string.html</test_script_entry>
         </description>
-        </testcase>
+      </testcase>
       <testcase component="WebAPI/Security/HTML5 The iframe element" execution_type="auto" id="iframe_srcdoc_value_string" purpose="Check if the iframe.srcdoc attribute must reflect the respective content attributes of the same name">
         <description>
           <test_script_entry>/opt/tct-sandbox-html5-tests/sandbox/iframe_srcdoc_value_string.html</test_script_entry>
         </description>
-        </testcase>
+      </testcase>
       <testcase component="WebAPI/Security/HTML5 The iframe element" execution_type="auto" id="iframe_width_attribute_not_readonly" purpose="Check if the iframe.width attribute is not readonly">
         <description>
           <test_script_entry>/opt/tct-sandbox-html5-tests/sandbox/iframe_width_attribute_not_readonly.html</test_script_entry>
         </description>
-        </testcase>
+      </testcase>
       <testcase component="WebAPI/Security/HTML5 The iframe element" execution_type="auto" id="iframe_width_attribute_type" purpose="Check if the iframe.width attribute is of type DOMString">
         <description>
           <test_script_entry>/opt/tct-sandbox-html5-tests/sandbox/iframe_width_attribute_type.html</test_script_entry>
         </description>
-        </testcase>
+      </testcase>
       <testcase component="WebAPI/Security/HTML5 The iframe element" execution_type="auto" id="iframe_width_null" purpose="Check if iframe.width attribute set null,then compare iframe.width is empty string">
         <description>
           <test_script_entry>/opt/tct-sandbox-html5-tests/sandbox/iframe_width_null.html</test_script_entry>
         </description>
-        </testcase>
+      </testcase>
       <testcase component="WebAPI/Security/HTML5 The iframe element" execution_type="auto" id="iframe_width_value_empty_string" purpose="Check if the iframe.width attribute return null if it been set empty string">
         <description>
           <test_script_entry>/opt/tct-sandbox-html5-tests/sandbox/iframe_width_value_empty_string.html</test_script_entry>
         </description>
-        </testcase>
+      </testcase>
       <testcase component="WebAPI/Security/HTML5 The iframe element" execution_type="auto" id="iframe_width_value_string" purpose="Check if the iframe.width attribute must reflect the respective content attributes of the same name">
         <description>
           <test_script_entry>/opt/tct-sandbox-html5-tests/sandbox/iframe_width_value_string.html</test_script_entry>
         </description>
-        </testcase>
+      </testcase>
       <testcase component="WebAPI/Security/HTML5 The iframe element" execution_type="auto" id="iframe_sandbox_example_default_value" purpose="Check if the iframe.sandbox attribute default value is empty string">
         <description>
           <test_script_entry>/opt/tct-sandbox-html5-tests/sandbox/iframe_sandbox_example_default_value.html</test_script_entry>
         </description>
-        </testcase>
+      </testcase>
+      <testcase component="WebAPI/Security/HTML5 The iframe element" execution_type="auto" id="iframe_contentWindow_document_value" purpose="Check if the iframe.contentWindow.document attribute return the Document object of the active document">
+        <description>
+          <test_script_entry>/opt/tct-sandbox-html5-tests/sandbox/iframe_contentWindow_document_value.html</test_script_entry>
+        </description>
+      </testcase>
+      <testcase component="WebAPI/Security/HTML5 The iframe element" execution_type="auto" id="iframe_height_value_float" purpose="Check if the iframe.height attribute been set float integers value that it clientHeight is valid non-negative integers">
+        <description>
+          <test_script_entry>/opt/tct-sandbox-html5-tests/sandbox/iframe_height_value_float.html</test_script_entry>
+        </description>
+      </testcase>
+      <testcase component="WebAPI/Security/HTML5 The iframe element" execution_type="auto" id="iframe_height_value_negative" purpose="Check if the iframe.height attribute been set negative integers value that it clientHeight is valid non-negative integers">
+        <description>
+          <test_script_entry>/opt/tct-sandbox-html5-tests/sandbox/iframe_height_value_negative.html</test_script_entry>
+        </description>
+      </testcase>
+      <testcase component="WebAPI/Security/HTML5 The iframe element" execution_type="auto" id="iframe_sandbox_allow-same-origin" purpose="Check if iframe.sandbox attribute set 'allow-same-origin',then compare iframe.sandbox is 'allow-same-origin'">
+        <description>
+          <test_script_entry>/opt/tct-sandbox-html5-tests/sandbox/iframe_sandbox_allow-same-origin.html</test_script_entry>
+        </description>
+      </testcase>
+      <testcase component="WebAPI/Security/HTML5 The iframe element" execution_type="auto" id="iframe_sandbox_example_allow-same-origin_allow-forms_allow-scripts" purpose="Check if iframe.sandbox attribute set 'allow-same-origin,allow-forms,allow-scripts',then compare HTMLIFrameElement.sandbox is 'allow-same-origin,allow-forms,allow-scripts'">
+        <description>
+          <test_script_entry>/opt/tct-sandbox-html5-tests/sandbox/iframe_sandbox_example_allow-same-origin_allow-forms_allow-scripts.html</test_script_entry>
+        </description>
+      </testcase>
+      <testcase component="WebAPI/Security/HTML5 The iframe element" execution_type="auto" id="iframe_sandbox_value_allow_scripts" purpose="Check if the iframe.sandbox return allow-scripts that it been set value same name">
+        <description>
+          <test_script_entry>/opt/tct-sandbox-html5-tests/sandbox/iframe_sandbox_value_allow_scripts.html</test_script_entry>
+        </description>
+      </testcase>
+      <testcase component="WebAPI/Security/HTML5 The iframe element" execution_type="auto" id="iframe_sandbox_value_allow_top_navigation" purpose="Check if the iframe.sandbox return allow-top-navigation that it been set value same name">
+        <description>
+          <test_script_entry>/opt/tct-sandbox-html5-tests/sandbox/iframe_sandbox_value_allow_top_navigation.html</test_script_entry>
+        </description>
+      </testcase>
+      <testcase component="WebAPI/Security/HTML5 The iframe element" execution_type="auto" id="iframe_src_value_string" purpose="Check if the iframe.src attribute must reflect the respective content attributes of the same name">
+        <description>
+          <test_script_entry>/opt/tct-sandbox-html5-tests/sandbox/iframe_src_value_string.html</test_script_entry>
+        </description>
+      </testcase>
+      <testcase component="WebAPI/Security/HTML5 The iframe element" execution_type="auto" id="iframe_srcdoc_quotes_escaped" purpose="Check if the attribute srcdoc of iframe,srcdoc quotes have to be escaped">
+        <description>
+          <test_script_entry>/opt/tct-sandbox-html5-tests/sandbox/iframe_srcdoc_quotes_escaped.html</test_script_entry>
+        </description>
+      </testcase>
+      <testcase component="WebAPI/Security/HTML5 The iframe element" execution_type="auto" id="iframe_srcdoc_src_bind" purpose="Check if src attribute and the srcdoc attribute are both specified together, the srcdoc attribute takes priority">
+        <description>
+          <test_script_entry>/opt/tct-sandbox-html5-tests/sandbox/iframe_srcdoc_src_bind.html</test_script_entry>
+        </description>
+      </testcase>
+      <testcase component="WebAPI/Security/HTML5 The iframe element" execution_type="auto" id="iframe_width_value_float" purpose="Check if the iframe.width attribute been set float value that it clientWidth is valid non-negative integers">
+        <description>
+          <test_script_entry>/opt/tct-sandbox-html5-tests/sandbox/iframe_width_value_float.html</test_script_entry>
+        </description>
+      </testcase>
+      <testcase component="WebAPI/Security/HTML5 The iframe element" execution_type="auto" id="iframe_width_value_negative" purpose="Check if the iframe.width attribute been set negative integers value that it clientWidth is valid non-negative integers">
+        <description>
+          <test_script_entry>/opt/tct-sandbox-html5-tests/sandbox/iframe_width_value_negative.html</test_script_entry>
+        </description>
+      </testcase>
+      <testcase component="WebAPI/Security/HTML5 The iframe element" execution_type="auto" id="attri_default_block_script_exec" purpose="Block script execution inside iframe with sandbox attribute">
+        <description>
+          <test_script_entry>/opt/tct-sandbox-html5-tests/sandbox/w3c/sandbox_005.htm</test_script_entry>
+        </description>
+      </testcase>
+      <testcase component="WebAPI/Security/HTML5 The iframe element" execution_type="auto" id="attri_format_return" purpose="value of sandbox attribute must be an unordered set of unique space-separated tokens. Return tag">
+        <description>
+          <test_script_entry>/opt/tct-sandbox-html5-tests/sandbox/w3c/sandbox_013.htm</test_script_entry>
+        </description>
+      </testcase>
+      <testcase component="WebAPI/Security/HTML5 The iframe element" execution_type="auto" id="attri_format_tab" purpose="value of sandbox attribute must be an unordered set of unique space-separated tokens. Tab tag">
+        <description>
+          <test_script_entry>/opt/tct-sandbox-html5-tests/sandbox/w3c/sandbox_014.htm</test_script_entry>
+        </description>
+      </testcase>
+      <testcase component="WebAPI/Security/HTML5 The iframe element" execution_type="auto" id="attri_format_ios_space" purpose="value of sandbox attribute must be an unordered set of unique space-separated tokens. Ios space tag">
+        <description>
+          <test_script_entry>/opt/tct-sandbox-html5-tests/sandbox/w3c/sandbox_015.htm</test_script_entry>
+        </description>
+      </testcase>
+      <testcase component="WebAPI/Security/HTML5 The iframe element" execution_type="auto" id="attri_format_ios_return" purpose="value of sandbox attribute must be an unordered set of unique space-separated tokens. Ios return tag">
+        <description>
+          <test_script_entry>/opt/tct-sandbox-html5-tests/sandbox/w3c/sandbox_016.htm</test_script_entry>
+        </description>
+      </testcase>
+      <testcase component="WebAPI/Security/HTML5 The iframe element" execution_type="auto" id="attri_format_ios_12" purpose="value of sandbox attribute must be an unordered set of unique space-separated tokens. Ios specialtag 10">
+        <description>
+          <test_script_entry>/opt/tct-sandbox-html5-tests/sandbox/w3c/sandbox_017.htm</test_script_entry>
+        </description>
+      </testcase>
+      <testcase component="WebAPI/Security/HTML5 The iframe element" execution_type="auto" id="attri_format_ios_10" purpose="value of sandbox attribute must be an unordered set of unique space-separated tokens. Ios special tag 10">
+        <description>
+          <test_script_entry>/opt/tct-sandbox-html5-tests/sandbox/w3c/sandbox_018.htm</test_script_entry>
+        </description>
+      </testcase>
+      <testcase component="WebAPI/Security/HTML5 The iframe element" execution_type="auto" id="attri_format_ios_tab" purpose="value of sandbox attribute must be an unordered set of unique space-separated tokens. Ios tab tag">
+        <description>
+          <test_script_entry>/opt/tct-sandbox-html5-tests/sandbox/w3c/sandbox_019.htm</test_script_entry>
+        </description>
+      </testcase>
+      <testcase component="WebAPI/Security/HTML5 The iframe element" execution_type="auto" id="attri_allow-same-origin_cookie" purpose="document.cookie access is allowed inside iframe with sandbox='allow-same-origin.">
+        <description>
+          <test_script_entry>/opt/tct-sandbox-html5-tests/sandbox/w3c/sandbox_024.htm</test_script_entry>
+        </description>
+      </testcase>
+      <testcase component="WebAPI/Security/HTML5 The iframe element" execution_type="auto" id="attri_allow-same-origin_child_content" purpose="Allow parent content to access sandbox child iframe content when sandbox='allow-same-origin'">
+        <description>
+          <test_script_entry>/opt/tct-sandbox-html5-tests/sandbox/w3c/sandbox_025.htm</test_script_entry>
+        </description>
+      </testcase>
+      <testcase component="WebAPI/Security/HTML5 The iframe element" execution_type="auto" id="attri_allow-same-origin_storage" purpose="Allow localStorage and sessionStorage access inside iframe with sandbox='allow-same-origin allow-scripts'">
+        <description>
+          <test_script_entry>/opt/tct-sandbox-html5-tests/sandbox/w3c/sandbox_026.htm</test_script_entry>
+        </description>
+      </testcase>
+      <testcase component="WebAPI/Security/HTML5 The iframe element" execution_type="auto" id="attri_default_block_cookie" purpose="Block document.cookie inside iframe with the sandbox attribute">
+        <description>
+          <test_script_entry>/opt/tct-sandbox-html5-tests/sandbox/w3c/sandbox_029.htm</test_script_entry>
+        </description>
+      </testcase>
+      <testcase component="WebAPI/Security/HTML5 The iframe element" execution_type="auto" id="attri_default_block_storage" purpose="Block localStorage and sessionStorage inside iframe with the sandbox attribute">
+        <description>
+          <test_script_entry>/opt/tct-sandbox-html5-tests/sandbox/w3c/sandbox_031.htm</test_script_entry>
+        </description>
+      </testcase>
+      <testcase component="WebAPI/Security/HTML5 The iframe element" execution_type="auto" id="attri_default_block_XMLHttpRequest" purpose="Block XMLHttpRequest in an iframe with the sandbox attribute">
+        <description>
+          <test_script_entry>/opt/tct-sandbox-html5-tests/sandbox/w3c/sandbox_032.htm</test_script_entry>
+        </description>
+      </testcase>
     </set>
   </suite>
 </test_definition>
