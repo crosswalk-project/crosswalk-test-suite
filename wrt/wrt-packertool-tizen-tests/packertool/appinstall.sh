@@ -12,10 +12,10 @@ if [ $? -eq 1 ];then
   exit 1
 else
   echo "Install ok"
-  pkg_id_tmp=`pkginfo --listpkg | head -n 5 | grep Appid`
-  webapp_id=${pkg_id_tmp:7}
-  echo $webapp_id
-  pkgcmd -u -n  $webapp_id -q
+  app_id=`pkgcmd -l | grep diffid_same_version_tests | head -n 1 | awk '{print $4}'`
+  app_id=`echo $app_id | awk '{print $1}'`
+  app_id=${app_id:1:-1}
+  pkgcmd -u -n  $app_id -q
   if [ $? -eq 0 ];then
       echo "Unintall Pass"
       exit 0
