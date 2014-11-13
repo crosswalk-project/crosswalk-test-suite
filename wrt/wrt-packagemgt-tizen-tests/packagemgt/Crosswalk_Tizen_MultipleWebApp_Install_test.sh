@@ -47,8 +47,8 @@ if [[ $? -eq 0 ]]; then
                 exit 1
 fi
 app_id1=`pkgcmd -l | grep "diffid_same_version_tests" | awk '{print $4}'`
-app_id1=`echo $app_id | awk '{print $1}'`
-app_id1=${app_id:1:-1}
+app_id1=`echo $app_id1 | awk '{print $1}'`
+app_id1=${app_id1:1:-1}
 pkgcmd -i -t xpk -p $xpk_path/update_original_versionOne_tests.xpk -q
 if [[ $? -eq 0 ]]; then
                 echo "Install Pass"
@@ -57,8 +57,8 @@ if [[ $? -eq 0 ]]; then
                 exit 1
 fi
 app_id2=`pkgcmd -l | grep "update_original_versionOne_tests" | awk '{print $4}'`
-app_id2=`echo $app_id | awk '{print $1}'`
-app_id2=${app_id:1:-1}
+app_id2=`echo $app_id2 | awk '{print $1}'`
+app_id2=${app_id2:1:-1}
 pkgcmd -u -n  $app_id1 -q
 if [[ $? -eq 0 ]]; then
                 echo "Uninstall Pass"

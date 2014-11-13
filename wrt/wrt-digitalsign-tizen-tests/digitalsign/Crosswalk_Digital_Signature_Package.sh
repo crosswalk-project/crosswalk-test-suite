@@ -37,9 +37,12 @@ pkgcmd -i -t xpk -p $local_path/../source/signature.xpk -q
 app_name=`sqlite3 /home/app/.applications/dbspace/.app_info.db "select name from app_info where name like \"%signature%\";"`
 app_id=`sqlite3 /home/app/.applications/dbspace/.app_info.db "select package from app_info where name like \"%signature%\";"`
 if [[ $app_name =~ "signature" ]]; then
-    echo "The ignature.xpk install successfully"
+    echo "The signature.xpk install successfully"
     # uninstall xpk
-    pkgcmd -u -n $webappid -q
+    app_id=`pkgcmd -l | grep wrt-signature-tizen-tests | awk '{print $4}'`
+    app_id=`echo $app_id | awk '{print $1}'`
+    app_id=${app_id:1:-1}
+    pkgcmd -u -n $app_id -q
     exit 0
 else
    echo "Fail"

@@ -131,7 +131,6 @@ function get_app_id(){
         app_id=`pkgcmd -l | grep $1 | awk '{print $4}'`
         app_id=`echo $app_id | awk '{print $1}'`
         app_id=${app_id:1:-1}
-        echo "app_id=",$app_id
 }
 
 function uninstall_exist_xpk(){
