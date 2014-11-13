@@ -137,7 +137,7 @@
       </testcase>
       <testcase purpose="Check if the stringify argument of EventSource is set to object" type="compliance" status="approved" component="WebAPI/Communication/Server-Sent Events" execution_type="auto" priority="P2" id="Eventsource-constructor-stringify_1">
         <description>
-          <test_script_entry>/opt/tct-sse-w3c-tests/sse/w3c/eventsource-constructor-stringify.htm?total_num=4&amp;amp;locator_key=id&amp;amp;value=1</test_script_entry>
+          <test_script_entry>/opt/tct-sse-w3c-tests/sse/w3c/eventsource-constructor-stringify.htm?total_num=4&amp;locator_key=id&amp;value=1</test_script_entry>
         </description>
         <specs>
           <spec>
@@ -149,7 +149,7 @@
       </testcase>
       <testcase purpose="Check if the stringify argument of EventSource is set to 1" type="compliance" status="approved" component="WebAPI/Communication/Server-Sent Events" execution_type="auto" priority="P2" id="Eventsource-constructor-stringify_2">
         <description>
-          <test_script_entry>/opt/tct-sse-w3c-tests/sse/w3c/eventsource-constructor-stringify.htm?total_num=4&amp;amp;locator_key=id&amp;amp;value=2</test_script_entry>
+          <test_script_entry>/opt/tct-sse-w3c-tests/sse/w3c/eventsource-constructor-stringify.htm?total_num=4&amp;locator_key=id&amp;value=2</test_script_entry>
         </description>
         <specs>
           <spec>
@@ -161,7 +161,7 @@
       </testcase>
       <testcase purpose="Check if the stringify argument of EventSource is set to null" type="compliance" status="approved" component="WebAPI/Communication/Server-Sent Events" execution_type="auto" priority="P2" id="Eventsource-constructor-stringify_3">
         <description>
-          <test_script_entry>/opt/tct-sse-w3c-tests/sse/w3c/eventsource-constructor-stringify.htm?total_num=4&amp;amp;locator_key=id&amp;amp;value=3</test_script_entry>
+          <test_script_entry>/opt/tct-sse-w3c-tests/sse/w3c/eventsource-constructor-stringify.htm?total_num=4&amp;locator_key=id&amp;value=3</test_script_entry>
         </description>
         <specs>
           <spec>
@@ -173,7 +173,7 @@
       </testcase>
       <testcase purpose="Check if the stringify argument of EventSource is set to undefined" type="compliance" status="approved" component="WebAPI/Communication/Server-Sent Events" execution_type="auto" priority="P2" id="Eventsource-constructor-stringify_4">
         <description>
-          <test_script_entry>/opt/tct-sse-w3c-tests/sse/w3c/eventsource-constructor-stringify.htm?total_num=4&amp;amp;locator_key=id&amp;amp;value=4</test_script_entry>
+          <test_script_entry>/opt/tct-sse-w3c-tests/sse/w3c/eventsource-constructor-stringify.htm?total_num=4&amp;locator_key=id&amp;value=4</test_script_entry>
         </description>
         <specs>
           <spec>
@@ -671,6 +671,150 @@
           <spec>
             <spec_assertion usage="true" interface="EventSource" specification="Server-Sent Events" section="Communication" category="Tizen W3C API Specifications"/>
             <spec_url>http://www.w3.org/TR/2011/WD-eventsource-20111020/#the-eventsource-interface</spec_url>
+            <spec_statement/>
+          </spec>
+        </specs>
+      </testcase>
+      <testcase purpose="Check if EventSource.CLOSED attribute exists and typeof number" type="compliance" status="approved" component="WebAPI/Communication/Server-Sent Events" execution_type="auto" priority="P2" id="sse_EventSource_CLOSED">
+        <description>
+          <test_script_entry>/opt/tct-sse-w3c-tests/sse/sse_EventSource_CLOSED.html</test_script_entry>
+        </description>
+        <specs>
+          <spec>
+            <spec_assertion element_type="attribute" element_name="CLOSED" interface="EventSource" specification="Server-Sent Events" section="Communication" category="Tizen W3C API Specifications"/>
+            <spec_url>http://www.w3.org/TR/2011/WD-eventsource-20111020/#dom-eventsource-closed</spec_url>
+            <spec_statement/>
+          </spec>
+        </specs>
+      </testcase>
+      <testcase purpose="Check if EventSource.CONNECTING attribute exists and typeof number" type="compliance" status="approved" component="WebAPI/Communication/Server-Sent Events" execution_type="auto" priority="P2" id="sse_EventSource_CONNECTING">
+        <description>
+          <test_script_entry>/opt/tct-sse-w3c-tests/sse/sse_EventSource_CONNECTING.html</test_script_entry>
+        </description>
+        <specs>
+          <spec>
+            <spec_assertion element_type="attribute" element_name="CONNECTING" interface="EventSource" specification="Server-Sent Events" section="Communication" category="Tizen W3C API Specifications"/>
+            <spec_url>http://www.w3.org/TR/2011/WD-eventsource-20111020/#dom-eventsource-connecting</spec_url>
+            <spec_statement/>
+          </spec>
+        </specs>
+      </testcase>
+      <testcase purpose="Check if trigger EventSource.onerror event when connection happens an error" type="compliance" status="approved" component="WebAPI/Communication/Server-Sent Events" execution_type="auto" priority="P2" id="sse_EventSource_onerror_base">
+        <description>
+          <test_script_entry>/opt/tct-sse-w3c-tests/sse/sse_EventSource_onerror_base.html</test_script_entry>
+        </description>
+        <specs>
+          <spec>
+            <spec_assertion element_type="eventhandler" element_name="onerror" interface="EventSource" specification="Server-Sent Events" section="Communication" category="Tizen W3C API Specifications"/>
+            <spec_url>http://www.w3.org/TR/2011/WD-eventsource-20111020/#handler-eventsource-onerror</spec_url>
+            <spec_statement/>
+          </spec>
+        </specs>
+      </testcase>
+      <testcase purpose="Check if EventSource.OPEN attribute exists and typeof number" type="compliance" status="approved" component="WebAPI/Communication/Server-Sent Events" execution_type="auto" priority="P2" id="sse_EventSource_OPEN">
+        <description>
+          <test_script_entry>/opt/tct-sse-w3c-tests/sse/sse_EventSource_OPEN.html</test_script_entry>
+        </description>
+        <specs>
+          <spec>
+            <spec_assertion element_type="attribute" element_name="OPEN" interface="EventSource" specification="Server-Sent Events" section="Communication" category="Tizen W3C API Specifications"/>
+            <spec_url>http://www.w3.org/TR/2011/WD-eventsource-20111020/#dom-eventsource-open</spec_url>
+            <spec_statement/>
+          </spec>
+        </specs>
+      </testcase>
+      <testcase purpose="Check if the type of ServerSentEvent.readyState is number" type="compliance" status="approved" component="WebAPI/Communication/Server-Sent Events" execution_type="auto" priority="P2" id="sse_EventSource_readyState_type" onload_delay="12">
+        <description>
+          <test_script_entry>/opt/tct-sse-w3c-tests/sse/sse_EventSource_readyState.html?total_num=5&amp;locator_key=id&amp;value=1</test_script_entry>
+        </description>
+        <specs>
+          <spec>
+            <spec_assertion element_type="attribute" element_name="readyState" interface="EventSource" specification="Server-Sent Events" section="Communication" category="Tizen W3C API Specifications"/>
+            <spec_url>http://www.w3.org/TR/2011/WD-eventsource-20111020/#dom-eventsource-readystate</spec_url>
+            <spec_statement/>
+          </spec>
+        </specs>
+      </testcase>
+      <testcase purpose="Check if EventSource.readyState attribute is readonly" type="compliance" status="approved" component="WebAPI/Communication/Server-Sent Events" execution_type="auto" priority="P2" id="sse_EventSource_readyState_readonly" onload_delay="12">
+        <description>
+          <test_script_entry>/opt/tct-sse-w3c-tests/sse/sse_EventSource_readyState.html?total_num=5&amp;locator_key=id&amp;value=2</test_script_entry>
+        </description>
+        <specs>
+          <spec>
+            <spec_assertion element_type="attribute" element_name="readyState" interface="EventSource" specification="Server-Sent Events" section="Communication" category="Tizen W3C API Specifications"/>
+            <spec_url>http://www.w3.org/TR/2011/WD-eventsource-20111020/#dom-eventsource-readystate</spec_url>
+            <spec_statement/>
+          </spec>
+        </specs>
+      </testcase>
+      <testcase purpose="Check if EventSource.readyState is CONNECTING when the eventsource is created" type="compliance" status="approved" component="WebAPI/Communication/Server-Sent Events" execution_type="auto" priority="P2" id="sse_EventSource_readyState_CONNECTING" onload_delay="12">
+        <description>
+          <test_script_entry>/opt/tct-sse-w3c-tests/sse/sse_EventSource_readyState.html?total_num=5&amp;locator_key=id&amp;value=3</test_script_entry>
+        </description>
+        <specs>
+          <spec>
+            <spec_assertion element_type="attribute" element_name="readyState" interface="EventSource" specification="Server-Sent Events" section="Communication" category="Tizen W3C API Specifications"/>
+            <spec_url>http://www.w3.org/TR/2011/WD-eventsource-20111020/#dom-eventsource-readystate</spec_url>
+            <spec_statement/>
+          </spec>
+        </specs>
+      </testcase>
+      <testcase purpose="Check if EventSource.readyState is CLOSED when the eventsource is closed" type="compliance" status="approved" component="WebAPI/Communication/Server-Sent Events" execution_type="auto" priority="P2" id="sse_EventSource_readyState_CLOSED" onload_delay="12">
+        <description>
+          <test_script_entry>/opt/tct-sse-w3c-tests/sse/sse_EventSource_readyState.html?total_num=5&amp;locator_key=id&amp;value=4</test_script_entry>
+        </description>
+        <specs>
+          <spec>
+            <spec_assertion element_type="attribute" element_name="readyState" interface="EventSource" specification="Server-Sent Events" section="Communication" category="Tizen W3C API Specifications"/>
+            <spec_url>http://www.w3.org/TR/2011/WD-eventsource-20111020/#dom-eventsource-readystate</spec_url>
+            <spec_statement/>
+          </spec>
+        </specs>
+      </testcase>
+      <testcase purpose="Check if EventSource.readyState is OPEN when the eventsource is opened" type="compliance" status="designed" component="WebAPI/Communication/Server-Sent Events" execution_type="auto" priority="P2" id="sse_EventSource_readyState_OPEN" onload_delay="12">
+        <description>
+          <test_script_entry>/opt/tct-sse-w3c-tests/sse/sse_EventSource_readyState.html?total_num=5&amp;locator_key=id&amp;value=5</test_script_entry>
+        </description>
+        <specs>
+          <spec>
+            <spec_assertion element_type="attribute" element_name="readyState" interface="EventSource" specification="Server-Sent Events" section="Communication" category="Tizen W3C API Specifications"/>
+            <spec_url>http://www.w3.org/TR/2011/WD-eventsource-20111020/#dom-eventsource-readystate</spec_url>
+            <spec_statement/>
+          </spec>
+        </specs>
+      </testcase>
+      <testcase purpose="Check if EventSource.url attribute is readonly" type="compliance" status="approved" component="WebAPI/Communication/Server-Sent Events" execution_type="auto" priority="P2" id="sse_EventSource_url_readonly">
+        <description>
+          <test_script_entry>/opt/tct-sse-w3c-tests/sse/sse_EventSource_url_readonly.html</test_script_entry>
+        </description>
+        <specs>
+          <spec>
+            <spec_assertion element_type="attribute" element_name="url" interface="EventSource" specification="Server-Sent Events" section="Communication" category="Tizen W3C API Specifications"/>
+            <spec_url>http://www.w3.org/TR/2011/WD-eventsource-20111020/#dom-eventsource-url</spec_url>
+            <spec_statement/>
+          </spec>
+        </specs>
+      </testcase>
+      <testcase purpose="Check if the type of ServerSentEvent.url is string" type="compliance" status="approved" component="WebAPI/Communication/Server-Sent Events" execution_type="auto" priority="P2" id="sse_EventSource_url_type">
+        <description>
+          <test_script_entry>/opt/tct-sse-w3c-tests/sse/sse_EventSource_url_type.html</test_script_entry>
+        </description>
+        <specs>
+          <spec>
+            <spec_assertion element_type="attribute" element_name="url" interface="EventSource" specification="Server-Sent Events" section="Communication" category="Tizen W3C API Specifications"/>
+            <spec_url>http://www.w3.org/TR/2011/WD-eventsource-20111020/#dom-eventsource-url</spec_url>
+            <spec_statement/>
+          </spec>
+        </specs>
+      </testcase>
+      <testcase purpose="Check if ServerSentEvent.EventSource() implement the WorkerUtils interface" type="compliance" status="approved" component="WebAPI/Communication/Server-Sent Events" execution_type="auto" priority="P3" id="sse_EventSource_WorkerUtils_exists">
+        <description>
+          <test_script_entry>/opt/tct-sse-w3c-tests/sse/sse_EventSource_WorkerUtils_exists.html</test_script_entry>
+        </description>
+        <specs>
+          <spec>
+            <spec_assertion usage="true" interface="EventSource" specification="Server-Sent Events" section="Communication" category="Tizen W3C API Specifications"/>
+            <spec_url>http://www.w3.org/TR/2011/WD-eventsource-20111020/</spec_url>
             <spec_statement/>
           </spec>
         </specs>
