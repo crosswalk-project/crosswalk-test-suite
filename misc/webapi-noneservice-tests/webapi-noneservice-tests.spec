@@ -13,7 +13,6 @@ webapi-htmltemplates-html5-tests
 webapi-runtime-xwalk-tests
 webapi-shadowdom-w3c-tests
 webapi-taskscheduler-sysapps-tests
-webapi-cssfilter-w3c-tests
 webapi-locale-xwalk-tests
 webapi-speechapi-xwalk-tests
 webapi-vehicleinfo-ivi-tests
