@@ -645,25 +645,6 @@
           </spec>
         </specs>
       </testcase>
-      <testcase purpose="Check if user agent is unable to use inline script when default-src is none." type="compliance" status="approved" component="WebAPI/Security/Content Security Policy" execution_type="manual" priority="P2" id="csp_default-src_none_script">
-        <description>
-          <pre_condition>Connect to PHP server</pre_condition>
-          <post_condition/>
-          <steps>
-            <step order="1">
-              <step_desc>Run the manual case: csp_default-src_none_script.</step_desc>
-              <expected>To pass, if text "PASS" appears below.</expected>
-            </step>
-          </steps>
-          <test_script_entry test_script_expected_result="0">/opt/tct-csp-w3c-tests/csp/csp_default-src_none_script.cgi</test_script_entry>
-        </description>
-        <specs>
-          <spec>
-            <spec_assertion element_type="attribute" element_name="default-src" interface="Content-Security-Policy" specification="Content Security Policy" section="TBD" category="Tizen W3C API Specifications"/>
-            <spec_url>http://www.w3.org/TR/2012/CR-CSP-20121115/#default-src</spec_url>
-          </spec>
-        </specs>
-      </testcase>
     </set>
     <set name="media-src" type="js">
       <testcase purpose="Check if video current src is null by default when media-src is self." type="compliance" status="approved" component="WebAPI/Security/Content Security Policy" execution_type="auto" priority="P2" id="csp_media-src_self_video_default">
@@ -1418,25 +1399,6 @@
           </spec>
         </specs>
       </testcase>
-      <testcase purpose="Check if default-src is 'self' but without unsafe-inline, that inline script will be blocked." type="compliance" status="ready" component="WebAPI/Security/Content Security Policy" execution_type="manual" priority="P2" id="csp_default-src-inline-blocked">
-        <description>
-          <pre_condition>Connect to PHP server</pre_condition>
-          <post_condition/>
-          <steps>
-            <step order="1">
-              <step_desc>Run the manual testcase: CSP_default-src-inline-blocked.cgi</step_desc>
-              <expected>To pass, if a blank iframe appears.</expected>
-            </step>
-          </steps>
-          <test_script_entry test_script_expected_result="0">/opt/tct-csp-w3c-tests/csp/w3c/CSP_default-src-inline-blocked.cgi</test_script_entry>
-        </description>
-        <specs>
-          <spec>
-            <spec_assertion element_type="attribute" element_name="default-src" interface="Content-Security-Policy" specification="Content Security Policy" section="TBD" category="Tizen W3C API Specifications"/>
-            <spec_url>http://www.w3.org/TR/2012/CR-CSP-20121115/#default-src</spec_url>
-          </spec>
-        </specs>
-      </testcase>
       <testcase purpose="Check if a policy ina n HTML meta element with an http-equiv attribute that match for Content-Security-Policy." type="compliance" status="ready" component="WebAPI/Security/Content Security Policy" execution_type="auto" priority="P2" id="csp_html-meta-elemtn">
         <description>
           <test_script_entry test_script_expected_result="0">/opt/tct-csp-w3c-tests/csp/csp_html_meta_element.html</test_script_entry>
@@ -1461,6 +1423,30 @@
       </testcase>
     </set>
     <set name="csp-ref" type="ref">
+      <testcase purpose="Check if default-src is 'self' but without unsafe-inline, that inline script will be blocked." type="compliance" status="ready" component="WebAPI/Security/Content Security Policy" execution_type="manual" priority="P2" id="csp_default-src-inline-blocked">
+        <description>
+          <test_script_entry test_script_expected_result="0">/opt/tct-csp-w3c-tests/csp/w3c/CSP_default-src-inline-blocked.cgi</test_script_entry>
+          <refer_test_script_entry timeout="90">/opt/tct-csp-w3c-tests/csp/reference/csp_default-src-inline-blocked-ref.html</refer_test_script_entry>
+        </description>
+        <specs>
+          <spec>
+            <spec_assertion element_type="attribute" element_name="default-src" interface="Content-Security-Policy" specification="Content Security Policy" section="TBD" category="Tizen W3C API Specifications"/>
+            <spec_url>http://www.w3.org/TR/2012/CR-CSP-20121115/#default-src</spec_url>
+          </spec>
+        </specs>
+      </testcase>
+      <testcase purpose="Check if user agent is unable to use inline script when default-src is none." type="compliance" status="approved" component="WebAPI/Security/Content Security Policy" execution_type="manual" priority="P2" id="csp_default-src_none_script">
+        <description>
+          <test_script_entry test_script_expected_result="0">/opt/tct-csp-w3c-tests/csp/csp_default-src_none_script.cgi</test_script_entry>
+          <refer_test_script_entry timeout="90">/opt/tct-csp-w3c-tests/csp/reference/csp_script-src_none-ref.html</refer_test_script_entry>
+        </description>
+        <specs>
+          <spec>
+            <spec_assertion element_type="attribute" element_name="default-src" interface="Content-Security-Policy" specification="Content Security Policy" section="TBD" category="Tizen W3C API Specifications"/>
+            <spec_url>http://www.w3.org/TR/2012/CR-CSP-20121115/#default-src</spec_url>
+          </spec>
+        </specs>
+      </testcase>
       <testcase purpose="Check if user agent is unable to use javascript internal when sandbox is empty." type="compliance" status="approved" component="WebAPI/Security/Content Security Policy" execution_type="auto" priority="P1" id="csp_sandbox_empty_int">
         <description>
           <pre_condition>Connect to PHP server</pre_condition>

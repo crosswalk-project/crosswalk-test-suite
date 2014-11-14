@@ -40,6 +40,7 @@ Authors:
     <title>CSP Test: csp_default-src_none_script</title>
     <link rel="author" title="Intel" href="http://www.intel.com"/>
     <link rel="help" href="http://www.w3.org/TR/2012/CR-CSP-20121115/#default-src"/>
+    <link rel="match" href="reference/csp_script-src_none-ref.html"/>
     <meta name="flags" content=""/>
     <meta name="assert" content="default-src 'none'"/>
     <meta charset="utf-8"/>
