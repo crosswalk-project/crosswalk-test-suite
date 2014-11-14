@@ -43,8 +43,9 @@ sleep 2
 if [[ "$launch_statue" =~ "launched" ]];then
    sleep 14400
    pkgcmd -u -n videoplaye -q
+   exit 0
    echo "end..."
 else
     exit 1
 fi
-
+exit 0
