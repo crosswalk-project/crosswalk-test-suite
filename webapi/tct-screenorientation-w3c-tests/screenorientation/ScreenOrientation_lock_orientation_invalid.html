@@ -43,8 +43,10 @@ var t = async_test("Test checks that screen.orientation.lock(invalid) invoke err
 
 t.step(function () {
   var p = screen.orientation.lock("invalid-landsapce");
-  p.then(t.unreached_func("Unexpected success callback"), t.step_func(function(e) {
-    t.done();
+  p.then(function(){
+      t.unreached_func("Unexpected success callback");
+    }, t.step_func(function(e) {
+      t.done();
   }));
 });
 

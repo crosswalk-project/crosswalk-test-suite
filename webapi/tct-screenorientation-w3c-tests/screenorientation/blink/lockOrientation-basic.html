@@ -16,20 +16,31 @@ https://chromium.googlesource.com/chromium/blink/+/master/LICENSE
 <div id="log"></div>
 <script>
 var t = async_test("Basic screen.orientation.lock() and screen.orientation.unlock() testing", {timeout: 2000});
-var orientation_num = 0;
 
-t.step(function () {
+t.step(function() {
+  var orientations = [
+    "any", "natural",  "landscape", "portrait", "portrait-primary", "portrait-secondary",
+    "landscape-primary", "landscape-secondary"
+  ];
+
+  var setOrientation = function(idx) {
+    if (idx === orientations.length) {
+      t.done();
+      return;
+    }
+    (function(i){
+      screen.orientation.lock(orientations[i]).then(
+        t.step_func(function(e){
+          setOrientation(i+1);
+        }),
+        function() {
+          t.unreached_func('Unexpected error callback');
+      });
+    })(idx);
+  };
+
   screen.orientation.unlock();
-  [
-    "any", "landscape", "portrait", "portrait-primary", "portrait-secondary",
-    "landscape-primary", "landscape-secondary", "0",  "90", "180", "270"
-  ].forEach(function(orientation) {
-    orientation_num++;
-    screen.orientation.lock(orientation).then(t.step_func(function(e) {
-      if (orientation_num == 11) {
-        t.done();
-      }
-    }), t.unreached_func("Unexpected error callback"));
-  });
+  setOrientation(0);
+
 });
 </script>
