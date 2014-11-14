@@ -1,0 +1,27 @@
+{
+    "pkg-blacklist": [
+        "pack.py", 
+        "COPYING", 
+        "suite.json", 
+        "inst.*.py"
+    ], 
+    "pkg-list": {
+        "embeddingapi": {
+            "blacklist": [
+                "*"
+            ], 
+            "copylist": {
+                "inst.apk.py": "inst.py", 
+                "tests.android.xml": "tests.xml"
+            }, 
+            "subapp-list": {
+                "embeddingapi": {
+                    "app-name": "embeddingapi", 
+                    "app-type": "EMBEDDINGAPI", 
+                    "embeddingapi-library-name": "crosswalk-webview"
+                }
+            }
+        }
+    }, 
+    "pkg-name": "embeddingapi-usecase-tests"
+}
