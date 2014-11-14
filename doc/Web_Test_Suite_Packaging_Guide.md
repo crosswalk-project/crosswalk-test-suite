@@ -223,7 +223,6 @@ Please see Appendix 5 for the package list.
 - tct-xmlhttprequest-w3c-tests
 - webapi-appuri-sysapps-tests
 - webapi-contactsmanager-sysapps-tests
-- webapi-cssfilter-ivi-tests
 - webapi-deviceadaptation-css3-tests
 - webapi-devicecapabilities-sysapps-tests
 - webapi-dlna-ivi-tests
@@ -362,7 +361,6 @@ Please see Appendix 5 for the package list.
 - tct-workers-w3c-tests
 - tct-xmlhttprequest-w3c-tests
 - webapi-appuri-sysapps-tests
-- webapi-cssfilter-ivi-tests
 - webapi-deviceadaptation-css3-tests
 - webapi-devicecapabilities-sysapps-tests
 - webapi-dlna-ivi-tests
@@ -600,7 +598,6 @@ Please see Appendix 5 for the package list.
 - tct-xmlhttprequest-w3c-tests
 - webapi-appuri-sysapps-tests
 - webapi-contactsmanager-sysapps-tests
-- webapi-cssfilter-ivi-tests
 - webapi-deviceadaptation-css3-tests
 - webapi-devicecapabilities-sysapps-tests
 - webapi-dlna-ivi-tests
