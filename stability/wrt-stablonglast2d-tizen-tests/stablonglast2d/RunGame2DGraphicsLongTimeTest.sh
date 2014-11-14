@@ -42,7 +42,9 @@ sleep 2
 if [[ "$launch_statue" =~ "launched" ]];then
    sleep 86400
    pkgcmd -u -n twodoptest -q
+   exit 0
    echo "end..."
 else
     exit 1
 fi
+exit 0
