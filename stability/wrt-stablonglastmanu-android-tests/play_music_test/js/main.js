@@ -35,15 +35,15 @@ $(document).ready(function(){
     DisablePassButton();
     document.getElementById("MediaPlayback").volume = 0.6;
     $("#slider-1").hide();
-    /*musicplay()
+    musicplay()
     var cc = 0;
     var a = document.getElementById("MediaPlayback");
     a.addEventListener("ended", function() {
         cc++;
-        if (cc <=1500) {
+        if (cc <=14400) {
 　　       a.play();
         }
-    });*/
+    });
 
 });
 
@@ -53,7 +53,7 @@ function musicplay1500() {
     var a = document.getElementById("MediaPlayback");
     a.addEventListener("ended", function() {
         cc++;
-        if (cc <=2880) {
+        if (cc <=14400) {
 　　       a.play();
         }
     });
@@ -66,20 +66,20 @@ function musicplaypause1500() {
     var a = document.getElementById("MediaPlayback");
     a.addEventListener("ended", function() {
         cc++;
-        if (cc <=2880) {
+        if (cc <=14400) {
 　　       a.play();
         }
     });
     var ps = document.getElementById("MediaPlayback");
     ps.addEventListener("playing", function() {
-        if (cc <=2880) {
+        if (cc <=14400) {
 　　       pausewait();
         }
         
     });
     var rp = document.getElementById("MediaPlayback");
     rp.addEventListener("pause", function() {
-        if (cc <=2880) {
+        if (cc <=14400) {
 　　      playwait();
         }
     });
