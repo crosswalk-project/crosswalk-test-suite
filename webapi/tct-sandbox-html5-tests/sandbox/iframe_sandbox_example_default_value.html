@@ -31,26 +31,21 @@ Authors:
 
 -->
 
-<html>
-  <head>
-    <title>Iframe Sandbox Test: iframe_sandbox_example_default_value</title>
-    <link rel="author" title="Intel" href="http://www.intel.com" />
-    <link rel="help" href="http://www.w3.org/TR/2012/WD-html5-20121025/the-iframe-element.html?path=5_2_8#the-iframe-element" />
-    <meta name="flags" content="" />
-    <meta name="assert" content="Check if the iframe.sandbox attribute default value is empty string" />
-    <script src="../resources/testharness.js"></script>
-    <script src="../resources/testharnessreport.js"></script>
-  </head>
-  <body>
-    <div id="log"></div>
-    <article>
-      <iframe id="if2" sandbox></iframe>
-    </article>
-    <script>
-        test(function (){
-            var popr = document.getElementById("if2").sandbox;
-            assert_true(popr == "", "The iframe.sandbox is empty stirng");
-        }, document.title);
-    </script>
-  </body>
-</html>
+<meta charset="utf-8">
+<title>Iframe Sandbox Test: iframe_sandbox_example_default_value</title>
+<link rel="author" title="Intel" href="http://www.intel.com">
+<link rel="help" href="http://www.w3.org/TR/2012/WD-html5-20121025/the-iframe-element.html?path=5_2_8#the-iframe-element"/>
+<script src="../resources/testharness.js"></script>
+<script src="../resources/testharnessreport.js"></script>
+<div id="log"></div>
+<article>
+  <iframe id="if2" sandbox></iframe>
+</article>
+<script>
+
+  test(function () {
+     assert_equals(document.getElementById("if2").sandbox, "", "The iframe.sandbox is empty stirng");
+  }, document.title);
+
+</script>
+

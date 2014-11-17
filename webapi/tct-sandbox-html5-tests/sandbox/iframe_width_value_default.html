@@ -31,25 +31,20 @@ Authors:
 
 -->
 
-<html>
-  <head>
-    <title>Iframe Sandbox Test: iframe_width_null</title>
-    <link rel="author" title="Intel" href="http://www.intel.com" />
-    <link rel="help" href="http://www.w3.org/TR/2012/WD-html5-20121025/the-iframe-element.html?path=5_2_8#the-iframe-element" />
-    <meta name="flags" content="" />
-    <meta name="assert" content="Check if iframe.width attribute set null,then compare iframe.width is empty string" />
-    <script src="../resources/testharness.js"></script>
-    <script src="../resources/testharnessreport.js"></script>
-  </head>
-  <body>
-    <div id="log"></div>
-    <iframe id="if2"></iframe>
-    <script>
-        test(function (){
-            var if2 = document.getElementById("if2");
-            if2.width=null;
-            assert_true(if2.width == "", " The width is empty string");
-        }, document.title);
-    </script>
-  </body>
-</html>
+<meta charset="utf-8">
+<title>Iframe Sandbox Test: iframe_width_value_default</title>
+<link rel="author" title="Intel" href="http://www.intel.com">
+<link rel="help" href="http://www.w3.org/TR/2012/WD-html5-20121025/the-iframe-element.html?path=5_2_8#the-iframe-element"/>
+<script src="../resources/testharness.js"></script>
+<script src="../resources/testharnessreport.js"></script>
+<div id="log"></div>
+<iframe id="if2"></iframe>
+<script>
+
+  test(function (){
+    var if2 = document.getElementById("if2");
+    assert_equals(if2.width, "", "The width is empty string");
+  }, document.title);
+
+</script>
+
