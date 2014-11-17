@@ -31,7 +31,7 @@ path=$(dirname $(dirname $0))
 SLEEP=14400
 PACKAGENAME=$path/"play_test_music.wgt"
 APP_NAME="play_test_music"
-source $path/stablonglast/xwalk_common.sh
+
 pkgcmd -u -n playtestmu -q
 pkgcmd -i -t wgt -p $PACKAGENAME -q
 

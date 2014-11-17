@@ -1,5 +1,4 @@
-<!DOCTYPE html>
-<!--
+/*
 Copyright (c) 2013 Intel Corporation.
 
 Redistribution and use in source and binary forms, with or without modification,
@@ -26,25 +25,35 @@ NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE,
 EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
 Authors:
+        Cui, Jieqiong <jieqiongx.cui@intel.com>
 
+*/
 
--->
+.ui-slider .ui-btn-inner {
+    padding: 6px 0 0 0 !important;
+    font-size:.7em;
+}
+.ui-slider-popup {
+    position: absolute !important;
+    width: 64px;
+    height: 64px;
+    text-align: center;
+    font-size: 36px;
+    padding-top: 14px;
+    z-index: 100;
+    opacity: 0.8;
+}
+div.ui-slider {
+    margin: 0 2% 0 0px;
+    width:100%;
+}
 
-<title>Suspend_Resume_System_WithVideoPlaying</title>
-<link rel="author" title="Intel" href="http://www.intel.com">
-<p>
-   <strong>Test steps:</strong>
-</p>
-<ol>
-   <li>Install and launch the test webapp capture_video_camera.wgt</li>
-   <li>Click "Launch camera" button to start camera</li>
-   <li>Capture and save the video</li>
-</ol>
-<p>
-   <strong>Expected Output:</strong>
-</p>
-<ol>
-   <li>Webapp is installed successfully</li>
-   <li>The Camera can be open successfully</li>
-   <li>The camera can save the video normally</li>
-</ol>
+div.ui-slider-bg {
+    border: none;
+    height: 100%;
+}
+
+#contentdiv {
+    width: 300px;
+    margin: 0px auto;
+}
