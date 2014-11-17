@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<!--
+Copyright (c) 2014 Intel Corporation.
+
+Redistribution and use in source and binary forms, with or without modification,
+are permitted provided that the following conditions are met:
+
+* Redistributions of works must retain the original copyright notice, this lis
+  of conditions and the following disclaimer.
+* Redistributions in binary form must reproduce the original copyright notice,
+  this list of conditions and the following disclaimer in the documentation
+  and/or other materials provided with the distribution.
+* Neither the name of Intel Corporation nor the names of its contributors
+  may be used to endorse or promote products derived from this work withou
+  specific prior written permission.
+
+THIS SOFTWARE IS PROVIDED BY INTEL CORPORATION "AS IS"
+AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE
+IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE
+ARE DISCLAIMED. IN NO EVENT SHALL INTEL CORPORATION BE LIABLE FOR ANY DIRECT,
+INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING,
+BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE,
+DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY
+OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING
+NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE,
+EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
+
+Authors:
+        Cui,Jieqiong <jieqiongx.cui@intel.com>
+        Xie,Yunxiao <yunxiaox.xie@intel.com>
+
+-->
+
+<meta charset="utf-8">
+<title>FileAPIDirectoriesAndSystem Test: FS_FileError_TYPE_MISMATCH_ERR_type</title>
+<link rel="author" title="Intel" href="http://www.intel.com">
+<link rel="help" href="http://www.w3.org/TR/2011/WD-file-system-api-20110419/#the-fileerror-interface">
+<script src="../resources/testharness.js"></script>
+<script src="../resources/testharnessreport.js"></script>
+<script src="./support/support.js"></script>
+<div id="log"></div>
+<script>
+    async_test(function (t) {
+        window.requestFileSystem = window.requestFileSystem || window.webkitRequestFileSystem;
+        if (typeof window.requestFileSystem == 'undefined') {
+            assert_unreached("the browser does not support requestFileSystem");
+            t.done();
+        }
+        requestFileSystem(TEMPORARY, 100, function (entry) {
+            entry.root.getFile("321852.txt", {create:false}, function (entry) {
+                assert_unreached("It should enter errorCallback");
+                t.done();
+            }, function (e) {
+                assert_equals(typeof e.TYPE_MISMATCH_ERR, "number");
+                t.done();
+            });
+        }, function(e){unexpectedErrorCallback(e, t);});
+    }, "Check if FileError.TYPE_MISMATCH_ERR constant is of type unsigned short from the perspective of getFile()");
+</script>
