@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-stylesheet type="text/xsl" href="./testcase.xsl"?>
+<test_definition>
+  <suite category="Stability" name="wrt-stabilitymanu-android-tests">
+    <set name="stabiterative" type="js">
+      <testcase component="Stability" execution_type="manual" id="Capture_Video_LongTime" purpose="Validate Capture Video LongTime">
+        <description>
+          <pre_condition>
+            check points: Capture Video in Web app for a long time(1h);
+            expect result: Video captured smoothly after resume.
+          </pre_condition>
+          <test_script_entry>/opt/wrt-stabilitymanu-android-tests/stabilitymanu/Capture_Video_LongTime.html </test_script_entry>
+        </description>
+      </testcase>
+      <testcase component="Stability" execution_type="manual" id="Play_Muisc_LongTime" purpose="Validate Play music long time">
+        <description>
+            check points: Play music in Web app (4hrs);
+            expect result: Music playback smoothly after resume.
+          </pre_condition>
+          <test_script_entry>/opt/wrt-stabilitymanu-android-tests/stabilitymanu/Play_Muisc_LongTime.html </test_script_entry>
+        </description>
+      </testcase>
+      <testcase component="Stability" execution_type="manual" id="Suspend_Resume_System_WithVideoPlaying" purpose="Validate suspend resume system with Video playing">
+        <description>
+          <pre_condition>
+          check points: Suspend/Resume system while playing HTML5 video in WebApp 50 times(H264)
+          expect result:
+            50+times w/o error
+            Video playback smoothly after resume.
+          </pre_condition>
+          <test_script_entry>/opt/wrt-stabilitymanu-android-tests/stabilitymanu/Suspend_Resume_System_WithVideoPlaying.html </test_script_entry>
+        </description>
+      </testcase>
+      <testcase component="Stability" execution_type="manual" id="Switch_Between_NativeAndWebApp" purpose="Iterative Testing">
+        <description>
+          <pre_condition>
+          check points: Switch between activated native and Web app 50 times.
+          expect result: 0+times w/o error; Web app grab focus w/o error.
+          </pre_condition>
+          <test_script_entry>/opt/wrt-stabilitymanu-android-tests/stabilitymanu/Switch_Between_NativeAndWebApp.html </test_script_entry>
+        </description>
+      </testcase>
+      <testcase component="Stability" execution_type="manual" id="Switch_Between_WebApps" purpose="Iterative Testing">
+        <description>
+          <pre_condition>
+          check points: Switch between multiple Web apps 50 times.
+          expect result: 0+times w/o error; Web app grab focus w/o error.
+          </pre_condition>
+          <test_script_entry>/opt/wrt-stabilitymanu-android-tests/stabilitymanu/Switch_Between_WebApps.html </test_script_entry>
+        </description>
+      </testcase>
+      <testcase component="Stability" execution_type="manual" id="TapControl_During_PlayingAudio" purpose="Iterative Testing">
+        <description>
+          <pre_condition>
+          check points: Tap control buttons (FF/FB, Play/Pause, volumn etc) during playing audio repeatedly in Web app.
+          expect result: 0+times w/o error; Web app grab focus w/o error.
+          </pre_condition>
+          <test_script_entry>/opt/wrt-stabilitymanu-android-tests/stabilitymanu/TapControl_During_PlayingAudio.html </test_script_entry>
+        </description>
+      </testcase>
+      <testcase component="Stability" execution_type="manual" id="TapControl_During_PlayingVideo" purpose="Iterative Testing">
+        <description>
+          <pre_condition>
+          check points: Tap control buttons (FF/FB, Play/Pause, volumn etc) during playing video repeatedly in Web app.
+          expect result: 0+times w/o error; Web app grab focus w/o error.
+          </pre_condition>
+          <test_script_entry>/opt/wrt-stabilitymanu-android-tests/stabilitymanu/TapControl_During_PlayingVideo.html </test_script_entry>
+        </description>
+      </testcase>
+    </set>
+  </suite>
+</test_definition>

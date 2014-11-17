@@ -1,0 +1,79 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<?xml-stylesheet type="text/xsl" href="./testcase.xsl"?>
+<test_definition>
+  <suite name="wrt-stabilitymanu-android-tests" category="Stability">
+    <set name="stabiterative" type="js">
+      <testcase purpose="Validate Capture Video LongTime" type="Functional" status="approved" component="Stability" execution_type="manual" priority="P1" id="Capture_Video_LongTime">
+        <description>
+          <pre_condition>
+            check points: Capture Video in Web app for a long time(1h);
+            expect result: Video captured smoothly after resume.
+          </pre_condition>
+          <test_script_entry>/opt/wrt-stabilitymanu-android-tests/stabilitymanu/Capture_Video_LongTime.html </test_script_entry>
+          </description>
+          </testcase>
+      <testcase purpose="Validate Play music long time" type="Functional" status="approved" component="Stability" execution_type="manual" priority="P1" id="Play_Muisc_LongTime">
+        <description>
+          <pre_condition>
+            check points: Play music in Web app (4hrs);
+            expect result: Music playback smoothly after resume.s
+          </pre_condition>
+          <test_script_entry>/opt/wrt-stabilitymanu-android-tests/stabilitymanu/Play_Muisc_LongTime.html </test_script_entry>
+          </description>
+          </testcase> 
+          
+      <testcase purpose="Validate suspend resume system with Video playing" type="Functional" status="approved" component="Stability" execution_type="manual" priority="P1" id="Suspend_Resume_System_WithVideoPlaying">
+        <description>
+          <pre_condition>
+          check points: Suspend/Resume system while playing HTML5 video in WebApp 50 times(H264)
+          expect result:
+            50+times w/o error
+            Video playback smoothly after resume.
+          </pre_condition>
+          <test_script_entry>/opt/wrt-stabilitymanu-android-tests/stabilitymanu/Suspend_Resume_System_WithVideoPlaying.html </test_script_entry>
+          </description>
+          </testcase>  
+          
+      <testcase purpose="Iterative Testing" type="Functional" status="approved" component="Stability" execution_type="manual" priority="P1" id="Switch_Between_NativeAndWebApp">
+        <description>
+          <pre_condition>
+          check points: Switch between activated native and Web app 50 times.
+          expect result: 0+times w/o error; Web app grab focus w/o error.
+          </pre_condition>
+          <test_script_entry>/opt/wrt-stabilitymanu-android-tests/stabilitymanu/Switch_Between_NativeAndWebApp.html </test_script_entry>
+          </description>
+          </testcase>
+          
+      <testcase purpose="Iterative Testing" type="Functional" status="approved" component="Stability" execution_type="manual" priority="P1" id="Switch_Between_WebApps">
+        <description>
+          <pre_condition>
+          check points: Switch between multiple Web apps 50 times.
+          expect result: 0+times w/o error; Web app grab focus w/o error.
+          </pre_condition>
+          <test_script_entry>/opt/wrt-stabilitymanu-android-tests/stabilitymanu/Switch_Between_WebApps.html </test_script_entry>
+          </description>
+          </testcase>
+
+      <testcase purpose="Iterative Testing" type="Functional" status="approved" component="Stability" execution_type="manual" priority="P1" id="TapControl_During_PlayingAudio">
+        <description>
+          <pre_condition>
+          check points: Tap control buttons (FF/FB, Play/Pause, volumn etc) during playing audio repeatedly in Web app.
+          expect result: 0+times w/o error; Web app grab focus w/o error.
+          </pre_condition>
+          <test_script_entry>/opt/wrt-stabilitymanu-android-tests/stabilitymanu/TapControl_During_PlayingAudio.html </test_script_entry>
+          </description>
+          </testcase>  
+          
+      <testcase purpose="Iterative Testing" type="Functional" status="approved" component="Stability" execution_type="manual" priority="P1" id="TapControl_During_PlayingVideo">
+        <description>
+          <pre_condition>
+          check points: Tap control buttons (FF/FB, Play/Pause, volumn etc) during playing video repeatedly in Web app.
+          expect result: 0+times w/o error; Web app grab focus w/o error.
+          </pre_condition>
+          <test_script_entry>/opt/wrt-stabilitymanu-android-tests/stabilitymanu/TapControl_During_PlayingVideo.html </test_script_entry>
+          </description>
+          </testcase>                            
+    </set>
+  </suite>
+</test_definition>
+

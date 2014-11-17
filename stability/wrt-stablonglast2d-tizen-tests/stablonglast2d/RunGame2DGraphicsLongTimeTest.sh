@@ -30,7 +30,7 @@ path=$(dirname $(dirname $0))
 SLEEP=86400
 PACKAGENAME=$path/"2d_test.wgt"
 APP_NAME="2d_test"
-source $path/stablonglast2d/xwalk_common.sh
+
 pkgcmd -u -n twodoptest -q
 pkgcmd -i -t wgt -p $PACKAGENAME -q
 
