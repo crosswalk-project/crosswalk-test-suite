@@ -21,7 +21,7 @@
 
 path=$(dirname $(dirname $0))
 PACKAGENAME=$path/"launch_exist_test.wgt"
-source $path/stabiterative/xwalk_common.sh
+
 APP_NAME="launch_exist_test"
 get_uninstall_status=`pkgcmd -u -n launchandt -q`
 get_install_status=`pkgcmd -i -t wgt -p $PACKAGENAME -q`
