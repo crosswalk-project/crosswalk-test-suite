@@ -48,28 +48,6 @@
           <test_script_entry>/opt/tct-text-css3-tests/text/CSS3TextEffects_text-shadow_shadow.html</test_script_entry>
         </description>
       </testcase>
-      <testcase component="WebAPI/DOM, Forms and Styles/CSS Text Module Level 3 (Partial)" execution_type="manual" id="css3_TextEffects_tests_entry5" purpose="Check that the CSS white-space:nowrap and clear float are identical">
-        <description>
-          <steps>
-            <step order="1">
-              <step_desc>Use WRT to visit the "nowrap-clear-float" to check if the CSS white-space:nowrap and clear float are identical</step_desc>
-              <expected>The span text should be below the blue square</expected>
-            </step>
-          </steps>
-          <test_script_entry>/opt/tct-text-css3-tests/text/webkit/nowrap-clear-float-manual.html</test_script_entry>
-        </description>
-      </testcase>
-      <testcase component="WebAPI/DOM, Forms and Styles/CSS Text Module Level 3 (Partial)" execution_type="manual" id="css3_TextEffects_tests_entry6" purpose="To check the CSS white-space:pre-wrap is rendered properly">
-        <description>
-          <steps>
-            <step order="1">
-              <step_desc>Use WRT to visit the "pre-wrap-line-test" to check if the CSS white-space:pre-wrap is rendered properly.</step_desc>
-              <expected>Multiple consecutive spaces in a webpage browser can truly present</expected>
-            </step>
-          </steps>
-          <test_script_entry>/opt/tct-text-css3-tests/text/webkit/pre-wrap-line-test-manual.html</test_script_entry>
-        </description>
-      </testcase>
       <testcase component="WebAPI/DOM, Forms and Styles/CSS Text Module Level 3 (Partial)" execution_type="auto" id="CSS3TextEffects_word-wrap_breakword" purpose="Check if the word-wrap value is break-word">
         <description>
           <test_script_entry>/opt/tct-text-css3-tests/text/CSS3TextEffects_word-wrap_breakword.html</test_script_entry>
@@ -220,6 +198,20 @@
           <test_script_entry>/opt/tct-text-css3-tests/text/CSS3TextEffects_word-wrap_normal.html</test_script_entry>
         </description>
       </testcase>
+    </set>
+    <set name="Text-ref" type="ref">
+      <testcase component="WebAPI/DOM, Forms and Styles/CSS Text Module Level 3 (Partial)" execution_type="auto" id="css3_TextEffects_tests_entry5" purpose="Check that the CSS white-space:nowrap and clear float are identical">
+        <description>
+          <test_script_entry>/opt/tct-text-css3-tests/text/webkit/nowrap-clear-float.html</test_script_entry>
+          <refer_test_script_entry timeout="90">/opt/tct-text-css3-tests/text/reference/nowrap-clear-float-ref.html</refer_test_script_entry>
+        </description>
+      </testcase>
+      <testcase component="WebAPI/DOM, Forms and Styles/CSS Text Module Level 3 (Partial)" execution_type="auto" id="css3_TextEffects_tests_entry6" purpose="To check the CSS white-space:pre-wrap is rendered properly">
+        <description>
+          <test_script_entry>/opt/tct-text-css3-tests/text/webkit/pre-wrap-line-test.html</test_script_entry>
+          <refer_test_script_entry timeout="90">/opt/tct-text-css3-tests/text/reference/pre-wrap-line-test-ref.html</refer_test_script_entry>
+        </description>
+      </testcase>      
     </set>
   </suite>
 </test_definition>
