@@ -3,14 +3,6 @@
 <test_definition>
   <suite name="wrt-commandlinemanu-tizen-tests" category="Crosswalk Runtime Binary">
     <set name="rtbin" type="js">
-      <testcase purpose="Validate Crosswalk support Chinese language successfully" type="Functional" status="approved" component="Crosswalk Runtime Binary" execution_type="manual" priority="P1" id="Crosswalk_Launcher_List_Apps">
-        <description>
-          <pre_condition>
-            1.Make sure Crosswalk binary is installed.
-          </pre_condition>
-          <test_script_entry>/opt/wrt-commandlinemanu-tizen-tests/commandlinemanu/Crosswalk_Launcher_List_Apps.html</test_script_entry>
-        </description>
-      </testcase>
       <testcase purpose="Validate Crosswalk support '--disable-device-capabilities' flag successfully" type="Functional" status="approved" component="Crosswalk Runtime Binary" execution_type="manual" priority="P2" id="Crosswalk_Feature_Flags_disable-device-capabilities">
         <description>
           <pre_condition>
@@ -33,14 +25,6 @@
             1.Make sure Crosswalk binary is installed.
           </pre_condition>
           <test_script_entry>/opt/wrt-commandlinemanu-tizen-tests/commandlinemanu/Crosswalk_Launcher_fullscreen.html</test_script_entry>
-        </description>
-      </testcase>
-      <testcase purpose="Validate Crosswalk support '--list-feature-flags' flag successfully" type="Functional" status="approved" component="Crosswalk Runtime Binary" execution_type="manual" priority="P1" id="Crosswalk_Feature_Flags_list-feature-flags">
-        <description>
-          <pre_condition>
-            1.Make sure Crosswalk binary is installed.
-          </pre_condition>
-          <test_script_entry>/opt/wrt-commandlinemanu-tizen-tests/commandlinemanu/Crosswalk_Feature_Flags_list-feature-flags.html</test_script_entry>
         </description>
       </testcase>
       <testcase purpose="Validate Crosswalk can launch apps in the 'run-as-service' mode" type="Functional" status="approved" component="Crosswalk Runtime Binary" execution_type="manual" priority="P1" id="Crosswalk_Run_As_Service_Launch">
@@ -138,30 +122,6 @@
             1.Make sure Crosswalk binary is installed
           </pre_condition>
           <test_script_entry>/opt/wrt-commandlinemanu-tizen-tests/commandlinemanu/Crosswalk_MultiUser_Launch_OtherAccount.html</test_script_entry>
-        </description>
-      </testcase>
-      <testcase purpose="Validate the backend pkgcmd can install webapp" type="Functional" status="approved" component="Crosswalk Runtime Binary" execution_type="manual" priority="P2" id="Crosswalk_BackEnd_PkgcmdInstall">
-        <description>
-          <pre_condition>
-            1.Make sure Crosswalk binary is installed
-          </pre_condition>
-          <test_script_entry>/opt/wrt-commandlinemanu-tizen-tests/commandlinemanu/Crosswalk_BackEnd_PkgcmdInstall.html</test_script_entry>
-        </description>
-      </testcase> 
-      <testcase purpose="Validate the backend pkgcmd can uninstall webapp" type="Functional" status="approved" component="Crosswalk Runtime Binary" execution_type="manual" priority="P2" id="Crosswalk_BackEnd_PkgcmdUninstall">
-        <description>
-          <pre_condition>
-            1.Make sure Crosswalk binary is installed
-          </pre_condition>
-          <test_script_entry>/opt/wrt-commandlinemanu-tizen-tests/commandlinemanu/Crosswalk_BackEnd_PkgcmdUninstall.html</test_script_entry>
-        </description>
-      </testcase> 
-      <testcase purpose="Validate the backend pkgcmd can list all webapp" type="Functional" status="approved" component="Crosswalk Runtime Binary" execution_type="manual" priority="P2" id="Crosswalk_BackEnd_PkgcmdListApp">
-        <description>
-          <pre_condition>
-            1.Make sure Crosswalk binary is installed
-          </pre_condition>
-          <test_script_entry>/opt/wrt-commandlinemanu-tizen-tests/commandlinemanu/Crosswalk_BackEnd_PkgcmdListApp.html</test_script_entry>
         </description>
       </testcase>
       <testcase purpose="Validate the Xwalkctl new parameter can install/uninstall/list all webapp" type="Functional" status="designed" component="Crosswalk Runtime Binary" execution_type="manual" priority="P2" id="Crosswalk_BackEnd_PkgcmdInstall_Global">

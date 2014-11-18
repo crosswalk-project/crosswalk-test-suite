@@ -3,14 +3,6 @@
 <test_definition>
   <suite category="Crosswalk Runtime Binary" name="wrt-commandlinemanu-tizen-tests">
     <set name="rtbin" type="js">
-      <testcase component="Crosswalk Runtime Binary" execution_type="manual" id="Crosswalk_Launcher_List_Apps" purpose="Validate Crosswalk support Chinese language successfully">
-        <description>
-          <pre_condition>
-            1.Make sure Crosswalk binary is installed.
-          </pre_condition>
-          <test_script_entry>/opt/wrt-commandlinemanu-tizen-tests/commandlinemanu/Crosswalk_Launcher_List_Apps.html</test_script_entry>
-        </description>
-      </testcase>
       <testcase component="Crosswalk Runtime Binary" execution_type="manual" id="Crosswalk_Feature_Flags_disable-device-capabilities" purpose="Validate Crosswalk support '--disable-device-capabilities' flag successfully">
         <description>
           <pre_condition>
@@ -33,14 +25,6 @@
             1.Make sure Crosswalk binary is installed.
           </pre_condition>
           <test_script_entry>/opt/wrt-commandlinemanu-tizen-tests/commandlinemanu/Crosswalk_Launcher_fullscreen.html</test_script_entry>
-        </description>
-      </testcase>
-      <testcase component="Crosswalk Runtime Binary" execution_type="manual" id="Crosswalk_Feature_Flags_list-feature-flags" purpose="Validate Crosswalk support '--list-feature-flags' flag successfully">
-        <description>
-          <pre_condition>
-            1.Make sure Crosswalk binary is installed.
-          </pre_condition>
-          <test_script_entry>/opt/wrt-commandlinemanu-tizen-tests/commandlinemanu/Crosswalk_Feature_Flags_list-feature-flags.html</test_script_entry>
         </description>
       </testcase>
       <testcase component="Crosswalk Runtime Binary" execution_type="manual" id="Crosswalk_Run_As_Service_Launch" purpose="Validate Crosswalk can launch apps in the 'run-as-service' mode">
@@ -132,30 +116,6 @@
           <test_script_entry>/opt/wrt-commandlinemanu-tizen-tests/commandlinemanu/Crosswalk_MultiUser_Launch_OtherAccount.html</test_script_entry>
         </description>
       </testcase>
-      <testcase component="Crosswalk Runtime Binary" execution_type="manual" id="Crosswalk_BackEnd_PkgcmdInstall" purpose="Validate the backend pkgcmd can install webapp">
-        <description>
-          <pre_condition>
-            1.Make sure Crosswalk binary is installed
-          </pre_condition>
-          <test_script_entry>/opt/wrt-commandlinemanu-tizen-tests/commandlinemanu/Crosswalk_BackEnd_PkgcmdInstall.html</test_script_entry>
-        </description>
-      </testcase>
-      <testcase component="Crosswalk Runtime Binary" execution_type="manual" id="Crosswalk_BackEnd_PkgcmdUninstall" purpose="Validate the backend pkgcmd can uninstall webapp">
-        <description>
-          <pre_condition>
-            1.Make sure Crosswalk binary is installed
-          </pre_condition>
-          <test_script_entry>/opt/wrt-commandlinemanu-tizen-tests/commandlinemanu/Crosswalk_BackEnd_PkgcmdUninstall.html</test_script_entry>
-        </description>
-      </testcase>
-      <testcase component="Crosswalk Runtime Binary" execution_type="manual" id="Crosswalk_BackEnd_PkgcmdListApp" purpose="Validate the backend pkgcmd can list all webapp">
-        <description>
-          <pre_condition>
-            1.Make sure Crosswalk binary is installed
-          </pre_condition>
-          <test_script_entry>/opt/wrt-commandlinemanu-tizen-tests/commandlinemanu/Crosswalk_BackEnd_PkgcmdListApp.html</test_script_entry>
-        </description>
-      </testcase>
       <testcase component="Crosswalk Runtime Binary" execution_type="manual" id="Crosswalk_MultiUser_List_App" purpose="Validate via app installed webapp can not be listed by guest successfully">
         <description>
           <pre_condition>
@@ -171,7 +131,7 @@
           </pre_condition>
           <test_script_entry>/opt/wrt-commandlinemanu-tizen-tests/commandlinemanu/Crosswalk_MultiUser_pkgcmd_App.html</test_script_entry>
         </description>
-      </testcase>             
+      </testcase>
     </set>
   </suite>
 </test_definition>
