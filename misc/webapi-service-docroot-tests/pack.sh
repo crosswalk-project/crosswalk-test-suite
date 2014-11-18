@@ -1,12 +1,17 @@
 #!/bin/bash
 source $(dirname $0)/docroot.spec
-usage="Usage: ./pack.sh [-a <apk runtime arch: x86 | arm>]"
+usage="Usage: ./pack.sh [-t <package type: apk | cordova>] [-a <apk runtime arch: x86 | arm>]
+[-t apk] option was set as default.
+[-a x86] option was set as default.
+"
 
+pack_type="apk"
 arch="x86"
-while getopts a: o
+while getopts a:t: o
 do
     case "$o" in
     a) arch=$OPTARG;;
+    t) pack_type=$OPTARG;;
     *) echo "$usage"
        exit 1;;
     esac
@@ -40,7 +45,7 @@ rm -rf $SRC_ROOT/*.zip
 cp -arf $SRC_ROOT/* $BUILD_ROOT/
 
 for list in $LIST;do
-    python $SRC_ROOT/../../tools/build/pack.py -t apk-aio -m embedded -a $arch -d $BUILD_DEST/opt/$core_name -s $SRC_ROOT/../../webapi/$list
+    python $SRC_ROOT/../../tools/build/pack.py -t ${pack_type}-aio -m embedded -a $arch -d $BUILD_DEST/opt/$core_name -s $SRC_ROOT/../../webapi/$list
 done
 
 ## creat testlist.json ##
@@ -78,11 +83,11 @@ fi
 rm -rf $BUILD_DEST/opt
 cp -ar $BUILD_ROOT/inst.py $BUILD_DEST/inst.py
 cd /tmp
-zip -Drq $BUILD_DEST/$name-$version-$sub_version.apk.zip $name/
+zip -Drq $BUILD_DEST/$name-$version-$sub_version.$pack_type.zip $name/
 
 # copy zip file
 echo "copy package from workspace... >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>"
-cp -f $BUILD_DEST/$name-$version-$sub_version.apk.zip $SRC_ROOT/
+cp -f $BUILD_DEST/$name-$version-$sub_version.$pack_type.zip $SRC_ROOT/
 
 # clean workspace
 clean_workspace
