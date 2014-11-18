@@ -89,6 +89,23 @@ class WebAPP(common.APP):
             print "Failed to get element: %s" % e
         return None
 
+    def __get_element_by_key_attr(self, key, attr, display=True):
+        xpath = "//*[@%s='%s']" % (attr, key)
+        try:
+            element = self.__driver.find_element_by_xpath(xpath)
+            if display:
+                try:
+                    if element.is_displayed():
+                        return element
+                except StaleElementReferenceException:
+                    pass
+            else:
+                return element
+            print "Failed to get element"
+        except Exception as e:
+            print "Failed to get element: %s" % e
+        return None
+
     def __get_element_by_tag(self, key, display=True):
         try:
             element = self.__driver.find_element_by_tag(key)
@@ -104,6 +121,7 @@ class WebAPP(common.APP):
                     "//*[@name='%(key)s']|"
                     "//*[@value='%(key)s']|"
                     "//*[contains(@class, '%(key)s')]|"
+                    "//div[contains(text(), '%(key)s')]|"
                     "//button[contains(text(), '%(key)s')]|"
                     "//input[contains(text(), '%(key)s')]|"
                     "//textarea[contains(text(), '%(key)s')]|"
@@ -124,6 +142,7 @@ class WebAPP(common.APP):
     def __check_normal_text(self, text, display=True):
         try:
             for i_element in self.__driver.find_elements_by_xpath(str(
+                    '//*[@value="{text}"]|'
                     '//*[contains(normalize-space(.),"{text}") '
                     'and not(./*[contains(normalize-space(.),"{text}")])]'
                     .format(text=text))):
@@ -144,6 +163,7 @@ class WebAPP(common.APP):
         if element:
             try:
                 for i_element in element.find_elements_by_xpath(str(
+                        '//*[@value="{text}"]|'
                         '//*[contains(normalize-space(.),"{text}") '
                         'and not(./*[contains(normalize-space(.),"{text}")])]'
                         .format(text=text))):
@@ -224,6 +244,14 @@ class WebAPP(common.APP):
 
     def press_element_by_key(self, key, display=True):
         element = self.__get_element_by_key(key, display)
+        if element:
+            element.click()
+            return True
+
+        return False
+
+    def press_element_by_key_attr(self, key, attr, display=True):
+        element = self.__get_element_by_key_attr(key, attr, display)
         if element:
             element.click()
             return True
