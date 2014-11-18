@@ -146,7 +146,7 @@ sh /opt/usr/media/tct/opt/web-xbat-tests/inst.sh
 
 Then you can get the appid of the test APP (will be used in next execution steps):
 
-su app -c "export DBUS\_SESSION\_BUS\_ADDRESS=\"unix:path=/run/user/5000/dbus/user\_bus\_socket\";export XDG\_RUNTIME\_DIR=\"/run/user/5000\";xwalkctl"
+su app -c "export DBUS\_SESSION\_BUS\_ADDRESS=\"unix:path=/run/user/5000/dbus/user\_bus\_socket\";export XDG\_RUNTIME\_DIR=\"/run/user/5000\";app_launcher -l"
 
 #4. Run BAT Tests
 
@@ -156,7 +156,7 @@ env LD\_LIBRARY\_PATH=/opt/home/developer PATH=$PATH:/opt/home/developer tinyweb
 
 ##4.2 Run Tests
 
-testkit-lite -e 'su app -c "export DBUS\_SESSION\_BUS\_ADDRESS=\"unix:path=/run/user/5000/dbus/user\_bus\_socket\";export XDG\_RUNTIME\_DIR=\"/run/user/5000\";xwalk-launcher $appid"' -f /opt/usr/media/tct/opt/web-xbat-tests/tests.xml --comm localhost -o /path/to/result.xml
+testkit-lite -e 'su app -c "export DBUS\_SESSION\_BUS\_ADDRESS=\"unix:path=/run/user/5000/dbus/user\_bus\_socket\";export XDG\_RUNTIME\_DIR=\"/run/user/5000\";app_launcher -s $appid"' -f /opt/usr/media/tct/opt/web-xbat-tests/tests.xml --comm localhost -o /path/to/result.xml
 
 **Note:** Please update the suite name when you use above commands, e.g. change "web-xbat-tests" to "web-abat-tests"
 

@@ -42,10 +42,10 @@ Authors:
     </p>
     <ol>
       <li>Push the webapp "disable_device_capabilities_tests.wgt" into Tizen device</li>
-      <li>Switch to user A(A is available and has install/uninstall/open_app privilege)</li>
+      <li>Switch to user A(A is available and has install/uninstall/launch privilege)</li>
       <li>Execute command: "pkgcmd -i -t wgt -p /path/disable_device_capabilities_tests.wgt -q"</li>
       <li>Please get the pkgid for next step use</li>
-      <li>Switch to user B(B is available and has install/uninstall/open_app privilege)</li>
+      <li>Switch to user B(B is available and has install/uninstall/launch privilege)</li>
       <li>Execute command: "pkgcmd -u -n $appid(the pkgid is the step 4 got) -q"</li>
       <li>Switch to user A and check the installed webapp</li> 
     </ol>

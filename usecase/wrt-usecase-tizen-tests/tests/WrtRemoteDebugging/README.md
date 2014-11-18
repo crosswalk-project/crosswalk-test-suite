@@ -7,4 +7,4 @@ This sample demonstrates scrollindicator XWALK-2058 feature basic functionalitie
 This usecase covers following methods:
 
     $xwalkctl -d port
-    $open_app $app_id
+    $app_launcher -s $appid
