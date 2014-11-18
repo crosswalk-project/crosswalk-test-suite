@@ -2,10 +2,11 @@
 <?xml-stylesheet type="text/xsl" href="./testcase.xsl"?>
 <test_definition>
   <suite name="webapi-style-css3-tests" category="W3C API Specifications">
-    <set name="Style" type="js">
-      <testcase purpose="Test checks that if a property inherits it also inherits when declared via style attribute" type="compliance" status="approved" component="WebAPI/DOM, Forms and Styles/CSS Style Attribute" execution_type="manual" priority="P1" id="style-attr-cascade-007">
+    <set name="Style-ref" type="ref">
+      <testcase purpose="Test checks that if a property inherits it also inherits when declared via style attribute" type="compliance" status="approved" component="WebAPI/DOM, Forms and Styles/CSS Style Attribute" execution_type="auto" priority="P1" id="style-attr-cascade-007">
         <description>
           <test_script_entry>/opt/webapi-style-css3-tests/style/csswg/style-attr-cascade-007.htm</test_script_entry>
+          <refer_test_script_entry timeout="90">/opt/webapi-style-css3-tests/style/csswg/reference/style-attr-cascade-007.htm</refer_test_script_entry>
         </description>
         <specs>
           <spec>
@@ -15,8 +16,6 @@
           </spec>
         </specs>
       </testcase>
-    </set>
-    <set name="Style-ref" type="ref">
       <testcase purpose="Test checks that a close brace (}) in the style attribute value does not terminate the style data when there is no open brace delimiting the declaration list in the CSS style attribute syntax" type="compliance" status="approved" component="WebAPI/DOM, Forms and Styles/CSS Style Attribute" execution_type="auto" priority="P1" id="style-attr-braces-001">
         <description>
           <test_script_entry>/opt/webapi-style-css3-tests/style/csswg/style-attr-braces-001.htm</test_script_entry>
