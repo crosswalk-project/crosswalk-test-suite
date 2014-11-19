@@ -49,8 +49,7 @@ function uninstall_app(){
 function find_app(){
     pkgcmd -l >/tmp/apps.txt 2>&1
     pkgids=`cat /tmp/apps.txt | grep $1 | awk -F '[],[]' '{print $4}'`
-    appid=`ail_list | grep $1`
-    appid=`echo $appid | awk '{print $1}'`
+    appid=`app_launcher -l | grep $1 | awk '{print $2}'`
     appid=${appid:1:-1}
 }
 
@@ -59,7 +58,7 @@ function launch_app(){
     find_app $1
     pkgnum=`echo "$appid"|wc -w`
     if [ $pkgnum -eq 1 ]; then
-        nohup open_app $appid &>/dev/null &
+        nohup app_launcher -s $appid &>/dev/null &
     else
         echo "launch error, please check if exists this app or there are more than one app with this app_name"
     fi
