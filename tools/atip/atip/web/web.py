@@ -139,6 +139,54 @@ class WebAPP(common.APP):
             print "Failed to get element: %s" % e
         return None
 
+    def __get_element_by_keys(self, key_p, key_c, display=True):
+        try:
+            for i_element in self.__driver.find_elements_by_xpath(str(
+                    "//*[@id='%(key)s']|"
+                    "//*[@name='%(key)s']|"
+                    "//*[@value='%(key)s']|"
+                    "//*[contains(@class, '%(key)s')]|"
+                    "//div[contains(text(), '%(key)s')]|"
+                    "//button[contains(text(), '%(key)s')]|"
+                    "//input[contains(text(), '%(key)s')]|"
+                    "//textarea[contains(text(), '%(key)s')]|"
+                    "//a[contains(text(), '%(key)s')]") % {'key': key_p}):
+                get_element = False
+                if display:
+                    try:
+                        if i_element.is_displayed():
+                            get_element = True
+                    except StaleElementReferenceException:
+                        pass
+                else:
+                    get_element = True
+
+                if get_element:
+                    print "%s ++ %s" % (i_element.get_attribute("id"), i_element.get_attribute("class"))
+                    for ii_element in i_element.find_elements_by_xpath(str(
+                            "./*[@id='%(key)s']|"
+                            "./*[@name='%(key)s']|"
+                            "./*[@value='%(key)s']|"
+                            "./*[contains(@class, '%(key)s')]|"
+                            "./div[contains(text(), '%(key)s')]|"
+                            "./button[contains(text(), '%(key)s')]|"
+                            "./input[contains(text(), '%(key)s')]|"
+                            "./textarea[contains(text(), '%(key)s')]|"
+                            "./a[contains(text(), '%(key)s')]") % {'key': key_c}):
+                        if display:
+                            try:
+                                if ii_element.is_displayed():
+                                    return ii_element
+                            except StaleElementReferenceException:
+                                pass
+                        else:
+                            return ii_element
+
+            print "Failed to get element"
+        except Exception as e:
+            print "Failed to get element: %s" % e
+        return None
+
     def __check_normal_text(self, text, display=True):
         try:
             for i_element in self.__driver.find_elements_by_xpath(str(
@@ -244,6 +292,16 @@ class WebAPP(common.APP):
 
     def press_element_by_key(self, key, display=True):
         element = self.__get_element_by_key(key, display)
+        print "%s == %s" % (element.get_attribute("id"), element.get_attribute("class"))
+        if element:
+            element.click()
+            return True
+
+        return False
+
+    def press_element_by_keys(self, key_p, key_c, display=True):
+        element = self.__get_element_by_keys(key_p, key_c, display)
+        print "%s == %s" % (element.get_attribute("id"), element.get_attribute("class"))
         if element:
             element.click()
             return True
@@ -252,14 +310,24 @@ class WebAPP(common.APP):
 
     def press_element_by_key_attr(self, key, attr, display=True):
         element = self.__get_element_by_key_attr(key, attr, display)
+        print "%s == %s" % (element.get_attribute("id"), element.get_attribute("class"))
         if element:
             element.click()
             return True
 
         return False
 
+    def click_element_by_keys(self, key_p, key_c, display=True):
+        element = self.__get_element_by_keys(key_p, key_c, display)
+        print "%s == %s" % (element.get_attribute("id"), element.get_attribute("class"))
+        if element:
+            ActionChains(self.__driver).click(element).perform()
+            return True
+        return False
+
     def click_element_by_key(self, key, display=True):
         element = self.__get_element_by_key(key, display)
+        print "%s == %s" % (element.get_attribute("id"), element.get_attribute("class"))
         if element:
             ActionChains(self.__driver).click(element).perform()
             return True

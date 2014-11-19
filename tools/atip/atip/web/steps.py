@@ -32,28 +32,31 @@ try:
 except ImportError:
     from urllib.parse import urljoin, urlparse
 
+
 def get_page_url(context, text):
     url = ''
     test_prefix = ''
     try:
         url_components = urlparse(context.app.current_url())
-        if str(context.app.app_config).upper().find('TIZEN') >= 0: 
-           test_prefix = '%s://%s//' % (url_components.scheme, url_components.netloc)
-        elif str(context.app.app_config).upper().find('ANDROID') >= 0: 
-           if url_components.scheme == 'http':
-              test_prefix = '%s://%s/' % (url_components.scheme,url_components.netloc)
-    except Exception, e: 
+        if str(context.app.app_config).upper().find('TIZEN') >= 0:
+            test_prefix = '%s://%s//' % (url_components.scheme,
+                                         url_components.netloc)
+        elif str(context.app.app_config).upper().find('ANDROID') >= 0:
+            if url_components.scheme == 'http':
+                test_prefix = '%s://%s/' % (url_components.scheme,
+                                            url_components.netloc)
+    except Exception as e:
         print "Failed to get page url: %s" % e
         return None
     try:
         nPos = text[0]
-        while nPos == '/' :
+        while nPos == '/':
             text = text[1:]
             nPos = text[0]
-    except Exception, e:
-        print  "Test page URL error: %s" % e
+    except Exception as e:
+        print "Test page URL error: %s" % e
         return None
-    url = "%s%s" % (test_prefix,text)  
+    url = "%s%s" % (test_prefix, text)
     return url
 
 
@@ -122,9 +125,19 @@ def i_press(context, key):
     assert context.app.press_element_by_key(key)
 
 
+@step(u'press "{key_c}" in "{key_p}"')
+def i_press(context, key_p, key_c):
+    assert context.app.press_element_by_keys(key_p, key_c)
+
+
 @step(u'I click "{key}"')
 def i_click(context, key):
     assert context.app.click_element_by_key(key)
+
+
+@step(u'click "{key_c}" in "{key_p}"')
+def i_click_keys(context, key_p, key_c):
+    assert context.app.click_element_by_keys(key_p, key_c)
 
 
 @step(u'I click coords {x:d} and {y:d} of "{key}"')
