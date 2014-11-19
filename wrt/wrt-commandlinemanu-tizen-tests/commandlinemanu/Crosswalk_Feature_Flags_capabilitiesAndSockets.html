@@ -44,11 +44,11 @@ Authors:
       <li>Modify xwalk.service</li>
       * Kill the service process if it is launched<br>
       * Modify the "/usr/lib/systemd/user/xwalk.service" file (add --disable-device-capabilities --disable-raw-sockets)<br>
-      * Launch an application using open_app $appid
-      <li>Input "open_app $appid</li>
+      * Launch an application using "app_launcher -s $appid"
+      <li>Input "app_launcher -s $appid"</li>
       <li>Check webapp window.</li>
       <li>Input "pkgcmd -i -t wgt -p disable-raw-socket-tests.wgt -q" via terminal.</li>
-      <li>Input "open_app $appid" via terminal.</li>
+      <li>Input "app_launcher -s $appid" via terminal.</li>
     </ol>
     <p>
       <strong>Expected Output:</strong>
