@@ -1189,9 +1189,19 @@
           <test_script_entry>/opt/tct-xmlhttprequest-w3c-tests/xmlhttprequest/xhr2_XMLHttpRequest_constructors_base.html</test_script_entry>
         </description>
       </testcase>
+      <testcase component="WebAPI/Communication/XMLHttpRequest Level 2 (Partial)" execution_type="auto" id="xhr2_XMLHttpRequest_getAllResponseHeaders_error_flag_set" purpose="Check if the error flag is set, XMLHttpRequest.getAllResponseHeaders() will return the empty string and terminate these steps">
+        <description>
+          <test_script_entry>/opt/tct-xmlhttprequest-w3c-tests/xmlhttprequest/xhr2_XMLHttpRequest_getAllResponseHeaders_error_flag_set.html</test_script_entry>
+        </description>
+      </testcase>
       <testcase component="WebAPI/Communication/XMLHttpRequest Level 2 (Partial)" execution_type="auto" id="xhr2_XMLHttpRequest_getAllResponseHeaders_return_type" purpose="Check if the return type of XMLHttpRequest.getAllResponseHeaders() is string">
         <description>
           <test_script_entry>/opt/tct-xmlhttprequest-w3c-tests/xmlhttprequest/xhr2_XMLHttpRequest_getAllResponseHeaders_return_type.html</test_script_entry>
+        </description>
+      </testcase>
+      <testcase component="WebAPI/Communication/XMLHttpRequest Level 2 (Partial)" execution_type="auto" id="xhr2_XMLHttpRequest_getResponseHeader_error_flag_set" purpose="Check if the error flag is set, XMLHttpRequest.getResponseHeader() will return null and terminate these steps">
+        <description>
+          <test_script_entry>/opt/tct-xmlhttprequest-w3c-tests/xmlhttprequest/xhr2_XMLHttpRequest_getResponseHeader_error_flag_set.html</test_script_entry>
         </description>
       </testcase>
       <testcase component="WebAPI/Communication/XMLHttpRequest Level 2 (Partial)" execution_type="auto" id="xhr2_XMLHttpRequest_getResponseHeader_type" purpose="Check if the type of xmlhttprequest.getResponseHeader is a function">
@@ -1239,9 +1249,24 @@
           <test_script_entry>/opt/tct-xmlhttprequest-w3c-tests/xmlhttprequest/xhr2_XMLHttpRequest_response_responseType_blob_readyState_not_DONE.html</test_script_entry>
         </description>
       </testcase>
+      <testcase component="WebAPI/Communication/XMLHttpRequest Level 2 (Partial)" execution_type="auto" id="xhr2_XMLHttpRequest_response_responseType_document_readyState_DONE" purpose="Check if XMLHttpRequest.response returns the document response entity body when responseType is document and the state is DONE">
+        <description>
+          <test_script_entry>/opt/tct-xmlhttprequest-w3c-tests/xmlhttprequest/xhr2_XMLHttpRequest_response_responseType_document_readyState_DONE.html</test_script_entry>
+        </description>
+      </testcase>
+      <testcase component="WebAPI/Communication/XMLHttpRequest Level 2 (Partial)" execution_type="auto" id="xhr2_XMLHttpRequest_response_responseType_empty_string_error_flag_set" purpose="Check if XMLHttpRequest.response is an empty string, when responseType is an empty string and the error flag is set">
+        <description>
+          <test_script_entry>/opt/tct-xmlhttprequest-w3c-tests/xmlhttprequest/xhr2_XMLHttpRequest_response_responseType_empty_string_error_flag_set.html</test_script_entry>
+        </description>
+      </testcase>
       <testcase component="WebAPI/Communication/XMLHttpRequest Level 2 (Partial)" execution_type="auto" id="xhr2_XMLHttpRequest_response_responseType_empty_string_readyState_UNSENT" purpose="Check if XMLHttpRequest.response is an empty string, when responseType is the empty string and the state is UNSENT">
         <description>
           <test_script_entry>/opt/tct-xmlhttprequest-w3c-tests/xmlhttprequest/xhr2_XMLHttpRequest_response_responseType_empty_string_readyState_UNSENT.html</test_script_entry>
+        </description>
+      </testcase>
+      <testcase component="WebAPI/Communication/XMLHttpRequest Level 2 (Partial)" execution_type="auto" id="xhr2_XMLHttpRequest_response_responseType_text_error_flag_set" purpose="Check if XMLHttpRequest.response is an empty string, when responseType is text and the error flag is set">
+        <description>
+          <test_script_entry>/opt/tct-xmlhttprequest-w3c-tests/xmlhttprequest/xhr2_XMLHttpRequest_response_responseType_text_error_flag_set.html</test_script_entry>
         </description>
       </testcase>
       <testcase component="WebAPI/Communication/XMLHttpRequest Level 2 (Partial)" execution_type="auto" id="xhr2_XMLHttpRequest_response_responseType_text_readyState_UNSENT" purpose="Check if XMLHttpRequest.response is an empty string, when responseType is text and the state is UNSENT">
@@ -1252,6 +1277,11 @@
       <testcase component="WebAPI/Communication/XMLHttpRequest Level 2 (Partial)" execution_type="auto" id="xhr2_XMLHttpRequest_responseText_basic" purpose="Check if XMLHttpRequest.responseText can return the document response entity body normally">
         <description>
           <test_script_entry>/opt/tct-xmlhttprequest-w3c-tests/xmlhttprequest/xhr2_XMLHttpRequest_responseText_basic.html</test_script_entry>
+        </description>
+      </testcase>
+      <testcase component="WebAPI/Communication/XMLHttpRequest Level 2 (Partial)" execution_type="auto" id="xhr2_XMLHttpRequest_responseText_error_flag_set" purpose="Check if the XmlHttpRequest error flag is set and calls XMLHttpRequest.responseText that expecting an empty string to be returned">
+        <description>
+          <test_script_entry>/opt/tct-xmlhttprequest-w3c-tests/xmlhttprequest/xhr2_XMLHttpRequest_responseText_error_flag_set.html</test_script_entry>
         </description>
       </testcase>
       <testcase component="WebAPI/Communication/XMLHttpRequest Level 2 (Partial)" execution_type="auto" id="xhr2_XMLHttpRequest_responseText_exception_InvalidStateError" purpose="Check if responseType is not the empty string and text and calls XMLHttpRequest.responseText that expecting an exception InvalidStateError to be thrown">
@@ -1282,6 +1312,11 @@
       <testcase component="WebAPI/Communication/XMLHttpRequest Level 2 (Partial)" execution_type="auto" id="xhr2_XMLHttpRequest_responseType_type" purpose="Check if the type of responseType is string">
         <description>
           <test_script_entry>/opt/tct-xmlhttprequest-w3c-tests/xmlhttprequest/xhr2_XMLHttpRequest_responseType_type.html</test_script_entry>
+        </description>
+      </testcase>
+      <testcase component="WebAPI/Communication/XMLHttpRequest Level 2 (Partial)" execution_type="auto" id="xhr2_XMLHttpRequest_responseXML_error_flag_set" purpose="Check if the XmlHttpRequest error flag is set and calls XMLHttpRequest.responseXML that expecting a null to be returned">
+        <description>
+          <test_script_entry>/opt/tct-xmlhttprequest-w3c-tests/xmlhttprequest/xhr2_XMLHttpRequest_responseXML_error_flag_set.html</test_script_entry>
         </description>
       </testcase>
       <testcase component="WebAPI/Communication/XMLHttpRequest Level 2 (Partial)" execution_type="auto" id="xhr2_XMLHttpRequest_responseXML_exception_InvalidStateError" purpose="Check if responseType is not the empty string or document and calls XMLHttpRequest.responseXML that expecting an exception InvalidStateError to be thrown">
@@ -1324,6 +1359,11 @@
           <test_script_entry>/opt/tct-xmlhttprequest-w3c-tests/xmlhttprequest/xhr2_XMLHttpRequest_setRequestHeader_type.html</test_script_entry>
         </description>
       </testcase>
+      <testcase component="WebAPI/Communication/XMLHttpRequest Level 2 (Partial)" execution_type="auto" id="xhr2_XMLHttpRequest_status_error_flag_set" purpose="Check if XMLHttpRequest.status is 0, when error flag is set">
+        <description>
+          <test_script_entry>/opt/tct-xmlhttprequest-w3c-tests/xmlhttprequest/xhr2_XMLHttpRequest_status_error_flag_set.html</test_script_entry>
+        </description>
+      </testcase>
       <testcase component="WebAPI/Communication/XMLHttpRequest Level 2 (Partial)" execution_type="auto" id="xhr2_XMLHttpRequest_status_readonly" purpose="Check if the xmlhttprequest.status attribute is readonly">
         <description>
           <test_script_entry>/opt/tct-xmlhttprequest-w3c-tests/xmlhttprequest/xhr2_XMLHttpRequest_status_readonly.html</test_script_entry>
@@ -1332,6 +1372,11 @@
       <testcase component="WebAPI/Communication/XMLHttpRequest Level 2 (Partial)" execution_type="auto" id="xhr2_XMLHttpRequest_status_readyState_UNSENT" purpose="Check if XMLHttpRequest.status is 0, when the readyState is UNSENT">
         <description>
           <test_script_entry>/opt/tct-xmlhttprequest-w3c-tests/xmlhttprequest/xhr2_XMLHttpRequest_status_readyState_UNSENT.html</test_script_entry>
+        </description>
+      </testcase>
+      <testcase component="WebAPI/Communication/XMLHttpRequest Level 2 (Partial)" execution_type="auto" id="xhr2_XMLHttpRequest_statusText_error_flag_set" purpose="Check if XMLHttpRequest.statusText is an empty string, when error flag is set">
+        <description>
+          <test_script_entry>/opt/tct-xmlhttprequest-w3c-tests/xmlhttprequest/xhr2_XMLHttpRequest_statusText_error_flag_set.html</test_script_entry>
         </description>
       </testcase>
       <testcase component="WebAPI/Communication/XMLHttpRequest Level 2 (Partial)" execution_type="auto" id="xhr2_XMLHttpRequest_statusText_readonly" purpose="Check if the xmlhttprequest.statusText attribute is readonly">
@@ -1377,6 +1422,11 @@
       <testcase component="WebAPI/Communication/XMLHttpRequest Level 2 (Partial)" execution_type="auto" id="xhr2_XMLHttpRequest_withCredentials_InvalidStateError" purpose="Check if the readyState is not OPENED or UNSENT then set XMLHttpRequest.withCredentials false that expecting an execption InvalidStateError to be thrown">
         <description>
           <test_script_entry>/opt/tct-xmlhttprequest-w3c-tests/xmlhttprequest/xhr2_XMLHttpRequest_withCredentials_InvalidStateError.html</test_script_entry>
+        </description>
+      </testcase>
+      <testcase component="WebAPI/Communication/XMLHttpRequest Level 2 (Partial)" execution_type="auto" id="xhr2_XMLHttpRequest_withCredentials_send_flag_set" purpose="Check if the send flag is set and calls XMLHttpRequest.withCredentials that expecting an exception InvalidStateError to be thrown">
+        <description>
+          <test_script_entry>/opt/tct-xmlhttprequest-w3c-tests/xmlhttprequest/xhr2_XMLHttpRequest_withCredentials_send_flag_set.html</test_script_entry>
         </description>
       </testcase>
       <testcase component="WebAPI/Communication/XMLHttpRequest Level 2 (Partial)" execution_type="auto" id="xhr2_XMLHttpRequestEventTarget_onabort_default_null" purpose="Check if the default value of onabort attribute is null">
