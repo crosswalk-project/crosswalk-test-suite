@@ -29,7 +29,7 @@ get_install_status=` echo $get_install_status | awk '{print $15}'`
 if [[ "$get_install_status" =~ "val[ok]" ]];then
   for (( i=1; i<=50; i=i+1 ))
   do
-    get_open_status=`open_app launchandt.launchandexisttest`
+    get_open_status=`app_launcher -s launchandt.launchandexisttest`
     sleep 2
     get_pid=`ps aux | grep "launchandexisttest" | grep -v "grep" | awk '{print $2}'`
     if [[ "$get_open_status" =~ "launched" ]];then

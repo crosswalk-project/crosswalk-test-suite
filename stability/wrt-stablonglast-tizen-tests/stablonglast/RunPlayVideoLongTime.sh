@@ -38,7 +38,7 @@ pkgcmd -i -t wgt -p $PACKAGENAME -q
 #monitor device info
 $path/sysmon-seperateRun.sh $SLEEP videoplaye &
 echo "beging..."
-launch_statue=`open_app videoplaye.playwebappvideotest`
+launch_statue=`app_launcher -s videoplaye.playwebappvideotest`
 sleep 2
 if [[ "$launch_statue" =~ "launched" ]];then
    sleep 14400

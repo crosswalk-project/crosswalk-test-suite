@@ -38,7 +38,7 @@ pkgcmd -i -t wgt -p $PACKAGENAME -q
 #monitor device info
 $path/sysmon-seperateRun.sh $SLEEP playtestmu &
 echo "beging..."
-launch_statue=`open_app playtestmu.playwebappmusictest`
+launch_statue=`app_launcher -s playtestmu.playwebappmusictest`
 sleep 2
 if [[ "$launch_statue" =~ "launched" ]];then
    sleep 14400
