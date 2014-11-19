@@ -1156,9 +1156,19 @@
           <test_script_entry>/opt/tct-webaudio-w3c-tests/webaudio/analysernode_frequencyBinCount_value.html</test_script_entry>
         </description>
       </testcase>
+      <testcase component="WebAPI/Media/Web Audio API" execution_type="auto" id="audiobuffersourcenode_FINISHED_STATE_value" purpose="Check if AudioBufferSourceNode.FINISHED_STATE value is 3">
+        <description>
+          <test_script_entry>/opt/tct-webaudio-w3c-tests/webaudio/audiobuffersourcenode_FINISHED_STATE_value.html</test_script_entry>
+        </description>
+      </testcase>
       <testcase component="WebAPI/Media/Web Audio API" execution_type="auto" id="audiobuffersourcenode_start_after_stop" purpose="Check if an exception thrown when AudioBufferSourceNode.start called after AudioBufferSourceNode.stop">
         <description>
           <test_script_entry>/opt/tct-webaudio-w3c-tests/webaudio/audiobuffersourcenode_start_after_stop.html</test_script_entry>
+        </description>
+      </testcase>
+      <testcase component="WebAPI/Media/Web Audio API" execution_type="auto" id="audiobuffersourcenode_stop_twice" purpose="Check if an exception thrown when AudioBufferSourceNode.stop called twice">
+        <description>
+          <test_script_entry>/opt/tct-webaudio-w3c-tests/webaudio/audiobuffersourcenode_stop_twice.html</test_script_entry>
         </description>
       </testcase>
       <testcase component="WebAPI/Media/Web Audio API" execution_type="auto" id="audiocontext_createBuffer_three_numberOfChannels_upper" purpose="Check if AudioContext.createBuffer method with three param,thrown exception if the numberOfChannels are out-of-bounds">
@@ -1166,9 +1176,39 @@
           <test_script_entry>/opt/tct-webaudio-w3c-tests/webaudio/audiocontext_createBuffer_three_numberOfChannels_upper.html</test_script_entry>
         </description>
       </testcase>
+      <testcase component="WebAPI/Media/Web Audio API" execution_type="auto" id="audiocontext_createBuffer_three_sampleRate_lower" purpose="Check if AudioContext.createBuffer method with three param,thrown exception if the sampleRate out of bounds 22050">
+        <description>
+          <test_script_entry>/opt/tct-webaudio-w3c-tests/webaudio/audiocontext_createBuffer_three_sampleRate_lower.html</test_script_entry>
+        </description>
+      </testcase>
+      <testcase component="WebAPI/Media/Web Audio API" execution_type="auto" id="audiocontext_createBuffer_three_sampleRate_upper" purpose="Check if AudioContext.createBuffer method with three param,thrown exception if the sampleRate out of bounds 96000">
+        <description>
+          <test_script_entry>/opt/tct-webaudio-w3c-tests/webaudio/audiocontext_createBuffer_three_sampleRate_upper.html</test_script_entry>
+        </description>
+      </testcase>
+      <testcase component="WebAPI/Media/Web Audio API" execution_type="auto" id="audiocontext_createDelayNode_no_argument" purpose="Check if AudioContext.createDelayNode method,AudioParam.maxValue value is 1 if no set maxDelayTime param">
+        <description>
+          <test_script_entry>/opt/tct-webaudio-w3c-tests/webaudio/audiocontext_createDelayNode_no_argument.html</test_script_entry>
+        </description>
+      </testcase>
       <testcase component="WebAPI/Media/Web Audio API" execution_type="auto" id="audiocontext_createScriptProcessor_bufferSize_exception" purpose="Check if AudioContext.createScriptProcessor method,throw exception if buffersize param not is buffersize list value">
         <description>
           <test_script_entry>/opt/tct-webaudio-w3c-tests/webaudio/audiocontext_createScriptProcessor_bufferSize_exception.html</test_script_entry>
+        </description>
+      </testcase>
+      <testcase component="WebAPI/Media/Web Audio API" execution_type="auto" id="audiocontext_createwavetable_exception" purpose="Check if AudioContext.createwavetable method,throw exception if real and imag param set exception type">
+        <description>
+          <test_script_entry>/opt/tct-webaudio-w3c-tests/webaudio/audiocontext_createwavetable_exception.html</test_script_entry>
+        </description>
+      </testcase>
+      <testcase component="WebAPI/Media/Web Audio API" execution_type="auto" id="audiodestinationnode_numberOfChannels_upper" purpose="Check if AudioDestinationNode.numberOfChannels attribute,throw exception if AudioContext.numberOfChannels set greater than maxNumberOfChannels">
+        <description>
+          <test_script_entry>/opt/tct-webaudio-w3c-tests/webaudio/audiodestinationnode_numberOfChannels_upper.html</test_script_entry>
+        </description>
+      </testcase>
+      <testcase component="WebAPI/Media/Web Audio API" execution_type="auto" id="audiodestinationnode_numberOfChannels_zero" purpose="Check if AudioDestinationNode.numberOfChannels attribute,throw exception if AudioContext.numberOfChannels set 0">
+        <description>
+          <test_script_entry>/opt/tct-webaudio-w3c-tests/webaudio/audiodestinationnode_numberOfChannels_zero.html</test_script_entry>
         </description>
       </testcase>
       <testcase component="WebAPI/Media/Web Audio API" execution_type="auto" id="audionode_connect_input_exception" purpose="Check if AudioNode.connect method,throw exception if input param set out-of-bound value">
@@ -1191,6 +1231,21 @@
           <test_script_entry>/opt/tct-webaudio-w3c-tests/webaudio/biquadfilternode_type_allvalues.html</test_script_entry>
         </description>
       </testcase>
+      <testcase component="WebAPI/Media/Web Audio API" execution_type="auto" id="oscillatornode_playbackState_basic" purpose="Check if the OscillatorNode.playbackState exists and the initial value is 0 and it's readonly">
+        <description>
+          <test_script_entry>/opt/tct-webaudio-w3c-tests/webaudio/oscillatornode_playbackState_basic.html</test_script_entry>
+        </description>
+      </testcase>
+      <testcase component="WebAPI/Media/Web Audio API" execution_type="auto" id="oscillatornode_PLAYING_STATE_type" purpose="Check if OscillatorNode.PLAYING_STATE attribute is number type">
+        <description>
+          <test_script_entry>/opt/tct-webaudio-w3c-tests/webaudio/oscillatornode_PLAYING_STATE_type.html</test_script_entry>
+        </description>
+      </testcase>
+      <testcase component="WebAPI/Media/Web Audio API" execution_type="auto" id="oscillatornode_PLAYING_STATE_value" purpose="Check if OscillatorNode.PLAYING_STATE attribute value is 2">
+        <description>
+          <test_script_entry>/opt/tct-webaudio-w3c-tests/webaudio/oscillatornode_PLAYING_STATE_value.html</test_script_entry>
+        </description>
+      </testcase>
       <testcase component="WebAPI/Media/Web Audio API" execution_type="auto" id="oscillatornode_type_allvalues" purpose="Check if OscillatorNode.type attribute value is set to 'custom' value after the setWaveTable() method be used">
         <description>
           <test_script_entry>/opt/tct-webaudio-w3c-tests/webaudio/oscillatornode_type_allvalues.html</test_script_entry>
@@ -1199,6 +1254,11 @@
       <testcase component="WebAPI/Media/Web Audio API" execution_type="auto" id="oscillatornode_type_invalid_value" purpose="Check if OscillatorNode.type attribute can't be set to 'custom' value">
         <description>
           <test_script_entry>/opt/tct-webaudio-w3c-tests/webaudio/oscillatornode_type_invalid_value.html</test_script_entry>
+        </description>
+      </testcase>
+      <testcase component="WebAPI/Media/Web Audio API" execution_type="auto" id="oscillatornode_type_setwavetable_value" purpose="Check if OscillatorNode.type attribute may directly be set to any of the OscillatorType values except for 'custom'">
+        <description>
+          <test_script_entry>/opt/tct-webaudio-w3c-tests/webaudio/oscillatornode_type_setwavetable_value.html</test_script_entry>
         </description>
       </testcase>
       <testcase component="WebAPI/Media/Web Audio API" execution_type="auto" id="waveshapernode_curve_greater" purpose="Check if WaveShaperNode.curve value greater than +1 will correspond to the last value in the curve array">
@@ -1214,6 +1274,96 @@
       <testcase component="WebAPI/Media/Web Audio API" execution_type="auto" id="waveshapernode_curve_zero" purpose="Check if WaveShaperNode.curve with a signal level of zero corresponding to the center value of the curve array">
         <description>
           <test_script_entry>/opt/tct-webaudio-w3c-tests/webaudio/waveshapernode_curve_zero.html</test_script_entry>
+        </description>
+      </testcase>
+      <testcase component="WebAPI/Media/Web Audio API" execution_type="auto" id="audioparam_value_maxValue_upper" purpose="Check if AudioParam.value attribute,no throw exception if AudioParam.value greater than AudioParam.maxValue">
+        <description>
+          <test_script_entry>/opt/tct-webaudio-w3c-tests/webaudio/audioparam_value_maxValue_upper.html</test_script_entry>
+        </description>
+      </testcase>
+      <testcase component="WebAPI/Media/Web Audio API" execution_type="auto" id="audioparam_value_minValue_upper" purpose="Check if AudioParam.value attribute,no throw exception if AudioParam.value less than AudioParam.minValue">
+        <description>
+          <test_script_entry>/opt/tct-webaudio-w3c-tests/webaudio/audioparam_value_minValue_upper.html</test_script_entry>
+        </description>
+      </testcase>
+      <testcase component="WebAPI/Media/Web Audio API" execution_type="auto" id="biquadfilternode_type_allpass_phase" purpose="Check if BiquadFilterNode allpass filter changes the phase relationship between the various frequencies">
+        <description>
+          <test_script_entry>/opt/tct-webaudio-w3c-tests/webaudio/biquadfilternode_type_allpass_phase.html</test_script_entry>
+        </description>
+      </testcase>
+      <testcase component="WebAPI/Media/Web Audio API" execution_type="auto" id="biquadfilternode_type_bandpass_above" purpose="Check if BiquadFilterNode bandpass filter attenuates the frequencies above the frequency range">
+        <description>
+          <test_script_entry>/opt/tct-webaudio-w3c-tests/webaudio/biquadfilternode_type_bandpass_above.html</test_script_entry>
+        </description>
+      </testcase>
+      <testcase component="WebAPI/Media/Web Audio API" execution_type="auto" id="biquadfilternode_type_bandpass_below" purpose="Check if BiquadFilterNode bandpass filter attenuates the frequencies below the frequency range">
+        <description>
+          <test_script_entry>/opt/tct-webaudio-w3c-tests/webaudio/biquadfilternode_type_bandpass_below.html</test_script_entry>
+        </description>
+      </testcase>
+      <testcase component="WebAPI/Media/Web Audio API" execution_type="auto" id="biquadfilternode_type_bandpass_center" purpose="Check if BiquadFilterNode bandpass filter allows a range of frequencies to pass through">
+        <description>
+          <test_script_entry>/opt/tct-webaudio-w3c-tests/webaudio/biquadfilternode_type_bandpass_center.html</test_script_entry>
+        </description>
+      </testcase>
+      <testcase component="WebAPI/Media/Web Audio API" execution_type="auto" id="biquadfilternode_type_highpass_above" purpose="Check if BiquadFilterNode highpass filter allows frequencies above the cutoff frequency to pass through">
+        <description>
+          <test_script_entry>/opt/tct-webaudio-w3c-tests/webaudio/biquadfilternode_type_highpass_above.html</test_script_entry>
+        </description>
+      </testcase>
+      <testcase component="WebAPI/Media/Web Audio API" execution_type="auto" id="biquadfilternode_type_highpass_below" purpose="Check if BiquadFilterNode highpass filter attenuates frequencies below the cutoff">
+        <description>
+          <test_script_entry>/opt/tct-webaudio-w3c-tests/webaudio/biquadfilternode_type_highpass_below.html</test_script_entry>
+        </description>
+      </testcase>
+      <testcase component="WebAPI/Media/Web Audio API" execution_type="auto" id="biquadfilternode_type_highshelf_attenuation" purpose="Check if BiquadFilterNode highshelf filter adds a attenuation to the higher frequencies">
+        <description>
+          <test_script_entry>/opt/tct-webaudio-w3c-tests/webaudio/biquadfilternode_type_highshelf_attenuation.html</test_script_entry>
+        </description>
+      </testcase>
+      <testcase component="WebAPI/Media/Web Audio API" execution_type="auto" id="biquadfilternode_type_highshelf_boost" purpose="Check if BiquadFilterNode highshelf filter adds a boost to the higher frequencies">
+        <description>
+          <test_script_entry>/opt/tct-webaudio-w3c-tests/webaudio/biquadfilternode_type_highshelf_boost.html</test_script_entry>
+        </description>
+      </testcase>
+      <testcase component="WebAPI/Media/Web Audio API" execution_type="auto" id="biquadfilternode_type_lowpass_above" purpose="Check if BiquadFilterNode lowpass filter attenuates frequencies above the cutoff">
+        <description>
+          <test_script_entry>/opt/tct-webaudio-w3c-tests/webaudio/biquadfilternode_type_lowpass_above.html</test_script_entry>
+        </description>
+      </testcase>
+      <testcase component="WebAPI/Media/Web Audio API" execution_type="auto" id="biquadfilternode_type_lowpass_below" purpose="Check if BiquadFilterNode lowpass filter allows frequencies below the cutoff frequency to pass through">
+        <description>
+          <test_script_entry>/opt/tct-webaudio-w3c-tests/webaudio/biquadfilternode_type_lowpass_below.html</test_script_entry>
+        </description>
+      </testcase>
+      <testcase component="WebAPI/Media/Web Audio API" execution_type="auto" id="biquadfilternode_type_lowshelf_attenuation" purpose="Check if BiquadFilterNode lowshelf filter adds a attenuation to the lower frequencies">
+        <description>
+          <test_script_entry>/opt/tct-webaudio-w3c-tests/webaudio/biquadfilternode_type_lowshelf_attenuation.html</test_script_entry>
+        </description>
+      </testcase>
+      <testcase component="WebAPI/Media/Web Audio API" execution_type="auto" id="biquadfilternode_type_lowshelf_boost" purpose="Check if BiquadFilterNode lowshelf filter adds a boost to the lower frequencies">
+        <description>
+          <test_script_entry>/opt/tct-webaudio-w3c-tests/webaudio/biquadfilternode_type_lowshelf_boost.html</test_script_entry>
+        </description>
+      </testcase>
+      <testcase component="WebAPI/Media/Web Audio API" execution_type="auto" id="biquadfilternode_type_notch_all" purpose="Check if BiquadFilterNode notch filter allows all frequencies through">
+        <description>
+          <test_script_entry>/opt/tct-webaudio-w3c-tests/webaudio/biquadfilternode_type_notch_all.html</test_script_entry>
+        </description>
+      </testcase>
+      <testcase component="WebAPI/Media/Web Audio API" execution_type="auto" id="biquadfilternode_type_notch_except" purpose="Check if BiquadFilterNode notch filter allows all frequencies through except for the notch applied">
+        <description>
+          <test_script_entry>/opt/tct-webaudio-w3c-tests/webaudio/biquadfilternode_type_notch_except.html</test_script_entry>
+        </description>
+      </testcase>
+      <testcase component="WebAPI/Media/Web Audio API" execution_type="auto" id="biquadfilternode_type_peaking_attenuation" purpose="Check if BiquadFilterNode peaking filter adds a attenuation to a range of frequencies">
+        <description>
+          <test_script_entry>/opt/tct-webaudio-w3c-tests/webaudio/biquadfilternode_type_peaking_attenuation.html</test_script_entry>
+        </description>
+      </testcase>
+      <testcase component="WebAPI/Media/Web Audio API" execution_type="auto" id="biquadfilternode_type_peaking_boost" purpose="Check if BiquadFilterNode peaking filter adds a boost to a range of frequencies">
+        <description>
+          <test_script_entry>/opt/tct-webaudio-w3c-tests/webaudio/biquadfilternode_type_peaking_boost.html</test_script_entry>
         </description>
       </testcase>
       <testcase component="WebAPI/Media/Web Audio API" execution_type="auto" id="analysernode_fftSize_value" purpose="Check if AnalyserNode.fftSize attribute value is number">
@@ -1239,6 +1389,11 @@
       <testcase component="WebAPI/Media/Web Audio API" execution_type="auto" id="analysernode_maxDecibels_value" purpose="Check if AnalyserNode.maxDecibels attribute value is float">
         <description>
           <test_script_entry>/opt/tct-webaudio-w3c-tests/webaudio/analysernode_maxDecibels_value.html</test_script_entry>
+        </description>
+      </testcase>
+      <testcase component="WebAPI/Media/Web Audio API" execution_type="auto" id="analysernode_minDecibels_value" purpose="Check if AnalyserNode.minDecibels attribute value is float">
+        <description>
+          <test_script_entry>/opt/tct-webaudio-w3c-tests/webaudio/analysernode_minDecibels_value.html</test_script_entry>
         </description>
       </testcase>
       <testcase component="WebAPI/Media/Web Audio API" execution_type="auto" id="analysernode_smoothingTimeConstant_value" purpose="Check if AnalyserNode.smoothingTimeConstant attribute value is float">
@@ -1321,14 +1476,39 @@
           <test_script_entry>/opt/tct-webaudio-w3c-tests/webaudio/audiobuffersourcenode_playbackRate_default_value.html</test_script_entry>
         </description>
       </testcase>
+      <testcase component="WebAPI/Media/Web Audio API" execution_type="auto" id="audiobuffersourcenode_playbackState_initial_value" purpose="Check if the AudioBufferSourceNode.playbackState initial value is 0">
+        <description>
+          <test_script_entry>/opt/tct-webaudio-w3c-tests/webaudio/audiobuffersourcenode_playbackState_initial_value.html</test_script_entry>
+        </description>
+      </testcase>
       <testcase component="WebAPI/Media/Web Audio API" execution_type="auto" id="audiobuffersourcenode_playbackState_start_value" purpose="Check if the AudioBufferSourceNode.playbackState is not 0 when start method is called">
         <description>
           <test_script_entry>/opt/tct-webaudio-w3c-tests/webaudio/audiobuffersourcenode_playbackState_start_value.html</test_script_entry>
         </description>
       </testcase>
+      <testcase component="WebAPI/Media/Web Audio API" execution_type="auto" id="audiobuffersourcenode_PLAYING_STATE_value" purpose="Check if AudioBufferSourceNode.PLAYING_STATE value is 2">
+        <description>
+          <test_script_entry>/opt/tct-webaudio-w3c-tests/webaudio/audiobuffersourcenode_PLAYING_STATE_value.html</test_script_entry>
+        </description>
+      </testcase>
+      <testcase component="WebAPI/Media/Web Audio API" execution_type="auto" id="audiobuffersourcenode_SCHEDULED_STATE_value" purpose="Check if AudioBufferSourceNode.SCHEDULED_STATE value is 1">
+        <description>
+          <test_script_entry>/opt/tct-webaudio-w3c-tests/webaudio/audiobuffersourcenode_SCHEDULED_STATE_value.html</test_script_entry>
+        </description>
+      </testcase>
       <testcase component="WebAPI/Media/Web Audio API" execution_type="auto" id="audiobuffersourcenode_start_base" purpose="Check if an audio source plays when AudioBufferSourceNode.start method called">
         <description>
           <test_script_entry>/opt/tct-webaudio-w3c-tests/webaudio/audiobuffersourcenode_start_base.html</test_script_entry>
+        </description>
+      </testcase>
+      <testcase component="WebAPI/Media/Web Audio API" execution_type="auto" id="audiobuffersourcenode_stop_base" purpose="Check if an audio source ends when AudioBufferSourceNode.stop method called">
+        <description>
+          <test_script_entry>/opt/tct-webaudio-w3c-tests/webaudio/audiobuffersourcenode_stop_base.html</test_script_entry>
+        </description>
+      </testcase>
+      <testcase component="WebAPI/Media/Web Audio API" execution_type="auto" id="audiobuffersourcenode_UNSCHEDULED_STATE_value" purpose="Check if AudioBufferSourceNode.UNSCHEDULED_STATE value is 0">
+        <description>
+          <test_script_entry>/opt/tct-webaudio-w3c-tests/webaudio/audiobuffersourcenode_UNSCHEDULED_STATE_value.html</test_script_entry>
         </description>
       </testcase>
       <testcase component="WebAPI/Media/Web Audio API" execution_type="auto" id="audiocontext_createAnalyser_base" purpose="Check if AudioContext.createAnalyser method,return value type of is RealtimeAnalyserNode">
@@ -1344,6 +1524,11 @@
       <testcase component="WebAPI/Media/Web Audio API" execution_type="auto" id="audiocontext_createBuffer_three_base" purpose="Check if AudioContext.createBuffer method with three param basic usage,return value type of is AudioBuffer">
         <description>
           <test_script_entry>/opt/tct-webaudio-w3c-tests/webaudio/audiocontext_createBuffer_three_base.html</test_script_entry>
+        </description>
+      </testcase>
+      <testcase component="WebAPI/Media/Web Audio API" execution_type="auto" id="audiocontext_createBuffer_two_base" purpose="Check if AudioContext.createBuffer method with two param,return value type of is AudioBuffer">
+        <description>
+          <test_script_entry>/opt/tct-webaudio-w3c-tests/webaudio/audiocontext_createBuffer_two_base.html</test_script_entry>
         </description>
       </testcase>
       <testcase component="WebAPI/Media/Web Audio API" execution_type="auto" id="audiocontext_createBufferSource_base" purpose="Check if AudioContext.createBufferSource,return value type of is AudioBufferSourceNode">
@@ -1374,6 +1559,11 @@
       <testcase component="WebAPI/Media/Web Audio API" execution_type="auto" id="audiocontext_createConvolver_base" purpose="Check if AudioContext.createConvolver method return value type of is ConvolverNode">
         <description>
           <test_script_entry>/opt/tct-webaudio-w3c-tests/webaudio/audiocontext_createConvolver_base.html</test_script_entry>
+        </description>
+      </testcase>
+      <testcase component="WebAPI/Media/Web Audio API" execution_type="auto" id="audiocontext_createDelayNode_base" purpose="Check if AudioContext.createDelayNode method,AudioParam.maxValue value is 2 if maxDelayTime set 2">
+        <description>
+          <test_script_entry>/opt/tct-webaudio-w3c-tests/webaudio/audiocontext_createDelayNode_base.html</test_script_entry>
         </description>
       </testcase>
       <testcase component="WebAPI/Media/Web Audio API" execution_type="auto" id="audiocontext_createDynamicsCompressor_base" purpose="Check if AudioContext.createDynamicsCompressor method return value type of is DynamicsCompressorNode">
@@ -1456,6 +1646,11 @@
           <test_script_entry>/opt/tct-webaudio-w3c-tests/webaudio/audiocontext_createWaveShaper_type.html</test_script_entry>
         </description>
       </testcase>
+      <testcase component="WebAPI/Media/Web Audio API" execution_type="auto" id="audiocontext_createwavetable_base" purpose="Check if AudioContext.createwavetable method return value type of is WaveTable">
+        <description>
+          <test_script_entry>/opt/tct-webaudio-w3c-tests/webaudio/audiocontext_createwavetable_base.html</test_script_entry>
+        </description>
+      </testcase>
       <testcase component="WebAPI/Media/Web Audio API" execution_type="auto" id="audiocontext_decodeAudioData_base" purpose="Check if AudioContext.decodeAudioData method, callback argument equals AudioBuffer if AudioContext.decodeAudioData decode success">
         <description>
           <test_script_entry>/opt/tct-webaudio-w3c-tests/webaudio/audiocontext_decodeAudioData_base.html</test_script_entry>
@@ -1464,6 +1659,11 @@
       <testcase component="WebAPI/Media/Web Audio API" execution_type="auto" id="audiodestinationnode_numberOfChannels_base" purpose="Check if AudioDestinationNode.numberOfChannels attribute set maxNumberOfChannels then AudioContext.numberOfChannels equals AudioContext.maxNumberOfChannels">
         <description>
           <test_script_entry>/opt/tct-webaudio-w3c-tests/webaudio/audiodestinationnode_numberOfChannels_base.html</test_script_entry>
+        </description>
+      </testcase>
+      <testcase component="WebAPI/Media/Web Audio API" execution_type="auto" id="audiodestinationnode_numberOfChannels_default_value" purpose="Check if AudioDestinationNode.numberOfChannels attribute default value is 2">
+        <description>
+          <test_script_entry>/opt/tct-webaudio-w3c-tests/webaudio/audiodestinationnode_numberOfChannels_default_value.html</test_script_entry>
         </description>
       </testcase>
       <testcase component="WebAPI/Media/Web Audio API" execution_type="auto" id="audiolistener_dopplerFactor_default_value" purpose="Check if the AudioListener.dopplerFactor default value is 1">
@@ -1546,6 +1746,16 @@
           <test_script_entry>/opt/tct-webaudio-w3c-tests/webaudio/audioparam_setTargetAtTime_base.html</test_script_entry>
         </description>
       </testcase>
+      <testcase component="WebAPI/Media/Web Audio API" execution_type="auto" id="audioprocessingevent_inputBuffer_value" purpose="Check if the AudioProcessingEvent.inputBuffer is AudioBuffer value">
+        <description>
+          <test_script_entry>/opt/tct-webaudio-w3c-tests/webaudio/audioprocessingevent_inputBuffer_value.html</test_script_entry>
+        </description>
+      </testcase>
+      <testcase component="WebAPI/Media/Web Audio API" execution_type="auto" id="audioprocessingevent_outputBuffer_value" purpose="Check if the AudioProcessingEvent.outBuffer is AudioBuffer value">
+        <description>
+          <test_script_entry>/opt/tct-webaudio-w3c-tests/webaudio/audioprocessingevent_outputBuffer_value.html</test_script_entry>
+        </description>
+      </testcase>
       <testcase component="WebAPI/Media/Web Audio API" execution_type="auto" id="biquadfilternode_detune_basic" purpose="Check if BiquadFilterNode.detune attribute exists and type and readonly">
         <description>
           <test_script_entry>/opt/tct-webaudio-w3c-tests/webaudio/biquadfilternode_detune_basic.html</test_script_entry>
@@ -1559,6 +1769,11 @@
       <testcase component="WebAPI/Media/Web Audio API" execution_type="auto" id="biquadfilternode_type_default_value" purpose="Check if BiquadFilterNode.type attribute default value is 'lowpass'">
         <description>
           <test_script_entry>/opt/tct-webaudio-w3c-tests/webaudio/biquadfilternode_type_default_value.html</test_script_entry>
+        </description>
+      </testcase>
+      <testcase component="WebAPI/Media/Web Audio API" execution_type="auto" id="convolvernode_buffer_value" purpose="Check if the ConvolverNode.buffer is AudioBuffer value">
+        <description>
+          <test_script_entry>/opt/tct-webaudio-w3c-tests/webaudio/convolvernode_buffer_value.html</test_script_entry>
         </description>
       </testcase>
       <testcase component="WebAPI/Media/Web Audio API" execution_type="auto" id="convolvernode_normalize_default_value" purpose="Check if the ConvolverNode.normalize default value is true">
@@ -1596,6 +1811,21 @@
           <test_script_entry>/opt/tct-webaudio-w3c-tests/webaudio/offlineaudiocontext_startRendering_type.html</test_script_entry>
         </description>
       </testcase>
+      <testcase component="WebAPI/Media/Web Audio API" execution_type="auto" id="oscillatornode_FINISHED_STATE_value" purpose="Check if OscillatorNode.FINISHED_STATE attribute value is 3">
+        <description>
+          <test_script_entry>/opt/tct-webaudio-w3c-tests/webaudio/oscillatornode_FINISHED_STATE_value.html</test_script_entry>
+        </description>
+      </testcase>
+      <testcase component="WebAPI/Media/Web Audio API" execution_type="auto" id="oscillatornode_SCHEDULED_STATE_exists" purpose="Check if OscillatorNode.SCHEDULED_STATE constant exists">
+        <description>
+          <test_script_entry>/opt/tct-webaudio-w3c-tests/webaudio/oscillatornode_SCHEDULED_STATE_exists.html</test_script_entry>
+        </description>
+      </testcase>
+      <testcase component="WebAPI/Media/Web Audio API" execution_type="auto" id="oscillatornode_setWaveTable_exists" purpose="Check if OscillatorNode.setWaveTable function exists">
+        <description>
+          <test_script_entry>/opt/tct-webaudio-w3c-tests/webaudio/oscillatornode_setWaveTable_exists.html</test_script_entry>
+        </description>
+      </testcase>
       <testcase component="WebAPI/Media/Web Audio API" execution_type="auto" id="oscillatornode_start_exists" purpose="Check if OscillatorNode.start method exists">
         <description>
           <test_script_entry>/opt/tct-webaudio-w3c-tests/webaudio/oscillatornode_start_exists.html</test_script_entry>
@@ -1609,6 +1839,11 @@
       <testcase component="WebAPI/Media/Web Audio API" execution_type="auto" id="oscillatornode_stop_before_start" purpose="Check if an exception will be thrown when OscillatorNode.stop is before OscillatorNode.start">
         <description>
           <test_script_entry>/opt/tct-webaudio-w3c-tests/webaudio/oscillatornode_stop_before_start.html</test_script_entry>
+        </description>
+      </testcase>
+      <testcase component="WebAPI/Media/Web Audio API" execution_type="auto" id="oscillatornode_UNSCHEDULED_STATE_value" purpose="Check if OscillatorNode.UNSCHEDULED_STATE attribute value is 0">
+        <description>
+          <test_script_entry>/opt/tct-webaudio-w3c-tests/webaudio/oscillatornode_UNSCHEDULED_STATE_value.html</test_script_entry>
         </description>
       </testcase>
       <testcase component="WebAPI/Media/Web Audio API" execution_type="auto" id="pannernode_coneInnerAngle_value" purpose="Check if the PannerNode.coneInnerAngle is float value">
@@ -1714,6 +1949,11 @@
       <testcase component="WebAPI/Media/Web Audio API" execution_type="auto" id="audioparam_setValueCurveAtTime_base" purpose="Check if AudioParam.setValueCurveAtTime method executes well with three parameters">
         <description>
           <test_script_entry>/opt/tct-webaudio-w3c-tests/webaudio/audioparam_setValueCurveAtTime_base.html</test_script_entry>
+        </description>
+      </testcase>
+      <testcase component="WebAPI/Media/Web Audio API" execution_type="auto" id="audioparam_value_base" purpose="Check if AudioParam.value attribute set AudioParam.minValue then AudioParam.value equals AudioParam.minValue">
+        <description>
+          <test_script_entry>/opt/tct-webaudio-w3c-tests/webaudio/audioparam_value_base.html</test_script_entry>
         </description>
       </testcase>
     </set>
