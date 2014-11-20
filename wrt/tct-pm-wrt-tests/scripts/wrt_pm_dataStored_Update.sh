@@ -20,7 +20,7 @@
 #        Yue, jianhui <jianhuix.a.yue@intel.com>
 
 source $(dirname $0)/Common
-
+uninstall_app widget-version-1
 func_install_changename widget-version-1.wgt
 if [ $? -eq 1 ];then
   echo "The installation is failed"
@@ -34,9 +34,9 @@ if [ $? -eq 1 ];then
   exit 1
 fi
 
-find_app widget-version
-mkdir /home/app/.config/xwalk-service/applications/$pkgids/data
-myPath="/home/app/.config/xwalk-service/applications/$pkgids/data"
+find_appid widget-version
+mkdir /home/app/.config/xwalk-service/applications/$appids/data
+myPath="/home/app/.config/xwalk-service/applications/$appids/data"
 if [ ! -d $myPath ];then
   echo -e  "created folder data failed!"
   exit 1

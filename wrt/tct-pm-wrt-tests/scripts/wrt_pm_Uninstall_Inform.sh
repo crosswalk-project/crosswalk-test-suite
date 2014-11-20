@@ -22,31 +22,26 @@
 path=$(dirname $(dirname $0))
 source $(dirname $0)/Common
 source $path/scripts/xwalk_common.sh
+uninstall_app Sample-widget
 func_install Sample-widget.wgt
 if [ $? -eq 1 ];then
-  echo "The installation is failed"
-  exit 1
+echo "The installation is failed"
+exit 1
 fi
-
 find_app Sample-widget
 uninstall_app Sample-widget
 if [ $? -eq 1 ];then
-  echo "The uninstallation is failed"
-  exit 1
+echo "The uninstallation is failed"
+exit 1
 fi
-
 for pkgid in $pkgids
 do
-  pkgcmd -u -n $pkgid -q 1>>/tmp/uninstaller.log 2>&1
+get_uninstall_status=`pkgcmd -u -n $pkgid -q`
 done
-
-RET3=`grep "Unknown Error" /tmp/uninstaller.log `
-if [ -z "$RET3"  ]; then
-  echo -e  "informed failure of uninstallation failed!"
-  rm -f /tmp/uninstaller.log
+if [[ "$get_uninstall_status" =~ "val[fail]" ]];then
+  echo -e "informed failure of uninstallation failed!"
   exit 1
 else
-  echo -e  "informed failure of uninstallation successfully!"
-  rm -f /tmp/uninstaller.log
-  exit 0
+  echo -e "informed failure of uninstallation successfully!"
+exit 0
 fi

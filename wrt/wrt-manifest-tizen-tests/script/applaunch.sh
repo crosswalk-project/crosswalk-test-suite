@@ -9,7 +9,7 @@ Result="Pass"
 #2.**** launcher the app
 pkgnum=`echo "$1"|wc -w`
 if [ $pkgnum -eq 1 ]; then
-   open_app $1 &>/dev/null &
+   app_launcher -s $1 &>/dev/null &
  if [ $? -eq 1 ];then
   echo Launch Fail
   exit 1

@@ -76,8 +76,8 @@ function update_valid_xpk(){
                         exit 1
         fi
 
-        get_version_name $4
-        uninstall_xpk $4
+        get_version_name $3
+        uninstall_xpk $3
         if [[ $version != $2 ]]; then
                 echo "Fail, Update xpk, but the version is not updated."
                 exit 1
@@ -98,13 +98,13 @@ function update_negative_xpk(){
                 exit 1
         fi
 
-        get_version_name $4
-        uninstall_xpk $4
+        get_version_name $3
+        uninstall_xpk $3
         if [[ $version != $2 ]]; then
                 echo "Fail, Update negative xpk, but the version is updated."
                 exit 1
         fi
-        if [[ $version == $3 ]]; then
+        if [[ $name == $3 ]]; then
                 echo "Fail, Update negative xpk, but the name is updated."
                 exit 1
         fi
@@ -112,7 +112,10 @@ function update_negative_xpk(){
 
 function uninstall_xpk(){
 #uninstall xpk
-pkgcmd -u -n  $1 -q
+pkgid=`pkgcmd -l | grep $1 | awk '{print $4}'`
+pkgid=`echo $pkgid | awk '{print $1}'`
+pkgid=${pkgid:1:-1}
+get_uninstall=`pkgcmd -u -n  $pkgid -q`
 }
 
 function get_version_name(){
@@ -122,7 +125,7 @@ function get_version_name(){
         version=`pkgcmd -l | grep $1 | awk '{print $8}'`
         version=`echo $version | awk '{print $1}'`
         version=${version:1:-1}
-        name=`pkgcmd -l | grep diffid_same_version_tests | awk '{print $6}'`
+        name=`pkgcmd -l | grep $1 | awk '{print $6}'`
         name=`echo $name | awk '{print $1}'`
         name=${name:1:-1}
 }

@@ -37,9 +37,9 @@ xpk_path=$local_path/../testapp
 app_id=`pkgcmd -l | grep "diffid_same_version_tests" | awk '{print $4}'`
 app_id=`echo $app_id | awk '{print $1}'`
 app_id=${app_id:1:-1}
-pkgcmd -u -n $app_id -q
+get_uninstall=`pkgcmd -u -n  $app_id -q`
 
-pkgcmd -i -t xpk -p  $xpk_path/diffid_same_version_tests.xpk -q
+pkgcmd -i -t xpk -p $xpk_path/diffid_same_version_tests.xpk -q
 if [[ $? -eq 0 ]]; then
    echo "Install Pass"
    app_id=`pkgcmd -l | grep "diffid_same_version_tests" | awk '{print $4}'`
