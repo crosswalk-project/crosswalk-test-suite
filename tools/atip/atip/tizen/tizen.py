@@ -67,7 +67,7 @@ def get_user_id(mode,device):
     return  user_id
     
 def update_cmd(xw_env,cmd=None):
-    if "xwalkctl" in cmd:
+    if "app_launcher -l" in cmd:
         cmd = "su - app -c '%s;%s'" % (xw_env, cmd)
     return cmd
 
@@ -92,10 +92,10 @@ def get_appid_by_name(app_name=None, platform=None):
 
     if mode == "SSH":
         cmd = "ssh %s \"%s\"" % (
-            device, update_cmd(xw_env,'xwalkctl'))
+            device, update_cmd(xw_env,'app_launcher -l'))
     else:
         cmd = "sdb -s %s shell %s" % (
-            device, update_cmd(xw_env,'xwalkctl'))
+            device, update_cmd(xw_env,'app_launcher -l'))
 
     (return_code, output) = do_cmd(cmd)
     if return_code != 0:
@@ -104,11 +104,12 @@ def get_appid_by_name(app_name=None, platform=None):
     test_app_id = ""
     for line in output:
         line_sections = line.strip("\r\n").split()
+        print line_sections
         if len(line_sections) == 1:
             continue
-        i_name = line_sections[1]
+        i_name = line_sections[0].strip("\'")
         if app_name == i_name:
-            test_app_id = line_sections[0]
+            test_app_id = line_sections[1].strip("\'")
             break
     print "Got app-id of %s: %s" % (app_name, test_app_id)
     return test_app_id
