@@ -37,7 +37,7 @@ pkgcmd -i -t wgt -p $PACKAGENAME -q
 #monitor device info
 $path/sysmon-seperateRun.sh $SLEEP twodoptest &
 echo "beging..."
-launch_statue=`open_app twodoptest.twodframeplaytest`
+launch_statue=`app_launcher -s twodoptest.twodframeplaytest`
 sleep 2
 if [[ "$launch_statue" =~ "launched" ]];then
    sleep 86400
