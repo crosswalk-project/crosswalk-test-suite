@@ -48,8 +48,8 @@ then
   echo -e  "Fail to install the widget!"
   exit 1
 fi
-launch_app $pkgids
-App_Status=`xwalk-launcher -r $APPID | grep "not running"`
+launch_app $appid
+App_Status=`app_launcher -r $appid | grep "not running"`
 if [ -z $App_Status ];then
   echo "The widget is launched successfully"
   uninstall_app $APP_NAME
