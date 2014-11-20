@@ -25,20 +25,32 @@ APP_NAME="private_localstorage_check"
 function existbh()
 {
   echo $1
-  pkgcmd -u -n wrt5plc001 -q
+  uninstall_app $APP_NAME
   exit $2
 }
 $(dirname $0)/wrt_sp02_installer.sh $APP_NAME.wgt
-find_app $APP_NAME
+find_appid $APP_NAME
 if [ $? -ne 0 ]
 then
   exit 1
 fi
-open_app wrt5plc001.privatelocalstoragecheck
-sleep 2
-widgetpath="/home/app/.config/xwalk-service/Storage/ext/wrt5plc001.privatelocalstoragecheck"
-if [ -d $widgetpath ]
+widgetpath="/home/app/.config/xwalk-service/applications/$appids"
+if [ ! -d $widgetpath ]
 then
+  existbh "The path of the application does not exist." 1
+fi
+filecount=$(ls -lR $widgetpath|grep "^-"|wc -l)
+name=("config.xml" "icon.png" "index.html")
+if [ $filecount -eq 5  ]
+then
+  filename=$(ls -l $widgetpath | grep "^_")
+  for var in ${filename[@]};do
+    echo ${name[@]}|grep -q "$var"
+    if [ $? -ne 0 ]
+    then
+      existbh "Application does not have its own localStorage space" 1
+    fi
+  done
   existbh "Application has its own localStorage space" 0
 else
   existbh "Application does not have its own localStorage space" 1

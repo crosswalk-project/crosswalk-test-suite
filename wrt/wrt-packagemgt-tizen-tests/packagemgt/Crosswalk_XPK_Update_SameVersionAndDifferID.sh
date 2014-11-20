@@ -36,23 +36,32 @@ xpk_path=$local_path/../testapp
 func_check_xwalkservice
 
 # install original xpk
-install_origin_xpk  $xpk_path/update_original_versionOne_tests.xpk
+pkgid=`pkgcmd -l | grep "update_original_versionOne_tests" | awk '{print $4}'`
+pkgid=`echo $pkgid | awk '{print $1}'`
+pkgid=${pkgid:1:-1}
+get_uninstall=`pkgcmd -u -n  $pkgid -q`
 
-#update valid xpk and check DB
-exist_id=`pkgcmd -l | grep "diffid_same_version_tests" | awk '{print $4}'`
-exist_id=`echo $app_id | awk '{print $1}'`
-exist_id=${app_id:1:-1}
-[ -n $exist_id ] & pkgcmd -u -n  $exist_id -q
-pkgcmd -i -t xpk -p $xpk_path/diffid_same_version_tests.xpk -q &> /tmp/install
+get_install=`pkgcmd -i -t xpk -p  $xpk_path/update_original_versionOne_tests.xpk -q &> /tmp/install`
+
+
+pkgid=`pkgcmd -l | grep "diffid_same_version_tests" | awk '{print $4}'`
+pkgid=`echo $pkgid | awk '{print $1}'`
+pkgid=${pkgid:1:-1}
+get_uninstall=`pkgcmd -u -n  $pkgid -q`
+
+
+get_install=`pkgcmd -i -t xpk -p $xpk_path/diffid_same_version_tests.xpk -q &> /tmp/install`
 cat /tmp/install | grep "ok"
 if [[ $? -ne 0 ]]; then
     echo "The diffid_same_version_tests xpk  install failure."  
     exit 1
 fi
- uninstall_xpk $app_id
- #get app id
- get_app_id
-
- uninstall_xpk $app_id
-
- exit 0
+pkgid=`pkgcmd -l | grep "diffid_same_version_tests" | awk '{print $4}'`
+pkgid=`echo $pkgid | awk '{print $1}'`
+pkgid=${pkgid:1:-1}
+get_uninstall=`pkgcmd -u -n  $pkgid -q`
+pkgid=`pkgcmd -l | grep "update_original_versionOne_tests" | awk '{print $4}'`
+pkgid=`echo $pkgid | awk '{print $1}'`
+pkgid=${pkgid:1:-1}
+get_uninstall=`pkgcmd -u -n  $pkgid -q`
+exit 0

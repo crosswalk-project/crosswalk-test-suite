@@ -38,16 +38,22 @@ xpk_path=$local_path/../testapp
 func_check_xwalkservice
 
 # install original xpk
+pkgid=`pkgcmd -l | grep "diffid_same_version_tests" | awk '{print $4}'`
+pkgid=`echo $pkgid | awk '{print $1}'`
+pkgid=${pkgid:1:-1}
+get_uninstall=`pkgcmd -u -n  $pkgid -q`
+
 pkgcmd -i -t xpk -p $xpk_path/diffid_same_version_tests.xpk -q
 
-app_id=`ail_list | grep "diffid_same_version_tests" | head -n 1 | awk '{print $1}'`
-app_id=`echo $app_id | awk '{print $1}'`
+app_id=`app_launcher -l | grep "diffid_same_version_tests" | head -n 1| awk  '{print $2}'`
 app_id=${app_id:1:-1}
-open_app $app_id 
+app_launcher -s $app_id 
 sleep 2
-
+pkgid=`pkgcmd -l | grep "diffid_same_version_tests" | awk '{print $4}'`
+pkgid=`echo $pkgid | awk '{print $1}'`
+pkgid=${pkgid:1:-1}
 #install xwalk web app
-pkgcmd -u -n  $app_id -q
+pkgcmd -u -n  $pkgid -q
 if [[ $? -eq 0 ]]; then
                 echo "Uninstall Pass"
                 exit 0

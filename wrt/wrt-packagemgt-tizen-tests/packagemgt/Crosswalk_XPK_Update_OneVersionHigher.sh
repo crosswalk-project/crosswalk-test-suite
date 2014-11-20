@@ -39,6 +39,6 @@ func_check_xwalkservice
 install_origin_xpk  $xpk_path/update_original_versionOne_tests.xpk update_original_versionOne_tests
 
 #update valid xpk and check DB
-update_valid_xpk $xpk_path/update_versionOne_Higher_tests.xpk 3 update_versionOne_Higher_tests $app_id
+update_valid_xpk $xpk_path/update_versionOne_Higher_tests.xpk 3 update_versionOne_Higher_tests
 
 exit 0

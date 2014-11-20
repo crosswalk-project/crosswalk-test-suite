@@ -35,9 +35,9 @@ source $local_path/Common
 xpk_path=$local_path/../testapp
 # install original xpk
 app_id1=`pkgcmd -l | grep "diffid_same_version_tests" | awk '{print $4}'`
-app_id1=`echo $app_id | awk '{print $1}'`
-app_id1=${app_id:1:-1}
-pkgcmd -u -n  $app_id1 -q
+app_id1=`echo $app_id1 | awk '{print $1}'`
+app_id1=${app_id1:1:-1}
+get_uninstall=`pkgcmd -u -n  $app_id1 -q`
 
 pkgcmd -i -t xpk -p $xpk_path/diffid_same_version_tests.xpk -q
 if [[ $? -eq 0 ]]; then
@@ -59,14 +59,14 @@ fi
 app_id2=`pkgcmd -l | grep "update_original_versionOne_tests" | awk '{print $4}'`
 app_id2=`echo $app_id2 | awk '{print $1}'`
 app_id2=${app_id2:1:-1}
-pkgcmd -u -n  $app_id1 -q
+get_uninstall=`pkgcmd -u -n  $app_id2 -q`
 if [[ $? -eq 0 ]]; then
                 echo "Uninstall Pass"
         else
                 echo "Uninstall Fail"
                 exit 1
 fi
-pkgcmd -u -n  $app_id2 -q
+get_uninstall=`pkgcmd -u -n  $app_id1 -q`
 if [[ $? -eq 0 ]]; then
                 echo "Uninstall Pass"
                 exit 0

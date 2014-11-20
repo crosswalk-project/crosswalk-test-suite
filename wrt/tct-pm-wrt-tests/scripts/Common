@@ -54,8 +54,8 @@ function func_launch()
     fi
     find_app $APP_NAME
     launch_app $APP_NAME
-    find_app $APP_NAME
-    pkgnum=`echo "$pkgids"|wc -w`
+    find_appid $APP_NAME
+    pkgnum=`echo "$appids"|wc -w`
     if [ $pkgnum -ge 1 ]; then
       echo "The widget is launched successfully"
       return 0
@@ -76,7 +76,7 @@ function func_launch()
     fi
     find_app $APP_NAME
     launch_app $APP_NAME
-    App_Status=`open_app $appid | grep "not running"`
+    App_Status=`app_launcher -s $appids | grep "not running"`
     if [ -z $App_Status ];then
       echo "The widget is launched successfully"
       return 0

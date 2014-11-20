@@ -36,7 +36,11 @@ xpk_path=$local_path/../testapp
 func_check_xwalkservice
 
 # install original xpk
-install_origin_xpk  $xpk_path/update_original_versionOne_tests.xpk
+pkgid=`pkgcmd -l | grep "update_original_versionOne_tests" | awk '{print $4}'`
+pkgid=`echo $pkgid | awk '{print $1}'`
+pkgid=${pkgid:1:-1}
+get_uninstall=`pkgcmd -u -n  $pkgid -q`
+install_origin_xpk  $xpk_path/update_original_versionOne_tests.xpk update_original_versionOne_tests
 
 #update valid xpk and check DB
 pkgcmd -i -t xpk -p $xpk_path/update_original_versionOne_tests.xpk -q &> /tmp/install
@@ -45,6 +49,9 @@ if [[ $? -eq 0 ]]; then
     echo "The  app is same version and id, install successfully."  
     exit 1
 fi
-uninstall_xpk $app_id
+pkgid=`pkgcmd -l | grep "update_original_versionOne_tests" | awk '{print $4}'`
+pkgid=`echo $pkgid | awk '{print $1}'`
+pkgid=${pkgid:1:-1}
+get_uninstall=`pkgcmd -u -n  $pkgid -q`
 
 exit 0

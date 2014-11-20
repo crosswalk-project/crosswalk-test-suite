@@ -34,11 +34,19 @@ source $local_path/Common
 xpk_path=$local_path/../testapp
 
 func_check_xwalkservice
+pkgid=`pkgcmd -l | grep "update_original_versionMulti_tests" | awk '{print $4}'`
+pkgid=`echo $pkgid | awk '{print $1}'`
+pkgid=${pkgid:1:-1}
+get_uninstall=`pkgcmd -u -n  $pkgid -q`
 
+pkgid=`pkgcmd -l | grep "update_versionOne_Higher_tests" | awk '{print $4}'`
+pkgid=`echo $pkgid | awk '{print $1}'`
+pkgid=${pkgid:1:-1}
+get_uninstall=`pkgcmd -u -n  $pkgid -q`
 # install original xpk
-install_origin_xpk  $xpk_path/update_original_versionMulti_tests.xpk
+install_origin_xpk  $xpk_path/update_original_versionMulti_tests.xpk update_original_versionMulti_tests
 
 #update valid xpk and check DB
-update_valid_xpk $xpk_path/update_versionOne_Higher_tests.xpk 3 update_versionOne_Higher_tests $app_id
+update_valid_xpk $xpk_path/update_versionOne_Higher_tests.xpk 3 update_versionOne_Higher_tests 
 
 exit 0
