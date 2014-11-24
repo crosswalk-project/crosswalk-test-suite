@@ -11,7 +11,6 @@ LIST="
 "
 BLACK="webapi-ambientlight-w3c-tests
 webapi-imports-w3c-tests
-webapi-htmltemplates-html5-tests
 webapi-runtime-xwalk-tests
 webapi-shadowdom-w3c-tests
 ivi-tests

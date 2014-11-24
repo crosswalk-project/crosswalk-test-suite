@@ -24,7 +24,6 @@ tct-xmlhttprequest-w3c-tests
 tizen-tests
 webapi-ambientlight-w3c-tests
 webapi-dlna-xwalk-tests
-webapi-htmltemplates-html5-tests
 webapi-imports-w3c-tests
 webapi-resourcetiming-w3c-tests
 webapi-runtime-xwalk-tests
