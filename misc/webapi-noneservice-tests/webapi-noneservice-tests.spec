@@ -29,7 +29,6 @@ webapi-imports-w3c-tests
 webapi-resourcetiming-w3c-tests
 webapi-runtime-xwalk-tests
 webapi-shadowdom-w3c-tests
-webapi-style-css3-tests
 webapi-webspeech-w3c-tests"
 
 for list in $LIST;do
