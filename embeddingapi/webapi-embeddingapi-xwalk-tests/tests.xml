@@ -2,15 +2,57 @@
 <?xml-stylesheet type="text/xsl" href="./testcase.xsl"?>
 <test_definition>
   <suite name="webapi-embeddingapi-xwalk-tests" category="Android embedding APIs">
-    <set name="LoadTest" test_set_src="org.xwalk.embedding.test.LoadTest" type="androidunit" location="device"></set>
-    <set name="NavigationHistoryTest" test_set_src="org.xwalk.embedding.test.NavigationHistoryTest" type="androidunit" location="device"></set>
-    <set name="XWalkNavigationItemTest" test_set_src="org.xwalk.embedding.test.XWalkNavigationItemTest" type="androidunit" location="device"></set>
-    <set name="XWalkViewTest" test_set_src="org.xwalk.embedding.test.XWalkViewTest" type="androidunit" location="device"></set>
-    <set name="XWalkUIClientTest" test_set_src="org.xwalk.embedding.test.XWalkUIClientTest" type="androidunit" location="device"></set>
-    <set name="XWalkResourceClientTest" test_set_src="org.xwalk.embedding.test.XWalkResourceClientTest" type="androidunit" location="device"></set>
-    <set name="XWalkPreferenceTest" test_set_src="org.xwalk.embedding.test.XWalkPreferenceTest" type="androidunit" location="device"></set>
-    <set name="XWalkJavascriptResultTest" test_set_src="org.xwalk.embedding.test.XWalkJavascriptResultTest" type="androidunit" location="device"></set>
-    <set name="FullScreenTest" test_set_src="org.xwalk.embedding.test.FullScreenTest" type="androidunit" location="device"></set>
-    <set name="XWalkExtensionTest" test_set_src="org.xwalk.embedding.test.XWalkExtensionTest" type="androidunit" location="device"></set>
+    <set name="EmbeddingApiTest" type="androidunit" location="device">
+      <testcase component="Crosswalk APIs/Embedding API" execution_type="auto" id="LoadTest" purpose="Check if the load related methods are effective." subcase="15">
+        <description>
+          <test_script_entry>org.xwalk.embedding.test.LoadTest</test_script_entry>
+        </description>
+      </testcase>
+      <testcase component="Crosswalk APIs/Embedding API" execution_type="auto" id="NavigationHistoryTest" purpose="Check if the view can forward and backward history." subcase="13">
+        <description>
+          <test_script_entry>org.xwalk.embedding.test.NavigationHistoryTest</test_script_entry>
+        </description>
+      </testcase>
+      <testcase component="Crosswalk APIs/Embedding API" execution_type="auto" id="XWalkNavigationItemTest" purpose="Check if the view history can get the correct url, title, and original url." subcase="3">
+        <description>
+          <test_script_entry>org.xwalk.embedding.test.XWalkNavigationItemTest</test_script_entry>
+        </description>
+      </testcase>
+      <testcase component="Crosswalk APIs/Embedding API" execution_type="auto" id="XWalkViewTest" purpose="Check if the methods of XWalkView interface can be executed correctly." subcase="24">
+        <description>
+          <test_script_entry>org.xwalk.embedding.test.XWalkViewTest</test_script_entry>
+        </description>
+      </testcase>
+      <testcase component="Crosswalk APIs/Embedding API" execution_type="auto" id="XWalkUIClientTest" purpose="Check if the methods of XWalkUIClient interface can be executed correctly." subcase="24">
+        <description>
+          <test_script_entry>org.xwalk.embedding.test.XWalkUIClientTest</test_script_entry>
+        </description>
+      </testcase>
+      <testcase component="Crosswalk APIs/Embedding API" execution_type="auto" id="XWalkResourceClientTest" purpose="Check if the methods of XWalkResourceClient interface can be executed correctly." subcase="7">
+        <description>
+          <test_script_entry>org.xwalk.embedding.test.XWalkResourceClientTest</test_script_entry>
+        </description>
+      </testcase>
+      <testcase component="Crosswalk APIs/Embedding API" execution_type="auto" id="XWalkPreferenceTest" purpose="Check if the methods of XWalkPreference interface can be executed correctly." subcase="10">
+        <description>
+          <test_script_entry>org.xwalk.embedding.test.XWalkPreferenceTest</test_script_entry>
+        </description>
+      </testcase>
+      <testcase component="Crosswalk APIs/Embedding API" execution_type="auto" id="XWalkJavascriptResultTest" purpose="Check if the methods of XWalkJavascriptResult interface can be executed correctly." subcase="3">
+        <description>
+          <test_script_entry>org.xwalk.embedding.test.XWalkJavascriptResultTest</test_script_entry>
+        </description>
+      </testcase>
+      <testcase component="Crosswalk APIs/Embedding API" execution_type="auto" id="FullScreenTest" purpose="Check if the fullScreen related methods are effective." subcase="2">
+        <description>
+          <test_script_entry>org.xwalk.embedding.test.FullScreenTest</test_script_entry>
+        </description>
+      </testcase>
+      <testcase component="Crosswalk APIs/Embedding API" execution_type="auto" id="XWalkExtensionTest" purpose="Check if the methods of XWalkExtension interface can be executed correctly." subcase="10">
+        <description>
+          <test_script_entry>org.xwalk.embedding.test.XWalkExtensionTest</test_script_entry>
+        </description>
+      </testcase>
+    </set>
   </suite>
 </test_definition>
