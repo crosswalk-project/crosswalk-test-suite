@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <!--
-Copyright (c) 2012 Intel Corporation.
+Copyright (c) 2014 Intel Corporation.
 
 Redistribution and use in source and binary forms, with or without modification,
 are permitted provided that the following conditions are met:
@@ -32,11 +32,11 @@ Authors:
 
 <html>
   <head>
-    <title>WebGL Test: webglrenderingcontext_viewport_type</title>
+    <title>WebGL Test: webglrenderingcontext_VIEWPORT_type</title>
     <link rel="author" title="Intel" href="http://www.intel.com" />
     <link rel="help" href="https://www.khronos.org/registry/webgl/specs/1.0/" />
     <meta name="flags" content="" />
-    <meta name="assert" content="Check if the type of WebGLRenderingContext.viewport is 'function'"/>
+    <meta name="assert" content="Check if the type of WebGLRenderingContext.VIEWPORT is 'number'"/>
     <script src="../resources/testharness.js"></script>
     <script src="../resources/testharnessreport.js"></script>
     <script src="support/webgl.js"></script>
@@ -48,7 +48,7 @@ Authors:
     </canvas>
     <script>
         getwebgl();
-        webgl_property_type(webgl, 'viewport', 'function');
+        webgl_property_type(webgl, 'VIEWPORT', 'number');
     </script>
   </body>
 </html>
