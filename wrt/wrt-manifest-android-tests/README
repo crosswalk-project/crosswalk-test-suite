@@ -14,6 +14,7 @@ If test device is "x86" platform, content of the file should be "x86".
 ## Authors:
 
 * Xu, Kang <kangx.xu@intel.com>
+* Wang, Hongjuan <hongjuanx.wang@intel.com>
 
 ## LICENSE
 
@@ -41,22 +42,18 @@ Please see the COPYING file for the BSD-3-Clause License.
 
 3. ./metacomm/ folder is allpairs.
 
-4. After start test, new folders would be created. And names of the folder are the same
-with DEVICE_ID which you input.
-   In each new folder, there are several folders like report and allparis.
- ./[DEVICE_ID]/report/ save the auto report wrt-manifest-android-tests.xml file.
-    4.1 manifest_positive.txt is all positive manifest.json content.
-    4.2 manifest_negative.txt is all negative manifest.json content.
- ./[DEVICE_ID]/allparis/ save test seed file which would be tested on the device.
+4. ./ge_manifest.py create manifest resource
 
-5. Get the detailed information in a file like xxxx_stdout.log in home directory
+5. ./ge_package.py create manifest package
+
+6. ./ge_unitcase.py create tests.py
 
 Test Step:
 1. unzip -d [testprefix-path] wrt-manifest-android-tests<version>.zip
 2. cd [testprefix-path]/opt/wrt-manifest-android-tests/
-3. ./inst.py -i 
+3. ./ge_package.py
 4. run test case
-   testkit-lite -f [testprefix-path]/opt/wrt-manifest-android-tests/tests.xml -A -o [testprefix-path]/opt/wrt-manifest-android-tests/result.xml --comm localhost --testenvs "DEVICE_ID=Medfield3C6DFF2E CONNECT_TYPE=adb" --testprefix [testprefix-path],DEVICE_ID can also be multiple ids like "DEVICE_ID=Medfield3C6DFF2E,Medfield3C6DFF00".
+   testkit-lite -f [testprefix-path]/opt/wrt-manifest-android-tests/tests.xml -A -o [testprefix-path]/opt/wrt-manifest-android-tests/result.xml --comm localhost --testenvs "DEVICE_ID=Medfield3C6DFF2E;CONNECT_TYPE=adb;APK_DIR=[apk-folder-path]",DEVICE_ID can also be multiple ids like "DEVICE_ID=Medfield3C6DFF2E,Medfield3C6DFF00".
 Query device id by command "adb devices -l" in host.
 
 Base on the seed file, the total case number is 265.
