@@ -3,11 +3,13 @@ allpairs-plus
 
 ## Introduction
 
-allpairs-plus tool here is based the pairwise tool of "all pairs", to use minimal test cases that achieves maximal coverage, we improves all pairs with new "parameter self-combination" method in best practices, it split the parameter to sub-parameters, and extend the tool from one-dimensional to two-dimensional.
+allpairs-plus tool here is based the pairwise tool of "all pairs", and we improve it in two aspects in our practices:
+* To use minimal test cases that achieves maximal coverage, we improve allpairs with new "parameter self-combination" method in best practices, it split the parameter to sub-parameters, and extend the tool from one-dimensional to two-dimensional.
+* To maintain the test cases more easier when seed changed, we improve allpairs  with new Increment method, what is, when seed file have increment, the output also accordingly have “increment” base original output.
 
 Pairwise tool is an effective data-driven test case generation technique, which is based on the observation that most faults are caused by interactions of two factors.By using this method, you can get remarkable test cases coverage.
 
-## Parameter Self-combination Method
+## Improvement - Parameter Self-combination Method
 
 Pairwise tool - all pairs disadvantages:
 
@@ -18,6 +20,22 @@ So we improves Pairwise with new "parameter self-combination" method in best pra
 Check below for more details.
 
 ![image](https://github.com/cicili/tools/blob/master/allpairs-plus/doc/self-combination-method.png)
+
+## Improvement - Increment Method
+
+Pairwise is more suitable for fixed parameters and their fixed values, but system is upgrade continually, and when it
+* Extends the range of the parameters – horizontal growth in seed file
+* Integrate more factors/parameters in system – vertical growth in seed file
+
+Then how to revise the exist test set to adopt this change?
+
+Firstly, we need adjust the seed file according the system upgrade details, then update the exist test set base the seed file. If we directly use Pairwise to do re-combination based updated seed file, the output test cases will totally changed compare with original ones, which inconvenient for tester to maintain.We’d better create the new combination results base the exist test set. 
+
+So we improves Pairwise with new Increment method, when seed file have increment, the output also accordingly have “increment” base original output.
+
+Check below for more details.
+
+![image](https://github.com/cicili/tools/blob/master/allpairs-plus/doc/increment-method.png)
 
 ## Tool Instructions
 
@@ -66,6 +84,14 @@ Run Pairwise tool
 
     $ python allpairs-plus.py
     
+Run Pairwise tool with baseline
+
+    $ python allpairs-plus.py -b $baseline_file
+
+Pairwise tool help
+
+    $ python allpairs-plus.py -h
+
 
 # Tools Packages Usage 
 
