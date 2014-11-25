@@ -6,6 +6,11 @@ import pdb, traceback
 import metacomm.combinatorics.all_pairs2
 all_pairs = metacomm.combinatorics.all_pairs2.all_pairs2
 
+def usage():
+        print 'allpairs-plus.py usage:'
+        print '-h: print help message.'
+        print '-b: use baseline file as part of output, e.g. baseline.txt'
+
 def do_Selfcom(self_combin_file,out_file):
     try:
         file = open(self_combin_file)
@@ -193,12 +198,73 @@ def do_Clear(sourceDir):
     except IOError,e: 
         print Exception,"Clear :"+ sourceDir + " ------------------------->error",e 
 
-     
+def integrate_baseline(baseline_file):
+        output_bl = open(baseline_file)
+        output_bl_list = output_bl.readlines()
+        output = open(conf.output_file)
+        output_list = output.readlines()
+	col_outbl = len(output_bl_list[0].split("\t"))
+	col_out = len(output_list[0].split("\t"))
+
+	# Only exist parameter changed
+	if col_outbl==col_out: 
+           print ">>>>>>> Only exist parameters changed"
+           for var in output_list:
+                if var not in output_bl_list:
+                        output_bl_list.append(var)
+	   print ">>>>>>> Generate output with baseline ------------>OK"
+	   output_withbaseline = open(conf.output_file, "w")
+           output_withbaseline.writelines(output_bl_list)
+           output_withbaseline.close()
+	   print ">>>>>>> END"
+	   sys.exit()
+
+	# New parameters added, and maybe exist parameters also changed 
+	print ">>>>>>> New parameters added, and maybe exist parameters also changed"
+	out_dict={};
+	for var in output_list:
+		list_row = var.split("\t")
+		key = '\t'.join(list_row[0:col_outbl])
+		value = '\t'.join(list_row[col_outbl:col_out])
+		out_dict[key] = value
+
+	output_list_new = []
+	i = 0
+	for var in output_bl_list:
+		var = var.strip('\n')
+		list_row = var.split("\t")
+		key = '\t'.join(list_row)
+		value = out_dict.get(key)
+		while (i>=len(out_dict)):
+			i = i/2;
+		if value is None:
+			value = out_dict.values()[i] 
+		output_list_new.append("\t".join((var,value)))
+		i = i + 1;
+
+	print ">>>>>>> Generate output with baseline ------------>OK"
+        for var in output_list:
+                if var not in output_list_new:
+                        output_list_new.append(var)
+        output_withbaseline = open(conf.output_file, "w")
+        output_withbaseline.writelines(output_list_new)
+        output_withbaseline.close()
+	print ">>>>>>> END"
+
 def main():
     try:
         do_Clear("./output/output.txt")    
         del_Seed(conf.seed_file)
         do_Clear("./self")
+        opts,args=getopt.getopt(sys.argv[1:],"hb:")
+        for op,val in opts:
+                if op=="-b":
+                        baseline=val
+			print "use",baseline, "as baseline"
+			integrate_baseline(baseline);
+                elif op=="-h":
+                        usage()
+                        sys.exit()
     except Exception,e: 
         print Exception,":",e 
 
