@@ -3,18 +3,21 @@ source $(dirname $0)/webapi-service-tests.spec
 SRC_ROOT=$(cd $(dirname $0);pwd)
 BUILD_ROOT=/tmp/$name
 
-usage="Usage: ./pack.sh [-t <package type: apk | cordova>] [-a <apk runtime arch: x86 | arm>]
+usage="Usage: ./pack.sh [-t <package type: apk | cordova>] [-a <apk runtime arch: x86 | arm>] [-m <package mode: embedded | shared>]
 [-t apk] option was set as default.
 [-a x86] option was set as default.
+[-m embedded] option was set as default.
 "
 
 pack_type="apk"
 arch="x86"
-while getopts a:t: o
+pack_mode="embedded"
+while getopts a:t:m: o
 do
     case "$o" in
     a) arch=$OPTARG;;
     t) pack_type=$OPTARG;;
+    m) pack_mode=$OPTARG;;
     *) echo "$usage"
        exit 1;;
     esac
@@ -39,7 +42,7 @@ if [ $pack_type == "apk" ];then
     cp -ar $SRC_ROOT/../../tools/crosswalk $BUILD_ROOT/crosswalk
  
     cd $BUILD_ROOT/crosswalk
-    python make_apk.py --package=org.xwalk.$appname --name=$appname --app-url=http://127.0.0.1:8080/index.html --icon=$BUILD_ROOT/icon.png --mode=embedded --arch=$arch --enable-remote-debugging
+    python make_apk.py --package=org.xwalk.$appname --name=$appname --app-url=http://127.0.0.1:8080/index.html --icon=$BUILD_ROOT/icon.png --mode=$pack_mode --arch=$arch --enable-remote-debugging
 elif [ $pack_type == "cordova" ];then
     cp -ar $SRC_ROOT/../../tools/cordova $BUILD_ROOT/cordova
     cp -ar $SRC_ROOT/../../tools/cordova_plugins $BUILD_ROOT/cordova_plugins
@@ -90,8 +93,8 @@ done
 if [ $pack_type == "apk" ];then
     mv $BUILD_ROOT/crosswalk/*.apk $BUILD_ROOT/opt/$name/
 
-    if [ -f $BUILD_ROOT/opt/$name/WebapiServiceTests_$arch.apk ];then
-        mv $BUILD_ROOT/opt/$name/WebapiServiceTests_$arch.apk $BUILD_ROOT/opt/$name/$appname.apk
+    if [ -f $BUILD_ROOT/opt/$name/WebapiServiceTests_$arch.apk ] || [ -f $BUILD_ROOT/opt/$name/WebapiServiceTests.apk ];then
+        mv $BUILD_ROOT/opt/$name/WebapiServiceTests*.apk $BUILD_ROOT/opt/$name/$appname.apk
     fi
 elif [ $pack_type == "cordova" ];then
     if [ -f $BUILD_ROOT/cordova/$appname/bin/$appname-debug.apk ];then

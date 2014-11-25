@@ -1,17 +1,20 @@
 #!/bin/bash
 source $(dirname $0)/docroot.spec
-usage="Usage: ./pack.sh [-t <package type: apk | cordova>] [-a <apk runtime arch: x86 | arm>]
+usage="Usage: ./pack.sh [-t <package type: apk | cordova>] [-a <apk runtime arch: x86 | arm>] [-m <package mode: embedded | shared>]
 [-t apk] option was set as default.
 [-a x86] option was set as default.
+[-m embedded] option was set as default.
 "
 
 pack_type="apk"
 arch="x86"
-while getopts a:t: o
+pack_mode="embedded"
+while getopts a:t:m: o
 do
     case "$o" in
     a) arch=$OPTARG;;
     t) pack_type=$OPTARG;;
+    m) pack_mode=$OPTARG;;
     *) echo "$usage"
        exit 1;;
     esac
@@ -45,7 +48,7 @@ rm -rf $SRC_ROOT/*.zip
 cp -arf $SRC_ROOT/* $BUILD_ROOT/
 
 for list in $LIST;do
-    python $SRC_ROOT/../../tools/build/pack.py -t ${pack_type}-aio -m embedded -a $arch -d $BUILD_DEST/opt/$core_name -s $SRC_ROOT/../../webapi/$list
+    python $SRC_ROOT/../../tools/build/pack.py -t ${pack_type}-aio -m $pack_mode -a $arch -d $BUILD_DEST/opt/$core_name -s $SRC_ROOT/../../webapi/$list
 done
 
 ## creat testlist.json ##
