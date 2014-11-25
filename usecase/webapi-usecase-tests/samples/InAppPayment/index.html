@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<!--
+Copyright (c) 2014 Intel Corporation.
+
+Redistribution and use in source and binary forms, with or without modification,
+are permitted provided that the following conditions are met:
+
+* Redistributions of works must retain the original copyright notice, this list
+  of conditions and the following disclaimer.
+* Redistributions in binary form must reproduce the original copyright notice,
+  this list of conditions and the following disclaimer in the documentation
+  and/or other materials provided with the distribution.
+* Neither the name of Intel Corporation nor the names of its contributors
+  may be used to endorse or promote products derived from this work without
+  specific prior written permission.
+
+THIS SOFTWARE IS PROVIDED BY INTEL CORPORATION "AS IS"
+AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE
+IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE
+ARE DISCLAIMED. IN NO EVENT SHALL INTEL CORPORATION BE LIABLE FOR ANY DIRECT,
+INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING,
+BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE,
+DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY
+OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING
+NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE,
+EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
+
+Authors:
+        Liu,Yun <yunx.liu@intel.com>
+
+-->
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="initial-scale=1.0, maximum-scale=1.0, width=device-width">
+    <link rel="stylesheet" type="text/css" href="../../css/jquery.mobile.css" />
+    <link rel="stylesheet" type="text/css" href="../../css/main.css" />
+    <script src="../../js/thirdparty/jquery.js"></script>
+    <script src="../../js/thirdparty/jquery.mobile.js"></script>
+    <script src="../../js/main.js"></script>
+    <script src="../../js/tests.js"></script>
+  </head>
+  <body>
+    <input type="hidden" id="sub_test"/>
+    <div data-role="header">
+      <h1 id="main_page_title"></h1>
+    </div>
+    <div id="content" style="margin: 20px 20px;">
+      Launch sub app "iap"
+    </div>
+    <div data-role="footer" data-position="fixed">
+    </div>
+    <div data-role="popup" id="popup_info">
+      <font class="fontSize">
+        <p>Verifies query product details and buy gas product successfully.</p>
+        <p>Pre-condition: </p>
+        <ol>
+          <li>GMS</br>
+          IAP is provided by GMS, which means the device must have Google Play installed, and be able to access Google Play.</br>
+          Here is a wiki of setup steps for GMS on ZTE Geek for your reference: http://powerbuilder.sh.intel.com/projects/wrtonandroid/wiki/xwalk/geek_install_gms</li>
+          <li>Google Play developer account</br>
+          IAP must have products for user to buy, these products can only be managed in Google Play developer console by developer. The account on the device which you are using to test your IAP app should be the test account listed in your developer console, for more information please see Testing an APK with Google In-App Billing API</li>
+          <li>Google Wallet merchant account</br>
+          User must have Google Wallet merchant account to use IAP service on Google Play. In our scenario, "user" is the user account on test device - ZTE Geek. Note this account must be different with the developer account in above, use for purchase.</li> 
+          <li>No GFW</br>
+          IAP is not provided in China mainland, we must find a way to go over GFW to test IAP functionalities.</li>
+        </ol>
+      </font>
+    </div>
+  </body>
+  </body>
+</html>
