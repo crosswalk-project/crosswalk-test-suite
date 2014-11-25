@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<meta charset="utf-8">
+<title>CSS Reference</title>
+<link rel="author" title="Intel" href="http://www.intel.com">
+<style>
+  #test {
+    width: 600px;
+    height: 200px;
+    text-align:center;
+    position: relative;
+    border: solid 5px blue;
+    margin: 0.5em 2em 1em 0;
+    font: bold 14px/19px Arial, sans-serif;
+    -webkit-column-width: 196px;
+    -webkit-column-gap: 6px;
+    -webkit-column-rule-width: 6px;
+    -webkit-column-rule-style: solid;
+    -webkit-column-rule-color: black;
+    -moz-column-width: 196px;
+    -moz-column-gap: 6px;
+    -moz-column-rule-width: 6px;
+    -moz-column-rule-style: solid;
+    -moz-column-rule-color: black;
+    -o-column-width: 196px;
+    -o-column-gap: 6px;
+    -o-column-rule-width: 6px;
+    -o-column-rule-style: solid;
+    -o-column-rule-color: black;
+  }
+  .gap {
+    position: absolute;
+    background-color:yellow;
+    width: 6px;
+    bottom: 0px;
+    top: 0px;
+  }
+  .test p {
+    padding: 3px;
+    margin: 0;
+  }
+</style>
+<body>
+  <p id="testdetails">
+    <p>Assertion:If the column rule and the column gap have the same width</p>
+    <ul>
+      <li>Test passes if no black lines on yellow lines.</li>
+    </ul>
+  </p>
+  <div id="log"></div>
+  <div class="test" id="test">
+    <div>
+      <p> Ab cde fgh i jkl. Mno<br>
+        pqr stu vw xyz. A bc<br>
+        def g hij klm nopqrs<br>
+        tuv wxy z. Abc de fg<br>
+        hi jklmno. Pqrstu vw<br>
+        x yz. Abc def ghi jkl.<br>
+        M nop qrst uv wx yz.<br>
+        Ab cde fgh i jkl. Mno<br>
+        pqr stu vw xyz. A bc<br>
+        def g hij klm nopqrs
+      </p>
+    </div>
+
+    <div><!-- style="left: 175px"-->
+      <p> tuv wxy z. Abc de fg<br>
+        hi jklmno. Pqrstu vw<br>
+        x yz. Abc def ghi jkl.<br>
+        M nop qrst uv wx yz.<br>
+        Ab cde fgh i jkl. Mno<br>
+        pqr stu vw xyz. A bc<br>
+        def g hij klm nopqrs<br>
+        tuv wxy z. Abc de fg<br>
+        hi jklmno. Pqrstu vw<br>
+        x yz. Abc def ghi jkl.<br>
+      </p>
+    </div>
+
+    <div> <!-- style="left: 350px"-->
+      <p> M nop qrst uv wx yz.<br>
+        Ab cde fgh i jkl. Mno<br>
+        pqr stu vw xyz. A bc<br>
+        def g hij klm nopqrs<br>
+        tuv wxy z. Abc de fg<br>
+        hi jklmno. Pqrstu vw<br>
+        x yz. Abc def ghi jkl.<br>
+        M nop qrst uv wx yz.<br>
+        Ab cde fgh i jkl. Mno<br>
+        Pqr stu vw xyz.
+      </p>
+    </div>
+
+    <div class="gap" style="left: 196px"></div>
+
+    <div class="gap" style="left: 398px"></div>
+  </div>
+</body>

@@ -33,68 +33,38 @@ Authors:
 
 <html>
   <head>
-    <title>CSS3 MultiColumn Test: CSS3Multicolumn_column-width_image_custom_png_float_right</title>
+    <title>CSS3 MultiColumn Test: CSS3Multicolumn_column-rule_same</title>
     <link rel="author" title="Intel" href="http://www.intel.com" />
     <link rel="help" href="http://www.w3.org/TR/2011/CR-css3-multicol-20110412/" />
+    <link rel="match" href="reference/CSS3Multicolumn_column-rule_same-ref.html"/>
     <meta name="flags" content="" />
-    <meta name="assert" content="Check if the width of the image is set float right" />
+    <meta name="assert" content="Check if all column rules in the same row are also equal,column rules only appear between columns that both have content" />
+    <script src="../resources/testharness.js"></script>
+    <script src="../resources/testharnessreport.js"></script>
     <script src="support/support.js"></script>
-    <style>
+    <style type="text/css">
         div.test {
-            width: 700px;
-            height: 200px;
-            text-align:center;
-            position: relative;
-            border: solid 5px blue;
-            margin: 0.5em 2em 1em 0;
-            font: bold 14px/19px Arial, sans-serif;
-        }
-        .test p {
-            padding: 3px;
-            margin: 0;
-        }
-        img {
-            display: block;
-            float: right;
+            background-color: green;
+            margin: 10px;
+            width: 400px;
+            padding: 0.2em 1em;
+            border: 5px solid blue;
         }
     </style>
   </head>
   <body>
-    <p>Test passes if the cat image is on the right of the text of the column</p>
+    <p>
+      <p>Assertion:If all column rules in the same row are also equal,column rules only appear between columns that both have content</p>
+      <ul>
+        <li>Test passes if three same pink column rules split into four columns and column rules appear between columns that both have content.</li>
+      </ul>
+    </p>
     <div class="test" id="test">
-      <div>
-        <p> Ab cde fgh i jkl. Mno<br>
-          pqr stu vw xyz. A bc<br>
-          def g hij klm nopqrs<br>
-          tuv wxy z. Abc de fg<br>
-          hi jklmno. Pqrstu vw<br>
-          x yz. Abc def ghi jkl.<br>
-          M nop qrst uv wx yz.<br>
-          Ab cde fgh i jkl. Mno<br>
-          pqr stu vw xyz. A bc<br>
-          def g hij klm nopqrs
-        </p>
-      </div>
-      <div>
-        <p> M nop qrst uv wx yz.<br>
-          Ab cde fgh i jkl. Mno<br>
-          <img src="support/cat.png"/>
-          pqr stu vw xyz. A bc<br>
-          def g hij klm nopqrs<br>
-          tuv wxy z. Abc de fg<br>
-          hi jklmno. Pqrstu vw<br>
-          x yz. Abc def ghi jkl.<br>
-          M nop qrst uv wx yz.<br>
-          Ab cde fgh i jkl. Mno<br>
-          Pqr stu vw xyz.
-        </p>
-      </div>
-    </div>
+      welcome here! This is a column width Tests. please test it welcome here! This is a column width Tests. please test it welcome here!This is a column width Tests. please test it</div>
     <script>
         var div = document.querySelector("#test");
-        div.style[headProp("columnWidth")] = "196px";
-        div.style[headProp("columnGap")] ="5px";
-        div.style[headProp("columnRule")] ="5px solid green";
+        div.style[headProp("columnCount",div)] = "4";
+        div.style[headProp("columnRule",div)] = "thick solid pink";
     </script>
   </body>
 </html>

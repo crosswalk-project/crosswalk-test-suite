@@ -33,51 +33,39 @@ Authors:
 
 <html>
   <head>
-    <title>CSS3 MultiColumn Test: CSS3Multicolumn_column-gap_image_custom_png_clipped</title>
+    <title>CSS3 MultiColumn Test: CSS3Multicolumn_column-width_same</title>
     <link rel="author" title="Intel" href="http://www.intel.com" />
     <link rel="help" href="http://www.w3.org/TR/2011/CR-css3-multicol-20110412/" />
+    <link rel="match" href="reference/CSS3Multicolumn_column-width_same-ref.html"/>
     <meta name="flags" content="" />
-    <meta name="assert" content="Check if the image is wider than the column, and is therefore clipped" />
+    <meta name="assert" content="Check if all column boxes in a row have the same column width, and all column boxes in a row have the same column height" />
     <script src="support/support.js"></script>
-    <style>
+    <style type="text/css">
         div.test {
-            width: 240px;
-            height: 200px;
-            text-align:center;
-            position: relative;
-            border: solid 5px black;
-            margin: 0.5em 2em 1em 0;
-            font: bold 14px/19px Arial, sans-serif;
-        }
-        .test p {
-            padding: 3px;
-            margin: 0;
-        }
-        img {
-             margin: 3px;
+            background-color: green;
+            margin: 10px;
+            width: 360px;
+            column-gap: 0;
+            -webkit-column-gap: 0;
+            -moz-column-gap: 0;
+            -o-column-gap: 0;
         }
     </style>
   </head>
   <body>
-    <p>Test passes if the right side of the cat image is clipped by the yellow line</p>
+    <p id="testdetails">
+      <p>Assertion:If all column boxes in a row have the same column width, and all column boxes in a row have the same column height</p>
+      <ul>
+        <li>Test passes if yellow lines split into three columns and the column width and height are the same.</li>
+      </ul>
+    </p>
+    <div id="log"></div>
     <div class="test" id="test">
-      <div>
-        <img src="support/cat.png"/>
-         M nop qrst uv wx yz.<br>
-        Ab cde fgh i jkl. Mno<br>
-        pqr stu vw xyz. A bc<br>
-        def g hij klm nopqrs<br>
-        x yz. Abc def ghi jkl.<br>
-        M nop qrst uv wx yz.<br>
-        Ab cde fgh i jkl. Mno<br>
-        Pqr stu vw xyz.
-      </div>
-    </div>
+      welcome here! This is a column width Tests. please test it welcome here! This is a column width Tests. please test it welcome here!This is a column width Tests. please test it</div>
     <script>
         var div = document.querySelector("#test");
-        div.style[headProp("columnWidth")] = "60px";
-        div.style[headProp("columnGap")] ="5px";
-        div.style[headProp("columnRule")] ="5px solid yellow";
+        div.style[headProp("columnWidth",div)] = "100px";
+        div.style[headProp("columnRule",div)] = "1px solid yellow";
     </script>
   </body>
 </html>

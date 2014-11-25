@@ -33,61 +33,52 @@ Authors:
 
 <html>
   <head>
-    <title>CSS3 MultiColumn Test: CSS3Multicolumn_column-span_all_background_silver</title>
+    <title>CSS3 MultiColumn Test: CSS3Multicolumn_column-width_image_custom_png</title>
     <link rel="author" title="Intel" href="http://www.intel.com" />
     <link rel="help" href="http://www.w3.org/TR/2011/CR-css3-multicol-20110412/" />
+    <link rel="match" href="reference/CSS3Multicolumn_column-width_image_custom_png-ref.html"/>
     <meta name="flags" content="" />
-    <meta name="assert" content="Check if column-span to all, all content that appear before the h2 element is shown before the h2 element" />
+    <meta name="assert" content="Check if the width of the image is set with these rules" />
     <script src="support/support.js"></script>
-    <style type="text/css">
+    <style>
         div.test {
-            width: 600px;
-            height: 250px;
+            width: 700px;
+            height: 300px;
             text-align:center;
             position: relative;
-            border: solid 5px blue;
+            border: solid 5px black;
             margin: 0.5em 2em 1em 0;
             font: bold 14px/19px Arial, sans-serif;
+        }
+        .test p {
+            padding: 3px;
+            margin: 0;
+        }
+        img {
+            display: block;
+            width: 100%;
         }
     </style>
   </head>
   <body>
-    <p id="testdetails">
-      <p>Assertion:If column-span to all, all content that appear before the h2 element is shown before the h2 element</p>
-      <ul>
-        <li>Test passes if silver box text 'An H2 element Test' across all columns.</li>
-      </ul>
-    </p>
-    <div id="log"></div>
+    <p>Test passes if the width of the cat image is the same as the width of the column</p>
     <div class="test" id="test">
       <div>
-        Ab cde fgh i jkl. Mno<br>
+        <p> Ab cde fgh i jkl. Mno<br>
         pqr stu vw xyz. A bc<br>
         def g hij klm nopqrs<br>
         tuv wxy z. Abc de fg<br>
         hi jklmno. Pqrstu vw<br>
         x yz. Abc def ghi jkl.<br>
         M nop qrst uv wx yz.<br>
-        Ab cde fgh i jkl. Mno
-        pqr stu vw xyz. A bc
-        <h2 id="h2" style="height: 20px;
-     font-size: 1.3em;padding: 2px">An H2 element Test</h2>
+        Ab cde fgh i jkl. Mno<br>
+        pqr stu vw xyz. A bc<br>
         def g hij klm nopqrs
+        </p>
       </div>
+      <img src="support/cat.png"/>
       <div>
-         tuv wxy z. Abc de fg
-        hi jklmno. Pqrstu vw<br>
-        x yz. Abc def ghi jkl.<br>
-        M nop qrst uv wx yz.<br>
-        Ab cde fgh i jkl. Mno<br>
-        pqr stu vw xyz. A bc<br>
-        def g hij klm nopqrs<br>
-        tuv wxy z. Abc de fg<br>
-        hi jklmno. Pqrstu vw<br>
-        x yz. Abc def ghi jkl.<br>
-      </div>
-      <div>
-        M nop qrst uv wx yz.<br>
+        <p> M nop qrst uv wx yz.<br>
         Ab cde fgh i jkl. Mno<br>
         pqr stu vw xyz. A bc<br>
         def g hij klm nopqrs<br>
@@ -97,6 +88,7 @@ Authors:
         M nop qrst uv wx yz.<br>
         Ab cde fgh i jkl. Mno<br>
         Pqr stu vw xyz.
+        </p>
       </div>
     </div>
     <script>
@@ -104,8 +96,6 @@ Authors:
         div.style[headProp("columnWidth")] = "196px";
         div.style[headProp("columnGap")] ="5px";
         div.style[headProp("columnRule")] ="5px solid green";
-        document.getElementById("h2").style[headProp("columnSpan")]="all";
-        document.getElementById("h2").style[headProp("background")]="silver";
     </script>
   </body>
 </html>

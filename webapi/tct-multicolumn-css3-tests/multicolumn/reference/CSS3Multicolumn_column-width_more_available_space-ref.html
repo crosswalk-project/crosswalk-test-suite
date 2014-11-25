@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<meta charset="utf-8">
+<title>CSS Reference</title>
+<link rel="author" title="Intel" href="http://www.intel.com">
+<style type="text/css">
+  div.test {
+    background-color: red;
+    text-align: center;
+    width: 400px;
+    -webkit-column-width: 150px;
+    -webkit-column-rule-width: 1px;
+    -webkit-column-rule-style: solid;
+    -webkit-column-rule-color: black;
+    -moz-column-width: 150px;
+    -moz-column-rule-width: 1px;
+    -moz-column-rule-style: solid;
+    -moz-column-rule-color: black;
+    -o-column-width: 150px;
+    -o-column-rule-width: 1px;
+    -o-column-rule-style: solid;
+    -o-column-rule-color: black;
+  }
+  div.test1 {
+    background-color: pink;
+    text-align: center;
+    width: 200px;
+  }
+</style>
+<body>
+  <p>
+    <p>Assertion:If in order to fill the available space the actual column width will be increased</p>
+    <ul>
+      <li>Test passes if the width of the red text box left to the black lines is as same as the pink text box.</li>
+    </ul>
+  </p>
+  <div class="test" id="test">welcome here! This is a column width Tests.</div>
+  <div class="test1" id="test1">200px.</div>
+</body>

@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<meta charset="utf-8">
+<title>CSS Reference</title>
+<link rel="author" title="Intel" href="http://www.intel.com">
+<style>
+  div.test {
+    width: 240px;
+    height: 200px;
+    text-align:center;
+    position: relative;
+    border: solid 5px black;
+    margin: 0.5em 2em 1em 0;
+    font: bold 14px/19px Arial, sans-serif;
+    -webkit-column-width: 60px;
+    -webkit-column-gap: 5px;
+    -webkit-column-rule-width: 5px;
+    -webkit-column-rule-style: solid;
+    -webkit-column-rule-color: yellow;
+    -moz-column-width: 60px;
+    -moz-column-gap: 5px;
+    -moz-column-rule-width: 5px;
+    -moz-column-rule-style: solid;
+    -moz-column-rule-color: yellow;
+    -o-column-width: 60px;
+    -o-column-gap: 5px;
+    -o-column-rule-width: 5px;
+    -o-column-rule-style: solid;
+    -o-column-rule-color: yellow;
+  }
+  .test p {
+    padding: 3px;
+    margin: 0;
+  }
+  img {
+    margin: 3px;
+  }
+</style>
+<body>
+  <p>Test passes if the right side of the cat image is clipped by the yellow line</p>
+  <div class="test" id="test">
+    <div>
+      <img src="../support/cat.png"/>
+         M nop qrst uv wx yz.<br>
+        Ab cde fgh i jkl. Mno<br>
+        pqr stu vw xyz. A bc<br>
+        def g hij klm nopqrs<br>
+        x yz. Abc def ghi jkl.<br>
+        M nop qrst uv wx yz.<br>
+        Ab cde fgh i jkl. Mno<br>
+        Pqr stu vw xyz.
+    </div>
+  </div>
+</body>

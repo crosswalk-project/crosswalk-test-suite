@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<meta charset="utf-8">
+<title>CSS Reference</title>
+<link rel="author" title="Intel" href="http://www.intel.com">
+<style type="text/css">
+  div.test {
+    width: 400px;
+    height: 200px;
+    text-align:center;
+    position: relative;
+    border: solid 5px blue;
+    margin: 0.5em 2em 1em 0;
+    font: bold 14px/19px Arial, sans-serif;
+    -webkit-column-width: 196px;
+    -webkit-column-gap: 5px;
+    -webkit-column-rule-width: 5px;
+    -webkit-column-rule-style: solid;
+    -webkit-column-rule-color: green;
+    -moz-column-width: 196px;
+    -moz-column-gap: 5px;
+    -moz-column-rule-width: 5px;
+    -moz-column-rule-style: solid;
+    -moz-column-rule-color: green;
+    -o-column-width: 196px;
+    -o-column-gap: 5px;
+    -o-column-rule-width: 5px;
+    -o-column-rule-style: solid;
+    -o-column-rule-color: green;
+  }
+  h2 {
+    height: 20px;
+    font-size: 1.5em;
+    padding: 16px;
+    -webkit-column-span: none;
+    -moz-column-span: none;
+    -o-column-span: none;
+    background-color: silver;
+  }
+</style>
+<body>
+  <p id="testdetails">
+    <p>Assertion:If the column-span value set 'none'</p>
+    <ul>
+      <li>Test passes if silver box text 'An H2 element Test' no across all columns.</li>
+    </ul>
+  </p>
+  <div id="log"></div>
+  <div class="test" id="test">
+
+    Ab cde fgh i jkl. Mno<br>
+    M nop qrst uv wx yz.<br>
+    Ab cde fgh i jkl. Mno<br>
+    pqr stu vw xyz. A bc<br>
+    def g hij klm nopqrs<br>
+    def g hij klm nopqrs<br>
+    <h2 id="h2">An H2 element Test</h2>
+    Ab cde fgh i jkl. Mno<br>
+    pqr stu vw xyz. A bc<br>
+    def g hij klm nopqrs<br>
+    tuv wxy z. Abc de fg<br>
+    hi jklmno. Pqrstu vw<br>
+  </div>
+</body>

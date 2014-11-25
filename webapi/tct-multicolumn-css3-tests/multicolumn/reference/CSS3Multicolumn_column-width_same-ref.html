@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<meta charset="utf-8">
+<title>CSS Reference</title>
+<link rel="author" title="Intel" href="http://www.intel.com">
+<style>
+  div.test {
+    background-color: green;
+    margin: 10px;
+    width: 360px;
+    column-gap: 0;
+    -webkit-column-gap: 0;
+    -moz-column-gap: 0;
+    -o-column-gap: 0;
+    -webkit-column-width: 100px;
+    -webkit-column-rule-width: 1px;
+    -webkit-column-rule-style: solid;
+    -webkit-column-rule-color: yellow;
+    -moz-column-width: 100px;
+    -moz-column-rule-width: 1px;
+    -moz-column-rule-style: solid;
+    -moz-column-rule-color: yellow;
+    -o-column-width: 100px;
+    -o-column-rule-width: 1px;
+    -o-column-rule-style: solid;
+    -o-column-rule-color: yellow;
+   }
+</style>
+<body>
+  <p id="testdetails">
+    <p>Assertion:If all column boxes in a row have the same column width, and all column boxes in a row have the same column height</p>
+    <ul>
+      <li>Test passes if yellow lines split into three columns and the column width and height are the same.
+      </li>
+    </ul>
+  </p>
+  <div id="log"></div>
+  <div class="test" id="test">
+      welcome here! This is a column width Tests. please test it welcome here! This is a column width Tests. please test it welcome here!This is a column width Tests. please test it
+  </div>
+</body>
