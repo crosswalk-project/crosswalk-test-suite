@@ -33,7 +33,7 @@ LIST=`find -maxdepth 1 -type d`
 APKBLACK="webapi-ambientlight-w3c-tests
 webapi-imports-w3c-tests
 webapi-shadowdom-w3c-tests
-webapi-taskscheduler-sysapps-tests
+webapi-taskscheduler-w3c-tests
 ivi-tests
 webapi-dlna-xwalk-tests
 tizen-tests
@@ -47,7 +47,7 @@ webapi-ambientlight-w3c-tests
 webapi-imports-w3c-tests
 webapi-presentation-xwalk-tests
 webapi-shadowdom-w3c-tests
-webapi-taskscheduler-sysapps-tests
+webapi-taskscheduler-w3c-tests
 webapi-simd-nonw3c-tests
 webapi-dlna-ivi-tests
 webapi-locale-ivi-tests
