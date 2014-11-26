@@ -234,7 +234,7 @@ Please see Appendix 5 for the package list.
 - webapi-notification-ivi-tests
 - webapi-presentation-xwalk-tests
 - webapi-promises-nonw3c-tests
-- webapi-rawsockets-sysapps-tests
+- webapi-rawsockets-w3c-tests
 - webapi-resourcetiming-w3c-tests
 - webapi-runtime-xwalk-tests
 - webapi-simd-nonw3c-tests
@@ -371,7 +371,7 @@ Please see Appendix 5 for the package list.
 - webapi-messaging-sysapps-tests
 - webapi-notification-ivi-tests
 - webapi-promises-nonw3c-tests
-- webapi-rawsockets-sysapps-tests
+- webapi-rawsockets-w3c-tests
 - webapi-resourcetiming-w3c-tests
 - webapi-runtime-xwalk-tests
 - webapi-sanityapp-w3c-tests
@@ -609,7 +609,7 @@ Please see Appendix 5 for the package list.
 - webapi-notification-ivi-tests
 - webapi-presentation-xwalk-tests
 - webapi-promises-nonw3c-tests
-- webapi-rawsockets-sysapps-tests
+- webapi-rawsockets-w3c-tests
 - webapi-resourcetiming-w3c-tests
 - webapi-runtime-xwalk-tests
 - webapi-simd-nonw3c-tests

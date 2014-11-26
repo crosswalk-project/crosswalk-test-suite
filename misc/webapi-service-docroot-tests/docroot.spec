@@ -17,5 +17,5 @@ tct-webmessaging-w3c-tests
 tct-websocket-w3c-tests
 tct-xmlhttprequest-w3c-tests
 webapi-nacl-xwalk-tests
-webapi-rawsockets-sysapps-tests
+webapi-rawsockets-w3c-tests
 webapi-resourcetiming-w3c-tests"
