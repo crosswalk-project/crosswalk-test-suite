@@ -67,7 +67,7 @@ Authors:
 
   test(function () {
     assert_true(loc.href.StartWith("app://"), "href of window.location is start with app://");
-    assert_true(loc.href.EndWith("/opt/webapi-appuri-sysapps-tests/appuri/URI.html"), "href of window.location is end with /opt/webapi-appuri-sysapps-tests/appuri/URI.html"+loc.href);
+    assert_true(loc.href.EndWith("/opt/webapi-appuri-w3c-tests/appuri/URI.html"), "href of window.location is end with /opt/webapi-appuri-w3c-tests/appuri/URI.html"+loc.href);
   }, "Check if the href value of window.location is right");
 
   test(function () {
@@ -76,7 +76,7 @@ Authors:
   }, "Check if the origin value of window.location is right");
 
   test(function () {
-    assert_equals(loc.pathname, "/opt/webapi-appuri-sysapps-tests/appuri/URI.html", "pathname of window.location");
+    assert_equals(loc.pathname, "/opt/webapi-appuri-w3c-tests/appuri/URI.html", "pathname of window.location");
   }, "Check if the pathname value of window.location is right");
 
   test(function () {
@@ -91,6 +91,6 @@ Authors:
     var img = document.createElement("img");
     img.src = "image/test.png";
     assert_true(img.src.StartWith("app://"), "src of image is start with app://");
-    assert_true(img.src.EndWith("/opt/webapi-appuri-sysapps-tests/appuri/image/test.png"), "src of image is end with /opt/webapi-appuri-sysapps-tests/appuri/image/test.png");
+    assert_true(img.src.EndWith("/opt/webapi-appuri-w3c-tests/appuri/image/test.png"), "src of image is end with /opt/webapi-appuri-w3c-tests/appuri/image/test.png");
   }, "Check if the src value of image is right");
 </script>

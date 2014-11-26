@@ -221,8 +221,8 @@ Please see Appendix 5 for the package list.
 - tct-webstorage-w3c-tests
 - tct-workers-w3c-tests
 - tct-xmlhttprequest-w3c-tests
-- webapi-appuri-sysapps-tests
 - webapi-contactsmanager-w3c-tests
+- webapi-appuri-w3c-tests
 - webapi-deviceadaptation-css3-tests
 - webapi-devicecapabilities-w3c-tests
 - webapi-dlna-ivi-tests
@@ -359,7 +359,7 @@ Please see Appendix 5 for the package list.
 - tct-webstorage-w3c-tests
 - tct-workers-w3c-tests
 - tct-xmlhttprequest-w3c-tests
-- webapi-appuri-sysapps-tests
+- webapi-appuri-w3c-tests
 - webapi-deviceadaptation-css3-tests
 - webapi-devicecapabilities-w3c-tests
 - webapi-dlna-ivi-tests
@@ -594,8 +594,8 @@ Please see Appendix 5 for the package list.
 - tct-webstorage-w3c-tests
 - tct-workers-w3c-tests
 - tct-xmlhttprequest-w3c-tests
-- webapi-appuri-sysapps-tests
 - webapi-contactsmanager-w3c-tests
+- webapi-appuri-w3c-tests
 - webapi-deviceadaptation-css3-tests
 - webapi-devicecapabilities-w3c-tests
 - webapi-dlna-ivi-tests
