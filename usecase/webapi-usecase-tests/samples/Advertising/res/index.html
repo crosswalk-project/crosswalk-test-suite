@@ -34,27 +34,33 @@ Authors:
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="initial-scale=1.0, maximum-scale=1.0, width=device-width" />
-    <link rel="stylesheet" type="text/css" href="../../css/jquery.mobile.css" />
-    <link rel="stylesheet" type="text/css" href="../../css/main.css" />
-    <script src="../../js/jquery/jquery.js"></script>
-    <script src="../../js/jquery/jquery.mobile.js"></script>
-    <script src="../../js/tests.js"></script>
+    <script src="./js/jquery.js" defer></script>
+    <script src="./js/main.js" defer></script>
+    <style>
+      #content {
+        text-align: center;
+        margin-top:50px;
+      }
+      .content{
+        border: 1px solid #000;
+        height: 150px;
+        margin: 10px auto;
+        width: 80%;
+      }
+      button {
+        width: 80%;
+        height: 30px;
+      }
+    </style>
   </head>
   <body>
-    <div data-role="header">
-      <h1 id="main_page_title"></h1>
-    </div>
-    <div data-role="content">
-      <h4>Precondition</h4>
-      <ol>
-        <li>GMS</br>
-        Advertising is provided by GMS, which means the device must have Google Play installed, and be able to access Google Play.</li>
-      </ol>
-    </div>
-    <div data-role="footer" data-position="fixed" data-tap-toggle="false">
-    </div>
-    <div data-role="popup" id="popup_info">
-      <p>Verifies the advertising can be created, showed and destroied</p>
+    <div id="content">
+      <button id="unoverlappedAd">Unoverlapped</button>
+      <button id="overlappedAd">Overlapped</button>
+      <button id="interstitialAd">Interstitial</button>
+      <button id="destoryUnover">Destory Unoverlapped</button>
+      <button id="destoryOver">Destory Overlapped</button>
+      <textarea class="content" id="testDiv" readonly="readonly"></textarea>
     </div>
   </body>
 </html>
