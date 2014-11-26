@@ -1,6 +1,6 @@
 #!/bin/bash
 # Program:
-#       This program install Crosswalk
+#       This program install & uninstall Crosswalk
 
 # Copyright (c) 2013 Intel Corporation.
 
@@ -37,8 +37,8 @@ if [ "${command}""x" == "x" ];then
     exit 1
 fi
 
-CROSSWALK_APK=`cat $local_path/../Crosswalk_sharemode.conf | grep "Crosswalk_Library_Name" | cut -d "=" -f 2`
-CROSSWALK_PACKAGE=`cat $local_path/../Crosswalk_sharemode.conf | grep "Crosswalk_Library_Package" | cut -d "=" -f 2`
+CROSSWALK_APK=`cat $local_path/../Crosswalk_sharedmode.conf | grep "Crosswalk_Library_Name" | cut -d "=" -f 2`
+CROSSWALK_PACKAGE=`cat $local_path/../Crosswalk_sharedmode.conf | grep "Crosswalk_Library_Package" | cut -d "=" -f 2`
 
 test -f $local_path/../resources/installer/$CROSSWALK_APK &>/dev/null
 #install
@@ -48,7 +48,16 @@ if [ $? -eq 0 ];then
     $command shell pm list packages |grep $CROSSWALK_PACKAGE &>/dev/null
     if [ $? -eq 0 ];then
         echo "XwalkRuntimeLibrary install successflly"
-        exit 0
+        $command uninstall $CROSSWALK_PACKAGE &>/dev/null
+        $command shell pm list packages |grep $CROSSWALK_PACKAGE &>/dev/null
+        if [ $? -ne 0 ];then
+            echo "XwalkRuntimeLibrary uninstall successflly"
+            $command install -r $local_path/../resources/installer/$CROSSWALK_APK &>/dev/null
+            exit 0
+        else
+            echo "XwalkRuntimeLibrary uninstall fail"
+            exit 1
+        fi
     else
         echo "XwalkRuntimeLibrary install fail"
         exit 1

@@ -112,11 +112,11 @@ def instPKGs():
                 action_status = False
     os.rename("%s/opt/%s/resources/apk/webappintel.apk" % (TEST_PREFIX, PKG_NAME),"%s/opt/%s/resources/apk/WebApp.apk" % (TEST_PREFIX, PKG_NAME))
     print "Package push to host %s/opt/%s successfully!" % (TEST_PREFIX, PKG_NAME)
-    path = "/tmp/Crosswalk_sharemode.conf"
+    path = "/tmp/Crosswalk_sharedmode.conf"
     if os.path.exists(path):
-        if not doCopy(path, "%s/opt/%s/Crosswalk_sharemode.conf" % (TEST_PREFIX, PKG_NAME)):
+        if not doCopy(path, "%s/opt/%s/Crosswalk_sharedmode.conf" % (TEST_PREFIX, PKG_NAME)):
             action_status = False
-        (return_code, output) = doCMD("cat \"%s/opt/%s/Crosswalk_sharemode.conf\" | grep \"Android_Crosswalk_Path\" | cut -d \"=\" -f 2" % (TEST_PREFIX, PKG_NAME))
+        (return_code, output) = doCMD("cat \"%s/opt/%s/Crosswalk_sharedmode.conf\" | grep \"Android_Crosswalk_Path\" | cut -d \"=\" -f 2" % (TEST_PREFIX, PKG_NAME))
         for line in output:
             if "Failure" in line:
                 action_status = False
