@@ -40,8 +40,7 @@ tizen-tests
 tct-wgtapi
 tct-widget
 tct-testconfig
-tct-getcapabilities
-tct-manual-w3c-tests"
+tct-getcapabilities"
 
 XPKBLACK="webapi-contactsmanager-sysapps-tests
 webapi-ambientlight-w3c-tests
@@ -77,13 +76,11 @@ tct-secureelement-tizen-tests
 tct-time-tizen-tests
 tct-websetting-tizen-tests
 tct-wgtapi
-tct-widget
-tct-manual-w3c-tests"
+tct-widget"
 
 WGTBLACK="webapi-
 tct-wgtapi
-tct-widget
-tct-manual-w3c-tests"
+tct-widget"
 
 for list in $LIST;do
     suite_name=`echo $list |awk -F "/" '{print $NF}'`

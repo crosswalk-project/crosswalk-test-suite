@@ -9,7 +9,6 @@ BLACK="ivi-tests
 tct-canvas-html5-tests
 tct-cors-w3c-tests
 tct-csp-w3c-tests
-tct-manual-w3c-tests
 tct-navigationtiming-w3c-tests
 tct-sandbox-html5-tests
 tct-security-tcs-tests
