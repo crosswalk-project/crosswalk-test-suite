@@ -18,7 +18,6 @@ webapi-dlna-xwalk-tests
 tizen-tests
 tct-wgtapi
 tct-widget
-tct-manual-w3c-tests
 tct-canvas-html5-tests
 tct-cors-w3c-tests
 tct-csp-w3c-tests

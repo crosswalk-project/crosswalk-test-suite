@@ -138,8 +138,6 @@ def get_case_status(file_path):
 
     if "tct-widget02-w3c-tests" in file_path:
         return
-    if "tct-manual-w3c-tests" in file_path:
-        return
     if "tct-testconfig" in file_path:
         return
     if "xwalk-system-tests" in file_path:
