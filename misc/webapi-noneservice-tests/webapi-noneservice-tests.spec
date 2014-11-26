@@ -25,7 +25,6 @@ webapi-ambientlight-w3c-tests
 webapi-dlna-xwalk-tests
 webapi-imports-w3c-tests
 webapi-resourcetiming-w3c-tests
-webapi-runtime-xwalk-tests
 webapi-shadowdom-w3c-tests
 webapi-webspeech-w3c-tests"
 
