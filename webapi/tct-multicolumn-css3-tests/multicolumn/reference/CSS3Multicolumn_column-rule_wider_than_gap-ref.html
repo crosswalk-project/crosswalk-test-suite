@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<meta charset="utf-8">
+<title>CSS Reference</title>
+<link rel="author" title="Intel" href="http://www.intel.com">
+<style type="text/css">
+  div.test {
+    background-color: red;
+    margin: 10px;
+    width: 400px;
+    padding: 0.2em 1em;
+    border: 5px solid blue;
+    -webkit-column-gap: 3px;
+    -webkit-column-rule-width: 50px;
+    -webkit-column-rule-style: solid;
+    -webkit-column-rule-color: black;
+    -webkit-column-count: 2;
+    -moz-column-gap: 3px;
+    -moz-column-rule-width: 50px;
+    -moz-column-rule-style: solid;
+    -moz-column-rule-color: black;
+    -moz-column-count: 2;
+    -o-column-gap: 3px;
+    -o-column-rule-width: 50px;
+    -o-column-rule-style: solid;
+    -o-column-rule-color: black;
+    -o-column-count: 2;
+}
+</style>
+<body>
+  <p id="testdetails">
+    <p>Assertion:If column rule is wider than its gap, the column rule will overlap adjacent column boxes, and possibly extend outside the box of the multicol element</p>
+    <ul>
+      <li>Test passes if there is a black block in the middle and cover some text.</li>
+    </ul>
+  </p>
+  <div id="log"></div>
+  <div class="test" id="test"> welcome here! This is a column width Tests. please test it welcome here! This is a column width Tests. please test it welcome here! This is a column width Tests. please test it</div>
+</body>

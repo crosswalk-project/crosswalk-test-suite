@@ -33,40 +33,37 @@ Authors:
 
 <html>
   <head>
-    <title>CSS3 MultiColumn Test: CSS3Multicolumn_column-width_more_available_space</title>
+    <title>CSS3 MultiColumn Test: CSS3Multicolumn_column-rule_wider_than_gap</title>
     <link rel="author" title="Intel" href="http://www.intel.com" />
     <link rel="help" href="http://www.w3.org/TR/2011/CR-css3-multicol-20110412/" />
+    <link rel="match" href="reference/CSS3Multicolumn_column-rule_wider_than_gap-ref.html"/>
     <meta name="flags" content="" />
-    <meta name="assert" content="Check if in order to fill the available space the actual column width will be increased" />
-    <script src="../resources/testharness.js"></script>
-    <script src="../resources/testharnessreport.js"></script>
+    <meta name="assert" content="Check if a column rule is wider than its gap, the column rule will overlap adjacent column boxes, and possibly extend outside the box of the multicol element" />
     <script src="support/support.js"></script>
     <style type="text/css">
         div.test {
             background-color: red;
-            text-align: center;
+            margin: 10px;
             width: 400px;
-        }
-        div.test1 {
-            background-color: pink;
-            text-align: center;
-            width: 200px;
+            padding: 0.2em 1em;
+            border: 5px solid blue;
         }
     </style>
   </head>
   <body>
-    <p>
-      <p>Assertion:If in order to fill the available space the actual column width will be increased</p>
+    <p id="testdetails">
+      <p>Assertion:If column rule is wider than its gap, the column rule will overlap adjacent column boxes, and possibly extend outside the box of the multicol element</p>
       <ul>
-        <li>Test passes if the width of the red text box left to the black lines is as same as the pink text box.</li>
+        <li>Test passes if there is a black block in the middle and cover some text.</li>
       </ul>
     </p>
-    <div class="test" id="test">welcome here! This is a column width Tests.</div>
-    <div class="test1" id="test1">200px.</div>
+    <div id="log"></div>
+    <div class="test" id="test"> welcome here! This is a column width Tests. please test it welcome here! This is a column width Tests. please test it welcome here! This is a column width Tests. please test it</div>
     <script>
         var div = document.querySelector("#test");
-        div.style[headProp("columnWidth", div)] = "150px";
-        div.style[headProp("columnRule", div)] = "1px solid black";
+        div.style[headProp("columnGap")] = "3px";
+        div.style[headProp("columnRule")] = "50px solid black";
+        div.style[headProp("columnCount")] = "2"
     </script>
   </body>
 </html>

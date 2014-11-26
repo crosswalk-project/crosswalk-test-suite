@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<meta charset="utf-8">
+<title>CSS Reference</title>
+<link rel="author" title="Intel" href="http://www.intel.com">
+<style>
+  div.test {
+    width: 500px;
+    height: 200px;
+    text-align:center;
+    position: relative;
+    border: solid 5px black;
+    margin: 0.5em 2em 1em 0;
+    font: bold 14px/19px Arial, sans-serif;
+    -webkit-column-count: 3;
+    -webkit-column-gap: 5px;
+    -webkit-column-rule-width: 5px;
+    -webkit-column-rule-style: solid;
+    -webkit-column-rule-color: green;
+    -moz-column-count: 3;
+    -moz-column-gap: 5px;
+    -moz-column-rule-width: 5px;
+    -moz-column-rule-style: solid;
+    -moz-column-rule-color: green;
+    -o-column-count: 3;
+    -o-column-gap: 5px;
+    -o-column-rule-width: 5px;
+    -o-column-rule-style: solid;
+    -o-column-rule-color: green;
+  }
+  .test p {
+    padding: 3px;
+    margin: 0;
+  }
+</style>
+<body>
+  <p>Test passes if the first column have some blank lines and the cat image is in the second column</p>
+  <div class="test" id="test">
+     Ab cde fgh i jkl. Mno<br>
+     pqr stu vw xyz. A bc<br>
+     def g hij klm nopqrs<br>
+     def g hij klm nopqrs<br>
+     def g hij klm nopqrs<br>
+     def g hij klm nopqrs<br>
+     <img src="../support/cat.png"/>
+     Ab cde fgh i jkl. Mno<br>
+     pqr stu vw xyz. A bc<br>
+     def g hij klm nopqrs<br>
+     tuv wxy z. Abc de fg<br>
+     hi jklmno. Pqrstu vw<br>
+     x yz. Abc def ghi jkl.<br>
+     M nop qrst uv wx yz.<br>
+     Ab cde fgh i jkl. Mno<br>
+     pqr stu vw xyz. A bc<br>
+     def g hij klm nopqrs
+  </div>
+</body>

@@ -33,36 +33,57 @@ Authors:
 
 <html>
   <head>
-    <title>CSS3 MultiColumn Test: CSS3Multicolumn_column-rule_wider_than_gap</title>
+    <title>CSS3 MultiColumn Test: CSS3Multicolumn_column-span_none_background_silver</title>
     <link rel="author" title="Intel" href="http://www.intel.com" />
     <link rel="help" href="http://www.w3.org/TR/2011/CR-css3-multicol-20110412/" />
+    <link rel="match" href="reference/CSS3Multicolumn_column-span_none_background_silver-ref.html"/>
     <meta name="flags" content="" />
-    <meta name="assert" content="Check if a column rule is wider than its gap, the column rule will overlap adjacent column boxes, and possibly extend outside the box of the multicol element" />
+    <meta name="assert" content="Check if the silver box no across all columns when the column-span is none " />
     <script src="support/support.js"></script>
     <style type="text/css">
         div.test {
-            background-color: red;
-            margin: 10px;
             width: 400px;
-            padding: 0.2em 1em;
-            border: 5px solid blue;
+            height: 200px;
+            text-align:center;
+            position: relative;
+            border: solid 5px blue;
+            margin: 0.5em 2em 1em 0;
+            font: bold 14px/19px Arial, sans-serif;
         }
     </style>
   </head>
   <body>
     <p id="testdetails">
-      <p>Assertion:If column rule is wider than its gap, the column rule will overlap adjacent column boxes, and possibly extend outside the box of the multicol element</p>
+      <p>Assertion:If the column-span value set 'none'</p>
       <ul>
-        <li>Test passes if there is a black block in the middle and cover some text.</li>
+        <li>Test passes if silver box text 'An H2 element Test' no across all columns.</li>
       </ul>
     </p>
     <div id="log"></div>
-    <div class="test" id="test"> welcome here! This is a column width Tests. please test it welcome here! This is a column width Tests. please test it welcome here! This is a column width Tests. please test it</div>
+    <div class="test" id="test">
+
+        Ab cde fgh i jkl. Mno<br>
+        M nop qrst uv wx yz.<br>
+        Ab cde fgh i jkl. Mno<br>
+        pqr stu vw xyz. A bc<br>
+        def g hij klm nopqrs<br>
+        def g hij klm nopqrs<br>
+        <h2 id="h2" style="height: 20px;
+     font-size: 1.5em;padding: 16px">An H2 element Test</h2>
+        Ab cde fgh i jkl. Mno<br>
+        pqr stu vw xyz. A bc<br>
+        def g hij klm nopqrs<br>
+        tuv wxy z. Abc de fg<br>
+        hi jklmno. Pqrstu vw<br>
+    </div>
+
     <script>
         var div = document.querySelector("#test");
-        div.style[headProp("columnGap")] = "3px";
-        div.style[headProp("columnRule")] = "50px solid black";
-        div.style[headProp("columnCount")] = "2"
+        div.style[headProp("columnWidth")] = "196px";
+        div.style[headProp("columnGap")] ="5px";
+        div.style[headProp("columnRule")] ="5px solid green";
+        document.getElementById("h2").style[headProp("columnSpan")]="none";
+        document.getElementById("h2").style[headProp("background")]="silver";
     </script>
   </body>
 </html>

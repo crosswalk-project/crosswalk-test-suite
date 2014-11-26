@@ -33,37 +33,37 @@ Authors:
 
 <html>
   <head>
-    <title>CSS3 MultiColumn Test: CSS3Multicolumn_column-rule_same</title>
+    <title>CSS3 MultiColumn Test: CSS3Multicolumn_column-width_no_available_space</title>
     <link rel="author" title="Intel" href="http://www.intel.com" />
     <link rel="help" href="http://www.w3.org/TR/2011/CR-css3-multicol-20110412/" />
+    <link rel="match" href="reference/CSS3Multicolumn_column-width_same-ref.html"/>
     <meta name="flags" content="" />
-    <meta name="assert" content="Check if all column rules in the same row are also equal,column rules only appear between columns that both have content" />
-    <script src="../resources/testharness.js"></script>
-    <script src="../resources/testharnessreport.js"></script>
+    <meta name="assert" content="Check if the available space is smaller than the specified column width and the actual column width will therefore be decreased" />
     <script src="support/support.js"></script>
     <style type="text/css">
         div.test {
             background-color: green;
-            margin: 10px;
             width: 400px;
-            padding: 0.2em 1em;
-            border: 5px solid blue;
+        }
+        div.test1 {
+            background-color: pink;
+            text-align: center;
+            width: 400px;
         }
     </style>
   </head>
   <body>
-    <p>
-      <p>Assertion:If all column rules in the same row are also equal,column rules only appear between columns that both have content</p>
+    <p id="testdetails">
+      <p>Assertion: The available space is smaller than the specified column width and the actual column width will therefore be decreased.</p>
       <ul>
-        <li>Test passes if three same pink column rules split into four columns and column rules appear between columns that both have content.</li>
+        <li>Test passes if the green text column and the pink text box is the same width </li>
       </ul>
     </p>
-    <div class="test" id="test">
-      welcome here! This is a column width Tests. please test it welcome here! This is a column width Tests. please test it welcome here!This is a column width Tests. please test it</div>
+    <div class="test"> welcome here! This is a column width Tests. please test it welcome here! This is a column width Tests. please test it welcome here! This is a column width Tests. please test it</div>
+    <div class="test1">400px</div>
     <script>
         var div = document.querySelector("#test");
-        div.style[headProp("columnCount",div)] = "4";
-        div.style[headProp("columnRule",div)] = "thick solid pink";
+        div.style[headProp("columnWidth")] = "450px";
     </script>
   </body>
 </html>

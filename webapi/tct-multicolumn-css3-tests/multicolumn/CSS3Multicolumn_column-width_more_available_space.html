@@ -33,36 +33,41 @@ Authors:
 
 <html>
   <head>
-    <title>CSS3 MultiColumn Test: CSS3Multicolumn_column-width_no_available_space</title>
+    <title>CSS3 MultiColumn Test: CSS3Multicolumn_column-width_more_available_space</title>
     <link rel="author" title="Intel" href="http://www.intel.com" />
     <link rel="help" href="http://www.w3.org/TR/2011/CR-css3-multicol-20110412/" />
+    <link rel="match" href="reference/CSS3Multicolumn_column-width_no_available_space-ref.html"/>
     <meta name="flags" content="" />
-    <meta name="assert" content="Check if the available space is smaller than the specified column width and the actual column width will therefore be decreased" />
+    <meta name="assert" content="Check if in order to fill the available space the actual column width will be increased" />
+    <script src="../resources/testharness.js"></script>
+    <script src="../resources/testharnessreport.js"></script>
     <script src="support/support.js"></script>
     <style type="text/css">
         div.test {
-            background-color: green;
+            background-color: red;
+            text-align: center;
             width: 400px;
         }
         div.test1 {
             background-color: pink;
             text-align: center;
-            width: 400px;
+            width: 200px;
         }
     </style>
   </head>
   <body>
-    <p id="testdetails">
-      <p>Assertion: The available space is smaller than the specified column width and the actual column width will therefore be decreased.</p>
+    <p>
+      <p>Assertion:If in order to fill the available space the actual column width will be increased</p>
       <ul>
-        <li>Test passes if the green text column and the pink text box is the same width </li>
+        <li>Test passes if the width of the red text box left to the black lines is as same as the pink text box.</li>
       </ul>
     </p>
-    <div class="test"> welcome here! This is a column width Tests. please test it welcome here! This is a column width Tests. please test it welcome here! This is a column width Tests. please test it</div>
-    <div class="test1">400px</div>
+    <div class="test" id="test">welcome here! This is a column width Tests.</div>
+    <div class="test1" id="test1">200px.</div>
     <script>
         var div = document.querySelector("#test");
-        div.style[headProp("columnWidth")] = "450px";
+        div.style[headProp("columnWidth", div)] = "150px";
+        div.style[headProp("columnRule", div)] = "1px solid black";
     </script>
   </body>
 </html>

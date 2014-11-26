@@ -1695,165 +1695,12 @@
           </spec>
         </specs>
       </testcase>
-      <testcase purpose="Check if all column boxes in a row have the same column width, and all column boxes in a row have the same column height" type="compliance" status="approved" component="WebAPI/DOM, Forms and Styles/CSS Multi-column Layout Module (Partial)" execution_type="manual" priority="P3" id="CSS3Multicolumn_column-width_same">
+    </set>
+    <set name="MultiColumn-ref" type="ref">
+      <testcase purpose="Check if all column rules in the same row are also equal,column rules only appear between columns that both have content" type="compliance" status="approved" component="WebAPI/DOM, Forms and Styles/CSS Multi-column Layout Module (Partial)" execution_type="auto" priority="P3" id="CSS3Multicolumn_column-rule_same">
         <description>
-          <test_script_entry>/opt/tct-multicolumn-css3-tests/multicolumn/CSS3Multicolumn_column-width_same-manual.html</test_script_entry>
-        </description>
-        <specs>
-          <spec>
-            <spec_assertion usage="true" interface="CSS" specification="CSS Multi-column Layout Module (Partial)" section="DOM, Forms and Styles" category="Tizen W3C API Specifications"/>
-            <spec_url>http://www.w3.org/TR/2011/CR-css3-multicol-20110412/</spec_url>
-            <spec_statement>All column boxes in a row have the same column width, and all column boxes in a row have the same column height.</spec_statement>
-          </spec>
-        </specs>
-      </testcase>
-      <testcase purpose="Check if the width of the image is set with these rules" type="compliance" status="approved" component="WebAPI/DOM, Forms and Styles/CSS Multi-column Layout Module (Partial)" execution_type="manual" priority="P3" id="CSS3Multicolumn_column-width_image_custom_png">
-        <description>
-          <test_script_entry>/opt/tct-multicolumn-css3-tests/multicolumn/CSS3Multicolumn_column-width_image_custom_png-manual.html</test_script_entry>
-        </description>
-        <specs>
-          <spec>
-            <spec_assertion usage="true" interface="CSS" specification="CSS Multi-column Layout Module (Partial)" section="DOM, Forms and Styles" category="Tizen W3C API Specifications"/>
-            <spec_url>http://www.w3.org/TR/2011/CR-css3-multicol-20110412/</spec_url>
-            <spec_statement>the width of the image is set with these rules</spec_statement>
-          </spec>
-        </specs>
-      </testcase>
-      <testcase purpose="Check if the width of the image is set float right" type="compliance" status="approved" component="WebAPI/DOM, Forms and Styles/CSS Multi-column Layout Module (Partial)" execution_type="manual" priority="P3" id="CSS3Multicolumn_column-width_image_custom_png_float_right">
-        <description>
-          <test_script_entry>/opt/tct-multicolumn-css3-tests/multicolumn/CSS3Multicolumn_column-width_image_custom_png_float_right-manual.html</test_script_entry>
-        </description>
-        <specs>
-          <spec>
-            <spec_assertion usage="true" interface="CSS" specification="CSS Multi-column Layout Module (Partial)" section="DOM, Forms and Styles" category="Tizen W3C API Specifications"/>
-            <spec_url>http://www.w3.org/TR/2011/CR-css3-multicol-20110412/</spec_url>
-            <spec_statement>Floats that appear inside multi-column layouts are positioned with regard to the column box where the float appears.</spec_statement>
-          </spec>
-        </specs>
-      </testcase>
-      <testcase purpose="Check if the available space is smaller than the specified column width and the actual column width will therefore be decreased" type="compliance" status="approved" component="WebAPI/DOM, Forms and Styles/CSS Multi-column Layout Module (Partial)" execution_type="manual" priority="P3" id="CSS3Multicolumn_column-width_no_available_space">
-        <description>
-          <test_script_entry>/opt/tct-multicolumn-css3-tests/multicolumn/CSS3Multicolumn_column-width_no_available_space-manual.html</test_script_entry>
-        </description>
-        <specs>
-          <spec>
-            <spec_assertion usage="true" interface="CSS" specification="CSS Multi-column Layout Module (Partial)" section="DOM, Forms and Styles" category="Tizen W3C API Specifications"/>
-            <spec_url>http://www.w3.org/TR/2011/CR-css3-multicol-20110412/</spec_url>
-            <spec_statement>The available space is smaller than the specified column width and the actual column width will therefore be decreased.</spec_statement>
-          </spec>
-        </specs>
-      </testcase>
-      <testcase purpose="Check if both column-width and column-count have non-auto values, the integer value describes the maximum number of columns" type="compliance" status="approved" component="WebAPI/DOM, Forms and Styles/CSS Multi-column Layout Module (Partial)" execution_type="manual" priority="P3" id="CSS3Multicolumn_column-count_maximum_columns">
-        <description>
-          <test_script_entry>/opt/tct-multicolumn-css3-tests/multicolumn/CSS3Multicolumn_column-count_maximum_columns-manual.html</test_script_entry>
-        </description>
-        <specs>
-          <spec>
-            <spec_assertion usage="true" interface="CSS" specification="CSS Multi-column Layout Module (Partial)" section="DOM, Forms and Styles" category="Tizen W3C API Specifications"/>
-            <spec_url>http://www.w3.org/TR/2011/CR-css3-multicol-20110412/</spec_url>
-            <spec_statement>both ‘column-width’ and ‘column-count’ have non-auto values, the integer value describes the maximum number of columns</spec_statement>
-          </spec>
-        </specs>
-      </testcase>
-      <testcase purpose="Check if a column rule is wider than its gap, the column rule will overlap adjacent column boxes, and possibly extend outside the box of the multicol element" type="compliance" status="approved" component="WebAPI/DOM, Forms and Styles/CSS Multi-column Layout Module (Partial)" execution_type="manual" priority="P3" id="CSS3Multicolumn_column-rule_wider_than_gap">
-        <description>
-          <test_script_entry>/opt/tct-multicolumn-css3-tests/multicolumn/CSS3Multicolumn_column-rule_wider_than_gap-manual.html</test_script_entry>
-        </description>
-        <specs>
-          <spec>
-            <spec_assertion usage="true" interface="CSS" specification="CSS Multi-column Layout Module (Partial)" section="DOM, Forms and Styles" category="Tizen W3C API Specifications"/>
-            <spec_url>http://www.w3.org/TR/2011/CR-css3-multicol-20110412/</spec_url>
-            <spec_statement>If a column rule is wider than its gap, the column rule will overlap adjacent column boxes, and possibly extend outside the box of the multicol element.</spec_statement>
-          </spec>
-        </specs>
-      </testcase>
-      <testcase purpose="Check if the column rule and the column gap have the same width" type="compliance" status="approved" component="WebAPI/DOM, Forms and Styles/CSS Multi-column Layout Module (Partial)" execution_type="manual" priority="P3" id="CSS3Multicolumn_column-gap_width_same">
-        <description>
-          <test_script_entry>/opt/tct-multicolumn-css3-tests/multicolumn/CSS3Multicolumn_column-gap_width_same-manual.html</test_script_entry>
-        </description>
-        <specs>
-          <spec>
-            <spec_assertion usage="true" interface="CSS" specification="CSS Multi-column Layout Module (Partial)" section="DOM, Forms and Styles" category="Tizen W3C API Specifications"/>
-            <spec_url>http://www.w3.org/TR/2011/CR-css3-multicol-20110412/</spec_url>
-            <spec_statement>the column rule and the column gap have the same width. Therefore, they will occupy exactly the same space.</spec_statement>
-          </spec>
-        </specs>
-      </testcase>
-      <testcase purpose="Check if a tall image is moved to a column on the next page to find room when the column do not have enough space to place it" type="compliance" status="approved" component="WebAPI/DOM, Forms and Styles/CSS Multi-column Layout Module (Partial)" execution_type="manual" priority="P3" id="CSS3Multicolumn_column-rule_image_left_empty">
-        <description>
-          <test_script_entry>/opt/tct-multicolumn-css3-tests/multicolumn/CSS3Multicolumn_column-rule_image_left_empty-manual.html</test_script_entry>
-        </description>
-        <specs>
-          <spec>
-            <spec_assertion usage="true" interface="CSS" specification="CSS Multi-column Layout Module (Partial)" section="DOM, Forms and Styles" category="Tizen W3C API Specifications"/>
-            <spec_url>http://www.w3.org/TR/2011/CR-css3-multicol-20110412/</spec_url>
-            <spec_statement>a tall image is moved to a column on the next page to find room for it, its natural column may be left empty</spec_statement>
-          </spec>
-        </specs>
-      </testcase>
-      <testcase purpose="Check if column-span to all, all content that appear before the h2 element is shown before the h2 element" type="compliance" status="approved" component="WebAPI/DOM, Forms and Styles/CSS Multi-column Layout Module (Partial)" execution_type="manual" priority="P3" id="CSS3Multicolumn_column-span_all_background_silver">
-        <description>
-          <test_script_entry>/opt/tct-multicolumn-css3-tests/multicolumn/CSS3Multicolumn_column-span_all_background_silver-manual.html</test_script_entry>
-        </description>
-        <specs>
-          <spec>
-            <spec_assertion usage="true" interface="CSS" specification="CSS Multi-column Layout Module (Partial)" section="DOM, Forms and Styles" category="Tizen W3C API Specifications"/>
-            <spec_url>http://www.w3.org/TR/2011/CR-css3-multicol-20110412/</spec_url>
-            <spec_statement>By setting ‘column-span’ to ‘all’, all content that appear before the h2 element is shown before the h2 element</spec_statement>
-          </spec>
-        </specs>
-      </testcase>
-      <testcase purpose="Check if the H2 element appears in the overflow and there is not room to make the element spanning" type="compliance" status="approved" component="WebAPI/DOM, Forms and Styles/CSS Multi-column Layout Module (Partial)" execution_type="manual" priority="P3" id="CSS3Multicolumn_column-span_none_background_silver">
-        <description>
-          <test_script_entry>/opt/tct-multicolumn-css3-tests/multicolumn/CSS3Multicolumn_column-span_none_background_silver-manual.html</test_script_entry>
-        </description>
-        <specs>
-          <spec>
-            <spec_assertion usage="true" interface="CSS" specification="CSS Multi-column Layout Module (Partial)" section="DOM, Forms and Styles" category="Tizen W3C API Specifications"/>
-            <spec_url>http://www.w3.org/TR/2011/CR-css3-multicol-20110412/</spec_url>
-            <spec_statement>the H2 element appears in the overflow and there is not room to make the element spanning. As a result, the element appears as if ‘column-span: none’ was specified.</spec_statement>
-          </spec>
-        </specs>
-      </testcase>
-      <testcase purpose="Check if the image is wider than the column, and is therefore clipped" type="compliance" status="approved" component="WebAPI/DOM, Forms and Styles/CSS Multi-column Layout Module (Partial)" execution_type="manual" priority="P3" id="CSS3Multicolumn_column-gap_image_custom_png_clipped">
-        <description>
-          <test_script_entry>/opt/tct-multicolumn-css3-tests/multicolumn/CSS3Multicolumn_column-gap_image_custom_png_clipped-manual.html</test_script_entry>
-        </description>
-        <specs>
-          <spec>
-            <spec_assertion usage="true" interface="CSS" specification="CSS Multi-column Layout Module (Partial)" section="DOM, Forms and Styles" category="Tizen W3C API Specifications"/>
-            <spec_url>http://www.w3.org/TR/2011/CR-css3-multicol-20110412/</spec_url>
-            <spec_statement>the black image is wider than the column, and is therefore clipped</spec_statement>
-          </spec>
-        </specs>
-      </testcase>
-      <testcase purpose="Check if the height of the multi-column element has been constrained to a maximum height" type="compliance" status="approved" component="WebAPI/DOM, Forms and Styles/CSS Multi-column Layout Module (Partial)" execution_type="manual" priority="P3" id="CSS3Multicolumn_column-count_max-height_overflow_visible">
-        <description>
-          <test_script_entry>/opt/tct-multicolumn-css3-tests/multicolumn/CSS3Multicolumn_column-count_max-height_overflow_visible-manual.html</test_script_entry>
-        </description>
-        <specs>
-          <spec>
-            <spec_assertion usage="true" interface="CSS" specification="CSS Multi-column Layout Module (Partial)" section="DOM, Forms and Styles" category="Tizen W3C API Specifications"/>
-            <spec_url>http://www.w3.org/TR/2011/CR-css3-multicol-20110412/</spec_url>
-            <spec_statement>the height of the multi-column element has been constrained to a maximum height. Also, the style sheet specifies that overflowing content should be visible</spec_statement>
-          </spec>
-        </specs>
-      </testcase>
-      <testcase purpose="Check if in order to fill the available space the actual column width will be increased" type="compliance" status="approved" component="WebAPI/DOM, Forms and Styles/CSS Multi-column Layout Module (Partial)" execution_type="manual" priority="P3" id="CSS3Multicolumn_column-width_more_available_space">
-        <description>
-          <test_script_entry>/opt/tct-multicolumn-css3-tests/multicolumn/CSS3Multicolumn_column-width_more_available_space-manual.html</test_script_entry>
-        </description>
-        <specs>
-          <spec>
-            <spec_assertion usage="true" interface="CSS" specification="CSS Multi-column Layout Module (Partial)" section="DOM, Forms and Styles" category="Tizen W3C API Specifications"/>
-            <spec_url>http://www.w3.org/TR/2011/CR-css3-multicol-20110412/</spec_url>
-            <spec_statement>There is room for two 45px wide columns inside the 100px wide element. In order to fill the available space the actual column width will be increased to 50px.</spec_statement>
-          </spec>
-        </specs>
-      </testcase>
-      <testcase purpose="Check if all column rules in the same row are also equal,column rules only appear between columns that both have content" type="compliance" status="approved" component="WebAPI/DOM, Forms and Styles/CSS Multi-column Layout Module (Partial)" execution_type="manual" priority="P3" id="CSS3Multicolumn_column-rule_same">
-        <description>
-          <test_script_entry>/opt/tct-multicolumn-css3-tests/multicolumn/CSS3Multicolumn_column-rule_same-manual.html</test_script_entry>
+          <test_script_entry>/opt/tct-multicolumn-css3-tests/multicolumn/CSS3Multicolumn_column-rule_same.html</test_script_entry>
+          <refer_test_script_entry timeout="90">/opt/tct-multicolumn-css3-tests/multicolumn/reference/CSS3Multicolumn_column-rule_same-ref.html</refer_test_script_entry>
         </description>
         <specs>
           <spec>
@@ -1863,9 +1710,176 @@
           </spec>
         </specs>
       </testcase>
-    </set>
-    <set name="MultiColumn-ref" type="ref">
-             <testcase purpose="Check if multicol column with integer display correctly in visual" type="compliance" status="approved" component="WebAPI/DOM, Forms and Styles/CSS Multi-column Layout Module (Partial)" execution_type="auto" priority="P2" id="multicol-basic-001">
+      <testcase purpose="Check if in order to fill the available space the actual column width will be increased" type="compliance" status="approved" component="WebAPI/DOM, Forms and Styles/CSS Multi-column Layout Module (Partial)" execution_type="auto" priority="P3" id="CSS3Multicolumn_column-width_more_available_space">
+        <description>
+          <test_script_entry>/opt/tct-multicolumn-css3-tests/multicolumn/CSS3Multicolumn_column-width_more_available_space.html</test_script_entry>
+          <refer_test_script_entry timeout="90">/opt/tct-multicolumn-css3-tests/multicolumn/reference/CSS3Multicolumn_column-width_more_available_space-ref.html</refer_test_script_entry>
+        </description>
+        <specs>
+          <spec>
+            <spec_assertion usage="true" interface="CSS" specification="CSS Multi-column Layout Module (Partial)" section="DOM, Forms and Styles" category="Tizen W3C API Specifications"/>
+            <spec_url>http://www.w3.org/TR/2011/CR-css3-multicol-20110412/</spec_url>
+            <spec_statement>There is room for two 45px wide columns inside the 100px wide element. In order to fill the available space the actual column width will be increased to 50px.</spec_statement>
+          </spec>
+        </specs>
+      </testcase>
+      <testcase purpose="Check if the height of the multi-column element has been constrained to a maximum height" type="compliance" status="approved" component="WebAPI/DOM, Forms and Styles/CSS Multi-column Layout Module (Partial)" execution_type="auto" priority="P3" id="CSS3Multicolumn_column-count_max-height_overflow_visible">
+        <description>
+          <test_script_entry>/opt/tct-multicolumn-css3-tests/multicolumn/CSS3Multicolumn_column-count_max-height_overflow_visible.html</test_script_entry>
+          <refer_test_script_entry timeout="90">/opt/tct-multicolumn-css3-tests/multicolumn/reference/CSS3Multicolumn_column-count_max-height_overflow_visible-ref.html</refer_test_script_entry>
+        </description>
+        <specs>
+          <spec>
+            <spec_assertion usage="true" interface="CSS" specification="CSS Multi-column Layout Module (Partial)" section="DOM, Forms and Styles" category="Tizen W3C API Specifications"/>
+            <spec_url>http://www.w3.org/TR/2011/CR-css3-multicol-20110412/</spec_url>
+            <spec_statement>the height of the multi-column element has been constrained to a maximum height. Also, the style sheet specifies that overflowing content should be visible</spec_statement>
+          </spec>
+        </specs>
+      </testcase>
+      <testcase purpose="Check if the image is wider than the column, and is therefore clipped" type="compliance" status="approved" component="WebAPI/DOM, Forms and Styles/CSS Multi-column Layout Module (Partial)" execution_type="auto" priority="P3" id="CSS3Multicolumn_column-gap_image_custom_png_clipped">
+        <description>
+          <test_script_entry>/opt/tct-multicolumn-css3-tests/multicolumn/CSS3Multicolumn_column-gap_image_custom_png_clipped.html</test_script_entry>
+          <refer_test_script_entry timeout="90">/opt/tct-multicolumn-css3-tests/multicolumn/reference/CSS3Multicolumn_column-gap_image_custom_png_clipped-ref.html</refer_test_script_entry>
+        </description>
+        <specs>
+          <spec>
+            <spec_assertion usage="true" interface="CSS" specification="CSS Multi-column Layout Module (Partial)" section="DOM, Forms and Styles" category="Tizen W3C API Specifications"/>
+            <spec_url>http://www.w3.org/TR/2011/CR-css3-multicol-20110412/</spec_url>
+            <spec_statement>the black image is wider than the column, and is therefore clipped</spec_statement>
+          </spec>
+        </specs>
+      </testcase>
+      <testcase purpose="Check if the H2 element appears in the overflow and there is not room to make the element spanning" type="compliance" status="approved" component="WebAPI/DOM, Forms and Styles/CSS Multi-column Layout Module (Partial)" execution_type="auto" priority="P3" id="CSS3Multicolumn_column-span_none_background_silver">
+        <description>
+          <test_script_entry>/opt/tct-multicolumn-css3-tests/multicolumn/CSS3Multicolumn_column-span_none_background_silver.html</test_script_entry>
+          <refer_test_script_entry timeout="90">/opt/tct-multicolumn-css3-tests/multicolumn/reference/CSS3Multicolumn_column-span_none_background_silver-ref.html</refer_test_script_entry>
+        </description>
+        <specs>
+          <spec>
+            <spec_assertion usage="true" interface="CSS" specification="CSS Multi-column Layout Module (Partial)" section="DOM, Forms and Styles" category="Tizen W3C API Specifications"/>
+            <spec_url>http://www.w3.org/TR/2011/CR-css3-multicol-20110412/</spec_url>
+            <spec_statement>the H2 element appears in the overflow and there is not room to make the element spanning. As a result, the element appears as if ‘column-span: none’ was specified.</spec_statement>
+          </spec>
+        </specs>
+      </testcase>
+      <testcase purpose="Check if column-span to all, all content that appear before the h2 element is shown before the h2 element" type="compliance" status="approved" component="WebAPI/DOM, Forms and Styles/CSS Multi-column Layout Module (Partial)" execution_type="auto" priority="P3" id="CSS3Multicolumn_column-span_all_background_silver">
+        <description>
+          <test_script_entry>/opt/tct-multicolumn-css3-tests/multicolumn/CSS3Multicolumn_column-span_all_background_silver.html</test_script_entry>
+          <refer_test_script_entry timeout="90">/opt/tct-multicolumn-css3-tests/multicolumn/reference/CSS3Multicolumn_column-span_all_background_silver-ref.html</refer_test_script_entry>
+        </description>
+        <specs>
+          <spec>
+            <spec_assertion usage="true" interface="CSS" specification="CSS Multi-column Layout Module (Partial)" section="DOM, Forms and Styles" category="Tizen W3C API Specifications"/>
+            <spec_url>http://www.w3.org/TR/2011/CR-css3-multicol-20110412/</spec_url>
+            <spec_statement>By setting ‘column-span’ to ‘all’, all content that appear before the h2 element is shown before the h2 element</spec_statement>
+          </spec>
+        </specs>
+      </testcase>
+      <testcase purpose="Check if a tall image is moved to a column on the next page to find room when the column do not have enough space to place it" type="compliance" status="approved" component="WebAPI/DOM, Forms and Styles/CSS Multi-column Layout Module (Partial)" execution_type="auto" priority="P3" id="CSS3Multicolumn_column-rule_image_left_empty">
+        <description>
+          <test_script_entry>/opt/tct-multicolumn-css3-tests/multicolumn/CSS3Multicolumn_column-rule_image_left_empty.html</test_script_entry>
+          <refer_test_script_entry timeout="90">/opt/tct-multicolumn-css3-tests/multicolumn/reference/CSS3Multicolumn_column-rule_image_left_empty-ref.html</refer_test_script_entry>
+        </description>
+        <specs>
+          <spec>
+            <spec_assertion usage="true" interface="CSS" specification="CSS Multi-column Layout Module (Partial)" section="DOM, Forms and Styles" category="Tizen W3C API Specifications"/>
+            <spec_url>http://www.w3.org/TR/2011/CR-css3-multicol-20110412/</spec_url>
+            <spec_statement>a tall image is moved to a column on the next page to find room for it, its natural column may be left empty</spec_statement>
+          </spec>
+        </specs>
+      </testcase>
+      <testcase purpose="Check if the column rule and the column gap have the same width" type="compliance" status="approved" component="WebAPI/DOM, Forms and Styles/CSS Multi-column Layout Module (Partial)" execution_type="auto" priority="P3" id="CSS3Multicolumn_column-gap_width_same">
+        <description>
+          <test_script_entry>/opt/tct-multicolumn-css3-tests/multicolumn/CSS3Multicolumn_column-gap_width_same.html</test_script_entry>
+          <refer_test_script_entry timeout="90">/opt/tct-multicolumn-css3-tests/multicolumn/reference/CSS3Multicolumn_column-gap_width_same-ref.html</refer_test_script_entry>
+        </description>
+        <specs>
+          <spec>
+            <spec_assertion usage="true" interface="CSS" specification="CSS Multi-column Layout Module (Partial)" section="DOM, Forms and Styles" category="Tizen W3C API Specifications"/>
+            <spec_url>http://www.w3.org/TR/2011/CR-css3-multicol-20110412/</spec_url>
+            <spec_statement>the column rule and the column gap have the same width. Therefore, they will occupy exactly the same space.</spec_statement>
+          </spec>
+        </specs>
+      </testcase>
+      <testcase purpose="Check if a column rule is wider than its gap, the column rule will overlap adjacent column boxes, and possibly extend outside the box of the multicol element" type="compliance" status="approved" component="WebAPI/DOM, Forms and Styles/CSS Multi-column Layout Module (Partial)" execution_type="auto" priority="P3" id="CSS3Multicolumn_column-rule_wider_than_gap">
+        <description>
+          <test_script_entry>/opt/tct-multicolumn-css3-tests/multicolumn/CSS3Multicolumn_column-rule_wider_than_gap.html</test_script_entry>
+          <refer_test_script_entry timeout="90">/opt/tct-multicolumn-css3-tests/multicolumn/reference/CSS3Multicolumn_column-rule_wider_than_gap-ref.html</refer_test_script_entry>
+        </description>
+        <specs>
+          <spec>
+            <spec_assertion usage="true" interface="CSS" specification="CSS Multi-column Layout Module (Partial)" section="DOM, Forms and Styles" category="Tizen W3C API Specifications"/>
+            <spec_url>http://www.w3.org/TR/2011/CR-css3-multicol-20110412/</spec_url>
+            <spec_statement>If a column rule is wider than its gap, the column rule will overlap adjacent column boxes, and possibly extend outside the box of the multicol element.</spec_statement>
+          </spec>
+        </specs>
+      </testcase>
+      <testcase purpose="Check if both column-width and column-count have non-auto values, the integer value describes the maximum number of columns" type="compliance" status="approved" component="WebAPI/DOM, Forms and Styles/CSS Multi-column Layout Module (Partial)" execution_type="auto" priority="P3" id="CSS3Multicolumn_column-count_maximum_columns">
+        <description>
+          <test_script_entry>/opt/tct-multicolumn-css3-tests/multicolumn/CSS3Multicolumn_column-count_maximum_columns.html</test_script_entry>
+          <refer_test_script_entry timeout="90">/opt/tct-multicolumn-css3-tests/multicolumn/reference/CSS3Multicolumn_column-count_maximum_columns-ref.html</refer_test_script_entry>
+        </description>
+        <specs>
+          <spec>
+            <spec_assertion usage="true" interface="CSS" specification="CSS Multi-column Layout Module (Partial)" section="DOM, Forms and Styles" category="Tizen W3C API Specifications"/>
+            <spec_url>http://www.w3.org/TR/2011/CR-css3-multicol-20110412/</spec_url>
+            <spec_statement>both ‘column-width’ and ‘column-count’ have non-auto values, the integer value describes the maximum number of columns</spec_statement>
+          </spec>
+        </specs>
+      </testcase>
+      <testcase purpose="Check if the available space is smaller than the specified column width and the actual column width will therefore be decreased" type="compliance" status="approved" component="WebAPI/DOM, Forms and Styles/CSS Multi-column Layout Module (Partial)" execution_type="auto" priority="P3" id="CSS3Multicolumn_column-width_no_available_space">
+        <description>
+          <test_script_entry>/opt/tct-multicolumn-css3-tests/multicolumn/CSS3Multicolumn_column-width_no_available_space.html</test_script_entry>
+          <refer_test_script_entry timeout="90">/opt/tct-multicolumn-css3-tests/multicolumn/reference/CSS3Multicolumn_column-width_no_available_space-ref.html</refer_test_script_entry>
+        </description>
+        <specs>
+          <spec>
+            <spec_assertion usage="true" interface="CSS" specification="CSS Multi-column Layout Module (Partial)" section="DOM, Forms and Styles" category="Tizen W3C API Specifications"/>
+            <spec_url>http://www.w3.org/TR/2011/CR-css3-multicol-20110412/</spec_url>
+            <spec_statement>The available space is smaller than the specified column width and the actual column width will therefore be decreased.</spec_statement>
+          </spec>
+        </specs>
+      </testcase>
+      <testcase purpose="Check if the width of the image is set float right" type="compliance" status="approved" component="WebAPI/DOM, Forms and Styles/CSS Multi-column Layout Module (Partial)" execution_type="auto" priority="P3" id="CSS3Multicolumn_column-width_image_custom_png_float_right">
+        <description>
+          <test_script_entry>/opt/tct-multicolumn-css3-tests/multicolumn/CSS3Multicolumn_column-width_image_custom_png_float_right.html</test_script_entry>
+          <refer_test_script_entry timeout="90">/opt/tct-multicolumn-css3-tests/multicolumn/reference/CSS3Multicolumn_column-width_image_custom_png_float_right-ref.html</refer_test_script_entry>
+        </description>
+        <specs>
+          <spec>
+            <spec_assertion usage="true" interface="CSS" specification="CSS Multi-column Layout Module (Partial)" section="DOM, Forms and Styles" category="Tizen W3C API Specifications"/>
+            <spec_url>http://www.w3.org/TR/2011/CR-css3-multicol-20110412/</spec_url>
+            <spec_statement>Floats that appear inside multi-column layouts are positioned with regard to the column box where the float appears.</spec_statement>
+          </spec>
+        </specs>
+      </testcase>
+      <testcase purpose="Check if the width of the image is set with these rules" type="compliance" status="approved" component="WebAPI/DOM, Forms and Styles/CSS Multi-column Layout Module (Partial)" execution_type="auto" priority="P3" id="CSS3Multicolumn_column-width_image_custom_png">
+        <description>
+          <test_script_entry>/opt/tct-multicolumn-css3-tests/multicolumn/CSS3Multicolumn_column-width_image_custom_png.html</test_script_entry>
+          <refer_test_script_entry timeout="90">/opt/tct-multicolumn-css3-tests/multicolumn/reference/CSS3Multicolumn_column-width_image_custom_png-ref.html</refer_test_script_entry>
+        </description>
+        <specs>
+          <spec>
+            <spec_assertion usage="true" interface="CSS" specification="CSS Multi-column Layout Module (Partial)" section="DOM, Forms and Styles" category="Tizen W3C API Specifications"/>
+            <spec_url>http://www.w3.org/TR/2011/CR-css3-multicol-20110412/</spec_url>
+            <spec_statement>the width of the image is set with these rules</spec_statement>
+          </spec>
+        </specs>
+      </testcase>
+      <testcase purpose="Check if all column boxes in a row have the same column width, and all column boxes in a row have the same column height" type="compliance" status="approved" component="WebAPI/DOM, Forms and Styles/CSS Multi-column Layout Module (Partial)" execution_type="auto" priority="P3" id="CSS3Multicolumn_column-width_same">
+        <description>
+          <test_script_entry>/opt/tct-multicolumn-css3-tests/multicolumn/CSS3Multicolumn_column-width_same.html</test_script_entry>
+          <refer_test_script_entry timeout="90">/opt/tct-multicolumn-css3-tests/multicolumn/reference/CSS3Multicolumn_column-width_same-ref.html</refer_test_script_entry>
+        </description>
+        <specs>
+          <spec>
+            <spec_assertion usage="true" interface="CSS" specification="CSS Multi-column Layout Module (Partial)" section="DOM, Forms and Styles" category="Tizen W3C API Specifications"/>
+            <spec_url>http://www.w3.org/TR/2011/CR-css3-multicol-20110412/</spec_url>
+            <spec_statement>All column boxes in a row have the same column width, and all column boxes in a row have the same column height.</spec_statement>
+          </spec>
+        </specs>
+      </testcase>
+      <testcase purpose="Check if multicol column with integer display correctly in visual" type="compliance" status="approved" component="WebAPI/DOM, Forms and Styles/CSS Multi-column Layout Module (Partial)" execution_type="auto" priority="P2" id="multicol-basic-001">
         <description>
           <test_script_entry>/opt/tct-multicolumn-css3-tests/multicolumn/csswg/multicol-basic-001.html</test_script_entry>
           <refer_test_script_entry timeout="90">/opt/tct-multicolumn-css3-tests/multicolumn/csswg/reference/multicol-basic-ref.html</refer_test_script_entry>

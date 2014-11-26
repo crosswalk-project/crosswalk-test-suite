@@ -33,16 +33,17 @@ Authors:
 
 <html>
   <head>
-    <title>CSS3 MultiColumn Test: CSS3Multicolumn_column-width_image_custom_png</title>
+    <title>CSS3 MultiColumn Test: CSS3Multicolumn_column-rule_image_left_empty</title>
     <link rel="author" title="Intel" href="http://www.intel.com" />
     <link rel="help" href="http://www.w3.org/TR/2011/CR-css3-multicol-20110412/" />
+    <link rel="match" href="reference/CSS3Multicolumn_column-rule_image_left_empty-ref.html"/>   
     <meta name="flags" content="" />
-    <meta name="assert" content="Check if the width of the image is set with these rules" />
+    <meta name="assert" content="Check if a tall image is moved to a column on the next page to find room when the column do not have enough space to place it" />
     <script src="support/support.js"></script>
     <style>
         div.test {
-            width: 700px;
-            height: 300px;
+            width: 500px;
+            height: 200px;
             text-align:center;
             position: relative;
             border: solid 5px black;
@@ -53,46 +54,32 @@ Authors:
             padding: 3px;
             margin: 0;
         }
-        img {
-            display: block;
-            width: 100%;
-        }
     </style>
   </head>
   <body>
-    <p>Test passes if the width of the cat image is the same as the width of the column</p>
+    <p>Test passes if the first column have some blank lines and the cat image is in the second column</p>
     <div class="test" id="test">
-      <div>
-        <p> Ab cde fgh i jkl. Mno<br>
-        pqr stu vw xyz. A bc<br>
-        def g hij klm nopqrs<br>
-        tuv wxy z. Abc de fg<br>
-        hi jklmno. Pqrstu vw<br>
-        x yz. Abc def ghi jkl.<br>
-        M nop qrst uv wx yz.<br>
-        Ab cde fgh i jkl. Mno<br>
-        pqr stu vw xyz. A bc<br>
-        def g hij klm nopqrs
-        </p>
-      </div>
-      <img src="support/cat.png"/>
-      <div>
-        <p> M nop qrst uv wx yz.<br>
-        Ab cde fgh i jkl. Mno<br>
-        pqr stu vw xyz. A bc<br>
-        def g hij klm nopqrs<br>
-        tuv wxy z. Abc de fg<br>
-        hi jklmno. Pqrstu vw<br>
-        x yz. Abc def ghi jkl.<br>
-        M nop qrst uv wx yz.<br>
-        Ab cde fgh i jkl. Mno<br>
-        Pqr stu vw xyz.
-        </p>
-      </div>
+       Ab cde fgh i jkl. Mno<br>
+       pqr stu vw xyz. A bc<br>
+       def g hij klm nopqrs<br>
+       def g hij klm nopqrs<br>
+       def g hij klm nopqrs<br>
+       def g hij klm nopqrs<br>
+       <img src="support/cat.png"/>
+       Ab cde fgh i jkl. Mno<br>
+       pqr stu vw xyz. A bc<br>
+       def g hij klm nopqrs<br>
+       tuv wxy z. Abc de fg<br>
+       hi jklmno. Pqrstu vw<br>
+       x yz. Abc def ghi jkl.<br>
+       M nop qrst uv wx yz.<br>
+       Ab cde fgh i jkl. Mno<br>
+       pqr stu vw xyz. A bc<br>
+       def g hij klm nopqrs
     </div>
     <script>
         var div = document.querySelector("#test");
-        div.style[headProp("columnWidth")] = "196px";
+        div.style[headProp("columnCount")] = "3";
         div.style[headProp("columnGap")] ="5px";
         div.style[headProp("columnRule")] ="5px solid green";
     </script>

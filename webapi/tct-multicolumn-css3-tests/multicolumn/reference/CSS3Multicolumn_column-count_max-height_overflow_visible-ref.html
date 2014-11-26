@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<meta charset="utf-8">
+<title>CSS Reference</title>
+<link rel="author" title="Intel" href="http://www.intel.com">
+<style type="text/css">
+  div.test {
+    width: 600px;
+    height: 200px;
+    text-align:center;
+    position: relative;
+    border: solid 5px blue;
+    margin: 0.5em 2em 1em 0;
+    font: bold 14px/19px Arial, sans-serif;
+    max-height: 180px; 
+    overflow: visible; 
+    -webkit-column-count: 3; 
+    -webkit-column-gap: 5px; 
+    -webkit-column-rule-width: 5px; 
+    -webkit-column-rule-style: solid; 
+    -webkit-column-rule-color: green;
+    -moz-column-count: 3; 
+    -moz-column-gap: 5px; 
+    -moz-column-rule-width: 5px; 
+    -moz-column-rule-style: solid; 
+    -moz-column-rule-color: green;
+    -o-column-count: 3; 
+    -o-column-gap: 5px; 
+    -o-column-rule-width: 5px; 
+    -o-column-rule-style: solid; 
+    -o-column-rule-color: green;
+  }
+  .gap {
+    position: absolute;
+    background: green;
+    width: 5px;
+    bottom: 0px;
+    top: 0px;
+    border: 10px solid yellow;
+    border-top-width: 0;
+    border-bottom-width: 0;
+  }
+  .test p {
+    padding: 3px;
+    margin: 0;
+  }
+</style>
+<body>
+  <p id="testdetails">
+    <p>Assertion:If the height of the multi-column element has been constrained to a maximum height</p>
+    <p>Test passes if the last column is not inside the blue border.</p>
+  </p>
+  <div id="log"></div>
+  <div class="test" id="test">
+    <div>
+      <p> Ab cde fgh i jkl. Mno<br>
+        pqr stu vw xyz. A bc<br>
+        def g hij klm nopqrs<br>
+        tuv wxy z. Abc de fg<br>
+        hi jklmno. Pqrstu vw<br>
+        x yz. Abc def ghi jkl.<br>
+        M nop qrst uv wx yz.<br>
+        Ab cde fgh i jkl. Mno<br>
+        pqr stu vw xyz. A bc<br>
+        def g hij klm nopqrs
+      </p>
+    </div>
+
+    <div><!-- style="left: 175px"-->
+      <p> tuv wxy z. Abc de fg<br>
+        hi jklmno. Pqrstu vw<br>
+        x yz. Abc def ghi jkl.<br>
+        M nop qrst uv wx yz.<br>
+        Ab cde fgh i jkl. Mno<br>
+        pqr stu vw xyz. A bc<br>
+        def g hij klm nopqrs<br>
+        tuv wxy z. Abc de fg<br>
+        hi jklmno. Pqrstu vw<br>
+        x yz. Abc def ghi jkl.<br>
+      </p>
+    </div>
+
+    <div> <!-- style="left: 350px"-->
+      <p> M nop qrst uv wx yz.<br>
+        Ab cde fgh i jkl. Mno<br>
+        pqr stu vw xyz. A bc<br>
+        def g hij klm nopqrs<br>
+        tuv wxy z. Abc de fg<br>
+        hi jklmno. Pqrstu vw<br>
+        x yz. Abc def ghi jkl.<br>
+        M nop qrst uv wx yz.<br>
+        Ab cde fgh i jkl. Mno<br>
+        Pqr stu vw xyz.
+      </p>
+    </div>
+    <div class="gap" style="left: 180px"></div>
+    <div class="gap" style="left: 385px"></div>
+    <div class="gap" style="left: 593px"></div>
+  </div>
+</body>

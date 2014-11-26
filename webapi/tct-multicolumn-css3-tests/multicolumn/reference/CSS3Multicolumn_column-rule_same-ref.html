@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<meta charset="utf-8">
+<title>CSS Reference</title>
+<link rel="author" title="Intel" href="http://www.intel.com">
+<style type="text/css">
+  div.test {
+    background-color: green;
+    margin: 10px;
+    width: 400px;
+    padding: 0.2em 1em;
+    border: 5px solid blue;
+    -webkit-column-count: 4;
+    -webkit-column-rule-width: thick;
+    -webkit-column-rule-style: solid;
+    -webkit-column-rule-color: rgb(255, 192, 203);
+    -moz-column-count: 4;
+    -moz-column-rule-width: thick;
+    -moz-column-rule-style: solid;
+    -moz-column-rule-color: rgb(255, 192, 203);
+    -o-column-count: 4;
+    -o-column-rule-width: thick;
+    -o-column-rule-style: solid;
+    -o-column-rule-color: rgb(255, 192, 203);
+  }
+</style>
+<body>
+  <p>
+    <p>Assertion:If all column rules in the same row are also equal,column rules only appear between columns that both have content</p>
+    <ul>
+      <li>Test passes if three same pink column rules split into four columns and column rules appear between columns that both have content.</li>
+    </ul>
+  </p>
+  <div class="test" id="test">
+      welcome here! This is a column width Tests. please test it welcome here! This is a column width Tests. please test it welcome here!This is a column width Tests. please test it
+  </div>
+</body>

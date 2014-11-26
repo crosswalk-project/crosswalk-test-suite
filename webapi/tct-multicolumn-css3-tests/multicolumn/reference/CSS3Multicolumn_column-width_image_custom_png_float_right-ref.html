@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<meta charset="utf-8">
+<title>CSS Reference</title>
+<link rel="author" title="Intel" href="http://www.intel.com">
+<style>
+  div.test {
+    width: 700px;
+    height: 200px;
+    text-align:center;
+    position: relative;
+    border: solid 5px blue;
+    margin: 0.5em 2em 1em 0;
+    font: bold 14px/19px Arial, sans-serif;
+    -webkit-column-width: 196px;
+    -webkit-column-gap: 5px;
+    -webkit-column-rule-width: 5px;
+    -webkit-column-rule-style: solid;
+    -webkit-column-rule-color: green;
+    -moz-column-width: 196px;
+    -moz-column-gap: 5px;
+    -moz-column-rule-width: 5px;
+    -moz-column-rule-style: solid;
+    -moz-column-rule-color: green;
+    -o-column-width: 196px;
+    -o-column-gap: 5px;
+    -o-column-rule-width: 5px;
+    -o-column-rule-style: solid;
+    -o-column-rule-color: green;
+  }
+  .test p {
+    padding: 3px;
+    margin: 0;
+  }
+  img {
+    display: block;
+    float: right;
+  }
+</style>
+<body>
+  <p>Test passes if the cat image is on the right of the text of the column</p>
+  <div class="test" id="test">
+    <div>
+      <p> Ab cde fgh i jkl. Mno<br>
+        pqr stu vw xyz. A bc<br>
+        def g hij klm nopqrs<br>
+        tuv wxy z. Abc de fg<br>
+        hi jklmno. Pqrstu vw<br>
+        x yz. Abc def ghi jkl.<br>
+        M nop qrst uv wx yz.<br>
+        Ab cde fgh i jkl. Mno<br>
+        pqr stu vw xyz. A bc<br>
+        def g hij klm nopqrs
+      </p>
+    </div>
+    <div>
+      <p> M nop qrst uv wx yz.<br>
+        Ab cde fgh i jkl. Mno<br>
+        <img src="../support/cat.png"/>
+        pqr stu vw xyz. A bc<br>
+        def g hij klm nopqrs<br>
+        tuv wxy z. Abc de fg<br>
+        hi jklmno. Pqrstu vw<br>
+        x yz. Abc def ghi jkl.<br>
+        M nop qrst uv wx yz.<br>
+        Ab cde fgh i jkl. Mno<br>
+        Pqr stu vw xyz.
+      </p>
+    </div>
+  </div>
+</body>

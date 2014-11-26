@@ -33,15 +33,16 @@ Authors:
 
 <html>
   <head>
-    <title>CSS3 MultiColumn Test: CSS3Multicolumn_column-count_max-height_overflow_visible</title>
+    <title>CSS3 MultiColumn Test: CSS3Multicolumn_column-width_image_custom_png_float_right</title>
     <link rel="author" title="Intel" href="http://www.intel.com" />
     <link rel="help" href="http://www.w3.org/TR/2011/CR-css3-multicol-20110412/" />
+    <link rel="match" href="reference/CSS3Multicolumn_column-width_image_custom_png_float_right-ref.html"/>
     <meta name="flags" content="" />
-    <meta name="assert" content="Check if the height of the multi-column element has been constrained to a maximum height" />
+    <meta name="assert" content="Check if the width of the image is set float right" />
     <script src="support/support.js"></script>
-    <style type="text/css">
+    <style>
         div.test {
-            width: 600px;
+            width: 700px;
             height: 200px;
             text-align:center;
             position: relative;
@@ -49,82 +50,51 @@ Authors:
             margin: 0.5em 2em 1em 0;
             font: bold 14px/19px Arial, sans-serif;
         }
-        .gap {
-            position: absolute;
-            background: green;
-            width: 5px;
-            bottom: 0px;
-            top: 0px;
-            border: 10px solid yellow;
-            border-top-width: 0;
-            border-bottom-width: 0;
-        }
         .test p {
             padding: 3px;
             margin: 0;
         }
+        img {
+            display: block;
+            float: right;
+        }
     </style>
   </head>
   <body>
-    <p id="testdetails">
-      <p>Assertion:If the height of the multi-column element has been constrained to a maximum height</p>
-      <p>Test passes if the last column is not inside the blue border.</p>
-    </p>
-    <div id="log"></div>
+    <p>Test passes if the cat image is on the right of the text of the column</p>
     <div class="test" id="test">
       <div>
         <p> Ab cde fgh i jkl. Mno<br>
-        pqr stu vw xyz. A bc<br>
-        def g hij klm nopqrs<br>
-        tuv wxy z. Abc de fg<br>
-        hi jklmno. Pqrstu vw<br>
-        x yz. Abc def ghi jkl.<br>
-        M nop qrst uv wx yz.<br>
-        Ab cde fgh i jkl. Mno<br>
-        pqr stu vw xyz. A bc<br>
-        def g hij klm nopqrs
+          pqr stu vw xyz. A bc<br>
+          def g hij klm nopqrs<br>
+          tuv wxy z. Abc de fg<br>
+          hi jklmno. Pqrstu vw<br>
+          x yz. Abc def ghi jkl.<br>
+          M nop qrst uv wx yz.<br>
+          Ab cde fgh i jkl. Mno<br>
+          pqr stu vw xyz. A bc<br>
+          def g hij klm nopqrs
         </p>
       </div>
-
-      <div><!-- style="left: 175px"-->
-        <p> tuv wxy z. Abc de fg<br>
-        hi jklmno. Pqrstu vw<br>
-        x yz. Abc def ghi jkl.<br>
-        M nop qrst uv wx yz.<br>
-        Ab cde fgh i jkl. Mno<br>
-        pqr stu vw xyz. A bc<br>
-        def g hij klm nopqrs<br>
-        tuv wxy z. Abc de fg<br>
-        hi jklmno. Pqrstu vw<br>
-        x yz. Abc def ghi jkl.<br>
-        </p>
-      </div>
-
-      <div> <!-- style="left: 350px"-->
+      <div>
         <p> M nop qrst uv wx yz.<br>
-        Ab cde fgh i jkl. Mno<br>
-        pqr stu vw xyz. A bc<br>
-        def g hij klm nopqrs<br>
-        tuv wxy z. Abc de fg<br>
-        hi jklmno. Pqrstu vw<br>
-        x yz. Abc def ghi jkl.<br>
-        M nop qrst uv wx yz.<br>
-        Ab cde fgh i jkl. Mno<br>
-        Pqr stu vw xyz.
+          Ab cde fgh i jkl. Mno<br>
+          <img src="support/cat.png"/>
+          pqr stu vw xyz. A bc<br>
+          def g hij klm nopqrs<br>
+          tuv wxy z. Abc de fg<br>
+          hi jklmno. Pqrstu vw<br>
+          x yz. Abc def ghi jkl.<br>
+          M nop qrst uv wx yz.<br>
+          Ab cde fgh i jkl. Mno<br>
+          Pqr stu vw xyz.
         </p>
       </div>
-
-      <div class="gap" style="left: 180px"></div>
-
-      <div class="gap" style="left: 385px"></div>
-      <div class="gap" style="left: 593px"></div>
     </div>
     <script>
         var div = document.querySelector("#test");
-        div.style[headProp("columnCount")] = "3";
+        div.style[headProp("columnWidth")] = "196px";
         div.style[headProp("columnGap")] ="5px";
-        div.style[headProp("maxHeight")] ="180px";
-        div.style[headProp("overflow")] ="visible";
         div.style[headProp("columnRule")] ="5px solid green";
     </script>
   </body>
