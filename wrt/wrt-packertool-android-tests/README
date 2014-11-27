@@ -15,6 +15,7 @@ If test device is "x86" platform, content of the file should be "x86".
 ## Authors:
 
 * Xu, Kang <kangx.xu@intel.com>
+* Wang, Hongjuan <hongjuanx.wang@intel.com>
 
 ## LICENSE
 
@@ -48,14 +49,19 @@ with DEVICE_ID which you input.
     3.2 packertool_negative.txt is all negative packertool case content.
  ./[DEVICE_ID]/allparis/ save test seed file which would be tested on the device.
 
-4. Get the detailed information in a file like xxxx_stdout.log in home directory
+4. ./ge_manifest.py create packertool resource
+
+5. ./ge_package.py create packertool package
+
+6. ./ge_unitcase.py create tests.py
 
 Test Step:
 1. unzip -d [testprefix-path] wrt-packertool-android-tests<version>.zip
 2. cd [testprefix-path]/opt/wrt-packertool-android-tests/
 3. ./inst.py -i
-4. run test case
-   testkit-lite -f [testprefix-path]/opt/wrt-packertool-android-tests/tests.xml -A -o [testprefix-path]/opt/wrt-packertool-android-tests/result.xml --comm localhost --testenvs "DEVICE_ID=Medfield3C6DFF2E  CONNECT_TYPE=adb" --testprefix [testprefix-path], DEVICE_ID can also be multiple ids like "Medfield3C6DFF2E,Medfield3C6DFF00".
+4. ./ge_package.py
+5. run test case
+   testkit-lite -f [testprefix-path]/opt/wrt-packertool-android-tests/tests.xml -A -o [testprefix-path]/opt/wrt-packertool-android-tests/result.xml --comm localhost --testenvs "DEVICE_ID=Medfield3C6DFF2E  CONNECT_TYPE=adb;APK_DIR=[apk-folder-path]", DEVICE_ID can also be multiple ids like "Medfield3C6DFF2E,Medfield3C6DFF00".
 Query device id by commmand "adb devices -l" in host
 
 Base on the seed file, the total case number is 262.
