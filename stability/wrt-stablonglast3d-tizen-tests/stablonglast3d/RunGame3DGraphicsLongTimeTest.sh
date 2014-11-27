@@ -35,10 +35,9 @@ APP_NAME="3d_test"
 #pkgcmd -i -t wgt -p $PACKAGENAME -q
 
 #monitor device info
-#$path/sysmon-seperateRun.sh $SLEEP twodoptest &
 echo "beging..."
 #launch_statue=`app_launcher -s thrdoptest.twodframeplaytest`
-$path/stablonglast3d/sysmon-seperateRun.sh 86400 "rscohn2.herokuapp" &
+$path/stablonglast3d/sysmon-seperateRun.sh $SLEEP "rscohn2.herokuapp" &
 sleep 2
 nohup xwalk-launcher  http://rscohn2.herokuapp.com/sbp/ &>/dev/null &
 sleep 86400
