@@ -236,7 +236,6 @@ Please see Appendix 5 for the package list.
 - webapi-promises-nonw3c-tests
 - webapi-rawsockets-sysapps-tests
 - webapi-resourcetiming-w3c-tests
-- webapi-runtime-xwalk-tests
 - webapi-simd-nonw3c-tests
 - webapi-speechapi-ivi-tests
 - webapi-usertiming-w3c-tests
@@ -373,7 +372,6 @@ Please see Appendix 5 for the package list.
 - webapi-promises-nonw3c-tests
 - webapi-rawsockets-sysapps-tests
 - webapi-resourcetiming-w3c-tests
-- webapi-runtime-xwalk-tests
 - webapi-sanityapp-w3c-tests
 - webapi-speechapi-ivi-tests
 - webapi-usertiming-w3c-tests
@@ -611,7 +609,6 @@ Please see Appendix 5 for the package list.
 - webapi-promises-nonw3c-tests
 - webapi-rawsockets-sysapps-tests
 - webapi-resourcetiming-w3c-tests
-- webapi-runtime-xwalk-tests
 - webapi-simd-nonw3c-tests
 - webapi-speechapi-ivi-tests
 - webapi-usertiming-w3c-tests
