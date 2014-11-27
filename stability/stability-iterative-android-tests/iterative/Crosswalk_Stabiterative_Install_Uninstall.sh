@@ -39,11 +39,11 @@ fi
 #install webapp
 for((i=0; i<50; i++)); do
 echo $i
-$command install -r $local_path/../stabiterative*.apk > /tmp/install.txt
+$command install -r $local_path/../iterative*.apk > /tmp/install.txt
 grep "Success" /tmp/install.txt
 
 if [ $? -eq 0 ];then
-    $command uninstall org.xwalk.stabiterative
+    $command uninstall org.xwalk.iterative
 else
     echo "Install failed"
 fi

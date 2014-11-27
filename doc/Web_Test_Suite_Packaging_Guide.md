@@ -270,8 +270,9 @@ Please see Appendix 5 for the package list.
 **Misc**
 
 - web-abat-tests
+<<<<<<< HEAD
 - web-mbat-xwalk-tests
-- wrt-stabiterative-android-tests
+- stability-iterative-android-tests
 - wrt-stablonglast2D-android-tests
 - wrt-stablonglast3D-android-tests
 - wrt-stablonglastplayvideo-android-tests
