@@ -207,18 +207,6 @@
           </spec>
         </specs>
       </testcase>
-      <testcase purpose="Check if the getterIndex API can get the elements by index accurately" type="compliance" status="approved" component="WebAPI/DOM, Forms and Styles/HTML5 Forms (Partial)" execution_type="auto" priority="P1" id="form_getter_index_check">
-        <description>
-          <test_script_entry>/opt/tct-forms-html5-tests/forms/form_getter_index_check.html</test_script_entry>
-        </description>
-        <specs>
-          <spec>
-            <spec_assertion element_type="method" element_name="getter" interface="HTMLFormElement" specification="HTML5 Forms (Partial)" section="DOM, Forms and Styles" category="Tizen W3C API Specifications"/>
-            <spec_url>http://www.w3.org/TR/2012/WD-html5-20121025/the-form-element.html#the-form-element</spec_url>
-            <spec_statement/>
-          </spec>
-        </specs>
-      </testcase>
       <testcase purpose="Check if the getterName can get the elements by name accurately" type="compliance" status="approved" component="WebAPI/DOM, Forms and Styles/HTML5 Forms (Partial)" execution_type="auto" priority="P1" id="form_getter_name_check">
         <description>
           <test_script_entry>/opt/tct-forms-html5-tests/forms/form_getter_name_check.html</test_script_entry>
@@ -1811,6 +1799,26 @@
           <spec>
             <spec_assertion element_type="attribute" element_name="validationMessage" interface="HTMLFieldSetElement" specification="HTML5 Forms (Partial)" section="DOM, Forms and Styles" category="Tizen W3C API Specifications"/>
             <spec_url>http://www.w3.org/TR/2012/WD-html5-20121025/the-fieldset-element.html#the-fieldset-element</spec_url>
+            <spec_statement/>
+          </spec>
+        </specs>
+      </testcase>
+      <testcase purpose="Check if HTMLFormElement.getter attribute, HTMLFormElement[index] get value" type="compliance" status="approved" component="WebAPI/DOM, Forms and Styles/HTML5 Forms (Partial)" execution_type="auto" priority="P2" id="form_getterindex_2">
+        <description>
+          <pre_condition/>
+          <post_condition/>
+          <steps>
+            <step order="1">
+              <step_desc>Check if HTMLFormElement.getter attribute, HTMLFormElement[index] get value</step_desc>
+              <expected>Pass</expected>
+            </step>
+          </steps>
+          <test_script_entry>/opt/tct-forms-html5-tests/forms/w3c/form_getterindex_2.html</test_script_entry>
+        </description>
+        <specs>
+          <spec>
+            <spec_assertion element_type="method" element_name="getter" interface="HTMLFormElement" specification="HTML5 Forms (Partial)" section="DOM, Forms and Styles" category="Tizen W3C API Specifications"/>
+            <spec_url>http://www.w3.org/TR/2012/WD-html5-20121025/the-form-element.html#the-form-element</spec_url>
             <spec_statement/>
           </spec>
         </specs>
