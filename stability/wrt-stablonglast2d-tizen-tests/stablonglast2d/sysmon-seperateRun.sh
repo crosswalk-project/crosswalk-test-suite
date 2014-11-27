@@ -35,16 +35,16 @@ mkdir /tmp/$sysmonFolder
 times=$[ $1 / 10 ]
 while [ $times -ne "0" ]
 do
-    pid=`ps aux | grep "$2" | grep -v "grep" | awk '{print $2}' | head -n 1`
-    echo $pid >> /tmp/$sysmonFolder/cpu.res
-    echo `date` >> /tmp/$sysmonFolder/cpu.res
-    echo `date` >> /tmp/$sysmonFolder/fd.res
-    echo `date` >> /tmp/$sysmonFolder/mem.res
-    ps aux |grep -w $pid | grep -v 'grep' >> /tmp/$sysmonFolder/cpu.res
+    #pid=`ps aux | grep "$2" | grep -v "grep" | awk '{print $2}' | head -n 1`
+    #echo $pid >> /tmp/$sysmonFolder/cpu.res
+    echo `date` >> /tmp/$sysmonFolder/cpumem.res
+    #echo `date` >> /tmp/$sysmonFolder/fd.res
+    #echo `date` >> /tmp/$sysmonFolder/mem.res
+    #ps aux |grep -w $pid | grep -v 'grep' >> /tmp/$sysmonFolder/cpu.res
     ps aux | grep xwalk | grep -v "grep" >> /tmp/$sysmonFolder/cpumem.res
-    uptime >> /tmp/$sysmonFolder/uptime.res
-    ls -l /proc/$pid/fd >> /tmp/$sysmonFolder/fd.res
-    cat /proc/$pid/status |grep -E 'VmSize|VmRSS' >> /tmp/$sysmonFolder/mem.res
+    #uptime >> /tmp/$sysmonFolder/uptime.res
+    #ls -l /proc/$pid/fd >> /tmp/$sysmonFolder/fd.res
+    #cat /proc/$pid/status |grep -E 'VmSize|VmRSS' >> /tmp/$sysmonFolder/mem.res
     times=$(($times - 1))
     sleep 10
 done
