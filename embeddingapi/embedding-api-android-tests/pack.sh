@@ -1,5 +1,5 @@
 #!/bin/bash
-source $(dirname $0)/webapi-embeddingapi-xwalk-tests.spec
+source $(dirname $0)/embedding-api-android-tests.spec
 
 #parse params
 usage="Usage: ./pack.sh"

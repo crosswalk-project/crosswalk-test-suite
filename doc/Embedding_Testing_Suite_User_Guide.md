@@ -40,7 +40,7 @@ $unzip -o webapi-embedding-xwalk-tests-<version\>.zip
 
 $cd opt
 
-$cd webapi-embeddingapi-xwalk-tests
+$cd embedding-api-android-tests
 
 $./inst.sh –i
 
@@ -128,7 +128,7 @@ The result will show on the console. You can copy it to a document and view the 
     [ merge complete, write to the result file, this might take some time, please wait ]
     [ copy result xml to output file: /home/archermind/result.xml ]
     [ all tasks for testkit lite are accomplished, goodbye ]
-    archermind@rdjdz110017:~/zyy/work/ww42/crosswalk-test-suite/embeddingapi/webapi-embeddingapi-xwalk-tests/opt/webapi-embeddingapi-xwalk-tests$ testkit-lite -f ~/zyy/work/ww42/tests.xml --comm androidmobile -k "androidunit" -A -o "/home/archermind/result.xml"
+    archermind@rdjdz110017:~/zyy/work/ww42/crosswalk-test-suite/embeddingapi/embedding-api-android-tests/opt/embedding-api-android-tests$ testkit-lite -f ~/zyy/work/ww42/tests.xml --comm androidmobile -k "androidunit" -A -o "/home/archermind/result.xml"
     [ analysis test xml file: /opt/testkit/lite/2014-10-17-10:51:29.223649/ww42_tests.auto.xml ]
     
     [ testing xml: /opt/testkit/lite/2014-10-17-10:51:29.223649/ww42_tests.auto.xml ]
@@ -141,19 +141,19 @@ The result will show on the console. You can copy it to a document and view the 
     [ this might take some time, please wait ]
     [ preparing for startup options ]
     [ android unit test, entry: org.xwalk.embedding.test.LoadTest ]
-    execute case: webapi-embeddingapi-xwalk-tests # testGetNavigationHistory...(PASS)
-    execute case: webapi-embeddingapi-xwalk-tests # testGetOriginalUrl...(FAIL)
+    execute case: embedding-api-android-tests # testGetNavigationHistory...(PASS)
+    execute case: embedding-api-android-tests # testGetOriginalUrl...(FAIL)
     [message]
-    execute case: webapi-embeddingapi-xwalk-tests # testGetTitle_fileName...(PASS)
-    execute case: webapi-embeddingapi-xwalk-tests # testGetTitle_url...(PASS)
-    execute case: webapi-embeddingapi-xwalk-tests # testGetUrl...(PASS)
-    execute case: webapi-embeddingapi-xwalk-tests # testLoadAppFromManifest...(PASS)
-    execute case: webapi-embeddingapi-xwalk-tests # testLoadJs...(PASS)
-    execute case: webapi-embeddingapi-xwalk-tests # testLoadUrl...(PASS)
-    execute case: webapi-embeddingapi-xwalk-tests # testLoadXHR...(PASS)
-    execute case: webapi-embeddingapi-xwalk-tests # testReload_ignoreCache...(PASS)
-    execute case: webapi-embeddingapi-xwalk-tests # testReload_normal...(PASS)
-    execute case: webapi-embeddingapi-xwalk-tests # testStopLoading...(PASS)
+    execute case: embedding-api-android-tests # testGetTitle_fileName...(PASS)
+    execute case: embedding-api-android-tests # testGetTitle_url...(PASS)
+    execute case: embedding-api-android-tests # testGetUrl...(PASS)
+    execute case: embedding-api-android-tests # testLoadAppFromManifest...(PASS)
+    execute case: embedding-api-android-tests # testLoadJs...(PASS)
+    execute case: embedding-api-android-tests # testLoadUrl...(PASS)
+    execute case: embedding-api-android-tests # testLoadXHR...(PASS)
+    execute case: embedding-api-android-tests # testReload_ignoreCache...(PASS)
+    execute case: embedding-api-android-tests # testReload_normal...(PASS)
+    execute case: embedding-api-android-tests # testStopLoading...(PASS)
     [ cases result saved to resultfile ]
     
     
@@ -162,19 +162,19 @@ The result will show on the console. You can copy it to a document and view the 
     [ this might take some time, please wait ]
     [ preparing for startup options ]
     [ android unit test, entry: org.xwalk.embedding.test.NavigationHistoryTest ]
-    execute case: webapi-embeddingapi-xwalk-tests # testCanGoBack...(PASS)
-    execute case: webapi-embeddingapi-xwalk-tests # testCanGoForward...(PASS)
-    execute case: webapi-embeddingapi-xwalk-tests # testClear...(PASS)
-    execute case: webapi-embeddingapi-xwalk-tests # testGetCurrentIndex...(PASS)
-    execute case: webapi-embeddingapi-xwalk-tests # testGetCurrentItem_noBack...(PASS)
-    execute case: webapi-embeddingapi-xwalk-tests # testGetCurrentItem_withBack...(PASS)
-    execute case: webapi-embeddingapi-xwalk-tests # testGetItemAt...(PASS)
-    execute case: webapi-embeddingapi-xwalk-tests # testHasItemAt...(PASS)
-    execute case: webapi-embeddingapi-xwalk-tests # testNavigate_backOneStep...(PASS)
-    execute case: webapi-embeddingapi-xwalk-tests # testNavigate_backTwoStep...(PASS)
-    execute case: webapi-embeddingapi-xwalk-tests # testNavigate_forwardOneStep...(PASS)
-    execute case: webapi-embeddingapi-xwalk-tests # testNavigate_forwardTwoStep...(PASS)
-    execute case: webapi-embeddingapi-xwalk-tests # testSize...(PASS)
+    execute case: embedding-api-android-tests # testCanGoBack...(PASS)
+    execute case: embedding-api-android-tests # testCanGoForward...(PASS)
+    execute case: embedding-api-android-tests # testClear...(PASS)
+    execute case: embedding-api-android-tests # testGetCurrentIndex...(PASS)
+    execute case: embedding-api-android-tests # testGetCurrentItem_noBack...(PASS)
+    execute case: embedding-api-android-tests # testGetCurrentItem_withBack...(PASS)
+    execute case: embedding-api-android-tests # testGetItemAt...(PASS)
+    execute case: embedding-api-android-tests # testHasItemAt...(PASS)
+    execute case: embedding-api-android-tests # testNavigate_backOneStep...(PASS)
+    execute case: embedding-api-android-tests # testNavigate_backTwoStep...(PASS)
+    execute case: embedding-api-android-tests # testNavigate_forwardOneStep...(PASS)
+    execute case: embedding-api-android-tests # testNavigate_forwardTwoStep...(PASS)
+    execute case: embedding-api-android-tests # testSize...(PASS)
     [ cases result saved to resultfile ]
     
     
@@ -183,9 +183,9 @@ The result will show on the console. You can copy it to a document and view the 
     [ this might take some time, please wait ]
     [ preparing for startup options ]
     [ android unit test, entry: org.xwalk.embedding.test.XWalkNavigationItemTest ]
-    execute case: webapi-embeddingapi-xwalk-tests # test_navigationItem_getOriginalUrl...(PASS)
-    execute case: webapi-embeddingapi-xwalk-tests # test_navigationItem_getTitle...(PASS)
-    execute case: webapi-embeddingapi-xwalk-tests # test_navigationItem_getUrl...(PASS)
+    execute case: embedding-api-android-tests # test_navigationItem_getOriginalUrl...(PASS)
+    execute case: embedding-api-android-tests # test_navigationItem_getTitle...(PASS)
+    execute case: embedding-api-android-tests # test_navigationItem_getUrl...(PASS)
     [ cases result saved to resultfile ]
     
     
@@ -194,28 +194,28 @@ The result will show on the console. You can copy it to a document and view the 
     [ this might take some time, please wait ]
     [ preparing for startup options ]
     [ android unit test, entry: org.xwalk.embedding.test.XWalkViewTest ]
-    execute case: webapi-embeddingapi-xwalk-tests # testAddJavascriptInterface...(PASS)
-    execute case: webapi-embeddingapi-xwalk-tests # testAddJavascriptInterfaceWithAnnotation...(PASS)
-    execute case: webapi-embeddingapi-xwalk-tests # testClearCache...(PASS)
-    execute case: webapi-embeddingapi-xwalk-tests # testEvaluateJavascript...(PASS)
-    execute case: webapi-embeddingapi-xwalk-tests # testGetAPIVersion...(PASS)
-    execute case: webapi-embeddingapi-xwalk-tests # testGetXWalkVersion...(PASS)
-    execute case: webapi-embeddingapi-xwalk-tests # testOnActivityResult...(PASS)
-    execute case: webapi-embeddingapi-xwalk-tests # testOnDestroy...(PASS)
-    execute case: webapi-embeddingapi-xwalk-tests # testOnHide...(PASS)
-    execute case: webapi-embeddingapi-xwalk-tests # testOnKeyDown...(PASS)
-    execute case: webapi-embeddingapi-xwalk-tests # testOnKeyUp...(PASS)
-    execute case: webapi-embeddingapi-xwalk-tests # testOnNewIntent...(PASS)
-    execute case: webapi-embeddingapi-xwalk-tests # testOnShow...(PASS)
-    execute case: webapi-embeddingapi-xwalk-tests # testPauseTimers...(PASS)
-    execute case: webapi-embeddingapi-xwalk-tests # testRestoreState_falseResult...(PASS)
-    execute case: webapi-embeddingapi-xwalk-tests # testRestoreState_notLoadFirst...(PASS)
-    execute case: webapi-embeddingapi-xwalk-tests # testRestoreState_trueResult...(PASS)
-    execute case: webapi-embeddingapi-xwalk-tests # testResumeTimers...(PASS)
-    execute case: webapi-embeddingapi-xwalk-tests # testSaveState...(PASS)
-    execute case: webapi-embeddingapi-xwalk-tests # testSaveState_loadUrl...(PASS)
-    execute case: webapi-embeddingapi-xwalk-tests # testSetResourceClient...(PASS)
-    execute case: webapi-embeddingapi-xwalk-tests # testSetUIClient...(PASS)
+    execute case: embedding-api-android-tests # testAddJavascriptInterface...(PASS)
+    execute case: embedding-api-android-tests # testAddJavascriptInterfaceWithAnnotation...(PASS)
+    execute case: embedding-api-android-tests # testClearCache...(PASS)
+    execute case: embedding-api-android-tests # testEvaluateJavascript...(PASS)
+    execute case: embedding-api-android-tests # testGetAPIVersion...(PASS)
+    execute case: embedding-api-android-tests # testGetXWalkVersion...(PASS)
+    execute case: embedding-api-android-tests # testOnActivityResult...(PASS)
+    execute case: embedding-api-android-tests # testOnDestroy...(PASS)
+    execute case: embedding-api-android-tests # testOnHide...(PASS)
+    execute case: embedding-api-android-tests # testOnKeyDown...(PASS)
+    execute case: embedding-api-android-tests # testOnKeyUp...(PASS)
+    execute case: embedding-api-android-tests # testOnNewIntent...(PASS)
+    execute case: embedding-api-android-tests # testOnShow...(PASS)
+    execute case: embedding-api-android-tests # testPauseTimers...(PASS)
+    execute case: embedding-api-android-tests # testRestoreState_falseResult...(PASS)
+    execute case: embedding-api-android-tests # testRestoreState_notLoadFirst...(PASS)
+    execute case: embedding-api-android-tests # testRestoreState_trueResult...(PASS)
+    execute case: embedding-api-android-tests # testResumeTimers...(PASS)
+    execute case: embedding-api-android-tests # testSaveState...(PASS)
+    execute case: embedding-api-android-tests # testSaveState_loadUrl...(PASS)
+    execute case: embedding-api-android-tests # testSetResourceClient...(PASS)
+    execute case: embedding-api-android-tests # testSetUIClient...(PASS)
     [ cases result saved to resultfile ]
     
     
@@ -224,25 +224,25 @@ The result will show on the console. You can copy it to a document and view the 
     [ this might take some time, please wait ]
     [ preparing for startup options ]
     [ android unit test, entry: org.xwalk.embedding.test.XWalkUIClientTest ]
-    execute case: webapi-embeddingapi-xwalk-tests # testOnFullscreenToggled...(PASS)
-    execute case: webapi-embeddingapi-xwalk-tests # testOnJavascriptCloseWindow...(FAIL)
+    execute case: embedding-api-android-tests # testOnFullscreenToggled...(PASS)
+    execute case: embedding-api-android-tests # testOnJavascriptCloseWindow...(FAIL)
     [message]
-    execute case: webapi-embeddingapi-xwalk-tests # testOnJavascriptModalDialog...(FAIL)
+    execute case: embedding-api-android-tests # testOnJavascriptModalDialog...(FAIL)
     [message]
-    execute case: webapi-embeddingapi-xwalk-tests # testOnPageLoadStarted...(PASS)
-    execute case: webapi-embeddingapi-xwalk-tests # testOnPageStarted_nullUrl...(PASS)
-    execute case: webapi-embeddingapi-xwalk-tests # testOnPageStopped...(PASS)
-    execute case: webapi-embeddingapi-xwalk-tests # testOnPageStopped_nullUrl...(PASS)
-    execute case: webapi-embeddingapi-xwalk-tests # testOnReceivedTitle_Callback...(FAIL)
+    execute case: embedding-api-android-tests # testOnPageLoadStarted...(PASS)
+    execute case: embedding-api-android-tests # testOnPageStarted_nullUrl...(PASS)
+    execute case: embedding-api-android-tests # testOnPageStopped...(PASS)
+    execute case: embedding-api-android-tests # testOnPageStopped_nullUrl...(PASS)
+    execute case: embedding-api-android-tests # testOnReceivedTitle_Callback...(FAIL)
     [message]
-    execute case: webapi-embeddingapi-xwalk-tests # testOnReceivedTitle_TitleChanged...(PASS)
-    execute case: webapi-embeddingapi-xwalk-tests # testOnReceivedTitle_WithData...(PASS)
-    execute case: webapi-embeddingapi-xwalk-tests # testOnReceivedTitle_WithUrl...(PASS)
-    execute case: webapi-embeddingapi-xwalk-tests # testOnRequestFocus...(PASS)
-    execute case: webapi-embeddingapi-xwalk-tests # testOnScaleChanged...(PASS)
-    execute case: webapi-embeddingapi-xwalk-tests # testOnUnhandledKeyEvent...(PASS)
-    execute case: webapi-embeddingapi-xwalk-tests # testOpenFileChooser...(PASS)
-    execute case: webapi-embeddingapi-xwalk-tests # testShouldOverrideKeyEvent...(PASS)
+    execute case: embedding-api-android-tests # testOnReceivedTitle_TitleChanged...(PASS)
+    execute case: embedding-api-android-tests # testOnReceivedTitle_WithData...(PASS)
+    execute case: embedding-api-android-tests # testOnReceivedTitle_WithUrl...(PASS)
+    execute case: embedding-api-android-tests # testOnRequestFocus...(PASS)
+    execute case: embedding-api-android-tests # testOnScaleChanged...(PASS)
+    execute case: embedding-api-android-tests # testOnUnhandledKeyEvent...(PASS)
+    execute case: embedding-api-android-tests # testOpenFileChooser...(PASS)
+    execute case: embedding-api-android-tests # testShouldOverrideKeyEvent...(PASS)
     [ cases result saved to resultfile ]
     
     
@@ -251,12 +251,12 @@ The result will show on the console. You can copy it to a document and view the 
     [ this might take some time, please wait ]
     [ preparing for startup options ]
     [ android unit test, entry: org.xwalk.embedding.test.XWalkResourceClientTest ]
-    execute case: webapi-embeddingapi-xwalk-tests # testOnLoadFinished...(PASS)
-    execute case: webapi-embeddingapi-xwalk-tests # testOnLoadStarted...(PASS)
-    execute case: webapi-embeddingapi-xwalk-tests # testOnProgressChanged...(PASS)
-    execute case: webapi-embeddingapi-xwalk-tests # testOnReceivedLoadError...(PASS)
-    execute case: webapi-embeddingapi-xwalk-tests # testShouldInterceptLoadRequest...(PASS)
-    execute case: webapi-embeddingapi-xwalk-tests # testShouldOverrideUrlLoading...(PASS)
+    execute case: embedding-api-android-tests # testOnLoadFinished...(PASS)
+    execute case: embedding-api-android-tests # testOnLoadStarted...(PASS)
+    execute case: embedding-api-android-tests # testOnProgressChanged...(PASS)
+    execute case: embedding-api-android-tests # testOnReceivedLoadError...(PASS)
+    execute case: embedding-api-android-tests # testShouldInterceptLoadRequest...(PASS)
+    execute case: embedding-api-android-tests # testShouldOverrideUrlLoading...(PASS)
     [ cases result saved to resultfile ]
     
     
@@ -265,16 +265,16 @@ The result will show on the console. You can copy it to a document and view the 
     [ this might take some time, please wait ]
     [ preparing for startup options ]
     [ android unit test, entry: org.xwalk.embedding.test.XWalkPreferenceTest ]
-    execute case: webapi-embeddingapi-xwalk-tests # testGetBooleanValue_boolean_JAVASCRIPT_CAN_OPEN_WINDOW...(PASS)
-    execute case: webapi-embeddingapi-xwalk-tests # testGetBooleanValue_false_REMOTE_DEBUGGING...(PASS)
-    execute case: webapi-embeddingapi-xwalk-tests # testGetBooleanValue_true_REMOTE_DEBUGGING...(PASS)
-    execute case: webapi-embeddingapi-xwalk-tests # testGetIntegerValue_int_SUPPORT_MULTIPLE_WINDOWS...(PASS)
-    execute case: webapi-embeddingapi-xwalk-tests # testGetStringValue_String_ALLOW_UNIVERSAL_ACCESS_FROM_FILE...(PASS)
-    execute case: webapi-embeddingapi-xwalk-tests # testSetValue_String_ALLOW_UNIVERSAL_ACCESS_FROM_FILE...(PASS)
-    execute case: webapi-embeddingapi-xwalk-tests # testSetValue_boolean_JAVASCRIPT_CAN_OPEN_WINDOW...(PASS)
-    execute case: webapi-embeddingapi-xwalk-tests # testSetValue_false_REMOTE_DEBUGGING...(PASS)
-    execute case: webapi-embeddingapi-xwalk-tests # testSetValue_int_SUPPORT_MULTIPLE_WINDOWS...(PASS)
-    execute case: webapi-embeddingapi-xwalk-tests # testSetValue_true_REMOTE_DEBUGGING...(PASS)
+    execute case: embedding-api-android-tests # testGetBooleanValue_boolean_JAVASCRIPT_CAN_OPEN_WINDOW...(PASS)
+    execute case: embedding-api-android-tests # testGetBooleanValue_false_REMOTE_DEBUGGING...(PASS)
+    execute case: embedding-api-android-tests # testGetBooleanValue_true_REMOTE_DEBUGGING...(PASS)
+    execute case: embedding-api-android-tests # testGetIntegerValue_int_SUPPORT_MULTIPLE_WINDOWS...(PASS)
+    execute case: embedding-api-android-tests # testGetStringValue_String_ALLOW_UNIVERSAL_ACCESS_FROM_FILE...(PASS)
+    execute case: embedding-api-android-tests # testSetValue_String_ALLOW_UNIVERSAL_ACCESS_FROM_FILE...(PASS)
+    execute case: embedding-api-android-tests # testSetValue_boolean_JAVASCRIPT_CAN_OPEN_WINDOW...(PASS)
+    execute case: embedding-api-android-tests # testSetValue_false_REMOTE_DEBUGGING...(PASS)
+    execute case: embedding-api-android-tests # testSetValue_int_SUPPORT_MULTIPLE_WINDOWS...(PASS)
+    execute case: embedding-api-android-tests # testSetValue_true_REMOTE_DEBUGGING...(PASS)
     [ cases result saved to resultfile ]
     
     
@@ -283,9 +283,9 @@ The result will show on the console. You can copy it to a document and view the 
     [ this might take some time, please wait ]
     [ preparing for startup options ]
     [ android unit test, entry: org.xwalk.embedding.test.XWalkJavascriptResultTest ]
-    execute case: webapi-embeddingapi-xwalk-tests # testCancel...(PASS)
-    execute case: webapi-embeddingapi-xwalk-tests # testConfirm...(PASS)
-    execute case: webapi-embeddingapi-xwalk-tests # testConfirmWithResult...(PASS)
+    execute case: embedding-api-android-tests # testCancel...(PASS)
+    execute case: embedding-api-android-tests # testConfirm...(PASS)
+    execute case: embedding-api-android-tests # testConfirmWithResult...(PASS)
     [ cases result saved to resultfile ]
     
     
@@ -294,8 +294,8 @@ The result will show on the console. You can copy it to a document and view the 
     [ this might take some time, please wait ]
     [ preparing for startup options ]
     [ android unit test, entry: org.xwalk.embedding.test.FullScreenTest ]
-    execute case: webapi-embeddingapi-xwalk-tests # testHasEnteredFullScreen...(PASS)
-    execute case: webapi-embeddingapi-xwalk-tests # testLeaveFullScreen...(PASS)
+    execute case: embedding-api-android-tests # testHasEnteredFullScreen...(PASS)
+    execute case: embedding-api-android-tests # testLeaveFullScreen...(PASS)
     [ cases result saved to resultfile ]
     
     
@@ -304,16 +304,16 @@ The result will show on the console. You can copy it to a document and view the 
     [ this might take some time, please wait ]
     [ preparing for startup options ]
     [ android unit test, entry: org.xwalk.embedding.test.XWalkExtensionTest ]
-    execute case: webapi-embeddingapi-xwalk-tests # testBroadcastMessage...(PASS)
-    execute case: webapi-embeddingapi-xwalk-tests # testBroadcastMessage_nullString...(PASS)
-    execute case: webapi-embeddingapi-xwalk-tests # testOnMessage...(PASS)
-    execute case: webapi-embeddingapi-xwalk-tests # testOnSyncMessage...(PASS)
-    execute case: webapi-embeddingapi-xwalk-tests # testOnSyncMessage_MultiFrames...(PASS)
-    execute case: webapi-embeddingapi-xwalk-tests # testPostMessage...(PASS)
-    execute case: webapi-embeddingapi-xwalk-tests # testPostMessage_nullString...(PASS)
-    execute case: webapi-embeddingapi-xwalk-tests # testXWalkExtension...(PASS)
-    execute case: webapi-embeddingapi-xwalk-tests # testXWalkExtension_StringArray...(PASS)
-    execute case: webapi-embeddingapi-xwalk-tests # testXWalkExtension_emptyArray...(PASS)
+    execute case: embedding-api-android-tests # testBroadcastMessage...(PASS)
+    execute case: embedding-api-android-tests # testBroadcastMessage_nullString...(PASS)
+    execute case: embedding-api-android-tests # testOnMessage...(PASS)
+    execute case: embedding-api-android-tests # testOnSyncMessage...(PASS)
+    execute case: embedding-api-android-tests # testOnSyncMessage_MultiFrames...(PASS)
+    execute case: embedding-api-android-tests # testPostMessage...(PASS)
+    execute case: embedding-api-android-tests # testPostMessage_nullString...(PASS)
+    execute case: embedding-api-android-tests # testXWalkExtension...(PASS)
+    execute case: embedding-api-android-tests # testXWalkExtension_StringArray...(PASS)
+    execute case: embedding-api-android-tests # testXWalkExtension_emptyArray...(PASS)
     [ cases result saved to resultfile ]
     
     
@@ -340,7 +340,7 @@ The result will show on the console. You can copy it to a document and view the 
             <?xml-stylesheet type="text/xsl" href="testresult.xsl"?>
     <test_definition><environment build_id="" device_id="MedfieldF4FE9D99" device_model="" device_name="N/A" host="Linux-3.8.0-29-generic-i686-with-Ubuntu-12.04-precise" lite_version="3.1.9" manufacturer="" resolution="N/A" screen_size="N/A"><other /></environment>
     <summary test_plan_name="Empty test_plan_name"><start_at>2014-10-17_10_51_29</start_at><end_at>2014-10-17_10_52_57</end_at></summary>
-      <suite category="Android embedding APIs" name="webapi-embeddingapi-xwalk-tests">
+      <suite category="Android embedding APIs" name="embedding-api-android-tests">
         <set name="LoadTest" set_debug_msg="result.dlog" test_set_src="org.xwalk.embedding.test.LoadTest"><testcase id="testGetNavigationHistory" purpose="testGetNavigationHistory" result="PASS"><result_info><actual_result>PASS</actual_result><start>2014-10-17 10:51:37</start><end>2014-10-17 10:51:37</end><stdout>[message]</stdout><stderr /></result_info></testcase><testcase id="testGetOriginalUrl" purpose="testGetOriginalUrl" result="FAIL"><result_info><actual_result>FAIL</actual_result><start>2014-10-17 10:51:38</start><end>2014-10-17 10:51:38</end><stdout>[message]</stdout><stderr /></result_info></testcase><testcase id="testGetTitle_fileName" purpose="testGetTitle_fileName" result="PASS"><result_info><actual_result>PASS</actual_result><start>2014-10-17 10:51:38</start><end>2014-10-17 10:51:38</end><stdout>[message]</stdout><stderr /></result_info></testcase><testcase id="testGetTitle_url" purpose="testGetTitle_url" result="PASS"><result_info><actual_result>PASS</actual_result><start>2014-10-17 10:51:38</start><end>2014-10-17 10:51:38</end><stdout>[message]</stdout><stderr /></result_info></testcase><testcase id="testGetUrl" purpose="testGetUrl" result="PASS"><result_info><actual_result>PASS</actual_result><start>2014-10-17 10:51:39</start><end>2014-10-17 10:51:39</end><stdout>[message]</stdout><stderr /></result_info></testcase><testcase id="testLoadAppFromManifest" purpose="testLoadAppFromManifest" result="PASS"><result_info><actual_result>PASS</actual_result><start>2014-10-17 10:51:39</start><end>2014-10-17 10:51:39</end><stdout>[message]</stdout><stderr /></result_info></testcase><testcase id="testLoadJs" purpose="testLoadJs" result="PASS"><result_info><actual_result>PASS</actual_result><start>2014-10-17 10:51:39</start><end>2014-10-17 10:51:39</end><stdout>[message]</stdout><stderr /></result_info></testcase><testcase id="testLoadUrl" purpose="testLoadUrl" result="PASS"><result_info><actual_result>PASS</actual_result><start>2014-10-17 10:51:39</start><end>2014-10-17 10:51:39</end><stdout>[message]</stdout><stderr /></result_info></testcase><testcase id="testLoadXHR" purpose="testLoadXHR" result="PASS"><result_info><actual_result>PASS</actual_result><start>2014-10-17 10:51:40</start><end>2014-10-17 10:51:40</end><stdout>[message]</stdout><stderr /></result_info></testcase><testcase id="testReload_ignoreCache" purpose="testReload_ignoreCache" result="PASS"><result_info><actual_result>PASS</actual_result><start>2014-10-17 10:51:41</start><end>2014-10-17 10:51:41</end><stdout>[message]</stdout><stderr /></result_info></testcase><testcase id="testReload_normal" purpose="testReload_normal" result="PASS"><result_info><actual_result>PASS</actual_result><start>2014-10-17 10:51:43</start><end>2014-10-17 10:51:43</end><stdout>[message]</stdout><stderr /></result_info></testcase><testcase id="testStopLoading" purpose="testStopLoading" result="PASS"><result_info><actual_result>PASS</actual_result><start>2014-10-17 10:51:43</start><end>2014-10-17 10:51:43</end><stdout>[message]</stdout><stderr /></result_info></testcase></set>
         <set name="NavigationHistoryTest" set_debug_msg="result.dlog" test_set_src="org.xwalk.embedding.test.NavigationHistoryTest"><testcase id="testCanGoBack" purpose="testCanGoBack" result="PASS"><result_info><actual_result>PASS</actual_result><start>2014-10-17 10:51:46</start><end>2014-10-17 10:51:46</end><stdout>[message]</stdout><stderr /></result_info></testcase><testcase id="testCanGoForward" purpose="testCanGoForward" result="PASS"><result_info><actual_result>PASS</actual_result><start>2014-10-17 10:51:46</start><end>2014-10-17 10:51:46</end><stdout>[message]</stdout><stderr /></result_info></testcase><testcase id="testClear" purpose="testClear" result="PASS"><result_info><actual_result>PASS</actual_result><start>2014-10-17 10:51:46</start><end>2014-10-17 10:51:46</end><stdout>[message]</stdout><stderr /></result_info></testcase><testcase id="testGetCurrentIndex" purpose="testGetCurrentIndex" result="PASS"><result_info><actual_result>PASS</actual_result><start>2014-10-17 10:51:47</start><end>2014-10-17 10:51:47</end><stdout>[message]</stdout><stderr /></result_info></testcase><testcase id="testGetCurrentItem_noBack" purpose="testGetCurrentItem_noBack" result="PASS"><result_info><actual_result>PASS</actual_result><start>2014-10-17 10:51:47</start><end>2014-10-17 10:51:47</end><stdout>[message]</stdout><stderr /></result_info></testcase><testcase id="testGetCurrentItem_withBack" purpose="testGetCurrentItem_withBack" result="PASS"><result_info><actual_result>PASS</actual_result><start>2014-10-17 10:51:47</start><end>2014-10-17 10:51:47</end><stdout>[message]</stdout><stderr /></result_info></testcase><testcase id="testGetItemAt" purpose="testGetItemAt" result="PASS"><result_info><actual_result>PASS</actual_result><start>2014-10-17 10:51:47</start><end>2014-10-17 10:51:47</end><stdout>[message]</stdout><stderr /></result_info></testcase><testcase id="testHasItemAt" purpose="testHasItemAt" result="PASS"><result_info><actual_result>PASS</actual_result><start>2014-10-17 10:51:48</start><end>2014-10-17 10:51:48</end><stdout>[message]</stdout><stderr /></result_info></testcase><testcase id="testNavigate_backOneStep" purpose="testNavigate_backOneStep" result="PASS"><result_info><actual_result>PASS</actual_result><start>2014-10-17 10:51:48</start><end>2014-10-17 10:51:48</end><stdout>[message]</stdout><stderr /></result_info></testcase><testcase id="testNavigate_backTwoStep" purpose="testNavigate_backTwoStep" result="PASS"><result_info><actual_result>PASS</actual_result><start>2014-10-17 10:51:48</start><end>2014-10-17 10:51:48</end><stdout>[message]</stdout><stderr /></result_info></testcase><testcase id="testNavigate_forwardOneStep" purpose="testNavigate_forwardOneStep" result="PASS"><result_info><actual_result>PASS</actual_result><start>2014-10-17 10:51:49</start><end>2014-10-17 10:51:49</end><stdout>[message]</stdout><stderr /></result_info></testcase><testcase id="testNavigate_forwardTwoStep" purpose="testNavigate_forwardTwoStep" result="PASS"><result_info><actual_result>PASS</actual_result><start>2014-10-17 10:51:49</start><end>2014-10-17 10:51:49</end><stdout>[message]</stdout><stderr /></result_info></testcase><testcase id="testSize" purpose="testSize" result="PASS"><result_info><actual_result>PASS</actual_result><start>2014-10-17 10:51:49</start><end>2014-10-17 10:51:49</end><stdout>[message]</stdout><stderr /></result_info></testcase></set>
         <set name="XWalkNavigationItemTest" set_debug_msg="result.dlog" test_set_src="org.xwalk.embedding.test.XWalkNavigationItemTest"><testcase id="test_navigationItem_getOriginalUrl" purpose="test_navigationItem_getOriginalUrl" result="PASS"><result_info><actual_result>PASS</actual_result><start>2014-10-17 10:51:52</start><end>2014-10-17 10:51:52</end><stdout>[message]</stdout><stderr /></result_info></testcase><testcase id="test_navigationItem_getTitle" purpose="test_navigationItem_getTitle" result="PASS"><result_info><actual_result>PASS</actual_result><start>2014-10-17 10:51:52</start><end>2014-10-17 10:51:52</end><stdout>[message]</stdout><stderr /></result_info></testcase><testcase id="test_navigationItem_getUrl" purpose="test_navigationItem_getUrl" result="PASS"><result_info><actual_result>PASS</actual_result><start>2014-10-17 10:51:53</start><end>2014-10-17 10:51:53</end><stdout>[message]</stdout><stderr /></result_info></testcase></set>

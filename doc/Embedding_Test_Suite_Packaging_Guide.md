@@ -62,10 +62,10 @@ There is a pack.sh script in each test suite. Currently it supports a test suite
 
 - Download the embeddingapi test suit from the following link:
 
-[https://github.com/crosswalk-project/crosswalk-test-suite/tree/master/embeddingapi/webapi-embeddingapi-xwalk-tests](https://github.com/crosswalk-project/crosswalk-test-suite/tree/master/embeddingapi/webapi-embeddingapi-xwalk-tests)
+[https://github.com/crosswalk-project/crosswalk-test-suite/tree/master/embeddingapi/embedding-api-android-tests](https://github.com/crosswalk-project/crosswalk-test-suite/tree/master/embeddingapi/embedding-api-android-tests)
 
 - Pack APK packages:
 
-$ cd webapi-embeddingapi-xwalk-tests
+$ cd embedding-api-android-tests
 
 $ ./pack.sh
