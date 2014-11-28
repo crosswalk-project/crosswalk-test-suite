@@ -170,7 +170,6 @@ def instPKGs():
             item_name = os.path.basename(item)
             if not doRemoteCopy(item, "%s/%s" % (PKG_SRC_DIR, item_name)):
                 action_status = False
-    (return_code, output) = doRemoteCMD("chmod 777 /home/app/content/tct/opt/tct-ext02-wrt-tests/scripts/WRTInstaller")
     return action_status
 
 
