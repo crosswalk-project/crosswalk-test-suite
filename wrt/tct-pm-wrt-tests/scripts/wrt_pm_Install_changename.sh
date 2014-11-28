@@ -22,8 +22,8 @@
 source $(dirname $0)/Common
 origin_name=test-widget.wgt
 change_name=test-widget-testing.wgt
-if [ -f $origin_name ];then
-  mv $origin_name $change_name
+if [ -f $path/$origin_name ];then
+  mv $path/$origin_name $path/$change_name
 else
   echo "The widget is not exist"
   exit 1
@@ -32,12 +32,12 @@ fi
 func_install_changename test-widget-testing.wgt
 if [ $? -eq 1 ];then
   echo "The installation is failed"
-  mv $change_name $origin_name
+  mv $path/$change_name $path/$origin_name
   exit 1
 fi
 
 func_uninstall_changename test-widget-testing.wgt
-mv $change_name $origin_name
+mv $path/$change_name $path/$origin_name
 echo "The widget is installed successfully"
 
 exit 0
