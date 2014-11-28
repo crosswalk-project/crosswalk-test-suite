@@ -23,20 +23,20 @@ function unzippkg()
     unzip $NAME.zip
     echo "Package unzip successfully and push to host $RESOURCE_DIR/"
 
-    if [ -e /tmp/Crosswalk_sharemode.conf ];then
-        cp -f /tmp/Crosswalk_sharemode.conf $RESOURCE_DIR/opt/$NAME/
+    if [ -e /tmp/Crosswalk_sharedmode.conf ];then
+        cp -f /tmp/Crosswalk_sharedmode.conf $RESOURCE_DIR/opt/$NAME/
         #copy crosswalk to install folder:$RESOURCE_DIR/opt/$NAME/resources/installer
-        ANDROID_CROSSWALK_PATH=`cat $RESOURCE_DIR/opt/$NAME/Crosswalk_sharemode.conf | grep "Android_Crosswalk_Path" | cut -d "=" -f 2`
+        ANDROID_CROSSWALK_PATH=`cat $RESOURCE_DIR/opt/$NAME/Crosswalk_sharedmode.conf | grep "Android_Crosswalk_Path" | cut -d "=" -f 2`
         cp $ANDROID_CROSSWALK_PATH $RESOURCE_DIR/opt/$NAME/resources/installer
     else
-        echo "Error: Not found Crosswalk_sharemode.conf >>>>>>>>>>>>>>>>>>>>>>>>."
+        echo "Error: Not found Crosswalk_sharedmode.conf >>>>>>>>>>>>>>>>>>>>>>>>."
         exit 1
     fi
 }
 
 function cleansource()
 {
-    [ -e $RESOURCE_DIR/opt/$NAME/Crosswalk_sharemode.conf ]
+    [ -e $RESOURCE_DIR/opt/$NAME/Crosswalk_sharedmode.conf ]
     if [ $? -ne 0 ];then
          echo "Please running "./inst.sh" to unzip package to local first ..."
          exit 1
