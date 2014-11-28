@@ -270,7 +270,7 @@ Please see Appendix 5 for the package list.
 **Misc**
 
 - web-abat-tests
-- web-mbat-tests
+- web-mbat-xwalk-tests
 - wrt-stabiterative-android-tests
 - wrt-stablonglast2D-android-tests
 - wrt-stablonglast3D-android-tests
@@ -398,7 +398,7 @@ Please see Appendix 5 for the package list.
 **Misc**
 
 - web-abat-tests
-- web-mbat-tests
+- web-mbat-xwalk-tests
 
 # Appendix 3 WGT Package List for Tizen Mobile
 
@@ -529,7 +529,7 @@ Please see Appendix 5 for the package list.
 **MISC**
 
 - web-abat-tests
-- web-mbat-tests
+- web-mbat-xwalk-tests
 
 # Appendix 6 Cordova APK Packages List
 
