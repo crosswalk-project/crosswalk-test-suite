@@ -42,7 +42,7 @@ tct-widget
 tct-testconfig
 tct-getcapabilities"
 
-XPKBLACK="webapi-contactsmanager-sysapps-tests
+XPKBLACK="webapi-contactsmanager-w3c-tests
 webapi-ambientlight-w3c-tests
 webapi-imports-w3c-tests
 webapi-presentation-xwalk-tests
