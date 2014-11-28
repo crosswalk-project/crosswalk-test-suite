@@ -25,30 +25,30 @@
 #EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 #
 #Authors:
-#       Yufei, Chen <yufeix.chen@intel.com>
+#
+path=$(dirname $(dirname $0))
+SLEEP=86400
+PACKAGENAME=$path/"3d_test.wgt"
+APP_NAME="3d_test"
+#source $path/longlasting/xwalk_common.sh
+#pkgcmd -u -n thrdoptest -q
+#pkgcmd -i -t wgt -p $PACKAGENAME -q
 
-local_path=$(cd "$(dirname $0)";pwd)
-sleep 10
-sysmonFolder=$2"_sysmon_"`date '+%Y%m%d%H%M'`
-mkdir /tmp/$sysmonFolder
-
-times=$[ $1 / 10 ]
-while [ $times -ne "0" ]
-do
-    #pid=`ps aux | grep "$2" | grep -v "grep" | awk '{print $2}' | head -n 1`
-    #echo $pid >> /tmp/$sysmonFolder/cpu.res
-    echo `date` >> /tmp/$sysmonFolder/cpumem.res
-    #echo `date` >> /tmp/$sysmonFolder/fd.res
-    #echo `date` >> /tmp/$sysmonFolder/mem.res
-    #ps aux |grep -w $pid | grep -v 'grep' >> /tmp/$sysmonFolder/cpu.res
-    ps aux | grep xwalk | grep -v "grep" >> /tmp/$sysmonFolder/cpumem.res
-    #uptime >> /tmp/$sysmonFolder/uptime.res
-    #ls -l /proc/$pid/fd >> /tmp/$sysmonFolder/fd.res
-    #cat /proc/$pid/status |grep -E 'VmSize|VmRSS' >> /tmp/$sysmonFolder/mem.res
-    times=$(($times - 1))
-    sleep 10
-done
-
+#monitor device info
+echo "beging..."
+#launch_statue=`app_launcher -s thrdoptest.twodframeplaytest`
+$path/longlasting/sysmon-seperateRun.sh $SLEEP "rscohn2.herokuapp" &
 sleep 2
-#kill self
-kill -9 $$
+nohup xwalk-launcher  http://rscohn2.herokuapp.com/sbp/ &>/dev/null &
+sleep 86400
+get_pid=`ps aux | grep rscohn2.herokuapp | grep -v "grep" | head -n 1 | awk '{print $2}' `
+kill $get_pid
+echo "end..."
+exit 0
+#if [[ "$launch_statue" =~ "launched" ]];then
+#   sleep 86400
+#   pkgcmd -u -n twodoptest -q
+#   echo "end..."
+#else
+#    exit 1
+#fi
