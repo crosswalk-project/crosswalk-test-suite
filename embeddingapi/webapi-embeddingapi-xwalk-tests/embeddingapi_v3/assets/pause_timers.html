@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+<title>test</title>
+<body>
+
+<p>A script on this page starts this clock:</p>
+<p id="demo"></p>
+
+<script>
+    var myVar=setInterval(function(){myTimer()},500);
+        
+    function myTimer()
+    {
+        var d=new Date();
+        var t=d.toLocaleTimeString();
+        document.getElementById("demo").innerHTML=t;
+        document.title = testInterface.getDateText();
+    }
+</script>
+
+</body>
+</html>
