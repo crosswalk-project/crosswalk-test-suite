@@ -56,7 +56,7 @@ webapi-notification-ivi-tests
 webapi-speechapi-ivi-tests
 webapi-vehicleinfo-ivi-tests
 webapi-nativefileapi-xwalk-tests
-webapi-embeddingapi-xwalk-tests
+embedding-api-android-tests
 tct-alarm-tizen-tests
 tct-appcontrol-tizen-tests
 tct-calendar-tizen-tests

@@ -46,7 +46,7 @@ Refer the following link for the way to create an application with the embedding
 
   - Open ADT.
   - Select File > New>Project..., then Android>Android Project From Existing Code.
-  - Set Root Directory to the path of the webapi-embeddingapi-xwalk-tests/directory you extracted.
+  - Set Root Directory to the path of the embedding-api-android-tests/directory you extracted.
   - Click Finish. The imported project will now be visible in the Package Explorer.
 
 
@@ -152,7 +152,7 @@ Tests.xml Example.
     <?xml version="1.0" encoding="UTF-8"?>
     <?xml-stylesheet type="text/xsl" href="./testcase.xsl"?>
     <test_definition>
-      <suite name="webapi-embeddingapi-xwalk-tests" category="Android embedding APIs">
+      <suite name="embedding-api-android-tests" category="Android embedding APIs">
         <set name="EmbeddingApiTest" type="androidunit">
           <testcase component="Embedding API Test" execution_type="auto" id="LoadTest" purpose="Check if the load related methods are effective." subcases="12">
             <description>
