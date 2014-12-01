@@ -3,18 +3,6 @@
 <test_definition>
   <suite name="tct-svg-html5-tests" category="W3C/HTML5 APIs">
     <set name="SVG" type="js">
-      <testcase purpose="Check if SVG inside HTML BUTTON element is parsed correctly" type="compliance" status="approved" component="WebAPI/Graphics/HTML5 SVG" execution_type="manual" priority="P1" id="foreign_content_three_rect_svg_in_button">
-        <description>
-          <test_script_entry test_script_expected_result="0">/opt/tct-svg-html5-tests/svg/w3c/foreign_content_003-manual.html</test_script_entry>
-        </description>
-        <specs>
-          <spec>
-            <spec_assertion usage="true" interface="SVGSVGElement" specification="HTML5 SVG" section="Graphics" category="Tizen W3C API Specifications"/>
-            <spec_url>http://www.w3.org/TR/2012/WD-html5-20121025/mathml.html#svg</spec_url>
-            <spec_statement/>
-          </spec>
-        </specs>
-      </testcase>
       <testcase purpose="Check if SVG Self Closing tags (circle and rect in svg) is parsed properly" type="compliance" status="approved" component="WebAPI/Graphics/HTML5 SVG" execution_type="auto" priority="P1" id="foreign_content_ten_circle_rect_svg">
         <description>
           <test_script_entry test_script_expected_result="0">/opt/tct-svg-html5-tests/svg/w3c/foreign_content_010.html</test_script_entry>
@@ -27,33 +15,9 @@
           </spec>
         </specs>
       </testcase>
-      <testcase purpose="Check if SVG inside HTML CAPTION element is parsed  correctly" type="compliance" status="approved" component="WebAPI/Graphics/HTML5 SVG" execution_type="manual" priority="P3" id="foreign_content_four_rect_svg_in_caption">
-        <description>
-          <test_script_entry test_script_expected_result="0">/opt/tct-svg-html5-tests/svg/w3c/foreign_content_004-manual.html</test_script_entry>
-        </description>
-        <specs>
-          <spec>
-            <spec_assertion usage="true" interface="SVGSVGElement" specification="HTML5 SVG" section="Graphics" category="Tizen W3C API Specifications"/>
-            <spec_url>http://www.w3.org/TR/2012/WD-html5-20121025/mathml.html#svg</spec_url>
-            <spec_statement/>
-          </spec>
-        </specs>
-      </testcase>
       <testcase purpose="Check if SVG Self Closing tags (circle in rect in svg)  is parsed properly" type="compliance" status="approved" component="WebAPI/Graphics/HTML5 SVG" execution_type="auto" priority="P3" id="foreign_content_nine_circle_in_rect_svg">
         <description>
           <test_script_entry test_script_expected_result="0">/opt/tct-svg-html5-tests/svg/w3c/foreign_content_009.html</test_script_entry>
-        </description>
-        <specs>
-          <spec>
-            <spec_assertion usage="true" interface="SVGSVGElement" specification="HTML5 SVG" section="Graphics" category="Tizen W3C API Specifications"/>
-            <spec_url>http://www.w3.org/TR/2012/WD-html5-20121025/mathml.html#svg</spec_url>
-            <spec_statement/>
-          </spec>
-        </specs>
-      </testcase>
-      <testcase purpose="Check if the SVG inside HTML label element parses correctly" type="compliance" status="approved" component="WebAPI/Graphics/HTML5 SVG" execution_type="manual" priority="P3" id="svg_label_inline">
-        <description>
-          <test_script_entry>/opt/tct-svg-html5-tests/svg/svg_label_inline-manual.html</test_script_entry>
         </description>
         <specs>
           <spec>
@@ -77,6 +41,45 @@
       </testcase>
     </set>
     <set name="SVG-REF" type="ref">
+      <testcase purpose="Check if the SVG inside HTML label element parses correctly" type="compliance" status="approved" component="WebAPI/Graphics/HTML5 SVG" execution_type="auto" priority="P3" id="svg_label_inline">
+        <description>
+          <test_script_entry>/opt/tct-svg-html5-tests/svg/svg_label_inline.html</test_script_entry>
+          <refer_test_script_entry timeout="90">/opt/tct-svg-html5-tests/svg/reference/svg_label_inline-ref.html</refer_test_script_entry>
+        </description>
+        <specs>
+          <spec>
+            <spec_assertion usage="true" interface="SVGSVGElement" specification="HTML5 SVG" section="Graphics" category="Tizen W3C API Specifications"/>
+            <spec_url>http://www.w3.org/TR/2012/WD-html5-20121025/mathml.html#svg</spec_url>
+            <spec_statement/>
+          </spec>
+        </specs>
+      </testcase>
+      <testcase purpose="Check if SVG inside HTML BUTTON element is parsed correctly" type="compliance" status="approved" component="WebAPI/Graphics/HTML5 SVG" execution_type="auto" priority="P1" id="foreign_content_three_rect_svg_in_button">
+        <description>
+          <test_script_entry test_script_expected_result="0">/opt/tct-svg-html5-tests/svg/w3c/foreign_content_003.html</test_script_entry>
+          <refer_test_script_entry timeout="90">/opt/tct-svg-html5-tests/svg/w3c/reference/foreign_content_003-ref.html</refer_test_script_entry>
+        </description>
+        <specs>
+          <spec>
+            <spec_assertion usage="true" interface="SVGSVGElement" specification="HTML5 SVG" section="Graphics" category="Tizen W3C API Specifications"/>
+            <spec_url>http://www.w3.org/TR/2012/WD-html5-20121025/mathml.html#svg</spec_url>
+            <spec_statement/>
+          </spec>
+        </specs>
+      </testcase>
+      <testcase purpose="Check if SVG inside HTML CAPTION element is parsed  correctly" type="compliance" status="approved" component="WebAPI/Graphics/HTML5 SVG" execution_type="auto" priority="P3" id="foreign_content_four_rect_svg_in_caption">
+        <description>
+          <test_script_entry test_script_expected_result="0">/opt/tct-svg-html5-tests/svg/w3c/foreign_content_004.html</test_script_entry>
+          <refer_test_script_entry timeout="90">/opt/tct-svg-html5-tests/svg/w3c/reference/foreign_content_004-ref.html</refer_test_script_entry>
+        </description>
+        <specs>
+          <spec>
+            <spec_assertion usage="true" interface="SVGSVGElement" specification="HTML5 SVG" section="Graphics" category="Tizen W3C API Specifications"/>
+            <spec_url>http://www.w3.org/TR/2012/WD-html5-20121025/mathml.html#svg</spec_url>
+            <spec_statement/>
+          </spec>
+        </specs>
+      </testcase>
       <testcase purpose="Check if SVG inside HTML OBJECT element is parsed correctly" type="compliance" status="approved" component="WebAPI/Graphics/HTML5 SVG" execution_type="auto" priority="P1" id="foreign_content_one_rect_svg_in_object">
         <description>
           <test_script_entry test_script_expected_result="0">/opt/tct-svg-html5-tests/svg/w3c/foreign_content_001.html</test_script_entry>
