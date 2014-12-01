@@ -1,113 +1,111 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<?xml-stylesheet type="text/xsl"  href="./testcase.xsl"?>
 <test_definition>
-  <suite name="tct-batterystatus-w3c-tests" category="W3C/HTML5 APIs">
+  <suite category="W3C/HTML5 APIs" name="tct-batterystatus-w3c-tests">
     <set name="Battery" type="js">
-      <testcase purpose="Check if the Navigator.getBattery exists and return BatteryManager object" type="compliance" status="approved" component="WebAPI/Device/Battery Status API" execution_type="auto" priority="P1" id="Navigator_getBattery">
+      <testcase component="W3C_HTML5 APIs/Device/Battery Status API" execution_type="auto" id="Navigator_getBattery" priority="P1" purpose="Check if the Navigator.getBattery exists and return BatteryManager object" status="approved" type="compliance">
         <description>
           <test_script_entry>/opt/tct-batterystatus-w3c-tests/batterystatus/Navigator_getBattery.html</test_script_entry>
         </description>
         <specs>
           <spec>
-            <spec_assertion element_type="function" element_name="getBattery" interface="Navigator" specification="Battery Status API" section="Device" category="Tizen W3C API Specifications"/>
+            <spec_assertion category="Tizen W3C API Specifications" element_name="getBattery" element_type="function" interface="Navigator" section="Device" specification="Battery Status API" />
             <spec_url>https://dvcs.w3.org/hg/dap/raw-file/default/battery/Overview.html#the-navigator-interface</spec_url>
-            <spec_statement/>
+            <spec_statement />
           </spec>
         </specs>
       </testcase>
-      <testcase purpose="Check if the BatteryManager.charging attribute exists, readonly and typeof boolean" type="compliance" status="approved" component="WebAPI/Device/Battery Status API" execution_type="auto" priority="P1" id="BatteryManager_charging">
+      <testcase component="W3C_HTML5 APIs/Device/Battery Status API" execution_type="auto" id="BatteryManager_charging" priority="P1" purpose="Check if the BatteryManager.charging attribute exists, readonly and typeof boolean" status="approved" type="compliance">
         <description>
           <test_script_entry>/opt/tct-batterystatus-w3c-tests/batterystatus/BatteryManager_charging.html</test_script_entry>
         </description>
         <specs>
           <spec>
-            <spec_assertion element_type="attribute" element_name="charging" interface="BatteryManager" specification="Battery Status API" section="Device" category="Tizen W3C API Specifications"/>
+            <spec_assertion category="Tizen W3C API Specifications" element_name="charging" element_type="attribute" interface="BatteryManager" section="Device" specification="Battery Status API" />
             <spec_url>https://dvcs.w3.org/hg/dap/raw-file/default/battery/Overview.html#the-batterymanager-interface</spec_url>
-            <spec_statement/>
+            <spec_statement />
           </spec>
         </specs>
       </testcase>
-      <testcase purpose="Check if the BatteryManager.chargingTime attribute exists, readonly and typeof boolean" type="compliance" status="approved" component="WebAPI/Device/Battery Status API" execution_type="auto" priority="P1" id="BatteryManager_chargingTime">
+      <testcase component="W3C_HTML5 APIs/Device/Battery Status API" execution_type="auto" id="BatteryManager_chargingTime" priority="P1" purpose="Check if the BatteryManager.chargingTime attribute exists, readonly and typeof boolean" status="approved" type="compliance">
         <description>
           <test_script_entry>/opt/tct-batterystatus-w3c-tests/batterystatus/BatteryManager_chargingTime.html</test_script_entry>
         </description>
         <specs>
           <spec>
-            <spec_assertion element_type="attribute" element_name="chargingTime" interface="BatteryManager" specification="Battery Status API" section="Device" category="Tizen W3C API Specifications"/>
+            <spec_assertion category="Tizen W3C API Specifications" element_name="chargingTime" element_type="attribute" interface="BatteryManager" section="Device" specification="Battery Status API" />
             <spec_url>https://dvcs.w3.org/hg/dap/raw-file/default/battery/Overview.html#the-batterymanager-interface</spec_url>
-            <spec_statement/>
+            <spec_statement />
           </spec>
         </specs>
       </testcase>
-      <testcase purpose="Check if the BatteryManager.dischargingTime attribute exists, readonly and typeof boolean" type="compliance" status="approved" component="WebAPI/Device/Battery Status API" execution_type="auto" priority="P1" id="BatteryManager_dischargingTime">
+      <testcase component="W3C_HTML5 APIs/Device/Battery Status API" execution_type="auto" id="BatteryManager_dischargingTime" priority="P1" purpose="Check if the BatteryManager.dischargingTime attribute exists, readonly and typeof boolean" status="approved" type="compliance">
         <description>
           <test_script_entry>/opt/tct-batterystatus-w3c-tests/batterystatus/BatteryManager_dischargingTime.html</test_script_entry>
         </description>
         <specs>
           <spec>
-            <spec_assertion element_type="attribute" element_name="dischargingTime" interface="BatteryManager" specification="Battery Status API" section="Device" category="Tizen W3C API Specifications"/>
+            <spec_assertion category="Tizen W3C API Specifications" element_name="dischargingTime" element_type="attribute" interface="BatteryManager" section="Device" specification="Battery Status API" />
             <spec_url>https://dvcs.w3.org/hg/dap/raw-file/default/battery/Overview.html#the-batterymanager-interface</spec_url>
-            <spec_statement/>
+            <spec_statement />
           </spec>
         </specs>
       </testcase>
-      <testcase purpose="Check if the BatteryManager.level attribute exists, readonly and typeof boolean" type="compliance" status="approved" component="WebAPI/Device/Battery Status API" execution_type="auto" priority="P1" id="BatteryManager_level">
+      <testcase component="W3C_HTML5 APIs/Device/Battery Status API" execution_type="auto" id="BatteryManager_level" priority="P1" purpose="Check if the BatteryManager.level attribute exists, readonly and typeof boolean" status="approved" type="compliance">
         <description>
           <test_script_entry>/opt/tct-batterystatus-w3c-tests/batterystatus/BatteryManager_level.html</test_script_entry>
         </description>
         <specs>
           <spec>
-            <spec_assertion element_type="attribute" element_name="level" interface="BatteryManager" specification="Battery Status API" section="Device" category="Tizen W3C API Specifications"/>
+            <spec_assertion category="Tizen W3C API Specifications" element_name="level" element_type="attribute" interface="BatteryManager" section="Device" specification="Battery Status API" />
             <spec_url>https://dvcs.w3.org/hg/dap/raw-file/default/battery/Overview.html#the-batterymanager-interface</spec_url>
-            <spec_statement/>
+            <spec_statement />
           </spec>
         </specs>
       </testcase>
-      <testcase purpose="Check if the BatteryManager.onchargingchange attribute exists and typeof object" type="compliance" status="approved" component="WebAPI/Device/Battery Status API" execution_type="auto" priority="P1" id="BatteryManager_onchargingchange">
+      <testcase component="W3C_HTML5 APIs/Device/Battery Status API" execution_type="auto" id="BatteryManager_onchargingchange" priority="P1" purpose="Check if the BatteryManager.onchargingchange attribute exists and typeof object" status="approved" type="compliance">
         <description>
           <test_script_entry>/opt/tct-batterystatus-w3c-tests/batterystatus/BatteryManager_onchargingchange.html</test_script_entry>
         </description>
         <specs>
           <spec>
-            <spec_assertion element_type="attribute" element_name="onchargingchange" interface="BatteryManager" specification="Battery Status API" section="Device" category="Tizen W3C API Specifications"/>
+            <spec_assertion category="Tizen W3C API Specifications" element_name="onchargingchange" element_type="attribute" interface="BatteryManager" section="Device" specification="Battery Status API" />
             <spec_url>https://dvcs.w3.org/hg/dap/raw-file/default/battery/Overview.html#the-batterymanager-interface</spec_url>
-            <spec_statement/>
+            <spec_statement />
           </spec>
         </specs>
       </testcase>
-      <testcase purpose="Check if the BatteryManager.onchargingtimechange attribute exists and typeof object" type="compliance" status="approved" component="WebAPI/Device/Battery Status API" execution_type="auto" priority="P1" id="BatteryManager_onchargingtimechange">
+      <testcase component="W3C_HTML5 APIs/Device/Battery Status API" execution_type="auto" id="BatteryManager_onchargingtimechange" priority="P1" purpose="Check if the BatteryManager.onchargingtimechange attribute exists and typeof object" status="approved" type="compliance">
         <description>
           <test_script_entry>/opt/tct-batterystatus-w3c-tests/batterystatus/BatteryManager_onchargingtimechange.html</test_script_entry>
         </description>
         <specs>
           <spec>
-            <spec_assertion element_type="attribute" element_name="onchargingtimechange" interface="BatteryManager" specification="Battery Status API" section="Device" category="Tizen W3C API Specifications"/>
+            <spec_assertion category="Tizen W3C API Specifications" element_name="onchargingtimechange" element_type="attribute" interface="BatteryManager" section="Device" specification="Battery Status API" />
             <spec_url>https://dvcs.w3.org/hg/dap/raw-file/default/battery/Overview.html#the-batterymanager-interface</spec_url>
-            <spec_statement/>
+            <spec_statement />
           </spec>
         </specs>
       </testcase>
-      <testcase purpose="Check if the BatteryManager.ondischargingtimechange attribute exists and typeof object" type="compliance" status="approved" component="WebAPI/Device/Battery Status API" execution_type="auto" priority="P1" id="BatteryManager_ondischargingtimechange">
+      <testcase component="W3C_HTML5 APIs/Device/Battery Status API" execution_type="auto" id="BatteryManager_ondischargingtimechange" priority="P1" purpose="Check if the BatteryManager.ondischargingtimechange attribute exists and typeof object" status="approved" type="compliance">
         <description>
           <test_script_entry>/opt/tct-batterystatus-w3c-tests/batterystatus/BatteryManager_ondischargingtimechange.html</test_script_entry>
         </description>
         <specs>
           <spec>
-            <spec_assertion element_type="attribute" element_name="ondischargingtimechange" interface="BatteryManager" specification="Battery Status API" section="Device" category="Tizen W3C API Specifications"/>
+            <spec_assertion category="Tizen W3C API Specifications" element_name="ondischargingtimechange" element_type="attribute" interface="BatteryManager" section="Device" specification="Battery Status API" />
             <spec_url>https://dvcs.w3.org/hg/dap/raw-file/default/battery/Overview.html#the-batterymanager-interface</spec_url>
-            <spec_statement/>
+            <spec_statement />
           </spec>
         </specs>
       </testcase>
-      <testcase purpose="Check if the BatteryManager.onlevelchange attribute exists and typeof object" type="compliance" status="approved" component="WebAPI/Device/Battery Status API" execution_type="auto" priority="P1" id="BatteryManager_onlevelchange">
+      <testcase component="W3C_HTML5 APIs/Device/Battery Status API" execution_type="auto" id="BatteryManager_onlevelchange" priority="P1" purpose="Check if the BatteryManager.onlevelchange attribute exists and typeof object" status="approved" type="compliance">
         <description>
           <test_script_entry>/opt/tct-batterystatus-w3c-tests/batterystatus/BatteryManager_onlevelchange.html</test_script_entry>
         </description>
         <specs>
           <spec>
-            <spec_assertion element_type="attribute" element_name="onlevelchange" interface="BatteryManager" specification="Battery Status API" section="Device" category="Tizen W3C API Specifications"/>
+            <spec_assertion category="Tizen W3C API Specifications" element_name="onlevelchange" element_type="attribute" interface="BatteryManager" section="Device" specification="Battery Status API" />
             <spec_url>https://dvcs.w3.org/hg/dap/raw-file/default/battery/Overview.html#the-batterymanager-interface</spec_url>
-            <spec_statement/>
+            <spec_statement />
           </spec>
         </specs>
       </testcase>

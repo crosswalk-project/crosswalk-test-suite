@@ -1,41 +1,39 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<?xml-stylesheet type="text/xsl" href="./testcase.xsl"?>
 <test_definition>
-  <suite name="webapi-gamepad-w3c-tests" category="W3C/HTML5 APIs">
+  <suite category="W3C/HTML5 APIs" name="webapi-gamepad-w3c-tests">
     <set name="Gamepad" type="js">
-      <testcase purpose="Check if GamepadEvent exist" type="compliance" status="approved" component="WebAPI/System-level APIs/Gamepad" execution_type="auto" priority="P1" id="GamepadEvent_basic">
+      <testcase component="W3C_HTML5 APIs/System Apps/Gamepad" execution_type="auto" id="GamepadEvent_basic" priority="P1" purpose="Check if GamepadEvent exist" status="approved" type="compliance">
         <description>
           <test_script_entry>/opt/webapi-gamepad-w3c-tests/gamepad/GamepadEvent_basic.html</test_script_entry>
         </description>
         <specs>
           <spec>
-            <spec_assertion element_type="event" element_name="GamepadEvent" interface="GamepadEvent" specification="Gamepad" section="Device APIs" category="W3C API Specifications"/>
+            <spec_assertion category="W3C API Specifications" element_name="GamepadEvent" element_type="event" interface="GamepadEvent" section="Device APIs" specification="Gamepad" />
             <spec_url>http://www.w3.org/TR/gamepad/</spec_url>
-            <spec_statement/>
+            <spec_statement />
           </spec>
         </specs>
       </testcase>
-      <testcase purpose="Check if getGamepads attribute of navigator exist and type of function" type="compliance" status="approved" component="WebAPI/System-level APIs/Gamepad" execution_type="auto" priority="P1" id="Navigator_getGamepads_basic">
+      <testcase component="W3C_HTML5 APIs/System Apps/Gamepad" execution_type="auto" id="Navigator_getGamepads_basic" priority="P1" purpose="Check if getGamepads attribute of navigator exist and type of function" status="approved" type="compliance">
         <description>
           <test_script_entry>/opt/webapi-gamepad-w3c-tests/gamepad/Navigator_getGamepads_basic.html?total_num=2&amp;amp;locator_key=id&amp;amp;value=1</test_script_entry>
         </description>
         <specs>
           <spec>
-            <spec_assertion element_type="attribute" element_name="getGamepads" interface="navigator" specification="Gamepad" section="Device APIs" category="W3C API Specifications"/>
+            <spec_assertion category="W3C API Specifications" element_name="getGamepads" element_type="attribute" interface="navigator" section="Device APIs" specification="Gamepad" />
             <spec_url>http://www.w3.org/TR/gamepad/</spec_url>
-            <spec_statement/>
+            <spec_statement />
           </spec>
         </specs>
       </testcase>
-      <testcase purpose="Check if the value of navigator.getGamepads() type of object " type="compliance" status="approved" component="WebAPI/System-level APIs/Gamepad" execution_type="auto" priority="P1" id="Navigator_getGamepads_value">
+      <testcase component="W3C_HTML5 APIs/System Apps/Gamepad" execution_type="auto" id="Navigator_getGamepads_value" priority="P1" purpose="Check if the value of navigator.getGamepads() type of object " status="approved" type="compliance">
         <description>
           <test_script_entry>/opt/webapi-gamepad-w3c-tests/gamepad/Navigator_getGamepads_basic.html?total_num=2&amp;amp;locator_key=id&amp;amp;value=2</test_script_entry>
         </description>
         <specs>
           <spec>
-            <spec_assertion element_type="attribute" element_name="getGamepads" interface="navigator" specification="Gamepad" section="Device APIs" category="W3C API Specifications"/>
+            <spec_assertion category="W3C API Specifications" element_name="getGamepads" element_type="attribute" interface="navigator" section="Device APIs" specification="Gamepad" />
             <spec_url>http://www.w3.org/TR/gamepad/</spec_url>
-            <spec_statement/>
+            <spec_statement />
           </spec>
         </specs>
       </testcase>

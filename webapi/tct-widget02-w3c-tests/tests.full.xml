@@ -1,23 +1,21 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<?xml-stylesheet type="text/xsl" href="./testcase.xsl"?>
 <test_definition>
-  <suite name="tct-widget02-w3c-tests" category="W3C/HTML5 APIs">
+  <suite category="W3C/HTML5 APIs" name="tct-widget02-w3c-tests">
     <set name="WidgetPackaging" type="script">
-      <testcase purpose="Test that the user agent skips a content element that points to a non-existing file and shouldn't read the following content element." type="compliance" status="approved" component="WebAPI/Widget/Widget Packaging and XML Configuration" execution_type="auto" priority="P3" id="WidgetPackaging_d9">
+      <testcase component="W3C_HTML5 APIs/Widget/Widget Packaging and XML Configuration" execution_type="auto" id="WidgetPackaging_d9" priority="P3" purpose="Test that the user agent skips a content element that points to a non-existing file and shouldn't read the following content element." status="approved" type="compliance">
         <description>
           <test_script_entry timeout="90">app_user@/home/app/content/tct/opt/tct-widget02-w3c-tests/scripts/w3c_widget_installfail.sh d9.wgt</test_script_entry>
         </description>
         <specs>
           <spec>
-            <spec_assertion usage="true" interface="Widget" specification="Widget Packaging and XML Configuration" section="Widget" category="Tizen W3C API Specifications"/>
+            <spec_assertion category="Tizen W3C API Specifications" interface="Widget" section="Widget" specification="Widget Packaging and XML Configuration" usage="true" />
             <spec_url>http://www.w3.org/TR/2011/REC-widgets-20110927/</spec_url>
-            <spec_statement/>
+            <spec_statement />
           </spec>
         </specs>
       </testcase>
-      <testcase purpose="Test the UA's support for explicitly setting the valid mime type of a file using the type attribute of the content element." type="compliance" status="approved" component="WebAPI/Widget/Widget Packaging and XML Configuration" execution_type="manual" priority="P3" id="WidgetPackaging_dc">
+      <testcase component="W3C_HTML5 APIs/Widget/Widget Packaging and XML Configuration" execution_type="manual" id="WidgetPackaging_dc" priority="P3" purpose="Test the UA's support for explicitly setting the valid mime type of a file using the type attribute of the content element." status="approved" type="compliance">
         <description>
-          <pre_condition></pre_condition>
+          <pre_condition />
           <post_condition>Get the $pkgid of dc.wgt with the command : pkgcmd -l, then uninstall the dc.wgt with the command : pkgcmd -u -t wgt -q -n $pkgid</post_condition>
           <steps>
             <step order="1">
@@ -29,103 +27,103 @@
               <expected>To pass, the widget can be started successfully and the screen shows "PASS" on green background.</expected>
             </step>
           </steps>
-          <test_script_entry timeout="90"></test_script_entry>
+          <test_script_entry timeout="90" />
         </description>
         <specs>
           <spec>
-            <spec_assertion usage="true" interface="Widget" specification="Widget Packaging and XML Configuration" section="Widget" category="Tizen W3C API Specifications"/>
+            <spec_assertion category="Tizen W3C API Specifications" interface="Widget" section="Widget" specification="Widget Packaging and XML Configuration" usage="true" />
             <spec_url>http://www.w3.org/TR/2011/REC-widgets-20110927/</spec_url>
-            <spec_statement/>
+            <spec_statement />
           </spec>
         </specs>
       </testcase>
-      <testcase purpose="Test if the UA can verify a cryptographic zip archive." type="compliance" status="approved" component="WebAPI/Widget/Widget Packaging and XML Configuration" execution_type="auto" priority="P3" id="WidgetPackaging_dl">
+      <testcase component="W3C_HTML5 APIs/Widget/Widget Packaging and XML Configuration" execution_type="auto" id="WidgetPackaging_dl" priority="P3" purpose="Test if the UA can verify a cryptographic zip archive." status="approved" type="compliance">
         <description>
           <test_script_entry timeout="90">app_user@/home/app/content/tct/opt/tct-widget02-w3c-tests/scripts/w3c_widget_installfail.sh dl.wgt</test_script_entry>
         </description>
         <specs>
           <spec>
-            <spec_assertion usage="true" interface="Widget" specification="Widget Packaging and XML Configuration" section="Widget" category="Tizen W3C API Specifications"/>
+            <spec_assertion category="Tizen W3C API Specifications" interface="Widget" section="Widget" specification="Widget Packaging and XML Configuration" usage="true" />
             <spec_url>http://www.w3.org/TR/2011/REC-widgets-20110927/</spec_url>
-            <spec_statement/>
+            <spec_statement />
           </spec>
         </specs>
       </testcase>
-      <testcase purpose="Test that an empty defaultlocale attribute is ignored (and does not cause the widget to be treated as an invalid one)." type="compliance" status="approved" component="WebAPI/Widget/Widget Packaging and XML Configuration" execution_type="auto" priority="P3" id="WidgetPackaging_dlocignore00">
+      <testcase component="W3C_HTML5 APIs/Widget/Widget Packaging and XML Configuration" execution_type="auto" id="WidgetPackaging_dlocignore00" priority="P3" purpose="Test that an empty defaultlocale attribute is ignored (and does not cause the widget to be treated as an invalid one)." status="approved" type="compliance">
         <description>
           <test_script_entry timeout="90">app_user@/home/app/content/tct/opt/tct-widget02-w3c-tests/scripts/w3c_widget_launch.sh dlocignore00.wgt</test_script_entry>
         </description>
         <specs>
           <spec>
-            <spec_assertion usage="true" interface="Widget" specification="Widget Packaging and XML Configuration" section="Widget" category="Tizen W3C API Specifications"/>
+            <spec_assertion category="Tizen W3C API Specifications" interface="Widget" section="Widget" specification="Widget Packaging and XML Configuration" usage="true" />
             <spec_url>http://www.w3.org/TR/2011/REC-widgets-20110927/</spec_url>
-            <spec_statement/>
+            <spec_statement />
           </spec>
         </specs>
       </testcase>
-      <testcase purpose="Test that the UA only checks the config files in the root of the widget package which are not in a locale folder." type="compliance" status="approved" component="WebAPI/Widget/Widget Packaging and XML Configuration" execution_type="auto" priority="P3" id="WidgetPackaging_bh">
+      <testcase component="W3C_HTML5 APIs/Widget/Widget Packaging and XML Configuration" execution_type="auto" id="WidgetPackaging_bh" priority="P3" purpose="Test that the UA only checks the config files in the root of the widget package which are not in a locale folder." status="approved" type="compliance">
         <description>
           <test_script_entry timeout="90">app_user@/home/app/content/tct/opt/tct-widget02-w3c-tests/scripts/w3c_widget_installfail.sh bh.wgt</test_script_entry>
         </description>
         <specs>
           <spec>
-            <spec_assertion usage="true" interface="Widget" specification="Widget Packaging and XML Configuration" section="Widget" category="Tizen W3C API Specifications"/>
+            <spec_assertion category="Tizen W3C API Specifications" interface="Widget" section="Widget" specification="Widget Packaging and XML Configuration" usage="true" />
             <spec_url>http://www.w3.org/TR/2011/REC-widgets-20110927/</spec_url>
-            <spec_statement/>
+            <spec_statement />
           </spec>
         </specs>
       </testcase>
-      <testcase purpose="Test that the user agent rejects malformed XML." type="compliance" status="approved" component="WebAPI/Widget/Widget Packaging and XML Configuration" execution_type="auto" priority="P3" id="WidgetPackaging_bu">
+      <testcase component="W3C_HTML5 APIs/Widget/Widget Packaging and XML Configuration" execution_type="auto" id="WidgetPackaging_bu" priority="P3" purpose="Test that the user agent rejects malformed XML." status="approved" type="compliance">
         <description>
           <test_script_entry timeout="90">app_user@/home/app/content/tct/opt/tct-widget02-w3c-tests/scripts/w3c_widget_installfail.sh bu.wgt</test_script_entry>
         </description>
         <specs>
           <spec>
-            <spec_assertion usage="true" interface="Widget" specification="Widget Packaging and XML Configuration" section="Widget" category="Tizen W3C API Specifications"/>
+            <spec_assertion category="Tizen W3C API Specifications" interface="Widget" section="Widget" specification="Widget Packaging and XML Configuration" usage="true" />
             <spec_url>http://www.w3.org/TR/2011/REC-widgets-20110927/</spec_url>
-            <spec_statement/>
+            <spec_statement />
           </spec>
         </specs>
       </testcase>
-      <testcase purpose="Test if the UA can treat file names in the default start files table case-sensitively (and the file is named 'INdeX.html' in a locale folder)." type="compliance" status="approved" component="WebAPI/Widget/Widget Packaging and XML Configuration" execution_type="auto" priority="P3" id="WidgetPackaging_c1">
+      <testcase component="W3C_HTML5 APIs/Widget/Widget Packaging and XML Configuration" execution_type="auto" id="WidgetPackaging_c1" priority="P3" purpose="Test if the UA can treat file names in the default start files table case-sensitively (and the file is named 'INdeX.html' in a locale folder)." status="approved" type="compliance">
         <description>
           <test_script_entry timeout="90">app_user@/home/app/content/tct/opt/tct-widget02-w3c-tests/scripts/w3c_widget_installfail.sh c1.wgt</test_script_entry>
         </description>
         <specs>
           <spec>
-            <spec_assertion usage="true" interface="Widget" specification="Widget Packaging and XML Configuration" section="Widget" category="Tizen W3C API Specifications"/>
+            <spec_assertion category="Tizen W3C API Specifications" interface="Widget" section="Widget" specification="Widget Packaging and XML Configuration" usage="true" />
             <spec_url>http://www.w3.org/TR/2011/REC-widgets-20110927/</spec_url>
-            <spec_statement/>
+            <spec_statement />
           </spec>
         </specs>
       </testcase>
-      <testcase purpose="Test if the UA can treat file names in the default start files table case-sensitively (and the file is named 'INdeX.HTM' in a locale folder)." type="compliance" status="approved" component="WebAPI/Widget/Widget Packaging and XML Configuration" execution_type="auto" priority="P3" id="WidgetPackaging_c2">
+      <testcase component="W3C_HTML5 APIs/Widget/Widget Packaging and XML Configuration" execution_type="auto" id="WidgetPackaging_c2" priority="P3" purpose="Test if the UA can treat file names in the default start files table case-sensitively (and the file is named 'INdeX.HTM' in a locale folder)." status="approved" type="compliance">
         <description>
           <test_script_entry timeout="90">app_user@/home/app/content/tct/opt/tct-widget02-w3c-tests/scripts/w3c_widget_installfail.sh c2.wgt</test_script_entry>
         </description>
         <specs>
           <spec>
-            <spec_assertion usage="true" interface="Widget" specification="Widget Packaging and XML Configuration" section="Widget" category="Tizen W3C API Specifications"/>
+            <spec_assertion category="Tizen W3C API Specifications" interface="Widget" section="Widget" specification="Widget Packaging and XML Configuration" usage="true" />
             <spec_url>http://www.w3.org/TR/2011/REC-widgets-20110927/</spec_url>
-            <spec_statement/>
+            <spec_statement />
           </spec>
         </specs>
       </testcase>
-      <testcase purpose="Test if the UA can treat file names in the default start files table case-sensitively (and the file is named 'INdeX.htm' in the root of the widget package)." type="compliance" status="approved" component="WebAPI/Widget/Widget Packaging and XML Configuration" execution_type="auto" priority="P3" id="WidgetPackaging_c3">
+      <testcase component="W3C_HTML5 APIs/Widget/Widget Packaging and XML Configuration" execution_type="auto" id="WidgetPackaging_c3" priority="P3" purpose="Test if the UA can treat file names in the default start files table case-sensitively (and the file is named 'INdeX.htm' in the root of the widget package)." status="approved" type="compliance">
         <description>
           <test_script_entry timeout="90">app_user@/home/app/content/tct/opt/tct-widget02-w3c-tests/scripts/w3c_widget_installfail.sh c3.wgt</test_script_entry>
         </description>
         <specs>
           <spec>
-            <spec_assertion usage="true" interface="Widget" specification="Widget Packaging and XML Configuration" section="Widget" category="Tizen W3C API Specifications"/>
+            <spec_assertion category="Tizen W3C API Specifications" interface="Widget" section="Widget" specification="Widget Packaging and XML Configuration" usage="true" />
             <spec_url>http://www.w3.org/TR/2011/REC-widgets-20110927/</spec_url>
-            <spec_statement/>
+            <spec_statement />
           </spec>
         </specs>
       </testcase>
-      <testcase purpose="Test if the UA can locate the icon at the root of the widget package." type="compliance" status="approved" component="WebAPI/Widget/Widget Packaging and XML Configuration" execution_type="manual" priority="P3" id="WidgetPackaging_bj">
+      <testcase component="W3C_HTML5 APIs/Widget/Widget Packaging and XML Configuration" execution_type="manual" id="WidgetPackaging_bj" priority="P3" purpose="Test if the UA can locate the icon at the root of the widget package." status="approved" type="compliance">
         <description>
-          <pre_condition></pre_condition>
+          <pre_condition />
           <post_condition>Get the $pkgid of bj.wgt with the command : pkgcmd -l, then uninstall the bj.wgt with the command : pkgcmd -u -t wgt -q -n $pkgid</post_condition>
           <steps>
             <step order="1">
@@ -137,19 +135,19 @@
               <expected>To pass, the user agent must select black "PASS" on the round green background as the widget logo.</expected>
             </step>
           </steps>
-          <test_script_entry timeout="90"></test_script_entry>
+          <test_script_entry timeout="90" />
         </description>
         <specs>
           <spec>
-            <spec_assertion usage="true" interface="Widget" specification="Widget Packaging and XML Configuration" section="Widget" category="Tizen W3C API Specifications"/>
+            <spec_assertion category="Tizen W3C API Specifications" interface="Widget" section="Widget" specification="Widget Packaging and XML Configuration" usage="true" />
             <spec_url>http://www.w3.org/TR/2011/REC-widgets-20110927/</spec_url>
-            <spec_statement/>
+            <spec_statement />
           </spec>
         </specs>
       </testcase>
-      <testcase purpose="Test if the UA can locate the icon in a locale folder and at the root of the widget package." type="compliance" status="approved" component="WebAPI/Widget/Widget Packaging and XML Configuration" execution_type="manual" priority="P3" id="WidgetPackaging_bl">
+      <testcase component="W3C_HTML5 APIs/Widget/Widget Packaging and XML Configuration" execution_type="manual" id="WidgetPackaging_bl" priority="P3" purpose="Test if the UA can locate the icon in a locale folder and at the root of the widget package." status="approved" type="compliance">
         <description>
-          <pre_condition></pre_condition>
+          <pre_condition />
           <post_condition>Get the $pkgid of bl.wgt with the command : pkgcmd -l, then uninstall the bl.wgt with the command : pkgcmd -u -t wgt -q -n $pkgid</post_condition>
           <steps>
             <step order="1">
@@ -161,19 +159,19 @@
               <expected>To pass, the user agent must select black "PASS" on the round green background as the widget logo.</expected>
             </step>
           </steps>
-          <test_script_entry timeout="90"></test_script_entry>
+          <test_script_entry timeout="90" />
         </description>
         <specs>
           <spec>
-            <spec_assertion usage="true" interface="Widget" specification="Widget Packaging and XML Configuration" section="Widget" category="Tizen W3C API Specifications"/>
+            <spec_assertion category="Tizen W3C API Specifications" interface="Widget" section="Widget" specification="Widget Packaging and XML Configuration" usage="true" />
             <spec_url>http://www.w3.org/TR/2011/REC-widgets-20110927/</spec_url>
-            <spec_statement/>
+            <spec_statement />
           </spec>
         </specs>
       </testcase>
-      <testcase purpose="Test if the UA can load default icons in the correct order." type="compliance" status="approved" component="WebAPI/Widget/Widget Packaging and XML Configuration" execution_type="manual" priority="P3" id="WidgetPackaging_bo">
+      <testcase component="W3C_HTML5 APIs/Widget/Widget Packaging and XML Configuration" execution_type="manual" id="WidgetPackaging_bo" priority="P3" purpose="Test if the UA can load default icons in the correct order." status="approved" type="compliance">
         <description>
-          <pre_condition></pre_condition>
+          <pre_condition />
           <post_condition>Get the $pkgid of bo.wgt with the command : pkgcmd -l, then uninstall the bo.wgt with the command : pkgcmd -u -t wgt -q -n $pkgid</post_condition>
           <steps>
             <step order="1">
@@ -185,19 +183,19 @@
               <expected>To pass, the user agent must select black "PASS" and "png" on the round green background as the widget logo.</expected>
             </step>
           </steps>
-          <test_script_entry timeout="90"></test_script_entry>
+          <test_script_entry timeout="90" />
         </description>
         <specs>
           <spec>
-            <spec_assertion usage="true" interface="Widget" specification="Widget Packaging and XML Configuration" section="Widget" category="Tizen W3C API Specifications"/>
+            <spec_assertion category="Tizen W3C API Specifications" interface="Widget" section="Widget" specification="Widget Packaging and XML Configuration" usage="true" />
             <spec_url>http://www.w3.org/TR/2011/REC-widgets-20110927/</spec_url>
-            <spec_statement/>
+            <spec_statement />
           </spec>
         </specs>
       </testcase>
-      <testcase purpose="Test if the UA can process icon elements without a src attribute correctly." type="compliance" status="approved" component="WebAPI/Widget/Widget Packaging and XML Configuration" execution_type="manual" priority="P3" id="WidgetPackaging_d1">
+      <testcase component="W3C_HTML5 APIs/Widget/Widget Packaging and XML Configuration" execution_type="manual" id="WidgetPackaging_d1" priority="P3" purpose="Test if the UA can process icon elements without a src attribute correctly." status="approved" type="compliance">
         <description>
-          <pre_condition></pre_condition>
+          <pre_condition />
           <post_condition>Get the $pkgid of d1.wgt with the command : pkgcmd -l, then uninstall the d1.wgt with the command : pkgcmd -u -t wgt -q -n $pkgid</post_condition>
           <steps>
             <step order="1">
@@ -209,19 +207,19 @@
               <expected>To pass, the user agent must select black "PASS" on the round green background as the widget logo.</expected>
             </step>
           </steps>
-          <test_script_entry timeout="90"></test_script_entry>
+          <test_script_entry timeout="90" />
         </description>
         <specs>
           <spec>
-            <spec_assertion usage="true" interface="Widget" specification="Widget Packaging and XML Configuration" section="Widget" category="Tizen W3C API Specifications"/>
+            <spec_assertion category="Tizen W3C API Specifications" interface="Widget" section="Widget" specification="Widget Packaging and XML Configuration" usage="true" />
             <spec_url>http://www.w3.org/TR/2011/REC-widgets-20110927/</spec_url>
-            <spec_statement/>
+            <spec_statement />
           </spec>
         </specs>
       </testcase>
-      <testcase purpose="Test if the UA can handle the situation where a path points to an icon which does not exist." type="compliance" status="approved" component="WebAPI/Widget/Widget Packaging and XML Configuration" execution_type="manual" priority="P3" id="WidgetPackaging_d2">
+      <testcase component="W3C_HTML5 APIs/Widget/Widget Packaging and XML Configuration" execution_type="manual" id="WidgetPackaging_d2" priority="P3" purpose="Test if the UA can handle the situation where a path points to an icon which does not exist." status="approved" type="compliance">
         <description>
-          <pre_condition></pre_condition>
+          <pre_condition />
           <post_condition>Get the $pkgid of d2.wgt with the command : pkgcmd -l, then uninstall the d2.wgt with the command : pkgcmd -u -t wgt -q -n $pkgid</post_condition>
           <steps>
             <step order="1">
@@ -233,19 +231,19 @@
               <expected>To pass, the user agent must select black "PASS" on the round green background as the widget logo.</expected>
             </step>
           </steps>
-          <test_script_entry timeout="90"></test_script_entry>
+          <test_script_entry timeout="90" />
         </description>
         <specs>
           <spec>
-            <spec_assertion usage="true" interface="Widget" specification="Widget Packaging and XML Configuration" section="Widget" category="Tizen W3C API Specifications"/>
+            <spec_assertion category="Tizen W3C API Specifications" interface="Widget" section="Widget" specification="Widget Packaging and XML Configuration" usage="true" />
             <spec_url>http://www.w3.org/TR/2011/REC-widgets-20110927/</spec_url>
-            <spec_statement/>
+            <spec_statement />
           </spec>
         </specs>
       </testcase>
-      <testcase purpose="Test if the UA can select start files in the appropriate order." type="compliance" status="approved" component="WebAPI/Widget/Widget Packaging and XML Configuration" execution_type="manual" priority="P3" id="WidgetPackaging_cc">
+      <testcase component="W3C_HTML5 APIs/Widget/Widget Packaging and XML Configuration" execution_type="manual" id="WidgetPackaging_cc" priority="P3" purpose="Test if the UA can select start files in the appropriate order." status="approved" type="compliance">
         <description>
-          <pre_condition></pre_condition>
+          <pre_condition />
           <post_condition>Get the $pkgid of cc.wgt with the command : pkgcmd -l, then uninstall the cc.wgt with the command : pkgcmd -u -t wgt -q -n $pkgid</post_condition>
           <steps>
             <step order="1">
@@ -257,19 +255,19 @@
               <expected>To pass, the widget can be started successfully and the screen shows "PASS" on green background.</expected>
             </step>
           </steps>
-          <test_script_entry test_script_expected_result="0"></test_script_entry>
+          <test_script_entry test_script_expected_result="0" />
         </description>
         <specs>
           <spec>
-            <spec_assertion usage="true" interface="Widget" specification="Widget Packaging and XML Configuration" section="Widget" category="Tizen W3C API Specifications"/>
+            <spec_assertion category="Tizen W3C API Specifications" interface="Widget" section="Widget" specification="Widget Packaging and XML Configuration" usage="true" />
             <spec_url>http://www.w3.org/TR/2011/REC-widgets-20110927/</spec_url>
-            <spec_statement/>
+            <spec_statement />
           </spec>
         </specs>
       </testcase>
-      <testcase purpose="Test if the UA can ignore subsequent repetitions of the content element." type="compliance" status="approved" component="WebAPI/Widget/Widget Packaging and XML Configuration" execution_type="manual" priority="P3" id="WidgetPackaging_bq">
+      <testcase component="W3C_HTML5 APIs/Widget/Widget Packaging and XML Configuration" execution_type="manual" id="WidgetPackaging_bq" priority="P3" purpose="Test if the UA can ignore subsequent repetitions of the content element." status="approved" type="compliance">
         <description>
-          <pre_condition></pre_condition>
+          <pre_condition />
           <post_condition>Get the $pkgid of bq.wgt with the command : pkgcmd -l, then uninstall the bq.wgt with the command : pkgcmd -u -t wgt -q -n $pkgid</post_condition>
           <steps>
             <step order="1">
@@ -281,55 +279,55 @@
               <expected>To pass, the widget can be started successfully and the screen shows "PASS" on green background.</expected>
             </step>
           </steps>
-          <test_script_entry timeout="90"></test_script_entry>
+          <test_script_entry timeout="90" />
         </description>
         <specs>
           <spec>
-            <spec_assertion usage="true" interface="Widget" specification="Widget Packaging and XML Configuration" section="Widget" category="Tizen W3C API Specifications"/>
+            <spec_assertion category="Tizen W3C API Specifications" interface="Widget" section="Widget" specification="Widget Packaging and XML Configuration" usage="true" />
             <spec_url>http://www.w3.org/TR/2011/REC-widgets-20110927/</spec_url>
-            <spec_statement/>
+            <spec_statement />
           </spec>
         </specs>
       </testcase>
-      <testcase purpose="Test that the UA rejects configuration documents that don't have correct widget element." type="compliance" status="approved" component="WebAPI/Widget/Widget Packaging and XML Configuration" execution_type="auto" priority="P3" id="WidgetPackaging_aa">
+      <testcase component="W3C_HTML5 APIs/Widget/Widget Packaging and XML Configuration" execution_type="auto" id="WidgetPackaging_aa" priority="P3" purpose="Test that the UA rejects configuration documents that don't have correct widget element." status="approved" type="compliance">
         <description>
           <test_script_entry timeout="90">app_user@/home/app/content/tct/opt/tct-widget02-w3c-tests/scripts/w3c_widget_installfail.sh aa.wgt</test_script_entry>
         </description>
         <specs>
           <spec>
-            <spec_assertion usage="true" interface="Widget" specification="Widget Packaging and XML Configuration" section="Widget" category="Tizen W3C API Specifications"/>
+            <spec_assertion category="Tizen W3C API Specifications" interface="Widget" section="Widget" specification="Widget Packaging and XML Configuration" usage="true" />
             <spec_url>http://www.w3.org/TR/2011/REC-widgets-20110927/</spec_url>
-            <spec_statement/>
+            <spec_statement />
           </spec>
         </specs>
       </testcase>
-      <testcase purpose="Test that the UA rejects configuration documents that in an invalid widget." type="compliance" status="approved" component="WebAPI/Widget/Widget Packaging and XML Configuration" execution_type="auto" priority="P3" id="WidgetPackaging_ab">
+      <testcase component="W3C_HTML5 APIs/Widget/Widget Packaging and XML Configuration" execution_type="auto" id="WidgetPackaging_ab" priority="P3" purpose="Test that the UA rejects configuration documents that in an invalid widget." status="approved" type="compliance">
         <description>
           <test_script_entry timeout="90">app_user@/home/app/content/tct/opt/tct-widget02-w3c-tests/scripts/w3c_widget_installfail.sh ab.wgt</test_script_entry>
         </description>
         <specs>
           <spec>
-            <spec_assertion usage="true" interface="Widget" specification="Widget Packaging and XML Configuration" section="Widget" category="Tizen W3C API Specifications"/>
+            <spec_assertion category="Tizen W3C API Specifications" interface="Widget" section="Widget" specification="Widget Packaging and XML Configuration" usage="true" />
             <spec_url>http://www.w3.org/TR/2011/REC-widgets-20110927/</spec_url>
-            <spec_statement/>
+            <spec_statement />
           </spec>
         </specs>
       </testcase>
-      <testcase purpose="Test that the UA rejects configuration documents that don't have correct widget element at the root." type="compliance" status="approved" component="WebAPI/Widget/Widget Packaging and XML Configuration" execution_type="auto" priority="P3" id="WidgetPackaging_ac">
+      <testcase component="W3C_HTML5 APIs/Widget/Widget Packaging and XML Configuration" execution_type="auto" id="WidgetPackaging_ac" priority="P3" purpose="Test that the UA rejects configuration documents that don't have correct widget element at the root." status="approved" type="compliance">
         <description>
           <test_script_entry timeout="90">app_user@/home/app/content/tct/opt/tct-widget02-w3c-tests/scripts/w3c_widget_installfail.sh ac.wgt</test_script_entry>
         </description>
         <specs>
           <spec>
-            <spec_assertion usage="true" interface="Widget" specification="Widget Packaging and XML Configuration" section="Widget" category="Tizen W3C API Specifications"/>
+            <spec_assertion category="Tizen W3C API Specifications" interface="Widget" section="Widget" specification="Widget Packaging and XML Configuration" usage="true" />
             <spec_url>http://www.w3.org/TR/2011/REC-widgets-20110927/</spec_url>
-            <spec_statement/>
+            <spec_statement />
           </spec>
         </specs>
       </testcase>
-      <testcase purpose="Test if the UA can treat default icon at the root of the widget package name case-sensitively." type="compliance" status="approved" component="WebAPI/Widget/Widget Packaging and XML Configuration" execution_type="manual" priority="P3" id="WidgetPackaging_ad">
+      <testcase component="W3C_HTML5 APIs/Widget/Widget Packaging and XML Configuration" execution_type="manual" id="WidgetPackaging_ad" priority="P3" purpose="Test if the UA can treat default icon at the root of the widget package name case-sensitively." status="approved" type="compliance">
         <description>
-          <pre_condition></pre_condition>
+          <pre_condition />
           <post_condition>Get the $pkgid of ad.wgt with the command : pkgcmd -l, then uninstall the ad.wgt with the command : pkgcmd -u -t wgt -q -n $pkgid</post_condition>
           <steps>
             <step order="1">
@@ -341,43 +339,43 @@
               <expected>To pass, the user agent must select black "PASS" on the round green background as the widget logo.</expected>
             </step>
           </steps>
-          <test_script_entry timeout="90"></test_script_entry>
+          <test_script_entry timeout="90" />
         </description>
         <specs>
           <spec>
-            <spec_assertion usage="true" interface="Widget" specification="Widget Packaging and XML Configuration" section="Widget" category="Tizen W3C API Specifications"/>
+            <spec_assertion category="Tizen W3C API Specifications" interface="Widget" section="Widget" specification="Widget Packaging and XML Configuration" usage="true" />
             <spec_url>http://www.w3.org/TR/2011/REC-widgets-20110927/</spec_url>
-            <spec_statement/>
+            <spec_statement />
           </spec>
         </specs>
       </testcase>
-      <testcase purpose="Test if the UA can treat file names in the default start files table case-sensitively." type="compliance" status="approved" component="WebAPI/Widget/Widget Packaging and XML Configuration" execution_type="auto" priority="P3" id="WidgetPackaging_b0">
+      <testcase component="W3C_HTML5 APIs/Widget/Widget Packaging and XML Configuration" execution_type="auto" id="WidgetPackaging_b0" priority="P3" purpose="Test if the UA can treat file names in the default start files table case-sensitively." status="approved" type="compliance">
         <description>
           <test_script_entry timeout="90">app_user@/home/app/content/tct/opt/tct-widget02-w3c-tests/scripts/w3c_widget_installfail.sh b0.wgt</test_script_entry>
         </description>
         <specs>
           <spec>
-            <spec_assertion usage="true" interface="Widget" specification="Widget Packaging and XML Configuration" section="Widget" category="Tizen W3C API Specifications"/>
+            <spec_assertion category="Tizen W3C API Specifications" interface="Widget" section="Widget" specification="Widget Packaging and XML Configuration" usage="true" />
             <spec_url>http://www.w3.org/TR/2011/REC-widgets-20110927/</spec_url>
-            <spec_statement/>
+            <spec_statement />
           </spec>
         </specs>
       </testcase>
-      <testcase purpose="Test that the UA only checks config files in the root of the widget package which are not in an arbitrary folder." type="compliance" status="approved" component="WebAPI/Widget/Widget Packaging and XML Configuration" execution_type="auto" priority="P3" id="WidgetPackaging_bg">
+      <testcase component="W3C_HTML5 APIs/Widget/Widget Packaging and XML Configuration" execution_type="auto" id="WidgetPackaging_bg" priority="P3" purpose="Test that the UA only checks config files in the root of the widget package which are not in an arbitrary folder." status="approved" type="compliance">
         <description>
           <test_script_entry timeout="90">app_user@/home/app/content/tct/opt/tct-widget02-w3c-tests/scripts/w3c_widget_installfail.sh bg.wgt</test_script_entry>
         </description>
         <specs>
           <spec>
-            <spec_assertion usage="true" interface="Widget" specification="Widget Packaging and XML Configuration" section="Widget" category="Tizen W3C API Specifications"/>
+            <spec_assertion category="Tizen W3C API Specifications" interface="Widget" section="Widget" specification="Widget Packaging and XML Configuration" usage="true" />
             <spec_url>http://www.w3.org/TR/2011/REC-widgets-20110927/</spec_url>
-            <spec_statement/>
+            <spec_statement />
           </spec>
         </specs>
       </testcase>
-      <testcase purpose="Test if the UA can process the author href attribute correctly." type="compliance" status="approved" component="WebAPI/Widget/Widget Packaging and XML Configuration" execution_type="manual" priority="P3" id="WidgetPackaging_am">
+      <testcase component="W3C_HTML5 APIs/Widget/Widget Packaging and XML Configuration" execution_type="manual" id="WidgetPackaging_am" priority="P3" purpose="Test if the UA can process the author href attribute correctly." status="approved" type="compliance">
         <description>
-          <pre_condition></pre_condition>
+          <pre_condition />
           <post_condition>Get the $pkgid of am.wgt with the command : pkgcmd -l, then uninstall the am.wgt with the command : pkgcmd -u -t wgt -q -n $pkgid</post_condition>
           <steps>
             <step order="1">
@@ -389,19 +387,19 @@
               <expected>To pass, the widget can be started successfully and the screen shows "PASS" on green background.</expected>
             </step>
           </steps>
-          <test_script_entry timeout="90"></test_script_entry>
+          <test_script_entry timeout="90" />
         </description>
         <specs>
           <spec>
-            <spec_assertion usage="true" interface="Widget" specification="Widget Packaging and XML Configuration" section="Widget" category="Tizen W3C API Specifications"/>
+            <spec_assertion category="Tizen W3C API Specifications" interface="Widget" section="Widget" specification="Widget Packaging and XML Configuration" usage="true" />
             <spec_url>http://www.w3.org/TR/2011/REC-widgets-20110927/</spec_url>
-            <spec_statement/>
+            <spec_statement />
           </spec>
         </specs>
       </testcase>
-      <testcase purpose="Test that the user agent does not attempt to load a default start file when a custom start file has been declared." type="compliance" status="approved" component="WebAPI/Widget/Widget Packaging and XML Configuration" execution_type="manual" priority="P3" id="WidgetPackaging_aw">
+      <testcase component="W3C_HTML5 APIs/Widget/Widget Packaging and XML Configuration" execution_type="manual" id="WidgetPackaging_aw" priority="P3" purpose="Test that the user agent does not attempt to load a default start file when a custom start file has been declared." status="approved" type="compliance">
         <description>
-          <pre_condition></pre_condition>
+          <pre_condition />
           <post_condition>Get the $pkgid of aw.wgt with the command : pkgcmd -l, then uninstall the aw.wgt with the command : pkgcmd -u -t wgt -q -n $pkgid</post_condition>
           <steps>
             <step order="1">
@@ -413,19 +411,19 @@
               <expected>To pass, the widget can be started successfully and the screen shows "PASS" on green background.</expected>
             </step>
           </steps>
-          <test_script_entry timeout="90"></test_script_entry>
+          <test_script_entry timeout="90" />
         </description>
         <specs>
           <spec>
-            <spec_assertion usage="true" interface="Widget" specification="Widget Packaging and XML Configuration" section="Widget" category="Tizen W3C API Specifications"/>
+            <spec_assertion category="Tizen W3C API Specifications" interface="Widget" section="Widget" specification="Widget Packaging and XML Configuration" usage="true" />
             <spec_url>http://www.w3.org/TR/2011/REC-widgets-20110927/</spec_url>
-            <spec_statement/>
+            <spec_statement />
           </spec>
         </specs>
       </testcase>
-      <testcase purpose="Test that the value of defaultlocale is also used in folder-based localization." type="compliance" status="approved" component="WebAPI/Widget/Widget Packaging and XML Configuration" execution_type="manual" priority="P3" id="WidgetPackaging_dlocuse00">
+      <testcase component="W3C_HTML5 APIs/Widget/Widget Packaging and XML Configuration" execution_type="manual" id="WidgetPackaging_dlocuse00" priority="P3" purpose="Test that the value of defaultlocale is also used in folder-based localization." status="approved" type="compliance">
         <description>
-          <pre_condition></pre_condition>
+          <pre_condition />
           <post_condition>Get the $pkgid of ta-de-000.wgt with the command : pkgcmd -l, then uninstall the ta-de-000.wgt with the command : pkgcmd -u -t wgt -q -n $pkgid</post_condition>
           <steps>
             <step order="1">
@@ -437,79 +435,79 @@
               <expected>To pass, the widget can be started successfully and the screen shows "PASS" on green background.</expected>
             </step>
           </steps>
-          <test_script_entry timeout="90"></test_script_entry>
+          <test_script_entry timeout="90" />
         </description>
         <specs>
           <spec>
-            <spec_assertion usage="true" interface="Widget" specification="Widget Packaging and XML Configuration" section="Widget" category="Tizen W3C API Specifications"/>
+            <spec_assertion category="Tizen W3C API Specifications" interface="Widget" section="Widget" specification="Widget Packaging and XML Configuration" usage="true" />
             <spec_url>http://www.w3.org/TR/2011/REC-widgets-20110927/</spec_url>
-            <spec_statement/>
+            <spec_statement />
           </spec>
         </specs>
       </testcase>
-      <testcase purpose="Test if the UA can verify a zip archive." type="compliance" status="approved" component="WebAPI/Widget/Widget Packaging and XML Configuration" execution_type="auto" priority="P3" id="WidgetPackaging_do">
+      <testcase component="W3C_HTML5 APIs/Widget/Widget Packaging and XML Configuration" execution_type="auto" id="WidgetPackaging_do" priority="P3" purpose="Test if the UA can verify a zip archive." status="approved" type="compliance">
         <description>
           <test_script_entry timeout="90">app_user@/home/app/content/tct/opt/tct-widget02-w3c-tests/scripts/w3c_widget_installfail.sh split.wgt.001</test_script_entry>
         </description>
         <specs>
           <spec>
-            <spec_assertion usage="true" interface="Widget" specification="Widget Packaging and XML Configuration" section="Widget" category="Tizen W3C API Specifications"/>
+            <spec_assertion category="Tizen W3C API Specifications" interface="Widget" section="Widget" specification="Widget Packaging and XML Configuration" usage="true" />
             <spec_url>http://www.w3.org/TR/2011/REC-widgets-20110927/</spec_url>
-            <spec_statement/>
+            <spec_statement />
           </spec>
         </specs>
       </testcase>
-      <testcase purpose="Test if the UA can verify an invalid zip archive." type="compliance" status="approved" component="WebAPI/Widget/Widget Packaging and XML Configuration" execution_type="auto" priority="P3" id="WidgetPackaging_dp">
+      <testcase component="W3C_HTML5 APIs/Widget/Widget Packaging and XML Configuration" execution_type="auto" id="WidgetPackaging_dp" priority="P3" purpose="Test if the UA can verify an invalid zip archive." status="approved" type="compliance">
         <description>
           <test_script_entry timeout="90">app_user@/home/app/content/tct/opt/tct-widget02-w3c-tests/scripts/w3c_widget_installfail.sh dp.wgt</test_script_entry>
         </description>
         <specs>
           <spec>
-            <spec_assertion usage="true" interface="Widget" specification="Widget Packaging and XML Configuration" section="Widget" category="Tizen W3C API Specifications"/>
+            <spec_assertion category="Tizen W3C API Specifications" interface="Widget" section="Widget" specification="Widget Packaging and XML Configuration" usage="true" />
             <spec_url>http://www.w3.org/TR/2011/REC-widgets-20110927/</spec_url>
-            <spec_statement/>
+            <spec_statement />
           </spec>
         </specs>
       </testcase>
-      <testcase purpose="Test if the UA can verify config.exe document correctly." type="compliance" status="approved" component="WebAPI/Widget/Widget Packaging and XML Configuration" execution_type="auto" priority="P3" id="WidgetPackaging_dq">
+      <testcase component="W3C_HTML5 APIs/Widget/Widget Packaging and XML Configuration" execution_type="auto" id="WidgetPackaging_dq" priority="P3" purpose="Test if the UA can verify config.exe document correctly." status="approved" type="compliance">
         <description>
           <test_script_entry timeout="90">app_user@/home/app/content/tct/opt/tct-widget02-w3c-tests/scripts/w3c_widget_installfail.sh dq.wgt</test_script_entry>
         </description>
         <specs>
           <spec>
-            <spec_assertion usage="true" interface="Widget" specification="Widget Packaging and XML Configuration" section="Widget" category="Tizen W3C API Specifications"/>
+            <spec_assertion category="Tizen W3C API Specifications" interface="Widget" section="Widget" specification="Widget Packaging and XML Configuration" usage="true" />
             <spec_url>http://www.w3.org/TR/2011/REC-widgets-20110927/</spec_url>
-            <spec_statement/>
+            <spec_statement />
           </spec>
         </specs>
       </testcase>
-      <testcase purpose="Test the UA's support for explicitly setting the invalid mime type of a file using the type attribute of the content element." type="compliance" status="approved" component="WebAPI/Widget/Widget Packaging and XML Configuration" execution_type="auto" priority="P3" id="WidgetPackaging_dv">
+      <testcase component="W3C_HTML5 APIs/Widget/Widget Packaging and XML Configuration" execution_type="auto" id="WidgetPackaging_dv" priority="P3" purpose="Test the UA's support for explicitly setting the invalid mime type of a file using the type attribute of the content element." status="approved" type="compliance">
         <description>
           <test_script_entry timeout="90">app_user@/home/app/content/tct/opt/tct-widget02-w3c-tests/scripts/w3c_widget_installfail.sh dv.wgt</test_script_entry>
         </description>
         <specs>
           <spec>
-            <spec_assertion usage="true" interface="Widget" specification="Widget Packaging and XML Configuration" section="Widget" category="Tizen W3C API Specifications"/>
+            <spec_assertion category="Tizen W3C API Specifications" interface="Widget" section="Widget" specification="Widget Packaging and XML Configuration" usage="true" />
             <spec_url>http://www.w3.org/TR/2011/REC-widgets-20110927/</spec_url>
-            <spec_statement/>
+            <spec_statement />
           </spec>
         </specs>
       </testcase>
-      <testcase purpose="Test if the UA can verify CoNfIG.xml document correctly." type="compliance" status="approved" component="WebAPI/Widget/Widget Packaging and XML Configuration" execution_type="auto" priority="P3" id="WidgetPackaging_dw">
+      <testcase component="W3C_HTML5 APIs/Widget/Widget Packaging and XML Configuration" execution_type="auto" id="WidgetPackaging_dw" priority="P3" purpose="Test if the UA can verify CoNfIG.xml document correctly." status="approved" type="compliance">
         <description>
           <test_script_entry timeout="90">app_user@/home/app/content/tct/opt/tct-widget02-w3c-tests/scripts/w3c_widget_installfail.sh dw.wgt</test_script_entry>
         </description>
         <specs>
           <spec>
-            <spec_assertion usage="true" interface="Widget" specification="Widget Packaging and XML Configuration" section="Widget" category="Tizen W3C API Specifications"/>
+            <spec_assertion category="Tizen W3C API Specifications" interface="Widget" section="Widget" specification="Widget Packaging and XML Configuration" usage="true" />
             <spec_url>http://www.w3.org/TR/2011/REC-widgets-20110927/</spec_url>
-            <spec_statement/>
+            <spec_statement />
           </spec>
         </specs>
       </testcase>
-      <testcase purpose="Test if the UA can process icon elements with an empty src attribute correctly." type="compliance" status="approved" component="WebAPI/Widget/Widget Packaging and XML Configuration" execution_type="manual" priority="P3" id="WidgetPackaging_ga">
+      <testcase component="W3C_HTML5 APIs/Widget/Widget Packaging and XML Configuration" execution_type="manual" id="WidgetPackaging_ga" priority="P3" purpose="Test if the UA can process icon elements with an empty src attribute correctly." status="approved" type="compliance">
         <description>
-          <pre_condition></pre_condition>
+          <pre_condition />
           <post_condition>Get the $pkgid of ga.wgt with the command : pkgcmd -l, then uninstall the ga.wgt with the command : pkgcmd -u -t wgt -q -n $pkgid</post_condition>
           <steps>
             <step order="1">
@@ -521,19 +519,19 @@
               <expected>To pass, the user agent must select black "PASS" on the round green background as the widget logo.</expected>
             </step>
           </steps>
-          <test_script_entry timeout="90"></test_script_entry>
+          <test_script_entry timeout="90" />
         </description>
         <specs>
           <spec>
-            <spec_assertion usage="true" interface="Widget" specification="Widget Packaging and XML Configuration" section="Widget" category="Tizen W3C API Specifications"/>
+            <spec_assertion category="Tizen W3C API Specifications" interface="Widget" section="Widget" specification="Widget Packaging and XML Configuration" usage="true" />
             <spec_url>http://www.w3.org/TR/2011/REC-widgets-20110927/</spec_url>
-            <spec_statement/>
+            <spec_statement />
           </spec>
         </specs>
       </testcase>
-      <testcase purpose="Test if the UA can handle a content element with an empty src attribute correctly." type="compliance" status="approved" component="WebAPI/Widget/Widget Packaging and XML Configuration" execution_type="manual" priority="P3" id="WidgetPackaging_gb">
+      <testcase component="W3C_HTML5 APIs/Widget/Widget Packaging and XML Configuration" execution_type="manual" id="WidgetPackaging_gb" priority="P3" purpose="Test if the UA can handle a content element with an empty src attribute correctly." status="approved" type="compliance">
         <description>
-          <pre_condition></pre_condition>
+          <pre_condition />
           <post_condition>Get the $pkgid of gb.wgt with the command : pkgcmd -l, then uninstall the gb.wgt with the command : pkgcmd -u -t wgt -q -n $pkgid</post_condition>
           <steps>
             <step order="1">
@@ -545,19 +543,19 @@
               <expected>To pass, the widget can be started successfully and the screen shows "PASS" on green background.</expected>
             </step>
           </steps>
-          <test_script_entry timeout="90"></test_script_entry>
+          <test_script_entry timeout="90" />
         </description>
         <specs>
           <spec>
-            <spec_assertion usage="true" interface="Widget" specification="Widget Packaging and XML Configuration" section="Widget" category="Tizen W3C API Specifications"/>
+            <spec_assertion category="Tizen W3C API Specifications" interface="Widget" section="Widget" specification="Widget Packaging and XML Configuration" usage="true" />
             <spec_url>http://www.w3.org/TR/2011/REC-widgets-20110927/</spec_url>
-            <spec_statement/>
+            <spec_statement />
           </spec>
         </specs>
       </testcase>
-      <testcase purpose="Test if the UA can process the height attribute of an icon." type="compliance" status="approved" component="WebAPI/Widget/Widget Packaging and XML Configuration" execution_type="manual" priority="P3" id="WidgetPackaging_i1">
+      <testcase component="W3C_HTML5 APIs/Widget/Widget Packaging and XML Configuration" execution_type="manual" id="WidgetPackaging_i1" priority="P3" purpose="Test if the UA can process the height attribute of an icon." status="approved" type="compliance">
         <description>
-          <pre_condition></pre_condition>
+          <pre_condition />
           <post_condition>Get the $pkgid of i1.wgt with the command : pkgcmd -l, then uninstall the i1.wgt with the command : pkgcmd -u -t wgt -q -n $pkgid</post_condition>
           <steps>
             <step order="1">
@@ -569,19 +567,19 @@
               <expected>To pass, the user agent must select black "PASS" on the round green background as the widget logo.</expected>
             </step>
           </steps>
-          <test_script_entry timeout="90"></test_script_entry>
+          <test_script_entry timeout="90" />
         </description>
         <specs>
           <spec>
-            <spec_assertion usage="true" interface="Widget" specification="Widget Packaging and XML Configuration" section="Widget" category="Tizen W3C API Specifications"/>
+            <spec_assertion category="Tizen W3C API Specifications" interface="Widget" section="Widget" specification="Widget Packaging and XML Configuration" usage="true" />
             <spec_url>http://www.w3.org/TR/2011/REC-widgets-20110927/</spec_url>
-            <spec_statement/>
+            <spec_statement />
           </spec>
         </specs>
       </testcase>
-      <testcase purpose="Test that LRO direction does not apply to the src attribute of the icon element." type="compliance" status="approved" component="WebAPI/Widget/Widget Packaging and XML Configuration" execution_type="manual" priority="P3" id="WidgetPackaging_i18nlro23">
+      <testcase component="W3C_HTML5 APIs/Widget/Widget Packaging and XML Configuration" execution_type="manual" id="WidgetPackaging_i18nlro23" priority="P3" purpose="Test that LRO direction does not apply to the src attribute of the icon element." status="approved" type="compliance">
         <description>
-          <pre_condition></pre_condition>
+          <pre_condition />
           <post_condition>Get the $pkgid of i18nlro23.wgt with the command : pkgcmd -l, then uninstall the i18nlro23.wgt with the command : pkgcmd -u -t wgt -q -n $pkgid</post_condition>
           <steps>
             <step order="1">
@@ -593,19 +591,19 @@
               <expected>To pass, the user agent must select black "PASS" on the round green background as the widget logo.</expected>
             </step>
           </steps>
-          <test_script_entry timeout="90"></test_script_entry>
+          <test_script_entry timeout="90" />
         </description>
         <specs>
           <spec>
-            <spec_assertion usage="true" interface="Widget" specification="Widget Packaging and XML Configuration" section="Widget" category="Tizen W3C API Specifications"/>
+            <spec_assertion category="Tizen W3C API Specifications" interface="Widget" section="Widget" specification="Widget Packaging and XML Configuration" usage="true" />
             <spec_url>http://www.w3.org/TR/2011/REC-widgets-20110927/</spec_url>
-            <spec_statement/>
+            <spec_statement />
           </spec>
         </specs>
       </testcase>
-      <testcase purpose="Test that LRO direction does not apply to the src attribute of the content element." type="compliance" status="approved" component="WebAPI/Widget/Widget Packaging and XML Configuration" execution_type="manual" priority="P3" id="WidgetPackaging_i18nlro26">
+      <testcase component="W3C_HTML5 APIs/Widget/Widget Packaging and XML Configuration" execution_type="manual" id="WidgetPackaging_i18nlro26" priority="P3" purpose="Test that LRO direction does not apply to the src attribute of the content element." status="approved" type="compliance">
         <description>
-          <pre_condition></pre_condition>
+          <pre_condition />
           <post_condition>Get the $pkgid of i18nlro26.wgt with the command : pkgcmd -l, then uninstall the i18nlro26.wgt with the command : pkgcmd -u -t wgt -q -n $pkgid</post_condition>
           <steps>
             <step order="1">
@@ -617,19 +615,19 @@
               <expected>To pass, the widget can be started successfully and the screen shows "PASS" on green background.</expected>
             </step>
           </steps>
-          <test_script_entry timeout="90"></test_script_entry>
+          <test_script_entry timeout="90" />
         </description>
         <specs>
           <spec>
-            <spec_assertion usage="true" interface="Widget" specification="Widget Packaging and XML Configuration" section="Widget" category="Tizen W3C API Specifications"/>
+            <spec_assertion category="Tizen W3C API Specifications" interface="Widget" section="Widget" specification="Widget Packaging and XML Configuration" usage="true" />
             <spec_url>http://www.w3.org/TR/2011/REC-widgets-20110927/</spec_url>
-            <spec_statement/>
+            <spec_statement />
           </spec>
         </specs>
       </testcase>
-      <testcase purpose="Test that LRO direction does not apply to the type attribute of the content element." type="compliance" status="approved" component="WebAPI/Widget/Widget Packaging and XML Configuration" execution_type="manual" priority="P3" id="WidgetPackaging_i18nlro27">
+      <testcase component="W3C_HTML5 APIs/Widget/Widget Packaging and XML Configuration" execution_type="manual" id="WidgetPackaging_i18nlro27" priority="P3" purpose="Test that LRO direction does not apply to the type attribute of the content element." status="approved" type="compliance">
         <description>
-          <pre_condition></pre_condition>
+          <pre_condition />
           <post_condition>Get the $pkgid of i18nlro27.wgt with the command : pkgcmd -l, then uninstall the i18nlro27.wgt with the command : pkgcmd -u -t wgt -q -n $pkgid</post_condition>
           <steps>
             <step order="1">
@@ -641,19 +639,19 @@
               <expected>To pass, the widget can be started successfully and the screen shows "PASS" on green background.</expected>
             </step>
           </steps>
-          <test_script_entry timeout="90"></test_script_entry>
+          <test_script_entry timeout="90" />
         </description>
         <specs>
           <spec>
-            <spec_assertion usage="true" interface="Widget" specification="Widget Packaging and XML Configuration" section="Widget" category="Tizen W3C API Specifications"/>
+            <spec_assertion category="Tizen W3C API Specifications" interface="Widget" section="Widget" specification="Widget Packaging and XML Configuration" usage="true" />
             <spec_url>http://www.w3.org/TR/2011/REC-widgets-20110927/</spec_url>
-            <spec_statement/>
+            <spec_statement />
           </spec>
         </specs>
       </testcase>
-      <testcase purpose="Test that LRO direction does not apply to the encoding attribute of the content element." type="compliance" status="approved" component="WebAPI/Widget/Widget Packaging and XML Configuration" execution_type="manual" priority="P3" id="WidgetPackaging_i18nlro28">
+      <testcase component="W3C_HTML5 APIs/Widget/Widget Packaging and XML Configuration" execution_type="manual" id="WidgetPackaging_i18nlro28" priority="P3" purpose="Test that LRO direction does not apply to the encoding attribute of the content element." status="approved" type="compliance">
         <description>
-          <pre_condition></pre_condition>
+          <pre_condition />
           <post_condition>Get the $pkgid of i18nlro28.wgt with the command : pkgcmd -l, then uninstall the i18nlro28.wgt with the command : pkgcmd -u -t wgt -q -n $pkgid</post_condition>
           <steps>
             <step order="1">
@@ -665,19 +663,19 @@
               <expected>The correct picture can be displayed according to the successful description on screen.</expected>
             </step>
           </steps>
-          <test_script_entry timeout="90"></test_script_entry>
+          <test_script_entry timeout="90" />
         </description>
         <specs>
           <spec>
-            <spec_assertion usage="true" interface="Widget" specification="Widget Packaging and XML Configuration" section="Widget" category="Tizen W3C API Specifications"/>
+            <spec_assertion category="Tizen W3C API Specifications" interface="Widget" section="Widget" specification="Widget Packaging and XML Configuration" usage="true" />
             <spec_url>http://www.w3.org/TR/2011/REC-widgets-20110927/</spec_url>
-            <spec_statement/>
+            <spec_statement />
           </spec>
         </specs>
       </testcase>
-      <testcase purpose="Test that LTR direction does not apply to the src attribute of the icon element." type="compliance" status="approved" component="WebAPI/Widget/Widget Packaging and XML Configuration" execution_type="manual" priority="P3" id="WidgetPackaging_i18nltr23">
+      <testcase component="W3C_HTML5 APIs/Widget/Widget Packaging and XML Configuration" execution_type="manual" id="WidgetPackaging_i18nltr23" priority="P3" purpose="Test that LTR direction does not apply to the src attribute of the icon element." status="approved" type="compliance">
         <description>
-          <pre_condition></pre_condition>
+          <pre_condition />
           <post_condition>Get the $pkgid of i18nltr23.wgt with the command : pkgcmd -l, then uninstall the i18nltr23.wgt with the command : pkgcmd -u -t wgt -q -n $pkgid</post_condition>
           <steps>
             <step order="1">
@@ -689,19 +687,19 @@
               <expected>To pass, the user agent must select black "PASS" on the round green background as the widget logo.</expected>
             </step>
           </steps>
-          <test_script_entry timeout="90"></test_script_entry>
+          <test_script_entry timeout="90" />
         </description>
         <specs>
           <spec>
-            <spec_assertion usage="true" interface="Widget" specification="Widget Packaging and XML Configuration" section="Widget" category="Tizen W3C API Specifications"/>
+            <spec_assertion category="Tizen W3C API Specifications" interface="Widget" section="Widget" specification="Widget Packaging and XML Configuration" usage="true" />
             <spec_url>http://www.w3.org/TR/2011/REC-widgets-20110927/</spec_url>
-            <spec_statement/>
+            <spec_statement />
           </spec>
         </specs>
       </testcase>
-      <testcase purpose="Test that LTR direction does not apply to the src attribute of the content element." type="compliance" status="approved" component="WebAPI/Widget/Widget Packaging and XML Configuration" execution_type="manual" priority="P3" id="WidgetPackaging_i18nltr26">
+      <testcase component="W3C_HTML5 APIs/Widget/Widget Packaging and XML Configuration" execution_type="manual" id="WidgetPackaging_i18nltr26" priority="P3" purpose="Test that LTR direction does not apply to the src attribute of the content element." status="approved" type="compliance">
         <description>
-          <pre_condition></pre_condition>
+          <pre_condition />
           <post_condition>Get the $pkgid of i18nltr26.wgt with the command : pkgcmd -l, then uninstall the i18nltr26.wgt with the command : pkgcmd -u -t wgt -q -n $pkgid</post_condition>
           <steps>
             <step order="1">
@@ -713,19 +711,19 @@
               <expected>To pass, the widget can be started successfully and the screen shows "PASS" on green background.</expected>
             </step>
           </steps>
-          <test_script_entry timeout="90"></test_script_entry>
+          <test_script_entry timeout="90" />
         </description>
         <specs>
           <spec>
-            <spec_assertion usage="true" interface="Widget" specification="Widget Packaging and XML Configuration" section="Widget" category="Tizen W3C API Specifications"/>
+            <spec_assertion category="Tizen W3C API Specifications" interface="Widget" section="Widget" specification="Widget Packaging and XML Configuration" usage="true" />
             <spec_url>http://www.w3.org/TR/2011/REC-widgets-20110927/</spec_url>
-            <spec_statement/>
+            <spec_statement />
           </spec>
         </specs>
       </testcase>
-      <testcase purpose="Test that LTR direction does not apply to the type attribute of the content element." type="compliance" status="approved" component="WebAPI/Widget/Widget Packaging and XML Configuration" execution_type="manual" priority="P3" id="WidgetPackaging_i18nltr27">
+      <testcase component="W3C_HTML5 APIs/Widget/Widget Packaging and XML Configuration" execution_type="manual" id="WidgetPackaging_i18nltr27" priority="P3" purpose="Test that LTR direction does not apply to the type attribute of the content element." status="approved" type="compliance">
         <description>
-          <pre_condition></pre_condition>
+          <pre_condition />
           <post_condition>Get the $pkgid of i18nltr27.wgt with the command : pkgcmd -l, then uninstall the i18nltr27.wgt with the command : pkgcmd -u -t wgt -q -n $pkgid</post_condition>
           <steps>
             <step order="1">
@@ -737,19 +735,19 @@
               <expected>To pass, the widget can be started successfully and the screen shows "PASS" on green background.</expected>
             </step>
           </steps>
-          <test_script_entry timeout="90"></test_script_entry>
+          <test_script_entry timeout="90" />
         </description>
         <specs>
           <spec>
-            <spec_assertion usage="true" interface="Widget" specification="Widget Packaging and XML Configuration" section="Widget" category="Tizen W3C API Specifications"/>
+            <spec_assertion category="Tizen W3C API Specifications" interface="Widget" section="Widget" specification="Widget Packaging and XML Configuration" usage="true" />
             <spec_url>http://www.w3.org/TR/2011/REC-widgets-20110927/</spec_url>
-            <spec_statement/>
+            <spec_statement />
           </spec>
         </specs>
       </testcase>
-      <testcase purpose="Test that LTR direction does not apply to the encoding attribute of the content element." type="compliance" status="approved" component="WebAPI/Widget/Widget Packaging and XML Configuration" execution_type="manual" priority="P3" id="WidgetPackaging_i18nltr28">
+      <testcase component="W3C_HTML5 APIs/Widget/Widget Packaging and XML Configuration" execution_type="manual" id="WidgetPackaging_i18nltr28" priority="P3" purpose="Test that LTR direction does not apply to the encoding attribute of the content element." status="approved" type="compliance">
         <description>
-          <pre_condition></pre_condition>
+          <pre_condition />
           <post_condition>Get the $pkgid of i18nltr28.wgt with the command : pkgcmd -l, then uninstall the i18nltr28.wgt with the command : pkgcmd -u -t wgt -q -n $pkgid</post_condition>
           <steps>
             <step order="1">
@@ -761,19 +759,19 @@
               <expected>The correct picture can be displayed according to the successful description on screen.</expected>
             </step>
           </steps>
-          <test_script_entry timeout="90"></test_script_entry>
+          <test_script_entry timeout="90" />
         </description>
         <specs>
           <spec>
-            <spec_assertion usage="true" interface="Widget" specification="Widget Packaging and XML Configuration" section="Widget" category="Tizen W3C API Specifications"/>
+            <spec_assertion category="Tizen W3C API Specifications" interface="Widget" section="Widget" specification="Widget Packaging and XML Configuration" usage="true" />
             <spec_url>http://www.w3.org/TR/2011/REC-widgets-20110927/</spec_url>
-            <spec_statement/>
+            <spec_statement />
           </spec>
         </specs>
       </testcase>
-      <testcase purpose="Test that RLO direction does not apply to the src attribute of the icon element." type="compliance" status="approved" component="WebAPI/Widget/Widget Packaging and XML Configuration" execution_type="manual" priority="P3" id="WidgetPackaging_i18nrlo23">
+      <testcase component="W3C_HTML5 APIs/Widget/Widget Packaging and XML Configuration" execution_type="manual" id="WidgetPackaging_i18nrlo23" priority="P3" purpose="Test that RLO direction does not apply to the src attribute of the icon element." status="approved" type="compliance">
         <description>
-          <pre_condition></pre_condition>
+          <pre_condition />
           <post_condition>Get the $pkgid of i18nrlo23.wgt with the command : pkgcmd -l, then uninstall the i18nrlo23.wgt with the command : pkgcmd -u -t wgt -q -n $pkgid</post_condition>
           <steps>
             <step order="1">
@@ -785,19 +783,19 @@
               <expected>To pass, the user agent must select black "PASS" on the round green background as the widget logo.</expected>
             </step>
           </steps>
-          <test_script_entry timeout="90"></test_script_entry>
+          <test_script_entry timeout="90" />
         </description>
         <specs>
           <spec>
-            <spec_assertion usage="true" interface="Widget" specification="Widget Packaging and XML Configuration" section="Widget" category="Tizen W3C API Specifications"/>
+            <spec_assertion category="Tizen W3C API Specifications" interface="Widget" section="Widget" specification="Widget Packaging and XML Configuration" usage="true" />
             <spec_url>http://www.w3.org/TR/2011/REC-widgets-20110927/</spec_url>
-            <spec_statement/>
+            <spec_statement />
           </spec>
         </specs>
       </testcase>
-      <testcase purpose="Test that RLO direction does not apply to the src attribute of the content element." type="compliance" status="approved" component="WebAPI/Widget/Widget Packaging and XML Configuration" execution_type="manual" priority="P3" id="WidgetPackaging_i18nrlo26">
+      <testcase component="W3C_HTML5 APIs/Widget/Widget Packaging and XML Configuration" execution_type="manual" id="WidgetPackaging_i18nrlo26" priority="P3" purpose="Test that RLO direction does not apply to the src attribute of the content element." status="approved" type="compliance">
         <description>
-          <pre_condition></pre_condition>
+          <pre_condition />
           <post_condition>Get the $pkgid of i18nrlo26.wgt with the command : pkgcmd -l, then uninstall the i18nrlo26.wgt with the command : pkgcmd -u -t wgt -q -n $pkgid</post_condition>
           <steps>
             <step order="1">
@@ -809,19 +807,19 @@
               <expected>To pass, the widget can be started successfully and the screen shows "PASS" on green background.</expected>
             </step>
           </steps>
-          <test_script_entry timeout="90"></test_script_entry>
+          <test_script_entry timeout="90" />
         </description>
         <specs>
           <spec>
-            <spec_assertion usage="true" interface="Widget" specification="Widget Packaging and XML Configuration" section="Widget" category="Tizen W3C API Specifications"/>
+            <spec_assertion category="Tizen W3C API Specifications" interface="Widget" section="Widget" specification="Widget Packaging and XML Configuration" usage="true" />
             <spec_url>http://www.w3.org/TR/2011/REC-widgets-20110927/</spec_url>
-            <spec_statement/>
+            <spec_statement />
           </spec>
         </specs>
       </testcase>
-      <testcase purpose="Test that RLO direction does not apply to the type attribute of the content element." type="compliance" status="approved" component="WebAPI/Widget/Widget Packaging and XML Configuration" execution_type="manual" priority="P3" id="WidgetPackaging_i18nrlo27">
+      <testcase component="W3C_HTML5 APIs/Widget/Widget Packaging and XML Configuration" execution_type="manual" id="WidgetPackaging_i18nrlo27" priority="P3" purpose="Test that RLO direction does not apply to the type attribute of the content element." status="approved" type="compliance">
         <description>
-          <pre_condition></pre_condition>
+          <pre_condition />
           <post_condition>Get the $pkgid of i18nrlo27.wgt with the command : pkgcmd -l, then uninstall the i18nrlo27.wgt with the command : pkgcmd -u -t wgt -q -n $pkgid</post_condition>
           <steps>
             <step order="1">
@@ -833,19 +831,19 @@
               <expected>To pass, the widget can be started successfully and the screen shows "PASS" on green background.</expected>
             </step>
           </steps>
-          <test_script_entry timeout="90"></test_script_entry>
+          <test_script_entry timeout="90" />
         </description>
         <specs>
           <spec>
-            <spec_assertion usage="true" interface="Widget" specification="Widget Packaging and XML Configuration" section="Widget" category="Tizen W3C API Specifications"/>
+            <spec_assertion category="Tizen W3C API Specifications" interface="Widget" section="Widget" specification="Widget Packaging and XML Configuration" usage="true" />
             <spec_url>http://www.w3.org/TR/2011/REC-widgets-20110927/</spec_url>
-            <spec_statement/>
+            <spec_statement />
           </spec>
         </specs>
       </testcase>
-      <testcase purpose="Test that RLO direction does not apply to the encoding attribute of the content element." type="compliance" status="approved" component="WebAPI/Widget/Widget Packaging and XML Configuration" execution_type="manual" priority="P3" id="WidgetPackaging_i18nrlo28">
+      <testcase component="W3C_HTML5 APIs/Widget/Widget Packaging and XML Configuration" execution_type="manual" id="WidgetPackaging_i18nrlo28" priority="P3" purpose="Test that RLO direction does not apply to the encoding attribute of the content element." status="approved" type="compliance">
         <description>
-          <pre_condition></pre_condition>
+          <pre_condition />
           <post_condition>Get the $pkgid of i18nrlo28.wgt with the command : pkgcmd -l, then uninstall the i18nrlo28.wgt with the command : pkgcmd -u -t wgt -q -n $pkgid</post_condition>
           <steps>
             <step order="1">
@@ -857,19 +855,19 @@
               <expected>The correct picture can be displayed according to the successful description on screen.</expected>
             </step>
           </steps>
-          <test_script_entry timeout="90"></test_script_entry>
+          <test_script_entry timeout="90" />
         </description>
         <specs>
           <spec>
-            <spec_assertion usage="true" interface="Widget" specification="Widget Packaging and XML Configuration" section="Widget" category="Tizen W3C API Specifications"/>
+            <spec_assertion category="Tizen W3C API Specifications" interface="Widget" section="Widget" specification="Widget Packaging and XML Configuration" usage="true" />
             <spec_url>http://www.w3.org/TR/2011/REC-widgets-20110927/</spec_url>
-            <spec_statement/>
+            <spec_statement />
           </spec>
         </specs>
       </testcase>
-      <testcase purpose="Test that RTL direction does not apply to the src attribute of the icon element." type="compliance" status="approved" component="WebAPI/Widget/Widget Packaging and XML Configuration" execution_type="manual" priority="P3" id="WidgetPackaging_i18nrtl23">
+      <testcase component="W3C_HTML5 APIs/Widget/Widget Packaging and XML Configuration" execution_type="manual" id="WidgetPackaging_i18nrtl23" priority="P3" purpose="Test that RTL direction does not apply to the src attribute of the icon element." status="approved" type="compliance">
         <description>
-          <pre_condition></pre_condition>
+          <pre_condition />
           <post_condition>Get the $pkgid of i18nrtl23.wgt with the command : pkgcmd -l, then uninstall the i18nrtl23.wgt with the command : pkgcmd -u -t wgt -q -n $pkgid</post_condition>
           <steps>
             <step order="1">
@@ -881,19 +879,19 @@
               <expected>To pass, the user agent must select black "PASS" on the round green background as the widget logo.</expected>
             </step>
           </steps>
-          <test_script_entry timeout="90"></test_script_entry>
+          <test_script_entry timeout="90" />
         </description>
         <specs>
           <spec>
-            <spec_assertion usage="true" interface="Widget" specification="Widget Packaging and XML Configuration" section="Widget" category="Tizen W3C API Specifications"/>
+            <spec_assertion category="Tizen W3C API Specifications" interface="Widget" section="Widget" specification="Widget Packaging and XML Configuration" usage="true" />
             <spec_url>http://www.w3.org/TR/2011/REC-widgets-20110927/</spec_url>
-            <spec_statement/>
+            <spec_statement />
           </spec>
         </specs>
       </testcase>
-      <testcase purpose="Test that RTL direction does not apply to the src attribute of the content element." type="compliance" status="approved" component="WebAPI/Widget/Widget Packaging and XML Configuration" execution_type="manual" priority="P3" id="WidgetPackaging_i18nrtl26">
+      <testcase component="W3C_HTML5 APIs/Widget/Widget Packaging and XML Configuration" execution_type="manual" id="WidgetPackaging_i18nrtl26" priority="P3" purpose="Test that RTL direction does not apply to the src attribute of the content element." status="approved" type="compliance">
         <description>
-          <pre_condition></pre_condition>
+          <pre_condition />
           <post_condition>Get the $pkgid of i18nrtl26.wgt with the command : pkgcmd -l, then uninstall the i18nrtl26.wgt with the command : pkgcmd -u -t wgt -q -n $pkgid</post_condition>
           <steps>
             <step order="1">
@@ -905,19 +903,19 @@
               <expected>To pass, the widget can be started successfully and the screen shows "PASS" on green background.</expected>
             </step>
           </steps>
-          <test_script_entry timeout="90"></test_script_entry>
+          <test_script_entry timeout="90" />
         </description>
         <specs>
           <spec>
-            <spec_assertion usage="true" interface="Widget" specification="Widget Packaging and XML Configuration" section="Widget" category="Tizen W3C API Specifications"/>
+            <spec_assertion category="Tizen W3C API Specifications" interface="Widget" section="Widget" specification="Widget Packaging and XML Configuration" usage="true" />
             <spec_url>http://www.w3.org/TR/2011/REC-widgets-20110927/</spec_url>
-            <spec_statement/>
+            <spec_statement />
           </spec>
         </specs>
       </testcase>
-      <testcase purpose="Test that RTL direction does not apply to the type attribute of the content element." type="compliance" status="approved" component="WebAPI/Widget/Widget Packaging and XML Configuration" execution_type="manual" priority="P3" id="WidgetPackaging_i18nrtl27">
+      <testcase component="W3C_HTML5 APIs/Widget/Widget Packaging and XML Configuration" execution_type="manual" id="WidgetPackaging_i18nrtl27" priority="P3" purpose="Test that RTL direction does not apply to the type attribute of the content element." status="approved" type="compliance">
         <description>
-          <pre_condition></pre_condition>
+          <pre_condition />
           <post_condition>Get the $pkgid of i18nrtl27.wgt with the command : pkgcmd -l, then uninstall the i18nrtl27.wgt with the command : pkgcmd -u -t wgt -q -n $pkgid</post_condition>
           <steps>
             <step order="1">
@@ -929,19 +927,19 @@
               <expected>To pass, the widget can be started successfully and the screen shows "PASS" on green background.</expected>
             </step>
           </steps>
-          <test_script_entry timeout="90"></test_script_entry>
+          <test_script_entry timeout="90" />
         </description>
         <specs>
           <spec>
-            <spec_assertion usage="true" interface="Widget" specification="Widget Packaging and XML Configuration" section="Widget" category="Tizen W3C API Specifications"/>
+            <spec_assertion category="Tizen W3C API Specifications" interface="Widget" section="Widget" specification="Widget Packaging and XML Configuration" usage="true" />
             <spec_url>http://www.w3.org/TR/2011/REC-widgets-20110927/</spec_url>
-            <spec_statement/>
+            <spec_statement />
           </spec>
         </specs>
       </testcase>
-      <testcase purpose="Test that RTL direction does not apply to the encoding attribute of the content element." type="compliance" status="approved" component="WebAPI/Widget/Widget Packaging and XML Configuration" execution_type="manual" priority="P3" id="WidgetPackaging_i18nrtl28">
+      <testcase component="W3C_HTML5 APIs/Widget/Widget Packaging and XML Configuration" execution_type="manual" id="WidgetPackaging_i18nrtl28" priority="P3" purpose="Test that RTL direction does not apply to the encoding attribute of the content element." status="approved" type="compliance">
         <description>
-          <pre_condition></pre_condition>
+          <pre_condition />
           <post_condition>Get the $pkgid of i18nrtl28.wgt with the command : pkgcmd -l, then uninstall the i18nrtl28.wgt with the command : pkgcmd -u -t wgt -q -n $pkgid</post_condition>
           <steps>
             <step order="1">
@@ -953,19 +951,19 @@
               <expected>To pass, the widget can be started successfully and the correct picture can be displayed according to the successful description on screen.</expected>
             </step>
           </steps>
-          <test_script_entry timeout="90"></test_script_entry>
+          <test_script_entry timeout="90" />
         </description>
         <specs>
           <spec>
-            <spec_assertion usage="true" interface="Widget" specification="Widget Packaging and XML Configuration" section="Widget" category="Tizen W3C API Specifications"/>
+            <spec_assertion category="Tizen W3C API Specifications" interface="Widget" section="Widget" specification="Widget Packaging and XML Configuration" usage="true" />
             <spec_url>http://www.w3.org/TR/2011/REC-widgets-20110927/</spec_url>
-            <spec_statement/>
+            <spec_statement />
           </spec>
         </specs>
       </testcase>
-      <testcase purpose="Test that RTL direction does not apply to the viewmodes attribute of the widget element." type="compliance" status="approved" component="WebAPI/Widget/Widget Packaging and XML Configuration" execution_type="manual" priority="P3" id="WidgetPackaging_i18nrtl43">
+      <testcase component="W3C_HTML5 APIs/Widget/Widget Packaging and XML Configuration" execution_type="manual" id="WidgetPackaging_i18nrtl43" priority="P3" purpose="Test that RTL direction does not apply to the viewmodes attribute of the widget element." status="approved" type="compliance">
         <description>
-          <pre_condition></pre_condition>
+          <pre_condition />
           <post_condition>Get the $pkgid of i18nrtl43.wgt with the command : pkgcmd -l, then uninstall the i18nrtl43.wgt with the command : pkgcmd -u -t wgt -q -n $pkgid</post_condition>
           <steps>
             <step order="1">
@@ -977,19 +975,19 @@
               <expected>To pass, the widget can be started successfully and the screen shows "PASS" on green background.</expected>
             </step>
           </steps>
-          <test_script_entry timeout="90"></test_script_entry>
+          <test_script_entry timeout="90" />
         </description>
         <specs>
           <spec>
-            <spec_assertion usage="true" interface="Widget" specification="Widget Packaging and XML Configuration" section="Widget" category="Tizen W3C API Specifications"/>
+            <spec_assertion category="Tizen W3C API Specifications" interface="Widget" section="Widget" specification="Widget Packaging and XML Configuration" usage="true" />
             <spec_url>http://www.w3.org/TR/2011/REC-widgets-20110927/</spec_url>
-            <spec_statement/>
+            <spec_statement />
           </spec>
         </specs>
       </testcase>
-      <testcase purpose="Test if the UA can process the width attribute of an icon element." type="compliance" status="approved" component="WebAPI/Widget/Widget Packaging and XML Configuration" execution_type="manual" priority="P3" id="WidgetPackaging_i9">
+      <testcase component="W3C_HTML5 APIs/Widget/Widget Packaging and XML Configuration" execution_type="manual" id="WidgetPackaging_i9" priority="P3" purpose="Test if the UA can process the width attribute of an icon element." status="approved" type="compliance">
         <description>
-          <pre_condition></pre_condition>
+          <pre_condition />
           <post_condition>Get the $pkgid of i9.wgt with the command : pkgcmd -l, then uninstall the i9.wgt with the command : pkgcmd -u -t wgt -q -n $pkgid</post_condition>
           <steps>
             <step order="1">
@@ -1001,19 +999,19 @@
               <expected>To pass, the user agent must select black "PASS" on the round green background as the widget logo.</expected>
             </step>
           </steps>
-          <test_script_entry timeout="90"></test_script_entry>
+          <test_script_entry timeout="90" />
         </description>
         <specs>
           <spec>
-            <spec_assertion usage="true" interface="Widget" specification="Widget Packaging and XML Configuration" section="Widget" category="Tizen W3C API Specifications"/>
+            <spec_assertion category="Tizen W3C API Specifications" interface="Widget" section="Widget" specification="Widget Packaging and XML Configuration" usage="true" />
             <spec_url>http://www.w3.org/TR/2011/REC-widgets-20110927/</spec_url>
-            <spec_statement/>
+            <spec_statement />
           </spec>
         </specs>
       </testcase>
-      <testcase purpose="Test if the UA can process the various values applicable to the viewmodes attribute of the widget element." type="compliance" status="approved" component="WebAPI/Widget/Widget Packaging and XML Configuration" execution_type="manual" priority="P3" id="WidgetPackaging_viewb">
+      <testcase component="W3C_HTML5 APIs/Widget/Widget Packaging and XML Configuration" execution_type="manual" id="WidgetPackaging_viewb" priority="P3" purpose="Test if the UA can process the various values applicable to the viewmodes attribute of the widget element." status="approved" type="compliance">
         <description>
-          <pre_condition></pre_condition>
+          <pre_condition />
           <post_condition>Get the $pkgid of viewb.wgt with the command : pkgcmd -l, then uninstall the viewb.wgt with the command : pkgcmd -u -t wgt -q -n $pkgid</post_condition>
           <steps>
             <step order="1">
@@ -1025,19 +1023,19 @@
               <expected>To pass, the widget can be started successfully and the screen shows "PASS" on green background.</expected>
             </step>
           </steps>
-          <test_script_entry timeout="90"></test_script_entry>
+          <test_script_entry timeout="90" />
         </description>
         <specs>
           <spec>
-            <spec_assertion usage="true" interface="Widget" specification="Widget Packaging and XML Configuration" section="Widget" category="Tizen W3C API Specifications"/>
+            <spec_assertion category="Tizen W3C API Specifications" interface="Widget" section="Widget" specification="Widget Packaging and XML Configuration" usage="true" />
             <spec_url>http://www.w3.org/TR/2011/REC-widgets-20110927/</spec_url>
-            <spec_statement/>
+            <spec_statement />
           </spec>
         </specs>
       </testcase>
-      <testcase purpose="Test if the UA can process a viewmodes attribute containing an unsupported value." type="compliance" status="approved" component="WebAPI/Widget/Widget Packaging and XML Configuration" execution_type="manual" priority="P3" id="WidgetPackaging_viewf">
+      <testcase component="W3C_HTML5 APIs/Widget/Widget Packaging and XML Configuration" execution_type="manual" id="WidgetPackaging_viewf" priority="P3" purpose="Test if the UA can process a viewmodes attribute containing an unsupported value." status="approved" type="compliance">
         <description>
-          <pre_condition></pre_condition>
+          <pre_condition />
           <post_condition>Get the $pkgid of viewf.wgt with the command : pkgcmd -l, then uninstall the viewf.wgt with the command : pkgcmd -u -t wgt -q -n $pkgid</post_condition>
           <steps>
             <step order="1">
@@ -1049,19 +1047,19 @@
               <expected>To pass, the widget can be started successfully and the screen shows "PASS" on green background.</expected>
             </step>
           </steps>
-          <test_script_entry timeout="90"></test_script_entry>
+          <test_script_entry timeout="90" />
         </description>
         <specs>
           <spec>
-            <spec_assertion usage="true" interface="Widget" specification="Widget Packaging and XML Configuration" section="Widget" category="Tizen W3C API Specifications"/>
+            <spec_assertion category="Tizen W3C API Specifications" interface="Widget" section="Widget" specification="Widget Packaging and XML Configuration" usage="true" />
             <spec_url>http://www.w3.org/TR/2011/REC-widgets-20110927/</spec_url>
-            <spec_statement/>
+            <spec_statement />
           </spec>
         </specs>
       </testcase>
-      <testcase purpose="Test if the UA can process a viewmodes attribute containing multiple supported values." type="compliance" status="approved" component="WebAPI/Widget/Widget Packaging and XML Configuration" execution_type="manual" priority="P3" id="WidgetPackaging_viewg">
+      <testcase component="W3C_HTML5 APIs/Widget/Widget Packaging and XML Configuration" execution_type="manual" id="WidgetPackaging_viewg" priority="P3" purpose="Test if the UA can process a viewmodes attribute containing multiple supported values." status="approved" type="compliance">
         <description>
-          <pre_condition></pre_condition>
+          <pre_condition />
           <post_condition>Get the $pkgid of viewg.wgt with the command : pkgcmd -l, then uninstall the viewg.wgt with the command : pkgcmd -u -t wgt -q -n $pkgid</post_condition>
           <steps>
             <step order="1">
@@ -1073,19 +1071,19 @@
               <expected>To pass, the widget can be started successfully and the screen shows "PASS" on green background.</expected>
             </step>
           </steps>
-          <test_script_entry timeout="90"></test_script_entry>
+          <test_script_entry timeout="90" />
         </description>
         <specs>
           <spec>
-            <spec_assertion usage="true" interface="Widget" specification="Widget Packaging and XML Configuration" section="Widget" category="Tizen W3C API Specifications"/>
+            <spec_assertion category="Tizen W3C API Specifications" interface="Widget" section="Widget" specification="Widget Packaging and XML Configuration" usage="true" />
             <spec_url>http://www.w3.org/TR/2011/REC-widgets-20110927/</spec_url>
-            <spec_statement/>
+            <spec_statement />
           </spec>
         </specs>
       </testcase>
-      <testcase purpose="Test if the UA can process an empty viewmodes attribute of the widget element." type="compliance" status="approved" component="WebAPI/Widget/Widget Packaging and XML Configuration" execution_type="manual" priority="P3" id="WidgetPackaging_viewi">
+      <testcase component="W3C_HTML5 APIs/Widget/Widget Packaging and XML Configuration" execution_type="manual" id="WidgetPackaging_viewi" priority="P3" purpose="Test if the UA can process an empty viewmodes attribute of the widget element." status="approved" type="compliance">
         <description>
-          <pre_condition></pre_condition>
+          <pre_condition />
           <post_condition>Get the $pkgid of viewi.wgt with the command : pkgcmd -l, then uninstall the viewi.wgt with the command : pkgcmd -u -t wgt -q -n $pkgid</post_condition>
           <steps>
             <step order="1">
@@ -1097,19 +1095,19 @@
               <expected>To pass, the widget can be started successfully and the screen shows "PASS" on green background.</expected>
             </step>
           </steps>
-          <test_script_entry timeout="90"></test_script_entry>
+          <test_script_entry timeout="90" />
         </description>
         <specs>
           <spec>
-            <spec_assertion usage="true" interface="Widget" specification="Widget Packaging and XML Configuration" section="Widget" category="Tizen W3C API Specifications"/>
+            <spec_assertion category="Tizen W3C API Specifications" interface="Widget" section="Widget" specification="Widget Packaging and XML Configuration" usage="true" />
             <spec_url>http://www.w3.org/TR/2011/REC-widgets-20110927/</spec_url>
-            <spec_statement/>
+            <spec_statement />
           </spec>
         </specs>
       </testcase>
-      <testcase purpose="Test if the UA can ignore unknown elements correctly." type="compliance" status="approved" component="WebAPI/Widget/Widget Packaging and XML Configuration" execution_type="manual" priority="P3" id="WidgetPackaging_xx">
+      <testcase component="W3C_HTML5 APIs/Widget/Widget Packaging and XML Configuration" execution_type="manual" id="WidgetPackaging_xx" priority="P3" purpose="Test if the UA can ignore unknown elements correctly." status="approved" type="compliance">
         <description>
-          <pre_condition></pre_condition>
+          <pre_condition />
           <post_condition>Get the $pkgid of xx.wgt with the command : pkgcmd -l, then uninstall the xx.wgt with the command : pkgcmd -u -t wgt -q -n $pkgid</post_condition>
           <steps>
             <step order="1">
@@ -1121,19 +1119,19 @@
               <expected>To pass, the widget can be started successfully and the screen shows "PASS" on green background.</expected>
             </step>
           </steps>
-          <test_script_entry timeout="90"></test_script_entry>
+          <test_script_entry timeout="90" />
         </description>
         <specs>
           <spec>
-            <spec_assertion usage="true" interface="Widget" specification="Widget Packaging and XML Configuration" section="Widget" category="Tizen W3C API Specifications"/>
+            <spec_assertion category="Tizen W3C API Specifications" interface="Widget" section="Widget" specification="Widget Packaging and XML Configuration" usage="true" />
             <spec_url>http://www.w3.org/TR/2011/REC-widgets-20110927/</spec_url>
-            <spec_statement/>
+            <spec_statement />
           </spec>
         </specs>
       </testcase>
-      <testcase purpose="Test if the UA can ignore a file which contains the garbage data and can't be processed as an icon format." type="compliance" status="approved" component="WebAPI/Widget/Widget Packaging and XML Configuration" execution_type="manual" priority="P3" id="WidgetPackaging_za">
+      <testcase component="W3C_HTML5 APIs/Widget/Widget Packaging and XML Configuration" execution_type="manual" id="WidgetPackaging_za" priority="P3" purpose="Test if the UA can ignore a file which contains the garbage data and can't be processed as an icon format." status="approved" type="compliance">
         <description>
-          <pre_condition></pre_condition>
+          <pre_condition />
           <post_condition>Get the $pkgid of za.wgt with the command : pkgcmd -l, then uninstall the za.wgt with the command : pkgcmd -u -t wgt -q -n $pkgid</post_condition>
           <steps>
             <step order="1">
@@ -1145,19 +1143,19 @@
               <expected>To pass, the user agent must select black "PASS" on the round green background as the widget logo.</expected>
             </step>
           </steps>
-          <test_script_entry timeout="90"></test_script_entry>
+          <test_script_entry timeout="90" />
         </description>
         <specs>
           <spec>
-            <spec_assertion usage="true" interface="Widget" specification="Widget Packaging and XML Configuration" section="Widget" category="Tizen W3C API Specifications"/>
+            <spec_assertion category="Tizen W3C API Specifications" interface="Widget" section="Widget" specification="Widget Packaging and XML Configuration" usage="true" />
             <spec_url>http://www.w3.org/TR/2011/REC-widgets-20110927/</spec_url>
-            <spec_statement/>
+            <spec_statement />
           </spec>
         </specs>
       </testcase>
-      <testcase purpose="Test if the UA can ignore subsequent declarations to use the same icon." type="compliance" status="approved" component="WebAPI/Widget/Widget Packaging and XML Configuration" execution_type="manual" priority="P3" id="WidgetPackaging_zc">
+      <testcase component="W3C_HTML5 APIs/Widget/Widget Packaging and XML Configuration" execution_type="manual" id="WidgetPackaging_zc" priority="P3" purpose="Test if the UA can ignore subsequent declarations to use the same icon." status="approved" type="compliance">
         <description>
-          <pre_condition></pre_condition>
+          <pre_condition />
           <post_condition>Get the $pkgid of zc.wgt with the command : pkgcmd -l, then uninstall the zc.wgt with the command : pkgcmd -u -t wgt -q -n $pkgid</post_condition>
           <steps>
             <step order="1">
@@ -1169,19 +1167,19 @@
               <expected>To pass, the user agent must select black "PASS" or "PASS ROOT" on the round green background as the widget logo.</expected>
             </step>
           </steps>
-          <test_script_entry timeout="90"></test_script_entry>
+          <test_script_entry timeout="90" />
         </description>
         <specs>
           <spec>
-            <spec_assertion usage="true" interface="Widget" specification="Widget Packaging and XML Configuration" section="Widget" category="Tizen W3C API Specifications"/>
+            <spec_assertion category="Tizen W3C API Specifications" interface="Widget" section="Widget" specification="Widget Packaging and XML Configuration" usage="true" />
             <spec_url>http://www.w3.org/TR/2011/REC-widgets-20110927/</spec_url>
-            <spec_statement/>
+            <spec_statement />
           </spec>
         </specs>
       </testcase>
-      <testcase purpose="Test if the UA can correctly deal with an icon element that points to a file which is not present in the widget package." type="compliance" status="approved" component="WebAPI/Widget/Widget Packaging and XML Configuration" execution_type="manual" priority="P3" id="WidgetPackaging_zz">
+      <testcase component="W3C_HTML5 APIs/Widget/Widget Packaging and XML Configuration" execution_type="manual" id="WidgetPackaging_zz" priority="P3" purpose="Test if the UA can correctly deal with an icon element that points to a file which is not present in the widget package." status="approved" type="compliance">
         <description>
-          <pre_condition></pre_condition>
+          <pre_condition />
           <post_condition>Get the $pkgid of zz.wgt with the command : pkgcmd -l, then uninstall the zz.wgt with the command : pkgcmd -u -t wgt -q -n $pkgid</post_condition>
           <steps>
             <step order="1">
@@ -1193,19 +1191,19 @@
               <expected>To pass, the icon should be empty or a default icon in the system.</expected>
             </step>
           </steps>
-          <test_script_entry timeout="90"></test_script_entry>
+          <test_script_entry timeout="90" />
         </description>
         <specs>
           <spec>
-            <spec_assertion usage="true" interface="Widget" specification="Widget Packaging and XML Configuration" section="Widget" category="Tizen W3C API Specifications"/>
+            <spec_assertion category="Tizen W3C API Specifications" interface="Widget" section="Widget" specification="Widget Packaging and XML Configuration" usage="true" />
             <spec_url>http://www.w3.org/TR/2011/REC-widgets-20110927/</spec_url>
-            <spec_statement/>
+            <spec_statement />
           </spec>
         </specs>
       </testcase>
-      <testcase purpose="Test that the user agent applies rule for getting a single attribute value from the defaultlocale attribute." type="compliance" status="approved" component="WebAPI/Widget/Widget Packaging and XML Configuration" execution_type="manual" priority="P3" id="WidgetPackaging_dlocignore01">
+      <testcase component="W3C_HTML5 APIs/Widget/Widget Packaging and XML Configuration" execution_type="manual" id="WidgetPackaging_dlocignore01" priority="P3" purpose="Test that the user agent applies rule for getting a single attribute value from the defaultlocale attribute." status="approved" type="compliance">
         <description>
-          <pre_condition></pre_condition>
+          <pre_condition />
           <post_condition>Get the $pkgid of ta-de-001.wgt with the command : pkgcmd -l, then uninstall the ta-de-001.wgt with the command : pkgcmd -u -t wgt -q -n $pkgid</post_condition>
           <steps>
             <step order="1">
@@ -1217,19 +1215,19 @@
               <expected>To pass, the widget can be started successfully and the screen shows "PASS" on green background.</expected>
             </step>
           </steps>
-          <test_script_entry timeout="90"></test_script_entry>
+          <test_script_entry timeout="90" />
         </description>
         <specs>
           <spec>
-            <spec_assertion usage="true" interface="Widget" specification="Widget Packaging and XML Configuration" section="Widget" category="Tizen W3C API Specifications"/>
+            <spec_assertion category="Tizen W3C API Specifications" interface="Widget" section="Widget" specification="Widget Packaging and XML Configuration" usage="true" />
             <spec_url>http://www.w3.org/TR/2011/REC-widgets-20110927/</spec_url>
-            <spec_statement/>
+            <spec_statement />
           </spec>
         </specs>
       </testcase>
-      <testcase purpose="Test that the user agent matches obscure, yet valid, language tags." type="compliance" status="approved" component="WebAPI/Widget/Widget Packaging and XML Configuration" execution_type="manual" priority="P3" id="WidgetPackaging_dlocignore02">
+      <testcase component="W3C_HTML5 APIs/Widget/Widget Packaging and XML Configuration" execution_type="manual" id="WidgetPackaging_dlocignore02" priority="P3" purpose="Test that the user agent matches obscure, yet valid, language tags." status="approved" type="compliance">
         <description>
-          <pre_condition></pre_condition>
+          <pre_condition />
           <post_condition>Get the $pkgid of ta-de-002.wgt with the command : pkgcmd -l, then uninstall the ta-de-002.wgt with the command : pkgcmd -u -t wgt -q -n $pkgid</post_condition>
           <steps>
             <step order="1">
@@ -1241,19 +1239,19 @@
               <expected>To pass, the widget can be started successfully and the screen shows "PASS" on green background.</expected>
             </step>
           </steps>
-          <test_script_entry timeout="90"></test_script_entry>
+          <test_script_entry timeout="90" />
         </description>
         <specs>
           <spec>
-            <spec_assertion usage="true" interface="Widget" specification="Widget Packaging and XML Configuration" section="Widget" category="Tizen W3C API Specifications"/>
+            <spec_assertion category="Tizen W3C API Specifications" interface="Widget" section="Widget" specification="Widget Packaging and XML Configuration" usage="true" />
             <spec_url>http://www.w3.org/TR/2011/REC-widgets-20110927/</spec_url>
-            <spec_statement/>
+            <spec_statement />
           </spec>
         </specs>
       </testcase>
-      <testcase purpose="Test that a language tag already part of the UA's locales list is ignored when it is repeated for defaultlocale attribute." type="compliance" status="approved" component="WebAPI/Widget/Widget Packaging and XML Configuration" execution_type="manual" priority="P3" id="WidgetPackaging_dlocignore03">
+      <testcase component="W3C_HTML5 APIs/Widget/Widget Packaging and XML Configuration" execution_type="manual" id="WidgetPackaging_dlocignore03" priority="P3" purpose="Test that a language tag already part of the UA's locales list is ignored when it is repeated for defaultlocale attribute." status="approved" type="compliance">
         <description>
-          <pre_condition></pre_condition>
+          <pre_condition />
           <post_condition>Get the $pkgid of ta-de-003.wgt with the command : pkgcmd -l, then uninstall the ta-de-003.wgt with the command : pkgcmd -u -t wgt -q -n $pkgid</post_condition>
           <steps>
             <step order="1">
@@ -1265,19 +1263,19 @@
               <expected>To pass, the widget can be started successfully and the screen shows "PASS" on green background.</expected>
             </step>
           </steps>
-          <test_script_entry timeout="90"></test_script_entry>
+          <test_script_entry timeout="90" />
         </description>
         <specs>
           <spec>
-            <spec_assertion usage="true" interface="Widget" specification="Widget Packaging and XML Configuration" section="Widget" category="Tizen W3C API Specifications"/>
+            <spec_assertion category="Tizen W3C API Specifications" interface="Widget" section="Widget" specification="Widget Packaging and XML Configuration" usage="true" />
             <spec_url>http://www.w3.org/TR/2011/REC-widgets-20110927/</spec_url>
-            <spec_statement/>
+            <spec_statement />
           </spec>
         </specs>
       </testcase>
-      <testcase purpose="Test that the default locale is added to the end of the user agent's locale list (and does not override the default language, which is assumed to be 'en')." type="compliance" status="approved" component="WebAPI/Widget/Widget Packaging and XML Configuration" execution_type="manual" priority="P3" id="WidgetPackaging_dlocignore04">
+      <testcase component="W3C_HTML5 APIs/Widget/Widget Packaging and XML Configuration" execution_type="manual" id="WidgetPackaging_dlocignore04" priority="P3" purpose="Test that the default locale is added to the end of the user agent's locale list (and does not override the default language, which is assumed to be 'en')." status="approved" type="compliance">
         <description>
-          <pre_condition></pre_condition>
+          <pre_condition />
           <post_condition>Get the $pkgid of ta-de-004.wgt with the command : pkgcmd -l, then uninstall the ta-de-004.wgt with the command : pkgcmd -u -t wgt -q -n $pkgid</post_condition>
           <steps>
             <step order="1">
@@ -1289,19 +1287,19 @@
               <expected>To pass, the widget can be started successfully and the screen shows "PASS" on green background.</expected>
             </step>
           </steps>
-          <test_script_entry timeout="90"></test_script_entry>
+          <test_script_entry timeout="90" />
         </description>
         <specs>
           <spec>
-            <spec_assertion usage="true" interface="Widget" specification="Widget Packaging and XML Configuration" section="Widget" category="Tizen W3C API Specifications"/>
+            <spec_assertion category="Tizen W3C API Specifications" interface="Widget" section="Widget" specification="Widget Packaging and XML Configuration" usage="true" />
             <spec_url>http://www.w3.org/TR/2011/REC-widgets-20110927/</spec_url>
-            <spec_statement/>
+            <spec_statement />
           </spec>
         </specs>
       </testcase>
-      <testcase purpose="Test that an user agent correctly applies the rule to get a single attribute value and the rule for getting text content with normalized white space." type="compliance" status="approved" component="WebAPI/Widget/Widget Packaging and XML Configuration" execution_type="manual" priority="P3" id="WidgetPackaging_as">
+      <testcase component="W3C_HTML5 APIs/Widget/Widget Packaging and XML Configuration" execution_type="manual" id="WidgetPackaging_as" priority="P3" purpose="Test that an user agent correctly applies the rule to get a single attribute value and the rule for getting text content with normalized white space." status="approved" type="compliance">
         <description>
-          <pre_condition></pre_condition>
+          <pre_condition />
           <post_condition>Get the $pkgid of as.wgt with the command : pkgcmd -l, then uninstall the as.wgt with the command : pkgcmd -u -t wgt -q -n $pkgid</post_condition>
           <steps>
             <step order="1">
@@ -1313,19 +1311,19 @@
               <expected>To pass, the widget can be started successfully and the screen shows "PASS" on green background.</expected>
             </step>
           </steps>
-          <test_script_entry timeout="90"></test_script_entry>
+          <test_script_entry timeout="90" />
         </description>
         <specs>
           <spec>
-            <spec_assertion usage="true" interface="Widget" specification="Widget Packaging and XML Configuration" section="Widget" category="Tizen W3C API Specifications"/>
+            <spec_assertion category="Tizen W3C API Specifications" interface="Widget" section="Widget" specification="Widget Packaging and XML Configuration" usage="true" />
             <spec_url>http://www.w3.org/TR/2011/REC-widgets-20110927/</spec_url>
-            <spec_statement/>
+            <spec_statement />
           </spec>
         </specs>
       </testcase>
-      <testcase purpose="Test that an user agent correctly processes a name element." type="compliance" status="approved" component="WebAPI/Widget/Widget Packaging and XML Configuration" execution_type="manual" priority="P3" id="WidgetPackaging_ao">
+      <testcase component="W3C_HTML5 APIs/Widget/Widget Packaging and XML Configuration" execution_type="manual" id="WidgetPackaging_ao" priority="P3" purpose="Test that an user agent correctly processes a name element." status="approved" type="compliance">
         <description>
-          <pre_condition></pre_condition>
+          <pre_condition />
           <post_condition>Get the $pkgid of ao.wgt with the command : pkgcmd -l, then uninstall the ao.wgt with the command : pkgcmd -u -t wgt -q -n $pkgid</post_condition>
           <steps>
             <step order="1">
@@ -1337,19 +1335,19 @@
               <expected>To pass, the widget can be started successfully and the screen shows "PASS" on green background.</expected>
             </step>
           </steps>
-          <test_script_entry timeout="90"></test_script_entry>
+          <test_script_entry timeout="90" />
         </description>
         <specs>
           <spec>
-            <spec_assertion usage="true" interface="Widget" specification="Widget Packaging and XML Configuration" section="Widget" category="Tizen W3C API Specifications"/>
+            <spec_assertion category="Tizen W3C API Specifications" interface="Widget" section="Widget" specification="Widget Packaging and XML Configuration" usage="true" />
             <spec_url>http://www.w3.org/TR/2011/REC-widgets-20110927/</spec_url>
-            <spec_statement/>
+            <spec_statement />
           </spec>
         </specs>
       </testcase>
-      <testcase purpose="Test if the UA can locate the start file when there is no widget elements to process." type="compliance" status="approved" component="WebAPI/Widget/Widget Packaging and XML Configuration" execution_type="manual" priority="P3" id="WidgetPackaging_d3">
+      <testcase component="W3C_HTML5 APIs/Widget/Widget Packaging and XML Configuration" execution_type="manual" id="WidgetPackaging_d3" priority="P3" purpose="Test if the UA can locate the start file when there is no widget elements to process." status="approved" type="compliance">
         <description>
-          <pre_condition></pre_condition>
+          <pre_condition />
           <post_condition>Get the $pkgid of d3.wgt with the command : pkgcmd -l, then uninstall the d3.wgt with the command : pkgcmd -u -t wgt -q -n $pkgid</post_condition>
           <steps>
             <step order="1">
@@ -1361,19 +1359,19 @@
               <expected>To pass, the widget can be started successfully and the screen shows "PASS" on green background.</expected>
             </step>
           </steps>
-          <test_script_entry timeout="90"></test_script_entry>
+          <test_script_entry timeout="90" />
         </description>
         <specs>
           <spec>
-            <spec_assertion usage="true" interface="Widget" specification="Widget Packaging and XML Configuration" section="Widget" category="Tizen W3C API Specifications"/>
+            <spec_assertion category="Tizen W3C API Specifications" interface="Widget" section="Widget" specification="Widget Packaging and XML Configuration" usage="true" />
             <spec_url>http://www.w3.org/TR/2011/REC-widgets-20110927/</spec_url>
-            <spec_statement/>
+            <spec_statement />
           </spec>
         </specs>
       </testcase>
-      <testcase purpose="Test that the user agent skips the content element with the src attribute but loads the default start file according to the first content element." type="compliance" status="approved" component="WebAPI/Widget/Widget Packaging and XML Configuration" execution_type="manual" priority="P3" id="WidgetPackaging_d8">
+      <testcase component="W3C_HTML5 APIs/Widget/Widget Packaging and XML Configuration" execution_type="manual" id="WidgetPackaging_d8" priority="P3" purpose="Test that the user agent skips the content element with the src attribute but loads the default start file according to the first content element." status="approved" type="compliance">
         <description>
-          <pre_condition></pre_condition>
+          <pre_condition />
           <post_condition>Get the $pkgid of d8.wgt with the command : pkgcmd -l, then uninstall the d8.wgt with the command : pkgcmd -u -t wgt -q -n $pkgid</post_condition>
           <steps>
             <step order="1">
@@ -1385,19 +1383,19 @@
               <expected>To pass, the widget can be started successfully and the screen shows "PASS" on green background.</expected>
             </step>
           </steps>
-          <test_script_entry timeout="90"></test_script_entry>
+          <test_script_entry timeout="90" />
         </description>
         <specs>
           <spec>
-            <spec_assertion usage="true" interface="Widget" specification="Widget Packaging and XML Configuration" section="Widget" category="Tizen W3C API Specifications"/>
+            <spec_assertion category="Tizen W3C API Specifications" interface="Widget" section="Widget" specification="Widget Packaging and XML Configuration" usage="true" />
             <spec_url>http://www.w3.org/TR/2011/REC-widgets-20110927/</spec_url>
-            <spec_statement/>
+            <spec_statement />
           </spec>
         </specs>
       </testcase>
-      <testcase purpose="Test that the user agent skips a content element without the src attribute and loads the default start file." type="compliance" status="approved" component="WebAPI/Widget/Widget Packaging and XML Configuration" execution_type="manual" priority="P3" id="WidgetPackaging_d7">
+      <testcase component="W3C_HTML5 APIs/Widget/Widget Packaging and XML Configuration" execution_type="manual" id="WidgetPackaging_d7" priority="P3" purpose="Test that the user agent skips a content element without the src attribute and loads the default start file." status="approved" type="compliance">
         <description>
-          <pre_condition></pre_condition>
+          <pre_condition />
           <post_condition>Get the $pkgid of d7.wgt with the command : pkgcmd -l, then uninstall the d7.wgt with the command : pkgcmd -u -t wgt -q -n $pkgid</post_condition>
           <steps>
             <step order="1">
@@ -1409,19 +1407,19 @@
               <expected>To pass, the widget can be started successfully and the screen shows "PASS" on green background.</expected>
             </step>
           </steps>
-          <test_script_entry timeout="90"></test_script_entry>
+          <test_script_entry timeout="90" />
         </description>
         <specs>
           <spec>
-            <spec_assertion usage="true" interface="Widget" specification="Widget Packaging and XML Configuration" section="Widget" category="Tizen W3C API Specifications"/>
+            <spec_assertion category="Tizen W3C API Specifications" interface="Widget" section="Widget" specification="Widget Packaging and XML Configuration" usage="true" />
             <spec_url>http://www.w3.org/TR/2011/REC-widgets-20110927/</spec_url>
-            <spec_statement/>
+            <spec_statement />
           </spec>
         </specs>
       </testcase>
-      <testcase purpose="Test that an user agent correctly processes a name element with xml:lang attribute." type="compliance" status="approved" component="WebAPI/Widget/Widget Packaging and XML Configuration" execution_type="manual" priority="P3" id="WidgetPackaging_oa">
+      <testcase component="W3C_HTML5 APIs/Widget/Widget Packaging and XML Configuration" execution_type="manual" id="WidgetPackaging_oa" priority="P3" purpose="Test that an user agent correctly processes a name element with xml:lang attribute." status="approved" type="compliance">
         <description>
-          <pre_condition></pre_condition>
+          <pre_condition />
           <post_condition>Get the $pkgid of oa.wgt with the command : pkgcmd -l, then uninstall the oa.wgt with the command : pkgcmd -u -t wgt -q -n $pkgid</post_condition>
           <steps>
             <step order="1">
@@ -1433,19 +1431,19 @@
               <expected>To pass, the widget can be started successfully and the screen shows "PASS" on green background.</expected>
             </step>
           </steps>
-          <test_script_entry timeout="90"></test_script_entry>
+          <test_script_entry timeout="90" />
         </description>
         <specs>
           <spec>
-            <spec_assertion usage="true" interface="Widget" specification="Widget Packaging and XML Configuration" section="Widget" category="Tizen W3C API Specifications"/>
+            <spec_assertion category="Tizen W3C API Specifications" interface="Widget" section="Widget" specification="Widget Packaging and XML Configuration" usage="true" />
             <spec_url>http://www.w3.org/TR/2011/REC-widgets-20110927/</spec_url>
-            <spec_statement/>
+            <spec_statement />
           </spec>
         </specs>
       </testcase>
-      <testcase purpose="Test that LRO direction applies to the name element." type="compliance" status="approved" component="WebAPI/Widget/Widget Packaging and XML Configuration" execution_type="manual" priority="P3" id="WidgetPackaging_i18nlro01">
+      <testcase component="W3C_HTML5 APIs/Widget/Widget Packaging and XML Configuration" execution_type="manual" id="WidgetPackaging_i18nlro01" priority="P3" purpose="Test that LRO direction applies to the name element." status="approved" type="compliance">
         <description>
-          <pre_condition></pre_condition>
+          <pre_condition />
           <post_condition>Get the $pkgid of i18nlro01.wgt with the command : pkgcmd -l, then uninstall the i18nlro01.wgt with the command : pkgcmd -u -t wgt -q -n $pkgid</post_condition>
           <steps>
             <step order="1">
@@ -1457,19 +1455,19 @@
               <expected>To pass, the widget can be started successfully and the screen shows "PASS" on green background.</expected>
             </step>
           </steps>
-          <test_script_entry timeout="90"></test_script_entry>
+          <test_script_entry timeout="90" />
         </description>
         <specs>
           <spec>
-            <spec_assertion usage="true" interface="Widget" specification="Widget Packaging and XML Configuration" section="Widget" category="Tizen W3C API Specifications"/>
+            <spec_assertion category="Tizen W3C API Specifications" interface="Widget" section="Widget" specification="Widget Packaging and XML Configuration" usage="true" />
             <spec_url>http://www.w3.org/TR/2011/REC-widgets-20110927/</spec_url>
-            <spec_statement/>
+            <spec_statement />
           </spec>
         </specs>
       </testcase>
-      <testcase purpose="Test that RTL direction does not apply to the xml:lang attribute of the widget element." type="compliance" status="approved" component="WebAPI/Widget/Widget Packaging and XML Configuration" execution_type="manual" priority="P3" id="WidgetPackaging_i18nrtl44">
+      <testcase component="W3C_HTML5 APIs/Widget/Widget Packaging and XML Configuration" execution_type="manual" id="WidgetPackaging_i18nrtl44" priority="P3" purpose="Test that RTL direction does not apply to the xml:lang attribute of the widget element." status="approved" type="compliance">
         <description>
-          <pre_condition></pre_condition>
+          <pre_condition />
           <post_condition>Get the $pkgid of i18nrtl44.wgt with the command : pkgcmd -l, then uninstall the i18nrtl44.wgt with the command : pkgcmd -u -t wgt -q -n $pkgid</post_condition>
           <steps>
             <step order="1">
@@ -1481,19 +1479,19 @@
               <expected>To pass, the widget can be started successfully and the screen shows "PASS" on green background.</expected>
             </step>
           </steps>
-          <test_script_entry timeout="90"></test_script_entry>
+          <test_script_entry timeout="90" />
         </description>
         <specs>
           <spec>
-            <spec_assertion usage="true" interface="Widget" specification="Widget Packaging and XML Configuration" section="Widget" category="Tizen W3C API Specifications"/>
+            <spec_assertion category="Tizen W3C API Specifications" interface="Widget" section="Widget" specification="Widget Packaging and XML Configuration" usage="true" />
             <spec_url>http://www.w3.org/TR/2011/REC-widgets-20110927/</spec_url>
-            <spec_statement/>
+            <spec_statement />
           </spec>
         </specs>
       </testcase>
-      <testcase purpose="Test that LRO direction does not apply to the xml:lang attribute of the widget element." type="compliance" status="approved" component="WebAPI/Widget/Widget Packaging and XML Configuration" execution_type="manual" priority="P3" id="WidgetPackaging_i18nlro44">
+      <testcase component="W3C_HTML5 APIs/Widget/Widget Packaging and XML Configuration" execution_type="manual" id="WidgetPackaging_i18nlro44" priority="P3" purpose="Test that LRO direction does not apply to the xml:lang attribute of the widget element." status="approved" type="compliance">
         <description>
-          <pre_condition></pre_condition>
+          <pre_condition />
           <post_condition>Get the $pkgid of i18nlro44.wgt with the command : pkgcmd -l, then uninstall the i18nlro44.wgt with the command : pkgcmd -u -t wgt -q -n $pkgid</post_condition>
           <steps>
             <step order="1">
@@ -1505,19 +1503,19 @@
               <expected>To pass, the widget can be started successfully and the screen shows "PASS" on green background.</expected>
             </step>
           </steps>
-          <test_script_entry timeout="90"></test_script_entry>
+          <test_script_entry timeout="90" />
         </description>
         <specs>
           <spec>
-            <spec_assertion usage="true" interface="Widget" specification="Widget Packaging and XML Configuration" section="Widget" category="Tizen W3C API Specifications"/>
+            <spec_assertion category="Tizen W3C API Specifications" interface="Widget" section="Widget" specification="Widget Packaging and XML Configuration" usage="true" />
             <spec_url>http://www.w3.org/TR/2011/REC-widgets-20110927/</spec_url>
-            <spec_statement/>
+            <spec_statement />
           </spec>
         </specs>
       </testcase>
-      <testcase purpose="Test that LTR direction does not apply to the xml:lang attribute of the widget element." type="compliance" status="approved" component="WebAPI/Widget/Widget Packaging and XML Configuration" execution_type="manual" priority="P3" id="WidgetPackaging_i18nltr44">
+      <testcase component="W3C_HTML5 APIs/Widget/Widget Packaging and XML Configuration" execution_type="manual" id="WidgetPackaging_i18nltr44" priority="P3" purpose="Test that LTR direction does not apply to the xml:lang attribute of the widget element." status="approved" type="compliance">
         <description>
-          <pre_condition></pre_condition>
+          <pre_condition />
           <post_condition>Get the $pkgid of i18nltr44.wgt with the command : pkgcmd -l, then uninstall the i18nltr44.wgt with the command : pkgcmd -u -t wgt -q -n $pkgid</post_condition>
           <steps>
             <step order="1">
@@ -1529,19 +1527,19 @@
               <expected>To pass, the widget can be started successfully and the screen shows "PASS" on green background.</expected>
             </step>
           </steps>
-          <test_script_entry timeout="90"></test_script_entry>
+          <test_script_entry timeout="90" />
         </description>
         <specs>
           <spec>
-            <spec_assertion usage="true" interface="Widget" specification="Widget Packaging and XML Configuration" section="Widget" category="Tizen W3C API Specifications"/>
+            <spec_assertion category="Tizen W3C API Specifications" interface="Widget" section="Widget" specification="Widget Packaging and XML Configuration" usage="true" />
             <spec_url>http://www.w3.org/TR/2011/REC-widgets-20110927/</spec_url>
-            <spec_statement/>
+            <spec_statement />
           </spec>
         </specs>
       </testcase>
-      <testcase purpose="Test that RLO direction does not apply to the xml:lang attribute of the widget element." type="compliance" status="approved" component="WebAPI/Widget/Widget Packaging and XML Configuration" execution_type="manual" priority="P3" id="WidgetPackaging_i18nrlo44">
+      <testcase component="W3C_HTML5 APIs/Widget/Widget Packaging and XML Configuration" execution_type="manual" id="WidgetPackaging_i18nrlo44" priority="P3" purpose="Test that RLO direction does not apply to the xml:lang attribute of the widget element." status="approved" type="compliance">
         <description>
-          <pre_condition></pre_condition>
+          <pre_condition />
           <post_condition>Get the $pkgid of i18nrlo44.wgt with the command : pkgcmd -l, then uninstall the i18nrlo44.wgt with the command : pkgcmd -u -t wgt -q -n $pkgid</post_condition>
           <steps>
             <step order="1">
@@ -1553,13 +1551,13 @@
               <expected>To pass, the widget can be started successfully and the screen shows "PASS" on green background.</expected>
             </step>
           </steps>
-          <test_script_entry timeout="90"></test_script_entry>
+          <test_script_entry timeout="90" />
         </description>
         <specs>
           <spec>
-            <spec_assertion usage="true" interface="Widget" specification="Widget Packaging and XML Configuration" section="Widget" category="Tizen W3C API Specifications"/>
+            <spec_assertion category="Tizen W3C API Specifications" interface="Widget" section="Widget" specification="Widget Packaging and XML Configuration" usage="true" />
             <spec_url>http://www.w3.org/TR/2011/REC-widgets-20110927/</spec_url>
-            <spec_statement/>
+            <spec_statement />
           </spec>
         </specs>
       </testcase>

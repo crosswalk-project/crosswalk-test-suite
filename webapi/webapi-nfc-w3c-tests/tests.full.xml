@@ -1,702 +1,700 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<?xml-stylesheet type="text/xsl"  href="./testcase.xsl"?>
 <test_definition>
-  <suite name="webapi-nfc-w3c-tests" extension="crosswalk" category="W3C Web Device APIs">
+  <suite category="W3C Web Device APIs" extension="crosswalk" name="webapi-nfc-w3c-tests">
     <set name="NFC" type="js">
       <capabilities>
-        <capability name="nfc"/>
+        <capability name="nfc" />
       </capabilities>
-      <testcase purpose="Check if Navigator have nfc attribute with proper type and is readonly" type="compliance" status="approved" component="WebAPI/Communication/NFC" execution_type="auto" priority="p1" id="Navigator_nfc_attribute">
+      <testcase component="W3C_HTML5 APIs/Communication/Web NFC API" execution_type="auto" id="Navigator_nfc_attribute" priority="p1" purpose="Check if Navigator have nfc attribute with proper type and is readonly" status="approved" type="compliance">
         <description>
           <test_script_entry>/opt/webapi-nfc-w3c-tests/nfc/Navigator_nfc_attribute.html</test_script_entry>
         </description>
         <specs>
           <spec>
-            <spec_assertion interface="Navigator" element_type="attribute" element_name="nfc" specification="NFC" section="Communication" category="W3C API Specifications"/>
+            <spec_assertion category="W3C API Specifications" element_name="nfc" element_type="attribute" interface="Navigator" section="Communication" specification="NFC" />
             <spec_url>http://www.w3.org/TR/nfc/</spec_url>
             <spec_statement>TBD</spec_statement>
           </spec>
         </specs>
       </testcase>
-      <testcase purpose="Check NDEFMessage constructor works with byte array" type="compliance" status="approved" component="WebAPI/Communication/NFC" execution_type="auto" priority="p1" id="NDEFMessage_constructor_bytes">
+      <testcase component="W3C_HTML5 APIs/Communication/Web NFC API" execution_type="auto" id="NDEFMessage_constructor_bytes" priority="p1" purpose="Check NDEFMessage constructor works with byte array" status="approved" type="compliance">
         <description>
           <test_script_entry>/opt/webapi-nfc-w3c-tests/nfc/NDEFMessage_constructor_bytes.html</test_script_entry>
         </description>
         <specs>
           <spec>
-            <spec_assertion interface="NDEFMessage" element_type="constructor" element_name="constructor" specification="NFC" section="Communication" category="W3C API Specifications"/>
+            <spec_assertion category="W3C API Specifications" element_name="constructor" element_type="constructor" interface="NDEFMessage" section="Communication" specification="NFC" />
             <spec_url>http://www.w3.org/TR/nfc/</spec_url>
             <spec_statement>TBD</spec_statement>
           </spec>
         </specs>
       </testcase>
-      <testcase purpose="Check NDEFMessage constructor works with NDEF records array" type="compliance" status="approved" component="WebAPI/Communication/NFC" execution_type="auto" priority="P1" id="NDEFMessage_constructor_records">
+      <testcase component="W3C_HTML5 APIs/Communication/Web NFC API" execution_type="auto" id="NDEFMessage_constructor_records" priority="P1" purpose="Check NDEFMessage constructor works with NDEF records array" status="approved" type="compliance">
         <description>
           <test_script_entry>/opt/webapi-nfc-w3c-tests/nfc/NDEFMessage_constructor_records.html</test_script_entry>
         </description>
         <specs>
           <spec>
-            <spec_assertion interface="NDEFMessage" element_type="constructor" element_name="constructor" specification="NFC" section="Communication" category="W3C API Specifications"/>
+            <spec_assertion category="W3C API Specifications" element_name="constructor" element_type="constructor" interface="NDEFMessage" section="Communication" specification="NFC" />
             <spec_url>http://www.w3.org/TR/nfc/</spec_url>
             <spec_statement>TBD</spec_statement>
           </spec>
         </specs>
       </testcase>
-      <testcase purpose="Check if NDEFMessageEvent have message attribute with proper type and is readonly" type="compliance" status="approved" component="WebAPI/Communication/NFC" execution_type="manual" priority="p1" id="NDEFMessageEvent_message_attribute">
+      <testcase component="W3C_HTML5 APIs/Communication/Web NFC API" execution_type="manual" id="NDEFMessageEvent_message_attribute" priority="p1" purpose="Check if NDEFMessageEvent have message attribute with proper type and is readonly" status="approved" type="compliance">
         <description>
           <test_script_entry>/opt/webapi-nfc-w3c-tests/nfc/NDEFMessageEvent_message_attribute.html</test_script_entry>
         </description>
         <specs>
           <spec>
-            <spec_assertion interface="NDEFMessageEvent" element_type="attribute" element_name="message" specification="NFC" section="Communication" category="W3C API Specifications"/>
+            <spec_assertion category="W3C API Specifications" element_name="message" element_type="attribute" interface="NDEFMessageEvent" section="Communication" specification="NFC" />
             <spec_url>http://www.w3.org/TR/nfc/</spec_url>
             <spec_statement>TBD</spec_statement>
           </spec>
         </specs>
       </testcase>
-      <testcase purpose="Check if NDEFMessage::getBytes() exists" type="compliance" status="approved" component="WebAPI/Communication/NFC" execution_type="auto" priority="p1" id="NDEFMessage_getBytes">
+      <testcase component="W3C_HTML5 APIs/Communication/Web NFC API" execution_type="auto" id="NDEFMessage_getBytes" priority="p1" purpose="Check if NDEFMessage::getBytes() exists" status="approved" type="compliance">
         <description>
           <test_script_entry>/opt/webapi-nfc-w3c-tests/nfc/NDEFMessage_getBytes.html</test_script_entry>
         </description>
         <specs>
           <spec>
-            <spec_assertion interface="NDEFMessage" element_type="method" element_name="getBytes" specification="NFC" section="Communication" category="W3C API Specifications"/>
+            <spec_assertion category="W3C API Specifications" element_name="getBytes" element_type="method" interface="NDEFMessage" section="Communication" specification="NFC" />
             <spec_url>http://www.w3.org/TR/nfc/</spec_url>
             <spec_statement>TBD</spec_statement>
           </spec>
         </specs>
       </testcase>
-      <testcase purpose="Check if attribute records of NDEFMessage exists, has type Array and is readonly" type="compliance" status="approved" component="WebAPI/Communication/NFC" execution_type="auto" priority="P1" id="NDEFMessage_records_attribute">
+      <testcase component="W3C_HTML5 APIs/Communication/Web NFC API" execution_type="auto" id="NDEFMessage_records_attribute" priority="P1" purpose="Check if attribute records of NDEFMessage exists, has type Array and is readonly" status="approved" type="compliance">
         <description>
           <test_script_entry>/opt/webapi-nfc-w3c-tests/nfc/NDEFMessage_records_attribute.html</test_script_entry>
         </description>
         <specs>
           <spec>
-            <spec_assertion interface="NDEFMessage" element_type="attribute" element_name="records" specification="NFC" section="Communication" category="W3C API Specifications"/>
+            <spec_assertion category="W3C API Specifications" element_name="records" element_type="attribute" interface="NDEFMessage" section="Communication" specification="NFC" />
             <spec_url>http://www.w3.org/TR/nfc/</spec_url>
             <spec_statement>TBD</spec_statement>
           </spec>
         </specs>
       </testcase>
-      <testcase purpose="Check NDEFRecord constructor works with byte tnf parameter" type="compliance" status="approved" component="WebAPI/Communication/NFC" execution_type="auto" priority="P1" id="NDEFRecord_constructor_tnf">
+      <testcase component="W3C_HTML5 APIs/Communication/Web NFC API" execution_type="auto" id="NDEFRecord_constructor_tnf" priority="P1" purpose="Check NDEFRecord constructor works with byte tnf parameter" status="approved" type="compliance">
         <description>
           <test_script_entry>/opt/webapi-nfc-w3c-tests/nfc/NDEFRecord_constructor_tnf.html</test_script_entry>
         </description>
         <specs>
           <spec>
-            <spec_assertion interface="NDEFRecord" element_type="constructor" element_name="constructor" specification="NFC" section="Communication" category="W3C API Specifications"/>
+            <spec_assertion category="W3C API Specifications" element_name="constructor" element_type="constructor" interface="NDEFRecord" section="Communication" specification="NFC" />
             <spec_url>http://www.w3.org/TR/nfc/</spec_url>
             <spec_statement>TBD</spec_statement>
           </spec>
         </specs>
       </testcase>
-      <testcase purpose="Check NDEFRecord constructor works with byte tnf, DOMString type parameters" type="compliance" status="approved" component="WebAPI/Communication/NFC" execution_type="auto" priority="P1" id="NDEFRecord_constructor_tnf_type">
+      <testcase component="W3C_HTML5 APIs/Communication/Web NFC API" execution_type="auto" id="NDEFRecord_constructor_tnf_type" priority="P1" purpose="Check NDEFRecord constructor works with byte tnf, DOMString type parameters" status="approved" type="compliance">
         <description>
           <test_script_entry>/opt/webapi-nfc-w3c-tests/nfc/NDEFRecord_constructor_tnf_type.html</test_script_entry>
         </description>
         <specs>
           <spec>
-            <spec_assertion interface="NDEFRecord" element_type="constructor" element_name="constructor" specification="NFC" section="Communication" category="W3C API Specifications"/>
+            <spec_assertion category="W3C API Specifications" element_name="constructor" element_type="constructor" interface="NDEFRecord" section="Communication" specification="NFC" />
             <spec_url>http://www.w3.org/TR/nfc/</spec_url>
             <spec_statement>TBD</spec_statement>
           </spec>
         </specs>
       </testcase>
-      <testcase purpose="Check NDEFRecord constructor works with byte tnf, DOMString type, byte [] payload parameters" type="compliance" status="approved" component="WebAPI/Communication/NFC" execution_type="auto" priority="P1" id="NDEFRecord_constructor_tnf_type_payload">
+      <testcase component="W3C_HTML5 APIs/Communication/Web NFC API" execution_type="auto" id="NDEFRecord_constructor_tnf_type_payload" priority="P1" purpose="Check NDEFRecord constructor works with byte tnf, DOMString type, byte [] payload parameters" status="approved" type="compliance">
         <description>
           <test_script_entry>/opt/webapi-nfc-w3c-tests/nfc/NDEFRecord_constructor_tnf_type_payload.html</test_script_entry>
         </description>
         <specs>
           <spec>
-            <spec_assertion interface="NDEFRecord" element_type="constructor" element_name="cosntructor" specification="NFC" section="Communication" category="W3C API Specifications"/>
+            <spec_assertion category="W3C API Specifications" element_name="cosntructor" element_type="constructor" interface="NDEFRecord" section="Communication" specification="NFC" />
             <spec_url>http://www.w3.org/TR/nfc/</spec_url>
             <spec_statement>TBD</spec_statement>
           </spec>
         </specs>
       </testcase>
-      <testcase purpose="Check NDEFRecord constructor works with byte tnf, DOMString type, byte [] payload, DOMString id parameters" type="compliance" status="approved" component="WebAPI/Communication/NFC" execution_type="auto" priority="p1" id="NDEFRecord_constructor_tnf_type_payload_id">
+      <testcase component="W3C_HTML5 APIs/Communication/Web NFC API" execution_type="auto" id="NDEFRecord_constructor_tnf_type_payload_id" priority="p1" purpose="Check NDEFRecord constructor works with byte tnf, DOMString type, byte [] payload, DOMString id parameters" status="approved" type="compliance">
         <description>
           <test_script_entry>/opt/webapi-nfc-w3c-tests/nfc/NDEFRecord_constructor_tnf_type_payload_id.html</test_script_entry>
         </description>
         <specs>
           <spec>Communication
-            <spec_assertion interface="NDEFRecord" element_type="constructor" element_name="constructor" specification="NFC" section="Communication" category="W3C API Specifications"/>
+            <spec_assertion category="W3C API Specifications" element_name="constructor" element_type="constructor" interface="NDEFRecord" section="Communication" specification="NFC" />
             <spec_url>http://www.w3.org/TR/nfc/</spec_url>
             <spec_statement>TBD</spec_statement>
           </spec>
         </specs>
       </testcase>
-      <testcase purpose="Check if method NDEFRecord::getPayload() exists" type="compliance" status="approved" component="WebAPI/Communication/NFC" execution_type="auto" priority="P1" id="NDEFRecord_getPayload">
+      <testcase component="W3C_HTML5 APIs/Communication/Web NFC API" execution_type="auto" id="NDEFRecord_getPayload" priority="P1" purpose="Check if method NDEFRecord::getPayload() exists" status="approved" type="compliance">
         <description>
           <test_script_entry>/opt/webapi-nfc-w3c-tests/nfc/NDEFRecord_getPayload.html</test_script_entry>
         </description>
         <specs>
           <spec>
-            <spec_assertion interface="NDEFRecord" element_type="method" element_name="getPayload" specification="NFC" section="Communication" category="W3C API Specifications"/>
+            <spec_assertion category="W3C API Specifications" element_name="getPayload" element_type="method" interface="NDEFRecord" section="Communication" specification="NFC" />
             <spec_url>http://www.w3.org/TR/nfc/</spec_url>
             <spec_statement>TBD</spec_statement>
           </spec>
         </specs>
       </testcase>
-      <testcase purpose="Check if NDEFRecord have id attribute with proper id and is readonly" type="compliance" status="approved" component="WebAPI/Communication/NFC" execution_type="auto" priority="P1" id="NDEFRecord_id_attribute">
+      <testcase component="W3C_HTML5 APIs/Communication/Web NFC API" execution_type="auto" id="NDEFRecord_id_attribute" priority="P1" purpose="Check if NDEFRecord have id attribute with proper id and is readonly" status="approved" type="compliance">
         <description>
           <test_script_entry>/opt/webapi-nfc-w3c-tests/nfc/NDEFRecord_id_attribute.html</test_script_entry>
         </description>
         <specs>
           <spec>
-            <spec_assertion interface="NDEFRecord" element_type="attribute" element_name="id" specification="NFC" section="Communication" category="W3C API Specifications"/>
+            <spec_assertion category="W3C API Specifications" element_name="id" element_type="attribute" interface="NDEFRecord" section="Communication" specification="NFC" />
             <spec_url>http://www.w3.org/TR/nfc/</spec_url>
             <spec_statement>TBD</spec_statement>
           </spec>
         </specs>
       </testcase>
-      <testcase purpose="Check if NDEFRecordMedia constructor works" type="compliance" status="approved" component="WebAPI/Communication/NFC" execution_type="auto" priority="P1" id="NDEFRecordMedia_constructor">
+      <testcase component="W3C_HTML5 APIs/Communication/Web NFC API" execution_type="auto" id="NDEFRecordMedia_constructor" priority="P1" purpose="Check if NDEFRecordMedia constructor works" status="approved" type="compliance">
         <description>
           <test_script_entry>/opt/webapi-nfc-w3c-tests/nfc/NDEFRecordMedia_constructor.html</test_script_entry>
         </description>
         <specs>
           <spec>
-            <spec_assertion interface="NDEFRecordMedia" element_type="constructor" element_name="constructor" specification="NFC" section="Communication" category="W3C API Specifications"/>
+            <spec_assertion category="W3C API Specifications" element_name="constructor" element_type="constructor" interface="NDEFRecordMedia" section="Communication" specification="NFC" />
             <spec_url>http://www.w3.org/TR/nfc/</spec_url>
             <spec_statement>TBD</spec_statement>
           </spec>
         </specs>
       </testcase>
-      <testcase purpose="Check if NDEFRecordMedia have mimeType attribute with proper type and is readonly" type="compliance" status="approved" component="WebAPI/Communication/NFC" execution_type="auto" priority="P1" id="NDEFRecordMedia_mimeType_attribute">
+      <testcase component="W3C_HTML5 APIs/Communication/Web NFC API" execution_type="auto" id="NDEFRecordMedia_mimeType_attribute" priority="P1" purpose="Check if NDEFRecordMedia have mimeType attribute with proper type and is readonly" status="approved" type="compliance">
         <description>
           <test_script_entry>/opt/webapi-nfc-w3c-tests/nfc/NDEFRecordMedia_mimeType_attribute.html</test_script_entry>
         </description>
         <specs>
           <spec>
-            <spec_assertion interface="NDEFRecordMedia" element_type="attribute" element_name="mimeType" specification="NFC" section="Communication" category="W3C API Specifications"/>
+            <spec_assertion category="W3C API Specifications" element_name="mimeType" element_type="attribute" interface="NDEFRecordMedia" section="Communication" specification="NFC" />
             <spec_url>http://www.w3.org/TR/nfc/</spec_url>
             <spec_statement>TBD</spec_statement>
           </spec>
         </specs>
       </testcase>
-      <testcase purpose="Check if NDEFRecord have recordType attribute with proper type and is readonly" type="compliance" status="approved" component="WebAPI/Communication/NFC" execution_type="auto" priority="P1" id="NDEFRecord_recordType_attribute">
+      <testcase component="W3C_HTML5 APIs/Communication/Web NFC API" execution_type="auto" id="NDEFRecord_recordType_attribute" priority="P1" purpose="Check if NDEFRecord have recordType attribute with proper type and is readonly" status="approved" type="compliance">
         <description>
           <test_script_entry>/opt/webapi-nfc-w3c-tests/nfc/NDEFRecord_recordType_attribute.html</test_script_entry>
         </description>
         <specs>
           <spec>
-            <spec_assertion interface="NDEFRecord" element_type="attribute" element_name="recordType" specification="NFC" section="Communication" category="W3C API Specifications"/>
+            <spec_assertion category="W3C API Specifications" element_name="recordType" element_type="attribute" interface="NDEFRecord" section="Communication" specification="NFC" />
             <spec_url>http://www.w3.org/TR/nfc/</spec_url>
             <spec_statement>TBD</spec_statement>
           </spec>
         </specs>
       </testcase>
-      <testcase purpose="Check if NDEFRecord have tnf attribute with proper type and is readonly" type="compliance" status="approved" component="WebAPI/Communication/NFC" execution_type="auto" priority="P1" id="NDEFRecord_tnf_attribute">
+      <testcase component="W3C_HTML5 APIs/Communication/Web NFC API" execution_type="auto" id="NDEFRecord_tnf_attribute" priority="P1" purpose="Check if NDEFRecord have tnf attribute with proper type and is readonly" status="approved" type="compliance">
         <description>
           <test_script_entry>/opt/webapi-nfc-w3c-tests/nfc/NDEFRecord_tnf_attribute.html</test_script_entry>
         </description>
         <specs>
           <spec>
-            <spec_assertion interface="NDEFRecord" element_type="attribute" element_name="tnf" specification="NFC" section="Communication" category="W3C API Specifications"/>
+            <spec_assertion category="W3C API Specifications" element_name="tnf" element_type="attribute" interface="NDEFRecord" section="Communication" specification="NFC" />
             <spec_url>http://www.w3.org/TR/nfc/</spec_url>
             <spec_statement>TBD</spec_statement>
           </spec>
         </specs>
       </testcase>
-      <testcase purpose="Check if NDEFRecord have type attribute with proper type and is readonly" type="compliance" status="approved" component="WebAPI/Communication/NFC" execution_type="auto" priority="P1" id="NDEFRecord_type_attribute">
+      <testcase component="W3C_HTML5 APIs/Communication/Web NFC API" execution_type="auto" id="NDEFRecord_type_attribute" priority="P1" purpose="Check if NDEFRecord have type attribute with proper type and is readonly" status="approved" type="compliance">
         <description>
           <test_script_entry>/opt/webapi-nfc-w3c-tests/nfc/NDEFRecord_type_attribute.html</test_script_entry>
         </description>
         <specs>
           <spec>
-            <spec_assertion interface="NDEFRecord" element_type="attribute" element_name="tnf" specification="NFC" section="Communication" category="W3C API Specifications"/>
+            <spec_assertion category="W3C API Specifications" element_name="tnf" element_type="attribute" interface="NDEFRecord" section="Communication" specification="NFC" />
             <spec_url>http://www.w3.org/TR/nfc/</spec_url>
             <spec_statement>TBD</spec_statement>
           </spec>
         </specs>
       </testcase>
-      <testcase purpose="Check if attribute action of NDEFRecordSmartPoster exists, has proper type and is readonly" type="compliance" status="approved" component="WebAPI/Communication/NFC" execution_type="auto" priority="P1" id="NDEFRecordSmartPoster_action_attribute">
+      <testcase component="W3C_HTML5 APIs/Communication/Web NFC API" execution_type="auto" id="NDEFRecordSmartPoster_action_attribute" priority="P1" purpose="Check if attribute action of NDEFRecordSmartPoster exists, has proper type and is readonly" status="approved" type="compliance">
         <description>
           <test_script_entry>/opt/webapi-nfc-w3c-tests/nfc/NDEFRecordSmartPoster_action_attribute.html</test_script_entry>
         </description>
         <specs>
           <spec>
-            <spec_assertion interface="NDEFRecordSmartPoster" element_type="attribute" element_name="action" specification="NFC" section="Communication" category="W3C API Specifications"/>
+            <spec_assertion category="W3C API Specifications" element_name="action" element_type="attribute" interface="NDEFRecordSmartPoster" section="Communication" specification="NFC" />
             <spec_url>http://www.w3.org/TR/nfc/</spec_url>
             <spec_statement>TBD</spec_statement>
           </spec>
         </specs>
       </testcase>
-      <testcase purpose="Check NDEFRecordSmartPoster constructor works with DOMString uri parameter" type="compliance" status="approved" component="WebAPI/Communication/NFC" execution_type="auto" priority="P1" id="NDEFRecordSmartPoster_constructor_uri">
+      <testcase component="W3C_HTML5 APIs/Communication/Web NFC API" execution_type="auto" id="NDEFRecordSmartPoster_constructor_uri" priority="P1" purpose="Check NDEFRecordSmartPoster constructor works with DOMString uri parameter" status="approved" type="compliance">
         <description>
           <test_script_entry>/opt/webapi-nfc-w3c-tests/nfc/NDEFRecordSmartPoster_constructor_uri.html</test_script_entry>
         </description>
         <specs>
           <spec>
-            <spec_assertion interface="NDEFRecordSmartPoster" element_type="constructor" element_name="constructor" specification="NFC" section="Communication" category="W3C API Specifications"/>
+            <spec_assertion category="W3C API Specifications" element_name="constructor" element_type="constructor" interface="NDEFRecordSmartPoster" section="Communication" specification="NFC" />
             <spec_url>http://www.w3.org/TR/nfc/</spec_url>
             <spec_statement>TBD</spec_statement>
           </spec>
         </specs>
       </testcase>
-      <testcase purpose="Check NDEFRecordSmartPoster constructor works with DOMString uri, NDEFRecordText［］titles parameters" type="compliance" status="approved" component="WebAPI/Communication/NFC" execution_type="auto" priority="P1" id="NDEFRecordSmartPoster_constructor_uri_titles">
+      <testcase component="W3C_HTML5 APIs/Communication/Web NFC API" execution_type="auto" id="NDEFRecordSmartPoster_constructor_uri_titles" priority="P1" purpose="Check NDEFRecordSmartPoster constructor works with DOMString uri, NDEFRecordText&#65339;&#65341;titles parameters" status="approved" type="compliance">
         <description>
           <test_script_entry>/opt/webapi-nfc-w3c-tests/nfc/NDEFRecordSmartPoster_constructor_uri_titles.html</test_script_entry>
         </description>
         <specs>
           <spec>
-            <spec_assertion interface="NDEFRecordSmartPoster" element_type="constructor" element_name="constructor" specification="NFC" section="Communication" category="W3C API Specifications"/>
+            <spec_assertion category="W3C API Specifications" element_name="constructor" element_type="constructor" interface="NDEFRecordSmartPoster" section="Communication" specification="NFC" />
             <spec_url>http://www.w3.org/TR/nfc/</spec_url>
             <spec_statement>TBD</spec_statement>
           </spec>
         </specs>
       </testcase>
-      <testcase purpose="Check NDEFRecordSmartPoster constructor works with DOMString uri, NDEFRecordText［］titles, DOMString action parameters" type="compliance" status="approved" component="WebAPI/Communication/NFC" execution_type="auto" priority="P1" id="NDEFRecordSmartPoster_constructor_uri_titles_action">
+      <testcase component="W3C_HTML5 APIs/Communication/Web NFC API" execution_type="auto" id="NDEFRecordSmartPoster_constructor_uri_titles_action" priority="P1" purpose="Check NDEFRecordSmartPoster constructor works with DOMString uri, NDEFRecordText&#65339;&#65341;titles, DOMString action parameters" status="approved" type="compliance">
         <description>
           <test_script_entry>/opt/webapi-nfc-w3c-tests/nfc/NDEFRecordSmartPoster_constructor_uri_titles_action.html</test_script_entry>
         </description>
         <specs>
           <spec>
-            <spec_assertion interface="NDEFRecordSmartPoster" element_type="constructor" element_name="constructor" specification="NFC" section="Communication" category="W3C API Specifications"/>
+            <spec_assertion category="W3C API Specifications" element_name="constructor" element_type="constructor" interface="NDEFRecordSmartPoster" section="Communication" specification="NFC" />
             <spec_url>http://www.w3.org/TR/nfc/</spec_url>
             <spec_statement>TBD</spec_statement>
           </spec>
         </specs>
       </testcase>
-      <testcase purpose="Check NDEFRecordSmartPoster constructor works with DOMString uri, NDEFRecordText［］titles, DOMString action, NDEFRecordMedia［］icons parameters" type="compliance" status="approved" component="WebAPI/Communication/NFC" execution_type="auto" priority="P1" id="NDEFRecordSmartPoster_constructor_uri_titles_action_icons">
+      <testcase component="W3C_HTML5 APIs/Communication/Web NFC API" execution_type="auto" id="NDEFRecordSmartPoster_constructor_uri_titles_action_icons" priority="P1" purpose="Check NDEFRecordSmartPoster constructor works with DOMString uri, NDEFRecordText&#65339;&#65341;titles, DOMString action, NDEFRecordMedia&#65339;&#65341;icons parameters" status="approved" type="compliance">
         <description>
           <test_script_entry>/opt/webapi-nfc-w3c-tests/nfc/NDEFRecordSmartPoster_constructor_uri_titles_action_icons.html</test_script_entry>
         </description>
         <specs>
           <spec>
-            <spec_assertion interface="NDEFRecordSmartPoster" element_type="constructor" element_name="constructor" specification="NFC" section="Communication" category="W3C API Specifications"/>
+            <spec_assertion category="W3C API Specifications" element_name="constructor" element_type="constructor" interface="NDEFRecordSmartPoster" section="Communication" specification="NFC" />
             <spec_url>http://www.w3.org/TR/nfc/</spec_url>
             <spec_statement>TBD</spec_statement>
           </spec>
         </specs>
       </testcase>
-      <testcase purpose="Check NDEFRecordSmartPoster constructor works with DOMString uri, NDEFRecordText［］titles, DOMString action, NDEFRecordMedia［］icons, unsigned long targetSize parameters" type="compliance" status="approved" component="WebAPI/Communication/NFC" execution_type="auto" priority="P1" id="NDEFRecordSmartPoster_constructor_uri_titles_action_icons_targetSize">
+      <testcase component="W3C_HTML5 APIs/Communication/Web NFC API" execution_type="auto" id="NDEFRecordSmartPoster_constructor_uri_titles_action_icons_targetSize" priority="P1" purpose="Check NDEFRecordSmartPoster constructor works with DOMString uri, NDEFRecordText&#65339;&#65341;titles, DOMString action, NDEFRecordMedia&#65339;&#65341;icons, unsigned long targetSize parameters" status="approved" type="compliance">
         <description>
           <test_script_entry>/opt/webapi-nfc-w3c-tests/nfc/NDEFRecordSmartPoster_constructor_uri_titles_action_icons_targetSize.html</test_script_entry>
         </description>
         <specs>
           <spec>
-            <spec_assertion interface="NDEFRecordSmartPoster" element_type="constructor" element_name="constructor" specification="NFC" section="Communication" category="W3C API Specifications"/>
+            <spec_assertion category="W3C API Specifications" element_name="constructor" element_type="constructor" interface="NDEFRecordSmartPoster" section="Communication" specification="NFC" />
             <spec_url>http://www.w3.org/TR/nfc/</spec_url>
             <spec_statement>TBD</spec_statement>
           </spec>
         </specs>
       </testcase>
-      <testcase purpose="Check NDEFRecordSmartPoster constructor works with DOMString uri, NDEFRecordText［］titles, DOMString action, NDEFRecordMedia［］icons, unsigned long targetSize, DOMString targetMIME parameters" type="compliance" status="approved" component="WebAPI/Communication/NFC" execution_type="auto" priority="P1" id="NDEFRecordSmartPoster_constructor_uri_titles_action_icons_targetSize_targetMIME">
+      <testcase component="W3C_HTML5 APIs/Communication/Web NFC API" execution_type="auto" id="NDEFRecordSmartPoster_constructor_uri_titles_action_icons_targetSize_targetMIME" priority="P1" purpose="Check NDEFRecordSmartPoster constructor works with DOMString uri, NDEFRecordText&#65339;&#65341;titles, DOMString action, NDEFRecordMedia&#65339;&#65341;icons, unsigned long targetSize, DOMString targetMIME parameters" status="approved" type="compliance">
         <description>
           <test_script_entry>/opt/webapi-nfc-w3c-tests/nfc/NDEFRecordSmartPoster_constructor_uri_titles_action_icons_targetSize_targetMIME.html</test_script_entry>
         </description>
         <specs>
           <spec>
-            <spec_assertion interface="NDEFRecordSmartPoster" element_type="constructor" element_name="constructor" specification="NFC" section="Communication" category="W3C API Specifications"/>
+            <spec_assertion category="W3C API Specifications" element_name="constructor" element_type="constructor" interface="NDEFRecordSmartPoster" section="Communication" specification="NFC" />
             <spec_url>http://www.w3.org/TR/nfc/</spec_url>
             <spec_statement>TBD</spec_statement>
           </spec>
         </specs>
       </testcase>
-      <testcase purpose="Check if attribute icons of NDEFRecordSmartPoster exists, has proper type and is readonly" type="compliance" status="approved" component="WebAPI/Communication/NFC" execution_type="auto" priority="P1" id="NDEFRecordSmartPoster_icons_attribute">
+      <testcase component="W3C_HTML5 APIs/Communication/Web NFC API" execution_type="auto" id="NDEFRecordSmartPoster_icons_attribute" priority="P1" purpose="Check if attribute icons of NDEFRecordSmartPoster exists, has proper type and is readonly" status="approved" type="compliance">
         <description>
           <test_script_entry>/opt/webapi-nfc-w3c-tests/nfc/NDEFRecordSmartPoster_icons_attribute.html</test_script_entry>
         </description>
         <specs>
           <spec>
-            <spec_assertion interface="NDEFRecordSmartPoster" element_type="attribute" element_name="icons" specification="NFC" section="Communication" category="W3C API Specifications"/>
+            <spec_assertion category="W3C API Specifications" element_name="icons" element_type="attribute" interface="NDEFRecordSmartPoster" section="Communication" specification="NFC" />
             <spec_url>http://www.w3.org/TR/nfc/</spec_url>
             <spec_statement>TBD</spec_statement>
           </spec>
         </specs>
       </testcase>
-      <testcase purpose="Check if attribute targetMIME of NDEFRecordSmartPoster exists, has proper type and is readonly" type="compliance" status="approved" component="WebAPI/Communication/NFC" execution_type="auto" priority="P1" id="NDEFRecordSmartPoster_targetMIME_attribute">
+      <testcase component="W3C_HTML5 APIs/Communication/Web NFC API" execution_type="auto" id="NDEFRecordSmartPoster_targetMIME_attribute" priority="P1" purpose="Check if attribute targetMIME of NDEFRecordSmartPoster exists, has proper type and is readonly" status="approved" type="compliance">
         <description>
           <test_script_entry>/opt/webapi-nfc-w3c-tests/nfc/NDEFRecordSmartPoster_targetMIME_attribute.html</test_script_entry>
         </description>
         <specs>
           <spec>
-            <spec_assertion interface="NDEFRecordSmartPoster" element_type="attribute" element_name="targetMIME" specification="NFC" section="Communication" category="W3C API Specifications"/>
+            <spec_assertion category="W3C API Specifications" element_name="targetMIME" element_type="attribute" interface="NDEFRecordSmartPoster" section="Communication" specification="NFC" />
             <spec_url>http://www.w3.org/TR/nfc/</spec_url>
             <spec_statement>TBD</spec_statement>
           </spec>
         </specs>
       </testcase>
-      <testcase purpose="Check if attribute targetSize of NDEFRecordSmartPoster exists, has proper type and is readonly" type="compliance" status="approved" component="WebAPI/Communication/NFC" execution_type="auto" priority="P1" id="NDEFRecordSmartPoster_targetSize_attribute">
+      <testcase component="W3C_HTML5 APIs/Communication/Web NFC API" execution_type="auto" id="NDEFRecordSmartPoster_targetSize_attribute" priority="P1" purpose="Check if attribute targetSize of NDEFRecordSmartPoster exists, has proper type and is readonly" status="approved" type="compliance">
         <description>
           <test_script_entry>/opt/webapi-nfc-w3c-tests/nfc/NDEFRecordSmartPoster_targetSize_attribute.html</test_script_entry>
         </description>
         <specs>
           <spec>
-            <spec_assertion interface="NDEFRecordSmartPoster" element_type="attribute" element_name="targetSize" specification="NFC" section="Communication" category="W3C API Specifications"/>
+            <spec_assertion category="W3C API Specifications" element_name="targetSize" element_type="attribute" interface="NDEFRecordSmartPoster" section="Communication" specification="NFC" />
             <spec_url>http://www.w3.org/TR/nfc/</spec_url>
             <spec_statement>TBD</spec_statement>
           </spec>
         </specs>
       </testcase>
-      <testcase purpose="Check if attribute titles of NDEFRecordSmartPoster exists, has type object and is readonly" type="compliance" status="approved" component="WebAPI/Communication/NFC" execution_type="auto" priority="P1" id="NDEFRecordSmartPoster_titles_attribute">
+      <testcase component="W3C_HTML5 APIs/Communication/Web NFC API" execution_type="auto" id="NDEFRecordSmartPoster_titles_attribute" priority="P1" purpose="Check if attribute titles of NDEFRecordSmartPoster exists, has type object and is readonly" status="approved" type="compliance">
         <description>
           <test_script_entry>/opt/webapi-nfc-w3c-tests/nfc/NDEFRecordSmartPoster_titles_attribute.html</test_script_entry>
         </description>
         <specs>
           <spec>
-            <spec_assertion interface="NDEFRecordSmartPoster" element_type="attribute" element_name="titles" specification="NFC" section="Communication" category="W3C API Specifications"/>
+            <spec_assertion category="W3C API Specifications" element_name="titles" element_type="attribute" interface="NDEFRecordSmartPoster" section="Communication" specification="NFC" />
             <spec_url>http://www.w3.org/TR/nfc/</spec_url>
             <spec_statement>TBD</spec_statement>
           </spec>
         </specs>
       </testcase>
-      <testcase purpose="Check if attribute uri of NDEFRecordSmartPoster exists, has type DOMString and is readonly" type="compliance" status="approved" component="WebAPI/Communication/NFC" execution_type="auto" priority="P1" id="NDEFRecordSmartPoster_uri_attribute">
+      <testcase component="W3C_HTML5 APIs/Communication/Web NFC API" execution_type="auto" id="NDEFRecordSmartPoster_uri_attribute" priority="P1" purpose="Check if attribute uri of NDEFRecordSmartPoster exists, has type DOMString and is readonly" status="approved" type="compliance">
         <description>
           <test_script_entry>/opt/webapi-nfc-w3c-tests/nfc/NDEFRecordSmartPoster_uri_attribute.html</test_script_entry>
         </description>
         <specs>
           <spec>
-            <spec_assertion interface="NDEFRecordSmartPoster" element_type="attribute" element_name="uri" specification="NFC" section="Communication" category="W3C API Specifications"/>
+            <spec_assertion category="W3C API Specifications" element_name="uri" element_type="attribute" interface="NDEFRecordSmartPoster" section="Communication" specification="NFC" />
             <spec_url>http://www.w3.org/TR/nfc/</spec_url>
             <spec_statement>TBD</spec_statement>
           </spec>
         </specs>
       </testcase>
-      <testcase purpose="Check NDEFRecordText constructor works with DOMString text parameter" type="compliance" status="approved" component="WebAPI/Communication/NFC" execution_type="auto" priority="P1" id="NDEFRecordText_constructor_text">
+      <testcase component="W3C_HTML5 APIs/Communication/Web NFC API" execution_type="auto" id="NDEFRecordText_constructor_text" priority="P1" purpose="Check NDEFRecordText constructor works with DOMString text parameter" status="approved" type="compliance">
         <description>
           <test_script_entry>/opt/webapi-nfc-w3c-tests/nfc/NDEFRecordText_constructor_text.html</test_script_entry>
         </description>
         <specs>
           <spec>
-            <spec_assertion interface="NDEFRecordText" element_type="constructor" element_name="constructor" specification="NFC" section="Communication" category="W3C API Specifications"/>
+            <spec_assertion category="W3C API Specifications" element_name="constructor" element_type="constructor" interface="NDEFRecordText" section="Communication" specification="NFC" />
             <spec_url>http://www.w3.org/TR/nfc/</spec_url>
             <spec_statement>TBD</spec_statement>
           </spec>
         </specs>
       </testcase>
-      <testcase purpose="Check NDEFRecordText constructor works with DOMString text, DOMString languageCode parameters" type="compliance" status="approved" component="WebAPI/Communication/NFC" execution_type="auto" priority="P1" id="NDEFRecordText_constructor_text_languageCode">
+      <testcase component="W3C_HTML5 APIs/Communication/Web NFC API" execution_type="auto" id="NDEFRecordText_constructor_text_languageCode" priority="P1" purpose="Check NDEFRecordText constructor works with DOMString text, DOMString languageCode parameters" status="approved" type="compliance">
         <description>
           <test_script_entry>/opt/webapi-nfc-w3c-tests/nfc/NDEFRecordText_constructor_text_languageCode.html</test_script_entry>
         </description>
         <specs>
           <spec>
-            <spec_assertion interface="NDEFRecordText" element_type="constructor" element_name="constructor" specification="NFC" section="Communication" category="W3C API Specifications"/>
+            <spec_assertion category="W3C API Specifications" element_name="constructor" element_type="constructor" interface="NDEFRecordText" section="Communication" specification="NFC" />
             <spec_url>http://www.w3.org/TR/nfc/</spec_url>
             <spec_statement>TBD</spec_statement>
           </spec>
         </specs>
       </testcase>
-      <testcase purpose="Check NDEFRecordText constructor works with DOMString text, DOMString languageCode, DOMString encoding parameters" type="compliance" status="approved" component="WebAPI/Communication/NFC" execution_type="auto" priority="P1" id="NDEFRecordText_constructor_text_languageCode_encoding">
+      <testcase component="W3C_HTML5 APIs/Communication/Web NFC API" execution_type="auto" id="NDEFRecordText_constructor_text_languageCode_encoding" priority="P1" purpose="Check NDEFRecordText constructor works with DOMString text, DOMString languageCode, DOMString encoding parameters" status="approved" type="compliance">
         <description>
           <test_script_entry>/opt/webapi-nfc-w3c-tests/nfc/NDEFRecordText_constructor_text_languageCode_encoding.html</test_script_entry>
         </description>
         <specs>
           <spec>
-            <spec_assertion interface="NDEFRecordText" element_type="constructor" element_name="constructor" specification="NFC" section="Communication" category="W3C API Specifications"/>
+            <spec_assertion category="W3C API Specifications" element_name="constructor" element_type="constructor" interface="NDEFRecordText" section="Communication" specification="NFC" />
             <spec_url>http://www.w3.org/TR/nfc/</spec_url>
             <spec_statement>TBD</spec_statement>
           </spec>
         </specs>
       </testcase>
-      <testcase purpose="Check if attribute encoding of NDEFRecordText exists, has type DOMString and is readonly" type="compliance" status="approved" component="WebAPI/Communication/NFC" execution_type="auto" priority="P1" id="NDEFRecordText_encoding_attribute">
+      <testcase component="W3C_HTML5 APIs/Communication/Web NFC API" execution_type="auto" id="NDEFRecordText_encoding_attribute" priority="P1" purpose="Check if attribute encoding of NDEFRecordText exists, has type DOMString and is readonly" status="approved" type="compliance">
         <description>
           <test_script_entry>/opt/webapi-nfc-w3c-tests/nfc/NDEFRecordText_encoding_attribute.html</test_script_entry>
         </description>
         <specs>
           <spec>
-            <spec_assertion interface="NDEFRecordText" element_type="attribute" element_name="encoding" specification="NFC" section="Communication" category="W3C API Specifications"/>
+            <spec_assertion category="W3C API Specifications" element_name="encoding" element_type="attribute" interface="NDEFRecordText" section="Communication" specification="NFC" />
             <spec_url>http://www.w3.org/TR/nfc/</spec_url>
             <spec_statement>TBD</spec_statement>
           </spec>
         </specs>
       </testcase>
-      <testcase purpose="Check if attribute languageCode of NDEFRecordText exists, has type DOMString and is readonly" type="compliance" status="approved" component="WebAPI/Communication/NFC" execution_type="auto" priority="P1" id="NDEFRecordText_languageCode_attribute">
+      <testcase component="W3C_HTML5 APIs/Communication/Web NFC API" execution_type="auto" id="NDEFRecordText_languageCode_attribute" priority="P1" purpose="Check if attribute languageCode of NDEFRecordText exists, has type DOMString and is readonly" status="approved" type="compliance">
         <description>
           <test_script_entry>/opt/webapi-nfc-w3c-tests/nfc/NDEFRecordText_languageCode_attribute.html</test_script_entry>
         </description>
         <specs>
           <spec>
-            <spec_assertion interface="NDEFRecordText" element_type="attribute" element_name="languageCode" specification="NFC" section="Communication" category="W3C API Specifications"/>
+            <spec_assertion category="W3C API Specifications" element_name="languageCode" element_type="attribute" interface="NDEFRecordText" section="Communication" specification="NFC" />
             <spec_url>http://www.w3.org/TR/nfc/</spec_url>
             <spec_statement>TBD</spec_statement>
           </spec>
         </specs>
       </testcase>
-      <testcase purpose="Check if attribute text of NDEFRecordText exists, has type DOMString and is readonly" type="compliance" status="approved" component="WebAPI/Communication/NFC" execution_type="auto" priority="P1" id="NDEFRecordText_text_attribute">
+      <testcase component="W3C_HTML5 APIs/Communication/Web NFC API" execution_type="auto" id="NDEFRecordText_text_attribute" priority="P1" purpose="Check if attribute text of NDEFRecordText exists, has type DOMString and is readonly" status="approved" type="compliance">
         <description>
           <test_script_entry>/opt/webapi-nfc-w3c-tests/nfc/NDEFRecordText_text_attribute.html</test_script_entry>
         </description>
         <specs>
           <spec>
-            <spec_assertion interface="NDEFRecordText" element_type="attribute" element_name="text" specification="NFC" section="Communication" category="W3C API Specifications"/>
+            <spec_assertion category="W3C API Specifications" element_name="text" element_type="attribute" interface="NDEFRecordText" section="Communication" specification="NFC" />
             <spec_url>http://www.w3.org/TR/nfc/</spec_url>
             <spec_statement>TBD</spec_statement>
           </spec>
         </specs>
       </testcase>
-      <testcase purpose="Check NDEFRecordURI constructor works" type="compliance" status="approved" component="WebAPI/Communication/NFC" execution_type="auto" priority="P1" id="NDEFRecordURI_constructor">
+      <testcase component="W3C_HTML5 APIs/Communication/Web NFC API" execution_type="auto" id="NDEFRecordURI_constructor" priority="P1" purpose="Check NDEFRecordURI constructor works" status="approved" type="compliance">
         <description>
           <test_script_entry>/opt/webapi-nfc-w3c-tests/nfc/NDEFRecordURI_constructor.html</test_script_entry>
         </description>
         <specs>
           <spec>
-            <spec_assertion interface="NDEFRecordURI" element_type="constructor" element_name="constructor" specification="NFC" section="Communication" category="W3C API Specifications"/>
+            <spec_assertion category="W3C API Specifications" element_name="constructor" element_type="constructor" interface="NDEFRecordURI" section="Communication" specification="NFC" />
             <spec_url>http://www.w3.org/TR/nfc/</spec_url>
             <spec_statement>TBD</spec_statement>
           </spec>
         </specs>
       </testcase>
-      <testcase purpose="Check if NDEFRecordURI have uri attribute with proper type and is readonly" type="compliance" status="approved" component="WebAPI/Communication/NFC" execution_type="auto" priority="P1" id="NDEFRecordURI_uri_attribute">
+      <testcase component="W3C_HTML5 APIs/Communication/Web NFC API" execution_type="auto" id="NDEFRecordURI_uri_attribute" priority="P1" purpose="Check if NDEFRecordURI have uri attribute with proper type and is readonly" status="approved" type="compliance">
         <description>
           <test_script_entry>/opt/webapi-nfc-w3c-tests/nfc/NDEFRecordURI_uri_attribute.html</test_script_entry>
         </description>
         <specs>
           <spec>
-            <spec_assertion interface="NDEFRecordURI" element_type="attribute" element_name="uri" specification="NFC" section="Communication" category="W3C API Specifications"/>
+            <spec_assertion category="W3C API Specifications" element_name="uri" element_type="attribute" interface="NDEFRecordURI" section="Communication" specification="NFC" />
             <spec_url>http://www.w3.org/TR/nfc/</spec_url>
             <spec_statement>TBD</spec_statement>
           </spec>
         </specs>
       </testcase>
-      <testcase purpose="Check if NFCManager have onpeerfound attribute with proper type" type="compliance" status="approved" component="WebAPI/Communication/NFC" execution_type="auto" priority="P1" id="NFCManager_onpeerfound_attribute">
+      <testcase component="W3C_HTML5 APIs/Communication/Web NFC API" execution_type="auto" id="NFCManager_onpeerfound_attribute" priority="P1" purpose="Check if NFCManager have onpeerfound attribute with proper type" status="approved" type="compliance">
         <description>
           <test_script_entry>/opt/webapi-nfc-w3c-tests/nfc/NFCManager_onpeerfound_attribute.html</test_script_entry>
         </description>
         <specs>
           <spec>
-            <spec_assertion interface="NFCManager" element_type="attribute" element_name="onpeerfound" specification="NFC" section="Communication" category="W3C API Specifications"/>
+            <spec_assertion category="W3C API Specifications" element_name="onpeerfound" element_type="attribute" interface="NFCManager" section="Communication" specification="NFC" />
             <spec_url>http://www.w3.org/TR/nfc/</spec_url>
             <spec_statement>TBD</spec_statement>
           </spec>
         </specs>
       </testcase>
-      <testcase purpose="Check if NFCManager have onpeerlost attribute with proper type" type="compliance" status="approved" component="WebAPI/Communication/NFC" execution_type="auto" priority="P1" id="NFCManager_onpeerlost_attribute">
+      <testcase component="W3C_HTML5 APIs/Communication/Web NFC API" execution_type="auto" id="NFCManager_onpeerlost_attribute" priority="P1" purpose="Check if NFCManager have onpeerlost attribute with proper type" status="approved" type="compliance">
         <description>
           <test_script_entry>/opt/webapi-nfc-w3c-tests/nfc/NFCManager_onpeerlost_attribute.html</test_script_entry>
         </description>
         <specs>
           <spec>
-            <spec_assertion interface="NFCManager" element_type="attribute" element_name="onpeerlost" specification="NFC" section="Communication" category="W3C API Specifications"/>
+            <spec_assertion category="W3C API Specifications" element_name="onpeerlost" element_type="attribute" interface="NFCManager" section="Communication" specification="NFC" />
             <spec_url>http://www.w3.org/TR/nfc/</spec_url>
             <spec_statement>TBD</spec_statement>
           </spec>
         </specs>
       </testcase>
-      <testcase purpose="Check if NFCManager have onpollstart attribute with proper type" type="compliance" status="approved" component="WebAPI/Communication/NFC" execution_type="auto" priority="P1" id="NFCManager_onpollstart_attribute">
+      <testcase component="W3C_HTML5 APIs/Communication/Web NFC API" execution_type="auto" id="NFCManager_onpollstart_attribute" priority="P1" purpose="Check if NFCManager have onpollstart attribute with proper type" status="approved" type="compliance">
         <description>
           <test_script_entry>/opt/webapi-nfc-w3c-tests/nfc/NFCManager_onpollstart_attribute.html</test_script_entry>
         </description>
         <specs>
           <spec>
-            <spec_assertion interface="NFCManager" element_type="attribute" element_name="onpollstart" specification="NFC" section="Communication" category="W3C API Specifications"/>
+            <spec_assertion category="W3C API Specifications" element_name="onpollstart" element_type="attribute" interface="NFCManager" section="Communication" specification="NFC" />
             <spec_url>http://www.w3.org/TR/nfc/</spec_url>
             <spec_statement>TBD</spec_statement>
           </spec>
         </specs>
       </testcase>
-      <testcase purpose="Check if NFCManager have onpollstop attribute with proper type" type="compliance" status="approved" component="WebAPI/Communication/NFC" execution_type="auto" priority="P1" id="NFCManager_onpollstop_attribute">
+      <testcase component="W3C_HTML5 APIs/Communication/Web NFC API" execution_type="auto" id="NFCManager_onpollstop_attribute" priority="P1" purpose="Check if NFCManager have onpollstop attribute with proper type" status="approved" type="compliance">
         <description>
           <test_script_entry>/opt/webapi-nfc-w3c-tests/nfc/NFCManager_onpollstop_attribute.html</test_script_entry>
         </description>
         <specs>
           <spec>
-            <spec_assertion interface="NFCManager" element_type="attribute" element_name="onpollstop" specification="NFC" section="Communication" category="W3C API Specifications"/>
+            <spec_assertion category="W3C API Specifications" element_name="onpollstop" element_type="attribute" interface="NFCManager" section="Communication" specification="NFC" />
             <spec_url>http://www.w3.org/TR/nfc/</spec_url>
             <spec_statement>TBD</spec_statement>
           </spec>
         </specs>
       </testcase>
-      <testcase purpose="Check if NFCManager have onpoweroff attribute with proper type" type="compliance" status="approved" component="WebAPI/Communication/NFC" execution_type="auto" priority="P1" id="NFCManager_onpoweroff_attribute">
+      <testcase component="W3C_HTML5 APIs/Communication/Web NFC API" execution_type="auto" id="NFCManager_onpoweroff_attribute" priority="P1" purpose="Check if NFCManager have onpoweroff attribute with proper type" status="approved" type="compliance">
         <description>
           <test_script_entry>/opt/webapi-nfc-w3c-tests/nfc/NFCManager_onpoweroff_attribute.html</test_script_entry>
         </description>
         <specs>
           <spec>
-            <spec_assertion interface="NFCManager" element_type="attribute" element_name="onpoweroff" specification="NFC" section="Communication" category="W3C API Specifications"/>
+            <spec_assertion category="W3C API Specifications" element_name="onpoweroff" element_type="attribute" interface="NFCManager" section="Communication" specification="NFC" />
             <spec_url>http://www.w3.org/TR/nfc/</spec_url>
             <spec_statement>TBD</spec_statement>
           </spec>
         </specs>
       </testcase>
-      <testcase purpose="Check if NFCManager have onpoweron attribute with proper type" type="compliance" status="approved" component="WebAPI/Communication/NFC" execution_type="auto" priority="P1" id="NFCManager_onpoweron_attribute">
+      <testcase component="W3C_HTML5 APIs/Communication/Web NFC API" execution_type="auto" id="NFCManager_onpoweron_attribute" priority="P1" purpose="Check if NFCManager have onpoweron attribute with proper type" status="approved" type="compliance">
         <description>
           <test_script_entry>/opt/webapi-nfc-w3c-tests/nfc/NFCManager_onpoweron_attribute.html</test_script_entry>
         </description>
         <specs>
           <spec>
-            <spec_assertion interface="NFCManager" element_type="attribute" element_name="onpoweron" specification="NFC" section="Communication" category="W3C API Specifications"/>
+            <spec_assertion category="W3C API Specifications" element_name="onpoweron" element_type="attribute" interface="NFCManager" section="Communication" specification="NFC" />
             <spec_url>http://www.w3.org/TR/nfc/</spec_url>
             <spec_statement>TBD</spec_statement>
           </spec>
         </specs>
       </testcase>
-      <testcase purpose="Check if NFCManager have ontagfound attribute with proper type" type="compliance" status="approved" component="WebAPI/Communication/NFC" execution_type="auto" priority="P1" id="NFCManager_ontagfound_attribute">
+      <testcase component="W3C_HTML5 APIs/Communication/Web NFC API" execution_type="auto" id="NFCManager_ontagfound_attribute" priority="P1" purpose="Check if NFCManager have ontagfound attribute with proper type" status="approved" type="compliance">
         <description>
           <test_script_entry>/opt/webapi-nfc-w3c-tests/nfc/NFCManager_ontagfound_attribute.html</test_script_entry>
         </description>
         <specs>
           <spec>
-            <spec_assertion interface="NFCManager" element_type="attribute" element_name="ontagfound" specification="NFC" section="Communication" category="W3C API Specifications"/>
+            <spec_assertion category="W3C API Specifications" element_name="ontagfound" element_type="attribute" interface="NFCManager" section="Communication" specification="NFC" />
             <spec_url>http://www.w3.org/TR/nfc/</spec_url>
             <spec_statement>TBD</spec_statement>
           </spec>
         </specs>
       </testcase>
-      <testcase purpose="Check if NFCManager have ontaglost attribute with proper type" type="compliance" status="approved" component="WebAPI/Communication/NFC" execution_type="auto" priority="P1" id="NFCManager_ontaglost_attribute">
+      <testcase component="W3C_HTML5 APIs/Communication/Web NFC API" execution_type="auto" id="NFCManager_ontaglost_attribute" priority="P1" purpose="Check if NFCManager have ontaglost attribute with proper type" status="approved" type="compliance">
         <description>
           <test_script_entry>/opt/webapi-nfc-w3c-tests/nfc/NFCManager_ontaglost_attribute.html</test_script_entry>
         </description>
         <specs>
           <spec>
-            <spec_assertion interface="NFCManager" element_type="attribute" element_name="ontaglost" specification="NFC" section="Communication" category="W3C API Specifications"/>
+            <spec_assertion category="W3C API Specifications" element_name="ontaglost" element_type="attribute" interface="NFCManager" section="Communication" specification="NFC" />
             <spec_url>http://www.w3.org/TR/nfc/</spec_url>
             <spec_statement>TBD</spec_statement>
           </spec>
         </specs>
       </testcase>
-      <testcase purpose="Check if NFCManager have polling attribute with proper type" type="compliance" status="approved" component="WebAPI/Communication/NFC" execution_type="auto" priority="P1" id="NFCManager_polling_attribute">
+      <testcase component="W3C_HTML5 APIs/Communication/Web NFC API" execution_type="auto" id="NFCManager_polling_attribute" priority="P1" purpose="Check if NFCManager have polling attribute with proper type" status="approved" type="compliance">
         <description>
           <test_script_entry>/opt/webapi-nfc-w3c-tests/nfc/NFCManager_polling_attribute.html</test_script_entry>
         </description>
         <specs>
           <spec>
-            <spec_assertion interface="NFCManager" element_type="attribute" element_name="polling" specification="NFC" section="Communication" category="W3C API Specifications"/>
+            <spec_assertion category="W3C API Specifications" element_name="polling" element_type="attribute" interface="NFCManager" section="Communication" specification="NFC" />
             <spec_url>http://www.w3.org/TR/nfc/</spec_url>
             <spec_statement>TBD</spec_statement>
           </spec>
         </specs>
       </testcase>
-      <testcase purpose="Check if NFCManager have powered attribute with proper type" type="compliance" status="approved" component="WebAPI/Communication/NFC" execution_type="auto" priority="P1" id="NFCManager_powered_attribute">
+      <testcase component="W3C_HTML5 APIs/Communication/Web NFC API" execution_type="auto" id="NFCManager_powered_attribute" priority="P1" purpose="Check if NFCManager have powered attribute with proper type" status="approved" type="compliance">
         <description>
           <test_script_entry>/opt/webapi-nfc-w3c-tests/nfc/NFCManager_powered_attribute.html</test_script_entry>
         </description>
         <specs>
           <spec>
-            <spec_assertion interface="NFCManager" element_type="attribute" element_name="powered" specification="NFC" section="Communication" category="W3C API Specifications"/>
+            <spec_assertion category="W3C API Specifications" element_name="powered" element_type="attribute" interface="NFCManager" section="Communication" specification="NFC" />
             <spec_url>http://www.w3.org/TR/nfc/</spec_url>
             <spec_statement>TBD</spec_statement>
           </spec>
         </specs>
       </testcase>
-      <testcase purpose="Check if method NFCManager::powerOff() exists" type="compliance" status="approved" component="WebAPI/Communication/NFC" execution_type="auto" priority="P1" id="NFCManager_powerOff">
+      <testcase component="W3C_HTML5 APIs/Communication/Web NFC API" execution_type="auto" id="NFCManager_powerOff" priority="P1" purpose="Check if method NFCManager::powerOff() exists" status="approved" type="compliance">
         <description>
           <test_script_entry>/opt/webapi-nfc-w3c-tests/nfc/NFCManager_powerOff.html</test_script_entry>
         </description>
         <specs>
           <spec>
-            <spec_assertion interface="NFCManager" element_type="method" element_name="powerOff" specification="NFC" section="Communication" category="W3C API Specifications"/>
+            <spec_assertion category="W3C API Specifications" element_name="powerOff" element_type="method" interface="NFCManager" section="Communication" specification="NFC" />
             <spec_url>http://www.w3.org/TR/nfc/</spec_url>
             <spec_statement>TBD</spec_statement>
           </spec>
         </specs>
       </testcase>
-      <testcase purpose="Check if method NFCManager::powerOn() exists" type="compliance" status="approved" component="WebAPI/Communication/NFC" execution_type="auto" priority="P1" id="NFCManager_powerOn">
+      <testcase component="W3C_HTML5 APIs/Communication/Web NFC API" execution_type="auto" id="NFCManager_powerOn" priority="P1" purpose="Check if method NFCManager::powerOn() exists" status="approved" type="compliance">
         <description>
           <test_script_entry>/opt/webapi-nfc-w3c-tests/nfc/NFCManager_powerOn.html</test_script_entry>
         </description>
         <specs>
           <spec>
-            <spec_assertion interface="NFCManager" element_type="method" element_name="powerOn" specification="NFC" section="Communication" category="W3C API Specifications"/>
+            <spec_assertion category="W3C API Specifications" element_name="powerOn" element_type="method" interface="NFCManager" section="Communication" specification="NFC" />
             <spec_url>http://www.w3.org/TR/nfc/</spec_url>
             <spec_statement>TBD</spec_statement>
           </spec>
         </specs>
       </testcase>
-      <testcase purpose="Check if method NFCManager::startPoll() exists" type="compliance" status="approved" component="WebAPI/Communication/NFC" execution_type="auto" priority="P1" id="NFCManager_startPoll">
+      <testcase component="W3C_HTML5 APIs/Communication/Web NFC API" execution_type="auto" id="NFCManager_startPoll" priority="P1" purpose="Check if method NFCManager::startPoll() exists" status="approved" type="compliance">
         <description>
           <test_script_entry>/opt/webapi-nfc-w3c-tests/nfc/NFCManager_startPoll.html</test_script_entry>
         </description>
         <specs>
           <spec>
-            <spec_assertion interface="NFCManager" element_type="method" element_name="startPoll" specification="NFC" section="Communication" category="W3C API Specifications"/>
+            <spec_assertion category="W3C API Specifications" element_name="startPoll" element_type="method" interface="NFCManager" section="Communication" specification="NFC" />
             <spec_url>http://www.w3.org/TR/nfc/</spec_url>
             <spec_statement>TBD</spec_statement>
           </spec>
         </specs>
       </testcase>
-      <testcase purpose="Check if method NFCManager::stopPoll() exists" type="compliance" status="approved" component="WebAPI/Communication/NFC" execution_type="auto" priority="P1" id="NFCManager_stopPoll">
+      <testcase component="W3C_HTML5 APIs/Communication/Web NFC API" execution_type="auto" id="NFCManager_stopPoll" priority="P1" purpose="Check if method NFCManager::stopPoll() exists" status="approved" type="compliance">
         <description>
           <test_script_entry>/opt/webapi-nfc-w3c-tests/nfc/NFCManager_stopPoll.html</test_script_entry>
         </description>
         <specs>
           <spec>
-            <spec_assertion interface="NFCManager" element_type="method" element_name="stopPoll" specification="NFC" section="Communication" category="W3C API Specifications"/>
+            <spec_assertion category="W3C API Specifications" element_name="stopPoll" element_type="method" interface="NFCManager" section="Communication" specification="NFC" />
             <spec_url>http://www.w3.org/TR/nfc/</spec_url>
             <spec_statement>TBD</spec_statement>
           </spec>
         </specs>
       </testcase>
-      <testcase purpose="Check if NFCPeerEvent have peer attribute with proper type and is readonly" type="compliance" status="approved" component="WebAPI/Communication/NFC" execution_type="manual" priority="P1" id="NFCPeerEvent_peer_attribute">
+      <testcase component="W3C_HTML5 APIs/Communication/Web NFC API" execution_type="manual" id="NFCPeerEvent_peer_attribute" priority="P1" purpose="Check if NFCPeerEvent have peer attribute with proper type and is readonly" status="approved" type="compliance">
         <description>
           <test_script_entry>/opt/webapi-nfc-w3c-tests/nfc/NFCPeerEvent_peer_attribute.html</test_script_entry>
         </description>
         <specs>
           <spec>
-            <spec_assertion interface="NFCPeerEvent" element_type="attribute" element_name="peer" specification="NFC" section="Communication" category="W3C API Specifications"/>
+            <spec_assertion category="W3C API Specifications" element_name="peer" element_type="attribute" interface="NFCPeerEvent" section="Communication" specification="NFC" />
             <spec_url>http://www.w3.org/TR/nfc/</spec_url>
             <spec_statement>TBD</spec_statement>
           </spec>
         </specs>
       </testcase>
-      <testcase purpose="Check if NFCPeer have onmessageread attribute with proper type" type="compliance" status="approved" component="WebAPI/Communication/NFC" execution_type="manual" priority="P1" id="NFCPeer_onmessageread_attribute">
+      <testcase component="W3C_HTML5 APIs/Communication/Web NFC API" execution_type="manual" id="NFCPeer_onmessageread_attribute" priority="P1" purpose="Check if NFCPeer have onmessageread attribute with proper type" status="approved" type="compliance">
         <description>
           <test_script_entry>/opt/webapi-nfc-w3c-tests/nfc/NFCPeer_onmessageread_attribute.html</test_script_entry>
         </description>
         <specs>
           <spec>
-            <spec_assertion interface="NFCPeer" element_type="attribute" element_name="onmessageread" specification="NFC" section="Communication" category="W3C API Specifications"/>
+            <spec_assertion category="W3C API Specifications" element_name="onmessageread" element_type="attribute" interface="NFCPeer" section="Communication" specification="NFC" />
             <spec_url>http://www.w3.org/TR/nfc/</spec_url>
             <spec_statement>TBD</spec_statement>
           </spec>
         </specs>
       </testcase>
-      <testcase purpose="Check if NFCPeer::sendNDEF() exists" type="compliance" status="approved" component="WebAPI/Communication/NFC" execution_type="manual" priority="P1" id="NFCPeer_sendNDEF">
+      <testcase component="W3C_HTML5 APIs/Communication/Web NFC API" execution_type="manual" id="NFCPeer_sendNDEF" priority="P1" purpose="Check if NFCPeer::sendNDEF() exists" status="approved" type="compliance">
         <description>
           <test_script_entry>/opt/webapi-nfc-w3c-tests/nfc/NFCPeer_sendNDEF.html</test_script_entry>
         </description>
         <specs>
           <spec>
-            <spec_assertion interface="NFCPeer" element_type="method" element_name="sendNDEF" specification="NFC" section="Communication" category="W3C API Specifications"/>
+            <spec_assertion category="W3C API Specifications" element_name="sendNDEF" element_type="method" interface="NFCPeer" section="Communication" specification="NFC" />
             <spec_url>http://www.w3.org/TR/nfc/</spec_url>
             <spec_statement>TBD</spec_statement>
           </spec>
         </specs>
       </testcase>
-      <testcase purpose="Check if NFCPeer::startHandover() exists" type="compliance" status="approved" component="WebAPI/Communication/NFC" execution_type="manual" priority="P1" id="NFCPeer_startHandover">
+      <testcase component="W3C_HTML5 APIs/Communication/Web NFC API" execution_type="manual" id="NFCPeer_startHandover" priority="P1" purpose="Check if NFCPeer::startHandover() exists" status="approved" type="compliance">
         <description>
           <test_script_entry>/opt/webapi-nfc-w3c-tests/nfc/NFCPeer_startHandover.html</test_script_entry>
         </description>
         <specs>
           <spec>
-            <spec_assertion interface="NFCPeer" element_type="method" element_name="startHandover" specification="NFC" section="Communication" category="W3C API Specifications"/>
+            <spec_assertion category="W3C API Specifications" element_name="startHandover" element_type="method" interface="NFCPeer" section="Communication" specification="NFC" />
             <spec_url>http://www.w3.org/TR/nfc/</spec_url>
             <spec_statement>TBD</spec_statement>
           </spec>
         </specs>
       </testcase>
-      <testcase purpose="Check if NFCTagEvent have tag attribute with proper type and is readonly" type="compliance" status="approved" component="WebAPI/Communication/NFC" execution_type="manual" priority="P1" id="NFCTagEvent_tag_attribute">
+      <testcase component="W3C_HTML5 APIs/Communication/Web NFC API" execution_type="manual" id="NFCTagEvent_tag_attribute" priority="P1" purpose="Check if NFCTagEvent have tag attribute with proper type and is readonly" status="approved" type="compliance">
         <description>
           <test_script_entry>/opt/webapi-nfc-w3c-tests/nfc/NFCTagEvent_tag_attribute.html</test_script_entry>
         </description>
         <specs>
           <spec>
-            <spec_assertion interface="NFCTagEvent" element_type="attribute" element_name="tag" specification="NFC" section="Communication" category="W3C API Specifications"/>
+            <spec_assertion category="W3C API Specifications" element_name="tag" element_type="attribute" interface="NFCTagEvent" section="Communication" specification="NFC" />
             <spec_url>http://www.w3.org/TR/nfc/</spec_url>
             <spec_statement>TBD</spec_statement>
           </spec>
         </specs>
       </testcase>
-      <testcase purpose="Check if NFCTag::readNDEF() exists" type="compliance" status="approved" component="WebAPI/Communication/NFC" execution_type="manual" priority="P1" id="NFCTag_readNDEF">
+      <testcase component="W3C_HTML5 APIs/Communication/Web NFC API" execution_type="manual" id="NFCTag_readNDEF" priority="P1" purpose="Check if NFCTag::readNDEF() exists" status="approved" type="compliance">
         <description>
           <test_script_entry>/opt/webapi-nfc-w3c-tests/nfc/NFCTag_readNDEF.html</test_script_entry>
         </description>
         <specs>
           <spec>
-            <spec_assertion interface="NFCTag" element_type="method" element_name="readNDEF" specification="NFC" section="Communication" category="W3C API Specifications"/>
+            <spec_assertion category="W3C API Specifications" element_name="readNDEF" element_type="method" interface="NFCTag" section="Communication" specification="NFC" />
             <spec_url>http://www.w3.org/TR/nfc/</spec_url>
             <spec_statement>TBD</spec_statement>
           </spec>
         </specs>
       </testcase>
-      <testcase purpose="Check if NFCTag::writeNDEF() exists" type="compliance" status="approved" component="WebAPI/Communication/NFC" execution_type="manual" priority="P1" id="NFCTag_writeNDEF">
+      <testcase component="W3C_HTML5 APIs/Communication/Web NFC API" execution_type="manual" id="NFCTag_writeNDEF" priority="P1" purpose="Check if NFCTag::writeNDEF() exists" status="approved" type="compliance">
         <description>
           <test_script_entry>/opt/webapi-nfc-w3c-tests/nfc/NFCTag_writeNDEF.html</test_script_entry>
         </description>
         <specs>
           <spec>
-            <spec_assertion interface="NFCTag" element_type="method" element_name="writeNDEF" specification="NFC" section="Communication" category="W3C API Specifications"/>
+            <spec_assertion category="W3C API Specifications" element_name="writeNDEF" element_type="method" interface="NFCTag" section="Communication" specification="NFC" />
             <spec_url>http://www.w3.org/TR/nfc/</spec_url>
             <spec_statement>TBD</spec_statement>
           </spec>

@@ -1,62 +1,60 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<?xml-stylesheet type="text/xsl" href="./testcase.xsl"?>
 <test_definition>
-  <suite name="webapi-presentation-xwalk-tests" category="W3C/HTML5 APIs">
+  <suite category="W3C/HTML5 APIs" name="webapi-presentation-xwalk-tests">
     <set name="idlharness" type="js">
-      <testcase purpose="This test validates the WebIDL included in the Presentation API specification" type="compliance" status="designed" component="WebAPI/Screen Presentation APIs/WebScreen" execution_type="auto" priority="P1" id="Presentation_idlhaness_test">
+      <testcase component="Crosswalk APIs/Screen Presentation APIs" execution_type="auto" id="Presentation_idlhaness_test" priority="P1" purpose="This test validates the WebIDL included in the Presentation API specification" status="designed" type="compliance">
         <description>
           <test_script_entry>/opt/webapi-presentation-xwalk-tests/presentation/Presentation_idlharness.html</test_script_entry>
         </description>
         <specs>
           <spec>
-            <spec_assertion element_type="TBD" element_name="TBD" interface="TBD" specification="Screen Presentation" section="Screen Presentation APIs" category="W3C API Specifications"/>
+            <spec_assertion category="W3C API Specifications" element_name="TBD" element_type="TBD" interface="TBD" section="Screen Presentation APIs" specification="Screen Presentation" />
             <spec_url>http://webscreens.github.io/presentation-api/</spec_url>
-            <spec_statement/>
+            <spec_statement />
           </spec>
         </specs>
       </testcase>
     </set>
     <set name="presentation" type="js">
-      <testcase purpose="Test checks that navigator.presentation.requestShow method basic" type="compliance" status="approved" component="WebAPI/Screen Presentation APIs/WebScreen" execution_type="auto" priority="P1" id="Presentation_requestShow_basic">
+      <testcase component="Crosswalk APIs/Screen Presentation APIs" execution_type="auto" id="Presentation_requestShow_basic" priority="P1" purpose="Test checks that navigator.presentation.requestShow method basic" status="approved" type="compliance">
         <description>
           <test_script_entry>/opt/webapi-presentation-xwalk-tests/presentation/Presentation_attributes_basic.html?total_num=3&amp;locator_key=id&amp;value=1</test_script_entry>
         </description>
         <specs>
           <spec>
-            <spec_assertion element_type="method" element_name="requestShow" interface="Presentation" specification="Screen Presentation" section="Screen Presentation APIs" category="W3C API Specifications"/>
+            <spec_assertion category="W3C API Specifications" element_name="requestShow" element_type="method" interface="Presentation" section="Screen Presentation APIs" specification="Screen Presentation" />
             <spec_url>http://webscreens.github.io/presentation-api/</spec_url>
-            <spec_statement/>
+            <spec_statement />
           </spec>
         </specs>
       </testcase>
-      <testcase purpose="Test checks that navigator.presentation.displayAvailable attribute basic" type="compliance" status="approved" component="WebAPI/Screen Presentation APIs/WebScreen" execution_type="auto" priority="P1" id="Presentation_displayAvailable_basic">
+      <testcase component="Crosswalk APIs/Screen Presentation APIs" execution_type="auto" id="Presentation_displayAvailable_basic" priority="P1" purpose="Test checks that navigator.presentation.displayAvailable attribute basic" status="approved" type="compliance">
         <description>
           <test_script_entry>/opt/webapi-presentation-xwalk-tests/presentation/Presentation_attributes_basic.html?total_num=3&amp;locator_key=id&amp;value=2</test_script_entry>
         </description>
         <specs>
           <spec>
-            <spec_assertion element_type="attribute" element_name="displayAvailable" interface="Presentation" specification="Screen Presentation" section="Screen Presentation APIs" category="W3C API Specifications"/>
+            <spec_assertion category="W3C API Specifications" element_name="displayAvailable" element_type="attribute" interface="Presentation" section="Screen Presentation APIs" specification="Screen Presentation" />
             <spec_url>http://webscreens.github.io/presentation-api/</spec_url>
-            <spec_statement/>
+            <spec_statement />
           </spec>
         </specs>
       </testcase>
-      <testcase purpose="Test checks that navigator.presentation.ondisplayavailablechange attribute basic" type="compliance" status="approved" component="WebAPI/Screen Presentation APIs/WebScreen" execution_type="auto" priority="P1" id="Presentation_ondisplayavailablechange_basic">
+      <testcase component="Crosswalk APIs/Screen Presentation APIs" execution_type="auto" id="Presentation_ondisplayavailablechange_basic" priority="P1" purpose="Test checks that navigator.presentation.ondisplayavailablechange attribute basic" status="approved" type="compliance">
         <description>
           <test_script_entry>/opt/webapi-presentation-xwalk-tests/presentation/Presentation_attributes_basic.html?total_num=3&amp;locator_key=id&amp;value=3</test_script_entry>
         </description>
         <specs>
           <spec>
-            <spec_assertion element_type="attribute" element_name="ondisplayavailablechange" interface="Presentation" specification="Screen Presentation" section="Screen Presentation APIs" category="W3C API Specifications"/>
+            <spec_assertion category="W3C API Specifications" element_name="ondisplayavailablechange" element_type="attribute" interface="Presentation" section="Screen Presentation APIs" specification="Screen Presentation" />
             <spec_url>http://webscreens.github.io/presentation-api/</spec_url>
-            <spec_statement/>
+            <spec_statement />
           </spec>
         </specs>
       </testcase>
-      <testcase purpose="Test checks that the presentation secondary page can display picture" type="compliance" status="approved" component="WebAPI/Screen Presentation APIs/WebScreen" execution_type="manual" priority="P1" id="presentation_secondary_page_image">
+      <testcase component="Crosswalk APIs/Screen Presentation APIs" execution_type="manual" id="presentation_secondary_page_image" priority="P1" purpose="Test checks that the presentation secondary page can display picture" status="approved" type="compliance">
         <description>
           <pre_condition>1. Connect to an available network; 2. Android 4.2 or above; 3. Turn on 'Simulate Secondary Display' by 'Setting' app.</pre_condition>
-          <post_condition/>
+          <post_condition />
           <steps>
             <step order="1">
               <step_desc>Launch 'presentation_secondary_page_image' app on Android device.</step_desc>
@@ -67,16 +65,16 @@
         </description>
         <specs>
           <spec>
-            <spec_assertion element_type="method" element_name="requestShow" interface="Presentation" specification="Screen Presentation" section="Screen Presentation APIs" category="W3C API Specifications"/>
+            <spec_assertion category="W3C API Specifications" element_name="requestShow" element_type="method" interface="Presentation" section="Screen Presentation APIs" specification="Screen Presentation" />
             <spec_url>http://webscreens.github.io/presentation-api/</spec_url>
-            <spec_statement/>
+            <spec_statement />
           </spec>
         </specs>
       </testcase>
-      <testcase purpose="Test checks that the presentation secondary page can open" type="compliance" status="approved" component="WebAPI/Screen Presentation APIs/WebScreen" execution_type="manual" priority="P1" id="presentation_secondary_page_message">
+      <testcase component="Crosswalk APIs/Screen Presentation APIs" execution_type="manual" id="presentation_secondary_page_message" priority="P1" purpose="Test checks that the presentation secondary page can open" status="approved" type="compliance">
         <description>
           <pre_condition>1. Android 4.2 or above; 2. Turn on 'Simulate Secondary Display' by 'Setting' app.</pre_condition>
-          <post_condition/>
+          <post_condition />
           <steps>
             <step order="1">
               <step_desc>Launch 'presentation_secondary_page_message' app on Android device.</step_desc>
@@ -87,16 +85,16 @@
         </description>
         <specs>
           <spec>
-            <spec_assertion element_type="method" element_name="requestShow" interface="Presentation" specification="Screen Presentation" section="Screen Presentation APIs" category="W3C API Specifications"/>
+            <spec_assertion category="W3C API Specifications" element_name="requestShow" element_type="method" interface="Presentation" section="Screen Presentation APIs" specification="Screen Presentation" />
             <spec_url>http://webscreens.github.io/presentation-api/</spec_url>
-            <spec_statement/>
+            <spec_statement />
           </spec>
         </specs>
       </testcase>
-      <testcase purpose="Test checks that the presentation secondary page can play video" type="compliance" status="approved" component="WebAPI/Screen Presentation APIs/WebScreen" execution_type="manual" priority="P1" id="presentation_secondary_page_video">
+      <testcase component="Crosswalk APIs/Screen Presentation APIs" execution_type="manual" id="presentation_secondary_page_video" priority="P1" purpose="Test checks that the presentation secondary page can play video" status="approved" type="compliance">
         <description>
           <pre_condition>1. Connect to an available network; 2. Android 4.2 or above; 3. Turn on 'Simulate Secondary Display' by 'Setting' app.</pre_condition>
-          <post_condition/>
+          <post_condition />
           <steps>
             <step order="1">
               <step_desc>Launch 'presentation_secondary_page_video' app on Android device.</step_desc>
@@ -107,16 +105,16 @@
         </description>
         <specs>
           <spec>
-            <spec_assertion element_type="method" element_name="requestShow" interface="Presentation" specification="Screen Presentation" section="Screen Presentation APIs" category="W3C API Specifications"/>
+            <spec_assertion category="W3C API Specifications" element_name="requestShow" element_type="method" interface="Presentation" section="Screen Presentation APIs" specification="Screen Presentation" />
             <spec_url>http://webscreens.github.io/presentation-api/</spec_url>
-            <spec_statement/>
+            <spec_statement />
           </spec>
         </specs>
       </testcase>
-      <testcase purpose="Test checks that the attribute displayAvailable of presentation value can be true" type="compliance" status="approved" component="WebAPI/Screen Presentation APIs/WebScreen" execution_type="manual" priority="P1" id="Presentation_displayAvailable_true">
+      <testcase component="Crosswalk APIs/Screen Presentation APIs" execution_type="manual" id="Presentation_displayAvailable_true" priority="P1" purpose="Test checks that the attribute displayAvailable of presentation value can be true" status="approved" type="compliance">
         <description>
           <pre_condition>1. Android 4.2 or above; 2. Turn on 'Simulate Secondary Display' by 'Setting' app.</pre_condition>
-          <post_condition/>
+          <post_condition />
           <steps>
             <step order="1">
               <step_desc>Launch 'presentation_test' app on Android device, check the device.</step_desc>
@@ -127,16 +125,16 @@
         </description>
         <specs>
           <spec>
-            <spec_assertion element_type="attribute" element_name="displayAvailable" interface="Presentation" specification="Screen Presentation" section="Screen Presentation APIs" category="W3C API Specifications"/>
+            <spec_assertion category="W3C API Specifications" element_name="displayAvailable" element_type="attribute" interface="Presentation" section="Screen Presentation APIs" specification="Screen Presentation" />
             <spec_url>http://webscreens.github.io/presentation-api/</spec_url>
-            <spec_statement/>
+            <spec_statement />
           </spec>
         </specs>
       </testcase>
-      <testcase purpose="Test checks that the method requestShow of presentation can work, when simulate secondary display open" type="compliance" status="approved" component="WebAPI/Screen Presentation APIs/WebScreen" execution_type="manual" priority="P1" id="Presentation_requestShow_with_simulate_open">
+      <testcase component="Crosswalk APIs/Screen Presentation APIs" execution_type="manual" id="Presentation_requestShow_with_simulate_open" priority="P1" purpose="Test checks that the method requestShow of presentation can work, when simulate secondary display open" status="approved" type="compliance">
         <description>
           <pre_condition>1. Android 4.2 or above; 2. Turn on 'Simulate Secondary Display' by 'Setting' app.</pre_condition>
-          <post_condition/>
+          <post_condition />
           <steps>
             <step order="1">
               <step_desc>1. Launch 'presentation_test' app on Android device; 2. Press 'Request Show Presentation' Button, check the device.</step_desc>
@@ -152,16 +150,16 @@
         </description>
         <specs>
           <spec>
-            <spec_assertion element_type="method" element_name="requestShow" interface="Presentation" specification="Screen Presentation" section="Screen Presentation APIs" category="W3C API Specifications"/>
+            <spec_assertion category="W3C API Specifications" element_name="requestShow" element_type="method" interface="Presentation" section="Screen Presentation APIs" specification="Screen Presentation" />
             <spec_url>http://webscreens.github.io/presentation-api/</spec_url>
-            <spec_statement/>
+            <spec_statement />
           </spec>
         </specs>
       </testcase>
-      <testcase purpose="Test checks that the attribute displayAvailable of presentation value can be false" type="compliance" status="approved" component="WebAPI/Screen Presentation APIs/WebScreen" execution_type="manual" priority="P1" id="Presentation_displayAvailable_false">
+      <testcase component="Crosswalk APIs/Screen Presentation APIs" execution_type="manual" id="Presentation_displayAvailable_false" priority="P1" purpose="Test checks that the attribute displayAvailable of presentation value can be false" status="approved" type="compliance">
         <description>
           <pre_condition>1. Android 4.2 or above; 2. Turn off 'Simulate Secondary Display' by 'Setting' app.</pre_condition>
-          <post_condition/>
+          <post_condition />
           <steps>
             <step order="1">
               <step_desc>Launch 'presentation_test' app on Android device, check the device.</step_desc>
@@ -172,16 +170,16 @@
         </description>
         <specs>
           <spec>
-            <spec_assertion element_type="attribute" element_name="displayAvailable" interface="Presentation" specification="Screen Presentation" section="Screen Presentation APIs" category="W3C API Specifications"/>
+            <spec_assertion category="W3C API Specifications" element_name="displayAvailable" element_type="attribute" interface="Presentation" section="Screen Presentation APIs" specification="Screen Presentation" />
             <spec_url>http://webscreens.github.io/presentation-api/</spec_url>
-            <spec_statement/>
+            <spec_statement />
           </spec>
         </specs>
       </testcase>
-      <testcase purpose="Test checks that the method requestShow of presentation can work, when simulate secondary display close" type="compliance" status="approved" component="WebAPI/Screen Presentation APIs/WebScreen" execution_type="manual" priority="P1" id="Presentation_requestShow_with_simulate_close">
+      <testcase component="Crosswalk APIs/Screen Presentation APIs" execution_type="manual" id="Presentation_requestShow_with_simulate_close" priority="P1" purpose="Test checks that the method requestShow of presentation can work, when simulate secondary display close" status="approved" type="compliance">
         <description>
           <pre_condition>1. Android 4.2 or above; 2. Turn off 'Simulate Secondary Display' by 'Setting' app.</pre_condition>
-          <post_condition/>
+          <post_condition />
           <steps>
             <step order="1">
               <step_desc>Launch 'presentation_test' app on Android device; Press 'Request Show Presentation' Button, check the device.</step_desc>
@@ -192,16 +190,16 @@
         </description>
         <specs>
           <spec>
-            <spec_assertion element_type="method" element_name="requestShow" interface="Presentation" specification="Screen Presentation" section="Screen Presentation APIs" category="W3C API Specifications"/>
+            <spec_assertion category="W3C API Specifications" element_name="requestShow" element_type="method" interface="Presentation" section="Screen Presentation APIs" specification="Screen Presentation" />
             <spec_url>http://webscreens.github.io/presentation-api/</spec_url>
-            <spec_statement/>
+            <spec_statement />
           </spec>
         </specs>
       </testcase>
-      <testcase purpose="Test checks that the presentation lifecycle, when simulate secondary display open" type="compliance" status="approved" component="WebAPI/Screen Presentation APIs/WebScreen" execution_type="manual" priority="P1" id="Presentation_lifecycle_with_simulate_open">
+      <testcase component="Crosswalk APIs/Screen Presentation APIs" execution_type="manual" id="Presentation_lifecycle_with_simulate_open" priority="P1" purpose="Test checks that the presentation lifecycle, when simulate secondary display open" status="approved" type="compliance">
         <description>
           <pre_condition>1. Android 4.2 or above; 2. Turn on 'Simulate Secondary Display' by 'Setting' app.</pre_condition>
-          <post_condition/>
+          <post_condition />
           <steps>
             <step order="1">
               <step_desc>1. Launch 'presentation_test app on Android device; 2. Press 'Request Show Presentation' Button, check the device.</step_desc>
@@ -220,16 +218,16 @@
         </description>
         <specs>
           <spec>
-            <spec_assertion element_type="method" element_name="requestShow" interface="Presentation" specification="Screen Presentation" section="Screen Presentation APIs" category="W3C API Specifications"/>
+            <spec_assertion category="W3C API Specifications" element_name="requestShow" element_type="method" interface="Presentation" section="Screen Presentation APIs" specification="Screen Presentation" />
             <spec_url>http://webscreens.github.io/presentation-api/</spec_url>
-            <spec_statement/>
+            <spec_statement />
           </spec>
         </specs>
       </testcase>
-      <testcase purpose="Test checks that the presentation lifecycle, when simulate secondary display close" type="compliance" status="approved" component="WebAPI/Screen Presentation APIs/WebScreen" execution_type="manual" priority="P1" id="Presentation_lifecycle_with_simulate_close">
+      <testcase component="Crosswalk APIs/Screen Presentation APIs" execution_type="manual" id="Presentation_lifecycle_with_simulate_close" priority="P1" purpose="Test checks that the presentation lifecycle, when simulate secondary display close" status="approved" type="compliance">
         <description>
           <pre_condition>1. Android 4.2 or above; 2. Turn off 'Simulate Secondary Display' by 'Setting' app.</pre_condition>
-          <post_condition/>
+          <post_condition />
           <steps>
             <step order="1">
               <step_desc>Launch 'presentation_test' app on Android device, check the device.</step_desc>
@@ -244,16 +242,16 @@
         </description>
         <specs>
           <spec>
-            <spec_assertion element_type="method" element_name="requestShow" interface="Presentation" specification="Screen Presentation" section="Screen Presentation APIs" category="W3C API Specifications"/>
+            <spec_assertion category="W3C API Specifications" element_name="requestShow" element_type="method" interface="Presentation" section="Screen Presentation APIs" specification="Screen Presentation" />
             <spec_url>http://webscreens.github.io/presentation-api/</spec_url>
-            <spec_statement/>
+            <spec_statement />
           </spec>
         </specs>
       </testcase>
-      <testcase purpose="Test checks that the presentation works well on Widi Adapter" type="compliance" status="approved" component="WebAPI/Screen Presentation APIs/WebScreen" execution_type="manual" priority="P1" id="Presentation_work_on_Widi_Adapter">
+      <testcase component="Crosswalk APIs/Screen Presentation APIs" execution_type="manual" id="Presentation_work_on_Widi_Adapter" priority="P1" purpose="Test checks that the presentation works well on Widi Adapter" status="approved" type="compliance">
         <description>
           <pre_condition>1. Android 4.2 or above; 2. Widi adapter should be successfully connected with the device, and display mirror screen on the monitor.</pre_condition>
-          <post_condition/>
+          <post_condition />
           <steps>
             <step order="1">
               <step_desc>1. Launch 'presentation_test' app on Android device; 2. Press 'Request Show Presentation' Button, check the device.</step_desc>
@@ -269,16 +267,16 @@
         </description>
         <specs>
           <spec>
-            <spec_assertion element_type="method" element_name="requestShow" interface="Presentation" specification="Screen Presentation" section="Screen Presentation APIs" category="W3C API Specifications"/>
+            <spec_assertion category="W3C API Specifications" element_name="requestShow" element_type="method" interface="Presentation" section="Screen Presentation APIs" specification="Screen Presentation" />
             <spec_url>http://webscreens.github.io/presentation-api/</spec_url>
-            <spec_statement/>
+            <spec_statement />
           </spec>
         </specs>
       </testcase>
-      <testcase purpose="Test checks that the presentation displayavailablechange event on Widi Adapter" type="compliance" status="approved" component="WebAPI/Screen Presentation APIs/WebScreen" execution_type="manual" priority="P1" id="Presentation_displayavailablechange_on_Widi_Adapter">
+      <testcase component="Crosswalk APIs/Screen Presentation APIs" execution_type="manual" id="Presentation_displayavailablechange_on_Widi_Adapter" priority="P1" purpose="Test checks that the presentation displayavailablechange event on Widi Adapter" status="approved" type="compliance">
         <description>
           <pre_condition>1. Android 4.2 or above; 2. Widi adapter should be successfully connected with the device, and display mirror screen on the monitor.</pre_condition>
-          <post_condition/>
+          <post_condition />
           <steps>
             <step order="1">
               <step_desc>1. Launch 'presentation_test' app on Android device; 2. Press 'Request Show Presentation' Button, check the device.</step_desc>
@@ -297,16 +295,16 @@
         </description>
         <specs>
           <spec>
-            <spec_assertion element_type="method" element_name="requestShow" interface="Presentation" specification="Screen Presentation" section="Screen Presentation APIs" category="W3C API Specifications"/>
+            <spec_assertion category="W3C API Specifications" element_name="requestShow" element_type="method" interface="Presentation" section="Screen Presentation APIs" specification="Screen Presentation" />
             <spec_url>http://webscreens.github.io/presentation-api/</spec_url>
-            <spec_statement/>
+            <spec_statement />
           </spec>
         </specs>
       </testcase>
-      <testcase purpose="Test checks that the presentation requestShow on older version of Android" type="compliance" status="approved" component="WebAPI/Screen Presentation APIs/WebScreen" execution_type="manual" priority="P1" id="Presentation_requestShow_old_version_android">
+      <testcase component="Crosswalk APIs/Screen Presentation APIs" execution_type="manual" id="Presentation_requestShow_old_version_android" priority="P1" purpose="Test checks that the presentation requestShow on older version of Android" status="approved" type="compliance">
         <description>
           <pre_condition>Older version of Android (less than 4.2).</pre_condition>
-          <post_condition/>
+          <post_condition />
           <steps>
             <step order="1">
               <step_desc>Launch 'presentation_test' app on Android device, check the device.</step_desc>
@@ -321,9 +319,9 @@
         </description>
         <specs>
           <spec>
-            <spec_assertion element_type="method" element_name="requestShow" interface="Presentation" specification="Screen Presentation" section="Screen Presentation APIs" category="W3C API Specifications"/>
+            <spec_assertion category="W3C API Specifications" element_name="requestShow" element_type="method" interface="Presentation" section="Screen Presentation APIs" specification="Screen Presentation" />
             <spec_url>http://webscreens.github.io/presentation-api/</spec_url>
-            <spec_statement/>
+            <spec_statement />
           </spec>
         </specs>
       </testcase>

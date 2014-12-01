@@ -1,12 +1,10 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<?xml-stylesheet type="text/xsl"  href="./testcase.xsl"?>
 <test_definition>
-  <suite name="tct-geodeny-w3c-tests" category="W3C/HTML5 APIs">
+  <suite category="W3C/HTML5 APIs" name="tct-geodeny-w3c-tests">
     <set name="Geolocation" type="js">
-      <testcase purpose="Check if getCurrentPosition() invokes onPositionErrorCallback() when the operation fails before the timeout expires" type="compliance" status="approved" component="WebAPI/Location/Geolocation API Specification" execution_type="manual" priority="P3" id="Geolocation_getCurrentPosition_operation_failed">
+      <testcase component="W3C_HTML5 APIs/Location/Geolocation API Specification" execution_type="manual" id="Geolocation_getCurrentPosition_operation_failed" priority="P3" purpose="Check if getCurrentPosition() invokes onPositionErrorCallback() when the operation fails before the timeout expires" status="approved" type="compliance">
         <description>
           <pre_condition>disable GPS and network</pre_condition>
-          <post_condition/>
+          <post_condition />
           <steps>
             <step order="1">
               <step_desc>If prompts for permission to use geolocation, please decline</step_desc>
@@ -17,16 +15,16 @@
         </description>
         <specs>
           <spec>
-            <spec_assertion usage="true" interface="Geolocation" specification="Geolocation API Specification" section="Location" category="Tizen W3C API Specifications"/>
+            <spec_assertion category="Tizen W3C API Specifications" interface="Geolocation" section="Location" specification="Geolocation API Specification" usage="true" />
             <spec_url>http://www.w3.org/TR/2012/PR-geolocation-API-20120510/#geolocation</spec_url>
-            <spec_statement/>
+            <spec_statement />
           </spec>
         </specs>
       </testcase>
-      <testcase purpose="Check if watchPosition() invokes onPositionErrorCallback() when the operation fails before the timeout expires" type="compliance" status="approved" component="WebAPI/Location/Geolocation API Specification" execution_type="manual" priority="P3" id="Geolocation_watchPosition_operation_failed">
+      <testcase component="W3C_HTML5 APIs/Location/Geolocation API Specification" execution_type="manual" id="Geolocation_watchPosition_operation_failed" priority="P3" purpose="Check if watchPosition() invokes onPositionErrorCallback() when the operation fails before the timeout expires" status="approved" type="compliance">
         <description>
           <pre_condition>disable GPS and network</pre_condition>
-          <post_condition/>
+          <post_condition />
           <steps>
             <step order="1">
               <step_desc>If prompts for permission to use geolocation, please decline</step_desc>
@@ -37,16 +35,16 @@
         </description>
         <specs>
           <spec>
-            <spec_assertion usage="true" interface="Geolocation" specification="Geolocation API Specification" section="Location" category="Tizen W3C API Specifications"/>
+            <spec_assertion category="Tizen W3C API Specifications" interface="Geolocation" section="Location" specification="Geolocation API Specification" usage="true" />
             <spec_url>http://www.w3.org/TR/2012/PR-geolocation-API-20120510/#geolocation</spec_url>
-            <spec_statement/>
+            <spec_statement />
           </spec>
         </specs>
       </testcase>
-      <testcase purpose="Check if error callback is called with correct code" type="compliance" status="approved" component="WebAPI/Location/Geolocation API Specification" execution_type="manual" priority="P3" id="errorcallback_PERMISSION_DENIED">
+      <testcase component="W3C_HTML5 APIs/Location/Geolocation API Specification" execution_type="manual" id="errorcallback_PERMISSION_DENIED" priority="P3" purpose="Check if error callback is called with correct code" status="approved" type="compliance">
         <description>
           <pre_condition>disable GPS and network</pre_condition>
-          <post_condition/>
+          <post_condition />
           <steps>
             <step order="1">
               <step_desc>If prompts for permission to use geolocation, please decline</step_desc>
@@ -57,9 +55,9 @@
         </description>
         <specs>
           <spec>
-            <spec_assertion usage="true" interface="Geolocation" specification="Geolocation API Specification" section="Location" category="Tizen W3C API Specifications"/>
+            <spec_assertion category="Tizen W3C API Specifications" interface="Geolocation" section="Location" specification="Geolocation API Specification" usage="true" />
             <spec_url>http://www.w3.org/TR/2012/PR-geolocation-API-20120510/#security</spec_url>
-            <spec_statement/>
+            <spec_statement />
           </spec>
         </specs>
       </testcase>

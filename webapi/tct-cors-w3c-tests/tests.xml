@@ -1,54 +1,52 @@
-<?xml version="1.0" encoding="UTF-8"?>
-    <?xml-stylesheet type="text/xsl" href="./testcase.xsl"?>
 <test_definition>
-  <suite name="tct-cors-w3c-tests" category="W3C/HTML5 APIs">
+  <suite category="W3C/HTML5 APIs" name="tct-cors-w3c-tests">
     <set name="CORS" type="js">
-      <testcase component="WebAPI/Security/Cross-Origin Resource Sharing" execution_type="auto" id="cors_XMLHttpRequest_get" purpose="Check that the XMLHttpRequest supports CORS if the request method is get">
+      <testcase component="W3C_HTML5 APIs/Security/Cross-Origin Resource Sharing" execution_type="auto" id="cors_XMLHttpRequest_get" purpose="Check that the XMLHttpRequest supports CORS if the request method is get">
         <description>
           <test_script_entry timeout="6">/opt/tct-cors-w3c-tests/cors/cors_XMLHttpRequest_get.html</test_script_entry>
         </description>
         </testcase>
-      <testcase component="WebAPI/Security/Cross-Origin Resource Sharing" execution_type="auto" id="cors_XMLHttpRequest_post" purpose="Check that the XMLHttpRequest supports CORS if the request method is posted">
+      <testcase component="W3C_HTML5 APIs/Security/Cross-Origin Resource Sharing" execution_type="auto" id="cors_XMLHttpRequest_post" purpose="Check that the XMLHttpRequest supports CORS if the request method is posted">
         <description>
           <test_script_entry timeout="6">/opt/tct-cors-w3c-tests/cors/cors_XMLHttpRequest_post.html</test_script_entry>
         </description>
         </testcase>
-      <testcase component="WebAPI/Security/Cross-Origin Resource Sharing" execution_type="auto" id="cors_XMLHttpRequest_base" purpose="Check if example of using XMLHttpRequest from a client-side Web application can cross origin share the resource">
+      <testcase component="W3C_HTML5 APIs/Security/Cross-Origin Resource Sharing" execution_type="auto" id="cors_XMLHttpRequest_base" purpose="Check if example of using XMLHttpRequest from a client-side Web application can cross origin share the resource">
         <description>
           <test_script_entry>/opt/tct-cors-w3c-tests/cors/cors_XMLHttpRequest_base.html</test_script_entry>
         </description>
         </testcase>
-      <testcase component="WebAPI/Security/Cross-Origin Resource Sharing" execution_type="auto" id="cors_XMLHttpRequest_add_max_age" purpose="Check if optionally add a single Access-Control-Max-Age header with as value the amount of seconds the user agent is allowed to cache the result of the request">
+      <testcase component="W3C_HTML5 APIs/Security/Cross-Origin Resource Sharing" execution_type="auto" id="cors_XMLHttpRequest_add_max_age" purpose="Check if optionally add a single Access-Control-Max-Age header with as value the amount of seconds the user agent is allowed to cache the result of the request">
         <description>
           <test_script_entry>/opt/tct-cors-w3c-tests/cors/cors_XMLHttpRequest_add_max_age.html</test_script_entry>
         </description>
         </testcase>
-      <testcase component="WebAPI/Security/Cross-Origin Resource Sharing" execution_type="auto" id="cors_XMLHttpRequest_allow_credentials_true" purpose="Check if the response uses the value of the Origin header as value, and adds a single Access-Control-Allow-Credentials header with the literal string 'true' as value when the resource supports credentials add a single Access-Control-Allow-Origin header">
+      <testcase component="W3C_HTML5 APIs/Security/Cross-Origin Resource Sharing" execution_type="auto" id="cors_XMLHttpRequest_allow_credentials_true" purpose="Check if the response uses the value of the Origin header as value, and adds a single Access-Control-Allow-Credentials header with the literal string 'true' as value when the resource supports credentials add a single Access-Control-Allow-Origin header">
         <description>
           <test_script_entry>/opt/tct-cors-w3c-tests/cors/cors_XMLHttpRequest_allow_credentials_true.html</test_script_entry>
         </description>
         </testcase>
-      <testcase component="WebAPI/Security/Cross-Origin Resource Sharing" execution_type="auto" id="cors_XMLHttpRequest_credentials_false_origin" purpose="Check if the response adds a single Access-Control-Allow-Origin header and literal string '*' as value when the resource does not supports credentials add a single Access-Control-Allow-Origin header">
+      <testcase component="W3C_HTML5 APIs/Security/Cross-Origin Resource Sharing" execution_type="auto" id="cors_XMLHttpRequest_credentials_false_origin" purpose="Check if the response adds a single Access-Control-Allow-Origin header and literal string '*' as value when the resource does not supports credentials add a single Access-Control-Allow-Origin header">
         <description>
           <test_script_entry>/opt/tct-cors-w3c-tests/cors/cors_XMLHttpRequest_credentials_false_origin.html</test_script_entry>
         </description>
         </testcase>
-      <testcase component="WebAPI/Security/Cross-Origin Resource Sharing" execution_type="auto" id="cors_XMLHttpRequest_getResponseHeader_not_null" purpose="Check if the getResponseHeader() method of XMLHttpRequest will return valid value when the field name is an ASCII case-insensitive match for one of the values of the Access-Control-Expose-Headers headers">
+      <testcase component="W3C_HTML5 APIs/Security/Cross-Origin Resource Sharing" execution_type="auto" id="cors_XMLHttpRequest_getResponseHeader_not_null" purpose="Check if the getResponseHeader() method of XMLHttpRequest will return valid value when the field name is an ASCII case-insensitive match for one of the values of the Access-Control-Expose-Headers headers">
         <description>
           <test_script_entry>/opt/tct-cors-w3c-tests/cors/cors_XMLHttpRequest_getResponseHeader_not_null.html</test_script_entry>
         </description>
         </testcase>
-      <testcase component="WebAPI/Security/Cross-Origin Resource Sharing" execution_type="auto" id="cors_XMLHttpRequest_getResponseHeader_null" purpose="Check if the getResponseHeader() method of XMLHttpRequest will return null when the field name does not match for one of the values of the Access-Control-Expose-Headers headers">
+      <testcase component="W3C_HTML5 APIs/Security/Cross-Origin Resource Sharing" execution_type="auto" id="cors_XMLHttpRequest_getResponseHeader_null" purpose="Check if the getResponseHeader() method of XMLHttpRequest will return null when the field name does not match for one of the values of the Access-Control-Expose-Headers headers">
         <description>
           <test_script_entry>/opt/tct-cors-w3c-tests/cors/cors_XMLHttpRequest_getResponseHeader_null.html</test_script_entry>
         </description>
         </testcase>
-      <testcase component="WebAPI/Security/Cross-Origin Resource Sharing" execution_type="auto" id="cors_XMLHttpRequest_get_true" purpose="Check if the XMLHttpRequest supports CORS when the request method is get and async flag is true">
+      <testcase component="W3C_HTML5 APIs/Security/Cross-Origin Resource Sharing" execution_type="auto" id="cors_XMLHttpRequest_get_true" purpose="Check if the XMLHttpRequest supports CORS when the request method is get and async flag is true">
         <description>
           <test_script_entry timeout="6">/opt/tct-cors-w3c-tests/cors/cors_XMLHttpRequest_get_true.html</test_script_entry>
         </description>
         </testcase>
-      <testcase component="WebAPI/Security/Cross-Origin Resource Sharing" execution_type="auto" id="cors_XMLHttpRequest_post_true" purpose="Check if the XMLHttpRequest supports CORS when the request method is post and async flag is true">
+      <testcase component="W3C_HTML5 APIs/Security/Cross-Origin Resource Sharing" execution_type="auto" id="cors_XMLHttpRequest_post_true" purpose="Check if the XMLHttpRequest supports CORS when the request method is post and async flag is true">
         <description>
           <test_script_entry timeout="6">/opt/tct-cors-w3c-tests/cors/cors_XMLHttpRequest_post_true.html</test_script_entry>
         </description>

@@ -1,125 +1,123 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<?xml-stylesheet type="text/xsl"  href="./testcase.xsl"?>
 <test_definition>
-  <suite name="tct-cors-w3c-tests" category="W3C/HTML5 APIs">
+  <suite category="W3C/HTML5 APIs" name="tct-cors-w3c-tests">
     <set name="CORS" type="js">
-      <testcase purpose="Check that the XMLHttpRequest supports CORS if the request method is get" type="compliance" status="approved" component="WebAPI/Security/Cross-Origin Resource Sharing" execution_type="auto" priority="P1" id="cors_XMLHttpRequest_get">
+      <testcase component="W3C_HTML5 APIs/Security/Cross-Origin Resource Sharing" execution_type="auto" id="cors_XMLHttpRequest_get" priority="P1" purpose="Check that the XMLHttpRequest supports CORS if the request method is get" status="approved" type="compliance">
         <description>
           <test_script_entry timeout="6">/opt/tct-cors-w3c-tests/cors/cors_XMLHttpRequest_get.html</test_script_entry>
         </description>
         <specs>
           <spec>
-            <spec_assertion usage="true" interface="XMLHttpRequest" specification="Cross-Origin Resource Sharing" section="Security" category="Tizen W3C API Specifications" element_type="true" element_name=""/>
+            <spec_assertion category="Tizen W3C API Specifications" element_name="" element_type="true" interface="XMLHttpRequest" section="Security" specification="Cross-Origin Resource Sharing" usage="true" />
             <spec_url>http://www.w3.org/TR/2012/WD-cors-20120403</spec_url>
-            <spec_statement/>
+            <spec_statement />
           </spec>
         </specs>
       </testcase>
-      <testcase purpose="Check that the XMLHttpRequest supports CORS if the request method is posted" type="compliance" status="approved" component="WebAPI/Security/Cross-Origin Resource Sharing" execution_type="auto" priority="P1" id="cors_XMLHttpRequest_post">
+      <testcase component="W3C_HTML5 APIs/Security/Cross-Origin Resource Sharing" execution_type="auto" id="cors_XMLHttpRequest_post" priority="P1" purpose="Check that the XMLHttpRequest supports CORS if the request method is posted" status="approved" type="compliance">
         <description>
           <test_script_entry timeout="6">/opt/tct-cors-w3c-tests/cors/cors_XMLHttpRequest_post.html</test_script_entry>
         </description>
         <specs>
           <spec>
-            <spec_assertion usage="true" interface="XMLHttpRequest" specification="Cross-Origin Resource Sharing" section="Security" category="Tizen W3C API Specifications" element_type="true" element_name=""/>
+            <spec_assertion category="Tizen W3C API Specifications" element_name="" element_type="true" interface="XMLHttpRequest" section="Security" specification="Cross-Origin Resource Sharing" usage="true" />
             <spec_url>http://www.w3.org/TR/2012/WD-cors-20120403</spec_url>
-            <spec_statement/>
+            <spec_statement />
           </spec>
         </specs>
       </testcase>
-      <testcase purpose="Check if example of using XMLHttpRequest from a client-side Web application can cross origin share the resource" type="compliance" status="approved" component="WebAPI/Security/Cross-Origin Resource Sharing" execution_type="auto" priority="P1" id="cors_XMLHttpRequest_base">
+      <testcase component="W3C_HTML5 APIs/Security/Cross-Origin Resource Sharing" execution_type="auto" id="cors_XMLHttpRequest_base" priority="P1" purpose="Check if example of using XMLHttpRequest from a client-side Web application can cross origin share the resource" status="approved" type="compliance">
         <description>
           <test_script_entry>/opt/tct-cors-w3c-tests/cors/cors_XMLHttpRequest_base.html</test_script_entry>
         </description>
         <specs>
           <spec>
-            <spec_assertion usage="true" interface="XMLHttpRequest" specification="Cross-Origin Resource Sharing" section="Security" category="Tizen W3C API Specifications" element_type="true" element_name=""/>
+            <spec_assertion category="Tizen W3C API Specifications" element_name="" element_type="true" interface="XMLHttpRequest" section="Security" specification="Cross-Origin Resource Sharing" usage="true" />
             <spec_url>http://www.w3.org/TR/2012/WD-cors-20120403</spec_url>
             <spec_statement>Using XMLHttpRequest a client-side Web application on http://hello-world.example can access this resource as follows</spec_statement>
           </spec>
         </specs>
       </testcase>
-      <testcase purpose="Check if optionally add a single Access-Control-Max-Age header with as value the amount of seconds the user agent is allowed to cache the result of the request" type="compliance" status="approved" component="WebAPI/Security/Cross-Origin Resource Sharing" execution_type="auto" priority="P3" id="cors_XMLHttpRequest_add_max_age">
+      <testcase component="W3C_HTML5 APIs/Security/Cross-Origin Resource Sharing" execution_type="auto" id="cors_XMLHttpRequest_add_max_age" priority="P3" purpose="Check if optionally add a single Access-Control-Max-Age header with as value the amount of seconds the user agent is allowed to cache the result of the request" status="approved" type="compliance">
         <description>
           <test_script_entry>/opt/tct-cors-w3c-tests/cors/cors_XMLHttpRequest_add_max_age.html</test_script_entry>
         </description>
         <specs>
           <spec>
-            <spec_assertion usage="true" interface="XMLHttpRequest" specification="Cross-Origin Resource Sharing" section="Security" category="Tizen W3C API Specifications"/>
+            <spec_assertion category="Tizen W3C API Specifications" interface="XMLHttpRequest" section="Security" specification="Cross-Origin Resource Sharing" usage="true" />
             <spec_url>http://www.w3.org/TR/2012/WD-cors-20120403</spec_url>
             <spec_statement>Optionally add a single Access-Control-Max-Age header with as value the amount of seconds the user agent is allowed to cache the result of the request</spec_statement>
           </spec>
         </specs>
       </testcase>
-      <testcase purpose="Check if the response uses the value of the Origin header as value, and adds a single Access-Control-Allow-Credentials header with the literal string 'true' as value when the resource supports credentials add a single Access-Control-Allow-Origin header" type="compliance" status="approved" component="WebAPI/Security/Cross-Origin Resource Sharing" execution_type="auto" priority="P3" id="cors_XMLHttpRequest_allow_credentials_true">
+      <testcase component="W3C_HTML5 APIs/Security/Cross-Origin Resource Sharing" execution_type="auto" id="cors_XMLHttpRequest_allow_credentials_true" priority="P3" purpose="Check if the response uses the value of the Origin header as value, and adds a single Access-Control-Allow-Credentials header with the literal string 'true' as value when the resource supports credentials add a single Access-Control-Allow-Origin header" status="approved" type="compliance">
         <description>
           <test_script_entry>/opt/tct-cors-w3c-tests/cors/cors_XMLHttpRequest_allow_credentials_true.html</test_script_entry>
         </description>
         <specs>
           <spec>
-            <spec_assertion usage="true" interface="XMLHttpRequest" specification="Cross-Origin Resource Sharing" section="Security" category="Tizen W3C API Specifications"/>
+            <spec_assertion category="Tizen W3C API Specifications" interface="XMLHttpRequest" section="Security" specification="Cross-Origin Resource Sharing" usage="true" />
             <spec_url>http://www.w3.org/TR/2012/WD-cors-20120403</spec_url>
             <spec_statement>If the resource supports credentials add a single Access-Control-Allow-Origin header, with the value of the Origin header as value, and add a single Access-Control-Allow-Credentials header with the literal string "true" as value</spec_statement>
           </spec>
         </specs>
       </testcase>
-      <testcase purpose="Check if the response adds a single Access-Control-Allow-Origin header and literal string '*' as value when the resource does not supports credentials add a single Access-Control-Allow-Origin header" type="compliance" status="approved" component="WebAPI/Security/Cross-Origin Resource Sharing" execution_type="auto" priority="P3" id="cors_XMLHttpRequest_credentials_false_origin">
+      <testcase component="W3C_HTML5 APIs/Security/Cross-Origin Resource Sharing" execution_type="auto" id="cors_XMLHttpRequest_credentials_false_origin" priority="P3" purpose="Check if the response adds a single Access-Control-Allow-Origin header and literal string '*' as value when the resource does not supports credentials add a single Access-Control-Allow-Origin header" status="approved" type="compliance">
         <description>
           <test_script_entry>/opt/tct-cors-w3c-tests/cors/cors_XMLHttpRequest_credentials_false_origin.html</test_script_entry>
         </description>
         <specs>
           <spec>
-            <spec_assertion usage="true" interface="XMLHttpRequest" specification="Cross-Origin Resource Sharing" section="Security" category="Tizen W3C API Specifications"/>
+            <spec_assertion category="Tizen W3C API Specifications" interface="XMLHttpRequest" section="Security" specification="Cross-Origin Resource Sharing" usage="true" />
             <spec_url>http://www.w3.org/TR/2012/WD-cors-20120403</spec_url>
             <spec_statement>Otherwise, add a single Access-Control-Allow-Origin header, with either the value of the Origin header or the literal string "*" as value</spec_statement>
           </spec>
         </specs>
       </testcase>
-      <testcase purpose="Check if the getResponseHeader() method of XMLHttpRequest will return valid value when the field name is an ASCII case-insensitive match for one of the values of the Access-Control-Expose-Headers headers" type="compliance" status="approved" component="WebAPI/Security/Cross-Origin Resource Sharing" execution_type="auto" priority="P3" id="cors_XMLHttpRequest_getResponseHeader_not_null">
+      <testcase component="W3C_HTML5 APIs/Security/Cross-Origin Resource Sharing" execution_type="auto" id="cors_XMLHttpRequest_getResponseHeader_not_null" priority="P3" purpose="Check if the getResponseHeader() method of XMLHttpRequest will return valid value when the field name is an ASCII case-insensitive match for one of the values of the Access-Control-Expose-Headers headers" status="approved" type="compliance">
         <description>
           <test_script_entry>/opt/tct-cors-w3c-tests/cors/cors_XMLHttpRequest_getResponseHeader_not_null.html</test_script_entry>
         </description>
         <specs>
           <spec>
-            <spec_assertion usage="true" interface="XMLHttpRequest" specification="Cross-Origin Resource Sharing" section="Security" category="Tizen W3C API Specifications"/>
+            <spec_assertion category="Tizen W3C API Specifications" interface="XMLHttpRequest" section="Security" specification="Cross-Origin Resource Sharing" usage="true" />
             <spec_url>http://www.w3.org/TR/2012/WD-cors-20120403</spec_url>
-            <spec_statement>User agents must filter out all response headers other than those that are a simple response header or of which the field name is an ASCII case-insensitive match for one of the values of the Access-Control-Expose-Headers headers (if any), before exposing response headers to APIs defined in CORS API specifications</spec_statement>
+            <spec_statement>User agents&#160;must&#160;filter out all response headers other than those that are a&#160;simple response header&#160;or of which the field name is an&#160;ASCII case-insensitive&#160;match for one of the values of the&#160;Access-Control-Expose-Headers&#160;headers (if any), before exposing response headers to APIs defined in CORS API specifications</spec_statement>
           </spec>
         </specs>
       </testcase>
-      <testcase purpose="Check if the getResponseHeader() method of XMLHttpRequest will return null when the field name does not match for one of the values of the Access-Control-Expose-Headers headers" type="compliance" status="approved" component="WebAPI/Security/Cross-Origin Resource Sharing" execution_type="auto" priority="P3" id="cors_XMLHttpRequest_getResponseHeader_null">
+      <testcase component="W3C_HTML5 APIs/Security/Cross-Origin Resource Sharing" execution_type="auto" id="cors_XMLHttpRequest_getResponseHeader_null" priority="P3" purpose="Check if the getResponseHeader() method of XMLHttpRequest will return null when the field name does not match for one of the values of the Access-Control-Expose-Headers headers" status="approved" type="compliance">
         <description>
           <test_script_entry>/opt/tct-cors-w3c-tests/cors/cors_XMLHttpRequest_getResponseHeader_null.html</test_script_entry>
         </description>
         <specs>
           <spec>
-            <spec_assertion usage="true" interface="XMLHttpRequest" specification="Cross-Origin Resource Sharing" section="Security" category="Tizen W3C API Specifications"/>
+            <spec_assertion category="Tizen W3C API Specifications" interface="XMLHttpRequest" section="Security" specification="Cross-Origin Resource Sharing" usage="true" />
             <spec_url>http://www.w3.org/TR/2012/WD-cors-20120403</spec_url>
-            <spec_statement>User agents must filter out all response headers other than those that are a simple response header or of which the field name is an ASCII case-insensitive match for one of the values of the Access-Control-Expose-Headers headers (if any), before exposing response headers to APIs defined in CORS API specifications</spec_statement>
+            <spec_statement>User agents&#160;must&#160;filter out all response headers other than those that are a&#160;simple response header&#160;or of which the field name is an&#160;ASCII case-insensitive&#160;match for one of the values of the&#160;Access-Control-Expose-Headers&#160;headers (if any), before exposing response headers to APIs defined in CORS API specifications</spec_statement>
           </spec>
         </specs>
       </testcase>
-      <testcase purpose="Check if the XMLHttpRequest supports CORS when the request method is get and async flag is true" type="compliance" status="approved" component="WebAPI/Security/Cross-Origin Resource Sharing" execution_type="auto" priority="P3" id="cors_XMLHttpRequest_get_true">
+      <testcase component="W3C_HTML5 APIs/Security/Cross-Origin Resource Sharing" execution_type="auto" id="cors_XMLHttpRequest_get_true" priority="P3" purpose="Check if the XMLHttpRequest supports CORS when the request method is get and async flag is true" status="approved" type="compliance">
         <description>
           <test_script_entry timeout="6">/opt/tct-cors-w3c-tests/cors/cors_XMLHttpRequest_get_true.html</test_script_entry>
         </description>
         <specs>
           <spec>
-            <spec_assertion usage="true" interface="XMLHttpRequest" specification="Cross-Origin Resource Sharing" section="Security" category="Tizen W3C API Specifications"/>
+            <spec_assertion category="Tizen W3C API Specifications" interface="XMLHttpRequest" section="Security" specification="Cross-Origin Resource Sharing" usage="true" />
             <spec_url>http://www.w3.org/TR/2012/WD-cors-20120403</spec_url>
-            <spec_statement/>
+            <spec_statement />
           </spec>
         </specs>
       </testcase>
-      <testcase purpose="Check if the XMLHttpRequest supports CORS when the request method is post and async flag is true" type="compliance" status="approved" component="WebAPI/Security/Cross-Origin Resource Sharing" execution_type="auto" priority="P3" id="cors_XMLHttpRequest_post_true">
+      <testcase component="W3C_HTML5 APIs/Security/Cross-Origin Resource Sharing" execution_type="auto" id="cors_XMLHttpRequest_post_true" priority="P3" purpose="Check if the XMLHttpRequest supports CORS when the request method is post and async flag is true" status="approved" type="compliance">
         <description>
           <test_script_entry timeout="6">/opt/tct-cors-w3c-tests/cors/cors_XMLHttpRequest_post_true.html</test_script_entry>
         </description>
         <specs>
           <spec>
-            <spec_assertion usage="true" interface="XMLHttpRequest" specification="Cross-Origin Resource Sharing" section="Security" category="Tizen W3C API Specifications"/>
+            <spec_assertion category="Tizen W3C API Specifications" interface="XMLHttpRequest" section="Security" specification="Cross-Origin Resource Sharing" usage="true" />
             <spec_url>http://www.w3.org/TR/2012/WD-cors-20120403</spec_url>
-            <spec_statement/>
+            <spec_statement />
           </spec>
         </specs>
       </testcase>
