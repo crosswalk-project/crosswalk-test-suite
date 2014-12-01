@@ -8,10 +8,9 @@ This is a test suite for Crosswalk, which includes:
 * `webapi/`: Web API tests
 * `wrt/`: Web Runtime Tests
 * `misc/`: miscellaneous tests
-  * `web-abat-tests` and `web-mbat-xwalk-tests`: basic acceptance tests
-  * `wrt-stab*-tests`: stability tests
-  * `wrt-*-UA-tests`: user acceptance tests
+  * `web-abat-xwalk-tests` and `web-mbat-xwalk-tests`: basic acceptance tests
   * `wrt-documentation-verification-tests`: tests for documents verification
+* `stability/`: stability tests
 * `doc/`: see [documentaion](#Documentation) below
 * `tools/`: tools for this test suite
 

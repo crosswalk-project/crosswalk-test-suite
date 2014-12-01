@@ -142,7 +142,7 @@ unzip /tmp/web-xbat-tests-xxx.xpk.zip -d /opt/usr/media/tct/
 
 sh /opt/usr/media/tct/opt/web-xbat-tests/inst.sh
 
-**Note** : Please update the suite name when you use above commands, e.g. change "web-xbat-tests" to "web-abat-tests"
+**Note** : Please update the suite name when you use above commands, e.g. change "web-xbat-tests" to "web-abat-xwalk-tests"
 
 Then you can get the appid of the test APP (will be used in next execution steps):
 
@@ -158,11 +158,11 @@ env LD\_LIBRARY\_PATH=/opt/home/developer PATH=$PATH:/opt/home/developer tinyweb
 
 testkit-lite -e 'su app -c "export DBUS\_SESSION\_BUS\_ADDRESS=\"unix:path=/run/user/5000/dbus/user\_bus\_socket\";export XDG\_RUNTIME\_DIR=\"/run/user/5000\";app_launcher -s $appid"' -f /opt/usr/media/tct/opt/web-xbat-tests/tests.xml --comm localhost -o /path/to/result.xml
 
-**Note:** Please update the suite name when you use above commands, e.g. change "web-xbat-tests" to "web-abat-tests"
+**Note:** Please update the suite name when you use above commands, e.g. change "web-xbat-tests" to "web-abat-xwalk-tests"
 
 ##4.3 Get result from /path/to/result.xml
 ##4.4 Uninstall Tests
 
 sh /opt/usr/media/tct/opt/web-xbat-tests/inst.sh -u
 
-**Note** : Please update the suite name when you use above commands, e.g. change "web-xbat-tests" to "web-abat-tests"
+**Note** : Please update the suite name when you use above commands, e.g. change "web-xbat-tests" to "web-abat-xwalk-tests"
