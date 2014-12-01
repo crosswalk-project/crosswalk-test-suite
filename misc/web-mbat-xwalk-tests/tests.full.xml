@@ -1,9 +1,7 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<?xml-stylesheet type="text/xsl" href="./testcase.xsl"?>
 <test_definition>
-  <suite name="web-mbat-xwalk-tests" category="mbat">
+  <suite category="mbat" name="web-mbat-xwalk-tests">
     <set name="mbat" type="js">
-      <testcase purpose="Validate Crosswalk install is successfull" type="Functional" status="approved" component="Crosswalk Runtime Binary" execution_type="manual" priority="P0" id="Crosswalk_Binary_Install">
+      <testcase component="BAT" execution_type="manual" id="Crosswalk_Binary_Install" priority="P0" purpose="Validate Crosswalk install is successfull" status="approved" type="Functional">
         <description>
           <pre_condition>
             1.Make sure Crosswalk binary is push device.
@@ -11,7 +9,7 @@
           <test_script_entry>/opt/web-mbat-xwalk-tests/mbat/Crosswalk_Binary_Install.html</test_script_entry>
         </description>
       </testcase>
-      <testcase purpose="Validate Crosswalk unistall successfull" type="Functional" status="approved" component="Crosswalk Runtime Binary" execution_type="manual" priority="P0" id="Crosswalk_Binary_Uninstall">
+      <testcase component="BAT" execution_type="manual" id="Crosswalk_Binary_Uninstall" priority="P0" purpose="Validate Crosswalk unistall successfull" status="approved" type="Functional">
         <description>
           <pre_condition>
             1.Make sure Crosswalk binary is installed
@@ -19,7 +17,7 @@
           <test_script_entry>/opt/web-mbat-xwalk-tests/mbat/Crosswalk_Binary_Uninstall.html</test_script_entry>
         </description>
       </testcase>
-      <testcase purpose="Validate Crosswalk tec install is successfull" type="Functional" status="approved" component="Crosswalk Runtime Binary" execution_type="manual" priority="P0" id="Crosswalk_tec_Install">
+      <testcase component="BAT" execution_type="manual" id="Crosswalk_tec_Install" priority="P0" purpose="Validate Crosswalk tec install is successfull" status="approved" type="Functional">
         <description>
           <pre_condition>
             1.Make sure Crosswalk binary is push device.
@@ -27,7 +25,7 @@
           <test_script_entry>/opt/web-mbat-xwalk-tests/mbat/Crosswalk_tec_Install.html</test_script_entry>
         </description>
       </testcase>
-      <testcase purpose="Validate Crosswalk tec unistall successfull" type="Functional" status="approved" component="Crosswalk Runtime Binary" execution_type="manual" priority="P0" id="Crosswalk_tec_Uninstall">
+      <testcase component="BAT" execution_type="manual" id="Crosswalk_tec_Uninstall" priority="P0" purpose="Validate Crosswalk tec unistall successfull" status="approved" type="Functional">
         <description>
           <pre_condition>
             1.Make sure Crosswalk binary is installed
@@ -36,17 +34,17 @@
         </description>
       </testcase>
 
-      <testcase purpose="Validate if Crosswalk support launch url" type="Functional" status="approved" component="Integration with Tizen System" execution_type="manual" priority="P0" id="Crosswalk_Launch_URL">
+      <testcase component="BAT" execution_type="manual" id="Crosswalk_Launch_URL" priority="P0" purpose="Validate if Crosswalk support launch url" status="approved" type="Functional">
         <description>
           <pre_condition>
             1. Make sure Crosswalk application is launched and the device connected to network
           </pre_condition>
-          <post_condition/>
+          <post_condition />
           <test_script_entry>/opt/web-mbat-xwalk-tests/mbat/Crosswalk_Launch_URL.html </test_script_entry>
         </description>
       </testcase>
       
-      <testcase purpose="Validate if Crosswalk support to install Widget" type="Functional" status="approved" component="Package Management On Tizen" execution_type="manual" priority="P0" id="Crosswalk_WebApp_Install">
+      <testcase component="BAT" execution_type="manual" id="Crosswalk_WebApp_Install" priority="P0" purpose="Validate if Crosswalk support to install Widget" status="approved" type="Functional">
         <description>
           <pre_condition>
             1.Make sure Crosswalk is installed;
@@ -54,7 +52,7 @@
           <test_script_entry>/opt/web-mbat-xwalk-tests/mbat/Crosswalk_WebApp_Install.html</test_script_entry>
         </description>
       </testcase>
-      <testcase purpose="Validate Crosswalk support that web app could be launched successfully" type="Functional" status="approved" component="Package Management On Tizen" execution_type="manual" priority="P0" id="Crosswalk_WebApp_Launch">
+      <testcase component="BAT" execution_type="manual" id="Crosswalk_WebApp_Launch" priority="P0" purpose="Validate Crosswalk support that web app could be launched successfully" status="approved" type="Functional">
         <description>
           <pre_condition>
             1.Make sure Crosswalk application is launched
@@ -63,7 +61,7 @@
           <test_script_entry>/opt/web-mbat-xwalk-tests/mbat/Crosswalk_WebApp_Launch.html</test_script_entry>
         </description>
       </testcase>
-      <testcase purpose="Validate if Crosswalk support to update WebApp" type="Functional" status="approved" component="Package Management On Tizen" execution_type="manual" priority="P0" id="Crosswalk_WebApp_Update">
+      <testcase component="BAT" execution_type="manual" id="Crosswalk_WebApp_Update" priority="P0" purpose="Validate if Crosswalk support to update WebApp" status="approved" type="Functional">
         <description>
           <pre_condition>
             1.Make sure Crosswalk is installed;
@@ -71,7 +69,7 @@
           <test_script_entry>/opt/web-mbat-xwalk-tests/mbat/Crosswalk_WebApp_Update.html</test_script_entry>
         </description>
       </testcase>
-      <testcase purpose="Validate if Crosswalk support web apps could be uninstalled successfully" type="Functional" status="approved" component="Package Management On Tizen" execution_type="manual" priority="P0" id="Crosswalk_WebApp_Uninstall">
+      <testcase component="BAT" execution_type="manual" id="Crosswalk_WebApp_Uninstall" priority="P0" purpose="Validate if Crosswalk support web apps could be uninstalled successfully" status="approved" type="Functional">
         <description>
           <pre_condition>
             1.Make sure there some webapps are available
@@ -79,7 +77,7 @@
           <test_script_entry>/opt/web-mbat-xwalk-tests/mbat/Crosswalk_WebApp_Uninstall.html</test_script_entry>
         </description>
       </testcase>
-      <testcase purpose="Validate if Crosswalk support launch on fullscreen successfully" type="Functional" status="approved" component="Package Management On Tizen" execution_type="manual" priority="P2" id="Crosswalk_WebApp_Launch_Fullscreen">
+      <testcase component="BAT" execution_type="manual" id="Crosswalk_WebApp_Launch_Fullscreen" priority="P2" purpose="Validate if Crosswalk support launch on fullscreen successfully" status="approved" type="Functional">
         <description>
           <pre_condition>
             1.Make sure there some webapps are available.
