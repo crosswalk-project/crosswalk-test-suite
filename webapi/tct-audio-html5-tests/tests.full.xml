@@ -5208,6 +5208,94 @@
           </spec>
         </specs>
       </testcase>
+      <testcase purpose="Check that user agent can expose a controller if  the controls attribute is provide for the audio element." type="compliance" status="approved" component="WebAPI/Media/HTML5 The audio element (Partial)" execution_type="manual" priority="P2" id="audio_controls_present_manual">
+        <description>
+          <test_script_entry>/opt/tct-audio-html5-tests/audio/w3c/audio_controls_present-manual.html</test_script_entry>
+        </description>
+        <specs>
+          <spec>
+            <spec_assertion element_type="attribute" element_name="controls" interface="HTMLAudioElement" specification="HTML5 The audio element (Partial)" section="Media" category="Tizen W3C API Specifications"/>
+            <spec_url>http://www.w3.org/TR/2012/WD-html5-20121025/media-elements.html#htmlmediaelement</spec_url>
+            <spec_statement/>
+          </spec>
+        </specs>
+      </testcase>
+      <testcase purpose="Check that the sound can not be output when the muted attribute is provided for the audio element although volume is set to loudest." type="compliance" status="approved" component="WebAPI/Media/HTML5 The audio element (Partial)" execution_type="manual" priority="P2" id="audio_muted_overriding_volume">
+        <description>
+          <test_script_entry>/opt/tct-audio-html5-tests/audio/w3c/audio_muted_overriding_volume-manual.html</test_script_entry>
+        </description>
+        <specs>
+          <spec>
+            <spec_assertion element_type="attribute" element_name="muted" interface="HTMLAudioElement" specification="HTML5 The audio element (Partial)" section="Media" category="Tizen W3C API Specifications"/>
+            <spec_url>http://www.w3.org/TR/2012/WD-html5-20121025/media-elements.html#htmlmediaelement</spec_url>
+            <spec_statement/>
+          </spec>
+        </specs>
+      </testcase>
+      <testcase purpose="Check that the sound can not be output when the muted attribute is provided for the audio element." type="compliance" status="approved" component="WebAPI/Media/HTML5 The audio element (Partial)" execution_type="manual" priority="P2" id="audio_muted_present_manual">
+        <description>
+          <test_script_entry>/opt/tct-audio-html5-tests/audio/w3c/audio_muted_present-manual.html</test_script_entry>
+        </description>
+        <specs>
+          <spec>
+            <spec_assertion element_type="attribute" element_name="muted" interface="HTMLAudioElement" specification="HTML5 The audio element (Partial)" section="Media" category="Tizen W3C API Specifications"/>
+            <spec_url>http://www.w3.org/TR/2012/WD-html5-20121025/media-elements.html#htmlmediaelement</spec_url>
+            <spec_statement/>
+          </spec>
+        </specs>
+      </testcase>
+      <testcase purpose="Check that the volume is loudest when the attribute is set to 1.0 for the audio element." type="compliance" status="approved" component="WebAPI/Media/HTML5 The audio element (Partial)" execution_type="manual" priority="P2" id="audio_volume_loudest_manual">
+        <description>
+          <test_script_entry>/opt/tct-audio-html5-tests/audio/w3c/audio_volume_loudest-manual.html</test_script_entry>
+        </description>
+        <specs>
+          <spec>
+            <spec_assertion element_type="attribute" element_name="volume" interface="HTMLAudioElement" specification="HTML5 The audio element (Partial)" section="Media" category="Tizen W3C API Specifications"/>
+            <spec_url>http://www.w3.org/TR/2012/WD-html5-20121025/media-elements.html#htmlmediaelement</spec_url>
+            <spec_statement/>
+          </spec>
+        </specs>
+      </testcase>
+      <testcase purpose="Check that the volume is lowest (silent) when the attribute is set to 0.0." type="compliance" status="approved" component="WebAPI/Media/HTML5 The audio element (Partial)" execution_type="manual" priority="P2" id="audio_volume_silent_manual">
+        <description>
+          <test_script_entry>/opt/tct-audio-html5-tests/audio/w3c/audio_volume_silent-manual.html</test_script_entry>
+        </description>
+        <specs>
+          <spec>
+            <spec_assertion element_type="attribute" element_name="volume" interface="HTMLAudioElement" specification="HTML5 The audio element (Partial)" section="Media" category="Tizen W3C API Specifications"/>
+            <spec_url>http://www.w3.org/TR/2012/WD-html5-20121025/media-elements.html#htmlmediaelement</spec_url>
+            <spec_statement/>
+          </spec>
+        </specs>
+      </testcase>
+    </set>
+    <set name="Audio-ref" type="ref">
+      <testcase purpose="Check that image content inside the audio element can not be shown." type="compliance" status="approved" component="WebAPI/Media/HTML5 The audio element (Partial)" execution_type="auto" priority="P3" id="audio_one_inside_image_not_show">
+        <description>
+          <test_script_entry test_script_expected_result="0">/opt/tct-audio-html5-tests/audio/w3c/audio_001.htm</test_script_entry>
+          <refer_test_script_entry timeout="90">/opt/tct-audio-html5-tests/audio/w3c/audio_content-ref.htm</refer_test_script_entry>
+        </description>
+        <specs>
+          <spec>
+            <spec_assertion usage="true" interface="HTMLAudioElement" specification="HTML5 The audio element (Partial)" section="Media" category="Tizen W3C API Specifications"/>
+            <spec_url>http://www.w3.org/TR/2012/WD-html5-20121025/media-elements.html#htmlmediaelement</spec_url>
+            <spec_statement/>
+          </spec>
+        </specs>
+      </testcase>
+      <testcase purpose="Check that color content inside the audio element can not be shown" type="compliance" status="approved" component="WebAPI/Media/HTML5 The audio element (Partial)" execution_type="auto" priority="P3" id="audio_two_inside_color_not_show">
+        <description>
+          <test_script_entry test_script_expected_result="0">/opt/tct-audio-html5-tests/audio/w3c/audio_002.htm</test_script_entry>
+          <refer_test_script_entry timeout="90">/opt/tct-audio-html5-tests/audio/w3c/audio_content-ref.htm</refer_test_script_entry>
+        </description>
+        <specs>
+          <spec>
+            <spec_assertion usage="true" interface="HTMLAudioElement" specification="HTML5 The audio element (Partial)" section="Media" category="Tizen W3C API Specifications"/>
+            <spec_url>http://www.w3.org/TR/2012/WD-html5-20121025/media-elements.html#htmlmediaelement</spec_url>
+            <spec_statement/>
+          </spec>
+        </specs>
+      </testcase>
     </set>
   </suite>
 </test_definition>
