@@ -1,14 +1,12 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<?xml-stylesheet type="text/xsl" href="./testcase.xsl"?>
 <test_definition>
-  <suite name="wrt-integration-android-tests" category="Integration_with_Android_System">
+  <suite category="Integration_with_Android_System" name="wrt-integration-android-tests">
     <set name="Integration" type="js">
-      <testcase purpose="Validate if Crosswalk support HW accelerated HTML5 video" type="Functional" status="approved" component="Web Features" execution_type="manual" priority="P1" id="Crosswalk_WebApp_Video_HWAccelerate">
+      <testcase component="Crosswalk WRT/User Experience" execution_type="manual" id="Crosswalk_WebApp_Video_HWAccelerate" priority="P1" purpose="Validate if Crosswalk support HW accelerated HTML5 video" status="approved" type="Functional">
         <description>
           <test_script_entry>/opt/wrt-uxmanu-android-tests/uxmanu/Crosswalk_WebApp_Video_HWAccelerate.html</test_script_entry>
         </description>
       </testcase>
-      <testcase purpose="Validate if enable the feature of HTML5 Notification in Crosswalk" type="Functional" status="approved" component="Web Features" execution_type="manual" priority="P1" id="Crosswalk_WebApp_HTML5_Notification">
+      <testcase component="Crosswalk WRT/User Experience" execution_type="manual" id="Crosswalk_WebApp_HTML5_Notification" priority="P1" purpose="Validate if enable the feature of HTML5 Notification in Crosswalk" status="approved" type="Functional">
         <description>
           <pre_condition>
             1.Make sure Crosswalk binary is installed
@@ -16,7 +14,7 @@
           <test_script_entry>/opt/wrt-uxmanu-android-tests/uxmanu/Crosswalk_WebApp_HTML5_Notification.html</test_script_entry>
         </description>
       </testcase>
-      <testcase purpose="Validate Crosswalk suppor lock and unlock screen when running Web Apps" type="Functional" status="approved" component="Integration with Android System" execution_type="manual" priority="P1" id="Crosswalk_Lock_And_Unlock_Screen">
+      <testcase component="Crosswalk WRT/User Experience" execution_type="manual" id="Crosswalk_Lock_And_Unlock_Screen" priority="P1" purpose="Validate Crosswalk suppor lock and unlock screen when running Web Apps" status="approved" type="Functional">
         <description>
           <pre_condition>
             1.Make sure Crosswalk application is launched;
@@ -25,7 +23,7 @@
           <test_script_entry>/opt/wrt-uxmanu-android-tests/uxmanu/Crosswalk_Lock_And_Unlock_Screen.html</test_script_entry>
         </description>
       </testcase>
-      <testcase purpose="Validate if web app sound volume work fine on Crosswalk" type="Functional" status="approved" component="Integration with Android System" execution_type="manual" priority="P1" id="Crosswalk_WebApps_Volume">
+      <testcase component="Crosswalk WRT/User Experience" execution_type="manual" id="Crosswalk_WebApps_Volume" priority="P1" purpose="Validate if web app sound volume work fine on Crosswalk" status="approved" type="Functional">
         <description>
           <pre_condition>
             1.Make sure a webapp with sound is installed on Android OS.
@@ -33,7 +31,7 @@
           <test_script_entry>/opt/wrt-uxmanu-android-tests/uxmanu/Crosswalk_WebApps_Volume.html</test_script_entry>
         </description>
        </testcase>
-      <testcase purpose="Validate Crosswalk support Web App work normally that system interruption (popup, audio effect) when running Web Apps" type="Functional" status="approved" component="Integration with Android System" execution_type="manual" priority="P2" id="Crosswalk_System_Interruption">
+      <testcase component="Crosswalk WRT/User Experience" execution_type="manual" id="Crosswalk_System_Interruption" priority="P2" purpose="Validate Crosswalk support Web App work normally that system interruption (popup, audio effect) when running Web Apps" status="approved" type="Functional">
         <description>
           <pre_condition>
             1. Make sure Crosswalk application is launched;
@@ -42,7 +40,7 @@
           <test_script_entry>/opt/wrt-uxmanu-android-tests/uxmanu/Crosswalk_System_Interruption.html </test_script_entry>
         </description>
       </testcase>
-      <testcase purpose="Validate if Web App could be terminated in task manager" type="Functional" status="approved" component="Integration with Android System" execution_type="manual" priority="P1" id="Crosswalk_WebApp_Terminated_TaskManager">
+      <testcase component="Crosswalk WRT/User Experience" execution_type="manual" id="Crosswalk_WebApp_Terminated_TaskManager" priority="P1" purpose="Validate if Web App could be terminated in task manager" status="approved" type="Functional">
         <description>
           <pre_condition>
             1. Make sure Crosswalk is installed
@@ -51,17 +49,17 @@
            <test_script_entry>/opt/wrt-uxmanu-android-tests/uxmanu/Crosswalk_WebApp_Integration_TaskManager.html </test_script_entry>
         </description>
       </testcase>
-      <testcase purpose="Validate if Crosswalk support Web Apps could be switch successfully" type="Functional" status="approved" component="Integration with Android System" execution_type="manual" priority="P1" id="Crosswalk_WebApp_Integration_Switch">
+      <testcase component="Crosswalk WRT/User Experience" execution_type="manual" id="Crosswalk_WebApp_Integration_Switch" priority="P1" purpose="Validate if Crosswalk support Web Apps could be switch successfully" status="approved" type="Functional">
         <description>
           <pre_condition>
             1. Make sure Crosswalk is installed
             2. Make sure there some webapps are available
           </pre_condition>
-          <post_condition/>
+          <post_condition />
           <test_script_entry>/opt/wrt-uxmanu-android-tests/uxmanu/Crosswalk_WebApp_Integration_Switch.html </test_script_entry>
         </description>
       </testcase>
-      <testcase purpose="Validate if Crosswalk support Web Apps interface no cursors" type="Functional" status="approved" component="Integration with Android System" execution_type="manual" priority="P2" id="Crosswalk_WebApp_Integration_NoCursors">
+      <testcase component="Crosswalk WRT/User Experience" execution_type="manual" id="Crosswalk_WebApp_Integration_NoCursors" priority="P2" purpose="Validate if Crosswalk support Web Apps interface no cursors" status="approved" type="Functional">
         <description>
           <pre_condition>
             1. Make sure Crosswalk is installed
@@ -70,7 +68,7 @@
           <test_script_entry>/opt/wrt-uxmanu-android-tests/uxmanu/Crosswalk_WebApp_Integration_NoCursors.html </test_script_entry>
         </description>
       </testcase>
-      <testcase purpose="Validate if the HW Key work well in Crosswalk App" type="Functional" status="approved" component="Integration with Android System" execution_type="manual" priority="P1" id="Crosswalk_WebApp_HW_KEY">
+      <testcase component="Crosswalk WRT/User Experience" execution_type="manual" id="Crosswalk_WebApp_HW_KEY" priority="P1" purpose="Validate if the HW Key work well in Crosswalk App" status="approved" type="Functional">
         <description>
           <pre_condition>
             1. Make sure Crosswalk is installed
@@ -79,7 +77,7 @@
           <test_script_entry>/opt/wrt-uxmanu-android-tests/uxmanu/Crosswalk_WebApp_HW_KEY.html </test_script_entry>
         </description>
       </testcase>
-      <testcase purpose="Validate if the Virtual keyboard work fine in Crosswalk App" type="Functional" status="approved" component="Integration with Android System" execution_type="manual" priority="P2" id="Crosswalk_WebApp_VKB_Basic">
+      <testcase component="Crosswalk WRT/User Experience" execution_type="manual" id="Crosswalk_WebApp_VKB_Basic" priority="P2" purpose="Validate if the Virtual keyboard work fine in Crosswalk App" status="approved" type="Functional">
         <description>
           <pre_condition>
             1. Make sure Crosswalk is installed
@@ -88,27 +86,27 @@
           <test_script_entry>/opt/wrt-uxmanu-android-tests/uxmanu/Crosswalk_WebApp_VKB_Basic.html </test_script_entry>
         </description>
       </testcase>
-      <testcase purpose="Validate if the Virtual keyboard ContentSwitch work fine in Crosswalk App" type="Functional" status="approved" component="Integration with Android System" execution_type="manual" priority="P2" id="Crosswalk_WebApp_VKB_ContentSwitch">
+      <testcase component="Crosswalk WRT/User Experience" execution_type="manual" id="Crosswalk_WebApp_VKB_ContentSwitch" priority="P2" purpose="Validate if the Virtual keyboard ContentSwitch work fine in Crosswalk App" status="approved" type="Functional">
         <description>
           <pre_condition>
             1. Make sure Crosswalk is installed
             2. Make sure there some webapps are available,and webapps contains text input box
           </pre_condition>
-          <post_condition/>
+          <post_condition />
           <test_script_entry>/opt/wrt-uxmanu-android-tests/uxmanu/Crosswalk_WebApp_VKB_ContentSwitch.html </test_script_entry>
         </description>
       </testcase>
-      <testcase purpose="Validate if the Virtual keyboard Rotation work fine in Crosswalk App" type="Functional" status="approved" component="Integration with Android System" execution_type="manual" priority="P2" id="Crosswalk_WebApp_VKB_Rotation">
+      <testcase component="Crosswalk WRT/User Experience" execution_type="manual" id="Crosswalk_WebApp_VKB_Rotation" priority="P2" purpose="Validate if the Virtual keyboard Rotation work fine in Crosswalk App" status="approved" type="Functional">
         <description>
           <pre_condition>
             1. Make sure Crosswalk is installed
             2. Make sure there some webapps are available,and webapps contains text input box
           </pre_condition>
-          <post_condition/>
+          <post_condition />
           <test_script_entry>/opt/wrt-uxmanu-android-tests/uxmanu/Crosswalk_WebApp_VKB_Rotation.html </test_script_entry>
         </description>
       </testcase>
-      <testcase purpose="Validate if Crosswalk support scroll gesture on Web Apps" type="Functional" status="approved" component="Integration with Android System" execution_type="manual" priority="P1" id="Crosswalk_WebApp_Touch_Gesture_Scroll">
+      <testcase component="Crosswalk WRT/User Experience" execution_type="manual" id="Crosswalk_WebApp_Touch_Gesture_Scroll" priority="P1" purpose="Validate if Crosswalk support scroll gesture on Web Apps" status="approved" type="Functional">
         <description>
           <pre_condition>
             1. Make sure Crosswalk application is launched and the device connected to network
@@ -119,7 +117,7 @@
           <test_script_entry>/opt/wrt-uxmanu-android-tests/uxmanu/Crosswalk_WebApp_Touch_Gesture_Scroll.html </test_script_entry>
         </description>
       </testcase>
-      <testcase purpose="Validate if Crosswalk support swipe gesture on Web Apps" type="Functional" status="approved" component="Integration with Android System" execution_type="manual" priority="P1" id="Crosswalk_WebApp_Touch_Gesture_Swipe">
+      <testcase component="Crosswalk WRT/User Experience" execution_type="manual" id="Crosswalk_WebApp_Touch_Gesture_Swipe" priority="P1" purpose="Validate if Crosswalk support swipe gesture on Web Apps" status="approved" type="Functional">
         <description>
           <pre_condition>
             1. Make sure Crosswalk application is launched and the device connected to network
@@ -129,7 +127,7 @@
           <test_script_entry>/opt/wrt-uxmanu-android-tests/uxmanu/Crosswalk_WebApp_Touch_Gesture_Swipe.html </test_script_entry>
         </description>
       </testcase>
-      <testcase purpose="Validate if Crosswalk support click gesture on Web Apps" type="Functional" status="approved" component="Integration with Android System" execution_type="manual" priority="P1" id="Crosswalk_WebApp_Touch_Gesture_Click">
+      <testcase component="Crosswalk WRT/User Experience" execution_type="manual" id="Crosswalk_WebApp_Touch_Gesture_Click" priority="P1" purpose="Validate if Crosswalk support click gesture on Web Apps" status="approved" type="Functional">
         <description>
           <pre_condition>
             1. Make sure Crosswalk application is launched and the device connected to network
@@ -139,7 +137,7 @@
           <test_script_entry>/opt/wrt-uxmanu-android-tests/uxmanu/Crosswalk_WebApp_Touch_Gesture_Click.html </test_script_entry>
         </description>
       </testcase>
-      <testcase purpose="Validate Crosswalk support rotate between portrait orientation screen and landscape orientation screen" type="Functional" status="approved" component="Integration with Android System" execution_type="manual" priority="P1" id="Crosswalk_WebApp_Orientation">
+      <testcase component="Crosswalk WRT/User Experience" execution_type="manual" id="Crosswalk_WebApp_Orientation" priority="P1" purpose="Validate Crosswalk support rotate between portrait orientation screen and landscape orientation screen" status="approved" type="Functional">
         <description>
           <pre_condition>
             1. Make sure Crosswalk is installed
@@ -148,7 +146,7 @@
           <test_script_entry>/opt/wrt-uxmanu-android-tests/uxmanu/Crosswalk_WebApp_Orientation.html </test_script_entry>
         </description>
       </testcase>
-      <testcase purpose="Validate if Crosswalk support stop activity by back key" type="Functional" status="approved" component="Integration with Android System" execution_type="manual" priority="P2" id="Crosswalk_WebApp_BackKey_Exit">
+      <testcase component="Crosswalk WRT/User Experience" execution_type="manual" id="Crosswalk_WebApp_BackKey_Exit" priority="P2" purpose="Validate if Crosswalk support stop activity by back key" status="approved" type="Functional">
         <description>
           <pre_condition>
             1.Make sure Crosswalk application is installed and the device connected to network;
@@ -158,7 +156,7 @@
           <test_script_entry>/opt/wrt-uxmanu-android-tests/uxmanu/Crosswalk_WebApp_BackKey_Exit.html </test_script_entry>
         </description>
       </testcase>
-      <testcase purpose="Validate if Crosswalk support go back to previous page by back key" type="Functional" status="approved" component="Integration with Android System" execution_type="manual" priority="P1" id="Crosswalk_WebApp_BackKey_Back">
+      <testcase component="Crosswalk WRT/User Experience" execution_type="manual" id="Crosswalk_WebApp_BackKey_Back" priority="P1" purpose="Validate if Crosswalk support go back to previous page by back key" status="approved" type="Functional">
         <description>
           <pre_condition>
             1.Make sure Crosswalk application is installed and the device connected to network;
@@ -168,7 +166,7 @@
           <test_script_entry>/opt/wrt-uxmanu-android-tests/uxmanu/Crosswalk_WebApp_BackKey_Back.html </test_script_entry>
         </description>
       </testcase>
-      <testcase purpose="Validate if could copy hyperlink" type="Functional" status="approved" component="Integration with Android System" execution_type="manual" priority="P2" id="Crosswalk_CopyAndPaste_Copy_Hyperlink">
+      <testcase component="Crosswalk WRT/User Experience" execution_type="manual" id="Crosswalk_CopyAndPaste_Copy_Hyperlink" priority="P2" purpose="Validate if could copy hyperlink" status="approved" type="Functional">
         <description>
           <pre_condition>
             1.Make sure Crosswalk binary is installed;
@@ -177,7 +175,7 @@
           <test_script_entry>/opt/wrt-uxmanu-android-tests/uxmanu/Crosswalk_CopyAndPaste_Copy_Hyperlink.html </test_script_entry>
         </description>
       </testcase>
-      <testcase purpose="Validate if could copy MailAddress" type="Functional" status="approved" component="Integration with Android System" execution_type="manual" priority="P2" id="Crosswalk_CopyAndPaste_Copy_MailAddress">
+      <testcase component="Crosswalk WRT/User Experience" execution_type="manual" id="Crosswalk_CopyAndPaste_Copy_MailAddress" priority="P2" purpose="Validate if could copy MailAddress" status="approved" type="Functional">
         <description>
           <pre_condition>
             1.Make sure Crosswalk binary is installed;
@@ -186,7 +184,7 @@
           <test_script_entry>/opt/wrt-uxmanu-android-tests/uxmanu/Crosswalk_CopyAndPaste_Copy_MailAddress.html </test_script_entry>
         </description>
       </testcase>
-      <testcase purpose="Validate if could copy Paragraph" type="Functional" status="approved" component="Integration with Android System" execution_type="manual" priority="P2" id="Crosswalk_CopyAndPaste_Copy_Paragraph">
+      <testcase component="Crosswalk WRT/User Experience" execution_type="manual" id="Crosswalk_CopyAndPaste_Copy_Paragraph" priority="P2" purpose="Validate if could copy Paragraph" status="approved" type="Functional">
         <description>
           <pre_condition>
             1.Make sure Crosswalk binary is installed;
@@ -195,7 +193,7 @@
           <test_script_entry>/opt/wrt-uxmanu-android-tests/uxmanu/Crosswalk_CopyAndPaste_Copy_Paragraph.html </test_script_entry>
         </description>
       </testcase>
-      <testcase purpose="Validate if could copy PhoneNumber" type="Functional" status="approved" component="Integration with Android System" execution_type="manual" priority="P2" id="Crosswalk_CopyAndPaste_Copy_PhoneNumber">
+      <testcase component="Crosswalk WRT/User Experience" execution_type="manual" id="Crosswalk_CopyAndPaste_Copy_PhoneNumber" priority="P2" purpose="Validate if could copy PhoneNumber" status="approved" type="Functional">
         <description>
           <pre_condition>
             1.Make sure Crosswalk binary is installed;
@@ -204,7 +202,7 @@
           <test_script_entry>/opt/wrt-uxmanu-android-tests/uxmanu/Crosswalk_CopyAndPaste_Copy_PhoneNumber.html </test_script_entry>
         </description>
       </testcase>
-      <testcase purpose="Validate if could copy Photo" type="Functional" status="approved" component="Integration with Android System" execution_type="manual" priority="P3" id="Crosswalk_CopyAndPaste_Copy_Photo">
+      <testcase component="Crosswalk WRT/User Experience" execution_type="manual" id="Crosswalk_CopyAndPaste_Copy_Photo" priority="P3" purpose="Validate if could copy Photo" status="approved" type="Functional">
         <description>
           <pre_condition>
             1.Make sure Crosswalk binary is installed;
@@ -213,7 +211,7 @@
           <test_script_entry>/opt/wrt-uxmanu-android-tests/uxmanu/Crosswalk_CopyAndPaste_Copy_Photo.html </test_script_entry>
         </description>
       </testcase>
-      <testcase purpose="Validate if could copy SeveralCopies" type="Functional" status="approved" component="Integration with Android System" execution_type="manual" priority="P2" id="Crosswalk_CopyAndPaste_Copy_SeveralCopies">
+      <testcase component="Crosswalk WRT/User Experience" execution_type="manual" id="Crosswalk_CopyAndPaste_Copy_SeveralCopies" priority="P2" purpose="Validate if could copy SeveralCopies" status="approved" type="Functional">
         <description>
           <pre_condition>
             1.Make sure Crosswalk binary is installed;
@@ -222,7 +220,7 @@
           <test_script_entry>/opt/wrt-uxmanu-android-tests/uxmanu/Crosswalk_CopyAndPaste_Copy_SeveralCopies.html </test_script_entry>
         </description>
       </testcase>
-      <testcase purpose="Validate if could copy ToNativeapp" type="Functional" status="approved" component="Integration with Android System" execution_type="manual" priority="P2" id="Crosswalk_CopyAndPaste_Copy_ToNativeapp">
+      <testcase component="Crosswalk WRT/User Experience" execution_type="manual" id="Crosswalk_CopyAndPaste_Copy_ToNativeapp" priority="P2" purpose="Validate if could copy ToNativeapp" status="approved" type="Functional">
         <description>
           <pre_condition>
             1.Make sure Crosswalk binary is installed;
@@ -231,7 +229,7 @@
           <test_script_entry>/opt/wrt-uxmanu-android-tests/uxmanu/Crosswalk_CopyAndPaste_Copy_ToNativeapp.html </test_script_entry>
         </description>
       </testcase>
-      <testcase purpose="Validate if could copy ToWebapp" type="Functional" status="approved" component="Integration with Android System" execution_type="manual" priority="P2" id="Crosswalk_CopyAndPaste_Copy_ToWebapp">
+      <testcase component="Crosswalk WRT/User Experience" execution_type="manual" id="Crosswalk_CopyAndPaste_Copy_ToWebapp" priority="P2" purpose="Validate if could copy ToWebapp" status="approved" type="Functional">
         <description>
           <pre_condition>
             1.Make sure Crosswalk binary is installed;
@@ -240,7 +238,7 @@
           <test_script_entry>/opt/wrt-uxmanu-android-tests/uxmanu/Crosswalk_CopyAndPaste_Copy_ToWebapp.html </test_script_entry>
         </description>
       </testcase>
-      <testcase purpose="Validate if could copy Select all" type="Functional" status="approved" component="Integration with Android System" execution_type="manual" priority="P1" id="Crosswalk_CopyAndPaste_SelectAll_Copy">
+      <testcase component="Crosswalk WRT/User Experience" execution_type="manual" id="Crosswalk_CopyAndPaste_SelectAll_Copy" priority="P1" purpose="Validate if could copy Select all" status="approved" type="Functional">
         <description>
           <pre_condition>
             1.Make sure Crosswalk binary is installed;
@@ -249,7 +247,7 @@
           <test_script_entry>/opt/wrt-uxmanu-android-tests/uxmanu/Crosswalk_CopyAndPaste_SelectAll_Copy.html </test_script_entry>
         </description>
       </testcase>
-      <testcase purpose="Validate if could copy Selected_Copy" type="Functional" status="approved" component="Integration with Android System" execution_type="manual" priority="P1" id="Crosswalk_CopyAndPaste_Selected_Copy">
+      <testcase component="Crosswalk WRT/User Experience" execution_type="manual" id="Crosswalk_CopyAndPaste_Selected_Copy" priority="P1" purpose="Validate if could copy Selected_Copy" status="approved" type="Functional">
         <description>
           <pre_condition>
             1.Make sure Crosswalk binary is installed;
@@ -258,7 +256,7 @@
           <test_script_entry>/opt/wrt-uxmanu-android-tests/uxmanu/Crosswalk_CopyAndPaste_Selected_Copy.html </test_script_entry>
         </description>
       </testcase>
-      <testcase purpose="Validate if could cut text" type="Functional" status="approved" component="Integration with Android System" execution_type="manual" priority="P1" id="Crosswalk_CopyAndPaste_Selected_Cut">
+      <testcase component="Crosswalk WRT/User Experience" execution_type="manual" id="Crosswalk_CopyAndPaste_Selected_Cut" priority="P1" purpose="Validate if could cut text" status="approved" type="Functional">
         <description>
           <pre_condition>
             1.Make sure Crosswalk binary is installed;
@@ -267,7 +265,7 @@
           <test_script_entry>/opt/wrt-uxmanu-android-tests/uxmanu/Crosswalk_CopyAndPaste_Selected_Cut.html </test_script_entry>
         </description>
       </testcase>
-      <testcase purpose="Validate if the UI display normal" type="Functional" status="approved" component="Integration with Android System" execution_type="manual" priority="P1" id="Crosswalk_CopyAndPaste_Selected_UI">
+      <testcase component="Crosswalk WRT/User Experience" execution_type="manual" id="Crosswalk_CopyAndPaste_Selected_UI" priority="P1" purpose="Validate if the UI display normal" status="approved" type="Functional">
         <description>
           <pre_condition>
             1.Make sure Crosswalk binary is installed;
@@ -276,7 +274,7 @@
           <test_script_entry>/opt/wrt-uxmanu-android-tests/uxmanu/Crosswalk_CopyAndPaste_Selected_UI.html </test_script_entry>
         </description>
       </testcase>
-    <testcase purpose="Validate if could select on char and copy, paste" type="Functional" status="approved" component="Integration with Android System" execution_type="manual" priority="P2" id="Crosswalk_CopyAndPaste_SelectOneChar_Copy">
+    <testcase component="Crosswalk WRT/User Experience" execution_type="manual" id="Crosswalk_CopyAndPaste_SelectOneChar_Copy" priority="P2" purpose="Validate if could select on char and copy, paste" status="approved" type="Functional">
         <description>
           <pre_condition>
             1.Make sure Crosswalk binary is installed;
@@ -285,7 +283,7 @@
           <test_script_entry>/opt/wrt-uxmanu-android-tests/uxmanu/Crosswalk_CopyAndPaste_SelectOneChar_Copy.html </test_script_entry>
         </description>
       </testcase>
-      <testcase purpose="Validate if could select speci char and copy, paste" type="Functional" status="approved" component="Integration with Android System" execution_type="manual" priority="P2" id="Crosswalk_CopyAndPaste_SelectSpecialChar_Copy">
+      <testcase component="Crosswalk WRT/User Experience" execution_type="manual" id="Crosswalk_CopyAndPaste_SelectSpecialChar_Copy" priority="P2" purpose="Validate if could select speci char and copy, paste" status="approved" type="Functional">
         <description>
           <pre_condition>
             1.Make sure Crosswalk binary is installed;
@@ -294,7 +292,7 @@
           <test_script_entry>/opt/wrt-uxmanu-android-tests/uxmanu/Crosswalk_CopyAndPaste_SelectSpecialChar_Copy.html </test_script_entry>
         </description>
       </testcase>
-      <testcase purpose="Validate crosswalk support copy and paste cross application" type="Functional" status="approved" component="Integration with Android System" execution_type="manual" priority="P1" id="Crosswalk_CopyAndPaste_Cross_Application">
+      <testcase component="Crosswalk WRT/User Experience" execution_type="manual" id="Crosswalk_CopyAndPaste_Cross_Application" priority="P1" purpose="Validate crosswalk support copy and paste cross application" status="approved" type="Functional">
         <description>
           <pre_condition>
             1.Make sure Crosswalk binary is installed
@@ -302,7 +300,7 @@
           <test_script_entry>/opt/wrt-uxmanu-android-tests/uxmanu/Crosswalk_CopyAndPaste_Cross_Application.html</test_script_entry>
         </description>
       </testcase>
-      <testcase purpose="Validate crosswalk support copy and paste from native to web application" type="Functional" status="approved" component="Integration with Android System" execution_type="manual" priority="P1" id="Crosswalk_CopyAndPaste_Copy_NativeToWeb">
+      <testcase component="Crosswalk WRT/User Experience" execution_type="manual" id="Crosswalk_CopyAndPaste_Copy_NativeToWeb" priority="P1" purpose="Validate crosswalk support copy and paste from native to web application" status="approved" type="Functional">
         <description>
           <pre_condition>
             1.Make sure Crosswalk binary is installed
@@ -312,7 +310,7 @@
       </testcase>
     </set>
     <set name="Runtimelibrary" type="js">
-      <testcase purpose="Validate if display normal when browser support WebGL on ARM" type="Functional" status="approved" component="Crosswalk Runtime Library" execution_type="manual" priority="P1" id="Crosswalk_UseChromeBlacklist_WebGLSupport_ARM" >
+      <testcase component="Crosswalk WRT/User Experience" execution_type="manual" id="Crosswalk_UseChromeBlacklist_WebGLSupport_ARM" priority="P1" purpose="Validate if display normal when browser support WebGL on ARM" status="approved" type="Functional">
         <description>
           <pre_condition>
             1.Make sure Crosswalk binary is installed;
@@ -322,7 +320,7 @@
           <test_script_entry>/opt/wrt-uxmanu-android-tests/uxmanu/Crosswalk_UseChromeBlacklist_WebGLSupport_ARM.html </test_script_entry>
         </description>
        </testcase>
-      <testcase purpose="Validate if display normal when browser not support WebGL on ARM" type="Functional" status="approved" component="Crosswalk Runtime Library" execution_type="manual" priority="P2" id="Crosswalk_UseChromeBlacklist_WebGLNotSupport_ARM">
+      <testcase component="Crosswalk WRT/User Experience" execution_type="manual" id="Crosswalk_UseChromeBlacklist_WebGLNotSupport_ARM" priority="P2" purpose="Validate if display normal when browser not support WebGL on ARM" status="approved" type="Functional">
         <description>
           <pre_condition>
             1.Make sure Crosswalk binary is installed;
@@ -332,7 +330,7 @@
           <test_script_entry>/opt/wrt-uxmanu-android-tests/uxmanu/Crosswalk_UseChromeBlacklist_WebGLNotSupport_ARM.html </test_script_entry>
         </description>
       </testcase>
-      <testcase purpose="Validate if display normal when support WebGL on IA" type="Functional" status="approved" component="Crosswalk Runtime Library" execution_type="manual" priority="P2" id="Crosswalk_UseChromeBlacklist_WebGLSupport_IA">
+      <testcase component="Crosswalk WRT/User Experience" execution_type="manual" id="Crosswalk_UseChromeBlacklist_WebGLSupport_IA" priority="P2" purpose="Validate if display normal when support WebGL on IA" status="approved" type="Functional">
         <description>
           <pre_condition>
             1.Make sure Crosswalk binary is installed;

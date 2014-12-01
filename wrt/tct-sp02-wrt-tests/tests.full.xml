@@ -1,12 +1,10 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<?xml-stylesheet type="text/xsl"  href="testcase.xsl"?>
 <test_definition>
-<suite name="tct-sp02-wrt-tests" category="Web Runtime">
+<suite category="Web Runtime" name="tct-sp02-wrt-tests">
   <set name="SecurityPrivacy" type="script">
-    <testcase purpose="Check that Application has its own localStorage space." type="user_experience" status="approved" component="Web/Runtime/SecurityPrivacy" execution_type="auto" priority="P1" id="private_localstorage_check">
+    <testcase component="Tizen WRT Core Spec/Security Privacy" execution_type="auto" id="private_localstorage_check" priority="P1" purpose="Check that Application has its own localStorage space." status="approved" type="user_experience">
       <description>
-        <pre_condition></pre_condition>
-        <post_condition></post_condition>
+        <pre_condition />
+        <post_condition />
         <steps>
           <step order="1">
             <step_desc>Check that Application has its own localStorage space.</step_desc>
@@ -14,13 +12,13 @@
           </step>
         </steps>
         <test_script_entry test_script_expected_result="0">app_user@/home/app/content/tct/opt/tct-sp02-wrt-tests/scripts/wrt_sp02_localstorage_check.sh</test_script_entry>
-        <notes></notes>
+        <notes />
       </description>
       <specs>
         <spec>
-          <spec_assertion element_type="attribute" element_name="N/A" interface="0660" specification="Private Storage (HTML5 local storage and cookie) Support" section="Web Application Security and Privacy" category="Tizen WRT Core Specifications"></spec_assertion>
-          <spec_url></spec_url>
-          <spec_statement></spec_statement>
+          <spec_assertion category="Tizen WRT Core Specifications" element_name="N/A" element_type="attribute" interface="0660" section="Web Application Security and Privacy" specification="Private Storage (HTML5 local storage and cookie) Support" />
+          <spec_url />
+          <spec_statement />
         </spec>
       </specs>
     </testcase>
