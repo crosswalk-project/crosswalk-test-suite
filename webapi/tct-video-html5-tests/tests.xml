@@ -1186,7 +1186,7 @@
           <test_script_entry>/opt/tct-video-html5-tests/video/video_currentTime_less_than_zero.html</test_script_entry>
         </description>
       </testcase>
-      <testcase component="W3C_HTML5 APIs/Media/HTML5 The video element (Partial)" execution_type="auto" id="video_zero_default_state" purpose="Check that a video loads but is not playing, since the default state is paused">
+      <testcase component="W3C_HTML5 APIs/Media/HTML5 The video element (Partial)" execution_type="auto" id="video_zero_default_state" purpose="Check that a video loads the default pause state is true">
         <description>
           <test_script_entry>/opt/tct-video-html5-tests/video/video_zero_default_state.html</test_script_entry>
         </description>
@@ -1509,11 +1509,6 @@
       <testcase component="W3C_HTML5 APIs/Media/HTML5 The video element (Partial)" execution_type="auto" id="video_load_method_type" purpose="Check if the type of video.load is 'function'">
         <description>
           <test_script_entry>/opt/tct-video-html5-tests/video/video_load_method_type.html</test_script_entry>
-        </description>
-      </testcase>
-      <testcase component="W3C_HTML5 APIs/Media/HTML5 The video element (Partial)" execution_type="auto" id="video_loop_no_effect_by_controller" onload_delay="10" purpose="Check if the video element has a current media controller that expecting the loop attribute has no effect">
-        <description>
-          <test_script_entry>/opt/tct-video-html5-tests/video/video_loop_no_effect_by_controller.html</test_script_entry>
         </description>
       </testcase>
       <testcase component="W3C_HTML5 APIs/Media/HTML5 The video element (Partial)" execution_type="auto" id="video_loop_empty_string" purpose="Check if the value of the attribute video.loop is false if set it empty string">
@@ -1934,6 +1929,31 @@
       <testcase component="W3C_HTML5 APIs/Media/HTML5 The video element (Partial)" execution_type="auto" id="video_playbackRate_basic" onload_delay="20" purpose="Check if the video.playbackRate attribute that on getting it must return 2.0 it was set to 2.0">
         <description>
           <test_script_entry>/opt/tct-video-html5-tests/video/w3c/playbackRate.html?total_num=2&amp;amp;locator_key=id&amp;amp;value=2</test_script_entry>
+        </description>
+      </testcase>
+      <testcase component="WebAPI/Media/HTML5 The video element (Partial)" execution_type="manual" id="video_controls_present_manual" purpose="Check if the controls attribute is present in the video element that expecting the user agent exposes a controller user interface">
+        <description>
+          <test_script_entry>/opt/tct-video-html5-tests/video/w3c/video_controls_present-manual.html</test_script_entry>
+        </description>
+      </testcase>
+      <testcase component="WebAPI/Media/HTML5 The video element (Partial)" execution_type="manual" id="video_muted_overriding_volume_manual" purpose="Check if the muted attribute is present in the video element with volume is set to loudest that expecting the user hears no sound">
+        <description>
+          <test_script_entry>/opt/tct-video-html5-tests/video/w3c/video_muted_overriding_volume-manual.html</test_script_entry>
+        </description>
+      </testcase>
+      <testcase component="WebAPI/Media/HTML5 The video element (Partial)" execution_type="manual" id="video_muted_present_manual" purpose="Check if the muted attribute is present in the video element that expecting the user hears no sound">
+        <description>
+          <test_script_entry>/opt/tct-video-html5-tests/video/w3c/video_muted_present-manual.html</test_script_entry>
+        </description>
+      </testcase>
+      <testcase component="WebAPI/Media/HTML5 The video element (Partial)" execution_type="manual" id="video_volume_loudest_manual" purpose="Check if the volume attribute is set to 1.0 as loudest in the video element that expecting the user hears sound loudly">
+        <description>
+          <test_script_entry>/opt/tct-video-html5-tests/video/w3c/video_volume_loudest-manual.html</test_script_entry>
+        </description>
+      </testcase>
+      <testcase component="WebAPI/Media/HTML5 The video element (Partial)" execution_type="manual" id="video_volume_silent_manual" purpose="Check if the volume attribute is set to 0.0 as silent in the video element that expecting the user hears no sound">
+        <description>
+          <test_script_entry>/opt/tct-video-html5-tests/video/w3c/video_volume_silent-manual.html</test_script_entry>
         </description>
       </testcase>
     </set>
