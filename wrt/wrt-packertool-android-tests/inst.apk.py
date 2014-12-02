@@ -10,10 +10,11 @@ from optparse import OptionParser, make_option
 
 
 SCRIPT_DIR = os.path.dirname(os.path.abspath(__file__))
-PKG_NAME = os.path.basename(SCRIPT_DIR)
 PARAMETERS = None
+PKG_NAME_DIR = os.path.basename(SCRIPT_DIR)
+PKG_NAME = PKG_NAME_DIR.replace('-', '_')
 ADB_CMD = "adb"
-TEST_PREFIX = os.environ['HOME']
+
 
 def doCMD(cmd):
     # Do not need handle timeout in this short script, let tool do it
@@ -35,52 +36,11 @@ def doCMD(cmd):
     return (cmd_return_code, output)
 
 
-def overwriteCopy(src, dest, symlinks=False, ignore=None):
-    if not os.path.exists(dest):
-        os.makedirs(dest)
-        shutil.copystat(src, dest)
-    sub_list = os.listdir(src)
-    if ignore:
-        excl = ignore(src, sub_list)
-        sub_list = [x for x in sub_list if x not in excl]
-    for i_sub in sub_list:
-        s_path = os.path.join(src, i_sub)
-        d_path = os.path.join(dest, i_sub)
-        if symlinks and os.path.islink(s_path):
-            if os.path.lexists(d_path):
-                os.remove(d_path)
-            os.symlink(os.readlink(s_path), d_path)
-            try:
-                s_path_s = os.lstat(s_path)
-                s_path_mode = stat.S_IMODE(s_path_s.st_mode)
-                os.lchmod(d_path, s_path_mode)
-            except Exception, e:
-                pass
-        elif os.path.isdir(s_path):
-            overwriteCopy(s_path, d_path, symlinks, ignore)
-        else:
-            shutil.copy2(s_path, d_path)
-
-
-def doCopy(src_item=None, dest_item=None):
-    try:
-        if os.path.isdir(src_item):
-            overwriteCopy(src_item, dest_item, symlinks=True)
-        else:
-            if not os.path.exists(os.path.dirname(dest_item)):
-                os.makedirs(os.path.dirname(dest_item))
-            shutil.copy2(src_item, dest_item)
-    except Exception, e:
-        return False
-
-    return True
-
-
 def uninstPKGs():
     action_status = True
     for root, dirs, files in os.walk(SCRIPT_DIR):
         for file in files:
-            if file.endswith(".apk"):
+            if file.endswith("%s.apk" % PKG_NAME):
                 cmd = "%s -s %s uninstall org.xwalk.%s" % (
                     ADB_CMD, PARAMETERS.device, os.path.basename(os.path.splitext(file)[0]))
                 if os.path.basename(os.path.splitext(file)[0]) == "XWalkRuntimeLib":
@@ -97,30 +57,19 @@ def instPKGs():
     action_status = True
     for root, dirs, files in os.walk(SCRIPT_DIR):
         for file in files:
-            if file.endswith(".apk"):
-                cmd = "%s -s %s install -r %s" % (ADB_CMD,
+            if file.endswith("%s.apk" % PKG_NAME):
+                cmd = "%s -s %s install %s" % (ADB_CMD,
                                                PARAMETERS.device, os.path.join(root, file))
                 (return_code, output) = doCMD(cmd)
                 for line in output:
                     if "Failure" in line:
                         action_status = False
                         break
-    for item in glob.glob("%s/*" % SCRIPT_DIR):
-        if item.endswith(".apk"):
-            continue
-        elif item.endswith("inst.py"):
-            continue
-        else:
-            item_name = os.path.basename(item)
-            if not doCopy(item, "%s/opt/%s/%s" % (TEST_PREFIX, PKG_NAME, item_name)):
-            #if not doRemoteCopy(item, PKG_SRC_DIR):
-                action_status = False
     return action_status
 
 
 def main():
     try:
-        global TEST_PREFIX
         usage = "usage: inst.py -i"
         opts_parser = OptionParser(usage=usage)
         opts_parser.add_option(
@@ -129,8 +78,6 @@ def main():
             "-i", dest="binstpkg", action="store_true", help="Install package")
         opts_parser.add_option(
             "-u", dest="buninstpkg", action="store_true", help="Uninstall package")
-        opts_parser.add_option(
-            "-t", dest="testprefix", action="store", help="unzip path prefix", default=os.environ["HOME"])
         global PARAMETERS
         (PARAMETERS, args) = opts_parser.parse_args()
     except Exception, e:
@@ -144,8 +91,6 @@ def main():
                 PARAMETERS.device = line.split("\t")[0]
                 break
 
-    TEST_PREFIX = PARAMETERS.testprefix
-
     if not PARAMETERS.device:
         print "No device found"
         sys.exit(1)
@@ -155,9 +100,11 @@ def main():
         sys.exit(1)
 
     if PARAMETERS.buninstpkg:
+        os.system("%s -s %s uninstall %s" % (ADB_CMD, PARAMETERS.device, "org.xwalk.runtime.lib"))
         if not uninstPKGs():
             sys.exit(1)
     else:
+        os.system("%s -s %s install -r %s" % (ADB_CMD, PARAMETERS.device, "resource/XWalkRuntimeLib.apk"))
         if not instPKGs():
             sys.exit(1)
 
