@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <!--
-Copyright (c) 2013 Intel Corporation.
+Copyright (c) 2014 Intel Corporation.
 
 Redistribution and use in source and binary forms, with or without modification,
 are permitted provided that the following conditions are met:
@@ -27,19 +27,21 @@ EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
 Authors:
         Hao, Yunfei <yunfeix.hao@intel.com>
+        Chen, Yanbo <yanbox.a.chen@intel.com>
 
 -->
 
 <meta charset="utf-8">
 <title>Locale: Locale_getLocale_exist</title>
 <link rel='author' title='Intel' href='http://www.intel.com'>
-<script src="../resources/unitcommon.js"></script>
+<link rel="help" href="http://download.tizen.org/sdk/IVI/m14.3/documentation/Locale.html" />
+<script src="../resources/testharness.js"></script>
+<script src="../resources/testharnessreport.js"></script>
 <div id="log"></div>
 <script>
-
 test(function() {
   assert_true("getLocale" in tizen.locale, "Locale has getLocale method");
   check_method_exists(tizen.locale, "getLocale");
-}, "Locale_getLocale_exist");
-
+  assert_equals(typeof(tizen.locale.getLocale()), "string", "tizen.locale.getLocale shoud be string type");
+	}, "Locale_getLocale_basic");
 </script>
