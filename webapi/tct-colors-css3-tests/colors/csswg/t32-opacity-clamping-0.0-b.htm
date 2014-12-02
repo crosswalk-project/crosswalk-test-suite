@@ -1,0 +1,26 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN" "http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd">
+<html>
+	<head>
+		<title>CSS Test: opacity</title>
+		<link title="L. David Baron" rel="author" href="http://dbaron.org/">
+		<link title="Mozilla Corporation" rel="author" href="http://mozilla.com/">
+		<link rel="help" href="http://www.w3.org/TR/css3-color/#transparency">
+		<meta content="" name="flags">
+		<meta content="Opacity values less than 0.0 are clamped to 0.0" name="assert">
+		<style type="text/css">
+			#two { opacity: -0.0; }
+			#three { opacity: -0.1; }
+			#four { opacity: -0.9; }
+			#five { opacity: -30; }
+			#six { opacity: -7439.79; }
+		</style>
+	</head>
+	<body>
+		<p id="one">This should be the only text visible on this page.</p>
+		<p id="two">This text should NOT be visible.</p>
+		<p id="three">This text should NOT be visible.</p>
+		<p id="four">This text should NOT be visible.</p>
+		<p id="five">This text should NOT be visible.</p>
+		<p id="six">This text should NOT be visible.</p>
+	</body>
+</html>
