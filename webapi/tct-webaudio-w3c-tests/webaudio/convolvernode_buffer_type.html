@@ -48,7 +48,7 @@ Authors:
             try{
                 var context = new AudioContext();
                 var convolvernode = context.createConvolver();
-                convolvernode.buffer = context.createBuffer(4, 1024, 48000);
+                convolvernode.buffer = context.createBuffer(4, 1024, context.sampleRate);
                 assert_true(true, "Check if ConvolverNode.buffer attribute is AudioBuffer type");
             } catch (e){
                 if(e.name == "TypeError") {
