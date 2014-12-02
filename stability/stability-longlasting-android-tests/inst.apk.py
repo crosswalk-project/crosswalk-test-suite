@@ -61,7 +61,7 @@ def instPKGs():
                     if "Failure" in line:
                         action_status = False
                         break
-    os.system("chmod 777 %s/stablonglast3d/*.sh" % SCRIPT_DIR)
+    os.system("chmod 777 %s/longlasting/*.sh" % SCRIPT_DIR)
     return action_status
 
 
