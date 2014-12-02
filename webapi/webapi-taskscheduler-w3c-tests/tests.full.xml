@@ -1,125 +1,123 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<?xml-stylesheet type="text/xsl"  href="./testcase.xsl"?>
 <test_definition>
-  <suite name="webapi-taskscheduler-w3c-tests" category="W3C/HTML5 APIs">
+  <suite category="W3C/HTML5 APIs" name="webapi-taskscheduler-w3c-tests">
     <set name="TaskScheduler" type="js">
-      <testcase purpose="Check if the taskScheduler attribute must not be null" type="compliance" status="designed" component="WebAPI/System-level APIs/Task Scheduler" execution_type="auto" priority="P1" id="Navigator_taskScheduler">
+      <testcase component="W3C_HTML5 APIs/System Apps/Task Scheduler" execution_type="auto" id="Navigator_taskScheduler" priority="P1" purpose="Check if the taskScheduler attribute must not be null" status="designed" type="compliance">
         <description>
           <test_script_entry>/opt/webapi-taskscheduler-w3c-tests/taskscheduler/Navigator_taskScheduler.html</test_script_entry>
         </description>
         <specs>
           <spec>
-            <spec_assertion element_type="property" element_name="taskScheduler" interface="Navigator" specification="Task Scheduler" section="System-level APIs" category="W3C API Specifications"/>
+            <spec_assertion category="W3C API Specifications" element_name="taskScheduler" element_type="property" interface="Navigator" section="System-level APIs" specification="Task Scheduler" />
             <spec_url>http://www.w3.org/2012/sysapps/web-alarms/</spec_url>
-            <spec_statement/>
+            <spec_statement />
           </spec>
         </specs>
       </testcase>
-      <testcase purpose="Check if the implementation of id attribute is valid" type="compliance" status="designed" component="WebAPI/System-level APIs/Task Scheduler" execution_type="auto" priority="P1" id="ScheduledTask_id">
+      <testcase component="W3C_HTML5 APIs/System Apps/Task Scheduler" execution_type="auto" id="ScheduledTask_id" priority="P1" purpose="Check if the implementation of id attribute is valid" status="designed" type="compliance">
         <description>
           <test_script_entry>/opt/webapi-taskscheduler-w3c-tests/taskscheduler/ScheduledTask.html?total_num=4&amp;amp;locator_key=id&amp;amp;value=1</test_script_entry>
         </description>
         <specs>
           <spec>
-            <spec_assertion element_type="property" element_name="id" interface="ScheduledTask" specification="Task Scheduler" section="System-level APIs" category="W3C API Specifications"/>
+            <spec_assertion category="W3C API Specifications" element_name="id" element_type="property" interface="ScheduledTask" section="System-level APIs" specification="Task Scheduler" />
             <spec_url>http://www.w3.org/2012/sysapps/web-alarms/</spec_url>
-            <spec_statement/>
+            <spec_statement />
           </spec>
         </specs>
       </testcase>
-      <testcase purpose="Check if the implementation of date attribute is valid" type="compliance" status="designed" component="WebAPI/System-level APIs/Task Scheduler" execution_type="auto" priority="P1" id="ScheduledTask_date">
+      <testcase component="W3C_HTML5 APIs/System Apps/Task Scheduler" execution_type="auto" id="ScheduledTask_date" priority="P1" purpose="Check if the implementation of date attribute is valid" status="designed" type="compliance">
         <description>
           <test_script_entry>/opt/webapi-taskscheduler-w3c-tests/taskscheduler/ScheduledTask.html?total_num=4&amp;amp;locator_key=id&amp;amp;value=2</test_script_entry>
         </description>
         <specs>
           <spec>
-            <spec_assertion element_type="property" element_name="date" interface="ScheduledTask" specification="Task Scheduler" section="System-level APIs" category="W3C API Specifications"/>
+            <spec_assertion category="W3C API Specifications" element_name="date" element_type="property" interface="ScheduledTask" section="System-level APIs" specification="Task Scheduler" />
             <spec_url>http://www.w3.org/2012/sysapps/web-alarms/</spec_url>
-            <spec_statement/>
+            <spec_statement />
           </spec>
         </specs>
       </testcase>
-      <testcase purpose="Check if the implementation of timezoneDirective attribute is valid" type="compliance" status="designed" component="WebAPI/System-level APIs/Task Scheduler" execution_type="auto" priority="P1" id="ScheduledTask_timezoneDirective">
+      <testcase component="W3C_HTML5 APIs/System Apps/Task Scheduler" execution_type="auto" id="ScheduledTask_timezoneDirective" priority="P1" purpose="Check if the implementation of timezoneDirective attribute is valid" status="designed" type="compliance">
         <description>
           <test_script_entry>/opt/webapi-taskscheduler-w3c-tests/taskscheduler/ScheduledTask.html?total_num=4&amp;amp;locator_key=id&amp;amp;value=3</test_script_entry>
         </description>
         <specs>
           <spec>
-            <spec_assertion element_type="property" element_name="timezoneDirective" interface="ScheduledTask" specification="Task Scheduler" section="System-level APIs" category="W3C API Specifications"/>
+            <spec_assertion category="W3C API Specifications" element_name="timezoneDirective" element_type="property" interface="ScheduledTask" section="System-level APIs" specification="Task Scheduler" />
             <spec_url>http://www.w3.org/2012/sysapps/web-alarms/</spec_url>
-            <spec_statement/>
+            <spec_statement />
           </spec>
         </specs>
       </testcase>
-      <testcase purpose="Check if the implementation of data attribute is valid" type="compliance" status="designed" component="WebAPI/System-level APIs/Task Scheduler" execution_type="auto" priority="P1" id="ScheduledTask_data">
+      <testcase component="W3C_HTML5 APIs/System Apps/Task Scheduler" execution_type="auto" id="ScheduledTask_data" priority="P1" purpose="Check if the implementation of data attribute is valid" status="designed" type="compliance">
         <description>
           <test_script_entry>/opt/webapi-taskscheduler-w3c-tests/taskscheduler/ScheduledTask.html?total_num=4&amp;amp;locator_key=id&amp;amp;value=4</test_script_entry>
         </description>
         <specs>
           <spec>
-            <spec_assertion element_type="property" element_name="data" interface="ScheduledTask" specification="Task Scheduler" section="System-level APIs" category="W3C API Specifications"/>
+            <spec_assertion category="W3C API Specifications" element_name="data" element_type="property" interface="ScheduledTask" section="System-level APIs" specification="Task Scheduler" />
             <spec_url>http://www.w3.org/2012/sysapps/web-alarms/</spec_url>
-            <spec_statement/>
+            <spec_statement />
           </spec>
         </specs>
       </testcase>
-      <testcase purpose="Check if the add method of TaskScheduler can work properly without optional parameters" type="compliance" status="designed" component="WebAPI/System-level APIs/Task Scheduler" execution_type="auto" priority="P1" id="TaskScheduler_add">
+      <testcase component="W3C_HTML5 APIs/System Apps/Task Scheduler" execution_type="auto" id="TaskScheduler_add" priority="P1" purpose="Check if the add method of TaskScheduler can work properly without optional parameters" status="designed" type="compliance">
         <description>
           <test_script_entry>/opt/webapi-taskscheduler-w3c-tests/taskscheduler/TaskScheduler_add.html</test_script_entry>
         </description>
         <specs>
           <spec>
-            <spec_assertion element_type="method" element_name="add" interface="TaskScheduler" specification="Task Scheduler" section="System-level APIs" category="W3C API Specifications"/>
+            <spec_assertion category="W3C API Specifications" element_name="add" element_type="method" interface="TaskScheduler" section="System-level APIs" specification="Task Scheduler" />
             <spec_url>http://www.w3.org/2012/sysapps/web-alarms/</spec_url>
-            <spec_statement/>
+            <spec_statement />
           </spec>
         </specs>
       </testcase>
-      <testcase purpose="Check if the add method of TaskScheduler can work properly with optional parameters" type="compliance" status="designed" component="WebAPI/System-level APIs/Task Scheduler" execution_type="auto" priority="P1" id="TaskScheduler_add_optional">
+      <testcase component="W3C_HTML5 APIs/System Apps/Task Scheduler" execution_type="auto" id="TaskScheduler_add_optional" priority="P1" purpose="Check if the add method of TaskScheduler can work properly with optional parameters" status="designed" type="compliance">
         <description>
           <test_script_entry>/opt/webapi-taskscheduler-w3c-tests/taskscheduler/TaskScheduler_add_optional.html</test_script_entry>
         </description>
         <specs>
           <spec>
-            <spec_assertion element_type="method" element_name="add" interface="TaskScheduler" specification="Task Scheduler" section="System-level APIs" category="W3C API Specifications"/>
+            <spec_assertion category="W3C API Specifications" element_name="add" element_type="method" interface="TaskScheduler" section="System-level APIs" specification="Task Scheduler" />
             <spec_url>http://www.w3.org/2012/sysapps/web-alarms/</spec_url>
-            <spec_statement/>
+            <spec_statement />
           </spec>
         </specs>
       </testcase>
-      <testcase purpose="Check if the getPendingTasks method of TaskScheduler can work properly with one task" type="compliance" status="designed" component="WebAPI/System-level APIs/Task Scheduler" execution_type="auto" priority="P1" id="TaskScheduler_getPendingTasks_oneTask">
+      <testcase component="W3C_HTML5 APIs/System Apps/Task Scheduler" execution_type="auto" id="TaskScheduler_getPendingTasks_oneTask" priority="P1" purpose="Check if the getPendingTasks method of TaskScheduler can work properly with one task" status="designed" type="compliance">
         <description>
           <test_script_entry>/opt/webapi-taskscheduler-w3c-tests/taskscheduler/TaskScheduler_getPendingTasks_oneTask.html</test_script_entry>
         </description>
         <specs>
           <spec>
-            <spec_assertion element_type="method" element_name="getPendingTasks" interface="TaskScheduler" specification="Task Scheduler" section="System-level APIs" category="W3C API Specifications"/>
+            <spec_assertion category="W3C API Specifications" element_name="getPendingTasks" element_type="method" interface="TaskScheduler" section="System-level APIs" specification="Task Scheduler" />
             <spec_url>http://www.w3.org/2012/sysapps/web-alarms/</spec_url>
-            <spec_statement/>
+            <spec_statement />
           </spec>
         </specs>
       </testcase>
-      <testcase purpose="Check if the getPendingTasks method of TaskScheduler can work properly with several tasks" type="compliance" status="designed" component="WebAPI/System-level APIs/Task Scheduler" execution_type="auto" priority="P1" id="TaskScheduler_getPendingTasks_tasks">
+      <testcase component="W3C_HTML5 APIs/System Apps/Task Scheduler" execution_type="auto" id="TaskScheduler_getPendingTasks_tasks" priority="P1" purpose="Check if the getPendingTasks method of TaskScheduler can work properly with several tasks" status="designed" type="compliance">
         <description>
           <test_script_entry>/opt/webapi-taskscheduler-w3c-tests/taskscheduler/TaskScheduler_getPendingTasks_tasks.html</test_script_entry>
         </description>
         <specs>
           <spec>
-            <spec_assertion element_type="method" element_name="getPendingTasks" interface="TaskScheduler" specification="Task Scheduler" section="System-level APIs" category="W3C API Specifications"/>
+            <spec_assertion category="W3C API Specifications" element_name="getPendingTasks" element_type="method" interface="TaskScheduler" section="System-level APIs" specification="Task Scheduler" />
             <spec_url>http://www.w3.org/2012/sysapps/web-alarms/</spec_url>
-            <spec_statement/>
+            <spec_statement />
           </spec>
         </specs>
       </testcase>
-      <testcase purpose="Check if the implementation of remove method is valid" type="compliance" status="designed" component="WebAPI/System-level APIs/Task Scheduler" execution_type="auto" priority="P1" id="TaskScheduler_remove">
+      <testcase component="W3C_HTML5 APIs/System Apps/Task Scheduler" execution_type="auto" id="TaskScheduler_remove" priority="P1" purpose="Check if the implementation of remove method is valid" status="designed" type="compliance">
         <description>
           <test_script_entry>/opt/webapi-taskscheduler-w3c-tests/taskscheduler/TaskScheduler_remove.html</test_script_entry>
         </description>
         <specs>
           <spec>
-            <spec_assertion element_type="method" element_name="remove" interface="TaskScheduler" specification="Task Scheduler" section="System-level APIs" category="W3C API Specifications"/>
+            <spec_assertion category="W3C API Specifications" element_name="remove" element_type="method" interface="TaskScheduler" section="System-level APIs" specification="Task Scheduler" />
             <spec_url>http://www.w3.org/2012/sysapps/web-alarms/</spec_url>
-            <spec_statement/>
+            <spec_statement />
           </spec>
         </specs>
       </testcase>

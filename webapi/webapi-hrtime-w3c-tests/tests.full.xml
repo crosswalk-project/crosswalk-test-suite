@@ -1,91 +1,89 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<?xml-stylesheet type="text/xsl" href="./testcase.xsl"?>
 <test_definition>
-  <suite name="webapi-hrtime-w3c-tests" category="W3C/HTML5 APIs">
+  <suite category="W3C/HTML5 APIs" name="webapi-hrtime-w3c-tests">
     <set name="hrtime" type="js">
-      <testcase purpose="Check if the window.performance.now() returns a positive number" type="compliance" status="approved" component="WebAPI/Performance and Optimization/High Resolution Time" execution_type="auto" priority="P1" id="Performance_monotonic-clock_001">
+      <testcase component="W3C_HTML5 APIs/Performance and Optimization/High Resolution Time" execution_type="auto" id="Performance_monotonic-clock_001" priority="P1" purpose="Check if the window.performance.now() returns a positive number" status="approved" type="compliance">
         <description>
           <test_script_entry>/opt/webapi-hrtime-w3c-tests/hrtime/w3c/monotonic-clock.html?total_num=2&amp;amp;locator_key=id&amp;amp;value=1</test_script_entry>
         </description>
         <specs>
           <spec>
-            <spec_assertion element_type="method" element_name="now" interface="Performance" specification="High Resolution Time" section="Performance and Optimization" category="W3C API Specifications"/>
+            <spec_assertion category="W3C API Specifications" element_name="now" element_type="method" interface="Performance" section="Performance and Optimization" specification="High Resolution Time" />
             <spec_url>http://www.w3.org/TR/hr-time/#sec-extenstions-performance-interface</spec_url>
-            <spec_statement/>
+            <spec_statement />
           </spec>
         </specs>
       </testcase>
-      <testcase purpose="Check if the window.performance.now() difference is not negative" type="compliance" status="approved" component="WebAPI/Performance and Optimization/High Resolution Time" execution_type="auto" priority="P1" id="Performance_monotonic-clock_002">
+      <testcase component="W3C_HTML5 APIs/Performance and Optimization/High Resolution Time" execution_type="auto" id="Performance_monotonic-clock_002" priority="P1" purpose="Check if the window.performance.now() difference is not negative" status="approved" type="compliance">
         <description>
           <test_script_entry>/opt/webapi-hrtime-w3c-tests/hrtime/w3c/monotonic-clock.html?total_num=2&amp;amp;locator_key=id&amp;amp;value=2</test_script_entry>
         </description>
         <specs>
           <spec>
-            <spec_assertion element_type="method" element_name="now" interface="Performance" specification="High Resolution Time" section="Performance and Optimization" category="W3C API Specifications"/>
+            <spec_assertion category="W3C API Specifications" element_name="now" element_type="method" interface="Performance" section="Performance and Optimization" specification="High Resolution Time" />
             <spec_url>http://www.w3.org/TR/hr-time/#sec-extenstions-performance-interface</spec_url>
-            <spec_statement/>
+            <spec_statement />
           </spec>
         </specs>
       </testcase>
-      <testcase purpose="Check if the parent performance.now() is greater than 0" type="compliance" status="approved" component="WebAPI/Performance and Optimization/High Resolution Time" execution_type="auto" priority="P1" id="Performance_test_cross_frame_start_001" onload_delay="5">
+      <testcase component="W3C_HTML5 APIs/Performance and Optimization/High Resolution Time" execution_type="auto" id="Performance_test_cross_frame_start_001" onload_delay="5" priority="P1" purpose="Check if the parent performance.now() is greater than 0" status="approved" type="compliance">
         <description>
           <test_script_entry>/opt/webapi-hrtime-w3c-tests/hrtime/w3c/test_cross_frame_start.html?total_num=4&amp;amp;locator_key=id&amp;amp;value=1</test_script_entry>
         </description>
         <specs>
           <spec>
-            <spec_assertion element_type="method" element_name="now" interface="Performance" specification="High Resolution Time" section="Performance and Optimization" category="W3C API Specifications"/>
+            <spec_assertion category="W3C API Specifications" element_name="now" element_type="method" interface="Performance" section="Performance and Optimization" specification="High Resolution Time" />
             <spec_url>http://www.w3.org/TR/hr-time/#sec-extenstions-performance-interface</spec_url>
-            <spec_statement/>
+            <spec_statement />
           </spec>
         </specs>
       </testcase>
-      <testcase purpose="Check if the child performance.now() is greater than 0" type="compliance" status="approved" component="WebAPI/Performance and Optimization/High Resolution Time" execution_type="auto" priority="P1" id="Performance_test_cross_frame_start_002" onload_delay="5">
+      <testcase component="W3C_HTML5 APIs/Performance and Optimization/High Resolution Time" execution_type="auto" id="Performance_test_cross_frame_start_002" onload_delay="5" priority="P1" purpose="Check if the child performance.now() is greater than 0" status="approved" type="compliance">
         <description>
           <test_script_entry>/opt/webapi-hrtime-w3c-tests/hrtime/w3c/test_cross_frame_start.html?total_num=4&amp;amp;locator_key=id&amp;amp;value=2</test_script_entry>
         </description>
         <specs>
           <spec>
-            <spec_assertion element_type="method" element_name="now" interface="Performance" specification="High Resolution Time" section="Performance and Optimization" category="W3C API Specifications"/>
+            <spec_assertion category="W3C API Specifications" element_name="now" element_type="method" interface="Performance" section="Performance and Optimization" specification="High Resolution Time" />
             <spec_url>http://www.w3.org/TR/hr-time/#sec-extenstions-performance-interface</spec_url>
-            <spec_statement/>
+            <spec_statement />
           </spec>
         </specs>
       </testcase>
-      <testcase purpose="Check if the child performance.now() created at least 1 second after parent performance.now()" type="compliance" status="approved" component="WebAPI/Performance and Optimization/High Resolution Time" execution_type="auto" priority="P2" id="Performance_test_cross_frame_start_003" onload_delay="5">
+      <testcase component="W3C_HTML5 APIs/Performance and Optimization/High Resolution Time" execution_type="auto" id="Performance_test_cross_frame_start_003" onload_delay="5" priority="P2" purpose="Check if the child performance.now() created at least 1 second after parent performance.now()" status="approved" type="compliance">
         <description>
           <test_script_entry>/opt/webapi-hrtime-w3c-tests/hrtime/w3c/test_cross_frame_start.html?total_num=4&amp;amp;locator_key=id&amp;amp;value=3</test_script_entry>
         </description>
         <specs>
           <spec>
-            <spec_assertion element_type="method" element_name="now" interface="Performance" specification="High Resolution Time" section="Performance and Optimization" category="W3C API Specifications"/>
+            <spec_assertion category="W3C API Specifications" element_name="now" element_type="method" interface="Performance" section="Performance and Optimization" specification="High Resolution Time" />
             <spec_url>http://www.w3.org/TR/hr-time/#sec-extenstions-performance-interface</spec_url>
-            <spec_statement/>
+            <spec_statement />
           </spec>
         </specs>
       </testcase>
-      <testcase purpose="Check if the values of the window.performance.now() are based on the current document's navigationStart" type="compliance" status="approved" component="WebAPI/Performance and Optimization/High Resolution Time" execution_type="auto" priority="P2" id="Performance_test_cross_frame_start_004" onload_delay="5">
+      <testcase component="W3C_HTML5 APIs/Performance and Optimization/High Resolution Time" execution_type="auto" id="Performance_test_cross_frame_start_004" onload_delay="5" priority="P2" purpose="Check if the values of the window.performance.now() are based on the current document's navigationStart" status="approved" type="compliance">
         <description>
           <test_script_entry>/opt/webapi-hrtime-w3c-tests/hrtime/w3c/test_cross_frame_start.html?total_num=4&amp;amp;locator_key=id&amp;amp;value=4</test_script_entry>
         </description>
         <specs>
           <spec>
-            <spec_assertion element_type="method" element_name="now" interface="Performance" specification="High Resolution Time" section="Performance and Optimization" category="W3C API Specifications"/>
+            <spec_assertion category="W3C API Specifications" element_name="now" element_type="method" interface="Performance" section="Performance and Optimization" specification="High Resolution Time" />
             <spec_url>http://www.w3.org/TR/hr-time/#sec-extenstions-performance-interface</spec_url>
-            <spec_statement/>
+            <spec_statement />
           </spec>
         </specs>
       </testcase>
     </set>
     <set name="idltest" type="js">
-      <testcase purpose="Check if the Performance idlharness tests" type="compliance" status="approved" component="WebAPI/Performance and Optimization/High Resolution Time" execution_type="auto" priority="P1" id="Performance_idlharness">
+      <testcase component="W3C_HTML5 APIs/Performance and Optimization/High Resolution Time" execution_type="auto" id="Performance_idlharness" priority="P1" purpose="Check if the Performance idlharness tests" status="approved" type="compliance">
         <description>
           <test_script_entry>/opt/webapi-hrtime-w3c-tests/hrtime/w3c/idlharness.html</test_script_entry>
         </description>
         <specs>
           <spec>
-            <spec_assertion element_type="method" element_name="now" interface="Performance" specification="High Resolution Time" section="Performance and Optimization" category="W3C API Specifications"/>
+            <spec_assertion category="W3C API Specifications" element_name="now" element_type="method" interface="Performance" section="Performance and Optimization" specification="High Resolution Time" />
             <spec_url>http://www.w3.org/TR/hr-time/#sec-extenstions-performance-interface</spec_url>
-            <spec_statement/>
+            <spec_statement />
           </spec>
         </specs>
       </testcase>
