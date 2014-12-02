@@ -1,9 +1,7 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<?xml-stylesheet type="text/xsl" href="./testcase.xsl"?>
 <test_definition>
-  <suite name="wrt-packagemgtmanu-tizen-tests" category="Package_Management_on_Tizen">
+  <suite category="Package_Management_on_Tizen" name="wrt-packagemgtmanu-tizen-tests">
     <set name="packagemgtmanu" type="js">
-      <testcase purpose="Validate if web app icon display normally" type="Functional" status="designed" component="Package Management On Tizen" execution_type="manual" priority="P1" id="Crosswalk_App_Icon">
+      <testcase component="Crosswalk WRT/Package Management" execution_type="manual" id="Crosswalk_App_Icon" priority="P1" purpose="Validate if web app icon display normally" status="designed" type="Functional">
         <description>
           <pre_condition>
             1.Make sure Crosswalk is installed;
@@ -12,7 +10,7 @@
           <test_script_entry>/opt/wrt-packagemgtmanu-tizen-tests/packagemgtmanu/Crosswalk_App_Icon.html</test_script_entry>
         </description>
       </testcase>
-      <testcase purpose="Validate if Crosswalk support that web app could be launched from app launcher successfully" type="Functional" status="designed" component="Package Management On Tizen" execution_type="manual" priority="P1" id="Crosswalk_App_Icon_Launcher">
+      <testcase component="Crosswalk WRT/Package Management" execution_type="manual" id="Crosswalk_App_Icon_Launcher" priority="P1" purpose="Validate if Crosswalk support that web app could be launched from app launcher successfully" status="designed" type="Functional">
         <description>
           <pre_condition>
             1.Make sure Crosswalk is installed;
@@ -21,7 +19,7 @@
           <test_script_entry>/opt/wrt-packagemgtmanu-tizen-tests/packagemgtmanu/Crosswalk_App_Icon_Launcher.html</test_script_entry>
         </description>
       </testcase>
-      <testcase purpose="Validate if Crosswalk support web apps could be uninstalled successfully" type="Functional" status="approved" component="Package Management On Tizen" execution_type="manual" priority="P1" id="Crosswalk_WebApp_Uninstall">
+      <testcase component="Crosswalk WRT/Package Management" execution_type="manual" id="Crosswalk_WebApp_Uninstall" priority="P1" purpose="Validate if Crosswalk support web apps could be uninstalled successfully" status="approved" type="Functional">
         <description>
           <pre_condition>
             1.Make sure there some webapps are available
@@ -29,7 +27,7 @@
           <test_script_entry>/opt/wrt-packagemgtmanu-tizen-tests/packagemgtmanu/Crosswalk_WebApp_Uninstall.html</test_script_entry>
         </description>
       </testcase>
-      <testcase purpose="Validate Crosswalk support that web app could be launched successfully" type="Functional" status="designed" component="Package Management On Tizen" execution_type="manual" priority="P0" id="Crosswalk_WebApp_Launch">
+      <testcase component="Crosswalk WRT/Package Management" execution_type="manual" id="Crosswalk_WebApp_Launch" priority="P0" purpose="Validate Crosswalk support that web app could be launched successfully" status="designed" type="Functional">
         <description>
           <pre_condition>
             1.Make sure Crosswalk application is launched
@@ -38,7 +36,7 @@
           <test_script_entry>/opt/wrt-packagemgtmanu-tizen-tests/packagemgtmanu/Crosswalk_WebApp_Launch.html</test_script_entry>
         </description>
       </testcase>
-      <testcase purpose="Validate if Crosswalk support to Update the installed Widget" type="Functional" status="designed" component="Package Management On Tizen" execution_type="manual" priority="P1" id="Crosswalk_Wiget_Update_SameVersion">
+      <testcase component="Crosswalk WRT/Package Management" execution_type="manual" id="Crosswalk_Wiget_Update_SameVersion" priority="P1" purpose="Validate if Crosswalk support to Update the installed Widget" status="designed" type="Functional">
         <description>
           <pre_condition>
             1.Make sure Crosswalk is installed;
@@ -47,7 +45,7 @@
           <test_script_entry>/opt/wrt-packagemgtmanu-tizen-tests/packagemgtmanu/Crosswalk_Wiget_Update_SameVersion.html</test_script_entry>
         </description>
       </testcase>
-      <testcase purpose="Validate Crosswalk could debug by remote host" type="Functional" status="approved" component="Package Management On Tizen" execution_type="manual" priority="P1" id="Crosswalk_Remote_Debugging_Connection">
+      <testcase component="Crosswalk WRT/Package Management" execution_type="manual" id="Crosswalk_Remote_Debugging_Connection" priority="P1" purpose="Validate Crosswalk could debug by remote host" status="approved" type="Functional">
         <description>
           <pre_condition>
             1.Make sure Crosswalk is installed.
@@ -55,7 +53,7 @@
           <test_script_entry>/opt/wrt-packagemgtmanu-tizen-tests/packagemgtmanu/Crosswalk_Remote_Debugging_Connection.html</test_script_entry>
         </description>
       </testcase>
-      <testcase purpose="Validate Crosswalk viewed webpage could be modified by remote debug" type="Functional" status="approved" component="Package Management On Tizen" execution_type="manual" priority="P2" id="Crosswalk_Remote_Debugging_CheckInfo">
+      <testcase component="Crosswalk WRT/Package Management" execution_type="manual" id="Crosswalk_Remote_Debugging_CheckInfo" priority="P2" purpose="Validate Crosswalk viewed webpage could be modified by remote debug" status="approved" type="Functional">
         <description>
           <pre_condition>
             1.Make sure Crosswalk lanunched by remote debug mode.
@@ -63,7 +61,7 @@
           <test_script_entry>/opt/wrt-packagemgtmanu-tizen-tests/packagemgtmanu/Crosswalk_Remote_Debugging_CheckInfo.html</test_script_entry>
         </description>
       </testcase>
-      <testcase purpose="Validate Crosswalk viewed webpage could be modified by remote debug" type="Functional" status="approved" component="Package Management On Tizen" execution_type="manual" priority="P2" id="Crosswalk_Remote_Debugging_Modification">
+      <testcase component="Crosswalk WRT/Package Management" execution_type="manual" id="Crosswalk_Remote_Debugging_Modification" priority="P2" purpose="Validate Crosswalk viewed webpage could be modified by remote debug" status="approved" type="Functional">
         <description>
           <pre_condition>
             1.Make sure Crosswalk lanunched by remote debug mode.
@@ -71,7 +69,7 @@
           <test_script_entry>/opt/wrt-packagemgtmanu-tizen-tests/packagemgtmanu/Crosswalk_Remote_Debugging_Modification.html</test_script_entry>
         </description>
       </testcase>
-      <testcase purpose="Validate if webapp folder is create after the webapp installed successfully" type="Functional" status="approved" component="Package Management On Tizen" execution_type="manual" priority="P1" id="Crosswalk_WebApp_Install_Resource">
+      <testcase component="Crosswalk WRT/Package Management" execution_type="manual" id="Crosswalk_WebApp_Install_Resource" priority="P1" purpose="Validate if webapp folder is create after the webapp installed successfully" status="approved" type="Functional">
         <description>
           <pre_condition>
             1.Make sure there some webapps are available
@@ -79,7 +77,7 @@
           <test_script_entry>/opt/wrt-packagemgtmanu-tizen-tests/packagemgtmanu/Crosswalk_WebApp_Install_Resource.html</test_script_entry>
         </description>
       </testcase>
-      <testcase purpose="Validate if webapp cache file is deleted after the webapp uninstalled successfully" type="Functional" status="approved" component="Package Management On Tizen" execution_type="manual" priority="P1" id="Crosswalk_WebApp_Uninstall_Resource">
+      <testcase component="Crosswalk WRT/Package Management" execution_type="manual" id="Crosswalk_WebApp_Uninstall_Resource" priority="P1" purpose="Validate if webapp cache file is deleted after the webapp uninstalled successfully" status="approved" type="Functional">
         <description>
           <pre_condition>
             1.Make sure there some webapps are available
@@ -87,7 +85,7 @@
           <test_script_entry>/opt/wrt-packagemgtmanu-tizen-tests/packagemgtmanu/Crosswalk_WebApp_Uninstall_Resource.html</test_script_entry>
         </description>
       </testcase>
-      <testcase purpose="Validate if webapp isolated partition cache is created after run the app" type="Functional" status="approved" component="Package Management On Tizen" execution_type="manual" priority="P1" id="Crosswalk_WebApp_Launcher_Cache">
+      <testcase component="Crosswalk WRT/Package Management" execution_type="manual" id="Crosswalk_WebApp_Launcher_Cache" priority="P1" purpose="Validate if webapp isolated partition cache is created after run the app" status="approved" type="Functional">
         <description>
           <pre_condition>
             1.Make sure there some webapps are available

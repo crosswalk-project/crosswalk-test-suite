@@ -1,9 +1,7 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<?xml-stylesheet type="text/xsl" href="./testcase.xsl"?>
 <test_definition>
-  <suite name="wrt-manifestmanu-android-tests" category="Runtime_Core">
+  <suite category="Runtime_Core" name="wrt-manifestmanu-android-tests">
     <set name="manifestextend" type="js">
-      <testcase purpose="Validate if Crosswalk enable the fullscreen immersive mode by swiping down from top" type="Functional" status="approved" component="Runtime Core" execution_type="manual" priority="P1" id="Crosswalk_Fullscreen_Immersive_Top">
+      <testcase component="Crosswalk WRT/Manifest" execution_type="manual" id="Crosswalk_Fullscreen_Immersive_Top" priority="P1" purpose="Validate if Crosswalk enable the fullscreen immersive mode by swiping down from top" status="approved" type="Functional">
         <description>
           <pre_condition>
             1.Make sure CrossWalk binary is installed;
@@ -12,7 +10,7 @@
           <test_script_entry>/opt/wrt-manifestmanu-android-tests/manifestmanu/Crosswalk_Fullscreen_Immersive_Top.html</test_script_entry>
         </description>
       </testcase>
-      <testcase purpose="Validate if Crosswalk enable the fullscreen immersive mode by swiping up from bottom" type="Functional" status="approved" component="Runtime Core" execution_type="manual" priority="P2" id="Crosswalk_Fullscreen_Immersive_Bottom">
+      <testcase component="Crosswalk WRT/Manifest" execution_type="manual" id="Crosswalk_Fullscreen_Immersive_Bottom" priority="P2" purpose="Validate if Crosswalk enable the fullscreen immersive mode by swiping up from bottom" status="approved" type="Functional">
         <description>
           <pre_condition>
             1.Make sure CrossWalk binary is installed;
@@ -21,57 +19,57 @@
           <test_script_entry>/opt/wrt-manifestmanu-android-tests/manifestmanu/Crosswalk_Fullscreen_Immersive_Bottom.html</test_script_entry>
         </description>
       </testcase>
-      <testcase purpose="Validate Crosswalk enable the xwalk_hosts field in manifest" type="Functional" status="approved" component="Runtime Core" execution_type="manual" priority="P1" id="Crosswalk_Manifest_XwalkHosts_Value">
+      <testcase component="Crosswalk WRT/Manifest" execution_type="manual" id="Crosswalk_Manifest_XwalkHosts_Value" priority="P1" purpose="Validate Crosswalk enable the xwalk_hosts field in manifest" status="approved" type="Functional">
         <description>
           <pre_condition>
             1.Make sure Crosswalk binary is installed on device;
             2.Make sure device connected to network.
           </pre_condition>
-          <post_condition/>
+          <post_condition />
           <test_script_entry>/opt/wrt-manifestmanu-android-tests/manifestmanu/Crosswalk_Manifest_XwalkHosts_Value.html </test_script_entry>
         </description>
       </testcase>
-      <testcase purpose="Validate Crosswalk enable the xwalk_hosts field with match patterns 'xxx/*' in manifest" type="Functional" status="approved" component="Runtime Core" execution_type="manual" priority="P2" id="Crosswalk_Manifest_XwalkHosts_MatchPatternsTail">
+      <testcase component="Crosswalk WRT/Manifest" execution_type="manual" id="Crosswalk_Manifest_XwalkHosts_MatchPatternsTail" priority="P2" purpose="Validate Crosswalk enable the xwalk_hosts field with match patterns 'xxx/*' in manifest" status="approved" type="Functional">
         <description>
           <pre_condition>
             1.Make sure Crosswalk binary is installed on device;
             2.Make sure device connected to network.
           </pre_condition>
-          <post_condition/>
+          <post_condition />
           <test_script_entry>/opt/wrt-manifestmanu-android-tests/manifestmanu/Crosswalk_Manifest_XwalkHosts_MatchPatternsTail.html </test_script_entry>
         </description>
       </testcase>
-      <testcase purpose="Validate Crosswalk enable the xwalk_hosts field with match patterns 'xxx/*xxx' in manifest" type="Functional" status="approved" component="Runtime Core" execution_type="manual" priority="P2" id="Crosswalk_Manifest_XwalkHosts_MatchPatternsMiddle">
+      <testcase component="Crosswalk WRT/Manifest" execution_type="manual" id="Crosswalk_Manifest_XwalkHosts_MatchPatternsMiddle" priority="P2" purpose="Validate Crosswalk enable the xwalk_hosts field with match patterns 'xxx/*xxx' in manifest" status="approved" type="Functional">
         <description>
           <pre_condition>
             1.Make sure Crosswalk binary is installed on device;
             2.Make sure device connected to network.
           </pre_condition>
-          <post_condition/>
+          <post_condition />
           <test_script_entry>/opt/wrt-manifestmanu-android-tests/manifestmanu/Crosswalk_Manifest_XwalkHosts_MatchPatternsMiddle.html </test_script_entry>
         </description>
       </testcase>
-      <testcase purpose="Validate Crosswalk enable the xwalk_hosts field with match patterns * in manifest" type="Functional" status="approved" component="Runtime Core" execution_type="manual" priority="P2" id="Crosswalk_Manifest_XwalkHosts_MatchPatterns">
+      <testcase component="Crosswalk WRT/Manifest" execution_type="manual" id="Crosswalk_Manifest_XwalkHosts_MatchPatterns" priority="P2" purpose="Validate Crosswalk enable the xwalk_hosts field with match patterns * in manifest" status="approved" type="Functional">
         <description>
           <pre_condition>
             1.Make sure Crosswalk binary is installed on device;
             2.Make sure device connected to network.
           </pre_condition>
-          <post_condition/>
+          <post_condition />
           <test_script_entry>/opt/wrt-manifestmanu-android-tests/manifestmanu/Crosswalk_Manifest_XwalkHosts_MatchPatterns.html </test_script_entry>
         </description>
       </testcase>
-      <testcase purpose="Validate the Crosswalk enable the launch the app of fullscreen immersive mode and the app can work well" type="Functional" status="approved" component="Crosswalk Runtime Library" execution_type="manual" priority="P1" id="Crosswalk_Immersive_Fullscreen">
+      <testcase component="Crosswalk WRT/Manifest" execution_type="manual" id="Crosswalk_Immersive_Fullscreen" priority="P1" purpose="Validate the Crosswalk enable the launch the app of fullscreen immersive mode and the app can work well" status="approved" type="Functional">
         <description>
           <test_script_entry>/opt/wrt-manifestmanu-android-tests/manifestmanu/Crosswalk_Immersive_Fullscreen.html</test_script_entry>
         </description>
       </testcase>
-      <testcase purpose="Validate the maximize members of manifest can work well" type="Functional" status="approved" component="Crosswalk Runtime Library" execution_type="manual" priority="P1" id="Maximize_Tests">
+      <testcase component="Crosswalk WRT/Manifest" execution_type="manual" id="Maximize_Tests" priority="P1" purpose="Validate the maximize members of manifest can work well" status="approved" type="Functional">
         <description>
           <test_script_entry>/opt/wrt-manifestmanu-android-tests/manifestmanu/Maximize_Tests.html</test_script_entry>
         </description>
       </testcase>
-      <testcase purpose="Validate the minimize members of manifest can work well" type="Functional" status="approved" component="Crosswalk Runtime Library" execution_type="manual" priority="P1" id="Minimize_Tests">
+      <testcase component="Crosswalk WRT/Manifest" execution_type="manual" id="Minimize_Tests" priority="P1" purpose="Validate the minimize members of manifest can work well" status="approved" type="Functional">
         <description>
           <test_script_entry>/opt/wrt-manifestmanu-android-tests/manifestmanu/Minimize_Tests.html</test_script_entry>
         </description>
