@@ -43,6 +43,19 @@ public class XWalkViewTest extends XWalkViewTestBase {
     }
 
     @SmallTest
+    public void testAddJavascriptInterfaceWithUrl() {
+        try {
+            final String url = "file:///android_asset/add_js_interface.html";
+            addJavascriptInterface();
+            loadUrlSync(url);
+            assertEquals(mExpectedStr, getTitleOnUiThread());
+        } catch (Exception e) {
+            e.printStackTrace();
+            assertTrue(false);
+        }
+    }
+
+    @SmallTest
     public void testAddJavascriptInterfaceWithAnnotation() {
         try {
             final String name = "index.html";
@@ -263,6 +276,17 @@ public class XWalkViewTest extends XWalkViewTestBase {
         }
     }
 
+    public void testSaveRestoreStateWithTitle() throws Throwable {
+        setServerResponseAndLoad(1);
+        saveAndRestoreStateOnUiThread();
+        assertTrue(pollOnUiThread(new Callable<Boolean>() {
+            @Override
+            public Boolean call() throws Exception {
+                return TITLES[0].equals(mRestoreXWalkView.getTitle());
+            }
+        }));
+    }
+
     @SmallTest
     public void testSaveRestoreStateWithHistoryItemList() {
         try {
@@ -376,6 +400,32 @@ public class XWalkViewTest extends XWalkViewTestBase {
         }
     }
 
+    boolean haveLoadflag = false;
+    @SmallTest
+    public void testSetResourceClient_function() {
+        try {
+            haveLoadflag = false;
+            String url = "file:///android_asset/index.html";
+            getInstrumentation().runOnMainSync(new Runnable() {
+                @Override
+                public void run() {
+                    mXWalkView.setResourceClient(new XWalkResourceClient(mXWalkView) {
+                        @Override
+                        public void onLoadFinished(XWalkView view, String url) {
+                            haveLoadflag = true;
+                            super.onLoadFinished(view, url);
+                        }
+                    });
+                }
+            });
+            loadUrlSync(url);
+            assertTrue(haveLoadflag);
+        } catch (Exception e) {
+            e.printStackTrace();
+            assertTrue(false);
+        }
+    }
+
     @SmallTest
     public void testSetUIClient() {
         try {
@@ -387,6 +437,32 @@ public class XWalkViewTest extends XWalkViewTestBase {
                 }
             });
             assertTrue(true);
+        } catch (Exception e) {
+            e.printStackTrace();
+            assertTrue(false);
+        }
+    }
+
+    @SmallTest
+    public void testSetUIClient_function() {
+        try {
+            haveLoadflag = false;
+            String url = "file:///android_asset/index.html";
+            getInstrumentation().runOnMainSync(new Runnable() {
+                @Override
+                public void run() {
+                    mXWalkView.setUIClient(new XWalkUIClient(mXWalkView) {
+                        @Override
+                        public void onPageLoadStopped(XWalkView view,
+                                String url, LoadStatus status) {
+                            haveLoadflag = true;
+                            mTestHelperBridge.onPageFinished(url, status);
+                        }
+                    });
+                }
+            });
+            loadUrlSync(url);
+            assertTrue(haveLoadflag);
         } catch (Exception e) {
             e.printStackTrace();
             assertTrue(false);
@@ -422,6 +498,58 @@ public class XWalkViewTest extends XWalkViewTestBase {
                 }
             });
             assertTrue(true);
+        } catch (Exception e) {
+            e.printStackTrace();
+            assertTrue(false);
+        }
+    }
+
+    @SmallTest
+    public void testPauseTimers_function() {
+        try {
+            String url = "file:///android_asset/pause_timers.html";
+            addJavascriptInterface();
+            loadUrlSync(url);
+            SystemClock.sleep(3000);
+            String date = new Date().toString();
+            pauseTimers();
+            SystemClock.sleep(1000);
+            assertEquals(date, getTitleOnUiThread());
+        } catch (Exception e) {
+            e.printStackTrace();
+            assertTrue(false);
+        }
+    }
+
+    @SmallTest
+    public void testResumeTimers_function() {
+        try {
+            String url = "file:///android_asset/pause_timers.html";
+            addJavascriptInterface();
+            loadUrlSync(url);
+            SystemClock.sleep(2000);
+            pauseTimers();
+            SystemClock.sleep(2000);
+            resumeTimers();
+            SystemClock.sleep(1000);
+            String date = new Date().toString();
+            assertEquals(date, getTitleOnUiThread());
+        } catch (Exception e) {
+            e.printStackTrace();
+            assertTrue(false);
+        }
+    }
+
+    @SmallTest
+    public void testOnDestroy_function() {
+        try {
+            String url = "file:///android_asset/pause_timers.html";
+            addJavascriptInterface();
+            loadUrlSync(url);
+            SystemClock.sleep(2000);
+            onDestroy();
+            SystemClock.sleep(2000);
+            assertNull(getTitleOnUiThread());
         } catch (Exception e) {
             e.printStackTrace();
             assertTrue(false);
