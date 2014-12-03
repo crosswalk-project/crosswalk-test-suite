@@ -40,7 +40,7 @@ Authors:
 </head>
 <body>
 <p>Test step:</p>
-<p>Use other NFC enabled device tap to share some data(such as contacts or coupons) to the NFC Manager.</p>
+<p>Tap other NFC enabled device to the NFC Manager.</p>
 <div id="log"></div>
 <script>
 //==== TEST: NDEFMessageEvent_message_attribute
@@ -67,7 +67,9 @@ async_test(function (t) {
                 check_readonly(messageEvent, "message", messageEvent.message, "object", "null");
             });
             t.done();
-        }   
+        }
+        var record = new NDEFRecord(0);
+        e.peer.sendNDEF(record);
     }
 
     navigator.nfc.startPoll().then(onSuccess, onError);         
