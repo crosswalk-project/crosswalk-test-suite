@@ -186,17 +186,16 @@ def sourceInit():
             except Exception,e:
                 os.system("rm -rf " + ConstPath + "/tcs/* &>/dev/null")
                 os.system("rm -rf " + ConstPath + "/apks/* &>/dev/null")
+                os.system("rm -rf " + ConstPath + "/report/* &>/dev/null")
             if os.path.exists(ConstPath + "/tests.py"):
                 os.remove(ConstPath + "/tests.py")
             os.mkdir(ConstPath + "/tcs")
-            os.mkdir(ConstPath + "/apks")
             os.mkdir(ConstPath + "/report")
             txt_list = glob.glob(ConstPath + "/allpairs/*.txt")
             for item in txt_list:
                 os.remove(item)
         else:
             os.mkdir(ConstPath + "/tcs")
-            os.mkdir(ConstPath + "/apks")
             os.mkdir(ConstPath + "/report")
 
         Start = time.strftime("%Y-%m-%d %H:%M:%S")

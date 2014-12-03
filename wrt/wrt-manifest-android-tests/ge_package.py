@@ -19,7 +19,7 @@ def genPackage():
         if os.path.exists(ConstPath + "/tools/crosswalk/"):
             os.chdir(ConstPath + "/tools/crosswalk/")
         else:
-            os.chdir("../../tools/crosswalk/")
+            os.chdir(ConstPath + "/../../tools/crosswalk/")
         if os.path.exists(ConstPath + "/apks") and len(os.listdir(ConstPath + "/apks")) != 0:
             if ARCH in os.listdir(ConstPath + "/apks"):
                 shutil.rmtree(ConstPath + "/apks/" + ARCH)
@@ -86,11 +86,13 @@ def genPackage():
                         manifestLog.write(result + "\n")
             caseEnd = time.strftime("%Y-%m-%d %H:%M:%S")
             manifestLog.write("Build end time: " + caseEnd + "\n\n")
+            manifestLog.flush()
             print "Package Result :" + result
             fp = open(ConstPath + "/report/packRes.txt", 'a+')
             tt = i + "\t" + flag + "\t" + result + "\n"
             fp.write(tt)
             fp.close()
+        manifestLog.close()
     except Exception,e:
         print Exception,":",e
         print "Execute case ---------------->Error"
