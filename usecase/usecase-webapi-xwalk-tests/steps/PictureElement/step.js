@@ -1,0 +1,6 @@
+var step = '<font style="font-size:85%">'
+           + '<p>Test Purpose: </p>'
+           + '<p>Check if the device support Picture Element.</p>'
+           + '<p>Expected Result: </p>'
+           + '<p>Test passes if there is a green box.</p>'
+         + '</font>'
