@@ -401,6 +401,466 @@
           </spec>
         </specs>
       </testcase>
+      <testcase purpose="To check if  transition-property:background-position can implement transition-property function normally" type="compliance" status="approved" component="WebAPI/DOM, Forms and Styles/CSS Transitions Module Level 3" execution_type="manual" priority="P2" id="css3_transition_tests_entry1">
+        <description>
+          <pre_condition/>
+          <post_condition/>
+          <steps>
+            <step order="1">
+              <step_desc>Use WRT to visit the test script file to check if background-position can implement transition-property function normally</step_desc>
+              <expected>"Background-position" property for "box" element at 0.5s saw something close to: 10,10</expected>
+            </step>
+          </steps>
+          <test_script_entry>/opt/tct-transitions-css3-tests/transitions/webkit/background-transitions-manual.html?total_num=2&amp;amp;locator_key=id&amp;amp;value=1</test_script_entry>
+        </description>
+        <specs>
+          <spec>
+            <spec_assertion element_type="Property" element_name="transition-property" interface="CSS" specification="CSS Transitions Module Level 3" section="DOM, Forms and Styles" category="Tizen W3C API Specifications"/>
+            <spec_url>http://www.w3.org/TR/2012/WD-css3-transitions-20120403/#transition-property-property</spec_url>
+            <spec_statement/>
+          </spec>
+        </specs>
+      </testcase>
+      <testcase purpose="To check if  transition-property: background-size can implement transition-property function normally" type="compliance" status="approved" component="WebAPI/DOM, Forms and Styles/CSS Transitions Module Level 3" execution_type="manual" priority="P2" id="css3_transition_tests_entry2">
+        <description>
+          <pre_condition/>
+          <post_condition/>
+          <steps>
+            <step order="1">
+              <step_desc>Use WRT to visit the test script file to check if  background-size can implement transition-property function normally</step_desc>
+              <expected>"Background-position" property for "box2" element at 0.5s saw something close to: 20,20</expected>
+            </step>
+          </steps>
+          <test_script_entry>/opt/tct-transitions-css3-tests/transitions/webkit/background-transitions-manual.html?total_num=2&amp;amp;locator_key=id&amp;amp;value=2</test_script_entry>
+        </description>
+        <specs>
+          <spec>
+            <spec_assertion element_type="Property" element_name="transition-property" interface="CSS" specification="CSS Transitions Module Level 3" section="DOM, Forms and Styles" category="Tizen W3C API Specifications"/>
+            <spec_url>http://www.w3.org/TR/2012/WD-css3-transitions-20120403/#transition-property-property</spec_url>
+            <spec_statement/>
+          </spec>
+        </specs>
+      </testcase>
+      <testcase purpose="To check if  transition-property:border-radius can implement transitions-property function normally" type="compliance" status="approved" component="WebAPI/DOM, Forms and Styles/CSS Transitions Module Level 3" execution_type="manual" priority="P2" id="css3_transition_tests_entry3">
+        <description>
+          <pre_condition/>
+          <post_condition/>
+          <steps>
+            <step order="1">
+              <step_desc>Use WRT to visit the test script file to check if border-radius can implement transition-property function normally</step_desc>
+              <expected>Border-radius can implement transition-property function normally</expected>
+            </step>
+          </steps>
+          <test_script_entry>/opt/tct-transitions-css3-tests/transitions/webkit/border-radius-transition-manual.html?total_num=2&amp;amp;locator_key=id&amp;amp;value=1</test_script_entry>
+        </description>
+        <specs>
+          <spec>
+            <spec_assertion element_type="Property" element_name="transition-property" interface="CSS" specification="CSS Transitions Module Level 3" section="DOM, Forms and Styles" category="Tizen W3C API Specifications"/>
+            <spec_url>http://www.w3.org/TR/2012/WD-css3-transitions-20120403/#transition-property-property</spec_url>
+            <spec_statement/>
+          </spec>
+        </specs>
+      </testcase>
+      <testcase purpose="To check if  transition-property: border-radius can implement transitions-property function normally" type="compliance" status="approved" component="WebAPI/DOM, Forms and Styles/CSS Transitions Module Level 3" execution_type="manual" priority="P2" id="css3_transition_tests_entry4">
+        <description>
+          <pre_condition/>
+          <post_condition/>
+          <steps>
+            <step order="1">
+              <step_desc>Use WRT to visit the test script file to check if  border-radius can implement transition-property function normally</step_desc>
+              <expected>Border-radius can implement transition-property function normally</expected>
+            </step>
+          </steps>
+          <test_script_entry>/opt/tct-transitions-css3-tests/transitions/webkit/border-radius-transition-manual.html?total_num=2&amp;amp;locator_key=id&amp;amp;value=2</test_script_entry>
+        </description>
+        <specs>
+          <spec>
+            <spec_assertion element_type="Property" element_name="transition-property" interface="CSS" specification="CSS Transitions Module Level 3" section="DOM, Forms and Styles" category="Tizen W3C API Specifications"/>
+            <spec_url>http://www.w3.org/TR/2012/WD-css3-transitions-20120403/#transition-property-property</spec_url>
+            <spec_statement/>
+          </spec>
+        </specs>
+      </testcase>
+      <testcase purpose="To check if the remove of transition properties can work properly" type="compliance" status="approved" component="WebAPI/DOM, Forms and Styles/CSS Transitions Module Level 3" execution_type="manual" priority="P3" id="css3_transition_tests_entry5">
+        <description>
+          <pre_condition/>
+          <post_condition/>
+          <steps>
+            <step order="1">
+              <step_desc>Removes the transition properties while the transition is running, then adds them back in.</step_desc>
+              <expected>Transitions should start from the beginning</expected>
+            </step>
+          </steps>
+          <test_script_entry>/opt/tct-transitions-css3-tests/transitions/webkit/cancel-transition-manual.html</test_script_entry>
+        </description>
+        <specs>
+          <spec>
+            <spec_assertion usage="true" interface="CSS" specification="CSS Transitions Module Level 3" section="DOM, Forms and Styles" category="Tizen W3C API Specifications"/>
+            <spec_url>http://www.w3.org/TR/2012/WD-css3-transitions-20120403/#transition-property-property</spec_url>
+            <spec_statement/>
+          </spec>
+        </specs>
+      </testcase>
+      <testcase purpose="To check if changes  transition-duration while the transition is running to ensure that the running transition is not affected" type="compliance" status="approved" component="WebAPI/DOM, Forms and Styles/CSS Transitions Module Level 3" execution_type="manual" priority="P3" id="css3_transition_tests_entry6">
+        <description>
+          <pre_condition/>
+          <post_condition/>
+          <steps>
+            <step order="1">
+              <step_desc>Changes transition-duration while the transition is running</step_desc>
+              <expected>The running transition is not affected</expected>
+            </step>
+          </steps>
+          <test_script_entry>/opt/tct-transitions-css3-tests/transitions/webkit/change-values-during-transition-manual.html</test_script_entry>
+        </description>
+        <specs>
+          <spec>
+            <spec_assertion usage="true" interface="CSS" specification="CSS Transitions Module Level 3" section="DOM, Forms and Styles" category="Tizen W3C API Specifications"/>
+            <spec_url>http://www.w3.org/TR/2012/WD-css3-transitions-20120403/#transition-duration-property</spec_url>
+            <spec_statement/>
+          </spec>
+        </specs>
+      </testcase>
+      <testcase purpose="To check if  transform: translateX(0px) rotate(0deg) can implement transform function normally" type="compliance" status="approved" component="WebAPI/DOM, Forms and Styles/CSS Transitions Module Level 3" execution_type="manual" priority="P2" id="css3_transition_tests_entry24">
+        <description>
+          <pre_condition/>
+          <post_condition/>
+          <steps>
+            <step order="1">
+              <step_desc>Use WRT to visit the test script file to check if  transform: translateX(0px) rotate(0deg) can implement transform function normally</step_desc>
+              <expected>Box should spin 540 degrees</expected>
+            </step>
+          </steps>
+          <test_script_entry>/opt/tct-transitions-css3-tests/transitions/webkit/transform-op-list-match-manual.html</test_script_entry>
+        </description>
+        <specs>
+          <spec>
+            <spec_assertion element_type="Property" element_name="transition" interface="CSS" specification="CSS Transitions Module Level 3" section="DOM, Forms and Styles" category="Tizen W3C API Specifications"/>
+            <spec_url>http://www.w3.org/TR/2012/WD-css3-transitions-20120403/#transitions</spec_url>
+            <spec_statement/>
+          </spec>
+        </specs>
+      </testcase>
+      <testcase purpose="To check if left can implement transitionend event normally" type="compliance" status="approved" component="WebAPI/DOM, Forms and Styles/CSS Transitions Module Level 3" execution_type="manual" priority="P3" id="css3_transition_tests_entry25">
+        <description>
+          <pre_condition/>
+          <post_condition/>
+          <steps>
+            <step order="1">
+              <step_desc>Use WRT to visit the test script file to check if TransitionEnd can implement transitionend event normally</step_desc>
+              <expected>Background-color property missed</expected>
+            </step>
+          </steps>
+          <test_script_entry>/opt/tct-transitions-css3-tests/transitions/webkit/transition-end-event-nested-manual.html?total_num=3&amp;amp;locator_key=id&amp;amp;value=1</test_script_entry>
+        </description>
+        <specs>
+          <spec>
+            <spec_assertion usage="true" interface="CSS" specification="CSS Transitions Module Level 3" section="DOM, Forms and Styles" category="Tizen W3C API Specifications"/>
+            <spec_url>http://www.w3.org/TR/2012/WD-css3-transitions-20120403/#transition-events</spec_url>
+            <spec_statement/>
+          </spec>
+        </specs>
+      </testcase>
+      <testcase purpose="To check if background-color can implement transitionend event normally" type="compliance" status="approved" component="WebAPI/DOM, Forms and Styles/CSS Transitions Module Level 3" execution_type="manual" priority="P3" id="css3_transition_tests_entry26">
+        <description>
+          <pre_condition/>
+          <post_condition/>
+          <steps>
+            <step order="1">
+              <step_desc>Use WRT to visit the test script file to check if TransitionEnd can implement transitionend event normally</step_desc>
+              <expected>Left property missed</expected>
+            </step>
+          </steps>
+          <test_script_entry>/opt/tct-transitions-css3-tests/transitions/webkit/transition-end-event-nested-manual.html?total_num=3&amp;amp;locator_key=id&amp;amp;value=2</test_script_entry>
+        </description>
+        <specs>
+          <spec>
+            <spec_assertion usage="true" interface="CSS" specification="CSS Transitions Module Level 3" section="DOM, Forms and Styles" category="Tizen W3C API Specifications"/>
+            <spec_url>http://www.w3.org/TR/2012/WD-css3-transitions-20120403/#transition-events</spec_url>
+            <spec_statement/>
+          </spec>
+        </specs>
+      </testcase>
+      <testcase purpose="To check if width can implement transitionend event normally" type="compliance" status="approved" component="WebAPI/DOM, Forms and Styles/CSS Transitions Module Level 3" execution_type="manual" priority="P3" id="css3_transition_tests_entry27">
+        <description>
+          <pre_condition/>
+          <post_condition/>
+          <steps>
+            <step order="1">
+              <step_desc>Use WRT to visit the test script file to check if TransitionEnd can implement transitionend event normally</step_desc>
+              <expected>Width property missed</expected>
+            </step>
+          </steps>
+          <test_script_entry>/opt/tct-transitions-css3-tests/transitions/webkit/transition-end-event-nested-manual.html?total_num=3&amp;amp;locator_key=id&amp;amp;value=3</test_script_entry>
+        </description>
+        <specs>
+          <spec>
+            <spec_assertion usage="true" interface="CSS" specification="CSS Transitions Module Level 3" section="DOM, Forms and Styles" category="Tizen W3C API Specifications"/>
+            <spec_url>http://www.w3.org/TR/2012/WD-css3-transitions-20120403/#transition-events</spec_url>
+            <spec_statement/>
+          </spec>
+        </specs>
+      </testcase>
+      <testcase purpose="To check if transition-duration: 0, 0.5s can implement transition-duration function normally" type="compliance" status="approved" component="WebAPI/DOM, Forms and Styles/CSS Transitions Module Level 3" execution_type="manual" priority="P1" id="css3_transition_tests_entry28">
+        <description>
+          <pre_condition/>
+          <post_condition/>
+          <steps>
+            <step order="1">
+              <step_desc>Use WRT to visit the test script file to check if transition-duration: 0, 0.5s can implement transition-duration function normally</step_desc>
+              <expected>All test results are marked "PASS"</expected>
+            </step>
+          </steps>
+          <test_script_entry>/opt/tct-transitions-css3-tests/transitions/webkit/zero-duration-in-list-manual.html</test_script_entry>
+        </description>
+        <specs>
+          <spec>
+            <spec_assertion element_type="Property" element_name="transition-duration" interface="CSS" specification="CSS Transitions Module Level 3" section="DOM, Forms and Styles" category="Tizen W3C API Specifications"/>
+            <spec_url>http://www.w3.org/TR/2012/WD-css3-transitions-20120403/#transition-duration-property</spec_url>
+            <spec_statement/>
+          </spec>
+        </specs>
+      </testcase>
+      <testcase purpose="To check if shorthand properties outline-color can implement transition-property function normally" type="compliance" status="approved" component="WebAPI/DOM, Forms and Styles/CSS Transitions Module Level 3" execution_type="manual" priority="P1" id="css3_transition_tests_entry20">
+        <description>
+          <pre_condition/>
+          <post_condition/>
+          <steps>
+            <step order="1">
+              <step_desc>Use WRT to visit the test script file to check if shorthand properties outline-color can implement transition-property function normally</step_desc>
+              <expected>All test results are marked "PASS"</expected>
+            </step>
+          </steps>
+          <test_script_entry>/opt/tct-transitions-css3-tests/transitions/webkit/shorthand-transitions-manual.html?total_num=6&amp;amp;locator_key=id&amp;amp;value=3</test_script_entry>
+        </description>
+        <specs>
+          <spec>
+            <spec_assertion element_type="Property" element_name="transition-property" interface="CSS" specification="CSS Transitions Module Level 3" section="DOM, Forms and Styles" category="Tizen W3C API Specifications"/>
+            <spec_url>http://www.w3.org/TR/2012/WD-css3-transitions-20120403/#transition-property-property</spec_url>
+            <spec_statement/>
+          </spec>
+        </specs>
+      </testcase>
+      <testcase purpose="To check if shorthand properties background-color can implement transition-property function normally" type="compliance" status="approved" component="WebAPI/DOM, Forms and Styles/CSS Transitions Module Level 3" execution_type="manual" priority="P1" id="css3_transition_tests_entry21">
+        <description>
+          <pre_condition/>
+          <post_condition/>
+          <steps>
+            <step order="1">
+              <step_desc>Use WRT to visit the test script file to check if shorthand properties background-color can implement transition-property function normally</step_desc>
+              <expected>All test results are marked "PASS"</expected>
+            </step>
+          </steps>
+          <test_script_entry>/opt/tct-transitions-css3-tests/transitions/webkit/shorthand-transitions-manual.html?total_num=6&amp;amp;locator_key=id&amp;amp;value=4</test_script_entry>
+        </description>
+        <specs>
+          <spec>
+            <spec_assertion element_type="Property" element_name="transition-property" interface="CSS" specification="CSS Transitions Module Level 3" section="DOM, Forms and Styles" category="Tizen W3C API Specifications"/>
+            <spec_url>http://www.w3.org/TR/2012/WD-css3-transitions-20120403/#transition-property-property</spec_url>
+            <spec_statement/>
+          </spec>
+        </specs>
+      </testcase>
+      <testcase purpose="To check if shorthand properties border-top-right-radius can implement transition-property function normally" type="compliance" status="approved" component="WebAPI/DOM, Forms and Styles/CSS Transitions Module Level 3" execution_type="manual" priority="P1" id="css3_transition_tests_entry22">
+        <description>
+          <pre_condition/>
+          <post_condition/>
+          <steps>
+            <step order="1">
+              <step_desc>Use WRT to visit the test script file to check if shorthand properties  border-top-right-radius can implement transition-property function normally</step_desc>
+              <expected>All test results are marked "PASS"</expected>
+            </step>
+          </steps>
+          <test_script_entry>/opt/tct-transitions-css3-tests/transitions/webkit/shorthand-transitions-manual.html?total_num=6&amp;amp;locator_key=id&amp;amp;value=5</test_script_entry>
+        </description>
+        <specs>
+          <spec>
+            <spec_assertion element_type="Property" element_name="transition-property" interface="CSS" specification="CSS Transitions Module Level 3" section="DOM, Forms and Styles" category="Tizen W3C API Specifications"/>
+            <spec_url>http://www.w3.org/TR/2012/WD-css3-transitions-20120403/#transition-property-property</spec_url>
+            <spec_statement/>
+          </spec>
+        </specs>
+      </testcase>
+      <testcase purpose="To check if  border-right-width can implement transition function normally" type="compliance" status="approved" component="WebAPI/DOM, Forms and Styles/CSS Transitions Module Level 3" execution_type="manual" priority="P2" id="css3_transition_tests_entry13">
+        <description>
+          <pre_condition/>
+          <post_condition/>
+          <steps>
+            <step order="1">
+              <step_desc>Use WRT to visit the test script file to check if  border-right-width can implement transition function normally</step_desc>
+              <expected>Border-right-width can implement transition function normally</expected>
+            </step>
+          </steps>
+          <test_script_entry>/opt/tct-transitions-css3-tests/transitions/webkit/shorthand-border-transitions-manual.html?total_num=10&amp;amp;locator_key=id&amp;amp;value=6</test_script_entry>
+        </description>
+        <specs>
+          <spec>
+            <spec_assertion element_type="Property" element_name="transition" interface="CSS" specification="CSS Transitions Module Level 3" section="DOM, Forms and Styles" category="Tizen W3C API Specifications"/>
+            <spec_url>http://www.w3.org/TR/2012/WD-css3-transitions-20120403/#transitions</spec_url>
+            <spec_statement/>
+          </spec>
+        </specs>
+      </testcase>
+      <testcase purpose="To check if  border-top-width can implement transition function normally" type="compliance" status="approved" component="WebAPI/DOM, Forms and Styles/CSS Transitions Module Level 3" execution_type="manual" priority="P2" id="css3_transition_tests_entry12">
+        <description>
+          <pre_condition/>
+          <post_condition/>
+          <steps>
+            <step order="1">
+              <step_desc>Use WRT to visit the test script file to check if  border-top-width can implement transition function normally</step_desc>
+              <expected>Border-top-width can implement transition function normally</expected>
+            </step>
+          </steps>
+          <test_script_entry>/opt/tct-transitions-css3-tests/transitions/webkit/shorthand-border-transitions-manual.html?total_num=10&amp;amp;locator_key=id&amp;amp;value=5</test_script_entry>
+        </description>
+        <specs>
+          <spec>
+            <spec_assertion element_type="Property" element_name="transition" interface="CSS" specification="CSS Transitions Module Level 3" section="DOM, Forms and Styles" category="Tizen W3C API Specifications"/>
+            <spec_url>http://www.w3.org/TR/2012/WD-css3-transitions-20120403/#transitions</spec_url>
+            <spec_statement/>
+          </spec>
+        </specs>
+      </testcase>
+      <testcase purpose="To check if  border-left-width can implement transition function normally" type="compliance" status="approved" component="WebAPI/DOM, Forms and Styles/CSS Transitions Module Level 3" execution_type="manual" priority="P2" id="css3_transition_tests_entry15">
+        <description>
+          <pre_condition/>
+          <post_condition/>
+          <steps>
+            <step order="1">
+              <step_desc>Use WRT to visit the test script file to check if  border-left-width can implement transition function normally</step_desc>
+              <expected>Border-left-width can implement transition function normally</expected>
+            </step>
+          </steps>
+          <test_script_entry>/opt/tct-transitions-css3-tests/transitions/webkit/shorthand-border-transitions-manual.html?total_num=10&amp;amp;locator_key=id&amp;amp;value=8</test_script_entry>
+        </description>
+        <specs>
+          <spec>
+            <spec_assertion element_type="Property" element_name="transition" interface="CSS" specification="CSS Transitions Module Level 3" section="DOM, Forms and Styles" category="Tizen W3C API Specifications"/>
+            <spec_url>http://www.w3.org/TR/2012/WD-css3-transitions-20120403/#transitions</spec_url>
+            <spec_statement/>
+          </spec>
+        </specs>
+      </testcase>
+      <testcase purpose="To check if  border-top-color can implement transition function normally" type="compliance" status="approved" component="WebAPI/DOM, Forms and Styles/CSS Transitions Module Level 3" execution_type="manual" priority="P2" id="css3_transition_tests_entry8">
+        <description>
+          <pre_condition/>
+          <post_condition/>
+          <steps>
+            <step order="1">
+              <step_desc>Use WRT to visit the test script file to check if  border-top-color can implement transition function normally</step_desc>
+              <expected>Border-top-color can implement transition function normally</expected>
+            </step>
+          </steps>
+          <test_script_entry>/opt/tct-transitions-css3-tests/transitions/webkit/shorthand-border-transitions-manual.html?total_num=10&amp;amp;locator_key=id&amp;amp;value=1</test_script_entry>
+        </description>
+        <specs>
+          <spec>
+            <spec_assertion element_type="Property" element_name="transition" interface="CSS" specification="CSS Transitions Module Level 3" section="DOM, Forms and Styles" category="Tizen W3C API Specifications"/>
+            <spec_url>http://www.w3.org/TR/2012/WD-css3-transitions-20120403/#transitions</spec_url>
+            <spec_statement/>
+          </spec>
+        </specs>
+      </testcase>
+      <testcase purpose="To check if  border-bottom-color can implement transition function normally" type="compliance" status="approved" component="WebAPI/DOM, Forms and Styles/CSS Transitions Module Level 3" execution_type="manual" priority="P2" id="css3_transition_tests_entry10">
+        <description>
+          <pre_condition/>
+          <post_condition/>
+          <steps>
+            <step order="1">
+              <step_desc>Use WRT to visit the test script file to check if  border-bottom-color can implement transition function normally</step_desc>
+              <expected>Border-bottom-color can implement transition function normally</expected>
+            </step>
+          </steps>
+          <test_script_entry>/opt/tct-transitions-css3-tests/transitions/webkit/shorthand-border-transitions-manual.html?total_num=10&amp;amp;locator_key=id&amp;amp;value=3</test_script_entry>
+        </description>
+        <specs>
+          <spec>
+            <spec_assertion element_type="Property" element_name="transition" interface="CSS" specification="CSS Transitions Module Level 3" section="DOM, Forms and Styles" category="Tizen W3C API Specifications"/>
+            <spec_url>http://www.w3.org/TR/2012/WD-css3-transitions-20120403/#transitions</spec_url>
+            <spec_statement/>
+          </spec>
+        </specs>
+      </testcase>
+      <testcase purpose="To check if  border-right-color can implement transition function normally" type="compliance" status="approved" component="WebAPI/DOM, Forms and Styles/CSS Transitions Module Level 3" execution_type="manual" priority="P2" id="css3_transition_tests_entry9">
+        <description>
+          <pre_condition/>
+          <post_condition/>
+          <steps>
+            <step order="1">
+              <step_desc>Use WRT to visit the test script file to check if  border-right-color can implement transition function normally</step_desc>
+              <expected>Border-right-color can implement transition function normally</expected>
+            </step>
+          </steps>
+          <test_script_entry>/opt/tct-transitions-css3-tests/transitions/webkit/shorthand-border-transitions-manual.html?total_num=10&amp;amp;locator_key=id&amp;amp;value=2</test_script_entry>
+        </description>
+        <specs>
+          <spec>
+            <spec_assertion element_type="Property" element_name="transition" interface="CSS" specification="CSS Transitions Module Level 3" section="DOM, Forms and Styles" category="Tizen W3C API Specifications"/>
+            <spec_url>http://www.w3.org/TR/2012/WD-css3-transitions-20120403/#transitions</spec_url>
+            <spec_statement/>
+          </spec>
+        </specs>
+      </testcase>
+      <testcase purpose="To check if  border-left-color can implement transition function normally" type="compliance" status="approved" component="WebAPI/DOM, Forms and Styles/CSS Transitions Module Level 3" execution_type="manual" priority="P2" id="css3_transition_tests_entry11">
+        <description>
+          <pre_condition/>
+          <post_condition/>
+          <steps>
+            <step order="1">
+              <step_desc>Use WRT to visit the test script file to check if  border-left-color can implement transition function normally</step_desc>
+              <expected>Border-left-color can implement transition function normally</expected>
+            </step>
+          </steps>
+          <test_script_entry>/opt/tct-transitions-css3-tests/transitions/webkit/shorthand-border-transitions-manual.html?total_num=10&amp;amp;locator_key=id&amp;amp;value=4</test_script_entry>
+        </description>
+        <specs>
+          <spec>
+            <spec_assertion element_type="Property" element_name="transition" interface="CSS" specification="CSS Transitions Module Level 3" section="DOM, Forms and Styles" category="Tizen W3C API Specifications"/>
+            <spec_url>http://www.w3.org/TR/2012/WD-css3-transitions-20120403/#transitions</spec_url>
+            <spec_statement/>
+          </spec>
+        </specs>
+      </testcase>
+      <testcase purpose="To check if  only border--width can be animating" type="compliance" status="approved" component="WebAPI/DOM, Forms and Styles/CSS Transitions Module Level 3" execution_type="manual" priority="P3" id="css3_transition_tests_entry16">
+        <description>
+          <pre_condition/>
+          <post_condition/>
+          <steps>
+            <step order="1">
+              <step_desc>Use WRT to visit the test script file to check if  only border--width can be animating</step_desc>
+              <expected>Only border--width is animating</expected>
+            </step>
+          </steps>
+          <test_script_entry>/opt/tct-transitions-css3-tests/transitions/webkit/shorthand-border-transitions-manual.html?total_num=10&amp;amp;locator_key=id&amp;amp;value=9</test_script_entry>
+        </description>
+        <specs>
+          <spec>
+            <spec_assertion usage="true" interface="CSS" specification="CSS Transitions Module Level 3" section="DOM, Forms and Styles" category="Tizen W3C API Specifications"/>
+            <spec_url>http://www.w3.org/TR/2012/WD-css3-transitions-20120403/#transitions</spec_url>
+            <spec_statement/>
+          </spec>
+        </specs>
+      </testcase>
+      <testcase purpose="To check if  border-width should be animating" type="compliance" status="approved" component="WebAPI/DOM, Forms and Styles/CSS Transitions Module Level 3" execution_type="manual" priority="P3" id="css3_transition_tests_entry17">
+        <description>
+          <pre_condition/>
+          <post_condition/>
+          <steps>
+            <step order="1">
+              <step_desc>Use WRT to visit the test script file to check if  border-width should be animating</step_desc>
+              <expected>Border-width is animating</expected>
+            </step>
+          </steps>
+          <test_script_entry>/opt/tct-transitions-css3-tests/transitions/webkit/shorthand-border-transitions-manual.html?total_num=10&amp;amp;locator_key=id&amp;amp;value=10</test_script_entry>
+        </description>
+        <specs>
+          <spec>
+            <spec_assertion usage="true" interface="CSS" specification="CSS Transitions Module Level 3" section="DOM, Forms and Styles" category="Tizen W3C API Specifications"/>
+            <spec_url>http://www.w3.org/TR/2012/WD-css3-transitions-20120403/#transitions</spec_url>
+            <spec_statement/>
+          </spec>
+        </specs>
+      </testcase>
     </set>
   </suite>
 </test_definition>
