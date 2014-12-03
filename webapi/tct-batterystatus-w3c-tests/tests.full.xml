@@ -109,6 +109,166 @@
           </spec>
         </specs>
       </testcase>
+      <testcase purpose="Check if the BatteryManager.charging attribute must be set to true when the battery is charging" type="compliance" status="approved" component="WebAPI/Device/Battery Status API" execution_type="manual" priority="P2" id="BatteryManager_charging_charging">
+        <description>
+          <pre_condition>
+            1. The device is plugged in to the charger before this test is run.
+            2. The battery must neither be empty or full, nor reach empty or full capacity during the test.
+          </pre_condition>
+          <test_script_entry>/opt/tct-batterystatus-w3c-tests/batterystatus/BatteryManager_charging_charging.html</test_script_entry>
+        </description>
+        <specs>
+          <spec>
+            <spec_assertion element_type="attribute" element_name="charging" interface="BatteryManager" specification="Battery Status API" section="Device" category="Tizen W3C API Specifications"/>
+            <spec_url>https://dvcs.w3.org/hg/dap/raw-file/default/battery/Overview.html#the-batterymanager-interface</spec_url>
+            <spec_statement/>
+          </spec>
+        </specs>
+      </testcase>
+      <testcase purpose="Check if the BatteryManager.dischargingTime attribute must be set to the value positive Infinity when the battery is charging" type="compliance" status="approved" component="WebAPI/Device/Battery Status API" execution_type="manual" priority="P2" id="BatteryManager_charging_dischargingTime">
+        <description>
+          <pre_condition>
+            1. The device is plugged in to the charger before this test is run.
+            2. The battery must neither be empty or full, nor reach empty or full capacity during the test.
+          </pre_condition>
+          <test_script_entry>/opt/tct-batterystatus-w3c-tests/batterystatus/BatteryManager_charging_dischargingTime.html</test_script_entry>
+        </description>
+        <specs>
+          <spec>
+            <spec_assertion element_type="attribute" element_name="dischargingTime" interface="BatteryManager" specification="Battery Status API" section="Device" category="Tizen W3C API Specifications"/>
+            <spec_url>https://dvcs.w3.org/hg/dap/raw-file/default/battery/Overview.html#the-batterymanager-interface</spec_url>
+            <spec_statement/>
+          </spec>
+        </specs>
+      </testcase>
+      <testcase purpose="Check if the BatteryManager.level attribute must be set to the current battery level scaled from 0 to 1.0 when the battery is charging" type="compliance" status="approved" component="WebAPI/Device/Battery Status API" execution_type="manual" priority="P2" id="BatteryManager_charging_level">
+        <description>
+          <pre_condition>
+            1. The device is plugged in to the charger before this test is run.
+            2. The battery must neither be empty or full, nor reach empty or full capacity during the test.
+          </pre_condition>
+          <test_script_entry>/opt/tct-batterystatus-w3c-tests/batterystatus/BatteryManager_charging_level.html</test_script_entry>
+        </description>
+        <specs>
+          <spec>
+            <spec_assertion element_type="attribute" element_name="level" interface="BatteryManager" specification="Battery Status API" section="Device" category="Tizen W3C API Specifications"/>
+            <spec_url>https://dvcs.w3.org/hg/dap/raw-file/default/battery/Overview.html#the-batterymanager-interface</spec_url>
+            <spec_statement/>
+          </spec>
+        </specs>
+      </testcase>
+      <testcase purpose="Check if the BatteryManager.charging attribute must be set to false when the battery is discharging" type="compliance" status="approved" component="WebAPI/Device/Battery Status API" execution_type="manual" priority="P2" id="BatteryManager_discharging_charging">
+        <description>
+          <pre_condition>
+            1. The device is unplugged from the charger before this test is run.
+            2. The battery must neither be empty or full, nor reach empty or full capacity during the test.
+          </pre_condition>
+          <test_script_entry>/opt/tct-batterystatus-w3c-tests/batterystatus/BatteryManager_discharging_charging.html</test_script_entry>
+        </description>
+        <specs>
+          <spec>
+            <spec_assertion element_type="attribute" element_name="charging" interface="BatteryManager" specification="Battery Status API" section="Device" category="Tizen W3C API Specifications"/>
+            <spec_url>https://dvcs.w3.org/hg/dap/raw-file/default/battery/Overview.html#the-batterymanager-interface</spec_url>
+            <spec_statement/>
+          </spec>
+        </specs>
+      </testcase>
+      <testcase purpose="Check if the BatteryManager.chargingTime attribute must be set to the value positive Infinity when the battery is discharging" type="compliance" status="approved" component="WebAPI/Device/Battery Status API" execution_type="manual" priority="P2" id="BatteryManager_discharging_chargingTime">
+        <description>
+          <pre_condition>
+            1. The device is unplugged from the charger before this test is run.
+            2. The battery must neither be empty or full, nor reach empty or full capacity during the test.
+          </pre_condition>
+          <test_script_entry>/opt/tct-batterystatus-w3c-tests/batterystatus/BatteryManager_discharging_chargingTime.html</test_script_entry>
+        </description>
+        <specs>
+          <spec>
+            <spec_assertion element_type="attribute" element_name="chargingTime" interface="BatteryManager" specification="Battery Status API" section="Device" category="Tizen W3C API Specifications"/>
+            <spec_url>https://dvcs.w3.org/hg/dap/raw-file/default/battery/Overview.html#the-batterymanager-interface</spec_url>
+            <spec_statement/>
+          </spec>
+        </specs>
+      </testcase>
+      <testcase purpose="Check if the BatteryManager.level attribute must be set to the current battery level scaled from 0 to 1.0 when the battery is discharging" type="compliance" status="approved" component="WebAPI/Device/Battery Status API" execution_type="manual" priority="P2" id="BatteryManager_discharging_level">
+        <description>
+          <pre_condition>
+            1. The device is unplugged from the charger before this test is run.
+            2. The battery must neither be empty or full, nor reach empty or full capacity during the test.
+          </pre_condition>
+          <test_script_entry>/opt/tct-batterystatus-w3c-tests/batterystatus/BatteryManager_discharging_level.html</test_script_entry>
+        </description>
+        <specs>
+          <spec>
+            <spec_assertion element_type="attribute" element_name="level" interface="BatteryManager" specification="Battery Status API" section="Device" category="Tizen W3C API Specifications"/>
+            <spec_url>https://dvcs.w3.org/hg/dap/raw-file/default/battery/Overview.html#the-batterymanager-interface</spec_url>
+            <spec_statement/>
+          </spec>
+        </specs>
+      </testcase>
+      <testcase purpose="Check if the BatteryManager.charging attribute must be set to true when the battery is full" type="compliance" status="approved" component="WebAPI/Device/Battery Status API" execution_type="manual" priority="P2" id="BatteryManager_full_charging">
+        <description>
+          <pre_condition>
+            1. The device is plugged in to the charger before this test is run.
+            2. The battery is full.
+          </pre_condition>
+          <test_script_entry>/opt/tct-batterystatus-w3c-tests/batterystatus/BatteryManager_full_charging.html</test_script_entry>
+        </description>
+        <specs>
+          <spec>
+            <spec_assertion element_type="attribute" element_name="charging" interface="BatteryManager" specification="Battery Status API" section="Device" category="Tizen W3C API Specifications"/>
+            <spec_url>https://dvcs.w3.org/hg/dap/raw-file/default/battery/Overview.html#the-batterymanager-interface</spec_url>
+            <spec_statement/>
+          </spec>
+        </specs>
+      </testcase>
+      <testcase purpose="Check if the BatteryManager.chargingTime attribute must be set to 0 when the battery is full" type="compliance" status="approved" component="WebAPI/Device/Battery Status API" execution_type="manual" priority="P2" id="BatteryManager_full_chargingTime">
+        <description>
+          <pre_condition>
+            1. The device is plugged in to the charger before this test is run.
+            2. The battery is full.
+          </pre_condition>
+          <test_script_entry>/opt/tct-batterystatus-w3c-tests/batterystatus/BatteryManager_full_chargingTime.html</test_script_entry>
+        </description>
+        <specs>
+          <spec>
+            <spec_assertion element_type="attribute" element_name="chargingTime" interface="BatteryManager" specification="Battery Status API" section="Device" category="Tizen W3C API Specifications"/>
+            <spec_url>https://dvcs.w3.org/hg/dap/raw-file/default/battery/Overview.html#the-batterymanager-interface</spec_url>
+            <spec_statement/>
+          </spec>
+        </specs>
+      </testcase>
+      <testcase purpose="Check if the BatteryManager.dischargingTime attribute must be set to the value positive Infinity when the battery is full" type="compliance" status="approved" component="WebAPI/Device/Battery Status API" execution_type="manual" priority="P2" id="BatteryManager_full_dischargingTime">
+        <description>
+          <pre_condition>
+            1. The device is plugged in to the charger before this test is run.
+            2. The battery is full.
+          </pre_condition>
+          <test_script_entry>/opt/tct-batterystatus-w3c-tests/batterystatus/BatteryManager_full_dischargingTime.html</test_script_entry>
+        </description>
+        <specs>
+          <spec>
+            <spec_assertion element_type="attribute" element_name="dischargingTime" interface="BatteryManager" specification="Battery Status API" section="Device" category="Tizen W3C API Specifications"/>
+            <spec_url>https://dvcs.w3.org/hg/dap/raw-file/default/battery/Overview.html#the-batterymanager-interface</spec_url>
+            <spec_statement/>
+          </spec>
+        </specs>
+      </testcase>
+      <testcase purpose="Check if the BatteryManager.level attribute must be set to the value 1.0 when the battery is full" type="compliance" status="approved" component="WebAPI/Device/Battery Status API" execution_type="manual" priority="P2" id="BatteryManager_full_level">
+        <description>
+          <pre_condition>
+            1. The device is plugged in to the charger before this test is run.
+            2. The battery is full.
+          </pre_condition>
+          <test_script_entry>/opt/tct-batterystatus-w3c-tests/batterystatus/BatteryManager_full_level.html</test_script_entry>
+        </description>
+        <specs>
+          <spec>
+            <spec_assertion element_type="attribute" element_name="level" interface="BatteryManager" specification="Battery Status API" section="Device" category="Tizen W3C API Specifications"/>
+            <spec_url>https://dvcs.w3.org/hg/dap/raw-file/default/battery/Overview.html#the-batterymanager-interface</spec_url>
+            <spec_statement/>
+          </spec>
+        </specs>
+      </testcase>
     </set>
   </suite>
 </test_definition>

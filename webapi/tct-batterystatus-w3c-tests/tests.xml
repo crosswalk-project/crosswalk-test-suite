@@ -46,6 +46,96 @@
           <test_script_entry>/opt/tct-batterystatus-w3c-tests/batterystatus/BatteryManager_onlevelchange.html</test_script_entry>
         </description>
       </testcase>
+      <testcase component="WebAPI/Device/Battery Status API" execution_type="manual" id="BatteryManager_charging_charging" purpose="Check if the BatteryManager.charging attribute must be set to true when the battery is charging">
+        <description>
+          <pre_condition>
+            1. The device is plugged in to the charger before this test is run.
+            2. The battery must neither be empty or full, nor reach empty or full capacity during the test.
+          </pre_condition>
+          <test_script_entry>/opt/tct-batterystatus-w3c-tests/batterystatus/BatteryManager_charging_charging.html</test_script_entry>
+        </description>
+      </testcase>
+      <testcase component="WebAPI/Device/Battery Status API" execution_type="manual" id="BatteryManager_charging_dischargingTime" purpose="Check if the BatteryManager.dischargingTime attribute must be set to the value positive Infinity when the battery is charging">
+        <description>
+          <pre_condition>
+            1. The device is plugged in to the charger before this test is run.
+            2. The battery must neither be empty or full, nor reach empty or full capacity during the test.
+          </pre_condition>
+          <test_script_entry>/opt/tct-batterystatus-w3c-tests/batterystatus/BatteryManager_charging_dischargingTime.html</test_script_entry>
+        </description>
+      </testcase>
+      <testcase component="WebAPI/Device/Battery Status API" execution_type="manual" id="BatteryManager_charging_level" purpose="Check if the BatteryManager.level attribute must be set to the current battery level scaled from 0 to 1.0 when the battery is charging">
+        <description>
+          <pre_condition>
+            1. The device is plugged in to the charger before this test is run.
+            2. The battery must neither be empty or full, nor reach empty or full capacity during the test.
+          </pre_condition>
+          <test_script_entry>/opt/tct-batterystatus-w3c-tests/batterystatus/BatteryManager_charging_level.html</test_script_entry>
+        </description>
+      </testcase>
+      <testcase component="WebAPI/Device/Battery Status API" execution_type="manual" id="BatteryManager_discharging_charging" purpose="Check if the BatteryManager.charging attribute must be set to false when the battery is discharging">
+        <description>
+          <pre_condition>
+            1. The device is unplugged from the charger before this test is run.
+            2. The battery must neither be empty or full, nor reach empty or full capacity during the test.
+          </pre_condition>
+          <test_script_entry>/opt/tct-batterystatus-w3c-tests/batterystatus/BatteryManager_discharging_charging.html</test_script_entry>
+        </description>
+      </testcase>
+      <testcase component="WebAPI/Device/Battery Status API" execution_type="manual" id="BatteryManager_discharging_chargingTime" purpose="Check if the BatteryManager.chargingTime attribute must be set to the value positive Infinity when the battery is discharging">
+        <description>
+          <pre_condition>
+            1. The device is unplugged from the charger before this test is run.
+            2. The battery must neither be empty or full, nor reach empty or full capacity during the test.
+          </pre_condition>
+          <test_script_entry>/opt/tct-batterystatus-w3c-tests/batterystatus/BatteryManager_discharging_chargingTime.html</test_script_entry>
+        </description>
+      </testcase>
+      <testcase component="WebAPI/Device/Battery Status API" execution_type="manual" id="BatteryManager_discharging_level" purpose="Check if the BatteryManager.level attribute must be set to the current battery level scaled from 0 to 1.0 when the battery is discharging">
+        <description>
+          <pre_condition>
+            1. The device is unplugged from the charger before this test is run.
+            2. The battery must neither be empty or full, nor reach empty or full capacity during the test.
+          </pre_condition>
+          <test_script_entry>/opt/tct-batterystatus-w3c-tests/batterystatus/BatteryManager_discharging_level.html</test_script_entry>
+        </description>
+      </testcase>
+      <testcase component="WebAPI/Device/Battery Status API" execution_type="manual" id="BatteryManager_full_charging" purpose="Check if the BatteryManager.charging attribute must be set to true when the battery is full">
+        <description>
+          <pre_condition>
+            1. The device is plugged in to the charger before this test is run.
+            2. The battery is full.
+          </pre_condition>
+          <test_script_entry>/opt/tct-batterystatus-w3c-tests/batterystatus/BatteryManager_full_charging.html</test_script_entry>
+        </description>
+      </testcase>
+      <testcase component="WebAPI/Device/Battery Status API" execution_type="manual" id="BatteryManager_full_chargingTime" purpose="Check if the BatteryManager.chargingTime attribute must be set to 0 when the battery is full">
+        <description>
+          <pre_condition>
+            1. The device is plugged in to the charger before this test is run.
+            2. The battery is full.
+          </pre_condition>
+          <test_script_entry>/opt/tct-batterystatus-w3c-tests/batterystatus/BatteryManager_full_chargingTime.html</test_script_entry>
+        </description>
+      </testcase>
+      <testcase component="WebAPI/Device/Battery Status API" execution_type="manual" id="BatteryManager_full_dischargingTime" purpose="Check if the BatteryManager.dischargingTime attribute must be set to the value positive Infinity when the battery is full">
+        <description>
+          <pre_condition>
+            1. The device is plugged in to the charger before this test is run.
+            2. The battery is full.
+          </pre_condition>
+          <test_script_entry>/opt/tct-batterystatus-w3c-tests/batterystatus/BatteryManager_full_dischargingTime.html</test_script_entry>
+        </description>
+      </testcase>
+      <testcase component="WebAPI/Device/Battery Status API" execution_type="manual" id="BatteryManager_full_level" purpose="Check if the BatteryManager.level attribute must be set to the value 1.0 when the battery is full">
+        <description>
+          <pre_condition>
+            1. The device is plugged in to the charger before this test is run.
+            2. The battery is full.
+          </pre_condition>
+          <test_script_entry>/opt/tct-batterystatus-w3c-tests/batterystatus/BatteryManager_full_level.html</test_script_entry>
+        </description>
+      </testcase>
     </set>
   </suite>
 </test_definition>
