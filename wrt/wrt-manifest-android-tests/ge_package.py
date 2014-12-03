@@ -16,14 +16,18 @@ def genPackage():
 
         #genarate package and execute
         manifestLog = open(ConstPath + "/report/packageInfo.txt", 'a+')
-        os.chdir(ConstPath + "/tools/crosswalk/")
-        if len(os.listdir(ConstPath + "/apks")) != 0:
+        if os.path.exists(ConstPath + "/tools/crosswalk/"):
+            os.chdir(ConstPath + "/tools/crosswalk/")
+        else:
+            os.chdir("../../tools/crosswalk/")
+        if os.path.exists(ConstPath + "/apks") and len(os.listdir(ConstPath + "/apks")) != 0:
             if ARCH in os.listdir(ConstPath + "/apks"):
                 shutil.rmtree(ConstPath + "/apks/" + ARCH)
                 os.mkdir(ConstPath + "/apks/" + ARCH)
             else:
                 os.mkdir(ConstPath + "/apks/" + ARCH)
         else:
+            os.mkdir(ConstPath + "/apks")
             os.mkdir(ConstPath + "/apks/" + ARCH)
 
         print "Generate APK ---------------->Start"
