@@ -49,7 +49,10 @@ def caseExecute():
             print "Packer Tool Command:"
             print command
 
-            apk_list = glob.glob(ConstPath + "/tools/crosswalk/*.apk")
+            if os.path.exists(ConstPath + "/tools/crosswalk/"):
+                apk_list = glob.glob(ConstPath + "/tools/crosswalk/*.apk")
+            else:
+                apk_list = glob.glob(ConstPath + "/../../tools/crosswalk/*.apk")
             for item in apk_list:
                 os.remove(item)
             packstatus = commands.getstatusoutput(command)
@@ -70,7 +73,10 @@ def caseExecute():
                 else:
                     print "Genarate APK ---------------->O.K"
                     packageInfo.write("Generate apk succeed\n")
-                    apkpath = ConstPath + "/tools/crosswalk/*.apk"
+                    if os.path.exists(ConstPath + "/tools/crosswalk/"):
+                        apkpath = ConstPath + "/tools/crosswalk/*.apk"
+                    else:
+                        apkpath = ConstPath + "/../../tools/crosswalk/*.apk"
                     targetDir = ConstPath + "/apks/" + ARCH + "/" + i
                     if not os.path.exists(targetDir):
                         os.mkdir(targetDir)
@@ -83,7 +89,10 @@ def caseExecute():
                                 
                                 if i in tarNum:
                                     if not tarDir.startswith("/") or tarDir.startswith("./"):
-                                        os.chdir(ConstPath + "/tools/crosswalk/" + tarDir)
+                                        if os.path.exists(ConstPath + "/tools/crosswalk/"):
+                                            os.chdir(ConstPath + "/tools/crosswalk/" + tarDir)
+                                        else:
+                                            os.chdir(ConstPath + "/../../tools/crosswalk/" + tarDir)
                                     else:
                                         os.chdir(tarDir)
                                     apkPath = os.getcwd() + "/*.apk"
@@ -91,7 +100,10 @@ def caseExecute():
                                     for item in apk_list:
                                         name = item.rsplit(os.sep)[-1]
                                         shutil.copyfile(item, targetDir + "/" + name)
-                                        os.chdir(ConstPath + "/tools/crosswalk/")
+                                        if os.path.exists(ConstPath + "/tools/crosswalk/"):
+                                            os.chdir(ConstPath + "/tools/crosswalk/")
+                                        else:
+                                            os.chdir(ConstPath + "/../../tools/crosswalk/")  
                         else:
                             for item in apk_list:
                                 name = item.rsplit(os.sep)[-1]
