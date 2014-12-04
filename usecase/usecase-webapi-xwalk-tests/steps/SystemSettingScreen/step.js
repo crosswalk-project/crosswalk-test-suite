@@ -1,8 +1,0 @@
-var step = '<font style="font-size:85%">'
-           + '<p>Add some pictures to "Image folder" in the device.</p>'
-           + '<p>Check if the home/lock screen image is successfully changed</p>'
-           + '<p>1. Click Home/LockScreen Image</p>'
-           + '<p>2. Select an image for the home/lock screen background</p>'
-           + '<p>3. Check if your selection is set as a home/lock screen background with the naked eye</p>'
-           + '<p>4. Click HomeScreen Image and LockScreen Image to verify the background images are retrieved.</p>'
-         + '</font>'

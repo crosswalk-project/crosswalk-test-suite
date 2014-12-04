@@ -1,6 +1,0 @@
-var step = '<font class="fontSize">'
-           + '<p>Test Purpose: </p>'
-           + '<p>Verifies the Screen Orientation is supported, and can be changed.</p>'
-           + '<p>Expected Result: </p>'
-           + '<p>Test passes if all the check points work well.</p>'
-         + '</font>'

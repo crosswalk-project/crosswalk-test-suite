@@ -1,6 +1,0 @@
-var step = '<font class="fontSize">'
-           + '<p>Test Purpose: </p>'
-           + '<p>Verifies the sessionStorage and localStorage work well.</p>'
-           + '<p>Expected Result: </p>'
-           + '<p>The sessionStorage and localStorage can be added and removed</p>'
-         + '</font>'
