@@ -15,4 +15,4 @@ It has these features:
 
 Copyright (c) 2013 Intel Corporation.  All rights reserved.
 Except as noted, this software is licensed under BSD-3-Clause License.
-Please see the LICENSE.BSD-3 file for the BSD-3-Clause License.
+Please see the LICENSE file for the BSD-3-Clause License.
