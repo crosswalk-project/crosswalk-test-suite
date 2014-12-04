@@ -1,0 +1,20 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN" "http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd">
+<html>
+	<head>
+		<title>CSS Test: color</title>
+		<link title="L. David Baron" rel="author" href="http://dbaron.org/">
+		<link title="Mozilla Corporation" rel="author" href="http://mozilla.com/">
+		<link rel="help" href="http://www.w3.org/TR/css3-color/#foreground">
+		<link rel="help" href="http://www.w3.org/TR/css3-color/#currentcolor">
+		<meta content="" name="flags">
+		<meta content="That currentColor on the color property acts like inherit." name="assert">
+		<style type="text/css">
+			#one { color: green; }
+			#two { color: red; }
+			#two { color: currentColor; }
+		</style>
+	</head>
+	<body>
+		<div id="one"><p id="two">This text should be green.</p></div>
+	</body>
+</html>
