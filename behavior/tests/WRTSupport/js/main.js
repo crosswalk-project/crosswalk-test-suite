@@ -37,8 +37,7 @@ var allId=new Array('wrt3lue021',
                     'wrt3uam047',
                     'wrt3uam048',
                     'wrt5pec002',
-                    'wrt5pec120',
-                    'wrt5pec119');
+                    'wrt5pec120');
 
 var installedId = new Array();
 var resultXML, tests;
