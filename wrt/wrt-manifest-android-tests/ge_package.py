@@ -47,7 +47,10 @@ def genPackage():
             manifestLog.write("Build start time: " + caseStart + "\n")
             manifestPath = casePath + i + "/manifest.json"
 
-            apk_list = glob.glob(ConstPath + "/tools/crosswalk/*.apk")
+            if os.path.exists(ConstPath + "/tools/crosswalk/"):
+                apk_list = glob.glob(ConstPath + "/tools/crosswalk/*.apk")
+            else:
+                apk_list = glob.glob(ConstPath + "/../../tools/crosswalk/*.apk")
             for item in apk_list:
                 os.remove(item)
 
@@ -69,7 +72,10 @@ def genPackage():
                     manifestLog.write(result + "\n" + info + "\n")
                 else:
                     print "Generate APK ---------------->O.K"
-                    apkpath = ConstPath + "/tools/crosswalk/*.apk"
+                    if os.path.exists(ConstPath + "/tools/crosswalk/"):
+                        apkpath = ConstPath + "/tools/crosswalk/*.apk"
+                    else:
+                        apkpath = ConstPath + "/../../tools/crosswalk/*.apk"
                     targetDir = ConstPath + "/apks/" + ARCH + "/" + i
                     if not os.path.exists(targetDir):
                         os.mkdir(targetDir)
