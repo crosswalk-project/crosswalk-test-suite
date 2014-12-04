@@ -3,14 +3,8 @@
 This is a test suite for Crosswalk, which includes:
 
 * `behavior/`: behavior test tool
-* `cordova/`: Crosswalk based Cordova tests
-* `usecase/`: use-case samples as tests
 * `webapi/`: Web API tests
 * `wrt/`: Web Runtime Tests
-* `misc/`: miscellaneous tests
-  * `web-abat-xwalk-tests` and `web-mbat-xwalk-tests`: basic acceptance tests
-  * `wrt-documentation-verification-tests`: tests for documents verification
-* `stability/`: stability tests
 * `doc/`: see [documentaion](#Documentation) below
 * `tools/`: tools for this test suite
 
@@ -29,9 +23,7 @@ documents firstly:
 For testing execution and reports, please follow these user guides:
 
 * `doc/Behavior_Test_Tool_User_Guide`
-* `doc/Cordova_Test_Suite_User_Guide`
 * `doc/WebAPI_Test_Suite_User_Guide`
-* `doc/Web_BAT_Test_Suite_User_Guide`
 * `doc/Web_Runtime_Test_Suite_User_Guide`
 
 ## Contributing
