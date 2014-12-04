@@ -2839,16 +2839,8 @@
           </spec>
         </specs>
       </testcase>
-      <testcase component="W3C_HTML5 APIs/Media/HTML5 The video element (Partial)" execution_type="auto" id="video_zero_default_state" priority="P3" purpose="Check that a video loads but is not playing, since the default state is paused" status="approved" type="compliance">
+      <testcase component="W3C_HTML5 APIs/Media/HTML5 The video element (Partial)" execution_type="auto" id="video_zero_default_state" priority="P3" purpose="Check that a video loads the default pause state is true" status="approved" type="compliance">
         <description>
-          <pre_condition />
-          <post_condition />
-          <steps>
-            <step order="1">
-              <step_desc>Check that a video loads but is not playing, since the default state is paused</step_desc>
-              <expected>Pass</expected>
-            </step>
-          </steps>
           <test_script_entry>/opt/tct-video-html5-tests/video/video_zero_default_state.html</test_script_entry>
         </description>
         <specs>
@@ -4028,24 +4020,6 @@
         <specs>
           <spec>
             <spec_assertion category="Tizen W3C API Specifications" element_name="load" element_type="method" interface="HTMLVideoElement" section="Media" specification="HTML5 The video element (Partial)" />
-            <spec_url>http://www.w3.org/TR/2012/WD-html5-20121025/the-video-element.html#the-video-element</spec_url>
-            <spec_statement />
-          </spec>
-        </specs>
-      </testcase>
-      <testcase component="W3C_HTML5 APIs/Media/HTML5 The video element (Partial)" execution_type="auto" id="video_loop_no_effect_by_controller" onload_delay="10" priority="P2" purpose="Check if the video element has a current media controller that expecting the loop attribute has no effect" status="approved" type="compliance">
-        <description>
-          <steps>
-            <step order="1">
-              <step_desc>Check if the video element has a current media controller that expecting the loop attribute has no effect</step_desc>
-              <expected>Pass</expected>
-            </step>
-          </steps>
-          <test_script_entry>/opt/tct-video-html5-tests/video/video_loop_no_effect_by_controller.html</test_script_entry>
-        </description>
-        <specs>
-          <spec>
-            <spec_assertion category="Tizen W3C API Specifications" element_name="loop" element_type="attribute" interface="HTMLVideoElement" section="Media" specification="HTML5 The video element (Partial)" />
             <spec_url>http://www.w3.org/TR/2012/WD-html5-20121025/the-video-element.html#the-video-element</spec_url>
             <spec_statement />
           </spec>
@@ -5560,6 +5534,66 @@
             <spec_assertion category="Tizen W3C API Specifications" element_name="playbackRate" element_type="attribute" interface="HTMLVideoElement" section="Media" specification="HTML5 The video element (Partial)" />
             <spec_url>http://www.w3.org/TR/2012/WD-html5-20121025/the-video-element.html#the-video-element</spec_url>
             <spec_statement />
+          </spec>
+        </specs>
+      </testcase>
+      <testcase component="WebAPI/Media/HTML5 The video element (Partial)" execution_type="manual" id="video_controls_present_manual" priority="P2" purpose="Check if the controls attribute is present in the video element that expecting the user agent exposes a controller user interface" status="approved" type="compliance">
+        <description>
+          <test_script_entry>/opt/tct-video-html5-tests/video/w3c/video_controls_present-manual.html</test_script_entry>
+        </description>
+        <specs>
+          <spec>
+            <spec_assertion element_type="attribute" element_name="controls" interface="HTMLVideoElement" specification="HTML5 The video element (Partial)" section="Media" category="Tizen W3C API Specifications"/>
+            <spec_url>http://www.w3.org/TR/2012/WD-html5-20121025/the-video-element.html#the-video-element</spec_url>
+            <spec_statement/>
+          </spec>
+        </specs>
+      </testcase>
+      <testcase component="WebAPI/Media/HTML5 The video element (Partial)" execution_type="manual" id="video_muted_overriding_volume_manual" priority="P2" purpose="Check if the muted attribute is present in the video element with volume is set to loudest that expecting the user hears no sound" status="approved" type="compliance">
+        <description>
+          <test_script_entry>/opt/tct-video-html5-tests/video/w3c/video_muted_overriding_volume-manual.html</test_script_entry>
+        </description>
+        <specs>
+          <spec>
+            <spec_assertion element_type="attribute" element_name="muted" interface="HTMLVideoElement" specification="HTML5 The video element (Partial)" section="Media" category="Tizen W3C API Specifications"/>
+            <spec_url>http://www.w3.org/TR/2012/WD-html5-20121025/the-video-element.html#the-video-element</spec_url>
+            <spec_statement/>
+          </spec>
+        </specs>
+      </testcase>
+      <testcase component="WebAPI/Media/HTML5 The video element (Partial)" execution_type="manual" id="video_muted_present_manual" priority="P2" purpose="Check if the muted attribute is present in the video element that expecting the user hears no sound" status="approved" type="compliance">
+        <description>
+          <test_script_entry>/opt/tct-video-html5-tests/video/w3c/video_muted_present-manual.html</test_script_entry>
+        </description>
+        <specs>
+          <spec>
+            <spec_assertion element_type="attribute" element_name="muted" interface="HTMLVideoElement" specification="HTML5 The video element (Partial)" section="Media" category="Tizen W3C API Specifications"/>
+            <spec_url>http://www.w3.org/TR/2012/WD-html5-20121025/the-video-element.html#the-video-element</spec_url>
+            <spec_statement/>
+          </spec>
+        </specs>
+      </testcase>
+      <testcase component="WebAPI/Media/HTML5 The video element (Partial)" execution_type="manual" id="video_volume_loudest_manual" priority="P2" purpose="Check if the volume attribute is set to 1.0 as loudest in the video element that expecting the user hears sound loudly" status="approved" type="compliance">
+        <description>
+          <test_script_entry>/opt/tct-video-html5-tests/video/w3c/video_volume_loudest-manual.html</test_script_entry>
+        </description>
+        <specs>
+          <spec>
+            <spec_assertion element_type="attribute" element_name="volume" interface="HTMLVideoElement" specification="HTML5 The video element (Partial)" section="Media" category="Tizen W3C API Specifications"/>
+            <spec_url>http://www.w3.org/TR/2012/WD-html5-20121025/the-video-element.html#the-video-element</spec_url>
+            <spec_statement/>
+          </spec>
+        </specs>
+      </testcase>
+      <testcase component="WebAPI/Media/HTML5 The video element (Partial)" execution_type="manual" id="video_volume_silent_manual" priority="P2" purpose="Check if the volume attribute is set to 0.0 as silent in the video element that expecting the user hears no sound" status="approved" type="compliance">
+        <description>
+          <test_script_entry>/opt/tct-video-html5-tests/video/w3c/video_volume_silent-manual.html</test_script_entry>
+        </description>
+        <specs>
+          <spec>
+            <spec_assertion element_type="attribute" element_name="volume" interface="HTMLVideoElement" specification="HTML5 The video element (Partial)" section="Media" category="Tizen W3C API Specifications"/>
+            <spec_url>http://www.w3.org/TR/2012/WD-html5-20121025/the-video-element.html#the-video-element</spec_url>
+            <spec_statement/>
           </spec>
         </specs>
       </testcase>
