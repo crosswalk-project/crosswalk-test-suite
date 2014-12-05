@@ -26,6 +26,7 @@ EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
 Authors:
         Xie,Yunxiao <yunxiaox.xie@intel.com>
+        Xu, Kang <kangx.xu@intel.com>
 
 */
 
@@ -66,7 +67,7 @@ $("#start").live("tap", function () {
     clearTimeout(showId);
     showId = setTimeout("show()", 10000);
     $("#infobox").text("Starting......");
-    window.speechUtter = new SpeechSynthesisUtterance();
+    window.speechUtter = new tizen.SpeechSynthesisUtterance();
     speechUtter.text = content;
     speechUtter.rate = 1.2;
     speechUtter.onstart = function (evt) {
@@ -88,7 +89,7 @@ $("#start").live("tap", function () {
         $("#resume").closest(".ui-btn").hide();
         $("#pause").button("disable");
     };
-    speechSynthesis.speak(speechUtter);
+    tizen.speechSynthesis.speak(speechUtter);
     status();
 });
 
