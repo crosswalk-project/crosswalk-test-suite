@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <!--
-Copyright (c) 2013 Intel Corporation.
+Copyright (c) 2014 Intel Corporation.
 
 Redistribution and use in source and binary forms, with or without modification,
 are permitted provided that the following conditions are met:
@@ -32,7 +32,7 @@ Authors:
 -->
 
 <meta charset="utf-8">
-<title>Vehicle Test: Vehicle - attributes</title>
+<title>Vehicle Test: Navigator - vehicle</title>
 <link rel="author" title="Intel" href="http://www.intel.com">
 <link rel="help" href="http://rawgit.com/w3c/automotive-bg/master/vehicle_spec.html" />
 <script src="../resources/testharness.js"></script>
@@ -40,51 +40,8 @@ Authors:
 <div id="log"></div>
 <script>
 
-var vehicle;
-
-setup(function () {
-  vehicle = tizen.vehicle;
-});
-
-[
-  "vehicleSpeed",
-  "climateControl",
-  "door",
-  "wheelSpeed",
-  "engineSpeed",
-  "powerTrainTorque",
-  "acceleratorPedalPosition",
-  "throttlePosition",
-  "tripMeters",
-  "transmission",
-  "cruiseControlStatus",
-  "lightStatus",
-  "interiorLightStatus",
-  "horn",
-  "chime",
-  "fuel",
-  "engineOil",
-  "acceleration",
-  "engineCoolant",
-  "steeringWheel",
-  "ignitionTime",
-  "yawRate",
-  "brakeOperation",
-  "wheelTick",
-  "buttonEvent",
-  "drivingMode",
-  "nightMode",
-  "odometer",
-  "transmissionClutch",
-  "washerFluid",
-  "malfunctionIndicator",
-  "batteryStatus",
-  "tire",
-  "diagnostic"
-].forEach(function (attr) {
-  test(function () {
-    assert_true(attr in vehicle, "the Vehicle." + attr + " exists");
-  }, "Check if Vehicle." + attr + " exists");
-});
+test(function() {
+  assert_true("vehicle" in tizen);
+}, "Check if navigator.vehicle exists");
 
 </script>
