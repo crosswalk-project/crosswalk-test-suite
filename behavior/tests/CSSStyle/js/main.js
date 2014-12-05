@@ -33,18 +33,15 @@ var testFlag={
         Mulcolumn: false,
         Transparency: false,
         Color: false,
-        Align: false,
         Transform: false,
         TextShadow: false,
         BoxShadow: false,
         Outline: false,
-        Border: false,
-        Decoration: false,
-        Break: false
+        Border: false
     };
 
 function status(){
-    if(testFlag.Mulcolumn && testFlag.Transparency && testFlag.Color && testFlag.Align && testFlag.Transform && testFlag.TextShadow && testFlag.BoxShadow && testFlag.Outline && testFlag.Border && testFlag.Decoration && testFlag.Break)
+    if(testFlag.Mulcolumn && testFlag.Transparency && testFlag.Color && testFlag.Transform && testFlag.TextShadow && testFlag.BoxShadow && testFlag.Outline && testFlag.Border)
         EnablePassButton();
 }
 
@@ -106,24 +103,6 @@ $(document).ready(function(){
         // add/remove text-blue style
         $p.toggleClass("text-blue");
         testFlag.Color = true;
-        status();
-    });
-
-    /** CSS Text Align */
-    $("#left").click(function(){
-        $("#right").removeClass("text-on");
-        $("#left").toggleClass("text-on");
-        $("#p").removeClass("text-right");
-        $("#p").toggleClass("text-left");
-        testFlag.Align = true;
-        status();
-    });
-    $("#right").click(function(){
-        $("#left").removeClass("text-on");
-        $("#right").toggleClass("text-on");
-        $("#p").removeClass("text-left");
-        $("#p").toggleClass("text-right");
-        testFlag.Align = true;
         status();
     });
 
@@ -199,64 +178,6 @@ $(document).ready(function(){
         status();
     });
 
-    /** CSS Break Word */
-    $("#break1").click(function(){
-        $("#break2").removeClass("text-on");
-        $("#break1").toggleClass("text-on");
-        $("#text-div").removeClass("break2");
-        $("#text-div").toggleClass("break1");
-        testFlag.Break = true;
-        status();
-    });
-    $("#break2").click(function(){
-        $("#break1").removeClass("text-on");
-        $("#break2").toggleClass("text-on");
-        $("#text-div").removeClass("break1");
-        $("#text-div").toggleClass("break2");
-        testFlag.Break = true;
-        status();
-    });
-
-    /** CSS Text Decoration */
-    $("#decoration1").click(function(){
-        var $p = $("#p");
-        $("#decoration2").removeClass("text-on");
-        $("#decoration3").removeClass("text-on");
-        $("#decoration1").toggleClass("text-on");
-        // remove decoration2 and decoration3 style
-        if($p.hasClass("decoration2")) $p.removeClass("decoration2");
-        if($p.hasClass("decoration3")) $p.removeClass("decoration3");
-        // add decoration1 style
-        $p.toggleClass("decoration1");
-        testFlag.Decoration = true;
-        status();
-    });
-    $("#decoration2").click(function(){
-        var $p = $("#p");
-        $("#decoration1").removeClass("text-on");
-        $("#decoration3").removeClass("text-on");
-        $("#decoration2").toggleClass("text-on");
-        // remove decoration1 and decoration3 style
-        if($p.hasClass("decoration1")) $p.removeClass("decoration1");
-        if($p.hasClass("decoration3")) $p.removeClass("decoration3");
-        // add decoration2 style
-        $p.toggleClass("decoration2");
-        testFlag.Decoration = true;
-        status();
-    });
-    $("#decoration3").click(function(){
-        var $p = $("#p");
-        $("#decoration2").removeClass("text-on");
-        $("#decoration1").removeClass("text-on");
-        $("#decoration3").toggleClass("text-on");
-        // remove decoration1 and decoration2 style
-        if($p.hasClass("decoration1")) $p.removeClass("decoration1");
-        if($p.hasClass("decoration2")) $p.removeClass("decoration2");
-        // add decoration3 style
-        $p.toggleClass("decoration3");
-        testFlag.Decoration = true;
-        status();
-    });
 
     /* Hide input*/
     $("#slider-1").hide();
