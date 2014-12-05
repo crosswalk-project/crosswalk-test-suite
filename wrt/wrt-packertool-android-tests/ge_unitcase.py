@@ -8,16 +8,16 @@ ARCH="x86"
 def geUnitcase():
     try:
         global ARCH
+        fp = open(ConstPath + "/arch.txt")
+        if fp.read().strip("\n\t") != "x86":
+            ARCH = "arm"
+        fp.close()
         print "Generate tests.py ---------------->Start"
         if os.path.exists(ConstPath + "/tests.py"):
             os.remove(ConstPath + "/tests.py")
         testfile = open("tests.py" ,'a+')
         testfile.write("#!/usr/bin/env python \n# coding=utf-8 \nimport random,os,sys,unittest,run_app,codecs \nreload(sys) \nsys.setdefaultencoding( \"utf-8\" ) \nclass TestCaseUnit(unittest.TestCase): \n ")
-        casePath = ConstPath + "/tcs/"
-        fp = open(ConstPath + "/arch.txt")
-        if fp.read().strip("\n\t") != "x86":
-            ARCH = "arm"
-        fp.close()
+        casePath = ConstPath + "/tcs/"+ ARCH + "/"
         newcl = []
         cl = os.listdir(casePath)
         for i in cl:

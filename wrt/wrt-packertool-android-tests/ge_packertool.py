@@ -142,14 +142,27 @@ def genCmd(caseInput, flag):
         line = caseIn.readline().strip('\n\r')
         sectionList = line.split("\t")
 
+        fp = open(ConstPath + "/arch.txt")
+        if fp.read().strip("\n\t") != "x86":
+            ARCH = "arm"
+        fp.close()
+        
+        if not os.path.exists(ConstPath + "/tcs/" + ARCH):
+            if ARCH in os.listdir(ConstPath + "/tcs"):
+                shutil.rmtree(ConstPath + "/tcs/" + ARCH)
+                os.mkdir(ConstPath + "/tcs/" + ARCH)
+            else:
+                os.mkdir(ConstPath + "/tcs/" + ARCH)
+
         for line in caseIn:
             message = ""
             totalNum = totalNum + 1
-            caseDir = ConstPath + "/tcs/cmd" + str(totalNum) + "-" + flag 
+            
+            caseDir = ConstPath + "/tcs/" + ARCH + "/cmd" + str(totalNum) + "-" + flag 
             if not os.path.exists(caseDir):
                 os.mkdir(caseDir)
             fp = open(caseDir + "/cmd.txt", 'w+')
-            
+
             items = line.strip("\t\n").split("\t")
             command = "python make_apk.py "
             for i in range(len(sectionList)):
@@ -216,9 +229,10 @@ def sourceInit():
                 shutil.rmtree(ConstPath + "/apks")
                 shutil.rmtree(ConstPath + "/report")
             except Exception,e:
-                os.system("rm -rf " + ConstPath + "/tcs &>/dev/null")
-                os.system("rm -rf " + ConstPath + "/apks &>/dev/null")
-                os.system("rm -rf " + ConstPath + "/report &>/dev/null")
+                os.system("rm -rf " + ConstPath + "/tcs/* &>/dev/null")
+                os.system("rm -rf " + ConstPath + "/apks/* &>/dev/null")
+                os.system("rm -rf " + ConstPath + "/report/* &>/dev/null")
+                #os.system("rm -rf " + ConstPath + "/report &>/dev/null")
             if os.path.exists(ConstPath + "/tests.py"):
                 os.remove(ConstPath + "/tests.py")
             os.mkdir(ConstPath + "/tcs")
