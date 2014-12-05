@@ -1,208 +1,208 @@
 Packertool211
 --------------------------------
-python make_apk.py --xpk="/non-exist/app.xpk" --arch=x86
+python make_apk.py --name="manifest_test" --package="org.xwalk.intel" --mode="embedded" --manifest="/non-exist/manifest.json" --arch=x86
 --------------------------------
 Packertool212
 --------------------------------
-python make_apk.py --xpk="$PWD/resource/norm/app.xpk" --arch=x86
+python make_apk.py --package="org.xwalk.intel" --mode="embedded" --app-url="http://www.intel.com" --arch=x86
 --------------------------------
 Packertool213
 --------------------------------
-python make_apk.py --name="manifest_test" --package="org.xwalk.intel" --mode="embedded" --manifest="/non-exist/manifest.json" --arch=x86
+python make_apk.py --name="mode_test" --package="org.xwalk.intel" --mode="Embedded" --app-url="http://www.intel.com" --arch=x86
 --------------------------------
 Packertool214
 --------------------------------
-python make_apk.py --name="appversioncode_test" --package="org.xwalk.intel" --mode="embedded" --app-url="http://www.baidu.com" --app-versionCode="1.0" --arch=x86
+python make_apk.py --name="mode_test" --package="org.xwalk.intel" --mode=" embedded" --app-url="http://www.intel.com" --arch=x86
 --------------------------------
 Packertool215
 --------------------------------
-python make_apk.py --name="permission_test" --package="org.xwalk.intel" --mode="embedded" --app-url="http://www.baidu.com" --permission="geolocations" --arch=x86
+python make_apk.py --name="mode_test" --package="org.xwalk.intel" --mode="undefined" --app-url="http://www.intel.com" --arch=x86
 --------------------------------
 Packertool216
 --------------------------------
-python make_apk.py --name="permission_test" --package="org.xwalk.intel" --mode="embedded" --app-url="http://www.baidu.com" --permission="contacts.geolocation" --arch=x86
+python make_apk.py --name="compressor_test" --package="org.xwalk.intel" --mode="embedded" --manifest="$PWD/resource/packer_tool_minify_tests/manifest.json" --compressor="undefined" --arch=x86
 --------------------------------
 Packertool217
 --------------------------------
-python make_apk.py --name="permission_test" --package="org.xwalk.intel" --mode="embedded" --app-url="http://www.baidu.com" --permission="contacts:" --arch=x86
+python make_apk.py --name="compressor_test" --package="org.xwalk.intel" --mode="embedded" --manifest="$PWD/resource/packer_tool_minify_tests/manifest.json" --compressor="error:" --arch=x86
 --------------------------------
 Packertool218
 --------------------------------
-python make_apk.py --name="permission_test" --package="org.xwalk.intel" --mode="embedded" --app-url="http://www.baidu.com" --permission=":contacts" --arch=x86
+python make_apk.py --name="compressor_test" --package="org.xwalk.intel" --mode="embedded" --manifest="$PWD/resource/packer_tool_minify_tests/manifest.json" --compressor="abc,@%.&:001:[]" --arch=x86
 --------------------------------
 Packertool219
 --------------------------------
-python make_apk.py --name="permission_test" --package="org.xwalk.intel" --mode="embedded" --app-url="http://www.baidu.com" --permission="Contacts,Geolocation" --arch=x86
+python make_apk.py --name="description_test" --package="org.xwalk.intel" --mode="embedded" --app-url="http://www.baidu.com" --description="'description'" --arch=x86
 --------------------------------
 Packertool220
 --------------------------------
-python make_apk.py --name="permission_test" --package="org.xwalk.intel" --mode="embedded" --app-url="http://www.baidu.com" --permission="!@#$%^&*" --arch=x86
+python make_apk.py --name="undefinedoption_test" --package="org.xwalk.intel" --mode="embedded" --app-url="http://www.baidu.com" --undefinedOption="undefined" --arch=x86
 --------------------------------
 Packertool221
 --------------------------------
-python make_apk.py --name="permission_test" --package="org.xwalk.intel" --mode="embedded" --app-url="http://www.baidu.com" --permission="undefined" --arch=x86
+python make_apk.py --name="orientation_test" --package="org.xwalk.intel" --mode="embedded" --orinetation="undefined" --arch=x86
 --------------------------------
 Packertool222
 --------------------------------
-python make_apk.py --name="permission_test" --package="org.xwalk.intel" --mode="embedded" --app-url="http://www.baidu.com" --permission="UndefinedPermission1:UndefinedPermission2" --arch=x86
+python make_apk.py --name="orientation_test" --package="org.xwalk.intel" --mode="embedded" --orinetation="Landscape" --arch=x86
 --------------------------------
 Packertool223
 --------------------------------
-python make_apk.py --name="arch_test" --package="org.xwalk.intel" --arch="X86" --mode="embedded" --app-url="http://www.intel.com"
+python make_apk.py --name="orientation_test" --package="org.xwalk.intel" --mode="embedded" --orinetation=" landscape" --arch=x86
 --------------------------------
 Packertool224
 --------------------------------
-python make_apk.py --name="arch_test" --package="org.xwalk.intel" --arch=" x86" --mode="embedded" --app-url="http://www.intel.com"
+python make_apk.py --name="noexistfile_test" --package="org.xwalk.intel" --mode="embedded" --app-root="$PWD/resource/norm/" --app-local-path="noexist.html" --arch=x86
 --------------------------------
 Packertool225
 --------------------------------
-python make_apk.py --name="arch_test" --package="org.xwalk.intel" --arch="undefined" --mode="embedded" --app-url="http://www.intel.com"
+python make_apk.py --name="appversioncode_test" --package="org.xwalk.intel" --mode="embedded" --app-url="http://www.baidu.com" --app-versionCode="1.0" --arch=x86
 --------------------------------
 Packertool226
 --------------------------------
-python make_apk.py --name="mode_test" --package="org.xwalk.intel" --mode="Embedded" --app-url="http://www.intel.com" --arch=x86
+python make_apk.py --name="package_test" --package="test" --mode="embedded" --app-url="http://www.baidu.com" --arch=x86
 --------------------------------
 Packertool227
 --------------------------------
-python make_apk.py --name="mode_test" --package="org.xwalk.intel" --mode=" embedded" --app-url="http://www.intel.com" --arch=x86
+python make_apk.py --name="package_test" --package="." --mode="embedded" --app-url="http://www.baidu.com" --arch=x86
 --------------------------------
 Packertool228
 --------------------------------
-python make_apk.py --name="mode_test" --package="org.xwalk.intel" --mode="undefined" --app-url="http://www.intel.com" --arch=x86
+python make_apk.py --name="package_test" --package=".xwalk" --mode="embedded" --app-url="http://www.baidu.com" --arch=x86
 --------------------------------
 Packertool229
 --------------------------------
-python make_apk.py --name="package_test" --package="test" --mode="embedded" --app-url="http://www.baidu.com" --arch=x86
+python make_apk.py --name="package_test" --package="org." --mode="embedded" --app-url="http://www.baidu.com" --arch=x86
 --------------------------------
 Packertool230
 --------------------------------
-python make_apk.py --name="package_test" --package="." --mode="embedded" --app-url="http://www.baidu.com" --arch=x86
+python make_apk.py --name="package_test" --package="org.." --mode="embedded" --app-url="http://www.baidu.com" --arch=x86
 --------------------------------
 Packertool231
 --------------------------------
-python make_apk.py --name="package_test" --package=".xwalk" --mode="embedded" --app-url="http://www.baidu.com" --arch=x86
+python make_apk.py --name="package_test" --package=" org.xwalk" --mode="embedded" --app-url="http://www.baidu.com" --arch=x86
 --------------------------------
 Packertool232
 --------------------------------
-python make_apk.py --name="package_test" --package="org." --mode="embedded" --app-url="http://www.baidu.com" --arch=x86
+python make_apk.py --name="package_test" --package="org .xwalk" --mode="embedded" --app-url="http://www.baidu.com" --arch=x86
 --------------------------------
 Packertool233
 --------------------------------
-python make_apk.py --name="package_test" --package="org.." --mode="embedded" --app-url="http://www.baidu.com" --arch=x86
+python make_apk.py --name="package_test" --package="org. xwalk" --mode="embedded" --app-url="http://www.baidu.com" --arch=x86
 --------------------------------
 Packertool234
 --------------------------------
-python make_apk.py --name="package_test" --package=" org.xwalk" --mode="embedded" --app-url="http://www.baidu.com" --arch=x86
+python make_apk.py --name="package_test" --package="_org.xwalk" --mode="embedded" --app-url="http://www.baidu.com" --arch=x86
 --------------------------------
 Packertool235
 --------------------------------
-python make_apk.py --name="package_test" --package="org .xwalk" --mode="embedded" --app-url="http://www.baidu.com" --arch=x86
+python make_apk.py --name="package_test" --package="org._xwalk" --mode="embedded" --app-url="http://www.baidu.com" --arch=x86
 --------------------------------
 Packertool236
 --------------------------------
-python make_apk.py --name="package_test" --package="org. xwalk" --mode="embedded" --app-url="http://www.baidu.com" --arch=x86
+python make_apk.py --name="package_test" --package="org.xw!alk" --mode="embedded" --app-url="http://www.baidu.com" --arch=x86
 --------------------------------
 Packertool237
 --------------------------------
-python make_apk.py --name="package_test" --package="_org.xwalk" --mode="embedded" --app-url="http://www.baidu.com" --arch=x86
+python make_apk.py --name="package_test" --package="org.xw@alk" --mode="embedded" --app-url="http://www.baidu.com" --arch=x86
 --------------------------------
 Packertool238
 --------------------------------
-python make_apk.py --name="package_test" --package="org._xwalk" --mode="embedded" --app-url="http://www.baidu.com" --arch=x86
+python make_apk.py --name="package_test" --package="org.xw#alk" --mode="embedded" --app-url="http://www.baidu.com" --arch=x86
 --------------------------------
 Packertool239
 --------------------------------
-python make_apk.py --name="package_test" --package="org.xw!alk" --mode="embedded" --app-url="http://www.baidu.com" --arch=x86
+python make_apk.py --name="package_test" --package="org.xw%alk" --mode="embedded" --app-url="http://www.baidu.com" --arch=x86
 --------------------------------
 Packertool240
 --------------------------------
-python make_apk.py --name="package_test" --package="org.xw@alk" --mode="embedded" --app-url="http://www.baidu.com" --arch=x86
+python make_apk.py --name="package_test" --package="org.xw&alk" --mode="embedded" --app-url="http://www.baidu.com" --arch=x86
 --------------------------------
 Packertool241
 --------------------------------
-python make_apk.py --name="package_test" --package="org.xw#alk" --mode="embedded" --app-url="http://www.baidu.com" --arch=x86
+python make_apk.py --name="package_test" --package="org.xw*alk" --mode="embedded" --app-url="http://www.baidu.com" --arch=x86
 --------------------------------
 Packertool242
 --------------------------------
-python make_apk.py --name="package_test" --package="org.xw%alk" --mode="embedded" --app-url="http://www.baidu.com" --arch=x86
+python make_apk.py --name="package_test" --package="org.TEST" --mode="embedded" --app-url="http://www.baidu.com" --arch=x86
 --------------------------------
 Packertool243
 --------------------------------
-python make_apk.py --name="package_test" --package="org.xw&alk" --mode="embedded" --app-url="http://www.baidu.com" --arch=x86
+python make_apk.py --name="package_test" --package="org.Test" --mode="embedded" --app-url="http://www.baidu.com" --arch=x86
 --------------------------------
 Packertool244
 --------------------------------
-python make_apk.py --name="package_test" --package="org.xw*alk" --mode="embedded" --app-url="http://www.baidu.com" --arch=x86
+python make_apk.py --name="package_test" --package="org.1234test" --mode="embedded" --app-url="http://www.baidu.com" --arch=x86
 --------------------------------
 Packertool245
 --------------------------------
-python make_apk.py --name="package_test" --package="org.TEST" --mode="embedded" --app-url="http://www.baidu.com" --arch=x86
+python make_apk.py --name="icon_test" --package="org.xwalk.intel" --mode="embedded" --app-url="http://www.baidu.com" --icon="$PWD/resource/norm/图片.png" --arch=x86
 --------------------------------
 Packertool246
 --------------------------------
-python make_apk.py --name="package_test" --package="org.Test" --mode="embedded" --app-url="http://www.baidu.com" --arch=x86
+python make_apk.py --name="icon_test" --package="org.xwalk.intel" --mode="embedded" --app-url="http://www.baidu.com" --icon="/non-exist/icon.png" --arch=x86
 --------------------------------
 Packertool247
 --------------------------------
-python make_apk.py --name="package_test" --package="org.1234test" --mode="embedded" --app-url="http://www.baidu.com" --arch=x86
+python make_apk.py --name="nopackage_test" --mode="embedded" --app-url="http://www.intel.com" --arch=x86
 --------------------------------
 Packertool248
 --------------------------------
-python make_apk.py --name="orientation_test" --package="org.xwalk.intel" --mode="embedded" --orinetation="undefined" --arch=x86
+python make_apk.py --name="appversioncodebase_test" --package="org.xwalk.intel" --mode="embedded" --app-url="http://www.intel.com" --app-versionCodeBase="a+b" --arch=x86
 --------------------------------
 Packertool249
 --------------------------------
-python make_apk.py --name="orientation_test" --package="org.xwalk.intel" --mode="embedded" --orinetation="Landscape" --arch=x86
+python make_apk.py --name="pathurl_test" --package="org.xwalk.intel" --mode="embedded" --app-root="$PWD/resource/packer_tool_minify_tests/" --app-local-path="index.html" --app-url="http://www.intel.com" --arch=x86
 --------------------------------
 Packertool250
 --------------------------------
-python make_apk.py --name="orientation_test" --package="org.xwalk.intel" --mode="embedded" --orinetation=" landscape" --arch=x86
+python make_apk.py --xpk="/non-exist/app.xpk" --arch=x86
 --------------------------------
 Packertool251
 --------------------------------
-python make_apk.py --name="undefinedoption_test" --package="org.xwalk.intel" --mode="embedded" --app-url="http://www.baidu.com" --undefinedOption="undefined" --arch=x86
+python make_apk.py --xpk="$PWD/resource/norm/app.xpk" --arch=x86
 --------------------------------
 Packertool252
 --------------------------------
-python make_apk.py --name="appversioncodebase_test" --package="org.xwalk.intel" --mode="embedded" --app-url="http://www.intel.com" --app-versionCodeBase="a+b" --arch=x86
+python make_apk.py --name="permission_test" --package="org.xwalk.intel" --mode="embedded" --app-url="http://www.baidu.com" --permission="geolocations" --arch=x86
 --------------------------------
 Packertool253
 --------------------------------
-python make_apk.py --name="noexistfile_test" --package="org.xwalk.intel" --mode="embedded" --app-root="$PWD/resource/norm/" --app-local-path="noexist.html" --arch=x86
+python make_apk.py --name="permission_test" --package="org.xwalk.intel" --mode="embedded" --app-url="http://www.baidu.com" --permission="contacts.geolocation" --arch=x86
 --------------------------------
 Packertool254
 --------------------------------
-python make_apk.py --name="nopackage_test" --mode="embedded" --app-url="http://www.intel.com" --arch=x86
+python make_apk.py --name="permission_test" --package="org.xwalk.intel" --mode="embedded" --app-url="http://www.baidu.com" --permission="contacts:" --arch=x86
 --------------------------------
 Packertool255
 --------------------------------
-python make_apk.py --name="pathurl_test" --package="org.xwalk.intel" --mode="embedded" --app-root="$PWD/resource/packer_tool_minify_tests/" --app-local-path="index.html" --app-url="http://www.intel.com" --arch=x86
+python make_apk.py --name="permission_test" --package="org.xwalk.intel" --mode="embedded" --app-url="http://www.baidu.com" --permission=":contacts" --arch=x86
 --------------------------------
 Packertool256
 --------------------------------
-python make_apk.py --name="description_test" --package="org.xwalk.intel" --mode="embedded" --app-url="http://www.baidu.com" --description="'description'" --arch=x86
+python make_apk.py --name="permission_test" --package="org.xwalk.intel" --mode="embedded" --app-url="http://www.baidu.com" --permission="Contacts,Geolocation" --arch=x86
 --------------------------------
 Packertool257
 --------------------------------
-python make_apk.py --package="org.xwalk.intel" --mode="embedded" --app-url="http://www.intel.com" --arch=x86
+python make_apk.py --name="permission_test" --package="org.xwalk.intel" --mode="embedded" --app-url="http://www.baidu.com" --permission="!@#$%^&*" --arch=x86
 --------------------------------
 Packertool258
 --------------------------------
-python make_apk.py --name="compressor_test" --package="org.xwalk.intel" --mode="embedded" --manifest="$PWD/resource/packer_tool_minify_tests/manifest.json" --compressor="undefined" --arch=x86
+python make_apk.py --name="permission_test" --package="org.xwalk.intel" --mode="embedded" --app-url="http://www.baidu.com" --permission="undefined" --arch=x86
 --------------------------------
 Packertool259
 --------------------------------
-python make_apk.py --name="compressor_test" --package="org.xwalk.intel" --mode="embedded" --manifest="$PWD/resource/packer_tool_minify_tests/manifest.json" --compressor="error:" --arch=x86
+python make_apk.py --name="permission_test" --package="org.xwalk.intel" --mode="embedded" --app-url="http://www.baidu.com" --permission="UndefinedPermission1:UndefinedPermission2" --arch=x86
 --------------------------------
 Packertool260
 --------------------------------
-python make_apk.py --name="compressor_test" --package="org.xwalk.intel" --mode="embedded" --manifest="$PWD/resource/packer_tool_minify_tests/manifest.json" --compressor="abc,@%.&:001:[]" --arch=x86
+python make_apk.py --name="arch_test" --package="org.xwalk.intel" --arch="X86" --mode="embedded" --app-url="http://www.intel.com"
 --------------------------------
 Packertool261
 --------------------------------
-python make_apk.py --name="icon_test" --package="org.xwalk.intel" --mode="embedded" --app-url="http://www.baidu.com" --icon="$PWD/resource/norm/图片.png" --arch=x86
+python make_apk.py --name="arch_test" --package="org.xwalk.intel" --arch=" x86" --mode="embedded" --app-url="http://www.intel.com"
 --------------------------------
 Packertool262
 --------------------------------
-python make_apk.py --name="icon_test" --package="org.xwalk.intel" --mode="embedded" --app-url="http://www.baidu.com" --icon="/non-exist/icon.png" --arch=x86
+python make_apk.py --name="arch_test" --package="org.xwalk.intel" --arch="undefined" --mode="embedded" --app-url="http://www.intel.com"
 --------------------------------

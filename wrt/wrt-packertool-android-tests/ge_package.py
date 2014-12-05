@@ -10,12 +10,18 @@ def caseExecute():
     try:
         global ARCH
         
+        fp = open(ConstPath + "/arch.txt")
+        if fp.read().strip("\n\t") != "x86":
+            ARCH = "arm"
+        fp.close() 
+        
         #genarate package and execute
         packageInfo = open(ConstPath + "/report/packageInfo.txt", 'a+')
         if os.path.exists(ConstPath + "/tools/crosswalk/"):
             os.chdir(ConstPath + "/tools/crosswalk/")
         else:
             os.chdir(ConstPath + "/../../tools/crosswalk/")
+
         if os.path.exists(ConstPath + "/apks") and len(os.listdir(ConstPath + "/apks")) != 0:
             if ARCH in os.listdir(ConstPath + "/apks"):
                 shutil.rmtree(ConstPath + "/apks/" + ARCH)
@@ -25,15 +31,15 @@ def caseExecute():
         else:
             os.mkdir(ConstPath + "/apks")
             os.mkdir(ConstPath + "/apks/" + ARCH)
-            
-            
-            
+
+        print os.listdir(ConstPath + "/apks")
+
         print "Genarate APK ---------------->Start"
         toolstatus = commands.getstatusoutput("python make_apk.py")[0]
         if toolstatus != 0:
             print "Crosswalk Binary is not ready, Please attention"
             sys.exit(1)
-        casePath = ConstPath + "/tcs/"
+        casePath = ConstPath + "/tcs/" + ARCH + "/"
         for i in os.listdir(casePath):
             print "##########"
             print i
@@ -55,6 +61,21 @@ def caseExecute():
                 apk_list = glob.glob(ConstPath + "/../../tools/crosswalk/*.apk")
             for item in apk_list:
                 os.remove(item)
+
+            if "target-dir" in command:
+                for tar in dirInfo:
+                    tarNum = tar[:tar.index('\t')].strip()
+                    tarDir = tar[(tar.index('\t') + 1):].strip()
+                    if i in tarNum:
+                        if not tarDir.startswith("/") or tarDir.startswith("./"):
+                            if os.path.exists(ConstPath + "/tools/crosswalk/"):
+                                apks_list = glob.glob(ConstPath + "/tools/crosswalk/" + tarDir + "/*.apk")
+                            else:
+                                apks_list = glob.glob(ConstPath + "/../../tools/crosswalk/" + tarDir + "/*.apk")
+                        else:
+                            apks_list = glob.glob(tarDir + "/*.apk")
+                        for item in apks_list:
+                            os.remove(item)
             packstatus = commands.getstatusoutput(command)
             if flag == "negative":
                 if packstatus[0] == 0:
@@ -84,9 +105,8 @@ def caseExecute():
                     try:
                         if "target-dir" in command:
                             for tar in dirInfo:
-                                tarNum = tar[:13].strip()
-                                tarDir = tar[13:].strip()
-                                
+                                tarNum = tar[:tar.index('\t')].strip()
+                                tarDir = tar[(tar.index('\t') + 1):].strip()
                                 if i in tarNum:
                                     if not tarDir.startswith("/") or tarDir.startswith("./"):
                                         if os.path.exists(ConstPath + "/tools/crosswalk/"):
