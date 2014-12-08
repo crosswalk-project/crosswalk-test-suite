@@ -123,3 +123,14 @@ $(document).bind('pagecreate', function () {
   $("#popup_info").css("max-height", maxHeight);
   $("#popup_info").css("margin-bottom", "30px");
 });
+
+function checkInstalledPkg(pkgId) {
+    var packageInfo = null;
+    try {
+        if(pkgId && (typeof(tizen) != 'undefined')) {
+            packageInfo = tizen.package.getPackageInfo(pkgId);
+        }
+    } catch (e) {}
+
+    return packageInfo === null ? false : true;
+}
