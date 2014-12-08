@@ -262,7 +262,7 @@ function canPlayType_null()
 {
     test( function() {
          getmedia();
-         assert_equals(media.canPlayType(""), '', "not return empty string if arguments is null")
+         assert_equals(media.canPlayType(null), '', "not return empty string if arguments is null")
          }
     );
 }
