@@ -21,46 +21,6 @@
           </spec>
         </specs>
       </testcase>
-      <testcase component="Tizen WRT Core Spec/Package Management" execution_type="auto" id="PKManagement_local_HostedAPP_Install" priority="P1" purpose="Check if local hosted Web Application can be installed successfully." status="designed" type="user_experience">
-        <description>
-          <pre_condition />
-          <post_condition />
-          <steps>
-            <step order="1">
-              <step_desc>Check if local hosted Web Application can be installed successfully.</step_desc>
-              <expected>Pass if the test-hosted-widget Application is installed successfully.</expected>
-            </step>
-          </steps>
-          <test_script_entry test_script_expected_result="0">app_user@/home/app/content/tct/opt/tct-pm-wrt-tests/scripts/wrt_pm_WRTInstaller.sh test-hosted-widget.wgt</test_script_entry>
-        </description>
-        <specs>
-          <spec>
-            <spec_assertion category="Tizen WRT Core Spec" element_name="N/A" element_type="attribute" interface="0020" section="Web Application Package Management" specification="Web Application Types" />
-            <spec_url />
-            <spec_statement>TBD</spec_statement>
-          </spec>
-        </specs>
-      </testcase>
-      <testcase component="Tizen WRT Core Spec/Package Management" execution_type="auto" id="PKManagement_LocalAPP_Install" priority="P1" purpose="Check if Web Application can be installed successfully by using command." status="designed" type="user_experience">
-        <description>
-          <pre_condition />
-          <post_condition />
-          <steps>
-            <step order="1">
-              <step_desc>Check if Web Application can be installed successfully by using command.</step_desc>
-              <expected>Pass if Sample-widget.wgt webapp is installed successfully.</expected>
-            </step>
-          </steps>
-          <test_script_entry test_script_expected_result="0">app_user@/home/app/content/tct/opt/tct-pm-wrt-tests/scripts/wrt_pm_WRTInstaller.sh Sample-widget.wgt</test_script_entry>
-        </description>
-        <specs>
-          <spec>
-            <spec_assertion category="Tizen WRT Core Spec" element_name="N/A" element_type="attribute" interface="0040" section="Web Application Package Management" specification="Web Application Installation point" />
-            <spec_url />
-            <spec_statement>TBD</spec_statement>
-          </spec>
-        </specs>
-      </testcase>
       <testcase component="Tizen WRT Core Spec/Package Management" execution_type="auto" id="PKManagement_APP_WithW3CFormat_Install" priority="P1" purpose="Check if Web Application which is packed with WGT format can be installed successfully." status="approved" type="user_experience">
         <description>
           <pre_condition />
@@ -72,26 +32,6 @@
             </step>
           </steps>
           <test_script_entry test_script_expected_result="0">app_user@/home/app/content/tct/opt/tct-pm-wrt-tests/scripts/wrt_pm_WRTInstaller.sh Sample-widget.wgt</test_script_entry>
-        </description>
-        <specs>
-          <spec>
-            <spec_assertion category="Tizen WRT Core Spec" element_name="N/A" element_type="attribute" interface="0060" section="Web Application Package Management" specification="Web Application Installation" />
-            <spec_url />
-            <spec_statement>TBD</spec_statement>
-          </spec>
-        </specs>
-      </testcase>
-      <testcase component="Tizen WRT Core Spec/Package Management" execution_type="auto" id="PKManagement_PackagedWGTFile_without_WGT_extention_Install" priority="P1" purpose="Check if the widget renamed extension from 'WGT' to 'EXE' can be installed successfully." status="designed" type="user_experience">
-        <description>
-          <pre_condition />
-          <post_condition />
-          <steps>
-            <step order="1">
-              <step_desc>Check if the widget renamed extension from 'WGT' to 'EXE' can be installed successfully.</step_desc>
-              <expected>Sample-widget.EXE Application can be installed successfully.</expected>
-            </step>
-          </steps>
-          <test_script_entry test_script_expected_result="0">app_user@/home/app/content/tct/opt/tct-pm-wrt-tests/scripts/wrt_pm_Install_EXE.sh</test_script_entry>
         </description>
         <specs>
           <spec>
@@ -396,66 +336,6 @@
         <specs>
           <spec>
             <spec_assertion category="Tizen WRT Core Spec" element_name="N/A" element_type="attribute" interface="0110" section="Web Application Package Management" specification="Web Application Update" />
-            <spec_url />
-            <spec_statement>TBD</spec_statement>
-          </spec>
-        </specs>
-      </testcase>
-      <testcase component="Tizen WRT Core Spec/Package Management" execution_type="auto" id="widget-distributor-sig-dsp" priority="P1" purpose="Check if the WRT cannot install the widget which contains distributor signature without a dsp:Role signature property." status="designed" type="user_experience">
-        <description>
-          <pre_condition />
-          <post_condition />
-          <steps>
-            <step order="1">
-              <step_desc>Check if the WRT cannot install the widget which contains distributor signature without a dsp:Role signature property</step_desc>
-              <expected>Pass if the widget can not be installed.</expected>
-            </step>
-          </steps>
-          <test_script_entry test_script_expected_result="0">app_user@/home/app/content/tct/opt/tct-pm-wrt-tests/scripts/wrt_pm_InstallerFail.sh 11a.wgt</test_script_entry>
-        </description>
-        <specs>
-          <spec>
-            <spec_assertion category="Tizen WRT Core Spec" element_name="N/A" element_type="attribute" interface="0101" section="Web Application Package Management" specification="Web Application Installation" />
-            <spec_url />
-            <spec_statement>TBD</spec_statement>
-          </spec>
-        </specs>
-      </testcase>
-      <testcase component="Tizen WRT Core Spec/Package Management" execution_type="auto" id="widget-distributor-sig-uri" priority="P1" purpose="Check if the WRT cannot install the widget which contains distributor signature with a dsp:Role signature property that does not contain an URI for a distributor role." status="designed" type="user_experience">
-        <description>
-          <pre_condition />
-          <post_condition />
-          <steps>
-            <step order="1">
-              <step_desc>Check if the WRT cannot install the widget which contains distributor signature with a dsp:Role signature property that does not contain an URI for a distributor role.</step_desc>
-              <expected>Pass if the widget can not be installed.</expected>
-            </step>
-          </steps>
-          <test_script_entry test_script_expected_result="0">app_user@/home/app/content/tct/opt/tct-pm-wrt-tests/scripts/wrt_pm_InstallerFail.sh 11b.wgt</test_script_entry>
-        </description>
-        <specs>
-          <spec>
-            <spec_assertion category="Tizen WRT Core Spec" element_name="N/A" element_type="attribute" interface="0101" section="Web Application Package Management" specification="Web Application Installation" />
-            <spec_url />
-            <spec_statement>TBD</spec_statement>
-          </spec>
-        </specs>
-      </testcase>
-      <testcase component="Tizen WRT Core Spec/Package Management" execution_type="auto" id="widget-partner-privilege" priority="P1" purpose="Check if the WRT cannot install the widget which is announced with one or more partner API privileges in configuration file." status="designed" type="user_experience">
-        <description>
-          <pre_condition />
-          <post_condition />
-          <steps>
-            <step order="1">
-              <step_desc>Check if the WRT cannot install the widget which is announced with one or more partner API privileges in configuration file.</step_desc>
-              <expected>Pass if the widget can not be installed.</expected>
-            </step>
-          </steps>
-          <test_script_entry test_script_expected_result="0">app_user@/home/app/content/tct/opt/tct-pm-wrt-tests/scripts/wrt_pm_InstallerFail.sh widget-partner-privilege.wgt</test_script_entry>
-        </description>
-        <specs>
-          <spec>
-            <spec_assertion category="Tizen WRT Core Spec" element_name="N/A" element_type="attribute" interface="0101" section="Web Application Package Management" specification="Web Application Installation" />
             <spec_url />
             <spec_statement>TBD</spec_statement>
           </spec>
