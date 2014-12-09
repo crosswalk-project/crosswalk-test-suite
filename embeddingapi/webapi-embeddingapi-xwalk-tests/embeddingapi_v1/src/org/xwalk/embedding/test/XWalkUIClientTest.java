@@ -7,10 +7,7 @@ package org.xwalk.embedding.test;
 import java.util.concurrent.TimeoutException;
 
 import org.xwalk.core.XWalkUIClient;
-import org.xwalk.embedding.base.OnCreateWindowRequestedHelper;
-import org.xwalk.embedding.base.OnIconAvailableHelper;
 import org.xwalk.embedding.base.OnJavascriptCloseWindowHelper;
-import org.xwalk.embedding.base.OnReceivedIconHelper;
 import org.xwalk.embedding.base.OnRequestFocusHelper;
 import org.xwalk.embedding.base.OnScaleChangedHelper;
 import org.xwalk.embedding.base.XWalkViewTestBase;

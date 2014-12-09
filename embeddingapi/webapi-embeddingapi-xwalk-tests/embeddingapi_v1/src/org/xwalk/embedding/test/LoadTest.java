@@ -255,4 +255,25 @@ public class LoadTest extends XWalkViewTestBase {
             assertTrue(false);
         }
     }
+
+    @SmallTest
+    public void testStopLoading_function() {
+        try {
+            String url = "file:///android_asset/p1bar.html";
+            OnPageStartedHelper mOnPageStartedHelper = mTestHelperBridge.getOnPageStartedHelper();
+            OnPageFinishedHelper mOnPageFinishedHelper = mTestHelperBridge.getOnPageFinishedHelper();
+            int currentCallCount = mOnPageFinishedHelper.getCallCount();
+            int startedCount = mOnPageStartedHelper.getCallCount();
+            loadUrlAsync(url);
+            mOnPageStartedHelper.waitForCallback(startedCount);
+            stopLoading();
+            mOnPageFinishedHelper.waitForCallback(currentCallCount);
+            assertEquals(url, mOnPageFinishedHelper.getUrl());
+            assertEquals(LoadStatus.CANCELLED, mTestHelperBridge.getLoadStatus());
+        } catch (Exception e) {
+            assertTrue(false);
+            e.printStackTrace();
+        }
+    }
+
 }
