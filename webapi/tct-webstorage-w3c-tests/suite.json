@@ -16,30 +16,18 @@
                 "*"
             ],
             "copylist": {
-                "bddrunner": "bddrunner",
                 "inst.apk.py": "inst.py",
                 "tests.full.xml": "tests.full.xml",
-                "tests.xml": "tests.xml",
-                "w3c-webstorage-app/testscripts": "w3c-webstorage-app/testscripts"
+                "tests.xml": "tests.xml"
             },
             "pkg-app": {
                 "apk-common-opts": "--enable-remote-debugging"
             },
-            "subapp-list": {
-                "w3c-webstorage-app": {
-                    "apk-common-opts": "--enable-remote-debugging",
-                    "apk-icon-opt": ""
-                }
-            }
+            "subapp-list": { }
         },
         "apk-aio, cordova-aio": {
             "blacklist": [],
-            "subapp-list": {
-                "w3c-webstorage-app": {
-                    "apk-common-opts": "--enable-remote-debugging",
-                    "install-path": "app"
-                }
-            }
+            "subapp-list": {}
         },
         "wgt": {
             "blacklist": [
@@ -51,17 +39,7 @@
                 "tests.xml": "tests.xml"
             },
             "pkg-app": {},
-            "subapp-list": {
-                "w3c-webstorage-app": {
-                    "apk-icon-opt": "",
-                    "blacklist": [
-                        "manifest.json"
-                    ],
-                    "copylist": {
-                        "bdd.config.xml": "config.xml"
-                    }
-                }
-            }
+            "subapp-list": {}
         },
         "xpk": {
             "blacklist": [
@@ -75,17 +53,7 @@
             "pkg-app": {
                 "blacklist": []
             },
-            "subapp-list": {
-                "w3c-webstorage-app": {
-                    "apk-icon-opt": "",
-                    "blacklist": [
-                        "manifest.json"
-                    ],
-                    "copylist": {
-                        "bdd.config.xml": "config.xml"
-                    }
-                }
-            }
+            "subapp-list": {}
         }
     },
     "pkg-name": "tct-webstorage-w3c-tests"
