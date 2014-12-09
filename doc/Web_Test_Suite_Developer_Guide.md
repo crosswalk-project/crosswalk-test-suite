@@ -38,17 +38,11 @@ The layout of test source codes should:
 
 The test suite source layout is detailed as follows:
 
-<webapi-xxx-tests\>/
-
-├── autogen
+\<webapi-module-category-tests\>/
 
 ├── [common]/
 
-├── configure.ac
-
-├── config.xml.crx
-
-├── config.xml.wgt
+├── config.xml
 
 ├── COPYING
 
@@ -62,17 +56,15 @@ The test suite source layout is detailed as follows:
 
 ├── inst.sh.xpk
 
-├── Makefile.am
-
 ├── manifest.json
 
-├── pack.sh
+├── \<module\>/
 
-├──[README]
+├── [README]
 
 ├── resources/
 
-├── testkit/
+├── suite.json/
 
 ├── testcase.xsl
 
@@ -84,21 +76,16 @@ The test suite source layout is detailed as follows:
 
 ├── tests.full.xml
 
-├── <testcasefolder\>/
+└── webrunner/
 
-├── <webapi-xxx-tests.spec\>
+- \<webapi-module-category-tests\>: name of WebAPI test package. The 'webapi-' prefix and the '-tests' suffix must be available, for example, webapi-shadowdom-w3c-tests, webapi-input-html5-tests.
 
-├── [utils]/
-
-└── [data]/
-
-- <webapi-xxx-tests\>: name of WebAPI test package. The 'webapi-' prefix and the '-tests' suffix must be available, for example, webapi-shadowdom-w3c-tests, webapi-input-html5-tests.
 - Documents:
   - README: an introduction of the test suite, and (optional) pre-/post-conditions.
   - COPYING: license and copying file
 
 - Test-related files and folders:
-  - <testcasefolder\>/: a serial of source files or directories for test cases that are well organized by components or features to be tested, e.g. shadowdom/xxx, input/xxx
+  - \<module\>/: a serial of source files or directories for test cases that are well organized by components or features to be tested, e.g. shadowdom/xxx, input/xxx
   - full.xml & tests.xml: a mandatory file to describe all test cases for this test suite. For details, see "Appendix 2 Tests.full.xml and tests.xml."
 
 - W3C test harness support:
@@ -106,49 +93,18 @@ The test suite source layout is detailed as follows:
   - resources/: integrated from [https://github.com/w3c/testharness.js](https://github.com/w3c/testharness.js) to include W3C test harness as an API test framework
 
 - Build/pack support: 
-  - autogen, configure.ac, and Makefile.am
-  - pack.sh: script for generating a zip package 
+  - ../../tool/build/pack.py: script for generating a zip package 
   - inst.sh.apk: script for installing the apk package on Android mobile.
   - inst.sh.ivi: script for installing the xpk package on Tizen IVI device.
   - inst.sh.wgt: script for installing the wgt package on Tizen mobile.
   - inst.sh.xpk: script for installing the xpk package on Tizen mobile.
-  - config.xml.crx: configuration file for creating a .crx extension 
-  - config.xml.wgt: configuration file for creating a .wgt package
+  - config.xml: configuration file for creating a .wgt package
   - icon.png: Widget/Extension icon
   - manifest.json: manifest file for creating a .crx extension
-  - <webapi-xxx-tests.spec\>: specification file including version and configuration for setting suite signature; please set src\_file to keep the source code files in packaged test suite and put specific files to be kept in whitelist. For WebAPI specifications, the 'webapi-' prefix and the '-tests' suffix must be available, for example, webapi-input-html5-tests.spec.
+  - suite.json: suite package file including version and configuration for setting suite signature.
 
 - Installation/execution support:
-  - testkit/: web test runner for executing WebAPI test suite. It is integrated from and updated with Testkit-lite. For details, see https://github.com/testkit/testkit-lite.
-
-- Misc:
-  - [utils]/: (optional) contains utilities and tools if any
-  - [data]/: (optional) contains small-sized data files (Large-sized data such as media content requires a separate package.) 
-  - Small-sized data files (a few Kbytes) should be included into the tests. Large-sized files should be made available separately. Instructions on how to obtain the data files must be provided in the README file. 
-  - Test data must be publicly available. 
-
-The following files and folders are mandatory in :
-
-- autogen
-- config.ac
-- config.xml.crx
-- config.xml.wgt
-- icon.png
-- inst.sh.apk
-- inst.sh.ivi
-- inst.sh.wgt
-- inst.sh.xpk
-- Makefile.am
-- manifest.json
-- pack.sh
-- resources/
-- testkit/
-- testcase.xsl
-- testresult.xsl
-- tests.css
-- tests.xml
-- tests.full.xml
-- <webapi-xxx-tests.spec\>
+  - webrunner/: web test runner for executing WebAPI test suite. It is integrated from https://github.com/testkit/webrunner
 
 #3. Test Case Coding Style
 
@@ -164,26 +120,26 @@ Test case developers shall follow the following rules:
 - Avoid duplicated code 
 - Remove redundant code 
 
-Please refer to the **Coding\_Style\_Guide\_CheatSheet\_v1.0** to get a quick start.
+Please refer to the `Coding_Style_Guide_CheatSheet.md` to get a quick start.
 
 You can find detailed coding style instructions for specific languages from:
 
-1)CSS & HTML: [http://google-styleguide.googlecode.com/svn/trunk/htmlcssguide.xml](http://google-styleguide.googlecode.com/svn/trunk/htmlcssguide.xml)
-2)JavaScript: [http://google-styleguide.googlecode.com/svn/trunk/javascriptguide.xml](http://google-styleguide.googlecode.com/svn/trunk/javascriptguide.xml)
-3)Python: [http://google-styleguide.googlecode.com/svn/trunk/pyguide.html](http://google-styleguide.googlecode.com/svn/trunk/pyguide.html)  
-4)Shell: [http://google-styleguide.googlecode.com/svn/trunk/shell.xml](http://google-styleguide.googlecode.com/svn/trunk/shell.xml)  
-5)XML: 'xmllint --format' with default indent 2 spaces. See [http://xmlsoft.org/xmllint.html](http://xmlsoft.org/xmllint.html)
+1. CSS & HTML: [http://google-styleguide.googlecode.com/svn/trunk/htmlcssguide.xml](http://google-styleguide.googlecode.com/svn/trunk/htmlcssguide.xml)
+2. JavaScript: [http://google-styleguide.googlecode.com/svn/trunk/javascriptguide.xml](http://google-styleguide.googlecode.com/svn/trunk/javascriptguide.xml)
+3. Python: [http://google-styleguide.googlecode.com/svn/trunk/pyguide.html](http://google-styleguide.googlecode.com/svn/trunk/pyguide.html)
+4. Shell: [http://google-styleguide.googlecode.com/svn/trunk/shell.xml](http://google-styleguide.googlecode.com/svn/trunk/shell.xml)
+5. XML: 'xmllint --format' with default indent 2 spaces. See [http://xmlsoft.org/xmllint.html](http://xmlsoft.org/xmllint.html)
 
 #4. Test Case Naming Convention
 
 **Template**
 
-[SpecShortName]_<WebAPIInterface\>_<ShortDescriptionForTestPurpose\>
+[SpecShortName]_\<WebAPIInterface\>_\<ShortDescriptionForTestPurpose\>
 
 A test case should be named as per the following conventions:
 
 - [SpecShortName] is optional, mostly for similar specifications, e.g. Selectors API Level 1, Selectors API Level 2
-- <WebAPIInterface\> and <ShortDescriptionForTestPurpose\>  are mandatory.
+- \<WebAPIInterface\> and \<ShortDescriptionForTestPurpose\>  are mandatory.
 - Use lowercase, except API name and constant defined in spec 
 - Use descriptive names (e.g. ftp\_file\_send); Do not use numbers as tests name (e.g. \_001, \_002) 
 - Use '\_' to connect words in file names (do not use @&- in case name, though W3C prefer '-' to '\_') 
@@ -204,13 +160,13 @@ A test case folder should be named as per the following conventions:
 
 - Allow only letter, digit, and hyphen in test case folder name.
 - For folder name, please also use lower-case with '-' if necessary. 
-- Name <testcasefolder\> as a spec, component or sub-component, for example, style/, htmltemplates/.
+- Name \<module\> as a spec, component or sub-component, for example, style/, htmltemplates/.
 
 #6. Test Case Classification (<testcase\> field in tests.xml)
 
 **Template**
 
-<testcase purpose="" type="" status="" component="" execution_type="" priority="" id=""\>
+\<testcase purpose="" type="" status="" component="" execution_type="" priority="" id=""\>
 
 Test case created should be classified by the following rules:
 
@@ -239,9 +195,9 @@ Test case created should be classified by the following rules:
 
 **Example**
 
-<testcase purpose="Check if the Touch.screenY attribute exists" type="compliance" status="approved" component="WebAPI/Device/Touch Events version 1 (Partial)" execution_type="auto" priority="P1" id="Touch_screenY_exist"\>
+    <testcase purpose="Check if the Touch.screenY attribute exists" type="compliance" status="approved" component="WebAPI/Device/Touch Events version 1 (Partial)" execution_type="auto" priority="P1" id="Touch_screenY_exist"\>
 
-#7. Spec Coverage Assertion Rules (<specs\> field in tests.full.xml)
+#7. Spec Coverage Assertion Rules (\<specs\> field in tests.full.xml)
 
 **Template**
 
@@ -263,16 +219,16 @@ Test case created should be classified by the following rules:
 
 Spec coverage assertion should obey the following rules:
 
-- <spec_assertion\> field is mandatory.
-  - < element_type\>: 'attribute', 'method'; only need for P0/P1/P2 test cases.
+- \<spec_assertion\> field is mandatory.
+  - \<element_type\>: 'attribute', 'method'; only need for P0/P1/P2 test cases.
      - attribute:
      - method:
 
-  - < element\_name\>: attribute/method name defined in <specification\>  comes together with < element\_type\>. 
-  - < usage>: 'true'; only need for P3 test cases.
-  - <interface\>: interface name defined in <specification\>.
-  - <specification\>: web api specification; the 3rd part by ":" of "Appendix 2 WebAPI Spec Name List."
-  - <section\>: the 2nd part by ":" of "Appendix 2 WebAPI Spec Name List." 
+  - \<element\_name\>: attribute/method name defined in \<specification\>  comes together with \<element\_type\>. 
+  - \<usage\>: 'true'; only need for P3 test cases.
+  - \<interface\>: interface name defined in \<specification\>.
+  - \<specification\>: web api specification; the 3rd part by ":" of "Appendix 2 WebAPI Spec Name List."
+  - \<section\>: the 2nd part by ":" of "Appendix 2 WebAPI Spec Name List." 
      - Tizen
      - UI 
      - Widget 
@@ -283,70 +239,39 @@ Spec coverage assertion should obey the following rules:
      - Storage
      - Performance
      - ExtraHTML5
-     - <category\>: the 1st part by ":" of "Appendix 2 WebAPI Spec Name List." 
+     - \<category\>: the 1st part by ":" of "Appendix 2 WebAPI Spec Name List." 
          - Tizen Device API Specifications
          - W3C HTML5 API Specifications
          - Supplementary API Specifications
-- <spec_url\> is mandatory, URL to public spec section being tested.
-- <spec_statement\> is optional, statements in spec being tested. It must be copied from the specification document.
+- \<spec_url\> is mandatory, URL to public spec section being tested.
+- \<spec_statement\> is optional, statements in spec being tested. It must be copied from the specification document.
 
 **Examples**
 
     <specs>
-              <spec>
-                <spec_assertion element_type="attribute" element_name="screenY" interface="Touch" specification="Touch Events version 1 (Partial)" section="Device" category="Tizen W3C API Specifications"/>
-                <spec_url>http://www.w3.org/TR/2013/WD-touch-events-20130124/#idl-def-Touch</spec_url>
-                <spec_statement/>
-              </spec>
+      <spec>
+        <spec_assertion element_type="attribute" element_name="screenY" interface="Touch" specification="Touch Events version 1 (Partial)" section="Device" category="Tizen W3C API Specifications"/>
+        <spec_url>http://www.w3.org/TR/2013/WD-touch-events-20130124/#idl-def-Touch</spec_url>
+        <spec_statement/>
+      </spec>
     </specs>
 
 
     <specs>
-              <spec>
-                <spec_assertion element_type="attribute" element_name="clientY" interface="Touch" specification="Touch Events version 1 (Partial)" section="Device" category="Tizen W3C API Specifications"/>
-                <spec_url>http://www.w3.org/TR/2013/WD-touch-events-20130124/#idl-def-Touch</spec_url>
-                <spec_statement/>
-              </spec>
+      <spec>
+        <spec_assertion element_type="attribute" element_name="clientY" interface="Touch" specification="Touch Events version 1 (Partial)" section="Device" category="Tizen W3C API Specifications"/>
+        <spec_url>http://www.w3.org/TR/2013/WD-touch-events-20130124/#idl-def-Touch</spec_url>
+        <spec_statement/>
+       </spec>
      </specs>
 
 #8. How to Add New Test Suite to WebAPI 
 To add a new suite to webapi, perform the following steps:
 
-1)Fork and clone the webtest project from
-
-https://github.com/crosswalk-project/webtest
-
-**Note** : you must sign up for the GitHub first.
-
-2)Copy a test suite to the spec under testing, for example, "webapi-style-css3-tests".
-
-3)Replace bluetooth with real test case folder name in Makefile.am:
-
-    commondir = resources testkit
-
-    SUBDIRS = style $(commondir)
-
-    docdir = $(prefix)/opt/webapi-style-css3-tests
-
-    dist\_doc\_DATA = Changelog COPYING README tests.xml tests.full.xml
-
-4)Replace bluetooth with the name of the real test suite and replace bluetooth with real test case folder name used in configure.ac:
-
-    AC\_INIT([webapi-style-css3-tests], [5.34.1.1], [zhiqiang.zhang@intel.com]) AM\_INIT\_AUTOMAKE([-Wall -Werror foreign])
-    AC\_CONFIG\_FILES([Makefile \
-    style/Makefile \
-    style/csswg/Makefile \
-    style/csswg/support/Makefile \
-    style/csswg/reference/Makefile \
-    resources/Makefile testkit/Makefile])
-    AC\_OUTPUT
-
-5)Update config.xml.crx:
-
-    <widget xmlns="http://www.w3.org/ns/widgets">
-    </widget>
-
-6)Update config.xml.wgt:
+1. Fork and clone the webtest project from https://github.com/crosswalk-project/crosswalk-test-suite
+2. Copy a test suite to the spec under testing, for example, "tct-style-css3-tests".
+3. Update `suite.json` to `../../tools/pack.py` happy.
+4. Update config.xml, e.g:
 
     <widget id='http://tizen.org/test/webapi-style-css3-tests' xmlns='http://www.w3.org/ns/widgets' xmlns:tizen='http://tizen.org/ns/widgets'>
       <access origin="*"/>
@@ -356,7 +281,7 @@ https://github.com/crosswalk-project/webtest
       <tizen:setting screen-orientation="landscape"/>
     </widget>
 
-7)Update manifest.json:
+5. Update manifest.json:
 
     {
         "version": "0.0.1",
@@ -374,21 +299,19 @@ https://github.com/crosswalk-project/webtest
         }
     }
 
-8)Customize the .spec file based on the webapi-style-css3-tests.spec file.
-
-9)Add new cases to the test suite. For details, see chapter 9 "How to Contribute New Cases to Test Suite Package."
+8. Add new cases to the test suite. For details, see chapter 9 "How to Add New Cases to Test Suite Package."
 
 #9 How to Contribute New Cases to Test Suite Package
 
 To contribute new cases to test suite package, perform the following steps:
 
-1)Design new test case according to WebAPI Spec and add new case information to **tests.xml**. For details, see "Appendix 1 Tests.full.xml and tests.xml."
+1. Design new test case according to WebAPI Spec and add new case information to **tests.xml**. For details, see "Appendix 1 Tests.full.xml and tests.xml."
 
 - "Case name" should follow the test case naming convention. For details, see chapter 4 "Test Case Naming Convention".
-- "Specs" field should follow the Spec coverage assertion rules. For details, see chapter **Error! Reference source not found.** "Test Case Classification (<testcase\> field in tests.xml)".
+- "Specs" field should follow the Spec coverage assertion rules. For details, see "Test Case Classification (\<testcase\> field in tests.xml)".
 - "Component" field should comply with the WebAPI component name list. For details see "Appendix 3 WebAPI Component Name List".
 
-2)Develop test script by following the test case coding style and put it under <testcasefolder\>.
+2. Develop test script by following the test case coding style and put it under \<module\>.
 
 Note:
 
@@ -399,28 +322,23 @@ Note:
 **Example**
 
     <!DOCTYPE html>
-     <html>
-      <head>
-        <title>Audio Test: audio_MediaController_play_exists</title>
-        <link rel="author" title="Intel" href="http://www.intel.com" />
-        <link rel="help" href="http://www.w3.org/TR/2012/WD-html5-20121025/media-elements.html#mediacontroller" />
-        <meta name="flags" content="" />
-        <meta name="assert" content="Check if audio.MediaController.play exists"/>
-        <script src="../resources/testharness.js"></script>
-        <script src="../resources/testharnessreport.js"></script>
-      </head>
-      <body>
-        <div id="log"></div>
-        <audio id = "audio" src="" mediagroup="v"></audio>
-        <script type="text/javascript">
-            test(function (){
-                var v = document.getElementById("audio");
-                var controller = v.controller;
-                assert_true("play" in controller, "audio.MediaController.play exists");
-            }, document.title);
-        </script>
-      </body>
-    </html>
+    <meta charset="utf-8">
+    <title>Audio Test: audio_MediaController_play_exists</title>
+    <link rel="author" title="Intel" href="http://www.intel.com">
+    <link rel="help" href="http://www.w3.org/TR/2012/WD-html5-20121025/media-elements.html#mediacontroller">
+    <meta name="flags" content="" />
+    <meta name="assert" content="Check if audio.MediaController.play exists"/>
+    <script src="../resources/testharness.js"></script>
+    <script src="../resources/testharnessreport.js"></script>
+    <div id="log"></div>
+    <audio id = "audio" src="" mediagroup="v"></audio>
+    <script type="text/javascript">
+      test(function (){
+        var v = document.getElementById("audio");
+        var controller = v.controller;
+        assert_true("play" in controller, "audio.MediaController.play exists");
+        }, document.title);
+    </script>
 
 
 #Appendix 1 Tests.full.xml and tests.xml
@@ -428,7 +346,7 @@ Each test suite package has two dedicated .xml files (tests.full.xml and tests.x
 Tests.xml is a simplified version of tests.full.xml; it contains the minimum required elements when running the tests.
 Note: The .xml files must comply with the rules in the test\_definition.xsd file. For details, see  [https://github.com/testkit/testkit-lite/blob/master/xsd/test\_definition.xsd](https://github.com/testkit/testkit-lite/blob/master/xsd/test_definition.xsd).
 
-Tests.full.xml Example:
+`tests.full.xml` example:
 
     <?xml version="1.0" encoding="UTF-8"?>
     <?xml-stylesheet type="text/xsl" href="./testcase.xsl"?>
@@ -511,7 +429,7 @@ Tests.full.xml Example:
       </suite>
     </test_definition>
 
-Tests.xml Example.
+`tests.xml` example.
 
     <?xml version="1.0" encoding="UTF-8"?>
     <?xml-stylesheet type="text/xsl" href="./testcase.xsl"?>
