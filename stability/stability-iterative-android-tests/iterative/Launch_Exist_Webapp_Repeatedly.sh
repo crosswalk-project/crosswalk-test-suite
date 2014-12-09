@@ -38,11 +38,11 @@ fi
 #install webapp
 for((i=0; i<50; i++)); do
 echo $i
-$command install -r $local_path/../stabiterative*.apk > /tmp/install.txt
+$command install -r $local_path/../iterative*.apk > /tmp/install.txt
 grep "Success" /tmp/install.txt
 
 if [ $? -eq 0 ];then
-    $command shell am force-stop org.xwalk.stabiterative
+    $command shell am force-stop org.xwalk.iterative
 else
     echo "Force-stop failed"
 fi
