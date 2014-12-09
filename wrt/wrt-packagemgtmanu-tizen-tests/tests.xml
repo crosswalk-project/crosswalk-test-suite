@@ -1,14 +1,6 @@
 <test_definition>
   <suite category="Crosswalk WRT" name="wrt-packagemgtmanu-tizen-tests">
     <set name="packagemgtmanu" type="js">
-      <testcase component="Crosswalk WRT/Package Management" execution_type="manual" id="Crosswalk_WebApp_Uninstall" purpose="Validate if Crosswalk support web apps could be uninstalled successfully">
-        <description>
-          <pre_condition>
-            1.Make sure there some webapps are available
-          </pre_condition>
-          <test_script_entry>/opt/wrt-packagemgtmanu-tizen-tests/packagemgtmanu/Crosswalk_WebApp_Uninstall.html</test_script_entry>
-        </description>
-      </testcase>
       <testcase component="Crosswalk WRT/Package Management" execution_type="manual" id="Crosswalk_Remote_Debugging_Connection" purpose="Validate Crosswalk could debug by remote host">
         <description>
           <pre_condition>
@@ -33,30 +25,14 @@
           <test_script_entry>/opt/wrt-packagemgtmanu-tizen-tests/packagemgtmanu/Crosswalk_Remote_Debugging_Modification.html</test_script_entry>
         </description>
       </testcase>
-      <testcase component="Crosswalk WRT/Package Management" execution_type="manual" id="Crosswalk_WebApp_Install_Resource" purpose="Validate if webapp folder is create after the webapp installed successfully">
-        <description>
-          <pre_condition>
-            1.Make sure there some webapps are available
-          </pre_condition>
-          <test_script_entry>/opt/wrt-packagemgtmanu-tizen-tests/packagemgtmanu/Crosswalk_WebApp_Install_Resource.html</test_script_entry>
-        </description>
-      </testcase>
-      <testcase component="Crosswalk WRT/Package Management" execution_type="manual" id="Crosswalk_WebApp_Uninstall_Resource" purpose="Validate if webapp cache file is deleted after the webapp uninstalled successfully">
+      <testcase component="Package Management On Tizen" execution_type="manual" id="Crosswalk_WebApp_Uninstall_Resource" purpose="Validate if webapp cache file is deleted after the webapp uninstalled successfully">
         <description>
           <pre_condition>
             1.Make sure there some webapps are available
           </pre_condition>
           <test_script_entry>/opt/wrt-packagemgtmanu-tizen-tests/packagemgtmanu/Crosswalk_WebApp_Uninstall_Resource.html</test_script_entry>
         </description>
-      </testcase>
-      <testcase component="Crosswalk WRT/Package Management" execution_type="manual" id="Crosswalk_WebApp_Launcher_Cache" purpose="Validate if webapp isolated partition cache is created after run the app">
-        <description>
-          <pre_condition>
-            1.Make sure there some webapps are available
-          </pre_condition>
-          <test_script_entry>/opt/wrt-packagemgtmanu-tizen-tests/packagemgtmanu/Crosswalk_WebApp_Launcher_Cache.html</test_script_entry>
-        </description>
-      </testcase>
+      </testcase> 
     </set>
   </suite>
 </test_definition>
