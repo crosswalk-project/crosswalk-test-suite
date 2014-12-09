@@ -33,7 +33,7 @@ Authors:
 <html>
   <head>
     <meta charset='utf-8'>
-    <title>Crosswalk_Online_Beta_Maven_Build_ARM_AndroidApp</title>
+    <title>Crosswalk_Online_Stable_Maven_Build_IA_AndroidApp</title>
     <link rel="author" title="Intel" href="http://www.intel.com">
   </head>
   <body>
@@ -41,10 +41,11 @@ Authors:
       <strong>Test steps:</strong>
     </p>
     <ol>
-      <li>Update the version of dependency which is for arm in pom.xml to the beta version(e.g 10.39.235.7)</li>
-      <li>Update the classifier of dependency which is for arm in pom.xml to "arm"</li>
+      <li>Update the version of dependency which is for x86 in pom.xml to the beta version(e.g 9.38.208.10)</li>
+      <li>Update the artifactId of dependency which is for x86 in pom.xml to "xwalk_core_library"</li>
+      <li>Update the classifier of dependency which is for x86 in pom.xml to "x86"</li>
       <li>Open the console, and enter the usecase-embedding-android-tests directory</li>
-      <li>Run "mvn clean install -Parm" command on the console</li>
+      <li>Run "mvn clean install -Px86" command on the console</li>
     </ol>
     <p>
       <strong>Expected Output:</strong>
@@ -52,7 +53,7 @@ Authors:
     <ol>
       <li>"BUILD SUCCESSFUL" is shown on the console info</li>
       <li>One apk file is built in target directory</li>
-      <li>The apk file built could be installed, uninstalled, launched and performed correctly on ARM phone</li>
+      <li>The apk file built could be installed, uninstalled, launched and performed correctly on IA phone</li>
     </ol>
   </body>
 </html>
