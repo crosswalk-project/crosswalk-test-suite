@@ -16,8 +16,6 @@
                 "*"
             ],
             "copylist": {
-                "bddrunner": "bddrunner",
-                "html5-extra-app/testscripts": "html5-extra-app/testscripts",
                 "inst.apk.py": "inst.py",
                 "tests.full.xml": "tests.full.xml",
                 "tests.xml": "tests.xml"
@@ -25,20 +23,11 @@
             "pkg-app": {
                 "apk-common-opts": "--enable-remote-debugging"
             },
-            "subapp-list": {
-                "html5-extra-app": {
-                    "apk-common-opts": "--enable-remote-debugging"
-                }
-            }
+            "subapp-list": {}
         },
         "apk-aio, cordova-aio": {
             "blacklist": [],
-            "subapp-list": {
-                "html5-extra-app": {
-                    "apk-common-opts": "--enable-remote-debugging",
-                    "install-path": "app"
-                }
-            }
+            "subapp-list": {}
         },
         "wgt": {
             "blacklist": [
@@ -50,17 +39,7 @@
                 "tests.xml": "tests.xml"
             },
             "pkg-app": {},
-            "subapp-list": {
-                "html5-extra-app": {
-                    "apk-icon-opt": "",
-                    "blacklist": [
-                        "manifest.json"
-                    ],
-                    "copylist": {
-                        "bdd.config.xml": "config.xml"
-                    }
-                }
-            }
+            "subapp-list": {}
         },
         "xpk": {
             "blacklist": [
@@ -74,17 +53,7 @@
             "pkg-app": {
                 "blacklist": []
             },
-            "subapp-list": {
-                "html5-extra-app": {
-                    "apk-icon-opt": "",
-                    "blacklist": [
-                        "manifest.json"
-                    ],
-                    "copylist": {
-                        "bdd.config.xml": "config.xml"
-                    }
-                }
-            }
+            "subapp-list": {}
         }
     },
     "pkg-name": "tct-extra-html5-tests"
