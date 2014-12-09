@@ -154,7 +154,8 @@ def instPKGs():
         elif item.endswith("inst.py"):
             continue
         else:
-            if not doRemoteCopy(item, PKG_SRC_DIR):
+            item_name = os.path.basename(item)
+            if not doRemoteCopy(item, "%s/%s" % (PKG_SRC_DIR, item_name)):
                 action_status = False
 
     return action_status
