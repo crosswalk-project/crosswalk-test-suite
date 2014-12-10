@@ -50,7 +50,7 @@ app_id1=`pkgcmd -l | grep "diffid_same_version_tests" | awk '{print $4}'`
 app_id1=`echo $app_id1 | awk '{print $1}'`
 app_id1=${app_id1:1:-1}
 
-get_uninstall='pkgcmd -u -n  $app_id1 -q'
+get_uninstall=`pkgcmd -u -n  $app_id1 -q`
 if [[ $? -eq 0 ]]; then
                 echo "Uninstall Pass"
         else
