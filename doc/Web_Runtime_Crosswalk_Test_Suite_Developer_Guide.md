@@ -66,12 +66,6 @@ The test suite source layout is detailed as follows:
 
 ├── suite.json/
 
-├── testcase.xsl
-
-├── testresult.xsl
-
-├── tests.css
-
 ├── tests.xml
 
 ├── tests.full.xml
@@ -283,8 +277,6 @@ Note: The .xml files must comply with the rules in the test\_definition.xsd file
 
 Example:
 ```
-<?xml version="1.0" encoding="UTF-8"?>
-<?xml-stylesheet type="text/xsl" href="./testcase.xsl"?>
 <test_definition>
   <suite name="wrt-i18nmanu-tizen-tests" category="Crosswalk_I18n" launcher="xwalk">
     <set name="i18n" type="js">
@@ -302,8 +294,6 @@ Example:
 
 Tests.xml Example.
 
-<?xml version="1.0" encoding="UTF-8"?>
-<?xml-stylesheet type="text/xsl" href="./testcase.xsl"?>
 <test_definition>
   <suite category="Crosswalk_I18n" launcher="xwalk" name="wrt-i18nmanu-tizen-tests">
     <set name="i18n" type="js">
