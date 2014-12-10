@@ -31,7 +31,6 @@ Authors:
 var allId=new Array('wrt1wvt006',
                     'wrt1smt007',
                     'wrt1smt008',
-                    'wrt1smt009',
                     'wrt1smt010');
 
 var installedId = new Array();
