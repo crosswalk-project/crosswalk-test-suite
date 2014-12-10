@@ -1,3 +1,5 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-stylesheet type="text/xsl" href="./testcase.xsl"?>
 <test_definition>
   <suite category="Crosswalk WRT" name="wrt-packagemgt-tizen-tests">
     <set name="packagemgt" type="script">
@@ -74,6 +76,26 @@
       <testcase component="Crosswalk WRT/Package Management" execution_type="auto" id="Crosswalk_Tizen_MultipleWebApp_Install_test" purpose="Check install multiple web app">
         <description>
           <test_script_entry>app_user@/home/app/content/tct/opt/wrt-packagemgt-tizen-tests/packagemgt/Crosswalk_Tizen_MultipleWebApp_Install_test.sh</test_script_entry>
+        </description>
+      </testcase>
+      <testcase component="Crosswalk WRT/Package Management" execution_type="auto" id="Crosswalk_WebApp_Install_Resource" purpose="check webapp have no isolated storage partition">
+        <description>
+          <test_script_entry>app_user@/home/app/content/tct/opt/wrt-packagemgt-tizen-tests/packagemgt/Crosswalk_WebApp_Install_Resource.sh</test_script_entry>
+        </description>
+      </testcase>
+      <testcase component="Crosswalk WRT/Package Management" execution_type="auto" id="Crosswalk_WebApp_Uninstall" purpose="Validate if Crosswalk support web apps could be uninstalled successfully">
+        <description>
+          <test_script_entry>app_user@/home/app/content/tct/opt/wrt-packagemgt-tizen-tests/packagemgt/Crosswalk_WebApp_Uninstall.sh</test_script_entry>
+        </description>
+      </testcase>
+      <testcase component="Crosswalk WRT/Package Management" execution_type="auto" id="Crosswalk_WebApp_Launch" purpose="Validate Crosswalk support that web app could be launched successfully">
+        <description>
+          <test_script_entry>app_user@/home/app/content/tct/opt/wrt-packagemgt-tizen-tests/packagemgt/Crosswalk_WebApp_Launch.sh</test_script_entry>
+        </description>
+      </testcase>
+      <testcase component="Crosswalk WRT/Package Management" execution_type="auto" id="Crosswalk_WebApp_Launcher_Cache" purpose="Validate if webapp isolated partition cache is created after run the app">
+        <description>
+          <test_script_entry>app_user@/home/app/content/tct/opt/wrt-packagemgt-tizen-tests/packagemgt/Crosswalk_WebApp_Launcher_Cache.sh</test_script_entry>
         </description>
       </testcase>
     </set>

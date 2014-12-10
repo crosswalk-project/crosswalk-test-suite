@@ -1,11 +1,14 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<?xml-stylesheet type="text/xsl" href="./testcase.xsl"?>
 <test_definition>
   <suite category="Stability" name="stability-iterative-android-tests">
     <set name="iterative" type="script">
       <testcase component="Stability/Iterative" execution_type="auto" id="Crosswalk_Stabiterative_Install_Uninstall" purpose="Validate the app can be install/uninstall 50 times">
         <description>
           <test_script_entry test_script_expected_result="0" timeout="1800">/opt/stability-iterative-android-tests/iterative/Crosswalk_Stabiterative_Install_Uninstall.sh</test_script_entry>
+        </description>
+      </testcase>
+      <testcase component="Stability/Iterative" execution_type="auto" id="Launch_Exist_Webapp_Repeatedly" purpose="Validate the app can be launch/exist 50 times">
+        <description>
+          <test_script_entry test_script_expected_result="0" timeout="1800">/opt/stability-iterative-android-tests/iterative/Launch_Exist_Webapp_Repeatedly.sh</test_script_entry>
         </description>
       </testcase>
     </set>
