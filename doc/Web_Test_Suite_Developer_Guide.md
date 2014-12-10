@@ -66,12 +66,6 @@ The test suite source layout is detailed as follows:
 
 ├── suite.json/
 
-├── testcase.xsl
-
-├── testresult.xsl
-
-├── tests.css
-
 ├── tests.xml
 
 ├── tests.full.xml
@@ -348,8 +342,6 @@ Note: The .xml files must comply with the rules in the test\_definition.xsd file
 
 `tests.full.xml` example:
 
-    <?xml version="1.0" encoding="UTF-8"?>
-    <?xml-stylesheet type="text/xsl" href="./testcase.xsl"?>
     <test_definition>
       <suite name="webapi-style-css3-tests" launcher="xwalk" category="W3C API Specifications">
         <set name="Style">
@@ -431,8 +423,6 @@ Note: The .xml files must comply with the rules in the test\_definition.xsd file
 
 `tests.xml` example.
 
-    <?xml version="1.0" encoding="UTF-8"?>
-    <?xml-stylesheet type="text/xsl" href="./testcase.xsl"?>
     <test_definition>
       <suite category="W3C API Specifications" launcher="xwalk" name="webapi-style-css3-tests">
         <set name="Style">
