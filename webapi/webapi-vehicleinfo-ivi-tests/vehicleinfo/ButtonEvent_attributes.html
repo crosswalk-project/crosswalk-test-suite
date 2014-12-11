@@ -36,14 +36,15 @@ Authors:
 <link rel="help" href="http://rawgit.com/w3c/automotive-bg/master/data_spec.html">
 <script src="../resources/testharness.js"></script>
 <script src="../resources/testharnessreport.js"></script>
+<script src="support/support.js"></script>
 <div id="log"></div>
 <script>
 
 test(function () {
-  var buttonEvent = tizen.vehicle.buttonEvent;
-  assert_true("button" in buttonEvent);
+  var buttonEvent = vehicle.buttonEvent;
+  assert_true("button" in buttonEvent, "the ButtonEvent.button exists");
   assert_readonly(buttonEvent, "button", "the ButtonEvent.button is readonly");
   assert_equals(typeof buttonEvent.button, "object", "the type of ButtonEvent.button");
-}, "Check if ButtonEvent.button exists, readonly and type of object"); 
+}, "Check if ButtonEvent.button exists, readonly and type of object");
 
 </script>

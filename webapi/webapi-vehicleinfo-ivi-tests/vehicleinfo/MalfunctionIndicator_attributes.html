@@ -36,14 +36,15 @@ Authors:
 <link rel="help" href="http://rawgit.com/w3c/automotive-bg/master/data_spec.html">
 <script src="../resources/testharness.js"></script>
 <script src="../resources/testharnessreport.js"></script>
+<script src="support/support.js"></script>
 <div id="log"></div>
 <script>
 
 test(function () {
-  var malfunctionIndicator = tizen.vehicle.malfunctionIndicator;
-  assert_true("on" in malfunctionIndicator);
+  var malfunctionIndicator = vehicle.malfunctionIndicator;
+  assert_true("on" in malfunctionIndicator, "the MalfunctionIndicator.on exists");
   assert_readonly(malfunctionIndicator, "on", "the MalfunctionIndicator.on is readonly");
   assert_equals(typeof malfunctionIndicator.on, "boolean", "the type of MalfunctionIndicator.on");
-}, "Check if MalfunctionIndicator.on exists, readonly and type of boolean"); 
+}, "Check if MalfunctionIndicator.on exists, readonly and type of boolean");
 
 </script>

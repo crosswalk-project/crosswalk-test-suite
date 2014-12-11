@@ -36,34 +36,35 @@ Authors:
 <link rel="help" href="http://rawgit.com/w3c/automotive-bg/master/vehicle_spec.html" />
 <script src="../resources/testharness.js"></script>
 <script src="../resources/testharnessreport.js"></script>
+<script src="support/support.js"></script>
 <div id="log"></div>
 <script>
 var zone;
-test(function() {
+test(function () {
   zone = new Zone;
 }, "Check that Zone is a constructor");
 
-test(function() {
+test(function () {
   assert_equals(typeof zone, "object");
 }, "Check that Zone returns an object");
 
-test(function() {
+test(function () {
   assert_true("value" in zone);
 }, "Check if Zone.value exists");
 
-test(function() {
+test(function () {
   assert_equals(typeof zone.value, "object");
 }, "Check that Zone.value returns an object array");
 
-test(function() {
+test(function () {
   assert_true("driver" in zone);
 }, "Check if Zone.driver exists");
 
-test(function() {
+test(function () {
   assert_equals(typeof zone.driver, "object");
 }, "Check that Zone.driver returns an object Zone");
 
-test(function() {
+test(function () {
   assert_true("equals" in zone);
 }, "Check if Zone.equals exists");
 
@@ -72,11 +73,11 @@ test(function() {
   assert_equals(typeof zone.equals(zone1), "boolean");
 }, "Check that Zone.equals returns a boolean");
 
-test(function() {
+test(function () {
   assert_true("contains" in zone);
 }, "Check if Zone.contains exists");
 
-test(function() {
+test(function () {
   var zone2 = new Zone(["Front", "Right"])
   assert_equals(typeof zone.contains(zone2), "boolean");
 }, "Check that Zone.contains returns a boolean");

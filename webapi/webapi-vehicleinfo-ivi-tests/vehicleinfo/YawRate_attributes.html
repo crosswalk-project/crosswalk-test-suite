@@ -36,14 +36,15 @@ Authors:
 <link rel="help" href="http://rawgit.com/w3c/automotive-bg/master/data_spec.html">
 <script src="../resources/testharness.js"></script>
 <script src="../resources/testharnessreport.js"></script>
+<script src="support/support.js"></script>
 <div id="log"></div>
 <script>
 
 test(function () {
-  var yawRate = tizen.vehicle.yawRate;
-  assert_true("value" in yawRate);
+  var yawRate = vehicle.yawRate;
+  assert_true("value" in yawRate, "the YawRate.value exists");
   assert_readonly(yawRate, "value", "the YawRate.value is readonly");
   assert_equals(typeof yawRate.value, "number", "the type of YawRate.value");
-}, "Check if YawRate.value exists, readonly and type of number"); 
+}, "Check if YawRate.value exists, readonly and type of number");
 
 </script>

@@ -36,14 +36,15 @@ Authors:
 <link rel="help" href="http://rawgit.com/w3c/automotive-bg/master/data_spec.html">
 <script src="../resources/testharness.js"></script>
 <script src="../resources/testharnessreport.js"></script>
+<script src="support/support.js"></script>
 <div id="log"></div>
 <script>
 
 test(function () {
-  var chime = tizen.vehicle.chime;
-  assert_true("on" in chime);
+  var chime = vehicle.chime;
+  assert_true("on" in chime, "the Chime.on exists");
   assert_readonly(chime, "on", "the Chime.on is readonly");
   assert_equals(typeof chime.on, "boolean", "the type of Chime.on");
-}, "Check if Chime.on exists, readonly and type of boolean"); 
+}, "Check if Chime.on exists, readonly and type of boolean");
 
 </script>

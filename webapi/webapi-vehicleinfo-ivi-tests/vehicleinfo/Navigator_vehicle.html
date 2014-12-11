@@ -37,11 +37,13 @@ Authors:
 <link rel="help" href="http://rawgit.com/w3c/automotive-bg/master/vehicle_spec.html" />
 <script src="../resources/testharness.js"></script>
 <script src="../resources/testharnessreport.js"></script>
+<script src="support/support.js"></script>
 <div id="log"></div>
 <script>
 
 test(function() {
-  assert_true("vehicle" in tizen);
+  assert_not_equals(vehicle, null, "the navigator.vehicle");
+  assert_not_equals(vehicle, undefined, "navigator.vehicle");
 }, "Check if navigator.vehicle exists");
 
 </script>
