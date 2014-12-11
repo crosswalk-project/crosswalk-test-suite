@@ -15,7 +15,9 @@ def genPackage():
         fp.close()
 
         #genarate package and execute
-        manifestLog = open(ConstPath + "/report/packageInfo.txt", 'a+')
+        if os.path.exists(ConstPath + "/report/packRes.txt") and os.path.exists(ConstPath + "/report/packageInfo.txt"):
+            os.remove(ConstPath + "/report/packRes.txt")
+            os.remove(ConstPath + "/report/packageInfo.txt")
         if os.path.exists(ConstPath + "/tools/crosswalk/"):
             os.chdir(ConstPath + "/tools/crosswalk/")
         else:
@@ -43,6 +45,7 @@ def genPackage():
             print "##########"
             flag = i[-8:].strip()
             caseStart = time.strftime("%Y-%m-%d %H:%M:%S")
+            manifestLog = open(ConstPath + "/report/packageInfo.txt", 'a+')
             manifestLog.write(i+ "\n")
             manifestLog.write("Build start time: " + caseStart + "\n")
             manifestPath = casePath + i + "/manifest.json"
@@ -93,12 +96,12 @@ def genPackage():
             caseEnd = time.strftime("%Y-%m-%d %H:%M:%S")
             manifestLog.write("Build end time: " + caseEnd + "\n\n")
             manifestLog.flush()
+            manifestLog.close()
             print "Package Result :" + result
             fp = open(ConstPath + "/report/packRes.txt", 'a+')
             tt = i + "\t" + flag + "\t" + result + "\n"
             fp.write(tt)
             fp.close()
-        manifestLog.close()
     except Exception,e:
         print Exception,":",e
         print "Execute case ---------------->Error"
