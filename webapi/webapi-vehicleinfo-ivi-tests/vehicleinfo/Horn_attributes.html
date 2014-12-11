@@ -36,13 +36,14 @@ Authors:
 <link rel="help" href="http://rawgit.com/w3c/automotive-bg/master/data_spec.html">
 <script src="../resources/testharness.js"></script>
 <script src="../resources/testharnessreport.js"></script>
+<script src="support/support.js"></script>
 <div id="log"></div>
 <script>
 
 test(function () {
-  var horn = new tizen.vehicle.horn;
-  assert_true("status" in horn);
+  var horn = vehicle.horn;
+  assert_true("status" in horn, "the Horn.status exists");
   assert_equals(typeof horn.status, "boolean", "the type of Horn.status");
-}, "Check if Horn.status exists and type of boolean"); 
+}, "Check if Horn.status exists and type of boolean");
 
 </script>

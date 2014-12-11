@@ -36,14 +36,15 @@ Authors:
 <link rel="help" href="http://rawgit.com/w3c/automotive-bg/master/data_spec.html">
 <script src="../resources/testharness.js"></script>
 <script src="../resources/testharnessreport.js"></script>
+<script src="support/support.js"></script>
 <div id="log"></div>
 <script>
 
 test(function () {
-  var brakeOperation = tizen.vehicle.brakeOperation;
-  assert_true("brakePedalDepressed" in brakeOperation);
+  var brakeOperation = vehicle.brakeOperation;
+  assert_true("brakePedalDepressed" in brakeOperation, "the BrakeOperation.brakePedalDepressed exists");
   assert_readonly(brakeOperation, "brakePedalDepressed", "the BrakeOperation.brakePedalDepressed is readonly");
   assert_equals(typeof brakeOperation.brakePedalDepressed, "boolean", "the type of BrakeOperation.brakePedalDepressed");
-}, "Check if BrakeOperation.brakePedalDepressed exists, readonly and type of boolean"); 
+}, "Check if BrakeOperation.brakePedalDepressed exists, readonly and type of boolean");
 
 </script>

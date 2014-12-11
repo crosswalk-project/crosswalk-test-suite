@@ -1,5 +1,4 @@
-<!DOCTYPE html>
-<!--
+/*
 Copyright (c) 2014 Intel Corporation.
 
 Redistribution and use in source and binary forms, with or without modification,
@@ -26,39 +25,11 @@ NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE,
 EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
 Authors:
-        Xu, Kang <kangx.xu@intel.com>
+         Xu, Kang <kangx.xu@intel.com>
 
--->
+*/
 
-<meta charset="utf-8">
-<title>Vehicle Test: Transmission - attributes</title>
-<link rel="author" title="Intel" href="http://www.intel.com">
-<link rel="help" href="http://rawgit.com/w3c/automotive-bg/master/data_spec.html">
-<script src="../resources/testharness.js"></script>
-<script src="../resources/testharnessreport.js"></script>
-<script src="support/support.js"></script>
-<div id="log"></div>
-<script>
+/*The vehicle API will be implemented in navigator, but tizen.vehicle is still
+valid on tizen, so keep tizen.vehicle until navigator.vehicle is implemented.*/
 
-var transmission;
-
-setup(function () {
-  transmission = vehicle.transmission;
-});
-
-[
-  ["number", "gear", "readonly"],
-  ["string", "mode", "readonly"]
-].forEach(function (attr) {
-  var type = attr[0];
-  var name = attr[1];
-  var read = attr[2];
-
-  test(function () {
-    assert_true(name in transmission, "the Transmission." + name + " exists");
-    assert_equals(typeof transmission[name], type, "the type of Transmission." + name);
-    assert_readonly(transmission, name, "the Transmission." + name + " is readonly");
-  }, "Check if " + read + " Transmission." + name + " exists and type of " + type);
-});
-
-</script>
+var vehicle = navigator.vehicle || tizen.vehicle;

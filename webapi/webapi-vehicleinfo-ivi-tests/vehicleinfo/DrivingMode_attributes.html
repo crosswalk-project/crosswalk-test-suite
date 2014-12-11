@@ -36,14 +36,15 @@ Authors:
 <link rel="help" href="http://rawgit.com/w3c/automotive-bg/master/data_spec.html">
 <script src="../resources/testharness.js"></script>
 <script src="../resources/testharnessreport.js"></script>
+<script src="support/support.js"></script>
 <div id="log"></div>
 <script>
 
 test(function () {
-  var drivingMode = tizen.vehicle.drivingMode;
-  assert_true("mode" in drivingMode);
+  var drivingMode = vehicle.drivingMode;
+  assert_true("mode" in drivingMode, "the DrivingMode.mode exists");
   assert_readonly(drivingMode, "mode", "the DrivingMode.mode is readonly");
   assert_equals(typeof drivingMode.mode, "boolean", "the type of DrivingMode.mode");
-}, "Check if DrivingMode.mode exists, readonly and type of boolean"); 
+}, "Check if DrivingMode.mode exists, readonly and type of boolean");
 
 </script>

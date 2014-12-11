@@ -36,14 +36,15 @@ Authors:
 <link rel="help" href="http://rawgit.com/w3c/automotive-bg/master/data_spec.html">
 <script src="../resources/testharness.js"></script>
 <script src="../resources/testharnessreport.js"></script>
+<script src="support/support.js"></script>
 <div id="log"></div>
 <script>
 
 test(function () {
-  var vehicleSpeed = tizen.vehicle.vehicleSpeed;
-  assert_true("speed" in vehicleSpeed);
-  assert_readonly(speed, "speed", "the VehicleSpeed.speed is readonly");
+  var vehicleSpeed = vehicle.vehicleSpeed;
+  assert_true("speed" in vehicleSpeed, "the VehicleSpeed.speed exists");
+  assert_readonly(vehicleSpeed, "speed", "the VehicleSpeed.speed is readonly");
   assert_equals(typeof vehicleSpeed.speed, "number", "the type of VehicleSpeed.speed");
-}, "Check if VehicleSpeed.speed exists, readonly and type of number"); 
+}, "Check if VehicleSpeed.speed exists, readonly and type of number");
 
 </script>

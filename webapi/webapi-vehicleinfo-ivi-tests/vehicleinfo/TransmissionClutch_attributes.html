@@ -36,14 +36,15 @@ Authors:
 <link rel="help" href="http://rawgit.com/w3c/automotive-bg/master/data_spec.html">
 <script src="../resources/testharness.js"></script>
 <script src="../resources/testharnessreport.js"></script>
+<script src="support/support.js"></script>
 <div id="log"></div>
 <script>
 
 test(function () {
-  var transmissionClutch = tizen.vehicle.transmissionClutch;
-  assert_true("wear" in transmissionClutch);
+  var transmissionClutch = vehicle.transmissionClutch;
+  assert_true("wear" in transmissionClutch, "the TransmissionClutch.wear exists");
   assert_readonly(transmissionClutch, "wear", "the TransmissionClutch.wear is readonly");
   assert_equals(typeof transmissionClutch.wear, "number", "the type of TransmissionClutch.wear");
-}, "Check if TransmissionClutch.wear exists, readonly and type of number"); 
+}, "Check if TransmissionClutch.wear exists, readonly and type of number");
 
 </script>

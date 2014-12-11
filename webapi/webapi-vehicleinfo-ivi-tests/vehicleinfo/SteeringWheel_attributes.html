@@ -36,14 +36,15 @@ Authors:
 <link rel="help" href="http://rawgit.com/w3c/automotive-bg/master/data_spec.html">
 <script src="../resources/testharness.js"></script>
 <script src="../resources/testharnessreport.js"></script>
+<script src="support/support.js"></script>
 <div id="log"></div>
 <script>
 
 test(function () {
-  var steeringWheel = new tizen.vehicle.steeringWheel;
-  assert_true("angle" in steeringWheel);
+  var steeringWheel = vehicle.steeringWheel;
+  assert_true("angle" in steeringWheel, "the SteeringWheel.angle exists");
   assert_readonly(steeringWheel, "angle", "the SteeringWheel.angle is readonly");
   assert_equals(typeof steeringWheel.angle, "number", "the type of SteeringWheel.angle");
-}, "Check if SteeringWheel.angle exists, readonly and type of number"); 
+}, "Check if SteeringWheel.angle exists, readonly and type of number");
 
 </script>
