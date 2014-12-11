@@ -46,7 +46,8 @@ Authors:
     <div id="log"></div>
     <script>
         test(function () {
-            check_unsupported("nfc", tizen.nfc);
+            //In Tizen 3.0, W3C NFC API is used to instead of Tizen NFC API
+            check_unsupported("nfc", navigator.nfc);
         }, document.title);
     </script>
   </body>
