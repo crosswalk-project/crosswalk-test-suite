@@ -16,7 +16,9 @@ def caseExecute():
         fp.close() 
         
         #genarate package and execute
-        packageInfo = open(ConstPath + "/report/packageInfo.txt", 'a+')
+        if os.path.exists(ConstPath + "/report/packRes.txt") and os.path.exists(ConstPath + "/report/packageInfo.txt"):
+            os.remove(ConstPath + "/report/packRes.txt")
+            os.remove(ConstPath + "/report/packageInfo.txt")
         if os.path.exists(ConstPath + "/tools/crosswalk/"):
             os.chdir(ConstPath + "/tools/crosswalk/")
         else:
@@ -46,6 +48,7 @@ def caseExecute():
             print "##########"
             flag = i[-8:].strip()
             caseStart = time.strftime("%Y-%m-%d %H:%M:%S")
+            packageInfo = open(ConstPath + "/report/packageInfo.txt", 'a+')
             packageInfo.write(i+ "\n")
             packageInfo.write("Build start time: " + caseStart + "\n")
             dirInfo = open(ConstPath + "/report/targetDir.txt")
@@ -137,12 +140,12 @@ def caseExecute():
             caseEnd = time.strftime("%Y-%m-%d %H:%M:%S")
             packageInfo.write("Build end time: " + caseEnd + "\n\n")
             packageInfo.flush()
+            packageInfo.close()
             print "Package Result: ",result
             pr = open(ConstPath + "/report/packRes.txt", 'a+')
             tt = i + "\t" + flag + "\t" + result + "\n"
             pr.write(tt)
             pr.close()
-        packageInfo.close()
         print "Excute cases ------------------------->O.K"
     except Exception,e:
         print Exception,":",e
