@@ -9,6 +9,8 @@ import org.chromium.content.browser.test.util.TestCallbackHelperContainer.OnPage
 import org.chromium.content.browser.test.util.TestCallbackHelperContainer.OnReceivedErrorHelper;
 import org.xwalk.core.XWalkUIClient.LoadStatus;
 
+import android.net.Uri;
+import android.webkit.ValueCallback;
 import android.webkit.WebResourceResponse;
 
 public class TestHelperBridge {
@@ -32,6 +34,9 @@ public class TestHelperBridge {
     private final OnProgressChangedHelper mOnProgressChangedHelper;
     private final ShouldInterceptLoadRequestHelper mShouldInterceptLoadRequestHelper;
     private final ShouldOverrideUrlLoadingHelper mShouldOverrideUrlLoadingHelper;
+    private final OnFullscreenToggledHelper mOnFullscreenToggledHelper;
+    private final OpenFileChooserHelper mOpenFileChooserHelper;
+
     TestHelperBridge() {
         mOnPageStartedHelper = new OnPageStartedHelper();
         mOnPageFinishedHelper = new OnPageFinishedHelper();
@@ -50,6 +55,8 @@ public class TestHelperBridge {
         mOnProgressChangedHelper = new OnProgressChangedHelper();
         mShouldInterceptLoadRequestHelper = new ShouldInterceptLoadRequestHelper();
         mShouldOverrideUrlLoadingHelper = new ShouldOverrideUrlLoadingHelper();
+        mOnFullscreenToggledHelper = new OnFullscreenToggledHelper();
+        mOpenFileChooserHelper = new OpenFileChooserHelper();
     }
 
     public WebResourceResponse shouldInterceptLoadRequest(String url) {
@@ -196,5 +203,21 @@ public class TestHelperBridge {
         boolean returnValue = mShouldOverrideUrlLoadingHelper.getShouldOverrideUrlLoadingReturnValue();
         mShouldOverrideUrlLoadingHelper.notifyCalled(url);
         return returnValue;
+    }
+
+    public OnFullscreenToggledHelper getOnFullscreenToggledHelper() {
+        return mOnFullscreenToggledHelper;
+    }
+
+    public void onFullscreenToggled(boolean enterFullscreen) {
+        mOnFullscreenToggledHelper.notifyCalled(enterFullscreen);
+    }
+
+    public OpenFileChooserHelper getOpenFileChooserHelper() {
+        return mOpenFileChooserHelper;
+    }
+
+    public void openFileChooser(ValueCallback<Uri> uploadFile) {
+        mOpenFileChooserHelper.notifyCalled(uploadFile);
     }
 }

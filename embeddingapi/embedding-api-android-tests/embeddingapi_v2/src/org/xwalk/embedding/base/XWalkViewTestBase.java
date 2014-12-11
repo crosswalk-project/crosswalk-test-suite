@@ -36,9 +36,11 @@ import com.test.server.ActivityInstrumentationTestCase2;
 import android.content.Context;
 import android.content.res.AssetManager;
 import android.graphics.Bitmap;
+import android.net.Uri;
 import android.net.http.SslError;
 import android.os.Bundle;
 import android.os.Message;
+import android.util.Log;
 import android.util.Pair;
 import android.webkit.ValueCallback;
 import android.webkit.WebResourceResponse;
@@ -49,6 +51,8 @@ public class XWalkViewTestBase extends ActivityInstrumentationTestCase2<MainActi
         super(activityClass);
     }
 
+    protected static final String REDIRECT_TARGET_PATH = "/redirect_target.html";
+    protected static final String TITLE = "TITLE";
     protected final String mExpectedStr = "xwalk";
     protected static final String DATA_URL = "data:text/html,<div/>";
     
@@ -229,7 +233,7 @@ public class XWalkViewTestBase extends ActivityInstrumentationTestCase2<MainActi
         helper.waitUntilHasValue();
         Assert.assertTrue("Failed to retrieve JavaScript evaluation results.", helper.hasValue());
         return helper.getJsonResultAndClear();
-        }
+    }
 
     protected String getUrlOnUiThread() throws Exception {
         return runTestOnUiThreadAndGetResult(new Callable<String>() {
@@ -595,6 +599,18 @@ public class XWalkViewTestBase extends ActivityInstrumentationTestCase2<MainActi
         }
 
         @Override
+        public void onFullscreenToggled(XWalkView view, boolean enterFullscreen) {
+            System.out.println("test............111111");
+            mInnerContentsClient.onFullscreenToggled(enterFullscreen);
+        }
+
+        @Override
+        public void openFileChooser(XWalkView view,
+                ValueCallback<Uri> uploadFile, String acceptType, String capture) {
+            mInnerContentsClient.openFileChooser(uploadFile);
+        }
+
+        @Override
         public boolean onJavascriptModalDialog(XWalkView view, JavascriptMessageType type,
                 String url, String message, String defaultValue, XWalkJavascriptResult result) {
             switch(type) {
@@ -806,7 +822,7 @@ public class XWalkViewTestBase extends ActivityInstrumentationTestCase2<MainActi
         return false;
     }
 
-    public void clickOnElementId_changeTitle(final String id) throws Exception {
+    public void clickOnElementId_evaluateJavascript(final String id) throws Exception {
         Assert.assertTrue(CriteriaHelper.pollForCriteria(new Criteria() {
             @Override
             public boolean isSatisfied() {
@@ -821,16 +837,15 @@ public class XWalkViewTestBase extends ActivityInstrumentationTestCase2<MainActi
                 }
             }
         }, WAIT_TIMEOUT_MS, CHECK_INTERVAL));
-
-        CallbackHelper getTitleHelper = mTestHelperBridge.getOnTitleUpdatedHelper();
-        int currentCallCount = getTitleHelper.getCallCount();
-        executeJavaScriptAndWaitForResult(
-                "var evObj = document.createEvent('Events'); " +
-                "evObj.initEvent('click', true, false); " +
-                "document.getElementById('" + id + "').dispatchEvent(evObj);" +
-                "console.log('element with id [" + id + "] clicked');");
-        getTitleHelper.waitForCallback(currentCallCount, 1, WAIT_TIMEOUT_SECONDS,
-                TimeUnit.SECONDS);
+        try {
+            executeJavaScriptAndWaitForResult(
+                    "var evObj = document.createEvent('Events'); " +
+                    "evObj.initEvent('click', true, false); " +
+                    "document.getElementById('" + id + "').dispatchEvent(evObj);" +
+                    "console.log('element with id [" + id + "] clicked');");
+          } catch (Throwable t) {
+              t.printStackTrace();
+          }
     }
 
     public void clickOnElementId(final String id, String frameName) throws Exception {
@@ -857,11 +872,10 @@ public class XWalkViewTestBase extends ActivityInstrumentationTestCase2<MainActi
         }, WAIT_TIMEOUT_MS, CHECK_INTERVAL));
 
         try {
-            executeJavaScriptAndWaitForResult(
-                "var evObj = document.createEvent('Events'); " +
-                "evObj.initEvent('click', true, false); " +
-                script2 +
-                "console.log('element with id [" + id + "] clicked');");
+          loadJavaScriptUrl("javascript:var evObj = document.createEvent('Events'); " +
+          "evObj.initEvent('click', true, false); " +
+          script2 +
+          "console.log('element with id [" + id + "] clicked');");
         } catch (Throwable t) {
             t.printStackTrace();
         }
@@ -941,4 +955,13 @@ public class XWalkViewTestBase extends ActivityInstrumentationTestCase2<MainActi
         return new WebResourceResponse(
                 mimeType, encoding, new ByteArrayInputStream(input.getBytes(encoding)));
     }
+
+    protected void loadJavaScriptUrl(final String url) throws Exception {
+        if (!url.startsWith("javascript:")) {
+            Log.w("Test", "loadJavascriptUrl only accepts javascript: url");
+            return;
+        }
+        loadUrlAsync(url);
+    }
+
 }

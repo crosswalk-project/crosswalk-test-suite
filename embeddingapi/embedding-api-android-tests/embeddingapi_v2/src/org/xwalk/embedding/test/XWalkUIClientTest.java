@@ -4,8 +4,13 @@
 
 package org.xwalk.embedding.test;
 
+import java.util.concurrent.TimeUnit;
 import java.util.concurrent.TimeoutException;
 
+import org.chromium.content.browser.test.util.TestCallbackHelperContainer.OnPageFinishedHelper;
+import org.chromium.content.browser.test.util.TestCallbackHelperContainer.OnPageStartedHelper;
+import org.chromium.content.browser.test.util.TestCallbackHelperContainer.OnReceivedErrorHelper;
+import org.chromium.net.test.util.TestWebServer;
 import org.xwalk.core.XWalkUIClient;
 import org.xwalk.core.XWalkUIClient.LoadStatus;
 import org.xwalk.embedding.base.OnTitleUpdatedHelper;
@@ -179,6 +184,50 @@ public class XWalkUIClientTest extends XWalkViewTestBase {
     }
 
     @SmallTest
+    public void testOnPageLoadStartedWithLocalUrl() {
+        try {
+            String url = "file:///android_asset/index.html";
+            OnPageStartedHelper mOnPageStartedHelper = mTestHelperBridge.getOnPageStartedHelper();
+            int currentCallCount = mOnPageStartedHelper.getCallCount();
+            loadUrlAsync(url);
+            mOnPageStartedHelper.waitForCallback(currentCallCount);
+            assertEquals(url, mOnPageStartedHelper.getUrl());
+        } catch (Exception e) {
+            assertTrue(false);
+            e.printStackTrace();
+        }
+    }
+
+    @SmallTest
+    public void testOnPageLoadStartedWithServer() {
+        try {
+            final String testHtml = "<html><head>Header</head><body>Body</body></html>";
+            final String testPath = "/test.html";
+            final String testUrl = mWebServer.setResponse(testPath, testHtml, null);
+            OnPageStartedHelper mOnPageStartedHelper = mTestHelperBridge.getOnPageStartedHelper();
+            int currentCallCount = mOnPageStartedHelper.getCallCount();
+            loadUrlAsync(testUrl);
+            mOnPageStartedHelper.waitForCallback(currentCallCount);
+            assertEquals(testUrl, mOnPageStartedHelper.getUrl());
+        } catch (Exception e) {
+            assertTrue(false);
+        }
+    }
+
+    public void testOnPageLoadStartedWithInvalidUrl() {
+        try {
+            String url = "http://this.url.is.invalid/";
+            OnPageStartedHelper mOnPageStartedHelper = mTestHelperBridge.getOnPageStartedHelper();
+            int currentCallCount = mOnPageStartedHelper.getCallCount();
+            loadUrlAsync(url);
+            mOnPageStartedHelper.waitForCallback(currentCallCount);
+            assertEquals(url, mOnPageStartedHelper.getUrl());
+        } catch (Exception e) {
+            assertTrue(false);
+        }
+    }
+
+    @SmallTest
     public void testOnPageStopped() {
         try {
             getInstrumentation().runOnMainSync(new Runnable() {
@@ -208,6 +257,102 @@ public class XWalkUIClientTest extends XWalkViewTestBase {
                 }
             });
             assertTrue(true);
+        } catch (Exception e) {
+            e.printStackTrace();
+            assertTrue(false);
+        }
+    }
+
+    @SmallTest
+    public void testOnPageLoadStoppedWithLocalUrl() {
+        try {
+            String url = "file:///android_asset/index.html";
+            OnPageFinishedHelper mOnPageFinishedHelper = mTestHelperBridge.getOnPageFinishedHelper();
+            int currentCallCount = mOnPageFinishedHelper.getCallCount();
+            loadUrlAsync(url);
+            mOnPageFinishedHelper.waitForCallback(currentCallCount);
+            assertEquals(url, mOnPageFinishedHelper.getUrl());
+            assertEquals(LoadStatus.FINISHED, mTestHelperBridge.getLoadStatus());
+        } catch (Exception e) {
+            e.printStackTrace();
+            assertTrue(false);
+        }
+    }
+
+    public void testOnPageLoadStoppedWithServer() {
+        try {
+            final String testHtml = "<html><head>Header</head><body>Body</body></html>";
+            final String testPath = "/test.html";
+            OnPageFinishedHelper mOnPageFinishedHelper = mTestHelperBridge.getOnPageFinishedHelper();
+            final String testUrl = mWebServer.setResponse(testPath, testHtml, null);
+            int currentCallCount = mOnPageFinishedHelper.getCallCount();
+            loadUrlAsync(testUrl);
+            mOnPageFinishedHelper.waitForCallback(currentCallCount);
+            assertEquals(testUrl, mOnPageFinishedHelper.getUrl());
+            assertEquals(LoadStatus.FINISHED, mTestHelperBridge.getLoadStatus());
+        } catch (Exception e) {
+            e.printStackTrace();
+            assertTrue(false);
+        }
+    }
+
+    public void testOnPageLoadStoppedWithData() {
+        try {
+            final String name = "index.html";
+            String fileContent = getFileContent(name);
+            OnPageFinishedHelper mOnPageFinishedHelper = mTestHelperBridge.getOnPageFinishedHelper();
+            int currentCallCount = mOnPageFinishedHelper.getCallCount();
+            loadDataAsync(null, fileContent, "text/html", false);
+            mOnPageFinishedHelper.waitForCallback(currentCallCount);
+            assertEquals("about:blank", mOnPageFinishedHelper.getUrl());
+            assertEquals(LoadStatus.FINISHED, mTestHelperBridge.getLoadStatus());
+        } catch (Exception e) {
+            e.printStackTrace();
+            assertTrue(false);
+        }
+    }
+
+    public void testOnPageLoadStoppedWithInvalidUrl() {
+        try {
+            String url = "http://localhost/non_existent";
+            OnPageFinishedHelper mOnPageFinishedHelper = mTestHelperBridge.getOnPageFinishedHelper();
+            OnReceivedErrorHelper mOnReceivedErrorHelper = mTestHelperBridge.getOnReceivedErrorHelper();
+            int currentCallCount = mOnPageFinishedHelper.getCallCount();
+            int onReceivedErrorCallCount = mOnReceivedErrorHelper.getCallCount();
+            assertEquals(0, mOnReceivedErrorHelper.getCallCount());
+            loadUrlAsync(url);
+    
+            mOnReceivedErrorHelper.waitForCallback(onReceivedErrorCallCount,
+                                                   1, WAIT_TIMEOUT_MS,
+                                                   TimeUnit.MILLISECONDS);
+            mOnPageFinishedHelper.waitForCallback(currentCallCount,
+                                                  1, WAIT_TIMEOUT_MS,
+                                                  TimeUnit.MILLISECONDS);
+            assertEquals(1, mOnReceivedErrorHelper.getCallCount());
+            assertEquals(url, mOnPageFinishedHelper.getUrl());
+            assertEquals(LoadStatus.FAILED, mTestHelperBridge.getLoadStatus());
+        } catch (Exception e) {
+            e.printStackTrace();
+            assertTrue(false);
+        }
+    }
+
+    public void testOnPageLoadStoppedWithStopLoading() {
+        try {
+            final String testHtml = "<html><head>Header</head><body>Body</body></html>";
+            final String testPath = "/test.html";
+            OnPageFinishedHelper mOnPageFinishedHelper = mTestHelperBridge.getOnPageFinishedHelper();
+            OnPageStartedHelper mOnPageStartedHelper = mTestHelperBridge.getOnPageStartedHelper();
+    
+            final String testUrl = mWebServer.setResponse(testPath, testHtml, null);
+            int currentCallCount = mOnPageFinishedHelper.getCallCount();
+            int startedCount = mOnPageStartedHelper.getCallCount();
+            loadUrlAsync(testUrl);
+            mOnPageStartedHelper.waitForCallback(startedCount);
+            stopLoading();
+            mOnPageFinishedHelper.waitForCallback(currentCallCount);
+            assertEquals(testUrl, mOnPageFinishedHelper.getUrl());
+            assertEquals(LoadStatus.CANCELLED, mTestHelperBridge.getLoadStatus());
         } catch (Exception e) {
             e.printStackTrace();
             assertTrue(false);
