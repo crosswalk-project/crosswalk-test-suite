@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <!--
-Copyright (c) 2013 Intel Corporation.
+Copyright (c) 2014 Intel Corporation.
 
 Redistribution and use in source and binary forms, with or without modification,
 are permitted provided that the following conditions are met:
@@ -26,24 +26,54 @@ NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE,
 EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
 Authors:
-        Hao, Yunfei <yunfeix.hao@intel.com>
         Xu, Kang <kangx.xu@intel.com>
 
 -->
 
 <meta charset="utf-8">
-<title>Speech Test: SpeechRecognition - constructor</title>
-<link rel='author' title='Intel' href='http://www.intel.com'>
+<title>Speech Test: SpeechRecognition - attributes</title>
+<link rel="author" title="Intel" href="http://www.intel.com">
 <link rel="help" href="https://dvcs.w3.org/hg/speech-api/raw-file/tip/speechapi.html">
 <script src="../resources/testharness.js"></script>
 <script src="../resources/testharnessreport.js"></script>
 <div id="log"></div>
 <script>
 
+var speechRecognition;
+
+setup(function () {
+  speechRecognition = new tizen.SpeechRecognition();
+});
+
+[
+  ["object", "grammars", ""],
+  ["string", "lang", ""],
+  ["boolean", "continuous", ""],
+  ["boolean", "interimResults", ""],
+  ["number", "maxAlternatives", ""],
+  ["string", "serviceURI", ""],
+  ["function", "start", ""],
+  ["function", "stop", ""],
+  ["function", "abort", ""],
+  ["object", "onaudiostart", ""],
+  ["object", "onsoundstart", ""],
+  ["object", "onspeechstart", ""],
+  ["object", "onspeechend", ""],
+  ["object", "onsoundend", ""],
+  ["object", "onaudioend", ""],
+  ["object", "onresult", ""],
+  ["object", "onnomatch", ""],
+  ["object", "onerror", ""],
+  ["object", "onstart", ""],
+  ["object", "onend", ""]
+].forEach(function (attr) {
+  var type = attr[0];
+  var name = attr[1];
+
   test(function () {
-    var obj = new tizen.SpeechRecognition();
-    assert_true(obj instanceof tizen.SpeechRecognition, "object can be created by SpeechRecognition constructor");
-  }, "Check if SpeechRecognition constructor works properly");
+    assert_true(name in speechRecognition, "the SpeechRecognition." + name + " exists");
+    assert_equals(typeof speechRecognition[name], type, "the type of SpeechRecognition." + name);
+  }, "Check if SpeechRecognition." + name + " exists and type of " + type);
+});
 
 </script>
-

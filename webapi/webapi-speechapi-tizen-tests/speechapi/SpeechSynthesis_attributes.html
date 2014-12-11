@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <!--
-Copyright (c) 2013 Intel Corporation.
+Copyright (c) 2014 Intel Corporation.
 
 Redistribution and use in source and binary forms, with or without modification,
 are permitted provided that the following conditions are met:
@@ -26,24 +26,46 @@ NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE,
 EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
 Authors:
-        Hao, Yunfei <yunfeix.hao@intel.com>
         Xu, Kang <kangx.xu@intel.com>
 
 -->
 
 <meta charset="utf-8">
-<title>Speech Test: SpeechRecognition - constructor</title>
-<link rel='author' title='Intel' href='http://www.intel.com'>
+<title>Speech Test: SpeechSynthesis - attributes</title>
+<link rel="author" title="Intel" href="http://www.intel.com">
 <link rel="help" href="https://dvcs.w3.org/hg/speech-api/raw-file/tip/speechapi.html">
 <script src="../resources/testharness.js"></script>
 <script src="../resources/testharnessreport.js"></script>
 <div id="log"></div>
 <script>
 
+var speechSynthesis;
+
+setup(function () {
+  speechSynthesis = tizen.speechSynthesis;
+});
+
+[
+  ["boolean", "pending", "readonly"],
+  ["boolean", "speaking", "readonly"],
+  ["boolean", "paused", "readonly"],
+  ["function", "speak", ""],
+  ["function", "cancel", ""],
+  ["function", "pause", ""],
+  ["function", "resume", ""],
+  ["function", "getVoices", ""]
+].forEach(function (attr) {
+  var type = attr[0];
+  var name = attr[1];
+  var read = attr[2];
+
   test(function () {
-    var obj = new tizen.SpeechRecognition();
-    assert_true(obj instanceof tizen.SpeechRecognition, "object can be created by SpeechRecognition constructor");
-  }, "Check if SpeechRecognition constructor works properly");
+    assert_true(name in speechSynthesis, "the SpeechSynthesis." + name + " exists");
+    assert_equals(typeof speechSynthesis[name], type, "the type of SpeechSynthesis." + name);
+    if ( read == "readonly" ) {
+      assert_readonly(speechSynthesis, name, "the SpeechSynthesis." + name + " is readonly");
+    }
+  }, "Check if " + read + " SpeechSynthesis." + name + " exists and type of " + type);
+});
 
 </script>
-
