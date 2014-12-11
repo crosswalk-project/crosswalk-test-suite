@@ -1,6 +1,5 @@
-<!DOCTYPE html>
-<!--
-Copyright (c) 2013 Intel Corporation.
+/*
+Copyright (c) 2014 Intel Corporation.
 
 Redistribution and use in source and binary forms, with or without modification,
 are permitted provided that the following conditions are met:
@@ -26,60 +25,11 @@ NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE,
 EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
 Authors:
-        Liu,xin <xinx.liu@intel.com>
-        Xu, Kang <kangx.xu@intel.com>
+         Xu, Kang <kangx.xu@intel.com>
 
--->
+*/
 
-<meta charset="utf-8">
-<title>Vehicle Test: Vehicle - attributes</title>
-<link rel="author" title="Intel" href="http://www.intel.com">
-<link rel="help" href="http://rawgit.com/w3c/automotive-bg/master/vehicle_spec.html" />
-<script src="../resources/testharness.js"></script>
-<script src="../resources/testharnessreport.js"></script>
-<script src="support/support.js"></script>
-<div id="log"></div>
-<script>
+/*The vehicle API will be implemented in navigator, but tizen.vehicle is still
+valid on tizen, so keep tizen.vehicle until navigator.vehicle is implemented.*/
 
-[
-  "vehicleSpeed",
-  "climateControl",
-  "door",
-  "wheelSpeed",
-  "engineSpeed",
-  "powerTrainTorque",
-  "acceleratorPedalPosition",
-  "throttlePosition",
-  "tripMeters",
-  "transmission",
-  "cruiseControlStatus",
-  "lightStatus",
-  "interiorLightStatus",
-  "horn",
-  "chime",
-  "fuel",
-  "engineOil",
-  "acceleration",
-  "engineCoolant",
-  "steeringWheel",
-  "ignitionTime",
-  "yawRate",
-  "brakeOperation",
-  "wheelTick",
-  "buttonEvent",
-  "drivingMode",
-  "nightMode",
-  "odometer",
-  "transmissionClutch",
-  "washerFluid",
-  "malfunctionIndicator",
-  "batteryStatus",
-  "tire",
-  "diagnostic"
-].forEach(function (attr) {
-  test(function () {
-    assert_true(attr in vehicle, "the Vehicle." + attr + " exists");
-  }, "Check if Vehicle." + attr + " exists");
-});
-
-</script>
+var vehicle = navigator.vehicle || tizen.vehicle;

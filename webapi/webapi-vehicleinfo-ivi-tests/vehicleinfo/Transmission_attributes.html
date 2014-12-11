@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <!--
-Copyright (c) 2013 Intel Corporation.
+Copyright (c) 2014 Intel Corporation.
 
 Redistribution and use in source and binary forms, with or without modification,
 are permitted provided that the following conditions are met:
@@ -26,59 +26,39 @@ NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE,
 EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
 Authors:
-        Liu,xin <xinx.liu@intel.com>
+        Xu, Kang <kangx.xu@intel.com>
 
 -->
 
 <meta charset="utf-8">
-<title>Vehicle Test: Vehicle_attributes</title>
+<title>Vehicle Test: Transmission - attributes</title>
 <link rel="author" title="Intel" href="http://www.intel.com">
-<link rel="help" href="http://rawgit.com/w3c/automotive-bg/master/vehicle_spec.html" />
+<link rel="help" href="http://rawgit.com/w3c/automotive-bg/master/data_spec.html">
 <script src="../resources/testharness.js"></script>
 <script src="../resources/testharnessreport.js"></script>
+<script src="support/support.js"></script>
 <div id="log"></div>
 <script>
-var zone;
-test(function() {
-  zone = new Zone;
-}, "Check that Zone is a constructor");
 
-test(function() {
-  assert_equals(typeof zone, "object");
-}, "Check that Zone returns an object");
+var transmission;
 
-test(function() {
-  assert_true("value" in zone);
-}, "Check if Zone.value exists");
+setup(function () {
+  transmission = vehicle.transmission;
+});
 
-test(function() {
-  assert_equals(typeof zone.value, "object");
-}, "Check that Zone.value returns an object array");
+[
+  ["number", "gear", "readonly"],
+  ["string", "mode", "readonly"]
+].forEach(function (attr) {
+  var type = attr[0];
+  var name = attr[1];
+  var read = attr[2];
 
-test(function() {
-  assert_true("driver" in zone);
-}, "Check if Zone.driver exists");
-
-test(function() {
-  assert_equals(typeof zone.driver, "object");
-}, "Check that Zone.driver returns an object Zone");
-
-test(function() {
-  assert_true("equals" in zone);
-}, "Check if Zone.equals exists");
-
-test(function() {
-  var zone1 = new Zone(["Front", "Left"])
-  assert_equals(typeof zone.equals(zone1), "boolean");
-}, "Check that Zone.equals returns a boolean");
-
-test(function() {
-  assert_true("contains" in zone);
-}, "Check if Zone.contains exists");
-
-test(function() {
-  var zone2 = new Zone(["Front", "Right"])
-  assert_equals(typeof zone.contains(zone2), "boolean");
-}, "Check that Zone.contains returns a boolean");
+  test(function () {
+    assert_true(name in transmission, "the Transmission." + name + " exists");
+    assert_equals(typeof transmission[name], type, "the type of Transmission." + name);
+    assert_readonly(transmission, name, "the Transmission." + name + " is readonly");
+  }, "Check if " + read + " Transmission." + name + " exists and type of " + type);
+});
 
 </script>
