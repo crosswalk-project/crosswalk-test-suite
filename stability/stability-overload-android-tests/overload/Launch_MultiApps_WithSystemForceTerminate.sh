@@ -36,6 +36,7 @@ if [ "${command}""x" == "x" ];then
 fi
 
 #install webapp
+cd $local_path
 cd ../tools/crosswalk
 for((i=0; i<100; i++)); do
 echo $i
@@ -52,7 +53,7 @@ else
     for((j=0; j<$i+1; j++)); do
         $command uninstall org.xwalk.test$j
     done
-    exit 1
+    exit 0
 fi
 sleep 3
 done
