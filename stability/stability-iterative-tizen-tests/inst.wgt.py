@@ -144,7 +144,7 @@ def instPKGs():
     if return_code != 0:
         action_status = False
  
-    if not doRemoteCopy("iterative", "%s/iterative" % PKG_SRC_DIR):
+    if not doRemoteCopy("%s/iterative" % SCRIPT_DIR, "%s/iterative" % PKG_SRC_DIR):
         action_status = False
     
     for root, dirs, files in os.walk(SCRIPT_DIR):
