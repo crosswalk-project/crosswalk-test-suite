@@ -36,7 +36,7 @@ Authors:
     <link rel="author" title="Intel" href="http://www.intel.com"/>
     <link rel="help" href="https://developer.tizen.org/help/topic/org.tizen.web.device.apireference/tizen/systeminfo.html"/>
     <meta name="flags" content=""/>
-    <meta name="assert" content="Check if a mobile device implementation MUST have at least 1GB of storage"/>
+    <meta name="assert" content="Check if a mobile device implementation MUST have at least 4GB of storage"/>
     <meta charset="utf-8"/>
     <script src="support/caps.js"></script>
   </head>
@@ -50,8 +50,8 @@ Authors:
                 // hack, because there should be interface SystemInfoStorage passed to onSuccessCallback instead of SystemInfoStorageUnit[]
                 for(var i=0; i<storage.length; i++){
                     if(storage[i].type == "INTERNAL"){
-                        var result = storage[i].capacity/1073741824
-                        assert_true(storage[i].capacity > 1073741824,"A mobile device implementation MUST have at least 1GB of storage, but it is " + result.toFixed(3) + "G");
+                        var result = storage[i].capacity/4294967296
+                        assert_true(storage[i].capacity > 4294967296,"A mobile device implementation MUST have at least 4GB of storage, but it is " + result.toFixed(3) + "G");
                     }
                 }
                 t.done();

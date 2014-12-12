@@ -81,14 +81,14 @@
           </spec>
         </specs>
       </testcase>
-      <testcase component="Tizen Device APIs/System/SystemInfo" execution_type="auto" id="caps_memorystorage" priority="P1" purpose="Check that a mobile device must have at least 1GB of storage." status="approved" type="compliance">
+      <testcase component="Tizen Device APIs/System/SystemInfo" execution_type="auto" id="caps_memorystorage" priority="P1" purpose="Check that a mobile device must have at least 4GB of storage." status="approved" type="compliance">
         <description>
           <pre_condition />
           <post_condition />
           <steps>
             <step order="1">
-              <step_desc>Check that a mobile device must have at least 1GB of storage.</step_desc>
-              <expected>A mobile device have at least 1GB of storage.</expected>
+              <step_desc>Check that a mobile device must have at least 4GB of storage.</step_desc>
+              <expected>A mobile device have at least 4GB of storage.</expected>
             </step>
           </steps>
           <test_script_entry>/opt/tct-capability-tests/capability/caps_memorystorage.html</test_script_entry>
@@ -212,131 +212,6 @@
           <spec>
             <spec_assertion category="Tizen Device API Specifications" element_name="callhistory" element_type="attribute" interface="CallHistoryObject" section="Social" specification="Callhistory" />
             <spec_url>https://developer.tizen.org/help/topic/org.tizen.web.device.apireference/tizen/callhistory.html</spec_url>
-            <spec_statement>TBD</spec_statement>
-          </spec>
-        </specs>
-      </testcase>
-      <testcase check_unsupport_error="true" component="Tizen Device APIs/System/SystemInfo" execution_type="auto" id="unsupported_networkbearerselection" priority="P1" purpose="Check that if NetworkBearerSelection API is not supported on the device, it returns 'undefined' when being accessed" status="approved" type="compliance">
-        <description>
-          <pre_condition />
-          <post_condition />
-          <steps>
-            <step order="1">
-              <step_desc>Check if NetworkBearerSelection API is not supported on the device, it returns 'undefined' when accessed.</step_desc>
-              <expected>Pass</expected>
-            </step>
-          </steps>
-          <test_script_entry>/opt/tct-capability-tests/capability/unsupported_networkbearerselection.html</test_script_entry>
-        </description>
-        <specs>
-          <spec>
-            <spec_assertion category="Tizen Device API Specifications" element_name="getCapabilities" element_type="method" interface="SystemInfo" section="System" specification="SystemInfo" />
-            <spec_url>https://developer.tizen.org/help/topic/org.tizen.web.device.apireference/tizen/systeminfo.html</spec_url>
-            <spec_statement>TBD</spec_statement>
-          </spec>
-          <spec>
-            <spec_assertion category="Tizen Device API Specifications" element_name="networkbearerselection" element_type="attribute" interface="NetworkBearerSelectionObject" section="Communication" specification="NBS" />
-            <spec_url>https://developer.tizen.org/help/topic/org.tizen.web.device.apireference/tizen/networkbearerselection.html</spec_url>
-            <spec_statement>TBD</spec_statement>
-          </spec>
-        </specs>
-      </testcase>
-      <testcase check_unsupport_error="true" component="Tizen Device APIs/System/SystemInfo" execution_type="auto" id="unsupported_push" priority="P1" purpose="Check that if Push API is not supported on the device, it returns 'undefined' when being accessed" status="approved" type="compliance">
-        <description>
-          <pre_condition />
-          <post_condition />
-          <steps>
-            <step order="1">
-              <step_desc>Check if Push API is not supported on the device, it returns 'undefined' when accessed.</step_desc>
-              <expected>Pass</expected>
-            </step>
-          </steps>
-          <test_script_entry>/opt/tct-capability-tests/capability/unsupported_push.html</test_script_entry>
-        </description>
-        <specs>
-          <spec>
-            <spec_assertion category="Tizen Device API Specifications" element_name="getCapabilities" element_type="method" interface="SystemInfo" section="System" specification="SystemInfo" />
-            <spec_url>https://developer.tizen.org/help/topic/org.tizen.web.device.apireference/tizen/systeminfo.html</spec_url>
-            <spec_statement>TBD</spec_statement>
-          </spec>
-          <spec>
-            <spec_assertion category="Tizen Device API Specifications" element_name="push" element_type="attribute" interface="PushManagerObject" section="TBD" specification="Push" />
-            <spec_url>https://developer.tizen.org/help/topic/org.tizen.web.device.apireference/tizen/push.html</spec_url>
-            <spec_statement>TBD</spec_statement>
-          </spec>
-        </specs>
-      </testcase>
-      <testcase check_unsupport_error="true" component="Tizen Device APIs/System/SystemInfo" execution_type="auto" id="unsupported_secureelement" priority="P1" purpose="Check that if SecureElement API is not supported on the device, it returns 'undefined' when being accessed" status="approved" type="compliance">
-        <description>
-          <pre_condition />
-          <post_condition />
-          <steps>
-            <step order="1">
-              <step_desc>Check if SecureElement API is not supported on the device, it returns 'undefined' when accessed.</step_desc>
-              <expected>Pass</expected>
-            </step>
-          </steps>
-          <test_script_entry>/opt/tct-capability-tests/capability/unsupported_secureelement.html</test_script_entry>
-        </description>
-        <specs>
-          <spec>
-            <spec_assertion category="Tizen Device API Specifications" element_name="getCapabilities" element_type="method" interface="SystemInfo" section="System" specification="SystemInfo" />
-            <spec_url>https://developer.tizen.org/help/topic/org.tizen.web.device.apireference/tizen/systeminfo.html</spec_url>
-            <spec_statement>TBD</spec_statement>
-          </spec>
-          <spec>
-            <spec_assertion category="Tizen Device API Specifications" element_name="seService" element_type="attribute" interface="SEServiceManagerObject" section="Communication" specification="SE" />
-            <spec_url>https://developer.tizen.org/help/topic/org.tizen.web.device.apireference/tizen/se.html</spec_url>
-            <spec_statement>TBD</spec_statement>
-          </spec>
-        </specs>
-      </testcase>
-      <testcase check_unsupport_error="true" component="Tizen Device APIs/System/SystemInfo" execution_type="auto" id="unsupported_messaging_mms" priority="P1" purpose="Check that if MMS is not supported on the device, it returns 'NotSupportedError' when being accessed" status="approved" type="compliance">
-        <description>
-          <pre_condition />
-          <post_condition />
-          <steps>
-            <step order="1">
-              <step_desc>Check if MMS is not supported on the device, it returns 'NotSupportedError' when accessed.</step_desc>
-              <expected>Pass</expected>
-            </step>
-          </steps>
-          <test_script_entry>/opt/tct-capability-tests/capability/unsupported_messaging_mms.html</test_script_entry>
-        </description>
-        <specs>
-          <spec>
-            <spec_assertion category="Tizen Device API Specifications" element_name="getCapabilities" element_type="method" interface="SystemInfo" section="System" specification="SystemInfo" />
-            <spec_url>https://developer.tizen.org/help/topic/org.tizen.web.device.apireference/tizen/systeminfo.html</spec_url>
-            <spec_statement>TBD</spec_statement>
-          </spec>
-          <spec>
-            <spec_assertion category="Tizen Device API Specifications" element_name="getMessageServices" element_type="method" interface="Messaging" section="Communication" specification="Messaging" />
-            <spec_url>https://developer.tizen.org/help/topic/org.tizen.web.device.apireference/tizen/messaging.html</spec_url>
-            <spec_statement>TBD</spec_statement>
-          </spec>
-        </specs>
-      </testcase>
-      <testcase check_unsupport_error="true" component="Tizen Device APIs/System/SystemInfo" execution_type="auto" id="unsupported_messaging_sms" priority="P1" purpose="Check that if SMS is not supported on the device, it returns 'NotSupportedError' when being accessed" status="approved" type="compliance">
-        <description>
-          <pre_condition />
-          <post_condition />
-          <steps>
-            <step order="1">
-              <step_desc>Check if SMS is not supported on the device, it returns 'NotSupportedError' when accessed.</step_desc>
-              <expected>Pass</expected>
-            </step>
-          </steps>
-          <test_script_entry>/opt/tct-capability-tests/capability/unsupported_messaging_sms.html</test_script_entry>
-        </description>
-        <specs>
-          <spec>
-            <spec_assertion category="Tizen Device API Specifications" element_name="getCapabilities" element_type="method" interface="SystemInfo" section="System" specification="SystemInfo" />
-            <spec_url>https://developer.tizen.org/help/topic/org.tizen.web.device.apireference/tizen/systeminfo.html</spec_url>
-            <spec_statement>TBD</spec_statement>
-          </spec>
-          <spec>
-            <spec_assertion category="Tizen Device API Specifications" element_name="getMessageServices" element_type="method" interface="Messaging" section="Communication" specification="Messaging" />
-            <spec_url>https://developer.tizen.org/help/topic/org.tizen.web.device.apireference/tizen/messaging.html</spec_url>
             <spec_statement>TBD</spec_statement>
           </spec>
         </specs>
