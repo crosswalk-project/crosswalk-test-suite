@@ -65,7 +65,7 @@ Authors:
       });
 
       t.step(function () {
-        assert_throws("SyntaxError", function () {
+        assert_throws("TypeMismatchError", function () {
           pc1.addIceCandidate("", function () {}, function () {});
         },"the candidate parameter is malformed throw a exception");
         t.done();
