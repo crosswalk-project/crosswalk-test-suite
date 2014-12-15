@@ -19,7 +19,7 @@ def tryRunApp(num, caseDir):
 
         device = os.environ.get('DEVICE_ID')
 
-        if ((not device) or len(device)<10):
+        if not device:
             print (" get env error\n")
             sys.exit(1)
 

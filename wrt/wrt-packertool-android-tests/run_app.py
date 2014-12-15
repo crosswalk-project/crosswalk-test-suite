@@ -12,18 +12,15 @@ def tryRunApp(num, caseDir):
         global result, ARCH, pgNum
 
         apkDir = os.environ.get('APK_DIR')
-        #apkDir = ConstPath
-        #apkDir = "/home/wang/opt"
         if apkDir != "" and os.path.exists(apkDir + "/apks"):
             apkDir = apkDir
         elif apkDir != "":
             caseDir = ConstPath + "/apks"
             shutil.move(caseDir, apkDir)
 
-        #device = "E6OKCY411012"
         device = os.environ.get('DEVICE_ID')
 
-        if ((not device) or len(device)<10):
+        if not device:
             print (" get env error\n")
             sys.exit(1)
 
@@ -97,6 +94,4 @@ def tryRunApp(num, caseDir):
         print Exception,":",e
         print "Try run webapp ---------------->Error"
         sys.exit(1)
-        
-#if __name__ == "__main__":
-#    tryRunApp("cmd211-negative", "/opt/wrt-packtertool-android-tests/apks/x86/cmd211-negative")
+
