@@ -41,7 +41,14 @@ Authors:
       <strong>Test steps:</strong>
     </p>
     <ol>
-      <li>Package an embedded app with --arch=x86 --mode=embedded</li>
+      <li>Open one terminal command line window run terminal command, just need to run one of the commands
+below:
+        <ul>
+          <li>$ python make_apk.py --name=&lt;name&gt; --package=&lt;package&gt; --app-url=http://www.baidu.com --arch=x86 --mode=embedded</li>
+          <li>$ python make_apk.py --package=&lt;package&gt; --manifest=&lt;manifest-path&gt; --arch=x86 --mode=embedded</li>
+          <li>$ python make_apk.py --package=&lt;package&gt; --app-local-path=index.html --app-root=&lt;app-root-path&gt; --arch=x86 --mode=embedded</li>
+        </ul>
+      </li>
       <li>Install apk on arm devices</li>
       <li>Launch web app</li>
     </ol>
