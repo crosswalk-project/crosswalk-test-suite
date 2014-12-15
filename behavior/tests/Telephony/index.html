@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<!--
+Copyright (c) 2014 Intel Corporation.
+
+Redistribution and use in source and binary forms, with or without modification,
+are permitted provided that the following conditions are met:
+
+* Redistributions of works must retain the original copyright notice, this list
+  of conditions and the following disclaimer.
+* Redistributions in binary form must reproduce the original copyright notice,
+  this list of conditions and the following disclaimer in the documentation
+  and/or other materials provided with the distribution.
+* Neither the name of Intel Corporation nor the names of its contributors
+  may be used to endorse or promote products derived from this work without
+  specific prior written permission.
+
+THIS SOFTWARE IS PROVIDED BY INTEL CORPORATION "AS IS"
+AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE
+IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE
+ARE DISCLAIMED. IN NO EVENT SHALL INTEL CORPORATION BE LIABLE FOR ANY DIRECT,
+INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING,
+BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE,
+DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY
+OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING
+NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE,
+EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
+
+Authors:
+        Liu, yun <yunx.liu@intel.com>
+
+-->
+
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="initial-scale=1.0, maximum-scale=1.0, width=device-width" />
+    <link rel="stylesheet" type="text/css" href="../../css/jquery.mobile.css" />
+    <link rel="stylesheet" type="text/css" href="../../css/main.css" />
+    <script src="../../js/thirdparty/jquery.js"></script>
+    <script src="../../js/thirdparty/jquery.mobile.js"></script>
+    <script src="../../js/tests.js"></script>
+    <script src="js/main.js"></script>
+    <style>
+        #consolelog {
+           width: 98%;
+           height: 250px;
+           overflow: auto;
+           border: 1px solid;
+           margin: 0px auto;
+        }
+    </style>
+  </head>
+  <body>
+    <div data-role="header">
+      <h1 id="main_page_title"></h1>
+    </div>
+    <div data-role="content">
+      <div id="consolelog">
+      </div>
+      <div id="contentbutton">
+         <div class="ui-grid-c">
+           <div class="ui-block-a"><a id="add_service_listener_btn" data-role="button">Add Service Listeners</a></div>
+           <div class="ui-block-b"><a id="add_call_listeners_btn" data-role="button">Add Call Listeners</a></div>
+           <div class="ui-block-c"><a id="services_btn" data-role="button">Get Services</a></div>
+           <div class="ui-block-d"><a id="get_dservice_btn" data-role="button">Get Default Service</a></div>
+         </div>
+         <div class="ui-grid-d">
+           <div class="ui-block-a"><a id="active_call_btn" data-role="button">Get Active Call</a></div>
+           <div class="ui-block-b"><a id="get_calls_btn" data-role="button">Get All Calls</a></div>
+           <div class="ui-block-c"><a id="dial_btn" data-role="button">Dial</a></div>
+           <div class="ui-block-d" style="text-align: right; padding-top:20px;">Number: </div>
+           <div class="ui-block-e"><input type="text" id="dial_input"/></div>
+         </div>
+         <div class="ui-grid-d">
+           <div class="ui-block-a"><a id="conf_btn" data-role="button">Create Conference</a></div>
+           <div class="ui-block-b"><a id="conf_parties_btn" data-role="button">Get Conference Participants</a></div>
+           <div class="ui-block-c"><a id="split_btn" data-role="button">Split</a></div>
+           <div class="ui-block-d" style="text-align: right; padding-top:20px;">Call Id: </div>
+           <div class="ui-block-e"><input type="text" id="split_input"/></div>
+         </div>
+         <div class="ui-grid-c">
+           <div class="ui-block-a"><a id="disconnect_btn" data-role="button">Disconnect Active Call</a></div>
+           <div class="ui-block-b"><a id="disconnect_all_btn" data-role="button">Disconnect All Calls</a></div>
+           <div class="ui-block-c"><a id="hold_btn" data-role="button">Hold Active Call</a></div>
+           <div class="ui-block-d"><a id="resume_btn" data-role="button">Resume Held Call</a></div>
+         </div>
+         <div class="ui-grid-c">
+           <div class="ui-block-a"><a id="accept_btn" data-role="button">Accept Incoming/Waiting Call</a></div>
+           <div class="ui-block-b"><a id="deflect_btn" data-role="button">Deflect Incoming/Waiting Call</a></div>
+           <div class="ui-block-c" style="text-align: right; padding-top:20px;">To Number: </div>
+           <div class="ui-block-d"><input type="text" id="deflect_input"/></div>
+         </div>
+         <div class="ui-grid-c">
+           <div class="ui-block-a"><a id="transfer_btn" data-role="button">Transfer Incoming/Waiting call</a></div>
+           <div class="ui-block-b"><a id="emerg_nr_btn" data-role="button">Get Emergency Numbers</a></div>
+           <div class="ui-block-c"><a id="remove_call_listeners_btn" data-role="button">Remove Call Listeners</a></div>
+           <div class="ui-block-d"><a id="remove_service_listeners_btn" data-role="button">Remove Service Listeners</a></div>
+         </div>
+         <div class="ui-grid-d">
+           <div class="ui-block-a"><a id="sendtones_btn" data-role="button">Send Tones</a></div>
+           <div class="ui-block-b" style="text-align: right; padding-top:20px;">[0..9, A..F, p]: </div>
+           <div class="ui-block-c"><input type="text" id="tones_input"/></div>
+           <div class="ui-block-d"><a id="starttone_btn" data-role="button">Start Tone</a></div>
+           <div class="ui-block-e"><a id="endtone_btn" data-role="button">End Tone</a></div>
+         </div>
+         <div class="ui-grid-c">
+           <div class="ui-block-a" style="text-align: right; padding-top:20px;">Service Id: </div>
+           <div class="ui-block-b"><input type="text" id="service_id_input"/></div>
+           <div class="ui-block-c"><a id="get_service_btn" data-role="button">Show</a></div>
+           <div class="ui-block-d"><a id="set_dservice_btn" data-role="button">Set As Default</a></div>
+         </div>
+         <div class="ui-grid-b">
+           <div class="ui-block-a"><a id="enable_service_btn" data-role="button">Enable Service</a></div>
+           <div class="ui-block-b"><a id="disable_service_btn" data-role="button">Disable Service</a></div>
+           <div class="ui-block-c"><a id="clearconsole_btn" data-role="button">Clear Console Output</a></div>
+         </div>
+      </div>
+    </div>
+    <div data-role="footer" data-position="fixed">
+    </div>
+    <div data-role="popup" id="popup_info">
+      <font style="font-size:85%">
+        <p>Test Purpose: </p>
+        <p>Verifies the telephony is supported and valid</p>
+        <p>Test Steps: </p>
+        <ol>
+          <li>Click the "Add Service Listeners"</li>
+          <li>Click the "Add Call Listeners"</li>
+          <li>Click the "Get Services"</li>
+          <li>Click the "Get Default Service"</li>
+          <li>Click the "Get Active Call"</li>
+          <li>Click the "Get All Calls"</li>
+          <li>Click the "Dial"</li>
+          <li>Click the "Create Conference"</li>
+          <li>Click the "Get Conference Participants"</li>
+          <li>Click the "Split"</li>
+          <li>Click the "Disconnect Active Call"</li>
+          <li>Click the "Disconnect All Calls\'</li>
+          <li>Click the "Hold Active Call"</li>
+          <li>Click the "Resume Held Call"</li>
+          <li>Click the "Accept Incoming/Waiting Call"</li>
+          <li>Click the "Deflect Incoming/Waiting Call"</li>
+          <li>Click the "Transfer Incoming/Waiting call"</li>
+          <li>Click the "Get Emergency Numbers"</li>
+          <li>Click the "Remove Call Listeners"</li>
+          <li>Click the "Remove Service Listeners"</li>
+          <li>Click the "Send Tones"</li>
+          <li>Click the "Start Tone"</li>
+          <li>Click the "End Tone"</li>
+          <li>Click the "Show"</li>
+          <li>Click the "Set As Default"</li>
+          <li>Click the "Enable Service"</li>
+          <li>Click the "Disable Service"</li>
+        </ol>
+        <p>Expected Result: </p>
+        <p>Test passes if get telephony services and operate telephony successfully</p>
+      </font>
+    </div>
+  </body>
+</html>
