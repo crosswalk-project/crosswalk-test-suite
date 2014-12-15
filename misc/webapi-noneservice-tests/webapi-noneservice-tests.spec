@@ -3,7 +3,7 @@ version=$(grep main-version $(dirname $0)/../../VERSION |awk -F \" '{print $4}')
 sub_version=$(grep release-version $(dirname $0)/../../VERSION |awk -F \" '{print $4}')
 appname=$(echo $name|sed 's/-/_/g')
 
-LIST=`find $(dirname $0)/../../../crosswalk-test-suite/webapi/ -maxdepth 1 -type d |awk '/-tests$/'`
+LIST=`find $(dirname $0)/../../webapi/ -maxdepth 1 -type d |awk '/-tests$/'`
 
 BLACK="ivi-tests
 tct-canvas-html5-tests
