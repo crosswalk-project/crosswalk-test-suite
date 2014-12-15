@@ -143,7 +143,7 @@ def instPKGs():
     if return_code != 0:
         action_status = False
  
-    if not doRemoteCopy("longlasting", "%s/longlasting" % PKG_SRC_DIR):
+    if not doRemoteCopy("%s/longlasting" % SCRIPT_DIR, "%s/longlasting" % PKG_SRC_DIR):
         action_status = False
     
     for root, dirs, files in os.walk(SCRIPT_DIR):
