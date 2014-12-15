@@ -36,27 +36,28 @@ Authors:
 <link rel="help" href="http://www.w3.org/TR/2012/WD-screen-orientation-20120522/#extensions-to-the-screen-interface" />
 <script src="../resources/testharness.js"></script>
 <script src="../resources/testharnessreport.js"></script>
+<script src="support/support.js"></script>
 <div id="log"></div>
 <script>
 
-test(function() {
-  assert_true("set" in tizen.vehicle.door);
+test(function () {
+  assert_true("set" in vehicle.door);
 }, "Check if VehicleSignalInterface.set() exists");
 
-test(function() {
-  assert_true("subscribe" in tizen.vehicle.vehicleSpeed);
+test(function () {
+  assert_true("subscribe" in vehicle.vehicleSpeed);
 }, "Check if VehicleSignalInterface.subscribe() exists");
 
-test(function() {
-  assert_true("unsubscribe" in tizen.vehicle.vehicleSpeed);
+test(function () {
+  assert_true("unsubscribe" in vehicle.vehicleSpeed);
 }, "Check if VehicleSignalInterface.unsubscribe() exists");
 
-test(function() {
-  assert_true("availableForSubscription" in tizen.vehicle.vehicleSpeed);
+test(function () {
+  assert_true("availableForSubscription" in vehicle.vehicleSpeed);
 }, "Check if VehicleSignalInterface.availableForSubscription() exists");
 
-test(function() {
-  assert_true("availableForSetting" in tizen.vehicle.vehicleSpeed);
+test(function () {
+  assert_true("availableForSetting" in vehicle.vehicleSpeed);
 }, "Check if VehicleSignalInterface.availableForSetting() exists");
 
 </script>

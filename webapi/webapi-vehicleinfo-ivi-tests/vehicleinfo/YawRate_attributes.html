@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <!--
-Copyright (c) 2013 Intel Corporation.
+Copyright (c) 2014 Intel Corporation.
 
 Redistribution and use in source and binary forms, with or without modification,
 are permitted provided that the following conditions are met:
@@ -26,14 +26,14 @@ NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE,
 EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
 Authors:
-        Liu,xin <xinx.liu@intel.com>
+        Xu, Kang <kangx.xu@intel.com>
 
 -->
 
 <meta charset="utf-8">
-<title>Vehicle Test: VehicleInterface_attributes</title>
+<title>Vehicle Test: YawRate - attributes</title>
 <link rel="author" title="Intel" href="http://www.intel.com">
-<link rel="help" href="http://www.w3.org/TR/2012/WD-screen-orientation-20120522/#extensions-to-the-screen-interface" />
+<link rel="help" href="http://rawgit.com/w3c/automotive-bg/master/data_spec.html">
 <script src="../resources/testharness.js"></script>
 <script src="../resources/testharnessreport.js"></script>
 <script src="support/support.js"></script>
@@ -41,43 +41,10 @@ Authors:
 <script>
 
 test(function () {
-  assert_true("get" in vehicle.vehicleSpeed);
-}, "Check if VehicleInterface.get() exists");
-
-test(function () {
-  assert_true("zones" in vehicle.vehicleSpeed);
-}, "Check if VehicleInterface.zones exists");
-
-test(function () {
-  assert_true("availableForRetrieval" in vehicle.vehicleSpeed);
-}, "Check if VehicleInterface.availableForRetrieval exists");
-
-test(function () {
-  assert_true("supported" in vehicle.vehicleSpeed);
-}, "Check if VehicleInterface.supported exists");
-
-test(function () {
-  assert_true("availabilityChangedListener" in vehicle.vehicleSpeed);
-}, "Check if VehicleInterface.availabilityChangedListener() exists");
-
-test(function () {
-  assert_true("removeAvailabilityChangedListener" in vehicle.vehicleSpeed);
-}, "Check if VehicleInterface.removeAvailabilityChangedListener() exists");
-
-test(function () {
-  assert_true("getHistory" in vehicle.vehicleSpeed);
-}, "Check if VehicleInterface.getHistory() exists");
-
-test(function () {
-  assert_true("isLogged" in vehicle.vehicleSpeed);
-}, "Check if VehicleInterface.isLogged exists");
-
-test(function () {
-  assert_true("from" in vehicle.vehicleSpeed);
-}, "Check if VehicleInterface.from exists");
-
-test(function () {
-  assert_true("to" in vehicle.vehicleSpeed);
-}, "Check if VehicleInterface.to exists");
+  var yawRate = vehicle.yawRate;
+  assert_true("value" in yawRate, "the YawRate.value exists");
+  assert_readonly(yawRate, "value", "the YawRate.value is readonly");
+  assert_equals(typeof yawRate.value, "number", "the type of YawRate.value");
+}, "Check if YawRate.value exists, readonly and type of number");
 
 </script>

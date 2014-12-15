@@ -31,53 +31,55 @@ Authors:
 -->
 
 <meta charset="utf-8">
-<title>Vehicle Test: VehicleInterface_attributes</title>
+<title>Vehicle Test: Vehicle_attributes</title>
 <link rel="author" title="Intel" href="http://www.intel.com">
-<link rel="help" href="http://www.w3.org/TR/2012/WD-screen-orientation-20120522/#extensions-to-the-screen-interface" />
+<link rel="help" href="http://rawgit.com/w3c/automotive-bg/master/vehicle_spec.html" />
 <script src="../resources/testharness.js"></script>
 <script src="../resources/testharnessreport.js"></script>
 <script src="support/support.js"></script>
 <div id="log"></div>
 <script>
+var zone;
+test(function () {
+  zone = new Zone;
+}, "Check that Zone is a constructor");
 
 test(function () {
-  assert_true("get" in vehicle.vehicleSpeed);
-}, "Check if VehicleInterface.get() exists");
+  assert_equals(typeof zone, "object");
+}, "Check that Zone returns an object");
 
 test(function () {
-  assert_true("zones" in vehicle.vehicleSpeed);
-}, "Check if VehicleInterface.zones exists");
+  assert_true("value" in zone);
+}, "Check if Zone.value exists");
 
 test(function () {
-  assert_true("availableForRetrieval" in vehicle.vehicleSpeed);
-}, "Check if VehicleInterface.availableForRetrieval exists");
+  assert_equals(typeof zone.value, "object");
+}, "Check that Zone.value returns an object array");
 
 test(function () {
-  assert_true("supported" in vehicle.vehicleSpeed);
-}, "Check if VehicleInterface.supported exists");
+  assert_true("driver" in zone);
+}, "Check if Zone.driver exists");
 
 test(function () {
-  assert_true("availabilityChangedListener" in vehicle.vehicleSpeed);
-}, "Check if VehicleInterface.availabilityChangedListener() exists");
+  assert_equals(typeof zone.driver, "object");
+}, "Check that Zone.driver returns an object Zone");
 
 test(function () {
-  assert_true("removeAvailabilityChangedListener" in vehicle.vehicleSpeed);
-}, "Check if VehicleInterface.removeAvailabilityChangedListener() exists");
+  assert_true("equals" in zone);
+}, "Check if Zone.equals exists");
+
+test(function() {
+  var zone1 = new Zone(["Front", "Left"])
+  assert_equals(typeof zone.equals(zone1), "boolean");
+}, "Check that Zone.equals returns a boolean");
 
 test(function () {
-  assert_true("getHistory" in vehicle.vehicleSpeed);
-}, "Check if VehicleInterface.getHistory() exists");
+  assert_true("contains" in zone);
+}, "Check if Zone.contains exists");
 
 test(function () {
-  assert_true("isLogged" in vehicle.vehicleSpeed);
-}, "Check if VehicleInterface.isLogged exists");
-
-test(function () {
-  assert_true("from" in vehicle.vehicleSpeed);
-}, "Check if VehicleInterface.from exists");
-
-test(function () {
-  assert_true("to" in vehicle.vehicleSpeed);
-}, "Check if VehicleInterface.to exists");
+  var zone2 = new Zone(["Front", "Right"])
+  assert_equals(typeof zone.contains(zone2), "boolean");
+}, "Check that Zone.contains returns a boolean");
 
 </script>
