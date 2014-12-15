@@ -4,6 +4,7 @@
 
 package org.xwalk.embedding.test;
 
+import org.xwalk.embedding.base.OnFullscreenToggledHelper;
 import org.xwalk.embedding.base.XWalkViewTestBase;
 
 import android.test.suitebuilder.annotation.SmallTest;
@@ -17,7 +18,11 @@ public class FullScreenTest extends XWalkViewTestBase {
             String fileContent = getFileContent(name);
             loadDataSync(name, fileContent, "text/html", false);
             assertFalse(hasEnteredFullScreenOnUiThread());
+            OnFullscreenToggledHelper mOnFullscreenToggledHelper = mTestHelperBridge.getOnFullscreenToggledHelper();
+            int count = mOnFullscreenToggledHelper.getCallCount();
             clickOnElementId("enter_fullscreen",null);
+            mOnFullscreenToggledHelper.waitForCallback(count);
+
             assertTrue(hasEnteredFullScreenOnUiThread());
         } catch (Exception e) {
             assertTrue(false);
@@ -35,12 +40,25 @@ public class FullScreenTest extends XWalkViewTestBase {
             String fileContent = getFileContent(name);
             loadDataSync(name, fileContent, "text/html", false);
             assertFalse(hasEnteredFullScreenOnUiThread());
+            OnFullscreenToggledHelper mOnFullscreenToggledHelper = mTestHelperBridge.getOnFullscreenToggledHelper();
+            int count = mOnFullscreenToggledHelper.getCallCount();
             clickOnElementId("enter_fullscreen",null);
+            mOnFullscreenToggledHelper.waitForCallback(count);
             assertTrue(hasEnteredFullScreenOnUiThread());
+
+            count = mOnFullscreenToggledHelper.getCallCount();
             leaveFullscreenOnUiThread();
+            mOnFullscreenToggledHelper.waitForCallback(count);
+
             assertFalse(hasEnteredFullScreenOnUiThread());
+
+            count = mOnFullscreenToggledHelper.getCallCount();
             clickOnElementId("enter_fullscreen",null);
+            mOnFullscreenToggledHelper.waitForCallback(count);
+
+            count = mOnFullscreenToggledHelper.getCallCount();
             clickOnElementId("exit_fullscreen",null);
+            mOnFullscreenToggledHelper.waitForCallback(count);
             assertFalse(hasEnteredFullScreenOnUiThread());
         } catch (Exception e) {
             assertTrue(false);

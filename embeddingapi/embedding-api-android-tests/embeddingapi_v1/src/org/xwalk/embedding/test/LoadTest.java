@@ -4,7 +4,7 @@
 
 package org.xwalk.embedding.test;
 
-
+import org.chromium.content.browser.test.util.CallbackHelper;
 import org.chromium.content.browser.test.util.TestCallbackHelperContainer.OnPageFinishedHelper;
 import org.chromium.content.browser.test.util.TestCallbackHelperContainer.OnPageStartedHelper;
 import org.xwalk.core.XWalkNavigationHistory;
@@ -248,7 +248,11 @@ public class LoadTest extends XWalkViewTestBase {
         try {
             String url = "file:///android_asset/testXHR.html";
             loadUrlSync(url);
-            clickOnElementId_changeTitle("AJAX_Read");
+            
+            CallbackHelper getTitleHelper = mTestHelperBridge.getOnTitleUpdatedHelper();
+            int currentCallCount = getTitleHelper.getCallCount();
+            clickOnElementId("AJAX_Read",null);
+            getTitleHelper.waitForCallback(currentCallCount);
             assertEquals(changedTitle, getTitleOnUiThread());
         } catch (Exception e) {
             e.printStackTrace();
