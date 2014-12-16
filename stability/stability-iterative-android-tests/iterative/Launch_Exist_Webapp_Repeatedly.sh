@@ -36,15 +36,29 @@ if [ "${command}""x" == "x" ];then
 fi
 
 #install webapp
-for((i=0; i<50; i++)); do
-echo $i
 $command install -r $local_path/../iterative*.apk > /tmp/install.txt
 grep "Success" /tmp/install.txt
 
 if [ $? -eq 0 ];then
-    $command shell am force-stop org.xwalk.iterative
+    for((i=0; i<50; i++)); do
+        echo $i
+        $command shell am start -n org.xwalk.iterative/.IterativeActivity > /tmp/install.txt
+        if [ $? -eq 0 ];then
+            $command shell am force-stop org.xwalk.iterative
+            if [ $? -ne 0 ];then
+                echo "Force-stop failed"
+                $command uninstall org.xwalk.iterative
+                exit 1
+            fi
+        else
+            echo "Launch app failed"
+            $command uninstall org.xwalk.iterative
+            exit 1
+        fi
+    done
+    $command uninstall org.xwalk.iterative
 else
-    echo "Force-stop failed"
+    echo "Install apk failed"
+    exit 1
 fi
 sleep 3
-done
