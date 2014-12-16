@@ -40,11 +40,23 @@ Authors:
 <div id="log"></div>
 <script>
 
-test(function () {
-  var steeringWheel = vehicle.steeringWheel;
-  assert_true("angle" in steeringWheel, "the SteeringWheel.angle exists");
-  assert_readonly(steeringWheel, "angle", "the SteeringWheel.angle is readonly");
-  assert_equals(typeof steeringWheel.angle, "number", "the type of SteeringWheel.angle");
+async_test(function (t) {
+  vehicle.steeringWheel.get().then(
+    function (steeringWheel) {
+      t.step(function () {
+        assert_true("angle" in steeringWheel, "the SteeringWheel.angle exists");
+        assert_readonly(steeringWheel, "angle", "the SteeringWheel.angle is readonly");
+        assert_equals(typeof steeringWheel.angle, "number", "the type of SteeringWheel.angle");
+      });
+      t.done();
+    },
+    function (error) {
+      t.step(function () {
+        assert_unreached(error.message);
+      });
+      t.done();
+    }
+  )
 }, "Check if SteeringWheel.angle exists, readonly and type of number");
 
 </script>

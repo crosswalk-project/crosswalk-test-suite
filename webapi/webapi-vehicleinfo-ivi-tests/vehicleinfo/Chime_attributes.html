@@ -40,11 +40,23 @@ Authors:
 <div id="log"></div>
 <script>
 
-test(function () {
-  var chime = vehicle.chime;
-  assert_true("on" in chime, "the Chime.on exists");
-  assert_readonly(chime, "on", "the Chime.on is readonly");
-  assert_equals(typeof chime.on, "boolean", "the type of Chime.on");
+async_test(function (t) {
+  vehicle.chime.get().then(
+    function (chime) {
+      t.step(function () {
+        assert_true("on" in chime, "the Chime.on exists");
+        assert_readonly(chime, "on", "the Chime.on is readonly");
+        assert_equals(typeof chime.on, "boolean", "the type of Chime.on");
+      });
+      t.done();
+    },
+    function (error) {
+      t.step(function () {
+        assert_unreached(error.message);
+      });
+      t.done();
+    }
+  )
 }, "Check if Chime.on exists, readonly and type of boolean");
 
 </script>

@@ -40,11 +40,23 @@ Authors:
 <div id="log"></div>
 <script>
 
-test(function () {
-  var tripMeters = vehicle.tripMeters;
-  assert_true("meters" in tripMeters, "the TripMeters.meters exists");
-  assert_readonly(tripMeters, "meters", "the TripMeters.meters is readonly");
-  assert_equals(typeof tripMeters.meters, "object", "the type of TripMeters.meters");
+async_test(function (t) {
+  vehicle.tripMeters.get().then(
+    function (tripMeters) {
+      t.step(function () {
+        assert_true("meters" in tripMeters, "the TripMeters.meters exists");
+        assert_readonly(tripMeters, "meters", "the TripMeters.meters is readonly");
+        assert_equals(typeof tripMeters.meters, "object", "the type of TripMeters.meters");
+      });
+      t.done();
+    },
+    function (error) {
+      t.step(function () {
+        assert_unreached(error.message);
+      });
+      t.done();
+    }
+  )
 }, "Check if TripMeters.meters exists, readonly and type of object");
 
 </script>

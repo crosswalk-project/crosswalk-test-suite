@@ -40,11 +40,23 @@ Authors:
 <div id="log"></div>
 <script>
 
-test(function () {
-  var brakeOperation = vehicle.brakeOperation;
-  assert_true("brakePedalDepressed" in brakeOperation, "the BrakeOperation.brakePedalDepressed exists");
-  assert_readonly(brakeOperation, "brakePedalDepressed", "the BrakeOperation.brakePedalDepressed is readonly");
-  assert_equals(typeof brakeOperation.brakePedalDepressed, "boolean", "the type of BrakeOperation.brakePedalDepressed");
+async_test(function (t) {
+  vehicle.brakeOperation.get().then(
+    function (brakeOperation) {
+      t.step(function () {
+        assert_true("brakePedalDepressed" in brakeOperation, "the BrakeOperation.brakePedalDepressed exists");
+        assert_readonly(brakeOperation, "brakePedalDepressed", "the BrakeOperation.brakePedalDepressed is readonly");
+        assert_equals(typeof brakeOperation.brakePedalDepressed, "boolean", "the type of BrakeOperation.brakePedalDepressed");
+      });
+      t.done();
+    },
+    function (error) {
+      t.step(function () {
+        assert_unreached(error.message);
+      });
+      t.done();
+    }
+  )
 }, "Check if BrakeOperation.brakePedalDepressed exists, readonly and type of boolean");
 
 </script>

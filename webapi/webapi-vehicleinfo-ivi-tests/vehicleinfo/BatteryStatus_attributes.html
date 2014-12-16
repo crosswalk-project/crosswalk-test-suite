@@ -40,26 +40,34 @@ Authors:
 <div id="log"></div>
 <script>
 
-var batteryStatus;
-
-setup(function () {
-  batteryStatus = vehicle.batteryStatus;
-});
-
 [
   ["number", "chargeLevel", "readonly"],
   ["number", "voltage", "readonly"],
   ["number", "current", "readonly"],
   ["object", "zone", "readonly"]
 ].forEach(function (attr) {
+
   var type = attr[0];
   var name = attr[1];
   var read = attr[2];
 
-  test(function () {
-    assert_true(name in batteryStatus, "the BatteryStatus." + name + " exists");
-    assert_equals(typeof batteryStatus[name], type, "the type of BatteryStatus." + name);
-    assert_readonly(batteryStatus, name, "the BatteryStatus." + name + " is readonly");
+  async_test(function (t) {
+    vehicle.batteryStatus.get().then(
+      function (batteryStatus) {
+        t.step(function () {
+          assert_true(name in batteryStatus, "the BatteryStatus." + name + " exists");
+          assert_equals(typeof batteryStatus[name], type, "the type of BatteryStatus." + name);
+          assert_readonly(batteryStatus, name, "the BatteryStatus." + name + " is readonly");
+        });
+        t.done();
+      },
+      function (error) {
+        t.step(function () {
+          assert_unreached(error.message);
+        });
+        t.done();
+      }
+    )
   }, "Check if " + read + " BatteryStatus." + name + " exists and type of " + type);
 });
 

@@ -40,11 +40,23 @@ Authors:
 <div id="log"></div>
 <script>
 
-test(function () {
-  var vehicleSpeed = vehicle.vehicleSpeed;
-  assert_true("speed" in vehicleSpeed, "the VehicleSpeed.speed exists");
-  assert_readonly(vehicleSpeed, "speed", "the VehicleSpeed.speed is readonly");
-  assert_equals(typeof vehicleSpeed.speed, "number", "the type of VehicleSpeed.speed");
+async_test(function (t) {
+  vehicle.vehicleSpeed.get().then(
+    function (vehicleSpeed) {
+      t.step(function () {
+        assert_true("speed" in vehicleSpeed, "the VehicleSpeed.speed exists");
+        assert_readonly(vehicleSpeed, "speed", "the VehicleSpeed.speed is readonly");
+        assert_equals(typeof vehicleSpeed.speed, "number", "the type of VehicleSpeed.speed");
+      });
+      t.done();
+    },
+    function (error) {
+      t.step(function () {
+        assert_unreached(error.message);
+      });
+      t.done();
+    }
+  )
 }, "Check if VehicleSpeed.speed exists, readonly and type of number");
 
 </script>

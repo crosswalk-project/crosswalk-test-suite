@@ -40,12 +40,6 @@ Authors:
 <div id="log"></div>
 <script>
 
-var lightStatus;
-
-setup(function () {
-  lightStatus = vehicle.lightStatus;
-});
-
 [
   ["boolean", "head", ""],
   ["boolean", "rightTurn", ""],
@@ -59,16 +53,30 @@ setup(function () {
   ["boolean", "dynamicHighBeam", ""],
   ["object", "zone", "readonly"]
 ].forEach(function (attr) {
+
   var type = attr[0];
   var name = attr[1];
   var read = attr[2];
 
-  test(function () {
-    assert_true(name in lightStatus, "the LightStatus." + name + " exists");
-    assert_equals(typeof lightStatus[name], type, "the type of LightStatus." + name);
-    if ( read == "readonly" ) {
-      assert_readonly(lightStatus, name, "the LightStatus." + name + " is readonly");
-    }
+  async_test(function (t) {
+    vehicle.lightStatus.get().then(
+      function (lightStatus) {
+        t.step(function () {
+          assert_true(name in lightStatus, "the LightStatus." + name + " exists");
+          assert_equals(typeof lightStatus[name], type, "the type of LightStatus." + name);
+          if ( read == "readonly" ) {
+            assert_readonly(lightStatus, name, "the LightStatus." + name + " is readonly");
+          }
+        });
+        t.done();
+      },
+      function (error) {
+        t.step(function () {
+          assert_unreached(error.message);
+        });
+        t.done();
+      }
+    )
   }, "Check if " + read + " LightStatus." + name + " exists and type of " + type);
 });
 
