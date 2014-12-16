@@ -422,17 +422,18 @@ def packWGT(build_json=None, app_src=None, app_dest=None, app_name=None):
     if not zipDir(app_src, os.path.join(app_dest, "%s.wgt" % app_name)):
         return False
 
-    if safelyGetValue(build_json, "sign-flag") == "true":
-        if not os.path.exists(os.path.join(BUILD_ROOT, "signing")):
-            if not doCopy(
-                    os.path.join(BUILD_PARAMETERS.pkgpacktools, "signing"),
-                    os.path.join(BUILD_ROOT, "signing")):
+    if BUILD_PARAMETERS.signature == True:
+        if safelyGetValue(build_json, "sign-flag") == "true":
+            if not os.path.exists(os.path.join(BUILD_ROOT, "signing")):
+                if not doCopy(
+                        os.path.join(BUILD_PARAMETERS.pkgpacktools, "signing"),
+                        os.path.join(BUILD_ROOT, "signing")):
+                    return False
+            signing_cmd = "%s --dist platform %s" % (
+                os.path.join(BUILD_ROOT, "signing", "sign-widget.sh"),
+                os.path.join(app_dest, "%s.wgt" % app_name))
+            if not doCMD(signing_cmd, DEFAULT_CMD_TIMEOUT):
                 return False
-        signing_cmd = "%s --dist platform %s" % (
-            os.path.join(BUILD_ROOT, "signing", "sign-widget.sh"),
-            os.path.join(app_dest, "%s.wgt" % app_name))
-        if not doCMD(signing_cmd, DEFAULT_CMD_TIMEOUT):
-            return False
 
     return True
 
@@ -911,6 +912,11 @@ def main():
             dest="bnotclean",
             action="store_true",
             help="disable the build root clean after the packing")
+        opts_parser.add_option(
+            "--sign",
+            dest="signature",
+            action="store_true",
+            help="signature operation will be done when packing wgt")
         opts_parser.add_option(
             "-v",
             "--version",
