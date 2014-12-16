@@ -16,8 +16,15 @@ limitations under the License.
 
  */
 
-document.write("<script language=\"javascript\" src=\"..\/resources\/testharness.js\"><\/script>");
-document.write("<script language=\"javascript\" src=\"..\/resources\/testharnessreport.js\"><\/script>");
+(function () {
+   var head_src = document.head.innerHTML;
+   if (head_src.search(/\/testharness.js\W/) === -1) {
+       document.write('<script language="javascript" src="../resources/testharness.js"></script>\n');
+   }
+   if (head_src.search(/\/testharnessreport.js\W/) === -1) {
+       document.write('<script language="javascript" src="../resources/testharnessreport.js"></script>\n');
+   }
+})();
 
 var attribute = "";
 var status_value = "";
