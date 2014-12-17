@@ -20,59 +20,36 @@ Authors:
 
 window.onload = DisablePassButton;
 
+vehicle = tizen.vehicle || navigator.vehicle;
+
 function getVehicle() {
   try {
     EnablePassButton();
     // Verify vehicleSpeed:
-    jQuery("#vehicleSpeed").text("vehicle vehicleSpeed: " + tizen.vehicle.vehicleSpeed);
+    jQuery("#vehicleSpeed").text("vehicle vehicleSpeed: " + vehicle.vehicleSpeed);
     // Verify zones
-    jQuery("#zones").text("vehicleSpeed zones: " + tizen.vehicle.vehicleSpeed.zones);
+    jQuery("#zones").text("vehicleSpeed zones: " + vehicle.vehicleSpeed.zones);
 
-    // Verify Availability, check speed is availabled for get():
-    var speedFlag = vehicle.vehicleSpeed.availableForRetrieval("speed") === "available";
-    
-    if(speedFlag) {
-      // Verify get:
-      tizen.vehicle.vehicleSpeed.get().then(function(vehicleSpeed) {
-        jQuery("#speed").text("vehicleSpeed speed: " + vehicleSpeed.speed);
-      },
-      function(error) {
-        window.alert("Error callback: " + error.message);
-      });
-    }
+    // Verify get:
+    vehicle.vehicleSpeed.get().then(function(vehicleSpeed) {
+      jQuery("#speed").text("vehicleSpeed speed: " + vehicleSpeed.speed);
+    },
+    function(error) {
+      window.alert("Error callback: " + error.message);
+    });
     
     // Verify subscribe and unsubscribe:
-    var vehicleSpeedSub = tizen.vehicle.vehicleSpeed.subscribe(function(vehicleSpeed) {
+    var vehicleSpeedSub = vehicle.vehicleSpeed.subscribe(function(vehicleSpeed) {
       jQuery("#speedChange").text("vehicle speed changed to: " + vehicleSpeed.speed);
-      tizen.vehicle.vehicleSpeed.unsubscribe(vehicleSpeedSub);
+      vehicle.vehicleSpeed.unsubscribe(vehicleSpeedSub);
     });
 
-    if(vehicle.vehicleSpeed.isLogged)
-    {
-      // Verify getHistory:
-      tizen.vehicle.vehicleSpeed.getHistory(tizen.vehicle.vehicleSpeed.from, tizen.vehicle.vehicleSpeed.to).then(function(data) {
-        jQuery("#historyData").text("history data: " + data.length);
-      });
-    }
+    // Verify getHistory:
+    vehicle.vehicleSpeed.getHistory(vehicle.vehicleSpeed.from, vehicle.vehicleSpeed.to).then(function(data) {
+      jQuery("#historyData").text("history data: " + data.length);
+    });
 
   } catch (err) {
     window.alert("Thrown an error: " + err.message);
   }
 }
-
-function setVehicleDoor() {
-  // Check door supported:
-  var doorFlag = tizen.vehicle.door.supported();
-  if(doorFlag) {
-    var zone = Zone;
-    // Verify set:
-    tizen.vehicle.door.set({"lock" : true}, zone.driver).then(function() {
-      window.alert("Set door lock success");
-    }, function(error) {
-      window.alert("Error callback: " + error.message);
-    });
-  }else {
-    window.alert("vehicle door is not supported");
-  }
-}
-
