@@ -79,15 +79,15 @@ Authors:
   <body>
     <div data-role="page" id="main">
     <input type="hidden" id="wgt_name" value="default-src-self"/>
-    <p>Test 1: passes if the first line is different from second line.</p>
+    <p>Test 1: passes if the 2 lines are different.</p>
     <div id="test1">1234 ABCD</div>
     <div id="test">1234 ABCD</div>
     <hr />
-    <p>Test 2: passes if a blue filled square with a "PASS" plug in is displayed .</p>
+    <p>Test 2: passes if there is a filled blue square with text "Filler Text".</p>
     <div id="test-blue"></div>
     <div id="test-green"></div>
     <h3></h3>
-    <script language="javascript" type="text/javascript">
+    <script>
         var connect;
         var script_allow = typeof(X) == "number" ? true : false;
         var script_not_allow =  typeof(getVideoURI) != "function" ? true : false;
@@ -107,8 +107,8 @@ Authors:
         } catch(e) {
             connect =  false;
         }
-        if(script_allow && script_not_allow && style_not_allow && style_allow && style_green_allow && connect) {
-            document.getElementById("test-blue").innerHTML = "<span style='color:white'>PASS</span>.";
+        if (script_allow && script_not_allow && style_not_allow && style_allow && style_green_allow && connect) {
+            document.getElementById("test-blue").innerHTML = "<span style='color:white'>Filler Text</span>";
         }
     </script>
     <hr />
