@@ -40,11 +40,23 @@ Authors:
 <div id="log"></div>
 <script>
 
-test(function () {
-  var nightMode = vehicle.nightMode;
-  assert_true("mode" in nightMode, "the NightMode.mode exists");
-  assert_readonly(nightMode, "mode", "the NightMode.mode is readonly");
-  assert_equals(typeof nightMode.mode, "boolean", "the type of NightMode.mode");
+async_test(function (t) {
+  vehicle.nightMode.get().then(
+    function (nightMode) {
+      t.step(function () {
+        assert_true("mode" in nightMode, "the NightMode.mode exists");
+        assert_readonly(nightMode, "mode", "the NightMode.mode is readonly");
+        assert_equals(typeof nightMode.mode, "boolean", "the type of NightMode.mode");
+      });
+      t.done();
+    },
+    function (error) {
+      t.step(function () {
+        assert_unreached(error.message);
+      });
+      t.done();
+    }
+  )
 }, "Check if NightMode.mode exists, readonly and type of boolean");
 
 </script>

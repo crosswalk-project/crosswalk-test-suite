@@ -40,24 +40,32 @@ Authors:
 <div id="log"></div>
 <script>
 
-var washerFluid;
-
-setup(function () {
-  washerFluid = vehicle.washerFluid;
-});
-
 [
   ["number", "level", "readonly"],
   ["boolean", "levelLow", "readonly"]
 ].forEach(function (attr) {
+
   var type = attr[0];
   var name = attr[1];
   var read = attr[2];
 
-  test(function () {
-    assert_true(name in washerFluid, "the WasherFluid." + name + " exists");
-    assert_equals(typeof washerFluid[name], type, "the type of WasherFluid." + name);
-    assert_readonly(washerFluid, name, "the WasherFluid." + name + " is readonly");
+  async_test(function (t) {
+    vehicle.washerFluid.get().then(
+      function (washerFluid) {
+        t.step(function () {
+          assert_true(name in washerFluid, "the WasherFluid." + name + " exists");
+          assert_equals(typeof washerFluid[name], type, "the type of WasherFluid." + name);
+          assert_readonly(washerFluid, name, "the WasherFluid." + name + " is readonly");
+        });
+        t.done();
+      },
+      function (error) {
+        t.step(function () {
+          assert_unreached(error.message);
+        });
+        t.done();
+      }
+    )
   }, "Check if " + read + " WasherFluid." + name + " exists and type of " + type);
 });
 

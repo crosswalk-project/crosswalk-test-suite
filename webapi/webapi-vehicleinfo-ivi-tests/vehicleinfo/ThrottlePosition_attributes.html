@@ -40,11 +40,23 @@ Authors:
 <div id="log"></div>
 <script>
 
-test(function () {
-  var throttlePosition = vehicle.throttlePosition;
-  assert_true("value" in throttlePosition, "the ThrottlePosition.value exists");
-  assert_readonly(throttlePosition, "value", "the ThrottlePosition.value is readonly");
-  assert_equals(typeof throttlePosition.value, "number", "the type of ThrottlePosition.value");
+async_test(function (t) {
+  vehicle.throttlePosition.get().then(
+    function (throttlePosition) {
+      t.step(function () {
+        assert_true("value" in throttlePosition, "the ThrottlePosition.value exists");
+        assert_readonly(throttlePosition, "value", "the ThrottlePosition.value is readonly");
+        assert_equals(typeof throttlePosition.value, "number", "the type of ThrottlePosition.value");
+      });
+      t.done();
+    },
+    function (error) {
+      t.step(function () {
+        assert_unreached(error.message);
+      });
+      t.done();
+    }
+  )
 }, "Check if ThrottlePosition.value exists, readonly and type of number");
 
 </script>

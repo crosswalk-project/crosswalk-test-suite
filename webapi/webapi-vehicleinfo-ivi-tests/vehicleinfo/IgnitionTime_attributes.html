@@ -40,24 +40,32 @@ Authors:
 <div id="log"></div>
 <script>
 
-var ignitionTime;
-
-setup(function () {
-  ignitionTime = vehicle.ignitionTime;
-});
-
 [
   ["object", "ignitionOnTime", "readonly"],
   ["object", "ignitionOffTime", "readonly"]
 ].forEach(function (attr) {
+
   var type = attr[0];
   var name = attr[1];
   var read = attr[2];
 
-  test(function () {
-    assert_true(name in ignitionTime, "the IgnitionTime." + name + " exists");
-    assert_equals(typeof ignitionTime[name], type, "the type of IgnitionTime." + name);
-    assert_readonly(ignitionTime, name, "the IgnitionTime." + name + " is readonly");
+  async_test(function (t) {
+    vehicle.ignitionTime.get().then(
+      function (ignitionTime) {
+        t.step(function () {
+          assert_true(name in ignitionTime, "the IgnitionTime." + name + " exists");
+          assert_equals(typeof ignitionTime[name], type, "the type of IgnitionTime." + name);
+          assert_readonly(ignitionTime, name, "the IgnitionTime." + name + " is readonly");
+        });
+        t.done();
+      },
+      function (error) {
+        t.step(function () {
+          assert_unreached(error.message);
+        });
+        t.done();
+      }
+    )
   }, "Check if " + read + " IgnitionTime." + name + " exists and type of " + type);
 });
 

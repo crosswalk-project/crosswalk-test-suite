@@ -40,24 +40,32 @@ Authors:
 <div id="log"></div>
 <script>
 
-var transmission;
-
-setup(function () {
-  transmission = vehicle.transmission;
-});
-
 [
   ["number", "gear", "readonly"],
   ["string", "mode", "readonly"]
 ].forEach(function (attr) {
+
   var type = attr[0];
   var name = attr[1];
   var read = attr[2];
 
-  test(function () {
-    assert_true(name in transmission, "the Transmission." + name + " exists");
-    assert_equals(typeof transmission[name], type, "the type of Transmission." + name);
-    assert_readonly(transmission, name, "the Transmission." + name + " is readonly");
+  async_test(function (t) {
+    vehicle.transmission.get().then(
+      function (transmission) {
+        t.step(function () {
+          assert_true(name in transmission, "the Transmission." + name + " exists");
+          assert_equals(typeof transmission[name], type, "the type of Transmission." + name);
+          assert_readonly(transmission, name, "the Transmission." + name + " is readonly");
+        });
+        t.done();
+      },
+      function (error) {
+        t.step(function () {
+          assert_unreached(error.message);
+        });
+        t.done();
+      }
+    )
   }, "Check if " + read + " Transmission." + name + " exists and type of " + type);
 });
 

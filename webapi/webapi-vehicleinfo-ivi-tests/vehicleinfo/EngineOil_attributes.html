@@ -40,12 +40,6 @@ Authors:
 <div id="log"></div>
 <script>
 
-var engineOil;
-
-setup(function () {
-  engineOil = vehicle.engineOil;
-});
-
 [
   ["number", "level", "readonly"],
   ["number", "lifeRemaining", "readonly"],
@@ -53,14 +47,28 @@ setup(function () {
   ["number", "pressure", "readonly"],
   ["boolean", "change", "readonly"]
 ].forEach(function (attr) {
+
   var type = attr[0];
   var name = attr[1];
   var read = attr[2];
 
-  test(function () {
-    assert_true(name in engineOil, "the EngineOil." + name + " exists");
-    assert_equals(typeof engineOil[name], type, "the type of EngineOil." + name);
-    assert_readonly(engineOil, name, "the EngineOil." + name + " is readonly");
+  async_test(function (t) {
+    vehicle.engineOil.get().then(
+      function (engineOil) {
+        t.step(function () {
+          assert_true(name in engineOil, "the EngineOil." + name + " exists");
+          assert_equals(typeof engineOil[name], type, "the type of EngineOil." + name);
+          assert_readonly(engineOil, name, "the EngineOil." + name + " is readonly");
+        });
+        t.done();
+      },
+      function (error) {
+        t.step(function () {
+          assert_unreached(error.message);
+        });
+        t.done();
+      }
+    )
   }, "Check if " + read + " EngineOil." + name + " exists and type of " + type);
 });
 

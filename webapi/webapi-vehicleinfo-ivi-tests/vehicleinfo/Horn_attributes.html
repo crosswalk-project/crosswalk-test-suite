@@ -40,10 +40,22 @@ Authors:
 <div id="log"></div>
 <script>
 
-test(function () {
-  var horn = vehicle.horn;
-  assert_true("status" in horn, "the Horn.status exists");
-  assert_equals(typeof horn.status, "boolean", "the type of Horn.status");
+async_test(function (t) {
+  vehicle.horn.get().then(
+    function (horn) {
+      t.step(function () {
+        assert_true("status" in horn, "the Horn.status exists");
+        assert_equals(typeof horn.status, "boolean", "the type of Horn.status");
+      });
+      t.done();
+    },
+    function (error) {
+      t.step(function () {
+        assert_unreached(error.message);
+      });
+      t.done();
+    }
+  )
 }, "Check if Horn.status exists and type of boolean");
 
 </script>

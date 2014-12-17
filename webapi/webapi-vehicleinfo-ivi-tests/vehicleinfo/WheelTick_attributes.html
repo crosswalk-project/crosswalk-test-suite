@@ -40,24 +40,32 @@ Authors:
 <div id="log"></div>
 <script>
 
-var wheelTick;
-
-setup(function () {
-  wheelTick = vehicle.wheelTick;
-});
-
 [
   ["number", "value", "readonly"],
   ["object", "zone", "readonly"]
 ].forEach(function (attr) {
+
   var type = attr[0];
   var name = attr[1];
   var read = attr[2];
 
-  test(function () {
-    assert_true(name in wheelTick, "the WheelTick." + name + " exists");
-    assert_equals(typeof wheelTick[name], type, "the type of WheelTick." + name);
-    assert_readonly(wheelTick, name, "the WheelTick." + name + " is readonly");
+  async_test(function (t) {
+    vehicle.wheelTick.get().then(
+      function (wheelTick) {
+        t.step(function () {
+          assert_true(name in wheelTick, "the WheelTick." + name + " exists");
+          assert_equals(typeof wheelTick[name], type, "the type of WheelTick." + name);
+          assert_readonly(wheelTick, name, "the WheelTick." + name + " is readonly");
+        });
+        t.done();
+      },
+      function (error) {
+        t.step(function () {
+          assert_unreached(error.message);
+        });
+        t.done();
+      }
+    )
   }, "Check if " + read + " WheelTick." + name + " exists and type of " + type);
 });
 

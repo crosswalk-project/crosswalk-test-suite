@@ -32,4 +32,4 @@ Authors:
 /*The vehicle API will be implemented in navigator, but tizen.vehicle is still
 valid on tizen, so keep tizen.vehicle until navigator.vehicle is implemented.*/
 
-var vehicle = navigator.vehicle || tizen.vehicle;
+var vehicle = tizen.vehicle || navigator.vehicle;
