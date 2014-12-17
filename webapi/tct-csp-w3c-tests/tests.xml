@@ -828,12 +828,6 @@
       </testcase>
     </set>
     <set name="csp-ref" type="js">
-      <testcase component="W3C_HTML5 APIs/Security/Content Security Policy 1.0 (Partial)" execution_type="manual" id="csp_default-src-inline-blocked" purpose="Check if default-src is 'self' but without unsafe-inline, that inline script will be blocked.">
-        <description>
-          <test_script_entry test_script_expected_result="0">/opt/tct-csp-w3c-tests/csp/w3c/CSP_default-src-inline-blocked.cgi</test_script_entry>
-          <refer_test_script_entry timeout="90">/opt/tct-csp-w3c-tests/csp/reference/csp_default-src-inline-blocked-ref.html</refer_test_script_entry>
-        </description>
-      </testcase>
       <testcase component="W3C_HTML5 APIs/Security/Content Security Policy 1.0 (Partial)" execution_type="manual" id="csp_default-src_none_script" purpose="Check if user agent is unable to use inline script when default-src is none.">
         <description>
           <test_script_entry test_script_expected_result="0">/opt/tct-csp-w3c-tests/csp/csp_default-src_none_script.cgi</test_script_entry>
@@ -1318,12 +1312,6 @@
         <description>
           <test_script_entry test_script_expected_result="0">/opt/tct-csp-w3c-tests/csp/csp_frame-ancestors_asterisk.cgi</test_script_entry>
           <refer_test_script_entry timeout="90">/opt/tct-csp-w3c-tests/csp/reference/csp_base-uri_asterisk-ref.html</refer_test_script_entry>
-        </description>
-      </testcase>
-      <testcase component="W3C_HTML5 APIs/Security/Content Security Policy 1.0 (Partial)" execution_type="manual" id="csp_frame-ancestors_none" purpose="Check if frame-ancestors is none, the iframe should not display.">
-        <description>
-          <test_script_entry test_script_expected_result="0">/opt/tct-csp-w3c-tests/csp/csp_frame-ancestors_none.cgi</test_script_entry>
-          <refer_test_script_entry timeout="90">/opt/tct-csp-w3c-tests/csp/reference/csp_frame-ancestors_none-ref.html</refer_test_script_entry>
         </description>
       </testcase>
       <testcase component="W3C_HTML5 APIs/Security/Content Security Policy 1.0 (Partial)" execution_type="manual" id="csp_default-src_cross-origin_font_allowed" purpose="Check if user agent is able to use external font resource when default-src is cross origin.">
