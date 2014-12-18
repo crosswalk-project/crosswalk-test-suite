@@ -771,23 +771,6 @@
           <test_script_entry timeout="90" />
         </description>
       </testcase>
-      <testcase component="W3C_HTML5 APIs/Widget/Widget Packaging and XML Configuration" execution_type="manual" id="WidgetPackaging_zz" purpose="Test if the UA can correctly deal with an icon element that points to a file which is not present in the widget package.">
-        <description>
-          <pre_condition />
-          <post_condition>Get the $pkgid of zz.wgt with the command : pkgcmd -l, then uninstall the zz.wgt with the command : pkgcmd -u -t wgt -q -n $pkgid</post_condition>
-          <steps>
-            <step order="1">
-              <step_desc>Install the widget with the command: pkgcmd -i -t wgt -q -p /home/app/content/tct/opt/tct-widget02-w3c-tests/widgetpackaging/w3c/zz.wgt</step_desc>
-              <expected>Widget application is able to be installed successfully.</expected>
-            </step>
-            <step order="2">
-              <step_desc>Check the zz widget logo.</step_desc>
-              <expected>To pass, the icon should be empty or a default icon in the system.</expected>
-            </step>
-          </steps>
-          <test_script_entry timeout="90" />
-        </description>
-      </testcase>
       <testcase component="W3C_HTML5 APIs/Widget/Widget Packaging and XML Configuration" execution_type="manual" id="WidgetPackaging_dlocignore01" purpose="Test that the user agent applies rule for getting a single attribute value from the defaultlocale attribute.">
         <description>
           <pre_condition />
