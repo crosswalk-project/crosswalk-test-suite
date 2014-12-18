@@ -2,9 +2,6 @@
     "pkg-blacklist": [
         "config.xml",
         "pack.py",
-        "testcase.xsl",
-        "testresult.xsl",
-        "tests.css",
         "icon.png",
         "manifest.json",
         "suite.json",
@@ -25,13 +22,23 @@
         },
         "wgt": {
             "blacklist": [
+                "index.html",
                 "js"
             ],
             "copylist": {
                 "inst.wgt.py": "inst.py"
             },
-            "pkg-app": {
-                "sign-flag": "true"
+            "subapp-list": {
+                ".": {
+                    "blacklist": [
+                        "suite.json",
+                        "manifest.json",
+                        "inst.*"
+                    ],
+                    "app-dir": ".",
+                    "sign-flag": "true",
+                    "app-name": "tct-getcapabilities"
+                }
             }
         },
         "xpk": {
@@ -39,8 +46,7 @@
                 "*"
             ],
             "copylist": {
-                "inst.xpk.py": "inst.py",
-                "tests.xml": "tests.xml"
+                "inst.xpk.py": "inst.py"
             },
             "pkg-app": {
                 "blacklist": []
