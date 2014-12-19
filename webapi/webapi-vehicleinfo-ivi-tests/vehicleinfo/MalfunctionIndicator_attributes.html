@@ -40,11 +40,23 @@ Authors:
 <div id="log"></div>
 <script>
 
-test(function () {
-  var malfunctionIndicator = vehicle.malfunctionIndicator;
-  assert_true("on" in malfunctionIndicator, "the MalfunctionIndicator.on exists");
-  assert_readonly(malfunctionIndicator, "on", "the MalfunctionIndicator.on is readonly");
-  assert_equals(typeof malfunctionIndicator.on, "boolean", "the type of MalfunctionIndicator.on");
+async_test(function (t) {
+  vehicle.malfunctionIndicator.get().then(
+    function (malfunctionIndicator) {
+      t.step(function () {
+        assert_true("on" in malfunctionIndicator, "the MalfunctionIndicator.on exists");
+        assert_readonly(malfunctionIndicator, "on", "the MalfunctionIndicator.on is readonly");
+        assert_equals(typeof malfunctionIndicator.on, "boolean", "the type of MalfunctionIndicator.on");
+      });
+      t.done();
+    },
+    function (error) {
+      t.step(function () {
+        assert_unreached(error.message);
+      });
+      t.done();
+    }
+  )
 }, "Check if MalfunctionIndicator.on exists, readonly and type of boolean");
 
 </script>

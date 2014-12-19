@@ -40,24 +40,32 @@ Authors:
 <div id="log"></div>
 <script>
 
-var wheelSpeed;
-
-setup(function () {
-  wheelSpeed = vehicle.wheelSpeed;
-});
-
 [
   ["number", "speed", "readonly"],
   ["object", "zone", "readonly"]
 ].forEach(function (attr) {
+
   var type = attr[0];
   var name = attr[1];
   var read = attr[2];
 
-  test(function () {
-    assert_true(name in wheelSpeed, "the WheelSpeed." + name + " exists");
-    assert_equals(typeof wheelSpeed[name], type, "the type of WheelSpeed." + name);
-    assert_readonly(wheelSpeed, name, "the WheelSpeed." + name + " is readonly");
+  async_test(function (t) {
+    vehicle.wheelSpeed.get().then(
+      function (wheelSpeed) {
+        t.step(function () {
+          assert_true(name in wheelSpeed, "the WheelSpeed." + name + " exists");
+          assert_equals(typeof wheelSpeed[name], type, "the type of WheelSpeed." + name);
+          assert_readonly(wheelSpeed, name, "the WheelSpeed." + name + " is readonly");
+        });
+        t.done();
+      },
+      function (error) {
+        t.step(function () {
+          assert_unreached(error.message);
+        });
+        t.done();
+      }
+    )
   }, "Check if " + read + " WheelSpeed." + name + " exists and type of " + type);
 });
 

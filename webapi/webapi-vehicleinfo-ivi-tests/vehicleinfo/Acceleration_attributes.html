@@ -40,25 +40,33 @@ Authors:
 <div id="log"></div>
 <script>
 
-var acceleration;
-
-setup(function () {
-  acceleration = vehicle.acceleration;
-});
-
 [
   ["number", "x", "readonly"],
   ["number", "y", "readonly"],
   ["number", "z", "readonly"]
 ].forEach(function (attr) {
+
   var type = attr[0];
   var name = attr[1];
   var read = attr[2];
 
-  test(function () {
-    assert_true(name in acceleration, "the Acceleration." + name + " exists");
-    assert_equals(typeof acceleration[name], type, "the type of Acceleration." + name);
-    assert_readonly(acceleration, name, "the Acceleration." + name + " is readonly");
+  async_test(function (t) {
+    vehicle.acceleration.get().then(
+      function (acceleration) {
+        t.step(function () {
+          assert_true(name in acceleration, "the Acceleration." + name + " exists");
+          assert_equals(typeof acceleration[name], type, "the type of Acceleration." + name);
+          assert_readonly(acceleration, name, "the Acceleration." + name + " is readonly");
+        });
+        t.done();
+      },
+      function (error) {
+        t.step(function () {
+          assert_unreached(error.message);
+        });
+        t.done();
+      }
+    )
   }, "Check if " + read + " Acceleration." + name + " exists and type of " + type);
 });
 

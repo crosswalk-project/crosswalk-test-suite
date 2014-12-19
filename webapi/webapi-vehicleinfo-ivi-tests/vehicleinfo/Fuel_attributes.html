@@ -40,12 +40,6 @@ Authors:
 <div id="log"></div>
 <script>
 
-var fuel;
-
-setup(function () {
-  fuel = vehicle.fuel;
-});
-
 [
   ["number", "level", "readonly"],
   ["number", "range", "readonly"],
@@ -54,16 +48,30 @@ setup(function () {
   ["number", "fuelConsumedSinceRestart", "readonly"],
   ["number", "timeSinceRestart", "readonly"]
 ].forEach(function (attr) {
+
   var type = attr[0];
   var name = attr[1];
   var read = attr[2];
 
-  test(function () {
-    assert_true(name in fuel, "the Fuel." + name + " exists");
-    assert_equals(typeof fuel[name], type, "the type of Fuel." + name);
-    if ( read == "readonly" ) {
-      assert_readonly(fuel, name, "the Fuel." + name + " is readonly");
-    }
+  async_test(function (t) {
+    vehicle.fuel.get().then(
+      function (fuel) {
+        t.step(function () {
+          assert_true(name in fuel, "the Fuel." + name + " exists");
+          assert_equals(typeof fuel[name], type, "the type of Fuel." + name);
+          if ( read == "readonly" ) {
+            assert_readonly(fuel, name, "the Fuel." + name + " is readonly");
+          }
+        });
+        t.done();
+      },
+      function (error) {
+        t.step(function () {
+          assert_unreached(error.message);
+        });
+        t.done();
+      }
+    )
   }, "Check if " + read + " Fuel." + name + " exists and type of " + type);
 });
 

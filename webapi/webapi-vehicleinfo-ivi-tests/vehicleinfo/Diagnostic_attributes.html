@@ -40,12 +40,6 @@ Authors:
 <div id="log"></div>
 <script>
 
-var diagnostic;
-
-setup(function () {
-  diagnostic = vehicle.diagnostic;
-});
-
 [
   ["number", "accumulatedEngineRuntime", "readonly"],
   ["number", "distanceWithMILOn", "readonly"],
@@ -53,14 +47,28 @@ setup(function () {
   ["number", "timeRunMILOn", "readonly"],
   ["number", "timeTroubleCodeClear", "readonly"]
 ].forEach(function (attr) {
+
   var type = attr[0];
   var name = attr[1];
   var read = attr[2];
 
-  test(function () {
-    assert_true(name in diagnostic, "the Diagnostic." + name + " exists");
-    assert_equals(typeof diagnostic[name], type, "the type of Diagnostic." + name);
-    assert_readonly(diagnostic, name, "the Diagnostic." + name + " is readonly");
+  async_test(function (t) {
+    vehicle.diagnostic.get().then(
+      function (diagnostic) {
+        t.step(function () {
+          assert_true(name in diagnostic, "the Diagnostic." + name + " exists");
+          assert_equals(typeof diagnostic[name], type, "the type of Diagnostic." + name);
+          assert_readonly(diagnostic, name, "the Diagnostic." + name + " is readonly");
+        });
+        t.done();
+      },
+      function (error) {
+        t.step(function () {
+          assert_unreached(error.message);
+        });
+        t.done();
+      }
+    )
   }, "Check if " + read + " Diagnostic." + name + " exists and type of " + type);
 });
 

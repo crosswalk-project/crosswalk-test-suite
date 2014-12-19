@@ -33,12 +33,13 @@ Authors:
 <meta charset="utf-8">
 <title>Vehicle Test: Vehicle_attributes</title>
 <link rel="author" title="Intel" href="http://www.intel.com">
-<link rel="help" href="http://rawgit.com/w3c/automotive-bg/master/vehicle_spec.html" />
+<link rel="help" href="http://rawgit.com/w3c/automotive-bg/master/vehicle_spec.html">
 <script src="../resources/testharness.js"></script>
 <script src="../resources/testharnessreport.js"></script>
 <script src="support/support.js"></script>
 <div id="log"></div>
 <script>
+
 var zone;
 test(function () {
   zone = new Zone;
@@ -68,7 +69,7 @@ test(function () {
   assert_true("equals" in zone);
 }, "Check if Zone.equals exists");
 
-test(function() {
+test(function () {
   var zone1 = new Zone(["Front", "Left"])
   assert_equals(typeof zone.equals(zone1), "boolean");
 }, "Check that Zone.equals returns a boolean");
