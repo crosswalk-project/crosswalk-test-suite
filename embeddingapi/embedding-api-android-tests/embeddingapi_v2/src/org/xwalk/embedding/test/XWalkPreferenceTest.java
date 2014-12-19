@@ -115,4 +115,25 @@ public class XWalkPreferenceTest extends XWalkViewTestBase {
             assertTrue(false);
         }
     }
+
+    @SmallTest
+    public void testSetValue_function() {
+        try {
+            getInstrumentation().runOnMainSync(new Runnable() {
+
+                @Override
+                public void run() {
+                    XWalkPreferences.setValue(XWalkPreferences.ALLOW_UNIVERSAL_ACCESS_FROM_FILE, true);
+                    assertTrue(XWalkPreferences.getBooleanValue(XWalkPreferences.ALLOW_UNIVERSAL_ACCESS_FROM_FILE));
+                    XWalkPreferences.setValue(XWalkPreferences.PROFILE_NAME, "PROFILE_NAME");
+                    assertEquals("PROFILE_NAME", XWalkPreferences.getStringValue(XWalkPreferences.PROFILE_NAME));
+                    XWalkPreferences.setValue(XWalkPreferences.SUPPORT_MULTIPLE_WINDOWS, false);
+                    assertFalse(XWalkPreferences.getBooleanValue(XWalkPreferences.SUPPORT_MULTIPLE_WINDOWS));
+                }
+            });
+        } catch (Exception e) {
+            e.printStackTrace();
+            assertTrue(false);
+        }
+    }
 }
