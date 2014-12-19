@@ -504,16 +504,16 @@ public class XWalkViewTest extends XWalkViewTestBase {
         }
     }
 
+    //need to be improved
     @SmallTest
     public void testPauseTimers_function() {
         try {
             String url = "file:///android_asset/pause_timers.html";
             addJavascriptInterface();
             loadUrlSync(url);
-            SystemClock.sleep(3000);
             String date = new Date().toString();
             pauseTimers();
-            SystemClock.sleep(1000);
+            SystemClock.sleep(3000);
             assertEquals(date, getTitleOnUiThread());
         } catch (Exception e) {
             e.printStackTrace();

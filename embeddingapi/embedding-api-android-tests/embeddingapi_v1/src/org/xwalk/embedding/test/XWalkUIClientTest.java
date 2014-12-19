@@ -7,9 +7,11 @@ package org.xwalk.embedding.test;
 import java.util.concurrent.TimeoutException;
 
 import org.xwalk.core.XWalkUIClient;
+import org.xwalk.embedding.base.OnFullscreenToggledHelper;
 import org.xwalk.embedding.base.OnJavascriptCloseWindowHelper;
 import org.xwalk.embedding.base.OnRequestFocusHelper;
 import org.xwalk.embedding.base.OnScaleChangedHelper;
+import org.xwalk.embedding.base.OpenFileChooserHelper;
 import org.xwalk.embedding.base.XWalkViewTestBase;
 
 import android.annotation.SuppressLint;
@@ -76,6 +78,53 @@ public class XWalkUIClientTest extends XWalkViewTestBase {
     }
 
     @SmallTest
+    public void testOnFullscreenToggled_data() {
+        try {
+            final String name = "fullscreen_togged.html";
+            String fileContent = getFileContent(name);
+            OnFullscreenToggledHelper mOnFullscreenToggledHelper = mTestHelperBridge.getOnFullscreenToggledHelper();
+            int count = mOnFullscreenToggledHelper.getCallCount();
+            loadDataSync(null, fileContent, "text/html", false);
+            clickOnElementId("fullscreen_toggled", null);
+            mOnFullscreenToggledHelper.waitForCallback(count);
+            assertTrue(mOnFullscreenToggledHelper.getEnterFullscreen());
+        } catch (Exception e) {
+            e.printStackTrace();
+            assertTrue(false);
+        }
+    }
+
+    @SmallTest
+    public void testOnFullscreenToggled_url() {
+        try {
+            String url = "file:///android_asset/fullscreen_togged.html";
+            OnFullscreenToggledHelper mOnFullscreenToggledHelper = mTestHelperBridge.getOnFullscreenToggledHelper();
+            int count = mOnFullscreenToggledHelper.getCallCount();
+            loadUrlSync(url);
+            clickOnElementId("fullscreen_toggled", null);
+            mOnFullscreenToggledHelper.waitForCallback(count);
+            assertTrue(mOnFullscreenToggledHelper.getEnterFullscreen());
+        } catch (Exception e) {
+            e.printStackTrace();
+            assertTrue(false);
+        }
+    }
+
+    @SmallTest
+    public void testOnFullscreenToggled_evaluateJavascript() {
+        try {
+            String url = "file:///android_asset/fullscreen_togged.html";
+            OnFullscreenToggledHelper mOnFullscreenToggledHelper = mTestHelperBridge.getOnFullscreenToggledHelper();
+            loadUrlSync(url);
+            clickOnElementId_evaluateJavascript("fullscreen_toggled");
+            assertTrue(mOnFullscreenToggledHelper.getEnterFullscreen());
+        } catch (Exception e) {
+            e.printStackTrace();
+            assertTrue(false);
+        }
+    }
+
+    @SmallTest
     public void testOpenFileChooser() {
         try {
             getInstrumentation().runOnMainSync(new Runnable() {
@@ -95,6 +144,55 @@ public class XWalkUIClientTest extends XWalkViewTestBase {
                 }
             });
             assertTrue(true);
+        } catch (Exception e) {
+            e.printStackTrace();
+            assertTrue(false);
+        }
+    }
+
+    @SmallTest
+    public void testOpenFileChooser_data() {
+        try {
+            final String name = "file_chooser.html";
+            String fileContent = getFileContent(name);
+            OpenFileChooserHelper mOpenFileChooserHelper = mTestHelperBridge.getOpenFileChooserHelper();;
+            int count = mOpenFileChooserHelper.getCallCount();
+            loadDataSync(null, fileContent, "text/html", false);
+            clickOnElementId("upload_input", null);
+            mOpenFileChooserHelper.waitForCallback(count);
+            assertNotNull(mOpenFileChooserHelper.getCallback());
+        } catch (Exception e) {
+            e.printStackTrace();
+            assertTrue(false);
+        }
+    }
+
+    @SmallTest
+    public void testOpenFileChooser_url() {
+        try {
+            String url = "file:///android_asset/file_chooser.html";
+            OpenFileChooserHelper mOpenFileChooserHelper = mTestHelperBridge.getOpenFileChooserHelper();;
+            int count = mOpenFileChooserHelper.getCallCount();
+            loadUrlSync(url);
+            clickOnElementId("upload_input", null);
+            mOpenFileChooserHelper.waitForCallback(count);
+            assertNotNull(mOpenFileChooserHelper.getCallback());
+        } catch (Exception e) {
+            e.printStackTrace();
+            assertTrue(false);
+        }
+    }
+
+    @SmallTest
+    public void testOpenFileChooser_evaluateJavascript() {
+        try {
+            String url = "file:///android_asset/file_chooser.html";
+            OpenFileChooserHelper mOpenFileChooserHelper = mTestHelperBridge.getOpenFileChooserHelper();;
+            int count = mOpenFileChooserHelper.getCallCount();
+            loadUrlSync(url);
+            clickOnElementId_evaluateJavascript("upload_input");
+            mOpenFileChooserHelper.waitForCallback(count);
+            assertNotNull(mOpenFileChooserHelper.getCallback());
         } catch (Exception e) {
             e.printStackTrace();
             assertTrue(false);
