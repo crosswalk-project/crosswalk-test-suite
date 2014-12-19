@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <!--
-Copyright (c) 2013 Intel Corporation.
+Copyright (c) 2014 Intel Corporation.
 
 Redistribution and use in source and binary forms, with or without modification,
 are permitted provided that the following conditions are met:
@@ -27,6 +27,7 @@ EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
 Authors:
     Xu,Yuhan <yuhanx.xu@intel.com>
+    Wang, Hongjuan <hongjuanx.wang@intel.com>
 
 -->
 
@@ -36,20 +37,50 @@ Authors:
     <title>Crosswalk_WebApp_Scheme_App</title>
     <link rel="author" title="Intel" href="http://www.intel.com">
   </head>
+  <style>
+    .content{
+      border: 1px solid #000;
+      height: 150px;
+      margin: 10px;
+      width: 90%;
+    }
+    button {
+      width: 90%;
+      height: 40px;
+    }
+    div{
+      text-align:center
+    }
+  </style>
   <body>
+    <div>
+      <textarea class="content" id="testDiv" readonly="readonly"></textarea>
+      <button onclick="getValue()">Click Me</button>
+    </div>
+    <script> 
+      function getValue() {
+        var loc = window.location;
+        var testDiv = document.getElementById("testDiv");
+        testDiv.innerHTML = "protocol: " + loc.protocol + "\nhref: " + loc.href + "\norigin: " + loc.origin
+      }
+    </script>
     <p>
       <strong>Test steps:</strong>
     </p>
     <ol>
-      <li>Install webapp by typing "adb install web_scheme.apk"</li>
-      <li>Click app icon to launch app</li>
+      <li>Click the button "Click Me"</li>
     </ol>
     <p>
       <strong>Expected Output:</strong>
     </p>
     <ol>
-      <li>Webapp is installed successfully, no error, no warning message</li>
-      <li>The app launched successfully</li>
+      <li>Display below message:
+        <ul>
+          <li>The value of protocol is "app:"</li>
+          <li>The value of href is start with "app://" and end with "/opt/wrt-internetstdmanu-android-tests/internetstdmanu/Crosswalk_WebApp_Scheme_App.html"</li>
+          <li>The value of origin is start with "app://"</li>
+        </ul>
+      </li>
     </ol>
   </body>
 </html>
