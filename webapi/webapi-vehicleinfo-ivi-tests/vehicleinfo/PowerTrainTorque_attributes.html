@@ -40,11 +40,23 @@ Authors:
 <div id="log"></div>
 <script>
 
-test(function () {
-  var powerTrainTorque = vehicle.powerTrainTorque;
-  assert_true("value" in powerTrainTorque, "the PowerTrainTorque.value exists");
-  assert_readonly(powerTrainTorque, "value", "the PowerTrainTorque.value is readonly");
-  assert_equals(typeof powerTrainTorque.value, "number", "the type of PowerTrainTorque.value");
+async_test(function (t) {
+  vehicle.powerTrainTorque.get().then(
+    function (powerTrainTorque) {
+      t.step(function () {
+        assert_true("value" in powerTrainTorque, "the PowerTrainTorque.value exists");
+        assert_readonly(powerTrainTorque, "value", "the PowerTrainTorque.value is readonly");
+        assert_equals(typeof powerTrainTorque.value, "number", "the type of PowerTrainTorque.value");
+      });
+      t.done();
+    },
+    function (error) {
+      t.step(function () {
+        assert_unreached(error.message);
+      });
+      t.done();
+    }
+  )
 }, "Check if PowerTrainTorque.value exists, readonly and type of number");
 
 </script>

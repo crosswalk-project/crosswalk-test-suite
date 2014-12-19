@@ -40,26 +40,34 @@ Authors:
 <div id="log"></div>
 <script>
 
-var tire;
-
-setup(function () {
-  tire = vehicle.tire;
-});
-
 [
   ["boolean", "pressureLow", "readonly"],
   ["number", "pressure", "readonly"],
   ["number", "temperature", "readonly"],
   ["object", "zone", "readonly"]
 ].forEach(function (attr) {
+
   var type = attr[0];
   var name = attr[1];
   var read = attr[2];
 
-  test(function () {
-    assert_true(name in tire, "the Tire." + name + " exists");
-    assert_equals(typeof tire[name], type, "the type of Tire." + name);
-    assert_readonly(tire, name, "the Tire." + name + " is readonly");
+  async_test(function (t) {
+    vehicle.tire.get().then(
+      function (tire) {
+        t.step(function () {
+          assert_true(name in tire, "the Tire." + name + " exists");
+          assert_equals(typeof tire[name], type, "the type of Tire." + name);
+          assert_readonly(tire, name, "the Tire." + name + " is readonly");
+        });
+        t.done();
+      },
+      function (error) {
+        t.step(function () {
+          assert_unreached(error.message);
+        });
+        t.done();
+      }
+    )
   }, "Check if " + read + " Tire." + name + " exists and type of " + type);
 });
 

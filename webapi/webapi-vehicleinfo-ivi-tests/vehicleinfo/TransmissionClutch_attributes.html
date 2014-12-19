@@ -40,11 +40,23 @@ Authors:
 <div id="log"></div>
 <script>
 
-test(function () {
-  var transmissionClutch = vehicle.transmissionClutch;
-  assert_true("wear" in transmissionClutch, "the TransmissionClutch.wear exists");
-  assert_readonly(transmissionClutch, "wear", "the TransmissionClutch.wear is readonly");
-  assert_equals(typeof transmissionClutch.wear, "number", "the type of TransmissionClutch.wear");
+async_test(function (t) {
+  vehicle.transmissionClutch.get().then(
+    function (transmissionClutch) {
+      t.step(function () {
+        assert_true("wear" in transmissionClutch, "the TransmissionClutch.wear exists");
+        assert_readonly(transmissionClutch, "wear", "the TransmissionClutch.wear is readonly");
+        assert_equals(typeof transmissionClutch.wear, "number", "the type of TransmissionClutch.wear");
+      });
+      t.done();
+    },
+    function (error) {
+      t.step(function () {
+        assert_unreached(error.message);
+      });
+      t.done();
+    }
+  )
 }, "Check if TransmissionClutch.wear exists, readonly and type of number");
 
 </script>

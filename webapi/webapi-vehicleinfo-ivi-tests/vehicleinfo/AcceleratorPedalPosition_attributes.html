@@ -40,11 +40,23 @@ Authors:
 <div id="log"></div>
 <script>
 
-test(function () {
-  var acceleratorPedalPosition = vehicle.acceleratorPedalPosition;
-  assert_true("value" in acceleratorPedalPosition, "the AcceleratorPedalPosition.value exists");
-  assert_readonly(acceleratorPedalPosition, "value", "the AcceleratorPedalPosition.value is readonly");
-  assert_equals(typeof acceleratorPedalPosition.value, "number", "the type of AcceleratorPedalPosition.value");
+async_test(function (t) {
+  vehicle.acceleratorPedalPosition.get().then(
+    function (acceleratorPedalPosition) {
+      t.step(function () {
+        assert_true("value" in acceleratorPedalPosition, "the AcceleratorPedalPosition.value exists");
+        assert_readonly(acceleratorPedalPosition, "value", "the AcceleratorPedalPosition.value is readonly");
+        assert_equals(typeof acceleratorPedalPosition.value, "number", "the type of AcceleratorPedalPosition.value");
+      });
+      t.done();
+    },
+    function (error) {
+      t.step(function () {
+        assert_unreached(error.message);
+      });
+      t.done();
+    }
+  )
 }, "Check if AcceleratorPedalPosition.value exists, readonly and type of number");
 
 </script>

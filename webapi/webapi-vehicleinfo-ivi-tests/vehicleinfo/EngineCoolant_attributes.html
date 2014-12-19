@@ -40,24 +40,32 @@ Authors:
 <div id="log"></div>
 <script>
 
-var engineCoolant;
-
-setup(function () {
-  engineCoolant = vehicle.engineCoolant;
-});
-
 [
   ["number", "level", "readonly"],
   ["number", "temperature", "readonly"]
 ].forEach(function (attr) {
+
   var type = attr[0];
   var name = attr[1];
   var read = attr[2];
 
-  test(function () {
-    assert_true(name in engineCoolant, "the EngineCoolant." + name + " exists");
-    assert_equals(typeof engineCoolant[name], type, "the type of EngineCoolant." + name);
-    assert_readonly(engineCoolant, name, "the EngineCoolant." + name + " is readonly");
+  async_test(function (t) {
+    vehicle.engineCoolant.get().then(
+      function (engineCoolant) {
+        t.step(function () {
+          assert_true(name in engineCoolant, "the EngineCoolant." + name + " exists");
+          assert_equals(typeof engineCoolant[name], type, "the type of EngineCoolant." + name);
+          assert_readonly(engineCoolant, name, "the EngineCoolant." + name + " is readonly");
+        });
+        t.done();
+      },
+      function (error) {
+        t.step(function () {
+          assert_unreached(error.message);
+        });
+        t.done();
+      }
+    )
   }, "Check if " + read + " EngineCoolant." + name + " exists and type of " + type);
 });
 

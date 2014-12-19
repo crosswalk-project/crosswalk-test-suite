@@ -40,11 +40,23 @@ Authors:
 <div id="log"></div>
 <script>
 
-test(function () {
-  var drivingMode = vehicle.drivingMode;
-  assert_true("mode" in drivingMode, "the DrivingMode.mode exists");
-  assert_readonly(drivingMode, "mode", "the DrivingMode.mode is readonly");
-  assert_equals(typeof drivingMode.mode, "boolean", "the type of DrivingMode.mode");
+async_test(function (t) {
+  vehicle.drivingMode.get().then(
+    function (drivingMode) {
+      t.step(function () {
+        assert_true("mode" in drivingMode, "the DrivingMode.mode exists");
+        assert_readonly(drivingMode, "mode", "the DrivingMode.mode is readonly");
+        assert_equals(typeof drivingMode.mode, "boolean", "the type of DrivingMode.mode");
+      });
+      t.done();
+    },
+    function (error) {
+      t.step(function () {
+        assert_unreached(error.message);
+      });
+      t.done();
+    }
+  )
 }, "Check if DrivingMode.mode exists, readonly and type of boolean");
 
 </script>
