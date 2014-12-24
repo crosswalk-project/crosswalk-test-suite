@@ -36,19 +36,20 @@ APP_NAME="3d_test"
 
 #monitor device info
 echo "beging..."
-#launch_statue=`app_launcher -s thrdoptest.twodframeplaytest`
+get_pid=`ps aux | grep rscohn2.herokuapp | grep -v "grep" | head -n 1 | awk '{print $2}'`
+kill $get_pid
 $path/longlasting/sysmon-seperateRun.sh $SLEEP "rscohn2.herokuapp" &
 sleep 2
 nohup xwalk-launcher  http://rscohn2.herokuapp.com/sbp/ &>/dev/null &
-sleep 86400
-get_pid=`ps aux | grep rscohn2.herokuapp | grep -v "grep" | head -n 1 | awk '{print $2}' `
-kill $get_pid
-echo "end..."
-exit 0
-#if [[ "$launch_statue" =~ "launched" ]];then
-#   sleep 86400
-#   pkgcmd -u -n twodoptest -q
-#   echo "end..."
-#else
-#    exit 1
-#fi
+launch_statue=`ps -aux | grep xwalk-launcher | grep -v grep | awk '{print $12}'`
+if [[ "$launch_statue" =~ "herokuapp" ]];then
+   sleep 86400
+   get_pid=`ps -aux | grep rscohn2.herokuapp | grep -v "grep" | head -n 1 | awk '{print $2}'`
+   echo "getpid="$get_pid
+   kill $get_pid
+   echo "end..."
+   exit 0
+else
+    exit 1
+fi
+exit 1
