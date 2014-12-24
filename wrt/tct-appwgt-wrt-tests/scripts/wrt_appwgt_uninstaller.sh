@@ -42,12 +42,10 @@ APP_NAME=${p_name%%.wgt}
 find_app $APP_NAME
 pkgnum=`echo "$pkgids"|wc -w`
 if [ $pkgnum -lt 1 ]; then
-then
   install_app $PACKAGENAME
   find_app $APP_NAME
   pkgnum=`echo "$pkgids"|wc -w`
   if [ $pkgnum -lt 1 ]; then
-  then
     echo -e  "Fail to install the widget."
     exit 1
   fi
@@ -56,7 +54,6 @@ uninstall_app $APP_NAME
 find_app $APP_NAME
 pkgnum=`echo "$pkgids"|wc -w`
 if [ $pkgnum -lt 1 ]; then
-then
   echo -e  "The widget is uninstalled successfully!"
   exit 0
 else

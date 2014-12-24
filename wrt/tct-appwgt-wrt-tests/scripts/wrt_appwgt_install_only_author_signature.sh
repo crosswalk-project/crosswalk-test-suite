@@ -1,6 +1,6 @@
 #!/bin/bash
 #
-# Copyright (C) 2013 Intel Corporation
+# Copyright (C) 2015 Intel Corporation
 #
 # Redistribution and use in source and binary forms, with or without modification,
 # are permitted provided that the following conditions are met:
@@ -27,35 +27,45 @@
 #
 # Authors:
 #        Zhang Ge <gex.zhang@intel.com>
+#        Mengli Zhang <mengli.zhang@samsung.com>
+#
 
-path=$(dirname $(dirname $0))
-source $path/scripts/xwalk_common.sh
-if [ $# != 1 ];then
-    echo "Please add parameters packagename."
-    exit 1
-fi
-PACKAGENAME="$path/$1"
-p_name=$1
-APP_NAME=${p_name%%.wgt}
-find_app $APP_NAME
-pkgnum=`echo "$pkgids"|wc -w`
-if [ $pkgnum -ge 1 ]; 
+function existbh()
+{
+  echo $1
+  pkgcmd -u -q -t wgt -n YD4zU83rK8
+  exit $2
+}
+$(dirname $0)/wrt_appwgt_installer.sh sp-widget-only-author-signature.wgt YD4zU83rK8
+if [ $? -ne 0 ]
 then
-  uninstall_app $APP_NAME
-  find_app $APP_NAME
-  pkgnum=`echo "$pkgids"|wc -w`
-  if [ $pkgnum -ge 1 ]; then
-    echo -e  "Fail to uninstall the existed widget."
-    exit 1
-  fi
-fi
-install_app $PACKAGENAME
-find_app $APP_NAME
-pkgnum=`echo "$pkgids"|wc -w`
-if [ $pkgnum -ge 1 ]; then
-  echo -e  "The widget is installed successfully!"
-  exit 0
-else
-  echo -e  "Fail to install the widget!"
   exit 1
+fi
+app_launcher -s YD4zU83rK8.spWidgetOnlyAuthorSignatur
+sleep 2
+widgetpath="/home/app/.config/xwalk-service/applications/YD4zU83rK8.spWidgetOnlyAuthorSignatur"
+if [ ! -d $widgetpath ]
+then
+  existbh "The path of the application does not exist." 1
+fi
+filecount=$(ls -lR $widgetpath|grep "^-"|wc -l)
+name=("config.xml" "icon.png" "index.html" "author-signature.xml")
+if [ $filecount -eq 4  ]
+then
+  filename=$(ls $widgetpath)
+  for var in ${filename[@]};do
+    echo ${name[@]}|grep -q "$var"
+    if [ $? -ne 0 ]
+    then
+      existbh "WRT does not support Web AppWidget installation." 1
+    fi
+  done
+  indexcount=$(find $widgetpath -name index.html|wc -l)
+  if [ $indexcount -ne 1  ]
+  then
+    existbh "WRT does not support Web AppWidget installation." 1
+  fi
+  existbh "WRT supports Web AppWidget installation." 0
+else
+  existbh "WRT does not support Web AppWidget installation." 1
 fi
