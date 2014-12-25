@@ -47,4 +47,4 @@ if [[ "$launch_statue" =~ "launched" ]];then
 else
     exit 1
 fi
-exit 0
+exit 1
