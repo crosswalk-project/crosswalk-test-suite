@@ -634,9 +634,8 @@ def packEmbeddingAPI(
     (return_code, output) = doCMDWithOutput("android list target")
     api_level = ""
     for line in output:
-        if "API level" in line:
+        if "API level:" in line:
             api_level = line.split(":")[1].strip()
-            break
     if not api_level:
         LOG.error("Fail to get Android API Level")
         os.chdir(orig_dir)
