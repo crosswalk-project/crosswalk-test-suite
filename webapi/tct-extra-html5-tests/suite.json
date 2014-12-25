@@ -23,7 +23,11 @@
                 "tests.xml": "tests.xml"
             },
             "pkg-app": {
-                "apk-common-opts": "--enable-remote-debugging"
+                "apk-common-opts": "--enable-remote-debugging",
+                "copylist": {
+                    "PACK-TOOL-ROOT/resources/testharness": "resources",
+                    "PACK-TOOL-ROOT/resources/webrunner": "webrunner"
+                }
             },
             "subapp-list": {
                 "html5-extra-app": {
@@ -33,6 +37,10 @@
         },
         "apk-aio, cordova-aio": {
             "blacklist": [],
+            "copylist": {
+                "PACK-TOOL-ROOT/resources/testharness": "resources",
+                "PACK-TOOL-ROOT/resources/webrunner": "webrunner"
+            },
             "subapp-list": {
                 "html5-extra-app": {
                     "apk-common-opts": "--enable-remote-debugging",
@@ -49,7 +57,12 @@
                 "tests.full.xml": "tests.full.xml",
                 "tests.xml": "tests.xml"
             },
-            "pkg-app": {},
+            "pkg-app": {
+                "copylist": {
+                    "PACK-TOOL-ROOT/resources/testharness": "resources",
+                    "PACK-TOOL-ROOT/resources/webrunner": "webrunner"
+                }
+            },
             "subapp-list": {
                 "html5-extra-app": {
                     "apk-icon-opt": "",
@@ -72,7 +85,11 @@
                 "tests.xml": "tests.xml"
             },
             "pkg-app": {
-                "blacklist": []
+                "blacklist": [],
+                "copylist": {
+                    "PACK-TOOL-ROOT/resources/testharness": "resources",
+                    "PACK-TOOL-ROOT/resources/webrunner": "webrunner"
+                }
             },
             "subapp-list": {
                 "html5-extra-app": {
