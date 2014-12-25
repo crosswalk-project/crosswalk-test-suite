@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<!--
+Copyright (c) 2014 Intel Corporation. All rights reserved.
+
+Redistribution and use in source and binary forms, with or without modification,
+are permitted provided that the following conditions are met:
+
+*Redistributions of works must retain the original copyright notice, this list
+of conditions and the following disclaimer.
+*Redistributions in binary form must reproduce the original copyright notice,
+this list of conditions and the following disclaimer in the documentation
+and/or other materials provided with the distribution.
+*Neither the name of Intel Corporation nor the names of its contributors
+may be used to endorse or promote products derived from this work without
+specific prior written permission.
+
+THIS SOFTWARE IS PROVIDED BY INTEL CORPORATION "AS IS"
+AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE
+IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE
+ARE DISCLAIMED. IN NO EVENT SHALL INTEL CORPORATION BE LIABLE FOR ANY DIRECT,
+INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING,
+BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE,
+DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY
+OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING
+NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE,
+EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
+
+Authors:
+        Zhu, YongyongX <yongyongx.zhu@intel.com>
+-->
+
+<html>
+<head>
+<title>DownloadItem_onPause_exist</title>
+<link rel="author" title="Intel" href="http://www.intel.com/">
+<link rel="help" href="https://github.com/crosswalk-project/crosswalk-android-extensions/wiki/Download-API-Documentation">
+<script src="support/download_common.js"></script>
+<script src="../resources/testharness.js"></script>
+<script src="../resources/testharnessreport.js"></script>
+</head>
+<body>
+
+<div id="log"></div>
+<script type="text/javascript">
+
+async_test(function(t) {
+    var downloadItem;
+    DownloadManager.createDownload(url, targetFile).then( function (item) {
+        t.step(function() {
+          downloadItem = item;
+          assert_true("onPause" in downloadItem, "DownloadItem.onPause exists");
+          assert_equals(typeof downloadItem["onPause"], "EventHandler", "onPause attribute of type");
+        });
+        t.done();
+        
+    }, function (error){
+        t.step(function() {
+          assert_unreached("Create Download failed");
+          t.done();
+        });
+    });
+}, document.title);
+
+</script>
+</body>
+</html>
