@@ -3,11 +3,41 @@
 <test_definition>
   <suite category="Crosswalk WRT" name="wrt-packertool2-android-tests">
     <set name="packertool2" type="pyunit">
-      <testcase component="Crosswalk WRT/Packer Tool" execution_type="auto" id="Crosswalk_Manifest_Check" priority="P1" purpose="Check if packer tool work properly" status="approved" type="Functional">
+      <testcase component="Crosswalk WRT/Packer Tool" execution_type="auto" id="Crosswalk_manifesttest" priority="P1" purpose="Validate if packer tool can work well with manifest file in different path" status="approved" type="Functional" subcase="3">
         <description>
           <test_script_entry>/opt/wrt-packertool2-android-tests/packertool2/manifesttest.py</test_script_entry>
         </description>
-       </testcase>
+      </testcase>
+      <testcase component="Crosswalk WRT/Packer Tool" execution_type="auto" id="Crosswalk_absolutePathtest" priority="P1" purpose="Validate if the packer tool can work well with run script make_apk.py in different path" status="approved" type="Functional" subcase="3">
+        <description>
+          <test_script_entry>/opt/wrt-packertool2-android-tests/packertool2/absolutePathtest.py</test_script_entry>
+        </description>
+      </testcase>
+      <testcase component="Crosswalk WRT/Packer Tool" execution_type="auto" id="Crosswalk_anyLocationtest" priority="P1" purpose="Validate if the packer tool can work well with set the make_apk.py to environment path" status="approved" type="Functional" subcase="3">
+        <description>
+          <test_script_entry>/opt/wrt-packertool2-android-tests/packertool2/anyLocationtest.py</test_script_entry>
+        </description>
+      </testcase>
+      <testcase component="Crosswalk WRT/Packer Tool" execution_type="auto" id="Crosswalk_indextest" priority="P1" purpose="Validate if packer tool can work well with index file in different path" status="approved" type="Functional" subcase="3">
+        <description>
+          <test_script_entry>/opt/wrt-packertool2-android-tests/packertool2/indextest.py</test_script_entry>
+        </description>
+      </testcase>
+      <testcase component="Crosswalk WRT/Packer Tool" execution_type="auto" id="Crosswalk_permissiontest" priority="P1" purpose="Validate if packer tool can work well with parameter permission of manifest" status="approved" type="Functional" subcase="4">
+        <description>
+          <test_script_entry>/opt/wrt-packertool2-android-tests/packertool2/permissiontest.py</test_script_entry>
+        </description>
+      </testcase>
+      <testcase component="Crosswalk WRT/Packer Tool" execution_type="auto" id="Crosswalk_projectonlytest" priority="P1" purpose="Validate if packer tool can work well with parameters project-only and project-dir of manifest" status="approved" type="Functional" subcase="2">
+        <description>
+          <test_script_entry>/opt/wrt-packertool2-android-tests/packertool2/projectonlytest.py</test_script_entry>
+        </description>
+      </testcase>
+      <testcase component="Crosswalk WRT/Packer Tool" execution_type="auto" id="Crosswalk_appPathtest" priority="P1" purpose="Validate if the Packaging Tool enable the app-local-path option" status="approved" type="Functional" subcase="2">
+        <description>
+          <test_script_entry>/opt/wrt-packertool2-android-tests/packertool2/appPathtest.py</test_script_entry>
+        </description>
+      </testcase>
     </set>
   </suite>
 </test_definition>
