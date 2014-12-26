@@ -1,7 +1,4 @@
 #!/bin/sh
-echo "Content-Security-Policy:frame-ancestors *"
-echo "X-Content-Security-Policy:frame-ancestors *"
-echo "X-WebKit-CSP:frame-ancestors *"
 echo
 echo '<!DOCTYPE html>
 <!--
@@ -37,16 +34,16 @@ Authors:
 
 <html>
   <head>
-    <title>CSP Test: csp_frame-src_self_allowed</title>
+    <title>CSP Test: csp_frame-ancestors_asterisk</title>
     <link rel="author" title="Intel" href="http://www.intel.com"/>
     <link rel="help" href="http://www.w3.org/TR/2012/CR-CSP-20121115/#frame-src"/>
     <link rel="match" href="reference/csp_base-uri_asterisk-ref.html"/>
     <meta name="flags" content=""/>
-    <meta name="assert" content="frame-src 'self'"/>
+    <meta name="assert" content="frame-ancestors *"/>
     <meta charset="utf-8"/>
   </head>
   <body>
-    <p>Test passes if there is a filled blue square.</p>
-    <iframe frameborder="no" border="0" src="support/blue-100x100.png"/>
+    <p>Test passes if there is a PASS.</p>
+    <iframe frameborder="no" border="0" src="support/frame-ancestors-asterisk.html"/>
   </body>
 </html> '
