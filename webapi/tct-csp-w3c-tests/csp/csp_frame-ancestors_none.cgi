@@ -1,7 +1,4 @@
 #!/bin/sh
-echo "Content-Security-Policy:frame-ancestors 'none'"
-echo "X-Content-Security-Policy:frame-ancestors 'none'"
-echo "X-WebKit-CSP:frame-ancestors 'none'"
 echo
 echo '<!DOCTYPE html>
 <!--
@@ -42,11 +39,11 @@ Authors:
     <link rel="help" href="http://www.w3.org/TR/2012/CR-CSP-20121115/#frame-src"/>
     <link rel="match" href="reference/csp_frame-ancestors_none-ref.html"/>
     <meta name="flags" content=""/>
-    <meta name="assert" content="frame-src 'self'"/>
+    <meta name="assert" content="frame-ancestors 'none'"/>
     <meta charset="utf-8"/>
   </head>
   <body>
-    <p>Test passes if there is not a filled blue square.</p>
-    <iframe frameborder="no" border="0" src="support/blue-100x100.png"/>
+    <p>Test passes if there is no red.</p>
+    <iframe frameborder="no" border="0" src="support/frame-ancestors-none.html"/>
   </body>
 </html> '
