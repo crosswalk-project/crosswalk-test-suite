@@ -20,10 +20,19 @@
                 "tests.full.xml": "tests.full.xml",
                 "tests.xml": "tests.xml"
             },
-            "pkg-app": {}
+            "pkg-app": {
+                "copylist": {
+                    "PACK-TOOL-ROOT/resources/testharness": "resources",
+                    "PACK-TOOL-ROOT/resources/webrunner": "webrunner"
+                }
+            }
         },
         "apk-aio, cordova-aio": {
-            "blacklist": []
+            "blacklist": [],
+            "copylist": {
+                "PACK-TOOL-ROOT/resources/testharness": "resources",
+                "PACK-TOOL-ROOT/resources/webrunner": "webrunner"
+            }
         },
         "wgt": {
             "blacklist": [
@@ -34,7 +43,12 @@
                 "tests.full.xml": "tests.full.xml",
                 "tests.xml": "tests.xml"
             },
-            "pkg-app": {}
+            "pkg-app": {
+                "copylist": {
+                    "PACK-TOOL-ROOT/resources/testharness": "resources",
+                    "PACK-TOOL-ROOT/resources/webrunner": "webrunner"
+                }
+            }
         },
         "xpk": {
             "blacklist": [
@@ -46,7 +60,11 @@
                 "tests.xml": "tests.xml"
             },
             "pkg-app": {
-                "blacklist": []
+                "blacklist": [],
+                "copylist": {
+                    "PACK-TOOL-ROOT/resources/testharness": "resources",
+                    "PACK-TOOL-ROOT/resources/webrunner": "webrunner"
+                }
             }
         }
     },
