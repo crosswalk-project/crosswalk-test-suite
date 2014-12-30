@@ -3,35 +3,6 @@
 This test suite is for testing Tizen Time API, which covers the following specifications:
 * https://developer.tizen.org/help/topic/org.tizen.web.device.apireference/tizen/time.html
 
-## Pre-Conditions
-
-* Time zone should be set to Seoul
-    Launch 'Settings' application -> Select 'Date and time'
-    -> Turn off 'Automatic update' if it is enabled. It makes you change 'Time zone'
-    -> Select 'Time zone' -> Choose 'Seoul'
-    Tests: TimeUtil_getLocalTimezone
-
-* There are tests which check position between two dates. One of these dates is current date,
-   the other one is set to some specific date. These tests may fail if current Date is set
-   before 2013-3-4:
-    Test: TZDate_earlierThan
-
-* Display language should be set to English(United Kingdom).
-    Launch 'Settings' application -> Select 'Language and keyboard' -> Select 'Display language'
-    -> Select 'English(United Kingdom)'
-    Test: TimeUtil_getDateFormat
-
-* Region should be set to English(United Kingdom).
-    Launch 'Settings' application -> Select 'Language and keyboard' -> Select 'Region'
-    -> Select 'English(United Kingdom)'
-    Tests: TZDate_toLocaleString_for_specific_date
-           TZDate_toLocaleDateString_for_specific_date
-           TZDate_toDateString_for_specific_date
-
-* Time format should be set to AM/PM (12 hours) format.
-    Launch 'Settings' application -> Select 'Date and time'
-    -> Time format: Select AM/PM (12 hours)
-
 ## Authors:
 
 * Li, Cici <cici.x.li@intel.com>
