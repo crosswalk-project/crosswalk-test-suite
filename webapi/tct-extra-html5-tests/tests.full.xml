@@ -7177,24 +7177,6 @@
           </spec>
         </specs>
       </testcase>
-      <testcase component="W3C_HTML5 APIs/W3C_EXTRAHTML5/Semantics" execution_type="manual" id="reversed_on_ol_element" priority="P3" purpose="Check if the reversed attribute on ol element" status="approved" type="compliance">
-        <description>
-          <steps>
-            <step order="1">
-              <step_desc>Run the test</step_desc>
-              <expected>Test Passes if the list is reverse order</expected>
-            </step>
-          </steps>
-          <test_script_entry>/opt/tct-extra-html5-tests/w3c/semantics/grouping-content/the-ol-element/reversed-1a-manual.html</test_script_entry>
-        </description>
-        <specs>
-          <spec>
-            <spec_assertion category="W3C HTML5 API Specifications" interface="HTMLElement" section="ExtraHTML5" specification="HTML5 element" usage="true" />
-            <spec_url>http://www.w3.org/TR/2012/CR-html5-20121217/grouping-content.html#the-ol-element</spec_url>
-            <spec_statement />
-          </spec>
-        </specs>
-      </testcase>
       <testcase component="W3C_HTML5 APIs/W3C_EXTRAHTML5/Semantics" execution_type="auto" id="figure_element_exists" priority="P3" purpose="Check if figure element exists" status="approved" type="compliance">
         <description>
           <test_script_entry test_script_expected_result="0">/opt/tct-extra-html5-tests/w3c/semantics/grouping-content/the-figure-element/grouping-figure.html</test_script_entry>
@@ -7215,18 +7197,6 @@
           <spec>
             <spec_assertion category="W3C HTML5 API Specifications" interface="HTMLElement" section="ExtraHTML5" specification="HTML5 element" usage="true" />
             <spec_url>http://www.w3.org/TR/2012/CR-html5-20121217/grouping-content.html#the-figcaption-element</spec_url>
-            <spec_statement />
-          </spec>
-        </specs>
-      </testcase>
-      <testcase component="W3C_HTML5 APIs/W3C_EXTRAHTML5/Semantics" execution_type="manual" id="hidden_attribute_support" priority="P3" purpose="Check if the hidden attribute support" status="approved" type="compliance">
-        <description>
-          <test_script_entry>/opt/tct-extra-html5-tests/w3c/editing/the-hidden-attribute/hidden-1a-manual.html</test_script_entry>
-        </description>
-        <specs>
-          <spec>
-            <spec_assertion category="W3C HTML5 API Specifications" interface="HTMLElement" section="ExtraHTML5" specification="HTML5 element" usage="true" />
-            <spec_url>http://www.w3.org/TR/2012/CR-html5-20121217/editing.html#editing-0</spec_url>
             <spec_statement />
           </spec>
         </specs>
@@ -7939,6 +7909,40 @@
           <spec>
           <test_script_entry test_script_expected_result="0">/opt/tct-extra-html5-tests/bddrunner html5-extra-app/testscripts/area_noref.feature</test_script_entry>
             <spec_url />
+            <spec_statement />
+          </spec>
+        </specs>
+      </testcase>
+    </set>
+    <set name="extra-ref" type="ref">
+      <testcase component="W3C_HTML5 APIs/W3C_EXTRAHTML5/Semantics" execution_type="auto" id="reversed_on_ol_element" priority="P3" purpose="Check if the reversed attribute on ol element" status="approved" type="compliance">
+        <description>
+          <steps>
+            <step order="1">
+              <step_desc>Run the test</step_desc>
+              <expected>Test Passes if the list is reverse order</expected>
+            </step>
+          </steps>
+          <test_script_entry>/opt/tct-extra-html5-tests/w3c/semantics/grouping-content/the-ol-element/reversed-1a.html</test_script_entry>
+          <refer_test_script_entry timeout="90">/opt/tct-extra-html5-tests/w3c/semantics/grouping-content/the-ol-element/reversed-1-ref.html</refer_test_script_entry>
+        </description>
+        <specs>
+          <spec>
+            <spec_assertion category="W3C HTML5 API Specifications" interface="HTMLElement" section="ExtraHTML5" specification="HTML5 element" usage="true" />
+            <spec_url>http://www.w3.org/TR/2012/CR-html5-20121217/grouping-content.html#the-ol-element</spec_url>
+            <spec_statement />
+          </spec>
+        </specs>
+      </testcase>
+      <testcase component="W3C_HTML5 APIs/W3C_EXTRAHTML5/Semantics" execution_type="auto" id="hidden_attribute_support" priority="P3" purpose="Check if the hidden attribute support" status="approved" type="compliance">
+        <description>
+          <test_script_entry>/opt/tct-extra-html5-tests/w3c/editing/the-hidden-attribute/hidden-1a.html</test_script_entry>
+          <refer_test_script_entry timeout="90">/opt/tct-extra-html5-tests/w3c/editing/the-hidden-attribute/hidden-1-ref.html</refer_test_script_entry>
+        </description>
+        <specs>
+          <spec>
+            <spec_assertion category="W3C HTML5 API Specifications" interface="HTMLElement" section="ExtraHTML5" specification="HTML5 element" usage="true" />
+            <spec_url>http://www.w3.org/TR/2012/CR-html5-20121217/editing.html#editing-0</spec_url>
             <spec_statement />
           </spec>
         </specs>

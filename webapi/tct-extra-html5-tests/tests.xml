@@ -3035,17 +3035,6 @@
           <test_script_entry>/opt/tct-extra-html5-tests/semantics/sections/the-body-element/body_onhashchange_check.html</test_script_entry>
         </description>
       </testcase>
-      <testcase component="W3C_HTML5 APIs/W3C_EXTRAHTML5/Semantics" execution_type="manual" id="reversed_on_ol_element" purpose="Check if the reversed attribute on ol element">
-        <description>
-          <steps>
-            <step order="1">
-              <step_desc>Run the test</step_desc>
-              <expected>Test Passes if the list is reverse order</expected>
-            </step>
-          </steps>
-          <test_script_entry>/opt/tct-extra-html5-tests/w3c/semantics/grouping-content/the-ol-element/reversed-1a-manual.html</test_script_entry>
-        </description>
-      </testcase>
       <testcase component="W3C_HTML5 APIs/W3C_EXTRAHTML5/Semantics" execution_type="auto" id="figure_element_exists" purpose="Check if figure element exists">
         <description>
           <test_script_entry test_script_expected_result="0">/opt/tct-extra-html5-tests/w3c/semantics/grouping-content/the-figure-element/grouping-figure.html</test_script_entry>
@@ -3054,11 +3043,6 @@
       <testcase component="W3C_HTML5 APIs/W3C_EXTRAHTML5/Semantics" execution_type="auto" id="figcaption_element_exists" purpose="Check if figcaption element exists">
         <description>
           <test_script_entry test_script_expected_result="0">/opt/tct-extra-html5-tests/w3c/semantics/grouping-content/the-figcaption-element/grouping-figcaption.html</test_script_entry>
-        </description>
-      </testcase>
-      <testcase component="W3C_HTML5 APIs/W3C_EXTRAHTML5/Semantics" execution_type="manual" id="hidden_attribute_support" purpose="Check if the hidden attribute support">
-        <description>
-          <test_script_entry>/opt/tct-extra-html5-tests/w3c/editing/the-hidden-attribute/hidden-1a-manual.html</test_script_entry>
         </description>
       </testcase>
       <testcase component="W3C_HTML5 APIs/W3C_EXTRAHTML5/Semantics" execution_type="auto" id="interfaces" purpose="Check if the elements should implement its interfaces">
@@ -3372,6 +3356,26 @@
             </step>
           </steps>
           <test_script_entry test_script_expected_result="0">/opt/tct-extra-html5-tests/bddrunner html5-extra-app/testscripts/area_noref.feature</test_script_entry>
+        </description>
+      </testcase>
+    </set>
+    <set name="extra-ref" type="ref">
+      <testcase component="W3C_HTML5 APIs/W3C_EXTRAHTML5/Semantics" execution_type="auto" id="reversed_on_ol_element" purpose="Check if the reversed attribute on ol element">
+        <description>
+          <steps>
+            <step order="1">
+              <step_desc>Run the test</step_desc>
+              <expected>Test Passes if the list is reverse order</expected>
+            </step>
+          </steps>
+          <test_script_entry>/opt/tct-extra-html5-tests/w3c/semantics/grouping-content/the-ol-element/reversed-1a.html</test_script_entry>
+          <refer_test_script_entry timeout="90">/opt/tct-extra-html5-tests/w3c/semantics/grouping-content/the-ol-element/reversed-1-ref.html</refer_test_script_entry>
+        </description>
+      </testcase>
+      <testcase component="W3C_HTML5 APIs/W3C_EXTRAHTML5/Semantics" execution_type="auto" id="hidden_attribute_support" purpose="Check if the hidden attribute support">
+        <description>
+          <test_script_entry>/opt/tct-extra-html5-tests/w3c/editing/the-hidden-attribute/hidden-1a.html</test_script_entry>
+          <refer_test_script_entry timeout="90">/opt/tct-extra-html5-tests/w3c/editing/the-hidden-attribute/hidden-1-ref.html</refer_test_script_entry>
         </description>
       </testcase>
     </set>
