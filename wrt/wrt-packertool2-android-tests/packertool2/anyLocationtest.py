@@ -7,7 +7,6 @@ import comm
 class TestPackertoolsFunctions(unittest.TestCase):
   def test_anyLocation_hostApp(self):
       comm.setUp()
-      comm.anyLocation()
       cmd = "make_apk.py --package=org.xwalk.example --name=example --arch=%s --mode=%s --app-url=https://crosswalk-project.org/" % \
             (comm.ARCH, comm.MODE)
       comm.gen_pkg(cmd, self)

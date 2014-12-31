@@ -1,7 +1,10 @@
 #!/usr/bin/env python
+#coding=utf-8
 
 import unittest
 import os, sys, commands, shutil
+reload(sys)
+sys.setdefaultencoding( "utf-8" )
 
 SCRIPT_PATH = os.path.realpath(__file__)
 ConstPath = os.path.dirname(SCRIPT_PATH)
@@ -16,6 +19,7 @@ per2 = '<uses-permission android:name="android.permission.ACCESS_FINE_LOCATION"/
 def setUp():
     global ARCH, MODE, AppName, device
 
+    #device = "Medfield1FB92605"
     device = os.environ.get('DEVICE_ID')
     if not device:
         print (" get env error\n")
@@ -37,26 +41,25 @@ def setUp():
         AppName = "Example.apk"
     mode.close()
 
+# test for permission
 def clear_permission(targetDir):
     if os.path.exists(ConstPath + "/../" + targetDir + "/permission"):
        try:
           os.remove(ConstPath + "/../" + targetDir + "/Permission_0.1.apk")
           shutil.rmtree(ConstPath + "/../" + targetDir + "/permission")
        except Exception,e:
+          os.system("rm -rf " + ConstPath + "/../" + targetDir + "/*.apk")
           os.system("rm -rf " + ConstPath + "/../" + targetDir + "/permission")
-          os.system(ConstPath + "/../" + targetDir + "/*.apk")
 
 def perm(targetDir, manifestPath, self):
     setUp()
     clear_permission(targetDir)
-    print os.getcwd()
     os.chdir(ConstPath + "/../" + targetDir)
     cmd = "python %smake_apk.py --package=org.xwalk.permission --project-dir=permission --arch=%s --mode=%s --manifest=%s" % \
     (Pck_Tools, ARCH, MODE, manifestPath)
     packstatus = commands.getstatusoutput(cmd)
     self.assertEquals(0, packstatus[0])
     os.chdir("permission/Permission")
-    manifestPath = os.getcwd() + "/manifest.json"
     fp = open(os.getcwd() + "/AndroidManifest.xml")
     lines = fp.readlines()
     for i in range(len(lines)): 
@@ -68,17 +71,57 @@ def perm(targetDir, manifestPath, self):
                 else:
                     self.assertIn(per1, l)
                     self.assertIn(per2, l)
-                print "Found"
+                print "Find"
             else:
-                print "Continue find"
+                print i
         else:
             if "duplicate" not in targetDir:
-                self.assertFalse(true, "Not found " + per1)
+                self.assertFalse(true, "No Find " + per1)
             else:
-                self.assertFalse(true, "Not found " + per1 + " and " + per2)
+                self.assertFalse(true, "No Find " + per1 + " and " + per2)
     os.chdir(ConstPath + "/..")
     clear_permission(targetDir)
 
+def perm2(num, cmd, self):
+    setUp()
+    clear_permission2()
+    os.chdir(Pck_Tools)
+    packstatus = commands.getstatusoutput(cmd)
+    self.assertEquals(0, packstatus[0])
+    os.chdir(Pck_Tools + "permission/Permission")
+    fp = open(os.getcwd() + "/AndroidManifest.xml")
+    lines = fp.readlines()
+    for i in range(len(lines)): 
+        l = lines[i].strip("\n\r").strip()
+        if i < len(lines):
+            if per1 in l:
+                if num < 4:
+                    self.assertIn(per1, l)
+                else:
+                    self.assertIn(per1, l)
+                    self.assertIn(per2, l)
+                print "Find"
+            else:
+                print i
+        else:
+            if num < 4:
+                self.assertFalse(true, "No Find " + per1)
+            else:
+                self.assertFalse(true, "No Find " + per1 + " and " + per2)
+    os.chdir(ConstPath + "/..")
+    clear_permission2()
+
+def clear_permission2():
+    if os.path.exists(Pck_Tools + "permission"):
+       try:
+          os.remove(Pck_Tools + "Permission_0.1.apk")
+          shutil.rmtree(Pck_Tools + "permission")
+       except Exception,e:
+          os.system("rm -rf " + Pck_Tools + "*.apk")
+          os.system("rm -rf " + Pck_Tools + "permission")
+
+
+# test for build, install, launch and uninstall
 def gen_pkg(cmd, self):
     setUp()
     if os.path.exists(Pck_Tools + "/" + AppName):
@@ -110,7 +153,87 @@ def gen_pkg(cmd, self):
         os.system("adb -s " + device + " uninstall org.xwalk.example")
     if os.path.exists(os.getcwd() + "/" + AppName):
         os.remove(os.getcwd() +  "/" + AppName)
-        
-def anyLocation():
-    chmodstatus = commands.getstatusoutput("chmod +x " + Pck_Tools + "make_apk.py")
-    os.system("export PATH=$PATH:" + Pck_Tools)
+
+# test for compressor
+def clear_compressor():
+    if os.path.exists(ConstPath + "/../testapp/packer_tool_minify_tests/compressor"):
+       try:
+          os.remove(ConstPath + "/../testapp/packer_tool_minify_tests/Compressor_0.1.apk")
+          shutil.rmtree(ConstPath + "/../testapp/packer_tool_minify_tests/compressor")
+       except Exception,e:
+          os.system("rm -rf " + ConstPath + "/../testapp/packer_tool_minify_tests/compressor")
+          os.system(ConstPath + "/../testapp/packer_tool_minify_tests/*.apk")
+
+def compressor(compre, self):
+    setUp()
+    global compDir, oriDir
+    manifestPath = ConstPath + "/../testapp/packer_tool_minify_tests/manifest.json"
+    os.chdir(ConstPath + "/../testapp/packer_tool_minify_tests")
+    cmd = "python %smake_apk.py --package=org.xwalk.compressor --arch=%s --mode=%s --manifest=%s --project-dir=compressor" % \
+            (Pck_Tools, ARCH, MODE, manifestPath)
+    packstatus = commands.getstatusoutput(cmd + compre)
+    self.assertEquals(0, packstatus[0])
+    print "Generate APK ----------------> OK!"
+    compDir = ConstPath + "/../testapp/packer_tool_minify_tests/compressor/Compressor/assets/www/resource/"
+    oriDir = ConstPath + "/../testapp/packer_tool_minify_tests/resource/"
+    self.assertIn("script.js", os.listdir(compDir))
+    self.assertIn("style.css", os.listdir(compDir))
+
+#test for description
+def clear_description():
+    if os.path.exists(ConstPath + "/../testapp/example/example"):
+       try:
+          os.remove(ConstPath + "/../testapp/example/Example.apk")
+          shutil.rmtree(ConstPath + "/../testapp/example/example")
+       except Exception,e:
+          os.system("rm -rf " + ConstPath + "/../testapp/example/example")
+          os.system(ConstPath + "/../testapp/packer_tool_minify_tests/*.apk")
+
+def description(descPara, desc, self):
+    setUp()
+    clear_description()
+    appRoot = ConstPath + "/../testapp/example/"
+    os.chdir(appRoot)
+    cmd = "python %smake_apk.py --package=org.xwalk.example --name=example --arch=%s --mode=%s --app-root=%s --app-local-path=index.html --project-dir=example" % \
+          (Pck_Tools, ARCH, MODE, appRoot)
+    print cmd + descPara
+    packstatus = commands.getstatusoutput(cmd + descPara)
+    self.assertEquals(0, packstatus[0])
+    print "Generate APK ----------------> OK!"
+    os.chdir("example/Example")
+    am = open(os.getcwd() + "/AndroidManifest.xml")
+    amlines = am.readlines()
+    for i in range(len(amlines)):
+         adv = amlines[4][12:54].strip()
+         ad = amlines[4][12:32].strip() 
+         sd = amlines[4][34:53].strip()
+         self.assertIn(ad, adv)
+         self.assertIn(sd, adv)
+
+    fp = open(os.getcwd() + "/res/values/strings.xml")
+    lines = fp.readlines()
+    for i in range(len(lines)):
+        l = lines[i].strip("\n\r").strip()
+        if i < len(lines):
+            if desc in l:
+                self.assertIn(desc, l)
+                print "Find"
+            elif (i == len(lines)-1) and desc not in l:
+                self.assertFalse(True, "No find " + desc)
+            else:
+                print i
+        else:
+            self.assertFalse(True, "No find " + desc)
+    clear_description()
+
+
+
+
+
+
+
+
+
+
+
+
