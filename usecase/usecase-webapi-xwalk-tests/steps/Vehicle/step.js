@@ -1,6 +1,8 @@
 var step = '<font style="font-size:85%">'
         + '<p>Test Purpose: </p>'
         + '<p>Verifies the device supports tizen vehicle information and vehicle data API.</p>'
+        + '<p>Pre-condition: </p>'
+        + '<p>Enable bluemonkey plugin following https://wiki.tizen.org/wiki/AMB_Bluemonkey_Plugin</p>'
         + '<p>Test Step: </p>'
         + '<p>'
           + '<ol>'
