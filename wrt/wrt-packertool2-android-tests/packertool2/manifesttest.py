@@ -44,5 +44,15 @@ class TestPackertoolsFunctions(unittest.TestCase):
         self.assertIn(comm.AppName, result[1])
         os.remove(comm.AppName)
 
+    def test_manifest4(self):
+        comm.setUp()
+        manifestPath = comm.ConstPath + "/../testapp/manifest_no_starturl/manifest.json"
+        cmd = "python %smake_apk.py --package=org.xwalk.example --arch=%s --mode=%s --manifest=%s" % \
+        (comm.Pck_Tools, comm.ARCH, comm.MODE, manifestPath)
+        packstatus = commands.getstatusoutput(cmd)
+        errorInfo = "there is no app launch path defined in manifest.json"
+        print errorInfo
+        self.assertIn(errorInfo, packstatus[1])
+
 if __name__ == '__main__':  
     unittest.main()
