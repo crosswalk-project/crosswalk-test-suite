@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <!--
-Copyright (c) 2013 Intel Corporation.
+Copyright (c) 2014 Intel Corporation.
 
 Redistribution and use in source and binary forms, with or without modification,
 are permitted provided that the following conditions are met:
@@ -26,27 +26,21 @@ NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE,
 EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
 Authors:
-        Xinx, liu <xinx.liu@intel.com>
+        Liu, yun <yun.liu@archermind.com>
 
 -->
 
-<html>
-  <head>
-    <title>Text-level semantics Test: mark_element_base_usage</title>
-    <link rel="author" title="Intel" href="http://www.intel.com/">
-    <link rel="help" href="http://www.w3.org/TR/2012/CR-html5-20121217/text-level-semantics.html#the-mark-element">
-    <meta name="flags" content="interact">
-    <meta name="assert" content="Check if the mark element represents a run of text in one document marked or highlighted for reference purposes">
-  </head>
-  <body>
-    <p>Test passes if the highlighted part below is 1.1.</p>
-      <pre>
-        <code>
+<meta charset="utf-8">
+<title>[Text-level semantics Test] Reference file</title>
+<link rel="author" title="Intel" href="http://www.intel.com">
+<body>
+  <p>Test passes if the highlighted part below is 1.1.</p>
+    <pre>
+      <code>
           var i: Integer;
           begin
-          i := <mark>1.1</mark>;
+          i := <a style="background: yellow;">1.1</a>;
           end.
-        </code>
-      </pre>
-  </body>
-</html>
+      </code>
+    </pre>
+</body>
