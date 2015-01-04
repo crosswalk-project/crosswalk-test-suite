@@ -4,8 +4,7 @@ This sample demonstrate Vehicle info and Vehicle data feature basic functionalit
 
 * get vehicle speed
 * get vehicle speed changed
-* get history data
 
 This usecase covers following interface and methods:
 
-* Vehicle interface: get subscribe unsubscribe getHistory methods
+* Vehicle interface: get subscribe unsubscribe methods

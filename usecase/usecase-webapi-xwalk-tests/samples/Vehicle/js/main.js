@@ -26,6 +26,7 @@ EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
 Authors:
         Liu, Xin <xinx.liu@intel.com>
+        Xu, Kang <kangx.xu@intel.com>
 
 */
 
@@ -48,16 +49,11 @@ function getVehicle() {
     function(error) {
       window.alert("Error callback: " + error.message);
     });
-    
+
     // Verify subscribe and unsubscribe:
     var vehicleSpeedSub = vehicle.vehicleSpeed.subscribe(function(vehicleSpeed) {
       jQuery("#speedChange").text("vehicle speed changed to: " + vehicleSpeed.speed);
       vehicle.vehicleSpeed.unsubscribe(vehicleSpeedSub);
-    });
-
-    // Verify getHistory:
-    vehicle.vehicleSpeed.getHistory(vehicle.vehicleSpeed.from, vehicle.vehicleSpeed.to).then(function(data) {
-      jQuery("#historyData").text("history data: " + data.length);
     });
 
   } catch (err) {
