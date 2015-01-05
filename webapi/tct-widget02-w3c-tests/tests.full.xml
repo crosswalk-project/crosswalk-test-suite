@@ -15,30 +15,6 @@
           </spec>
         </specs>
       </testcase>
-      <testcase component="W3C_HTML5 APIs/Widget/Widget Packaging and XML Configuration" execution_type="manual" id="WidgetPackaging_dc" priority="P3" purpose="Test the UA's support for explicitly setting the valid mime type of a file using the type attribute of the content element." status="approved" type="compliance">
-        <description>
-          <pre_condition />
-          <post_condition>Get the $pkgid of dc.wgt with the command : pkgcmd -l, then uninstall the dc.wgt with the command : pkgcmd -u -t wgt -q -n $pkgid</post_condition>
-          <steps>
-            <step order="1">
-              <step_desc>Install the widget with the command: pkgcmd -i -t wgt -q -p /home/app/content/tct/opt/tct-widget02-w3c-tests/widgetpackaging/w3c/dc.wgt</step_desc>
-              <expected>Widget application is able to be installed successfully.</expected>
-            </step>
-            <step order="2">
-              <step_desc>Get the $appid of dc.wgt with the command :"app_launcher -l" and launch the dc.wgt with the command :"app_launcher -s $appid".</step_desc>
-              <expected>To pass, the widget can be started successfully and the screen shows "PASS" on green background.</expected>
-            </step>
-          </steps>
-          <test_script_entry timeout="90" />
-        </description>
-        <specs>
-          <spec>
-            <spec_assertion category="Tizen W3C API Specifications" interface="Widget" section="Widget" specification="Widget Packaging and XML Configuration" usage="true" />
-            <spec_url>http://www.w3.org/TR/2011/REC-widgets-20110927/</spec_url>
-            <spec_statement />
-          </spec>
-        </specs>
-      </testcase>
       <testcase component="W3C_HTML5 APIs/Widget/Widget Packaging and XML Configuration" execution_type="auto" id="WidgetPackaging_dl" priority="P3" purpose="Test if the UA can verify a cryptographic zip archive." status="approved" type="compliance">
         <description>
           <test_script_entry timeout="90">app_user@/home/app/content/tct/opt/tct-widget02-w3c-tests/scripts/w3c_widget_installfail.sh dl.wgt</test_script_entry>
