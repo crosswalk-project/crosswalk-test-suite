@@ -26,7 +26,7 @@ def geUnitcase():
         for item in newcl:
             casenum = item[:-9].strip()
             flag = item[-8:]
-            caseDir = "/opt/wrt-packtertool-android-tests/apks/" + ARCH + "/" + item
+            caseDir = "/opt/wrt-packertool-android-tests/apks/" + ARCH + "/" + item
             casenum = "\n  def test_" + flag + "_" + casenum +"(self):\n     self.assertEqual(\"PASS\", run_app.tryRunApp(\"" + item +"\", \"" + caseDir+ "\"))"+ "\n"
             testfile.write(casenum)
             testfile.flush()
