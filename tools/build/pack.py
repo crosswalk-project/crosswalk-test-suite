@@ -260,6 +260,13 @@ def buildSRC(src=None, dest=None, build_json=None):
     if not os.path.exists(src):
         LOG.info("+Src dir does not exist, skip build src process ...")
         return True
+
+    tests_xml_v = os.path.join(BUILD_ROOT_SRC, "tests_" + BUILD_PARAMETERS.caseversion + ".xml")
+    tests_xml = os.path.join(BUILD_ROOT_SRC, "tests.xml")
+    if checkContains(BUILD_PARAMETERS.pkgtype, "EMBEDDINGAPI"):
+        if not doCopy(tests_xml_v, tests_xml):
+            return False
+
     if not doCopy(src, dest):
         return False
     if "blacklist" in build_json:
@@ -602,6 +609,16 @@ def packEmbeddingAPI(
         build_json=None, app_src=None, app_dest=None, app_name=None):
     app_name = app_name.replace("-", "_")
 
+    test_path = os.path.join(app_src, "src/org/xwalk/embedding/test")
+    if not doRemove([test_path]):
+            return False
+    test_source = os.path.join(BUILD_ROOT_SRC, app_name, "src/org/xwalk/embedding/test/", BUILD_PARAMETERS.caseversion)
+    test_dest = os.path.join(app_src, "src/org/xwalk/embedding/test/", BUILD_PARAMETERS.caseversion)
+    LOG.info("test_source: %s" % test_source)
+    LOG.info("test_dest: %s" % test_dest)
+    if not doCopy(test_source, test_dest):
+        return False
+
     library_dir_name = safelyGetValue(build_json, "embeddingapi-library-name")
     if not library_dir_name:
         LOG.error("Fail to get embeddingapi-library-name ...")
@@ -892,6 +909,12 @@ def main():
             "--arch",
             dest="pkgarch",
             help="specify the apk arch, e.g. x86, arm")
+        opts_parser.add_option(
+            "--cv",
+            "--cversion",
+            dest="caseversion",
+            default="v1", 
+            help="specify the embeddingapi case version, e.g. v1, v2, v3 ...")
         opts_parser.add_option(
             "-d",
             "--dest",
