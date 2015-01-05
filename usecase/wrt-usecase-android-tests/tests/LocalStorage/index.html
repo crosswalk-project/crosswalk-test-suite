@@ -47,10 +47,12 @@ Authors:
       <div data-role="content">
         <h4>Test Steps</h4>
         <ol>
-          <li>Launch web app named "localstorage" in your device, then input value and click "Set localStorage"</li>
+          <li>Pack a webapp with below command:<br>
+              $ python make_apk.py --package=org.xwalk.localstorage --manifest=[path]/crosswalk-test-suite/usecase/usecase-wrt-android-tests/tests/LocalStorage/res/manifest.json<br>
+              Install and launch it, then input value and click "Set localStorage"</li>
           <li>Click "Get localStorage"</li>
-          <li>Re-install the app named "localstorage", then repeat step 2</li>
-          <li>Build the app "localStorage" with higher Crosswalk version, install and launch it, then repeat step 2</li>
+          <li>Re-install the app named "localstorage" with command "adb install -r *apk" to force install, then repeat step 2</li>
+          <li>Build the app "localStorage" with higher Crosswalk version use command step 1, install(use "adb install -r *apk to force upgrading") and launch it, then repeat step 2</li>
         </ol>
       </div>
       <div data-role="footer" data-position="fixed">
