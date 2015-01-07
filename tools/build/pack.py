@@ -40,6 +40,7 @@ import logging
 import zipfile
 import signal
 import subprocess
+import re
 from optparse import OptionParser
 
 reload(sys)
@@ -63,7 +64,6 @@ BUILD_ROOT_PKG = None
 BUILD_ROOT_PKG_APP = None
 LOG = None
 LOG_LEVEL = logging.DEBUG
-
 
 class ColorFormatter(logging.Formatter):
 
@@ -261,9 +261,10 @@ def buildSRC(src=None, dest=None, build_json=None):
         LOG.info("+Src dir does not exist, skip build src process ...")
         return True
 
-    tests_xml_v = os.path.join(BUILD_ROOT_SRC, "tests_" + BUILD_PARAMETERS.caseversion + ".xml")
-    tests_xml = os.path.join(BUILD_ROOT_SRC, "tests.xml")
-    if checkContains(BUILD_PARAMETERS.pkgtype, "EMBEDDINGAPI"):
+
+    if checkContains(BUILD_PARAMETERS.pkgtype, "EMBEDDINGAPI") and BUILD_PARAMETERS.caseversion:
+        tests_xml_v = os.path.join(BUILD_ROOT_SRC, "tests_" + BUILD_PARAMETERS.caseversion + ".xml")
+        tests_xml = os.path.join(BUILD_ROOT_SRC, "tests.xml")
         if not doCopy(tests_xml_v, tests_xml):
             return False
 
@@ -609,15 +610,28 @@ def packEmbeddingAPI(
         build_json=None, app_src=None, app_dest=None, app_name=None):
     app_name = app_name.replace("-", "_")
 
-    test_path = os.path.join(app_src, "src/org/xwalk/embedding/test")
-    if not doRemove([test_path]):
+    if BUILD_PARAMETERS.caseversion:
+        test_path = os.path.join(app_src, "src/org/xwalk/embedding/test")
+        if not doRemove([test_path]):
             return False
-    test_source = os.path.join(BUILD_ROOT_SRC, app_name, "src/org/xwalk/embedding/test/", BUILD_PARAMETERS.caseversion)
-    test_dest = os.path.join(app_src, "src/org/xwalk/embedding/test/", BUILD_PARAMETERS.caseversion)
-    LOG.info("test_source: %s" % test_source)
-    LOG.info("test_dest: %s" % test_dest)
-    if not doCopy(test_source, test_dest):
-        return False
+        test_source = os.path.join(BUILD_ROOT_SRC, app_name, "src/org/xwalk/embedding/test/", BUILD_PARAMETERS.caseversion)
+        test_dest = os.path.join(app_src, "src/org/xwalk/embedding/test/", BUILD_PARAMETERS.caseversion)
+        LOG.info("test_source: %s" % test_source)
+        LOG.info("test_dest: %s" % test_dest)
+        if not doCopy(test_source, test_dest):
+            return False
+
+        xml_source = os.path.join(BUILD_ROOT_SRC, app_name, "AndroidManifest.xml")
+        xml_source_tmp = os.path.join(BUILD_ROOT_SRC, app_name, "AndroidManifest_tmp.xml")
+        xml_dest = os.path.join(app_src, "AndroidManifest.xml")
+        replaceCopy(xml_source, xml_source_tmp, "org.xwalk.embedding.test", "org.xwalk.embedding.test." + BUILD_PARAMETERS.caseversion)
+        replaceCopy(xml_source_tmp, xml_dest, "EmbeddingApiTestUnit", "EmbeddingApiTestUnit" + BUILD_PARAMETERS.caseversion)
+        inst_source = os.path.join(BUILD_ROOT_SRC, "inst.apk.py")
+        inst_dest = os.path.join(BUILD_ROOT_PKG, "inst.py")
+        replaceCopy(inst_source, inst_dest, "org.xwalk.embedding.test", "org.xwalk.embedding.test." + BUILD_PARAMETERS.caseversion)
+        main_source = os.path.join(BUILD_ROOT_SRC, app_name, "src/org/xwalk/embedding/MainActivity.java")
+        main_dest = os.path.join(app_src, "src/org/xwalk/embedding/MainActivity.java")
+        replaceCopy(main_source, main_dest, "org.xwalk.embedding.test", "org.xwalk.embedding.test." + BUILD_PARAMETERS.caseversion)
 
     library_dir_name = safelyGetValue(build_json, "embeddingapi-library-name")
     if not library_dir_name:
@@ -875,6 +889,21 @@ def buildPKG(build_json=None):
 
     return True
 
+def replaceCopy(readfile,writefile,content,newContent): 
+    ffrom=open(readfile,"r")  
+    fto=open(writefile,"w")  
+    while True:  
+        l = ffrom.readline()  
+        if not l:  
+            break  
+        if 'org.xwalk.embedding.test' in l:
+            temp = ""
+            temp=re.sub(content,newContent,l)
+            fto.write(temp)
+        else:
+            temp1 = l  
+            fto.write(temp1)  
+    fto.close()
 
 def main():
     global LOG
@@ -913,7 +942,7 @@ def main():
             "--cv",
             "--cversion",
             dest="caseversion",
-            default="v1", 
+            default="", 
             help="specify the embeddingapi case version, e.g. v1, v2, v3 ...")
         opts_parser.add_option(
             "-d",
@@ -1109,6 +1138,19 @@ def main():
                     os.path.join(BUILD_ROOT, "pkg", i_file),
                     os.path.join(BUILD_PARAMETERS.destdir, i_file)):
                 exitHandler(1)
+    elif BUILD_PARAMETERS.pkgtype == "embeddingapi" and BUILD_PARAMETERS.caseversion:
+        pkg_file = os.path.join(
+            BUILD_PARAMETERS.destdir,
+            "%s-%s-%s-%s.%s.zip" %
+            (PKG_NAME,
+             pkg_main_version,
+             pkg_release_version,
+             BUILD_PARAMETERS.caseversion,
+             BUILD_PARAMETERS.pkgtype))
+        
+        LOG.info("pkg_file: %s" % pkg_file)
+        if not zipDir(os.path.join(BUILD_ROOT, "pkg"), pkg_file):
+            exitHandler(1)
     else:
         pkg_file = os.path.join(
             BUILD_PARAMETERS.destdir,
@@ -1117,7 +1159,7 @@ def main():
              pkg_main_version,
              pkg_release_version,
              BUILD_PARAMETERS.pkgtype))
-
+        
         if not zipDir(os.path.join(BUILD_ROOT, "pkg"), pkg_file):
             exitHandler(1)
 

@@ -35,7 +35,7 @@ def doCMD(cmd):
 
 
 def uninstPKGs():
-    cmd = "%s -s %s uninstall org.xwalk.embedding" % (
+    cmd = "%s -s %s uninstall org.xwalk.embedded.api.sample" % (
         ADB_CMD, PARAMETERS.device)
     (return_code, output) = doCMD(cmd)
     for line in output:
