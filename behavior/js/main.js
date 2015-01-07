@@ -176,9 +176,20 @@ $("#home_ui").live("pageshow", function () {
 });
 
 $("#exit").live("click", function () {
+  try {
+    var app = tizen.application.getCurrentApplication();
+    app.exit();
+  } catch(error) {
+    closeWindow();
+  } finally {
+    closeWindow();
+  }
+});
+
+function closeWindow() {
   window.open('', '_self');
   window.close();
-});
+}
 
 $("#reset").live("click", function (event) {
   sstorage.clear();
