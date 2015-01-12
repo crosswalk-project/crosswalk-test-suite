@@ -64,6 +64,7 @@ BUILD_ROOT_PKG = None
 BUILD_ROOT_PKG_APP = None
 LOG = None
 LOG_LEVEL = logging.DEBUG
+BUILD_TIME = time.strftime('%Y%m%d',time.localtime(time.time()))
 
 class ColorFormatter(logging.Formatter):
 
@@ -466,6 +467,8 @@ def packAPK(build_json=None, app_src=None, app_dest=None, app_name=None):
     mode_opt = ""
     arch_opt = ""
     icon_opt = ""
+    version_opt = ""
+    pkg_opt = ""
 
     common_opts = safelyGetValue(build_json, "apk-common-opts")
     if common_opts is None:
@@ -474,6 +477,14 @@ def packAPK(build_json=None, app_src=None, app_dest=None, app_name=None):
     tmp_opt = safelyGetValue(build_json, "apk-ext-opt")
     if tmp_opt:
         ext_opt = "--extensions='%s'" % os.path.join(BUILD_ROOT_SRC, tmp_opt)
+
+    tmp_opt = safelyGetValue(build_json, "apk-version-opt")
+    if tmp_opt:
+        version_opt = "--app-version='%s'" % ''.join([tmp_opt,BUILD_TIME])
+
+    tmp_opt = safelyGetValue(build_json, "apk-pkg-opt")
+    if tmp_opt:
+        pkg_opt = "--package='org.xwalk.%s'" % tmp_opt
 
     tmp_opt = safelyGetValue(build_json, "apk-cmd-opt")
     if tmp_opt:
@@ -513,24 +524,24 @@ def packAPK(build_json=None, app_src=None, app_dest=None, app_name=None):
 
     if safelyGetValue(build_json, "apk-type") == "MANIFEST":
         pack_cmd = "python make_apk.py --package=org.xwalk.%s " \
-            "--manifest=%s/manifest.json  %s %s %s %s %s" % (
+            "--manifest=%s/manifest.json  %s %s %s %s %s %s %s" % (
                 app_name, app_src, mode_opt, arch_opt,
-                ext_opt, cmd_opt, common_opts)
+                ext_opt, cmd_opt, common_opts, version_opt, pkg_opt)
     elif safelyGetValue(build_json, "apk-type") == "HOSTEDAPP":
         if not url_opt:
             LOG.error(
                 "Fail to find the key \"apk-url-opt\" for hosted APP packing")
             return False
         pack_cmd = "python make_apk.py --package=org.xwalk.%s --name=%s %s " \
-                   "%s %s %s %s %s" % (
+                   "%s %s %s %s %s %s %s" % (
                        app_name, app_name, mode_opt, arch_opt, ext_opt,
-                       cmd_opt, url_opt, common_opts)
+                       cmd_opt, url_opt, common_opts, version_opt, pkg_opt)
     else:
         pack_cmd = "python make_apk.py --package=org.xwalk.%s --name=%s " \
                    "--app-root=%s --app-local-path=index.html %s %s " \
-                   "%s %s %s %s" % (
+                   "%s %s %s %s %s %s" % (
                        app_name, app_name, app_src, icon_opt, mode_opt,
-                       arch_opt, ext_opt, cmd_opt, common_opts)
+                       arch_opt, ext_opt, cmd_opt, common_opts, version_opt, pkg_opt)
 
     orig_dir = os.getcwd()
     os.chdir(os.path.join(BUILD_ROOT, "crosswalk"))
