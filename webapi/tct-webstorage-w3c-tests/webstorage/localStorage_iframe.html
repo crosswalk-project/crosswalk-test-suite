@@ -40,25 +40,9 @@ Authors:
     <meta name="assert" content="Check if sessionStorage access to the API for pages from other domains running in iframes" />
   </head>
   <body>
-    <div id = "result" style="float:left; margin-right:25px; font-size:20px"></div>
-    <div style = "float:left; font-size:20px">WebStorage Test: window_localStorage_iframe_item</div>
     <script>
         var resultValue = localStorage.getItem("localStorageIframeKey");
-        var resultDiv = document.getElementById("result");
-        var infoDiv = document.getElementById("info");
-        if(!("localStorage" in window)) {
-            resultDiv.innerHTML = "fail";
-            resultDiv.style.color = "red";
-            infoDiv.innerHTML = "localStorage is not in window";
-        }
-        if(resultValue == "localStorageIframeValue"){
-            resultDiv.innerHTML = "Pass";
-            resultDiv.style.color = "green";
-        } else {
-            resultDiv.innerHTML = "fail";
-            resultDiv.style.color = "red";
-            infoDiv.innerHTML = "the value is not 'localStorageIframeValue'";
-        }
+        parent.testResult(resultValue);
     </script>
   </body>
 </html>

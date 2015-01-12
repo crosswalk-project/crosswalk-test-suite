@@ -33,21 +33,25 @@ Authors:
 
 <html>
   <head>
-    <title>WebStorage Test: window_sessionStorage_iframe_item</title>
+    <title>WebStorage Test: window_localStorage_iframe_item</title>
     <link rel="author" title="Intel" href="http://www.intel.com" >
-    <link rel="help" href="http://www.w3.org/TR/2011/CR-webstorage-20111208/#dom-sessionStorage" >
+    <link rel="help" href="http://www.w3.org/TR/2011/CR-webstorage-20111208/#dom-localStorage" >
     <meta name="flags" content="" />
-    <meta name="assert" content="Check if sessionStorage access to the API for pages from other domains running in iframes" />
+    <meta name="assert" content="Check if localStorage access to the API for pages from other domains running in iframes" />
     <script src="../resources/testharness.js"></script>
     <script src="../resources/testharnessreport.js"></script>
   </head>
   <body>
-    <p>
-      <strong>Directions: </strong>If the page shows "Pass" the test case pass, otherwise it fail.<br>
-    </p>
-    <iframe src="sessionStorage_iframe.html" style="width:100%;min-height:300px;border:none" SCROLLING="no"></iframe>
-    <script>
-        sessionStorage.setItem("sessionStorageIframeKey", "sessionStorageIframeValue");
+    <div id="log"></div>
+    <iframe src="localStorage_iframe.html" style="width:100%;min-height:300px;border:none" SCROLLING="no"></iframe>
+    <script type="text/javascript">
+        localStorage.setItem("localStorageIframeKey", "localStorageIframeValue");
+        function testResult(resultValue) {
+          test(function () {
+            assert_true("localStorage" in window, "localStorage in window");
+            assert_equals(resultValue, "localStorageIframeValue", "the value");
+          }, "Check if localStorage access to the API for pages from other domains running in iframes");
+        }
     </script>
   </body>
 </html>
