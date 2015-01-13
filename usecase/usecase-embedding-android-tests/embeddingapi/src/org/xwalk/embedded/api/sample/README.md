@@ -14,7 +14,7 @@ This usecase covers following interface and methods:
 ### 2. The [ExtensionActivity](ExtensionActivity.java) sample demonstrates XWALK-1052 feature basic functionalities, include:
 
 * extension can be supported
- 
+
 These two usecases cover following interface and methods:
 
 * XWalkExtension interface: onMessage, onSyncMessage methods
@@ -32,7 +32,7 @@ These two usecases cover following interface and methods:
 * Multiple textureViews can be shown in order when restoring the device screen
 
 This usecase covers following interface and methods:
- 
+
 * XWalkPreference interface: setValue method
 * XWalkView interface: load method
 
@@ -41,7 +41,7 @@ This usecase covers following interface and methods:
 ### 4. The [AnimatableXWalkViewActivity](AnimatableXWalkViewActivity.java) sample demonstrates how to use the basic functionalities of animatible XWalkView, include:
 
 * Animatable XWalkView can be scaled down or scaled up
- 
+
 This usecase covers following interface and methods:
 
 * XWalkPreference interface: setValue method

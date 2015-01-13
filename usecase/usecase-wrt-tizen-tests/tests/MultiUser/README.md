@@ -1,7 +1,7 @@
 ## Usecase Design
 
 This sample demonstrates XWALK-1649 feature basic functionalities, include:
- 
+
 * Add multi user aspect, to permit to all user included in "user" Group to install or launch app.
 
 This usecase covers following method:

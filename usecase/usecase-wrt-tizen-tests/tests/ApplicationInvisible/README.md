@@ -1,7 +1,7 @@
 ## Usecase Design
 
 This sample demonstrates XWALK-1497 and XWALK-1498 feature basic functionalities, include:
- 
+
 * js and css animation will resume when application goes visible
 * js and css animation will suspend when application goes invisible
 
