@@ -46,10 +46,10 @@ def updateCMD(cmd=None):
     return cmd
 def getUSERID():
     if PARAMETERS.mode == "SDB":
-        cmd = "sdb -s %s shell id -u %s" % ( 
+        cmd = "sdb -s %s shell id -u %s" % (
             PARAMETERS.device, PARAMETERS.user)
     else:
-        cmd = "ssh %s \"id -u %s\"" % ( 
+        cmd = "ssh %s \"id -u %s\"" % (
             PARAMETERS.device, PARAMETERS.user )
     return doCMD(cmd)
 
@@ -68,16 +68,9 @@ def getPKGID(pkg_name=None):
 
     test_pkg_id = None
     for line in output:
-        pkg_infos = line.split()
-        if len(pkg_infos) == 4:
-            continue
-        name = pkg_infos[5]
-        name = name.lstrip('[').rstrip(']')
-        print "name is: %s" % name
-        if pkg_name == name:
-            test_pkg_id = pkg_infos[3]
-            test_pkg_id = test_pkg_id.lstrip('[').rstrip(']')
-            print test_pkg_id
+        if line.find("[" + pkg_name + "]") != -1:
+            pkgidIndex = line.split().index("pkgid")
+            test_pkg_id = line.split()[pkgidIndex+1].strip("[]")
             break
     return test_pkg_id
 
