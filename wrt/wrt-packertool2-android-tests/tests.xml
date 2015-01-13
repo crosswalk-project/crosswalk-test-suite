@@ -3,6 +3,11 @@
 <test_definition>
   <suite category="Crosswalk WRT" name="wrt-packertool2-android-tests">
     <set name="manifest" type="pyunit">
+      <testcase component="Crosswalk WRT/Packer Tool" execution_type="auto" id="Crosswalk_othertest" purpose="Validate if packer tool can work well with other options" subcase="5">
+        <description>
+          <test_script_entry>/opt/wrt-packertool2-android-tests/packertool2/othertest.py</test_script_entry>
+        </description>
+      </testcase>
       <testcase component="Crosswalk WRT/Packer Tool" execution_type="auto" id="Crosswalk_manifesttest" purpose="Validate if packer tool can work well with manifest file in different path" subcase="4">
         <description>
           <test_script_entry>/opt/wrt-packertool2-android-tests/packertool2/manifesttest.py</test_script_entry>
@@ -46,11 +51,6 @@
       <testcase component="Crosswalk WRT/Packer Tool" execution_type="auto" id="Crosswalk_descriptiontest" purpose="Validate if the Packaging Tool works well with description option" subcase="10">
         <description>
           <test_script_entry>/opt/wrt-packertool2-android-tests/packertool2/descriptiontest.py</test_script_entry>
-        </description>
-      </testcase>
-      <testcase component="Crosswalk WRT/Packer Tool" execution_type="auto" id="Crosswalk_othertest" purpose="Validate if packer tool can work well with other options" subcase="5">
-        <description>
-          <test_script_entry>/opt/wrt-packertool2-android-tests/packertool2/othertest.py</test_script_entry>
         </description>
       </testcase>
       <testcase component="Crosswalk WRT/Packer Tool" execution_type="auto" id="Crosswalk_projectdirtest" purpose="Validate if packer tool can work well with project-dir option" subcase="4">

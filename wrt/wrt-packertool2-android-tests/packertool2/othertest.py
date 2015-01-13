@@ -45,15 +45,12 @@ class TestPackertoolsFunctions(unittest.TestCase):
         packstatus2 = commands.getstatusoutput(cmd2)
         self.assertEquals(0, packstatus2[0])
 
-    def test_packertool_arm(self):
+    def test_packertool_arm_x86(self):
         comm.setUp()
         appRoot = comm.ConstPath + "/../testapp/example/"
-        if comm.ARCH == "arm":
-            cmd = "python %smake_apk.py --package=org.xwalk.example --name=example --arch=%s --mode=%s --app-root=%s --app-local-path=index.html" % \
-                  (comm.Pck_Tools, comm.ARCH, comm.MODE, appRoot)
-            comm.gen_pkg(cmd, self)
-        else:
-            self.assertFalse(True, "The case requires to run on arm platfrom")
+        cmd = "python %smake_apk.py --package=org.xwalk.example --name=example --arch=%s --mode=%s --app-root=%s --app-local-path=index.html" % \
+              (comm.Pck_Tools, comm.ARCH, comm.MODE, appRoot)
+        comm.gen_pkg(cmd, self)
 
     def test_packertool_undefinedOption(self):
         comm.setUp()
