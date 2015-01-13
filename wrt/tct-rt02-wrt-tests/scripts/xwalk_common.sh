@@ -37,7 +37,7 @@ function install_app(){
 
 ##usage: uninstall_app $app_name(e.g. uninstall_app tct-sp02-wrt-tests)##
 function uninstall_app(){
-    pkgids=`pkgcmd -l | grep $1 | awk -F '[\],\[]' '{print $4}'`
+    pkgids=`pkgcmd -l |grep $1 |awk -F "pkgid" '{print $2}' |awk -F '[' '{print $2}'|awk -F ']' '{print $1}'`
     for pkgid in $pkgids
     do
         pkgcmd -u -n $pkgid -q
@@ -51,7 +51,7 @@ function find_appid(){
 }
 
 function find_app(){
-    pkgids=`pkgcmd -l | grep $1 | awk -F '[\],\[]' '{print $4}'`
+    pkgids=`pkgcmd -l |grep $1 |awk -F "pkgid" '{print $2}' |awk -F '[' '{print $2}'|awk -F ']' '{print $1}'`
 }
 
 
