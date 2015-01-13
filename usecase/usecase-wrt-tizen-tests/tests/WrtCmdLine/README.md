@@ -1,7 +1,7 @@
 ## Usecase Design
 
 This sample demonstrates wrt command feature basic functionalities, include:
- 
+
 * wrt list features command
 
 This usecase covers following methods:

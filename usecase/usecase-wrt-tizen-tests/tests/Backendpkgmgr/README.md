@@ -1,7 +1,7 @@
 ## Usecase Design
 
 This sample demonstrates XWALK-1731 feature basic functionalities, include:
- 
+
 * pkgcmd with option to perform install/uninstall/list task.
 
 This usecase covers following methods:

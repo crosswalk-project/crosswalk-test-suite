@@ -29,7 +29,7 @@ Pairwise is more suitable for fixed parameters and their fixed values, but syste
 
 Then how to revise the exist test set to adopt this change?
 
-Firstly, we need adjust the seed file according the system upgrade details, then update the exist test set base the seed file. If we directly use Pairwise to do re-combination based updated seed file, the output test cases will totally changed compare with original ones, which inconvenient for tester to maintain.We’d better create the new combination results base the exist test set. 
+Firstly, we need adjust the seed file according the system upgrade details, then update the exist test set base the seed file. If we directly use Pairwise to do re-combination based updated seed file, the output test cases will totally changed compare with original ones, which inconvenient for tester to maintain.We’d better create the new combination results base the exist test set.
 
 So we improves Pairwise with new Increment method, when seed file have increment, the output also accordingly have “increment” base original output.
 
@@ -61,11 +61,11 @@ input/input_seed.txt
 
  * Condition
 ```
- Parameter name must unique, and its case sensitive     
+ Parameter name must unique, and its case sensitive
  Delimiter is ',' in seed file
  If parameter value have conflict with delimiter, use 'comma' instead
 ```
- 
+
 ### Tool Output
 
 Output: output/output.txt
@@ -83,7 +83,7 @@ Output: output/output.txt
 Run Pairwise tool
 
     $ python allpairs-plus.py
-    
+
 Run Pairwise tool with baseline
 
     $ python allpairs-plus.py -b $baseline_file
@@ -93,7 +93,7 @@ Pairwise tool help
     $ python allpairs-plus.py -h
 
 
-# Tools Packages Usage 
+# Tools Packages Usage
 
 * doc - document or flow chart for allpairs-plus tool
 * input - input data

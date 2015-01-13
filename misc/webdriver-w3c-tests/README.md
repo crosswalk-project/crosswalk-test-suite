@@ -15,10 +15,10 @@ whether it meets the recognized standard.
    your system.
    Install it using either `<sudo> easy_install virtualenv`, `<sudo> pip
    install virtualenv`, or `<sudo> apt-get install python-virtualenv`
-2. Create and enter the directory for your Python virtual environment. This 
+2. Create and enter the directory for your Python virtual environment. This
    directory can be anywhere. It is recommended that you keep it separate
    from the webdriver tests folder, to avoid confusion with source control
-  * Go to the directory where you store Python virtual environments. 
+  * Go to the directory where you store Python virtual environments.
      For example `cd ~; mkdir python-virtualenv; cd python-virtualenv`
   * Create a virtual env configuration and directory: `virtualenv webdriver-w3c-tests`
   * Enter the directory: `cd webdriver-w3c-tests`
@@ -50,7 +50,7 @@ For Android:
   ```
   # ifconfig usb0 192.168.42.100. it's better to setup the IP on UI
   ```
-  * On Linux PC (eth0 is the network interface for webservice visiting) 
+  * On Linux PC (eth0 is the network interface for webservice visiting)
   ```
   # sudo sysctl net.ipv4.ip_forward=1
   # sudo iptables -t nat -A POSTROUTING -s 192.168.42.0/24 -o eth0 -j MASQUERADE
