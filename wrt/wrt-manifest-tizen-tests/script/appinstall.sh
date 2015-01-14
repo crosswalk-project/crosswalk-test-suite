@@ -12,8 +12,7 @@ exit 1
 else
 echo $back
 #get installed app id
-pkgids=`pkgcmd -l | grep $1 | awk '{print $4}'`
-pkgids=`echo $pkgids | awk '{print $1}'`
+pkgids=`pkgcmd -l |grep $1 |awk -F "pkgid" '{print $2}' |awk -F '[' '{print $2}'|awk -F ']' '{print $1}'`
 pkgids=${pkgids:1:-1}
 echo $pkgids
 pkgids=""
