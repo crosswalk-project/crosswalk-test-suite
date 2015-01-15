@@ -1,0 +1,69 @@
+{
+    "pkg-blacklist": [
+        "config.xml",
+        "pack.py",
+        "testcase.xsl",
+        "testresult.xsl",
+        "tests.css",
+        "icon.png",
+        "manifest.json",
+        "suite.json",
+        "*-py",
+        "inst.*"
+    ],
+    "pkg-list": {
+        "apk,cordova": {
+            "blacklist": [],
+            "copylist": {
+                "inst.apk.py": "inst.py",
+                "tests.android.xml": "tests.xml",
+                "tests.full.xml": "tests.full.xml"
+            },
+            "subapp-list": {
+                ".": {
+                    "app-name": "usecase-mini-wrt-android-tests",
+                    "blacklist": [
+                        "manifest.json"
+                    ],
+                    "copylist": {
+                        "tests.android.xml": "tests.xml"
+                    },
+                    "install-path": "."
+                },
+                "": {
+                    "apk-type": "HOSTEDAPP",
+                    "apk-url-opt": "https://crosswalk-project.org/",
+                    "app-name": "remotedebugging-no",
+                    "install-path": "."
+                }
+            }
+        },
+        "apk-aio": {
+            "blacklist": []
+        },
+        "wgt": {
+            "blacklist": [],
+            "copylist": {
+                "inst.wgt.py": "inst.py",
+                "tests.full.xml": "tests.full.xml",
+                "tests.xml": "tests.xml"
+            },
+            "pkg-app": {
+                "blacklist": [],
+                "sign-flag": "true"
+            }
+        },
+        "xpk": {
+            "blacklist": [],
+            "copylist": {
+                "inst.xpk.py": "inst.py",
+                "tests.full.xml": "tests.full.xml",
+                "tests.xml": "tests.xml"
+            },
+            "pkg-app": {
+                "blacklist": []
+            }
+        }
+    },
+    "pkg-name": "usecase-mini-wrt-android-tests"
+}
