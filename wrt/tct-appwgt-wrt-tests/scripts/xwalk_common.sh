@@ -31,7 +31,8 @@
 ###below functions just for crosswalk ivi testing###
 
 function install_app(){
-    pkgcmd -i -t wgt -q -p $1
+    nohup pkgcmd -i -t wgt -p $1 -q &>/dev/null &
+    sleep 5
 }
 
 function uninstall_app(){

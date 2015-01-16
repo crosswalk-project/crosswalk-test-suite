@@ -39,18 +39,21 @@ function existbh()
   exit $2
 }
 $(dirname $0)/wrt_appwgt_installer.sh $APP_NAME.wgt
+sleep 5
 find_app $APP_NAME
 if [ $? -ne 0 ]
 then
   exit 1
 fi
-widgetpath="/opt/home/app/.config/xwalk/applications/$pkgids"
+app_launcher -s wrt6app001.appwidgetsample
+sleep 2
+widgetpath="/home/app/.config/xwalk-service/applications/wrt6app001.appwidgetsample"
 if [ ! -d $widgetpath ]
 then
   existbh "The path of the application does not exist." 1
 fi
 filecount=$(ls -lR $widgetpath|grep "^-"|wc -l)
-name=("config.xml" "icon.png" "index.html" "livebox" "pd")
+name=("bin" "config.xml" "icon.png" "index.html" "livebox" "pd")
 if [ $filecount -eq 5  ]
 then
   filename=$(ls $widgetpath)
