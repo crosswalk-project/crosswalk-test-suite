@@ -116,17 +116,18 @@ function getTypeConversionExceptions(conversionType, isOptional) {
     switch (conversionType) {
         case "enum":
             conversionTable = [
-                [undefined, exceptionName],
-             // [null, exceptionName],
                 [0, exceptionName],
                 [true, exceptionName],
                 ["dummyInvalidEnumValue", exceptionName],
                 [{ }, exceptionName]
             ];
+            if (!isOptional) {
+                conversionTable.push([null, exceptionName]);
+                conversionTable.push([undefined, exceptionName]);
+            }
             break;
         case "double":
             conversionTable = [
-                [undefined, exceptionName],
                 [NaN, exceptionName],
                 [Number.POSITIVE_INFINITY, exceptionName],
                 [Number.NEGATIVE_INFINITY, exceptionName],
@@ -134,6 +135,9 @@ function getTypeConversionExceptions(conversionType, isOptional) {
                 [{ name : "TIZEN" }, exceptionName],
                 [function () { }, exceptionName]
             ];
+            if (!isOptional) {
+                conversionTable.push([undefined, exceptionName]);
+            }
             break;
         case "object":
             conversionTable = [
@@ -142,11 +146,11 @@ function getTypeConversionExceptions(conversionType, isOptional) {
                 [NaN, exceptionName],
                 [0, exceptionName],
                 ["", exceptionName],
-                ["TIZEN", exceptionName],
-                [undefined, exceptionName]
+                ["TIZEN", exceptionName]
             ];
             if (!isOptional) {
                 conversionTable.push([null, exceptionName]);
+                conversionTable.push([undefined, exceptionName]);
             }
             break;
         case "functionObject":
@@ -158,11 +162,11 @@ function getTypeConversionExceptions(conversionType, isOptional) {
                 ["", exceptionName],
                 ["TIZEN", exceptionName],
                 [[], exceptionName],
-                [{ }, exceptionName],
-                [undefined, exceptionName]
+                [{ }, exceptionName]
             ];
             if (!isOptional) {
                 conversionTable.push([null, exceptionName]);
+                conversionTable.push([undefined, exceptionName]);
             }
             break;
         case "array":
@@ -174,11 +178,11 @@ function getTypeConversionExceptions(conversionType, isOptional) {
                 ["", exceptionName],
                 ["TIZEN", exceptionName],
                 [{ }, exceptionName],
-                [function () { }, exceptionName],
-                [undefined, exceptionName]
+                [function () { }, exceptionName]
             ];
             if (!isOptional) {
                 conversionTable.push([null, exceptionName]);
+                conversionTable.push([undefined, exceptionName]);
             }
             break;
         case "dictionary":
@@ -188,11 +192,11 @@ function getTypeConversionExceptions(conversionType, isOptional) {
                 [NaN, exceptionName],
                 [0, exceptionName],
                 ["", exceptionName],
-                ["TIZEN", exceptionName],
-                [undefined, exceptionName]
+                ["TIZEN", exceptionName]
             ];
             if (!isOptional) {
                 conversionTable.push([null, exceptionName]);
+                conversionTable.push([undefined, exceptionName]);
             }
             break;
         default:
@@ -201,7 +205,6 @@ function getTypeConversionExceptions(conversionType, isOptional) {
 
     return conversionTable;
 }
-
 
 function assert_type(obj, type, description) {
     var org_type = type, prop_name, prop_type, prop_value;
