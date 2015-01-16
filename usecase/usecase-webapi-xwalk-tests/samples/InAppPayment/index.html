@@ -30,44 +30,37 @@ Authors:
 
 -->
 
-<html>
-  <head>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="initial-scale=1.0, maximum-scale=1.0, width=device-width">
-    <link rel="stylesheet" type="text/css" href="../../css/jquery.mobile.css" />
-    <link rel="stylesheet" type="text/css" href="../../css/main.css" />
-    <script src="../../js/thirdparty/jquery.js"></script>
-    <script src="../../js/thirdparty/jquery.mobile.js"></script>
-    <script src="../../js/main.js"></script>
-    <script src="../../js/tests.js"></script>
-  </head>
-  <body>
-    <input type="hidden" id="sub_test"/>
-    <div data-role="header">
-      <h1 id="main_page_title"></h1>
-    </div>
-    <div id="content" style="margin: 20px 20px;">
-      Launch sub app "iap"
-    </div>
-    <div data-role="footer" data-position="fixed">
-    </div>
-    <div data-role="popup" id="popup_info">
-      <font class="fontSize">
-        <p>Verifies query product details and buy gas product successfully.</p>
-        <p>Pre-condition: </p>
-        <ol>
-          <li>GMS</br>
-          IAP is provided by GMS, which means the device must have Google Play installed, and be able to access Google Play.</br>
-          Here is a wiki of setup steps for GMS on ZTE Geek for your reference: http://powerbuilder.sh.intel.com/projects/wrtonandroid/wiki/xwalk/geek_install_gms</li>
-          <li>Google Play developer account</br>
-          IAP must have products for user to buy, these products can only be managed in Google Play developer console by developer. The account on the device which you are using to test your IAP app should be the test account listed in your developer console, for more information please see Testing an APK with Google In-App Billing API</li>
-          <li>Google Wallet merchant account</br>
-          User must have Google Wallet merchant account to use IAP service on Google Play. In our scenario, "user" is the user account on test device - ZTE Geek. Note this account must be different with the developer account in above, use for purchase.</li> 
-          <li>No GFW</br>
-          IAP is not provided in China mainland, we must find a way to go over GFW to test IAP functionalities.</li>
-        </ol>
-      </font>
-    </div>
-  </body>
-  </body>
-</html>
+<meta charset="utf-8" />
+<meta name="viewport" content="initial-scale=1.0, maximum-scale=1.0, width=device-width">
+<link rel="stylesheet" type="text/css" href="../../css/bootstrap.css">
+<link rel="stylesheet" type="text/css" href="../../css/main.css">
+<script src="../../js/jquery-2.1.3.min.js"></script>
+<script src="../../js/bootstrap.min.js"></script>
+<script src="../../js/common.js"></script>
+<script src="../../js/tests.js"></script>
+
+<input type="hidden" id="sub_test"/>
+<div id="header">
+  <h3 id="main_page_title"></h3>
+</div>
+<div class="content" style="margin: 20px 20px;">
+  Launch sub app "iap"
+</div>
+<div class="footer">
+  <div id="footer"></div>
+</div>
+<div class="modal fade" id="popup_info">
+  <p>Verifies query product details and buy gas product successfully.</p>
+  <p>Pre-condition: </p>
+  <ol>
+    <li>GMS</br>
+    IAP is provided by GMS, which means the device must have Google Play installed, and be able to access Google Play.</br>
+    Here is a wiki of setup steps for GMS on ZTE Geek for your reference: http://powerbuilder.sh.intel.com/projects/wrtonandroid/wiki/xwalk/geek_install_gms</li>
+    <li>Google Play developer account</br>
+    IAP must have products for user to buy, these products can only be managed in Google Play developer console by developer. The account on the device which you are using to test your IAP app should be the test account listed in your developer console, for more information please see Testing an APK with Google In-App Billing API</li>
+    <li>Google Wallet merchant account</br>
+    User must have Google Wallet merchant account to use IAP service on Google Play. In our scenario, "user" is the user account on test device - ZTE Geek. Note this account must be different with the developer account in above, use for purchase.</li> 
+    <li>No GFW</br>
+    IAP is not provided in China mainland, we must find a way to go over GFW to test IAP functionalities.</li>
+  </ol>
+</div>

@@ -21,18 +21,20 @@ Authors:
 var h, m, s, day, year, month, date;
 var deviceCapabilities;
 
-$(document).delegate("#main", "pageinit", function() {
-    $("#sms").bind("vclick", function() {
-        tizen.messaging.getMessageServices("messaging.sms", smsSuccessCallback, errorCallback);
-    });
-    $("#mms").bind("vclick", function() {
-        tizen.messaging.getMessageServices("messaging.mms", mmsSuccessCallback, errorCallback);
-    });
+$(document).ready(function() {
     deviceCapabilities = tizen.systeminfo.getCapabilities();
     if(!deviceCapabilities.telephonyMms) {
-        $("#mms").addClass("ui-disabled");
+        $("#mms").attr('disabled', true);
     }
 });
+
+function sms() {
+    tizen.messaging.getMessageServices("messaging.sms", smsSuccessCallback, errorCallback);
+}
+
+function mms() {
+    tizen.messaging.getMessageServices("messaging.mms", mmsSuccessCallback, errorCallback);
+}
 
 function checkTime(i) {
     if (i < 10) {
@@ -150,13 +152,13 @@ function mmsSuccessCallback(services) {
 }
 
 function messageSent(recipients) {
-    alert("Message sent successfully to " + recipients.length + " recipients.");
+    $("#popup_info").modal(showMessage("success", "Message sent successfully to " + recipients.length + " recipients."));
 }
 
 function messageFailed(error) {
-    alert('Error occured while sending the message! ' + error.message);
+    $("#popup_info").modal(showMessage("error", 'Error occured while sending the message! ' + error.message));
 }
 
 function errorCallback(error) {
-    alert("Cannot get messaging service " + error.message);
+    $("#popup_info").modal(showMessage("error", "Cannot get messaging service " + error.message));
 }

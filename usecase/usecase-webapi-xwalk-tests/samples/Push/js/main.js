@@ -21,40 +21,43 @@ Authors:
 var installUrl;
 var reg;
 
-$(document).delegate("#main", "pageinit", function() {
-    $("#install").bind("vclick", function() {
-        install(installUrl);
-        $("#launch").removeClass("ui-disabled");
-        $("#push").removeClass("ui-disabled");
-        return false;
-    });
-    $("#launch").bind("vclick", function() {
-        launch();
-        return false;
-    });
-    $("#push").bind("vclick", function() {
-        regID();
-        return false;
-    });
-    $("#launch").addClass("ui-disabled");
-    $("#push").addClass("ui-disabled");
+$(document).ready(function() {
+    $("#launch").attr('disabled', true);
+    $("#push").attr('disabled', true);
     try {
         tizen.package.setPackageInfoEventListener(packageEventCallback);
     } catch (e) {
-        alert("Exception: " + e.message);
+        $("#popup_info").modal(showMessage("error", "Exception: " + e.message));
     }
     pushPre();
 });
 
+function installPush() {
+  install(installUrl);
+  $("#launch").attr('disabled', false);
+  $("#push").attr('disabled', false);
+  return false;
+}
+
+function launchPush() {
+  launch();
+  return false;
+}
+
+function pushClient() {
+  regID();
+  return false;
+}
+
 var packageEventCallback = {
         oninstalled: function(packageInfo) {
-            alert("The package " + packageInfo.name + " is installed");
+            $("#popup_info").modal(showMessage("success", "The package " + packageInfo.name + " is installed"));
         },
         onupdated: function(packageInfo) {
-            alert("The package " + packageInfo.name + " is updated");
+            $("#popup_info").modal(showMessage("success", "The package " + packageInfo.name + " is updated"));
         },
         onuninstalled: function(packageId) {
-            alert("The package " + packageId + " is uninstalled");
+            $("#popup_info").modal(showMessage("success", "The package " + packageId + " is uninstalled"));
         }
 };
 
@@ -72,7 +75,7 @@ function fileURI() {
     }
 
     function onerror(error) {
-        alert("The error " + error.message + " occurred when listing the files in the selected folder");
+        $("#popup_info").modal(showMessage("error", "The error " + error.message + " occurred when listing the files in the selected folder"));
     }
 
     tizen.filesystem.resolve(
@@ -81,7 +84,7 @@ function fileURI() {
                 documentsDir = dir;
                 dir.listFiles(onsuccess, onerror);
             }, function(e) {
-                alert("Error " + e.message);
+                $("#popup_info").modal(showMessage("error", "Error " + e.message));
             }, "r"
     );
 }
@@ -97,18 +100,18 @@ function install(url) {
             {
                 console.log("Installation(" + packageId + ") Complete");
                 document.getElementById("install").innerHTML =  '<div data-role="button" id="install" style="height:40px; line-height:40px;">PushClient Install</div>';
-                $("#install").addClass("ui-disabled");
+                $("#install").attr('disabled', true);
             }
     }
 
     var onError = function (err) {
-        alert("Error occured on installation : " + err.message);
+        $("#popup_info").modal(showMessage("error", "Error occured on installation : " + err.message));
     }
 
     try {
         tizen.package.install(url, onInstallationSuccess, onError);
     } catch (e) {
-        alert("Exception: " + e.name);
+        $("#popup_info").modal(showMessage("error", "Exception: " + e.name));
     }
 }
 
@@ -118,13 +121,13 @@ function launch() {
     }
 
     function onError(err) {
-        alert("launch failed : " + err.message);
+        $("#popup_info").modal(showMessage("error", "launch failed : " + err.message));
     }
 
     try {
         tizen.application.launch("bhvtcpush0.PushClient", onSuccess, onError);
     } catch (exc) {
-        alert("launch exc:" + exc.message);
+        $("#popup_info").modal(showMessage("error", "launch exc:" + exc.message));
     }
 }
 
@@ -142,7 +145,7 @@ function regID() {
                         reg = str;
                         send();
                         }, function(e){
-                            alert("Error " + e.message);
+                            $("#popup_info").modal(showMessage("error", "Error " + e.message));
                         }, "UTF-8"
                 );
                 break;
@@ -151,11 +154,11 @@ function regID() {
                 flag = false;
         }
         if(flag == false)
-            alert("Not found Registration ID.\nPlease TestPush(PushClient) app install and launch or Check network connection.");
+            $("#popup_info").modal(showMessage("error", "Not found Registration ID.\nPlease TestPush(PushClient) app install and launch or Check network connection."));
     }
 
     function onerror(error) {
-        alert("Error " + error.message);
+        $("#popup_info").modal(showMessage("error", "Error " + error.message));
     }
 
     tizen.filesystem.resolve(
@@ -164,7 +167,7 @@ function regID() {
                 documentsDir = dir;
                 dir.listFiles(onsuccess, onerror);
             }, function(e) {
-                alert("Error" + e.message);
+                $("#popup_info").modal(showMessage("error", "Error" + e.message));
             }, "r"
     );
 }
@@ -189,11 +192,11 @@ function send() {
 
     if(msg == "")
     {
-        alert("Message is empty");
+        $("#popup_info").modal(showMessage("error", "Message is empty"));
     }
     else if(reg == "")
     {
-        alert("Registration ID is empty")
+        $("#popup_info").modal(showMessage("error", "Registration ID is empty"));
     }
     else
     {
@@ -232,7 +235,7 @@ function send() {
         request.onreadystatechange = function() {
             if (request.readyState == 4 && request.status == 200) {
                 console.log(request.responseText);
-                alert("Push Success");
+                $("#popup_info").modal(showMessage("success", "Push Success"));
             }
         };
         request.send(JSON.stringify(data));
@@ -259,7 +262,7 @@ function pushPre() {
     }
 
     function onerror(error) {
-        alert("Error " + error.message);
+        $("#popup_info").modal(showMessage("error", "Error " + error.message));
     }
 
     tizen.filesystem.resolve(
@@ -268,7 +271,7 @@ function pushPre() {
             documentsDir = dir;
             dir.listFiles(onsuccess, onerror);
         }, function(e) {
-            alert("Error " + e.message);
+            $("#popup_info").modal(showMessage("error", "Error " + e.message));
         }, "r"
     );
 }

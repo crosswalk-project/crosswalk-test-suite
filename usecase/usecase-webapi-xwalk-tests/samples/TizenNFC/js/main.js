@@ -21,23 +21,7 @@ Authors:
 var writeMessage = "", readMessage = "", newMessage = "";
 var nfcFlag;
 
-$(document).delegate("#main", "pageinit", function() {
-    $("#read").bind("vclick", function() {
-        nfcFlag = false;
-        alert("Read NFC Tag\nPlace the NFC Tag to device");
-    });
-    $("#write").bind("vclick", function() {
-        writeMsg();
-        if(writeMessage != "") {
-            nfcFlag = true;
-            alert("Write NFC Tag\nPlace the NFC Tag to device");
-        }
-    });
-    $("#communicate").bind("vclick", function() {
-        writeMsg();
-        if(writeMessage != "")
-            alert("Peer to Peer NFC\nConnected two device which are operated NFC");
-    });
+$(document).ready(function() {
     try {
         tizen.nfc.setExclusiveMode(true) ;
     } catch (err) {
@@ -49,11 +33,30 @@ $(document).delegate("#main", "pageinit", function() {
     });
 });
 
+function writeNFC() {
+    writeMsg();
+    if(writeMessage != "") {
+        nfcFlag = true;
+        $("#popup_info").modal(showMessage("success", "Write NFC Tag\nPlace the NFC Tag to device"));
+    }
+}
+
+function readNFC() {
+    nfcFlag = false;
+    $("#popup_info").modal(showMessage("success", "Read NFC Tag\nPlace the NFC Tag to device"));
+}
+
+function communicateNFC() {
+    writeMsg();
+    if(writeMessage != "")
+        $("#popup_info").modal(showMessage("success", "Peer to Peer NFC\nConnected two device which are operated NFC"));
+}
+
 function writeMsg() {
     newMessage = new tizen.NDEFMessage();
     writeMessage = $("#wmsg").val();
     if(writeMessage == "") {
-        alert("Fill in NFC Write Message");
+        $("#popup_info").modal(showMessage("error", "Fill in NFC Write Message"));
         nfcFlag = null;
     }
     else
@@ -88,7 +91,7 @@ function setTagListener() {
                         nfcTag.readNDEF(
                                 function(message){
                                     readMessage = message.records[0].text;
-                                    alert("Read message : " + readMessage);
+                                    $("#popup_info").modal(showMessage("success", "Read message : " + readMessage));
                                     document.getElementById("rmsg").innerHTML = readMessage;
                                 },
                                 function(e){
@@ -104,7 +107,7 @@ function setTagListener() {
                         nfcTag.writeNDEF(
                                 newMessage,
                                 function(){
-                                    alert("Write message : " + writeMessage);
+                                    $("#popup_info").modal(showMessage("success", "Write message : " + writeMessage));
                                 },
                                 function(e){
                                     console.log(e.message);
@@ -132,7 +135,7 @@ function setPeerListener() {
                 nfcPeer.setReceiveNDEFListener(
                         function(message){
                             readMessage = message.records[0].text;
-                            alert("Receive message : " + readMessage);
+                            $("#popup_info").modal(showMessage("success", "Receive message : " + readMessage));
                             document.getElementById("rmsg").innerHTML = readMessage;
                             nfcPeer.unsetReceiveNDEFListener();
                         });

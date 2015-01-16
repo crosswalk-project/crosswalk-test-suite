@@ -90,12 +90,12 @@ function verifyContent() {
 }
 
 function createAttachList(element) {
-    return ('<li><div>' + element + '</div></li>');
+    return ('<div class="panel-body">' + element + '</div>');
 }
 
 function attachListUpdate() {
     var fileName = 'filename', size = '0kB', i, len;
-    $('#attachmentsList').replaceWith($('<ul data-role="listview" id="attachmentsList"></ul>'));
+    $('#attachmentsList').replaceWith($('<div class="panel panel-primary" id="attachmentsList"></div>'));
 
     for (i = 0, len = app.attach.length; i < len; i += 1) {
         $('#attachmentsList').append(createAttachList(app.attach[i]));
@@ -108,12 +108,12 @@ function attachListUpdate() {
 function messageSent() {
     app.attach = [];
     attachListUpdate();
-    alert('Email was sent');
+    //alert('Email was sent');
 }
 
 // Define the error callback.
 function messageFailed(error) {
-    alert('Error occured while sending the message!');
+    $("#popup_info").modal(showMessage("error", 'Error occured while sending the message!'));
 }
 
 // workaround for launch accounts settings;
@@ -128,7 +128,7 @@ function runEmailService() {
         if (apps) {
             tizen.application.launch(apps);
         } else {
-            alert('Account settings cannot be launched. Please configure email account by system options.');
+            $("#popup_info").modal(showMessage("error", 'Account settings cannot be launched. Please configure email account by system options.'));
         }
     }
     tizen.application.getAppsInfo(onGetInfo);
@@ -170,7 +170,7 @@ function serviceListCB(services) {
 
     if (services.length > 0) {
         msgService = services[0];
-        alert('Sending an Email(takes about 1 minute)');
+        //alert('Sending an Email(takes about 1 minute)');
 
         email = new tizen.Message('messaging.email');
         email.subject = $('#title').val();
@@ -186,7 +186,7 @@ function serviceListCB(services) {
             try {
                 tmpArray.push(new tizen.MessageAttachment(vname));
             } catch (err) {
-                alert("Attachment could not be added:\n" + name);
+                $("#popup_info").modal(showMessage("error", "Attachment could not be added:\n" + name));
             }
         }
         email.attachments = tmpArray;
@@ -201,14 +201,14 @@ function serviceListCB(services) {
 }
 
 function serviceListError(e) {
-    alert('err: ' + e.message);
+    $("#popup_info").modal(showMessage("error", 'err: ' + e.message));
 }
 
 function sendMessage() {
     try {
         tizen.messaging.getMessageServices("messaging.email", serviceListCB, serviceListError);
     } catch (e) {
-        alert('err: ' + e.message);
+        $("#popup_info").modal(showMessage("error", 'err: ' + e.message));
     }
 }
 
@@ -231,11 +231,11 @@ function startFileManager() {
         console.log("launch appControl succeeded");
     },
     function(e) {
-        alert("launch appControl failed. Reason: " + e.message);
+        $("#popup_info").modal(showMessage("error", "launch appControl failed. Reason: " + e.message));
     },
     appControlReplyCB);
     } catch(e) {
-        alert("launch appControl error: " + e.message);
+       $("#popup_info").modal(showMessage("error", "launch appControl error: " + e.message));
     }
 }
 
@@ -244,7 +244,7 @@ function init() {
         if (verifyEmail() && verifyTitle() && verifyContent()) {
             sendMessage();
         } else {
-            alert(errorMessage);
+            $("#popup_info").modal(showMessage("error", errorMessage));
         }
     });
     $('#addAttach').bind('click', function (event) {

@@ -21,10 +21,6 @@ Authors:
 var profileId = null;
 var account, passwd, url, database;
 
-var init = function () {
-    serverGuide();
-};
-
 function serverGuide() {
     //alert("<Sample OMA DS Server List>\n1. http://my.funambol.com/sync \n2. https://www.everdroid.com/web  \n3. OMA DS 1.2 protocol Server\n*Recommend the 1st server");
 }
@@ -147,4 +143,6 @@ function contactList() {
         alert('The following error occurred while finding: ' +  err.name);
     }
 }
-$(document).bind('pageinit', init);
+$(document).ready(function() {
+  serverGuide();
+});

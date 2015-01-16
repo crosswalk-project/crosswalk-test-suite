@@ -44,9 +44,9 @@ function status() {
 
 function show() {
     $("#chatbox").text("TCPServersocket - Could not connect \n" + $("#chatbox").text());
-    $("#connect").button("enable");
-    $("#disconnect").button("disable");
-    $("#send").button("disable");
+    $("#connect").attr('disabled', false);
+    $("#disconnect").attr('disabled', true);
+    $("#send").attr('disabled', true);
     clearTimeout(showId);
 }
 
@@ -54,17 +54,17 @@ function ab2str(buf) {
     return String.fromCharCode.apply(null, new Uint8Array(buf));
 }
 
-$("#connect").live("tap", function () {
+function connectRowSockets() {
     testFlag.green = true;
-    $("#connect").button("disable");
-    $("#disconnect").button("enable");
-    $("#send").button("disable");
+    $("#connect").attr('disabled', true);
+    $("#disconnect").attr('disabled', false);
+    $("#send").attr('disabled', true);
     clearTimeout(showId);
     showId = setTimeout("show()", 30000);
     var TCPServersocket = new xwalk.experimental.raw_socket.TCPServerSocket({"localPort": 6789});    
     TCPServersocket.onconnect = function (connectEvent) {
         clearTimeout(showId);
-        $("#send").button("enable");
+        $("#send").attr('disabled', false);
         $("#chatbox").text("TCPServersocket - Connected");
         connectEvent.connectedSocket.ondata = function (messageEvent) {
             var data = ab2str(messageEvent.data);
@@ -84,28 +84,29 @@ $("#connect").live("tap", function () {
         $("#chatbox").text("TCPServersocket - Disconnected \n" + $("#chatbox").text());
     };
     status();
-});
+}
 
-$("#disconnect").live("tap", function () {
+function disconnectRowSockets() {
     testFlag.blue = true;
     TCPsocket.close();
-    $("#connect").button("enable");
-    $("#disconnect").button("disable");
-    $("#send").button("disable");
+    $("#connect").attr('disabled', false);
+    $("#disconnect").attr('disabled', true);
+    $("#send").attr('disabled', true);
     status();
-});
+}
 
-$("#send").live("tap", function () {
+function sendRowSockets() {
     testFlag.red = true;
-    TCPsocket.send($("#socketinput").attr("value"));
-    $("#socketinput").attr("value", "");
+    var data = $("#socketinput").val();
+    TCPsocket.send(data);
+    $("#socketinput").val("");
     $("#chatbox").text("TCPSocket - send - " + data + "\n" + $("#chatbox").text());
     status();
-});
+}
 
-$(document).live('pageshow', function () {
+$(document).ready(function() {
     DisablePassButton();
-    $("#connect").button("enable");
-    $("#disconnect").button("disable");
-    $("#send").button("disable");
+    $("#connect").attr('disabled', false);
+    $("#disconnect").attr('disabled', true);
+    $("#send").attr('disabled', true);
 });

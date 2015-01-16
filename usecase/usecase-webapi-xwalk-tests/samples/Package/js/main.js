@@ -20,58 +20,64 @@ Authors:
 
 var installUrl, updateUrl;
 var flag = false;
-$(document).delegate("#main", "pageinit", function() {
+$(document).ready(function() {
     installUrl = "/home/app/.config/xwalk-service/applications/usecaseweb.WebAPIWEBUseCaseTests/samples/Package/res/TestPackage1.wgt";
     updateUrl = "/home/app/.config/xwalk-service/applications/usecaseweb.WebAPIWEBUseCaseTests/samples/Package/res/TestPackage2.wgt";
-    $("#install").bind("vclick", function() {
-        install(installUrl, "install");
-        $("#launch1").removeClass("ui-disabled");
-    });
-    $("#uninstall").bind("vclick", function() {
-        uninstall();
-        $("#launch3").removeClass("ui-disabled");
-        $("#launch2").addClass("ui-disabled");
-    });
-    $("#update").bind("vclick", function() {
-        install(updateUrl, "update");
-        $("#launch2").removeClass("ui-disabled");
-        $("#launch1").addClass("ui-disabled");
-    });
-    $("#launch1").bind("vclick", function() {
-        launch();
-        $("#update").removeClass("ui-disabled");
-    });
-    $("#launch2").bind("vclick", function() {
-        launch();
-        $("#uninstall").removeClass("ui-disabled");
-    });
-    $("#launch3").bind("vclick", function() {
-        launch();
-    });
     try {
         tizen.package.setPackageInfoEventListener(packageEventCallback);
     } catch (e) {
-        alert("Exception: " + e.message);
+        $("#popup_info").modal(showMessage("error", "Exception: " + e.message));
     }
     //packagePre();
-    $("#launch1").addClass("ui-disabled");
-    $("#launch2").addClass("ui-disabled");
-    $("#launch3").addClass("ui-disabled");
-    $("#uninstall").addClass("ui-disabled");
-    $("#update").addClass("ui-disabled");
+    $("#launch1").attr('disabled', true);
+    $("#launch2").attr('disabled', true);
+    $("#launch3").attr('disabled', true);
+    $("#uninstall").attr('disabled', true);
+    $("#update").attr('disabled', true);
 });
+
+function installPackage() {
+  install(installUrl, "install");
+  $("#launch1").attr('disabled', false);
+}
+
+function uninstallPackage() {
+  uninstall();
+  $("#launch3").attr('disabled', false);
+  $("#launch2").attr('disabled', true);
+}
+
+function updatePackage() {
+  install(updateUrl, "update");
+  $("#launch2").attr('disabled', false);
+  $("#launch1").attr('disabled', true);
+}
+
+function launch1Package() {
+  launch();
+  $("#update").attr('disabled', false);
+}
+
+function launch2Package() {
+  launch();
+  $("#uninstall").attr('disabled', false);
+}
+
+function launch3Package() {
+  launch();
+}
 
 var packageEventCallback = {
         oninstalled: function(packageInfo) {
-            alert("The package " + packageInfo.name + " is installed");
+            $("#popup_info").modal(showMessage("success", "The package " + packageInfo.name + " is installed"));
             flag = true;
         },
         onupdated: function(packageInfo) {
-            alert("The package " + packageInfo.name + " is updated");
+            $("#popup_info").modal(showMessage("success", "The package " + packageInfo.name + " is updated"));
             flag = true;
         },
         onuninstalled: function(packageId) {
-            alert("The package " + packageId + " is uninstalled");
+            $("#popup_info").modal(showMessage("success", "The package " + packageId + " is uninstalled"));
             flag = false;
         }
 };
@@ -95,7 +101,7 @@ function fileURI() {
     }
 
     function onerror(error) {
-        alert("The error " + error.message + " occurred when listing the files in the selected folder");
+        $("#popup_info").modal(showMessage("error", "The error " + error.message + " occurred when listing the files in the selected folder"));
     }
 
     tizen.filesystem.resolve(
@@ -104,7 +110,7 @@ function fileURI() {
                 documentsDir = dir;
                 dir.listFiles(onsuccess, onerror);
             }, function(e) {
-                alert("Error " + e.message);
+                $("#popup_info").modal(showMessage("error", "Error " + e.message));
             }, "r"
     );
 }
@@ -115,32 +121,32 @@ function install(url, type) {
             {
                 console.log("On installation(" + packageId + "): progress(" + percentage + ")");
                 if(type == "install")
-                    document.getElementById("install").innerHTML =  '<div data-role="button" id="install" style="height:40px; line-height:40px;">Installing... ' + percentage + "%" + '</div>';
+                    document.getElementById("install").innerHTML =  '<div type="button" class="btn btn-default btn-lg btn-block" id="install">Installing... ' + percentage + "%" + '</div>';
                 if(type == "update")
-                    document.getElementById("update").innerHTML =  '<div data-role="button" id="update" style="height:40px; line-height:40px;">Updating... ' + percentage + "%" + '</div>';
+                    document.getElementById("update").innerHTML =  '<div type="button" class="btn btn-default btn-lg btn-block" id="update">Updating... ' + percentage + "%" + '</div>';
             },
             oncomplete: function(packageId)
             {
                 console.log("Installation(" + packageId + ") Complete");
                 if(type == "install"){
-                    document.getElementById("install").innerHTML =  '<div data-role="button" id="install" style="height:40px; line-height:40px;">TestPackage1 Install</div>';
-                    $("#install").addClass("ui-disabled");
+                    document.getElementById("install").innerHTML =  '<div type="button" class="btn btn-default btn-lg btn-block" id="install">TestPackage1 Install</div>';
+                    $("#install").attr('disabled', true);
                 }
                 if(type == "update") {
-                    document.getElementById("update").innerHTML =  '<div data-role="button" id="update" style="height:40px; line-height:40px;">TestPackage2 Update</div>';
-                    $("#update").addClass("ui-disabled");
+                    document.getElementById("update").innerHTML =  '<div type="button" class="btn btn-default btn-lg btn-block" id="update">TestPackage2 Update</div>';
+                    $("#update").attr('disabled', true);
                 }
             }
     }
 
     var onError = function (err) {
-        alert("Error occured on installation : " + err.name);
+        $("#popup_info").modal(showMessage("error", "Error occured on installation : " + err.name));
     }
 
     try {
         tizen.package.install(url, onInstallationSuccess, onError);
     } catch (e) {
-        alert("Exception: " + e.name);
+        $("#popup_info").modal(showMessage("error", "Exception: " + e.name));
     }
 }
 
@@ -149,26 +155,26 @@ function uninstall() {
             onprogress: function(packageId, percentage)
             {
                 console.log("On uninstallation(" + packageId + "): progress(" + percentage + ")");
-                document.getElementById("uninstall").innerHTML =  '<div data-role="button" id="uninstall" style="height:40px; line-height:40px;">UnInstalling... ' + percentage + "%" + '</div>';
+                document.getElementById("uninstall").innerHTML =  '<div type="button" class="btn btn-default btn-lg btn-block" id="uninstall">UnInstalling... ' + percentage + "%" + '</div>';
             },
             oncomplete: function(packageId)
             {
                 console.log("Uninstallation(" + packageId + ") Complete");
-                document.getElementById("uninstall").innerHTML =  '<div data-role="button" id="uninstall" style="height:40px; line-height:40px;">TestPackage UnInstall</div>';
+                document.getElementById("uninstall").innerHTML =  '<div type="button" class="btn btn-default btn-lg btn-block" id="uninstall">TestPackage UnInstall</div>';
             }
     }
 
     var onError = function (err) {
-        alert("Error occured on installation : " + err.name);
+        $("#popup_info").modal(showMessage("error", "Error occured on installation : " + err.name));
     }
 
     try {
         if(flag == false)
-            alert("TestPackage is already Uninstalled or not Installed");
+            $("#popup_info").modal(showMessage("error", "TestPackage is already Uninstalled or not Installed"));
         else
             tizen.package.uninstall("bhvtcpacka", onUninstallationSuccess, onError);
     } catch (e) {
-        alert("Exception: " + e.name);
+        $("#popup_info").modal(showMessage("error", "Exception: " + e.name));
     }
 }
 
@@ -178,13 +184,13 @@ function launch() {
     }
 
     function onError(err) {
-        alert("launch failed : " + err.message);
+        $("#popup_info").modal(showMessage("error", "launch failed : " + err.message));
     }
 
     try {
         tizen.application.launch("bhvtcpacka.TestPackage", onSuccess, onError);
     } catch (exc) {
-        alert("launch exc:" + exc.message);
+        $("#popup_info").modal(showMessage("error", "launch exc:" + exc.message));
     }
 }
 
@@ -218,7 +224,7 @@ function packagePre() {
     }
 
     function onerror(error) {
-        alert("The error " + error.message + " occurred when listing the files in the selected folder");
+        $("#popup_info").modal(showMessage("error", "The error " + error.message + " occurred when listing the files in the selected folder"));
     }
     // FIXME(babu): https://crosswalk-project.org/jira/browse/XWALK-2564
     /*tizen.filesystem.resolve(

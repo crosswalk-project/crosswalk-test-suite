@@ -18,41 +18,36 @@ Authors:
         Choi, Jongheon <j-h.choi@samsung.com>
 
 -->
-<html>
-<head>
+
 <meta charset="utf-8" />
 <meta name="viewport" content="initial-scale=1.0, maximum-scale=1.0, width=device-width" />
-<link rel="stylesheet" type="text/css" href="../../css/jquery.mobile.css" />
-<script src="../../js/jquery/jquery.js"></script>
-<script src="../../js/jquery/jquery.mobile.js"></script>
+<link rel="stylesheet" type="text/css" href="../../css/bootstrap.css">
+<link rel="stylesheet" type="text/css" href="../../css/main.css">
+<script src="../../js/jquery-2.1.3.min.js"></script>
+<script src="../../js/bootstrap.min.js"></script>
+<script src="../../js/common.js"></script>
 <script src="../../js/tests.js"></script>
 <script src="js/main.js"></script>
-</head>
-<body>
-    <div data-role="page" id="main">
-        <div data-role="header" data-position="fixed" data-tap-toggle="false">
-            <h1 id="main_page_title"></h1>
-        </div>
-        <div id="content">
-            <ul data-role="listview" id="list">
-                <li data-role="list-divider">NFC Write Message</li>
-                <li><input type="text" id="wmsg" value="BehaviorNFC"/></li>
-                <li data-role="list-divider">NFC Tag Test</li>
-                <li><div data-role="button" id="write">Write to card</div></li>
-                <li><div data-role="button" id="read">Read from card</div></li>
-                <li data-role="list-divider">NFC Read Message</li>
-                <li><label id="rmsg">Receive : </label></li>
-                <li data-role="list-divider">NFC Peer Test</li>
-                <li><div data-role="button" id="communicate">Communicate with another device</div></li>
-            </ul>
-        </div>
-        <div data-role="footer" data-position="fixed" data-tap-toggle="false">
-        </div>
-        <div data-role="popup" id="popup_info">
-            <font style="font-size:85%">
-                <p>Check NFC communication</p>
-            </font>
-        </div>
-    </div>
-</body>
-</html>
+
+<div id="header">
+  <h3 id="main_page_title"></h3>
+</div>
+<div class="content">
+  <div class="panel panel-primary" id="list">
+    <div class="panel-heading">NFC Write Message</div>
+    <div class="panel-body"><input type="text" class="form-control" id="wmsg" value="BehaviorNFC"/></div>
+    <div class="panel-heading">NFC Tag Test</div>
+    <div class="panel-body"><div type="button" class="btn btn-default btn-lg btn-block" id="write" onclick="writeNFC();">Write to card</div></div>
+    <div class="panel-body"><div type="button" class="btn btn-default btn-lg btn-block" id="read" onclick="readNFC();">Read from card</div></div>
+    <div class="panel-heading">NFC Read Message</div>
+    <div class="panel-body"><label id="rmsg">Receive : </label></div>
+    <div class="panel-heading">NFC Peer Test</div>
+    <div class="panel-body"><div type="button" class="btn btn-default btn-lg btn-block" id="communicate" onclick="communicateNFC();">Communicate with another device</div></div>
+  </div>
+</div>
+<div class="footer">
+  <div id="footer"></div>
+</div>
+<div class="modal fade" id="popup_info">
+  <p>Check NFC communication</p>
+</div>

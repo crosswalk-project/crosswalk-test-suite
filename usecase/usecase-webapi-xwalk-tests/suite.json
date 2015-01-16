@@ -2,9 +2,6 @@
     "pkg-blacklist": [
         "config.xml",
         "pack.py",
-        "testcase.xsl",
-        "testresult.xsl",
-        "tests.css",
         "tests.*.xml",
         "icon.png",
         "manifest.json",
@@ -14,7 +11,8 @@
     "pkg-list": {
         "apk,cordova": {
             "blacklist": [
-                "*"
+                "*",
+                ".git"
             ],
             "copylist": {
                 "inst.apk.py": "inst.py"
@@ -28,18 +26,17 @@
                 ".": {
                     "app-name": "usecase-webapi-xwalk-tests",
                     "blacklist": [
-                        "*"
+                        "*",
+                        ".git"
                     ],
                     "copylist": {
-                        "css": "css",
                         "icon.png": "icon.png",
-                        "index.html": "index.html",
-                        "js": "js",
                         "res": "res",
                         "steps": "steps",
                         "samples": "samples",
                         "manifest.json": "manifest.json",
-                        "tests.android.xml": "tests.xml"
+                        "tests.android.xml": "tests.xml",
+                        "PACK-TOOL-ROOT/bootstrap-fw": "."
                     },
                     "install-path": "."
                 },
@@ -48,7 +45,7 @@
                     "app-name": "extensions_ad",
                     "app_dir": "samples/Advertising/res",
                     "copylist": {
-                        "../../../js/jquery/jquery.js": "js/jquery.js"
+                        "PACK-TOOL-ROOT/bootstrap-fw/js/jquery-2.1.3.min.js": "js/jquery.js"
                     },
                     "install-path": "."
                 }
@@ -56,32 +53,29 @@
         },
         "wgt": {
             "blacklist": [
-                "*"
+                "*",
+                ".git"
             ],
             "copylist": {
                 "LICENSE.BSD-3": "LICENSE.BSD-3",
                 "inst.wgt.py": "inst.py",
-                "res/css": "res/css",
-                "res/font": "res/font",
-                "res/images": "res/images",
-                "res/media": "res/media"
+                "res/": "res/"
             },
             "subapp-list": {
                 ".": {
                     "app-name": "usecase-webapi-xwalk-tests",
                     "blacklist": [
-                        "*"
+                        "*",
+                        ".git"
                     ],
                     "copylist": {
                         "config.xml": "config.xml",
-                        "css": "css",
                         "icon.png": "icon.png",
-                        "index.html": "index.html",
-                        "js": "js",
                         "res": "res",
                         "steps": "steps",
                         "samples": "samples",
-                        "tests.tizen.xml": "tests.xml"
+                        "tests.tizen.xml": "tests.xml",
+                        "PACK-TOOL-ROOT/bootstrap-fw": "."
                     },
                     "install-path": ".",
                     "sign-flag": "true"
@@ -96,7 +90,8 @@
         },
         "xpk": {
             "blacklist": [
-                "*"
+                "*",
+                ".git"
             ],
             "copylist": {
                 "LICENSE.BSD-3": "LICENSE.BSD-3",
@@ -109,18 +104,17 @@
                 ".": {
                     "app-name": "usecase-webapi-xwalk-tests",
                     "blacklist": [
-                        "*"
+                        "*",
+                        ".git"
                     ],
                     "copylist": {
                         "config.xml": "config.xml",
-                        "css": "css",
                         "icon.png": "icon.png",
-                        "index.html": "index.html",
-                        "js": "js",
                         "res": "res",
                         "steps": "steps",
                         "samples": "samples",
-                        "tests.tizen.xml": "tests.xml"
+                        "tests.tizen.xml": "tests.xml",
+                        "PACK-TOOL-ROOT/bootstrap-fw": "."
                     },
                     "install-path": ".",
                     "sign-flag": "true"

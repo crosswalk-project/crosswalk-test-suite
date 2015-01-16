@@ -30,100 +30,93 @@ Authors:
 
 -->
 
-<!DOCTYPE html>
-<html>
-  <head>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="initial-scale=1.0, maximum-scale=1.0, width=device-width" />
-    <link rel="stylesheet" type="text/css" href="../../css/jquery.mobile.css" />
-    <link rel="stylesheet" type="text/css" href="../../css/main.css" />
-    <link rel="stylesheet" type="text/css" href="../../css/style.css" />
-    <script src="../../js/jquery/jquery.js"></script>
-    <script src="../../js/jquery/jquery.mobile.js"></script>
-    <script src="../../js/tests.js"></script>
-    <script src="js/main.js"></script>
-    <style>
-        #consolelog {
-           width: 98%;
-           height: 250px;
-           overflow: auto;
-           border: 1px solid;
-           margin: 0px auto;
-        }
-    </style>
-  </head>
-  <body>
-    <div data-role="header">
-      <h1 id="main_page_title"></h1>
-    </div>
-    <div data-role="content">
-      <div id="consolelog">
-      </div>
-      <div id="contentbutton">
-         <div class="ui-grid-c">
-           <div class="ui-block-a"><a id="add_service_listener_btn" data-role="button">Add Service Listeners</a></div>
-           <div class="ui-block-b"><a id="add_call_listeners_btn" data-role="button">Add Call Listeners</a></div>
-           <div class="ui-block-c"><a id="services_btn" data-role="button">Get Services</a></div>
-           <div class="ui-block-d"><a id="get_dservice_btn" data-role="button">Get Default Service</a></div>
-         </div>
-         <div class="ui-grid-d">
-           <div class="ui-block-a"><a id="active_call_btn" data-role="button">Get Active Call</a></div>
-           <div class="ui-block-b"><a id="get_calls_btn" data-role="button">Get All Calls</a></div>
-           <div class="ui-block-c"><a id="dial_btn" data-role="button">Dial</a></div>
-           <div class="ui-block-d" style="text-align: right; padding-top:20px;">Number: </div>
-           <div class="ui-block-e"><input type="text" id="dial_input"/></div>
-         </div>
-         <div class="ui-grid-d">
-           <div class="ui-block-a"><a id="conf_btn" data-role="button">Create Conference</a></div>
-           <div class="ui-block-b"><a id="conf_parties_btn" data-role="button">Get Conference Participants</a></div>
-           <div class="ui-block-c"><a id="split_btn" data-role="button">Split</a></div>
-           <div class="ui-block-d" style="text-align: right; padding-top:20px;">Call Id: </div>
-           <div class="ui-block-e"><input type="text" id="split_input"/></div>
-         </div>
-         <div class="ui-grid-c">
-           <div class="ui-block-a"><a id="disconnect_btn" data-role="button">Disconnect Active Call</a></div>
-           <div class="ui-block-b"><a id="disconnect_all_btn" data-role="button">Disconnect All Calls</a></div>
-           <div class="ui-block-c"><a id="hold_btn" data-role="button">Hold Active Call</a></div>
-           <div class="ui-block-d"><a id="resume_btn" data-role="button">Resume Held Call</a></div>
-         </div>
-         <div class="ui-grid-c">
-           <div class="ui-block-a"><a id="accept_btn" data-role="button">Accept Incoming/Waiting Call</a></div>
-           <div class="ui-block-b"><a id="deflect_btn" data-role="button">Deflect Incoming/Waiting Call</a></div>
-           <div class="ui-block-c" style="text-align: right; padding-top:20px;">To Number: </div>
-           <div class="ui-block-d"><input type="text" id="deflect_input"/></div>
-         </div>
-         <div class="ui-grid-c">
-           <div class="ui-block-a"><a id="transfer_btn" data-role="button">Transfer Incoming/Waiting call</a></div>
-           <div class="ui-block-b"><a id="emerg_nr_btn" data-role="button">Get Emergency Numbers</a></div>
-           <div class="ui-block-c"><a id="remove_call_listeners_btn" data-role="button">Remove Call Listeners</a></div>
-           <div class="ui-block-d"><a id="remove_service_listeners_btn" data-role="button">Remove Service Listeners</a></div>
-         </div>
-         <div class="ui-grid-d">
-           <div class="ui-block-a"><a id="sendtones_btn" data-role="button">Send Tones</a></div>
-           <div class="ui-block-b" style="text-align: right; padding-top:20px;">[0..9, A..F, p]: </div>
-           <div class="ui-block-c"><input type="text" id="tones_input"/></div>
-           <div class="ui-block-d"><a id="starttone_btn" data-role="button">Start Tone</a></div>
-           <div class="ui-block-e"><a id="endtone_btn" data-role="button">End Tone</a></div>
-         </div>
-         <div class="ui-grid-c">
-           <div class="ui-block-a" style="text-align: right; padding-top:20px;">Service Id: </div>
-           <div class="ui-block-b"><input type="text" id="service_id_input"/></div>
-           <div class="ui-block-c"><a id="get_service_btn" data-role="button">Show</a></div>
-           <div class="ui-block-d"><a id="set_dservice_btn" data-role="button">Set As Default</a></div>
-         </div>
-         <div class="ui-grid-b">
-           <div class="ui-block-a"><a id="enable_service_btn" data-role="button">Enable Service</a></div>
-           <div class="ui-block-b"><a id="disable_service_btn" data-role="button">Disable Service</a></div>
-           <div class="ui-block-c"><a id="clearconsole_btn" data-role="button">Clear Console Output</a></div>
-         </div>
-      </div>
-    </div>
-    <div data-role="footer" data-position="fixed">
-    </div>
-    <div data-role="popup" id="popup_info">
-      <font style="font-size:85%">
-        <p>Verifies the telephony is supported and valid</p><br>
-      </font>
-    </div>
-  </body>
-</html>
+<meta charset="utf-8" />
+<meta name="viewport" content="initial-scale=1.0, maximum-scale=1.0, width=device-width" />
+<link rel="stylesheet" type="text/css" href="../../css/bootstrap.css">
+<link rel="stylesheet" type="text/css" href="../../css/main.css">
+<script src="../../js/jquery-2.1.3.min.js"></script>
+<script src="../../js/bootstrap.min.js"></script>
+<script src="../../js/common.js"></script>
+<script src="../../js/tests.js"></script>
+<script src="js/main.js"></script>
+<style>
+    #consolelog {
+       width: 98%;
+       height: 250px;
+       overflow: auto;
+       border: 1px solid;
+       margin: 0px auto;
+    }
+</style>
+
+<div id="header">
+  <h3 id="main_page_title"></h3>
+</div>
+<div class="content">
+  <div id="consolelog">
+  </div>
+  <div id="contentbutton">
+     <div class="div-bar">
+       <div class="bar-grid-c"><button id="add_service_listener_btn" type="button" class="btn btn-default btn-lg btn-block">Add Service Listeners</button></div>
+       <div class="bar-grid-c"><button id="add_call_listeners_btn" type="button" class="btn btn-default btn-lg btn-block">Add Call Listeners</button></div>
+       <div class="bar-grid-c"><button id="services_btn" type="button" class="btn btn-default btn-lg btn-block">Get Services</button></div>
+       <div class="bar-grid-c"><button id="get_dservice_btn" type="button" class="btn btn-default btn-lg btn-block">Get Default Service</button></div>
+     </div>
+     <div class="div-bar">
+       <div class="bar-grid-d"><button id="active_call_btn" type="button" class="btn btn-default btn-lg btn-block">Get Active Call</button></div>
+       <div class="bar-grid-d"><button id="get_calls_btn" type="button" class="btn btn-default btn-lg btn-block">Get All Calls</button></div>
+       <div class="bar-grid-d"><button id="dial_btn" type="button" class="btn btn-default btn-lg btn-block">Dial</button></div>
+       <div class="bar-grid-d" style="text-align: right; padding-top:10px;">Number: </div>
+       <div class="bar-grid-d"><input type="text" class="form-control" id="dial_input"/></div>
+     </div>
+     <div class="div-bar">
+       <div class="bar-grid-d"><button id="conf_btn" type="button" class="btn btn-default btn-lg btn-block">Create Conference</button></div>
+       <div class="bar-grid-d"><button id="conf_parties_btn" type="button" class="btn btn-default btn-lg btn-block">Get Conference Participants</button></div>
+       <div class="bar-grid-d"><button id="split_btn" type="button" class="btn btn-default btn-lg btn-block">Split</button></div>
+       <div class="bar-grid-d" style="text-align: right; padding-top:10px;">Call Id: </div>
+       <div class="bar-grid-d"><input type="text" class="form-control" id="split_input"/></div>
+     </div>
+     <div class="div-bar">
+       <div class="bar-grid-c"><button id="disconnect_btn" type="button" class="btn btn-default btn-lg btn-block">Disconnect Active Call</button></div>
+       <div class="bar-grid-c"><button id="disconnect_all_btn" type="button" class="btn btn-default btn-lg btn-block">Disconnect All Calls</button></div>
+       <div class="bar-grid-c"><button id="hold_btn" type="button" class="btn btn-default btn-lg btn-block">Hold Active Call</button></div>
+       <div class="bar-grid-c"><button id="resume_btn" type="button" class="btn btn-default btn-lg btn-block">Resume Held Call</button></div>
+     </div>
+     <div class="div-bar">
+       <div class="bar-grid-c"><button id="accept_btn" type="button" class="btn btn-default btn-lg btn-block">Accept Incoming/Waiting Call</button></div>
+       <div class="bar-grid-c"><button id="deflect_btn" type="button" class="btn btn-default btn-lg btn-block">Deflect Incoming/Waiting Call</button></div>
+       <div class="bar-grid-c" style="text-align: right; padding-top:10px;">To Number: </div>
+       <div class="bar-grid-c"><input type="text" class="form-control" id="deflect_input"/></div>
+     </div>
+     <div class="div-bar">
+       <div class="bar-grid-c"><button id="transfer_btn" type="button" class="btn btn-default btn-lg btn-block">Transfer Incoming/Waiting call</button></div>
+       <div class="bar-grid-c"><button id="emerg_nr_btn" type="button" class="btn btn-default btn-lg btn-block">Get Emergency Numbers</button></div>
+       <div class="bar-grid-c"><button id="remove_call_listeners_btn" type="button" class="btn btn-default btn-lg btn-block">Remove Call Listeners</button></div>
+       <div class="bar-grid-c"><button id="remove_service_listeners_btn" type="button" class="btn btn-default btn-lg btn-block">Remove Service Listeners</button></div>
+     </div>
+     <div class="div-bar">
+       <div class="bar-grid-d"><button id="sendtones_btn" type="button" class="btn btn-default btn-lg btn-block">Send Tones</button></div>
+       <div class="bar-grid-d" style="text-align: right; padding-top:10px;">[0..9, A..F, p]: </div>
+       <div class="bar-grid-d"><input type="text" class="form-control" id="tones_input"/></div>
+       <div class="bar-grid-d"><button id="starttone_btn" type="button" class="btn btn-default btn-lg btn-block">Start Tone</button></div>
+       <div class="bar-grid-d"><button id="endtone_btn" type="button" class="btn btn-default btn-lg btn-block">End Tone</button></div>
+     </div>
+     <div class="div-bar">
+       <div class="bar-grid-c" style="text-align: right; padding-top:10px;">Service Id: </div>
+       <div class="bar-grid-c"><input type="text" class="form-control" id="service_id_input"/></div>
+       <div class="bar-grid-c"><button id="get_service_btn" type="button" class="btn btn-default btn-lg btn-block">Show</button></div>
+       <div class="bar-grid-c"><button id="set_dservice_btn" type="button" class="btn btn-default btn-lg btn-block">Set As Default</button></div>
+     </div>
+     <div class="div-bar">
+       <div class="bar-grid-b"><button id="enable_service_btn" type="button" class="btn btn-default btn-lg btn-block">Enable Service</button></div>
+       <div class="bar-grid-b"><button id="disable_service_btn" type="button" class="btn btn-default btn-lg btn-block">Disable Service</button></div>
+       <div class="bar-grid-b"><button id="clearconsole_btn" type="button" class="btn btn-default btn-lg btn-block">Clear Console Output</button></div>
+     </div>
+  </div>
+</div>
+<div class="footer">
+  <div id="footer"></div>
+</div>
+<div class="modal fade" id="popup_info">
+  <p>Verifies the telephony is supported and valid</p>
+</div>

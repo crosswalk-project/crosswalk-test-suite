@@ -30,53 +30,45 @@ Authors:
 
 -->
 
-<html>
-<head>
 <meta charset="utf-8" />
 <meta name="viewport" content="initial-scale=1.0, maximum-scale=1.0, width=device-width" />
-<link rel="stylesheet" type="text/css" href="../../css/jquery.mobile.css" />
-<script src="../../js/jquery/jquery.js"></script>
-<script src="../../js/jquery/jquery.mobile.js"></script>
+<link rel="stylesheet" type="text/css" href="../../css/bootstrap.css">
+<link rel="stylesheet" type="text/css" href="../../css/main.css">
+<script src="../../js/jquery-2.1.3.min.js"></script>
+<script src="../../js/bootstrap.min.js"></script>
+<script src="../../js/common.js"></script>
 <script src="../../js/tests.js"></script>
 <script src="js/main.js"></script>
-</head>
-<body>
-  <div data-role="page" id="main">
-    <div data-role="header" data-position="fixed" data-tap-toggle="false">
-      <h1 id="main_page_title"></h1>
-    </div>
-    <div id="content">
-      <ul data-role="listview">
-         <li data-role="list-divider">Notification Add and Update</li>
-         <li>
-           <div data-role="button" id="showNotification" style="height:40px; line-height:20px;">Show Notification</div>
-           <div data-role="button" id="updateNotification" style="height:40px; line-height:20px;">Update Notification</div>
-         </li>
-      </ul>
-      <ul data-role="listview">
-         <li data-role="list-divider">Notification tester</li>
-         <li>
-           <input style='display: block' size='75' type='text' id='title-input' placeholder='Message-Title'></input>
-           <textarea style='display: block' rows='10' cols='75' id='content-input' placeholder='Message-Content'></textarea>
-           <select id='type-select' style='display: block'>
-             <option value="SIMPLE">SIMPLE</option>
-             <option value="THUMBNAIL">THUMBNAIL</option>
-             <option value="ONGOING">ONGOING</option>
-             <option value="PROGRESS">PROGRESS</option>
-           </select>
-           <div data-role="button" id="send-button" style="height:40px; line-height:20px;">Send</div>
-           <div data-role="button" id="clear-button" style="height:40px; line-height:20px;">Remove All</div>
-         </li>
-      </ul>
-      <ul data-role="listview" id="info-list1"></ul>
-    </div>
-    <div data-role="footer" data-position="fixed" data-tap-toggle="false">
-    </div>
-    <div data-role="popup" id="popup_info">
-      <font style="font-size:85%">
-        <p>Verifies the device supports tizen notification interface.</p>
-      </font>
-    </div>
+
+<div id="header">
+  <h3 id="main_page_title"></h3>
+</div>
+<div class="content">
+  <div class="panel panel-primary" style="margin-bottom: 0px;">
+     <div class="panel-heading">Notification Add and Update</div>
+     <div class="panel-body">
+       <div type="button" class="btn btn-default btn-lg btn-block" id="showNotification" onclick="showNotification();">Show Notification</div>
+       <div type="button" class="btn btn-default btn-lg btn-block" id="updateNotification" onclick="updateNotification();">Update Notification</div>
+     </div>
+     <div class="panel-heading">Notification tester</div>
+     <div class="panel-body">
+       <input class="form-control" style='display: block' size='75' type='text' id='title-input' placeholder='Message-Title'></input>
+       <textarea style='display: block; width: 100%; height: 100px; margin-top: 10px;' rows='10' cols='75' id='content-input' placeholder='Message-Content'></textarea>
+       <select id='type-select' class="btn btn-default btn-lg btn-block" style='display: block; margin-top: 10px;'>
+         <option value="SIMPLE">SIMPLE</option>
+         <option value="THUMBNAIL">THUMBNAIL</option>
+         <option value="ONGOING">ONGOING</option>
+         <option value="PROGRESS">PROGRESS</option>
+       </select>
+       <div type="button" class="btn btn-default btn-lg btn-block" id="send-button" onclick="send();">Send</div>
+       <div type="button" class="btn btn-default btn-lg btn-block" id="clear-button" onclick="clear();">Remove All</div>
+     </div>
   </div>
-</body>
-</html>
+  <div class="panel panel-primary" id="info-list1"></div>
+</div>
+<div class="footer">
+  <div id="footer"></div>
+</div>
+<div class="modal fade" id="popup_info">
+  <p>Verifies the device supports tizen notification interface.</p>
+</div>

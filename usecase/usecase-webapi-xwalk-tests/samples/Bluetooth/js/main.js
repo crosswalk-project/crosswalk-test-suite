@@ -24,52 +24,56 @@ var globalSocket = null;
 var adapter = null;
 var type = null;
 
-$(document).delegate("#main", "pageinit", function() {
-    $("#server").bind("vclick", function() {
-        setListener();
-        startServer();
-        $("#client").addClass("ui-disabled");
-        $("#disconnect").removeClass("ui-disabled");
-        type = "server";
-    });
-    $("#client").bind("vclick", function() {
-        setListener();
-        connectToServer();
-        $("#server").addClass("ui-disabled");
-        $("#disconnect").removeClass("ui-disabled");
-        type = "client";
-    });
-    $("#send").bind("vclick", function() {
-        if(type == "server")
-            sendMsgS();
-        if(type == "client")
-            sendMsgC();
-    });
-    $("#disconnect").bind("vclick", function() {
-        adapter.unsetChangeListener();
-        disconnect();
-        serverConnected = false;
-        clientConnected = false;
-        type = null;
-        $("#server").removeClass("ui-disabled");
-        $("#client").removeClass("ui-disabled");
-        $("#disconnect").addClass("ui-disabled");
-        $("#send").addClass("ui-disabled");
-    });
-    $("#send").addClass("ui-disabled");
-    $("#disconnect").addClass("ui-disabled");
+$(document).ready(function () {
+    $("#send").attr('disabled', true);
+    $("#disconnect").attr('disabled', true);
 });
+
+function server() {
+    setListener();
+    startServer();
+    $("#client").attr('disabled', true);
+    $("#disconnect").attr('disabled', false);
+    type = "server";
+}
+
+function client() {
+    setListener();
+    connectToServer();
+    $("#server").attr('disabled', true);
+    $("#disconnect").attr('disabled', false);
+    type = "client";
+}
+
+function send() {
+    if(type == "server")
+        sendMsgS();
+    if(type == "client")
+        sendMsgC();
+}
+
+function disconnection() {
+    adapter.unsetChangeListener();
+    disconnect();
+    serverConnected = false;
+    clientConnected = false;
+    type = null;
+    $("#server").attr('disabled', false);
+    $("#client").attr('disabled', false);
+    $("#disconnect").attr('disabled', true);
+    $("#send").attr('disabled', true);
+}
 
 function setListener() {
     var changeListener = {
         onstatechanged: function(powered) {
-            console.log ("Power state is changed into: " + powered);
+            $("#popup_info").modal(showMessage("success", "Power state is changed into: " + powered));
         },
         onnamechanged: function(name) {
-            console.log("Name is changed to: " + name);
+            $("#popup_info").modal(showMessage("success", "Name is changed to: " + name));
         },
         onvisibilitychanged: function(visible) {
-            console.log("Visibility is changed into: " + visible);
+            $("#popup_info").modal(showMessage("success", "Visibility is changed into: " + visible));
         }
     };
     adapter = tizen.bluetooth.getDefaultAdapter();
@@ -78,22 +82,22 @@ function setListener() {
 
 function startServer() {
     if (clientConnected) {
-        alert("Already connected");
+        $("#popup_info").modal(showMessage("error", "Already connected"));
         return;
     }
     adapter = tizen.bluetooth.getDefaultAdapter();
     console.log("StartServer Name : " + "BehaviorBT");
     function registerSuccessCallback(handler) {
         chatServiceHandler = handler;
-        alert("Wait for client...");
+        $("#popup_info").modal(showMessage("success", "Wait for client..."));
         console.log("Chat service register success");
         chatServiceHandler.onconnect = function(socket) {
             globalSocket = socket;
             var peerDevice = socket.peer;
-            alert("Socket state:" + socket.state + " [" + peerDevice.name + "(" + peerDevice.address + ")]");
+            $("#popup_info").modal(showMessage("success", "Socket state:" + socket.state + " [" + peerDevice.name + "(" + peerDevice.address + ")]"));
             console.log("Server connented address(" + socket.peer.address + ")" + " connected service uuid: " + socket.uuid);
             clientConnected = true;
-            $("#send").removeClass("ui-disabled");
+            $("#send").attr('disabled', false);
             socket.onmessage = function() {
                 var data = socket.readData();
                 var recvmsg = "";
@@ -102,7 +106,7 @@ function startServer() {
                 }
                 recvmsg = decodeURIComponent(recvmsg);
                 document.getElementById("rmsg").innerHTML = "Client : " + recvmsg;
-                alert("Client : " + recvmsg);
+                $("#popup_info").modal(showMessage("success", "Client : " + recvmsg));
             };
             socket.onerror = function(e) {
                 console.log("Socket error");
@@ -147,7 +151,7 @@ function startServer() {
 
 function connectToServer() {
     if (serverConnected) {
-        alert("Already connected");
+        $("#popup_info").modal(showMessage("error", "Already connected"));
         return;
     }
     console.log("Connect to Server " + "BehaviorBT");
@@ -155,10 +159,10 @@ function connectToServer() {
     function onSocketConnected(socket) {
         globalSocket = socket;
         var peerDevice = socket.peer;
-        alert("Socket state:" + socket.state + " [" + peerDevice.name + "(" + peerDevice.address + ")]");
+        $("#popup_info").modal(showMessage("success", "Socket state:" + socket.state + " [" + peerDevice.name + "(" + peerDevice.address + ")]"));
         console.log("Server connented address(" + socket.peer.address + ")" + " connected service uuid: " + socket.uuid);
         serverConnected = true;
-        $("#send").removeClass("ui-disabled");
+        $("#send").attr('disabled', false);
         socket.onmessage = function() {
             var data = socket.readData();
             var recvmsg = "";
@@ -167,7 +171,7 @@ function connectToServer() {
             }
             recvmsg = decodeURIComponent(recvmsg);
             document.getElementById("rmsg").innerHTML = "Server : " + recvmsg;
-            alert("Server : " + recvmsg);
+            $("#popup_info").modal(showMessage("success", "Server : " + recvmsg));
         };
         socket.onerror = function(e) {
             console.log("Socket error");
@@ -201,7 +205,7 @@ function connectToServer() {
     }
     var discoverDevicesSuccessCallback = {
             onstarted : function() {
-                alert("Device discovery start!");
+                $("#popup_info").modal(showMessage("success", "Device discovery start!"));
             },
             ondevicefound: function (device) {
                 var msg = device.name + "("+ device.address + ")";
@@ -222,7 +226,7 @@ function connectToServer() {
             },
             ondevicedisappeared: function(device) {},
             onfinished : function (devices) {
-                alert("Discovery finished");
+                $("#popup_info").modal(showMessage("success", "Discovery finished"));
             }
     };
     function onSuccess() {
@@ -252,7 +256,7 @@ function sendMsgS() {
             console.log("socket is not set");
     }
     else
-        alert("Fill in Send Message");
+        $("#popup_info").modal(showMessage("error", "Fill in Send Message"));
 }
 
 function sendMsgC() {
@@ -274,14 +278,14 @@ function sendMsgC() {
             console.log("socket is not set");
     }
     else
-        alert("Fill in Send Message");
+        $("#popup_info").modal(showMessage("error", "Fill in Send Message"));
 }
 
 function disconnect() {
     if (serverConnected == true && globalSocket != null) {
         try {
             globalSocket.close();
-            alert("Disconnected");
+            $("#popup_info").modal(showMessage("success", "Disconnected"));
         }
         catch(e) {
             console.log(e.message);
@@ -292,7 +296,7 @@ function disconnect() {
             adapter.setPowered(
                     false,
                     function() {
-                        alert("Bluetooth Power Off");
+                        $("#popup_info").modal(showMessage("success", "Bluetooth Power Off"));
                         globalSocket = null;
                         serverConnected = false;
                         clientConnected = false;

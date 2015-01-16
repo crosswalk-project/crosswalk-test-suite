@@ -32,7 +32,7 @@ Authors:
 var current_dt, current_zone, tzids, dateFormat, timeFormat, is_leap;
 var day, year, mon, min, sec, hour;
 
-$(document).delegate("#main", "pageinit", function() {
+$(document).ready(function() {
   current_dt = tizen.time.getCurrentDateTime();  
   refresh();
 });

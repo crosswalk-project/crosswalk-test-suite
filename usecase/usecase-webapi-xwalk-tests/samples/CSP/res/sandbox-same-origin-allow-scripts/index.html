@@ -35,10 +35,11 @@ Authors:
     <title>WRT Test: sandbox-same-origin-allow-scripts</title>
     <meta charset="utf-8" />
     <meta name="viewport" content="initial-scale=1.0, maximum-scale=1.0, width=device-width" />
-    <link rel="stylesheet" type="text/css" href="../../../../css/jquery.mobile.css" />
+    <link rel="stylesheet" type="text/css" href="../../../../css/bootstrap.css" />
     <link rel="stylesheet" type="text/css" href="../../../../css/main.css" />
-    <script src="../../../../js/jquery/jquery.js"></script>
-    <script src="../../../../js/jquery/jquery.mobile.js"></script>
+    <script src="../../../../js/jquery-2.1.3.min.js"></script>
+    <script src="../../../../js/bootstrap.min.js"></script>
+    <script src="../../../../js/common.js"></script>
     <script src="../../../../js/tests.js"></script>
     <meta http-equiv="Content-Security-Policy" content="sandbox allow-same-origin allow-scripts ">
     <meta http-equiv="x-Content-Security-Policy" content="sandbox allow-same-origin allow-scripts ">
@@ -56,30 +57,33 @@ Authors:
     </style>
   </head>
   <body>
-    <div data-role="page" id="main">
-    <input type="hidden" id="wgt_name" value="sandbox-same-origin-allow-scripts"/>
-    <script src="support/csp.js"></script>
-    <p>Test passes if they are all pass.</p>
-    <script>
-        document.write("Pass -- The script of this page is loaded<br>");
-        if(typeof X == "number"){
-            document.write("Pass -- The script in this widget is loaded<br>");
-        }else{
-            document.write("Fail -- The script in this widget is not loaded<br>");
-        };
-    </script>
-    <img style="display:none"
-        onerror="javascript:test(function() {assert_true(true)});"
-        src="about:blank">
-    </img>
-    <div data-role="footer" data-position="fixed" data-tap-toggle="false"></div>
-        <div data-role="popup" id="popup_info" data-theme="a">
-          <font class="fontSize">
-            <p>Test Purpose: Verifies the sandbox-same-origin-allow-scripts of CSP worked well.</p>
-            <p>Expected Result: </p>
-            <p>Test passes if pass displayed.</p>
-          </font>
-        </div>
+    <div id="header">
+      <h3 id="main_page_title"></h3>
+    </div>
+    <div class="content">
+      <input type="hidden" id="wgt_name" value="sandbox-same-origin-allow-scripts"/>
+      <script src="support/csp.js"></script>
+      <p>Test passes if they are all pass.</p>
+      <script>
+          document.write("Pass -- The script of this page is loaded<br>");
+          if(typeof X == "number"){
+              document.write("Pass -- The script in this widget is loaded<br>");
+          }else{
+              document.write("Fail -- The script in this widget is not loaded<br>");
+          };
+      </script>
+      <img style="display:none"
+          onerror="javascript:test(function() {assert_true(true)});"
+          src="about:blank">
+      </img>
+    </div>
+    <div class="footer">
+      <div id="footer"></div>
+    </div>
+    <div class="modal fade" id="popup_info">
+      <p>Test Purpose: Verifies the sandbox-same-origin-allow-scripts of CSP worked well.</p>
+      <p>Expected Result: </p>
+      <p>Test passes if pass displayed.</p>
     </div>
   </body>
 </html>

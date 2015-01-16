@@ -48,12 +48,12 @@ function show() {
 }
 
 function showButton() {
-    $("#connect").button("enable");
-    $("#disconnect").button("disable");
-    $("#send").button("disable");
+    $("#connect").attr('disabled', false);
+    $("#disconnect").attr('disabled', true);
+    $("#send").attr('disabled', true);
 }
 
-$("#connect").live("tap", function () {
+function connectWebSocket() {
     testFlag.green = true;
     clearTimeout(showId);
     showId = setTimeout("show()", 10000);
@@ -62,9 +62,9 @@ $("#connect").live("tap", function () {
         window.webSocket = new WebSocket('ws://127.0.0.1:8081');
         webSocket.addEventListener('open', function (evt) {
             clearTimeout(showId);
-            $("#connect").button("disable");
-            $("#disconnect").button("enable");
-            $("#send").button("enable");
+            $("#connect").attr('disabled', true);
+            $("#disconnect").attr('disabled', false);
+            $("#send").attr('disabled', false);
             $("#chatbox").text("Successfully connect to WebSocket server.\n" + $("#chatbox").text());
         }, true);
         webSocket.addEventListener('message', function (evt) {
@@ -80,24 +80,24 @@ $("#connect").live("tap", function () {
         $("#chatbox").text("Error: " + err + "\n" + $("#chatbox").text());
     }
     status();
-});
+}
 
-$("#disconnect").live("tap", function () {
+function disconnectWebSocket() {
     testFlag.blue = true;
     webSocket.close();
     showButton();
     status();
-});
+}
 
-$("#send").live("tap", function () {
+function sendWebSocket() {
     testFlag.red = true;
     webSocket.send($("#socketinput").attr("value"));
     $("#chatbox").text("WebSocket - send - "  + $("#socketinput").attr("value") + "\n" + $("#chatbox").text());
     $("#socketinput").attr("value", "");
     status();
-});
+}
 
-$(document).live('pageshow', function () {
+$(document).ready(function() {
     DisablePassButton();
     showButton();
 });

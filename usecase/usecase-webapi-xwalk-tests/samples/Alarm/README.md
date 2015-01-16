@@ -8,7 +8,7 @@ This sample demonstrates Alarm feature basic functionalities, include:
 
 This usecase covers following interfaces and methods:
 
-* AlarmManager interface: add, remove, removeAll, get, getAll methods,
+* AlarmManager interface: add, remove, removeAll, get, getAll methods, 
 * AlarmRelative interface: getRemainingSeconds method
 * AlarmAbsolute interface: getNextScheduledDate method
 

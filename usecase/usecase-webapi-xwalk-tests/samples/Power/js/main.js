@@ -22,29 +22,29 @@ Authors:
 function request(screenState){
     tizen.power.release("SCREEN");
     try{
-        alert(screenState);
+        //alert(screenState);
         tizen.power.request("SCREEN", screenState);
     }catch(err) {
-        console.log("errorname: " + err.name + ", description: " + err.description + ", messsage: " + err.message);
+        $("#popup_info").modal(showMessage("error", "errorname: " + err.name + ", description: " + err.description + ", messsage: " + err.message));
     }
 }
 
 // release
 function release(){
     try{
-        alert("SCREEN_RELEASE");
+        //alert("SCREEN_RELEASE");
         tizen.power.release("SCREEN");
     }catch(err) {
-        console.log("errorname: " + err.name + ", description: " + err.description + ", messsage: " + err.message);
+        $("#popup_info").modal(showMessage("error", "errorname: " + err.name + ", description: " + err.description + ", messsage: " + err.message));
     }
 }
 
 //turnScreenOff
 function turnScreenOff(){
     try{
-        alert("SCREEN_OFF");
+        //alert("SCREEN_OFF");
         tizen.power.turnScreenOff();
     }catch(err) {
-        console.log("errorname: " + err.name + ", description: " + err.description + ", messsage: " + err.message);
+        $("#popup_info").modal(showMessage("error", "errorname: " + err.name + ", description: " + err.description + ", messsage: " + err.message));
     }
 }

@@ -47,9 +47,9 @@ function getVehicle() {
       jQuery("#speed").text("vehicleSpeed speed: " + vehicleSpeed.speed);
     },
     function(error) {
-      window.alert("Error callback: " + error.message);
+      $("#popup_info").modal(showMessage("error", "Error callback: " + error.message));
     });
-
+    
     // Verify subscribe and unsubscribe:
     var vehicleSpeedSub = vehicle.vehicleSpeed.subscribe(function(vehicleSpeed) {
       jQuery("#speedChange").text("vehicle speed changed to: " + vehicleSpeed.speed);
@@ -57,6 +57,6 @@ function getVehicle() {
     });
 
   } catch (err) {
-    window.alert("Thrown an error: " + err.message);
+    $("#popup_info").modal(showMessage("error", "Thrown an error: " + err.message));
   }
 }

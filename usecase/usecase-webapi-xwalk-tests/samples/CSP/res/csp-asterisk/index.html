@@ -23,7 +23,7 @@ BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE,
 DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY
 OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING
 NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE,
-EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
+EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.-
 
 Authors:
         Zhang, Ge <gex.zhang@intel.com>
@@ -35,10 +35,11 @@ Authors:
     <title>WRT Test: csp-asterisk</title>
     <meta charset="utf-8" />
     <meta name="viewport" content="initial-scale=1.0, maximum-scale=1.0, width=device-width" />
-    <link rel="stylesheet" type="text/css" href="../../../../css/jquery.mobile.css" />
+    <link rel="stylesheet" type="text/css" href="../../../../css/bootstrap.css" />
     <link rel="stylesheet" type="text/css" href="../../../../css/main.css" />
-    <script src="../../../../js/jquery/jquery.js"></script>
-    <script src="../../../../js/jquery/jquery.mobile.js"></script>
+    <script src="../../../../js/jquery-2.1.3.min.js"></script>
+    <script src="../../../../js/bootstrap.min.js"></script>
+    <script src="../../../../js/common.js"></script>
     <script src="../../../../js/tests.js"></script>
     <script src="support/csp.js"></script>
     <meta http-equiv="Content-Security-Policy" content="default-src * 'unsafe-inline';connect-src *;font-src *;frame-src *;img-src *;media-src *;object-src *;style-src * 'unsafe-inline'"/>
@@ -57,30 +58,32 @@ Authors:
     </style>
   </head>
   <body>
-    <div data-role="page" id="main">
-    <input type="hidden" id="wgt_name" value="csp-asterisk"/>
-    <p>Test 1: passes if a "Pass" displayed below</p>
-    <script>
-         document.write("<br>");
-         //connect
-         var xhr = new XMLHttpRequest();
-         try {
-             xhr.open("GET", "support/csp.js");
-             xhr.open("GET", "http://www.w3.org");
-             document.write("Pass<br>");
-         } catch(e) {
-             document.write("Fail--should not reach here, catch error<br>");
-         }
-    </script>
-    <hr />
-    <div data-role="footer" data-position="fixed" data-tap-toggle="false"></div>
-        <div data-role="popup" id="popup_info" data-theme="a">
-          <font class="fontSize">
-            <p>Test Purpose: Verifies the csp-asterisk of CSP worked well.</p>
-            <p>Expected Result: </p>
-            <p>Test passes if a "Pass" displayed.</p>
-          </font>
-        </div>
+    <div id="header">
+      <h3 id="main_page_title"></h3>
+    </div>
+    <div class="content">
+      <p>Test 1: passes if a "Pass" displayed below</p>
+      <script>
+           document.write("<br>");
+           //connect
+           var xhr = new XMLHttpRequest();
+           try {
+               xhr.open("GET", "support/csp.js");
+               xhr.open("GET", "http://www.w3.org");
+               document.write("Pass<br>");
+           } catch(e) {
+               document.write("Fail--should not reach here, catch error<br>");
+           }
+      </script>
+      <hr />
+    </div>
+    <div class="footer">
+      <div id="footer"></div>
+    </div>
+    <div class="modal fade" id="popup_info">
+      <p>Test Purpose: Verifies the csp-asterisk of CSP worked well.</p>
+      <p>Expected Result: </p>
+      <p>Test passes if a "Pass" displayed.</p>
     </div>
   </body>
 </html>

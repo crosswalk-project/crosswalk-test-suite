@@ -18,42 +18,41 @@ Authors:
         Choi, Jongheon <j-h.choi@samsung.com>
 
 -->
-<html>
-<head>
+
 <meta charset="utf-8" />
 <meta name="viewport" content="initial-scale=1.0, maximum-scale=1.0, width=device-width" />
-<link rel="stylesheet" type="text/css" href="../../css/jquery.mobile.css" />
-<script src="../../js/jquery/jquery.js"></script>
-<script src="../../js/jquery/jquery.mobile.js"></script>
+<link rel="stylesheet" type="text/css" href="../../css/bootstrap.css">
+<link rel="stylesheet" type="text/css" href="../../css/main.css">
+<script src="../../js/jquery-2.1.3.min.js"></script>
+<script src="../../js/bootstrap.min.js"></script>
+<script src="../../js/common.js"></script>
 <script src="../../js/tests.js"></script>
 <script src="js/main.js"></script>
-</head>
-<body>
-    <div data-role="page" id="main">
-        <div data-role="header" data-position="fixed" data-tap-toggle="false">
-            <h1 id="main_page_title"></h1>
-        </div>
-        <div id="content">
-            <ul data-role="listview" id="list">
-                <li data-role="list-divider">Bluetooth Select(Server or Client)</li>
-                <li><div data-role="button" id="server">Server</div></li>
-                <li><div data-role="button" id="client">Client</div></li>
-                <li data-role="list-divider">Write Message</li>
-                <li><input type="text" id="wmsg" value=""/></li>
-                <li><div data-role="button" id="send">Send Message</div></li>
-                <li data-role="list-divider">Receive Message</li>
-                <li><label id="rmsg">Receive : </label></li>
-                <li data-role="list-divider">Bluetooth Disconnect</li>
-                <li><div data-role="button" id="disconnect">Disconnect</div></li>
-            </ul>
-        </div>
-        <div data-role="footer" data-position="fixed" data-tap-toggle="false">
-        </div>
-        <div data-role="popup" id="popup_info">
-            <font style="font-size:85%">
-                <p>Check if Bluetooth communication between devices supported</p><br>
-            </font>
-        </div>
+
+<div id="header">
+  <h3 id="main_page_title"></h3>
+</div>
+<div class="content">
+  <div class="panel panel-primary" id="list">
+    <div class="panel-heading">Bluetooth Select(Server or Client)</div>
+    <div class="panel-body">
+      <div type="button" class="btn btn-default btn-lg btn-block" id="server" onclick="server()">Server</div>
+      <div type="button" class="btn btn-default btn-lg btn-block" id="client" onclick="client()">Client</div>
     </div>
-</body>
-</html>
+    <div class="panel-heading">Write Message</div>
+    <div class="panel-body">
+      <input type="text" class="form-control" id="wmsg" value=""/>
+      <div type="button" class="btn btn-default btn-lg btn-block" id="send" onclick="send()">Send Message</div>
+    </div>
+    <div class="panel-heading">Receive Message</div>
+    <div class="panel-body"><label id="rmsg">Receive : </label></div>
+    <div class="panel-heading">Bluetooth Disconnect</div>
+    <div class="panel-body"><div type="button" class="btn btn-default btn-lg btn-block" id="disconnect" onclick="disconnection()">Disconnect</div></div>
+  </div>
+</div>
+<div class="footer">
+  <div id="footer"></div>
+</div>
+<div class="modal fade" id="popup_info">
+  <p>Check if Bluetooth communication between devices supported</p><br>
+</div>

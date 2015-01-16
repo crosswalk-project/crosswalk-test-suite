@@ -45,14 +45,14 @@ function status() {
 
 function show() {
     $("#infobox").text("Could not control a text-to-speech output. \n" + $("#infobox").text());
-    $("#start").closest(".ui-btn").show();
-    $("#cancel").closest(".ui-btn").hide();
-    $("#resume").closest(".ui-btn").hide();
-    $("#pause").button("disable");
+    $("#start").show();
+    $("#cancel").hide();
+    $("#resume").hide();
+    $("#pause").attr('disabled', true);
     clearTimeout(showId);
 }
 
-$("#start").live("tap", function () {
+function startSpeech() {
     var content = $("#textcontent").val();
     if (!content) {
       $("#infobox").text("Please input content, such as Hello World!");
@@ -60,10 +60,10 @@ $("#start").live("tap", function () {
     }
 
     testFlag.green = true;
-    $("#start").closest(".ui-btn").hide();
-    $("#resume").closest(".ui-btn").hide();
-    $("#cancel").closest(".ui-btn").show();
-    $("#pause").button("enable");
+    $("#start").hide();
+    $("#resume").hide();
+    $("#cancel").show();
+    $("#pause").attr('disabled', false);
     clearTimeout(showId);
     showId = setTimeout("show()", 10000);
     $("#infobox").text("Starting......");
@@ -76,57 +76,57 @@ $("#start").live("tap", function () {
     };
     speechUtter.onend = function(evt) {
         clearTimeout(showId);
-        $("#start").closest(".ui-btn").show();
-        $("#cancel").closest(".ui-btn").hide();
-        $("#resume").closest(".ui-btn").hide();
-        $("#pause").button("disable");
+        $("#start").show();
+        $("#cancel").hide();
+        $("#resume").hide();
+        $("#pause").attr('disabled', true);
         $("#infobox").text('Finished in ' + evt.elapsedTime + ' seconds. \n' + $("#infobox").text());
     }
     speechUtter.onerror = function(err) {
         clearTimeout(showId);
         $("#infobox").text("Error: " + err.message + "\n" + $("#infobox").text());
-        $("#start").closest(".ui-btn").show();
-        $("#cancel").closest(".ui-btn").hide();
-        $("#resume").closest(".ui-btn").hide();
-        $("#pause").button("disable");
+        $("#start").show();
+        $("#cancel").hide();
+        $("#resume").hide();
+        $("#pause").attr('disabled', true);
     };
     window.speechSyn = tizen.speechSynthesis;
     speechSyn.speak(speechUtter);
     status();
-});
+}
 
-$("#cancel").live("tap", function () {
+function cancelSpeech() {
     testFlag.red = true;
-    $("#start").closest(".ui-btn").show();
-    $("#cancel").closest(".ui-btn").hide();
-    $("#resume").closest(".ui-btn").hide();
-    $("#pause").button("disable");
+    $("#start").show();
+    $("#cancel").hide();
+    $("#resume").hide();
+    $("#pause").attr('disabled', true);
     speechSyn.cancel();
     $("#infobox").text("SpeechSynthesis cancel.\n" + $("#infobox").text());
     status();
-});
+}
 
-$("#pause").live("tap", function () {
+function pauseSpeech() {
     testFlag.blue = true;
-    $("#resume").closest(".ui-btn").show();
-    $("#pause").closest(".ui-btn").hide();
+    $("#resume").show();
+    $("#pause").hide();
     speechSyn.pause();
     $("#infobox").text("SpeechSynthesis pause.\n" + $("#infobox").text());
     status();
-});
+}
 
-$("#resume").live("tap", function () {
+function resumeSpeech() {
     testFlag.blue = true;
-    $("#pause").closest(".ui-btn").show();
-    $("#resume").closest(".ui-btn").hide();
+    $("#pause").show();
+    $("#resume").hide();
     speechSyn.resume();
     $("#infobox").text("SpeechSynthesis resume.\n" + $("#infobox").text());
     status();
-});
+}
 
-$(document).live('pageshow', function () {
+$(document).ready(function() {
     DisablePassButton();
-    $("#cancel").closest(".ui-btn").hide();
-    $("#resume").closest(".ui-btn").hide();
-    $("#pause").button("disable");
+    $("#cancel").hide();
+    $("#resume").hide();
+    $("#pause").attr('disabled', true);
 });
