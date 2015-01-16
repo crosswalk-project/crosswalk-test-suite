@@ -46,7 +46,7 @@ except ImportError:
 class WebAPP(common.APP):
 
     def __init__(self, app_config=None, app_name=None):
-        self.__driver = None
+        self.driver = None
         self.app_type = common.APP_TYPE_WEB
         self.app_name = app_name
         self.app_id = ""
@@ -75,7 +75,7 @@ class WebAPP(common.APP):
 
     def __get_element_by_xpath(self, xpath, display=True):
         try:
-            element = self.__driver.find_element_by_xpath(xpath)
+            element = self.driver.find_element_by_xpath(xpath)
             if display:
                 try:
                     if element.is_displayed():
@@ -92,7 +92,7 @@ class WebAPP(common.APP):
     def __get_element_by_key_attr(self, key, attr, display=True):
         xpath = "//*[@%s='%s']" % (attr, key)
         try:
-            element = self.__driver.find_element_by_xpath(xpath)
+            element = self.driver.find_element_by_xpath(xpath)
             if display:
                 try:
                     if element.is_displayed():
@@ -108,7 +108,7 @@ class WebAPP(common.APP):
 
     def __get_element_by_tag(self, key, display=True):
         try:
-            element = self.__driver.find_element_by_tag(key)
+            element = self.driver.find_element_by_tag(key)
             return element
         except Exception as e:
             print "Failed to get element: %s" % e
@@ -116,7 +116,7 @@ class WebAPP(common.APP):
 
     def __get_element_by_key(self, key, display=True):
         try:
-            for i_element in self.__driver.find_elements_by_xpath(str(
+            for i_element in self.driver.find_elements_by_xpath(str(
                     "//*[@id='%(key)s']|"
                     "//*[@name='%(key)s']|"
                     "//*[@value='%(key)s']|"
@@ -141,7 +141,7 @@ class WebAPP(common.APP):
 
     def __get_element_by_keys(self, key_p, key_c, display=True):
         try:
-            for i_element in self.__driver.find_elements_by_xpath(str(
+            for i_element in self.driver.find_elements_by_xpath(str(
                     "//*[@id='%(key)s']|"
                     "//*[@name='%(key)s']|"
                     "//*[@value='%(key)s']|"
@@ -189,7 +189,7 @@ class WebAPP(common.APP):
 
     def __check_normal_text(self, text, display=True):
         try:
-            for i_element in self.__driver.find_elements_by_xpath(str(
+            for i_element in self.driver.find_elements_by_xpath(str(
                     '//*[@value="{text}"]|'
                     '//*[contains(normalize-space(.),"{text}") '
                     'and not(./*[contains(normalize-space(.),"{text}")])]'
@@ -230,7 +230,7 @@ class WebAPP(common.APP):
     def launch_app(self):
         try:
             desired_capabilities = self.app_config["desired-capabilities"]
-            self.__driver = WebDriver(
+            self.driver = WebDriver(
                 str(self.app_config["driver-url"]), desired_capabilities)
         except Exception as e:
             print "Failed to launch %s: %s" % (self.app_name, e)
@@ -241,7 +241,7 @@ class WebAPP(common.APP):
         if with_prefix:
             url = urljoin(self.url_prefix, url)
         try:
-            self.__driver.get(url)
+            self.driver.get(url)
         except Exception as e:
             print "Failed to visit %s: %s" % (url, e)
             return False
@@ -249,28 +249,28 @@ class WebAPP(common.APP):
 
     def title(self):
         try:
-            return self.__driver.title
+            return self.driver.title
         except Exception as e:
             print "Failed to get title: %s" % e
             return None
 
     def current_url(self):
         try:
-            return self.__driver.current_url
+            return self.driver.current_url
         except Exception as e:
             print "Failed to get current url: %s" % e
             return None
 
     def reload(self):
-        self.__driver.refresh()
+        self.driver.refresh()
         return True
 
     def back(self):
-        self.__driver.back()
+        self.driver.back()
         return True
 
     def forward(self):
-        self.__driver.forward()
+        self.driver.forward()
         return True
 
     def check_normal_text_timeout(self, text=None, display=True, timeout=2):
@@ -321,7 +321,7 @@ class WebAPP(common.APP):
         element = self.__get_element_by_keys(key_p, key_c, display)
         print "%s == %s" % (element.get_attribute("id"), element.get_attribute("class"))
         if element:
-            ActionChains(self.__driver).click(element).perform()
+            ActionChains(self.driver).click(element).perform()
             return True
         return False
 
@@ -329,14 +329,14 @@ class WebAPP(common.APP):
         element = self.__get_element_by_key(key, display)
         print "%s == %s" % (element.get_attribute("id"), element.get_attribute("class"))
         if element:
-            ActionChains(self.__driver).click(element).perform()
+            ActionChains(self.driver).click(element).perform()
             return True
         return False
 
     def click_element_coords(self, x, y, key, display=True):
         element = self.__get_element_by_key(key, display)
         if element:
-            ActionChains(self.__driver).move_to_element_with_offset(
+            ActionChains(self.driver).move_to_element_with_offset(
                 element, x, y).click().perform()
             return True
         return False
@@ -370,7 +370,7 @@ class WebAPP(common.APP):
 
     def get_alert_text(self):
         try:
-            alert_element = self.__driver.switch_to_alert()
+            alert_element = self.driver.switch_to_alert()
             if alert_element:
                 return alert_element.text
         except Exception as e:
@@ -380,14 +380,14 @@ class WebAPP(common.APP):
 
     def check_alert_existing(self):
         try:
-            self.__driver.switch_to_alert().text
+            self.driver.switch_to_alert().text
         except NoAlertPresentException:
             return False
         return True
 
     def accept_alert(self):
         try:
-            alert_element = self.__driver.switch_to_alert()
+            alert_element = self.driver.switch_to_alert()
             alert_element.accept()
             return True
         except Exception as e:
@@ -395,8 +395,8 @@ class WebAPP(common.APP):
             return False
 
     def quit(self):
-        if self.__driver:
-            self.__driver.quit()
+        if self.driver:
+            self.driver.quit()
 
 
 def launch_webapp_by_name(context, app_name):
