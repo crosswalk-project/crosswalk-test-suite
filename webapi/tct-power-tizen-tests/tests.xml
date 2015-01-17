@@ -3,30 +3,6 @@
 <test_definition>
   <suite category="Tizen Web Device APIs" extension="crosswalk" name="tct-power-tizen-tests">
     <set name="Power" type="js">
-      <testcase component="Tizen Device APIs/System/Power" execution_type="manual" id="PowerManager_release_correct_check" purpose="Check if release() method does what it should">
-        <description>
-          <pre_condition>Please set backlight time to 15 seconds</pre_condition>
-          <steps>
-            <step order="1">
-              <step_desc>Click 'Run', do not touch the screen, wait until the screen is changed</step_desc>
-              <expected>Pass</expected>
-            </step>
-          </steps>
-          <test_script_entry>/opt/tct-power-tizen-tests/power/PowerManager_release_correct_check.html</test_script_entry>
-        </description>
-      </testcase>
-      <testcase component="Tizen Device APIs/System/Power" execution_type="manual" id="PowerManager_request" purpose="Check whether request() method with proper arguments does what it should do">
-        <description>
-          <pre_condition>Please set backlight time to 15 seconds</pre_condition>
-          <steps>
-            <step order="1">
-              <step_desc>Check whether screen do not turn off</step_desc>
-              <expected>Pass</expected>
-            </step>
-          </steps>
-          <test_script_entry>/opt/tct-power-tizen-tests/power/PowerManager_request.html</test_script_entry>
-        </description>
-      </testcase>
       <testcase component="Tizen Device APIs/System/Power" execution_type="manual" id="PowerManager_turnScreenOff_successful" purpose="Check if turnScreenOff method works correctly">
         <description>
           <steps>
@@ -60,25 +36,6 @@
             </step>
           </steps>
           <test_script_entry>/opt/tct-power-tizen-tests/power/PowerManager_turnScreenOn_successful.html</test_script_entry>
-        </description>
-      </testcase>
-      <testcase component="Tizen Device APIs/System/Power" execution_type="manual" id="PowerManager_unsetScreenStateChangeListener_successful" purpose="Check if unsetScreenStateChangeListener method works correctly">
-        <description>
-          <steps>
-            <step order="1">
-              <step_desc>Make sure that backlight time is 15 seconds (Settings, Display).</step_desc>
-              <expected>(None)</expected>
-            </step>
-            <step order="2">
-              <step_desc>Click 'Run', do not touch the screen, wait until the screen is locked</step_desc>
-              <expected>The screen should be locked</expected>
-            </step>
-            <step order="3">
-              <step_desc>Unlock the screen and display the test application</step_desc>
-              <expected>The result should be 'Pass'</expected>
-            </step>
-          </steps>
-          <test_script_entry>/opt/tct-power-tizen-tests/power/PowerManager_unsetScreenStateChangeListener_successful.html</test_script_entry>
         </description>
       </testcase>
       <testcase component="Tizen Device APIs/System/Power" execution_type="auto" id="PowerManager_request_missarg" purpose="Check if request() method called without all obligatory arguments throws an exception">
@@ -314,17 +271,6 @@
       <testcase component="Tizen Device APIs/System/Power" execution_type="auto" id="PowerManager_isScreenOn_check_change" purpose="Check whether isScreenOn() method gets the screen state correctly">
         <description>
           <test_script_entry>/opt/tct-power-tizen-tests/power/PowerManager_isScreenOn_check_change.html</test_script_entry>
-        </description>
-      </testcase>
-      <testcase component="Tizen Device APIs/System/Power" execution_type="manual" id="PowerManager_restoreScreenBrightness_check_effect" purpose="Check if restoreScreenBrightness() method restores the screen brightness to the system default setting value">
-        <description>
-          <steps>
-            <step order="1">
-              <step_desc>Check if restoreScreenBrightness method called with non-optional arguments does what it should</step_desc>
-              <expected>method does what it should to do</expected>
-            </step>
-          </steps>
-          <test_script_entry>/opt/tct-power-tizen-tests/power/PowerManager_restoreScreenBrightness_check_effect.html</test_script_entry>
         </description>
       </testcase>
     </set>
