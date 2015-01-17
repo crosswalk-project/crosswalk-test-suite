@@ -47,7 +47,7 @@ per2 = '<uses-permission android:name="android.permission.ACCESS_FINE_LOCATION"/
 def setUp():
     global ARCH, MODE, AppName, device
 
-    #device = "Medfield1FB92605"
+    #device = "E6OKCY411012"
     device = os.environ.get('DEVICE_ID')
     if not device:
         print (" get env error\n")
@@ -255,3 +255,47 @@ def description(descPara, desc, self):
         else:
             self.assertFalse(True, "No find " + desc)
     clear_description()
+
+# test manifest versionCode option
+def versionCode(cmd, flag, base, self):
+    setUp()
+    packstatus = commands.getstatusoutput(cmd + flag + base)
+    self.assertEquals(packstatus[0] ,0)
+    fp = open(ConstPath + "/../testapp/example/test/Example/AndroidManifest.xml")
+    lines = fp.readlines()
+    for i in range(len(lines)): 
+        line = lines[i].strip("\n\r").strip()
+        findLine = "<manifest"
+        if i <= len(lines):
+            if findLine in line:
+                print "Find"
+                l = lines[i].strip("\n\r").strip()
+                result = l.index("versionCode")
+                if flag != "":
+                    start = result
+                    end = result + 15
+                    self.assertIn('11', l[start:end])
+                elif base != "":
+                    start = result
+                    end = result + 21
+                    self.assertIn('1234567', l[start:end])
+                else:
+                    start = result
+                    end = result + 18
+                    self.assertIn('1.0.0', l[start:end])
+                break
+            else:
+                print "Continue find"
+        else:
+            self.assertIn(findLine, line)
+    clear_versionCode()
+
+def clear_versionCode():
+    targetDir = ConstPath + "/../testapp/example"
+    if os.path.exists(targetDir + "/test"):
+        try:
+            os.remove(targetDir + "/Example_x86.apk")
+            shutil.rmtree(targetDir + "/test")
+        except Exception,e:
+            os.system("rm -rf " + targetDir + "/*.apk")
+            os.system("rm -rf " + targetDir + "/test")
