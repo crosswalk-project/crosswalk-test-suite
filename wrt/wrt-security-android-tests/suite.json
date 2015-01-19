@@ -1,0 +1,53 @@
+{
+    "pkg-blacklist": [
+        "config.xml",
+        "pack.py",
+        "testcase.xsl",
+        "testresult.xsl",
+        "tests.css",
+        "icon.png",
+        "manifest.json",
+        "suite.json",
+        "inst.*"
+    ],
+    "pkg-list": {
+        "apk,cordova": {
+            "blacklist": [],
+            "copylist": {
+                "PACK-TOOL-ROOT/crosswalk": "tools/crosswalk",
+                "tests.full.xml": "tests.full.xml",
+                "arch.txt": "arch.txt",
+                "mode.txt": "mode.txt",
+                "tests.xml": "tests.xml"
+            }
+        },
+        "apk-aio": {
+            "blacklist": []
+        },
+        "wgt": {
+            "blacklist": [
+                "*"
+            ],
+            "copylist": {
+                "inst.wgt.py": "inst.py",
+                "tests.full.xml": "tests.full.xml",
+                "tests.xml": "tests.xml"
+            },
+            "pkg-app": {}
+        },
+        "xpk": {
+            "blacklist": [
+                "*"
+            ],
+            "copylist": {
+                "inst.xpk.py": "inst.py",
+                "tests.full.xml": "tests.full.xml",
+                "tests.xml": "tests.xml"
+            },
+            "pkg-app": {
+                "blacklist": []
+            }
+        }
+    },
+    "pkg-name": "wrt-security-android-tests"
+}
