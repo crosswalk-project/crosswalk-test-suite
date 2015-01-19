@@ -162,7 +162,7 @@ function getTypeConversionExceptions(conversionType, isOptional) {
                 ["", exceptionName],
                 ["TIZEN", exceptionName],
                 [[], exceptionName],
-                [{ }, exceptionName],
+                [{ }, exceptionName]
             ];
             if (!isOptional) {
                 conversionTable.push([null, exceptionName]);
@@ -205,7 +205,6 @@ function getTypeConversionExceptions(conversionType, isOptional) {
 
     return conversionTable;
 }
-
 
 function assert_type(obj, type, description) {
     var org_type = type, prop_name, prop_type, prop_value;
