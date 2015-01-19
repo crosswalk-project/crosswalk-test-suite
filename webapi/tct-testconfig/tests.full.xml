@@ -5,29 +5,25 @@
     <set name="tct-bluetooth-tizen-tests">
       <testcase execution_type="manual" id="BluetoothConfiguration" purpose="tct-bluetooth-tizen-tests Configuration" status="approved" type="compliance">
         <description>
-          <pre_condition />
-          <post_condition />
           <steps>
             <step order="1">
               <step_desc>The 'tct-bt-helper' web application MUST be installed on the remote device whose address is REMOTE_DEVICE_ADDRESS.
 The tct-bt-helper is included in the tct-bluetooth-tizen-tests package. Install the tct-bluetooth-tizen-tests package on both your test device and the remote Bluetooth device.</step_desc>
             </step>
             <step order="2">
-              <step_desc>Turn on the Bluetooth of your test device and the remote device. Make the two devices discoverable to each other in 'Settings' application.</step_desc>
+              <step_desc>Turn on the Bluetooth of your test device and the remote device. Make the two devices discoverable to each other.</step_desc>
             </step>
             <step order="3">
               <step_desc>Before manual testing, launch the 'tct-bt-helper' web application installed on the remote device, click 'Register service' on the 'tct-bt-helper', and then execute the TCs tests manually.</step_desc>
             </step>
           </steps>
-          <test_script_entry test_script_expected_result="0" timeout="90" />
+          <test_script_entry test_script_expected_result="0" timeout="90"/>
         </description>
       </testcase>
     </set>
     <set name="tct-callhistory-tizen-tests">
       <testcase execution_type="manual" id="CallHistoryConfiguration" purpose="tct-callhistory-tizen-tests Configuration" status="approved" type="compliance">
         <description>
-          <pre_condition />
-          <post_condition />
           <steps>
             <step order="1">
               <step_desc>Make sure the telephony works well.</step_desc>
@@ -36,15 +32,13 @@ The tct-bt-helper is included in the tct-bluetooth-tizen-tests package. Install 
               <step_desc>Insert a SIM card and enable the cellular device service on your test device. During manual testing, you can see the preconditions for each test.</step_desc>
             </step>
           </steps>
-          <test_script_entry test_script_expected_result="0" timeout="90" />
+          <test_script_entry test_script_expected_result="0" timeout="90"/>
         </description>
       </testcase>
     </set>
     <set name="tct-datacontrol-tizen-tests">
       <testcase execution_type="manual" id="DataControlConfiguration" purpose="tct-datacontrol-tizen-tests Configuration" status="approved" type="compliance">
         <description>
-          <pre_condition />
-          <post_condition />
           <steps>
             <step order="1">
               <step_desc> Create the sample 'DictionaryDataControlProvider' native application using Tizen SDK. You can find this native application in the IDE sample project.
@@ -59,35 +53,31 @@ The tct-bt-helper is included in the tct-bluetooth-tizen-tests package. Install 
               <step_desc> Launch this native application(No UI).</step_desc>
             </step>
           </steps>
-          <test_script_entry test_script_expected_result="0" timeout="90" />
+          <test_script_entry test_script_expected_result="0" timeout="90"/>
         </description>
       </testcase>
     </set>
     <set name="tct-download-tizen-tests">
       <testcase execution_type="manual" id="DownloadConfiguration" purpose="tct-download-tizen-tests Configuration" status="approved" type="compliance">
         <description>
-          <pre_condition />
-          <post_condition />
           <steps>
             <step order="1">
               <step_desc>A network connection capable of accessing the Internet MUST be established. If your device supports Wi-Fi, turn on Wi-Fi. If your device supports telephony, insert a SIM card and enable the cellular data service on your test device. During manual testing, you can see the preconditions for each test.</step_desc>
             </step>
           </steps>
-          <test_script_entry test_script_expected_result="0" timeout="90" />
+          <test_script_entry test_script_expected_result="0" timeout="90"/>
         </description>
       </testcase>
     </set>
     <set name="tct-messaging-email-tizen-tests">
       <testcase execution_type="manual" id="MessagingConfiguration" purpose="tct-messaging-email-tizen-tests Configuration" status="approved" type="compliance">
         <description>
-          <pre_condition />
-          <post_condition />
           <steps>
             <step order="1">
               <step_desc>There MUST be established Network connection for sending and receiving email tests (preferably through WiFi as it has smaller delays on connection)</step_desc>
             </step>
             <step order="2">
-	      <step_desc>Add an account through Settings application.
+              <step_desc>Add an account through Settings application.
    (Settings -&gt; Personal / Accounts)
 	2.1 Click "Add"
 	2.1 Select type of account: Email
@@ -107,15 +97,13 @@ The tct-bt-helper is included in the tct-bluetooth-tizen-tests package. Install 
               <step_desc>EMAIL_RECIPIENT_2 is any valid e-mail address different from EMAIL_RECIPIENT_1</step_desc>
             </step>
           </steps>
-          <test_script_entry test_script_expected_result="0" timeout="90" />
+          <test_script_entry test_script_expected_result="0" timeout="90"/>
         </description>
       </testcase>
     </set>
     <set name="tct-messaging-mms-tizen-tests">
       <testcase execution_type="manual" id="MessagingConfiguration" purpose="tct-messaging-mms-tizen-tests Configuration" status="approved" type="compliance">
         <description>
-          <pre_condition />
-          <post_condition />
           <steps>
             <step order="1">
               <step_desc>A SIM card MUST be inserted for sending MMS messages.</step_desc>
@@ -127,15 +115,13 @@ The tct-bt-helper is included in the tct-bluetooth-tizen-tests package. Install 
               <step_desc>MMS_RECIPIENT_2 is any valid phone number, different from MMS_RECIPIENT_1 (without country code prefix)</step_desc>
             </step>
           </steps>
-          <test_script_entry test_script_expected_result="0" timeout="90" />
+          <test_script_entry test_script_expected_result="0" timeout="90"/>
         </description>
       </testcase>
     </set>
     <set name="tct-messaging-sms-tizen-tests">
       <testcase execution_type="manual" id="MessagingConfiguration" purpose="tct-messaging-sms-tizen-tests Configuration" status="approved" type="compliance">
         <description>
-          <pre_condition />
-          <post_condition />
           <steps>
             <step order="1">
               <step_desc>A SIM card MUST be inserted for sending SMS messages.</step_desc>
@@ -147,15 +133,13 @@ The tct-bt-helper is included in the tct-bluetooth-tizen-tests package. Install 
               <step_desc>SMS_RECIPIENT_2 is any valid phone number, different from SMS_RECIPIENT_1 (without country code prefix)</step_desc>
             </step>
           </steps>
-          <test_script_entry test_script_expected_result="0" timeout="90" />
+          <test_script_entry test_script_expected_result="0" timeout="90"/>
         </description>
       </testcase>
     </set>
     <set name="tct-nfc-tizen-tests">
       <testcase execution_type="manual" id="NFCConfiguration" purpose="tct-nfc-tizen-tests Configuration" status="approved" type="compliance">
         <description>
-          <pre_condition />
-          <post_condition />
           <steps>
             <step order="1">
               <step_desc>Manual tests requires a NFC tag (which supports NDEF) and a NFC enabled device to connect your test device with.</step_desc>
@@ -164,77 +148,25 @@ The tct-bt-helper is included in the tct-bluetooth-tizen-tests package. Install 
               <step_desc>Enable NFC on your test device and the NFC device you will connect to.</step_desc>
             </step>
           </steps>
-          <test_script_entry test_script_expected_result="0" timeout="90" />
-        </description>
-      </testcase>
-    </set>
-    <set name="tct-time-tizen-tests">
-      <testcase execution_type="manual" id="TimeConfiguration" purpose="tct-time-tizen-tests Configuration" status="approved" type="compliance">
-        <description>
-          <pre_condition />
-          <post_condition />
-          <steps>
-            <step order="1">
-              <step_desc>Before executing manual and auto time test, must set current time, language, region, and time must be as follows:</step_desc>
-            </step>
-            <step order="2">
-              <step_desc>'Time zone' MUST be set as Seoul.</step_desc>
-            </step>
-            <step order="3">
-              <step_desc>Set the current time correctly.</step_desc>
-            </step>
-            <step order="4">
-              <step_desc>'Display language' MUST be set as English(United Kingdom).</step_desc>
-            </step>
-            <step order="5">
-              <step_desc>'Region' MUST be set as English(United Kingdom).</step_desc>
-            </step>
-            <step order="6">
-              <step_desc>Time format MUST be set as AM/PM format,</step_desc>
-            </step>
-          </steps>
-          <test_script_entry test_script_expected_result="0" timeout="90" />
-        </description>
-      </testcase>
-    </set>
-    <set name="tct-power-tizen-tests">
-      <testcase execution_type="manual" id="PowerConfiguration" purpose="tct-power-tizen-tests Configuration" status="approved" type="compliance">
-        <description>
-          <pre_condition />
-          <post_condition />
-          <steps>
-            <step order="1">
-              <step_desc>Turn off Automatic screen brightness (pull down the notification panel and ensure that Auto is disabled)</step_desc>
-            </step>
-          </steps>
-          <steps>
-            <step order="2">
-              <step_desc>Set Backlight time to 15 seconds (Settings -&gt; Display -&gt; Backlight time -&gt; 15 seconds)</step_desc>
-            </step>
-          </steps>
-          <test_script_entry test_script_expected_result="0" timeout="90" />
+          <test_script_entry test_script_expected_result="0" timeout="90"/>
         </description>
       </testcase>
     </set>
     <set name="tct-push-tizen-tests">
       <testcase execution_type="manual" id="PushConfiguration" purpose="tct-push-tizen-tests Configuration" status="approved" type="compliance">
         <description>
-          <pre_condition />
-          <post_condition />
           <steps>
             <step order="1">
               <step_desc>A network connection capable of accessing the Internet MUST be established.</step_desc>
             </step>
           </steps>
-          <test_script_entry test_script_expected_result="0" timeout="90" />
+          <test_script_entry test_script_expected_result="0" timeout="90"/>
         </description>
       </testcase>
     </set>
     <set name="tct-networkbearerselection-tizen-tests">
       <testcase execution_type="manual" id="NetworkbearerselectionConfiguration" purpose="tct-networkbearerselection-tizen-tests Configuration" status="approved" type="compliance">
         <description>
-          <pre_condition />
-          <post_condition />
           <steps>
             <step order="1">
               <step_desc>Make sure the telephony works well.</step_desc>
@@ -243,15 +175,13 @@ The tct-bt-helper is included in the tct-bluetooth-tizen-tests package. Install 
               <step_desc>Insert a SIM card and enable cellular data service on your test device.</step_desc>
             </step>
           </steps>
-          <test_script_entry test_script_expected_result="0" timeout="90" />
+          <test_script_entry test_script_expected_result="0" timeout="90"/>
         </description>
       </testcase>
     </set>
     <set name="tct-geoallow-w3c-tests">
       <testcase execution_type="manual" id="GeoallowConfiguration" purpose="tct-geoallow-w3c-tests Configuration" status="approved" type="compliance">
         <description>
-          <pre_condition />
-          <post_condition />
           <steps>
             <step order="1">
               <step_desc>Enable GPS or connect to an available network</step_desc>
@@ -260,31 +190,13 @@ The tct-bt-helper is included in the tct-bluetooth-tizen-tests package. Install 
               <step_desc>Execute command: "vconftool set -t int db/location/replay/ReplayEnabled 1 -f" with root user</step_desc>
             </step>
           </steps>
-          <test_script_entry test_script_expected_result="0" timeout="90" />
-        </description>
-      </testcase>
-    </set>
-    <set name="wrt-autodevice-tizen-tests">
-      <testcase execution_type="manual" id="AutoDeviceTizenConfiguration" purpose="wrt-autodevice-tizen-tests Configuration">
-        <description>
-          <pre_condition />
-          <steps>
-            <step order="1">
-              <step_desc>Push crosswalk binary to device:
-                1.1 Get crosswalk binary path "Tizen_Crosswalk_Path" from /tmp/Crosswalk_wrt_BFT.conf file
-                1.2 sdb push $Tizen_Crosswalk_Path /tmp/
-                1.3 sdb push /tmp/Crosswalk_wrt_BFT.conf /tmp/Crosswalk_wrt_BFT.conf
-              </step_desc>
-            </step>
-          </steps>
-          <test_script_entry test_script_expected_result="0" timeout="90" />
+          <test_script_entry test_script_expected_result="0" timeout="90"/>
         </description>
       </testcase>
     </set>
     <set name="webapi-dlna-xwalk-tests">
       <testcase execution_type="manual" id="DlnaConfiguration" purpose="webapi-dlna-xwalk-tests Configuration">
         <description>
-          <pre_condition />
           <steps>
             <step order="1">
               <step_desc>Modify rygel.conf on IVI device:
@@ -335,7 +247,7 @@ The tct-bt-helper is included in the tct-bluetooth-tizen-tests package. Install 
               </step_desc>
             </step>
           </steps>
-          <test_script_entry test_script_expected_result="0" timeout="90" />
+          <test_script_entry test_script_expected_result="0" timeout="90"/>
         </description>
       </testcase>
     </set>
