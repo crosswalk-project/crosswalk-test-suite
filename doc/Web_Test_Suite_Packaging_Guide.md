@@ -252,7 +252,7 @@ Please see Appendix 5 for the package list.
 - wrt-packertool-android-tests
 - wrt-rtcore-android-tests
 - wrt-rtlib-android-tests
-- wrt-sampleapp-android-tests
+- sampleapp-android-tests
 - wrt-security-android-tests
 - wrt-webappmgt-android-tests
 - wrt-webfeatures-android-tests
@@ -388,7 +388,7 @@ Please see Appendix 5 for the package list.
 - wrt-packagemgt-tizen-tests
 - wrt-rtbin-tizen-tests
 - wrt-rtcore-tizen-tests
-- wrt-sampleapp-tizen-tests
+- sampleapp-tizen-tests
 - wrt-signature-tizen-tests
 - wrt-webfeatures-tizen-tests
 
