@@ -1,104 +1,114 @@
 manifest1
 --------------------------------
 {
-"name" : "start_url_test",
+"name" : "csp_test",
 "xwalk_version" : "1.1",
-"start_url" : "http://www.baidu.com"
+"start_url" : "index.html",
+"display" : ["fullscreen"],
+"orientation" : "landscape",
+"icons" : [{"src": "icon/hd_hi.jpg","sizes": "128x128"}],
+"csp" : "default-src 'unsafe-inline';connect-src 'none';style-src 'none';img-src 'none';media-src none;frame-src 'none'"
 }
 --------------------------------
 manifest2
 --------------------------------
 {
-"name" : "start_url_test",
+"name" : "orientation_test",
 "xwalk_version" : "1.1",
-"start_url" : "https://www.baidu.com"
+"start_url" : "index.html",
+"orientation" : "landscape",
+"icons" : [{"src": "icon/icon.bmp","sizes": "128x128"}]
 }
 --------------------------------
 manifest3
 --------------------------------
 {
-"name" : "start_url_test",
+"name" : "orientation_test",
 "xwalk_version" : "1.1",
-"start_url" : "http://www.noexist.com"
+"start_url" : "index.html",
+"orientation" : "portrait",
+"icons" : [{"src": "icon/icon.bmp","sizes": "128x128"}]
 }
 --------------------------------
 manifest4
 --------------------------------
 {
-"name" : "icons_test",
+"name" : "display_test",
 "xwalk_version" : "1.1",
 "start_url" : "index.html",
-"display" : ["standalone"],
-"orientation" : "landscape",
-"icons" : [{"src": "icon/lowres.png","sizes": "64x64"}]
+"display" : [],
+"orientation" : "portrait",
+"icons" : [{"src": "icon/icon.gif","sizes": "128x128"}]
 }
 --------------------------------
 manifest5
 --------------------------------
 {
-"name" : "icons_test",
+"name" : "display_test",
 "xwalk_version" : "1.1",
 "start_url" : "index.html",
-"display" : ["standalone"],
-"orientation" : "landscape",
-"icons" : [{"src": "icon/lowres.png","sizes": "64x64"},{"src": "icon/hd_hi.jpg","sizes": "96x96"}]
+"display" : ["fullscreen","standalone"],
+"orientation" : "portrait",
+"icons" : [{"src": "icon/icon.gif","sizes": "128x128"}]
 }
 --------------------------------
 manifest6
 --------------------------------
 {
-"name" : "icons_test",
+"name" : "display_test",
 "xwalk_version" : "1.1",
 "start_url" : "index.html",
-"display" : ["standalone"],
-"orientation" : "landscape",
-"icons" : [{"src": "icon/lowres.png","sizes": "64x64"},{"src": "icon/hd_hi.jpg","sizes": "96x96"},{"src": "icon/icon.bmp","sizes": "128x128"}]
+"display" : ["fullscreen","standalone","minimal-ui","browser"],
+"orientation" : "portrait",
+"icons" : [{"src": "icon/icon.gif","sizes": "128x128"}]
 }
 --------------------------------
 manifest7
 --------------------------------
 {
-"name" : "icons_test",
+"name" : "xwalk_permissions_test",
 "xwalk_version" : "1.1",
 "start_url" : "index.html",
-"display" : ["standalone"],
+"display" : ["minimal-ui"],
 "orientation" : "landscape",
-"icons" : [{"src": "icon/lowres.png","sizes": "64x64"},{"src": "icon/hd_hi.jpg","sizes": "96x96"},{"src": "icon/icon.bmp","sizes": "128x128"},{"src": "icon/icon.gif","sizes": "256x256"}]
+"icons" : [{"src": "icon/lowres.png","sizes": "128x128"}],
+"xwalk_permissions" : []
 }
 --------------------------------
 manifest8
 --------------------------------
 {
-"name" : "icons_test",
+"name" : "xwalk_permissions_test",
 "xwalk_version" : "1.1",
 "start_url" : "index.html",
-"display" : ["standalone"],
+"display" : ["minimal-ui"],
 "orientation" : "landscape",
-"icons" : []
+"icons" : [{"src": "icon/lowres.png","sizes": "128x128"}],
+"xwalk_permissions" : ["Contacts"]
 }
 --------------------------------
 manifest9
 --------------------------------
 {
-"name" : "xwalk_launch_screen_test",
+"name" : "xwalk_permissions_test",
 "xwalk_version" : "1.1",
 "start_url" : "index.html",
-"display" : ["fullscreen"],
+"display" : ["minimal-ui"],
 "orientation" : "landscape",
 "icons" : [{"src": "icon/lowres.png","sizes": "128x128"}],
-"xwalk_launch_screen" : {"ready_when": "first-paint","default": {"background_color": "#000000","background_image": "icon.png","image": "icon.png","image_border": "30px repeat stretch"},"portrait": {"background_color": "#000001","background_image": "icon/lowres.png","image": "icon/lowres.png","image_border": "30px repeat stretch"}}
+"xwalk_permissions" : ["Contacts","Messaging"]
 }
 --------------------------------
 manifest10
 --------------------------------
 {
-"name" : "xwalk_launch_screen_test",
+"name" : "xwalk_permissions_test",
 "xwalk_version" : "1.1",
 "start_url" : "index.html",
-"display" : ["fullscreen"],
+"display" : ["minimal-ui"],
 "orientation" : "landscape",
 "icons" : [{"src": "icon/lowres.png","sizes": "128x128"}],
-"xwalk_launch_screen" : {"ready_when": "custom","default": {"background_color": "#000000","background_image": "icon/icon.bmp","image": "icon/icon.bmp","image_border": "30px repeat stretch"}}
+"xwalk_permissions" : ["Contacts","Messaging","Vibration","Geolocation"]
 }
 --------------------------------
 manifest11
@@ -110,7 +120,7 @@ manifest11
 "display" : ["fullscreen"],
 "orientation" : "landscape",
 "icons" : [{"src": "icon/lowres.png","sizes": "128x128"}],
-"xwalk_launch_screen" : {"ready_when": "complete","default": {"background_color": "#000000","background_image": "icon.png","image": "icon.png","image_border": "30px repeat stretch"},"landscape": {"background_color": "#000001","background_image": "icon/icon.gif","image": "icon/icon.gif","image_border": "30px repeat stretch"}}
+"xwalk_launch_screen" : {"ready_when": "first-paint","default": {"background_color": "#000000","background_image": "icon.png","image": "icon.png","image_border": "30px repeat stretch"},"portrait": {"background_color": "#000001","background_image": "icon/lowres.png","image": "icon/lowres.png","image_border": "30px repeat stretch"}}
 }
 --------------------------------
 manifest12
@@ -122,73 +132,61 @@ manifest12
 "display" : ["fullscreen"],
 "orientation" : "landscape",
 "icons" : [{"src": "icon/lowres.png","sizes": "128x128"}],
-"xwalk_launch_screen" : {"ready_when": "custom","default": {"background_color": "#000000","background_image": "icon.png","image": "icon.png","image_border": "30px repeat stretch"},"landscape": {"background_color": "#000001","background_image": "icon/hd_hi.jpg","image": "icon/hd_hi.jpg","image_border": "30px repeat stretch"}}
+"xwalk_launch_screen" : {"ready_when": "custom","default": {"background_color": "#000000","background_image": "icon/icon.bmp","image": "icon/icon.bmp","image_border": "30px repeat stretch"}}
 }
 --------------------------------
 manifest13
 --------------------------------
 {
-"name" : " ",
+"name" : "xwalk_launch_screen_test",
 "xwalk_version" : "1.1",
 "start_url" : "index.html",
 "display" : ["fullscreen"],
 "orientation" : "landscape",
-"xwalk_description" : "AppDescription",
-"icons" : [{"src": "icon/lowres.png","sizes": "128x128"}]
+"icons" : [{"src": "icon/lowres.png","sizes": "128x128"}],
+"xwalk_launch_screen" : {"ready_when": "complete","default": {"background_color": "#000000","background_image": "icon.png","image": "icon.png","image_border": "30px repeat stretch"},"landscape": {"background_color": "#000001","background_image": "icon/icon.gif","image": "icon/icon.gif","image_border": "30px repeat stretch"}}
 }
 --------------------------------
 manifest14
 --------------------------------
 {
-"name" : "birds",
+"name" : "xwalk_launch_screen_test",
 "xwalk_version" : "1.1",
 "start_url" : "index.html",
 "display" : ["fullscreen"],
 "orientation" : "landscape",
-"xwalk_description" : "AppDescription",
-"icons" : [{"src": "icon/lowres.png","sizes": "128x128"}]
+"icons" : [{"src": "icon/lowres.png","sizes": "128x128"}],
+"xwalk_launch_screen" : {"ready_when": "custom","default": {"background_color": "#000000","background_image": "icon.png","image": "icon.png","image_border": "30px repeat stretch"},"landscape": {"background_color": "#000001","background_image": "icon/hd_hi.jpg","image": "icon/hd_hi.jpg","image_border": "30px repeat stretch"}}
 }
 --------------------------------
 manifest15
 --------------------------------
 {
-"name" : "Angry",
+"name" : "start_url_test",
 "xwalk_version" : "1.1",
-"start_url" : "index.html",
-"display" : ["fullscreen"],
-"orientation" : "landscape",
-"xwalk_description" : "AppDescription",
-"icons" : [{"src": "icon/lowres.png","sizes": "128x128"}]
+"start_url" : "http://www.baidu.com"
 }
 --------------------------------
 manifest16
 --------------------------------
 {
-"name" : "birds",
+"name" : "start_url_test",
 "xwalk_version" : "1.1",
-"start_url" : "index.html",
-"display" : ["fullscreen"],
-"orientation" : "landscape",
-"xwalk_description" : "AppDescription",
-"icons" : [{"src": "icon/lowres.png","sizes": "128x128"}]
+"start_url" : "https://www.baidu.com"
 }
 --------------------------------
 manifest17
 --------------------------------
 {
-"name" : "angry",
+"name" : "start_url_test",
 "xwalk_version" : "1.1",
-"start_url" : "index.html",
-"display" : ["fullscreen"],
-"orientation" : "landscape",
-"xwalk_description" : "AppDescription",
-"icons" : [{"src": "icon/lowres.png","sizes": "128x128"}]
+"start_url" : "http://www.noexist.com"
 }
 --------------------------------
 manifest18
 --------------------------------
 {
-"name" : "birds",
+"name" : " ",
 "xwalk_version" : "1.1",
 "start_url" : "index.html",
 "display" : ["fullscreen"],
@@ -200,7 +198,7 @@ manifest18
 manifest19
 --------------------------------
 {
-"name" : "123456",
+"name" : "birds",
 "xwalk_version" : "1.1",
 "start_url" : "index.html",
 "display" : ["fullscreen"],
@@ -212,7 +210,7 @@ manifest19
 manifest20
 --------------------------------
 {
-"name" : "birds",
+"name" : "Angry",
 "xwalk_version" : "1.1",
 "start_url" : "index.html",
 "display" : ["fullscreen"],
@@ -224,7 +222,7 @@ manifest20
 manifest21
 --------------------------------
 {
-"name" : "a_b",
+"name" : "birds",
 "xwalk_version" : "1.1",
 "start_url" : "index.html",
 "display" : ["fullscreen"],
@@ -236,7 +234,7 @@ manifest21
 manifest22
 --------------------------------
 {
-"name" : "birds",
+"name" : "angry",
 "xwalk_version" : "1.1",
 "start_url" : "index.html",
 "display" : ["fullscreen"],
@@ -248,7 +246,7 @@ manifest22
 manifest23
 --------------------------------
 {
-"name" : "a-b",
+"name" : "birds",
 "xwalk_version" : "1.1",
 "start_url" : "index.html",
 "display" : ["fullscreen"],
@@ -260,7 +258,7 @@ manifest23
 manifest24
 --------------------------------
 {
-"name" : "birds",
+"name" : "123456",
 "xwalk_version" : "1.1",
 "start_url" : "index.html",
 "display" : ["fullscreen"],
@@ -272,7 +270,7 @@ manifest24
 manifest25
 --------------------------------
 {
-"name" : "<",
+"name" : "birds",
 "xwalk_version" : "1.1",
 "start_url" : "index.html",
 "display" : ["fullscreen"],
@@ -284,7 +282,7 @@ manifest25
 manifest26
 --------------------------------
 {
-"name" : "birds",
+"name" : "a_b",
 "xwalk_version" : "1.1",
 "start_url" : "index.html",
 "display" : ["fullscreen"],
@@ -296,7 +294,7 @@ manifest26
 manifest27
 --------------------------------
 {
-"name" : ">",
+"name" : "birds",
 "xwalk_version" : "1.1",
 "start_url" : "index.html",
 "display" : ["fullscreen"],
@@ -308,7 +306,7 @@ manifest27
 manifest28
 --------------------------------
 {
-"name" : "birds",
+"name" : "a-b",
 "xwalk_version" : "1.1",
 "start_url" : "index.html",
 "display" : ["fullscreen"],
@@ -320,7 +318,7 @@ manifest28
 manifest29
 --------------------------------
 {
-"name" : ".CAPITAL",
+"name" : "birds",
 "xwalk_version" : "1.1",
 "start_url" : "index.html",
 "display" : ["fullscreen"],
@@ -332,7 +330,7 @@ manifest29
 manifest30
 --------------------------------
 {
-"name" : "birds",
+"name" : "<",
 "xwalk_version" : "1.1",
 "start_url" : "index.html",
 "display" : ["fullscreen"],
@@ -344,7 +342,7 @@ manifest30
 manifest31
 --------------------------------
 {
-"name" : "\n",
+"name" : "birds",
 "xwalk_version" : "1.1",
 "start_url" : "index.html",
 "display" : ["fullscreen"],
@@ -356,7 +354,7 @@ manifest31
 manifest32
 --------------------------------
 {
-"name" : "birds",
+"name" : ">",
 "xwalk_version" : "1.1",
 "start_url" : "index.html",
 "display" : ["fullscreen"],
@@ -368,7 +366,7 @@ manifest32
 manifest33
 --------------------------------
 {
-"name" : "*&^%!@#$%^&*()",
+"name" : "birds",
 "xwalk_version" : "1.1",
 "start_url" : "index.html",
 "display" : ["fullscreen"],
@@ -380,7 +378,7 @@ manifest33
 manifest34
 --------------------------------
 {
-"name" : "birds",
+"name" : ".CAPITAL",
 "xwalk_version" : "1.1",
 "start_url" : "index.html",
 "display" : ["fullscreen"],
@@ -392,7 +390,7 @@ manifest34
 manifest35
 --------------------------------
 {
-"name" : "+-",
+"name" : "birds",
 "xwalk_version" : "1.1",
 "start_url" : "index.html",
 "display" : ["fullscreen"],
@@ -404,7 +402,7 @@ manifest35
 manifest36
 --------------------------------
 {
-"name" : "birds",
+"name" : "\n",
 "xwalk_version" : "1.1",
 "start_url" : "index.html",
 "display" : ["fullscreen"],
@@ -416,7 +414,7 @@ manifest36
 manifest37
 --------------------------------
 {
-"name" : ":",
+"name" : "birds",
 "xwalk_version" : "1.1",
 "start_url" : "index.html",
 "display" : ["fullscreen"],
@@ -428,7 +426,7 @@ manifest37
 manifest38
 --------------------------------
 {
-"name" : "birds",
+"name" : "*&^%!@#$%^&*()",
 "xwalk_version" : "1.1",
 "start_url" : "index.html",
 "display" : ["fullscreen"],
@@ -440,7 +438,7 @@ manifest38
 manifest39
 --------------------------------
 {
-"name" : "'",
+"name" : "birds",
 "xwalk_version" : "1.1",
 "start_url" : "index.html",
 "display" : ["fullscreen"],
@@ -452,7 +450,7 @@ manifest39
 manifest40
 --------------------------------
 {
-"name" : "birds",
+"name" : "+-",
 "xwalk_version" : "1.1",
 "start_url" : "index.html",
 "display" : ["fullscreen"],
@@ -464,7 +462,7 @@ manifest40
 manifest41
 --------------------------------
 {
-"name" : "中文",
+"name" : "birds",
 "xwalk_version" : "1.1",
 "start_url" : "index.html",
 "display" : ["fullscreen"],
@@ -476,7 +474,7 @@ manifest41
 manifest42
 --------------------------------
 {
-"name" : "birds",
+"name" : ":",
 "xwalk_version" : "1.1",
 "start_url" : "index.html",
 "display" : ["fullscreen"],
@@ -488,7 +486,7 @@ manifest42
 manifest43
 --------------------------------
 {
-"name" : "[]",
+"name" : "birds",
 "xwalk_version" : "1.1",
 "start_url" : "index.html",
 "display" : ["fullscreen"],
@@ -500,7 +498,7 @@ manifest43
 manifest44
 --------------------------------
 {
-"name" : "birds",
+"name" : "'",
 "xwalk_version" : "1.1",
 "start_url" : "index.html",
 "display" : ["fullscreen"],
@@ -512,7 +510,7 @@ manifest44
 manifest45
 --------------------------------
 {
-"name" : "<<>>",
+"name" : "birds",
 "xwalk_version" : "1.1",
 "start_url" : "index.html",
 "display" : ["fullscreen"],
@@ -524,7 +522,7 @@ manifest45
 manifest46
 --------------------------------
 {
-"name" : "birds",
+"name" : "中文",
 "xwalk_version" : "1.1",
 "start_url" : "index.html",
 "display" : ["fullscreen"],
@@ -536,7 +534,7 @@ manifest46
 manifest47
 --------------------------------
 {
-"name" : "<<>>",
+"name" : "birds",
 "xwalk_version" : "1.1",
 "start_url" : "index.html",
 "display" : ["fullscreen"],
@@ -548,7 +546,7 @@ manifest47
 manifest48
 --------------------------------
 {
-"name" : " Birds",
+"name" : "[]",
 "xwalk_version" : "1.1",
 "start_url" : "index.html",
 "display" : ["fullscreen"],
@@ -560,7 +558,7 @@ manifest48
 manifest49
 --------------------------------
 {
-"name" : "[]",
+"name" : "birds",
 "xwalk_version" : "1.1",
 "start_url" : "index.html",
 "display" : ["fullscreen"],
@@ -572,7 +570,7 @@ manifest49
 manifest50
 --------------------------------
 {
-"name" : " Birds",
+"name" : "<<>>",
 "xwalk_version" : "1.1",
 "start_url" : "index.html",
 "display" : ["fullscreen"],
@@ -584,7 +582,7 @@ manifest50
 manifest51
 --------------------------------
 {
-"name" : "中文",
+"name" : "birds",
 "xwalk_version" : "1.1",
 "start_url" : "index.html",
 "display" : ["fullscreen"],
@@ -596,7 +594,7 @@ manifest51
 manifest52
 --------------------------------
 {
-"name" : " Birds",
+"name" : "<<>>",
 "xwalk_version" : "1.1",
 "start_url" : "index.html",
 "display" : ["fullscreen"],
@@ -608,7 +606,7 @@ manifest52
 manifest53
 --------------------------------
 {
-"name" : "'",
+"name" : " Birds",
 "xwalk_version" : "1.1",
 "start_url" : "index.html",
 "display" : ["fullscreen"],
@@ -620,7 +618,7 @@ manifest53
 manifest54
 --------------------------------
 {
-"name" : " Birds",
+"name" : "[]",
 "xwalk_version" : "1.1",
 "start_url" : "index.html",
 "display" : ["fullscreen"],
@@ -632,7 +630,7 @@ manifest54
 manifest55
 --------------------------------
 {
-"name" : ":",
+"name" : " Birds",
 "xwalk_version" : "1.1",
 "start_url" : "index.html",
 "display" : ["fullscreen"],
@@ -644,7 +642,7 @@ manifest55
 manifest56
 --------------------------------
 {
-"name" : " Birds",
+"name" : "中文",
 "xwalk_version" : "1.1",
 "start_url" : "index.html",
 "display" : ["fullscreen"],
@@ -656,7 +654,7 @@ manifest56
 manifest57
 --------------------------------
 {
-"name" : "+-",
+"name" : " Birds",
 "xwalk_version" : "1.1",
 "start_url" : "index.html",
 "display" : ["fullscreen"],
@@ -668,7 +666,7 @@ manifest57
 manifest58
 --------------------------------
 {
-"name" : " Birds",
+"name" : "'",
 "xwalk_version" : "1.1",
 "start_url" : "index.html",
 "display" : ["fullscreen"],
@@ -680,7 +678,7 @@ manifest58
 manifest59
 --------------------------------
 {
-"name" : "*&^%!@#$%^&*()",
+"name" : " Birds",
 "xwalk_version" : "1.1",
 "start_url" : "index.html",
 "display" : ["fullscreen"],
@@ -692,7 +690,7 @@ manifest59
 manifest60
 --------------------------------
 {
-"name" : " Birds",
+"name" : ":",
 "xwalk_version" : "1.1",
 "start_url" : "index.html",
 "display" : ["fullscreen"],
@@ -704,7 +702,7 @@ manifest60
 manifest61
 --------------------------------
 {
-"name" : "\n",
+"name" : " Birds",
 "xwalk_version" : "1.1",
 "start_url" : "index.html",
 "display" : ["fullscreen"],
@@ -716,7 +714,7 @@ manifest61
 manifest62
 --------------------------------
 {
-"name" : " Birds",
+"name" : "+-",
 "xwalk_version" : "1.1",
 "start_url" : "index.html",
 "display" : ["fullscreen"],
@@ -728,7 +726,7 @@ manifest62
 manifest63
 --------------------------------
 {
-"name" : ".CAPITAL",
+"name" : " Birds",
 "xwalk_version" : "1.1",
 "start_url" : "index.html",
 "display" : ["fullscreen"],
@@ -740,7 +738,7 @@ manifest63
 manifest64
 --------------------------------
 {
-"name" : " Birds",
+"name" : "*&^%!@#$%^&*()",
 "xwalk_version" : "1.1",
 "start_url" : "index.html",
 "display" : ["fullscreen"],
@@ -752,7 +750,7 @@ manifest64
 manifest65
 --------------------------------
 {
-"name" : ">",
+"name" : " Birds",
 "xwalk_version" : "1.1",
 "start_url" : "index.html",
 "display" : ["fullscreen"],
@@ -764,7 +762,7 @@ manifest65
 manifest66
 --------------------------------
 {
-"name" : " Birds",
+"name" : "\n",
 "xwalk_version" : "1.1",
 "start_url" : "index.html",
 "display" : ["fullscreen"],
@@ -776,7 +774,7 @@ manifest66
 manifest67
 --------------------------------
 {
-"name" : "<",
+"name" : " Birds",
 "xwalk_version" : "1.1",
 "start_url" : "index.html",
 "display" : ["fullscreen"],
@@ -788,7 +786,7 @@ manifest67
 manifest68
 --------------------------------
 {
-"name" : " Birds",
+"name" : ".CAPITAL",
 "xwalk_version" : "1.1",
 "start_url" : "index.html",
 "display" : ["fullscreen"],
@@ -800,7 +798,7 @@ manifest68
 manifest69
 --------------------------------
 {
-"name" : "a-b",
+"name" : " Birds",
 "xwalk_version" : "1.1",
 "start_url" : "index.html",
 "display" : ["fullscreen"],
@@ -812,7 +810,7 @@ manifest69
 manifest70
 --------------------------------
 {
-"name" : " Birds",
+"name" : ">",
 "xwalk_version" : "1.1",
 "start_url" : "index.html",
 "display" : ["fullscreen"],
@@ -824,7 +822,7 @@ manifest70
 manifest71
 --------------------------------
 {
-"name" : "a_b",
+"name" : " Birds",
 "xwalk_version" : "1.1",
 "start_url" : "index.html",
 "display" : ["fullscreen"],
@@ -836,7 +834,7 @@ manifest71
 manifest72
 --------------------------------
 {
-"name" : " Birds",
+"name" : "<",
 "xwalk_version" : "1.1",
 "start_url" : "index.html",
 "display" : ["fullscreen"],
@@ -848,7 +846,7 @@ manifest72
 manifest73
 --------------------------------
 {
-"name" : "123456",
+"name" : " Birds",
 "xwalk_version" : "1.1",
 "start_url" : "index.html",
 "display" : ["fullscreen"],
@@ -860,7 +858,7 @@ manifest73
 manifest74
 --------------------------------
 {
-"name" : " Birds",
+"name" : "a-b",
 "xwalk_version" : "1.1",
 "start_url" : "index.html",
 "display" : ["fullscreen"],
@@ -872,7 +870,7 @@ manifest74
 manifest75
 --------------------------------
 {
-"name" : "angry",
+"name" : " Birds",
 "xwalk_version" : "1.1",
 "start_url" : "index.html",
 "display" : ["fullscreen"],
@@ -884,7 +882,7 @@ manifest75
 manifest76
 --------------------------------
 {
-"name" : " Birds",
+"name" : "a_b",
 "xwalk_version" : "1.1",
 "start_url" : "index.html",
 "display" : ["fullscreen"],
@@ -896,7 +894,7 @@ manifest76
 manifest77
 --------------------------------
 {
-"name" : "Angry",
+"name" : " Birds",
 "xwalk_version" : "1.1",
 "start_url" : "index.html",
 "display" : ["fullscreen"],
@@ -908,7 +906,7 @@ manifest77
 manifest78
 --------------------------------
 {
-"name" : " Birds",
+"name" : "123456",
 "xwalk_version" : "1.1",
 "start_url" : "index.html",
 "display" : ["fullscreen"],
@@ -920,7 +918,7 @@ manifest78
 manifest79
 --------------------------------
 {
-"name" : " ",
+"name" : " Birds",
 "xwalk_version" : "1.1",
 "start_url" : "index.html",
 "display" : ["fullscreen"],
@@ -932,7 +930,7 @@ manifest79
 manifest80
 --------------------------------
 {
-"name" : " Birds",
+"name" : "angry",
 "xwalk_version" : "1.1",
 "start_url" : "index.html",
 "display" : ["fullscreen"],
@@ -944,7 +942,7 @@ manifest80
 manifest81
 --------------------------------
 {
-"name" : " ",
+"name" : " Birds",
 "xwalk_version" : "1.1",
 "start_url" : "index.html",
 "display" : ["fullscreen"],
@@ -956,7 +954,7 @@ manifest81
 manifest82
 --------------------------------
 {
-"name" : " ",
+"name" : "Angry",
 "xwalk_version" : "1.1",
 "start_url" : "index.html",
 "display" : ["fullscreen"],
@@ -968,7 +966,7 @@ manifest82
 manifest83
 --------------------------------
 {
-"name" : "Angry",
+"name" : " Birds",
 "xwalk_version" : "1.1",
 "start_url" : "index.html",
 "display" : ["fullscreen"],
@@ -992,7 +990,7 @@ manifest84
 manifest85
 --------------------------------
 {
-"name" : "angry",
+"name" : " Birds",
 "xwalk_version" : "1.1",
 "start_url" : "index.html",
 "display" : ["fullscreen"],
@@ -1016,7 +1014,7 @@ manifest86
 manifest87
 --------------------------------
 {
-"name" : "123456",
+"name" : " ",
 "xwalk_version" : "1.1",
 "start_url" : "index.html",
 "display" : ["fullscreen"],
@@ -1028,7 +1026,7 @@ manifest87
 manifest88
 --------------------------------
 {
-"name" : " ",
+"name" : "Angry",
 "xwalk_version" : "1.1",
 "start_url" : "index.html",
 "display" : ["fullscreen"],
@@ -1040,7 +1038,7 @@ manifest88
 manifest89
 --------------------------------
 {
-"name" : "a_b",
+"name" : " ",
 "xwalk_version" : "1.1",
 "start_url" : "index.html",
 "display" : ["fullscreen"],
@@ -1052,7 +1050,7 @@ manifest89
 manifest90
 --------------------------------
 {
-"name" : " ",
+"name" : "angry",
 "xwalk_version" : "1.1",
 "start_url" : "index.html",
 "display" : ["fullscreen"],
@@ -1064,7 +1062,7 @@ manifest90
 manifest91
 --------------------------------
 {
-"name" : "a-b",
+"name" : " ",
 "xwalk_version" : "1.1",
 "start_url" : "index.html",
 "display" : ["fullscreen"],
@@ -1076,7 +1074,7 @@ manifest91
 manifest92
 --------------------------------
 {
-"name" : " ",
+"name" : "123456",
 "xwalk_version" : "1.1",
 "start_url" : "index.html",
 "display" : ["fullscreen"],
@@ -1088,7 +1086,7 @@ manifest92
 manifest93
 --------------------------------
 {
-"name" : "<",
+"name" : " ",
 "xwalk_version" : "1.1",
 "start_url" : "index.html",
 "display" : ["fullscreen"],
@@ -1100,7 +1098,7 @@ manifest93
 manifest94
 --------------------------------
 {
-"name" : " ",
+"name" : "a_b",
 "xwalk_version" : "1.1",
 "start_url" : "index.html",
 "display" : ["fullscreen"],
@@ -1112,7 +1110,7 @@ manifest94
 manifest95
 --------------------------------
 {
-"name" : ">",
+"name" : " ",
 "xwalk_version" : "1.1",
 "start_url" : "index.html",
 "display" : ["fullscreen"],
@@ -1124,7 +1122,7 @@ manifest95
 manifest96
 --------------------------------
 {
-"name" : " ",
+"name" : "a-b",
 "xwalk_version" : "1.1",
 "start_url" : "index.html",
 "display" : ["fullscreen"],
@@ -1136,7 +1134,7 @@ manifest96
 manifest97
 --------------------------------
 {
-"name" : ".CAPITAL",
+"name" : " ",
 "xwalk_version" : "1.1",
 "start_url" : "index.html",
 "display" : ["fullscreen"],
@@ -1148,7 +1146,7 @@ manifest97
 manifest98
 --------------------------------
 {
-"name" : " ",
+"name" : "<",
 "xwalk_version" : "1.1",
 "start_url" : "index.html",
 "display" : ["fullscreen"],
@@ -1160,7 +1158,7 @@ manifest98
 manifest99
 --------------------------------
 {
-"name" : "\n",
+"name" : " ",
 "xwalk_version" : "1.1",
 "start_url" : "index.html",
 "display" : ["fullscreen"],
@@ -1172,7 +1170,7 @@ manifest99
 manifest100
 --------------------------------
 {
-"name" : " ",
+"name" : ">",
 "xwalk_version" : "1.1",
 "start_url" : "index.html",
 "display" : ["fullscreen"],
@@ -1184,7 +1182,7 @@ manifest100
 manifest101
 --------------------------------
 {
-"name" : "*&^%!@#$%^&*()",
+"name" : " ",
 "xwalk_version" : "1.1",
 "start_url" : "index.html",
 "display" : ["fullscreen"],
@@ -1196,7 +1194,7 @@ manifest101
 manifest102
 --------------------------------
 {
-"name" : " ",
+"name" : ".CAPITAL",
 "xwalk_version" : "1.1",
 "start_url" : "index.html",
 "display" : ["fullscreen"],
@@ -1208,7 +1206,7 @@ manifest102
 manifest103
 --------------------------------
 {
-"name" : "+-",
+"name" : " ",
 "xwalk_version" : "1.1",
 "start_url" : "index.html",
 "display" : ["fullscreen"],
@@ -1220,7 +1218,7 @@ manifest103
 manifest104
 --------------------------------
 {
-"name" : " ",
+"name" : "\n",
 "xwalk_version" : "1.1",
 "start_url" : "index.html",
 "display" : ["fullscreen"],
@@ -1232,7 +1230,7 @@ manifest104
 manifest105
 --------------------------------
 {
-"name" : ":",
+"name" : " ",
 "xwalk_version" : "1.1",
 "start_url" : "index.html",
 "display" : ["fullscreen"],
@@ -1244,7 +1242,7 @@ manifest105
 manifest106
 --------------------------------
 {
-"name" : " ",
+"name" : "*&^%!@#$%^&*()",
 "xwalk_version" : "1.1",
 "start_url" : "index.html",
 "display" : ["fullscreen"],
@@ -1256,7 +1254,7 @@ manifest106
 manifest107
 --------------------------------
 {
-"name" : "'",
+"name" : " ",
 "xwalk_version" : "1.1",
 "start_url" : "index.html",
 "display" : ["fullscreen"],
@@ -1268,7 +1266,7 @@ manifest107
 manifest108
 --------------------------------
 {
-"name" : " ",
+"name" : "+-",
 "xwalk_version" : "1.1",
 "start_url" : "index.html",
 "display" : ["fullscreen"],
@@ -1280,7 +1278,7 @@ manifest108
 manifest109
 --------------------------------
 {
-"name" : "中文",
+"name" : " ",
 "xwalk_version" : "1.1",
 "start_url" : "index.html",
 "display" : ["fullscreen"],
@@ -1292,7 +1290,7 @@ manifest109
 manifest110
 --------------------------------
 {
-"name" : " ",
+"name" : ":",
 "xwalk_version" : "1.1",
 "start_url" : "index.html",
 "display" : ["fullscreen"],
@@ -1304,7 +1302,7 @@ manifest110
 manifest111
 --------------------------------
 {
-"name" : "[]",
+"name" : " ",
 "xwalk_version" : "1.1",
 "start_url" : "index.html",
 "display" : ["fullscreen"],
@@ -1316,7 +1314,7 @@ manifest111
 manifest112
 --------------------------------
 {
-"name" : " ",
+"name" : "'",
 "xwalk_version" : "1.1",
 "start_url" : "index.html",
 "display" : ["fullscreen"],
@@ -1328,7 +1326,7 @@ manifest112
 manifest113
 --------------------------------
 {
-"name" : "<<>>",
+"name" : " ",
 "xwalk_version" : "1.1",
 "start_url" : "index.html",
 "display" : ["fullscreen"],
@@ -1340,7 +1338,7 @@ manifest113
 manifest114
 --------------------------------
 {
-"name" : " ",
+"name" : "中文",
 "xwalk_version" : "1.1",
 "start_url" : "index.html",
 "display" : ["fullscreen"],
@@ -1352,7 +1350,7 @@ manifest114
 manifest115
 --------------------------------
 {
-"name" : "<<>>",
+"name" : " ",
 "xwalk_version" : "1.1",
 "start_url" : "index.html",
 "display" : ["fullscreen"],
@@ -1364,7 +1362,7 @@ manifest115
 manifest116
 --------------------------------
 {
-"name" : "a b",
+"name" : "[]",
 "xwalk_version" : "1.1",
 "start_url" : "index.html",
 "display" : ["fullscreen"],
@@ -1376,7 +1374,7 @@ manifest116
 manifest117
 --------------------------------
 {
-"name" : "[]",
+"name" : " ",
 "xwalk_version" : "1.1",
 "start_url" : "index.html",
 "display" : ["fullscreen"],
@@ -1388,7 +1386,7 @@ manifest117
 manifest118
 --------------------------------
 {
-"name" : "a b",
+"name" : "<<>>",
 "xwalk_version" : "1.1",
 "start_url" : "index.html",
 "display" : ["fullscreen"],
@@ -1400,7 +1398,7 @@ manifest118
 manifest119
 --------------------------------
 {
-"name" : "中文",
+"name" : " ",
 "xwalk_version" : "1.1",
 "start_url" : "index.html",
 "display" : ["fullscreen"],
@@ -1412,7 +1410,7 @@ manifest119
 manifest120
 --------------------------------
 {
-"name" : "a b",
+"name" : "<<>>",
 "xwalk_version" : "1.1",
 "start_url" : "index.html",
 "display" : ["fullscreen"],
@@ -1424,7 +1422,7 @@ manifest120
 manifest121
 --------------------------------
 {
-"name" : "'",
+"name" : "a b",
 "xwalk_version" : "1.1",
 "start_url" : "index.html",
 "display" : ["fullscreen"],
@@ -1436,7 +1434,7 @@ manifest121
 manifest122
 --------------------------------
 {
-"name" : "a b",
+"name" : "[]",
 "xwalk_version" : "1.1",
 "start_url" : "index.html",
 "display" : ["fullscreen"],
@@ -1448,7 +1446,7 @@ manifest122
 manifest123
 --------------------------------
 {
-"name" : ":",
+"name" : "a b",
 "xwalk_version" : "1.1",
 "start_url" : "index.html",
 "display" : ["fullscreen"],
@@ -1460,7 +1458,7 @@ manifest123
 manifest124
 --------------------------------
 {
-"name" : "a b",
+"name" : "中文",
 "xwalk_version" : "1.1",
 "start_url" : "index.html",
 "display" : ["fullscreen"],
@@ -1472,7 +1470,7 @@ manifest124
 manifest125
 --------------------------------
 {
-"name" : "+-",
+"name" : "a b",
 "xwalk_version" : "1.1",
 "start_url" : "index.html",
 "display" : ["fullscreen"],
@@ -1484,7 +1482,7 @@ manifest125
 manifest126
 --------------------------------
 {
-"name" : "a b",
+"name" : "'",
 "xwalk_version" : "1.1",
 "start_url" : "index.html",
 "display" : ["fullscreen"],
@@ -1496,7 +1494,7 @@ manifest126
 manifest127
 --------------------------------
 {
-"name" : "*&^%!@#$%^&*()",
+"name" : "a b",
 "xwalk_version" : "1.1",
 "start_url" : "index.html",
 "display" : ["fullscreen"],
@@ -1508,7 +1506,7 @@ manifest127
 manifest128
 --------------------------------
 {
-"name" : "a b",
+"name" : ":",
 "xwalk_version" : "1.1",
 "start_url" : "index.html",
 "display" : ["fullscreen"],
@@ -1520,7 +1518,7 @@ manifest128
 manifest129
 --------------------------------
 {
-"name" : "\n",
+"name" : "a b",
 "xwalk_version" : "1.1",
 "start_url" : "index.html",
 "display" : ["fullscreen"],
@@ -1532,7 +1530,7 @@ manifest129
 manifest130
 --------------------------------
 {
-"name" : "a b",
+"name" : "+-",
 "xwalk_version" : "1.1",
 "start_url" : "index.html",
 "display" : ["fullscreen"],
@@ -1544,7 +1542,7 @@ manifest130
 manifest131
 --------------------------------
 {
-"name" : ".CAPITAL",
+"name" : "a b",
 "xwalk_version" : "1.1",
 "start_url" : "index.html",
 "display" : ["fullscreen"],
@@ -1556,7 +1554,7 @@ manifest131
 manifest132
 --------------------------------
 {
-"name" : "a b",
+"name" : "*&^%!@#$%^&*()",
 "xwalk_version" : "1.1",
 "start_url" : "index.html",
 "display" : ["fullscreen"],
@@ -1568,7 +1566,7 @@ manifest132
 manifest133
 --------------------------------
 {
-"name" : ">",
+"name" : "a b",
 "xwalk_version" : "1.1",
 "start_url" : "index.html",
 "display" : ["fullscreen"],
@@ -1580,7 +1578,7 @@ manifest133
 manifest134
 --------------------------------
 {
-"name" : "a b",
+"name" : "\n",
 "xwalk_version" : "1.1",
 "start_url" : "index.html",
 "display" : ["fullscreen"],
@@ -1592,7 +1590,7 @@ manifest134
 manifest135
 --------------------------------
 {
-"name" : "<",
+"name" : "a b",
 "xwalk_version" : "1.1",
 "start_url" : "index.html",
 "display" : ["fullscreen"],
@@ -1604,7 +1602,7 @@ manifest135
 manifest136
 --------------------------------
 {
-"name" : "a b",
+"name" : ".CAPITAL",
 "xwalk_version" : "1.1",
 "start_url" : "index.html",
 "display" : ["fullscreen"],
@@ -1616,7 +1614,7 @@ manifest136
 manifest137
 --------------------------------
 {
-"name" : "a-b",
+"name" : "a b",
 "xwalk_version" : "1.1",
 "start_url" : "index.html",
 "display" : ["fullscreen"],
@@ -1628,7 +1626,7 @@ manifest137
 manifest138
 --------------------------------
 {
-"name" : "a b",
+"name" : ">",
 "xwalk_version" : "1.1",
 "start_url" : "index.html",
 "display" : ["fullscreen"],
@@ -1640,7 +1638,7 @@ manifest138
 manifest139
 --------------------------------
 {
-"name" : "a_b",
+"name" : "a b",
 "xwalk_version" : "1.1",
 "start_url" : "index.html",
 "display" : ["fullscreen"],
@@ -1652,7 +1650,7 @@ manifest139
 manifest140
 --------------------------------
 {
-"name" : "a b",
+"name" : "<",
 "xwalk_version" : "1.1",
 "start_url" : "index.html",
 "display" : ["fullscreen"],
@@ -1664,7 +1662,7 @@ manifest140
 manifest141
 --------------------------------
 {
-"name" : "123456",
+"name" : "a b",
 "xwalk_version" : "1.1",
 "start_url" : "index.html",
 "display" : ["fullscreen"],
@@ -1676,7 +1674,7 @@ manifest141
 manifest142
 --------------------------------
 {
-"name" : "a b",
+"name" : "a-b",
 "xwalk_version" : "1.1",
 "start_url" : "index.html",
 "display" : ["fullscreen"],
@@ -1688,7 +1686,7 @@ manifest142
 manifest143
 --------------------------------
 {
-"name" : "angry",
+"name" : "a b",
 "xwalk_version" : "1.1",
 "start_url" : "index.html",
 "display" : ["fullscreen"],
@@ -1700,7 +1698,7 @@ manifest143
 manifest144
 --------------------------------
 {
-"name" : "a b",
+"name" : "a_b",
 "xwalk_version" : "1.1",
 "start_url" : "index.html",
 "display" : ["fullscreen"],
@@ -1712,7 +1710,7 @@ manifest144
 manifest145
 --------------------------------
 {
-"name" : "Angry",
+"name" : "a b",
 "xwalk_version" : "1.1",
 "start_url" : "index.html",
 "display" : ["fullscreen"],
@@ -1724,7 +1722,7 @@ manifest145
 manifest146
 --------------------------------
 {
-"name" : "a b",
+"name" : "123456",
 "xwalk_version" : "1.1",
 "start_url" : "index.html",
 "display" : ["fullscreen"],
@@ -1736,7 +1734,7 @@ manifest146
 manifest147
 --------------------------------
 {
-"name" : " ",
+"name" : "a b",
 "xwalk_version" : "1.1",
 "start_url" : "index.html",
 "display" : ["fullscreen"],
@@ -1748,7 +1746,7 @@ manifest147
 manifest148
 --------------------------------
 {
-"name" : "a b",
+"name" : "angry",
 "xwalk_version" : "1.1",
 "start_url" : "index.html",
 "display" : ["fullscreen"],
@@ -1760,7 +1758,7 @@ manifest148
 manifest149
 --------------------------------
 {
-"name" : " ",
+"name" : "a b",
 "xwalk_version" : "1.1",
 "start_url" : "index.html",
 "display" : ["fullscreen"],
@@ -1772,7 +1770,7 @@ manifest149
 manifest150
 --------------------------------
 {
-"name" : "b ",
+"name" : "Angry",
 "xwalk_version" : "1.1",
 "start_url" : "index.html",
 "display" : ["fullscreen"],
@@ -1784,7 +1782,7 @@ manifest150
 manifest151
 --------------------------------
 {
-"name" : "Angry",
+"name" : "a b",
 "xwalk_version" : "1.1",
 "start_url" : "index.html",
 "display" : ["fullscreen"],
@@ -1796,7 +1794,7 @@ manifest151
 manifest152
 --------------------------------
 {
-"name" : "b ",
+"name" : " ",
 "xwalk_version" : "1.1",
 "start_url" : "index.html",
 "display" : ["fullscreen"],
@@ -1808,7 +1806,7 @@ manifest152
 manifest153
 --------------------------------
 {
-"name" : "angry",
+"name" : "a b",
 "xwalk_version" : "1.1",
 "start_url" : "index.html",
 "display" : ["fullscreen"],
@@ -1820,7 +1818,7 @@ manifest153
 manifest154
 --------------------------------
 {
-"name" : "b ",
+"name" : " ",
 "xwalk_version" : "1.1",
 "start_url" : "index.html",
 "display" : ["fullscreen"],
@@ -1832,7 +1830,7 @@ manifest154
 manifest155
 --------------------------------
 {
-"name" : "123456",
+"name" : "b ",
 "xwalk_version" : "1.1",
 "start_url" : "index.html",
 "display" : ["fullscreen"],
@@ -1844,7 +1842,7 @@ manifest155
 manifest156
 --------------------------------
 {
-"name" : "b ",
+"name" : "Angry",
 "xwalk_version" : "1.1",
 "start_url" : "index.html",
 "display" : ["fullscreen"],
@@ -1856,7 +1854,7 @@ manifest156
 manifest157
 --------------------------------
 {
-"name" : "a_b",
+"name" : "b ",
 "xwalk_version" : "1.1",
 "start_url" : "index.html",
 "display" : ["fullscreen"],
@@ -1868,7 +1866,7 @@ manifest157
 manifest158
 --------------------------------
 {
-"name" : "b ",
+"name" : "angry",
 "xwalk_version" : "1.1",
 "start_url" : "index.html",
 "display" : ["fullscreen"],
@@ -1880,7 +1878,7 @@ manifest158
 manifest159
 --------------------------------
 {
-"name" : "a-b",
+"name" : "b ",
 "xwalk_version" : "1.1",
 "start_url" : "index.html",
 "display" : ["fullscreen"],
@@ -1892,7 +1890,7 @@ manifest159
 manifest160
 --------------------------------
 {
-"name" : "b ",
+"name" : "123456",
 "xwalk_version" : "1.1",
 "start_url" : "index.html",
 "display" : ["fullscreen"],
@@ -1904,7 +1902,7 @@ manifest160
 manifest161
 --------------------------------
 {
-"name" : "<",
+"name" : "b ",
 "xwalk_version" : "1.1",
 "start_url" : "index.html",
 "display" : ["fullscreen"],
@@ -1916,7 +1914,7 @@ manifest161
 manifest162
 --------------------------------
 {
-"name" : "b ",
+"name" : "a_b",
 "xwalk_version" : "1.1",
 "start_url" : "index.html",
 "display" : ["fullscreen"],
@@ -1928,7 +1926,7 @@ manifest162
 manifest163
 --------------------------------
 {
-"name" : ">",
+"name" : "b ",
 "xwalk_version" : "1.1",
 "start_url" : "index.html",
 "display" : ["fullscreen"],
@@ -1940,7 +1938,7 @@ manifest163
 manifest164
 --------------------------------
 {
-"name" : "b ",
+"name" : "a-b",
 "xwalk_version" : "1.1",
 "start_url" : "index.html",
 "display" : ["fullscreen"],
@@ -1952,7 +1950,7 @@ manifest164
 manifest165
 --------------------------------
 {
-"name" : ".CAPITAL",
+"name" : "b ",
 "xwalk_version" : "1.1",
 "start_url" : "index.html",
 "display" : ["fullscreen"],
@@ -1964,7 +1962,7 @@ manifest165
 manifest166
 --------------------------------
 {
-"name" : "b ",
+"name" : "<",
 "xwalk_version" : "1.1",
 "start_url" : "index.html",
 "display" : ["fullscreen"],
@@ -1976,7 +1974,7 @@ manifest166
 manifest167
 --------------------------------
 {
-"name" : "\n",
+"name" : "b ",
 "xwalk_version" : "1.1",
 "start_url" : "index.html",
 "display" : ["fullscreen"],
@@ -1988,7 +1986,7 @@ manifest167
 manifest168
 --------------------------------
 {
-"name" : "b ",
+"name" : ">",
 "xwalk_version" : "1.1",
 "start_url" : "index.html",
 "display" : ["fullscreen"],
@@ -2000,7 +1998,7 @@ manifest168
 manifest169
 --------------------------------
 {
-"name" : "*&^%!@#$%^&*()",
+"name" : "b ",
 "xwalk_version" : "1.1",
 "start_url" : "index.html",
 "display" : ["fullscreen"],
@@ -2012,7 +2010,7 @@ manifest169
 manifest170
 --------------------------------
 {
-"name" : "b ",
+"name" : ".CAPITAL",
 "xwalk_version" : "1.1",
 "start_url" : "index.html",
 "display" : ["fullscreen"],
@@ -2024,7 +2022,7 @@ manifest170
 manifest171
 --------------------------------
 {
-"name" : "+-",
+"name" : "b ",
 "xwalk_version" : "1.1",
 "start_url" : "index.html",
 "display" : ["fullscreen"],
@@ -2036,7 +2034,7 @@ manifest171
 manifest172
 --------------------------------
 {
-"name" : "b ",
+"name" : "\n",
 "xwalk_version" : "1.1",
 "start_url" : "index.html",
 "display" : ["fullscreen"],
@@ -2048,7 +2046,7 @@ manifest172
 manifest173
 --------------------------------
 {
-"name" : ":",
+"name" : "b ",
 "xwalk_version" : "1.1",
 "start_url" : "index.html",
 "display" : ["fullscreen"],
@@ -2060,7 +2058,7 @@ manifest173
 manifest174
 --------------------------------
 {
-"name" : "b ",
+"name" : "*&^%!@#$%^&*()",
 "xwalk_version" : "1.1",
 "start_url" : "index.html",
 "display" : ["fullscreen"],
@@ -2072,7 +2070,7 @@ manifest174
 manifest175
 --------------------------------
 {
-"name" : "'",
+"name" : "b ",
 "xwalk_version" : "1.1",
 "start_url" : "index.html",
 "display" : ["fullscreen"],
@@ -2084,7 +2082,7 @@ manifest175
 manifest176
 --------------------------------
 {
-"name" : "b ",
+"name" : "+-",
 "xwalk_version" : "1.1",
 "start_url" : "index.html",
 "display" : ["fullscreen"],
@@ -2096,7 +2094,7 @@ manifest176
 manifest177
 --------------------------------
 {
-"name" : "中文",
+"name" : "b ",
 "xwalk_version" : "1.1",
 "start_url" : "index.html",
 "display" : ["fullscreen"],
@@ -2108,7 +2106,7 @@ manifest177
 manifest178
 --------------------------------
 {
-"name" : "b ",
+"name" : ":",
 "xwalk_version" : "1.1",
 "start_url" : "index.html",
 "display" : ["fullscreen"],
@@ -2120,7 +2118,7 @@ manifest178
 manifest179
 --------------------------------
 {
-"name" : "[]",
+"name" : "b ",
 "xwalk_version" : "1.1",
 "start_url" : "index.html",
 "display" : ["fullscreen"],
@@ -2132,7 +2130,7 @@ manifest179
 manifest180
 --------------------------------
 {
-"name" : "b ",
+"name" : "'",
 "xwalk_version" : "1.1",
 "start_url" : "index.html",
 "display" : ["fullscreen"],
@@ -2144,7 +2142,7 @@ manifest180
 manifest181
 --------------------------------
 {
-"name" : "<<>>",
+"name" : "b ",
 "xwalk_version" : "1.1",
 "start_url" : "index.html",
 "display" : ["fullscreen"],
@@ -2156,7 +2154,7 @@ manifest181
 manifest182
 --------------------------------
 {
-"name" : "b ",
+"name" : "中文",
 "xwalk_version" : "1.1",
 "start_url" : "index.html",
 "display" : ["fullscreen"],
@@ -2168,7 +2166,7 @@ manifest182
 manifest183
 --------------------------------
 {
-"name" : "<<>>",
+"name" : "b ",
 "xwalk_version" : "1.1",
 "start_url" : "index.html",
 "display" : ["fullscreen"],
@@ -2180,7 +2178,7 @@ manifest183
 manifest184
 --------------------------------
 {
-"name" : "BIRDS.",
+"name" : "[]",
 "xwalk_version" : "1.1",
 "start_url" : "index.html",
 "display" : ["fullscreen"],
@@ -2192,7 +2190,7 @@ manifest184
 manifest185
 --------------------------------
 {
-"name" : "[]",
+"name" : "b ",
 "xwalk_version" : "1.1",
 "start_url" : "index.html",
 "display" : ["fullscreen"],
@@ -2204,7 +2202,7 @@ manifest185
 manifest186
 --------------------------------
 {
-"name" : "BIRDS.",
+"name" : "<<>>",
 "xwalk_version" : "1.1",
 "start_url" : "index.html",
 "display" : ["fullscreen"],
@@ -2216,7 +2214,7 @@ manifest186
 manifest187
 --------------------------------
 {
-"name" : "中文",
+"name" : "b ",
 "xwalk_version" : "1.1",
 "start_url" : "index.html",
 "display" : ["fullscreen"],
@@ -2228,7 +2226,7 @@ manifest187
 manifest188
 --------------------------------
 {
-"name" : "BIRDS.",
+"name" : "<<>>",
 "xwalk_version" : "1.1",
 "start_url" : "index.html",
 "display" : ["fullscreen"],
@@ -2240,7 +2238,7 @@ manifest188
 manifest189
 --------------------------------
 {
-"name" : "'",
+"name" : "BIRDS.",
 "xwalk_version" : "1.1",
 "start_url" : "index.html",
 "display" : ["fullscreen"],
@@ -2252,7 +2250,7 @@ manifest189
 manifest190
 --------------------------------
 {
-"name" : "BIRDS.",
+"name" : "[]",
 "xwalk_version" : "1.1",
 "start_url" : "index.html",
 "display" : ["fullscreen"],
@@ -2264,7 +2262,7 @@ manifest190
 manifest191
 --------------------------------
 {
-"name" : ":",
+"name" : "BIRDS.",
 "xwalk_version" : "1.1",
 "start_url" : "index.html",
 "display" : ["fullscreen"],
@@ -2276,7 +2274,7 @@ manifest191
 manifest192
 --------------------------------
 {
-"name" : "BIRDS.",
+"name" : "中文",
 "xwalk_version" : "1.1",
 "start_url" : "index.html",
 "display" : ["fullscreen"],
@@ -2288,7 +2286,7 @@ manifest192
 manifest193
 --------------------------------
 {
-"name" : "+-",
+"name" : "BIRDS.",
 "xwalk_version" : "1.1",
 "start_url" : "index.html",
 "display" : ["fullscreen"],
@@ -2300,7 +2298,7 @@ manifest193
 manifest194
 --------------------------------
 {
-"name" : "BIRDS.",
+"name" : "'",
 "xwalk_version" : "1.1",
 "start_url" : "index.html",
 "display" : ["fullscreen"],
@@ -2312,7 +2310,7 @@ manifest194
 manifest195
 --------------------------------
 {
-"name" : "*&^%!@#$%^&*()",
+"name" : "BIRDS.",
 "xwalk_version" : "1.1",
 "start_url" : "index.html",
 "display" : ["fullscreen"],
@@ -2324,7 +2322,7 @@ manifest195
 manifest196
 --------------------------------
 {
-"name" : "BIRDS.",
+"name" : ":",
 "xwalk_version" : "1.1",
 "start_url" : "index.html",
 "display" : ["fullscreen"],
@@ -2336,7 +2334,7 @@ manifest196
 manifest197
 --------------------------------
 {
-"name" : "\n",
+"name" : "BIRDS.",
 "xwalk_version" : "1.1",
 "start_url" : "index.html",
 "display" : ["fullscreen"],
@@ -2348,7 +2346,7 @@ manifest197
 manifest198
 --------------------------------
 {
-"name" : "BIRDS.",
+"name" : "+-",
 "xwalk_version" : "1.1",
 "start_url" : "index.html",
 "display" : ["fullscreen"],
@@ -2360,7 +2358,7 @@ manifest198
 manifest199
 --------------------------------
 {
-"name" : ".CAPITAL",
+"name" : "BIRDS.",
 "xwalk_version" : "1.1",
 "start_url" : "index.html",
 "display" : ["fullscreen"],
@@ -2372,7 +2370,7 @@ manifest199
 manifest200
 --------------------------------
 {
-"name" : "BIRDS.",
+"name" : "*&^%!@#$%^&*()",
 "xwalk_version" : "1.1",
 "start_url" : "index.html",
 "display" : ["fullscreen"],
@@ -2384,7 +2382,7 @@ manifest200
 manifest201
 --------------------------------
 {
-"name" : ">",
+"name" : "BIRDS.",
 "xwalk_version" : "1.1",
 "start_url" : "index.html",
 "display" : ["fullscreen"],
@@ -2396,7 +2394,7 @@ manifest201
 manifest202
 --------------------------------
 {
-"name" : "BIRDS.",
+"name" : "\n",
 "xwalk_version" : "1.1",
 "start_url" : "index.html",
 "display" : ["fullscreen"],
@@ -2408,7 +2406,7 @@ manifest202
 manifest203
 --------------------------------
 {
-"name" : "<",
+"name" : "BIRDS.",
 "xwalk_version" : "1.1",
 "start_url" : "index.html",
 "display" : ["fullscreen"],
@@ -2420,7 +2418,7 @@ manifest203
 manifest204
 --------------------------------
 {
-"name" : "BIRDS.",
+"name" : ".CAPITAL",
 "xwalk_version" : "1.1",
 "start_url" : "index.html",
 "display" : ["fullscreen"],
@@ -2432,7 +2430,7 @@ manifest204
 manifest205
 --------------------------------
 {
-"name" : "a-b",
+"name" : "BIRDS.",
 "xwalk_version" : "1.1",
 "start_url" : "index.html",
 "display" : ["fullscreen"],
@@ -2444,7 +2442,7 @@ manifest205
 manifest206
 --------------------------------
 {
-"name" : "BIRDS.",
+"name" : ">",
 "xwalk_version" : "1.1",
 "start_url" : "index.html",
 "display" : ["fullscreen"],
@@ -2456,7 +2454,7 @@ manifest206
 manifest207
 --------------------------------
 {
-"name" : "a_b",
+"name" : "BIRDS.",
 "xwalk_version" : "1.1",
 "start_url" : "index.html",
 "display" : ["fullscreen"],
@@ -2468,7 +2466,7 @@ manifest207
 manifest208
 --------------------------------
 {
-"name" : "BIRDS.",
+"name" : "<",
 "xwalk_version" : "1.1",
 "start_url" : "index.html",
 "display" : ["fullscreen"],
@@ -2480,7 +2478,7 @@ manifest208
 manifest209
 --------------------------------
 {
-"name" : "123456",
+"name" : "BIRDS.",
 "xwalk_version" : "1.1",
 "start_url" : "index.html",
 "display" : ["fullscreen"],
@@ -2492,7 +2490,7 @@ manifest209
 manifest210
 --------------------------------
 {
-"name" : "BIRDS.",
+"name" : "a-b",
 "xwalk_version" : "1.1",
 "start_url" : "index.html",
 "display" : ["fullscreen"],
@@ -2504,7 +2502,7 @@ manifest210
 manifest211
 --------------------------------
 {
-"name" : "angry",
+"name" : "BIRDS.",
 "xwalk_version" : "1.1",
 "start_url" : "index.html",
 "display" : ["fullscreen"],
@@ -2516,7 +2514,7 @@ manifest211
 manifest212
 --------------------------------
 {
-"name" : "BIRDS.",
+"name" : "a_b",
 "xwalk_version" : "1.1",
 "start_url" : "index.html",
 "display" : ["fullscreen"],
@@ -2528,7 +2526,7 @@ manifest212
 manifest213
 --------------------------------
 {
-"name" : "Angry",
+"name" : "BIRDS.",
 "xwalk_version" : "1.1",
 "start_url" : "index.html",
 "display" : ["fullscreen"],
@@ -2540,7 +2538,7 @@ manifest213
 manifest214
 --------------------------------
 {
-"name" : "BIRDS.",
+"name" : "123456",
 "xwalk_version" : "1.1",
 "start_url" : "index.html",
 "display" : ["fullscreen"],
@@ -2552,7 +2550,7 @@ manifest214
 manifest215
 --------------------------------
 {
-"name" : " ",
+"name" : "BIRDS.",
 "xwalk_version" : "1.1",
 "start_url" : "index.html",
 "display" : ["fullscreen"],
@@ -2564,7 +2562,7 @@ manifest215
 manifest216
 --------------------------------
 {
-"name" : "BIRDS.",
+"name" : "angry",
 "xwalk_version" : "1.1",
 "start_url" : "index.html",
 "display" : ["fullscreen"],
@@ -2576,7 +2574,7 @@ manifest216
 manifest217
 --------------------------------
 {
-"name" : " ",
+"name" : "BIRDS.",
 "xwalk_version" : "1.1",
 "start_url" : "index.html",
 "display" : ["fullscreen"],
@@ -2588,7 +2586,7 @@ manifest217
 manifest218
 --------------------------------
 {
-"name" : "qwertyuiopasdfghjklzxcvbnm",
+"name" : "Angry",
 "xwalk_version" : "1.1",
 "start_url" : "index.html",
 "display" : ["fullscreen"],
@@ -2600,7 +2598,7 @@ manifest218
 manifest219
 --------------------------------
 {
-"name" : "Angry",
+"name" : "BIRDS.",
 "xwalk_version" : "1.1",
 "start_url" : "index.html",
 "display" : ["fullscreen"],
@@ -2612,7 +2610,7 @@ manifest219
 manifest220
 --------------------------------
 {
-"name" : "qwertyuiopasdfghjklzxcvbnm",
+"name" : " ",
 "xwalk_version" : "1.1",
 "start_url" : "index.html",
 "display" : ["fullscreen"],
@@ -2624,7 +2622,7 @@ manifest220
 manifest221
 --------------------------------
 {
-"name" : "angry",
+"name" : "BIRDS.",
 "xwalk_version" : "1.1",
 "start_url" : "index.html",
 "display" : ["fullscreen"],
@@ -2636,7 +2634,7 @@ manifest221
 manifest222
 --------------------------------
 {
-"name" : "qwertyuiopasdfghjklzxcvbnm",
+"name" : " ",
 "xwalk_version" : "1.1",
 "start_url" : "index.html",
 "display" : ["fullscreen"],
@@ -2648,7 +2646,7 @@ manifest222
 manifest223
 --------------------------------
 {
-"name" : "123456",
+"name" : "qwertyuiopasdfghjklzxcvbnm",
 "xwalk_version" : "1.1",
 "start_url" : "index.html",
 "display" : ["fullscreen"],
@@ -2660,7 +2658,7 @@ manifest223
 manifest224
 --------------------------------
 {
-"name" : "qwertyuiopasdfghjklzxcvbnm",
+"name" : "Angry",
 "xwalk_version" : "1.1",
 "start_url" : "index.html",
 "display" : ["fullscreen"],
@@ -2672,7 +2670,7 @@ manifest224
 manifest225
 --------------------------------
 {
-"name" : "a_b",
+"name" : "qwertyuiopasdfghjklzxcvbnm",
 "xwalk_version" : "1.1",
 "start_url" : "index.html",
 "display" : ["fullscreen"],
@@ -2684,7 +2682,7 @@ manifest225
 manifest226
 --------------------------------
 {
-"name" : "qwertyuiopasdfghjklzxcvbnm",
+"name" : "angry",
 "xwalk_version" : "1.1",
 "start_url" : "index.html",
 "display" : ["fullscreen"],
@@ -2696,7 +2694,7 @@ manifest226
 manifest227
 --------------------------------
 {
-"name" : "a-b",
+"name" : "qwertyuiopasdfghjklzxcvbnm",
 "xwalk_version" : "1.1",
 "start_url" : "index.html",
 "display" : ["fullscreen"],
@@ -2708,7 +2706,7 @@ manifest227
 manifest228
 --------------------------------
 {
-"name" : "qwertyuiopasdfghjklzxcvbnm",
+"name" : "123456",
 "xwalk_version" : "1.1",
 "start_url" : "index.html",
 "display" : ["fullscreen"],
@@ -2720,7 +2718,7 @@ manifest228
 manifest229
 --------------------------------
 {
-"name" : "<",
+"name" : "qwertyuiopasdfghjklzxcvbnm",
 "xwalk_version" : "1.1",
 "start_url" : "index.html",
 "display" : ["fullscreen"],
@@ -2732,7 +2730,7 @@ manifest229
 manifest230
 --------------------------------
 {
-"name" : "qwertyuiopasdfghjklzxcvbnm",
+"name" : "a_b",
 "xwalk_version" : "1.1",
 "start_url" : "index.html",
 "display" : ["fullscreen"],
@@ -2744,7 +2742,7 @@ manifest230
 manifest231
 --------------------------------
 {
-"name" : ">",
+"name" : "qwertyuiopasdfghjklzxcvbnm",
 "xwalk_version" : "1.1",
 "start_url" : "index.html",
 "display" : ["fullscreen"],
@@ -2756,7 +2754,7 @@ manifest231
 manifest232
 --------------------------------
 {
-"name" : "qwertyuiopasdfghjklzxcvbnm",
+"name" : "a-b",
 "xwalk_version" : "1.1",
 "start_url" : "index.html",
 "display" : ["fullscreen"],
@@ -2768,7 +2766,7 @@ manifest232
 manifest233
 --------------------------------
 {
-"name" : ".CAPITAL",
+"name" : "qwertyuiopasdfghjklzxcvbnm",
 "xwalk_version" : "1.1",
 "start_url" : "index.html",
 "display" : ["fullscreen"],
@@ -2780,7 +2778,7 @@ manifest233
 manifest234
 --------------------------------
 {
-"name" : "qwertyuiopasdfghjklzxcvbnm",
+"name" : "<",
 "xwalk_version" : "1.1",
 "start_url" : "index.html",
 "display" : ["fullscreen"],
@@ -2792,7 +2790,7 @@ manifest234
 manifest235
 --------------------------------
 {
-"name" : "\n",
+"name" : "qwertyuiopasdfghjklzxcvbnm",
 "xwalk_version" : "1.1",
 "start_url" : "index.html",
 "display" : ["fullscreen"],
@@ -2804,7 +2802,7 @@ manifest235
 manifest236
 --------------------------------
 {
-"name" : "qwertyuiopasdfghjklzxcvbnm",
+"name" : ">",
 "xwalk_version" : "1.1",
 "start_url" : "index.html",
 "display" : ["fullscreen"],
@@ -2816,7 +2814,7 @@ manifest236
 manifest237
 --------------------------------
 {
-"name" : "*&^%!@#$%^&*()",
+"name" : "qwertyuiopasdfghjklzxcvbnm",
 "xwalk_version" : "1.1",
 "start_url" : "index.html",
 "display" : ["fullscreen"],
@@ -2828,7 +2826,7 @@ manifest237
 manifest238
 --------------------------------
 {
-"name" : "qwertyuiopasdfghjklzxcvbnm",
+"name" : ".CAPITAL",
 "xwalk_version" : "1.1",
 "start_url" : "index.html",
 "display" : ["fullscreen"],
@@ -2840,7 +2838,7 @@ manifest238
 manifest239
 --------------------------------
 {
-"name" : "+-",
+"name" : "qwertyuiopasdfghjklzxcvbnm",
 "xwalk_version" : "1.1",
 "start_url" : "index.html",
 "display" : ["fullscreen"],
@@ -2852,7 +2850,7 @@ manifest239
 manifest240
 --------------------------------
 {
-"name" : "qwertyuiopasdfghjklzxcvbnm",
+"name" : "\n",
 "xwalk_version" : "1.1",
 "start_url" : "index.html",
 "display" : ["fullscreen"],
@@ -2864,7 +2862,7 @@ manifest240
 manifest241
 --------------------------------
 {
-"name" : ":",
+"name" : "qwertyuiopasdfghjklzxcvbnm",
 "xwalk_version" : "1.1",
 "start_url" : "index.html",
 "display" : ["fullscreen"],
@@ -2876,7 +2874,7 @@ manifest241
 manifest242
 --------------------------------
 {
-"name" : "qwertyuiopasdfghjklzxcvbnm",
+"name" : "*&^%!@#$%^&*()",
 "xwalk_version" : "1.1",
 "start_url" : "index.html",
 "display" : ["fullscreen"],
@@ -2888,7 +2886,7 @@ manifest242
 manifest243
 --------------------------------
 {
-"name" : "'",
+"name" : "qwertyuiopasdfghjklzxcvbnm",
 "xwalk_version" : "1.1",
 "start_url" : "index.html",
 "display" : ["fullscreen"],
@@ -2900,7 +2898,7 @@ manifest243
 manifest244
 --------------------------------
 {
-"name" : "qwertyuiopasdfghjklzxcvbnm",
+"name" : "+-",
 "xwalk_version" : "1.1",
 "start_url" : "index.html",
 "display" : ["fullscreen"],
@@ -2912,7 +2910,7 @@ manifest244
 manifest245
 --------------------------------
 {
-"name" : "中文",
+"name" : "qwertyuiopasdfghjklzxcvbnm",
 "xwalk_version" : "1.1",
 "start_url" : "index.html",
 "display" : ["fullscreen"],
@@ -2924,7 +2922,7 @@ manifest245
 manifest246
 --------------------------------
 {
-"name" : "qwertyuiopasdfghjklzxcvbnm",
+"name" : ":",
 "xwalk_version" : "1.1",
 "start_url" : "index.html",
 "display" : ["fullscreen"],
@@ -2936,7 +2934,7 @@ manifest246
 manifest247
 --------------------------------
 {
-"name" : "[]",
+"name" : "qwertyuiopasdfghjklzxcvbnm",
 "xwalk_version" : "1.1",
 "start_url" : "index.html",
 "display" : ["fullscreen"],
@@ -2948,7 +2946,7 @@ manifest247
 manifest248
 --------------------------------
 {
-"name" : "qwertyuiopasdfghjklzxcvbnm",
+"name" : "'",
 "xwalk_version" : "1.1",
 "start_url" : "index.html",
 "display" : ["fullscreen"],
@@ -2960,7 +2958,7 @@ manifest248
 manifest249
 --------------------------------
 {
-"name" : "<<>>",
+"name" : "qwertyuiopasdfghjklzxcvbnm",
 "xwalk_version" : "1.1",
 "start_url" : "index.html",
 "display" : ["fullscreen"],
@@ -2972,7 +2970,7 @@ manifest249
 manifest250
 --------------------------------
 {
-"name" : "qwertyuiopasdfghjklzxcvbnm",
+"name" : "中文",
 "xwalk_version" : "1.1",
 "start_url" : "index.html",
 "display" : ["fullscreen"],
@@ -2984,24 +2982,64 @@ manifest250
 manifest251
 --------------------------------
 {
-"name" : "orientation_test",
+"name" : "qwertyuiopasdfghjklzxcvbnm",
 "xwalk_version" : "1.1",
 "start_url" : "index.html",
+"display" : ["fullscreen"],
 "orientation" : "landscape",
-"icons" : [{"src": "icon/icon.bmp","sizes": "128x128"}]
+"xwalk_description" : "AppDescription",
+"icons" : [{"src": "icon/lowres.png","sizes": "128x128"}]
 }
 --------------------------------
 manifest252
 --------------------------------
 {
-"name" : "orientation_test",
+"name" : "[]",
 "xwalk_version" : "1.1",
 "start_url" : "index.html",
-"orientation" : "portrait",
-"icons" : [{"src": "icon/icon.bmp","sizes": "128x128"}]
+"display" : ["fullscreen"],
+"orientation" : "landscape",
+"xwalk_description" : "AppDescription",
+"icons" : [{"src": "icon/lowres.png","sizes": "128x128"}]
 }
 --------------------------------
 manifest253
+--------------------------------
+{
+"name" : "qwertyuiopasdfghjklzxcvbnm",
+"xwalk_version" : "1.1",
+"start_url" : "index.html",
+"display" : ["fullscreen"],
+"orientation" : "landscape",
+"xwalk_description" : "AppDescription",
+"icons" : [{"src": "icon/lowres.png","sizes": "128x128"}]
+}
+--------------------------------
+manifest254
+--------------------------------
+{
+"name" : "<<>>",
+"xwalk_version" : "1.1",
+"start_url" : "index.html",
+"display" : ["fullscreen"],
+"orientation" : "landscape",
+"xwalk_description" : "AppDescription",
+"icons" : [{"src": "icon/lowres.png","sizes": "128x128"}]
+}
+--------------------------------
+manifest255
+--------------------------------
+{
+"name" : "qwertyuiopasdfghjklzxcvbnm",
+"xwalk_version" : "1.1",
+"start_url" : "index.html",
+"display" : ["fullscreen"],
+"orientation" : "landscape",
+"xwalk_description" : "AppDescription",
+"icons" : [{"src": "icon/lowres.png","sizes": "128x128"}]
+}
+--------------------------------
+manifest256
 --------------------------------
 {
 "name" : "xwalk_version_test",
@@ -3012,7 +3050,7 @@ manifest253
 "icons" : [{"src": "icon/lowres.png","sizes": "128x128"}]
 }
 --------------------------------
-manifest254
+manifest257
 --------------------------------
 {
 "name" : "xwalk_version_test",
@@ -3023,96 +3061,69 @@ manifest254
 "icons" : [{"src": "icon/lowres.png","sizes": "128x128"}]
 }
 --------------------------------
-manifest255
---------------------------------
-{
-"name" : "display_test",
-"xwalk_version" : "1.1",
-"start_url" : "index.html",
-"display" : [],
-"orientation" : "portrait",
-"icons" : [{"src": "icon/icon.gif","sizes": "128x128"}]
-}
---------------------------------
-manifest256
---------------------------------
-{
-"name" : "display_test",
-"xwalk_version" : "1.1",
-"start_url" : "index.html",
-"display" : ["fullscreen","standalone"],
-"orientation" : "portrait",
-"icons" : [{"src": "icon/icon.gif","sizes": "128x128"}]
-}
---------------------------------
-manifest257
---------------------------------
-{
-"name" : "display_test",
-"xwalk_version" : "1.1",
-"start_url" : "index.html",
-"display" : ["fullscreen","standalone","minimal-ui","browser"],
-"orientation" : "portrait",
-"icons" : [{"src": "icon/icon.gif","sizes": "128x128"}]
-}
---------------------------------
 manifest258
 --------------------------------
 {
-"name" : "xwalk_permissions_test",
+"name" : "icons_test",
 "xwalk_version" : "1.1",
 "start_url" : "index.html",
-"display" : ["minimal-ui"],
+"display" : ["standalone"],
 "orientation" : "landscape",
-"icons" : [{"src": "icon/lowres.png","sizes": "128x128"}],
-"xwalk_permissions" : []
+"icons" : [{"src": "icon/lowres.png","sizes": "64x64"}]
 }
 --------------------------------
 manifest259
 --------------------------------
 {
-"name" : "xwalk_permissions_test",
+"name" : "icons_test",
 "xwalk_version" : "1.1",
 "start_url" : "index.html",
-"display" : ["minimal-ui"],
+"display" : ["standalone"],
 "orientation" : "landscape",
-"icons" : [{"src": "icon/lowres.png","sizes": "128x128"}],
-"xwalk_permissions" : ["Contacts"]
+"icons" : [{"src": "icon/lowres.png","sizes": "64x64"},{"src": "icon/hd_hi.jpg","sizes": "96x96"}]
 }
 --------------------------------
 manifest260
 --------------------------------
 {
-"name" : "xwalk_permissions_test",
+"name" : "icons_test",
 "xwalk_version" : "1.1",
 "start_url" : "index.html",
-"display" : ["minimal-ui"],
+"display" : ["standalone"],
 "orientation" : "landscape",
-"icons" : [{"src": "icon/lowres.png","sizes": "128x128"}],
-"xwalk_permissions" : ["Contacts","Messaging"]
+"icons" : [{"src": "icon/lowres.png","sizes": "64x64"},{"src": "icon/hd_hi.jpg","sizes": "96x96"},{"src": "icon/icon.bmp","sizes": "128x128"}]
 }
 --------------------------------
 manifest261
 --------------------------------
 {
-"name" : "xwalk_permissions_test",
+"name" : "icons_test",
 "xwalk_version" : "1.1",
 "start_url" : "index.html",
-"display" : ["minimal-ui"],
+"display" : ["standalone"],
 "orientation" : "landscape",
-"icons" : [{"src": "icon/lowres.png","sizes": "128x128"}],
-"xwalk_permissions" : ["Contacts","Messaging","Vibration","Geolocation"]
+"icons" : [{"src": "icon/lowres.png","sizes": "64x64"},{"src": "icon/hd_hi.jpg","sizes": "96x96"},{"src": "icon/icon.bmp","sizes": "128x128"},{"src": "icon/icon.gif","sizes": "256x256"}]
 }
 --------------------------------
 manifest262
 --------------------------------
 {
-"name" : "csp_test",
+"name" : "icons_test",
 "xwalk_version" : "1.1",
 "start_url" : "index.html",
-"display" : ["fullscreen"],
+"display" : ["standalone"],
 "orientation" : "landscape",
-"icons" : [{"src": "icon/hd_hi.jpg","sizes": "128x128"}],
-"csp" : "default-src 'unsafe-inline';connect-src 'none';style-src 'none';img-src 'none';media-src none;frame-src 'none'"
+"icons" : []
+}
+--------------------------------
+manifest263
+--------------------------------
+{
+"name" : "icons_test",
+"xwalk_version" : "1.1",
+"start_url" : "index.html",
+"display" : ["standalone"],
+"orientation" : "landscape",
+"icons" : [{"src": "icon/lowres.png","sizes": "any"}]
 }
 --------------------------------

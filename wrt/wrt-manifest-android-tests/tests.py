@@ -551,14 +551,17 @@ class TestCaseUnit(unittest.TestCase):
   def test_positive_manifest262(self):
      self.assertEqual("PASS", run_app.tryRunApp("manifest262-positive", "/opt/wrt-manifest-android-tests/apks/x86/manifest262-positive"))
 
-  def test_negative_manifest263(self):
-     self.assertEqual("PASS", run_app.tryRunApp("manifest263-negative", "/opt/wrt-manifest-android-tests/apks/x86/manifest263-negative"))
+  def test_positive_manifest263(self):
+     self.assertEqual("PASS", run_app.tryRunApp("manifest263-positive", "/opt/wrt-manifest-android-tests/apks/x86/manifest263-positive"))
 
   def test_negative_manifest264(self):
      self.assertEqual("PASS", run_app.tryRunApp("manifest264-negative", "/opt/wrt-manifest-android-tests/apks/x86/manifest264-negative"))
 
   def test_negative_manifest265(self):
      self.assertEqual("PASS", run_app.tryRunApp("manifest265-negative", "/opt/wrt-manifest-android-tests/apks/x86/manifest265-negative"))
+
+  def test_negative_manifest266(self):
+     self.assertEqual("PASS", run_app.tryRunApp("manifest266-negative", "/opt/wrt-manifest-android-tests/apks/x86/manifest266-negative"))
 
   def test_positive_manifest27(self):
      self.assertEqual("PASS", run_app.tryRunApp("manifest27-positive", "/opt/wrt-manifest-android-tests/apks/x86/manifest27-positive"))
