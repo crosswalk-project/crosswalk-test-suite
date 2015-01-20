@@ -31,23 +31,19 @@ Authors:
 -->
 
 <meta charset="utf-8">
-<title>Crosswalk_Shared_Shared_Version_Lib_cookie</title>
+<title>Crosswalk_Embedded_Embedded_Version_other</title>
 <link rel="author" title="Intel" href="http://www.intel.com">
 <body>
   <div>
-    <h4>Pre-condition</h4>
-    <ul>
-      <li>Install the XWalkRuntimeLib.apk(current crosswalk version) on test device</li>
-    </ul>
     <h4>Test Steps</h4>
     <ol>
-      <li>Install the app named like "cookie_shared.apk" and launch it, then type text as Cookie value in "The value of the cookie should be" input box in "Example" section, then click link "Create cookie 1"</li>
-      <li>Install the app "cookie_ssvl.apk" and upgrade the crosswalk runtime lib (use "adb install -r *apk to force upgrading"), then click link "Read cookie 1" in "Example" section (Please don't click "Erase cookie 1")</li>
+      <li>Install the app named like "example_embedded.apk" and launch it, then input value and click "Set localStorage", "Set IndexDB" and "Set Web SQL Database"</li>
+      <li>Install the app "example_eev.apk" (use "adb install -r *apk" to force install), then click "Get localStorage", "Get IndexDB" and "Get Web SQL Database"</li>
     </ol>
     <h4>Expected Results</h4>
     <ol>
-      <li>Display "Cookie created"</li>
-      <li>Display "The value of the cookie is " add input content in the box</li>
+      <li>Display "Save localStorage/IndexDB/Web SQL Database value successfully: " add input content in the box</li>
+      <li>Display "Get localStorage/IndexDB/Web SQL Database value: " add input content in the box</li>
     </ol>
   </div>
 </body>
