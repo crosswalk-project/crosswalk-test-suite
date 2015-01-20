@@ -22,56 +22,15 @@ var path = "", mime = "", name = "", Url = "";
 var thumAudio = "", thumVideo = "";
 var sharedDir;
 
-$(document).delegate("#main", "pageinit", function() {
-    $("#image").delegate("li", "vclick", function() {
-        name = $(this).data("file");
-        path = $(this).data("url");
-        mime = $(this).data("mime");
-        setAppControlImage(path, mime, name);
-        return false;
-    });
-    $("#audio").delegate("li", "vclick", function() {
-        name = $(this).data("file");
-        path = $(this).data("url");
-        mime = $(this).data("mime");
-        setAppControlAudio(path, mime, name);
-        return false;
-    });
-    $("#video").delegate("li", "vclick", function() {
-        name = $(this).data("file");
-        path = $(this).data("url");
-        mime = $(this).data("mime");
-        setAppControlVideo(path, mime, name);
-        return false;
-    });
-    $("#allFile").bind("vclick", function() {
-        setAppControlFile("*/*");
-        return false;
-    });
-    $("#imageFile").bind("vclick", function() {
-        setAppControlFile("image/*");
-        return false;
-    });
-    $("#videoFile").bind("vclick", function() {
-        setAppControlFile("video/*");
-        return false;
-    });
-    $("#audioFile").bind("vclick", function() {
-        setAppControlFile("audio/*");
-        return false;
-    });
-    $("#tizen").bind("vclick", function() {
-        setAppControlBrowser("https://www.tizen.org");
-        return false;
-    });
-    $("#browser").bind("vclick", function() {
-        var url = $("#url").val();
-        setAppControlBrowser(url);
-        return false;
-    });
+$(document).ready(function () {
     applicationPre();
     file();
 });
+
+function browser() {
+    var url = $("#url").val();
+    setAppControlBrowser(url);
+}
 
 function file() {
     var documentsDir;
@@ -94,7 +53,7 @@ function file() {
     }
 
     function onerror(error) {
-        alert("The error " + error.message + " occurred when listing the files in the selected folder");
+        $("#popup_info").modal(showMessage("error", "The error " + error.message + " occurred when listing the files in the selected folder"));
     }
 
     tizen.filesystem.resolve(
@@ -103,7 +62,7 @@ function file() {
                 documentsDir = dir;
                 dir.listFiles(onsuccess, onerror);
             }, function(e) {
-                alert("Error " + e.message);
+                $("#popup_info").modal(showMessage("error", "Error " + e.message));
             }, "r"
     );
 }
@@ -121,20 +80,20 @@ function file2() {
                 Url = files[i].toURI();
                 Url = Url.replace("file:///", "/");
                 if(text == "image")
-                    strImage += '<li data-url="' + Url + '" data-mime="' + mime + '" data-file="' + file + '"><img src="' + Url + '" alt="" />' + file + '</li>';
+                    strImage += '<div class="panel-body"><img src="' + Url + '" alt="" />' + file + '<div type="button" class="btn btn-default btn-block" onclick="setAppControl(' + Url + ', ' + mime + ', ' + file + ');">Launch</div></div>';
                 if(text == "audio")
-                    strAudio += '<li data-url="' + Url + '" data-mime="' + mime + '" data-file="' + file + '"><img src="' + thumAudio + '" alt="" />' + file + '</li>';
+                    strAudio += '<div class="panel-body"><img src="' + thumAudio + '" alt="" />' + file + '<div type="button" class="btn btn-default btn-block" onclick="setAppControl(' + Url + ', ' + mime + ', ' + file + ');">Launch</div></div>';
                 if(text == "video")
-                    strVideo += '<li data-url="' + Url + '" data-mime="' + mime + '" data-file="' + file + '"><img src="' + thumVideo + '" alt="" />' + file + '</li>';
+                    strVideo += '<div class="panel-body"><img src="' + thumVideo + '" alt="" />' + file + '<div type="button" class="btn btn-default btn-block" onclick="setAppControl(' + Url + ', ' + mime + ', ' + file + ');">Launch</div></div>';
             }
         }
-        $("#image").html(strImage).trigger("create").listview("refresh");
-        $("#audio").html(strAudio).trigger("create").listview("refresh");
-        $("#video").html(strVideo).trigger("create").listview("refresh");
+        $("#image").html(strImage);
+        $("#audio").html(strAudio);
+        $("#video").html(strVideo);
     }
 
     function onerror(error) {
-        alert("The error " + error.message + " occurred when listing the files in the selected folder");
+        $("#popup_info").modal(showMessage("error", "The error " + error.message + " occurred when listing the files in the selected folder"));
     }
 
     tizen.filesystem.resolve(
@@ -143,12 +102,12 @@ function file2() {
                 documentsDir = dir;
                 dir.listFiles(onsuccess, onerror);
             }, function(e) {
-                alert("Error " + e.message);
+                $("#popup_info").modal(showMessage("error", "Error " + e.message));
             }, "r"
     );
 }
 
-function setAppControlImage(url, mime, name) {
+function setAppControl(url, mime, name) {
     var appControl = new tizen.ApplicationControl(
             "http://tizen.org/appcontrol/operation/view",
             sharedDir+"/data/"+name,
@@ -162,67 +121,15 @@ function setAppControlImage(url, mime, name) {
     try {
         tizen.application.launchAppControl(appControl, null,
         function(){
-            console.log("launch appControl succeeded");
+            $("#popup_info").modal(showMessage("success", "launch appControl succeeded"));
         },
         function(e){
-            alert("launch appControl failed. Reason: " + e.message);
+            $("#popup_info").modal(showMessage("error", "launch appControl failed. Reason: " + e.message));
         },
         appControlReplyCB);
     } catch(e)
     {
-        alert("launch appControl error: " + e.message);
-    }
-}
-
-function setAppControlAudio(url, mime, name) {
-    var appControl = new tizen.ApplicationControl(
-            "http://tizen.org/appcontrol/operation/view",
-            sharedDir+"/data/"+name,
-            mime);
-    var appControlReplyCB = {
-            onsuccess: function(data) {
-            },
-            onfailure: function() {
-            }
-    };
-    try {
-        tizen.application.launchAppControl(appControl, null,
-        function(){
-            console.log("launch appControl succeeded");
-        },
-        function(e){
-            alert("launch appControl failed. Reason: " + e.message);
-        },
-        appControlReplyCB);
-    } catch(e)
-    {
-        alert("launch appControl error: " + e.message);
-    }
-}
-
-function setAppControlVideo(url, mime, name) {
-    var appControl = new tizen.ApplicationControl(
-            "http://tizen.org/appcontrol/operation/view",
-            sharedDir+"/data/"+name,
-            mime);
-    var appControlReplyCB = {
-            onsuccess: function(data) {
-            },
-            onfailure: function() {
-            }
-    };
-    try {
-        tizen.application.launchAppControl(appControl, null,
-        function(){
-            console.log("launch appControl succeeded");
-        },
-        function(e){
-            alert("launch appControl failed. Reason: " + e.message);
-        },
-        appControlReplyCB);
-    } catch(e)
-    {
-        alert("launch appControl error: " + e.message);
+        $("#popup_info").modal(showMessage("error", "launch appControl error: " + e.message));
     }
 }
 
@@ -236,7 +143,7 @@ function setAppControlFile(mime) {
     var appControlReplyCB = {
             onsuccess: function(data) {
                 app.attach.push(data[0].value[0]);
-                alert("Select File : " + app.attach[0]);
+                $("#popup_info").modal(showMessage("success", "Select File : " + app.attach[0]));
             },
             onfailure: function() {
             }
@@ -244,15 +151,15 @@ function setAppControlFile(mime) {
     try {
         tizen.application.launchAppControl(appControl, null,
         function(){
-            console.log("launch appControl succeeded");
+            $("#popup_info").modal(showMessage("success", "launch appControl succeeded"));
         },
         function(e){
-            alert("launch appControl failed. Reason: " + e.message);
+            $("#popup_info").modal(showMessage("error", "launch appControl failed. Reason: " + e.message));
         },
         appControlReplyCB);
     } catch(e)
     {
-        alert("launch appControl error: " + e.message);
+        $("#popup_info").modal(showMessage("error", "launch appControl error: " + e.message));
     }
 }
 
@@ -270,15 +177,15 @@ function setAppControlBrowser(url) {
     try {
         tizen.application.launchAppControl(appControl, null,
         function(){
-            console.log("launch appControl succeeded");
+            $("#popup_info").modal(showMessage("success", "launch appControl succeeded"));
         },
         function(e){
-            alert("launch appControl failed. Reason: " + e.message);
+            $("#popup_info").modal(showMessage("error", "launch appControl failed. Reason: " + e.message));
         },
         appControlReplyCB);
     } catch(e)
     {
-        alert("launch appControl error: " + e.message);
+        $("#popup_info").modal(showMessage("error", "launch appControl error: " + e.message));
     }
 }
 
@@ -294,16 +201,16 @@ function applicationPre() {
                 sharedDir+"/data/"+files[i].name,
                 true,
                 function() {
-                    console.log("PKGID/shared/data/ File Copy");
+                    $("#popup_info").modal(showMessage("success", "PKGID/shared/data/ File Copy"));
                 },
                 function(e){
-                    console.log("Error : " + e.name);
+                    $("#popup_info").modal(showMessage("error", "Error : " + e.name));
                 });
         }
     }
 
     function onerror(error) {
-        console.log("The error " + error.message + " occurred when listing the files in the selected folder");
+        $("#popup_info").modal(showMessage("error", "The error " + error.message + " occurred when listing the files in the selected folder"));
     }
 
     tizen.filesystem.resolve(
@@ -312,7 +219,7 @@ function applicationPre() {
             documentsDir = dir;
             dir.listFiles(onsuccess, onerror);
         }, function(e) {
-            alert("Error " + e.message);
+            $("#popup_info").modal(showMessage("error", "Error " + e.message));
         }, "r"
     );
 }

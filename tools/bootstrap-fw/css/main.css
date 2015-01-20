@@ -1,0 +1,361 @@
+/*
+Copyright (c) 2014 Intel Corporation.
+
+Redistribution and use in source and binary forms, with or without modification,
+are permitted provided that the following conditions are met:
+
+* Redistributions of works must retain the original copyright notice, this list
+  of conditions and the following disclaimer.
+* Redistributions in binary form must reproduce the original copyright notice,
+  this list of conditions and the following disclaimer in the documentation
+  and/or other materials provided with the distribution.
+* Neither the name of Intel Corporation nor the names of its contributors
+  may be used to endorse or promote products derived from this work without
+  specific prior written permission.
+
+THIS SOFTWARE IS PROVIDED BY INTEL CORPORATION "AS IS"
+AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE
+IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE
+ARE DISCLAIMED. IN NO EVENT SHALL INTEL CORPORATION BE LIABLE FOR ANY DIRECT,
+INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING,
+BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE,
+DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY
+OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING
+NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE,
+EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
+
+Authors:
+        Chen, Yanbo <yanbox.a.chen@intel.com>
+
+*/
+html {
+  position: relative;
+  min-height: 100%;
+}
+
+body {
+  padding-top: 70px;
+  margin-bottom: 60px;
+}
+
+.footer {
+  position: fixed;
+  bottom: 0;
+  right:0;
+  left:0;
+  z-index: 1030;
+  /* Set the fixed height of the footer here */
+  height: 60px;
+  background-color: #f5f5f5;
+}
+
+.footer > .container {
+  padding-right: 15px;
+  padding-left: 15px;
+  margin-top:13px;
+}
+
+.footer > .container .text-muted {
+  margin: 20px 0;
+}
+
+.navbar-fixed-top h3 {
+  margin-top:10px;
+}
+
+.bs-glyphicons-list {
+  padding-left: 0;
+  list-style: none;
+}
+
+.bs-glyphicons li {
+  float: left;
+  width: 25%;
+  height: 115px;
+  padding: 10px;
+  font-size: 10px;
+  line-height: 1.4;
+  text-align: center;
+  background-color: #f9f9f9;
+  border: 1px solid #fff;
+}
+
+.bs-glyphicons .glyphicon {
+  margin-top: 5px;
+  margin-bottom: 10px;
+  font-size: 24px;
+}
+
+.bs-glyphicons .glyphicon-class {
+  display: block;
+  text-align: center;
+  word-wrap: break-word;
+}
+
+.bs-glyphicons li:hover {
+  color: #fff;
+  background-color: #563d7c;
+}
+
+@media (min-width:768px) {
+  .bs-glyphicons {
+    margin-right: 0;
+    margin-left: 0;
+  }
+
+  .bs-glyphicons li {
+    width: 12.5%;
+    font-size: 12px;
+  }
+}
+
+.col-md-4 .media:hover,.col-md-4 .media:focus,.col-md-3 .media:hover,.col-md-3 .media:focus {
+	color: #555;
+  text-decoration: none;
+  background-color: #f5f5f5;
+}
+
+.col-md-4 .media.pass,.col-md-3 .media.pass,
+.col-md-4 .media.fail,.col-md-3 .media.fail,
+.col-md-4 .media.unresponse,.col-md-3 .media.unresponse {
+	/*color:#fff;*/
+}
+
+.col-md-4 .media.pass .media-body a,.col-md-3 .media.pass .media-body a,
+.col-md-4 .media.fail .media-body a,.col-md-3 .media.fail .media-body a,
+.col-md-4 .media.unresponse .media-body a,.col-md-3 .media.unresponse .media-body a {
+	/*color:#fff;*/
+}
+
+.col-md-4 .media.pass,.col-md-3 .media.pass {
+	background-color: rgba(92, 184, 92, 0.4);
+}
+
+.col-md-4 .media.fail,.col-md-3 .media.fail {
+	background-color: rgba(217, 83, 99, 0.5);
+}
+
+.col-md-4 .media.unresponse,.col-md-3 .media.unresponse {
+	background-color: #999;
+}
+
+.color-swatches .glyphicon {
+  font-size: 20px;
+  color:#fff;
+  margin-left: 3px;
+  margin-top: 1px;
+}
+
+.color-swatches {
+	width:36px;
+	height: 36px;
+	padding:5px;
+}
+
+.col-md-3 .color-swatches {
+	border-radius: 36px;
+}
+
+.col-md-4 .color-swatches {
+	border-radius: 4px;
+}
+
+.color-swatches.gray-darker {
+  background-color: #222;
+}
+
+.color-swatches.gray-dark {
+  background-color: #333;
+}
+
+.color-swatches.gray {
+  background-color: #555;
+}
+
+.color-swatches.gray-light {
+  background-color: #999;
+}
+
+.color-swatches.gray-lighter {
+  background-color: #eee;
+}
+
+.color-swatches.brand-primary {
+  background-color: #428bca;
+}
+
+.color-swatches.brand-primary3 {
+  background-color: #3b8ede;
+}
+
+.color-swatches.brand-success {
+  background-color: #5cb85c;
+}
+
+.color-swatches.brand-success3 {
+  background-color: #00af43;
+}
+
+.color-swatches.brand-warning {
+  background-color: #f0ad4e;
+}
+.color-swatches.brand-warning3 {
+  background-color: #ff8400;
+}
+
+.color-swatches.brand-danger {
+  background-color: #d9534f;
+}
+.color-swatches.brand-danger3 {
+  background-color: #ea002a;
+}
+.color-swatches.brand-info {
+  background-color: #5bc0de;
+}
+.color-swatches.brand-info3 {
+  background-color: #0083c2;
+}
+.color-swatches.bs-purple {
+  background-color: #563d7c;
+}
+
+.color-swatches.bs-purple3 {
+  background-color: #7665a0;
+}
+
+.color-swatches.bs-purple-light {
+  background-color: #e60895;
+}
+.color-swatches.bs-purple-light3 {
+  background-color: #8b86ca;
+}
+
+.color-swatches.bs-purple-lighter {
+  background-color: #e5e1ea;
+}
+
+.color-swatches.bs-gray {
+  background-color: #f9f9f9;
+}
+
+.media-body {
+	font-size:12px;
+}
+
+.content {
+  margin: 10px 20px;
+  padding-bottom: 10px;
+}
+
+.div-bar {
+  margin-top: 10px;
+  overflow: hidden;
+}
+
+.div-bar-a {
+  float: left;
+  padding-top: 10px;
+  width: 20%;
+}
+
+.div-bar-b {
+  float: left;
+  width: 80%;
+}
+
+.bar-grid-a {
+  float: left;
+  width: 50%;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+.bar-grid-b {
+  float: left;
+  width: 33.3%;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+.bar-grid-c {
+  float: left;
+  width: 25%;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+.bar-grid-d {
+  float: left;
+  width: 20%;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+.list-divider {
+  padding: .5em 15px;
+  font-size: 14px;
+  font-weight: bold;
+  border: 1px solid #456f9a;
+  background: #5e87b0;
+  color: #fff;
+  background-image: linear-gradient( #6facd5, #497bae);
+}
+
+.list-li {
+  padding: .7em 15px;
+  border-bottom-width: 1px;
+  border: 1px solid #ccc;
+  font-size: 14px;
+  font-weight: bold;
+}
+
+.hideButton {
+  display: none;
+}
+
+.ui-li-desc {
+  font-size: 12px;
+  font-weight: normal;
+  display: block;
+  margin: -.5em 0 .6em;
+  text-overflow: ellipsis;
+  overflow: hidden;
+  white-space: nowrap;
+}
+
+.ui-btn-active {
+  background: #5393c5;
+}
+
+.nbsp {
+  padding-left: 3px;
+}
+
+.nbsp2 {
+  padding-left: 6px;
+}
+
+.nbsp3 {
+  padding-left: 15px;
+}
+
+.version {
+  display: inline-block;
+  padding: 6px 12px;
+  margin-bottom: 0;
+  font-size: 14px;
+  font-weight: normal;
+  line-height: 1.42857143;
+  text-align: center;
+  white-space: nowrap;
+  vertical-align: middle;
+  background-image: none;
+  border: 1px solid transparent;
+  border-radius: 4px;
+}
+
+.version-default {
+  color: #333;
+  background-color: #fff;
+  border-color: #ccc;
+}

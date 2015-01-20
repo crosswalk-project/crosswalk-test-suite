@@ -33,21 +33,22 @@ Authors:
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="initial-scale=1.0, maximum-scale=1.0, width=device-width">
-    <link rel="stylesheet" type="text/css" href="../../css/jquery.mobile.css" />
+    <link rel="stylesheet" type="text/css" href="../../css/bootstrap.css">
     <link rel="stylesheet" type="text/css" href="../../css/main.css" />
     <link rel="stylesheet" type="text/css" href="css/style.css" />
-    <script src="../../js/jquery/jquery.js"></script>
-    <script src="../../js/jquery/jquery.mobile.js"></script>
+    <script src="../../js/jquery-2.1.3.min.js"></script>
+    <script src="../../js/bootstrap.min.js"></script>
+    <script src="../../js/common.js"></script>
     <script src="../../js/tests.js"></script>
     <script src="js/main.js"></script>
   </head>
   <body>
-    <div data-role="header">
-      <h1 id="main_page_title"></h1>
+    <div id="header">
+      <h3 id="main_page_title"></h3>
     </div>
-    <div data-role="content" id="content">
+    <div class="content" id="content">
       <div id='serviceContainer' class="topleftcorner">
-        <table id="service" border="5" width="100%">
+        <table id="service" border="5" style="margin-top: 10px; width:50%;">
           <tr>
             <th colspan="2"><H3>Service</H3></th>
           </tr>
@@ -55,28 +56,28 @@ Authors:
             <th>API</th>
             <th>Arg1</th>
           </tr>
-          <tr><td><button onclick='queryMethods()'>Query Methods</button></td></tr>
+          <tr><td><button class="btn btn-default btn-lg btn-block" onclick='queryMethods()'>Query Methods</button></td><td></td></tr>
           <tr>
-            <td><button onclick='queryMechanisms()'>Query Mechanisms</button></td>
-            <td><form>Method: <input type="text" name="serv_method" id="serv_method"><br></form></td>
+            <td><button class="btn btn-default btn-lg btn-block" onclick='queryMechanisms()'>Query Mechanisms</button></td>
+            <td><form>Method: <input type="text" class="form-control" name="serv_method" id="serv_method"><br></form></td>
           </tr>
           <tr>
-            <td><button onclick='queryIdentities()'>Query Identities</button></td>
-            <td><form>Filter(key1:val1,key2:val2,...):<input type="text" name="serv_filter" id="serv_filter"><br></form></td>
+            <td><button class="btn btn-default btn-lg btn-block" onclick='queryIdentities()'>Query Identities</button></td>
+            <td><form>Filter (key1:val1,...):<input type="text" name="serv_filter" class="form-control" id="serv_filter"></form></td>
           </tr>
           <tr>
-            <td><button onclick='getIdentity()'>Get Identity</button></td>
-            <td><form>Id: <input type="text" name="serv_identityid" id="serv_identityid"><br></form></td>
+            <td><button class="btn btn-default btn-lg btn-block" onclick='getIdentity()'>Get Identity</button></td>
+            <td><form>Id: <input type="text" class="form-control" name="serv_identityid" id="serv_identityid"><br></form></td>
           </tr>
-          <tr><td><button onclick='clearDB()'>Clear DB</button></td></tr>
+          <tr><td><button class="btn btn-default btn-lg btn-block" onclick='clearDB()'>Clear DB</button></td><td></td></tr>
         </table>
 
-        <table id="creat_identity" border="5" width="100%" style="margin-top: 10px;">
+        <table id="creat_identity" border="5" style="margin-top: 10px; width:50%;  overflow:hidden">
           <tr>
             <th>
               <H3>
-                <button onclick='onCreateIdentity()'><BR>Create Identity</button>
-                <button onclick='onUpdateIdentity()'><BR>Update Identity</button>
+                <button class="btn btn-default btn-lg btn-block" onclick='onCreateIdentity()'>Create Identity</button>
+                <button class="btn btn-default btn-lg btn-block" onclick='onUpdateIdentity()'>Update Identity</button>
               </H3>
             </th>
           </tr>
@@ -84,32 +85,33 @@ Authors:
             <td><form>Select Type: <select name="cident_type" id="cident_type"><option value = "APP" >Application</option><option value = "WEB" selected >Web</option><option value = "NET" >Network</option></select></form></td>
           </tr>
           <tr>
-            <td><form>Username: <input type="text" name="cident_username" id="cident_username"><br></form></td>
+            <td><form>Username: <input type="text" class="form-control" name="cident_username" id="cident_username"><br></form></td>
           </tr>
           <tr>
-            <td><form>Password:<input type="text" name="cident_secret" id="cident_secret"><br></form></td>
+            <td><form>Password:<input type="text" class="form-control" name="cident_secret" id="cident_secret"><br></form></td>
           </tr>
           <tr>
-            <td><form>StoreSecret:<input type="checkbox" name="cident_storesecret" id="cident_storesecret" style="width: 15px; height: 15px; margin-top: 8px;"><br><br></form></td>
+            <td><form>StoreSecret:<input type="checkbox" class="form-control" name="cident_storesecret" id="cident_storesecret" style="width: 15px; height: 15px; margin-top: 8px;"><br><br></form></td>
           </tr>
           <tr>
-            <td><form>Caption:<input type="text" name="cident_caption" id="cident_caption"><br></form></td>
+            <td><form>Caption:<input type="text" class="form-control" name="cident_caption" id="cident_caption"><br></form></td>
           </tr>
           <tr>
-            <td><form>Realms(realm1,realm2,..):<input type="text" name="cident_realms" id="cident_realms"><br></form></td>
+            <td><form>Realms(realm1,realm2,..):<input type="text" class="form-control" name="cident_realms" id="cident_realms"><br></form></td>
           </tr>
           <tr>
-            <td><form>Owner(appcontext,syscontext):<input type="text" name="cident_owner" id="cident_owner"><br></form></td>
+            <td><form>Owner(appcontext,syscontext):<input type="text" class="form-control" name="cident_owner" id="cident_owner"><br></form></td>
           </tr>
           <tr>
-            <td><form>ACL(json: [{"secContext":{"sysContext":"*","appContext":"*"},"method":"password","mechanisms":["password"]}]):<input type="text" name="cident_acl" id="cident_acl"><br></form></td>
+            <td><form>ACL(json: [{"secContext":{"sysContext":"*","appContext":"*"},
+"method":"password","mechanisms":["password"]}]):<input type="text" class="form-control" name="cident_acl" id="cident_acl"><br></form></td>
           </tr>
         </table>
-        <table width="100%" id="identity" border="5" style="margin-top: 10px;">
+        <table width="100%" id="identity" border="5" style="margin-top: 10px; display:none">
           <tr>
             <th colspan="2">
               <H3>Identity</H3>
-              <form>Selected Identity JSId:<select name="ident_options" id="ident_options" onchange="onIdentityChanged(this)"></select></form>
+              <form style="padding-bottom: 15px;">Selected Identity JSId:<select name="ident_options" id="ident_options" onchange="onIdentityChanged(this)"></select></form>
             </th>
           </tr>
           <tr>
@@ -117,37 +119,37 @@ Authors:
             <th>Arg1</th>
           </tr>
           <tr>
-            <td><button onclick='startSession()'>Start Session</button></td>
-            <td><form>Method: <input type="text" name="ident_method" id="ident_method"><br></form></td>
+            <td><button class="btn btn-default btn-lg btn-block" onclick='startSession()'>Start Session</button></td>
+            <td><form>Method: <input type="text" class="form-control" name="ident_method" id="ident_method"><br></form></td>
           </tr>
           <tr>
-            <td><button onclick='requestCredentialsUpdate()'>Update Credentials</button></td>
-            <td><form>Message: <input type="text" name="ident_message" id="ident_message"><br></form></td>
+            <td><button class="btn btn-default btn-lg btn-block"  onclick='requestCredentialsUpdate()'>Update Credentials</button></td>
+            <td><form>Message: <input type="text" class="form-control" name="ident_message" id="ident_message"><br></form></td>
           </tr>
           <tr>
-            <td><button onclick='store(null)'>Store</button></td>
+            <td><button class="btn btn-default btn-lg btn-block" onclick='store(null)'>Store</button></td>
           </tr>
           <tr>
-            <td><button onclick='addReference()'>Add Reference</button></td>
-            <td><form>Reference: <input type="text" name="ident_addref" id="ident_addref"><br></form></td>
+            <td><button class="btn btn-default btn-lg btn-block" onclick='addReference()'>Add Reference</button></td>
+            <td><form>Reference: <input type="text" class="form-control" name="ident_addref" id="ident_addref"><br></form></td>
           </tr>
           <tr>
-            <td><button onclick='removeReference()'>Remove Reference</button></td>
-            <td><form>Reference: <input type="text" name="ident_remref" id="ident_remref"><br></form></td>
+            <td><button class="btn btn-default btn-lg btn-block" onclick='removeReference()'>Remove Reference</button></td>
+            <td><form>Reference: <input type="text" class="form-control" name="ident_remref" id="ident_remref"><br></form></td>
           </tr>
           <tr>
-            <td><button onclick='removeIdentity()'>Remove</button></td>
+            <td><button class="btn btn-default btn-lg btn-block" onclick='removeIdentity()'>Remove</button></td>
           </tr>
           <tr>
-            <td><button onclick='signout()'>Signout</button></td>
+            <td><button class="btn btn-default btn-lg btn-block" onclick='signout()'>Signout</button></td>
           </tr>
         </table>
 
-        <table id="session" border="5" width="100%" style="margin-top: 10px;">
+        <table id="session" border="5" width="100%" style="margin-top: 10px; display:none">
           <tr>
             <th colspan="3">
               <H3>Session</H3>
-              <form>Selected Session JSId: <select name="sess_options" id="sess_options"></select></form>
+              <form style="padding-bottom: 15px;">Selected Session JSId: <select name="sess_options" id="sess_options"></select></form>
             </th>
           </tr>
           <tr>
@@ -156,28 +158,27 @@ Authors:
             <th>Arg2</th>
           </tr>
           <tr>
-            <td><button onclick='queryAvailableMechanisms()'>QueryAvailableMechanisms</button></td>
-            <td><form>WantedMechanisms(mech1,mech2,..):<input type="text" name="sess_mechs" id="sess_mechs"><br></form></td>
+            <td><button class="btn btn-default btn-lg btn-block" onclick='queryAvailableMechanisms()'>QueryAvailableMechanisms</button></td>
+            <td><form>WantedMechanisms(mech1,mech2,..):<input type="text" class="form-control" name="sess_mechs" id="sess_mechs"><br></form></td>
           </tr>
           <tr>
-            <td><button onclick='challenge()'>Challenge</button></td>
-            <td><form>Mechanism: <input type="text" name="sess_mech" id="sess_mech"><br></form></td>
-            <td><form>SessionData (json: {"key1":"value1","key2":"value2",...}):<input type="text" name="sess_data" id="sess_data"><br></form></td>
+            <td><button class="btn btn-default btn-lg btn-block" onclick='challenge()'>Challenge</button></td>
+            <td><form>Mechanism: <input type="text" class="form-control" name="sess_mech" id="sess_mech"><br></form></td>
+            <td><form>SessionData (json: {"key1":"value1","key2":"value2",...}):<input type="text" class="form-control" name="sess_data" id="sess_data"><br></form></td>
           </tr>
           <tr>
-            <td><button onclick='cancel()'>Cancel</button></td>
+            <td><button class="btn btn-default btn-lg btn-block" onclick='cancel()'>Cancel</button></td>
           </tr>
         </table>
-      </div>
       <div id='resultContainer' class="toprightcorner">
         <form name='form_out'>The results will all show here：<textarea name="form_text" id="form_text" style="width:100%; height: 300px;"></textarea></form>
       </div>
-      <div data-role="footer" data-position="fixed"></div>
     </div>
-    <div data-role="popup" id="popup_info">
-      <font class="fontSize">
-        <p>Check if methods of the sso supported</p>
-      </font>
+    <div class="footer">
+      <div id="footer"></div>
+    </div>
+    <div class="modal fade" id="popup_info">
+      <p>Check if methods of the sso supported</p>
     </div>
   </body>
 </html>

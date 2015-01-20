@@ -29,7 +29,7 @@ Authors:
 
 */
 
-$(document).delegate("#main", "pageinit", function() {
+$(document).ready(function() {
   if(undefined == tizen.websetting) {
     $("#content").html("the device does not support tizen.websetting.");
   };  

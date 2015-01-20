@@ -31,63 +31,73 @@ Authors:
 var installUrl1;
 var installUrl2;
 
-$(document).delegate("#main", "pageinit", function() {
+$(document).ready(function () {
     DisablePassButton();
 
-    $("#install1").bind("vclick", function() {
-        install(installUrl1, "install1");
-    });
-    $("#install2").bind("vclick", function() {
-        install(installUrl2, "install2");
-    });
-    $("#launch1").bind("vclick", function() {
-        launch("app-control1");
-        if(checkInstalledPkg("apcontrol2")) {
-            $("#install2").addClass("ui-disabled");
-            $("#launch2").removeClass("ui-disabled");
-        } else {
-            $("#install2").removeClass("ui-disabled");
-        }
-    });
-    $("#launch2").bind("vclick", function() {
-        launch("app-control2");
-        $("#uninstall").removeClass("ui-disabled");
-    });
-    $("#uninstall").bind("vclick", function() {
-        ["apcontrol1", "apcontrol2"].forEach(function(package_id) {
-            if(checkInstalledPkg(package_id)) {
-                setTimeout(function() {
-                    uninstall(package_id);
-                }, 1000);
-            }
-        });
-    });
+    $("#install1").click(install1App);
+    $("#install2").click(install2App);
+    $("#launch1").click(launch1App);
+    $("#launch2").click(launch2App);
+    $("#uninstall").click(uninstallApp);
     try {
         tizen.package.setPackageInfoEventListener(packageEventCallback);
     } catch (e) {
-        alert("Exception: " + e.message);
+        $("#popup_info").modal(showMessage("error", "Exception: " + e.message));
     }
     packagePre();
-    $("#launch1").addClass("ui-disabled");
-    $("#launch2").addClass("ui-disabled");
-    $("#install2").addClass("ui-disabled");
-    $("#uninstall").addClass("ui-disabled");
+    $("#launch1").attr('disabled', true);
+    $("#launch2").attr('disabled', true);
+    $("#install2").attr('disabled', true);
+    $("#uninstall").attr('disabled', true);
 
     if(checkInstalledPkg("apcontrol1")) {
-        $("#install1").addClass("ui-disabled");
-        $("#launch1").removeClass("ui-disabled");
+        $("#install1").attr('disabled', true);
+        $("#launch1").attr('disabled', false);
     }
 });
 
+function install1App() {
+    install(installUrl1, "install1");
+}
+
+function install2App() {
+    install(installUrl2, "install2");
+}
+
+function launch1App() {
+    launch("app-control1");
+    if(checkInstalledPkg("apcontrol2")) {
+        $("#install2").attr('disabled', true);
+        $("#launch2").attr('disabled', false);
+    } else {
+        $("#install2").attr('disabled', false);
+    }
+}
+
+function launch2App() {
+    launch("app-control2");
+    $("#uninstall").attr('disabled', false);
+}
+
+function uninstallApp() {
+    ["apcontrol1", "apcontrol2"].forEach(function(package_id) {
+        if(checkInstalledPkg(package_id)) {
+            setTimeout(function() {
+                uninstall(package_id);
+            }, 1000);
+        }
+    });
+}
+
 var packageEventCallback = {
     oninstalled: function(packageInfo) {
-        alert("The package " + packageInfo.name + " is installed");
+        $("#popup_info").modal(showMessage("success", "The package " + packageInfo.name + " is installed"));
     },
     onupdated: function(packageInfo) {
-        alert("The package " + packageInfo.name + " is updated");
+        $("#popup_info").modal(showMessage("success", "The package " + packageInfo.name + " is updated"));
     },
     onuninstalled: function(packageId) {
-        alert("The package " + packageId + " is uninstalled");
+        $("#popup_info").modal(showMessage("success", "The package " + packageId + " is uninstalled"));
     }
 };
 
@@ -110,7 +120,7 @@ function fileURI() {
     }
 
     function onerror(error) {
-        alert("The error " + error.message + " occurred when listing the files in the selected folder");
+        $("#popup_info").modal(showMessage("error", "The error " + error.message + " occurred when listing the files in the selected folder"));
     }
 
     tizen.filesystem.resolve(
@@ -119,7 +129,7 @@ function fileURI() {
             documentsDir = dir;
             dir.listFiles(onsuccess, onerror);
         }, function(e) {
-            alert("Error" + e.message);
+            $("#popup_info").modal(showMessage("error", "Error" + e.message));
         }, "r"
     );
 }
@@ -141,13 +151,13 @@ function install(url, type) {
         {
             console.log("Installation(" + packageId + ") Complete");
             if(type == "install1") {
-                $("#install1").addClass("ui-disabled");
-                $("#launch1").removeClass("ui-disabled");
+                $("#install1").attr('disabled', true);
+                $("#launch1").attr('disabled', false);
                 $("#install1").html('<div data-role="button" id="install1" style="height:40px; line-height:40px;">Install</div>');
             }
             if(type == "install2") {
-                $("#install2").addClass("ui-disabled");
-                $("#launch2").removeClass("ui-disabled");
+                $("#install2").attr('disabled', true);
+                $("#launch2").attr('disabled', false);
                 $("#install2").html('<div data-role="button" id="install2" style="height:40px; line-height:40px;">Install</div>');
             }
         }
@@ -155,14 +165,14 @@ function install(url, type) {
 
     var onError = function (err) {
         if (err.name != "UnknownError") {
-            alert("Error occured on installation : " + err.name);
+            $("#popup_info").modal(showMessage("error", "Error occured on installation : " + err.name));
         }
     }
 
     try {
         tizen.package.install(url, onInstallationSuccess, onError);
     } catch(e) {
-        alert("Exception: " + e.name);
+        $("#popup_info").modal(showMessage("error", "Exception: " + e.name));
     }
 }
 
@@ -177,11 +187,11 @@ function uninstall(package_id) {
         {
             console.log("Uninstallation(" + packageId + ") Complete");
             if(packageId == "apcontrol1") {
-                $("#launch1").addClass("ui-disabled");
+                $("#launch1").attr('disabled', true);
             }
             if(packageId == "apcontrol2") {
-                $("#launch2").addClass("ui-disabled");
-                $("#uninstall").addClass("ui-disabled");
+                $("#launch2").attr('disabled', true);
+                $("#uninstall").attr('disabled', true);
                 EnablePassButton();
             }
         }
@@ -189,14 +199,14 @@ function uninstall(package_id) {
 
     var onError = function (err) {
         if (err.name != "UnknownError") {
-            alert("Error occured on uninstallation : " + err.name);
+            $("#popup_info").modal(showMessage("error", "Error occured on uninstallation : " + err.name));
         }
     }
 
     try {
         tizen.package.uninstall(package_id, onUninstallationSuccess, onError);
     } catch (e) {
-        alert("Exception: " + e.name);
+        $("#popup_info").modal(showMessage("error", "Exception: " + e.name));
     }
 }
 
@@ -206,7 +216,7 @@ function launch(option) {
     }
 
     function onError(err) {
-        alert("launch failed : " + err.message);
+        $("#popup_info").modal(showMessage("error", "launch failed : " + err.message));
     }
 
     try {
@@ -222,7 +232,7 @@ function launch(option) {
             tizen.application.launchAppControl(control, "apcontrol2.AppcontrolRegularWgt", onSuccess, onError, null);
         }
     } catch (exc) {
-        alert("launch exc:" + exc.message);
+        $("#popup_info").modal(showMessage("error", "launch exc:" + exc.message));
     }
 }
 
@@ -256,7 +266,7 @@ function packagePre() {
     }
 
     function onerror(error) {
-        alert("The error " + error.message + " occurred when listing the files in the selected folder");
+        $("#popup_info").modal(showMessage("error", "The error " + error.message + " occurred when listing the files in the selected folder"));
     }
 
     tizen.filesystem.resolve(
@@ -265,7 +275,7 @@ function packagePre() {
             documentsDir = dir;
             dir.listFiles(onsuccess, onerror);
         }, function(e) {
-            alert("Error" + e.message);
+            $("#popup_info").modal(showMessage("error", "Error" + e.message));
         }, "r"
     );
 }

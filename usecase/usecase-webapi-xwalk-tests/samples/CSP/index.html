@@ -29,87 +29,28 @@ Authors:
         Xu, Jianfeng <jianfengx.xu@intel.com>
 
 -->
-<html>
-  <head>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="initial-scale=1.0, maximum-scale=1.0, width=device-width" />
-    <link rel="stylesheet" type="text/css" href="../../css/jquery.mobile.css" />
-    <link rel="stylesheet" type="text/css" href="../../css/main.css" />
-    <script src="../../js/jquery/jquery.js"></script>
-    <script src="../../js/jquery/jquery.mobile.js"></script>
-    <script src="../../js/tests.js"></script>
-    <script src="../../js/main.js"></script>
-  </head>
-  <body>
-    <input type="hidden" id="sub_test"/>
-    <div data-role="page" id="main">
-        <div data-role="header" data-position="fixed" data-tap-toggle="false">
-            <h1 id="main_page_title"></h1>
-        </div>
-        <div id="content">
-            <ul data-role="listview" id="cspList" data-divider-theme="b" data-inset="true">
-                <li data-role="list-divider" role="heading">Test common directives</li>
-                <li id="csp-none">
-                    <a href="javascript:runApp('res/csp-none/index.html')" data-transition="slide" style="">
-                        <h2>csp-none</h2>
-                    </a>
-                </li>
-                <li id="csp-self">
-                    <a href="javascript:runApp('res/csp-self/index.html')" data-transition="slide" style="">
-                        <h2>csp-self</h2>
-                    </a>
-                </li>
-                <li id="csp-asterisk">
-                    <a href="javascript:runApp('res/csp-asterisk/index.html')" data-transition="slide" style="">
-                        <h2>csp-asterisk</h2>
-                    </a>
-                </li>
-                <li id="csp-cross-origin">
-                    <a href="javascript:runApp('res/csp-cross-origin/index.html')" data-transition="slide" style="">
-                        <h2>csp-cross-origin</h2>
-                    </a>
-                </li>
-                <li data-role="list-divider" role="heading">Test default-src directive</li>
-                <li id="default-src-self">
-                    <a href="javascript:runApp('res/default-src_self/index.html')" data-transition="slide" style="">
-                        <h2>default-src-self</h2>
-                    </a>
-                </li>
-                <li id="default-src-asterisk">
-                    <a href="javascript:runApp('res/default-src_asterisk/index.html')" data-transition="slide" style="">
-                        <h2>default-src-asterisk</h2>
-                    </a>
-                </li>
-                <li data-role="list-divider" role="heading">Test sandbox directive</li>
-                <li id="sandbox-same-origin-allow-scripts">
-                    <a href="javascript:runApp('res/sandbox-same-origin-allow-scripts/index.html')" data-transition="slide" style="">
-                        <h2>sandbox-same-origin-allow-scripts</h2>
-                    </a>
-                </li>
-                <li data-role="list-divider" role="heading">Test script-src directive</li>
-                <li id="script-src-inline-eval">
-                    <a href="javascript:runApp('res/script-src_inline_eval/index.html')" data-transition="slide" style="">
-                        <h2>script-src-inline-eval</h2>
-                    </a>
-                </li>
-                <li data-role="list-divider" role="heading">Test style-src directive</li>
-                <li id="style-src-self">
-                    <a href="javascript:runApp('res/style-src_self/index.html')" data-transition="slide" style="">
-                        <h2>style-src-self</h2>
-                    </a>
-                </li>
-            </ul>
-        </div>
-        <div data-role="footer" data-position="fixed" data-tap-toggle="false">
-        </div>
-        <div data-role="popup" id="popup_info" data-theme="a">
-          <font class="fontSize">
-            <p>Verifies the functionality of CSP worked well.</p>
-          </font>
-        </div>
-    </div>
-    <div data-role="page" id="test_ui">
-      <iframe id="test_frame" width="100%" frameborder="no" border="0" src=""></iframe>
-    </div>
-  </body>
-</html>
+
+<meta charset="utf-8" />
+<meta name="viewport" content="initial-scale=1.0, maximum-scale=1.0, width=device-width" />
+<link href="../../css/bootstrap.css" rel="stylesheet" type="text/css">
+<link href="../../css/main.css" rel="stylesheet" type="text/css">
+<script src="../../js/jquery-2.1.3.min.js"></script>
+<script src="../../js/bootstrap.min.js"></script>
+<script src="../../js/sublist.js"></script>
+<script src="../../js/common.js"></script>
+<script src="../../js/tests.js"></script>
+
+<div id="header">
+  <h3 id="main_page_title"></h3>
+</div>
+<div class="content">
+  <div class="row" id="mytest">
+  </div>
+</div>
+<!-- footer -->
+<div class="footer">
+  <div id="footer"></div>
+</div>
+<div class="modal fade" id="popup_info">
+  <p>Verifies the functionality of CSP worked well.</p>
+</div>

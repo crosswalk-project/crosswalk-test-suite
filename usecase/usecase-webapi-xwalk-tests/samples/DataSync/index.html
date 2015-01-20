@@ -18,56 +18,53 @@ Authors:
         Choi, Jongheon <j-h.choi@samsung.com>
 
 -->
-<html>
-<head>
+
 <meta charset="utf-8" />
 <meta name="viewport" content="initial-scale=1.0, maximum-scale=1.0, width=device-width" />
-<link rel="stylesheet" type="text/css" href="../../css/jquery.mobile.css" />
-<script src="../../js/jquery/jquery.js"></script>
-<script src="../../js/jquery/jquery.mobile.js"></script>
+<link rel="stylesheet" type="text/css" href="../../css/bootstrap.css">
+<link rel="stylesheet" type="text/css" href="../../css/main.css">
+<script src="../../js/jquery-2.1.3.min.js"></script>
+<script src="../../js/bootstrap.min.js"></script>
+<script src="../../js/common.js"></script>
 <script src="../../js/tests.js"></script>
 <script src="js/main.js"></script>
-</head>
-<body>
-    <div data-role="header" data-position="fixed" data-tap-toggle="false">
-        <h1 id="main_page_title"></h1>
+
+<div id="header">
+  <h3 id="main_page_title"></h3>
+</div>
+<div class="content">
+    <div class="panel panel-primary" style="margin-bottom: 0px;">
+        <div class="panel-heading">OMA DS(Data Synchronization) Server</div>
+        <div class="panel-body">
+            <input class="form-control" type="url" id="url" value="" />
+        </div>
+        <div class="panel-heading">OMA DS Server ID</div>
+        <div class="panel-body">
+            <input class="form-control" type="text" id="account" value="" />
+        </div>
+        <div class="panel-heading">OMA DS Server Password</div>
+        <div class="panel-body">
+            <input class="form-control" type="password" id="passwd" value="" />
+        </div>
+        <div class="panel-heading">OMA DS Server Database URI</div>
+        <div class="panel-body">
+            <input class="form-control" type="text" id="database" value="" />
+        </div>
+        <div class="panel-heading">OMA DS Server Connect</div>
+        <div class="panel-body">
+            <div type="button" class="btn btn-default btn-lg btn-block" onclick="addProfile();">Add Profile</div>
+        </div>
+        <div class="panel-heading">Contacts Sync</div>
+        <div class="panel-body">
+            <div type="button" class="btn btn-default btn-lg btn-block" onclick="startSync();">Start Sync</div>
+        </div>
+        <div class="panel-heading">Contacts List</div>
     </div>
-    <div id="content">
-        <ul data-role="listview">
-            <li data-role="list-divider">OMA DS(Data Synchronization) Server</li>
-            <li>
-                <input type="url" id="url" value="" />
-            </li>
-            <li data-role="list-divider">OMA DS Server ID</li>
-            <li>
-                <input type="text" id="account" value="" />
-            </li>
-            <li data-role="list-divider">OMA DS Server Password</li>
-            <li>
-                <input type="password" id="passwd" value="" />
-            </li>
-            <li data-role="list-divider">OMA DS Server Database URI</li>
-            <li>
-                <input type="text" id="database" value="" />
-            </li>
-            <li data-role="list-divider">OMA DS Server Connect</li>
-            <li>
-                <div data-role="button" onclick="addProfile();">Add Profile</div>
-            </li>
-            <li data-role="list-divider">Contacts Sync</li>
-            <li>
-                <div data-role="button" onclick="startSync();">Start Sync</div>
-            </li>
-            <li data-role="list-divider">Contacts List</li>
-        </ul>
-        <ul data-role="listview" id="contactsList"></ul>
-    </div>
-    <div data-role="footer" data-position="fixed" data-tap-toggle="false">
-    </div>
-    <div data-role="popup" id="popup_info">
-        <font style="font-size:85%">
-            <p>Check if data is successfully synchronized with an OMA DS server</p><br>
-        </font>
-    </div>
-</body>
-</html>
+    <div class="panel panel-primary" id="contactsList"></div>
+</div>
+<div class="footer">
+  <div id="footer"></div>
+</div>
+<div class="modal fade" id="popup_info">
+  <p>Check if data is successfully synchronized with an OMA DS server</p><br>
+</div>

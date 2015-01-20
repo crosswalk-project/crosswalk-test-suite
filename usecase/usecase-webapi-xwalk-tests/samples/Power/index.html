@@ -18,45 +18,42 @@ Authors:
         Choi, Jongheon <j-h.choi@samsung.com>
 
 -->
-<html>
-<head>
+
 <meta charset="utf-8" />
 <meta name="viewport" content="initial-scale=1.0, maximum-scale=1.0, width=device-width" />
-<link rel="stylesheet" type="text/css" href="../../css/jquery.mobile.css" />
-<script src="../../js/jquery/jquery.js"></script>
-<script src="../../js/jquery/jquery.mobile.js"></script>
+<link rel="stylesheet" type="text/css" href="../../css/bootstrap.css">
+<link rel="stylesheet" type="text/css" href="../../css/main.css">
+<script src="../../js/jquery-2.1.3.min.js"></script>
+<script src="../../js/bootstrap.min.js"></script>
+<script src="../../js/common.js"></script>
 <script src="../../js/tests.js"></script>
 <script src="js/main.js"></script>
-</head>
-<body>
-    <div data-role="header" data-position="fixed" data-tap-toggle="false">
-        <h1 id="main_page_title"></h1>
+
+<div id="header">
+  <h3 id="main_page_title"></h3>
+</div>
+<div class="content">
+  <div class="panel panel-primary" id="list">
+    <div class="panel-heading">Request Screen</div>
+    <div class="panel-body">
+        <input type="button" class="btn btn-default btn-lg btn-block" value="Request SCREEN_DIM" onclick="request('SCREEN_DIM');" />
     </div>
-    <div id="content">
-        <ul data-role="listview" id="list">
-            <li data-role="list-divider">Request Screen</li>
-            <li>
-                <input type="button" value="Request SCREEN_DIM" onclick="request('SCREEN_DIM');" />
-            </li>
-            <li>
-                <input type="button" value="Request SCREEN_NORMAL" onclick="request('SCREEN_NORMAL');" />
-            </li>
-            <li data-role="list-divider">Release Screen</li>
-            <li>
-                <input type="button" value="Release SCREEN" onclick="release();" />
-            </li>
-            <li data-role="list-divider">Turn Off</li>
-            <li>
-                <input type="button" value="Turn SCREEN_OFF" onclick="turnScreenOff();" />
-            </li>
-        </ul>
+    <div class="panel-body">
+        <input type="button" class="btn btn-default btn-lg btn-block" value="Request SCREEN_NORMAL" onclick="request('SCREEN_NORMAL');" />
     </div>
-    <div data-role="footer" data-position="fixed" data-tap-toggle="false">
+    <div class="panel-heading">Release Screen</div>
+    <div class="panel-body">
+        <input type="button" class="btn btn-default btn-lg btn-block" value="Release SCREEN" onclick="release();" />
     </div>
-    <div data-role="popup" id="popup_info">
-        <font style="font-size:85%">
-            <p>Check if the screen status is successfully changed</p>
-        </font>
+    <div class="panel-heading">Turn Off</div>
+    <div class="panel-body">
+        <input type="button" class="btn btn-default btn-lg btn-block" value="Turn SCREEN_OFF" onclick="turnScreenOff();" />
     </div>
-</body>
-</html>
+  </div>
+</div>
+<div class="footer">
+  <div id="footer"></div>
+</div>
+<div class="modal fade" id="popup_info">
+  <p>Check if the screen status is successfully changed</p>
+</div>

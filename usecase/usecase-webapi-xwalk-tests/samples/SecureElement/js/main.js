@@ -39,7 +39,7 @@ function getReadersName() {
 
     tizen.seService.shutdown();
   } catch (err) {
-      console.log (err.name + ": " + err.message);
+      $("#popup_info").modal(showMessage("error", err.name + ": " + err.message));
   }
 }
 

@@ -19,39 +19,23 @@ Authors:
 */
 
 var installUrl;
-$(document).delegate("#main", "pageinit", function() {
-    $("#alarm-remove-all").bind("vclick", function() {
-        removeAll();
-        return false;
-    });
-    $("#alarm-all-list").delegate("li", "vclick", function() {
-        alarmInfo($(this).data("id"));
-        return false;
-    });
-    $("#alarm-all-list").delegate("div", "vclick", function() {
-        removeAlarm($(this).parent().data("id"));
-        return false;
-    });
-    $("#install").bind("vclick", function() {
-        install_(installUrl);
-        $("#absolute-alarm-save").removeClass("ui-disabled");
-        return false;
-    });
-    $("#absolute-alarm-save").bind("vclick", function() {
-        addAlarmAbsolute();
-        $("#alarm-remove-all").removeClass("ui-disabled");
-        return false;
-    });
-    $("#absolute-alarm-save").addClass("ui-disabled");
-    $("#alarm-remove-all").addClass("ui-disabled");
+$(document).ready(function () {
+    $("#install").click(install);
+    $("#absolute-alarm-save").attr('disabled', true);
+    $("#alarm-remove-all").attr('disabled', true);
     try {
         tizen.package.setPackageInfoEventListener(packageEventCallback);
     } catch (e) {
-        alert("Exception: " + e.message);
+        $("#popup_info").modal(showMessage("error", "Exception: " + e.message));
     }
     displayAlarms();
     alarmPre();
 });
+
+function install() {
+    install_(installUrl);
+    $("#absolute-alarm-save").attr('disabled', false);
+}
 
 function fileURI() {
     var documentsDir;
@@ -67,7 +51,7 @@ function fileURI() {
     }
 
     function onerror(error) {
-        alert("The error " + error.message + " occurred when listing the files in the selected folder");
+        $("#popup_info").modal(showMessage("error", "The error " + error.message + " occurred when listing the files in the selected folder"));
     }
 
     tizen.filesystem.resolve(
@@ -76,7 +60,7 @@ function fileURI() {
                 documentsDir = dir;
                 dir.listFiles(onsuccess, onerror);
             }, function(e) {
-                alert("Error " + e.message);
+                $("#popup_info").modal(showMessage("error", "Error " + e.message));
             }, "r"
     );
 }
@@ -96,9 +80,9 @@ function displayAlarms() {
             var d = alarmsArray[i].date,
             m = d.getMinutes();
 
-            str += '<li data-id="'
+            str += '<div type="button" class="panel-body" onclick="alarmInfo('
                 + alarmsArray[i].id
-                + '">'
+                + ')">'
                 + (d.getMonth() + 1)
                 + '/'
                 + d.getDate()
@@ -110,21 +94,21 @@ function displayAlarms() {
                 + ((m < 10) ? "0" + m : m)
                 + ' Absolute alarm<br>(Period: '
                 + period
-                + ') <div data-role="button" data-inline="true">Delete</div></li>';
+                + ') <div type="button" class="btn btn-default btn-block" onclick="removeAlarm(' + alarmsArray[i].id + ')">Delete</div></div>';
         } else if (alarmsArray[i] instanceof tizen.AlarmRelative) {
-            str += '<li data-id="'
+            str += '<div type="button" class="panel-body" onclick="alarmInfo('
                 + alarmsArray[i].id
-                + '">'
+                + ')">'
                 + alarmsArray[i].delay
                 + ' sec Relative alarm<br>(Period: '
                 + period
-                + ') <div data-role="button" data-inline="true">Delete</div></li>';
+                + ') <div type="button" class="btn btn-default btn-block" onclick="removeAlarm(' + alarmsArray[i].id + ')">Delete</div></div>';
         } else {
-            alert("Wrong alarm instance");
+            $("#popup_info").modal(showMessage("error", "Wrong alarm instance"));
             break;
         }
     }
-    $("#alarm-all-list").html(str).trigger("create").listview("refresh");
+    $("#alarm-all-list").html(str);
 }
 
 function addAlarm(alarm) {
@@ -138,17 +122,18 @@ function addAlarm(alarm) {
     try {
         tizen.alarm.add(alarm, "bhvtcalarm.AlarmTest", arg);
     } catch (e) {
-        alert("error: " + e.message);
+        $("#popup_info").modal(showMessage("error", "error: " + e.message));
     }
 }
 
 function addAlarmAbsolute() {
+    $("#alarm-remove-all").attr('disabled', false);
     var period = parseInt($("#absolute-alarm-period").prop("value")),
     time = $("#alarm-time").prop("value"),
     year, month, date, hours, minutes, splits, d, t;
 
     if (time === null || time === "" || period < 0) {
-        alert("Getting alarm settings failed");
+        $("#popup_info").modal(showMessage("error", "Getting alarm settings failed"));
     }
     else
     {
@@ -166,23 +151,20 @@ function addAlarmAbsolute() {
         var myAlarm = new tizen.AlarmAbsolute(inputDate, (period > 0 ? period : null));
 
         addAlarm(myAlarm);
-        alert("Absolute Alarm Added");
         displayAlarms();
     }
 }
 
 function removeAll() {
     tizen.alarm.removeAll();
-    alert("Alarm delete all");
     displayAlarms();
 }
 
 function removeAlarm(id) {
     try {
         tizen.alarm.remove(id);
-        alert("Alarm delete");
     } catch (e) {
-        alert("Alarm remove failed. The once alarm might be already removed automatically");
+        $("#popup_info").modal(showMessage("error", "Alarm remove failed. The once alarm might be already removed automatically"));
     }
     displayAlarms();
 }
@@ -192,12 +174,12 @@ function alarmInfo(id) {
 
     if (alarm) {
         if (alarm instanceof tizen.AlarmAbsolute) {
-            alert("Next scheduled alarm is " + alarm.getNextScheduledDate());
+            $("#popup_info").modal(showMessage("success", "Next scheduled alarm is " + alarm.getNextScheduledDate()));
         } else {
-            alert("Remaining seconds is " + alarm.getRemainingSeconds() + " SECS");
+            $("#popup_info").modal(showMessage("success", "Remaining seconds is " + alarm.getRemainingSeconds() + " SECS"));
         }
     } else {
-        alert("Alarm info retrieving failed<br/>This once alarm might be already removed automatically");
+        $("#popup_info").modal(showMessage("error", "Alarm info retrieving failed<br/>This once alarm might be already removed automatically"));
         displayAlarms();
     }
 }
@@ -217,26 +199,26 @@ function install_(url) {
     }
 
     var onError = function (err) {
-        alert("Error occured on installation : " + err.message);
+        $("#popup_info").modal(showMessage("error", "Error occured on installation : " + err.message));
     }
 
     try {
         tizen.package.install(url, onInstallationSuccess, onError);
     } catch (e) {
-        alert("Exception: " + e.name);
+        $("#popup_info").modal(showMessage("error", "Exception: " + e.name));
     }
 }
 
 var packageEventCallback = {
         oninstalled: function(packageInfo) {
-            alert("The package " + packageInfo.name + " is installed");
+            $("#popup_info").modal(showMessage("success", "The package " + packageInfo.name + " is installed"));
             install_flag = true;
         },
         onupdated: function(packageInfo) {
-            alert("The package " + packageInfo.name + " is updated");
+            $("#popup_info").modal(showMessage("success", "The package " + packageInfo.name + " is updated"));
         },
         onuninstalled: function(packageId) {
-            alert("The package " + packageId + " is uninstalled");
+            $("#popup_info").modal(showMessage("success", "The package " + packageId + " is uninstalled"));
             install_flag = false;
         }
 };
@@ -261,7 +243,7 @@ function alarmPre() {
     }
 
     function onerror(error) {
-        alert("The error " + error.message + " occurred when listing the files in the selected folder");
+        $("#popup_info").modal(showMessage("error", "The error " + error.message + " occurred when listing the files in the selected folder"));
     }
 
     tizen.filesystem.resolve(
@@ -270,7 +252,7 @@ function alarmPre() {
             documentsDir = dir;
             dir.listFiles(onsuccess, onerror);
         }, function(e) {
-            alert("Error " + e.message);
+            $("#popup_info").modal(showMessage("error", "Error " + e.message));
         }, "r"
     );
 }

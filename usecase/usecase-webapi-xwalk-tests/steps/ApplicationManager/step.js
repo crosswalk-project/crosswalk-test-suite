@@ -5,7 +5,7 @@ var step = '<font class="fontSize">'
             +'<p>Verifies ApplicationMnager.addAppinfoEventListener and install/uninstall/update events are supported and valid.</p>'
             +'<p>Test Steps: </p>'
               +'<ol>'
-                +'<li>Run the application or click the 'CurrentApp' button, check if current application information can be shown</li>'
+                +"<li>Run the application or click the 'CurrentApp' button, check if current application information can be shown</li>"
                 +'<li>Click \'AllApp\' button, check if the application list can be shown</li>'
                 +'<li>Click the \'AppInfo\' link, check if the application information which you select can be shown</li>'
                 +'<li>Click the \'Run App\' link, check if the application which you select can be run and success infromation can be shown</li>'

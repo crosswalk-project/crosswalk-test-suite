@@ -29,31 +29,30 @@ Authors:
 
 */
 
-$(document).delegate("#main", "pageinit", function() {
+$(document).ready(function() {
   var widthInput = document.getElementById('width-input');
   var heightInput = document.getElementById('height-input');
   var typeSelect = document.getElementById('type-select');
-
-  $("#filter-button").bind("vclick", function() {
-    var widthValue = widthInput.value;
-    if (!widthValue) {
-      widthValue = widthInput.placeholder;
-    }
-    var heightValue = heightInput.value;
-    if(!heightValue) {
-      heightValue = heightInput.placeholder;
-    }
-    var count = 100;
-    var widthFilter = new tizen.AttributeFilter("width", typeSelect.value, widthValue);
-    var heightFilter = new tizen.AttributeFilter("height", typeSelect.value, heightValue);
-    var filter = new tizen.CompositeFilter("INTERSECTION", [widthFilter, heightFilter]);
-    tizen.content.find(findCB, errorCB, null, filter, null, count);
-  });
-
 });
 
+function filterTizen() {
+  var widthValue = widthInput.value;
+  if (!widthValue) {
+    widthValue = widthInput.placeholder;
+  }
+  var heightValue = heightInput.value;
+  if(!heightValue) {
+    heightValue = heightInput.placeholder;
+  }
+  var count = 100;
+  var widthFilter = new tizen.AttributeFilter("width", typeSelect.value, widthValue);
+  var heightFilter = new tizen.AttributeFilter("height", typeSelect.value, heightValue);
+  var filter = new tizen.CompositeFilter("INTERSECTION", [widthFilter, heightFilter]);
+  tizen.content.find(findCB, errorCB, null, filter, null, count);
+}
+
 function errorCB(err) {
-  window.alert( 'The following error occurred: ' +  err.name);
+  $("#popup_info").modal(showMessage("error", 'The following error occurred: ' +  err.name));
 }
 
 function printContent(content, index, contents) {
