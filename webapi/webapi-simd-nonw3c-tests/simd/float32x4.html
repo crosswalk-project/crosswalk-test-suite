@@ -106,4 +106,16 @@ test("Check if the select method of float32x4 is valid", function () {
   equal(7.0, s.z, "the value of s.z should be 7.0");
   equal(8.0, s.w, "the value of s.w should be 8.0");
 });
+
+test('float32x4 store smi check', function() {
+  var a = new Float32Array(12);
+  for(var j = 0; j < 1000; j++) {
+    SIMD.float32x4.store(a, 0, SIMD.float32x4(0, 1, 2, 3));
+    SIMD.float32x4.store(a, 4, SIMD.float32x4(4, 5, 6, 7));
+    SIMD.float32x4.store(a, 8, SIMD.float32x4(8, 9, 10, 11));
+  }
+  for (var i = 0; i < a.length; i++) {
+    equal(i, a[i]);
+  }
+});
 </script>
