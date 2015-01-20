@@ -1,0 +1,40 @@
+{
+    "pkg-blacklist": [
+        "config.xml",
+        "pack.py",
+        "testcase.xsl",
+        "testresult.xsl",
+        "tests.css",
+        "icon.png",
+        "suite.json",
+        "inst.*"
+    ],
+    "pkg-list": {
+        "wgt": {
+            "blacklist": [
+                "*"
+            ],
+            "subapp-list": {"WebRTC": {}},            
+            "copylist": {
+                "inst.wgt.py": "inst.py",
+                "tests.full.xml": "tests.full.xml",
+                "tests.xml": "tests.xml"
+            },
+            "pkg-app": {}
+        },
+        "xpk": {
+            "blacklist": [
+                "*"
+            ],
+            "copylist": {
+                "inst.xpk.py": "inst.py",
+                "tests.full.xml": "tests.full.xml",
+                "tests.xml": "tests.xml"
+            },
+            "pkg-app": {
+                "blacklist": []
+            }
+        }
+    },
+    "pkg-name": "sampleapp-tizen-tests"
+}
