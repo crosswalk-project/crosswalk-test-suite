@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <!--
-Copyright (c) 2015 Intel Corporation.
+Copyright (c) 2013 Intel Corporation.
 
 Redistribution and use in source and binary forms, with or without modification,
 are permitted provided that the following conditions are met:
@@ -29,6 +29,7 @@ Authors:
         Wang, Hongjuan <hongjuanx.wang@intel.com>
 
 -->
+
 <meta charset="utf-8" />
 <meta name="viewport" content="initial-scale=1.0, maximum-scale=1.0, width=device-width">
 <link rel="stylesheet" type="text/css" href="../../css/bootstrap.css">
@@ -42,20 +43,31 @@ Authors:
   <h3 id="main_page_title"></h3>
 </div>
 <div class="content">
-   <input type="date" class="form-control" id="shipmentDate" placeholder="JJ/MM/AAAA" ng-model="draftOrder.shipmentDate" min="dateMinimum" required>
+  <h4>Pre-condition</h4>
+  <ul>
+    <li>Install RuntimeLib for arm on arm devices</li>
+    <li>Install RuntimeLib for x86 on x86 devices</p>
+  </ul>
+  <h4>Test Steps</h4>
+  <ol>
+    <li>Build an embedded x86 apk with --arch=x86 --mode=embedded</li>
+    <li>Install the x86 apk on arm devices, then launch it</li>
+    <li>Build an embedded arm apk with --arch=arm --mode=embedded</li>
+    <li>Install the arm apk on x86 devices, then launch it</li>
+  </ol>
 </div>
 <div class="footer">
   <div id="footer"></div>
 </div>
 <div class="modal fade" id="popup_info">
-  <p>Test Steps:</p>
-  <ol>
-    <li>Set the locale language to French, then click the input</li>
-    <li>Click the third button</li>
-  </ol>
+  <p>Purpose:</p>
+  <p>Verifies that embedded x86 apk can be installed and launched on arm devices if native library is not found</p>
+  <p>Verifies that embedded arm apk can be installed and launched on x86 devices if native library is not found</p>
   <p>Expected Result:</p>
   <ol>
-    <li>Display a calendar window</li>
-    <li>Globalization: Display the current date in FR format DD/MM/YYYY, like "21/01/2015". The MM/DD/YYYY like 01/21/2015 is not expected.</li>
+    <li>Build an embedded x86 apk successfully</li>
+    <li>Install and launch the app correctly on arm devices</li>
+    <li>Build an embedded arm apk successfully</li>
+    <li>Install and launch the app correctly on x86 devices</li>
   </ol>
 </div>

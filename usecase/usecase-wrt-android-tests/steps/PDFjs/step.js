@@ -1,0 +1,12 @@
+var step = '<font class="fontSize">'
+            +'<p>Pre-condition</p>'
+            +'<ul>'
+            +'<li>Connect to network</li>'
+            +'</ul>'
+            +'<p>Test Step</p>'
+            +'<ol>'
+            +'<li>Click "Open PDFjs"</li>'
+            +'</ol>'
+            +'<p>Expected result</p>'
+            +'<p>Open the link and display the content normally</p>'
+          +'</font>';

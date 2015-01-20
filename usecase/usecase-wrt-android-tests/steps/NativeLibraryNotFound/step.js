@@ -1,0 +1,12 @@
+var step = '<font class="fontSize">'
+            +'<p>Purpose:</p>'
+            +'<p>Verifies that embedded x86 apk can be installed and launched on arm devices if native library is not found</p>'
+            +'<p>Verifies that embedded arm apk can be installed and launched on x86 devices if native library is not found</p>'
+            +'<p>Expected Result:</p>'
+            +'<ol>'
+            +'<li>Build an embedded x86 apk successfully</li>'
+            +'<li>Install and launch the app correctly on arm devices</li>'
+            +'<li>Build an embedded arm apk successfully</li>'
+            +'<li>Install and launch the app correctly on x86 devices</li>'
+            +'</ol>'
+          +'</font>';

@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <!--
-Copyright (c) 2015 Intel Corporation.
+Copyright (c) 2013 Intel Corporation.
 
 Redistribution and use in source and binary forms, with or without modification,
 are permitted provided that the following conditions are met:
@@ -26,9 +26,10 @@ NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE,
 EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
 Authors:
-        Wang, Hongjuan <hongjuanx.wang@intel.com>
+        Xu, Kang <kangx.xu@intel.com>
 
 -->
+
 <meta charset="utf-8" />
 <meta name="viewport" content="initial-scale=1.0, maximum-scale=1.0, width=device-width">
 <link rel="stylesheet" type="text/css" href="../../css/bootstrap.css">
@@ -42,20 +43,37 @@ Authors:
   <h3 id="main_page_title"></h3>
 </div>
 <div class="content">
-   <input type="date" class="form-control" id="shipmentDate" placeholder="JJ/MM/AAAA" ng-model="draftOrder.shipmentDate" min="dateMinimum" required>
+  <h4>Test Steps</h4>
+  <ol>
+    <li>Pack the web app with command:<br/>
+        $ python make_apk.py --name=Test --package=org.xwalk.Test --app-url=http://www.baidu.com --app-version=1.0.0</li>
+    <li>Install the apk with command:<br/>
+        $ adb install -r Test_1.0.0_x86.apk</li>
+    <li>Launch the web app</li>
+    <li>Check the web app version in setting</li>
+    <li>Pack the web app with command:<br/>
+        $ python make_apk.py --name=Test --package=org.xwalk.Test --app-url=http://www.baidu.com --app-version=1.0.1</li>
+    <li>Install the apk with command:<br/>
+        $ adb install -r Test_1.0.1_x86.apk</li>
+    <li>Launch the web app</li>
+    <li>Check the web app version in Setting</li>
+  </ol>
 </div>
 <div class="footer">
   <div id="footer"></div>
 </div>
 <div class="modal fade" id="popup_info">
-  <p>Test Steps:</p>
-  <ol>
-    <li>Set the locale language to French, then click the input</li>
-    <li>Click the third button</li>
-  </ol>
+  <p>Purpose:</p>
+  <p>Verifies that Crosswalk enable update web app with the different app-version.</p>
   <p>Expected Result:</p>
   <ol>
-    <li>Display a calendar window</li>
-    <li>Globalization: Display the current date in FR format DD/MM/YYYY, like "21/01/2015". The MM/DD/YYYY like 01/21/2015 is not expected.</li>
+    <li>Apk could be created successfully</li>
+    <li>Web App could be installed successfully</li>
+    <li>Web App could be launched successfully</li>
+    <li>Web App version is 1.0.0</li>
+    <li>Apk could be created correctly</li>
+    <li>Web App could be updated successfully</li>
+    <li>Web App could be launched successfully</li>
+    <li>Web App version is 1.0.1</li>
   </ol>
 </div>

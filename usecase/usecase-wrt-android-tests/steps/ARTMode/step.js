@@ -1,0 +1,11 @@
+var step = '<font class="fontSize">'
+            +'<p>Purpose:</p>'
+            +'<p>Verifies the ART mode can run successfully</p>' 
+            +'<p>Expected Result:</p>'
+            +'<ol>'
+            +'<li>Setting ART mode successfully</li>'
+            +'<li>Install the web app successfully</li>'
+            +'<li>Launch the web app successfully</li>'
+            +'<li>Uninstall the web app successfully</li>'
+            +'</ol>'
+          +'</font>';

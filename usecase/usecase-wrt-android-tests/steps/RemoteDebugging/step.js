@@ -1,0 +1,11 @@
+var step = '<font class="fontSize">'
+            +'<p>Purpose:</p>'
+            +'<p>Verifies that Crosswalk could debug by remote host when the web app is packaged with remote debugging by default</p>'
+            +'<p>Expected Result:</p>'
+            +'<ol>'
+            +'<li>Web App could be launched successfully</li>'
+            +'<li>Web pages or web apps will be shown in the inspection page. Click button "inspect" to inspect it</li>'
+            +'<li>The app can not run remote debugging, the result is different from result 2</li>'
+            +'<li>The expected result is the same as result 2<li>'
+            +'</ol>'
+          +'</font>';
