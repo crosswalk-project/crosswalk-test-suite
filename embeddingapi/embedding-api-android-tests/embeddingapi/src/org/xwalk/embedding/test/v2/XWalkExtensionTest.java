@@ -12,6 +12,7 @@ import org.xwalk.embedding.base.ExtensionEcho_broadcast;
 import org.xwalk.embedding.base.XWalkViewTestBase;
 
 import android.annotation.SuppressLint;
+import android.os.SystemClock;
 import android.test.suitebuilder.annotation.SmallTest;
 
 @SuppressLint("NewApi")
@@ -166,7 +167,7 @@ public class XWalkExtensionTest extends XWalkViewTestBase {
         try {
             ExtensionEcho echo = new ExtensionEcho();
             loadAssetFileAndWaitForTitle("echo.html");
-            assertEquals("From java:" + PASS_STRING, getTitleOnUiThread());
+            assertEquals(PASS_STRING, getTitleOnUiThread());
         } catch (Exception e) {
             e.printStackTrace();
             assertTrue(false);
@@ -249,7 +250,7 @@ public class XWalkExtensionTest extends XWalkViewTestBase {
         try {
             ExtensionEcho echo = new ExtensionEcho();
             loadAssetFileAndWaitForTitle("echo.html");
-            assertEquals("From java:" + PASS_STRING, getTitleOnUiThread());
+            assertEquals(PASS_STRING, getTitleOnUiThread());
         } catch (Exception e) {
             assertTrue(false);
             e.printStackTrace();
@@ -281,5 +282,5 @@ public class XWalkExtensionTest extends XWalkViewTestBase {
             e.printStackTrace();
         }
     }
-
 }
+

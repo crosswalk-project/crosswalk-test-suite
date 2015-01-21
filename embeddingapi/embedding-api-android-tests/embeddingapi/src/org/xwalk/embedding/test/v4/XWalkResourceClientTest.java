@@ -13,7 +13,7 @@ public class XWalkResourceClientTest extends XWalkViewTestBase {
     @SmallTest
     public void testOnReceivedSslError() {
         try {
-            String url = "https://webmail.archermind.com/";
+            String url = "https://kyfw.12306.cn/otn/regist/init";
             OnReceivedSslHelper mOnReceivedSslHelper = mTestHelperBridge.getOnReceivedSslHelper();
             int count = mOnReceivedSslHelper.getCallCount();
             loadUrlAsync(url);

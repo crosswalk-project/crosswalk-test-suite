@@ -5,9 +5,15 @@
 <body>
 <script>
 try {
-    echo.echo("Pass", function() {
-            document.title = "Pass";
-        });
+  var d = new Date().toString();
+  echo.echo(d, function(msg) {
+    var expected = "From java:" + d;
+    if (msg === expected) {
+      document.title = "Pass";
+    } else {
+      document.title = "Fail";
+    }
+  });
 } catch(e) {
     console.log(e);
     document.title = "Fail";

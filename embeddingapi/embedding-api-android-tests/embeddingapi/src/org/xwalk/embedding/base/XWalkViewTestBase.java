@@ -23,11 +23,8 @@ import org.chromium.content.browser.test.util.Criteria;
 import org.chromium.content.browser.test.util.CriteriaHelper;
 import org.chromium.net.test.util.TestWebServer;
 import org.xwalk.core.JavascriptInterface;
-import org.xwalk.core.XWalkJavascriptResult;
 import org.xwalk.core.XWalkNavigationHistory;
 import org.xwalk.core.XWalkNavigationItem;
-import org.xwalk.core.XWalkResourceClient;
-import org.xwalk.core.XWalkUIClient;
 import org.xwalk.core.XWalkView;
 import org.xwalk.embedding.MainActivity;
 
@@ -35,14 +32,9 @@ import com.test.server.ActivityInstrumentationTestCase2;
 
 import android.content.Context;
 import android.content.res.AssetManager;
-import android.graphics.Bitmap;
-import android.net.Uri;
-import android.net.http.SslError;
 import android.os.Bundle;
-import android.os.Message;
 import android.util.Log;
 import android.util.Pair;
-import android.webkit.ValueCallback;
 import android.webkit.WebResourceResponse;
 
 public class XWalkViewTestBase extends ActivityInstrumentationTestCase2<MainActivity> {
@@ -541,166 +533,15 @@ public class XWalkViewTestBase extends ActivityInstrumentationTestCase2<MainActi
                                           "}");
     }
 
-    class TestXWalkUIClientBase extends XWalkUIClient {
-        TestHelperBridge mInnerContentsClient;
-        public TestXWalkUIClientBase(TestHelperBridge client) {
-            super(getXWalkView());
-            mInnerContentsClient = client;
-        }
-
-        @Override
-        public void onPageLoadStarted(XWalkView view, String url) {
-            mInnerContentsClient.onPageStarted(url);
-        }
-
-        @Override
-        public void onPageLoadStopped(XWalkView view, String url, LoadStatus status) {
-            mInnerContentsClient.onPageFinished(url, status);
-        }
-
-        @Override
-        public void onReceivedTitle(XWalkView view, String title) {
-            mInnerContentsClient.onTitleChanged(title);
-        }
-
-        @Override
-        public void onJavascriptCloseWindow(XWalkView view) {
-            mInnerContentsClient.onJavascriptCloseWindow();
-        }
-
-        @Override
-        public void onScaleChanged(XWalkView view, float oldScale,
-                float newScale) {
-            mInnerContentsClient.onScaleChanged(newScale);
-        }
-
-        @Override
-        public void onRequestFocus(XWalkView view) {
-            mInnerContentsClient.onRequestFocus();
-        }
-
-        @Override
-        public boolean onCreateWindowRequested(XWalkView view,
-                InitiateBy initiator, ValueCallback<XWalkView> callback) {
-            mInnerContentsClient.onCreateWindowRequested();
-            return true;
-        }
-
-        @Override
-        public void onIconAvailable(XWalkView view, String url,
-                Message startDownload) {
-            startDownload.sendToTarget();
-            mInnerContentsClient.onIconAvailable();
-        }
-
-        @Override
-        public void onReceivedIcon(XWalkView view, String url, Bitmap icon) {
-            mInnerContentsClient.onReceivedIcon();
-        }
-
-        @Override
-        public void onFullscreenToggled(XWalkView view, boolean enterFullscreen) {
-            System.out.println("test............111111");
-            mInnerContentsClient.onFullscreenToggled(enterFullscreen);
-        }
-
-        @Override
-        public void openFileChooser(XWalkView view,
-                ValueCallback<Uri> uploadFile, String acceptType, String capture) {
-            mInnerContentsClient.openFileChooser(uploadFile);
-        }
-
-        @Override
-        public boolean onJavascriptModalDialog(XWalkView view, JavascriptMessageType type,
-                String url, String message, String defaultValue, XWalkJavascriptResult result) {
-            switch(type) {
-                case JAVASCRIPT_ALERT:
-                    callbackCalled.set(true);
-                    result.confirm();
-                    assertEquals(ALERT_TEXT, message);
-                    return false;
-                case JAVASCRIPT_CONFIRM:
-                    assertEquals(CONFIRM_TEXT, message);
-                    if (flagForConfirmCancelled == true) {
-                        result.cancel();
-                    } else {
-                        result.confirm();
-                    }
-                    callbackCalled.set(true);
-                    return false;
-                case JAVASCRIPT_PROMPT:
-                    assertEquals(PROMPT_TEXT, message);
-                    assertEquals(PROMPT_DEFAULT, defaultValue);
-                    result.confirmWithResult(PROMPT_RESULT);
-                    callbackCalled.set(true);
-                    return false;
-                case JAVASCRIPT_BEFOREUNLOAD:
-                    result.cancel();
-                    jsBeforeUnloadHelper.notifyCalled();
-                    return false;
-                default:
-                    break;
-                }
-            assert(false);
-            return false;
-        }
-    }
-
     public class TestXWalkUIClient extends TestXWalkUIClientBase {
         public TestXWalkUIClient() {
-            super(mTestHelperBridge);
-        }
-    }
-
-    class TestXWalkResourceClientBase extends XWalkResourceClient {
-        TestHelperBridge mInnerContentsClient;
-        public TestXWalkResourceClientBase(TestHelperBridge client) {
-            super(mXWalkView);
-            mInnerContentsClient = client;
-        }
-
-        @Override
-        public void onLoadStarted(XWalkView view, String url) {
-            mInnerContentsClient.onLoadStarted(url);
-        }
-
-        @Override
-        public void onLoadFinished(XWalkView view, String url) {
-            mInnerContentsClient.onLoadFinished(url);
-        }
-
-        @Override
-        public void onProgressChanged(XWalkView view, int progressInPercent) {
-            mTestHelperBridge.onProgressChanged(progressInPercent);
-        }
-
-        @Override
-        public void onReceivedLoadError(XWalkView view, int errorCode,
-                String description, String failingUrl) {
-            mInnerContentsClient.onReceivedLoadError(errorCode, description, failingUrl);
-        }
-
-        @Override
-        public WebResourceResponse shouldInterceptLoadRequest(XWalkView view,
-                String url) {
-            return mInnerContentsClient.shouldInterceptLoadRequest(url);
-        }
-
-        @Override
-        public boolean shouldOverrideUrlLoading(XWalkView view, String url) {
-            return mTestHelperBridge.shouldOverrideUrlLoading(url);
-        }
-
-        @Override
-        public void onReceivedSslError(XWalkView view,
-                ValueCallback<Boolean> callback, SslError error) {
-            mInnerContentsClient.onReceivedSsl();
+            super(mTestHelperBridge, mXWalkView, callbackCalled);
         }
     }
 
     class TestXWalkResourceClient extends TestXWalkResourceClientBase {
         public TestXWalkResourceClient() {
-            super(mTestHelperBridge);
+            super(mTestHelperBridge,mXWalkView);
         }
     }
 
