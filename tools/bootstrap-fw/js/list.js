@@ -81,7 +81,7 @@ function listTest() {
     $('#mytest').append(testline);
   }
   if(passnum == 0 && failnum == 0)
-    passnum == failnum == "";
+    passnum = failnum = "";
   var setresarr = {totalnum:totalnum, passnum:passnum, failnum:failnum};
   lstorage.setItem(sid + "res", JSON.stringify(setresarr));
 }
