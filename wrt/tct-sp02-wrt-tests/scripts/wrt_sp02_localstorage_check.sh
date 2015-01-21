@@ -43,14 +43,14 @@ if [ $? -ne 0 ]
 then
   exit 1
 fi
-widgetpath="/home/app/.config/xwalk-service/applications/$appids"
+widgetpath="/home/app/apps_rw/xwalk-service/applications/$appids"
 if [ ! -d $widgetpath ]
 then
   existbh "The path of the application does not exist." 1
 fi
 filecount=$(ls -lR $widgetpath|grep "^-"|wc -l)
 name=("config.xml" "icon.png" "index.html")
-if [ $filecount -eq 5  ]
+if [ $filecount -eq 3  ]
 then
   filename=$(ls -l $widgetpath | grep "^_")
   for var in ${filename[@]};do
