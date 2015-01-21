@@ -50,11 +50,11 @@ then
 fi
 filecount=$(ls -lR $widgetpath|grep "^-"|wc -l)
 name=("config.xml" "icon.png" "index.html")
-if [ $filecount -eq 3  ]
+if [ $filecount -gt 0  ]
 then
-  filename=$(ls -l $widgetpath | grep "^_")
-  for var in ${filename[@]};do
-    echo ${name[@]}|grep -q "$var"
+  filename=$(ls -l $widgetpath | grep "^-")
+  for var in ${name[@]};do
+    echo ${filename[@]}|grep -q "$var"
     if [ $? -ne 0 ]
     then
       existbh "Application does not have its own localStorage space" 1
