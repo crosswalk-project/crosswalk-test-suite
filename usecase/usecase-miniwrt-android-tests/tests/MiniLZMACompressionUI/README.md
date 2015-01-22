@@ -2,4 +2,4 @@
 
 This sample demonstrates MiniLZMACompressionUI feature basic functionalities, include:
 
-* Verifies when install the packaged apk, it will pop up a dialog with message during decompress xwalk core library and the dialog will disapperar after decompression
+* Verifies when pack an apk and run the app, the compression and decompression work properly or not, at the same time the progress bar UI display normal or not
