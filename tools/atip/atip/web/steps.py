@@ -83,7 +83,7 @@ def go_forward(context):
 
 @step(u'The current URL should be "{text}"')
 def url_should_be_text(context, text):
-    url = get_page_url(context, text)
+    url = urljoin(context.app.url_prefix, text)
     assert context.app.current_url().upper() == url.upper()
 
 
