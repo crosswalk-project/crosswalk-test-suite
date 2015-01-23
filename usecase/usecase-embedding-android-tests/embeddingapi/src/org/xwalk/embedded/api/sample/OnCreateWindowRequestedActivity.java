@@ -8,17 +8,22 @@ import android.util.Log;
 import android.webkit.ValueCallback;
 import android.widget.TextView;
 
+import org.xwalk.core.XWalkActivity;
 import org.xwalk.core.XWalkPreferences;
 import org.xwalk.core.XWalkView;
 import org.xwalk.core.XWalkUIClient;
 
-public class OnCreateWindowRequestedActivity extends XWalkBaseActivity {
+public class OnCreateWindowRequestedActivity extends XWalkActivity {
+    private XWalkView mXWalkView;
     private TextView mTitleText1;
     
     @Override
     protected void onCreate(Bundle savedInstanceState) {
     	super.onCreate(savedInstanceState);
+    }
 
+    @Override
+    protected void onXWalkReady() {
         StringBuffer mess = new StringBuffer();
         mess.append("Test Purpose: \n\n")
         .append("Verifies onCreateWindowRequested method can be triggered when icon is available.\n\n")
