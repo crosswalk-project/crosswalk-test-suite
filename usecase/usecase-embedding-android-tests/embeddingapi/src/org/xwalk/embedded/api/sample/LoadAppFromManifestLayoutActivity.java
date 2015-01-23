@@ -7,6 +7,7 @@ package org.xwalk.embedded.api.sample;
 import java.io.IOException;
 import java.io.InputStream;
 
+import org.xwalk.core.XWalkActivity;
 import org.xwalk.core.XWalkView;
 
 import android.app.Activity;
@@ -14,7 +15,7 @@ import android.app.AlertDialog;
 import android.content.res.AssetManager;
 import android.os.Bundle;
 
-public class LoadAppFromManifestLayoutActivity extends Activity {
+public class LoadAppFromManifestLayoutActivity extends XWalkActivity {
 
     private String getAssetsFileContent(AssetManager assetManager, String fileName)
             throws IOException {
@@ -37,6 +38,10 @@ public class LoadAppFromManifestLayoutActivity extends Activity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+    }
+
+    @Override
+    protected void onXWalkReady() {
         StringBuffer mess = new StringBuffer();
         mess.append("Test Purpose: \n\n")
         .append("Verifies XWalkView can load app from manifest.\n\n")

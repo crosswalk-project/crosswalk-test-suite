@@ -4,16 +4,22 @@
 
 package org.xwalk.embedded.api.sample;
 
+import org.xwalk.core.XWalkActivity;
 import org.xwalk.core.XWalkView;
 
 import android.app.AlertDialog;
 import android.os.Bundle;
 
-public class XWalkViewWithLayoutActivity extends XWalkBaseActivity {
+public class XWalkViewWithLayoutActivity extends XWalkActivity {
+    private XWalkView mXWalkView;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+    }
+
+    @Override
+    protected void onXWalkReady() {
         setContentView(R.layout.xwview_layout);
         StringBuffer mess = new StringBuffer();
         mess.append("Test Purpose: \n\n")

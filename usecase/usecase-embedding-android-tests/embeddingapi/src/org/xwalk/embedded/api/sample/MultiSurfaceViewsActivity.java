@@ -1,5 +1,6 @@
 package org.xwalk.embedded.api.sample;
-
+ 
+import org.xwalk.core.XWalkActivity;
 import org.xwalk.core.XWalkPreferences;
 import org.xwalk.core.XWalkView;
 
@@ -8,12 +9,15 @@ import android.os.Bundle;
 import android.webkit.WebView;
 import android.widget.RelativeLayout;
 
-public class MultiSurfaceViewsActivity extends XWalkBaseActivity {
+public class MultiSurfaceViewsActivity extends XWalkActivity {
     
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        
+    }
+
+    @Override
+    protected void onXWalkReady() {
         StringBuffer mess = new StringBuffer();
         mess.append("Test Purpose: \n\n")
         .append("Verifies Multiple SurfaceViews can be shown in order.\n\n")

@@ -4,6 +4,7 @@
 
 package org.xwalk.embedded.api.sample;
 
+import org.xwalk.core.XWalkActivity;
 import org.xwalk.core.XWalkView;
 
 import android.app.AlertDialog;
@@ -12,14 +13,18 @@ import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.ImageButton;
 
-public class PauseTimersActivity extends XWalkBaseActivity {
-
+public class PauseTimersActivity extends XWalkActivity {
+    private XWalkView mXWalkView;
     private ImageButton mButton;
     private boolean isPaused;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+    }
+
+    @Override
+    protected void onXWalkReady() {
         StringBuffer mess = new StringBuffer();
         mess.append("Test Purpose: \n\n")
         .append("Verifies XWalkView can pause timers.\n\n")

@@ -7,11 +7,13 @@ import android.os.Message;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import org.xwalk.core.XWalkActivity;
 import org.xwalk.core.XWalkPreferences;
 import org.xwalk.core.XWalkView;
 import org.xwalk.core.XWalkUIClient;
 
-public class OnIconAvailableOnReceivedIconActivity extends XWalkBaseActivity {
+public class OnIconAvailableOnReceivedIconActivity extends XWalkActivity {
+    private XWalkView mXWalkView;
     private TextView mTitleText1;
     private TextView mTitleText2;
     private ImageView mFavicon;
@@ -19,7 +21,10 @@ public class OnIconAvailableOnReceivedIconActivity extends XWalkBaseActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
     	super.onCreate(savedInstanceState);
+    }
 
+    @Override
+    protected void onXWalkReady() {
     	StringBuffer mess = new StringBuffer();
         mess.append("Test Purpose: \n\n")
         .append("Verifies onIconAvailable and onReceivedIcon methods can be triggered when icon is available.\n\n")
@@ -44,7 +49,6 @@ public class OnIconAvailableOnReceivedIconActivity extends XWalkBaseActivity {
         mTitleText2 = (TextView) findViewById(R.id.titletext2);
         mFavicon = (ImageView) findViewById(R.id.imageView1);
         mXWalkView.load("file:///android_asset/window_icon.html", null);
-
     }
 
     class TestXWalkUIClientBase extends XWalkUIClient {
