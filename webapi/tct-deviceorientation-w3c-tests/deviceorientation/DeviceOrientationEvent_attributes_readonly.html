@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<!--
+Copyright (c) 2013 Intel Corporation.
+
+Redistribution and use in source and binary forms, with or without modification,
+are permitted provided that the following conditions are met:
+
+* Redistributions of works must retain the original copyright notice, this list
+  of conditions and the following disclaimer.
+* Redistributions in binary form must reproduce the original copyright notice,
+  this list of conditions and the following disclaimer in the documentation
+  and/or other materials provided with the distribution.
+* Neither the name of Intel Corporation nor the names of its contributors
+  may be used to endorse or promote products derived from this work without
+  specific prior written permission.
+
+THIS SOFTWARE IS PROVIDED BY INTEL CORPORATION "AS IS"
+AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE
+IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE
+ARE DISCLAIMED. IN NO EVENT SHALL INTEL CORPORATION BE LIABLE FOR ANY DIRECT,
+INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING,
+BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE,
+DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY
+OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING
+NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE,
+EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
+
+Authors:
+        Xinx, liu <xinx.liu@intel.com>
+
+-->
+
+<meta charset='utf-8'>
+<title>Orientation Test: DeviceOrientationEvent attributes readonly</title>
+<link rel="author" title="Intel" href="http://www.intel.com">
+<link rel="help" href="http://www.w3.org/TR/2011/WD-orientation-event-20111201/#deviceorientation">
+<script src="../resources/testharness.js"></script>
+<script src="../resources/testharnessreport.js"></script>
+<div id="log"></div>
+<script>
+  setup(function(){
+    tizen.power.turnScreenOn();
+  }, {explicit_done: true, timeout: 2000});
+  var run = false;
+  on_event(window, "deviceorientation", function(event) {
+    if(!run) {
+      run = true;
+      test(function() {
+        event.absolute = null;
+        assert_not_equals(event.absolute, "null", "The DeviceOrientationEvent.absolute value");
+      }, "Check if DeviceOrientationEvent.absolute is readonly");
+
+      test(function() {
+        event.alpha = null;
+        assert_not_equals(event.alpha, "null", "The DeviceOrientationEvent.alpha value");
+      }, "Check if DeviceOrientationEvent.alpha is readonly");
+
+      test(function() {
+        event.beta = null;
+        assert_not_equals(event.beta, "null", "The DeviceOrientationEvent.beta value");
+      }, "Check if DeviceOrientationEvent.beta is readonly");
+
+      test(function() {
+        event.gamma = null;
+        assert_not_equals(event.gamma, "null", "The DeviceOrientationEvent.gamma value");
+      }, "Check if DeviceOrientationEvent.gamma is readonly");
+      done();
+    }
+  });
+  setTimeout(function () {
+    test(function() {
+      assert_unreached("Can not fire deviceorientation event");
+    }, "Check if DeviceOrientationEvent.absolute is readonly");
+    test(function() {
+      assert_unreached("Can not fire deviceorientation event");
+    }, "Check if DeviceOrientationEvent.alpha is readonly");
+    test(function() {
+      assert_unreached("Can not fire deviceorientation event");
+    }, "Check if DeviceOrientationEvent.beta is readonly");
+    test(function() {
+      assert_unreached("Can not fire deviceorientation event");
+    }, "Check if DeviceOrientationEvent.gamma is readonly");
+    done();
+  }, 1500)
+</script>
