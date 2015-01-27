@@ -51,11 +51,20 @@ Authors:
     <div id="app_selector" data-role="content">
         <ul data-role="listview" id="mylist" data-mini="true" data-inset="true"></ul>
     </div>
+    <div id="resultReport"></div>
     <div data-role="footer" data-position="fixed" data-tap-toggle="false" align="center">
         <div data-role="controlgroup" data-type="horizontal">
-            <a href="javascript:exportResult();" data-role="button" data-icon="gear">Export</a>
-            <a id="reset" data-role="button" data-icon="refresh">Reset</a>
+            <a href="javascript:exportResult(0);" data-rel="popup" data-position-to="window" data-role="button" data-inline="true" data-transition="pop" data-icon="gear">Export</a>
+            <a href="javascript:resetResult();" id="reset" data-role="button" data-icon="refresh">Reset</a>
             <a href="#popup_exit" data-rel="popup" data-position-to="window" data-role="button" data-inline="true" data-transition="pop" data-icon="back">Exit</a>
+        </div>
+    </div>
+    <div data-role="popup" id="popup_export" data-overlay-theme="a" data-theme="c" data-dismissible="false" style="max-width:400px;" class="ui-corner-all">
+        <div data-role="header" data-theme="a" class="ui-corner-top">
+            <h1>Reminder</h1>
+        </div>
+        <div data-role="content" data-theme="d" class="ui-corner-bottom ui-content">
+            <h3 id="exportlog" class="ui-title"></h3>
         </div>
     </div>
     <div data-role="popup" id="popup_exit" data-overlay-theme="a" data-theme="c" data-dismissible="false" style="max-width:400px;" class="ui-corner-all">
@@ -64,8 +73,8 @@ Authors:
         </div>
         <div data-role="content" data-theme="d" class="ui-corner-bottom ui-content">
             <h3 class="ui-title">Do you want to save test result before exit?</h3>
-            <a id="exit" data-role="button" data-rel="back" data-theme="c">Yes</a>
-            <a data-role="button" data-rel="back" data-theme="e">No, thanks</a>
+            <a href="javascript:exportResult(1);" data-role="button" data-theme="c">Yes</a>
+            <a href="javascript:exitTest();" data-role="button" data-theme="e">No, thanks</a>
         </div>
     </div>
 </div>
