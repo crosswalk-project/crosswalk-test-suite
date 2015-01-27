@@ -45,13 +45,9 @@ var t = async_test("Check if close the TCP server socket after calling close met
 t.step(function () {
   assert_true(!!namespace, "TCPServerSocket interface support");
   var TCPServersocket = new namespace.TCPServerSocket(socketOptions);
-  var TCPsocket = new namespace.TCPSocket(remoteAddress, remotePort);
-  TCPsocket.onopen = function () {
-    TCPServersocket.close();
-  };
-  TCPsocket.close = function () {
-    t.done();
-  };
+  TCPServersocket.close();
+  assert_equals(TCPServersocket.readyState, "closed", "Close TCPServerSocket failed");
+  t.done();
 });
 
 </script>
