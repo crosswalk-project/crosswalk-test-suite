@@ -7,6 +7,7 @@ package org.xwalk.embedding.test.v1;
 import java.util.concurrent.TimeoutException;
 
 import org.xwalk.core.XWalkUIClient;
+import org.xwalk.embedding.base.ExtensionEcho;
 import org.xwalk.embedding.base.OnFullscreenToggledHelper;
 import org.xwalk.embedding.base.OnJavascriptCloseWindowHelper;
 import org.xwalk.embedding.base.OnRequestFocusHelper;
@@ -223,6 +224,17 @@ public class XWalkUIClientTest extends XWalkViewTestBase {
             loadDataSync(null, EMPTY_PAGE, "text/html", false);
             executeJavaScriptAndWaitForResult("alert('" + ALERT_TEXT + "')");
             assertTrue(callbackCalled.get());
+        } catch (Exception e) {
+            assertTrue(false);
+            e.printStackTrace();
+        }
+    }
+
+    @SmallTest
+    public void testOnPageFinished_write() {
+        try {
+            ExtensionEcho echo = new ExtensionEcho();
+            loadUrlSync("file:///android_asset/framesEcho.html");
         } catch (Exception e) {
             assertTrue(false);
             e.printStackTrace();

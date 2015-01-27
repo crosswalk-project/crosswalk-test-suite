@@ -9,13 +9,16 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 import java.util.concurrent.Callable;
+import java.util.concurrent.TimeUnit;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
+import org.chromium.content.browser.test.util.CallbackHelper;
 import org.xwalk.core.XWalkResourceClient;
 import org.xwalk.core.XWalkUIClient;
 import org.xwalk.core.XWalkView;
 import org.xwalk.embedding.MainActivity;
+import org.xwalk.embedding.base.OnLoadFinishedHelper;
 import org.xwalk.embedding.base.XWalkViewTestBase;
 
 import android.annotation.SuppressLint;
@@ -405,20 +408,28 @@ public class XWalkViewTest extends XWalkViewTestBase {
     public void testSetResourceClient_function() {
         try {
             haveLoadflag = false;
-            String url = "file:///android_asset/index.html";
+            final String url = "file:///android_asset/index.html";
             getInstrumentation().runOnMainSync(new Runnable() {
                 @Override
                 public void run() {
-                    mXWalkView.setResourceClient(new XWalkResourceClient(mXWalkView) {
+                    mRestoreXWalkView.setResourceClient(new XWalkResourceClient(mXWalkView) {
                         @Override
                         public void onLoadFinished(XWalkView view, String url) {
                             haveLoadflag = true;
-                            super.onLoadFinished(view, url);
+                            mTestHelperBridge.onLoadFinished(url);
                         }
                     });
                 }
             });
-            loadUrlSync(url);
+            OnLoadFinishedHelper mOnLoadFinishedHelper = mTestHelperBridge.getOnLoadFinishedHelper();
+            int currentCallCount = mOnLoadFinishedHelper.getCallCount();
+            getInstrumentation().runOnMainSync(new Runnable() {
+                @Override
+                public void run() {
+                    mRestoreXWalkView.load(url, null);
+                }
+            });
+            mOnLoadFinishedHelper.waitForCallback(currentCallCount);
             assertTrue(haveLoadflag);
         } catch (Exception e) {
             e.printStackTrace();
@@ -447,11 +458,11 @@ public class XWalkViewTest extends XWalkViewTestBase {
     public void testSetUIClient_function() {
         try {
             haveLoadflag = false;
-            String url = "file:///android_asset/index.html";
+            final String url = "file:///android_asset/index.html";
             getInstrumentation().runOnMainSync(new Runnable() {
                 @Override
                 public void run() {
-                    mXWalkView.setUIClient(new XWalkUIClient(mXWalkView) {
+                    mRestoreXWalkView.setUIClient(new XWalkUIClient(mXWalkView) {
                         @Override
                         public void onPageLoadStopped(XWalkView view,
                                 String url, LoadStatus status) {
@@ -461,7 +472,16 @@ public class XWalkViewTest extends XWalkViewTestBase {
                     });
                 }
             });
-            loadUrlSync(url);
+            CallbackHelper pageFinishedHelper = mTestHelperBridge.getOnPageFinishedHelper();
+            int currentCallCount = pageFinishedHelper.getCallCount();
+            getInstrumentation().runOnMainSync(new Runnable() {
+                @Override
+                public void run() {
+                    mRestoreXWalkView.load(url, null);
+                }
+            });
+            pageFinishedHelper.waitForCallback(currentCallCount, 1, WAIT_TIMEOUT_SECONDS,
+                    TimeUnit.SECONDS);
             assertTrue(haveLoadflag);
         } catch (Exception e) {
             e.printStackTrace();
@@ -511,9 +531,10 @@ public class XWalkViewTest extends XWalkViewTestBase {
             String url = "file:///android_asset/pause_timers.html";
             addJavascriptInterface();
             loadUrlSync(url);
+            SystemClock.sleep(2000);
             String date = new Date().toString();
             pauseTimers();
-            SystemClock.sleep(3000);
+            SystemClock.sleep(2000);
             assertEquals(date, getTitleOnUiThread());
         } catch (Exception e) {
             e.printStackTrace();

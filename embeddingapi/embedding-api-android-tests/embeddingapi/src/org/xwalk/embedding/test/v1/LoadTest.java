@@ -8,8 +8,11 @@ import org.chromium.content.browser.test.util.CallbackHelper;
 import org.chromium.content.browser.test.util.TestCallbackHelperContainer.OnPageFinishedHelper;
 import org.chromium.content.browser.test.util.TestCallbackHelperContainer.OnPageStartedHelper;
 import org.xwalk.core.XWalkNavigationHistory;
+import org.xwalk.core.XWalkResourceClient;
 import org.xwalk.core.XWalkView;
 import org.xwalk.core.XWalkUIClient.LoadStatus;
+import org.xwalk.embedding.base.OnTitleUpdatedHelper;
+import org.xwalk.embedding.base.TestXWalkResourceClientBase;
 import org.xwalk.embedding.base.XWalkViewTestBase;
 
 import android.os.SystemClock;
@@ -66,8 +69,7 @@ public class LoadTest extends XWalkViewTestBase {
     public void testLoad_xhtml_url() {
         try {
             String url = "file:///android_asset/index.xhtml";
-            mXWalkView.load(url, null);
-            SystemClock.sleep(2000);
+            loadUrlSync(url);
             String title = "Crosswalk Sample Application";
             assertEquals(title, getTitleOnUiThread());
             assertEquals(url, getUrlOnUiThread());
@@ -248,11 +250,68 @@ public class LoadTest extends XWalkViewTestBase {
         try {
             String url = "file:///android_asset/testXHR.html";
             loadUrlSync(url);
-            
             CallbackHelper getTitleHelper = mTestHelperBridge.getOnTitleUpdatedHelper();
             int currentCallCount = getTitleHelper.getCallCount();
             clickOnElementId("AJAX_Read",null);
             getTitleHelper.waitForCallback(currentCallCount);
+            assertEquals(changedTitle, getTitleOnUiThread());
+        } catch (Exception e) {
+            e.printStackTrace();
+            assertTrue(false);
+        }
+    }
+
+    @SmallTest
+    public void testLoadInnerJs()
+    {
+        final String changedTitle = "testLoadExternalJs_ChangeTitle";
+        try {
+            final String url = "file:///android_asset/innerJs.html";
+            getInstrumentation().runOnMainSync(new Runnable() {
+                @Override
+                public void run() {
+                    mXWalkView.setResourceClient(new TestXWalkResourceClientBase(mTestHelperBridge,mXWalkView) {
+                        @Override
+                        public void onLoadFinished(XWalkView view, String url) {
+                            view.load("javascript:functionInTest()", null);
+                            mTestHelperBridge.onLoadFinished(url);
+                        }
+                    });
+                }
+            });
+            loadUrlSync(url);
+            OnTitleUpdatedHelper mOnTitleUpdatedHelper = mTestHelperBridge.getOnTitleUpdatedHelper();
+            int currentCallCount = mOnTitleUpdatedHelper.getCallCount();
+            mOnTitleUpdatedHelper.waitForCallback(currentCallCount);
+            assertEquals(changedTitle, getTitleOnUiThread());
+        } catch (Exception e) {
+            e.printStackTrace();
+            assertTrue(false);
+        }
+    }
+
+    @SmallTest
+    public void testLoadExternalJs()
+    {
+        final String changedTitle = "testLoadExternalJs_ChangeTitle";
+        try {
+            final String url = "file:///android_asset/externalJs.html";
+            getInstrumentation().runOnMainSync(new Runnable() {
+                @Override
+                public void run() {
+                    mXWalkView.setResourceClient(new TestXWalkResourceClientBase(mTestHelperBridge,mXWalkView) {
+                        @Override
+                        public void onLoadFinished(XWalkView view, String url) {
+                            view.load("javascript:functionInTest()", null);
+                            mTestHelperBridge.onLoadFinished(url);
+                        }
+                    });
+                }
+            });
+            loadUrlSync(url);
+            OnTitleUpdatedHelper mOnTitleUpdatedHelper = mTestHelperBridge.getOnTitleUpdatedHelper();
+            int currentCallCount = mOnTitleUpdatedHelper.getCallCount();
+            mOnTitleUpdatedHelper.waitForCallback(currentCallCount);
             assertEquals(changedTitle, getTitleOnUiThread());
         } catch (Exception e) {
             e.printStackTrace();
@@ -279,5 +338,5 @@ public class LoadTest extends XWalkViewTestBase {
             e.printStackTrace();
         }
     }
-
 }
+
