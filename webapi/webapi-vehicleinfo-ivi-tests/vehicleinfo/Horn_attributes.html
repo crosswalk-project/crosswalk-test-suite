@@ -41,21 +41,30 @@ Authors:
 <script>
 
 async_test(function (t) {
-  vehicle.horn.get().then(
-    function (horn) {
-      t.step(function () {
-        assert_true("status" in horn, "the Horn.status exists");
-        assert_equals(typeof horn.status, "boolean", "the type of Horn.status");
-      });
-      t.done();
-    },
-    function (error) {
-      t.step(function () {
-        assert_unreached(error.message);
-      });
-      t.done();
-    }
-  )
+  assert_true("horn" in vehicle, "the vehicle.horn exists");
+
+  var getAvailability = vehicle.horn.availableForRetrieval("status");
+
+  if (getAvailability === "available") {
+    vehicle.horn.get().then(
+      function (horn) {
+        t.step(function () {
+          assert_true("status" in horn, "the Horn.status exists");
+          assert_equals(typeof horn.status, "boolean", "the type of Horn.status");
+        });
+        t.done();
+      },
+      function (error) {
+        t.step(function () {
+          assert_unreached(error.message);
+        });
+        t.done();
+      }
+    );
+  } else {
+    //Compliance test passes as the feature is not implemented
+    t.done();
+  }
 }, "Check if Horn.status exists and type of boolean");
 
 </script>

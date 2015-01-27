@@ -41,22 +41,51 @@ Authors:
 <script>
 
 async_test(function (t) {
-  vehicle.drivingMode.get().then(
-    function (drivingMode) {
-      t.step(function () {
-        assert_true("mode" in drivingMode, "the DrivingMode.mode exists");
-        assert_readonly(drivingMode, "mode", "the DrivingMode.mode is readonly");
-        assert_equals(typeof drivingMode.mode, "boolean", "the type of DrivingMode.mode");
-      });
-      t.done();
-    },
-    function (error) {
-      t.step(function () {
-        assert_unreached(error.message);
-      });
-      t.done();
-    }
-  )
+  assert_true("drivingMode" in vehicle, "the vehicle.drivingMode exists");
+
+  var getAvailability = vehicle.drivingMode.availableForRetrieval("mode");
+  var setAvailability = vehicle.drivingMode.availableForSetting("mode");
+
+  if (getAvailability === "available") {
+    vehicle.drivingMode.get().then(
+      function (drivingMode) {
+        t.step(function () {
+          assert_true("mode" in drivingMode, "the DrivingMode.mode exists");
+          assert_equals(typeof drivingMode.mode, "boolean", "the type of DrivingMode.mode");
+
+          if (setAvailability === "available") {
+            var mode = drivingMode.mode;
+            vehicle.drivingMode.set({"mode": !mode}).then(
+              function (veh) {
+                t.step(function () {
+                  assert_equals(veh.mode, mode);
+                });
+                t.done();
+              },
+              function (error) {
+                t.step(function () {
+                  assert_unreached(error.message);
+                });
+                t.done();
+              }
+            );
+          } else {
+            //Compliance test passes as the feature is not implemented
+            t.done();
+          }
+        });
+      },
+      function (error) {
+        t.step(function () {
+          assert_unreached(error.message);
+        });
+        t.done();
+      }
+    );
+  } else {
+    //Compliance test passes as the feature is not implemented
+    t.done();
+  }
 }, "Check if DrivingMode.mode exists, readonly and type of boolean");
 
 </script>

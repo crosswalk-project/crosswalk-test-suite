@@ -41,22 +41,51 @@ Authors:
 <script>
 
 async_test(function (t) {
-  vehicle.powerTrainTorque.get().then(
-    function (powerTrainTorque) {
-      t.step(function () {
-        assert_true("value" in powerTrainTorque, "the PowerTrainTorque.value exists");
-        assert_readonly(powerTrainTorque, "value", "the PowerTrainTorque.value is readonly");
-        assert_equals(typeof powerTrainTorque.value, "number", "the type of PowerTrainTorque.value");
-      });
-      t.done();
-    },
-    function (error) {
-      t.step(function () {
-        assert_unreached(error.message);
-      });
-      t.done();
-    }
-  )
+  assert_true("powerTrainTorque" in vehicle, "the vehicle.powerTrainTorque exists");
+
+  var getAvailability = vehicle.powerTrainTorque.availableForRetrieval("value");
+  var setAvailability = vehicle.powerTrainTorque.availableForSetting("value");
+
+  if (getAvailability === "available") {
+    vehicle.powerTrainTorque.get().then(
+      function (powerTrainTorque) {
+        t.step(function () {
+          assert_true("value" in powerTrainTorque, "the PowerTrainTorque.value exists");
+          assert_equals(typeof powerTrainTorque.value, "number", "the type of PowerTrainTorque.value");
+
+          if (setAvailability === "available") {
+            var value = powerTrainTorque.value;
+            vehicle.powerTrainTorque.set({"value": value + 1}).then(
+              function (veh) {
+                t.step(function () {
+                  assert_equals(veh.value, value);
+                });
+                t.done();
+              },
+              function (error) {
+                t.step(function () {
+                  assert_unreached(error.message);
+                });
+                t.done();
+              }
+            );
+          } else {
+            //Compliance test passes as the feature is not implemented
+            t.done();
+          }
+        });
+      },
+      function (error) {
+        t.step(function () {
+          assert_unreached(error.message);
+        });
+        t.done();
+      }
+    );
+  } else {
+    //Compliance test passes as the feature is not implemented
+    t.done();
+  }
 }, "Check if PowerTrainTorque.value exists, readonly and type of number");
 
 </script>

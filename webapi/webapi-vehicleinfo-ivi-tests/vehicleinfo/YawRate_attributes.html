@@ -41,22 +41,51 @@ Authors:
 <script>
 
 async_test(function (t) {
-  vehicle.yawRate.get().then(
-    function (yawRate) {
-      t.step(function () {
-        assert_true("value" in yawRate, "the YawRate.value exists");
-        assert_readonly(yawRate, "value", "the YawRate.value is readonly");
-        assert_equals(typeof yawRate.value, "number", "the type of YawRate.value");
-      });
-      t.done();
-    },
-    function (error) {
-      t.step(function () {
-        assert_unreached(error.message);
-      });
-      t.done();
-    }
-  )
+  assert_true("yawRate" in vehicle, "the vehicle.yawRate exists");
+
+  var getAvailability = vehicle.yawRate.availableForRetrieval("value");
+  var setAvailability = vehicle.yawRate.availableForSetting("value");
+
+  if (getAvailability === "available") {
+    vehicle.yawRate.get().then(
+      function (yawRate) {
+        t.step(function () {
+          assert_true("value" in yawRate, "the YawRate.value exists");
+          assert_equals(typeof yawRate.value, "number", "the type of YawRate.value");
+
+          if (setAvailability === "available") {
+            var value = yawRate.value;
+            vehicle.yawRate.set({"value": value + 1}).then(
+              function (veh) {
+                t.step(function () {
+                  assert_equals(veh.value, value);
+                });
+                t.done();
+              },
+              function (error) {
+                t.step(function () {
+                  assert_unreached(error.message);
+                });
+                t.done();
+              }
+            );
+          } else {
+            //Compliance test passes as the feature is not implemented
+            t.done();
+          }
+        });
+      },
+      function (error) {
+        t.step(function () {
+          assert_unreached(error.message);
+        });
+        t.done();
+      }
+    );
+  } else {
+    //Compliance test passes as the feature is not implemented
+    t.done();
+  }
 }, "Check if YawRate.value exists, readonly and type of number");
 
 </script>

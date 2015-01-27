@@ -52,22 +52,67 @@ Authors:
   var read = attr[2];
 
   async_test(function (t) {
-    vehicle.batteryStatus.get().then(
-      function (batteryStatus) {
-        t.step(function () {
-          assert_true(name in batteryStatus, "the BatteryStatus." + name + " exists");
-          assert_equals(typeof batteryStatus[name], type, "the type of BatteryStatus." + name);
-          assert_readonly(batteryStatus, name, "the BatteryStatus." + name + " is readonly");
-        });
-        t.done();
-      },
-      function (error) {
-        t.step(function () {
-          assert_unreached(error.message);
-        });
-        t.done();
-      }
-    )
+    assert_true("batteryStatus" in vehicle, "the vehicle.batteryStatus exists");
+
+    var getAvailability = vehicle.batteryStatus.availableForRetrieval(name);
+    var setAvailability = vehicle.batteryStatus.availableForSetting(name);
+
+    if (getAvailability === "available") {
+      vehicle.batteryStatus.get().then(
+        function (batteryStatus) {
+          t.step(function () {
+            assert_true(name in batteryStatus, "the BatteryStatus." + name + " exists");
+            assert_equals(typeof batteryStatus[name], type, "the type of BatteryStatus." + name);
+
+            if (setAvailability === "available") {
+              var variable = batteryStatus[name];
+              var varType = typeof variable;
+              var setVar;
+
+              switch (varType) {
+                case "number":
+                  setVar = variable + 1;
+                  break;
+                case "string":
+                  setVar = variable + "a";
+                  break;
+                case "boolean":
+                  setVar = !variable;
+                  break;
+                default:
+                  setVar = null;
+              }
+
+              vehicle.batteryStatus.set({name : setVar}).then(
+                function (veh) {
+                  t.step(function () {
+                    assert_equals(veh[name], variable);
+                  });
+                  t.done();
+                },
+                function (error) {
+                  t.step(function () {
+                    assert_unreached(error.message);
+                  });
+                  t.done();
+                }
+              );
+            } else {
+              //Compliance test passes as the feature is not implemented
+              t.done();
+            }
+          });
+        },
+        function (error) {
+          t.step(function () {
+            assert_unreached(error.message);
+          });
+        }
+      );
+    } else {
+      //Compliance test passes as the feature is not implemented
+      t.done();
+    }
   }, "Check if " + read + " BatteryStatus." + name + " exists and type of " + type);
 });
 

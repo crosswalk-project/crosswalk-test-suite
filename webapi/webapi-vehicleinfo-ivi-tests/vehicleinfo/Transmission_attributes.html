@@ -50,22 +50,68 @@ Authors:
   var read = attr[2];
 
   async_test(function (t) {
-    vehicle.transmission.get().then(
-      function (transmission) {
-        t.step(function () {
-          assert_true(name in transmission, "the Transmission." + name + " exists");
-          assert_equals(typeof transmission[name], type, "the type of Transmission." + name);
-          assert_readonly(transmission, name, "the Transmission." + name + " is readonly");
-        });
-        t.done();
-      },
-      function (error) {
-        t.step(function () {
-          assert_unreached(error.message);
-        });
-        t.done();
-      }
-    )
+    assert_true("transmission" in vehicle, "the vehicle.transmission exists");
+
+    var getAvailability = vehicle.transmission.availableForRetrieval(name);
+    var setAvailability = vehicle.transmission.availableForSetting(name);
+
+    if (getAvailability === "available") {
+      vehicle.transmission.get().then(
+        function (transmission) {
+          t.step(function () {
+            assert_true(name in transmission, "the Transmission." + name + " exists");
+            assert_equals(typeof transmission[name], type, "the type of Transmission." + name);
+
+            if (setAvailability === "available") {
+              var variable = transmission[name];
+              var varType = typeof variable;
+              var setVar;
+
+              switch (varType) {
+                case "number":
+                  setVar = variable + 1;
+                  break;
+                case "string":
+                  setVar = variable + "a";
+                  break;
+                case "boolean":
+                  setVar = !variable;
+                  break;
+                default:
+                  setVar = null;
+              }
+
+              vehicle.transmission.set({name : setVar}).then(
+                function (veh) {
+                  t.step(function () {
+                    assert_equals(veh[name], variable);
+                  });
+                  t.done();
+                },
+                function (error) {
+                  t.step(function () {
+                    assert_unreached(error.message);
+                  });
+                  t.done();
+                }
+              );
+            } else {
+              //Compliance test passes as the feature is not implemented
+              t.done();
+            }
+          });
+        },
+        function (error) {
+          t.step(function () {
+            assert_unreached(error.message);
+          });
+          t.done();
+        }
+      );
+    } else {
+      //Compliance test passes as the feature is not implemented
+      t.done();
+    }
   }, "Check if " + read + " Transmission." + name + " exists and type of " + type);
 });
 

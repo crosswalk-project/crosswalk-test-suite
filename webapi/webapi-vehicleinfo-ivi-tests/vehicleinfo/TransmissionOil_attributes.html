@@ -50,22 +50,51 @@ Authors:
   var read = attr[2];
 
   async_test(function (t) {
-    vehicle.transmissionOil.get().then(
-      function (transmissionOil) {
-        t.step(function () {
-          assert_true(name in transmissionOil, "the TransmissionOil." + name + " exists");
-          assert_equals(typeof transmissionOil[name], type, "the type of TransmissionOil." + name);
-          assert_readonly(transmissionOil, name, "the TransmissionOil." + name + " is readonly");
-        });
-        t.done();
-      },
-      function (error) {
-        t.step(function () {
-          assert_unreached(error.message);
-        });
-        t.done();
-      }
-    )
+    assert_true("transmissionOil" in vehicle, "the vehicle.transmissionOil exists");
+
+    var getAvailability = vehicle.transmissionOil.availableForRetrieval(name);
+    var setAvailability = vehicle.transmissionOil.availableForSetting(name);
+
+    if (getAvailability === "available") {
+      vehicle.transmissionOil.get().then(
+        function (transmissionOil) {
+          t.step(function () {
+            assert_true(name in transmissionOil, "the TransmissionOil." + name + " exists");
+            assert_equals(typeof transmissionOil[name], type, "the type of TransmissionOil." + name);
+
+            if (setAvailability === "available") {
+              var variable = transmissionOil[name];
+              vehicle.transmissionOil.set({name : variable + 1}).then(
+                function (veh) {
+                  t.step(function () {
+                    assert_equals(veh[name], variable);
+                  });
+                  t.done();
+                },
+                function (error) {
+                  t.step(function () {
+                    assert_unreached(error.message);
+                  });
+                  t.done();
+                }
+              );
+            } else {
+              //Compliance test passes as the feature is not implemented
+              t.done();
+            }
+          });
+        },
+        function (error) {
+          t.step(function () {
+            assert_unreached(error.message);
+          });
+          t.done();
+        }
+      );
+    } else {
+      //Compliance test passes as the feature is not implemented
+      t.done();
+    }
   }, "Check if " + read + " TransmissionOil." + name + " exists and type of " + type);
 });
 

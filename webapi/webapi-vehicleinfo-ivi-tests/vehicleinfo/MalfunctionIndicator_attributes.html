@@ -41,22 +41,51 @@ Authors:
 <script>
 
 async_test(function (t) {
-  vehicle.malfunctionIndicator.get().then(
-    function (malfunctionIndicator) {
-      t.step(function () {
-        assert_true("on" in malfunctionIndicator, "the MalfunctionIndicator.on exists");
-        assert_readonly(malfunctionIndicator, "on", "the MalfunctionIndicator.on is readonly");
-        assert_equals(typeof malfunctionIndicator.on, "boolean", "the type of MalfunctionIndicator.on");
-      });
-      t.done();
-    },
-    function (error) {
-      t.step(function () {
-        assert_unreached(error.message);
-      });
-      t.done();
-    }
-  )
+  assert_true("malfunctionIndicator" in vehicle, "the vehicle.malfunctionIndicator exists");
+
+  var getAvailability = vehicle.malfunctionIndicator.availableForRetrieval("on");
+  var setAvailability = vehicle.malfunctionIndicator.availableForSetting("on");
+
+  if (getAvailability === "available") {
+    vehicle.malfunctionIndicator.get().then(
+      function (malfunctionIndicator) {
+        t.step(function () {
+          assert_true("on" in malfunctionIndicator, "the MalfunctionIndicator.on exists");
+          assert_equals(typeof malfunctionIndicator.on, "boolean", "the type of MalfunctionIndicator.on");
+
+          if (setAvailability === "available") {
+            var on = malfunctionIndicator.on;
+            vehicle.malfunctionIndicator.set({"on": !on}).then(
+              function (veh) {
+                t.step(function () {
+                  assert_equals(veh.on, on);
+                });
+                t.done();
+              },
+              function (error) {
+                t.step(function () {
+                  assert_unreached(error.message);
+                });
+                t.done();
+              }
+            );
+          } else {
+            //Compliance test passes as the feature is not implemented
+            t.done();
+          }
+        });
+      },
+      function (error) {
+        t.step(function () {
+          assert_unreached(error.message);
+        });
+        t.done();
+      }
+    );
+  } else {
+    //Compliance test passes as the feature is not implemented
+    t.done();
+  }
 }, "Check if MalfunctionIndicator.on exists, readonly and type of boolean");
 
 </script>

@@ -59,24 +59,55 @@ Authors:
   var read = attr[2];
 
   async_test(function (t) {
-    vehicle.lightStatus.get().then(
-      function (lightStatus) {
-        t.step(function () {
-          assert_true(name in lightStatus, "the LightStatus." + name + " exists");
-          assert_equals(typeof lightStatus[name], type, "the type of LightStatus." + name);
-          if ( read == "readonly" ) {
-            assert_readonly(lightStatus, name, "the LightStatus." + name + " is readonly");
-          }
-        });
-        t.done();
-      },
-      function (error) {
-        t.step(function () {
-          assert_unreached(error.message);
-        });
-        t.done();
-      }
-    )
+    assert_true("lightStatus" in vehicle, "the vehicle.lightStatus exists");
+
+    var getAvailability = vehicle.lightStatus.availableForRetrieval(name);
+    var setAvailability = vehicle.lightStatus.availableForSetting(name);
+
+    if (getAvailability === "available") {
+      vehicle.lightStatus.get().then(
+        function (lightStatus) {
+          t.step(function () {
+            assert_true(name in lightStatus, "the LightStatus." + name + " exists");
+            assert_equals(typeof lightStatus[name], type, "the type of LightStatus." + name);
+
+            if ( read == "readonly" ) {
+              if (setAvailability === "available") {
+                var zone = lightStatus.zone;
+                vehicle.lightStatus.set({"zone": null}).then(
+                  function (veh) {
+                    t.step(function () {
+                      assert_equals(veh.zone, zone);
+                    });
+                    t.done();
+                  },
+                  function (error) {
+                    t.step(function () {
+                      assert_unreached(error.message);
+                    });
+                    t.done();
+                  }
+                );
+              } else {
+                //Compliance test passes as the feature is not implemented
+                t.done();
+              }
+            } else {
+              t.done();
+            }
+          });
+        },
+        function (error) {
+          t.step(function () {
+            assert_unreached(error.message);
+          });
+          t.done();
+        }
+      );
+    } else {
+      //Compliance test passes as the feature is not implemented
+      t.done();
+    }
   }, "Check if " + read + " LightStatus." + name + " exists and type of " + type);
 });
 

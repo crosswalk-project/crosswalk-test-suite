@@ -41,22 +41,51 @@ Authors:
 <script>
 
 async_test(function (t) {
-  vehicle.acceleratorPedalPosition.get().then(
-    function (acceleratorPedalPosition) {
-      t.step(function () {
-        assert_true("value" in acceleratorPedalPosition, "the AcceleratorPedalPosition.value exists");
-        assert_readonly(acceleratorPedalPosition, "value", "the AcceleratorPedalPosition.value is readonly");
-        assert_equals(typeof acceleratorPedalPosition.value, "number", "the type of AcceleratorPedalPosition.value");
-      });
-      t.done();
-    },
-    function (error) {
-      t.step(function () {
-        assert_unreached(error.message);
-      });
-      t.done();
-    }
-  )
+  assert_true("acceleratorPedalPosition" in vehicle, "the vehicle.acceleratorPedalPosition exists");
+
+  var getAvailability = vehicle.acceleratorPedalPosition.availableForRetrieval("value");
+  var setAvailability = vehicle.acceleratorPedalPosition.availableForSetting("value");
+
+  if (getAvailability === "available") {
+    vehicle.acceleratorPedalPosition.get().then(
+      function (acceleratorPedalPosition) {
+        t.step(function () {
+          assert_true("value" in acceleratorPedalPosition, "the AcceleratorPedalPosition.value exists");
+          assert_equals(typeof acceleratorPedalPosition.value, "number", "the type of AcceleratorPedalPosition.value");
+
+          if (setAvailability === "available") {
+            var value = acceleratorPedalPosition.value;
+            vehicle.acceleratorPedalPosition.set({"value": value + 1}).then(
+              function (veh) {
+                t.step(function () {
+                  assert_equals(veh.value, value);
+                });
+                t.done();
+              },
+              function (error) {
+                t.step(function () {
+                  assert_unreached(error.message);
+                });
+                t.done();
+              }
+            );
+          } else {
+            //Compliance test passes as the feature is not implemented
+            t.done();
+          }
+        });
+      },
+      function (error) {
+        t.step(function () {
+          assert_unreached(error.message);
+        });
+        t.done();
+      }
+    );
+  } else {
+    //Compliance test passes as the feature is not implemented
+    t.done();
+  }
 }, "Check if AcceleratorPedalPosition.value exists, readonly and type of number");
 
 </script>

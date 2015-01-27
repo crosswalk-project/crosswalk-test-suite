@@ -39,7 +39,6 @@ Authors:
 <script src="support/support.js"></script>
 <div id="log"></div>
 <script>
-
 var zone;
 test(function () {
   zone = new Zone;
@@ -69,7 +68,7 @@ test(function () {
   assert_true("equals" in zone);
 }, "Check if Zone.equals exists");
 
-test(function () {
+test(function() {
   var zone1 = new Zone(["Front", "Left"])
   assert_equals(typeof zone.equals(zone1), "boolean");
 }, "Check that Zone.equals returns a boolean");
