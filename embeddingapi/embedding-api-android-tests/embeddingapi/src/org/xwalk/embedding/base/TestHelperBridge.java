@@ -7,6 +7,7 @@ package org.xwalk.embedding.base;
 import org.chromium.content.browser.test.util.TestCallbackHelperContainer.OnPageFinishedHelper;
 import org.chromium.content.browser.test.util.TestCallbackHelperContainer.OnPageStartedHelper;
 import org.chromium.content.browser.test.util.TestCallbackHelperContainer.OnReceivedErrorHelper;
+import org.xwalk.core.XWalkUIClient.ConsoleMessageType;
 import org.xwalk.core.XWalkUIClient.LoadStatus;
 
 import android.net.Uri;
@@ -36,6 +37,7 @@ public class TestHelperBridge {
     private final ShouldOverrideUrlLoadingHelper mShouldOverrideUrlLoadingHelper;
     private final OnFullscreenToggledHelper mOnFullscreenToggledHelper;
     private final OpenFileChooserHelper mOpenFileChooserHelper;
+    private final OnConsoleMessageHelper mOnConsoleMessageHelper;
 
     TestHelperBridge() {
         mOnPageStartedHelper = new OnPageStartedHelper();
@@ -57,6 +59,7 @@ public class TestHelperBridge {
         mShouldOverrideUrlLoadingHelper = new ShouldOverrideUrlLoadingHelper();
         mOnFullscreenToggledHelper = new OnFullscreenToggledHelper();
         mOpenFileChooserHelper = new OpenFileChooserHelper();
+        mOnConsoleMessageHelper = new OnConsoleMessageHelper();
     }
 
     public WebResourceResponse shouldInterceptLoadRequest(String url) {
@@ -219,5 +222,15 @@ public class TestHelperBridge {
 
     public void openFileChooser(ValueCallback<Uri> uploadFile) {
         mOpenFileChooserHelper.notifyCalled(uploadFile);
+    }
+
+    public OnConsoleMessageHelper getOnConsoleMessageHelper() {
+        return mOnConsoleMessageHelper;
+    }
+
+    public boolean onConsoleMessage(String message, int lineNumber,
+            String sourceId, ConsoleMessageType messageType) {
+        mOnConsoleMessageHelper.notifyCalled(message, lineNumber, sourceId, messageType);
+        return true;
     }
 }
