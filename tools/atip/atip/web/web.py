@@ -28,6 +28,8 @@
 
 import time
 import json
+import re
+import colorsys
 from selenium.webdriver.remote.webdriver import WebDriver
 from selenium.webdriver.common.action_chains import ActionChains
 from selenium.common.exceptions import (
@@ -50,6 +52,7 @@ class WebAPP(common.APP):
         self.app_type = common.APP_TYPE_WEB
         self.app_name = app_name
         self.app_id = ""
+        self.text_value = {}
         apk_activity_name = ""
         apk_pkg_name = ""
         if "platform" in app_config and "name" in app_config["platform"]:
@@ -227,6 +230,26 @@ class WebAPP(common.APP):
                 print "Failed to get element: %s" % e
         return None
 
+    def compare_two_value(self, first=None, second=None):
+        try:
+            if eval(self.text_value[first]) > eval(self.text_value[second]):
+                return True
+            else:
+                return False
+        except Exception as e:
+            print "Failed to compare these two param: %s" % e
+        return False
+
+    def save_content(self, p_name=None, key=None):
+        try:
+            js_script = 'var style=document.getElementById(\"' + key + '\").innerHTML; return style'
+            style = self.driver.execute_script(js_script)
+            self.text_value[p_name] = style
+            return True
+        except Exception as e:
+            print "Failed to get element: %s" % e
+            return False
+
     def launch_app(self):
         try:
             desired_capabilities = self.app_config["desired-capabilities"]
@@ -289,6 +312,46 @@ class WebAPP(common.APP):
                 return True
             time.sleep(0.2)
         return False
+
+    def check_normal_text_element_timeout_with_color(
+            self, text=None, key=None, color=None, display=True, timeout=2):
+        end_time = time.time() + timeout
+        while time.time() < end_time:
+            if self.__check_normal_text_element(text, key, display):
+                if self.get_element_color(key, color):
+                    return True
+            time.sleep(0.2)
+        return False
+
+    def get_element_color(self, key=None, color=None, display=True):
+        try:
+            js_script = 'var style=document.getElementById(\"' + key + '\").getAttribute(\"style\"); return style'
+            style = self.driver.execute_script(js_script)
+            if style.find(color) != -1:
+              return True
+        except Exception as e:
+            print "Failed to get element: %s" % e
+        return False
+
+    def check_content_type(self, key=None, display=True):
+        try:
+            js_script = 'var text=document.getElementById(\"' + key + '\").innerText; return text'
+            text = self.driver.execute_script(js_script)
+            if text.strip() == '':
+               return 'none'
+            number = re.match(r'(-?\d+)(\.\d+)?',text)
+            if number:
+               if "." in text:
+                   return "float"
+               else:
+                   return "int"
+            else:
+               if text.upper() == "TRUE" or text.upper() == "FALSE":
+                   return "boolean"
+               else:
+                   return "string"
+        except Exception as e:
+            print "Failed to get element text: %s" % e
 
     def press_element_by_key(self, key, display=True):
         element = self.__get_element_by_key(key, display)

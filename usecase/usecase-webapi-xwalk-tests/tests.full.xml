@@ -1,8 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <test_definition>
   <suite name="usecase-webapi-xwalk-tests">
-    <set name="Multimedia &amp;amp; Graphics" background="brand-success" icon="glyphicon-facetime-video">
-      <testcase component="Crosswalk Use Cases/WebAPI" execution_type="manual" id="Jsenhance" platform="all" priority="P0" purpose="Jsenhance" status="approved" type="functional_positive">
+    <set name="Multimedia &amp;amp; Graphics" background="brand-success" icon="glyphicon-facetime-video" type="script">
+      <testcase component="Crosswalk Use Cases/WebAPI" execution_type="auto" id="Jsenhance" platform="all" priority="P0" purpose="Jsenhance" status="approved" type="functional_positive">
+        <description>
+          <test_script_entry test_script_expected_result="0">/opt/usecase-webapi-xwalk-tests/bddrunner testscripts/Jsenhance.feature</test_script_entry>
+        </description>
       </testcase>
       <testcase component="Crosswalk Use Cases/WebAPI" execution_type="manual" id="CSSStyleAttribute" platform="all" priority="P0" purpose="CSS Style Attribute" status="designed" type="functional_positive">
       </testcase>
@@ -26,8 +29,32 @@
         </description>
       </testcase>
     </set>
+    <set name="Device &amp;amp; Hardware" background="brand-info" icon="glyphicon-hdd" type="script">
+      <testcase component="sample" type="functional_positive" status="approved" execution_type="auto" platform="all" priority="P0" id="Forms" purpose="Forms">
+        <description>
+          <test_script_entry test_script_expected_result="0">/opt/usecase-webapi-xwalk-tests/bddrunner testscripts/Forms.feature</test_script_entry>
+        </description>
+      </testcase>
+      <testcase component="sample" type="functional_positive" status="approved" execution_type="auto" platform="all" priority="P0" id="HTMLTemplate" purpose="HTML Template">
+        <description>
+          <test_script_entry test_script_expected_result="0">/opt/usecase-webapi-xwalk-tests/bddrunner testscripts/HTMLTemplate.feature</test_script_entry>
+        </description>
+      </testcase>
+      <testcase component="sample" type="functional_positive" status="approved" execution_type="auto" platform="all" priority="P0" id="ShadowDom" purpose="ShadowDom">
+        <description>
+          <test_script_entry test_script_expected_result="0">/opt/usecase-webapi-xwalk-tests/bddrunner testscripts/ShadowDom.feature</test_script_entry>
+        </description>
+      </testcase>
+    </set>
     <set name="Security" background="brand-warning3" icon="glyphicon-warning-sign">
       <testcase component="Crosswalk Use Cases/WebAPI" execution_type="manual" id="CSP" platform="all" priority="P0" purpose="CSP" status="approved" subcase="9" type="functional_positive">
+      </testcase>
+    </set>
+    <set name="Experimental API" background="brand-success3" icon="glyphicon-adjust" type="script">
+      <testcase component="sample" type="functional_positive" status="approved" execution_type="auto" platform="all" priority="P0" id="SIMD" purpose="SIMD">
+        <description>
+          <test_script_entry test_script_expected_result="0">/opt/usecase-webapi-xwalk-tests/bddrunner testscripts/SIMD.feature</test_script_entry>
+        </description>
       </testcase>
     </set>
     <set name="Tizen Extension APIs" background="brand-primary3" icon="glyphicon-send">
