@@ -1,0 +1,250 @@
+<!DOCTYPE html>
+<!--
+Copyright 2013 Eric Bidelman
+
+Licensed under the Apache License, Version 2.0 (the "License");
+you may not use this file except in compliance with the License.
+You may obtain a copy of the License at
+
+     http://www.apache.org/licenses/LICENSE-2.0
+
+Unless required by applicable law or agreed to in writing, software
+distributed under the License is distributed on an "AS IS" BASIS,
+WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+See the License for the specific language governing permissions and
+limitations under the License.
+
+Author: Eric Bidelman (ebidel@)
+-->
+<html>
+<head>
+<meta charset="utf-8" />
+<meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1" />
+<title>MediaSource API Demo</title>
+<!--link href='http://fonts.googleapis.com/css?family=Open+Sans' rel='stylesheet' type='text/css'-->
+<style>
+::selection {
+  color: #fff;
+  background: pink;
+}
+html, body {
+  overflow: hidden;
+  height: 100%;
+}
+body {
+  margin: 0;
+}
+body {
+  color: #222;
+  font-family: 'Open Sans', arial, sans-serif;
+  display: -webkit-flex;
+  -webkit-align-items: center;
+  -webkit-justify-content: center;
+  -webkit-flex-direction: column;
+  display: -ms-flex;
+  -ms-align-items: center;
+  -ms-justify-content: center;
+  -ms-flex-direction: column;
+  display: -moz-flex;
+  -moz-align-items: center;
+  -moz-justify-content: center;
+  -moz-flex-direction: column;
+  display: -o-flex;
+  -o-align-items: center;
+  -o-justify-content: center;
+  -o-flex-direction: column;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+}
+details {
+  position: absolute;
+  top: 1em;
+  left: 1em;
+  margin: 1em 0;
+  cursor: pointer;
+  padding: 10px;
+  background: #fff;
+  border: 1px solid rgba(0,0,0,0.3);
+  border-radius: 5px;
+  max-width: 600px;
+  font-size: 10pt;
+  z-index: 100;
+}
+details > div {
+  margin: 10px 0;
+}
+details blockquote {
+  font-style: italic;
+}
+pre:not(#log) {
+  background: #eee;
+  border-radius: 5px;
+  padding: 3px 17px 20px 17px;
+  border: 1px solid #ccc;
+  color: navy;
+}
+#log {
+  margin: 0 1em;
+}
+code {
+  font-weight: bold;
+}
+section {
+  display: -webkit-flex;
+  display: flex;
+}
+</style>
+</head>
+<body>
+
+<details>
+  <summary>What is this?</summary>
+  <div>
+    <p>This demo splits a <a href="Chrome_ImF.webm">.webm video</a> into
+    <span data-num-chunks></span> chunks using the File APIs. The entire movie
+    is then 'streamed' to a <code>&lt;video&gt;</code> element by appending each 
+    chunk using the
+    <a href="http://dvcs.w3.org/hg/html-media/raw-file/tip/media-source/media-source.html" target="_blank">MediaSource API</a>.</p>
+    <p><b>Support:</b> Chrome Dev Channel 17+ and the <code>--enable-media-source</code> flag set. The feature is enabled
+      by default in Chrome 23, which also updated its implementation to the new version of the API.</p>
+  </div>
+</details>
+
+<h3>Appending .webm video chunks using the Media Source API</h3>
+
+<section>
+  <video controls autoplay width="320" height="240"></video>
+  <pre id="log"></pre>
+</section>
+
+<pre><code>
+var ms = new MediaSource();
+
+var video = document.querySelector('video');
+video.src = window.URL.createObjectURL(ms);
+
+ms.addEventListener('sourceopen', function(e) {
+  ...
+  var sourceBuffer = ms.addSourceBuffer('video/webm; codecs="vorbis,vp8"');
+  sourceBuffer.appendBuffer(oneVideoWebMChunk);
+  ....
+}, false);
+</code></pre>
+
+<script>
+var FILE = 'test.webm';
+var NUM_CHUNKS = 5;
+var video = document.querySelector('video');
+
+window.MediaSource = window.MediaSource || window.WebKitMediaSource;
+if (!!!window.MediaSource) {
+  alert('MediaSource API is not available');
+}
+
+var mediaSource = new MediaSource();
+
+document.querySelector('[data-num-chunks]').textContent = NUM_CHUNKS;
+
+video.src = window.URL.createObjectURL(mediaSource);
+
+function callback(e) {
+  var sourceBuffer = mediaSource.addSourceBuffer('video/webm; codecs="vorbis,vp8"');
+
+  logger.log('mediaSource readyState: ' + this.readyState);
+
+  GET(FILE, function(uInt8Array) {
+    var file = new Blob([uInt8Array], {type: 'video/webm'});
+    var chunkSize = Math.ceil(file.size / NUM_CHUNKS);
+
+    logger.log('num chunks:' + NUM_CHUNKS);
+    logger.log('chunkSize:' + chunkSize + ', totalSize:' + file.size);
+
+    // Slice the video into NUM_CHUNKS and append each to the media element.
+    var i = 0;
+
+    (function readChunk_(i) {
+      var reader = new FileReader();
+
+      // Reads aren't guaranteed to finish in the same order they're started in,
+      // so we need to read + append the next chunk after the previous reader
+      // is done (onload is fired).
+      reader.onload = function(e) {
+        sourceBuffer.appendBuffer(new Uint8Array(e.target.result));
+        logger.log('appending chunk:' + i);
+        if (i == NUM_CHUNKS - 1) {
+          mediaSource.endOfStream();
+        } else {
+          if (video.paused) {
+            video.play(); // Start playing after 1st chunk is appended.
+          }
+          readChunk_(++i);
+        }
+      };
+
+      var startByte = chunkSize * i;
+      var chunk = file.slice(startByte, startByte + chunkSize);
+
+      reader.readAsArrayBuffer(chunk);
+    })(i);  // Start the recursive call by self calling.
+  });
+}
+
+mediaSource.addEventListener('sourceopen', callback, false);
+mediaSource.addEventListener('webkitsourceopen', callback, false);
+
+mediaSource.addEventListener('webkitsourceended', function(e) {
+  logger.log('mediaSource readyState: ' + this.readyState);
+}, false);
+
+function GET(url, callback) {
+  var xhr = new XMLHttpRequest();
+  xhr.open('GET', url, true);
+  xhr.responseType = 'arraybuffer';
+  xhr.send();
+
+  xhr.onload = function(e) {
+    if (xhr.status != 200) {
+      alert("Unexpected status code " + xhr.status + " for " + url);
+      return false;
+    }
+    callback(new Uint8Array(xhr.response));
+  };
+}
+</script>
+<script>
+function Logger(id) {
+  this.el = document.getElementById('log');
+}
+Logger.prototype.log = function(msg) {
+  var fragment = document.createDocumentFragment();
+  fragment.appendChild(document.createTextNode(msg));
+  fragment.appendChild(document.createElement('br'));
+  this.el.appendChild(fragment);
+};
+
+Logger.prototype.clear = function() {
+  this.el.textContent = '';
+};
+
+var logger = new Logger('log');
+</script>
+<!--
+<script>
+var _gaq = _gaq || [];
+_gaq.push(['_setAccount', 'UA-22014378-1']);
+_gaq.push(['_trackPageview']);
+
+(function() {
+  var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+  ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+  var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+})();
+</script>
+
+<script src="http://ajax.googleapis.com/ajax/libs/chrome-frame/1/CFInstall.min.js"></script>
+<script>CFInstall.check({mode: 'overlay'});</script>
+-->
+</body>
+</html>
