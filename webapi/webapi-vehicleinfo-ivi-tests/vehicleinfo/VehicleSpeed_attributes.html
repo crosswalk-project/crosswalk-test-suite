@@ -41,22 +41,51 @@ Authors:
 <script>
 
 async_test(function (t) {
-  vehicle.vehicleSpeed.get().then(
-    function (vehicleSpeed) {
-      t.step(function () {
-        assert_true("speed" in vehicleSpeed, "the VehicleSpeed.speed exists");
-        assert_readonly(vehicleSpeed, "speed", "the VehicleSpeed.speed is readonly");
-        assert_equals(typeof vehicleSpeed.speed, "number", "the type of VehicleSpeed.speed");
-      });
-      t.done();
-    },
-    function (error) {
-      t.step(function () {
-        assert_unreached(error.message);
-      });
-      t.done();
-    }
-  )
+  assert_true("vehicleSpeed" in vehicle, "the vehicle.vehicleSpeed exists");
+
+  var getAvailability = vehicle.vehicleSpeed.availableForRetrieval("speed");
+  var setAvailability = vehicle.vehicleSpeed.availableForSetting("speed");
+
+  if (getAvailability === "available") {
+    vehicle.vehicleSpeed.get().then(
+      function (vehicleSpeed) {
+        t.step(function () {
+          assert_true("speed" in vehicleSpeed, "the VehicleSpeed.speed exists");
+          assert_equals(typeof vehicleSpeed.speed, "number", "the type of VehicleSpeed.speed");
+
+          if (setAvailability === "available") {
+            var speed = vehicleSpeed.speed;
+            vehicle.vehicleSpeed.set({"speed": speed + 1}).then(
+              function (veh) {
+                t.step(function () {
+                  assert_equals(veh.speed, speed);
+                });
+                t.done();
+              },
+              function (error) {
+                t.step(function () {
+                  assert_unreached(error.message);
+                });
+                t.done();
+              }
+            );
+          } else {
+            //Compliance test passes as the feature is not implemented
+            t.done();
+          }
+        });
+      },
+      function (error) {
+        t.step(function () {
+          assert_unreached(error.message);
+        });
+        t.done();
+      }
+    );
+  } else {
+    //Compliance test passes as the feature is not implemented
+    t.done();
+  }
 }, "Check if VehicleSpeed.speed exists, readonly and type of number");
 
 </script>

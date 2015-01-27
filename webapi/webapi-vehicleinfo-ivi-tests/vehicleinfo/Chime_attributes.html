@@ -41,22 +41,51 @@ Authors:
 <script>
 
 async_test(function (t) {
-  vehicle.chime.get().then(
-    function (chime) {
-      t.step(function () {
-        assert_true("on" in chime, "the Chime.on exists");
-        assert_readonly(chime, "on", "the Chime.on is readonly");
-        assert_equals(typeof chime.on, "boolean", "the type of Chime.on");
-      });
-      t.done();
-    },
-    function (error) {
-      t.step(function () {
-        assert_unreached(error.message);
-      });
-      t.done();
-    }
-  )
-}, "Check if Chime.on exists, readonly and type of boolean");
+  assert_true("chime" in vehicle, "the vehicle.chime exists");
+
+  var getAvailability = vehicle.chime.availableForRetrieval("status");
+  var setAvailability = vehicle.chime.availableForSetting("status");
+
+  if (getAvailability === "available") {
+    vehicle.chime.get().then(
+      function (chime) {
+        t.step(function () {
+          assert_true("status" in chime, "the Chime.status exists");
+          assert_equals(typeof chime.status, "boolean", "the type of Chime.status");
+
+          if (setAvailability === "available") {
+            var status = chime.status;
+            vehicle.chime.set({"status": !status}).then(
+              function (veh) {
+                t.step(function () {
+                  assert_equals(veh.status, status);
+                });
+                t.done();
+              },
+              function (error) {
+                t.step(function () {
+                  assert_unreached(error.message);
+                });
+                t.done();
+              }
+            );
+          } else {
+            //Compliance test passes as the feature is not implemented
+            t.done();
+          }
+        });
+      },
+      function (error) {
+        t.step(function () {
+          assert_unreached(error.message);
+        });
+        t.done();
+      }
+    );
+  } else {
+    //Compliance test passes as the feature is not implemented
+    t.done();
+  }
+}, "Check if Chime.status exists, readonly and type of boolean");
 
 </script>

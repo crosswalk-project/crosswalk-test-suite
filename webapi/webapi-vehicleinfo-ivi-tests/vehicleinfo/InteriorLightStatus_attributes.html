@@ -50,24 +50,54 @@ Authors:
   var read = attr[2];
 
   async_test(function (t) {
-    vehicle.interiorLightStatus.get().then(
-      function (interiorLightStatus) {
-        t.step(function () {
-          assert_true(name in interiorLightStatus, "the InteriorLightStatus." + name + " exists");
-          assert_equals(typeof interiorLightStatus[name], type, "the type of InteriorLightStatus." + name);
-          if ( read == "readonly" ) {
-            assert_readonly(interiorLightStatus, name, "the InteriorLightStatus." + name + " is readonly");
-          }
-        });
-        t.done();
-      },
-      function (error) {
-        t.step(function () {
-          assert_unreached(error.message);
-        });
-        t.done();
-      }
-    )
+    assert_true("interiorLightStatus" in vehicle, "the vehicle.interiorLightStatus exists");
+
+    var getAvailability = vehicle.interiorLightStatus.availableForRetrieval(name);
+    var setAvailability = vehicle.interiorLightStatus.availableForSetting(name);
+
+    if (getAvailability === "available") {
+      vehicle.interiorLightStatus.get().then(
+        function (interiorLightStatus) {
+          t.step(function () {
+            assert_true(name in interiorLightStatus, "the InteriorLightStatus." + name + " exists");
+            assert_equals(typeof interiorLightStatus[name], type, "the type of InteriorLightStatus." + name);
+            if ( read == "readonly" ) {
+              if (setAvailability === "available") {
+                var zone = interiorLightStatus.zone;
+                vehicle.interiorLightStatus.set({"zone": null}).then(
+                  function (veh) {
+                    t.step(function () {
+                      assert_equals(veh.zone, zone);
+                    });
+                    t.done();
+                  },
+                  function (error) {
+                    t.step(function () {
+                      assert_unreached(error.message);
+                    });
+                    t.done();
+                  }
+                );
+              } else {
+                //Compliance test passes as the feature is not implemented
+                t.done();
+              }
+            } else {
+              t.done();
+            }
+          });
+        },
+        function (error) {
+          t.step(function () {
+            assert_unreached(error.message);
+          });
+          t.done();
+        }
+      );
+    } else {
+      //Compliance test passes as the feature is not implemented
+      t.done();
+    }
   }, "Check if " + read + " InteriorLightStatus." + name + " exists and type of " + type);
 });
 

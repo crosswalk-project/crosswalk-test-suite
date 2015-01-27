@@ -51,22 +51,51 @@ Authors:
   var read = attr[2];
 
   async_test(function (t) {
-    vehicle.acceleration.get().then(
-      function (acceleration) {
-        t.step(function () {
-          assert_true(name in acceleration, "the Acceleration." + name + " exists");
-          assert_equals(typeof acceleration[name], type, "the type of Acceleration." + name);
-          assert_readonly(acceleration, name, "the Acceleration." + name + " is readonly");
-        });
-        t.done();
-      },
-      function (error) {
-        t.step(function () {
-          assert_unreached(error.message);
-        });
-        t.done();
-      }
-    )
+    assert_true("acceleration" in vehicle, "the vehicle.acceleration exists");
+
+    var getAvailability = vehicle.acceleration.availableForRetrieval(name);
+    var setAvailability = vehicle.acceleration.availableForSetting(name);
+
+    if (getAvailability === "available") {
+      vehicle.acceleration.get().then(
+        function (acceleration) {
+          t.step(function () {
+            assert_true(name in acceleration, "the Acceleration." + name + " exists");
+            assert_equals(typeof acceleration[name], type, "the type of Acceleration." + name);
+
+            if (setAvailability === "available") {
+              var variable = acceleration[name];
+              vehicle.acceleration.set({name : variable + 1}).then(
+                function (veh) {
+                  t.step(function () {
+                    assert_equals(veh[name], variable);
+                  });
+                  t.done();
+                },
+                function (error) {
+                  t.step(function () {
+                    assert_unreached(error.message);
+                  });
+                  t.done();
+                }
+              );
+            } else {
+              //Compliance test passes as the feature is not implemented
+              t.done();
+            }
+          });
+        },
+        function (error) {
+          t.step(function () {
+            assert_unreached(error.message);
+          });
+          t.done();
+        }
+      );
+    } else {
+      //Compliance test passes as the feature is not implemented
+      t.done();
+    }
   }, "Check if " + read + " Acceleration." + name + " exists and type of " + type);
 });
 

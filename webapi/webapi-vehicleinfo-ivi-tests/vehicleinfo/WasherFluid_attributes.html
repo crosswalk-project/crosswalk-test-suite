@@ -50,22 +50,68 @@ Authors:
   var read = attr[2];
 
   async_test(function (t) {
-    vehicle.washerFluid.get().then(
-      function (washerFluid) {
-        t.step(function () {
-          assert_true(name in washerFluid, "the WasherFluid." + name + " exists");
-          assert_equals(typeof washerFluid[name], type, "the type of WasherFluid." + name);
-          assert_readonly(washerFluid, name, "the WasherFluid." + name + " is readonly");
-        });
-        t.done();
-      },
-      function (error) {
-        t.step(function () {
-          assert_unreached(error.message);
-        });
-        t.done();
-      }
-    )
+    assert_true("washerFluid" in vehicle, "the vehicle.washerFluid exists");
+
+    var getAvailability = vehicle.washerFluid.availableForRetrieval(name);
+    var setAvailability = vehicle.washerFluid.availableForSetting(name);
+
+    if (getAvailability === "available") {
+      vehicle.washerFluid.get().then(
+        function (washerFluid) {
+          t.step(function () {
+            assert_true(name in washerFluid, "the WasherFluid." + name + " exists");
+            assert_equals(typeof washerFluid[name], type, "the type of WasherFluid." + name);
+
+            if (setAvailability === "available") {
+              var variable = washerFluid[name];
+              var varType = typeof variable;
+              var setVar;
+
+              switch (varType) {
+                case "number":
+                  setVar = variable + 1;
+                  break;
+                case "string":
+                  setVar = variable + "a";
+                  break;
+                case "boolean":
+                  setVar = !variable;
+                  break;
+                default:
+                  setVar = null;
+              }
+
+              vehicle.washerFluid.set({name : setVar}).then(
+                function (veh) {
+                  t.step(function () {
+                    assert_equals(veh[name], variable);
+                  });
+                  t.done();
+                },
+                function (error) {
+                  t.step(function () {
+                    assert_unreached(error.message);
+                  });
+                  t.done();
+                }
+              );
+            } else {
+              //Compliance test passes as the feature is not implemented
+              t.done();
+            }
+          });
+        },
+        function (error) {
+          t.step(function () {
+            assert_unreached(error.message);
+          });
+          t.done();
+        }
+      );
+    } else {
+      //Compliance test passes as the feature is not implemented
+      t.done();
+    }
   }, "Check if " + read + " WasherFluid." + name + " exists and type of " + type);
 });
 

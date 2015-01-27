@@ -41,22 +41,51 @@ Authors:
 <script>
 
 async_test(function (t) {
-  vehicle.buttonEvent.get().then(
-    function (buttonEvent) {
-      t.step(function () {
-        assert_true("button" in buttonEvent, "the ButtonEvent.button exists");
-        assert_readonly(buttonEvent, "button", "the ButtonEvent.button is readonly");
-        assert_equals(typeof buttonEvent.button, "object", "the type of ButtonEvent.button");
-      });
-      t.done();
-    },
-    function (error) {
-      t.step(function () {
-        assert_unreached(error.message);
-      });
-      t.done();
-    }
-  )
+  assert_true("buttonEvent" in vehicle, "the vehicle.buttonEvent exists");
+
+  var getAvailability = vehicle.buttonEvent.availableForRetrieval("button");
+  var setAvailability = vehicle.buttonEvent.availableForSetting("button");
+
+  if (getAvailability === "available") {
+    vehicle.buttonEvent.get().then(
+      function (buttonEvent) {
+        t.step(function () {
+          assert_true("button" in buttonEvent, "the ButtonEvent.button exists");
+          assert_equals(typeof buttonEvent.button, "object", "the type of ButtonEvent.button");
+
+          if (setAvailability === "available") {
+            var button = buttonEvent.button;
+            vehicle.buttonEvent.set({"button": null}).then(
+              function (veh) {
+                t.step(function () {
+                  assert_equals(veh.button, button);
+                });
+                t.done();
+              },
+              function (error) {
+                t.step(function () {
+                  assert_unreached(error.message);
+                });
+                t.done();
+              }
+            );
+          } else {
+            //Compliance test passes as the feature is not implemented
+            t.done();
+          }
+        });
+      },
+      function (error) {
+        t.step(function () {
+          assert_unreached(error.message);
+        });
+        t.done();
+      }
+    );
+  } else {
+    //Compliance test passes as the feature is not implemented
+    t.done();
+  }
 }, "Check if ButtonEvent.button exists, readonly and type of object");
 
 </script>

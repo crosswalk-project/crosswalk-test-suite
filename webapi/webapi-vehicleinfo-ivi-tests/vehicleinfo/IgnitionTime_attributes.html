@@ -50,22 +50,51 @@ Authors:
   var read = attr[2];
 
   async_test(function (t) {
-    vehicle.ignitionTime.get().then(
-      function (ignitionTime) {
-        t.step(function () {
-          assert_true(name in ignitionTime, "the IgnitionTime." + name + " exists");
-          assert_equals(typeof ignitionTime[name], type, "the type of IgnitionTime." + name);
-          assert_readonly(ignitionTime, name, "the IgnitionTime." + name + " is readonly");
-        });
-        t.done();
-      },
-      function (error) {
-        t.step(function () {
-          assert_unreached(error.message);
-        });
-        t.done();
-      }
-    )
+    assert_true("ignitionTime" in vehicle, "the vehicle.ignitionTime exists");
+
+    var getAvailability = vehicle.ignitionTime.availableForRetrieval(name);
+    var setAvailability = vehicle.ignitionTime.availableForSetting(name);
+
+    if (getAvailability === "available") {
+      vehicle.ignitionTime.get().then(
+        function (ignitionTime) {
+          t.step(function () {
+            assert_true(name in ignitionTime, "the IgnitionTime." + name + " exists");
+            assert_equals(typeof ignitionTime[name], type, "the type of IgnitionTime." + name);
+
+            if (setAvailability === "available") {
+              var variable = ignitionTime[name];
+              vehicle.ignitionTime.set({name : null}).then(
+                function (veh) {
+                  t.step(function () {
+                    assert_equals(veh[name], variable);
+                  });
+                  t.done();
+                },
+                function (error) {
+                  t.step(function () {
+                    assert_unreached(error.message);
+                  });
+                  t.done();
+                }
+              );
+            } else {
+              //Compliance test passes as the feature is not implemented
+              t.done();
+            }
+          });
+        },
+        function (error) {
+          t.step(function () {
+            assert_unreached(error.message);
+          });
+          t.done();
+        }
+      );
+    } else {
+      //Compliance test passes as the feature is not implemented
+      t.done();
+    }
   }, "Check if " + read + " IgnitionTime." + name + " exists and type of " + type);
 });
 

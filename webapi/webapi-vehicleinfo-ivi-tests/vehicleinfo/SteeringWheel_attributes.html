@@ -41,22 +41,51 @@ Authors:
 <script>
 
 async_test(function (t) {
-  vehicle.steeringWheel.get().then(
-    function (steeringWheel) {
-      t.step(function () {
-        assert_true("angle" in steeringWheel, "the SteeringWheel.angle exists");
-        assert_readonly(steeringWheel, "angle", "the SteeringWheel.angle is readonly");
-        assert_equals(typeof steeringWheel.angle, "number", "the type of SteeringWheel.angle");
-      });
-      t.done();
-    },
-    function (error) {
-      t.step(function () {
-        assert_unreached(error.message);
-      });
-      t.done();
-    }
-  )
+  assert_true("steeringWheel" in vehicle, "the vehicle.steeringWheel exists");
+
+  var getAvailability = vehicle.steeringWheel.availableForRetrieval("angle");
+  var setAvailability = vehicle.steeringWheel.availableForSetting("angle");
+
+  if (getAvailability === "available") {
+    vehicle.steeringWheel.get().then(
+      function (steeringWheel) {
+        t.step(function () {
+          assert_true("angle" in steeringWheel, "the SteeringWheel.angle exists");
+          assert_equals(typeof steeringWheel.angle, "number", "the type of SteeringWheel.angle");
+
+          if (setAvailability === "available") {
+            var angle = steeringWheel.angle;
+            vehicle.steeringWheel.set({"angle": angle + 1}).then(
+              function (veh) {
+                t.step(function () {
+                  assert_equals(veh.angle, angle);
+                });
+                t.done();
+              },
+              function (error) {
+                t.step(function () {
+                  assert_unreached(error.message);
+                });
+                t.done();
+              }
+            );
+          } else {
+            //Compliance test passes as the feature is not implemented
+            t.done();
+          }
+        });
+      },
+      function (error) {
+        t.step(function () {
+          assert_unreached(error.message);
+        });
+        t.done();
+      }
+    );
+  } else {
+    //Compliance test passes as the feature is not implemented
+    t.done();
+  }
 }, "Check if SteeringWheel.angle exists, readonly and type of number");
 
 </script>

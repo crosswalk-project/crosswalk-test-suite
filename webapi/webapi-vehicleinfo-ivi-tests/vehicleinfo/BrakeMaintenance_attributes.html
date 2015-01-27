@@ -53,22 +53,68 @@ Authors:
   var read = attr[2];
 
   async_test(function (t) {
-    vehicle.brakeMaintenance.get().then(
-      function (brakeMaintenance) {
-        t.step(function () {
-          assert_true(name in brakeMaintenance, "the BrakeMaintenance." + name + " exists");
-          assert_equals(typeof brakeMaintenance[name], type, "the type of BrakeMaintenance." + name);
-          assert_readonly(brakeMaintenance, name, "the BrakeMaintenance." + name + " is readonly");
-        });
-        t.done();
-      },
-      function (error) {
-        t.step(function () {
-          assert_unreached(error.message);
-        });
-        t.done();
-      }
-    )
+    assert_true("brakeMaintenance" in vehicle, "the vehicle.brakeMaintenance exists");
+
+    var getAvailability = vehicle.brakeMaintenance.availableForRetrieval(name);
+    var setAvailability = vehicle.brakeMaintenance.availableForSetting(name);
+
+    if (getAvailability === "available") {
+      vehicle.brakeMaintenance.get().then(
+        function (brakeMaintenance) {
+          t.step(function () {
+            assert_true(name in brakeMaintenance, "the BrakeMaintenance." + name + " exists");
+            assert_equals(typeof brakeMaintenance[name], type, "the type of BrakeMaintenance." + name);
+
+            if (setAvailability === "available") {
+              var variable = brakeMaintenance[name];
+              var varType = typeof variable;
+              var setVar;
+
+              switch (varType) {
+                case "number":
+                  setVar = variable + 1;
+                  break;
+                case "string":
+                  setVar = variable + "a";
+                  break;
+                case "boolean":
+                  setVar = !variable;
+                  break;
+                default:
+                  setVar = null;
+              }
+
+              vehicle.brakeMaintenance.set({name : setVar}).then(
+                function (veh) {
+                  t.step(function () {
+                    assert_equals(veh[name], variable);
+                  });
+                  t.done();
+                },
+                function (error) {
+                  t.step(function () {
+                    assert_unreached(error.message);
+                  });
+                  t.done();
+                }
+              );
+            } else {
+              //Compliance test passes as the feature is not implemented
+              t.done();
+            }
+          });
+        },
+        function (error) {
+          t.step(function () {
+            assert_unreached(error.message);
+          });
+          t.done();
+        }
+      );
+    } else {
+      //Compliance test passes as the feature is not implemented
+      t.done();
+    }
   }, "Check if " + read + " BrakeMaintenance." + name + " exists and type of " + type);
 });
 

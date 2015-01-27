@@ -41,22 +41,51 @@ Authors:
 <script>
 
 async_test(function (t) {
-  vehicle.brakeOperation.get().then(
-    function (brakeOperation) {
-      t.step(function () {
-        assert_true("brakePedalDepressed" in brakeOperation, "the BrakeOperation.brakePedalDepressed exists");
-        assert_readonly(brakeOperation, "brakePedalDepressed", "the BrakeOperation.brakePedalDepressed is readonly");
-        assert_equals(typeof brakeOperation.brakePedalDepressed, "boolean", "the type of BrakeOperation.brakePedalDepressed");
-      });
-      t.done();
-    },
-    function (error) {
-      t.step(function () {
-        assert_unreached(error.message);
-      });
-      t.done();
-    }
-  )
+  assert_true("brakeOperation" in vehicle, "the vehicle.brakeOperation exists");
+
+  var getAvailability = vehicle.brakeOperation.availableForRetrieval("brakePedalDepressed");
+  var setAvailability = vehicle.brakeOperation.availableForSetting("brakePedalDepressed");
+
+  if (getAvailability === "available") {
+    vehicle.brakeOperation.get().then(
+      function (brakeOperation) {
+        t.step(function () {
+          assert_true("brakePedalDepressed" in brakeOperation, "the BrakeOperation.brakePedalDepressed exists");
+          assert_equals(typeof brakeOperation.brakePedalDepressed, "boolean", "the type of BrakeOperation.brakePedalDepressed");
+
+          if (setAvailability === "available") {
+            var brakePedalDepressed = brakeOperation.brakePedalDepressed;
+            vehicle.brakeOperation.set({"brakePedalDepressed": !brakePedalDepressed}).then(
+              function (veh) {
+                t.step(function () {
+                  assert_equals(veh.brakePedalDepressed, brakePedalDepressed);
+                });
+                t.done();
+              },
+              function (error) {
+                t.step(function () {
+                  assert_unreached(error.message);
+                });
+                t.done();
+              }
+            );
+          } else {
+            //Compliance test passes as the feature is not implemented
+            t.done();
+          }
+        });
+      },
+      function (error) {
+        t.step(function () {
+          assert_unreached(error.message);
+        });
+        t.done();
+      }
+    );
+  } else {
+    //Compliance test passes as the feature is not implemented
+    t.done();
+  }
 }, "Check if BrakeOperation.brakePedalDepressed exists, readonly and type of boolean");
 
 </script>

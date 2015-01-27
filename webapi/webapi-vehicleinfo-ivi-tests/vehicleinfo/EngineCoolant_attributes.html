@@ -50,22 +50,51 @@ Authors:
   var read = attr[2];
 
   async_test(function (t) {
-    vehicle.engineCoolant.get().then(
-      function (engineCoolant) {
-        t.step(function () {
-          assert_true(name in engineCoolant, "the EngineCoolant." + name + " exists");
-          assert_equals(typeof engineCoolant[name], type, "the type of EngineCoolant." + name);
-          assert_readonly(engineCoolant, name, "the EngineCoolant." + name + " is readonly");
-        });
-        t.done();
-      },
-      function (error) {
-        t.step(function () {
-          assert_unreached(error.message);
-        });
-        t.done();
-      }
-    )
+    assert_true("engineCoolant" in vehicle, "the vehicle.engineCoolant exists");
+
+    var getAvailability = vehicle.engineCoolant.availableForRetrieval(name);
+    var setAvailability = vehicle.engineCoolant.availableForSetting(name);
+
+    if (getAvailability === "available") {
+      vehicle.engineCoolant.get().then(
+        function (engineCoolant) {
+          t.step(function () {
+            assert_true(name in engineCoolant, "the EngineCoolant." + name + " exists");
+            assert_equals(typeof engineCoolant[name], type, "the type of EngineCoolant." + name);
+
+            if (setAvailability === "available") {
+              var variable = engineCoolant[name];
+              vehicle.engineCoolant.set({name : variable + 1}).then(
+                function (veh) {
+                  t.step(function () {
+                    assert_equals(veh[name], variable);
+                  });
+                  t.done();
+                },
+                function (error) {
+                  t.step(function () {
+                    assert_unreached(error.message);
+                  });
+                  t.done();
+                }
+              );
+            } else {
+              //Compliance test passes as the feature is not implemented
+              t.done();
+            }
+          });
+        },
+        function (error) {
+          t.step(function () {
+            assert_unreached(error.message);
+          });
+          t.done();
+        }
+      );
+    } else {
+      //Compliance test passes as the feature is not implemented
+      t.done();
+    }
   }, "Check if " + read + " EngineCoolant." + name + " exists and type of " + type);
 });
 

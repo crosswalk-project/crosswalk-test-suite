@@ -53,22 +53,68 @@ Authors:
   var read = attr[2];
 
   async_test(function (t) {
-    vehicle.engineOil.get().then(
-      function (engineOil) {
-        t.step(function () {
-          assert_true(name in engineOil, "the EngineOil." + name + " exists");
-          assert_equals(typeof engineOil[name], type, "the type of EngineOil." + name);
-          assert_readonly(engineOil, name, "the EngineOil." + name + " is readonly");
-        });
-        t.done();
-      },
-      function (error) {
-        t.step(function () {
-          assert_unreached(error.message);
-        });
-        t.done();
-      }
-    )
+    assert_true("engineOil" in vehicle, "the vehicle.engineOil exists");
+
+    var getAvailability = vehicle.engineOil.availableForRetrieval(name);
+    var setAvailability = vehicle.engineOil.availableForSetting(name);
+
+    if (getAvailability === "available") {
+      vehicle.engineOil.get().then(
+        function (engineOil) {
+          t.step(function () {
+            assert_true(name in engineOil, "the EngineOil." + name + " exists");
+            assert_equals(typeof engineOil[name], type, "the type of EngineOil." + name);
+
+            if (setAvailability === "available") {
+              var variable = engineOil[name];
+              var varType = typeof variable;
+              var setVar;
+
+              switch (varType) {
+                case "number":
+                  setVar = variable + 1;
+                  break;
+                case "string":
+                  setVar = variable + "a";
+                  break;
+                case "boolean":
+                  setVar = !variable;
+                  break;
+                default:
+                  setVar = null;
+              }
+
+              vehicle.engineOil.set({name : setVar}).then(
+                function (veh) {
+                  t.step(function () {
+                    assert_equals(veh[name], variable);
+                  });
+                  t.done();
+                },
+                function (error) {
+                  t.step(function () {
+                    assert_unreached(error.message);
+                  });
+                  t.done();
+                }
+              );
+            } else {
+              //Compliance test passes as the feature is not implemented
+              t.done();
+            }
+          });
+        },
+        function (error) {
+          t.step(function () {
+            assert_unreached(error.message);
+          });
+          t.done();
+        }
+      );
+    } else {
+      //Compliance test passes as the feature is not implemented
+      t.done();
+    }
   }, "Check if " + read + " EngineOil." + name + " exists and type of " + type);
 });
 

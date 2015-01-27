@@ -54,24 +54,54 @@ Authors:
   var read = attr[2];
 
   async_test(function (t) {
-    vehicle.fuel.get().then(
-      function (fuel) {
-        t.step(function () {
-          assert_true(name in fuel, "the Fuel." + name + " exists");
-          assert_equals(typeof fuel[name], type, "the type of Fuel." + name);
-          if ( read == "readonly" ) {
-            assert_readonly(fuel, name, "the Fuel." + name + " is readonly");
-          }
-        });
-        t.done();
-      },
-      function (error) {
-        t.step(function () {
-          assert_unreached(error.message);
-        });
-        t.done();
-      }
-    )
+    assert_true("fuel" in vehicle, "the vehicle.fuel exists");
+
+    var getAvailability = vehicle.fuel.availableForRetrieval(name);
+    var setAvailability = vehicle.fuel.availableForSetting(name);
+
+    if (getAvailability === "available") {
+      vehicle.fuel.get().then(
+        function (fuel) {
+          t.step(function () {
+            assert_true(name in fuel, "the Fuel." + name + " exists");
+            assert_equals(typeof fuel[name], type, "the type of Fuel." + name);
+            if ( read == "readonly" ) {
+              if (setAvailability === "available") {
+                var variable = fuel[name];
+                vehicle.fuel.set({name : variable + 1}).then(
+                  function (veh) {
+                    t.step(function () {
+                      assert_equals(veh[name], variable);
+                    });
+                    t.done();
+                  },
+                  function (error) {
+                    t.step(function () {
+                      assert_unreached(error.message);
+                    });
+                    t.done();
+                  }
+                );
+              } else {
+                //Compliance test passes as the feature is not implemented
+                t.done();
+              }
+            } else {
+              t.done();
+            }
+          });
+        },
+        function (error) {
+          t.step(function () {
+            assert_unreached(error.message);
+          });
+          t.done();
+        }
+      );
+    } else {
+      //Compliance test passes as the feature is not implemented
+      t.done();
+    }
   }, "Check if " + read + " Fuel." + name + " exists and type of " + type);
 });
 

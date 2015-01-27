@@ -53,22 +53,51 @@ Authors:
   var read = attr[2];
 
   async_test(function (t) {
-    vehicle.diagnostic.get().then(
-      function (diagnostic) {
-        t.step(function () {
-          assert_true(name in diagnostic, "the Diagnostic." + name + " exists");
-          assert_equals(typeof diagnostic[name], type, "the type of Diagnostic." + name);
-          assert_readonly(diagnostic, name, "the Diagnostic." + name + " is readonly");
-        });
-        t.done();
-      },
-      function (error) {
-        t.step(function () {
-          assert_unreached(error.message);
-        });
-        t.done();
-      }
-    )
+    assert_true("diagnostic" in vehicle, "the vehicle.diagnostic exists");
+
+    var getAvailability = vehicle.diagnostic.availableForRetrieval(name);
+    var setAvailability = vehicle.diagnostic.availableForSetting(name);
+
+    if (getAvailability === "available") {
+      vehicle.diagnostic.get().then(
+        function (diagnostic) {
+          t.step(function () {
+            assert_true(name in diagnostic, "the Diagnostic." + name + " exists");
+            assert_equals(typeof diagnostic[name], type, "the type of Diagnostic." + name);
+
+            if (setAvailability === "available") {
+              var variable = diagnostic[name];
+              vehicle.diagnostic.set({name : variable + 1}).then(
+                function (veh) {
+                  t.step(function () {
+                    assert_equals(veh[name], variable);
+                  });
+                  t.done();
+                },
+                function (error) {
+                  t.step(function () {
+                    assert_unreached(error.message);
+                  });
+                  t.done();
+                }
+              );
+            } else {
+              //Compliance test passes as the feature is not implemented
+              t.done();
+            }
+          });
+        },
+        function (error) {
+          t.step(function () {
+            assert_unreached(error.message);
+          });
+          t.done();
+        }
+      );
+    } else {
+      //Compliance test passes as the feature is not implemented
+      t.done();
+    }
   }, "Check if " + read + " Diagnostic." + name + " exists and type of " + type);
 });
 

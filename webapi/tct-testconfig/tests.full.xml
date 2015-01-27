@@ -251,5 +251,23 @@ The tct-bt-helper is included in the tct-bluetooth-tizen-tests package. Install 
         </description>
       </testcase>
     </set>
+    <set name="webapi-vehicleinfo-ivi-tests">
+      <testcase execution_type="manual" id="VehicleConfiguration" purpose="webapi-vehicleinfo-ivi-tests configuration" status="approved" type="compliance">
+        <description>
+          <steps>
+            <step order="1">
+              <step_desc>Install Bluemonkey plugin in IVI: zypper in automotive-message-broker-plugins-bluemonkey</step_desc>
+            </step>
+            <step order="2">
+              <step_desc>Update configuration /etc/ambd/config.tizen in IVI: Copy 'mainloop' and 'sources' sections from /etc/ambd/examples/bluemonkeyconfig to /etc/ambd/config.tizen</step_desc>
+            </step>
+            <step order="3">
+              <step_desc>Restart ambd: systemctl restart ambd</step_desc>
+            </step>
+          </steps>
+          <test_script_entry test_script_expected_result="0" timeout="90"/>
+        </description>
+      </testcase>
+    </set>
   </suite>
 </test_definition>

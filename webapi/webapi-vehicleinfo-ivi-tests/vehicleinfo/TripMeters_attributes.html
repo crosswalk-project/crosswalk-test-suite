@@ -41,22 +41,52 @@ Authors:
 <script>
 
 async_test(function (t) {
-  vehicle.tripMeters.get().then(
-    function (tripMeters) {
-      t.step(function () {
-        assert_true("meters" in tripMeters, "the TripMeters.meters exists");
-        assert_readonly(tripMeters, "meters", "the TripMeters.meters is readonly");
-        assert_equals(typeof tripMeters.meters, "object", "the type of TripMeters.meters");
-      });
-      t.done();
-    },
-    function (error) {
-      t.step(function () {
-        assert_unreached(error.message);
-      });
-      t.done();
-    }
-  )
+  assert_true("tripMeters" in vehicle, "the vehicle.tripMeters exists");
+
+  var getAvailability = vehicle.tripMeters.availableForRetrieval("meters");
+  var setAvailability = vehicle.tripMeters.availableForSetting("meters");
+
+  if (getAvailability === "available") {
+    vehicle.tripMeters.get().then(
+      function (tripMeters) {
+        t.step(function () {
+          assert_true("meters" in tripMeters, "the TripMeters.meters exists");
+          assert_equals(typeof tripMeters.meters, "object", "the type of TripMeters.meters");
+
+          if (setAvailability === "available") {
+            var meters = tripMeters.meters;
+            vehicle.tripMeters.set({"meters": null}).then(
+              function (veh) {
+                t.step(function () {
+                  assert_equals(veh.meters, meters);
+                });
+                t.done();
+              },
+              function (error) {
+                t.step(function () {
+                  assert_unreached(error.message);
+                });
+                t.done();
+              }
+            );
+          } else {
+            //Compliance test passes as the feature is not implemented
+            t.done();
+          }
+        });
+        t.done();
+      },
+      function (error) {
+        t.step(function () {
+          assert_unreached(error.message);
+        });
+        t.done();
+      }
+    );
+  } else {
+    //Compliance test passes as the feature is not implemented
+    t.done();
+  }
 }, "Check if TripMeters.meters exists, readonly and type of object");
 
 </script>

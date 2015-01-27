@@ -50,22 +50,68 @@ Authors:
   var read = attr[2];
 
   async_test(function (t) {
-    vehicle.wheelSpeed.get().then(
-      function (wheelSpeed) {
-        t.step(function () {
-          assert_true(name in wheelSpeed, "the WheelSpeed." + name + " exists");
-          assert_equals(typeof wheelSpeed[name], type, "the type of WheelSpeed." + name);
-          assert_readonly(wheelSpeed, name, "the WheelSpeed." + name + " is readonly");
-        });
-        t.done();
-      },
-      function (error) {
-        t.step(function () {
-          assert_unreached(error.message);
-        });
-        t.done();
-      }
-    )
+    assert_true("wheelSpeed" in vehicle, "the vehicle.wheelSpeed exists");
+
+    var getAvailability = vehicle.wheelSpeed.availableForRetrieval(name);
+    var setAvailability = vehicle.wheelSpeed.availableForSetting(name);
+
+    if (getAvailability === "available") {
+      vehicle.wheelSpeed.get().then(
+        function (wheelSpeed) {
+          t.step(function () {
+            assert_true(name in wheelSpeed, "the WheelSpeed." + name + " exists");
+            assert_equals(typeof wheelSpeed[name], type, "the type of WheelSpeed." + name);
+
+            if (setAvailability === "available") {
+              var variable = wheelSpeed[name];
+              var varType = typeof variable;
+              var setVar;
+
+              switch (varType) {
+                case "number":
+                  setVar = variable + 1;
+                  break;
+                case "string":
+                  setVar = variable + "a";
+                  break;
+                case "boolean":
+                  setVar = !variable;
+                  break;
+                default:
+                  setVar = null;
+              }
+
+              vehicle.wheelSpeed.set({name : setVar}).then(
+                function (veh) {
+                  t.step(function () {
+                    assert_equals(veh[name], variable);
+                  });
+                  t.done();
+                },
+                function (error) {
+                  t.step(function () {
+                    assert_unreached(error.message);
+                  });
+                  t.done();
+                }
+              );
+            } else {
+              //Compliance test passes as the feature is not implemented
+              t.done();
+            }
+          });
+        },
+        function (error) {
+          t.step(function () {
+            assert_unreached(error.message);
+          });
+          t.done();
+        }
+      );
+    } else {
+      //Compliance test passes as the feature is not implemented
+      t.done();
+    }
   }, "Check if " + read + " WheelSpeed." + name + " exists and type of " + type);
 });
 

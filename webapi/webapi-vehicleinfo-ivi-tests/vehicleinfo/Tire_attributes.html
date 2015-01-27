@@ -52,22 +52,68 @@ Authors:
   var read = attr[2];
 
   async_test(function (t) {
-    vehicle.tire.get().then(
-      function (tire) {
-        t.step(function () {
-          assert_true(name in tire, "the Tire." + name + " exists");
-          assert_equals(typeof tire[name], type, "the type of Tire." + name);
-          assert_readonly(tire, name, "the Tire." + name + " is readonly");
-        });
-        t.done();
-      },
-      function (error) {
-        t.step(function () {
-          assert_unreached(error.message);
-        });
-        t.done();
-      }
-    )
+    assert_true("tire" in vehicle, "the vehicle.tire exists");
+
+    var getAvailability = vehicle.tire.availableForRetrieval(name);
+    var setAvailability = vehicle.tire.availableForSetting(name);
+
+    if (getAvailability === "available") {
+      vehicle.tire.get().then(
+        function (tire) {
+          t.step(function () {
+            assert_true(name in tire, "the Tire." + name + " exists");
+            assert_equals(typeof tire[name], type, "the type of Tire." + name);
+
+            if (setAvailability === "available") {
+              var variable = tire[name];
+              var varType = typeof variable;
+              var setVar;
+
+              switch (varType) {
+                case "number":
+                  setVar = variable + 1;
+                  break;
+                case "string":
+                  setVar = variable + "a";
+                  break;
+                case "boolean":
+                  setVar = !variable;
+                  break;
+                default:
+                  setVar = null;
+              }
+
+              vehicle.tire.set({name : setVar}).then(
+                function (veh) {
+                  t.step(function () {
+                    assert_equals(veh[name], variable);
+                  });
+                  t.done();
+                },
+                function (error) {
+                  t.step(function () {
+                    assert_unreached(error.message);
+                  });
+                  t.done();
+                }
+              );
+            } else {
+              //Compliance test passes as the feature is not implemented
+              t.done();
+            }
+          });
+        },
+        function (error) {
+          t.step(function () {
+            assert_unreached(error.message);
+          });
+          t.done();
+        }
+      );
+    } else {
+      //Compliance test passes as the feature is not implemented
+      t.done();
+    }
   }, "Check if " + read + " Tire." + name + " exists and type of " + type);
 });
 
