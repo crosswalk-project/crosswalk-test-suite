@@ -2,9 +2,6 @@
     "pkg-blacklist": [
         "config.xml",
         "pack.py",
-        "testcase.xsl",
-        "testresult.xsl",
-        "tests.css",
         "icon.png",
         "manifest.json",
         "suite.json",
@@ -17,7 +14,7 @@
             "copylist": {
                 "inst.apk.py": "inst.py",
                 "tests.full.xml": "tests.full.xml",
-                "tests.xml": "tests.xml"
+                "tests.tizen.xml": "tests.xml"
             },
             "pkg-app": {
                 "blacklist": []
@@ -40,7 +37,12 @@
                 ".": {
                     "app-name": "usecase-wrt-tizen-tests",
                     "install-path": ".",
-                    "sign-flag": "true"
+                    "sign-flag": "true",
+                    "copylist": {
+                        "tests.tizen.xml": "tests.xml",
+                        "steps": "steps",
+                        "PACK-TOOL-ROOT/bootstrap-fw": "."
+                    }
                 }
             }
         },
@@ -49,7 +51,7 @@
             "copylist": {
                 "inst.xpk.py": "inst.py",
                 "tests.full.xml": "tests.full.xml",
-                "tests.xml": "tests.xml"
+                "tests.tizen.xml": "tests.xml"
             },
             "pkg-app": {
                 "blacklist": []

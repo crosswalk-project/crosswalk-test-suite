@@ -1,0 +1,10 @@
+var step = '<font class="fontSize">'
+            +'<p>Purpose:</p>'
+            +'<p>Verifies that the WebApp common operation and version update</p>'
+            +'<p>Expected Result:</p>'
+            +'<ol>'
+            +'<li>Install is being interrupted successfully</li>'
+            +'<li>The webapp should not be listed</li>'
+            +'<li>The webapp is installed successfully</li>'
+            +'</ol>'
+          +'</font>';

@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<!--
+Copyright (c) 2013 Intel Corporation.
+
+Redistribution and use in source and binary forms, with or without modification,
+are permitted provided that the following conditions are met:
+
+* Redistributions of works must retain the original copyright notice, this list
+  of conditions and the following disclaimer.
+* Redistributions in binary form must reproduce the original copyright notice,
+  this list of conditions and the following disclaimer in the documentation
+  and/or other materials provided with the distribution.
+* Neither the name of Intel Corporation nor the names of its contributors
+  may be used to endorse or promote products derived from this work without
+  specific prior written permission.
+
+THIS SOFTWARE IS PROVIDED BY INTEL CORPORATION "AS IS"
+AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE
+IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE
+ARE DISCLAIMED. IN NO EVENT SHALL INTEL CORPORATION BE LIABLE FOR ANY DIRECT,
+INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING,
+BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE,
+DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY
+OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING
+NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE,
+EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
+
+Authors:
+      Lin,ShenX A <linx.a.shen@intel.com>
+
+-->
+
+<meta charset="utf-8" />
+<meta name="viewport" content="initial-scale=1.0, maximum-scale=1.0, width=device-width" />
+<link rel="stylesheet" type="text/css" href="../../../css/bootstrap.css">
+<link rel="stylesheet" type="text/css" href="../../../css/main.css">
+<script src="../../../js/jquery-2.1.3.min.js"></script>
+<script src="../../../js/bootstrap.min.js"></script>
+<script src="../../../js/common.js"></script>
+<script src="../../../js/tests.js"></script>
+
+<div class="content">
+  <div style="height:100px; left:50px;line-height:100px;">
+    <center>
+      <iframe src="sample_index.html" height=800px width=100% >
+        <p>您的浏览器不支持  iframe 标签。</p>
+      </iframe>
+    </center>
+  </div> 
+</div>
+<div class="footer">
+  <div id="footer"></div>
+</div>
+<div class="modal fade" id="popup_info">
+ <p>Purpose:</p>
+ <p>Verifies that page display normally and button click response normally</p>
+ <p>Test Steps:</p>
+  <ol>
+    <li>Check the page display</li>
+    <li>Click "click me" button</li>
+    <li>Scroll up screen</li>
+    <li>Swipe up screen to top</li>
+  </ol>
+  <p>Expected Result:</p>
+  <ol>
+    <li>The page display normally</li>
+    <li>The "Crosswalk WebRuntime" line backgound is red</li>
+    <li>Screen scroll up successfully</li>
+    <li>The interface slip quickly to the bottom</li>
+  </ol>
+</div>

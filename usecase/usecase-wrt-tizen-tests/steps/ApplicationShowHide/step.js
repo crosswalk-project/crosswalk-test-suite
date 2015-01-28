@@ -1,0 +1,10 @@
+var step = '<font class="fontSize">'
+            +'<p>Purpose:</p>'
+            +'<p>Verifies that an webapp can show after relauched which has been minimized </p>'
+            +'<p>Expected Result:</p>'
+            +'<ol>'
+            +'<li>The webapp is install and launched </li>'
+            +'<li>The webapp is minimized </li>'
+            +'<li>The webapp is displayed in the window </li>'
+            +'</ol>'
+          +'</font>';

@@ -1,0 +1,11 @@
+var step = '<font class="fontSize">'
+            +'<p>Test Purpose: </p>'
+            +'<p>Verifies the audio policy feature.</p>'
+            +'<p>Expected Result: </p>'
+            +'<ol>'
+            +'<li>The audio file push to device successfully</li>'
+            +'<li>The audio is playing and volume can be adjusted successfully</li>'
+            +'<li>The paplay audio is playing and the step 2 webapp audio volume will be attenuated successfully</li>'
+            +'<li>The paplay audio is stop and the step 2 webapp audio volume will turn back to normal</li>'
+            +'</ol>'
+          +'</font>';

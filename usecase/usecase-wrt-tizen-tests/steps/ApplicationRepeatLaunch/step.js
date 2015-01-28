@@ -1,0 +1,10 @@
+var step = '<font class="fontSize">'
+            +'<p>Purpose:</p>'
+            +'<p>Confirm launch webapp repeatedly display normal or not.</p>'
+            +'<p>Expected Result:</p>'
+            +'<ol>'
+            +'<li>The webapp installed successfully.</li>'
+            +'<li>The webapp launched successfully and pop up in the window.</li>'
+            +'<li>The webapp display normal.</li>'
+            +'</ol>'
+          +'</font>';

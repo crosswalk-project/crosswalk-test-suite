@@ -1,0 +1,26 @@
+The slider.tooltip.js comes from
+https://github.com/seiyria/bootstrap-slider/blob/master/js/bootstrap-slider.js
+with some modifications.
+
+	setValue: function(val, triggerSlideEvent) {
++   var ID = this.element.id;
++   if (ID == "slider-1") {
++     var value1 = sliderValue / 100;
++     document.getElementById("MediaPlayback").volume = value1;
++   }
+
+  _setText: function(val) {
+-   element.innerText = text;
++   if (this.element.id == "slider-1") {
++     var text1 = text + "%";
++     element.innerText = text1;
++   } else {
++     element.innerText = text;
++ 	}
+  }
+jQuery Mobile v@VERSION
+http://jquerymobile.com
+
+Copyright 2010, 2014 jQuery Foundation, Inc. and other contributors
+Released under the MIT license.
+http://jquery.org/license
