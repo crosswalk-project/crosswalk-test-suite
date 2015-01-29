@@ -20,9 +20,10 @@ public class FullScreenTest extends XWalkViewTestBase {
             assertFalse(hasEnteredFullScreenOnUiThread());
             OnFullscreenToggledHelper mOnFullscreenToggledHelper = mTestHelperBridge.getOnFullscreenToggledHelper();
             int count = mOnFullscreenToggledHelper.getCallCount();
+            assertFalse(hasEnteredFullScreenOnUiThread());
             clickOnElementId("enter_fullscreen",null);
             mOnFullscreenToggledHelper.waitForCallback(count);
-
+            Thread.sleep(2000);
             assertTrue(hasEnteredFullScreenOnUiThread());
         } catch (Exception e) {
             assertTrue(false);
@@ -44,21 +45,21 @@ public class FullScreenTest extends XWalkViewTestBase {
             int count = mOnFullscreenToggledHelper.getCallCount();
             clickOnElementId("enter_fullscreen",null);
             mOnFullscreenToggledHelper.waitForCallback(count);
+            Thread.sleep(2000);
             assertTrue(hasEnteredFullScreenOnUiThread());
-
             count = mOnFullscreenToggledHelper.getCallCount();
             leaveFullscreenOnUiThread();
             mOnFullscreenToggledHelper.waitForCallback(count);
-
+            Thread.sleep(2000);
             assertFalse(hasEnteredFullScreenOnUiThread());
-
             count = mOnFullscreenToggledHelper.getCallCount();
             clickOnElementId("enter_fullscreen",null);
             mOnFullscreenToggledHelper.waitForCallback(count);
-
+            Thread.sleep(2000);
             count = mOnFullscreenToggledHelper.getCallCount();
             clickOnElementId("exit_fullscreen",null);
             mOnFullscreenToggledHelper.waitForCallback(count);
+            Thread.sleep(2000);
             assertFalse(hasEnteredFullScreenOnUiThread());
         } catch (Exception e) {
             assertTrue(false);

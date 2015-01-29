@@ -1,0 +1,17 @@
+<html>
+  <head>
+    <title></title>
+  </head>
+  <body>
+    <div id="result">show test result...</div>
+    <iframe id="subFrame"></iframe>
+    <script>
+      var iframe = document.getElementById("subFrame");
+      iframe.contentDocument.write("<html>\n"
+        + "  <body>\n"
+        + "    Hello World !"
+        + "  <\/body>\n"
+        + "</html>");
+    </script>
+  </body>
+</html>
