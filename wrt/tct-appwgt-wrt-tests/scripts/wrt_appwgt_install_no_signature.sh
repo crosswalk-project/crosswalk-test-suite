@@ -1,6 +1,6 @@
 #!/bin/bash
 #
-# Copyright (C) 2013 Intel Corporation
+# Copyright (C) 2014 Intel Corporation
 #
 # Redistribution and use in source and binary forms, with or without modification,
 # are permitted provided that the following conditions are met:
@@ -27,35 +27,48 @@
 #
 # Authors:
 #        Zhang Ge <gex.zhang@intel.com>
+#        Mengli Zhang <mengli.zhang@samsung.com>
+#        Yin,Haichao <haichaox.yin@intel.com>
 
 path=$(dirname $(dirname $0))
 source $path/scripts/xwalk_common.sh
-if [ $# != 1 ];then
-    echo "Please add parameters packagename."
-    exit 1
-fi
-PACKAGENAME="$path/$1"
-p_name=$1
-APP_NAME=${p_name%%.wgt}
-find_app $APP_NAME
-pkgnum=`echo "$pkgids"|wc -w`
-if [ $pkgnum -ge 1 ]; 
-then
+APP_NAME="sp-widget-no-signature"
+function existbh()
+{
+  echo $1
   uninstall_app $APP_NAME
-  find_app $APP_NAME
-  pkgnum=`echo "$pkgids"|wc -w`
-  if [ $pkgnum -ge 1 ]; then
-    echo -e  "Fail to uninstall the existed widget."
-    exit 1
-  fi
-fi
-install_app $PACKAGENAME
+  exit $2
+}
+$(dirname $0)/wrt_appwgt_installer.sh $APP_NAME.wgt
+sleep 5
 find_app $APP_NAME
-pkgnum=`echo "$pkgids"|wc -w`
-if [ $pkgnum -ge 1 ]; then
-  echo -e  "The widget is installed successfully!"
-  exit 0
-else
-  echo -e  "Fail to install the widget!"
+if [ $? -ne 0 ]
+then
   exit 1
+fi
+widgetpath="/home/app/apps_rw/xwalk-service/applications/$appid"
+if [ ! -d $widgetpath ]
+then
+  existbh "The path of the application does not exist." 1
+fi
+filecount=$(ls -lR $widgetpath|grep "^-"|wc -l)
+name=("config.xml" "icon.png" "index.html")
+if [ $filecount -eq 3  ]
+then
+  filename=$(ls $widgetpath)
+  for var in ${name[@]};do
+    echo ${filename[@]}|grep -q "$var"
+    if [ $? -ne 0 ]
+    then
+      existbh "WRT does not support Web AppWidget installation." 1
+    fi
+  done
+  indexcount=$(find $widgetpath -name index.html|wc -l)
+  if [ $indexcount -ne 1  ]
+  then
+    existbh "WRT does not support Web AppWidget installation." 1
+  fi
+  existbh "WRT supports Web AppWidget installation." 0
+else
+  existbh "WRT does not support Web AppWidget installation." 1
 fi

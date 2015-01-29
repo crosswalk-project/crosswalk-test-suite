@@ -27,6 +27,7 @@
 #
 # Authors:
 #        Zhang Ge <gex.zhang@intel.com>
+#        Yin,Haichao <haichaox.yin@intel.com>
 
 
 path=$(dirname $(dirname $0))
@@ -39,23 +40,24 @@ function existbh()
   exit $2
 }
 $(dirname $0)/wrt_appwgt_installer.sh $APP_NAME.wgt
+sleep 5
 find_app $APP_NAME
 if [ $? -ne 0 ]
 then
   exit 1
 fi
-widgetpath="/opt/home/app/.config/xwalk/applications/$pkgids"
+widgetpath="/home/app/apps_rw/xwalk-service/applications/$appid"
 if [ ! -d $widgetpath ]
 then
   existbh "The path of the application does not exist." 1
 fi
 filecount=$(ls -lR $widgetpath|grep "^-"|wc -l)
-name=("config.xml" "icon.png" "index.html" "livebox" "pd")
-if [ $filecount -eq 5  ]
+name=("bin" "config.xml" "icon.png" "index.html" "livebox" "pd")
+if [ $filecount -gt 0  ]
 then
   filename=$(ls $widgetpath)
-  for var in ${filename[@]};do
-    echo ${name[@]}|grep -q "$var"
+  for var in ${name[@]};do
+    echo ${filename[@]}|grep -q "$var"
     if [ $? -ne 0 ]
     then
       existbh "WRT does not support Web AppWidget installation." 1

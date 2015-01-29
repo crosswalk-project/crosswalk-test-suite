@@ -31,12 +31,12 @@
 ###below functions just for crosswalk ivi testing###
 
 function install_app(){
-    pkgcmd -i -t wgt -q -p $1
+    nohup pkgcmd -i -t wgt -p $1 -q &>/dev/null &
+    sleep 5
 }
 
 function uninstall_app(){
     pkgids=`pkgcmd -l |grep $1 |awk -F "pkgid" '{print $2}' |awk -F '[' '{print $2}'|awk -F ']' '{print $1}'`
-    pkgids=${pkgids:1:-1}
     for pkgid in $pkgids
     do
         pkgcmd -u -t wgt -q -n $pkgid
