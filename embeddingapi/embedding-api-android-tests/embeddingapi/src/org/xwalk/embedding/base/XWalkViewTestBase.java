@@ -42,6 +42,17 @@ public class XWalkViewTestBase extends ActivityInstrumentationTestCase2<MainActi
     public XWalkViewTestBase(Class<MainActivity> activityClass) {
         super(activityClass);
     }
+    protected static final String EMPTY_PAGE =
+            "<!doctype html>" +
+            "<title>Set User Agent String Test</title><p>Set User Agent String Test.</p>";
+
+    protected static final String USER_AGENT =
+            "Set User Agent String Test Mozilla/5.0 Apple Webkit Cosswalk Mobile Safari";
+
+    protected static final String EXPECTED_USER_AGENT =
+            "\"Set User Agent String Test Mozilla/5.0 Apple Webkit Cosswalk Mobile Safari\"";
+            
+    protected static final int NUM_OF_CONSOLE_CALL = 10;
 
     protected static final String REDIRECT_TARGET_PATH = "/redirect_target.html";
     protected static final String TITLE = "TITLE";

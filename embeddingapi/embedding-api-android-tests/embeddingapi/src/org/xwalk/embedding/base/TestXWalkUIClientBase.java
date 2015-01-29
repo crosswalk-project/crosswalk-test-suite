@@ -121,4 +121,10 @@ public class TestXWalkUIClientBase extends XWalkUIClient {
         assert(false);
         return false;
     }
+
+    @Override
+    public boolean onConsoleMessage(XWalkView view, String message,
+            int lineNumber, String sourceId, ConsoleMessageType messageType) {
+        return mInnerContentsClient.onConsoleMessage(message,lineNumber,sourceId, messageType);
+    }
 }
