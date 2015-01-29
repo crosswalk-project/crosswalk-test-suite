@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <!--
-Copyright (c) 2015 Intel Corporation.
+Copyright (c) 2014 Intel Corporation.
 
 Redistribution and use in source and binary forms, with or without modification,
 are permitted provided that the following conditions are met:
@@ -26,9 +26,11 @@ NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE,
 EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
 Authors:
+        Xu, Kang <kangx.xu@intel.com>
         Wang, Hongjuan <hongjuanx.wang@intel.com>
 
 -->
+
 <meta charset="utf-8" />
 <meta name="viewport" content="initial-scale=1.0, maximum-scale=1.0, width=device-width">
 <link rel="stylesheet" type="text/css" href="../../css/bootstrap.css">
@@ -42,20 +44,28 @@ Authors:
   <h3 id="main_page_title"></h3>
 </div>
 <div class="content">
-   <input type="date" class="form-control" id="shipmentDate" placeholder="JJ/MM/AAAA" ng-model="draftOrder.shipmentDate" min="dateMinimum" required>
+  <h4>Test Steps</h4>
+  <ol>
+    <li>Launch the web app named "remotedebugging"</li>
+    <li>Open Chrome Browser(browser version >= crosswalk version) in host and input "chrome://inspect" in the address bar</li>
+    <li>Launch the web app named "remotedebugging-no", run the command, then repeat step 2:<br/>
+        $ adb shell am broadcast -a org.xwalk.intent -e remotedebugging true 
+    </li>
+    <li>Install XWalkCoreShell.apk from the crosswalk-test-apks-&lt;version&gt;-&lt;arch&gt; and launch it, then open any URL</li>
+    <li>Repeat step 2</li>
+  </ol>
 </div>
 <div class="footer">
   <div id="footer"></div>
 </div>
 <div class="modal fade" id="popup_info">
-  <p>Test Steps:</p>
-  <ol>
-    <li>Set the locale language to French, then click the input</li>
-    <li>Click the third button</li>
-  </ol>
+  <p>Purpose:</p>
+  <p>Verifies that Crosswalk could debug by remote host when the web app is packaged with remote debugging by default</p>
   <p>Expected Result:</p>
   <ol>
-    <li>Display a calendar window</li>
-    <li>Globalization: Display the current date in FR format DD/MM/YYYY, like "21/01/2015". The MM/DD/YYYY like 01/21/2015 is not expected.</li>
+    <li>Web App could be launched successfully</li>
+    <li>Web pages or web apps will be shown in the inspection page. Click button 'inspect' to inspect it</li>
+    <li>The app can not run remote debugging, the result is different from result 2</li>
+    <li>The expected result is the same as result 2<li>
   </ol>
 </div>

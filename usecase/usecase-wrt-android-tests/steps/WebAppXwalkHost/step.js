@@ -1,0 +1,10 @@
+var step = '<font class="fontSize">'
+            +'<p>Purpose:</p>'
+            +'<p>Verifies that members of manifest include xwalk_hosts field can work well</p>'
+            +'<p>Expected Result:</p>'
+            +'<ol>'
+            +'<li>Web App is launched successfully</li>'
+            +'<li>Web App is displayed in fullscreen mode and there is a "Pass" display(or a "Fail" changes to "Pass" in a while)'
+            +'</li>'
+            +'</ol>'
+          +'</font>';

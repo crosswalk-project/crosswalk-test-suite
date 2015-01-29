@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <!--
-Copyright (c) 2015 Intel Corporation.
+Copyright (c) 2013 Intel Corporation.
 
 Redistribution and use in source and binary forms, with or without modification,
 are permitted provided that the following conditions are met:
@@ -26,9 +26,11 @@ NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE,
 EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
 Authors:
+        Xu Yuhan <yuhanx.xu@intel.com>
         Wang, Hongjuan <hongjuanx.wang@intel.com>
 
 -->
+
 <meta charset="utf-8" />
 <meta name="viewport" content="initial-scale=1.0, maximum-scale=1.0, width=device-width">
 <link rel="stylesheet" type="text/css" href="../../css/bootstrap.css">
@@ -42,20 +44,32 @@ Authors:
   <h3 id="main_page_title"></h3>
 </div>
 <div class="content">
-   <input type="date" class="form-control" id="shipmentDate" placeholder="JJ/MM/AAAA" ng-model="draftOrder.shipmentDate" min="dateMinimum" required>
+  <h4>Test Steps</h4>
+  <ol>
+    <li>Pack the web app with several options, command like:<br/>
+        $ python make_apk.py --name=[name] --package=[package] --app-root=app_path --app-local-path=index.html --app-version=1.0.0 --description=YourApplicationDescription --fullscreen --mode=embedded --orientation=landscape --target-dir=/home/path/to/ --project-dir=[PROJECT_DIR]</li>
+    <li>Check the web app version</li>
+    <li>Check the packer tool folder</li>
+    <li>Check the value of "android:description" in /app/path/AndroidManifest.xml</li>
+    <li>Check the description in /app/path/res/values/string.xml</li>
+    <li>Install the packaged apk</li>
+    <li>Launch the web app</li>
+  </ol>
 </div>
 <div class="footer">
   <div id="footer"></div>
 </div>
 <div class="modal fade" id="popup_info">
-  <p>Test Steps:</p>
-  <ol>
-    <li>Set the locale language to French, then click the input</li>
-    <li>Click the third button</li>
-  </ol>
+  <p>Purpose:</p>
+  <p>Verifies that Packaging Tool support the 'app-version', 'app-local-path', 'name', 'package', 'description', 'fullscreen', default 'icon', 'mode=embedded', 'orientation=landscape', 'target-dir', 'project-dir' and default 'arch' options</p>
   <p>Expected Result:</p>
   <ol>
-    <li>Display a calendar window</li>
-    <li>Globalization: Display the current date in FR format DD/MM/YYYY, like "21/01/2015". The MM/DD/YYYY like 01/21/2015 is not expected.</li>
+    <li>Two apks is created in the target dir successfully</li>
+    <li>The version of the web app is 1.0.0</li>
+    <li>An app folder is generated successfully in packer tool</li>
+    <li>Variable path for description can be found</li>
+    <li>Description of the web app is "YourApplicationDescription"</li>
+    <li>Web App could be installed successfully</li>
+    <li>Web App could be launched with fullscreen and screen orientation is landscape</li>
   </ol>
 </div>

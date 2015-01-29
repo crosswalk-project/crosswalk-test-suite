@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <!--
-Copyright (c) 2015 Intel Corporation.
+Copyright (c) 2014 Intel Corporation.
 
 Redistribution and use in source and binary forms, with or without modification,
 are permitted provided that the following conditions are met:
@@ -29,6 +29,7 @@ Authors:
         Wang, Hongjuan <hongjuanx.wang@intel.com>
 
 -->
+
 <meta charset="utf-8" />
 <meta name="viewport" content="initial-scale=1.0, maximum-scale=1.0, width=device-width">
 <link rel="stylesheet" type="text/css" href="../../css/bootstrap.css">
@@ -42,20 +43,31 @@ Authors:
   <h3 id="main_page_title"></h3>
 </div>
 <div class="content">
-   <input type="date" class="form-control" id="shipmentDate" placeholder="JJ/MM/AAAA" ng-model="draftOrder.shipmentDate" min="dateMinimum" required>
+  <h4>Precondition</h4>
+  <ul>
+    <li>Make sure the Android version is 4.4 KitKat or highter</li>
+  </ul>
+  <h4>Test Steps</h4>
+  <ol>
+    <li>Setting Android ART mode enable<br/>
+        Setting --> Developer options --> Select runtime --> Use ART (rather than 'Dalvik')
+    </li>
+    <li>Install a Crosswalk App</li>
+    <li>Launch the web app</li>
+    <li>Uninstall the web app</li>
+  </ol>
 </div>
 <div class="footer">
   <div id="footer"></div>
 </div>
 <div class="modal fade" id="popup_info">
-  <p>Test Steps:</p>
-  <ol>
-    <li>Set the locale language to French, then click the input</li>
-    <li>Click the third button</li>
-  </ol>
+  <p>Purpose:</p>
+  <p>Verifies the ART mode can run successfully</p> 
   <p>Expected Result:</p>
   <ol>
-    <li>Display a calendar window</li>
-    <li>Globalization: Display the current date in FR format DD/MM/YYYY, like "21/01/2015". The MM/DD/YYYY like 01/21/2015 is not expected.</li>
+    <li>Setting ART mode successfully</li>
+    <li>Install the web app successfully</li>
+    <li>Launch the web app successfully</li>
+    <li>Uninstall the web app successfully</li>
   </ol>
 </div>

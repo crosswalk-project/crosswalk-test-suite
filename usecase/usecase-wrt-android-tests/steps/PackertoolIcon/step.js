@@ -1,0 +1,11 @@
+var step = '<font class="fontSize">'
+            +'<p>Purpose:</p>'
+            +'<p>Verifies that Packaging Tool enable the "png" icon option</p>'
+            +'<p>Expected Result:</p>'
+            +'<ol>'
+            +'<li>Apk could be created successfully</li>'
+            +'<li>Web App could be installed successfully</li>'
+            +'<li>The icon of the web app is your customized icon</li>'
+            +'<li>Web App could be launched successfully</li>'
+            +'</ol>'
+          +'</font>';

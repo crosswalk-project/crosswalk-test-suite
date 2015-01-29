@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <!--
-Copyright (c) 2015 Intel Corporation.
+Copyright (c) 2013 Intel Corporation.
 
 Redistribution and use in source and binary forms, with or without modification,
 are permitted provided that the following conditions are met:
@@ -26,9 +26,10 @@ NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE,
 EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
 Authors:
-        Wang, Hongjuan <hongjuanx.wang@intel.com>
+        Xu, Kang <kangx.xu@intel.com>
 
 -->
+
 <meta charset="utf-8" />
 <meta name="viewport" content="initial-scale=1.0, maximum-scale=1.0, width=device-width">
 <link rel="stylesheet" type="text/css" href="../../css/bootstrap.css">
@@ -42,20 +43,33 @@ Authors:
   <h3 id="main_page_title"></h3>
 </div>
 <div class="content">
-   <input type="date" class="form-control" id="shipmentDate" placeholder="JJ/MM/AAAA" ng-model="draftOrder.shipmentDate" min="dateMinimum" required>
+  <h4>Test Steps</h4>
+  <ol>
+    <li>Pack the web app with several options, command like:<br/>
+        $ python make_apk.py --name=[name] --package=[package] --app-url=http://www.intel.com --arch=x86 --app-version=1.0.0 --keep-screen-on --mode=shared</li>
+    <li>Pack the web app with several options, command like:<br/>
+        $ python make_apk.py --name=[name] --package=[package] --app-url=http://www.intel.com --arch=arm --app-version=1.0.0 --keep-screen-on --mode=shared --verbose</li>
+    <li>Compare the two packaging process messages in terminal</li>
+    <li>Install the first apk in "x86" platform, and the second one in "arm" platform</li>
+    <li>Set the device screen off as 15 seconds(Setting->Display->Sleep: 15 seconds)</li>
+    <li>Check the web app version in Setting</li>
+    <li>Launch the web app and check the screen</li>
+  </ol>
 </div>
 <div class="footer">
   <div id="footer"></div>
 </div>
 <div class="modal fade" id="popup_info">
-  <p>Test Steps:</p>
-  <ol>
-    <li>Set the locale language to French, then click the input</li>
-    <li>Click the third button</li>
-  </ol>
+  <p>Purpose:</p>
+  <p>Verifies that Packaging Tool support the 'x86' arch, 'app-url', 'mode=shared', 'verbose' and 'keep-screen-on' options</p>
   <p>Expected Result:</p>
   <ol>
-    <li>Display a calendar window</li>
-    <li>Globalization: Display the current date in FR format DD/MM/YYYY, like "21/01/2015". The MM/DD/YYYY like 01/21/2015 is not expected.</li>
+    <li>Apk with "x86" arch and shared mode could be created successfully</li>
+    <li>Apk with "arm" arch and shared mode could be created successfully</li>
+    <li>More detailed messages can be got in the second packaging process</li>
+    <li>Web App could be installed successfully</li>
+    <li>Version of the two web apps are both 1.0.0</li>
+    <li>The screen keep on for more than 15 seconds</li>
+    <li>Web App could be launched successfully, the home page display intel and keep screen on status more than 15 seconds</li>
   </ol>
 </div>

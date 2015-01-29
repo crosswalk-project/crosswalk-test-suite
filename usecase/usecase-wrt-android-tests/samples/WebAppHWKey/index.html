@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <!--
-Copyright (c) 2015 Intel Corporation.
+Copyright (c) 2013 Intel Corporation.
 
 Redistribution and use in source and binary forms, with or without modification,
 are permitted provided that the following conditions are met:
@@ -26,9 +26,10 @@ NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE,
 EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
 Authors:
-        Wang, Hongjuan <hongjuanx.wang@intel.com>
+        Xu Yuhan <yuhanx.xu@intel.com>
 
 -->
+
 <meta charset="utf-8" />
 <meta name="viewport" content="initial-scale=1.0, maximum-scale=1.0, width=device-width">
 <link rel="stylesheet" type="text/css" href="../../css/bootstrap.css">
@@ -42,20 +43,32 @@ Authors:
   <h3 id="main_page_title"></h3>
 </div>
 <div class="content">
-   <input type="date" class="form-control" id="shipmentDate" placeholder="JJ/MM/AAAA" ng-model="draftOrder.shipmentDate" min="dateMinimum" required>
+  <a type="button" href="res/index.html" class="btn btn-default btn-lg btn-block">Launch Test Page</a>
 </div>
 <div class="footer">
   <div id="footer"></div>
 </div>
 <div class="modal fade" id="popup_info">
+  <p>Purpose:</p>
+  <p>Verifies that Hard Key of device can work properly</p>
   <p>Test Steps:</p>
   <ol>
-    <li>Set the locale language to French, then click the input</li>
-    <li>Click the third button</li>
+    <li>Click "Launch Test Page" button</li>
+    <li>Click "Play" button to play the video</li>
+    <li>The volume could be adjusted with the 'volumn' button</li>
+    <li>Click fullscreen button</li>
+    <li>Click fullscreen button</li>
+    <li>Press Back key</li>
+    <li>Press Home key</li>
   </ol>
   <p>Expected Result:</p>
   <ol>
-    <li>Display a calendar window</li>
-    <li>Globalization: Display the current date in FR format DD/MM/YYYY, like "21/01/2015". The MM/DD/YYYY like 01/21/2015 is not expected.</li>
+    <li>Test page could be launched successfully</li>
+    <li>The video played normally and could sound some voice</li>
+    <li>The volume could be turned up/down when pressing 'volume+/-' button</li>
+    <li>The video could be switched to fullscreen and played normally</li>
+    <li>Exit fullscreen</li>
+    <li>Back to the previous page</li>
+    <li>Back to main window successfully</li>
   </ol>
 </div>

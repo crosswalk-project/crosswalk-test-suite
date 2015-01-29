@@ -1,0 +1,11 @@
+var step = '<font class="fontSize">'
+            +'<p>Expected Result</p>'
+            +'<ol>'
+            +'<li>Install apk and launch it successfully</li>'
+            +'<li>Popup the map app</li>'
+            +'<li>Popup the email app</li>'
+            +'<li>Popup the Market app</li>'
+            +'<li>Popup the Sms app</li>'
+            +'<li>Popup the Tel app</li>'
+            +'</ol>'
+          +'</font>';
