@@ -68,7 +68,7 @@ function connectWebSocket() {
             $("#chatbox").text("Successfully connect to WebSocket server.\n" + $("#chatbox").text());
         }, true);
         webSocket.addEventListener('message', function (evt) {
-            $("#chatbox").text("WebSocket - recive - "  + evt.data + "\n" + $("#chatbox").text());
+            $("#chatbox").text("WebSocket - receive - "  + evt.data + "\n" + $("#chatbox").text());
         }, true);
         webSocket.addEventListener('close', function (evt) {
             clearTimeout(showId);
@@ -91,9 +91,9 @@ function disconnectWebSocket() {
 
 function sendWebSocket() {
     testFlag.red = true;
-    webSocket.send($("#socketinput").attr("value"));
-    $("#chatbox").text("WebSocket - send - "  + $("#socketinput").attr("value") + "\n" + $("#chatbox").text());
-    $("#socketinput").attr("value", "");
+    webSocket.send(document.getElementById("socketinput").value);
+    $("#chatbox").text("WebSocket - send - "  + document.getElementById("socketinput").value + "\n" + $("#chatbox").text());
+    $("#socketinput").val("");
     status();
 }
 
