@@ -1,0 +1,11 @@
+var step = '<font class="fontSize">'
+            +'<p>Purpose:</p>'
+            +'<p>Verifies that app can launch and switch from task manager successfully</p>'
+            +'<p>Expected Result:</p>'
+            +'<ol>'
+            +'<li>Launch the app</li>'
+            +'<li>Return to the homescreen successfully, no white layer overlay appears between the animations</li>'
+            +'<li>Launch the app without fullscreen mode, no white layer overlay appears between the animations</li>'
+            +'<li>Re-open the app without fullscreen mode</li>'
+            +'</ol>'
+          +'</font>';
