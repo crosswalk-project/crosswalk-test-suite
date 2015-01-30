@@ -48,6 +48,7 @@ if [[ -n $app_id ]]; then
                 echo "Install Fail"
                 exit 1
 fi
+
 # launch app
 getAppid $webAppTest
 get_runing_status=`app_launcher -s $app_id`
@@ -58,6 +59,7 @@ else
   exit 1
 fi
 sleep 2
+
 # check cache
 myPath="/home/app/apps_rw/xwalk-service/Storage/ext/$app_id/def/GPUCache"
 getPkgid $webAppTest
