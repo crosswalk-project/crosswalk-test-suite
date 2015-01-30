@@ -48,8 +48,8 @@ test(function () {
 
 test(function () {
   assert_true(!!namespace, "TCPServerSocket interface support");
-  var socket = new namespace.TCPServerSocket(socketOptions, {"addressReuse": false});
-  assert_equals(socket.addressReuse, false, "TCPServerSocket.addressReuse");
+  var socket = new namespace.TCPServerSocket({"localAddress" :"127.0.0.1", "localPort" : 1234, "addressReuse": false});
+  assert_false(socket.addressReuse, "TCPServerSocket.addressReuse");
 }, "Check if the value of TCPServerSocket.addressReuse can be set by the options argument in the constructor");
 
 test(function () {
