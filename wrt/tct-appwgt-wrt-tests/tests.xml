@@ -3,6 +3,41 @@
 <test_definition>
   <suite category="Tizen WRT Core Spec" name="tct-appwgt-wrt-tests">
     <set name="WebAppWidget" type="script">
-      </set>
+      <testcase component="Tizen WRT Core Spec/Web Application Security and Privacy" execution_type="auto" id="app-widget-install" purpose="Check that WRT must support Web AppWidget installation.">
+        <description>
+          <test_script_entry test_script_expected_result="0">app_user@/home/app/content/tct/opt/tct-appwgt-wrt-tests/scripts/wrt_appwgt_install.sh</test_script_entry>
+        </description>
+      </testcase>
+      <testcase component="Tizen WRT Core Spec/Web Application Security and Privacy" execution_type="auto" id="app-widget-uninstall" purpose="Check that the WRT must support Web AppWidget uninstallation.">
+        <description>
+          <test_script_entry test_script_expected_result="0">app_user@/home/app/content/tct/opt/tct-appwgt-wrt-tests/scripts/wrt_appwgt_uninstall.sh</test_script_entry>
+        </description>
+      </testcase>
+      <testcase component="Tizen WRT Core Spec/Web Application Security and Privacy" execution_type="auto" id="sp-widget-valid-signature" purpose="Check if widget have valid signature, the widget can be install.">
+        <description>
+          <test_script_entry test_script_expected_result="0">app_user@/home/app/content/tct/opt/tct-appwgt-wrt-tests/scripts/wrt_appwgt_install_valid_signature.sh</test_script_entry>
+        </description>
+      </testcase>
+      <testcase component="Tizen WRT Core Spec/Web Application Security and Privacy" execution_type="auto" id="sp-widget-only-author-signature" purpose="Check if widget only contained author signature, the widget can be install.">
+        <description>
+          <test_script_entry test_script_expected_result="0">app_user@/home/app/content/tct/opt/tct-appwgt-wrt-tests/scripts/wrt_appwgt_install_only_author_signature.sh</test_script_entry>
+        </description>
+      </testcase>
+      <testcase component="Tizen WRT Core Spec/Web Application Security and Privacy" execution_type="auto" id="sp-widget-no-signature" purpose="Check if widget does not included signature, the widget can be install.">
+        <description>
+          <test_script_entry test_script_expected_result="0">app_user@/home/app/content/tct/opt/tct-appwgt-wrt-tests/scripts/wrt_appwgt_install_no_signature.sh</test_script_entry>
+        </description>
+      </testcase>
+      <testcase component="Tizen WRT Core Spec/Web Application Security and Privacy" execution_type="auto" id="sp-widget-invalid-signature" purpose="Check if widget have invalid signature, the widget can not be install.">
+        <description>
+          <test_script_entry test_script_expected_result="0">app_user@/home/app/content/tct/opt/tct-appwgt-wrt-tests/scripts/wrt_appwgt_installfail.sh sp-widget-invalid-signature.wgt</test_script_entry>
+        </description>
+      </testcase>
+      <testcase component="Tizen WRT Core Spec/Web Application Security and Privacy" execution_type="auto" id="sp-widget-signature-support-decode" purpose="Check when the wgt have invalid signature and the reference element's uri attribute of signatrue file is encoded, the widget can be install.">
+        <description>
+          <test_script_entry test_script_expected_result="0">app_user@/home/app/content/tct/opt/tct-appwgt-wrt-tests/scripts/wrt_appwgt_installer.sh ./testapp/sp-widget-signature-support-decode.wgt</test_script_entry>
+        </description>
+      </testcase>
+    </set>
   </suite>
 </test_definition>

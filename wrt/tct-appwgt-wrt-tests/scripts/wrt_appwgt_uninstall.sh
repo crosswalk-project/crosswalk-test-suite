@@ -27,6 +27,7 @@
 #
 # Authors:
 #        Zhang Ge <gex.zhang@intel.com>
+#        Yin,Haichao <haichaox.yin@intel.com>
 
 
 path=$(dirname $(dirname $0))
@@ -39,23 +40,19 @@ function existbh()
 }
 $(dirname $0)/wrt_appwgt_installer.sh $APP_NAME.wgt
 find_app $APP_NAME
-if [ $? -ne 0 ]
-then
+if [ $? -ne 0 ];then
   exit 1
 fi
-widgetpath="/opt/home/app/.config/xwalk/applications/$pkgids"
-if [ ! -d $widgetpath ]
-then
+widgetpath="/home/app/apps_rw/xwalk-service/applications/$appid"
+if [ ! -d $widgetpath ];then
   uninstall_app $APP_NAME
   existbh "The path of the application does not exist." 1
 fi
 $(dirname $0)/wrt_appwgt_uninstaller.sh $APP_NAME.wgt
-if [ $? -ne 0 ]
-then
+if [ $? -ne 0 ];then
   exit 1
 fi
-if [ -d $widgetpath ]
-then
+if [ -d $widgetpath ];then
   existbh "The WRT does not support Web AppWidget uninstallation." 1
 else
   existbh "The WRT supports Web AppWidget uninstallation." 0
