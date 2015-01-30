@@ -11,9 +11,19 @@
     <set name="Networking &amp;amp; Storage" background="brand-warning" icon="glyphicon-link" type="script">
       <testcase component="Crosswalk Use Cases/WebAPI" execution_type="manual" id="FileSystem" purpose="File System">
       </testcase>
+      <testcase component="sample" execution_type="auto" id="IndexedDB" purpose="IndexedDB">
+        <description>
+          <test_script_entry test_script_expected_result="0">/opt/usecase-webapi-xwalk-tests/bddrunner testscripts/IndexedDB.feature</test_script_entry>
+        </description>
+      </testcase>
       <testcase component="Crosswalk Use Cases/WebAPI" execution_type="auto" id="RawSockets" purpose="Raw Sockets">
         <description>
           <test_script_entry test_script_expected_result="0">/opt/usecase-webapi-xwalk-tests/bddrunner testscripts/RawSockets.feature</test_script_entry>
+        </description>
+      </testcase>
+      <testcase component="sample" execution_type="auto" id="SessionHistory" purpose="Session History">
+        <description>
+          <test_script_entry test_script_expected_result="0">/opt/usecase-webapi-xwalk-tests/bddrunner testscripts/SessionHistory.feature</test_script_entry>
         </description>
       </testcase>
       <testcase component="Crosswalk Use Cases/WebAPI" execution_type="auto" id="WebSocket" purpose="WebSocket">
@@ -21,8 +31,19 @@
           <test_script_entry test_script_expected_result="0">/opt/usecase-webapi-xwalk-tests/bddrunner testscripts/WebSocket.feature</test_script_entry>
         </description>
       </testcase>
+      <testcase component="sample" execution_type="auto" id="WebStorage" purpose="Web Storage">
+        <description>
+          <test_script_entry test_script_expected_result="0">/opt/usecase-webapi-xwalk-tests/bddrunner testscripts/WebStorage.feature</test_script_entry>
+        </description>
+      </testcase>
+    </set>
     </set>
     <set name="Performance &amp;amp; Optimization" background="brand-danger" icon="glyphicon-th-large" type="script">
+      <testcase component="sample" execution_type="auto" id="NavigationTiming" purpose="Navigation Timing">
+        <description>
+          <test_script_entry test_script_expected_result="0">/opt/usecase-webapi-xwalk-tests/bddrunner testscripts/NavigationTiming.feature</test_script_entry>
+        </description>
+      </testcase>
       <testcase component="sample" execution_type="auto" id="TypedArray" purpose="Typed Array">
         <description>
           <test_script_entry test_script_expected_result="0">/opt/usecase-webapi-xwalk-tests/bddrunner testscripts/TypedArray.feature</test_script_entry>
