@@ -29,7 +29,14 @@ Authors:
 
 */
 
-document.write("<script language=\"javascript\" src=\"..\/resources\/testharness.js\"><\/script>");
-document.write("<script language=\"javascript\" src=\"..\/resources\/testharnessreport.js\"><\/script>");
+var head_src = document.head.innerHTML;
+
+if (head_src.indexOf('testharness.js') === -1) {
+    document.write("<script src=\"..\/resources\/testharness.js\"><\/script>");
+}
+
+if (head_src.indexOf('testharnessreport.js') === -1) {
+    document.write("<script src=\"..\/resources\/testharnessreport.js\"><\/script>");
+}
 
 var nfcManager = navigator.nfc;
