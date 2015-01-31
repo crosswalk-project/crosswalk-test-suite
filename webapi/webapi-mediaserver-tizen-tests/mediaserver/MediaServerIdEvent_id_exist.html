@@ -43,7 +43,7 @@ Authors:
   msga.scanNetwork();
   msga.onserverlost = t.step_func( function (event) {
     assert_true("id" in event, "the id attribute exists");
-    assert_equals(typeof event, "string", "the id type");
+    assert_equals(typeof event.id, "string", "the id type");
     assert_readonly(event, "id", "You cannot change id attribute");
     t.done();
   });
