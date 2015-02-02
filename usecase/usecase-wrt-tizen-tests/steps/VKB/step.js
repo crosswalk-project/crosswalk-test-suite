@@ -1,0 +1,11 @@
+var step = '<font class="fontSize">'
+            +'<p>Purpose:</p>'
+            +'<p>Verifies the functionality of VKB supported on Crosswalk</p>'
+            +'<p>Expected Result:</p>'
+            +'<ol>'
+            +'<li>Popup VKB when clicking the input box</li>'
+            +'<li>Character hint on VKB and display on the input box correctly</li>'
+            +'<li>Swith to number or symbol input mode successfully</li>'
+            +'<li>The VKB can be close successfully</li>'
+            +'</ol>'
+          +'</font>';

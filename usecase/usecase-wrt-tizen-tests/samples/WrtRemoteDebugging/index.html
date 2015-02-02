@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<!--
+Copyright (c) 2013 Intel Corporation.
+
+Redistribution and use in source and binary forms, with or without modification,
+are permitted provided that the following conditions are met:
+
+* Redistributions of works must retain the original copyright notice, this list
+  of conditions and the following disclaimer.
+* Redistributions in binary form must reproduce the original copyright notice,
+  this list of conditions and the following disclaimer in the documentation
+  and/or other materials provided with the distribution.
+* Neither the name of Intel Corporation nor the names of its contributors
+  may be used to endorse or promote products derived from this work without
+  specific prior written permission.
+
+THIS SOFTWARE IS PROVIDED BY INTEL CORPORATION "AS IS"
+AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE
+IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE
+ARE DISCLAIMED. IN NO EVENT SHALL INTEL CORPORATION BE LIABLE FOR ANY DIRECT,
+INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING,
+BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE,
+DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY
+OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING
+NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE,
+EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
+
+Authors:
+
+-->
+
+<meta charset="utf-8" />
+<meta name="viewport" content="initial-scale=1.0, maximum-scale=1.0, width=device-width" />
+<link rel="stylesheet" type="text/css" href="../../css/bootstrap.css">
+<link rel="stylesheet" type="text/css" href="../../css/main.css">
+<script src="../../js/jquery-2.1.3.min.js"></script>
+<script src="../../js/bootstrap.min.js"></script>
+<script src="../../js/common.js"></script>
+<script src="../../js/tests.js"></script>
+
+<div id="header">
+  <h3 id="main_page_title"></h3>
+</div>
+<div class="content">
+  <h4>Test Steps:</h4>
+  <ol>
+    <li>$xwalkctl -d 9222</li>
+    <li>$sdb forward tcp:9222 tcp:9222</li>
+    <li>$app_launcher -s $appid</li>
+    <li>Open Chrome and input the address: http://localhost:9222</li>          
+    <li>$xwalk-launcher -d $appid</li>
+    <li>Open Chrome and input the address: http://localhost:9222, please check the page</li>
+    <li>Click the webapp inspectable app link </li>  
+    <li>$xwalkctl -d 0</li>    
+    <li>Open Chrome and input the address: http://localhost:9222</li>
+    <li>Launch a tizen app in remote debugging mode: app_launcher -s [AppID] -d</li>
+    <li>In Chrome/Firefox on PC, connect devtools, in url bar input "http://tizen-ip:port/json/new?http://baidu.com".</li>
+    <li>In Chrome/Firefox on PC, in url bar input "http://tizen-ip:port/json/list".</li>  
+  </ol>
+</div>
+<div class="footer">
+  <div id="footer"></div>
+</div>
+<div class="modal fade" id="popup_info">
+  <p>Pre-condition: </p>
+  <ol>
+    <li>Chrome is availabled.</li>
+  </ol>
+  <p>Purpose:</p>
+  <p>Verifies the remode debugging can enable and disable successfully</p>
+  <p>Expected Result:</p>
+  <ol>
+   <li>Remote debugging enabled at port '9222' successfully</li>
+   <li>sdb port forward '9222' successfully</li>
+   <li>Webapp can be launch successfully with debuggable mode off</li>         
+   <li>Should not inspect the Webapp successfully</li>           
+   <li>Webapp can be launched with debuggable mode on</li>
+   <li>The page is showing Inspectable App ,inspectable link and thumbnail(white box,as chrome thumbnail)</li>
+   <li>The inspectable app page open successfully</li>
+   <li>Remote debugging disabled successfully</li>
+   <li>Should not inspect the app successfully</li>
+   <li>Launch tizen app successful</li>
+   <li>Open a new window loaded with the url</li>
+   <li>The json key faviconUrl has corresponding value.</li>   
+  </ol>
+</div>

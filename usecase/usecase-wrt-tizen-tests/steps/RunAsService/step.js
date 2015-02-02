@@ -1,0 +1,13 @@
+var step = '<font class="fontSize">'
+            +'<p>Purpose:</p>'
+            +'<p>Verifies app run on xwalk service mode</p>'
+            +'<p>Expected Result:</p>'
+            +'<ol>'
+            +'<li>Display "xwalk.service - Crosswalk"</li>'
+            +'<li>There wgt app is installed successfully, and its icon should appear on the Tizen launcher</li>'
+            +'<li>List all installed apps</li>'
+            +'<li>There display the "xwalk" in "app" user, the "xwalk" maybe hide and show alternately</li>'
+            +'<li>The WebApp is opened and basic function works fine</li>'
+            +'<li>The WebApp is uninstalled successfully, and removed from the Tizen launcher successfully</li>'
+            +'</ol>'
+          +'</font>';
