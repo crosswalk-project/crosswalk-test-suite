@@ -1,0 +1,11 @@
+var step = '<font class="fontSize">'
+            +'<p>Purpose:</p>'
+            +'<p>Verify the Cordova package can build, install and launch successfully</p>'
+            +'<p>Expected Results:</p>'
+            +'<ol>'
+            +'<li>There has test.py in crosswalk-cordova directory</li>'
+            +'<li>The command run successfully, no error</li>'
+            +'<li>Display "Build Package Successfully" and "Package Name Consistent"</li>'
+            +'<li>The app can exit successfully</li>'
+            +'</ol>'
+          +'</font>';
