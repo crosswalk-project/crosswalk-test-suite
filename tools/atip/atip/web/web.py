@@ -58,7 +58,7 @@ class WebAPP(common.APP):
         if "platform" in app_config and "name" in app_config["platform"]:
             if app_config["platform"]["name"].upper().find('TIZEN') >= 0:
                 self.app_id = tizen.get_appid_by_name(
-                    self.app_name, app_config["platform"])
+                    self.app_name, app_config["platform"], app_config["tizen_user"])
             if app_config["platform"]["name"].upper().find('ANDROID') >= 0:
                 self.app_name = self.app_name.replace("-", "_")
                 apk_name_update = "".join(
