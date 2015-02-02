@@ -27,21 +27,26 @@
 #
 #Authors:
 #       IVAN CHEN <yufeix.chen@intel.com>
-
+#       Yin, Haichao <haichaox.yin@intel.com>
+#
 
 local_path=$(cd $(dirname $0);pwd)
 source $local_path/Common
 xpk_path=$local_path/../testapp
+originalOneApp="update_original_versionOne_tests"
+originalHigherApp="update_versionOne_HigherMulti_tests"
 
-func_check_xwalkservice
-pkgid=`pkgcmd -l | grep "update_original_versionOne_tests" | awk '{print $4}'`
-pkgid=`echo $pkgid | awk '{print $1}'`
-pkgid=${pkgid:1:-1}
-get_uninstall=`pkgcmd -u -n  $pkgid -q`
+#func_check_xwalkservice
+
+getPkgid $originalOneApp
+get_uninstall=`pkgcmd -u -n  $pkg_id -q`
+getPkgid $originalHigherApp
+get_uninstall=`pkgcmd -u -n  $pkg_id -q`
+
 # install original xpk
-install_origin_xpk  $xpk_path/update_original_versionOne_tests.xpk update_original_versionOne_tests
+install_origin_xpk  $xpk_path/$originalOneApp.xpk $originalOneApp
 
 #update valid xpk and check DB
-update_valid_xpk $xpk_path/update_versionOne_HigherMulti_tests.xpk 4.3.7.2 update_versionOne_HigherMulti_tests
+update_valid_xpk $xpk_path/$originalHigherApp.xpk 4.3.7.2 $originalHigherApp
 
 exit 0

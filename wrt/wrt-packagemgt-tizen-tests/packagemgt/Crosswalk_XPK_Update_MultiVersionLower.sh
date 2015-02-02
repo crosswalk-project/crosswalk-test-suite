@@ -27,28 +27,30 @@
 #
 #Authors:
 #       IVAN CHEN <yufeix.chen@intel.com>
-
+#       Yin, Haichao <haichaox.yin@intel.com>
+#
 
 local_path=$(cd $(dirname $0);pwd)
 source $local_path/Common
 xpk_path=$local_path/../testapp
+originalApp="update_original_versionMulti_tests"
+versionMultiApp="update_versionMulti_Lower_tests"
 
-func_check_xwalkservice
+#func_check_xwalkservice
 
-pkgid=`pkgcmd -l | grep "update_original_versionMulti_tests" | awk '{print $4}'`
-pkgid=`echo $pkgid | awk '{print $1}'`
-pkgid=${pkgid:1:-1}
-get_uninstall=`pkgcmd -u -n  $pkgid -q`
-
-pkgid=`pkgcmd -l | grep "update_versionMulti_Lower_tests" | awk '{print $4}'`
-pkgid=`echo $pkgid | awk '{print $1}'`
-pkgid=${pkgid:1:-1}
-get_uninstall=`pkgcmd -u -n  $pkgid -q`
+getPkgid  $originalApp
+get_uninstall=`pkgcmd -u -n  $pkg_id -q`
+getPkgid  $versionMultiApp
+get_uninstall=`pkgcmd -u -n  $pkg_id -q`
 
 # install original xpk
-install_origin_xpk  $xpk_path/update_original_versionMulti_tests.xpk update_original_versionMulti_tests
+install_origin_xpk  $xpk_path/$originalApp.xpk $originalApp
 
 #update valid xpk and check DB
-update_negative_xpk $xpk_path/update_versionMulti_Lower_tests.xpk 2.0.1.5 update_versionMulti_Lower_tests
+update_negative_xpk $xpk_path/$versionMultiApp.xpk 2.0.1.5 $versionMultiApp
+
+# because of the pass condition is fail to install the update_versionMulti_Lower_tests xpk, so we must uninstall the update_original_versionMulti_tests xpk here
+getPkgid $originalApp
+get_uninstall=`pkgcmd -u -n  $pkg_id -q`
 
 exit 0

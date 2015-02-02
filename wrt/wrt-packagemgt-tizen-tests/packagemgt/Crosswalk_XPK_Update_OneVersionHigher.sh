@@ -27,18 +27,20 @@
 #
 #Authors:
 #       IVAN CHEN <yufeix.chen@intel.com>
-
+#       Yin, Haichao <haichaox.yin@intel.com>
+#
 
 local_path=$(cd $(dirname $0);pwd)
 source $local_path/Common
 xpk_path=$local_path/../testapp
-
-func_check_xwalkservice
+originalApp="update_original_versionOne_tests"
+versionMultiApp="update_versionOne_Higher_tests"
+#func_check_xwalkservice
 
 # install original xpk
-install_origin_xpk  $xpk_path/update_original_versionOne_tests.xpk update_original_versionOne_tests
+install_origin_xpk  $xpk_path/$originalApp.xpk $originalApp
 
 #update valid xpk and check DB
-update_valid_xpk $xpk_path/update_versionOne_Higher_tests.xpk 3 update_versionOne_Higher_tests
+update_valid_xpk $xpk_path/$versionMultiApp.xpk 3 $versionMultiApp
 
 exit 0

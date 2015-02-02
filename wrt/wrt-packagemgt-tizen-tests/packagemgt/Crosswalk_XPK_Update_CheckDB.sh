@@ -27,18 +27,29 @@
 #
 #Authors:
 #       IVAN CHEN <yufeix.chen@intel.com>
-
+#       Yin, Haichao <haichaox.yin@intel.com>
 
 local_path=$(cd $(dirname $0);pwd)
 source $local_path/Common
 xpk_path=$local_path/../testapp
+originalVersionOneApp="update_original_versionOne_tests"
+higherVersionApp="update_versionOne_Higher_tests"
 
-func_check_xwalkservice
+# func_check_xwalkservice
+
+# no matter exist the testapp or not, uninstall it first
+# update_original_versionOne_tests app pkgid is same as update_versionOne_Higher_tests app
+# but must know is that when install update_versionOne_Higher_tests app, the app name is update_versionOne_Higher_tests rather than update_original_versionOne_tests
+getPkgid $originalVersionOneApp
+get_uninstall=`pkgcmd -u -n  $pkg_id -q`
+
+getPkgid $higherVersionApp
+get_uninstall=`pkgcmd -u -n  $pkg_id -q`
 
 # install original xpk
-install_origin_xpk  $xpk_path/update_original_versionOne_tests.xpk update_original_versionOne_tests
+install_origin_xpk  $xpk_path/$originalVersionOneApp.xpk $originalVersionOneApp
 
-#update valid xpk and check DB
-update_valid_xpk $xpk_path/update_versionOne_Higher_tests.xpk 3 update_versionOne_Higher_tests $app_id
+# update valid xpk and check DB
+update_valid_xpk $xpk_path/$higherVersionApp.xpk 3 $higherVersionApp $app_id
 
 exit 0

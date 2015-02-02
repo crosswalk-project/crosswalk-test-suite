@@ -50,30 +50,26 @@ function func_check_xwalkservice()
 }
 
 function install_origin_xpk(){
-        pkgcmd -i -t xpk -p  $1 -q &> /tmp/install
-        cat /tmp/install | grep "ok"
-        if [[ $? -ne 0 ]]; then
-                cat /tmp/install | grep "ok"
-                if [[ $? -eq 0 ]]; then
-                        uninstall_exist_xpk
-                        pkgcmd -i -t wgt -p  $1 -q &> /tmp/install 
-                else
-                        echo "The original xpk  install failure."  
-                        exit 1
-                fi
+        pkgcmd -i -t xpk -p  $1 -q
+        app_id=`app_launcher -l | grep $2 | head -n 1| awk  '{print $2}'`
+        app_id=${app_id:1:-1}
+        if [[ -n $app_id ]]; then
+                 echo "The $1 xpk  install successfully."
+        else
+                 echo "The $1 xpk  install failure."  
+                 exit 1
         fi
-        # get app id
-        get_app_id $2
 }
 
 function update_valid_xpk(){
-        pkgcmd -i -t xpk -p $1 -q &> /tmp/install 
-        cat /tmp/install | grep "ok"
-        if [[ $? -eq 0 ]]; then
-                echo "Update xpk, install successfully"
-                else
-                        echo "Update xpk,install failure"
-                        exit 1
+        pkgcmd -i -t xpk -p $1 -q 
+        app_id=`app_launcher -l | grep $3 | head -n 1| awk  '{print $2}'`
+        app_id=${app_id:1:-1}
+        if [[ -n $app_id ]]; then
+                echo "Update xpk, install $3 successfully"
+        else
+                echo "Update xpk,install $3 failure"
+                exit 1
         fi
 
         get_version_name $3
@@ -89,9 +85,10 @@ function update_valid_xpk(){
 }
 
 function update_negative_xpk(){
-        pkgcmd -i -t xpk -p $1 -q &> /tmp/install
-        cat /tmp/install | grep "ok"
-        if [[ $? -ne 0 ]]; then
+        pkgcmd -i -t xpk -p $1 -q
+        app_id=`app_launcher -l | grep $3 | head -n 1| awk  '{print $2}'`
+        app_id=${app_id:1:-1}
+        if [[ ! -n $app_id ]]; then
                 echo "Pass, Update negative xpk, install failure"
         else
                 echo "Fail, Update negative xpk,install successfully"
@@ -100,49 +97,35 @@ function update_negative_xpk(){
 
         get_version_name $3
         uninstall_xpk $3
-        if [[ $version != $2 ]]; then
+        if [[ -n $version ]] && [[ $version != $2 ]]; then
                 echo "Fail, Update negative xpk, but the version is updated."
                 exit 1
         fi
-        if [[ $name == $3 ]]; then
+        if [[ -n $version ]] && [[ $name == $3 ]]; then
                 echo "Fail, Update negative xpk, but the name is updated."
                 exit 1
         fi
 }
 
 function uninstall_xpk(){
-#uninstall xpk
-pkgid=`pkgcmd -l | grep $1 | awk '{print $4}'`
-pkgid=`echo $pkgid | awk '{print $1}'`
-pkgid=${pkgid:1:-1}
-get_uninstall=`pkgcmd -u -n  $pkgid -q`
+        #uninstall xpk
+        pkgid=`pkgcmd -l |grep $1 |awk -F "pkgid" '{print $2}' |awk -F '[' '{print $2}'|awk -F ']' '{print $1}'`
+        get_uninstall=`pkgcmd -u -n  $pkgid -q`
 }
 
 function get_version_name(){
-
         #version=`sqlite3 /home/app/.applications/dbspace/.app_info.db "select version from app_info where name like \"%$1%\";"`
         #name=`sqlite3 /home/app/.applications/dbspace/.app_info.db "select name from app_info where name like \"%$1%\";"`
-        version=`pkgcmd -l | grep $1 | awk '{print $8}'`
-        version=`echo $version | awk '{print $1}'`
-        version=${version:1:-1}
-        name=`pkgcmd -l | grep $1 | awk '{print $6}'`
-        name=`echo $name | awk '{print $1}'`
-        name=${name:1:-1}
+        version=`pkgcmd -l |grep $1 |awk -F "version " '{print $2}' |awk -F '[' '{print $2}'|awk -F ']' '{print $1}'`
+        name=`pkgcmd -l |grep $1 |awk -F "name" '{print $2}' |awk -F '[' '{print $2}'|awk -F ']' '{print $1}'`
 }
 
-function get_app_id(){
-        app_id=`pkgcmd -l | grep $1 | awk '{print $4}'`
-        app_id=`echo $app_id | awk '{print $1}'`
-        app_id=${app_id:1:-1}
+function getPkgid()
+{
+  pkg_id=`pkgcmd -l |grep $1 |awk -F "pkgid" '{print $2}' |awk -F '[' '{print $2}'|awk -F ']' '{print $1}'`
 }
 
-function uninstall_exist_xpk(){
-    exist_id=`pkgcmd -l | grep "update_original" | awk '{print $4}'`
-    exist_id=`echo $app_id | awk '{print $1}'`
-    exist_id=${app_id:1:-1}
-    pkgcmd -u -n  $app_id
-    exist_id=`pkgcmd -l | grep "update_original" | awk '{print $4}'`
-    exist_id=`echo $app_id | awk '{print $1}'`
-    exist_id=${app_id:1:-1}
-    pkgcmd -u -n  $app_id
+function getAppid(){
+  app_id=`app_launcher -l | grep $1 | head -n 1| awk  '{print $2}'`
+  app_id=${app_id:1:-1}
 }

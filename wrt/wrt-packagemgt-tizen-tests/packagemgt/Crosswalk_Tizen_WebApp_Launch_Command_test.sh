@@ -29,31 +29,27 @@
 #
 # Author:
 #        IVAN CHEN <yufeix.chen@intel.com>
+#        Yin, Haichao <haichaox.yin@intel.com>
 #
 
 local_path=$(cd $(dirname $0);pwd)
 source $local_path/Common
 xpk_path=$local_path/../testapp
+diffidSameVersionApp="diffid_same_version_tests"
 
-func_check_xwalkservice
+#func_check_xwalkservice
 
 # install original xpk
-pkgid=`pkgcmd -l | grep "diffid_same_version_tests" | awk '{print $4}'`
-pkgid=`echo $pkgid | awk '{print $1}'`
-pkgid=${pkgid:1:-1}
-get_uninstall=`pkgcmd -u -n  $pkgid -q`
-
-pkgcmd -i -t xpk -p $xpk_path/diffid_same_version_tests.xpk -q
-
-app_id=`app_launcher -l | grep "diffid_same_version_tests" | head -n 1| awk  '{print $2}'`
-app_id=${app_id:1:-1}
+getPkgid $diffidSameVersionApp
+get_uninstall=`pkgcmd -u -n  $pkg_id -q`
+pkgcmd -i -t xpk -p $xpk_path/$diffidSameVersionApp.xpk -q
+getAppid $diffidSameVersionApp
 app_launcher -s $app_id 
-sleep 2
-pkgid=`pkgcmd -l | grep "diffid_same_version_tests" | awk '{print $4}'`
-pkgid=`echo $pkgid | awk '{print $1}'`
-pkgid=${pkgid:1:-1}
-#install xwalk web app
-pkgcmd -u -n  $pkgid -q
+sleep 
+2
+# uninstall original xpk
+getPkgid $diffidSameVersionApp
+get_uninstall=`pkgcmd -u -n  $pkg_id -q`
 if [[ $? -eq 0 ]]; then
                 echo "Uninstall Pass"
                 exit 0

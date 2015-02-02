@@ -27,18 +27,24 @@
 #
 #Authors:
 #       IVAN CHEN <yufeix.chen@intel.com>
-
+#       Yin, Haichao <haichaox.yin@intel.com>
 
 local_path=$(cd $(dirname $0);pwd)
 source $local_path/Common
 xpk_path=$local_path/../testapp
+originalApp="update_original_versionOne_tests"
+versionMultiApp="update_versionOne_Lower_tests"
 
-func_check_xwalkservice
+#func_check_xwalkservice
 
 # install original xpk
-install_origin_xpk  $xpk_path/update_original_versionOne_tests.xpk update_original_versionOne_tests
+install_origin_xpk  $xpk_path/$originalApp.xpk $originalApp
 
-#update valid xpk and check DB
-update_negative_xpk $xpk_path/update_versionOne_Lower_tests.xpk 2 update_versionOne_Lower_tests
+# update valid xpk and check DB
+update_negative_xpk $xpk_path/$versionMultiApp.xpk 2 $versionMultiApp
+
+# because of the pass condition is fail to install the lowerversion xpk, so we must uninstall the update_original_versionOne_tests here
+getPkgid $originalApp
+get_uninstall=`pkgcmd -u -n  $pkg_id -q`
 
 exit 0
