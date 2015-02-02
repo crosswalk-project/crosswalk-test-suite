@@ -29,49 +29,56 @@
 #
 # Author:
 #        IVAN CHEN <yufeix.chen@intel.com>
+#        Yin, Haichao <haichaox.yin@intel.com>
 
 local_path=$(cd $(dirname $0);pwd)
 source $local_path/Common
 xpk_path=$local_path/../testapp
-# install original xpk
-app_id1=`pkgcmd -l | grep "diffid_same_version_tests" | awk '{print $4}'`
-app_id1=`echo $app_id1 | awk '{print $1}'`
-app_id1=${app_id1:1:-1}
-get_uninstall=`pkgcmd -u -n  $app_id1 -q`
+firstApp="diffid_same_version_tests"
+secondApp="update_original_versionOne_tests"
 
-pkgcmd -i -t xpk -p $xpk_path/diffid_same_version_tests.xpk -q
-if [[ $? -eq 0 ]]; then
-                echo "Install Pass"
+# install first xpk,if exists,uninstall first
+getPkgid $firstApp
+get_uninstall=`pkgcmd -u -n  $pkg_id -q`
+pkgcmd -i -t xpk -p $xpk_path/$firstApp.xpk -q
+getAppid $firstApp
+if [[ -n $app_id ]]; then
+                echo "Install $firstApp.xpk Pass"
         else
-                echo "Install Fail"
+                echo "Install $firstApp.xpk Fail"
                 exit 1
 fi
-app_id1=`pkgcmd -l | grep "diffid_same_version_tests" | awk '{print $4}'`
-app_id1=`echo $app_id1 | awk '{print $1}'`
-app_id1=${app_id1:1:-1}
-pkgcmd -i -t xpk -p $xpk_path/update_original_versionOne_tests.xpk -q
-if [[ $? -eq 0 ]]; then
-                echo "Install Pass"
+
+# install second xpk,if exists,uninstall first
+getPkgid $secondApp
+get_uninstall=`pkgcmd -u -n  $pkg_id -q`
+pkgcmd -i -t xpk -p $xpk_path/$secondApp.xpk -q
+getAppid $secondApp
+if [[ -n $app_id ]]; then
+                echo "Install $secondApp.xpk Pass"
         else
-                echo "Install Fail"
+                echo "Install $secondApp.xpk Fail"
                 exit 1
 fi
-app_id2=`pkgcmd -l | grep "update_original_versionOne_tests" | awk '{print $4}'`
-app_id2=`echo $app_id2 | awk '{print $1}'`
-app_id2=${app_id2:1:-1}
-get_uninstall=`pkgcmd -u -n  $app_id2 -q`
-if [[ $? -eq 0 ]]; then
-                echo "Uninstall Pass"
+
+# uninstall above xpk no matter install successfully or failed for the two xpks
+getPkgid $firstApp
+get_uninstall=`pkgcmd -u -n  $pkg_id -q`
+getAppid $firstApp
+if [[ ! -n $app_id ]]; then
+                echo "Uninstall $firstApp.xpk Pass"
         else
-                echo "Uninstall Fail"
+                echo "Uninstall $firstApp.xpk Fail"
                 exit 1
 fi
-get_uninstall=`pkgcmd -u -n  $app_id1 -q`
-if [[ $? -eq 0 ]]; then
-                echo "Uninstall Pass"
+getPkgid $secondApp
+get_uninstall=`pkgcmd -u -n  $pkg_id -q`
+getAppid $secondApp
+if [[ ! -n $app_id ]]; then
+                echo "Uninstall $secondApp.xpk Pass"
                 exit 0
         else
-                echo "Uninstall Fail"
+                echo "Uninstall $secondApp.xpk Fail"
                 exit 1
 fi
 

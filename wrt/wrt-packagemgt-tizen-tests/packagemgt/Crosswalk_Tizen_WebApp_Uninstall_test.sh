@@ -29,23 +29,21 @@
 #
 # Author:
 #        IVAN CHEN <yufeix.chen@intel.com>
+#        Yin, Haichao <haichaox.yin@intel.com>
 
 local_path=$(cd $(dirname $0);pwd)
 source $local_path/Common
 xpk_path=$local_path/../testapp
+diffidSameVersionApp="diffid_same_version_tests"
 
-app_id=`pkgcmd -l | grep "diffid_same_version_tests" | awk '{print $4}'`
-app_id=`echo $app_id | awk '{print $1}'`
-app_id=${app_id:1:-1}
-get_uninstall=`pkgcmd -u -n  $app_id -q`
+getPkgid $diffidSameVersionApp
+get_uninstall=`pkgcmd -u -n  $pkg_id -q`
 
-pkgcmd -i -t xpk -p $xpk_path/diffid_same_version_tests.xpk -q
+pkgcmd -i -t xpk -p $xpk_path/$diffidSameVersionApp.xpk -q
 if [[ $? -eq 0 ]]; then
    echo "Install Pass"
-   app_id=`pkgcmd -l | grep "diffid_same_version_tests" | awk '{print $4}'`
-   app_id=`echo $app_id | awk '{print $1}'`
-   app_id=${app_id:1:-1}
-   pkgcmd -u -n $app_id -q
+   getPkgid $diffidSameVersionApp
+   pkgcmd -u -n $pkg_id -q
    exit 0
 else
    echo "Install Fail"

@@ -30,8 +30,12 @@
 #
 
 path=$(cd $(dirname $0);pwd)
-PACKAGENAME=$path/../testapp/"web_app_test.wgt"
-get_uninstall_status=`pkgcmd -u -n webapptest -q`
+source $local_path/Common
+webapptest="web_app_test"
+PACKAGENAME=$path/../testapp/"$webapptest.wgt"
+
+getPkgid $webapptest
+get_uninstall_status=`pkgcmd -u -n $pkg_id -q`
 get_install_status=`pkgcmd -i -t wgt -p $PACKAGENAME -q`
 get_install_status=` echo $get_install_status | awk '{print $15}'`
 echo $get_install_status
@@ -41,7 +45,8 @@ if [[ "$get_install_status" =~ "val[ok]" ]];then
      if [[ "$get_backend_status" =~ "Cannot install from directory" ]];then
         echo "Installation from directory is unsupported, ok"
         sleep 1
-        get_uninstall_status=`pkgcmd -u -n webapptest -q`
+        getPkgid $webapptest
+        get_uninstall_status=`pkgcmd -u -n $pkg_id -q`
         exit 0
      else
         echo "Installation from directory is supported, fail"

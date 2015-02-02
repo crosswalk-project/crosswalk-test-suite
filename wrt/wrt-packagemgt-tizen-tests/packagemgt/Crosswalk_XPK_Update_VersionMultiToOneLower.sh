@@ -27,21 +27,27 @@
 #
 #Authors:
 #       IVAN CHEN <yufeix.chen@intel.com>
-
+#       Yin, Haichao <haichaox.yin@intel.com>
+#
 
 local_path=$(cd $(dirname $0);pwd)
 source $local_path/Common
 xpk_path=$local_path/../testapp
+originalMultiApp="update_original_versionMulti_tests"
+originalOneApp="update_original_versionOne_tests"
+#func_check_xwalkservice
 
-func_check_xwalkservice
-pkgid=`pkgcmd -l | grep "update_original_versionMulti_tests" | awk '{print $4}'`
-pkgid=`echo $pkgid | awk '{print $1}'`
-pkgid=${pkgid:1:-1}
-get_uninstall=`pkgcmd -u -n  $pkgid -q`
+getPkgid $originalMultiApp
+get_uninstall=`pkgcmd -u -n  $pkg_id -q`
+
 # install original xpk
-install_origin_xpk  $xpk_path/update_original_versionMulti_tests.xpk update_original_versionMulti_tests
+install_origin_xpk  $xpk_path/$originalMultiApp.xpk $originalMultiApp
 
 #update valid xpk and check DB
-update_negative_xpk $xpk_path/update_original_versionOne_tests.xpk 2.0.1.5 update_original_versionOne_tests
+update_negative_xpk $xpk_path/$originalOneApp.xpk 2.0.1.5 $originalOneApp
+
+# because of the pass condition is fail to install the update_original_versionOne_tests xpk, so we must uninstall the update_original_versionMulti_tests here
+getPkgid $originalMultiApp
+get_uninstall=`pkgcmd -u -n  $pkg_id -q`
 
 exit 0

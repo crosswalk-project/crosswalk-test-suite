@@ -28,25 +28,28 @@
 #EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 #
 # Author:
+#        Yin, Haichao <haichaox.yin@intel.com>
 #
 
 local_path=$(cd $(dirname $0);pwd)
 source $local_path/Common
 xpk_path=$local_path/../testapp
-pkg_id=`pkgcmd -l | grep "web_app_test" | awk '{print $4}'`
-pkg_id=`echo $pkg_id | awk '{print $1}'`
-pkg_id=${pkg_id:1:-1}
-get_uninstall=`pkgcmd -u -n  webapptest -q`
-rm -rf /home/app/.config/xwalk-service/Storage/ext/webapptest.webapptestversion
-pkgcmd -i -t wgt -p  $xpk_path/web_app_test.wgt -q
-if [[ $? -eq 0 ]]; then
+webAppTest="web_app_test"
+
+getPkgid $webAppTest
+get_uninstall=`pkgcmd -u -n  $pkg_id -q`
+
+rm -rf /home/app/apps_rw/xwalk-service/Storage/ext/webapptest.webapptestversion
+pkgcmd -i -t wgt -p  $xpk_path/$webAppTest.wgt -q
+getAppid $webAppTest
+if [[ -n $app_id ]]; then
                 echo "Install Pass"
         else
                 echo "Install Fail"
                 exit 1
 fi
 
-myPath="/home/app/.config/xwalk-service/Storage/ext/webapptest.webapptestversion"
+myPath="/home/app/apps_rw/xwalk-service/Storage/ext/webapptest.webapptestversion"
 if [ ! -d $myPath ]; then 
      echo "Pass,webapp have not isolated storage partition before running"
      get_uninstall=`pkgcmd -u -n  webapptest -q`

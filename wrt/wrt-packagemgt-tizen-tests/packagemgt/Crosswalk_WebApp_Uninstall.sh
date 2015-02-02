@@ -28,25 +28,29 @@
 #EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 #
 # Author:
+#        Yin, Haichao <haichaox.yin@intel.com>
 #
-
 
 local_path=$(cd $(dirname $0);pwd)
 source $local_path/Common
 xpk_path=$local_path/../testapp
-pkg_id=`pkgcmd -l | grep "web_app_test" | awk '{print $4}'`
-pkg_id=`echo $pkg_id | awk '{print $1}'`
-pkg_id=${pkg_id:1:-1}
+webAppTest="web_app_test"
+
+getPkgid $webAppTest
 get_uninstall=`pkgcmd -u -n  $pkg_id -q`
-pkgcmd -i -t wgt -p  $xpk_path/web_app_test.wgt -q
-if [[ $? -eq 0 ]]; then
+pkgcmd -i -t wgt -p  $xpk_path/$webAppTest.wgt -q
+getAppid $webAppTest
+if [[ -n $app_id ]]; then
                 echo "Install Pass"
         else
                 echo "Install Fail"
                 exit 1
 fi
-get_uninstall_status=`pkgcmd -u -n  webapptest -q`
-if [[ "$get_uninstall_status" =~ "val[ok]" ]];then
+
+getPkgid $webAppTest
+get_uninstall_status=`pkgcmd -u -n  $pkg_id -q`
+getAppid $webAppTest
+if [[ ! -n $app_id ]]; then
   echo "webapp uninstall Pass!"
   exit 0
 else
