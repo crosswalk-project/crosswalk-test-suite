@@ -46,13 +46,14 @@ SECURITY_EXCEPTION = {name: 'SecurityError'};
 
 
 (function () {
-   var head_src = document.head.innerHTML;
-   if (head_src.search(/\/testharness.js\W/) === -1) {
-       document.write('<script language="javascript" src="../resources/testharness.js"></script>\n');
-   }
-   if (head_src.search(/\/testharnessreport.js\W/) === -1) {
-       document.write('<script language="javascript" src="../resources/testharnessreport.js"></script>\n');
-   }
+    var head_src = document.head.innerHTML;
+    if (head_src.indexOf('testharness.js') === -1) {
+        document.write("<script src=\"..\/resources\/testharness.js\"><\/script>");
+    }
+
+    if (head_src.indexOf('testharnessreport.js') === -1) {
+        document.write("<script src=\"..\/resources\/testharnessreport.js\"><\/script>");
+    }
 })();
 
 var _registered_types = {};
