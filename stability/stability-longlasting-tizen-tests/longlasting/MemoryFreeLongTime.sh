@@ -34,7 +34,7 @@ sleep 10
 sysmonFolder=$testType"_sysmem_"`date '+%Y%m%d%H%M'`
 mkdir /tmp/$sysmonFolder
 
-times=$[ $SLEEP / 10 ]
+times=$[ $SLEEP / 30 ]
 while [ $times -ne "0" ]
 do
     echo \"`date +%H:%M:%S`\"", "`grep MemFree /proc/meminfo | awk ' {print $2}'`>> /tmp/$sysmonFolder/memfree.res
