@@ -1,6 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <test_definition>
   <suite name="Usecase WebAPI">
+    <set name="Runtime &amp;amp; Packaging" background="brand-primary" icon="glyphicon-asterisk">
+      <testcase component="sample" execution_type="manual" id="AppURI" platform="all" priority="P0" purpose="App URI" status="approved" type="functional_positive">
+        <description>
+          <test_script_entry test_script_expected_result="0">/opt/usecase-webapi-xwalk-tests/bddrunner testscripts/AppURI.feature</test_script_entry>
+        </description>
+      </testcase>
+    </set>
     <set name="Multimedia &amp;amp; Graphics" background="brand-success" icon="glyphicon-facetime-video" type="script">
       <testcase component="Crosswalk Use Cases/WebAPI" execution_type="auto" id="Jsenhance" platform="all" priority="P0" purpose="Jsenhance" status="approved" type="functional_positive">
         <description>
@@ -10,6 +17,11 @@
       <testcase component="Crosswalk Use Cases/WebAPI" execution_type="manual" id="CSSStyleAttribute" platform="all" priority="P0" purpose="CSS Style Attribute" status="designed" type="functional_positive">
       </testcase>
       <testcase component="Crosswalk Use Cases/WebAPI" execution_type="manual" id="MediaSource" platform="all" priority="P0" purpose="MediaSource" status="approved" type="functional_positive">
+      </testcase>
+      <testcase component="sample" execution_type="auto" id="WebRTC" platform="all" priority="P0" purpose="WebRTC" status="approved" type="functional_positive">
+        <description>
+          <test_script_entry test_script_expected_result="0">/opt/usecase-webapi-xwalk-tests/bddrunner testscripts/WebRTC.feature</test_script_entry>
+        </description>
       </testcase>
     </set>
     <set name="Networking &amp;amp; Storage" background="brand-warning" icon="glyphicon-link" type="script">
@@ -54,11 +66,23 @@
         </description>
       </testcase>
     </set>
+    <set name="Social" background="bs-purple" icon="glyphicon-heart">
+      <testcase component="sample" execution_type="auto" id="ContactsManager" platform="all" priority="P0" purpose="Contacts Manager" status="approved" type="functional_positive">
+        <description>
+          <test_script_entry test_script_expected_result="0">/opt/usecase-webapi-xwalk-tests/bddrunner testscripts/ContactsManager.feature</test_script_entry>
+        </description>
+      </testcase>
+    </set>
     <set name="Security" background="brand-warning3" icon="glyphicon-warning-sign">
       <testcase component="Crosswalk Use Cases/WebAPI" execution_type="manual" id="CSP" platform="all" priority="P0" purpose="CSP" status="approved" subcase="9" type="functional_positive">
       </testcase>
     </set>
     <set name="Experimental API" background="brand-success3" icon="glyphicon-adjust" type="script">
+      <testcase component="sample" execution_type="auto" id="DeviceCapabilities" platform="all" priority="P0" purpose="Device Capabilities" status="approved" type="functional_positive">
+        <description>
+          <test_script_entry test_script_expected_result="0">/opt/usecase-webapi-xwalk-tests/bddrunner testscripts/DeviceCapabilities.feature</test_script_entry>
+        </description>
+      </testcase>
       <testcase component="sample" type="functional_positive" status="approved" execution_type="auto" platform="all" priority="P0" id="SIMD" purpose="SIMD">
         <description>
           <test_script_entry test_script_expected_result="0">/opt/usecase-webapi-xwalk-tests/bddrunner testscripts/SIMD.feature</test_script_entry>
