@@ -2,11 +2,11 @@
 # -*- coding: utf-8 -*-
 
 # Copyright (C) 2014 Intel Corporation. All rights reserved.
-
+#
 # Redistribution and use in source and binary forms, with or without
 # modification, are permitted provided that the following conditions
 # are met:
-
+#
 #   * Redistributions of source code must retain the above copyright
 #     notice, this list of conditions and the following disclaimer.
 #   * Redistributions in binary form must reproduce the above copyright
@@ -16,7 +16,7 @@
 #   * Neither the name of Intel Corporation nor the names of its
 #     contributors may be used to endorse or promote products derived
 #     from this software without specific prior written permission.
-
+#
 # THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS
 # "AS IS" AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT
 # LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR
@@ -30,9 +30,6 @@
 # OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 #
 # Author: belem.zhang@intel.com
-
-# https://bitbucket.org/iBotPeaches/apktool/downloads
-# Install and set apktool: https://code.google.com/p/android-apktool/wiki/Install
 
 import os, sys
 import shutil
@@ -143,13 +140,10 @@ def apktoolanalyser(path):
                 mode = 'shared'
 
             if comm.find_file(xwalkcoreviewsmali):
-                #print 'xwalk/core'
                 crosswalk = 'yes'
                 if comm.find_dir(xwalkappruntime):
-                    #print 'xwalk/app/runtime'
                     appruntime = 'yes'
                 if comm.find_dir(xwalkcoreinternal):
-                    #print 'xwalk/core/internal'
                     coreinternal = 'yes'
             elif comm.find_dir(xwalkcoreinternal):
                 note = 'Namespace org.xwalk.core.internal included.'
@@ -253,6 +247,3 @@ def main():
 
 if __name__ == '__main__':
     sys.exit(main())
-    #python main.py
-    #python main.py -p <apk file or folder>
-    #python main.py -p /home/belem/github/apk-checker/apks/Test_0.0.1_arm_embedded.apk

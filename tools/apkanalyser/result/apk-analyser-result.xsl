@@ -3,7 +3,6 @@
 <xsl:stylesheet version="1.0" xmlns:xsl="http://www.w3.org/1999/XSL/Transform">
   <xsl:output method="html" encoding="utf-8" indent="yes" />
   <xsl:template match="/">
-    <!--<xsl:text disable-output-escaping='yes'>&lt;!DOCTYPE html&gt;</xsl:text>-->
 
 <html>
   <head>
@@ -12,7 +11,7 @@
     <meta http-equiv='X-UA-Compatible' content='IE=10' />
     <meta name='author' content='Belem, belem.zhang@intel.com' />
     <meta content='width=device-width, initial-scale=1.0, minimum-scale=0.2, maximum-scale=3.0, user-scalable=yes' name='viewport' />
-    <style type="text/css">
+    <style>
       html { margin: 0px 20px; }
       body { color: #515151; font: 80%/1.5 Verdana,sans-serif; min-width: 960px; margin: 0px auto; text-shadow: 0px 1px 0px rgba(0,0,0,0.1); }
       header { font-family: 'Lucida Bright', Verdana, cursive; font-size: 30px; margin: 14px 0px 14px 0px; padding-bottom: 10px; border-bottom: 4px rgba(22, 160, 133,1.0) solid;}
@@ -48,7 +47,7 @@
       #toggle { text-align: right; color: rgba(22, 160, 133,1.0); cursor: hand; margin: -6px 0px 6px 0px;  }
       #toggle:hover { color: rgba(16, 154, 127,1.0); }
     </style>
-    <script type='text/javascript' src='https://code.jquery.com/jquery-2.1.3.min.js'></script>
+    <script src='../../resources/webrunner/jquery-1.10.2.min.js'></script>
   </head>
   <body>
     <div id='wrapper'>
