@@ -14,8 +14,8 @@ SCRIPT_DIR = os.path.dirname(os.path.abspath(__file__))
 PKG_NAME = os.path.basename(SCRIPT_DIR)
 PARAMETERS = None
 #XW_ENV = "export DBUS_SESSION_BUS_ADDRESS=unix:path=/run/user/5000/dbus/user_bus_socket"
-SRC_DIR = "/home/app/content"
-PKG_SRC_DIR = "%s/tct/opt/%s" % (SRC_DIR, PKG_NAME)
+SRC_DIR = ""
+PKG_SRC_DIR = ""
 
 
 def doCMD(cmd):
@@ -179,6 +179,11 @@ def main():
 
     if not PARAMETERS.user:
         PARAMETERS.user = "app"
+
+    global SRC_DIR, PKG_SRC_DIR
+    SRC_DIR = "/home/%s/content" % PARAMETERS.user
+    PKG_SRC_DIR = "%s/tct/opt/%s" % (SRC_DIR, PKG_NAME)
+
     if not PARAMETERS.mode:
         PARAMETERS.mode = "SDB"
 
