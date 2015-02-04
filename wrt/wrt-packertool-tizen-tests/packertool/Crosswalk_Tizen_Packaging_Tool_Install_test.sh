@@ -31,6 +31,7 @@
 #        IVAN CHEN <yufeix.chen@intel.com>
 #
 source $(dirname $0)/Common.sh
+userid=`id -u`
 
 local_path=$(dirname $0)
 python $local_path/../make_xpk.py $local_path/../diffid_same_version_tests/ key.pem 
@@ -44,13 +45,13 @@ else
                 exit 1
 fi
 
-
 #push xpk to device
 if [ $connect_type == "sdb" ];then
     sdb -s $device_id push diffid_same_version_tests.xpk /home/app/content/tct
     sdb -s $device_id push ./packertool/appinstall.sh /home/app/content/tct
     sdb -s $device_id root on
-    sdb -s $device_id shell "su - app -c 'export DBUS_SESSION_BUS_ADDRESS=unix:path=/run/user/5000/dbus/user_bus_socket;/home/app/content/tct/appinstall.sh'"
+    sdb -s $device_id shell "su - $TIZEN_USER -c 'export DBUS_SESSION_BUS_ADDRESS=unix:path=/run/user/$userid/dbus/user_bus_socket;/home/app/content/tct/appinstall.sh'"
+    echo $TIZEN_USER,$userid
     if [ $? -eq 0 ];then
       echo "Install xpk Pass"
       exit 0
@@ -60,7 +61,7 @@ if [ $connect_type == "sdb" ];then
 else
     scp diffid_same_version_tests.xpk $device_id:/home/app/content/tct
     scp ./packertool/appinstall.sh $device_id:/home/app/content/tct
-    ssh $device_id "su - app -c 'export DBUS_SESSION_BUS_ADDRESS=unix:path=/run/user/5000/dbus/user_bus_socket;/home/app/content/tct/appinstall.sh'"
+    ssh $device_id "su - $TIZEN_USER -c 'export DBUS_SESSION_BUS_ADDRESS=unix:path=/run/user/$userid/dbus/user_bus_socket;/home/app/content/tct/appinstall.sh'"
     if [ $? -eq 0 ];then
       echo "Install xpk Pass"
       exit 0

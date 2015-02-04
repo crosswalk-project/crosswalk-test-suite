@@ -15,7 +15,7 @@ This test suite is for wrt-manifest-tizen-tests
 ## Authors:
 
 * Shen, lin <linx.a.shen@intel.com>
-
+  Yin, Haichao <haichaox.yin@intel.com>
 ## LICENSE
 
 Copyright (c) 2013 Intel Corporation.
@@ -46,9 +46,9 @@ Please see the COPYING file for the BSD-3-Clause License.
 Test Step:
 1. unzip wrt-manifest-tizen-tests<version>.zip
 2. cd opt/wrt-manifest-tizen-tests/
-3. run test.py as below sample:(note:--testprefix path is the test.py path)
-   1. testkit-lite -f "/opt/wrt-manifest-tizen-tests/tests.xml" -A -o ./result.xml --comm localhost --testenvs "DEVICE_ID=10.239.250.183 CONNECT_TYPE=sdb" 
-   2. testkit-lite -f "/path/opt/wrt-manifest-tizen-tests/tests.xml" -A -o ./result.xml --comm localhost --testenvs "DEVICE_ID=10.239.250.183 CONNECT_TYPE=sdb" --testprefix '/path'
-   3. testkit-lite -f "/path/opt/wrt-manifest-tizen-tests/tests.xml" -A -o ./result.xml --comm localhost --testenvs "DEVICE_ID=root@10.239.250.205 CONNECT_TYPE=ssh" --testprefix '/path'
+3. run test.py as below sample:(note:--testprefix path is the test.py path;TIZEN_USER value is the current platform supported user)
+   1. testkit-lite -f "/opt/wrt-manifest-tizen-tests/tests.xml" -A -o ./result.xml --comm localhost --testenvs "DEVICE_ID=10.239.250.183;CONNECT_TYPE=sdb;TIZEN_USER=app" 
+   2. testkit-lite -f "/path/opt/wrt-manifest-tizen-tests/tests.xml" -A -o ./result.xml --comm localhost --testenvs "DEVICE_ID=10.239.250.183;CONNECT_TYPE=sdb;TIZEN_USER=app" --testprefix '/path'
+   3. testkit-lite -f "/path/opt/wrt-manifest-tizen-tests/tests.xml" -A -o ./result.xml --comm localhost --testenvs "DEVICE_ID=root@10.239.250.205;CONNECT_TYPE=ssh;TIZEN_USER=app" --testprefix '/path'
    
 Base on the seed file, the total case number is 264.
