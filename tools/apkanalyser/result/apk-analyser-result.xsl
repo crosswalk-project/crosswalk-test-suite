@@ -21,19 +21,20 @@
       tr:hover { background-color: #fafafa; cursor: pointer;} 
       td.details { background-color: rgba(32, 50, 68,1.0); color: rgba(255, 255, 255, 0.6);}
       td.details:hover { background-color: rgba(20, 38, 56,1.0);  }
-      td.details, .smali, .asset { text-align: left; margin: 20px 0px ; }
-      span.cap1, .smali span { display:inline-block; margin: 2px 4px; border: 1px dotted rgba(255, 255, 255, 0.6); padding: 1px 6px; border-radius: 0px; rgba(255, 255, 255, 0.9); }
-      span.cap1, .smali span:hover { border: 1px solid rgba(255, 255, 255, 1.0); background-color: rgba(142, 68, 173,1.0); color: rgba(255, 255, 255, 1.0);  }
+      td.details { text-align: left; margin: 20px 0px; padding: 0px 16px; }
+      .asset { text-align: left; margin: 10px 0px 20px 0px; }
+      span.cap1, .xwalk span, .chromium span, .cordova span, .smali span { display:inline-block; margin: 2px 4px; border: 1px dotted rgba(255, 255, 255, 0.6); padding: 1px 6px; border-radius: 0px; rgba(255, 255, 255, 0.9); }
+      span.cap1, .xwalk span:hover, .chromium span:hover, .cordova span:hover, .smali span:hover { border: 1px solid rgba(255, 255, 255, 1.0); background-color: rgba(142, 68, 173,1.0); color: rgba(255, 255, 255, 1.0);  }
       span.cap2, .asset span { display:inline-block; margin: 2px 4px; border: 1px dotted rgba(255, 255, 255, 0.6); padding: 1px 6px; border-radius: 10px; rgba(255, 255, 255, 0.9); }
       span.cap2, .asset span:hover { border: 1px solid rgba(255, 255, 255, 1.0); background-color: rgba(211, 84, 0,1.0); color: rgba(255, 255, 255, 1.0); }
-      .det { margin: 0px 10px 0px 0px; font-weight: bold; text-shadow: 0px 1px 1px rgba(0,0,0,0.1); font-size: 13px; color: rgba(255, 255, 255, 1.0); }
-      .apd { text-align: center;  margin-top: 10px; }
+      .det { margin: 0px 10px 0px 0px; font-weight: bold; text-shadow: 0px 1px 1px rgba(0,0,0,0.1); font-size: 14px; color: rgba(255, 255, 255, 1.0); }
+      .apd { text-align: center;  margin: 10px 0px; }
       .details { padding: 10px; font-size:11px; }
       .fill {background-color: #46C8C8; color: rgba(255, 255, 255, 1.0); }
-      .lim { min-width: 100px; max-width: 200px; overflow: hidden; }
+      .lim { min-width: 100px; max-width: 180px; overflow: hidden; }
       .limname { max-width: 120px; overflow: hidden;  }
-      .limsize { min-width: 62px; max-width: 80px; overflow: hidden;  }
-      .limw { min-width: 60px; max-width: 106px; overflow: hidden; width: 106px;  }
+      .limsize { min-width: 42px; max-width: 80px; overflow: hidden;  }
+      .limw { min-width: 60px; max-width: 96px; overflow: hidden; width: 106px;  }
       .emb { background-color:#00B1E1; color: rgba(255, 255, 255, 1.0); text-shadow: 0px 1px 0px rgba(0,0,0,0.2);}
       .sha { background-color:#EB7E7F; color: rgba(255, 255, 255, 1.0); }
       .arm { background-color:#EC795E; color: rgba(255, 255, 255, 1.0);}
@@ -43,9 +44,12 @@
       .cdo { background-color:#A7D773; color: rgba(255, 255, 255, 1.0); }
       .ci { background-color:#FF885E; color: rgba(255, 255, 255, 1.0); }
       .xdk { background-color:#D18EE2; color: rgba(255, 255, 255, 1.0); }
+      .cr { background-color:#61BD6D; color: rgba(255, 255, 255, 1.0); }
       #datetime { font-size: 10px; margin-top: 10px; }
       #toggle { text-align: right; color: rgba(22, 160, 133,1.0); cursor: hand; margin: -6px 0px 6px 0px;  }
       #toggle:hover { color: rgba(16, 154, 127,1.0); }
+      #note, #dt { font-style: italic; margin-right: 6px; }
+      .hili { color: rgba(211, 84, 0,1.0); }
     </style>
     <script src='../../resources/webrunner/jquery-1.10.2.min.js'></script>
   </head>
@@ -58,25 +62,26 @@
           <th class="lim">APK</th>
           <th class="limname">Name</th>
           <th class="limsize">Size</th>
-          <th class="limw">Crosswalk App</th>
+          <th class="limw">Crosswalk</th>
           <th class="limw">Mode</th>
           <th class="limw">Architecture</th>
-          <th class="limw">App Template</th>
           <th class="limw">Core Internal</th>
           <th class="limw">Cordova</th>
           <th class="limw">Intel XDK</th>
+          <th class="limw">U/WebView</th>
+          <th class="limw">U/Chromium</th>
           <th>Note</th>
         </tr>
 
         <xsl:for-each select="apks/apk">
-        <tr>
+        <xsl:variable name="pkgid"><xsl:value-of select="@id"/></xsl:variable>
+        <tr title="{$pkgid}">
           <xsl:for-each select="app">
           <td class="lim"><xsl:value-of select="@file"/></td>
           <td class="limname"><xsl:value-of select="@name"/></td>
           <td><xsl:value-of select="@size"/></td>
           </xsl:for-each>
           <xsl:for-each select="crosswalk">
-
 
           <xsl:choose>
             <xsl:when test="@iscrosswalk = 'yes'">
@@ -113,15 +118,6 @@
               <td class="limw"><xsl:value-of select="@architecture"/></td>
             </xsl:otherwise>
           </xsl:choose>
- 
-          <xsl:choose>
-            <xsl:when test="@appruntime = 'yes'">
-             <td class="rt limw"><xsl:value-of select="@appruntime"/></td>
-            </xsl:when>
-            <xsl:otherwise>
-              <td class="limw"><xsl:value-of select="@appruntime"/></td>
-            </xsl:otherwise>
-          </xsl:choose>
 
           <xsl:choose>
             <xsl:when test="@coreinternal = 'yes'">
@@ -148,13 +144,31 @@
             <xsl:otherwise>
               <td class="limw"><xsl:value-of select="@intelxdk"/></td>
             </xsl:otherwise>
-          </xsl:choose> 
- 
+          </xsl:choose>
+
+          <xsl:choose>
+            <xsl:when test="@webview = 'yes'">
+             <td class="rt limw"><xsl:value-of select="@webview"/></td>
+            </xsl:when>
+            <xsl:otherwise>
+              <td class="limw"><xsl:value-of select="@webview"/></td>
+            </xsl:otherwise>
+          </xsl:choose>
+
+          <xsl:choose>
+            <xsl:when test="@chromium = 'yes'">
+             <td class="cr limw"><xsl:value-of select="@chromium"/></td>
+            </xsl:when>
+            <xsl:otherwise>
+              <td class="limw"><xsl:value-of select="@chromium"/></td>
+            </xsl:otherwise>
+          </xsl:choose>
+
           <td><xsl:value-of select="@note"/></td>
           </xsl:for-each>
         </tr>
         <tr>
-          <td colspan='11' class='details'>
+          <td colspan='12' class='details'>
             <div class='apd'>
               Package: <span class="det"><xsl:value-of select="@id"/></span>
               <xsl:for-each select="app">
@@ -165,25 +179,53 @@
                 Target SDK Version: <span class="det"><xsl:value-of select="@targetsdkversion"/></span>
               </xsl:for-each>
             </div>
+            <xsl:if test="xwalk">
+            <div class='xwalk'>
+              <span class='cap1'>xwalk</span>
+              <xsl:for-each select="xwalk">
+                <span><xsl:value-of select="current()"/></span>
+              </xsl:for-each>
+            </div>
+            </xsl:if>
+            <xsl:if test="chromium">
+            <div class='chromium'>
+              <span class='cap1'>chromium</span>
+              <xsl:for-each select="chromium">
+                <span><xsl:value-of select="current()"/></span>
+              </xsl:for-each>
+            </div>
+            </xsl:if>
+            <xsl:if test="cordova">
+            <div class='cordova'>
+              <span class='cap1'>cordova</span>
+              <xsl:for-each select="cordova">
+                <span><xsl:value-of select="current()"/></span>
+              </xsl:for-each>
+            </div>
+            </xsl:if>
+            <xsl:if test="smali">
             <div class='smali'>
-              <span class='cap1'>namespace</span>
+              <span class='cap1'>other namespaces</span>
               <xsl:for-each select="smali">
           	    <span><xsl:value-of select="current()"/></span>
               </xsl:for-each>
             </div>
+            </xsl:if>
+            <xsl:if test="asset">
             <div class='asset'>
               <span class='cap2'>assets</span>
               <xsl:for-each select="asset">
-                <span><xsl:value-of select="current()"/></span>
+                  <span><xsl:value-of select="current()"/></span>
               </xsl:for-each>
             </div> 
+            </xsl:if>
           </td>
         </tr>
       </xsl:for-each>
 
       </table>
       <div id="datetime">
-      	Click each row to get more details. Test Date: <xsl:value-of select="apks/@datetime"/></div>
+      	<xsl:if test="apks/@note"><span id="note"><xsl:value-of select="apks/@note"/></span></xsl:if><span id="dt">Test Date: <xsl:value-of select="apks/@datetime"/></span></div>
       <footer>
         2015 OTC Web QA Team
       </footer>
