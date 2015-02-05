@@ -74,6 +74,7 @@
         </tr>
 
         <xsl:for-each select="apks/apk">
+        <xsl:sort select="app/@file"/>
         <xsl:variable name="pkgid"><xsl:value-of select="@id"/></xsl:variable>
         <tr title="{$pkgid}">
           <xsl:for-each select="app">
@@ -148,6 +149,9 @@
 
           <xsl:choose>
             <xsl:when test="@webview = 'yes'">
+             <td class="rt limw"><xsl:value-of select="@webview"/></td>
+            </xsl:when>
+            <xsl:when test="@webview = 'yes webkit'">
              <td class="rt limw"><xsl:value-of select="@webview"/></td>
             </xsl:when>
             <xsl:otherwise>

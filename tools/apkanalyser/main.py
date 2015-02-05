@@ -1,7 +1,7 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
 
-# Copyright (C) 2014 Intel Corporation. All rights reserved.
+# Copyright (C) 2015 Intel Corporation. All rights reserved.
 #
 # Redistribution and use in source and binary forms, with or without
 # modification, are permitted provided that the following conditions
@@ -146,12 +146,11 @@ def apktoolanalyser(path):
 
             if comm.find_file(xwalkcoreviewsmali):
                 crosswalk = 'yes'
-                if comm.find_dir(xwalkcoreinternal):
-                    coreinternal = 'yes'
-            elif comm.find_dir(xwalkcoreinternal):
-                note = 'Namespace org.xwalk.core.internal included.'
             else:
                 note = 'Not a Crosswalk based app.'
+
+            if comm.find_dir(xwalkcoreinternal):
+                coreinternal = 'yes'
 
             if comm.find_dir(apachecordova):
                 cordova = 'yes'
@@ -179,7 +178,10 @@ def apktoolanalyser(path):
                 elif t.find('cordova') > -1:
                     if t.count('/') >= 2 and t.count('/') < 4:
                         cordovalist.append(t)
-                elif t.count('/') == 2:
+                elif t.find('webkit') > -1:
+                        webview = 'yes webkit'
+                        smalilist.append(t)
+                elif t.count('/') == 2 or t.count('/') == 3:
                     smalilist.append(t)
 
             assetpath = os.path.join(apkdedecompiled, 'assets')
