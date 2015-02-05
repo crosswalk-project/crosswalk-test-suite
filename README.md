@@ -14,6 +14,10 @@ This is a test suite for Crosswalk, which includes:
 * `doc/`: see [documentaion](#Documentation) below
 * `tools/`: tools for this test suite
 
+Note that `TESTER-HOME-DIR` in this reposistory is a macro used for multiuser
+support. It should be replaced by a real home directory, e.g. `/home/app`,
+before running the test suite.
+
 ## Documentation
 
 Check out our documents at `doc/`.
@@ -63,3 +67,4 @@ Or you can report an issue of the tests and/or tools in this JIRA system:
 Except as noted in `COPYING` and/or `NOTICE` files, or as headed with license
 info, test suite source code uses a BSD-style license that can be found in the
 `LICENSE` file.
+
