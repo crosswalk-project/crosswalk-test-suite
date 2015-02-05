@@ -1,15 +1,17 @@
 ## Introduction
 
-1.This test suite is for testing tizen basic featrue
+1. This test suite is for testing tizen basic featrue
 2. unzip wrt-packertool-tizen-tests.version.zip
 3. cd opt/wrt-packertool-tizen-tests/
-4. testkit-lite -f "/path/opt/wrt-packertool-tizen-tests/tests.xml" -A -o ./result.xml --comm localhost --testenvs "DEVICE_ID=10.239.250.183 CONNECT_TYPE=sdb" --testprefix '/path/opt/wrt-packertool-tizen-tests'
-5. testkit-lite -f "/path/opt/wrt-packertool-tizen-tests/tests.xml" -A -o ./result.xml --comm localhost --testenvs "DEVICE_ID=root@10.239.250.205 CONNECT_TYPE=ssh" --testprefix '/path/opt/wrt-packertool-tizen-tests'
+4. run as below sample:(note:TIZEN_USER value is the current platform supported user)
+      1. testkit-lite -f "/path/opt/wrt-packertool-tizen-tests/tests.xml" -A -o ./result.xml --comm localhost --testenvs "DEVICE_ID=10.239.250.183;CONNECT_TYPE=sdb;TIZEN_USER=app" --testprefix '/path/opt/wrt-packertool-tizen-tests'
+      2. testkit-lite -f "/path/opt/wrt-packertool-tizen-tests/tests.xml" -A -o ./result.xml --comm localhost --testenvs "DEVICE_ID=root@10.239.250.205;CONNECT_TYPE=ssh;TIZEN_USER=app" --testprefix '/path/opt/wrt-packertool-tizen-tests'
 
 ## Authors:
 
 * Cici Li <cici.x.li@intel.com>
   Ivan Chen <yufeix.chen@intel.com>
+  Yin Haichao <haichaox.yin@intel.com>
 
 ## LICENSE
 

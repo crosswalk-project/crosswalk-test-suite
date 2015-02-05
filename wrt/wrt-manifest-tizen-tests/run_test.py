@@ -2,6 +2,7 @@
 import sys, os, itertools, shutil, getopt, re, time 
 import const
 import pdb, traceback
+import subprocess
 from xml.etree.ElementTree import ElementTree
 from xml.etree.ElementTree import Element
 from xml.etree.ElementTree import SubElement
@@ -17,9 +18,28 @@ Pack_Type = "xpk"
 Test_Flag = "positive"
 Test_Device_Type = "ssh"
 test_start_time = datetime.now().strftime('%m-%d-%H:%M:%S')
+Tizen_User=os.environ['TIZEN_USER']
 reload(sys)
 sys.setdefaultencoding( "utf-8" )
 
+def doCMD(cmd):
+    # Do not need handle timeout in this short script, let tool do it
+    print "-->> \"%s\"" % cmd
+    output = []
+    cmd_return_code = 1
+    cmd_proc = subprocess.Popen(
+        cmd, stdout=subprocess.PIPE, stderr=subprocess.STDOUT, shell=True)
+
+    while True:
+        output_line = cmd_proc.stdout.readline().strip("\r\n")
+        cmd_return_code = cmd_proc.poll()
+        if output_line == '' and cmd_return_code != None:
+            break
+        sys.stdout.write("%s\n" % output_line)
+        sys.stdout.flush()
+        output.append(output_line)
+
+    return (cmd_return_code, output)
 
 def copy_Files(sourceDir, targetDir):
     try:
@@ -54,6 +74,9 @@ def do_Clear(sourceDir):
     except IOError,e: 
         print Exception,"Clear :"+ sourceDir + " ------------------------->error",e 
 
+def getUSERID():
+    cmd = "sdb -s %s shell id -u %s" % (getEnv_Id, Tizen_User)
+    return doCMD(cmd)
 
 def manifest_Packing(pakeNo,pakeType):
     try:
@@ -100,7 +123,7 @@ def launcher_WebApp(pakeType,Manifest_Row,Device_ID,Device_Type,Manifest_Name):
           print "use sdb device-------------->"
           cmd_pushxpk = "sdb -s " + Device_ID +" push " + const.name + "-" + const.version +"." + pakeType + ".zip " +  const.device_path 
           cmd_unzipxpk = "sdb -s " + Device_ID +" shell unzip -od " + const.device_path + "  " + const.device_path + const.name + "-" + const.version + "." + pakeType + ".zip "
-          cmd_installapp="sdb -s " + Device_ID +" shell \"su - app -c 'export DBUS_SESSION_BUS_ADDRESS=unix:path=/run/user/5000/dbus/user_bus_socket;" + const.device_path + "/opt/wrt-manifest-tizen-tests/appinstall.sh "+ const.device_path +"/opt/wrt-manifest-tizen-tests/" + str(Manifest_Row) +  "." + pakeType +"'\""
+          cmd_installapp="sdb -s " + Device_ID +" shell \"su - " + Tizen_User + " -c 'export DBUS_SESSION_BUS_ADDRESS=unix:path=/run/user/"+Userid+"/dbus/user_bus_socket;" + const.device_path + "/opt/wrt-manifest-tizen-tests/appinstall.sh "+ const.device_path +"/opt/wrt-manifest-tizen-tests/" + str(Manifest_Row) +  "." + pakeType +"'\""
           print "------------push webapp----------->",cmd_pushxpk
           os.system("sdb -s " + Device_ID +" root on")
           get_push = get_runback(cmd_pushxpk,"push","")
@@ -134,14 +157,14 @@ def launcher_WebApp(pakeType,Manifest_Row,Device_ID,Device_Type,Manifest_Name):
                 auto_result = "Pass"
                 #launcher app
                 Pkgids = get_pkgid
-                cmd_launchapp="sdb -s " + Device_ID +" shell \"su - app -c 'export DBUS_SESSION_BUS_ADDRESS=unix:path=/run/user/5000/dbus/user_bus_socket;"+const.device_path+"/opt/wrt-manifest-tizen-tests/applaunch.sh xwalk." + Pkgids +"'\""
+                cmd_launchapp="sdb -s " + Device_ID +" shell \"su - "+ Tizen_User +" -c 'export DBUS_SESSION_BUS_ADDRESS=unix:path=/run/user/"+Userid+"/dbus/user_bus_socket;"+const.device_path+"/opt/wrt-manifest-tizen-tests/applaunch.sh xwalk." + Pkgids +"'\""
                 get_cmdback = get_runback(cmd_launchapp,"launch",Pkgids)
                 print "pkgids = ",Pkgids
                 if ((get_cmdback[0].strip("\r\n"))=="Launch ok"):
                     print "Launch---------> OK"
                     fail_message = "launch webapp ok"
                     #uninstall app
-                    cmd_uninstallapp="sdb -s " + Device_ID +" shell \"su - app -c 'export DBUS_SESSION_BUS_ADDRESS=unix:path=/run/user/5000/dbus/user_bus_socket;bash "+const.device_path+"/opt/wrt-manifest-tizen-tests/appuninstall.sh " + Pkgids + "'\""
+                    cmd_uninstallapp="sdb -s " + Device_ID +" shell \"su - "+ Tizen_User +" -c 'export DBUS_SESSION_BUS_ADDRESS=unix:path=/run/user/"+Userid+"/dbus/user_bus_socket;bash "+const.device_path+"/opt/wrt-manifest-tizen-tests/appuninstall.sh " + Pkgids + "'\""
                     get_cmdback = get_runback(cmd_uninstallapp,"uninstall","")
                     print "uninstall===",cmd_uninstallapp,"|",str(get_cmdback)
                     if ((str(get_cmdback).find("val[ok]")>0)):
@@ -159,7 +182,7 @@ def launcher_WebApp(pakeType,Manifest_Row,Device_ID,Device_Type,Manifest_Name):
                fail_message = "install fail"
                print "Positive test ----------> install fail" 
 
-               cmd_uninstallapp="sdb -s " + Device_ID +" shell \"su - app -c 'export DBUS_SESSION_BUS_ADDRESS=unix:path=/run/user/5000/dbus/user_bus_socket;"+const.device_path+"/opt/wrt-manifest-tizen-tests/appuninstall.sh " + Pkgids +"'\""
+               cmd_uninstallapp="sdb -s " + Device_ID +" shell \"su - "+ Tizen_User +" -c 'export DBUS_SESSION_BUS_ADDRESS=unix:path=/run/user/"+Userid+"/dbus/user_bus_socket;"+const.device_path+"/opt/wrt-manifest-tizen-tests/appuninstall.sh " + Pkgids +"'\""
                get_cmdback = get_runback(cmd_uninstallapp,"uninstall","")
                auto_result = "FAIL"
           elif ((Test_Flag=="negative")): #install ok and test =negative
@@ -178,7 +201,7 @@ def launcher_WebApp(pakeType,Manifest_Row,Device_ID,Device_Type,Manifest_Name):
           print "use ssh device-------------->"
           cmd_pushxpk = "scp " + const.name + "-" + const.version +"." + pakeType + ".zip " + Device_ID + ":"+ const.device_path 
           cmd_unzipxpk = "ssh " + Device_ID +" 'unzip -od " + const.device_path + "  " + const.device_path + const.name + "-" + const.version + "." + pakeType + ".zip'"
-          cmd_installapp="ssh " + Device_ID +" \"su - app -c 'export DBUS_SESSION_BUS_ADDRESS=unix:path=/run/user/5000/dbus/user_bus_socket;bash " + const.device_path + "/opt/wrt-manifest-tizen-tests/appinstall.sh "+ const.device_path +"/opt/wrt-manifest-tizen-tests/" + str(Manifest_Row) +  "." + pakeType +"'\""
+          cmd_installapp="ssh " + Device_ID +" \"su - " + Tizen_User + " -c 'export DBUS_SESSION_BUS_ADDRESS=unix:path=/run/user/"+Userid+"/dbus/user_bus_socket;bash " + const.device_path + "/opt/wrt-manifest-tizen-tests/appinstall.sh "+const.device_path +"/opt/wrt-manifest-tizen-tests/" + str(Manifest_Row) +  "." + pakeType +"'\""
           print "------------push webapp----------->",Device_ID
           get_push = get_runback(cmd_pushxpk,"push","")
           print "------------unzip webapp----------->",Device_ID       
@@ -194,7 +217,7 @@ def launcher_WebApp(pakeType,Manifest_Row,Device_ID,Device_Type,Manifest_Name):
                   fail_message = "install ok"
                   #launcher app
                   Pkgids = get_pkgid
-                  cmd_launchapp="ssh " + Device_ID +" \"su - app -c 'export DBUS_SESSION_BUS_ADDRESS=unix:path=/run/user/5000/dbus/user_bus_socket;bash "+const.device_path+"/opt/wrt-manifest-tizen-tests/applaunch.sh xwalk." + Pkgids +"'\""
+                  cmd_launchapp="ssh " + Device_ID +" \"su - "+ Tizen_User +" -c 'export DBUS_SESSION_BUS_ADDRESS=unix:path=/run/user/"+Userid+"/dbus/user_bus_socket;bash "+const.device_path+"/opt/wrt-manifest-tizen-tests/applaunch.sh xwalk." + Pkgids +"'\""
 
                   get_cmdback = get_runback(cmd_launchapp,"launch",Pkgids)
 
@@ -202,7 +225,7 @@ def launcher_WebApp(pakeType,Manifest_Row,Device_ID,Device_Type,Manifest_Name):
                       print "Launch---------> OK"
                       fail_message = "launch webapp ok"
                       #uninstall app
-                      cmd_uninstallapp="ssh " + Device_ID +"  \"su - app -c 'export DBUS_SESSION_BUS_ADDRESS=unix:path=/run/user/5000/dbus/user_bus_socket;bash "+const.device_path+"/opt/wrt-manifest-tizen-tests/appuninstall.sh " + Pkgids + "'\""
+                      cmd_uninstallapp="ssh " + Device_ID +"  \"su - "+ Tizen_User +" -c 'export DBUS_SESSION_BUS_ADDRESS=unix:path=/run/user/"+Userid+"/dbus/user_bus_socket;bash "+const.device_path+"/opt/wrt-manifest-tizen-tests/appuninstall.sh " + Pkgids + "'\""
                       get_cmdback = get_runback(cmd_uninstallapp,"uninstall","")
 
                       if ((str(get_cmdback).find("val[ok]")>0)):
@@ -220,15 +243,15 @@ def launcher_WebApp(pakeType,Manifest_Row,Device_ID,Device_Type,Manifest_Name):
                   fail_message = "install fail"
                   print "Positive test ----------> install fail" 
                   Pkgids = get_pkgid
-                  cmd_uninstallapp="ssh " + Device_ID +"  \"su - app -c 'export DBUS_SESSION_BUS_ADDRESS=unix:path=/run/user/5000/dbus/user_bus_socket;bash "+const.device_path+"/opt/wrt-manifest-tizen-tests/appuninstall.sh " + Pkgids + "'\""
+                  cmd_uninstallapp="ssh " + Device_ID +"  \"su - "+ Tizen_User +" -c 'export DBUS_SESSION_BUS_ADDRESS=unix:path=/run/user/"+Userid+"/dbus/user_bus_socket;bash "+const.device_path+"/opt/wrt-manifest-tizen-tests/appuninstall.sh " + Pkgids + "'\""
                   get_cmdback = get_runback(cmd_uninstallapp,"uninstall","")
                   auto_result = "FAIL"
           elif ((get_install_flag>=0) & (Test_Flag=="negative")): #install ok and test =negative
                   auto_result = "FAIL" 
-                  fail_message = "negative test install ok: Fail"  
+                  fail_message = "negative test install ok: Fail"
                   print "Negative test-------> Install ok: Fail"
                   Pkgids = get_pkgid
-                  cmd_uninstallapp="ssh " + Device_ID +"  \"su - app -c 'export DBUS_SESSION_BUS_ADDRESS=unix:path=/run/user/5000/dbus/user_bus_socket;bash "+const.device_path+"/opt/wrt-manifest-tizen-tests/appuninstall.sh " + Pkgids + "'\""
+                  cmd_uninstallapp="ssh " + Device_ID +"  \"su - "+ Tizen_User +" -c 'export DBUS_SESSION_BUS_ADDRESS=unix:path=/run/user/"+Userid+"/dbus/user_bus_socket;bash "+const.device_path+"/opt/wrt-manifest-tizen-tests/appuninstall.sh " + Pkgids + "'\""
                   get_cmdback = get_runback(cmd_uninstallapp,"uninstall","")
           elif (Test_Flag=="negative"): #install ok and test =negative
                   auto_result = "Pass"
@@ -307,12 +330,23 @@ def run_test_result(manifest_file,manifest_name):
         os.system("rm -f " + const.seed_negative + "/*~")
         os.system("rm -f " + const.seed_positive + "/*~") 
         os.system("rm -rf ./device_*")
+        global getEnv_Id
+        global Userid
         getEnv_Id = os.environ.get('DEVICE_ID')
-        Test_Device_Type = os.environ.get('CONNECT_TYPE')
-
         if ((not getEnv_Id) or len(getEnv_Id)<10):
             print (" get env error\n")
             sys.exit(1)
+        user_info = getUSERID()
+        re_code = user_info[0]
+        if re_code == 0 :
+            Userid = user_info[1][0]
+        else:
+            print "[Error] cmd commands error : %s"%str(user_info[1])
+            sys.exit(1)
+
+        Test_Device_Type = os.environ.get('CONNECT_TYPE')
+
+
 
         #add resource
         app_Folder(const.path_tcs,manifest_file)
