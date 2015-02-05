@@ -198,7 +198,7 @@ def instPKGs():
             item_name = os.path.basename(item)
             if not doCopy(item, "%s/%s" % (PKG_SRC_DIR, item_name)):
                 action_status = False
-    print "Package push to host /home/<user>/content/tct/ successfully!"
+    print "Package push to host %s/tct/ successfully!" % SRC_DIR
     return action_status"""
 
 

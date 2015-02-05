@@ -42,7 +42,7 @@ elif [[ $1 == "xw_tizen" ]]; then
     export TEST_PLATFORM="tizen"
     export DEVICE_ID=""
     export CONNECT_TYPE="sdb"
-    export WEBDRIVER_VARS="{\"webdriver_url\":\"http://127.0.0.1:9515\", \"desired_capabilities\": {\"xwalkOptions\": {\"tizenAppId\": \"TEST_APP_ID\", \"tizenDebuggerAddress\": \"10.239.14.111:9333\"}}, \"test_prefix\": \"file:///opt/home/app/.config/xwalk-service/applications/TEST_APP_ID/\"}"
+    export WEBDRIVER_VARS="{\"webdriver_url\":\"http://127.0.0.1:9515\", \"desired_capabilities\": {\"xwalkOptions\": {\"tizenAppId\": \"TEST_APP_ID\", \"tizenDebuggerAddress\": \"10.239.14.111:9333\"}}, \"test_prefix\": \"file:///optTESTER-HOME-DIR/.config/xwalk-service/applications/TEST_APP_ID/\"}"
 elif [[ $1 == "chrome_ubuntu" ]]; then
     export TEST_PLATFORM="chrome_ubuntu"
     export DEVICE_ID=""
