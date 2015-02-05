@@ -39,7 +39,7 @@ webAppTest="web_app_test"
 getPkgid $webAppTest
 get_uninstall=`pkgcmd -u -n  $pkg_id -q`
 
-rm -rf /home/app/apps_rw/xwalk-service/Storage/ext/webapptest.webapptestversion
+rm -rf /home/$TIZEN_USER/apps_rw/xwalk-service/Storage/ext/webapptest.webapptestversion
 pkgcmd -i -t wgt -p  $xpk_path/$webAppTest.wgt -q
 getAppid $webAppTest
 if [[ -n $app_id ]]; then
@@ -49,7 +49,7 @@ if [[ -n $app_id ]]; then
                 exit 1
 fi
 
-myPath="/home/app/apps_rw/xwalk-service/Storage/ext/webapptest.webapptestversion"
+myPath="/home/$TIZEN_USER/apps_rw/xwalk-service/Storage/ext/webapptest.webapptestversion"
 if [ ! -d $myPath ]; then 
      echo "Pass,webapp have not isolated storage partition before running"
      get_uninstall=`pkgcmd -u -n  webapptest -q`

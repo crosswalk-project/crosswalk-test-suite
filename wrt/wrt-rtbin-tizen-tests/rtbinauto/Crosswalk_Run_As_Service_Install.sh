@@ -42,7 +42,7 @@ fi
 
 pkgcmd -u -n mainsource -q
 pkgcmd -i -t wgt -p $local_path/../source/manifest_app_mainsource_tests.wgt -q
-a=`sqlite3 /home/app/.applications/dbspace/.app_info.db "select package from app_info;" | grep mainsource`
+a=`sqlite3 /home/$TIZEN_USER/.applications/dbspace/.app_info.db "select package from app_info;" | grep mainsource`
 if [[ $a =~ 'mainsource' ]]; then
                  echo "Use run as service install successfully"
 else

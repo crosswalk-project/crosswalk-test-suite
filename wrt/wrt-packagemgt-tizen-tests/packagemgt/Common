@@ -114,8 +114,6 @@ function uninstall_xpk(){
 }
 
 function get_version_name(){
-        #version=`sqlite3 /home/app/.applications/dbspace/.app_info.db "select version from app_info where name like \"%$1%\";"`
-        #name=`sqlite3 /home/app/.applications/dbspace/.app_info.db "select name from app_info where name like \"%$1%\";"`
         version=`pkgcmd -l |grep $1 |awk -F "version " '{print $2}' |awk -F '[' '{print $2}'|awk -F ']' '{print $1}'`
         name=`pkgcmd -l |grep $1 |awk -F "name" '{print $2}' |awk -F '[' '{print $2}'|awk -F ']' '{print $1}'`
 }

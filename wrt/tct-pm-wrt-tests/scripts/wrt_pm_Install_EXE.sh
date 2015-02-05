@@ -29,7 +29,7 @@
 #        Yue, jianhui <jianhuix.a.yue@intel.com>
 
 source $(dirname $0)/Common
-RESOURCE_DIR=/home/app/content
+RESOURCE_DIR=/home/$TIZEN_USER/content
 origin_name=$RESOURCE_DIR/tct/opt/tct-pm-wrt-tests/Sample-widget.wgt
 change_name=$RESOURCE_DIR/tct/opt/tct-pm-wrt-tests/Sample-widget.EXE
 if [ -f $origin_name ];then
