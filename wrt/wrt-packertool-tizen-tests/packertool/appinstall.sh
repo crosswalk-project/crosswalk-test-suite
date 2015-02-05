@@ -6,7 +6,7 @@ Result="Pass"
 
 
 #1.**** install app
-pkgids=`pkgcmd -i -t xpk -p /home/app/content/tct/diffid_same_version_tests.xpk -q`
+pkgids=`pkgcmd -i -t xpk -p /home/$TIZEN_USER/content/tct/diffid_same_version_tests.xpk -q`
 if [ $? -eq 1 ];then
   echo "Install Fail"
   exit 1

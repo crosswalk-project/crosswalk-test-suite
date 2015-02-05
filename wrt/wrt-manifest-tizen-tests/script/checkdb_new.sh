@@ -31,4 +31,4 @@ xpksuite_name=wrt-manifest-tizen-tests
 PACKAGENAME="$path/$1"
 Result="Pass"
 
-sqlite3 /home/app/.applications/dbspace/.app_info.db "select * from app_info limit $1,1;"
+sqlite3 /home/$TIZEN_USER/.applications/dbspace/.app_info.db "select * from app_info limit $1,1;"

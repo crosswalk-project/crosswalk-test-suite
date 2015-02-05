@@ -61,7 +61,7 @@ fi
 sleep 2
 
 # check cache
-myPath="/home/app/apps_rw/xwalk-service/Storage/ext/$app_id/def/GPUCache"
+myPath="/home/$TIZEN_USER/apps_rw/xwalk-service/Storage/ext/$app_id/def/GPUCache"
 getPkgid $webAppTest
 if [ ! -d $myPath ]; then 
      echo "Fail,webapp have not isolated storage cache file when runing"

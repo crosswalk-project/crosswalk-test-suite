@@ -34,8 +34,8 @@ source $local_path/Common
 func_check_xwalkservice
 
 pkgcmd -i -t xpk -p $local_path/../source/bad_signature.xpk -q > /tmp/install
-app_name=`sqlite3 /home/app/.applications/dbspace/.app_info.db "select package,name from app_info where name like \"%bad_signature%\";"`
-app_id=`sqlite3 /home/app/.applications/dbspace/.app_info.db "select package,name from app_info where name like \"%bad_signature%\";"`
+app_name=`sqlite3 /home/$TIZEN_USER/.applications/dbspace/.app_info.db "select package,name from app_info where name like \"%bad_signature%\";"`
+app_id=`sqlite3 /home/$TIZEN_USER/.applications/dbspace/.app_info.db "select package,name from app_info where name like \"%bad_signature%\";"`
 if [[ $app_name =~ "bad_signature" ]]; then
     echo "The bad_signature.xpk install successfully"
     # uninstall xpk
