@@ -1,21 +1,5 @@
 # Web Runtime Crosswalk Test Suite User Guide
 
-Version 1.0
-
-Copyright © 2014 Intel Corporation. All rights reserved. No portions of this document may be reproduced without the written permission of Intel Corporation.
-
-Intel is a trademark of Intel Corporation in the U.S. and/or other countries.
-
-Linux is a registered trademark of Linus Torvalds.
-
-Tizen® is a registered trademark of The Linux Foundation.
-
-ARM is a registered trademark of ARM Holdings Plc.
-
-\*Other names and brands may be claimed as the property of others.
-
-Any software source code reprinted in this document is furnished under a software license and may only be used or copied in accordance with the terms of that license.
-
 #1. Introduction
 
 This document provides method to run WRT Crosswalk Test Suite on TIZEN. You can use the following method to run itwith testkit-lite. Testkit tool-chain includes 2 components:
