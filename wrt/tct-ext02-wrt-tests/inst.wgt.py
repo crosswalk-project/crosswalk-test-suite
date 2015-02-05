@@ -14,8 +14,8 @@ SCRIPT_DIR = os.path.dirname(os.path.abspath(__file__))
 PKG_NAME = os.path.basename(SCRIPT_DIR)
 PARAMETERS = None
 #XW_ENV = "export DBUS_SESSION_BUS_ADDRESS=unix:path=/run/user/5000/dbus/user_bus_socket"
-SRC_DIR = "/home/app/content"
-PKG_SRC_DIR = "%s/tct/opt/%s" % (SRC_DIR, PKG_NAME)
+SRC_DIR = ""
+PKG_SRC_DIR = ""
 
 
 def doCMD(cmd):
@@ -163,7 +163,7 @@ def instPKGs():
             item_name = os.path.basename(item)
             if not doRemoteCopy(item, "%s/%s" % (PKG_SRC_DIR, item_name)):
                 action_status = False
-    (return_code, output) = doRemoteCMD("chmod 777 /home/app/content/tct/opt/tct-ext02-wrt-tests/scripts/WRTInstaller")
+    (return_code, output) = doRemoteCMD("chmod 777 /home/%s/content/tct/opt/tct-ext02-wrt-tests/scripts/WRTInstaller" % PARAMETERS.user)
     return action_status
 
 
@@ -189,6 +189,10 @@ def main():
 
     if not PARAMETERS.user:
         PARAMETERS.user = "app"
+    global SRC_DIR, PKG_SRC_DIR
+    SRC_DIR = "/home/%s/content" % PARAMETERS.user
+    PKG_SRC_DIR = "%s/tct/opt/%s" % (SRC_DIR, PKG_NAME)
+
     if not PARAMETERS.mode:
         PARAMETERS.mode = "SDB"
 
