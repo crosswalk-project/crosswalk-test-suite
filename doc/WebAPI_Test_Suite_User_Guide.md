@@ -1,22 +1,6 @@
 # WebAPI Test Suite User Guide
 
-Version 1.0
-
-Copyright © 2014 Intel Corporation. All rights reserved. No portions of this document may be reproduced without the written permission of Intel Corporation.
-
-Intel is a trademark of Intel Corporation in the U.S. and/or other countries.
-
-Linux is a registered trademark of Linus Torvalds.
-
-Tizen® is a registered trademark of The Linux Foundation.
-
-ARM is a registered trademark of ARM Holdings Plc.
-
-\*Other names and brands may be claimed as the property of others.
-
-Any software source code reprinted in this document is furnished under a software license and may only be used or copied in accordance with the terms of that license.
-
-#1. Introduction
+## 1. Introduction
 
 This document provides method to run WebAPI TestSuite on TIZEN and Android Crosswalk. You can use the following method to run itwith testkit-lite. Testkit tool-chain includes 3 components:
 
@@ -24,7 +8,7 @@ This document provides method to run WebAPI TestSuite on TIZEN and Android Cross
 - testkit-stub: a test stub application deployed on Device
 - tinyweb:  a web service application deployed on Device
 
-#2. Web Testing Architecture
+## 2. Web Testing Architecture
 
 - Web Testing on Tizen
 
@@ -46,7 +30,7 @@ There are two types of Webapi tests:
 
     Self contained test package which include all things - web runner, TCs.
 
-#3. Install testkit-lite on Host
+## 3. Install testkit-lite on Host
 
 - Deploy testkit-lite
 
@@ -56,7 +40,7 @@ There are two types of Webapi tests:
 
         $ sudo pip install requests
 
-       
+
 
   - Install testkit-lite from source code in GitHub
 
@@ -64,7 +48,7 @@ There are two types of Webapi tests:
 
         $ cd testkit-lite && sudo python setup.py install
 
-#4. Web Test on Tizen Crosswalk
+## 4. Web Test on Tizen Crosswalk
 
 - Download sdb tool and deploy it to Host
 
@@ -132,7 +116,7 @@ There are two types of Webapi tests:
 
         $ sdb shell "/opt/home/developer/testkit-stub --port:8000"
 
-       
+
 
 - Deploy tinyweb and launch it
 
@@ -152,7 +136,7 @@ There are two types of Webapi tests:
 
         $ sdb push cgi-getcookie /opt/home/developer/
 
-        $ sdb shell "chmod a+x /opt/home/developer/cgi-getcookie" 
+        $ sdb shell "chmod a+x /opt/home/developer/cgi-getcookie"
 
         $ sdb push cgi-getfield /opt/home/developer/
 
@@ -193,7 +177,7 @@ There are two types of Webapi tests:
     $ sdb shell /opt/usr/media/tct/opt/<test_suite_name\>/inst.sh -u
 
 
-#5. Web Test on Android Crosswalk
+## 5. Web Test on Android Crosswalk
 
 - Deploy Android ADT bundle (Android SDK, IDE included) and Android NDK
 
@@ -278,3 +262,4 @@ There are two types of Webapi tests:
 - Uninstall test suite
 
     $ /path/to/opt/<test_suite_name\>/inst.sh -u
+

@@ -44,7 +44,7 @@
       &lt filename.h&gt
     </td>
     <td>
-      package  xxx.xxx 
+      package  xxx.xxx
       import java.lang.Filename
     </td>
   </tr>
@@ -60,7 +60,7 @@
     <td>
       ”””Comment”””
       #TODO(Name):Comment
-      #TODO(Email):Comment  
+      #TODO(Email):Comment
     </td>
     <td>
       # Comment
@@ -188,7 +188,7 @@
     <td>1 blank line to separate large logical chunks of code.</td>
     <td>1 blank line between logically related pieces of code in group.</td>
     <td>
-      2 blank lines between top-level definitions. 
+      2 blank lines between top-level definitions.
       1 blank line between method definitions.
     </td>
     <td>1 blank line between code block.</td>
@@ -200,7 +200,7 @@
   </tr>
 </table>
 
-#Other reminder:
+## Other reminder:
 
 - CSS:
   - ID and Class Naming
@@ -210,7 +210,7 @@
         Do not concatenate words and abbreviations in selectors by any characters (including none at all) other than hyphens.
 
   - Declaration Order
- 
+
         In alphabetical order.
 
         Ignore vendor-specific prefixes. Keep sorted multiple vendor-specific prefixes for a certain CSS property.
@@ -221,7 +221,7 @@
 
   - CSS Quotation Marks
 
-        Use single ('') rather than double ("") quotation marks for attribute selectors or property values. Do not use quotation marks in 
+        Use single ('') rather than double ("") quotation marks for attribute selectors or property values. Do not use quotation marks in
 
   - URI values (url()).
 
@@ -331,8 +331,8 @@
         A function called main is required for scripts long enough to contain at least one other function.
 
   - Eval
- 
-        eval should be avoided.  
+
+        eval should be avoided.
 
         More info: [http://google-styleguide.googlecode.com/svn/trunk/shell.xml](http://google-styleguide.googlecode.com/svn/trunk/shell.xml)
 
@@ -403,17 +403,18 @@
 
   - Caught exceptions
 
-        Not ignored 
+        Not ignored
   - Exactly one top-level class declaration
 
         Each top-level class resides in a source file of its own.
 
-  - Static members: 
-           
+  - Static members:
+
         When a reference to a static class member must be qualified, it is qualified with that class's name, not with a reference or expression of that class's type.
 
-  - Switch statements 
- 
+  - Switch statements
+
         Terminology Note: Inside the braces of a switch block are one or more statement groups. Each statement group consists of one or more switch labels (either case FOO: or default :), followed by one or more statements.
 
         More info: [http://google-styleguide.googlecode.com/svn/trunk/javaguide.html](http://google-styleguide.googlecode.com/svn/trunk/javaguide.html)
+

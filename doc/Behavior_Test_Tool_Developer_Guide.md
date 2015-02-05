@@ -1,30 +1,14 @@
 # Behavior Test Tool Developer Guide
 
-Version 1.0
-
-Copyright © 2014 Intel Corporation. All rights reserved. No portions of this document may be reproduced without the written permission of Intel Corporation.
-
-Intel is a trademark of Intel Corporation in the U.S. and/or other countries.
-
-Linux is a registered trademark of Linus Torvalds.
-
-Tizen® is a registered trademark of The Linux Foundation.
-
-ARM is a registered trademark of ARM Holdings Plc.
-
-\*Other names and brands may be claimed as the property of others.
-
-Any software source code reprinted in this document is furnished under a software license and may only be used or copied in accordance with the terms of that license.
-
-#1. Introduction
+## 1. Introduction
 
 This document provides development information about Behavior Test Tool, including: Overview, UI and Source Code Structure Introduction, How to Add New Test etc.
 
-#2. Overview
+## 2. Overview
 
 This document guides you as you contribute test cases to the Behavior Test Tool. The tool itself is developed using the jQuery Mobile framework, so the test case development should follow general principles of the jQuery Mobile guidelines. See [http://jquerymobile.com/](http://jquerymobile.com/). Also, to seamlessly integrate tests into the tool's framework, a test case should follow the behavior test tool's rules. Finally, the whole tool will be packaged as one widget file and will run on a target device.
 
-##2.1 User Interface
+### 2.1 User Interface
 
 The Behavior Test Tool UI is shown below:
 
@@ -35,8 +19,8 @@ The Behavior Test Tool UI is shown below:
 Figure 2‑1-1. Behavior Test Tool Home Page
 
 - Header Bar: Show behavior test tool title and version.
-- Test List: Show on tests components, test list and test result status. 
-- Footer Bar: 
+- Test List: Show on tests components, test list and test result status.
+- Footer Bar:
 
   - Export Button: Save the test result XML file to the Tizen file system. This is full path that includes both location and file name: /opt/usr/media/Documents/tct-behavior-tests\_{timestamp}.result.xml.
   - Reset Button: Reset test result.
@@ -57,7 +41,7 @@ Figure 2‑2-2. Behavior Test Tool Test Case Page
   - **Info**: Show test description information
   - **Exit**: Exit test and back to home page.
 
-##2.2 Source code structure
+### 2.2 Source code structure
 
 Figure 2-2 shows the source code structure.
 
@@ -67,36 +51,36 @@ Figure 2‑2. The source code structure
 
 Key files, folders, and images are:
 
-- **config.xml**: Behavior test tool's web app's configuration file. 
-- **index.html**: Behavior test tool's web app's main page entry. 
-- **icon.png**: Behavior test tool's web app's icon, should be shown on Tizen home screen. 
+- **config.xml**: Behavior test tool's web app's configuration file.
+- **index.html**: Behavior test tool's web app's main page entry.
+- **icon.png**: Behavior test tool's web app's icon, should be shown on Tizen home screen.
 - **tests.xml**: Behavior test tool's subtest list information file.
 - **pack.sh**: Behavior test tool's packing shell script.
 - **inst.sh.apk**: The shell script for installing APK package on Android.
 - **inst.sh.ivi**: The shell script for installing XPK package on Tizen IVI.
 - **inst.sh.wgt**: The shell script for installing WGT package on Tizen Mobile.
 - **inst.sh.xpk**: The shell script for installing XPK package on Tizen Mobile.
-- **css/**: Tool's main CSS file tests: common CSS file, third party CSS files, and images folder. 
-- **js/**: Tool's main JS file tests: common JS file and third party JS files. 
-- **tests/**: Folder of subtests files. 
-- **res/**: Folder of common resources. 
+- **css/**: Tool's main CSS file tests: common CSS file, third party CSS files, and images folder.
+- **js/**: Tool's main JS file tests: common JS file and third party JS files.
+- **tests/**: Folder of subtests files.
+- **res/**: Folder of common resources.
 - **tests/template/**: Test developing template for case developer reference.
 
-#3 Test development
+## 3 Test development
 
-##3.1 Coding Style
+### 3.1 Coding Style
 
 Test case developers shall follow the following rules:
 
 - Comment each code block in a uniform way
-- Return a clear pass/fail result 
+- Return a clear pass/fail result
 - Clean environment before exiting tests
-- Automate test under condition of stability 
-- Keep test cases independent from each other 
-- Keep case independent from UX or vertical specific applications 
-- Avoid complicated code logic (comment it if unavoidable) 
-- Avoid duplicated code 
-- Remove redundant code 
+- Automate test under condition of stability
+- Keep test cases independent from each other
+- Keep case independent from UX or vertical specific applications
+- Avoid complicated code logic (comment it if unavoidable)
+- Avoid duplicated code
+- Remove redundant code
 
 Please refer to the **Coding\_Style\_Guide\_CheatSheet\_v1.0** to get a quick start.
 
@@ -115,7 +99,7 @@ You can find detailed coding style instructions for specific languages from:
  - Test ID: Should be the same as test folder name.
  - Capability: This tag will help to check the Tizen device HW capability.
 
-##3.2 Adding a test entry in the Home UI
+### 3.2 Adding a test entry in the Home UI
 
 In the latest behavior tests framework, we start using tests.xml to record test information. You can add a new test case to the tests.xml file and the behavior framework will automatically load the tests.xml file to create a test list view in the main UI.
 
@@ -123,7 +107,7 @@ The tests.xml format is just like the XML scheme of Tizen WebAPI/WRT tests. For 
 
 As stated earlier, the "capability" tag be added for Tizen device HW capability checking. If a tests need capability checking, you need add a sub tag "<capability name="your_capability_name" /\>" to this "testcase" tag of tests.xml file. If a mandatory feature is not present, this tests entry of home UI will be marked as black background.
 
-##3.3 Adding test code resources to the test folder
+### 3.3 Adding test code resources to the test folder
 
 Take test "2D3DAnimation" as an example:
 
@@ -182,14 +166,15 @@ Example:
 
 Example:
 
-    <div data-role="popup" id="popup_info">  
+    <div data-role="popup" id="popup_info">
     <p>Your test description/test steps/PASS&FAIL conditions.<p\>
 
 
-##3.4 Updating the configuration file
+### 3.4 Updating the configuration file
 
 All test cases share one configuration file. You can update the config.xml file if needed, but please be cautious.
 
-##3.5 Packing
+### 3.5 Packing
 
 You can use pack.sh to create your zip file.
+

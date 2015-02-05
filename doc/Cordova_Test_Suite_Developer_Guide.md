@@ -1,22 +1,6 @@
 # Cordova Test Suite Developer Guide
 
-Version 1.0
-
-Copyright © 2014 Intel Corporation. All rights reserved. No portions of this document may be reproduced without the written permission of Intel Corporation.
-
-Intel is a trademark of Intel Corporation in the U.S. and/or other countries.
-
-Linux is a registered trademark of Linus Torvalds.
-
-Tizen® is a registered trademark of The Linux Foundation.
-
-ARM is a registered trademark of ARM Holdings Plc.
-
-\*Other names and brands may be claimed as the property of others.
-
-Any software source code reprinted in this document is furnished under a software license and may only be used or copied in accordance with the terms of that license.
-
-#1. Overview
+## 1. Overview
 
 This document is intended for developers who contribute Cordova test cases development.
 
@@ -27,7 +11,7 @@ You are supposed to have gained the following knowledge:
 
     Note: Testkit-lite is a test execution framework. For details, see [https://github.com/testkit/testkit-lite](https://github.com/testkit/testkit-lite).
 
-#2. Test Suite Source Layout
+## 2. Test Suite Source Layout
 
 The layout of test source codes should:
 
@@ -97,13 +81,13 @@ The test suite source layout is detailed as follows:
   - &lt;testcasefolder&gt;/: a serial of source files or directories for test cases that are well organized by components or features to be tested, e.g. mobilespec/xxx, webapp/xxx
   - full.xml & tests.xml: a mandatory file to describe all test cases for this test suite. For details, see "Appendix 2 Tests.full.xml and tests.xml."
 
-- Build/pack support: 
+- Build/pack support:
   - autogen, configure.ac, and Makefile.am
   - pack.py: script for generating a zip package, this py is maintained in crosswalk-test-suite/tools/.
   - inst.sh.apk: script for installing the apk package on Android mobile..
   - inst.sh.wgt: script for installing the wgt package on Tizen mobile.
   - inst.sh.xpk: script for installing the xpk package on Tizen mobile.
-  - config.xml.crx: configuration file for creating a .crx extension 
+  - config.xml.crx: configuration file for creating a .crx extension
   - config.xml.wgt: configuration file for creating a .wgt package
   - icon.png: Widget/Extension icon
   - manifest.json: manifest file for creating a .crx extension
@@ -114,9 +98,9 @@ The test suite source layout is detailed as follows:
 
 - Misc:
   - [utils]/: (optional) contains utilities and tools if any
-  - [data]/: (optional) contains small-sized data files (Large-sized data such as media content requires a separate package.) 
-  - Small-sized data files (a few Kbytes) should be included into the tests. Large-sized files should be made available separately. Instructions on how to obtain the data files must be provided in the README file. 
-  - Test data must be publicly available. 
+  - [data]/: (optional) contains small-sized data files (Large-sized data such as media content requires a separate package.)
+  - Small-sized data files (a few Kbytes) should be included into the tests. Large-sized files should be made available separately. Instructions on how to obtain the data files must be provided in the README file.
+  - Test data must be publicly available.
 
 The following files and folders are mandatory in :
 
@@ -139,19 +123,19 @@ The following files and folders are mandatory in :
 - tests.full.xml
 - &lt;cordova-xxx-tests&gt;.spec
 
-#3. Test Case Coding Style
+## 3. Test Case Coding Style
 
 Test case developers shall follow the following rules:
 
 - Comment each code block in a uniform way
-- Return a clear pass/fail result 
+- Return a clear pass/fail result
 - Clean environment before exiting tests
-- Automate test under condition of stability 
-- Keep test cases independent from each other 
-- Keep case independent from UX or vertical specific applications 
-- Avoid complicated code logic (comment it if unavoidable) 
-- Avoid duplicated code 
-- Remove redundant code 
+- Automate test under condition of stability
+- Keep test cases independent from each other
+- Keep case independent from UX or vertical specific applications
+- Avoid complicated code logic (comment it if unavoidable)
+- Avoid duplicated code
+- Remove redundant code
 
 Please refer to the **Coding\_Style\_Guide\_CheatSheet** to get a quick start.
 
@@ -167,7 +151,7 @@ You can find detailed coding style instructions for specific languages from:
 
 5)XML: 'xmllint --format' with default indent 2 spaces. See [http://xmlsoft.org/xmllint.html](http://xmlsoft.org/xmllint.html)
 
-#4. Test Case Naming Convention
+## 4. Test Case Naming Convention
 
 **Template**
 
@@ -188,15 +172,15 @@ Crosswalk\_Cordova\_mobilespec\_install.html
 remote\_debug\_breakpoints.html
 
 
-#5. Test Case Folder Naming Convention
+## 5. Test Case Folder Naming Convention
 
 A test case folder should be named as per the following conventions:
 
 - Allow only letter, digit, and hyphen in test case folder name.
-- For folder name, please also use lower-case with '-' if necessary. 
+- For folder name, please also use lower-case with '-' if necessary.
 - Name &lt;testcasefolder&gt; as a spec, component or sub-component, for example, webapp/, mobilespec/.
 
-#6. Test Case Classification (&lt;testcase\\&gt; field in tests.xml)
+## 6. Test Case Classification (&lt;testcase\\&gt; field in tests.xml)
 
 **Template**
 
@@ -232,7 +216,7 @@ Test case created should be classified by the following rules:
     <testcase purpose="Validate 'cordova_mobile_spec' app can be installed successfully" type="Functional" status="approved" component="Cordova_Mobile_Spec" execution_type="manual" priority="P0" id="CrossWalk_Cordova_mobilespec_install"\>
 
 
-#8. How to Add New Test Suite to Cordova 
+## 8. How to Add New Test Suite to Cordova
 To add a new suite to Cordova, perform the following steps:
 
 1) Fork and clone the crosswalk-test-suite project from
@@ -288,7 +272,7 @@ To add a new suite to Cordova, perform the following steps:
 
 9) Add new cases to the test suite. For details, see chapter 9 "How to Contribute New Cases to Test Suite Package."
 
-#9 How to Contribute New Cases to Test Suite Package
+## 9 How to Contribute New Cases to Test Suite Package
 
 To contribute new cases to test suite package, perform the following steps:
 
@@ -329,7 +313,7 @@ Note:
     </html>
 
 
-#Appendix 1 Tests.full.xml and tests.xml
+## Appendix 1 Tests.full.xml and tests.xml
 Each test suite package has two dedicated .xml files (tests.full.xml and tests.xml), which defines all test cases in the package.
 Tests.xml is a simplified version of tests.full.xml; it contains the minimum required elements when running the tests.
 Note: The .xml files must comply with the rules in the test\_definition.xsd file. For details, see  [https://github.com/testkit/testkit-lite/blob/master/xsd/test\_definition.xsd](https://github.com/testkit/testkit-lite/blob/master/xsd/test_definition.xsd).
@@ -521,3 +505,4 @@ Tests.xml Example.
         </set>
       </suite>
     </test_definition>
+

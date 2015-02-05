@@ -1,22 +1,6 @@
 # Web Test Suite SIMD DeveloperGuide
 
-Version 1.0
-
-Copyright © 2014 Intel Corporation. All rights reserved. No portions of this document may be reproduced without the written permission of Intel Corporation.
-
-Intel is a trademark of Intel Corporation in the U.S. and/or other countries.
-
-Linux is a registered trademark of Linus Torvalds.
-
-Tizen® is a registered trademark of The Linux Foundation.
-
-ARM is a registered trademark of ARM Holdings Plc.
-
-\*Other names and brands may be claimed as the property of others.
-
-Any software source code reprinted in this document is furnished under a software license and may only be used or copied in accordance with the terms of that license.
-
-#1. Overview
+## 1. Overview
 
 This document is intended for developers who contribute SIMD test cases development.
 
@@ -28,7 +12,7 @@ You are supposed to have gained the following knowledge:
 
     Note: Testkit-lite is a test execution framework. For details, see [https://github.com/testkit/testkit-lite](https://github.com/testkit/testkit-lite).
 
-#2. Test Suite Source Layout
+## 2. Test Suite Source Layout
 
 The layout of test source codes should:
 
@@ -97,14 +81,14 @@ The test suite source layout is detailed as follows:
 - QUnit support:
   - simd/ecmascript_simd/src/external/: integrated from [http://qunitjs.com] to include common test functions
 
-- Build/pack support: 
+- Build/pack support:
   - autogen, configure.ac, and Makefile.am
-  - pack.sh: script for generating a zip package 
+  - pack.sh: script for generating a zip package
   - inst.sh.apk: script for installing the apk package on Android mobile.
   - inst.sh.ivi: script for installing the xpk package on Tizen IVI device.
   - inst.sh.wgt: script for installing the wgt package on Tizen mobile.
   - inst.sh.xpk: script for installing the xpk package on Tizen mobile.
-  - config.xml.crx: configuration file for creating a .crx extension 
+  - config.xml.crx: configuration file for creating a .crx extension
   - config.xml.wgt: configuration file for creating a .wgt package
   - icon.png: Widget/Extension icon
   - manifest.json: manifest file for creating a .crx extension
@@ -134,7 +118,7 @@ The following files and folders are mandatory in :
 - tests.full.xml
 - webapi-simd-nonw3c-tests.spec
 
-#3. How to Contribute New Cases to SIMD
+## 3. How to Contribute New Cases to SIMD
 
 To contribute new cases to SIMD, perform the following steps:
 
@@ -155,7 +139,7 @@ To contribute new cases to SIMD, perform the following steps:
         equal(0.0, z1.w, "the value of z1.w should be 0.0");
       });
 
-There are 4 sub-case in this case. 
+There are 4 sub-case in this case.
 
 2)Develop test script by following the test case coding style and put it under <simd\>.
 
@@ -198,7 +182,7 @@ Note:
 
 
 
-#Appendix 1 Tests.full.xml and tests.xml
+## Appendix 1 Tests.full.xml and tests.xml
 SIMD has two dedicated .xml files (tests.full.xml and tests.xml), which defines all test cases in the package.
 Tests.xml is a simplified version of tests.full.xml; it contains the minimum required elements when running the tests.
 Note: The .xml files must comply with the rules in the test\_definition.xsd file. For details, see  [https://github.com/testkit/testkit-lite/blob/master/xsd/test\_definition.xsd](https://github.com/testkit/testkit-lite/blob/master/xsd/test_definition.xsd).
@@ -258,3 +242,4 @@ Tests.xml Example.
          </set>
       </suite>
     </test_definition>
+
