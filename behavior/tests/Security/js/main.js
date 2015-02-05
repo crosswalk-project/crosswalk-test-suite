@@ -29,7 +29,7 @@ Authors:
 
 */
 
-var SHARED_MEDIA_DIR = "file:///home/app/content",
+var SHARED_MEDIA_DIR = "file://TESTER-HOME-DIR/content",
     MEDIA_ID = "#media";
 var count = 0, mediaDir;
 var gFiles = [], createdId = [];

@@ -19,6 +19,6 @@ limitations under the License.
 Authors:
 
 */
-var RESOURCE_DIR = "/home/app/content";
+var RESOURCE_DIR = "TESTER-HOME-DIR/content";
 var IMAGE_FILE_PATH = RESOURCE_DIR + "/tct-systemsetting-tizen-tests/tct-systemsetting-tizen-tests_image.jpg";
 var SOUND_FILE_PATH = RESOURCE_DIR + "/tct-systemsetting-tizen-tests/tct-systemsetting-tizen-tests_audio.mp3";

@@ -5,42 +5,42 @@
     <set name="WidgetPackaging" type="script">
       <testcase component="W3C_HTML5 APIs/Widget/Widget Packaging and XML Configuration" execution_type="auto" id="WidgetPackaging_d9" purpose="Test that the user agent skips a content element that points to a non-existing file and shouldn't read the following content element.">
         <description>
-          <test_script_entry timeout="90">app_user@/home/app/content/tct/opt/tct-widget02-w3c-tests/scripts/w3c_widget_installfail.sh d9.wgt</test_script_entry>
+          <test_script_entry timeout="90">app_user@TESTER-HOME-DIR/content/tct/opt/tct-widget02-w3c-tests/scripts/w3c_widget_installfail.sh d9.wgt</test_script_entry>
         </description>
       </testcase>
       <testcase component="W3C_HTML5 APIs/Widget/Widget Packaging and XML Configuration" execution_type="auto" id="WidgetPackaging_dl" purpose="Test if the UA can verify a cryptographic zip archive.">
         <description>
-          <test_script_entry timeout="90">app_user@/home/app/content/tct/opt/tct-widget02-w3c-tests/scripts/w3c_widget_installfail.sh dl.wgt</test_script_entry>
+          <test_script_entry timeout="90">app_user@TESTER-HOME-DIR/content/tct/opt/tct-widget02-w3c-tests/scripts/w3c_widget_installfail.sh dl.wgt</test_script_entry>
         </description>
       </testcase>
       <testcase component="W3C_HTML5 APIs/Widget/Widget Packaging and XML Configuration" execution_type="auto" id="WidgetPackaging_dlocignore00" purpose="Test that an empty defaultlocale attribute is ignored (and does not cause the widget to be treated as an invalid one).">
         <description>
-          <test_script_entry timeout="90">app_user@/home/app/content/tct/opt/tct-widget02-w3c-tests/scripts/w3c_widget_launch.sh dlocignore00.wgt</test_script_entry>
+          <test_script_entry timeout="90">app_user@TESTER-HOME-DIR/content/tct/opt/tct-widget02-w3c-tests/scripts/w3c_widget_launch.sh dlocignore00.wgt</test_script_entry>
         </description>
       </testcase>
       <testcase component="W3C_HTML5 APIs/Widget/Widget Packaging and XML Configuration" execution_type="auto" id="WidgetPackaging_bh" purpose="Test that the UA only checks the config files in the root of the widget package which are not in a locale folder.">
         <description>
-          <test_script_entry timeout="90">app_user@/home/app/content/tct/opt/tct-widget02-w3c-tests/scripts/w3c_widget_installfail.sh bh.wgt</test_script_entry>
+          <test_script_entry timeout="90">app_user@TESTER-HOME-DIR/content/tct/opt/tct-widget02-w3c-tests/scripts/w3c_widget_installfail.sh bh.wgt</test_script_entry>
         </description>
       </testcase>
       <testcase component="W3C_HTML5 APIs/Widget/Widget Packaging and XML Configuration" execution_type="auto" id="WidgetPackaging_bu" purpose="Test that the user agent rejects malformed XML.">
         <description>
-          <test_script_entry timeout="90">app_user@/home/app/content/tct/opt/tct-widget02-w3c-tests/scripts/w3c_widget_installfail.sh bu.wgt</test_script_entry>
+          <test_script_entry timeout="90">app_user@TESTER-HOME-DIR/content/tct/opt/tct-widget02-w3c-tests/scripts/w3c_widget_installfail.sh bu.wgt</test_script_entry>
         </description>
       </testcase>
       <testcase component="W3C_HTML5 APIs/Widget/Widget Packaging and XML Configuration" execution_type="auto" id="WidgetPackaging_c1" purpose="Test if the UA can treat file names in the default start files table case-sensitively (and the file is named 'INdeX.html' in a locale folder).">
         <description>
-          <test_script_entry timeout="90">app_user@/home/app/content/tct/opt/tct-widget02-w3c-tests/scripts/w3c_widget_installfail.sh c1.wgt</test_script_entry>
+          <test_script_entry timeout="90">app_user@TESTER-HOME-DIR/content/tct/opt/tct-widget02-w3c-tests/scripts/w3c_widget_installfail.sh c1.wgt</test_script_entry>
         </description>
       </testcase>
       <testcase component="W3C_HTML5 APIs/Widget/Widget Packaging and XML Configuration" execution_type="auto" id="WidgetPackaging_c2" purpose="Test if the UA can treat file names in the default start files table case-sensitively (and the file is named 'INdeX.HTM' in a locale folder).">
         <description>
-          <test_script_entry timeout="90">app_user@/home/app/content/tct/opt/tct-widget02-w3c-tests/scripts/w3c_widget_installfail.sh c2.wgt</test_script_entry>
+          <test_script_entry timeout="90">app_user@TESTER-HOME-DIR/content/tct/opt/tct-widget02-w3c-tests/scripts/w3c_widget_installfail.sh c2.wgt</test_script_entry>
         </description>
       </testcase>
       <testcase component="W3C_HTML5 APIs/Widget/Widget Packaging and XML Configuration" execution_type="auto" id="WidgetPackaging_c3" purpose="Test if the UA can treat file names in the default start files table case-sensitively (and the file is named 'INdeX.htm' in the root of the widget package).">
         <description>
-          <test_script_entry timeout="90">app_user@/home/app/content/tct/opt/tct-widget02-w3c-tests/scripts/w3c_widget_installfail.sh c3.wgt</test_script_entry>
+          <test_script_entry timeout="90">app_user@TESTER-HOME-DIR/content/tct/opt/tct-widget02-w3c-tests/scripts/w3c_widget_installfail.sh c3.wgt</test_script_entry>
         </description>
       </testcase>
       <testcase component="W3C_HTML5 APIs/Widget/Widget Packaging and XML Configuration" execution_type="manual" id="WidgetPackaging_bj" purpose="Test if the UA can locate the icon at the root of the widget package.">
@@ -49,7 +49,7 @@
           <post_condition>Get the $pkgid of bj.wgt with the command : pkgcmd -l, then uninstall the bj.wgt with the command : pkgcmd -u -t wgt -q -n $pkgid</post_condition>
           <steps>
             <step order="1">
-              <step_desc>Install the widget with the command: pkgcmd -i -t wgt -q -p /home/app/content/tct/opt/tct-widget02-w3c-tests/widgetpackaging/w3c/bj.wgt</step_desc>
+              <step_desc>Install the widget with the command: pkgcmd -i -t wgt -q -p TESTER-HOME-DIR/content/tct/opt/tct-widget02-w3c-tests/widgetpackaging/w3c/bj.wgt</step_desc>
               <expected>Widget application is able to be installed successfully.</expected>
             </step>
             <step order="2">
@@ -66,7 +66,7 @@
           <post_condition>Get the $pkgid of bl.wgt with the command : pkgcmd -l, then uninstall the bl.wgt with the command : pkgcmd -u -t wgt -q -n $pkgid</post_condition>
           <steps>
             <step order="1">
-              <step_desc>Install the widget with the command: pkgcmd -i -t wgt -q -p /home/app/content/tct/opt/tct-widget02-w3c-tests/widgetpackaging/w3c/bl.wgt</step_desc>
+              <step_desc>Install the widget with the command: pkgcmd -i -t wgt -q -p TESTER-HOME-DIR/content/tct/opt/tct-widget02-w3c-tests/widgetpackaging/w3c/bl.wgt</step_desc>
               <expected>Widget application is able to be installed successfully.</expected>
             </step>
             <step order="2">
@@ -83,7 +83,7 @@
           <post_condition>Get the $pkgid of bo.wgt with the command : pkgcmd -l, then uninstall the bo.wgt with the command : pkgcmd -u -t wgt -q -n $pkgid</post_condition>
           <steps>
             <step order="1">
-              <step_desc>Install the widget with the command: pkgcmd -i -t wgt -q -p /home/app/content/tct/opt/tct-widget02-w3c-tests/widgetpackaging/w3c/bo.wgt</step_desc>
+              <step_desc>Install the widget with the command: pkgcmd -i -t wgt -q -p TESTER-HOME-DIR/content/tct/opt/tct-widget02-w3c-tests/widgetpackaging/w3c/bo.wgt</step_desc>
               <expected>Widget application is able to be installed successfully.</expected>
             </step>
             <step order="2">
@@ -100,7 +100,7 @@
           <post_condition>Get the $pkgid of d1.wgt with the command : pkgcmd -l, then uninstall the d1.wgt with the command : pkgcmd -u -t wgt -q -n $pkgid</post_condition>
           <steps>
             <step order="1">
-              <step_desc>Install the widget with the command: pkgcmd -i -t wgt -q -p /home/app/content/tct/opt/tct-widget02-w3c-tests/widgetpackaging/w3c/d1.wgt</step_desc>
+              <step_desc>Install the widget with the command: pkgcmd -i -t wgt -q -p TESTER-HOME-DIR/content/tct/opt/tct-widget02-w3c-tests/widgetpackaging/w3c/d1.wgt</step_desc>
               <expected>Widget application is able to be installed successfully.</expected>
             </step>
             <step order="2">
@@ -117,7 +117,7 @@
           <post_condition>Get the $pkgid of d2.wgt with the command : pkgcmd -l, then uninstall the d2.wgt with the command : pkgcmd -u -t wgt -q -n $pkgid</post_condition>
           <steps>
             <step order="1">
-              <step_desc>Install the widget with the command: pkgcmd -i -t wgt -q -p /home/app/content/tct/opt/tct-widget02-w3c-tests/widgetpackaging/w3c/d2.wgt</step_desc>
+              <step_desc>Install the widget with the command: pkgcmd -i -t wgt -q -p TESTER-HOME-DIR/content/tct/opt/tct-widget02-w3c-tests/widgetpackaging/w3c/d2.wgt</step_desc>
               <expected>Widget application is able to be installed successfully.</expected>
             </step>
             <step order="2">
@@ -134,7 +134,7 @@
           <post_condition>Get the $pkgid of cc.wgt with the command : pkgcmd -l, then uninstall the cc.wgt with the command : pkgcmd -u -t wgt -q -n $pkgid</post_condition>
           <steps>
             <step order="1">
-              <step_desc>Install the widget with the command: pkgcmd -i -t wgt -q -p /home/app/content/tct/opt/tct-widget02-w3c-tests/widgetpackaging/w3c/cc.wgt</step_desc>
+              <step_desc>Install the widget with the command: pkgcmd -i -t wgt -q -p TESTER-HOME-DIR/content/tct/opt/tct-widget02-w3c-tests/widgetpackaging/w3c/cc.wgt</step_desc>
               <expected>Widget application is able to be installed successfully.</expected>
             </step>
             <step order="2">
@@ -151,7 +151,7 @@
           <post_condition>Get the $pkgid of bq.wgt with the command : pkgcmd -l, then uninstall the bq.wgt with the command : pkgcmd -u -t wgt -q -n $pkgid</post_condition>
           <steps>
             <step order="1">
-              <step_desc>Install the widget with the command: pkgcmd -i -t wgt -q -p /home/app/content/tct/opt/tct-widget02-w3c-tests/widgetpackaging/w3c/bq.wgt</step_desc>
+              <step_desc>Install the widget with the command: pkgcmd -i -t wgt -q -p TESTER-HOME-DIR/content/tct/opt/tct-widget02-w3c-tests/widgetpackaging/w3c/bq.wgt</step_desc>
               <expected>Widget application is able to be installed successfully.</expected>
             </step>
             <step order="2">
@@ -164,17 +164,17 @@
       </testcase>
       <testcase component="W3C_HTML5 APIs/Widget/Widget Packaging and XML Configuration" execution_type="auto" id="WidgetPackaging_aa" purpose="Test that the UA rejects configuration documents that don't have correct widget element.">
         <description>
-          <test_script_entry timeout="90">app_user@/home/app/content/tct/opt/tct-widget02-w3c-tests/scripts/w3c_widget_installfail.sh aa.wgt</test_script_entry>
+          <test_script_entry timeout="90">app_user@TESTER-HOME-DIR/content/tct/opt/tct-widget02-w3c-tests/scripts/w3c_widget_installfail.sh aa.wgt</test_script_entry>
         </description>
       </testcase>
       <testcase component="W3C_HTML5 APIs/Widget/Widget Packaging and XML Configuration" execution_type="auto" id="WidgetPackaging_ab" purpose="Test that the UA rejects configuration documents that in an invalid widget.">
         <description>
-          <test_script_entry timeout="90">app_user@/home/app/content/tct/opt/tct-widget02-w3c-tests/scripts/w3c_widget_installfail.sh ab.wgt</test_script_entry>
+          <test_script_entry timeout="90">app_user@TESTER-HOME-DIR/content/tct/opt/tct-widget02-w3c-tests/scripts/w3c_widget_installfail.sh ab.wgt</test_script_entry>
         </description>
       </testcase>
       <testcase component="W3C_HTML5 APIs/Widget/Widget Packaging and XML Configuration" execution_type="auto" id="WidgetPackaging_ac" purpose="Test that the UA rejects configuration documents that don't have correct widget element at the root.">
         <description>
-          <test_script_entry timeout="90">app_user@/home/app/content/tct/opt/tct-widget02-w3c-tests/scripts/w3c_widget_installfail.sh ac.wgt</test_script_entry>
+          <test_script_entry timeout="90">app_user@TESTER-HOME-DIR/content/tct/opt/tct-widget02-w3c-tests/scripts/w3c_widget_installfail.sh ac.wgt</test_script_entry>
         </description>
       </testcase>
       <testcase component="W3C_HTML5 APIs/Widget/Widget Packaging and XML Configuration" execution_type="manual" id="WidgetPackaging_ad" purpose="Test if the UA can treat default icon at the root of the widget package name case-sensitively.">
@@ -183,7 +183,7 @@
           <post_condition>Get the $pkgid of ad.wgt with the command : pkgcmd -l, then uninstall the ad.wgt with the command : pkgcmd -u -t wgt -q -n $pkgid</post_condition>
           <steps>
             <step order="1">
-              <step_desc>Install the widget with the command: pkgcmd -i -t wgt -q -p /home/app/content/tct/opt/tct-widget02-w3c-tests/widgetpackaging/w3c/ad.wgt</step_desc>
+              <step_desc>Install the widget with the command: pkgcmd -i -t wgt -q -p TESTER-HOME-DIR/content/tct/opt/tct-widget02-w3c-tests/widgetpackaging/w3c/ad.wgt</step_desc>
               <expected>Widget application is able to be installed successfully.</expected>
             </step>
             <step order="2">
@@ -196,12 +196,12 @@
       </testcase>
       <testcase component="W3C_HTML5 APIs/Widget/Widget Packaging and XML Configuration" execution_type="auto" id="WidgetPackaging_b0" purpose="Test if the UA can treat file names in the default start files table case-sensitively.">
         <description>
-          <test_script_entry timeout="90">app_user@/home/app/content/tct/opt/tct-widget02-w3c-tests/scripts/w3c_widget_installfail.sh b0.wgt</test_script_entry>
+          <test_script_entry timeout="90">app_user@TESTER-HOME-DIR/content/tct/opt/tct-widget02-w3c-tests/scripts/w3c_widget_installfail.sh b0.wgt</test_script_entry>
         </description>
       </testcase>
       <testcase component="W3C_HTML5 APIs/Widget/Widget Packaging and XML Configuration" execution_type="auto" id="WidgetPackaging_bg" purpose="Test that the UA only checks config files in the root of the widget package which are not in an arbitrary folder.">
         <description>
-          <test_script_entry timeout="90">app_user@/home/app/content/tct/opt/tct-widget02-w3c-tests/scripts/w3c_widget_installfail.sh bg.wgt</test_script_entry>
+          <test_script_entry timeout="90">app_user@TESTER-HOME-DIR/content/tct/opt/tct-widget02-w3c-tests/scripts/w3c_widget_installfail.sh bg.wgt</test_script_entry>
         </description>
       </testcase>
       <testcase component="W3C_HTML5 APIs/Widget/Widget Packaging and XML Configuration" execution_type="manual" id="WidgetPackaging_am" purpose="Test if the UA can process the author href attribute correctly.">
@@ -210,7 +210,7 @@
           <post_condition>Get the $pkgid of am.wgt with the command : pkgcmd -l, then uninstall the am.wgt with the command : pkgcmd -u -t wgt -q -n $pkgid</post_condition>
           <steps>
             <step order="1">
-              <step_desc>Install the widget with the command: pkgcmd -i -t wgt -q -p /home/app/content/tct/opt/tct-widget02-w3c-tests/widgetpackaging/w3c/am.wgt</step_desc>
+              <step_desc>Install the widget with the command: pkgcmd -i -t wgt -q -p TESTER-HOME-DIR/content/tct/opt/tct-widget02-w3c-tests/widgetpackaging/w3c/am.wgt</step_desc>
               <expected>Widget application is able to be installed successfully.</expected>
             </step>
             <step order="2">
@@ -227,7 +227,7 @@
           <post_condition>Get the $pkgid of aw.wgt with the command : pkgcmd -l, then uninstall the aw.wgt with the command : pkgcmd -u -t wgt -q -n $pkgid</post_condition>
           <steps>
             <step order="1">
-              <step_desc>Install the widget with the command: pkgcmd -i -t wgt -q -p /home/app/content/tct/opt/tct-widget02-w3c-tests/widgetpackaging/w3c/aw.wgt</step_desc>
+              <step_desc>Install the widget with the command: pkgcmd -i -t wgt -q -p TESTER-HOME-DIR/content/tct/opt/tct-widget02-w3c-tests/widgetpackaging/w3c/aw.wgt</step_desc>
               <expected>Widget application is able to be installed successfully.</expected>
             </step>
             <step order="2">
@@ -244,7 +244,7 @@
           <post_condition>Get the $pkgid of ta-de-000.wgt with the command : pkgcmd -l, then uninstall the ta-de-000.wgt with the command : pkgcmd -u -t wgt -q -n $pkgid</post_condition>
           <steps>
             <step order="1">
-              <step_desc>Install the widget with the command: pkgcmd -i -t wgt -q -p /home/app/content/tct/opt/tct-widget02-w3c-tests/widgetpackaging/w3c/ta-de-000.wgt</step_desc>
+              <step_desc>Install the widget with the command: pkgcmd -i -t wgt -q -p TESTER-HOME-DIR/content/tct/opt/tct-widget02-w3c-tests/widgetpackaging/w3c/ta-de-000.wgt</step_desc>
               <expected>Widget application is able to be installed successfully.</expected>
             </step>
             <step order="2">
@@ -257,22 +257,22 @@
       </testcase>
       <testcase component="W3C_HTML5 APIs/Widget/Widget Packaging and XML Configuration" execution_type="auto" id="WidgetPackaging_do" purpose="Test if the UA can verify a zip archive.">
         <description>
-          <test_script_entry timeout="90">app_user@/home/app/content/tct/opt/tct-widget02-w3c-tests/scripts/w3c_widget_installfail.sh split.wgt.001</test_script_entry>
+          <test_script_entry timeout="90">app_user@TESTER-HOME-DIR/content/tct/opt/tct-widget02-w3c-tests/scripts/w3c_widget_installfail.sh split.wgt.001</test_script_entry>
         </description>
       </testcase>
       <testcase component="W3C_HTML5 APIs/Widget/Widget Packaging and XML Configuration" execution_type="auto" id="WidgetPackaging_dp" purpose="Test if the UA can verify an invalid zip archive.">
         <description>
-          <test_script_entry timeout="90">app_user@/home/app/content/tct/opt/tct-widget02-w3c-tests/scripts/w3c_widget_installfail.sh dp.wgt</test_script_entry>
+          <test_script_entry timeout="90">app_user@TESTER-HOME-DIR/content/tct/opt/tct-widget02-w3c-tests/scripts/w3c_widget_installfail.sh dp.wgt</test_script_entry>
         </description>
       </testcase>
       <testcase component="W3C_HTML5 APIs/Widget/Widget Packaging and XML Configuration" execution_type="auto" id="WidgetPackaging_dq" purpose="Test if the UA can verify config.exe document correctly.">
         <description>
-          <test_script_entry timeout="90">app_user@/home/app/content/tct/opt/tct-widget02-w3c-tests/scripts/w3c_widget_installfail.sh dq.wgt</test_script_entry>
+          <test_script_entry timeout="90">app_user@TESTER-HOME-DIR/content/tct/opt/tct-widget02-w3c-tests/scripts/w3c_widget_installfail.sh dq.wgt</test_script_entry>
         </description>
       </testcase>
       <testcase component="W3C_HTML5 APIs/Widget/Widget Packaging and XML Configuration" execution_type="auto" id="WidgetPackaging_dw" purpose="Test if the UA can verify CoNfIG.xml document correctly.">
         <description>
-          <test_script_entry timeout="90">app_user@/home/app/content/tct/opt/tct-widget02-w3c-tests/scripts/w3c_widget_installfail.sh dw.wgt</test_script_entry>
+          <test_script_entry timeout="90">app_user@TESTER-HOME-DIR/content/tct/opt/tct-widget02-w3c-tests/scripts/w3c_widget_installfail.sh dw.wgt</test_script_entry>
         </description>
       </testcase>
       <testcase component="W3C_HTML5 APIs/Widget/Widget Packaging and XML Configuration" execution_type="manual" id="WidgetPackaging_ga" purpose="Test if the UA can process icon elements with an empty src attribute correctly.">
@@ -281,7 +281,7 @@
           <post_condition>Get the $pkgid of ga.wgt with the command : pkgcmd -l, then uninstall the ga.wgt with the command : pkgcmd -u -t wgt -q -n $pkgid</post_condition>
           <steps>
             <step order="1">
-              <step_desc>Install the widget with the command: pkgcmd -i -t wgt -q -p /home/app/content/tct/opt/tct-widget02-w3c-tests/widgetpackaging/w3c/ga.wgt</step_desc>
+              <step_desc>Install the widget with the command: pkgcmd -i -t wgt -q -p TESTER-HOME-DIR/content/tct/opt/tct-widget02-w3c-tests/widgetpackaging/w3c/ga.wgt</step_desc>
               <expected>Widget application is able to be installed successfully.</expected>
             </step>
             <step order="2">
@@ -298,7 +298,7 @@
           <post_condition>Get the $pkgid of gb.wgt with the command : pkgcmd -l, then uninstall the gb.wgt with the command : pkgcmd -u -t wgt -q -n $pkgid</post_condition>
           <steps>
             <step order="1">
-              <step_desc>Install the widget with the command: pkgcmd -i -t wgt -q -p /home/app/content/tct/opt/tct-widget02-w3c-tests/widgetpackaging/w3c/gb.wgt</step_desc>
+              <step_desc>Install the widget with the command: pkgcmd -i -t wgt -q -p TESTER-HOME-DIR/content/tct/opt/tct-widget02-w3c-tests/widgetpackaging/w3c/gb.wgt</step_desc>
               <expected>Widget application is able to be installed successfully.</expected>
             </step>
             <step order="2">
@@ -315,7 +315,7 @@
           <post_condition>Get the $pkgid of i1.wgt with the command : pkgcmd -l, then uninstall the i1.wgt with the command : pkgcmd -u -t wgt -q -n $pkgid</post_condition>
           <steps>
             <step order="1">
-              <step_desc>Install the widget with the command: pkgcmd -i -t wgt -q -p /home/app/content/tct/opt/tct-widget02-w3c-tests/widgetpackaging/w3c/i1.wgt</step_desc>
+              <step_desc>Install the widget with the command: pkgcmd -i -t wgt -q -p TESTER-HOME-DIR/content/tct/opt/tct-widget02-w3c-tests/widgetpackaging/w3c/i1.wgt</step_desc>
               <expected>Widget application is able to be installed successfully.</expected>
             </step>
             <step order="2">
@@ -332,7 +332,7 @@
           <post_condition>Get the $pkgid of i18nlro23.wgt with the command : pkgcmd -l, then uninstall the i18nlro23.wgt with the command : pkgcmd -u -t wgt -q -n $pkgid</post_condition>
           <steps>
             <step order="1">
-              <step_desc>Install the widget with the command: pkgcmd -i -t wgt -q -p /home/app/content/tct/opt/tct-widget02-w3c-tests/widgetpackaging/w3c/i18nlro23.wgt</step_desc>
+              <step_desc>Install the widget with the command: pkgcmd -i -t wgt -q -p TESTER-HOME-DIR/content/tct/opt/tct-widget02-w3c-tests/widgetpackaging/w3c/i18nlro23.wgt</step_desc>
               <expected>Widget application is able to be installed successfully.</expected>
             </step>
             <step order="2">
@@ -349,7 +349,7 @@
           <post_condition>Get the $pkgid of i18nlro26.wgt with the command : pkgcmd -l, then uninstall the i18nlro26.wgt with the command : pkgcmd -u -t wgt -q -n $pkgid</post_condition>
           <steps>
             <step order="1">
-              <step_desc>Install the widget with the command: pkgcmd -i -t wgt -q -p /home/app/content/tct/opt/tct-widget02-w3c-tests/widgetpackaging/w3c/i18nlro26.wgt</step_desc>
+              <step_desc>Install the widget with the command: pkgcmd -i -t wgt -q -p TESTER-HOME-DIR/content/tct/opt/tct-widget02-w3c-tests/widgetpackaging/w3c/i18nlro26.wgt</step_desc>
               <expected>Widget application is able to be installed successfully.</expected>
             </step>
             <step order="2">
@@ -366,7 +366,7 @@
           <post_condition>Get the $pkgid of i18nlro27.wgt with the command : pkgcmd -l, then uninstall the i18nlro27.wgt with the command : pkgcmd -u -t wgt -q -n $pkgid</post_condition>
           <steps>
             <step order="1">
-              <step_desc>Install the widget with the command: pkgcmd -i -t wgt -q -p /home/app/content/tct/opt/tct-widget02-w3c-tests/widgetpackaging/w3c/i18nlro27.wgt</step_desc>
+              <step_desc>Install the widget with the command: pkgcmd -i -t wgt -q -p TESTER-HOME-DIR/content/tct/opt/tct-widget02-w3c-tests/widgetpackaging/w3c/i18nlro27.wgt</step_desc>
               <expected>Widget application is able to be installed successfully.</expected>
             </step>
             <step order="2">
@@ -383,7 +383,7 @@
           <post_condition>Get the $pkgid of i18nlro28.wgt with the command : pkgcmd -l, then uninstall the i18nlro28.wgt with the command : pkgcmd -u -t wgt -q -n $pkgid</post_condition>
           <steps>
             <step order="1">
-              <step_desc>Install the widget with the command: pkgcmd -i -t wgt -q -p /home/app/content/tct/opt/tct-widget02-w3c-tests/widgetpackaging/w3c/i18nlro28.wgt</step_desc>
+              <step_desc>Install the widget with the command: pkgcmd -i -t wgt -q -p TESTER-HOME-DIR/content/tct/opt/tct-widget02-w3c-tests/widgetpackaging/w3c/i18nlro28.wgt</step_desc>
               <expected>Widget application is able to be installed successfully.</expected>
             </step>
             <step order="2">
@@ -400,7 +400,7 @@
           <post_condition>Get the $pkgid of i18nltr23.wgt with the command : pkgcmd -l, then uninstall the i18nltr23.wgt with the command : pkgcmd -u -t wgt -q -n $pkgid</post_condition>
           <steps>
             <step order="1">
-              <step_desc>Install the widget with the command: pkgcmd -i -t wgt -q -p /home/app/content/tct/opt/tct-widget02-w3c-tests/widgetpackaging/w3c/i18nltr23.wgt</step_desc>
+              <step_desc>Install the widget with the command: pkgcmd -i -t wgt -q -p TESTER-HOME-DIR/content/tct/opt/tct-widget02-w3c-tests/widgetpackaging/w3c/i18nltr23.wgt</step_desc>
               <expected>Widget application is able to be installed successfully.</expected>
             </step>
             <step order="2">
@@ -417,7 +417,7 @@
           <post_condition>Get the $pkgid of i18nltr26.wgt with the command : pkgcmd -l, then uninstall the i18nltr26.wgt with the command : pkgcmd -u -t wgt -q -n $pkgid</post_condition>
           <steps>
             <step order="1">
-              <step_desc>Install the widget with the command: pkgcmd -i -t wgt -q -p /home/app/content/tct/opt/tct-widget02-w3c-tests/widgetpackaging/w3c/i18nltr26.wgt</step_desc>
+              <step_desc>Install the widget with the command: pkgcmd -i -t wgt -q -p TESTER-HOME-DIR/content/tct/opt/tct-widget02-w3c-tests/widgetpackaging/w3c/i18nltr26.wgt</step_desc>
               <expected>Widget application is able to be installed successfully.</expected>
             </step>
             <step order="2">
@@ -434,7 +434,7 @@
           <post_condition>Get the $pkgid of i18nltr27.wgt with the command : pkgcmd -l, then uninstall the i18nltr27.wgt with the command : pkgcmd -u -t wgt -q -n $pkgid</post_condition>
           <steps>
             <step order="1">
-              <step_desc>Install the widget with the command: pkgcmd -i -t wgt -q -p /home/app/content/tct/opt/tct-widget02-w3c-tests/widgetpackaging/w3c/i18nltr27.wgt</step_desc>
+              <step_desc>Install the widget with the command: pkgcmd -i -t wgt -q -p TESTER-HOME-DIR/content/tct/opt/tct-widget02-w3c-tests/widgetpackaging/w3c/i18nltr27.wgt</step_desc>
               <expected>Widget application is able to be installed successfully.</expected>
             </step>
             <step order="2">
@@ -451,7 +451,7 @@
           <post_condition>Get the $pkgid of i18nltr28.wgt with the command : pkgcmd -l, then uninstall the i18nltr28.wgt with the command : pkgcmd -u -t wgt -q -n $pkgid</post_condition>
           <steps>
             <step order="1">
-              <step_desc>Install the widget with the command: pkgcmd -i -t wgt -q -p /home/app/content/tct/opt/tct-widget02-w3c-tests/widgetpackaging/w3c/i18nltr28.wgt</step_desc>
+              <step_desc>Install the widget with the command: pkgcmd -i -t wgt -q -p TESTER-HOME-DIR/content/tct/opt/tct-widget02-w3c-tests/widgetpackaging/w3c/i18nltr28.wgt</step_desc>
               <expected>Widget application is able to be installed successfully.</expected>
             </step>
             <step order="2">
@@ -468,7 +468,7 @@
           <post_condition>Get the $pkgid of i18nrlo23.wgt with the command : pkgcmd -l, then uninstall the i18nrlo23.wgt with the command : pkgcmd -u -t wgt -q -n $pkgid</post_condition>
           <steps>
             <step order="1">
-              <step_desc>Install the widget with the command: pkgcmd -i -t wgt -q -p /home/app/content/tct/opt/tct-widget02-w3c-tests/widgetpackaging/w3c/i18nrlo23.wgt</step_desc>
+              <step_desc>Install the widget with the command: pkgcmd -i -t wgt -q -p TESTER-HOME-DIR/content/tct/opt/tct-widget02-w3c-tests/widgetpackaging/w3c/i18nrlo23.wgt</step_desc>
               <expected>Widget application is able to be installed successfully.</expected>
             </step>
             <step order="2">
@@ -485,7 +485,7 @@
           <post_condition>Get the $pkgid of i18nrlo26.wgt with the command : pkgcmd -l, then uninstall the i18nrlo26.wgt with the command : pkgcmd -u -t wgt -q -n $pkgid</post_condition>
           <steps>
             <step order="1">
-              <step_desc>Install the widget with the command: pkgcmd -i -t wgt -q -p /home/app/content/tct/opt/tct-widget02-w3c-tests/widgetpackaging/w3c/i18nrlo26.wgt</step_desc>
+              <step_desc>Install the widget with the command: pkgcmd -i -t wgt -q -p TESTER-HOME-DIR/content/tct/opt/tct-widget02-w3c-tests/widgetpackaging/w3c/i18nrlo26.wgt</step_desc>
               <expected>Widget application is able to be installed successfully.</expected>
             </step>
             <step order="2">
@@ -502,7 +502,7 @@
           <post_condition>Get the $pkgid of i18nrlo27.wgt with the command : pkgcmd -l, then uninstall the i18nrlo27.wgt with the command : pkgcmd -u -t wgt -q -n $pkgid</post_condition>
           <steps>
             <step order="1">
-              <step_desc>Install the widget with the command: pkgcmd -i -t wgt -q -p /home/app/content/tct/opt/tct-widget02-w3c-tests/widgetpackaging/w3c/i18nrlo27.wgt</step_desc>
+              <step_desc>Install the widget with the command: pkgcmd -i -t wgt -q -p TESTER-HOME-DIR/content/tct/opt/tct-widget02-w3c-tests/widgetpackaging/w3c/i18nrlo27.wgt</step_desc>
               <expected>Widget application is able to be installed successfully.</expected>
             </step>
             <step order="2">
@@ -519,7 +519,7 @@
           <post_condition>Get the $pkgid of i18nrlo28.wgt with the command : pkgcmd -l, then uninstall the i18nrlo28.wgt with the command : pkgcmd -u -t wgt -q -n $pkgid</post_condition>
           <steps>
             <step order="1">
-              <step_desc>Install the widget with the command: pkgcmd -i -t wgt -q -p /home/app/content/tct/opt/tct-widget02-w3c-tests/widgetpackaging/w3c/i18nrlo28.wgt</step_desc>
+              <step_desc>Install the widget with the command: pkgcmd -i -t wgt -q -p TESTER-HOME-DIR/content/tct/opt/tct-widget02-w3c-tests/widgetpackaging/w3c/i18nrlo28.wgt</step_desc>
               <expected>Widget application is able to be installed successfully.</expected>
             </step>
             <step order="2">
@@ -536,7 +536,7 @@
           <post_condition>Get the $pkgid of i18nrtl23.wgt with the command : pkgcmd -l, then uninstall the i18nrtl23.wgt with the command : pkgcmd -u -t wgt -q -n $pkgid</post_condition>
           <steps>
             <step order="1">
-              <step_desc>Install the widget with the command: pkgcmd -i -t wgt -q -p /home/app/content/tct/opt/tct-widget02-w3c-tests/widgetpackaging/w3c/i18nrtl23.wgt</step_desc>
+              <step_desc>Install the widget with the command: pkgcmd -i -t wgt -q -p TESTER-HOME-DIR/content/tct/opt/tct-widget02-w3c-tests/widgetpackaging/w3c/i18nrtl23.wgt</step_desc>
               <expected>Widget application is able to be installed successfully.</expected>
             </step>
             <step order="2">
@@ -553,7 +553,7 @@
           <post_condition>Get the $pkgid of i18nrtl26.wgt with the command : pkgcmd -l, then uninstall the i18nrtl26.wgt with the command : pkgcmd -u -t wgt -q -n $pkgid</post_condition>
           <steps>
             <step order="1">
-              <step_desc>Install the widget with the command: pkgcmd -i -t wgt -q -p /home/app/content/tct/opt/tct-widget02-w3c-tests/widgetpackaging/w3c/i18nrtl26.wgt</step_desc>
+              <step_desc>Install the widget with the command: pkgcmd -i -t wgt -q -p TESTER-HOME-DIR/content/tct/opt/tct-widget02-w3c-tests/widgetpackaging/w3c/i18nrtl26.wgt</step_desc>
               <expected>Widget application is able to be installed successfully.</expected>
             </step>
             <step order="2">
@@ -570,7 +570,7 @@
           <post_condition>Get the $pkgid of i18nrtl27.wgt with the command : pkgcmd -l, then uninstall the i18nrtl27.wgt with the command : pkgcmd -u -t wgt -q -n $pkgid</post_condition>
           <steps>
             <step order="1">
-              <step_desc>Install the widget with the command: pkgcmd -i -t wgt -q -p /home/app/content/tct/opt/tct-widget02-w3c-tests/widgetpackaging/w3c/i18nrtl27.wgt</step_desc>
+              <step_desc>Install the widget with the command: pkgcmd -i -t wgt -q -p TESTER-HOME-DIR/content/tct/opt/tct-widget02-w3c-tests/widgetpackaging/w3c/i18nrtl27.wgt</step_desc>
               <expected>Widget application is able to be installed successfully.</expected>
             </step>
             <step order="2">
@@ -587,7 +587,7 @@
           <post_condition>Get the $pkgid of i18nrtl28.wgt with the command : pkgcmd -l, then uninstall the i18nrtl28.wgt with the command : pkgcmd -u -t wgt -q -n $pkgid</post_condition>
           <steps>
             <step order="1">
-              <step_desc>Install the widget with the command: pkgcmd -i -t wgt -q -p /home/app/content/tct/opt/tct-widget02-w3c-tests/widgetpackaging/w3c/i18nrtl28.wgt</step_desc>
+              <step_desc>Install the widget with the command: pkgcmd -i -t wgt -q -p TESTER-HOME-DIR/content/tct/opt/tct-widget02-w3c-tests/widgetpackaging/w3c/i18nrtl28.wgt</step_desc>
               <expected>Widget application is able to be installed successfully.</expected>
             </step>
             <step order="2">
@@ -604,7 +604,7 @@
           <post_condition>Get the $pkgid of i18nrtl43.wgt with the command : pkgcmd -l, then uninstall the i18nrtl43.wgt with the command : pkgcmd -u -t wgt -q -n $pkgid</post_condition>
           <steps>
             <step order="1">
-              <step_desc>Install the widget with the command: pkgcmd -i -t wgt -q -p /home/app/content/tct/opt/tct-widget02-w3c-tests/widgetpackaging/w3c/i18nrtl43.wgt</step_desc>
+              <step_desc>Install the widget with the command: pkgcmd -i -t wgt -q -p TESTER-HOME-DIR/content/tct/opt/tct-widget02-w3c-tests/widgetpackaging/w3c/i18nrtl43.wgt</step_desc>
               <expected>Widget application is able to be installed successfully.</expected>
             </step>
             <step order="2">
@@ -621,7 +621,7 @@
           <post_condition>Get the $pkgid of i9.wgt with the command : pkgcmd -l, then uninstall the i9.wgt with the command : pkgcmd -u -t wgt -q -n $pkgid</post_condition>
           <steps>
             <step order="1">
-              <step_desc>Install the widget with the command: pkgcmd -i -t wgt -q -p /home/app/content/tct/opt/tct-widget02-w3c-tests/widgetpackaging/w3c/i9.wgt</step_desc>
+              <step_desc>Install the widget with the command: pkgcmd -i -t wgt -q -p TESTER-HOME-DIR/content/tct/opt/tct-widget02-w3c-tests/widgetpackaging/w3c/i9.wgt</step_desc>
               <expected>Widget application is able to be installed successfully.</expected>
             </step>
             <step order="2">
@@ -638,7 +638,7 @@
           <post_condition>Get the $pkgid of viewb.wgt with the command : pkgcmd -l, then uninstall the viewb.wgt with the command : pkgcmd -u -t wgt -q -n $pkgid</post_condition>
           <steps>
             <step order="1">
-              <step_desc>Install the widget with the command: pkgcmd -i -t wgt -q -p /home/app/content/tct/opt/tct-widget02-w3c-tests/widgetpackaging/w3c/viewb.wgt</step_desc>
+              <step_desc>Install the widget with the command: pkgcmd -i -t wgt -q -p TESTER-HOME-DIR/content/tct/opt/tct-widget02-w3c-tests/widgetpackaging/w3c/viewb.wgt</step_desc>
               <expected>Widget application is able to be installed successfully.</expected>
             </step>
             <step order="2">
@@ -655,7 +655,7 @@
           <post_condition>Get the $pkgid of viewf.wgt with the command : pkgcmd -l, then uninstall the viewf.wgt with the command : pkgcmd -u -t wgt -q -n $pkgid</post_condition>
           <steps>
             <step order="1">
-              <step_desc>Install the widget with the command: pkgcmd -i -t wgt -q -p /home/app/content/tct/opt/tct-widget02-w3c-tests/widgetpackaging/w3c/viewf.wgt</step_desc>
+              <step_desc>Install the widget with the command: pkgcmd -i -t wgt -q -p TESTER-HOME-DIR/content/tct/opt/tct-widget02-w3c-tests/widgetpackaging/w3c/viewf.wgt</step_desc>
               <expected>Widget application is able to be installed successfully.</expected>
             </step>
             <step order="2">
@@ -672,7 +672,7 @@
           <post_condition>Get the $pkgid of viewg.wgt with the command : pkgcmd -l, then uninstall the viewg.wgt with the command : pkgcmd -u -t wgt -q -n $pkgid</post_condition>
           <steps>
             <step order="1">
-              <step_desc>Install the widget with the command: pkgcmd -i -t wgt -q -p /home/app/content/tct/opt/tct-widget02-w3c-tests/widgetpackaging/w3c/viewg.wgt</step_desc>
+              <step_desc>Install the widget with the command: pkgcmd -i -t wgt -q -p TESTER-HOME-DIR/content/tct/opt/tct-widget02-w3c-tests/widgetpackaging/w3c/viewg.wgt</step_desc>
               <expected>Widget application is able to be installed successfully.</expected>
             </step>
             <step order="2">
@@ -689,7 +689,7 @@
           <post_condition>Get the $pkgid of viewi.wgt with the command : pkgcmd -l, then uninstall the viewi.wgt with the command : pkgcmd -u -t wgt -q -n $pkgid</post_condition>
           <steps>
             <step order="1">
-              <step_desc>Install the widget with the command: pkgcmd -i -t wgt -q -p /home/app/content/tct/opt/tct-widget02-w3c-tests/widgetpackaging/w3c/viewi.wgt</step_desc>
+              <step_desc>Install the widget with the command: pkgcmd -i -t wgt -q -p TESTER-HOME-DIR/content/tct/opt/tct-widget02-w3c-tests/widgetpackaging/w3c/viewi.wgt</step_desc>
               <expected>Widget application is able to be installed successfully.</expected>
             </step>
             <step order="2">
@@ -706,7 +706,7 @@
           <post_condition>Get the $pkgid of xx.wgt with the command : pkgcmd -l, then uninstall the xx.wgt with the command : pkgcmd -u -t wgt -q -n $pkgid</post_condition>
           <steps>
             <step order="1">
-              <step_desc>Install the widget with the command: pkgcmd -i -t wgt -q -p /home/app/content/tct/opt/tct-widget02-w3c-tests/widgetpackaging/w3c/xx.wgt</step_desc>
+              <step_desc>Install the widget with the command: pkgcmd -i -t wgt -q -p TESTER-HOME-DIR/content/tct/opt/tct-widget02-w3c-tests/widgetpackaging/w3c/xx.wgt</step_desc>
               <expected>Widget application is able to be installed successfully.</expected>
             </step>
             <step order="2">
@@ -723,7 +723,7 @@
           <post_condition>Get the $pkgid of za.wgt with the command : pkgcmd -l, then uninstall the za.wgt with the command : pkgcmd -u -t wgt -q -n $pkgid</post_condition>
           <steps>
             <step order="1">
-              <step_desc>Install the widget with the command: pkgcmd -i -t wgt -q -p /home/app/content/tct/opt/tct-widget02-w3c-tests/widgetpackaging/w3c/za.wgt</step_desc>
+              <step_desc>Install the widget with the command: pkgcmd -i -t wgt -q -p TESTER-HOME-DIR/content/tct/opt/tct-widget02-w3c-tests/widgetpackaging/w3c/za.wgt</step_desc>
               <expected>Widget application is able to be installed successfully.</expected>
             </step>
             <step order="2">
@@ -740,7 +740,7 @@
           <post_condition>Get the $pkgid of zc.wgt with the command : pkgcmd -l, then uninstall the zc.wgt with the command : pkgcmd -u -t wgt -q -n $pkgid</post_condition>
           <steps>
             <step order="1">
-              <step_desc>Install the widget with the command: pkgcmd -i -t wgt -q -p /home/app/content/tct/opt/tct-widget02-w3c-tests/widgetpackaging/w3c/zc.wgt</step_desc>
+              <step_desc>Install the widget with the command: pkgcmd -i -t wgt -q -p TESTER-HOME-DIR/content/tct/opt/tct-widget02-w3c-tests/widgetpackaging/w3c/zc.wgt</step_desc>
               <expected>Widget application is able to be installed successfully.</expected>
             </step>
             <step order="2">
@@ -757,7 +757,7 @@
           <post_condition>Get the $pkgid of zz.wgt with the command : pkgcmd -l, then uninstall the zz.wgt with the command : pkgcmd -u -t wgt -q -n $pkgid</post_condition>
           <steps>
             <step order="1">
-              <step_desc>Install the widget with the command: pkgcmd -i -t wgt -q -p /home/app/content/tct/opt/tct-widget02-w3c-tests/widgetpackaging/w3c/zz.wgt</step_desc>
+              <step_desc>Install the widget with the command: pkgcmd -i -t wgt -q -p TESTER-HOME-DIR/content/tct/opt/tct-widget02-w3c-tests/widgetpackaging/w3c/zz.wgt</step_desc>
               <expected>Widget application is able to be installed successfully.</expected>
             </step>
             <step order="2">
@@ -774,7 +774,7 @@
           <post_condition>Get the $pkgid of ta-de-001.wgt with the command : pkgcmd -l, then uninstall the ta-de-001.wgt with the command : pkgcmd -u -t wgt -q -n $pkgid</post_condition>
           <steps>
             <step order="1">
-              <step_desc>Install the widget with the command: pkgcmd -i -t wgt -q -p /home/app/content/tct/opt/tct-widget02-w3c-tests/widgetpackaging/w3c/ta-de-001.wgt</step_desc>
+              <step_desc>Install the widget with the command: pkgcmd -i -t wgt -q -p TESTER-HOME-DIR/content/tct/opt/tct-widget02-w3c-tests/widgetpackaging/w3c/ta-de-001.wgt</step_desc>
               <expected>Widget application is able to be installed successfully.</expected>
             </step>
             <step order="2">
@@ -791,7 +791,7 @@
           <post_condition>Get the $pkgid of ta-de-002.wgt with the command : pkgcmd -l, then uninstall the ta-de-002.wgt with the command : pkgcmd -u -t wgt -q -n $pkgid</post_condition>
           <steps>
             <step order="1">
-              <step_desc>Install the widget with the command: pkgcmd -i -t wgt -q -p /home/app/content/tct/opt/tct-widget02-w3c-tests/widgetpackaging/w3c/ta-de-002.wgt</step_desc>
+              <step_desc>Install the widget with the command: pkgcmd -i -t wgt -q -p TESTER-HOME-DIR/content/tct/opt/tct-widget02-w3c-tests/widgetpackaging/w3c/ta-de-002.wgt</step_desc>
               <expected>Widget application is able to be installed successfully.</expected>
             </step>
             <step order="2">
@@ -808,7 +808,7 @@
           <post_condition>Get the $pkgid of ta-de-003.wgt with the command : pkgcmd -l, then uninstall the ta-de-003.wgt with the command : pkgcmd -u -t wgt -q -n $pkgid</post_condition>
           <steps>
             <step order="1">
-              <step_desc>Install the widget with the command: pkgcmd -i -t wgt -q -p /home/app/content/tct/opt/tct-widget02-w3c-tests/widgetpackaging/w3c/ta-de-003.wgt</step_desc>
+              <step_desc>Install the widget with the command: pkgcmd -i -t wgt -q -p TESTER-HOME-DIR/content/tct/opt/tct-widget02-w3c-tests/widgetpackaging/w3c/ta-de-003.wgt</step_desc>
               <expected>Widget application is able to be installed successfully.</expected>
             </step>
             <step order="2">
@@ -825,7 +825,7 @@
           <post_condition>Get the $pkgid of ta-de-004.wgt with the command : pkgcmd -l, then uninstall the ta-de-004.wgt with the command : pkgcmd -u -t wgt -q -n $pkgid</post_condition>
           <steps>
             <step order="1">
-              <step_desc>Install the widget with the command: pkgcmd -i -t wgt -q -p /home/app/content/tct/opt/tct-widget02-w3c-tests/widgetpackaging/w3c/ta-de-004.wgt</step_desc>
+              <step_desc>Install the widget with the command: pkgcmd -i -t wgt -q -p TESTER-HOME-DIR/content/tct/opt/tct-widget02-w3c-tests/widgetpackaging/w3c/ta-de-004.wgt</step_desc>
               <expected>Widget application is able to be installed successfully.</expected>
             </step>
             <step order="2">
@@ -842,7 +842,7 @@
           <post_condition>Get the $pkgid of as.wgt with the command : pkgcmd -l, then uninstall the as.wgt with the command : pkgcmd -u -t wgt -q -n $pkgid</post_condition>
           <steps>
             <step order="1">
-              <step_desc>Install the widget with the command: pkgcmd -i -t wgt -q -p /home/app/content/tct/opt/tct-widget02-w3c-tests/widgetpackaging/w3c/as.wgt</step_desc>
+              <step_desc>Install the widget with the command: pkgcmd -i -t wgt -q -p TESTER-HOME-DIR/content/tct/opt/tct-widget02-w3c-tests/widgetpackaging/w3c/as.wgt</step_desc>
               <expected>Widget application is able to be installed successfully.</expected>
             </step>
             <step order="2">
@@ -859,7 +859,7 @@
           <post_condition>Get the $pkgid of ao.wgt with the command : pkgcmd -l, then uninstall the ao.wgt with the command : pkgcmd -u -t wgt -q -n $pkgid</post_condition>
           <steps>
             <step order="1">
-              <step_desc>Install the widget with the command: pkgcmd -i -t wgt -q -p /home/app/content/tct/opt/tct-widget02-w3c-tests/widgetpackaging/w3c/ao.wgt</step_desc>
+              <step_desc>Install the widget with the command: pkgcmd -i -t wgt -q -p TESTER-HOME-DIR/content/tct/opt/tct-widget02-w3c-tests/widgetpackaging/w3c/ao.wgt</step_desc>
               <expected>Widget application is able to be installed successfully.</expected>
             </step>
             <step order="2">
@@ -876,7 +876,7 @@
           <post_condition>Get the $pkgid of d3.wgt with the command : pkgcmd -l, then uninstall the d3.wgt with the command : pkgcmd -u -t wgt -q -n $pkgid</post_condition>
           <steps>
             <step order="1">
-              <step_desc>Install the widget with the command: pkgcmd -i -t wgt -q -p /home/app/content/tct/opt/tct-widget02-w3c-tests/widgetpackaging/w3c/d3.wgt</step_desc>
+              <step_desc>Install the widget with the command: pkgcmd -i -t wgt -q -p TESTER-HOME-DIR/content/tct/opt/tct-widget02-w3c-tests/widgetpackaging/w3c/d3.wgt</step_desc>
               <expected>Widget application is able to be installed successfully.</expected>
             </step>
             <step order="2">
@@ -893,7 +893,7 @@
           <post_condition>Get the $pkgid of d8.wgt with the command : pkgcmd -l, then uninstall the d8.wgt with the command : pkgcmd -u -t wgt -q -n $pkgid</post_condition>
           <steps>
             <step order="1">
-              <step_desc>Install the widget with the command: pkgcmd -i -t wgt -q -p /home/app/content/tct/opt/tct-widget02-w3c-tests/widgetpackaging/w3c/d8.wgt</step_desc>
+              <step_desc>Install the widget with the command: pkgcmd -i -t wgt -q -p TESTER-HOME-DIR/content/tct/opt/tct-widget02-w3c-tests/widgetpackaging/w3c/d8.wgt</step_desc>
               <expected>Widget application is able to be installed successfully.</expected>
             </step>
             <step order="2">
@@ -910,7 +910,7 @@
           <post_condition>Get the $pkgid of d7.wgt with the command : pkgcmd -l, then uninstall the d7.wgt with the command : pkgcmd -u -t wgt -q -n $pkgid</post_condition>
           <steps>
             <step order="1">
-              <step_desc>Install the widget with the command: pkgcmd -i -t wgt -q -p /home/app/content/tct/opt/tct-widget02-w3c-tests/widgetpackaging/w3c/d7.wgt</step_desc>
+              <step_desc>Install the widget with the command: pkgcmd -i -t wgt -q -p TESTER-HOME-DIR/content/tct/opt/tct-widget02-w3c-tests/widgetpackaging/w3c/d7.wgt</step_desc>
               <expected>Widget application is able to be installed successfully.</expected>
             </step>
             <step order="2">
@@ -927,7 +927,7 @@
           <post_condition>Get the $pkgid of oa.wgt with the command : pkgcmd -l, then uninstall the oa.wgt with the command : pkgcmd -u -t wgt -q -n $pkgid</post_condition>
           <steps>
             <step order="1">
-              <step_desc>Install the widget with the command: pkgcmd -i -t wgt -q -p /home/app/content/tct/opt/tct-widget02-w3c-tests/widgetpackaging/w3c/oa.wgt</step_desc>
+              <step_desc>Install the widget with the command: pkgcmd -i -t wgt -q -p TESTER-HOME-DIR/content/tct/opt/tct-widget02-w3c-tests/widgetpackaging/w3c/oa.wgt</step_desc>
               <expected>Widget application is able to be installed successfully.</expected>
             </step>
             <step order="2">
@@ -944,7 +944,7 @@
           <post_condition>Get the $pkgid of i18nlro01.wgt with the command : pkgcmd -l, then uninstall the i18nlro01.wgt with the command : pkgcmd -u -t wgt -q -n $pkgid</post_condition>
           <steps>
             <step order="1">
-              <step_desc>Install the widget with the command: pkgcmd -i -t wgt -q -p /home/app/content/tct/opt/tct-widget02-w3c-tests/widgetpackaging/w3c/i18nlro01.wgt</step_desc>
+              <step_desc>Install the widget with the command: pkgcmd -i -t wgt -q -p TESTER-HOME-DIR/content/tct/opt/tct-widget02-w3c-tests/widgetpackaging/w3c/i18nlro01.wgt</step_desc>
               <expected>Widget application is able to be installed successfully.</expected>
             </step>
             <step order="2">
@@ -961,7 +961,7 @@
           <post_condition>Get the $pkgid of i18nrtl44.wgt with the command : pkgcmd -l, then uninstall the i18nrtl44.wgt with the command : pkgcmd -u -t wgt -q -n $pkgid</post_condition>
           <steps>
             <step order="1">
-              <step_desc>Install the widget with the command: pkgcmd -i -t wgt -q -p /home/app/content/tct/opt/tct-widget02-w3c-tests/widgetpackaging/w3c/i18nrtl44.wgt</step_desc>
+              <step_desc>Install the widget with the command: pkgcmd -i -t wgt -q -p TESTER-HOME-DIR/content/tct/opt/tct-widget02-w3c-tests/widgetpackaging/w3c/i18nrtl44.wgt</step_desc>
               <expected>Widget application is able to be installed successfully.</expected>
             </step>
             <step order="2">
@@ -978,7 +978,7 @@
           <post_condition>Get the $pkgid of i18nlro44.wgt with the command : pkgcmd -l, then uninstall the i18nlro44.wgt with the command : pkgcmd -u -t wgt -q -n $pkgid</post_condition>
           <steps>
             <step order="1">
-              <step_desc>Install the widget with the command: pkgcmd -i -t wgt -q -p /home/app/content/tct/opt/tct-widget02-w3c-tests/widgetpackaging/w3c/i18nlro44.wgt</step_desc>
+              <step_desc>Install the widget with the command: pkgcmd -i -t wgt -q -p TESTER-HOME-DIR/content/tct/opt/tct-widget02-w3c-tests/widgetpackaging/w3c/i18nlro44.wgt</step_desc>
               <expected>Widget application is able to be installed successfully.</expected>
             </step>
             <step order="2">
@@ -995,7 +995,7 @@
           <post_condition>Get the $pkgid of i18nltr44.wgt with the command : pkgcmd -l, then uninstall the i18nltr44.wgt with the command : pkgcmd -u -t wgt -q -n $pkgid</post_condition>
           <steps>
             <step order="1">
-              <step_desc>Install the widget with the command: pkgcmd -i -t wgt -q -p /home/app/content/tct/opt/tct-widget02-w3c-tests/widgetpackaging/w3c/i18nltr44.wgt</step_desc>
+              <step_desc>Install the widget with the command: pkgcmd -i -t wgt -q -p TESTER-HOME-DIR/content/tct/opt/tct-widget02-w3c-tests/widgetpackaging/w3c/i18nltr44.wgt</step_desc>
               <expected>Widget application is able to be installed successfully.</expected>
             </step>
             <step order="2">
@@ -1012,7 +1012,7 @@
           <post_condition>Get the $pkgid of i18nrlo44.wgt with the command : pkgcmd -l, then uninstall the i18nrlo44.wgt with the command : pkgcmd -u -t wgt -q -n $pkgid</post_condition>
           <steps>
             <step order="1">
-              <step_desc>Install the widget with the command: pkgcmd -i -t wgt -q -p /home/app/content/tct/opt/tct-widget02-w3c-tests/widgetpackaging/w3c/i18nrlo44.wgt</step_desc>
+              <step_desc>Install the widget with the command: pkgcmd -i -t wgt -q -p TESTER-HOME-DIR/content/tct/opt/tct-widget02-w3c-tests/widgetpackaging/w3c/i18nrlo44.wgt</step_desc>
               <expected>Widget application is able to be installed successfully.</expected>
             </step>
             <step order="2">

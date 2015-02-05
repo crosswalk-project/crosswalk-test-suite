@@ -24,8 +24,8 @@ Authors:
 var TIMEOUT_ASYNC_TEST = 30000;
 setup({timeout: TIMEOUT_ASYNC_TEST});
 
-var SHARED_STORAGE_PATH = "/home/app/content";
-var TEST_CONTENT_DIR_PATH = "/home/app/content/tct-content-tizen-tests/";
+var SHARED_STORAGE_PATH = "TESTER-HOME-DIR/content";
+var TEST_CONTENT_DIR_PATH = "TESTER-HOME-DIR/content/tct-content-tizen-tests/";
 
 var TEST_CONTENT_IMAGES = [
     "tct-content-tizen-tests_image_default.jpg",

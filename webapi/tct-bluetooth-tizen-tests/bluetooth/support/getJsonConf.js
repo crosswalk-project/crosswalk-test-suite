@@ -29,7 +29,7 @@ Authors:
 
 */
 
-var RESOURCE_DIR = "/home/app/content";
+var RESOURCE_DIR = "TESTER-HOME-DIR/content";
 $.ajax({
   url:RESOURCE_DIR + "/tct/preconfigure.json",
   dataType:"json",

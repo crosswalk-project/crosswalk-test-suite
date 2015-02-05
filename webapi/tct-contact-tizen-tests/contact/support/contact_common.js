@@ -30,7 +30,7 @@ Authors:
         Tomasz Paciorek<t.paciorek@samsung.com>
 
 */
-var RESOURCE_DIR = "/home/app/content";
+var RESOURCE_DIR = "TESTER-HOME-DIR/content";
 var TEST_IMAGE_1 = "file://" + RESOURCE_DIR + "/webapi-tizen-contact-test_image1.png";
 var TEST_IMAGE_2 = "file://" + RESOURCE_DIR + "/webapi-tizen-contact-test_image2.png";
 var TEST_RING_1 = "file://" + RESOURCE_DIR + "/webapi-tizen-contact-test_ring1.mp3";

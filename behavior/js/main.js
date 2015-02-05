@@ -123,7 +123,7 @@ function resolveSuccess(files) {
         }
         fs.write(resultReport);
         fs.close();
-        $("#exportlog").html("Download 'report.csv' successfully! You can get it from '/home/app/content/Downloads/" + testSuiteName + "/'.");
+        $("#exportlog").html("Download 'report.csv' successfully! You can get it from 'TESTER-HOME-DIR/content/Downloads/" + testSuiteName + "/'.");
         $('#popup_export').popup('open');
         if (ifcloased == 1) {
           var app = tizen.application.getCurrentApplication();

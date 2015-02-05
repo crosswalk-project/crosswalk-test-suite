@@ -21,8 +21,8 @@ Authors:
 var installUrl, updateUrl;
 var flag = false;
 $(document).ready(function() {
-    installUrl = "/home/app/apps_rw/xwalk-service/applications/usecaseweb.WebAPIWEBUseCaseTests/samples/Package/res/TestPackage1.wgt";
-    updateUrl = "/home/app/apps_rw/xwalk-service/applications/usecaseweb.WebAPIWEBUseCaseTests/samples/Package/res/TestPackage2.wgt";
+    installUrl = "TESTER-HOME-DIR/apps_rw/xwalk-service/applications/usecaseweb.WebAPIWEBUseCaseTests/samples/Package/res/TestPackage1.wgt";
+    updateUrl = "TESTER-HOME-DIR/apps_rw/xwalk-service/applications/usecaseweb.WebAPIWEBUseCaseTests/samples/Package/res/TestPackage2.wgt";
     try {
         tizen.package.setPackageInfoEventListener(packageEventCallback);
     } catch (e) {

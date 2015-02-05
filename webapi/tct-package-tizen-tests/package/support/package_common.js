@@ -25,7 +25,7 @@ var TCT_PACKAGE_TIZEN_TESTS_PACKAGE_AUTHOR = "The author of tct-package-tizen-te
 var TCT_PACKAGE_TIZEN_TESTS_PACKAGE_DESCRIPTION = "The description of tct-package-tizen-tests";
 
 
-var TCT_PACKAGE_MANAGER_TEST_PACKAGE_PATH = "/home/app/content/Others/TCTPackageManagerTest1.1.1.wgt";
+var TCT_PACKAGE_MANAGER_TEST_PACKAGE_PATH = "TESTER-HOME-DIR/content/Others/TCTPackageManagerTest1.1.1.wgt";
 var TCT_PACKAGE_MANAGER_TEST_PACKAGE_ID = "api1pack10";
 var TCT_PACKAGE_MANAGER_TEST_PACKAGE_NAME = "TCTPackageManagerTest";
 var TCT_PACKAGE_MANAGER_TEST_PACKAGE_APP_ID = "api1pack10.TCTPackageManagerTest";
