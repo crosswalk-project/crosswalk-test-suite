@@ -30,8 +30,8 @@ path=$(dirname $(dirname $0))
 xpksuite_name=wrt-manifest-tizen-tests
 PACKAGENAME="$path/$1"
 
-[ -d /home/app/content/tct/ ] ||  mkdir -p /home/app/content/tct/
-if [ -e /home/app/content/tct/ ];then
+[ -d /home/$TIZEN_USER/content/tct/ ] ||  mkdir -p /home/$TIZEN_USER/content/tct/
+if [ -e /home/$TIZEN_USER/content/tct/ ];then
     echo "pass"
 else
     echo "fail"

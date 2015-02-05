@@ -37,7 +37,7 @@ if [[ -z $name || -z $version || -z $appname ]]; then
 fi
 
 SRC_ROOT=$PWD
-RESOURCE_DIR=/home/app/content
+RESOURCE_DIR=/home/$TIZEN_USER/content
 BUILD_ROOT=/tmp/${name}_pack
 BUILD_DEST=/tmp/${name}
 APPNAME="XwalkDriverTest"

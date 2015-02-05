@@ -47,10 +47,10 @@ fi
 
 #push xpk to device
 if [ $connect_type == "sdb" ];then
-    sdb -s $device_id push diffid_same_version_tests.xpk /home/app/content/tct
-    sdb -s $device_id push ./packertool/appinstall.sh /home/app/content/tct
+    sdb -s $device_id push diffid_same_version_tests.xpk /home/$TIZEN_USER/content/tct
+    sdb -s $device_id push ./packertool/appinstall.sh /home/$TIZEN_USER/content/tct
     sdb -s $device_id root on
-    sdb -s $device_id shell "su - $TIZEN_USER -c 'export DBUS_SESSION_BUS_ADDRESS=unix:path=/run/user/$userid/dbus/user_bus_socket;/home/app/content/tct/appinstall.sh'"
+    sdb -s $device_id shell "su - $TIZEN_USER -c 'export DBUS_SESSION_BUS_ADDRESS=unix:path=/run/user/$userid/dbus/user_bus_socket;/home/$TIZEN_USER/content/tct/appinstall.sh'"
     echo $TIZEN_USER,$userid
     if [ $? -eq 0 ];then
       echo "Install xpk Pass"
@@ -59,9 +59,9 @@ if [ $connect_type == "sdb" ];then
       exit 1
     fi
 else
-    scp diffid_same_version_tests.xpk $device_id:/home/app/content/tct
-    scp ./packertool/appinstall.sh $device_id:/home/app/content/tct
-    ssh $device_id "su - $TIZEN_USER -c 'export DBUS_SESSION_BUS_ADDRESS=unix:path=/run/user/$userid/dbus/user_bus_socket;/home/app/content/tct/appinstall.sh'"
+    scp diffid_same_version_tests.xpk $device_id:/home/$TIZEN_USER/content/tct
+    scp ./packertool/appinstall.sh $device_id:/home/$TIZEN_USER/content/tct
+    ssh $device_id "su - $TIZEN_USER -c 'export DBUS_SESSION_BUS_ADDRESS=unix:path=/run/user/$userid/dbus/user_bus_socket;/home/$TIZEN_USER/content/tct/appinstall.sh'"
     if [ $? -eq 0 ];then
       echo "Install xpk Pass"
       exit 0

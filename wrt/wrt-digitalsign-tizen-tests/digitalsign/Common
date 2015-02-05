@@ -53,7 +53,7 @@ function get_app_id(){
 }
 
 function check_db(){
-  sqlite3 /home/app/.applications/dbspace/.app_info.db "select * from app_info;" | grep $1 | grep $2
+  sqlite3 /home/$TIZEN_USER/.applications/dbspace/.app_info.db "select * from app_info;" | grep $1 | grep $2
   if [ $? -ne 0  ];then
     echo "cannot found $2 in applications.db"
     #uninstall webapp

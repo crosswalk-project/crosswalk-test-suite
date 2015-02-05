@@ -45,17 +45,17 @@ Authors:
       <li>Run this webapp by typing "app_launcher -s $appid", get $appid with command: "app_launcher -l", check the app isolated</li>      
       <li>Uninstall the app by typing "pkgcmd -u -n $pkgid -q" in the command line</li>
       <li>Reboot the device</li>
-      <li>Check webapp storage patition path:/home/app/apps_rw/xwalk-service/Storage/ext/$pkgid</li>
+      <li>Check webapp storage patition path:/home/tizen_user/apps_rw/xwalk-service/Storage/ext/$pkgid. (note:tizen_user is the current device normal user, "app" user on ivi, "guest" user on tizen commom)</li>
     </ol>
     <p>
       <strong>Expected Output:</strong>
     </p>
     <ol>
       <li>The webapp install successfully and you can get $pkgid</li>
-      <li>The webapp isolated partition is created in path /home/app/apps_rw/xwalk-service/Storage/ext <li>
+      <li>The webapp isolated partition is created in path /home/tizen_user/apps_rw/xwalk-service/Storage/ext. (note:tizen_user is the current device normal user, "app" user on ivi, "guest" user on tizen commom) <li>
       <li>Web app can be uninstall successfully</li>
       <li>Device reboot successfully</li>
-      <li>Webapp isolated storage partition is deleted (path:/home/app/apps_rw/xwalk-service/Storage/ext)</li>
+      <li>Webapp isolated storage partition is deleted (path:/home/tizen_user/apps_rw/xwalk-service/Storage/ext. note:tizen_user is the current device normal user, "app" user on ivi, "guest" user on tizen commom)</li>
     </ol>
   </body>
 </html>
