@@ -37,8 +37,8 @@ if [ $? -eq 1 ];then
 fi
 
 find_appid uninstallation-application-erased
-mkdir /home/app/apps_rw/xwalk-service/applications/$appids/data
-myPath="/home/app/apps_rw/xwalk-service/applications/$appids/data"
+mkdir /home/$TIZEN_USER/apps_rw/xwalk-service/applications/$appids/data
+myPath="/home/$TIZEN_USER/apps_rw/xwalk-service/applications/$appids/data"
 if [ ! -d $myPath ];then
   echo -e  "created folder data failed!"
   exit 1

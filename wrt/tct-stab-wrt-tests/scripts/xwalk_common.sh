@@ -30,7 +30,7 @@
 
 ###below functions just for crosswalk ivi testing###
 
-##usage: install_app $app_path(e.g. uninstall_app /home/app/content/tct/opt/tct-sp02-wrt-tests/tct-sp02-wrt-tests.wgt)##
+##usage: install_app $app_path(e.g. uninstall_app /home/tizen_user/content/tct/opt/tct-sp02-wrt-tests/tct-sp02-wrt-tests.wgt note:tizen_user is the current device normal user, "app" user on ivi, "guest" user on tizen commom)##
 function install_app(){
     pkgcmd -i -t wgt -q -p $1
 }
