@@ -81,13 +81,13 @@ The test suite source layout is detailed as follows:
   - &lt;testcasefolder&gt;/: a serial of source files or directories for test cases that are well organized by components or features to be tested, e.g. mobilespec/xxx, webapp/xxx
   - full.xml & tests.xml: a mandatory file to describe all test cases for this test suite. For details, see "Appendix 2 Tests.full.xml and tests.xml."
 
-- Build/pack support: 
+- Build/pack support:
   - autogen, configure.ac, and Makefile.am
   - pack.py: script for generating a zip package, this py is maintained in crosswalk-test-suite/tools/.
   - inst.sh.apk: script for installing the apk package on Android mobile..
   - inst.sh.wgt: script for installing the wgt package on Tizen mobile.
   - inst.sh.xpk: script for installing the xpk package on Tizen mobile.
-  - config.xml.crx: configuration file for creating a .crx extension 
+  - config.xml.crx: configuration file for creating a .crx extension
   - config.xml.wgt: configuration file for creating a .wgt package
   - icon.png: Widget/Extension icon
   - manifest.json: manifest file for creating a .crx extension
@@ -98,9 +98,9 @@ The test suite source layout is detailed as follows:
 
 - Misc:
   - [utils]/: (optional) contains utilities and tools if any
-  - [data]/: (optional) contains small-sized data files (Large-sized data such as media content requires a separate package.) 
-  - Small-sized data files (a few Kbytes) should be included into the tests. Large-sized files should be made available separately. Instructions on how to obtain the data files must be provided in the README file. 
-  - Test data must be publicly available. 
+  - [data]/: (optional) contains small-sized data files (Large-sized data such as media content requires a separate package.)
+  - Small-sized data files (a few Kbytes) should be included into the tests. Large-sized files should be made available separately. Instructions on how to obtain the data files must be provided in the README file.
+  - Test data must be publicly available.
 
 The following files and folders are mandatory in :
 
@@ -128,14 +128,14 @@ The following files and folders are mandatory in :
 Test case developers shall follow the following rules:
 
 - Comment each code block in a uniform way
-- Return a clear pass/fail result 
+- Return a clear pass/fail result
 - Clean environment before exiting tests
-- Automate test under condition of stability 
-- Keep test cases independent from each other 
-- Keep case independent from UX or vertical specific applications 
-- Avoid complicated code logic (comment it if unavoidable) 
-- Avoid duplicated code 
-- Remove redundant code 
+- Automate test under condition of stability
+- Keep test cases independent from each other
+- Keep case independent from UX or vertical specific applications
+- Avoid complicated code logic (comment it if unavoidable)
+- Avoid duplicated code
+- Remove redundant code
 
 Please refer to the **Coding\_Style\_Guide\_CheatSheet** to get a quick start.
 
@@ -177,7 +177,7 @@ remote\_debug\_breakpoints.html
 A test case folder should be named as per the following conventions:
 
 - Allow only letter, digit, and hyphen in test case folder name.
-- For folder name, please also use lower-case with '-' if necessary. 
+- For folder name, please also use lower-case with '-' if necessary.
 - Name &lt;testcasefolder&gt; as a spec, component or sub-component, for example, webapp/, mobilespec/.
 
 ## 6. Test Case Classification (&lt;testcase\\&gt; field in tests.xml)
@@ -216,7 +216,7 @@ Test case created should be classified by the following rules:
     <testcase purpose="Validate 'cordova_mobile_spec' app can be installed successfully" type="Functional" status="approved" component="Cordova_Mobile_Spec" execution_type="manual" priority="P0" id="CrossWalk_Cordova_mobilespec_install"\>
 
 
-## 8. How to Add New Test Suite to Cordova 
+## 8. How to Add New Test Suite to Cordova
 To add a new suite to Cordova, perform the following steps:
 
 1) Fork and clone the crosswalk-test-suite project from

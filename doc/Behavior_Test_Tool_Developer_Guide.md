@@ -19,8 +19,8 @@ The Behavior Test Tool UI is shown below:
 Figure 2‑1-1. Behavior Test Tool Home Page
 
 - Header Bar: Show behavior test tool title and version.
-- Test List: Show on tests components, test list and test result status. 
-- Footer Bar: 
+- Test List: Show on tests components, test list and test result status.
+- Footer Bar:
 
   - Export Button: Save the test result XML file to the Tizen file system. This is full path that includes both location and file name: /opt/usr/media/Documents/tct-behavior-tests\_{timestamp}.result.xml.
   - Reset Button: Reset test result.
@@ -51,19 +51,19 @@ Figure 2‑2. The source code structure
 
 Key files, folders, and images are:
 
-- **config.xml**: Behavior test tool's web app's configuration file. 
-- **index.html**: Behavior test tool's web app's main page entry. 
-- **icon.png**: Behavior test tool's web app's icon, should be shown on Tizen home screen. 
+- **config.xml**: Behavior test tool's web app's configuration file.
+- **index.html**: Behavior test tool's web app's main page entry.
+- **icon.png**: Behavior test tool's web app's icon, should be shown on Tizen home screen.
 - **tests.xml**: Behavior test tool's subtest list information file.
 - **pack.sh**: Behavior test tool's packing shell script.
 - **inst.sh.apk**: The shell script for installing APK package on Android.
 - **inst.sh.ivi**: The shell script for installing XPK package on Tizen IVI.
 - **inst.sh.wgt**: The shell script for installing WGT package on Tizen Mobile.
 - **inst.sh.xpk**: The shell script for installing XPK package on Tizen Mobile.
-- **css/**: Tool's main CSS file tests: common CSS file, third party CSS files, and images folder. 
-- **js/**: Tool's main JS file tests: common JS file and third party JS files. 
-- **tests/**: Folder of subtests files. 
-- **res/**: Folder of common resources. 
+- **css/**: Tool's main CSS file tests: common CSS file, third party CSS files, and images folder.
+- **js/**: Tool's main JS file tests: common JS file and third party JS files.
+- **tests/**: Folder of subtests files.
+- **res/**: Folder of common resources.
 - **tests/template/**: Test developing template for case developer reference.
 
 ## 3 Test development
@@ -73,14 +73,14 @@ Key files, folders, and images are:
 Test case developers shall follow the following rules:
 
 - Comment each code block in a uniform way
-- Return a clear pass/fail result 
+- Return a clear pass/fail result
 - Clean environment before exiting tests
-- Automate test under condition of stability 
-- Keep test cases independent from each other 
-- Keep case independent from UX or vertical specific applications 
-- Avoid complicated code logic (comment it if unavoidable) 
-- Avoid duplicated code 
-- Remove redundant code 
+- Automate test under condition of stability
+- Keep test cases independent from each other
+- Keep case independent from UX or vertical specific applications
+- Avoid complicated code logic (comment it if unavoidable)
+- Avoid duplicated code
+- Remove redundant code
 
 Please refer to the **Coding\_Style\_Guide\_CheatSheet\_v1.0** to get a quick start.
 

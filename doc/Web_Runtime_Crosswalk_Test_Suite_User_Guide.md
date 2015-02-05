@@ -22,7 +22,7 @@ This document provides method to run WRT Crosswalk Test Suite on TIZEN. You can 
         $ git clone [git@github.com:testkit/testkit-lite.git](mailto:git@github.com:testkit/testkit-lite.git)
 
         $ cd testkit-lite && sudo python setup.py install
-        
+
 ## 3. Install Crosswalk
 
 - Install crosswalk on Tizen
@@ -51,13 +51,13 @@ This document provides method to run WRT Crosswalk Test Suite on TIZEN. You can 
     $ cd wrt-x-tizen-tests
 
     $ python ../../tools/build/pack.py -t wgt
-    
+
 - Launch WRT test with tct-mgr on Tizen device:
 
     $ cp  wrt-x-tizen-tests.version.wgt.zip /opt/tct/packages/
-    
+
     $ tct-mgr to launch the test tool
-    
+
     $ select the test suite and click 'Run' to start suite test
 
 - Launch WRT test with lite on localhost:

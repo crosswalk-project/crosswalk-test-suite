@@ -93,13 +93,13 @@ The test suite source layout is detailed as follows:
   - [common]/: (optional) integrated from [https://github.com/w3c/web-platform-tests/tree/master/common](https://github.com/w3c/web-platform-tests/tree/master/common) to include common test functions
   - resources/: integrated from [https://github.com/w3c/testharness.js](https://github.com/w3c/testharness.js) to include W3C test harness as an API test framework
 
-- Build/pack support: 
+- Build/pack support:
   - autogen, configure.ac, and Makefile.am
-  - pack.sh: script for generating a zip package 
+  - pack.sh: script for generating a zip package
   - inst.wgt.py: script for installing the wgt package on Tizen IVI device.
   - inst.sh.wgt: script for installing the wgt package on Tizen mobile.
   - inst.sh.xpk: script for installing the xpk package on Tizen mobile.
-  - config.xml.crx: configuration file for creating a .crx extension 
+  - config.xml.crx: configuration file for creating a .crx extension
   - config.xml.wgt: configuration file for creating a .wgt package
   - icon.png: Widget/Extension icon
   - manifest.json: manifest file for creating a .crx extension
@@ -110,9 +110,9 @@ The test suite source layout is detailed as follows:
 
 - Misc:
   - [utils]/: (optional) contains utilities and tools if any
-  - [data]/: (optional) contains small-sized data files (Large-sized data such as media content requires a separate package.) 
-  - Small-sized data files (a few Kbytes) should be included into the tests. Large-sized files should be made available separately. Instructions on how to obtain the data files must be provided in the README file. 
-  - Test data must be publicly available. 
+  - [data]/: (optional) contains small-sized data files (Large-sized data such as media content requires a separate package.)
+  - Small-sized data files (a few Kbytes) should be included into the tests. Large-sized files should be made available separately. Instructions on how to obtain the data files must be provided in the README file.
+  - Test data must be publicly available.
 
 The following files and folders are mandatory in :
 
@@ -141,14 +141,14 @@ The following files and folders are mandatory in :
 Test case developers shall follow the following rules:
 
 - Comment each code block in a uniform way
-- Return a clear pass/fail result 
+- Return a clear pass/fail result
 - Clean environment before exiting tests
-- Automate test under condition of stability 
-- Keep test cases independent from each other 
-- Keep case independent from UX or vertical specific applications 
-- Avoid complicated code logic (comment it if unavoidable) 
-- Avoid duplicated code 
-- Remove redundant code 
+- Automate test under condition of stability
+- Keep test cases independent from each other
+- Keep case independent from UX or vertical specific applications
+- Avoid complicated code logic (comment it if unavoidable)
+- Avoid duplicated code
+- Remove redundant code
 
 Please refer to the **Coding\_Style\_Guide\_CheatSheet\_v1.0** to get a quick start.
 
@@ -167,7 +167,7 @@ You can find detailed coding style instructions for specific languages from:
 A test case should be named as per the following conventions:
 
 - Use Feature name
-- Use '\_' to connect words in file names 
+- Use '\_' to connect words in file names
 
 **Examples**
 
@@ -178,7 +178,7 @@ packagemgt\Crosswalk_XPK_Update_VersionOneToMultiLower.html
 A test case folder should be named as per the following conventions:
 
 - Allow only letter, digit, and hyphen in test case folder name.
-- For folder name, please also use lower-case with '-' if necessary. 
+- For folder name, please also use lower-case with '-' if necessary.
 - Name <testcasefolder\> as a feature, component.
 
 ## 6. Test Case Classification (<testcase\> field in tests.xml)
@@ -197,9 +197,9 @@ Test case created should be classified by the following rules:
   - approved: test case is reviewed and qualified to be released; currently only use this status when merge tests into test suites.
 
 - Component: should comply with the WRT component name list.
-- Execution\_type: 
-  - auto: 
-  - manual: 
+- Execution\_type:
+  - auto:
+  - manual:
 
 - Priority: P0/P1/P2/P3
   - P0: use cases for feature to be tested, WRT use cases; P0 tests will be used in sanity testing.
@@ -220,7 +220,7 @@ Test case created should be classified by the following rules:
         </description>
       </testcase>
 
-## 7. How to Add New Test Suite to WRT 
+## 7. How to Add New Test Suite to WRT
 To add a new suite to wrt, perform the following steps:
 
 1)Fork and clone the wrt project from
@@ -257,9 +257,9 @@ https://github.com/crosswalk-project/wrt
   <tizen:application id="i18ntestcs.wrti18ntizentests" package="i18ntestcs" required_version="2.2"/>
   <tizen:setting screen-orientation="landscape"/>
     </widget>
-    
 
-6)Add new cases to the test suite. 
+
+6)Add new cases to the test suite.
 
 ## 8 How to Contribute New Cases to Test Suite Package
 
@@ -311,18 +311,18 @@ Note:
 - Install  AllPairs
 
   - Download AllPairs from here:
-   
+
      http://sourceforge.net/projects/allpairs/
-     
+
   - Copy metacomm folder to your suite:
      metacomm/
-     
+
   - import metacomm in your python file:
-    
+
     import metacomm.combinatorics.all_pairs2
-   
+
   -  all_pairs sample:
-  
+
      list=[[1,2],[3]]
      input_pair = all_pairs( list )
      for e, v in enumerate(input_pair):

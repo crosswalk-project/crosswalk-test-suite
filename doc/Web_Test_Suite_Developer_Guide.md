@@ -89,14 +89,14 @@ The test suite source layout is detailed as follows:
   - [common]/: (optional) integrated from [https://github.com/w3c/web-platform-tests/tree/master/common](https://github.com/w3c/web-platform-tests/tree/master/common) to include common test functions
   - resources/: integrated from [https://github.com/w3c/testharness.js](https://github.com/w3c/testharness.js) to include W3C test harness as an API test framework
 
-- Build/pack support: 
+- Build/pack support:
   - autogen, configure.ac, and Makefile.am
-  - pack.sh: script for generating a zip package 
+  - pack.sh: script for generating a zip package
   - inst.sh.apk: script for installing the apk package on Android mobile.
   - inst.sh.ivi: script for installing the xpk package on Tizen IVI device.
   - inst.sh.wgt: script for installing the wgt package on Tizen mobile.
   - inst.sh.xpk: script for installing the xpk package on Tizen mobile.
-  - config.xml.crx: configuration file for creating a .crx extension 
+  - config.xml.crx: configuration file for creating a .crx extension
   - config.xml.wgt: configuration file for creating a .wgt package
   - icon.png: Widget/Extension icon
   - manifest.json: manifest file for creating a .crx extension
@@ -107,9 +107,9 @@ The test suite source layout is detailed as follows:
 
 - Misc:
   - [utils]/: (optional) contains utilities and tools if any
-  - [data]/: (optional) contains small-sized data files (Large-sized data such as media content requires a separate package.) 
-  - Small-sized data files (a few Kbytes) should be included into the tests. Large-sized files should be made available separately. Instructions on how to obtain the data files must be provided in the README file. 
-  - Test data must be publicly available. 
+  - [data]/: (optional) contains small-sized data files (Large-sized data such as media content requires a separate package.)
+  - Small-sized data files (a few Kbytes) should be included into the tests. Large-sized files should be made available separately. Instructions on how to obtain the data files must be provided in the README file.
+  - Test data must be publicly available.
 
 The following files and folders are mandatory in :
 
@@ -139,14 +139,14 @@ The following files and folders are mandatory in :
 Test case developers shall follow the following rules:
 
 - Comment each code block in a uniform way
-- Return a clear pass/fail result 
+- Return a clear pass/fail result
 - Clean environment before exiting tests
-- Automate test under condition of stability 
-- Keep test cases independent from each other 
-- Keep case independent from UX or vertical specific applications 
-- Avoid complicated code logic (comment it if unavoidable) 
-- Avoid duplicated code 
-- Remove redundant code 
+- Automate test under condition of stability
+- Keep test cases independent from each other
+- Keep case independent from UX or vertical specific applications
+- Avoid complicated code logic (comment it if unavoidable)
+- Avoid duplicated code
+- Remove redundant code
 
 Please refer to the **Coding\_Style\_Guide\_CheatSheet\_v1.0** to get a quick start.
 
@@ -154,8 +154,8 @@ You can find detailed coding style instructions for specific languages from:
 
 1)CSS & HTML: [http://google-styleguide.googlecode.com/svn/trunk/htmlcssguide.xml](http://google-styleguide.googlecode.com/svn/trunk/htmlcssguide.xml)
 2)JavaScript: [http://google-styleguide.googlecode.com/svn/trunk/javascriptguide.xml](http://google-styleguide.googlecode.com/svn/trunk/javascriptguide.xml)
-3)Python: [http://google-styleguide.googlecode.com/svn/trunk/pyguide.html](http://google-styleguide.googlecode.com/svn/trunk/pyguide.html)  
-4)Shell: [http://google-styleguide.googlecode.com/svn/trunk/shell.xml](http://google-styleguide.googlecode.com/svn/trunk/shell.xml)  
+3)Python: [http://google-styleguide.googlecode.com/svn/trunk/pyguide.html](http://google-styleguide.googlecode.com/svn/trunk/pyguide.html)
+4)Shell: [http://google-styleguide.googlecode.com/svn/trunk/shell.xml](http://google-styleguide.googlecode.com/svn/trunk/shell.xml)
 5)XML: 'xmllint --format' with default indent 2 spaces. See [http://xmlsoft.org/xmllint.html](http://xmlsoft.org/xmllint.html)
 
 ## 4. Test Case Naming Convention
@@ -168,9 +168,9 @@ A test case should be named as per the following conventions:
 
 - [SpecShortName] is optional, mostly for similar specifications, e.g. Selectors API Level 1, Selectors API Level 2
 - <WebAPIInterface\> and <ShortDescriptionForTestPurpose\>  are mandatory.
-- Use lowercase, except API name and constant defined in spec 
-- Use descriptive names (e.g. ftp\_file\_send); Do not use numbers as tests name (e.g. \_001, \_002) 
-- Use '\_' to connect words in file names (do not use @&- in case name, though W3C prefer '-' to '\_') 
+- Use lowercase, except API name and constant defined in spec
+- Use descriptive names (e.g. ftp\_file\_send); Do not use numbers as tests name (e.g. \_001, \_002)
+- Use '\_' to connect words in file names (do not use @&- in case name, though W3C prefer '-' to '\_')
 
 **Examples**
 
@@ -187,7 +187,7 @@ Or webaudio\_cancelScheduledValues\_exists.html
 A test case folder should be named as per the following conventions:
 
 - Allow only letter, digit, and hyphen in test case folder name.
-- For folder name, please also use lower-case with '-' if necessary. 
+- For folder name, please also use lower-case with '-' if necessary.
 - Name <testcasefolder\> as a spec, component or sub-component, for example, style/, htmltemplates/.
 
 ## 6. Test Case Classification (<testcase\> field in tests.xml)
@@ -206,9 +206,9 @@ Test case created should be classified by the following rules:
   - approved: test case is reviewed and qualified to be released; currently only use this status when merge tests into test suites.
 
 - Component: should comply with the WebAPI component name list. For details see "Appendix 3 WebAPI Component Name List".
-- Execution\_type: 
-  - auto: 
-  - manual: 
+- Execution\_type:
+  - auto:
+  - manual:
 
 - Priority: P0/P1/P2/P3
   - P0: use cases for feature to be tested, API use cases; P0 tests will be used in sanity testing.
@@ -252,22 +252,22 @@ Spec coverage assertion should obey the following rules:
      - attribute:
      - method:
 
-  - < element\_name\>: attribute/method name defined in <specification\>  comes together with < element\_type\>. 
+  - < element\_name\>: attribute/method name defined in <specification\>  comes together with < element\_type\>.
   - < usage>: 'true'; only need for P3 test cases.
   - <interface\>: interface name defined in <specification\>.
   - <specification\>: web api specification; the 3rd part by ":" of "Appendix 2 WebAPI Spec Name List."
-  - <section\>: the 2nd part by ":" of "Appendix 2 WebAPI Spec Name List." 
+  - <section\>: the 2nd part by ":" of "Appendix 2 WebAPI Spec Name List."
      - Tizen
-     - UI 
-     - Widget 
-     - Content(documents,graphics,multimedia) 
+     - UI
+     - Widget
+     - Content(documents,graphics,multimedia)
      - CSS3
      - Device/OSIntegration
      - Network & Communication
      - Storage
      - Performance
      - ExtraHTML5
-     - <category\>: the 1st part by ":" of "Appendix 2 WebAPI Spec Name List." 
+     - <category\>: the 1st part by ":" of "Appendix 2 WebAPI Spec Name List."
          - Tizen Device API Specifications
          - W3C HTML5 API Specifications
          - Supplementary API Specifications
@@ -293,7 +293,7 @@ Spec coverage assertion should obey the following rules:
               </spec>
      </specs>
 
-## 8. How to Add New Test Suite to WebAPI 
+## 8. How to Add New Test Suite to WebAPI
 To add a new suite to webapi, perform the following steps:
 
 1)Fork and clone the webtest project from
@@ -635,7 +635,7 @@ Used by "Component" field in tests.full.xml and tests.xml
 - TizenAPI/Application/Alarm
 - TizenAPI/Application/Application
 - TizenAPI/Application/Datacontrol
-- TizenAPI/Application/Package 
+- TizenAPI/Application/Package
 - TizenAPI/Communication/Bluetooth
 - TizenAPI/Communication/Messaging
 - TizenAPI/Communication/NBS
@@ -717,7 +717,7 @@ Used by "Component" field in tests.full.xml and tests.xml
 - WebAPI/Storage/File API
 - WebAPI/Storage/File API: Directories and System (Partial)
 - WebAPI/Storage/File API: Writer (Partial)
-- WebAPI/Storage/HTML5 Application caches 
+- WebAPI/Storage/HTML5 Application caches
 - WebAPI/Storage/Indexed Database API (Partial)
 - WebAPI/Storage/Web SQL Database
 - WebAPI/Storage/Web Storage (Partial)

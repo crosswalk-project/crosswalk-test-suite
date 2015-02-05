@@ -125,7 +125,7 @@ Self contained test package which include all things - web runner, TCs.
 
         $ sdb push cgi-getcookie /opt/home/developer/
 
-        $ sdb shell "chmod a+x /opt/home/developer/cgi-getcookie" 
+        $ sdb shell "chmod a+x /opt/home/developer/cgi-getcookie"
 
         $ sdb push cgi-getfield /opt/home/developer/
 

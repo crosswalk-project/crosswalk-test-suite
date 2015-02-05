@@ -10,7 +10,7 @@ Behavior Test Tool is a device behavior checker that uses jQuery. It is a major 
 
 Behavior Test Tool has these features:
 
-- A list of behaviors you can test, with information about test cases 
+- A list of behaviors you can test, with information about test cases
 - Test cases for checking and evaluating the behavior of a device
 - Automatically generated test reports you can view and save for further analysis
 
@@ -96,7 +96,7 @@ Behavior Test Tool has these features:
 
         $ cd tinyweb/android/native/jni/ && /path/to/android-ndk-<version\>/ndk-build
 
-  - Copy tinyweb/android/native/libs/ to folder tinyweb/android/assets/system/libs/ 
+  - Copy tinyweb/android/native/libs/ to folder tinyweb/android/assets/system/libs/
 
         For example:
 

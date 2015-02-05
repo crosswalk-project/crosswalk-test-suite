@@ -225,7 +225,7 @@ Please see Appendix 5 for the package list.
 - webapi-usertiming-w3c-tests
 - webapi-vehicleinfo-ivi-tests
 - webapi-webrtc-w3c-tests
-- webapi-webspeech-w3c-tests 
+- webapi-webspeech-w3c-tests
 
 **WRT**
 
@@ -490,23 +490,23 @@ Please see Appendix 5 for the package list.
 
 **WebAPI**
 
-- tct-wgtapi01-w3c-tests 
-- tct-wgtapi02-w3c-tests 
-- tct-widget01-w3c-tests 
-- tct-widget02-w3c-tests 
+- tct-wgtapi01-w3c-tests
+- tct-wgtapi02-w3c-tests
+- tct-widget01-w3c-tests
+- tct-widget02-w3c-tests
 - tct-widgetpolicy-w3c-tests
 
 **WRT**
 
-- tct-appwgt-wrt-tests 
-- tct-ext01-wrt-tests 
-- tct-ext02-wrt-tests 
-- tct-pm-wrt-tests 
-- tct-rt01-wrt-tests 
-- tct-rt02-wrt-tests 
-- tct-sp01-wrt-tests 
-- tct-sp02-wrt-tests 
-- tct-stab-wrt-tests 
+- tct-appwgt-wrt-tests
+- tct-ext01-wrt-tests
+- tct-ext02-wrt-tests
+- tct-pm-wrt-tests
+- tct-rt01-wrt-tests
+- tct-rt02-wrt-tests
+- tct-sp01-wrt-tests
+- tct-sp02-wrt-tests
+- tct-stab-wrt-tests
 - tct-ui01-wrt-tests
 
 ## Appendix 5 XPK Package List for Tizen IVI Generic
@@ -599,7 +599,7 @@ Please see Appendix 5 for the package list.
 - webapi-usertiming-w3c-tests
 - webapi-vehicleinfo-ivi-tests
 - webapi-webrtc-w3c-tests
-- webapi-webspeech-w3c-tests 
+- webapi-webspeech-w3c-tests
 
 **Cordova**
 

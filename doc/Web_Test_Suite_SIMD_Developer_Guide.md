@@ -81,14 +81,14 @@ The test suite source layout is detailed as follows:
 - QUnit support:
   - simd/ecmascript_simd/src/external/: integrated from [http://qunitjs.com] to include common test functions
 
-- Build/pack support: 
+- Build/pack support:
   - autogen, configure.ac, and Makefile.am
-  - pack.sh: script for generating a zip package 
+  - pack.sh: script for generating a zip package
   - inst.sh.apk: script for installing the apk package on Android mobile.
   - inst.sh.ivi: script for installing the xpk package on Tizen IVI device.
   - inst.sh.wgt: script for installing the wgt package on Tizen mobile.
   - inst.sh.xpk: script for installing the xpk package on Tizen mobile.
-  - config.xml.crx: configuration file for creating a .crx extension 
+  - config.xml.crx: configuration file for creating a .crx extension
   - config.xml.wgt: configuration file for creating a .wgt package
   - icon.png: Widget/Extension icon
   - manifest.json: manifest file for creating a .crx extension
@@ -139,7 +139,7 @@ To contribute new cases to SIMD, perform the following steps:
         equal(0.0, z1.w, "the value of z1.w should be 0.0");
       });
 
-There are 4 sub-case in this case. 
+There are 4 sub-case in this case.
 
 2)Develop test script by following the test case coding style and put it under <simd\>.
 

@@ -18,7 +18,7 @@ EmbeddingAPI Test Suite is released as a ZIP file. Use this step to install it o
 
 $unzip -o webapi-embedding-xwalk-tests-<version\>.zip
 
-- set up an Android device to the host with USB interface. 
+- set up an Android device to the host with USB interface.
 - Install the package on the test machine by running the following command:
 
 $cd opt
@@ -41,66 +41,66 @@ $testkit-lite –f $My\_Dir/tests.xml --comm androidmobile -A -o "$My\_Dir/tests
 
 ## Appendix 1 Execution Result On The Console
 
-The result will show on the console. You can copy it to a document and view the summary information. According to the summary information as follows, we can get more detailed information from the files in 
+The result will show on the console. You can copy it to a document and view the summary information. According to the summary information as follows, we can get more detailed information from the files in
 /opt/testkit/lite/2014-10-17-10:50:14.910225/.
 
     [ analysis test xml file: /opt/testkit/lite/2014-10-17-10:50:14.910225/ww42_tests.auto.xml ]
-    
+
     [ testing xml: /opt/testkit/lite/2014-10-17-10:50:14.910225/ww42_tests.auto.xml ]
     [ split xml: /opt/testkit/lite/2014-10-17-10:50:14.910225/ww42_tests.auto.suite_1.xml by <set> ]
     [ this might take some time, please wait ]
     [ total set number is: 10 ]
-    
+
     [ run set: /opt/testkit/lite/2014-10-17-10:50:14.910225/ww42_tests.auto.suite_1_set_1.xml ]
     [ split xml: /opt/testkit/lite/2014-10-17-10:50:14.910225/ww42_tests.auto.suite_1_set_1.xml by <case> ]
     [ this might take some time, please wait ]
     [ preparing for startup options ]
-    
+
     [ run set: /opt/testkit/lite/2014-10-17-10:50:14.910225/ww42_tests.auto.suite_1_set_2.xml ]
     [ split xml: /opt/testkit/lite/2014-10-17-10:50:14.910225/ww42_tests.auto.suite_1_set_2.xml by <case> ]
     [ this might take some time, please wait ]
     [ preparing for startup options ]
-    
+
     [ run set: /opt/testkit/lite/2014-10-17-10:50:14.910225/ww42_tests.auto.suite_1_set_3.xml ]
     [ split xml: /opt/testkit/lite/2014-10-17-10:50:14.910225/ww42_tests.auto.suite_1_set_3.xml by <case> ]
     [ this might take some time, please wait ]
     [ preparing for startup options ]
-    
+
     [ run set: /opt/testkit/lite/2014-10-17-10:50:14.910225/ww42_tests.auto.suite_1_set_4.xml ]
     [ split xml: /opt/testkit/lite/2014-10-17-10:50:14.910225/ww42_tests.auto.suite_1_set_4.xml by <case> ]
     [ this might take some time, please wait ]
     [ preparing for startup options ]
-    
+
     [ run set: /opt/testkit/lite/2014-10-17-10:50:14.910225/ww42_tests.auto.suite_1_set_5.xml ]
     [ split xml: /opt/testkit/lite/2014-10-17-10:50:14.910225/ww42_tests.auto.suite_1_set_5.xml by <case> ]
     [ this might take some time, please wait ]
     [ preparing for startup options ]
-    
+
     [ run set: /opt/testkit/lite/2014-10-17-10:50:14.910225/ww42_tests.auto.suite_1_set_6.xml ]
     [ split xml: /opt/testkit/lite/2014-10-17-10:50:14.910225/ww42_tests.auto.suite_1_set_6.xml by <case> ]
     [ this might take some time, please wait ]
     [ preparing for startup options ]
-    
+
     [ run set: /opt/testkit/lite/2014-10-17-10:50:14.910225/ww42_tests.auto.suite_1_set_7.xml ]
     [ split xml: /opt/testkit/lite/2014-10-17-10:50:14.910225/ww42_tests.auto.suite_1_set_7.xml by <case> ]
     [ this might take some time, please wait ]
     [ preparing for startup options ]
-    
+
     [ run set: /opt/testkit/lite/2014-10-17-10:50:14.910225/ww42_tests.auto.suite_1_set_8.xml ]
     [ split xml: /opt/testkit/lite/2014-10-17-10:50:14.910225/ww42_tests.auto.suite_1_set_8.xml by <case> ]
     [ this might take some time, please wait ]
     [ preparing for startup options ]
-    
+
     [ run set: /opt/testkit/lite/2014-10-17-10:50:14.910225/ww42_tests.auto.suite_1_set_9.xml ]
     [ split xml: /opt/testkit/lite/2014-10-17-10:50:14.910225/ww42_tests.auto.suite_1_set_9.xml by <case> ]
     [ this might take some time, please wait ]
     [ preparing for startup options ]
-    
+
     [ run set: /opt/testkit/lite/2014-10-17-10:50:14.910225/ww42_tests.auto.suite_1_set_10.xml ]
     [ split xml: /opt/testkit/lite/2014-10-17-10:50:14.910225/ww42_tests.auto.suite_1_set_10.xml by <case> ]
     [ this might take some time, please wait ]
     [ preparing for startup options ]
-    
+
     [ test complete at time: 2014-10-17_10_50_20 ]
     [ start merging test result xml files, this might take some time, please wait ]
     [ merge result files into /opt/testkit/lite/2014-10-17-10:50:14.910225/tests.result.xml ]
@@ -113,12 +113,12 @@ The result will show on the console. You can copy it to a document and view the 
     [ all tasks for testkit lite are accomplished, goodbye ]
     archermind@rdjdz110017:~/zyy/work/ww42/crosswalk-test-suite/embeddingapi/embedding-api-android-tests/opt/embedding-api-android-tests$ testkit-lite -f ~/zyy/work/ww42/tests.xml --comm androidmobile -k "androidunit" -A -o "/home/archermind/result.xml"
     [ analysis test xml file: /opt/testkit/lite/2014-10-17-10:51:29.223649/ww42_tests.auto.xml ]
-    
+
     [ testing xml: /opt/testkit/lite/2014-10-17-10:51:29.223649/ww42_tests.auto.xml ]
     [ split xml: /opt/testkit/lite/2014-10-17-10:51:29.223649/ww42_tests.auto.suite_1.xml by <set> ]
     [ this might take some time, please wait ]
     [ total set number is: 10 ]
-    
+
     [ run set: /opt/testkit/lite/2014-10-17-10:51:29.223649/ww42_tests.auto.suite_1_set_1.xml ]
     [ split xml: /opt/testkit/lite/2014-10-17-10:51:29.223649/ww42_tests.auto.suite_1_set_1.xml by <case> ]
     [ this might take some time, please wait ]
@@ -138,8 +138,8 @@ The result will show on the console. You can copy it to a document and view the 
     execute case: embedding-api-android-tests # testReload_normal...(PASS)
     execute case: embedding-api-android-tests # testStopLoading...(PASS)
     [ cases result saved to resultfile ]
-    
-    
+
+
     [ run set: /opt/testkit/lite/2014-10-17-10:51:29.223649/ww42_tests.auto.suite_1_set_2.xml ]
     [ split xml: /opt/testkit/lite/2014-10-17-10:51:29.223649/ww42_tests.auto.suite_1_set_2.xml by <case> ]
     [ this might take some time, please wait ]
@@ -159,8 +159,8 @@ The result will show on the console. You can copy it to a document and view the 
     execute case: embedding-api-android-tests # testNavigate_forwardTwoStep...(PASS)
     execute case: embedding-api-android-tests # testSize...(PASS)
     [ cases result saved to resultfile ]
-    
-    
+
+
     [ run set: /opt/testkit/lite/2014-10-17-10:51:29.223649/ww42_tests.auto.suite_1_set_3.xml ]
     [ split xml: /opt/testkit/lite/2014-10-17-10:51:29.223649/ww42_tests.auto.suite_1_set_3.xml by <case> ]
     [ this might take some time, please wait ]
@@ -170,8 +170,8 @@ The result will show on the console. You can copy it to a document and view the 
     execute case: embedding-api-android-tests # test_navigationItem_getTitle...(PASS)
     execute case: embedding-api-android-tests # test_navigationItem_getUrl...(PASS)
     [ cases result saved to resultfile ]
-    
-    
+
+
     [ run set: /opt/testkit/lite/2014-10-17-10:51:29.223649/ww42_tests.auto.suite_1_set_4.xml ]
     [ split xml: /opt/testkit/lite/2014-10-17-10:51:29.223649/ww42_tests.auto.suite_1_set_4.xml by <case> ]
     [ this might take some time, please wait ]
@@ -200,8 +200,8 @@ The result will show on the console. You can copy it to a document and view the 
     execute case: embedding-api-android-tests # testSetResourceClient...(PASS)
     execute case: embedding-api-android-tests # testSetUIClient...(PASS)
     [ cases result saved to resultfile ]
-    
-    
+
+
     [ run set: /opt/testkit/lite/2014-10-17-10:51:29.223649/ww42_tests.auto.suite_1_set_5.xml ]
     [ split xml: /opt/testkit/lite/2014-10-17-10:51:29.223649/ww42_tests.auto.suite_1_set_5.xml by <case> ]
     [ this might take some time, please wait ]
@@ -227,8 +227,8 @@ The result will show on the console. You can copy it to a document and view the 
     execute case: embedding-api-android-tests # testOpenFileChooser...(PASS)
     execute case: embedding-api-android-tests # testShouldOverrideKeyEvent...(PASS)
     [ cases result saved to resultfile ]
-    
-    
+
+
     [ run set: /opt/testkit/lite/2014-10-17-10:51:29.223649/ww42_tests.auto.suite_1_set_6.xml ]
     [ split xml: /opt/testkit/lite/2014-10-17-10:51:29.223649/ww42_tests.auto.suite_1_set_6.xml by <case> ]
     [ this might take some time, please wait ]
@@ -241,8 +241,8 @@ The result will show on the console. You can copy it to a document and view the 
     execute case: embedding-api-android-tests # testShouldInterceptLoadRequest...(PASS)
     execute case: embedding-api-android-tests # testShouldOverrideUrlLoading...(PASS)
     [ cases result saved to resultfile ]
-    
-    
+
+
     [ run set: /opt/testkit/lite/2014-10-17-10:51:29.223649/ww42_tests.auto.suite_1_set_7.xml ]
     [ split xml: /opt/testkit/lite/2014-10-17-10:51:29.223649/ww42_tests.auto.suite_1_set_7.xml by <case> ]
     [ this might take some time, please wait ]
@@ -259,8 +259,8 @@ The result will show on the console. You can copy it to a document and view the 
     execute case: embedding-api-android-tests # testSetValue_int_SUPPORT_MULTIPLE_WINDOWS...(PASS)
     execute case: embedding-api-android-tests # testSetValue_true_REMOTE_DEBUGGING...(PASS)
     [ cases result saved to resultfile ]
-    
-    
+
+
     [ run set: /opt/testkit/lite/2014-10-17-10:51:29.223649/ww42_tests.auto.suite_1_set_8.xml ]
     [ split xml: /opt/testkit/lite/2014-10-17-10:51:29.223649/ww42_tests.auto.suite_1_set_8.xml by <case> ]
     [ this might take some time, please wait ]
@@ -270,8 +270,8 @@ The result will show on the console. You can copy it to a document and view the 
     execute case: embedding-api-android-tests # testConfirm...(PASS)
     execute case: embedding-api-android-tests # testConfirmWithResult...(PASS)
     [ cases result saved to resultfile ]
-    
-    
+
+
     [ run set: /opt/testkit/lite/2014-10-17-10:51:29.223649/ww42_tests.auto.suite_1_set_9.xml ]
     [ split xml: /opt/testkit/lite/2014-10-17-10:51:29.223649/ww42_tests.auto.suite_1_set_9.xml by <case> ]
     [ this might take some time, please wait ]
@@ -280,8 +280,8 @@ The result will show on the console. You can copy it to a document and view the 
     execute case: embedding-api-android-tests # testHasEnteredFullScreen...(PASS)
     execute case: embedding-api-android-tests # testLeaveFullScreen...(PASS)
     [ cases result saved to resultfile ]
-    
-    
+
+
     [ run set: /opt/testkit/lite/2014-10-17-10:51:29.223649/ww42_tests.auto.suite_1_set_10.xml ]
     [ split xml: /opt/testkit/lite/2014-10-17-10:51:29.223649/ww42_tests.auto.suite_1_set_10.xml by <case> ]
     [ this might take some time, please wait ]
@@ -298,8 +298,8 @@ The result will show on the console. You can copy it to a document and view the 
     execute case: embedding-api-android-tests # testXWalkExtension_StringArray...(PASS)
     execute case: embedding-api-android-tests # testXWalkExtension_emptyArray...(PASS)
     [ cases result saved to resultfile ]
-    
-    
+
+
     [ test complete at time: 2014-10-17_10_52_57 ]
     [ start merging test result xml files, this might take some time, please wait ]
     [ merge result files into /opt/testkit/lite/2014-10-17-10:51:29.223649/tests.result.xml ]

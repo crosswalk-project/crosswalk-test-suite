@@ -8,7 +8,7 @@ This document provides the method to run Web BAT TestSuite on Tizen Generic Plat
 
 - Tizen Generic Platform Hardware: Acer Sandy Bridge Notebook with USB-to-Ethernet(The model Tizen Image supported) converter. Ensure [Tizen generic-wayland-x86\_64 image](http://download.tizen.org/snapshots/tizen/generic/generic-wayland-x86_64/) installed following the WIKI for image installation.
 - [setuptools](https://pypi.python.org/packages/source/s/setuptools/): a testkit-lite dependent pythonmodule for Device Mode.
-- Request-master: [request-master.zip](https://codeload.github.com/kennethreitz/requests/zip/master), a testkit-lite dependent package for Device Mode. 
+- Request-master: [request-master.zip](https://codeload.github.com/kennethreitz/requests/zip/master), a testkit-lite dependent package for Device Mode.
 - [testkit-lite](https://github.com/testkit/testkit-lite): a command-line interface application
 - [teskit-stub](https://github.com/testkit/testkit-stub): a test stub application
 - [tinyweb](https://github.com/testkit/tinyweb): a web service application

@@ -40,7 +40,7 @@ There are two types of Webapi tests:
 
         $ sudo pip install requests
 
-       
+
 
   - Install testkit-lite from source code in GitHub
 
@@ -116,7 +116,7 @@ There are two types of Webapi tests:
 
         $ sdb shell "/opt/home/developer/testkit-stub --port:8000"
 
-       
+
 
 - Deploy tinyweb and launch it
 
@@ -136,7 +136,7 @@ There are two types of Webapi tests:
 
         $ sdb push cgi-getcookie /opt/home/developer/
 
-        $ sdb shell "chmod a+x /opt/home/developer/cgi-getcookie" 
+        $ sdb shell "chmod a+x /opt/home/developer/cgi-getcookie"
 
         $ sdb push cgi-getfield /opt/home/developer/
 

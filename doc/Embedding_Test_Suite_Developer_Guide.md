@@ -60,14 +60,14 @@ Figure 1. The source code structure
 Key files, folders are:
 
 - src fold: All java code is in this fold.
-- MainActivity.java: All the embedding test cases share this activity. 
-- xwalk.embedding.base fold: Some base classes are defined in this fold. 
+- MainActivity.java: All the embedding test cases share this activity.
+- xwalk.embedding.base fold: Some base classes are defined in this fold.
 - XwalkViewTestBase.java: All the embeddingAPI test cases extend this class. Common methods that test cases class will call are definded in this class. For example: loadAssetFileAndWaitForTitle(String fileName)
-- xwalk.embedding.test fold: All the test cases class files are in this fold. 
+- xwalk.embedding.test fold: All the test cases class files are in this fold.
 - assets fold: html, json and javascript, image, css files can be stored in this fold.
 - *.html: html files that can be called by java code. For example: loadUrlSync("file:///android\_asset/index.html",null).
 - manifest.json: json file that can be called by java code.
-- libs folder: All the referenced jars are stored in this fold. 
+- libs folder: All the referenced jars are stored in this fold.
 - AndroidManifest.xml: Android framework config file.
 - pack.sh: a shell script file to support a test suite package in the type of APK, in .zip, for Android platform.
 - test.xml: a mandatory file to describe all test cases for this test suite.
