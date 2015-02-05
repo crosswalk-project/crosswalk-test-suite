@@ -35,13 +35,13 @@ This document provides method to run WRT Crosswalk Test Suite on TIZEN. You can 
 
   - Deploy crosswalk to Tizen device
 
-        $ sdb push crosswalk-<version\>.i686.rpm /home/app/content/tct
+        $ sdb push crosswalk-<version\>.i686.rpm /home/TIZEN_USER/content/tct
 
-        $ sdb push tizen-extensions-crosswalk-<version\>.i686.rpm /home/app/content/tct
+        $ sdb push tizen-extensions-crosswalk-<version\>.i686.rpm /home/TIZEN_USER/content/tct
 
-        $ sdb shell "rpm -ivh /home/app/content/tct/crosswalk-<version\>.i686.rpm"
+        $ sdb shell "rpm -ivh /home/TIZEN_USER/content/tct/crosswalk-<version\>.i686.rpm"
 
-        $ sdb shell "rpm -ivh /home/app/content/tct/tizen-extensions-crosswalk-<version\>.i686.rpm"
+        $ sdb shell "rpm -ivh /home/TIZEN_USER/content/tct/tizen-extensions-crosswalk-<version\>.i686.rpm"
 
 
 ## 4 Installation Web Runtime Crosswalk Test Suite

@@ -44,13 +44,13 @@ test(function () {
         initialValue, newValue;
 
     initialValue = new tizen.ApplicationControl("http://tizen.org/appcontrol/operation/default",
-        "file:///home/app/content/Images/" + iconPathToSet.replace(/^.*\//, ""),
+        "file://TESTER-HOME-DIR/content/Images/" + iconPathToSet.replace(/^.*\//, ""),
         "image/jpg",
         null,
         [new tizen.ApplicationControlData("k1", ["v1"])]
     );
     newValue = new tizen.ApplicationControl(newOperation,
-        "file:///home/app/content/Images/" + thumbnailToSet.replace(/^.*\//, ""),
+        "file://TESTER-HOME-DIR/content/Images/" + thumbnailToSet.replace(/^.*\//, ""),
         "image/jpeg",
         "category",
         [new tizen.ApplicationControlData("new-k1", ["new-v1"])]
