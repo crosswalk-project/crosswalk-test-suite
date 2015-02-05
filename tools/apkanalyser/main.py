@@ -32,7 +32,7 @@
 # Author: belem.zhang@intel.com
 
 import os, sys
-import shutil, fnmatch
+import shutil
 import subprocess
 from optparse import OptionParser
 from datetime import *
