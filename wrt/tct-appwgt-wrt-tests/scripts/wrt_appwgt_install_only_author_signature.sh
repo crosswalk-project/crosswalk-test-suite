@@ -33,6 +33,7 @@
 path=$(dirname $(dirname $0))
 source $path/scripts/xwalk_common.sh
 APP_NAME="sp-widget-only-author-signature"
+get_currentuser
 function existbh()
 {
   echo $1

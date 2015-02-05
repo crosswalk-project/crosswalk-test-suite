@@ -30,6 +30,10 @@
 
 ###below functions just for crosswalk ivi testing###
 
+function get_currentuser(){
+    TIZEN_USER=`whoami`
+}
+
 function install_app(){
     nohup pkgcmd -i -t wgt -p $1 -q &>/dev/null &
     sleep 5

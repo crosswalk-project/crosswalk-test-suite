@@ -26,10 +26,11 @@
 #EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 #
 
+source $(dirname $0)/Common
 path=$(dirname $(dirname $0))
 xpksuite_name=wrt-manifest-tizen-tests
 PACKAGENAME="$path/$1"
-
+get_currentuser
 [ -d /home/$TIZEN_USER/content/tct/ ] ||  mkdir -p /home/$TIZEN_USER/content/tct/
 if [ -e /home/$TIZEN_USER/content/tct/ ];then
     echo "pass"

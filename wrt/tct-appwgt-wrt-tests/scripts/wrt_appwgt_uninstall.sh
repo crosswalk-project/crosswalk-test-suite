@@ -29,10 +29,10 @@
 #        Zhang Ge <gex.zhang@intel.com>
 #        Yin,Haichao <haichaox.yin@intel.com>
 
-
 path=$(dirname $(dirname $0))
 source $path/scripts/xwalk_common.sh
 APP_NAME="app-widget-sample"
+get_currentuser
 function existbh()
 {
   echo $1

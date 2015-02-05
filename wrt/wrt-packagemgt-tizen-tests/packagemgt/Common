@@ -28,6 +28,10 @@
 #Authors:
 #       IVAN CHEN <yufeix.chen@intel.com>
 
+function get_currentuser(){
+    TIZEN_USER=`whoami`
+}
+
 function func_xwalkservice()
 {
         export DBUS_SESSION_BUS_ADDRESS=unix:path=/run/user/5000/dbus/user_bus_socket

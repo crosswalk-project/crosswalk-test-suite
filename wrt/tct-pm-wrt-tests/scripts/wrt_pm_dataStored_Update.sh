@@ -29,6 +29,7 @@
 #        Yue, jianhui <jianhuix.a.yue@intel.com>
 
 source $(dirname $0)/Common
+get_currentuser
 uninstall_app widget-version-1
 func_install_changename widget-version-1.wgt
 if [ $? -eq 1 ];then
