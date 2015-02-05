@@ -200,13 +200,13 @@ The tct-bt-helper is included in the tct-bluetooth-tizen-tests package. Install 
           <steps>
             <step order="1">
               <step_desc>Modify rygel.conf on IVI device:
-                $ cp /etc/rygel.conf /home/app/apps_rw/
+                $ cp /etc/rygel.conf TESTER-HOME-DIR/apps_rw/
                 - video-upload-folder=@VIDEOS@
-                + video-upload-folder=/home/app/Videos
+                + video-upload-folder=TESTER-HOME-DIR/Videos
                 - music-upload-folder=@MUSIC@
-                + music-upload-folder=/home/app/Sounds
+                + music-upload-folder=TESTER-HOME-DIR/Sounds
                 - picture-upload-folder=@PICTURES@
-                + picture-upload-folder=/home/app/Images
+                + picture-upload-folder=TESTER-HOME-DIR/Images
                 # Allow upload of media files?
                 - allow-upload=false
                 + allow-upload=true
@@ -222,7 +222,7 @@ The tct-bt-helper is included in the tct-bluetooth-tizen-tests package. Install 
                 + enabled=true
                 + title=iMediaExport
                 - uris=@MUSIC@;@VIDEOS@;@PICTURES@
-                + uris=/home/app/Videos;/home/app/Sounds;/home/app/Images;                
+                + uris=TESTER-HOME-DIR/Videos;TESTER-HOME-DIR/Sounds;TESTER-HOME-DIR/Images;                
                 enabled=true
                 - title=My Media
                 + title=iLMS
@@ -232,12 +232,12 @@ The tct-bt-helper is included in the tct-bluetooth-tizen-tests package. Install 
               </step_desc>
             </step>
             <step order="2">
-              <step_desc>Create Videos, Sounds and Images directories in /home/app/ on IVI device.
+              <step_desc>Create Videos, Sounds and Images directories in TESTER-HOME-DIR/ on IVI device.
               </step_desc>
             </step>
             <step order="3">
               <step_desc>Add some media content to IVI device:
-                * Copy media files to /home/app/Videos, /home/app/Sounds and /home/app/Images.
+                * Copy media files to TESTER-HOME-DIR/Videos, TESTER-HOME-DIR/Sounds and TESTER-HOME-DIR/Images.
               </step_desc>
             </step>
             <step order="4">
