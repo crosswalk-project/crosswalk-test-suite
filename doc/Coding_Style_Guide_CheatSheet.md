@@ -60,7 +60,7 @@
     <td>
       ”””Comment”””
       #TODO(Name):Comment
-      #TODO(Email):Comment  
+      #TODO(Email):Comment
     </td>
     <td>
       # Comment
@@ -200,7 +200,7 @@
   </tr>
 </table>
 
-#Other reminder:
+## Other reminder:
 
 - CSS:
   - ID and Class Naming
@@ -417,3 +417,4 @@
         Terminology Note: Inside the braces of a switch block are one or more statement groups. Each statement group consists of one or more switch labels (either case FOO: or default :), followed by one or more statements.
 
         More info: [http://google-styleguide.googlecode.com/svn/trunk/javaguide.html](http://google-styleguide.googlecode.com/svn/trunk/javaguide.html)
+

@@ -1,10 +1,10 @@
 # Behavior Test Tool User Guide
 
-#1. Introduction
+## 1. Introduction
 
 This document provides comprehensive information about Behavior Test Tool, including the following: Overview, Installation and Deployment, Test Execution and Report.
 
-#2. Overview
+## 2. Overview
 
 Behavior Test Tool is a device behavior checker that uses jQuery. It is a major component of the Tizen Compliance Tests tool set.
 
@@ -14,7 +14,7 @@ Behavior Test Tool has these features:
 - Test cases for checking and evaluating the behavior of a device
 - Automatically generated test reports you can view and save for further analysis
 
-#3. Install Crosswalk
+## 3. Install Crosswalk
 
 - Install crosswalk on Tizen
 
@@ -46,7 +46,7 @@ Behavior Test Tool has these features:
 
         $ adb install /path/to/crosswalk-apks-<version\>-x86/XWalkRuntimeLib.apk
 
-#4. Deploy tinyweb
+## 4. Deploy tinyweb
 
 1. Deploy tinyweb on Tizen
 
@@ -109,7 +109,7 @@ Behavior Test Tool has these features:
 
   - Launch tinyweb by clicking the tinyweb app icon in launcher
 
-#5 Installation Behavior Test Tool
+## 5 Installation Behavior Test Tool
 
 - Pack Behavior Test Tool
 
@@ -137,7 +137,7 @@ Behavior Test Tool has these features:
 
     $ ./opt/tct-behavior-tests/inst.sh
 
-#6. Preparing To Test
+## 6. Preparing To Test
 
 The home page in which allBehavior Test Tool test cases are listed is shown below:
 
@@ -158,7 +158,7 @@ Note: Currently export result is blocked by crosswalk implement.
 - **Reset**: Reset the test results.
 - **Exit**: Quit.
 
-#7. Executing Tests
+## 7. Executing Tests
 
 - Click the Info button to view the test case description, and perform the test according to it.
 
@@ -168,6 +168,7 @@ Figure 6‑1. Behavior Test ToolTest Case Info Page
 
 - Compare the test result with the expected result, then click **Pass** or **Fail** to update the test result on the Home page.
 
-#8. Viewing theReport
+## 8. Viewing theReport
 
 To generate the result XML at the specific location, click Export. You can view the summary information, including the case title and result.
+

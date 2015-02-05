@@ -1,6 +1,6 @@
 # Web Test Suite SIMD DeveloperGuide
 
-#1. Overview
+## 1. Overview
 
 This document is intended for developers who contribute SIMD test cases development.
 
@@ -12,7 +12,7 @@ You are supposed to have gained the following knowledge:
 
     Note: Testkit-lite is a test execution framework. For details, see [https://github.com/testkit/testkit-lite](https://github.com/testkit/testkit-lite).
 
-#2. Test Suite Source Layout
+## 2. Test Suite Source Layout
 
 The layout of test source codes should:
 
@@ -118,7 +118,7 @@ The following files and folders are mandatory in :
 - tests.full.xml
 - webapi-simd-nonw3c-tests.spec
 
-#3. How to Contribute New Cases to SIMD
+## 3. How to Contribute New Cases to SIMD
 
 To contribute new cases to SIMD, perform the following steps:
 
@@ -182,7 +182,7 @@ Note:
 
 
 
-#Appendix 1 Tests.full.xml and tests.xml
+## Appendix 1 Tests.full.xml and tests.xml
 SIMD has two dedicated .xml files (tests.full.xml and tests.xml), which defines all test cases in the package.
 Tests.xml is a simplified version of tests.full.xml; it contains the minimum required elements when running the tests.
 Note: The .xml files must comply with the rules in the test\_definition.xsd file. For details, see  [https://github.com/testkit/testkit-lite/blob/master/xsd/test\_definition.xsd](https://github.com/testkit/testkit-lite/blob/master/xsd/test_definition.xsd).
@@ -242,3 +242,4 @@ Tests.xml Example.
          </set>
       </suite>
     </test_definition>
+

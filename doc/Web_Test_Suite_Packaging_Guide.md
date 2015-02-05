@@ -1,6 +1,6 @@
 # Web Test Suite PackagingGuide
 
-#1. Overview
+## 1. Overview
 
 This document is intended for developers or testers who need to pack web test suites.
 
@@ -9,7 +9,7 @@ You are supposed to have gained the following knowledge:
 - Where and how to download web test source code files.
 - How to download and install android SDK.
 
-#2. EnvironmentSetup
+## 2. EnvironmentSetup
 
 An Ubuntu (12.04) host is needed to pack the web test suites.
 
@@ -64,11 +64,11 @@ cordova:
 
     $ mv crosswalk-cordova-<version\>-<arch\> cordova
 
-#3. Pack Web Test Suite Packages
+## 3. Pack Web Test Suite Packages
 
 There is a pack.sh script in each test suite. Currently it supports 3 types of test suite packages, APK, XPK and WGT, in .zip, for 3 platforms, Android, Tizen Mobile and IVI.
 
-##3.1  Pack Web Test Suite Packages for Android
+### 3.1  Pack Web Test Suite Packages for Android
 
 Pack APK packages use make\_apk.py:
 
@@ -96,7 +96,7 @@ Pack APK package using cordova tool
 
 Please see the Appendix 6 for the packages list.
 
-##3.2  Pack Web Test Suite Packages for Tizen Mobile
+### 3.2  Pack Web Test Suite Packages for Tizen Mobile
 
     $ ./pack.sh –t xpk –p mobile
 
@@ -116,7 +116,7 @@ Please see Appendix 3 for the packages list.
 
 Please notice that Tizen deviceAPI related WGT need authorization to be installed on Tizen.
 
-##3.3  Pack Web Test Suite Packages for Tizen IVI
+### 3.3  Pack Web Test Suite Packages for Tizen IVI
 
     $ ./pack.sh –t xpk –p ivi
 
@@ -142,7 +142,7 @@ Pack XPK package for Tizen IVI Generic.
 
 Please see Appendix 5 for the package list.
 
-# Appendix 1 APK Packages List
+## Appendix 1 APK Packages List
 
 **WebAPI**
 
@@ -262,7 +262,7 @@ Please see Appendix 5 for the package list.
 - wrt-stablonglastplayvideo-android-tests
 - wrt-stabrecovery-android-tests
 
-# Appendix 2 XPK Package List
+## Appendix 2 XPK Package List
 
 **WebAPI**
 
@@ -385,7 +385,7 @@ Please see Appendix 5 for the package list.
 - web-mbat-xwalk-tests
 - web-abat-xwalk-tests
 
-# Appendix 3 WGT Package List for Tizen Mobile
+## Appendix 3 WGT Package List for Tizen Mobile
 
 **WebAPI**
 
@@ -486,7 +486,7 @@ Please see Appendix 5 for the package list.
 
 - tct-behavior-tests
 
-# Appendix 4 WGT Package List for Tizen IVI
+## Appendix 4 WGT Package List for Tizen IVI
 
 **WebAPI**
 
@@ -509,14 +509,14 @@ Please see Appendix 5 for the package list.
 - tct-stab-wrt-tests 
 - tct-ui01-wrt-tests
 
-# Appendix 5 XPK Package List for Tizen IVI Generic
+## Appendix 5 XPK Package List for Tizen IVI Generic
 
 **MISC**
 
 - web-mbat-xwalk-tests
 - web-abat-xwalk-tests
 
-# Appendix 6 Cordova APK Packages List
+## Appendix 6 Cordova APK Packages List
 
 **WebAPI**
 

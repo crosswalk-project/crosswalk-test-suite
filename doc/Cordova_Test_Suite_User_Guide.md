@@ -1,6 +1,6 @@
 # Cordova Test Suite User Guide
 
-#1. Introduction
+## 1. Introduction
 
 This document provides method to run Crosswalk based Cordova TestSuite. Currently the target platform is Android only. You can use the following method to run itwith testkit-lite. Testkit tool-chain includes 3 components:
 
@@ -8,7 +8,7 @@ This document provides method to run Crosswalk based Cordova TestSuite. Currentl
 - testkit-stub: a test stub application deployed on Device
 - tinyweb:  a web service application deployed on Device
 
-#2. Cordova Web Testing Architecture
+## 2. Cordova Web Testing Architecture
 
 - Cordova Web Testing on Android
 
@@ -26,7 +26,7 @@ Server side includes tinyweb, webrunner and TCs.
 
 Self contained test package which include all things - web runner, TCs.
 
-#3. Install testkit-lite on Host
+## 3. Install testkit-lite on Host
 
 - Deploy testkit-lite
 
@@ -46,7 +46,7 @@ Self contained test package which include all things - web runner, TCs.
         $ cd testkit-lite && sudo python setup.py install
         ```
 
-#4. Crosswalk based Cordova System Requirements
+## 4. Crosswalk based Cordova System Requirements
 
 - Java JDK 1.5 or greater [http://www.oracle.com/technetwork/java/javase/downloads/index.html](http://www.oracle.com/technetwork/java/javase/downloads/index.html)
 - Apache ANT 1.8.0 or greater [http://ant.apache.org/bindownload.cgi](http://ant.apache.org/bindownload.cgi)
@@ -54,7 +54,7 @@ Self contained test package which include all things - web runner, TCs.
 - Python 2.7 or greater  [https://www.python.org/download/](https://www.python.org/download/)
 - Node.js 0.10.24 or greater  [http://nodejs.org/download/](http://nodejs.org/download/)
 
-#5. Crosswalk based Cordova Developer Tools
+## 5. Crosswalk based Cordova Developer Tools
 
 The Cordova developer tooling is split between general tooling and project level tooling.
 
@@ -94,7 +94,7 @@ The Cordova developer tooling is split between general tooling and project level
 
     returns the cordova-android version of the current project
 
-#6. Web Runtime and Web API Test on Crosswalk based Cordova
+## 6. Web Runtime and Web API Test on Crosswalk based Cordova
 
 - Deploy Android ADT bundle (Android SDK, IDE included) and Android NDK
 
@@ -209,7 +209,7 @@ The Cordova Mobile Spec test doesn't need testkit-lite etc., tools to run the te
     $ /path/to/opt/<test_suite_name>/inst.sh -u
     ```
 
-#7. Cordova Mobile Spec Test on Crosswalk based Cordova
+## 7. Cordova Mobile Spec Test on Crosswalk based Cordova
 
 - Build and run Cordova Mobile Spec test build (named as cordova\_mobile\_spec-debug.apk) on Android
 
@@ -335,3 +335,4 @@ The Cordova Mobile Spec test doesn't need testkit-lite etc., tools to run the te
 - The alternate way is copy test apk from /path/to/mobilespec/bin/mobile\_spec-debug.apk to device, install it.
 
 - Run Cordova API (Cordova Mobile Spec) test cases in app on test device.
+

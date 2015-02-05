@@ -1,6 +1,6 @@
 # Cordova Test Suite Developer Guide
 
-#1. Overview
+## 1. Overview
 
 This document is intended for developers who contribute Cordova test cases development.
 
@@ -11,7 +11,7 @@ You are supposed to have gained the following knowledge:
 
     Note: Testkit-lite is a test execution framework. For details, see [https://github.com/testkit/testkit-lite](https://github.com/testkit/testkit-lite).
 
-#2. Test Suite Source Layout
+## 2. Test Suite Source Layout
 
 The layout of test source codes should:
 
@@ -123,7 +123,7 @@ The following files and folders are mandatory in :
 - tests.full.xml
 - &lt;cordova-xxx-tests&gt;.spec
 
-#3. Test Case Coding Style
+## 3. Test Case Coding Style
 
 Test case developers shall follow the following rules:
 
@@ -151,7 +151,7 @@ You can find detailed coding style instructions for specific languages from:
 
 5)XML: 'xmllint --format' with default indent 2 spaces. See [http://xmlsoft.org/xmllint.html](http://xmlsoft.org/xmllint.html)
 
-#4. Test Case Naming Convention
+## 4. Test Case Naming Convention
 
 **Template**
 
@@ -172,7 +172,7 @@ Crosswalk\_Cordova\_mobilespec\_install.html
 remote\_debug\_breakpoints.html
 
 
-#5. Test Case Folder Naming Convention
+## 5. Test Case Folder Naming Convention
 
 A test case folder should be named as per the following conventions:
 
@@ -180,7 +180,7 @@ A test case folder should be named as per the following conventions:
 - For folder name, please also use lower-case with '-' if necessary. 
 - Name &lt;testcasefolder&gt; as a spec, component or sub-component, for example, webapp/, mobilespec/.
 
-#6. Test Case Classification (&lt;testcase\\&gt; field in tests.xml)
+## 6. Test Case Classification (&lt;testcase\\&gt; field in tests.xml)
 
 **Template**
 
@@ -216,7 +216,7 @@ Test case created should be classified by the following rules:
     <testcase purpose="Validate 'cordova_mobile_spec' app can be installed successfully" type="Functional" status="approved" component="Cordova_Mobile_Spec" execution_type="manual" priority="P0" id="CrossWalk_Cordova_mobilespec_install"\>
 
 
-#8. How to Add New Test Suite to Cordova 
+## 8. How to Add New Test Suite to Cordova 
 To add a new suite to Cordova, perform the following steps:
 
 1) Fork and clone the crosswalk-test-suite project from
@@ -272,7 +272,7 @@ To add a new suite to Cordova, perform the following steps:
 
 9) Add new cases to the test suite. For details, see chapter 9 "How to Contribute New Cases to Test Suite Package."
 
-#9 How to Contribute New Cases to Test Suite Package
+## 9 How to Contribute New Cases to Test Suite Package
 
 To contribute new cases to test suite package, perform the following steps:
 
@@ -313,7 +313,7 @@ Note:
     </html>
 
 
-#Appendix 1 Tests.full.xml and tests.xml
+## Appendix 1 Tests.full.xml and tests.xml
 Each test suite package has two dedicated .xml files (tests.full.xml and tests.xml), which defines all test cases in the package.
 Tests.xml is a simplified version of tests.full.xml; it contains the minimum required elements when running the tests.
 Note: The .xml files must comply with the rules in the test\_definition.xsd file. For details, see  [https://github.com/testkit/testkit-lite/blob/master/xsd/test\_definition.xsd](https://github.com/testkit/testkit-lite/blob/master/xsd/test_definition.xsd).
@@ -505,3 +505,4 @@ Tests.xml Example.
         </set>
       </suite>
     </test_definition>
+

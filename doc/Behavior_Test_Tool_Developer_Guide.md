@@ -1,14 +1,14 @@
 # Behavior Test Tool Developer Guide
 
-#1. Introduction
+## 1. Introduction
 
 This document provides development information about Behavior Test Tool, including: Overview, UI and Source Code Structure Introduction, How to Add New Test etc.
 
-#2. Overview
+## 2. Overview
 
 This document guides you as you contribute test cases to the Behavior Test Tool. The tool itself is developed using the jQuery Mobile framework, so the test case development should follow general principles of the jQuery Mobile guidelines. See [http://jquerymobile.com/](http://jquerymobile.com/). Also, to seamlessly integrate tests into the tool's framework, a test case should follow the behavior test tool's rules. Finally, the whole tool will be packaged as one widget file and will run on a target device.
 
-##2.1 User Interface
+### 2.1 User Interface
 
 The Behavior Test Tool UI is shown below:
 
@@ -41,7 +41,7 @@ Figure 2‑2-2. Behavior Test Tool Test Case Page
   - **Info**: Show test description information
   - **Exit**: Exit test and back to home page.
 
-##2.2 Source code structure
+### 2.2 Source code structure
 
 Figure 2-2 shows the source code structure.
 
@@ -66,9 +66,9 @@ Key files, folders, and images are:
 - **res/**: Folder of common resources. 
 - **tests/template/**: Test developing template for case developer reference.
 
-#3 Test development
+## 3 Test development
 
-##3.1 Coding Style
+### 3.1 Coding Style
 
 Test case developers shall follow the following rules:
 
@@ -99,7 +99,7 @@ You can find detailed coding style instructions for specific languages from:
  - Test ID: Should be the same as test folder name.
  - Capability: This tag will help to check the Tizen device HW capability.
 
-##3.2 Adding a test entry in the Home UI
+### 3.2 Adding a test entry in the Home UI
 
 In the latest behavior tests framework, we start using tests.xml to record test information. You can add a new test case to the tests.xml file and the behavior framework will automatically load the tests.xml file to create a test list view in the main UI.
 
@@ -107,7 +107,7 @@ The tests.xml format is just like the XML scheme of Tizen WebAPI/WRT tests. For 
 
 As stated earlier, the "capability" tag be added for Tizen device HW capability checking. If a tests need capability checking, you need add a sub tag "<capability name="your_capability_name" /\>" to this "testcase" tag of tests.xml file. If a mandatory feature is not present, this tests entry of home UI will be marked as black background.
 
-##3.3 Adding test code resources to the test folder
+### 3.3 Adding test code resources to the test folder
 
 Take test "2D3DAnimation" as an example:
 
@@ -166,14 +166,15 @@ Example:
 
 Example:
 
-    <div data-role="popup" id="popup_info">  
+    <div data-role="popup" id="popup_info">
     <p>Your test description/test steps/PASS&FAIL conditions.<p\>
 
 
-##3.4 Updating the configuration file
+### 3.4 Updating the configuration file
 
 All test cases share one configuration file. You can update the config.xml file if needed, but please be cautious.
 
-##3.5 Packing
+### 3.5 Packing
 
 You can use pack.sh to create your zip file.
+

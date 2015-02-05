@@ -1,6 +1,6 @@
 # Web Runtime Crosswalk Test Suite DeveloperGuide
 
-#1. Overview
+## 1. Overview
 
 This document is intended for developers who contribute WebAPI test cases development.
 
@@ -12,7 +12,7 @@ You are supposed to have gained the following knowledge:
 
     Note: Testkit-lite is a test execution framework. For details, see [https://github.com/testkit/testkit-lite](https://github.com/testkit/testkit-lite).
 
-#2. Test Suite Source Layout
+## 2. Test Suite Source Layout
 
 The layout of test source codes should:
 
@@ -136,7 +136,7 @@ The following files and folders are mandatory in :
 - tests.full.xml
 - <wrt-xxx-tizen-tests.spec\>
 
-#3. Test Case Coding Style
+## 3. Test Case Coding Style
 
 Test case developers shall follow the following rules:
 
@@ -160,7 +160,7 @@ You can find detailed coding style instructions for specific languages from:
 4)Shell: [http://google-styleguide.googlecode.com/svn/trunk/shell.xml](http://google-styleguide.googlecode.com/svn/trunk/shell.xml)
 5)XML: 'xmllint --format' with default indent 2 spaces. See [http://xmlsoft.org/xmllint.html](http://xmlsoft.org/xmllint.html)
 
-#4. Test Case Naming Convention
+## 4. Test Case Naming Convention
 
 **Template**
 
@@ -173,7 +173,7 @@ A test case should be named as per the following conventions:
 
 packagemgt\Crosswalk_XPK_Update_VersionOneToMultiLower.html
 
-#5. Test Case Folder Naming Convention
+## 5. Test Case Folder Naming Convention
 
 A test case folder should be named as per the following conventions:
 
@@ -181,7 +181,7 @@ A test case folder should be named as per the following conventions:
 - For folder name, please also use lower-case with '-' if necessary. 
 - Name <testcasefolder\> as a feature, component.
 
-#6. Test Case Classification (<testcase\> field in tests.xml)
+## 6. Test Case Classification (<testcase\> field in tests.xml)
 
 **Template**
 
@@ -220,7 +220,7 @@ Test case created should be classified by the following rules:
         </description>
       </testcase>
 
-#7. How to Add New Test Suite to WRT 
+## 7. How to Add New Test Suite to WRT 
 To add a new suite to wrt, perform the following steps:
 
 1)Fork and clone the wrt project from
@@ -261,7 +261,7 @@ https://github.com/crosswalk-project/wrt
 
 6)Add new cases to the test suite. 
 
-#8 How to Contribute New Cases to Test Suite Package
+## 8 How to Contribute New Cases to Test Suite Package
 
 To contribute new cases to test suite package, perform the following steps:
 
@@ -307,7 +307,7 @@ Note:
   </body>
 </html>
 
-#9 How to Contribute pairwise Cases to Test Suite Package
+## 9 How to Contribute pairwise Cases to Test Suite Package
 - Install  AllPairs
 
   - Download AllPairs from here:
@@ -332,7 +332,7 @@ Note:
 ....1 [2, 3]
 
 
-#Appendix 1 Tests.full.xml and tests.xml
+## Appendix 1 Tests.full.xml and tests.xml
 Each test suite package has two dedicated .xml files (tests.full.xml and tests.xml), which defines all test cases in the package.
 Tests.xml is a simplified version of tests.full.xml; it contains the minimum required elements when running the tests.
 Note: The .xml files must comply with the rules in the test\_definition.xsd file. For details, see  [https://github.com/testkit/testkit-lite/blob/master/xsd/test\_definition.xsd](https://github.com/testkit/testkit-lite/blob/master/xsd/test_definition.xsd).

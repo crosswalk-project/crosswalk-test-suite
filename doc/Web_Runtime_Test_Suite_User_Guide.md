@@ -1,6 +1,6 @@
 # Web Runtime Test Suite User Guide
 
-#1. Introduction
+## 1. Introduction
 
 This document provides method to run WRT TestSuite on TIZEN and Android Crosswalk. You can use the following method to run itwith testkit-lite. Testkit tool-chain includes 3 components:
 
@@ -8,7 +8,7 @@ This document provides method to run WRT TestSuite on TIZEN and Android Crosswal
 - testkit-stub: a test stub application deployed on Device
 - tinyweb:   a web service application deployed on Device
 
-#2. Web Testing Architecture
+## 2. Web Testing Architecture
 
 - Web Testing on Tizen
 
@@ -30,7 +30,7 @@ Server side include tinyweb, webrunner and TCs.
 
 Self contained test package which include all things - web runner, TCs.
 
-#3. Install testkit-lite on Host
+## 3. Install testkit-lite on Host
 
 - Deploy testkit-lite
 
@@ -46,7 +46,7 @@ Self contained test package which include all things - web runner, TCs.
 
         $ cd testkit-lite && sudo python setup.py install
 
-#4. WRT Test on Tizen Crosswalk
+## 4. WRT Test on Tizen Crosswalk
 
 - Download sdb tool and deploy it to Host
 
@@ -165,7 +165,7 @@ Self contained test package which include all things - web runner, TCs.
 
     $ sdb shell /opt/usr/media/tct/opt/<test_suite_name\>/inst.sh -u
 
-#5. WRT Test on Android Crosswalk
+## 5. WRT Test on Android Crosswalk
 
 - Deploy Android ADT bundle (Android SDK, IDE included) and Android NDK
 
@@ -244,3 +244,4 @@ Self contained test package which include all things - web runner, TCs.
 - Uninstall test suite
 
     $ /path/to/opt/<test\_suite\_name\>/inst.sh -u
+

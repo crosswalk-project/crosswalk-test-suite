@@ -1,13 +1,13 @@
 # Web Runtime Crosswalk Test Suite User Guide
 
-#1. Introduction
+## 1. Introduction
 
 This document provides method to run WRT Crosswalk Test Suite on TIZEN. You can use the following method to run itwith testkit-lite. Testkit tool-chain includes 2 components:
 
 - testkit-lite: a command-line interface application deployed on Host
 - testkit-stub: a test stub application deployed on Device
 
-#2. Install testkit-lite on Host
+## 2. Install testkit-lite on Host
 
 - Deploy testkit-lite
 
@@ -23,7 +23,7 @@ This document provides method to run WRT Crosswalk Test Suite on TIZEN. You can 
 
         $ cd testkit-lite && sudo python setup.py install
         
-#3. Install Crosswalk
+## 3. Install Crosswalk
 
 - Install crosswalk on Tizen
 
@@ -44,7 +44,7 @@ This document provides method to run WRT Crosswalk Test Suite on TIZEN. You can 
         $ sdb shell "rpm -ivh /home/app/content/tct/tizen-extensions-crosswalk-<version\>.i686.rpm"
 
 
-#4 Installation Web Runtime Crosswalk Test Suite
+## 4 Installation Web Runtime Crosswalk Test Suite
 
 - Pack Web Runtime Crosswalk Test Suite:
 
@@ -66,7 +66,8 @@ This document provides method to run WRT Crosswalk Test Suite on TIZEN. You can 
 
     $ testkit-lite -f "/path/tests.xml" --comm localhost
 
-#5. Viewing the Report
+## 5. Viewing the Report
 
 - tct-mgr: To generate the result XML at the specific location, click Export. You can view the summary information, including the case title and result.
-- testkit-lite: You can use -o parameter to generate the report file. 
+- testkit-lite: You can use -o parameter to generate the report file.
+

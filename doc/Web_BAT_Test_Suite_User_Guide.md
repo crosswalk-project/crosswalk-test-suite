@@ -1,10 +1,10 @@
 # Web BAT Test Suite User Guide
 
-#1. Introduction
+## 1. Introduction
 
 This document provides the method to run Web BAT TestSuite on Tizen Generic Platform.
 
-#2. Test Environments
+## 2. Test Environments
 
 - Tizen Generic Platform Hardware: Acer Sandy Bridge Notebook with USB-to-Ethernet(The model Tizen Image supported) converter. Ensure [Tizen generic-wayland-x86\_64 image](http://download.tizen.org/snapshots/tizen/generic/generic-wayland-x86_64/) installed following the WIKI for image installation.
 - [setuptools](https://pypi.python.org/packages/source/s/setuptools/): a testkit-lite dependent pythonmodule for Device Mode.
@@ -16,9 +16,9 @@ This document provides the method to run Web BAT TestSuite on Tizen Generic Plat
 
     **Note:**If you want to generate these Test Suite packages from the source code by yourself, you can refer to **Web\_Test\_Suite\_Packaging\_Guide\_v1.0** chapter 3.3 "Pack Web Test Suite Packages for Tizen IVI"
 
-#3. BAT Preconditions
+## 3. BAT Preconditions
 
-##3.1 Setup Ubuntu (12.04 64bit) Host for the Test Environments
+### 3.1 Setup Ubuntu (12.04 64bit) Host for the Test Environments
 
 - Install git
 
@@ -58,11 +58,11 @@ This document provides the method to run Web BAT TestSuite on Tizen Generic Plat
 
 **Note** : To execute these last two above steps, make sure you use Ubuntu 12.04 **64 bit** OS.
 
-##3.2 Use SSH to Connect Tizen Device
+### 3.2 Use SSH to Connect Tizen Device
 
 ssh root@device-ip #you may need input the pwd: tizen
 
-##3.3 Install Crosswalk Binary on Tizen Device
+### 3.3 Install Crosswalk Binary on Tizen Device
 
 zypper ar [http://download.tizen.org/snapshots/tizen/generic/generic-wayland-x86\_64/latest/repos/generic/x86\_64/packages/](http://download.tizen.org/snapshots/tizen/generic/generic-wayland-x86_64/latest/repos/generic/x86_64/packages/) Repo\_Generic
 
@@ -72,7 +72,7 @@ zypper ref -r Repo\_Generic
 
 zypper in crosswalk
 
-##3.4 Install testkit-lite on Tizen Device
+### 3.4 Install testkit-lite on Tizen Device
 
 scp username@host-ip:/path/to/requests-master.zip /tmp
 
@@ -96,11 +96,11 @@ cd /tmp/testkit-lite
 
 python setup.py install
 
-##3.5 Install testkit-stub on Tizen Device
+### 3.5 Install testkit-stub on Tizen Device
 
 scp username@host-ip:/path/to/testkit-stub/testkit-stub /usr/bin
 
-##3.6 Install tinyweb on Tizen Device
+### 3.6 Install tinyweb on Tizen Device
 
 scp username@host-ip:/path/to/tinyweb/tinyweb /opt/home/developer
 
@@ -118,7 +118,7 @@ ln -s /usr/lib64/libssl.so.1.0.0 /opt/home/developer/libssl.so
 
 ln -s /usr/lib64/libcrypto.so.1.0.0 /opt/home/developer/libcrypto.so
 
-##3.7 Install Test Suiten Tizen Device
+### 3.7 Install Test Suiten Tizen Device
 
 scp username@host-ip:/path/to/web-xbat-tests-xxx.xpk.zip /tmp
 
@@ -132,21 +132,23 @@ Then you can get the appid of the test APP (will be used in next execution steps
 
 su app -c "export DBUS\_SESSION\_BUS\_ADDRESS=\"unix:path=/run/user/5000/dbus/user\_bus\_socket\";export XDG\_RUNTIME\_DIR=\"/run/user/5000\";app_launcher -l"
 
-#4. Run BAT Tests
+## 4. Run BAT Tests
 
-##4.1 Launch tinyweb
+### 4.1 Launch tinyweb
 
 env LD\_LIBRARY\_PATH=/opt/home/developer PATH=$PATH:/opt/home/developer tinyweb -ssl\_certificate /opt/home/developer/server.pem -document\_root /opt/usr/media/tct/ -listening\_ports 80,8080,8081,8082,8083,8443s&
 
-##4.2 Run Tests
+### 4.2 Run Tests
 
 testkit-lite -e 'su app -c "export DBUS\_SESSION\_BUS\_ADDRESS=\"unix:path=/run/user/5000/dbus/user\_bus\_socket\";export XDG\_RUNTIME\_DIR=\"/run/user/5000\";app_launcher -s $appid"' -f /opt/usr/media/tct/opt/web-xbat-tests/tests.xml --comm localhost -o /path/to/result.xml
 
 **Note:** Please update the suite name when you use above commands, e.g. change "web-xbat-tests" to "web-abat-xwalk-tests"
 
-##4.3 Get result from /path/to/result.xml
-##4.4 Uninstall Tests
+### 4.3 Get result from /path/to/result.xml
+
+### 4.4 Uninstall Tests
 
 sh /opt/usr/media/tct/opt/web-xbat-tests/inst.sh -u
 
 **Note** : Please update the suite name when you use above commands, e.g. change "web-xbat-tests" to "web-abat-xwalk-tests"
+
