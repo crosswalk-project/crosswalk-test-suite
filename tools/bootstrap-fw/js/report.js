@@ -178,7 +178,7 @@ function resolveSuccess(files) {
         }
         fs.write(resultReport);
         fs.close();
-        $("#popup_info").modal(showMessage("success", "Download 'report.csv' successfully! You can get it from '/home/app/content/Downloads/" + testSuiteName + "/'."));
+        $("#popup_info").modal(showMessage("success", "Download 'report.csv' successfully! You can get it from 'TESTER-HOME-DIR/content/Downloads/" + testSuiteName + "/'."));
       }, function(e) {
         $("#popup_info").modal(showMessage("error", "CreateFile error: " + e.message));
       }, "UTF-8");
