@@ -268,25 +268,19 @@ Note:
 
 **Example**
 
-    <html>
-      <head>
-        <meta charset='utf-8'>
-        <title>Cordova Test: Mobile Spec - Install</title>
-        <link rel="author" title="Intel" href="http://www.intel.com">
-      </head>
-      <body>
-        <p><strong>Test steps:</strong></p>
-        <ol>
-          <li>Install the Cordova app on Android OS using the following command: "adb install -r cordova_mobile_spec-debug.apk"</li>
-          <li>Check if the installation woks fine</li>
-        </ol>
-        <p><strong>Expected Output:</strong></p>
-        <ol>
-          <li>The 'cordova_mobile_spec' app can begin to install</li>
-          <li>No errors occur and the 'cordova_mobile_spec' app can be intalled successfully</li>
-        </ol>
-      </body>
-    </html>
+    <meta charset='utf-8'>
+    <title>Cordova Test: Mobile Spec - Install</title>
+    <link rel="author" title="Intel" href="http://www.intel.com">
+    <p><strong>Test steps:</strong></p>
+    <ol>
+      <li>Install the Cordova app on Android OS using the following command: "adb install -r cordova_mobile_spec-debug.apk"</li>
+      <li>Check if the installation woks fine</li>
+    </ol>
+    <p><strong>Expected Output:</strong></p>
+    <ol>
+      <li>The 'cordova_mobile_spec' app can begin to install</li>
+      <li>No errors occur and the 'cordova_mobile_spec' app can be intalled successfully</li>
+    </ol>
 
 
 ## Appendix 1 Tests.full.xml and tests.xml

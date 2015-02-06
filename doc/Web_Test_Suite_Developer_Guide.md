@@ -257,20 +257,19 @@ Spec coverage assertion should obey the following rules:
 **Examples**
 
     <specs>
-              <spec>
-                <spec_assertion element_type="attribute" element_name="screenY" interface="Touch" specification="Touch Events version 1 (Partial)" section="Device" category="Tizen W3C API Specifications"/>
-                <spec_url>http://www.w3.org/TR/2013/WD-touch-events-20130124/#idl-def-Touch</spec_url>
-                <spec_statement/>
-              </spec>
+      <spec>
+        <spec_assertion element_type="attribute" element_name="screenY" interface="Touch" specification="Touch Events version 1 (Partial)" section="Device" category="Tizen W3C API Specifications"/>
+        <spec_url>http://www.w3.org/TR/2013/WD-touch-events-20130124/#idl-def-Touch</spec_url>
+        <spec_statement/>
+      </spec>
     </specs>
 
-
     <specs>
-              <spec>
-                <spec_assertion element_type="attribute" element_name="clientY" interface="Touch" specification="Touch Events version 1 (Partial)" section="Device" category="Tizen W3C API Specifications"/>
-                <spec_url>http://www.w3.org/TR/2013/WD-touch-events-20130124/#idl-def-Touch</spec_url>
-                <spec_statement/>
-              </spec>
+      <spec>
+        <spec_assertion element_type="attribute" element_name="clientY" interface="Touch" specification="Touch Events version 1 (Partial)" section="Device" category="Tizen W3C API Specifications"/>
+        <spec_url>http://www.w3.org/TR/2013/WD-touch-events-20130124/#idl-def-Touch</spec_url>
+        <spec_statement/>
+      </spec>
      </specs>
 
 ## 8. How to Add New Test Suite to WebAPI
@@ -363,28 +362,22 @@ Note:
 **Example**
 
     <!DOCTYPE html>
-     <html>
-      <head>
-        <title>Audio Test: audio_MediaController_play_exists</title>
-        <link rel="author" title="Intel" href="http://www.intel.com" />
-        <link rel="help" href="http://www.w3.org/TR/2012/WD-html5-20121025/media-elements.html#mediacontroller" />
-        <meta name="flags" content="" />
-        <meta name="assert" content="Check if audio.MediaController.play exists"/>
-        <script src="../resources/testharness.js"></script>
-        <script src="../resources/testharnessreport.js"></script>
-      </head>
-      <body>
-        <div id="log"></div>
-        <audio id = "audio" src="" mediagroup="v"></audio>
-        <script type="text/javascript">
-            test(function (){
-                var v = document.getElementById("audio");
-                var controller = v.controller;
-                assert_true("play" in controller, "audio.MediaController.play exists");
-            }, document.title);
-        </script>
-      </body>
-    </html>
+    <title>Audio Test: audio_MediaController_play_exists</title>
+    <link rel="author" title="Intel" href="http://www.intel.com">
+    <link rel="help" href="http://www.w3.org/TR/2012/WD-html5-20121025/media-elements.html#mediacontroller">
+    <meta name="flags" content="">
+    <meta name="assert" content="Check if audio.MediaController.play exists">
+    <script src="../resources/testharness.js"></script>
+    <script src="../resources/testharnessreport.js"></script>
+    <div id="log"></div>
+    <audio id = "audio" src="" mediagroup="v"></audio>
+    <script type="text/javascript">
+      test(function (){
+        var v = document.getElementById("audio");
+        var controller = v.controller;
+        assert_true("play" in controller, "audio.MediaController.play exists");
+      }, document.title);
+    </script>
 
 
 ## Appendix 1 Tests.full.xml and tests.xml
