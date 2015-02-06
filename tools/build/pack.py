@@ -39,6 +39,7 @@ import json
 import logging
 import zipfile
 import signal
+import fnmatch
 import subprocess
 import re
 from optparse import OptionParser
@@ -87,6 +88,28 @@ class ColorFormatter(logging.Formatter):
             record.msg = msg_color
 
         return logging.Formatter.format(self, record)
+
+
+def iterfindfiles(path, fnexp):
+    for root, dirs, files in os.walk(path):
+        for filename in fnmatch.filter(files, fnexp):
+            yield os.path.join(root, filename)
+
+def replaceUserString(path, fnexp, old_s, new_s):
+    for sub_file in iterfindfiles(path,fnexp):
+        try:
+            with open(sub_file,'r') as sub_read_obj:
+                read_string = sub_read_obj.read()
+        except IOError as err:
+            LOG.error("Read %s Error : "%sub_file + str(err))
+            continue
+        if read_string.find(old_s) >= 0:
+            try:
+                with open(sub_file,'w') as sub_write_obj:
+                    sub_write_obj.write(re.sub(old_s,new_s,read_string))
+            except IOError as err:
+                LOG.error("Modify %s Error : "%sub_file + str(err))
+                continue
 
 
 def pidExists(pid):
@@ -335,6 +358,9 @@ def prepareBuildRoot():
 
     if not doCopy(BUILD_PARAMETERS.srcdir, BUILD_ROOT_SRC):
         return False
+    else:
+        replaceUserString(BUILD_ROOT_SRC,'*','TESTER-HOME-DIR',"/home/%s"%BUILD_PARAMETERS.user)
+
     if not doRemove(
             glob.glob(os.path.join(BUILD_ROOT_SRC, "%s*.zip" % PKG_NAME))):
         return False
@@ -986,6 +1012,11 @@ def main():
             action="store_true",
             help="show this tool's version")
         opts_parser.add_option(
+            "-u",
+            "--user",
+            dest="user",
+            help="specify the user in inst.py")
+        opts_parser.add_option(
             "--pkg-version",
             dest="pkgversion",
             help="specify the pkg version, e.g. 0.0.0.1")
@@ -1006,6 +1037,10 @@ def main():
     if not BUILD_PARAMETERS.srcdir:
         BUILD_PARAMETERS.srcdir = os.getcwd()
     BUILD_PARAMETERS.srcdir = os.path.expanduser(BUILD_PARAMETERS.srcdir)
+
+    if not BUILD_PARAMETERS.user:
+        BUILD_PARAMETERS.user = "app"
+
 
     if not os.path.exists(
             os.path.join(BUILD_PARAMETERS.srcdir, "..", "..", VERSION_FILE)):
