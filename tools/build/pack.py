@@ -359,7 +359,7 @@ def prepareBuildRoot():
     if not doCopy(BUILD_PARAMETERS.srcdir, BUILD_ROOT_SRC):
         return False
     else:
-        replaceUserString(BUILD_ROOT_SRC,'*','TESTER-HOME-DIR',"/home/%s/content"%BUILD_PARAMETERS.user)
+        replaceUserString(BUILD_ROOT_SRC,'*','TESTER-HOME-DIR',"/home/%s"%BUILD_PARAMETERS.user)
 
     if not doRemove(
             glob.glob(os.path.join(BUILD_ROOT_SRC, "%s*.zip" % PKG_NAME))):
