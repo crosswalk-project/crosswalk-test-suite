@@ -70,34 +70,10 @@ Key files, folders, and images are:
 
 ### 3.1 Coding Style
 
-Test case developers shall follow the following rules:
+Refer to the `Coding_Style_Guide_CheatSheet.md`.
 
-- Comment each code block in a uniform way
-- Return a clear pass/fail result
-- Clean environment before exiting tests
-- Automate test under condition of stability
-- Keep test cases independent from each other
-- Keep case independent from UX or vertical specific applications
-- Avoid complicated code logic (comment it if unavoidable)
-- Avoid duplicated code
-- Remove redundant code
-
-Please refer to the **Coding\_Style\_Guide\_CheatSheet\_v1.0** to get a quick start.
-
-You can find detailed coding style instructions for specific languages from:
-
-1) CSS & HTML: [http://google-styleguide.googlecode.com/svn/trunk/htmlcssguide.xml](http://google-styleguide.googlecode.com/svn/trunk/htmlcssguide.xml)
-
-2) JavaScript: [http://google-styleguide.googlecode.com/svn/trunk/javascriptguide.xml](http://google-styleguide.googlecode.com/svn/trunk/javascriptguide.xml)
-
-3) Python: [http://google-styleguide.googlecode.com/svn/trunk/pyguide.html](http://google-styleguide.googlecode.com/svn/trunk/pyguide.html)
-
-4) Shell: [http://google-styleguide.googlecode.com/svn/trunk/shell.xml](http://google-styleguide.googlecode.com/svn/trunk/shell.xml)
-
-5) XML: 'xmllint --format' with default indent 2 spaces. See [http://xmlsoft.org/xmllint.html](http://xmlsoft.org/xmllint.html)
-
- - Test ID: Should be the same as test folder name.
- - Capability: This tag will help to check the Tizen device HW capability.
+- `Test ID`: shall be the same as test folder name.
+- `Capability`: check the Tizen device HW capability.
 
 ### 3.2 Adding a test entry in the Home UI
 

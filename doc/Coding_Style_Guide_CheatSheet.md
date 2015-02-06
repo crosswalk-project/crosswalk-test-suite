@@ -1,7 +1,6 @@
+# Coding Style Guide Cheat-Sheet
+
 <table>
-  <tr>
-    <th colspan="8">Coding Style Guide Cheat-Sheet</th>
-  </tr>
   <tr>
     <td>LANG</td>
     <td>CSS</td>
@@ -200,9 +199,10 @@
   </tr>
 </table>
 
-## Other reminder:
+## Notes
 
 - CSS:
+
   - ID and Class Naming
 
         Use meaningful or generic ID and class names. Use ID and class names that are as short as possible but as long as necessary.
@@ -389,6 +389,7 @@
         More info: [http://google-styleguide.googlecode.com/svn/trunk/cppguide.xml](http://google-styleguide.googlecode.com/svn/trunk/cppguide.xml)
 
 - Java:
+
   - One variable per declaration
 
         Every variable declaration (field or local) declares only one variable: declarations such as int a, b; are not used.
@@ -417,4 +418,31 @@
         Terminology Note: Inside the braces of a switch block are one or more statement groups. Each statement group consists of one or more switch labels (either case FOO: or default :), followed by one or more statements.
 
         More info: [http://google-styleguide.googlecode.com/svn/trunk/javaguide.html](http://google-styleguide.googlecode.com/svn/trunk/javaguide.html)
+
+
+- XML:
+
+  - Use `xmllint --format` with default indent 2 spaces.
+        See [http://xmlsoft.org/xmllint.html](http://xmlsoft.org/xmllint.html)
+
+## More Rules of test development
+
+- Comment each code block in a uniform way.
+
+- Return a clear pass/fail result.
+
+- Clean environment before exiting tests.
+
+- Automate test under condition of stability.
+
+- Keep test cases independent from each other.
+
+- Keep case independent from UX or vertical specific applications.
+
+- Avoid complicated code logic (comment it if unavoidable).
+
+- Avoid duplicated code.
+
+- Remove redundant code.
+
 
