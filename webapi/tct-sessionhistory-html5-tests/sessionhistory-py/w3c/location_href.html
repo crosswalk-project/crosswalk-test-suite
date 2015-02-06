@@ -1,34 +1,19 @@
 <!DOCTYPE HTML>
 <html>
- <head>
-  <title>Session History</title>
-  <script src="../../resources/testharness.js"></script>
-  <script src="../../resources/testharnessreport.js"></script>
- </head>
- <body>
-  <p>
-    <h3>location_href</h3>
-  </p>
-
-  <hr>
-
-  <div id="log"></div>
-
-  <script>
-
-    if (('location' in window) && window.location != null
-      && ('location' in document) && document.location != null){
+  <head>
+    <title>location_href</title>
+    <script src="../../resources/testharness.js"></script>
+    <script src="../../resources/testharnessreport.js"></script>
+  </head>
+  <body>
+    <div id="log"></div>
+    <script>
+    test(function () {
       var href = location.href;
 
-      test(function() {
-        assert_equals(href, document.URL, "href attribute is not correct.");
-      });
-    } else {
-      test(function() {
-        assert_unreached("location interface is not supported.");
-      });
-    }
+      assert_equals(href, document.URL, "href");
 
-  </script>
- </body>
+    }, "location href");
+    </script>
+  </body>
 </html>

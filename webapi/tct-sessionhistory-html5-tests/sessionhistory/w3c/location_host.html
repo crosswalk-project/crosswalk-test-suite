@@ -1,23 +1,14 @@
 <!DOCTYPE HTML>
 <html>
- <head>
-  <title>Session History</title>
-  <script src="../../resources/testharness.js"></script>
-  <script src="../../resources/testharnessreport.js"></script>
- </head>
- <body>
-  <p>
-    <h3>location_host</h3>
-  </p>
-
-  <hr>
-
-  <div id="log"></div>
-
-  <script>
-
-    if (('location' in window) && window.location != null
-      && ('location' in document) && document.location != null){
+  <head>
+    <title>location_host</title>
+    <script src="../../resources/testharness.js"></script>
+    <script src="../../resources/testharnessreport.js"></script>
+  </head>
+  <body>
+    <div id="log"></div>
+    <script>
+    test(function () {
       var host = location.host;
       var url = location.href;
 
@@ -29,15 +20,9 @@
           url = url.substr(0, pos);
       }
 
-      test(function() {
-        assert_equals(host, url, "host attribute is not correct.");
-      });
-    } else {
-      test(function() {
-        assert_unreached("location interface is not supported.");
-      });
-    }
+      assert_equals(host, url, "host");
 
-  </script>
+    }, "location host");
+    </script>
  </body>
 </html>
