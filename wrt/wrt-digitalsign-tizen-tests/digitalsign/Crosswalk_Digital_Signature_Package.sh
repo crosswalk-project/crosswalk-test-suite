@@ -30,7 +30,7 @@
 
 local_path=$(cd $(dirname $0);pwd)
 source $local_path/Common
-
+get_currentuser
 func_check_xwalkservice
 
 pkgcmd -i -t xpk -p $local_path/../source/signature.xpk -q

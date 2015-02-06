@@ -28,6 +28,10 @@
 #Authors:
 #       IVAN CHEN <yufeix.chen@intel.com>
 
+function get_currentuser(){
+    TIZEN_USER=`whoami`
+}
+
 function func_xwalkservice(){
   export DBUS_SESSION_BUS_ADDRESS=unix:path=/run/user/5000/dbus/user_bus_socket
   systemctl --user status xwalk.service > /dev/null
@@ -53,6 +57,7 @@ function get_app_id(){
 }
 
 function check_db(){
+  get_currentuser
   sqlite3 /home/$TIZEN_USER/.applications/dbspace/.app_info.db "select * from app_info;" | grep $1 | grep $2
   if [ $? -ne 0  ];then
     echo "cannot found $2 in applications.db"

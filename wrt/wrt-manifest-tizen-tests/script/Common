@@ -1,6 +1,6 @@
 #!/bin/bash
 #
-# Copyright (C) 2013 Intel Corporation
+# Copyright (C) 2015 Intel Corporation
 #
 # Redistribution and use in source and binary forms, with or without modification,
 # are permitted provided that the following conditions are met:
@@ -26,31 +26,8 @@
 # EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 #
 # Authors:
-#        Cao, Jenny <jenny.q.cao@intel.com>
-#        Yue, jianhui <jianhuix.a.yue@intel.com>
+#        Yin, Haichao <haichaox.yin@intel.com>
 
-source $(dirname $0)/Common
-get_currentuser
-if [ $# != 1 ];then
-    echo "usage $0 + packagename"
-fi
-RESOURCE_DIR=/home/$TIZEN_USER/content
-PACKAGENAME="$RESOURCE_DIR/tct/opt/tct-ext02-wrt-tests/$1"
-p_name=$1
-APP_NAME=${p_name%.*}
-find_app $APP_NAME
-
-if [ -n $pkgids ];then
-  uninstall_app $APP_NAME
-  sleep 5
-fi
-func_install $1
-if [ $? -eq 0 ];then
-  echo -e  " pkgcmd install widget successfully!"
-  find_app $APP_NAME
-  uninstall_app $APP_NAME
-  exit 0
-else
-  echo -e  "pkgcmd install widget failed!"
-  exit 1
-fi
+function get_currentuser(){
+    TIZEN_USER=`whoami`
+}

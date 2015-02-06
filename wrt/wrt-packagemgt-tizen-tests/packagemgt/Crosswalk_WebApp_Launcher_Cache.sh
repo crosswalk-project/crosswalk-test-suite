@@ -36,7 +36,7 @@ local_path=$(cd $(dirname $0);pwd)
 source $local_path/Common
 xpk_path=$local_path/../testapp
 webAppTest="web_app_test"
-
+get_currentuser
 # uninstall app first, and then install app
 getPkgid $webAppTest
 get_uninstall=`pkgcmd -u -n  $pkg_id -q`

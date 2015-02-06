@@ -30,6 +30,7 @@
 
 local_path=$(dirname $0)
 source $local_path/Common
+get_currentuser
 
 func_check_xwalkservice
 if [[ $? -eq 1 ]]; then

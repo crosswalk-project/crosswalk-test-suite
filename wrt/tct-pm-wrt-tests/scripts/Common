@@ -31,6 +31,10 @@
 path=$(dirname $(dirname $0))
 source $path/scripts/xwalk_common.sh
 
+function get_currentuser(){
+    TIZEN_USER=`whoami`
+}
+
 function func_install()
 {
     PACKAGENAME="$path/$1"

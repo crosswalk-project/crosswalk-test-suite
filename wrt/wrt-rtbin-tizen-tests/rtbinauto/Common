@@ -28,6 +28,10 @@
 #Authors:
 #       IVAN CHEN <yufeix.chen@intel.com>
 
+function get_currentuser(){
+    TIZEN_USER=`whoami`
+}
+
 function func_xwalkservice()
 {
             systemctl --user status xwalk.service > /dev/null

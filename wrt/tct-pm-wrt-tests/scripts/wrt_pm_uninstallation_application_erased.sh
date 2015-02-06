@@ -29,7 +29,7 @@
 #        Yue, jianhui <jianhuix.a.yue@intel.com>
 
 source $(dirname $0)/Common
-
+get_currentuser
 func_install uninstallation-application-erased.wgt
 if [ $? -eq 1 ];then
   echo "The installation is failed"

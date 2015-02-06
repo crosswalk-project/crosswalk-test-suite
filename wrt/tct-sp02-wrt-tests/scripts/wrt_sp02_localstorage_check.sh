@@ -31,6 +31,7 @@
 path=$(dirname $(dirname $0))
 source $path/scripts/xwalk_common.sh
 APP_NAME="private_localstorage_check"
+get_currentuser
 function existbh()
 {
   echo $1

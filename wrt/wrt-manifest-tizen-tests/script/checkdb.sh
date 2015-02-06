@@ -26,9 +26,10 @@
 #EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 #
 
+source $(dirname $0)/Common
 path=$(dirname $(dirname $0))
 xpksuite_name=wrt-manifest-tizen-tests
 PACKAGENAME="$path/$1"
 Result="Pass"
-
+get_currentuser
 sqlite3 /home/$TIZEN_USER/.applications/dbspace/.app_info.db "select count(*) from app_info;"
