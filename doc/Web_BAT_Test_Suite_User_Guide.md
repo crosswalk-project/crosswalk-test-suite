@@ -4,6 +4,9 @@
 
 This document provides the method to run Web BAT TestSuite on Tizen Generic Platform.
 
+
+Note that the `normaluser` in this guide is the user name of the device under test. It just means a normal username for multiuser support.
+
 ## 2. Test Environments
 
 - Tizen Generic Platform Hardware: Acer Sandy Bridge Notebook with USB-to-Ethernet(The model Tizen Image supported) converter. Ensure [Tizen generic-wayland-x86\_64 image](http://download.tizen.org/snapshots/tizen/generic/generic-wayland-x86_64/) installed following the WIKI for image installation.
@@ -102,21 +105,21 @@ scp username@host-ip:/path/to/testkit-stub/testkit-stub /usr/bin
 
 ### 3.6 Install tinyweb on Tizen Device
 
-scp username@host-ip:/path/to/tinyweb/tinyweb /opt/home/developer
+scp username@host-ip:/path/to/tinyweb/tinyweb /opt/home/normaluser
 
-scp username@host-ip:/path/to/tinyweb/cgi-getcookie /opt/home/developer
+scp username@host-ip:/path/to/tinyweb/cgi-getcookie /opt/home/normaluser
 
-scp username@host-ip:/path/to/tinyweb/cgi-getfield /opt/home/developer
+scp username@host-ip:/path/to/tinyweb/cgi-getfield /opt/home/normaluser
 
-scp username@host-ip:/path/to/tinyweb/server.pem /opt/home/developer
+scp username@host-ip:/path/to/tinyweb/server.pem /opt/home/normaluser
 
-cd /opt/home/developer/
+cd /opt/home/normaluser/
 
 chmod 666 server.pem
 
-ln -s /usr/lib64/libssl.so.1.0.0 /opt/home/developer/libssl.so
+ln -s /usr/lib64/libssl.so.1.0.0 /opt/home/normaluser/libssl.so
 
-ln -s /usr/lib64/libcrypto.so.1.0.0 /opt/home/developer/libcrypto.so
+ln -s /usr/lib64/libcrypto.so.1.0.0 /opt/home/normaluser/libcrypto.so
 
 ### 3.7 Install Test Suiten Tizen Device
 
@@ -130,17 +133,17 @@ sh /opt/usr/media/tct/opt/web-xbat-tests/inst.sh
 
 Then you can get the appid of the test APP (will be used in next execution steps):
 
-su app -c "export DBUS\_SESSION\_BUS\_ADDRESS=\"unix:path=/run/user/5000/dbus/user\_bus\_socket\";export XDG\_RUNTIME\_DIR=\"/run/user/5000\";app_launcher -l"
+su normaluser -c "export DBUS\_SESSION\_BUS\_ADDRESS=\"unix:path=/run/user/5000/dbus/user\_bus\_socket\";export XDG\_RUNTIME\_DIR=\"/run/user/5000\";app_launcher -l"
 
 ## 4. Run BAT Tests
 
 ### 4.1 Launch tinyweb
 
-env LD\_LIBRARY\_PATH=/opt/home/developer PATH=$PATH:/opt/home/developer tinyweb -ssl\_certificate /opt/home/developer/server.pem -document\_root /opt/usr/media/tct/ -listening\_ports 80,8080,8081,8082,8083,8443s&
+env LD\_LIBRARY\_PATH=/opt/home/normaluser PATH=$PATH:/opt/home/normaluser tinyweb -ssl\_certificate /opt/home/normaluser/server.pem -document\_root /opt/usr/media/tct/ -listening\_ports 80,8080,8081,8082,8083,8443s&
 
 ### 4.2 Run Tests
 
-testkit-lite -e 'su app -c "export DBUS\_SESSION\_BUS\_ADDRESS=\"unix:path=/run/user/5000/dbus/user\_bus\_socket\";export XDG\_RUNTIME\_DIR=\"/run/user/5000\";app_launcher -s $appid"' -f /opt/usr/media/tct/opt/web-xbat-tests/tests.xml --comm localhost -o /path/to/result.xml
+testkit-lite -e 'su normaluser -c "export DBUS\_SESSION\_BUS\_ADDRESS=\"unix:path=/run/user/5000/dbus/user\_bus\_socket\";export XDG\_RUNTIME\_DIR=\"/run/user/5000\";app_launcher -s $appid"' -f /opt/usr/media/tct/opt/web-xbat-tests/tests.xml --comm localhost -o /path/to/result.xml
 
 **Note:** Please update the suite name when you use above commands, e.g. change "web-xbat-tests" to "web-abat-xwalk-tests"
 
