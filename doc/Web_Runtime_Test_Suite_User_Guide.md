@@ -79,13 +79,13 @@ Self contained test package which include all things - web runner, TCs.
 
   - Deploy crosswalk to Tizen device
 
-        $ sdb push crosswalk-<version\>.i686.rpm /opt/home/developer
+        $ sdb push crosswalk-<version\>.i686.rpm /opt/home/normaluser
 
-        $ sdb push tizen-extensions-crosswalk-<version\>.i686.rpm /opt/home/developer
+        $ sdb push tizen-extensions-crosswalk-<version\>.i686.rpm /opt/home/normaluser
 
-        $ sdb shell "rpm -ivh /opt/home/developer/crosswalk-<version\>.i686.rpm"
+        $ sdb shell "rpm -ivh /opt/home/normaluser/crosswalk-<version\>.i686.rpm"
 
-        $ sdb shell "rpm -ivh /opt/home/developer/tizen-extensions-crosswalk-<version\>.i686.rpm"
+        $ sdb shell "rpm -ivh /opt/home/normaluser/tizen-extensions-crosswalk-<version\>.i686.rpm"
 
 - Deploy testkit-stub and launch it
 
@@ -99,13 +99,13 @@ Self contained test package which include all things - web runner, TCs.
 
   - Deploy binary to Tizen device
 
-        $ sdb push testkit-stub /opt/home/developer
+        $ sdb push testkit-stub /opt/home/normaluser
 
-        $ sdb shell "chmod +x /opt/home/developer/testkit-stub"
+        $ sdb shell "chmod +x /opt/home/normaluser/testkit-stub"
 
   - Launch testkit-stub
 
-        $ sdb shell "/opt/home/developer/testkit-stub --port:8000"
+        $ sdb shell "/opt/home/normaluser/testkit-stub --port:8000"
 
 - Deploy tinyweb and launch it
 
@@ -119,31 +119,31 @@ Self contained test package which include all things - web runner, TCs.
 
   - Deploy binaries to Tizen device
 
-        $ sdb push tinyweb /opt/home/developer/
+        $ sdb push tinyweb /opt/home/normaluser/
 
-        $ sdb shell "chmod a+x /opt/home/developer/tinyweb"
+        $ sdb shell "chmod a+x /opt/home/normaluser/tinyweb"
 
-        $ sdb push cgi-getcookie /opt/home/developer/
+        $ sdb push cgi-getcookie /opt/home/normaluser/
 
-        $ sdb shell "chmod a+x /opt/home/developer/cgi-getcookie"
+        $ sdb shell "chmod a+x /opt/home/normaluser/cgi-getcookie"
 
-        $ sdb push cgi-getfield /opt/home/developer/
+        $ sdb push cgi-getfield /opt/home/normaluser/
 
-        $ sdb shell "chmod a+x /opt/home/developer/cgi-getfield"
+        $ sdb shell "chmod a+x /opt/home/normaluser/cgi-getfield"
 
-        $ sdb push server.pem /opt/home/developer/
+        $ sdb push server.pem /opt/home/normaluser/
 
-        $ sdb shell "chmod 666 /opt/home/developer/server.pem"
+        $ sdb shell "chmod 666 /opt/home/normaluser/server.pem"
 
-        $ sdb shell "ln -s /usr/lib/libssl.so.1.0.0 /opt/home/developer/libssl.so"
+        $ sdb shell "ln -s /usr/lib/libssl.so.1.0.0 /opt/home/normaluser/libssl.so"
 
-        $ sdb shell "ln -s /usr/lib/libcrypto.so.1.0.0 /opt/home/developer/libcrypto.so"
+        $ sdb shell "ln -s /usr/lib/libcrypto.so.1.0.0 /opt/home/normaluser/libcrypto.so"
 
   - Launch tinyweb
 
         $ DPATH=`sdb shell "printenv PATH"`
 
-        $ timeout 5 sdb shell "env LD\_LIBRARY\_PATH=/opt/home/developer PATH=$DPATH:/opt/home/developer tinyweb -ssl\_certificate /opt/home/developer/server.pem -document\_root /opt/usr/media/tct/ -listening\_ports 80,8080,8081,8082,8083,8443s; sleep 3s"
+        $ timeout 5 sdb shell "env LD\_LIBRARY\_PATH=/opt/home/normaluser PATH=$DPATH:/opt/home/normaluser tinyweb -ssl\_certificate /opt/home/normaluser/server.pem -document\_root /opt/usr/media/tct/ -listening\_ports 80,8080,8081,8082,8083,8443s; sleep 3s"
 
 - Pack test suite package
 
