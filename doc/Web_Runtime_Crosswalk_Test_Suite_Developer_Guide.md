@@ -138,27 +138,7 @@ The following files and folders are mandatory in :
 
 ## 3. Test Case Coding Style
 
-Test case developers shall follow the following rules:
-
-- Comment each code block in a uniform way
-- Return a clear pass/fail result
-- Clean environment before exiting tests
-- Automate test under condition of stability
-- Keep test cases independent from each other
-- Keep case independent from UX or vertical specific applications
-- Avoid complicated code logic (comment it if unavoidable)
-- Avoid duplicated code
-- Remove redundant code
-
-Please refer to the **Coding\_Style\_Guide\_CheatSheet\_v1.0** to get a quick start.
-
-You can find detailed coding style instructions for specific languages from:
-
-1)CSS & HTML: [http://google-styleguide.googlecode.com/svn/trunk/htmlcssguide.xml](http://google-styleguide.googlecode.com/svn/trunk/htmlcssguide.xml)
-2)JavaScript: [http://google-styleguide.googlecode.com/svn/trunk/javascriptguide.xml](http://google-styleguide.googlecode.com/svn/trunk/javascriptguide.xml)
-3)Python: [http://google-styleguide.googlecode.com/svn/trunk/pyguide.html](http://google-styleguide.googlecode.com/svn/trunk/pyguide.html)
-4)Shell: [http://google-styleguide.googlecode.com/svn/trunk/shell.xml](http://google-styleguide.googlecode.com/svn/trunk/shell.xml)
-5)XML: 'xmllint --format' with default indent 2 spaces. See [http://xmlsoft.org/xmllint.html](http://xmlsoft.org/xmllint.html)
+Refer to the `Coding_Style_Guide_CheatSheet.md`.
 
 ## 4. Test Case Naming Convention
 
@@ -211,14 +191,14 @@ Test case created should be classified by the following rules:
 
 **Example**
 
- <testcase purpose="Validate if the web app can show 'text' when settings language is set to English" type="Functional" status="approved" component="Crosswalk I18n" execution_type="manual" priority="P1" id="Crosswalk_I18n_TestEn">
-        <description>
-          <pre_condition>
-            1.Make sure Crosswalk application is launched.
-          </pre_condition>
-          <test_script_entry>/opt/wrt-i18nmanu-tizen-tests/i18n/Crosswalk_I18n_TestEn.html</test_script_entry>
-        </description>
-      </testcase>
+    <testcase purpose="Validate if the web app can show 'text' when settings language is set to English" type="Functional" status="approved" component="Crosswalk I18n" execution_type="manual" priority="P1" id="Crosswalk_I18n_TestEn">
+      <description>
+        <pre_condition>
+          Make sure Crosswalk application is launched.
+        </pre_condition>
+        <test_script_entry>/opt/wrt-i18nmanu-tizen-tests/i18n/Crosswalk_I18n_TestEn.html</test_script_entry>
+       </description>
+    </testcase>
 
 ## 7. How to Add New Test Suite to WRT
 To add a new suite to wrt, perform the following steps:
@@ -251,11 +231,11 @@ https://github.com/crosswalk-project/wrt
 5)Update config.xml.wgt:
 
     <widget id='http://tizen.org/test/wrt-i18nmanu-tizen-tests' xmlns='http://www.w3.org/ns/widgets' xmlns:tizen='http://tizen.org/ns/widgets' version='1.0.0.1'>
-  <access origin="*"/>
-  <icon src="icon.png" height="117" width="117"/>
-  <name>wrt-i18nmanu-tizen-tests</name>
-  <tizen:application id="i18ntestcs.wrti18ntizentests" package="i18ntestcs" required_version="2.2"/>
-  <tizen:setting screen-orientation="landscape"/>
+      <access origin="*"/>
+      <icon src="icon.png" height="117" width="117"/>
+      <name>wrt-i18nmanu-tizen-tests</name>
+      <tizen:application id="i18ntestcs.wrti18ntizentests" package="i18ntestcs" required_version="2.2"/>
+      <tizen:setting screen-orientation="landscape"/>
     </widget>
 
 
@@ -281,13 +261,9 @@ Note:
 
 **Example**
 
-<html>
-  <head>
     <meta charset='utf-8'>
     <title>Crosswalk_I18n_AppNameChinese_Test</title>
     <link rel="author" title="Intel" href="http://www.intel.com">
-  </head>
-  <body>
     <p>
       <strong>Test steps:</strong>
     </p>
@@ -304,10 +280,9 @@ Note:
       <li>The device language is set to Chinese successfully</li>
       <li>Web app name with Chinese and launch successfuly</li>
     </ol>
-  </body>
-</html>
 
 ## 9 How to Contribute pairwise Cases to Test Suite Package
+
 - Install  AllPairs
 
   - Download AllPairs from here:
@@ -339,39 +314,39 @@ Note: The .xml files must comply with the rules in the test\_definition.xsd file
 
 Tests.full.xml Example:
 
-<?xml version="1.0" encoding="UTF-8"?>
-<?xml-stylesheet type="text/xsl" href="./testcase.xsl"?>
-<test_definition>
-  <suite name="wrt-i18nmanu-tizen-tests" category="Crosswalk_I18n" launcher="xwalk">
-    <set name="i18n" type="js">
-      <testcase purpose="Validate if the web app can show 'Web' Test when settings language is set to English" type="Functional" status="approved" component="Crosswalk I18n" execution_type="manual" priority="P1" id="Crosswalk_I18n_TestEn">
-        <description>
-          <pre_condition>
-            1.Make sure Crosswalk application is launched.
-          </pre_condition>
-          <test_script_entry>/opt/wrt-i18nmanu-tizen-tests/i18n/Crosswalk_I18n_TestEn.html</test_script_entry>
-        </description>
-      </testcase>
-    </set>
-  </suite>
-</test_definition>
+    <?xml version="1.0" encoding="UTF-8"?>
+    <?xml-stylesheet type="text/xsl" href="./testcase.xsl"?>
+    <test_definition>
+      <suite name="wrt-i18nmanu-tizen-tests" category="Crosswalk_I18n" launcher="xwalk">
+        <set name="i18n" type="js">
+          <testcase purpose="Validate if the web app can show 'Web' Test when settings language is set to English" type="Functional" status="approved" component="Crosswalk I18n" execution_type="manual" priority="P1" id="Crosswalk_I18n_TestEn">
+            <description>
+              <pre_condition>
+                Make sure Crosswalk application is launched.
+              </pre_condition>
+              <test_script_entry>/opt/wrt-i18nmanu-tizen-tests/i18n/Crosswalk_I18n_TestEn.html</test_script_entry>
+            </description>
+          </testcase>
+        </set>
+      </suite>
+    </test_definition>
 
 Tests.xml Example.
 
-<?xml version="1.0" encoding="UTF-8"?>
-<?xml-stylesheet type="text/xsl" href="./testcase.xsl"?>
-<test_definition>
-  <suite category="Crosswalk_I18n" launcher="xwalk" name="wrt-i18nmanu-tizen-tests">
-    <set name="i18n" type="js">
-      <testcase component="Crosswalk I18n" execution_type="manual" id="Crosswalk_I18n_TestEn" purpose="Validate if the web app can show 'Web' Test when settings language is set to English">
-        <description>
-          <pre_condition>
-            1.Make sure Crosswalk application is launched.
-          </pre_condition>
-          <test_script_entry>/opt/wrt-i18nmanu-tizen-tests/i18n/Crosswalk_I18n_TestEn.html</test_script_entry>
-        </description>
-      </testcase>
-     </set>
-  </suite>
-</test_definition>
+    <?xml version="1.0" encoding="UTF-8"?>
+    <?xml-stylesheet type="text/xsl" href="./testcase.xsl"?>
+    <test_definition>
+      <suite category="Crosswalk_I18n" launcher="xwalk" name="wrt-i18nmanu-tizen-tests">
+        <set name="i18n" type="js">
+          <testcase component="Crosswalk I18n" execution_type="manual" id="Crosswalk_I18n_TestEn" purpose="Validate if the web app can show 'Web' Test when settings language is set to English">
+            <description>
+              <pre_condition>
+                Make sure Crosswalk application is launched.
+              </pre_condition>
+              <test_script_entry>/opt/wrt-i18nmanu-tizen-tests/i18n/Crosswalk_I18n_TestEn.html</test_script_entry>
+            </description>
+          </testcase>
+         </set>
+      </suite>
+    </test_definition>
 

@@ -136,27 +136,7 @@ The following files and folders are mandatory in :
 
 ## 3. Test Case Coding Style
 
-Test case developers shall follow the following rules:
-
-- Comment each code block in a uniform way
-- Return a clear pass/fail result
-- Clean environment before exiting tests
-- Automate test under condition of stability
-- Keep test cases independent from each other
-- Keep case independent from UX or vertical specific applications
-- Avoid complicated code logic (comment it if unavoidable)
-- Avoid duplicated code
-- Remove redundant code
-
-Please refer to the **Coding\_Style\_Guide\_CheatSheet\_v1.0** to get a quick start.
-
-You can find detailed coding style instructions for specific languages from:
-
-1)CSS & HTML: [http://google-styleguide.googlecode.com/svn/trunk/htmlcssguide.xml](http://google-styleguide.googlecode.com/svn/trunk/htmlcssguide.xml)
-2)JavaScript: [http://google-styleguide.googlecode.com/svn/trunk/javascriptguide.xml](http://google-styleguide.googlecode.com/svn/trunk/javascriptguide.xml)
-3)Python: [http://google-styleguide.googlecode.com/svn/trunk/pyguide.html](http://google-styleguide.googlecode.com/svn/trunk/pyguide.html)
-4)Shell: [http://google-styleguide.googlecode.com/svn/trunk/shell.xml](http://google-styleguide.googlecode.com/svn/trunk/shell.xml)
-5)XML: 'xmllint --format' with default indent 2 spaces. See [http://xmlsoft.org/xmllint.html](http://xmlsoft.org/xmllint.html)
+Refer to the `Coding_Style_Guide_CheatSheet.md`.
 
 ## 4. Test Case Naming Convention
 
@@ -277,20 +257,19 @@ Spec coverage assertion should obey the following rules:
 **Examples**
 
     <specs>
-              <spec>
-                <spec_assertion element_type="attribute" element_name="screenY" interface="Touch" specification="Touch Events version 1 (Partial)" section="Device" category="Tizen W3C API Specifications"/>
-                <spec_url>http://www.w3.org/TR/2013/WD-touch-events-20130124/#idl-def-Touch</spec_url>
-                <spec_statement/>
-              </spec>
+      <spec>
+        <spec_assertion element_type="attribute" element_name="screenY" interface="Touch" specification="Touch Events version 1 (Partial)" section="Device" category="Tizen W3C API Specifications"/>
+        <spec_url>http://www.w3.org/TR/2013/WD-touch-events-20130124/#idl-def-Touch</spec_url>
+        <spec_statement/>
+      </spec>
     </specs>
 
-
     <specs>
-              <spec>
-                <spec_assertion element_type="attribute" element_name="clientY" interface="Touch" specification="Touch Events version 1 (Partial)" section="Device" category="Tizen W3C API Specifications"/>
-                <spec_url>http://www.w3.org/TR/2013/WD-touch-events-20130124/#idl-def-Touch</spec_url>
-                <spec_statement/>
-              </spec>
+      <spec>
+        <spec_assertion element_type="attribute" element_name="clientY" interface="Touch" specification="Touch Events version 1 (Partial)" section="Device" category="Tizen W3C API Specifications"/>
+        <spec_url>http://www.w3.org/TR/2013/WD-touch-events-20130124/#idl-def-Touch</spec_url>
+        <spec_statement/>
+      </spec>
      </specs>
 
 ## 8. How to Add New Test Suite to WebAPI
@@ -383,28 +362,22 @@ Note:
 **Example**
 
     <!DOCTYPE html>
-     <html>
-      <head>
-        <title>Audio Test: audio_MediaController_play_exists</title>
-        <link rel="author" title="Intel" href="http://www.intel.com" />
-        <link rel="help" href="http://www.w3.org/TR/2012/WD-html5-20121025/media-elements.html#mediacontroller" />
-        <meta name="flags" content="" />
-        <meta name="assert" content="Check if audio.MediaController.play exists"/>
-        <script src="../resources/testharness.js"></script>
-        <script src="../resources/testharnessreport.js"></script>
-      </head>
-      <body>
-        <div id="log"></div>
-        <audio id = "audio" src="" mediagroup="v"></audio>
-        <script type="text/javascript">
-            test(function (){
-                var v = document.getElementById("audio");
-                var controller = v.controller;
-                assert_true("play" in controller, "audio.MediaController.play exists");
-            }, document.title);
-        </script>
-      </body>
-    </html>
+    <title>Audio Test: audio_MediaController_play_exists</title>
+    <link rel="author" title="Intel" href="http://www.intel.com">
+    <link rel="help" href="http://www.w3.org/TR/2012/WD-html5-20121025/media-elements.html#mediacontroller">
+    <meta name="flags" content="">
+    <meta name="assert" content="Check if audio.MediaController.play exists">
+    <script src="../resources/testharness.js"></script>
+    <script src="../resources/testharnessreport.js"></script>
+    <div id="log"></div>
+    <audio id = "audio" src="" mediagroup="v"></audio>
+    <script type="text/javascript">
+      test(function (){
+        var v = document.getElementById("audio");
+        var controller = v.controller;
+        assert_true("play" in controller, "audio.MediaController.play exists");
+      }, document.title);
+    </script>
 
 
 ## Appendix 1 Tests.full.xml and tests.xml

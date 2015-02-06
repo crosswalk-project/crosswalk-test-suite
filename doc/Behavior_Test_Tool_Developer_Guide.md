@@ -70,34 +70,10 @@ Key files, folders, and images are:
 
 ### 3.1 Coding Style
 
-Test case developers shall follow the following rules:
+Refer to the `Coding_Style_Guide_CheatSheet.md`.
 
-- Comment each code block in a uniform way
-- Return a clear pass/fail result
-- Clean environment before exiting tests
-- Automate test under condition of stability
-- Keep test cases independent from each other
-- Keep case independent from UX or vertical specific applications
-- Avoid complicated code logic (comment it if unavoidable)
-- Avoid duplicated code
-- Remove redundant code
-
-Please refer to the **Coding\_Style\_Guide\_CheatSheet\_v1.0** to get a quick start.
-
-You can find detailed coding style instructions for specific languages from:
-
-1) CSS & HTML: [http://google-styleguide.googlecode.com/svn/trunk/htmlcssguide.xml](http://google-styleguide.googlecode.com/svn/trunk/htmlcssguide.xml)
-
-2) JavaScript: [http://google-styleguide.googlecode.com/svn/trunk/javascriptguide.xml](http://google-styleguide.googlecode.com/svn/trunk/javascriptguide.xml)
-
-3) Python: [http://google-styleguide.googlecode.com/svn/trunk/pyguide.html](http://google-styleguide.googlecode.com/svn/trunk/pyguide.html)
-
-4) Shell: [http://google-styleguide.googlecode.com/svn/trunk/shell.xml](http://google-styleguide.googlecode.com/svn/trunk/shell.xml)
-
-5) XML: 'xmllint --format' with default indent 2 spaces. See [http://xmlsoft.org/xmllint.html](http://xmlsoft.org/xmllint.html)
-
- - Test ID: Should be the same as test folder name.
- - Capability: This tag will help to check the Tizen device HW capability.
+- `Test ID`: shall be the same as test folder name.
+- `Capability`: check the Tizen device HW capability.
 
 ### 3.2 Adding a test entry in the Home UI
 
@@ -105,7 +81,7 @@ In the latest behavior tests framework, we start using tests.xml to record test 
 
 The tests.xml format is just like the XML scheme of Tizen WebAPI/WRT tests. For example, the test case ID needs to be unique and the test's folder name should be the same as the test case ID. The test folder name (test ID) and the XML can have some special rules. Currently there is a rule for avoiding use of some special characters (such as space). You can use tools/schema/test\_definition.xsd to verify your tests.xml after modifications.
 
-As stated earlier, the "capability" tag be added for Tizen device HW capability checking. If a tests need capability checking, you need add a sub tag "<capability name="your_capability_name" /\>" to this "testcase" tag of tests.xml file. If a mandatory feature is not present, this tests entry of home UI will be marked as black background.
+As stated earlier, the "capability" tag be added for Tizen device HW capability checking. If a tests need capability checking, you need add a sub tag "<capability name="your_capability_name"/\>" to this "testcase" tag of tests.xml file. If a mandatory feature is not present, this tests entry of home UI will be marked as black background.
 
 ### 3.3 Adding test code resources to the test folder
 
@@ -122,29 +98,23 @@ Figure 3‑1. Test code and resources structure
 
 Example:
 
-    <html>
-    <head>
-    <meta charset="utf-8" />
+    <meta charset="utf-8">
     <meta name="viewport" content="initial-scale=1.0, maximum-scale=1.0, width=device-width">
-    <link rel="stylesheet" type="text/css" href="../../css/jquery.mobile.css" />
+    <link rel="stylesheet" href="../../css/jquery.mobile.css">
     <script src="../../js/thirdparty/jquery.js"></script>
     <script src="../../js/thirdparty/jquery.mobile.js"></script>
     <script src="../../js/tests.js"></script>
-    </head>
-    <body>
-        <div data-role="header">
-            <h1 id="main_page_title"></h1>
-        </div>
-        <div id="content">
+    <div data-role="header">
+      <h1 id="main_page_title"></h1>
+    </div>
+    <div id="content">
         Hello World !
-        </div>
-        <div data-role="footer" data-position="fixed">
-        </div>
-        <div data-role="popup" id="popup_info" data-theme="a">
-            <p>Test Info</p>
-        </div>
-    </body>
-    </html>
+    </div>
+    <div data-role="footer" data-position="fixed">
+    </div>
+    <div data-role="popup" id="popup_info" data-theme="a">
+      <p>Test Info</p>
+    </div>
 
 - Test developer always need import following css and js files to you test:
 - Do not need add header title as test.js will add title to header automatically.
@@ -152,7 +122,7 @@ Example:
 
 Example:
 
-    <link rel="stylesheet" href="../../css/jquery.mobile.css" />
+    <link rel="stylesheet" href="../../css/jquery.mobile.css">
     <script src="../../js/thirdparty/jquery.js"></script>
 
 - "../../js/tests.js" and "../../js/tests.css": Provide JS APIs and CSS style need by test footer Bar, your need import it in your test page html file always. The JS provide following APIs:
@@ -167,7 +137,7 @@ Example:
 Example:
 
     <div data-role="popup" id="popup_info">
-    <p>Your test description/test steps/PASS&FAIL conditions.<p\>
+    <p>Your test description/test steps/PASS&FAIL conditions.</p>
 
 
 ### 3.4 Updating the configuration file
