@@ -4,7 +4,7 @@
 
 This document provides comprehensive information about Behavior Test Tool, including the following: Overview, Installation and Deployment, Test Execution and Report.
 
-Note that the `normaluser` in this guide is the user name of the device under test. It just means a normal username for multiuser support.
+Note that the `tester` in this guide is the user name of the device under test. It just means a normal username for multiuser support.
 
 ## 2. Overview
 
@@ -28,13 +28,13 @@ Behavior Test Tool has these features:
 
   - Deploy crosswalk to Tizen device
 
-        $ sdb push crosswalk-<version\>.i686.rpm /opt/home/normaluser
+        $ sdb push crosswalk-<version\>.i686.rpm /opt/home/tester
 
-        $ sdb push tizen-extensions-crosswalk-<version\>.i686.rpm /opt/home/normaluser
+        $ sdb push tizen-extensions-crosswalk-<version\>.i686.rpm /opt/home/tester
 
-        $ sdb shell "rpm -ivh /opt/home/normaluser/crosswalk-<version\>.i686.rpm"
+        $ sdb shell "rpm -ivh /opt/home/tester/crosswalk-<version\>.i686.rpm"
 
-        $ sdb shell "rpm -ivh /opt/home/normaluser/tizen-extensions-crosswalk-<version\>.i686.rpm"
+        $ sdb shell "rpm -ivh /opt/home/tester/tizen-extensions-crosswalk-<version\>.i686.rpm"
 
 - Install crosswalk on Android
 
@@ -64,31 +64,31 @@ Behavior Test Tool has these features:
 
         $ sdb shell "mkdir -p /opt/usr/media/tct/"
 
-        $ sdb push tinyweb /opt/home/normaluser/
+        $ sdb push tinyweb /opt/home/tester/
 
-        $ sdb shell "chmod a+x /opt/home/normaluser/tinyweb"
+        $ sdb shell "chmod a+x /opt/home/tester/tinyweb"
 
-        $ sdb push cgi-getcookie /opt/home/normaluser/
+        $ sdb push cgi-getcookie /opt/home/tester/
 
-        $ sdb shell "chmod a+x /opt/home/normaluser/cgi-getcookie"
+        $ sdb shell "chmod a+x /opt/home/tester/cgi-getcookie"
 
-        $ sdb push cgi-getfield /opt/home/normaluser/
+        $ sdb push cgi-getfield /opt/home/tester/
 
-        $ sdb shell "chmod a+x /opt/home/normaluser/cgi-getfield"
+        $ sdb shell "chmod a+x /opt/home/tester/cgi-getfield"
 
-        $ sdb push server.pem /opt/home/normaluser/
+        $ sdb push server.pem /opt/home/tester/
 
-        $ sdb shell "chmod 666 /opt/home/normaluser/server.pem"
+        $ sdb shell "chmod 666 /opt/home/tester/server.pem"
 
-        $ sdb shell "ln -s /usr/lib/libssl.so.1.0.0 /opt/home/normaluser/libssl.so"
+        $ sdb shell "ln -s /usr/lib/libssl.so.1.0.0 /opt/home/tester/libssl.so"
 
-        $ sdb shell "ln -s /usr/lib/libcrypto.so.1.0.0 /opt/home/normaluser/libcrypto.so"
+        $ sdb shell "ln -s /usr/lib/libcrypto.so.1.0.0 /opt/home/tester/libcrypto.so"
 
   - Launch tinyweb
 
         $ DPATH=`sdb shell "printenv PATH"`
 
-        $ timeout 5 sdb shell "env LD\_LIBRARY\_PATH=/opt/home/normaluserPATH=$DPATH:/opt/home/normaluser tinyweb -ssl\_certificate /opt/home/normaluser/server.pem -document\_root /opt/usr/media/tct/ -listening\_ports 80,8080,8081,8082,8083,8443s; sleep 3s"
+        $ timeout 5 sdb shell "env LD\_LIBRARY\_PATH=/opt/home/tester PATH=$DPATH:/opt/home/tester tinyweb -ssl\_certificate /opt/home/tester/server.pem -document\_root /opt/usr/media/tct/ -listening\_ports 80,8080,8081,8082,8083,8443s; sleep 3s"
 
 2. Deploy tinyweb on Android
 
