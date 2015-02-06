@@ -4,6 +4,9 @@
 
 This document provides the method to run Web BAT TestSuite on Tizen Generic Platform.
 
+
+Note that the `normaluser` in this guide is the user name of the device under test. It just means a normal username for multiuser support.
+
 ## 2. Test Environments
 
 - Tizen Generic Platform Hardware: Acer Sandy Bridge Notebook with USB-to-Ethernet(The model Tizen Image supported) converter. Ensure [Tizen generic-wayland-x86\_64 image](http://download.tizen.org/snapshots/tizen/generic/generic-wayland-x86_64/) installed following the WIKI for image installation.

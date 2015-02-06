@@ -8,6 +8,8 @@ This document provides method to run WRT TestSuite on TIZEN and Android Crosswal
 - testkit-stub: a test stub application deployed on Device
 - tinyweb:   a web service application deployed on Device
 
+Note that the `normaluser` in this guide is the user name of the device under test. It just means a normal user name for multiuser support.
+
 ## 2. Web Testing Architecture
 
 - Web Testing on Tizen

@@ -8,6 +8,8 @@ This document provides method to run WebAPI TestSuite on TIZEN and Android Cross
 - testkit-stub: a test stub application deployed on Device
 - tinyweb:  a web service application deployed on Device
 
+Note that the `normaluser` in this guide is the user name of the device under test. It just means a normal username for multiuser support.
+
 ## 2. Web Testing Architecture
 
 - Web Testing on Tizen

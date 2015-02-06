@@ -4,6 +4,8 @@
 
 This document provides comprehensive information about Behavior Test Tool, including the following: Overview, Installation and Deployment, Test Execution and Report.
 
+Note that the `normaluser` in this guide is the user name of the device under test. It just means a normal username for multiuser support.
+
 ## 2. Overview
 
 Behavior Test Tool is a device behavior checker that uses jQuery. It is a major component of the Tizen Compliance Tests tool set.
