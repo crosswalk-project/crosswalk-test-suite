@@ -8,7 +8,7 @@ This document provides method to run WRT TestSuite on TIZEN and Android Crosswal
 - testkit-stub: a test stub application deployed on Device
 - tinyweb:   a web service application deployed on Device
 
-Note that the `normaluser` in this guide is the user name of the device under test. It just means a normal user name for multiuser support.
+Note that the `tester` in this guide is the user name of the device under test. It just means a normal user name for multiuser support.
 
 ## 2. Web Testing Architecture
 
@@ -81,13 +81,13 @@ Self contained test package which include all things - web runner, TCs.
 
   - Deploy crosswalk to Tizen device
 
-        $ sdb push crosswalk-<version\>.i686.rpm /opt/home/normaluser
+        $ sdb push crosswalk-<version\>.i686.rpm /opt/home/tester
 
-        $ sdb push tizen-extensions-crosswalk-<version\>.i686.rpm /opt/home/normaluser
+        $ sdb push tizen-extensions-crosswalk-<version\>.i686.rpm /opt/home/tester
 
-        $ sdb shell "rpm -ivh /opt/home/normaluser/crosswalk-<version\>.i686.rpm"
+        $ sdb shell "rpm -ivh /opt/home/tester/crosswalk-<version\>.i686.rpm"
 
-        $ sdb shell "rpm -ivh /opt/home/normaluser/tizen-extensions-crosswalk-<version\>.i686.rpm"
+        $ sdb shell "rpm -ivh /opt/home/tester/tizen-extensions-crosswalk-<version\>.i686.rpm"
 
 - Deploy testkit-stub and launch it
 
@@ -101,13 +101,13 @@ Self contained test package which include all things - web runner, TCs.
 
   - Deploy binary to Tizen device
 
-        $ sdb push testkit-stub /opt/home/normaluser
+        $ sdb push testkit-stub /opt/home/tester
 
-        $ sdb shell "chmod +x /opt/home/normaluser/testkit-stub"
+        $ sdb shell "chmod +x /opt/home/tester/testkit-stub"
 
   - Launch testkit-stub
 
-        $ sdb shell "/opt/home/normaluser/testkit-stub --port:8000"
+        $ sdb shell "/opt/home/tester/testkit-stub --port:8000"
 
 - Deploy tinyweb and launch it
 
@@ -121,31 +121,31 @@ Self contained test package which include all things - web runner, TCs.
 
   - Deploy binaries to Tizen device
 
-        $ sdb push tinyweb /opt/home/normaluser/
+        $ sdb push tinyweb /opt/home/tester/
 
-        $ sdb shell "chmod a+x /opt/home/normaluser/tinyweb"
+        $ sdb shell "chmod a+x /opt/home/tester/tinyweb"
 
-        $ sdb push cgi-getcookie /opt/home/normaluser/
+        $ sdb push cgi-getcookie /opt/home/tester/
 
-        $ sdb shell "chmod a+x /opt/home/normaluser/cgi-getcookie"
+        $ sdb shell "chmod a+x /opt/home/tester/cgi-getcookie"
 
-        $ sdb push cgi-getfield /opt/home/normaluser/
+        $ sdb push cgi-getfield /opt/home/tester/
 
-        $ sdb shell "chmod a+x /opt/home/normaluser/cgi-getfield"
+        $ sdb shell "chmod a+x /opt/home/tester/cgi-getfield"
 
-        $ sdb push server.pem /opt/home/normaluser/
+        $ sdb push server.pem /opt/home/tester/
 
-        $ sdb shell "chmod 666 /opt/home/normaluser/server.pem"
+        $ sdb shell "chmod 666 /opt/home/tester/server.pem"
 
-        $ sdb shell "ln -s /usr/lib/libssl.so.1.0.0 /opt/home/normaluser/libssl.so"
+        $ sdb shell "ln -s /usr/lib/libssl.so.1.0.0 /opt/home/tester/libssl.so"
 
-        $ sdb shell "ln -s /usr/lib/libcrypto.so.1.0.0 /opt/home/normaluser/libcrypto.so"
+        $ sdb shell "ln -s /usr/lib/libcrypto.so.1.0.0 /opt/home/tester/libcrypto.so"
 
   - Launch tinyweb
 
         $ DPATH=`sdb shell "printenv PATH"`
 
-        $ timeout 5 sdb shell "env LD\_LIBRARY\_PATH=/opt/home/normaluser PATH=$DPATH:/opt/home/normaluser tinyweb -ssl\_certificate /opt/home/normaluser/server.pem -document\_root /opt/usr/media/tct/ -listening\_ports 80,8080,8081,8082,8083,8443s; sleep 3s"
+        $ timeout 5 sdb shell "env LD\_LIBRARY\_PATH=/opt/home/tester PATH=$DPATH:/opt/home/tester tinyweb -ssl\_certificate /opt/home/tester/server.pem -document\_root /opt/usr/media/tct/ -listening\_ports 80,8080,8081,8082,8083,8443s; sleep 3s"
 
 - Pack test suite package
 
