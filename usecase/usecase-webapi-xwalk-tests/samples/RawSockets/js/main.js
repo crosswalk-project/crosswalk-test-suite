@@ -68,7 +68,7 @@ function connectRowSockets() {
         $("#chatbox").text("TCPServersocket - Connected");
         connectEvent.connectedSocket.ondata = function (messageEvent) {
             var data = ab2str(messageEvent.data);
-            $("#chatbox").text("TCPServersocket - recive - " + data + "\n" + $("#chatbox").text());
+            $("#chatbox").text("TCPServersocket - receive - " + data + "\n" + $("#chatbox").text());
             connectEvent.connectedSocket.send(data);
             $("#chatbox").text("TCPServersocket - send - " + data + "\n" + $("#chatbox").text());
         }
@@ -77,7 +77,7 @@ function connectRowSockets() {
     TCPsocket.onopen = function () {
         TCPsocket.ondata = function (messageEvent) {
             var data = ab2str(messageEvent.data);
-            $("#chatbox").text("TCPSocket - recive - " + data + "\n" + $("#chatbox").text());
+            $("#chatbox").text("TCPSocket - receive - " + data + "\n" + $("#chatbox").text());
         };
     };
     TCPsocket.onclose = function () {
