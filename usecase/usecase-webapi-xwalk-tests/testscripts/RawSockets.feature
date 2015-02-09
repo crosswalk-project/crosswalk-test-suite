@@ -6,9 +6,9 @@ Feature: Usecase WebAPI
     Then I should see "TCPServersocket - Connected"
      And I fill in "socketinput" with "hellow"
      And I click "send"
-    Then I should see "TCPServersocket - recive - hellow"
+    Then I should see "TCPServersocket - receive - hellow"
     Then I should see "TCPServersocket - send - hellow"
-    Then I should see "TCPSocket - recive - hellow"
+    Then I should see "TCPSocket - receive - hellow"
      And I click "disconnect"
     Then I should see "TCPServersocket - Disconnected"   
 

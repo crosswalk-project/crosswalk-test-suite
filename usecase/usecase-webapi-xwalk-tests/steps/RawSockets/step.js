@@ -1,6 +1,6 @@
 var step = '<font class="fontSize">'
            + '<p>Test Purpose: </p>'
-           + '<p>Verifies TCPSocket and TCPServerSocket can send and recive message.</p>'
+           + '<p>Verifies TCPSocket and TCPServerSocket can send and receive message.</p>'
            + '<p>Test Steps: </p>'
              + '<ol>'
                + '<li>Click the "Connect"</li>'
