@@ -37,12 +37,13 @@ Authors:
   <div>
     <h4>Pre-condition</h4>
     <ul>
-      <li>Install the XWalkRuntimeLib.apk(current crosswalk version) on test device</li>
+      <li>Pack test app with lower version (than current) of Crosswalk binary at first</li>
+      <li>Install the XWalkRuntimeLib.apk (lower crosswalk version than current, can be same to step 1) on test device</li>
     </ul>
     <h4>Test Steps</h4>
     <ol>
       <li>Install the app named like "cookie_shared.apk" and launch it, then type text as Cookie value in "The value of the cookie should be" input box in "Example" section, then click link "Create cookie 1"</li>
-      <li>Install the app "cookie_ssbl.apk" build with higher Crosswalk binary and upgrade the crosswalk runtime lib (use "adb install -r *apk" to force upgrading), then click link "Read cookie 1" in "Example" section (Please don't click "Erase cookie 1")</li>
+      <li>Install the app "cookie_ssbl.apk" build with current Crosswalk binary and runtime lib (use "adb install -r *apk" to force upgrading), then click link "Read cookie 1" in "Example" section (Please don't click "Erase cookie 1")</li>
     </ol>
     <h4>Expected Results</h4>
     <ol>
