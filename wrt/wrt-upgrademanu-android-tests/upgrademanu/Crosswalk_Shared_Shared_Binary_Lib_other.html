@@ -37,12 +37,13 @@ Authors:
   <div>
     <h4>Pre-condition</h4>
     <ul>
-      <li>Install the XWalkRuntimeLib.apk(current crosswalk version) on test device</li>
+      <li>Pack test app with lower version (than current) of Crosswalk binary at first</li>
+      <li>Install the XWalkRuntimeLib.apk (lower crosswalk version than current, can be same to step 1) on test device</li>
     </ul>
     <h4>Test Steps</h4>
     <ol>
       <li>Install the app named like "example_shared.apk" and launch it, then input value and click "Set localStorage", "Set IndexDB" and "Set Web SQL Database"</li>
-      <li>Install the app "example_ssbl.apk" build with higher Crosswalk binary and upgrade crosswalk runtime lib (use "adb install -r *apk" to force upgrading), then click "Get localStorage", "Get IndexDB" and "Get Web SQL Database"</li>
+      <li>Install the app "example_ssbl.apk" build with current Crosswalk binary and runtime lib (use "adb install -r *apk" to force upgrading), then click "Get localStorage", "Get IndexDB" and "Get Web SQL Database"</li>
     </ol>
     <h4>Expected Results</h4>
     <ol>
