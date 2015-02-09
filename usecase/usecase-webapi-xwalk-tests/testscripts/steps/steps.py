@@ -12,10 +12,10 @@ def i_visit_frame(context, key):
     context.app.driver.switch_to_frame(key)
     assert True
 
-@step(u'I should see nothing in "{key}"')
-def check_text_by_key(context, key):
+@step(u'I should see nothing in "{attr}" attr of "{key}" area')
+def check_text_by_key(context, attr, key):
     elements = context.app.driver.find_elements_by_id(key)
-    if len(elements) == 1 and elements[0].get_attribute("value") == "":
+    if len(elements) == 1 and elements[0].get_attribute(attr) == "":
         assert True
     else:
         assert False
@@ -25,11 +25,11 @@ def should_see_text_element_with_color(context, text, key, color):
     assert context.app.check_normal_text_element_timeout_with_color(
         text, key, color), u'Text was not found'
 
-@step(u'I verify value in "{key}" is "{expecttype}" tpye')
+@step(u'I verify value in "{key}" is "{expecttype}" type')
 def check_type_by_key(context, key, expecttype):
     typename = context.app.check_content_type(key, display=True)
     if typename == expecttype:
-        assert False
+        assert True
     else:
         assert False
 
