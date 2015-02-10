@@ -57,7 +57,7 @@ def genPackage():
             for item in apk_list:
                 os.remove(item)
 
-            cmd ="python make_apk.py --package=org.xwalk.test --arch=" + ARCH + " --manifest="
+            cmd ="python make_apk.py --package=org.xwalk.test --app-versionCode=123 --arch=" + ARCH + " --manifest="
             status, info = commands.getstatusoutput(cmd + manifestPath)
             if flag == "negative":
                 if status == 0:
