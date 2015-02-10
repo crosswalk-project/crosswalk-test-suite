@@ -1,0 +1,135 @@
+{
+    "pkg-blacklist": [
+        "config.xml",
+        "pack.py",
+        "testcase.xsl",
+        "testresult.xsl",
+        "tests.css",
+        "icon.png",
+        "manifest.json",
+        "suite.json",
+        "inst.*"
+    ],
+    "pkg-list": {
+        "apk,cordova": {
+            "blacklist": [
+                "*"
+            ],
+            "copylist": {
+                "inst.apk.py": "inst.py",
+                "tests.full.xml": "tests.full.xml",
+                "tests.xml": "tests.xml",
+                "testapp": "testapp"
+            },
+            "pkg-app": {},
+            "subapp-list": {
+                "testapp/cookieeev": {
+                    "app-name": "cookie_eev",
+                    "apk-pkg-opt":"cookie",
+                    "apk-version-opt": "1.0.0.",
+                    "apk-mode-opt": "embedded",
+                    "apk-type":"MANIFEST"
+                },
+                "testapp/cookieembedded": {
+                    "app-name": "cookie_embedded",
+                    "apk-pkg-opt":"cookie",
+                    "apk-mode-opt": "embedded",
+                    "apk-type":"MANIFEST"
+                },
+                "testapp/cookiesev": {
+                    "app-name": "cookie_sev",
+                    "apk-pkg-opt":"cookie",
+                    "apk-version-opt": "1.0.0.",
+                    "apk-mode-opt": "embedded",
+                    "apk-type":"MANIFEST"
+                },
+                "testapp/cookieshared": {
+                    "app-name": "cookie_shared",
+                    "apk-pkg-opt":"cookie",
+                    "apk-mode-opt": "shared",
+                    "apk-type": "MANIFEST"
+                },
+                "testapp/cookiessbl": {
+                    "app-name": "cookie_ssbl",
+                    "apk-pkg-opt":"cookie",
+                    "apk-mode-opt": "shared",
+                    "apk-type":"MANIFEST"
+                },
+                "testapp/cookiessv": {
+                    "app-name": "cookie_ssv",
+                    "apk-pkg-opt":"cookie",
+                    "apk-version-opt": "1.0.0.",
+                    "apk-mode-opt": "shared",
+                    "apk-type":"MANIFEST"
+                },
+                "testapp/eev": {
+                    "app-name": "example_eev",
+                    "apk-pkg-opt":"example",
+                    "apk-version-opt": "1.0.0.",
+                    "apk-mode-opt": "embedded",
+                    "apk-type":"MANIFEST"
+                },
+                "testapp/embedded": {
+                    "app-name": "example_embedded",
+                    "apk-pkg-opt":"example",
+                    "apk-mode-opt": "embedded",
+                    "apk-type":"MANIFEST"
+                },
+                "testapp/sev": {
+                    "app-name": "example_sev",
+                    "apk-pkg-opt":"example",
+                    "apk-version-opt": "1.0.0.",
+                    "apk-mode-opt": "embedded",
+                    "apk-type":"MANIFEST"
+                },
+                "testapp/shared": {
+                    "app-name": "example_shared",
+                    "apk-pkg-opt":"example",
+                    "apk-mode-opt": "shared",
+                    "apk-type":"MANIFEST"
+                },
+                "testapp/ssbl": {
+                    "app-name": "example_ssbl",
+                    "apk-pkg-opt":"example",
+                    "apk-mode-opt": "shared",
+                    "apk-type":"MANIFEST"
+                },
+                "testapp/ssv": {
+                    "app-name": "example_ssv",
+                    "apk-pkg-opt":"example",
+                    "apk-version-opt": "1.0.0.",
+                    "apk-mode-opt": "shared",
+                    "apk-type":"MANIFEST"
+                }
+            }
+        },
+        "apk-aio": {
+            "blacklist": []
+        },
+        "wgt": {
+            "blacklist": [
+                "*"
+            ],
+            "copylist": {
+                "inst.wgt.py": "inst.py",
+                "tests.full.xml": "tests.full.xml",
+                "tests.xml": "tests.xml"
+            },
+            "pkg-app": {}
+        },
+        "xpk": {
+            "blacklist": [
+                "*"
+            ],
+            "copylist": {
+                "inst.xpk.py": "inst.py",
+                "tests.full.xml": "tests.full.xml",
+                "tests.xml": "tests.xml"
+            },
+            "pkg-app": {
+                "blacklist": []
+            }
+        }
+    },
+    "pkg-name": "wrt-upgrademanu-android-tests"
+}
