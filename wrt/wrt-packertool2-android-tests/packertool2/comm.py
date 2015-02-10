@@ -271,18 +271,16 @@ def versionCode(cmd, flag, base, self):
                 print "Find"
                 l = lines[i].strip("\n\r").strip()
                 result = l.index("versionCode")
+                end = l.index("versionName")
                 if flag != "":
                     start = result
-                    end = result + 15
                     self.assertIn('11', l[start:end])
                 elif base != "":
                     start = result
-                    end = result + 21
                     self.assertIn('1234567', l[start:end])
                 else:
                     start = result
-                    end = result + 18
-                    self.assertIn('1.0.0', l[start:end])
+                    self.assertIn('10000', l[start:end])
                 break
             else:
                 print "Continue find"
