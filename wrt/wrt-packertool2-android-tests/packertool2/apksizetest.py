@@ -33,7 +33,7 @@ import os, sys, commands, shutil, glob
 import comm
 
 class TestPackertoolsFunctions(unittest.TestCase):      
-    def test_manifest_versionCode(self):
+    def test_apksize(self):
         comm.setUp()
         os.chdir(comm.ConstPath)
         extenCode = comm.ConstPath + "/../testapp/contactextension/"
