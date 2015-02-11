@@ -2,631 +2,624 @@
 <?xml-stylesheet type="text/xsl" href="./testcase.xsl"?>
 <test_definition>
   <suite category="Crosswalk_Sample_App" name="sampleapp-android-tests">
-    <set name="SampleApp" type="js">
-      <testcase component="Sample Apps" execution_type="manual" id="HangOnMan_Install" priority="P0" purpose="Validate if sample app HangOnMan could be installed successfully" status="approved" type="Functional">
+    <set name="SampleApp-pyunit" type="pyunit">
+      <testcase component="Sample Apps" execution_type="auto" id="hexgl_pack" priority="P0" purpose="Validate if HexGL could be packed successfully" status="approved" type="Functional">
         <description>
           <pre_condition>
-            1.Make sure Crosswalk packer tool 'crosswalk' is downloaded and cd  crosswalk path;
-            2.Make sure webapp is downloaded;
-            3.Copy your HTML/JS/CSS and related resources into the directory:"crosswalk/app_src/assets";
-            4.Make sure device is connected with ubuntu.
+            1.Make sure HexGL source code is available
           </pre_condition>
           <post_condition />
-          <test_script_entry>/opt/sampleapp-android-tests/sampleapp/HangOnMan_Install.html</test_script_entry>
+          <test_script_entry>/opt/sampleapp-android-tests/sampleapp/hexgl_pack.py</test_script_entry>
         </description>
       </testcase>
-      <testcase component="Sample Apps" execution_type="manual" id="HangOnMan_UnInstall" priority="P0" purpose="Validate if sample app HangOnMan could be uninstalled successfully" status="approved" type="Functional">
-        <description>
-          <pre_condition>
-            1.Make sure the HangOnMan webapp is installed
-          </pre_condition>
-          <post_condition />
-          <test_script_entry>/opt/sampleapp-android-tests/sampleapp/HangOnMan_Uninstall.html</test_script_entry>
-        </description>
-      </testcase>
-      <testcase component="Sample Apps" execution_type="manual" id="HangOnMan_Uninstall_WithAppRunning" priority="P2" purpose="Validate Crosswalk support that uninstall the sample app HangOnMan when it's actually running" status="approved" type="Functional">
-        <description>
-          <pre_condition>
-            1.Make sure sample app HangOnMan is launched;2.Make sure there sample app HangOnMan is available
-          </pre_condition>
-          <post_condition />
-         <test_script_entry>/opt/sampleapp-android-tests/sampleapp/HangOnMan_Uninstall_WithAppRunning.html</test_script_entry>
-        </description>
-      </testcase>
-      <testcase component="Sample Apps" execution_type="manual" id="HangOnMan_Launch" priority="P1" purpose="Validate if sample app HangOnMan could be launched successfully" status="approved" type="Functional">
-        <description>
-          <pre_condition>
-            1.Make sure the HangOnMan webapp is installed
-          </pre_condition>
-          <post_condition />
-        <test_script_entry>/opt/sampleapp-android-tests/sampleapp/HangOnMan_Launch.html</test_script_entry>
-        </description>
-      </testcase>
-      <testcase component="Sample Apps" execution_type="manual" id="HangOnMan_Close" priority="P2" purpose="Validate if sample app HangOnMan could be closed successfully" status="approved" type="Functional">
-        <description>
-          <pre_condition>
-            1.Make sure the HangOnMan webapp is launched
-          </pre_condition>
-          <post_condition />
-           <test_script_entry>/opt/sampleapp-android-tests/sampleapp/HangOnMan_Close.html</test_script_entry>
-        </description>
-      </testcase>
-      <testcase component="Sample Apps" execution_type="manual" id="HangOnMan_Icon" priority="P0" purpose="Validate if sample app HangOnMan icon display normally" status="approved" type="Functional">
-        <description>
-          <pre_condition>
-            1.Make sure HangOnMan webapp is installed;2.Make sure HangOnMan webapp is available
-          </pre_condition>
-          <post_condition />
-        <test_script_entry>/opt/sampleapp-android-tests/sampleapp/HangOnMan_Icon.html</test_script_entry>
-        </description>
-      </testcase>
-      <testcase component="Sample Apps" execution_type="manual" id="HangOnMan_Switch" priority="P2" purpose="Validate if sample app HangOnMan could switch back successfully" status="approved" type="Functional">
-        <description>
-          <pre_condition>
-            1.Make sure the HangOnMan webapp is launched
-          </pre_condition>
-          <post_condition />
-          <test_script_entry>/opt/sampleapp-android-tests/sampleapp/HangOnMan_Switch.html</test_script_entry>
-        </description>
-      </testcase>
-      <testcase component="Sample Apps" execution_type="manual" id="HangOnMan_Orientation" priority="P2" purpose="Validate if sample app HangOnMan could rotate between portrait orientation screen and landscape orientation screen" status="approved" type="Functional">
-        <description>
-          <pre_condition>
-            1.Make sure the HangOnMan webapp is launched
-          </pre_condition>
-          <post_condition />
-          <test_script_entry>/opt/sampleapp-android-tests/sampleapp/HangOnMan_Orientation.html</test_script_entry>
-        </description>
-      </testcase>
-      <testcase component="Sample Apps" execution_type="manual" id="HangOnMan_AppFunction" priority="P2" purpose="Validate if sample app HangOnMan function could work well" status="approved" type="Functional">
-        <description>
-          <pre_condition>
-            1.Make sure the HangOnMan webapp is launched
-          </pre_condition>
-          <post_condition />
-          <test_script_entry>/opt/sampleapp-android-tests/sampleapp/HangOnMan_AppFunction.html</test_script_entry>
-        </description>
-      </testcase>
-      <testcase component="Sample Apps" execution_type="manual" id="iSmartbook_Install" priority="P0" purpose="Validate if sample app iSmartbook could be installed successfully" status="designed" type="Functional">
-        <description>
-          <pre_condition>
-            1.Make sure Crosswalk packer tool 'crosswalk' is downloaded and cd  crosswalk path;
-            2.Make sure webapp is downloaded;
-            3.Copy your HTML/JS/CSS and related resources into the directory:"crosswalk/app_src/assets";
-            4.Make sure device is connected with ubuntu.
-          </pre_condition>
-          <post_condition />
-          <test_script_entry>/opt/sampleapp-android-tests/sampleapp/iSmartbook_Install.html</test_script_entry>
-        </description>
-      </testcase>
-      <testcase component="Sample Apps" execution_type="manual" id="iSmartbook_UnInstall" priority="P0" purpose="Validate if sample app iSmartbook could be uninstalled successfully" status="designed" type="Functional">
-        <description>
-          <pre_condition>
-            1.Make sure the iSmartbook webapp is installed
-          </pre_condition>
-          <post_condition />
-          <test_script_entry>/opt/sampleapp-android-tests/sampleapp/iSmartbook_UnInstall.html</test_script_entry>
-        </description>
-      </testcase>
-      <testcase component="Sample Apps" execution_type="manual" id="iSmartbook_Uninstall_WithAppRunning" priority="P2" purpose="Validate Crosswalk support that uninstall the sample app iSmartbook when it's actually running" status="designed" type="Functional">
-        <description>
-          <pre_condition>
-            1.Make sure sample app iSmartbook is launched;2.Make sure there sample app iSmartbook is available
-          </pre_condition>
-          <post_condition />
-          <test_script_entry>/opt/sampleapp-android-tests/sampleapp/iSmartbook_Uninstall_WithAppRunning.html</test_script_entry>
-        </description>
-      </testcase>
-      <testcase component="Sample Apps" execution_type="manual" id="iSmartbook_Launch" priority="P1" purpose="Validate if sample app iSmartbook could be launched successfully" status="designed" type="Functional">
-        <description>
-          <pre_condition>
-            1.Make sure the iSmartbook webapp is installed
-          </pre_condition>
-          <post_condition />
-          <test_script_entry>/opt/sampleapp-android-tests/sampleapp/iSmartbook_Launch.html</test_script_entry>
-        </description>
-      </testcase>
-      <testcase component="Sample Apps" execution_type="manual" id="iSmartbook_Close" priority="P2" purpose="Validate if sample app iSmartbook could be closed successfully" status="designed" type="Functional">
-        <description>
-          <pre_condition>
-            1.Make sure the iSmartbook webapp is launched
-          </pre_condition>
-          <post_condition />
-          <test_script_entry>/opt/sampleapp-android-tests/sampleapp/iSmartbook_Close.html</test_script_entry>
-        </description>
-      </testcase>
-      <testcase component="Sample Apps" execution_type="manual" id="iSmartbook_Icon" priority="P0" purpose="Validate if sample app iSmartbook icon display normally" status="designed" type="Functional">
-        <description>
-          <pre_condition>
-            1.Make sure iSmartbook webapp is installed;2.Make sure iSmartbook webapp is available
-          </pre_condition>
-          <post_condition />
-          <test_script_entry>/opt/sampleapp-android-tests/sampleapp/iSmartbook_Icon.html</test_script_entry>
-        </description>
-      </testcase>
-      <testcase component="Sample Apps" execution_type="manual" id="iSmartbook_Switch" priority="P2" purpose="Validate if sample app iSmartbook could switch back successfully" status="designed" type="Functional">
-        <description>
-          <pre_condition>
-            1.Make sure the iSmartbook webapp is launched
-          </pre_condition>
-          <post_condition />
-          <test_script_entry>/opt/sampleapp-android-tests/sampleapp/iSmartbook_Switch.html</test_script_entry>
-        </description>
-      </testcase>
-      <testcase component="Sample Apps" execution_type="manual" id="iSmartbook_Orientation" priority="P2" purpose="Validate if sample app iSmartbook could rotate between portrait orientation screen and landscape orientation screen" status="designed" type="Functional">
-        <description>
-          <pre_condition>
-            1.Make sure the iSmartbook webapp is launched
-          </pre_condition>
-          <post_condition />
-          <test_script_entry>/opt/sampleapp-android-tests/sampleapp/iSmartbook_Orientation.html</test_script_entry>
-        </description>
-      </testcase>
-      <testcase component="Sample Apps" execution_type="manual" id="iSmartbook_AppFunction" priority="P2" purpose="Validate if sample app iSmartbook function could work well" status="designed" type="Functional">
-        <description>
-          <pre_condition>
-            1.Make sure the iSmartbook webapp is launched
-          </pre_condition>
-          <post_condition />
-          <test_script_entry>/opt/sampleapp-android-tests/sampleapp/iSmartbook_AppFunction.html</test_script_entry>
-        </description>
-      </testcase>
-      <testcase component="Sample Apps" execution_type="manual" id="HexGL_Install" priority="P0" purpose="Validate if HexGL could be installed successfully" status="approved" type="Functional">
+      <testcase component="Sample Apps" execution_type="auto" id="hexgl_install" priority="P0" purpose="Validate if HexGL could be installed successfully" status="approved" type="Functional">
         <description>
           <pre_condition>
             1.Make sure HexGL is available
           </pre_condition>
           <post_condition />
-          <test_script_entry>/opt/sampleapp-android-tests/sampleapp/HexGL_Install.html</test_script_entry>
+          <test_script_entry>/opt/sampleapp-android-tests/sampleapp/hexgl_install.py</test_script_entry>
         </description>
       </testcase>
-      <testcase component="Sample Apps" execution_type="manual" id="HexGL_Uninstall" priority="P0" purpose="Validate if sample app HexGL could be uninstalled successfully" status="approved" type="Functional">
+      <testcase component="Sample Apps" execution_type="auto" id="hexgl_launch" priority="P1" purpose="Validate sample app HexGL could be launched successfully" status="approved" type="Functional">
         <description>
           <pre_condition>
-            1.Make sure HexGL webapp is launched;2.Make sure HexGL webapp is available
+            1. Make sure HexGL webapp is installed on Android OS
           </pre_condition>
           <post_condition />
-          <test_script_entry>/opt/sampleapp-android-tests/sampleapp/HexGL_Uninstall.html</test_script_entry>
+          <test_script_entry>/opt/sampleapp-android-tests/sampleapp/hexgl_launch.py</test_script_entry>
         </description>
       </testcase>
-      <testcase component="Sample Apps" execution_type="manual" id="HexGL_Uninstall_WithAppRunning" priority="P2" purpose="Validate Crosswalk support that uninstall the sample app HexGL when it's actually running" status="approved" type="Functional">
+      <testcase component="Sample Apps" execution_type="auto" id="hexgl_stop" priority="P1" purpose="Validate sample app HexGL could be stopped successfully" status="approved" type="Functional">
         <description>
           <pre_condition>
-            1. Make sure sample app HexGL is launched;
-            2.Make sure there sample app HexGL is available
           </pre_condition>
           <post_condition />
-          <test_script_entry>/opt/sampleapp-android-tests/sampleapp/HexGL_Uninstall_WithAppRunning.html</test_script_entry>
+          <test_script_entry>/opt/sampleapp-android-tests/sampleapp/hexgl_stop.py</test_script_entry>
         </description>
       </testcase>
-      <testcase component="Sample Apps" execution_type="manual" id="HexGL_Launch" priority="P1" purpose="Validate sample app HexGL could be launched successfully" status="approved" type="Functional">
+      <testcase component="Sample Apps" execution_type="auto" id="hexgl_uninstall" priority="P0" purpose="Validate if sample app HexGL could be uninstalled successfully" status="approved" type="Functional">
         <description>
           <pre_condition>
-            1. Make sure HexGL webapp is launched;2.Make sure HexGL webapp is installed on Android OS
           </pre_condition>
           <post_condition />
-          <test_script_entry>/opt/sampleapp-android-tests/sampleapp/HexGL_Launch.html</test_script_entry>
+          <test_script_entry>/opt/sampleapp-android-tests/sampleapp/hexgl_uninstall.py</test_script_entry>
         </description>
       </testcase>
-      <testcase component="Sample Apps" execution_type="manual" id="HexGL_Close" priority="P1" purpose="Validate sample app HexGL could be closed successfully" status="approved" type="Functional">
+      <testcase component="Sample Apps" execution_type="auto" id="hexgl_uninstall_withAppRunning" priority="P2" purpose="Validate Crosswalk support that uninstall the sample app HexGL when it's actually running" status="approved" type="Functional">
         <description>
           <pre_condition>
-            1. Make sure HexGL webapp is launched;2.Make sure HexGL is running
           </pre_condition>
           <post_condition />
-          <test_script_entry>/opt/sampleapp-android-tests/sampleapp/HexGL_Close.html</test_script_entry>
+          <test_script_entry>/opt/sampleapp-android-tests/sampleapp/hexgl_uninstall_withAppRunning.py</test_script_entry>
         </description>
-      </testcase>
-      <testcase component="Sample Apps" execution_type="manual" id="HexGL_Icon" priority="P0" purpose="Validate if sample app HexGL icon display normally" status="approved" type="Functional">
+      </testcase>	  
+      <testcase component="Sample Apps" execution_type="auto" id="memorygame_pack" priority="P0" purpose="Validate if MemoryGame could be packed successfully" status="approved" type="Functional">
         <description>
           <pre_condition>
-            1. Make sure HexGL webapp is launched;2.Make sure HexGL is available
+            1.Make sure memorygame source code is available
           </pre_condition>
           <post_condition />
-          <test_script_entry>/opt/sampleapp-android-tests/sampleapp/HexGL_Icon.html</test_script_entry>
+          <test_script_entry>/opt/sampleapp-android-tests/sampleapp/memorygame_pack.py</test_script_entry>
         </description>
       </testcase>
-      <testcase component="Sample Apps" execution_type="manual" id="HexGL_Switch" priority="P2" purpose="Validate if sample app HexGL could switch back successfully" status="approved" type="Functional">
+      <testcase component="Sample Apps" execution_type="auto" id="memorygame_install" priority="P0" purpose="Validate if MemoryGame could be installed successfully" status="approved" type="Functional">
         <description>
           <pre_condition>
-            1. Make sure HexGL webapp is launched
+            1.Make sure memorygame APK is available
           </pre_condition>
           <post_condition />
-          <test_script_entry>/opt/sampleapp-android-tests/sampleapp/HexGL_Switch.html</test_script_entry>
+          <test_script_entry>/opt/sampleapp-android-tests/sampleapp/memorygame_install.py</test_script_entry>
         </description>
       </testcase>
-      <testcase component="Sample Apps" execution_type="manual" id="HexGL_Orientation" priority="P2" purpose="Validate if sample app HexGL could rotate between portrait orientation screen and landscape orientation screen" status="approved" type="Functional">
+      <testcase component="Sample Apps" execution_type="auto" id="memorygame_launch" priority="P1" purpose="Validate sample app MemoryGame could be launched successfully" status="approved" type="Functional">
         <description>
           <pre_condition>
-            1. Make sure HexGL webapp is launched
+            1. Make sure MemoryGame webapp is installed on Android OS
           </pre_condition>
           <post_condition />
-          <test_script_entry>/opt/sampleapp-android-tests/sampleapp/HexGL_Orientation.html</test_script_entry>
+          <test_script_entry>/opt/sampleapp-android-tests/sampleapp/memorygame_launch.py</test_script_entry>
         </description>
       </testcase>
-      <testcase component="Sample Apps" execution_type="manual" id="HexGL_AppFunction" priority="P2" purpose="Validate if sample app HexGL function could work well" status="approved" type="Functional">
+      <testcase component="Sample Apps" execution_type="auto" id="memorygame_stop" priority="P1" purpose="Validate sample app MemoryGame could be stopped successfully" status="approved" type="Functional">
         <description>
           <pre_condition>
-            1. Make sure HexGL webapp is launched
+            1. Make sure memorygame webapp is installed 
           </pre_condition>
           <post_condition />
-          <test_script_entry>/opt/sampleapp-android-tests/sampleapp/HexGL_AppFunction.html</test_script_entry>
+          <test_script_entry>/opt/sampleapp-android-tests/sampleapp/memorygame_stop.py</test_script_entry>
         </description>
       </testcase>
-      <testcase component="Sample Apps" execution_type="manual" id="MemoryGame_Install" priority="P0" purpose="Validate if MemoryGame could be installed successfully" status="approved" type="Functional">
+      <testcase component="Sample Apps" execution_type="auto" id="memorygame_uninstall" priority="P0" purpose="Validate if sample app MemoryGame could be uninstalled successfully" status="approved" type="Functional">
         <description>
           <pre_condition>
-            1.Make sure MemoryGame is available
           </pre_condition>
           <post_condition />
-          <test_script_entry>/opt/sampleapp-android-tests/sampleapp/MemoryGame_Install.html</test_script_entry>
+          <test_script_entry>/opt/sampleapp-android-tests/sampleapp/memorygame_uninstall.py</test_script_entry>
         </description>
       </testcase>
-      <testcase component="Sample Apps" execution_type="manual" id="MemoryGame_Uninstall" priority="P0" purpose="Validate if sample app MemoryGame could be uninstalled successfully" status="approved" type="Functional">
+      <testcase component="Sample Apps" execution_type="auto" id="memorygame_uninstall_withAppRunning" priority="P2" purpose="Validate Crosswalk support that uninstall the sample app MemoryGame when it's actually running" status="approved" type="Functional">
         <description>
           <pre_condition>
-            1.Make sure MemoryGame webapp is launched;2.Make sure MemoryGame webapp is available
           </pre_condition>
           <post_condition />
-          <test_script_entry>/opt/sampleapp-android-tests/sampleapp/MemoryGame_Uninstall.html</test_script_entry>
+          <test_script_entry>/opt/sampleapp-android-tests/sampleapp/memorygame_uninstall_withAppRunning.py</test_script_entry>
         </description>
       </testcase>
-      <testcase component="Sample Apps" execution_type="manual" id="MemoryGame_Uninstall_WithAppRunning" priority="P2" purpose="Validate Crosswalk support that uninstall the sample app MemoryGame when it's actually running" status="approved" type="Functional">
+      <testcase component="Sample Apps" execution_type="auto" id="webrtc_pack" priority="P0" purpose="Validate if WebRTC could be packed successfully" status="approved" type="Functional">
         <description>
           <pre_condition>
-            1. Make sure sample app MemoryGame is launched;
-            2.Make sure there sample app MemoryGame is available
+            1. Make sure webrtc source code is available
           </pre_condition>
           <post_condition />
-          <test_script_entry>/opt/sampleapp-android-tests/sampleapp/MemoryGame_Uninstall_WithAppRunning.html</test_script_entry>
+          <test_script_entry>/opt/sampleapp-android-tests/sampleapp/webrtc_pack.py</test_script_entry>
         </description>
       </testcase>
-      <testcase component="Sample Apps" execution_type="manual" id="MemoryGame_Launch" priority="P1" purpose="Validate sample app MemoryGame could be launched successfully" status="approved" type="Functional">
+      <testcase component="Sample Apps" execution_type="auto" id="webrtc_install" priority="P0" purpose="Validate if WebRTC could be installed successfully" status="approved" type="Functional">
         <description>
           <pre_condition>
-            1. Make sure MemoryGame webapp is launched;2.Make sure MemoryGame webapp is installed on Android OS
+            1. Make sure webrtc APK is available
           </pre_condition>
           <post_condition />
-          <test_script_entry>/opt/sampleapp-android-tests/sampleapp/MemoryGame_Launch.html</test_script_entry>
+          <test_script_entry>/opt/sampleapp-android-tests/sampleapp/webrtc_install.py</test_script_entry>
         </description>
       </testcase>
-      <testcase component="Sample Apps" execution_type="manual" id="MemoryGame_Close" priority="P1" purpose="Validate sample app MemoryGame could be closed successfully" status="approved" type="Functional">
+      <testcase component="Sample Apps" execution_type="auto" id="webrtc_launch" priority="P1" purpose="Validate sample app WebRTC could be launched successfully" status="approved" type="Functional">
         <description>
           <pre_condition>
-            1. Make sure MemoryGame webapp is launched;2.Make sure MemoryGame is running
+            1. Make sure webrtc webapp is installed on Android OS;
           </pre_condition>
           <post_condition />
-          <test_script_entry>/opt/sampleapp-android-tests/sampleapp/MemoryGame_Close.html</test_script_entry>
+          <test_script_entry>/opt/sampleapp-android-tests/sampleapp/webrtc_launch.py</test_script_entry>
         </description>
       </testcase>
-      <testcase component="Sample Apps" execution_type="manual" id="MemoryGame_Icon" priority="P0" purpose="Validate if sample app MemoryGame icon display normally" status="approved" type="Functional">
+      <testcase component="Sample Apps" execution_type="auto" id="webrtc_stop" priority="P1" purpose="Validate sample app WebRTC could be stopped successfully" status="approved" type="Functional">
         <description>
           <pre_condition>
-            1. Make sure MemoryGame webapp is launched;2.Make sure MemoryGame is available
+            1. Make sure webrtc webapp is installed;
           </pre_condition>
           <post_condition />
-          <test_script_entry>/opt/sampleapp-android-tests/sampleapp/MemoryGame_Icon.html</test_script_entry>
+          <test_script_entry>/opt/sampleapp-android-tests/sampleapp/webrtc_stop.py</test_script_entry>
         </description>
       </testcase>
-      <testcase component="Sample Apps" execution_type="manual" id="MemoryGame_Switch" priority="P2" purpose="Validate if sample app MemoryGame could switch back successfully" status="approved" type="Functional">
+      <testcase component="Sample Apps" execution_type="auto" id="webrtc_uninstall" priority="P0" purpose="Validate if sample app WebRTC could be uninstalled successfully" status="approved" type="Functional">
         <description>
           <pre_condition>
-            1. Make sure MemoryGame webapp is launched
           </pre_condition>
           <post_condition />
-          <test_script_entry>/opt/sampleapp-android-tests/sampleapp/MemoryGame_Switch.html</test_script_entry>
+          <test_script_entry>/opt/sampleapp-android-tests/sampleapp/webrtc_uninstall.py</test_script_entry>
         </description>
       </testcase>
-      <testcase component="Sample Apps" execution_type="manual" id="MemoryGame_Orientation" priority="P2" purpose="Validate if sample app MemoryGame could rotate between portrait orientation screen and landscape orientation screen" status="approved" type="Functional">
+      <testcase component="Sample Apps" execution_type="auto" id="webrtc_uninstall_withAppRunning" priority="P2" purpose="Validate Crosswalk support that uninstall the sample app WebRTC when it's actually running" status="approved" type="Functional">
         <description>
           <pre_condition>
-            1. Make sure MemoryGame webapp is launched
           </pre_condition>
           <post_condition />
-          <test_script_entry>/opt/sampleapp-android-tests/sampleapp/MemoryGame_Orientation.html</test_script_entry>
+          <test_script_entry>/opt/sampleapp-android-tests/sampleapp/webrtc_uninstall_withAppRunning.py</test_script_entry>
         </description>
       </testcase>
-      <testcase component="Sample Apps" execution_type="manual" id="MemoryGame_AppFunction" priority="P2" purpose="Validate if sample app MemoryGame function could work well" status="approved" type="Functional">
+      <testcase component="Sample Apps" execution_type="auto" id="gallery_pack" priority="P0" purpose="Validate if sample app Gallery could be packed successfully" status="approved" type="Functional">
         <description>
           <pre_condition>
-            1. Make sure MemoryGame webapp is launched
+            1. Make sure webapp source code is available;
           </pre_condition>
           <post_condition />
-          <test_script_entry>/opt/sampleapp-android-tests/sampleapp/MemoryGame_AppFunction.html</test_script_entry>
+          <test_script_entry>/opt/sampleapp-android-tests/sampleapp/gallery_pack.py</test_script_entry>
         </description>
       </testcase>
-      <testcase component="Sample Apps" execution_type="manual" id="WebRTC_Install" priority="P0" purpose="Validate if WebRTC could be installed successfully" status="approved" type="Functional">
+      <testcase component="Sample Apps" execution_type="auto" id="gallery_install" priority="P0" purpose="Validate if sample app Gallery could be installed successfully" status="approved" type="Functional">
         <description>
           <pre_condition>
-            1.Make sure Crosswalk binary is installed;
-            2.Make sure WebRTC is available http://10.239.97.60/chatbox/login.html
+            1. Make sure webapp is downloaded;
           </pre_condition>
           <post_condition />
-          <test_script_entry>/opt/sampleapp-android-tests/sampleapp/WebRTC_Install.html</test_script_entry>
+          <test_script_entry>/opt/sampleapp-android-tests/sampleapp/gallery_install.py</test_script_entry>
         </description>
       </testcase>
-      <testcase component="Sample Apps" execution_type="manual" id="WebRTC_Uninstall" priority="P0" purpose="Validate if sample app WebRTC could be uninstalled successfully" status="approved" type="Functional">
+      <testcase component="Sample Apps" execution_type="auto" id="gallery_launch" priority="P1" purpose="Validate if sample app Gallery could be launched successfully" status="approved" type="Functional">
         <description>
           <pre_condition>
-            1.Make sure Crosswalk binary is installed;
-            2.Make sure WebRTC webapp is available;
-            3.Make sure WebRTC webapp is launched
+            1.Make sure the gallery webapp is installed
           </pre_condition>
           <post_condition />
-          <test_script_entry>/opt/sampleapp-android-tests/sampleapp/WebRTC_Uninstall.html</test_script_entry>
+        <test_script_entry>/opt/sampleapp-android-tests/sampleapp/gallery_launch.py</test_script_entry>
         </description>
       </testcase>
-      <testcase component="Sample Apps" execution_type="manual" id="WebRTC_Uninstall_WithAppRunning" priority="P2" purpose="Validate Crosswalk support that uninstall the sample app WebRTC when it's actually running" status="approved" type="Functional">
+      <testcase component="Sample Apps" execution_type="auto" id="gallery_stop" priority="P2" purpose="Validate if sample app Gallery could be stopped successfully" status="approved" type="Functional">
         <description>
           <pre_condition>
-            1.Make sure Crosswalk binary is installed;
-            2.Make sure there sample app WebRTC is available;
-            3.Make sure sample app WebRTC is launched.
+            1. Make sure the gallery webapp is installed
           </pre_condition>
           <post_condition />
-          <test_script_entry>/opt/sampleapp-android-tests/sampleapp/WebRTC_Uninstall_WithAppRunning.html</test_script_entry>
+           <test_script_entry>/opt/sampleapp-android-tests/sampleapp/gallery_stop.py</test_script_entry>
         </description>
       </testcase>
-      <testcase component="Sample Apps" execution_type="manual" id="WebRTC_Launch" priority="P1" purpose="Validate sample app WebRTC could be launched successfully" status="approved" type="Functional">
+      <testcase component="Sample Apps" execution_type="auto" id="gallery_uninstall" priority="P0" purpose="Validate if sample app Gallery could be uninstalled successfully" status="approved" type="Functional">
         <description>
           <pre_condition>
-            1.Make sure Crosswalk binary is installed;
-            2.Make sure WebRTC: http://10.239.97.60/chatbox/login.html is available;
-            3.Make sure WebRTC webapp is installed on Android OS;
-            4.Make sure network can be used.
           </pre_condition>
           <post_condition />
-          <test_script_entry>/opt/sampleapp-android-tests/sampleapp/WebRTC_Launch.html</test_script_entry>
+          <test_script_entry>/opt/sampleapp-android-tests/sampleapp/gallery_uninstall.py</test_script_entry>
         </description>
       </testcase>
-      <testcase component="Sample Apps" execution_type="manual" id="WebRTC_Close" priority="P1" purpose="Validate sample app WebRTC could be closed successfully" status="approved" type="Functional">
+      <testcase component="Sample Apps" execution_type="auto" id="gallery_uninstall_withAppRunning" priority="P2" purpose="Validate Crosswalk support that uninstall the sample app Gallery when it's actually running" status="approved" type="Functional">
         <description>
           <pre_condition>
-            1.Make sure Crosswalk binary is installed;
-            2.Make sure WebRTC webapp is launched;
-            3.Make sure WebRTC webapp is running;
-            4.Make sure network can be used.
           </pre_condition>
           <post_condition />
-          <test_script_entry>/opt/sampleapp-android-tests/sampleapp/WebRTC_Close.html</test_script_entry>
+         <test_script_entry>/opt/sampleapp-android-tests/sampleapp/gallery_uninstall_withAppRunning.py</test_script_entry>
         </description>
       </testcase>
-      <testcase component="Sample Apps" execution_type="manual" id="WebRTC_Icon" priority="P2" purpose="Validate if sample app WebRTC icon display normally" status="approved" type="Functional">
+      <testcase component="Sample Apps" execution_type="auto" id="sysapps_pack" priority="P0" purpose="Validate if SysApps could be packed successfully" status="approved" type="Functional">
         <description>
           <pre_condition>
-            1.Make sure Crosswalk binary is installed;
-            2.Make sure WebRTC webapp is installed and http://10.239.97.60/chatbox/login.html is available;
-            3.Make sure WebRTC webapp is available.
+            1.Make sure sysapps source code is available
           </pre_condition>
           <post_condition />
-          <test_script_entry>/opt/sampleapp-android-tests/sampleapp/WebRTC_Icon.html</test_script_entry>
+          <test_script_entry>/opt/sampleapp-android-tests/sampleapp/sysapps_pack.py</test_script_entry>
         </description>
       </testcase>
-      <testcase component="Sample Apps" execution_type="manual" id="WebRTC_Switch" priority="P2" purpose="Validate if sample app WebRTC could switch back successfully" status="approved" type="Functional">
+      <testcase component="Sample Apps" execution_type="auto" id="sysapps_install" priority="P0" purpose="Validate if SysApps could be installed successfully" status="approved" type="Functional">
         <description>
           <pre_condition>
-            1.Make sure Crosswalk binary is installed;
-            2.Make sure WebRTC webapp is launched and http://10.239.97.60/chatbox/login.html is available;
-            3.Make sure network can be used.
+            1.Make sure sysapps APK is available
           </pre_condition>
           <post_condition />
-          <test_script_entry>/opt/sampleapp-android-tests/sampleapp/WebRTC_Switch.html</test_script_entry>
+          <test_script_entry>/opt/sampleapp-android-tests/sampleapp/sysapps_install.py</test_script_entry>
         </description>
       </testcase>
-      <testcase component="Sample Apps" execution_type="manual" id="WebRTC_Orientation" priority="P2" purpose="Validate if sample app WebRTC could rotate between portrait orientation screen and landscape orientation screen" status="approved" type="Functional">
+      <testcase component="Sample Apps" execution_type="auto" id="sysapps_launch" priority="P1" purpose="Validate sample app SysApps could be launched successfully" status="approved" type="Functional">
         <description>
           <pre_condition>
-            1.Make sure Crosswalk binary is installed;
-            2.Make sure WebRTC webapp is launched and http://10.239.97.60/chatbox/login.html is available;
-            3.Make sure network can be used.
-          </pre_condition>
-            <post_condition />
-          <test_script_entry>/opt/sampleapp-android-tests/sampleapp/WebRTC_Orientation.html</test_script_entry>
-        </description>
-      </testcase>
-      <testcase component="Sample Apps" execution_type="manual" id="WebRTC_Login" priority="P2" purpose="Validate WebRTC sample app  could login successfully" status="approved" type="Functional">
-        <description>
-          <pre_condition>
-            1.Make sure Crosswalk binary is installed;
-            2.Make sure WebRTC webapp is launched and http://10.239.97.60/chatbox/login.html is available;
-            3.Make sure network can be used.
+            1. Make sure sysapps webapp is installed on Android OS
           </pre_condition>
           <post_condition />
-          <test_script_entry>/opt/sampleapp-android-tests/sampleapp/WebRTC_Login.html</test_script_entry>
+          <test_script_entry>/opt/sampleapp-android-tests/sampleapp/sysapps_launch.py</test_script_entry>
         </description>
       </testcase>
-      <testcase component="Sample Apps" execution_type="manual" id="WebRTC_TextChat" priority="P1" purpose="Validate WebRTC sample app  could text chat" status="approved" type="Functional">
+      <testcase component="Sample Apps" execution_type="auto" id="sysapps_stop" priority="P1" purpose="Validate sample app SysApps could be stopped successfully" status="approved" type="Functional">
         <description>
           <pre_condition>
-            1.Make sure Crosswalk binary is installed;
-            2.Make sure the http://10.239.97.60/chatbox/login.html is available and WebRTC webapp is login;
-            3.Make sure network can be used.
+            1. Make sure sysapps webapp is installed on Android OS
           </pre_condition>
           <post_condition />
-          <test_script_entry>/opt/sampleapp-android-tests/sampleapp/WebRTC_TextChat.html</test_script_entry>
+          <test_script_entry>/opt/sampleapp-android-tests/sampleapp/sysapps_stop.py</test_script_entry>
         </description>
       </testcase>
-      <testcase component="Sample Apps" execution_type="manual" id="WebRTC_VideoChat" priority="P2" purpose="Validate WebRTC sample app  could video chat" status="approved" type="Functional">
+      <testcase component="Sample Apps" execution_type="auto" id="sysapps_uninstall" priority="P0" purpose="Validate if sample app SysApps could be uninstalled successfully" status="approved" type="Functional">
         <description>
           <pre_condition>
-            1.Make sure Crosswalk binary is installed;
-            2.Make sure the http://10.239.97.60/chatbox/login.html is available and WebRTC webapp is login;
-            3.Make sure network can be used.
           </pre_condition>
           <post_condition />
-          <test_script_entry>/opt/sampleapp-android-tests/sampleapp/WebRTC_VideoChat.html</test_script_entry>
+          <test_script_entry>/opt/sampleapp-android-tests/sampleapp/sysapps_uninstall.py</test_script_entry>
         </description>
       </testcase>
-      <testcase component="Sample Apps" execution_type="manual" id="Gallery_Install" priority="P0" purpose="Validate if sample app Gallery could be installed successfully" status="approved" type="Functional">
+      <testcase component="Sample Apps" execution_type="auto" id="sysapps_uninstall_withAppRunning" priority="P2" purpose="Validate Crosswalk support that uninstall the sample app SysApps when it's actually running" status="approved" type="Functional">
         <description>
           <pre_condition>
-            1.Make sure Crosswalk binary is installed;
+            1. Make sure sysapps APK is available
+          </pre_condition>
+          <post_condition />
+          <test_script_entry>/opt/sampleapp-android-tests/sampleapp/sysapps_uninstall_withAppRunning.py</test_script_entry>
+        </description>
+      </testcase>
+      <testcase component="Sample Apps" execution_type="auto" id="simd_pack" priority="P0" purpose="Check if SIMD can be packed" status="approved" type="Functional">
+        <description>
+          <test_script_entry>/opt/sampleapp-android-tests/sampleapp/simd_pack.py</test_script_entry>
+        </description>
+      </testcase>
+      <testcase component="Sample Apps" execution_type="auto" id="simd_install" priority="P0" purpose="Check if SIMD can be installed" status="approved" type="Functional">
+        <description>
+          <test_script_entry>/opt/sampleapp-android-tests/sampleapp/simd_install.py</test_script_entry>
+        </description>
+      </testcase>
+      <testcase component="Sample Apps" execution_type="auto" id="simd_launch" priority="P0" purpose="Check if SIMD can be launched" status="approved" type="Functional">
+        <description>
+          <test_script_entry>/opt/sampleapp-android-tests/sampleapp/simd_launch.py</test_script_entry>
+        </description>
+      </testcase>
+      <testcase component="Sample Apps" execution_type="auto" id="simd_stop" priority="P1" purpose="Check if SIMD can be stopped" status="approved" type="Functional">
+        <description>
+          <test_script_entry>/opt/sampleapp-android-tests/sampleapp/simd_stop.py</test_script_entry>
+        </description>
+      </testcase>	 
+      <testcase component="Sample Apps" execution_type="auto" id="simd_uninstall" priority="P1" purpose="Check if SIMD can be uninstalled" status="approved" type="Functional">
+        <description>
+          <test_script_entry>/opt/sampleapp-android-tests/sampleapp/simd_uninstall.py</test_script_entry>
+        </description>
+      </testcase>
+      <testcase component="Sample Apps" execution_type="auto" id="simd_uninstall_withAppRunning" priority="P2" purpose="Check if SIMD can be uninstalled with app running" status="approved" type="Functional">
+        <description>
+          <test_script_entry>/opt/sampleapp-android-tests/sampleapp/simd_uninstall_withAppRunning.py</test_script_entry>
+        </description>
+      </testcase>
+    </set>
+    <set name="SampleApp" type="js">   
+      <testcase component="Sample Apps" execution_type="manual" id="hangonman_pack" priority="P0" purpose="Validate if sample app HangOnMan could be packed successfully" status="designed" type="Functional">
+        <description>
+          <pre_condition>
+            1. Make sure webapp source code is downloaded;
+          </pre_condition>
+          <post_condition />
+          <test_script_entry>/opt/sampleapp-android-tests/sampleapp/hangonman_pack.py</test_script_entry>
+        </description>
+      </testcase>
+      <testcase component="Sample Apps" execution_type="manual" id="hangonman_install" priority="P0" purpose="Validate if sample app HangOnMan could be installed successfully" status="approved" type="Functional">
+        <description>
+          <pre_condition>
+            1.Make sure Crosswalk packer tool 'crosswalk' is downloaded and cd  crosswalk path;
             2.Make sure webapp is downloaded;
             3.Copy your HTML/JS/CSS and related resources into the directory:"crosswalk/app_src/assets";
             4.Make sure device is connected with ubuntu.
           </pre_condition>
           <post_condition />
-          <test_script_entry>/opt/sampleapp-android-tests/sampleapp/Gallery_Install.html</test_script_entry>
+          <test_script_entry>/opt/sampleapp-android-tests/sampleapp/hangonman_install.html</test_script_entry>
         </description>
       </testcase>
-      <testcase component="Sample Apps" execution_type="manual" id="Gallery_UnInstall" priority="P0" purpose="Validate if sample app Gallery could be uninstalled successfully" status="approved" type="Functional">
+      <testcase component="Sample Apps" execution_type="manual" id="hangonman_launch" priority="P1" purpose="Validate if sample app HangOnMan could be launched successfully" status="approved" type="Functional">
         <description>
           <pre_condition>
-            1.Make sure the Gallery webapp is installed.
+            1.Make sure the hangonman webapp is installed
           </pre_condition>
           <post_condition />
-          <test_script_entry>/opt/sampleapp-android-tests/sampleapp/Gallery_Uninstall.html</test_script_entry>
+        <test_script_entry>/opt/sampleapp-android-tests/sampleapp/hangonman_launch.html</test_script_entry>
         </description>
       </testcase>
-      <testcase component="Sample Apps" execution_type="manual" id="Gallery_Uninstall_WithAppRunning" priority="P2" purpose="Validate Crosswalk support that uninstall the sample app Gallery when it's actually running" status="approved" type="Functional">
+      <testcase component="Sample Apps" execution_type="manual" id="hangonman_stop" priority="P2" purpose="Validate if sample app HangOnMan could be stopped successfully" status="approved" type="Functional">
         <description>
           <pre_condition>
-            1.Make sure sample app Gallery is launched;
+            1.Make sure the hangonman webapp is launched
           </pre_condition>
           <post_condition />
-         <test_script_entry>/opt/sampleapp-android-tests/sampleapp/Gallery_Uninstall_WithAppRunning.html</test_script_entry>
+           <test_script_entry>/opt/sampleapp-android-tests/sampleapp/hangonman_stop.html</test_script_entry>
         </description>
       </testcase>
-      <testcase component="Sample Apps" execution_type="manual" id="Gallery_Launch" priority="P1" purpose="Validate if sample app Gallery could be launched successfully" status="approved" type="Functional">
+      <testcase component="Sample Apps" execution_type="manual" id="hangonman_icon" priority="P0" purpose="Validate if sample app HangOnMan icon display normally" status="approved" type="Functional">
         <description>
           <pre_condition>
-            1.Make sure the Gallery webapp is installed
+            1.Make sure hangonman webapp is installed;2.Make sure HangOnMan webapp is available
           </pre_condition>
           <post_condition />
-        <test_script_entry>/opt/sampleapp-android-tests/sampleapp/Gallery_Launch.html</test_script_entry>
+        <test_script_entry>/opt/sampleapp-android-tests/sampleapp/hangonman_icon.html</test_script_entry>
         </description>
       </testcase>
-      <testcase component="Sample Apps" execution_type="manual" id="Gallery_Close" priority="P2" purpose="Validate if sample app Gallery could be closed successfully" status="approved" type="Functional">
+      <testcase component="Sample Apps" execution_type="manual" id="hangonman_switch" priority="P2" purpose="Validate if sample app HangOnMan could switch back successfully" status="approved" type="Functional">
         <description>
           <pre_condition>
-            1.Make sure the Gallery webapp is launched
+            1.Make sure the hangonman webapp is launched
           </pre_condition>
           <post_condition />
-           <test_script_entry>/opt/sampleapp-android-tests/sampleapp/Gallery_Close.html</test_script_entry>
+          <test_script_entry>/opt/sampleapp-android-tests/sampleapp/hangonman_switch.html</test_script_entry>
         </description>
       </testcase>
-      <testcase component="Sample Apps" execution_type="manual" id="Gallery_Icon" priority="P2" purpose="Validate if sample app Gallery icon display normally" status="approved" type="Functional">
+      <testcase component="Sample Apps" execution_type="manual" id="hangonman_orientation" priority="P2" purpose="Validate if sample app HangOnMan could rotate between portrait orientation screen and landscape orientation screen" status="approved" type="Functional">
         <description>
           <pre_condition>
-            1.Make sure Gallery webapp is installed;
-            2.Make sure Gallery webapp is available.
+            1.Make sure the hangonman webapp is launched
           </pre_condition>
           <post_condition />
-        <test_script_entry>/opt/sampleapp-android-tests/sampleapp/Gallery_Icon.html</test_script_entry>
+          <test_script_entry>/opt/sampleapp-android-tests/sampleapp/hangonman_orientation.html</test_script_entry>
         </description>
       </testcase>
-      <testcase component="Sample Apps" execution_type="manual" id="Gallery_Switch" priority="P2" purpose="Validate if sample app Gallery could switch back successfully" status="approved" type="Functional">
+      <testcase component="Sample Apps" execution_type="manual" id="hangonman_appFunction" priority="P2" purpose="Validate if sample app HangOnMan function could work well" status="approved" type="Functional">
         <description>
           <pre_condition>
-            1.Make sure the Gallery webapp is launched.
+            1.Make sure the hangonman webapp is launched
           </pre_condition>
           <post_condition />
-          <test_script_entry>/opt/sampleapp-android-tests/sampleapp/Gallery_Switch.html</test_script_entry>
+          <test_script_entry>/opt/sampleapp-android-tests/sampleapp/hangonman_appFunction.html</test_script_entry>
         </description>
       </testcase>
-      <testcase component="Sample Apps" execution_type="manual" id="Gallery_Orientation" priority="P2" purpose="Validate if sample app Gallery could rotate between portrait orientation screen and landscape orientation screen" status="approved" type="Functional">
+      <testcase component="Sample Apps" execution_type="manual" id="hangonman_uninstall" priority="P0" purpose="Validate if sample app HangOnMan could be uninstalled successfully" status="approved" type="Functional">
         <description>
           <pre_condition>
-            1.Make sure the Gallery webapp is launched.
+            1.Make sure the hangonman webapp is installed
           </pre_condition>
           <post_condition />
-          <test_script_entry>/opt/sampleapp-android-tests/sampleapp/Gallery_Orientation.html</test_script_entry>
+          <test_script_entry>/opt/sampleapp-android-tests/sampleapp/hangonman_uninstall.html</test_script_entry>
         </description>
       </testcase>
-      <testcase component="Sample Apps" execution_type="manual" id="Gallery_AppFunction" priority="P2" purpose="Validate if sample app Gallery function could work well" status="approved" type="Functional">
+      <testcase component="Sample Apps" execution_type="manual" id="hangonman_uninstall_withAppRunning" priority="P2" purpose="Validate Crosswalk support that uninstall the sample app HangOnMan when it's actually running" status="approved" type="Functional">
         <description>
           <pre_condition>
-            1.Make sure the Gallery webapp is launched.
+            1.Make sure sample app hangonman is launched;2.Make sure there sample app HangOnMan is available
           </pre_condition>
           <post_condition />
-          <test_script_entry>/opt/sampleapp-android-tests/sampleapp/Gallery_AppFunction.html</test_script_entry>
+         <test_script_entry>/opt/sampleapp-android-tests/sampleapp/hangonman_uninstall_withAppRunning.html</test_script_entry>
         </description>
-      </testcase>
-      <testcase component="Sample Apps" execution_type="manual" id="SysApps_DeviceCapabilities_Install" priority="P0" purpose="Validate if SysApps_DeviceCapabilities could be installed successfully" status="approved" type="Functional">
+      </testcase>	  
+      <testcase component="Sample Apps" execution_type="manual" id="hexgl_icon" priority="P0" purpose="Validate if sample app HexGL icon display normally" status="approved" type="Functional">
         <description>
           <pre_condition>
-            1.Make sure SysApps_DeviceCapabilities is available
+            1. Make sure HexGL webapp is launched;2.Make sure HexGL is available
           </pre_condition>
           <post_condition />
-          <test_script_entry>/opt/sampleapp-android-tests/sampleapp/SysApps_DeviceCapabilities_Install.html</test_script_entry>
+          <test_script_entry>/opt/sampleapp-android-tests/sampleapp/hexgl_icon.html</test_script_entry>
         </description>
       </testcase>
-      <testcase component="Sample Apps" execution_type="manual" id="SysApps_DeviceCapabilities_Uninstall" priority="P0" purpose="Validate if sample app SysApps_DeviceCapabilities could be uninstalled successfully" status="approved" type="Functional">
+      <testcase component="Sample Apps" execution_type="manual" id="hexgl_switch" priority="P2" purpose="Validate if sample app HexGL could switch back successfully" status="approved" type="Functional">
         <description>
           <pre_condition>
-            1.Make sure SysApps_DeviceCapabilities webapp is launched;2.Make sure SysApps_DeviceCapabilities webapp is available
+            1. Make sure HexGL webapp is launched
           </pre_condition>
           <post_condition />
-          <test_script_entry>/opt/sampleapp-android-tests/sampleapp/SysApps_DeviceCapabilities_Uninstall.html</test_script_entry>
+          <test_script_entry>/opt/sampleapp-android-tests/sampleapp/hexgl_switch.html</test_script_entry>
         </description>
       </testcase>
-      <testcase component="Sample Apps" execution_type="manual" id="SysApps_DeviceCapabilities_Uninstall_WithAppRunning" priority="P2" purpose="Validate Crosswalk support that uninstall the sample app SysApps_DeviceCapabilities when it's actually running" status="approved" type="Functional">
+      <testcase component="Sample Apps" execution_type="manual" id="hexgl_orientation" priority="P2" purpose="Validate if sample app HexGL could rotate between portrait orientation screen and landscape orientation screen" status="approved" type="Functional">
         <description>
           <pre_condition>
-            1. Make sure sample app SysApps_DeviceCapabilities is launched;
-            2.Make sure there sample app SysApps_DeviceCapabilities is available
+            1. Make sure HexGL webapp is launched
           </pre_condition>
           <post_condition />
-          <test_script_entry>/opt/sampleapp-android-tests/sampleapp/SysApps_DeviceCapabilities_Uninstall_WithAppRunning.html</test_script_entry>
+          <test_script_entry>/opt/sampleapp-android-tests/sampleapp/hexgl_orientation.html</test_script_entry>
         </description>
       </testcase>
-      <testcase component="Sample Apps" execution_type="manual" id="SysApps_DeviceCapabilities_Launch" priority="P1" purpose="Validate sample app SysApps_DeviceCapabilities could be launched successfully" status="approved" type="Functional">
+      <testcase component="Sample Apps" execution_type="manual" id="hexgl_appFunction" priority="P2" purpose="Validate if sample app HexGL function could work well" status="approved" type="Functional">
         <description>
           <pre_condition>
-            1.Make sure SysApps_DeviceCapabilities webapp is launched;
-            2.Make sure SysApps_DeviceCapabilities webapp is installed on Android OS
+            1. Make sure HexGL webapp is launched
           </pre_condition>
           <post_condition />
-          <test_script_entry>/opt/sampleapp-android-tests/sampleapp/SysApps_DeviceCapabilities_Launch.html</test_script_entry>
+          <test_script_entry>/opt/sampleapp-android-tests/sampleapp/hexgl_appFunction.html</test_script_entry>
         </description>
       </testcase>
-      <testcase component="Sample Apps" execution_type="manual" id="SysApps_DeviceCapabilities_Close" priority="P1" purpose="Validate sample app SysApps_DeviceCapabilities could be closed successfully" status="approved" type="Functional">
+      <testcase component="Sample Apps" execution_type="manual" id="memorygame_icon" priority="P0" purpose="Validate if sample app MemoryGame icon display normally" status="approved" type="Functional">
         <description>
           <pre_condition>
-            1.Make sure SysApps_DeviceCapabilities webapp is launched;
-            2.Make sure SysApps_DeviceCapabilities is running
+            1. Make sure memorygame webapp is launched;2.Make sure MemoryGame is available
           </pre_condition>
           <post_condition />
-          <test_script_entry>/opt/sampleapp-android-tests/sampleapp/SysApps_DeviceCapabilities_Close.html</test_script_entry>
+          <test_script_entry>/opt/sampleapp-android-tests/sampleapp/memorygame_icon.html</test_script_entry>
         </description>
       </testcase>
-      <testcase component="Sample Apps" execution_type="manual" id="SysApps_DeviceCapabilities_Icon" priority="P0" purpose="Validate if sample app SysApps_DeviceCapabilities icon display normally" status="approved" type="Functional">
+      <testcase component="Sample Apps" execution_type="manual" id="memorygame_switch" priority="P2" purpose="Validate if sample app MemoryGame could switch back successfully" status="approved" type="Functional">
         <description>
           <pre_condition>
-            1.Make sure SysApps_DeviceCapabilities webapp is launched;
-            2.Make sure SysApps_DeviceCapabilities is available
+            1. Make sure memorygame webapp is launched
           </pre_condition>
           <post_condition />
-          <test_script_entry>/opt/sampleapp-android-tests/sampleapp/SysApps_DeviceCapabilities_Icon.html</test_script_entry>
+          <test_script_entry>/opt/sampleapp-android-tests/sampleapp/memorygame_switch.html</test_script_entry>
         </description>
       </testcase>
-      <testcase component="Sample Apps" execution_type="manual" id="SysApps_DeviceCapabilities_Switch" priority="P2" purpose="Validate if sample app SysApps_DeviceCapabilities could switch back successfully" status="approved" type="Functional">
+      <testcase component="Sample Apps" execution_type="manual" id="memorygame_orientation" priority="P2" purpose="Validate if sample app MemoryGame could rotate between portrait orientation screen and landscape orientation screen" status="approved" type="Functional">
         <description>
           <pre_condition>
-            1. Make sure SysApps_DeviceCapabilities webapp is launched
+            1. Make sure memorygame webapp is launched
           </pre_condition>
           <post_condition />
-          <test_script_entry>/opt/sampleapp-android-tests/sampleapp/SysApps_DeviceCapabilities_Switch.html</test_script_entry>
+          <test_script_entry>/opt/sampleapp-android-tests/sampleapp/memorygame_orientation.html</test_script_entry>
         </description>
       </testcase>
-      <testcase component="Sample Apps" execution_type="manual" id="SysApps_DeviceCapabilities_Orientation" priority="P2" purpose="Validate if sample app SysApps_DeviceCapabilities could rotate between portrait orientation screen and landscape orientation screen" status="approved" type="Functional">
+      <testcase component="Sample Apps" execution_type="manual" id="memorygame_appFunction" priority="P2" purpose="Validate if sample app MemoryGame function could work well" status="approved" type="Functional">
         <description>
           <pre_condition>
-            1. Make sure SysApps_DeviceCapabilities webapp is launched
+            1. Make sure memorygame webapp is launched
           </pre_condition>
           <post_condition />
-          <test_script_entry>/opt/sampleapp-android-tests/sampleapp/SysApps_DeviceCapabilities_Orientation.html</test_script_entry>
+          <test_script_entry>/opt/sampleapp-android-tests/sampleapp/memorygame_appFunction.html</test_script_entry>
         </description>
       </testcase>
-      <testcase component="Sample Apps" execution_type="manual" id="SysApps_DeviceCapabilities_AppFunction" priority="P2" purpose="Validate if sample app SysApps_DeviceCapabilities function could work well" status="approved" type="Functional">
+      <testcase component="Sample Apps" execution_type="manual" id="webrtc_icon" priority="P2" purpose="Validate if sample app WebRTC icon display normally" status="approved" type="Functional">
         <description>
           <pre_condition>
-            1. Make sure SysApps_DeviceCapabilities webapp is launched
+            1.Make sure Crosswalk binary is installed;
+            2.Make sure webrtc webapp is installed and http://10.239.97.60/chatbox/login.html is available;
+            3.Make sure webrtc webapp is available.
           </pre_condition>
           <post_condition />
-          <test_script_entry>/opt/sampleapp-android-tests/sampleapp/SysApps_DeviceCapabilities_AppFunction.html</test_script_entry>
+          <test_script_entry>/opt/sampleapp-android-tests/sampleapp/webrtc_icon.html</test_script_entry>
         </description>
       </testcase>
+      <testcase component="Sample Apps" execution_type="manual" id="webrtc_switch" priority="P2" purpose="Validate if sample app WebRTC could switch back successfully" status="approved" type="Functional">
+        <description>
+          <pre_condition>
+            1.Make sure Crosswalk binary is installed;
+            2.Make sure webrtc webapp is launched and http://10.239.97.60/chatbox/login.html is available;
+            3.Make sure network can be used.
+          </pre_condition>
+          <post_condition />
+          <test_script_entry>/opt/sampleapp-android-tests/sampleapp/webrtc_switch.html</test_script_entry>
+        </description>
+      </testcase>
+      <testcase component="Sample Apps" execution_type="manual" id="webrtc_orientation" priority="P2" purpose="Validate if sample app WebRTC could rotate between portrait orientation screen and landscape orientation screen" status="approved" type="Functional">
+        <description>
+          <pre_condition>
+            1.Make sure Crosswalk binary is installed;
+            2.Make sure webrtc webapp is launched and http://10.239.97.60/chatbox/login.html is available;
+            3.Make sure network can be used.
+          </pre_condition>
+            <post_condition />
+          <test_script_entry>/opt/sampleapp-android-tests/sampleapp/webrtc_orientation.html</test_script_entry>
+        </description>
+      </testcase>
+      <testcase component="Sample Apps" execution_type="manual" id="webrtc_login" priority="P2" purpose="Validate WebRTC sample app  could login successfully" status="approved" type="Functional">
+        <description>
+          <pre_condition>
+            1.Make sure Crosswalk binary is installed;
+            2.Make sure webrtc webapp is launched and http://10.239.97.60/chatbox/login.html is available;
+            3.Make sure network can be used.
+          </pre_condition>
+          <post_condition />
+          <test_script_entry>/opt/sampleapp-android-tests/sampleapp/webrtc_login.html</test_script_entry>
+        </description>
+      </testcase>
+      <testcase component="Sample Apps" execution_type="manual" id="webrtc_textChat" priority="P1" purpose="Validate WebRTC sample app  could text chat" status="approved" type="Functional">
+        <description>
+          <pre_condition>
+            1.Make sure Crosswalk binary is installed;
+            2.Make sure the http://10.239.97.60/chatbox/login.html is available and webrtc webapp is login;
+            3.Make sure network can be used.
+          </pre_condition>
+          <post_condition />
+          <test_script_entry>/opt/sampleapp-android-tests/sampleapp/webrtc_textChat.html</test_script_entry>
+        </description>
+      </testcase>
+      <testcase component="Sample Apps" execution_type="manual" id="webrtc_videoChat" priority="P2" purpose="Validate WebRTC sample app  could video chat" status="approved" type="Functional">
+        <description>
+          <pre_condition>
+            1.Make sure Crosswalk binary is installed;
+            2.Make sure the http://10.239.97.60/chatbox/login.html is available and webrtc webapp is login;
+            3.Make sure network can be used.
+          </pre_condition>
+          <post_condition />
+          <test_script_entry>/opt/sampleapp-android-tests/sampleapp/webrtc_videoChat.html</test_script_entry>
+        </description>
+      </testcase>	  	  	 
+      <testcase component="Sample Apps" execution_type="manual" id="gallery_icon" priority="P2" purpose="Validate if sample app Gallery icon display normally" status="approved" type="Functional">
+        <description>
+          <pre_condition>
+            1.Make sure gallery webapp is installed;
+            2.Make sure gallery webapp is available.
+          </pre_condition>
+          <post_condition />
+        <test_script_entry>/opt/sampleapp-android-tests/sampleapp/gallery_icon.html</test_script_entry>
+        </description>
+      </testcase>
+      <testcase component="Sample Apps" execution_type="manual" id="gallery_switch" priority="P2" purpose="Validate if sample app Gallery could switch back successfully" status="approved" type="Functional">
+        <description>
+          <pre_condition>
+            1.Make sure the gallery webapp is launched.
+          </pre_condition>
+          <post_condition />
+          <test_script_entry>/opt/sampleapp-android-tests/sampleapp/gallery_switch.html</test_script_entry>
+        </description>
+      </testcase>
+      <testcase component="Sample Apps" execution_type="manual" id="gallery_orientation" priority="P2" purpose="Validate if sample app Gallery could rotate between portrait orientation screen and landscape orientation screen" status="approved" type="Functional">
+        <description>
+          <pre_condition>
+            1.Make sure the gallery webapp is launched.
+          </pre_condition>
+          <post_condition />
+          <test_script_entry>/opt/sampleapp-android-tests/sampleapp/gallery_orientation.html</test_script_entry>
+        </description>
+      </testcase>
+      <testcase component="Sample Apps" execution_type="manual" id="gallery_appFunction" priority="P2" purpose="Validate if sample app Gallery function could work well" status="approved" type="Functional">
+        <description>
+          <pre_condition>
+            1.Make sure the gallery webapp is launched.
+          </pre_condition>
+          <post_condition />
+          <test_script_entry>/opt/sampleapp-android-tests/sampleapp/gallery_appFunction.html</test_script_entry>
+        </description>
+      </testcase>
+      <testcase component="Sample Apps" execution_type="manual" id="sysapps_icon" priority="P0" purpose="Validate if sample app SysApps icon display normally" status="approved" type="Functional">
+        <description>
+          <pre_condition>
+            1.Make sure sysapps webapp is launched;
+            2.Make sure sysapps is available
+          </pre_condition>
+          <post_condition />
+          <test_script_entry>/opt/sampleapp-android-tests/sampleapp/sysapps_icon.html</test_script_entry>
+        </description>
+      </testcase>
+      <testcase component="Sample Apps" execution_type="manual" id="sysapps_switch" priority="P2" purpose="Validate if sample app SysApps could switch back successfully" status="approved" type="Functional">
+        <description>
+          <pre_condition>
+            1. Make sure sysapps webapp is launched
+          </pre_condition>
+          <post_condition />
+          <test_script_entry>/opt/sampleapp-android-tests/sampleapp/sysapps_switch.html</test_script_entry>
+        </description>
+      </testcase>
+      <testcase component="Sample Apps" execution_type="manual" id="sysapps_orientation" priority="P2" purpose="Validate if sample app SysApps could rotate between portrait orientation screen and landscape orientation screen" status="approved" type="Functional">
+        <description>
+          <pre_condition>
+            1. Make sure sysapps webapp is launched
+          </pre_condition>
+          <post_condition />
+          <test_script_entry>/opt/sampleapp-android-tests/sampleapp/sysapps_orientation.html</test_script_entry>
+        </description>
+      </testcase>
+      <testcase component="Sample Apps" execution_type="manual" id="sysapps_appFunction" priority="P2" purpose="Validate if sample app SysApps function could work well" status="approved" type="Functional">
+        <description>
+          <pre_condition>
+            1. Make sure sysapps webapp is launched
+          </pre_condition>
+          <post_condition />
+          <test_script_entry>/opt/sampleapp-android-tests/sampleapp/sysapps_appFunction.html</test_script_entry>
+        </description>
+      </testcase>	
+      <testcase component="Sample Apps" execution_type="manual" id="simd_icon" priority="P2" purpose="Check if SIMD icon display correctly" status="approved" type="Functional">
+        <description>
+          <test_script_entry>/opt/sampleapp-android-tests/sampleapp/simd_icon.html</test_script_entry>
+        </description>
+      </testcase>	  
+      <testcase component="Sample Apps" execution_type="manual" id="simd_switch" priority="P2" purpose="Check if SIMD can be switched" status="approved" type="Functional">
+        <description>
+          <test_script_entry>/opt/sampleapp-android-tests/sampleapp/simd_switch.html</test_script_entry>
+        </description>
+      </testcase>
+      <testcase component="Sample Apps" execution_type="manual" id="simd_orientation" priority="P2" purpose="Check if SIMD can be orientation" status="approved" type="Functional">
+        <description>
+          <test_script_entry>/opt/sampleapp-android-tests/sampleapp/simd_orientation.html</test_script_entry>
+        </description>
+      </testcase>	  
+      <testcase component="Sample Apps" execution_type="manual" id="simd_appFunction" priority="P2" purpose="Validate if sample app SIMD function could work well" status="approved" type="Functional">
+        <description>
+          <test_script_entry>/opt/sampleapp-android-tests/sampleapp/simd_appFunction.html</test_script_entry>
+        </description>
+      </testcase>		  
       <testcase component="Sample Apps" execution_type="manual" id="M39_Beacon" priority="P2" purpose="Validate if Beacon is supported or not" status="approved" type="Functional">
         <description>
           <pre_condition>
@@ -717,11 +710,6 @@
           <test_script_entry>/opt/sampleapp-android-tests/sampleapp/M40_ServiceWorker.html</test_script_entry>
         </description>
       </testcase>
-      <testcase component="Sample Apps" execution_type="manual" id="SIMD_AppFunction" priority="P2" purpose="Validate if sample app SIMD function could work well" status="approved" type="Functional">
-        <description>
-          <test_script_entry>/opt/sampleapp-android-tests/sampleapp/SIMD_AppFunction.html</test_script_entry>
-        </description>
-      </testcase>
       <testcase component="Sample Apps" execution_type="manual" id="M41_LexicalDeclarations" priority="P2" purpose="Check if Lexical Declarations is supported or not" status="approved" type="Functional">
         <description>
           <pre_condition>
@@ -766,47 +754,7 @@
           <post_condition />
           <test_script_entry>/opt/sampleapp-android-tests/sampleapp/M41_WebAudioSuspendResume.html</test_script_entry>
         </description>
-      </testcase>
-      <testcase component="Sample Apps" execution_type="manual" id="SIMD_Close" priority="P1" purpose="Check if SIMD can be closed" status="approved" type="Functional">
-        <description>
-          <test_script_entry>/opt/sampleapp-android-tests/sampleapp/SIMD_Close.html</test_script_entry>
-        </description>
-      </testcase>
-      <testcase component="Sample Apps" execution_type="manual" id="SIMD_Icon" priority="P2" purpose="Check if SIMD icon display correctly" status="approved" type="Functional">
-        <description>
-          <test_script_entry>/opt/sampleapp-android-tests/sampleapp/SIMD_Icon.html</test_script_entry>
-        </description>
-      </testcase>
-      <testcase component="Sample Apps" execution_type="manual" id="SIMD_Install" priority="P0" purpose="Check if SIMD can be installed" status="approved" type="Functional">
-        <description>
-          <test_script_entry>/opt/sampleapp-android-tests/sampleapp/SIMD_Install.html</test_script_entry>
-        </description>
-      </testcase>
-      <testcase component="Sample Apps" execution_type="manual" id="SIMD_Launch" priority="P0" purpose="Check if SIMD can be launched" status="approved" type="Functional">
-        <description>
-          <test_script_entry>/opt/sampleapp-android-tests/sampleapp/SIMD_Launch.html</test_script_entry>
-        </description>
-      </testcase>
-      <testcase component="Sample Apps" execution_type="manual" id="SIMD_Orientation" priority="P2" purpose="Check if SIMD can be orientation" status="approved" type="Functional">
-        <description>
-          <test_script_entry>/opt/sampleapp-android-tests/sampleapp/SIMD_Orientation.html</test_script_entry>
-        </description>
-      </testcase>
-      <testcase component="Sample Apps" execution_type="manual" id="SIMD_Switch" priority="P2" purpose="Check if SIMD can be switched" status="approved" type="Functional">
-        <description>
-          <test_script_entry>/opt/sampleapp-android-tests/sampleapp/SIMD_Switch.html</test_script_entry>
-        </description>
-      </testcase>
-      <testcase component="Sample Apps" execution_type="manual" id="SIMD_Uninstall" priority="P1" purpose="Check if SIMD can be uninstalled" status="approved" type="Functional">
-        <description>
-          <test_script_entry>/opt/sampleapp-android-tests/sampleapp/SIMD_Uninstall.html</test_script_entry>
-        </description>
-      </testcase>
-      <testcase component="Sample Apps" execution_type="manual" id="SIMD_Uninstall_WithAppRunning" priority="P2" purpose="Check if SIMD can be uninstalled with app running" status="approved" type="Functional">
-        <description>
-          <test_script_entry>/opt/sampleapp-android-tests/sampleapp/SIMD_Uninstall_WithAppRunning.html</test_script_entry>
-        </description>
-      </testcase>
+      </testcase>  
       <testcase component="Sample Apps" execution_type="manual" id="RTC_datachannel" purpose="Check if the first channel onDataChannel can be fired" status="approved" type="Functional">
         <description>
           <test_script_entry>/opt/sampleapp-android-tests/sampleapp/RTC_datachannel.html</test_script_entry>
