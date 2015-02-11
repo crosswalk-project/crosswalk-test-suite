@@ -230,9 +230,9 @@ class WebAPP(common.APP):
                 print "Failed to get element: %s" % e
         return None
 
-    def compare_two_value(self, first=None, second=None):
+    def compare_two_values(self, first=None, second=None):
         try:
-            if eval(self.text_value[first]) > eval(self.text_value[second]):
+            if eval(self.text_value[first]) < eval(self.text_value[second]):
                 return True
             else:
                 return False
