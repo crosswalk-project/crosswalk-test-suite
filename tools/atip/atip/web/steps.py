@@ -37,11 +37,12 @@ def get_page_url(context, text):
     url = ''
     test_prefix = ''
     try:
+        test_platform = context.app.app_config["platform"]["name"].upper()
         url_components = urlparse(context.app.current_url())
-        if str(context.app.app_config).upper().find('TIZEN') >= 0:
+        if test_platform == 'TIZEN':
             test_prefix = '%s://%s//' % (url_components.scheme,
                                          url_components.netloc)
-        elif str(context.app.app_config).upper().find('ANDROID') >= 0:
+        elif test_platform == 'ANDROID':
             if url_components.scheme == 'http':
                 test_prefix = '%s://%s/' % (url_components.scheme,
                                             url_components.netloc)
