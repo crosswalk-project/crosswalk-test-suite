@@ -43,8 +43,6 @@ index_path = "index.html"
 def setUp():
     global ARCH, MODE, device
 
-    #device = "E6OKCY411012"
-    #device = "MedfieldA6B0B821" #cici
     device = os.environ.get('DEVICE_ID')
 
     if not device:
@@ -75,16 +73,13 @@ def pack(cmd, appname, self):
     print "\nGenerate APK %s ----------------> OK\n" % appname
     result = commands.getstatusoutput("ls")
     self.assertIn(appname, result[1])
-    #os.remove(appname)
     os.chdir("../..")
 
 def app_install(cmd, cmdfind, self):
     print "Install APK ----------------> START" 
-    #inststatus = commands.getstatusoutput("adb -s " + device + " install -r " + AppName)
     inststatus = commands.getstatusoutput(cmd)
     self.assertEquals(0, inststatus[0])
     print "Install APK ----------------> OK"
-    #pmstatus = commands.getstatusoutput("adb -s " + device + " shell pm list packages |grep org.xwalk.example")
     pmstatus = commands.getstatusoutput(cmdfind)
     self.assertEquals(0, pmstatus[0])
     print "Find Package in device ----------------> OK"
@@ -92,25 +87,18 @@ def app_install(cmd, cmdfind, self):
 def app_launch(cmd, self):
     print "Launch APK ----------------> START" 
     launchstatus = commands.getstatusoutput(cmd)
-    #print "launchstatus: ", launchstatus
-    #print "launchstatus[1].lower: ", launchstatus[1].lower()
     self.assertNotIn("error",launchstatus[1].lower())
     print "Launch APK ----------------> OK"
 
 def app_stop(cmd, self):
     print "Stop APK ----------------> START" 
     stopstatus = commands.getstatusoutput(cmd)
-    #print "cmd: ", cmd
-    #print "stopstatus:", stopstatus
     self.assertEquals(0, stopstatus[0])
     print "Stop APK ----------------> OK"
 
 def app_uninstall(cmd, self):
     print "Uninstall APK ----------------> START" 
-    #unistatus = commands.getstatusoutput("adb -s " + device + " uninstall org.xwalk.example")
     unistatus = commands.getstatusoutput(cmd)
-    #print "cmd: ", cmd
-    #print "unistatus: ", unistatus
     self.assertEquals(0, unistatus[0])
     print "Uninstall APK ----------------> OK"
 
