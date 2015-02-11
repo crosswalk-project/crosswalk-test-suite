@@ -68,9 +68,25 @@ class TestPackertoolsFunctions(unittest.TestCase):
         versionCode = ""
         versionCodeBase = ""
         versionCodeBase = " --app-versionCodeBase=1234567"
-        cmd = "python %smake_apk.py --package=org.xwalk.example --arch=%s --mode=%s --manifest=%s --project-dir=test" % \
+        cmd = "python %smake_apk.py --package=org.xwalk.example --arch=%s --mode=%s --manifest=%s --project-dir=test --app-version=1.0.0" % \
         (comm.Pck_Tools, comm.ARCH, comm.MODE, manfiestPath)
         comm.versionCode(cmd, versionCode, versionCodeBase, self)
+        comm.clear_versionCode()
+
+    def test_manifest_version_versionCode(self):
+        comm.setUp()
+        comm.clear_versionCode()
+        targetDir = comm.ConstPath + "/../testapp/example/"
+        manfiestPath = targetDir + "manifest.json"
+        os.chdir(targetDir)
+        versionCode = ""
+        versionCodeBase = ""
+        cmd = "python %smake_apk.py --package=org.xwalk.example --arch=%s --mode=%s --manifest=%s --project-dir=test --app-version=1.0.0.0" % \
+        (comm.Pck_Tools, comm.ARCH, comm.MODE, manfiestPath)
+        packstatus = commands.getstatusoutput(cmd)
+        errorinfo = "please specify --app-versionCode or --app-versionCodeBase"
+        self.assertNotEquals(0, packstatus[0])
+        self.assertIn(errorinfo, packstatus[1])
         comm.clear_versionCode()
 
 if __name__ == '__main__':  
