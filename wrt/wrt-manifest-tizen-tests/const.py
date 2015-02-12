@@ -1,7 +1,9 @@
 #!/usr/bin/env python
 import sys, os
 import itertools, shutil
-Tizen_User=os.environ['TIZEN_USER']
+Tizen_User = "app"
+if os.environ['TIZEN_USER']:
+  Tizen_User = os.environ['TIZEN_USER']
 path = os.path.abspath(__file__)
 path = os.path.split(path)[0]
 os.chdir(path)
