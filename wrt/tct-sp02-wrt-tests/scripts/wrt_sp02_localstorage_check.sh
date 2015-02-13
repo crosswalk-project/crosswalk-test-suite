@@ -44,7 +44,7 @@ if [ $? -ne 0 ]
 then
   exit 1
 fi
-widgetpath="/home/$TIZEN_USER/apps_rw/xwalk-service/applications/$appids"
+widgetpath="/home/$TIZEN_USER/apps_rw/xwalk/applications/$appids"
 if [ ! -d $widgetpath ]
 then
   existbh "The path of the application does not exist." 1
