@@ -55,7 +55,7 @@ elif [[ $1 == "xw_tizen" ]]; then
     export CONNECT_TYPE="sdb"
     export TIZEN_USER=""
     export LAUNCHER=""
-    export WEBDRIVER_VARS="{\"webdriver_url\":\"http://127.0.0.1:9515\", \"desired_capabilities\": {\"xwalkOptions\": {\"tizenAppId\": \"TEST_APP_ID\", \"tizenDebuggerAddress\": \"http://127.0.0.1:9333\"}}, \"test_prefix\": \"file:///opt/TESTER-HOME-DIR/apps_rw/xwalk-service/applications/TEST_APP_ID/\"}"
+    export WEBDRIVER_VARS="{\"webdriver_url\":\"http://127.0.0.1:9515\", \"desired_capabilities\": {\"xwalkOptions\": {\"tizenAppId\": \"TEST_APP_ID\", \"tizenDebuggerAddress\": \"http://127.0.0.1:9333\"}}, \"test_prefix\": \"file:///opt/TESTER-HOME-DIR/apps_rw/xwalk/applications/TEST_APP_ID/\"}"
 elif [[ $1 == "chrome_ubuntu" ]]; then
     export TEST_PLATFORM="chrome_ubuntu"
     export DEVICE_ID=""

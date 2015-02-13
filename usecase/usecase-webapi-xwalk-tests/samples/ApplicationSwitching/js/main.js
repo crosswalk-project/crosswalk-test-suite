@@ -32,8 +32,8 @@ var resume1Url, resume2Url;
 var flag = false;
 var resume1_flag = false , resume2_flag = false;
 $(document).delegate("#main", "pageinit", function() {
-  resume1Url = "TESTER-HOME-DIR/apps_rw/xwalk-service/applications/xwalktests.XwalkSysTests/tests/ApplicationSwitching/res/TestResume1.wgt";
-  resume2Url = "TESTER-HOME-DIR/apps_rw/xwalk-service/applications/xwalktests.XwalkSysTests/tests/ApplicationSwitching/res/TestResume2.wgt";
+  resume1Url = "TESTER-HOME-DIR/apps_rw/xwalk/applications/xwalktests.XwalkSysTests/tests/ApplicationSwitching/res/TestResume1.wgt";
+  resume2Url = "TESTER-HOME-DIR/apps_rw/xwalk/applications/xwalktests.XwalkSysTests/tests/ApplicationSwitching/res/TestResume2.wgt";
   $("#install1").bind("vclick", function() {
     install(resume1Url, "install1");
     resume1_flag = true;
