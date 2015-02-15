@@ -70,7 +70,7 @@ Authors:
            var xhr = new XMLHttpRequest();
            try {
                xhr.open("GET", "http://www.w3.org");
-               document.write("Pass<br>");
+               document.write("<p id='t1'>Pass</p>");
            } catch(e) {
                document.write("Fail--should not reach here, catch error <br>");
            }
@@ -78,19 +78,19 @@ Authors:
                xhr.open("GET", "support/csp.js");
                document.write("Fail--should be throw exception<br>");
            } catch(e) {
-               document.write("Pass<br>");
+               document.write("<p id='t2'>Pass</p>");
            }
            try {
                xhr.open("GET", "https://www.tizen.org");
                document.write("Fail--should be throw exception<br>");
            } catch(e) {
-               document.write("Pass<br>");
+               document.write("<p id='t3'>Pass</p>");
            }
       </script>
       <hr />
       <p>Test 2: passes if no red square is displayed in iframe.</p>
       <p>1</p>
-      <iframe src="support/red-100x100.png"></iframe>
+      <iframe id="frame1" src="support/red-100x100.png"></iframe>
       <hr />
     </div>
     <div class="footer">

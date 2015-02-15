@@ -12,6 +12,11 @@ def i_visit_frame(context, key):
     context.app.driver.switch_to_frame(key)
     assert True
 
+@step(u'I go out of frame')
+def i_jump_frame(context):
+    context.app.driver.switch_to_default_content()
+    assert True
+
 @step(u'I should see nothing in "{attr}" attr of "{key}" area')
 def check_text_by_key(context, attr, key):
     elements = context.app.driver.find_elements_by_id(key)
@@ -24,6 +29,11 @@ def check_text_by_key(context, attr, key):
 def should_see_text_element_with_color(context, text, key, color):
     assert context.app.check_normal_text_element_timeout_with_color(
         text, key, color), u'Text was not found'
+
+@step(u'I should see "{key}" area in "{color}" color')
+def should_see_text_element_with_color(context, key, color):
+    assert context.app.check_normal_element_timeout_with_color(
+        key, color), u'The background color is wrong'
 
 @step(u'I verify value in "{key}" is "{expecttype}" type')
 def check_type_by_key(context, key, expecttype):
@@ -41,3 +51,7 @@ def check_type_by_key(context, p_name, key):
 def check_type_by_key(context, first, second):
     assert context.app.compare_two_values(first, second), u'The second value is lesser than the first one'
 
+@step(u'I should not see "{text}" in "{key}" area')
+def should_see_text_element(context, text, key):
+    assert context.app.check_normal_text_element_not_exist(
+        text, key, display=True), u'Text exists!'

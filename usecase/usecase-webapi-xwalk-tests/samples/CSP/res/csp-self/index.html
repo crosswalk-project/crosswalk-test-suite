@@ -69,7 +69,7 @@ Authors:
            var xhr = new XMLHttpRequest();
            try {
                xhr.open("GET", "support/csp.js");
-               document.write("Pass<br>");
+               document.write("<p id='t1'>Pass</p>");
            } catch(e) {
                document.write("Fail--should not reach here, throw exception<br>");
            }
@@ -77,7 +77,7 @@ Authors:
                xhr.open("GET", "http://https://www.tizen.org");
                document.write("Fail--should be throw exception<br>");
            } catch(e) {
-               document.write("Pass<br>");
+               document.write("<p id='t2'>Pass</p>");
            }
       </script>
       <hr />
