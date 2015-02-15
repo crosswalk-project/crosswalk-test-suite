@@ -1,111 +1,213 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <test_definition>
   <suite name="Usecase WebAPI">
-    <set name="Runtime &amp;amp; Packaging" background="brand-primary" icon="glyphicon-asterisk">
-      <testcase component="sample" execution_type="manual" id="AppURI" platform="all" priority="P0" purpose="App URI" status="approved" type="functional_positive">
+    <set name="Runtime &amp;amp; Packaging" background="brand-primary" icon="glyphicon-asterisk" type="js" ui-auto="bdd">
+      <testcase component="sample" execution_type="auto" id="AppURI" platform="all" priority="P0" purpose="App URI" status="approved" type="functional_positive">
         <description>
-          <test_script_entry test_script_expected_result="0">/opt/usecase-webapi-xwalk-tests/bddrunner testscripts/AppURI.feature</test_script_entry>
+          <bdd_test_script_entry test_script_expected_result="0">testscripts/AppURI.feature</bdd_test_script_entry>
         </description>
       </testcase>
     </set>
-    <set name="Multimedia &amp;amp; Graphics" background="brand-success" icon="glyphicon-facetime-video" type="script">
-      <testcase component="Crosswalk Use Cases/WebAPI" execution_type="auto" id="Jsenhance" platform="all" priority="P0" purpose="Jsenhance" status="approved" type="functional_positive">
-        <description>
-          <test_script_entry test_script_expected_result="0">/opt/usecase-webapi-xwalk-tests/bddrunner testscripts/Jsenhance.feature</test_script_entry>
-        </description>
+    <set name="Multimedia &amp;amp; Graphics" background="brand-success" icon="glyphicon-facetime-video" type="js" ui-auto="bdd">
+      <testcase component="sample" type="functional_positive" status="approved" execution_type="manual" platform="all" priority="P0" id="AnimationTransform" purpose="Animation Transform">
+      </testcase>
+      <testcase component="sample" type="functional_positive" status="approved" execution_type="manual" platform="all" priority="P0" id="AudioPlay" purpose="Audio Play">
+      </testcase>
+      <testcase component="sample" type="functional_positive" status="approved" execution_type="manual" platform="all" priority="P0" id="Canvas" purpose="Canvas">
+      </testcase>
+      <testcase component="sample" type="functional_positive" status="approved" execution_type="manual" platform="all" priority="P0" id="CSSAnimation" purpose="CSS Animation">
+      </testcase>
+      <testcase component="sample" type="functional_positive" status="approved" execution_type="manual" platform="all" priority="P0" id="CSSStyle" purpose="CSS Style">
       </testcase>
       <testcase component="Crosswalk Use Cases/WebAPI" execution_type="manual" id="CSSStyleAttribute" platform="all" priority="P0" purpose="CSS Style Attribute" status="designed" type="functional_positive">
       </testcase>
+      <testcase component="sample" type="functional_positive" status="approved" execution_type="manual" platform="all" priority="P0" id="FlexibleBox" purpose="Flexible Box">
+      </testcase>
+      <testcase component="Crosswalk Use Cases/WebAPI" execution_type="auto" id="Jsenhance" platform="all" priority="P0" purpose="Jsenhance" status="approved" type="functional_positive">
+        <description>
+          <bdd_test_script_entry test_script_expected_result="0">testscripts/Jsenhance.feature</bdd_test_script_entry>
+        </description>
+      </testcase>
+      <testcase component="sample" type="functional_positive" status="approved" execution_type="manual" platform="all" priority="P0" id="MediaQueries" purpose="Media Queries">
+      </testcase>
       <testcase component="Crosswalk Use Cases/WebAPI" execution_type="manual" id="MediaSource" platform="all" priority="P0" purpose="MediaSource" status="approved" type="functional_positive">
+      </testcase>
+      <testcase component="sample" type="functional_positive" status="approved" execution_type="manual" platform="all" priority="P0" id="SVGTransformation" purpose="SVG Transformation">
+      </testcase>
+      <testcase component="sample" type="functional_positive" status="approved" execution_type="manual" platform="all" priority="P0" id="Transitions" purpose="Transitions">
+      </testcase>
+      <testcase component="sample" type="functional_positive" status="approved" execution_type="manual" platform="android" priority="P0" id="VideoPlayAndroid" purpose="Video Play">
+      </testcase>
+      <testcase component="sample" type="functional_positive" status="approved" execution_type="manual" platform="tizen" priority="P0" id="VideoPlayTizen" purpose="Video Play">
       </testcase>
       <testcase component="sample" execution_type="auto" id="WebRTC" platform="all" priority="P0" purpose="WebRTC" status="approved" type="functional_positive">
         <description>
-          <test_script_entry test_script_expected_result="0">/opt/usecase-webapi-xwalk-tests/bddrunner testscripts/WebRTC.feature</test_script_entry>
+          <bdd_test_script_entry test_script_expected_result="0">testscripts/WebRTC.feature</bdd_test_script_entry>
         </description>
       </testcase>
     </set>
-    <set name="Networking &amp;amp; Storage" background="brand-warning" icon="glyphicon-link" type="script">
+    <set name="Networking &amp;amp; Storage" background="brand-warning" icon="glyphicon-link" type="js" ui-auto="bdd">
+      <testcase component="sample" type="functional_positive" status="approved" execution_type="manual" platform="all" priority="P0" id="FileReader" purpose="FileReader">
+      </testcase>
       <testcase component="Crosswalk Use Cases/WebAPI" execution_type="manual" id="FileSystem" platform="all" priority="P0" purpose="File System" status="approved" type="functional_positive">
       </testcase>
       <testcase component="sample" type="functional_positive" status="approved" execution_type="auto" platform="all" priority="P0" id="IndexedDB" purpose="IndexedDB">
         <description>
-          <test_script_entry test_script_expected_result="0">/opt/usecase-webapi-xwalk-tests/bddrunner testscripts/IndexedDB.feature</test_script_entry>
+          <bdd_test_script_entry test_script_expected_result="0">testscripts/IndexedDB.feature</bdd_test_script_entry>
         </description>
       </testcase>
       <testcase component="Crosswalk Use Cases/WebAPI" execution_type="auto" id="RawSockets" platform="all" priority="P0" purpose="Raw Sockets" status="approved" type="functional_positive">
         <description>
-          <test_script_entry test_script_expected_result="0">/opt/usecase-webapi-xwalk-tests/bddrunner testscripts/RawSockets.feature</test_script_entry>
+          <bdd_test_script_entry test_script_expected_result="0">testscripts/RawSockets.feature</bdd_test_script_entry>
         </description>
       </testcase>
       <testcase component="sample" type="functional_positive" status="approved" execution_type="auto" platform="all" priority="P0" id="SessionHistory" purpose="Session History">
         <description>
-          <test_script_entry test_script_expected_result="0">/opt/usecase-webapi-xwalk-tests/bddrunner testscripts/SessionHistory.feature</test_script_entry>
+          <bdd_test_script_entry test_script_expected_result="0">testscripts/SessionHistory.feature</bdd_test_script_entry>
         </description>
       </testcase>
       <testcase component="Crosswalk Use Cases/WebAPI" execution_type="manual" id="SpeechSynthesis" platform="tizen" priority="P0" purpose="SpeechSynthesis" status="approved" type="functional_positive">
       </testcase>
+      <testcase component="sample" type="functional_positive" status="approved" execution_type="manual" platform="all" priority="P0" id="WebDatabase" purpose="Web Database">
+      </testcase>
+      <testcase component="sample" type="functional_positive" status="approved" execution_type="manual" platform="all" priority="P0" id="WebMessaging" purpose="Web Messaging">
+      </testcase>
       <testcase component="Crosswalk Use Cases/WebAPI" execution_type="auto" id="WebSocket" platform="all" priority="P0" purpose="WebSocket" status="approved" type="functional_positive">
         <description>
-          <test_script_entry test_script_expected_result="0">/opt/usecase-webapi-xwalk-tests/bddrunner testscripts/WebSocket.feature</test_script_entry>
+          <bdd_test_script_entry test_script_expected_result="0">testscripts/WebSocket.feature</bdd_test_script_entry>
         </description>
+      </testcase>
+      <testcase component="sample" type="functional_positive" status="approved" execution_type="manual" platform="all" priority="P0" id="WebSpeech" purpose="Web Speech">
       </testcase>
       <testcase component="sample" type="functional_positive" status="approved" execution_type="auto" platform="all" priority="P0" id="WebStorage" purpose="Web Storage">
         <description>
-          <test_script_entry test_script_expected_result="0">/opt/usecase-webapi-xwalk-tests/bddrunner testscripts/WebStorage.feature</test_script_entry>
+          <bdd_test_script_entry test_script_expected_result="0">testscripts/WebStorage.feature</bdd_test_script_entry>
         </description>
-      </testcase>
-      <testcase component="Crosswalk Use Cases/WebAPI" execution_type="manual" id="WebSpeech" platform="tizen" priority="P0" purpose="WebSpeech" status="approved" type="functional_positive">
       </testcase>
     </set>
-    <set name="Performance &amp;amp; Optimization" background="brand-danger" icon="glyphicon-th-large" type="script">
+    <set name="Performance &amp;amp; Optimization" background="brand-danger" icon="glyphicon-th-large" type="js" ui-auto="bdd">
+      <testcase component="sample" type="functional_positive" status="approved" execution_type="manual" platform="all" priority="P0" id="AnimationTiming" purpose="Animation Timing">
+      </testcase>
+      <testcase component="sample" type="functional_positive" status="approved" execution_type="manual" platform="android" priority="P0" id="HrtimeAndroid" purpose="High Resolution Time">
+      </testcase>
+      <testcase component="sample" type="functional_positive" status="approved" execution_type="manual" platform="tizen" priority="P0" id="HrtimeTizen" purpose="High Resolution Time">
+      </testcase>
       <testcase component="sample" type="functional_positive" status="approved" execution_type="auto" platform="all" priority="P0" id="NavigationTiming" purpose="Navigation Timing">
         <description>
-          <test_script_entry test_script_expected_result="0">/opt/usecase-webapi-xwalk-tests/bddrunner testscripts/NavigationTiming.feature</test_script_entry>
+          <bdd_test_script_entry test_script_expected_result="0">testscripts/NavigationTiming.feature</bdd_test_script_entry>
         </description>
+      </testcase>
+      <testcase component="sample" type="functional_positive" status="approved" execution_type="manual" platform="android" priority="P0" id="PageVisibility" purpose="Page Visibility">
+      </testcase>
+      <testcase component="sample" type="functional_positive" status="approved" execution_type="auto" platform="all" priority="P0" id="PerformanceTimeline" purpose="Performance Timeline">
+        <description>
+          <bdd_test_script_entry test_script_expected_result="0">testscripts/PerformanceTimeline.feature</bdd_test_script_entry>
+        </description>
+      </testcase>
+      <testcase component="sample" type="functional_positive" status="approved" execution_type="auto" platform="all" priority="P0" id="ResourceTiming" purpose="Resource Timing">
+        <description>
+          <bdd_test_script_entry test_script_expected_result="0">testscripts/ResourceTiming.feature</bdd_test_script_entry>
+        </description>
+      </testcase>
+      <testcase component="sample" type="functional_positive" status="approved" execution_type="manual" platform="all" priority="P0" id="Selectors" purpose="Selectors">
       </testcase>
       <testcase component="sample" type="functional_positive" status="approved" execution_type="auto" platform="all" priority="P0" id="TypedArray" purpose="Typed Array">
         <description>
-          <test_script_entry test_script_expected_result="0">/opt/usecase-webapi-xwalk-tests/bddrunner testscripts/TypedArray.feature</test_script_entry>
+          <bdd_test_script_entry test_script_expected_result="0">testscripts/TypedArray.feature</bdd_test_script_entry>
+        </description>
+      </testcase>
+      <testcase component="sample" type="functional_positive" status="approved" execution_type="auto" platform="all" priority="P0" id="Usertiming" purpose="User Timing">
+        <description>
+          <bdd_test_script_entry test_script_expected_result="0">testscripts/Usertiming.feature</bdd_test_script_entry>
+        </description>
+      </testcase>
+      <testcase component="sample" type="functional_positive" status="approved" execution_type="manual" platform="tizen" priority="P0" id="Viewport" purpose="Viewport">
+      </testcase>
+      <testcase component="sample" type="functional_positive" status="approved" execution_type="auto" platform="all" priority="P0" id="Workers" purpose="Workers">
+        <description>
+          <bdd_test_script_entry test_script_expected_result="0">testscripts/Workers.feature</bdd_test_script_entry>
         </description>
       </testcase>
     </set>
-    <set name="Device &amp;amp; Hardware" background="brand-info" icon="glyphicon-hdd" type="script">
+    <set name="Device &amp;amp; Hardware" background="brand-info" icon="glyphicon-hdd" type="js" ui-auto="bdd">
+      <testcase component="sample" type="functional_positive" status="approved" execution_type="manual" platform="all" priority="P0" id="Accelerometer" purpose="Accelerometer">
+        <capability name="accelerometer"/>
+      </testcase>
+      <testcase component="sample" type="functional_positive" status="approved" execution_type="manual" platform="android" priority="P0" id="BatteryStatus" purpose="Battery Status">
+      </testcase>
+      <testcase component="sample" type="functional_positive" status="approved" execution_type="manual" platform="all" priority="P0" id="BrowserState" purpose="Browser State">
+      </testcase>
+      <testcase component="sample" type="functional_positive" status="approved" execution_type="manual" platform="android" priority="P0" id="Camera" purpose="Camera">
+      </testcase>
+      <testcase component="sample" type="functional_positive" status="approved" execution_type="manual" platform="all" priority="P0" id="CameraViaUserMedia" purpose="Camera via UserMedia">
+        <capability name="cameraFront"/>
+      </testcase>
+      <testcase component="sample" type="functional_positive" status="approved" execution_type="manual" platform="all" priority="P0" id="FullScreen" purpose="Full Screen">
+      </testcase>
       <testcase component="sample" type="functional_positive" status="approved" execution_type="auto" platform="all" priority="P0" id="Forms" purpose="Forms">
         <description>
-          <test_script_entry test_script_expected_result="0">/opt/usecase-webapi-xwalk-tests/bddrunner testscripts/Forms.feature</test_script_entry>
+          <bdd_test_script_entry test_script_expected_result="0">testscripts/Forms.feature</bdd_test_script_entry>
         </description>
+      </testcase>
+      <testcase component="sample" type="functional_positive" status="approved" execution_type="manual" platform="android" priority="P0" id="GamePad" purpose="GamePad">
       </testcase>
       <testcase component="sample" type="functional_positive" status="approved" execution_type="auto" platform="all" priority="P0" id="HTMLTemplate" purpose="HTML Template">
         <description>
-          <test_script_entry test_script_expected_result="0">/opt/usecase-webapi-xwalk-tests/bddrunner testscripts/HTMLTemplate.feature</test_script_entry>
+          <bdd_test_script_entry test_script_expected_result="0">testscripts/HTMLTemplate.feature</bdd_test_script_entry>
         </description>
+      </testcase>
+      <testcase component="sample" type="functional_positive" status="approved" execution_type="manual" platform="all" priority="P0" id="Input" purpose="Input">
+      </testcase>
+      <testcase component="sample" type="functional_positive" status="approved" execution_type="manual" platform="android" priority="P0" id="LocationGPS" purpose="Location GPS">
+      </testcase>
+      <testcase component="sample" type="functional_positive" status="approved" execution_type="manual" platform="all" priority="P0" id="Notifications" purpose="Notifications">
+      </testcase>
+      <testcase component="sample" type="functional_positive" status="approved" execution_type="manual" platform="all" priority="P0" id="ScreenOrientation" purpose="Screen Orientation">
       </testcase>
       <testcase component="sample" type="functional_positive" status="approved" execution_type="auto" platform="all" priority="P0" id="ShadowDom" purpose="ShadowDom">
         <description>
-          <test_script_entry test_script_expected_result="0">/opt/usecase-webapi-xwalk-tests/bddrunner testscripts/ShadowDom.feature</test_script_entry>
+          <bdd_test_script_entry test_script_expected_result="0">testscripts/ShadowDom.feature</bdd_test_script_entry>
+        </description>
+      </testcase>
+      <testcase component="sample" type="functional_positive" status="approved" execution_type="manual" platform="all" priority="P0" id="Touch" purpose="Touch">
+      </testcase>
+      <testcase component="sample" type="functional_positive" status="approved" execution_type="manual" platform="android" priority="P0" id="Vibration" purpose="Vibration">
+      </testcase>
+      <testcase component="sample" type="functional_positive" status="approved" execution_type="manual" platform="all" priority="P0" id="WebAudio" purpose="WebAudio">
+      </testcase>
+      <testcase component="sample" type="functional_positive" status="approved" execution_type="manual" platform="all" priority="P0" id="WebGL" purpose="WebGL">
+      </testcase>
+    </set>
+    <set name="Social" background="bs-purple" icon="glyphicon-heart" type="js" ui-auto="bdd">
+      <testcase component="sample" execution_type="auto" id="ContactsManager" platform="all" priority="P0" purpose="Contacts Manager" status="approved" type="functional_positive">
+        <description>
+          <bdd_test_script_entry test_script_expected_result="0">testscripts/ContactsManager.feature</bdd_test_script_entry>
         </description>
       </testcase>
     </set>
-    <set name="Social" background="bs-purple" icon="glyphicon-heart">
-      <testcase component="sample" execution_type="auto" id="ContactsManager" platform="all" priority="P0" purpose="Contacts Manager" status="approved" type="functional_positive">
-        <description>
-          <test_script_entry test_script_expected_result="0">/opt/usecase-webapi-xwalk-tests/bddrunner testscripts/ContactsManager.feature</test_script_entry>
-        </description>
+    <set name="UI" background="bs-purple-light" icon="glyphicon-magnet">
+      <testcase component="sample" type="functional_positive" status="approved" execution_type="manual" platform="all" priority="P0" id="Clipboard" purpose="Clipboard">
+      </testcase>
+      <testcase component="sample" type="functional_positive" status="approved" execution_type="manual" platform="tizen" priority="P0" id="DragandDrop" purpose="Drag and Drop">
       </testcase>
     </set>
     <set name="Security" background="brand-warning3" icon="glyphicon-warning-sign">
       <testcase component="Crosswalk Use Cases/WebAPI" execution_type="manual" id="CSP" platform="all" priority="P0" purpose="CSP" status="approved" subcase="9" type="functional_positive">
       </testcase>
+      <testcase component="sample" type="functional_positive" status="approved" execution_type="manual" platform="all" priority="P0" id="Sandbox" purpose="Sandbox">
+      </testcase>
     </set>
-    <set name="Experimental API" background="brand-success3" icon="glyphicon-adjust" type="script">
+    <set name="Experimental API" background="brand-success3" icon="glyphicon-adjust" type="js" ui-auto="bdd">
       <testcase component="sample" execution_type="auto" id="DeviceCapabilities" platform="all" priority="P0" purpose="Device Capabilities" status="approved" type="functional_positive">
         <description>
-          <test_script_entry test_script_expected_result="0">/opt/usecase-webapi-xwalk-tests/bddrunner testscripts/DeviceCapabilities.feature</test_script_entry>
+          <bdd_test_script_entry test_script_expected_result="0">testscripts/DeviceCapabilities.feature</bdd_test_script_entry>
         </description>
+      </testcase>
+      <testcase component="sample" type="functional_positive" status="approved" execution_type="manual" platform="android" priority="P0" id="Presentation" purpose="Presentation">
       </testcase>
       <testcase component="sample" type="functional_positive" status="approved" execution_type="auto" platform="all" priority="P0" id="SIMD" purpose="SIMD">
         <description>
-          <test_script_entry test_script_expected_result="0">/opt/usecase-webapi-xwalk-tests/bddrunner testscripts/SIMD.feature</test_script_entry>
+          <bdd_test_script_entry test_script_expected_result="0">testscripts/SIMD.feature</bdd_test_script_entry>
         </description>
       </testcase>
     </set>
@@ -116,8 +218,16 @@
       </testcase>
       <testcase component="Crosswalk Use Cases/WebAPI" execution_type="manual" id="Application" platform="tizen" priority="P0" purpose="Application" status="designed" type="functional_positive">
       </testcase>
+      <testcase component="sample" type="functional_positive" status="approved" execution_type="manual" platform="tizen" priority="P0" id="ApplicationManager" purpose="ApplicationManager">
+      </testcase>
+      <testcase component="Crosswalk Use Cases/WebAPI" execution_type="manual" id="ApplicationSwitching" platform="tizen" priority="P0" purpose="ApplicationSwitching" status="approved" type="functional_positive">
+      </testcase>
+      <testcase component="sample" type="functional_positive" status="approved" execution_type="manual" platform="tizen" priority="P0" id="AudioSystem" purpose="AudioSystem">
+      </testcase>
       <testcase component="Crosswalk Use Cases/WebAPI" execution_type="manual" id="Bluetooth" platform="tizen" priority="P0" purpose="Bluetooth" status="designed" type="functional_positive">
         <capability name="bluetooth" />
+      </testcase>
+      <testcase component="sample" type="functional_positive" status="approved" execution_type="manual" platform="tizen" priority="P0" id="Bookmark" purpose="Bookmark">
       </testcase>
       <testcase component="Crosswalk Use Cases/WebAPI" execution_type="manual" id="Calendar" priority="P0" purpose="Calendar" status="designed" type="functional_positive">
       </testcase>
@@ -125,14 +235,23 @@
       </testcase>
       <testcase component="Crosswalk Use Cases/WebAPI" execution_type="manual" id="Contact" platform="tizen" priority="P0" purpose="Contact" status="designed" type="functional_positive">
       </testcase>
+      <testcase component="sample" type="functional_positive" status="approved" execution_type="manual" platform="tizen" priority="P0" id="Content" purpose="Content">
+      </testcase>
       <testcase component="Crosswalk Use Cases/WebAPI" execution_type="manual" id="DataControl" platform="tizen" priority="P0" purpose="DataControl" status="approved" type="functional_positive">
       </testcase>
       <testcase component="Crosswalk Use Cases/WebAPI" execution_type="manual" id="DataSync" platform="tizen" priority="P0" purpose="DataSync" status="designed" type="functional_positive">
+      </testcase>
+      <testcase component="sample" type="functional_positive" status="approved" execution_type="manual" platform="tizen" priority="P0" id="Download" purpose="Download">
+      </testcase>
+      <testcase component="sample" type="functional_positive" status="approved" execution_type="manual" platform="tizen" priority="P0" id="MessagePort" purpose="MessagePort">
       </testcase>
       <testcase component="Crosswalk Use Cases/WebAPI" execution_type="manual" id="MessagingEmail" platform="tizen" priority="P0" purpose="Messaging Email" status="designed" type="functional_positive">
       </testcase>
       <testcase component="Crosswalk Use Cases/WebAPI" execution_type="manual" id="MessagingSMSMMS" platform="tizen" priority="P0" purpose="Messaging SMS/MMS" status="designed" type="functional_positive">
         <capability name="telephony" />
+      </testcase>
+      <testcase component="sample" type="functional_positive" status="approved" execution_type="manual" platform="tizen" priority="P0" id="NBS" purpose="NBS">
+        <capability name="nbs"/>
       </testcase>
       <testcase component="Crosswalk Use Cases/WebAPI" execution_type="manual" id="Notification" platform="tizen" priority="P0" purpose="Notification" status="approved" type="functional_positive">
       </testcase>
@@ -147,11 +266,19 @@
       </testcase>
       <testcase component="Crosswalk Use Cases/WebAPI" execution_type="manual" id="SSO" platform="tizen" priority="P0" purpose="SSO" status="approved" type="functional_positive">
       </testcase>
+      <testcase component="sample" type="functional_positive" status="approved" execution_type="manual" platform="tizen" priority="P0" id="SystemInfo" purpose="SystemInfo">
+      </testcase>
+      <testcase component="sample" type="functional_positive" status="approved" execution_type="manual" platform="tizen" priority="P0" id="SystemSettingIncomingCall" purpose="SystemSetting IncomingCall">
+      </testcase>
+      <testcase component="sample" type="functional_positive" status="approved" execution_type="manual" platform="tizen" priority="P0" id="SystemSettingScreen" purpose="SystemSetting Screen">
+      </testcase>
       <testcase component="Crosswalk Use Cases/WebAPI" execution_type="manual" id="Telephony" platform="tizen" priority="P0" purpose="Telephony" status="approved" type="functional_positive">
       </testcase>
       <testcase component="Crosswalk Use Cases/WebAPI" execution_type="manual" id="Time" platform="tizen" priority="P0" purpose="Time" status="approved" type="functional_positive">
       </testcase>
       <testcase component="Crosswalk Use Cases/WebAPI" execution_type="manual" id="Tizen" platform="tizen" priority="P0" purpose="Tizen" status="approved" type="functional_positive">
+      </testcase>
+      <testcase component="sample" type="functional_positive" status="approved" execution_type="manual" platform="tizen" priority="P0" id="TizenFileSystem" purpose="Tizen Filesystem">
       </testcase>
       <testcase component="Crosswalk Use Cases/WebAPI" execution_type="manual" id="TizenNFC" platform="tizen" priority="P0" purpose="Tizen NFC" status="designed" type="functional_positive">
         <capability name="nfc" />
@@ -161,8 +288,6 @@
       <testcase component="Crosswalk Use Cases/WebAPI" execution_type="manual" id="WebSetting" platform="tizen" priority="P0" purpose="WebSetting" status="designed" type="functional_positive">
       </testcase>
       <testcase component="Crosswalk Use Cases/WebAPI" execution_type="manual" id="Locale" platform="tizen" priority="P0" purpose="Locale" status="approved" type="functional_positive">
-      </testcase>
-      <testcase component="Crosswalk Use Cases/WebAPI" execution_type="manual" id="ApplicationSwitching" platform="tizen" priority="P0" purpose="ApplicationSwitching" status="approved" type="functional_positive">
       </testcase>
     </set>
     <set name="Others APIs" background="brand-danger3" icon="glyphicon-gift">
@@ -175,6 +300,12 @@
       <testcase component="Crosswalk Use Cases/WebAPI" execution_type="manual" id="Es6NumericLiterals" platform="all" priority="P0" purpose="Es6NumericLiterals" status="approved" type="functional_positive">
       </testcase>
       <testcase component="Crosswalk Use Cases/WebAPI" execution_type="manual" id="FileApiPersistent" platform="all" priority="P0" purpose="FileApiPersistent" status="approved" type="functional_positive">
+      </testcase>
+      <testcase component="sample" type="functional_positive" status="approved" execution_type="manual" platform="tizen" priority="P0" id="MediaRenderer" purpose="Media Renderer">
+      </testcase>
+      <testcase component="sample" type="functional_positive" status="approved" execution_type="manual" platform="tizen" priority="P0" id="MediaServer" purpose="Media Server">
+      </testcase>
+      <testcase component="sample" type="functional_positive" status="approved" execution_type="manual" platform="tizen" priority="P0" id="NFC" purpose="NFC">
       </testcase>
     </set>
   </suite>
