@@ -32,20 +32,35 @@ if [[ $# == 0 ]]; then
     unset TEST_PLATFORM
     unset DEVICE_ID
     unset CONNECT_TYPE
+    unset TIZEN_USER
+    unset LAUNCHER
     unset WEBDRIVER_VARS
-elif [[ $1 == "xw_android" ]]; then
+elif [[ $1 == "xw_android_xwalk" ]]; then
     export TEST_PLATFORM="android"
     export DEVICE_ID=""
     export CONNECT_TYPE="adb"
+    export TIZEN_USER=""
+    export LAUNCHER="XWalkLauncher"
+    export WEBDRIVER_VARS="{\"webdriver_url\":\"http://127.0.0.1:9515\", \"desired_capabilities\": {\"xwalkOptions\": {\"androidPackage\": \"TEST_PKG_NAME\", \"androidActivity\": \"TEST_ACTIVITY_NAME\"}}, \"test_prefix\": \"file:///android_asset/www/\"}"
+elif [[ $1 == "xw_android_cordova" ]]; then
+    export TEST_PLATFORM="android"
+    export DEVICE_ID=""
+    export CONNECT_TYPE="adb"
+    export TIZEN_USER=""
+    export LAUNCHER="CordovaLauncher"
     export WEBDRIVER_VARS="{\"webdriver_url\":\"http://127.0.0.1:9515\", \"desired_capabilities\": {\"xwalkOptions\": {\"androidPackage\": \"TEST_PKG_NAME\", \"androidActivity\": \"TEST_ACTIVITY_NAME\"}}, \"test_prefix\": \"file:///android_asset/www/\"}"
 elif [[ $1 == "xw_tizen" ]]; then
     export TEST_PLATFORM="tizen"
     export DEVICE_ID=""
     export CONNECT_TYPE="sdb"
-    export WEBDRIVER_VARS="{\"webdriver_url\":\"http://127.0.0.1:9515\", \"desired_capabilities\": {\"xwalkOptions\": {\"tizenAppId\": \"TEST_APP_ID\", \"tizenDebuggerAddress\": \"10.239.14.111:9333\"}}, \"test_prefix\": \"file:///opt/TESTER-HOME-DIR/apps_rw/xwalk-service/applications/TEST_APP_ID/\"}"
+    export TIZEN_USER=""
+    export LAUNCHER=""
+    export WEBDRIVER_VARS="{\"webdriver_url\":\"http://127.0.0.1:9515\", \"desired_capabilities\": {\"xwalkOptions\": {\"tizenAppId\": \"TEST_APP_ID\", \"tizenDebuggerAddress\": \"http://127.0.0.1:9333\"}}, \"test_prefix\": \"file:///opt/TESTER-HOME-DIR/apps_rw/xwalk-service/applications/TEST_APP_ID/\"}"
 elif [[ $1 == "chrome_ubuntu" ]]; then
     export TEST_PLATFORM="chrome_ubuntu"
     export DEVICE_ID=""
     export CONNECT_TYPE=""
+    export TIZEN_USER=""
+    export LAUNCHER=""
     export WEBDRIVER_VARS="{\"webdriver_url\":\"http://127.0.0.1:9515\", \"desired_capabilities\": {\"chrome.binary\": \"/usr/bin/chromium-browser\"}, \"test_prefix\": \"file:///\"}"
 fi

@@ -47,24 +47,30 @@ except ImportError:
 
 class WebAPP(common.APP):
 
-    def __init__(self, app_config=None, app_name=None):
+    def __init__(self, app_config=None, app_name=None, apk_pkg_name=None, apk_activity_name=None):
         self.driver = None
         self.app_type = common.APP_TYPE_WEB
         self.app_name = app_name
         self.app_id = ""
         self.text_value = {}
-        apk_activity_name = ""
-        apk_pkg_name = ""
+        apk_activity_name = apk_activity_name
+        apk_pkg_name = apk_pkg_name
         if "platform" in app_config and "name" in app_config["platform"]:
             if app_config["platform"]["name"].upper().find('TIZEN') >= 0:
                 self.app_id = tizen.get_appid_by_name(
                     self.app_name, app_config["platform"], app_config["tizen_user"])
             if app_config["platform"]["name"].upper().find('ANDROID') >= 0:
-                self.app_name = self.app_name.replace("-", "_")
-                apk_name_update = "".join(
-                    [i.capitalize() for i in self.app_name.split("_") if i])
-                apk_activity_name = ".%sActivity" % apk_name_update
-                apk_pkg_name = "org.xwalk.%s" % self.app_name
+                if apk_activity_name == apk_pkg_name == None:
+                    if "app_launcher" in app_config and app_config["app_launcher"] == "XWalkLauncher":
+                        self.app_name = self.app_name.replace("-", "_")
+                        apk_name_update = "".join(
+                            [i.capitalize() for i in self.app_name.split("_") if i])
+                        apk_activity_name = ".%sActivity" % apk_name_update
+                        apk_pkg_name = "org.xwalk.%s" % self.app_name
+                    if "app_launcher" in app_config and app_config["app_launcher"] == "CordovaLauncher":
+                        self.app_name = self.app_name.replace("-", "_")
+                        apk_activity_name = ".%s" % self.app_name
+                        apk_pkg_name = "org.xwalk.%s" % self.app_name
         app_config_str = json.dumps(app_config).replace(
             "TEST_APP_NAME", self.app_name).replace(
             "TEST_APP_ID", self.app_id).replace(
@@ -461,14 +467,13 @@ class WebAPP(common.APP):
         if self.driver:
             self.driver.quit()
 
-
-def launch_webapp_by_name(context, app_name):
+def launch_webapp_by_name(context, app_name, apk_pkg_name=None, apk_activity_name=None):
     if not context.web_config:
         assert False
 
     if app_name in context.apps:
         context.apps[app_name].quit()
-    context.apps.update({app_name: WebAPP(context.web_config, app_name)})
+    context.apps.update({app_name: WebAPP(context.web_config, app_name, apk_pkg_name, apk_activity_name)})
     context.app = context.apps[app_name]
     if not context.app.launch_app():
         assert False
