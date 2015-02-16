@@ -53,6 +53,7 @@ class WebAPP(common.APP):
         self.app_name = app_name
         self.app_id = ""
         self.text_value = {}
+        self.color_dict = {"rgb(255, 0, 0)": "red","rgb(0, 255, 0)": "green","rgb(0, 0, 255)": "blue","rgb(255, 255, 0)": "yellow","rgb(0, 0, 0)": "black","rgb(255, 255, 255)": "white","rgba(0, 0, 0, 0)": "white"}
         apk_activity_name = apk_activity_name
         apk_pkg_name = apk_pkg_name
         if "platform" in app_config and "name" in app_config["platform"]:
@@ -215,6 +216,23 @@ class WebAPP(common.APP):
             print "Failed to get element: %s" % e
         return None
 
+    def check_normal_text_element_not_exist(self, text, key, display=True):
+        element = self.__get_element_by_key(key, display)
+        if element:
+            try:
+                e_list = element.find_elements_by_xpath(str(
+                        '//*[@value="{text}"]|'
+                        '//*[contains(normalize-space(.),"{text}") '
+                        'and not(./*[contains(normalize-space(.),"{text}")])]'
+                        .format(text=text)))
+                for i_element in e_list:
+                    if i_element.text == text:
+                       return False
+                return True
+            except Exception as e:
+                print "Failed to get element: %s" % e
+        return False
+
     def __check_normal_text_element(self, text, key, display=True):
         element = self.__get_element_by_key(key, display)
         if element:
@@ -324,16 +342,48 @@ class WebAPP(common.APP):
         end_time = time.time() + timeout
         while time.time() < end_time:
             if self.__check_normal_text_element(text, key, display):
-                if self.get_element_color(key, color):
+                if self.check_text_color(key, color):
                     return True
             time.sleep(0.2)
         return False
 
-    def get_element_color(self, key=None, color=None, display=True):
+    def check_normal_element_timeout_with_color(
+            self, key=None, color=None, display=True, timeout=2):
+        end_time = time.time() + timeout
+        while time.time() < end_time:
+            if self.check_background_color(key, color):
+                return True
+            time.sleep(0.2)
+        return False
+
+    def check_background_color(self, key=None, color=None, display=True):
         try:
-            js_script = 'var style=document.getElementById(\"' + key + '\").getAttribute(\"style\"); return style'
-            style = self.driver.execute_script(js_script)
-            if style.find(color) != -1:
+            js_script = 'var bg_color=document.getElementById(\"' + key + '\").style.backgroundColor; return bg_color'
+            bg_color = self.driver.execute_script(js_script)
+            if not bg_color:
+                js_script = 'var element=document.getElementById(\"' + key + '\");' \
+                        ' if(element.currentStyle) {return element.currentStyle.backgroundColor;} ' \
+                        ' else { return  document.defaultView.getComputedStyle(element,null).backgroundColor; } '
+                bg_color = self.driver.execute_script(js_script)
+            if not bg_color:
+                bg_color = "white"
+            number = re.match(r'[A-Za-z]+$',bg_color)
+            if not number:
+                bg_color = self.color_dict[bg_color]
+            print bg_color
+            if bg_color.strip() == color:
+              return True
+        except Exception as e:
+            print "Failed to get element color: %s" % e
+        return False
+
+    def check_text_color(self, key=None, color=None, display=True):
+        try:
+            js_script = 'var text_color=document.getElementById(\"' + key + '\").style.color; return text_color'
+            text_color = self.driver.execute_script(js_script)
+            if not text_color:
+                text_color = "black"
+            if text_color.strip() == color:
               return True
         except Exception as e:
             print "Failed to get element: %s" % e
