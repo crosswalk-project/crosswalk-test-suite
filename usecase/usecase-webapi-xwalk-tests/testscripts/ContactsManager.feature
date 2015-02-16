@@ -13,4 +13,5 @@ Feature: Usecase WebAPI
     Then I should see "Beckham" with "red" color in "David" area
     Then I should see "13913976543" with "red" color in "David" area
      And I click "clearButton"
+     And I wait 3 seconds
     Then I should see nothing in "innerText" attr of "tableList" area
