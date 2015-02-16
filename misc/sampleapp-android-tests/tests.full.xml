@@ -294,50 +294,55 @@
         </description>
       </testcase>
     </set>
-    <set name="SampleApp-bdd" type="script">	
-      <testcase component="Sample Apps" execution_type="auto" id="hexgl_appFunction" priority="P2" purpose="Validate if sample app HexGL function could work well" status="approved" type="Functional">
+    <set name="SampleApp-bdd" type="script" ui-auto="bdd">	
+      <testcase component="Sample Apps" execution_type="manual" id="hexgl_appFunction" priority="P2" purpose="Validate if sample app HexGL function could work well" status="approved" type="Functional">
         <description>
           <pre_condition>
             1. Make sure HexGL webapp is installed
           </pre_condition>
           <post_condition />
-		  <test_script_entry test_script_expected_result="0">/opt/sampleapp-android-tests/bddrunner sampleapp-android-tests/testscripts/hexgl_appFunction.feature</test_script_entry>
+          <test_script_entry>/opt/sampleapp-android-tests/sampleapp/hexgl_appFunction.html</test_script_entry>
+          <bdd_test_script_entry test_script_expected_result="0">testscripts/hexgl_appFunction.feature</bdd_test_script_entry>
         </description>
       </testcase>	
-      <testcase component="Sample Apps" execution_type="auto" id="memorygame_appFunction" priority="P2" purpose="Validate if sample app MemoryGame function could work well" status="approved" type="Functional">
+      <testcase component="Sample Apps" execution_type="manual" id="memorygame_appFunction" priority="P2" purpose="Validate if sample app MemoryGame function could work well" status="approved" type="Functional">
         <description>
           <pre_condition>
             1. Make sure memorygame webapp is installed
           </pre_condition>
           <post_condition />
-		  <test_script_entry test_script_expected_result="0">/opt/sampleapp-android-tests/bddrunner sampleapp-android-tests/testscripts/memorygame_appFunction.feature</test_script_entry>
+          <test_script_entry>/opt/sampleapp-android-tests/sampleapp/memorygame_appFunction.html</test_script_entry>
+          <bdd_test_script_entry test_script_expected_result="0">testscripts/memorygame_appFunction.feature</bdd_test_script_entry>
         </description>
       </testcase>
-      <testcase component="Sample Apps" execution_type="auto" id="gallery_appFunction" priority="P2" purpose="Validate if sample app Gallery function could work well" status="approved" type="Functional">
+      <testcase component="Sample Apps" execution_type="manual" id="gallery_appFunction" priority="P2" purpose="Validate if sample app Gallery function could work well" status="approved" type="Functional">
         <description>
           <pre_condition>
             1.Make sure the gallery webapp is installed
           </pre_condition>
           <post_condition />
-		  <test_script_entry test_script_expected_result="0">/opt/sampleapp-android-tests/bddrunner sampleapp-android-tests/testscripts/gallery_appFunction.feature</test_script_entry>
+          <test_script_entry>/opt/sampleapp-android-tests/sampleapp/gallery_appFunction.html</test_script_entry>
+          <bdd_test_script_entry test_script_expected_result="0">testscripts/gallery_appFunction.feature</bdd_test_script_entry>
         </description>
       </testcase>
-      <testcase component="Sample Apps" execution_type="auto" id="sysapps_appFunction" priority="P2" purpose="Validate if sample app SysApps function could work well" status="approved" type="Functional">
+      <testcase component="Sample Apps" execution_type="manual" id="sysapps_appFunction" priority="P2" purpose="Validate if sample app SysApps function could work well" status="approved" type="Functional">
         <description>
           <pre_condition>
             1. Make sure sysapps webapp is installed
           </pre_condition>
           <post_condition />
-		  <test_script_entry test_script_expected_result="0">/opt/sampleapp-android-tests/bddrunner sampleapp-android-tests/testscripts/sysapps_appFunction.feature</test_script_entry>
+          <test_script_entry>/opt/sampleapp-android-tests/sampleapp/sysapps_appFunction.html</test_script_entry>
+          <bdd_test_script_entry test_script_expected_result="0">testscripts/sysapps_appFunction.feature</bdd_test_script_entry>
         </description>
       </testcase>		
-      <testcase component="Sample Apps" execution_type="auto" id="simd_appFunction" priority="P2" purpose="Validate if sample app SIMD function could work well" status="approved" type="Functional">
+      <testcase component="Sample Apps" execution_type="manual" id="simd_appFunction" priority="P2" purpose="Validate if sample app SIMD function could work well" status="approved" type="Functional">
         <description>
           <pre_condition>
             1. Make sure simd webapp is installed
           </pre_condition>
           <post_condition />
-		  <test_script_entry test_script_expected_result="0">/opt/sampleapp-android-tests/bddrunner sampleapp-android-tests/testscripts/simd_appFunction.feature</test_script_entry>
+          <test_script_entry>/opt/sampleapp-android-tests/sampleapp/simd_appFunction.html</test_script_entry>
+          <bdd_test_script_entry test_script_expected_result="0">testscripts/simd_appFunction.feature</bdd_test_script_entry>
         </description>
       </testcase>	  
 	</set>
@@ -462,15 +467,6 @@
           <test_script_entry>/opt/sampleapp-android-tests/sampleapp/hexgl_orientation.html</test_script_entry>
         </description>
       </testcase>
-      <testcase component="Sample Apps" execution_type="manual" id="hexgl_appFunction" priority="P2" purpose="Validate if sample app HexGL function could work well" status="approved" type="Functional">
-        <description>
-          <pre_condition>
-            1. Make sure HexGL webapp is launched
-          </pre_condition>
-          <post_condition />
-          <test_script_entry>/opt/sampleapp-android-tests/sampleapp/hexgl_appFunction.html</test_script_entry>
-        </description>
-      </testcase>
       <testcase component="Sample Apps" execution_type="manual" id="memorygame_icon" priority="P0" purpose="Validate if sample app MemoryGame icon display normally" status="approved" type="Functional">
         <description>
           <pre_condition>
@@ -496,15 +492,6 @@
           </pre_condition>
           <post_condition />
           <test_script_entry>/opt/sampleapp-android-tests/sampleapp/memorygame_orientation.html</test_script_entry>
-        </description>
-      </testcase>
-      <testcase component="Sample Apps" execution_type="manual" id="memorygame_appFunction" priority="P2" purpose="Validate if sample app MemoryGame function could work well" status="approved" type="Functional">
-        <description>
-          <pre_condition>
-            1. Make sure memorygame webapp is launched
-          </pre_condition>
-          <post_condition />
-          <test_script_entry>/opt/sampleapp-android-tests/sampleapp/memorygame_appFunction.html</test_script_entry>
         </description>
       </testcase>
       <testcase component="Sample Apps" execution_type="manual" id="webrtc_icon" priority="P2" purpose="Validate if sample app WebRTC icon display normally" status="approved" type="Functional">
@@ -601,15 +588,6 @@
           <test_script_entry>/opt/sampleapp-android-tests/sampleapp/gallery_orientation.html</test_script_entry>
         </description>
       </testcase>
-      <testcase component="Sample Apps" execution_type="manual" id="gallery_appFunction" priority="P2" purpose="Validate if sample app Gallery function could work well" status="approved" type="Functional">
-        <description>
-          <pre_condition>
-            1.Make sure the gallery webapp is launched.
-          </pre_condition>
-          <post_condition />
-          <test_script_entry>/opt/sampleapp-android-tests/sampleapp/gallery_appFunction.html</test_script_entry>
-        </description>
-      </testcase>
       <testcase component="Sample Apps" execution_type="manual" id="sysapps_icon" priority="P0" purpose="Validate if sample app SysApps icon display normally" status="approved" type="Functional">
         <description>
           <pre_condition>
@@ -637,15 +615,6 @@
           <post_condition />
           <test_script_entry>/opt/sampleapp-android-tests/sampleapp/sysapps_orientation.html</test_script_entry>
         </description>
-      </testcase>
-      <testcase component="Sample Apps" execution_type="manual" id="sysapps_appFunction" priority="P2" purpose="Validate if sample app SysApps function could work well" status="approved" type="Functional">
-        <description>
-          <pre_condition>
-            1. Make sure sysapps webapp is launched
-          </pre_condition>
-          <post_condition />
-          <test_script_entry>/opt/sampleapp-android-tests/sampleapp/sysapps_appFunction.html</test_script_entry>
-        </description>
       </testcase>	
       <testcase component="Sample Apps" execution_type="manual" id="simd_icon" priority="P2" purpose="Check if SIMD icon display correctly" status="approved" type="Functional">
         <description>
@@ -661,12 +630,7 @@
         <description>
           <test_script_entry>/opt/sampleapp-android-tests/sampleapp/simd_orientation.html</test_script_entry>
         </description>
-      </testcase>	  
-      <testcase component="Sample Apps" execution_type="manual" id="simd_appFunction" priority="P2" purpose="Validate if sample app SIMD function could work well" status="approved" type="Functional">
-        <description>
-          <test_script_entry>/opt/sampleapp-android-tests/sampleapp/simd_appFunction.html</test_script_entry>
-        </description>
-      </testcase>		  
+      </testcase>	  		  
       <testcase component="Sample Apps" execution_type="manual" id="M39_Beacon" priority="P2" purpose="Validate if Beacon is supported or not" status="approved" type="Functional">
         <description>
           <pre_condition>
