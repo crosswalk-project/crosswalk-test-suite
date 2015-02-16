@@ -50,6 +50,6 @@ tests/
 * Testkit-lite: Please check testkit-lite project for details
 * Behave: setup test ENVs by set_env.sh or webdriver.json firstly, then run "behave" as:
 
-# cd path-to/tests
-# behave
+cd path-to/tests
+behave
 
