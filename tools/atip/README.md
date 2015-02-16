@@ -3,7 +3,7 @@ ATIP - a new "behave" binding library
 
 ## Introduction
 
-ATIP(Application Test in Python), a ¡°behave¡± binding library as the bridge between application and BDD too ¡°behave¡±, and use WebDriver and platform interfaces to implement detailed BDD steps for application. ATIP resources host on [Crosswalk Test Suite Project](https://github.com/crosswalk-project/crosswalk-test-suite/tree/master/tools/atip)
+ATIP(Application Test in Python), a â€œbehaveâ€ binding library as the bridge between application and BDD too â€œbehaveâ€, and use WebDriver and platform interfaces to implement detailed BDD steps for application. ATIP resources host on [Crosswalk Test Suite Project](https://github.com/crosswalk-project/crosswalk-test-suite/tree/master/tools/atip)
 
 ## Configuration - environment.py
 
@@ -32,13 +32,13 @@ Before below sections, you'd better already pretty familiar with the tests devel
 
 ```
 tests/
-  ©À©¤©¤ environment.py
+  â”œâ”€â”€ environment.py
 
-  ©À©¤©¤ steps
+  â”œâ”€â”€ steps
 
-  ©¦   ©¸©¤©¤ steps.py
+  â”‚   â””â”€â”€ steps.py
 
-  ©¸©¤©¤ test.feature
+  â””â”€â”€ test.feature
 ```
 
 * test.feature
@@ -46,8 +46,6 @@ tests/
 * steps.py
 
 ## Run Tests 
-
-![image](https://github.com/cicili/tools/blob/master/allpairs-plus/doc/increment-method.png)
 
 * Testkit-lite: Please check testkit-lite project for details
 * Behave: setup test ENVs by set_env.sh or webdriver.json firstly, then run "behave" as:
