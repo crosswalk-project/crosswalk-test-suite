@@ -42,9 +42,17 @@ Authors:
   <h3 id="main_page_title"></h3>
 </div>
 <div class="content">
+  <h4>Pre-condition</h4>
+  <ol>
+    <li>Download Crosswalk Binary named like "Crosswalk-12.41.298.0-SDK3" from http://lincsoon.github.io/crosswalk/, then unzip it</li>
+    <li>Build a webapp with below command:<br/>
+        $ python [path]/make_apk.py --package=[package] --app-url=https://crosswalk-project.org/ --name=[name] --mode=shared<br/>
+        Then install and launch it
+    </li>
+  </ol>
   <h4>Test Steps</h4>
   <ol>
-    <li>Install the apk named like "shared_googleplay_example" and launch it, then click "Get Crosswalk", check the launching screen</li>
+    <li>Click "Get Crosswalk", check the launching screen</li>
     <li>Check the status of install crosswalk runtime library, click "Done" to complete installation process</li>
     <li>Check the display content of the launched test app</li>
   </ol>
