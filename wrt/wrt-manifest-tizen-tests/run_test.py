@@ -75,9 +75,12 @@ def do_Clear(sourceDir):
         print Exception,"Clear :"+ sourceDir + " ------------------------->error",e 
 
 def getUSERID():
-    cmd = "sdb -s %s shell id -u %s" % (getEnv_Id, Tizen_User)
+    if Test_Device_Type=="sdb":
+        cmd = "sdb -s %s shell id -u %s" % (getEnv_Id, Tizen_User)  
+    else:
+        cmd = "ssh %s \"id -u %s\"" % (getEnv_Id, Tizen_User)
     return doCMD(cmd)
-
+    
 def manifest_Packing(pakeNo,pakeType):
     try:
         print "-------------- Packing WebApp: "+ pakeNo +" -----------------"
