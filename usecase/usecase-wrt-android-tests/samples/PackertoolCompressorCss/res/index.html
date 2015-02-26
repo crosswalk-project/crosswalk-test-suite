@@ -26,41 +26,23 @@ NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE,
 EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
 Authors:
-        Xu Yuhan <yuhanx.xu@intel.com>
+        Xu,Yuhan <yuhanx.xu@intel.com>
 
 -->
 
-<meta charset="utf-8" />
-<meta name="viewport" content="initial-scale=1.0, maximum-scale=1.0, width=device-width">
-<link rel="stylesheet" type="text/css" href="../../css/bootstrap.css">
-<link rel="stylesheet" type="text/css" href="../../css/main.css">
-<script src="../../js/jquery-2.1.3.min.js"></script>
-<script src="../../js/bootstrap.min.js"></script>
-<script src="../../js/common.js"></script>
-<script src="../../js/tests.js"></script>
-
-<div id="header">
-  <h3 id="main_page_title"></h3>
-</div>
-<div class="content">
-  <h4>Test Steps</h4>
-  <ol>
-    <li>Pack the web app with compressor option, command like:<br/>
-        $ python make_apk.py --package=[package] --manifest=/path/to/res/manifest.json --compressor</li>
-    <li>Extract the packaged apk</li>
-    <li>Compare the file size and content of script.js,style.css between [packageName.apk_FILES]/assets/www/resource/ and the original directory /path/to/res/resource</li>
-  </ol>
-</div>
-<div class="footer">
-  <div id="footer"></div>
-</div>
-<div class="modal fade" id="popup_info">
-  <p>Purpose:</p>
-  <p>Verifies that Packaging Tool minify js/css files with compressor option</p>
-  <p>Expected Results:</p>
-  <ol>
-    <li>Apk could be created successfully</li>
-    <li>Extract the packaged apk successfully</li>
-    <li>Both the file size and content of script.js,style.css are different, files are minified</li>
-  </ol>
-</div>
+<meta charset="utf-8">
+<title>packer_tool_minify_tests</title>
+<link rel="author" title="Intel" href="http://www.intel.com">
+<link rel="help" href="">
+<meta name="flags" content="">
+<meta name="assert" content="">
+<link rel="stylesheet" type="text/css" href="resource/style.css" />
+<script src="resource/script.js"></script>
+<script>
+    window.onload = function() {
+        accCom();
+}
+</script>
+<body>
+  <p>Code Minifying and Obscure Test</p>
+</body>
