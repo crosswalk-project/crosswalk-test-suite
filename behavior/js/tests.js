@@ -32,11 +32,11 @@ Authors:
 
 */
 
-var lstorage = window.localStorage;
+var sstorage = window.sessionStorage;
 var addr = window.location.href;
 var id = location.search.split('=')[1];
-var keyarr = JSON.parse(lstorage.getItem(id));
-var purpose = keyarr.purpose;
+var keyarr = JSON.parse(sstorage.getItem(id));
+var purpose = keyarr != null ? keyarr.purpose : document.title;
 
 function EnablePassButton(){
   $('#pass_button').removeClass("ui-disabled");
@@ -83,7 +83,7 @@ function reportResult(res) {
     test = document.title;
   }
   var resultarr = {result: res};
-  lstorage.setItem(purpose, JSON.stringify(resultarr));
+  sstorage.setItem(test, JSON.stringify(resultarr));
   backAppsHome();
 }
 
