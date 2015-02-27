@@ -1,8 +1,8 @@
 ## Usecase Design
 
-This sample demonstrates SharemodeLibrary feature basic functionalities, include:
+This sample demonstrates SharedModeLibrary feature basic functionalities, include:
 
-* Display info of XWalkRuntimeLib and support app of share mode
+* Display info of XWalkRuntimeLib and support app of shared mode
 
 This usecase covers following method:
 
