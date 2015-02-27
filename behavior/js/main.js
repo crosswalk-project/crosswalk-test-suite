@@ -31,8 +31,9 @@ Authors:
 
 */
 
-var lstorage = window.localStorage;
+var sstorage = window.sessionStorage;
 var applist;
+var subapplist;
 var ifcloased = 0;
 
 function getCurrentTime() {
@@ -73,7 +74,7 @@ function exportResult(flag) {
 
 function resolveSuccess(files) {
   var time = getCurrentTime();
-  var testSuiteName = lstorage.getItem("test-suite");
+  var testSuiteName = sstorage.getItem("test-suite");
   var fileName = testSuiteName + "_" + time + ".report.csv";
   var fsTestDir;
   if (files.length > 0) {
@@ -100,24 +101,38 @@ function resolveSuccess(files) {
     testFile.openStream(
       "w",
       function(fs) {
-        var snum = parseInt(lstorage.getItem("setnum"));
+        var snum = parseInt(sstorage.getItem("setnum"));
         var resultReport = "Feature, Case Id, Test Case, Pass, Fail, N/A, Measured, Comment, Measurement Name, Value, Unit, Target, Failure\n";
         for(var i = 0; i < snum; i++) {
           var sid = "set" + (i + 1);
-          var setarr = JSON.parse(lstorage.getItem(sid));
+          var setarr = JSON.parse(sstorage.getItem(sid));
           var tids = setarr.tids.split(',');
           for(var j = 0; j < tids.length; j++) {
             var tid = tids[j];
-            var casearr = JSON.parse(lstorage.getItem(tid));
-            var resultarr = JSON.parse(lstorage.getItem(casearr.purpose));
+            var casearr = JSON.parse(sstorage.getItem(tid));
+            var resultarr = JSON.parse(sstorage.getItem(casearr.purpose));
             var tresult = "";
             if (resultarr != null) {
               tresult = resultarr.result;
             }
-            resultReport += setarr.name + "," + tid + "," + casearr.purpose;      
-            var pass0 = tresult == "PASS" ? 1 : 0;
-            var fail0 = tresult == "FAIL" ? 1 : 0;
-            var notrun0 = tresult != "" ? 0 : 1;
+            resultReport += setarr.name + "," + tid + "," + casearr.purpose;
+            var pass0, fail0, notrun0;
+            if (casearr.issubcase) {
+              var resultnum = tresult;
+              if (resultnum[3] == "PASS" || resultnum[3] == "FAIL") {
+                pass0 = resultnum[0];
+                fail0 = resultnum[1];
+                notrun0 = resultnum[2];
+              } else {
+                pass0 = 0;
+                fail0 = 0;
+                notrun0 = (JSON.parse(sstorage.getItem("sub_" + tid))).subcasenum;
+              }
+            } else {
+              pass0 = tresult == "PASS" ? 1 : 0;
+              fail0 = tresult == "FAIL" ? 1 : 0;
+              notrun0 = tresult != "" ? 0 : 1;
+            }
             resultReport += "," + pass0 + "," + fail0 + "," + notrun0 + "\n";
           } 
         }
@@ -171,14 +186,37 @@ function getApps() {
   return tests;
 }
 
+function getSubApps() {
+  var tests = "";
+  $.ajax({
+    async : false,
+    type : "GET",
+    url : "subtestresult.xml",
+    dataType : "xml",
+    success : function(xml){tests = xml;}
+  });
+  return tests;
+}
+
 function updateList() {
   $("#mylist").empty();
   var i = 0;
-  var sname, tid, purpose, testsuite;
+  var sname, tid, purpose, testsuite, subcaselist, subcasename;
+  subcaselist = []; 
+  $(subapplist).find("set").each(function(){
+    subcasename = $(this).attr("name");
+    subcaselist.push(subcasename);
+    var subcasenum = 0;
+    $(this).find("testcase").each(function(){
+      subcasenum++;
+    });
+    var subcasearr = {subcasenum: subcasenum};
+    sstorage.setItem("sub_" + subcasename, JSON.stringify(subcasearr));
+  });
   $(applist).find("suite").each(function() {
     testsuite = $(this).attr("name");
   })
-  lstorage.setItem("test-suite", testsuite);
+  sstorage.setItem("test-suite", testsuite);
   $(applist).find("set").each(function(){
     i++;
     var tids = "";
@@ -192,21 +230,25 @@ function updateList() {
       var appLine = "<li class=\"app\" id=\"" + tid + "\">"
                   + "<a href=\"" + url + "\">" + "<h2>" + purpose + "</h2></a></li>";
       $("#mylist").append(appLine);
-      casearr = {purpose:purpose, sid:"set" + i};
-      lstorage.setItem(tid, JSON.stringify(casearr));
+      var issubcase = 0;
+      if (subcaselist.indexOf(tid) != -1) {
+        issubcase = 1;
+      }
+      casearr = {purpose:purpose, sid:"set" + i, issubcase: issubcase};
+      sstorage.setItem(tid, JSON.stringify(casearr));
     });
     setarr = {name:sname, tids:tids.substring(0, tids.length-1)};
-    lstorage.setItem("set" + i, JSON.stringify(setarr));
+    sstorage.setItem("set" + i, JSON.stringify(setarr));
   });
-  lstorage.setItem("setnum", i);
+  sstorage.setItem("setnum", i);
   for(var j = 0; j < i; j++) {
     sid = "set" + (j + 1);
-    setarr = JSON.parse(lstorage.getItem(sid));
+    setarr = JSON.parse(sstorage.getItem(sid));
     tids = setarr.tids.split(',');
     for(var k = 0; k < tids.length; k++) {
       tid = tids[k];
-      casearr = JSON.parse(lstorage.getItem(tid));
-      resultarr = JSON.parse(lstorage.getItem(casearr.purpose));
+      casearr = JSON.parse(sstorage.getItem(tid));
+      resultarr = JSON.parse(sstorage.getItem(casearr.purpose));
       var name = casearr.purpose;
       var item = "";
       if (resultarr != null) {
@@ -223,8 +265,8 @@ function updateList() {
         node.append("<img src='css/images/fail.png' class='ui-li-thumb'>");
         node.append("<span class='ui-li-count' style='color:red;'>FAIL</span>");
         node.find("a h2").css("padding-left", "20px");
-      } else {
-        resultnum = item.split(",");
+      } else if (item != "") {
+        resultnum = item;
         if (resultnum[3] == "PASS") {
           node.attr("data-theme", "g");
           node.append("<img src='css/images/pass.png' class='ui-li-thumb'>");
@@ -301,6 +343,7 @@ $("#home_ui").live("pagebeforecreate", function () {
 
 $("#home_ui").live("pageshow", function () {
   applist = getApps();
+  subapplist = getSubApps();
   updateList();
   updateFooter();
 });
@@ -322,7 +365,7 @@ function closeWindow() {
 }
 
 $("#reset").live("click", function (event) {
-  lstorage.clear();
+  sstorage.clear();
   updateList();
   return false;
 });
@@ -332,26 +375,15 @@ $(".app").live("click", function () {
   return false;
 });
 
-$('#main').live('pageshow',function(){
-  var snum = parseInt(lstorage.getItem("setnum"));
-  for(var j = 0; j < snum; j++) {
-    sid = "set" + (j + 1);
-    setarr = JSON.parse(lstorage.getItem(sid));
-    tids = setarr.tids.split(',');
-    for(var k = 0; k < tids.length; k++) {
-      tid = tids[k];
-      casearr = JSON.parse(lstorage.getItem(tid));
-      resultarr = JSON.parse(lstorage.getItem(casearr.purpose));
-      var key = casearr.purpose;
-      var str = "h2:contains("+ key +")";
-      var node = $(str);
-      var item = "";
-      if (resultarr != null) {
-        item = resultarr.result;
-      }
-      if (item == "PASS") {
+$('#main').live('pageshow',function(){  
+  for(var i=0;i<$("#cspList").find("h2").length;i++){
+    var str = "h2:contains("+ $("#cspList").find("h2")[i].innerHTML +")";
+    var node = $(str);
+    var item = JSON.parse(sstorage.getItem($("#cspList").find("h2")[i].innerHTML));
+    if (item != null) {
+      if (item.result == "PASS") {
         node.attr('style', 'color:green;');
-      } else if (item == "FAIL"){
+      } else if (item.result == "FAIL"){
         node.attr('style', 'color:red;');
       }
     }
