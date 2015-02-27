@@ -40,11 +40,13 @@ if(!window.sessionStorage) {
 var lstorage = window.localStorage;
 var sstorage = window.sessionStorage;
 
-function testStorage() {
+function testStorage(flag) {
   lstorage.clear();
+  $("#usecaseStatus").html(flag);
+  lstorage.setItem("statusflag", flag);
   var tests = getApps("tests.xml", "xml");
-  var i = 0;
-  var sname, sbg, sicon, tid, tnum, tids, tpass, tfail, setarr, setresarr, casearr, testsuite;
+  var i = 1;
+  var sname, sbg, sicon, executionType, tid, tnum, tids, tpass, tfail, setarr, setresarr, casearr, testsuite;
   /** get&set app-version **/
   var version = "";
   $(getApps("VERSION", "json")).each(function() {
@@ -57,36 +59,79 @@ function testStorage() {
   })
   lstorage.setItem("test-suite", testsuite);
   /** set loop **/
+  var setidarrs = [];
   $(tests).find("set").each(function() {
     sname = $(this).attr("name");
-    sbg = $(this).attr("background");
-    sicon = $(this).attr("icon");
-    if(!sbg) {
-      showMessage("error", "Invalid tests.xml! Miss background attribute in set node.");
-    }
-    if(!sicon) {
-      showMessage("error", "Invalid tests.xml! Miss icon attribute in set node.");
-    }
-    i++;
-    var j = 0;
-    /** test case loop **/
-    tids = "";
-    $(this).find("testcase").each(function() {
-      tid = $(this).attr("id");
-      purpose = $(this).attr("purpose");
-      tids += tid + ",";
-      tnum = 1;
-      if($(this).attr("subcase")) {
-        tnum = parseInt($(this).attr("subcase"));
+    if (setidarrs.indexOf(sname) == -1) {
+      sbg = $(this).attr("background");
+      sicon = $(this).attr("icon");
+      if(!sbg) {
+        showMessage("error", "Invalid tests.xml! Miss background attribute in set node.");
       }
-      casearr = {purpose:purpose, num:tnum, pass:"0", fail:"0", result:"", sid:"set" + i}; //result: "", "pass", "fail"
-      j += tnum;
-      lstorage.setItem(tid, JSON.stringify(casearr)); //store case info
-    });
-    setarr = {name:sname, background:sbg, icon:sicon, tids:tids.substring(0, tids.length-1)};
-    lstorage.setItem("set" + i, JSON.stringify(setarr)); //store set info
-    setresarr = {totalnum:j, passnum:"", failnum:""};
-    lstorage.setItem("set" + i + "res", JSON.stringify(setresarr)); //store set result
+      if(!sicon) {
+        showMessage("error", "Invalid tests.xml! Miss icon attribute in set node.");
+      }
+      var j = 0;
+      /** test case loop **/
+      tids = "";
+      $(this).find("testcase").each(function() {
+        executionType = $(this).attr("execution_type");
+        if (executionType == flag || flag == "all") {
+          tid = $(this).attr("id");
+          purpose = $(this).attr("purpose");
+          tids += tid + ",";
+          tnum = 1;
+          if($(this).attr("subcase")) {
+            tnum = parseInt($(this).attr("subcase"));
+          }
+          casearr = {purpose:purpose, num:tnum, pass:"0", fail:"0", result:"", sid:"set" + i}; //result: "", "pass", "fail"
+          j += tnum;
+          lstorage.setItem(tid, JSON.stringify(casearr)); //store case info
+        }
+      });
+      if (j > 0) {
+        setidarrs.push(sname);
+        setarr = {name:sname, background:sbg, icon:sicon, tids:tids.substring(0, tids.length-1)};
+        lstorage.setItem("set" + i, JSON.stringify(setarr)); //store set info
+        setresarr = {totalnum:j, passnum:"", failnum:""};
+        lstorage.setItem("set" + i + "res", JSON.stringify(setresarr)); //store set result
+        i++;
+      }
+    } else {
+      var setidarr = JSON.parse(lstorage.getItem("set" + (parseInt(setidarrs.indexOf(sname)) + 1)));
+      if (setidarr != null) {
+        sbg = setidarr.background;
+        sicon = setidarr.icon;
+        tidlens = setidarr.tids.split(',');
+        tids = setidarr.tids + ",";
+        var tidarr = [];
+        for (var l = 0; l < tidlens.length; l++) {
+          tidarr.push(tidlens[l]);
+        }
+        j = tidlens.length;
+        $(this).find("testcase").each(function() {
+          tid = $(this).attr("id");
+          executionType = $(this).attr("execution_type");
+          if ((tidarr.indexOf(tid) == -1) && (executionType == flag || flag == "all")) {
+            purpose = $(this).attr("purpose");
+            tids += tid + ",";
+            tnum = 1;
+            if($(this).attr("subcase")) {
+              tnum = parseInt($(this).attr("subcase"));
+            }
+            casearr = {purpose:purpose, num:tnum, pass:"0", fail:"0", result:"", sid: (parseInt(setidarrs.indexOf(sname)) + 1)}; //result: "", "pass", "fail"
+            j += tnum;
+            lstorage.setItem(tid, JSON.stringify(casearr)); //store case info
+          }
+        });
+        if (j > 0) {
+          setarr = {name:sname, background:sbg, icon:sicon, tids:tids.substring(0, tids.length-1)};
+          lstorage.setItem("set" + (parseInt(setidarrs.indexOf(sname)) + 1), JSON.stringify(setarr)); //store set info
+          setresarr = {totalnum:j, passnum:"", failnum:""};
+          lstorage.setItem("set" + (parseInt(setidarrs.indexOf(sname)) + 1) + "res", JSON.stringify(setresarr)); //store set result
+        }
+      }
+    }
   });
   lstorage.setItem("setnum", i);  //store set total num
 }
@@ -156,13 +201,24 @@ function closeWindow() {
 
 function uselstorage() {
   window.location.reload();
-  testStorage();
+  testStorage("all");
+}
+
+function reloadPage(flag) {
+  window.location.reload();
+  testStorage(flag);
+  listSet();
 }
 
 $(document).ready(function(){
+  if (lstorage.getItem("statusflag") != null) {
+    $("#usecaseStatus").html(lstorage.getItem("statusflag"));
+  } else {
+    $("#usecaseStatus").html("all");
+  }
   popup_info = $("#popup_info").html();
   if (lstorage.getItem("test-suite") == null || lstorage.getItem("test-suite") == "DemoExpress") {
-    testStorage();
+    testStorage("all");
   } else {
     if(sstorage.getItem("lsflag") == null) {
       $("#popup_info").modal(showMessage("lstorage", "Do you want to continue the last test?"));//ask if need use old lstorage

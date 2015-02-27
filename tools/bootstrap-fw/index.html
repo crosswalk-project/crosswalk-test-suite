@@ -48,8 +48,20 @@ Authors:
 </div>
 <!-- Begin page content -->
 <div class="container-fluid">
-  <div class="row" id="myset">
+  <div class="row" id="myset" style="min-height: 90px;">
     <!-- Begin set content -->
+  </div>
+  <div class="btn-group dropup" style="float: right">
+     <button type="button" class="btn btn-default" id="usecaseStatus">all</button>
+     <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown">
+        <span class="caret"></span>
+     </button>
+     <ul class="dropdown-menu" role="menu" style="min-width: 60px; right: -10px;">
+        <li><a href="#" onclick="reloadPage('manual')">manual</a></li>
+        <li><a href="#" onclick="reloadPage('auto')">auto</a></li>
+        <li class="divider"></li>
+       <li><a href="#" onclick="reloadPage('all')">all</a></li>
+     </ul>
   </div>
 </div>
 <!-- Footer -->
