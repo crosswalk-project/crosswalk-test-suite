@@ -285,13 +285,6 @@ def buildSRC(src=None, dest=None, build_json=None):
         LOG.info("+Src dir does not exist, skip build src process ...")
         return True
 
-
-    if checkContains(BUILD_PARAMETERS.pkgtype, "EMBEDDINGAPI") and BUILD_PARAMETERS.caseversion:
-        tests_xml_v = os.path.join(BUILD_ROOT_SRC, "tests_" + BUILD_PARAMETERS.caseversion + ".xml")
-        tests_xml = os.path.join(BUILD_ROOT_SRC, "tests.xml")
-        if not doCopy(tests_xml_v, tests_xml):
-            return False
-
     if not doCopy(src, dest):
         return False
     if "blacklist" in build_json:
@@ -644,33 +637,14 @@ def packCordova(build_json=None, app_src=None, app_dest=None, app_name=None):
     os.chdir(orig_dir)
     return True
 
-
-def packEmbeddingAPI(
-        build_json=None, app_src=None, app_dest=None, app_name=None):
+def packEmbeddingAPI_sub(
+        build_json=None, app_src=None, app_dest=None, app_name=None, app_version=None):
     app_name = app_name.replace("-", "_")
-
-    if BUILD_PARAMETERS.caseversion:
-        test_path = os.path.join(app_src, "src/org/xwalk/embedding/test")
-        if not doRemove([test_path]):
-            return False
-        test_source = os.path.join(BUILD_ROOT_SRC, app_name, "src/org/xwalk/embedding/test/", BUILD_PARAMETERS.caseversion)
-        test_dest = os.path.join(app_src, "src/org/xwalk/embedding/test/", BUILD_PARAMETERS.caseversion)
-        LOG.info("test_source: %s" % test_source)
-        LOG.info("test_dest: %s" % test_dest)
-        if not doCopy(test_source, test_dest):
-            return False
-
-        xml_source = os.path.join(BUILD_ROOT_SRC, app_name, "AndroidManifest.xml")
-        xml_source_tmp = os.path.join(BUILD_ROOT_SRC, app_name, "AndroidManifest_tmp.xml")
-        xml_dest = os.path.join(app_src, "AndroidManifest.xml")
-        replaceCopy(xml_source, xml_source_tmp, "org.xwalk.embedding.test", "org.xwalk.embedding.test." + BUILD_PARAMETERS.caseversion)
-        replaceCopy(xml_source_tmp, xml_dest, "EmbeddingApiTestUnit", "EmbeddingApiTestUnit" + BUILD_PARAMETERS.caseversion)
-        inst_source = os.path.join(BUILD_ROOT_SRC, "inst.apk.py")
-        inst_dest = os.path.join(BUILD_ROOT_PKG, "inst.py")
-        replaceCopy(inst_source, inst_dest, "org.xwalk.embedding.test", "org.xwalk.embedding.test." + BUILD_PARAMETERS.caseversion)
-        main_source = os.path.join(BUILD_ROOT_SRC, app_name, "src/org/xwalk/embedding/MainActivity.java")
-        main_dest = os.path.join(app_src, "src/org/xwalk/embedding/MainActivity.java")
-        replaceCopy(main_source, main_dest, "org.xwalk.embedding.test", "org.xwalk.embedding.test." + BUILD_PARAMETERS.caseversion)
+    if app_version:
+        replaceUserString(app_src,'AndroidManifest.xml','org.xwalk.embedding.test',"org.xwalk.embedding.test." + app_version)
+        replaceUserString(app_src,'AndroidManifest.xml','EmbeddingApiTestUnit',"EmbeddingApiTestUnit" + app_version)
+        main_dest = os.path.join(app_src, "src/org/xwalk/embedding")
+        replaceUserString(main_dest,'MainActivity.java','org.xwalk.embedding.test', "org.xwalk.embedding.test." + app_version)
 
     library_dir_name = safelyGetValue(build_json, "embeddingapi-library-name")
     if not library_dir_name:
@@ -773,7 +747,6 @@ def packEmbeddingAPI(
     os.chdir(orig_dir)
     return True
 
-
 def packAPP(build_json=None, app_src=None, app_dest=None, app_name=None):
     LOG.info("Packing %s(%s)" % (app_name, app_src))
     if not os.path.exists(app_dest):
@@ -796,7 +769,11 @@ def packAPP(build_json=None, app_src=None, app_dest=None, app_name=None):
         if not packCordova(build_json, app_src, app_dest, app_name):
             return False
     elif checkContains(BUILD_PARAMETERS.pkgtype, "EMBEDDINGAPI"):
-        if not packEmbeddingAPI(build_json, app_src, app_dest, app_name):
+        app_version = None
+        if "_" in app_name:
+            index_flag = app_name.index("_")
+            app_version = app_name[index_flag + 1 : ]
+        if not packEmbeddingAPI_sub(build_json, app_src, app_dest, app_name, app_version):
             return False
     else:
         LOG.error("Got wrong pkg type: %s" % BUILD_PARAMETERS.pkgtype)
@@ -928,21 +905,6 @@ def buildPKG(build_json=None):
 
     return True
 
-def replaceCopy(readfile,writefile,content,newContent): 
-    ffrom=open(readfile,"r")  
-    fto=open(writefile,"w")  
-    while True:  
-        l = ffrom.readline()  
-        if not l:  
-            break  
-        if 'org.xwalk.embedding.test' in l:
-            temp = ""
-            temp=re.sub(content,newContent,l)
-            fto.write(temp)
-        else:
-            temp1 = l  
-            fto.write(temp1)  
-    fto.close()
 
 def main():
     global LOG
@@ -978,12 +940,6 @@ def main():
             dest="pkgarch",
             help="specify the apk arch, e.g. x86, arm")
         opts_parser.add_option(
-            "--cv",
-            "--cversion",
-            dest="caseversion",
-            default="", 
-            help="specify the embeddingapi case version, e.g. v1, v2, v3 ...")
-        opts_parser.add_option(
             "-d",
             "--dest",
             dest="destdir",
@@ -1018,6 +974,11 @@ def main():
             "--user",
             dest="user",
             help="specify the user in inst.py")
+        opts_parser.add_option(
+            "--sub-version",
+            dest="subversion",
+            default="", 
+            help="specify the embeddingapi, cordova sub version, e.g. v1, v2, v3 ...")
         opts_parser.add_option(
             "--pkg-version",
             dest="pkgversion",
@@ -1159,6 +1120,11 @@ def main():
         sys.exit(1)
 
     pkg_json = None
+
+    if(BUILD_PARAMETERS.subversion):
+        BUILD_PARAMETERS.pkgtype = BUILD_PARAMETERS.pkgtype + BUILD_PARAMETERS.subversion
+        LOG.info("BUILD_PARAMETERS.pkgtype: %s" % BUILD_PARAMETERS.pkgtype)
+
     for i_pkg in config_json["pkg-list"].keys():
         i_pkg_list = i_pkg.replace(" ", "").split(",")
         if BUILD_PARAMETERS.pkgtype in i_pkg_list:
@@ -1186,14 +1152,14 @@ def main():
                     os.path.join(BUILD_ROOT, "pkg", i_file),
                     os.path.join(BUILD_PARAMETERS.destdir, i_file)):
                 exitHandler(1)
-    elif BUILD_PARAMETERS.pkgtype == "embeddingapi" and BUILD_PARAMETERS.caseversion:
+    elif BUILD_PARAMETERS.pkgtype == "embeddingapi" and BUILD_PARAMETERS.subversion:
         pkg_file = os.path.join(
             BUILD_PARAMETERS.destdir,
             "%s-%s-%s-%s.%s.zip" %
             (PKG_NAME,
              pkg_main_version,
              pkg_release_version,
-             BUILD_PARAMETERS.caseversion,
+             BUILD_PARAMETERS.subversion,
              BUILD_PARAMETERS.pkgtype))
         
         LOG.info("pkg_file: %s" % pkg_file)
