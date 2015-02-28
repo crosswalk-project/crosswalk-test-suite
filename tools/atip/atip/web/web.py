@@ -452,6 +452,16 @@ class WebAPP(common.APP):
             return True
         return False
 
+# * The method click_element_by_key will fail when VKB shelter the button, and js can avoid this issue.
+    def click_element_by_id_with_js(self, key, display=True):
+        element = self.__get_element_by_key_attr(key, "id", display)
+        print "%s == %s" % (element.get_attribute("id"), element.get_attribute("class"))
+        if element:
+            js_script = 'document.getElementById(\"' + key + '\").click()'
+            self.driver.execute_script(js_script)
+            return True
+        return False
+
     def click_element_coords(self, x, y, key, display=True):
         element = self.__get_element_by_key(key, display)
         if element:
@@ -462,6 +472,13 @@ class WebAPP(common.APP):
 
     def fill_element_by_key(self, key, text, display=True):
         element = self.__get_element_by_key(key, display)
+        if element:
+            element.send_keys(text)
+            return True
+        return False
+
+    def fill_element_by_key_attr(self, key, attr, text, display=True):
+        element = self.__get_element_by_key_attr(key, attr, display)
         if element:
             element.send_keys(text)
             return True
