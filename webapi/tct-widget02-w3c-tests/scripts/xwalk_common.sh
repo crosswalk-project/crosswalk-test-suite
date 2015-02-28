@@ -57,7 +57,7 @@ function find_app(){
 function launch_app(){
     find_app $1
     pkgnum=`echo "$appid"|wc -w`
-    if [ $pkgnum -eq 1 ]; then
+    if [[ $pkgnum -eq 1 ]]; then
         nohup app_launcher -s $appid &>/dev/null &
     else
         echo "launch error, please check if exists this app or there are more than one app with this app_name"
