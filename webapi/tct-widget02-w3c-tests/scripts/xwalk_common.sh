@@ -37,7 +37,7 @@ function install_app(){
 
 ##usage: uninstall_app $app_name(e.g. uninstall_app tct-sp02-wrt-tests)##
 function uninstall_app(){
-    pkgids=`pkgcmd -l |grep '<app-name>' |awk -F 'pkgid' '{print $2}' |awk -F '[' '{print $2}'|awk -F ']' '{print $1}'`
+    pkgids=`pkgcmd -l |grep $1 |awk -F 'pkgid' '{print $2}' |awk -F '[' '{print $2}'|awk -F ']' '{print $1}'`
     for pkgid in $pkgids
     do
         pkgcmd -u -t wgt -q -n $pkgid
@@ -46,7 +46,7 @@ function uninstall_app(){
 
 ##usage: find_app $app_name(e.g. uninstall_app tct-sp02-wrt-tests)##
 function find_app(){
-    pkgids=`pkgcmd -l |grep '<app-name>' |awk -F 'pkgid' '{print $2}' |awk -F '[' '{print $2}'|awk -F ']' '{print $1}'`
+    pkgids=`pkgcmd -l |grep $1 |awk -F 'pkgid' '{print $2}' |awk -F '[' '{print $2}'|awk -F ']' '{print $1}'`
     appid=`app_launcher -l | grep $1 | awk '{print $2}'`
     appid=${appid:1:-1}
 }
@@ -55,7 +55,7 @@ function find_app(){
 function launch_app(){
     find_app $1
     pkgnum=`echo "$appid"|wc -w`
-    if [ $pkgnum -eq 1 ]; then
+    if [[ $pkgnum -eq 1 ]]; then
         nohup app_launcher -s $appid &>/dev/null &
     else
         echo "launch error, please check if exists this app or there are more than one app with this app_name"

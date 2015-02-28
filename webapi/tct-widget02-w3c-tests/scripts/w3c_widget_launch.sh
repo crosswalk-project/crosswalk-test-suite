@@ -32,34 +32,31 @@
 
 path=$(dirname $(dirname $0))
 source $path/scripts/xwalk_common.sh
-if [ $# != 1 ];then
+if [[ $# != 1 ]]; then
     echo "Please add parameter packagename!"
     exit 1
 fi
 PACKAGENAME="$path/widgetpackaging/w3c/$1"
 p_name=$1
-APP_NAME=${p_name%%.wgt}
+APP_NAME=$(basename ${p_name%%.wgt})
 find_app $APP_NAME
-if [ ! -z "$pkgids"  ]
-then
+if [[ ! -z "$pkgids" ]]; then
   uninstall_app $APP_NAME
   find_app $APP_NAME
-  if [ ! -z "$pkgids"  ]
-  then
+  if [[ ! -z "$pkgids" ]]; then
     echo -e  "Fail to uninstall the existed widget!"
     exit 1
   fi
 fi
 install_app $PACKAGENAME
 find_app $APP_NAME
-if [ -z "$pkgids" ]
-then
+if [[ -z "$pkgids" ]]; then
   echo -e  "Fail to install the widget!"
   exit 1
 fi
 launch_app $appid
 App_Status=`app_launcher -r $appid | grep "not running"`
-if [ -z $App_Status ];then
+if [[ -z "$App_Status" ]]; then
   echo "The widget is launched successfully"
   uninstall_app $APP_NAME
   exit 0
