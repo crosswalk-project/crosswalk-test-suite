@@ -48,9 +48,9 @@ Authors:
                                newValue : "newValue",
                                url : undefined,
                                storageArea : store});
-      assert_equals(storageEvent.url, "undefined");
+      assert_equals(storageEvent.url, "");
     }
     RunTest(localStorage);
     RunTest(sessionStorage);
-  }, "Check if the value of StorageEvent.url is 'undefined' when set it undefined");
+  }, "Check if the value of StorageEvent.url is empty string when set it undefined");
 </script>
