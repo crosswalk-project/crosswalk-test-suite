@@ -36,13 +36,13 @@ $sudo apt-get install ant
 
 ## Pack EmbeddingAPI Test Suite Packages
 
-There is a pack.sh script in each test suite. Currently it supports a test suite package in the type of APK, in .zip, for Android platform.
+There is a pack.py script in crosswalk-test-suite/tools/build/. Currently it supports the embeddingapi test suite package in the type of APK, in .zip, for Android platform.
 
 - Download the latest crosss webview bundle from the following link:
 
 [https://download.01.org/crosswalk/releases/crosswalk/android/beta/](https://download.01.org/crosswalk/releases/crosswalk/android/beta/)
 
-- Copy crosswalk-webview-xxxx and rename it to /crosswalk-webview folder
+- Put crosswalk-webview-xxxx in crosswalk-test-suite/tools/ and rename it to /crosswalk-webview folder
 
 - Download the embeddingapi test suit from the following link:
 
@@ -50,7 +50,18 @@ There is a pack.sh script in each test suite. Currently it supports a test suite
 
 - Pack APK packages:
 
-$ cd embedding-api-android-tests
+  - Pack all version APKs to one package
 
-$ ./pack.sh
+    $ cd embedding-api-android-tests
+
+    $ ../../tools/build/pack.py -t embeddingapi
+
+  - Pack the first few version APKs to one package, take 3 as an example, it packs v1, v2, and v3 version apks to one package, and so on 
+
+    $ cd embedding-api-android-tests
+
+    $ ../../tools/build/pack.py -t embeddingapi --sub-version v3
+
+
+
 
