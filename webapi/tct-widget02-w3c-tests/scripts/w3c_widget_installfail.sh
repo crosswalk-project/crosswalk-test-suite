@@ -32,7 +32,7 @@
 path=$(dirname $(dirname $0))
 source $path/scripts/xwalk_common.sh
 
-if [ $# != 1 ];then
+if [[ $# != 1 ]]; then
     echo "Please add parameter packagename!"
     exit 1
 fi
@@ -41,18 +41,16 @@ p_name=$1
 APP_NAME=${p_name%%.wgt}
 uninstall_app $APP_NAME
 find_app $APP_NAME
-if [ ! -z "$pkgids"  ]
-  then
-  echo -e  "Fail to uninstall the existed widget!"
+if [[ ! -z "$pkgids" ]]; then
+  echo -e "Fail to uninstall the existed widget!"
   exit 1
 fi
 install_app $PACKAGENAME
 find_app $APP_NAME
-if [ -z "$pkgids"  ]
-then
-  echo -e  "Fail to install the widget!"
+if [[ -z "$pkgids" ]]; then
+  echo -e "Fail to install the widget!"
   exit 0
 else
-  echo -e  "The widget is installed successfully!"
+  echo -e "The widget is installed successfully!"
   exit 1
 fi
