@@ -36,9 +36,7 @@ Authors:
 //==== TEST_CRITERIA AE AT ARO
 
 test(function () {
-    var webspeech, voices;
-    webspeech = window.webspeechSynthesis;
-    voices = webspeech.getVoices();
+    var voices = speechSyn.getVoices();
     check_readonly(voices[0], "localService", voices[0].localService, "boolean", true);
 }, document.title);
 

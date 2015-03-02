@@ -40,8 +40,7 @@ Authors:
 <script>
 
 test(function () {
-  var speech = window.speechSynthesis;
-  var voices = speech.getVoices();
+  var voices = speechSyn.getVoices();
   assert_equals(voices[voices.length], null);
 }, "Test if item returns null when index is greater than or equal to length");
 

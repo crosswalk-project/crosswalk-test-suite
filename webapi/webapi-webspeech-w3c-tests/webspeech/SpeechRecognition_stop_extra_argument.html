@@ -35,7 +35,7 @@ Authors:
 //==== TEST_CRITERIA MNAEX
 
 test(function () {
-    var recognition = new SpeechRecognition(), extraArgument = [null, undefined, "Tizen", 1, false, ["one", "two"], {argument: 1}, function () {}], i;
+    var recognition = new speechRecognition(), extraArgument = [null, undefined, "Tizen", 1, false, ["one", "two"], {argument: 1}, function () {}], i;
     for (i = 0; i < extraArgument.length; i++)  {
         recognition.start();
         recognition.stop(extraArgument[i]);

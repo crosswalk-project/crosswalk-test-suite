@@ -36,9 +36,7 @@ Authors:
 //==== TEST_CRITERIA OBX
 
 test(function () {
-    var webspeech, voices;
-    webspeech = window.webspeechSynthesis;
-    voices = webspeech.getVoices();
+    var voices = speechSyn.getVoices();
     check_extensibility(voices[0]);
 }, document.title);
 

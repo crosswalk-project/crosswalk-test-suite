@@ -36,9 +36,7 @@ Authors:
 //==== TEST_CRITERIA AE AT ARO
 
 test(function () {
-    var webspeech, webspeechSynthesisList;
-    webspeech = window.webspeechSynthesis;
-    webspeechSynthesisList = webspeech.getVoices();
+    var webspeechSynthesisList = speechSyn.getVoices();
     assert_true("length" in webspeechSynthesisList, "length is not exist in webspeechSynthesisList") ;
     check_attribute(webspeechSynthesisList, "length", webspeechSynthesisList.length, "number", 100);
 }, document.title);
