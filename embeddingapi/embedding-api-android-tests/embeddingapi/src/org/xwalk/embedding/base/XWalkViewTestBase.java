@@ -42,6 +42,9 @@ public class XWalkViewTestBase extends ActivityInstrumentationTestCase2<MainActi
     public XWalkViewTestBase(Class<MainActivity> activityClass) {
         super(activityClass);
     }
+
+    protected final static String PASS_STRING = "Pass";
+
     protected static final String EMPTY_PAGE =
             "<!doctype html>" +
             "<title>Set User Agent String Test</title><p>Set User Agent String Test.</p>";

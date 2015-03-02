@@ -5,19 +5,20 @@
 package org.xwalk.embedding.test.v2;
 
 
+import java.util.concurrent.TimeUnit;
+
 import org.chromium.base.test.util.Feature;
 import org.xwalk.core.XWalkExtension;
 import org.xwalk.embedding.base.ExtensionEcho;
 import org.xwalk.embedding.base.ExtensionEcho_broadcast;
+import org.xwalk.embedding.base.OnTitleUpdatedHelper;
 import org.xwalk.embedding.base.XWalkViewTestBase;
 
 import android.annotation.SuppressLint;
-import android.os.SystemClock;
 import android.test.suitebuilder.annotation.SmallTest;
 
 @SuppressLint("NewApi")
 public class XWalkExtensionTest extends XWalkViewTestBase {
-    private final static String PASS_STRING = "Pass";
 
     @SmallTest
     public void testXWalkExtension() {
@@ -275,7 +276,13 @@ public class XWalkExtensionTest extends XWalkViewTestBase {
     public void testOnSyncMessage_MultiFrames() {
         try {
             ExtensionEcho echo = new ExtensionEcho();
-            loadAssetFileAndWaitForTitle("framesEcho.html");
+            String fileName = "framesEcho.html";
+            OnTitleUpdatedHelper mOnTitleUpdatedHelper = mTestHelperBridge.getOnTitleUpdatedHelper();
+            int currentCallCount = mOnTitleUpdatedHelper.getCallCount();
+            String fileContent = getFileContent(fileName);
+            loadDataAsync(fileName, fileContent, "text/html", false);
+            mOnTitleUpdatedHelper.waitForCallback(currentCallCount, 1, WAIT_TIMEOUT_SECONDS,
+                    TimeUnit.SECONDS);
             assertEquals(PASS_STRING, getTitleOnUiThread());
         } catch (Exception e) {
             assertTrue(false);
