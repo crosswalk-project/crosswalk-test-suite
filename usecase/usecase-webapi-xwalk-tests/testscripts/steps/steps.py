@@ -47,6 +47,14 @@ def check_type_by_key(context, key, expecttype):
 def check_type_by_key(context, p_name, key):
     assert context.app.save_content(p_name, key)
 
+@step(u'I click element with id "{key}" by js')
+def click_button_by_js(context, key):
+    assert context.app.click_element_by_id_with_js(key)
+
+@step(u'I fill in element "{key}" by "{attr}" with "{text}"')
+def fill_element_by_attr_with_text(context, key, attr, text):
+    assert context.app.fill_element_by_key_attr(key, attr, text)
+
 @step(u'"{second}" should be greater than "{first}"')
 def check_type_by_key(context, first, second):
     assert context.app.compare_two_values(first, second), u'The second value is lesser than the first one'
