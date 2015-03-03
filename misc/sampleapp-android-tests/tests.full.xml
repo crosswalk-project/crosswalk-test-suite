@@ -3,7 +3,58 @@
 <test_definition>
   <suite category="Crosswalk_Sample_App" name="sampleapp-android-tests">
     <set name="SampleApp-pyunit" type="pyunit">
-      <testcase component="Sample Apps" execution_type="auto" id="hexgl_pack" priority="P0" purpose="Validate if HexGL could be packed successfully" status="approved" type="Functional">
+      <testcase component="Sample Apps" execution_type="auto" id="hangonman_pack" priority="P0" purpose="Validate if hangonman could be packed successfully" status="approved" type="Functional">
+        <description>
+          <pre_condition>
+            1.Make sure hangonman source code is available
+          </pre_condition>
+          <post_condition/>
+          <test_script_entry>/opt/sampleapp-android-tests/sampleapp/hangonman_pack.py</test_script_entry>
+        </description>
+      </testcase>
+      <testcase component="Sample Apps" execution_type="auto" id="hangonman_install" priority="P0" purpose="Validate if hangonman could be installed successfully" status="approved" type="Functional">
+        <description>
+          <pre_condition>
+            1.Make sure hangonman is available
+          </pre_condition>
+          <post_condition/>
+          <test_script_entry>/opt/sampleapp-android-tests/sampleapp/hangonman_install.py</test_script_entry>
+        </description>
+      </testcase>
+      <testcase component="Sample Apps" execution_type="auto" id="hangonman_launch" priority="P1" purpose="Validate sample app hangonman could be launched successfully" status="approved" type="Functional">
+        <description>
+          <pre_condition>
+            1. Make sure hangonman webapp is installed on Android OS
+          </pre_condition>
+          <post_condition/>
+          <test_script_entry>/opt/sampleapp-android-tests/sampleapp/hangonman_launch.py</test_script_entry>
+        </description>
+      </testcase>
+      <testcase component="Sample Apps" execution_type="auto" id="hangonman_stop" priority="P1" purpose="Validate sample app hangonman could be stopped successfully" status="approved" type="Functional">
+        <description>
+          <pre_condition>
+          </pre_condition>
+          <post_condition/>
+          <test_script_entry>/opt/sampleapp-android-tests/sampleapp/hangonman_stop.py</test_script_entry>
+        </description>
+      </testcase>
+      <testcase component="Sample Apps" execution_type="auto" id="hangonman_uninstall" priority="P0" purpose="Validate if sample app hangonman could be uninstalled successfully" status="approved" type="Functional">
+        <description>
+          <pre_condition>
+          </pre_condition>
+          <post_condition/>
+          <test_script_entry>/opt/sampleapp-android-tests/sampleapp/hangonman_uninstall.py</test_script_entry>
+        </description>
+      </testcase>
+      <testcase component="Sample Apps" execution_type="auto" id="hangonman_uninstall_withAppRunning" priority="P2" purpose="Validate Crosswalk support that uninstall the sample app hangonman when it's actually running" status="approved" type="Functional">
+        <description>
+          <pre_condition>
+          </pre_condition>
+          <post_condition/>
+          <test_script_entry>/opt/sampleapp-android-tests/sampleapp/hangonman_uninstall_withAppRunning.py</test_script_entry>
+        </description>
+      </testcase>	
+	  <testcase component="Sample Apps" execution_type="auto" id="hexgl_pack" priority="P0" purpose="Validate if HexGL could be packed successfully" status="approved" type="Functional">
         <description>
           <pre_condition>
             1.Make sure HexGL source code is available
@@ -294,7 +345,7 @@
         </description>
       </testcase>
     </set>
-    <set name="SampleApp-bdd" type="script" ui-auto="bdd">
+    <set name="SampleApp-bdd" type="js" ui-auto="bdd">
       <testcase component="Sample Apps" execution_type="manual" id="hexgl_appFunction" priority="P2" purpose="Validate if sample app HexGL function could work well" status="approved" type="Functional">
         <description>
           <pre_condition>
@@ -347,45 +398,6 @@
       </testcase>
     </set>
     <set name="SampleApp" type="js">
-      <testcase component="Sample Apps" execution_type="manual" id="hangonman_pack" priority="P0" purpose="Validate if sample app HangOnMan could be packed successfully" status="designed" type="Functional">
-        <description>
-          <pre_condition>
-            1. Make sure webapp source code is downloaded;
-          </pre_condition>
-          <post_condition/>
-          <test_script_entry>/opt/sampleapp-android-tests/sampleapp/hangonman_pack.py</test_script_entry>
-        </description>
-      </testcase>
-      <testcase component="Sample Apps" execution_type="manual" id="hangonman_install" priority="P0" purpose="Validate if sample app HangOnMan could be installed successfully" status="approved" type="Functional">
-        <description>
-          <pre_condition>
-            1.Make sure Crosswalk packer tool 'crosswalk' is downloaded and cd  crosswalk path;
-            2.Make sure webapp is downloaded;
-            3.Copy your HTML/JS/CSS and related resources into the directory:"crosswalk/app_src/assets";
-            4.Make sure device is connected with ubuntu.
-          </pre_condition>
-          <post_condition/>
-          <test_script_entry>/opt/sampleapp-android-tests/sampleapp/hangonman_install.html</test_script_entry>
-        </description>
-      </testcase>
-      <testcase component="Sample Apps" execution_type="manual" id="hangonman_launch" priority="P1" purpose="Validate if sample app HangOnMan could be launched successfully" status="approved" type="Functional">
-        <description>
-          <pre_condition>
-            1.Make sure the hangonman webapp is installed
-          </pre_condition>
-          <post_condition/>
-          <test_script_entry>/opt/sampleapp-android-tests/sampleapp/hangonman_launch.html</test_script_entry>
-        </description>
-      </testcase>
-      <testcase component="Sample Apps" execution_type="manual" id="hangonman_stop" priority="P2" purpose="Validate if sample app HangOnMan could be stopped successfully" status="approved" type="Functional">
-        <description>
-          <pre_condition>
-            1.Make sure the hangonman webapp is launched
-          </pre_condition>
-          <post_condition/>
-          <test_script_entry>/opt/sampleapp-android-tests/sampleapp/hangonman_stop.html</test_script_entry>
-        </description>
-      </testcase>
       <testcase component="Sample Apps" execution_type="manual" id="hangonman_icon" priority="P0" purpose="Validate if sample app HangOnMan icon display normally" status="approved" type="Functional">
         <description>
           <pre_condition>
@@ -420,24 +432,6 @@
           </pre_condition>
           <post_condition/>
           <test_script_entry>/opt/sampleapp-android-tests/sampleapp/hangonman_appFunction.html</test_script_entry>
-        </description>
-      </testcase>
-      <testcase component="Sample Apps" execution_type="manual" id="hangonman_uninstall" priority="P0" purpose="Validate if sample app HangOnMan could be uninstalled successfully" status="approved" type="Functional">
-        <description>
-          <pre_condition>
-            1.Make sure the hangonman webapp is installed
-          </pre_condition>
-          <post_condition/>
-          <test_script_entry>/opt/sampleapp-android-tests/sampleapp/hangonman_uninstall.html</test_script_entry>
-        </description>
-      </testcase>
-      <testcase component="Sample Apps" execution_type="manual" id="hangonman_uninstall_withAppRunning" priority="P2" purpose="Validate Crosswalk support that uninstall the sample app HangOnMan when it's actually running" status="approved" type="Functional">
-        <description>
-          <pre_condition>
-            1.Make sure sample app hangonman is launched;2.Make sure there sample app HangOnMan is available
-          </pre_condition>
-          <post_condition/>
-          <test_script_entry>/opt/sampleapp-android-tests/sampleapp/hangonman_uninstall_withAppRunning.html</test_script_entry>
         </description>
       </testcase>
       <testcase component="Sample Apps" execution_type="manual" id="hexgl_icon" priority="P0" purpose="Validate if sample app HexGL icon display normally" status="approved" type="Functional">
