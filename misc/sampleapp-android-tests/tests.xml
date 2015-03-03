@@ -3,6 +3,36 @@
 <test_definition>
   <suite category="Crosswalk_Sample_App" name="sampleapp-android-tests">
     <set name="SampleApp-pyunit" type="pyunit">
+      <testcase component="Sample Apps" execution_type="auto" id="hangonman_pack" purpose="Validate if hangonman could be packed successfully">
+        <description>
+          <test_script_entry>/opt/sampleapp-android-tests/sampleapp/hangonman_pack.py</test_script_entry>
+        </description>
+      </testcase>
+      <testcase component="Sample Apps" execution_type="auto" id="hangonman_install" purpose="Validate if hangonman could be installed successfully">
+        <description>
+          <test_script_entry>/opt/sampleapp-android-tests/sampleapp/hangonman_install.py</test_script_entry>
+        </description>
+      </testcase>
+      <testcase component="Sample Apps" execution_type="auto" id="hangonman_launch" purpose="Validate sample app hangonman could be launched successfully">
+        <description>
+          <test_script_entry>/opt/sampleapp-android-tests/sampleapp/hangonman_launch.py</test_script_entry>
+        </description>
+      </testcase>
+      <testcase component="Sample Apps" execution_type="auto" id="hangonman_stop" purpose="Validate sample app hangonman could be stopped successfully">
+        <description>
+          <test_script_entry>/opt/sampleapp-android-tests/sampleapp/hangonman_stop.py</test_script_entry>
+        </description>
+      </testcase>
+      <testcase component="Sample Apps" execution_type="auto" id="hangonman_uninstall" purpose="Validate if sample app hangonman could be uninstalled successfully">
+        <description>
+          <test_script_entry>/opt/sampleapp-android-tests/sampleapp/hangonman_uninstall.py</test_script_entry>
+        </description>
+      </testcase>
+      <testcase component="Sample Apps" execution_type="auto" id="hangonman_uninstall_withAppRunning" purpose="Validate Crosswalk support that uninstall the sample app hangonman when it's actually running">
+        <description>
+          <test_script_entry>/opt/sampleapp-android-tests/sampleapp/hangonman_uninstall_withAppRunning.py</test_script_entry>
+        </description>
+      </testcase>
       <testcase component="Sample Apps" execution_type="auto" id="hexgl_pack" purpose="Validate if HexGL could be packed successfully">
         <description>
           <test_script_entry>/opt/sampleapp-android-tests/sampleapp/hexgl_pack.py</test_script_entry>
@@ -187,63 +217,51 @@
     <set name="SampleApp-bdd" type="js" ui-auto="bdd">
       <testcase component="Sample Apps" execution_type="manual" id="hexgl_appFunction" purpose="Validate if sample app HexGL function could work well">
         <description>
+          <pre_condition>
+            1. Make sure HexGL webapp is installed
+          </pre_condition>
           <test_script_entry>/opt/sampleapp-android-tests/sampleapp/hexgl_appFunction.html</test_script_entry>
           <bdd_test_script_entry test_script_expected_result="0">/opt/sampleapp-android-tests/testscripts/hexgl_appFunction.feature</bdd_test_script_entry>
         </description>
       </testcase>
       <testcase component="Sample Apps" execution_type="manual" id="memorygame_appFunction" purpose="Validate if sample app MemoryGame function could work well">
         <description>
+          <pre_condition>
+            1. Make sure memorygame webapp is installed
+          </pre_condition>
           <test_script_entry>/opt/sampleapp-android-tests/sampleapp/memorygame_appFunction.html</test_script_entry>
           <bdd_test_script_entry test_script_expected_result="0">/opt/sampleapp-android-tests/testscripts/memorygame_appFunction.feature</bdd_test_script_entry>
         </description>
       </testcase>
       <testcase component="Sample Apps" execution_type="manual" id="gallery_appFunction" purpose="Validate if sample app Gallery function could work well">
         <description>
+          <pre_condition>
+            1.Make sure the gallery webapp is installed
+          </pre_condition>
           <test_script_entry>/opt/sampleapp-android-tests/sampleapp/gallery_appFunction.html</test_script_entry>
           <bdd_test_script_entry test_script_expected_result="0">/opt/sampleapp-android-tests/testscripts/gallery_appFunction.feature</bdd_test_script_entry>
         </description>
       </testcase>
       <testcase component="Sample Apps" execution_type="manual" id="sysapps_appFunction" purpose="Validate if sample app SysApps function could work well">
         <description>
+          <pre_condition>
+            1. Make sure sysapps webapp is installed
+          </pre_condition>
           <test_script_entry>/opt/sampleapp-android-tests/sampleapp/sysapps_appFunction.html</test_script_entry>
           <bdd_test_script_entry test_script_expected_result="0">/opt/sampleapp-android-tests/testscripts/sysapps_appFunction.feature</bdd_test_script_entry>
         </description>
       </testcase>
       <testcase component="Sample Apps" execution_type="manual" id="simd_appFunction" purpose="Validate if sample app SIMD function could work well">
         <description>
+          <pre_condition>
+            1. Make sure simd webapp is installed
+          </pre_condition>
           <test_script_entry>/opt/sampleapp-android-tests/sampleapp/simd_appFunction.html</test_script_entry>
           <bdd_test_script_entry test_script_expected_result="0">/opt/sampleapp-android-tests/testscripts/simd_appFunction.feature</bdd_test_script_entry>
         </description>
       </testcase>
     </set>
     <set name="SampleApp" type="js">
-      <testcase component="Sample Apps" execution_type="manual" id="hangonman_install" purpose="Validate if sample app HangOnMan could be installed successfully">
-        <description>
-          <pre_condition>
-            1.Make sure Crosswalk packer tool 'crosswalk' is downloaded and cd  crosswalk path;
-            2.Make sure webapp is downloaded;
-            3.Copy your HTML/JS/CSS and related resources into the directory:"crosswalk/app_src/assets";
-            4.Make sure device is connected with ubuntu.
-          </pre_condition>
-          <test_script_entry>/opt/sampleapp-android-tests/sampleapp/hangonman_install.html</test_script_entry>
-        </description>
-      </testcase>
-      <testcase component="Sample Apps" execution_type="manual" id="hangonman_launch" purpose="Validate if sample app HangOnMan could be launched successfully">
-        <description>
-          <pre_condition>
-            1.Make sure the hangonman webapp is installed
-          </pre_condition>
-          <test_script_entry>/opt/sampleapp-android-tests/sampleapp/hangonman_launch.html</test_script_entry>
-        </description>
-      </testcase>
-      <testcase component="Sample Apps" execution_type="manual" id="hangonman_stop" purpose="Validate if sample app HangOnMan could be stopped successfully">
-        <description>
-          <pre_condition>
-            1.Make sure the hangonman webapp is launched
-          </pre_condition>
-          <test_script_entry>/opt/sampleapp-android-tests/sampleapp/hangonman_stop.html</test_script_entry>
-        </description>
-      </testcase>
       <testcase component="Sample Apps" execution_type="manual" id="hangonman_icon" purpose="Validate if sample app HangOnMan icon display normally">
         <description>
           <pre_condition>
@@ -274,22 +292,6 @@
             1.Make sure the hangonman webapp is launched
           </pre_condition>
           <test_script_entry>/opt/sampleapp-android-tests/sampleapp/hangonman_appFunction.html</test_script_entry>
-        </description>
-      </testcase>
-      <testcase component="Sample Apps" execution_type="manual" id="hangonman_uninstall" purpose="Validate if sample app HangOnMan could be uninstalled successfully">
-        <description>
-          <pre_condition>
-            1.Make sure the hangonman webapp is installed
-          </pre_condition>
-          <test_script_entry>/opt/sampleapp-android-tests/sampleapp/hangonman_uninstall.html</test_script_entry>
-        </description>
-      </testcase>
-      <testcase component="Sample Apps" execution_type="manual" id="hangonman_uninstall_withAppRunning" purpose="Validate Crosswalk support that uninstall the sample app HangOnMan when it's actually running">
-        <description>
-          <pre_condition>
-            1.Make sure sample app hangonman is launched;2.Make sure there sample app HangOnMan is available
-          </pre_condition>
-          <test_script_entry>/opt/sampleapp-android-tests/sampleapp/hangonman_uninstall_withAppRunning.html</test_script_entry>
         </description>
       </testcase>
       <testcase component="Sample Apps" execution_type="manual" id="hexgl_icon" purpose="Validate if sample app HexGL icon display normally">
