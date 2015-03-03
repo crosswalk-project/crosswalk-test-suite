@@ -35,7 +35,11 @@ Authors:
 //==== TEST_CRITERIA CONSTRF
 
 test(function () {
-    check_constructor(window, "SpeechRecognition");
+    if ( "webkitSpeechRecognition" in window ) {
+        check_constructor(window, "webkitSpeechRecognition");
+    } else {
+        check_constructor(window, "SpeechRecognition");
+    }
 }, document.title);
 
 </script>

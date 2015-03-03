@@ -37,7 +37,7 @@ Authors:
 
 var t = async_test(document.title, {timeout: 90000}), webspeechReco;
 t.step(function () {
-    webspeechReco = new SpeechRecognition();
+    webspeechReco = new speechRecognition();
     webspeechReco.onerror = t.step_func(function (err) {
         check_readonly(err, "error", err.error, "string", "unknown language");
         t.done();

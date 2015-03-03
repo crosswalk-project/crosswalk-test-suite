@@ -43,16 +43,16 @@ t.step(function () {
     webspeechMessage.text = "test is goin on";
     webspeechMessage.onpause = t.step_func(function () {
         assert_equals(returnValue, undefined, "returnValue should be undefined");
-        assert_equals(window.webspeechSynthesis.paused, true, "paused should be true");
+        assert_equals(speechSyn.paused, true, "paused should be true");
         t.done();
     });
     webspeechMessage.onerror = t.step_func(function () {
         assert_unreached("SpeechSynthesisUtterance get error");
         t.done();
     });
-    window.webspeechSynthesis.speak(webspeechMessage);
+    speechSyn.speak(webspeechMessage);
     setTimeout(function(){
-        returnValue = window.webspeechSynthesis.pause();    
+        returnValue = speechSyn.pause();
     }, 1000);
 });
 

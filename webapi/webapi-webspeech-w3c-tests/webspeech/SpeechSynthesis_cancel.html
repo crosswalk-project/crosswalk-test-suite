@@ -41,16 +41,16 @@ var t = async_test("Test that cancelling a webspeech job fires the right events"
 t.step(function () {
     webspeechMessage = new SpeechSynthesisUtterance("this is test");
     webspeechMessage.onerror = function(event) {
-        assert_false(webspeechSynthesis.pending);
+        assert_false(speechSyn.pending);
         t.done();
     }
-    window.webspeechSynthesis.speak(webspeechMessage);
+    speechSyn.speak(webspeechMessage);
     webspeechMessage1 = new SpeechSynthesisUtterance("this is test 1");
-    window.webspeechSynthesis.speak(webspeechMessage1);
+    speechSyn.speak(webspeechMessage1);
     webspeechMessage2 = new SpeechSynthesisUtterance("this is test 2");
-    window.webspeechSynthesis.speak(webspeechMessage2);
-    returnValue = window.webspeechSynthesis.cancel();
-    assert_true(window.webspeechSynthesis.pending);
+    speechSyn.speak(webspeechMessage2);
+    returnValue = speechSyn.cancel();
+    assert_true(speechSyn.pending);
     assert_equals(returnValue, undefined, "returnValue should be undefined");
 });
 

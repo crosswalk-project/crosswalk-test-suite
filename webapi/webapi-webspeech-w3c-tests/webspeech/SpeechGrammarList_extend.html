@@ -20,7 +20,7 @@ Authors:
 -->
 <html>
 <head>
-<title>SpeechGrammer_exist</title>
+<title>SpeechGrammarList_extend</title>
 <meta charset="utf-8"/>
 <script src="support/unitcommon.js"></script>
 <script src="support/webspeech_common.js"></script>
@@ -28,15 +28,16 @@ Authors:
 <body bgcolor="FFFFFF"  bgcolor="FFFFFF" >
 <div id="log"></div>
 <script>
-//==== TEST: SpeechGrammer_exist
-//==== LABEL Check if SpeechGrammer constructor exists
-//==== PRIORITY P1
+//==== TEST: SpeechGrammarList_extend
+//==== LABEL Check if SpeechGrammarList object is extensible
+//==== PRIORITY P3
 //==== SPEC Tizen Web API:Speech:SpeechGrammar C
 //==== SPEC_URL https://dvcs.w3.org/hg/webspeech-api/raw-file/tip/webspeechapi.html
-//==== TEST_CRITERIA CONSTRF
+//==== TEST_CRITERIA OBX
 
 test(function () {
-    check_constructor(window, "webspeechGrammar");
+    var grammarList = new speechGrammarList();
+    check_extensibility(grammarList);
 }, document.title);
 
 </script>

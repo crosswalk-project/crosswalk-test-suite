@@ -36,7 +36,11 @@ Authors:
 //==== TEST_CRITERIA CONSTRF
 
 test(function () {
-    check_constructor(window, "webspeechGrammarList");
+    if ("webkitSpeechGrammarList" in window) {
+        check_constructor(window, "webkitSpeechGrammarList");
+    } else {
+        check_constructor(window, "speechGrammarList");
+    }
 }, document.title);
 
 </script>

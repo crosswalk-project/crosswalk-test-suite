@@ -36,9 +36,7 @@ Authors:
 //==== TEST_CRITERIA ME
 
 test(function () {
-    var webspeech, voiceListObj;
-    webspeech = window.webspeechSynthesis;
-    voiceListObj = webspeech.getVoices();
+    var voiceListObj = speechSyn.getVoices();
     check_method_exists(voiceListObj[0], "item")
 }, document.title);
 

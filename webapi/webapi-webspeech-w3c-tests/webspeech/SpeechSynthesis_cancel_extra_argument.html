@@ -38,10 +38,10 @@ Authors:
 test(function () {
     var webspeechMessage, webspeechMessage1;
     webspeechMessage = new SpeechSynthesisUtterance("this is test");
-    window.webspeechSynthesis.speak(webspeechMessage);
+    speechSyn.speak(webspeechMessage);
     webspeechMessage1 = new SpeechSynthesisUtterance("this is test 1");
-    window.webspeechSynthesis.speak(webspeechMessage1);
-    checkExtraArgument(window.webspeechSynthesis, "cancel");
+    speechSyn.speak(webspeechMessage1);
+    checkExtraArgument(speechSyn, "cancel");
 }, document.title);
 
 </script>

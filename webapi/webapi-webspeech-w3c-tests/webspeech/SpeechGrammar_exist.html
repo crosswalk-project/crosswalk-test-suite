@@ -20,7 +20,7 @@ Authors:
 -->
 <html>
 <head>
-<title>SpeechGrammer_constructor</title>
+<title>SpeechGrammar_exist</title>
 <meta charset="utf-8"/>
 <script src="support/unitcommon.js"></script>
 <script src="support/webspeech_common.js"></script>
@@ -28,16 +28,19 @@ Authors:
 <body bgcolor="FFFFFF"  bgcolor="FFFFFF" >
 <div id="log"></div>
 <script>
-//==== TEST: SpeechGrammer_constructor
-//==== LABEL Check if SpeechGrammer constructor is valid
+//==== TEST: SpeechGrammar_exist
+//==== LABEL Check if SpeechGrammar constructor exists
 //==== PRIORITY P1
 //==== SPEC Tizen Web API:Speech:SpeechGrammar C
 //==== SPEC_URL https://dvcs.w3.org/hg/webspeech-api/raw-file/tip/webspeechapi.html
-//==== TEST_CRITERIA CONSTRM
+//==== TEST_CRITERIA CONSTRF
 
 test(function () {
-    var grammar = new webspeechGrammar();
-    assert_true(grammar instanceof webspeechGrammar, "Object was not created properly");
+    if ( "webkitSpeechGrammar" in window ) {
+        check_constructor(window, "webkitSpeechGrammar");
+    } else {
+        check_constructor(window, "SpeechGrammar");
+    }
 }, document.title);
 
 </script>

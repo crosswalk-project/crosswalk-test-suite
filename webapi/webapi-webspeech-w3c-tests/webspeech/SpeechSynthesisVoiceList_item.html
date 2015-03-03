@@ -36,9 +36,7 @@ Authors:
 //==== TEST_CRITERIA MR
 
 test(function () {
-    var webspeech, voices;
-    webspeech = window.webspeechSynthesis;
-    voices = webspeech.getVoices();
+    var voices = speechSyn.getVoices();
     assert_not_equals(voices[0], null, "An item of voices should not be null.");
 }, document.title);
 

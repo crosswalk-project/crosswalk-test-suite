@@ -36,9 +36,7 @@ Authors:
 //==== TEST_CRITERIA MMA
 
 test(function () {
-    var webspeech, voiceListObj;
-    webspeech = window.webspeechSynthesis;
-    voiceListObj = webspeech.getVoices();
+    var voiceListObj = speechSyn.getVoices();
     assert_throws(TYPE_ERROR_EXCEPTION, function () {
         voiceListObj.item();
     }, "exception should be thrown");

@@ -45,7 +45,7 @@ Authors:
         webspeechMessage.text = "Hello World";
         webspeechMessage.lang = 'en-US';
         webspeechMessage.rate = 1.2;
-        returnValue = window.webspeechSynthesis.speak(webspeechMessage);
+        returnValue = speechSyn.speak(webspeechMessage);
         assert_equals(returnValue, undefined, "returnValue should be undefined");
     }
 //}, document.title);

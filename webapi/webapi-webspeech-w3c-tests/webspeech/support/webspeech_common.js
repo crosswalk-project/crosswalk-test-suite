@@ -1,6 +1,5 @@
-<!DOCTYPE html>
-<!--
-Copyright (c) 2013 Intel Corporation.
+/*
+Copyright (c) 2015 Intel Corporation.
 
 Redistribution and use in source and binary forms, with or without modification,
 are permitted provided that the following conditions are met:
@@ -26,33 +25,14 @@ NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE,
 EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
 Authors:
-        Shentu. Jiazhen <jiazhenx.shentu@intel.com>
+        Xu, Kang <kangx.xu@intel.com>
 
--->
+*/
 
-<meta charset='utf-8'>
-<title>Web Speech API Test: SpeechSynthesisEvent name attribute</title>
-<link rel="author" title="Intel" href="http://www.intel.com">
-<link rel="help" href="http://dvcs.w3.org/hg/speech-api/raw-file/tip/speechapi.html">
-<script src="../resources/testharness.js"></script>
-<script src="../resources/testharnessreport.js"></script>
-<div id="log"></div>
-<script>
+var speechGrammarList = window.webkitSpeechGrammarList || window.SpeechGrammarList;
 
-var t = async_test("Test if name should return undefined for start event", { timeout: 5000});
+var speechGrammar = window.webkitSpeechGrammar || window.SpeechGrammar;
 
-t.step(function () {
-  var u = new SpeechSynthesisUtterance();
-  u.text = "test";
-  u.onstart = t.step_func(function (evt) {
-    assert_euqals(evt.name, undefined);
-    t.done();
-  });
-  u.onerror = t.step_func(function () {
-    assert_unreached("SpeechSynthesisUtterance get error");
-    t.done();
-  });
-  speechSyn.speak(u);
-});
+var speechRecognition = window.webkitSpeechRecognition || window.SpeechRecognition;
 
-</script>
+var speechSyn = window.speechSynthesis || window.webspeechSynthesis;
