@@ -413,9 +413,13 @@ class WebAPP(common.APP):
         element = self.__get_element_by_key(key, display)
         print "%s == %s" % (element.get_attribute("id"), element.get_attribute("class"))
         if element:
-            element.click()
-            return True
-
+            try:
+                element.click()
+                return True
+            except WebDriverException :
+                js_script = 'document.getElementById(\"' + key + '\").click()'
+                self.driver.execute_script(js_script)
+                return True
         return False
 
     def press_element_by_keys(self, key_p, key_c, display=True):
@@ -463,8 +467,13 @@ class WebAPP(common.APP):
     def fill_element_by_key(self, key, text, display=True):
         element = self.__get_element_by_key(key, display)
         if element:
-            element.send_keys(text)
-            return True
+            try:
+                element.send_keys(text)
+                return True
+            except WebDriverException :
+                js_script = 'document.getElementById(\"' + key + '\").value=\"' + text + '\"'
+                self.driver.execute_script(js_script)
+                return True
         return False
 
     def check_checkbox_by_key(self, key, display=True):
