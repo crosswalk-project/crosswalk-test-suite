@@ -53,7 +53,7 @@ class WebAPP(common.APP):
         self.app_name = app_name
         self.app_id = ""
         self.text_value = {}
-        self.color_dict = {"rgb(255, 0, 0)": "red","rgb(0, 255, 0)": "green","rgb(0, 0, 255)": "blue","rgb(255, 255, 0)": "yellow","rgb(0, 0, 0)": "black","rgb(255, 255, 255)": "white","rgba(0, 0, 0, 0)": "white"}
+        self.color_dict = {"rgb(255, 0, 0)": "red","rgb(0, 255, 0)": "green","rgb(0, 0, 255)": "blue","rgb(255, 255, 0)": "yellow","rgb(0, 0, 0)": "black","rgb(0, 128, 0)": "green","rgb(255, 255, 255)": "white","rgba(0, 0, 0, 0)": "white"}
         apk_activity_name = apk_activity_name
         apk_pkg_name = apk_pkg_name
         if "platform" in app_config and "name" in app_config["platform"]:
@@ -370,7 +370,6 @@ class WebAPP(common.APP):
             number = re.match(r'[A-Za-z]+$',bg_color)
             if not number:
                 bg_color = self.color_dict[bg_color]
-            print bg_color
             if bg_color.strip() == color:
               return True
         except Exception as e:
@@ -382,7 +381,15 @@ class WebAPP(common.APP):
             js_script = 'var text_color=document.getElementById(\"' + key + '\").style.color; return text_color'
             text_color = self.driver.execute_script(js_script)
             if not text_color:
+                js_script = 'var element=document.getElementById(\"' + key + '\");' \
+                        ' if(element.currentStyle) {return element.currentStyle.color;} ' \
+                        ' else { return  document.defaultView.getComputedStyle(element,null).color; } '
+                text_color = self.driver.execute_script(js_script)
+            if not text_color:
                 text_color = "black"
+            is_rgb = re.match(r'[A-Za-z]+$',text_color)
+            if not is_rgb:
+                text_color = self.color_dict[text_color]
             if text_color.strip() == color:
               return True
         except Exception as e:
