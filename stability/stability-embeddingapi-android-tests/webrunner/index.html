@@ -1,0 +1,133 @@
+<!doctype html>
+<!--
+Copyright (c) 2013 Intel Corporation.
+
+Redistribution and use in source and binary forms, with or without modification,
+are permitted provided that the following conditions are met:
+
+* Redistributions of works must retain the original copyright notice, this list
+  of conditions and the following disclaimer.
+* Redistributions in binary form must reproduce the original copyright notice,
+  this list of conditions and the following disclaimer in the documentation
+  and/or other materials provided with the distribution.
+* Neither the name of Intel Corporation nor the names of its contributors
+  may be used to endorse or promote products derived from this work without
+  specific prior written permission.
+
+THIS SOFTWARE IS PROVIDED BY INTEL CORPORATION "AS IS"
+AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE
+IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE
+ARE DISCLAIMED. IN NO EVENT SHALL INTEL CORPORATION BE LIABLE FOR ANY DIRECT,
+INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING,
+BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE,
+DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY
+OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING
+NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE,
+EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
+
+Authors:
+        Wang, Jing <jing.j.wang@intel.com>
+
+-->
+
+<head>
+<meta name="viewport" content="width=device-width">
+<script src="jquery-1.10.2.min.js"></script>
+<style type="text/css">
+html {
+  font-family:DejaVu Sans, Bitstream Vera Sans, Arial, Sans;
+}
+
+table#browse {
+  border-collapse:collapse;
+  table-layout:fixed;width:85%;
+}
+
+table#browse th:first-child,table#browse td:first-child {width:35%;}
+
+table#browse th:last-child,table#browse td:last-child {width:25%;}
+
+table#browse th {
+  padding:0;
+  padding-bottom:0.5em;
+  text-align:left;
+  border-bottom:medium solid black;
+}
+table#browse td {
+  padding:1em;
+  padding-bottom:0.5em;
+  border-bottom:thin solid black;
+}
+div#navbar{
+  box-sizing: border-box;
+  width: 99%;
+  border: 0px;
+  text-align: left;
+  background: slateblue;
+  color: white;
+}
+div#footbar{
+  width: 99%;
+  border: 0px;
+  text-align: left;
+}
+textarea#testinfo{
+  width: 99%;
+  font-size: 0.8em;
+}
+input{
+  font-size: 1.2em;
+  padding-top: 0.1em;
+  padding-bottom: 0.1em;
+}
+
+#btnPrev,#btnNext{
+  width: 8%;
+}
+#btnExit,#btnRun,#btnSave,#btnBack,#btnPass,#btnFail,#btnBlock{
+  width: 16%;
+  font-weight: bold;
+}
+
+#btnPass { color: green;}
+#btnFail { color: red;}
+#btnBlock { color: orange;}
+#labBatch{ font-size: 0.5em;}
+#textTest { width: 53%; }
+#title { font-size: 1.4em; font-weight: bold;}
+#frmTest { border: none;}
+.listhide { display: none;}
+.short{
+  padding-left: 1em;
+}
+</style>
+</head>
+
+<body>
+<div id="navbar" class="batchhide">
+  <span class="short listhide suitehide"><input type="button" id="btnBack" value="Back"/></span>
+  <span class="short listhide suitehide">
+    <input type="button" id="btnPrev" value="<"/>
+    <input type="text"  id="textTest" readonly />
+    <input type="button" id="btnNext" value=">"/>
+  </span>
+  <span class="short tchide"> <input type="button" id="btnExit" value="Exit"/></span>
+  <span id="title" class="short tchide">Open Web Test</span>
+</div>
+<div id="divSum"> </div>
+<div width="99%" class="batchhide">
+  <textarea class="listhide suitehide" id="testinfo" rows=4 disabled>
+  </textarea>
+</div>
+<div id="footbar" class="batchhide">
+  <span class="short"><input type="button"  id="btnRun" value="Run"/></span>
+  <span class="short listhide tchide"><input type="button" id="btnSave" value="Save"/></span>
+  <span class="short listhide suitehide"><input type="button" id="btnPass" value="PASS"/></span>
+  <span class="short listhide suitehide"><input type="button" id="btnFail" value="FAIL"/></span>
+  <span class="short listhide suitehide"><input type="button" id="btnBlock" value="BLOCK"/></span>
+</div>
+<iframe width="100%" id="frmTest" allowFullScreen="true" mozAllowFullScreen="true" webkitAllowFullscreen="true" src="">
+</iframe>
+<script src="testrunner.js"> </script>
+</body>
+</html>
