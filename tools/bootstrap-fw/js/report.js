@@ -54,8 +54,8 @@ function init() {
   titleTr.appendChild(tdfailtitle);
   titleTr.appendChild(tdnotRuntitle);
   table.appendChild(titleTr);
-  for(var i = 0; i < snum; i++) {
-    var sidres = "set" + (i + 1) + "res";
+  for(var i = 1; i < snum; i++) {
+    var sidres = "set" + i + "res";
     var setarres = JSON.parse(lstorage.getItem(sidres));
     totalnum += parseInt(setarres.totalnum == "" ? 0 : setarres.totalnum);
     passnum += parseInt(setarres.passnum == "" ? 0 : setarres.passnum);
@@ -65,7 +65,7 @@ function init() {
     sname.setAttribute('colSpan', 4);
     sname.style["textAlign"] = "left";
     sname.style["background"] = "rgba(128, 128, 128, 0.16)";
-    var sid = "set" + (i + 1);
+    var sid = "set" + i;
     var setarr = JSON.parse(lstorage.getItem(sid));
     sname.innerHTML = "Test Set: " + setarr.name;
     setTr.appendChild(sname);
@@ -98,7 +98,7 @@ function init() {
       caseTr.appendChild(tdfail);
       caseTr.appendChild(tdnotRun);
       table.appendChild(caseTr);
-    } 
+    }
   }
   txtPassed.innerHTML = passnum;
   txtFailed.innerHTML = failnum;
