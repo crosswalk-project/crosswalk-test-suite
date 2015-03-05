@@ -10,6 +10,6 @@ Feature: simd
    
    And I press "START"
    And I wait 5 seconds
-   Then I checka "fps" is 1.8 times after click "simd" for 10 seconds
+   Then I check "fps" is 1.8 times after click "simd" for 10 seconds
    And I press "STOP"
 

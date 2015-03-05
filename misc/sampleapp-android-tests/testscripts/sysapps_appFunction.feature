@@ -14,7 +14,7 @@ Feature: sysapp
    Then I should see "CPU Monitor"
    # to check Canvas output, check x/y axis, but data is hard to check here
    # data is diff for different devices
-   And I should see "100"
+   #And I should see "100"
    And I should see "0"
    And I should see "The CPU of this device is"
    And I should see "processor"
