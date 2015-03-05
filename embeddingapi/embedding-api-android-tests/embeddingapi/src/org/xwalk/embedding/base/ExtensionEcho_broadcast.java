@@ -28,7 +28,7 @@ public class ExtensionEcho_broadcast extends XWalkExtension {
 
     @Override
     public void onMessage(int instanceID, String message) {
-        broadcastMessage(message);
+        broadcastMessage("From java:" + message);
     }
 
     @Override
