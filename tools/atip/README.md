@@ -3,7 +3,7 @@ ATIP - a new BDD binding library
 
 ## Introduction
 
-ATIP(Application Test in Python), a ¡°behave¡± binding library as the bridge between application and BDD to ¡°behave¡±, and use WebDriver and platform interfaces to implement detailed BDD steps for application. 
+ATIP(Application Test in Python), a â€»behaveÂ§ binding library as the bridge between application and BDD to â€»behaveÂ§, and use WebDriver and platform interfaces to implement detailed BDD steps for application. 
 
 ## Configuration
 
@@ -25,11 +25,11 @@ A JSON config file which named "webdriver.json for environment vars sharing, a t
 * Configuration source layout
 ```
 tools/
-©À©¤©¤ set_env.sh
-©À©¤©¤ webdriver.chrome.json
-©À©¤©¤ webdriver.xw_android_cordova.json
-©À©¤©¤ webdriver.xw_android_xwalk.json
-©¸©¤©¤ webdriver.xw_tizen.json
+|-- set_env.sh
+|-- webdriver.chrome.json
+|-- webdriver.xw_android_cordova.json
+|-- webdriver.xw_android_xwalk.json
+`-- webdriver.xw_tizen.json
 ```
 
 ## Tests Development
@@ -37,10 +37,11 @@ Before below sections, you'd better already pretty familiar with the tests devel
 
 ```
 tests/
-  ©À©¤©¤ environment.py
-  ©À©¤©¤ steps
-  ©¦   ©¸©¤©¤ steps.py
-  ©¸©¤©¤ test.feature
+|-- environment.py
+|-- steps
+|   `-- steps.py
+`-- test.feature
+ 
 ```
 
 * test.feature  
