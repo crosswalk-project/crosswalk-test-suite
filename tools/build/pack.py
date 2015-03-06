@@ -624,13 +624,15 @@ def packCordova(build_json=None, app_src=None, app_dest=None, app_name=None):
         return False
     os.chdir(os.path.join(BUILD_ROOT, "cordova", app_name))
     pack_cmd = "./cordova/build"
+    if BUILD_PARAMETERS.subversion == '4.0':
+        cordova_tmp_path = os.path.join(BUILD_ROOT, "cordova", app_name, "build", "outputs", "apk", "%s-armv7-debug.apk"%app_name)
+    else:
+        cordova_tmp_path = os.path.join(BUILD_ROOT, "cordova", app_name, "bin", "%s-debug.apk"%app_name)
     if not doCMD(pack_cmd, DEFAULT_CMD_TIMEOUT):
         os.chdir(orig_dir)
         return False
 
-    if not doCopy(os.path.join(
-            BUILD_ROOT, "cordova", app_name, "bin", "%s-debug.apk" %
-            app_name),
+    if not doCopy(cordova_tmp_path,
             os.path.join(app_dest, "%s.apk" % app_name)):
         os.chdir(orig_dir)
         return False
@@ -977,7 +979,6 @@ def main():
         opts_parser.add_option(
             "--sub-version",
             dest="subversion",
-            default="", 
             help="specify the embeddingapi, cordova sub version, e.g. v1, v2, v3 ...")
         opts_parser.add_option(
             "--pkg-version",
@@ -1120,15 +1121,27 @@ def main():
         sys.exit(1)
 
     pkg_json = None
+    global parameters_type
+    parameters_type = None
+    cordova_subv_list = ['4.0', '3.6']
 
-    if(BUILD_PARAMETERS.subversion):
-        BUILD_PARAMETERS.pkgtype = BUILD_PARAMETERS.pkgtype + BUILD_PARAMETERS.subversion
+    if BUILD_PARAMETERS.subversion:
+        if BUILD_PARAMETERS.pkgtype == "cordova" or BUILD_PARAMETERS.pkgtype == "cordova-aio": 
+            if not str(BUILD_PARAMETERS.subversion) in cordova_subv_list :
+                LOG.error("The argument of cordova --sub-version can only be '3.6' or '4.0' , exit ...")
+                sys.exit(1)
+            parameters_type = BUILD_PARAMETERS.pkgtype + BUILD_PARAMETERS.subversion
+        if BUILD_PARAMETERS.pkgtype == "embeddingapi":
+            BUILD_PARAMETERS.pkgtype = BUILD_PARAMETERS.pkgtype + BUILD_PARAMETERS.subversion
         LOG.info("BUILD_PARAMETERS.pkgtype: %s" % BUILD_PARAMETERS.pkgtype)
 
     for i_pkg in config_json["pkg-list"].keys():
         i_pkg_list = i_pkg.replace(" ", "").split(",")
-        if BUILD_PARAMETERS.pkgtype in i_pkg_list:
+        if parameters_type and parameters_type in i_pkg_list:
             pkg_json = config_json["pkg-list"][i_pkg]
+        elif BUILD_PARAMETERS.pkgtype in i_pkg_list:
+            pkg_json = config_json["pkg-list"][i_pkg]
+            
 
     if not pkg_json:
         LOG.error("Fail to read pkg json, exit ...")
