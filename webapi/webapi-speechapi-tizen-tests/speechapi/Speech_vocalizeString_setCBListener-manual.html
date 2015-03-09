@@ -35,7 +35,46 @@ Authors:
 <link rel="author" title="Intel" href="http://www.intel.com">
 <meta name="assert" content="Test checks that if vocalizeString and setCBListener work well.">
 <link rel="help" href="https://dvcs.w3.org/hg/speech-api/raw-file/tip/speechapi.html">
+
+<h2>Preconditions</h2>
+<ol>
+  <li>
+    Plug in USB microphone
+  </li>
+  <li>
+    Update "sphinx.pulsesrc" section of /etc/speech-recognition/speech-recognition.conf following the output of below command.<br/>
+    (app user): pactl list sources |grep input |grep "Name:" |grep usb
+  </li>
+  <li>
+    Reboot test device
+  </li>
+  <li>
+    Execute following command to init environment:<br/>
+    (app user) app_launcher -s org.tizen.dialer<br/>
+    (app user) pacmd set-sink-mute 0 false<br/>
+  </li>
+  <li>
+    Launch test app
+  </li>
+</ol>
+
+<p>TTS Test: Type some words in textbox or default words, then press button "Speak Out".</p>
+<p>Test Passes if you can hear the word typed speak out from headset.</p>
+<p>STT Test: Press button "Record Voice", speak some words like "play music", then click button "Stop Recording".</p>
+<p>Test Passes if words you speak out are recorded and displayed on screen.</p>
+
+<div name="input">
+  <input type="text" id="inputText" value="Hello World"/>
+  <input id='btn_say' type='button' onClick='handleTextToSpeech()' value='Speak Out'/>
+</div>
+
+<div id="output">
+  <input id='btn_stt' type='button' onClick='toggleSTT()' value='Record Voice'/>
+  <div id='log'></div>
+</div>
+
 <script>
+
   function toggleSTT() {
     var btn = document.getElementById('btn_stt');
 
@@ -55,27 +94,10 @@ Authors:
       btn.value = 'Record Voice';
     }
   }
-  
+
   function handleTextToSpeech() {
     var currentText = document.getElementById("inputText").value;
     tizen.speech.vocalizeString(currentText);
   }
+
 </script>
-<body>
-  <p>TTS Test: Type in some word in the textbox,then press button "Speak Out".</p>
-  <p>Test Passes if you can hear the word typed in speak out from headset.</p>
-  <p>STT Test: Press "Record Voice", speak to mic some word then click "Stop Recording".</p>
-  <p>Test Passes if "Found Commands: xxx" displayed on the screen.</p>
-
-  <div name="input">
-    <div id="instructionLabel">Type in some text to listen:</div>
-    <input type="text" id="inputText"><br>
-    <input id='btn_say' type='button' onClick='handleTextToSpeech()' value='Speak Out'/>
-  </div>
-  
-  <div id="output">
-    <input id='btn_stt' type='button' onClick='toggleSTT()' value='Record Voice'/>
-    <div id='log'></div>
-  </div>
-</body>
-
