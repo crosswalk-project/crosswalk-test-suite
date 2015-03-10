@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-stylesheet type="text/xsl" href="./testcase.xsl"?>
+<test_definition>
+  <suite category="Crosswalk WRT" name="wrt-apptools-android-tests">
+    <set name="apptools" type="pyunit">
+      <testcase component="Crosswalk WRT/App Tool" execution_type="auto" id="Crosswalk_create_no_sdk" purpose="Validate if App Tool can not work well with create option and no android sdk" subcase="1">
+        <description>
+          <test_script_entry>/opt/wrt-apptools-android-tests/apptools/create_no_sdk.py</test_script_entry>
+        </description>
+      </testcase>
+      <testcase component="Crosswalk WRT/App Tool" execution_type="auto" id="Crosswalk_create" purpose="Validate if App Tool can work well with create option" subcase="3">
+        <description>
+          <test_script_entry>/opt/wrt-apptools-android-tests/apptools/create.py</test_script_entry>
+        </description>
+      </testcase>
+      <testcase component="Crosswalk WRT/App Tool" execution_type="auto" id="Crosswalk_pkgName" purpose="Validate if the App Tool can work well with run script make_apk.py in different path" subcase="16">
+        <description>
+          <test_script_entry>/opt/wrt-apptools-android-tests/apptools/pkgName.py</test_script_entry>
+        </description>
+      </testcase>
+    </set>
+  </suite>
+</test_definition>
