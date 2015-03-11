@@ -8,7 +8,8 @@ pack_cordova_sample.py is used for auto build Cordova sample apps, including mob
 ###mobilespec build based on Cordova 3.6
 * Build upstream Cordova with Mobile Spec 3.6, steps please follow [https://github.com/apache/cordova-mobile-spec/blob/3.6.x/createmobilespec/README.md](https://github.com/apache/cordova-mobile-spec/blob/3.6.x/createmobilespec/README.md), here will generate a 'mobilespec' folder
 * Copy 'mobilespec' folder to crosswalk-test-suite/tools
-* You may need to install latest cordova by ```sudo npm -g install cordova```
+* You may need to install latest cordova by ```sudo npm -g install cordova```  
+
 ###Sample apps build based on Cordova 4.0
 * latest plugman tool, steps as below:  
   ```git clone https://git-wip-us.apache.org/repos/asf/cordova-plugman.git```  
