@@ -79,6 +79,7 @@ def clear(pkg):
 def create(self):
     setUp()
     os.chdir(XwalkPath)
+    clear("org.xwalk.test")
     cmd = PackTools + "crosswalk-app create org.xwalk.test --crosswalk=" + XwalkPath + XwalkName
     packstatus = commands.getstatusoutput(cmd)
     self.assertEquals(packstatus[0], 0)
