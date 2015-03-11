@@ -3,7 +3,7 @@ ATIP - a new BDD binding library
 
 ## Introduction
 
-ATIP(Application Test in Python), a ※behave§ binding library as the bridge between application and BDD to ※behave§, and use WebDriver and platform interfaces to implement detailed BDD steps for application. 
+ATIP(Application Test in Python), a "behave" binding library as the bridge between application and BDD to "ehave", and use WebDriver and platform interfaces to implement detailed BDD steps for application. 
 
 ## Configuration
 
