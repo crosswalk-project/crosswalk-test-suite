@@ -287,13 +287,15 @@ def packMobileSpec(app_name=None):
     androidhome_cmd = "export ANDROID_HOME=$(dirname $(dirname $(which android)))"
     updateproject_cmd = "android update project --subprojects --path . --target \"android-21\""
     antdebug_cmd = "ant debug"
-    build_cmd = "./cordova build android"
+    build_cmd = "cordova build android"
     if not doCMD(androidhome_cmd, DEFAULT_CMD_TIMEOUT):
         os.chdir(orig_dir)
         return False
+    os.chdir(os.path.join(mobilespec_src, "platforms", "android"))
     if not doCMD(updateproject_cmd, DEFAULT_CMD_TIMEOUT):
         os.chdir(orig_dir)
         return False
+    os.chdir(os.path.join(mobilespec_src, "platforms", "android", "CordovaLib"))
     if not doCMD(antdebug_cmd, DEFAULT_CMD_TIMEOUT):
         os.chdir(orig_dir)
         return False
