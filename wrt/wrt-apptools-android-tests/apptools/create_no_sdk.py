@@ -37,6 +37,7 @@ class TestCrosswalkApptoolsFunctions(unittest.TestCase):
 
     def test_no_sdk(self):
         comm.setUp()
+        comm.clear("org.xwalk.test")
         android_home = commands.getoutput("(dirname $(dirname $(dirname $(which android))))")
         #print 'debug1 ',android_home
         os.chdir(android_home)
@@ -47,8 +48,8 @@ class TestCrosswalkApptoolsFunctions(unittest.TestCase):
         os.chdir(comm.XwalkPath)
         cmd = comm.PackTools + "crosswalk-app create org.xwalk.test --crosswalk=" + comm.XwalkPath + comm.XwalkName
         packstatus = commands.getstatusoutput(cmd)
-        self.assertIn("ERROR", packstatus[1])
         os.rename(android_home2, android_home1)
+        self.assertIn("ERROR", packstatus[1])
         #print os.listdir(android_home)
         comm.clear("org.xwalk.test")
 
