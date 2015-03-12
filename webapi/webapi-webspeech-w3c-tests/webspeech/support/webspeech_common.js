@@ -35,4 +35,7 @@ var speechGrammar = window.webkitSpeechGrammar || window.SpeechGrammar;
 
 var speechRecognition = window.webkitSpeechRecognition || window.SpeechRecognition;
 
-var speechSyn = window.speechSynthesis || window.webspeechSynthesis;
+var speechRecognitionError = window.webkitSpeechRecognitionError || window.SpeechRecognitionError;
+
+var speechSyn = window.webkitSpeechSynthesis || window.speechSynthesis;
+

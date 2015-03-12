@@ -36,8 +36,11 @@ Authors:
 //==== TEST_CRITERIA CONSTRM
 
 test(function () {
-    var grammar = new speechGrammar();
-    assert_true(grammar instanceof speechGrammar, "Object was not created properly");
+    if ( "webkitSpeechGrammar" in window ) {
+        check_constructor(window, "webkitSpeechGrammar");
+    } else {
+        check_constructor(window, "SpeechGrammar");
+    }
 }, document.title);
 
 </script>

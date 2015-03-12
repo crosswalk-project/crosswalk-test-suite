@@ -36,8 +36,11 @@ Authors:
 //==== TEST_CRITERIA CONSTRM
 
 test(function () {
-    var grammarList = new speechGrammarList();
-    assert_true(grammarList instanceof speechGrammarList, "Object was not created properly");
+    if ("webkitSpeechGrammarList" in window) {
+        check_constructor(window, "webkitSpeechGrammarList");
+    } else {
+        check_constructor(window, "speechGrammarList");
+    }
 }, document.title);
 
 </script>

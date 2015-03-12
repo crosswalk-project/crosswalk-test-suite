@@ -35,8 +35,11 @@ Authors:
 //==== TEST_CRITERIA CONSTRM
 
 test(function () {
-    var recognition = new speechRecognition();
-    assert_true(recognition instanceof speechRecognition, "Object was not created properly");
+    if ("webkitSpeechRecognition" in window) {
+        check_constructor(window, "webkitSpeechRecognition");
+    } else {
+        check_constructor(window, "SpeechRecognition");
+    }
 }, document.title);
 
 </script>
