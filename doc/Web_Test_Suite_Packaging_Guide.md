@@ -247,7 +247,7 @@ Please see Appendix 5 for the package list.
 
 **Cordova**
 
-- cordova-mobilespec-android-tests
+- cordova-feature-android-tests
 - cordova-sampleapp-android-tests
 - cordova-webapp-android-tests
 
@@ -603,7 +603,7 @@ Please see Appendix 5 for the package list.
 
 **Cordova**
 
-- cordova-mobilespec-android-tests
+- cordova-feature-android-tests
 - cordova-sampleapp-android-tests
 - cordova-webapp-android-tests
 
