@@ -37,5 +37,7 @@ var speechRecognition = window.webkitSpeechRecognition || window.SpeechRecogniti
 
 var speechRecognitionError = window.webkitSpeechRecognitionError || window.SpeechRecognitionError;
 
+var speechRecognitionEvent = window.webkitSpeechRecognitionEvent || window.SpeechRecognitionEvent;
+
 var speechSyn = window.webkitSpeechSynthesis || window.speechSynthesis;
 

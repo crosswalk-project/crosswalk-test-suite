@@ -92,7 +92,7 @@ test(function () {
 }, "Test SpeechGrammarList[-1] is undefined");
 
 test(function () {
-  gs.addFromUri('grammar', 2);
+  gs.addFromURI('grammar', 2);
   assert_equals(gs.length, 1);
 }, "Test the actual length attributes of SpeechGrammarList 1");
 
@@ -125,7 +125,7 @@ test(function () {
 }, "Test the weight attribute of the actual item(0) of SpeechGrammarList 1");
 
 test(function () {
-  gs.addFromUri('http://foo.tld/grammar.xml', 3);
+  gs.addFromURI('http://foo.tld/grammar.xml', 3);
   assert_equals(gs.length, 2);
 }, "Test the actual length attributes of SpeechGrammarList 2");
 

@@ -36,7 +36,7 @@ Authors:
 
 test(function () {
     var recognition = new speechRecognition();
-    check_attribute(recognition, "grammars", recognition.grammars.length, "object", 2);
+    check_attribute(recognition, "grammars", recognition.grammars, "object", new speechGrammarList());
 }, document.title);
 
 </script>
