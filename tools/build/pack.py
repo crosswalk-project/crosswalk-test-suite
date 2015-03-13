@@ -1142,8 +1142,9 @@ def main():
 
     for i_pkg in config_json["pkg-list"].keys():
         i_pkg_list = i_pkg.replace(" ", "").split(",")
-        if parameters_type and parameters_type in i_pkg_list:
-            pkg_json = config_json["pkg-list"][i_pkg]
+        if parameters_type:
+            if parameters_type in i_pkg_list:
+                pkg_json = config_json["pkg-list"][i_pkg]
         elif BUILD_PARAMETERS.pkgtype in i_pkg_list:
             pkg_json = config_json["pkg-list"][i_pkg]
             
