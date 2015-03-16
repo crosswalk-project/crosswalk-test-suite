@@ -61,7 +61,12 @@ def instPKGs():
                     if "Failure" in line:
                         action_status = False
                         break
-    pushstatus = commands.getstatusoutput("adb push %s/res/doc /mnt/sdcard/wrtdoc/" % SCRIPT_DIR)
+    pushstatus = commands.getstatusoutput("adb push %s/res/media/meego/*.mp4 /mnt/sdcard/" % SCRIPT_DIR)
+    print pushstatus[1]
+    if pushstatus[0] != 0:
+        print "Push media failed, please check it"
+        sys.exit(1)
+    pushvideo = commands.getstatusoutput("adb push %s/res/doc /mnt/sdcard/wrtdoc/" % SCRIPT_DIR)
     print pushstatus[1]
     if pushstatus[0] != 0:
         (return_code, output) = doCMD("adb shell mkdir -p /mnt/sdcard1/wrtdoc &>/dev/null")
