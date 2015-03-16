@@ -5,7 +5,7 @@ appname=$(echo $name|sed 's/-/_/g')
 
 LIST=`find $(dirname $0)/../../../crosswalk-test-suite/webapi/ -maxdepth 1 -type d |awk '/-tests$/'`
 LIST="
-../../cordova/cordova-mobilespec-android-tests
+../../cordova/cordova-feature-android-tests
 ../../cordova/cordova-sampleapp-android-tests
 ../../cordova/cordova-webapp-android-tests
 "
