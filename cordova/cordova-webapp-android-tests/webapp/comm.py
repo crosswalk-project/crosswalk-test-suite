@@ -36,10 +36,10 @@ sys.setdefaultencoding( "utf-8" )
 
 script_path = os.path.realpath(__file__)
 const_path = os.path.dirname(script_path)
-sample_src_pref = "/tmp/cordova-demos/"
+sample_src_pref = "/tmp/crosswalk-demos/"
 pack_tool = const_path + "/../tools/cordova/"
 plugin_tool = const_path + "/../tools/cordova-crosswalk-engine/"
-testapp_path = const_path + "/../testapp/"
+testapp_path = "/tmp/cordova-sampleapp/"
 
 def setUp():
     global ARCH, VERSION, device
