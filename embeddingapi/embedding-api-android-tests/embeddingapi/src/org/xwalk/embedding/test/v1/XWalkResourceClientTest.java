@@ -18,6 +18,7 @@ import org.xwalk.embedding.base.ShouldInterceptLoadRequestHelper;
 import org.xwalk.embedding.base.XWalkViewTestBase;
 import org.xwalk.embedding.util.CommonResources;
 
+import android.os.SystemClock;
 import android.test.suitebuilder.annotation.SmallTest;
 import android.webkit.WebResourceResponse;
 
@@ -79,7 +80,7 @@ public class XWalkResourceClientTest extends XWalkViewTestBase {
 
     public void testOnPageLoadStartedWithInvalidUrl() {
         try {
-            String url = "http://this.url.is.invalid/";
+            String url = "file:///android_asset/invalid.html";
             OnLoadStartedHelper mOnLoadStartedHelper = mTestHelperBridge.getOnLoadStartedHelper();
             int currentCallCount = mOnLoadStartedHelper.getCallCount();
             loadUrlAsync(url);
@@ -142,10 +143,11 @@ public class XWalkResourceClientTest extends XWalkViewTestBase {
     public void testOnLoadFinishedWithInvalidUrl() {
         try {
             OnLoadFinishedHelper mOnLoadFinishedHelper = mTestHelperBridge.getOnLoadFinishedHelper();
-            String url = "http://localhost:7/non_existent";
+            String url = "file:///android_asset/non_existent";
             int currentCallCount = mOnLoadFinishedHelper.getCallCount();
             loadUrlAsync(url);
             mOnLoadFinishedHelper.waitForCallback(currentCallCount);
+            SystemClock.sleep(1000);
             assertEquals(url, mOnLoadFinishedHelper.getUrl());
         } catch (Exception e) {
             assertTrue(false);
@@ -266,31 +268,56 @@ public class XWalkResourceClientTest extends XWalkViewTestBase {
         }
     }
 
-    public void testShouldInterceptLoadRequestOnInvalidData() {
+    public void testShouldInterceptLoadRequestOnInvalidData1() {
         try {
-            final String aboutPageUrl = addAboutPageToTestServer(mWebServer);
+            String aboutPageUrl = addAboutPageToTestServer(mWebServer);
             ShouldInterceptLoadRequestHelper mShouldInterceptLoadRequestHelper = mTestHelperBridge.getShouldInterceptLoadRequestHelper();
             mShouldInterceptLoadRequestHelper.setReturnValue(new WebResourceResponse("text/html", "UTF-8", null));
             int callCount = mShouldInterceptLoadRequestHelper.getCallCount();
             loadUrlAsync(aboutPageUrl);
             mShouldInterceptLoadRequestHelper.waitForCallback(callCount);
+        } catch (Exception e) {
+            assertTrue(false);
+            e.printStackTrace();
+        }
+    }
 
+    public void testShouldInterceptLoadRequestOnInvalidData2() {
+        try {
+            String aboutPageUrl = addAboutPageToTestServer(mWebServer);
+            ShouldInterceptLoadRequestHelper mShouldInterceptLoadRequestHelper = mTestHelperBridge.getShouldInterceptLoadRequestHelper();
             mShouldInterceptLoadRequestHelper.setReturnValue(null);
-            callCount = mShouldInterceptLoadRequestHelper.getCallCount();
+            int callCount = mShouldInterceptLoadRequestHelper.getCallCount();
             loadUrlAsync(aboutPageUrl);
             mShouldInterceptLoadRequestHelper.waitForCallback(callCount);
-            
+        } catch (Exception e) {
+            assertTrue(false);
+            e.printStackTrace();
+        }
+    }
+
+    public void testShouldInterceptLoadRequestOnInvalidData3() {
+        try {
+            String aboutPageUrl = addAboutPageToTestServer(mWebServer);
+            ShouldInterceptLoadRequestHelper mShouldInterceptLoadRequestHelper = mTestHelperBridge.getShouldInterceptLoadRequestHelper();
             mShouldInterceptLoadRequestHelper.setReturnValue(new WebResourceResponse(null, null, new ByteArrayInputStream(new byte[0])));
-            callCount = mShouldInterceptLoadRequestHelper.getCallCount();
+            int callCount = mShouldInterceptLoadRequestHelper.getCallCount();
             loadUrlAsync(aboutPageUrl);
             mShouldInterceptLoadRequestHelper.waitForCallback(callCount);
-            
+        } catch (Exception e) {
+            assertTrue(false);
+            e.printStackTrace();
+        }
+    }
 
+    public void testShouldInterceptLoadRequestOnInvalidData4() {
+        try {
+            String aboutPageUrl = addAboutPageToTestServer(mWebServer);
+            ShouldInterceptLoadRequestHelper mShouldInterceptLoadRequestHelper = mTestHelperBridge.getShouldInterceptLoadRequestHelper();
             mShouldInterceptLoadRequestHelper.setReturnValue(new WebResourceResponse(null, null, null));
-            callCount = mShouldInterceptLoadRequestHelper.getCallCount();
+            int callCount = mShouldInterceptLoadRequestHelper.getCallCount();
             loadUrlAsync(aboutPageUrl);
             mShouldInterceptLoadRequestHelper.waitForCallback(callCount);
-
         } catch (Exception e) {
             assertTrue(false);
             e.printStackTrace();
@@ -478,6 +505,7 @@ public class XWalkResourceClientTest extends XWalkViewTestBase {
             int callCount = mShouldInterceptLoadRequestHelper.getCallCount();
             loadUrlAsync(url);
             mShouldInterceptLoadRequestHelper.waitForCallback(callCount);
+            SystemClock.sleep(2000);
             assertEquals(url, mShouldInterceptLoadRequestHelper.getUrls().get(0));
             assertEquals(callCount + 1, mTestHelperBridge.getOnPageStartedHelper().getCallCount());
         } catch (Exception e) {
@@ -508,12 +536,11 @@ public class XWalkResourceClientTest extends XWalkViewTestBase {
     @SmallTest
     public void testOnReceivedLoadErrorOnInvalidUrl() {
         try {
-            String url = "http://man.id.be.really.surprised.if.this.address.existed.blah/";
+            String url = "file:///android_asset/invalid.html";
             OnReceivedErrorHelper mOnReceivedErrorHelper = mTestHelperBridge.getOnReceivedErrorHelper();
             int onReceivedErrorCallCount = mOnReceivedErrorHelper.getCallCount();
             loadUrlAsync(url);
             mOnReceivedErrorHelper.waitForCallback(onReceivedErrorCallCount);
-            assertEquals(XWalkResourceClient.ERROR_HOST_LOOKUP, mOnReceivedErrorHelper.getErrorCode());
             assertEquals(url, mOnReceivedErrorHelper.getFailingUrl());
             assertNotNull(mOnReceivedErrorHelper.getDescription());
         } catch (Exception e) {
