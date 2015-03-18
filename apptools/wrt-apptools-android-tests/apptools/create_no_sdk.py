@@ -39,18 +39,24 @@ class TestCrosswalkApptoolsFunctions(unittest.TestCase):
         comm.setUp()
         comm.clear("org.xwalk.test")
         android_home = commands.getoutput("(dirname $(dirname $(dirname $(which android))))")
-        #print 'debug1 ',android_home
-        os.chdir(android_home)
         android_home1 = android_home + "/sdk"
         android_home2 = android_home + "/sdkk"
-        os.rename(android_home1, android_home2)
-        #print os.listdir(android_home)
+        allpath = commands.getoutput("echo $PATH")
+        paths = allpath.split(":")
+        for i in range(len(paths)):
+            if android_home1 in paths[i]:
+                paths[i] = paths[i].replace(android_home1, android_home2)
+                new_path = ":".join(paths).strip()
+        #print 'new_path', new_path
+        os.environ['PATH'] = new_path
+        #new = commands.getoutput("echo $PATH")
+        #print new
         os.chdir(comm.XwalkPath)
         cmd = comm.PackTools + "crosswalk-app create org.xwalk.test --crosswalk=" + comm.XwalkPath + comm.XwalkName
         packstatus = commands.getstatusoutput(cmd)
-        os.rename(android_home2, android_home1)
+        os.environ['PATH'] = allpath
+        #print packstatus
         self.assertIn("ERROR", packstatus[1])
-        #print os.listdir(android_home)
         comm.clear("org.xwalk.test")
 
 if __name__ == '__main__':
