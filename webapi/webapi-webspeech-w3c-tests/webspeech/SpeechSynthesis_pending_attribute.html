@@ -20,7 +20,7 @@ Authors:
 -->
 <html>
 <head>
-<title>SpeechSynthesis_speaking_attibute</title>
+<title>SpeechSynthesis_pending_attibute</title>
 <meta charset="utf-8"/>
 <script src="support/unitcommon.js"></script>
 <script src="support/webspeech_common.js"></script>
@@ -28,16 +28,16 @@ Authors:
 <body bgcolor="FFFFFF"  bgcolor="FFFFFF" >
 <div id="log"></div>
 <script>
-//==== TEST: SpeechSynthesis_speaking_attibute
-//==== LABEL Check if speaking attibute of SpeechSynthesis exists
+//==== TEST: SpeechSynthesis_pending_attibute
+//==== LABEL Check if pending attibute of SpeechSynthesis exists
 //==== PRIORITY P1
-//==== SPEC Tizen Web API:Speech:SpeechSynthesis:speaking A
-//==== SPEC_URL https://dvcs.w3.org/hg/webspeech-api/raw-file/tip/webspeechapi.html
+//==== SPEC Tizen Web API:Speech:SpeechSynthesis:pending A
+//==== SPEC_URL https://dvcs.w3.org/hg/speech-api/raw-file/tip/speechapi.html
 //==== TEST_CRITERIA AE AT ARO ADV
 
 test(function () {
-    assert_equals(speechSyn.speaking, true, "speaking should be false");
-    check_readonly(speechSyn, "speaking", speechSyn.speaking, "boolean", false);
+    assert_equals(speechSyn.pending, false, "pending should be false");
+    check_readonly(speechSyn, "pending", speechSyn.pending, "boolean", true);
 }, document.title);
 
 </script>

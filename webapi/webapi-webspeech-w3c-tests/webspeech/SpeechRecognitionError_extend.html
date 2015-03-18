@@ -29,16 +29,16 @@ Authors:
 <div id="log"></div>
 <script type="text/javascript">
 //==== TEST: SpeechRecognitionError_extend
-//==== LABEL Check if webspeechRecognitionError object is extensible
+//==== LABEL Check if SpeechRecognitionError object is extensible
 //==== PRIORITY P3
 //==== SPEC Tizen Web API:Speech:webspeechRecognitionError U
-//==== SPEC_URL https://dvcs.w3.org/hg/webspeech-api/raw-file/tip/webspeechapi.html#webspeechreco-error
+//==== SPEC_URL https://dvcs.w3.org/hg/speech-api/raw-file/tip/speechapi.html#webspeechreco-error
 //==== TEST_CRITERIA OBX
 
 test(function () {
-    assert_true("webspeechRecognitionError" in window, "webspeechRecognitionError is expected in window");
-    assert_equals(typeof (window.webspeechRecognitionError), "object", "expected webspeechRecognitionError is an object but found " + typeof (window.webspeechRecognitionError));
-    check_extensibility(window.webspeechRecognitionError);
+    assert_true(!!speechRecognitionError, "SpeechRecognitionError is expected in window");
+    assert_equals(typeof (speechRecognitionError), "function", "expected SpeechRecognitionError is an object but found " + typeof (speechRecognitionError));
+    check_extensibility(speechRecognitionError);
 }, document.title);
 
 </script>

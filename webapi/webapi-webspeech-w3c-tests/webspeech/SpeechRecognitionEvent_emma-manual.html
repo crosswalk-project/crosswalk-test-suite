@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <!--
-Copyright (c) 2014 Intel Corporation.
+Copyright (c) 2013 Intel Corporation.
 
 Redistribution and use in source and binary forms, with or without modification,
 are permitted provided that the following conditions are met:
@@ -26,30 +26,38 @@ NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE,
 EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
 Authors:
-        Wu. Xiaojun <xiaojunx.a.wu@intel.com>
+        Shentu. Jiazhen <jiazhenx.shentu@intel.com>
 
 -->
 
 <meta charset="utf-8">
-<title>Web Speech API Test: the basics of the SpeechRecognitionEvent interface</title>
+<title>Web Speech API Test: SpeechRecognitionEvent emma attribute</title>
 <link rel="author" title="Intel" href="http://www.intel.com">
 <link rel="help" href="http://dvcs.w3.org/hg/speech-api/raw-file/tip/speechapi.html">
+<meta name='flags' content='interact'>
+<meta name="timeout" content="long">
+<meta name="assert" content="Check if emma attribute is EMMA 1.0 representation of this result">
 <script src="../resources/testharness.js"></script>
 <script src="../resources/testharnessreport.js"></script>
+<script src="support/webspeech_common.js"></script>
+
+<p>Speak 3 words in 1 second</p>
 <div id="log"></div>
-<script src="../resources/vendor-prefix.js" data-prefixed-objects='[{"ancestors":["window"], "name":"SpeechRecognitionEvent"}]'></script>
 <script>
 
-test(function () {
-  assert_true('SpeechRecognitionEvent' in window);
-}, "Existence of SpeechRecognitionEvent interface");
-
-test(function () {
-  assert_not_equals(SpeechRecognitionEvent, null);
-}, "Value of SpeechRecognitionEvent object");
-
-test(function () {
-  assert_equals(SpeechRecognitionEvent.__proto__, Event);
-}, "Prototype of SpeechRecognitionEvent");
+async_test(function(t) {
+  var speechReco = new speechRecognition();
+  speechReco.onresult = t.step_func(function (evt) {
+    assert_true("emma" in evt, "emma attribute exist in SpeechRecognitionEvent");
+    assert_true(evt.emma.indexOf("<emma:emma version=\"1.0\"") > 0, "EMMA 1.0 representation of this result");
+    speechReco.stop();
+    t.done();
+  });
+  speechReco.onerror = t.step_func(function (evt) {
+    assert_unreached("Error:" + evt.error);
+    t.done();
+  });
+  speechReco.start();  
+}, document.getElementsByName("assert")[0].content);
 
 </script>

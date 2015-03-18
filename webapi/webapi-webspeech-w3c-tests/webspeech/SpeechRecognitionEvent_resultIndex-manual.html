@@ -30,30 +30,33 @@ Authors:
 
 -->
 
-<html lang="zh">
 <meta charset="utf-8">
-<title>Web Speech API Test: SpeechRecognition lang attribute</title>
+<title>Web Speech API Test: SpeechRecognitionEvent resultIndex attribute</title>
 <link rel="author" title="Intel" href="http://www.intel.com">
 <link rel="help" href="http://dvcs.w3.org/hg/speech-api/raw-file/tip/speechapi.html">
+<meta name='flags' content='interact'>
+<meta name="timeout" content="long">
+<meta name="assert" content="Test if the resultIndex is set to the lowest index in the results array that has changed">
 <script src="../resources/testharness.js"></script>
 <script src="../resources/testharnessreport.js"></script>
+<script src="support/webspeech_common.js"></script>
+<p>Speak 3 words in 1 second</p>
 <div id="log"></div>
 <script>
 
-var t = async_test("Test if default to use the lang of the html document root element when the input request opens a connection to the recognition service", { timeout: 5000});
-
-t.step(function () {
-  var speechReco = new webkitSpeechRecognition();
-  speechReco.onstart = t.step_func(function () {
-    assert_equals(speechReco.lang, "zh");
+async_test(function(t) {
+  var speechReco = new speechRecognition();
+  speechReco.onresult = t.step_func(function (evt) {
+    assert_true("resultIndex" in evt, "resultIndex attribute exist in SpeechRecognitionEvent");
+    assert_equals(evt.resultIndex, 0, "The resultIndex is set to the lowest index");
+    speechReco.stop();
     t.done();
   });
   speechReco.onerror = t.step_func(function (evt) {
-    assert_unreached("SpeechRecognition get error " + evt.error);
+    assert_unreached("Error:" + evt.error);
     t.done();
   });
   speechReco.start();
-});
+}, document.getElementsByName("assert")[0].content);
 
 </script>
-</html>

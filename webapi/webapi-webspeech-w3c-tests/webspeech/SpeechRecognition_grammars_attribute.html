@@ -31,12 +31,12 @@ Authors:
 //==== LABEL Check if grammars attribute of SpeechRecognition exists
 //==== PRIORITY P1
 //==== SPEC Tizen Web API:Speech:SpeechRecognition:grammars A
-//==== SPEC_URL https://dvcs.w3.org/hg/webspeech-api/raw-file/tip/webspeechapi.html#dfn-grammars
+//==== SPEC_URL https://dvcs.w3.org/hg/speech-api/raw-file/tip/speechapi.html#dfn-grammars
 //==== TEST_CRITERIA AE,AT,ADV,ASG
 
 test(function () {
     var recognition = new speechRecognition();
-    check_attribute(recognition, "grammars", recognition.grammars.length, "object", 2);
+    check_attribute(recognition, "grammars", recognition.grammars, "object", new speechGrammarList());
 }, document.title);
 
 </script>

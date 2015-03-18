@@ -31,30 +31,25 @@ Authors:
 -->
 
 <meta charset="utf-8">
-<title>Web Speech API Test: SpeechRecognitionEvent interpretation attribute</title>
+<title>Web Speech API Test: SpeechRecognitionError error</title>
 <link rel="author" title="Intel" href="http://www.intel.com">
 <link rel="help" href="http://dvcs.w3.org/hg/speech-api/raw-file/tip/speechapi.html">
-<script src="../resources/testharness.js"></script>
-<script src="../resources/testharnessreport.js"></script>
-<p>Speak 3 words in 1 second</p>
+<meta name="assert" content="Check if error attribute exists in SpeechRecognitionError and a readonly attribute">
+<script src="support/unitcommon.js"></script>
+<script src="support/webspeech_common.js"></script>
 <div id="log"></div>
 <script>
 
-var t = async_test("Test if the interpretation represents the semantic meaning from what the user said, current options are null or a copy of the transcript", { timeout: 5000});
-
-t.step(function () {
-  var speechReco = new webkitSpeechRecognition();
-  speechReco.onresult = function (evt) {
-    assert_true((evt.interpretation == null) || (evt.interpretation == evt.results[0][0].transcript));
-  };
+async_test(function(t) {
+  var speechReco = new speechRecognition();
+  speechReco.onstart = t.step_func(function (evt) {
+    speechReco.abort();
+  });
   speechReco.onerror = t.step_func(function (evt) {
-    assert_unreached("SpeechRecognition get error " + evt.error);
+    check_readonly(evt, "error", evt.error, "string", "abc");
     t.done();
   });
-  speechReco.start();
-  setTimeout(function () {
-    speechReco.stop();
-  }, 1000);
-});
+  speechReco.start();  
+}, document.getElementsByName("assert")[0].content);
 
 </script>

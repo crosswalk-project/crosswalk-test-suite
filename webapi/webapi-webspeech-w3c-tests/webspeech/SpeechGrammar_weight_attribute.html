@@ -20,7 +20,7 @@ Authors:
 -->
 <html>
 <head>
-<title>SpeechSynthesis_pending_attibute</title>
+<title>SpeechGrammar_weight_attibute</title>
 <meta charset="utf-8"/>
 <script src="support/unitcommon.js"></script>
 <script src="support/webspeech_common.js"></script>
@@ -28,16 +28,17 @@ Authors:
 <body bgcolor="FFFFFF"  bgcolor="FFFFFF" >
 <div id="log"></div>
 <script>
-//==== TEST: SpeechSynthesis_pending_attibute
-//==== LABEL Check if pending attibute of SpeechSynthesis exists
+//==== TEST: SpeechGrammar_weight_attibute
+//==== LABEL Check if weight attibute of webspeechGrammar exists
 //==== PRIORITY P1
-//==== SPEC Tizen Web API:Speech:SpeechSynthesis:pending A
-//==== SPEC_URL https://dvcs.w3.org/hg/webspeech-api/raw-file/tip/webspeechapi.html
-//==== TEST_CRITERIA AE AT ARO ADV
+//==== SPEC Tizen Web API:Speech:webspeechGrammar:weight A
+//==== SPEC_URL https://dvcs.w3.org/hg/speech-api/raw-file/tip/speechapi.html
+//==== TEST_CRITERIA AE AT ASG ADV
 
 test(function () {
-    assert_equals(speechSyn.pending, false, "pending should be false");
-    check_readonly(speechSyn, "pending", speechSyn.pending, "boolean", true);
+    var grammar = new speechGrammar();
+    assert_equals(grammar.weight, 1, "weight should be 1 by default.");
+    check_attribute(grammar, "weight", grammar.weight, "number", 2);
 }, document.title);
 
 </script>

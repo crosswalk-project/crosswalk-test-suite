@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <!--
-Copyright (c) 2013 Intel Corporation.
+Copyright (c) 2015 Intel Corporation.
 
 Redistribution and use in source and binary forms, with or without modification,
 are permitted provided that the following conditions are met:
@@ -26,32 +26,33 @@ NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE,
 EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
 Authors:
-        Shentu. Jiazhen <jiazhenx.shentu@intel.com>
+        Li, Hao <haox.li@intel.com>
 
 -->
 
 <meta charset="utf-8">
-<title>Web Speech API Test: SpeechRecognitionError ErrorCode attribute</title>
+<title>Web Speech API Test: SpeechRecognition - start exception</title>
 <link rel="author" title="Intel" href="http://www.intel.com">
 <link rel="help" href="http://dvcs.w3.org/hg/speech-api/raw-file/tip/speechapi.html">
-<script src="../resources/testharness.js"></script>
-<script src="../resources/testharnessreport.js"></script>
+<meta name="assert" content="Test getting an exception when calling start() in the Speech JavaScript API">
+<script src="support/unitcommon.js"></script>
+<script src="support/webspeech_common.js"></script>
 <div id="log"></div>
 <script>
 
-var t = async_test("Test if the ErrorCode of SpeechRecognitionError is language-not-supported when the language was not supported", { timeout: 5000});
-
-t.step(function () {
-  var speechReco = new webkitSpeechRecognition();
-  speechReco.lang = "wrong";
-  speechReco.onerror = t.step_func(function (evt) {
-    assert_equals(evt.error, "language-not-supported");
+async_test(function(t) {
+  var recognition = new speechRecognition();
+  recognition.onstart = t.step_func(function (evt) {
+    assert_throws("InvalidStateError", function () {
+      recognition.start();
+    }, "recognition has already started");
     t.done();
   });
-  speechReco.start();
-  setTimeout(function () {
-    speechReco.stop();
-  }, 1000);
-});
+
+  recognition.start();
+
+}, document.getElementsByName("assert")[0].content);
 
 </script>
+</body>
+</html>

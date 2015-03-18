@@ -36,38 +36,38 @@ Authors:
 <link rel="help" href="http://dvcs.w3.org/hg/speech-api/raw-file/tip/speechapi.html">
 <script src="../resources/testharness.js"></script>
 <script src="../resources/testharnessreport.js"></script>
+<script src="support/webspeech_common.js"></script>
 <div id="log"></div>
-<script src="../resources/vendor-prefix.js" data-prefixed-objects='[{"ancestors":["window"], "name":"SpeechSynthesis"}]'></script>
 <script>
 
 test(function () {
-  assert_class_string(window.speechSynthesis, "SpeechSynthesis");
+  assert_class_string(speechSyn, "SpeechSynthesis");
 }, "Type of window.speechSynthesis");
 
 test(function () {
-  assert_not_equals(speechSynthesis, null);
+  assert_not_equals(speechSyn, null);
 }, "Value of window.speechSynthesis object");
 
 ["pending", "speaking", "paused", "speak", "cancel", "pause", "resume", "getVoices"].forEach(function (attr) {
   test(function () {
-    assert_true("pending" in speechSynthesis);
+    assert_true(attr in speechSyn);
   }, "Existence of " + attr + " attribute/method");
 })
 
 test(function() {
-  assert_false(speechSynthesis.pending);
+  assert_false(speechSyn.pending);
 }, "Initial value of pending attribute")
 
 test(function() {
-  assert_false(speechSynthesis.speaking);
+  assert_false(speechSyn.speaking);
 }, "Value of speaking attribute");
 
 test(function() {
-  assert_false(speechSynthesis.paused);
+  assert_false(speechSyn.paused);
 }, "Value of paused attribute");
 
 test(function () {
-  assert_class_string(speechSynthesis.getVoices(), "SpeechSynthesisVoiceList")
+  assert_class_string(speechSyn.getVoices(), "SpeechSynthesisVoiceList")
 }, "Type of speechSynthesis.getVoices()")
 
 </script>

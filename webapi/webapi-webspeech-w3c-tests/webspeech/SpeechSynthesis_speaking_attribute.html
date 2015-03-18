@@ -15,28 +15,29 @@ See the License for the specific language governing permissions and
 limitations under the License.
 
 Authors:
-        SK Tuhin Islam <sk.islam@samsung.com>
+        Md. Samsuddin Alam <ss.alam@samsung.com>
 
 -->
 <html>
 <head>
-<title>SpeechRecognition_onstart_exist</title>
+<title>SpeechSynthesis_speaking_attibute</title>
+<meta charset="utf-8"/>
 <script src="support/unitcommon.js"></script>
 <script src="support/webspeech_common.js"></script>
 </head>
-<body bgcolor="FFFFFF">
+<body bgcolor="FFFFFF"  bgcolor="FFFFFF" >
 <div id="log"></div>
 <script>
-//==== TEST: SpeechRecognition_onstart_exist
-//==== LABEL Check if event onstart exist
+//==== TEST: SpeechSynthesis_speaking_attibute
+//==== LABEL Check if speaking attibute of SpeechSynthesis exists
 //==== PRIORITY P1
-//==== SPEC Tizen Web API:Speech:SpeechRecognition:onstart E
-//==== SPEC_URL https://dvcs.w3.org/hg/webspeech-api/raw-file/tip/webspeechapi.html#dfn-onstart
-//==== TEST_CRITERIA EE
+//==== SPEC Tizen Web API:Speech:SpeechSynthesis:speaking A
+//==== SPEC_URL https://dvcs.w3.org/hg/speech-api/raw-file/tip/speechapi.html
+//==== TEST_CRITERIA AE AT ARO ADV
 
 test(function () {
-    var recognition = new speechRecognition();
-    assert_true("onstart" in recognition);
+    assert_equals(speechSyn.speaking, true, "speaking should be false");
+    check_readonly(speechSyn, "speaking", speechSyn.speaking, "boolean", false);
 }, document.title);
 
 </script>

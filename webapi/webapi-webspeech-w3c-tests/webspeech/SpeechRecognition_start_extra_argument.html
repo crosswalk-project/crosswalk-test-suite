@@ -21,6 +21,7 @@ Authors:
 <html>
 <head>
 <title>SpeechRecognition_start_extra_argument</title>
+<meta name="assert" content="Check if start method of SpeechRecognition_start_extra_argument works properly with extra argument">
 <script src="support/unitcommon.js"></script>
 <script src="support/webspeech_common.js"></script>
 </head>
@@ -31,17 +32,28 @@ Authors:
 //==== LABEL Check if start method of SpeechRecognition_start_extra_argument works properly with extra argument
 //==== PRIORITY P2
 //==== SPEC Tizen Web API:Speech:SpeechRecognition:start M
-//==== SPEC_URL https://dvcs.w3.org/hg/webspeech-api/raw-file/tip/webspeechapi.html#dfn-start
+//==== SPEC_URL https://dvcs.w3.org/hg/speech-api/raw-file/tip/speechapi.html#dfn-start
 //==== TEST_CRITERIA MNAEX
 
-test(function () {
-    var recognition = new speechRecognition();
-    var extraArgument = [null, undefined,"Tizen",1,false,["one", "two"], {argument: 1},function () {}], i;
-    for (i = 0; i < extraArgument.length; i++) {
-        recognition.start(extraArgument[i]);
-        recognition.stop();
+async_test(function(t) {
+  var recognition = new speechRecognition(), extraArgument = [null, undefined,"Tizen",1,false,["one", "two"], {argument: 1},function () {}], i = extraArgument.length;
+
+  recognition.onstart = t.step_func(function (evt) {
+    recognition.abort();
+  });
+
+  recognition.onend = t.step_func(function (evt) {
+    if (i >= 0) {
+      recognition.start(extraArgument[i]);
+      i--;
+    } else {
+      t.done();
     }
-}, document.title);
+  });
+
+  recognition.start();
+
+}, document.getElementsByName("assert")[0].content);
 
 </script>
 </body>
