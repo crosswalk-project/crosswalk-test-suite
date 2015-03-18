@@ -119,7 +119,7 @@ function testStorage(flag) {
             if($(this).attr("subcase")) {
               tnum = parseInt($(this).attr("subcase"));
             }
-            casearr = {purpose:purpose, num:tnum, pass:"0", fail:"0", result:"", sid: (parseInt(setidarrs.indexOf(sname)) + 1)}; //result: "", "pass", "fail"
+            casearr = {purpose:purpose, num:tnum, pass:"0", fail:"0", result:"", sid:"set" + (parseInt(setidarrs.indexOf(sname)) + 1)}; //result: "", "pass", "fail"
             j += tnum;
             lstorage.setItem(tid, JSON.stringify(casearr)); //store case info
           }
