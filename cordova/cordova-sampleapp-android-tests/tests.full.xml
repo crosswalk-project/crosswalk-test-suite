@@ -2,50 +2,50 @@
 <?xml-stylesheet type="text/xsl" href="./testcase.xsl"?>
 <test_definition>
   <suite category="Cordova Sample Apps" name="cordova-sampleapp-android-tests">
-    <set name="SampleApp" type="js">
-      <testcase component="Cordova Sample Apps/Gallery" execution_type="manual" id="Crosswalk_Cordova_SampleApp_Gallery_Install" priority="P0" purpose="Validate if sample app Gallery could be installed successfully" status="approved" type="Functional">
-        <description>
-          <pre_condition>
-            1.Make sure Crosswalk binary is installed;
-            2.Make sure webapp is downloaded;
-            3.Copy your HTML/JS/CSS and related resources into the directory:"crosswalk/app_src/assets";
-            4.Make sure device is connected with ubuntu.
-          </pre_condition>
-          <test_script_entry>/opt/cordova-sampleapp-android-tests/sampleapp/Crosswalk_Cordova_SampleApp_Gallery_Install.html</test_script_entry>
-        </description>
-      </testcase>
-      <testcase component="Cordova Sample Apps/Gallery" execution_type="manual" id="Crosswalk_Cordova_SampleApp_Gallery_UnInstall" priority="P0" purpose="Validate if sample app Gallery could be uninstalled successfully" status="approved" type="Functional">
-        <description>
-          <pre_condition>
-            1. Make sure the Gallery webapp is installed.
-          </pre_condition>
-          <test_script_entry>/opt/cordova-sampleapp-android-tests/sampleapp/Crosswalk_Cordova_SampleApp_Gallery_UnInstall.html </test_script_entry>
-        </description>
-      </testcase>
-      <testcase component="Cordova Sample Apps/Gallery" execution_type="manual" id="Crosswalk_Cordova_SampleApp_Gallery_Uninstall_WithAppRunning" priority="P1" purpose="Validate Crosswalk support that uninstall the sample app Gallery when it's actually running" status="approved" type="Functional">
+    <set name="SampleApp_bdd" type="js" ui-auto="bdd">
+      <testcase component="Cordova Sample Apps/Gallery" execution_type="manual" id="Crosswalk_Cordova_SampleApp_Gallery_AppFunction" priority="P1" purpose="Validate if sample app Gallery function could work well" status="approved" type="Functional">
         <description>
           <pre_condition>
             1. Make sure the Gallery webapp is launched.
           </pre_condition>
-           <test_script_entry>/opt/cordova-sampleapp-android-tests/sampleapp/Crosswalk_Cordova_SampleApp_Gallery_Uninstall_WithAppRunning.html </test_script_entry>
+          <test_script_entry>/opt/cordova-sampleapp-android-tests/sampleapp/Crosswalk_Cordova_SampleApp_Gallery_AppFunction.html </test_script_entry>
+          <bdd_test_script_entry test_script_expected_result="0">/opt/cordova-sampleapp-android-tests/testscripts/gallery_appFunction.feature</bdd_test_script_entry>
         </description>
       </testcase>
-      <testcase component="Cordova Sample Apps/Gallery" execution_type="manual" id="Crosswalk_Cordova_SampleApp_Gallery_Launch" priority="P0" purpose="Validate if sample app Gallery could be launched successfully" status="approved" type="Functional">
+    </set>
+    <set name="SampleApp_auto" type="pyunit">
+      <testcase component="Cordova Sample Apps/Gallery" execution_type="auto" id="Crosswalk_Cordova_SampleApp_Gallery_Build" priority="P0" purpose="Validate if sample app Gallery could be built successfully" status="approved" type="Functional">
         <description>
-          <pre_condition>
-            1. Make sure the Gallery webapp is installed.
-          </pre_condition>
-           <test_script_entry>/opt/cordova-sampleapp-android-tests/sampleapp/Crosswalk_Cordova_SampleApp_Gallery_Launch.html </test_script_entry>
+          <test_script_entry>/opt/cordova-sampleapp-android-tests/sampleapp/gallery_build.py</test_script_entry>
         </description>
       </testcase>
-      <testcase component="Cordova Sample Apps/Gallery" execution_type="manual" id="Crosswalk_Cordova_SampleApp_Gallery_Close" priority="P1" purpose="Validate if sample app Gallery could be closed successfully" status="approved" type="Functional">
+      <testcase component="Cordova Sample Apps/Gallery" execution_type="auto" id="Crosswalk_Cordova_SampleApp_Gallery_Install" priority="P0" purpose="Validate if sample app Gallery could be installed successfully" status="approved" type="Functional">
         <description>
-          <pre_condition>
-            1. Make sure the Gallery webapp is launched.
-          </pre_condition>
-          <test_script_entry>/opt/cordova-sampleapp-android-tests/sampleapp/Crosswalk_Cordova_SampleApp_Gallery_Close.html </test_script_entry>
+          <test_script_entry>/opt/cordova-sampleapp-android-tests/sampleapp/gallery_install.py</test_script_entry>
         </description>
       </testcase>
+      <testcase component="Cordova Sample Apps/Gallery" execution_type="auto" id="Crosswalk_Cordova_SampleApp_Gallery_Launch" priority="P0" purpose="Validate if sample app Gallery could be launched successfully" status="approved" type="Functional">
+        <description>
+           <test_script_entry>/opt/cordova-sampleapp-android-tests/sampleapp/gallery_launch.py</test_script_entry>
+        </description>
+      </testcase>
+      <testcase component="Cordova Sample Apps/Gallery" execution_type="auto" id="Crosswalk_Cordova_SampleApp_Gallery_Close" priority="P1" purpose="Validate if sample app Gallery could be closed successfully" status="approved" type="Functional">
+        <description>
+          <test_script_entry>/opt/cordova-sampleapp-android-tests/sampleapp/gallery_close.py</test_script_entry>
+        </description>
+      </testcase>
+      <testcase component="Cordova Sample Apps/Gallery" execution_type="auto" id="Crosswalk_Cordova_SampleApp_Gallery_UnInstall" priority="P0" purpose="Validate if sample app Gallery could be uninstalled successfully" status="approved" type="Functional">
+        <description>
+          <test_script_entry>/opt/cordova-sampleapp-android-tests/sampleapp/gallery_uninstall.py</test_script_entry>
+        </description>
+      </testcase>
+      <testcase component="Cordova Sample Apps/Gallery" execution_type="auto" id="Crosswalk_Cordova_SampleApp_Gallery_Uninstall_WithAppRunning" priority="P1" purpose="Validate Crosswalk support that uninstall the sample app Gallery when it's actually running" status="approved" type="Functional">
+        <description>
+           <test_script_entry>/opt/cordova-sampleapp-android-tests/sampleapp/gallery_uninstall_withAppRunning.py</test_script_entry>
+        </description>
+      </testcase>
+    </set>
+    <set name="SampleApp_manual" type="js">
       <testcase component="Cordova Sample Apps/Gallery" execution_type="manual" id="Crosswalk_Cordova_SampleApp_Gallery_Icon" priority="P1" purpose="Validate if sample app Gallery icon display normally" status="approved" type="Functional">
         <description>
           <pre_condition>
@@ -69,14 +69,6 @@
             1. Make sure the Gallery webapp is launched.
           </pre_condition>
           <test_script_entry>/opt/cordova-sampleapp-android-tests/sampleapp/Crosswalk_Cordova_SampleApp_Gallery_Orientation.html </test_script_entry>
-        </description>
-      </testcase>
-      <testcase component="Cordova Sample Apps/Gallery" execution_type="manual" id="Crosswalk_Cordova_SampleApp_Gallery_AppFunction" priority="P1" purpose="Validate if sample app Gallery function could work well" status="approved" type="Functional">
-        <description>
-          <pre_condition>
-            1. Make sure the Gallery webapp is launched.
-          </pre_condition>
-          <test_script_entry>/opt/cordova-sampleapp-android-tests/sampleapp/Crosswalk_Cordova_SampleApp_Gallery_AppFunction.html </test_script_entry>
         </description>
       </testcase>
       <testcase component="Cordova Sample Apps/Gallery" execution_type="manual" id="Crosswalk_Cordova_SampleApp_Gallery_PresentationFunction" priority="P1" purpose="Validate if sample app Gallery Presentation function could work well" status="approved" type="Functional">

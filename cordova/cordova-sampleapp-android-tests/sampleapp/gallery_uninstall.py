@@ -29,27 +29,17 @@
 #         Lin, Wanming <wanming.lin@intel.com>
 
 import unittest
-import os, sys, commands
+import os, commands
 import comm
-import time
 
-class TestWebAppFunctions(unittest.TestCase):
-    def test_close(self):
+class TestGalleryAppFunctions(unittest.TestCase):
+    def test_uninstall(self):
         comm.setUp()
-        app_name = "helloworld"
+        app_name = "gallery"
         pkg_name = "com.example." + app_name.lower()
         if not comm.check_app_installed(pkg_name, self):
             comm.app_install(app_name, pkg_name, self)
-        # Find whether the app have launched
-        cmd_acti = "adb -s " + comm.device + " shell ps | grep %s" % pkg_name
-        launched = commands.getstatusoutput(cmd_acti)
-        if launched[0] != 0:
-            print "Close app ---------------->%s App haven't launched, need to launch it!" % app_name
-            cmd_start = "adb -s " + comm.device + " shell am start -n %s/.%s" % (pkg_name, app_name)
-            comm.app_launch(cmd_start, self)
-            time.sleep(1)
-        cmd_close = "adb -s " + comm.device + " shell am force-stop %s" % pkg_name
-        comm.app_stop(cmd_close, self)
+        comm.app_uninstall(pkg_name, self)
 
 if __name__ == '__main__':  
     unittest.main()
