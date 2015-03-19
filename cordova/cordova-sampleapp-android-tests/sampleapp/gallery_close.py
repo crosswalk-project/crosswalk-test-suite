@@ -29,14 +29,14 @@
 #         Lin, Wanming <wanming.lin@intel.com>
 
 import unittest
-import os, sys, commands
+import os, commands
 import comm
 import time
 
-class TestWebAppFunctions(unittest.TestCase):
+class TestGalleryAppFunctions(unittest.TestCase):
     def test_close(self):
         comm.setUp()
-        app_name = "helloworld"
+        app_name = "gallery"
         pkg_name = "com.example." + app_name.lower()
         if not comm.check_app_installed(pkg_name, self):
             comm.app_install(app_name, pkg_name, self)
