@@ -73,7 +73,6 @@ function getFileList() {
 
 var filetype = "";
 function startRead(index) {
-
     var file = document.getElementById("fileUpload").files[index];
     if (file) {
         var reader = new FileReader();
@@ -92,21 +91,14 @@ function startRead(index) {
                 reader.readAsText(file, "UTF-8");
                 filetype = "text";
             } catch(e) {
-                $.mobile.hidePageLoadingMsg();
                 $("#filePreview").html("Cannot pre-view this type of file!");
             }
         }
         EnablePassButton();
         // Handle progress, success, and errors
-        reader.onloadstart = loadstart;
         reader.onload = loaded;
-        reader.onloadend = loadend;
         reader.onerror = errorHandler;
     }
-}
-function loadstart(evt) {
-    // loading
-    $.mobile.showPageLoadingMsg();
 }
 
 function loaded(evt) {
@@ -120,24 +112,31 @@ function loaded(evt) {
     }
 }
 
-function loadend(evt) {
-    $.mobile.hidePageLoadingMsg();
-}
-
 function errorHandler(evt) {
    $("#messageInfo").addClass("errorMessage");
    $("#messageInfo").html(evt.target.error.name);
 }
 
-function savefile(index){
-   var file = document.getElementById("fileUpload").files[index];
+function savefile(){
+   var bb = new Blob(["This new content comes from FileWriter"], {type: 'text/plain'});
+   var newfile;
    window.requestFileSystem = window.requestFileSystem || window.webkitRequestFileSystem;
    requestFileSystem(TEMPORARY, 1024*1024,
    function(fs) {
-       fs.root.getFile(file.name, {create: true},
+       fs.root.getFile("test.txt", {create: true},
        function(fileEntry) {
+          fileEntry.file(function (f) {
+              newfile = f;
+          }, errorCallback);
           fileEntry.createWriter(function (fileWriter) {
-             FileSaver(file);
+              fileWriter.write(bb);
+              fileWriter.onwriteend = function () {
+                  var reader = new FileReader();
+                  reader.readAsText(newfile, "UTF-8");
+                  reader.onload = function () {
+                      $("#filePreview").html(this.result);
+                  }
+              }
           }, errorCallback);
        }, errorCallback);
     }, errorCallback);
