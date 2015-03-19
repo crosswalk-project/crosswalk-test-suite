@@ -135,18 +135,6 @@
           </spec>
         </specs>
       </testcase>
-      <testcase component="W3C_HTML5 APIs/DOM, Forms and Styles/CSS Basic User Interface Module Level 3 (CSS3 UI) (Partial)" execution_type="manual" id="CSS3UI_pseudo-classes_required" priority="P3" purpose="Check if form element required property value is required" status="approved" type="compliance">
-        <description>
-          <test_script_entry>/opt/tct-ui-css3-tests/ui/CSS3UI_pseudo-classes_required-manual.html</test_script_entry>
-        </description>
-        <specs>
-          <spec>
-            <spec_assertion category="Tizen W3C API Specifications" interface="CSS" section="DOM, Forms and Styles" specification="CSS Basic User Interface Module Level 3 (CSS3 UI) (Partial)" usage="true" />
-            <spec_url>http://www.w3.org/TR/2012/WD-css3-ui-20120117</spec_url>
-            <spec_statement>A form element is :required or :optional if a value for it is, respectively, required or optional before the form it belongs to is submitted Elements that are not form elements are neither required nor optional</spec_statement>
-          </spec>
-        </specs>
-      </testcase>
       <testcase component="W3C_HTML5 APIs/DOM, Forms and Styles/CSS Basic User Interface Module Level 3 (CSS3 UI) (Partial)" execution_type="auto" id="CSS3UI_box-sizing_border-box" priority="P2" purpose="Check if 'box-sizing:border-box' on test div" status="approved" type="compliance">
         <description>
           <test_script_entry>/opt/tct-ui-css3-tests/ui/CSS3UI_box-sizing_border-box.html</test_script_entry>
@@ -528,6 +516,21 @@
             <spec_assertion category="Tizen W3C API Specifications" element_name="outline-width" element_type="property" interface="CSS" section="DOM, Forms and Styles" specification="CSS Basic User Interface Module Level 3 (CSS3 UI) (Partial)" />
             <spec_url>http://www.w3.org/TR/2012/WD-css3-ui-20120117/#outline-width</spec_url>
             <spec_statement />
+          </spec>
+        </specs>
+      </testcase>
+    </set>
+    <set name="UserInterface-ref" type="ref" ui-auto="wd">
+      <testcase component="W3C_HTML5 APIs/DOM, Forms and Styles/CSS Basic User Interface Module Level 3 (CSS3 UI) (Partial)" execution_type="manual" id="CSS3UI_pseudo-classes_required" priority="P3" purpose="Check if form element required property value is required" status="approved" type="compliance">
+        <description>
+          <test_script_entry>/opt/tct-ui-css3-tests/ui/csswg/selector-required.html</test_script_entry>
+          <refer_test_script_entry timeout="90">/opt/tct-ui-css3-tests/ui/csswg/selector-required-ref.html</refer_test_script_entry>
+        </description>
+        <specs>
+          <spec>
+            <spec_assertion category="Tizen W3C API Specifications" interface="CSS" section="DOM, Forms and Styles" specification="CSS Basic User Interface Module Level 3 (CSS3 UI) (Partial)" usage="true" />
+            <spec_url>http://www.w3.org/TR/2012/WD-css3-ui-20120117</spec_url>
+            <spec_statement>A form element is :required or :optional if a value for it is, respectively, required or optional before the form it belongs to is submitted Elements that are not form elements are neither required nor optional</spec_statement>
           </spec>
         </specs>
       </testcase>
