@@ -1,0 +1,88 @@
+/* Content Flip Style */
+.bb-bookblock{
+  width:100%;
+  height:100%;
+  position: relative;
+  -webkit-perspective:1300;
+}
+
+#book{
+  z-index:10;
+}
+
+.page > div {
+  -webkit-transform-style: preserve-3d;
+  -webkit-backface-visibility: hidden;
+}
+#book-stage .left-page,#book-stage .right-page{
+  width:100%;
+  -webkit-backface-visibility: hidden;
+}
+.page .left-page{
+  -webkit-transform: rotateY(180deg);
+}
+.page .right-page{
+  -webkit-transform: rotateY(0deg);
+  overflow: auto;
+}
+
+#book-stage .left-page,#book-stage .right-page{
+  position: absolute;
+  top:0;
+  left:0;
+}
+
+.page.active{
+  -webkit-transform: rotateY(0deg);
+}
+
+.page.animation{
+  -webkit-transition: -webkit-transform cubic-bezier(0.215, 0.610, 0.355, 1.000) 1s;
+  z-index:5;
+   
+}
+
+.page.show{
+  pointer-events:auto;
+  opacity:1;
+}
+.page {
+  width: 50%;
+  padding:20px 50px;
+  height: 100%;
+  box-sizing:border-box;
+  position: absolute;
+  opacity:0;
+  top: 0;
+  background-color: transparent;
+  right:0;
+  -webkit-transform-style: preserve-3d;
+  -webkit-transform-origin: left center;
+  -webkit-transform: rotateY(-180deg);
+  pointer-events:none;
+}
+
+.left-bottom-button,
+.right-top-button,
+.right-bottom-button{
+  width: 80px;
+  height: 80px;
+  position: absolute;
+    z-index: 20;
+  cursor: pointer;
+}
+.left-bottom-button{
+  width:100%;
+  right: 0;
+  bottom: 0;
+}
+.right-top-button{
+  right: 0;
+  top: 0;
+}
+
+.right-bottom-button{
+  right: 0;
+  bottom: 0;
+}
+

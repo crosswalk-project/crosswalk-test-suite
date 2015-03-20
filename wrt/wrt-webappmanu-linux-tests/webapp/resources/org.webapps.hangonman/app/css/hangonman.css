@@ -1,0 +1,575 @@
+/*
+ * Copyright (c) 2012, Intel Corporation.
+ *
+ * This program is licensed under the terms and conditions of the
+ * Apache License, version 2.0.  The full text of the Apache License is at
+ * http://www.apache.org/licenses/LICENSE-2.0
+ *
+ */
+
+@import "start.css";
+@import "figure.css";
+
+@font-face {
+    font-family: DinBlack;
+    src: url("../lib/Comfortaa-bold/index.woff") format("woff");
+}
+
+@font-face {
+    font-family: DinBold;
+    src: url("../lib/Comfortaa-regular/index.woff") format("woff");
+}
+
+@font-face {
+    font-family: DinMedium;
+    src: url("../lib/Comfortaa-light/index.woff") format("woff");
+}
+
+.hbox {
+    display: -webkit-box;
+    -webkit-box-orient: horizontal;
+}
+
+.hbox > :not([class=vbox]) {
+    -webkit-box-flex: 0;
+}
+
+.vbox {
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+}
+
+.vbox > :not([class=hbox]) {
+    -webkit-box-flex: 0;
+}
+
+body {
+    margin: 0px;
+    -webkit-user-select: none;
+    background-color: #3c3c3c;
+    width: 1024px;
+    height: 600px;
+    display: -webkit-box;
+    -webkit-box-align: center;
+    -webkit-box-pack: center;
+    -webkit-box-orient: vertical;
+    box-shadow: 5px 5px 20px black;
+    overflow: hidden;
+}
+
+#container {
+    position: absolute;
+    background-image: -webkit-gradient(radial,
+				       center bottom, 1,
+				       center bottom, 600,
+				       from(#bce9fd),
+                                       color-stop(0.60, #43c0fa),
+				       to(#3384c0));
+    width: 1024px;
+    height: 600px;
+    background-size: 1024px 600px;
+    background-position: left top;
+    background-repeat: no-repeat;
+    overflow: hidden;
+    cursor: default;
+}
+
+.night #container {
+    background-image: -webkit-gradient(radial,
+				       center bottom, 1,
+				       center bottom, 600,
+				       from(rgb(254, 220, 112)),
+                                       color-stop(0.60, rgb(228, 188, 222)),
+				       to(rgb(22,41,118)));
+}
+
+#help {
+    background-image: url("../images/help.png");
+    width: 44px;
+    height: 44px;
+    position: absolute;
+    top: 14px;
+    right: 14px;
+    opacity: 0;
+    z-index: 0;
+    -webkit-transition: opacity 1s ease-in;
+}
+
+#help.shown {
+    opacity: 1;
+    z-index: 10;
+}
+
+#skyline {
+    width: 1024px;
+    height: 600px;
+    position: absolute;
+    top: 395px;
+    left: 0px;
+    background-size: contain;
+    background-position: left bottom;
+    background-repeat: no-repeat;
+    background-image: url("../images/skyline.png");
+    z-index: 0;
+    -webkit-transition: top 2s;
+}
+
+.night #skyline {
+    background-image: none;
+    background-color: #333;
+    -webkit-mask-size: contain;
+    -webkit-mask-position: left bottom;
+    -webkit-mask-repeat: no-repeat;
+    -webkit-mask-image: url("../images/skyline.png");
+}
+
+#skyline.shown {
+    z-index: 10;
+    top: 0px;
+}
+
+.control {
+    -webkit-transition: top 3s;
+    -webkit-transition-delay: .5s;
+    position: absolute;
+    z-index: 20;
+    height: 200px;
+    top: 600px;
+}
+
+#newGame.control {
+    border-width: 114px 20px 5px 20px;
+    -webkit-border-image: url("../images/building1.svg") 114 20 5 20 round round;
+    width: 60px;
+    left: 5px;
+}
+
+
+#newGame.shown {
+    top: 310px;
+}
+
+#newGame_button, #giveUp_button {
+    position: absolute;
+    height: 42px;
+    line-height: 42px;
+    text-align: center;
+    font-family: DinMedium;
+    font-size: 12pt;
+    text-shadow: 1px 1px 2px #888;
+    text-transform: uppercase;
+}
+
+#newGame_button {
+    top: -111px;
+    left: -18px;
+    width: 95px;
+}
+
+body:not(.isDialogUp) #newGame_button:hover,
+body:not(.isDialogUp) #giveUp_button:hover {
+    background-image: -webkit-gradient(radial,
+				       center top, 1,
+				       center top, 50,
+				       from(rgba(255,255,0,0.5)),
+				       to(rgba(255,255,0,0)));
+}
+
+#game_type {
+    position: relative;
+    top: -43px;
+    left: -7px;
+    height: 38px;
+    line-height: 19px;
+    width: 74px;
+    color: white;
+    text-align: center;
+    font-family: DinMedium;
+    font-size: 70%;
+    text-transform: uppercase;
+}
+
+#giveUp.control {
+    border-width: 66px 20px 5px 20px;
+    -webkit-border-image: url("../images/building2.svg") 66 20 5 20 round round;
+    width: 45px;
+    right: 5px;
+}
+
+#giveUp_button {
+    top: -64px;
+    right: -18px;
+    height: 43px;
+    width: 80px;
+}
+
+#giveUp.shown {
+    top: 380px;
+}
+
+.cloud {
+    position: absolute;
+    height: 150px;
+    -webkit-mask-position: top center;
+    -webkit-mask-size: 100% 100%;
+    background-color: white;
+    left: -100%;
+    z-index: 5;
+    -webkit-animation-timing-function: linear;
+    -webkit-animation-iteration-count: infinite;
+}
+
+/* biggest cloud is 300px across, so we start the animation
+   that far out of the left-hand edge */
+@-webkit-keyframes cloud_move {
+    0% {left: -300px;}
+  100% {left: 1024px;}
+}
+
+.night .cloud {
+    background-image: -webkit-gradient(linear, left top, left bottom,
+                                       from(rgb(254, 220, 112)), to(rgb(217,86,78)));
+}
+
+.cloud.v1 {
+    bottom: 85%;
+    left: -265px;
+    width: 265px;
+    -webkit-mask-image: url('../images/cloud1.svg');
+}
+
+.cloud.v2 {
+    bottom: 30%;
+    left: -225px;
+    width: 225px;
+    -webkit-mask-image: url('../images/cloud2.svg');
+}
+
+.cloud.v3 {
+    bottom: 10%;
+    left: -300px;
+    width: 300px;
+    -webkit-mask-image: url('../images/cloud3.svg');
+}
+
+#hangman {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    top: 0px;
+    left: 0px;
+    background-size: 100% 100%;
+    background-position: 0px 5px;
+}
+
+#letters {
+    width: 1px;
+    margin: auto;
+    left: -10px;
+    text-align: center;
+    position: relative;
+    bottom: 200px;
+    opacity: 0;
+    /*-webkit-transform: scale(3, 3);*/
+    -webkit-transition: opacity 2s ease-in, -webkit-transform 2s ease-in;
+    z-index: 0;
+}
+
+#letters.shown {
+    z-index: 20;
+    opacity: 1;
+    -webkit-transform: scale(1, 1);
+}
+
+.letter {
+    font-weight: bold;
+    font-family: DinBlack;
+    position: absolute;
+}
+
+.letterGuessed {
+    color: transparent;
+    /*text-shadow: -1px -1px 2px #888, 1px 1px 2px #fff;*/
+    text-shadow: none;
+    -webkit-text-stroke: 2px rgba(128, 128, 128, .5);
+}
+
+.letterPressed {
+    color: #b8242a;
+    /*text-shadow: -1px -1px 2px #888, 1px 1px 2px #fff;*/
+    text-shadow: -1px -1px 3px #ddd, 1px 1px 3px #555;
+}
+
+.letterNotGuessed {
+    color: black;
+    text-shadow: -1px -1px 3px #ddd, 1px 1px 3px #555;
+}
+
+#answer {
+    width: 95%;
+    height: 150px;
+    position: absolute;
+    top: 0%;
+    left: 50%;
+    -webkit-transform: translateX(-50%);
+    display: -webkit-box;
+    -webkit-box-align: center;
+    -webkit-box-pack: center;
+    -webkit-box-lines: multiple;
+    -webkit-box-orient: horizontal;
+    opacity: 0;
+    -webkit-transition: opacity 2s ease-in;
+    z-index: 0;
+}
+
+#answer.shown {
+    opacity: 1;
+    z-index: 20;
+}
+
+.answer_word {
+    display: -webkit-inline-box;
+    padding-right: 1.5em;
+    margin: auto;
+    cursor: text;
+}
+
+.answer_word:last-child {
+    padding-right: 0em;
+}
+
+.answerText_container {
+    padding: 5px;
+    display: table-cell;
+}
+
+.answerText {
+    color: white;
+    font-size: 40pt;
+    text-shadow: 1px 1px 2px #888;
+    font-family: DinBlack;
+    text-align: center;
+    border-bottom: 3px ridge #aeaeae;
+}
+
+.answerPunct {
+    color: white;
+    font-size: 40pt;
+    text-shadow: 1px 1px 2px #888;
+    font-family: DinBlack;
+}
+
+.hbox .button {
+    margin-right: 5px;
+}
+
+.hbox .button:last-child {
+    margin-right: 0px;
+}
+
+.vbox .button {
+    margin-bottom: 5px;
+}
+
+.vbox .button:last-child {
+    margin-bottom: 0px;
+}
+
+@-webkit-keyframes move-horiz {
+  0% {
+    left: 0px;
+    -webkit-transform: skewX(0deg);
+  }
+  50% {
+    -webkit-transform: skewX(1deg);
+    left: 5px;
+  }
+  75% {
+    -webkit-transform: skewX(.5deg);
+    left: 2px;
+  }
+  100% {
+    -webkit-transform: skewX(-.75deg);
+    left: -3px;
+  }
+}
+
+@-webkit-keyframes move-vert {
+  0% {
+    top: 0px;
+  }
+  50% {
+    top: 5px;
+  }
+  100% {
+    top: -5px;
+  }
+}
+
+
+@-webkit-keyframes shown-dialog {
+    from {
+        top: 100%;
+        -webkit-transform: translate(-50%, 0%);
+    }
+    to {
+        top: 50%;
+        -webkit-transform: translate(-50%, -50%);
+    }
+}
+
+.dialog {
+    position: absolute;
+    left: 50%;
+    top: 100%;
+    -webkit-transform-origin: 50% 70px;
+    -webkit-transform: translate(-50%, 100%);
+    -webkit-transition: top 2s ease-in-out, -webkit-transform 2s ease-in-out;
+    z-index: 25;
+}
+
+.dialog.shown {
+    top: 50%;
+    -webkit-transform: translate(-50%, -50%);
+}
+
+.dialog .inner {
+    border-width: 145px 95px 35px 75px;
+    -webkit-border-image: url("../images/sheet2.png") 145 95 35 75 stretch stretch;
+    position: relative;
+    top: 0px;
+    left: 0px;
+}
+
+.dialog.shown .inner {
+    -webkit-animation: move-horiz 2.5s infinite alternate ease-in-out, move-vert 1.6s infinite alternate ease-in-out;
+}
+
+.dialog .title {
+    color: black;
+    font-size: 1.5em;
+    font-family: DinBold;
+    text-align: center;
+    padding: 0.7em 0 0.6em 0;
+}
+
+.dialog .text {
+    color: black;
+    font-size: 15pt;
+    font-family: DinMedium;
+    text-align: center;
+    padding: 10px 1em;
+    text-shadow: 1px 1px 2px #888;
+}
+
+.dialog .hbox {
+    margin-top: 20px;
+    -webkit-box-pack: center;
+}
+
+.button {
+    color: black;
+    font-size: 15pt;
+    font-family: DinBold;
+    text-align: center;
+    padding: 10px 1em;
+    text-shadow: 1px 1px 2px #888;
+    text-transform: uppercase;
+    border: 1px black solid;
+}
+
+.button.pressed {
+    color: #b8242a;
+    border: 1px #b8242a solid;
+}
+
+div.pressed {
+    color: #b8242a;
+}
+
+.isDialogUp #play_button.pressed,
+.isDialogUp #newGame_button.pressed,
+.isDialogUp #giveUp_button.pressed {
+    color: black;
+}
+
+.wing1, .wing2, .wing3, .wing4 {
+    background-repeat: no-repeat;
+    position: absolute;
+}
+
+.wing1 {
+    background-image: url("../images/wing1.png");
+    width: 71px;
+    height: 24px;
+    top: -110px;
+    left: -75px;
+    -webkit-transform-origin: 100% 50%;
+}
+
+.wing2 {
+    background-image: url("../images/wing2.png");
+    width: 71px;
+    height: 24px;
+    top: -110px;
+    left: -15px;
+    -webkit-transform-origin: 0% 50%;
+}
+
+.wing3 {
+    background-image: url("../images/wing3.png");
+    width: 21px;
+    height: 71px;
+    top: -145px;
+    right: -63px;
+    -webkit-transform-origin: 0% 100%;
+}
+
+.wing4 {
+    background-image: url("../images/wing4.png");
+    width: 50px;
+    height: 52px;
+    top: -130px;
+    right: -90px;
+    -webkit-transform-origin: 0% 100%;
+}
+
+@-webkit-keyframes wing-flap-cw {
+    from {
+        -webkit-transform: rotate(0deg);
+    }
+    to {
+        -webkit-transform: rotate(30deg);
+    }
+}
+
+@-webkit-keyframes wing-flap-ccw {
+    from {
+        -webkit-transform: rotate(0deg);
+    }
+    to {
+        -webkit-transform: rotate(-30deg);
+    }
+}
+
+.dialog.shown .wing1, .dialog.shown .wing3 {
+    -webkit-animation: wing-flap-cw .2s infinite alternate;
+}
+
+.dialog.shown .wing2, .dialog.shown .wing4 {
+    -webkit-animation: wing-flap-ccw .2s infinite alternate;
+}
+
+#newGame_cancel {
+    margin-top: 5px;
+}
+
+.newGame_type {
+    background-color: transparent;
+    color: black;
+    font-size: 1.5em;
+    font-family: DinMedium;
+    text-align: center;
+    padding: 0.5em;
+    text-transform: uppercase;
+}

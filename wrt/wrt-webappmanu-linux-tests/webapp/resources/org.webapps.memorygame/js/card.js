@@ -1,0 +1,1 @@
+Card=function(){this.cardId="",this.cardFrontId="",this.cardGraphics="",this.cardType=-1,this.found=!1};

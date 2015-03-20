@@ -1,0 +1,148 @@
+/* start group navigator*/
+
+#nav{
+  position: absolute;
+  bottom: 0px;
+  height: 50px;
+  color: #fff;
+  font-size: 30px;
+  right: -160px;
+  -webkit-transform: translate3d(0,0,0);
+}
+#nav .nav-text{
+  font-size:30px;
+  -webkit-transform:rotate(-10deg) translateX(-15px);
+  font-family: 'Handlee', cursive;
+  font-weight: light;
+  text-shadow:2px 2px 1px rgba(0,0,0,0.5);
+  width: 135px;
+  cursor: pointer;
+  text-align: center;
+}
+#nav .nav-page{
+  padding-left:7px;
+}
+#nav .hide{
+  opacity: 0;
+  pointer-events:none;
+}
+#nav.hide{
+  opacity: 0;
+  pointer-events:none;
+}
+#nav .nav-arrow{
+  display: inline-block;
+  background:url(../images/nav-arrow.png) no-repeat 50% 50%;
+  width:85px;
+  height:55px;
+  -webkit-transform: rotate(10deg);
+  position: absolute;
+  top: -65px;
+  left: -8px;
+  z-index: 1;
+  cursor: pointer;
+}
+#nav .nav-selector-container{
+  -webkit-transform:translate3d(0,10px,0);
+  position: absolute;
+  z-index: 10;
+  background:url(../images/popever-select.png) no-repeat 50% 50%;
+  width:0;
+  height:0;
+  top:0;
+  left:0;
+  -webkit-transition:-webkit-transform 500ms ease;
+}
+#nav.active{
+  z-index: 20;
+}
+#nav.active .nav-selector-container{
+  -webkit-transform:translate3d(0,0,0);
+  width:340px;
+  height:312px;
+  top:-312px;
+  left:-215px;
+}
+
+#nav .nav-selector,
+#nav .nav-button{
+  opacity: 0;
+  pointer-events:none;
+}
+#nav.active .nav-selector{
+  display: -webkit-box;
+  opacity: 1;
+  pointer-events:auto;
+}
+#nav.active .nav-button{
+  opacity: 1;
+  pointer-events: auto;
+}
+#nav.hide{
+  opacity: 0;
+  pointer-events:none;
+}
+
+.nav-selector{
+  
+  top: 40%;
+  font-size:30px;
+  height:20%;
+  position: relative;
+  width: 240px;
+  margin: 0 auto;
+  left:-15px;
+}
+.nav-selector .single,
+.nav-selector .ten,
+.nav-selector .hundred{
+  -webkit-box-flex:1;
+  text-align: center;
+}
+.nav-selector select{
+  border:1px solid rgba(0,0,0,0.6);
+  opacity: 0.8;
+  padding: 0.5em;
+  font-size: 20px;
+  line-height: 100%;
+  width: 90%;
+  background: transparent;
+  background: #fff;
+  background: -webkit-gradient(linear, left top, left bottom, from(#fff), to(#ccc));
+  -webkit-appearance: none;
+  /*-webkit-box-shadow: 1px 1px 1px #fff;*/
+  border-radius: 0.5em;
+  outline: none;
+  text-align: center;
+}
+.nav-selector select[disabled]{
+  border:1px solid rgba(0,0,0,0.5);
+  opacity: 0.3;
+}
+.nav-button{
+  text-align: center;
+  position: relative;
+  bottom: -130px;
+  left: -15px;
+}
+.nav-button button{
+  background:url(../images/nav-button.png) no-repeat 50% 50%;
+  border:0 none;
+  width:75px;
+  height:55px;
+
+}
+.nav-button button span{
+  display: none;
+}
+
+/*end group navigator*/
+
+@media screen and (min-width:1281px){
+      #nav {
+        right :-170px;
+      }
+}
+
+
+
