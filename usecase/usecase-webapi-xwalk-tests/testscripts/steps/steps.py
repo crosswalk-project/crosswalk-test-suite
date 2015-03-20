@@ -43,6 +43,26 @@ def check_type_by_key(context, key, expecttype):
     else:
         assert False
 
+@step(u'I save div "{key}" as "{pic_name}" with width "{width}" and height "{height}"')
+def save_div(context, key, pic_name, width, height):
+    assert context.app.save_div_as_picture(key, pic_name, width, height)
+
+@step(u'I save div "{key}" as "{pic_name}"')
+def save_div(context, key, pic_name):
+    assert context.app.save_div_as_picture(key, pic_name, width=0, height=0)
+
+@step(u'pic "{pic1}" and pic "{pic2}" should be more than "{similarity}" similar')
+def check_picture(context, pic1, pic2, similarity):
+    assert context.app.check_pic_same(pic1, pic2, similarity)
+
+@step(u'pic "{pic1}" and pic "{pic2}" should be less than "{similarity}" similar')
+def check_picture(context, pic1, pic2, similarity):
+    assert context.app.check_pic_different(pic1, pic2, similarity)
+
+@step(u'I remove all the pictures')
+def remove_pic(context):
+    assert context.app.remove_picture()
+
 @step(u'I save "{p_name}" from "{key}" area')
 def check_type_by_key(context, p_name, key):
     assert context.app.save_content(p_name, key)
