@@ -1,4 +1,5 @@
-/*
+<!DOCTYPE html>
+<!--
 Copyright (c) 2015 Intel Corporation.
 
 Redistribution and use in source and binary forms, with or without modification,
@@ -25,21 +26,37 @@ NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE,
 EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
 Authors:
-        Xu, Kang <kangx.xu@intel.com>
+        Li, Hao <haox.li@intel.com>
 
-*/
+-->
 
-var speechGrammarList = window.webkitSpeechGrammarList || window.SpeechGrammarList;
+<meta charset="utf-8">
+<title>Web Speech API Test: SpeechRecognitionEvent results attribute</title>
+<link rel="author" title="Intel" href="http://www.intel.com">
+<link rel="help" href="http://dvcs.w3.org/hg/speech-api/raw-file/tip/speechapi.html">
+<meta name='flags' content='interact'>
+<meta name="timeout" content="long">
+<meta name="assert" content="Test if the results contains the array of all current recognition results for this session">
+<script src="../resources/testharness.js"></script>
+<script src="../resources/testharnessreport.js"></script>
+<script src="support/webspeech_common.js"></script>
+<p>Speak 3 words in 1 second</p>
+<div id="log"></div>
+<script>
 
-var speechGrammar = window.webkitSpeechGrammar || window.SpeechGrammar;
+async_test(function(t) {
+  var speechReco = new speechRecognition();
+  speechReco.onresult = t.step_func(function (evt) {
+    assert_true("results" in evt, "results attribute exist in SpeechRecognitionEvent");
+    assert_true(evt.results.length >= evt.resultIndex, "The length of the results array must not be less than resultIndex");
+    speechReco.stop();
+    t.done();
+  });
+  speechReco.onerror = t.step_func(function (evt) {
+    assert_unreached("Error:" + evt.error);
+    t.done();
+  });
+  speechReco.start();
+}, document.getElementsByName("assert")[0].content);
 
-var speechRecognition = window.webkitSpeechRecognition || window.SpeechRecognition;
-
-var speechRecognitionError = window.webkitSpeechRecognitionError || window.SpeechRecognitionError;
-
-var speechRecognitionEvent = window.webkitSpeechRecognitionEvent || window.SpeechRecognitionEvent;
-
-var speechSyn = window.webkitSpeechSynthesis || window.speechSynthesis;
-
-var speechSynthesisEvent = window.webkitSpeechSynthesisEvent || window.SpeechSynthesisEvent;
-
+</script>

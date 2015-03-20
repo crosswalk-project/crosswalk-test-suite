@@ -3,44 +3,369 @@
 <test_definition>
   <suite name="webapi-webspeech-w3c-tests" category="W3C/HTML5 APIs">
     <set name="WebSpeech" type="js">
+      <testcase component="W3C_HTML5 APIs/Media/Web Speech API" execution_type="auto" id="SpeechSynthesis_boundary" purpose="Test a speech job will generate the correct boundary events">
+        <description>
+          <test_script_entry>/opt/webapi-webspeech-w3c-tests/webspeech/blink/speech-synthesis-boundary-events.html</test_script_entry>
+        </description>
+      </testcase>
+      <testcase component="W3C_HTML5 APIs/Media/Web Speech API" execution_type="auto" id="SpeechSynthesis_cancel" purpose="Test that cancelling a speech job fires the right events">
+        <description>
+          <test_script_entry>/opt/webapi-webspeech-w3c-tests/webspeech/blink/speech-synthesis-cancel.html</test_script_entry>
+        </description>
+      </testcase>
+      <testcase component="W3C_HTML5 APIs/Media/Web Speech API" execution_type="auto" id="SpeechSynthesis_pausing_resuming" purpose="Test that pausing/resuming speech jobs works as expected">
+        <description>
+          <test_script_entry>/opt/webapi-webspeech-w3c-tests/webspeech/blink/speech-synthesis-pause-resume.html</test_script_entry>
+        </description>
+      </testcase>
+      <testcase component="W3C_HTML5 APIs/Media/Web Speech API" execution_type="auto" id="SpeechSynthesis_TypeError_exception" purpose="Test that passing an argument other than a SpeechSynthesisUtterance to speechSynthesis.speak throws a TypeError exception">
+        <description>
+          <test_script_entry>/opt/webapi-webspeech-w3c-tests/webspeech/blink/speech-synthesis-speak-invalid-argument-throws.html</test_script_entry>
+        </description>
+      </testcase>
+      <testcase component="W3C_HTML5 APIs/Media/Web Speech API" execution_type="auto" id="SpeechSynthesis_basic_mechanisms" purpose="Test that the basic mechanisms of speaking text work, including sending the job and receving the callback">
+        <description>
+          <test_script_entry>/opt/webapi-webspeech-w3c-tests/webspeech/blink/speech-synthesis-speak.html</test_script_entry>
+        </description>
+      </testcase>
+      <testcase component="W3C_HTML5 APIs/Media/Web Speech API" execution_type="auto" id="SpeechSynthesisUtterance_voice" purpose="Test that can get synthesizer voices from SpeechSynthesisUtterance">
+        <description>
+          <test_script_entry>/opt/webapi-webspeech-w3c-tests/webspeech/blink/speech-synthesis-utterance-uses-voice.html</test_script_entry>
+        </description>
+      </testcase>
+      <testcase component="W3C_HTML5 APIs/Media/Web Speech API" execution_type="auto" id="SpeechSynthesis_voice" purpose="Test that can get synthesizer voices from SpeechSynthesis">
+        <description>
+          <test_script_entry>/opt/webapi-webspeech-w3c-tests/webspeech/blink/speech-synthesis-voices.html</test_script_entry>
+        </description>
+      </testcase>
+      <testcase component="W3C_HTML5 APIs/Media/Web Speech API" execution_type="auto" id="SpeechGrammar_existence" purpose="Test SpeechGrammar existence">
+        <description>
+          <test_script_entry>/opt/webapi-webspeech-w3c-tests/webspeech/blink/speechgrammar-basics.html?total_num=35&amp;amp;locator_key=id&amp;amp;value=1</test_script_entry>
+        </description>
+      </testcase>
+      <testcase component="W3C_HTML5 APIs/Media/Web Speech API" execution_type="auto" id="SpeechGrammarList_existence" purpose="Test SpeechGrammarList existence">
+        <description>
+          <test_script_entry>/opt/webapi-webspeech-w3c-tests/webspeech/blink/speechgrammar-basics.html?total_num=35&amp;amp;locator_key=id&amp;amp;value=3</test_script_entry>
+        </description>
+      </testcase>
+      <testcase component="W3C_HTML5 APIs/Media/Web Speech API" execution_type="auto" id="SpeechGrammar_value" purpose="Test new SpeechGrammar is not null">
+        <description>
+          <test_script_entry>/opt/webapi-webspeech-w3c-tests/webspeech/blink/speechgrammar-basics.html?total_num=35&amp;amp;locator_key=id&amp;amp;value=5</test_script_entry>
+        </description>
+      </testcase>
+      <testcase component="W3C_HTML5 APIs/Media/Web Speech API" execution_type="auto" id="SpeechGrammar_default_weight" purpose="Test default weight of SpeechGrammar">
+        <description>
+          <test_script_entry>/opt/webapi-webspeech-w3c-tests/webspeech/blink/speechgrammar-basics.html?total_num=35&amp;amp;locator_key=id&amp;amp;value=6</test_script_entry>
+        </description>
+      </testcase>
+      <testcase component="W3C_HTML5 APIs/Media/Web Speech API" execution_type="auto" id="SpeechGrammar_default_src" purpose="Test default src of SpeechGrammar">
+        <description>
+          <test_script_entry>/opt/webapi-webspeech-w3c-tests/webspeech/blink/speechgrammar-basics.html?total_num=35&amp;amp;locator_key=id&amp;amp;value=7</test_script_entry>
+        </description>
+      </testcase>
+      <testcase component="W3C_HTML5 APIs/Media/Web Speech API" execution_type="auto" id="SpeechGrammar_setting_weight" purpose="Test setting the weight attribute of SpeechGrammar">
+        <description>
+          <test_script_entry>/opt/webapi-webspeech-w3c-tests/webspeech/blink/speechgrammar-basics.html?total_num=35&amp;amp;locator_key=id&amp;amp;value=8</test_script_entry>
+        </description>
+      </testcase>
+      <testcase component="W3C_HTML5 APIs/Media/Web Speech API" execution_type="auto" id="SpeechGrammar_setting_src_1" purpose="Test setting the src attribute of SpeechGrammar 1">
+        <description>
+          <test_script_entry>/opt/webapi-webspeech-w3c-tests/webspeech/blink/speechgrammar-basics.html?total_num=35&amp;amp;locator_key=id&amp;amp;value=9</test_script_entry>
+        </description>
+      </testcase>
+      <testcase component="W3C_HTML5 APIs/Media/Web Speech API" execution_type="auto" id="SpeechGrammar_setting_src_2" purpose="Test setting the src attribute of SpeechGrammar 2">
+        <description>
+          <test_script_entry>/opt/webapi-webspeech-w3c-tests/webspeech/blink/speechgrammar-basics.html?total_num=35&amp;amp;locator_key=id&amp;amp;value=10</test_script_entry>
+        </description>
+      </testcase>
+      <testcase component="W3C_HTML5 APIs/Media/Web Speech API" execution_type="auto" id="SpeechGrammar_setting_src_3" purpose="Test setting the src attribute of SpeechGrammar 3">
+        <description>
+          <test_script_entry>/opt/webapi-webspeech-w3c-tests/webspeech/blink/speechgrammar-basics.html?total_num=35&amp;amp;locator_key=id&amp;amp;value=11</test_script_entry>
+        </description>
+      </testcase>
+      <testcase component="W3C_HTML5 APIs/Media/Web Speech API" execution_type="auto" id="SpeechGrammarList_value" purpose="Test new SpeechGrammarList is not null">
+        <description>
+          <test_script_entry>/opt/webapi-webspeech-w3c-tests/webspeech/blink/speechgrammar-basics.html?total_num=35&amp;amp;locator_key=id&amp;amp;value=12</test_script_entry>
+        </description>
+      </testcase>
+      <testcase component="W3C_HTML5 APIs/Media/Web Speech API" execution_type="auto" id="SpeechGrammarList_default_length" purpose="Test default length of SpeechGrammarList">
+        <description>
+          <test_script_entry>/opt/webapi-webspeech-w3c-tests/webspeech/blink/speechgrammar-basics.html?total_num=35&amp;amp;locator_key=id&amp;amp;value=13</test_script_entry>
+        </description>
+      </testcase>
+      <testcase component="W3C_HTML5 APIs/Media/Web Speech API" execution_type="auto" id="SpeechGrammarList_item_null_1" purpose="Test item(0) of SpeechGrammarList is null">
+        <description>
+          <test_script_entry>/opt/webapi-webspeech-w3c-tests/webspeech/blink/speechgrammar-basics.html?total_num=35&amp;amp;locator_key=id&amp;amp;value=14</test_script_entry>
+        </description>
+      </testcase>
+      <testcase component="W3C_HTML5 APIs/Media/Web Speech API" execution_type="auto" id="SpeechGrammarList_item_undefined_1" purpose="Test SpeechGrammarList[0] is undefined">
+        <description>
+          <test_script_entry>/opt/webapi-webspeech-w3c-tests/webspeech/blink/speechgrammar-basics.html?total_num=35&amp;amp;locator_key=id&amp;amp;value=15</test_script_entry>
+        </description>
+      </testcase>
+      <testcase component="W3C_HTML5 APIs/Media/Web Speech API" execution_type="auto" id="SpeechGrammarList_item_null_2" purpose="Test item(-1) of SpeechGrammarList is null">
+        <description>
+          <test_script_entry>/opt/webapi-webspeech-w3c-tests/webspeech/blink/speechgrammar-basics.html?total_num=35&amp;amp;locator_key=id&amp;amp;value=16</test_script_entry>
+        </description>
+      </testcase>
+      <testcase component="W3C_HTML5 APIs/Media/Web Speech API" execution_type="auto" id="SpeechGrammarList_item_undefined_2" purpose="Test SpeechGrammarList[-1] is undefined">
+        <description>
+          <test_script_entry>/opt/webapi-webspeech-w3c-tests/webspeech/blink/speechgrammar-basics.html?total_num=35&amp;amp;locator_key=id&amp;amp;value=17</test_script_entry>
+        </description>
+      </testcase>
+      <testcase component="W3C_HTML5 APIs/Media/Web Speech API" execution_type="auto" id="SpeechGrammarList_addFromURI_length_1" purpose="Test the actual length attributes of SpeechGrammarList after adding one 1">
+        <description>
+          <test_script_entry>/opt/webapi-webspeech-w3c-tests/webspeech/blink/speechgrammar-basics.html?total_num=35&amp;amp;locator_key=id&amp;amp;value=18</test_script_entry>
+        </description>
+      </testcase>
+      <testcase component="W3C_HTML5 APIs/Media/Web Speech API" execution_type="auto" id="SpeechGrammarList_addFromURI_item_null_1" purpose="Test the actual item(1) of SpeechGrammarList is null after adding one">
+        <description>
+          <test_script_entry>/opt/webapi-webspeech-w3c-tests/webspeech/blink/speechgrammar-basics.html?total_num=35&amp;amp;locator_key=id&amp;amp;value=19</test_script_entry>
+        </description>
+      </testcase>
+      <testcase component="W3C_HTML5 APIs/Media/Web Speech API" execution_type="auto" id="SpeechGrammarList_addFromURI_item_undefined_1" purpose="Test the actual SpeechGrammarList[1] is undefined after adding one">
+        <description>
+          <test_script_entry>/opt/webapi-webspeech-w3c-tests/webspeech/blink/speechgrammar-basics.html?total_num=35&amp;amp;locator_key=id&amp;amp;value=20</test_script_entry>
+        </description>
+      </testcase>
+      <testcase component="W3C_HTML5 APIs/Media/Web Speech API" execution_type="auto" id="SpeechGrammarList_addFromURI_item_null_2" purpose="Test the actual item(-1) of SpeechGrammarList is null after adding one">
+        <description>
+          <test_script_entry>/opt/webapi-webspeech-w3c-tests/webspeech/blink/speechgrammar-basics.html?total_num=35&amp;amp;locator_key=id&amp;amp;value=21</test_script_entry>
+        </description>
+      </testcase>
+      <testcase component="W3C_HTML5 APIs/Media/Web Speech API" execution_type="auto" id="SpeechGrammarList_addFromURI_item_undefined_2" purpose="Test the actual SpeechGrammarList[-1] is undefined after adding one">
+        <description>
+          <test_script_entry>/opt/webapi-webspeech-w3c-tests/webspeech/blink/speechgrammar-basics.html?total_num=35&amp;amp;locator_key=id&amp;amp;value=22</test_script_entry>
+        </description>
+      </testcase>
+      <testcase component="W3C_HTML5 APIs/Media/Web Speech API" execution_type="auto" id="SpeechGrammarList_addFromURI_item_equals_1" purpose="Test the item(0) of SpeechGrammarList equals SpeechGrammarList[0]">
+        <description>
+          <test_script_entry>/opt/webapi-webspeech-w3c-tests/webspeech/blink/speechgrammar-basics.html?total_num=35&amp;amp;locator_key=id&amp;amp;value=23</test_script_entry>
+        </description>
+      </testcase>
+      <testcase component="W3C_HTML5 APIs/Media/Web Speech API" execution_type="auto" id="SpeechGrammarList_addFromURI_item_src_1" purpose="Test the src attribute of the actual item(0) of SpeechGrammarList">
+        <description>
+          <test_script_entry>/opt/webapi-webspeech-w3c-tests/webspeech/blink/speechgrammar-basics.html?total_num=35&amp;amp;locator_key=id&amp;amp;value=24</test_script_entry>
+        </description>
+      </testcase>
+      <testcase component="W3C_HTML5 APIs/Media/Web Speech API" execution_type="auto" id="SpeechGrammarList_addFromURI_item_weight_1" purpose="Test the weight attribute of the actual item(0) of SpeechGrammarList">
+        <description>
+          <test_script_entry>/opt/webapi-webspeech-w3c-tests/webspeech/blink/speechgrammar-basics.html?total_num=35&amp;amp;locator_key=id&amp;amp;value=25</test_script_entry>
+        </description>
+      </testcase>
+      <testcase component="W3C_HTML5 APIs/Media/Web Speech API" execution_type="auto" id="SpeechGrammarList_addFromURI_length_2" purpose="Test the actual length attributes of SpeechGrammarList after adding one 2">
+        <description>
+          <test_script_entry>/opt/webapi-webspeech-w3c-tests/webspeech/blink/speechgrammar-basics.html?total_num=35&amp;amp;locator_key=id&amp;amp;value=26</test_script_entry>
+        </description>
+      </testcase>
+      <testcase component="W3C_HTML5 APIs/Media/Web Speech API" execution_type="auto" id="SpeechGrammarList_addFromURI_item_equals_2" purpose="Test the item(1) of SpeechGrammarList equals SpeechGrammarList[1]">
+        <description>
+          <test_script_entry>/opt/webapi-webspeech-w3c-tests/webspeech/blink/speechgrammar-basics.html?total_num=35&amp;amp;locator_key=id&amp;amp;value=27</test_script_entry>
+        </description>
+      </testcase>
+      <testcase component="W3C_HTML5 APIs/Media/Web Speech API" execution_type="auto" id="SpeechGrammarList_addFromURI_item_src_2" purpose="Test the src attribute of the actual item(1) of SpeechGrammarList">
+        <description>
+          <test_script_entry>/opt/webapi-webspeech-w3c-tests/webspeech/blink/speechgrammar-basics.html?total_num=35&amp;amp;locator_key=id&amp;amp;value=28</test_script_entry>
+        </description>
+      </testcase>
+      <testcase component="W3C_HTML5 APIs/Media/Web Speech API" execution_type="auto" id="SpeechGrammarList_addFromURI_item_weight_2" purpose="Test the weight attribute of the actual item(1) of SpeechGrammarList">
+        <description>
+          <test_script_entry>/opt/webapi-webspeech-w3c-tests/webspeech/blink/speechgrammar-basics.html?total_num=35&amp;amp;locator_key=id&amp;amp;value=29</test_script_entry>
+        </description>
+      </testcase>
+      <testcase component="W3C_HTML5 APIs/Media/Web Speech API" execution_type="auto" id="SpeechGrammarList_addFromURI_length_3" purpose="Test the actual length attributes of SpeechGrammarList after adding one 3">
+        <description>
+          <test_script_entry>/opt/webapi-webspeech-w3c-tests/webspeech/blink/speechgrammar-basics.html?total_num=35&amp;amp;locator_key=id&amp;amp;value=30</test_script_entry>
+        </description>
+      </testcase>
+      <testcase component="W3C_HTML5 APIs/Media/Web Speech API" execution_type="auto" id="SpeechGrammarList_addFromURI_item_equals_3" purpose="Test the item(2) of SpeechGrammarList equals SpeechGrammarList[2]">
+        <description>
+          <test_script_entry>/opt/webapi-webspeech-w3c-tests/webspeech/blink/speechgrammar-basics.html?total_num=35&amp;amp;locator_key=id&amp;amp;value=31</test_script_entry>
+        </description>
+      </testcase>
+      <testcase component="W3C_HTML5 APIs/Media/Web Speech API" execution_type="auto" id="SpeechGrammarList_addFromURI_item_src_3" purpose="Test the src attribute of the actual item(2) of SpeechGrammarList">
+        <description>
+          <test_script_entry>/opt/webapi-webspeech-w3c-tests/webspeech/blink/speechgrammar-basics.html?total_num=35&amp;amp;locator_key=id&amp;amp;value=32</test_script_entry>
+        </description>
+      </testcase>
+      <testcase component="W3C_HTML5 APIs/Media/Web Speech API" execution_type="auto" id="SpeechGrammarList_addFromURI_item_weight_3" purpose="Test the weight attribute of the actual item(2) of SpeechGrammarList">
+        <description>
+          <test_script_entry>/opt/webapi-webspeech-w3c-tests/webspeech/blink/speechgrammar-basics.html?total_num=35&amp;amp;locator_key=id&amp;amp;value=33</test_script_entry>
+        </description>
+      </testcase>
+      <testcase component="W3C_HTML5 APIs/Media/Web Speech API" execution_type="auto" id="SpeechGrammarList_addFromURI_item_src_4" purpose="Test the src attribute of the SpeechGrammarList[2]">
+        <description>
+          <test_script_entry>/opt/webapi-webspeech-w3c-tests/webspeech/blink/speechgrammar-basics.html?total_num=35&amp;amp;locator_key=id&amp;amp;value=34</test_script_entry>
+        </description>
+      </testcase>
+      <testcase component="W3C_HTML5 APIs/Media/Web Speech API" execution_type="auto" id="SpeechGrammarList_addFromURI_item_weight_4" purpose="Test the weight attribute of the SpeechGrammarList[2]">
+        <description>
+          <test_script_entry>/opt/webapi-webspeech-w3c-tests/webspeech/blink/speechgrammar-basics.html?total_num=35&amp;amp;locator_key=id&amp;amp;value=35</test_script_entry>
+        </description>
+      </testcase>
+      <testcase component="W3C_HTML5 APIs/Media/Web Speech API" execution_type="auto" id="SpeechRecognition_constructor_existence" purpose="Test SpeechRecognition existence">
+        <description>
+          <test_script_entry>/opt/webapi-webspeech-w3c-tests/webspeech/blink/speechrecognition-basics.html?total_num=30&amp;amp;locator_key=id&amp;amp;value=1</test_script_entry>
+        </description>
+      </testcase>
+      <testcase component="W3C_HTML5 APIs/Media/Web Speech API" execution_type="auto" id="SpeechRecognition_value" purpose="Test SpeechRecognition is not null">
+        <description>
+          <test_script_entry>/opt/webapi-webspeech-w3c-tests/webspeech/blink/speechrecognition-basics.html?total_num=30&amp;amp;locator_key=id&amp;amp;value=2</test_script_entry>
+        </description>
+      </testcase>
+      <testcase component="W3C_HTML5 APIs/Media/Web Speech API" execution_type="auto" id="SpeechRecognition_grammars_existence" purpose="Test grammars existence">
+        <description>
+          <test_script_entry>/opt/webapi-webspeech-w3c-tests/webspeech/blink/speechrecognition-basics.html?total_num=30&amp;amp;locator_key=id&amp;amp;value=4</test_script_entry>
+        </description>
+      </testcase>
+      <testcase component="W3C_HTML5 APIs/Media/Web Speech API" execution_type="auto" id="SpeechRecognition_grammars_default_value" purpose="Test grammars is not null">
+        <description>
+          <test_script_entry>/opt/webapi-webspeech-w3c-tests/webspeech/blink/speechrecognition-basics.html?total_num=30&amp;amp;locator_key=id&amp;amp;value=5</test_script_entry>
+        </description>
+      </testcase>
+      <testcase component="W3C_HTML5 APIs/Media/Web Speech API" execution_type="auto" id="SpeechRecognition_grammars_length" purpose="Test length of grammars">
+        <description>
+          <test_script_entry>/opt/webapi-webspeech-w3c-tests/webspeech/blink/speechrecognition-basics.html?total_num=30&amp;amp;locator_key=id&amp;amp;value=6</test_script_entry>
+        </description>
+      </testcase>
+      <testcase component="W3C_HTML5 APIs/Media/Web Speech API" execution_type="auto" id="SpeechRecognition_lang_existence" purpose="Test lang existence">
+        <description>
+          <test_script_entry>/opt/webapi-webspeech-w3c-tests/webspeech/blink/speechrecognition-basics.html?total_num=30&amp;amp;locator_key=id&amp;amp;value=7</test_script_entry>
+        </description>
+      </testcase>
+      <testcase component="W3C_HTML5 APIs/Media/Web Speech API" execution_type="auto" id="SpeechRecognition_continuous_existence" purpose="Test continuous existence">
+        <description>
+          <test_script_entry>/opt/webapi-webspeech-w3c-tests/webspeech/blink/speechrecognition-basics.html?total_num=30&amp;amp;locator_key=id&amp;amp;value=8</test_script_entry>
+        </description>
+      </testcase>
+      <testcase component="W3C_HTML5 APIs/Media/Web Speech API" execution_type="auto" id="SpeechRecognition_interimResults_existence" purpose="Test interimResults existence">
+        <description>
+          <test_script_entry>/opt/webapi-webspeech-w3c-tests/webspeech/blink/speechrecognition-basics.html?total_num=30&amp;amp;locator_key=id&amp;amp;value=9</test_script_entry>
+        </description>
+      </testcase>
+      <testcase component="W3C_HTML5 APIs/Media/Web Speech API" execution_type="auto" id="SpeechRecognition_maxAlternatives_existence" purpose="Test maxAlternatives existence">
+        <description>
+          <test_script_entry>/opt/webapi-webspeech-w3c-tests/webspeech/blink/speechrecognition-basics.html?total_num=30&amp;amp;locator_key=id&amp;amp;value=10</test_script_entry>
+        </description>
+      </testcase>
+      <testcase component="W3C_HTML5 APIs/Media/Web Speech API" execution_type="auto" id="SpeechRecognition_start_existence" purpose="Test start existence">
+        <description>
+          <test_script_entry>/opt/webapi-webspeech-w3c-tests/webspeech/blink/speechrecognition-basics.html?total_num=30&amp;amp;locator_key=id&amp;amp;value=11</test_script_entry>
+        </description>
+      </testcase>
+      <testcase component="W3C_HTML5 APIs/Media/Web Speech API" execution_type="auto" id="SpeechRecognition_stop_existence" purpose="Test stop existence">
+        <description>
+          <test_script_entry>/opt/webapi-webspeech-w3c-tests/webspeech/blink/speechrecognition-basics.html?total_num=30&amp;amp;locator_key=id&amp;amp;value=12</test_script_entry>
+        </description>
+      </testcase>
+      <testcase component="W3C_HTML5 APIs/Media/Web Speech API" execution_type="auto" id="SpeechRecognition_abort_existence" purpose="Test abort existence">
+        <description>
+          <test_script_entry>/opt/webapi-webspeech-w3c-tests/webspeech/blink/speechrecognition-basics.html?total_num=30&amp;amp;locator_key=id&amp;amp;value=13</test_script_entry>
+        </description>
+      </testcase>
+      <testcase component="W3C_HTML5 APIs/Media/Web Speech API" execution_type="auto" id="SpeechRecognition_onaudiostart_existence" purpose="Test onaudiostart existence">
+        <description>
+          <test_script_entry>/opt/webapi-webspeech-w3c-tests/webspeech/blink/speechrecognition-basics.html?total_num=30&amp;amp;locator_key=id&amp;amp;value=14</test_script_entry>
+        </description>
+      </testcase>
+      <testcase component="W3C_HTML5 APIs/Media/Web Speech API" execution_type="auto" id="SpeechRecognition_onsoundstart_existence" purpose="Test onsoundstart existence">
+        <description>
+          <test_script_entry>/opt/webapi-webspeech-w3c-tests/webspeech/blink/speechrecognition-basics.html?total_num=30&amp;amp;locator_key=id&amp;amp;value=15</test_script_entry>
+        </description>
+      </testcase>
+      <testcase component="W3C_HTML5 APIs/Media/Web Speech API" execution_type="auto" id="SpeechRecognition_onspeechstart_existence" purpose="Test onspeechstart existence">
+        <description>
+          <test_script_entry>/opt/webapi-webspeech-w3c-tests/webspeech/blink/speechrecognition-basics.html?total_num=30&amp;amp;locator_key=id&amp;amp;value=16</test_script_entry>
+        </description>
+      </testcase>
+      <testcase component="W3C_HTML5 APIs/Media/Web Speech API" execution_type="auto" id="SpeechRecognition_onspeechend_existence" purpose="Test onspeechend existence">
+        <description>
+          <test_script_entry>/opt/webapi-webspeech-w3c-tests/webspeech/blink/speechrecognition-basics.html?total_num=30&amp;amp;locator_key=id&amp;amp;value=17</test_script_entry>
+        </description>
+      </testcase>
+      <testcase component="W3C_HTML5 APIs/Media/Web Speech API" execution_type="auto" id="SpeechRecognition_onsoundend_existence" purpose="Test onsoundend existence">
+        <description>
+          <test_script_entry>/opt/webapi-webspeech-w3c-tests/webspeech/blink/speechrecognition-basics.html?total_num=30&amp;amp;locator_key=id&amp;amp;value=18</test_script_entry>
+        </description>
+      </testcase>
+      <testcase component="W3C_HTML5 APIs/Media/Web Speech API" execution_type="auto" id="SpeechRecognition_onaudioend_existence" purpose="Test onaudioend existence">
+        <description>
+          <test_script_entry>/opt/webapi-webspeech-w3c-tests/webspeech/blink/speechrecognition-basics.html?total_num=30&amp;amp;locator_key=id&amp;amp;value=19</test_script_entry>
+        </description>
+      </testcase>
+      <testcase component="W3C_HTML5 APIs/Media/Web Speech API" execution_type="auto" id="SpeechRecognition_onresult_existence" purpose="Test onresult existence">
+        <description>
+          <test_script_entry>/opt/webapi-webspeech-w3c-tests/webspeech/blink/speechrecognition-basics.html?total_num=30&amp;amp;locator_key=id&amp;amp;value=20</test_script_entry>
+        </description>
+      </testcase>
+      <testcase component="W3C_HTML5 APIs/Media/Web Speech API" execution_type="auto" id="SpeechRecognition_onnomatch_existence" purpose="Test onnomatch existence">
+        <description>
+          <test_script_entry>/opt/webapi-webspeech-w3c-tests/webspeech/blink/speechrecognition-basics.html?total_num=30&amp;amp;locator_key=id&amp;amp;value=21</test_script_entry>
+        </description>
+      </testcase>
+      <testcase component="W3C_HTML5 APIs/Media/Web Speech API" execution_type="auto" id="SpeechRecognition_onerror_existence" purpose="Test onerror existence">
+        <description>
+          <test_script_entry>/opt/webapi-webspeech-w3c-tests/webspeech/blink/speechrecognition-basics.html?total_num=30&amp;amp;locator_key=id&amp;amp;value=22</test_script_entry>
+        </description>
+      </testcase>
+      <testcase component="W3C_HTML5 APIs/Media/Web Speech API" execution_type="auto" id="SpeechRecognition_onstart_existence" purpose="Test onstart existence">
+        <description>
+          <test_script_entry>/opt/webapi-webspeech-w3c-tests/webspeech/blink/speechrecognition-basics.html?total_num=30&amp;amp;locator_key=id&amp;amp;value=23</test_script_entry>
+        </description>
+      </testcase>
+      <testcase component="W3C_HTML5 APIs/Media/Web Speech API" execution_type="auto" id="SpeechRecognition_onend_existence" purpose="Test onend existence">
+        <description>
+          <test_script_entry>/opt/webapi-webspeech-w3c-tests/webspeech/blink/speechrecognition-basics.html?total_num=30&amp;amp;locator_key=id&amp;amp;value=24</test_script_entry>
+        </description>
+      </testcase>
+      <testcase component="W3C_HTML5 APIs/Media/Web Speech API" execution_type="auto" id="SpeechRecognition_addEventListener_existence" purpose="Test addEventListener existence">
+        <description>
+          <test_script_entry>/opt/webapi-webspeech-w3c-tests/webspeech/blink/speechrecognition-basics.html?total_num=30&amp;amp;locator_key=id&amp;amp;value=25</test_script_entry>
+        </description>
+      </testcase>
+      <testcase component="W3C_HTML5 APIs/Media/Web Speech API" execution_type="auto" id="SpeechRecognition_removeEventListener_existence" purpose="Test removeEventListener existence">
+        <description>
+          <test_script_entry>/opt/webapi-webspeech-w3c-tests/webspeech/blink/speechrecognition-basics.html?total_num=30&amp;amp;locator_key=id&amp;amp;value=26</test_script_entry>
+        </description>
+      </testcase>
+      <testcase component="W3C_HTML5 APIs/Media/Web Speech API" execution_type="auto" id="SpeechRecognition_dispatchEvent_existence" purpose="Test dispatchEvent existence">
+        <description>
+          <test_script_entry>/opt/webapi-webspeech-w3c-tests/webspeech/blink/speechrecognition-basics.html?total_num=30&amp;amp;locator_key=id&amp;amp;value=27</test_script_entry>
+        </description>
+      </testcase>
+      <testcase component="W3C_HTML5 APIs/Media/Web Speech API" execution_type="auto" id="SpeechRecognition_lang_default_value" purpose="Test default value of lang">
+        <description>
+          <test_script_entry>/opt/webapi-webspeech-w3c-tests/webspeech/blink/speechrecognition-basics.html?total_num=30&amp;amp;locator_key=id&amp;amp;value=28</test_script_entry>
+        </description>
+      </testcase>
+      <testcase component="W3C_HTML5 APIs/Media/Web Speech API" execution_type="auto" id="SpeechRecognition_continuous_default_value" purpose="Test default value of continuous">
+        <description>
+          <test_script_entry>/opt/webapi-webspeech-w3c-tests/webspeech/blink/speechrecognition-basics.html?total_num=30&amp;amp;locator_key=id&amp;amp;value=29</test_script_entry>
+        </description>
+      </testcase>
+      <testcase component="W3C_HTML5 APIs/Media/Web Speech API" execution_type="auto" id="SpeechRecognition_maxAlternatives_default_value" purpose="Test default value of maxAlternatives">
+        <description>
+          <test_script_entry>/opt/webapi-webspeech-w3c-tests/webspeech/blink/speechrecognition-basics.html?total_num=30&amp;amp;locator_key=id&amp;amp;value=30</test_script_entry>
+        </description>
+      </testcase>
+      <testcase component="W3C_HTML5 APIs/Media/Web Speech API" execution_type="auto" id="SpeechRecognitionError_interface_existence" purpose="Test SpeechRecognitionError existence">
+        <description>
+          <test_script_entry>/opt/webapi-webspeech-w3c-tests/webspeech/blink/speechrecognitionerror-basics.html?total_num=2&amp;amp;locator_key=id&amp;amp;value=1</test_script_entry>
+        </description>
+      </testcase>
+      <testcase component="W3C_HTML5 APIs/Media/Web Speech API" execution_type="auto" id="SpeechRecognitionError_value" purpose="Test SpeechRecognitionError is not null">
+        <description>
+          <test_script_entry>/opt/webapi-webspeech-w3c-tests/webspeech/blink/speechrecognitionerror-basics.html?total_num=2&amp;amp;locator_key=id&amp;amp;value=2</test_script_entry>
+        </description>
+      </testcase>
       <testcase component="W3C_HTML5 APIs/Media/Web Speech API" execution_type="auto" id="SpeechGrammar_constructor" purpose="Check if SpeechGrammar constructor is valid">
         <description>
           <test_script_entry>/opt/webapi-webspeech-w3c-tests/webspeech/SpeechGrammar_constructor.html</test_script_entry>
         </description>
       </testcase>
-      <testcase component="W3C_HTML5 APIs/Media/Web Speech API" execution_type="auto" id="SpeechGrammar_default_src" purpose="Test default src of SpeechGrammar">
-        <description>
-          <test_script_entry>/opt/webapi-webspeech-w3c-tests/webspeech/blink/speechgrammar-basics.html?total_num=35&amp;locator_key=id&amp;value=7</test_script_entry>
-        </description>
-      </testcase>
-      <testcase component="W3C_HTML5 APIs/Media/Web Speech API" execution_type="auto" id="SpeechGrammar_default_weight" purpose="Test default weight of SpeechGrammar">
-        <description>
-          <test_script_entry>/opt/webapi-webspeech-w3c-tests/webspeech/blink/speechgrammar-basics.html?total_num=35&amp;locator_key=id&amp;value=6</test_script_entry>
-        </description>
-      </testcase>
       <testcase component="W3C_HTML5 APIs/Media/Web Speech API" execution_type="auto" id="SpeechGrammar_extend" purpose="Check if SpeechGrammar object is extensible">
         <description>
           <test_script_entry>/opt/webapi-webspeech-w3c-tests/webspeech/SpeechGrammar_extend.html</test_script_entry>
-        </description>
-      </testcase>
-      <testcase component="W3C_HTML5 APIs/Media/Web Speech API" execution_type="auto" id="SpeechGrammar_setting_src_1" purpose="Test setting the src attribute of SpeechGrammar 1">
-        <description>
-          <test_script_entry>/opt/webapi-webspeech-w3c-tests/webspeech/blink/speechgrammar-basics.html?total_num=35&amp;locator_key=id&amp;value=9</test_script_entry>
-        </description>
-      </testcase>
-      <testcase component="W3C_HTML5 APIs/Media/Web Speech API" execution_type="auto" id="SpeechGrammar_setting_src_2" purpose="Test setting the src attribute of SpeechGrammar 2">
-        <description>
-          <test_script_entry>/opt/webapi-webspeech-w3c-tests/webspeech/blink/speechgrammar-basics.html?total_num=35&amp;locator_key=id&amp;value=10</test_script_entry>
-        </description>
-      </testcase>
-      <testcase component="W3C_HTML5 APIs/Media/Web Speech API" execution_type="auto" id="SpeechGrammar_setting_src_3" purpose="Test setting the src attribute of SpeechGrammar 3">
-        <description>
-          <test_script_entry>/opt/webapi-webspeech-w3c-tests/webspeech/blink/speechgrammar-basics.html?total_num=35&amp;locator_key=id&amp;value=11</test_script_entry>
-        </description>
-      </testcase>
-      <testcase component="W3C_HTML5 APIs/Media/Web Speech API" execution_type="auto" id="SpeechGrammar_setting_weight" purpose="Test setting the weight attribute of SpeechGrammar">
-        <description>
-          <test_script_entry>/opt/webapi-webspeech-w3c-tests/webspeech/blink/speechgrammar-basics.html?total_num=35&amp;locator_key=id&amp;value=8</test_script_entry>
         </description>
       </testcase>
       <testcase component="W3C_HTML5 APIs/Media/Web Speech API" execution_type="auto" id="SpeechGrammar_src_attribute" purpose="Check if src attribute of SpeechGrammar exists">
@@ -51,11 +376,6 @@
       <testcase component="W3C_HTML5 APIs/Media/Web Speech API" execution_type="auto" id="SpeechGrammar_weight_attribute" purpose="Check if weight attribute of SpeechGrammar exists">
         <description>
           <test_script_entry>/opt/webapi-webspeech-w3c-tests/webspeech/SpeechGrammar_weight_attribute.html</test_script_entry>
-        </description>
-      </testcase>
-      <testcase component="W3C_HTML5 APIs/Media/Web Speech API" execution_type="auto" id="SpeechGrammarList_addFromString" purpose="Check if addFromString method of SpeechGrammarList without optional argument works properly">
-        <description>
-          <test_script_entry>/opt/webapi-webspeech-w3c-tests/webspeech/SpeechGrammarList_addFromString.html</test_script_entry>
         </description>
       </testcase>
       <testcase component="W3C_HTML5 APIs/Media/Web Speech API" execution_type="auto" id="SpeechGrammarList_addFromString_exist" purpose="Check if addFromString method of SpeechGrammarList exists">
@@ -73,104 +393,14 @@
           <test_script_entry>/opt/webapi-webspeech-w3c-tests/webspeech/SpeechGrammarList_addFromString_with_weight.html</test_script_entry>
         </description>
       </testcase>
-      <testcase component="W3C_HTML5 APIs/Media/Web Speech API" execution_type="auto" id="SpeechGrammarList_addFromURI" purpose="Check if addFromURI method of SpeechGrammarList without optional argument works properly">
+      <testcase component="W3C_HTML5 APIs/Media/Web Speech API" execution_type="auto" id="SpeechGrammarList_addFromString" purpose="Check if addFromString method of SpeechGrammarList without optional argument works properly">
         <description>
-          <test_script_entry>/opt/webapi-webspeech-w3c-tests/webspeech/SpeechGrammarList_addFromURI.html</test_script_entry>
+          <test_script_entry>/opt/webapi-webspeech-w3c-tests/webspeech/SpeechGrammarList_addFromString.html</test_script_entry>
         </description>
       </testcase>
       <testcase component="W3C_HTML5 APIs/Media/Web Speech API" execution_type="auto" id="SpeechGrammarList_addFromURI_exist" purpose="Check if addFromURI method of SpeechGrammarList exists">
         <description>
           <test_script_entry>/opt/webapi-webspeech-w3c-tests/webspeech/SpeechGrammarList_addFromURI_exist.html</test_script_entry>
-        </description>
-      </testcase>
-      <testcase component="W3C_HTML5 APIs/Media/Web Speech API" execution_type="auto" id="SpeechGrammarList_addFromURI_item_equals_1" purpose="Test the item(0) of SpeechGrammarList equals SpeechGrammarList[0]">
-        <description>
-          <test_script_entry>/opt/webapi-webspeech-w3c-tests/webspeech/blink/speechgrammar-basics.html?total_num=35&amp;locator_key=id&amp;value=23</test_script_entry>
-        </description>
-      </testcase>
-      <testcase component="W3C_HTML5 APIs/Media/Web Speech API" execution_type="auto" id="SpeechGrammarList_addFromURI_item_equals_2" purpose="Test the item(1) of SpeechGrammarList equals SpeechGrammarList[1]">
-        <description>
-          <test_script_entry>/opt/webapi-webspeech-w3c-tests/webspeech/blink/speechgrammar-basics.html?total_num=35&amp;locator_key=id&amp;value=27</test_script_entry>
-        </description>
-      </testcase>
-      <testcase component="W3C_HTML5 APIs/Media/Web Speech API" execution_type="auto" id="SpeechGrammarList_addFromURI_item_equals_3" purpose="Test the item(2) of SpeechGrammarList equals SpeechGrammarList[2]">
-        <description>
-          <test_script_entry>/opt/webapi-webspeech-w3c-tests/webspeech/blink/speechgrammar-basics.html?total_num=35&amp;locator_key=id&amp;value=31</test_script_entry>
-        </description>
-      </testcase>
-      <testcase component="W3C_HTML5 APIs/Media/Web Speech API" execution_type="auto" id="SpeechGrammarList_addFromURI_item_null_1" purpose="Test the actual item(1) of SpeechGrammarList is null after adding one">
-        <description>
-          <test_script_entry>/opt/webapi-webspeech-w3c-tests/webspeech/blink/speechgrammar-basics.html?total_num=35&amp;locator_key=id&amp;value=19</test_script_entry>
-        </description>
-      </testcase>
-      <testcase component="W3C_HTML5 APIs/Media/Web Speech API" execution_type="auto" id="SpeechGrammarList_addFromURI_item_null_2" purpose="Test the actual item(-1) of SpeechGrammarList is null after adding one">
-        <description>
-          <test_script_entry>/opt/webapi-webspeech-w3c-tests/webspeech/blink/speechgrammar-basics.html?total_num=35&amp;locator_key=id&amp;value=21</test_script_entry>
-        </description>
-      </testcase>
-      <testcase component="W3C_HTML5 APIs/Media/Web Speech API" execution_type="auto" id="SpeechGrammarList_addFromURI_item_src_1" purpose="Test the src attribute of the actual item(0) of SpeechGrammarList">
-        <description>
-          <test_script_entry>/opt/webapi-webspeech-w3c-tests/webspeech/blink/speechgrammar-basics.html?total_num=35&amp;locator_key=id&amp;value=24</test_script_entry>
-        </description>
-      </testcase>
-      <testcase component="W3C_HTML5 APIs/Media/Web Speech API" execution_type="auto" id="SpeechGrammarList_addFromURI_item_src_2" purpose="Test the src attribute of the actual item(1) of SpeechGrammarList">
-        <description>
-          <test_script_entry>/opt/webapi-webspeech-w3c-tests/webspeech/blink/speechgrammar-basics.html?total_num=35&amp;locator_key=id&amp;value=28</test_script_entry>
-        </description>
-      </testcase>
-      <testcase component="W3C_HTML5 APIs/Media/Web Speech API" execution_type="auto" id="SpeechGrammarList_addFromURI_item_src_3" purpose="Test the src attribute of the actual item(2) of SpeechGrammarList">
-        <description>
-          <test_script_entry>/opt/webapi-webspeech-w3c-tests/webspeech/blink/speechgrammar-basics.html?total_num=35&amp;locator_key=id&amp;value=32</test_script_entry>
-        </description>
-      </testcase>
-      <testcase component="W3C_HTML5 APIs/Media/Web Speech API" execution_type="auto" id="SpeechGrammarList_addFromURI_item_src_4" purpose="Test the src attribute of the SpeechGrammarList[2]">
-        <description>
-          <test_script_entry>/opt/webapi-webspeech-w3c-tests/webspeech/blink/speechgrammar-basics.html?total_num=35&amp;locator_key=id&amp;value=34</test_script_entry>
-        </description>
-      </testcase>
-      <testcase component="W3C_HTML5 APIs/Media/Web Speech API" execution_type="auto" id="SpeechGrammarList_addFromURI_item_undefined_1" purpose="Test the actual SpeechGrammarList[1] is undefined after adding one">
-        <description>
-          <test_script_entry>/opt/webapi-webspeech-w3c-tests/webspeech/blink/speechgrammar-basics.html?total_num=35&amp;locator_key=id&amp;value=20</test_script_entry>
-        </description>
-      </testcase>
-      <testcase component="W3C_HTML5 APIs/Media/Web Speech API" execution_type="auto" id="SpeechGrammarList_addFromURI_item_undefined_2" purpose="Test the actual SpeechGrammarList[-1] is undefined after adding one">
-        <description>
-          <test_script_entry>/opt/webapi-webspeech-w3c-tests/webspeech/blink/speechgrammar-basics.html?total_num=35&amp;locator_key=id&amp;value=22</test_script_entry>
-        </description>
-      </testcase>
-      <testcase component="W3C_HTML5 APIs/Media/Web Speech API" execution_type="auto" id="SpeechGrammarList_addFromURI_item_weight_1" purpose="Test the weight attribute of the actual item(0) of SpeechGrammarList">
-        <description>
-          <test_script_entry>/opt/webapi-webspeech-w3c-tests/webspeech/blink/speechgrammar-basics.html?total_num=35&amp;locator_key=id&amp;value=25</test_script_entry>
-        </description>
-      </testcase>
-      <testcase component="W3C_HTML5 APIs/Media/Web Speech API" execution_type="auto" id="SpeechGrammarList_addFromURI_item_weight_2" purpose="Test the weight attribute of the actual item(1) of SpeechGrammarList">
-        <description>
-          <test_script_entry>/opt/webapi-webspeech-w3c-tests/webspeech/blink/speechgrammar-basics.html?total_num=35&amp;locator_key=id&amp;value=29</test_script_entry>
-        </description>
-      </testcase>
-      <testcase component="W3C_HTML5 APIs/Media/Web Speech API" execution_type="auto" id="SpeechGrammarList_addFromURI_item_weight_3" purpose="Test the weight attribute of the actual item(2) of SpeechGrammarList">
-        <description>
-          <test_script_entry>/opt/webapi-webspeech-w3c-tests/webspeech/blink/speechgrammar-basics.html?total_num=35&amp;locator_key=id&amp;value=33</test_script_entry>
-        </description>
-      </testcase>
-      <testcase component="W3C_HTML5 APIs/Media/Web Speech API" execution_type="auto" id="SpeechGrammarList_addFromURI_item_weight_4" purpose="Test the weight attribute of the SpeechGrammarList[2]">
-        <description>
-          <test_script_entry>/opt/webapi-webspeech-w3c-tests/webspeech/blink/speechgrammar-basics.html?total_num=35&amp;locator_key=id&amp;value=35</test_script_entry>
-        </description>
-      </testcase>
-      <testcase component="W3C_HTML5 APIs/Media/Web Speech API" execution_type="auto" id="SpeechGrammarList_addFromURI_length_1" purpose="Test the actual length attributes of SpeechGrammarList after adding one 1">
-        <description>
-          <test_script_entry>/opt/webapi-webspeech-w3c-tests/webspeech/blink/speechgrammar-basics.html?total_num=35&amp;locator_key=id&amp;value=18</test_script_entry>
-        </description>
-      </testcase>
-      <testcase component="W3C_HTML5 APIs/Media/Web Speech API" execution_type="auto" id="SpeechGrammarList_addFromURI_length_2" purpose="Test the actual length attributes of SpeechGrammarList after adding one 2">
-        <description>
-          <test_script_entry>/opt/webapi-webspeech-w3c-tests/webspeech/blink/speechgrammar-basics.html?total_num=35&amp;locator_key=id&amp;value=26</test_script_entry>
-        </description>
-      </testcase>
-      <testcase component="W3C_HTML5 APIs/Media/Web Speech API" execution_type="auto" id="SpeechGrammarList_addFromURI_length_3" purpose="Test the actual length attributes of SpeechGrammarList after adding one 3">
-        <description>
-          <test_script_entry>/opt/webapi-webspeech-w3c-tests/webspeech/blink/speechgrammar-basics.html?total_num=35&amp;locator_key=id&amp;value=30</test_script_entry>
         </description>
       </testcase>
       <testcase component="W3C_HTML5 APIs/Media/Web Speech API" execution_type="auto" id="SpeechGrammarList_addFromURI_missarg" purpose="Check if addFromURI method of SpeechGrammarList without argument throws an exception">
@@ -183,24 +413,19 @@
           <test_script_entry>/opt/webapi-webspeech-w3c-tests/webspeech/SpeechGrammarList_addFromURI_with_weight.html</test_script_entry>
         </description>
       </testcase>
+      <testcase component="W3C_HTML5 APIs/Media/Web Speech API" execution_type="auto" id="SpeechGrammarList_addFromURI" purpose="Check if addFromURI method of SpeechGrammarList without optional argument works properly">
+        <description>
+          <test_script_entry>/opt/webapi-webspeech-w3c-tests/webspeech/SpeechGrammarList_addFromURI.html</test_script_entry>
+        </description>
+      </testcase>
       <testcase component="W3C_HTML5 APIs/Media/Web Speech API" execution_type="auto" id="SpeechGrammarList_constructor" purpose="Check if SpeechGrammarList constructor is valid">
         <description>
           <test_script_entry>/opt/webapi-webspeech-w3c-tests/webspeech/SpeechGrammarList_constructor.html</test_script_entry>
         </description>
       </testcase>
-      <testcase component="W3C_HTML5 APIs/Media/Web Speech API" execution_type="auto" id="SpeechGrammarList_default_length" purpose="Test default length of SpeechGrammarList">
-        <description>
-          <test_script_entry>/opt/webapi-webspeech-w3c-tests/webspeech/blink/speechgrammar-basics.html?total_num=35&amp;locator_key=id&amp;value=13</test_script_entry>
-        </description>
-      </testcase>
       <testcase component="W3C_HTML5 APIs/Media/Web Speech API" execution_type="auto" id="SpeechGrammarList_extend" purpose="Check if SpeechGrammarList object is extensible">
         <description>
           <test_script_entry>/opt/webapi-webspeech-w3c-tests/webspeech/SpeechGrammarList_extend.html</test_script_entry>
-        </description>
-      </testcase>
-      <testcase component="W3C_HTML5 APIs/Media/Web Speech API" execution_type="auto" id="SpeechGrammarList_item" purpose="Check if item method of SpeechGrammarList works properly with item index of grammar">
-        <description>
-          <test_script_entry>/opt/webapi-webspeech-w3c-tests/webspeech/SpeechGrammarList_item.html</test_script_entry>
         </description>
       </testcase>
       <testcase component="W3C_HTML5 APIs/Media/Web Speech API" execution_type="auto" id="SpeechGrammarList_item_exist" purpose="Check if item method of SpeechGrammarList exists">
@@ -213,24 +438,9 @@
           <test_script_entry>/opt/webapi-webspeech-w3c-tests/webspeech/SpeechGrammarList_item_missarg.html</test_script_entry>
         </description>
       </testcase>
-      <testcase component="W3C_HTML5 APIs/Media/Web Speech API" execution_type="auto" id="SpeechGrammarList_item_null_1" purpose="Test item(0) of SpeechGrammarList is null">
+      <testcase component="W3C_HTML5 APIs/Media/Web Speech API" execution_type="auto" id="SpeechGrammarList_item" purpose="Check if item method of SpeechGrammarList works properly with item index of grammar">
         <description>
-          <test_script_entry>/opt/webapi-webspeech-w3c-tests/webspeech/blink/speechgrammar-basics.html?total_num=35&amp;locator_key=id&amp;value=14</test_script_entry>
-        </description>
-      </testcase>
-      <testcase component="W3C_HTML5 APIs/Media/Web Speech API" execution_type="auto" id="SpeechGrammarList_item_null_2" purpose="Test item(-1) of SpeechGrammarList is null">
-        <description>
-          <test_script_entry>/opt/webapi-webspeech-w3c-tests/webspeech/blink/speechgrammar-basics.html?total_num=35&amp;locator_key=id&amp;value=16</test_script_entry>
-        </description>
-      </testcase>
-      <testcase component="W3C_HTML5 APIs/Media/Web Speech API" execution_type="auto" id="SpeechGrammarList_item_undefined_1" purpose="Test SpeechGrammarList[0] is undefined">
-        <description>
-          <test_script_entry>/opt/webapi-webspeech-w3c-tests/webspeech/blink/speechgrammar-basics.html?total_num=35&amp;locator_key=id&amp;value=15</test_script_entry>
-        </description>
-      </testcase>
-      <testcase component="W3C_HTML5 APIs/Media/Web Speech API" execution_type="auto" id="SpeechGrammarList_item_undefined_2" purpose="Test SpeechGrammarList[-1] is undefined">
-        <description>
-          <test_script_entry>/opt/webapi-webspeech-w3c-tests/webspeech/blink/speechgrammar-basics.html?total_num=35&amp;locator_key=id&amp;value=17</test_script_entry>
+          <test_script_entry>/opt/webapi-webspeech-w3c-tests/webspeech/SpeechGrammarList_item.html</test_script_entry>
         </description>
       </testcase>
       <testcase component="W3C_HTML5 APIs/Media/Web Speech API" execution_type="auto" id="SpeechGrammarList_length_attribute" purpose="Check if length attribute of webspeechGrammarList exists">
@@ -238,19 +448,9 @@
           <test_script_entry>/opt/webapi-webspeech-w3c-tests/webspeech/SpeechGrammarList_length_attribute.html</test_script_entry>
         </description>
       </testcase>
-      <testcase component="W3C_HTML5 APIs/Media/Web Speech API" execution_type="auto" id="SpeechRecognition_abort_existence" purpose="Test abort existence">
-        <description>
-          <test_script_entry>/opt/webapi-webspeech-w3c-tests/webspeech/blink/speechrecognition-basics.html?total_num=30&amp;locator_key=id&amp;value=13</test_script_entry>
-        </description>
-      </testcase>
       <testcase component="W3C_HTML5 APIs/Media/Web Speech API" execution_type="auto" id="SpeechRecognition_abort_extra_argument" purpose="Check if SpeechRecognition abort extra argument">
         <description>
           <test_script_entry>/opt/webapi-webspeech-w3c-tests/webspeech/SpeechRecognition_abort_extra_argument.html</test_script_entry>
-        </description>
-      </testcase>
-      <testcase component="W3C_HTML5 APIs/Media/Web Speech API" execution_type="auto" id="SpeechRecognition_addEventListener_existence" purpose="Test addEventListener existence">
-        <description>
-          <test_script_entry>/opt/webapi-webspeech-w3c-tests/webspeech/blink/speechrecognition-basics.html?total_num=30&amp;locator_key=id&amp;value=25</test_script_entry>
         </description>
       </testcase>
       <testcase component="W3C_HTML5 APIs/Media/Web Speech API" execution_type="auto" id="SpeechRecognition_constructor" purpose="Check if SpeechRecognition constructor">
@@ -258,34 +458,14 @@
           <test_script_entry>/opt/webapi-webspeech-w3c-tests/webspeech/SpeechRecognition_constructor.html</test_script_entry>
         </description>
       </testcase>
-      <testcase component="W3C_HTML5 APIs/Media/Web Speech API" execution_type="auto" id="SpeechRecognition_constructor_existence" purpose="Test SpeechRecognition existence">
-        <description>
-          <test_script_entry>/opt/webapi-webspeech-w3c-tests/webspeech/blink/speechrecognition-basics.html?total_num=30&amp;locator_key=id&amp;value=1</test_script_entry>
-        </description>
-      </testcase>
-      <testcase component="W3C_HTML5 APIs/Media/Web Speech API" execution_type="manual" id="SpeechRecognition_continuous" purpose="Test if the user agent must return zero or more final results representing multiple consecutive recognitions in response to starting recognition when the continuous attribute is set to true">
-        <description>
-          <test_script_entry>/opt/webapi-webspeech-w3c-tests/webspeech/speechrecognition_continuous-manual.html</test_script_entry>
-        </description>
-      </testcase>
       <testcase component="W3C_HTML5 APIs/Media/Web Speech API" execution_type="auto" id="SpeechRecognition_continuous_attribute" purpose="Check if SpeechRecognition continuous attribute">
         <description>
           <test_script_entry>/opt/webapi-webspeech-w3c-tests/webspeech/SpeechRecognition_continuous_attribute.html</test_script_entry>
         </description>
       </testcase>
-      <testcase component="W3C_HTML5 APIs/Media/Web Speech API" execution_type="auto" id="SpeechRecognition_continuous_default_value" purpose="Test default value of continuous">
+      <testcase component="W3C_HTML5 APIs/Media/Web Speech API" execution_type="manual" id="SpeechRecognition_continuous" purpose="Test if the user agent must return zero or more final results representing multiple consecutive recognitions in response to starting recognition when the continuous attribute is set to true">
         <description>
-          <test_script_entry>/opt/webapi-webspeech-w3c-tests/webspeech/blink/speechrecognition-basics.html?total_num=30&amp;locator_key=id&amp;value=29</test_script_entry>
-        </description>
-      </testcase>
-      <testcase component="W3C_HTML5 APIs/Media/Web Speech API" execution_type="auto" id="SpeechRecognition_continuous_existence" purpose="Test continuous existence">
-        <description>
-          <test_script_entry>/opt/webapi-webspeech-w3c-tests/webspeech/blink/speechrecognition-basics.html?total_num=30&amp;locator_key=id&amp;value=8</test_script_entry>
-        </description>
-      </testcase>
-      <testcase component="W3C_HTML5 APIs/Media/Web Speech API" execution_type="auto" id="SpeechRecognition_dispatchEvent_existence" purpose="Test dispatchEvent existence">
-        <description>
-          <test_script_entry>/opt/webapi-webspeech-w3c-tests/webspeech/blink/speechrecognition-basics.html?total_num=30&amp;locator_key=id&amp;value=27</test_script_entry>
+          <test_script_entry>/opt/webapi-webspeech-w3c-tests/webspeech/speechrecognition_continuous-manual.html</test_script_entry>
         </description>
       </testcase>
       <testcase component="W3C_HTML5 APIs/Media/Web Speech API" execution_type="auto" id="SpeechRecognition_extend" purpose="Check if SpeechRecognition is extensible">
@@ -298,19 +478,9 @@
           <test_script_entry>/opt/webapi-webspeech-w3c-tests/webspeech/SpeechRecognition_grammars_attribute.html</test_script_entry>
         </description>
       </testcase>
-      <testcase component="W3C_HTML5 APIs/Media/Web Speech API" execution_type="auto" id="SpeechRecognition_grammars_default_value" purpose="Test grammars is not null">
+      <testcase component="W3C_HTML5 APIs/Media/Web Speech API" execution_type="auto" id="SpeechRecognition_interimResults_attribute" purpose="Check if SpeechRecognition interimResults attribute">
         <description>
-          <test_script_entry>/opt/webapi-webspeech-w3c-tests/webspeech/blink/speechrecognition-basics.html?total_num=30&amp;locator_key=id&amp;value=5</test_script_entry>
-        </description>
-      </testcase>
-      <testcase component="W3C_HTML5 APIs/Media/Web Speech API" execution_type="auto" id="SpeechRecognition_grammars_existence" purpose="Test grammars existence">
-        <description>
-          <test_script_entry>/opt/webapi-webspeech-w3c-tests/webspeech/blink/speechrecognition-basics.html?total_num=30&amp;locator_key=id&amp;value=4</test_script_entry>
-        </description>
-      </testcase>
-      <testcase component="W3C_HTML5 APIs/Media/Web Speech API" execution_type="auto" id="SpeechRecognition_grammars_length" purpose="Test length of grammars">
-        <description>
-          <test_script_entry>/opt/webapi-webspeech-w3c-tests/webspeech/blink/speechrecognition-basics.html?total_num=30&amp;locator_key=id&amp;value=6</test_script_entry>
+          <test_script_entry>/opt/webapi-webspeech-w3c-tests/webspeech/SpeechRecognition_interimResults_attribute.html</test_script_entry>
         </description>
       </testcase>
       <testcase component="W3C_HTML5 APIs/Media/Web Speech API" execution_type="manual" id="SpeechRecognition_interimresults" purpose="Test if interim results will be returned when the interim attribute is set to true">
@@ -318,39 +488,9 @@
           <test_script_entry>/opt/webapi-webspeech-w3c-tests/webspeech/speechrecognition_interimresults-manual.html</test_script_entry>
         </description>
       </testcase>
-      <testcase component="W3C_HTML5 APIs/Media/Web Speech API" execution_type="auto" id="SpeechRecognition_interimResults_attribute" purpose="Check if SpeechRecognition interimResults attribute">
-        <description>
-          <test_script_entry>/opt/webapi-webspeech-w3c-tests/webspeech/SpeechRecognition_interimResults_attribute.html</test_script_entry>
-        </description>
-      </testcase>
-      <testcase component="W3C_HTML5 APIs/Media/Web Speech API" execution_type="auto" id="SpeechRecognition_interimResults_existence" purpose="Test interimResults existence">
-        <description>
-          <test_script_entry>/opt/webapi-webspeech-w3c-tests/webspeech/blink/speechrecognition-basics.html?total_num=30&amp;locator_key=id&amp;value=9</test_script_entry>
-        </description>
-      </testcase>
       <testcase component="W3C_HTML5 APIs/Media/Web Speech API" execution_type="auto" id="SpeechRecognition_lang_attribute" purpose="Check if SpeechRecognition lang attribute">
         <description>
           <test_script_entry>/opt/webapi-webspeech-w3c-tests/webspeech/SpeechRecognition_lang_attribute.html</test_script_entry>
-        </description>
-      </testcase>
-      <testcase component="W3C_HTML5 APIs/Media/Web Speech API" execution_type="auto" id="SpeechRecognition_lang_default_value" purpose="Test default value of lang">
-        <description>
-          <test_script_entry>/opt/webapi-webspeech-w3c-tests/webspeech/blink/speechrecognition-basics.html?total_num=30&amp;locator_key=id&amp;value=28</test_script_entry>
-        </description>
-      </testcase>
-      <testcase component="W3C_HTML5 APIs/Media/Web Speech API" execution_type="auto" id="SpeechRecognition_lang_existence" purpose="Test lang existence">
-        <description>
-          <test_script_entry>/opt/webapi-webspeech-w3c-tests/webspeech/blink/speechrecognition-basics.html?total_num=30&amp;locator_key=id&amp;value=7</test_script_entry>
-        </description>
-      </testcase>
-      <testcase component="W3C_HTML5 APIs/Media/Web Speech API" execution_type="manual" id="SpeechRecognition_manual_basic" purpose="Test checks if SpeechRecognition interface works well">
-        <description>
-          <test_script_entry>/opt/webapi-webspeech-w3c-tests/webspeech/speechrecognition-manual.html</test_script_entry>
-        </description>
-      </testcase>
-      <testcase component="W3C_HTML5 APIs/Media/Web Speech API" execution_type="manual" id="SpeechRecognition_maxalternatives" purpose="Test if the maximum number of SpeechRecognitionAlternatives per result is 0 when set maxAlternatives attribute to be 0">
-        <description>
-          <test_script_entry>/opt/webapi-webspeech-w3c-tests/webspeech/speechrecognition_maxalternatives-manual.html</test_script_entry>
         </description>
       </testcase>
       <testcase component="W3C_HTML5 APIs/Media/Web Speech API" execution_type="auto" id="SpeechRecognition_maxAlternatives_attribute" purpose="Check if SpeechRecognition maxAlternatives attribute">
@@ -358,74 +498,9 @@
           <test_script_entry>/opt/webapi-webspeech-w3c-tests/webspeech/SpeechRecognition_maxAlternatives_attribute.html</test_script_entry>
         </description>
       </testcase>
-      <testcase component="W3C_HTML5 APIs/Media/Web Speech API" execution_type="auto" id="SpeechRecognition_maxAlternatives_default_value" purpose="Test default value of maxAlternatives">
+      <testcase component="W3C_HTML5 APIs/Media/Web Speech API" execution_type="manual" id="SpeechRecognition_maxalternatives" purpose="Test if the maximum number of SpeechRecognitionAlternatives per result is 0 when set maxAlternatives attribute to be 0">
         <description>
-          <test_script_entry>/opt/webapi-webspeech-w3c-tests/webspeech/blink/speechrecognition-basics.html?total_num=30&amp;locator_key=id&amp;value=30</test_script_entry>
-        </description>
-      </testcase>
-      <testcase component="W3C_HTML5 APIs/Media/Web Speech API" execution_type="auto" id="SpeechRecognition_maxAlternatives_existence" purpose="Test maxAlternatives existence">
-        <description>
-          <test_script_entry>/opt/webapi-webspeech-w3c-tests/webspeech/blink/speechrecognition-basics.html?total_num=30&amp;locator_key=id&amp;value=10</test_script_entry>
-        </description>
-      </testcase>
-      <testcase component="W3C_HTML5 APIs/Media/Web Speech API" execution_type="auto" id="SpeechRecognition_onaudioend_existence" purpose="Test onaudioend existence">
-        <description>
-          <test_script_entry>/opt/webapi-webspeech-w3c-tests/webspeech/blink/speechrecognition-basics.html?total_num=30&amp;locator_key=id&amp;value=19</test_script_entry>
-        </description>
-      </testcase>
-      <testcase component="W3C_HTML5 APIs/Media/Web Speech API" execution_type="auto" id="SpeechRecognition_onaudiostart_existence" purpose="Test onaudiostart existence">
-        <description>
-          <test_script_entry>/opt/webapi-webspeech-w3c-tests/webspeech/blink/speechrecognition-basics.html?total_num=30&amp;locator_key=id&amp;value=14</test_script_entry>
-        </description>
-      </testcase>
-      <testcase component="W3C_HTML5 APIs/Media/Web Speech API" execution_type="auto" id="SpeechRecognition_onend_existence" purpose="Test onend existence">
-        <description>
-          <test_script_entry>/opt/webapi-webspeech-w3c-tests/webspeech/blink/speechrecognition-basics.html?total_num=30&amp;locator_key=id&amp;value=24</test_script_entry>
-        </description>
-      </testcase>
-      <testcase component="W3C_HTML5 APIs/Media/Web Speech API" execution_type="auto" id="SpeechRecognition_onerror_existence" purpose="Test onerror existence">
-        <description>
-          <test_script_entry>/opt/webapi-webspeech-w3c-tests/webspeech/blink/speechrecognition-basics.html?total_num=30&amp;locator_key=id&amp;value=22</test_script_entry>
-        </description>
-      </testcase>
-      <testcase component="W3C_HTML5 APIs/Media/Web Speech API" execution_type="auto" id="SpeechRecognition_onnomatch_existence" purpose="Test onnomatch existence">
-        <description>
-          <test_script_entry>/opt/webapi-webspeech-w3c-tests/webspeech/blink/speechrecognition-basics.html?total_num=30&amp;locator_key=id&amp;value=21</test_script_entry>
-        </description>
-      </testcase>
-      <testcase component="W3C_HTML5 APIs/Media/Web Speech API" execution_type="auto" id="SpeechRecognition_onresult_existence" purpose="Test onresult existence">
-        <description>
-          <test_script_entry>/opt/webapi-webspeech-w3c-tests/webspeech/blink/speechrecognition-basics.html?total_num=30&amp;locator_key=id&amp;value=20</test_script_entry>
-        </description>
-      </testcase>
-      <testcase component="W3C_HTML5 APIs/Media/Web Speech API" execution_type="auto" id="SpeechRecognition_onsoundend_existence" purpose="Test onsoundend existence">
-        <description>
-          <test_script_entry>/opt/webapi-webspeech-w3c-tests/webspeech/blink/speechrecognition-basics.html?total_num=30&amp;locator_key=id&amp;value=18</test_script_entry>
-        </description>
-      </testcase>
-      <testcase component="W3C_HTML5 APIs/Media/Web Speech API" execution_type="auto" id="SpeechRecognition_onsoundstart_existence" purpose="Test onsoundstart existence">
-        <description>
-          <test_script_entry>/opt/webapi-webspeech-w3c-tests/webspeech/blink/speechrecognition-basics.html?total_num=30&amp;locator_key=id&amp;value=15</test_script_entry>
-        </description>
-      </testcase>
-      <testcase component="W3C_HTML5 APIs/Media/Web Speech API" execution_type="auto" id="SpeechRecognition_onspeechend_existence" purpose="Test onspeechend existence">
-        <description>
-          <test_script_entry>/opt/webapi-webspeech-w3c-tests/webspeech/blink/speechrecognition-basics.html?total_num=30&amp;locator_key=id&amp;value=17</test_script_entry>
-        </description>
-      </testcase>
-      <testcase component="W3C_HTML5 APIs/Media/Web Speech API" execution_type="auto" id="SpeechRecognition_onspeechstart_existence" purpose="Test onspeechstart existence">
-        <description>
-          <test_script_entry>/opt/webapi-webspeech-w3c-tests/webspeech/blink/speechrecognition-basics.html?total_num=30&amp;locator_key=id&amp;value=16</test_script_entry>
-        </description>
-      </testcase>
-      <testcase component="W3C_HTML5 APIs/Media/Web Speech API" execution_type="auto" id="SpeechRecognition_onstart_existence" purpose="Test onstart existence">
-        <description>
-          <test_script_entry>/opt/webapi-webspeech-w3c-tests/webspeech/blink/speechrecognition-basics.html?total_num=30&amp;locator_key=id&amp;value=23</test_script_entry>
-        </description>
-      </testcase>
-      <testcase component="W3C_HTML5 APIs/Media/Web Speech API" execution_type="auto" id="SpeechRecognition_removeEventListener_existence" purpose="Test removeEventListener existence">
-        <description>
-          <test_script_entry>/opt/webapi-webspeech-w3c-tests/webspeech/blink/speechrecognition-basics.html?total_num=30&amp;locator_key=id&amp;value=26</test_script_entry>
+          <test_script_entry>/opt/webapi-webspeech-w3c-tests/webspeech/speechrecognition_maxalternatives-manual.html</test_script_entry>
         </description>
       </testcase>
       <testcase component="W3C_HTML5 APIs/Media/Web Speech API" execution_type="auto" id="SpeechRecognition_serviceURI_attribute" purpose="Check if SpeechRecognition serviceURI attribute">
@@ -433,19 +508,9 @@
           <test_script_entry>/opt/webapi-webspeech-w3c-tests/webspeech/SpeechRecognition_serviceURI_attribute.html</test_script_entry>
         </description>
       </testcase>
-      <testcase component="W3C_HTML5 APIs/Media/Web Speech API" execution_type="auto" id="SpeechRecognition_start" purpose="Check if SpeechRecognition start">
-        <description>
-          <test_script_entry>/opt/webapi-webspeech-w3c-tests/webspeech/SpeechRecognition_start.html</test_script_entry>
-        </description>
-      </testcase>
       <testcase component="W3C_HTML5 APIs/Media/Web Speech API" execution_type="auto" id="SpeechRecognition_start_exception" purpose="Test getting an exception when calling start() in the Speech JavaScript API">
         <description>
           <test_script_entry>/opt/webapi-webspeech-w3c-tests/webspeech/SpeechRecognition_start_exception.html</test_script_entry>
-        </description>
-      </testcase>
-      <testcase component="W3C_HTML5 APIs/Media/Web Speech API" execution_type="auto" id="SpeechRecognition_start_existence" purpose="Test start existence">
-        <description>
-          <test_script_entry>/opt/webapi-webspeech-w3c-tests/webspeech/blink/speechrecognition-basics.html?total_num=30&amp;locator_key=id&amp;value=11</test_script_entry>
         </description>
       </testcase>
       <testcase component="W3C_HTML5 APIs/Media/Web Speech API" execution_type="auto" id="SpeechRecognition_start_extra_argument" purpose="Check if SpeechRecognition start extra argument">
@@ -453,9 +518,9 @@
           <test_script_entry>/opt/webapi-webspeech-w3c-tests/webspeech/SpeechRecognition_start_extra_argument.html</test_script_entry>
         </description>
       </testcase>
-      <testcase component="W3C_HTML5 APIs/Media/Web Speech API" execution_type="auto" id="SpeechRecognition_stop_existence" purpose="Test stop existence">
+      <testcase component="W3C_HTML5 APIs/Media/Web Speech API" execution_type="auto" id="SpeechRecognition_start" purpose="Check if SpeechRecognition start">
         <description>
-          <test_script_entry>/opt/webapi-webspeech-w3c-tests/webspeech/blink/speechrecognition-basics.html?total_num=30&amp;locator_key=id&amp;value=12</test_script_entry>
+          <test_script_entry>/opt/webapi-webspeech-w3c-tests/webspeech/SpeechRecognition_start.html</test_script_entry>
         </description>
       </testcase>
       <testcase component="W3C_HTML5 APIs/Media/Web Speech API" execution_type="auto" id="SpeechRecognition_stop_extra_argument" purpose="Check if SpeechRecognition stop extra argument">
@@ -463,9 +528,9 @@
           <test_script_entry>/opt/webapi-webspeech-w3c-tests/webspeech/SpeechRecognition_stop_extra_argument.html</test_script_entry>
         </description>
       </testcase>
-      <testcase component="W3C_HTML5 APIs/Media/Web Speech API" execution_type="auto" id="SpeechRecognition_value" purpose="Test SpeechRecognition is not null">
+      <testcase component="W3C_HTML5 APIs/Media/Web Speech API" execution_type="manual" id="SpeechRecognition_manual_basic" purpose="Test checks if SpeechRecognition interface works well">
         <description>
-          <test_script_entry>/opt/webapi-webspeech-w3c-tests/webspeech/blink/speechrecognition-basics.html?total_num=30&amp;locator_key=id&amp;value=2</test_script_entry>
+          <test_script_entry>/opt/webapi-webspeech-w3c-tests/webspeech/speechrecognition-manual.html</test_script_entry>
         </description>
       </testcase>
       <testcase component="W3C_HTML5 APIs/Media/Web Speech API" execution_type="manual" id="SpeechRecognitionAlternative_Confidence" purpose="Test if the confidence represents a numeric estimate between 0 and 1 of how confident the recognition system is that the recognition is correct">
@@ -483,19 +548,9 @@
           <test_script_entry>/opt/webapi-webspeech-w3c-tests/webspeech/SpeechRecognitionError_extend.html</test_script_entry>
         </description>
       </testcase>
-      <testcase component="W3C_HTML5 APIs/Media/Web Speech API" execution_type="auto" id="SpeechRecognitionError_interface_existence" purpose="Test SpeechRecognitionError existence">
-        <description>
-          <test_script_entry>/opt/webapi-webspeech-w3c-tests/webspeech/blink/speechrecognitionerror-basics.html?total_num=2&amp;locator_key=id&amp;value=1</test_script_entry>
-        </description>
-      </testcase>
       <testcase component="W3C_HTML5 APIs/Media/Web Speech API" execution_type="auto" id="SpeechRecognitionError_message" purpose="Check if message attribute exists in SpeechRecognitionError and a readonly attribute">
         <description>
           <test_script_entry>/opt/webapi-webspeech-w3c-tests/webspeech/SpeechRecognitionError_message.html</test_script_entry>
-        </description>
-      </testcase>
-      <testcase component="W3C_HTML5 APIs/Media/Web Speech API" execution_type="auto" id="SpeechRecognitionError_value" purpose="Test SpeechRecognitionError is not null">
-        <description>
-          <test_script_entry>/opt/webapi-webspeech-w3c-tests/webspeech/blink/speechrecognitionerror-basics.html?total_num=2&amp;locator_key=id&amp;value=2</test_script_entry>
         </description>
       </testcase>
       <testcase component="W3C_HTML5 APIs/Media/Web Speech API" execution_type="manual" id="SpeechRecognitionEvent_emma" purpose="Test if emma attribute is EMMA 1.0 representation of this result">
@@ -513,14 +568,24 @@
           <test_script_entry>/opt/webapi-webspeech-w3c-tests/webspeech/SpeechRecognitionEvent_interpretation-manual.html</test_script_entry>
         </description>
       </testcase>
-      <testcase component="W3C_HTML5 APIs/Media/Web Speech API" execution_type="auto" id="SpeechRecognitionEvent_prototype" purpose="Prototype of SpeechRecognitionEvent">
-        <description>
-          <test_script_entry>/opt/webapi-webspeech-w3c-tests/webspeech/speechsynthesisevent-basics.html?total_num=3&amp;locator_key=id&amp;value=3</test_script_entry>
-        </description>
-      </testcase>
-      <testcase component="W3C_HTML5 APIs/Media/Web Speech API" execution_type="manual" id="SpeechRecognitionEvent_Resultindex" purpose="Test if the resultIndex is set to the lowest index in the results array that has changed">
+      <testcase component="W3C_HTML5 APIs/Media/Web Speech API" execution_type="manual" id="SpeechRecognitionEvent_resultIndex" purpose="Test if the resultIndex is set to the lowest index in the results array that has changed">
         <description>
           <test_script_entry>/opt/webapi-webspeech-w3c-tests/webspeech/SpeechRecognitionEvent_resultIndex-manual.html</test_script_entry>
+        </description>
+      </testcase>
+      <testcase component="W3C_HTML5 APIs/Media/Web Speech API" execution_type="auto" id="SpeechRecognitionEvent_existence" purpose="Existence of SpeechRecognitionEvent interface">
+        <description>
+          <test_script_entry>/opt/webapi-webspeech-w3c-tests/webspeech/SpeechRecognitionEvent_basics.html?total_num=3&amp;amp;locator_key=id&amp;amp;value=1</test_script_entry>
+        </description>
+      </testcase>
+      <testcase component="W3C_HTML5 APIs/Media/Web Speech API" execution_type="auto" id="SpeechRecognitionEvent_value" purpose="Value of SpeechRecognitionEvent object">
+        <description>
+          <test_script_entry>/opt/webapi-webspeech-w3c-tests/webspeech/SpeechRecognitionEvent_basics.html?total_num=3&amp;amp;locator_key=id&amp;amp;value=2</test_script_entry>
+        </description>
+      </testcase>
+      <testcase component="W3C_HTML5 APIs/Media/Web Speech API" execution_type="auto" id="SpeechRecognitionEvent_prototype" purpose="Prototype of SpeechRecognitionEvent">
+        <description>
+          <test_script_entry>/opt/webapi-webspeech-w3c-tests/webspeech/SpeechRecognitionEvent_basics.html?total_num=3&amp;amp;locator_key=id&amp;amp;value=3</test_script_entry>
         </description>
       </testcase>
       <testcase component="W3C_HTML5 APIs/Media/Web Speech API" execution_type="manual" id="SpeechRecognitionResult_final" purpose="Test if the final boolean is set to true if this is the final time the speech service will return this particular index value">
@@ -548,26 +613,6 @@
           <test_script_entry>/opt/webapi-webspeech-w3c-tests/webspeech/speechrecognitionresultlist_length-manual.html</test_script_entry>
         </description>
       </testcase>
-      <testcase component="W3C_HTML5 APIs/Media/Web Speech API" execution_type="auto" id="SpeechSynthesis_basic_mechanisms" purpose="Test that the basic mechanisms of speaking text work, including sending the job and receving the callback">
-        <description>
-          <test_script_entry>/opt/webapi-webspeech-w3c-tests/webspeech/blink/speech-synthesis-speak.html</test_script_entry>
-        </description>
-      </testcase>
-      <testcase component="W3C_HTML5 APIs/Media/Web Speech API" execution_type="auto" id="SpeechSynthesis_boundary" purpose="Test a speech job will generate the correct boundary events">
-        <description>
-          <test_script_entry>/opt/webapi-webspeech-w3c-tests/webspeech/blink/speech-synthesis-boundary-events.html</test_script_entry>
-        </description>
-      </testcase>
-      <testcase component="W3C_HTML5 APIs/Media/Web Speech API" execution_type="auto" id="SpeechSynthesis_cancel" purpose="Test that cancelling a speech job fires the right events">
-        <description>
-          <test_script_entry>/opt/webapi-webspeech-w3c-tests/webspeech/blink/speech-synthesis-cancel.html</test_script_entry>
-        </description>
-      </testcase>
-      <testcase component="W3C_HTML5 APIs/Media/Web Speech API" execution_type="auto" id="speechSynthesis_cancel_existence" purpose="Existence of cancel method">
-        <description>
-          <test_script_entry>/opt/webapi-webspeech-w3c-tests/webspeech/speechsynthesis-basic.html?total_num=14&amp;locator_key=id&amp;value=7</test_script_entry>
-        </description>
-      </testcase>
       <testcase component="W3C_HTML5 APIs/Media/Web Speech API" execution_type="auto" id="SpeechSynthesis_cancel_extra_argument" purpose="Check if cancel method of SpeechSynthesis works properly with extra argument">
         <description>
           <test_script_entry>/opt/webapi-webspeech-w3c-tests/webspeech/SpeechSynthesis_cancel_extra_argument.html</test_script_entry>
@@ -583,39 +628,14 @@
           <test_script_entry>/opt/webapi-webspeech-w3c-tests/webspeech/SpeechSynthesis_extend.html</test_script_entry>
         </description>
       </testcase>
-      <testcase component="W3C_HTML5 APIs/Media/Web Speech API" execution_type="auto" id="SpeechSynthesis_getVoices" purpose="Check if getVoices method of SpeechSynthesis works properly">
-        <description>
-          <test_script_entry>/opt/webapi-webspeech-w3c-tests/webspeech/SpeechSynthesis_getVoices.html</test_script_entry>
-        </description>
-      </testcase>
-      <testcase component="W3C_HTML5 APIs/Media/Web Speech API" execution_type="auto" id="speechSynthesis_getVoices_existence" purpose="Existence of getVoices method">
-        <description>
-          <test_script_entry>/opt/webapi-webspeech-w3c-tests/webspeech/speechsynthesis-basic.html?total_num=14&amp;locator_key=id&amp;value=10</test_script_entry>
-        </description>
-      </testcase>
       <testcase component="W3C_HTML5 APIs/Media/Web Speech API" execution_type="auto" id="SpeechSynthesis_getVoices_extra_argument" purpose="Check if getVoices method of SpeechSynthesis works properly with extra argument">
         <description>
           <test_script_entry>/opt/webapi-webspeech-w3c-tests/webspeech/SpeechSynthesis_getVoices_extra_argument.html</test_script_entry>
         </description>
       </testcase>
-      <testcase component="W3C_HTML5 APIs/Media/Web Speech API" execution_type="auto" id="speechSynthesis_getVoices_type" purpose="Type of speechSynthesis.getVoices()">
+      <testcase component="W3C_HTML5 APIs/Media/Web Speech API" execution_type="auto" id="SpeechSynthesis_getVoices" purpose="Check if getVoices method of SpeechSynthesis works properly">
         <description>
-          <test_script_entry>/opt/webapi-webspeech-w3c-tests/webspeech/speechsynthesis-basic.html?total_num=14&amp;locator_key=id&amp;value=14</test_script_entry>
-        </description>
-      </testcase>
-      <testcase component="W3C_HTML5 APIs/Media/Web Speech API" execution_type="manual" id="SpeechSynthesis_manual_basic" purpose="Test checks if SpeechSynthesis interface works well">
-        <description>
-          <test_script_entry>/opt/webapi-webspeech-w3c-tests/webspeech/speechsynthesis-manual.html</test_script_entry>
-        </description>
-      </testcase>
-      <testcase component="W3C_HTML5 APIs/Media/Web Speech API" execution_type="auto" id="SpeechSynthesis_pause" purpose="Check if pause method of SpeechSynthesis changes state of pause">
-        <description>
-          <test_script_entry>/opt/webapi-webspeech-w3c-tests/webspeech/SpeechSynthesis_pause.html</test_script_entry>
-        </description>
-      </testcase>
-      <testcase component="W3C_HTML5 APIs/Media/Web Speech API" execution_type="auto" id="speechSynthesis_pause_existence" purpose="Existence of pause method">
-        <description>
-          <test_script_entry>/opt/webapi-webspeech-w3c-tests/webspeech/speechsynthesis-basic.html?total_num=14&amp;locator_key=id&amp;value=8</test_script_entry>
+          <test_script_entry>/opt/webapi-webspeech-w3c-tests/webspeech/SpeechSynthesis_getVoices.html</test_script_entry>
         </description>
       </testcase>
       <testcase component="W3C_HTML5 APIs/Media/Web Speech API" execution_type="auto" id="SpeechSynthesis_pause_extra_argument" purpose="Check if pause method of SpeechSynthesis works properly with extra argument">
@@ -623,24 +643,14 @@
           <test_script_entry>/opt/webapi-webspeech-w3c-tests/webspeech/SpeechSynthesis_pause_extra_argument.html</test_script_entry>
         </description>
       </testcase>
+      <testcase component="W3C_HTML5 APIs/Media/Web Speech API" execution_type="auto" id="SpeechSynthesis_pause" purpose="Check if pause method of SpeechSynthesis changes state of pause">
+        <description>
+          <test_script_entry>/opt/webapi-webspeech-w3c-tests/webspeech/SpeechSynthesis_pause.html</test_script_entry>
+        </description>
+      </testcase>
       <testcase component="W3C_HTML5 APIs/Media/Web Speech API" execution_type="auto" id="SpeechSynthesis_paused_attribute" purpose="Check if paused attribute of SpeechSynthesis exists">
         <description>
           <test_script_entry>/opt/webapi-webspeech-w3c-tests/webspeech/SpeechSynthesis_paused_attribute.html</test_script_entry>
-        </description>
-      </testcase>
-      <testcase component="W3C_HTML5 APIs/Media/Web Speech API" execution_type="auto" id="speechSynthesis_paused_existence" purpose="Existence of paused attribute">
-        <description>
-          <test_script_entry>/opt/webapi-webspeech-w3c-tests/webspeech/speechsynthesis-basic.html?total_num=14&amp;locator_key=id&amp;value=5</test_script_entry>
-        </description>
-      </testcase>
-      <testcase component="W3C_HTML5 APIs/Media/Web Speech API" execution_type="auto" id="speechSynthesis_paused_value" purpose="Value of paused attribute">
-        <description>
-          <test_script_entry>/opt/webapi-webspeech-w3c-tests/webspeech/speechsynthesis-basic.html?total_num=14&amp;locator_key=id&amp;value=13</test_script_entry>
-        </description>
-      </testcase>
-      <testcase component="W3C_HTML5 APIs/Media/Web Speech API" execution_type="auto" id="SpeechSynthesis_pausing_resuming" purpose="Test that pausing/resuming speech jobs works as expected">
-        <description>
-          <test_script_entry>/opt/webapi-webspeech-w3c-tests/webspeech/blink/speech-synthesis-pause-resume.html</test_script_entry>
         </description>
       </testcase>
       <testcase component="W3C_HTML5 APIs/Media/Web Speech API" execution_type="auto" id="SpeechSynthesis_pending_attribute" purpose="Check if pending attribute of SpeechSynthesis exists">
@@ -648,14 +658,9 @@
           <test_script_entry>/opt/webapi-webspeech-w3c-tests/webspeech/SpeechSynthesis_pending_attribute.html</test_script_entry>
         </description>
       </testcase>
-      <testcase component="W3C_HTML5 APIs/Media/Web Speech API" execution_type="auto" id="speechSynthesis_pending_existence" purpose="Existence of pending attribute">
+      <testcase component="W3C_HTML5 APIs/Media/Web Speech API" execution_type="auto" id="SpeechSynthesis_resume_extra_argument" purpose="Check if resume method of SpeechSynthesis works properly with extra argument">
         <description>
-          <test_script_entry>/opt/webapi-webspeech-w3c-tests/webspeech/speechsynthesis-basic.html?total_num=14&amp;locator_key=id&amp;value=3</test_script_entry>
-        </description>
-      </testcase>
-      <testcase component="W3C_HTML5 APIs/Media/Web Speech API" execution_type="auto" id="speechSynthesis_pending_value" purpose="Initial value of pending attribute">
-        <description>
-          <test_script_entry>/opt/webapi-webspeech-w3c-tests/webspeech/speechsynthesis-basic.html?total_num=14&amp;locator_key=id&amp;value=11</test_script_entry>
+          <test_script_entry>/opt/webapi-webspeech-w3c-tests/webspeech/SpeechSynthesis_resume_extra_argument.html</test_script_entry>
         </description>
       </testcase>
       <testcase component="W3C_HTML5 APIs/Media/Web Speech API" execution_type="auto" id="SpeechSynthesis_resume" purpose="Check if resume method of SpeechSynthesis returns value">
@@ -663,14 +668,9 @@
           <test_script_entry>/opt/webapi-webspeech-w3c-tests/webspeech/SpeechSynthesis_resume.html</test_script_entry>
         </description>
       </testcase>
-      <testcase component="W3C_HTML5 APIs/Media/Web Speech API" execution_type="auto" id="speechSynthesis_resume_existence" purpose="Existence of resume method">
+      <testcase component="W3C_HTML5 APIs/Media/Web Speech API" execution_type="auto" id="SpeechSynthesis_speak_missarg" purpose="Check if speak method of SpeechSynthesis without argument throws an exception">
         <description>
-          <test_script_entry>/opt/webapi-webspeech-w3c-tests/webspeech/speechsynthesis-basic.html?total_num=14&amp;locator_key=id&amp;value=9</test_script_entry>
-        </description>
-      </testcase>
-      <testcase component="W3C_HTML5 APIs/Media/Web Speech API" execution_type="auto" id="SpeechSynthesis_resume_extra_argument" purpose="Check if resume method of SpeechSynthesis works properly with extra argument">
-        <description>
-          <test_script_entry>/opt/webapi-webspeech-w3c-tests/webspeech/SpeechSynthesis_resume_extra_argument.html</test_script_entry>
+          <test_script_entry>/opt/webapi-webspeech-w3c-tests/webspeech/SpeechSynthesis_speak_missarg.html</test_script_entry>
         </description>
       </testcase>
       <testcase component="W3C_HTML5 APIs/Media/Web Speech API" execution_type="manual" id="SpeechSynthesis_speak" purpose="Check if speak method of SpeechSynthesis returns value">
@@ -678,54 +678,84 @@
           <test_script_entry>/opt/webapi-webspeech-w3c-tests/webspeech/SpeechSynthesis_speak.html</test_script_entry>
         </description>
       </testcase>
-      <testcase component="W3C_HTML5 APIs/Media/Web Speech API" execution_type="auto" id="speechSynthesis_speak_existence" purpose="Existence of speak method">
-        <description>
-          <test_script_entry>/opt/webapi-webspeech-w3c-tests/webspeech/speechsynthesis-basic.html?total_num=14&amp;locator_key=id&amp;value=6</test_script_entry>
-        </description>
-      </testcase>
-      <testcase component="W3C_HTML5 APIs/Media/Web Speech API" execution_type="auto" id="SpeechSynthesis_speak_missarg" purpose="Check if speak method of SpeechSynthesis without argument throws an exception">
-        <description>
-          <test_script_entry>/opt/webapi-webspeech-w3c-tests/webspeech/SpeechSynthesis_speak_missarg.html</test_script_entry>
-        </description>
-      </testcase>
       <testcase component="W3C_HTML5 APIs/Media/Web Speech API" execution_type="auto" id="SpeechSynthesis_speaking_attribute" purpose="Check if speaking attribute of SpeechSynthesis exists">
         <description>
           <test_script_entry>/opt/webapi-webspeech-w3c-tests/webspeech/SpeechSynthesis_speaking_attribute.html</test_script_entry>
         </description>
       </testcase>
-      <testcase component="W3C_HTML5 APIs/Media/Web Speech API" execution_type="auto" id="speechSynthesis_speaking_existence" purpose="Existence of speaking  attribute">
+      <testcase component="W3C_HTML5 APIs/Media/Web Speech API" execution_type="auto" id="SpeechSynthesis_type" purpose="Type of window.speechSynthesis">
         <description>
-          <test_script_entry>/opt/webapi-webspeech-w3c-tests/webspeech/speechsynthesis-basic.html?total_num=14&amp;locator_key=id&amp;value=4</test_script_entry>
+          <test_script_entry>/opt/webapi-webspeech-w3c-tests/webspeech/speechsynthesis-basic.html?total_num=14&amp;amp;locator_key=id&amp;amp;value=1</test_script_entry>
         </description>
       </testcase>
-      <testcase component="W3C_HTML5 APIs/Media/Web Speech API" execution_type="auto" id="speechSynthesis_speaking_value" purpose="Value of speaking attribute">
+      <testcase component="W3C_HTML5 APIs/Media/Web Speech API" execution_type="auto" id="SpeechSynthesis_value" purpose="Value of window.speechSynthesis object">
         <description>
-          <test_script_entry>/opt/webapi-webspeech-w3c-tests/webspeech/speechsynthesis-basic.html?total_num=14&amp;locator_key=id&amp;value=12</test_script_entry>
+          <test_script_entry>/opt/webapi-webspeech-w3c-tests/webspeech/speechsynthesis-basic.html?total_num=14&amp;amp;locator_key=id&amp;amp;value=2</test_script_entry>
         </description>
       </testcase>
-      <testcase component="W3C_HTML5 APIs/Media/Web Speech API" execution_type="auto" id="speechSynthesis_type" purpose="Type of window.speechSynthesis">
+      <testcase component="W3C_HTML5 APIs/Media/Web Speech API" execution_type="auto" id="SpeechSynthesis_pending_existence" purpose="Existence of pending attribute">
         <description>
-          <test_script_entry>/opt/webapi-webspeech-w3c-tests/webspeech/speechsynthesis-basic.html?total_num=14&amp;locator_key=id&amp;value=1</test_script_entry>
+          <test_script_entry>/opt/webapi-webspeech-w3c-tests/webspeech/speechsynthesis-basic.html?total_num=14&amp;amp;locator_key=id&amp;amp;value=3</test_script_entry>
         </description>
       </testcase>
-      <testcase component="W3C_HTML5 APIs/Media/Web Speech API" execution_type="auto" id="SpeechSynthesis_TypeError_exception" purpose="Test that passing an argument other than a SpeechSynthesisUtterance to speechSynthesis.speak throws a TypeError exception">
+      <testcase component="W3C_HTML5 APIs/Media/Web Speech API" execution_type="auto" id="SpeechSynthesis_speaking_existence" purpose="Existence of speaking  attribute">
         <description>
-          <test_script_entry>/opt/webapi-webspeech-w3c-tests/webspeech/blink/speech-synthesis-speak-invalid-argument-throws.html</test_script_entry>
+          <test_script_entry>/opt/webapi-webspeech-w3c-tests/webspeech/speechsynthesis-basic.html?total_num=14&amp;amp;locator_key=id&amp;amp;value=4</test_script_entry>
         </description>
       </testcase>
-      <testcase component="W3C_HTML5 APIs/Media/Web Speech API" execution_type="auto" id="speechSynthesis_value" purpose="Value of window.speechSynthesis object">
+      <testcase component="W3C_HTML5 APIs/Media/Web Speech API" execution_type="auto" id="SpeechSynthesis_paused_existence" purpose="Existence of paused attribute">
         <description>
-          <test_script_entry>/opt/webapi-webspeech-w3c-tests/webspeech/speechsynthesis-basic.html?total_num=14&amp;locator_key=id&amp;value=2</test_script_entry>
+          <test_script_entry>/opt/webapi-webspeech-w3c-tests/webspeech/speechsynthesis-basic.html?total_num=14&amp;amp;locator_key=id&amp;amp;value=5</test_script_entry>
         </description>
       </testcase>
-      <testcase component="W3C_HTML5 APIs/Media/Web Speech API" execution_type="auto" id="SpeechSynthesis_voice" purpose="Test that can get synthesizer voices from SpeechSynthesis">
+      <testcase component="W3C_HTML5 APIs/Media/Web Speech API" execution_type="auto" id="SpeechSynthesis_speak_existence" purpose="Existence of speak method">
         <description>
-          <test_script_entry>/opt/webapi-webspeech-w3c-tests/webspeech/blink/speech-synthesis-voices.html</test_script_entry>
+          <test_script_entry>/opt/webapi-webspeech-w3c-tests/webspeech/speechsynthesis-basic.html?total_num=14&amp;amp;locator_key=id&amp;amp;value=6</test_script_entry>
         </description>
       </testcase>
-      <testcase component="W3C_HTML5 APIs/Media/Web Speech API" execution_type="auto" id="SpeechSynthesisEvent_charIndex" purpose="Test if character index into the original utterance string that most closely approximates the current speaking position of the speech engine">
+      <testcase component="W3C_HTML5 APIs/Media/Web Speech API" execution_type="auto" id="SpeechSynthesis_cancel_existence" purpose="Existence of cancel method">
         <description>
-          <test_script_entry>/opt/webapi-webspeech-w3c-tests/webspeech/speechsynthesisevent_charIndex.html</test_script_entry>
+          <test_script_entry>/opt/webapi-webspeech-w3c-tests/webspeech/speechsynthesis-basic.html?total_num=14&amp;amp;locator_key=id&amp;amp;value=7</test_script_entry>
+        </description>
+      </testcase>
+      <testcase component="W3C_HTML5 APIs/Media/Web Speech API" execution_type="auto" id="SpeechSynthesis_pause_existence" purpose="Existence of pause method">
+        <description>
+          <test_script_entry>/opt/webapi-webspeech-w3c-tests/webspeech/speechsynthesis-basic.html?total_num=14&amp;amp;locator_key=id&amp;amp;value=8</test_script_entry>
+        </description>
+      </testcase>
+      <testcase component="W3C_HTML5 APIs/Media/Web Speech API" execution_type="auto" id="SpeechSynthesis_resume_existence" purpose="Existence of resume method">
+        <description>
+          <test_script_entry>/opt/webapi-webspeech-w3c-tests/webspeech/speechsynthesis-basic.html?total_num=14&amp;amp;locator_key=id&amp;amp;value=9</test_script_entry>
+        </description>
+      </testcase>
+      <testcase component="W3C_HTML5 APIs/Media/Web Speech API" execution_type="auto" id="SpeechSynthesis_getVoices_existence" purpose="Existence of getVoices method">
+        <description>
+          <test_script_entry>/opt/webapi-webspeech-w3c-tests/webspeech/speechsynthesis-basic.html?total_num=14&amp;amp;locator_key=id&amp;amp;value=10</test_script_entry>
+        </description>
+      </testcase>
+      <testcase component="W3C_HTML5 APIs/Media/Web Speech API" execution_type="auto" id="SpeechSynthesis_pending_value" purpose="Initial value of pending attribute">
+        <description>
+          <test_script_entry>/opt/webapi-webspeech-w3c-tests/webspeech/speechsynthesis-basic.html?total_num=14&amp;amp;locator_key=id&amp;amp;value=11</test_script_entry>
+        </description>
+      </testcase>
+      <testcase component="W3C_HTML5 APIs/Media/Web Speech API" execution_type="auto" id="SpeechSynthesis_speaking_value" purpose="Value of speaking attribute">
+        <description>
+          <test_script_entry>/opt/webapi-webspeech-w3c-tests/webspeech/speechsynthesis-basic.html?total_num=14&amp;amp;locator_key=id&amp;amp;value=12</test_script_entry>
+        </description>
+      </testcase>
+      <testcase component="W3C_HTML5 APIs/Media/Web Speech API" execution_type="auto" id="SpeechSynthesis_paused_value" purpose="Value of paused attribute">
+        <description>
+          <test_script_entry>/opt/webapi-webspeech-w3c-tests/webspeech/speechsynthesis-basic.html?total_num=14&amp;amp;locator_key=id&amp;amp;value=13</test_script_entry>
+        </description>
+      </testcase>
+      <testcase component="W3C_HTML5 APIs/Media/Web Speech API" execution_type="auto" id="SpeechSynthesis_getVoices_type" purpose="Type of speechSynthesis.getVoices()">
+        <description>
+          <test_script_entry>/opt/webapi-webspeech-w3c-tests/webspeech/speechsynthesis-basic.html?total_num=14&amp;amp;locator_key=id&amp;amp;value=14</test_script_entry>
+        </description>
+      </testcase>
+      <testcase component="W3C_HTML5 APIs/Media/Web Speech API" execution_type="manual" id="SpeechSynthesis_manual_basic" purpose="Test checks if SpeechSynthesis interface works well">
+        <description>
+          <test_script_entry>/opt/webapi-webspeech-w3c-tests/webspeech/speechsynthesis-manual.html</test_script_entry>
         </description>
       </testcase>
       <testcase component="W3C_HTML5 APIs/Media/Web Speech API" execution_type="auto" id="SpeechSynthesisEvent_charIndex_attribute" purpose="Check if CharIndex attribute of SpeechSynthesisEvent is readOnly">
@@ -733,14 +763,14 @@
           <test_script_entry>/opt/webapi-webspeech-w3c-tests/webspeech/SpeechSynthesisEvent_charIndex_attribute.html</test_script_entry>
         </description>
       </testcase>
+      <testcase component="W3C_HTML5 APIs/Media/Web Speech API" execution_type="auto" id="SpeechSynthesisEvent_charIndex" purpose="Test if character index into the original utterance string that most closely approximates the current speaking position of the speech engine">
+        <description>
+          <test_script_entry>/opt/webapi-webspeech-w3c-tests/webspeech/SpeechSynthesisEvent_charIndex.html</test_script_entry>
+        </description>
+      </testcase>
       <testcase component="W3C_HTML5 APIs/Media/Web Speech API" execution_type="auto" id="SpeechSynthesisEvent_elapsedTime_attribute" purpose="Check if elapsedTime attribute of SpeechSynthesisEvent is readOnly">
         <description>
           <test_script_entry>/opt/webapi-webspeech-w3c-tests/webspeech/SpeechSynthesisEvent_elapsedTime_attribute.html</test_script_entry>
-        </description>
-      </testcase>
-      <testcase component="W3C_HTML5 APIs/Media/Web Speech API" execution_type="auto" id="SpeechSynthesisEvent_existence" purpose="Existence of SpeechSynthesisEvent interface">
-        <description>
-          <test_script_entry>/opt/webapi-webspeech-w3c-tests/webspeech/speechsynthesisevent-basics.html?total_num=3&amp;locator_key=id&amp;value=1</test_script_entry>
         </description>
       </testcase>
       <testcase component="W3C_HTML5 APIs/Media/Web Speech API" execution_type="auto" id="SpeechSynthesisEvent_extend" purpose="Check if SpeechSynthesisEvent is extensible">
@@ -748,19 +778,34 @@
           <test_script_entry>/opt/webapi-webspeech-w3c-tests/webspeech/SpeechSynthesisEvent_extend.html</test_script_entry>
         </description>
       </testcase>
-      <testcase component="W3C_HTML5 APIs/Media/Web Speech API" execution_type="auto" id="SpeechSynthesisEvent_name" purpose="Test if name should return undefined for start event">
-        <description>
-          <test_script_entry>/opt/webapi-webspeech-w3c-tests/webspeech/speechsynthesisevent_name.html</test_script_entry>
-        </description>
-      </testcase>
       <testcase component="W3C_HTML5 APIs/Media/Web Speech API" execution_type="auto" id="SpeechSynthesisEvent_name_attribute" purpose="Check if name attribute of SpeechSynthesisEvent is readOnly">
         <description>
           <test_script_entry>/opt/webapi-webspeech-w3c-tests/webspeech/SpeechSynthesisEvent_name_attribute.html</test_script_entry>
         </description>
       </testcase>
+      <testcase component="W3C_HTML5 APIs/Media/Web Speech API" execution_type="auto" id="SpeechSynthesisEvent_name" purpose="Test if name should return undefined for start event">
+        <description>
+          <test_script_entry>/opt/webapi-webspeech-w3c-tests/webspeech/SpeechSynthesisEvent_name.html</test_script_entry>
+        </description>
+      </testcase>
+      <testcase component="W3C_HTML5 APIs/Media/Web Speech API" execution_type="auto" id="SpeechSynthesisEvent_existence" purpose="Existence of SpeechSynthesisEvent interface">
+        <description>
+          <test_script_entry>/opt/webapi-webspeech-w3c-tests/webspeech/SpeechSynthesisEvent_basics.html?total_num=3&amp;amp;locator_key=id&amp;amp;value=1</test_script_entry>
+        </description>
+      </testcase>
       <testcase component="W3C_HTML5 APIs/Media/Web Speech API" execution_type="auto" id="SpeechSynthesisEvent_value" purpose="Value of SpeechSynthesisEvent object">
         <description>
-          <test_script_entry>/opt/webapi-webspeech-w3c-tests/webspeech/speechsynthesisevent-basics.html?total_num=3&amp;locator_key=id&amp;value=2</test_script_entry>
+          <test_script_entry>/opt/webapi-webspeech-w3c-tests/webspeech/SpeechSynthesisEvent_basics.html?total_num=3&amp;amp;locator_key=id&amp;amp;value=2</test_script_entry>
+        </description>
+      </testcase>
+      <testcase component="W3C_HTML5 APIs/Media/Web Speech API" execution_type="auto" id="SpeechSynthesisEvent_prototype" purpose="Prototype of SpeechSynthesisEvent">
+        <description>
+          <test_script_entry>/opt/webapi-webspeech-w3c-tests/webspeech/SpeechSynthesisEvent_basics.html?total_num=3&amp;amp;locator_key=id&amp;amp;value=3</test_script_entry>
+        </description>
+      </testcase>
+      <testcase component="W3C_HTML5 APIs/Media/Web Speech API" execution_type="manual" id="SpeechSynthesisEvent_results" purpose="Test if the results exists and contains the array of all current recognition results for this session">
+        <description>
+          <test_script_entry>/opt/webapi-webspeech-w3c-tests/webspeech/SpeechRecognitionEvent_results-manual.html</test_script_entry>
         </description>
       </testcase>
       <testcase component="W3C_HTML5 APIs/Media/Web Speech API" execution_type="auto" id="SpeechSynthesisGetter_notexist" purpose="Check if SpeechSynthesisGetter is NoInterfaceObject">
@@ -778,9 +823,9 @@
           <test_script_entry>/opt/webapi-webspeech-w3c-tests/webspeech/speechsynthesisutterance_error-manual.html</test_script_entry>
         </description>
       </testcase>
-      <testcase component="W3C_HTML5 APIs/Media/Web Speech API" execution_type="auto" id="SpeechSynthesisUtterance_existence" purpose="Existence of SpeechSynthesisUtterance interface">
+      <testcase component="W3C_HTML5 APIs/Media/Web Speech API" execution_type="auto" id="SpeechSynthesisUtterance_lang_attribute" purpose="Check if lang attribute of SpeechSynthesisUtterance exist and writable">
         <description>
-          <test_script_entry>/opt/webapi-webspeech-w3c-tests/webspeech/speechsynthesisutterance-basics.html?total_num=30&amp;locator_key=id&amp;value=1</test_script_entry>
+          <test_script_entry>/opt/webapi-webspeech-w3c-tests/webspeech/SpeechSynthesisUtterance_lang_attribute.html</test_script_entry>
         </description>
       </testcase>
       <testcase component="W3C_HTML5 APIs/Media/Web Speech API" execution_type="auto" id="SpeechSynthesisUtterance_lang" purpose="Test if default to use the lang of the html document root element">
@@ -788,59 +833,9 @@
           <test_script_entry>/opt/webapi-webspeech-w3c-tests/webspeech/speechsynthesisutterance_lang.html</test_script_entry>
         </description>
       </testcase>
-      <testcase component="W3C_HTML5 APIs/Media/Web Speech API" execution_type="auto" id="SpeechSynthesisUtterance_lang_attribute" purpose="Check if lang attribute of SpeechSynthesisUtterance exist and writable">
-        <description>
-          <test_script_entry>/opt/webapi-webspeech-w3c-tests/webspeech/SpeechSynthesisUtterance_lang_attribute.html</test_script_entry>
-        </description>
-      </testcase>
-      <testcase component="W3C_HTML5 APIs/Media/Web Speech API" execution_type="auto" id="SpeechSynthesisUtterance_lang_existence" purpose="Existence of lang attribute">
-        <description>
-          <test_script_entry>/opt/webapi-webspeech-w3c-tests/webspeech/speechsynthesisutterance-basics.html?total_num=30&amp;locator_key=id&amp;value=4</test_script_entry>
-        </description>
-      </testcase>
-      <testcase component="W3C_HTML5 APIs/Media/Web Speech API" execution_type="auto" id="SpeechSynthesisUtterance_lang_set" purpose="Set value for lang attribute">
-        <description>
-          <test_script_entry>/opt/webapi-webspeech-w3c-tests/webspeech/speechsynthesisutterance-basics.html?total_num=30&amp;locator_key=id&amp;value=17</test_script_entry>
-        </description>
-      </testcase>
       <testcase component="W3C_HTML5 APIs/Media/Web Speech API" execution_type="auto" id="SpeechSynthesisUtterance_mark" purpose="Test if onmark fired when this utterance has begun to be spoken">
         <description>
           <test_script_entry>/opt/webapi-webspeech-w3c-tests/webspeech/speechsynthesisutterance_mark.html</test_script_entry>
-        </description>
-      </testcase>
-      <testcase component="W3C_HTML5 APIs/Media/Web Speech API" execution_type="auto" id="SpeechSynthesisUtterance_onboundary_existence" purpose="Existence of onboundary attribute">
-        <description>
-          <test_script_entry>/opt/webapi-webspeech-w3c-tests/webspeech/speechsynthesisutterance-basics.html?total_num=30&amp;locator_key=id&amp;value=15</test_script_entry>
-        </description>
-      </testcase>
-      <testcase component="W3C_HTML5 APIs/Media/Web Speech API" execution_type="auto" id="SpeechSynthesisUtterance_onend_existence" purpose="Existence of onend attribute">
-        <description>
-          <test_script_entry>/opt/webapi-webspeech-w3c-tests/webspeech/speechsynthesisutterance-basics.html?total_num=30&amp;locator_key=id&amp;value=10</test_script_entry>
-        </description>
-      </testcase>
-      <testcase component="W3C_HTML5 APIs/Media/Web Speech API" execution_type="auto" id="SpeechSynthesisUtterance_onerror_existence" purpose="Existence of onerror attribute">
-        <description>
-          <test_script_entry>/opt/webapi-webspeech-w3c-tests/webspeech/speechsynthesisutterance-basics.html?total_num=30&amp;locator_key=id&amp;value=11</test_script_entry>
-        </description>
-      </testcase>
-      <testcase component="W3C_HTML5 APIs/Media/Web Speech API" execution_type="auto" id="SpeechSynthesisUtterance_onmark_existence" purpose="Existence of onmark attribute">
-        <description>
-          <test_script_entry>/opt/webapi-webspeech-w3c-tests/webspeech/speechsynthesisutterance-basics.html?total_num=30&amp;locator_key=id&amp;value=14</test_script_entry>
-        </description>
-      </testcase>
-      <testcase component="W3C_HTML5 APIs/Media/Web Speech API" execution_type="auto" id="SpeechSynthesisUtterance_onpause_existence" purpose="Existence of onpause attribute">
-        <description>
-          <test_script_entry>/opt/webapi-webspeech-w3c-tests/webspeech/speechsynthesisutterance-basics.html?total_num=30&amp;locator_key=id&amp;value=12</test_script_entry>
-        </description>
-      </testcase>
-      <testcase component="W3C_HTML5 APIs/Media/Web Speech API" execution_type="auto" id="SpeechSynthesisUtterance_onresume_existence" purpose="Existence of onresume attribute">
-        <description>
-          <test_script_entry>/opt/webapi-webspeech-w3c-tests/webspeech/speechsynthesisutterance-basics.html?total_num=30&amp;locator_key=id&amp;value=13</test_script_entry>
-        </description>
-      </testcase>
-      <testcase component="W3C_HTML5 APIs/Media/Web Speech API" execution_type="auto" id="SpeechSynthesisUtterance_onstart_existence" purpose="Existence of onstart attribute">
-        <description>
-          <test_script_entry>/opt/webapi-webspeech-w3c-tests/webspeech/speechsynthesisutterance-basics.html?total_num=30&amp;locator_key=id&amp;value=9</test_script_entry>
         </description>
       </testcase>
       <testcase component="W3C_HTML5 APIs/Media/Web Speech API" execution_type="auto" id="SpeechSynthesisUtterance_pause" purpose="Test if fired when and if this utterance is paused mid-utterance">
@@ -848,64 +843,24 @@
           <test_script_entry>/opt/webapi-webspeech-w3c-tests/webspeech/speechsynthesisutterance_pause.html</test_script_entry>
         </description>
       </testcase>
-      <testcase component="W3C_HTML5 APIs/Media/Web Speech API" execution_type="auto" id="SpeechSynthesisUtterance_pitch_1" purpose="Test if pitch is a default of 1">
-        <description>
-          <test_script_entry>/opt/webapi-webspeech-w3c-tests/webspeech/speechsynthesisutterance_pitch.html?total_num=3&amp;locator_key=id&amp;value=1</test_script_entry>
-        </description>
-      </testcase>
-      <testcase component="W3C_HTML5 APIs/Media/Web Speech API" execution_type="auto" id="SpeechSynthesisUtterance_pitch_2" purpose="Test if pitch is 0 being the lowest pitch">
-        <description>
-          <test_script_entry>/opt/webapi-webspeech-w3c-tests/webspeech/speechsynthesisutterance_pitch.html?total_num=3&amp;locator_key=id&amp;value=2</test_script_entry>
-        </description>
-      </testcase>
-      <testcase component="W3C_HTML5 APIs/Media/Web Speech API" execution_type="auto" id="SpeechSynthesisUtterance_pitch_3" purpose="Test if pitch is 2 being the highest pitch">
-        <description>
-          <test_script_entry>/opt/webapi-webspeech-w3c-tests/webspeech/speechsynthesisutterance_pitch.html?total_num=3&amp;locator_key=id&amp;value=3</test_script_entry>
-        </description>
-      </testcase>
       <testcase component="W3C_HTML5 APIs/Media/Web Speech API" execution_type="auto" id="SpeechSynthesisUtterance_pitch_attribute" purpose="Check if pitch attribute of SpeechSynthesisUtterance exist and writable">
         <description>
           <test_script_entry>/opt/webapi-webspeech-w3c-tests/webspeech/SpeechSynthesisUtterance_pitch_attribute.html</test_script_entry>
         </description>
       </testcase>
-      <testcase component="W3C_HTML5 APIs/Media/Web Speech API" execution_type="auto" id="SpeechSynthesisUtterance_pitch_existence" purpose="Existence of pitch attribute">
+      <testcase component="W3C_HTML5 APIs/Media/Web Speech API" execution_type="auto" id="SpeechSynthesisUtterance_pitch_1" purpose="Test if pitch is a default of 1">
         <description>
-          <test_script_entry>/opt/webapi-webspeech-w3c-tests/webspeech/speechsynthesisutterance-basics.html?total_num=30&amp;locator_key=id&amp;value=8</test_script_entry>
+          <test_script_entry>/opt/webapi-webspeech-w3c-tests/webspeech/speechsynthesisutterance_pitch.html?total_num=3&amp;amp;locator_key=id&amp;amp;value=1</test_script_entry>
         </description>
       </testcase>
-      <testcase component="W3C_HTML5 APIs/Media/Web Speech API" execution_type="auto" id="SpeechSynthesisUtterance_pitch_max_value" purpose="Max value of pitch attribute">
+      <testcase component="W3C_HTML5 APIs/Media/Web Speech API" execution_type="auto" id="SpeechSynthesisUtterance_pitch_2" purpose="Test if pitch is 0 being the lowest pitch">
         <description>
-          <test_script_entry>/opt/webapi-webspeech-w3c-tests/webspeech/speechsynthesisutterance-basics.html?total_num=30&amp;locator_key=id&amp;value=30</test_script_entry>
+          <test_script_entry>/opt/webapi-webspeech-w3c-tests/webspeech/speechsynthesisutterance_pitch.html?total_num=3&amp;amp;locator_key=id&amp;amp;value=2</test_script_entry>
         </description>
       </testcase>
-      <testcase component="W3C_HTML5 APIs/Media/Web Speech API" execution_type="auto" id="SpeechSynthesisUtterance_pitch_min_value" purpose="Min value of pitch attribute">
+      <testcase component="W3C_HTML5 APIs/Media/Web Speech API" execution_type="auto" id="SpeechSynthesisUtterance_pitch_3" purpose="Test if pitch is 2 being the highest pitch">
         <description>
-          <test_script_entry>/opt/webapi-webspeech-w3c-tests/webspeech/speechsynthesisutterance-basics.html?total_num=30&amp;locator_key=id&amp;value=29</test_script_entry>
-        </description>
-      </testcase>
-      <testcase component="W3C_HTML5 APIs/Media/Web Speech API" execution_type="auto" id="SpeechSynthesisUtterance_pitch_set" purpose="Set value for pitch attribute">
-        <description>
-          <test_script_entry>/opt/webapi-webspeech-w3c-tests/webspeech/speechsynthesisutterance-basics.html?total_num=30&amp;locator_key=id&amp;value=28</test_script_entry>
-        </description>
-      </testcase>
-      <testcase component="W3C_HTML5 APIs/Media/Web Speech API" execution_type="auto" id="SpeechSynthesisUtterance_pitch_value" purpose="Default value of pitch attribute">
-        <description>
-          <test_script_entry>/opt/webapi-webspeech-w3c-tests/webspeech/speechsynthesisutterance-basics.html?total_num=30&amp;locator_key=id&amp;value=27</test_script_entry>
-        </description>
-      </testcase>
-      <testcase component="W3C_HTML5 APIs/Media/Web Speech API" execution_type="auto" id="SpeechSynthesisUtterance_rate_1" purpose="Test if rate is a default of 1">
-        <description>
-          <test_script_entry>/opt/webapi-webspeech-w3c-tests/webspeech/speechsynthesisutterance_rate.html?total_num=3&amp;locator_key=id&amp;value=1</test_script_entry>
-        </description>
-      </testcase>
-      <testcase component="W3C_HTML5 APIs/Media/Web Speech API" execution_type="auto" id="SpeechSynthesisUtterance_rate_2" purpose="Test if rate is 0.1 being the lowest rate">
-        <description>
-          <test_script_entry>/opt/webapi-webspeech-w3c-tests/webspeech/speechsynthesisutterance_rate.html?total_num=3&amp;locator_key=id&amp;value=2</test_script_entry>
-        </description>
-      </testcase>
-      <testcase component="W3C_HTML5 APIs/Media/Web Speech API" execution_type="auto" id="SpeechSynthesisUtterance_rate_3" purpose="Test if rate is 10 being the highest rate">
-        <description>
-          <test_script_entry>/opt/webapi-webspeech-w3c-tests/webspeech/speechsynthesisutterance_rate.html?total_num=3&amp;locator_key=id&amp;value=3</test_script_entry>
+          <test_script_entry>/opt/webapi-webspeech-w3c-tests/webspeech/speechsynthesisutterance_pitch.html?total_num=3&amp;amp;locator_key=id&amp;amp;value=3</test_script_entry>
         </description>
       </testcase>
       <testcase component="W3C_HTML5 APIs/Media/Web Speech API" execution_type="auto" id="SpeechSynthesisUtterance_rate_attribute" purpose="Check if rate attribute of SpeechSynthesisUtterance exist and writable">
@@ -913,29 +868,19 @@
           <test_script_entry>/opt/webapi-webspeech-w3c-tests/webspeech/SpeechSynthesisUtterance_rate_attribute.html</test_script_entry>
         </description>
       </testcase>
-      <testcase component="W3C_HTML5 APIs/Media/Web Speech API" execution_type="auto" id="SpeechSynthesisUtterance_rate_existence" purpose="Existence of rate attribute">
+      <testcase component="W3C_HTML5 APIs/Media/Web Speech API" execution_type="auto" id="SpeechSynthesisUtterance_rate_1" purpose="Test if rate is a default of 1">
         <description>
-          <test_script_entry>/opt/webapi-webspeech-w3c-tests/webspeech/speechsynthesisutterance-basics.html?total_num=30&amp;locator_key=id&amp;value=7</test_script_entry>
+          <test_script_entry>/opt/webapi-webspeech-w3c-tests/webspeech/speechsynthesisutterance_rate.html?total_num=3&amp;amp;locator_key=id&amp;amp;value=1</test_script_entry>
         </description>
       </testcase>
-      <testcase component="W3C_HTML5 APIs/Media/Web Speech API" execution_type="auto" id="SpeechSynthesisUtterance_rate_max_value" purpose="Max value of rate attribute">
+      <testcase component="W3C_HTML5 APIs/Media/Web Speech API" execution_type="auto" id="SpeechSynthesisUtterance_rate_2" purpose="Test if rate is 0.1 being the lowest rate">
         <description>
-          <test_script_entry>/opt/webapi-webspeech-w3c-tests/webspeech/speechsynthesisutterance-basics.html?total_num=30&amp;locator_key=id&amp;value=26</test_script_entry>
+          <test_script_entry>/opt/webapi-webspeech-w3c-tests/webspeech/speechsynthesisutterance_rate.html?total_num=3&amp;amp;locator_key=id&amp;amp;value=2</test_script_entry>
         </description>
       </testcase>
-      <testcase component="W3C_HTML5 APIs/Media/Web Speech API" execution_type="auto" id="SpeechSynthesisUtterance_rate_min_value" purpose="Min value of rate attribute">
+      <testcase component="W3C_HTML5 APIs/Media/Web Speech API" execution_type="auto" id="SpeechSynthesisUtterance_rate_3" purpose="Test if rate is 10 being the highest rate">
         <description>
-          <test_script_entry>/opt/webapi-webspeech-w3c-tests/webspeech/speechsynthesisutterance-basics.html?total_num=30&amp;locator_key=id&amp;value=25</test_script_entry>
-        </description>
-      </testcase>
-      <testcase component="W3C_HTML5 APIs/Media/Web Speech API" execution_type="auto" id="SpeechSynthesisUtterance_rate_set" purpose="Set value for rate attribute">
-        <description>
-          <test_script_entry>/opt/webapi-webspeech-w3c-tests/webspeech/speechsynthesisutterance-basics.html?total_num=30&amp;locator_key=id&amp;value=24</test_script_entry>
-        </description>
-      </testcase>
-      <testcase component="W3C_HTML5 APIs/Media/Web Speech API" execution_type="auto" id="SpeechSynthesisUtterance_rate_value" purpose="Default value of rate attribute">
-        <description>
-          <test_script_entry>/opt/webapi-webspeech-w3c-tests/webspeech/speechsynthesisutterance-basics.html?total_num=30&amp;locator_key=id&amp;value=23</test_script_entry>
+          <test_script_entry>/opt/webapi-webspeech-w3c-tests/webspeech/speechsynthesisutterance_rate.html?total_num=3&amp;amp;locator_key=id&amp;amp;value=3</test_script_entry>
         </description>
       </testcase>
       <testcase component="W3C_HTML5 APIs/Media/Web Speech API" execution_type="auto" id="SpeechSynthesisUtterance_resume" purpose="Test if onresume fired when and if this utterance is resumed after being paused mid-utterance">
@@ -948,34 +893,14 @@
           <test_script_entry>/opt/webapi-webspeech-w3c-tests/webspeech/speechsynthesisutterance_start.html</test_script_entry>
         </description>
       </testcase>
-      <testcase component="W3C_HTML5 APIs/Media/Web Speech API" execution_type="auto" id="SpeechSynthesisUtterance_text" purpose="Test if text can be a complete, well-formed SSML document">
-        <description>
-          <test_script_entry>/opt/webapi-webspeech-w3c-tests/webspeech/speechsynthesisutterance_text.html</test_script_entry>
-        </description>
-      </testcase>
       <testcase component="W3C_HTML5 APIs/Media/Web Speech API" execution_type="auto" id="SpeechSynthesisUtterance_text_attribute" purpose="Check if text attribute of SpeechSynthesisUtterance exists and writable">
         <description>
           <test_script_entry>/opt/webapi-webspeech-w3c-tests/webspeech/SpeechSynthesisUtterance_text_attribute.html</test_script_entry>
         </description>
       </testcase>
-      <testcase component="W3C_HTML5 APIs/Media/Web Speech API" execution_type="auto" id="SpeechSynthesisUtterance_text_existence" purpose="Existence of text attribute">
+      <testcase component="W3C_HTML5 APIs/Media/Web Speech API" execution_type="auto" id="SpeechSynthesisUtterance_text" purpose="Test if text can be a complete, well-formed SSML document">
         <description>
-          <test_script_entry>/opt/webapi-webspeech-w3c-tests/webspeech/speechsynthesisutterance-basics.html?total_num=30&amp;locator_key=id&amp;value=3</test_script_entry>
-        </description>
-      </testcase>
-      <testcase component="W3C_HTML5 APIs/Media/Web Speech API" execution_type="auto" id="SpeechSynthesisUtterance_text_set" purpose="Set value for text attribute">
-        <description>
-          <test_script_entry>/opt/webapi-webspeech-w3c-tests/webspeech/speechsynthesisutterance-basics.html?total_num=30&amp;locator_key=id&amp;value=16</test_script_entry>
-        </description>
-      </testcase>
-      <testcase component="W3C_HTML5 APIs/Media/Web Speech API" execution_type="auto" id="SpeechSynthesisUtterance_value" purpose="Value of SpeechSynthesisUtterance object">
-        <description>
-          <test_script_entry>/opt/webapi-webspeech-w3c-tests/webspeech/speechsynthesisutterance-basics.html?total_num=30&amp;locator_key=id&amp;value=2</test_script_entry>
-        </description>
-      </testcase>
-      <testcase component="W3C_HTML5 APIs/Media/Web Speech API" execution_type="auto" id="SpeechSynthesisUtterance_voice" purpose="Test that can get synthesizer voices from SpeechSynthesisUtterance">
-        <description>
-          <test_script_entry>/opt/webapi-webspeech-w3c-tests/webspeech/blink/speech-synthesis-utterance-uses-voice.html</test_script_entry>
+          <test_script_entry>/opt/webapi-webspeech-w3c-tests/webspeech/speechsynthesisutterance_text.html</test_script_entry>
         </description>
       </testcase>
       <testcase component="W3C_HTML5 APIs/Media/Web Speech API" execution_type="auto" id="SpeechSynthesisUtterance_voiceURI_attribute" purpose="Check if voiceURI attribute of SpeechSynthesisUtterance exist and writable">
@@ -983,59 +908,174 @@
           <test_script_entry>/opt/webapi-webspeech-w3c-tests/webspeech/SpeechSynthesisUtterance_voiceURI_attribute.html</test_script_entry>
         </description>
       </testcase>
-      <testcase component="W3C_HTML5 APIs/Media/Web Speech API" execution_type="auto" id="SpeechSynthesisUtterance_voiceURI_existence" purpose="Existence of voiceURI attribute">
-        <description>
-          <test_script_entry>/opt/webapi-webspeech-w3c-tests/webspeech/speechsynthesisutterance-basics.html?total_num=30&amp;locator_key=id&amp;value=5</test_script_entry>
-        </description>
-      </testcase>
-      <testcase component="W3C_HTML5 APIs/Media/Web Speech API" execution_type="auto" id="SpeechSynthesisUtterance_voiceURI_set" purpose="Set value for voiceURI attribute">
-        <description>
-          <test_script_entry>/opt/webapi-webspeech-w3c-tests/webspeech/speechsynthesisutterance-basics.html?total_num=30&amp;locator_key=id&amp;value=18</test_script_entry>
-        </description>
-      </testcase>
-      <testcase component="W3C_HTML5 APIs/Media/Web Speech API" execution_type="auto" id="SpeechSynthesisUtterance_volume_1" purpose="Test if volume is a default of 1">
-        <description>
-          <test_script_entry>/opt/webapi-webspeech-w3c-tests/webspeech/speechsynthesisutterance_volume.html?total_num=3&amp;locator_key=id&amp;value=1</test_script_entry>
-        </description>
-      </testcase>
-      <testcase component="W3C_HTML5 APIs/Media/Web Speech API" execution_type="auto" id="SpeechSynthesisUtterance_volume_2" purpose="Test if volume is 0 being the lowest volume">
-        <description>
-          <test_script_entry>/opt/webapi-webspeech-w3c-tests/webspeech/speechsynthesisutterance_volume.html?total_num=3&amp;locator_key=id&amp;value=2</test_script_entry>
-        </description>
-      </testcase>
-      <testcase component="W3C_HTML5 APIs/Media/Web Speech API" execution_type="auto" id="SpeechSynthesisUtterance_volume_3" purpose="Test if volume is 1 being the highest volume">
-        <description>
-          <test_script_entry>/opt/webapi-webspeech-w3c-tests/webspeech/speechsynthesisutterance_volume.html?total_num=3&amp;locator_key=id&amp;value=3</test_script_entry>
-        </description>
-      </testcase>
       <testcase component="W3C_HTML5 APIs/Media/Web Speech API" execution_type="auto" id="SpeechSynthesisUtterance_volume_attribute" purpose="Check if volume attribute of SpeechSynthesisUtterance exist and writable">
         <description>
           <test_script_entry>/opt/webapi-webspeech-w3c-tests/webspeech/SpeechSynthesisUtterance_volume_attribute.html</test_script_entry>
         </description>
       </testcase>
+      <testcase component="W3C_HTML5 APIs/Media/Web Speech API" execution_type="auto" id="SpeechSynthesisUtterance_volume_1" purpose="Test if volume is a default of 1">
+        <description>
+          <test_script_entry>/opt/webapi-webspeech-w3c-tests/webspeech/speechsynthesisutterance_volume.html?total_num=3&amp;amp;locator_key=id&amp;amp;value=1</test_script_entry>
+        </description>
+      </testcase>
+      <testcase component="W3C_HTML5 APIs/Media/Web Speech API" execution_type="auto" id="SpeechSynthesisUtterance_volume_2" purpose="Test if volume is 0 being the lowest volume">
+        <description>
+          <test_script_entry>/opt/webapi-webspeech-w3c-tests/webspeech/speechsynthesisutterance_volume.html?total_num=3&amp;amp;locator_key=id&amp;amp;value=2</test_script_entry>
+        </description>
+      </testcase>
+      <testcase component="W3C_HTML5 APIs/Media/Web Speech API" execution_type="auto" id="SpeechSynthesisUtterance_volume_3" purpose="Test if volume is 1 being the highest volume">
+        <description>
+          <test_script_entry>/opt/webapi-webspeech-w3c-tests/webspeech/speechsynthesisutterance_volume.html?total_num=3&amp;amp;locator_key=id&amp;amp;value=3</test_script_entry>
+        </description>
+      </testcase>
+      <testcase component="W3C_HTML5 APIs/Media/Web Speech API" execution_type="auto" id="SpeechSynthesisUtterance_existence" purpose="Existence of SpeechSynthesisUtterance interface">
+        <description>
+          <test_script_entry>/opt/webapi-webspeech-w3c-tests/webspeech/speechsynthesisutterance-basics.html?total_num=30&amp;amp;locator_key=id&amp;amp;value=1</test_script_entry>
+        </description>
+      </testcase>
+      <testcase component="W3C_HTML5 APIs/Media/Web Speech API" execution_type="auto" id="SpeechSynthesisUtterance_value" purpose="Value of SpeechSynthesisUtterance object">
+        <description>
+          <test_script_entry>/opt/webapi-webspeech-w3c-tests/webspeech/speechsynthesisutterance-basics.html?total_num=30&amp;amp;locator_key=id&amp;amp;value=2</test_script_entry>
+        </description>
+      </testcase>
+      <testcase component="W3C_HTML5 APIs/Media/Web Speech API" execution_type="auto" id="SpeechSynthesisUtterance_text_existence" purpose="Existence of text attribute">
+        <description>
+          <test_script_entry>/opt/webapi-webspeech-w3c-tests/webspeech/speechsynthesisutterance-basics.html?total_num=30&amp;amp;locator_key=id&amp;amp;value=3</test_script_entry>
+        </description>
+      </testcase>
+      <testcase component="W3C_HTML5 APIs/Media/Web Speech API" execution_type="auto" id="SpeechSynthesisUtterance_lang_existence" purpose="Existence of lang attribute">
+        <description>
+          <test_script_entry>/opt/webapi-webspeech-w3c-tests/webspeech/speechsynthesisutterance-basics.html?total_num=30&amp;amp;locator_key=id&amp;amp;value=4</test_script_entry>
+        </description>
+      </testcase>
+      <testcase component="W3C_HTML5 APIs/Media/Web Speech API" execution_type="auto" id="SpeechSynthesisUtterance_voiceURI_existence" purpose="Existence of voiceURI attribute">
+        <description>
+          <test_script_entry>/opt/webapi-webspeech-w3c-tests/webspeech/speechsynthesisutterance-basics.html?total_num=30&amp;amp;locator_key=id&amp;amp;value=5</test_script_entry>
+        </description>
+      </testcase>
       <testcase component="W3C_HTML5 APIs/Media/Web Speech API" execution_type="auto" id="SpeechSynthesisUtterance_volume_existence" purpose="Existence of volume attribute">
         <description>
-          <test_script_entry>/opt/webapi-webspeech-w3c-tests/webspeech/speechsynthesisutterance-basics.html?total_num=30&amp;locator_key=id&amp;value=6</test_script_entry>
+          <test_script_entry>/opt/webapi-webspeech-w3c-tests/webspeech/speechsynthesisutterance-basics.html?total_num=30&amp;amp;locator_key=id&amp;amp;value=6</test_script_entry>
         </description>
       </testcase>
-      <testcase component="W3C_HTML5 APIs/Media/Web Speech API" execution_type="auto" id="SpeechSynthesisUtterance_volume_max_value" purpose="Max value of volume attribute">
+      <testcase component="W3C_HTML5 APIs/Media/Web Speech API" execution_type="auto" id="SpeechSynthesisUtterance_rate_existence" purpose="Existence of rate attribute">
         <description>
-          <test_script_entry>/opt/webapi-webspeech-w3c-tests/webspeech/speechsynthesisutterance-basics.html?total_num=30&amp;locator_key=id&amp;value=22</test_script_entry>
+          <test_script_entry>/opt/webapi-webspeech-w3c-tests/webspeech/speechsynthesisutterance-basics.html?total_num=30&amp;amp;locator_key=id&amp;amp;value=7</test_script_entry>
         </description>
       </testcase>
-      <testcase component="W3C_HTML5 APIs/Media/Web Speech API" execution_type="auto" id="SpeechSynthesisUtterance_volume_min_value" purpose="Min value of volume attribute">
+      <testcase component="W3C_HTML5 APIs/Media/Web Speech API" execution_type="auto" id="SpeechSynthesisUtterance_pitch_existence" purpose="Existence of pitch attribute">
         <description>
-          <test_script_entry>/opt/webapi-webspeech-w3c-tests/webspeech/speechsynthesisutterance-basics.html?total_num=30&amp;locator_key=id&amp;value=21</test_script_entry>
+          <test_script_entry>/opt/webapi-webspeech-w3c-tests/webspeech/speechsynthesisutterance-basics.html?total_num=30&amp;amp;locator_key=id&amp;amp;value=8</test_script_entry>
         </description>
       </testcase>
-      <testcase component="W3C_HTML5 APIs/Media/Web Speech API" execution_type="auto" id="SpeechSynthesisUtterance_volume_set" purpose="Set value for volume attribute">
+      <testcase component="W3C_HTML5 APIs/Media/Web Speech API" execution_type="auto" id="SpeechSynthesisUtterance_onstart_existence" purpose="Existence of onstart attribute">
         <description>
-          <test_script_entry>/opt/webapi-webspeech-w3c-tests/webspeech/speechsynthesisutterance-basics.html?total_num=30&amp;locator_key=id&amp;value=20</test_script_entry>
+          <test_script_entry>/opt/webapi-webspeech-w3c-tests/webspeech/speechsynthesisutterance-basics.html?total_num=30&amp;amp;locator_key=id&amp;amp;value=9</test_script_entry>
+        </description>
+      </testcase>
+      <testcase component="W3C_HTML5 APIs/Media/Web Speech API" execution_type="auto" id="SpeechSynthesisUtterance_onend_existence" purpose="Existence of onend attribute">
+        <description>
+          <test_script_entry>/opt/webapi-webspeech-w3c-tests/webspeech/speechsynthesisutterance-basics.html?total_num=30&amp;amp;locator_key=id&amp;amp;value=10</test_script_entry>
+        </description>
+      </testcase>
+      <testcase component="W3C_HTML5 APIs/Media/Web Speech API" execution_type="auto" id="SpeechSynthesisUtterance_onerror_existence" purpose="Existence of onerror attribute">
+        <description>
+          <test_script_entry>/opt/webapi-webspeech-w3c-tests/webspeech/speechsynthesisutterance-basics.html?total_num=30&amp;amp;locator_key=id&amp;amp;value=11</test_script_entry>
+        </description>
+      </testcase>
+      <testcase component="W3C_HTML5 APIs/Media/Web Speech API" execution_type="auto" id="SpeechSynthesisUtterance_onpause_existence" purpose="Existence of onpause attribute">
+        <description>
+          <test_script_entry>/opt/webapi-webspeech-w3c-tests/webspeech/speechsynthesisutterance-basics.html?total_num=30&amp;amp;locator_key=id&amp;amp;value=12</test_script_entry>
+        </description>
+      </testcase>
+      <testcase component="W3C_HTML5 APIs/Media/Web Speech API" execution_type="auto" id="SpeechSynthesisUtterance_onresume_existence" purpose="Existence of onresume attribute">
+        <description>
+          <test_script_entry>/opt/webapi-webspeech-w3c-tests/webspeech/speechsynthesisutterance-basics.html?total_num=30&amp;amp;locator_key=id&amp;amp;value=13</test_script_entry>
+        </description>
+      </testcase>
+      <testcase component="W3C_HTML5 APIs/Media/Web Speech API" execution_type="auto" id="SpeechSynthesisUtterance_onmark_existence" purpose="Existence of onmark attribute">
+        <description>
+          <test_script_entry>/opt/webapi-webspeech-w3c-tests/webspeech/speechsynthesisutterance-basics.html?total_num=30&amp;amp;locator_key=id&amp;amp;value=14</test_script_entry>
+        </description>
+      </testcase>
+      <testcase component="W3C_HTML5 APIs/Media/Web Speech API" execution_type="auto" id="SpeechSynthesisUtterance_onboundary_existence" purpose="Existence of onboundary attribute">
+        <description>
+          <test_script_entry>/opt/webapi-webspeech-w3c-tests/webspeech/speechsynthesisutterance-basics.html?total_num=30&amp;amp;locator_key=id&amp;amp;value=15</test_script_entry>
+        </description>
+      </testcase>
+      <testcase component="W3C_HTML5 APIs/Media/Web Speech API" execution_type="auto" id="SpeechSynthesisUtterance_text_set" purpose="Set value for text attribute">
+        <description>
+          <test_script_entry>/opt/webapi-webspeech-w3c-tests/webspeech/speechsynthesisutterance-basics.html?total_num=30&amp;amp;locator_key=id&amp;amp;value=16</test_script_entry>
+        </description>
+      </testcase>
+      <testcase component="W3C_HTML5 APIs/Media/Web Speech API" execution_type="auto" id="SpeechSynthesisUtterance_lang_set" purpose="Set value for lang attribute">
+        <description>
+          <test_script_entry>/opt/webapi-webspeech-w3c-tests/webspeech/speechsynthesisutterance-basics.html?total_num=30&amp;amp;locator_key=id&amp;amp;value=17</test_script_entry>
+        </description>
+      </testcase>
+      <testcase component="W3C_HTML5 APIs/Media/Web Speech API" execution_type="auto" id="SpeechSynthesisUtterance_voiceURI_set" purpose="Set value for voiceURI attribute">
+        <description>
+          <test_script_entry>/opt/webapi-webspeech-w3c-tests/webspeech/speechsynthesisutterance-basics.html?total_num=30&amp;amp;locator_key=id&amp;amp;value=18</test_script_entry>
         </description>
       </testcase>
       <testcase component="W3C_HTML5 APIs/Media/Web Speech API" execution_type="auto" id="SpeechSynthesisUtterance_volume_value" purpose="Default value of volume attribute">
         <description>
-          <test_script_entry>/opt/webapi-webspeech-w3c-tests/webspeech/speechsynthesisutterance-basics.html?total_num=30&amp;locator_key=id&amp;value=19</test_script_entry>
+          <test_script_entry>/opt/webapi-webspeech-w3c-tests/webspeech/speechsynthesisutterance-basics.html?total_num=30&amp;amp;locator_key=id&amp;amp;value=19</test_script_entry>
+        </description>
+      </testcase>
+      <testcase component="W3C_HTML5 APIs/Media/Web Speech API" execution_type="auto" id="SpeechSynthesisUtterance_volume_set" purpose="Set value for volume attribute">
+        <description>
+          <test_script_entry>/opt/webapi-webspeech-w3c-tests/webspeech/speechsynthesisutterance-basics.html?total_num=30&amp;amp;locator_key=id&amp;amp;value=20</test_script_entry>
+        </description>
+      </testcase>
+      <testcase component="W3C_HTML5 APIs/Media/Web Speech API" execution_type="auto" id="SpeechSynthesisUtterance_volume_min_value" purpose="Min value of volume attribute">
+        <description>
+          <test_script_entry>/opt/webapi-webspeech-w3c-tests/webspeech/speechsynthesisutterance-basics.html?total_num=30&amp;amp;locator_key=id&amp;amp;value=21</test_script_entry>
+        </description>
+      </testcase>
+      <testcase component="W3C_HTML5 APIs/Media/Web Speech API" execution_type="auto" id="SpeechSynthesisUtterance_volume_max_value" purpose="Max value of volume attribute">
+        <description>
+          <test_script_entry>/opt/webapi-webspeech-w3c-tests/webspeech/speechsynthesisutterance-basics.html?total_num=30&amp;amp;locator_key=id&amp;amp;value=22</test_script_entry>
+        </description>
+      </testcase>
+      <testcase component="W3C_HTML5 APIs/Media/Web Speech API" execution_type="auto" id="SpeechSynthesisUtterance_rate_value" purpose="Default value of rate attribute">
+        <description>
+          <test_script_entry>/opt/webapi-webspeech-w3c-tests/webspeech/speechsynthesisutterance-basics.html?total_num=30&amp;amp;locator_key=id&amp;amp;value=23</test_script_entry>
+        </description>
+      </testcase>
+      <testcase component="W3C_HTML5 APIs/Media/Web Speech API" execution_type="auto" id="SpeechSynthesisUtterance_rate_set" purpose="Set value for rate attribute">
+        <description>
+          <test_script_entry>/opt/webapi-webspeech-w3c-tests/webspeech/speechsynthesisutterance-basics.html?total_num=30&amp;amp;locator_key=id&amp;amp;value=24</test_script_entry>
+        </description>
+      </testcase>
+      <testcase component="W3C_HTML5 APIs/Media/Web Speech API" execution_type="auto" id="SpeechSynthesisUtterance_rate_min_value" purpose="Min value of rate attribute">
+        <description>
+          <test_script_entry>/opt/webapi-webspeech-w3c-tests/webspeech/speechsynthesisutterance-basics.html?total_num=30&amp;amp;locator_key=id&amp;amp;value=25</test_script_entry>
+        </description>
+      </testcase>
+      <testcase component="W3C_HTML5 APIs/Media/Web Speech API" execution_type="auto" id="SpeechSynthesisUtterance_rate_max_value" purpose="Max value of rate attribute">
+        <description>
+          <test_script_entry>/opt/webapi-webspeech-w3c-tests/webspeech/speechsynthesisutterance-basics.html?total_num=30&amp;amp;locator_key=id&amp;amp;value=26</test_script_entry>
+        </description>
+      </testcase>
+      <testcase component="W3C_HTML5 APIs/Media/Web Speech API" execution_type="auto" id="SpeechSynthesisUtterance_pitch_value" purpose="Default value of pitch attribute">
+        <description>
+          <test_script_entry>/opt/webapi-webspeech-w3c-tests/webspeech/speechsynthesisutterance-basics.html?total_num=30&amp;amp;locator_key=id&amp;amp;value=27</test_script_entry>
+        </description>
+      </testcase>
+      <testcase component="W3C_HTML5 APIs/Media/Web Speech API" execution_type="auto" id="SpeechSynthesisUtterance_pitch_set" purpose="Set value for pitch attribute">
+        <description>
+          <test_script_entry>/opt/webapi-webspeech-w3c-tests/webspeech/speechsynthesisutterance-basics.html?total_num=30&amp;amp;locator_key=id&amp;amp;value=28</test_script_entry>
+        </description>
+      </testcase>
+      <testcase component="W3C_HTML5 APIs/Media/Web Speech API" execution_type="auto" id="SpeechSynthesisUtterance_pitch_min_value" purpose="Min value of pitch attribute">
+        <description>
+          <test_script_entry>/opt/webapi-webspeech-w3c-tests/webspeech/speechsynthesisutterance-basics.html?total_num=30&amp;amp;locator_key=id&amp;amp;value=29</test_script_entry>
+        </description>
+      </testcase>
+      <testcase component="W3C_HTML5 APIs/Media/Web Speech API" execution_type="auto" id="SpeechSynthesisUtterance_pitch_max_value" purpose="Max value of pitch attribute">
+        <description>
+          <test_script_entry>/opt/webapi-webspeech-w3c-tests/webspeech/speechsynthesisutterance-basics.html?total_num=30&amp;amp;locator_key=id&amp;amp;value=30</test_script_entry>
         </description>
       </testcase>
       <testcase component="W3C_HTML5 APIs/Media/Web Speech API" execution_type="auto" id="SpeechSynthesisVoice_default_attribute" purpose="Check if default attribute of SpeechSynthesisVoice is readOnly">
@@ -1073,11 +1113,6 @@
           <test_script_entry>/opt/webapi-webspeech-w3c-tests/webspeech/SpeechSynthesisVoiceList_extend.html</test_script_entry>
         </description>
       </testcase>
-      <testcase component="W3C_HTML5 APIs/Media/Web Speech API" execution_type="auto" id="SpeechSynthesisVoiceList_item" purpose="Check if item method of SpeechSynthesisVoiceList works properly">
-        <description>
-          <test_script_entry>/opt/webapi-webspeech-w3c-tests/webspeech/SpeechSynthesisVoiceList_item.html</test_script_entry>
-        </description>
-      </testcase>
       <testcase component="W3C_HTML5 APIs/Media/Web Speech API" execution_type="auto" id="SpeechSynthesisVoiceList_item_exists" purpose="Check if item method of SpeechSynthesisVoiceList exists">
         <description>
           <test_script_entry>/opt/webapi-webspeech-w3c-tests/webspeech/SpeechSynthesisVoiceList_item_exists.html</test_script_entry>
@@ -1093,7 +1128,12 @@
           <test_script_entry>/opt/webapi-webspeech-w3c-tests/webspeech/SpeechSynthesisVoiceList_item_missarg.html</test_script_entry>
         </description>
       </testcase>
-      <testcase component="W3C_HTML5 APIs/Media/Web Speech API" execution_type="auto" id="SpeechSynthesisVoiceList_length_attribute" purpose="Check if length attribute of SpeechSynthesisVoiceList is readOnly">
+      <testcase component="W3C_HTML5 APIs/Media/Web Speech API" execution_type="auto" id="SpeechSynthesisVoiceList_item" purpose="Check if item method of SpeechSynthesisVoiceList works properly">
+        <description>
+          <test_script_entry>/opt/webapi-webspeech-w3c-tests/webspeech/SpeechSynthesisVoiceList_item.html</test_script_entry>
+        </description>
+      </testcase>
+      <testcase component="W3C_HTML5 APIs/Media/Web Speech API" execution_type="auto" id="SpeechSynthesisVoiceList_length_attribute" purpose="Check if length attribute of SpeechSynthesisVoiceList is readonly">
         <description>
           <test_script_entry>/opt/webapi-webspeech-w3c-tests/webspeech/SpeechSynthesisVoiceList_length_attribute.html</test_script_entry>
         </description>
