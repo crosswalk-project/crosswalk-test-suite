@@ -31,6 +31,7 @@
 import unittest
 import os
 import comm
+import commands
 
 class TestCrosswalkApptoolsFunctions(unittest.TestCase):
     def test_build_normal(self):
@@ -48,6 +49,29 @@ class TestCrosswalkApptoolsFunctions(unittest.TestCase):
         os.chdir('org.xwalk.test')
         buildcmd =  comm.PackTools + "crosswalk-app build release"
         comm.build(self, buildcmd)
+        comm.run(self)
+        comm.clear("org.xwalk.test")
+
+    def test_build_missing_so_file(self):
+        comm.setUp()
+        comm.create(self)
+        os.chdir('org.xwalk.test')
+        if comm.ARCH == "x86":
+            os.remove(os.getcwd() + '/prj/android/xwalk_core_library/libs/armeabi-v7a/libxwalkcore.so')
+            buildcmd =  comm.PackTools + "crosswalk-app build"
+            buildstatus = commands.getstatusoutput(buildcmd)
+            self.assertEquals(buildstatus[0], 0)
+            os.chdir('pkg')
+            pkgs = os.listdir(os.getcwd())
+            self.assertNotIn("test-debug.armeabi-v7a.apk", pkgs)
+        else:
+            os.remove(os.getcwd() + '/prj/android/xwalk_core_library/libs/x86/libxwalkcore.so')
+            buildcmd =  comm.PackTools + "crosswalk-app build"
+            buildstatus = commands.getstatusoutput(buildcmd)
+            self.assertEquals(buildstatus[0], 0)
+            os.chdir('pkg')
+            pkgs = os.listdir(os.getcwd())
+            self.assertNotIn("test-debug.x86.apk", pkgs)
         comm.run(self)
         comm.clear("org.xwalk.test")
 
