@@ -48,13 +48,13 @@ def generate_cmd():
     for i in positive_data:
         num = num + 1
         flag = 'positive' + str(num)
-        cmd = flag + '\tcrosswalk-app create ' + i + ' --crosswalk=/opt/wrt-apptools-android-tests/tools/crosswalk*.zip\n'
+        cmd = flag + '\tcrosswalk-app create ' + i + ' --crosswalk=/opt/apptools-android-tests/tools/crosswalk*.zip\n'
         #print cmd
         fp.write(cmd)
     for j in negative_data:
         num = num + 1
         flag = 'negative' + str(num)
-        cmd = flag + '\tcrosswalk-app create ' + j + ' --crosswalk=/opt/wrt-apptools-android-tests/tools/crosswalk*.zip\n'
+        cmd = flag + '\tcrosswalk-app create ' + j + ' --crosswalk=/opt/apptools-android-tests/tools/crosswalk*.zip\n'
         #print cmd
         fp.write(cmd)
 
