@@ -113,6 +113,7 @@ def run(self):
             inststatus = commands.getstatusoutput('adb -s ' + device + ' install -r ' + os.getcwd() + '/' + apk)
             #print inststatus
             self.assertEquals(inststatus[0], 0)
+            self.assertIn("Success", inststatus[1])
             pmstatus = commands.getstatusoutput('adb -s ' + device + ' shell pm list package |grep org.xwalk.test')
             self.assertEquals(pmstatus[0], 0)
             launstatus = commands.getstatusoutput('adb -s ' + device + ' shell am start -n org.xwalk.test/.TestActivity')
