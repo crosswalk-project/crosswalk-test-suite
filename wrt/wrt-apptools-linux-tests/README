@@ -1,0 +1,31 @@
+## Introduction
+
+This test suite is for wrt-apptools-linux-tests
+1. ./allpairs.py is create pkgName.py and report directory for package name
+
+## Precondition
+
+1. The Node.js, the debuild tool, the Crosswalk runtime, and git must be functional
+2. Download crosswalk-app-tools and configure it
+    2.1 Download Crosswalk app tools:  git clone https://github.com/crosswalk-project/crosswalk-app-tools.git  
+    2.2 Initialize the Crosswalk app tools:  cd crosswalk-app-tools , then  npm install  
+    3.3 Checkout the iOS backend:  cd node_modules , then  git clone https://github.com/crosswalk-project/crosswalk-app-tools-deb.git crosswalk-app-tools-backend-deb  
+    4.4 Install dependencies:  cd crosswalk-app-tools-backend-deb , then  npm install , and  cd ../..  
+    5.5 The main script is  crosswalk-app-tools/bin/crosswalk-app . Set environment PATH or invoke with directory
+
+## Test Steps
+
+1. unzip wrt-apptools-linux-tests<version>.zip -d [testprefix-path]
+2. cd [testprefix-path]/opt/wrt-apptools-linux-tests/
+3. run test case
+   testkit-lite -f ....
+
+## Authors:
+
+* Yin, Haichao <haichaox.yin@intel.com>
+
+## LICENSE
+
+Copyright (c) 2015 Intel Corporation.
+Except as noted, this software is licensed under BSD-3-Clause License.
+Please see the COPYING file for the BSD-3-Clause License.

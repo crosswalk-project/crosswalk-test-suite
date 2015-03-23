@@ -1,0 +1,10 @@
+var step = '<font class="fontSize">'
+            +'<p>Purpose:</p>'
+            +'<p>Validate the indexDB functionality is available</p>'
+            +'<p>Expected Result:</p>'
+            +'<ol>'
+            +'<li>The webapp install successfully and launch successfully.</li>'
+            +'<li>The textarea will output "Save indexDB value successfully:..."</li>'
+            +'<li>The textarea will output "Get indexDB value:..." </li>'
+            +'</ol>'
+          +'</font>';

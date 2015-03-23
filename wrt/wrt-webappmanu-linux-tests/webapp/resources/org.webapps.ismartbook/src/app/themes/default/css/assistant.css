@@ -1,0 +1,126 @@
+#assistant-aside{
+  position: absolute;
+  height: 100%;
+  right: 0;
+  top: 0;
+  width:340px;
+  -webkit-transition:-webkit-transform 300ms ease-in-out;
+  -webkit-transform:translate3d(340px,0,0);
+    z-index:9997;
+}
+
+#assistant-aside.active{
+  -webkit-transform:translate3d(0px,0,0);
+
+}
+
+/** bottom **/
+
+#assistant-aside hr{
+  border: 0 none;
+  border-top: 1px solid rgba(0,0,0,1);
+  border-bottom: 1px solid rgba(255,255,255,0.1);
+}
+
+
+#assistant-aside .bottom{
+  padding:20px 10px 10px ;
+}
+
+#assistant-aside button{
+  width:30px;
+  height:30px;
+  border:0 none;
+  cursor: pointer;
+}
+#assistant-aside button span{
+  display: none;
+}
+#assistant-aside .exit{
+  background:url(../images/assistant/icon.png) no-repeat 0 0;
+  float: right;
+}
+#assistant-aside .write{
+  background:url(../images/assistant/icon.png) no-repeat 0 -60px;
+  float: left;
+}
+
+
+/** end bottom **/
+/* sidebar */
+
+#assistant-aside .help-info-aside{
+  width: 280px;
+  height: 100%;
+  background: rgba(0,0,0,0.9);
+  border-left: rgba(255,255,255,0.2) 1px solid;
+  box-shadow: 0px 0 2px 1px rgba(0,0,0,1),0px 0 3px 1px rgba(0,0,0,0.2);
+  -webkit-transition:-webkit-transform 400ms ease-in-out;
+  -webkit-transform:translate3d(500px,0,0);
+}
+#assistant-aside.active .help-info-aside{
+  -webkit-transform:translate3d(60px,0,0);
+}
+#assistant-aside .help-info-content{
+  display: -webkit-box;
+  -webkit-box-orient:vertical;
+  height:100%;
+}
+#assistant-aside h1{
+  margin: 10px 10px;
+  color: #fff;
+  font-weight: lighter;
+}
+
+
+#assistant-aside .content{
+  -webkit-box-flex:1;
+  color:#fff;
+  overflow: hidden;
+  position: relative;
+}
+#assistant-aside .content > div{
+   border:1px  solid rgba(0,0,0,0);
+}
+
+#assistant-aside.zoomin{
+  -webkit-transform:translate3d(500px,0,0);
+}
+
+/* end sidebar */
+
+
+
+#assistant-button{
+  position: absolute;
+  top: 50%;
+  right:0;
+  clear: both;
+  margin-top:-60px;
+  width:64px;
+  height:120px;
+  background-image:url(../images/assistant/button.png);
+  -webkit-transition:-webkit-transform 300ms ease-in-out;
+  -webkit-transform:translate3d(0,0,0);
+  color: #fff;
+  cursor: pointer;
+  z-index: 3;
+}
+
+#assistant-button  span{
+  display: none;
+}
+
+#assistant-button.active {
+  -webkit-transform:translate3d(500px,0,0);
+}
+
+
+#assistant-button.zoomin {
+  -webkit-transform:translate3d(500px,0,0);
+}
+
+
+#assistant-button .button{
+  -webkit-transform:translate3d(500px,0,0);
+}

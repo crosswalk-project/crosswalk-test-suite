@@ -1,0 +1,70 @@
+#toolbar span{
+  display: none;
+}
+#toolbar{
+  height:66px;
+  width:100%;
+  position: absolute;
+  left:0;
+  top:0;
+  background: url(../images/toolbar/bg.png) repeat-x 0 0;
+  box-shadow: 0 0 11px 4px rgba(0,0,0,0.5);
+  z-index: 99999;
+  padding:0 25px;
+  box-sizing:border-box;
+  -webkit-transform:translate3d(0,-180px,0);
+  -webkit-transition:-webkit-transform 300ms ease-out;
+}
+#toolbar.active {
+  -webkit-transform:translate3d(0,0,0);
+}
+
+#toolbar .close{
+  float:right;
+  margin-right:0;
+}
+
+#toolbar ul{
+  height:40px;
+  margin:0;
+  padding:0;
+}
+#toolbar li,#toolbar .close {
+  width:40px;
+  height:40px;
+  float: left;
+  margin-right:20px;
+  background-image: url(../images/toolbar/icons.png);
+  margin-top:13px;
+  opacity: 0.8;
+}
+
+#toolbar li:hover,#toolbar .close:hover{
+  opacity: 1;
+  cursor: pointer;
+}
+
+#toolbar .close{
+  float:right;
+  margin-right:28px;
+}
+
+#toolbar li.bookmark{
+  background-position: -160px 0;
+}
+
+#toolbar li.annotation{
+  background-position: -40px 0;
+}
+
+#toolbar li.dict{
+  background-position: 0 0;
+}
+
+#toolbar li.search{
+  background-position: -120px 0;
+}
+
+#toolbar div.close{
+  background-position: -80px 0;
+}
