@@ -44,3 +44,16 @@ Feature: Usecase WebAPI
      And I go to "/samples/CSP/res/style-src_self/index.html"
     Then I should not see "FAIL"
     Then I should see "test-blue" area in "blue" color
+
+ Scenario: Security/CSP/csp-default-src-self Test
+    When launch "usecase-webapi-xwalk-tests"
+     And I go to "/samples/CSP/res/default-src_self/index.html"
+     And I save div "test1" as "pic1" with width "75" and height "0"
+     And I save div "test2" as "pic2" with width "75" and height "0"
+     And I save div "test" as "pic3" with width "75" and height "0"
+    Then pic "pic1" and pic "pic2" should be more than "99" similar
+    Then pic "pic1" and pic "pic3" should be less than "99" similar
+     And I remove all the pictures
+    Then I should see "PASS" in "text1" area
+    Then I should see "test-blue" area in "blue" color 
+

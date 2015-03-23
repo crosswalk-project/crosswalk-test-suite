@@ -85,7 +85,7 @@ Authors:
       <input type="hidden" id="wgt_name" value="default-src-self"/>
       <p>Test 1: passes if the first two lines are the same in font and different from line 3.</p>
       <div id="test1">1234 ABCD</div>
-      <div>1234 ABCD</div>
+      <div id="test2">1234 ABCD</div>
       <div id="test">1234 ABCD</div>
       <hr />
       <p>Test 2: passes if a blue filled square with a "PASS" plug in is displayed .</p>
@@ -113,7 +113,7 @@ Authors:
               connect =  false;
           }
           if(script_allow && script_not_allow && style_not_allow && style_allow && style_green_allow && connect) {
-              document.getElementById("test-blue").innerHTML = "<span style='color:white'>PASS</span>.";
+              document.getElementById("test-blue").innerHTML = "<span id='text1' style='color:white'>PASS</span>.";
           }
       </script>
       <hr />
