@@ -1,0 +1,1 @@
+function help_init(a,b){{var c=document.getElementById(a),d=document.getElementById(b+"dialog"),e=document.getElementById(b+"close");document.getElementById(b+"title"),document.getElementById(b+"contents")}c.addEventListener("click",function(){d.className="helpdialog shown"}),e.addEventListener("click",function(){d.className="helpdialog"})}

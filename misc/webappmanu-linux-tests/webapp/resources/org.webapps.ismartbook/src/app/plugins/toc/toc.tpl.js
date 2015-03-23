@@ -1,0 +1,3 @@
+define(function(requre, exports, module){return function toc_tpl(it) {
+var out='<div class="toc-content" style="width:'+(it.width)+'px;"> ';var arr1=it.toc;if(arr1){var value,index=-1,l1=arr1.length-1;while(index<l1){value=arr1[index+=1];out+=' <div class="toc-page"  data-page="'+(value.id)+'"> ';if(it.toc){out+=' <div class="toc-preview"> <img src="'+(it.fullPath)+'/'+(value.preview)+'" /> </div> ';}out+=' <span class="toc-label">'+(value.label)+'</span> </div> ';} } out+='</div>';return out;
+};});

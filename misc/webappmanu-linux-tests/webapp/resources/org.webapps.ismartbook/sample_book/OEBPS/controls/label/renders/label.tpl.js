@@ -1,0 +1,3 @@
+define(function(requre, exports, module){return function label_tpl(it) {
+var out='<div class="label"> <div class="content"> <div> <ul class="text"> ';var arr1=it.text;if(arr1){var p,i1=-1,l1=arr1.length-1;while(i1<l1){p=arr1[i1+=1];out+=' <li ';if(p.id){out+='class="line'+(p.id)+'"';}out+=' style="';if(p.family){out+='font-family:'+(p.family)+';';}out+=' ';if(p.size){out+='font-size:'+(p.size)+';';}out+=' ';if(p.color){out+='color:'+(p.color)+';';}if(p.align){out+='text-align:'+(p.align)+';';}if(p.height){out+='height:'+(p.height)+'px';}out+='"> '+(p.line)+' </li> ';} } out+=' </ul></div> </div></div>';return out;
+};});
