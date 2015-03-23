@@ -30,6 +30,9 @@ import time
 import json
 import re
 import colorsys
+import Image
+import string
+import os
 from selenium.webdriver.remote.webdriver import WebDriver
 from selenium.webdriver.common.action_chains import ActionChains
 from selenium.common.exceptions import (
@@ -53,6 +56,7 @@ class WebAPP(common.APP):
         self.app_name = app_name
         self.app_id = ""
         self.text_value = {}
+        self.picture_list = []
         self.color_dict = {"rgb(255, 0, 0)": "red","rgb(0, 255, 0)": "green","rgb(0, 0, 255)": "blue","rgb(255, 255, 0)": "yellow","rgb(0, 0, 0)": "black","rgb(0, 128, 0)": "green","rgb(255, 255, 255)": "white","rgba(0, 0, 0, 0)": "white"}
         apk_activity_name = apk_activity_name
         apk_pkg_name = apk_pkg_name
@@ -476,6 +480,83 @@ class WebAPP(common.APP):
                 element, x, y).click().perform()
             return True
         return False
+
+    def execute_js_code(self, js_code):
+        try:
+           return self.driver.execute_script(js_code)
+        except Exception as e:
+           print "Execute js code failed: %s" % e
+           return 0   
+ 
+    #Calculate the location params of element
+    def calculate_element_location(self, key, width=0, height=0):
+        try:
+           if width:
+              width = string.atoi(width)
+           if height:
+              height = string.atoi(height)
+           js_script = 'var top=document.getElementById(\"' + key + '\").getBoundingClientRect().top;  return top'
+           top = self.execute_js_code(js_script)
+           js_script = 'var left=document.getElementById(\"' + key + '\").getBoundingClientRect().left; return left'
+           left = self.execute_js_code(js_script)
+           if not width:
+               js_script = 'var width=document.getElementById(\"' + key + '\").getBoundingClientRect().width; return width'
+               width = self.execute_js_code(js_script)
+           if not height:
+               js_script = 'var height=document.getElementById(\"' + key + '\").getBoundingClientRect().height; return height'
+               height = self.execute_js_code(js_script)
+           return (left, top, left + width, top+height)
+        except Exception as e:
+           print "Get element location failed: %s" % e
+           return 0
+
+    def calculate_resolution_ratio(self, pic_name):
+        try:
+           js_script = 'var width=window.screen.availWidth; return width'
+           body_width = self.execute_js_code(js_script)
+           js_script = 'var height=window.screen.availHeight; return height'
+           body_height = self.execute_js_code(js_script)
+           im = Image.open(pic_name)
+           w,h = im.size
+           ratio_w = w/body_width
+           ratio_h = h/body_height
+           ration = 0
+           if ratio_w > ratio_h:
+               ratio = ratio_w
+           else:
+               ratio = ratio_h
+           return w/ratio,h/ratio
+        except Exception as e:
+           print "Calculate page picture resolution failed: %s" % e
+           return 0 
+             
+    #Save the specified element as a single picture
+    def save_div_as_picture(self, key, element_pic, width=0, height=0):
+        try:
+           page_pic = "page.png"
+           self.driver.get_screenshot_as_file(page_pic)
+           self.picture_list.append(page_pic)
+           ratio = self.calculate_resolution_ratio(page_pic)
+           self.convert_pic(page_pic, ratio)
+           box = self.calculate_element_location(key, width, height)
+           self.crop_pic(page_pic, element_pic, box)
+           self.picture_list.append(element_pic)
+           return True
+        except Exception as e:
+           print "Save element picture failed: %s" % e
+           return False
+
+    #Remove these temporary pictures
+    def remove_picture(self):
+        try:
+            picture_list = list(set(self.picture_list))
+            for element in picture_list:
+                os.remove(element)
+            self.picture_list = []
+            return True
+        except Exception as e:
+            print "Remove the tmp pictures fail: %s" % e
+            return False
 
     def fill_element_by_key(self, key, text, display=True):
         element = self.__get_element_by_key(key, display)
