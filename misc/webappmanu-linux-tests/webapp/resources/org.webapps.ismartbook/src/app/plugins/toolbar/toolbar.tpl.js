@@ -1,0 +1,3 @@
+define(function(requre, exports, module){return function toolbar_tpl(it) {
+var out='<div class="close"> <span>close</span></div><ul> <li class="bookmark" data-value="bookmark"><span>bookmark</span></li> <li class="annotation" data-value="annotation"><span>annotation</span></li> <li class="dict" data-value="dict"><span>dict</span></li> <li class="search" data-value="search"><span>search</span></li></ul>';return out;
+};});

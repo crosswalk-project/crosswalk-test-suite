@@ -1,0 +1,121 @@
+body{
+  -webkit-perspective: 1300px;
+  background:url(../images/background.jpg) no-repeat 49% 96%;
+  overflow: hidden;
+  position:relative;
+}
+
+#startup{
+  position: fixed;
+  z-index: 9999;
+  text-align: center;
+  color: #fff;
+  width: 981px;
+  height: 743px;
+  margin-left: 218px;
+  margin-top: 12px;
+  -webkit-transform-origin: left center;
+  -webkit-transition:box-shadow 500ms ease,opacity 100ms ease 500ms,-webkit-transform 1s ease ;
+  -webkit-backface-visibility: hidden;
+  pointer-event:none;
+  opacity: 0;
+  display: none;
+}
+
+#startup .left-page,#startup .right-page{
+  width:100%;
+  height:743px;
+  float:left;
+  background: none;
+  position: absolute;
+  -webkit-backface-visibility: hidden;
+}
+
+#startup .left-page{
+ -webkit-transform: translate3d(0,0,0) rotateY(180deg);
+ background: url(../images/left-page.png) no-repeat -30px 1 ;
+}
+#startup .left-page .module-info {
+  top:8px;
+}
+#startup .left-page .page-nav{
+  top: 185px;
+  color:black;
+}
+#startup .right-page{
+  box-sizing:border-box;
+}
+
+.init #reader-stage {
+  opacity: 0;
+}
+
+.init #startup{
+  -webkit-transform: rotateY(0);
+  -webkit-transform-style: preserve-3d;
+  display: block;
+  box-shadow: 2px 2px 5px 0 rgba(0,0,0,0.5),-2px -2px 5px 0 rgba(0,0,0,0.5); 
+  opacity: 1;
+  display: block;
+}
+.init-end #startup{
+  -webkit-transform: rotateY(-180deg);
+  -webkit-transform-style: preserve-3d;
+  box-shadow: none;
+}
+
+
+
+.init {
+  -webkit-transform:scale(0.95);
+  -webkit-transition:-webkit-transform 500ms ease-in-out;
+}
+
+.init-end{
+  -webkit-transform:scale(1);
+}
+
+.init #reader-stage{
+  opacity: 0;
+  -webkit-transition:opacity 500ms ease-in-out;
+  background:none;
+  box-shadow: none;
+}
+.init #reader-stage .left-page{
+  opacity: 0;
+}
+.init #book-stage {
+  background:url(../images/right-page.png) no-repeat 100% 50%;
+  box-shadow: none;
+}
+.init-end #reader-stage{
+  opacity: 1;
+}
+
+.init-end #book-stage {
+  -webkit-transition:box-shadow 500ms ease 500ms;
+  box-shadow: 2px 2px 5px 0 rgba(0,0,0,1);
+}
+
+@media screen and (max-width: 1280px){
+   .init #startup{
+    margin-left:149px;
+     top:50%;
+    margin-top:-357px;
+    height: 713px;
+
+   }
+   .init #startup img{
+    width:100%;
+    height:100%;
+   }
+   .init #startup .left-page{
+     background: url(../images/cover-left-1280.png) no-repeat 7px 1;
+   }
+   #startup .left-page, #startup .right-page{
+    height:713px;
+   }
+   .init #book-stage {
+    background:url(../images/cover-right-1280.png) no-repeat 100% 50%;
+   }
+}

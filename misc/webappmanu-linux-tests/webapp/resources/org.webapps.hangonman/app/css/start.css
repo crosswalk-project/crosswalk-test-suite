@@ -1,0 +1,168 @@
+/*
+ * Copyright (c) 2012, Intel Corporation.
+ *
+ * This program is licensed under the terms and conditions of the
+ * Apache License, version 2.0.  The full text of the Apache License is at
+ * http://www.apache.org/licenses/LICENSE-2.0
+ *
+ */
+
+#start_container {
+    width: 100%;
+    height: 5px;
+    position: absolute;
+    bottom: 130px;
+    left: -100%;
+    z-index: 10;
+    -webkit-animation-delay: 1s;
+    -webkit-animation-timing-function: ease-out;
+    -webkit-animation-duration: 2s;
+    -webkit-animation-fill-mode: both;
+}
+
+@-webkit-keyframes start_container_slide_in {
+    0% {left: -100%;}
+  100% {left: 0%;}
+}
+
+#wire {
+    width: 200%;
+    height: 100%;
+    left: 0%;
+    background-color: black;
+    opacity: 0;
+}
+
+#wire.shown {
+    opacity: 1;
+}
+
+@-webkit-keyframes wind_wave {
+    0% {-webkit-transform: skewX(-3deg);}
+  100% {-webkit-transform: skewX( 3deg);}
+}
+
+#start_container #undies {
+    background-image: url("../images/undies.png");
+    background-size: 100% 100%;
+    width: 79px;
+    height: 55px;
+    position: absolute;
+    top: -20px;
+    left: 122px;
+    z-index: 15;
+    -webkit-transform-origin: 50% 20px;
+    -webkit-animation: wind_wave 2s infinite alternate ease-in-out;
+}
+
+#start_container #socks {
+    background-image: url("../images/socks.png");
+    background-size: 100% 100%;
+    width: 68px;
+    height: 73px;
+    position: absolute;
+    top: -20px;
+    left: 900px;
+    z-index: 15;
+    -webkit-transform-origin: 50% 20px;
+    -webkit-animation: wind_wave 2s infinite alternate ease-in-out;
+}
+
+
+#start_container #body {
+    background-image: url("../images/body-start.png");
+    background-size: 100% 100%;
+    width: 161px;
+    height: 147px;
+    position: absolute;
+    top: -142px;
+    left: 50%;
+    -webkit-transform: translateX(-50%);
+    z-index: 15;
+}
+
+@-webkit-keyframes wind_wave_sheet {
+    0% {-webkit-transform: skewX(-1.5deg);}
+  100% {-webkit-transform: skewX( 1.5deg);}
+}
+
+#sheet_holder {
+    position: absolute;
+    top: -20px;
+    left: 50%;
+    z-index: 15;
+    -webkit-transform: translateX(-50%);
+}
+
+#start_sheet {
+    border-width: 50px 15px 20px 15px;
+    -webkit-border-image: url("../images/sheet1.png") 50 15 20 15;
+    -webkit-transform-origin: 50% 15px;
+    -webkit-animation: wind_wave_sheet 2s infinite alternate ease-in-out;
+}
+
+.bird {
+    position: absolute;
+    background-image: url("../images/birds.png");
+    width: 100px;
+    height: 66px;
+    top: -62px;
+}
+
+#bird_0 {
+    left: 214px;
+    background-position: -500px 0px;
+}
+
+#bird_1 {
+    left: 392px;
+    background-position: -300px 0px;
+}
+
+#bird_2 {
+    left: 800px;
+    background-position: -900px 0px;
+}
+
+#bird_3 {
+    left: 950px;
+    background-position: 0px 0px;
+}
+
+@-webkit-keyframes title-move-vert {
+    0% {top: 100px; -webkit-transform: skewY( 0.0deg);}
+   25% {top: 105px; -webkit-transform: skewY(-0.5deg);}
+   50% {top: 107px; -webkit-transform: skewY( 0.0deg);}
+   75% {top: 102px; -webkit-transform: skewY( 0.5deg);}
+  100% {top: 100px; -webkit-transform: skewY( 0.0deg);}
+}
+
+
+#title {
+    background-image: url("../images/title.png");
+    width: 734px;
+    height: 116px;
+    position: absolute;
+    top: 100px;
+    left: 1200px;
+    z-index: 10;
+    -webkit-transform-origin: 40px 50%;
+    -webkit-transition: left 4s ease-out;
+    -webkit-animation: title-move-vert 1.6s infinite ease-in-out;
+}
+
+#title.shown {
+    left: 100px;
+}
+
+#title .wing3 {
+    top: -25px;
+    left: 25px;
+    -webkit-animation: wing-flap-cw .2s infinite alternate;
+}
+
+#title .wing4 {
+    top: -5px;
+    left: 25px;
+    -webkit-animation: wing-flap-ccw .2s infinite alternate;
+}

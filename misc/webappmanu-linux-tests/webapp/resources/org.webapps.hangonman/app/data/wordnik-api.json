@@ -1,0 +1,17 @@
+var corpusMin = [1000000,  10000,    0];
+var corpusMax = [5000000, 100000, 5000];
+
+{
+    "type": "GET",
+    "url": "http://api.wordnik.com/v4/words.json/randomWord",
+    "dataType": "jsonp",
+    "success": "receiveRandomWord",
+    "jsonpCallback": "receiveRandomWord",
+    "data": {
+	"api_key"  : "7512103749a395bbb541a08887f082410f42bfd33bf0bf802",
+	"minLength" : 3,
+	"includePartOfSpeech" : "noun",
+	"minCorpusCount" : corpusMin[howCommon],
+	"maxCorpusCount" : corpusMax[howCommon]
+    }
+}

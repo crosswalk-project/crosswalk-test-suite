@@ -1,0 +1,3 @@
+define(function(requre, exports, module){return function aside_tpl(it) {
+var out='<div class="help-info-aside"> <div class="help-info-content"> <h1>教学助手 <hr/></h1> <div class="content"> <div></div> </div> <div class="bottom"> <hr/> <button class="write"><span>write</span></button> <button class="exit"><span>exit</span></button> </div> </div> <div class="help-info-bg"> </div></div>';return out;
+};});
