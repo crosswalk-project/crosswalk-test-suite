@@ -3,12 +3,14 @@ Android APK Analyser especially for Crosswalk apps.
 
 # Platform
 * Host OS: Linux Ubuntu
+* For Mac OSX users, you may need to run this command to resolve the python dependency:
+`sudo easy_install lxml`
 
 # Environment
 * Java JDK 1.5 or greater http://www.oracle.com/technetwork/java/javase/downloads/index.html
 * Python 2.7 https://www.python.org/download/
 * Android SDK installed http://developer.android.com
-* Install and set environment for apktool: https://code.google.com/p/android-apktool/wiki/Install
+* Install and set environment for apktool: http://ibotpeaches.github.io/Apktool/
 * Update the jQuery path in result/apk-analyser-result.xsl in case you didn't clone the whole crosswalk-test-suite: `<script src='https://code.jquery.com/jquery-2.1.3.min.js'></script>`
 
 # How to Run
