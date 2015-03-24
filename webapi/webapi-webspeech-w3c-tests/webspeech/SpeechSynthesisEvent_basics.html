@@ -31,25 +31,25 @@ Authors:
 -->
 
 <meta charset="utf-8">
-<title>Web Speech API Test: the basics of the SpeechRecognitionEvent interface</title>
+<title>Web Speech API Test: the basics of the SpeechSynthesisEvent interface</title>
 <link rel="author" title="Intel" href="http://www.intel.com">
 <link rel="help" href="http://dvcs.w3.org/hg/speech-api/raw-file/tip/speechapi.html">
 <script src="../resources/testharness.js"></script>
 <script src="../resources/testharnessreport.js"></script>
+<script src="support/webspeech_common.js"></script>
 <div id="log"></div>
-<script src="../resources/vendor-prefix.js" data-prefixed-objects='[{"ancestors":["window"], "name":"SpeechSynthesisEvent"}]'></script>
 <script>
 
 test(function () {
-  assert_true('SpeechSynthesisEvent' in window);
+  assert_true(!!speechSynthesisEvent);
 }, "Existence of SpeechSynthesisEvent interface");
 
 test(function () {
-  assert_not_equals(SpeechSynthesisEvent, null);
+  assert_not_equals(speechSynthesisEvent, null);
 }, "Value of SpeechSynthesisEvent object");
 
 test(function () {
-  assert_equals(SpeechSynthesisEvent.__proto__, Event);
+  assert_equals(speechSynthesisEvent.__proto__, Event);
 }, "Prototype of SpeechSynthesisEvent");
 
 </script>
