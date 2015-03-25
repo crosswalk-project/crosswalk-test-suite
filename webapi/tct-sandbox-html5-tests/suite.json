@@ -16,6 +16,8 @@
         "apk,cordova": {
             "blacklist": [],
             "copylist": {
+                "PACK-TOOL-ROOT/resources/bddrunner": "bddrunner",
+                "html5-sandbox-app/testscripts": "html5-sandbox-app/testscripts",
                 "inst.apk.py": "inst.py",
                 "PACK-TOOL-ROOT/resources/testharness": "resources",
                 "PACK-TOOL-ROOT/resources/webrunner": "webrunner",
@@ -25,6 +27,15 @@
             "pkg-app": {
                 "blacklist": [],
                 "hosted-app": "true"
+            },
+            "subapp-list": {
+                "html5-sandbox-app": {
+                    "apk-common-opts": "--enable-remote-debugging",
+                    "copylist": {
+                        "../sandbox/w3c/bdd": "w3c",
+                        "../sandbox/w3c/support": "w3c/support"
+                    }
+                }
             }
         },
         "apk-aio, cordova-aio": {
