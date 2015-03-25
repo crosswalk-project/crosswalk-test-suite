@@ -14,7 +14,7 @@
 
     <uses-sdk
         android:minSdkVersion="14"
-        android:targetSdkVersion="19" />
+        android:targetSdkVersion="21" />
 
     <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
@@ -29,10 +29,10 @@
     <application
         android:name="android.app.Application"
         android:hardwareAccelerated="true"
-        android:label="XWalkEmbeddedAPISample" >
+        android:label="usecase-embedding-android-tests" >
         <activity
             android:name=".XWalkEmbeddedAPISample"
-            android:label="EmbeddedAPI Samples" >
+            android:label="Usecase EmbeddingAPI" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -177,6 +177,15 @@
         <activity
             android:name=".OnCreateWindowRequestedActivity"
             android:label="OnCreateWindowRequested()"
+            android:parentActivityName=".XWalkEmbeddedAPISample" >
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.SAMPLE_CODE" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name=".FullScreenActivity"
+            android:label="FullScreen"
             android:parentActivityName=".XWalkEmbeddedAPISample" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
