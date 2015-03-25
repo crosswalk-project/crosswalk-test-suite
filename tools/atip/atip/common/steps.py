@@ -50,3 +50,11 @@ def switch_to_app_name(context, app_name):
         assert True
     else:
         assert False
+
+@step(u'pic "{pic1}" and pic "{pic2}" should be more than "{similarity}" similar')
+def check_picture(context, pic1, pic2, similarity):
+    assert context.app.check_pic_same(pic1, pic2, similarity)
+
+@step(u'pic "{pic1}" and pic "{pic2}" should be less than "{similarity}" similar')
+def check_picture(context, pic1, pic2, similarity):
+    assert context.app.check_pic_different(pic1, pic2, similarity)
