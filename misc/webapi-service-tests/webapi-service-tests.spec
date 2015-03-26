@@ -18,3 +18,5 @@ tct-xmlhttprequest-w3c-tests
 webapi-nacl-xwalk-tests
 webapi-rawsockets-w3c-tests
 webapi-resourcetiming-w3c-tests"
+
+path_flag=`date +%s%N | md5sum | head -c 15`

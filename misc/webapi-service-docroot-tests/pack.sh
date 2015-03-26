@@ -6,24 +6,26 @@ usage="Usage: ./pack.sh [-t <package type: apk | cordova>] [-a <apk runtime arch
 [-m embedded] option was set as default.
 "
 
+SRC_ROOT=$(cd $(dirname $0);pwd)
+BUILD_ROOT=/tmp/${name}-${path_flag}_pack
+BUILD_DEST=/tmp/${name}-${path_flag}
+
+dest_dir=$SRC_ROOT
 pack_type="apk"
 arch="x86"
 pack_mode="embedded"
-while getopts a:t:m: o
+while getopts a:t:m:d: o
 do
     case "$o" in
     a) arch=$OPTARG;;
     t) pack_type=$OPTARG;;
     m) pack_mode=$OPTARG;;
+    d) dest_dir=$OPTARG;;
     *) echo "$usage"
        exit 1;;
     esac
 done
 
-
-SRC_ROOT=$(cd $(dirname $0);pwd)
-BUILD_ROOT=/tmp/${name}_pack
-BUILD_DEST=/tmp/${name}
 
 # check precondition
 function check_precondition(){
@@ -44,6 +46,7 @@ clean_workspace
 mkdir -p $BUILD_ROOT $BUILD_DEST/opt/$core_name
 
 # copy source code
+rm -rf $dest_dir/$name-$version-$sub_version.$pack_type.zip
 rm -rf $SRC_ROOT/*.zip
 cp -arf $SRC_ROOT/* $BUILD_ROOT/
 
@@ -86,22 +89,29 @@ fi
 rm -rf $BUILD_DEST/opt
 cp -ar $BUILD_ROOT/inst.py $BUILD_DEST/inst.py
 cd /tmp
-zip -Drq $BUILD_DEST/$name-$version-$sub_version.$pack_type.zip $name/
+mkdir $path_flag
+cp -a $BUILD_DEST $path_flag/${name}
+cd $path_flag
+zip -Drq $BUILD_DEST/$name-$version-$sub_version.$pack_type.zip ${name}
+cd -
+rm -rf $path_flag
 
 # copy zip file
 echo "copy package from workspace... >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>"
-cp -f $BUILD_DEST/$name-$version-$sub_version.$pack_type.zip $SRC_ROOT/
+cd $SRC_ROOT
+mkdir -p $dest_dir
+cp -f $BUILD_DEST/$name-$version-$sub_version.$pack_type.zip $dest_dir
 
 # clean workspace
 clean_workspace
 
 # validate
 echo "checking result... >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>"
-if [ -z "`ls $SRC_ROOT | grep "\.zip"`" ];then
+if [ ! -f $dest_dir/$name-$version-$sub_version.$pack_type.zip ];then
     echo "------------------------------ FAILED to build $name packages --------------------------"
     exit 1
 fi
 
 echo "------------------------------ Done to build $name packages --------------------------"
-cd $SRC_ROOT
-ls *.zip 2>/dev/null
+cd $dest_dir
+ls $name-$version-$sub_version.$pack_type.zip 2>/dev/null

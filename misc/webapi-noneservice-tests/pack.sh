@@ -7,23 +7,25 @@ usage="Usage: ./pack.sh [-t <package type: apk | cordova>] [-a <apk runtime arch
 [-m embedded] option was set as default.
 "
 
+SRC_ROOT=$(cd $(dirname $0);pwd)
+BUILD_ROOT=/tmp/${name}-${path_flag}_pack
+BUILD_DEST=/tmp/${name}-${path_flag}
+
+dest_dir=$SRC_ROOT
 pack_type="apk"
 arch="x86"
 pack_mode="embedded"
-while getopts a:t:m: o
+while getopts a:t:m:d: o
 do
     case "$o" in
     a) arch=$OPTARG;;
     t) pack_type=$OPTARG;;
     m) pack_mode=$OPTARG;;
+    d) dest_dir=$OPTARG;;
     *) echo "$usage"
        exit 1;;
     esac
 done
-
-SRC_ROOT=$(cd $(dirname $0);pwd)
-BUILD_ROOT=/tmp/${name}_pack
-BUILD_DEST=/tmp/${name}
 
 # clean
 function clean_workspace(){
@@ -35,6 +37,7 @@ clean_workspace
 mkdir -p $BUILD_ROOT $BUILD_DEST
 
 # copy source code
+rm -rf $dest_dir/$name-$version-$sub_version.$pack_type.zip
 rm -rf $SRC_ROOT/*.zip
 cp -arf $SRC_ROOT/* $BUILD_ROOT/
 
@@ -72,7 +75,9 @@ cp -a $BUILD_ROOT/icon.png     $BUILD_DEST/
 mkdir -p $BUILD_DEST/opt/$name
 
 if [ $pack_type == "apk" ]; then
-    mv `find /tmp/webapi-noneservice-tests/ -name '*apk'` $BUILD_ROOT/apps
+    find $BUILD_DEST -name '*apk' -exec cp {} $BUILD_ROOT/apps \;
+    find $BUILD_DEST -name '*apk' -exec rm {} \;
+    #mv `find /tmp/webapi-noneservice-tests/ -name '*apk'` $BUILD_ROOT/apps
     cp -a $BUILD_ROOT/webrunner/*     $BUILD_DEST/
     mv $BUILD_DEST/index.html $BUILD_DEST/index_real.html
     mv $BUILD_DEST/index_tmp.html $BUILD_DEST/index.html
@@ -143,18 +148,20 @@ fi
 
 # copy zip file
 echo "copy package from workspace... >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>"
-cp -f $BUILD_DEST/$name-$version-$sub_version.$pack_type.zip $SRC_ROOT/
+cd $SRC_ROOT
+mkdir -p $dest_dir
+cp -f $BUILD_DEST/$name-$version-$sub_version.$pack_type.zip $dest_dir
 
 # clean workspace
 clean_workspace
 
 # validate
 echo "checking result... >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>"
-if [ -z "`ls $SRC_ROOT | grep "\.zip"`" ];then
+if [ ! -f $dest_dir/$name-$version-$sub_version.$pack_type.zip ];then
     echo "------------------------------ FAILED to build $name packages --------------------------"
     exit 1
 fi
 
 echo "------------------------------ Done to build $name packages --------------------------"
-cd $SRC_ROOT
+cd $dest_dir
 ls *.zip 2>/dev/null

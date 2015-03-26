@@ -1,7 +1,7 @@
 #!/bin/bash
 source $(dirname $0)/webapi-service-tests.spec
 SRC_ROOT=$(cd $(dirname $0);pwd)
-BUILD_ROOT=/tmp/$name
+BUILD_ROOT=/tmp/$name-$path_flag
 
 usage="Usage: ./pack.sh [-t <package type: apk | cordova>] [-a <apk runtime arch: x86 | arm>] [-m <package mode: embedded | shared>]
 [-t apk] option was set as default.
@@ -9,21 +9,23 @@ usage="Usage: ./pack.sh [-t <package type: apk | cordova>] [-a <apk runtime arch
 [-m embedded] option was set as default.
 "
 
+dest_dir=$SRC_ROOT
 pack_type="apk"
 arch="x86"
 pack_mode="embedded"
-while getopts a:t:m: o
+while getopts a:t:m:d: o
 do
     case "$o" in
     a) arch=$OPTARG;;
     t) pack_type=$OPTARG;;
     m) pack_mode=$OPTARG;;
+    d) dest_dir=$OPTARG;;
     *) echo "$usage"
        exit 1;;
     esac
 done
 
-rm -rf $SRC_ROOT/*.zip
+rm -rf $dest_dir/$name-$version-$sub_version.$pack_type.zip
 
 # clean
 function clean_workspace(){
@@ -112,18 +114,20 @@ fi
 
 # copy zip file
 echo "copy package from workspace... >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>"
-cp -f $BUILD_ROOT/$name-$version-$sub_version.$pack_type.zip $SRC_ROOT/
+cd $SRC_ROOT
+mkdir -p $dest_dir
+cp -f $BUILD_ROOT/$name-$version-$sub_version.$pack_type.zip $dest_dir
 
 # clean workspace
 clean_workspace
 
 # validate
 echo "checking result... >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>"
-if [ -z "`ls $SRC_ROOT | grep "\.zip"`" ];then
+if [ ! -f $dest_dir/$name-$version-$sub_version.$pack_type.zip ];then
     echo "------------------------------ FAILED to build $name packages --------------------------"
     exit 1
 fi
 
 echo "------------------------------ Done to build $name packages --------------------------"
-cd $SRC_ROOT
+cd $dest_dir
 ls *.zip 2>/dev/null
