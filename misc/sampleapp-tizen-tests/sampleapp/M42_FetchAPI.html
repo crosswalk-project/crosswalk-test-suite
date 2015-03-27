@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<!--
+Copyright (c) 2015 Intel Corporation.
+
+Redistribution and use in source and binary forms, with or without modification,
+are permitted provided that the following conditions are met:
+
+* Redistributions of works must retain the original copyright notice, this list
+  of conditions and the following disclaimer.
+* Redistributions in binary form must reproduce the original copyright notice,
+  this list of conditions and the following disclaimer in the documentation
+  and/or other materials provided with the distribution.
+* Neither the name of Intel Corporation nor the names of its contributors
+  may be used to endorse or promote products derived from this work without
+  specific prior written permission.
+
+THIS SOFTWARE IS PROVIDED BY INTEL CORPORATION "AS IS"
+AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE
+IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE
+ARE DISCLAIMED. IN NO EVENT SHALL INTEL CORPORATION BE LIABLE FOR ANY DIRECT,
+INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING,
+BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE,
+DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY
+OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING
+NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE,
+EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
+
+Authors:
+        Xu, Kang <kangx.xu@intel.com>
+
+-->
+
+<meta charset="utf-8">
+<title>Chrome42_Fetch API</title>
+<link rel="author" title="Intel" href="http://www.intel.com">
+<div>
+  <p>Test purpose:</p>
+  <ol>
+    <li>Note: the sample need network support.</li>
+    <li>Check that Fetch API is supported or not.</li>
+  </ol>
+  <p>Test steps:</p>
+  <ol>
+    <li>Open the url "https://googlechrome.github.io/samples/fetch-api/fetch-json.html", check the output message</li>
+    <li>Open the url "https://googlechrome.github.io/samples/fetch-api/fetch-html.html", check the output message</li>
+    <li>Open the url "https://googlechrome.github.io/samples/fetch-api/fetch-reddit.html", choose different items</li>
+    <li>Open the url "https://googlechrome.github.io/samples/fetch-api/fetch-post.html", cilck button "Create new GitHub Gist"</li>
+    <li>Open the url "https://googlechrome.github.io/samples/fetch-api/fetch-response-metadata.html"</li>
+    <li>Open the url "https://googlechrome.github.io/samples/fetch-api/fetch-success-error-handlers.html"</li>
+  </ol>
+  <p>Expected result:</p>
+  <ol>
+    <li>The output message should be "Parsed JSON from the response: Paul,Matt,Peter,Kenji,Jeff"</li>
+    <li>The output message should be as following:</li>
+    <div>
+      &lth1&gtUsers!&lt/h1><br/>
+      &ltul&gt<br/>
+        &ltli&gtPaul&lt/li&gt<br/>
+        &ltli&gtMatt&lt/li&gt<br/>
+        &ltli&gtJason&lt/li&gt<br/>
+        &ltli&gtKenji&lt/li&gt<br/>
+      &lt/ul&gt
+    </div>
+    <li>Get different resource list with different items</li>
+    <li>Create Gist successfully, the output message seems like:</li>
+    <div style="border: 1px solid gray;">
+      Posting request to GitHub API...<br/>
+      Created Gist: https://gist.github.com/37d6f6c44969e70d452d
+    </div>
+    <li>The output message should be as following:</li>
+    <div style="border: 1px solid gray;">
+      200<br/>
+      OK<br/>
+      basic<br/>
+      http://googlechrome.github.io/samples/fetch-api/users.json<br/>
+      Content-Type: application/json<br/>
+      Date: Wed, 18 Mar 2015 05:49:51 GMT<br/>
+    </div>
+    <li>The output message should be "Request failedError: Not Found
+Request succeeded with JSON responsePaul,Matt,Peter,Kenji,Jeff"</li>
+  </ol>
+</div>
