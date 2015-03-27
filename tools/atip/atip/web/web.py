@@ -33,6 +33,7 @@ import colorsys
 import Image
 import string
 import os
+import ConfigParser
 from selenium.webdriver.remote.webdriver import WebDriver
 from selenium.webdriver.common.action_chains import ActionChains
 from selenium.common.exceptions import (
@@ -55,6 +56,10 @@ class WebAPP(common.APP):
         self.app_type = common.APP_TYPE_WEB
         self.app_name = app_name
         self.app_id = ""
+        self.cur_path = os.getcwd()
+        self.config_file = "data.conf"
+        self.device_platform,self.test_type = self.read_config()
+        self.baseline_path = self.cur_path + "/data/" + self.device_platform
         self.text_value = {}
         self.picture_list = []
         self.color_dict = {"rgb(255, 0, 0)": "red","rgb(0, 255, 0)": "green","rgb(0, 0, 255)": "blue","rgb(255, 255, 0)": "yellow","rgb(0, 0, 0)": "black","rgb(0, 128, 0)": "green","rgb(255, 255, 255)": "white","rgba(0, 0, 0, 0)": "white"}
@@ -86,6 +91,18 @@ class WebAPP(common.APP):
             self.url_prefix = app_config["url-prefix"]
         else:
             self.url_prefix = ""
+
+    def read_config(self):
+        try:
+            config = ConfigParser.ConfigParser()
+            with open(self.config_file, "r") as cfgfile:
+                 config.readfp(cfgfile)
+            platform = config.get('info','platform')
+            test_type = config.get('info','test_type')
+            return platform,test_type
+        except Exception as e:
+            print "Parser config data.config failed: %s" % e
+            return None
 
     def __get_element_by_xpath(self, xpath, display=True):
         try:
@@ -557,6 +574,40 @@ class WebAPP(common.APP):
         except Exception as e:
             print "Remove the tmp pictures fail: %s" % e
             return False
+
+    #Save page as pictures
+    def save_page_per_conf(self, pic_name):
+        try:
+            #self.device_platform,self.test_type = self.read_config()
+           if self.test_type == "result":
+              pic_name = pic_name + ".png"
+              self.driver.get_screenshot_as_file(pic_name)
+              self.picture_list.append(pic_name)
+              return True
+           elif self.test_type == "baseline":
+              if not os.path.exists(self.baseline_path):
+                 os.makedirs(self.baseline_path)
+              picname_baseline = self.baseline_path + "/" + pic_name + "_baseline.png"
+              self.driver.get_screenshot_as_file(picname_baseline)
+              return True
+           else:
+              print "Test_type is wrong. It should be baseline or result. Please check the data.config file."
+              return False
+        except Exception as e:
+            print "Save baseline pictures fail: %s" % e
+            return False
+
+    def check_base_result_similarity(self, pic_name, similarity):
+        base_pic = self.baseline_path + "/" + pic_name + "_baseline.png"
+        pic_name = pic_name + ".png"
+        if not os.path.exists(pic_name):
+           print "The result picture %s is not existed! Case fail" % pic_name
+           return False
+        if not os.path.exists(base_pic):
+           print "The baseline picture %s is not existed! Case fail" % base_pic
+           return False
+        return self.check_pic_same(base_pic, pic_name, similarity)
+
 
     def fill_element_by_key(self, key, text, display=True):
         element = self.__get_element_by_key(key, display)
