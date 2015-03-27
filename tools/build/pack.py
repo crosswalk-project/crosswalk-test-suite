@@ -670,6 +670,15 @@ def packEmbeddingAPI_sub(
             pack_tool):
         return False
 
+    if BUILD_PARAMETERS.pkgmode:
+        if BUILD_PARAMETERS.pkgmode == "shared":
+            embedding_shared_files=[]
+            embedding_shared_files.extend(list(iterfindfiles(pack_tool,"libxwalkcore.so")))
+            embedding_shared_files.extend(list(iterfindfiles(pack_tool,"xwalk_core_library_java_library_part.jar")))
+            for emb_file in embedding_shared_files:
+                os.remove(emb_file)
+                LOG.info("shared mode : remove %s !!!"%emb_file)
+
     if os.path.exists(os.path.join(pack_tool, "bin", "res", "crunch")):
         if not doRemove([os.path.join(pack_tool, "bin", "res", "crunch")]):
             return False
