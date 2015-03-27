@@ -1,0 +1,10 @@
+var step = '<font class="fontSize">'
+            +'<p>Test Purpose: </p>'
+            +'<p>Verifies the device supports the methods of Web Animation related.</p>'
+            +'<p>Test Step: </p>'
+            +'<ol>'
+              +'<li>Press any one of the boxes.</li>'
+            +'</ol>'
+            +'<p>Expected Result: </p>'
+            +'<p>Test passes if the box background color is changed after pressed.</p>'
+          +'</font>';
