@@ -112,20 +112,6 @@ public class XWalkUIClientTest extends XWalkViewTestBase {
     }
 
     @SmallTest
-    public void testOnFullscreenToggled_evaluateJavascript() {
-        try {
-            String url = "file:///android_asset/fullscreen_togged.html";
-            OnFullscreenToggledHelper mOnFullscreenToggledHelper = mTestHelperBridge.getOnFullscreenToggledHelper();
-            loadUrlSync(url);
-            clickOnElementId_evaluateJavascript("fullscreen_toggled");
-            assertTrue(mOnFullscreenToggledHelper.getEnterFullscreen());
-        } catch (Exception e) {
-            e.printStackTrace();
-            assertTrue(false);
-        }
-    }
-
-    @SmallTest
     public void testOpenFileChooser() {
         try {
             getInstrumentation().runOnMainSync(new Runnable() {
@@ -176,22 +162,6 @@ public class XWalkUIClientTest extends XWalkViewTestBase {
             int count = mOpenFileChooserHelper.getCallCount();
             loadUrlSync(url);
             clickOnElementId("upload_input", null);
-            mOpenFileChooserHelper.waitForCallback(count);
-            assertNotNull(mOpenFileChooserHelper.getCallback());
-        } catch (Exception e) {
-            e.printStackTrace();
-            assertTrue(false);
-        }
-    }
-
-    @SmallTest
-    public void testOpenFileChooser_evaluateJavascript() {
-        try {
-            String url = "file:///android_asset/file_chooser.html";
-            OpenFileChooserHelper mOpenFileChooserHelper = mTestHelperBridge.getOpenFileChooserHelper();;
-            int count = mOpenFileChooserHelper.getCallCount();
-            loadUrlSync(url);
-            clickOnElementId_evaluateJavascript("upload_input");
             mOpenFileChooserHelper.waitForCallback(count);
             assertNotNull(mOpenFileChooserHelper.getCallback());
         } catch (Exception e) {
