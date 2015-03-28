@@ -62,11 +62,11 @@ class TestStabilityIterativeFunctions(unittest.TestCase):
                           'tct_fullscreen_nonw3c_tests':'TctFullscreenNonw3cTests',
                           'tct_mediacapture_w3c_tests':'TctMediacaptureW3cTests',
                           'tct_websocket_w3c_tests':'TctWebsocketW3cTests',
-                          'Gallery':'Gallery',
-                          'Hangonman':'Hangonman',
-                          'Hexgl':'Hexgl',
-                          'Sysapps':'Sysapps',
-                          'Memorygame':'Memorygame'
+                          'gallery':'Gallery',
+                          'hangonman':'Hangonman',
+                          'hexgl':'Hexgl',
+                          'sysapps':'Sysapps',
+                          'memorygame':'Memorygame'
             }
             elapsed_time = time.time() - pre_time
             if elapsed_time >= runtime:
