@@ -243,11 +243,6 @@
           <test_script_entry>/opt/tct-colors-css3-tests/colors/csswg/t425-hsla-onscreen-b-manual.htm</test_script_entry>
         </description>
       </testcase>
-      <testcase component="W3C_HTML5 APIs/DOM, Forms and Styles/CSS Color Module Level 3" execution_type="manual" id="css3_colors_tests_entry1" purpose="Check that color: currentColor acts like inherit.">
-        <description>
-          <test_script_entry>/opt/tct-colors-css3-tests/colors/csswg/t31-color-currentColor-b.htm</test_script_entry>
-        </description>
-      </testcase>
       <testcase component="W3C_HTML5 APIs/DOM, Forms and Styles/CSS Color Module Level 3" execution_type="manual" id="css3_colors_tests_entry2" purpose="Check that color: green can implement color function properly">
         <description>
           <test_script_entry>/opt/tct-colors-css3-tests/colors/csswg/t31-color-text-a.htm</test_script_entry>
@@ -555,6 +550,14 @@
         <description>
           <test_script_entry>/opt/tct-colors-css3-tests/colors/csswg/t425-hsla-values-b.htm</test_script_entry>
           <refer_test_script_entry timeout="90">/opt/tct-colors-css3-tests/colors/csswg/reference/t425-hsla-values-b-ref.html</refer_test_script_entry>
+        </description>
+      </testcase>
+    </set>
+    <set name="color-bdd" type="js" ui-auto="bdd">
+      <testcase component="W3C_HTML5 APIs/DOM, Forms and Styles/CSS Color Module Level 3" execution_type="manual" id="css3_colors_tests_entry1" purpose="Check that color: currentColor acts like inherit.">
+        <description>
+          <test_script_entry>/opt/tct-colors-css3-tests/colors/csswg/bdd/t31-color-currentColor-b.htm</test_script_entry>
+          <bdd_test_script_entry test_script_expected_result="0">/opt/tct-colors-css3-tests/css3-color-app/testscripts/t31-color-currentColor-b.feature</bdd_test_script_entry>
         </description>
       </testcase>
     </set>

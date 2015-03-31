@@ -579,18 +579,6 @@
           </spec>
         </specs>
       </testcase>
-      <testcase component="W3C_HTML5 APIs/DOM, Forms and Styles/CSS Color Module Level 3" execution_type="manual" id="css3_colors_tests_entry1" priority="P1" purpose="Check that color: currentColor acts like inherit." status="approved" type="compliance">
-        <description>
-          <test_script_entry>/opt/tct-colors-css3-tests/colors/csswg/t31-color-currentColor-b.htm</test_script_entry>
-        </description>
-        <specs>
-          <spec>
-            <spec_assertion element_type="property" element_name="color" interface="CSS" specification="CSS Color Module Level 3" section="DOM, Forms and Styles" category="Tizen W3C API Specifications"/>
-            <spec_url>http://www.w3.org/TR/2011/REC-css3-color-20110607/#foreground</spec_url>
-            <spec_statement/>
-          </spec>
-        </specs>
-      </testcase>
       <testcase component="W3C_HTML5 APIs/DOM, Forms and Styles/CSS Color Module Level 3" execution_type="manual" id="css3_colors_tests_entry2" priority="P1" purpose="Check that color: green can implement color function properly" status="approved" type="compliance">
         <description>
           <test_script_entry>/opt/tct-colors-css3-tests/colors/csswg/t31-color-text-a.htm</test_script_entry>
@@ -1289,6 +1277,21 @@
             <spec_assertion category="Tizen W3C API Specifications" element_name="color" element_type="property" interface="CSS" section="DOM, Forms and Styles" specification="CSS Color Module Level 3" />
             <spec_url>http://www.w3.org/TR/2011/REC-css3-color-20110607/#colorunits</spec_url>
             <spec_statement />
+          </spec>
+        </specs>
+      </testcase>
+    </set>
+    <set name="color-bdd" type="js" ui-auto="bdd">
+      <testcase component="W3C_HTML5 APIs/DOM, Forms and Styles/CSS Color Module Level 3" execution_type="manual" id="css3_colors_tests_entry1" priority="P1" purpose="Check that color: currentColor acts like inherit." status="approved" type="compliance">
+        <description>
+          <test_script_entry>/opt/tct-colors-css3-tests/colors/csswg/bdd/t31-color-currentColor-b.htm</test_script_entry>
+          <bdd_test_script_entry test_script_expected_result="0">/opt/tct-colors-css3-tests/css3-color-app/testscripts/t31-color-currentColor-b.feature</bdd_test_script_entry>
+        </description>
+        <specs>
+          <spec>
+            <spec_assertion element_type="property" element_name="color" interface="CSS" specification="CSS Color Module Level 3" section="DOM, Forms and Styles" category="Tizen W3C API Specifications"/>
+            <spec_url>http://www.w3.org/TR/2011/REC-css3-color-20110607/#foreground</spec_url>
+            <spec_statement/>
           </spec>
         </specs>
       </testcase>
