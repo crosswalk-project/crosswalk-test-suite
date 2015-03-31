@@ -122,3 +122,16 @@ def run(self):
             self.assertEquals(stopstatus[0], 0)
             uninstatus = commands.getstatusoutput('adb -s ' + device + ' uninstall org.xwalk.test')
             self.assertEquals(uninstatus[0], 0)
+
+def channel(self, old_list, channel):
+    cmd = PackTools + "crosswalk-app create org.xwalk.test --channel=" + channel
+    packstatus = commands.getstatusoutput(cmd)
+    #print packstatus
+    clear("org.xwalk.test")
+    new_list = os.listdir(os.getcwd())
+    zipName =  set(new_list) - set(old_list)
+    print 'zipName', zipName
+    for i in zipName:
+        clear(i)
+    self.assertIn(channel, packstatus[1])
+    self.assertEquals(packstatus[0], 0)
