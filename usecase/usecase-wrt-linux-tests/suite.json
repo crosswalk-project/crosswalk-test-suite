@@ -1,0 +1,63 @@
+{
+    "pkg-blacklist": [
+        "config.xml",
+        "pack.py",
+        "icon.png",
+        "manifest.json",
+        "suite.json",
+        "*-py",
+        "inst.*"
+    ],
+    "pkg-list": {
+        "deb": {
+            "blacklist": [
+                "*"
+            ],
+            "copylist": {
+                "inst.deb.py": "inst.py",
+                "tests.full.xml": "tests.full.xml",
+                "tests.xml": "tests.xml"
+            },
+            "subapp-list": {
+                "res/testapp/org.packagemanage.cookies": {
+                    "install-path": "res/testapp"
+                },
+                "res/testapp/org.packagemanage.cookiesupgrade": {
+                    "install-path": "res/testapp"
+                },
+                "res/testapp/org.packagemanage.indexdb": {
+                    "install-path": "res/testapp"
+                },
+                "res/testapp/org.packagemanage.indexdbupgrade": {
+                    "install-path": "res/testapp"
+                },
+                "res/testapp/org.packagemanage.localstorage": {
+                    "install-path": "res/testapp"
+                },
+                "res/testapp/org.packagemanage.localstorageupgrade": {
+                    "install-path": "res/testapp"
+                },
+                "res/testapp/org.runtime.externaldynamicurl": {
+                    "install-path": "res/testapp"
+                },
+                "res/testapp/org.runtime.externalstaticurl": {
+                    "install-path": "res/testapp"
+                },
+                "res/testapp/org.runtime.flashplugingame": {
+                    "install-path": "res/testapp"
+                },
+                "res/testapp/org.runtime.flashpluginvideo": {
+                    "install-path": "res/testapp"
+                },
+                ".": {
+                    "app-name": "org.usecase.usecasewrtlinuxtests",
+                    "install-path": ".",
+                    "copylist": {
+                        "PACK-TOOL-ROOT/bootstrap-fw": "."
+                    }
+                }
+            }
+        }
+    },
+    "pkg-name": "usecase-wrt-linux-tests"
+}
