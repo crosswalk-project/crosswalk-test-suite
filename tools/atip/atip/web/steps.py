@@ -245,6 +245,16 @@ def remove_pic(context):
     assert context.app.remove_picture()
 
 
+@step(u'I save the page to "{pic_name}"')
+def save_page_per_conf(context, pic_name):
+    assert context.app.save_page_per_conf(pic_name)
+
+
+@step(u'pic "{pic_name}" of baseline and result should be "{similarity}" similar if have results')
+def check_base_result_similarity(context, pic_name, similarity):
+    assert context.app.check_base_result_similarity(pic_name, similarity)
+
+
 @step(u'I save "{p_name}" from "{key}" area')
 def check_type_by_key(context, p_name, key):
     assert context.app.save_content(p_name, key)
