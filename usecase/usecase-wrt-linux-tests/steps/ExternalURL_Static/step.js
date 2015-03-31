@@ -4,6 +4,7 @@ var step = '<font class="fontSize">'
             +'<p>Expected Result:</p>'
             +'<ol>'
             +'<li>The webapp install successfully and launch successfully.</li>'
-            +"<li>Open external URL in the app windows itself.</li>"
+            +'<li>Open static internal URL in app windows itself.</li>'
+            +'<li>Open static external URL in system browser.</li>'
             +'</ol>'
           +'</font>';
