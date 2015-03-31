@@ -8,9 +8,9 @@
           <test_script_entry>/opt/apptools-android-tests/apptools/create_no_sdk.py</test_script_entry>
         </description>
       </testcase>
-      <testcase component="Crosswalk App Tools/CLI" execution_type="auto" id="Crosswalk_create" purpose="Android - Validate if App Tool can work well with create option" subcase="3">
+      <testcase component="Crosswalk App Tools/CLI" execution_type="auto" id="Crosswalk_create_local" purpose="Android - Validate if App Tool can work well with create and crosswalk option" subcase="3">
         <description>
-          <test_script_entry>/opt/apptools-android-tests/apptools/create.py</test_script_entry>
+          <test_script_entry>/opt/apptools-android-tests/apptools/create_local.py</test_script_entry>
         </description>
       </testcase>
       <testcase component="Crosswalk App Tools/CLI" execution_type="auto" id="Crosswalk_pkgName" purpose="Android - Validate if the App Tool rules about package name" subcase="16">
@@ -21,6 +21,26 @@
       <testcase component="Crosswalk App Tools/CLI" execution_type="auto" id="Crosswalk_build" purpose="Android - Validate if App Tool can work well with build option" subcase="3">
         <description>
           <test_script_entry>/opt/apptools-android-tests/apptools/build.py</test_script_entry>
+        </description>
+      </testcase>
+      <testcase component="Crosswalk App Tools/CLI" execution_type="auto" id="Crosswalk_create_remote" purpose="Android - Validate if App Tool can work well with http proxy" subcase="1">
+        <description>
+          <test_script_entry>/opt/apptools-android-tests/apptools/create_remote.py</test_script_entry>
+        </description>
+      </testcase>
+      <testcase component="Crosswalk App Tools/CLI" execution_type="auto" id="Crosswalk_channel_beta" purpose="Android - Validate if App Tool can work well with the value of channel option is beta" subcase="1">
+        <description>
+          <test_script_entry>/opt/apptools-android-tests/apptools/channel_beta.py</test_script_entry>
+        </description>
+      </testcase>
+      <testcase component="Crosswalk App Tools/CLI" execution_type="auto" id="Crosswalk_channel_canary" purpose="Android - Validate if App Tool can work well with the value of channel option is canary" subcase="1">
+        <description>
+          <test_script_entry>/opt/apptools-android-tests/apptools/channel_canary.py</test_script_entry>
+        </description>
+      </testcase>
+      <testcase component="Crosswalk App Tools/CLI" execution_type="auto" id="Crosswalk_channel_stable" purpose="Android - Validate if App Tool can work well with the value of channel option is canary" subcase="1">
+        <description>
+          <test_script_entry>/opt/apptools-android-tests/apptools/channel_stable.py</test_script_entry>
         </description>
       </testcase>
     </set>
@@ -93,6 +113,13 @@
       <testcase component="Crosswalk App Tools/Common Module" execution_type="auto" id="Crosswalk_test_util" purpose="Android - Validate if create a temp directory/file under folder test-tmp" subcase="3">
         <description>
           <test_script_entry>/opt/apptools-android-tests/tools/crosswalk-app-tools/test/test-util.js</test_script_entry>
+        </description>
+      </testcase>
+    </set>
+    <set name="common_module_manual" type="js">
+      <testcase component="Crosswalk App Tools/CLI" execution_type="manual" id="AppTools_Download" purpose="Android - Validate if App Tool can download the crosswalk binary automatically" subcase="1">
+        <description>
+          <test_script_entry>/opt/apptools-android-tests/apptools/AppTools_Download.html</test_script_entry>
         </description>
       </testcase>
     </set>
