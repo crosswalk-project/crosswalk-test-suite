@@ -4,4 +4,3 @@ Feature: w3c-webstorage
      And I go to "csswg/t31-color-currentColor-b.htm"
      And I save the page to "css3_colors_tests_entry1"
     Then pic "css3_colors_tests_entry1" of baseline and result should be "100" similar if have results
-    And I remove all the pictures
