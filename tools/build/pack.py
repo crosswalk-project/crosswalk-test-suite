@@ -1145,6 +1145,8 @@ def main():
         if parameters_type:
             if parameters_type in i_pkg_list:
                 pkg_json = config_json["pkg-list"][i_pkg]
+            elif BUILD_PARAMETERS.pkgtype in i_pkg_list:
+                pkg_json = config_json["pkg-list"][i_pkg]
         elif BUILD_PARAMETERS.pkgtype in i_pkg_list:
             pkg_json = config_json["pkg-list"][i_pkg]
             
