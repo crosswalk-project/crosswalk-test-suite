@@ -58,7 +58,9 @@ class WebAPP(common.APP):
         self.app_id = ""
         self.cur_path = os.getcwd()
         self.config_file = "data.conf"
-        self.device_platform,self.test_type = self.read_config()
+        self.device_platform = ""
+        self.test_type = ""
+        self.read_config()
         self.baseline_path = self.cur_path + "/data/" + self.device_platform
         self.text_value = {}
         self.picture_list = []
@@ -97,12 +99,10 @@ class WebAPP(common.APP):
             config = ConfigParser.ConfigParser()
             with open(self.config_file, "r") as cfgfile:
                  config.readfp(cfgfile)
-            platform = config.get('info','platform')
-            test_type = config.get('info','test_type')
-            return platform,test_type
+            self.platform = config.get('info','platform')
+            self.test_type = config.get('info','test_type')
         except Exception as e:
             print "Parser config data.config failed: %s" % e
-            return None
 
     def __get_element_by_xpath(self, xpath, display=True):
         try:
@@ -578,15 +578,13 @@ class WebAPP(common.APP):
     #Save page as pictures
     def save_page_per_conf(self, pic_name):
         try:
-            #self.device_platform,self.test_type = self.read_config()
+           if not os.path.exists(self.baseline_path):
+              os.makedirs(self.baseline_path)
            if self.test_type == "result":
-              pic_name = pic_name + ".png"
-              self.driver.get_screenshot_as_file(pic_name)
-              self.picture_list.append(pic_name)
+              picname_result = self.baseline_path + "/" + pic_name + ".png"
+              self.driver.get_screenshot_as_file(picname_result)
               return True
            elif self.test_type == "baseline":
-              if not os.path.exists(self.baseline_path):
-                 os.makedirs(self.baseline_path)
               picname_baseline = self.baseline_path + "/" + pic_name + "_baseline.png"
               self.driver.get_screenshot_as_file(picname_baseline)
               return True
@@ -598,15 +596,15 @@ class WebAPP(common.APP):
             return False
 
     def check_base_result_similarity(self, pic_name, similarity):
+        resu_pic = self.baseline_path + "/" + pic_name + ".png"
         base_pic = self.baseline_path + "/" + pic_name + "_baseline.png"
-        pic_name = pic_name + ".png"
-        if not os.path.exists(pic_name):
+        if not os.path.exists(resu_pic):
            print "The result picture %s is not existed! Case fail" % pic_name
            return False
         if not os.path.exists(base_pic):
            print "The baseline picture %s is not existed! Case fail" % base_pic
            return False
-        return self.check_pic_same(base_pic, pic_name, similarity)
+        return self.check_pic_same(base_pic, resu_pic, similarity)
 
 
     def fill_element_by_key(self, key, text, display=True):
