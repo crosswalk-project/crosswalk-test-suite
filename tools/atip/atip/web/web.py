@@ -99,7 +99,7 @@ class WebAPP(common.APP):
             config = ConfigParser.ConfigParser()
             with open(self.config_file, "r") as cfgfile:
                  config.readfp(cfgfile)
-            self.platform = config.get('info','platform')
+            self.device_platform = config.get('info','platform')
             self.test_type = config.get('info','test_type')
         except Exception as e:
             print "Parser config data.config failed: %s" % e
