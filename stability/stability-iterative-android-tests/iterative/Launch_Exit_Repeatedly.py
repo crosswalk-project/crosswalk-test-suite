@@ -32,6 +32,7 @@
 import unittest
 import os, sys, commands, shutil
 import time
+import subprocess
 reload(sys)
 sys.setdefaultencoding( 'utf-8' )
 
