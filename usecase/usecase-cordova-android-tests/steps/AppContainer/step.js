@@ -1,0 +1,10 @@
+var step = '<font class="fontSize">'
+            +'<p>Pre-condition:</p>'
+            +'<p>Connect to network.</p>'
+            +'<p>Purpose:</p>'
+            +'<p>Verify a file:// origin could interact with the contentWindow of an &lt;iframe&gt; in a different origin (http:// or https://)</p>'
+            +'<p>Test Steps:</p>'
+            +'<p>Waiting for the page load.</p>'
+            +'<p>Expected Result:</p>'
+            +'<p>Test passes if A page with "Heroku | No such app" display.</p>'
+            +'</font>';
