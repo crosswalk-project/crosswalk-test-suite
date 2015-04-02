@@ -370,9 +370,14 @@ def packSampleApp(app_name=None):
     if checkContains(app_name, "REMOTEDEBUGGING"):
         pack_cmd = "./cordova/build --debug"
 
+    ANDROID_HOME = "echo $(dirname $(dirname $(which android)))"
+    os.environ['ANDROID_HOME'] = commands.getoutput(ANDROID_HOME)
+
     if not doCMD(pack_cmd, DEFAULT_CMD_TIMEOUT):
-        os.chdir(orig_dir)
-        return False
+        pack_cmd = "ant debug"
+        if not doCMD(pack_cmd, DEFAULT_CMD_TIMEOUT):
+            os.chdir(orig_dir)
+            return False
 
     if not doCopy(cordova_tmp_path,
             os.path.join(orig_dir, app_name + ".apk")):

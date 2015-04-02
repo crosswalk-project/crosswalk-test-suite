@@ -41,6 +41,7 @@ import zipfile
 import signal
 import fnmatch
 import subprocess
+import commands
 import re
 from optparse import OptionParser
 
@@ -628,14 +629,19 @@ def packCordova(build_json=None, app_src=None, app_dest=None, app_name=None):
         os.chdir(orig_dir)
         return False
     os.chdir(os.path.join(BUILD_ROOT, "cordova", app_name))
+    ANDROID_HOME = "echo $(dirname $(dirname $(which android)))"
+    os.environ['ANDROID_HOME'] = commands.getoutput(ANDROID_HOME)
     pack_cmd = "./cordova/build"
+
     if BUILD_PARAMETERS.subversion == '4.0':
         cordova_tmp_path = os.path.join(BUILD_ROOT, "cordova", app_name, "build", "outputs", "apk", "%s-armv7-debug.apk"%app_name)
     else:
         cordova_tmp_path = os.path.join(BUILD_ROOT, "cordova", app_name, "bin", "%s-debug.apk"%app_name)
     if not doCMD(pack_cmd, DEFAULT_CMD_TIMEOUT):
-        os.chdir(orig_dir)
-        return False
+        pack_cmd = "ant debug"
+        if not doCMD(pack_cmd, DEFAULT_CMD_TIMEOUT):
+            os.chdir(orig_dir)
+            return False
 
     if not doCopy(cordova_tmp_path,
             os.path.join(app_dest, "%s.apk" % app_name)):
