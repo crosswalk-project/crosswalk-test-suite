@@ -32,6 +32,7 @@ import os
 import sys
 import commands
 import shutil
+import time
 
 SCRIPT_FILE_PATH = os.path.realpath(__file__)
 SCRIPT_DIR_NAME = os.path.dirname(SCRIPT_FILE_PATH)
@@ -47,10 +48,15 @@ def setUp():
         os.mkdir(TEMP_DATA_PATH)
         os.system("chmod +x " + TEMP_DATA_PATH)
     
-def cleanTempData(removeForder):
-    removeForder = os.path.join(TEMP_DATA_PATH, removeForder)
-    if os.path.exists(removeForder):
-        shutil.rmtree(removeForder)
+def cleanTempData(removeFolder):
+    removeFolder = os.path.join(TEMP_DATA_PATH, removeFolder)
+    if os.path.exists(removeFolder):
+        shutil.rmtree(removeFolder)
+
+def delete():
+    if os.path.exists(TEMP_DATA_PATH):
+        os.chdir(SCRIPT_DIR_NAME)
+        os.system("rm -R " + TEMP_DATA_PATH)
 
 def create(self):
     try:
@@ -79,27 +85,34 @@ def run(self):
     setUp()
     debs = os.listdir(os.getcwd())
     for deb in debs:
-        projectName = deb.split('_')[0]
-        cmdInstall = 'sudo dpkg -i ' + deb
-        cmdSearchList = 'dpkg -l ' + projectName
-        cmdLaunch = projectName
-        cmdUninstall = 'sudo dpkg -P ' + projectName
+        project_name = deb.split("_")[0]
 
-        print "Begin install deb file " + deb
-        instStatus = commands.getstatusoutput(cmdInstall)
-        self.assertEquals(instStatus[0], 0)
-        print "Begin search deb file " + projectName
-        listStatus = commands.getstatusoutput(cmdSearchList)
-        self.assertTrue(listStatus)
-        print "Begin launch deb file " + projectName
-        launchStatus = commands.getstatusoutput(cmdLaunch)
-        self.assertEquals(launchStatus[0], 0)
-        print "Begin uninstall deb file " + projectName
-        uninstStatus = commands.getstatusoutput(cmdUninstall)
-        self.assertEquals(uninstStatus[0], 0)
+        print "Begin install deb file ", project_name
+        status, output = commands.getstatusoutput("sudo dpkg -i " + deb)
+        self.assertEquals(status, 0)
+        
+        print "Begin search deb file ", project_name
+        status = commands.getstatusoutput("dpkg -l " + project_name)
+        self.assertTrue(status)
 
-    try:
-        shutil.rmtree(TEMP_DATA_PATH)
-    except:
-        os.system("rm -rf " + TEMP_DATA_PATH + "/* &>/dev/null")
-        os.system("rm -R " + TEMP_DATA_PATH)
+        print "Begin launch deb file ", project_name
+        os.system(project_name + " & sleep 5")
+        # wait 3 second, then check application is running
+        time.sleep(3)
+
+        status, output = commands.getstatusoutput("ps -ef | grep " \
+            + project_name + " | grep -v \"grep\" | wc -l")
+        self.assertEquals(status, 0)
+
+        # kill application
+        status, output = commands.getstatusoutput("ps aux | grep xwalk | grep " + project_name + " | grep -v \"grep\"")
+        for ps in output.split("\n"):
+            for pid in ps.split(" "):
+                if pid.isdigit():
+                    os.kill(int(pid), 9)
+                    break
+
+        print "Begin uninstall deb file ", project_name
+        status, output = commands.getstatusoutput("sudo dpkg -P " \
+            + project_name)
+        self.assertEquals(status, 0)

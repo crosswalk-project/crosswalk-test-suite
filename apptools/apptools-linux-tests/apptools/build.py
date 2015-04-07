@@ -41,6 +41,7 @@ class TestCrosswalkApptoolsFunctions(unittest.TestCase):
         comm.build(self, buildcmd)
         comm.run(self)
         comm.cleanTempData(comm.TEST_PROJECT_COMM)
+        comm.delete()
 
 if __name__ == '__main__':
     unittest.main()
