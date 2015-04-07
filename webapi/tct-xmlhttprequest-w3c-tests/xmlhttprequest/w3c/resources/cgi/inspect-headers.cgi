@@ -47,7 +47,8 @@ for item in $HEADERS; do
         [ $match -eq 0 ] && key="HTTP_$key"
         val=`printenv $key`
         if [ -n "$FILTER" -a "$val" = "$FILTER" ]; then
-                v=`echo "$item" | tr '[A-Z]' '[a-z]'`
+                typeset -l v
+                v=${item}
                 RESULT="$v,"
                 break
         fi
