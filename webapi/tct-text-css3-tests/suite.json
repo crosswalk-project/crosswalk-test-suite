@@ -16,15 +16,30 @@
                 "*"
             ],
             "copylist": {
+                "bddrunner": "bddrunner",
+                "data.conf": "data.conf",
                 "inst.apk.py": "inst.py",
                 "tests.full.xml": "tests.full.xml",
-                "tests.xml": "tests.xml"
+                "tests.xml": "tests.xml",
+                "css3-text-app/testscripts": "css3-text-app/testscripts",
+                "css3-text-app/data": "data"
             },
             "pkg-app": {
                 "apk-common-opts":"--enable-remote-debugging",
                 "copylist": {
                     "PACK-TOOL-ROOT/resources/testharness": "resources",
                     "PACK-TOOL-ROOT/resources/webrunner": "webrunner"
+                }
+            },
+            "subapp-list": {
+                "css3-text-app": {
+                    "apk-common-opts": "--enable-remote-debugging",
+                    "apk-icon-opt": "",
+                    "copylist": {
+                        "../text/bdd": "text",
+                        "../text/csswg/bdd": "csswg",
+                        "../text/webkit/bdd": "webkit"
+                    }
                 }
             }
         },
