@@ -1,0 +1,53 @@
+{
+    "pkg-blacklist": [
+        "config.xml",
+        "pack.py",
+        "testcase.xsl",
+        "testresult.xsl",
+        "tests.css",
+        "icon.png",
+        "manifest.json",
+        "suite.json",
+        "inst.*"
+    ],
+    "pkg-list": {
+        "deb": {
+            "blacklist": [
+                "*"
+            ],
+            "copylist": {
+                "inst.deb.py": "inst.py",
+                "tests.full.xml": "tests.full.xml",
+                "tests.xml": "tests.xml"
+            },
+            "subapp-list": {
+                "org.csp.connectsrcasteriskallowed": {
+					"copylist": {
+					"PACK-TOOL-ROOT/resources/testharness": "resources"
+		            }
+                },
+                "org.csp.connectsrccrossoriginmultixmlhttprequestallowedone": {
+					"copylist": {
+					"PACK-TOOL-ROOT/resources/testharness": "resources"
+		            }
+                },
+                "org.csp.connectsrccrossoriginxmlhttprequestallowed": {
+					"copylist": {
+					"PACK-TOOL-ROOT/resources/testharness": "resources"
+		            }
+                },
+                "org.csp.connectsrcnonexmlhttprequestblocked": {
+					"copylist": {
+					"PACK-TOOL-ROOT/resources/testharness": "resources"
+		            }
+                },
+                "org.csp.connectsrcselfxmlhttprequestallowed": {
+					"copylist": {
+					"PACK-TOOL-ROOT/resources/testharness": "resources"
+		            }
+                }
+            }
+        }
+    },
+    "pkg-name": "wrt-rt-linux-tests"
+}
