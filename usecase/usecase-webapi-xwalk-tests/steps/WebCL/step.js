@@ -1,6 +1,0 @@
-var step = '<font class="fontSize">'
-           + '<p>Test Purpose: </p>'
-           + '<p>Verifies the functionality of WebCL work properly.</p>'
-           + '<p>Expected Result: </p>'
-           + '<p>Test passes if the computed result show normally.</p>'
-         + '</font>'
