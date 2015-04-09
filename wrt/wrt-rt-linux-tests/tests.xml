@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-stylesheet type="text/xsl" href="./testcase.xsl"?>
+<test_definition>
+  <suite category="Runtime" name="wrt-rt-linux-tests">
+    <set name="connectsrcasteriskallowed" type="wrt">
+      <testcase component="Crosswalk Use Cases/RT" execution_type="auto" id="connectsrcasteriskallowed" purpose="Check if user agent is able to open internal resource by xhr when connect-src is *.">
+        <description>
+          <test_script_entry test_script_expected_result="0">test_index.html</test_script_entry>
+        </description>
+      </testcase>
+    </set>
+    <set name="connectsrcasteriskallowedext" type="wrt">
+      <testcase component="Crosswalk Use Cases/RT" execution_type="auto" id="connectsrcasteriskallowedext" purpose="Check if user agent is able to open internal resource by xhr when connect-src is *.">
+        <description>
+          <test_script_entry test_script_expected_result="0">test_index.html</test_script_entry>
+        </description>
+      </testcase>
+    </set>
+    <set name="roscriptsrcselfunsafeinlineunsafeeval" type="wrt">
+      <testcase component="Crosswalk Use Cases/RT" execution_type="auto" id="roscriptsrcselfunsafeinlineunsafeeval" purpose="CCheck if inline function eval works well when script-src is self, unsafe-inline, unsafe-eval in report only mode.">
+        <description>
+          <test_script_entry test_script_expected_result="0">test_index.html</test_script_entry>
+        </description>
+      </testcase>
+    </set>
+    <set name="roscriptsrcselfunsafeinlineunsafeevalinternal" type="wrt">
+      <testcase component="Crosswalk Use Cases/RT" execution_type="auto" id="roscriptsrcselfunsafeinlineunsafeevalinternal" purpose="Check if internal script works well when script-src is self, unsafe-inline, unsafe-eval in report only mode.">
+        <description>
+          <test_script_entry test_script_expected_result="0">test_index.html</test_script_entry>
+        </description>
+      </testcase>
+    </set>
+    <set name="stylesrcunsafeinlineblockedint" type="wrt">
+      <testcase component="Crosswalk Use Cases/RT" execution_type="auto" id="stylesrcunsafeinlineblockedint" purpose="Check if user agent is able to use external style resource when style-src is unsafe-inline in report only mode.">
+        <description>
+          <test_script_entry test_script_expected_result="0">test_index.html</test_script_entry>
+        </description>
+      </testcase>
+    </set>
+    <set name="connectsrccrossoriginmultixmlhttprequestallowedone" type="wrt">
+      <testcase component="Crosswalk Use Cases/RT" execution_type="auto" id="connectsrccrossoriginmultixmlhttprequestallowedone" purpose="Check if user agent is able to open first allowed external resource by xhr when connect-src is cross-origin.">
+        <description>
+          <test_script_entry test_script_expected_result="0">test_index.html</test_script_entry>
+        </description>
+      </testcase>
+    </set>
+    <set name="connectsrccrossoriginmultixmlhttprequestallowedtwo" type="wrt">
+      <testcase component="Crosswalk Use Cases/RT" execution_type="auto" id="connectsrccrossoriginmultixmlhttprequestallowedtwo" purpose="Check if user agent is able to open second allowed external resource by xhr when connect-src is cross-origin.">
+        <description>
+          <test_script_entry test_script_expected_result="0">test_index.html</test_script_entry>
+        </description>
+      </testcase>
+    </set>
+  </suite>
+</test_definition>
