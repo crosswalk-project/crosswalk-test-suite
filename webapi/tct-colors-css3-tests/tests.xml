@@ -238,29 +238,9 @@
           <test_script_entry>/opt/tct-colors-css3-tests/colors/csswg/t425-hsla-onscreen-b-manual.htm</test_script_entry>
         </description>
       </testcase>
-      <testcase component="W3C_HTML5 APIs/DOM, Forms and Styles/CSS Color Module Level 3" execution_type="manual" id="css3_colors_tests_entry25" purpose="Check that the color '#rrggbb' is displayed correctly.">
-        <description>
-          <test_script_entry>/opt/tct-colors-css3-tests/colors/csswg/t421-rgb-hex6-a.htm</test_script_entry>
-        </description>
-      </testcase>
-      <testcase component="W3C_HTML5 APIs/DOM, Forms and Styles/CSS Color Module Level 3" execution_type="manual" id="css3_colors_tests_entry26" purpose="Check that hexadecimal values are only accepted if they have 3 or six digits">
-        <description>
-          <test_script_entry>/opt/tct-colors-css3-tests/colors/csswg/t421-rgb-hex-parsing-f.htm</test_script_entry>
-        </description>
-      </testcase>
       <testcase component="W3C_HTML5 APIs/DOM, Forms and Styles/CSS Color Module Level 3" execution_type="manual" id="css3_colors_tests_entry27" purpose="Check that color components in rgb colors are interpreted correctly">
         <description>
           <test_script_entry>/opt/tct-colors-css3-tests/colors/csswg/t421-rgb-values-meaning-b.htm</test_script_entry>
-        </description>
-      </testcase>
-      <testcase component="W3C_HTML5 APIs/DOM, Forms and Styles/CSS Color Module Level 3" execution_type="manual" id="css3_colors_tests_entry30" purpose="Check that opacity of 1.0 makes text fully opaque">
-        <description>
-          <test_script_entry>/opt/tct-colors-css3-tests/colors/csswg/t422-rgba-a1.0-a.htm</test_script_entry>
-        </description>
-      </testcase>
-      <testcase component="W3C_HTML5 APIs/DOM, Forms and Styles/CSS Color Module Level 3" execution_type="manual" id="css3_colors_tests_entry36" purpose="Check that rgba() can produce correct colors">
-        <description>
-          <test_script_entry>/opt/tct-colors-css3-tests/colors/csswg/t422-rgba-func-pct-a.htm</test_script_entry>
         </description>
       </testcase>
       <testcase component="W3C_HTML5 APIs/DOM, Forms and Styles/CSS Color Module Level 3" execution_type="manual" id="css3_colors_tests_entry40" purpose="Check that color components in rgba colors are rendered correctly">
@@ -280,6 +260,12 @@
       </testcase>
     </set>
     <set name="Colors-ref" type="ref" ui-auto="wd">
+      <testcase component="W3C_HTML5 APIs/DOM, Forms and Styles/CSS Color Module Level 3" execution_type="manual" id="css3_colors_tests_entry1" purpose="Check that color: currentColor acts like inherit.">
+        <description>
+          <test_script_entry>/opt/tct-colors-css3-tests/colors/csswg/t31-color-currentColor-b.htm</test_script_entry>
+          <refer_test_script_entry timeout="90">/opt/tct-colors-css3-tests/colors/csswg/reference/t31-color-currentColor-b-ref.html</refer_test_script_entry>
+        </description>
+      </testcase>
       <testcase component="W3C_HTML5 APIs/DOM, Forms and Styles/CSS Color Module Level 3" execution_type="manual" id="css3_colors_tests_entry9" purpose="To check that opacity is group opacity into elements (not boxes)">
         <description>
           <test_script_entry>/opt/tct-colors-css3-tests/colors/csswg/t32-opacity-offscreen-multiple-boxes-1-c.htm</test_script_entry>
@@ -290,6 +276,54 @@
         <description>
           <test_script_entry>/opt/tct-colors-css3-tests/colors/csswg/t32-opacity-offscreen-multiple-boxes-2-c.htm</test_script_entry>
           <refer_test_script_entry timeout="90">/opt/tct-colors-css3-tests/colors/csswg/reference/t32-opacity-offscreen-multiple-boxes-2-c-ref.html</refer_test_script_entry>
+        </description>
+      </testcase>
+      <testcase component="W3C_HTML5 APIs/DOM, Forms and Styles/CSS Color Module Level 3" execution_type="manual" id="css3_colors_tests_entry18" purpose="Check that rgb() values of number produces correct colors">
+        <description>
+          <test_script_entry>/opt/tct-colors-css3-tests/colors/csswg/t421-rgb-func-int-a.htm</test_script_entry>
+          <refer_test_script_entry timeout="90">/opt/tct-colors-css3-tests/colors/csswg/reference/t422-rgba-func-int-a-ref.html</refer_test_script_entry>
+        </description>
+      </testcase>
+      <testcase component="W3C_HTML5 APIs/DOM, Forms and Styles/CSS Color Module Level 3" execution_type="manual" id="css3_colors_tests_entry19" purpose="Check that rgb() values are only accepted when all integers or all percentages">
+        <description>
+          <test_script_entry>/opt/tct-colors-css3-tests/colors/csswg/t421-rgb-func-no-mixed-f.htm</test_script_entry>
+          <refer_test_script_entry timeout="90">/opt/tct-colors-css3-tests/colors/csswg/reference/t422-rgba-func-no-mixed-f-ref.html</refer_test_script_entry>
+        </description>
+      </testcase>
+      <testcase component="W3C_HTML5 APIs/DOM, Forms and Styles/CSS Color Module Level 3" execution_type="manual" id="css3_colors_tests_entry20" purpose="Check that rgb() values of percent produce correct colors.">
+        <description>
+          <test_script_entry>/opt/tct-colors-css3-tests/colors/csswg/t421-rgb-func-pct-a.htm</test_script_entry>
+          <refer_test_script_entry timeout="90">/opt/tct-colors-css3-tests/colors/csswg/reference/t422-rgba-func-int-a-ref.html</refer_test_script_entry>
+        </description>
+      </testcase>
+      <testcase component="W3C_HTML5 APIs/DOM, Forms and Styles/CSS Color Module Level 3" execution_type="manual" id="css3_colors_tests_entry21" purpose="Check that whitespace is allowed within rgb() functions">
+        <description>
+          <test_script_entry>/opt/tct-colors-css3-tests/colors/csswg/t421-rgb-func-whitespace-b.htm</test_script_entry>
+          <refer_test_script_entry timeout="90">/opt/tct-colors-css3-tests/colors/csswg/reference/t422-rgba-func-whitespace-b-ref.html</refer_test_script_entry>
+        </description>
+      </testcase>
+      <testcase component="W3C_HTML5 APIs/DOM, Forms and Styles/CSS Color Module Level 3" execution_type="manual" id="css3_colors_tests_entry22" purpose="Check that #rgb values produce correct colors">
+        <description>
+          <test_script_entry>/opt/tct-colors-css3-tests/colors/csswg/t421-rgb-hex3-a.htm</test_script_entry>
+          <refer_test_script_entry timeout="90">/opt/tct-colors-css3-tests/colors/csswg/reference/t422-rgba-func-int-a-ref.html</refer_test_script_entry>
+        </description>
+      </testcase>
+      <testcase component="W3C_HTML5 APIs/DOM, Forms and Styles/CSS Color Module Level 3" execution_type="manual" id="css3_colors_tests_entry25" purpose="Check that the color '#rrggbb' is displayed correctly.">
+        <description>
+          <test_script_entry>/opt/tct-colors-css3-tests/colors/csswg/t421-rgb-hex6-a.htm</test_script_entry>
+          <refer_test_script_entry timeout="90">/opt/tct-colors-css3-tests/colors/csswg/reference/t422-rgba-func-int-a-ref.html</refer_test_script_entry>
+        </description>
+      </testcase>
+      <testcase component="W3C_HTML5 APIs/DOM, Forms and Styles/CSS Color Module Level 3" execution_type="manual" id="css3_colors_tests_entry26" purpose="Check that hexadecimal values are only accepted if they have 3 or six digits">
+        <description>
+          <test_script_entry>/opt/tct-colors-css3-tests/colors/csswg/t421-rgb-hex-parsing-f.htm</test_script_entry>
+          <refer_test_script_entry timeout="90">/opt/tct-colors-css3-tests/colors/csswg/reference/t422-rgba-func-no-mixed-f-ref.html</refer_test_script_entry>
+        </description>
+      </testcase>
+      <testcase component="W3C_HTML5 APIs/DOM, Forms and Styles/CSS Color Module Level 3" execution_type="manual" id="css3_colors_tests_entry30" purpose="Check that opacity of 1.0 makes text fully opaque">
+        <description>
+          <test_script_entry>/opt/tct-colors-css3-tests/colors/csswg/t422-rgba-a1.0-a.htm</test_script_entry>
+          <refer_test_script_entry timeout="90">/opt/tct-colors-css3-tests/colors/csswg/reference/t422-rgba-a1.0-a-ref.html</refer_test_script_entry>
         </description>
       </testcase>
       <testcase component="W3C_HTML5 APIs/DOM, Forms and Styles/CSS Color Module Level 3" execution_type="manual" id="css3_colors_tests_entry31" purpose="Check that alpha components of rgba() colors less than 0 are treated to 0">
@@ -307,6 +341,12 @@
       <testcase component="W3C_HTML5 APIs/DOM, Forms and Styles/CSS Color Module Level 3" execution_type="manual" id="css3_colors_tests_entry34" purpose="Check that rgba() values produce correct colors">
         <description>
           <test_script_entry>/opt/tct-colors-css3-tests/colors/csswg/t422-rgba-func-int-a.htm</test_script_entry>
+          <refer_test_script_entry timeout="90">/opt/tct-colors-css3-tests/colors/csswg/reference/t422-rgba-func-int-a-ref.html</refer_test_script_entry>
+        </description>
+      </testcase>
+      <testcase component="W3C_HTML5 APIs/DOM, Forms and Styles/CSS Color Module Level 3" execution_type="manual" id="css3_colors_tests_entry36" purpose="Check that rgba() can produce correct colors">
+        <description>
+          <test_script_entry>/opt/tct-colors-css3-tests/colors/csswg/t422-rgba-func-pct-a.htm</test_script_entry>
           <refer_test_script_entry timeout="90">/opt/tct-colors-css3-tests/colors/csswg/reference/t422-rgba-func-int-a-ref.html</refer_test_script_entry>
         </description>
       </testcase>
@@ -444,12 +484,6 @@
       </testcase>
     </set>
     <set name="color-bdd" type="js" ui-auto="bdd">
-      <testcase component="W3C_HTML5 APIs/DOM, Forms and Styles/CSS Color Module Level 3" execution_type="manual" id="css3_colors_tests_entry1" purpose="Check that color: currentColor acts like inherit.">
-        <description>
-          <test_script_entry>/opt/tct-colors-css3-tests/colors/csswg/bdd/t31-color-currentColor-b.htm</test_script_entry>
-          <bdd_test_script_entry test_script_expected_result="0">/opt/tct-colors-css3-tests/css3-color-app/testscripts/t31-color-currentColor-b.feature</bdd_test_script_entry>
-        </description>
-      </testcase>
       <testcase component="W3C_HTML5 APIs/DOM, Forms and Styles/CSS Color Module Level 3" execution_type="manual" id="css3_colors_tests_entry2" purpose="Check that color: green can implement color function properly">
         <description>
           <test_script_entry>/opt/tct-colors-css3-tests/colors/csswg/bdd/t31-color-text-a.htm</test_script_entry>
@@ -514,36 +548,6 @@
         <description>
           <test_script_entry>/opt/tct-colors-css3-tests/colors/csswg/bdd/t421-rgb-clip-outside-gamut-b.htm</test_script_entry>
           <bdd_test_script_entry test_script_expected_result="0">/opt/tct-colors-css3-tests/css3-color-app/testscripts/t421-rgb-clip-outside-gamut-b.feature</bdd_test_script_entry>
-        </description>
-      </testcase>
-      <testcase component="W3C_HTML5 APIs/DOM, Forms and Styles/CSS Color Module Level 3" execution_type="manual" id="css3_colors_tests_entry18" purpose="Check that rgb() values of number produces correct colors">
-        <description>
-          <test_script_entry>/opt/tct-colors-css3-tests/colors/csswg/bdd/t421-rgb-func-int-a.htm</test_script_entry>
-          <bdd_test_script_entry test_script_expected_result="0">/opt/tct-colors-css3-tests/css3-color-app/testscripts/t421-rgb-func-int-a.feature</bdd_test_script_entry>
-        </description>
-      </testcase>
-      <testcase component="W3C_HTML5 APIs/DOM, Forms and Styles/CSS Color Module Level 3" execution_type="manual" id="css3_colors_tests_entry19" purpose="Check that rgb() values are only accepted when all integers or all percentages">
-        <description>
-          <test_script_entry>/opt/tct-colors-css3-tests/colors/csswg/bdd/t421-rgb-func-no-mixed-f.htm</test_script_entry>
-          <bdd_test_script_entry test_script_expected_result="0">/opt/tct-colors-css3-tests/css3-color-app/testscripts/t421-rgb-func-no-mixed-f.feature</bdd_test_script_entry>
-        </description>
-      </testcase>
-      <testcase component="W3C_HTML5 APIs/DOM, Forms and Styles/CSS Color Module Level 3" execution_type="manual" id="css3_colors_tests_entry20" purpose="Check that rgb() values of percent produce correct colors.">
-        <description>
-          <test_script_entry>/opt/tct-colors-css3-tests/colors/csswg/bdd/t421-rgb-func-pct-a.htm</test_script_entry>
-          <bdd_test_script_entry test_script_expected_result="0">/opt/tct-colors-css3-tests/css3-color-app/testscripts/t421-rgb-func-pct-a.feature</bdd_test_script_entry>
-        </description>
-      </testcase>
-      <testcase component="W3C_HTML5 APIs/DOM, Forms and Styles/CSS Color Module Level 3" execution_type="manual" id="css3_colors_tests_entry21" purpose="Check that whitespace is allowed within rgb() functions">
-        <description>
-          <test_script_entry>/opt/tct-colors-css3-tests/colors/csswg/bdd/t421-rgb-func-whitespace-b.htm</test_script_entry>
-          <bdd_test_script_entry test_script_expected_result="0">/opt/tct-colors-css3-tests/css3-color-app/testscripts/t421-rgb-func-whitespace-b.feature</bdd_test_script_entry>
-        </description>
-      </testcase>
-      <testcase component="W3C_HTML5 APIs/DOM, Forms and Styles/CSS Color Module Level 3" execution_type="manual" id="css3_colors_tests_entry22" purpose="Check that #rgb values produce correct colors">
-        <description>
-          <test_script_entry>/opt/tct-colors-css3-tests/colors/csswg/bdd/t421-rgb-hex3-a.htm</test_script_entry>
-          <bdd_test_script_entry test_script_expected_result="0">/opt/tct-colors-css3-tests/css3-color-app/testscripts/t421-rgb-hex3-a.feature</bdd_test_script_entry>
         </description>
       </testcase>
       <testcase component="W3C_HTML5 APIs/DOM, Forms and Styles/CSS Color Module Level 3" execution_type="manual" id="css3_colors_tests_entry23" purpose="Check that 3-digit #rgb values are expanded into #rrggbb and not #r0g0b0">
