@@ -30,20 +30,23 @@ Authors:
 -->
 <meta charset="utf-8">
 <meta name="flags" content=""/>
-<meta name="assert" content="script-src 'self' 'unsafe-inline' 'unsafe-eval'"/>
-<title>CSP Test: csp_ro_script-src_self_unsafe-inline_unsafe-eval_internal</title>
+<meta name="assert" content="connect-src *"/>
+<title>CSP Test: csp_connect-src_cross-origin_multi_xmlhttprequest_blocked_int</title>
 <link rel="author" title="Intel" href="http://www.intel.com"/>
-<link rel="help" href="http://www.w3.org/TR/2012/CR-CSP-20121115/#connect-src"/>
+<meta name="assert" content="connect-src http://www.w3.org https://www.tizen.org"/>
 <script src="./resources/testharness.js"></script>
 <script src="./resources/testharnessreport.js"></script>
 <div id="log"></div>
-<script src="support/csp.js"></script>
 <script>
 
 test(function() {
-    assert_equals(X, 10, "X is 10");
-    assert_equals(Y, 27, "Y is X + 17");
-    assert_equals(eval(X + Y), 37, "eval(X + Y) should be 37");
+    var xhr = new XMLHttpRequest();
+    try {
+        xhr.open("GET", "support/csp.js");
+        assert_unreached("Should not reach here");
+    } catch (e) {
+        // To be improved for exception error checking
+    }
 }, document.title);
 
 </script>
