@@ -575,6 +575,44 @@ class WebAPP(common.APP):
             print "Remove the tmp pictures fail: %s" % e
             return False
 
+    #Check if 2 files content are the same
+    def check_md5_file_same(self, file_name):
+        try:
+            result_path = self.baseline_path + "/" + file_name + ".md5"
+            fp_result = open(result_path,"r")
+            str_result = fp_result.read()
+            fp_result.close()
+            baseline_path = self.baseline_path + "/" + file_name + "_baseline.md5"
+            fp_baseline = open(baseline_path,"r")
+            str_baseline = fp_baseline.read()
+            fp_baseline.close()
+            index = cmp(str_result,str_baseline)
+            if not index:
+                return True
+            else:
+                return False
+        except Exception as e:
+            print "Check md5 file failed: %s" % e
+            return False
+            
+    #Save pic as base64 data's md5
+    def save_base64_md5_pic(self, pic_name):
+        try:
+            md5file_path = ""
+            if self.test_type == "result":
+                md5file_path = self.baseline_path + "/" + pic_name + ".md5"
+            elif self.test_type == "baseline":
+                md5file_path = self.baseline_path + "/" + pic_name + "_baseline.md5"
+            pic_base64 = self.driver.get_screenshot_as_base64()
+            pic_md5 = self.get_string_md5(pic_base64)
+            fp = open(md5file_path,"w")
+            fp.write(pic_md5)
+            fp.close()
+            return True
+        except Exception as e:
+            print "Save pic as base64 failed: %s" % e
+            return False
+           
     #Save page as pictures
     def save_page_per_conf(self, pic_name):
         try:

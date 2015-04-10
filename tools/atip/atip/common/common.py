@@ -32,6 +32,7 @@ APP_TYPE_WGT = "WGT"
 import Image
 import string
 import os
+import md5
 
 class APP():
 
@@ -89,3 +90,9 @@ class APP():
            return False
         else:
            return True
+
+    def get_string_md5(self,data_str):
+        m = md5.new()
+        m.update(data_str)
+        return m.hexdigest()
+  
