@@ -2106,25 +2106,6 @@
       </testcase>
     </set>
     <set name="xhtml5" type="js">
-      <testcase component="W3C_HTML5 APIs/W3C_EXTRAHTML5/Xhtml5" execution_type="manual" id="body_link" purpose="Check xhtml5 body element supports link attribute">
-        <description>
-          <steps>
-            <step order="1">
-              <step_desc>Delete your browsing history and navigate to this page again</step_desc>
-              <expected>Pass</expected>
-            </step>
-            <step order="2">
-              <step_desc>Check the color of the link "LINK"</step_desc>
-              <expected>This LINK should be displayed in yellow</expected>
-            </step>
-            <step order="3">
-              <step_desc>Click on the link "LINK" and click on the "back" link</step_desc>
-              <expected>This LINK should take default color of visited link</expected>
-            </step>
-          </steps>
-          <test_script_entry test_script_expected_result="0">/opt/tct-extra-html5-tests/xhtml5/w3c/body_link-manual.xhtml</test_script_entry>
-        </description>
-      </testcase>
       <testcase component="W3C_HTML5 APIs/W3C_EXTRAHTML5/Xhtml5" execution_type="manual" id="img_border_percent" purpose="Check if xhtml5 img element supports border attribute in percentage">
         <description>
           <test_script_entry test_script_expected_result="0">/opt/tct-extra-html5-tests/xhtml5/w3c/img_border_percent-manual.xhtml</test_script_entry>
@@ -3275,6 +3256,26 @@
           </steps>
           <test_script_entry>/opt/tct-extra-html5-tests/xhtml5/w3c/bdd/area_noref-manual.xhtml</test_script_entry>
           <bdd_test_script_entry test_script_expected_result="0">/opt/tct-extra-html5-tests/html5-extra-app/testscripts/area_noref.feature</bdd_test_script_entry>
+        </description>
+      </testcase>
+      <testcase component="W3C_HTML5 APIs/W3C_EXTRAHTML5/Xhtml5" execution_type="manual" id="body_link" purpose="Check xhtml5 body element supports link attribute">
+        <description>
+          <steps>
+            <step order="1">
+              <step_desc>Delete your browsing history and navigate to this page again</step_desc>
+              <expected>Pass</expected>
+            </step>
+            <step order="2">
+              <step_desc>Check the color of the link "LINK"</step_desc>
+              <expected>This LINK should be displayed in yellow</expected>
+            </step>
+            <step order="3">
+              <step_desc>Click on the link "LINK" and click on the "back" link</step_desc>
+              <expected>This LINK should take default color of visited link</expected>
+            </step>
+          </steps>
+          <test_script_entry test_script_expected_result="0">/opt/tct-extra-html5-tests/xhtml5/w3c/bdd/body_link-manual.xhtml</test_script_entry>
+          <bdd_test_script_entry test_script_expected_result="0">/opt/tct-extra-html5-tests/html5-extra-app/testscripts/body_link.feature</bdd_test_script_entry>
         </description>
       </testcase>
     </set>
