@@ -608,8 +608,14 @@ def packCordova(build_json=None, app_src=None, app_dest=None, app_name=None):
 
     orig_dir = os.getcwd()
     os.chdir(pack_tool)
-    pack_cmd = "bin/create %s org.xwalk.%s %s" % (
-        app_name, app_name, app_name)
+
+
+    if BUILD_PARAMETERS.pkgmode == "shared":
+        pack_cmd = "bin/create %s org.xwalk.%s %s --xwalk-shared-library" % (
+            app_name, app_name, app_name)
+    else:
+        pack_cmd = "bin/create %s org.xwalk.%s %s --shared" % (
+            app_name, app_name, app_name)
     if not doCMD(pack_cmd, DEFAULT_CMD_TIMEOUT):
         os.chdir(orig_dir)
         return False
@@ -634,7 +640,10 @@ def packCordova(build_json=None, app_src=None, app_dest=None, app_name=None):
     pack_cmd = "./cordova/build"
 
     if BUILD_PARAMETERS.subversion == '4.0':
-        cordova_tmp_path = os.path.join(BUILD_ROOT, "cordova", app_name, "build", "outputs", "apk", "%s-armv7-debug.apk"%app_name)
+        if BUILD_PARAMETERS.pkgarch == "x86":
+            cordova_tmp_path = os.path.join(BUILD_ROOT, "cordova", app_name, "build", "outputs", "apk", "%s-x86-debug.apk"%app_name)
+        else:
+            cordova_tmp_path = os.path.join(BUILD_ROOT, "cordova", app_name, "build", "outputs", "apk", "%s-armv7-debug.apk"%app_name)
     else:
         cordova_tmp_path = os.path.join(BUILD_ROOT, "cordova", app_name, "bin", "%s-debug.apk"%app_name)
     if not doCMD(pack_cmd, DEFAULT_CMD_TIMEOUT):
@@ -946,12 +955,12 @@ def main():
             "-m",
             "--mode",
             dest="pkgmode",
-            help="specify the apk mode, e.g. shared, embedded")
+            help="specify the apk mode, not for embeddingapi, cordova version 4.0, e.g. shared, embedded")
         opts_parser.add_option(
             "-a",
             "--arch",
             dest="pkgarch",
-            help="specify the apk arch, e.g. x86, arm")
+            help="specify the apk arch, not for embeddingapi, cordova version 3.6, e.g. x86, arm")
         opts_parser.add_option(
             "-d",
             "--dest",
@@ -1136,12 +1145,32 @@ def main():
     parameters_type = None
     cordova_subv_list = ['4.0', '3.6']
 
-    if BUILD_PARAMETERS.subversion:
-        if BUILD_PARAMETERS.pkgtype == "cordova" or BUILD_PARAMETERS.pkgtype == "cordova-aio": 
+    if BUILD_PARAMETERS.pkgtype == "cordova" or BUILD_PARAMETERS.pkgtype == "cordova-aio":
+
+        if BUILD_PARAMETERS.pkgarch and not BUILD_PARAMETERS.pkgarch in PKG_ARCHS:
+            LOG.error("Wrong pkg-arch, only support: %s, exit ..." %
+                  PKG_ARCHS)
+            sys.exit(1)
+
+        if BUILD_PARAMETERS.pkgmode and not BUILD_PARAMETERS.pkgmode in PKG_MODES:
+            LOG.error("Wrong pkg-mode, only support: %s, exit ..." %
+                  PKG_MODES)
+            sys.exit(1)
+
+        if BUILD_PARAMETERS.subversion:
             if not str(BUILD_PARAMETERS.subversion) in cordova_subv_list :
                 LOG.error("The argument of cordova --sub-version can only be '3.6' or '4.0' , exit ...")
                 sys.exit(1)
+            if BUILD_PARAMETERS.subversion == '4.0' and BUILD_PARAMETERS.pkgmode:
+                LOG.error("Command -m is only for cordova version 3.6")
+                sys.exit(1)
             parameters_type = BUILD_PARAMETERS.pkgtype + BUILD_PARAMETERS.subversion
+
+        if (BUILD_PARAMETERS.subversion == '3.6' or not BUILD_PARAMETERS.subversion) and BUILD_PARAMETERS.pkgarch:
+            LOG.error("Command -a is not for cordova version 3.6")
+            sys.exit(1)
+
+    if BUILD_PARAMETERS.subversion:
         if BUILD_PARAMETERS.pkgtype == "embeddingapi":
             BUILD_PARAMETERS.pkgtype = BUILD_PARAMETERS.pkgtype + BUILD_PARAMETERS.subversion
         LOG.info("BUILD_PARAMETERS.pkgtype: %s" % BUILD_PARAMETERS.pkgtype)
