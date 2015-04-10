@@ -249,6 +249,14 @@ def remove_pic(context):
 def save_page_per_conf(context, pic_name):
     assert context.app.save_page_per_conf(pic_name)
 
+@step(u'I save the screenshot as "{pic_name}"')
+def save_page_as_base64(context, pic_name):
+    assert context.app.save_base64_md5_pic(pic_name)
+
+@step(u'file "{file_name}" of baseline and result should be the same')
+def check_md5_file(context, file_name):
+    assert context.app.check_md5_file_same(file_name)
+
 
 @step(u'pic "{pic_name}" of baseline and result should be "{similarity}" similar if have results')
 def check_base_result_similarity(context, pic_name, similarity):
