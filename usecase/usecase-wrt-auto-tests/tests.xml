@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-stylesheet type="text/xsl" href="./testcase.xsl"?>
+<test_definition>
+  <suite category="Usecase WRT" name="usecase-wrt-auto-tests">
+    <set name="usecase" type="pyunit">
+      <testcase component="Crosswalk Use Cases/WRT" execution_type="auto" id="Crosswalk_absolutePath" purpose="Validate if the packer tool can work well with run script make_apk.py in different path" subcase="3">
+        <description>
+          <test_script_entry>/opt/usecase-wrt-auto-tests/samples/ApkBuildAnyLocation/absolutePath.py</test_script_entry>
+        </description>
+      </testcase>
+      <testcase component="Crosswalk Use Cases/WRT" execution_type="auto" id="Crosswalk_anyLocation" purpose="Validate if the packer tool can work well with set the make_apk.py to environment path" subcase="3">
+        <description>
+          <test_script_entry>/opt/usecase-wrt-auto-tests/samples/ApkBuildAnyLocation/anyLocation.py</test_script_entry>
+        </description>
+      </testcase>
+      <testcase component="Crosswalk Use Cases/WRT" execution_type="auto" id="Crosswalk_helpversion" purpose="Validate if the Packaging Tool works well with help and version options" subcase="2">
+        <description>
+          <test_script_entry>/opt/usecase-wrt-auto-tests/samples/PackertoolHelpVersion/helpversion.py</test_script_entry>
+        </description>
+      </testcase>
+      <testcase component="Crosswalk Use Cases/WRT" execution_type="auto" id="Crosswalk_versionupdate" purpose="Validate if the Packaging Tool works well when update the version value">
+        <description>
+          <test_script_entry>/opt/usecase-wrt-auto-tests/samples/WebAppVersionUpdate/versionupdate.py</test_script_entry>
+        </description>
+      </testcase>
+      <testcase component="Crosswalk Use Cases/WRT" execution_type="auto" id="Crosswalk_projectdir" purpose="Validate if the Packaging Tool works well with project-dir options">
+        <description>
+          <test_script_entry>/opt/usecase-wrt-auto-tests/samples/ApkBuildTemporary/projectdir.py</test_script_entry>
+        </description>
+      </testcase>
+      <testcase component="Crosswalk Use Cases/WRT" execution_type="auto" id="Crosswalk_projectonly" purpose="Validate if the Packaging Tool works well with project-only options" subcase="2">
+        <description>
+          <test_script_entry>/opt/usecase-wrt-auto-tests/samples/ApkBuildTemporary/projectonly.py</test_script_entry>
+        </description>
+      </testcase>
+      <testcase component="Crosswalk Use Cases/WRT" execution_type="auto" id="Crosswalk_temporary" purpose="Validate if the Packaging Tool create a temporary floder during building" subcase="3">
+        <description>
+          <test_script_entry>/opt/usecase-wrt-auto-tests/samples/ApkBuildTemporary/temporary.py</test_script_entry>
+        </description>
+      </testcase>
+      <testcase component="Crosswalk Use Cases/WRT" execution_type="auto" id="Crosswalk_compressor" purpose="Validate if the Packaging Tool works well with compressor option">
+        <description>
+          <test_script_entry>/opt/usecase-wrt-auto-tests/samples/PackertoolCompressor/compressor.py</test_script_entry>
+        </description>
+      </testcase>
+      <testcase component="Crosswalk Use Cases/WRT" execution_type="auto" id="Crosswalk_compressorcss" purpose="Validate if the Packaging Tool works well with compressor option and the value is css">
+        <description>
+          <test_script_entry>/opt/usecase-wrt-auto-tests/samples/PackertoolCompressorCss/compressorcss.py</test_script_entry>
+        </description>
+      </testcase>
+    </set>
+  </suite>
+</test_definition>
