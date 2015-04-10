@@ -3,4 +3,5 @@ Feature: css3-color
    When launch "css3-color-app"
      And I go to "csswg/t41-html4-keywords-a.htm"
      And I save the page to "t41-html4-keywords-a"
-    Then pic "t41-html4-keywords-a" of baseline and result should be "100" similar if have results
+     And I save the screenshot md5 as "t41-html4-keywords-a"
+    Then file "t41-html4-keywords-a" of baseline and result should be the same
