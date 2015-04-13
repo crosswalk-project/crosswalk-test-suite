@@ -3,4 +3,5 @@ Feature: css3-text
    When launch "css3-text-app"
      And I go to "text/webkit/word-break.html"
      And I save the page to "word-break"
-    Then pic "word-break" of baseline and result should be "100" similar if have results
+     And I save the screenshot md5 as "word-break"
+    Then file "word-break" of baseline and result should be the same
