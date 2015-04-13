@@ -249,7 +249,7 @@ def remove_pic(context):
 def save_page_per_conf(context, pic_name):
     assert context.app.save_page_per_conf(pic_name)
 
-@step(u'I save the screenshot as "{pic_name}"')
+@step(u'I save the screenshot md5 as "{pic_name}"')
 def save_page_as_base64(context, pic_name):
     assert context.app.save_base64_md5_pic(pic_name)
 
