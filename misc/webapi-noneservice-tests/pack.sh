@@ -57,9 +57,16 @@ echo "        ]
 ]" >>$BUILD_DEST/testlist.json
 
 
-for suite in $LIST;do
-    python $SRC_ROOT/../../tools/build/pack.py -t ${pack_type}-aio -m $pack_mode -a $arch -d $BUILD_DEST -s $SRC_ROOT/../../webapi/`basename $suite`
-done
+if [ $pack_type == "cordova" ]; then
+    for suite in $LIST;do
+        python $SRC_ROOT/../../tools/build/pack.py -t ${pack_type}-aio -m $pack_mode -d $BUILD_DEST -s $SRC_ROOT/../../webapi/`basename $suite`
+    done
+else
+    for suite in $LIST;do
+        python $SRC_ROOT/../../tools/build/pack.py -t ${pack_type}-aio -m $pack_mode -a $arch -d $BUILD_DEST -s $SRC_ROOT/../../webapi/`basename $suite`
+    done
+fi
+
 
 mkdir $BUILD_ROOT/apps
 mv `find $BUILD_DEST -name '*apk'` $BUILD_ROOT/apps
