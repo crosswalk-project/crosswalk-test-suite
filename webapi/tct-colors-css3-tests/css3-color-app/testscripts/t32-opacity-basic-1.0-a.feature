@@ -3,4 +3,5 @@ Feature: css3-color
    When launch "css3-color-app"
      And I go to "colors/csswg/t32-opacity-basic-1.0-a.htm"
      And I save the page to "t32-opacity-basic-1.0-a"
-    Then pic "t32-opacity-basic-1.0-a" of baseline and result should be "100" similar if have results
+     And I save the screenshot md5 as "t32-opacity-basic-1.0-a"
+    Then file "t32-opacity-basic-1.0-a" of baseline and result should be the same
