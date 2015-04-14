@@ -51,6 +51,7 @@ VERSION_FILE = "VERSION"
 DEFAULT_CMD_TIMEOUT = 600
 PKG_NAMES = ["gallery", "helloworld", "remotedebugging", "mobilespec"]
 CORDOVA_VERSIONS = ["3.6", "4.0"]
+PKG_ARCHS = ["x86", "arm"]
 BUILD_PARAMETERS = None
 BUILD_ROOT = None
 LOG = None
@@ -351,7 +352,11 @@ def packSampleApp(app_name=None):
     os.chdir(os.path.join(pack_tool, app_name))
 
     if BUILD_PARAMETERS.cordovaversion == "4.0":
-        cordova_tmp_path = os.path.join(BUILD_ROOT, "cordova", app_name, "build", "outputs", "apk", "%s-armv7-debug.apk" % app_name)
+        if BUILD_PARAMETERS.pkgarch == "x86":
+            cordova_tmp_path = os.path.join(BUILD_ROOT, "cordova", app_name, "build", "outputs", "apk", "%s-x86-debug.apk" % app_name)
+        else:
+            cordova_tmp_path = os.path.join(BUILD_ROOT, "cordova", app_name, "build", "outputs", "apk", "%s-armv7-debug.apk" % app_name)
+
         plugin_tool = os.path.join(BUILD_ROOT, "cordova_plugins", "cordova-crosswalk-engine")
         if not os.path.exists(plugin_tool):
             if not doCopy(
@@ -441,6 +446,11 @@ def main():
             dest="bversion",
             action="store_true",
             help="show this tool's version")
+        opts_parser.add_option(
+            "-a",
+            "--arch",
+            dest="pkgarch",
+            help="specify the apk arch, not for cordova version 3.6, e.g. x86, arm")
 
         if len(sys.argv) == 1:
             sys.argv.append("-h")
@@ -469,6 +479,15 @@ def main():
     elif not BUILD_PARAMETERS.cordovaversion in CORDOVA_VERSIONS:
         LOG.error("Wrong cordova version, only support: %s, exit ..." %
                   CORDOVA_VERSIONS)
+        sys.exit(1)
+
+    if BUILD_PARAMETERS.pkgarch and not BUILD_PARAMETERS.pkgarch in PKG_ARCHS:
+        LOG.error("Wrong pkg-arch, only support: %s, exit ..." %
+                  PKG_ARCHS)
+        sys.exit(1)
+
+    if BUILD_PARAMETERS.cordovaversion == '3.6' and BUILD_PARAMETERS.pkgarch:
+        LOG.error("Command -a is not for cordova version 3.6")
         sys.exit(1)
 
     if not BUILD_PARAMETERS.pkgpacktools:

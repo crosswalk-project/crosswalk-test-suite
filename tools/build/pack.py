@@ -634,7 +634,10 @@ def packCordova(build_json=None, app_src=None, app_dest=None, app_name=None):
     pack_cmd = "./cordova/build"
 
     if BUILD_PARAMETERS.subversion == '4.0':
-        cordova_tmp_path = os.path.join(BUILD_ROOT, "cordova", app_name, "build", "outputs", "apk", "%s-armv7-debug.apk"%app_name)
+        if BUILD_PARAMETERS.pkgarch == "x86":
+            cordova_tmp_path = os.path.join(BUILD_ROOT, "cordova", app_name, "build", "outputs", "apk", "%s-x86-debug.apk"%app_name)
+        else:
+            cordova_tmp_path = os.path.join(BUILD_ROOT, "cordova", app_name, "build", "outputs", "apk", "%s-armv7-debug.apk"%app_name)
     else:
         cordova_tmp_path = os.path.join(BUILD_ROOT, "cordova", app_name, "bin", "%s-debug.apk"%app_name)
     if not doCMD(pack_cmd, DEFAULT_CMD_TIMEOUT):
@@ -1136,12 +1139,24 @@ def main():
     parameters_type = None
     cordova_subv_list = ['4.0', '3.6']
 
-    if BUILD_PARAMETERS.subversion:
-        if BUILD_PARAMETERS.pkgtype == "cordova" or BUILD_PARAMETERS.pkgtype == "cordova-aio": 
+    if BUILD_PARAMETERS.pkgtype == "cordova" or BUILD_PARAMETERS.pkgtype == "cordova-aio":
+
+        if BUILD_PARAMETERS.pkgarch and not BUILD_PARAMETERS.pkgarch in PKG_ARCHS:
+            LOG.error("Wrong pkg-arch, only support: %s, exit ..." %
+                  PKG_ARCHS)
+            sys.exit(1)
+
+        if BUILD_PARAMETERS.subversion:
             if not str(BUILD_PARAMETERS.subversion) in cordova_subv_list :
                 LOG.error("The argument of cordova --sub-version can only be '3.6' or '4.0' , exit ...")
                 sys.exit(1)
             parameters_type = BUILD_PARAMETERS.pkgtype + BUILD_PARAMETERS.subversion
+
+        if (BUILD_PARAMETERS.subversion == '3.6' or not BUILD_PARAMETERS.subversion) and BUILD_PARAMETERS.pkgarch:
+            LOG.error("Command -a is not for cordova version 3.6")
+            sys.exit(1)
+
+    if BUILD_PARAMETERS.subversion:
         if BUILD_PARAMETERS.pkgtype == "embeddingapi":
             BUILD_PARAMETERS.pkgtype = BUILD_PARAMETERS.pkgtype + BUILD_PARAMETERS.subversion
         LOG.info("BUILD_PARAMETERS.pkgtype: %s" % BUILD_PARAMETERS.pkgtype)
