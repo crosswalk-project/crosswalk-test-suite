@@ -2,8 +2,8 @@
 <?xml-stylesheet type="text/xsl" href="./testcase.xsl"?>
 <test_definition>
   <suite category="Crosswalk WRT" name="wrt-packertool2-android-tests">
-    <set name="manifest" type="pyunit">
-      <testcase component="Crosswalk WRT/Packer Tool" execution_type="auto" id="Crosswalk_othertest" purpose="Validate if packer tool can work well with other options" subcase="5">
+    <set name="packertool2" type="pyunit">
+      <testcase component="Crosswalk WRT/Packer Tool" execution_type="auto" id="Crosswalk_appPathtest" purpose="Validate if packer tool can work well with other options" subcase="3">
         <description>
           <test_script_entry>/opt/wrt-packertool2-android-tests/packertool2/othertest.py</test_script_entry>
         </description>
@@ -11,16 +11,6 @@
       <testcase component="Crosswalk WRT/Packer Tool" execution_type="auto" id="Crosswalk_manifesttest" purpose="Validate if packer tool can work well with manifest file in different path" subcase="4">
         <description>
           <test_script_entry>/opt/wrt-packertool2-android-tests/packertool2/manifesttest.py</test_script_entry>
-        </description>
-      </testcase>
-      <testcase component="Crosswalk WRT/Packer Tool" execution_type="auto" id="Crosswalk_absolutePathtest" purpose="Validate if the packer tool can work well with run script make_apk.py in different path" subcase="3">
-        <description>
-          <test_script_entry>/opt/wrt-packertool2-android-tests/packertool2/absolutePathtest.py</test_script_entry>
-        </description>
-      </testcase>
-      <testcase component="Crosswalk WRT/Packer Tool" execution_type="auto" id="Crosswalk_anyLocationtest" purpose="Validate if the packer tool can work well with set the make_apk.py to environment path" subcase="3">
-        <description>
-          <test_script_entry>/opt/wrt-packertool2-android-tests/packertool2/anyLocationtest.py</test_script_entry>
         </description>
       </testcase>
       <testcase component="Crosswalk WRT/Packer Tool" execution_type="auto" id="Crosswalk_indextest" purpose="Validate if packer tool can work well with index file in different path" subcase="3">
@@ -33,17 +23,12 @@
           <test_script_entry>/opt/wrt-packertool2-android-tests/packertool2/permissiontest.py</test_script_entry>
         </description>
       </testcase>
-      <testcase component="Crosswalk WRT/Packer Tool" execution_type="auto" id="Crosswalk_projectonlytest" purpose="Validate if packer tool can work well with parameters project-only and project-dir of manifest" subcase="2">
-        <description>
-          <test_script_entry>/opt/wrt-packertool2-android-tests/packertool2/projectonlytest.py</test_script_entry>
-        </description>
-      </testcase>
       <testcase component="Crosswalk WRT/Packer Tool" execution_type="auto" id="Crosswalk_appPathtest" purpose="Validate if the Packaging Tool enable the app-local-path option" subcase="1">
         <description>
           <test_script_entry>/opt/wrt-packertool2-android-tests/packertool2/appPathtest.py</test_script_entry>
         </description>
       </testcase>
-      <testcase component="Crosswalk WRT/Packer Tool" execution_type="auto" id="Crosswalk_compressortest" purpose="Validate if the Packaging Tool works well with compressor option" subcase="4">
+      <testcase component="Crosswalk WRT/Packer Tool" execution_type="auto" id="Crosswalk_compressortest" purpose="Validate if the Packaging Tool works well with compressor option" subcase="2">
         <description>
           <test_script_entry>/opt/wrt-packertool2-android-tests/packertool2/compressortest.py</test_script_entry>
         </description>
@@ -53,12 +38,12 @@
           <test_script_entry>/opt/wrt-packertool2-android-tests/packertool2/descriptiontest.py</test_script_entry>
         </description>
       </testcase>
-      <testcase component="Crosswalk WRT/Packer Tool" execution_type="auto" id="Crosswalk_projectdirtest" purpose="Validate if packer tool can work well with project-dir option" subcase="4">
+      <testcase component="Crosswalk WRT/Packer Tool" execution_type="auto" id="Crosswalk_projectdirtest" purpose="Validate if packer tool can work well with project-dir option" subcase="3">
         <description>
           <test_script_entry>/opt/wrt-packertool2-android-tests/packertool2/projectdirtest.py</test_script_entry>
         </description>
       </testcase>
-      <testcase component="Crosswalk WRT/Packer Tool" execution_type="auto" id="Crosswalk_versionCodetest" purpose="Validate if packer tool can work well with app-versionCode and app-versionCodeBase option" subcase="4">
+      <testcase component="Crosswalk WRT/Packer Tool" execution_type="auto" id="Crosswalk_versionCode" purpose="Validate if packer tool can work well with app-versionCode and app-versionCodeBase option" subcase="4">
         <description>
           <test_script_entry>/opt/wrt-packertool2-android-tests/packertool2/versionCodetest.py</test_script_entry>
         </description>
