@@ -1174,17 +1174,20 @@ def main():
         if BUILD_PARAMETERS.pkgtype == "embeddingapi":
             BUILD_PARAMETERS.pkgtype = BUILD_PARAMETERS.pkgtype + BUILD_PARAMETERS.subversion
         LOG.info("BUILD_PARAMETERS.pkgtype: %s" % BUILD_PARAMETERS.pkgtype)
-
-    for i_pkg in config_json["pkg-list"].keys():
-        i_pkg_list = i_pkg.replace(" ", "").split(",")
-        if parameters_type:
+    
+    all_pkg_string = "".join(config_json["pkg-list"].keys())
+    if parameters_type and parameters_type in all_pkg_string:
+        for i_pkg in config_json["pkg-list"].keys():
+            i_pkg_list = i_pkg.replace(" ", "").split(",")
             if parameters_type in i_pkg_list:
                 pkg_json = config_json["pkg-list"][i_pkg]
-            elif BUILD_PARAMETERS.pkgtype in i_pkg_list:
+                break
+    elif BUILD_PARAMETERS.pkgtype in all_pkg_string:
+        for i_pkg in config_json["pkg-list"].keys():
+            i_pkg_list = i_pkg.replace(" ", "").split(",")
+            if BUILD_PARAMETERS.pkgtype in i_pkg_list:
                 pkg_json = config_json["pkg-list"][i_pkg]
-        elif BUILD_PARAMETERS.pkgtype in i_pkg_list:
-            pkg_json = config_json["pkg-list"][i_pkg]
-            
+                break
 
     if not pkg_json:
         LOG.error("Fail to read pkg json, exit ...")
