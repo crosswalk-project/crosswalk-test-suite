@@ -36,7 +36,10 @@ class TestGalleryAppFunctions(unittest.TestCase):
     def test_build(self):
         comm.setUp()
         app_name = "gallery"
-        cmd_create = "bin/create " + app_name + " com.example." + app_name + " " + app_name
+        if comm.MODE == "shared":
+            cmd_create = "bin/create " + app_name + " com.example." + app_name + " " + app_name + " --xwalk-shared-library"
+        else:
+            cmd_create = "bin/create " + app_name + " com.example." + app_name + " " + app_name
         comm.create(cmd_create, app_name, self)
         comm.do_remove(glob.glob(os.path.join(comm.pack_tool, app_name, "assets", "www")))
         comm.do_copy(os.path.join(comm.sample_src_pref, "Gallery"), 

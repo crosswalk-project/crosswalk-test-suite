@@ -37,7 +37,10 @@ class TestWebAppFunctions(unittest.TestCase):
         comm.setUp()
         app_name = "helloworld"
         pkg_name = "com.example." + app_name.lower()
-        cmd_create = "bin/create " + app_name + " com.example." + app_name + " " + app_name
+        if comm.MODE == "shared":
+            cmd_create = "bin/create " + app_name + " com.example." + app_name + " " + app_name + " --xwalk-shared-library"
+        else:
+            cmd_create = "bin/create " + app_name + " com.example." + app_name + " " + app_name
         comm.create(cmd_create, app_name, self)
         if not comm.replace_key(os.path.join(comm.pack_tool, app_name, "assets", "www", "index.html"), 
                 "<a href='http://www.intel.com'>Intel</a>\n</body>",
