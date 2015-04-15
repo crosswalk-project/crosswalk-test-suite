@@ -39,11 +39,15 @@ Authors:
 <div id="log"></div>
 <script>
 test(function () {
-  var contacts = navigator.contacts || xwalk.experimental.contacts;
-  assert_true(!!contacts, "The Navigator.contacts exists");
-  assert_equals(typeof contacts, "object", "The type of Navigator.contacts");
-  var value = contacts;
-  contacts = null;
-  assert_equals(contacts, value, "The Navigator.contacts");
+  var handle;
+  if (navigator.contacts != null)
+    handle = navigator;
+  else
+    handle = xwalk.experimental;
+  assert_true(!!handle.contacts, "The Navigator.contacts exists");
+  assert_equals(typeof handle.contacts, "object", "The type of Navigator.contacts");
+  var value = handle.contacts;
+  handle.contacts = null;
+  assert_equals(handle.contacts, value, "The Navigator.contacts");
 }, "Check if the readonly attribute Navigator.contacts exists and typeof object");
 </script>
