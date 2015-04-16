@@ -23,7 +23,7 @@
           <test_script_entry>/opt/apptools-android-tests/apptools/build.py</test_script_entry>
         </description>
       </testcase>
-      <testcase component="Crosswalk App Tools/CLI" execution_type="auto" id="Crosswalk_create_remote" priority="P1" purpose="Android - Validate if App Tool can work well with http proxy" status="approved" type="Functional">
+      <testcase component="Crosswalk App Tools/CLI" execution_type="auto" id="Crosswalk_create_remote" priority="P1" purpose="Android - Validate if Crosswalk tools can be downloaded when network well" status="approved" type="Functional">
         <description>
           <test_script_entry>/opt/apptools-android-tests/apptools/create_remote.py</test_script_entry>
         </description>
@@ -38,13 +38,18 @@
           <test_script_entry>/opt/apptools-android-tests/apptools/channel_canary.py</test_script_entry>
         </description>
       </testcase>
-      <testcase component="Crosswalk App Tools/CLI" execution_type="auto" id="Crosswalk_channel_stable" priority="P1" purpose="Android - Validate if App Tool can work well with the value of channel option is canary" status="approved" type="Functional">
+      <testcase component="Crosswalk App Tools/CLI" execution_type="auto" id="Crosswalk_channel_stable" priority="P1" purpose="Android - Validate if App Tool can work well with the value of channel option is stable" status="approved" type="Functional">
         <description>
           <test_script_entry>/opt/apptools-android-tests/apptools/channel_stable.py</test_script_entry>
         </description>
       </testcase>
     </set>
     <set name="common_module" type="nodeunit">
+      <testcase component="Crosswalk App Tools/Common Module" execution_type="auto" id="Crosswalk_android_platform" priority="P1" purpose="Android - Validate if valid and invalid Crosswalk version" status="approved" type="Functional" subcase="3">
+        <description>
+          <test_script_entry>/opt/apptools-android-tests/tools/crosswalk-app-tools/test/android-platform.js</test_script_entry>
+        </description>
+      </testcase>
       <testcase component="Crosswalk App Tools/Common Module" execution_type="auto" id="Crosswalk_android_project_deps" priority="P1" purpose="Android - Validate if pick the last Crosswalk tools and download it" status="approved" type="Functional" subcase="5">
         <description>
           <test_script_entry>/opt/apptools-android-tests/tools/crosswalk-app-tools/test/android-project-deps.js</test_script_entry>
@@ -90,7 +95,7 @@
           <test_script_entry>/opt/apptools-android-tests/tools/crosswalk-app-tools/test/logfile-output.js</test_script_entry>
         </description>
       </testcase>
-      <testcase component="Crosswalk App Tools/Common Module" execution_type="auto" id="Crosswalk_main" priority="P1" purpose="Android - Validate if create/build a project and print the help/version info" status="approved" type="Functional" subcase="5">
+      <testcase component="Crosswalk App Tools/Common Module" execution_type="auto" id="Crosswalk_main" priority="P1" purpose="Android - Validate if create/build/update a project and print the help/version info" status="approved" type="Functional" subcase="6">
         <description>
           <test_script_entry>/opt/apptools-android-tests/tools/crosswalk-app-tools/test/main.js</test_script_entry>
         </description>

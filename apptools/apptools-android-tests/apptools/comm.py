@@ -71,15 +71,16 @@ def setUp():
         XwalkName = os.listdir(ConstPath + "/../tools/")[2]
 
 def clear(pkg):
-    try:
-        shutil.rmtree(XwalkPath + pkg)
-    except Exception,e:
-        os.system("rm -rf " + XwalkPath + pkg + " &>/dev/null")
+    if os.path.exists(ConstPath + "/../tools/" + pkg):
+        try:
+            shutil.rmtree(XwalkPath + pkg)
+        except Exception,e:
+            os.system("rm -rf " + XwalkPath + pkg + " &>/dev/null")
 
 def create(self):
+    clear("org.xwalk.test")
     setUp()
     os.chdir(XwalkPath)
-    clear("org.xwalk.test")
     cmd = PackTools + "crosswalk-app create org.xwalk.test --crosswalk=" + XwalkPath + XwalkName
     packstatus = commands.getstatusoutput(cmd)
     self.assertEquals(packstatus[0], 0)
@@ -87,6 +88,7 @@ def create(self):
 
 def build(self, cmd):
     buildstatus = commands.getstatusoutput(cmd)
+    self.assertNotIn("ANDROID_HOME", buildstatus[1])
     self.assertEquals(buildstatus[0], 0)
     self.assertIn("pkg", os.listdir(XwalkPath + "org.xwalk.test"))
     os.chdir('pkg')
@@ -104,6 +106,9 @@ def build(self, cmd):
                 self.assertIn("x86", apks[i-1])
             else:
                 self.assertIn("x86", apks[i+1])
+        else:
+            self.assertTrue(apks[i].endswith(".apk"))
+            self.assertEquals(len(apks), 2)
 
 def run(self):
     setUp()

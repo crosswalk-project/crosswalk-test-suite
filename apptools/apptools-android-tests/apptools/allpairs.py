@@ -57,6 +57,7 @@ def generate_cmd():
         cmd = flag + '\tcrosswalk-app create ' + j + ' --crosswalk=/opt/apptools-android-tests/tools/crosswalk*.zip\n'
         #print cmd
         fp.write(cmd)
+        fp.close()
 
 def generate_unittest():
     try:
@@ -76,6 +77,7 @@ def generate_unittest():
             testfile.write(casenum)
             testfile.flush()
         testfile.write("\nif __name__ == '__main__':\n    unittest.main()")
+        fp.close()
         testfile.close()
         os.system("chmod +x " + comm.ConstPath + "/pkgNametest.py")
     except Exception,e:
