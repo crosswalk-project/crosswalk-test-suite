@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-stylesheet type="text/xsl" href="./testcase.xsl"?>
+<test_definition>
+  <suite category="Usecase WRT" name="usecase-wrt-auto-tests">
+    <set name="usecase" type="pyunit">
+      <testcase component="Crosswalk Use Cases/WRT" execution_type="auto" id="Crosswalk_absolutePath" priority="P0" purpose="Validate if the packer tool can work well with run script make_apk.py in different path" status="approved" type="functional_positive" subcase="3">
+        <description>
+          <test_script_entry>/opt/usecase-wrt-auto-tests/samples/ApkBuildAnyLocation/absolutePath.py</test_script_entry>
+        </description>
+      </testcase>
+      <testcase component="Crosswalk Use Cases/WRT" execution_type="auto" id="Crosswalk_anyLocation" priority="P0" purpose="Validate if the packer tool can work well with set the make_apk.py to environment path" status="approved" type="functional_positive" subcase="3">
+        <description>
+          <test_script_entry>/opt/usecase-wrt-auto-tests/samples/ApkBuildAnyLocation/anyLocation.py</test_script_entry>
+        </description>
+      </testcase>
+      <testcase component="Crosswalk Use Cases/WRT" execution_type="auto" id="Crosswalk_helpversion" priority="P0" purpose="Validate if the Packaging Tool works well with help and version options" status="approved" type="functional_positive" subcase="2">
+        <description>
+          <test_script_entry>/opt/usecase-wrt-auto-tests/samples/PackertoolHelpVersion/helpversion.py</test_script_entry>
+        </description>
+      </testcase>
+      <testcase component="Crosswalk Use Cases/WRT" execution_type="auto" id="Crosswalk_versionupdate" priority="P0" purpose="Validate if the Packaging Tool works well when update the version value" status="approved" type="functional_positive">
+        <description>
+          <test_script_entry>/opt/usecase-wrt-auto-tests/samples/WebAppVersionUpdate/versionupdate.py</test_script_entry>
+        </description>
+      </testcase>
+      <testcase component="Crosswalk Use Cases/WRT" execution_type="auto" id="Crosswalk_projectdir" priority="P0" purpose="Validate if the Packaging Tool works well with project-dir options" status="approved" type="functional_positive">
+        <description>
+          <test_script_entry>/opt/usecase-wrt-auto-tests/samples/ApkBuildTemporary/projectdir.py</test_script_entry>
+        </description>
+      </testcase>
+      <testcase component="Crosswalk Use Cases/WRT" execution_type="auto" id="Crosswalk_projectonly" priority="P0" purpose="Validate if the Packaging Tool works well with project-only options" status="approved" type="functional_positive" subcase="2">
+        <description>
+          <test_script_entry>/opt/usecase-wrt-auto-tests/samples/ApkBuildTemporary/projectonly.py</test_script_entry>
+        </description>
+      </testcase>
+      <testcase component="Crosswalk Use Cases/WRT" execution_type="auto" id="Crosswalk_temporary" priority="P0" purpose="Validate if the Packaging Tool create a temporary floder during building" status="approved" type="functional_positive" subcase="3">
+        <description>
+          <test_script_entry>/opt/usecase-wrt-auto-tests/samples/ApkBuildTemporary/temporary.py</test_script_entry>
+        </description>
+      </testcase>
+      <testcase component="Crosswalk Use Cases/WRT" execution_type="auto" id="Crosswalk_compressor" priority="P0" purpose="Validate if the Packaging Tool works well with compressor option" status="approved" type="functional_positive">
+        <description>
+          <test_script_entry>/opt/usecase-wrt-auto-tests/samples/PackertoolCompressor/compressor.py</test_script_entry>
+        </description>
+      </testcase>
+      <testcase component="Crosswalk Use Cases/WRT" execution_type="auto" id="Crosswalk_compressorcss" priority="P0" purpose="Validate if the Packaging Tool works well with compressor option and the value is css" status="approved" type="functional_positive">
+        <description>
+          <test_script_entry>/opt/usecase-wrt-auto-tests/samples/PackertoolCompressorCss/compressorcss.py</test_script_entry>
+        </description>
+      </testcase>
+    </set>
+  </suite>
+</test_definition>
