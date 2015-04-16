@@ -36,7 +36,10 @@ class TestWebAppFunctions(unittest.TestCase):
     def test_create(self):
         comm.setUp()
         app_name = "helloworld"
-        cmd_create = "bin/create " + app_name + " com.example." + app_name + " " + app_name
+        if comm.MODE == "shared":
+            cmd_create = "bin/create " + app_name + " com.example." + app_name + " " + app_name + " --xwalk-shared-library"
+        else:
+            cmd_create = "bin/create " + app_name + " com.example." + app_name + " " + app_name
         comm.create(cmd_create, app_name, self)
 
 if __name__ == '__main__':  

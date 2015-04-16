@@ -41,12 +41,17 @@ Authors:
       <strong>Test steps:</strong>
     </p>
     <ol>
+      <li>Get cordova source code and cd into the folder</li>
+      <ul>
+        <li>If check embedded mode project, use command: './bin/create helloworld com.example.helloworld helloworld' to create helloworld project</li>
+        <li>If check shared mode project, use command: './bin/create helloworld com.example.helloworld helloworld --xwalk-shared-library' to create helloworld project</li>
+      </ul>
       <li>Open ADT by a menu entry to start it, or run the 'eclipse/eclipse' command from inside your Android SDK's root directory</li>
       <li>In the File menu, choose Import....</li>
       <li>In the Import dialog box, choose Android then Existing Android Code into Workspace. Click the Next button</li>
       <li>Choose the directory for the generated project; for example, for the HelloWorld project</li>
-      <li>Click the Finish button to import the projects</li>
-      <li>Check the error message of the import project</li>
+      <li>Click the Finish button to import the three projects(helloworld, helloworld-CordovaLib, xwalk_core_library)</li>
+      <li>Wait a minute and then check the error message of the import project</li>
       <ul>
         <li>If the error massage display 'The import org.apache.cordova cannot be resolved'</li>
         <li>If the error massage display 'The import com.squareup.okhttp.OkHttpClient cannot be resolved'</li>
@@ -69,10 +74,6 @@ Authors:
       <li>Select the project</li>
       <li>The project can import successfully</li>
       <li>Analyze the error message and resolve</li>
-      <ul>
-        <li>Execute command: 'cd /localpath/crosswalk-cordova-xxx-arm/framework/src then copy the org file to the import project'</li>
-        <li>Copy the com file to the import project</li>
-      </ul>
       <li>The project can build successfully and </li>
       <ul>
         <li>the LogCat display the apk debug message</li>

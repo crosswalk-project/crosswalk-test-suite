@@ -42,7 +42,7 @@ plugin_tool = const_path + "/../tools/cordova-crosswalk-engine/"
 testapp_path = "/tmp/cordova-sampleapp/"
 
 def setUp():
-    global ARCH, VERSION, device
+    global ARCH, MODE, VERSION, device
 
     device = os.environ.get('DEVICE_ID')
 
@@ -51,11 +51,24 @@ def setUp():
         sys.exit(1)
 
     f_arch = open(const_path + "/../arch.txt", 'r')
-    if f_arch.read().strip("\n\t") != "x86":
+    if f_arch.read().strip("\n\t") == "arm":
         ARCH = "arm"
-    else:
+    elif f_arch.read().strip("\n\t") == "x86":
         ARCH = "x86"
+    else:
+        print (" get arch error, the content of arch.txt should be 'arm' or 'x86'\n")
+        sys.exit(1)
     f_arch.close()
+
+    f_mode = open(const_path + "/../mode.txt", 'r')
+    if f_mode.read().strip("\n\t") == "shared":
+        MODE = "shared"
+    elif f_mode.read().strip("\n\t") == "embedded":
+        MODE = "embedded"
+    else:
+        print (" get mode error, the content of mode.txt should be 'shared' or 'embedded'\n")
+        sys.exit(1)
+    f_mode.close()
 
     f_version = open(const_path + "/../cordova-version", 'r')
     if f_version.read().strip("\n\t") != "3.6":
