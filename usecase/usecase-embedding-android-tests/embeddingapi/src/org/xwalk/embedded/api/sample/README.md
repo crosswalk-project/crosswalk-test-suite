@@ -139,3 +139,12 @@ This usecase covers following interface and methods:
 * XWalkView interface: load method
 
 
+
+### 13. The [XWalkViewWithTransparent](XWalkViewWithTransparent.java) sample check XWalkView's transparent feature whether display the view under the webview, include:
+
+* XWalkView's transparent can display the view under the webview
+
+This usecase covers following interface and methods:
+
+* XWalkView interface: setZOrderOnTop, setBackgroundColor methods
+
