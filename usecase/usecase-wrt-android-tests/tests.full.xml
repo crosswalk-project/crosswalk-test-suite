@@ -2,7 +2,7 @@
 <?xml-stylesheet type="text/xsl" href="./testcase.xsl"?>
 <test_definition>
   <suite name="Usecase WRT">
-    <set name="Web Runtime" background="brand-primary" icon="glyphicon-asterisk">
+    <set name="Web Runtime" background="brand-primary" icon="glyphicon-asterisk" type="js" ui-auto="bdd">
       <testcase component="Crosswalk Use Cases/WRT" execution_type="manual" id="ExtensionManager" platform="all" priority="P0" purpose="ExtensionManager Test" status="approved" type="functional_positive">
       </testcase>
       <testcase component="Crosswalk Use Cases/WRT" execution_type="manual" id="CookieCheck" platform="all" priority="P0" purpose="CookieCheck Test" status="approved" type="functional_positive">
@@ -21,7 +21,10 @@
       </testcase>
       <testcase component="Crosswalk Use Cases/WRT" execution_type="manual" id="PackertoolXpk" platform="all" priority="P0" purpose="PackertoolXpk Test" status="approved" type="functional_positive">
       </testcase>
-      <testcase component="Crosswalk Use Cases/WRT" execution_type="manual" id="PermissionApiContacts" platform="all" priority="P0" purpose="PermissionApiContacts Test" status="approved" type="functional_positive">
+      <testcase component="Crosswalk Use Cases/WRT" execution_type="auto" id="PermissionApiContacts" platform="all" priority="P0" purpose="PermissionApiContacts Test" status="approved" type="functional_positive">
+        <description>
+          <bdd_test_script_entry test_script_expected_result="0">/opt/usecase-wrt-android-tests/testscripts/PermissionApiContacts.feature</bdd_test_script_entry>
+        </description>
       </testcase>
       <testcase component="Crosswalk Use Cases/WRT" execution_type="manual" id="RemoteDebugging" platform="all" priority="P0" purpose="RemoteDebugging Test" status="approved" type="functional_positive">
       </testcase>
@@ -35,7 +38,10 @@
       </testcase>
       <testcase component="Crosswalk Use Cases/WRT" execution_type="manual" id="WebAppTaskManager" platform="all" priority="P0" purpose="WebAppTaskManager Test" status="approved" type="functional_positive">
       </testcase>
-      <testcase component="Crosswalk Use Cases/WRT" execution_type="manual" id="WebAppXwalkHost" platform="all" priority="P0" purpose="WebAppXwalkHost Test" status="approved" type="functional_positive">
+      <testcase component="Crosswalk Use Cases/WRT" execution_type="auto" id="WebAppXwalkHost" platform="all" priority="P0" purpose="WebAppXwalkHost Test" status="approved" type="functional_positive">
+        <description>
+          <bdd_test_script_entry test_script_expected_result="0">/opt/usecase-wrt-android-tests/testscripts/WebappXwalkHost.feature</bdd_test_script_entry>
+        </description>
       </testcase>
       <testcase component="Crosswalk Use Cases/WRT" execution_type="manual" id="ARTMode" platform="all" priority="P0" purpose="ARTMode Test" status="designed" type="functional_positive">
       </testcase>

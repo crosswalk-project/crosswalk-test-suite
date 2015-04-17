@@ -11,6 +11,8 @@
         "apk,cordova": {
             "blacklist": [],
             "copylist": {
+                "PACK-TOOL-ROOT/resources/bddrunner": "bddrunner",
+                "testscripts": "testscripts",
                 "inst.apk.py": "inst.py",
                 "tests.android.xml": "tests.xml",
                 "tests.full.xml": "tests.full.xml"
@@ -18,6 +20,7 @@
             "subapp-list": {
                 ".": {
                     "app-name": "usecase-wrt-android-tests",
+                    "apk-common-opts": "--enable-remote-debugging",
                     "blacklist": [
                         "manifest.json"
                     ],
@@ -64,6 +67,7 @@
                 "samples/PermissionApiContacts/res": {
                     "apk-icon-opt": "",
                     "app-name": "permissionapicontacts",
+                    "apk-common-opts": "--enable-remote-debugging",
                     "install-path": "."
                 },
                 "samples/RemoteDebugging/res": {
@@ -91,6 +95,7 @@
                 "samples/WebAppXwalkHost/res": {
                     "apk-icon-opt": "",
                     "app-name": "webappxwalkhost",
+                    "apk-common-opts": "--enable-remote-debugging",
                     "install-path": "."
                 },
                 "samples/SchemesCheck/res": {
