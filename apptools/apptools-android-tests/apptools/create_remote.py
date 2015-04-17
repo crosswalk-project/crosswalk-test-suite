@@ -36,7 +36,7 @@ import shutil
 
 class TestCrosswalkApptoolsFunctions(unittest.TestCase):
 
-    def test_normal_with_proxy(self):
+    def test_normal_with_downloadCrosswalk(self):
         comm.setUp()
         os.chdir(comm.XwalkPath)
         old_list = os.listdir(os.getcwd())
