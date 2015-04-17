@@ -4,6 +4,7 @@
 
 package org.xwalk.embedded.api.sample;
 
+import org.xwalk.core.XWalkActivity;
 import org.xwalk.core.XWalkView;
 
 import android.app.AlertDialog;
@@ -11,11 +12,16 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 
-public class FullScreenActivity extends XWalkBaseActivity {
+public class FullScreenActivity extends XWalkActivity {
+    private XWalkView mXWalkView;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+    }
+
+    @Override
+    protected void onXWalkReady() {
         StringBuffer mess = new StringBuffer();
         mess.append("Test Purpose: \n\n")
         .append("Verifies XWalkView can enter and exit fullscreen.\n\n")

@@ -5,11 +5,13 @@ import android.os.Bundle;
 import android.webkit.ValueCallback;
 import android.widget.TextView;
 
+import org.xwalk.core.XWalkActivity;
 import org.xwalk.core.XWalkPreferences;
 import org.xwalk.core.XWalkView;
 import org.xwalk.core.XWalkUIClient;
 
-public class OnCreateWindowRequestedActivity extends XWalkBaseActivity {
+public class OnCreateWindowRequestedActivity extends XWalkActivity {
+    private XWalkView mXWalkView;
     private TextView mTitleText1;
     private TextView mTitleText2;
     private int count;
@@ -17,7 +19,25 @@ public class OnCreateWindowRequestedActivity extends XWalkBaseActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
     	super.onCreate(savedInstanceState);
+    }
 
+    class TestXWalkUIClientBase extends XWalkUIClient {
+
+        public TestXWalkUIClientBase(XWalkView arg0) {
+            super(arg0);
+        }
+
+        @Override
+        public boolean onCreateWindowRequested(XWalkView view, InitiateBy initiator, ValueCallback<XWalkView> callback) {
+            count++;
+            mTitleText1.setText("onCreateWindowRequested");
+            mTitleText2.setText(count + " times");
+            return super.onCreateWindowRequested(view, initiator, callback);
+        }
+    }
+
+    @Override
+    protected void onXWalkReady() {
         StringBuffer mess = new StringBuffer();
         mess.append("Test Purpose: \n\n")
         .append("Verifies onCreateWindowRequested method can be triggered when icon is available.\n\n")
@@ -43,21 +63,5 @@ public class OnCreateWindowRequestedActivity extends XWalkBaseActivity {
         mTitleText1 = (TextView) findViewById(R.id.titletext1);
         mTitleText2 = (TextView) findViewById(R.id.titletext2);
         mXWalkView.load("file:///android_asset/window_create_open.html", null);
-
-    }
-
-    class TestXWalkUIClientBase extends XWalkUIClient {
-
-        public TestXWalkUIClientBase(XWalkView arg0) {
-            super(arg0);
-        }
-
-        @Override
-        public boolean onCreateWindowRequested(XWalkView view, InitiateBy initiator, ValueCallback<XWalkView> callback) {
-            count++;
-            mTitleText1.setText("onCreateWindowRequested");
-            mTitleText2.setText(count + " times");
-            return super.onCreateWindowRequested(view, initiator, callback);
-        }
     }
 }

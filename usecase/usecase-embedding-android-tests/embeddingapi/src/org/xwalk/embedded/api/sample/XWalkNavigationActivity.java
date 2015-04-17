@@ -4,6 +4,7 @@
 
 package org.xwalk.embedded.api.sample;
 
+import org.xwalk.core.XWalkActivity;
 import org.xwalk.core.XWalkNavigationHistory;
 import org.xwalk.core.XWalkNavigationItem;
 import org.xwalk.core.XWalkView;
@@ -15,8 +16,8 @@ import android.view.View.OnClickListener;
 import android.widget.ImageButton;
 import android.widget.TextView;
 
-public class XWalkNavigationActivity extends XWalkBaseActivity {
-
+public class XWalkNavigationActivity extends XWalkActivity {
+    private XWalkView mXWalkView;
     private ImageButton mNextButton;
     private ImageButton mPrevButton;
 
@@ -26,6 +27,20 @@ public class XWalkNavigationActivity extends XWalkBaseActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+    }
+
+    private void showNavigationItemInfo(XWalkNavigationItem navigationItem){
+        url = navigationItem.getUrl();
+        originalUrl = navigationItem.getOriginalUrl();
+        title = navigationItem.getTitle();
+
+        text1.setText(title);
+        text2.setText(url);
+        text3.setText(originalUrl);
+    }
+
+    @Override
+    protected void onXWalkReady() {
         StringBuffer mess = new StringBuffer();
         mess.append("Test Purpose: \n\n")
         .append("Verifies XWalkView can forward and backward history.\n\n")
@@ -78,15 +93,5 @@ public class XWalkNavigationActivity extends XWalkBaseActivity {
         });
 
         mXWalkView.load("http://www.baidu.com/", null);
-    }
-
-    private void showNavigationItemInfo(XWalkNavigationItem navigationItem){
-        url = navigationItem.getUrl();
-        originalUrl = navigationItem.getOriginalUrl();
-        title = navigationItem.getTitle();
-
-        text1.setText(title);
-        text2.setText(url);
-        text3.setText(originalUrl);
     }
 }

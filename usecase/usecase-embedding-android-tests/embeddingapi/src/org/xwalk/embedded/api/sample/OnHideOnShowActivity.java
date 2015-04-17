@@ -4,16 +4,22 @@
 
 package org.xwalk.embedded.api.sample;
 
+import org.xwalk.core.XWalkActivity;
 import org.xwalk.core.XWalkView;
 
 import android.app.AlertDialog;
 import android.os.Bundle;
 
-public class OnHideOnShowActivity extends XWalkBaseActivity {
+public class OnHideOnShowActivity extends XWalkActivity {
+    private XWalkView mXWalkView;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+    }
+
+    @Override
+    protected void onXWalkReady() {
         StringBuffer mess = new StringBuffer();
         mess.append("Test Purpose: \n\n")
         .append("Verifies XWalkView can hide and show.\n\n")

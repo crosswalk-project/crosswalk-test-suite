@@ -1,5 +1,6 @@
 package org.xwalk.embedded.api.sample;
 
+import org.xwalk.core.XWalkActivity;
 import org.xwalk.core.XWalkPreferences;
 import org.xwalk.core.XWalkView;
 
@@ -9,11 +10,37 @@ import android.view.View;
 import android.webkit.WebView;
 import android.widget.RelativeLayout;
 
-public class MultiTextureViewsActivity extends XWalkBaseActivity {
+public class MultiTextureViewsActivity extends XWalkActivity {
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+    }
 
+    private void resizeLoop(final RelativeLayout views) {
+        views.postDelayed(new Runnable() {
+            @Override
+            public void run() {
+                resize(views, 400, 400);
+                views.postDelayed(new Runnable() {
+                    @Override
+                    public void run() {
+                        resize(views, 200, 200);
+                        resizeLoop(views);
+                    }
+                }, 2000);
+            }
+        }, 2000);
+    }
+
+    private void resize(RelativeLayout views, int width, int height) {
+        for (int i = 0; i < views.getChildCount(); i++) {
+            View child = views.getChildAt(i);
+            child.setLayoutParams(new RelativeLayout.LayoutParams(width, height));
+        }
+    }
+
+    @Override
+    protected void onXWalkReady() {
         StringBuffer mess = new StringBuffer();
         mess.append("Test Purpose: \n\n")
         .append("Verifies Multiple TextureViews can be shown in order.\n\n")
@@ -54,28 +81,5 @@ public class MultiTextureViewsActivity extends XWalkBaseActivity {
 
         setContentView(root);
         resizeLoop(root);
-    }
-
-    private void resizeLoop(final RelativeLayout views) {
-        views.postDelayed(new Runnable() {
-            @Override
-            public void run() {
-                resize(views, 400, 400);
-                views.postDelayed(new Runnable() {
-                    @Override
-                    public void run() {
-                        resize(views, 200, 200);
-                        resizeLoop(views);
-                    }
-                }, 2000);
-            }
-        }, 2000);
-    }
-
-    private void resize(RelativeLayout views, int width, int height) {
-        for (int i = 0; i < views.getChildCount(); i++) {
-            View child = views.getChildAt(i);
-            child.setLayoutParams(new RelativeLayout.LayoutParams(width, height));
-        }
     }
 }

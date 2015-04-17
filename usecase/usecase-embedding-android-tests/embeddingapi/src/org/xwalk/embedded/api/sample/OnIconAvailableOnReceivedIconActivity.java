@@ -7,11 +7,13 @@ import android.os.Message;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import org.xwalk.core.XWalkActivity;
 import org.xwalk.core.XWalkPreferences;
 import org.xwalk.core.XWalkView;
 import org.xwalk.core.XWalkUIClient;
 
-public class OnIconAvailableOnReceivedIconActivity extends XWalkBaseActivity {
+public class OnIconAvailableOnReceivedIconActivity extends XWalkActivity {
+    private XWalkView mXWalkView;
     private TextView mTitleText1;
     private TextView mTitleText2;
     private ImageView mFavicon1;
@@ -22,33 +24,6 @@ public class OnIconAvailableOnReceivedIconActivity extends XWalkBaseActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
     	super.onCreate(savedInstanceState);
-
-    	StringBuffer mess = new StringBuffer();
-        mess.append("Test Purpose: \n\n")
-        .append("Verifies onIconAvailable and onReceivedIcon methods can be triggered when icon is available.\n\n")
-        .append("Expected Result:\n\n")
-        .append("1. Test passes if app show 'onIconAvailable' and the times.\n")
-        .append("2. Test passes if app show 'onReceivedIcon'. and the times\n")
-        .append("3. Test passes if app show 2 images of cat.");
-        new  AlertDialog.Builder(this)
-        .setTitle("Info" )
-        .setMessage(mess.toString())
-        .setPositiveButton("confirm" ,  null )
-        .show();
-
-        setContentView(R.layout.embedding_main);
-        mXWalkView = (XWalkView) findViewById(R.id.xwalkview_embedding);
-        mXWalkView.setUIClient(new TestXWalkUIClientBase(mXWalkView));
-
-        XWalkPreferences.setValue(XWalkPreferences.SUPPORT_MULTIPLE_WINDOWS, true);
-        XWalkPreferences.setValue(XWalkPreferences.REMOTE_DEBUGGING, true);
-        XWalkPreferences.setValue(XWalkPreferences.JAVASCRIPT_CAN_OPEN_WINDOW, true);
-        mTitleText1 = (TextView) findViewById(R.id.titletext1);
-        mTitleText2 = (TextView) findViewById(R.id.titletext2);
-        mFavicon1 = (ImageView) findViewById(R.id.imageView1);
-        mFavicon2 = (ImageView) findViewById(R.id.imageView2);
-        mXWalkView.load("file:///android_asset/window_icon.html", null);
-
     }
 
     class TestXWalkUIClientBase extends XWalkUIClient {
@@ -76,5 +51,34 @@ public class OnIconAvailableOnReceivedIconActivity extends XWalkBaseActivity {
             mTitleText2.setText("onReceivedIcon " + count2 + " times");
             super.onReceivedIcon(view, url, icon);
         }
+    }
+
+    @Override
+    protected void onXWalkReady() {
+        StringBuffer mess = new StringBuffer();
+        mess.append("Test Purpose: \n\n")
+        .append("Verifies onIconAvailable and onReceivedIcon methods can be triggered when icon is available.\n\n")
+        .append("Expected Result:\n\n")
+        .append("1. Test passes if app show 'onIconAvailable' and the times.\n")
+        .append("2. Test passes if app show 'onReceivedIcon'. and the times\n")
+        .append("3. Test passes if app show 2 images of cat.");
+        new  AlertDialog.Builder(this)
+        .setTitle("Info" )
+        .setMessage(mess.toString())
+        .setPositiveButton("confirm" ,  null )
+        .show();
+
+        setContentView(R.layout.embedding_main);
+        mXWalkView = (XWalkView) findViewById(R.id.xwalkview_embedding);
+        mXWalkView.setUIClient(new TestXWalkUIClientBase(mXWalkView));
+
+        XWalkPreferences.setValue(XWalkPreferences.SUPPORT_MULTIPLE_WINDOWS, true);
+        XWalkPreferences.setValue(XWalkPreferences.REMOTE_DEBUGGING, true);
+        XWalkPreferences.setValue(XWalkPreferences.JAVASCRIPT_CAN_OPEN_WINDOW, true);
+        mTitleText1 = (TextView) findViewById(R.id.titletext1);
+        mTitleText2 = (TextView) findViewById(R.id.titletext2);
+        mFavicon1 = (ImageView) findViewById(R.id.imageView1);
+        mFavicon2 = (ImageView) findViewById(R.id.imageView2);
+        mXWalkView.load("file:///android_asset/window_icon.html", null);
     }
 }

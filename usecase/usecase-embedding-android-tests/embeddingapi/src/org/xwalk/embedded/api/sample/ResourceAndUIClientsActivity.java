@@ -4,6 +4,7 @@
 
 package org.xwalk.embedded.api.sample;
 
+import org.xwalk.core.XWalkActivity;
 import org.xwalk.core.XWalkJavascriptResult;
 import org.xwalk.core.XWalkResourceClient;
 import org.xwalk.core.XWalkUIClient;
@@ -16,8 +17,8 @@ import android.util.Log;
 import android.webkit.ValueCallback;
 import android.webkit.WebResourceResponse;
 
-public class ResourceAndUIClientsActivity extends XWalkBaseActivity {
-
+public class ResourceAndUIClientsActivity extends XWalkActivity {
+    private XWalkView mXWalkView;
     private static final String TAG = ResourceAndUIClientsActivity.class.getName();
 
     class ResourceClient extends XWalkResourceClient {
@@ -95,6 +96,10 @@ public class ResourceAndUIClientsActivity extends XWalkBaseActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+    }
+
+    @Override
+    protected void onXWalkReady() {
         StringBuffer mess = new StringBuffer();
         mess.append("Test Purpose: \n\n")
         .append("Verifies XWalkView can set resource client and UI client.\n\n")
