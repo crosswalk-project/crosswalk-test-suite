@@ -63,9 +63,9 @@ def generate_unittest():
     try:
         generate_cmd()
         fp = open(comm.ConstPath + '/../report/cmd.txt')
-        if os.path.exists(comm.ConstPath + "/pkgNametest.py"):
-            os.remove(comm.ConstPath + "/pkgNametest.py")
-        testfile = open(comm.ConstPath + "/pkgNametest.py" ,'a+')
+        if os.path.exists(comm.ConstPath + "/pkgName.py"):
+            os.remove(comm.ConstPath + "/pkgName.py")
+        testfile = open(comm.ConstPath + "/pkgName.py" ,'a+')
         testfile.write("#!/usr/bin/env python \n# coding=utf-8 \nimport random,os,sys,unittest,allpairs \nreload(sys) \nsys.setdefaultencoding( \"utf-8\" ) \nclass TestCaseUnit(unittest.TestCase): \n ")
         lines = fp.readlines()
         for line in lines:
@@ -79,9 +79,9 @@ def generate_unittest():
         testfile.write("\nif __name__ == '__main__':\n    unittest.main()")
         fp.close()
         testfile.close()
-        os.system("chmod +x " + comm.ConstPath + "/pkgNametest.py")
+        os.system("chmod +x " + comm.ConstPath + "/pkgName.py")
     except Exception,e:
-        print Exception,"Generate pkgNametest.py error:",e
+        print Exception,"Generate pkgName.py error:",e
         sys.exit(1)
 
 def tryRunApp(item, cmd):
@@ -122,7 +122,7 @@ def tryRunApp(item, cmd):
                     result = 'FAIL'
                     return result
     except Exception,e:
-        print Exception,"Generate pkgNametest.py error:",e
+        print Exception,"Generate pkgName.py error:",e
         sys.exit(1)
 
 if __name__ == '__main__':

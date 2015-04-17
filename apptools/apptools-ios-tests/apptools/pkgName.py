@@ -35,23 +35,23 @@ class TestCaseUnit(unittest.TestCase):
   def test_pkgName_positive10(self):
      self.assertEqual("PASS", allpairs.tryRunApp("positive10", "crosswalk-app create org.example123.xwalk"))
 
-  def test_pkgName_positive11(self):
-     self.assertEqual("PASS", allpairs.tryRunApp("positive11", "crosswalk-app create org.example.1234test"))
+  def test_pkgName_negative11(self):
+     self.assertEqual("PASS", allpairs.tryRunApp("negative11", "crosswalk-app create org.xwalk"))
 
-  def test_pkgName_positive12(self):
-     self.assertEqual("PASS", allpairs.tryRunApp("positive12", "crosswalk-app create org.example.1234"))
+  def test_pkgName_negative12(self):
+     self.assertEqual("PASS", allpairs.tryRunApp("negative12", "crosswalk-app create test"))
 
-  def test_pkgName_positive13(self):
-     self.assertEqual("PASS", allpairs.tryRunApp("positive13", "crosswalk-app create 123org.example.xwalk"))
+  def test_pkgName_negative13(self):
+     self.assertEqual("PASS", allpairs.tryRunApp("negative13", "crosswalk-app create org.example.1234test"))
 
-  def test_pkgName_positive14(self):
-     self.assertEqual("PASS", allpairs.tryRunApp("positive14", "crosswalk-app create org.123example.xwalk"))
+  def test_pkgName_negative14(self):
+     self.assertEqual("PASS", allpairs.tryRunApp("negative14", "crosswalk-app create org.example.1234"))
 
   def test_pkgName_negative15(self):
-     self.assertEqual("PASS", allpairs.tryRunApp("negative15", "crosswalk-app create org.xwalk"))
+     self.assertEqual("PASS", allpairs.tryRunApp("negative15", "crosswalk-app create 123org.example.xwalk"))
 
   def test_pkgName_negative16(self):
-     self.assertEqual("PASS", allpairs.tryRunApp("negative16", "crosswalk-app create test"))
+     self.assertEqual("PASS", allpairs.tryRunApp("negative16", "crosswalk-app create org.123example.xwalk"))
 
 if __name__ == '__main__':
     unittest.main()
