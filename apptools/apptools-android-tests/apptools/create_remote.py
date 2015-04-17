@@ -38,6 +38,7 @@ class TestCrosswalkApptoolsFunctions(unittest.TestCase):
 
     def test_normal_with_downloadCrosswalk(self):
         comm.setUp()
+        clear("org.xwalk.test")
         os.chdir(comm.XwalkPath)
         old_list = os.listdir(os.getcwd())
         cmd = comm.PackTools + "crosswalk-app create org.xwalk.test"
