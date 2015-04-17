@@ -33,17 +33,6 @@ import os, sys, commands
 import comm
 
 class TestPackertoolsFunctions(unittest.TestCase):
-    def test_packertool_help(self):
-        comm.setUp()
-        cmd = "python %smake_apk.py -h" % \
-              (comm.Pck_Tools)
-        packstatus = commands.getstatusoutput(cmd)
-        #print packstatus
-        self.assertEquals(0, packstatus[0])
-        cmd2 = "python %smake_apk.py --help" % \
-               (comm.Pck_Tools)
-        packstatus2 = commands.getstatusoutput(cmd2)
-        self.assertEquals(0, packstatus2[0])
 
     def test_packertool_arm_x86(self):
         comm.setUp()
@@ -73,21 +62,6 @@ class TestPackertoolsFunctions(unittest.TestCase):
               (comm.Pck_Tools, comm.ARCH, comm.MODE, appRoot)
         packstatus_ver = commands.getstatusoutput(cmd_ver)
         self.assertGreater(len(packstatus_ver[1]), len(packstatus[1]))
-
-    def test_packertool_version(self):
-        comm.setUp()
-        os.chdir(comm.Pck_Tools)
-        fp = open(comm.Pck_Tools + "VERSION")
-        lines = fp.readlines()
-        version = lines[0][6:].strip("\n\t") + "." + lines[1][6:].strip("\n\t") + "." + lines[2][6:].strip("\n\t") + "." + lines[3][6:].strip("\n\t")
-        cmd = "python %smake_apk.py -v" % (comm.Pck_Tools)
-        packstatus = commands.getstatusoutput(cmd)
-        self.assertEquals(0, packstatus[0])
-        self.assertIn(version, packstatus[1])
-        cmd2 = "python %smake_apk.py --version" % (comm.Pck_Tools)
-        packstatus2 = commands.getstatusoutput(cmd2)
-        self.assertEquals(0, packstatus2[0])
-        self.assertIn(version, packstatus2[1])
 
 if __name__ == '__main__':
     unittest.main()  
