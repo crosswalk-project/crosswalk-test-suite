@@ -1,5 +1,6 @@
 package org.xwalk.embedded.api.sample;
 
+import org.xwalk.core.XWalkActivity;
 import org.xwalk.core.XWalkPreferences;
 import org.xwalk.core.XWalkResourceClient;
 import org.xwalk.core.XWalkView;
@@ -7,14 +8,36 @@ import android.app.AlertDialog;
 import android.os.Bundle;
 import android.widget.TextView;
 
-public class ShouldOverrideUrlLoadingActivity extends XWalkBaseActivity {
+public class ShouldOverrideUrlLoadingActivity extends XWalkActivity {
+    private XWalkView mXWalkView;
     private TextView mTitleText1;
     private TextView mTitleText2;
     private int count;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+    }
 
+    class TestXWalkResourceClientBase extends XWalkResourceClient {
+
+        public TestXWalkResourceClientBase(XWalkView mXWalkView) {
+            super(mXWalkView);
+        }
+
+        @Override
+        public boolean shouldOverrideUrlLoading(XWalkView view, String url) {
+            if(url.endsWith("openedWindow.html")) {
+                count++;
+                mTitleText1.setText("shouldOverrideUrlLoading triggered ");
+                mTitleText2.setText(count + " times");
+            }
+            return super.shouldOverrideUrlLoading(mXWalkView, url);
+        }
+    }
+
+    @Override
+    protected void onXWalkReady() {
         StringBuffer mess = new StringBuffer();
         mess.append("Test Purpose: \n\n")
         .append("Verifies shouldOverrideUrlLoading can be triggered navigating to a link that will load externally.\n\n")
@@ -36,23 +59,5 @@ public class ShouldOverrideUrlLoadingActivity extends XWalkBaseActivity {
         mTitleText1 = (TextView) findViewById(R.id.titletext1);
         mTitleText2 = (TextView) findViewById(R.id.titletext2);
         mXWalkView.load("file:///android_asset/navigate.html", null);
-
-    }
-
-    class TestXWalkResourceClientBase extends XWalkResourceClient {
-
-        public TestXWalkResourceClientBase(XWalkView mXWalkView) {
-            super(mXWalkView);
-        }
-
-        @Override
-        public boolean shouldOverrideUrlLoading(XWalkView view, String url) {
-            if(url.endsWith("openedWindow.html")) {
-                count++;
-                mTitleText1.setText("shouldOverrideUrlLoading triggered ");
-                mTitleText2.setText(count + " times");
-            }
-            return super.shouldOverrideUrlLoading(mXWalkView, url);
-        }
     }
 }

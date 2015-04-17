@@ -4,6 +4,7 @@
 
 package org.xwalk.embedded.api.sample;
 
+import org.xwalk.core.XWalkActivity;
 import org.xwalk.core.XWalkView;
 import org.xwalk.core.XWalkPreferences;
 
@@ -18,9 +19,10 @@ import android.view.View;
  * Sample code to show how to use ANIMATED_XWALK_VIEW preference key to create
  * animated XWalkView and apply alpha animation or scale animation on it.
  */
-public class AnimatableXWalkViewActivity extends XWalkBaseActivity {
+public class AnimatableXWalkViewActivity extends XWalkActivity {
     private final static float ANIMATION_FACTOR = 0.6f;
     private Button mRunAnimationButton;
+    private XWalkView mXWalkView;
 
     private void startAnimation() {
         AnimatorSet combo = new AnimatorSet();
@@ -43,7 +45,18 @@ public class AnimatableXWalkViewActivity extends XWalkBaseActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+    }
 
+    @Override
+    public void onDestroy() {
+        super.onDestroy();
+
+        // Reset the preference for animatable XWalkView.
+        XWalkPreferences.setValue(XWalkPreferences.ANIMATABLE_XWALK_VIEW, false);
+    }
+
+    @Override
+    protected void onXWalkReady() {
         StringBuffer mess = new StringBuffer();
         mess.append("Test Purpose: \n\n")
         .append("Verifies Animatable XWalkView can be scaled.\n\n")
@@ -73,13 +86,5 @@ public class AnimatableXWalkViewActivity extends XWalkBaseActivity {
 
         mXWalkView = (XWalkView) findViewById(R.id.xwalkview);
         mXWalkView.load("http://www.baidu.com", null);
-    }
-
-    @Override
-    public void onDestroy() {
-        super.onDestroy();
-
-        // Reset the preference for animatable XWalkView.
-        XWalkPreferences.setValue(XWalkPreferences.ANIMATABLE_XWALK_VIEW, false);
     }
 }

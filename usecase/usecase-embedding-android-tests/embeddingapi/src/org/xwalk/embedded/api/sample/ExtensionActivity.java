@@ -5,18 +5,23 @@
 package org.xwalk.embedded.api.sample;
 
 import org.xwalk.embedded.api.sample.ExtensionEcho;
+import org.xwalk.core.XWalkActivity;
 import org.xwalk.core.XWalkView;
 
 import android.app.AlertDialog;
 import android.os.Bundle;
 
-public class ExtensionActivity extends XWalkBaseActivity {
+public class ExtensionActivity extends XWalkActivity {
     private ExtensionEcho mExtension;
+    private XWalkView mXWalkView;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+    }
 
+    @Override
+    protected void onXWalkReady() {
         StringBuffer mess = new StringBuffer();
         mess.append("Test Purpose: \n\n")
         .append("Verifies extension can be supported .\n\n")
