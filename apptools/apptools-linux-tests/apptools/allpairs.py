@@ -85,17 +85,17 @@ def tryRunApp(item, projectName):
         if 'negative' in flag:
             if 'ERROR' in packstatus[1]:
                 result = 'PASS'
-                print "%21s\tFILE\tFILE" % projectName
+                print "%21s\tFAIL\tFAIL" % projectName
             else:
-                result = 'FILE'
-                print "%21s\tFILE\tPASS" % projectName
+                result = 'FAIL'
+                print "%21s\tFAIL\tPASS" % projectName
         elif 'positive' in flag:
             if packstatus[0] == 0:
                 result = 'PASS'
                 print "%21s\tPASS\tPASS" % projectName
             else:
-                result = 'FILE'
-                print "%21s\tPASS\tFILE" % projectName
+                result = 'FAIL'
+                print "%21s\tPASS\tFAIL" % projectName
 
         comm.cleanTempData(projectName)
         os.chdir(comm.SCRIPT_DIR_NAME)
