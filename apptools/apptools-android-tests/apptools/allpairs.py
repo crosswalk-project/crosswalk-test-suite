@@ -107,8 +107,8 @@ def tryRunApp(item, cmd):
                 else:
                     print "Genarate APK ---------------->Error"
                     comm.clear(package)
+                    result = 'FAIL'
                     return result
-                    result = 'FILE'
             elif 'positive' in flag:
                 packstatus = commands.getstatusoutput(exec_cmd)
                 if packstatus[0] == 0:
@@ -119,7 +119,7 @@ def tryRunApp(item, cmd):
                 else:
                     print "Genarate APK ---------------->Error"
                     comm.clear(package)
-                    result = 'FILE'
+                    result = 'FAIL'
                     return result
     except Exception,e:
         print Exception,"Generate pkgNametest.py error:",e
