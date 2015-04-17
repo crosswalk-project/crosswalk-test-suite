@@ -88,12 +88,13 @@ def create(self):
 
 def build(self, cmd):
     buildstatus = commands.getstatusoutput(cmd)
-    self.assertNotIn("ANDROID_HOME", buildstatus[1])
     self.assertEquals(buildstatus[0], 0)
     self.assertIn("pkg", os.listdir(XwalkPath + "org.xwalk.test"))
     os.chdir('pkg')
     apks = os.listdir(os.getcwd())
+    self.assertNotEquals(len(apks), 0)
     for i in range(len(apks)):
+        self.assertTrue(apks[i].endswith(".apk"))
         if "x86" in apks[i]:
             self.assertIn("x86", apks[i])
             if i < len(os.listdir(os.getcwd())):
@@ -106,9 +107,6 @@ def build(self, cmd):
                 self.assertIn("x86", apks[i-1])
             else:
                 self.assertIn("x86", apks[i+1])
-        else:
-            self.assertTrue(apks[i].endswith(".apk"))
-            self.assertEquals(len(apks), 2)
 
 def run(self):
     setUp()
