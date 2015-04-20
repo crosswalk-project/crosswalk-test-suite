@@ -39,8 +39,8 @@ import comm
 def insert_xml_result(pathname, apkfile, apksize, appname, packagename,
                       launchableactivity, versioncode, versionname, sdkversion, targetsdkversion,
                       mode, architecture,
-                      crosswalk, webview, chromium, coreinternal, cordova, isintelxdk, xwalklist, chromiumlist, cordovalist, smalilist, assetlist, note):
-    print apkfile, apksize, appname, packagename, launchableactivity, versioncode, versionname, sdkversion, targetsdkversion, mode, architecture, crosswalk, coreinternal, cordova, isintelxdk, webview, note
+                      crosswalk, webview, chromium, coreinternal, cordova, xwalkwebvieweg, isintelxdk, xwalklist, chromiumlist, cordovalist, smalilist, assetlist, note):
+    print apkfile, apksize, appname, packagename, launchableactivity, versioncode, versionname, sdkversion, targetsdkversion, mode, architecture, crosswalk, coreinternal, cordova, xwalkwebvieweg, isintelxdk, webview, note
 
     parser = et.XMLParser(remove_blank_text=True)
     tree = et.parse(pathname, parser)
@@ -55,6 +55,7 @@ def insert_xml_result(pathname, apkfile, apksize, appname, packagename,
     xcrosswalk.attrib['chromium'] = chromium
     xcrosswalk.attrib['coreinternal'] = coreinternal
     xcrosswalk.attrib['cordova'] = cordova
+    xcrosswalk.attrib['xwalkwebvieweg'] = xwalkwebvieweg
     xcrosswalk.attrib['intelxdk'] = isintelxdk
     xcrosswalk.attrib['note'] = note
 
