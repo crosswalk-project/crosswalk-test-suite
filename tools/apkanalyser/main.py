@@ -107,20 +107,17 @@ def aaptanalyser(path):
 
 
 def getxwalkwebviewplugin(path):
-    if comm.find_file(path):
-        f1 = file(path, mode='r')
+    linen = 1
+    xversion = ''
+    f1 = file(path, mode='r')
+    line = f1.readline()
+    while line:
+        if line.find('cordova-plugin-crosswalk-webview') > -1:
+            xversion = line.replace('cordova-plugin-crosswalk-webview','').replace('"','').replace(':','').strip()
         line = f1.readline()
-        linen = 1
-        xversion = ''
-        while line:
-            if line.find('cordova-plugin-crosswalk-webview') > -1:
-                xversion = line.replace('cordova-plugin-crosswalk-webview','').replace('"','').replace(':','').strip()
-            linen += 1
-            line = f1.readline()
-        f1.close()
-        return xversion
-    else:
-        return ''
+        linen += 1
+    f1.close()
+    return xversion
 
 def apktoolanalyser(path):
 
