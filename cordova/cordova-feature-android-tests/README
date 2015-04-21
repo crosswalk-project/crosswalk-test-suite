@@ -11,7 +11,15 @@ http://cordova.apache.org/docs/en/3.4.0/cordova_plugins_pluginapis.md.html#Plugi
 
 ### For cordova 4.0 build
 
+*Require Android API level 22
 * Get cordova4.0_sampleapp.zip from internal release link, then unzip it to /tmp/cordova-sampleapp/
+* If Build Cordova 4.0 App with Crosswalk Canary, need these as follows 
+**Download canary crosswalk file**: 
+  ```wget https://download.01.org/crosswalk/releases/crosswalk/android/canary/<canary-version>/crosswalk-<canary-version>.aar``` 
+**Install canary to local maven repo**: 
+  ```mvn install:install-file -DgroupId=org.xwalk -DartifactId=xwalk_core_library -Dversion=<canary-version> -Dpackaging=aar -Dfile=<crosswalk-path>/crosswalk-<canary-version>.aar -DgeneratePom=true``` 
+  ```canary-version: e.g. 13.42.319.0, it must be consistent with the dependencies version [testprefix-path]/opt/cordova-feature-android-tests/tools/cordova-crosswalk-engine/libs/xwalk_core_library/xwalk.gradle``` 
+  ```crosswalk-path: the downloaded canary crosswalk file path```
 
 ## Test Steps
 1. unzip cordova-feature-android-tests<version>.zip -d [testprefix-path]
