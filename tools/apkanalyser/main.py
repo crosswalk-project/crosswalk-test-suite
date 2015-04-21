@@ -115,7 +115,7 @@ def getxwalkwebviewplugin(path):
         while line:
             if line.find('cordova-plugin-crosswalk-webview') > -1:
                 xversion = line.replace('cordova-plugin-crosswalk-webview','').replace('"','').replace(':','').strip()
-            linen +=1
+            linen += 1
             line = f1.readline()
         f1.close()
         return xversion
