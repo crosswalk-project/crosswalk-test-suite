@@ -45,6 +45,7 @@
       .ci { background-color:#FF885E; color: rgba(255, 255, 255, 1.0); }
       .xdk { background-color:#D18EE2; color: rgba(255, 255, 255, 1.0); }
       .cr { background-color:#61BD6D; color: rgba(255, 255, 255, 1.0); }
+      .xwalkwebviewpg { background-color:#8E44AD; color: rgba(255, 255, 255, 1.0);  }
       #datetime { font-size: 10px; margin-top: 10px; }
       #toggle { text-align: right; color: rgba(22, 160, 133,1.0); cursor: hand; margin: -6px 0px 6px 0px;  }
       #toggle:hover { color: rgba(16, 154, 127,1.0); }
@@ -67,6 +68,7 @@
           <th class="limw">Architecture</th>
           <th class="limw">Core Internal</th>
           <th class="limw">Cordova</th>
+          <th class="limw">XWalk Webview Plugin</th>
           <th class="limw">Intel XDK</th>
           <th class="limw">U/WebView</th>
           <th class="limw">U/Chromium</th>
@@ -138,6 +140,15 @@
             </xsl:otherwise>
           </xsl:choose>
 
+          <xsl:choose>
+            <xsl:when test="@xwalkwebvieweg != ''">
+             <td class="xwalkwebviewpg limw"><xsl:value-of select="@xwalkwebvieweg"/></td>
+            </xsl:when>
+            <xsl:otherwise>
+              <td class="limw"><xsl:value-of select="@xwalkwebvieweg"/></td>
+            </xsl:otherwise>
+          </xsl:choose>
+
            <xsl:choose>
             <xsl:when test="@intelxdk = 'yes'">
              <td class="xdk limw"><xsl:value-of select="@intelxdk"/></td>
@@ -172,7 +183,7 @@
           </xsl:for-each>
         </tr>
         <tr>
-          <td colspan='12' class='details'>
+          <td colspan='13' class='details'>
             <div class='apd'>
               Package: <span class="det"><xsl:value-of select="@id"/></span>
               <xsl:for-each select="app">
