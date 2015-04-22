@@ -1,0 +1,791 @@
+
+<html>
+<head>
+<title>cross_fuzz v3</title>
+<!--
+
+  Author: Michal Zalewski <lcamtuf@google.com>
+ 
+  Copyright 2010, 2011 by Google Inc. All Rights Reserved.
+ 
+  Licensed under the Apache License, Version 2.0 (the "License");
+  you may not use this file except in compliance with the License.
+  You may obtain a copy of the License at
+ 
+    http://www.apache.org/licenses/LICENSE-2.0
+ 
+  Unless required by applicable law or agreed to in writing, software
+  distributed under the License is distributed on an "AS IS" BASIS,
+  WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+  See the License for the specific language governing permissions and
+  limitations under the License.
+
+-->
+<script src=mersenne.js></script>
+<script>
+/*
+
+   This fuzzer is an improvement of cross_fuzz_randomized_20100729_seed.html
+   that makes it considerably easier to reproduce fault conditions,
+   especially when running it from file:  /. This is achieved by minimizing
+   the risk of DOM crawl desynchronization by resyncing the PRNG when
+   returning from a particular recursion level, and after shuffling arrays.
+   
+   Important advice on setting up the fuzzer to get useful results:
+   
+   1) wget -r -np the entire http:  lcamtuf.coredump.cx/cross_fuzz/
+      directory to a location in file:  /
+   
+   2) In your test setup, set the home page to about:blank, disable safe
+      browsing, configure the browser to purge the cache on exit, disable
+      pop-up blocking, proxy autodetection, update checking, and eliminate
+      other factors that may be introducing nondeterministic latency.
+  
+      For MSIE, you also need to do:
+  
+      diff -u cross_fuzz_randomized_20100729_seed.html cross_fuzz_msie_randomized_seed.html
+  
+      ...and apply the resulting patch to this file.
+  
+      For MSIE and WebKit browsers, you also need to make a configuration
+      change to allow file:  / access from JavaScript; or - less preferably -
+      set up a local web server instead. Advice on how to do this is not
+      provided here.
+   
+   3) Start the fuzzer inside a browser in the "private" browsing mode if
+      possible (so that the influence of cache is minimized). Pick a random
+      32-bit seed for every fuzzing cycle.
+      
+      When done, navigate to the fuzzer via:
+   
+      file:  /wherever_you_put_it/cross_fuzz_randomized_20110105_seed.html#1234
+    
+      ...where 1234 is your selected seed.
+   
+   4) Collect seed and crash signature pairs when repeating step #3. For each
+      crash, pick a seed that resulted in that crash in the shortest amount
+      of time. Use this seed to reproduce the fault for debugging. If it
+      does not reproduce, use the second shortest time, etc.
+   
+   Happy fuzzing!
+
+*/
+
+var FAN_LIMIT     = 8;    /* Object crawl fanout limit                 */
+var MAX_LEVEL     = 5;    /* Maximum object nest level to crawl        */
+var MAX_RET_LEVEL = 1;    /* Maximum ret val object level to crawl     */
+
+var TWEAK_ODDS    = 2;    /* Property tweak probability when crawling  */
+var CALL_ODDS     = 2;    /* Method call probability                   */
+
+var REF_ODDS      = 5;    /* Object reference storing probability      */
+var NONOBJ_ODDS   = 20;   /* Non-object reference storing probability  */
+var INTER_ODDS    = 2;    /* Odds of using interesting_vals vs refs    */
+
+var TRASH_ODDS    = 8;    /* Target window trashing probability        */
+var RESET_ODDS    = 2;    /* Odds of respawning target windows         */
+
+var PARAMS        = 4;    /* Number of params to make up for methods   */
+var MAX_REFS      = 200;  /* Maximum number of refs to keep            */
+var KEEP_REFS     = 100;  /* Number of refs to move across cycles      */
+
+
+/**************************
+ * Various crawl settings *
+ **************************/
+
+var interesting_vals = [
+  0, 1, 1e6, -1e6, 1e-6, 1e100, null, undefined, 'pink', screen, Infinity, false, true, eval, [], {},
+  4500000000, 2200000000, -2200000000, -4500000000
+];
+
+var object_blacklist = { 
+
+  /* Properties */
+
+  'fuzz1_visited' : 0,
+  'fuzz2_visited' : 0,
+  'fuzz3_visited' : 0,
+  'ref_visited' : 0,
+
+  'location' : 0,
+  'name' : 0,
+  'opener' : 0,
+  'URL' : 0,
+  'onbeforeunload' : 0,
+  'onunload': 0,
+
+  'innerHTML' : 0,
+  'outerHTML' : 0,
+  'innerText' : 0,
+  'textContent' : 0,
+
+  'Components': 0,
+  'controllers' : 0,
+
+  'lastChild' : 0,
+  'previousSibling': 0,
+  'previousElementSibling': 0,
+  'parentNode' : 0,
+  'parentTextEdit' : 0,
+  'parentElement' : 0,
+  'ownerDocument' : 0,
+  'document' : 1,
+
+  /* Methods */
+
+  'cloneNode' : 0,
+  'open' : 0,
+  'close' : 0,
+  'print' : 0,
+  'alert': 0,
+  'prompt' : 0,
+  'showModalDialog' : 0,
+  'confirm' : 0
+
+};
+
+/*****************************************
+ * Generate random integer (0 ... mod-1) *
+ *****************************************/
+
+function R(mod) {
+  return genrand_int32() % mod;
+}
+
+/*************
+ * Log stuff *
+ *************/
+
+var log_box;
+var message_data = '';
+
+function LOG(message) {
+
+
+  message_data += '* ' + message + '\n';
+
+  log_box.value = message_data.substr(message_data.length - 2048);
+  log_box.scrollTop = log_box.scrollHeight;
+  if(message != "")
+  {
+	log_box.rows += 1;
+	console.log(message_data);
+  }
+}
+
+/*************
+ * GC helper *
+ *************/
+
+var gc_string;
+
+function toggle_gc() {
+
+  for (var i = 0; i < 10000; i++) {
+    var s = new String("AAAA" + Math.random());
+    eval("gc_string = s");
+  }
+
+}
+
+/******************
+ * Array shuffler *
+ ******************/
+
+function shuffle_array(arr) {
+  var cnt = arr.length;
+  var ret_seed = genrand_int32();
+
+  while (cnt--) {
+    var src = R(arr.length), dst = R(arr.length);
+    var tmp = arr[src];
+
+    arr[src] = arr[dst];
+    arr[dst] = tmp;
+  }
+
+  init_genrand(ret_seed);
+
+}
+
+
+/*************************
+ * Reopen target windows *
+ *************************/
+
+var t1, t2;
+
+function new_targets() {
+
+  LOG('Respawning targets...');
+
+  try {
+    t1.close();
+    t2.close();
+  } catch (e) { }
+
+  /* TODO: Add more interesting document types. */
+
+  switch (R(4)) {
+
+    case 0:
+      if ('v' != '\v') {
+        t1 = window.open('targets/target.svg', 't1');
+        LOG('Target 1: SVG');
+      } else {
+        t1 = window.open('targets/target_strict2.html', 't1');
+        LOG('Target 1: HTML strict');
+      }
+      break;
+
+    default:
+      t1 = window.open('targets/target2.html', 't1');
+      LOG('Target 1: HTML');
+  
+  }
+
+  switch (R(4)) {
+
+    case 0:
+      if ('v' != '\v') {
+        t2 = window.open('targets/target.svg', 't2');
+        LOG('Target 2: SVG');
+      } else {
+        t2 = window.open('targets/target_strict2.html', 't2');
+        LOG('Target 2: HTML strict');
+      }
+      break;
+
+    default:
+      t2 = window.open('targets/target2.html', 't2');
+      LOG('Target 2: HTML');
+  
+  }
+
+  try { t1.opener = null; } catch (e) { }
+  try { t2.opener = null; } catch (e) { }
+
+}
+
+/*******************************************************
+ * Trash target window in one of several possible ways *
+ *******************************************************/
+
+function trash_target(target) {
+
+  try {
+
+    switch (R(3)) {
+
+      case 0: 
+        LOG('Clobbering target with document.write()');
+        target.document.write('Hi mom!');
+        break;
+
+      case 1:
+        LOG('Clobbering target with document.body.innerHTML');
+        target.document.body.innerHTML = 'Hi mom'; 
+        break;
+
+      case 2:
+        LOG('Clobbering target with window.close()');
+        target.close();
+        break;
+
+    }
+
+  } catch (e) { }
+
+}
+
+/*****************************
+ * Maybe add a new reference *
+ *****************************/
+
+function maybe_add_ref(obj, add_set) {
+
+  if (R(REF_ODDS) != 0) return;
+
+  /* Be more conservative about adding non-objects. */
+  if (typeof obj != 'object' && R(NONOBJ_ODDS) != 0) return;
+
+  try {
+
+    try {
+      if (obj.ref_visited) return;
+      obj.ref_visited = 1;
+    } catch (e) { }
+
+    LOG('+++ Adding reference ' + obj + ' (' + add_set.length + ') +++');
+
+    if (add_set.length > MAX_REFS)
+      add_set[R(MAX_REFS)] = obj; 
+    else
+      add_set.push(obj);
+
+  } catch (e) { }
+
+}
+
+/*****************************
+ * Crawl, collect properties *
+ *****************************/
+
+var crawl_history = [];
+var cur_id;
+
+function crawl_properties(path, target, level, add_set) {
+
+  var members = [];
+  var cur_fan = 0;
+
+  var ret_seed = genrand_int32();
+
+  LOG('-- PROPERTY CRAWL (' + level + '): ' + path + ' --');
+
+  if (level > MAX_LEVEL) {
+    LOG("*** NESTING LEVEL EXCEEDED ***");
+    return;
+  }
+
+  try {
+    for (var name in target) members.push(name);
+  } catch (e) {
+    LOG("Boo - cannot enumerate: " + e);
+    return;
+  }
+
+  /* Make sure this is not a duplicate. */
+
+  if (level == 0) cur_id = Math.random();
+
+  try {
+    if (target.fuzz1_visited == cur_id) {
+      LOG('*** Already crawled (1) ***');
+      return;
+    }
+    target.fuzz1_visited = cur_id;
+  } catch (e) { }
+
+  shuffle_array(members);
+
+  for (var num in members) {
+    var name = members[num];
+    var cur_value = null;
+
+    if (name == '0' || 
+        (object_blacklist[name] != undefined && level >= object_blacklist[name])) {
+//      LOG('Skipping: ' + path + '.' + name);
+      continue;
+    }
+
+//    LOG('Trying: ' + path + '.' + name);
+
+    try {
+      cur_value = eval('target.' + name);
+//      LOG('...result is "' + cur_value + '" (' + typeof cur_value + ')');
+    } catch (e) {
+//      LOG('...received exception (' + e + ')');
+    }
+
+    if (cur_value != null) {
+
+      if (typeof cur_value != 'function')
+        maybe_add_ref(cur_value, add_set);
+
+      /* Recurse into objects */
+
+      if (typeof cur_value == 'object' && cur_fan < FAN_LIMIT) {
+
+        cur_fan++;
+        crawl_properties(path + '.' + name, cur_value, level + 1, add_set);
+
+//        LOG('-- BACK TO PROPERTY CRAWL (' + level + '): ' + path + ' --');
+
+      }
+
+    }
+
+  }
+
+  init_genrand(ret_seed);
+
+}
+
+/********************
+ * Tweak properties *
+ ********************/
+
+function tweak_properties(path, target, level, use_set) {
+
+  var members = [];
+  var cur_fan = 0;
+
+  var ret_seed = genrand_int32();
+
+  LOG('-- PROPERTY TWEAK (' + level + '): ' + path + ' --');
+
+  if (level > MAX_LEVEL) {
+    LOG("*** NESTING LEVEL EXCEEDED ***");
+    return;
+  }
+
+  try {
+    for (var name in target) members.push(name);
+  } catch (e) {
+    LOG("Boo - cannot enumerate: " + e);
+    return;
+  }
+
+  /* Make sure this is not a duplicate. */
+
+  if (level == 0) cur_id = Math.random();
+
+  try {
+    if (target.fuzz2_visited == cur_id) {
+      LOG('*** Already crawled (1) ***');
+      return;
+    }
+    target.fuzz2_visited = cur_id;
+  } catch (e) { }
+
+  shuffle_array(members);
+
+  for (var num in members) {
+
+    var name = members[num];
+    var orig_value = null;
+
+    if (name == '0' ||
+        (object_blacklist[name] != undefined && level >= object_blacklist[name])) {
+//      LOG('Skipping: ' + path + '.' + name);
+      continue;
+    }
+
+    try {
+      orig_value = eval('target.' + name);
+    } catch (e) { 
+      continue; 
+    }
+
+    /* Leave functions alone!!! */
+    if (typeof orig_value == 'function') continue;
+
+//    LOG('Trying: ' + path + '.' + name);
+
+    if (R(TWEAK_ODDS) == 0) try {
+
+      if (use_set.length != 0 && R(INTER_ODDS) != 0)
+        eval('target.' + name + ' = use_set[' + R(use_set.length) + ']');
+      else
+        eval('target.' + name + ' = interesting_vals[' + R(interesting_vals.length) + ']');
+
+    } catch (e) {
+//      LOG('...received exception (' + e + ')');
+    }
+
+    /* Recurse into objects. */
+
+    if (orig_value != null && typeof orig_value == 'object' && cur_fan < FAN_LIMIT) {
+
+      cur_fan++;
+      tweak_properties(path + '.' + name, orig_value, level + 1, use_set);
+
+//      LOG('-- BACK TO PROPERTY TWEAK (' + level + '): ' + path + ' --');
+
+    }
+
+  }
+
+  init_genrand(ret_seed);
+
+}
+
+
+/***********************
+ * Crawl, call methods *
+ ***********************/
+
+function call_methods(path, target, level, ret_level, use_set, add_set) {
+
+  var members = [];
+  var cur_fan = 0;
+
+  var ret_seed = genrand_int32();
+
+  LOG('-- METHOD CRAWL (' + level + '): ' + path + ' --');
+
+  if (level > MAX_LEVEL) {
+    LOG("*** NESTING LEVEL EXCEEDED ***");
+    return;
+  }
+
+  if (ret_level > MAX_RET_LEVEL) {
+    LOG("*** RET NESTING LEVEL EXCEEDED ***");
+    return;
+  }
+
+  try {
+    for (var name in target) members.push(name);
+  } catch (e) {
+    LOG("Boo - cannot enumerate: " + e);
+    return;
+  }
+
+  /* Make sure this is not a duplicate. */
+
+  if (level + ret_level == 0) cur_id = Math.random();
+
+  try {
+    if (target.fuzz3_visited == cur_id) {
+      LOG('*** Already crawled (1) ***');
+      return;
+    }
+    target.fuzz3_visited = cur_id;
+  } catch (e) { }
+
+  shuffle_array(members);
+
+  for (var num in members) {
+
+    var name = members[num];
+    var cur_value = null;
+
+    if (name == '0' ||
+        (object_blacklist[name] != undefined && level >= object_blacklist[name])) {
+//      LOG('Skipping: ' + path + '.' + name);
+      continue;
+    }
+
+    try {
+      cur_value = eval('target.' + name);
+    } catch (e) { 
+      continue; 
+    }
+
+    if (cur_value == null) continue;
+
+    if (R(CALL_ODDS) == 0 && typeof cur_value == 'function') {
+
+      var ret_value = null;
+      var par_str = "";
+
+      /* Construct parameters for the call */
+
+      for (var i = 0; i < PARAMS; i++) {
+
+        if (use_set.length != 0 && R(INTER_ODDS) != 0)
+          par_str += 'use_set[' + R(use_set.length) + ']';
+        else
+          par_str += 'interesting_vals[' + R(interesting_vals.length) + ']';
+
+        if (i + 1 != PARAMS) par_str += ", ";
+
+      }
+
+//      LOG('Trying: ' + path + '.' + name);
+
+      try {
+
+        ret_value = eval('target.' + name + '(' + par_str + ')');
+//        LOG('...result is "' + ret_value + '" (' + typeof ret_value + ')');
+      } catch (e) {
+//        LOG('...received exception (' + e + ')');
+      }
+
+      if (ret_value != null) {
+
+        if (typeof ret_value != 'function') maybe_add_ref(ret_value, add_set);
+
+        /* Recurse into returned objects. */
+ 
+        if (typeof ret_value == 'object' && cur_fan < FAN_LIMIT) {
+
+          cur_fan++;
+          call_methods(path + '.[ret:' + name + ']' , ret_value, level, ret_level + 1, use_set, add_set);
+          tweak_properties(path + '.[ret:' + name + ']' , ret_value, level + ret_level + 1, use_set); 
+
+//          LOG('-- BACK TO METHOD CRAWL (' + level + '): ' + path + ' --');
+
+        }
+
+      }
+
+    }
+
+    /* Recurse into crawled objects. */
+
+    if (typeof cur_value == 'object' && cur_fan < FAN_LIMIT) {
+
+      cur_fan++;
+      call_methods(path + '.' + name, cur_value, level + 1, ret_level, use_set, add_set);
+
+//        LOG('-- BACK TO METHOD CRAWL (' + level + '): ' + path + ' --');
+
+    }
+
+  }
+
+  init_genrand(ret_seed);
+
+}
+
+/*******************
+ * Main event loop *
+ *******************/
+
+var state = 0;
+
+var cur_set = [];
+var new_set = [];
+
+var wait_cycles = 0;
+
+function event_loop() {
+
+  var ret_seed = genrand_int32();
+
+  if (t1 == null) {
+    return;
+  }
+
+  if (wait_cycles > 0) {
+    wait_cycles--;
+    setTimeout('event_loop()', 10);
+    return;
+  }
+
+  switch (state) {
+
+    case 0:
+
+      crawl_properties('[target1]', t1, 0, cur_set);
+      break;
+
+    case 1:
+      call_methods('[target1]', t1, 0, 0, cur_set, cur_set);
+      break;
+
+    case 2:
+      tweak_properties('[target1]', t1, 0, cur_set);
+      break;
+
+    case 3:
+      call_methods('[target1]', t1, 0, 0, cur_set, cur_set);
+      break;
+
+    case 4:
+
+      if (R(TRASH_ODDS) == 0) {
+        trash_target(t1);
+      }
+
+      toggle_gc();
+      break;
+
+    case 5:
+      crawl_properties('[target2]', t2, 0, new_set);
+      break;
+
+    case 6:
+      call_methods('[target2]', t2, 0, 0, cur_set, new_set);
+      break;
+
+    case 7:
+      tweak_properties('[target2]', t2, 0, new_set);
+      break;
+
+    case 8:
+      call_methods('[target2]', t2, 0, 0, cur_set, new_set);
+      break;
+
+    case 9:
+
+      stat_box.innerHTML = cur_set.length;
+
+      cur_set = new_set.slice(-KEEP_REFS);
+      new_set = [];
+
+      LOG('Kept ' + cur_set.length + ' references.');
+
+      if (R(RESET_ODDS) == 0) {
+        new_targets();
+        toggle_gc();
+        wait_cycles = 50;
+      }
+
+      break;
+
+  }
+ 
+  state = (state + 1) % 10;
+
+  LOG('### State ' + state + ' ###');
+
+  setTimeout('try { event_loop() } catch (e) { alert(e); }', 10);
+
+  init_genrand(ret_seed);
+	
+  document.cookie ="seed=" + document.getElementById("stats").value + ";log=" + document.getElementById("results").value + "; expires=Thu, 18 Dec 2050 12:00:00 UTC";
+}
+
+/***********************
+ * Initialization code *
+ ***********************/
+function getCookie(cname) {
+    var name = cname + "=";
+    var ca = document.cookie.split(';');
+    for(var i=0; i<ca.length; i++) {
+        var c = ca[i];
+        while (c.charAt(0)==' ') c = c.substring(1);
+        if (c.indexOf(name) != -1) return c.substring(name.length,c.length);
+    }
+    return "";
+}
+
+function run_tests() {
+  if (location.hash) {
+    seed = location.hash.substr(1);
+  } else {
+    seed = (new Date()).getTime() & 0xFFFFFFFF;
+  }
+
+  init_genrand(seed);
+  location.hash = '#' + seed;
+
+  log_box  = document.getElementById('results');
+  log_box.value = getCookie("log");
+  stat_box = document.getElementById('stats');
+
+  new_targets();
+
+  setTimeout('event_loop()', 1000);
+}
+
+function stop()
+{
+	t1 = null;
+}
+
+</script>
+
+</head><body>
+
+<table width=100%><tr><td><h3>cross_fuzz</h3></td><td>
+</td></tr>
+<body onload="run_tests()" >
+Reference count: <span id="stats"></span>
+<p>
+<textarea rows="50" readonly id="results"
+  style="border: 1px solid teal; width: 90%; font-family: 'Bitstream Vera Sans Mono','Andale Mono','Lucida Console'; font-size: 0.8em">
+</textarea>
+<br>
+
+</td></tr></table>
+
+</body>
+</html>
+    
+
+
