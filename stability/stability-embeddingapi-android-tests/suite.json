@@ -1,0 +1,44 @@
+{
+    "pkg-blacklist": [
+        "pack.py",
+        "testcase.xsl",
+        "testresult.xsl",
+        "tests.css",
+        "icon.png",
+        "manifest.json",
+        "suite.json",
+        "inst.*"
+    ],
+    "pkg-list": {
+        "apk": {
+            "blacklist": [
+                "*"
+            ],
+            "copylist": {
+                "inst.apk.py": "inst.py",
+                "tests.full.xml": "tests.full.xml",
+                "tests.xml": "tests.xml"
+            },
+            "pkg-app": {}
+        },
+        "embeddingapi": {
+            "blacklist": [
+                "*"
+            ], 
+            "copylist": {
+                "inst.em.py": "inst.py"
+            }, 
+            "subapp-list": {
+                "testapp": {
+                    "app-name": "views_maximum_test", 
+                    "app-type": "EMBEDDINGAPI", 
+                    "embeddingapi-library-name": "crosswalk-webview"
+                }
+            }
+        },
+        "apk-aio": {
+            "blacklist": []
+        }
+    },
+    "pkg-name": "stability-embeddingapi-android-tests"
+}
