@@ -41,7 +41,12 @@ Authors:
 <script>
   test(function () {
     assert_true("Storage" in window);
-    var storageEvent = new StorageEvent("StorageEvent");
+    var storageEvent = new StorageEvent("StorageEvent", {
+                                        key : "key",
+                                        oldValue : "oldValue",
+                                        newValue : "newValue",
+                                        url : "url",
+                                        storageArea : localStorage});
     assert_equals(typeof storageEvent.key, "string")
   }, "Check if StorageEvent.key is of type string");
 </script>

@@ -35,7 +35,7 @@ Authors:
 <meta charset="utf-8">
 <title>WebStorage Test: StorageEvent_constructor_no_key</title>
 <link rel="author" title="Intel" href="http://www.intel.com" >
-<link rel="help" href="http://www.w3.org/TR/2011/CR-webstorage-20111208/#dom-storageevent-key" >
+<link rel="help" href="http://dev.w3.org/html5/webstorage/#the-storageevent-interface" >
 <script src="../resources/testharness.js"></script>
 <script src="../resources/testharnessreport.js"></script>
 <div id="log"></div>
@@ -47,9 +47,9 @@ Authors:
                                newValue : "newValue",
                                url : "url",
                                storageArea : store});
-      assert_equals(storageEvent.key, "");
+      assert_equals(storageEvent.key, null);
     }
     RunTest(localStorage);
     RunTest(sessionStorage);
-  }, "Check if the value of StorageEvent.key is empty string when StorageEvent's constructor no key");
+  }, "Check if the value of StorageEvent.key is null when StorageEvent's constructor no key");
 </script>

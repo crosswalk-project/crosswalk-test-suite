@@ -1683,7 +1683,7 @@
           </spec>
         </specs>
       </testcase>
-      <testcase component="W3C_HTML5 APIs/Storage/Web Storage" execution_type="auto" id="StorageEvent_constructor_no_key" priority="P3" purpose="Check if the value of StorageEvent.key is empty string when StorageEvent's constructor no key" status="approved" type="compliance">
+      <testcase component="W3C_HTML5 APIs/Storage/Web Storage" execution_type="auto" id="StorageEvent_constructor_no_key" priority="P3" purpose="Check if the value of StorageEvent.key is null when StorageEvent's constructor no key" status="approved" type="compliance">
         <description>
           <test_script_entry>/opt/tct-webstorage-w3c-tests/webstorage/StorageEvent_constructor_no_key.html</test_script_entry>
         </description>
@@ -1746,18 +1746,6 @@
       <testcase component="W3C_HTML5 APIs/Storage/Web Storage" execution_type="auto" id="StorageEvent_constructor_url_undefined" priority="P3" purpose="Check if the value of StorageEvent.url is 'undefined' when set it undefined" status="approved" type="compliance">
         <description>
           <test_script_entry>/opt/tct-webstorage-w3c-tests/webstorage/StorageEvent_constructor_url_undefined.html</test_script_entry>
-        </description>
-        <specs>
-          <spec>
-            <spec_assertion category="Tizen W3C API Specifications" interface="StorageEvent" section="Storage" specification="Web Storage (Partial)" usage="true"/>
-            <spec_url>http://www.w3.org/TR/2011/CR-webstorage-20111208/#storageevent</spec_url>
-            <spec_statement/>
-          </spec>
-        </specs>
-      </testcase>
-      <testcase component="W3C_HTML5 APIs/Storage/Web Storage" execution_type="auto" id="StorageEvent_key_initial_value" priority="P3" purpose="Check if the initial value of StorageEvent.key is empty string" status="approved" type="compliance">
-        <description>
-          <test_script_entry>/opt/tct-webstorage-w3c-tests/webstorage/StorageEvent_key_initial_value.html</test_script_entry>
         </description>
         <specs>
           <spec>
@@ -2170,18 +2158,6 @@
         <specs>
           <spec>
             <spec_assertion category="Tizen W3C API Specifications" element_name="removeItem" element_type="method" interface="Storage" section="Storage" specification="Web Storage (Partial)"/>
-            <spec_url>http://www.w3.org/TR/2013/REC-webstorage-20130730/#storage-0</spec_url>
-            <spec_statement/>
-          </spec>
-        </specs>
-      </testcase>
-      <testcase component="W3C_HTML5 APIs/Storage/Web Storage" execution_type="auto" id="storage_local_security" priority="P2" purpose="Check if localStorage access to the API for pages from other domains running in iframes is security" status="ready" type="compliance">
-        <description>
-          <test_script_entry>/opt/tct-webstorage-w3c-tests/webstorage/w3c/storage_local_security.html</test_script_entry>
-        </description>
-        <specs>
-          <spec>
-            <spec_assertion category="Tizen W3C API Specifications" element_name="getItem" element_type="method" interface="Storage" section="Storage" specification="Web Storage (Partial)"/>
             <spec_url>http://www.w3.org/TR/2013/REC-webstorage-20130730/#storage-0</spec_url>
             <spec_statement/>
           </spec>
