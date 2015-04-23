@@ -659,14 +659,9 @@ def packCordova(build_json=None, app_src=None, app_dest=None, app_name=None):
     os.chdir(orig_dir)
     return True
 
-def packEmbeddingAPI_sub(
+def packEmbeddingAPI_ant(
         build_json=None, app_src=None, app_dest=None, app_name=None, app_version=None):
     app_name = app_name.replace("-", "_")
-    if app_version:
-        replaceUserString(app_src,'AndroidManifest.xml','org.xwalk.embedding.test',"org.xwalk.embedding.test." + app_version)
-        replaceUserString(app_src,'AndroidManifest.xml','EmbeddingApiTestUnit',"EmbeddingApiTestUnit" + app_version)
-        main_dest = os.path.join(app_src, "src/org/xwalk/embedding")
-        replaceUserString(main_dest,'MainActivity.java','org.xwalk.embedding.test', "org.xwalk.embedding.test." + app_version)
 
     library_dir_name = safelyGetValue(build_json, "embeddingapi-library-name")
     if not library_dir_name:
@@ -769,6 +764,65 @@ def packEmbeddingAPI_sub(
     os.chdir(orig_dir)
     return True
 
+def packEmbeddingAPI_gradle(build_json=None, app_src=None, app_dest=None, app_name=None, app_version=None):
+    app_name = app_name.replace("-", "_")
+    orig_dir = os.getcwd()
+    LOG.info("app_src: %s" % app_src)
+    LOG.info("app_dest: %s" % app_dest)
+    os.chdir(app_src)
+    if not doCMD("gradle build"):
+        os.chdir("..")
+        return False
+    if BUILD_PARAMETERS.pkgarch and BUILD_PARAMETERS.pkgarch == "arm":
+        if not doCopy(
+            os.path.join(app_src, "build", "outputs", "apk", "%s-armv7-debug.apk" % app_name),
+            os.path.join(app_dest, "%s.apk" % app_name)):
+            return False
+    else:
+        if not doCopy(
+            os.path.join(app_src, "build", "outputs", "apk", "%s-x86-debug.apk" % app_name),
+            os.path.join(app_dest, "%s.apk" % app_name)):
+            return False
+    os.chdir(orig_dir)
+    return True
+
+def packEmbeddingAPI_maven(build_json=None, app_src=None, app_dest=None, app_name=None, app_version=None):
+    app_name = app_name.replace("-", "_")
+    orig_dir = os.getcwd()
+    LOG.info("app_src: %s" % app_src)
+    LOG.info("app_dest: %s" % app_dest)
+    os.chdir(app_src)
+    replaceUserString(app_src,'AndroidManifest.xml','android:versionCode=\"1\"','android:versionCode=\"${app.version.code}\"')
+    replaceUserString(app_src,'AndroidManifest.xml','android:versionName=\"1.0\"','android:versionName=\"${app.version.name}\"')
+    if not doCopy(
+        os.path.join(app_src, "AndroidManifest.xml"), os.path.join(app_src, "src", "main", "AndroidManifest.xml")):
+        return False
+    if not doCopy(
+        os.path.join(app_src, "res"), os.path.join(app_src, "src", "main", "res")):
+        return False
+    if not doCopy(
+        os.path.join(app_src, "assets"), os.path.join(app_src, "src", "main", "assets")):
+        return False
+    if not doCopy(
+        os.path.join(app_src, "src", "org"), os.path.join(app_src, "src", "main", "java", "org")):
+        return False
+    if BUILD_PARAMETERS.pkgarch and BUILD_PARAMETERS.pkgarch == "arm":
+        if not doCMD("mvn clean install -Px86"):
+            return False
+        if not doCopy(
+            os.path.join(app_src, "target", "%s-armv7-debug.apk" % app_name),
+            os.path.join(app_dest, "%s.apk" % app_name)):
+            return False
+    else:
+        if not doCMD("mvn clean install -Parm"):
+            return False
+        if not doCopy(
+            os.path.join(app_src, "target", "%s-x86-debug.apk" % app_name),
+            os.path.join(app_dest, "%s.apk" % app_name)):
+            return False
+    os.chdir(orig_dir)
+    return True
+
 def packAPP(build_json=None, app_src=None, app_dest=None, app_name=None):
     LOG.info("Packing %s(%s)" % (app_name, app_src))
     if not os.path.exists(app_dest):
@@ -795,8 +849,20 @@ def packAPP(build_json=None, app_src=None, app_dest=None, app_name=None):
         if "_" in app_name:
             index_flag = app_name.index("_")
             app_version = app_name[index_flag + 1 : ]
-        if not packEmbeddingAPI_sub(build_json, app_src, app_dest, app_name, app_version):
-            return False
+        if app_version:
+            replaceUserString(app_src,'AndroidManifest.xml','org.xwalk.embedding.test',"org.xwalk.embedding.test." + app_version)
+            replaceUserString(app_src,'AndroidManifest.xml','EmbeddingApiTestUnit',"EmbeddingApiTestUnit" + app_version)
+            main_dest = os.path.join(app_src, "src/org/xwalk/embedding")
+            replaceUserString(main_dest,'MainActivity.java','org.xwalk.embedding.test', "org.xwalk.embedding.test." + app_version)
+        if BUILD_PARAMETERS.packtype and checkContains(BUILD_PARAMETERS.packtype, "GRADLE"):
+            if not packEmbeddingAPI_gradle(build_json, app_src, app_dest, app_name, app_version):
+                return False
+        elif BUILD_PARAMETERS.packtype and checkContains(BUILD_PARAMETERS.packtype, "MAVEN"):
+            if not packEmbeddingAPI_maven(build_json, app_src, app_dest, app_name, app_version):
+                return False
+        else:
+            if not packEmbeddingAPI_sub(build_json, app_src, app_dest, app_name, app_version):
+                return False
     else:
         LOG.error("Got wrong pkg type: %s" % BUILD_PARAMETERS.pkgtype)
         return False
@@ -1004,6 +1070,10 @@ def main():
             "--pkg-version",
             dest="pkgversion",
             help="specify the pkg version, e.g. 0.0.0.1")
+        opts_parser.add_option(
+            "--pack-type",
+            dest="packtype",
+            help="specify the pack type, e.g. gradle, maven")
 
         if len(sys.argv) == 1:
             sys.argv.append("-h")
@@ -1169,11 +1239,13 @@ def main():
         if (BUILD_PARAMETERS.subversion == '3.6' or not BUILD_PARAMETERS.subversion) and BUILD_PARAMETERS.pkgarch:
             LOG.error("Command -a is not for cordova version 3.6")
             sys.exit(1)
-
-    if BUILD_PARAMETERS.subversion:
-        if BUILD_PARAMETERS.pkgtype == "embeddingapi":
+    
+    if BUILD_PARAMETERS.pkgtype == "embeddingapi":
+        if BUILD_PARAMETERS.packtype and not BUILD_PARAMETERS.packtype in PACK_TYPES: 
+            LOG.error("embeddingapi packtype can only be gradle, maven or ant")
+            sys.exit(1)
+        if BUILD_PARAMETERS.subversion:
             BUILD_PARAMETERS.pkgtype = BUILD_PARAMETERS.pkgtype + BUILD_PARAMETERS.subversion
-        LOG.info("BUILD_PARAMETERS.pkgtype: %s" % BUILD_PARAMETERS.pkgtype)
     
     all_pkg_string = "".join(config_json["pkg-list"].keys())
     if parameters_type and parameters_type in all_pkg_string:
@@ -1220,7 +1292,7 @@ def main():
              pkg_release_version,
              BUILD_PARAMETERS.subversion,
              BUILD_PARAMETERS.pkgtype))
-        
+
         LOG.info("pkg_file: %s" % pkg_file)
         if not zipDir(os.path.join(BUILD_ROOT, "pkg"), pkg_file):
             exitHandler(1)
@@ -1232,7 +1304,7 @@ def main():
              pkg_main_version,
              pkg_release_version,
              BUILD_PARAMETERS.pkgtype))
-        
+
         if not zipDir(os.path.join(BUILD_ROOT, "pkg"), pkg_file):
             exitHandler(1)
 

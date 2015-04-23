@@ -1,0 +1,152 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+  <modelVersion>4.0.0</modelVersion>
+
+  <groupId>com.example.xwalkEmbedd</groupId>
+  <artifactId>xwalk-aar-example</artifactId>
+  <version>1.0.0-SNAPSHOT</version>
+  <packaging>apk</packaging>
+
+  <name>Library Projects - AAR Consumption </name>
+
+  <repositories>
+      <repository>
+       <releases>
+         <enabled>true</enabled>
+         <updatePolicy>always</updatePolicy>
+         <checksumPolicy>fail</checksumPolicy>
+      </releases>
+      <id>fujunwei</id>
+      <url>https://download.01.org/crosswalk/releases/crosswalk/android/maven2</url>
+      <layout>default</layout>
+      <snapshots>
+        <enabled>true</enabled>
+      </snapshots>
+     </repository>
+  </repositories>
+
+  <dependencies>
+    <dependency>
+      <groupId>android</groupId>
+      <artifactId>android</artifactId>
+      <version>4.4.2_r3</version>
+      <scope>provided</scope>
+    </dependency>
+  </dependencies>
+
+  <build>
+    <sourceDirectory>src/main/java</sourceDirectory>
+    <finalName>${project.artifactId}-${project.version}-${profile-id}</finalName>
+    <resources>
+        <!-- filter manifest and put filtered file in target/filtered-manifest/ -->
+    <resource>
+      <directory>${project.basedir}</directory>
+      <filtering>true</filtering>
+      <targetPath>${project.build.directory}/filtered-manifest</targetPath>
+      <includes>
+        <include>src/main/AndroidManifest.xml</include>
+      </includes>
+    </resource>
+    </resources>
+
+    <pluginManagement>
+      <plugins>
+        <plugin>
+          <groupId>com.jayway.maven.plugins.android.generation2</groupId>
+          <artifactId>android-maven-plugin</artifactId>
+          <version>4.0.0-SNAPSHOT</version>           
+          <extensions>true</extensions>
+            <configuration>
+            <undeployBeforeDeploy>true</undeployBeforeDeploy>
+            <!-- tell build process to use filtered manifest -->
+            <androidManifestFile>target/filtered-manifest/AndroidManifest.xml</androidManifestFile>
+          </configuration>
+        </plugin>
+      </plugins>
+        
+    </pluginManagement>
+    <plugins>
+      <plugin>
+        <groupId>com.jayway.maven.plugins.android.generation2</groupId>
+        <artifactId>android-maven-plugin</artifactId>
+        <extensions>true</extensions>
+        <configuration>
+            <undeployBeforeDeploy>true</undeployBeforeDeploy>
+            <!-- tell build process to use filtered manifest -->
+            <androidManifestFile>${project.build.directory}/filtered-manifest/src/main/AndroidManifest.xml</androidManifestFile>
+      </configuration>
+      </plugin>
+        <plugin>
+            <groupId>org.apache.maven.plugins</groupId>
+            <artifactId>maven-compiler-plugin</artifactId>
+            <configuration>
+                <source>1.6</source>
+                <target>1.6</target>
+                <encoding>UTF8</encoding>
+            </configuration>
+        </plugin>
+      <plugin>
+            <groupId>org.apache.maven.plugins</groupId>
+            <artifactId>maven-resources-plugin</artifactId>
+            <version>2.6</version>
+            <executions>
+                <execution>
+                    <phase>initialize</phase>
+                    <goals>
+                        <goal>resources</goal>
+                    </goals>
+                </execution>
+            </executions>
+        </plugin>
+     <!--plugin>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-surefire-plugin</artifactId>
+        <configuration>
+          <argLine>-Xmx512m -XX:MaxPermSize=128m</argLine>
+          <testFailureIgnore>true</testFailureIgnore>
+        </configuration>
+      </plugin-->
+    </plugins>
+  </build>
+
+<profiles>
+    <profile>
+        <id>x86</id>
+        <activation>
+            <activeByDefault>true</activeByDefault>
+        </activation>
+        <dependencies>
+            <dependency>
+              <groupId>org.xwalk</groupId>
+              <artifactId>xwalk_core_library_beta</artifactId>
+              <version>9.38.208.8</version>
+              <classifier>x86</classifier>
+              <type>aar</type>
+            </dependency>
+        </dependencies>
+        <properties>
+            <profile-id>x86</profile-id>
+            <app.version.code>1</app.version.code>
+            <app.version.name>1.0.0-SNAPSHOT</app.version.name>
+        </properties>
+    </profile>
+
+    <profile>
+        <id>arm</id>
+        <dependencies>
+            <dependency>
+              <groupId>org.xwalk</groupId>
+              <artifactId>xwalk_core_library_beta</artifactId>
+              <version>9.38.208.8</version>
+              <classifier>arm</classifier>
+              <type>aar</type>
+            </dependency>
+        </dependencies>
+        <properties>
+            <profile-id>arm</profile-id>
+            <app.version.code>2</app.version.code>
+            <app.version.name>1.0.0-SNAPSHOT</app.version.name>
+        </properties>
+    </profile>
+</profiles>
+</project>
