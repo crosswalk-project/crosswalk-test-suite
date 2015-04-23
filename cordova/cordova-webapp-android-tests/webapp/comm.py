@@ -51,9 +51,10 @@ def setUp():
         sys.exit(1)
 
     f_arch = open(const_path + "/../arch.txt", 'r')
-    if f_arch.read().strip("\n\t") == "arm":
+    arch_tmp = f_arch.read()
+    if arch_tmp.strip("\n\t") == "arm":
         ARCH = "arm"
-    elif f_arch.read().strip("\n\t") == "x86":
+    elif arch_tmp.strip("\n\t") == "x86":
         ARCH = "x86"
     else:
         print (" get arch error, the content of arch.txt should be 'arm' or 'x86'\n")
@@ -61,9 +62,10 @@ def setUp():
     f_arch.close()
 
     f_mode = open(const_path + "/../mode.txt", 'r')
-    if f_mode.read().strip("\n\t") == "shared":
+    mode_tmp = f_mode.read()
+    if mode_tmp.strip("\n\t") == "shared":
         MODE = "shared"
-    elif f_mode.read().strip("\n\t") == "embedded":
+    elif mode_tmp.strip("\n\t") == "embedded":
         MODE = "embedded"
     else:
         print (" get mode error, the content of mode.txt should be 'shared' or 'embedded'\n")
