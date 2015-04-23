@@ -27,59 +27,31 @@ EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
 Authors:
         Yin, Haichao <haichaox.yin@intel.com>
+        Xu, Kang <kangx.xu@intel.com>
 
 -->
 
 <meta charset="utf-8">
-<title>ExternalURL</title>
-<link rel="author" title="Intel" href="http://www.intel.com">
-<script src="js/jquery.js"></script>
-<script src="js/main.js" defer></script>
-<style>
-  #content {
-    text-align: center;
-    margin-top:50px;
-    height: 300px;
-  }
-  #operate {
-    text-align: left;
-    margin: 10px auto;
-    margin-top:50px;
-    width: 80%;
-  }
-  .content{
-    border: 1px solid #000;
-    height: 200px;
-    margin: 10px auto;
-    width: 80%;
-  }
-  button {
-    width: 80%;
-    height: 30px;
-    margin: 5px auto;
-  }
-  input {
-    width: 80%;
-    height: 30px;
-    margin: 5px auto;
-  }
-</style>
-<body>
-  <div id="operate">
-    <ol>
-    <p>Validate open static external URL in system browser and open static internal URL in app windows itself</p>
-    <li>Click the link "Internal URL". </li>
-    <li>Click the link "External URL". </li>
-    </ol>
-  </div>
-  <div id="content">
-    static internal URL(http) <a href="http://www.baidu.com">Internal URL</a>
-  <br>
-    static internal URL(https) <a href="https://www.tenpay.com">Internal URL</a>
-  <br>
-    static external URL(http) <a href="http://www.sina.com">External URL</a>
-  <br>
-    static external URL(https) <a href="https://ibsbjstar.ccb.com.cn/app/V5/CN/STY1/login.jsp">External URL</a>
-  </div>
-</body>
 
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Runtime Test: External URL</title>
+  </head>
+  <body>
+    <div>
+      <a href="https://crosswalk-project.org/">Internal URL</a><br>
+      <a href="http://www.baidu.com">External URL</a>
+    </div>
+    <h2>Test Steps:</h2>
+    <ol>
+      <li>Click "Internal URL" link</li>
+      <li>Click "External URL" link</li>
+    </ol> 
+    <h2>Expected Result:</h2>
+    <ol>
+      <li>URL should be opened in app window self</li>
+      <li>URL should be opened in browser</li>
+    </ol> 
+  </body>
+</html>
