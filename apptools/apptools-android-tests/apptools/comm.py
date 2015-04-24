@@ -54,7 +54,7 @@ def setUp():
         ARCH = "x86"
     fp.close()
 
-    PackTools = ConstPath +  "/../tools/crosswalk-app-tools/bin/"
+    PackTools = ConstPath +  "/../tools/crosswalk-app-tools/src/"
 
     XwalkPath = ConstPath + "/../tools/"
     if "crosswalk-app-tools" not in os.listdir(XwalkPath):
