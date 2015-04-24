@@ -40,7 +40,7 @@ ConstPath = os.path.dirname(SCRIPT_PATH)
 def setUp():
     global  XwalkPath, PackTools 
 
-    PackTools = ConstPath +  "/../tools/crosswalk-app-tools/bin/"
+    PackTools = ConstPath +  "/../tools/crosswalk-app-tools/src/"
 
     XwalkPath = ConstPath + "/../tools/"
     if "crosswalk-app-tools" not in os.listdir(XwalkPath):
