@@ -16,13 +16,13 @@ import android.test.suitebuilder.annotation.SmallTest;
 public class XWalkUIClientTest extends XWalkViewTestBase {
 
     @SmallTest
-    public void testOnCreateWindowRequested_open_self() {
+    public void testOnCreateWindowRequested_open_blank() {
         try {
             final String url = "file:///android_asset/window_create_open.html";
             loadUrlSync(url);
             OnCreateWindowRequestedHelper mOnCreateWindowRequestedHelper = mTestHelperBridge.getOnCreateWindowRequestedHelper();
             int count = mOnCreateWindowRequestedHelper.getCallCount();
-            clickOnElementId("create_window_open_self",null);
+            clickOnElementId("create_window_open_blank",null);
             mOnCreateWindowRequestedHelper.waitForCallback(count);
             assertTrue(mOnCreateWindowRequestedHelper.getCalled());
         } catch (Exception e) {
@@ -32,77 +32,13 @@ public class XWalkUIClientTest extends XWalkViewTestBase {
     }
 
     @SmallTest
-    public void testOnCreateWindowRequested_open_parent() {
+    public void testOnCreateWindowRequested_navigate_blank() {
         try {
             final String url = "file:///android_asset/window_create_open.html";
             loadUrlSync(url);
             OnCreateWindowRequestedHelper mOnCreateWindowRequestedHelper = mTestHelperBridge.getOnCreateWindowRequestedHelper();
             int count = mOnCreateWindowRequestedHelper.getCallCount();
-            clickOnElementId("create_window_open_parent",null);
-            mOnCreateWindowRequestedHelper.waitForCallback(count);
-            assertTrue(mOnCreateWindowRequestedHelper.getCalled());
-        } catch (Exception e) {
-            assertTrue(false);
-            e.printStackTrace();
-        }
-    }
-
-    @SmallTest
-    public void testOnCreateWindowRequested_open_top() {
-        try {
-            final String url = "file:///android_asset/window_create_open.html";
-            loadUrlSync(url);
-            OnCreateWindowRequestedHelper mOnCreateWindowRequestedHelper = mTestHelperBridge.getOnCreateWindowRequestedHelper();
-            int count = mOnCreateWindowRequestedHelper.getCallCount();
-            clickOnElementId("create_window_open_top",null);
-            mOnCreateWindowRequestedHelper.waitForCallback(count);
-            assertTrue(mOnCreateWindowRequestedHelper.getCalled());
-        } catch (Exception e) {
-            assertTrue(false);
-            e.printStackTrace();
-        }
-    }
-
-    @SmallTest
-    public void testOnCreateWindowRequested_navigate_self() {
-        try {
-            final String url = "file:///android_asset/window_create_open.html";
-            loadUrlSync(url);
-            OnCreateWindowRequestedHelper mOnCreateWindowRequestedHelper = mTestHelperBridge.getOnCreateWindowRequestedHelper();
-            int count = mOnCreateWindowRequestedHelper.getCallCount();
-            clickOnElementId("create_window_a_self",null);
-            mOnCreateWindowRequestedHelper.waitForCallback(count);
-            assertTrue(mOnCreateWindowRequestedHelper.getCalled());
-        } catch (Exception e) {
-            assertTrue(false);
-            e.printStackTrace();
-        }
-    }
-
-    @SmallTest
-    public void testOnCreateWindowRequested_navigate_parent() {
-        try {
-            final String url = "file:///android_asset/window_create_open.html";
-            loadUrlSync(url);
-            OnCreateWindowRequestedHelper mOnCreateWindowRequestedHelper = mTestHelperBridge.getOnCreateWindowRequestedHelper();
-            int count = mOnCreateWindowRequestedHelper.getCallCount();
-            clickOnElementId("create_window_a_parent",null);
-            mOnCreateWindowRequestedHelper.waitForCallback(count);
-            assertTrue(mOnCreateWindowRequestedHelper.getCalled());
-        } catch (Exception e) {
-            assertTrue(false);
-            e.printStackTrace();
-        }
-    }
-
-    @SmallTest
-    public void testOnCreateWindowRequested_navigate_top() {
-        try {
-            final String url = "file:///android_asset/window_create_open.html";
-            loadUrlSync(url);
-            OnCreateWindowRequestedHelper mOnCreateWindowRequestedHelper = mTestHelperBridge.getOnCreateWindowRequestedHelper();
-            int count = mOnCreateWindowRequestedHelper.getCallCount();
-            clickOnElementId("create_window_a_top",null);
+            clickOnElementId("create_window_a_blank",null);
             mOnCreateWindowRequestedHelper.waitForCallback(count);
             assertTrue(mOnCreateWindowRequestedHelper.getCalled());
         } catch (Exception e) {
