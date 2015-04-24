@@ -3,139 +3,325 @@
 <test_definition>
   <suite category="W3C/HTML5 APIs" name="tct-batterystatus-w3c-tests">
     <set name="Battery" type="js">
-      <testcase component="W3C_HTML5 APIs/Device/Battery Status API" execution_type="auto" id="Navigator_getBattery" purpose="Check if the Navigator.getBattery exists and return BatteryManager object">
-        <description>
-          <test_script_entry>/opt/tct-batterystatus-w3c-tests/batterystatus/Navigator_getBattery.html</test_script_entry>
-        </description>
-      </testcase>
-      <testcase component="W3C_HTML5 APIs/Device/Battery Status API" execution_type="auto" id="BatteryManager_charging" purpose="Check if the BatteryManager.charging attribute exists, readonly and typeof boolean">
-        <description>
-          <test_script_entry>/opt/tct-batterystatus-w3c-tests/batterystatus/BatteryManager_charging.html</test_script_entry>
-        </description>
-      </testcase>
-      <testcase component="W3C_HTML5 APIs/Device/Battery Status API" execution_type="auto" id="BatteryManager_chargingTime" purpose="Check if the BatteryManager.chargingTime attribute exists, readonly and typeof number">
-        <description>
-          <test_script_entry>/opt/tct-batterystatus-w3c-tests/batterystatus/BatteryManager_chargingTime.html</test_script_entry>
-        </description>
-      </testcase>
-      <testcase component="W3C_HTML5 APIs/Device/Battery Status API" execution_type="auto" id="BatteryManager_dischargingTime" purpose="Check if the BatteryManager.dischargingTime attribute exists, readonly and typeof number">
-        <description>
-          <test_script_entry>/opt/tct-batterystatus-w3c-tests/batterystatus/BatteryManager_dischargingTime.html</test_script_entry>
-        </description>
-      </testcase>
-      <testcase component="W3C_HTML5 APIs/Device/Battery Status API" execution_type="auto" id="BatteryManager_level" purpose="Check if the BatteryManager.level attribute exists, readonly and typeof number">
-        <description>
-          <test_script_entry>/opt/tct-batterystatus-w3c-tests/batterystatus/BatteryManager_level.html</test_script_entry>
-        </description>
-      </testcase>
-      <testcase component="W3C_HTML5 APIs/Device/Battery Status API" execution_type="auto" id="BatteryManager_onchargingchange" purpose="Check if the BatteryManager.onchargingchange attribute exists and typeof object">
-        <description>
-          <test_script_entry>/opt/tct-batterystatus-w3c-tests/batterystatus/BatteryManager_onchargingchange.html</test_script_entry>
-        </description>
-      </testcase>
-      <testcase component="W3C_HTML5 APIs/Device/Battery Status API" execution_type="auto" id="BatteryManager_onchargingtimechange" purpose="Check if the BatteryManager.onchargingtimechange attribute exists and typeof object">
-        <description>
-          <test_script_entry>/opt/tct-batterystatus-w3c-tests/batterystatus/BatteryManager_onchargingtimechange.html</test_script_entry>
-        </description>
-      </testcase>
-      <testcase component="W3C_HTML5 APIs/Device/Battery Status API" execution_type="auto" id="BatteryManager_ondischargingtimechange" purpose="Check if the BatteryManager.ondischargingtimechange attribute exists and typeof object">
-        <description>
-          <test_script_entry>/opt/tct-batterystatus-w3c-tests/batterystatus/BatteryManager_ondischargingtimechange.html</test_script_entry>
-        </description>
-      </testcase>
-      <testcase component="W3C_HTML5 APIs/Device/Battery Status API" execution_type="auto" id="BatteryManager_onlevelchange" purpose="Check if the BatteryManager.onlevelchange attribute exists and typeof object">
-        <description>
-          <test_script_entry>/opt/tct-batterystatus-w3c-tests/batterystatus/BatteryManager_onlevelchange.html</test_script_entry>
-        </description>
-      </testcase>
-      <testcase component="W3C_HTML5 APIs/Device/Battery Status API" execution_type="manual" id="BatteryManager_charging_charging" purpose="Check if the BatteryManager.charging attribute must be set to true when the battery is charging">
+      <testcase component="W3C_HTML5 APIs/Device/Battery Status API" execution_type="manual" id="battery-charging-manual" purpose="Check if all of the BatteryManager attributes exist and are set to their correct values when battery is charging">
         <description>
           <pre_condition>
             1. The device is plugged in to the charger before this test is run.
             2. The battery must neither be empty or full, nor reach empty or full capacity during the test.
+            3. Waiting for battery level change to fire levelchange event, maybe need a long time.
           </pre_condition>
-          <test_script_entry>/opt/tct-batterystatus-w3c-tests/batterystatus/BatteryManager_charging_charging.html</test_script_entry>
+          <test_script_entry>/opt/tct-batterystatus-w3c-tests/batterystatus/w3c/battery-charging-manual.html</test_script_entry>
         </description>
       </testcase>
-      <testcase component="W3C_HTML5 APIs/Device/Battery Status API" execution_type="manual" id="BatteryManager_charging_dischargingTime" purpose="Check if the BatteryManager.dischargingTime attribute must be set to the value positive Infinity when the battery is charging">
+      <testcase component="W3C_HTML5 APIs/Device/Battery Status API" execution_type="manual" id="battery-created-manual" purpose="Check if all of the BatteryManager attributes exist and are set to their default values">
         <description>
           <pre_condition>
-            1. The device is plugged in to the charger before this test is run.
-            2. The battery must neither be empty or full, nor reach empty or full capacity during the test.
+            1. The implementation is unable to report the battery's charging state, charging time, level or remaining time respectively.
+            2. The device is unplugged from the charger before this test case is run.
           </pre_condition>
-          <test_script_entry>/opt/tct-batterystatus-w3c-tests/batterystatus/BatteryManager_charging_dischargingTime.html</test_script_entry>
+          <test_script_entry>/opt/tct-batterystatus-w3c-tests/batterystatus/w3c/battery-created-manual.html</test_script_entry>
         </description>
       </testcase>
-      <testcase component="W3C_HTML5 APIs/Device/Battery Status API" execution_type="manual" id="BatteryManager_charging_level" purpose="Check if the BatteryManager.level attribute must be set to the current battery level scaled from 0 to 1.0 when the battery is charging">
-        <description>
-          <pre_condition>
-            1. The device is plugged in to the charger before this test is run.
-            2. The battery must neither be empty or full, nor reach empty or full capacity during the test.
-          </pre_condition>
-          <test_script_entry>/opt/tct-batterystatus-w3c-tests/batterystatus/BatteryManager_charging_level.html</test_script_entry>
-        </description>
-      </testcase>
-      <testcase component="W3C_HTML5 APIs/Device/Battery Status API" execution_type="manual" id="BatteryManager_discharging_charging" purpose="Check if the BatteryManager.charging attribute must be set to false when the battery is discharging">
+      <testcase component="W3C_HTML5 APIs/Device/Battery Status API" execution_type="manual" id="battery-discharging-manual" purpose="Check if all of the BatteryManager attributes exist and are set to their correct values when battery is discharging">
         <description>
           <pre_condition>
             1. The device is unplugged from the charger before this test is run.
             2. The battery must neither be empty or full, nor reach empty or full capacity during the test.
+            2. Waiting for battery level change to fire levelchange event, maybe need a long time.
           </pre_condition>
-          <test_script_entry>/opt/tct-batterystatus-w3c-tests/batterystatus/BatteryManager_discharging_charging.html</test_script_entry>
+          <test_script_entry>/opt/tct-batterystatus-w3c-tests/batterystatus/w3c/battery-discharging-manual.html</test_script_entry>
         </description>
       </testcase>
-      <testcase component="W3C_HTML5 APIs/Device/Battery Status API" execution_type="manual" id="BatteryManager_discharging_chargingTime" purpose="Check if the BatteryManager.chargingTime attribute must be set to the value positive Infinity when the battery is discharging">
+      <testcase component="W3C_HTML5 APIs/Device/Battery Status API" execution_type="manual" id="battery-full-manual" purpose="Check if all of the BatteryManager attributes exist and are set to their correct values when battery is full">
+        <description>
+          <pre_condition>
+            1. The device is plugged in to the charger before this test is run.
+            2. The battery is full.
+          </pre_condition>
+          <test_script_entry>/opt/tct-batterystatus-w3c-tests/batterystatus/w3c/battery-full-manual.html</test_script_entry>
+        </description>
+      </testcase>
+      <testcase component="W3C_HTML5 APIs/Device/Battery Status API" execution_type="manual" id="battery-plugging-in-manual" purpose="Check if validates that all of the BatteryManager attributes exist and are set to correct values, with corresponding events fired, when the charger is plugged in.">
         <description>
           <pre_condition>
             1. The device is unplugged from the charger before this test is run.
-            2. The battery must neither be empty or full, nor reach empty or full capacity during the test.
+            2. The battery must not be full or reach full capacity during the time the test is run.
           </pre_condition>
-          <test_script_entry>/opt/tct-batterystatus-w3c-tests/batterystatus/BatteryManager_discharging_chargingTime.html</test_script_entry>
+          <test_script_entry>/opt/tct-batterystatus-w3c-tests/batterystatus/w3c/battery-plugging-in-manual.html</test_script_entry>
         </description>
       </testcase>
-      <testcase component="W3C_HTML5 APIs/Device/Battery Status API" execution_type="manual" id="BatteryManager_discharging_level" purpose="Check if the BatteryManager.level attribute must be set to the current battery level scaled from 0 to 1.0 when the battery is discharging">
-        <description>
-          <pre_condition>
-            1. The device is unplugged from the charger before this test is run.
-            2. The battery must neither be empty or full, nor reach empty or full capacity during the test.
-          </pre_condition>
-          <test_script_entry>/opt/tct-batterystatus-w3c-tests/batterystatus/BatteryManager_discharging_level.html</test_script_entry>
-        </description>
-      </testcase>
-      <testcase component="W3C_HTML5 APIs/Device/Battery Status API" execution_type="manual" id="BatteryManager_full_charging" purpose="Check if the BatteryManager.charging attribute must be set to true when the battery is full">
+      <testcase component="W3C_HTML5 APIs/Device/Battery Status API" execution_type="manual" id="battery-unplugging-manual" purpose="Check if that all of the BatteryManager attributes exist and are set to correct values, with corresponding events fired, when the charger is unplugged.">
         <description>
           <pre_condition>
             1. The device is plugged in to the charger before this test is run.
-            2. The battery is full.
+            2. The battery must not be full or reach full capacity during the time the test is run.
           </pre_condition>
-          <test_script_entry>/opt/tct-batterystatus-w3c-tests/batterystatus/BatteryManager_full_charging.html</test_script_entry>
+          <test_script_entry>/opt/tct-batterystatus-w3c-tests/batterystatus/w3c/battery-unplugging-manual.html</test_script_entry>
         </description>
       </testcase>
-      <testcase component="W3C_HTML5 APIs/Device/Battery Status API" execution_type="manual" id="BatteryManager_full_chargingTime" purpose="Check if the BatteryManager.chargingTime attribute must be set to 0 when the battery is full">
+      <testcase component="W3C_HTML5 APIs/Device/Battery Status API" execution_type="auto" id="battery-promise_entry1" purpose="Check if navigator.getBattery() shall always return the same promise">
         <description>
-          <pre_condition>
-            1. The device is plugged in to the charger before this test is run.
-            2. The battery is full.
-          </pre_condition>
-          <test_script_entry>/opt/tct-batterystatus-w3c-tests/batterystatus/BatteryManager_full_chargingTime.html</test_script_entry>
+          <test_script_entry>/opt/tct-batterystatus-w3c-tests/batterystatus/w3c/battery-promise.html?total_num=2&amp;amp;locator_key=id&amp;amp;value=1</test_script_entry>
         </description>
       </testcase>
-      <testcase component="W3C_HTML5 APIs/Device/Battery Status API" execution_type="manual" id="BatteryManager_full_dischargingTime" purpose="Check if the BatteryManager.dischargingTime attribute must be set to the value positive Infinity when the battery is full">
+      <testcase component="W3C_HTML5 APIs/Device/Battery Status API" execution_type="auto" id="battery-promise_entry2" purpose="Check if that all of the BatteryManager attributes exist and are set to correct values, with corresponding events fired, when the charger is unplugged.">
         <description>
-          <pre_condition>
-            1. The device is plugged in to the charger before this test is run.
-            2. The battery is full.
-          </pre_condition>
-          <test_script_entry>/opt/tct-batterystatus-w3c-tests/batterystatus/BatteryManager_full_dischargingTime.html</test_script_entry>
+          <test_script_entry>/opt/tct-batterystatus-w3c-tests/batterystatus/w3c/battery-promise.html?total_num=2&amp;amp;locator_key=id&amp;amp;value=2</test_script_entry>
         </description>
       </testcase>
-      <testcase component="W3C_HTML5 APIs/Device/Battery Status API" execution_type="manual" id="BatteryManager_full_level" purpose="Check if the BatteryManager.level attribute must be set to the value 1.0 when the battery is full">
+      <testcase component="W3C_HTML5 APIs/Device/Battery Status API" execution_type="auto" id="battery-interface_entry1" purpose="Check if getBattery is present on navigator">
         <description>
-          <pre_condition>
-            1. The device is plugged in to the charger before this test is run.
-            2. The battery is full.
-          </pre_condition>
-          <test_script_entry>/opt/tct-batterystatus-w3c-tests/batterystatus/BatteryManager_full_level.html</test_script_entry>
+          <test_script_entry>/opt/tct-batterystatus-w3c-tests/batterystatus/w3c/battery-interface.html?total_num=51&amp;amp;locator_key=id&amp;amp;value=1</test_script_entry>
+        </description>
+      </testcase>
+      <testcase component="W3C_HTML5 APIs/Device/Battery Status API" execution_type="auto" id="battery-interface_entry2" purpose="Check if window has an own property BatteryManager">
+        <description>
+          <test_script_entry>/opt/tct-batterystatus-w3c-tests/batterystatus/w3c/battery-interface.html?total_num=51&amp;amp;locator_key=id&amp;amp;value=2</test_script_entry>
+        </description>
+      </testcase>
+      <testcase component="W3C_HTML5 APIs/Device/Battery Status API" execution_type="auto" id="battery-interface_entry3" purpose="Check if battery inherits from EventTarget">
+        <description>
+          <test_script_entry>/opt/tct-batterystatus-w3c-tests/batterystatus/w3c/battery-interface.html?total_num=51&amp;amp;locator_key=id&amp;amp;value=3</test_script_entry>
+        </description>
+      </testcase>
+      <testcase component="W3C_HTML5 APIs/Device/Battery Status API" execution_type="auto" id="battery-interface_entry4" purpose="Check if charging attribute exists">
+        <description>
+          <test_script_entry>/opt/tct-batterystatus-w3c-tests/batterystatus/w3c/battery-interface.html?total_num=51&amp;amp;locator_key=id&amp;amp;value=4</test_script_entry>
+        </description>
+      </testcase>
+      <testcase component="W3C_HTML5 APIs/Device/Battery Status API" execution_type="auto" id="battery-interface_entry5" purpose="Check if charging attribute is readonly">
+        <description>
+          <test_script_entry>/opt/tct-batterystatus-w3c-tests/batterystatus/w3c/battery-interface.html?total_num=51&amp;amp;locator_key=id&amp;amp;value=5</test_script_entry>
+        </description>
+      </testcase>
+      <testcase component="W3C_HTML5 APIs/Device/Battery Status API" execution_type="auto" id="battery-interface_entry6" purpose="Check if chargingTime attribute exists">
+        <description>
+          <test_script_entry>/opt/tct-batterystatus-w3c-tests/batterystatus/w3c/battery-interface.html?total_num=51&amp;amp;locator_key=id&amp;amp;value=6</test_script_entry>
+        </description>
+      </testcase>
+      <testcase component="W3C_HTML5 APIs/Device/Battery Status API" execution_type="auto" id="battery-interface_entry7" purpose="Check if chargingTime attribute is readonly">
+        <description>
+          <test_script_entry>/opt/tct-batterystatus-w3c-tests/batterystatus/w3c/battery-interface.html?total_num=51&amp;amp;locator_key=id&amp;amp;value=7</test_script_entry>
+        </description>
+      </testcase>
+      <testcase component="W3C_HTML5 APIs/Device/Battery Status API" execution_type="auto" id="battery-interface_entry8" purpose="Check if dischargingTime attribute exists">
+        <description>
+          <test_script_entry>/opt/tct-batterystatus-w3c-tests/batterystatus/w3c/battery-interface.html?total_num=51&amp;amp;locator_key=id&amp;amp;value=8</test_script_entry>
+        </description>
+      </testcase>
+      <testcase component="W3C_HTML5 APIs/Device/Battery Status API" execution_type="auto" id="battery-interface_entry9" purpose="Check if dischargingTime attribute is readonly">
+        <description>
+          <test_script_entry>/opt/tct-batterystatus-w3c-tests/batterystatus/w3c/battery-interface.html?total_num=51&amp;amp;locator_key=id&amp;amp;value=9</test_script_entry>
+        </description>
+      </testcase>
+      <testcase component="W3C_HTML5 APIs/Device/Battery Status API" execution_type="auto" id="battery-interface_entry10" purpose="Check if level attribute exists">
+        <description>
+          <test_script_entry>/opt/tct-batterystatus-w3c-tests/batterystatus/w3c/battery-interface.html?total_num=51&amp;amp;locator_key=id&amp;amp;value=10</test_script_entry>
+        </description>
+      </testcase>
+      <testcase component="W3C_HTML5 APIs/Device/Battery Status API" execution_type="auto" id="battery-interface_entry11" purpose="Check if level attribute is readonly">
+        <description>
+          <test_script_entry>/opt/tct-batterystatus-w3c-tests/batterystatus/w3c/battery-interface.html?total_num=51&amp;amp;locator_key=id&amp;amp;value=11</test_script_entry>
+        </description>
+      </testcase>
+      <testcase component="W3C_HTML5 APIs/Device/Battery Status API" execution_type="auto" id="battery-interface_entry12" purpose="Check if onchargingchange attribute exists">
+        <description>
+          <test_script_entry>/opt/tct-batterystatus-w3c-tests/batterystatus/w3c/battery-interface.html?total_num=51&amp;amp;locator_key=id&amp;amp;value=12</test_script_entry>
+        </description>
+      </testcase>
+      <testcase component="W3C_HTML5 APIs/Device/Battery Status API" execution_type="auto" id="battery-interface_entry13" purpose="Check if onchargingchange is null">
+        <description>
+          <test_script_entry>/opt/tct-batterystatus-w3c-tests/batterystatus/w3c/battery-interface.html?total_num=51&amp;amp;locator_key=id&amp;amp;value=13</test_script_entry>
+        </description>
+      </testcase>
+      <testcase component="W3C_HTML5 APIs/Device/Battery Status API" execution_type="auto" id="battery-interface_entry14" purpose="Check if onchargingchange is set to function">
+        <description>
+          <test_script_entry>/opt/tct-batterystatus-w3c-tests/batterystatus/w3c/battery-interface.html?total_num=51&amp;amp;locator_key=id&amp;amp;value=14</test_script_entry>
+        </description>
+      </testcase>
+      <testcase component="W3C_HTML5 APIs/Device/Battery Status API" execution_type="auto" id="battery-interface_entry15" purpose="Check if onchargingchange: treat object as null">
+        <description>
+          <test_script_entry>/opt/tct-batterystatus-w3c-tests/batterystatus/w3c/battery-interface.html?total_num=51&amp;amp;locator_key=id&amp;amp;value=15</test_script_entry>
+        </description>
+      </testcase>
+      <testcase component="W3C_HTML5 APIs/Device/Battery Status API" execution_type="auto" id="battery-interface_entry16" purpose="Check if onchargingchange: treat object with non-callable call property as null">
+        <description>
+          <test_script_entry>/opt/tct-batterystatus-w3c-tests/batterystatus/w3c/battery-interface.html?total_num=51&amp;amp;locator_key=id&amp;amp;value=16</test_script_entry>
+        </description>
+      </testcase>
+      <testcase component="W3C_HTML5 APIs/Device/Battery Status API" execution_type="auto" id="battery-interface_entry17" purpose="Check if onchargingchange: treat string as null">
+        <description>
+          <test_script_entry>/opt/tct-batterystatus-w3c-tests/batterystatus/w3c/battery-interface.html?total_num=51&amp;amp;locator_key=id&amp;amp;value=17</test_script_entry>
+        </description>
+      </testcase>
+      <testcase component="W3C_HTML5 APIs/Device/Battery Status API" execution_type="auto" id="battery-interface_entry18" purpose="Check if onchargingchange: treat number as null">
+        <description>
+          <test_script_entry>/opt/tct-batterystatus-w3c-tests/batterystatus/w3c/battery-interface.html?total_num=51&amp;amp;locator_key=id&amp;amp;value=18</test_script_entry>
+        </description>
+      </testcase>
+      <testcase component="W3C_HTML5 APIs/Device/Battery Status API" execution_type="auto" id="battery-interface_entry19" purpose="Check if onchargingchange: treat undefined as null">
+        <description>
+          <test_script_entry>/opt/tct-batterystatus-w3c-tests/batterystatus/w3c/battery-interface.html?total_num=51&amp;amp;locator_key=id&amp;amp;value=19</test_script_entry>
+        </description>
+      </testcase>
+      <testcase component="W3C_HTML5 APIs/Device/Battery Status API" execution_type="auto" id="battery-interface_entry20" purpose="Check if onchargingchange: treat array as null">
+        <description>
+          <test_script_entry>/opt/tct-batterystatus-w3c-tests/batterystatus/w3c/battery-interface.html?total_num=51&amp;amp;locator_key=id&amp;amp;value=20</test_script_entry>
+        </description>
+      </testcase>
+      <testcase component="W3C_HTML5 APIs/Device/Battery Status API" execution_type="auto" id="battery-interface_entry21" purpose="Check if onchargingtimechange attribute exists">
+        <description>
+          <test_script_entry>/opt/tct-batterystatus-w3c-tests/batterystatus/w3c/battery-interface.html?total_num=51&amp;amp;locator_key=id&amp;amp;value=21</test_script_entry>
+        </description>
+      </testcase>
+      <testcase component="W3C_HTML5 APIs/Device/Battery Status API" execution_type="auto" id="battery-interface_entry22" purpose="Check if onchargingtimechange is null">
+        <description>
+          <test_script_entry>/opt/tct-batterystatus-w3c-tests/batterystatus/w3c/battery-interface.html?total_num=51&amp;amp;locator_key=id&amp;amp;value=22</test_script_entry>
+        </description>
+      </testcase>
+      <testcase component="W3C_HTML5 APIs/Device/Battery Status API" execution_type="auto" id="battery-interface_entry23" purpose="Check if onchargingtimechange is set to function">
+        <description>
+          <test_script_entry>/opt/tct-batterystatus-w3c-tests/batterystatus/w3c/battery-interface.html?total_num=51&amp;amp;locator_key=id&amp;amp;value=23</test_script_entry>
+        </description>
+      </testcase>
+      <testcase component="W3C_HTML5 APIs/Device/Battery Status API" execution_type="auto" id="battery-interface_entry24" purpose="Check if onchargingtimechange: treat object as null">
+        <description>
+          <test_script_entry>/opt/tct-batterystatus-w3c-tests/batterystatus/w3c/battery-interface.html?total_num=51&amp;amp;locator_key=id&amp;amp;value=24</test_script_entry>
+        </description>
+      </testcase>
+      <testcase component="W3C_HTML5 APIs/Device/Battery Status API" execution_type="auto" id="battery-interface_entry25" purpose="Check if onchargingtimechange: treat object with non-callable call property as null">
+        <description>
+          <test_script_entry>/opt/tct-batterystatus-w3c-tests/batterystatus/w3c/battery-interface.html?total_num=51&amp;amp;locator_key=id&amp;amp;value=25</test_script_entry>
+        </description>
+      </testcase>
+      <testcase component="W3C_HTML5 APIs/Device/Battery Status API" execution_type="auto" id="battery-interface_entry26" purpose="Check if onchargingtimechange: treat string as null">
+        <description>
+          <test_script_entry>/opt/tct-batterystatus-w3c-tests/batterystatus/w3c/battery-interface.html?total_num=51&amp;amp;locator_key=id&amp;amp;value=26</test_script_entry>
+        </description>
+      </testcase>
+      <testcase component="W3C_HTML5 APIs/Device/Battery Status API" execution_type="auto" id="battery-interface_entry27" purpose="Check if onchargingtimechange: treat number as null">
+        <description>
+          <test_script_entry>/opt/tct-batterystatus-w3c-tests/batterystatus/w3c/battery-interface.html?total_num=51&amp;amp;locator_key=id&amp;amp;value=27</test_script_entry>
+        </description>
+      </testcase>
+      <testcase component="W3C_HTML5 APIs/Device/Battery Status API" execution_type="auto" id="battery-interface_entry28" purpose="Check if onchargingtimechange: treat undefined as null">
+        <description>
+          <test_script_entry>/opt/tct-batterystatus-w3c-tests/batterystatus/w3c/battery-interface.html?total_num=51&amp;amp;locator_key=id&amp;amp;value=28</test_script_entry>
+        </description>
+      </testcase>
+      <testcase component="W3C_HTML5 APIs/Device/Battery Status API" execution_type="auto" id="battery-interface_entry29" purpose="Check if onchargingtimechange: treat array as null">
+        <description>
+          <test_script_entry>/opt/tct-batterystatus-w3c-tests/batterystatus/w3c/battery-interface.html?total_num=51&amp;amp;locator_key=id&amp;amp;value=29</test_script_entry>
+        </description>
+      </testcase>
+      <testcase component="W3C_HTML5 APIs/Device/Battery Status API" execution_type="auto" id="battery-interface_entry30" purpose="Check if ondischargingtimechange attribute exists">
+        <description>
+          <test_script_entry>/opt/tct-batterystatus-w3c-tests/batterystatus/w3c/battery-interface.html?total_num=51&amp;amp;locator_key=id&amp;amp;value=30</test_script_entry>
+        </description>
+      </testcase>
+      <testcase component="W3C_HTML5 APIs/Device/Battery Status API" execution_type="auto" id="battery-interface_entry31" purpose="Check if ondischargingtimechange is null">
+        <description>
+          <test_script_entry>/opt/tct-batterystatus-w3c-tests/batterystatus/w3c/battery-interface.html?total_num=51&amp;amp;locator_key=id&amp;amp;value=31</test_script_entry>
+        </description>
+      </testcase>
+      <testcase component="W3C_HTML5 APIs/Device/Battery Status API" execution_type="auto" id="battery-interface_entry32" purpose="Check if ondischargingtimechange is set to function">
+        <description>
+          <test_script_entry>/opt/tct-batterystatus-w3c-tests/batterystatus/w3c/battery-interface.html?total_num=51&amp;amp;locator_key=id&amp;amp;value=32</test_script_entry>
+        </description>
+      </testcase>
+      <testcase component="W3C_HTML5 APIs/Device/Battery Status API" execution_type="auto" id="battery-interface_entry33" purpose="Check if ondischargingtimechange: treat object as null">
+        <description>
+          <test_script_entry>/opt/tct-batterystatus-w3c-tests/batterystatus/w3c/battery-interface.html?total_num=51&amp;amp;locator_key=id&amp;amp;value=33</test_script_entry>
+        </description>
+      </testcase>
+      <testcase component="W3C_HTML5 APIs/Device/Battery Status API" execution_type="auto" id="battery-interface_entry34" purpose="Check if ondischargingtimechange: treat object with non-callable call property as null">
+        <description>
+          <test_script_entry>/opt/tct-batterystatus-w3c-tests/batterystatus/w3c/battery-interface.html?total_num=51&amp;amp;locator_key=id&amp;amp;value=34</test_script_entry>
+        </description>
+      </testcase>
+      <testcase component="W3C_HTML5 APIs/Device/Battery Status API" execution_type="auto" id="battery-interface_entry35" purpose="Check if ondischargingtimechange: treat string as null">
+        <description>
+          <test_script_entry>/opt/tct-batterystatus-w3c-tests/batterystatus/w3c/battery-interface.html?total_num=51&amp;amp;locator_key=id&amp;amp;value=35</test_script_entry>
+        </description>
+      </testcase>
+      <testcase component="W3C_HTML5 APIs/Device/Battery Status API" execution_type="auto" id="battery-interface_entry36" purpose="Check if ondischargingtimechange: treat number as null">
+        <description>
+          <test_script_entry>/opt/tct-batterystatus-w3c-tests/batterystatus/w3c/battery-interface.html?total_num=51&amp;amp;locator_key=id&amp;amp;value=36</test_script_entry>
+        </description>
+      </testcase>
+      <testcase component="W3C_HTML5 APIs/Device/Battery Status API" execution_type="auto" id="battery-interface_entry37" purpose="Check if ondischargingtimechange: treat undefined as null">
+        <description>
+          <test_script_entry>/opt/tct-batterystatus-w3c-tests/batterystatus/w3c/battery-interface.html?total_num=51&amp;amp;locator_key=id&amp;amp;value=37</test_script_entry>
+        </description>
+      </testcase>
+      <testcase component="W3C_HTML5 APIs/Device/Battery Status API" execution_type="auto" id="battery-interface_entry38" purpose="Check if ondischargingtimechange: treat array as null">
+        <description>
+          <test_script_entry>/opt/tct-batterystatus-w3c-tests/batterystatus/w3c/battery-interface.html?total_num=51&amp;amp;locator_key=id&amp;amp;value=38</test_script_entry>
+        </description>
+      </testcase>
+      <testcase component="W3C_HTML5 APIs/Device/Battery Status API" execution_type="auto" id="battery-interface_entry39" purpose="Check if onlevelchange attribute exists">
+        <description>
+          <test_script_entry>/opt/tct-batterystatus-w3c-tests/batterystatus/w3c/battery-interface.html?total_num=51&amp;amp;locator_key=id&amp;amp;value=39</test_script_entry>
+        </description>
+      </testcase>
+      <testcase component="W3C_HTML5 APIs/Device/Battery Status API" execution_type="auto" id="battery-interface_entry40" purpose="Check if onlevelchange is null">
+        <description>
+          <test_script_entry>/opt/tct-batterystatus-w3c-tests/batterystatus/w3c/battery-interface.html?total_num=51&amp;amp;locator_key=id&amp;amp;value=40</test_script_entry>
+        </description>
+      </testcase>
+      <testcase component="W3C_HTML5 APIs/Device/Battery Status API" execution_type="auto" id="battery-interface_entry41" purpose="Check if onlevelchange is set to function">
+        <description>
+          <test_script_entry>/opt/tct-batterystatus-w3c-tests/batterystatus/w3c/battery-interface.html?total_num=51&amp;amp;locator_key=id&amp;amp;value=41</test_script_entry>
+        </description>
+      </testcase>
+      <testcase component="W3C_HTML5 APIs/Device/Battery Status API" execution_type="auto" id="battery-interface_entry42" purpose="Check if onlevelchange: treat object as null">
+        <description>
+          <test_script_entry>/opt/tct-batterystatus-w3c-tests/batterystatus/w3c/battery-interface.html?total_num=51&amp;amp;locator_key=id&amp;amp;value=42</test_script_entry>
+        </description>
+      </testcase>
+      <testcase component="W3C_HTML5 APIs/Device/Battery Status API" execution_type="auto" id="battery-interface_entry43" purpose="Check if onlevelchange: treat object with non-callable call property as null">
+        <description>
+          <test_script_entry>/opt/tct-batterystatus-w3c-tests/batterystatus/w3c/battery-interface.html?total_num=51&amp;amp;locator_key=id&amp;amp;value=43</test_script_entry>
+        </description>
+      </testcase>
+      <testcase component="W3C_HTML5 APIs/Device/Battery Status API" execution_type="auto" id="battery-interface_entry44" purpose="Check if onlevelchange: treat string as null">
+        <description>
+          <test_script_entry>/opt/tct-batterystatus-w3c-tests/batterystatus/w3c/battery-interface.html?total_num=51&amp;amp;locator_key=id&amp;amp;value=44</test_script_entry>
+        </description>
+      </testcase>
+      <testcase component="W3C_HTML5 APIs/Device/Battery Status API" execution_type="auto" id="battery-interface_entry45" purpose="Check if onlevelchange: treat number as null">
+        <description>
+          <test_script_entry>/opt/tct-batterystatus-w3c-tests/batterystatus/w3c/battery-interface.html?total_num=51&amp;amp;locator_key=id&amp;amp;value=45</test_script_entry>
+        </description>
+      </testcase>
+      <testcase component="W3C_HTML5 APIs/Device/Battery Status API" execution_type="auto" id="battery-interface_entry46" purpose="Check if onlevelchange: treat undefined as null">
+        <description>
+          <test_script_entry>/opt/tct-batterystatus-w3c-tests/batterystatus/w3c/battery-interface.html?total_num=51&amp;amp;locator_key=id&amp;amp;value=46</test_script_entry>
+        </description>
+      </testcase>
+      <testcase component="W3C_HTML5 APIs/Device/Battery Status API" execution_type="auto" id="battery-interface_entry47" purpose="Check if onlevelchange: treat array as null">
+        <description>
+          <test_script_entry>/opt/tct-batterystatus-w3c-tests/batterystatus/w3c/battery-interface.html?total_num=51&amp;amp;locator_key=id&amp;amp;value=47</test_script_entry>
+        </description>
+      </testcase>
+      <testcase component="W3C_HTML5 APIs/Device/Battery Status API" execution_type="auto" id="battery-interface_entry48" purpose="Check if onlevelchange: treat non-callable host object as null">
+        <description>
+          <test_script_entry>/opt/tct-batterystatus-w3c-tests/batterystatus/w3c/battery-interface.html?total_num=51&amp;amp;locator_key=id&amp;amp;value=48</test_script_entry>
+        </description>
+      </testcase>
+      <testcase component="W3C_HTML5 APIs/Device/Battery Status API" execution_type="auto" id="battery-interface_entry49" purpose="Check if ondischargingtimechange: treat non-callable host object as null">
+        <description>
+          <test_script_entry>/opt/tct-batterystatus-w3c-tests/batterystatus/w3c/battery-interface.html?total_num=51&amp;amp;locator_key=id&amp;amp;value=49</test_script_entry>
+        </description>
+      </testcase>
+      <testcase component="W3C_HTML5 APIs/Device/Battery Status API" execution_type="auto" id="battery-interface_entry50" purpose="Check if onchargingtimechange: treat non-callable host object as null">
+        <description>
+          <test_script_entry>/opt/tct-batterystatus-w3c-tests/batterystatus/w3c/battery-interface.html?total_num=51&amp;amp;locator_key=id&amp;amp;value=50</test_script_entry>
+        </description>
+      </testcase>
+      <testcase component="W3C_HTML5 APIs/Device/Battery Status API" execution_type="auto" id="battery-interface_entry51" purpose="Check if onchargingchange: treat non-callable host object as null">
+        <description>
+          <test_script_entry>/opt/tct-batterystatus-w3c-tests/batterystatus/w3c/battery-interface.html?total_num=51&amp;amp;locator_key=id&amp;amp;value=51</test_script_entry>
         </description>
       </testcase>
     </set>
