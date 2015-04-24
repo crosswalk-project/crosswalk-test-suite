@@ -26,12 +26,12 @@ NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE,
 EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
 Authors:
-        Wang, Hongjuan <hongjuanx.wang@intel.com>
+        Yun, Liu<yunx.liu@intel.com>
 
 -->
 
 <meta charset="utf-8">
-<title>AppTools_Download</title>
+<title>Update_CurrentVersion</title>
 <link rel="author" title="Intel" href="http://www.intel.com">
 <body>
   <p>
@@ -39,8 +39,12 @@ Authors:
   </p>
   <ol>
     <li>If org.xwalk.test exists in apptools-android-tests/tools/ directory, remove it <br/>
-        Then run below commands to build project under apptools-android-tests/tools/ directory: <br/>
+        Then run below commands to update Crosswalk with current version under apptools-android-tests/tools/ directory: <br/>
         $ ./crosswalk-app-tools/bin/crosswalk-app create org.xwalk.test <br/>
+        $ cd org.xwalk.test <br/>
+        $ ./bin/crosswalk-app update 13.42.319.7 <br/>
+        Then run below commands when update Crosswalk successfully <br/>
+        $ ./bin/crosswalk-app update 13.42.319.7 <br/>
         Check the output message on the terminal
     </li>
   </ol>
@@ -48,7 +52,7 @@ Authors:
     <strong>Expected Results:</strong>
   </p>
   <ol>
-    <li>Display a progerss indication when downloading the crosswalk library and create the project successfully</li>
+    <li>Display current project version already is 13.42.319.7, and not download Crosswalk again</li>
   </ol>
 </body>
 

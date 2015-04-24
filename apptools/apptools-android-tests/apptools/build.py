@@ -75,5 +75,17 @@ class TestCrosswalkApptoolsFunctions(unittest.TestCase):
         comm.run(self)
         comm.clear("org.xwalk.test")
 
+    def test_build_missing_both_so_file(self):
+        comm.setUp()
+        comm.create(self)
+        os.chdir('org.xwalk.test')
+        os.remove(os.getcwd() + '/prj/android/xwalk_core_library/libs/armeabi-v7a/libxwalkcore.so')
+        os.remove(os.getcwd() + '/prj/android/xwalk_core_library/libs/x86/libxwalkcore.so')
+        buildcmd =  comm.PackTools + "crosswalk-app build"
+        buildstatus = commands.getstatusoutput(buildcmd)
+        comm.run(self)
+        comm.clear("org.xwalk.test")
+        self.assertEquals(buildstatus[0], 1)
+
 if __name__ == '__main__':
     unittest.main()

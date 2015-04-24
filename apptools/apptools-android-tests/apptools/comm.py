@@ -27,6 +27,7 @@
 #
 # Authors:
 #         Hongjuan, Wang<hongjuanx.wang@intel.com>
+#         Yun, Liu<yunx.liu@intel.com>
 
 import os
 import sys
@@ -107,6 +108,18 @@ def build(self, cmd):
                 self.assertIn("x86", apks[i-1])
             else:
                 self.assertIn("x86", apks[i+1])
+
+def update(self, cmd):
+    updatestatus = commands.getstatusoutput(cmd)
+    self.assertEquals(updatestatus[0], 0)
+    self.assertNotIn("ERROR:", updatestatus[1])
+    namelist = os.listdir(os.getcwd())
+    i = 0
+    for i in range(len(namelist)):
+        if namelist[i].endswith(".zip") and namelist[i].startswith("crosswalk-"):
+            i = i + 1
+    self.assertTrue(i >= 1)
+    return updatestatus[1].split('\n')[-1].split(' ')[-1]
 
 def run(self):
     setUp()

@@ -26,29 +26,24 @@
 # EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 #
 # Authors:
-#         Hongjuan, Wang<hongjuanx.wang@intel.com>
+#         Yun, Liu<yunx.liu@intel.com>
 
 import unittest
 import os
-import commands
 import comm
-import shutil
+import commands
+import urllib2
+import json
 
 class TestCrosswalkApptoolsFunctions(unittest.TestCase):
-
-    def test_normal_with_downloadCrosswalk(self):
+    def test_version_normal(self):
         comm.setUp()
-        comm.clear("org.xwalk.test")
         os.chdir(comm.XwalkPath)
-        old_list = os.listdir(os.getcwd())
-        cmd = comm.PackTools + "crosswalk-app create org.xwalk.test"
-        packstatus = commands.getstatusoutput(cmd)
-        comm.clear("org.xwalk.test")
-        new_list = os.listdir(os.getcwd())
-        zipName =  set(new_list) - set(old_list)
-        for i in zipName:
-            comm.clear(i)
-        self.assertEquals(packstatus[0], 0)
+        cmd = comm.PackTools + "crosswalk-app version"
+        versionstatus = commands.getstatusoutput(cmd)
+        with open(comm.ConstPath + "/../tools/crosswalk-app-tools/package.json") as json_file:
+            data = json.load(json_file)
+        self.assertEquals(data['version'].strip("\n\t"), versionstatus[1].strip("\n\t"))
 
 if __name__ == '__main__':
     unittest.main()
