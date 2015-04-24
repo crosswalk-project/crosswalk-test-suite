@@ -41,7 +41,7 @@
           <pre_condition>
             1. The device is unplugged from the charger before this test is run.
             2. The battery must neither be empty or full, nor reach empty or full capacity during the test.
-            2. Waiting for battery level change to fire levelchange event, maybe need a long time.
+            3. Waiting for battery level change to fire levelchange event, maybe need a long time.
           </pre_condition>
           <test_script_entry>/opt/tct-batterystatus-w3c-tests/batterystatus/w3c/battery-discharging-manual.html</test_script_entry>
         </description>
@@ -101,7 +101,7 @@
           </spec>
         </specs>
       </testcase>
-      <testcase purpose="Check if navigator.getBattery() shall always return the same promise" type="compliance" status="approved" component="W3C_HTML5 APIs/Device/Battery Status API" execution_type="auto" priority="P2" id="battery-promise_entry1">
+      <testcase purpose="Check if that all of the BatteryManager attributes exist and are set to correct values, with corresponding events fired, when the charger is unplugged." type="compliance" status="approved" component="W3C_HTML5 APIs/Device/Battery Status API" execution_type="auto" priority="P2" id="battery-promise_entry1">
         <description>
           <test_script_entry>/opt/tct-batterystatus-w3c-tests/batterystatus/w3c/battery-promise.html?total_num=2&amp;amp;locator_key=id&amp;amp;value=1</test_script_entry>
         </description>
@@ -113,7 +113,7 @@
           </spec>
         </specs>
       </testcase>
-      <testcase purpose="Check if that all of the BatteryManager attributes exist and are set to correct values, with corresponding events fired, when the charger is unplugged." type="compliance" status="approved" component="W3C_HTML5 APIs/Device/Battery Status API" execution_type="auto" priority="P2" id="battery-promise_entry2">
+      <testcase purpose="Check if navigator.getBattery() shall always return the same promise" type="compliance" status="approved" component="W3C_HTML5 APIs/Device/Battery Status API" execution_type="auto" priority="P2" id="battery-promise_entry2">
         <description>
           <test_script_entry>/opt/tct-batterystatus-w3c-tests/batterystatus/w3c/battery-promise.html?total_num=2&amp;amp;locator_key=id&amp;amp;value=2</test_script_entry>
         </description>
@@ -127,7 +127,7 @@
       </testcase>
       <testcase purpose="Check if getBattery is present on navigator" type="compliance" status="approved" component="W3C_HTML5 APIs/Device/Battery Status API" execution_type="auto" priority="P1" id="battery-interface_entry1">
         <description>
-          <test_script_entry>/opt/tct-batterystatus-w3c-tests/batterystatus/w3c/battery-interface.html?total_num=51&amp;amp;locator_key=id&amp;amp;value=1</test_script_entry>
+          <test_script_entry>/opt/tct-batterystatus-w3c-tests/batterystatus/w3c/battery-interface.html?total_num=47&amp;amp;locator_key=id&amp;amp;value=1</test_script_entry>
         </description>
         <specs>
           <spec>
@@ -139,7 +139,7 @@
       </testcase>
       <testcase purpose="Check if window has an own property BatteryManager" type="compliance" status="approved" component="W3C_HTML5 APIs/Device/Battery Status API" execution_type="auto" priority="P1" id="battery-interface_entry2">
         <description>
-          <test_script_entry>/opt/tct-batterystatus-w3c-tests/batterystatus/w3c/battery-interface.html?total_num=51&amp;amp;locator_key=id&amp;amp;value=2</test_script_entry>
+          <test_script_entry>/opt/tct-batterystatus-w3c-tests/batterystatus/w3c/battery-interface.html?total_num=47&amp;amp;locator_key=id&amp;amp;value=2</test_script_entry>
         </description>
         <specs>
           <spec>
@@ -151,7 +151,7 @@
       </testcase>
       <testcase purpose="Check if battery inherits from EventTarget" type="compliance" status="approved" component="W3C_HTML5 APIs/Device/Battery Status API" execution_type="auto" priority="P1" id="battery-interface_entry3">
         <description>
-          <test_script_entry>/opt/tct-batterystatus-w3c-tests/batterystatus/w3c/battery-interface.html?total_num=51&amp;amp;locator_key=id&amp;amp;value=3</test_script_entry>
+          <test_script_entry>/opt/tct-batterystatus-w3c-tests/batterystatus/w3c/battery-interface.html?total_num=47&amp;amp;locator_key=id&amp;amp;value=3</test_script_entry>
         </description>
         <specs>
           <spec>
@@ -163,7 +163,7 @@
       </testcase>
       <testcase purpose="Check if charging attribute exists" type="compliance" status="approved" component="W3C_HTML5 APIs/Device/Battery Status API" execution_type="auto" priority="P1" id="battery-interface_entry4">
         <description>
-          <test_script_entry>/opt/tct-batterystatus-w3c-tests/batterystatus/w3c/battery-interface.html?total_num=51&amp;amp;locator_key=id&amp;amp;value=4</test_script_entry>
+          <test_script_entry>/opt/tct-batterystatus-w3c-tests/batterystatus/w3c/battery-interface.html?total_num=47&amp;amp;locator_key=id&amp;amp;value=4</test_script_entry>
         </description>
         <specs>
           <spec>
@@ -175,7 +175,7 @@
       </testcase>
       <testcase purpose="Check if charging attribute is readonly" type="compliance" status="approved" component="W3C_HTML5 APIs/Device/Battery Status API" execution_type="auto" priority="P1" id="battery-interface_entry5">
         <description>
-          <test_script_entry>/opt/tct-batterystatus-w3c-tests/batterystatus/w3c/battery-interface.html?total_num=51&amp;amp;locator_key=id&amp;amp;value=5</test_script_entry>
+          <test_script_entry>/opt/tct-batterystatus-w3c-tests/batterystatus/w3c/battery-interface.html?total_num=47&amp;amp;locator_key=id&amp;amp;value=5</test_script_entry>
         </description>
         <specs>
           <spec>
@@ -187,7 +187,7 @@
       </testcase>
       <testcase purpose="Check if chargingTime attribute exists" type="compliance" status="approved" component="W3C_HTML5 APIs/Device/Battery Status API" execution_type="auto" priority="P1" id="battery-interface_entry6">
         <description>
-          <test_script_entry>/opt/tct-batterystatus-w3c-tests/batterystatus/w3c/battery-interface.html?total_num=51&amp;amp;locator_key=id&amp;amp;value=6</test_script_entry>
+          <test_script_entry>/opt/tct-batterystatus-w3c-tests/batterystatus/w3c/battery-interface.html?total_num=47&amp;amp;locator_key=id&amp;amp;value=6</test_script_entry>
         </description>
         <specs>
           <spec>
@@ -199,7 +199,7 @@
       </testcase>
       <testcase purpose="Check if chargingTime attribute is readonly" type="compliance" status="approved" component="W3C_HTML5 APIs/Device/Battery Status API" execution_type="auto" priority="P1" id="battery-interface_entry7">
         <description>
-          <test_script_entry>/opt/tct-batterystatus-w3c-tests/batterystatus/w3c/battery-interface.html?total_num=51&amp;amp;locator_key=id&amp;amp;value=7</test_script_entry>
+          <test_script_entry>/opt/tct-batterystatus-w3c-tests/batterystatus/w3c/battery-interface.html?total_num=47&amp;amp;locator_key=id&amp;amp;value=7</test_script_entry>
         </description>
         <specs>
           <spec>
@@ -211,7 +211,7 @@
       </testcase>
       <testcase purpose="Check if dischargingTime attribute exists" type="compliance" status="approved" component="W3C_HTML5 APIs/Device/Battery Status API" execution_type="auto" priority="P1" id="battery-interface_entry8">
         <description>
-          <test_script_entry>/opt/tct-batterystatus-w3c-tests/batterystatus/w3c/battery-interface.html?total_num=51&amp;amp;locator_key=id&amp;amp;value=8</test_script_entry>
+          <test_script_entry>/opt/tct-batterystatus-w3c-tests/batterystatus/w3c/battery-interface.html?total_num=47&amp;amp;locator_key=id&amp;amp;value=8</test_script_entry>
         </description>
         <specs>
           <spec>
@@ -223,7 +223,7 @@
       </testcase>
       <testcase purpose="Check if dischargingTime attribute is readonly" type="compliance" status="approved" component="W3C_HTML5 APIs/Device/Battery Status API" execution_type="auto" priority="P1" id="battery-interface_entry9">
         <description>
-          <test_script_entry>/opt/tct-batterystatus-w3c-tests/batterystatus/w3c/battery-interface.html?total_num=51&amp;amp;locator_key=id&amp;amp;value=9</test_script_entry>
+          <test_script_entry>/opt/tct-batterystatus-w3c-tests/batterystatus/w3c/battery-interface.html?total_num=47&amp;amp;locator_key=id&amp;amp;value=9</test_script_entry>
         </description>
         <specs>
           <spec>
@@ -235,7 +235,7 @@
       </testcase>
       <testcase purpose="Check if level attribute exists" type="compliance" status="approved" component="W3C_HTML5 APIs/Device/Battery Status API" execution_type="auto" priority="P1" id="battery-interface_entry10">
         <description>
-          <test_script_entry>/opt/tct-batterystatus-w3c-tests/batterystatus/w3c/battery-interface.html?total_num=51&amp;amp;locator_key=id&amp;amp;value=10</test_script_entry>
+          <test_script_entry>/opt/tct-batterystatus-w3c-tests/batterystatus/w3c/battery-interface.html?total_num=47&amp;amp;locator_key=id&amp;amp;value=10</test_script_entry>
         </description>
         <specs>
           <spec>
@@ -247,7 +247,7 @@
       </testcase>
       <testcase purpose="Check if level attribute is readonly" type="compliance" status="approved" component="W3C_HTML5 APIs/Device/Battery Status API" execution_type="auto" priority="P1" id="battery-interface_entry11">
         <description>
-          <test_script_entry>/opt/tct-batterystatus-w3c-tests/batterystatus/w3c/battery-interface.html?total_num=51&amp;amp;locator_key=id&amp;amp;value=11</test_script_entry>
+          <test_script_entry>/opt/tct-batterystatus-w3c-tests/batterystatus/w3c/battery-interface.html?total_num=47&amp;amp;locator_key=id&amp;amp;value=11</test_script_entry>
         </description>
         <specs>
           <spec>
@@ -259,7 +259,7 @@
       </testcase>
       <testcase purpose="Check if onchargingchange attribute exists" type="compliance" status="approved" component="W3C_HTML5 APIs/Device/Battery Status API" execution_type="auto" priority="P1" id="battery-interface_entry12">
         <description>
-          <test_script_entry>/opt/tct-batterystatus-w3c-tests/batterystatus/w3c/battery-interface.html?total_num=51&amp;amp;locator_key=id&amp;amp;value=12</test_script_entry>
+          <test_script_entry>/opt/tct-batterystatus-w3c-tests/batterystatus/w3c/battery-interface.html?total_num=47&amp;amp;locator_key=id&amp;amp;value=12</test_script_entry>
         </description>
         <specs>
           <spec>
@@ -271,7 +271,7 @@
       </testcase>
       <testcase purpose="Check if onchargingchange is null" type="compliance" status="approved" component="W3C_HTML5 APIs/Device/Battery Status API" execution_type="auto" priority="P1" id="battery-interface_entry13">
         <description>
-          <test_script_entry>/opt/tct-batterystatus-w3c-tests/batterystatus/w3c/battery-interface.html?total_num=51&amp;amp;locator_key=id&amp;amp;value=13</test_script_entry>
+          <test_script_entry>/opt/tct-batterystatus-w3c-tests/batterystatus/w3c/battery-interface.html?total_num=47&amp;amp;locator_key=id&amp;amp;value=13</test_script_entry>
         </description>
         <specs>
           <spec>
@@ -283,7 +283,7 @@
       </testcase>
       <testcase purpose="Check if onchargingchange is set to function" type="compliance" status="approved" component="W3C_HTML5 APIs/Device/Battery Status API" execution_type="auto" priority="P1" id="battery-interface_entry14">
         <description>
-          <test_script_entry>/opt/tct-batterystatus-w3c-tests/batterystatus/w3c/battery-interface.html?total_num=51&amp;amp;locator_key=id&amp;amp;value=14</test_script_entry>
+          <test_script_entry>/opt/tct-batterystatus-w3c-tests/batterystatus/w3c/battery-interface.html?total_num=47&amp;amp;locator_key=id&amp;amp;value=14</test_script_entry>
         </description>
         <specs>
           <spec>
@@ -295,7 +295,7 @@
       </testcase>
       <testcase purpose="Check if onchargingchange: treat object as null" type="compliance" status="approved" component="W3C_HTML5 APIs/Device/Battery Status API" execution_type="auto" priority="P1" id="battery-interface_entry15">
         <description>
-          <test_script_entry>/opt/tct-batterystatus-w3c-tests/batterystatus/w3c/battery-interface.html?total_num=51&amp;amp;locator_key=id&amp;amp;value=15</test_script_entry>
+          <test_script_entry>/opt/tct-batterystatus-w3c-tests/batterystatus/w3c/battery-interface.html?total_num=47&amp;amp;locator_key=id&amp;amp;value=15</test_script_entry>
         </description>
         <specs>
           <spec>
@@ -307,7 +307,7 @@
       </testcase>
       <testcase purpose="Check if onchargingchange: treat object with non-callable call property as null" type="compliance" status="approved" component="W3C_HTML5 APIs/Device/Battery Status API" execution_type="auto" priority="P1" id="battery-interface_entry16">
         <description>
-          <test_script_entry>/opt/tct-batterystatus-w3c-tests/batterystatus/w3c/battery-interface.html?total_num=51&amp;amp;locator_key=id&amp;amp;value=16</test_script_entry>
+          <test_script_entry>/opt/tct-batterystatus-w3c-tests/batterystatus/w3c/battery-interface.html?total_num=47&amp;amp;locator_key=id&amp;amp;value=16</test_script_entry>
         </description>
         <specs>
           <spec>
@@ -319,7 +319,7 @@
       </testcase>
       <testcase purpose="Check if onchargingchange: treat string as null" type="compliance" status="approved" component="W3C_HTML5 APIs/Device/Battery Status API" execution_type="auto" priority="P1" id="battery-interface_entry17">
         <description>
-          <test_script_entry>/opt/tct-batterystatus-w3c-tests/batterystatus/w3c/battery-interface.html?total_num=51&amp;amp;locator_key=id&amp;amp;value=17</test_script_entry>
+          <test_script_entry>/opt/tct-batterystatus-w3c-tests/batterystatus/w3c/battery-interface.html?total_num=47&amp;amp;locator_key=id&amp;amp;value=17</test_script_entry>
         </description>
         <specs>
           <spec>
@@ -331,7 +331,7 @@
       </testcase>
       <testcase purpose="Check if onchargingchange: treat number as null" type="compliance" status="approved" component="W3C_HTML5 APIs/Device/Battery Status API" execution_type="auto" priority="P1" id="battery-interface_entry18">
         <description>
-          <test_script_entry>/opt/tct-batterystatus-w3c-tests/batterystatus/w3c/battery-interface.html?total_num=51&amp;amp;locator_key=id&amp;amp;value=18</test_script_entry>
+          <test_script_entry>/opt/tct-batterystatus-w3c-tests/batterystatus/w3c/battery-interface.html?total_num=47&amp;amp;locator_key=id&amp;amp;value=18</test_script_entry>
         </description>
         <specs>
           <spec>
@@ -343,7 +343,7 @@
       </testcase>
       <testcase purpose="Check if onchargingchange: treat undefined as null" type="compliance" status="approved" component="W3C_HTML5 APIs/Device/Battery Status API" execution_type="auto" priority="P1" id="battery-interface_entry19">
         <description>
-          <test_script_entry>/opt/tct-batterystatus-w3c-tests/batterystatus/w3c/battery-interface.html?total_num=51&amp;amp;locator_key=id&amp;amp;value=19</test_script_entry>
+          <test_script_entry>/opt/tct-batterystatus-w3c-tests/batterystatus/w3c/battery-interface.html?total_num=47&amp;amp;locator_key=id&amp;amp;value=19</test_script_entry>
         </description>
         <specs>
           <spec>
@@ -355,7 +355,7 @@
       </testcase>
       <testcase purpose="Check if onchargingchange: treat array as null" type="compliance" status="approved" component="W3C_HTML5 APIs/Device/Battery Status API" execution_type="auto" priority="P1" id="battery-interface_entry20">
         <description>
-          <test_script_entry>/opt/tct-batterystatus-w3c-tests/batterystatus/w3c/battery-interface.html?total_num=51&amp;amp;locator_key=id&amp;amp;value=20</test_script_entry>
+          <test_script_entry>/opt/tct-batterystatus-w3c-tests/batterystatus/w3c/battery-interface.html?total_num=47&amp;amp;locator_key=id&amp;amp;value=20</test_script_entry>
         </description>
         <specs>
           <spec>
@@ -367,7 +367,7 @@
       </testcase>
       <testcase purpose="Check if onchargingtimechange attribute exists" type="compliance" status="approved" component="W3C_HTML5 APIs/Device/Battery Status API" execution_type="auto" priority="P1" id="battery-interface_entry21">
         <description>
-          <test_script_entry>/opt/tct-batterystatus-w3c-tests/batterystatus/w3c/battery-interface.html?total_num=51&amp;amp;locator_key=id&amp;amp;value=21</test_script_entry>
+          <test_script_entry>/opt/tct-batterystatus-w3c-tests/batterystatus/w3c/battery-interface.html?total_num=47&amp;amp;locator_key=id&amp;amp;value=21</test_script_entry>
         </description>
         <specs>
           <spec>
@@ -379,7 +379,7 @@
       </testcase>
       <testcase purpose="Check if onchargingtimechange is null" type="compliance" status="approved" component="W3C_HTML5 APIs/Device/Battery Status API" execution_type="auto" priority="P1" id="battery-interface_entry22">
         <description>
-          <test_script_entry>/opt/tct-batterystatus-w3c-tests/batterystatus/w3c/battery-interface.html?total_num=51&amp;amp;locator_key=id&amp;amp;value=22</test_script_entry>
+          <test_script_entry>/opt/tct-batterystatus-w3c-tests/batterystatus/w3c/battery-interface.html?total_num=47&amp;amp;locator_key=id&amp;amp;value=22</test_script_entry>
         </description>
         <specs>
           <spec>
@@ -391,7 +391,7 @@
       </testcase>
       <testcase purpose="Check if onchargingtimechange is set to function" type="compliance" status="approved" component="W3C_HTML5 APIs/Device/Battery Status API" execution_type="auto" priority="P1" id="battery-interface_entry23">
         <description>
-          <test_script_entry>/opt/tct-batterystatus-w3c-tests/batterystatus/w3c/battery-interface.html?total_num=51&amp;amp;locator_key=id&amp;amp;value=23</test_script_entry>
+          <test_script_entry>/opt/tct-batterystatus-w3c-tests/batterystatus/w3c/battery-interface.html?total_num=47&amp;amp;locator_key=id&amp;amp;value=23</test_script_entry>
         </description>
         <specs>
           <spec>
@@ -403,7 +403,7 @@
       </testcase>
       <testcase purpose="Check if onchargingtimechange: treat object as null" type="compliance" status="approved" component="W3C_HTML5 APIs/Device/Battery Status API" execution_type="auto" priority="P1" id="battery-interface_entry24">
         <description>
-          <test_script_entry>/opt/tct-batterystatus-w3c-tests/batterystatus/w3c/battery-interface.html?total_num=51&amp;amp;locator_key=id&amp;amp;value=24</test_script_entry>
+          <test_script_entry>/opt/tct-batterystatus-w3c-tests/batterystatus/w3c/battery-interface.html?total_num=47&amp;amp;locator_key=id&amp;amp;value=24</test_script_entry>
         </description>
         <specs>
           <spec>
@@ -415,7 +415,7 @@
       </testcase>
       <testcase purpose="Check if onchargingtimechange: treat object with non-callable call property as null" type="compliance" status="approved" component="W3C_HTML5 APIs/Device/Battery Status API" execution_type="auto" priority="P1" id="battery-interface_entry25">
         <description>
-          <test_script_entry>/opt/tct-batterystatus-w3c-tests/batterystatus/w3c/battery-interface.html?total_num=51&amp;amp;locator_key=id&amp;amp;value=25</test_script_entry>
+          <test_script_entry>/opt/tct-batterystatus-w3c-tests/batterystatus/w3c/battery-interface.html?total_num=47&amp;amp;locator_key=id&amp;amp;value=25</test_script_entry>
         </description>
         <specs>
           <spec>
@@ -427,7 +427,7 @@
       </testcase>
       <testcase purpose="Check if onchargingtimechange: treat string as null" type="compliance" status="approved" component="W3C_HTML5 APIs/Device/Battery Status API" execution_type="auto" priority="P1" id="battery-interface_entry26">
         <description>
-          <test_script_entry>/opt/tct-batterystatus-w3c-tests/batterystatus/w3c/battery-interface.html?total_num=51&amp;amp;locator_key=id&amp;amp;value=26</test_script_entry>
+          <test_script_entry>/opt/tct-batterystatus-w3c-tests/batterystatus/w3c/battery-interface.html?total_num=47&amp;amp;locator_key=id&amp;amp;value=26</test_script_entry>
         </description>
         <specs>
           <spec>
@@ -439,7 +439,7 @@
       </testcase>
       <testcase purpose="Check if onchargingtimechange: treat number as null" type="compliance" status="approved" component="W3C_HTML5 APIs/Device/Battery Status API" execution_type="auto" priority="P1" id="battery-interface_entry27">
         <description>
-          <test_script_entry>/opt/tct-batterystatus-w3c-tests/batterystatus/w3c/battery-interface.html?total_num=51&amp;amp;locator_key=id&amp;amp;value=27</test_script_entry>
+          <test_script_entry>/opt/tct-batterystatus-w3c-tests/batterystatus/w3c/battery-interface.html?total_num=47&amp;amp;locator_key=id&amp;amp;value=27</test_script_entry>
         </description>
         <specs>
           <spec>
@@ -451,7 +451,7 @@
       </testcase>
       <testcase purpose="Check if onchargingtimechange: treat undefined as null" type="compliance" status="approved" component="W3C_HTML5 APIs/Device/Battery Status API" execution_type="auto" priority="P1" id="battery-interface_entry28">
         <description>
-          <test_script_entry>/opt/tct-batterystatus-w3c-tests/batterystatus/w3c/battery-interface.html?total_num=51&amp;amp;locator_key=id&amp;amp;value=28</test_script_entry>
+          <test_script_entry>/opt/tct-batterystatus-w3c-tests/batterystatus/w3c/battery-interface.html?total_num=47&amp;amp;locator_key=id&amp;amp;value=28</test_script_entry>
         </description>
         <specs>
           <spec>
@@ -463,7 +463,7 @@
       </testcase>
       <testcase purpose="Check if onchargingtimechange: treat array as null" type="compliance" status="approved" component="W3C_HTML5 APIs/Device/Battery Status API" execution_type="auto" priority="P1" id="battery-interface_entry29">
         <description>
-          <test_script_entry>/opt/tct-batterystatus-w3c-tests/batterystatus/w3c/battery-interface.html?total_num=51&amp;amp;locator_key=id&amp;amp;value=29</test_script_entry>
+          <test_script_entry>/opt/tct-batterystatus-w3c-tests/batterystatus/w3c/battery-interface.html?total_num=47&amp;amp;locator_key=id&amp;amp;value=29</test_script_entry>
         </description>
         <specs>
           <spec>
@@ -475,7 +475,7 @@
       </testcase>
       <testcase purpose="Check if ondischargingtimechange attribute exists" type="compliance" status="approved" component="W3C_HTML5 APIs/Device/Battery Status API" execution_type="auto" priority="P1" id="battery-interface_entry30">
         <description>
-          <test_script_entry>/opt/tct-batterystatus-w3c-tests/batterystatus/w3c/battery-interface.html?total_num=51&amp;amp;locator_key=id&amp;amp;value=30</test_script_entry>
+          <test_script_entry>/opt/tct-batterystatus-w3c-tests/batterystatus/w3c/battery-interface.html?total_num=47&amp;amp;locator_key=id&amp;amp;value=30</test_script_entry>
         </description>
         <specs>
           <spec>
@@ -487,7 +487,7 @@
       </testcase>
       <testcase purpose="Check if ondischargingtimechange is null" type="compliance" status="approved" component="W3C_HTML5 APIs/Device/Battery Status API" execution_type="auto" priority="P1" id="battery-interface_entry31">
         <description>
-          <test_script_entry>/opt/tct-batterystatus-w3c-tests/batterystatus/w3c/battery-interface.html?total_num=51&amp;amp;locator_key=id&amp;amp;value=31</test_script_entry>
+          <test_script_entry>/opt/tct-batterystatus-w3c-tests/batterystatus/w3c/battery-interface.html?total_num=47&amp;amp;locator_key=id&amp;amp;value=31</test_script_entry>
         </description>
         <specs>
           <spec>
@@ -499,7 +499,7 @@
       </testcase>
       <testcase purpose="Check if ondischargingtimechange is set to function" type="compliance" status="approved" component="W3C_HTML5 APIs/Device/Battery Status API" execution_type="auto" priority="P1" id="battery-interface_entry32">
         <description>
-          <test_script_entry>/opt/tct-batterystatus-w3c-tests/batterystatus/w3c/battery-interface.html?total_num=51&amp;amp;locator_key=id&amp;amp;value=32</test_script_entry>
+          <test_script_entry>/opt/tct-batterystatus-w3c-tests/batterystatus/w3c/battery-interface.html?total_num=47&amp;amp;locator_key=id&amp;amp;value=32</test_script_entry>
         </description>
         <specs>
           <spec>
@@ -511,7 +511,7 @@
       </testcase>
       <testcase purpose="Check if ondischargingtimechange: treat object as null" type="compliance" status="approved" component="W3C_HTML5 APIs/Device/Battery Status API" execution_type="auto" priority="P1" id="battery-interface_entry33">
         <description>
-          <test_script_entry>/opt/tct-batterystatus-w3c-tests/batterystatus/w3c/battery-interface.html?total_num=51&amp;amp;locator_key=id&amp;amp;value=33</test_script_entry>
+          <test_script_entry>/opt/tct-batterystatus-w3c-tests/batterystatus/w3c/battery-interface.html?total_num=47&amp;amp;locator_key=id&amp;amp;value=33</test_script_entry>
         </description>
         <specs>
           <spec>
@@ -523,7 +523,7 @@
       </testcase>
       <testcase purpose="Check if ondischargingtimechange: treat object with non-callable call property as null" type="compliance" status="approved" component="W3C_HTML5 APIs/Device/Battery Status API" execution_type="auto" priority="P1" id="battery-interface_entry34">
         <description>
-          <test_script_entry>/opt/tct-batterystatus-w3c-tests/batterystatus/w3c/battery-interface.html?total_num=51&amp;amp;locator_key=id&amp;amp;value=34</test_script_entry>
+          <test_script_entry>/opt/tct-batterystatus-w3c-tests/batterystatus/w3c/battery-interface.html?total_num=47&amp;amp;locator_key=id&amp;amp;value=34</test_script_entry>
         </description>
         <specs>
           <spec>
@@ -535,7 +535,7 @@
       </testcase>
       <testcase purpose="Check if ondischargingtimechange: treat string as null" type="compliance" status="approved" component="W3C_HTML5 APIs/Device/Battery Status API" execution_type="auto" priority="P1" id="battery-interface_entry35">
         <description>
-          <test_script_entry>/opt/tct-batterystatus-w3c-tests/batterystatus/w3c/battery-interface.html?total_num=51&amp;amp;locator_key=id&amp;amp;value=35</test_script_entry>
+          <test_script_entry>/opt/tct-batterystatus-w3c-tests/batterystatus/w3c/battery-interface.html?total_num=47&amp;amp;locator_key=id&amp;amp;value=35</test_script_entry>
         </description>
         <specs>
           <spec>
@@ -547,7 +547,7 @@
       </testcase>
       <testcase purpose="Check if ondischargingtimechange: treat number as null" type="compliance" status="approved" component="W3C_HTML5 APIs/Device/Battery Status API" execution_type="auto" priority="P1" id="battery-interface_entry36">
         <description>
-          <test_script_entry>/opt/tct-batterystatus-w3c-tests/batterystatus/w3c/battery-interface.html?total_num=51&amp;amp;locator_key=id&amp;amp;value=36</test_script_entry>
+          <test_script_entry>/opt/tct-batterystatus-w3c-tests/batterystatus/w3c/battery-interface.html?total_num=47&amp;amp;locator_key=id&amp;amp;value=36</test_script_entry>
         </description>
         <specs>
           <spec>
@@ -559,7 +559,7 @@
       </testcase>
       <testcase purpose="Check if ondischargingtimechange: treat undefined as null" type="compliance" status="approved" component="W3C_HTML5 APIs/Device/Battery Status API" execution_type="auto" priority="P1" id="battery-interface_entry37">
         <description>
-          <test_script_entry>/opt/tct-batterystatus-w3c-tests/batterystatus/w3c/battery-interface.html?total_num=51&amp;amp;locator_key=id&amp;amp;value=37</test_script_entry>
+          <test_script_entry>/opt/tct-batterystatus-w3c-tests/batterystatus/w3c/battery-interface.html?total_num=47&amp;amp;locator_key=id&amp;amp;value=37</test_script_entry>
         </description>
         <specs>
           <spec>
@@ -571,7 +571,7 @@
       </testcase>
       <testcase purpose="Check if ondischargingtimechange: treat array as null" type="compliance" status="approved" component="W3C_HTML5 APIs/Device/Battery Status API" execution_type="auto" priority="P1" id="battery-interface_entry38">
         <description>
-          <test_script_entry>/opt/tct-batterystatus-w3c-tests/batterystatus/w3c/battery-interface.html?total_num=51&amp;amp;locator_key=id&amp;amp;value=38</test_script_entry>
+          <test_script_entry>/opt/tct-batterystatus-w3c-tests/batterystatus/w3c/battery-interface.html?total_num=47&amp;amp;locator_key=id&amp;amp;value=38</test_script_entry>
         </description>
         <specs>
           <spec>
@@ -583,7 +583,7 @@
       </testcase>
       <testcase purpose="Check if onlevelchange attribute exists" type="compliance" status="approved" component="W3C_HTML5 APIs/Device/Battery Status API" execution_type="auto" priority="P1" id="battery-interface_entry39">
         <description>
-          <test_script_entry>/opt/tct-batterystatus-w3c-tests/batterystatus/w3c/battery-interface.html?total_num=51&amp;amp;locator_key=id&amp;amp;value=39</test_script_entry>
+          <test_script_entry>/opt/tct-batterystatus-w3c-tests/batterystatus/w3c/battery-interface.html?total_num=47&amp;amp;locator_key=id&amp;amp;value=39</test_script_entry>
         </description>
         <specs>
           <spec>
@@ -595,7 +595,7 @@
       </testcase>
       <testcase purpose="Check if onlevelchange is null" type="compliance" status="approved" component="W3C_HTML5 APIs/Device/Battery Status API" execution_type="auto" priority="P1" id="battery-interface_entry40">
         <description>
-          <test_script_entry>/opt/tct-batterystatus-w3c-tests/batterystatus/w3c/battery-interface.html?total_num=51&amp;amp;locator_key=id&amp;amp;value=40</test_script_entry>
+          <test_script_entry>/opt/tct-batterystatus-w3c-tests/batterystatus/w3c/battery-interface.html?total_num=47&amp;amp;locator_key=id&amp;amp;value=40</test_script_entry>
         </description>
         <specs>
           <spec>
@@ -607,7 +607,7 @@
       </testcase>
       <testcase purpose="Check if onlevelchange is set to function" type="compliance" status="approved" component="W3C_HTML5 APIs/Device/Battery Status API" execution_type="auto" priority="P1" id="battery-interface_entry41">
         <description>
-          <test_script_entry>/opt/tct-batterystatus-w3c-tests/batterystatus/w3c/battery-interface.html?total_num=51&amp;amp;locator_key=id&amp;amp;value=41</test_script_entry>
+          <test_script_entry>/opt/tct-batterystatus-w3c-tests/batterystatus/w3c/battery-interface.html?total_num=47&amp;amp;locator_key=id&amp;amp;value=41</test_script_entry>
         </description>
         <specs>
           <spec>
@@ -619,7 +619,7 @@
       </testcase>
       <testcase purpose="Check if onlevelchange: treat object as null" type="compliance" status="approved" component="W3C_HTML5 APIs/Device/Battery Status API" execution_type="auto" priority="P1" id="battery-interface_entry42">
         <description>
-          <test_script_entry>/opt/tct-batterystatus-w3c-tests/batterystatus/w3c/battery-interface.html?total_num=51&amp;amp;locator_key=id&amp;amp;value=42</test_script_entry>
+          <test_script_entry>/opt/tct-batterystatus-w3c-tests/batterystatus/w3c/battery-interface.html?total_num=47&amp;amp;locator_key=id&amp;amp;value=42</test_script_entry>
         </description>
         <specs>
           <spec>
@@ -631,7 +631,7 @@
       </testcase>
       <testcase purpose="Check if onlevelchange: treat object with non-callable call property as null" type="compliance" status="approved" component="W3C_HTML5 APIs/Device/Battery Status API" execution_type="auto" priority="P1" id="battery-interface_entry43">
         <description>
-          <test_script_entry>/opt/tct-batterystatus-w3c-tests/batterystatus/w3c/battery-interface.html?total_num=51&amp;amp;locator_key=id&amp;amp;value=43</test_script_entry>
+          <test_script_entry>/opt/tct-batterystatus-w3c-tests/batterystatus/w3c/battery-interface.html?total_num=47&amp;amp;locator_key=id&amp;amp;value=43</test_script_entry>
         </description>
         <specs>
           <spec>
@@ -643,7 +643,7 @@
       </testcase>
       <testcase purpose="Check if onlevelchange: treat string as null" type="compliance" status="approved" component="W3C_HTML5 APIs/Device/Battery Status API" execution_type="auto" priority="P1" id="battery-interface_entry44">
         <description>
-          <test_script_entry>/opt/tct-batterystatus-w3c-tests/batterystatus/w3c/battery-interface.html?total_num=51&amp;amp;locator_key=id&amp;amp;value=44</test_script_entry>
+          <test_script_entry>/opt/tct-batterystatus-w3c-tests/batterystatus/w3c/battery-interface.html?total_num=47&amp;amp;locator_key=id&amp;amp;value=44</test_script_entry>
         </description>
         <specs>
           <spec>
@@ -655,7 +655,7 @@
       </testcase>
       <testcase purpose="Check if onlevelchange: treat number as null" type="compliance" status="approved" component="W3C_HTML5 APIs/Device/Battery Status API" execution_type="auto" priority="P1" id="battery-interface_entry45">
         <description>
-          <test_script_entry>/opt/tct-batterystatus-w3c-tests/batterystatus/w3c/battery-interface.html?total_num=51&amp;amp;locator_key=id&amp;amp;value=45</test_script_entry>
+          <test_script_entry>/opt/tct-batterystatus-w3c-tests/batterystatus/w3c/battery-interface.html?total_num=47&amp;amp;locator_key=id&amp;amp;value=45</test_script_entry>
         </description>
         <specs>
           <spec>
@@ -667,7 +667,7 @@
       </testcase>
       <testcase purpose="Check if onlevelchange: treat undefined as null" type="compliance" status="approved" component="W3C_HTML5 APIs/Device/Battery Status API" execution_type="auto" priority="P1" id="battery-interface_entry46">
         <description>
-          <test_script_entry>/opt/tct-batterystatus-w3c-tests/batterystatus/w3c/battery-interface.html?total_num=51&amp;amp;locator_key=id&amp;amp;value=46</test_script_entry>
+          <test_script_entry>/opt/tct-batterystatus-w3c-tests/batterystatus/w3c/battery-interface.html?total_num=47&amp;amp;locator_key=id&amp;amp;value=46</test_script_entry>
         </description>
         <specs>
           <spec>
@@ -679,59 +679,11 @@
       </testcase>
       <testcase purpose="Check if onlevelchange: treat array as null" type="compliance" status="approved" component="W3C_HTML5 APIs/Device/Battery Status API" execution_type="auto" priority="P1" id="battery-interface_entry47">
         <description>
-          <test_script_entry>/opt/tct-batterystatus-w3c-tests/batterystatus/w3c/battery-interface.html?total_num=51&amp;amp;locator_key=id&amp;amp;value=47</test_script_entry>
+          <test_script_entry>/opt/tct-batterystatus-w3c-tests/batterystatus/w3c/battery-interface.html?total_num=47&amp;amp;locator_key=id&amp;amp;value=47</test_script_entry>
         </description>
         <specs>
           <spec>
             <spec_assertion element_type="method" element_name="onlevelchange" interface="BatteryManager" specification="Battery Status API" section="Device" category="Tizen W3C API Specifications"/>
-            <spec_url>https://dvcs.w3.org/hg/dap/raw-file/default/battery/Overview.html#the-batterymanager-interface</spec_url>
-            <spec_statement/>
-          </spec>
-        </specs>
-      </testcase>
-      <testcase purpose="Check if onlevelchange: treat non-callable host object as null" type="compliance" status="approved" component="W3C_HTML5 APIs/Device/Battery Status API" execution_type="auto" priority="P1" id="battery-interface_entry48">
-        <description>
-          <test_script_entry>/opt/tct-batterystatus-w3c-tests/batterystatus/w3c/battery-interface.html?total_num=51&amp;amp;locator_key=id&amp;amp;value=48</test_script_entry>
-        </description>
-        <specs>
-          <spec>
-            <spec_assertion element_type="method" element_name="onlevelchange" interface="BatteryManager" specification="Battery Status API" section="Device" category="Tizen W3C API Specifications"/>
-            <spec_url>https://dvcs.w3.org/hg/dap/raw-file/default/battery/Overview.html#the-batterymanager-interface</spec_url>
-            <spec_statement/>
-          </spec>
-        </specs>
-      </testcase>
-      <testcase purpose="Check if ondischargingtimechange: treat non-callable host object as null" type="compliance" status="approved" component="W3C_HTML5 APIs/Device/Battery Status API" execution_type="auto" priority="P1" id="battery-interface_entry49">
-        <description>
-          <test_script_entry>/opt/tct-batterystatus-w3c-tests/batterystatus/w3c/battery-interface.html?total_num=51&amp;amp;locator_key=id&amp;amp;value=49</test_script_entry>
-        </description>
-        <specs>
-          <spec>
-            <spec_assertion element_type="method" element_name="ondischargingtimechange" interface="BatteryManager" specification="Battery Status API" section="Device" category="Tizen W3C API Specifications"/>
-            <spec_url>https://dvcs.w3.org/hg/dap/raw-file/default/battery/Overview.html#the-batterymanager-interface</spec_url>
-            <spec_statement/>
-          </spec>
-        </specs>
-      </testcase>
-      <testcase purpose="Check if onchargingtimechange: treat non-callable host object as null" type="compliance" status="approved" component="W3C_HTML5 APIs/Device/Battery Status API" execution_type="auto" priority="P1" id="battery-interface_entry50">
-        <description>
-          <test_script_entry>/opt/tct-batterystatus-w3c-tests/batterystatus/w3c/battery-interface.html?total_num=51&amp;amp;locator_key=id&amp;amp;value=50</test_script_entry>
-        </description>
-        <specs>
-          <spec>
-            <spec_assertion element_type="method" element_name="onchargingtimechange" interface="BatteryManager" specification="Battery Status API" section="Device" category="Tizen W3C API Specifications"/>
-            <spec_url>https://dvcs.w3.org/hg/dap/raw-file/default/battery/Overview.html#the-batterymanager-interface</spec_url>
-            <spec_statement/>
-          </spec>
-        </specs>
-      </testcase>
-      <testcase purpose="Check if onchargingchange: treat non-callable host object as null" type="compliance" status="approved" component="W3C_HTML5 APIs/Device/Battery Status API" execution_type="auto" priority="P1" id="battery-interface_entry51">
-        <description>
-          <test_script_entry>/opt/tct-batterystatus-w3c-tests/batterystatus/w3c/battery-interface.html?total_num=51&amp;amp;locator_key=id&amp;amp;value=51</test_script_entry>
-        </description>
-        <specs>
-          <spec>
-            <spec_assertion element_type="method" element_name="onchargingchange" interface="BatteryManager" specification="Battery Status API" section="Device" category="Tizen W3C API Specifications"/>
             <spec_url>https://dvcs.w3.org/hg/dap/raw-file/default/battery/Overview.html#the-batterymanager-interface</spec_url>
             <spec_statement/>
           </spec>
