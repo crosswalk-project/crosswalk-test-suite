@@ -12,11 +12,25 @@
     ],
     "pkg-list": {
         "deb": {
-            "blacklist": [],
+            "blacklist": [
+                "*"
+            ],
             "copylist": {
-				"tools": "tools",
+                "inst.deb.py": "inst.py",
+                "apptools": "apptools",
+                "tools": "tools",
                 "tests.full.xml": "tests.full.xml",
                 "tests.xml": "tests.xml"
+            },
+            "subapp-list": {
+                ".": {
+                    "app-name": "org.apptools.apptoolslinuxtests",
+                    "install-path": ".",
+                    "copylist": {
+                    "PACK-TOOL-ROOT/resources/testharness": "resources",
+                    "PACK-TOOL-ROOT/resources/webrunner": "."
+                    }
+                }
             }
         }
     },
