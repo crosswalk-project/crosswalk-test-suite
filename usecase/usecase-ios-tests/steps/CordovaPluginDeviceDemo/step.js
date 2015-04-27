@@ -1,0 +1,10 @@
+var step = '<p>Purpose:</p>'
+            +'<p>Verify that the demo CordovaPluginDeviceDemo can build succeeded and work well on test device</p>'
+            +'<p>Expected Results:</p>'
+            +'<ol>'
+            +'<li>Open the app named "Xcode" and display three project named "CordovaPluginDeviceDemo" on the left, include two subproject "Cordova.xcodeproj" and "XWalkView.xcodeproj"</li>'
+            +'<li>Display message "Build Succeeded"</li>'
+            +'<li>Launch the app named like "CordovaPluginDeviceDemo" successfully, no error message and no crash</li>'
+            +'<li>Display "platform", "version", cordova, model and so on</li>'
+            +'<li>The platform value is iOS, the version value is depends on the test platform version, the cordova value is depends on the test version, and the model value is "x86_64" or "arm" and so on</li>'
+            +'</ol>';
