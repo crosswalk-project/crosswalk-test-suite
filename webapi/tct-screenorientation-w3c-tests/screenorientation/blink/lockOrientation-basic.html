@@ -7,40 +7,58 @@ Use of this source code is governed by a BSD-style license:
 https://chromium.googlesource.com/chromium/blink/+/master/LICENSE
 -->
 
-<meta charset="utf-8">
-<title>Screen Orientation API Test: basic lock/unlock</title>
-<link rel="help" href="https://w3c.github.io/screen-orientation/">
+<html>
+<body>
 <script src="../../resources/testharness.js"></script>
 <script src="../../resources/testharnessreport.js"></script>
-
+<meta name='flags' content='interact'>
+<meta name="timeout" content="long">
 <div id="log"></div>
+<button id="start">Start to Test</button>
+<button id="cancel" hidden>Cancel FullScreen</button>
 <script>
-var t = async_test("Basic screen.orientation.lock() and screen.orientation.unlock() testing", {timeout: 2000});
 
-t.step(function() {
-  var orientations = [
-    "any", "natural",  "landscape", "portrait", "portrait-primary", "portrait-secondary",
-    "landscape-primary", "landscape-secondary"
-  ];
+var setOrientation;
 
-  var setOrientation = function(idx) {
-    if (idx === orientations.length) {
-      t.done();
-      return;
+async_test(function(t) {
+    var orientations = ['any', 'portrait', 'landscape', 'portrait-secondary',
+                        'landscape-primary', 'landscape-secondary', 'portrait-primary'];
+
+    screen.orientation.unlock();
+
+    setOrientation = function(idx) {
+        if( idx == orientations.length) {
+            screen.orientation.unlock();
+            t.done();
+            return;
+        }
+        (function(i) {
+            screen.orientation.lock(orientations[i]).then(function() {
+                setOrientation(i+1);
+            },function() { });
+        })(idx);
+    };
+}, "Test that screen.orientation.lock returns a pending promise.");
+
+document.getElementById("start").onclick = function() {
+    document.onwebkitfullscreenchange = function() {
+        //https://w3c.github.io/screen-orientation/#locking-the-screen-orientation
+        //a user agent might require a document's top-level browsing context to be fullscreen (see Interaction with FullScreen API) in order to allow an orientation lock. 
+        setOrientation(0);
+        document.getElementById("start").hidden = true;
+        document.getElementById("cancel").hidden = false;
     }
-    (function(i){
-      screen.orientation.lock(orientations[i]).then(
-        t.step_func(function(e){
-          setOrientation(i+1);
-        }),
-        function() {
-          t.unreached_func('Unexpected error callback');
-      });
-    })(idx);
-  };
+    document.documentElement.webkitRequestFullScreen();
+}
 
-  screen.orientation.unlock();
-  setOrientation(0);
-
-});
+document.getElementById("cancel").onclick = function() {
+    document.onwebkitfullscreenchange = function() {
+        document.getElementById("start").hidden = false;
+        document.getElementById("cancel").hidden = true;
+    }
+    document.webkitCancelFullScreen();
+}
 </script>
+
+</body>
+</html>
