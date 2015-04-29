@@ -55,7 +55,7 @@ t.step(function () {
   var emailAddr = new ContactField({
     types: ['work'],
     preferred: true,
-    value: 'kangx.xu@intel.com'
+    value: 'tester@sample.com'
   });
   var contact = new Contact({
     name: contactName,
@@ -65,7 +65,7 @@ t.step(function () {
   contacts.save(contact).then(
     function (info) {
       t.step(function () {
-        assert_equals(info.emails[0].value, "kangx.xu@intel.com", "The Contact.emails[0].value");
+        assert_equals(info.emails[0].value, "tester@sample.com", "The Contact.emails[0].value");
         assert_equals(info.emails[0].types[0], "work", "The Contact.emails[0].types[0]");
         assert_true(info.emails[0].preferred, "The value of Contact.emails[0].preferred is true");
       });

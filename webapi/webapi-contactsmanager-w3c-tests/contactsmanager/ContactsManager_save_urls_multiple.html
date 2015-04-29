@@ -60,7 +60,7 @@ t.step(function () {
   var urlLive = new ContactField({
     types: ['work'],
     preferred: true,
-    value: 'http://www.baidu.com/'
+    value: 'http://www.sample.com/'
   });
   var contact = new Contact({
     name: contactName,
@@ -71,7 +71,7 @@ t.step(function () {
     function (info) {
       t.step(function () {
         assert_equals(info.urls[0].value, "http://www.intel.com/", "The Contact.urls[0].value");
-        assert_equals(info.urls[1].value, "http://www.baidu.com/", "The Contact.urls[1].value");
+        assert_equals(info.urls[1].value, "http://www.sample.com/", "The Contact.urls[1].value");
       });
       t.done();
     },

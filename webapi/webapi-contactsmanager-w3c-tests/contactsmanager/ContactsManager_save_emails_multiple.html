@@ -55,12 +55,12 @@ t.step(function () {
   var emailWork = new ContactField({
     types: ['work'],
     preferred: true,
-    value: 'kangx.xu@intel.com'
+    value: 'tester@sample.com'
   });
   var emailLive = new ContactField({
     types: ['work'],
     preferred: true,
-    value: 'xuk003428@archermind.com'
+    value: 'tester2@sample.com'
   });
   var contact = new Contact({
     name: contactName,
@@ -70,8 +70,8 @@ t.step(function () {
   contacts.save(contact).then(
     function (info) {
       t.step(function () {
-        assert_equals(info.emails[0].value, "kangx.xu@intel.com", "The Contact.emails[0].value");
-        assert_equals(info.emails[1].value, "xuk003428@archermind.com", "The Contact.emails[1].value");
+        assert_equals(info.emails[0].value, "tester@sample.com", "The Contact.emails[0].value");
+        assert_equals(info.emails[1].value, "tester2@sample.com", "The Contact.emails[1].value");
       });
       t.done();
     },

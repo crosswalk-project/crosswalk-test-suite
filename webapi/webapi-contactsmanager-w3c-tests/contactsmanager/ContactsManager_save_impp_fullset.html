@@ -55,7 +55,7 @@ t.step(function () {
   var instantAddr = new ContactField({
     types: ['home'],
     preferred: true,
-    value: 'msn:kangx.xu@intel.com'
+    value: 'msn:tester@sample.com'
   });
   var contact = new Contact({
     name: contactName,
@@ -66,7 +66,7 @@ t.step(function () {
     function (info) {
       t.step(function () {
         assert_equals(info.impp[0].types[0], "home", "The Contact.impp[0].types[0]");
-        assert_equals(info.impp[0].value, "msn:kangx.xu@intel.com", "The Contact.impp[0].value");
+        assert_equals(info.impp[0].value, "msn:tester@sample.com", "The Contact.impp[0].value");
         assert_true(info.impp[0].preferred, "The value of Contact.impp[0].preferred is true");
       });
       t.done();

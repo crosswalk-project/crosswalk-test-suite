@@ -55,12 +55,12 @@ t.step(function () {
   var instantAddrWork = new ContactField({
     types: ['home'],
     preferred: true,
-    value: 'msn:kangx.xu@intel.com'
+    value: 'msn:tester@sample.com'
   });
   var instantAddrLive = new ContactField({
     types: ['work'],
     preferred: true,
-    value: 'msn:xuk003428@archermind.com'
+    value: 'msn:tester2@sample.com'
   });
   var contact = new Contact({
     name: contactName,
@@ -70,8 +70,8 @@ t.step(function () {
   contacts.save(contact).then(
     function (info) {
       t.step(function () {
-        assert_equals(info.impp[0].value, "msn:kangx.xu@intel.com", "The Contact.impp[0].value");
-        assert_equals(info.impp[1].value, "msn:xuk003428@archermind.com", "The Contact.impp[1].value");
+        assert_equals(info.impp[0].value, "msn:tester@sample.com", "The Contact.impp[0].value");
+        assert_equals(info.impp[1].value, "msn:tester2@sample.com", "The Contact.impp[1].value");
       });
       t.done();
     },

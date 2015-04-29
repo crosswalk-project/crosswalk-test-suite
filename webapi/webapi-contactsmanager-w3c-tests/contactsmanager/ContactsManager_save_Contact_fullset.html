@@ -51,7 +51,7 @@ t.step(function () {
   var emailAddr = new ContactField({
     types: ['work'],
     preferred: true,
-    value: 'kangx.xu@intel.com'
+    value: 'tester@sample.com'
   });
   var address = new ContactAddress({
     types: ['work'],
@@ -66,10 +66,10 @@ t.step(function () {
   var instantAddr = new ContactField({
     types: ['home'],
     preferred: true,
-    value: 'msn:kangx.xu@intel.com'
+    value: 'msn:tester@sample.com'
   });
-  var data = new Date(1987,10,27);
-  var dataString = data.toString();
+  var data = new Date();
+  var dataTime = data.getTime();
   var contactName = new ContactName({
     givenNames: ['John'],
     familyNames: ['Doe']
@@ -96,16 +96,16 @@ t.step(function () {
         assert_equals(info.name.familyNames[0], "Doe", "The Contact.name.familyNames[0]");
         assert_equals(info.phoneNumbers[0].value, "+34698765432", "The Contact.phoneNumbers[0].value");
         assert_equals(info.urls[0].value, "http://www.intel.com/", "The Contact.urls[0].value");
-        assert_equals(info.emails[0].value, "kangx.xu@intel.com", "The Contact.emails[0].value");
+        assert_equals(info.emails[0].value, "tester@sample.com", "The Contact.emails[0].value");
         assert_equals(info.photos[0], "test", "The Contact.photos[0]");
         assert_equals(info.categories[0], "swimmer,biker", "The Contact.categories[0]");
         assert_equals(info.addresses[0].countryName, "china", "The Contact.addresses[0].countryName");
         assert_equals(info.organizations[0], "Bubba Gump Shrimp Co.", "The Contact.organizations[0]");
         assert_equals(info.jobTitles[0], "Shrimp Man", "The Contact.jobTitles[0]");
-        assert_equals(info.birthday.toString(), dataString, "The Contact.birthday");
+        assert_equals(info.birthday.getTime(), dataTime, "The Contact.birthday");
         assert_equals(info.notes[0], "I am proficient in Tiger-Crane Style", "The Contact.notes[0]");
-        assert_equals(info.impp[0].value, "msn:kangx.xu@intel.com", "The Contact.impp[0].value");
-        assert_equals(info.anniversary.toString(), dataString, "The Contact.anniversary");
+        assert_equals(info.impp[0].value, "msn:tester@sample.com", "The Contact.impp[0].value");
+        assert_equals(info.anniversary.getTime(), dataTime, "The Contact.anniversary");
         assert_equals(info.gender, "male", "The Contact.gender attribute");
       });
       t.done();

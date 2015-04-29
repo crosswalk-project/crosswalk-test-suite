@@ -41,8 +41,8 @@ Authors:
 <script>
 
 var contact;
-var data = new Date(1987,10,27);
-var dataString = data.toString();
+var data = new Date();
+var dataTime = data.getTime();
 
 setup(function () {
   var url = new ContactField({
@@ -53,7 +53,7 @@ setup(function () {
   var emailAddr = new ContactField({
     types: ['work'],
     preferred: true,
-    value: 'kangx.xu@intel.com'
+    value: 'tester@sample.com'
   });
   var address = new ContactAddress({
     types: ['work'],
@@ -68,7 +68,7 @@ setup(function () {
   var instantAddr = new ContactField({
     types: ['home'],
     preferred: true,
-    value: 'msn:kangx.xu@intel.com'
+    value: 'msn:tester@sample.com'
   });
   var contactName = new ContactName({
     givenNames: ['John'],
@@ -109,7 +109,7 @@ test(function () {
 
 test(function () {
   assert_true(!!contact, "The Contact initialized");
-  assert_equals(contact.emails[0].value, "kangx.xu@intel.com", "The Contact.emails[0].value");
+  assert_equals(contact.emails[0].value, "tester@sample.com", "The Contact.emails[0].value");
 }, "Check if the Contact emails attribute is valid");
 
 test(function () {
@@ -149,7 +149,7 @@ test(function () {
 
 test(function () {
   assert_true(!!contact, "The Contact initialized");
-  assert_equals(contact.birthday.toString(), dataString, "The Contact.birthday");
+  assert_equals(contact.birthday.getTime(), dataTime, "The Contact.birthday");
 }, "Check if the Contact birthday attribute is valid");
 
 test(function () {
@@ -159,12 +159,12 @@ test(function () {
 
 test(function () {
   assert_true(!!contact, "The Contact initialized");
-  assert_equals(contact.impp[0].value, "msn:kangx.xu@intel.com", "The Contact.impp[0].value");
+  assert_equals(contact.impp[0].value, "msn:tester@sample.com", "The Contact.impp[0].value");
 }, "Check if the Contact impp attribute is valid");
 
 test(function () {
   assert_true(!!contact, "The Contact initialized");
-  assert_equals(contact.anniversary.toString(), dataString, "The Contact.anniversary");
+  assert_equals(contact.anniversary.getTime(), dataTime, "The Contact.anniversary");
 }, "Check if the Contact anniversary attribute is valid");
 
 test(function () {
