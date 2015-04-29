@@ -45,16 +45,19 @@ def generate_cmd():
         shutil.rmtree(comm.ConstPath + '/../report')
     os.mkdir('report')
     fp = open(comm.ConstPath + '/../report/cmd.txt', 'a+')
+    crosswalkcmd = 'find /opt/apptools-android-tests/tools -name "crosswalk-*.zip"'
+    crosswalkdirlist = commands.getstatusoutput(crosswalkcmd)
+    print "crosswalkcmd====================" + crosswalkdirlist[0]
     for i in positive_data:
         num = num + 1
         flag = 'positive' + str(num)
-        cmd = flag + '\tcrosswalk-app create ' + i + ' --crosswalk=/opt/apptools-android-tests/tools/crosswalk*.zip\n'
+        cmd = flag + '\tcrosswalk-app create ' + i + ' --crosswalk=' + crosswalkdirlist[0] + '\n'
         #print cmd
         fp.write(cmd)
     for j in negative_data:
         num = num + 1
         flag = 'negative' + str(num)
-        cmd = flag + '\tcrosswalk-app create ' + j + ' --crosswalk=/opt/apptools-android-tests/tools/crosswalk*.zip\n'
+        cmd = flag + '\tcrosswalk-app create ' + j + ' --crosswalk=' + crosswalkdirlist[0] + '\n'
         #print cmd
         fp.write(cmd)
     fp.close()

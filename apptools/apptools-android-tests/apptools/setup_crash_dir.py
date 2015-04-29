@@ -26,21 +26,33 @@
 # EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 #
 # Authors:
-#         Hongjuan, Wang<hongjuanx.wang@intel.com>
-
+#         Yun, Liu<yunx.liu@intel.com>
 import unittest
 import os
-import commands
 import comm
+import commands
+import shutil
 
 class TestCrosswalkApptoolsFunctions(unittest.TestCase):
-
-    def test_create_channel_beta(self):
+    def test_setup_crash_dir(self):
         comm.setUp()
-        comm.clear("org.xwalk.test")
         os.chdir(comm.XwalkPath)
-        channel = "beta"
-        comm.channel(self, channel)
+        os.mkdir("crash")
+        comm.create(self)
+        os.environ["CROSSWALK_APP_TOOLS_CACHE_DIR"] = comm.XwalkPath + "crash"
+        os.chdir('org.xwalk.test')
+        updatecmd =  comm.PackTools + "crosswalk-app update 13.42.319.5"
+        comm.update(self, updatecmd)
+        namelist = os.listdir(os.getcwd())
+        os.chdir(comm.XwalkPath + "crash")
+        crosswalklist = os.listdir(os.getcwd())
+        os.environ["CROSSWALK_APP_TOOLS_CACHE_DIR"] = comm.XwalkPath
+        os.chdir(comm.XwalkPath)
+        shutil.rmtree("crash")
+        comm.run(self)
+        comm.clear("org.xwalk.test")
+        self.assertNotIn("crosswalk-13.42.319.5.zip", namelist)
+        self.assertIn("crosswalk-13.42.319.5.zip", crosswalklist)
 
 if __name__ == '__main__':
     unittest.main()

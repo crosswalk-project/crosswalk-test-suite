@@ -37,10 +37,10 @@ class TestCrosswalkApptoolsFunctions(unittest.TestCase):
 
     def test_create_channel_canary(self):
         comm.setUp()
+        comm.clear("org.xwalk.test")
         os.chdir(comm.XwalkPath)
         channel = "canary"
-        old_list = os.listdir(os.getcwd())
-        comm.channel(self, old_list, channel)
+        comm.channel(self, channel)
 
 if __name__ == '__main__':
     unittest.main()
