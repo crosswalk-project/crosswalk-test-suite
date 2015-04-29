@@ -3,171 +3,123 @@
 <test_definition>
   <suite category="W3C/HTML5 APIs" name="tct-screenorientation-w3c-tests">
     <set name="ScreenOrientation" type="js">
-      <testcase component="W3C_HTML5 APIs/Device/The Screen Orientation API" execution_type="auto" id="Screen_exists" priority="P1" purpose="Check if the window.screen exists" status="approved" type="compliance">
+      <testcase purpose="Test that the Screen Orientation API is present" type="compliance" status="approved" component="W3C_HTML5 APIs/Device/The Screen Orientation API" execution_type="auto" priority="P1" id="ScreenOrientation_attributes_existence">
         <description>
-          <test_script_entry>/opt/tct-screenorientation-w3c-tests/screenorientation/Screen_attributes_tests.html?total_num=10&amp;locator_key=id&amp;value=1</test_script_entry>
+          <test_script_entry>/opt/tct-screenorientation-w3c-tests/screenorientation/blink/screenorientation-api.html?total_num=3&amp;amp;locator_key=id&amp;amp;value=1</test_script_entry>
         </description>
         <specs>
           <spec>
-            <spec_assertion category="Tizen W3C API Specifications" element_name="screen" element_type="attributes" interface="window" section="Device" specification="The Screen Orientation API" />
+            <spec_assertion element_type="attribute" element_name="orientation" interface="Screen" specification="The Screen Orientation API" section="Device" category="Tizen W3C API Specifications"/>
             <spec_url>https://w3c.github.io/screen-orientation/</spec_url>
-            <spec_statement />
+            <spec_statement/>
           </spec>
         </specs>
       </testcase>
-      <testcase component="W3C_HTML5 APIs/Device/The Screen Orientation API" execution_type="auto" id="ScreenOrientation_lock_exists" priority="P1" purpose="Check if screen.orientation.lock() exists" status="approved" type="compliance">
+      <testcase purpose="Test Screen Orientation API property types" type="compliance" status="approved" component="W3C_HTML5 APIs/Device/The Screen Orientation API" execution_type="auto" priority="P1" id="ScreenOrientation_attributes_type">
         <description>
-          <test_script_entry>/opt/tct-screenorientation-w3c-tests/screenorientation/Screen_attributes_tests.html?total_num=10&amp;locator_key=id&amp;value=2</test_script_entry>
+          <test_script_entry>/opt/tct-screenorientation-w3c-tests/screenorientation/blink/screenorientation-api.html?total_num=3&amp;amp;locator_key=id&amp;amp;value=2</test_script_entry>
         </description>
         <specs>
           <spec>
-            <spec_assertion category="Tizen W3C API Specifications" element_name="lock" element_type="method" interface="ScreenOrientation" section="Device" specification="The Screen Orientation API" />
+            <spec_assertion element_type="attribute" element_name="orientation" interface="Screen" specification="The Screen Orientation API" section="Device" category="Tizen W3C API Specifications"/>
             <spec_url>https://w3c.github.io/screen-orientation/</spec_url>
-            <spec_statement />
+            <spec_statement/>
           </spec>
         </specs>
       </testcase>
-      <testcase component="W3C_HTML5 APIs/Device/The Screen Orientation API" execution_type="auto" id="ScreenOrientation_onchange_exists" priority="P2" purpose="Check if screen.orientation.onchange event exists" status="approved" type="compliance">
+      <testcase purpose="Test that screen.orientation is an EventTarget" type="compliance" status="approved" component="W3C_HTML5 APIs/Device/The Screen Orientation API" execution_type="auto" priority="P1" id="ScreenOrientation_inherit_EventTarget">
         <description>
-          <test_script_entry>/opt/tct-screenorientation-w3c-tests/screenorientation/Screen_attributes_tests.html?total_num=10&amp;locator_key=id&amp;value=3</test_script_entry>
+          <test_script_entry>/opt/tct-screenorientation-w3c-tests/screenorientation/blink/screenorientation-api.html?total_num=3&amp;amp;locator_key=id&amp;amp;value=3</test_script_entry>
         </description>
         <specs>
           <spec>
-            <spec_assertion category="Tizen W3C API Specifications" element_name="onchange" element_type="method" interface="ScreenOrientation" section="Device" specification="The Screen Orientation API" />
+            <spec_assertion element_type="attribute" element_name="orientation" interface="Screen" specification="The Screen Orientation API" section="Device" category="Tizen W3C API Specifications"/>
             <spec_url>https://w3c.github.io/screen-orientation/</spec_url>
-            <spec_statement />
+            <spec_statement/>
           </spec>
         </specs>
       </testcase>
-      <testcase component="W3C_HTML5 APIs/Device/The Screen Orientation API" execution_type="auto" id="Screen_orientation_exists" priority="P1" purpose="Check if screen.orientation attribute exists" status="approved" type="compliance">
+      <testcase purpose="Test screen.orientation properties reading" type="compliance" status="approved" component="W3C_HTML5 APIs/Device/The Screen Orientation API" execution_type="auto" priority="P1" id="ScreenOrientation_attributes_reading">
         <description>
-          <test_script_entry>/opt/tct-screenorientation-w3c-tests/screenorientation/Screen_attributes_tests.html?total_num=10&amp;locator_key=id&amp;value=4</test_script_entry>
+          <test_script_entry>/opt/tct-screenorientation-w3c-tests/screenorientation/blink/orientation-reading.html?total_num=5&amp;amp;locator_key=id&amp;amp;value=1</test_script_entry>
         </description>
         <specs>
           <spec>
-            <spec_assertion category="Tizen W3C API Specifications" element_name="orientation" element_type="attribute" interface="Screen" section="Device" specification="The Screen Orientation API" />
+            <spec_assertion element_type="attribute" element_name="type,angle" interface="ScreenOrientation" specification="The Screen Orientation API" section="Device" category="Tizen W3C API Specifications"/>
             <spec_url>https://w3c.github.io/screen-orientation/</spec_url>
-            <spec_statement />
+            <spec_statement/>
           </spec>
         </specs>
       </testcase>
-      <testcase component="W3C_HTML5 APIs/Device/The Screen Orientation API" execution_type="auto" id="ScreenOrientation_type_exists" priority="P1" purpose="Check if screen.orientation.type attribute exists" status="approved" type="compliance">
+      <testcase purpose="Test screen.orientation default values" type="compliance" status="approved" component="W3C_HTML5 APIs/Device/The Screen Orientation API" execution_type="auto" priority="P1" id="ScreenOrientation_attributes_defaultvalue">
         <description>
-          <test_script_entry>/opt/tct-screenorientation-w3c-tests/screenorientation/Screen_attributes_tests.html?total_num=10&amp;locator_key=id&amp;value=5</test_script_entry>
+          <test_script_entry>/opt/tct-screenorientation-w3c-tests/screenorientation/blink/orientation-reading.html?total_num=5&amp;amp;locator_key=id&amp;amp;value=2</test_script_entry>
         </description>
         <specs>
           <spec>
-            <spec_assertion category="Tizen W3C API Specifications" element_name="type" element_type="attribute" interface="ScreenOrientation" section="Device" specification="The Screen Orientation API" />
+            <spec_assertion element_type="attribute" element_name="type,angle" interface="ScreenOrientation" specification="The Screen Orientation API" section="Device" category="Tizen W3C API Specifications"/>
             <spec_url>https://w3c.github.io/screen-orientation/</spec_url>
-            <spec_statement />
+            <spec_statement/>
           </spec>
         </specs>
       </testcase>
-      <testcase component="W3C_HTML5 APIs/Device/The Screen Orientation API" execution_type="auto" id="ScreenOrientation_type_returns" priority="P1" purpose="Check that screen.orientation.type returns a String" status="approved" type="compliance">
+      <testcase purpose="Test that screen.orientation properties are not writable" type="compliance" status="approved" component="W3C_HTML5 APIs/Device/The Screen Orientation API" execution_type="auto" priority="P1" id="ScreenOrientation_attributes_readonly">
         <description>
-          <test_script_entry>/opt/tct-screenorientation-w3c-tests/screenorientation/Screen_attributes_tests.html?total_num=10&amp;locator_key=id&amp;value=6</test_script_entry>
+          <test_script_entry>/opt/tct-screenorientation-w3c-tests/screenorientation/blink/orientation-reading.html?total_num=5&amp;amp;locator_key=id&amp;amp;value=3</test_script_entry>
         </description>
         <specs>
           <spec>
-            <spec_assertion category="Tizen W3C API Specifications" element_name="type" element_type="attribute" interface="ScreenOrientation" section="Device" specification="The Screen Orientation API" />
+            <spec_assertion element_type="attribute" element_name="type,angle" interface="ScreenOrientation" specification="The Screen Orientation API" section="Device" category="Tizen W3C API Specifications"/>
             <spec_url>https://w3c.github.io/screen-orientation/</spec_url>
-            <spec_statement />
+            <spec_statement/>
           </spec>
         </specs>
       </testcase>
-      <testcase component="W3C_HTML5 APIs/Device/The Screen Orientation API" execution_type="auto" id="ScreenOrientation_angle_exists" priority="P1" purpose="Check if screen.orientation.angle attribute exists" status="approved" type="compliance">
+      <testcase purpose="Test that screen.orientation is always the same object" type="compliance" status="approved" component="W3C_HTML5 APIs/Device/The Screen Orientation API" execution_type="auto" priority="P1" id="ScreenOrientation_singleton_object">
         <description>
-          <test_script_entry>/opt/tct-screenorientation-w3c-tests/screenorientation/Screen_attributes_tests.html?total_num=10&amp;locator_key=id&amp;value=7</test_script_entry>
+          <test_script_entry>/opt/tct-screenorientation-w3c-tests/screenorientation/blink/orientation-reading.html?total_num=5&amp;amp;locator_key=id&amp;amp;value=4</test_script_entry>
         </description>
         <specs>
           <spec>
-            <spec_assertion category="Tizen W3C API Specifications" element_name="angle" element_type="attribute" interface="ScreenOrientation" section="Device" specification="The Screen Orientation API" />
+            <spec_assertion element_type="attribute" element_name="orientation" interface="Screen" specification="The Screen Orientation API" section="Device" category="Tizen W3C API Specifications"/>
             <spec_url>https://w3c.github.io/screen-orientation/</spec_url>
-            <spec_statement />
+            <spec_statement/>
           </spec>
         </specs>
       </testcase>
-      <testcase component="W3C_HTML5 APIs/Device/The Screen Orientation API" execution_type="auto" id="ScreenOrientation_angle_returns" priority="P1" purpose="Check that screen.orientation.angle returns a Number" status="approved" type="compliance">
+      <testcase purpose="Test that screen.orientation.lock() throws exception when the input isn't valid" type="compliance" status="approved" component="W3C_HTML5 APIs/Device/The Screen Orientation API" execution_type="auto" priority="P3" id="lockOrientation-bad-argument">
         <description>
-          <test_script_entry>/opt/tct-screenorientation-w3c-tests/screenorientation/Screen_attributes_tests.html?total_num=10&amp;locator_key=id&amp;value=8</test_script_entry>
+          <test_script_entry>/opt/tct-screenorientation-w3c-tests/screenorientation/blink/lockOrientation-bad-argument.html</test_script_entry>
         </description>
         <specs>
           <spec>
-            <spec_assertion category="Tizen W3C API Specifications" element_name="angle" element_type="attribute" interface="ScreenOrientation" section="Device" specification="The Screen Orientation API" />
+            <spec_assertion element_type="method" element_name="lock" interface="ScreenOrientation" specification="The Screen Orientation API" section="Device" category="Tizen W3C API Specifications"/>
             <spec_url>https://w3c.github.io/screen-orientation/</spec_url>
-            <spec_statement />
+            <spec_statement/>
           </spec>
         </specs>
       </testcase>
-      <testcase component="W3C_HTML5 APIs/Device/The Screen Orientation API" execution_type="auto" id="ScreenOrientation_type_in_currentorientation" priority="P2" purpose="Check that screen.orientation.type must be in current orientation" status="approved" type="compliance">
-        <description>
-          <test_script_entry>/opt/tct-screenorientation-w3c-tests/screenorientation/Screen_attributes_tests.html?total_num=10&amp;locator_key=id&amp;value=9</test_script_entry>
-        </description>
-        <specs>
-          <spec>
-            <spec_assertion category="Tizen W3C API Specifications" element_name="type" element_type="attribute" interface="ScreenOrientation" section="Device" specification="The Screen Orientation API" />
-            <spec_url>https://w3c.github.io/screen-orientation/</spec_url>
-            <spec_statement />
-          </spec>
-        </specs>
-      </testcase>
-      <testcase component="W3C_HTML5 APIs/Device/The Screen Orientation API" execution_type="auto" id="ScreenOrientation_unlock_exists" priority="P1" purpose="Check if screen.orientation.unlock() exists" status="approved" type="compliance">
-        <description>
-          <test_script_entry>/opt/tct-screenorientation-w3c-tests/screenorientation/Screen_attributes_tests.html?total_num=10&amp;locator_key=id&amp;value=10</test_script_entry>
-        </description>
-        <specs>
-          <spec>
-            <spec_assertion category="Tizen W3C API Specifications" element_name="unlock" element_type="method" interface="ScreenOrientation" section="Device" specification="The Screen Orientation API" />
-            <spec_url>https://w3c.github.io/screen-orientation/</spec_url>
-            <spec_statement />
-          </spec>
-        </specs>
-      </testcase>
-      <testcase component="W3C_HTML5 APIs/Device/The Screen Orientation API" execution_type="auto" id="ScreenOrientation_lock_orientation_invalid" priority="P2" purpose="Test checks that screen.lockOrientation(invalid) invoke error callback" status="approved" type="compliance">
-        <description>
-          <test_script_entry>/opt/tct-screenorientation-w3c-tests/screenorientation/ScreenOrientation_lock_orientation_invalid.html</test_script_entry>
-        </description>
-        <specs>
-          <spec>
-            <spec_assertion category="Tizen W3C API Specifications" element_name="lock" element_type="method" interface="ScreenOrientation" section="Device" specification="The Screen Orientation API" />
-            <spec_url>https://w3c.github.io/screen-orientation/</spec_url>
-            <spec_statement />
-          </spec>
-        </specs>
-      </testcase>
-      <testcase component="W3C_HTML5 APIs/Device/The Screen Orientation API" execution_type="auto" id="ScreenOrientation_lock_orientation_null" priority="P2" purpose="Test checks that screen.lockOrientation(null) invoke error callback" status="approved" type="compliance">
-        <description>
-          <test_script_entry>/opt/tct-screenorientation-w3c-tests/screenorientation/ScreenOrientation_lock_orientation_null.html</test_script_entry>
-        </description>
-        <specs>
-          <spec>
-            <spec_assertion category="Tizen W3C API Specifications" element_name="lock" element_type="method" interface="ScreenOrientation" section="Device" specification="The Screen Orientation API" />
-            <spec_url>https://w3c.github.io/screen-orientation/</spec_url>
-            <spec_statement />
-          </spec>
-        </specs>
-      </testcase>
-      <testcase component="W3C_HTML5 APIs/Device/The Screen Orientation API" execution_type="auto" id="ScreenOrientation_onchange_basic" priority="P2" purpose="Test checks that window.onorientationchange is invoked when orientation changes" status="approved" type="compliance">
-        <description>
-          <test_script_entry>/opt/tct-screenorientation-w3c-tests/screenorientation/ScreenOrientation_onchange_basic.html</test_script_entry>
-        </description>
-        <specs>
-          <spec>
-            <spec_assertion category="Tizen W3C API Specifications" element_name="onchange" element_type="method" interface="ScreenOrientation" section="Device" specification="The Screen Orientation API" />
-            <spec_url>https://w3c.github.io/screen-orientation/</spec_url>
-            <spec_statement />
-          </spec>
-        </specs>
-      </testcase>
-      <testcase component="W3C_HTML5 APIs/Device/The Screen Orientation API" execution_type="auto" id="lockOrientation-basic" priority="P2" purpose="Basic screen.lockOrientation() and screen.unlockOrientation() testing" status="approved" type="compliance">
+      <testcase purpose="Test that screen.orientation.lock returns a pending promise" type="compliance" status="approved" component="W3C_HTML5 APIs/Device/The Screen Orientation API" execution_type="manual" priority="P2" id="lockOrientation-basic">
         <description>
           <test_script_entry>/opt/tct-screenorientation-w3c-tests/screenorientation/blink/lockOrientation-basic.html</test_script_entry>
         </description>
         <specs>
           <spec>
-            <spec_assertion category="Tizen W3C API Specifications" element_name="lockOrientation" element_type="method" interface="Screen" section="Device" specification="The Screen Orientation API" />
+            <spec_assertion element_type="method" element_name="lock" interface="ScreenOrientation" specification="The Screen Orientation API" section="Device" category="Tizen W3C API Specifications"/>
             <spec_url>https://w3c.github.io/screen-orientation/</spec_url>
-            <spec_statement />
+            <spec_statement/>
+          </spec>
+        </specs>
+      </testcase>
+      <testcase purpose="Test that orientationchange event is fired when the orientation changes" type="compliance" status="approved" component="W3C_HTML5 APIs/Device/The Screen Orientation API" execution_type="manual" priority="P2" id="orientationchange-event">
+        <description>
+          <test_script_entry>/opt/tct-screenorientation-w3c-tests/screenorientation/blink/orientationchange-event.html</test_script_entry>
+        </description>
+        <specs>
+          <spec>
+            <spec_assertion element_type="event" element_name="onchange" interface="ScreenOrientation" specification="The Screen Orientation API" section="Device" category="Tizen W3C API Specifications"/>
+            <spec_url>https://w3c.github.io/screen-orientation/</spec_url>
+            <spec_statement/>
           </spec>
         </specs>
       </testcase>
