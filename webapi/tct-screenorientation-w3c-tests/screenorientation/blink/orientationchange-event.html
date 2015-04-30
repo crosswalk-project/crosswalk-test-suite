@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<!--
+Test convert from Blink:
+https://github.com/crosswalk-project/blink-crosswalk/blob/master/LayoutTests/screen_orientation/orientationchange-event.html
+
+Use of this source code is governed by a BSD-style license:
+https://chromium.googlesource.com/chromium/blink/+/master/LICENSE
+-->
+
+<html>
+<body>
+<script src="../../resources/testharness.js"></script>
+<script src="../../resources/testharnessreport.js"></script>
+<meta name='flags' content='interact'>
+<meta name="timeout" content="long">
+<div id="log"></div>
+<button id="start">Start to Test</button>
+<button id="cancel" hidden>Cancel FullScreen</button>
+<script>
+
+var orientations = [
+    'portrait-primary',
+    'portrait-secondary',
+    'landscape-primary',
+    'landscape-secondary'
+];
+
+var currentIndex = orientations.indexOf(window.screen.orientation.type);
+// Count the number of calls received from the EventHandler set on screen.orientation.onchange.
+var orientationChangeEventHandlerCalls = 0;
+// Count the number of calls received from the listener set with screen.orientation.addEventListene().
+var orientationChangeEventListenerCalls = 0;
+
+var setOrientation;
+var count = 0;
+
+function getNextIndex() {
+    currentIndex = (currentIndex + 1) % orientations.length;
+    return currentIndex;
+}
+
+setup(function(t) {
+    screen.orientation.unlock();
+
+    setOrientation = function(idx) {
+        count++;
+        if(count > orientations.length) {
+            screen.orientation.unlock();
+            return;
+        }
+        (function(i) {
+            screen.orientation.lock(orientations[i]).then(function() {
+                setOrientation(getNextIndex());
+            },function() { });
+        })(idx);
+    };
+});
+
+async_test(function(t) {
+    window.screen.orientation.addEventListener('change', t.step_func(function() {
+        orientationChangeEventListenerCalls++;
+        assert_equals(screen.orientation.type, orientations[currentIndex]);
+        assert_equals(orientationChangeEventListenerCalls, count);
+        if(orientationChangeEventListenerCalls == orientations.length) {
+            t.done();
+        }
+    }));
+}, "Test that orientationchange event set on screen.orientation.addEventListene is fired when the orientation changes.");
+
+async_test(function(t) {
+    window.screen.orientation.onchange = t.step_func(function() {
+        orientationChangeEventHandlerCalls++;
+        assert_equals(screen.orientation.type, orientations[currentIndex]);
+        assert_equals(orientationChangeEventHandlerCalls, count);
+        if(orientationChangeEventListenerCalls == orientations.length) {
+            t.done();
+        }
+    });
+}, "Test that orientationchange event set on screen.orientation.onchange is fired when the orientation changes.");
+
+document.getElementById("start").onclick = function() {
+    document.onwebkitfullscreenchange = function() {
+        //https://w3c.github.io/screen-orientation/#locking-the-screen-orientation
+        //a user agent might require a document's top-level browsing context to be fullscreen (see Interaction with FullScreen API) in order to allow an orientation lock. 
+        setOrientation(getNextIndex());
+        document.getElementById("start").hidden = true;
+        document.getElementById("cancel").hidden = false;
+    }
+    document.documentElement.webkitRequestFullScreen();
+}
+
+document.getElementById("cancel").onclick = function() {
+    document.onwebkitfullscreenchange = function() {
+        document.getElementById("start").hidden = false;
+        document.getElementById("cancel").hidden = true;
+    }
+    document.webkitCancelFullScreen();
+}
+
+</script>
+</body>
+</html>

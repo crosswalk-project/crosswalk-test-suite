@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<!--
+Test convert from Blink:
+https://github.com/crosswalk-project/blink-crosswalk/blob/master/LayoutTests/screen_orientation/screenorientation-api.html
+
+Use of this source code is governed by a BSD-style license:
+https://chromium.googlesource.com/chromium/blink/+/master/LICENSE
+-->
+
+<html>
+<body>
+<script src="../../resources/testharness.js"></script>
+<script src="../../resources/testharnessreport.js"></script>
+<script>
+
+test(function() {
+    assert_true('orientation' in window.screen);
+    assert_true('angle' in window.screen.orientation);
+    assert_true('type' in window.screen.orientation);
+    assert_true('lock' in window.screen.orientation);
+    assert_true('unlock' in window.screen.orientation);
+    assert_true('onchange' in window.screen.orientation);
+}, "Test that the Screen Orientation API is present.")
+
+test(function() {
+  assert_equals(typeof(screen.orientation), "object");
+  assert_equals(typeof(screen.orientation.angle), "number");
+  assert_equals(typeof(screen.orientation.type), "string");
+  assert_equals(typeof(screen.orientation.lock), "function");
+  assert_equals(typeof(screen.orientation.unlock), "function");
+  assert_equals(typeof(screen.orientation.onchange), "object");
+}, "Test Screen Orientation API property types.");
+
+test(function() {
+  assert_true('addEventListener' in screen.orientation);
+  assert_true('removeEventListener' in screen.orientation);
+  assert_true('dispatchEvent' in screen.orientation);
+  assert_true(screen.orientation instanceof EventTarget)
+}, "Test that screen.orientation is an EventTarget.");
+
+</script>
+</body>
+</html>
