@@ -153,6 +153,16 @@ def fill_with_text(context, key, text):
     assert context.app.fill_element_by_key(key, text)
 
 
+@step(u'I click the link "{text}"')
+def click_element_by_link(context, text):
+    element = context.app.driver.find_element_by_link_text(text)
+    hyperl = element.get_attribute('href')
+    if element:
+        element.click()
+        return True
+    return False
+
+
 @step(u'I check "{key}"')
 def check_checkbox(context, key):
     assert context.app.check_checkbox_by_key(key)
