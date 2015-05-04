@@ -778,19 +778,21 @@ def packAPP(build_json=None, app_src=None, app_dest=None, app_name=None):
             LOG.error("Fail to init package install dest dir: %s" % e)
             return False
 
+    app_tpye = safelyGetValue(build_json, 'app-type')
+
     if checkContains(BUILD_PARAMETERS.pkgtype, "XPK"):
         if not packXPK(build_json, app_src, app_dest, app_name):
             return False
     elif checkContains(BUILD_PARAMETERS.pkgtype, "WGT"):
         if not packWGT(build_json, app_src, app_dest, app_name):
             return False
-    elif checkContains(BUILD_PARAMETERS.pkgtype, "APK"):
+    elif checkContains(BUILD_PARAMETERS.pkgtype, "APK") and app_tpye != "EMBEDDINGAPI":
         if not packAPK(build_json, app_src, app_dest, app_name):
             return False
     elif checkContains(BUILD_PARAMETERS.pkgtype, "CORDOVA"):
         if not packCordova(build_json, app_src, app_dest, app_name):
             return False
-    elif checkContains(BUILD_PARAMETERS.pkgtype, "EMBEDDINGAPI"):
+    elif checkContains(BUILD_PARAMETERS.pkgtype, "EMBEDDINGAPI") or app_tpye == "EMBEDDINGAPI":
         app_version = None
         if "_" in app_name:
             index_flag = app_name.index("_")
