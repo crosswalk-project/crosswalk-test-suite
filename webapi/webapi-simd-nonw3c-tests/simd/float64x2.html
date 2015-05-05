@@ -44,7 +44,7 @@ test("Check if float64x2 object can be creat successful", function () {
   notEqual(undefined, SIMD.float64x2, "the type of float64x2 should not be undefined");
   notEqual(undefined, SIMD.float64x2(1, 2), "the float64x2 object should not be undefined");
   var f1 = SIMD.float64x2(1.0, 2.0);
-  var f2 = SIMD.float64x2(f1);
+  var f2 = SIMD.float64x2.check(f1);
   equal(f1.x, f2.x, "the value of x should equal");
   equal(f1.y, f2.y, "the value of y should equal");
 });
