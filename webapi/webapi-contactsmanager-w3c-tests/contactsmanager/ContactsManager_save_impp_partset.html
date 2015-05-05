@@ -52,7 +52,7 @@ t.step(function () {
     preferred: true,
     value: '+34698765432'
   });
-  var instantAddr = new ContactField({value: 'msn:kangx.xu@intel.com'});
+  var instantAddr = new ContactField({value: 'msn:tester@sample.com'});
   var contact = new Contact({
     name: contactName,
     impp: [instantAddr],
@@ -61,7 +61,7 @@ t.step(function () {
   contacts.save(contact).then(
     function (info) {
       t.step(function () {
-        assert_equals(info.impp[0].value, "msn:kangx.xu@intel.com", "The Contact.impp[0].value");
+        assert_equals(info.impp[0].value, "msn:tester@sample.com", "The Contact.impp[0].value");
       });
       t.done();
     },

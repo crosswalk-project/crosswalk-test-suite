@@ -42,7 +42,7 @@ Authors:
 var contact;
 
 setup(function () {
-  var data = new Date(1987,10,27);
+  var data = new Date();
   var url = new ContactField({
     types: ['work'],
     preferred: true,
@@ -51,7 +51,7 @@ setup(function () {
   var emailAddr = new ContactField({
     types: ['work'],
     preferred: true,
-    value: 'kangx.xu@intel.com'
+    value: 'tester@sample.com'
   });
   var address = new ContactAddress({
     types: ['work'],
@@ -66,7 +66,7 @@ setup(function () {
   var instantAddr = new ContactField({
     types: ['home'],
     preferred: true,
-    value: 'msn:kangx.xu@intel.com'
+    value: 'msn:tester@sample.com'
   });
   var contactName = new ContactName({
     givenNames: ['John'],

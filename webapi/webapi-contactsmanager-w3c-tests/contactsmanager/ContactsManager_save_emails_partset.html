@@ -52,7 +52,7 @@ t.step(function () {
     preferred: true,
     value: '+34698765432'
   });
-  var emailAddr = new ContactField({value: 'kangx.xu@intel.com'});
+  var emailAddr = new ContactField({value: 'tester@sample.com'});
   var contact = new Contact({
     name: contactName,
     emails: [emailAddr],
@@ -61,7 +61,7 @@ t.step(function () {
   contacts.save(contact).then(
     function (info) {
       t.step(function () {
-        assert_equals(info.emails[0].value, "kangx.xu@intel.com", "The Contact.emails[0].value");
+        assert_equals(info.emails[0].value, "tester@sample.com", "The Contact.emails[0].value");
       });
       t.done();
     },
