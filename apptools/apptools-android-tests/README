@@ -14,7 +14,9 @@ If test device is "arm" platform, content of the file should be "arm", default v
   5.1 cd tools, then clone source code from https://github.com/crosswalk-project/crosswalk-app-tools
   5.2 Run commands: cd crosswalk-app-tools, then run: sudo npm install
   5.3 Download Crosswalk from https://origin-download.01.org/crosswalk/releases/crosswalk/android/stable/ to same path with crosswalk-app-tools
-6. Environment variable configuration: export ANDROID_HOME=$(dirname $(dirname $(which android)))
+6. Environment variable configuration:
+  6.1 export ANDROID_HOME=$(dirname $(dirname $(which android)))
+  6.2 export CROSSWALK_APP_TOOLS_CACHE_DIR=/path/to/opt/apptools-android-tests/tools
 
 ## Test Steps
 

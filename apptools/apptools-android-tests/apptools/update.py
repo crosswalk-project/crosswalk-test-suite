@@ -48,6 +48,10 @@ class TestCrosswalkApptoolsFunctions(unittest.TestCase):
         line = commands.getstatusoutput("cat test|sed -n  '/src\=\"\/icons\/folder.gif\"/=' |sed -n '$p'")[1].strip()
         cmd = "cat test |sed -n '%dp' |awk -F 'href=' '{print $2}' |awk -F '\"|/' '{print $2}'" % int(line)
         version = commands.getstatusoutput(cmd)[1]
+        if not '.' in version:
+            line = commands.getstatusoutput("tac test|sed -n  '/src\=\"\/icons\/folder.gif\"/=' |sed -n '2p'")[1].strip()
+            cmd = "tac test |sed -n '%dp' |awk -F 'href=' '{print $2}' |awk -F '\"|/' '{print $2}'" % int(line)
+            version = commands.getstatusoutput(cmd)[1]
         commands.getstatusoutput("rm -rf test")
         comm.run(self)
         comm.clear("org.xwalk.test")
@@ -66,6 +70,10 @@ class TestCrosswalkApptoolsFunctions(unittest.TestCase):
         line = commands.getstatusoutput("cat test|sed -n  '/src\=\"\/icons\/folder.gif\"/=' |sed -n '$p'")[1].strip()
         cmd = "cat test |sed -n '%dp' |awk -F 'href=' '{print $2}' |awk -F '\"|/' '{print $2}'" % int(line)
         version = commands.getstatusoutput(cmd)[1]
+        if not '.' in version:
+            line = commands.getstatusoutput("tac test|sed -n  '/src\=\"\/icons\/folder.gif\"/=' |sed -n '2p'")[1].strip()
+            cmd = "tac test |sed -n '%dp' |awk -F 'href=' '{print $2}' |awk -F '\"|/' '{print $2}'" % int(line)
+            version = commands.getstatusoutput(cmd)[1]
         commands.getstatusoutput("rm -rf test")
         comm.run(self)
         comm.clear("org.xwalk.test")
@@ -84,6 +92,10 @@ class TestCrosswalkApptoolsFunctions(unittest.TestCase):
         line = commands.getstatusoutput("cat test|sed -n  '/src\=\"\/icons\/folder.gif\"/=' |sed -n '$p'")[1].strip()
         cmd = "cat test |sed -n '%dp' |awk -F 'href=' '{print $2}' |awk -F '\"|/' '{print $2}'" % int(line)
         version = commands.getstatusoutput(cmd)[1]
+        if not '.' in version:
+            line = commands.getstatusoutput("tac test|sed -n  '/src\=\"\/icons\/folder.gif\"/=' |sed -n '2p'")[1].strip()
+            cmd = "tac test |sed -n '%dp' |awk -F 'href=' '{print $2}' |awk -F '\"|/' '{print $2}'" % int(line)
+            version = commands.getstatusoutput(cmd)[1]
         commands.getstatusoutput("rm -rf test")
         comm.run(self)
         comm.clear("org.xwalk.test")
@@ -102,6 +114,10 @@ class TestCrosswalkApptoolsFunctions(unittest.TestCase):
         line = commands.getstatusoutput("cat test|sed -n  '/src\=\"\/icons\/folder.gif\"/=' |sed -n '$p'")[1].strip()
         cmd = "cat test |sed -n '%dp' |awk -F 'href=' '{print $2}' |awk -F '\"|/' '{print $2}'" % int(line)
         version = commands.getstatusoutput(cmd)[1]
+        if not '.' in version:
+            line = commands.getstatusoutput("tac test|sed -n  '/src\=\"\/icons\/folder.gif\"/=' |sed -n '2p'")[1].strip()
+            cmd = "tac test |sed -n '%dp' |awk -F 'href=' '{print $2}' |awk -F '\"|/' '{print $2}'" % int(line)
+            version = commands.getstatusoutput(cmd)[1]
         commands.getstatusoutput("rm -rf test")
         comm.run(self)
         comm.clear("org.xwalk.test")
@@ -123,6 +139,18 @@ class TestCrosswalkApptoolsFunctions(unittest.TestCase):
         os.chdir('org.xwalk.test')
         updatecmd =  comm.PackTools + "crosswalk-app update 13.42.319.7"
         comm.update(self, updatecmd)
+        comm.run(self)
+        comm.clear("org.xwalk.test")
+
+    def test_update_currentVersion(self):
+        comm.setUp()
+        comm.create(self)
+        os.chdir('org.xwalk.test')
+        updatecmd =  comm.PackTools + "crosswalk-app update 13.42.319.7"
+        comm.update(self, updatecmd)
+        newupdatecmd =  comm.PackTools + "crosswalk-app update 13.42.319.7"
+        updatestatus = commands.getstatusoutput(newupdatecmd)
+        self.assertIn("Using cached", updatestatus[1])
         comm.run(self)
         comm.clear("org.xwalk.test")
 

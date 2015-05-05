@@ -33,16 +33,18 @@ import os
 import sys
 import commands
 import shutil
+import urllib2
 
 SCRIPT_PATH = os.path.realpath(__file__)
 ConstPath = os.path.dirname(SCRIPT_PATH)
 
 
 def setUp():
-    global device, XwalkPath, XwalkName, PackTools, ARCH
+    global device, XwalkPath, XwalkName, PackTools, ARCH, crashdir
 
     #device = "E6OKCY411012"
     device = os.environ.get('DEVICE_ID')
+    crashdir = os.environ.get('CROSSWALK_APP_TOOLS_CACHE_DIR')
     if not device:
         print ("Get env error\n")
         sys.exit(1)
@@ -113,13 +115,17 @@ def update(self, cmd):
     updatestatus = commands.getstatusoutput(cmd)
     self.assertEquals(updatestatus[0], 0)
     self.assertNotIn("ERROR:", updatestatus[1])
-    namelist = os.listdir(os.getcwd())
-    i = 0
-    for i in range(len(namelist)):
-        if namelist[i].endswith(".zip") and namelist[i].startswith("crosswalk-"):
-            i = i + 1
-    self.assertTrue(i >= 1)
-    return updatestatus[1].split('\n')[-1].split(' ')[-1]
+    version = updatestatus[1].split('\n')[-1].split(' ')[-1]
+    if not crashdir:
+        namelist = os.listdir(os.getcwd())        
+    else:
+        newcrashdir = os.environ.get('CROSSWALK_APP_TOOLS_CACHE_DIR')
+        os.chdir(newcrashdir)
+        namelist = os.listdir(os.getcwd())
+        os.chdir(XwalkPath + 'org.xwalk.test')
+    crosswalk = 'crosswalk-{}.zip'.format(version[1:-1])
+    self.assertIn(crosswalk, namelist)
+    return version
 
 def run(self):
     setUp()
@@ -139,15 +145,23 @@ def run(self):
             uninstatus = commands.getstatusoutput('adb -s ' + device + ' uninstall org.xwalk.test')
             self.assertEquals(uninstatus[0], 0)
 
-def channel(self, old_list, channel):
-    cmd = PackTools + "crosswalk-app create org.xwalk.test --channel=" + channel
-    packstatus = commands.getstatusoutput(cmd)
-    #print packstatus
-    clear("org.xwalk.test")
-    new_list = os.listdir(os.getcwd())
-    zipName =  set(new_list) - set(old_list)
-    print 'zipName', zipName
-    for i in zipName:
-        clear(i)
-    self.assertIn(channel, packstatus[1])
+def channel(self, channel):
+    createcmd = PackTools + "crosswalk-app create org.xwalk.test --channel=" + channel
+    packstatus = commands.getstatusoutput(createcmd)
     self.assertEquals(packstatus[0], 0)
+    self.assertIn(channel, packstatus[1])
+    crosswalklist = urllib2.urlopen('https://download.01.org/crosswalk/releases/crosswalk/android/' + channel + '/').read()
+    fp = open('test', 'w')
+    fp.write(crosswalklist)
+    fp.close()
+    line = commands.getstatusoutput("cat test|sed -n  '/src\=\"\/icons\/folder.gif\"/=' |sed -n '$p'")[1].strip()
+    cmd = "cat test |sed -n '%dp' |awk -F 'href=' '{print $2}' |awk -F '\"|/' '{print $2}'" % int(line)
+    version = commands.getstatusoutput(cmd)[1]
+    if not '.' in version:
+        line = commands.getstatusoutput("tac test|sed -n  '/src\=\"\/icons\/folder.gif\"/=' |sed -n '2p'")[1].strip()
+        cmd = "tac test |sed -n '%dp' |awk -F 'href=' '{print $2}' |awk -F '\"|/' '{print $2}'" % int(line)
+        version = commands.getstatusoutput(cmd)[1]
+    commands.getstatusoutput("rm -rf test")
+    crosswalk = 'crosswalk-{}.zip'.format(version)
+    namelist = os.listdir(os.getcwd())
+    self.assertIn(crosswalk, namelist)
