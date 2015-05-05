@@ -84,7 +84,7 @@ def create(self):
     clear("org.xwalk.test")
     setUp()
     os.chdir(XwalkPath)
-    cmd = PackTools + "crosswalk-app create org.xwalk.test --crosswalk=" + XwalkPath + XwalkName
+    cmd = PackTools + "crosswalk-app create org.xwalk.test"
     packstatus = commands.getstatusoutput(cmd)
     self.assertEquals(packstatus[0], 0)
     self.assertIn("org.xwalk.test", os.listdir(os.getcwd()))
@@ -115,7 +115,7 @@ def update(self, cmd):
     updatestatus = commands.getstatusoutput(cmd)
     self.assertEquals(updatestatus[0], 0)
     self.assertNotIn("ERROR:", updatestatus[1])
-    version = updatestatus[1].split('\n')[-1].split(' ')[-1]
+    version = updatestatus[1].split('\n')[-1].split(' ')[-1][1:-1]
     if not crashdir:
         namelist = os.listdir(os.getcwd())        
     else:
@@ -123,7 +123,7 @@ def update(self, cmd):
         os.chdir(newcrashdir)
         namelist = os.listdir(os.getcwd())
         os.chdir(XwalkPath + 'org.xwalk.test')
-    crosswalk = 'crosswalk-{}.zip'.format(version[1:-1])
+    crosswalk = 'crosswalk-{}.zip'.format(version)
     self.assertIn(crosswalk, namelist)
     return version
 
@@ -146,7 +146,7 @@ def run(self):
             self.assertEquals(uninstatus[0], 0)
 
 def channel(self, channel):
-    createcmd = PackTools + "crosswalk-app create org.xwalk.test --channel=" + channel
+    createcmd = PackTools + "crosswalk-app create org.xwalk.test --android-crosswalk=" + channel
     packstatus = commands.getstatusoutput(createcmd)
     self.assertEquals(packstatus[0], 0)
     self.assertIn(channel, packstatus[1])

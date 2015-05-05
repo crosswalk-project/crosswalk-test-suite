@@ -45,19 +45,16 @@ def generate_cmd():
         shutil.rmtree(comm.ConstPath + '/../report')
     os.mkdir('report')
     fp = open(comm.ConstPath + '/../report/cmd.txt', 'a+')
-    crosswalkcmd = 'find /opt/apptools-android-tests/tools -name "crosswalk-*.zip"'
-    crosswalkdirlist = commands.getstatusoutput(crosswalkcmd)
-    print "crosswalkcmd====================" + crosswalkdirlist[0]
     for i in positive_data:
         num = num + 1
         flag = 'positive' + str(num)
-        cmd = flag + '\tcrosswalk-app create ' + i + ' --crosswalk=' + crosswalkdirlist[0] + '\n'
+        cmd = flag + '\tcrosswalk-app create ' + i + '\n'
         #print cmd
         fp.write(cmd)
     for j in negative_data:
         num = num + 1
         flag = 'negative' + str(num)
-        cmd = flag + '\tcrosswalk-app create ' + j + ' --crosswalk=' + crosswalkdirlist[0] + '\n'
+        cmd = flag + '\tcrosswalk-app create ' + j + '\n'
         #print cmd
         fp.write(cmd)
     fp.close()
@@ -121,40 +118,34 @@ def generate_unittest():
 def tryRunApp(item, cmd):
     try:
         comm.setUp()
-        ToolsPath = comm.XwalkPath + comm.XwalkName
-        fp = open(comm.ConstPath + '/../report/cmd.txt')
-        lines = fp.readlines()
-        for line in lines:
-            item = line.strip('\t\n')
-            flag = item[:10].strip()
-            cmd = item[10:].strip()
-            package = cmd[cmd.index("create")+6:cmd.index("--crosswalk")].strip()
-            exec_cmd = comm.PackTools + cmd[:cmd.index("crosswalk=")+10].strip() + ToolsPath
-            #print exec_cmd
-            if 'negative' in flag:
-                packstatus = commands.getstatusoutput(exec_cmd)
-                if packstatus[0] != 0:
-                    print "Genarate APK ---------------->O.K"
-                    comm.clear(package)
-                    result = 'PASS'
-                    return result
-                else:
-                    print "Genarate APK ---------------->Error"
-                    comm.clear(package)
-                    result = 'FAIL'
-                    return result
-            elif 'positive' in flag:
-                packstatus = commands.getstatusoutput(exec_cmd)
-                if packstatus[0] == 0:
-                    print "Genarate APK ---------------->O.K"
-                    comm.clear(package)
-                    result = 'PASS'
-                    return result
-                else:
-                    print "Genarate APK ---------------->Error"
-                    comm.clear(package)
-                    result = 'FAIL'
-                    return result
+        os.chdir(comm.XwalkPath)
+        package = cmd[cmd.index("create")+6:].strip()
+        exec_cmd = comm.PackTools + cmd
+        #print exec_cmd
+        if 'negative' in item:
+            packstatus = commands.getstatusoutput(exec_cmd)
+            if packstatus[0] != 0:
+                print "Genarate APK ---------------->O.K"
+                comm.clear(package)
+                result = 'PASS'
+                return result
+            else:
+                print "Genarate APK ---------------->Error"
+                comm.clear(package)
+                result = 'FAIL'
+                return result
+        elif 'positive' in item:
+            packstatus = commands.getstatusoutput(exec_cmd)
+            if packstatus[0] == 0:
+                print "Genarate APK ---------------->O.K"
+                comm.clear(package)
+                result = 'PASS'
+                return result
+            else:
+                print "Genarate APK ---------------->Error"
+                comm.clear(package)
+                result = 'FAIL'
+                return result
     except Exception,e:
         print Exception,"Generate pkgName.py error:",e
         sys.exit(1)

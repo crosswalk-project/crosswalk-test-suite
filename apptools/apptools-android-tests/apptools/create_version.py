@@ -26,7 +26,7 @@
 # EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 #
 # Authors:
-#         Hongjuan, Wang<hongjuanx.wang@intel.com>
+#         Yun, Liu<yunx.liu@intel.com>
 
 import unittest
 import os
@@ -35,12 +35,18 @@ import comm
 
 class TestCrosswalkApptoolsFunctions(unittest.TestCase):
 
-    def test_create_channel_canary(self):
+    def test_create_version(self):
         comm.setUp()
         comm.clear("org.xwalk.test")
         os.chdir(comm.XwalkPath)
-        channel = "canary"
-        comm.channel(self, channel)
+        createcmd = comm.PackTools + "crosswalk-app create org.xwalk.test --android-crosswalk=13.42.319.7"
+        packstatus = commands.getstatusoutput(createcmd)
+        crosswalk = 'crosswalk-13.42.319.7.zip'
+        namelist = os.listdir(os.getcwd())
+        comm.clear("org.xwalk.test")
+        self.assertEquals(packstatus[0], 0)
+        self.assertIn("13.42.319.7", packstatus[1])
+        self.assertIn(crosswalk, namelist)
 
 if __name__ == '__main__':
     unittest.main()
