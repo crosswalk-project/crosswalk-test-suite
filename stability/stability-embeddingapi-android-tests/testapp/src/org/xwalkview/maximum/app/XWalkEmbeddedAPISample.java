@@ -4,6 +4,8 @@
 
 package org.xwalkview.maximum.app;
 
+import org.xwalk.views_maximum_test.R;
+
 import java.util.ArrayList;
 import java.util.List;
 
