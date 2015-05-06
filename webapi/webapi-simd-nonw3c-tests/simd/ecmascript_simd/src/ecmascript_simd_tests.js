@@ -30,7 +30,7 @@ test('float32x4 constructor', function() {
   notEqual(undefined, SIMD.float32x4);  // Type.
   notEqual(undefined, SIMD.float32x4(1.0, 2.0, 3.0, 4.0));  // New object.
   var f1 = SIMD.float32x4(1.0, 2.0, 3.0, 4.0);
-  var f2 = SIMD.float32x4(f1);
+  var f2 = SIMD.float32x4.check(f1);
   equal(f1.x, f2.x, "the value of x should equal");
   equal(f1.y, f2.y, "the value of y should equal");
   equal(f1.z, f2.z, "the value of z should equal");

@@ -44,7 +44,7 @@ test("Check if int32x4 object can be creat successful", function () {
   notEqual(undefined, SIMD.int32x4, "the type of int32x4 should not be undefined");
   notEqual(undefined, SIMD.int32x4(1, 2, 3, 4), "the int32x4 object should not be undefined");
   var f1 = SIMD.int32x4(1, 2, 3, 4);
-  var f2 = SIMD.int32x4(f1);
+  var f2 = SIMD.int32x4.check(f1);
   equal(f1.x, f2.x, "the value of x should equal");
   equal(f1.y, f2.y, "the value of y should equal");
   equal(f1.z, f2.z, "the value of z should equal");
