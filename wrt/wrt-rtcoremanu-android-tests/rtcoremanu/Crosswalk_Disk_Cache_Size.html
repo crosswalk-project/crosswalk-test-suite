@@ -35,18 +35,32 @@ Authors:
 <link rel="author" title="Intel" href="http://www.intel.com">
 <body>
   <p>
+    <strong>Precondition:</strong>
+  </p>
+  <ol>
+    <li>The test devices need root permission</li>
+  </ol>
+  <p>
     <strong>Test steps:</strong>
   </p>
   <ol>
-    <li>Install the app named like "diskcachesize" and launch it</li>
-    <li>Settings -&gt; Apps -&gt; The App you installed -&gt; Cache</li>
+    <li>Install the app named like "diskcachesize_no" and launch it, then click any links</li>
+    <li>Run below commands to check the directory after the link opened:<br/>
+        $ adb shell<br/>
+        $ su<br/>
+        $ cd /data/data/org.xwalk.diskcachesize_no/app_xwalkcore/Default/Cache
+    </li>
+    <li>Install the app named like "diskcachesize" and launch it, then click any links</li>
+    <li>Rerun the steps 2</li>
   </ol>
   <p>
     <strong>Expected Results:</strong>
   </p>
   <ol>
     <li>Launch the app successfully</li>
-    <li>The max size of the Cache should be 10240(Bytes)</li>
+    <li>Display many files except index and index-dir</li>
+    <li>Launch the app successfully</li>
+    <li>There just display index and index-dir</li>
   </ol>
 </body>
 
