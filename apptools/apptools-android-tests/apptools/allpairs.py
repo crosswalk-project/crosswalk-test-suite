@@ -36,8 +36,8 @@ import comm
 
 def generate_cmd():
     comm.setUp()
-    positive_data = ['org.xwalk.tests', 'org.xwalk.t1234', 'org.example._xwalk', 'org.example.xwal_', 'org.example.te_st', 'org.xwalk.Tests', 'or_g.example.xwalk', 'org000.example.xwalk', '_org.example.xwalk', 'org.example123.xwalk']
-    negative_data = ['org.xwalk', 'test', 'org.example.1234test', 'org.example.1234', '123org.example.xwalk', 'org.123example.xwalk']
+    positive_data = ['org.xwalk.tests', 'org.xwalk.t1234', 'org.example.xwal_', 'org.example.te_st', 'or_g.example.xwalk', 'org000.example.xwalk', 'org.example123.xwalk']
+    negative_data = ['org.xwalk', 'test', 'org.example.1234test', 'org.example.1234', '123org.example.xwalk', 'org.123example.xwalk', 'org.example._xwalk', 'org.xwalk.Tests', '_org.example.xwalk']
     flag = ''
     num = 0
     os.chdir(comm.ConstPath + '/../')
