@@ -4,7 +4,6 @@
 
 package org.xwalkview.maximum.app;
 
-import org.xwalk.core.XWalkPreferences;
 import org.xwalk.core.XWalkUIClient;
 import org.xwalk.core.XWalkView;
 
@@ -12,12 +11,11 @@ import android.os.Bundle;
 import android.text.TextUtils;
 import android.view.View;
 
-public class AddTextureViewsActivity extends XWalkBaseActivity {
+public class XWalkViewsActivity extends XWalkBaseActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        XWalkPreferences.setValue(XWalkPreferences.ANIMATABLE_XWALK_VIEW, true);
 
         mAddViewsButton.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -30,10 +28,10 @@ public class AddTextureViewsActivity extends XWalkBaseActivity {
                 }
                 int len = checkBoxList.size();
                 for(int i = view_num; i < max_num; i++) {
-                    if (url_index >= len) {
+                	if (url_index >= len) {
                     	url_index = 0;
                     }
-                    XWalkView mXWalkView = new XWalkView(AddTextureViewsActivity.this, AddTextureViewsActivity.this);
+                    XWalkView mXWalkView = new XWalkView(XWalkViewsActivity.this, XWalkViewsActivity.this);
                     mXWalkView.setUIClient(new TestXWalkUIClientBase(mXWalkView));
                     mXWalkView.setX(i * 10);
                     mXWalkView.setY(380 + i * 10);
@@ -52,6 +50,7 @@ public class AddTextureViewsActivity extends XWalkBaseActivity {
                 System.exit(0);
             }
         });
+        mAddViewsButton.performClick();
         setContentView(root);
     }
 

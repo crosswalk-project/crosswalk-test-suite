@@ -2,19 +2,19 @@
 <?xml-stylesheet type="text/xsl" href="./testcase.xsl"?>
 <test_definition>
   <suite name="stability-embeddingapi-android-tests" category="Stability">
+    <set name="Feature_auto" type="pyunit">
+      <testcase component="Stability/Iterative" execution_type="auto" id="Launch_Create1_Exit_Repeat1000" priority="P0" purpose="Validate Create/destroy 1 Xwalkview many times" status="approved" type="Functional">
+        <description>
+          <test_script_entry>/opt/stability-embeddingapi-android-tests/auto/Launch_Create1_Exit_Repeat1000.py</test_script_entry>
+        </description>
+      </testcase>
+    </set>
     <set name="stabiterative" type="js">
       <testcase purpose="Overload Testing" type="Functional" status="approved" component="Stability/Overload" execution_type="manual" priority="P1" id="Create_XWalkView_Maximum">
         <description>
           <pre_condition>
           </pre_condition>
           <test_script_entry>/opt/stability-embeddingapi-android-tests/manual/Create_XWalkView_Maximum.html</test_script_entry>
-        </description>
-      </testcase>
-      <testcase purpose="Overload Testing" type="Functional" status="approved" component="Stability/Overload" execution_type="manual" priority="P1" id="Create_Destroy_One_XWalkView_Repeat">
-        <description>
-          <pre_condition>
-          </pre_condition>
-          <test_script_entry>/opt/stability-embeddingapi-android-tests/manual/Create_Destroy_One_XWalkView_Repeat.html</test_script_entry>
         </description>
       </testcase>
     </set>
