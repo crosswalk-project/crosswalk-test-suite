@@ -34,17 +34,11 @@ import commands
 import comm
 
 class TestCrosswalkApptoolsFunctions(unittest.TestCase):
-    def test_normal(self):
-        comm.setUp()
-        os.chdir(comm.XwalkPath)
-        comm.create(self)
-        comm.clear("org.xwalk.test")
-
     def test_dir_exist(self):
         comm.setUp()
         os.chdir(comm.XwalkPath)
         os.mkdir("org.xwalk.test")
-        cmd = comm.PackTools + "crosswalk-app create org.xwalk.test --crosswalk=" + comm.XwalkPath + comm.XwalkName
+        cmd = comm.PackTools + "crosswalk-app create org.xwalk.test"
         packstatus = commands.getstatusoutput(cmd)
         self.assertNotEquals(packstatus[0], 0)
         comm.clear("org.xwalk.test")

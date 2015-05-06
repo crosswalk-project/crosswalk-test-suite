@@ -42,5 +42,19 @@ class TestCrosswalkApptoolsFunctions(unittest.TestCase):
         channel = "beta"
         comm.channel(self, channel)
 
+    def test_create_channel_canary(self):
+        comm.setUp()
+        comm.clear("org.xwalk.test")
+        os.chdir(comm.XwalkPath)
+        channel = "canary"
+        comm.channel(self, channel)
+
+    def test_create_channel_stable(self):
+        comm.setUp()
+        comm.clear("org.xwalk.test")
+        os.chdir(comm.XwalkPath)
+        channel = "stable"
+        comm.channel(self, channel)
+
 if __name__ == '__main__':
     unittest.main()
