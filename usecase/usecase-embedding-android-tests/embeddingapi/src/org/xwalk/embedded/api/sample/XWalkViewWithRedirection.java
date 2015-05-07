@@ -23,7 +23,8 @@ public class XWalkViewWithRedirection extends XWalkBaseActivity{
         super.onCreate(savedInstanceState);
         StringBuffer mess = new StringBuffer();
         mess.append("Test Purpose: \n\n")
-        .append("Verifies how many times onPageLoadStopped called when visit a web page with redirection.\n\n")
+        .append("Verifies how many times onPageLoadStopped called when visit a web page with redirection.\n")
+        .append("Load a page with redirection, track onPageLoadStopped, onPageLoadStarted, onProgressChanged called times.\n\n")
         .append("Test  Step:\n\n")
         .append("1. load the website http://www.cnn.com/ automatically.\n")
         .append("2. observe the onProgressChanged id until it is 100.\n\n")
