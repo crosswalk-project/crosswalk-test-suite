@@ -148,3 +148,14 @@ This usecase covers following interface and methods:
 
 * XWalkView interface: setZOrderOnTop, setBackgroundColor methods
 
+
+
+### 14. The [XWalkViewWithRedirection](XWalkViewWithRedirection.java) sample verifies how many times onPageLoadStopped called when visit a web page with redirection, include:
+
+* XWalkUIClient's onPageLoadStopped() method just be called once when visit a web page with redirection
+
+This usecase covers following interface and methods:
+
+* XWalkView interface: load, setResourceClient, setUIClient methods
+* ResourceClient interface: onProgressChanged method
+* UIClient interface: onPageLoadStarted, onPageLoadStopped methods
