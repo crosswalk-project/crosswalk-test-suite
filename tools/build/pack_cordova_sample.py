@@ -40,7 +40,9 @@ import json
 import logging
 import signal
 import commands
+import fnmatch
 import subprocess
+import re
 from optparse import OptionParser
 
 reload(sys)
@@ -81,6 +83,26 @@ class ColorFormatter(logging.Formatter):
 
         return logging.Formatter.format(self, record)
 
+def replaceUserString(path, fnexp, old_s, new_s):
+    for sub_file in iterfindfiles(path,fnexp):
+        try:
+            with open(sub_file,'r') as sub_read_obj:
+                read_string = sub_read_obj.read()
+        except IOError as err:
+            LOG.error("Read %s Error : "%sub_file + str(err))
+            continue
+        if read_string.find(old_s) >= 0:
+            try:
+                with open(sub_file,'w') as sub_write_obj:
+                    sub_write_obj.write(re.sub(old_s,new_s,read_string))
+            except IOError as err:
+                LOG.error("Modify %s Error : "%sub_file + str(err))
+                continue
+
+def iterfindfiles(path, fnexp):
+    for root, dirs, files in os.walk(path):
+        for filename in fnmatch.filter(files, fnexp):
+            yield os.path.join(root, filename)
 
 def isWindows():
     return sys.platform == "cygwin" or sys.platform.startswith("win")
@@ -405,6 +427,96 @@ def packSampleApp(app_name=None):
     os.chdir(orig_dir)
     return True
 
+def packSampleApp_cli(app_name=None):
+    project_root = os.path.join(BUILD_ROOT, app_name)
+
+    output = commands.getoutput("cordova -v")
+    if output != "5.0.0":
+        LOG.error("Cordova 4.0 build requires Cordova-CLI 5.0.0, install with command: '$ sudo npm install cordova@5.0.0 -g'")
+        return False
+
+    plugin_tool = os.path.join(BUILD_ROOT, "cordova_plugins")
+    if not os.path.exists(plugin_tool):
+        if not doCopy(
+                os.path.join(BUILD_PARAMETERS.pkgpacktools, "cordova_plugins"),
+                plugin_tool):
+            return False
+
+    orig_dir = os.getcwd()
+    os.chdir(BUILD_ROOT)
+    pack_cmd = "cordova create %s com.example.%s %s" % (
+        app_name, app_name, app_name)
+
+    if not doCMD(pack_cmd, DEFAULT_CMD_TIMEOUT):
+        os.chdir(orig_dir)
+        return False
+
+    ### Set activity name as app_name
+    replaceUserString(project_root, 'config.xml', '<widget', '<widget android-activityName="%s"' % app_name)
+    ### Workaround for XWALK-3679
+    replaceUserString(project_root, 'config.xml', '</widget>', '    <allow-navigation href="*" />\n</widget>')
+
+    if checkContains(app_name, "GALLERY"):
+        getsource_cmd = "git clone https://github.com/blueimp/Gallery"
+        if not doCMD(getsource_cmd, DEFAULT_CMD_TIMEOUT):
+            os.chdir(orig_dir)
+            return False
+        if not doRemove(glob.glob(os.path.join(project_root, "www"))):
+            os.chdir(orig_dir)
+            return False
+        if not doCopy(os.path.join(BUILD_ROOT, "Gallery"), 
+                os.path.join(project_root, "www")):
+            os.chdir(orig_dir)
+            return False
+
+    if checkContains(app_name, "HELLOWORLD"):
+        if not replaceKey(os.path.join(project_root, "www", "index.html"), 
+                "<a href='http://www.intel.com'>Intel</a>\n</body>",
+                "</body>"):
+            os.chdir(orig_dir)
+            return False
+
+    os.chdir(project_root)
+    pack_cmd = "cordova platform add android"
+    if not doCMD(pack_cmd, DEFAULT_CMD_TIMEOUT):
+        os.chdir(orig_dir)
+        return False
+
+    plugin_dirs = os.listdir(plugin_tool)
+    for i_dir in plugin_dirs:
+        i_plugin_dir = os.path.join(plugin_tool, i_dir)
+        plugin_install_cmd = "cordova plugin add %s" % i_plugin_dir
+        if not doCMD(plugin_install_cmd, DEFAULT_CMD_TIMEOUT):
+            os.chdir(orig_dir)
+            return False
+
+    ANDROID_HOME = "echo $(dirname $(dirname $(which android)))"
+    os.environ['ANDROID_HOME'] = commands.getoutput(ANDROID_HOME)
+    pack_cmd = "cordova build android"
+
+    if checkContains(app_name, "REMOTEDEBUGGING"):
+        pack_cmd = "cordova build android --debug"
+
+    if not doCMD(pack_cmd, DEFAULT_CMD_TIMEOUT):
+        os.chdir(orig_dir)
+        return False
+
+    outputs_dir = os.path.join(project_root, "platforms", "android", "build", "outputs", "apk")
+
+    if BUILD_PARAMETERS.pkgarch == "x86":
+        cordova_tmp_path = os.path.join(outputs_dir, "%s-x86-debug.apk"%app_name)
+        cordova_tmp_path_spare = os.path.join(outputs_dir, "android-x86-debug.apk")
+    else:
+        cordova_tmp_path = os.path.join(outputs_dir, "%s-armv7-debug.apk"%app_name)
+        cordova_tmp_path_spare = os.path.join(outputs_dir, "android-armv7-debug.apk")
+
+    if not doCopy(cordova_tmp_path, os.path.join(orig_dir, "%s.apk" % app_name)):
+        if not doCopy(cordova_tmp_path_spare, os.path.join(orig_dir, "%s.apk" % app_name)):
+            os.chdir(orig_dir)
+            return False
+    os.chdir(orig_dir)
+    return True
+
 def packAPP(app_name=None):
     LOG.info("Packing %s" % (app_name))
 
@@ -416,8 +528,12 @@ def packAPP(app_name=None):
             if not packMobileSpec(app_name):
                 return False
     else:
-        if not packSampleApp(app_name):
-            return False
+        if BUILD_PARAMETERS.cordovaversion == '4.0':
+            if not packSampleApp_cli(app_name):
+                return False
+        else:
+            if not packSampleApp(app_name):
+                return False
 
     LOG.info("Success to pack APP: %s" % app_name)
     return True
