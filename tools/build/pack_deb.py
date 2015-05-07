@@ -372,6 +372,7 @@ def packDEB(build_json=None, app_src=None, app_dest=None, app_name=None):
     orig_dir = os.getcwd()
     os.chdir(app_src)
     LOG.info("Change dir to : %s" % app_src)
+    pkg_name = "org.test." + app_name.replace("-", "")
 
     if doCMD(pack_cmd, DEFAULT_CMD_TIMEOUT):
 		for parent,dirnames,filenames in os.walk(os.path.join(app_src, "pkg")):
@@ -379,7 +380,7 @@ def packDEB(build_json=None, app_src=None, app_dest=None, app_name=None):
 			if app_name:
 				os.chdir(os.path.join(app_src, "pkg"))
 				for filename in filenames:
-					rename_cmd = "mv %s %s" % (filename, app_name + ".deb")
+					rename_cmd = "mv %s %s" % (filename, pkg_name + ".deb")
 					if not doCMD(rename_cmd, DEFAULT_CMD_TIMEOUT):
 						os.chdir(orig_dir)
 						return False
@@ -415,7 +416,7 @@ def packAPP(build_json=None, app_src=None, app_dest=None, app_name=None):
 def createIndexFile(index_file_path=None, hosted_app=None):
     try:
         index_url = "opt/%s/webrunner/index.html?testsuite=../tests.xml" \
-                        "&testprefix=../../.." % PKG_NAME
+                        "&testprefix=../../../.." % PKG_NAME
         html_content = "<!doctype html><head><meta http-equiv='Refresh' " \
                        "content='1; url=%s'></head>" % index_url
         index_file = open(index_file_path, "w")
@@ -490,7 +491,7 @@ def buildPKGAPP(build_json=None):
 				LOG.error("Fail to make the crosswalk-app-tools-deb dir: %s" % e)
 				return False
 
-		pkg_name = "org.test." + PKG_NAME
+		pkg_name = "org.test." + PKG_NAME.replace("-", "")
 		pack_cmd = "crosswalk-app create " + pkg_name
 		orig_dir = os.getcwd()
 		LOG.info("+Change dir to %s: " % os.path.join(BUILD_ROOT_SRC, "crosswalk-app-tools-deb"))
