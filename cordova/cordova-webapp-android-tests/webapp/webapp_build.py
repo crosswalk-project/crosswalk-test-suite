@@ -36,17 +36,13 @@ class TestWebAppFunctions(unittest.TestCase):
     def test_build(self):
         comm.setUp()
         app_name = "helloworld"
-        if comm.MODE == "shared":
-            cmd_create = "bin/create " + app_name + " com.example." + app_name + " " + app_name + " --xwalk-shared-library"
-        else:
-            cmd_create = "bin/create " + app_name + " com.example." + app_name + " " + app_name
-        comm.create(cmd_create, app_name, self)
-        if not comm.replace_key(os.path.join(comm.pack_tool, app_name, "assets", "www", "index.html"), 
-                "<a href='http://www.intel.com'>Intel</a>\n</body>",
-                "</body>"):
-            return False
-        cmd_build = "./cordova/build"
-        comm.build(cmd_build, app_name, self)
+        pkg_name = " com.example." + app_name.lower()
+        content = "<a href='http://www.intel.com'>Intel</a>\n</body>"
+        key = "</body>"
+        replace_index_list = [key, content]
+        comm.create(app_name, pkg_name, comm.MODE, None, replace_index_list, self)
+        comm.build(app_name, False, self)
+
 
 if __name__ == '__main__':  
     unittest.main()

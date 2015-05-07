@@ -37,11 +37,9 @@ class TestWebAppFunctions(unittest.TestCase):
         comm.setUp()
         app_name = "helloworld"
         pkg_name = "com.example." + app_name.lower()
-        cmd_launch = "adb -s " + comm.device + " shell am start -n %s/.%s" % \
-                (pkg_name, app_name)
         if not comm.check_app_installed(pkg_name, self):
             comm.app_install(app_name, pkg_name, self)
-        comm.app_launch(cmd_launch, self)
+        comm.app_launch(app_name, pkg_name, self)
 
 if __name__ == '__main__':  
     unittest.main()

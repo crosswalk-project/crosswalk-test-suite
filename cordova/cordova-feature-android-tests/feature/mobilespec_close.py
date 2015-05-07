@@ -40,16 +40,11 @@ class TestMobileSpecAppFunctions(unittest.TestCase):
         pkg_name = "org.apache." + app_name.lower()
         if not comm.check_app_installed(pkg_name, self):
             comm.app_install(app_name, pkg_name, self)
-        # Find whether the app have launched
-        cmd_acti = "adb -s " + comm.device + " shell ps | grep %s" % pkg_name
-        launched = commands.getstatusoutput(cmd_acti)
-        if launched[0] != 0:
+        if not comm.check_app_launched(pkg_name, self):
             print "Close app ---------------->%s App haven't launched, need to launch it!" % app_name
-            cmd_start = "adb -s " + comm.device + " shell am start -n %s/.%s" % (pkg_name, app_name)
-            comm.app_launch(cmd_start, self)
+            comm.app_launch(app_name, pkg_name, self)
             time.sleep(1)
-        cmd_close = "adb -s " + comm.device + " shell am force-stop %s" % pkg_name
-        comm.app_stop(cmd_close, self)
+        comm.app_stop(pkg_name, self)
 
 if __name__ == '__main__':  
     unittest.main()
