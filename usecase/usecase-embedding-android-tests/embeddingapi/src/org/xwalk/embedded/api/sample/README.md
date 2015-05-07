@@ -160,3 +160,13 @@ This usecase covers following interface and methods:
 * ResourceClient interface: onProgressChanged method
 * UIClient interface: onPageLoadStarted, onPageLoadStopped methods
 
+
+
+### 15. The [XWalkViewWithLoadImage](XWalkViewWithLoadImage.java) sample load image from XWalkView, include:
+
+* XWalkView can load image
+
+This usecase covers following interface and methods:
+
+* XWalkView interface: load, onActivityResult methods
+
