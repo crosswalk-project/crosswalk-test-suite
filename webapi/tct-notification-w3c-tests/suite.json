@@ -66,6 +66,23 @@
                     "PACK-TOOL-ROOT/resources/webrunner": "webrunner"
                 }
             }
+        },
+        "deb": {
+            "blacklist": [
+                "*"
+            ],
+            "copylist": {
+                "inst.deb.py": "inst.py",
+                "tests.full.xml": "tests.full.xml",
+                "tests.xml": "tests.xml"
+            },
+            "pkg-app": {
+                "blacklist": ["crosswalk-app-tools-deb"],
+                "copylist": {
+                    "PACK-TOOL-ROOT/resources/webrunner": "webrunner",
+                    "PACK-TOOL-ROOT/resources/testharness": "resources"
+                }
+            }
         }
     },
     "pkg-name": "tct-notification-w3c-tests"
