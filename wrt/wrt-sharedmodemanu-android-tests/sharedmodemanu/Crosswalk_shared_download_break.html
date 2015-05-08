@@ -26,13 +26,12 @@ NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE,
 EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
 Authors:
-    Xu, Kang <kangx.xu@intel.com>
     Wang, Hongjuan <hongjuanx.wang@intel.com>
 
 -->
 
 <meta charset='utf-8'>
-<title>Crosswalk_arch_mismatch_x86_embeded</title>
+<title>Crosswalk_shared_download_break</title>
 <link rel="author" title="Intel" href="http://www.intel.com">
 <body>
   <p>
@@ -47,14 +46,16 @@ Authors:
   <ol>
     <li>Open one terminal command line window run terminal command, just need to run one of the commands below:
       <ul>
-        <li>$ python make_apk.py --name=&lt;name&gt; --package=&lt;package&gt; --app-url=http://www.baidu.com --arch=x86 --mode=embedded</li>
-        <li>$ python make_apk.py --package=&lt;package&gt; --manifest=&lt;manifest-path&gt; --arch=x86 --mode=embedded</li>
-        <li>$ python make_apk.py --package=&lt;package&gt; --app-local-path=index.html --app-root=&lt;app-root-path&gt; --arch=x86 --mode=embedded</li>
+        <li>$ python make_apk.py --name=&lt;name&gt; --package=&lt;package&gt; --app-url=http://www.baidu.com --mode=shared</li>
+        <li>$ python make_apk.py --package=&lt;package&gt; --manifest=&lt;manifest-path&gt;--mode=shared</li>
+        <li>$ python make_apk.py --package=&lt;package&gt; --app-local-path=index.html --app-root=&lt;app-root-path&gt; --mode=shared</li>
       </ul>
     </li>
-    <li>Install apk on arm devices</li>
+    <li>Install apk on test devices</li>
     <li>Launch web app</li>
-    <li>Click "Get Crosswalk" to download the Crosswalk Library and install it</li>
+    <li>Click "Get Crosswalk" to download the Crosswalk Runtime Library, then disable the network to break the downloading process</li>
+    <li>Check if the previous download data exists</li>
+    <li>Make sure the network is enable, then click "Get Crosswalk" to re download the Crosswalk Runtime Library and install it</li>
     <li>Check the launched screen</li>
   </ol>
   <p>
@@ -63,8 +64,10 @@ Authors:
   <ol>
     <li>Generate APK installation package successfully</li>
     <li>Install web app successfully</li>
-    <li>Launch web app failed, popup a message like "Please get Crosswalk Runtime Library"</li>
-    <li>Install the Crosswalk Library successfully</li>
+    <li>Launch web app failed and prompt: Please get Crosswalk Runtime Library</li>
+    <li>Break the downloading process</li>
+    <li>The previous download data doesn't exists</li>
+    <li>Download the Library successfully and install it successfully</li>
     <li>Launch the app successfully</li>
   </ol>
 </body>
