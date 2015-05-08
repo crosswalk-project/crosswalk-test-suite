@@ -173,11 +173,12 @@ public class LoadTest extends XWalkViewTestBase {
     @SmallTest
     public void testGetOriginalUrl() {
         try {
-            String originalUrl = "file:///android_asset/index.html";
+            String originalUrl = "file:///android_asset/redirect_url.html";
             String url = "file:///android_asset/p1bar.html";
             loadUrlSync(originalUrl);
-            loadUrlSync(url);
+            Thread.sleep(500);
             assertEquals(originalUrl, getOriginalUrlOnUiThread());
+            assertEquals(url, getUrlOnUiThread());
         } catch (Exception e) {
             assertTrue(false);
             e.printStackTrace();
