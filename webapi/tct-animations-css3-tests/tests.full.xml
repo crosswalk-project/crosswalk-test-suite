@@ -3,988 +3,1023 @@
 <test_definition>
   <suite category="W3C/HTML5 APIs" name="tct-animations-css3-tests">
     <set name="Animations" type="js">
-      <testcase component="W3C_HTML5 APIs/DOM, Forms and Styles/CSS Animations Module Level 3" execution_type="auto" id="CSS3Animations_animation-duration_exists" priority="P1" purpose="Check if Animations.animation-duration attribute exists" status="approved" type="compliance">
+      <testcase purpose="When animation-delay is set to a negative time offset, animation will execute as soon as it is applied but act as if the animation had started the specified time in the past" type="compliance" status="approved" component="W3C_HTML5 APIs/DOM, Forms and Styles/CSS Animations Module Level 3" execution_type="manual" priority="P2" id="animation-delay-001">
         <description>
-          <test_script_entry>/opt/tct-animations-css3-tests/animations/CSS3Animations_animation-duration_exists.html</test_script_entry>
+          <test_script_entry>/opt/tct-animations-css3-tests/animations/csswg/animation-delay-001.html</test_script_entry>
         </description>
         <specs>
           <spec>
-            <spec_assertion category="Tizen W3C API Specifications" element_name="animation-duration" element_type="property" interface="CSS" section="DOM, Forms and Styles" specification="CSS Animations Module Level 3" />
-            <spec_url>http://www.w3.org/TR/2012/WD-css3-animations-20120403/#the-animation-duration-property-</spec_url>
-            <spec_statement />
+            <spec_assertion element_type="property" element_name="animation-delay" interface="CSS" specification="CSS Animations Module Level 3" section="DOM, Forms and Styles" category="Tizen W3C API Specifications"/>
+            <spec_url>http://dev.w3.org/csswg/css-animations-1/#animation-delay</spec_url>
+            <spec_statement/>
           </spec>
         </specs>
       </testcase>
-      <testcase component="W3C_HTML5 APIs/DOM, Forms and Styles/CSS Animations Module Level 3" execution_type="auto" id="CSS3Animations_animation-iteration-count_exists" priority="P1" purpose="Check if Animations.animation-iteration-count attribute exists" status="approved" type="compliance">
+      <testcase purpose="When animation-delay is set to a positive time offset, animation will delay execution by the specified offset value" type="compliance" status="approved" component="W3C_HTML5 APIs/DOM, Forms and Styles/CSS Animations Module Level 3" execution_type="manual" priority="P2" id="animation-delay-002">
         <description>
-          <test_script_entry>/opt/tct-animations-css3-tests/animations/CSS3Animations_animation-iteration-count_exists.html</test_script_entry>
+          <test_script_entry>/opt/tct-animations-css3-tests/animations/csswg/animation-delay-002.html</test_script_entry>
         </description>
         <specs>
           <spec>
-            <spec_assertion category="Tizen W3C API Specifications" element_name="animation-iteration-count" element_type="property" interface="CSS" section="DOM, Forms and Styles" specification="CSS Animations Module Level 3" />
-            <spec_url>http://www.w3.org/TR/2012/WD-css3-animations-20120403/#animation-iteration-count</spec_url>
-            <spec_statement />
+            <spec_assertion element_type="property" element_name="animation-delay" interface="CSS" specification="CSS Animations Module Level 3" section="DOM, Forms and Styles" category="Tizen W3C API Specifications"/>
+            <spec_url>http://dev.w3.org/csswg/css-animations-1/#animation-delay</spec_url>
+            <spec_statement/>
           </spec>
         </specs>
       </testcase>
-      <testcase component="W3C_HTML5 APIs/DOM, Forms and Styles/CSS Animations Module Level 3" execution_type="auto" id="CSS3Animations_animation-direction_exists" priority="P1" purpose="Check if Animations.animation-direction attribute exists" status="approved" type="compliance">
+      <testcase purpose="When animation-delay is set to 0s (zero seconds), animation will execute as soon as it is applied" type="compliance" status="approved" component="W3C_HTML5 APIs/DOM, Forms and Styles/CSS Animations Module Level 3" execution_type="manual" priority="P2" id="animation-delay-003">
         <description>
-          <test_script_entry>/opt/tct-animations-css3-tests/animations/CSS3Animations_animation-direction_exists.html</test_script_entry>
+          <test_script_entry>/opt/tct-animations-css3-tests/animations/csswg/animation-delay-003.html</test_script_entry>
         </description>
         <specs>
           <spec>
-            <spec_assertion category="Tizen W3C API Specifications" element_name="animation-direction" element_type="property" interface="CSS" section="DOM, Forms and Styles" specification="CSS Animations Module Level 3" />
-            <spec_url>http://www.w3.org/TR/2012/WD-css3-animations-20120403/#animation-direction</spec_url>
-            <spec_statement />
+            <spec_assertion element_type="property" element_name="animation-delay" interface="CSS" specification="CSS Animations Module Level 3" section="DOM, Forms and Styles" category="Tizen W3C API Specifications"/>
+            <spec_url>http://dev.w3.org/csswg/css-animations-1/#animation-delay</spec_url>
+            <spec_statement/>
           </spec>
         </specs>
       </testcase>
-      <testcase component="W3C_HTML5 APIs/DOM, Forms and Styles/CSS Animations Module Level 3" execution_type="auto" id="CSS3Animations_animation-delay_exists" priority="P1" purpose="Check if Animations.animation-delay attribute exists" status="approved" type="compliance">
+      <testcase purpose="Check that animation-delay applies to the ::after pseudo element" type="compliance" status="approved" component="W3C_HTML5 APIs/DOM, Forms and Styles/CSS Animations Module Level 3" execution_type="manual" priority="P2" id="animation-delay-004">
         <description>
-          <test_script_entry>/opt/tct-animations-css3-tests/animations/CSS3Animations_animation-delay_exists.html</test_script_entry>
+          <test_script_entry>/opt/tct-animations-css3-tests/animations/csswg/animation-delay-004.html</test_script_entry>
         </description>
         <specs>
           <spec>
-            <spec_assertion category="Tizen W3C API Specifications" element_name="animation-delay" element_type="property" interface="CSS" section="DOM, Forms and Styles" specification="CSS Animations Module Level 3" />
-            <spec_url>http://www.w3.org/TR/2012/WD-css3-animations-20120403/#animation-delay</spec_url>
-            <spec_statement />
+            <spec_assertion element_type="property" element_name="animation-delay" interface="CSS" specification="CSS Animations Module Level 3" section="DOM, Forms and Styles" category="Tizen W3C API Specifications"/>
+            <spec_url>http://dev.w3.org/csswg/css-animations-1/#animation-delay</spec_url>
+            <spec_statement/>
           </spec>
         </specs>
       </testcase>
-      <testcase component="W3C_HTML5 APIs/DOM, Forms and Styles/CSS Animations Module Level 3" execution_type="auto" id="CSS3Animations_animation_exists" priority="P1" purpose="Check if animation attribute exists" status="approved" type="compliance">
+      <testcase purpose="Check that animation-delay applies to the ::before pseudo element" type="compliance" status="approved" component="W3C_HTML5 APIs/DOM, Forms and Styles/CSS Animations Module Level 3" execution_type="manual" priority="P2" id="animation-delay-005">
         <description>
-          <test_script_entry>/opt/tct-animations-css3-tests/animations/CSS3Animations_animation_exists.html</test_script_entry>
+          <test_script_entry>/opt/tct-animations-css3-tests/animations/csswg/animation-delay-005.html</test_script_entry>
         </description>
         <specs>
           <spec>
-            <spec_assertion category="Tizen W3C API Specifications" element_name="animation" element_type="property" interface="CSS" section="DOM, Forms and Styles" specification="CSS Animations Module Level 3" />
-            <spec_url>http://www.w3.org/TR/2012/WD-css3-animations-20120403/#the-animation-name-property-</spec_url>
-            <spec_statement />
+            <spec_assertion element_type="property" element_name="animation-delay" interface="CSS" specification="CSS Animations Module Level 3" section="DOM, Forms and Styles" category="Tizen W3C API Specifications"/>
+            <spec_url>http://dev.w3.org/csswg/css-animations-1/#animation-delay</spec_url>
+            <spec_statement/>
           </spec>
         </specs>
       </testcase>
-      <testcase component="W3C_HTML5 APIs/DOM, Forms and Styles/CSS Animations Module Level 3" execution_type="auto" id="CSS3Animations_animationstart" priority="P1" purpose="Check if animationstart event exists" status="approved" type="compliance">
+      <testcase purpose="Check that animation-delay property accepts 'initial' keyword" type="compliance" status="approved" component="W3C_HTML5 APIs/DOM, Forms and Styles/CSS Animations Module Level 3" execution_type="manual" priority="P2" id="animation-delay-006">
         <description>
-          <test_script_entry>/opt/tct-animations-css3-tests/animations/CSS3Animations_animationstart.html</test_script_entry>
+          <test_script_entry>/opt/tct-animations-css3-tests/animations/csswg/animation-delay-006.html</test_script_entry>
         </description>
         <specs>
           <spec>
-            <spec_assertion category="Tizen W3C API Specifications" element_name="event animationstart" element_type="property" interface="CSS" section="DOM, Forms and Styles" specification="CSS Animations Module Level 3" />
-            <spec_url>http://www.w3.org/TR/2012/WD-css3-animations-20120403/#animation-events</spec_url>
-            <spec_statement />
+            <spec_assertion element_type="property" element_name="animation-delay" interface="CSS" specification="CSS Animations Module Level 3" section="DOM, Forms and Styles" category="Tizen W3C API Specifications"/>
+            <spec_url>http://dev.w3.org/csswg/css-animations-1/#animation-delay</spec_url>
+            <spec_statement/>
           </spec>
         </specs>
       </testcase>
-      <testcase component="W3C_HTML5 APIs/DOM, Forms and Styles/CSS Animations Module Level 3" execution_type="auto" id="CSS3Animations_animationend" priority="P1" purpose="Check if animationend event exists" status="approved" type="compliance">
+      <testcase purpose="Check that animation-delay property accepts 'inherit' keyword" type="compliance" status="approved" component="W3C_HTML5 APIs/DOM, Forms and Styles/CSS Animations Module Level 3" execution_type="manual" priority="P2" id="animation-delay-007">
         <description>
-          <test_script_entry>/opt/tct-animations-css3-tests/animations/CSS3Animations_animationend.html</test_script_entry>
+          <test_script_entry>/opt/tct-animations-css3-tests/animations/csswg/animation-delay-007.html</test_script_entry>
         </description>
         <specs>
           <spec>
-            <spec_assertion category="Tizen W3C API Specifications" element_name="event animationend" element_type="property" interface="CSS" section="DOM, Forms and Styles" specification="CSS Animations Module Level 3" />
-            <spec_url>http://www.w3.org/TR/2012/WD-css3-animations-20120403/#animation-events</spec_url>
-            <spec_statement />
+            <spec_assertion element_type="property" element_name="animation-delay" interface="CSS" specification="CSS Animations Module Level 3" section="DOM, Forms and Styles" category="Tizen W3C API Specifications"/>
+            <spec_url>http://dev.w3.org/csswg/css-animations-1/#animation-delay</spec_url>
+            <spec_statement/>
           </spec>
         </specs>
       </testcase>
-      <testcase component="W3C_HTML5 APIs/DOM, Forms and Styles/CSS Animations Module Level 3" execution_type="auto" id="CSS3Animations_animationiteration" priority="P1" purpose="Check if animationiteration event exists" status="approved" type="compliance">
+      <testcase purpose="When animation-direction is set to alternate, animation cycle will iteration that are odd counts are played in the normal direction, and the animation cycle iterations that are even counts are played in a reverse direction" type="compliance" status="approved" component="W3C_HTML5 APIs/DOM, Forms and Styles/CSS Animations Module Level 3" execution_type="manual" priority="P2" id="animation-direction-001">
         <description>
-          <test_script_entry>/opt/tct-animations-css3-tests/animations/CSS3Animations_animationiteration.html</test_script_entry>
+          <test_script_entry>/opt/tct-animations-css3-tests/animations/csswg/animation-direction-001.html</test_script_entry>
         </description>
         <specs>
           <spec>
-            <spec_assertion category="Tizen W3C API Specifications" element_name="event animationiteration" element_type="property" interface="CSS" section="DOM, Forms and Styles" specification="CSS Animations Module Level 3" />
-            <spec_url>http://www.w3.org/TR/2012/WD-css3-animations-20120403/#animation-events</spec_url>
-            <spec_statement />
+            <spec_assertion element_type="property" element_name="animation-direction" interface="CSS" specification="CSS Animations Module Level 3" section="DOM, Forms and Styles" category="Tizen W3C API Specifications"/>
+            <spec_url>http://dev.w3.org/csswg/css-animations-1/#animation-direction</spec_url>
+            <spec_statement/>
           </spec>
         </specs>
       </testcase>
-      <testcase component="W3C_HTML5 APIs/DOM, Forms and Styles/CSS Animations Module Level 3" execution_type="auto" id="Animations_animation-play-state" priority="P1" purpose="Check if Animations.animation-play-state attribute exists" status="approved" type="compliance">
+      <testcase purpose="When animation-direction is set to normal, all iterations of animation are played as specified" type="compliance" status="approved" component="W3C_HTML5 APIs/DOM, Forms and Styles/CSS Animations Module Level 3" execution_type="manual" priority="P2" id="animation-direction-002">
         <description>
-          <test_script_entry>/opt/tct-animations-css3-tests/animations/CSS3Animations_animation-play-state_exists.html</test_script_entry>
+          <test_script_entry>/opt/tct-animations-css3-tests/animations/csswg/animation-direction-002.html</test_script_entry>
         </description>
         <specs>
           <spec>
-            <spec_assertion category="Tizen W3C API Specifications" element_name="animation-play-state" element_type="property" interface="CSS" section="DOM, Forms and Styles" specification="CSS Animations Module Level 3" />
-            <spec_url>http://www.w3.org/TR/2012/WD-css3-animations-20120403/#animation-play-state</spec_url>
-            <spec_statement />
+            <spec_assertion element_type="property" element_name="animation-direction" interface="CSS" specification="CSS Animations Module Level 3" section="DOM, Forms and Styles" category="Tizen W3C API Specifications"/>
+            <spec_url>http://dev.w3.org/csswg/css-animations-1/#animation-direction</spec_url>
+            <spec_statement/>
           </spec>
         </specs>
       </testcase>
-      <testcase component="W3C_HTML5 APIs/DOM, Forms and Styles/CSS Animations Module Level 3" execution_type="auto" id="CSS3Animations_animation-fill-mode_exist" priority="P1" purpose="Check if Animations.animation-fill-mode attribute exists" status="approved" type="compliance">
+      <testcase purpose="When animation-direction is set to alternate-reverse, the animation cycle iterations that are odd counts are played in the normal direction, and the animation cycle iterations that are  Even counts are played in a reverse direction" type="compliance" status="approved" component="W3C_HTML5 APIs/DOM, Forms and Styles/CSS Animations Module Level 3" execution_type="manual" priority="P2" id="animation-direction-003">
         <description>
-          <test_script_entry>/opt/tct-animations-css3-tests/animations/CSS3Animations_animation-fill-mode_exist.html</test_script_entry>
+          <test_script_entry>/opt/tct-animations-css3-tests/animations/csswg/animation-direction-003.html</test_script_entry>
         </description>
         <specs>
           <spec>
-            <spec_assertion category="Tizen W3C API Specifications" element_name="animation-fill-mode" element_type="property" interface="CSS" section="DOM, Forms and Styles" specification="CSS Animations Module Level 3" />
-            <spec_url>http://www.w3.org/TR/2012/WD-css3-animations-20120403/#animation-fill-mode-property</spec_url>
-            <spec_statement />
+            <spec_assertion element_type="property" element_name="animation-direction" interface="CSS" specification="CSS Animations Module Level 3" section="DOM, Forms and Styles" category="Tizen W3C API Specifications"/>
+            <spec_url>http://dev.w3.org/csswg/css-animations-1/#animation-direction</spec_url>
+            <spec_statement/>
           </spec>
         </specs>
       </testcase>
-      <testcase component="W3C_HTML5 APIs/DOM, Forms and Styles/CSS Animations Module Level 3" execution_type="auto" id="CSS3Animations_animation-delay_initial_value" priority="P2" purpose="Check if Animations.animation-delay initial value is 0s" status="approved" type="compliance">
+      <testcase purpose="When animation-direction is set to reverse, all iterations of the animation are played in the reverse direction from the way they were specified" type="compliance" status="approved" component="W3C_HTML5 APIs/DOM, Forms and Styles/CSS Animations Module Level 3" execution_type="manual" priority="P2" id="animation-direction-004">
         <description>
-          <test_script_entry>/opt/tct-animations-css3-tests/animations/CSS3Animations_animation-delay_initial_value.html</test_script_entry>
+          <test_script_entry>/opt/tct-animations-css3-tests/animations/csswg/animation-direction-004.html</test_script_entry>
         </description>
         <specs>
           <spec>
-            <spec_assertion category="Tizen W3C API Specifications" element_name="animation-delay" element_type="property" interface="CSS" section="DOM, Forms and Styles" specification="CSS Animations Module Level 3" />
-            <spec_url>http://www.w3.org/TR/2012/WD-css3-animations-20120403/#animation-delay-property</spec_url>
-            <spec_statement />
+            <spec_assertion element_type="property" element_name="animation-direction" interface="CSS" specification="CSS Animations Module Level 3" section="DOM, Forms and Styles" category="Tizen W3C API Specifications"/>
+            <spec_url>http://dev.w3.org/csswg/css-animations-1/#animation-direction</spec_url>
+            <spec_statement/>
           </spec>
         </specs>
       </testcase>
-      <testcase component="W3C_HTML5 APIs/DOM, Forms and Styles/CSS Animations Module Level 3" execution_type="auto" id="CSS3Animations_animation-direction_alternate-reverse" priority="P2" purpose="Check if Animations.animation-direction has value alternate-reverse" status="approved" type="compliance">
+      <testcase purpose="Check that animation-direction applies to the ::after pseudo element" type="compliance" status="approved" component="W3C_HTML5 APIs/DOM, Forms and Styles/CSS Animations Module Level 3" execution_type="manual" priority="P2" id="animation-direction-005">
         <description>
-          <test_script_entry>/opt/tct-animations-css3-tests/animations/CSS3Animations_animation-direction_alternate-reverse.html</test_script_entry>
+          <test_script_entry>/opt/tct-animations-css3-tests/animations/csswg/animation-direction-005.html</test_script_entry>
         </description>
         <specs>
           <spec>
-            <spec_assertion category="Tizen W3C API Specifications" element_name="animation-direction" element_type="property" interface="CSS" section="DOM, Forms and Styles" specification="CSS Animations Module Level 3" />
-            <spec_url>http://www.w3.org/TR/2012/WD-css3-animations-20120403/#animation-direction-property</spec_url>
-            <spec_statement />
+            <spec_assertion element_type="property" element_name="animation-direction" interface="CSS" specification="CSS Animations Module Level 3" section="DOM, Forms and Styles" category="Tizen W3C API Specifications"/>
+            <spec_url>http://dev.w3.org/csswg/css-animations-1/#animation-direction</spec_url>
+            <spec_statement/>
           </spec>
         </specs>
       </testcase>
-      <testcase component="W3C_HTML5 APIs/DOM, Forms and Styles/CSS Animations Module Level 3" execution_type="auto" id="CSS3Animations_animation-direction_reverse" priority="P2" purpose="Check if Animations.animation-direction has value reverse" status="approved" type="compliance">
+      <testcase purpose="Check that animation-direction applies to the ::before pseudo element" type="compliance" status="approved" component="W3C_HTML5 APIs/DOM, Forms and Styles/CSS Animations Module Level 3" execution_type="manual" priority="P2" id="animation-direction-006">
         <description>
-          <test_script_entry>/opt/tct-animations-css3-tests/animations/CSS3Animations_animation-direction_reverse.html</test_script_entry>
+          <test_script_entry>/opt/tct-animations-css3-tests/animations/csswg/animation-direction-006.html</test_script_entry>
         </description>
         <specs>
           <spec>
-            <spec_assertion category="Tizen W3C API Specifications" element_name="animation-direction" element_type="property" interface="CSS" section="DOM, Forms and Styles" specification="CSS Animations Module Level 3" />
-            <spec_url>http://www.w3.org/TR/2012/WD-css3-animations-20120403/#animation-direction-property</spec_url>
-            <spec_statement />
+            <spec_assertion element_type="property" element_name="animation-direction" interface="CSS" specification="CSS Animations Module Level 3" section="DOM, Forms and Styles" category="Tizen W3C API Specifications"/>
+            <spec_url>http://dev.w3.org/csswg/css-animations-1/#animation-direction</spec_url>
+            <spec_statement/>
           </spec>
         </specs>
       </testcase>
-      <testcase component="W3C_HTML5 APIs/DOM, Forms and Styles/CSS Animations Module Level 3" execution_type="auto" id="CSS3Animations_animation-duration_initial_value" priority="P2" purpose="Check if Animations.animation-duration initial value is 0s" status="approved" type="compliance">
+      <testcase purpose="Check that setting 'display' property to 'none' terminates running animation applied to the element, and updating 'display' property to a value other than 'none' will start the animation" type="compliance" status="approved" component="W3C_HTML5 APIs/DOM, Forms and Styles/CSS Animations Module Level 3" execution_type="manual" priority="P2" id="animation-display">
         <description>
-          <test_script_entry>/opt/tct-animations-css3-tests/animations/CSS3Animations_animation-duration_initial_value.html</test_script_entry>
+          <test_script_entry>/opt/tct-animations-css3-tests/animations/csswg/animation-display.html</test_script_entry>
         </description>
         <specs>
           <spec>
-            <spec_assertion category="Tizen W3C API Specifications" element_name="animation-duration" element_type="property" interface="CSS" section="DOM, Forms and Styles" specification="CSS Animations Module Level 3" />
-            <spec_url>http://www.w3.org/TR/2012/WD-css3-animations-20120403/#animation-duration-property</spec_url>
-            <spec_statement />
+            <spec_assertion element_type="property" element_name="display" interface="CSS" specification="CSS Animations Module Level 3" section="DOM, Forms and Styles" category="Tizen W3C API Specifications"/>
+            <spec_url>http://dev.w3.org/csswg/css-animations-1/#animations</spec_url>
+            <spec_statement/>
           </spec>
         </specs>
       </testcase>
-
-      <testcase component="W3C_HTML5 APIs/DOM, Forms and Styles/CSS Animations Module Level 3" execution_type="auto" id="CSS3Animations_animation_shorthand" priority="P2" purpose="Check if animation shorthand property combines six of the animation properties into a single property" status="approved" type="compliance">
+      <testcase purpose="When animation-duration value is set blank, there will be no animation seen" type="compliance" status="approved" component="W3C_HTML5 APIs/DOM, Forms and Styles/CSS Animations Module Level 3" execution_type="manual" priority="P2" id="animation-duration-001">
         <description>
-          <test_script_entry>/opt/tct-animations-css3-tests/animations/CSS3Animations_animation_shorthand.html</test_script_entry>
+          <test_script_entry>/opt/tct-animations-css3-tests/animations/csswg/animation-duration-001.html</test_script_entry>
         </description>
         <specs>
           <spec>
-            <spec_assertion category="Tizen W3C API Specifications" element_name="animation" element_type="property" interface="CSS" section="DOM, Forms and Styles" specification="CSS Animations Module Level 3" />
-            <spec_url>http://www.w3.org/TR/2012/WD-css3-animations-20120403/#animation</spec_url>
-            <spec_statement />
+            <spec_assertion element_type="property" element_name="animation-duration" interface="CSS" specification="CSS Animations Module Level 3" section="DOM, Forms and Styles" category="Tizen W3C API Specifications"/>
+            <spec_url>http://dev.w3.org/csswg/css-animations-1/#animation-duration</spec_url>
+            <spec_statement/>
           </spec>
         </specs>
       </testcase>
-      <testcase component="W3C_HTML5 APIs/DOM, Forms and Styles/CSS Animations Module Level 3" execution_type="auto" id="CSS3Animations_animation-fill-mode_backwards" priority="P2" purpose="Check if Animations.animation-fill-mode has value backwards" status="approved" type="compliance">
+      <testcase purpose="When animation-duration is set a finite time offset, animation takes the specifies time to complete one cycle" type="compliance" status="approved" component="W3C_HTML5 APIs/DOM, Forms and Styles/CSS Animations Module Level 3" execution_type="manual" priority="P2" id="animation-duration-002">
         <description>
-          <test_script_entry>/opt/tct-animations-css3-tests/animations/CSS3Animations_animation-fill-mode_backwards.html</test_script_entry>
+          <test_script_entry>/opt/tct-animations-css3-tests/animations/csswg/animation-duration-002.html</test_script_entry>
         </description>
         <specs>
           <spec>
-            <spec_assertion category="Tizen W3C API Specifications" element_name="animation-fill-mode" element_type="property" interface="CSS" section="DOM, Forms and Styles" specification="CSS Animations Module Level 3" />
-            <spec_url>http://www.w3.org/TR/2012/WD-css3-animations-20120403/#animation-fill-mode-property</spec_url>
-            <spec_statement />
+            <spec_assertion element_type="property" element_name="animation-duration" interface="CSS" specification="CSS Animations Module Level 3" section="DOM, Forms and Styles" category="Tizen W3C API Specifications"/>
+            <spec_url>http://dev.w3.org/csswg/css-animations-1/#animation-duration</spec_url>
+            <spec_statement/>
           </spec>
         </specs>
       </testcase>
-      <testcase component="W3C_HTML5 APIs/DOM, Forms and Styles/CSS Animations Module Level 3" execution_type="auto" id="CSS3Animations_animation-fill-mode_both" priority="P2" purpose="Check if Animations.animation-fill-mode has value both" status="approved" type="compliance">
+      <testcase purpose="When animation-duration is set to a negative value, it is treated as 0s (zero seconds) and no animation is seen" type="compliance" status="approved" component="W3C_HTML5 APIs/DOM, Forms and Styles/CSS Animations Module Level 3" execution_type="manual" priority="P2" id="animation-duration-003">
         <description>
-          <test_script_entry>/opt/tct-animations-css3-tests/animations/CSS3Animations_animation-fill-mode_both.html</test_script_entry>
+          <test_script_entry>/opt/tct-animations-css3-tests/animations/csswg/animation-duration-003.html</test_script_entry>
         </description>
         <specs>
           <spec>
-            <spec_assertion category="Tizen W3C API Specifications" element_name="animation-fill-mode" element_type="property" interface="CSS" section="DOM, Forms and Styles" specification="CSS Animations Module Level 3" />
-            <spec_url>http://www.w3.org/TR/2012/WD-css3-animations-20120403/#animation-fill-mode-property</spec_url>
-            <spec_statement />
+            <spec_assertion element_type="property" element_name="animation-duration" interface="CSS" specification="CSS Animations Module Level 3" section="DOM, Forms and Styles" category="Tizen W3C API Specifications"/>
+            <spec_url>http://dev.w3.org/csswg/css-animations-1/#animation-duration</spec_url>
+            <spec_statement/>
           </spec>
         </specs>
       </testcase>
-      <testcase component="W3C_HTML5 APIs/DOM, Forms and Styles/CSS Animations Module Level 3" execution_type="auto" id="CSS3Animations_animation-fill-mode_forwards" priority="P2" purpose="Check if Animations.animation-fill-mode has value forwards" status="approved" type="compliance">
+      <testcase purpose="When animation-duration is set to 0s (zero seconds), animation occurs instantaneously, there will be no animation seen" type="compliance" status="approved" component="W3C_HTML5 APIs/DOM, Forms and Styles/CSS Animations Module Level 3" execution_type="manual" priority="P2" id="animation-duration-004">
         <description>
-          <test_script_entry>/opt/tct-animations-css3-tests/animations/CSS3Animations_animation-fill-mode_forwards.html</test_script_entry>
+          <test_script_entry>/opt/tct-animations-css3-tests/animations/csswg/animation-duration-004.html</test_script_entry>
         </description>
         <specs>
           <spec>
-            <spec_assertion category="Tizen W3C API Specifications" element_name="animation-fill-mode" element_type="property" interface="CSS" section="DOM, Forms and Styles" specification="CSS Animations Module Level 3" />
-            <spec_url>http://www.w3.org/TR/2012/WD-css3-animations-20120403/#animation-fill-mode-property</spec_url>
-            <spec_statement />
+            <spec_assertion element_type="property" element_name="animation-duration" interface="CSS" specification="CSS Animations Module Level 3" section="DOM, Forms and Styles" category="Tizen W3C API Specifications"/>
+            <spec_url>http://dev.w3.org/csswg/css-animations-1/#animation-duration</spec_url>
+            <spec_statement/>
           </spec>
         </specs>
       </testcase>
-      <testcase component="W3C_HTML5 APIs/DOM, Forms and Styles/CSS Animations Module Level 3" execution_type="auto" id="CSS3Animations_animation-fill-mode_initial_value" priority="P2" purpose="Check if Animations.animation-fill-mode initial value is none" status="approved" type="compliance">
+      <testcase purpose="When animation-duration is set to 0s (zero seconds), and 'animation-fill-mode' is set to 'forwards', the last frame of the animation will be displayed" type="compliance" status="approved" component="W3C_HTML5 APIs/DOM, Forms and Styles/CSS Animations Module Level 3" execution_type="manual" priority="P2" id="animation-duration-005">
         <description>
-          <test_script_entry>/opt/tct-animations-css3-tests/animations/CSS3Animations_animation-fill-mode_initial_value.html</test_script_entry>
+          <test_script_entry>/opt/tct-animations-css3-tests/animations/csswg/animation-duration-005.html</test_script_entry>
         </description>
         <specs>
           <spec>
-            <spec_assertion category="Tizen W3C API Specifications" element_name="animation-fill-mode" element_type="property" interface="CSS" section="DOM, Forms and Styles" specification="CSS Animations Module Level 3" />
-            <spec_url>http://www.w3.org/TR/2012/WD-css3-animations-20120403/#animation-fill-mode-property</spec_url>
-            <spec_statement />
+            <spec_assertion element_type="property" element_name="animation-duration" interface="CSS" specification="CSS Animations Module Level 3" section="DOM, Forms and Styles" category="Tizen W3C API Specifications"/>
+            <spec_url>http://dev.w3.org/csswg/css-animations-1/#animation-duration</spec_url>
+            <spec_statement/>
           </spec>
         </specs>
       </testcase>
-      <testcase component="W3C_HTML5 APIs/DOM, Forms and Styles/CSS Animations Module Level 3" execution_type="auto" id="CSS3Animations_animation-timing-function_step-end" priority="P2" purpose="Check if Animations.animation-timing-function attribute has value step-end" status="approved" type="compliance">
+      <testcase purpose="When animation-duration is set to 0s (zero seconds), and 'animation-fill-mode' is set to 'both', the last frame of the animation will be displayed" type="compliance" status="approved" component="W3C_HTML5 APIs/DOM, Forms and Styles/CSS Animations Module Level 3" execution_type="manual" priority="P2" id="animation-duration-006">
         <description>
-          <test_script_entry>/opt/tct-animations-css3-tests/animations/CSS3Animations_animation-timing-function_step-end.html</test_script_entry>
+          <test_script_entry>/opt/tct-animations-css3-tests/animations/csswg/animation-duration-006.html</test_script_entry>
         </description>
         <specs>
           <spec>
-            <spec_assertion category="Tizen W3C API Specifications" element_name="animation-timing-function" element_type="property" interface="CSS" section="DOM, Forms and Styles" specification="CSS Animations Module Level 3" />
-            <spec_url>http://www.w3.org/TR/2012/WD-css3-animations-20120403/#animation-timing-function-property</spec_url>
-            <spec_statement />
+            <spec_assertion element_type="property" element_name="animation-duration" interface="CSS" specification="CSS Animations Module Level 3" section="DOM, Forms and Styles" category="Tizen W3C API Specifications"/>
+            <spec_url>http://dev.w3.org/csswg/css-animations-1/#animation-duration</spec_url>
+            <spec_statement/>
           </spec>
         </specs>
       </testcase>
-      <testcase component="W3C_HTML5 APIs/DOM, Forms and Styles/CSS Animations Module Level 3" execution_type="auto" id="CSS3Animations_animation-timing-function_step-start" priority="P2" purpose="Check if Animations.animation-timing-function attribute has value step-start" status="approved" type="compliance">
+      <testcase purpose="Check that animation-duration applies to the ::before pseudo element" type="compliance" status="approved" component="W3C_HTML5 APIs/DOM, Forms and Styles/CSS Animations Module Level 3" execution_type="manual" priority="P2" id="animation-duration-007">
         <description>
-          <test_script_entry>/opt/tct-animations-css3-tests/animations/CSS3Animations_animation-timing-function_step-start.html</test_script_entry>
+          <test_script_entry>/opt/tct-animations-css3-tests/animations/csswg/animation-duration-007.html</test_script_entry>
         </description>
         <specs>
           <spec>
-            <spec_assertion category="Tizen W3C API Specifications" element_name="animation-timing-function" element_type="property" interface="CSS" section="DOM, Forms and Styles" specification="CSS Animations Module Level 3" />
-            <spec_url>http://www.w3.org/TR/2012/WD-css3-animations-20120403/#animation-timing-function-property</spec_url>
-            <spec_statement />
+            <spec_assertion element_type="property" element_name="animation-duration" interface="CSS" specification="CSS Animations Module Level 3" section="DOM, Forms and Styles" category="Tizen W3C API Specifications"/>
+            <spec_url>http://dev.w3.org/csswg/css-animations-1/#animation-duration</spec_url>
+            <spec_statement/>
           </spec>
         </specs>
       </testcase>
-      <testcase component="W3C_HTML5 APIs/DOM, Forms and Styles/CSS Animations Module Level 3" execution_type="auto" id="CSS3Animations_animation-timing-function_steps_end" priority="P2" purpose="Check if Animations.animation-timing-function attribute has value steps(end)" status="approved" type="compliance">
+      <testcase purpose="Check that animation-duration applies to the ::after pseudo element" type="compliance" status="approved" component="W3C_HTML5 APIs/DOM, Forms and Styles/CSS Animations Module Level 3" execution_type="manual" priority="P2" id="animation-duration-008">
         <description>
-          <steps>
-            <step order="1">
-              <step_desc>Check if Animations.animation-timing-function attribute has value steps(end)</step_desc>
-              <expected>Pass</expected>
-            </step>
-          </steps>
-          <test_script_entry>/opt/tct-animations-css3-tests/animations/CSS3Animations_animation-timing-function_steps_end.html</test_script_entry>
+          <test_script_entry>/opt/tct-animations-css3-tests/animations/csswg/animation-duration-008.html</test_script_entry>
         </description>
         <specs>
           <spec>
-            <spec_assertion category="Tizen W3C API Specifications" element_name="animation-timing-function" element_type="property" interface="CSS" section="DOM, Forms and Styles" specification="CSS Animations Module Level 3" />
-            <spec_url>http://www.w3.org/TR/2012/WD-css3-animations-20120403/#animation-timing-function-property</spec_url>
-            <spec_statement />
+            <spec_assertion element_type="property" element_name="animation-duration" interface="CSS" specification="CSS Animations Module Level 3" section="DOM, Forms and Styles" category="Tizen W3C API Specifications"/>
+            <spec_url>http://dev.w3.org/csswg/css-animations-1/#animation-duration</spec_url>
+            <spec_statement/>
           </spec>
         </specs>
       </testcase>
-      <testcase component="W3C_HTML5 APIs/DOM, Forms and Styles/CSS Animations Module Level 3" execution_type="auto" id="CSS3Animations_animation-timing-function_steps_number" priority="P2" purpose="Check if Animations.animation-timing-function attribute has value steps(number)" status="approved" type="compliance">
+      <testcase purpose="Check that the event is an instance of AnimationEvent" type="compliance" status="approved" component="W3C_HTML5 APIs/DOM, Forms and Styles/CSS Animations Module Level 3" execution_type="auto" priority="P1" id="animationevent-interface-entry1">
         <description>
-          <steps>
-            <step order="1">
-              <step_desc>Check if Animations.animation-timing-function attribute has value steps(number)</step_desc>
-              <expected>Pass</expected>
-            </step>
-          </steps>
-          <test_script_entry>/opt/tct-animations-css3-tests/animations/CSS3Animations_animation-timing-function_steps_number.html</test_script_entry>
+          <test_script_entry>/opt/tct-animations-css3-tests/animations/csswg/animationevent-interface.html?total_num=16&amp;amp;locator_key=id&amp;amp;value=1</test_script_entry>
         </description>
         <specs>
           <spec>
-            <spec_assertion category="Tizen W3C API Specifications" element_name="animation-timing-function" element_type="property" interface="CSS" section="DOM, Forms and Styles" specification="CSS Animations Module Level 3" />
-            <spec_url>http://www.w3.org/TR/2012/WD-css3-animations-20120403/#animation-timing-function-property</spec_url>
-            <spec_statement />
+            <spec_assertion element_type="property" element_name="Animation Event" interface="Animation Event" specification="CSS Animations Module Level 3" section="DOM, Forms and Styles" category="Tizen W3C API Specifications"/>
+            <spec_url>http://dev.w3.org/csswg/css-animations-1/#interface-dom</spec_url>
+            <spec_statement/>
           </spec>
         </specs>
       </testcase>
-      <testcase component="W3C_HTML5 APIs/DOM, Forms and Styles/CSS Animations Module Level 3" execution_type="auto" id="CSS3Animations_animation-timing-function_steps_two_parameters_start" priority="P2" purpose="Check if Animations.animation-timing-function attribute has value steps() with number and start" status="approved" type="compliance">
+      <testcase purpose="Check that the event inherts from Event" type="compliance" status="approved" component="W3C_HTML5 APIs/DOM, Forms and Styles/CSS Animations Module Level 3" execution_type="auto" priority="P1" id="animationevent-interface-entry2">
         <description>
-          <test_script_entry>/opt/tct-animations-css3-tests/animations/csswg/animation-timing-function_steps_two_parameters_start.html</test_script_entry>
+          <test_script_entry>/opt/tct-animations-css3-tests/animations/csswg/animationevent-interface.html?total_num=16&amp;amp;locator_key=id&amp;amp;value=2</test_script_entry>
         </description>
         <specs>
           <spec>
-            <spec_assertion category="Tizen W3C API Specifications" element_name="animation-timing-function" element_type="property" interface="CSS" section="DOM, Forms and Styles" specification="CSS Animations Module Level 3" />
-            <spec_url>http://www.w3.org/TR/2012/WD-css3-animations-20120403/#animation-timing-function-property</spec_url>
-            <spec_statement />
+            <spec_assertion element_type="property" element_name="Animation Event" interface="Animation Event" specification="CSS Animations Module Level 3" section="DOM, Forms and Styles" category="Tizen W3C API Specifications"/>
+            <spec_url>http://dev.w3.org/csswg/css-animations-1/#interface-dom</spec_url>
+            <spec_statement/>
           </spec>
         </specs>
       </testcase>
-      <testcase component="W3C_HTML5 APIs/DOM, Forms and Styles/CSS Animations Module Level 3" execution_type="auto" id="csskeyframerule_keytext" priority="P1" purpose="The keyText attribute of CSSKeyframeRule Represents" status="designed" type="compliance">
+      <testcase purpose="Check that Missing type argument" type="compliance" status="approved" component="W3C_HTML5 APIs/DOM, Forms and Styles/CSS Animations Module Level 3" execution_type="auto" priority="P1" id="animationevent-interface-entry3">
         <description>
-          <test_script_entry>/opt/tct-animations-css3-tests/animations/csswg/csskeyframerule_keytext.html</test_script_entry>
+          <test_script_entry>/opt/tct-animations-css3-tests/animations/csswg/animationevent-interface.html?total_num=16&amp;amp;locator_key=id&amp;amp;value=3</test_script_entry>
         </description>
         <specs>
           <spec>
-            <spec_assertion category="Tizen W3C API Specifications" element_name="keyText" element_type="attribute" interface="CSSKeyframeRule" section="DOM, Forms and Styles" specification="CSS Animations" />
-            <spec_url>http://www.w3.org/TR/2013/WD-css3-animations-20130219/#CSSKeyframeRule-interface</spec_url>
-            <spec_statement />
+            <spec_assertion element_type="property" element_name="type" interface="Animation Event" specification="CSS Animations Module Level 3" section="DOM, Forms and Styles" category="Tizen W3C API Specifications"/>
+            <spec_url>http://dev.w3.org/csswg/css-animations-1/#interface-dom</spec_url>
+            <spec_statement/>
           </spec>
         </specs>
       </testcase>
-      <testcase component="W3C_HTML5 APIs/DOM, Forms and Styles/CSS Animations Module Level 3" execution_type="auto" id="csskeyframerule_style" priority="P1" purpose="The style attribute of CSSKeyframeRule is readonly and represents the style associated with this keyframe" status="designed" type="compliance">
+      <testcase purpose="Check that type argument is string" type="compliance" status="approved" component="W3C_HTML5 APIs/DOM, Forms and Styles/CSS Animations Module Level 3" execution_type="auto" priority="P1" id="animationevent-interface-entry4">
         <description>
-          <test_script_entry>/opt/tct-animations-css3-tests/animations/csswg/csskeyframerule_style.html</test_script_entry>
+          <test_script_entry>/opt/tct-animations-css3-tests/animations/csswg/animationevent-interface.html?total_num=16&amp;amp;locator_key=id&amp;amp;value=4</test_script_entry>
         </description>
         <specs>
           <spec>
-            <spec_assertion category="Tizen W3C API Specifications" element_name="style" element_type="attribute" interface="CSSKeyframeRule" section="DOM, Forms and Styles" specification="CSS Animations" />
-            <spec_url>http://www.w3.org/TR/2013/WD-css3-animations-20130219/#CSSKeyframeRule-interface</spec_url>
-            <spec_statement />
+            <spec_assertion element_type="property" element_name="type" interface="Animation Event" specification="CSS Animations Module Level 3" section="DOM, Forms and Styles" category="Tizen W3C API Specifications"/>
+            <spec_url>http://dev.w3.org/csswg/css-animations-1/#interface-dom</spec_url>
+            <spec_statement/>
           </spec>
         </specs>
       </testcase>
-      <testcase component="W3C_HTML5 APIs/DOM, Forms and Styles/CSS Animations Module Level 3" execution_type="auto" id="csskeyframesrule_appendrule" priority="P1" purpose="The appendRule method of CSSKeyframesRule appends the passed keyframe rule into the list at the passed key" status="designed" type="compliance">
+      <testcase purpose="Check that type argument is null" type="compliance" status="approved" component="W3C_HTML5 APIs/DOM, Forms and Styles/CSS Animations Module Level 3" execution_type="auto" priority="P1" id="animationevent-interface-entry5">
         <description>
-          <test_script_entry>/opt/tct-animations-css3-tests/animations/csswg/csskeyframesrule_appendrule.html</test_script_entry>
+          <test_script_entry>/opt/tct-animations-css3-tests/animations/csswg/animationevent-interface.html?total_num=16&amp;amp;locator_key=id&amp;amp;value=5</test_script_entry>
         </description>
         <specs>
           <spec>
-            <spec_assertion category="Tizen W3C API Specifications" element_name="appendRule" element_type="method" interface="CSSKeyframesRule" section="DOM, Forms and Styles" specification="CSS Animations" />
-            <spec_url>http://www.w3.org/TR/2013/WD-css3-animations-20130219/#CSSKeyframesRule-interface</spec_url>
-            <spec_statement />
+            <spec_assertion element_type="property" element_name="type" interface="Animation Event" specification="CSS Animations Module Level 3" section="DOM, Forms and Styles" category="Tizen W3C API Specifications"/>
+            <spec_url>http://dev.w3.org/csswg/css-animations-1/#interface-dom</spec_url>
+            <spec_statement/>
           </spec>
         </specs>
       </testcase>
-      <testcase component="W3C_HTML5 APIs/DOM, Forms and Styles/CSS Animations Module Level 3" execution_type="auto" id="csskeyframesrule_cssrules" priority="P1" purpose="The cssRules attribute of CSSKeyframesRule is readonly and gives access to the keyframes in the list" status="designed" type="compliance">
+      <testcase purpose="Check that event type set to undefined" type="compliance" status="approved" component="W3C_HTML5 APIs/DOM, Forms and Styles/CSS Animations Module Level 3" execution_type="auto" priority="P1" id="animationevent-interface-entry6">
         <description>
-          <test_script_entry>/opt/tct-animations-css3-tests/animations/csswg/csskeyframesrule_cssrules.html</test_script_entry>
+          <test_script_entry>/opt/tct-animations-css3-tests/animations/csswg/animationevent-interface.html?total_num=16&amp;amp;locator_key=id&amp;amp;value=6</test_script_entry>
         </description>
         <specs>
           <spec>
-            <spec_assertion category="Tizen W3C API Specifications" element_name="cssRules" element_type="attribute" interface="CSSKeyframesRule" section="DOM, Forms and Styles" specification="CSS Animations" />
-            <spec_url>http://www.w3.org/TR/2013/WD-css3-animations-20130219/#CSSKeyframesRule-interface</spec_url>
-            <spec_statement />
+            <spec_assertion element_type="property" element_name="type" interface="Animation Event" specification="CSS Animations Module Level 3" section="DOM, Forms and Styles" category="Tizen W3C API Specifications"/>
+            <spec_url>http://dev.w3.org/csswg/css-animations-1/#interface-dom</spec_url>
+            <spec_statement/>
           </spec>
         </specs>
       </testcase>
-      <testcase component="W3C_HTML5 APIs/DOM, Forms and Styles/CSS Animations Module Level 3" execution_type="auto" id="csskeyframesrule_deleterule" priority="P1" purpose="The deleteRule method of CSSKeyframesRule deletes the CSSKeyframeRule with the passed key" status="designed" type="compliance">
+      <testcase purpose="Check that animationName has default value of empty string" type="compliance" status="approved" component="W3C_HTML5 APIs/DOM, Forms and Styles/CSS Animations Module Level 3" execution_type="auto" priority="P1" id="animationevent-interface-entry7">
         <description>
-          <test_script_entry>/opt/tct-animations-css3-tests/animations/csswg/csskeyframesrule_deleterule.html</test_script_entry>
+          <test_script_entry>/opt/tct-animations-css3-tests/animations/csswg/animationevent-interface.html?total_num=16&amp;amp;locator_key=id&amp;amp;value=7</test_script_entry>
         </description>
         <specs>
           <spec>
-            <spec_assertion category="Tizen W3C API Specifications" element_name="deleteRule" element_type="method" interface="CSSKeyframesRule" section="DOM, Forms and Styles" specification="CSS Animations" />
-            <spec_url>http://www.w3.org/TR/2013/WD-css3-animations-20130219/#CSSKeyframesRule-interface</spec_url>
-            <spec_statement />
+            <spec_assertion element_type="property" element_name="animationName" interface="Animation Event" specification="CSS Animations Module Level 3" section="DOM, Forms and Styles" category="Tizen W3C API Specifications"/>
+            <spec_url>http://dev.w3.org/csswg/css-animations-1/#interface-dom</spec_url>
+            <spec_statement/>
           </spec>
         </specs>
       </testcase>
-      <testcase component="W3C_HTML5 APIs/DOM, Forms and Styles/CSS Animations Module Level 3" execution_type="auto" id="csskeyframesrule_findrule" priority="P1" purpose="The findRule method of CSSKeyframesRule returns the rule with a key matching the passed key" status="designed" type="compliance">
+      <testcase purpose="Check that elapsedTime has default value of 0.0" type="compliance" status="approved" component="W3C_HTML5 APIs/DOM, Forms and Styles/CSS Animations Module Level 3" execution_type="auto" priority="P1" id="animationevent-interface-entry8">
         <description>
-          <test_script_entry>/opt/tct-animations-css3-tests/animations/csswg/csskeyframesrule_findrule.html</test_script_entry>
+          <test_script_entry>/opt/tct-animations-css3-tests/animations/csswg/animationevent-interface.html?total_num=16&amp;amp;locator_key=id&amp;amp;value=8</test_script_entry>
         </description>
         <specs>
           <spec>
-            <spec_assertion category="Tizen W3C API Specifications" element_name="findRule" element_type="method" interface="CSSKeyframesRule" section="DOM, Forms and Styles" specification="CSS Animations" />
-            <spec_url>http://www.w3.org/TR/2013/WD-css3-animations-20130219/#CSSKeyframesRule-interface</spec_url>
-            <spec_statement />
+            <spec_assertion element_type="property" element_name="elapsedTime" interface="Animation Event" specification="CSS Animations Module Level 3" section="DOM, Forms and Styles" category="Tizen W3C API Specifications"/>
+            <spec_url>http://dev.w3.org/csswg/css-animations-1/#interface-dom</spec_url>
+            <spec_statement/>
           </spec>
         </specs>
       </testcase>
-      <testcase component="W3C_HTML5 APIs/DOM, Forms and Styles/CSS Animations Module Level 3" execution_type="auto" id="csskeyframesrule_name" priority="P1" purpose="The name attribute of CSSKeyframesRule is the name of the keyframes" status="designed" type="compliance">
+      <testcase purpose="Check that animationName is readonly" type="compliance" status="approved" component="W3C_HTML5 APIs/DOM, Forms and Styles/CSS Animations Module Level 3" execution_type="auto" priority="P1" id="animationevent-interface-entry9">
         <description>
-          <test_script_entry>/opt/tct-animations-css3-tests/animations/csswg/csskeyframesrule_name.html</test_script_entry>
+          <test_script_entry>/opt/tct-animations-css3-tests/animations/csswg/animationevent-interface.html?total_num=16&amp;amp;locator_key=id&amp;amp;value=9</test_script_entry>
         </description>
         <specs>
           <spec>
-            <spec_assertion category="Tizen W3C API Specifications" element_name="name" element_type="attribute" interface="CSSKeyframesRule" section="DOM, Forms and Styles" specification="CSS Animations" />
-            <spec_url>http://www.w3.org/TR/2013/WD-css3-animations-20130219/#CSSKeyframesRule-interface</spec_url>
-            <spec_statement />
+            <spec_assertion element_type="property" element_name="animationName" interface="Animation Event" specification="CSS Animations Module Level 3" section="DOM, Forms and Styles" category="Tizen W3C API Specifications"/>
+            <spec_url>http://dev.w3.org/csswg/css-animations-1/#interface-dom</spec_url>
+            <spec_statement/>
           </spec>
         </specs>
       </testcase>
-      <testcase component="W3C_HTML5 APIs/DOM, Forms and Styles/CSS Animations Module Level 3" execution_type="auto" id="cssrule_const_keyframe" priority="P1" purpose="The CSSRule interface has a constant called KEYFRAME_RULE with value 8" status="approved" type="compliance">
+      <testcase purpose="Check that elapsedTime is readonly" type="compliance" status="approved" component="W3C_HTML5 APIs/DOM, Forms and Styles/CSS Animations Module Level 3" execution_type="auto" priority="P1" id="animationevent-interface-entry10">
         <description>
-          <test_script_entry>/opt/tct-animations-css3-tests/animations/csswg/cssrule_const_keyframe.html</test_script_entry>
+          <test_script_entry>/opt/tct-animations-css3-tests/animations/csswg/animationevent-interface.html?total_num=16&amp;amp;locator_key=id&amp;amp;value=10</test_script_entry>
         </description>
         <specs>
           <spec>
-            <spec_assertion category="Tizen W3C API Specifications" element_name="KEYFRAME_RULE" element_type="attribute" interface="CSSRule" section="DOM, Forms and Styles" specification="CSS Animations" />
-            <spec_url>http://www.w3.org/TR/2013/WD-css3-animations-20130219/#CSSRule-interface</spec_url>
-            <spec_statement />
+            <spec_assertion element_type="property" element_name="elapsedTime" interface="Animation Event" specification="CSS Animations Module Level 3" section="DOM, Forms and Styles" category="Tizen W3C API Specifications"/>
+            <spec_url>http://dev.w3.org/csswg/css-animations-1/#interface-dom</spec_url>
+            <spec_statement/>
           </spec>
         </specs>
       </testcase>
-      <testcase component="W3C_HTML5 APIs/DOM, Forms and Styles/CSS Animations Module Level 3" execution_type="auto" id="cssrule_const_keyframes" priority="P1" purpose="The CSSRule interface has a constant called KEYFRAMES_RULE with value 7" status="approved" type="compliance">
+      <testcase purpose="Check that animationEventInit argument is null" type="compliance" status="approved" component="W3C_HTML5 APIs/DOM, Forms and Styles/CSS Animations Module Level 3" execution_type="auto" priority="P1" id="animationevent-interface-entry11">
         <description>
-          <test_script_entry>/opt/tct-animations-css3-tests/animations/csswg/cssrule_const_keyframes.html</test_script_entry>
+          <test_script_entry>/opt/tct-animations-css3-tests/animations/csswg/animationevent-interface.html?total_num=16&amp;amp;locator_key=id&amp;amp;value=11</test_script_entry>
         </description>
         <specs>
           <spec>
-            <spec_assertion category="Tizen W3C API Specifications" element_name="KEYFRAMES_RULE" element_type="attribute" interface="CSSRule" section="DOM, Forms and Styles" specification="CSS Animations" />
-            <spec_url>http://www.w3.org/TR/2013/WD-css3-animations-20130219/#CSSRule-interface</spec_url>
-            <spec_statement />
+            <spec_assertion element_type="property" element_name="AnimationEventInit" interface="Animation Event" specification="CSS Animations Module Level 3" section="DOM, Forms and Styles" category="Tizen W3C API Specifications"/>
+            <spec_url>http://dev.w3.org/csswg/css-animations-1/#interface-dom</spec_url>
+            <spec_statement/>
           </spec>
         </specs>
       </testcase>
-      <testcase component="W3C_HTML5 APIs/DOM, Forms and Styles/CSS Animations Module Level 3" execution_type="auto" id="animationevent_pseudoElement_empty_value" priority="P1" purpose="Check if the pseudoElement attribute returns the empty string when the animation runs on an element" status="designed" type="compliance">
+      <testcase purpose="Check that animationEventInit argument is undefined" type="compliance" status="approved" component="W3C_HTML5 APIs/DOM, Forms and Styles/CSS Animations Module Level 3" execution_type="auto" priority="P1" id="animationevent-interface-entry12">
         <description>
-          <test_script_entry>/opt/tct-animations-css3-tests/animations/csswg/pseudoElement-001.html?total_num=2&amp;amp;locator_key=id&amp;amp;value=1</test_script_entry>
+          <test_script_entry>/opt/tct-animations-css3-tests/animations/csswg/animationevent-interface.html?total_num=16&amp;amp;locator_key=id&amp;amp;value=12</test_script_entry>
         </description>
         <specs>
           <spec>
-            <spec_assertion category="Tizen W3C API Specifications" element_name="pseudoElement" element_type="attribute" interface="AnimationEvent" section="DOM, Forms and Styles" specification="CSS Animations" />
-            <spec_url>http://www.w3.org/TR/2013/WD-css3-animations-20130219/#AnimationEvent-interface</spec_url>
-            <spec_statement />
+            <spec_assertion element_type="property" element_name="AnimationEventInit" interface="Animation Event" specification="CSS Animations Module Level 3" section="DOM, Forms and Styles" category="Tizen W3C API Specifications"/>
+            <spec_url>http://dev.w3.org/csswg/css-animations-1/#interface-dom</spec_url>
+            <spec_statement/>
           </spec>
         </specs>
       </testcase>
-      <testcase component="W3C_HTML5 APIs/DOM, Forms and Styles/CSS Animations Module Level 3" execution_type="auto" id="animationevent_pseudoElement_valid_value" priority="P1" purpose="Check if the pseudoElement attribute returns the name (beginning with two colons) of the CSS pseudo-element when the animation runs" status="designed" type="compliance">
+      <testcase purpose="Check that animationEventInit argument is empty dictionary" type="compliance" status="approved" component="W3C_HTML5 APIs/DOM, Forms and Styles/CSS Animations Module Level 3" execution_type="auto" priority="P1" id="animationevent-interface-entry13">
         <description>
-          <test_script_entry>/opt/tct-animations-css3-tests/animations/csswg/pseudoElement-001.html?total_num=2&amp;amp;locator_key=id&amp;amp;value=2</test_script_entry>
+          <test_script_entry>/opt/tct-animations-css3-tests/animations/csswg/animationevent-interface.html?total_num=16&amp;amp;locator_key=id&amp;amp;value=13</test_script_entry>
         </description>
         <specs>
           <spec>
-            <spec_assertion category="Tizen W3C API Specifications" element_name="pseudoElement" element_type="attribute" interface="AnimationEvent" section="DOM, Forms and Styles" specification="CSS Animations" />
-            <spec_url>http://www.w3.org/TR/2013/WD-css3-animations-20130219/#AnimationEvent-interface</spec_url>
-            <spec_statement />
+            <spec_assertion element_type="property" element_name="AnimationEventInit" interface="Animation Event" specification="CSS Animations Module Level 3" section="DOM, Forms and Styles" category="Tizen W3C API Specifications"/>
+            <spec_url>http://dev.w3.org/csswg/css-animations-1/#interface-dom</spec_url>
+            <spec_statement/>
           </spec>
         </specs>
       </testcase>
-      <testcase component="W3C_HTML5 APIs/DOM, Forms and Styles/CSS Animations Module Level 3" execution_type="manual" id="animationevent_pseudoElement_02" priority="P1" purpose="The target of the event is that pseudo-element's corresponding element" status="approved" type="compliance">
+      <testcase purpose="Check that animationName set to 'sample'" type="compliance" status="approved" component="W3C_HTML5 APIs/DOM, Forms and Styles/CSS Animations Module Level 3" execution_type="auto" priority="P1" id="animationevent-interface-entry14">
         <description>
-          <test_script_entry>/opt/tct-animations-css3-tests/animations/csswg/pseudoElement-002.html</test_script_entry>
+          <test_script_entry>/opt/tct-animations-css3-tests/animations/csswg/animationevent-interface.html?total_num=16&amp;amp;locator_key=id&amp;amp;value=14</test_script_entry>
         </description>
         <specs>
           <spec>
-            <spec_assertion category="Tizen W3C API Specifications" element_name="pseudoElement" element_type="attribute" interface="AnimationEvent" section="DOM, Forms and Styles" specification="CSS Animations" />
-            <spec_url>http://www.w3.org/TR/2013/WD-css3-animations-20130219/#AnimationEvent-interface</spec_url>
-            <spec_statement />
+            <spec_assertion element_type="property" element_name="animationName" interface="Animation Event" specification="CSS Animations Module Level 3" section="DOM, Forms and Styles" category="Tizen W3C API Specifications"/>
+            <spec_url>http://dev.w3.org/csswg/css-animations-1/#interface-dom</spec_url>
+            <spec_statement/>
           </spec>
         </specs>
       </testcase>
-      <testcase component="W3C_HTML5 APIs/DOM, Forms and Styles/CSS Animations Module Level 3" execution_type="manual" id="css3_animation_tests_entry1" priority="P2" purpose="To check if that animation-delay:-2s can implement animation-delay function normally" status="approved" type="compliance">
+      <testcase purpose="Check that elapsedTime set to 0.5" type="compliance" status="approved" component="W3C_HTML5 APIs/DOM, Forms and Styles/CSS Animations Module Level 3" execution_type="auto" priority="P1" id="animationevent-interface-entry15">
         <description>
-          <pre_condition />
-          <post_condition />
-          <steps>
-            <step order="1">
-              <step_desc>Use WRT to visit the test script file to check if animation-delay:-2s can implement delay function normally</step_desc>
-              <expected>A colored Square Box with text "CSS3 Testing Content" appears which starts moving from right to left as soon as the page loads</expected>
-            </step>
-          </steps>
-          <test_script_entry>/opt/tct-animations-css3-tests/animations/csswg/animation-delay-001.htm</test_script_entry>
+          <test_script_entry>/opt/tct-animations-css3-tests/animations/csswg/animationevent-interface.html?total_num=16&amp;amp;locator_key=id&amp;amp;value=15</test_script_entry>
         </description>
         <specs>
           <spec>
-            <spec_assertion category="Tizen W3C API Specifications" element_name="animation-delay" element_type="property" interface="CSS" section="DOM, Forms and Styles" specification="CSS Animations Module Level 3" />
-            <spec_url>http://www.w3.org/TR/2012/WD-css3-animations-20120403/#animation-delay-property</spec_url>
-            <spec_statement />
+            <spec_assertion element_type="property" element_name="elapsedTime" interface="Animation Event" specification="CSS Animations Module Level 3" section="DOM, Forms and Styles" category="Tizen W3C API Specifications"/>
+            <spec_url>http://dev.w3.org/csswg/css-animations-1/#interface-dom</spec_url>
+            <spec_statement/>
           </spec>
         </specs>
       </testcase>
-      <testcase component="W3C_HTML5 APIs/DOM, Forms and Styles/CSS Animations Module Level 3" execution_type="manual" id="css3_animation_tests_entry2" priority="P2" purpose="To check if that animation-delay:5s can implement animation-delay function normally" status="approved" type="compliance">
+      <testcase purpose="Check that AnimationEventInit properties set value" type="compliance" status="approved" component="W3C_HTML5 APIs/DOM, Forms and Styles/CSS Animations Module Level 3" execution_type="auto" priority="P1" id="animationevent-interface-entry16">
         <description>
-          <pre_condition />
-          <post_condition />
-          <steps>
-            <step order="1">
-              <step_desc>Use WRT to visit the test script file to check if animation-delay:-5s can implement delay function normally</step_desc>
-              <expected>A blue colored box with text "CSS3 Testing Content" appears which starts to animate from right to left after 5 seconds from the time page is loaded</expected>
-            </step>
-          </steps>
-          <test_script_entry>/opt/tct-animations-css3-tests/animations/csswg/animation-delay-002.htm</test_script_entry>
+          <test_script_entry>/opt/tct-animations-css3-tests/animations/csswg/animationevent-interface.html?total_num=16&amp;amp;locator_key=id&amp;amp;value=16</test_script_entry>
         </description>
         <specs>
           <spec>
-            <spec_assertion category="Tizen W3C API Specifications" element_name="animation-delay" element_type="property" interface="CSS" section="DOM, Forms and Styles" specification="CSS Animations Module Level 3" />
-            <spec_url>http://www.w3.org/TR/2012/WD-css3-animations-20120403/#animation-delay-property</spec_url>
-            <spec_statement />
+            <spec_assertion element_type="property" element_name="AnimationEventInit" interface="Animation Event" specification="CSS Animations Module Level 3" section="DOM, Forms and Styles" category="Tizen W3C API Specifications"/>
+            <spec_url>http://dev.w3.org/csswg/css-animations-1/#interface-dom</spec_url>
+            <spec_statement/>
           </spec>
         </specs>
       </testcase>
-      <testcase component="W3C_HTML5 APIs/DOM, Forms and Styles/CSS Animations Module Level 3" execution_type="manual" id="css3_animation_tests_entry3" priority="P2" purpose="To check if that animation-delay with offset value 0s can implement animation-delay function normally" status="approved" type="compliance">
+      <testcase purpose="Check that animationstart event is instanceof AnimationEvent" type="compliance" status="approved" component="W3C_HTML5 APIs/DOM, Forms and Styles/CSS Animations Module Level 3" execution_type="auto" priority="P1" id="animationevent-types-entry1">
         <description>
-          <pre_condition />
-          <post_condition />
-          <steps>
-            <step order="1">
-              <step_desc>Use WRT to visit the test script file to check if animation-delay with offset value 0s can implement delay function normally</step_desc>
-              <expected>A colored Square Box with text "CSS3 Testing Content" appears  which starts to animate/move from right to left as soon as the page loads</expected>
-            </step>
-          </steps>
-          <test_script_entry>/opt/tct-animations-css3-tests/animations/csswg/animation-delay-003.htm</test_script_entry>
+          <test_script_entry>/opt/tct-animations-css3-tests/animations/csswg/animationevent-types.html?total_num=3&amp;amp;locator_key=id&amp;amp;value=1</test_script_entry>
         </description>
         <specs>
           <spec>
-            <spec_assertion category="Tizen W3C API Specifications" element_name="animation-delay" element_type="property" interface="CSS" section="DOM, Forms and Styles" specification="CSS Animations Module Level 3" />
-            <spec_url>http://www.w3.org/TR/2012/WD-css3-animations-20120403/#animation-delay-property</spec_url>
-            <spec_statement />
+            <spec_assertion element_type="property" element_name="animationstart" interface="Animation Event" specification="CSS Animations Module Level 3" section="DOM, Forms and Styles" category="Tizen W3C API Specifications"/>
+            <spec_url>http://dev.w3.org/csswg/css-animations-1/#event-animationevent</spec_url>
+            <spec_statement/>
           </spec>
         </specs>
       </testcase>
-      <testcase component="W3C_HTML5 APIs/DOM, Forms and Styles/CSS Animations Module Level 3" execution_type="manual" id="css3_animation_tests_entry4" priority="P2" purpose="To check if that animation-direction specified as alternate can implement animation-direction function normally" status="approved" type="compliance">
+      <testcase purpose="Check that animationend event is instanceof AnimationEvent" type="compliance" status="approved" component="W3C_HTML5 APIs/DOM, Forms and Styles/CSS Animations Module Level 3" execution_type="auto" priority="P1" id="animationevent-types-entry2">
         <description>
-          <pre_condition />
-          <post_condition />
-          <steps>
-            <step order="1">
-              <step_desc>Use WRT to visit the test script file to check if animation-direction specified as alternate can implement animation-direction function normally</step_desc>
-              <expected>Colored Square Box with text "CSS3 Testing Content" inside it appears which moves from right to left on page load; then, it moves from left to right. This cycle keeps repeating itself</expected>
-            </step>
-          </steps>
-          <test_script_entry>/opt/tct-animations-css3-tests/animations/csswg/animation-direction-001.htm</test_script_entry>
+          <test_script_entry>/opt/tct-animations-css3-tests/animations/csswg/animationevent-types.html?total_num=3&amp;amp;locator_key=id&amp;amp;value=2</test_script_entry>
         </description>
         <specs>
           <spec>
-            <spec_assertion category="Tizen W3C API Specifications" element_name="animation-direction" element_type="property" interface="CSS" section="DOM, Forms and Styles" specification="CSS Animations Module Level 3" />
-            <spec_url>http://www.w3.org/TR/2012/WD-css3-animations-20120403/#animation-direction-property</spec_url>
-            <spec_statement />
+            <spec_assertion element_type="property" element_name="animationend" interface="Animation Event" specification="CSS Animations Module Level 3" section="DOM, Forms and Styles" category="Tizen W3C API Specifications"/>
+            <spec_url>http://dev.w3.org/csswg/css-animations-1/#event-animationevent</spec_url>
+            <spec_statement/>
           </spec>
         </specs>
       </testcase>
-      <testcase component="W3C_HTML5 APIs/DOM, Forms and Styles/CSS Animations Module Level 3" execution_type="manual" id="css3_animation_tests_entry5" priority="P2" purpose="To check if that animation-direction specified as normal can implement animation-direction function normally" status="approved" type="compliance">
+      <testcase purpose="Check that animationiteration event is instanceof AnimationEvent" type="compliance" status="approved" component="W3C_HTML5 APIs/DOM, Forms and Styles/CSS Animations Module Level 3" execution_type="auto" priority="P1" id="animationevent-types-entry3">
         <description>
-          <pre_condition />
-          <post_condition />
-          <steps>
-            <step order="1">
-              <step_desc>Use WRT to visit the test script file to check if animation-direction specified as normal can implement animation-direction function normally</step_desc>
-              <expected>A blue colored box with text "CSS3 Testing Content" appears  which starts from right and moves towards left, again it positions itself back to right and moves towards left. This cycle gets repeated</expected>
-            </step>
-          </steps>
-          <test_script_entry>/opt/tct-animations-css3-tests/animations/csswg/animation-direction-002.htm</test_script_entry>
+          <test_script_entry>/opt/tct-animations-css3-tests/animations/csswg/animationevent-types.html?total_num=3&amp;amp;locator_key=id&amp;amp;value=3</test_script_entry>
         </description>
         <specs>
           <spec>
-            <spec_assertion category="Tizen W3C API Specifications" element_name="animation-direction" element_type="property" interface="CSS" section="DOM, Forms and Styles" specification="CSS Animations Module Level 3" />
-            <spec_url>http://www.w3.org/TR/2012/WD-css3-animations-20120403/#animation-direction-property</spec_url>
-            <spec_statement />
+            <spec_assertion element_type="property" element_name="animationiteration" interface="Animation Event" specification="CSS Animations Module Level 3" section="DOM, Forms and Styles" category="Tizen W3C API Specifications"/>
+            <spec_url>http://dev.w3.org/csswg/css-animations-1/#event-animationevent</spec_url>
+            <spec_statement/>
           </spec>
         </specs>
       </testcase>
-      <testcase component="W3C_HTML5 APIs/DOM, Forms and Styles/CSS Animations Module Level 3" execution_type="manual" id="css3_animation_tests_entry6" priority="P2" purpose="To check if that animation-duration value is set blank can implement animation-duration function normally" status="approved" type="compliance">
+      <testcase purpose="When animation-fill-mode is set to none, animation has no effect when it is applied but not executing" type="compliance" status="approved" component="W3C_HTML5 APIs/DOM, Forms and Styles/CSS Animations Module Level 3" execution_type="manual" priority="P2" id="animation-fill-mode-001">
         <description>
-          <pre_condition />
-          <post_condition />
-          <steps>
-            <step order="1">
-              <step_desc>Use WRT to visit the test script file to check if animation-duration value is set blank can implement animation-duration function normally</step_desc>
-              <expected>A blue colored box with text "CSS3 Testing Content" appears  and NO animation is seen. Also no red should be visible</expected>
-            </step>
-          </steps>
-          <test_script_entry>/opt/tct-animations-css3-tests/animations/csswg/animation-duration-001.htm</test_script_entry>
+          <test_script_entry>/opt/tct-animations-css3-tests/animations/csswg/animation-fill-mode-001.html</test_script_entry>
         </description>
         <specs>
           <spec>
-            <spec_assertion category="Tizen W3C API Specifications" element_name="animation-direction" element_type="property" interface="CSS" section="DOM, Forms and Styles" specification="CSS Animations Module Level 3" />
-            <spec_url>http://www.w3.org/TR/2012/WD-css3-animations-20120403/#animation-direction-property</spec_url>
-            <spec_statement />
+            <spec_assertion element_type="property" element_name="animation-fill-mode" interface="CSS" specification="CSS Animations Module Level 3" section="DOM, Forms and Styles" category="Tizen W3C API Specifications"/>
+            <spec_url>http://dev.w3.org/csswg/css-animations-1/#animation-fill-mode</spec_url>
+            <spec_statement/>
           </spec>
         </specs>
       </testcase>
-      <testcase component="W3C_HTML5 APIs/DOM, Forms and Styles/CSS Animations Module Level 3" execution_type="manual" id="css3_animation_tests_entry7" priority="P2" purpose="To check if that animation-duration value has a finite value can implement animation-duration function normally" status="approved" type="compliance">
+      <testcase purpose="When animation-fill-mode is set to forwards, animation will apply the property values for the time the amination ended after the animation ends" type="compliance" status="approved" component="W3C_HTML5 APIs/DOM, Forms and Styles/CSS Animations Module Level 3" execution_type="manual" priority="P2" id="animation-fill-mode-002">
         <description>
-          <pre_condition />
-          <post_condition />
-          <steps>
-            <step order="1">
-              <step_desc>Use WRT to visit the test script file to check if animation-duration value has a finite value can implement animation-duration function normally</step_desc>
-              <expected>A blue colored box with text "CSS3 Testing Content" appears which starts moving from right to left upon page load and lasts for A span of 10seconds</expected>
-            </step>
-          </steps>
-          <test_script_entry>/opt/tct-animations-css3-tests/animations/csswg/animation-duration-002.htm</test_script_entry>
+          <test_script_entry>/opt/tct-animations-css3-tests/animations/csswg/animation-fill-mode-002.html</test_script_entry>
         </description>
         <specs>
           <spec>
-            <spec_assertion category="Tizen W3C API Specifications" element_name="animation-direction" element_type="property" interface="CSS" section="DOM, Forms and Styles" specification="CSS Animations Module Level 3" />
-            <spec_url>http://www.w3.org/TR/2012/WD-css3-animations-20120403/#animation-direction-property</spec_url>
-            <spec_statement />
+            <spec_assertion element_type="property" element_name="animation-fill-mode" interface="CSS" specification="CSS Animations Module Level 3" section="DOM, Forms and Styles" category="Tizen W3C API Specifications"/>
+            <spec_url>http://dev.w3.org/csswg/css-animations-1/#animation-fill-mode</spec_url>
+            <spec_statement/>
           </spec>
         </specs>
       </testcase>
-      <testcase component="W3C_HTML5 APIs/DOM, Forms and Styles/CSS Animations Module Level 3" execution_type="manual" id="css3_animation_tests_entry8" priority="P2" purpose="To check if that animation-duration with negative value can implement animation-duration function normally" status="approved" type="compliance">
+      <testcase purpose="When animation-fill-mode is set to backwards, animation-delay is set a positive time offset, and animation-direction is 'normal' or 'alternate-reverse', animation will apply the from or 0% keyframe That will start the first iteration" type="compliance" status="approved" component="W3C_HTML5 APIs/DOM, Forms and Styles/CSS Animations Module Level 3" execution_type="manual" priority="P2" id="animation-fill-mode-003">
         <description>
-          <pre_condition />
-          <post_condition />
-          <steps>
-            <step order="1">
-              <step_desc>Use WRT to visit the test script file to check if animation-duration with negative value can implement animation-duration function normally</step_desc>
-              <expected>A blue colored box with text "CSS3 Testing Content" appears  and NO animation is seen. Also no red should be visible on this page</expected>
-            </step>
-          </steps>
-          <test_script_entry>/opt/tct-animations-css3-tests/animations/csswg/animation-duration-003.htm</test_script_entry>
+          <test_script_entry>/opt/tct-animations-css3-tests/animations/csswg/animation-fill-mode-003.html</test_script_entry>
         </description>
         <specs>
           <spec>
-            <spec_assertion category="Tizen W3C API Specifications" element_name="animation-direction" element_type="property" interface="CSS" section="DOM, Forms and Styles" specification="CSS Animations Module Level 3" />
-            <spec_url>http://www.w3.org/TR/2012/WD-css3-animations-20120403/#animation-direction-property</spec_url>
-            <spec_statement />
+            <spec_assertion element_type="property" element_name="animation-fill-mode" interface="CSS" specification="CSS Animations Module Level 3" section="DOM, Forms and Styles" category="Tizen W3C API Specifications"/>
+            <spec_url>http://dev.w3.org/csswg/css-animations-1/#animation-fill-mode</spec_url>
+            <spec_statement/>
           </spec>
         </specs>
       </testcase>
-      <testcase component="W3C_HTML5 APIs/DOM, Forms and Styles/CSS Animations Module Level 3" execution_type="manual" id="css3_animation_tests_entry9" priority="P2" purpose="To check if that animation-duration value set to 0 (zero) can implement animation-duration function normally" status="approved" type="compliance">
+      <testcase purpose="Check if animation-fill-mode is set to both, the effects of both 'forwards' and 'backwards' will apply" type="compliance" status="approved" component="W3C_HTML5 APIs/DOM, Forms and Styles/CSS Animations Module Level 3" execution_type="manual" priority="P2" id="animation-fill-mode-004">
         <description>
-          <pre_condition />
-          <post_condition />
-          <steps>
-            <step order="1">
-              <step_desc>Use WRT to visit the test script file to check if animation-duration value set to 0 (zero) can implement animation-duration function normally</step_desc>
-              <expected>A blue colored box with text "CSS3 Testing Content" appears  and NO animation is seen. Also no red should be visible on this page.</expected>
-            </step>
-          </steps>
-          <test_script_entry>/opt/tct-animations-css3-tests/animations/csswg/animation-duration-004.htm</test_script_entry>
+          <test_script_entry>/opt/tct-animations-css3-tests/animations/csswg/animation-fill-mode-004.html</test_script_entry>
         </description>
         <specs>
           <spec>
-            <spec_assertion category="Tizen W3C API Specifications" element_name="animation-direction" element_type="property" interface="CSS" section="DOM, Forms and Styles" specification="CSS Animations Module Level 3" />
-            <spec_url>http://www.w3.org/TR/2012/WD-css3-animations-20120403/#animation-direction-property</spec_url>
-            <spec_statement />
+            <spec_assertion element_type="property" element_name="animation-fill-mode" interface="CSS" specification="CSS Animations Module Level 3" section="DOM, Forms and Styles" category="Tizen W3C API Specifications"/>
+            <spec_url>http://dev.w3.org/csswg/css-animations-1/#animation-fill-mode</spec_url>
+            <spec_statement/>
           </spec>
         </specs>
       </testcase>
-      <testcase component="W3C_HTML5 APIs/DOM, Forms and Styles/CSS Animations Module Level 3" execution_type="manual" id="css3_animation_tests_entry10" priority="P2" purpose="To check if that animation-iteration-count is not set and testing for default value can implement animation-iteration function normally" status="approved" type="compliance">
+      <testcase purpose="Check that animation-fill-mode applies to the ::after pseudo element" type="compliance" status="approved" component="W3C_HTML5 APIs/DOM, Forms and Styles/CSS Animations Module Level 3" execution_type="manual" priority="P2" id="animation-fill-mode-005">
         <description>
-          <pre_condition />
-          <post_condition />
-          <steps>
-            <step order="1">
-              <step_desc>Use WRT to visit the test script file to check if animation-iteration-count is not set and testing for default value can implement animation-iteration function normally</step_desc>
-              <expected>A blue colored Box with text "CSS3 Testing Content" appears  which starts to animate/move from right to left ONCE</expected>
-            </step>
-          </steps>
-          <test_script_entry>/opt/tct-animations-css3-tests/animations/csswg/animation-iteration-count-001.htm</test_script_entry>
+          <test_script_entry>/opt/tct-animations-css3-tests/animations/csswg/animation-fill-mode-005.html</test_script_entry>
         </description>
         <specs>
           <spec>
-            <spec_assertion category="Tizen W3C API Specifications" element_name="animation-iteration-count" element_type="property" interface="CSS" section="DOM, Forms and Styles" specification="CSS Animations Module Level 3" />
-            <spec_url>http://www.w3.org/TR/2012/WD-css3-animations-20120403/#animation-iteration-count-property</spec_url>
-            <spec_statement />
+            <spec_assertion element_type="property" element_name="animation-fill-mode" interface="CSS" specification="CSS Animations Module Level 3" section="DOM, Forms and Styles" category="Tizen W3C API Specifications"/>
+            <spec_url>http://dev.w3.org/csswg/css-animations-1/#animation-fill-mode</spec_url>
+            <spec_statement/>
           </spec>
         </specs>
       </testcase>
-      <testcase component="W3C_HTML5 APIs/DOM, Forms and Styles/CSS Animations Module Level 3" execution_type="manual" id="css3_animation_tests_entry11" priority="P2" purpose="To check if that animation-iteration-count set to infinite can implement animation-iteration function normally" status="approved" type="compliance">
+      <testcase purpose="Check that animation-fill-mode applies to the ::before pseudo element" type="compliance" status="approved" component="W3C_HTML5 APIs/DOM, Forms and Styles/CSS Animations Module Level 3" execution_type="manual" priority="P2" id="animation-fill-mode-006">
         <description>
-          <pre_condition />
-          <post_condition />
-          <steps>
-            <step order="1">
-              <step_desc>Use WRT to visit the test script file to check if animation-iteration-count set to infinite can implement animation-iteration function normally</step_desc>
-              <expected>A blue colored Box with text "CSS3 Testing Content" appears  and repeatedly moves from right to left. Every time A cycle is finished, the box gets re-positioned to right and continues to move left</expected>
-            </step>
-          </steps>
-          <test_script_entry>/opt/tct-animations-css3-tests/animations/csswg/animation-iteration-count-002.htm</test_script_entry>
+          <test_script_entry>/opt/tct-animations-css3-tests/animations/csswg/animation-fill-mode-006.html</test_script_entry>
         </description>
         <specs>
           <spec>
-            <spec_assertion category="Tizen W3C API Specifications" element_name="animation-iteration-count" element_type="property" interface="CSS" section="DOM, Forms and Styles" specification="CSS Animations Module Level 3" />
-            <spec_url>http://www.w3.org/TR/2012/WD-css3-animations-20120403/#animation-iteration-count-property</spec_url>
-            <spec_statement />
+            <spec_assertion element_type="property" element_name="animation-fill-mode" interface="CSS" specification="CSS Animations Module Level 3" section="DOM, Forms and Styles" category="Tizen W3C API Specifications"/>
+            <spec_url>http://dev.w3.org/csswg/css-animations-1/#animation-fill-mode</spec_url>
+            <spec_statement/>
           </spec>
         </specs>
       </testcase>
-      <testcase component="W3C_HTML5 APIs/DOM, Forms and Styles/CSS Animations Module Level 3" execution_type="manual" id="css3_animation_tests_entry13" priority="P2" purpose="To check if that animation-iteration-count set to non-integer can implement animation-iteration function normally" status="approved" type="compliance">
+      <testcase purpose="When animation-iteration-count is not set, 1 is taken by default and animation will play from beginning to end once" type="compliance" status="approved" component="W3C_HTML5 APIs/DOM, Forms and Styles/CSS Animations Module Level 3" execution_type="manual" priority="P2" id="animation-iteration-count-001">
         <description>
-          <pre_condition />
-          <post_condition />
-          <steps>
-            <step order="1">
-              <step_desc>Use WRT to visit the test script file to check if animation-iteration-count set to non-integer can implement animation-iteration function normally</step_desc>
-              <expected>A blue colored Box with text "CSS3 Testing Content" animates from right to left along the green bar THRICE (for A span of 10 seconds each) and for the FOURTH time animation appears to break in middle and the box immediately positions itself to left</expected>
-            </step>
-          </steps>
-          <test_script_entry>/opt/tct-animations-css3-tests/animations/csswg/animation-iteration-count-004.htm</test_script_entry>
+          <test_script_entry>/opt/tct-animations-css3-tests/animations/csswg/animation-iteration-count-001.html</test_script_entry>
         </description>
         <specs>
           <spec>
-            <spec_assertion category="Tizen W3C API Specifications" element_name="animation-iteration-count" element_type="property" interface="CSS" section="DOM, Forms and Styles" specification="CSS Animations Module Level 3" />
-            <spec_url>http://www.w3.org/TR/2012/WD-css3-animations-20120403/#animation-iteration-count-property</spec_url>
-            <spec_statement />
+            <spec_assertion element_type="property" element_name="animation-iteration-count" interface="CSS" specification="CSS Animations Module Level 3" section="DOM, Forms and Styles" category="Tizen W3C API Specifications"/>
+            <spec_url>http://dev.w3.org/csswg/css-animations-1/#animation-iteration-count</spec_url>
+            <spec_statement/>
           </spec>
         </specs>
       </testcase>
-      <testcase component="W3C_HTML5 APIs/DOM, Forms and Styles/CSS Animations Module Level 3" execution_type="manual" id="css3_animation_tests_entry14" priority="P2" purpose="To check if that animation-iteration-count set to a finite value can implement animation-iteration function normally" status="approved" type="compliance">
+      <testcase purpose="When animation-iteration-count is set to infinite, animation will repeat forever" type="compliance" status="approved" component="W3C_HTML5 APIs/DOM, Forms and Styles/CSS Animations Module Level 3" execution_type="manual" priority="P2" id="animation-iteration-count-002">
         <description>
-          <pre_condition />
-          <post_condition />
-          <steps>
-            <step order="1">
-              <step_desc>Use WRT to visit the test script file to check if animation-iteration-count set to a finite value can implement animation-iteration function normally</step_desc>
-              <expected>A blue colored Box with text "CSS3 Testing Content" appears  and box starts to animate/move from right to left twice</expected>
-            </step>
-          </steps>
-          <test_script_entry>/opt/tct-animations-css3-tests/animations/csswg/animation-iteration-count-005.htm</test_script_entry>
+          <test_script_entry>/opt/tct-animations-css3-tests/animations/csswg/animation-iteration-count-002.html</test_script_entry>
         </description>
         <specs>
           <spec>
-            <spec_assertion category="Tizen W3C API Specifications" element_name="animation-iteration-count" element_type="property" interface="CSS" section="DOM, Forms and Styles" specification="CSS Animations Module Level 3" />
-            <spec_url>http://www.w3.org/TR/2012/WD-css3-animations-20120403/#animation-iteration-count-property</spec_url>
-            <spec_statement />
+            <spec_assertion element_type="property" element_name="animation-iteration-count" interface="CSS" specification="CSS Animations Module Level 3" section="DOM, Forms and Styles" category="Tizen W3C API Specifications"/>
+            <spec_url>http://dev.w3.org/csswg/css-animations-1/#animation-iteration-count</spec_url>
+            <spec_statement/>
           </spec>
         </specs>
       </testcase>
-      <testcase component="W3C_HTML5 APIs/DOM, Forms and Styles/CSS Animations Module Level 3" execution_type="manual" id="css3_animation_tests_entry15" priority="P2" purpose="To check if that animation-iteration-count set to zero can implement animation-iteration function normally" status="approved" type="compliance">
+      <testcase purpose="When animation-iteration-count is set to negative count, it is invalid and animation will play from beginning to end once" type="compliance" status="approved" component="W3C_HTML5 APIs/DOM, Forms and Styles/CSS Animations Module Level 3" execution_type="manual" priority="P2" id="animation-iteration-count-003">
         <description>
-          <pre_condition />
-          <post_condition />
-          <steps>
-            <step order="1">
-              <step_desc>Use WRT to visit the test script file to check if animation-iteration-count set to zero can implement animation-iteration function normally</step_desc>
-              <expected>A blue colored Box with text "CSS3 Testing Content" appears  and NO movement/animation is seen. Also, RED color should NOT be seen anywhere on this page</expected>
-            </step>
-          </steps>
-          <test_script_entry>/opt/tct-animations-css3-tests/animations/csswg/animation-iteration-count-006.htm</test_script_entry>
+          <test_script_entry>/opt/tct-animations-css3-tests/animations/csswg/animation-iteration-count-003.html</test_script_entry>
         </description>
         <specs>
           <spec>
-            <spec_assertion category="Tizen W3C API Specifications" element_name="animation-iteration-count" element_type="property" interface="CSS" section="DOM, Forms and Styles" specification="CSS Animations Module Level 3" />
-            <spec_url>http://www.w3.org/TR/2012/WD-css3-animations-20120403/#animation-iteration-count-property</spec_url>
-            <spec_statement />
+            <spec_assertion element_type="property" element_name="animation-iteration-count" interface="CSS" specification="CSS Animations Module Level 3" section="DOM, Forms and Styles" category="Tizen W3C API Specifications"/>
+            <spec_url>http://dev.w3.org/csswg/css-animations-1/#animation-iteration-count</spec_url>
+            <spec_statement/>
           </spec>
         </specs>
       </testcase>
-      <testcase component="W3C_HTML5 APIs/DOM, Forms and Styles/CSS Animations Module Level 3" execution_type="manual" id="css3_animation_tests_entry16" priority="P1" purpose="Check if the 'animationiteration' event occurs at the end of each iteration of an animation when the animation-iteration-count is greater than one." status="approved" type="compliance">
+      <testcase purpose="When animation-iteration-count is set to non-integer, animation will end partway through its last cycle" type="compliance" status="approved" component="W3C_HTML5 APIs/DOM, Forms and Styles/CSS Animations Module Level 3" execution_type="manual" priority="P2" id="animation-iteration-count-004">
         <description>
-          <pre_condition />
-          <post_condition />
-          <steps>
-            <step order="1">
-              <step_desc>Use WRT to visit the test script file to verify if 'animationiteration' event occurs at the end of each iteration of an animation when the animation-iteration-count is greater than one</step_desc>
-              <expected>The box moves from Right to Left for a period of 10 seconds. It should contain a digit 1 for first animation. Content of box changes to 2 during second animation. Also the animation should stop after the 2rd cycle.</expected>
-            </step>
-          </steps>
-          <test_script_entry>/opt/tct-animations-css3-tests/animations/csswg/animation-iteration-event.htm</test_script_entry>
+          <test_script_entry>/opt/tct-animations-css3-tests/animations/csswg/animation-iteration-count-004.html</test_script_entry>
         </description>
         <specs>
           <spec>
-            <spec_assertion category="Tizen W3C API Specifications" element_name="animation-event" element_type="attribute" interface="Animation Event" section="DOM, Forms and Styles" specification="CSS Animations Module Level 3" />
-            <spec_url>http://www.w3.org/TR/2012/WD-css3-animations-20120403/#animation-events</spec_url>
-            <spec_statement />
+            <spec_assertion element_type="property" element_name="animation-iteration-count" interface="CSS" specification="CSS Animations Module Level 3" section="DOM, Forms and Styles" category="Tizen W3C API Specifications"/>
+            <spec_url>http://dev.w3.org/csswg/css-animations-1/#animation-iteration-count</spec_url>
+            <spec_statement/>
           </spec>
         </specs>
       </testcase>
-      <testcase component="W3C_HTML5 APIs/DOM, Forms and Styles/CSS Animations Module Level 3" execution_type="manual" id="css3_animation_tests_entry19" priority="P1" purpose="Check that the animation-name fucntion can be impelemented normally if it is set to valid keyframes rule name." status="approved" type="compliance">
+      <testcase purpose="When animation-iteration-count is set to integer count, animation will repeat the specified number of times" type="compliance" status="approved" component="W3C_HTML5 APIs/DOM, Forms and Styles/CSS Animations Module Level 3" execution_type="manual" priority="P2" id="animation-iteration-count-005">
         <description>
-          <pre_condition />
-          <post_condition />
-          <steps>
-            <step order="1">
-              <step_desc>Use WRT to visit the test script file to check that the animation-name fucntion can be impelemented normally if it is set to valid keyframes rule name.</step_desc>
-              <expected>A blue box with text "CSS3 Testing Content"  inside it appears  and animates/moves towards left</expected>
-            </step>
-          </steps>
-          <test_script_entry>/opt/tct-animations-css3-tests/animations/csswg/animation-name-001.htm</test_script_entry>
+          <test_script_entry>/opt/tct-animations-css3-tests/animations/csswg/animation-iteration-count-005.html</test_script_entry>
         </description>
         <specs>
           <spec>
-            <spec_assertion category="Tizen W3C API Specifications" element_name="animation-name" element_type="property" interface="CSS" section="DOM, Forms and Styles" specification="CSS Animations Module Level 3" />
-            <spec_url>http://www.w3.org/TR/2012/WD-css3-animations-20120403/#animation-name-property</spec_url>
-            <spec_statement />
+            <spec_assertion element_type="property" element_name="animation-iteration-count" interface="CSS" specification="CSS Animations Module Level 3" section="DOM, Forms and Styles" category="Tizen W3C API Specifications"/>
+            <spec_url>http://dev.w3.org/csswg/css-animations-1/#animation-iteration-count</spec_url>
+            <spec_statement/>
           </spec>
         </specs>
       </testcase>
-      <testcase component="W3C_HTML5 APIs/DOM, Forms and Styles/CSS Animations Module Level 3" execution_type="manual" id="css3_animation_tests_entry20" priority="P3" purpose="To check if that animation-name set to none can implement animation-name function normally" status="approved" type="compliance">
+      <testcase purpose="When animation-iteration-count is set to 0 (zero), no animation is seen" type="compliance" status="approved" component="W3C_HTML5 APIs/DOM, Forms and Styles/CSS Animations Module Level 3" execution_type="manual" priority="P2" id="animation-iteration-count-006">
         <description>
-          <pre_condition />
-          <post_condition />
-          <steps>
-            <step order="1">
-              <step_desc>Use WRT to visit the test script file to check if animation-name set to none can implement animation-name function normally</step_desc>
-              <expected>A blue colored box with text "CSS3 Testing Content"  inside it appears  and  should not animate/move towards left. Also no red should be visible on this page</expected>
-            </step>
-          </steps>
-          <test_script_entry>/opt/tct-animations-css3-tests/animations/csswg/animation-name-002.htm</test_script_entry>
+          <test_script_entry>/opt/tct-animations-css3-tests/animations/csswg/animation-iteration-count-006.html</test_script_entry>
         </description>
         <specs>
           <spec>
-            <spec_assertion category="Tizen W3C API Specifications" interface="CSS" section="DOM, Forms and Styles" specification="CSS Animations Module Level 3" usage="true" />
-            <spec_url>http://www.w3.org/TR/2012/WD-css3-animations-20120403/#animation-name-property</spec_url>
-            <spec_statement />
+            <spec_assertion element_type="property" element_name="animation-iteration-count" interface="CSS" specification="CSS Animations Module Level 3" section="DOM, Forms and Styles" category="Tizen W3C API Specifications"/>
+            <spec_url>http://dev.w3.org/csswg/css-animations-1/#animation-iteration-count</spec_url>
+            <spec_statement/>
           </spec>
         </specs>
       </testcase>
-      <testcase component="W3C_HTML5 APIs/DOM, Forms and Styles/CSS Animations Module Level 3" execution_type="manual" id="css3_animation_tests_entry21" priority="P2" purpose="check if animation-name value are none any keyframe at-rule can implement animation-name function normally" status="approved" type="compliance">
+      <testcase purpose="Check that animation-iteration-count applies to the ::after pseudo element" type="compliance" status="approved" component="W3C_HTML5 APIs/DOM, Forms and Styles/CSS Animations Module Level 3" execution_type="manual" priority="P2" id="animation-iteration-count-007">
         <description>
-          <pre_condition />
-          <post_condition />
-          <steps>
-            <step order="1">
-              <step_desc>Use WRT to visit the test script file to check if animation-name value are none any keyframe at-rule can implement animation-name function normally</step_desc>
-              <expected>A blue colored box with text "CSS3 Testing Content" inside it appears  and should not animate/move towards left. Also no red should be visible on this page</expected>
-            </step>
-          </steps>
-          <test_script_entry>/opt/tct-animations-css3-tests/animations/csswg/animation-name-003.htm</test_script_entry>
+          <test_script_entry>/opt/tct-animations-css3-tests/animations/csswg/animation-iteration-count-007.html</test_script_entry>
         </description>
         <specs>
           <spec>
-            <spec_assertion category="Tizen W3C API Specifications" element_name="animation-name" element_type="property" interface="CSS" section="DOM, Forms and Styles" specification="CSS Animations Module Level 3" />
-            <spec_url>http://www.w3.org/TR/2012/WD-css3-animations-20120403/#animation-name-property</spec_url>
-            <spec_statement />
+            <spec_assertion element_type="property" element_name="animation-iteration-count" interface="CSS" specification="CSS Animations Module Level 3" section="DOM, Forms and Styles" category="Tizen W3C API Specifications"/>
+            <spec_url>http://dev.w3.org/csswg/css-animations-1/#animation-iteration-count</spec_url>
+            <spec_statement/>
           </spec>
         </specs>
       </testcase>
-      <testcase component="W3C_HTML5 APIs/DOM, Forms and Styles/CSS Animations Module Level 3" execution_type="manual" id="css3_animation-name-004" priority="P3" purpose="To check if that animation-name does not match any keyframe at-rule can implement animation-name function normally" status="approved" type="compliance">
+      <testcase purpose="Check that animation-iteration-count applies to the ::before pseudo element" type="compliance" status="approved" component="W3C_HTML5 APIs/DOM, Forms and Styles/CSS Animations Module Level 3" execution_type="manual" priority="P2" id="animation-iteration-count-008">
         <description>
-          <pre_condition />
-          <post_condition />
-          <steps>
-            <step order="1">
-              <step_desc>Use WRT to visit the test script file to check if animation-name does not match any keyframe at-rule can implement animation-name function normally</step_desc>
-              <expected>A blue colored box with text "CSS3 Testing Content" inside it appears  and should not animate/move towards left. Also no red should be visible on this page</expected>
-            </step>
-          </steps>
-          <test_script_entry>/opt/tct-animations-css3-tests/animations/csswg/animation-name-004.htm</test_script_entry>
+          <test_script_entry>/opt/tct-animations-css3-tests/animations/csswg/animation-iteration-count-008.html</test_script_entry>
         </description>
         <specs>
           <spec>
-            <spec_assertion category="Tizen W3C API Specifications" interface="CSS" section="DOM, Forms and Styles" specification="CSS Animations Module Level 3" usage="true" />
-            <spec_url>http://www.w3.org/TR/2012/WD-css3-animations-20120403/#animation-name-property</spec_url>
-            <spec_statement />
+            <spec_assertion element_type="property" element_name="animation-iteration-count" interface="CSS" specification="CSS Animations Module Level 3" section="DOM, Forms and Styles" category="Tizen W3C API Specifications"/>
+            <spec_url>http://dev.w3.org/csswg/css-animations-1/#animation-iteration-count</spec_url>
+            <spec_statement/>
           </spec>
         </specs>
       </testcase>
-      <testcase component="W3C_HTML5 APIs/DOM, Forms and Styles/CSS Animations Module Level 3" execution_type="manual" id="css3_animation_tests_entry22" priority="P3" purpose="To check if that animation-play-state set to paused can implement animation-play-state function normally" status="approved" type="compliance">
+      <testcase purpose="Check that animationiteration event occurs at the end of each iteration of an animation for which animation-iteration-count is greater than one" type="compliance" status="approved" component="W3C_HTML5 APIs/DOM, Forms and Styles/CSS Animations Module Level 3" execution_type="manual" priority="P2" id="animation-iteration-event">
         <description>
-          <pre_condition />
-          <post_condition />
-          <steps>
-            <step order="1">
-              <step_desc>Use WRT to visit the test script file to check if animation-play-state set to paused can implement animation-play-state function normally</step_desc>
-              <expected>A blue colored box with text "CSS3 Testing Content" appears  and NO animation is seen. Also no red color should be visible on this page</expected>
-            </step>
-          </steps>
-          <test_script_entry>/opt/tct-animations-css3-tests/animations/csswg/animation-play-state-001.htm</test_script_entry>
+          <test_script_entry>/opt/tct-animations-css3-tests/animations/csswg/animation-iteration-event.html</test_script_entry>
         </description>
         <specs>
           <spec>
-            <spec_assertion category="Tizen W3C API Specifications" interface="CSS" section="DOM, Forms and Styles" specification="CSS Animations Module Level 3" usage="true" />
-            <spec_url>http://www.w3.org/TR/2012/WD-css3-animations-20120403/#animation-play-state-property</spec_url>
-            <spec_statement />
+            <spec_assertion element_type="property" element_name="animation-iteration" interface="Animation Event" specification="CSS Animations Module Level 3" section="DOM, Forms and Styles" category="Tizen W3C API Specifications"/>
+            <spec_url>http://dev.w3.org/csswg/css-animations-1/#events</spec_url>
+            <spec_statement/>
           </spec>
         </specs>
       </testcase>
-      <testcase component="W3C_HTML5 APIs/DOM, Forms and Styles/CSS Animations Module Level 3" execution_type="manual" id="css3_animation_tests_entry23" priority="P3" purpose="To check if that animation-play-state set to playing can implement animation-play-state function normally" status="approved" type="compliance">
+      <testcase purpose="Check that @keyframes rule accepts 'from' and 'to' keywords, and percentage values" type="compliance" status="approved" component="W3C_HTML5 APIs/DOM, Forms and Styles/CSS Animations Module Level 3" execution_type="manual" priority="P2" id="animation-keyframes-001">
         <description>
-          <pre_condition />
-          <post_condition />
-          <steps>
-            <step order="1">
-              <step_desc>Use WRT to visit the test script file to check if animation-play-state set to playing can implement animation-play-state function normally</step_desc>
-              <expected>A blue colored box with text "CSS3 Testing Content" appears  which moves from right to left (in 10seconds) upon page load</expected>
-            </step>
-          </steps>
-          <test_script_entry>/opt/tct-animations-css3-tests/animations/csswg/animation-play-state-002.htm</test_script_entry>
+          <test_script_entry>/opt/tct-animations-css3-tests/animations/csswg/animation-keyframes-001.html</test_script_entry>
         </description>
         <specs>
           <spec>
-            <spec_assertion category="Tizen W3C API Specifications" interface="CSS" section="DOM, Forms and Styles" specification="CSS Animations Module Level 3" usage="true" />
-            <spec_url>http://www.w3.org/TR/2012/WD-css3-animations-20120403/#animation-play-state-property</spec_url>
-            <spec_statement />
+            <spec_assertion element_type="property" element_name="@keyframes" interface="CSS" specification="CSS Animations Module Level 3" section="DOM, Forms and Styles" category="Tizen W3C API Specifications"/>
+            <spec_url>http://dev.w3.org/csswg/css-animations-1/#keyframes</spec_url>
+            <spec_statement/>
           </spec>
         </specs>
       </testcase>
-      <testcase component="W3C_HTML5 APIs/DOM, Forms and Styles/CSS Animations Module Level 3" execution_type="manual" id="css3_animation_tests_entry25" priority="P1" purpose="Check that the animation-timing-function can be implemented normally if it is set to cubic-bezier with parameters (0,0,1,1)." status="approved" type="compliance">
+      <testcase purpose="Check that a keyframe selector specifies negative percentage values or values higher than 100%, the keyframe will be ignored" type="compliance" status="approved" component="W3C_HTML5 APIs/DOM, Forms and Styles/CSS Animations Module Level 3" execution_type="manual" priority="P2" id="animation-keyframes-002">
         <description>
-          <pre_condition />
-          <post_condition />
-          <steps>
-            <step order="1">
-              <step_desc>Use WRT to visit the test script file to check that animation-timing-function can be implemented if it is set to cubic-bezier with parameters (0,0,1,1).</step_desc>
-              <expected>Blue box with text "CSS3 Testing Content" moves from right to left with constant speed</expected>
-            </step>
-          </steps>
-          <test_script_entry>/opt/tct-animations-css3-tests/animations/csswg/animation-timing-function-001.htm</test_script_entry>
+          <test_script_entry>/opt/tct-animations-css3-tests/animations/csswg/animation-keyframes-002.html</test_script_entry>
         </description>
         <specs>
           <spec>
-            <spec_assertion category="Tizen W3C API Specifications" element_name="animation-timing-function" element_type="property" interface="CSS" section="DOM, Forms and Styles" specification="CSS Animations Module Level 3" />
-            <spec_url>http://www.w3.org/TR/2012/WD-css3-animations-20120403/#animation-timing-function-property</spec_url>
-            <spec_statement />
+            <spec_assertion element_type="property" element_name="@keyframes" interface="CSS" specification="CSS Animations Module Level 3" section="DOM, Forms and Styles" category="Tizen W3C API Specifications"/>
+            <spec_url>http://dev.w3.org/csswg/css-animations-1/#keyframes</spec_url>
+            <spec_statement/>
           </spec>
         </specs>
       </testcase>
-      <testcase component="W3C_HTML5 APIs/DOM, Forms and Styles/CSS Animations Module Level 3" execution_type="manual" id="css3_animation_tests_entry26" priority="P2" purpose="To check if that animation-timing-function set to set to ease can implement animation-timing-function function normally" status="approved" type="compliance">
+      <testcase purpose="Check that @keyframes rule accpets 'animation-timing-function' property used as the animation moves to the next keyframe" type="compliance" status="approved" component="W3C_HTML5 APIs/DOM, Forms and Styles/CSS Animations Module Level 3" execution_type="manual" priority="P2" id="animation-keyframes-003">
         <description>
-          <pre_condition />
-          <post_condition />
-          <steps>
-            <step order="1">
-              <step_desc>Use WRT to visit the test script file to check if animation-timing-function set to set to ease can implement animation-timing-function function normally</step_desc>
-              <expected>Blue box with text "CSS3 Testing Content" moves from right to left; initially the animation starts slow, then gains acceleration in the middle and again slows down at the end</expected>
-            </step>
-          </steps>
-          <test_script_entry>/opt/tct-animations-css3-tests/animations/csswg/animation-timing-function-002.htm</test_script_entry>
+          <test_script_entry>/opt/tct-animations-css3-tests/animations/csswg/animation-keyframes-003.html</test_script_entry>
         </description>
         <specs>
           <spec>
-            <spec_assertion category="Tizen W3C API Specifications" element_name="animation-timing-function" element_type="property" interface="CSS" section="DOM, Forms and Styles" specification="CSS Animations Module Level 3" />
-            <spec_url>http://www.w3.org/TR/2012/WD-css3-animations-20120403/#animation-timing-function-property</spec_url>
-            <spec_statement />
+            <spec_assertion element_type="property" element_name="@keyframes" interface="CSS" specification="CSS Animations Module Level 3" section="DOM, Forms and Styles" category="Tizen W3C API Specifications"/>
+            <spec_url>http://dev.w3.org/csswg/css-animations-1/#keyframes</spec_url>
+            <spec_statement/>
           </spec>
         </specs>
       </testcase>
-      <testcase component="W3C_HTML5 APIs/DOM, Forms and Styles/CSS Animations Module Level 3" execution_type="manual" id="css3_animation_tests_entry27" priority="P2" purpose="To check if that animation-timing-function set to ease-in can implement animation-timing-function function normally" status="approved" type="compliance">
+      <testcase purpose="Check that animation-name is set without any value, there will be no animation" type="compliance" status="approved" component="W3C_HTML5 APIs/DOM, Forms and Styles/CSS Animations Module Level 3" execution_type="manual" priority="P2" id="animation-name-001">
         <description>
-          <pre_condition />
-          <post_condition />
-          <steps>
-            <step order="1">
-              <step_desc>Use WRT to visit the test script file to check if animation-timing-function set to ease-in can implement animation-timing-function function normally</step_desc>
-              <expected>Blue box with text "CSS3 Testing Content" moves from right to left; animation starts slow then gains acceleration as time progresses</expected>
-            </step>
-          </steps>
-          <test_script_entry>/opt/tct-animations-css3-tests/animations/csswg/animation-timing-function-003.htm</test_script_entry>
+          <test_script_entry>/opt/tct-animations-css3-tests/animations/csswg/animation-name-001.html</test_script_entry>
         </description>
         <specs>
           <spec>
-            <spec_assertion category="Tizen W3C API Specifications" element_name="animation-timing-function" element_type="property" interface="CSS" section="DOM, Forms and Styles" specification="CSS Animations Module Level 3" />
-            <spec_url>http://www.w3.org/TR/2012/WD-css3-animations-20120403/#animation-timing-function-property</spec_url>
-            <spec_statement />
+            <spec_assertion element_type="property" element_name="animation-name" interface="CSS" specification="CSS Animations Module Level 3" section="DOM, Forms and Styles" category="Tizen W3C API Specifications"/>
+            <spec_url>http://dev.w3.org/csswg/css-animations-1/#animation-name</spec_url>
+            <spec_statement/>
           </spec>
         </specs>
       </testcase>
-      <testcase component="W3C_HTML5 APIs/DOM, Forms and Styles/CSS Animations Module Level 3" execution_type="manual" id="css3_animation_tests_entry28" priority="P2" purpose="To check if that animation-timing-function set to ease-in-out can implement animation-timing-function function normally" status="approved" type="compliance">
+      <testcase purpose="When animation-name is set to refer to a keyframe at-rule that provides the property values for the animation, animation will execute" type="compliance" status="approved" component="W3C_HTML5 APIs/DOM, Forms and Styles/CSS Animations Module Level 3" execution_type="manual" priority="P2" id="animation-name-002">
         <description>
-          <pre_condition />
-          <post_condition />
-          <steps>
-            <step order="1">
-              <step_desc>Use WRT to visit the test script file to check if animation-timing-function set to ease-in-out can implement animation-timing-function function normally</step_desc>
-              <expected>Blue box with text "CSS3 Testing Content" moves from right to left; initially the animation starts slow, then gains acceleration in the middle and again slows down at the end</expected>
-            </step>
-          </steps>
-          <test_script_entry>/opt/tct-animations-css3-tests/animations/csswg/animation-timing-function-004.htm</test_script_entry>
+          <test_script_entry>/opt/tct-animations-css3-tests/animations/csswg/animation-name-002.html</test_script_entry>
         </description>
         <specs>
           <spec>
-            <spec_assertion category="Tizen W3C API Specifications" element_name="animation-timing-function" element_type="property" interface="CSS" section="DOM, Forms and Styles" specification="CSS Animations Module Level 3" />
-            <spec_url>http://www.w3.org/TR/2012/WD-css3-animations-20120403/#animation-timing-function-property</spec_url>
-            <spec_statement />
+            <spec_assertion element_type="property" element_name="animation-name" interface="CSS" specification="CSS Animations Module Level 3" section="DOM, Forms and Styles" category="Tizen W3C API Specifications"/>
+            <spec_url>http://dev.w3.org/csswg/css-animations-1/#animation-name</spec_url>
+            <spec_statement/>
           </spec>
         </specs>
       </testcase>
-      <testcase component="W3C_HTML5 APIs/DOM, Forms and Styles/CSS Animations Module Level 3" execution_type="manual" id="css3_animation_tests_entry29" priority="P2" purpose="To check if that animation-timing-function set to ease-out can implement animation-timing-function function normally" status="approved" type="compliance">
+      <testcase purpose="Check that animation-name is set to none, there will be no animation" type="compliance" status="approved" component="W3C_HTML5 APIs/DOM, Forms and Styles/CSS Animations Module Level 3" execution_type="manual" priority="P2" id="animation-name-003">
         <description>
-          <pre_condition />
-          <post_condition />
-          <steps>
-            <step order="1">
-              <step_desc>Use WRT to visit the test script file to check if animation-timing-function set to ease-out can implement animation-timing-function function normally</step_desc>
-              <expected>Blue box with text "CSS3 Testing Content" moves from right to left, animation starts then relatively slows down as time progresses</expected>
-            </step>
-          </steps>
-          <test_script_entry>/opt/tct-animations-css3-tests/animations/csswg/animation-timing-function-005.htm</test_script_entry>
+          <test_script_entry>/opt/tct-animations-css3-tests/animations/csswg/animation-name-003.html</test_script_entry>
         </description>
         <specs>
           <spec>
-            <spec_assertion category="Tizen W3C API Specifications" element_name="animation-timing-function" element_type="property" interface="CSS" section="DOM, Forms and Styles" specification="CSS Animations Module Level 3" />
-            <spec_url>http://www.w3.org/TR/2012/WD-css3-animations-20120403/#animation-timing-function-property</spec_url>
-            <spec_statement />
+            <spec_assertion element_type="property" element_name="animation-name" interface="CSS" specification="CSS Animations Module Level 3" section="DOM, Forms and Styles" category="Tizen W3C API Specifications"/>
+            <spec_url>http://dev.w3.org/csswg/css-animations-1/#animation-name</spec_url>
+            <spec_statement/>
           </spec>
         </specs>
       </testcase>
-      <testcase component="W3C_HTML5 APIs/DOM, Forms and Styles/CSS Animations Module Level 3" execution_type="manual" id="css3_animation_tests_entry30" priority="P2" purpose="To check if that animation-timing-function set to linear can implement animation-timing-function function normally" status="approved" type="compliance">
+      <testcase purpose="Check that animation-name does not match any keyframe at-rule, there are no properties to be animated and animation will not execute" type="compliance" status="approved" component="W3C_HTML5 APIs/DOM, Forms and Styles/CSS Animations Module Level 3" execution_type="manual" priority="P2" id="animation-name-004">
         <description>
-          <pre_condition />
-          <post_condition />
-          <steps>
-            <step order="1">
-              <step_desc>Use WRT to visit the test script file to check if animation-timing-function set to linear can implement animation-timing-function function normally</step_desc>
-              <expected>Blue box with text "CSS3 Testing Content" moves from right to left with constant speed</expected>
-            </step>
-          </steps>
-          <test_script_entry>/opt/tct-animations-css3-tests/animations/csswg/animation-timing-function-006.htm</test_script_entry>
+          <test_script_entry>/opt/tct-animations-css3-tests/animations/csswg/animation-name-004.html</test_script_entry>
         </description>
         <specs>
           <spec>
-            <spec_assertion category="Tizen W3C API Specifications" element_name="animation-timing-function" element_type="property" interface="CSS" section="DOM, Forms and Styles" specification="CSS Animations Module Level 3" />
-            <spec_url>http://www.w3.org/TR/2012/WD-css3-animations-20120403/#animation-timing-function-property</spec_url>
-            <spec_statement />
+            <spec_assertion element_type="property" element_name="animation-name" interface="CSS" specification="CSS Animations Module Level 3" section="DOM, Forms and Styles" category="Tizen W3C API Specifications"/>
+            <spec_url>http://dev.w3.org/csswg/css-animations-1/#animation-name</spec_url>
+            <spec_statement/>
+          </spec>
+        </specs>
+      </testcase>
+      <testcase purpose="Check that animation-name applies to the ::after pseudo element" type="compliance" status="approved" component="W3C_HTML5 APIs/DOM, Forms and Styles/CSS Animations Module Level 3" execution_type="manual" priority="P2" id="animation-name-005">
+        <description>
+          <test_script_entry>/opt/tct-animations-css3-tests/animations/csswg/animation-name-005.html</test_script_entry>
+        </description>
+        <specs>
+          <spec>
+            <spec_assertion element_type="property" element_name="animation-name" interface="CSS" specification="CSS Animations Module Level 3" section="DOM, Forms and Styles" category="Tizen W3C API Specifications"/>
+            <spec_url>http://dev.w3.org/csswg/css-animations-1/#animation-name</spec_url>
+            <spec_statement/>
+          </spec>
+        </specs>
+      </testcase>
+      <testcase purpose="Check that animation-name applies to the ::before pseudo element" type="compliance" status="approved" component="W3C_HTML5 APIs/DOM, Forms and Styles/CSS Animations Module Level 3" execution_type="manual" priority="P2" id="animation-name-006">
+        <description>
+          <test_script_entry>/opt/tct-animations-css3-tests/animations/csswg/animation-name-006.html</test_script_entry>
+        </description>
+        <specs>
+          <spec>
+            <spec_assertion element_type="property" element_name="animation-name" interface="CSS" specification="CSS Animations Module Level 3" section="DOM, Forms and Styles" category="Tizen W3C API Specifications"/>
+            <spec_url>http://dev.w3.org/csswg/css-animations-1/#animation-name</spec_url>
+            <spec_statement/>
+          </spec>
+        </specs>
+      </testcase>
+      <testcase purpose="When animation-play-state is set to paused, animation is paused where the progress it had made before being paused" type="compliance" status="approved" component="W3C_HTML5 APIs/DOM, Forms and Styles/CSS Animations Module Level 3" execution_type="manual" priority="P2" id="animation-play-state-001">
+        <description>
+          <test_script_entry>/opt/tct-animations-css3-tests/animations/csswg/animation-play-state-001.html</test_script_entry>
+        </description>
+        <specs>
+          <spec>
+            <spec_assertion element_type="property" element_name="animation-play-state" interface="CSS" specification="CSS Animations Module Level 3" section="DOM, Forms and Styles" category="Tizen W3C API Specifications"/>
+            <spec_url>http://dev.w3.org/csswg/css-animations-1/#animation-play-state</spec_url>
+            <spec_statement/>
+          </spec>
+        </specs>
+      </testcase>
+      <testcase purpose="When animation-play-state is set to running, animation will proceed as normal" type="compliance" status="approved" component="W3C_HTML5 APIs/DOM, Forms and Styles/CSS Animations Module Level 3" execution_type="manual" priority="P2" id="animation-play-state-002">
+        <description>
+          <test_script_entry>/opt/tct-animations-css3-tests/animations/csswg/animation-play-state-002.html</test_script_entry>
+        </description>
+        <specs>
+          <spec>
+            <spec_assertion element_type="property" element_name="animation-play-state" interface="CSS" specification="CSS Animations Module Level 3" section="DOM, Forms and Styles" category="Tizen W3C API Specifications"/>
+            <spec_url>http://dev.w3.org/csswg/css-animations-1/#animation-play-state</spec_url>
+            <spec_statement/>
+          </spec>
+        </specs>
+      </testcase>
+      <testcase purpose="Check that animation-play-state applies to the ::after pseudo element" type="compliance" status="approved" component="W3C_HTML5 APIs/DOM, Forms and Styles/CSS Animations Module Level 3" execution_type="manual" priority="P2" id="animation-play-state-003">
+        <description>
+          <test_script_entry>/opt/tct-animations-css3-tests/animations/csswg/animation-play-state-003.html</test_script_entry>
+        </description>
+        <specs>
+          <spec>
+            <spec_assertion element_type="property" element_name="animation-play-state" interface="CSS" specification="CSS Animations Module Level 3" section="DOM, Forms and Styles" category="Tizen W3C API Specifications"/>
+            <spec_url>http://dev.w3.org/csswg/css-animations-1/#animation-play-state</spec_url>
+            <spec_statement/>
+          </spec>
+        </specs>
+      </testcase>
+      <testcase purpose="Check that animation-play-state applies to the ::before pseudo element" type="compliance" status="approved" component="W3C_HTML5 APIs/DOM, Forms and Styles/CSS Animations Module Level 3" execution_type="manual" priority="P2" id="animation-play-state-004">
+        <description>
+          <test_script_entry>/opt/tct-animations-css3-tests/animations/csswg/animation-play-state-004.html</test_script_entry>
+        </description>
+        <specs>
+          <spec>
+            <spec_assertion element_type="property" element_name="animation-play-state" interface="CSS" specification="CSS Animations Module Level 3" section="DOM, Forms and Styles" category="Tizen W3C API Specifications"/>
+            <spec_url>http://dev.w3.org/csswg/css-animations-1/#animation-play-state</spec_url>
+            <spec_statement/>
+          </spec>
+        </specs>
+      </testcase>
+      <testcase purpose="Check that animation shorthand property accepts time values for animation-duration and animation-delay in order" type="compliance" status="approved" component="W3C_HTML5 APIs/DOM, Forms and Styles/CSS Animations Module Level 3" execution_type="manual" priority="P2" id="animation-shorthand-001">
+        <description>
+          <test_script_entry>/opt/tct-animations-css3-tests/animations/csswg/animation-shorthand-001.html</test_script_entry>
+        </description>
+        <specs>
+          <spec>
+            <spec_assertion element_type="property" element_name="animation" interface="CSS" specification="CSS Animations Module Level 3" section="DOM, Forms and Styles" category="Tizen W3C API Specifications"/>
+            <spec_url>http://dev.w3.org/csswg/css-animations-1/#animation</spec_url>
+            <spec_statement/>
+          </spec>
+        </specs>
+      </testcase>
+      <testcase purpose="Check that animation shorthand applies to the ::after pseudo element and accepts time values for animation-duration and animation-delay in order" type="compliance" status="approved" component="W3C_HTML5 APIs/DOM, Forms and Styles/CSS Animations Module Level 3" execution_type="manual" priority="P2" id="animation-shorthand-002">
+        <description>
+          <test_script_entry>/opt/tct-animations-css3-tests/animations/csswg/animation-shorthand-002.html</test_script_entry>
+        </description>
+        <specs>
+          <spec>
+            <spec_assertion element_type="property" element_name="animation" interface="CSS" specification="CSS Animations Module Level 3" section="DOM, Forms and Styles" category="Tizen W3C API Specifications"/>
+            <spec_url>http://dev.w3.org/csswg/css-animations-1/#animation</spec_url>
+            <spec_statement/>
+          </spec>
+        </specs>
+      </testcase>
+      <testcase purpose="Check that animation shorthand applies to the ::before pseudo element and accepts time values for animation-duration and animation-delay  in order" type="compliance" status="approved" component="W3C_HTML5 APIs/DOM, Forms and Styles/CSS Animations Module Level 3" execution_type="manual" priority="P2" id="animation-shorthand-003">
+        <description>
+          <test_script_entry>/opt/tct-animations-css3-tests/animations/csswg/animation-shorthand-003.html</test_script_entry>
+        </description>
+        <specs>
+          <spec>
+            <spec_assertion element_type="property" element_name="animation" interface="CSS" specification="CSS Animations Module Level 3" section="DOM, Forms and Styles" category="Tizen W3C API Specifications"/>
+            <spec_url>http://dev.w3.org/csswg/css-animations-1/#animation</spec_url>
+            <spec_statement/>
+          </spec>
+        </specs>
+      </testcase>
+      <testcase purpose="Check that animationstart event occurs at the start of an animation, animationend event occurs when animation finishes" type="compliance" status="approved" component="W3C_HTML5 APIs/DOM, Forms and Styles/CSS Animations Module Level 3" execution_type="manual" priority="P2" id="animationstart-and-animationend-events">
+        <description>
+          <test_script_entry>/opt/tct-animations-css3-tests/animations/csswg/animationstart-and-animationend-events.html</test_script_entry>
+        </description>
+        <specs>
+          <spec>
+            <spec_assertion element_type="property" element_name="animationstart" interface="Animation Event" specification="CSS Animations Module Level 3" section="DOM, Forms and Styles" category="Tizen W3C API Specifications"/>
+            <spec_url>http://dev.w3.org/csswg/css-animations-1/#events</spec_url>
+            <spec_statement/>
+          </spec>
+        </specs>
+      </testcase>
+      <testcase purpose="When animation-timing-function is set to cubic-bezier with parameters (0,0,1,1), animation will progress over one cycle  of its duration with constant speed" type="compliance" status="approved" component="W3C_HTML5 APIs/DOM, Forms and Styles/CSS Animations Module Level 3" execution_type="manual" priority="P2" id="animation-timing-function-001">
+        <description>
+          <test_script_entry>/opt/tct-animations-css3-tests/animations/csswg/animation-timing-function-001.html</test_script_entry>
+        </description>
+        <specs>
+          <spec>
+            <spec_assertion element_type="property" element_name="animation-timing-function" interface="CSS" specification="CSS Animations Module Level 3" section="DOM, Forms and Styles" category="Tizen W3C API Specifications"/>
+            <spec_url>http://dev.w3.org/csswg/css-animations-1/#animation-timing-function</spec_url>
+            <spec_statement/>
+          </spec>
+        </specs>
+      </testcase>
+      <testcase purpose="Check that animation-timing-function is set to ease, animation will starts slow, gain acceleration in the middle and again slow down at the end" type="compliance" status="approved" component="W3C_HTML5 APIs/DOM, Forms and Styles/CSS Animations Module Level 3" execution_type="manual" priority="P2" id="animation-timing-function-002">
+        <description>
+          <test_script_entry>/opt/tct-animations-css3-tests/animations/csswg/animation-timing-function-002.html</test_script_entry>
+        </description>
+        <specs>
+          <spec>
+            <spec_assertion element_type="property" element_name="animation-timing-function" interface="CSS" specification="CSS Animations Module Level 3" section="DOM, Forms and Styles" category="Tizen W3C API Specifications"/>
+            <spec_url>http://dev.w3.org/csswg/css-animations-1/#animation-timing-function</spec_url>
+            <spec_statement/>
+          </spec>
+        </specs>
+      </testcase>
+      <testcase purpose="Check that animation-timing-function is set to ease-in, animation will start slow, gain acceleration as time progresses" type="compliance" status="approved" component="W3C_HTML5 APIs/DOM, Forms and Styles/CSS Animations Module Level 3" execution_type="manual" priority="P2" id="animation-timing-function-003">
+        <description>
+          <test_script_entry>/opt/tct-animations-css3-tests/animations/csswg/animation-timing-function-003.html</test_script_entry>
+        </description>
+        <specs>
+          <spec>
+            <spec_assertion element_type="property" element_name="animation-timing-function" interface="CSS" specification="CSS Animations Module Level 3" section="DOM, Forms and Styles" category="Tizen W3C API Specifications"/>
+            <spec_url>http://dev.w3.org/csswg/css-animations-1/#animation-timing-function</spec_url>
+            <spec_statement/>
+          </spec>
+        </specs>
+      </testcase>
+      <testcase purpose="Check that animation-timing-function is set to ease-in-out,  animation will start slow, gain acceleration in the middle and again slow down at the end" type="compliance" status="approved" component="W3C_HTML5 APIs/DOM, Forms and Styles/CSS Animations Module Level 3" execution_type="manual" priority="P2" id="animation-timing-function-004">
+        <description>
+          <test_script_entry>/opt/tct-animations-css3-tests/animations/csswg/animation-timing-function-004.html</test_script_entry>
+        </description>
+        <specs>
+          <spec>
+            <spec_assertion element_type="property" element_name="animation-timing-function" interface="CSS" specification="CSS Animations Module Level 3" section="DOM, Forms and Styles" category="Tizen W3C API Specifications"/>
+            <spec_url>http://dev.w3.org/csswg/css-animations-1/#animation-timing-function</spec_url>
+            <spec_statement/>
+          </spec>
+        </specs>
+      </testcase>
+      <testcase purpose="Check that animation-timing-function is set to ease-out, animation will start with higher (than the normal) speed and relatively slow down as time progresses" type="compliance" status="approved" component="W3C_HTML5 APIs/DOM, Forms and Styles/CSS Animations Module Level 3" execution_type="manual" priority="P2" id="animation-timing-function-005">
+        <description>
+          <test_script_entry>/opt/tct-animations-css3-tests/animations/csswg/animation-timing-function-005.html</test_script_entry>
+        </description>
+        <specs>
+          <spec>
+            <spec_assertion element_type="property" element_name="animation-timing-function" interface="CSS" specification="CSS Animations Module Level 3" section="DOM, Forms and Styles" category="Tizen W3C API Specifications"/>
+            <spec_url>http://dev.w3.org/csswg/css-animations-1/#animation-timing-function</spec_url>
+            <spec_statement/>
+          </spec>
+        </specs>
+      </testcase>
+      <testcase purpose="When animation-timing-function is set to linear, animation will progress over one cycle of its duration with constant speed" type="compliance" status="approved" component="W3C_HTML5 APIs/DOM, Forms and Styles/CSS Animations Module Level 3" execution_type="manual" priority="P2" id="animation-timing-function-006">
+        <description>
+          <test_script_entry>/opt/tct-animations-css3-tests/animations/csswg/animation-timing-function-006.html</test_script_entry>
+        </description>
+        <specs>
+          <spec>
+            <spec_assertion element_type="property" element_name="animation-timing-function" interface="CSS" specification="CSS Animations Module Level 3" section="DOM, Forms and Styles" category="Tizen W3C API Specifications"/>
+            <spec_url>http://dev.w3.org/csswg/css-animations-1/#animation-timing-function</spec_url>
+            <spec_statement/>
+          </spec>
+        </specs>
+      </testcase>
+      <testcase purpose="When animation-timing-function is set to step-start, animation will play the end effect at the start of the interval" type="compliance" status="approved" component="W3C_HTML5 APIs/DOM, Forms and Styles/CSS Animations Module Level 3" execution_type="manual" priority="P2" id="animation-timing-function-007">
+        <description>
+          <test_script_entry>/opt/tct-animations-css3-tests/animations/csswg/animation-timing-function-007.html</test_script_entry>
+        </description>
+        <specs>
+          <spec>
+            <spec_assertion element_type="property" element_name="animation-timing-function" interface="CSS" specification="CSS Animations Module Level 3" section="DOM, Forms and Styles" category="Tizen W3C API Specifications"/>
+            <spec_url>http://dev.w3.org/csswg/css-animations-1/#animation-timing-function</spec_url>
+            <spec_statement/>
+          </spec>
+        </specs>
+      </testcase>
+      <testcase purpose="When animation-timing-function is set to step-end, animation will play the end effect at the end time point, and keep the start effect at the start of the interval" type="compliance" status="approved" component="W3C_HTML5 APIs/DOM, Forms and Styles/CSS Animations Module Level 3" execution_type="manual" priority="P2" id="animation-timing-function-008">
+        <description>
+          <test_script_entry>/opt/tct-animations-css3-tests/animations/csswg/animation-timing-function-008.html</test_script_entry>
+        </description>
+        <specs>
+          <spec>
+            <spec_assertion element_type="property" element_name="animation-timing-function" interface="CSS" specification="CSS Animations Module Level 3" section="DOM, Forms and Styles" category="Tizen W3C API Specifications"/>
+            <spec_url>http://dev.w3.org/csswg/css-animations-1/#animation-timing-function</spec_url>
+            <spec_statement/>
+          </spec>
+        </specs>
+      </testcase>
+      <testcase purpose="When animation-timing-function is set to steps with parameters (number, start), animation will be defined by the number that divides the domain of operation into equally size intervals, evey time the change happens at the start of the interval" type="compliance" status="approved" component="W3C_HTML5 APIs/DOM, Forms and Styles/CSS Animations Module Level 3" execution_type="manual" priority="P2" id="animation-timing-function-009">
+        <description>
+          <test_script_entry>/opt/tct-animations-css3-tests/animations/csswg/animation-timing-function-009.html</test_script_entry>
+        </description>
+        <specs>
+          <spec>
+            <spec_assertion element_type="property" element_name="animation-timing-function" interface="CSS" specification="CSS Animations Module Level 3" section="DOM, Forms and Styles" category="Tizen W3C API Specifications"/>
+            <spec_url>http://dev.w3.org/csswg/css-animations-1/#animation-timing-function</spec_url>
+            <spec_statement/>
+          </spec>
+        </specs>
+      </testcase>
+      <testcase purpose="When animation-timing-function is set to steps with parameters  (number, end), animation will be defined by the number that divides the domain of operation into equally size intervals, evey time the changes happens at the end of the interval" type="compliance" status="approved" component="W3C_HTML5 APIs/DOM, Forms and Styles/CSS Animations Module Level 3" execution_type="manual" priority="P2" id="animation-timing-function-010">
+        <description>
+          <test_script_entry>/opt/tct-animations-css3-tests/animations/csswg/animation-timing-function-010.html</test_script_entry>
+        </description>
+        <specs>
+          <spec>
+            <spec_assertion element_type="property" element_name="animation-timing-function" interface="CSS" specification="CSS Animations Module Level 3" section="DOM, Forms and Styles" category="Tizen W3C API Specifications"/>
+            <spec_url>http://dev.w3.org/csswg/css-animations-1/#animation-timing-function</spec_url>
+            <spec_statement/>
+          </spec>
+        </specs>
+      </testcase>
+      <testcase purpose="Check that animation-timing-function applies to the ::after pseudo element" type="compliance" status="approved" component="W3C_HTML5 APIs/DOM, Forms and Styles/CSS Animations Module Level 3" execution_type="manual" priority="P2" id="animation-timing-function-011">
+        <description>
+          <test_script_entry>/opt/tct-animations-css3-tests/animations/csswg/animation-timing-function-011.html</test_script_entry>
+        </description>
+        <specs>
+          <spec>
+            <spec_assertion element_type="property" element_name="animation-timing-function" interface="CSS" specification="CSS Animations Module Level 3" section="DOM, Forms and Styles" category="Tizen W3C API Specifications"/>
+            <spec_url>http://dev.w3.org/csswg/css-animations-1/#animation-timing-function</spec_url>
+            <spec_statement/>
+          </spec>
+        </specs>
+      </testcase>
+      <testcase purpose="Check that animation-timing-function applies to the ::before pseudo element" type="compliance" status="approved" component="W3C_HTML5 APIs/DOM, Forms and Styles/CSS Animations Module Level 3" execution_type="manual" priority="P2" id="animation-timing-function-012">
+        <description>
+          <test_script_entry>/opt/tct-animations-css3-tests/animations/csswg/animation-timing-function-012.html</test_script_entry>
+        </description>
+        <specs>
+          <spec>
+            <spec_assertion element_type="property" element_name="animation-timing-function" interface="CSS" specification="CSS Animations Module Level 3" section="DOM, Forms and Styles" category="Tizen W3C API Specifications"/>
+            <spec_url>http://dev.w3.org/csswg/css-animations-1/#animation-timing-function</spec_url>
+            <spec_statement/>
           </spec>
         </specs>
       </testcase>
