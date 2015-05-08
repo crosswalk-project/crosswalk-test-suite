@@ -100,15 +100,9 @@ def cloneCode(tag=None):
 
 def main():
     try:
-        global dest
+        global dest, uuid
         usage = 'Usage: ./%prog -d "platform=iOS Simulator,name=iPhone 6,OS=8.3"'
         opts_parser = OptionParser(usage=usage)
-        opts_parser.add_option(
-            "-t",
-            "--tag",
-            dest = "tag",
-            help = "specify the tag that you want to checkout, default branch is master"
-        )
         opts_parser.add_option(
             "-d",
             "--dest",
@@ -118,6 +112,19 @@ def main():
                    'e.g. "platform=iOS Simulator;name=iPhone 6;OS=8.3",' \
                    '"platform=iOS;name=iPad Air"'
         )
+        opts_parser.add_option(
+            "-u",
+            "--uuid",
+            dest = "deviceuuid",
+            help = "specify the uuid of the test devices"
+        )
+        opts_parser.add_option(
+            "-t",
+            "--tag",
+            dest = "tag",
+            help = "specify the tag that you want to checkout, default branch is master"
+        )
+
         if len(sys.argv) == 1:
             sys.argv.append("-h")
 
@@ -125,6 +132,8 @@ def main():
         cloneCode(PARAMETERS.tag)
         dest = PARAMETERS.destination
         #print 'dest', dest
+        uuid = PARAMETERS.deviceuuid
+        #print 'uuid', uuid
 	
     except Exception,e:
         print("Get wrong options: %s, exit ..." % e)
