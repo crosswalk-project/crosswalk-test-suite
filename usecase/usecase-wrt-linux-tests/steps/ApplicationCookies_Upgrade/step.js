@@ -4,6 +4,6 @@ var step = '<font class="fontSize">'
             +'<p>Expected Result:</p>'
             +'<ol>'
             +'<li>Install successfully and pop up "Cookie created".</li>'
-            +"<li>Pop up "The value of the cookie is 'you created'"</li>"
+            +'<li>Pop up "The value of the cookie is you created"</li>'
             +'</ol>'
           +'</font>';

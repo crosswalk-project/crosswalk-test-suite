@@ -1,4 +1,4 @@
 var step = '<font class="fontSize">'
-            +'<p>Purpose:</p>'
-            +'<p>Validate flash plugin loading support.</p>'
+            +'<p>Test Purpose:</p>'
+            +'<p>Verifies flash plugin loading support</p>'
           +'</font>';

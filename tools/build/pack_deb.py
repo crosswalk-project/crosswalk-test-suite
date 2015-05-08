@@ -372,7 +372,10 @@ def packDEB(build_json=None, app_src=None, app_dest=None, app_name=None):
     orig_dir = os.getcwd()
     os.chdir(app_src)
     LOG.info("Change dir to : %s" % app_src)
-    pkg_name = "org.test." + app_name.replace("-", "")
+    if app_name.find("org") == -1:
+        pkg_name = "org.test." + app_name.replace("-", "")
+    else:
+        pkg_name = app_name
 
     if doCMD(pack_cmd, DEFAULT_CMD_TIMEOUT):
 		for parent,dirnames,filenames in os.walk(os.path.join(app_src, "pkg")):
