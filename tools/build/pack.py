@@ -863,7 +863,7 @@ def packAPP(build_json=None, app_src=None, app_dest=None, app_name=None):
             if not packEmbeddingAPI_maven(build_json, app_src, app_dest, app_name, app_version):
                 return False
         else:
-            if not packEmbeddingAPI_sub(build_json, app_src, app_dest, app_name, app_version):
+            if not packEmbeddingAPI_ant(build_json, app_src, app_dest, app_name, app_version):
                 return False
     else:
         LOG.error("Got wrong pkg type: %s" % BUILD_PARAMETERS.pkgtype)
