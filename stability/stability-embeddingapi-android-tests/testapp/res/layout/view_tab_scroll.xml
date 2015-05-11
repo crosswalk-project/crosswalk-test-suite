@@ -1,0 +1,148 @@
+<!--
+ Copyright (c) 2014 Intel Corporation. All rights reserved.
+
+     Use of this source code is governed by a BSD-style license that can be
+     found in the LICENSE file.
+-->
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/view_tab_scroll"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+    <TextView
+        android:id="@+id/xwalk_des"  
+        android:layout_width="wrap_content"  
+        android:layout_height="wrap_content"/>
+    <TextView
+        android:id="@+id/result_show"  
+        android:layout_width="wrap_content"  
+        android:layout_height="wrap_content"
+        android:translationX="15px"
+        android:translationY="80px"
+        android:text="0"/>
+    <EditText
+        android:id="@+id/views_num"
+        android:numeric="integer"
+        android:maxLength="3"
+        android:layout_width="80px"
+        android:layout_height="wrap_content"  
+        android:padding="5px"
+        android:singleLine="true"  
+        android:lines="1"
+        android:translationX="10px"
+        android:translationY="330px"
+        android:text="20"/>
+    <CheckBox 
+        android:id="@+id/cb_yahoo"
+        android:layout_width="wrap_content" 
+        android:layout_height="wrap_content"
+        android:checked="true"
+        android:text="https://www.yahoo.com"
+        android:translationX="0px"
+        android:translationY="100px"/>
+    <CheckBox 
+        android:id="@+id/cb_sina"
+        android:layout_width="wrap_content" 
+        android:layout_height="wrap_content"
+        android:checked="true"
+        android:text="http://www.sina.com.cn"
+        android:translationX="0px"
+        android:translationY="130px"/>
+    <CheckBox 
+        android:id="@+id/cb_qq"
+        android:layout_width="wrap_content" 
+        android:layout_height="wrap_content"
+        android:checked="true"
+        android:text="http://www.qq.com"
+        android:translationX="0px"
+        android:translationY="160px"/>
+    <CheckBox 
+        android:id="@+id/cb_sohu"
+        android:layout_width="wrap_content" 
+        android:layout_height="wrap_content"
+        android:checked="true"
+        android:text="http://www.sohu.com"
+        android:translationX="0px"
+        android:translationY="190px"/>
+    <CheckBox 
+        android:id="@+id/cb_bing"
+        android:layout_width="wrap_content" 
+        android:layout_height="wrap_content"
+        android:checked="true"
+        android:text="http://cn.bing.com"
+        android:translationX="0px"
+        android:translationY="220px"/>
+    <CheckBox 
+        android:id="@+id/cb_w3"
+        android:layout_width="wrap_content" 
+        android:layout_height="wrap_content"
+        android:checked="true"
+        android:text="http://www.w3.org"
+        android:translationX="0px"
+        android:translationY="250px"/>
+    <CheckBox 
+        android:id="@+id/cb_163"
+        android:layout_width="wrap_content" 
+        android:layout_height="wrap_content"
+        android:checked="true"
+        android:text="http://www.163.com"
+        android:translationX="0px"
+        android:translationY="280px"/>
+  <LinearLayout
+        android:id="@+id/btns_lay"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:translationX="100px"
+        android:translationY="320px">
+    <Button android:id="@+id/run_add"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:gravity="end"
+            android:text="Add Views"/>
+
+    <Button android:id="@+id/run_exit"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:gravity="end"
+            android:text="Exit"/>
+  </LinearLayout>
+  <RelativeLayout
+        android:id="@+id/view_root"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+        <TabHost
+        android:id="@+id/myTabHost"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:translationY="380px">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical"
+            android:padding="5dp" >
+
+            <HorizontalScrollView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:scrollbars="none" >
+
+                <TabWidget
+
+                    android:id="@android:id/tabs"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content" />
+            </HorizontalScrollView>
+
+            <FrameLayout
+                android:id="@android:id/tabcontent"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:padding="5dp" />
+        </LinearLayout>
+    </TabHost>
+  </RelativeLayout>
+
+</RelativeLayout>

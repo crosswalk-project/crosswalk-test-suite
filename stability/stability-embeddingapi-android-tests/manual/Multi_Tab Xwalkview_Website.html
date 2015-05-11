@@ -30,26 +30,29 @@ Authors:
 
 -->
 
-<title>Create_XWalkView_Maximum</title>
+<title>Multi_Tab Xwalkview_Website</title>
 <link rel="author" title="Intel" href="http://www.intel.com">
 <p>
    <strong>Test steps:</strong>
 </p>
 <ol>
    <li>Install views_maximum_test test app and launch it</li>
-   <li>Click "WebView Maximun" menu to go to "WebView Maximun" page</li>
-   <li>Click "Add Views" button until the page crash to find the maximum of web views could be opened</li>
-   <li>Click "XWalkView(SurfaceView) Maximun" menu to go to "XWalkView(SurfaceView) Maximun" page</li>
-   <li>Click "Add Views" button until the page crash to find the maximum of Surface Crosswalk views could be opened</li>
-   <li>Compare the maximum number of web views and Surface Crosswalk views</li>
-   <li>Click "XWalkView(TextureView) Maximun" menu to go to "XWalkView(TextureView) Maximun" page</li>
-   <li>Click "Add Views" button until the page crash to find the maximum of Texture Crosswalk views could be opened</li>
-   <li>Compare the maximum number of web views and Texture Crosswalk views</li>
+   <li>Click "Multi Tab WebViews" menu to go to "Multi Tab WebViews" page</li>
+   <li>Click "Add Views" button once to create 20 webViews at the same time and load different webpages:popular website(yahoo,sina, qq, sohu, bing, w3, 163) successfully, </li>
+   <li>Click "Exit" button to destroy the created webViews successfully. </li>
+   <li>Click "Multi Tab SurfaceViews" menu to go to "Multi Tab SurfaceViews" page</li>
+   <li>Click "Add Views" button once to create 20 xwalkviews at the same time and load different webpages:popular website(yahoo,sina, qq, sohu, bing, w3, 163) successfully, </li>
+   <li>Click "Exit" button to destroy the created xwalkviews successfully. </li>
+   <li>Click "Multi Tab TextureViews" menu to go to "Multi Tab TextureViews" page</li>
+   <li>Click "Add Views" button once to create 20 xwalkviews at the same time and load different webpages:popular website(yahoo,sina, qq, sohu, bing, w3, 163) successfully, </li>
+   <li>Click "Exit" button to destroy the created xwalkviews successfully. </li>
+   <li>compare the resource consumption with platform webview, SurfaceView and TextureView.</li>
 </ol>
 <p>
    <strong>Expected Output:</strong>
 </p>
 <ol>
-   <li>The maximum of Surface Crosswalk views is greater than the maximum of web views</li>
-   <li>The maximum of Texture Crosswalk views is greater than the maximum of web views</li>
+   <li>No crash or hang in the test. </li>
+   <li>No memory leak in the test. page loading time should no significent delay than the first round load. </li>
+   <li>The surfaceView and textureViews can get the same capability as the platform of webview.</li>
 </ol>
