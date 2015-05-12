@@ -1,0 +1,6 @@
+var step = '<font class="fontSize">'
+           + '<p>Test Purpose: </p>'
+           + '<p>Verifies the status of a given permission.</p>'
+           + '<p>Expected Result: </p>'
+           + '<p>Test passes if the status of all the given permissions is granted, denied or if the user will be asked whether the permissions should be granted.</p>'
+         + '</font>'
