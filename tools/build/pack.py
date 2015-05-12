@@ -299,7 +299,6 @@ def buildSRC(src=None, dest=None, build_json=None):
         black_file_list = list(set(black_file_list))
         if not doRemove(black_file_list):
             return False
-
     if "copylist" in build_json:
         for i_s_key in build_json["copylist"].keys():
             if i_s_key and build_json["copylist"][i_s_key]:
@@ -589,6 +588,78 @@ def packAPK(build_json=None, app_src=None, app_dest=None, app_name=None):
     os.chdir(orig_dir)
     return True
 
+def packCordova_cli(build_json=None, app_src=None, app_dest=None, app_name=None):
+    app_name = app_name.replace("-", "_")
+    project_root = os.path.join(BUILD_ROOT, app_name)
+
+    output = commands.getoutput("cordova -v")
+    if output != "5.0.0":
+        LOG.error("Cordova 4.0 build requires Cordova-CLI 5.0.0, install with command: '$ sudo npm install cordova@5.0.0 -g'")
+        return False
+
+    plugin_tool = os.path.join(BUILD_ROOT, "cordova_plugins")
+    if not os.path.exists(plugin_tool):
+        if not doCopy(
+                os.path.join(BUILD_PARAMETERS.pkgpacktools, "cordova_plugins"),
+                plugin_tool):
+            return False
+
+    orig_dir = os.getcwd()
+    os.chdir(BUILD_ROOT)
+    pack_cmd = "cordova create %s org.xwalk.%s %s" % (
+        app_name, app_name, app_name)
+    if not doCMD(pack_cmd, DEFAULT_CMD_TIMEOUT):
+        os.chdir(orig_dir)
+        return False
+
+    ### Set activity name as app_name
+    replaceUserString(project_root, 'config.xml', '<widget', '<widget android-activityName="%s"' % app_name)
+    ### Workaround for XWALK-3679
+    replaceUserString(project_root, 'config.xml', '</widget>', '    <allow-navigation href="*" />\n</widget>')
+
+    if not doRemove([os.path.join(project_root, "www")]):
+        return False
+    if not doCopy(app_src, os.path.join(project_root, "www")):
+        os.chdir(orig_dir)
+        return False
+
+    os.chdir(project_root)
+    pack_cmd = "cordova platform add android"
+    if not doCMD(pack_cmd, DEFAULT_CMD_TIMEOUT):
+        os.chdir(orig_dir)
+        return False
+
+    plugin_dirs = os.listdir(plugin_tool)
+    for i_dir in plugin_dirs:
+        i_plugin_dir = os.path.join(plugin_tool, i_dir)
+        plugin_install_cmd = "cordova plugin add %s" % i_plugin_dir
+        if not doCMD(plugin_install_cmd, DEFAULT_CMD_TIMEOUT):
+            os.chdir(orig_dir)
+            return False
+
+    ANDROID_HOME = "echo $(dirname $(dirname $(which android)))"
+    os.environ['ANDROID_HOME'] = commands.getoutput(ANDROID_HOME)
+    pack_cmd = "cordova build android"
+
+    if not doCMD(pack_cmd, DEFAULT_CMD_TIMEOUT):
+        os.chdir(orig_dir)
+        return False
+
+    outputs_dir = os.path.join(project_root, "platforms", "android", "build", "outputs", "apk")
+
+    if BUILD_PARAMETERS.pkgarch == "x86":
+        cordova_tmp_path = os.path.join(outputs_dir, "%s-x86-debug.apk"%app_name)
+        cordova_tmp_path_spare = os.path.join(outputs_dir, "android-x86-debug.apk")
+    else:
+        cordova_tmp_path = os.path.join(outputs_dir, "%s-armv7-debug.apk"%app_name)
+        cordova_tmp_path_spare = os.path.join(outputs_dir, "android-armv7-debug.apk")
+
+    if not doCopy(cordova_tmp_path, os.path.join(app_dest, "%s.apk" % app_name)):
+        if not doCopy(cordova_tmp_path_spare, os.path.join(app_dest, "%s.apk" % app_name)):
+            os.chdir(orig_dir)
+            return False
+    os.chdir(orig_dir)
+    return True
 
 def packCordova(build_json=None, app_src=None, app_dest=None, app_name=None):
     pack_tool = os.path.join(BUILD_ROOT, "cordova")
@@ -844,8 +915,12 @@ def packAPP(build_json=None, app_src=None, app_dest=None, app_name=None):
         if not packAPK(build_json, app_src, app_dest, app_name):
             return False
     elif checkContains(BUILD_PARAMETERS.pkgtype, "CORDOVA"):
-        if not packCordova(build_json, app_src, app_dest, app_name):
-            return False
+        if BUILD_PARAMETERS.subversion == '4.0':
+            if not packCordova_cli(build_json, app_src, app_dest, app_name):
+                return False
+        else:
+            if not packCordova(build_json, app_src, app_dest, app_name):
+                return False
     elif checkContains(BUILD_PARAMETERS.pkgtype, "EMBEDDINGAPI") or app_tpye == "EMBEDDINGAPI":
         app_version = None
         if "_" in app_name:

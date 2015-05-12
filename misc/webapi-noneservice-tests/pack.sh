@@ -1,10 +1,11 @@
 #!/bin/bash
 source $(dirname $0)/webapi-noneservice-tests.spec
 
-usage="Usage: ./pack.sh [-t <package type: apk | cordova>] [-a <apk runtime arch: x86 | arm>] [-m <package mode: embedded | shared>]
+usage="Usage: ./pack.sh [-t <package type: apk | cordova>] [-a <apk runtime arch: x86 | arm>] [-m <package mode: embedded | shared>] [-v <sub version: 3.6 | 4.0>]
 [-t apk] option was set as default.
 [-a x86] option was set as default.
 [-m embedded] option was set as default.
+[-v 3.6] option was set as default.
 "
 
 SRC_ROOT=$(cd $(dirname $0);pwd)
@@ -15,13 +16,15 @@ dest_dir=$SRC_ROOT
 pack_type="apk"
 arch="x86"
 pack_mode="embedded"
-while getopts a:t:m:d: o
+sub_version="3.6"
+while getopts a:t:m:d:v: o
 do
     case "$o" in
     a) arch=$OPTARG;;
     t) pack_type=$OPTARG;;
     m) pack_mode=$OPTARG;;
     d) dest_dir=$OPTARG;;
+    v) sub_version=$OPTARG;;
     *) echo "$usage"
        exit 1;;
     esac
@@ -59,7 +62,15 @@ echo "        ]
 
 if [ $pack_type == "cordova" ]; then
     for suite in $LIST;do
-        python $SRC_ROOT/../../tools/build/pack.py -t ${pack_type}-aio -m $pack_mode -d $BUILD_DEST -s $SRC_ROOT/../../webapi/`basename $suite`
+        if [ $sub_version == "4.0" ]; then
+            python $SRC_ROOT/../../tools/build/pack.py -t ${pack_type}-aio -a $arch -d $BUILD_DEST --sub-version $sub_version -s $SRC_ROOT/../../webapi/`basename $suite`
+        elif [ $sub_version == "3.6" ]; then
+            python $SRC_ROOT/../../tools/build/pack.py -t ${pack_type}-aio -m $pack_mode -d $BUILD_DEST --sub-version $sub_version -s $SRC_ROOT/../../webapi/`basename $suite`
+        else
+            echo "package sub version can only be 3.6 or 4.0, now exit.... >>>>>>>>>>>>>>>>>>>>>>>>>"
+            clean_workspace
+            exit 1
+        fi
     done
 else
     for suite in $LIST;do
@@ -104,31 +115,92 @@ if [ $pack_type == "apk" ]; then
         mv $BUILD_DEST/opt/$name/WebapiNoneserviceTests*.apk $BUILD_DEST/opt/$name/$appname.apk
     fi
 elif [ $pack_type == "cordova" ]; then
-    cp -ar $SRC_ROOT/../../tools/cordova $BUILD_ROOT/cordova
-    cp -ar $SRC_ROOT/../../tools/cordova_plugins $BUILD_ROOT/cordova_plugins
+    if [ $sub_version == "4.0" ]; then
+        cp -ar $SRC_ROOT/../../tools/cordova_plugins $BUILD_ROOT/cordova_plugins
+        cd $BUILD_ROOT
+        cordova create $appname org.xwalk.$appname $appname
+        sed -i "s/<widget/<widget android-activityName=\"$appname\"/g" $BUILD_ROOT/$appname/config.xml
+        sed -i "s/<\/widget>/    <allow-navigation href=\"*\" \/>\\n<\/widget>/g" $BUILD_ROOT/$appname/config.xml
 
-    cd $BUILD_ROOT/cordova
-    bin/create $appname org.xwalk.$appname $appname
+        cp -a $BUILD_ROOT/webrunner/*  $BUILD_ROOT/$appname/www
+        mv $BUILD_ROOT/$appname/www/index.html $BUILD_ROOT/$appname/www/index_real.html
+        cp -a $BUILD_DEST/opt $BUILD_ROOT/$appname/www
+        mv $BUILD_DEST/testlist.json $BUILD_ROOT/$appname/www
+        mv $BUILD_DEST/index_tmp.html $BUILD_ROOT/$appname/www/index.html
+        mv $BUILD_DEST/icon.png $BUILD_ROOT/$appname/www
 
-    cd $BUILD_ROOT/cordova/$appname
+        cd $BUILD_ROOT/$appname
+        cordova platform add android
 
-    for plugin in `ls $BUILD_ROOT/cordova_plugins`
-    do
-        plugman install --platform android --project ./ --plugin $BUILD_ROOT/cordova_plugins/$plugin
-    done
+        for plugin in `ls $BUILD_ROOT/cordova_plugins`
+        do
+            cordova plugin add $BUILD_ROOT/cordova_plugins/$plugin
+        done
 
-    cp -a $BUILD_ROOT/webrunner/*  $BUILD_ROOT/cordova/$appname/assets/www
-    mv $BUILD_ROOT/cordova/$appname/assets/www/index.html $BUILD_ROOT/cordova/$appname/assets/www/index_real.html
-    cp -a $BUILD_DEST/opt $BUILD_ROOT/cordova/$appname/assets/www
-    mv $BUILD_DEST/testlist.json $BUILD_ROOT/cordova/$appname/assets/www
-    mv $BUILD_DEST/index_tmp.html $BUILD_ROOT/cordova/$appname/assets/www/index.html
-    mv $BUILD_DEST/icon.png $BUILD_ROOT/cordova/$appname/assets/www
+        cordova build android
+        if [ $arch == 'x86' ]; then
+            if [ -f $BUILD_ROOT/$appname/platforms/android/build/outputs/apk/$appname-x86-debug.apk ];then
+                mv $BUILD_ROOT/$appname/platforms/android/build/outputs/apk/$appname-x86-debug.apk $BUILD_DEST/opt/$name/$appname.apk
+            elif [ -f $BUILD_ROOT/$appname/platforms/android/build/outputs/apk/android-x86-debug.apk ];then
+                mv $BUILD_ROOT/$appname/platforms/android/build/outputs/apk/android-x86-debug.apk $BUILD_DEST/opt/$name/$appname.apk
+            else
+                echo "Copy apk failed, " + $BUILD_ROOT + "/" + $appname + "/platforms/android/build/outputs/apk/android-x86-debug.apk does not exist"
+                clean_workspace
+                exit 1
+            fi
+        else
+            if [ $arch != 'arm' ]; then
+                echo "apk runtime arch can only be x86 or arm, now take arm as default.... >>>>>>>>>>>>>>>>>>>>>>>>>"
+            fi
+            if [ -f $BUILD_ROOT/$appname/platforms/android/build/outputs/apk/$appname-armv7-debug.apk ];then
+                mv $BUILD_ROOT/$appname/platforms/android/build/outputs/apk/$appname-armv7-debug.apk $BUILD_DEST/opt/$name/$appname.apk
+            elif [ -f $BUILD_ROOT/$appname/platforms/android/build/outputs/apk/android-armv7-debug.apk ];then
+                mv $BUILD_ROOT/$appname/platforms/android/build/outputs/apk/android-armv7-debug.apk $BUILD_DEST/opt/$name/$appname.apk
+            else
+                echo "Copy apk failed, " + $BUILD_ROOT + "/" + $appname + "/platforms/android/build/outputs/apk/android-armv7-debug.apk does not exist"
+                clean_workspace
+                exit 1
+            fi
+        fi
+    elif [ $sub_version == "3.6" ]; then
+        cp -ar $SRC_ROOT/../../tools/cordova $BUILD_ROOT/cordova
+        cp -ar $SRC_ROOT/../../tools/cordova_plugins $BUILD_ROOT/cordova_plugins
 
-    ./cordova/build
-    ##pack sub packages
+        cd $BUILD_ROOT/cordova
 
-    if [ -f $BUILD_ROOT/cordova/$appname/bin/$appname-debug.apk ];then
-        mv $BUILD_ROOT/cordova/$appname/bin/$appname-debug.apk $BUILD_DEST/opt/$name/$appname.apk
+        if [ $pack_mode == "shared" ]; then
+            bin/create $appname org.xwalk.$appname $appname --xwalk-shared-library
+        else
+            if [ $pack_mode != "embedded" ]; then
+                echo "package mode can only be embedded or shared, now take embedded as default.... >>>>>>>>>>>>>>>>>>>>>>>>>"
+            fi
+            bin/create $appname org.xwalk.$appname $appname
+        fi
+
+        cd $BUILD_ROOT/cordova/$appname
+
+        for plugin in `ls $BUILD_ROOT/cordova_plugins`
+        do
+            plugman install --platform android --project ./ --plugin $BUILD_ROOT/cordova_plugins/$plugin
+        done
+
+        cp -a $BUILD_ROOT/webrunner/*  $BUILD_ROOT/cordova/$appname/assets/www
+        mv $BUILD_ROOT/cordova/$appname/assets/www/index.html $BUILD_ROOT/cordova/$appname/assets/www/index_real.html
+        cp -a $BUILD_DEST/opt $BUILD_ROOT/cordova/$appname/assets/www
+        mv $BUILD_DEST/testlist.json $BUILD_ROOT/cordova/$appname/assets/www
+        mv $BUILD_DEST/index_tmp.html $BUILD_ROOT/cordova/$appname/assets/www/index.html
+        mv $BUILD_DEST/icon.png $BUILD_ROOT/cordova/$appname/assets/www
+
+        ./cordova/build
+        ##pack sub packages
+
+        if [ -f $BUILD_ROOT/cordova/$appname/bin/$appname-debug.apk ];then
+            mv $BUILD_ROOT/cordova/$appname/bin/$appname-debug.apk $BUILD_DEST/opt/$name/$appname.apk
+        fi
+    else
+        echo "package sub version can only be 3.6 or 4.0, now exit.... >>>>>>>>>>>>>>>>>>>>>>>>>"
+        clean_workspace
+        exit 1
     fi
 fi
 
