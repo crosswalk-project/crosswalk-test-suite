@@ -55,6 +55,7 @@ Self contained test package which include all things - web runner, TCs.
 - Node.js 0.10.24 or greater  [http://nodejs.org/download/](http://nodejs.org/download/)
 
 ## 5. Crosswalk based Cordova Developer Tools
+From commit: dbf1468192e3e1bcb574bd33cecffe0ba04220ab, Cordova version 4.0 build use cli way.
 
 The Cordova developer tooling is split between general tooling and project level tooling.
 

@@ -36,13 +36,9 @@ class TestRemoteDebuggingAppFunctions(unittest.TestCase):
     def test_build(self):
         comm.setUp()
         app_name = "remotedebugging"
-        if comm.MODE == "shared":
-            cmd_create = "bin/create " + app_name + " com.example." + app_name + " " + app_name + " --xwalk-shared-library"
-        else:
-            cmd_create = "bin/create " + app_name + " com.example." + app_name + " " + app_name
-        comm.create(cmd_create, app_name, self)
-        cmd_build = "./cordova/build --debug"
-        comm.build(cmd_build, app_name, self)
+        pkg_name = " com.example." + app_name.lower()
+        comm.create(app_name, pkg_name, comm.MODE, None, None, self)
+        comm.build(app_name, True, self)
 
 if __name__ == '__main__':  
     unittest.main()
