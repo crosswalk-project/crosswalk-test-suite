@@ -26,7 +26,7 @@ NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE,
 EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
 Authors:
-        Wang, Hongjuan <hongjuanx.wang@intel.com>
+        Zhu, Yongyong <yongyongx.zhu@intel.com>
 
 -->
 
@@ -43,12 +43,43 @@ Authors:
   <h3 id="main_page_title"></h3>
 </div>
 <div class="content">
+  <h4>Preconditions</h4>
+  <ol>
+    <li>Require npm</li>
+    <li>Require plugman
+      <div>
+        $ sudo npm install ­-g plugman<br/>
+        Please make sure the version of plugin is >= 0.22.17, Use "plugman ­-v" common to check it<br/>
+      </div>
+    </li>
+  </ol>
+
   <h4>Test Steps</h4>
   <ol>
-    <li>Copy the 'usecase-cordova-android-tests/samples/CordovaPackage/res/test.py' file to crosswalk-cordova directory</li>
-    <li>Run the python script:<br/>$ python test.py</li>
-    <li>Check the command output</li>
-    <li>Quick press back button to exit 'hello' app after the app launch</li>
+    <li>Get cordova-android:
+      <div>
+        $ git clone https://github.com/apache/cordova-android.git<br/>
+      </div>
+    </li>
+    <li>Get cordova-plugin-crosswalk-webview:
+      <div>
+        $ git clone https://github.com/crosswalk-project/cordova-plugin-crosswalk-webview.git<br/>
+      </div>
+    </li>
+    <li>Create Cordova example app, e.g. “hello”:
+      <div>
+        $ cordova-android/bin/create hello com.example.hello HelloWorld<br/>
+      </div>
+    </li>
+    <li>Build Cordova example app:
+      <div>
+        $ cd hello<br/>
+        $ plugman install --platform android --plugin ../cordova-plugin-crosswalk-webview/ --project .<br/>
+        $ ./cordova/build<br/>
+      </div>
+    </li>
+    <li>Check the apk file generated in hello/build/outputs/apk directory</li>
+    <li>Install, Launch, Run, and Exit the app</li>
   </ol>
 </div>
 <div class="footer">
@@ -59,9 +90,10 @@ Authors:
   <p>Verify the Cordova package can build, install and launch successfully</p>
   <p>Expected Results:</p>
   <ol>
-    <li>There has test.py in crosswalk-cordova directory</li>
-    <li>The command run successfully, no error</li>
-    <li>Display 'Build Package Successfully' and 'Package Name Consistent'</li>
+    <li>There are arm and x86 apk files generated in hello/build/outputs/apk directory</li>
+    <li>The app can be installed successfully</li>
+    <li>The app can launch successfully</li>
+    <li>The app can run successfully</li>
     <li>The app can exit successfully</li>
   </ol>
 </div>
