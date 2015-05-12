@@ -25,63 +25,49 @@ NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE,
 EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
 Authors:
-        Wang, Jing J <jing.j.wang@intel.com>
-        Fan, Yugang <yugang.fan@intel.com>
+        Cui,Jieqiong <jieqiongx.cui@intel.com>
 
 */
-.ui-page .ui-content .ui-listview img {
-    position:absolute;
-    top:0;
-    bottom:0;
-    margin:auto;
+
+var testAudio = document.getElementById("MediaPlayback");;
+var cc = 0;
+
+function start() {
+    testAudio.addEventListener("ended", function() {
+        cc++;
+        if (cc <=14400) {
+　　       musicplay();
+        }
+    });
+    musicplay();
 }
 
-.ui-page .ui-content .ui-listview h1 {
-    line-height : 45px;
-    vertical-align : middle;
-    white-space : normal;
+function musicplay1500() {
+    window.location.reload();
 }
 
-.ui-li-count {
-    min-width: 30px;
-    text-align: center;
+function musicplaypause1500() {
+    cc = 0;
+    start();
+    testAudio.addEventListener("playing", function() {
+        if (cc <=14400) {
+　　       pausewait();
+        }
+    });
+    testAudio.addEventListener("pause", function() {
+        if (cc <=14400) {
+　　      playwait();
+        }
+    });
+}
+function pausewait() {
+    setTimeout("testAudio.pause();",1000);
 }
 
-#overlay {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background: #000;
-    opacity: 0.6;
-    filter: alpha(opacity=60);
-    z-index:50;
+function playwait() {
+    setTimeout("testAudio.play();",1000);
 }
 
-.wgtButton {
-    height:40px;
-    line-height:20px;
+function musicplay() {
+    testAudio.play();
 }
-
-.hideButton {
-    display:none;
-}
-
-.fontSize {
-    font-size:85%
-}
-
-.d{
-    border: 1px solid #000;
-    width:100%;
-    height:100%;
-}
-
-.d p{
-    margin: 20px 20px;
-}
-.d p span{
-   font-weight: bold;
-}
-
