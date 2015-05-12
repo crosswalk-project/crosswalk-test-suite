@@ -372,6 +372,17 @@
           </spec>
         </specs>
       </testcase>
+      <testcase component="Supplementary APIs/WebCL - Khronos (Partial)" execution_type="auto" id="WebCL_extension" priority="P2" purpose="Check extension mechanism support for WebCL" status="designed" type="compliance">
+        <description>
+          <test_script_entry test_script_expected_result="0">/opt/webapi-webcl-nonw3c-tests/webcl/WebCL_extension.html</test_script_entry>
+        </description>
+        <specs>
+          <spec>
+            <spec_assertion category="Tizen Supplementary API Specifications" element_name="enableExtension" element_type="method" interface="WebCLDevice" section="N/A" specification="WebCL - Khronos (Partial)" />
+            <spec_url>https://www.khronos.org/registry/webcl/specs/latest/1.0/#4</spec_url>
+          </spec>
+        </specs>
+      </testcase>
     </set>
     <set name="programAndKernel" type="js">
       <testcase component="Supplementary APIs/WebCL - Khronos (Partial)" execution_type="auto" id="WebCLKernel_getArgInf_async" priority="P1" purpose="Check if WebCLKernel.getArgInfo with async function works" status="designed" type="compliance">
@@ -876,6 +887,17 @@
           <spec>
             <spec_assertion category="Tizen Supplementary API Specifications" element_name="bufferFromGLBuffer" element_type="method" interface="WebCL" section="N/A" specification="WebCL - Khronos (Partial)" />
             <spec_url>https://www.khronos.org/registry/webcl/specs/latest/1.0/</spec_url>
+          </spec>
+        </specs>
+      </testcase>
+      <testcase component="Supplementary APIs/WebCL - Khronos (Partial)" execution_type="auto" id="extension_KHR_gl_sharing" priority="P2" purpose="Check KHR_gl_sharing extension support for WebCL " status="ready" type="compliance">
+        <description>
+          <test_script_entry test_script_expected_result="0">/opt/webapi-webcl-nonw3c-tests/webcl/extension_KHR_gl_sharing.html</test_script_entry>
+        </description>
+        <specs>
+          <spec>
+            <spec_assertion category="Tizen Supplementary API Specifications" element_name="createFromGLBuffer" element_type="method" interface="WebCL" section="N/A" specification="WebCL - Khronos (Partial)" />
+            <spec_url>https://www.khronos.org/registry/webcl/extensions/KHR_gl_sharing/</spec_url>
           </spec>
         </specs>
       </testcase>

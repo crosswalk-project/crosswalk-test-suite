@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<!--
+Copyright (c) 2015 Intel Corporation.
+
+Redistribution and use in source and binary forms, with or without modification,
+are permitted provided that the following conditions are met:
+
+* Redistributions of works must retain the original copyright notice, this list
+  of conditions and the following disclaimer.
+* Redistributions in binary form must reproduce the original copyright notice,
+  this list of conditions and the following disclaimer in the documentation
+  and/or other materials provided with the distribution.
+* Neither the name of Intel Corporation nor the names of its contributors
+  may be used to endorse or promote products derived from this work without
+  specific prior written permission.
+
+THIS SOFTWARE IS PROVIDED BY INTEL CORPORATION "AS IS"
+AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE
+IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE
+ARE DISCLAIMED. IN NO EVENT SHALL INTEL CORPORATION BE LIABLE FOR ANY DIRECT,
+INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING,
+BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE,
+DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY
+OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING
+NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE,
+EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
+
+Authors:
+        Wang, Chunyan <chunyanx.wang@intel.com>
+
+-->
+
+<meta charset="utf-8">
+<title>WebCL Test: Extension KHR_gl_sharing</title>
+<link rel="author" title="Intel" href="http://www.intel.com">
+<link rel="help" href="https://www.khronos.org/registry/webcl/extensions/KHR_gl_sharing/">
+<script src="/resources/testharness.js"></script>
+<script src="/resources/testharnessreport.js"></script>
+<script src="support/main.js"></script>
+<body>
+  <canvas id="canvas"></canvas>
+  <div id="log"></div>
+  <script>
+    test(function() {
+      var devices = getDevicesWithExtensionEnabled("KHR_gl_sharing");
+      assert_true(devices !=null, "Have device support webcl extension 'KHR_gl_sharing'");
+
+      var canvas = document.getElementById("canvas");
+      var glContext = canvas.getContext("webgl") ||
+                      canvas.getContext("experimental-webgl");
+      var clContext = cl.createContext(glContext);
+      var glBuffer = glContext.createBuffer();
+
+      var numberValue = 8;
+      var data = new Int32Array(numberValue);
+      var result = new Int32Array(numberValue);
+      glBuffer.bufferData(glContext.ARRAY_BUFFER, data, glContext.DYNAMIC_DRAW);
+      var clBuffer = clContext.createFromGLBuffer(webCL.MEM_READ_ONLY, glBuffer); 
+
+      var queue = clContext.createCommandQueue();
+      queue.enqueueReadBuffer(clBuffer, true, 0, numberValue * Int32Array.BYTES_PER_ELEMENT, result);
+      testResult(data, result, "Matching values obtained from WebGL buffer object");
+    }, "Check there have device supporting 'KHR_gl_sharing' extension");
+  </script>
+</body>
