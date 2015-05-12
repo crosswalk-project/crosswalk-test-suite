@@ -64,6 +64,7 @@ class TestStabilityIterativeFunctions(unittest.TestCase):
             if pmstatus[0] == 0:
                 launchstatus = commands.getstatusoutput('adb -s ' + device + ' shell am start -n org.xwalkview.maximum.app' + '/.XWalkViewsActivity')
                 self.assertNotIn('Error', launchstatus[1])
+                time.sleep(20)
                 commands.getstatusoutput('adb -s ' + device + ' shell am force-stop org.xwalkview.maximum.app')
                 stopresult = commands.getstatusoutput('adb -s ' + device + ' shell ps |grep org.xwalkview.maximum.app')
                 self.assertNotIn('org.xwalkview.maximum.app', stopresult[1])
