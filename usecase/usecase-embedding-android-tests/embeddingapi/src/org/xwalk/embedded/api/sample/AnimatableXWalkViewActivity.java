@@ -52,7 +52,9 @@ public class AnimatableXWalkViewActivity extends XWalkActivity {
         super.onDestroy();
 
         // Reset the preference for animatable XWalkView.
-        XWalkPreferences.setValue(XWalkPreferences.ANIMATABLE_XWALK_VIEW, false);
+        if (mXWalkView != null) {
+            XWalkPreferences.setValue(XWalkPreferences.ANIMATABLE_XWALK_VIEW, false);
+	}
     }
 
     @Override
