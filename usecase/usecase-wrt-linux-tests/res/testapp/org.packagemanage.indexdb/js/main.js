@@ -36,7 +36,7 @@ $(document).ready(function () {
       version:1,
       db:null
     };
-    
+
   function openDB (name,version) {
     var version=version || 1;
     var request=window.indexedDB.open(name,version);
@@ -63,9 +63,9 @@ $(document).ready(function () {
     store.add(student);
     $('#testDiv').text($("#testDiv").text() + '\nSave Indexdb value successfully:  ' + student.value);
   }
-  
+
   openDB(myDB.name, myDB.version);
-    
+
   function getDataByKey(db,storeName,value){
     var transaction=db.transaction(storeName,'readwrite');
     var store=transaction.objectStore(storeName);
@@ -75,7 +75,7 @@ $(document).ready(function () {
       $('#testDiv').text($('#testDiv').text() + '\nGet Indexdb vaule: '+ student.value);
     };
   }
-  
+
   $('#setIndexdb').click(function(){
     addData(myDB.name, myDB.db, 'students');
   })

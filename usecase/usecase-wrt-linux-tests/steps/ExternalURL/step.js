@@ -1,4 +1,4 @@
 var step = '<font class="fontSize">'
-            +'<p>Purpose:</p>'
-            +'<p>Validate open external URL in browser support</p>'
+            +'<p>Test Purpose:</p>'
+            +'<p>Verifies open external URL in browser support</p>'
           +'</font>';
