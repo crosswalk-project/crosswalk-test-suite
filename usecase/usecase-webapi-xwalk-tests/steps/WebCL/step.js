@@ -1,0 +1,8 @@
+var step = '<font class="fontSize">'
+         + '<p>Test Purpose: </p>'
+         + '<p>Verifies the functionality of WebCL work properly.</p>'
+         + '<p>Test steps: </p>'
+         + '<p>Click on button and check the console value.</p>'
+         + '<p>Expected Result: </p>'
+         + '<p>Test passes if console vaule with CL is samller than with JS.</p>'
+         + '</font>'
