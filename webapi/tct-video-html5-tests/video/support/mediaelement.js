@@ -239,15 +239,6 @@ function load_method()
     });
 }
 
-function canPlayType_no_argument()
-{
-    test( function() {
-         getmedia();
-         assert_equals(media.canPlayType(), '', "not return empty string if not have arguments")
-         }
-    );
-}
-
 function canPlayType_empty_string()
 {
     test( function() {
