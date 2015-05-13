@@ -8,15 +8,16 @@ This test suite is for apptools-android-tests
 1. Connect Android devices to your localhost
 2. Need to edit the file "apptools-android-tests/arch.txt" according to the type of test device.
 If test device is "arm" platform, content of the file should be "arm", default value is "x86"
-3. The node.js, Android SDK, and git must be functional
-4. Install nodeunit: sudo npm install nodeunit -g
-5. Download crosswalk-app-tools to apptools-android-tests/tools, then install npm
-  5.1 cd tools, then clone source code from https://github.com/crosswalk-project/crosswalk-app-tools
-  5.2 Run commands: cd crosswalk-app-tools, then run: sudo npm install
-  5.3 Download Crosswalk from https://origin-download.01.org/crosswalk/releases/crosswalk/android/stable/ to same path with crosswalk-app-tools
-6. Environment variable configuration:
-  6.1 export ANDROID_HOME=$(dirname $(dirname $(which android)))
-  6.2 export CROSSWALK_APP_TOOLS_CACHE_DIR=/path/to/opt/apptools-android-tests/tools
+3. Need to edit the file "apptools-android-tests/version.txt" according to the Crosswalk which you want to test.
+For example: if you want to test with "crosswalk-13.42.319.11.zip", content of the file should be "13.42.319.11"
+4. The node.js, Android SDK, and git must be functional
+5. Install nodeunit: sudo npm install nodeunit -g
+6. Download crosswalk-app-tools to apptools-android-tests/tools, then install npm
+  6.1 cd tools, then clone source code from https://github.com/crosswalk-project/crosswalk-app-tools
+  6.2 Run commands: cd crosswalk-app-tools, then run: sudo npm install
+7. Environment variable configuration:
+  7.1 export ANDROID_HOME=$(dirname $(dirname $(which android)))
+  7.2 export CROSSWALK_APP_TOOLS_CACHE_DIR=/path/to/opt/apptools-android-tests/tools
 
 ## Test Steps
 

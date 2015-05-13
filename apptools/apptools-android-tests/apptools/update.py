@@ -184,7 +184,7 @@ class TestCrosswalkApptoolsFunctions(unittest.TestCase):
         print updatestatus[1]
         comm.run(self)
         comm.clear("org.xwalk.test")
-        self.assertEquals(updatestatus[0], 2048)
+        self.assertNotEquals(updatestatus[0], 0)
 
 if __name__ == '__main__':
     unittest.main()

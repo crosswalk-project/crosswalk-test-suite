@@ -52,7 +52,7 @@ class TestCrosswalkApptoolsFunctions(unittest.TestCase):
         #new = commands.getoutput("echo $PATH")
         #print new
         os.chdir(comm.XwalkPath)
-        cmd = comm.PackTools + "crosswalk-app create org.xwalk.test"
+        cmd = comm.PackTools + "crosswalk-app create org.xwalk.test --android-crosswalk=" + comm.crosswalkVersion
         packstatus = commands.getstatusoutput(cmd)
         os.environ['PATH'] = allpath
         #print packstatus
