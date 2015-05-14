@@ -72,13 +72,13 @@ test("Check if the fromFloat32x4Bits method of float64x2 is valid", function () 
 });
 
 test("Check if the fromInt32x4Bits method of float64x2 is valid", function () {
-  var m = SIMD.int32x4(0x3F800000, 0x40000000, 0x40400000, 0x40800000);
+  var m = SIMD.int32x4(9, 10, 11, 12);
   var nMask = SIMD.float64x2.fromInt32x4Bits(m);
   var n = SIMD.int32x4.fromFloat64x2Bits(nMask);
-  equal(0x3F800000, n.x, "the value of n.x should be 0x3F800000");
-  equal(0x40000000, n.y, "the value of n.y should be 0x40000000");
-  equal(0x40400000, n.z, "the value of n.z should be 0x40400000");
-  equal(0x40800000, n.w, "the value of n.w should be 0x40800000");
+  equal(9, n.x, "the value of n.x should be 9");
+  equal(10, n.y, "the value of n.y should be 10");
+  equal(11, n.z, "the value of n.z should be 11");
+  equal(12, n.w, "the value of n.w should be 12");
 });
 
 test("Check if the fromInt32x4 method of float64x2 is valid", function () {
