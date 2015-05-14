@@ -8,7 +8,7 @@
         "inst.*"
     ],
     "pkg-list": {
-        "apk,cordova": {
+        "apk": {
             "blacklist": [],
             "copylist": {
                 "PACK-TOOL-ROOT/resources/bddrunner": "bddrunner",
@@ -16,6 +16,17 @@
                 "inst.apk.py": "inst.py",
                 "tests.android.xml": "tests.xml",
                 "tests.full.xml": "tests.full.xml"
+            },
+        "apk-beta": {
+            "blacklist": [],
+            "copylist": {
+                "PACK-TOOL-ROOT/resources/bddrunner": "bddrunner",
+                "testscripts": "testscripts",
+                "inst.apk.py": "inst.py",
+                "tests.android.xml": "tests.xml",
+                "tests.full.xml": "tests.full.xml",
+                "samples/MisarchSharedIA/index.beta.html":"samples/MisarchSharedIA/index.html",
+                "samples/MisarchSharedArm/index.beta.html":"samples/MisarchSharedArm/index.html"
             },
             "subapp-list": {
                 ".": {
@@ -76,10 +87,10 @@
                     "app-name": "remotedebugging",
                     "install-path": "."
                 },
-                "samples/SharedModeLibrary/res": {
+                "samples/LocalDownload/res": {
                     "apk-icon-opt": "",
                     "apk-mode-opt": "shared",
-                    "app-name": "sharedmodelibrary",
+                    "app-name": "localdownload",
                     "install-path": "."
                 },
                 "samples/WebAppGesture/res": {
@@ -168,6 +179,26 @@
                     "apk-type": "MANIFEST",
                     "apk-mode-opt": "shared",
                     "app-name": "sharedapp2",
+                    "install-path": "."
+                },
+                "samples/GooglePlayer/res": {
+                    "apk-type": "MANIFEST",
+                    "apk-mode-opt": "shared",
+                    "app-name": "googleplayer",
+                    "install-path": "."
+                },
+                "samples/MisarchSharedIA/res": {
+                    "apk-type": "MANIFEST",
+                    "apk-mode-opt": "shared",
+                    "app-name": "shared_x86",
+                    "apk-arch-opt": "x86",
+                    "install-path": "."
+                },
+                "samples/MisarchSharedArm/res": {
+                    "apk-type": "MANIFEST",
+                    "apk-mode-opt": "shared",
+                    "app-name": "shared_arm",
+                    "apk-arch-opt": "arm",
                     "install-path": "."
                 }
             }
