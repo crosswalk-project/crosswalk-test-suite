@@ -1,6 +1,6 @@
 ## Usecase Design
 
-This sample demonstrates SharedModeLibrary feature basic functionalities, include:
+This sample demonstrates LocalDownload feature basic functionalities, include:
 
 * Display info of XWalkRuntimeLib and support app of shared mode
 

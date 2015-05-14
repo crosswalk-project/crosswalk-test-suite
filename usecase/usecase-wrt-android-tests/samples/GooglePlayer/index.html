@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <!--
-Copyright (c) 2013 Intel Corporation.
+Copyright (c) 2015 Intel Corporation.
 
 Redistribution and use in source and binary forms, with or without modification,
 are permitted provided that the following conditions are met:
@@ -26,7 +26,7 @@ NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE,
 EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
 Authors:
-        Xu, Kang <kangx.xu@intel.com>
+        Wang, Hongjuan <hongjuanx.wang@intel.com>
 
 -->
 
@@ -38,30 +38,27 @@ Authors:
 <script src="../../js/bootstrap.min.js"></script>
 <script src="../../js/common.js"></script>
 <script src="../../js/tests.js"></script>
-
 <div id="header">
   <h3 id="main_page_title"></h3>
 </div>
 <div class="content">
+  <h4>Pre-condition</h4>
+  <ol>
+    <li>The test devices doesn't not install the Crosswalk Runtime Library</li>
+  </ol>
   <h4>Test Steps</h4>
   <ol>
-    <li>Install XWalkRuntimeLib.apk</li>
-    <li>Check the name and icon of Crosswalk runtime in Settings--> Application</li>
-    <li>Uninstall XWalkRuntimeLib</li>
-    <li>Launch the web app of share mode named "sharedmodelibrary"</li>
+    <li>Install the apk named like "googleplayer" and launch it, then click "Get Crosswalk", check the launching screen</li>
+    <li>Check the status of install crosswalk runtime library, click "Done" to complete installation process</li>
+    <li>Check the display content of the launched test app</li>
   </ol>
+  <ul>
+    <li>Note: In formal test process, when click "Get Crosswalk" button, it should launch a Google Play or third party app store on Android, or even launch an app store selector
+    (if there are two or more app stores were installed on device) for user to select one to download Crosswalk Runtime Library</li>
+  </ul>
 </div>
 <div class="footer">
   <div id="footer"></div>
 </div>
 <div class="modal fade" id="popup_info">
-  <p>Purpose:</p>
-  <p>Verifies that info of XWalkRuntimeLib display normally and support app of shared mode</p>
-  <p>Expected Result:</p>
-  <ol>
-    <li>The Crosswalk runtime is installed successfully</li>
-    <li>Name and icon information of XWwalkRuntimeLib is correct</li>
-    <li>XWalkRuntime can be uninstalled successfully</li>
-    <li>Web App fail to launch, it has dependence with crosswalk lib</li>
-  </ol>
 </div>

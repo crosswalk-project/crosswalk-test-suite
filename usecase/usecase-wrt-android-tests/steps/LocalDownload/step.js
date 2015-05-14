@@ -1,7 +1,7 @@
 var step = '<font class="fontSize">'
             +'<p>Purpose:</p>'
             +'<p>Verifies that info of XWalkRuntimeLib display normally and support app of shared mode</p>'
-            +'<p>Expected Result:</p>'
+            +'<p>Expected Results:</p>'
             +'<ol>'
             +'<li>The Crosswalk runtime is installed successfully</li>'
             +'<li>Name and icon information of XWwalkRuntimeLib is correct</li>'
