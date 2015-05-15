@@ -1,0 +1,8 @@
+var step = '<font class="fontSize">'
+         + '<p>Test Purpose: </p>'
+         + '<p>Verifies the functionality of WebCL work properly.</p>'
+         + '<p>Test steps: </p>'
+         + '<p>Click on button and check the Frame Rate value and Sim value.</p>'
+         + '<p>Expected Result: </p>'
+         + '<p>Test passes if Frame Rate with CL is larger than with JS, and Sim with CL is smaller than with JS.</p>'
+         + '</font>'
