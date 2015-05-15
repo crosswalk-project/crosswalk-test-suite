@@ -20,22 +20,6 @@
           </spec>
         </specs>
       </testcase>
-      <testcase purpose="Check if all of the BatteryManager attributes exist and are set to their default values" type="compliance" status="approved" component="W3C_HTML5 APIs/Device/Battery Status API" execution_type="manual" priority="P2" id="battery-created-manual">
-        <description>
-          <pre_condition>
-            1. The implementation is unable to report the battery's charging state, charging time, level or remaining time respectively.
-            2. The device is unplugged from the charger before this test case is run.
-          </pre_condition>
-          <test_script_entry>/opt/tct-batterystatus-w3c-tests/batterystatus/w3c/battery-created-manual.html</test_script_entry>
-        </description>
-        <specs>
-          <spec>
-            <spec_assertion element_type="attribute" element_name="level" interface="BatteryManager" specification="Battery Status API" section="Device" category="Tizen W3C API Specifications"/>
-            <spec_url>https://dvcs.w3.org/hg/dap/raw-file/default/battery/Overview.html#the-batterymanager-interface</spec_url>
-            <spec_statement/>
-          </spec>
-        </specs>
-      </testcase>
       <testcase purpose="Check if all of the BatteryManager attributes exist and are set to their correct values when battery is discharging" type="compliance" status="approved" component="W3C_HTML5 APIs/Device/Battery Status API" execution_type="manual" priority="P2" id="battery-discharging-manual">
         <description>
           <pre_condition>
