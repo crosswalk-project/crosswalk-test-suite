@@ -46,10 +46,9 @@ Authors:
         test(
     	    function () {
                 var channel = new MessageChannel();
-                channel.port1.postMessage();
-                channel.port2.onmessage =  function receiver(e) {
-                   assert_true(e.data == undefined, "the MessagePort.postmessage method if no args");
-                }
+                assert_throws(new TypeError(), function() {
+                  channel.port1.postMessage();
+                }, "MessagePort.postmessage method with no args throws a type exception");
     	    }, document.title
         );
     </script>
