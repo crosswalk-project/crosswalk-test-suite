@@ -40,8 +40,8 @@ def generate_unittest():
         num = 0
         reportPath = os.path.join(comm.SCRIPT_DIR_NAME, '../report')
         comm.setUp()
-        positive_datas = ['org.xwalk.tests', 'org.xwalk.t1234', 'org.example.xwal_', 'org.example.te_st', 'or_g.example.xwalk', 'org000.example.xwalk', 'org.example123.xwalk']  
-        negative_datas = ['org.xwalk', 'test', 'org.example.1234test', 'org.example.1234', '123org.example.xwalk', 'org.123example.xwalk', 'org.example._xwalk', 'org.xwalk.Tests', '_org.example.xwalk']
+        positive_datas = ['org.xwalk.tests', 'org.xwalk.t1234', 'org.example.xwal_', 'org.example.te_st', 'or_g.example.foo', 'org000.example.foo', 'org.example123.foo']  
+        negative_datas = ['org.xwalk', 'test', 'org.example.1234test', 'org.example.1234', '123org.example.foo', 'org.123example.foo', 'org.example._xwalk', 'org.xwalk.Tests', '_org.example.foo', 'org.xwalk.node']
 
         if os.path.exists(reportPath):
             shutil.rmtree(reportPath)
@@ -117,6 +117,9 @@ def tryRunApp(item, projectName):
             if 'ERROR' in packstatus[1]:
                 result = 'PASS'
                 print "%21s\tFAIL\tFAIL" % projectName
+                if projectName in os.listdir(comm.TEMP_DATA_PATH):
+                    result = 'FAIL'
+                    print "%21s\tFAIL\tPASS" % projectName
             else:
                 result = 'FAIL'
                 print "%21s\tFAIL\tPASS" % projectName

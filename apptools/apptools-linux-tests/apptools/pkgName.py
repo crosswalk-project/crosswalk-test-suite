@@ -47,13 +47,13 @@ class TestCaseUnit(unittest.TestCase):
      self.assertEqual("PASS", allpairs.tryRunApp("positive4", "org.example.te_st"))
 
   def test_pkgName_positive5(self):
-     self.assertEqual("PASS", allpairs.tryRunApp("positive5", "or_g.example.xwalk"))
+     self.assertEqual("PASS", allpairs.tryRunApp("positive5", "or_g.example.foo"))
 
   def test_pkgName_positive6(self):
-     self.assertEqual("PASS", allpairs.tryRunApp("positive6", "org000.example.xwalk"))
+     self.assertEqual("PASS", allpairs.tryRunApp("positive6", "org000.example.foo"))
 
   def test_pkgName_positive7(self):
-     self.assertEqual("PASS", allpairs.tryRunApp("positive7", "org.example123.xwalk"))
+     self.assertEqual("PASS", allpairs.tryRunApp("positive7", "org.example123.foo"))
 
   def test_pkgName_negative8(self):
      self.assertEqual("PASS", allpairs.tryRunApp("negative8", "org.xwalk"))
@@ -68,10 +68,10 @@ class TestCaseUnit(unittest.TestCase):
      self.assertEqual("PASS", allpairs.tryRunApp("negative11", "org.example.1234"))
 
   def test_pkgName_negative12(self):
-     self.assertEqual("PASS", allpairs.tryRunApp("negative12", "123org.example.xwalk"))
+     self.assertEqual("PASS", allpairs.tryRunApp("negative12", "123org.example.foo"))
 
   def test_pkgName_negative13(self):
-     self.assertEqual("PASS", allpairs.tryRunApp("negative13", "org.123example.xwalk"))
+     self.assertEqual("PASS", allpairs.tryRunApp("negative13", "org.123example.foo"))
 
   def test_pkgName_negative14(self):
      self.assertEqual("PASS", allpairs.tryRunApp("negative14", "org.example._xwalk"))
@@ -80,7 +80,10 @@ class TestCaseUnit(unittest.TestCase):
      self.assertEqual("PASS", allpairs.tryRunApp("negative15", "org.xwalk.Tests"))
 
   def test_pkgName_negative16(self):
-     self.assertEqual("PASS", allpairs.tryRunApp("negative16", "_org.example.xwalk"))
+     self.assertEqual("PASS", allpairs.tryRunApp("negative16", "_org.example.foo"))
+
+  def test_pkgName_negative17(self):
+     self.assertEqual("PASS", allpairs.tryRunApp("negative17", "org.xwalk.node"))
 
 if __name__ == '__main__':
     unittest.main()

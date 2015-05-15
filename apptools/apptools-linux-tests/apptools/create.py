@@ -49,7 +49,7 @@ class TestCrosswalkApptoolsFunctions(unittest.TestCase):
             '''
             2048 return from packstatus, is directory already exist
             '''
-            self.assertEquals(packstatus[0], 2048)
+            self.assertNotEquals(packstatus[0], 0)
             comm.cleanTempData(comm.TEST_PROJECT_COMM)
         except Exception,e:
             print Exception,"Create org.xwalk.testlinux error:",e
