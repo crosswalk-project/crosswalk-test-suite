@@ -4,24 +4,20 @@
 
 package org.xwalkview.maximum.app;
 
-import org.xwalk.core.XWalkPreferences;
 import org.xwalk.core.XWalkUIClient;
 import org.xwalk.core.XWalkView;
-import org.xwalkview.maximum.base.XWalkBaseTabActivity;
+import org.xwalkview.maximum.base.XWalkBaseActivity;
 
 import android.os.Bundle;
 import android.text.TextUtils;
 import android.view.View;
-import android.widget.TabHost.TabContentFactory;
-import android.widget.TabHost.TabSpec;
 
-public class TabTextureViewsActivity extends XWalkBaseTabActivity {
+public class XWalkMultiViewsActivity extends XWalkBaseActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        XWalkPreferences.setValue(XWalkPreferences.ANIMATABLE_XWALK_VIEW, true);
-
+        views_num_text.setText(VIEWS_NUM_FIVE);
         mAddViewsButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -33,28 +29,17 @@ public class TabTextureViewsActivity extends XWalkBaseTabActivity {
                 }
                 int len = checkBoxList.size();
                 for(int i = view_num; i < max_num; i++) {
-                    if (url_index >= len) {
-                        url_index = 0;
+                	if (url_index >= len) {
+                    	url_index = 0;
                     }
-                    String name = "Tab " + (i + 1);
-                    TabSpec tab1 = tabHost.newTabSpec(name);
-                    tab1.setIndicator(name);
-
-                    tab1.setContent(new TabContentFactory(){
-
-                        @Override
-                        public View createTabContent(String tag) {
-                            XWalkView mXWalkView = new XWalkView(TabTextureViewsActivity.this, TabTextureViewsActivity.this);
-                            mXWalkView.setUIClient(new TestXWalkUIClientBase(mXWalkView));
-                            mXWalkView.load(checkBoxList.get(url_index).getText().toString(), null);
-                            return mXWalkView;
-                        }
-                    });
-                    tabHost.addTab(tab1);
-                    tabHost.setCurrentTab(i);
-                    tabHost.performClick();
+                    XWalkView mXWalkView = new XWalkView(XWalkMultiViewsActivity.this, XWalkMultiViewsActivity.this);
+                    mXWalkView.setUIClient(new TestXWalkUIClientBase(mXWalkView));
+                    mXWalkView.setX(i * 10);
+                    mXWalkView.setY(400 + i * 10);
+                    mXWalkView.load(checkBoxList.get(url_index).getText().toString(), null);
                     url_index++;
                     mAddViewsButton.setClickable(false);
+                    view_root.addView(mXWalkView, 400, 400);
                 }
                 view_num = view_num + add_num;
             }
@@ -66,6 +51,7 @@ public class TabTextureViewsActivity extends XWalkBaseTabActivity {
                 System.exit(0);
             }
         });
+        mAddViewsButton.performClick();
         setContentView(root);
     }
 

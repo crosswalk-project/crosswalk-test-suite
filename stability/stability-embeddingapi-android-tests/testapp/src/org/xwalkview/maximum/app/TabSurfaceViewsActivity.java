@@ -6,6 +6,7 @@ package org.xwalkview.maximum.app;
 
 import org.xwalk.core.XWalkUIClient;
 import org.xwalk.core.XWalkView;
+import org.xwalkview.maximum.base.XWalkBaseTabActivity;
 
 import android.os.Bundle;
 import android.text.TextUtils;

@@ -6,6 +6,7 @@ package org.xwalkview.maximum.app;
 
 import org.xwalk.core.XWalkUIClient;
 import org.xwalk.core.XWalkView;
+import org.xwalkview.maximum.base.XWalkBaseActivity;
 
 import android.os.Bundle;
 import android.text.TextUtils;
@@ -34,7 +35,7 @@ public class XWalkViewsActivity extends XWalkBaseActivity {
                     XWalkView mXWalkView = new XWalkView(XWalkViewsActivity.this, XWalkViewsActivity.this);
                     mXWalkView.setUIClient(new TestXWalkUIClientBase(mXWalkView));
                     mXWalkView.setX(i * 10);
-                    mXWalkView.setY(380 + i * 10);
+                    mXWalkView.setY(400 + i * 10);
                     mXWalkView.load(checkBoxList.get(url_index).getText().toString(), null);
                     url_index++;
                     mAddViewsButton.setClickable(false);

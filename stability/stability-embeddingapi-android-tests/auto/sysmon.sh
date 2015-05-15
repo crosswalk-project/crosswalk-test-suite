@@ -31,7 +31,7 @@ sysmonFolder=$1"_sysmon_"`date '+%Y%m%d%H%M'`
 mkdir /tmp/$sysmonFolder
 echo "Create result folder: /tmp/$sysmonFolder"
 
-times=`expr $2 / 3`
+times=`expr $2`
 echo $times
 while [ $times -ne "0" ]
 do

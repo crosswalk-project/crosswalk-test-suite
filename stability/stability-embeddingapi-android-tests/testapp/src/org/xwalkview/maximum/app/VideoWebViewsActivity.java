@@ -5,7 +5,7 @@
 package org.xwalkview.maximum.app;
 
 
-import org.xwalkview.maximum.base.XWalkBaseActivity;
+import org.xwalkview.maximum.base.XWalkBaseVideoActivity;
 
 import android.os.Bundle;
 import android.text.TextUtils;
@@ -13,7 +13,7 @@ import android.view.View;
 import android.webkit.WebView;
 import android.webkit.WebViewClient;
 
-public class AddWebViewsActivity extends XWalkBaseActivity {
+public class VideoWebViewsActivity extends XWalkBaseVideoActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -33,7 +33,7 @@ public class AddWebViewsActivity extends XWalkBaseActivity {
                 	if (url_index >= len) {
                     	url_index = 0;
                     }
-                    WebView webView = new WebView(AddWebViewsActivity.this);
+                    WebView webView = new WebView(VideoWebViewsActivity.this);
                     webView.setWebViewClient(new TestWebViewClientBase());
                     webView.setX(i * 10);
                     webView.setY(400 + i * 10);

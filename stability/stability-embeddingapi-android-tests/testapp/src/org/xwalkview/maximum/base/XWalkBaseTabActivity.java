@@ -2,10 +2,13 @@
 // Use of this source code is governed by a BSD-style license that can be
 // found in the LICENSE file.
 
-package org.xwalkview.maximum.app;
+package org.xwalkview.maximum.base;
 
 import java.util.ArrayList;
 import java.util.List;
+
+import org.xwalkview.maximum.app.R;
+
 
 import android.app.Activity;
 import android.app.AlertDialog;
@@ -16,12 +19,14 @@ import android.widget.Button;
 import android.widget.CompoundButton;
 import android.widget.EditText;
 import android.widget.RelativeLayout;
+import android.widget.TabHost;
 import android.widget.TextView;
 import android.widget.CheckBox;
 import android.widget.Toast;
 
-public class XWalkBaseActivity extends Activity {
-	protected List<CheckBox> checkBoxList = new ArrayList<CheckBox>();
+public class XWalkBaseTabActivity extends Activity implements
+TabHost.TabContentFactory {
+    protected List<CheckBox> checkBoxList = new ArrayList<CheckBox>();
 
     protected Button mDetailInfoButton;
     protected StringBuffer message;
@@ -47,16 +52,18 @@ public class XWalkBaseActivity extends Activity {
     protected CheckBox cb_w3;
     protected CheckBox cb_163;
 
+    protected TabHost tabHost;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
-    	super.onCreate(savedInstanceState);
-        setContentView(R.layout.view_maximum);
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.view_tab_scroll);
 
-        root = (RelativeLayout) findViewById(R.id.view_maximum);
+        root = (RelativeLayout) findViewById(R.id.view_tab_scroll);
         view_root = (RelativeLayout) findViewById(R.id.view_root);
         textDes = (TextView)findViewById(R.id.xwalk_des);
         textDes.setText("This sample demonstrates the maximum of SurfaceViews could be opend.");
-        
+
         textResultTextView = (TextView)findViewById(R.id.result_show);
 
         views_num_text = (EditText) findViewById(R.id.views_num);
@@ -82,6 +89,18 @@ public class XWalkBaseActivity extends Activity {
 
         mAddViewsButton = (Button) findViewById(R.id.run_add);
         mExitViewsButton = (Button) findViewById(R.id.run_exit);
+
+        // 从布局中获取TabHost并建立
+        tabHost = (TabHost) findViewById(R.id.myTabHost);
+        tabHost.setup();
+    }
+
+    @Override
+    public View createTabContent(String tag)
+    {
+        final TextView tv = new TextView(this);
+        tv.setText("Content for tab with tag " + tag);
+        return tv;
     }
 
     protected void showDetailInfo(final Context context) {
@@ -97,25 +116,24 @@ public class XWalkBaseActivity extends Activity {
         });
     }
 
-    CompoundButton.OnCheckedChangeListener listener = new CompoundButton.OnCheckedChangeListener() {  
+    CompoundButton.OnCheckedChangeListener listener = new CompoundButton.OnCheckedChangeListener() {
 
-        @Override  
-        public void onCheckedChanged(CompoundButton buttonView,  
-                boolean isChecked) {
+        @Override
+        public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
             CheckBox box = (CheckBox) buttonView;  
             if(box.isChecked()) {
-            	checkBoxList.add(box);
+                checkBoxList.add(box);
             } else {
-            	if(checkBoxList.size() <= 1) {
-            		Toast.makeText(getApplicationContext(),  
-                            "At least one url checkbox should be Selected", 
+                if(checkBoxList.size() <= 1) {
+                    Toast.makeText(getApplicationContext(),  
+                            "At least one url checkbox should be Selected",
                             Toast.LENGTH_LONG).show();
-            		box.setChecked(true);
-            		return;
-            	}
-            	checkBoxList.remove(box);
+                    box.setChecked(true);
+                    return;
+                }
+                checkBoxList.remove(box);
             }
 
-        }  
+        }
     };
 }
