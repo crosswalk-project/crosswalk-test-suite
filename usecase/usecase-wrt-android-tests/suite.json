@@ -17,6 +17,195 @@
                 "tests.android.xml": "tests.xml",
                 "tests.full.xml": "tests.full.xml"
             },
+            "subapp-list": {
+                ".": {
+                    "app-name": "usecase-wrt-android-tests",
+                    "apk-common-opts": "--enable-remote-debugging",
+                    "blacklist": [
+                        "manifest.json"
+                    ],
+                    "copylist": {
+                        "tests.android.xml": "tests.xml",
+                        "steps": "steps",
+                        "PACK-TOOL-ROOT/bootstrap-fw": "."
+                    },
+                    "install-path": "."
+                },
+                "": {
+                    "apk-type": "HOSTEDAPP",
+                    "apk-url-opt": "https://crosswalk-project.org/",
+                    "app-name": "remotedebugging-no",
+                    "install-path": "."
+                },
+                "samples/SharedMode/res1": {
+                    "apk-type": "MANIFEST",
+                    "apk-mode-opt": "shared",
+                    "app-name": "sharedapp1",
+                    "install-path": "."
+                },
+                "samples/SharedMode/res2": {
+                    "apk-type": "MANIFEST",
+                    "apk-mode-opt": "embedded",
+                    "app-name": "embeddedapp",
+                    "install-path": "."
+                },
+                "samples/CopyPasteNative/res": {
+                    "apk-icon-opt": "",
+                    "app-name": "copypastenative",
+                    "install-path": "."
+                },
+                "samples/ExtensionPermission/res": {
+                    "apk-ext-opt": "samples/ExtensionPermission/res/contactextension",
+                    "app-name": "extensionpermission",
+                    "install-path": "."
+                },
+                "samples/OpenFile/res": {
+                    "apk-icon-opt": "",
+                    "app-name": "openfile",
+                    "install-path": "."
+                },
+                "samples/PermissionApiContacts/res": {
+                    "apk-icon-opt": "",
+                    "app-name": "permissionapicontacts",
+                    "apk-common-opts": "--enable-remote-debugging",
+                    "install-path": "."
+                },
+                "samples/RemoteDebugging/res": {
+                    "apk-cmd-opt": "--enable-remote-debugging",
+                    "apk-icon-opt": "",
+                    "app-name": "remotedebugging",
+                    "install-path": "."
+                },
+                "samples/LocalDownload/res": {
+                    "apk-icon-opt": "",
+                    "apk-mode-opt": "shared",
+                    "app-name": "localdownload",
+                    "install-path": "."
+                },
+                "samples/WebAppGesture/res": {
+                    "apk-icon-opt": "",
+                    "app-name": "webappgesture",
+                    "install-path": "."
+                },
+                "samples/WebAppHWKey/res": {
+                    "apk-icon-opt": "",
+                    "app-name": "webapphwkey",
+                    "install-path": "."
+                },
+                "samples/WebAppXwalkHost/res": {
+                    "apk-icon-opt": "",
+                    "app-name": "webappxwalkhost",
+                    "apk-common-opts": "--enable-remote-debugging",
+                    "install-path": "."
+                },
+                "samples/SchemesCheck/res": {
+                    "apk-icon-opt": "",
+                    "app-name": "schemescheck",
+                    "install-path": "."
+                },
+                "samples/ManifestDemo1/res": {
+                    "apk-icon-opt": "",
+                    "app-name": "manifestdemo1",
+                    "apk-type":"MANIFEST",
+                    "install-path": "."
+                },
+                "samples/ManifestDemo2/res": {
+                    "apk-icon-opt": "",
+                    "app-name": "manifestdemo2",
+                    "apk-type":"MANIFEST",
+                    "install-path": "."
+                },
+                "samples/ManifestDemo3/res": {
+                    "apk-icon-opt": "",
+                    "app-name": "manifestdemo3",
+                    "apk-version-opt":"1.0.0.1",
+                    "apk-type":"MANIFEST",
+                    "install-path": "."
+                },
+                "samples/ManifestDemo4/res": {
+                    "apk-icon-opt": "",
+                    "app-name": "manifestdemo4",
+                    "apk-version-opt":"1.0.0.0.1",
+                    "apk-type":"MANIFEST",
+                    "install-path": "."
+                },
+                "samples/ManifestDemo5/res": {
+                    "apk-icon-opt": "",
+                    "app-name": "manifestdemo5",
+                    "apk-type":"MANIFEST",
+                    "install-path": "."
+                },
+                "samples/PdfDownload/res": {
+                    "apk-type": "MANIFEST",
+                    "app-name": "pdfdownload",
+                    "install-path": "."
+                },
+                "samples/SchemeContent/res": {
+                    "apk-icon-opt": "",
+                    "app-name": "schemescontent",
+                    "install-path": "."
+                },
+                "samples/ImmersiveFullscreen/res": {
+                    "apk-icon-opt": "",
+                    "app-name": "fullscreentest",
+                    "apk-fullscreen-opt": "fullscreen",
+                    "apk-type":"MANIFEST",
+                    "install-path": "."
+                },
+                "samples/ChromeProtocol/res": {
+                    "apk-icon-opt": "",
+                    "app-name": "chromeprotocol",
+                    "apk-type":"MANIFEST",
+                    "install-path": "."
+                },
+                "samples/VideoPlay/res": {
+                    "apk-icon-opt": "",
+                    "app-name": "videoplay",
+                    "apk-type":"MANIFEST",
+                    "install-path": "."
+                },
+                "samples/SharedMode/res3": {
+                    "apk-type": "MANIFEST",
+                    "apk-mode-opt": "shared",
+                    "app-name": "sharedapp2",
+                    "install-path": "."
+                },
+                "samples/GooglePlayer/res": {
+                    "apk-type": "MANIFEST",
+                    "apk-mode-opt": "shared",
+                    "app-name": "googleplayer",
+                    "install-path": "."
+                },
+                "samples/MisarchSharedIA/res": {
+                    "apk-type": "MANIFEST",
+                    "apk-mode-opt": "shared",
+                    "app-name": "shared_x86",
+                    "apk-arch-opt": "x86",
+                    "install-path": "."
+                },
+                "samples/MisarchSharedArm/res": {
+                    "apk-type": "MANIFEST",
+                    "apk-mode-opt": "shared",
+                    "app-name": "shared_arm",
+                    "apk-arch-opt": "arm",
+                    "install-path": "."
+                },
+                "samples/MisarchEmbeddedIA/res": {
+                    "apk-type": "MANIFEST",
+                    "apk-mode-opt": "embedded",
+                    "app-name": "embedded_arm",
+                    "apk-arch-opt": "arm",
+                    "install-path": "."
+                },
+                "samples/MisarchEmbeddedArm/res": {
+                    "apk-type": "MANIFEST",
+                    "apk-mode-opt": "embedded",
+                    "app-name": "embedded_x86",
+                    "apk-arch-opt": "x86",
+                    "install-path": "."
+                }
+            }
+        },
         "apk-beta": {
             "blacklist": [],
             "copylist": {
@@ -26,7 +215,9 @@
                 "tests.android.xml": "tests.xml",
                 "tests.full.xml": "tests.full.xml",
                 "samples/MisarchSharedIA/index.beta.html":"samples/MisarchSharedIA/index.html",
-                "samples/MisarchSharedArm/index.beta.html":"samples/MisarchSharedArm/index.html"
+                "samples/MisarchSharedArm/index.beta.html":"samples/MisarchSharedArm/index.html",
+                "samples/MisarchEmbeddedIA/index.beta.html":"samples/MisarchEmbeddedIA/index.html",
+                "samples/MisarchEmbeddedArm/index.beta.html":"samples/MisarchEmbeddedArm/index.html"
             },
             "subapp-list": {
                 ".": {
