@@ -1,0 +1,11 @@
+var step = '<p>Test Purpose: </p>'
+            +'<p>Verifies the Crosswalk Runtime Library can shared mode app can work well with the redownload Crosswalk Runtime Library</p>'
+            +'<p>Expected Results: </p>'
+            +'<ol>'
+            +'<li>Launch web app failed and prompt: Please get Crosswalk Runtime Library</li>'
+            +'<li>Start to download the Crosswalk Runtime Library</li>'
+            +'<li>Install the Crosswalk Runtime Library successfully</li>'
+            +'<li>Display crosswalk main page</li>'
+            +'<li>Uninstall the Crosswalk Runtime Library successfully</li>'
+            +'<li>Display crosswalk main page</li>'
+            +'</ol>';

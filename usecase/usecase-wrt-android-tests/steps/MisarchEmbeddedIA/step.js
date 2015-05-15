@@ -1,5 +1,4 @@
-var step = '<font class="fontSize">'
-            +'<p>Purpose:</p>'
+var step = '<p>Purpose:</p>'
             +'<p>Verifies that descriptive error message prompt if install embedded arm app in x86 devices</p>'
             +'<p>Expected Results:</p>'
             +'<ol>'
@@ -7,5 +6,4 @@ var step = '<font class="fontSize">'
             +'<li>Start download Crosswalk Runtime Library, the screen is normally whether orientation or portrait</li>'
             +'<li>Install the Crosswalk Runtime Library successfully</li>'
             +'<li>Display crosswalk main page</li>'
-            +'</ol>'
-          +'</font>';
+            +'</ol>';
