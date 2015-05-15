@@ -48,13 +48,14 @@ def generate_cmd():
     for i in positive_data:
         num = num + 1
         flag = 'positive' + str(num)
-        cmd = flag + '\tcrosswalk-app create ' + i + '\n'
+        cmd = flag + '\tcrosswalk-app create ' + i + ' --android-crosswalk=' + '\n'
         #print cmd
         fp.write(cmd)
     for j in negative_data:
         num = num + 1
         flag = 'negative' + str(num)
-        cmd = flag + '\tcrosswalk-app create ' + j + '\n'
+        cmd = flag + '\tcrosswalk-app create ' + j + ' --android-crosswalk=' + '\n'
+
         #print cmd
         fp.write(cmd)
     fp.close()
@@ -119,8 +120,8 @@ def tryRunApp(item, cmd):
     try:
         comm.setUp()
         os.chdir(comm.XwalkPath)
-        package = cmd[cmd.index("create")+6:].strip()
-        exec_cmd = comm.PackTools + cmd
+        package = cmd[cmd.index("create")+6:cmd.index("--android-crosswalk")].strip()
+        exec_cmd = comm.PackTools + cmd + comm.crosswalkVersion
         #print exec_cmd
         if 'negative' in item:
             packstatus = commands.getstatusoutput(exec_cmd)

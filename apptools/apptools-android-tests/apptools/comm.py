@@ -40,7 +40,7 @@ ConstPath = os.path.dirname(SCRIPT_PATH)
 
 
 def setUp():
-    global device, XwalkPath, XwalkName, PackTools, ARCH, crashdir
+    global device, XwalkPath, crosswalkVersion, PackTools, ARCH, crashdir
 
     #device = "E6OKCY411012"
     device = os.environ.get('DEVICE_ID')
@@ -56,6 +56,10 @@ def setUp():
         ARCH = "x86"
     fp.close()
 
+    vp = open(ConstPath + "/../version.txt", 'r')
+    crosswalkVersion = vp.read().strip("\n\t")
+    vp.close()
+
     PackTools = ConstPath +  "/../tools/crosswalk-app-tools/src/"
 
     XwalkPath = ConstPath + "/../tools/"
@@ -65,13 +69,6 @@ def setUp():
     elif "crosswalk-app-tools" in os.listdir(XwalkPath) and len(os.listdir(XwalkPath)) < 2:
         print "Please check if the Crosswalk Binary exists in " + ConstPath + "/../tools/"
         sys.exit(1)
-
-    if os.listdir(ConstPath + "/../tools/")[1].endswith(".zip"):
-        XwalkName = os.listdir(ConstPath + "/../tools/")[1]
-    elif os.listdir(ConstPath + "/../tools/")[0].endswith(".zip"):
-        XwalkName = os.listdir(ConstPath + "/../tools/")[0]
-    elif os.listdir(ConstPath + "/../tools/")[2].endswith(".zip"):
-        XwalkName = os.listdir(ConstPath + "/../tools/")[2]
 
 def clear(pkg):
     if os.path.exists(ConstPath + "/../tools/" + pkg):
@@ -84,7 +81,7 @@ def create(self):
     clear("org.xwalk.test")
     setUp()
     os.chdir(XwalkPath)
-    cmd = PackTools + "crosswalk-app create org.xwalk.test"
+    cmd = PackTools + "crosswalk-app create org.xwalk.test --android-crosswalk=" + crosswalkVersion
     packstatus = commands.getstatusoutput(cmd)
     self.assertEquals(packstatus[0], 0)
     self.assertIn("org.xwalk.test", os.listdir(os.getcwd()))
