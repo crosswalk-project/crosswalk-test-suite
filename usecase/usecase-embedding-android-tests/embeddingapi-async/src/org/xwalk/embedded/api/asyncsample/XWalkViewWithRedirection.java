@@ -1,6 +1,7 @@
-package org.xwalk.embedded.api.sample;
+package org.xwalk.embedded.api.asyncsample;
 
-import org.xwalk.core.XWalkActivity;
+import android.app.Activity;
+import org.xwalk.core.XWalkInitializer;
 import org.xwalk.core.XWalkResourceClient;
 import org.xwalk.core.XWalkUIClient;
 import org.xwalk.core.XWalkView;
@@ -10,7 +11,7 @@ import android.os.Bundle;
 import android.util.Log;
 import android.widget.TextView;
 
-public class XWalkViewWithRedirection extends XWalkActivity{
+public class XWalkViewWithRedirection extends Activity implements XWalkInitializer.XWalkInitListener {
 	private static final String TAG = XWalkViewWithRedirection.class.getSimpleName();
 	
     private XWalkView mXWalkView;
@@ -18,13 +19,6 @@ public class XWalkViewWithRedirection extends XWalkActivity{
     private int times_started = 0;
     private int times_stopped = 0;
     private int progress = 0;
-
-	@Override
-	protected void onCreate(Bundle savedInstanceState) {
-		// TODO Auto-generated method stub
-        super.onCreate(savedInstanceState);
-    }
-
 	
 	class UIClient extends XWalkUIClient{
 
@@ -80,8 +74,30 @@ public class XWalkViewWithRedirection extends XWalkActivity{
 		LoadstoppedTimes.setText(state);
 	}
 
-	@Override
-	protected void onXWalkReady() {
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+
+        XWalkInitializer.initAsync(this, this);
+    }
+
+    @Override
+    public final void onXWalkInitStarted() {
+        // It's okay to do nothing
+    }
+
+    @Override
+    public final void onXWalkInitCancelled() {
+        // It's okay to do nothing
+    }
+
+    @Override
+    public final void onXWalkInitFailed() {
+        // Do crash or logging or anything else in order to let the tester know if this method get called
+    }
+
+    @Override
+    public final void onXWalkInitCompleted() {
 		// TODO Auto-generated method stub
         StringBuffer mess = new StringBuffer();
         mess.append("Test Purpose: \n\n")

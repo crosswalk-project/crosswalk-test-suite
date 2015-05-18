@@ -2,13 +2,14 @@
 // Use of this source code is governed by a BSD-style license that can be
 // found in the LICENSE file.
 
-package org.xwalk.embedded.api.sample;
+package org.xwalk.embedded.api.asyncsample;
 
 import java.io.File;
 import java.io.FileInputStream;
 import java.text.DecimalFormat;
 
-import org.xwalk.core.XWalkActivity;
+import android.app.Activity;
+import org.xwalk.core.XWalkInitializer;
 import org.xwalk.core.XWalkUIClient;
 import org.xwalk.core.XWalkView;
 
@@ -20,7 +21,7 @@ import android.view.View.OnClickListener;
 import android.widget.Button;
 import android.widget.TextView;
 
-public class XWalkViewWithClearCache extends XWalkActivity {
+public class XWalkViewWithClearCache extends Activity implements XWalkInitializer.XWalkInitListener {
 	private static final String TAG = "XWalkViewWithClearCache";
 	private static final String EXTRA_CACHE_PATH
 				= "/data/data/org.xwalk.embedded.api.sample/app_xwalkcore/Default/Cache";
@@ -31,10 +32,27 @@ public class XWalkViewWithClearCache extends XWalkActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
+        XWalkInitializer.initAsync(this, this);
     }
 
     @Override
-    protected void onXWalkReady() {
+    public final void onXWalkInitStarted() {
+        // It's okay to do nothing
+    }
+
+    @Override
+    public final void onXWalkInitCancelled() {
+        // It's okay to do nothing
+    }
+
+    @Override
+    public final void onXWalkInitFailed() {
+        // Do crash or logging or anything else in order to let the tester know if this method get called
+    }
+
+    @Override
+    public final void onXWalkInitCompleted() {
         setContentView(R.layout.clearcache_layout);
         StringBuffer mess = new StringBuffer();
         mess.append("Test Purpose: \n\n")

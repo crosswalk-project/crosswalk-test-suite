@@ -1,0 +1,28 @@
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<link rel="stylesheet" type="text/css" href="css/page.css">
+<title>test</title>
+<script language="javascript">
+ function launchFullscreen(element) {
+   element.webkitRequestFullscreen();
+ }
+
+ function exitFullscreen() {
+   document.webkitExitFullscreen();
+ }
+</script>
+</head>
+<body>
+  <br/>
+  <ul>
+    <li>Click "Launch Fullscreen" button to enter fullscreen.</li>
+    <li>Click "Leave Fullscreen" button to exit fullscreen.</li>
+    <li>Click "Launch Fullscreen" button to enter fullscreen.</li>
+    <li>Click "Exit Fullscreen" button to exit fullscreen.</li>
+  </ul>
+  <br/>
+ <button id="enter_fullscreen" onclick="launchFullscreen(document.documentElement);">Launch Fullscreen</button>
+ <button id="exit_fullscreen" onclick="exitFullscreen();">Exit Fullscreen</button>
+</body>
+</html>
