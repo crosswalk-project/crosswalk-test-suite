@@ -29,6 +29,7 @@ Authors:
             Yin,Haichao <haichaox.yin@intel.com>
 
 -->
+
 <html>
   <head>
     <meta charset='utf-8'>
@@ -40,14 +41,17 @@ Authors:
       <strong>Test steps:</strong>
     </p>
     <ol>
-      <li>Install the kingsoft-fast-docs webapp and launch it. </li>
-      <li>Use the kingsoft account login in the web system. </li>      
+      <li>Install the "kingsoftfastdocs.deb" webapp and launch it with command like:<br>
+          xwalk $(dirname $(realpath $(which kingsoftfastdocs)))/www/manifest.json --ppapi-flash-path=/path/to/chrome/PepperFlash/libpepflashplayer.so
+      </li>
+      <li>Use the kingsoft account login in the web system. </li>
       <li>Click the "Create" button to create a document and save. </li>
     </ol>
     <p>
       <strong>Expected Output:</strong>
     </p>
     <ol>
+      <li>Webapp could be launched successfully. </li>
       <li>Login in the web system successfully. </li>
       <li>Write normal and save successfully in the page. </li>
     </ol>

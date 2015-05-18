@@ -29,6 +29,7 @@ Authors:
             Yin,Haichao <haichaox.yin@intel.com>
 
 -->
+
 <html>
   <head>
     <meta charset='utf-8'>
@@ -40,14 +41,17 @@ Authors:
       <strong>Test steps:</strong>
     </p>
     <ol>
-      <li>Install the dbank-online-storage webapp and launch it. </li>
-      <li>Use the huawei account login in the web system. </li>      
+      <li>Install the "dbankonlinestorage.deb" webapp and launch it with command like:<br>
+          xwalk $(dirname $(realpath $(which dbankonlinestorage)))/www/manifest.json --ppapi-flash-path=/path/to/chrome/PepperFlash/libpepflashplayer.so
+      </li>
+      <li>Use the huawei account login in the web system. </li>
       <li>Click the "Upload File" button to upload a file. </li>
     </ol>
     <p>
       <strong>Expected Output:</strong>
     </p>
     <ol>
+      <li>Webapp could be launched successfully. </li>
       <li>Login in the web system successfully. </li>
       <li>The file upload successfully and display in the page. </li>
     </ol>

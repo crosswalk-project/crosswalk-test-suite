@@ -29,6 +29,7 @@ Authors:
             Yin,Haichao <haichaox.yin@intel.com>
 
 -->
+
 <html>
   <head>
     <meta charset='utf-8'>
@@ -40,14 +41,17 @@ Authors:
       <strong>Test steps:</strong>
     </p>
     <ol>
-      <li>Install the "dbank-online-storage" webapp and launch it. </li>    
-      <li>Search "dbank-online-storage" app shortcut in the launcher and check the app name. </li>
+      <li>Install the "dbankonlinestorage.deb" webapp and launch it with command like:<br>
+          xwalk $(dirname $(realpath $(which dbankonlinestorage)))/www/manifest.json --ppapi-flash-path=/path/to/chrome/PepperFlash/libpepflashplayer.so
+      </li>
+      <li>Search "dbankonlinestorage" app shortcut in the launcher and check the app name. </li>
     </ol>
     <p>
       <strong>Expected Output:</strong>
     </p>
     <ol>
-      <li>Find the app shortcut and the app name is "dbank-online-storage". </li>
+      <li>Webapp could be launched successfully. </li>
+      <li>Find the app shortcut and the app name is "deepin-webapps-dbank-online-storage". </li>
     </ol>
   </body>
 </html>

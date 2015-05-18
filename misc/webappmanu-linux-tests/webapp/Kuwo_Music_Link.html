@@ -29,6 +29,7 @@ Authors:
             Yin,Haichao <haichaox.yin@intel.com>
 
 -->
+
 <html>
   <head>
     <meta charset='utf-8'>
@@ -40,13 +41,16 @@ Authors:
       <strong>Test steps:</strong>
     </p>
     <ol>
-      <li>Install the kuwo-music webapp and launch it. </li>
+      <li>Install the "kuwomusic.deb" webapp and launch it with command like:<br>
+          xwalk $(dirname $(realpath $(which kuwomusic)))/www/manifest.json --ppapi-flash-path=/path/to/chrome/PepperFlash/libpepflashplayer.so
+      </li>
       <li>Click the different links in the page several times. </li>
     </ol>
     <p>
       <strong>Expected Output:</strong>
     </p>
     <ol>
+      <li>Webapp could be launched successfully. </li>
       <li>The links can be clicked and jumped correct. </li>
     </ol>
   </body>

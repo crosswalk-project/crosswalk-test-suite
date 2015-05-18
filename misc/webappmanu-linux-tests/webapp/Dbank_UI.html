@@ -29,6 +29,7 @@ Authors:
             Yin,Haichao <haichaox.yin@intel.com>
 
 -->
+
 <html>
   <head>
     <meta charset='utf-8'>
@@ -40,13 +41,16 @@ Authors:
       <strong>Test steps:</strong>
     </p>
     <ol>
-      <li>Install the dbank-online-storage webapp and launch it. </li>
-      <li>Velidate the page layout and display. </li>
+      <li>Install the "dbankonlinestorage.deb" webapp and launch it with command like:<br>
+          xwalk $(dirname $(realpath $(which dbankonlinestorage)))/www/manifest.json --ppapi-flash-path=/path/to/chrome/PepperFlash/libpepflashplayer.so
+      </li>
+      <li>Validate the page layout and display. </li>
     </ol>
     <p>
       <strong>Expected Output:</strong>
     </p>
     <ol>
+      <li>Webapp could be launched successfully. </li>
       <li>The page layout normal and display correctly. </li>
     </ol>
   </body>
