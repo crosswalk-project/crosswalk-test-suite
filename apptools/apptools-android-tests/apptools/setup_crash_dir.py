@@ -49,7 +49,6 @@ class TestCrosswalkApptoolsFunctions(unittest.TestCase):
         os.environ["CROSSWALK_APP_TOOLS_CACHE_DIR"] = comm.XwalkPath
         os.chdir(comm.XwalkPath)
         shutil.rmtree("crash")
-        comm.run(self)
         comm.clear("org.xwalk.test")
         self.assertNotIn("crosswalk-13.42.319.5.zip", namelist)
         self.assertIn("crosswalk-13.42.319.5.zip", crosswalklist)

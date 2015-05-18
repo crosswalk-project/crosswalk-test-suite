@@ -58,7 +58,6 @@ class TestCrosswalkApptoolsFunctions(unittest.TestCase):
         crosswalk = 'crosswalk-{}.zip'.format(version)
         namelist = os.listdir(os.getcwd())
         self.assertIn(crosswalk, namelist)
-        comm.run(self)
         comm.clear("org.xwalk.test")
         self.assertEquals(packstatus[0], 0)
 

@@ -53,7 +53,6 @@ class TestCrosswalkApptoolsFunctions(unittest.TestCase):
             cmd = "tac test |sed -n '%dp' |awk -F 'href=' '{print $2}' |awk -F '\"|/' '{print $2}'" % int(line)
             version = commands.getstatusoutput(cmd)[1]
         commands.getstatusoutput("rm -rf test")
-        comm.run(self)
         comm.clear("org.xwalk.test")
         self.assertEquals(currentVersion, version)
 
@@ -75,7 +74,6 @@ class TestCrosswalkApptoolsFunctions(unittest.TestCase):
             cmd = "tac test |sed -n '%dp' |awk -F 'href=' '{print $2}' |awk -F '\"|/' '{print $2}'" % int(line)
             version = commands.getstatusoutput(cmd)[1]
         commands.getstatusoutput("rm -rf test")
-        comm.run(self)
         comm.clear("org.xwalk.test")
         self.assertEquals(currentVersion, version)
 
@@ -97,7 +95,6 @@ class TestCrosswalkApptoolsFunctions(unittest.TestCase):
             cmd = "tac test |sed -n '%dp' |awk -F 'href=' '{print $2}' |awk -F '\"|/' '{print $2}'" % int(line)
             version = commands.getstatusoutput(cmd)[1]
         commands.getstatusoutput("rm -rf test")
-        comm.run(self)
         comm.clear("org.xwalk.test")
         self.assertEquals(currentVersion, version)
 
@@ -119,7 +116,6 @@ class TestCrosswalkApptoolsFunctions(unittest.TestCase):
             cmd = "tac test |sed -n '%dp' |awk -F 'href=' '{print $2}' |awk -F '\"|/' '{print $2}'" % int(line)
             version = commands.getstatusoutput(cmd)[1]
         commands.getstatusoutput("rm -rf test")
-        comm.run(self)
         comm.clear("org.xwalk.test")
         self.assertEquals(currentVersion, version)
 
@@ -129,7 +125,6 @@ class TestCrosswalkApptoolsFunctions(unittest.TestCase):
         os.chdir('org.xwalk.test')
         updatecmd =  comm.PackTools + "crosswalk-app update channel"
         updatestatus = commands.getstatusoutput(updatecmd)
-        comm.run(self)
         comm.clear("org.xwalk.test")
         self.assertIn("ERROR:", updatestatus[1])
 
@@ -139,7 +134,6 @@ class TestCrosswalkApptoolsFunctions(unittest.TestCase):
         os.chdir('org.xwalk.test')
         updatecmd =  comm.PackTools + "crosswalk-app update 13.42.319.7"
         comm.update(self, updatecmd)
-        comm.run(self)
         comm.clear("org.xwalk.test")
 
     def test_update_currentVersion(self):
@@ -151,7 +145,6 @@ class TestCrosswalkApptoolsFunctions(unittest.TestCase):
         newupdatecmd =  comm.PackTools + "crosswalk-app update 13.42.319.7"
         updatestatus = commands.getstatusoutput(newupdatecmd)
         self.assertIn("Using cached", updatestatus[1])
-        comm.run(self)
         comm.clear("org.xwalk.test")
 
     def test_update_lowerVersion(self):
@@ -162,7 +155,6 @@ class TestCrosswalkApptoolsFunctions(unittest.TestCase):
         comm.update(self, updatecmd)
         newupdatecmd =  comm.PackTools + "crosswalk-app update 11.40.277.1"
         comm.update(self, newupdatecmd)
-        comm.run(self)
         comm.clear("org.xwalk.test")
 
     def test_update_invalid_version(self):
@@ -171,7 +163,6 @@ class TestCrosswalkApptoolsFunctions(unittest.TestCase):
         os.chdir('org.xwalk.test')
         updatecmd =  comm.PackTools + "crosswalk-app update 0.0.0.0"
         updatestatus = commands.getstatusoutput(updatecmd)
-        comm.run(self)
         comm.clear("org.xwalk.test")
         self.assertIn("ERROR:", updatestatus[1])
 
@@ -182,7 +173,6 @@ class TestCrosswalkApptoolsFunctions(unittest.TestCase):
         updatecmd =  comm.PackTools + "crosswalk-app update"
         updatestatus = commands.getstatusoutput(updatecmd)
         print updatestatus[1]
-        comm.run(self)
         comm.clear("org.xwalk.test")
         self.assertNotEquals(updatestatus[0], 0)
 
