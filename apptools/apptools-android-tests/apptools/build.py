@@ -83,7 +83,6 @@ class TestCrosswalkApptoolsFunctions(unittest.TestCase):
         os.remove(os.getcwd() + '/prj/android/xwalk_core_library/libs/x86/libxwalkcore.so')
         buildcmd =  comm.PackTools + "crosswalk-app build"
         buildstatus = commands.getstatusoutput(buildcmd)
-        comm.run(self)
         comm.clear("org.xwalk.test")
         self.assertEquals(buildstatus[0], 1)
 
