@@ -170,3 +170,13 @@ This usecase covers following interface and methods:
 
 * XWalkView interface: load, onActivityResult methods
 
+
+
+### 16. The [XWalkViewWithClearCache](XWalkViewWithClearCache.java) sample check whether xwalkview can clear cache, include:
+
+* XWalkView can clear cache
+
+This usecase covers following interface and methods:
+
+* XWalkView interface: load, clearCache methods
+* UIClient interface: onPageLoadStopped methods
