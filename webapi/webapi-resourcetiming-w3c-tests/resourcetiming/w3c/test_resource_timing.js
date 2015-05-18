@@ -151,9 +151,11 @@ function resource_load(expected)
     t["simple_attrs"].step(function() {
         var actual = window.performance.getEntriesByName(expected.name)[0];
         var expected_type = expected.initiatorType;
-        if (expected.initiatorType == "iframe") {
-            expected_type = "subdocument";
-        }
+        //If the initiator is an element, on getting, the initiatorType attribute MUST return a DOMString with the same value as the localName of that element [DOM].
+        // iframe.localName is "iframe", not "subdocument", comment blow code.
+        //if (expected.initiatorType == "iframe") {
+        //    expected_type = "subdocument";
+        //}
         assert_equals(actual.name, expected.name);
         assert_equals(actual.initiatorType, expected_type);
         assert_equals(actual.entryType, "resource");
