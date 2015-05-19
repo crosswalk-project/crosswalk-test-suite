@@ -208,7 +208,7 @@ To add a new suite to Cordova, perform the following steps:
     commondir = webrunner
     SUBDIRS = feature $(commondir)
     docdir = /opt/cordova-feature-android-tests
-    dist_doc_DATA = Changelog COPYING README tests.xml tests.full.xml
+    dist_doc_DATA = COPYING README tests.xml tests.full.xml
 
 4) Replace feature with the name of the real test suite and replace feature with real test case folder name used in configure.ac:
 
