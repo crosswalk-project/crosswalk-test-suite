@@ -1,0 +1,11 @@
+var step = '<p>Purpose:</p>'
+            +'<p>Verify that the shared mode app can download crosswalk library apk after configure</p>'
+            +'<p>Expected Results:</p>'
+            +'<ol>'
+            +'<li>Create a project named like [driName], no apk file, there have some files and folder like "assert", "bin", AndroidManifest.xml and so on in the folder [dirname]</li>'
+            +'<li>Build the apk successfully</li>'
+            +'<li>Display message "Please get Crosswalk Runtime Library"</li>'
+            +'<li>Start to download the XWalkRuntimeLib.apk</li>'
+            +'<li>Display "App installed"</li>'
+            +'<li>Display the crosswalk main page</li>'
+            +'</ol>';
