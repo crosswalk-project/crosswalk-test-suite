@@ -40,11 +40,11 @@ ConstPath = os.path.dirname(SCRIPT_PATH)
 
 
 def setUp():
-    global device, XwalkPath, crosswalkVersion, PackTools, ARCH, crashdir
+    global device, XwalkPath, crosswalkVersion, PackTools, ARCH, cachedir
 
     #device = "E6OKCY411012"
     device = os.environ.get('DEVICE_ID')
-    crashdir = os.environ.get('CROSSWALK_APP_TOOLS_CACHE_DIR')
+    cachedir = os.environ.get('CROSSWALK_APP_TOOLS_CACHE_DIR')
     if not device:
         print ("Get env error\n")
         sys.exit(1)
@@ -113,11 +113,11 @@ def update(self, cmd):
     self.assertEquals(updatestatus[0], 0)
     self.assertNotIn("ERROR:", updatestatus[1])
     version = updatestatus[1].split('\n')[-1].split(' ')[-1][1:-1]
-    if not crashdir:
+    if not cachedir:
         namelist = os.listdir(os.getcwd())        
     else:
-        newcrashdir = os.environ.get('CROSSWALK_APP_TOOLS_CACHE_DIR')
-        os.chdir(newcrashdir)
+        newcachedir = os.environ.get('CROSSWALK_APP_TOOLS_CACHE_DIR')
+        os.chdir(newcachedir)
         namelist = os.listdir(os.getcwd())
         os.chdir(XwalkPath + 'org.xwalk.test')
     crosswalk = 'crosswalk-{}.zip'.format(version)

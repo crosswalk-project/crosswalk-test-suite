@@ -34,21 +34,21 @@ import commands
 import shutil
 
 class TestCrosswalkApptoolsFunctions(unittest.TestCase):
-    def test_setup_crash_dir(self):
+    def test_setup_cache_dir(self):
         comm.setUp()
         os.chdir(comm.XwalkPath)
-        os.mkdir("crash")
+        os.mkdir("cache")
         comm.create(self)
-        os.environ["CROSSWALK_APP_TOOLS_CACHE_DIR"] = comm.XwalkPath + "crash"
+        os.environ["CROSSWALK_APP_TOOLS_CACHE_DIR"] = comm.XwalkPath + "cache"
         os.chdir('org.xwalk.test')
         updatecmd =  comm.PackTools + "crosswalk-app update 13.42.319.5"
         comm.update(self, updatecmd)
         namelist = os.listdir(os.getcwd())
-        os.chdir(comm.XwalkPath + "crash")
+        os.chdir(comm.XwalkPath + "cache")
         crosswalklist = os.listdir(os.getcwd())
         os.environ["CROSSWALK_APP_TOOLS_CACHE_DIR"] = comm.XwalkPath
         os.chdir(comm.XwalkPath)
-        shutil.rmtree("crash")
+        shutil.rmtree("cache")
         comm.clear("org.xwalk.test")
         self.assertNotIn("crosswalk-13.42.319.5.zip", namelist)
         self.assertIn("crosswalk-13.42.319.5.zip", crosswalklist)
