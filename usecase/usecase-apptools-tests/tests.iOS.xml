@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-stylesheet type="text/xsl" href="./testcase.xsl"?>
+<test_definition>
+  <suite name="Usecase AppTools">
+    <set name="Build Project" background="brand-primary" icon="glyphicon-asterisk" type="script">
+      <testcase component="Crosswalk Use Cases/AppTools" execution_type="manual" id="AppTools_iOS" purpose="AppTools_iOS Test" type="compliance">
+        <description>
+          <pre_condition>Please refer to README file.</pre_condition>
+          <steps>
+            <step order="1">
+              <step_desc>If org.test.foo exists in usecase-apptools-tests/tools/ directory, remove it. Then run below commands under usecase-apptools-tests/tools/ directory: $ crosswalk-app create org.test.foo, $ cd org.test.foo, $ crosswalk-app build</step_desc>
+              <expected>Success to create/build org.test.foo</expected>
+            </step>
+            <step order="2">
+              <step_desc>Connect your iOS device to your iMac. Open iTunes->"Your Device"->Apps. Double click /path/to/foo/pkg/foo.ipa. Click "Install" button of foo app on iTunes</step_desc>
+              <expected>Success to install foo app</expected>
+            </step>
+            <step order="3">
+              <step_desc>Click "Apply" button at the lower right corner of iTunes. Check icon of foo app in your iOS device</step_desc>
+              <expected>Success to find foo app</expected>
+            </step>
+            <step order="4">
+              <step_desc>Launch foo app in your iOS device</step_desc>
+              <expected>Success to launch foo app</expected>
+            </step>
+            <step order="5">
+              <step_desc>Check the homepage of foo app</step_desc>
+              <expected>You can see "This is a Crosswalk Sample Application" on the page</expected>
+            </step>
+            <step order="6">
+              <step_desc>Close foo app via clicking the home button</step_desc>
+              <expected>Success to stop foo app</expected>
+            </step>
+            <step order="7">
+              <step_desc>Long press the icon of foo app to uninstall it</step_desc>
+              <expected>Success to uninstall foo app</expected>
+            </step>
+          </steps>
+          <test_script_entry>/opt/usecase-apptools-tests/samples/AppTools_iOS/index.html</test_script_entry>
+        </description>
+      </testcase>
+    </set>
+  </suite>
+</test_definition>

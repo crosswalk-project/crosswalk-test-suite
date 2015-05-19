@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<!--
+Copyright (c) 2014 Intel Corporation.
+
+Redistribution and use in source and binary forms, with or without modification,
+are permitted provided that the following conditions are met:
+
+* Redistributions of works must retain the original copyright notice, this list
+  of conditions and the following disclaimer.
+* Redistributions in binary form must reproduce the original copyright notice,
+  this list of conditions and the following disclaimer in the documentation
+  and/or other materials provided with the distribution.
+* Neither the name of Intel Corporation nor the names of its contributors
+  may be used to endorse or promote products derived from this work without
+  specific prior written permission.
+
+THIS SOFTWARE IS PROVIDED BY INTEL CORPORATION "AS IS"
+AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE
+IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE
+ARE DISCLAIMED. IN NO EVENT SHALL INTEL CORPORATION BE LIABLE FOR ANY DIRECT,
+INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING,
+BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE,
+DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY
+OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING
+NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE,
+EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
+
+Authors:
+        Liu, Yun <yunx.liu@intel.com>
+
+-->
+
+<meta charset="utf-8" />
+<meta name="viewport" content="initial-scale=1.0, maximum-scale=1.0, width=device-width">
+<link rel="stylesheet" type="text/css" href="../../css/bootstrap.css">
+<link rel="stylesheet" type="text/css" href="../../css/main.css">
+<script src="../../js/jquery-2.1.3.min.js"></script>
+<script src="../../js/bootstrap.min.js"></script>
+<script src="../../js/common.js"></script>
+<script src="../../js/tests.js"></script>
+
+<div id="header">
+  <h3 id="main_page_title"></h3>
+</div>
+<div class="content">
+  <h4>Precondition</h4>
+  <ul>
+    <li>Connect iOS devices to your localhost</li>
+    <li>Set up the test environment under the tools directory, please refer the link about the detail info:
+https://github.com/crosswalk-project/crosswalk-app-tools-ios</li>
+  </ul>
+  <h4>Test Steps</h4>
+  <ol>
+    <li>If org.test.foo exists in usecase-apptools-tests/tools/ directory, remove it</li>
+    <li>Then run below commands under usecase-apptools-tests/tools/ directory:
+      <ul>
+        <li>$ ./crosswalk-app-tools/src/crosswalk-app create org.test.foo</li>
+        <li>$ cd org.test.foo</li>
+        <li>$ ../crosswalk-app-tools/src/crosswalk-app build</li>
+      </ul>
+    </li>
+    <li>Connect your iOS device to your iMac, Open iTunes->"Your Device"->Apps</li>
+    <li>Double click /path/to/foo/pkg/foo.ipa</li>
+    <li>Click "Install" button of foo app on iTunes</li>
+    <li>Click "Apply" button at the lower right corner of iTunes</li>
+    <li>Check icon of foo app in your iOS device</li>
+    <li>Launch foo app in your iOS device</li>
+    <li>Check the homepage of foo app</li>
+    <li>Close foo app via clicking the home button</li>
+    <li>Long press the icon of foo app to uninstall it</li>
+  </ol>
+</div>
+<div class="footer">
+  <div id="footer"></div>
+</div>
+<div class="modal fade" id="popup_info">
+  <p>Purpose:</p>
+  <p>Verifies foo app can run successfully</p>
+  <p>Expected Result:</p>
+  <ol>
+    <li>Install the foo app successfully</li>
+    <li>Find the foo app successfully</li>
+    <li>Launch the foo app successfully</li>
+    <li>You can see "This is a Crosswalk Sample Application" on the page</li>
+    <li>Stop the foo app successfully</li>
+    <li>Unistall the foo app successfully</li>
+  </ol>
+</div>
