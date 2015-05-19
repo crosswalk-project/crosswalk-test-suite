@@ -28,7 +28,7 @@ public class ExtensionEcho extends XWalkExtension {
 
     @Override
     public void onMessage(int instanceID, String message) {
-        postMessage(instanceID, "From java:" + message);
+        postMessage(instanceID, "From java async:" + message);
     }
 
     @Override
