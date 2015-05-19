@@ -43,6 +43,7 @@ import commands
 import fnmatch
 import subprocess
 import re
+import pexpect
 from optparse import OptionParser
 
 reload(sys)
@@ -427,6 +428,104 @@ def packSampleApp(app_name=None):
     os.chdir(orig_dir)
     return True
 
+def packMobileSpec_cli(app_name=None):
+    project_root = os.path.join(BUILD_ROOT, app_name)
+    output = commands.getoutput("cordova -v")
+    if output != "5.0.0":
+        LOG.error("Cordova 4.0 build requires Cordova-CLI 5.0.0, install with command: '$ sudo npm install cordova@5.0.0 -g'")
+        return False
+
+    plugin_tool = os.path.join(BUILD_ROOT, "cordova-plugin-crosswalk-webview")
+    if not doCopy(os.path.join(BUILD_PARAMETERS.pkgpacktools, "cordova_plugins", "cordova-plugin-crosswalk-webview"), plugin_tool):
+        return False
+
+    cordova_mobilespec = os.path.join(BUILD_ROOT, "cordova-mobile-spec")
+    if not doCopy(os.path.join(BUILD_PARAMETERS.pkgpacktools, "mobilespec", "cordova-mobile-spec"), cordova_mobilespec):
+        return False
+
+    cordova_coho = os.path.join(BUILD_ROOT, "cordova-coho")
+    if not doCopy(os.path.join(BUILD_PARAMETERS.pkgpacktools, "mobilespec", "cordova-coho"), cordova_coho):
+        return False
+
+    orig_dir = os.getcwd()
+    os.chdir(cordova_coho)
+    output = commands.getoutput("git pull").strip("\r\n")
+
+    os.chdir(cordova_mobilespec)
+    output = commands.getoutput("git pull").strip("\r\n")
+    if output == "Already up-to-date.":
+        if not doCopy(os.path.join(BUILD_PARAMETERS.pkgpacktools, "mobilespec", "mobilespec"), project_root):
+            return False
+    else:
+        node_modules = os.path.join(cordova_mobilespec, "createmobilespec", "node_modules")
+        os.chdir(os.path.join(cordova_mobilespec, "createmobilespec"))
+        install_cmd = "sudo npm install"
+        LOG.info("Doing CMD: [ %s ]" % install_cmd)
+        run = pexpect.spawn(install_cmd)
+
+        index = run.expect(['password', 'node_modules', pexpect.EOF, pexpect.TIMEOUT])
+        if index == 0:
+            run.sendline(BUILD_PARAMETERS.userpassword)
+            index = run.expect(['node_modules', 'password', pexpect.EOF, pexpect.TIMEOUT])
+            if index == 0:
+                print 'The user password is Correctly'
+            else:
+                print 'The user password is wrong'
+                run.close(force=True)
+                return False
+        elif index != 1:
+            print 'The user password is wrong'
+            run.close(force=True)
+            return False
+
+        os.chdir(BUILD_ROOT)
+        createmobilespec_cmd = "cordova-mobile-spec/createmobilespec/createmobilespec.js --android --global"
+        if not doCMD(createmobilespec_cmd, DEFAULT_CMD_TIMEOUT * 3):
+            os.chdir(orig_dir)
+            return False
+        os.chdir(project_root)
+        mv_cmd = "mv platforms/android/src/org/apache/mobilespec/MainActivity.java platforms/android/src/org/apache/mobilespec/mobilespec.java"
+        if not doCMD(mv_cmd, DEFAULT_CMD_TIMEOUT):
+            os.chdir(orig_dir)
+            return False
+        sed_cmd = "sed -i 's/MainActivity/mobilespec/g' `grep MainActivity -rl *`"
+        if not doCMD(sed_cmd, DEFAULT_CMD_TIMEOUT):
+            os.chdir(orig_dir)
+            return False
+    os.chdir(project_root)
+    add_webview_cmd = "cordova plugin add ../cordova-plugin-crosswalk-webview/"
+    if not doCMD(add_webview_cmd, DEFAULT_CMD_TIMEOUT):
+        os.chdir(orig_dir)
+        return False
+
+    ANDROID_HOME = "echo $(dirname $(dirname $(which android)))"
+    os.environ['ANDROID_HOME'] = commands.getoutput(ANDROID_HOME)
+    pack_cmd = "cordova build android"
+    if not doCMD(pack_cmd, DEFAULT_CMD_TIMEOUT):
+        os.chdir(orig_dir)
+        return False
+    outputs_dir = os.path.join(project_root, "platforms", "android", "build", "outputs", "apk")
+    if BUILD_PARAMETERS.pkgarch == "x86":
+        cordova_tmp_path = os.path.join(outputs_dir, "%s-x86-debug.apk"%app_name)
+        cordova_tmp_path_spare = os.path.join(outputs_dir, "android-x86-debug.apk")
+    else:
+        cordova_tmp_path = os.path.join(outputs_dir, "%s-armv7-debug.apk"%app_name)
+        cordova_tmp_path_spare = os.path.join(outputs_dir, "android-armv7-debug.apk")
+    if os.path.exists(cordova_tmp_path):
+        if not doCopy(cordova_tmp_path, os.path.join(orig_dir, "%s.apk" % app_name)):
+            os.chdir(orig_dir)
+            return False
+    elif os.path.exists(cordova_tmp_path_spare):
+        if not doCopy(cordova_tmp_path_spare, os.path.join(orig_dir, "%s.apk" % app_name)):
+            os.chdir(orig_dir)
+            return False
+    else:
+        os.chdir(orig_dir)
+        return False
+    os.chdir(orig_dir)
+    return True
+
+
 def packSampleApp_cli(app_name=None):
     project_root = os.path.join(BUILD_ROOT, app_name)
 
@@ -510,8 +609,12 @@ def packSampleApp_cli(app_name=None):
         cordova_tmp_path = os.path.join(outputs_dir, "%s-armv7-debug.apk"%app_name)
         cordova_tmp_path_spare = os.path.join(outputs_dir, "android-armv7-debug.apk")
 
-    if not doCopy(cordova_tmp_path, os.path.join(orig_dir, "%s.apk" % app_name)):
+    if not os.path.exists(cordova_tmp_path):
         if not doCopy(cordova_tmp_path_spare, os.path.join(orig_dir, "%s.apk" % app_name)):
+            os.chdir(orig_dir)
+            return False
+    else:
+        if not doCopy(cordova_tmp_path, os.path.join(orig_dir, "%s.apk" % app_name)):
             os.chdir(orig_dir)
             return False
     os.chdir(orig_dir)
@@ -522,8 +625,11 @@ def packAPP(app_name=None):
 
     if checkContains(app_name, "MOBILESPEC"):
         if BUILD_PARAMETERS.cordovaversion == "4.0":
-            LOG.error("Mobile Spec Cordova 4.0 auto build is not implemented, please use manual way.....")
-            return False
+            if not BUILD_PARAMETERS.userpassword:
+                LOG.error("User password is required")
+                return False
+            if not packMobileSpec_cli(app_name):
+                return False
         else:
             if not packMobileSpec(app_name):
                 return False
@@ -586,6 +692,11 @@ def main():
             "--arch",
             dest="pkgarch",
             help="specify the apk arch, not for cordova version 3.6, e.g. x86, arm")
+        opts_parser.add_option(
+            "-p",
+            "--password",
+            dest="userpassword",
+            help="specify the user password of PC")
 
         if len(sys.argv) == 1:
             sys.argv.append("-h")
