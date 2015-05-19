@@ -42,6 +42,13 @@ def uninstPKGs():
         if "Failure" in line:
             return False
             break
+    cmd = "%s -s %s uninstall org.xwalk.embedded.api.asyncsample" % (
+        ADB_CMD, PARAMETERS.device)
+    (return_code, output) = doCMD(cmd)
+    for line in output:
+        if "Failure" in line:
+            return False
+            break
     return True
 
 
