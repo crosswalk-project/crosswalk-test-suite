@@ -1,6 +1,6 @@
 ## Usecase Design
 
-This sample demonstrates DownloadLib feature basic functionalities, include:
+This sample demonstrates DownloadSearchList feature basic functionalities, include:
 
 * Download the Crosswalk Runtime Library from search result list in google play
 

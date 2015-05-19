@@ -1,6 +1,11 @@
-var step = '<p>Test Note: </p>'
-            +'<p>Verifies the all download Crosswalk Runtime Library disturb can work well.</p>'
-            +'<p>Test Purpose: </p>'
-            +'<p>Verifies the all download Crosswalk Runtime Library disturb can work well.</p>'
-            +'<p>Expected Result: </p>'
-            +'<p>Test passes if all sub-tests pass.</p>';
+var step = '<p>Test Purpose: </p>'
+            +'<p>Verifies the shared mode app can work well with the redownload Crosswalk Runtime Library</p>'
+            +'<p>Expected Results: </p>'
+            +'<ol>'
+            +'<li>Launch web app failed and prompt: Please get Crosswalk Runtime Library</li>'
+            +'<li>Start to download the Crosswalk Runtime Library</li>'
+            +'<li>Install the Crosswalk Runtime Library successfully</li>'
+            +'<li>The launched app displayed normally</li>'
+            +'<li>Uninstall the Crosswalk Runtime Library successfully</li>'
+            +'<li>The launched app displayed normally</li>'
+            +'</ol>';
