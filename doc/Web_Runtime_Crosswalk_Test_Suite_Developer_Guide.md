@@ -216,7 +216,7 @@ https://github.com/crosswalk-project/wrt
     commondir =  resources webrunner i18n
     SUBDIRS = $(commondir)
     docdir = /opt/wrt-i18nmanu-tizen-tests
-    dist_doc_DATA = Changelog COPYING README tests.xml tests.full.xml
+    dist_doc_DATA = COPYING README tests.xml tests.full.xml
 
 4)Replace folder with real test case folder name used in configure.ac:
 

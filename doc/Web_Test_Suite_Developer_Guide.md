@@ -291,7 +291,7 @@ https://github.com/crosswalk-project/webtest
 
     docdir = $(prefix)/opt/webapi-style-css3-tests
 
-    dist\_doc\_DATA = Changelog COPYING README tests.xml tests.full.xml
+    dist\_doc\_DATA = COPYING README tests.xml tests.full.xml
 
 4)Replace bluetooth with the name of the real test suite and replace bluetooth with real test case folder name used in configure.ac:
 
