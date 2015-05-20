@@ -1,0 +1,48 @@
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>test</title>
+<script language="javascript">
+function ajaxread(file, postData) {
+  var req = createXMLHTTPObject();
+  if(!req) return;
+  req.onreadystatechange = function() {
+    if (req.readyState != 4) return;
+    document.title = req.responseXML.getElementsByTagName('title')[0].firstChild.nodeValue;
+  }
+  req.open('GET', file, true);
+  req.setRequestHeader('User-Agent','XMLHTTP/1.0');
+  if (req.readyState == 4) return;
+  req.send(postData);
+}
+
+function updateobj(obj, data) {
+  document.getElementsByTagName(obj)[0].firstChild.nodeValue = data;
+}
+
+var XMLHttpFactories = [
+  function() {return new XMLHttpRequest()},
+  function () {return new ActiveXObject("Msxml2.XMLHTTP")},
+  function () {return new ActiveXObject("Msxml3.XMLHTTP")},
+  function () {return new ActiveXObject("Microsoft.XMLHTTP")},
+];
+
+function createXMLHTTPObject() {
+  var xmlhttp = false;
+  for(i=0; i<XMLHttpFactories.length; i++) {
+    try {
+      xmlhttp = XMLHttpFactories[i]();
+    }
+    catch(e) {
+      continue;
+    }
+    break;
+  }
+  return xmlhttp;
+}
+</script>
+</head>
+<body>
+ <button id="AJAX_Read" onclick="ajaxread('xhr.xml', '');">AJAX Read</button>
+</body>
+</html>

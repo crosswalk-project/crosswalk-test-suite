@@ -1,0 +1,23 @@
+<html>
+<head>
+<title></title>
+</head>
+<body>
+<script>
+try {
+  var d = new Date().toString();
+  echo.echo(d, function(msg) {
+    var expected = "From java:" + d;
+    if (msg === expected) {
+      document.title = "Pass";
+    } else {
+      document.title = "Fail";
+    }
+  });
+} catch(e) {
+    console.log(e);
+    document.title = "Fail";
+}
+</script>
+</body>
+</html>
