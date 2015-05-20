@@ -1,9 +1,7 @@
 ## Usecase Design
 
-Purpose:
+Verifies update package with removing data with cookies when reboot, relaunch and upgrade
 
-* Validate the cookies functionality is exist and available
+## Spec Link
 
-This usecase covers following methods:
-
-* webapp cookie setItem and getItem.
+https://crosswalk-project.org/jira/browse/XWALK-3683

@@ -1,10 +1,4 @@
 var step = '<font class="fontSize">'
-            +'<p>Purpose:</p>'
-            +'<p>Validate the localStorage functionality is available</p>'
-            +'<p>Expected Result:</p>'
-            +'<ol>'
-            +'<li>The webapp install successfully and launch successfully.</li>'
-            +'<li>The textarea will output "Save localStorage value successfully:..."</li>'
-            +'<li>The textarea will output "Get localStorage value:..."</li>'
-            +'</ol>'
+            +'<p>Test Purpose:</p>'
+            +'<p>Verifies update package with removing data with localstorage when reboot, relaunch and upgrade</p>'
           +'</font>';

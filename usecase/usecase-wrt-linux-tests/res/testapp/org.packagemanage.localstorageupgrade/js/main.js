@@ -35,7 +35,7 @@ $(document).ready(function () {
     var msg = $("#msg").val();
     if(msg){
       localStorage.setItem("data", msg);
-      $('#testDiv').text($('#testDiv').text() + '\nSave LocalStorage value successfully: ' + msg);
+      $('#testDiv').text($('#testDiv').text() + '\nSave LocalStorage value: ' + msg);
     }
   })
 
