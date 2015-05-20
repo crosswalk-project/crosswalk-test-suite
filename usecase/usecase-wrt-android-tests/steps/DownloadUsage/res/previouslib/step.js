@@ -4,5 +4,5 @@ var step = '<p>Test Purpose: </p>'
             +'<ol>'
             +'<li>Launch web app failed and prompt: Please get Crosswalk Runtime Library</li>'
             +'<li>Install the Crosswalk Runtime Library successfully</li>'
-            +'<li>Display the baidu main page</li>'
+            +'<li>The launched app displayed normally</li>'
             +'</ol>';
