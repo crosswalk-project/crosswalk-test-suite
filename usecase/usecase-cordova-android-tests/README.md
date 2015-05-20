@@ -11,6 +11,18 @@ It has these features:
 
 * Lin, Wanming <wanmingx.lin@intel.com>
 
+## Pre-condition
+
+There are third-party plugins needed for cordova usecase:
+* AdMob3.6: https://github.com/floatinghotpot/cordova-plugin-admob
+* AdMob4.0: https://github.com/floatinghotpot/cordova-admob-pro
+
+Make a directory named "thirdparty_plugins", and git clone these plugins in it.
+
+For easy to be used in suite.json, need rename the plugins:
+* cordova-plugin-admob -> cordova-admob-3.6
+* cordova-admob-pro -> cordova-admob-4.0
+
 ## LICENSE
 
 Copyright (c) 2013 Intel Corporation.  All rights reserved.
