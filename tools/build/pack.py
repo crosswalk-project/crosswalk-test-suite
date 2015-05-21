@@ -654,8 +654,12 @@ def packCordova_cli(build_json=None, app_src=None, app_dest=None, app_name=None)
         cordova_tmp_path = os.path.join(outputs_dir, "%s-armv7-debug.apk"%app_name)
         cordova_tmp_path_spare = os.path.join(outputs_dir, "android-armv7-debug.apk")
 
-    if not doCopy(cordova_tmp_path, os.path.join(app_dest, "%s.apk" % app_name)):
+    if not os.path.exists(cordova_tmp_path):
         if not doCopy(cordova_tmp_path_spare, os.path.join(app_dest, "%s.apk" % app_name)):
+            os.chdir(orig_dir)
+            return False
+    else:
+        if not doCopy(cordova_tmp_path, os.path.join(app_dest, "%s.apk" % app_name)):
             os.chdir(orig_dir)
             return False
     os.chdir(orig_dir)
