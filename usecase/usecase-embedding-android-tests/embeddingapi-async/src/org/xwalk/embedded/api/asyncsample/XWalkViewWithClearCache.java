@@ -24,7 +24,7 @@ import android.widget.TextView;
 public class XWalkViewWithClearCache extends Activity implements XWalkInitializer.XWalkInitListener {
 	private static final String TAG = "XWalkViewWithClearCache";
 	private static final String EXTRA_CACHE_PATH
-				= "/data/data/org.xwalk.embedded.api.sample/app_xwalkcore/Default/Cache";
+				= "/data/data/org.xwalk.embedded.api.asyncsample/app_xwalkcore/Default/Cache";
     private XWalkView mXWalkView;
     private Button clearCacheButton;
     private TextView cacheSizeTextView;

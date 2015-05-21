@@ -8,7 +8,7 @@ try {
   var d = new Date().toString();
   echo.echo(d, function(msg) {
     document.write(msg + "<br>");
-    var expected = "From java:" + d;
+    var expected = "From java async:" + d;
     if (msg === expected) {
       document.write("Async echo <font color=green>passed</font>.");
       document.title = "Pass";

@@ -11,7 +11,7 @@ This usecase covers following interface and methods:
 
 
 
-### 2. The [ExtensionActivity](ExtensionActivity.java) sample demonstrates XWALK-1052 feature basic functionalities, include:
+### 2. The [EchoExtensionActivity](EchoExtensionActivity.java) sample demonstrates XWALK-3917 feature basic functionalities, include:
 
 * extension can be supported
 
