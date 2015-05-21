@@ -33,18 +33,19 @@ def uninstPKGs():
             if file.endswith(".deb"):
                 debName = os.path.basename(os.path.splitext(file)[0])
                 pkg_id = debName.split(".")[-1]
-                (return_code, output) = doCMD(
-                    "sudo dpkg -P %s" % pkg_id)
-                if return_code != 0:
-                    action_status = False
-                    break
+                if doCMD("which %s" % pkg_id)[0] == 0:
+                  (return_code, output) = doCMD(
+                      "sudo dpkg -P %s" % pkg_id)
+                  if return_code != 0:
+                      action_status = False
+                      break
     return action_status
 
 def instPKGs():
     action_status = True
     for root, dirs, files in os.walk(SCRIPT_DIR):
         for file in files:
-            if file.endswith(".deb"):
+            if file.endswith(".deb") and file.find("upgrade") == -1:
                 cmd = "sudo dpkg -i %s/%s" % (root, file)
                 (return_code, output) = doCMD(cmd)
                 if return_code != 0:

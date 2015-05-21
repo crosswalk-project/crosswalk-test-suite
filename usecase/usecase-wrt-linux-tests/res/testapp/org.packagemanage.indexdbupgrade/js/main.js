@@ -61,7 +61,7 @@ $(document).ready(function () {
     store.delete(1)
     var student = {id:1, value: $('#msg').val()};
     store.add(student);
-    $('#testDiv').text($("#testDiv").text() + '\nSave Indexdb value successfully:  ' + student.value);
+    $('#testDiv').text($("#testDiv").text() + '\nSave Indexdb value:  ' + student.value);
   }
 
   openDB(myDB.name, myDB.version);

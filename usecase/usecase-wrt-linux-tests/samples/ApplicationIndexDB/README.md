@@ -1,9 +1,7 @@
 ## Usecase Design
 
-Purpose:
+Verifies update package with removing data with indexdb when reboot, relaunch and upgrade
 
-* Validate the indexDB functionality is available
+## Spec Link
 
-This usecase covers following methods:
-
-* webapp indexDB setItem and getItem.
+https://crosswalk-project.org/jira/browse/XWALK-3683
