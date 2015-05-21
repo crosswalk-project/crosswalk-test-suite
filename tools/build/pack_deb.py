@@ -528,6 +528,14 @@ def buildPKGAPP(build_json=None):
 		if not buildSRC(BUILD_ROOT_SRC, BUILD_ROOT_PKG_APP, build_json):
 		    return False
 
+		comXML = os.path.join(BUILD_ROOT_PKG_APP, "tests.xml")
+		linuxXML = os.path.join(BUILD_ROOT_PKG_APP, "tests.linux.xml")
+		if os.path.exists(linuxXML):
+		    if not doCMD("rm -rf %s" %  comXML):
+		        return False
+		    if not doCMD("mv %s %s" %  (linuxXML, comXML)):
+		        return False
+
 		if "subapp-list" in build_json:
 		    for i_sub_app in build_json["subapp-list"].keys():
 		       if not buildSubAPP(
