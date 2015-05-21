@@ -1,0 +1,16 @@
+var step = '<p>Purpose:</p>'
+            +'<p>Verifies the sharedmode app and embeddedmode app can switch to anyone and work well</p>'
+            +'<p>Precondition:</p>'
+            +'<p>No Crosswalk Runtime Library installed on test devices</p>'
+            +'<p>Expected Results:</p>'
+            +'<ol>'
+            +'<li>Install the three apks successfully, no error message</li>'
+            +'<li>Launch the "embeddedapp" app successfully, no error and crashes</li>'
+            +'<li>Launch web app "sharedmode1" failed and prompt: Please get Crosswalk Runtime Library</li>'
+            +'<li>Launch web app "sharedmode2" failed and prompt: Please get Crosswalk Runtime Library</li>'
+            +'<li>Install the Crosswalk Runtime Library successfully</li>'
+            +'<li>Launch the app "sharedapp2" successfully</li>'
+            +'<li>Launch the app "sharedapp1" successfully</li>'
+            +'<li>Launch the app "embeddedapp" successfully</li>'
+            +"<li>The app can work well</li>"
+            +'</ol>';

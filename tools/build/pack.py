@@ -1338,6 +1338,9 @@ def main():
                 pkg_json = config_json["pkg-list"][i_pkg]
                 break
 
+    if (pkg_json == config_json['pkg-list'].get('apk') or pkg_json == config_json['pkg-list'].get('apk,cordova'))  and int(str(pkg_main_version).split('.')[-1]) != 0 and config_json['pkg-list'].get('apk-googleplayer') != None :
+        pkg_json = config_json["pkg-list"]['apk-googleplayer']
+
     if not pkg_json:
         LOG.error("Fail to read pkg json, exit ...")
         sys.exit(1)
