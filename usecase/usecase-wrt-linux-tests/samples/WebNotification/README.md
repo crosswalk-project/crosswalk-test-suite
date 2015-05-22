@@ -1,9 +1,9 @@
 ## Usecase Design
 
-This sample demonstrate Web Notification feature basic functionalities, include:
+This sample demonstrates Web Notification feature basic functionalities, include:
 
-* Notification constructor, requestPermission and close
+* Notification constructor, requestPermission/permission and onclose
 
-This usecase covers following interface and methods:
+## Spec Link
 
-* Notification interface: requestPermission close methods
+https://crosswalk-project.org/jira/browse/XWALK-4061
