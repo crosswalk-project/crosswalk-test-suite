@@ -3,17 +3,17 @@
 <test_definition>
   <suite category="Crosswalk App Tools" name="apptools-ios-tests">
     <set name="CLI" type="pyunit">
-      <testcase component="Crosswalk App Tools/CLI" execution_type="manual" id="Crosswalk_pkgName" priority="P1" purpose="iOS - Validate if the App Tool rules about package name" status="approved" type="Functional" subcase="16">
+      <testcase component="Crosswalk App Tools/CLI" execution_type="manual" id="Crosswalk_pkgName" priority="P1" purpose="iOS - Validate project can be created with validate package naming rule" status="approved" type="Functional" subcase="16">
         <description>
           <test_script_entry>/opt/apptools-ios-tests/apptools/pkgName.py</test_script_entry>
         </description>
       </testcase>
-      <testcase component="Crosswalk App Tools/CLI" execution_type="manual" id="Crosswalk_build" priority="P1" purpose="iOS - Validate if App Tool can work well with build option" status="approved" type="Functional" subcase="2">
+      <testcase component="Crosswalk App Tools/CLI" execution_type="manual" id="Crosswalk_build" priority="P1" purpose="iOS - Validate if project is built successfully with build command" status="approved" type="Functional" subcase="2">
         <description>
           <test_script_entry>/opt/apptools-ios-tests/apptools/build.py</test_script_entry>
         </description>
       </testcase>
-      <testcase component="Crosswalk App Tools/CLI" execution_type="manual" id="Crosswalk_create" priority="P1" purpose="iOS - Validate if App Tool can work well with create option" status="approved" type="Functional" subcase="2">
+      <testcase component="Crosswalk App Tools/CLI" execution_type="manual" id="Crosswalk_create" priority="P1" purpose="iOS - Validate if project is created fail when the project has been exist" status="approved" type="Functional">
         <description>
           <test_script_entry>/opt/apptools-ios-tests/apptools/create.py</test_script_entry>
         </description>
@@ -30,17 +30,17 @@
       </testcase>
     </set>
     <set name="common_module" type="nodeunit">
-      <testcase component="Crosswalk App Tools/Common Module" execution_type="manual" id="Crosswalk_application" priority="P1" purpose="iOS - Validate if the config and log message when create a new project" status="approved" type="Functional" subcase="7">
+      <testcase component="Crosswalk App Tools/Common Module" execution_type="manual" id="Crosswalk_application" priority="P1" purpose="iOS - Validate if the config and log message are correct when create a new project" status="approved" type="Functional" subcase="7">
         <description>
           <test_script_entry>/opt/apptools-ios-tests/tools/crosswalk-app-tools/test/application.js</test_script_entry>
         </description>
       </testcase>
-      <testcase component="Crosswalk App Tools/Common Module" execution_type="manual" id="Crosswalk_finite_progress" priority="P1" purpose="iOS - Validate if create a finite progress" status="approved" type="Functional">
+      <testcase component="Crosswalk App Tools/Common Module" execution_type="manual" id="Crosswalk_finite_progress" priority="P1" purpose="iOS - Validate if a finite progress can be created" status="approved" type="Functional">
         <description>
           <test_script_entry>/opt/apptools-ios-tests/tools/crosswalk-app-tools/test/finite-progress.js</test_script_entry>
         </description>
       </testcase>
-      <testcase component="Crosswalk App Tools/Common Module" execution_type="manual" id="Crosswalk_infinite_progress" priority="P1" purpose="iOS - Validate if create a infinite progress" status="approved" type="Functional">
+      <testcase component="Crosswalk App Tools/Common Module" execution_type="manual" id="Crosswalk_infinite_progress" priority="P1" purpose="iOS - Validate if a infinite progress can be created" status="approved" type="Functional">
         <description>
           <test_script_entry>/opt/apptools-ios-tests/tools/crosswalk-app-tools/test/infinite-progress.js</test_script_entry>
         </description>
@@ -55,17 +55,27 @@
           <test_script_entry>/opt/apptools-ios-tests/tools/crosswalk-app-tools/test/output-tee.js</test_script_entry>
         </description>
       </testcase>
-      <testcase component="Crosswalk App Tools/Common Module" execution_type="manual" id="Crosswalk_platform_base" priority="P1" purpose="iOS - Validate if base platform info and subclass" status="approved" type="Functional" subcase="2">
+      <testcase component="Crosswalk App Tools/Common Module" execution_type="manual" id="Crosswalk_platform_base" priority="P1" purpose="iOS - Validate if platform project template can be generated and platform project can be updated to latest Crosswalk" status="approved" type="Functional" subcase="2">
         <description>
           <test_script_entry>/opt/apptools-ios-tests/tools/crosswalk-app-tools/test/platform-base.js</test_script_entry>
         </description>
       </testcase>
-      <testcase component="Crosswalk App Tools/Common Module" execution_type="manual" id="Crosswalk_template_file" priority="P1" purpose="iOS - Validate if support create/write/read a template file" status="approved" type="Functional" subcase="2">
+      <testcase component="Crosswalk App Tools/Common Module" execution_type="auto" id="Crosswalk_platform_info" priority="P1" purpose="iOS - Validate if App Tool support instantiate platform backend and can print the info of platform" status="approved" type="Functional" subcase="3">
+        <description>
+          <test_script_entry>/opt/apptools-ios-tests/tools/crosswalk-app-tools/test/platform-info.js</test_script_entry>
+        </description>
+      </testcase>
+      <testcase component="Crosswalk App Tools/Common Module" execution_type="auto" id="Crosswalk_platforms_manager" priority="P1" purpose="iOS - Validate if App Tool support load default backend for loaded platform" status="approved" type="Functional">
+        <description>
+          <test_script_entry>/opt/apptools-ios-tests/tools/crosswalk-app-tools/test/platforms-manager.js</test_script_entry>
+        </description>
+      </testcase>
+      <testcase component="Crosswalk App Tools/Common Module" execution_type="manual" id="Crosswalk_template_file" priority="P1" purpose="iOS - Validate if App Tool support create/write/read a template file" status="approved" type="Functional" subcase="2">
         <description>
           <test_script_entry>/opt/apptools-ios-tests/tools/crosswalk-app-tools/test/template-file.js</test_script_entry>
         </description>
       </testcase>
-      <testcase component="Crosswalk App Tools/Common Module" execution_type="manual" id="Crosswalk_test_util" priority="P1" purpose="iOS - Validate if create a temp directory/file under folder test-tmp" status="approved" type="Functional" subcase="3">
+      <testcase component="Crosswalk App Tools/Common Module" execution_type="manual" id="Crosswalk_test_util" priority="P1" purpose="iOS - Validate if a temp directory/file can be created under folder test-tmp" status="approved" type="Functional" subcase="3">
         <description>
           <test_script_entry>/opt/apptools-ios-tests/tools/crosswalk-app-tools/test/test-util.js</test_script_entry>
         </description>

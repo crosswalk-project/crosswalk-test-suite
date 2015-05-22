@@ -34,12 +34,6 @@ import commands
 import comm
 
 class TestCrosswalkApptoolsFunctions(unittest.TestCase):
-    def test_normal(self):
-        comm.setUp()
-        os.chdir(comm.XwalkPath)
-        comm.create(self)
-        comm.clear("org.xwalk.test")
-
     def test_dir_exist(self):
         comm.setUp()
         os.chdir(comm.XwalkPath)

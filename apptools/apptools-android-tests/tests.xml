@@ -3,22 +3,22 @@
 <test_definition>
   <suite category="Crosswalk App Tools" name="apptools-android-tests">
     <set name="CLI" type="pyunit">
-      <testcase component="Crosswalk App Tools/CLI" execution_type="auto" id="Crosswalk_create_no_sdk" purpose="Android - Validate if App Tool can not work well with create option and no android sdk">
+      <testcase component="Crosswalk App Tools/CLI" execution_type="auto" id="Crosswalk_create_no_sdk" purpose="Android - Validate if project is created fail without android sdk">
         <description>
           <test_script_entry>/opt/apptools-android-tests/apptools/create_no_sdk.py</test_script_entry>
         </description>
       </testcase>
-      <testcase component="Crosswalk App Tools/CLI" execution_type="auto" id="Crosswalk_create_basic" purpose="Android - Validate if App Tool can work well with create" subcase="2">
+      <testcase component="Crosswalk App Tools/CLI" execution_type="auto" id="Crosswalk_create_basic" purpose="Android - Validate if the default main activity is 'MainActivity' and project is created fail when the project has been exist" subcase="2">
         <description>
           <test_script_entry>/opt/apptools-android-tests/apptools/create_basic.py</test_script_entry>
         </description>
       </testcase>
-      <testcase component="Crosswalk App Tools/CLI" execution_type="auto" id="Crosswalk_pkgName" purpose="Android - Validate if the App Tool rules about package name" subcase="16">
+      <testcase component="Crosswalk App Tools/CLI" execution_type="auto" id="Crosswalk_pkgName" purpose="Android - Validate project can be created with validate package naming rule" subcase="16">
         <description>
           <test_script_entry>/opt/apptools-android-tests/apptools/pkgName.py</test_script_entry>
         </description>
       </testcase>
-      <testcase component="Crosswalk App Tools/CLI" execution_type="auto" id="Crosswalk_build" purpose="Android - Validate if App Tool can work well with build option" subcase="4">
+      <testcase component="Crosswalk App Tools/CLI" execution_type="auto" id="Crosswalk_build" purpose="Android - Validate if project is built successfully with build command" subcase="4">
         <description>
           <test_script_entry>/opt/apptools-android-tests/apptools/build.py</test_script_entry>
         </description>
@@ -38,7 +38,7 @@
           <test_script_entry>/opt/apptools-android-tests/apptools/create_version.py</test_script_entry>
         </description>
       </testcase>
-      <testcase component="Crosswalk App Tools/CLI" execution_type="auto" id="Crosswalk_update" purpose="Android - Validate if App Tool can work well with update option" subcase="10">
+      <testcase component="Crosswalk App Tools/CLI" execution_type="auto" id="Crosswalk_update" purpose="Android - Validate if project can be updated successfully with update command" subcase="10">
         <description>
           <test_script_entry>/opt/apptools-android-tests/apptools/update.py</test_script_entry>
         </description>
@@ -60,47 +60,57 @@
       </testcase>
     </set>
     <set name="common_module" type="nodeunit">
-      <testcase component="Crosswalk App Tools/Common Module" execution_type="auto" id="Crosswalk_android_platform" purpose="Android - Validate if valid and invalid Crosswalk version" subcase="3">
+      <testcase component="Crosswalk App Tools/Common Module" execution_type="auto" id="Crosswalk_android_platform" purpose="Android - Validate if Crosswalk version is valid or invalid" subcase="3">
         <description>
           <test_script_entry>/opt/apptools-android-tests/tools/crosswalk-app-tools/android/test/android-platform.js</test_script_entry>
         </description>
       </testcase>
-      <testcase component="Crosswalk App Tools/Common Module" execution_type="auto" id="Crosswalk_android_project_deps" purpose="Android - Validate if pick the last Crosswalk tools and download it" subcase="5">
+      <testcase component="Crosswalk App Tools/Common Module" execution_type="auto" id="Crosswalk_android_project_deps" purpose="Android - Validate if Crosswalk is lastest version and download it" subcase="2">
         <description>
           <test_script_entry>/opt/apptools-android-tests/tools/crosswalk-app-tools/android/test/android-dependencies.js</test_script_entry>
         </description>
       </testcase>
-      <testcase component="Crosswalk App Tools/Common Module" execution_type="auto" id="Crosswalk_android_sdk" purpose="Android - Validate if the detail info about Android SDK" subcase="3">
+      <testcase component="Crosswalk App Tools/Common Module" execution_type="auto" id="Crosswalk_android_sdk" purpose="Android - Validate if the detail info about Android SDK can be showed" subcase="3">
         <description>
           <test_script_entry>/opt/apptools-android-tests/tools/crosswalk-app-tools/android/test/android-sdk.js</test_script_entry>
         </description>
       </testcase>
-      <testcase component="Crosswalk App Tools/Common Module" execution_type="auto" id="Crosswalk_android_targets" purpose="Android - Validate if available Android targets" subcase="3">
+      <testcase component="Crosswalk App Tools/Common Module" execution_type="auto" id="Crosswalk_android_targets" purpose="Android - Validate if Android targets are available" subcase="3">
         <description>
           <test_script_entry>/opt/apptools-android-tests/tools/crosswalk-app-tools/android/test/android-targets.js</test_script_entry>
         </description>
       </testcase>
-      <testcase component="Crosswalk App Tools/Common Module" execution_type="auto" id="Crosswalk_application" purpose="Android - Validate if the config and log message when create a new project" subcase="7">
+      <testcase component="Crosswalk App Tools/Common Module" execution_type="auto" id="Crosswalk_application" purpose="Android - Validate if the config and log message are correct when create a new project" subcase="7">
         <description>
           <test_script_entry>/opt/apptools-android-tests/tools/crosswalk-app-tools/test/application.js</test_script_entry>
         </description>
       </testcase>
-      <testcase component="Crosswalk App Tools/Common Module" execution_type="auto" id="Crosswalk_command_parser" purpose="Android - Validate if the all commands parser" subcase="6">
+      <testcase component="Crosswalk App Tools/Common Module" execution_type="auto" id="Crosswalk_command_parser" purpose="Android - Validate if parsing and validation of command-line arguments are correct" subcase="5">
         <description>
           <test_script_entry>/opt/apptools-android-tests/tools/crosswalk-app-tools/test/command-parser.js</test_script_entry>
         </description>
       </testcase>
-      <testcase component="Crosswalk App Tools/Common Module" execution_type="auto" id="Crosswalk_downloader" purpose="Android - Validate if support http and https to download data" subcase="4">
+      <testcase component="Crosswalk App Tools/Common Module" execution_type="auto" id="Crosswalk_downloader" purpose="Android - Validate if App Tool support http and https to download data" subcase="4">
         <description>
           <test_script_entry>/opt/apptools-android-tests/tools/crosswalk-app-tools/test/downloader.js</test_script_entry>
         </description>
       </testcase>
-      <testcase component="Crosswalk App Tools/Common Module" execution_type="auto" id="Crosswalk_finite_progress" purpose="Android - Validate if create a finite progress">
+      <testcase component="Crosswalk App Tools/Common Module" execution_type="auto" id="Crosswalk_download_handler" purpose="Android - Validate if App Tool can handle downloading to a temp file">
+        <description>
+          <test_script_entry>/opt/apptools-android-tests/tools/crosswalk-app-tools/test/download-handler.js</test_script_entry>
+        </description>
+      </testcase>
+      <testcase component="Crosswalk App Tools/Common Module" execution_type="auto" id="Crosswalk_finite_progress" purpose="Android - Validate if a finite progress can be created">
         <description>
           <test_script_entry>/opt/apptools-android-tests/tools/crosswalk-app-tools/test/finite-progress.js</test_script_entry>
         </description>
       </testcase>
-      <testcase component="Crosswalk App Tools/Common Module" execution_type="auto" id="Crosswalk_infinite_progress" purpose="Android - Validate if create a infinite progress">
+      <testcase component="Crosswalk App Tools/Common Module" execution_type="auto" id="Crosswalk_index_parser" purpose="Android - Validate if Crosswalk is lastest version when download different channel" subcase="6">
+        <description>
+          <test_script_entry>/opt/apptools-android-tests/tools/crosswalk-app-tools/test/index-parser.js</test_script_entry>
+        </description>
+      </testcase>
+      <testcase component="Crosswalk App Tools/Common Module" execution_type="auto" id="Crosswalk_infinite_progress" purpose="Android - Validate if a infinite progress can be created">
         <description>
           <test_script_entry>/opt/apptools-android-tests/tools/crosswalk-app-tools/test/infinite-progress.js</test_script_entry>
         </description>
@@ -110,7 +120,7 @@
           <test_script_entry>/opt/apptools-android-tests/tools/crosswalk-app-tools/test/logfile-output.js</test_script_entry>
         </description>
       </testcase>
-      <testcase component="Crosswalk App Tools/Common Module" execution_type="auto" id="Crosswalk_main" purpose="Android - Validate if create/build/update a project and print the help/version info" subcase="6">
+      <testcase component="Crosswalk App Tools/Common Module" execution_type="auto" id="Crosswalk_main" purpose="Android - Validate if a project can be created/built/updated and can print the help/version info" subcase="6">
         <description>
           <test_script_entry timeout="600">/opt/apptools-android-tests/tools/crosswalk-app-tools/test/main.js</test_script_entry>
         </description>
@@ -120,17 +130,27 @@
           <test_script_entry>/opt/apptools-android-tests/tools/crosswalk-app-tools/test/output-tee.js</test_script_entry>
         </description>
       </testcase>
-      <testcase component="Crosswalk App Tools/Common Module" execution_type="auto" id="Crosswalk_platform_base" purpose="Android - Validate if base platform info and subclass" subcase="2">
+      <testcase component="Crosswalk App Tools/Common Module" execution_type="auto" id="Crosswalk_platform_base" purpose="Android - Validate if platform project template can be generated and platform project can be updated to latest Crosswalk" subcase="2">
         <description>
           <test_script_entry>/opt/apptools-android-tests/tools/crosswalk-app-tools/test/platform-base.js</test_script_entry>
         </description>
       </testcase>
-      <testcase component="Crosswalk App Tools/Common Module" execution_type="auto" id="Crosswalk_template_file" purpose="Android - Validate if support create/write/read a template file" subcase="2">
+      <testcase component="Crosswalk App Tools/Common Module" execution_type="auto" id="Crosswalk_platform_info" purpose="Android - Validate if App Tool support instantiate platform backend and can print the info of platform" subcase="3">
+        <description>
+          <test_script_entry>/opt/apptools-android-tests/tools/crosswalk-app-tools/test/platform-info.js</test_script_entry>
+        </description>
+      </testcase>
+      <testcase component="Crosswalk App Tools/Common Module" execution_type="auto" id="Crosswalk_platforms_manager" purpose="Android - Validate if App Tool support load default backend for loaded platform">
+        <description>
+          <test_script_entry>/opt/apptools-android-tests/tools/crosswalk-app-tools/test/platforms-manager.js</test_script_entry>
+        </description>
+      </testcase>
+      <testcase component="Crosswalk App Tools/Common Module" execution_type="auto" id="Crosswalk_template_file" purpose="Android - Validate if App Tool support create/write/read a template file" subcase="2">
         <description>
           <test_script_entry>/opt/apptools-android-tests/tools/crosswalk-app-tools/test/template-file.js</test_script_entry>
         </description>
       </testcase>
-      <testcase component="Crosswalk App Tools/Common Module" execution_type="auto" id="Crosswalk_test_util" purpose="Android - Validate if create a temp directory/file under folder test-tmp" subcase="3">
+      <testcase component="Crosswalk App Tools/Common Module" execution_type="auto" id="Crosswalk_test_util" purpose="Android - Validate if a temp directory/file can be created under folder test-tmp" subcase="3">
         <description>
           <test_script_entry>/opt/apptools-android-tests/tools/crosswalk-app-tools/test/test-util.js</test_script_entry>
         </description>

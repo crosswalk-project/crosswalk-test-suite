@@ -35,10 +35,6 @@ import commands
 import comm
 
 class TestCrosswalkApptoolsFunctions(unittest.TestCase):
-    def test_normal(self):
-        comm.create(self)
-        comm.cleanTempData(comm.TEST_PROJECT_COMM)
-
     def test_dir_exist(self):
         try:
             comm.setUp()
