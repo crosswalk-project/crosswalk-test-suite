@@ -31,38 +31,17 @@ Authors:
 
 -->
 
-<meta charset="utf-8">
-<meta name="viewport" content="initial-scale=1.0, maximum-scale=1.0, width=device-width">
-<link rel="stylesheet" href="../../css/bootstrap.css">
-<link rel="stylesheet" href="../../css/main.css">
-<script src="../../js/jquery-2.1.3.min.js"></script>
-<script src="../../js/bootstrap.min.js"></script>
-<script src="../../js/common.js"></script>
-<script src="../../js/tests.js"></script>
-
-<div id="header">
-  <h3 id="main_page_title"></h3>
-</div>
-
-<div class="content">
-  <h2>Test Steps:</h2>
-  <ol>
-    <li>Install the webapp 'webnotification.deb' and launch it</li>
-    <li>Click button "Show Notification"</li>
-    <li>Close the notification</li>
-  </ol>
-  <h2>Expected Result:</h2>
-  <ol>
-    <li>Webapp could be launched successfully</li>
-    <li>Notification should be popuped up</li>
-    <li>Info "Notification has been closed" was displayed in info area</li>
-  </ol>
-</div>
-
-<div class="footer">
-  <div id="footer"></div>
-</div>
-
-<div class="modal fade" id="popup_info">
-  <p>Verifies Web Notification support constructor, requestPermission/permission and onclose</p>
-</div>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Runtime Test: Web Notification</title>
+    <script src="js/main.js"></script>
+  </head>
+  <body>
+    <h2>Info Area:</h2>
+    <textarea id="info">N/A</textarea>
+    <div>
+      <button id="showNotification" type="button">Show Notification</button>
+    </div>
+  </body>
+</html>

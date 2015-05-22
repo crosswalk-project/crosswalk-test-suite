@@ -26,59 +26,42 @@ EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
 Authors:
         Xin, liu <xinx.liu@intel.com>
+        Xu, Kang <kangx.xu@intel.com>
 
 */
 
-var notification;
-var button_Flag = false;
+function closeNotification () {
+  var infoArea = document.querySelector("#info");
+  infoArea.innerHTML = "Notification has been closed";
+}
 
-jQuery(document).ready(function() {
-  $("#showNotification").attr('disabled', button_Flag);
-  $("#closeNotification").attr('disabled', !button_Flag);
+function showNotification () {
 
-  $("#showNotification").addClass("tagBtn btn btn-default btn-lg btn-block");
-  $("#closeNotification").addClass("tagBtn btn btn-default btn-lg btn-block");
-
-  var showButton = document.querySelector("#showNotification");
-  showButton.addEventListener("click", showNotification);
-
-  var closeButton = document.querySelector("#closeNotification");
-  closeButton.addEventListener("click", closeNotification);
-});
-
-function showNotification() {
   if (Notification.permission === "granted") {
     notification = new Notification("New notification", {
       body: "Room 101",
       tag: "tom"
     });
+    notification.onclose = closeNotification;
   } else if (Notification.permission !== 'denied') {
     Notification.requestPermission(function (permission) {
       if (!('permission' in Notification)) {
         Notification.permission = permission;
       }
+
       if (permission === "granted") {
         notification = new Notification("New notification", {
           body: "Room 101",
           tag: "tom"
         });
+        notification.onclose = closeNotification;
       }
     });
   }
 
-  button_Flag = true;
-  changeButtionState(button_Flag);
 }
 
-function closeNotification() {
-  notification.close();
-
-  button_Flag = false;
-  changeButtionState(button_Flag);
-
-}
-
-function changeButtionState(flag){
-  $("#showNotification").attr('disabled', flag);
-  $("#closeNotification").attr('disabled', !flag);
+window.onload = function () {
+  var showButton = document.querySelector("#showNotification");
+  showButton.addEventListener("click", showNotification);
 }
