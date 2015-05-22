@@ -1,0 +1,44 @@
+<html>
+<head>
+<title></title>
+<script language="javascript">
+ function writecontact() {
+  var name = eval(document.getElementById("name")).value;
+  var expected = eval(document.getElementById("phone")).value;
+   try {
+     contact.write(name, expected);
+     document.title = "Pass";
+   } catch(e){
+     console.log(e);
+     document.write("Write contact <font color=green>failed</font>.");
+     document.title = "Fail";
+   }
+ }
+ function readcontact() {
+   var name = eval(document.getElementById("name")).value;
+   var expected = eval(document.getElementById("phone")).value;
+   try {
+      contact.read(name, function(phone) {
+      if (phone == expected){
+        document.write("Read contact: " + name + " phone number: "+ phone + "<br>");
+        document.write("Write & Read contact <font color=green>passed</font>.");
+        document.title = "Pass";
+      } else {
+        document.write("Read contact <font color=green>failed</font>.");
+        document.title = "Fail";
+      }
+     });
+   } catch(e){
+     console.log(e);
+     document.title = "Fail";
+   }
+ }
+</script>
+</head>
+<body>
+Contact Name: <input type="text" id="name"/><br/>
+Contact Phone: <input type="number" id="phone"/><br/>
+<button id="write_contact" onclick="writecontact();">Write Contact</button>
+<button id="read_contact" onclick="readcontact();">Read Contact</button>
+</body>
+</html>
