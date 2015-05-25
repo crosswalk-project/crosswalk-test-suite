@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <!--
-Copyright (c) 2015 Intel Corporation.
+Copyright (c) 2014 Intel Corporation.
 
 Redistribution and use in source and binary forms, with or without modification,
 are permitted provided that the following conditions are met:
@@ -26,12 +26,12 @@ NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE,
 EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
 Authors:
-        Zhu, Yongyong <yongyongx.zhu@intel.com>
+        Wang, Hongjuan <hongjuanx.wang@intel.com>
 
 -->
 
 <meta charset="utf-8" />
-<meta name="viewport" content="initial-scale=1.0, maximum-scale=1.0, width=device-width">
+<meta name="viewport" content="initial-scale=1.0, maximum-scale=1.0, width=device-width" />
 <link rel="stylesheet" type="text/css" href="../../css/bootstrap.css">
 <link rel="stylesheet" type="text/css" href="../../css/main.css">
 <script src="../../js/jquery-2.1.3.min.js"></script>
@@ -43,51 +43,25 @@ Authors:
   <h3 id="main_page_title"></h3>
 </div>
 <div class="content">
-  <h4>Note</h4>
-  <ol>
-    <li>It's only for Cordova version 3.6</li>
-  </ol>
-  <h4>Precondition</h4>
-  <ol>
-    <li>Put XWalkRuntimeLib.apk in a server and make sure the test device can access it using [http://host/XWalkRuntimeLib.apk]</li>
-    <li>Make sure the test device has not install XWalkRuntimeLib.apk</li>
-  </ol>
   <h4>Test Steps</h4>
   <ol>
-    <li>Download crosswalk-cordova-&lt;version&gt;-arm.zip and unzip it</li>
-    <li>Create shared mode test suite using --xwalk-apk-url parameter: 
-      <div>
-        $ cd /localpath/crosswalk-cordova-&lt;version&gt;-arm<br/>
-        $ ./bin/create SharedModeLibraryDownload com.example.sharedModeLibraryDownload SharedModeLibraryDownload --xwalk-apk-url=[http://host/XWalkRuntimeLib.apk] --xwalk-shared-library<br/>
-      </div>
-    </li>
-    <li>Build Cordova example app:
-      <div>
-        $ cd SharedModeLibraryDownload<br/>
-        $ ./cordova/build<br/>
-      </div>
-    </li>
-    <li>Check the apk file generated in SharedModeLibraryDownload/bin directory</li>
-    <li>Install and launch the app</li>
-    <li>Click "Get Crosswalk" button, check the screen</li>
-    <li>Click "Install", then check the screen</li>
-    <li>Click "Done", then check the screen</li>
+    <li>Copy the 'usecase-cordova-android-tests/res/CordovaPackage/test.py' file to crosswalk-cordova directory</li>
+    <li>Run the python script:<br/>$ python test.py</li>
+    <li>Check the command output</li>
+    <li>Quick press back button to exit 'hello' app after the app launch</li>
   </ol>
 </div>
 <div class="footer">
   <div id="footer"></div>
 </div>
 <div class="modal fade" id="popup_info">
+  <p>Purpose:</p>
+  <p>Verify the Cordova package can build, install and launch successfully</p>
   <p>Expected Results:</p>
   <ol>
-    <li>Create test suite(SharedModeLibraryDownload) successfully</li>
-    <li>Build the apk successfully</li>
-    <li>The app can be installed successfully</li>
-    <li>The app can launch successfully</li>
-    <li>Display message "Please get Crosswalk Runtime Library"</li>
-    <li>Start to download the XWalkRuntimeLib.apk</li>
-    <li>Display "App installed"</li>
-    <li>The app can run successfully</li>
+    <li>There has test.py in crosswalk-cordova directory</li>
+    <li>The command run successfully, no error</li>
+    <li>Display 'Build Package Successfully' and 'Package Name Consistent'</li>
     <li>The app can exit successfully</li>
   </ol>
 </div>

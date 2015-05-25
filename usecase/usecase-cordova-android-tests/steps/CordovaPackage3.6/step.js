@@ -1,0 +1,12 @@
+var step = '<font class="fontSize">'
+            +'<p>Purpose:</p>'
+            +'<p>Verify the Cordova package can build, install and launch successfully</p>'
+            +'<p>Expected Results:</p>'
+            +'<ol>'
+            +'<li>Build apk file in hello/bin directory successfully</li>'
+            +'<li>The app can be installed successfully</li>'
+            +'<li>The app can launch successfully</li>'
+            +'<li>The app can run successfully</li>'
+            +'<li>The app can exit successfully</li>'
+            +'</ol>'
+          +'</font>';
