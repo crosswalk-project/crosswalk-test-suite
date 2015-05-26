@@ -1,0 +1,51 @@
+{
+    "pkg-blacklist": [
+        "pack.py",
+        "testcase.xsl",
+        "testresult.xsl",
+        "tests.css",
+        "icon.png",
+        "manifest.json",
+        "suite.json",
+        "inst.*"
+    ],
+    "pkg-list": {
+        "deb": {
+            "blacklist": [
+                "*"
+            ],
+            "copylist": {
+                "samples-deb": "samples",
+                "tools": "tools",
+                "tests.deb.xml": "tests.xml",
+                "README": "README"
+            },
+            "pkg-app": {}
+        },
+        "apk": {
+            "blacklist": [
+                "*"
+            ],
+            "copylist": {
+                "samples-android": "samples",
+                "tools": "tools",
+                "tests.android.xml": "tests.xml",
+                "README": "README"
+            },
+            "pkg-app": {}
+        },
+        "ios": {
+            "blacklist": [
+                "*"
+            ],
+            "copylist": {
+                "samples-iOS": "samples",
+                "tools": "tools",
+                "tests.iOS.xml": "tests.xml",
+                "README": "README"
+            },
+            "pkg-app": {}
+        }
+    },
+    "pkg-name": "usecase-apptools-tests"
+}
