@@ -50,10 +50,7 @@ Authors:
   </ol>
   <h4>Test Steps</h4>
   <ol>
-    <li>Build a webapp with command:<br/>
-        $ python make_apk.py --package=[package] --manifest=res/manifest.json --mode=shared --project-dir=[dirName] --project-only
-    </li>
-    <li>Define a meta-data element with the name "xwalk_apk_url" inside the application tag in file AndroidManifest.xml, just like:<br/>
+    <li>Define a meta-data element using the name "xwalk_apk_url" inside the application tag of the file template/AndroidManifest.xml and the same as path with make_apk.py, just like:<br/>
         &lt;application android:name="org.xwalk.core.XWalkApplication"&gt;<br/>
         &lt;meta-data android:name="xwalk_apk_url" android:value="http://host/XWalkRuntimeLib.apk" /&gt;<br/>
         ...<br/>
