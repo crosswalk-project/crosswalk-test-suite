@@ -223,13 +223,13 @@
 
         Use single ('') rather than double ("") quotation marks for attribute selectors or property values. Do not use quotation marks in
 
-  - URI values (url()).
+  - URI values (`url()`).
 
-        Exception: If you do need to use the @charset rule, use double quotation marks—single quotation marks are not permitted.
+        Exception: If you do need to use the `@charset` rule, use double quotation marks; single quotation marks are not permitted.
 
         Embedded in the HTML
 
-        <link rel="stylesheet" href="mystyle.css"\>
+        `<link rel="stylesheet" href="mystyle.css"\>`
 
         More info: [http://google-styleguide.googlecode.com/svn/trunk/htmlcssguide.xml](http://google-styleguide.googlecode.com/svn/trunk/htmlcssguide.xml)
 
@@ -237,7 +237,7 @@
 
   - var
 
-        Always declare variable with var.
+        Always declare variable with `var`.
 
   - Nested functions
 
@@ -245,7 +245,7 @@
 
   - delete
 
-        Prefer “this.foo = null”, to “delete this.foo”.
+        Prefer `this.foo = null`, to `delete this.foo`.
 
   - this
 
@@ -257,11 +257,11 @@
 
   - Strings
 
-        For consistency single-quotes (') are preferred to double-quotes ("). This is helpful when creating strings that include HTML.
+        For consistency single-quotes ('') are preferred to double-quotes (""). This is helpful when creating strings that include HTML.
 
   - Embedded in the HTML
 
-        <script src="myscripts.js"\></script\>.
+        `<script src="myscripts.js"\></script\>`
 
          More info: [http://google-styleguide.googlecode.com/svn/trunk/javascriptguide.xml](http://google-styleguide.googlecode.com/svn/trunk/javascriptguide.xml)
 
@@ -295,6 +295,13 @@
 
         Use the format method or the % operator for formatting strings, even when the parameters are all strings.
 
+  - Practice with autopep8 and pylint
+
+        ```
+        autopep8 --in-place --aggressive <script.py>
+        pylint <script.py>
+        ```
+
         More info: [http://google-styleguide.googlecode.com/svn/trunk/pyguide.html](http://google-styleguide.googlecode.com/svn/trunk/pyguide.html)
 
 - Shell:
@@ -305,22 +312,22 @@
 
   - Pipelines
 
-        Pipelines should be split one per line if they don't all fit on one line.
+        Pipelines should be split one per line if they do not all fit on one line.
 
   - Loops
 
-        Put “; do” and “; then” on the same line as the while, for or if.
+        Put `; do` and `; then` on the same line as the `while`, `for` or `if`.
 
   - Variable expansion
 
-        Stay consistent with what you find; quote your variables; prefer "${var}" over "$var".
+        Stay consistent with what you find; quote your variables; prefer `${var}` over `$var`.
 
   - Command Substitution
 
-        Use $(command) instead of backticks.
+        Use `$(command)` instead of backticks.
 
-  - Test, [ and [[
-        [[ ... ]] is preferred over [, test and /usr/bin/[.
+  - Test, `[` and `[[`
+        `[[ ... ]]` is preferred over `[`, test and `/usr/bin/[`.
 
   - Checking Return Values
 
@@ -332,7 +339,7 @@
 
   - Eval
 
-        eval should be avoided.
+        `eval` should be avoided.
 
         More info: [http://google-styleguide.googlecode.com/svn/trunk/shell.xml](http://google-styleguide.googlecode.com/svn/trunk/shell.xml)
 
@@ -364,7 +371,7 @@
 
   - Sizeof
 
-        Prefer sizeof(varname) to sizeof(type).
+        Prefer `sizeof(varname)` to `sizeof(type)`.
 
   - Lambda expressions
 
@@ -372,7 +379,7 @@
 
   - Preincrement and Predecrement
 
-        Use prefix form (++i) of the increment and decrement operators with iterators and other template objects.
+        Use prefix form (`++i`) of the increment and decrement operators with iterators and other template objects.
 
   - Exceptions
 
@@ -384,7 +391,7 @@
 
   - Loops and Switch Statements
 
-        Switch statements may use braces for blocks. Annotate non-trivial fall-through between cases. Empty loop bodies should use {} or continue.
+        Switch statements may use braces for blocks. Annotate non-trivial fall-through between cases. Empty loop bodies should use `{}` or continue.
 
         More info: [http://google-styleguide.googlecode.com/svn/trunk/cppguide.xml](http://google-styleguide.googlecode.com/svn/trunk/cppguide.xml)
 
@@ -392,11 +399,11 @@
 
   - One variable per declaration
 
-        Every variable declaration (field or local) declares only one variable: declarations such as int a, b; are not used.
+        Every variable declaration (field or local) declares only one variable: declarations such as `int a, b;` are not used.
 
   - No C-style array declarations
 
-        The square brackets form a part of the type, not the variable: String[] args, not String args[].
+        The square brackets form a part of the type, not the variable: `String[] args`, not `String args[]`.
 
   - Package statement
 
@@ -415,7 +422,7 @@
 
   - Switch statements
 
-        Terminology Note: Inside the braces of a switch block are one or more statement groups. Each statement group consists of one or more switch labels (either case FOO: or default :), followed by one or more statements.
+        Terminology Note: Inside the braces of a switch block are one or more statement groups. Each statement group consists of one or more switch labels (either `case FOO:` or `default :`), followed by one or more statements.
 
         More info: [http://google-styleguide.googlecode.com/svn/trunk/javaguide.html](http://google-styleguide.googlecode.com/svn/trunk/javaguide.html)
 
