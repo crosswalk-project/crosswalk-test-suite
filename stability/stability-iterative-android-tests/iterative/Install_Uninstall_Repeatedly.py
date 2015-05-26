@@ -1,5 +1,5 @@
 #!/usr/bin/env python
-#coding=utf-8
+# coding=utf-8
 #
 # Copyright (c) 2015 Intel Corporation.
 #
@@ -30,14 +30,18 @@
 #         Hongjuan, Wang<hongjuanx.wang@intel.com>
 
 import unittest
-import os, sys, commands, shutil
+import os
+import sys
+import commands
+import shutil
 import time
 import subprocess
 reload(sys)
-sys.setdefaultencoding( 'utf-8' )
+sys.setdefaultencoding('utf-8')
 
 SCRIPT_PATH = os.path.realpath(__file__)
 ConstPath = os.path.dirname(SCRIPT_PATH)
+
 
 def setUp():
     global device
@@ -47,7 +51,9 @@ def setUp():
         print 'Get env error\n'
         sys.exit(1)
 
-class TestStabilityIterativeFunctions(unittest.TestCase):   
+
+class TestStabilityIterativeFunctions(unittest.TestCase):
+
     def test_install_uninstall_repeatedly(self):
         setUp()
         global testName, runtime
@@ -55,29 +61,37 @@ class TestStabilityIterativeFunctions(unittest.TestCase):
         runtime = 7200
         pre_time = time.time()
         sysmon_path = ConstPath + '/sysmon.sh'
-        sysmon_cmd = sysmon_path + ' ' + testName + ' ' + str(runtime) + ' org.xwalk.iterative'
+        sysmon_cmd = sysmon_path + ' ' + testName + \
+            ' ' + str(runtime) + ' org.xwalk.iterative'
         subprocess.Popen(args=sysmon_cmd, shell=True)
         i = 0
         while True:
             i = i + 1
-            cmd = 'adb -s ' + device + ' install -r ' + ConstPath + '/../iterative*.apk'
+            cmd = 'adb -s ' + device + ' install -r ' + \
+                ConstPath + '/../iterative*.apk'
             inststatus = commands.getstatusoutput(cmd)
             elapsed_time = time.time() - pre_time
             if inststatus[0] == 0:
                 if elapsed_time >= runtime:
-                    #kill process
+                    # kill process
                     print i, elapsed_time, 'Process finished'
-                    uninststatus = commands.getstatusoutput('adb -s ' + device + ' uninstall org.xwalk.iterative')
+                    uninststatus = commands.getstatusoutput(
+                        'adb -s ' +
+                        device +
+                        ' uninstall org.xwalk.iterative')
                     self.assertEquals(uninststatus[0], 0)
                     break
                 else:
-                    uninststatus = commands.getstatusoutput('adb -s ' + device + ' uninstall org.xwalk.iterative')
+                    uninststatus = commands.getstatusoutput(
+                        'adb -s ' +
+                        device +
+                        ' uninstall org.xwalk.iterative')
                     self.assertEquals(uninststatus[0], 0)
-                    print i,  elapsed_time, 'Continue'
+                    print i, elapsed_time, 'Continue'
                     time.sleep(3)
             else:
                 self.assertFalse(True, 'Install apk failed')
-                #print 'Install apk failed'
+                # print 'Install apk failed'
                 break
 
 if __name__ == '__main__':

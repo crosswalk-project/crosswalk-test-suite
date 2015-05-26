@@ -35,32 +35,34 @@ import commands
 import shutil
 import comm
 
+
 class TestPackertoolsFunctions(unittest.TestCase):
-  def test_absolutePath_hostApp(self):
-      comm.setUp()
-      cmd = "python %smake_apk.py --package=org.xwalk.example --name=example --arch=%s --mode=%s --app-url=https://crosswalk-project.org/" % \
-            (comm.Pck_Tools, comm.ARCH, comm.MODE)
-      print os.getcwd()
-      comm.gen_pkg(cmd, self)
 
-  def test_absolutePath_manifest(self):
-      comm.setUp()
-      manifestPath = comm.ConstPath + "/res/manifest.json"
-      cmd = "python %smake_apk.py --package=org.xwalk.example --arch=%s --mode=%s --manifest=%s" % \
-            (comm.Pck_Tools, comm.ARCH, comm.MODE, manifestPath)
-      os.chdir(comm.ConstPath + '/../../tools')
-      print os.getcwd()
-      comm.gen_pkg(cmd, self)
+    def test_absolutePath_hostApp(self):
+        comm.setUp()
+        cmd = "python %smake_apk.py --package=org.xwalk.example --name=example --arch=%s --mode=%s --app-url=https://crosswalk-project.org/" % \
+              (comm.Pck_Tools, comm.ARCH, comm.MODE)
+        print os.getcwd()
+        comm.gen_pkg(cmd, self)
 
-  def test_absolutePath_package(self):
-      comm.setUp()
-      appRoot = comm.ConstPath + "/res/"
-      cmd = "python %smake_apk.py --package=org.xwalk.example --name=example --arch=%s --mode=%s --app-root=%s --app-local-path=index.html" % \
-            (comm.Pck_Tools, comm.ARCH, comm.MODE, appRoot)
-      os.chdir(comm.ConstPath + '/../../tools/crosswalk')
-      print os.getcwd()
-      comm.gen_pkg(cmd, self)
+    def test_absolutePath_manifest(self):
+        comm.setUp()
+        manifestPath = comm.ConstPath + "/res/manifest.json"
+        cmd = "python %smake_apk.py --package=org.xwalk.example --arch=%s --mode=%s --manifest=%s" % \
+              (comm.Pck_Tools, comm.ARCH, comm.MODE, manifestPath)
+        os.chdir(comm.ConstPath + '/../../tools')
+        print os.getcwd()
+        comm.gen_pkg(cmd, self)
+
+    def test_absolutePath_package(self):
+        comm.setUp()
+        appRoot = comm.ConstPath + "/res/"
+        cmd = "python %smake_apk.py --package=org.xwalk.example --name=example --arch=%s --mode=%s --app-root=%s --app-local-path=index.html" % \
+              (comm.Pck_Tools, comm.ARCH, comm.MODE, appRoot)
+        os.chdir(comm.ConstPath + '/../../tools/crosswalk')
+        print os.getcwd()
+        comm.gen_pkg(cmd, self)
 
 
-if __name__ == '__main__':  
+if __name__ == '__main__':
     unittest.main()

@@ -34,17 +34,29 @@ import sys
 import filecmp
 import common
 
-class TestPackertoolsFunctions(unittest.TestCase):
-  def test_compressor_minifycss(self):
-      common.clear_compressor()
-      compre = " --compressor=css"
-      common.compressor(compre, self)
-      self.assertTrue(filecmp.cmp(common.compDir + "script.js", common.oriDir + "script.js"))
-      self.assertFalse(filecmp.cmp(common.compDir + "style.css", common.oriDir + "style.css"))
-      compstyle = os.path.getsize(common.compDir + "style.css")
-      oristyle = os.path.getsize(common.oriDir + "style.css")
-      self.assertTrue((oristyle > compstyle))
-      common.clear_compressor()
 
-if __name__ == '__main__':  
+class TestPackertoolsFunctions(unittest.TestCase):
+
+    def test_compressor_minifycss(self):
+        common.clear_compressor()
+        compre = " --compressor=css"
+        common.compressor(compre, self)
+        self.assertTrue(
+            filecmp.cmp(
+                common.compDir +
+                "script.js",
+                common.oriDir +
+                "script.js"))
+        self.assertFalse(
+            filecmp.cmp(
+                common.compDir +
+                "style.css",
+                common.oriDir +
+                "style.css"))
+        compstyle = os.path.getsize(common.compDir + "style.css")
+        oristyle = os.path.getsize(common.oriDir + "style.css")
+        self.assertTrue((oristyle > compstyle))
+        common.clear_compressor()
+
+if __name__ == '__main__':
     unittest.main()

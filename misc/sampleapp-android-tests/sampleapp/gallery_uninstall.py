@@ -29,14 +29,19 @@
 #         Li, Cici<cici.x.li@intel.com>
 
 import unittest
-import os, sys, commands
+import os
+import sys
+import commands
 import comm
 
+
 class TestSampleAppFunctions(unittest.TestCase):
+
     def test_uninstall(self):
         comm.setUp()
         app_name = "Gallery"
-        cmdfind = "adb -s " + comm.device + " shell pm list packages |grep org.xwalk.%s" % (app_name.lower())
+        cmdfind = "adb -s " + comm.device + \
+            " shell pm list packages |grep org.xwalk.%s" % (app_name.lower())
         print "cmdfind: ", cmdfind
         pmstatus = commands.getstatusoutput(cmdfind)
         print "pmstatus: ", pmstatus
@@ -46,8 +51,9 @@ class TestSampleAppFunctions(unittest.TestCase):
             apk_file = commands.getstatusoutput("ls | grep %s" % app_name)[1]
             cmdinst = "adb -s " + comm.device + " install -r " + apk_file
             comm.app_install(cmdinst, cmdfind, self)
-        cmduninst = "adb -s " + comm.device + " uninstall org.xwalk.%s" % (app_name.lower()) 
+        cmduninst = "adb -s " + comm.device + \
+            " uninstall org.xwalk.%s" % (app_name.lower())
         comm.app_uninstall(cmduninst, self)
 
-if __name__ == '__main__':  
+if __name__ == '__main__':
     unittest.main()

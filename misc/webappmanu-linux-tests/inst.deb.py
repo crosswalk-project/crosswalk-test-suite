@@ -13,6 +13,7 @@ from optparse import OptionParser, make_option
 SCRIPT_DIR = os.path.dirname(os.path.abspath(__file__))
 PARAMETERS = None
 
+
 def doCMD(cmd):
     print "-->> \"%s\"" % cmd
     output = []
@@ -23,7 +24,7 @@ def doCMD(cmd):
     while True:
         output_line = cmd_proc.stdout.readline().strip("\r\n")
         cmd_return_code = cmd_proc.poll()
-        if output_line == '' and cmd_return_code != None:
+        if output_line == '' and cmd_return_code is not None:
             break
         sys.stdout.write("%s\n" % output_line)
         sys.stdout.flush()
@@ -31,17 +32,19 @@ def doCMD(cmd):
 
     return (cmd_return_code, output)
 
+
 def getUSERID():
     cmd = "whoami"
     return doCMD(cmd)
 
 
 def getPKGID(pkg_name=None):
-    pkg_id =  None
+    pkg_id = None
     pkg_name = pkg_name.split('.')
     num = len(pkg_name)
     pkg_id = pkg_name[num - 1]
     return pkg_id
+
 
 def uninstPKGs():
     action_status = True
@@ -87,7 +90,7 @@ def main():
             "-a", dest="user", action="store", help="User name")
         global PARAMETERS
         (PARAMETERS, args) = opts_parser.parse_args()
-    except Exception, e:
+    except Exception as e:
         print "Got wrong option: %s, exit ..." % e
         sys.exit(1)
 

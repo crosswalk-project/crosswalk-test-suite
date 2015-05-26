@@ -33,22 +33,44 @@ import os
 import commands
 import comm
 
+
 class TestCrosswalkApptoolsFunctions(unittest.TestCase):
+
     def test_check_log(self):
         comm.setUp()
         comm.cleanTempData(comm.TEST_PROJECT_COMM)
         os.chdir(comm.TEMP_DATA_PATH)
         createcmd = "crosswalk-app create " + comm.TEST_PROJECT_COMM
         createstatus = commands.getstatusoutput(createcmd)
-        create_common = open(comm.TEMP_DATA_PATH + "/../tools/" + comm.TEST_PROJECT_COMM + "/log/common.log", 'r')
-        create_android = open(comm.TEMP_DATA_PATH + "/../tools/" + comm.TEST_PROJECT_COMM + "/log/deb.log", 'r')
+        create_common = open(
+            comm.TEMP_DATA_PATH +
+            "/../tools/" +
+            comm.TEST_PROJECT_COMM +
+            "/log/common.log",
+            'r')
+        create_android = open(
+            comm.TEMP_DATA_PATH +
+            "/../tools/" +
+            comm.TEST_PROJECT_COMM +
+            "/log/deb.log",
+            'r')
         create_common_log = create_common.read().strip("\n\t")
         create_android_log = create_android.read().strip("\n\t")
         os.chdir(comm.TEST_PROJECT_COMM)
-        buildcmd =  "crosswalk-app build"
+        buildcmd = "crosswalk-app build"
         buildstatus = commands.getstatusoutput(buildcmd)
-        build_common = open(comm.TEMP_DATA_PATH + "/../tools/" + comm.TEST_PROJECT_COMM + "/log/common.log", 'r')
-        build_android = open(comm.TEMP_DATA_PATH + "/../tools/" + comm.TEST_PROJECT_COMM + "/log/deb.log", 'r')
+        build_common = open(
+            comm.TEMP_DATA_PATH +
+            "/../tools/" +
+            comm.TEST_PROJECT_COMM +
+            "/log/common.log",
+            'r')
+        build_android = open(
+            comm.TEMP_DATA_PATH +
+            "/../tools/" +
+            comm.TEST_PROJECT_COMM +
+            "/log/deb.log",
+            'r')
         build_common_log = build_common.read().strip("\n\t")
         build_android_log = build_android.read().strip("\n\t")
         comm.cleanTempData(comm.TEST_PROJECT_COMM)

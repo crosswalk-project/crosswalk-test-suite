@@ -29,18 +29,26 @@
 #         Li, Cici<cici.x.li@intel.com>
 
 import unittest
-import os, sys, commands
+import os
+import sys
+import commands
 import comm
 
+
 class TestSampleAppFunctions(unittest.TestCase):
+
     def test_pack(self):
         comm.setUp()
         app_name = "Sysapps"
         sample_src = "/SysApps_DeviceCapabilities/src/"
-        manifest_file = comm.sample_src_pref + sample_src + "manifest.json" 
+        manifest_file = comm.sample_src_pref + sample_src + "manifest.json"
         cmd = "python %smake_apk.py --package=org.xwalk.%s --manifest=%s --arch=%s --mode=%s --enable-remote-debugging" % \
-        (comm.pack_tools, app_name.lower(), manifest_file, comm.ARCH, comm.MODE)
+            (comm.pack_tools,
+             app_name.lower(),
+             manifest_file,
+             comm.ARCH,
+             comm.MODE)
         comm.pack(cmd, app_name, self)
 
-if __name__ == '__main__':  
+if __name__ == '__main__':
     unittest.main()

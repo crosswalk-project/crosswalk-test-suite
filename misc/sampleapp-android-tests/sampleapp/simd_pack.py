@@ -29,17 +29,26 @@
 #         Li, Cici<cici.x.li@intel.com>
 
 import unittest
-import os, sys, commands
+import os
+import sys
+import commands
 import comm
 
+
 class TestSampleAppFunctions(unittest.TestCase):
+
     def test_pack(self):
         comm.setUp()
         app_name = "Simd"
         app_url = "http://peterjensen.github.io/mandelbrot/js/mandelbrot-xdk.html"
         cmd = "python %smake_apk.py --package=org.xwalk.%s --name=%s --app-url=%s --arch=%s --mode=%s --enable-remote-debugging" % \
-        (comm.pack_tools, app_name.lower(), app_name, app_url, comm.ARCH, comm.MODE)
+            (comm.pack_tools,
+             app_name.lower(),
+             app_name,
+             app_url,
+             comm.ARCH,
+             comm.MODE)
         comm.pack(cmd, app_name, self)
 
-if __name__ == '__main__':  
+if __name__ == '__main__':
     unittest.main()

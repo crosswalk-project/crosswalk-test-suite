@@ -1,5 +1,5 @@
 #!/usr/bin/python
-#encoding:utf-8
+# encoding:utf-8
 
 # Copyright (c) 2014 Intel Corporation.
 #
@@ -34,12 +34,13 @@ import csv
 import re
 import sys
 import platform
-import logging  
+import logging
 import logging.handlers
 from xml.etree import ElementTree
 
 LOG = None
 LOG_LEVEL = logging.DEBUG
+
 
 class ColorFormatter(logging.Formatter):
 
@@ -63,6 +64,7 @@ class ColorFormatter(logging.Formatter):
 
         return logging.Formatter.format(self, record)
 
+
 def xml2csv(xml_path, split_sign):
     if not os.path.isfile(xml_path):
         print '%s is not a file' % xml_path
@@ -82,6 +84,7 @@ def xml2csv(xml_path, split_sign):
     make_csv(xml_path, csv_path)
     LOG.info("===Convert xml to csv finish===")
 
+
 def make_csv(xml_path, csv_path):
     root_node = ElementTree.parse(xml_path)
     set_node = root_node.find('suite/set')
@@ -90,28 +93,28 @@ def make_csv(xml_path, csv_path):
     LOG.info("General: %s" % csv_path)
     writer = csv.writer(file(csv_path, 'wb'))
     writer.writerow(['Name',
-     'Description',
-     'Component',
-     'Onload_Delay',
-     'Execution_Type',
-     'Package',
-     'Priority',
-     'ElementType',
-     'ElementName',
-     'Interface',
-     'Specification',
-     'Section',
-     'Category',
-     'SpecURL',
-     'SpecStatement',
-     'Status',
-     'Test_Script_Entry',
-     'Type',
-     'PreCondition',
-     'PostCondition',
-     'StepNumber',
-     'StepDescription',
-     'StepExpectedResult'])
+                     'Description',
+                     'Component',
+                     'Onload_Delay',
+                     'Execution_Type',
+                     'Package',
+                     'Priority',
+                     'ElementType',
+                     'ElementName',
+                     'Interface',
+                     'Specification',
+                     'Section',
+                     'Category',
+                     'SpecURL',
+                     'SpecStatement',
+                     'Status',
+                     'Test_Script_Entry',
+                     'Type',
+                     'PreCondition',
+                     'PostCondition',
+                     'StepNumber',
+                     'StepDescription',
+                     'StepExpectedResult'])
     case_nodes = set_node.findall('testcase')
     for case_node in case_nodes:
         spec_assertion = case_node.find('specs/spec/spec_assertion')
@@ -124,28 +127,29 @@ def make_csv(xml_path, csv_path):
         if 'element_name' in spec_assertion.attrib:
             element_name = spec_assertion.attrib['element_name']
         writer.writerow([case_node.attrib['id'],
-         case_node.attrib['purpose'],
-         case_node.attrib['component'],
-         '',
-         case_node.attrib['execution_type'],
-         '',
-         case_node.attrib['priority'],
-         element_type,
-         element_name,
-         spec_assertion.attrib['interface'],
-         spec_assertion.attrib['specification'],
-         spec_assertion.attrib['section'],
-         spec_assertion.attrib['category'],
-         case_node.find('specs/spec/spec_url').text,
-         '',
-         case_node.attrib['status'],
-         case_node.find('description/test_script_entry').text,
-         case_node.attrib['type'],
-         '',
-         '',
-         '1',
-         '',
-         'pass'])
+                         case_node.attrib['purpose'],
+                         case_node.attrib['component'],
+                         '',
+                         case_node.attrib['execution_type'],
+                         '',
+                         case_node.attrib['priority'],
+                         element_type,
+                         element_name,
+                         spec_assertion.attrib['interface'],
+                         spec_assertion.attrib['specification'],
+                         spec_assertion.attrib['section'],
+                         spec_assertion.attrib['category'],
+                         case_node.find('specs/spec/spec_url').text,
+                         '',
+                         case_node.attrib['status'],
+                         case_node.find('description/test_script_entry').text,
+                         case_node.attrib['type'],
+                         '',
+                         '',
+                         '1',
+                         '',
+                         'pass'])
+
 
 def echo_about():
     """
@@ -154,6 +158,7 @@ def echo_about():
     about = 'xml2csv V1.0\n-c <path>  |  Convert tests.full.xml to csv file\n'
     print about
     sys.exit()
+
 
 def main():
     """
@@ -178,7 +183,7 @@ def main():
         echo_about()
     else:
         {
-         '-c': lambda : xml2csv(sys.argv[2], split_sign)}[sys.argv[1]]()
+            '-c': lambda: xml2csv(sys.argv[2], split_sign)}[sys.argv[1]]()
 
 if __name__ == '__main__':
     main()

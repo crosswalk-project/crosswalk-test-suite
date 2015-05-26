@@ -29,25 +29,31 @@
 #         Li, Cici<cici.x.li@intel.com>
 
 import unittest
-import os, sys, commands
+import os
+import sys
+import commands
 import comm
 import time
 
+
 class TestSampleAppFunctions(unittest.TestCase):
+
     def test_stop(self):
         comm.setUp()
         app_name = "Simd"
         # Find whether the app have launched
-        cmdacti = "adb -s " + comm.device + " shell dumpsys activity activities | grep org.xwalk.%s" % app_name.lower()
+        cmdacti = "adb -s " + comm.device + \
+            " shell dumpsys activity activities | grep org.xwalk.%s" % app_name.lower()
         launched = commands.getstatusoutput(cmdacti)
         if launched[0] != 0:
             print "Stop APK ---------------->%s App haven't launched, need to launch it!" % app_name
-	    cmdstart = "adb -s " + comm.device + " shell am start -n org.xwalk.%s/.%sActivity" % \
-            (app_name.lower(), app_name)
+            cmdstart = "adb -s " + comm.device + " shell am start -n org.xwalk.%s/.%sActivity" % \
+                (app_name.lower(), app_name)
             comm.app_launch(cmdstart, self)
             time.sleep(1)
-        cmdstop = "adb -s " + comm.device + " shell am force-stop org.xwalk.%s" % app_name.lower()
+        cmdstop = "adb -s " + comm.device + \
+            " shell am force-stop org.xwalk.%s" % app_name.lower()
         comm.app_stop(cmdstop, self)
 
-if __name__ == '__main__':  
+if __name__ == '__main__':
     unittest.main()

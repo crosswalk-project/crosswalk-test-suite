@@ -26,15 +26,18 @@
 # Authors:
 #         Fan,Weiwei <weiwix.fan@intel.com>
 
+
 def main(request, response):
-  response.headers.update([("Access-Control-Allow-Origin", request.headers["host"]),
-                           ("Access-Control-Max-Age", 30000),
-                           ("Access-Control-Allow-Credentials", "false"),
-                           ("Access-Control-Allow-Headers", "MyHeader"),
-                           ("Access-Control-Allow-Methods", "CustomMethod"),
-                           ("Access-Control-Expose-Headers", "Access-Control-Max-Age, Access-Control-Allow-Origin, Server, Access-Control-Allow-Headers, Access-Control-Allow-Methods"),
-                           ("Cache-Control", "no-cache"),
-                           ("Pragma", "no-cache"),
-                           ("Content-Type", "text/plain")
-                         ])
-  return "HelloWorld"
+    response.headers.update([("Access-Control-Allow-Origin", request.headers["host"]),
+                             ("Access-Control-Max-Age", 30000),
+                             ("Access-Control-Allow-Credentials", "false"),
+                             ("Access-Control-Allow-Headers", "MyHeader"),
+                             ("Access-Control-Allow-Methods", "CustomMethod"),
+                             (
+        "Access-Control-Expose-Headers",
+        "Access-Control-Max-Age, Access-Control-Allow-Origin, Server, Access-Control-Allow-Headers, Access-Control-Allow-Methods"),
+        ("Cache-Control", "no-cache"),
+        ("Pragma", "no-cache"),
+        ("Content-Type", "text/plain")
+    ])
+    return "HelloWorld"

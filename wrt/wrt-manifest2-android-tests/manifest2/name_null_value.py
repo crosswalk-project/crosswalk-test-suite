@@ -33,10 +33,13 @@ import os
 import commands
 import comm
 
+
 class TestManifestFunctions(unittest.TestCase):
+
     def test_name_nullvalue(self):
         comm.setUp()
-        manifestPath = comm.ConstPath + "/../testapp/manifest_name_nullvalue/manifest.json"
+        manifestPath = comm.ConstPath + \
+            "/../testapp/manifest_name_nullvalue/manifest.json"
         cmd = "python %smake_apk.py --package=org.xwalk.example --arch=%s --mode=%s --manifest=%s" % \
               (comm.Pck_Tools, comm.ARCH, comm.MODE, manifestPath)
         packInfo = commands.getstatusoutput(cmd)

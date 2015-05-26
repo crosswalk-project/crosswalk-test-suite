@@ -63,7 +63,8 @@ BUILD_ROOT_PKG = None
 BUILD_ROOT_PKG_APP = None
 LOG = None
 LOG_LEVEL = logging.DEBUG
-BUILD_TIME = time.strftime('%Y%m%d',time.localtime(time.time()))
+BUILD_TIME = time.strftime('%Y%m%d', time.localtime(time.time()))
+
 
 class ColorFormatter(logging.Formatter):
 
@@ -93,21 +94,23 @@ def iterfindfiles(path, fnexp):
         for filename in fnmatch.filter(files, fnexp):
             yield os.path.join(root, filename)
 
+
 def replaceUserString(path, fnexp, old_s, new_s):
-    for sub_file in iterfindfiles(path,fnexp):
+    for sub_file in iterfindfiles(path, fnexp):
         try:
-            with open(sub_file,'r') as sub_read_obj:
+            with open(sub_file, 'r') as sub_read_obj:
                 read_string = sub_read_obj.read()
         except IOError as err:
-            LOG.error("Read %s Error : "%sub_file + str(err))
+            LOG.error("Read %s Error : " % sub_file + str(err))
             continue
         if read_string.find(old_s) >= 0:
             try:
-                with open(sub_file,'w') as sub_write_obj:
-                    sub_write_obj.write(re.sub(old_s,new_s,read_string))
+                with open(sub_file, 'w') as sub_write_obj:
+                    sub_write_obj.write(re.sub(old_s, new_s, read_string))
             except IOError as err:
-                LOG.error("Modify %s Error : "%sub_file + str(err))
+                LOG.error("Modify %s Error : " % sub_file + str(err))
                 continue
+
 
 def isWindows():
     return sys.platform == "cygwin" or sys.platform.startswith("win")
@@ -312,13 +315,21 @@ def exitHandler(return_code=1):
 
 def prepareBuildRoot():
     LOG.info("+Preparing build root folder ...")
-    global BUILD_ROOT	# The build root directory, like as "/tmp/randomName"
-    global BUILD_ROOT_SRC	# The source code in the tmp directory, like as "/tmp/randomName/crosswalk-test"
-    global BUILD_ROOT_SRC_PKG	# The source of the zip operate for all package, like as "/tmp/randomName/pkg" 
-    global BUILD_ROOT_SRC_PKG_APP	# The source of the app_package operate for all package, like as "/tmp/randomName/pkg-app"
-    global BUILD_ROOT_SRC_SUB_APP	# The source of the sub app_package operate for all package, like as "/tmp/randomName/sub-app"
-    global BUILD_ROOT_PKG	# BUILD_ROOT_SRC_PKG + "opt" + PKG_NAME
-    global BUILD_ROOT_PKG_APP	# BUILD_ROOT_SRC_PKG_APP + "opt" + PKG_NAME
+    global BUILD_ROOT  # The build root directory, like as "/tmp/randomName"
+    # The source code in the tmp directory, like as
+    # "/tmp/randomName/crosswalk-test"
+    global BUILD_ROOT_SRC
+    # The source of the zip operate for all package, like as
+    # "/tmp/randomName/pkg"
+    global BUILD_ROOT_SRC_PKG
+    # The source of the app_package operate for all package, like as
+    # "/tmp/randomName/pkg-app"
+    global BUILD_ROOT_SRC_PKG_APP
+    # The source of the sub app_package operate for all package, like as
+    # "/tmp/randomName/sub-app"
+    global BUILD_ROOT_SRC_SUB_APP
+    global BUILD_ROOT_PKG  # BUILD_ROOT_SRC_PKG + "opt" + PKG_NAME
+    global BUILD_ROOT_PKG_APP  # BUILD_ROOT_SRC_PKG_APP + "opt" + PKG_NAME
 
     while True:
         BUILD_ROOT = os.path.join("/tmp", getRandomStr())
@@ -337,7 +348,12 @@ def prepareBuildRoot():
     if not doCopy(BUILD_PARAMETERS.srcdir, BUILD_ROOT_SRC):
         return False
     else:
-        replaceUserString(BUILD_ROOT_SRC,'*','TESTER-HOME-DIR',"/home/%s"%BUILD_PARAMETERS.user)
+        replaceUserString(
+            BUILD_ROOT_SRC,
+            '*',
+            'TESTER-HOME-DIR',
+            "/home/%s" %
+            BUILD_PARAMETERS.user)
 
     if not doRemove(
             glob.glob(os.path.join(BUILD_ROOT_SRC, "%s*.zip" % PKG_NAME))):
@@ -370,7 +386,7 @@ def doCMD(cmd, time_out=DEFAULT_CMD_TIMEOUT, no_check_return=False):
 def createIndexFile(index_file_path=None, hosted_app=None):
     try:
         index_url = "opt/%s/webrunner/index.html?testsuite=../tests.xml" \
-                        "&testprefix=../../.." % PKG_NAME
+            "&testprefix=../../.." % PKG_NAME
         html_content = "<!doctype html><head><meta http-equiv='Refresh' " \
                        "content='1; url=%s'></head>" % index_url
         index_file = open(index_file_path, "w")
@@ -394,21 +410,21 @@ def buildSubAPP(app_dir=None, build_json=None, app_dest_default=None):
         app_name = os.path.basename(app_dir)
 
     app_src = os.path.join(BUILD_ROOT_SRC_SUB_APP, app_name)
-	
+
     pkg_name = app_name
     LOG.info("+Change dir to %s: " % BUILD_ROOT_SRC_SUB_APP)
     if not os.path.exists(BUILD_ROOT_SRC_SUB_APP):
         LOG.info("Create BUILD_ROOT_SRC_SUB_APP dir: %s" %
-        BUILD_ROOT_SRC_SUB_APP)
+                 BUILD_ROOT_SRC_SUB_APP)
         os.makedirs(BUILD_ROOT_SRC_SUB_APP)
     os.chdir(BUILD_ROOT_SRC_SUB_APP)
     pack_cmd = "crosswalk-app create " + pkg_name
     orig_dir = os.getcwd()
     if not doCMD(pack_cmd, DEFAULT_CMD_TIMEOUT):
-		os.chdir(orig_dir)
-		return False
-	
-	# copy source to  BUILD_ROOT_SRC_SUB_APP/pkg_name/app
+        os.chdir(orig_dir)
+        return False
+
+        # copy source to  BUILD_ROOT_SRC_SUB_APP/pkg_name/app
     if buildSRC(app_dir, os.path.join(app_src, "app"), build_json):
         app_dest = safelyGetValue(build_json, "install-path")
         if app_dest:
@@ -437,51 +453,57 @@ def buildSubAPP(app_dir=None, build_json=None, app_dest_default=None):
 
 
 def buildPKG(build_json=None):
-	if "blacklist" not in build_json:
-		build_json.update({"blacklist": []})
-	build_json["blacklist"].extend(PKG_BLACK_LIST)
-	if not buildSRC(BUILD_ROOT_SRC, BUILD_ROOT_PKG, build_json):
-		return False
+    if "blacklist" not in build_json:
+        build_json.update({"blacklist": []})
+    build_json["blacklist"].extend(PKG_BLACK_LIST)
+    if not buildSRC(BUILD_ROOT_SRC, BUILD_ROOT_PKG, build_json):
+        return False
 
-	if "subapp-list" in build_json:
-		for i_sub_app in build_json["subapp-list"].keys():
-			if not buildSubAPP(
-				i_sub_app, build_json["subapp-list"][i_sub_app],
-				BUILD_ROOT_PKG):
-				return False
+    if "subapp-list" in build_json:
+        for i_sub_app in build_json["subapp-list"].keys():
+            if not buildSubAPP(
+                    i_sub_app, build_json["subapp-list"][i_sub_app],
+                    BUILD_ROOT_PKG):
+                return False
 
-	if "pkg-app" in build_json:
-		if not buildPKGAPP(build_json["pkg-app"]):
-			return False
-	return True
+    if "pkg-app" in build_json:
+        if not buildPKGAPP(build_json["pkg-app"]):
+            return False
+    return True
 
-def replaceCopy(readfile,writefile,content,newContent): 
-    ffrom=open(readfile,"r")  
-    fto=open(writefile,"w")  
-    while True:  
-        l = ffrom.readline()  
-        if not l:  
-            break  
+
+def replaceCopy(readfile, writefile, content, newContent):
+    ffrom = open(readfile, "r")
+    fto = open(writefile, "w")
+    while True:
+        l = ffrom.readline()
+        if not l:
+            break
         if 'org.xwalk.embedding.test' in l:
             temp = ""
-            temp=re.sub(content,newContent,l)
+            temp = re.sub(content, newContent, l)
             fto.write(temp)
         else:
-            temp1 = l  
-            fto.write(temp1)  
+            temp1 = l
+            fto.write(temp1)
     fto.close()
+
 
 def findVersionFile(pathFile=None):
     if not pathFile:
         pathFile = os.path.join("..", "..", "..")
     if not os.path.exists(
-                os.path.join(BUILD_PARAMETERS.srcdir, pathFile, VERSION_FILE)):
+            os.path.join(BUILD_PARAMETERS.srcdir, pathFile, VERSION_FILE)):
         pathFile = pathFile[:-3]
         if pathFile != "..":
             findVersionFile(pathFile)
     else:
-        pkg_version_file_path = os.path.join(BUILD_PARAMETERS.srcdir, pathFile, VERSION_FILE)
-    	return (pkg_version_file_path)
+        pkg_version_file_path = os.path.join(
+            BUILD_PARAMETERS.srcdir,
+            pathFile,
+            VERSION_FILE)
+        return (pkg_version_file_path)
+
 
 def main():
     global LOG
@@ -571,7 +593,9 @@ def main():
             pkg_main_version = BUILD_PARAMETERS.pkgversion
         else:
             if pkg_version_file_path is not None:
-                LOG.info("Using pkg version by file: %s" % pkg_version_file_path)
+                LOG.info(
+                    "Using pkg version by file: %s" %
+                    pkg_version_file_path)
                 with open(pkg_version_file_path, "rt") as pkg_version_file:
                     pkg_version_raw = pkg_version_file.read()
                     pkg_version_file.close()
@@ -642,7 +666,7 @@ def main():
 
     if not prepareBuildRoot():
         exitHandler(1)
-    
+
     global PKG_BLACK_LIST
     PKG_BLACK_LIST = []
     if "pkg-blacklist" in config_json:
@@ -656,12 +680,12 @@ def main():
         BUILD_PARAMETERS.destdir,
         "%s-%s-%s.%s.zip" %
         (PKG_NAME,
-        pkg_main_version,
-        pkg_release_version,
-        BUILD_PARAMETERS.pkgtype))
-        
+         pkg_main_version,
+         pkg_release_version,
+         BUILD_PARAMETERS.pkgtype))
+
     if not zipDir(BUILD_ROOT_SRC_PKG, pkg_file):
-            exitHandler(1)
+        exitHandler(1)
 
 if __name__ == "__main__":
     main()

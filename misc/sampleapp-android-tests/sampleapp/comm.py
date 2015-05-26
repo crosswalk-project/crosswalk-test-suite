@@ -1,5 +1,5 @@
 #!/usr/bin/env python
-#coding=utf-8
+# coding=utf-8
 #
 # Copyright (c) 2015 Intel Corporation.
 #
@@ -30,15 +30,19 @@
 #         Cici,Li<cici.x.li@intel.com>
 
 import unittest
-import os, sys, commands, shutil
+import os
+import sys
+import commands
+import shutil
 reload(sys)
-sys.setdefaultencoding( "utf-8" )
+sys.setdefaultencoding("utf-8")
 
 script_path = os.path.realpath(__file__)
 const_path = os.path.dirname(script_path)
 sample_src_pref = "/tmp/crosswalk-demos/"
 pack_tools = const_path + "/../tools/crosswalk/"
 index_path = "index.html"
+
 
 def setUp():
     global ARCH, MODE, device
@@ -63,11 +67,12 @@ def setUp():
         MODE = "shared"
     mode.close()
 
+
 def pack(cmd, appname, self):
     setUp()
     os.chdir(const_path + "/../testapp/")
     print "Generate APK %s ----------------> START" % appname
-    print cmd 
+    print cmd
     packstatus = commands.getstatusoutput(cmd)
     self.assertEquals(0, packstatus[0])
     print "\nGenerate APK %s ----------------> OK\n" % appname
@@ -75,37 +80,40 @@ def pack(cmd, appname, self):
     self.assertIn(appname, result[1])
     os.chdir("../..")
 
+
 def app_install(cmd, cmdfind, self):
-    print "Install APK ----------------> START" 
+    print "Install APK ----------------> START"
     inststatus = commands.getstatusoutput(cmd)
     self.assertEquals(0, inststatus[0])
     print "Install APK ----------------> OK"
     pmstatus = commands.getstatusoutput(cmdfind)
     self.assertEquals(0, pmstatus[0])
     print "Find Package in device ----------------> OK"
-    
+
+
 def app_launch(cmd, self):
-    print "Launch APK ----------------> START" 
+    print "Launch APK ----------------> START"
     launchstatus = commands.getstatusoutput(cmd)
-    self.assertNotIn("error",launchstatus[1].lower())
+    self.assertNotIn("error", launchstatus[1].lower())
     print "Launch APK ----------------> OK"
 
+
 def app_stop(cmd, self):
-    print "Stop APK ----------------> START" 
+    print "Stop APK ----------------> START"
     stopstatus = commands.getstatusoutput(cmd)
     self.assertEquals(0, stopstatus[0])
     print "Stop APK ----------------> OK"
 
+
 def app_uninstall(cmd, self):
-    print "Uninstall APK ----------------> START" 
+    print "Uninstall APK ----------------> START"
     unistatus = commands.getstatusoutput(cmd)
     self.assertEquals(0, unistatus[0])
     print "Uninstall APK ----------------> OK"
+
 
 def others():
     if os.path.exists(pack_tools + "/" + AppName):
         os.remove(pack_tools + "/" + AppName)
     if os.path.exists(const_path + "/../" + AppName):
         os.remove(const_path + "/../" + AppName)
-
-

@@ -4,7 +4,11 @@ import os
 import sys
 import unittest
 
-sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), os.path.pardir)))
+sys.path.append(
+    os.path.abspath(
+        os.path.join(
+            os.path.dirname(__file__),
+            os.path.pardir)))
 import base_test
 
 from client.exceptions import NoSuchAlertException
@@ -14,7 +18,10 @@ from client.wait import WebDriverWait
 class AlertsQuitTest(base_test.WebDriverBaseTest):
 
     def setUp(self):
-        self.wait = WebDriverWait(self.driver, 5, ignored_exceptions = [NoSuchAlertException])
+        self.wait = WebDriverWait(
+            self.driver,
+            5,
+            ignored_exceptions=[NoSuchAlertException])
         self.driver.get(self.webserver.where_is('modal/res/alerts.html'))
 
     def test_can_quit_when_an_alert_is_present(self):

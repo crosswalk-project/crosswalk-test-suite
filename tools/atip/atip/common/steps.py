@@ -35,13 +35,20 @@ from atip.web import web
 def wait_for_timeout(context, timeout):
     time.sleep(timeout)
 
+
 @step(u'launch "{app_name}"')
 def launch_app_by_name(context, app_name):
     web.launch_webapp_by_name(context, app_name)
 
+
 @step(u'I launch "{app_name}" with "{apk_pkg_name}" and "{apk_activity_name}"')
 def launch_app_by_names(context, app_name, apk_pkg_name, apk_activity_name):
-    web.launch_webapp_by_name(context, app_name, apk_pkg_name, apk_activity_name)
+    web.launch_webapp_by_name(
+        context,
+        app_name,
+        apk_pkg_name,
+        apk_activity_name)
+
 
 @step(u'switch to "{app_name}"')
 def switch_to_app_name(context, app_name):
@@ -51,10 +58,14 @@ def switch_to_app_name(context, app_name):
     else:
         assert False
 
-@step(u'pic "{pic1}" and pic "{pic2}" should be more than "{similarity}" similar')
+
+@step(
+    u'pic "{pic1}" and pic "{pic2}" should be more than "{similarity}" similar')
 def check_picture(context, pic1, pic2, similarity):
     assert context.app.check_pic_same(pic1, pic2, similarity)
 
-@step(u'pic "{pic1}" and pic "{pic2}" should be less than "{similarity}" similar')
+
+@step(
+    u'pic "{pic1}" and pic "{pic2}" should be less than "{similarity}" similar')
 def check_picture(context, pic1, pic2, similarity):
     assert context.app.check_pic_different(pic1, pic2, similarity)

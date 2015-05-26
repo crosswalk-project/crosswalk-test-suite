@@ -1,7 +1,13 @@
 #!/usr/bin/env python
-import sys, os, os.path, shutil, time
-import commands, glob
-import thread, Queue
+import sys
+import os
+import os.path
+import shutil
+import time
+import commands
+import glob
+import thread
+import Queue
 import ge_package
 
 import metacomm.combinatorics.all_pairs2
@@ -14,6 +20,7 @@ ARCH = "x86"
 totalNum = 0
 result = ""
 
+
 def genSelfcom(combIn, combOut):
     try:
         fp = open(combIn)
@@ -23,20 +30,26 @@ def genSelfcom(combIn, combOut):
         comb.close()
         print "Update selfcomb.txt ---------------->O.k"
         return
-    except Exception,e:
-        print Exception,"Update selfcomb.txt error:",e
+    except Exception as e:
+        print Exception, "Update selfcomb.txt error:", e
         print "Update selfcomb.txt ---------------->Error"
         sys.exit(1)
 
+
 def genmanifest(caseInput, flag):
     try:
-        manifestLog = open(ConstPath + "/report/manifest_"+ flag + ".txt", 'a+')
+        manifestLog = open(
+            ConstPath +
+            "/report/manifest_" +
+            flag +
+            ".txt",
+            'a+')
 
         caseIn = open(caseInput)
         line = caseIn.readline().strip('\n\r')
         sectionList = line.split("\t")
 
-        global totalNum 
+        global totalNum
         for line in caseIn:
             totalNum = totalNum + 1
             caseValue = ""
@@ -44,34 +57,43 @@ def genmanifest(caseInput, flag):
             print "Case" + str(totalNum) + " :"
             print "Generate manifest.json ---------------->Start"
             items = line.strip('\n\r').split("\t")
-            caseDir = ConstPath + "/tcs/manifest" + str(totalNum) + "-" + flag 
+            caseDir = ConstPath + "/tcs/manifest" + str(totalNum) + "-" + flag
             if not os.path.exists(caseDir):
                 os.mkdir(caseDir)
             fp = open(caseDir + "/manifest.json", 'w+')
             for i in range(len(items)):
-                items[i] = items[i].replace("null","")
-                if sectionList[i] not in ("icons", "icon", "xwalk_launch_screen", "xwalk_permissions", "display"):
+                items[i] = items[i].replace("null", "")
+                if sectionList[i] not in (
+                        "icons", "icon", "xwalk_launch_screen", "xwalk_permissions", "display"):
                     items[i] = items[i].replace("000", " ")
-                    caseValue = caseValue + '"' + sectionList[i] + '" : "' + items[i] + '",\n'
+                    caseValue = caseValue + '"' + \
+                        sectionList[i] + '" : "' + items[i] + '",\n'
                 else:
                     items[i] = items[i].replace("comma", ",")
-                    caseValue = caseValue + '"' + sectionList[i] + '" : ' + items[i] + ",\n"
+                    caseValue = caseValue + '"' + \
+                        sectionList[i] + '" : ' + items[i] + ",\n"
             caseValue = "{\n" + caseValue[:-2] + "\n}"
             fp.write(caseValue)
             fp.close()
             print "Generate manifest.json ---------------->O.K"
             print caseValue
-            manifestLog.write("manifest" + str(totalNum) + "\n--------------------------------\n" + caseValue + "\n--------------------------------\n")
+            manifestLog.write(
+                "manifest" +
+                str(totalNum) +
+                "\n--------------------------------\n" +
+                caseValue +
+                "\n--------------------------------\n")
 
-            #copy source and config
+            # copy source and config
             os.system("cp -rf " + ConstPath + "/resource/* " + caseDir)
         caseIn.close()
         manifestLog.close()
         print "Execute case ---------------->O.K"
-    except Exception,e:
-        print Exception,":",e
+    except Exception as e:
+        print Exception, ":", e
         print "Execute case ---------------->Error"
         sys.exit(1)
+
 
 def lineCount(fp):
     fileTmp = open(fp)
@@ -95,7 +117,12 @@ def processTest(seedIn, flag):
             sectionName = items[0].split("-")[0]
             if sectionName not in sectionList:
                 sectionList.append(sectionName)
-            inputTxt = open(ConstPath + "/self/" + sectionName + "_input.txt", "a+")
+            inputTxt = open(
+                ConstPath +
+                "/self/" +
+                sectionName +
+                "_input.txt",
+                "a+")
             inputTxt.write(line)
             inputTxt.close()
         fp.close()
@@ -105,7 +132,12 @@ def processTest(seedIn, flag):
             counters = lineCount(ConstPath + "/self/" + section + "_input.txt")
             if counters >= 2:
                 lists = [[] for m in range(counters)]
-                inputTxt = open(ConstPath + "/self/" + section + "_input.txt", 'r+')
+                inputTxt = open(
+                    ConstPath +
+                    "/self/" +
+                    section +
+                    "_input.txt",
+                    'r+')
                 for line in inputTxt:
                     items = line.strip('\n\r').split(":")
                     values = ":".join(items[1:]).split(",")
@@ -113,30 +145,49 @@ def processTest(seedIn, flag):
                     row = row + 1
                 pairs = all_pairs(lists)
                 inputTxt.close()
-                outTxt = open(ConstPath + "/self/" + section + "_output.txt", 'a+')
+                outTxt = open(
+                    ConstPath +
+                    "/self/" +
+                    section +
+                    "_output.txt",
+                    'a+')
                 for e, v in enumerate(pairs):
                     for c in range(len(v)):
                         caseline = caseline + v[c] + ","
                 outTxt.write(section + ":" + caseline[:-1] + "\n")
                 outTxt.close()
             else:
-                shutil.copy(ConstPath + "/self/" + section + "_input.txt", ConstPath + "/self/" + section + "_output.txt")
+                shutil.copy(
+                    ConstPath +
+                    "/self/" +
+                    section +
+                    "_input.txt",
+                    ConstPath +
+                    "/self/" +
+                    section +
+                    "_output.txt")
 
-        #1*********XX_output.txt -> selfcomb.txt
+        # 1*********XX_output.txt -> selfcomb.txt
             #os.remove(ConstPath + "/allpairs/selfcomb.txt")
-            genSelfcom(ConstPath + "/self/" + section + "_output.txt", ConstPath + "/allpairs/selfcomb.txt")
+            genSelfcom(
+                ConstPath +
+                "/self/" +
+                section +
+                "_output.txt",
+                ConstPath +
+                "/allpairs/selfcomb.txt")
 
-        #2*********selfcomb.txt -> caseXX.txt
+        # 2*********selfcomb.txt -> caseXX.txt
         genCases(ConstPath + "/allpairs/selfcomb.txt", name, flag)
 
-        #3*********output -> manifest.json
+        # 3*********output -> manifest.json
         genmanifest(ConstPath + "/allpairs/" + name + "_case.txt", flag)
 
         print "Excute " + flag + " cases ------------------------->O.K"
         print
-    except Exception,e:
+    except Exception as e:
         print "Excute " + flag + " cases ------------------------->Error"
-        print Exception,":",e
+        print Exception, ":", e
         sys.exit(1)
 
 
@@ -165,25 +216,26 @@ def genCases(selfcomb, name, flag):
         pairs = all_pairs(lists)
         for e, v in enumerate(pairs):
             case = ""
-            for c in range(0,len(v)):
-                case = case + v[c] +"\t"
+            for c in range(0, len(v)):
+                case = case + v[c] + "\t"
             caseFile.write(case.rstrip("\t") + "\n")
         caseFile.close()
         print "Genarate " + flag + " case.txt file ---------------->O.k"
-    except Exception,e:
+    except Exception as e:
         print "Generate " + flag + " case.txt file ---------------->Error"
-        print Exception,":",e
+        print Exception, ":", e
         sys.exit(1)
 
 
 def sourceInit():
     try:
-        if os.path.exists(ConstPath + "/tcs") or os.path.exists(ConstPath + "/apks") or os.path.exists(ConstPath + "/report"):
+        if os.path.exists(ConstPath + "/tcs") or os.path.exists(ConstPath +
+                                                                "/apks") or os.path.exists(ConstPath + "/report"):
             try:
                 shutil.rmtree(ConstPath + "/tcs")
                 shutil.rmtree(ConstPath + "/apks")
                 shutil.rmtree(ConstPath + "/report")
-            except Exception,e:
+            except Exception as e:
                 os.system("rm -rf " + ConstPath + "/tcs/* &>/dev/null")
                 os.system("rm -rf " + ConstPath + "/apks/* &>/dev/null")
                 os.system("rm -rf " + ConstPath + "/report/* &>/dev/null")
@@ -208,18 +260,27 @@ def sourceInit():
                         os.remove(item)
                 else:
                     os.mkdir(ConstPath + "/self")
-                
+
                 if os.path.exists(ConstPath + "/allpairs/selfcomb.txt"):
                     try:
                         os.remove(ConstPath + "/allpairs/selfcomb.txt")
-                    except Exception,e:
-                        os.system("rm -rf " + ConstPath + "/allpairs/selfcomb.txt &>/dev/null")
-                
-                processTest(ConstPath + "/allpairs/" + flag + "/" + seedIn, flag)
+                    except Exception as e:
+                        os.system(
+                            "rm -rf " +
+                            ConstPath +
+                            "/allpairs/selfcomb.txt &>/dev/null")
+
+                processTest(
+                    ConstPath +
+                    "/allpairs/" +
+                    flag +
+                    "/" +
+                    seedIn,
+                    flag)
         End = time.strftime("%Y-%m-%d %H:%M:%S")
         print "End time: " + End
-    except Exception,e:
-        print Exception,":",e
+    except Exception as e:
+        print Exception, ":", e
         sys.exit(1)
 
 if __name__ == "__main__":

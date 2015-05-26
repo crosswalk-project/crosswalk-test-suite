@@ -32,7 +32,9 @@ import unittest
 import os
 import comm
 
+
 class TestCrosswalkApptoolsFunctions(unittest.TestCase):
+
     def test_build_normal(self):
         comm.setUp()
         comm.create(self)

@@ -60,7 +60,8 @@ BUILD_PARAMETERS = None
 BUILD_ROOT = None
 LOG = None
 LOG_LEVEL = logging.DEBUG
-BUILD_TIME = time.strftime('%Y%m%d',time.localtime(time.time()))
+BUILD_TIME = time.strftime('%Y%m%d', time.localtime(time.time()))
+
 
 class ColorFormatter(logging.Formatter):
 
@@ -84,26 +85,29 @@ class ColorFormatter(logging.Formatter):
 
         return logging.Formatter.format(self, record)
 
+
 def replaceUserString(path, fnexp, old_s, new_s):
-    for sub_file in iterfindfiles(path,fnexp):
+    for sub_file in iterfindfiles(path, fnexp):
         try:
-            with open(sub_file,'r') as sub_read_obj:
+            with open(sub_file, 'r') as sub_read_obj:
                 read_string = sub_read_obj.read()
         except IOError as err:
-            LOG.error("Read %s Error : "%sub_file + str(err))
+            LOG.error("Read %s Error : " % sub_file + str(err))
             continue
         if read_string.find(old_s) >= 0:
             try:
-                with open(sub_file,'w') as sub_write_obj:
-                    sub_write_obj.write(re.sub(old_s,new_s,read_string))
+                with open(sub_file, 'w') as sub_write_obj:
+                    sub_write_obj.write(re.sub(old_s, new_s, read_string))
             except IOError as err:
-                LOG.error("Modify %s Error : "%sub_file + str(err))
+                LOG.error("Modify %s Error : " % sub_file + str(err))
                 continue
+
 
 def iterfindfiles(path, fnexp):
     for root, dirs, files in os.walk(path):
         for filename in fnmatch.filter(files, fnexp):
             yield os.path.join(root, filename)
+
 
 def isWindows():
     return sys.platform == "cygwin" or sys.platform.startswith("win")
@@ -154,6 +158,7 @@ def getRandomStr():
         random_str = random_str + str_pool[index]
 
     return random_str
+
 
 def overwriteCopy(src, dest, symlinks=False, ignore=None):
     if not os.path.exists(dest):
@@ -267,6 +272,7 @@ def doCMD(cmd, time_out=DEFAULT_CMD_TIMEOUT, no_check_return=False):
         time.sleep(2)
     return True
 
+
 def replaceKey(file_path, content, key):
     f = open(file_path, "r")
     f_content = f.read()
@@ -279,9 +285,12 @@ def replaceKey(file_path, content, key):
         f.write(f_content)
         f.close()
     else:
-        LOG.error("Fail to replace: %s with: %s in file: %s" % (content, key, file_path))
+        LOG.error(
+            "Fail to replace: %s with: %s in file: %s" %
+            (content, key, file_path))
         return False
     return True
+
 
 def packMobileSpec(app_name=None):
     pack_tool = os.path.join(BUILD_ROOT, "cordova")
@@ -309,12 +318,12 @@ def packMobileSpec(app_name=None):
             return False
 
     if not doCopy(
-            os.path.join(pack_tool, "mobilespec", "CordovaLib"), 
+            os.path.join(pack_tool, "mobilespec", "CordovaLib"),
             os.path.join(mobilespec_src, "platforms", "android", "CordovaLib")):
         return False
 
     if not doCopy(
-            os.path.join(pack_tool, "VERSION"), 
+            os.path.join(pack_tool, "VERSION"),
             os.path.join(mobilespec_src, "platforms", "android")):
         return False
 
@@ -328,7 +337,12 @@ def packMobileSpec(app_name=None):
     if not doCMD(updateproject_cmd, DEFAULT_CMD_TIMEOUT):
         os.chdir(orig_dir)
         return False
-    os.chdir(os.path.join(mobilespec_src, "platforms", "android", "CordovaLib"))
+    os.chdir(
+        os.path.join(
+            mobilespec_src,
+            "platforms",
+            "android",
+            "CordovaLib"))
     if not doCMD(antdebug_cmd, DEFAULT_CMD_TIMEOUT):
         os.chdir(orig_dir)
         return False
@@ -339,9 +353,9 @@ def packMobileSpec(app_name=None):
 
     app_dir = os.path.join(mobilespec_src, "platforms", "android", "out")
     if not doCopy(os.path.join(app_dir, "%s-debug.apk" % app_name),
-            os.path.join(orig_dir, "%s.apk" % app_name)):
+                  os.path.join(orig_dir, "%s.apk" % app_name)):
         if not doCopy(os.path.join(app_dir, "%s-debug-unaligned.apk" % app_name),
-            os.path.join(orig_dir, "%s.apk" % app_name)):
+                      os.path.join(orig_dir, "%s.apk" % app_name)):
             os.chdir(orig_dir)
             return False
     os.chdir(orig_dir)
@@ -359,9 +373,11 @@ def packSampleApp(app_name=None):
     orig_dir = os.getcwd()
     os.chdir(pack_tool)
     if BUILD_PARAMETERS.pkgmode == "shared":
-        pack_cmd = "bin/create " + app_name + " com.example." + app_name + " " + app_name + " --xwalk-shared-library"
+        pack_cmd = "bin/create " + app_name + " com.example." + \
+            app_name + " " + app_name + " --xwalk-shared-library"
     else:
-        pack_cmd = "bin/create " + app_name + " com.example." + app_name + " " + app_name + " --shared"
+        pack_cmd = "bin/create " + app_name + " com.example." + \
+            app_name + " " + app_name + " --shared"
     if not doCMD(pack_cmd, DEFAULT_CMD_TIMEOUT):
         os.chdir(orig_dir)
         return False
@@ -371,18 +387,19 @@ def packSampleApp(app_name=None):
         if not doCMD(getsource_cmd, DEFAULT_CMD_TIMEOUT):
             os.chdir(orig_dir)
             return False
-        if not doRemove(glob.glob(os.path.join(pack_tool, app_name, "assets", "www"))):
+        if not doRemove(
+                glob.glob(os.path.join(pack_tool, app_name, "assets", "www"))):
             os.chdir(orig_dir)
             return False
-        if not doCopy(os.path.join(pack_tool, "Gallery"), 
-                os.path.join(pack_tool, app_name, "assets", "www")):
+        if not doCopy(os.path.join(pack_tool, "Gallery"),
+                      os.path.join(pack_tool, app_name, "assets", "www")):
             os.chdir(orig_dir)
             return False
 
     if checkContains(app_name, "HELLOWORLD"):
-        if not replaceKey(os.path.join(pack_tool, app_name, "assets", "www", "index.html"), 
-                "<a href='http://www.intel.com'>Intel</a>\n</body>",
-                "</body>"):
+        if not replaceKey(os.path.join(pack_tool, app_name, "assets", "www", "index.html"),
+                          "<a href='http://www.intel.com'>Intel</a>\n</body>",
+                          "</body>"):
             os.chdir(orig_dir)
             return False
 
@@ -390,14 +407,36 @@ def packSampleApp(app_name=None):
 
     if BUILD_PARAMETERS.cordovaversion == "4.0":
         if BUILD_PARAMETERS.pkgarch == "x86":
-            cordova_tmp_path = os.path.join(BUILD_ROOT, "cordova", app_name, "build", "outputs", "apk", "%s-x86-debug.apk" % app_name)
+            cordova_tmp_path = os.path.join(
+                BUILD_ROOT,
+                "cordova",
+                app_name,
+                "build",
+                "outputs",
+                "apk",
+                "%s-x86-debug.apk" %
+                app_name)
         else:
-            cordova_tmp_path = os.path.join(BUILD_ROOT, "cordova", app_name, "build", "outputs", "apk", "%s-armv7-debug.apk" % app_name)
+            cordova_tmp_path = os.path.join(
+                BUILD_ROOT,
+                "cordova",
+                app_name,
+                "build",
+                "outputs",
+                "apk",
+                "%s-armv7-debug.apk" %
+                app_name)
 
-        plugin_tool = os.path.join(BUILD_ROOT, "cordova_plugins", "cordova-crosswalk-engine")
+        plugin_tool = os.path.join(
+            BUILD_ROOT,
+            "cordova_plugins",
+            "cordova-crosswalk-engine")
         if not os.path.exists(plugin_tool):
             if not doCopy(
-                    os.path.join(BUILD_PARAMETERS.pkgpacktools, "cordova_plugins", "cordova-crosswalk-engine"),
+                    os.path.join(
+                        BUILD_PARAMETERS.pkgpacktools,
+                        "cordova_plugins",
+                        "cordova-crosswalk-engine"),
                     plugin_tool):
                 return False
             plugin_install_cmd = "plugman install --platform android --project " \
@@ -406,7 +445,13 @@ def packSampleApp(app_name=None):
                 os.chdir(orig_dir)
                 return False
     else:
-        cordova_tmp_path = os.path.join(BUILD_ROOT, "cordova", app_name, "bin", "%s-debug.apk" % app_name)
+        cordova_tmp_path = os.path.join(
+            BUILD_ROOT,
+            "cordova",
+            app_name,
+            "bin",
+            "%s-debug.apk" %
+            app_name)
     pack_cmd = "./cordova/build"
 
     if checkContains(app_name, "REMOTEDEBUGGING"):
@@ -422,29 +467,34 @@ def packSampleApp(app_name=None):
             return False
 
     if not doCopy(cordova_tmp_path,
-            os.path.join(orig_dir, app_name + ".apk")):
+                  os.path.join(orig_dir, app_name + ".apk")):
         os.chdir(orig_dir)
         return False
     os.chdir(orig_dir)
     return True
 
+
 def packMobileSpec_cli(app_name=None):
     project_root = os.path.join(BUILD_ROOT, app_name)
     output = commands.getoutput("cordova -v")
     if output != "5.0.0":
-        LOG.error("Cordova 4.0 build requires Cordova-CLI 5.0.0, install with command: '$ sudo npm install cordova@5.0.0 -g'")
+        LOG.error(
+            "Cordova 4.0 build requires Cordova-CLI 5.0.0, install with command: '$ sudo npm install cordova@5.0.0 -g'")
         return False
 
     plugin_tool = os.path.join(BUILD_ROOT, "cordova-plugin-crosswalk-webview")
-    if not doCopy(os.path.join(BUILD_PARAMETERS.pkgpacktools, "cordova_plugins", "cordova-plugin-crosswalk-webview"), plugin_tool):
+    if not doCopy(os.path.join(BUILD_PARAMETERS.pkgpacktools,
+                               "cordova_plugins", "cordova-plugin-crosswalk-webview"), plugin_tool):
         return False
 
     cordova_mobilespec = os.path.join(BUILD_ROOT, "cordova-mobile-spec")
-    if not doCopy(os.path.join(BUILD_PARAMETERS.pkgpacktools, "mobilespec", "cordova-mobile-spec"), cordova_mobilespec):
+    if not doCopy(os.path.join(BUILD_PARAMETERS.pkgpacktools,
+                               "mobilespec", "cordova-mobile-spec"), cordova_mobilespec):
         return False
 
     cordova_coho = os.path.join(BUILD_ROOT, "cordova-coho")
-    if not doCopy(os.path.join(BUILD_PARAMETERS.pkgpacktools, "mobilespec", "cordova-coho"), cordova_coho):
+    if not doCopy(os.path.join(
+            BUILD_PARAMETERS.pkgpacktools, "mobilespec", "cordova-coho"), cordova_coho):
         return False
 
     orig_dir = os.getcwd()
@@ -454,19 +504,25 @@ def packMobileSpec_cli(app_name=None):
     os.chdir(cordova_mobilespec)
     output = commands.getoutput("git pull").strip("\r\n")
     if output == "Already up-to-date.":
-        if not doCopy(os.path.join(BUILD_PARAMETERS.pkgpacktools, "mobilespec", "mobilespec"), project_root):
+        if not doCopy(os.path.join(
+                BUILD_PARAMETERS.pkgpacktools, "mobilespec", "mobilespec"), project_root):
             return False
     else:
-        node_modules = os.path.join(cordova_mobilespec, "createmobilespec", "node_modules")
+        node_modules = os.path.join(
+            cordova_mobilespec,
+            "createmobilespec",
+            "node_modules")
         os.chdir(os.path.join(cordova_mobilespec, "createmobilespec"))
         install_cmd = "sudo npm install"
         LOG.info("Doing CMD: [ %s ]" % install_cmd)
         run = pexpect.spawn(install_cmd)
 
-        index = run.expect(['password', 'node_modules', pexpect.EOF, pexpect.TIMEOUT])
+        index = run.expect(
+            ['password', 'node_modules', pexpect.EOF, pexpect.TIMEOUT])
         if index == 0:
             run.sendline(BUILD_PARAMETERS.userpassword)
-            index = run.expect(['node_modules', 'password', pexpect.EOF, pexpect.TIMEOUT])
+            index = run.expect(
+                ['node_modules', 'password', pexpect.EOF, pexpect.TIMEOUT])
             if index == 0:
                 print 'The user password is Correctly'
             else:
@@ -504,19 +560,37 @@ def packMobileSpec_cli(app_name=None):
     if not doCMD(pack_cmd, DEFAULT_CMD_TIMEOUT):
         os.chdir(orig_dir)
         return False
-    outputs_dir = os.path.join(project_root, "platforms", "android", "build", "outputs", "apk")
+    outputs_dir = os.path.join(
+        project_root,
+        "platforms",
+        "android",
+        "build",
+        "outputs",
+        "apk")
     if BUILD_PARAMETERS.pkgarch == "x86":
-        cordova_tmp_path = os.path.join(outputs_dir, "%s-x86-debug.apk"%app_name)
-        cordova_tmp_path_spare = os.path.join(outputs_dir, "android-x86-debug.apk")
+        cordova_tmp_path = os.path.join(
+            outputs_dir,
+            "%s-x86-debug.apk" %
+            app_name)
+        cordova_tmp_path_spare = os.path.join(
+            outputs_dir,
+            "android-x86-debug.apk")
     else:
-        cordova_tmp_path = os.path.join(outputs_dir, "%s-armv7-debug.apk"%app_name)
-        cordova_tmp_path_spare = os.path.join(outputs_dir, "android-armv7-debug.apk")
+        cordova_tmp_path = os.path.join(
+            outputs_dir,
+            "%s-armv7-debug.apk" %
+            app_name)
+        cordova_tmp_path_spare = os.path.join(
+            outputs_dir,
+            "android-armv7-debug.apk")
     if os.path.exists(cordova_tmp_path):
-        if not doCopy(cordova_tmp_path, os.path.join(orig_dir, "%s.apk" % app_name)):
+        if not doCopy(
+                cordova_tmp_path, os.path.join(orig_dir, "%s.apk" % app_name)):
             os.chdir(orig_dir)
             return False
     elif os.path.exists(cordova_tmp_path_spare):
-        if not doCopy(cordova_tmp_path_spare, os.path.join(orig_dir, "%s.apk" % app_name)):
+        if not doCopy(
+                cordova_tmp_path_spare, os.path.join(orig_dir, "%s.apk" % app_name)):
             os.chdir(orig_dir)
             return False
     else:
@@ -531,7 +605,8 @@ def packSampleApp_cli(app_name=None):
 
     output = commands.getoutput("cordova -v")
     if output != "5.0.0":
-        LOG.error("Cordova 4.0 build requires Cordova-CLI 5.0.0, install with command: '$ sudo npm install cordova@5.0.0 -g'")
+        LOG.error(
+            "Cordova 4.0 build requires Cordova-CLI 5.0.0, install with command: '$ sudo npm install cordova@5.0.0 -g'")
         return False
 
     plugin_tool = os.path.join(BUILD_ROOT, "cordova_plugins")
@@ -550,10 +625,19 @@ def packSampleApp_cli(app_name=None):
         os.chdir(orig_dir)
         return False
 
-    ### Set activity name as app_name
-    replaceUserString(project_root, 'config.xml', '<widget', '<widget android-activityName="%s"' % app_name)
-    ### Workaround for XWALK-3679
-    replaceUserString(project_root, 'config.xml', '</widget>', '    <allow-navigation href="*" />\n</widget>')
+    # Set activity name as app_name
+    replaceUserString(
+        project_root,
+        'config.xml',
+        '<widget',
+        '<widget android-activityName="%s"' %
+        app_name)
+    # Workaround for XWALK-3679
+    replaceUserString(
+        project_root,
+        'config.xml',
+        '</widget>',
+        '    <allow-navigation href="*" />\n</widget>')
 
     if checkContains(app_name, "GALLERY"):
         getsource_cmd = "git clone https://github.com/blueimp/Gallery"
@@ -563,15 +647,15 @@ def packSampleApp_cli(app_name=None):
         if not doRemove(glob.glob(os.path.join(project_root, "www"))):
             os.chdir(orig_dir)
             return False
-        if not doCopy(os.path.join(BUILD_ROOT, "Gallery"), 
-                os.path.join(project_root, "www")):
+        if not doCopy(os.path.join(BUILD_ROOT, "Gallery"),
+                      os.path.join(project_root, "www")):
             os.chdir(orig_dir)
             return False
 
     if checkContains(app_name, "HELLOWORLD"):
-        if not replaceKey(os.path.join(project_root, "www", "index.html"), 
-                "<a href='http://www.intel.com'>Intel</a>\n</body>",
-                "</body>"):
+        if not replaceKey(os.path.join(project_root, "www", "index.html"),
+                          "<a href='http://www.intel.com'>Intel</a>\n</body>",
+                          "</body>"):
             os.chdir(orig_dir)
             return False
 
@@ -600,25 +684,44 @@ def packSampleApp_cli(app_name=None):
         os.chdir(orig_dir)
         return False
 
-    outputs_dir = os.path.join(project_root, "platforms", "android", "build", "outputs", "apk")
+    outputs_dir = os.path.join(
+        project_root,
+        "platforms",
+        "android",
+        "build",
+        "outputs",
+        "apk")
 
     if BUILD_PARAMETERS.pkgarch == "x86":
-        cordova_tmp_path = os.path.join(outputs_dir, "%s-x86-debug.apk"%app_name)
-        cordova_tmp_path_spare = os.path.join(outputs_dir, "android-x86-debug.apk")
+        cordova_tmp_path = os.path.join(
+            outputs_dir,
+            "%s-x86-debug.apk" %
+            app_name)
+        cordova_tmp_path_spare = os.path.join(
+            outputs_dir,
+            "android-x86-debug.apk")
     else:
-        cordova_tmp_path = os.path.join(outputs_dir, "%s-armv7-debug.apk"%app_name)
-        cordova_tmp_path_spare = os.path.join(outputs_dir, "android-armv7-debug.apk")
+        cordova_tmp_path = os.path.join(
+            outputs_dir,
+            "%s-armv7-debug.apk" %
+            app_name)
+        cordova_tmp_path_spare = os.path.join(
+            outputs_dir,
+            "android-armv7-debug.apk")
 
     if not os.path.exists(cordova_tmp_path):
-        if not doCopy(cordova_tmp_path_spare, os.path.join(orig_dir, "%s.apk" % app_name)):
+        if not doCopy(
+                cordova_tmp_path_spare, os.path.join(orig_dir, "%s.apk" % app_name)):
             os.chdir(orig_dir)
             return False
     else:
-        if not doCopy(cordova_tmp_path, os.path.join(orig_dir, "%s.apk" % app_name)):
+        if not doCopy(
+                cordova_tmp_path, os.path.join(orig_dir, "%s.apk" % app_name)):
             os.chdir(orig_dir)
             return False
     os.chdir(orig_dir)
     return True
+
 
 def packAPP(app_name=None):
     LOG.info("Packing %s" % (app_name))
@@ -746,7 +849,11 @@ def main():
         sys.exit(1)
 
     if not BUILD_PARAMETERS.pkgpacktools:
-        BUILD_PARAMETERS.pkgpacktools = os.path.join(os.getcwd(), "..", "..", "tools")
+        BUILD_PARAMETERS.pkgpacktools = os.path.join(
+            os.getcwd(),
+            "..",
+            "..",
+            "tools")
     BUILD_PARAMETERS.pkgpacktools = os.path.expanduser(
         BUILD_PARAMETERS.pkgpacktools)
 

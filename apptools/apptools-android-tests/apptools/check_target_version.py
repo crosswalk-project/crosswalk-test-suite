@@ -35,7 +35,9 @@ import commands
 import urllib2
 import json
 
+
 class TestCrosswalkApptoolsFunctions(unittest.TestCase):
+
     def test_target_version(self):
         comm.setUp()
         comm.clear("org.xwalk.test")
@@ -43,13 +45,17 @@ class TestCrosswalkApptoolsFunctions(unittest.TestCase):
         androidpath = commands.getstatusoutput(cmd)
         targetversionpath = os.path.dirname(os.path.dirname(androidpath[1]))
         os.chdir(targetversionpath)
-        movepath = os.path.dirname(os.path.dirname(targetversionpath)) + "/new-platforms/"
+        movepath = os.path.dirname(
+            os.path.dirname(targetversionpath)) + "/new-platforms/"
         commands.getstatusoutput("mv platforms/ " + movepath)
         os.chdir(comm.XwalkPath)
         createcmd = comm.PackTools + "crosswalk-app create org.xwalk.test"
         packstatus = commands.getstatusoutput(createcmd)
         os.chdir(movepath + "../")
-        commands.getstatusoutput("mv new-platforms/ " + targetversionpath + "/platforms/")
+        commands.getstatusoutput(
+            "mv new-platforms/ " +
+            targetversionpath +
+            "/platforms/")
         comm.clear("org.xwalk.test")
         self.assertNotEquals(packstatus[0], 0)
         self.assertIn("target version", packstatus[1])

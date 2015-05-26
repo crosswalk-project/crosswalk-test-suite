@@ -29,10 +29,13 @@
 #         Lin, Wanming <wanming.lin@intel.com>
 
 import unittest
-import os, commands
+import os
+import commands
 import comm
 
+
 class TestMobileSpecAppFunctions(unittest.TestCase):
+
     def test_launch(self):
         comm.setUp()
         app_name = "mobilespec"
@@ -41,5 +44,5 @@ class TestMobileSpecAppFunctions(unittest.TestCase):
             comm.app_install(app_name, pkg_name, self)
         comm.app_launch(app_name, pkg_name, self)
 
-if __name__ == '__main__':  
+if __name__ == '__main__':
     unittest.main()

@@ -5,9 +5,15 @@ def main(request, response):
     s = json.JSONDecoder().decode(source)
     url1 = "http://" + s['host'] + ":" + str(s['ports']['http'][1])
     url2 = "http://" + s['host'] + ":" + str(s['ports']['http'][0])
-    response.headers.set("Content-Security-Policy", "font-src http://www.tizen.com http://tizen.org; style-src 'unsafe-inline'")
-    response.headers.set("X-Content-Security-Policy", "font-src http://www.tizen.com http://tizen.org; style-src 'unsafe-inline'")
-    response.headers.set("X-WebKit-CSP", "font-src http://www.tizen.com http://tizen.org; style-src 'unsafe-inline'")
+    response.headers.set(
+        "Content-Security-Policy",
+        "font-src http://www.tizen.com http://tizen.org; style-src 'unsafe-inline'")
+    response.headers.set(
+        "X-Content-Security-Policy",
+        "font-src http://www.tizen.com http://tizen.org; style-src 'unsafe-inline'")
+    response.headers.set(
+        "X-WebKit-CSP",
+        "font-src http://www.tizen.com http://tizen.org; style-src 'unsafe-inline'")
     return """<!DOCTYPE html>
 <!--
 Copyright (c) 2013 Intel Corporation.

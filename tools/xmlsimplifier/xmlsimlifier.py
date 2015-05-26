@@ -65,14 +65,16 @@ try:
     auto_description = CONFIG.get('auto', 'description').split(',')
     manual_attribute = CONFIG.get('manual', 'attribute').split(',')
     manual_description = CONFIG.get('manual', 'description').split(',')
-    auto_capability =  CONFIG.get('auto', 'capability').split(',')
-    manual_capability =  CONFIG.get('manual', 'capability').split(',')
+    auto_capability = CONFIG.get('auto', 'capability').split(',')
+    manual_capability = CONFIG.get('manual', 'capability').split(',')
 
-except ConfigParser.Error, err:
+except ConfigParser.Error as err:
     LOGGER.error(
         "[ Error: fail to parse version info, error: %s ]\n" % err)
 
+
 class ColorFormatter(logging.Formatter):
+
     def __init__(self, msg):
         logging.Formatter.__init__(self, msg)
 
@@ -101,20 +103,22 @@ def simplify(inputfile, outputfile, plat, execu):
         for suite in ep.getiterator('suite'):
             for tset in suite.getiterator('set'):
                 for testcase in tset.getiterator('testcase'):
-                    if (testcase.get('status') == 'approved') or (testcase.get('status') == 'ready'):
-                        if (testcase.get('platform') == 'all') or (testcase.get('platform') == plat) or (testcase.get('platform') == None) or (plat == None):
+                    if (testcase.get('status') == 'approved') or (
+                            testcase.get('status') == 'ready'):
+                        if (testcase.get('platform') == 'all') or (testcase.get('platform') == plat) or (
+                                testcase.get('platform') is None) or (plat is None):
                             if (testcase.get('execution_type') ==
-execu) or (execu == None):
-                                if testcase.get('execution_type') =='auto':
+                                    execu) or (execu is None):
+                                if testcase.get('execution_type') == 'auto':
                                     for key in testcase.keys():
                                         if key not in auto_attribute:
                                             del testcase.attrib[key]
-                                    removeitem(testcase,'auto')
-                                if testcase.get('execution_type') =='manual':
+                                    removeitem(testcase, 'auto')
+                                if testcase.get('execution_type') == 'manual':
                                     for key in testcase.keys():
                                         if key not in manual_attribute:
                                             del testcase.attrib[key]
-                                    removeitem(testcase,'manual')
+                                    removeitem(testcase, 'manual')
                             else:
                                 tset.remove(testcase)
                         else:
@@ -125,9 +129,9 @@ execu) or (execu == None):
         for suite in ep.getiterator('suite'):
             for tset in suite.getiterator('set'):
                 if not tset.getiterator('testcase'):
-                   suite.remove(tset)     
+                    suite.remove(tset)
 
-    except IOError, err:
+    except IOError as err:
         print "[ no xml case found]\n"
         sys.exit(1)
 
@@ -140,45 +144,47 @@ execu) or (execu == None):
             output.write(declaration_text)
             tree = etree.ElementTree(element=suiteparent)
             tree.write(output)
-        cmd = """xmllint --format '%s' > '%s'""" % (outputfile, outputfile+".bak")
+        cmd = """xmllint --format '%s' > '%s'""" % (
+            outputfile, outputfile + ".bak")
         xmllint = os.popen(cmd).read()
         if xmllint == "":
             os.remove(outputfile)
-            os.rename(outputfile+".bak", outputfile)
+            os.rename(outputfile + ".bak", outputfile)
             print "Finished simplified tests.xml,pls check: %s" % outputfile
         else:
             print xmllint
 
-    except IOError, err:
+    except IOError as err:
         print "[ Error: create filtered total result file: %s failed, error: %s ]\n" % (outputfile, err)
 
-def removeitem(testcase,execution_type):
-    if execution_type =='auto':
-        defin_description =auto_description
-        defin_capability =auto_capability
-    if execution_type =='manual':
-        defin_description =manual_description
-        defin_capability =manual_capability
+
+def removeitem(testcase, execution_type):
+    if execution_type == 'auto':
+        defin_description = auto_description
+        defin_capability = auto_capability
+    if execution_type == 'manual':
+        defin_description = manual_description
+        defin_capability = manual_capability
 
     remove_case_childitem = []
     for case_child in testcase.getchildren():
-        if case_child.tag in defin_description :
-            remove_child_em =[]
+        if case_child.tag in defin_description:
+            remove_child_em = []
             for child in case_child.getchildren():
                 if child.tag not in defin_description:
                     remove_child_em.append(child)
             for re_item in remove_child_em:
                 case_child.remove(re_item)
 
-        elif case_child.tag  in defin_capability :
-            remove_child_em =[]
+        elif case_child.tag in defin_capability:
+            remove_child_em = []
             for child in case_child.getchildren():
                 if child.tag not in defin_capability:
                     remove_child_em.append(child)
             for re_item in remove_child_em:
                 case_child.remove(re_item)
         else:
-             remove_case_childitem.append(case_child)
+            remove_case_childitem.append(case_child)
 
     for re_case_item in remove_case_childitem:
         testcase.remove(re_case_item)
@@ -219,15 +225,18 @@ def main():
 
         if len(sys.argv) == 1:
             sys.argv.append("-h")
-     
+
         global PARAMETERS
         (PARAMETERS, args) = opts_parser.parse_args(sys.argv[1:])
 
         if not PARAMETERS.output:
             PARAMETERS.output = PARAMETERS.file
 
-        simplify(PARAMETERS.file, PARAMETERS.output, PARAMETERS.platform, PARAMETERS.execution)
-
+        simplify(
+            PARAMETERS.file,
+            PARAMETERS.output,
+            PARAMETERS.platform,
+            PARAMETERS.execution)
 
     except Exception as e:
         LOG.error("Got wrong options: %s, exit ..." % e)

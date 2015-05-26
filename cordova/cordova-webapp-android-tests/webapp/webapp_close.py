@@ -29,11 +29,15 @@
 #         Lin, Wanming <wanming.lin@intel.com>
 
 import unittest
-import os, sys, commands
+import os
+import sys
+import commands
 import comm
 import time
 
+
 class TestWebAppFunctions(unittest.TestCase):
+
     def test_close(self):
         comm.setUp()
         app_name = "helloworld"
@@ -46,5 +50,5 @@ class TestWebAppFunctions(unittest.TestCase):
             time.sleep(1)
         comm.app_stop(pkg_name, self)
 
-if __name__ == '__main__':  
+if __name__ == '__main__':
     unittest.main()

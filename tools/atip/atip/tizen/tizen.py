@@ -53,26 +53,29 @@ def do_cmd(cmd):
 
     return (cmd_return_code, output)
 
-def get_user_id(mode,device,tizen_user=None):
+
+def get_user_id(mode, device, tizen_user=None):
     cmd = ''
     try:
-       if not tizen_user:
-          tizen_user = 'app'
-       if mode == "SDB" :
-          cmd = "sdb -s %s shell id -u %s" % (device, tizen_user)
-       else:
-          cmd = "ssh %s \"id -u %s\"" % (device, tizen_user)
-       user_info =  do_cmd(cmd)
-       user_id = user_info[1][0]
+        if not tizen_user:
+            tizen_user = 'app'
+        if mode == "SDB":
+            cmd = "sdb -s %s shell id -u %s" % (device, tizen_user)
+        else:
+            cmd = "ssh %s \"id -u %s\"" % (device, tizen_user)
+        user_info = do_cmd(cmd)
+        user_id = user_info[1][0]
     except Exception as e:
-       print "Failed to get user_id: %s" % e 
-       return None
-    return  user_id
-    
-def update_cmd(xw_env,cmd=None):
+        print "Failed to get user_id: %s" % e
+        return None
+    return user_id
+
+
+def update_cmd(xw_env, cmd=None):
     if "app_launcher -l" in cmd:
         cmd = "su - app -c '%s;%s'" % (xw_env, cmd)
     return cmd
+
 
 def get_appid_by_name(app_name=None, platform=None, tizen_user=None):
     mode = "SDB"
@@ -90,19 +93,20 @@ def get_appid_by_name(app_name=None, platform=None, tizen_user=None):
     else:
         device = platform["device"]
 
-    user_id = get_user_id(mode,device,tizen_user)
-    user_is_valid = re.match(r'^[0-9]*$',user_id)
+    user_id = get_user_id(mode, device, tizen_user)
+    user_is_valid = re.match(r'^[0-9]*$', user_id)
     if not user_is_valid:
-       print "User %s does not exist, exit" % tizen_user
+        print "User %s does not exist, exit" % tizen_user
 
-    xw_env = "export DBUS_SESSION_BUS_ADDRESS=unix:path=/run/user/" + str(user_id) + "/dbus/user_bus_socket"
+    xw_env = "export DBUS_SESSION_BUS_ADDRESS=unix:path=/run/user/" + \
+        str(user_id) + "/dbus/user_bus_socket"
 
     if mode == "SSH":
         cmd = "ssh %s \"%s\"" % (
-            device, update_cmd(xw_env,'app_launcher -l'))
+            device, update_cmd(xw_env, 'app_launcher -l'))
     else:
         cmd = "sdb -s %s shell %s" % (
-            device, update_cmd(xw_env,'app_launcher -l'))
+            device, update_cmd(xw_env, 'app_launcher -l'))
 
     (return_code, output) = do_cmd(cmd)
     if return_code != 0:

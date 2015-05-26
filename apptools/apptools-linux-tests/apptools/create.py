@@ -34,7 +34,9 @@ import os
 import commands
 import comm
 
+
 class TestCrosswalkApptoolsFunctions(unittest.TestCase):
+
     def test_dir_exist(self):
         try:
             comm.setUp()
@@ -47,8 +49,8 @@ class TestCrosswalkApptoolsFunctions(unittest.TestCase):
             '''
             self.assertNotEquals(packstatus[0], 0)
             comm.cleanTempData(comm.TEST_PROJECT_COMM)
-        except Exception,e:
-            print Exception,"Create org.xwalk.testlinux error:",e
+        except Exception as e:
+            print Exception, "Create org.xwalk.testlinux error:", e
             sys.exit(1)
 
 if __name__ == '__main__':

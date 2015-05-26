@@ -1,11 +1,15 @@
 #!/usr/bin/env python
-import sys, os, os.path, shutil
+import sys
+import os
+import os.path
+import shutil
 import commands
- 
+
 SCRIPT_PATH = os.path.realpath(__file__)
 ConstPath = os.path.dirname(SCRIPT_PATH)
-ARCH="x86"
-pgNum=0
+ARCH = "x86"
+pgNum = 0
+
 
 def tryRunApp(num, caseDir):
     try:
@@ -38,32 +42,67 @@ def tryRunApp(num, caseDir):
             pgNum = pglines[j][:15].rstrip('-o')
 
             for line in lines:
-                if line.startswith(num) and 'positive' in line and 'PASS' in line and num in pgNum:
+                if line.startswith(
+                        num) and 'positive' in line and 'PASS' in line and num in pgNum:
 
                     print "##########"
                     print num
                     print "##########"
                     print "Install APK ---------------->Start"
                     androidName = pgName.split(".")[-1].split("_")
-                    acivityName = ''.join([i.capitalize() for i in androidName if i])
-                    instatus = commands.getstatusoutput("adb -s " + device + " install -r " + apkDir + "/apks/" + ARCH + "/" + num + "/" + "*.apk")
+                    acivityName = ''.join([i.capitalize()
+                                           for i in androidName if i])
+                    instatus = commands.getstatusoutput(
+                        "adb -s " +
+                        device +
+                        " install -r " +
+                        apkDir +
+                        "/apks/" +
+                        ARCH +
+                        "/" +
+                        num +
+                        "/" +
+                        "*.apk")
                     if instatus[0] == 0:
                         print "Install APK ---------------->O.K"
-                        pmstatus = commands.getstatusoutput("adb -s " + device + " shell pm list packages |grep " + pgName)
+                        pmstatus = commands.getstatusoutput(
+                            "adb -s " +
+                            device +
+                            " shell pm list packages |grep " +
+                            pgName)
                         if pmstatus[0] == 0:
                             print "Find Package in device ---------------->O.K"
-                            launchstatus = commands.getstatusoutput("adb -s " + device + " shell am start -n " + pgName + "/." + acivityName +"Activity")
+                            launchstatus = commands.getstatusoutput(
+                                "adb -s " +
+                                device +
+                                " shell am start -n " +
+                                pgName +
+                                "/." +
+                                acivityName +
+                                "Activity")
                             if launchstatus[0] != 0:
                                 print "Launch APK ---------------->Error"
-                                os.system("adb -s " + device + " uninstall " + pgName)
+                                os.system(
+                                    "adb -s " +
+                                    device +
+                                    " uninstall " +
+                                    pgName)
                                 result = "FAIL"
                                 return result
                             else:
                                 print "Launch APK ---------------->O.K"
-                                stopstatus = commands.getstatusoutput("adb -s " + device + " shell am force-stop " + pgName)
+                                stopstatus = commands.getstatusoutput(
+                                    "adb -s " +
+                                    device +
+                                    " shell am force-stop " +
+                                    pgName)
                                 if stopstatus[0] == 0:
                                     print "Stop APK ---------------->O.K"
-                                    unistatus = commands.getstatusoutput("adb -s " + device + " uninstall " + pgName)
+                                    unistatus = commands.getstatusoutput(
+                                        "adb -s " +
+                                        device +
+                                        " uninstall " +
+                                        pgName)
                                     if unistatus[0] == 0:
                                         print "Uninstall APK ---------------->O.K"
                                         result = "PASS"
@@ -75,11 +114,19 @@ def tryRunApp(num, caseDir):
                                 else:
                                     print "Stop APK ---------------->Error"
                                     result = "FAIL"
-                                    os.system("adb -s " + device + " uninstall " + pgName)
+                                    os.system(
+                                        "adb -s " +
+                                        device +
+                                        " uninstall " +
+                                        pgName)
                                     return result
                         else:
                             print "Find Package in device ---------------->Error"
-                            os.system("adb -s " + device + " uninstall " + pgName)
+                            os.system(
+                                "adb -s " +
+                                device +
+                                " uninstall " +
+                                pgName)
                             result = "FAIL"
                             return result
                     else:
@@ -90,8 +137,7 @@ def tryRunApp(num, caseDir):
                     print "Run negative test ---------------->OK"
                     result = "PASS"
                     return result
-    except Exception,e:
-        print Exception,":",e
+    except Exception as e:
+        print Exception, ":", e
         print "Try run webapp ---------------->Error"
         sys.exit(1)
-

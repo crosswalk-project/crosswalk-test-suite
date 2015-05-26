@@ -27,7 +27,7 @@ def doCMD(cmd):
     while True:
         output_line = cmd_proc.stdout.readline().strip("\r\n")
         cmd_return_code = cmd_proc.poll()
-        if output_line == '' and cmd_return_code != None:
+        if output_line == '' and cmd_return_code is not None:
             break
         sys.stdout.write("%s\n" % output_line)
         sys.stdout.flush()
@@ -55,7 +55,7 @@ def overwriteCopy(src, dest, symlinks=False, ignore=None):
                 s_path_s = os.lstat(s_path)
                 s_path_mode = stat.S_IMODE(s_path_s.st_mode)
                 os.lchmod(d_path, s_path_mode)
-            except Exception, e:
+            except Exception as e:
                 pass
         elif os.path.isdir(s_path):
             overwriteCopy(s_path, d_path, symlinks, ignore)
@@ -71,7 +71,7 @@ def doCopy(src_item=None, dest_item=None):
             if not os.path.exists(os.path.dirname(dest_item)):
                 os.makedirs(os.path.dirname(dest_item))
             shutil.copy2(src_item, dest_item)
-    except Exception, e:
+    except Exception as e:
         return False
 
     return True
@@ -89,18 +89,18 @@ def uninstPKGs():
                     if "Failure" in line:
                         action_status = False
                         break
-    #if os.path.isdir("%s/opt/%s/" % (TEST_PREFIX, PKG_NAME)):
+    # if os.path.isdir("%s/opt/%s/" % (TEST_PREFIX, PKG_NAME)):
         #shutil.rmtree("%s/opt/%s/" % (TEST_PREFIX, PKG_NAME))
     return action_status
 
 
 def instPKGs():
     action_status = True
-    #for root, dirs, files in os.walk(SCRIPT_DIR):
+    # for root, dirs, files in os.walk(SCRIPT_DIR):
     #    for file in files:
     #        if file.endswith(".apk"):
     #            cmd = "%s -s %s install %s" % (ADB_CMD,
-    #                                           PARAMETERS.device, os.path.join(root, file))
+    # PARAMETERS.device, os.path.join(root, file))
     for item in glob.glob("%s/*" % SCRIPT_DIR):
         if item.endswith(".apk"):
             continue
@@ -108,15 +108,23 @@ def instPKGs():
             continue
         else:
             item_name = os.path.basename(item)
-            if not doCopy(item, "%s/opt/%s/%s" % (TEST_PREFIX, PKG_NAME, item_name)):
+            if not doCopy(item, "%s/opt/%s/%s" %
+                          (TEST_PREFIX, PKG_NAME, item_name)):
                 action_status = False
-    os.rename("%s/opt/%s/resources/apk/webappintel.apk" % (TEST_PREFIX, PKG_NAME),"%s/opt/%s/resources/apk/WebApp.apk" % (TEST_PREFIX, PKG_NAME))
+    os.rename(
+        "%s/opt/%s/resources/apk/webappintel.apk" %
+        (TEST_PREFIX, PKG_NAME), "%s/opt/%s/resources/apk/WebApp.apk" %
+        (TEST_PREFIX, PKG_NAME))
     print "Package push to host %s/opt/%s successfully!" % (TEST_PREFIX, PKG_NAME)
     path = "/tmp/Crosswalk_sharedmode.conf"
     if os.path.exists(path):
-        if not doCopy(path, "%s/opt/%s/Crosswalk_sharedmode.conf" % (TEST_PREFIX, PKG_NAME)):
+        if not doCopy(path, "%s/opt/%s/Crosswalk_sharedmode.conf" %
+                      (TEST_PREFIX, PKG_NAME)):
             action_status = False
-        (return_code, output) = doCMD("cat \"%s/opt/%s/Crosswalk_sharedmode.conf\" | grep \"Android_Crosswalk_Path\" | cut -d \"=\" -f 2" % (TEST_PREFIX, PKG_NAME))
+        (
+            return_code, output) = doCMD(
+            "cat \"%s/opt/%s/Crosswalk_sharedmode.conf\" | grep \"Android_Crosswalk_Path\" | cut -d \"=\" -f 2" %
+            (TEST_PREFIX, PKG_NAME))
         for line in output:
             if "Failure" in line:
                 action_status = False
@@ -124,9 +132,10 @@ def instPKGs():
         if not output == []:
             ANDROID_CROSSWALK_PATH = output[0]
             CROSSWALK = os.path.basename(ANDROID_CROSSWALK_PATH)
-            if not doCopy(ANDROID_CROSSWALK_PATH, "%s/opt/%s/resources/installer/%s" % (TEST_PREFIX, PKG_NAME, CROSSWALK)):
-                action_status = False    
-        
+            if not doCopy(ANDROID_CROSSWALK_PATH, "%s/opt/%s/resources/installer/%s" %
+                          (TEST_PREFIX, PKG_NAME, CROSSWALK)):
+                action_status = False
+
     return action_status
 
 
@@ -145,7 +154,7 @@ def main():
             "-t", dest="testprefix", action="store", help="unzip path prefix", default=os.environ["HOME"])
         global PARAMETERS
         (PARAMETERS, args) = opts_parser.parse_args()
-    except Exception, e:
+    except Exception as e:
         print "Got wrong option: %s, exit ..." % e
         sys.exit(1)
 
@@ -167,13 +176,21 @@ def main():
         sys.exit(1)
 
     if PARAMETERS.buninstpkg:
-        os.system("%s -s %s uninstall %s" % (ADB_CMD, PARAMETERS.device, "org.xwalk.runtime.lib"))
-        #if not uninstPKGs():
-            #sys.exit(1)
+        os.system(
+            "%s -s %s uninstall %s" %
+            (ADB_CMD,
+             PARAMETERS.device,
+             "org.xwalk.runtime.lib"))
+        # if not uninstPKGs():
+        # sys.exit(1)
     else:
-        os.system("%s -s %s install -r %s" % (ADB_CMD, PARAMETERS.device, "resources/installer/XWalkRuntimeLib.apk"))
-        #if not instPKGs():
-            #sys.exit(1)
+        os.system(
+            "%s -s %s install -r %s" %
+            (ADB_CMD,
+             PARAMETERS.device,
+             "resources/installer/XWalkRuntimeLib.apk"))
+        # if not instPKGs():
+        # sys.exit(1)
 
 if __name__ == "__main__":
     main()

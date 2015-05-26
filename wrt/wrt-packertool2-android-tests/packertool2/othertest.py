@@ -29,8 +29,11 @@
 #         Hongjuan, Wang<hongjuanx.wang@intel.com>
 
 import unittest
-import os, sys, commands
+import os
+import sys
+import commands
 import comm
+
 
 class TestPackertoolsFunctions(unittest.TestCase):
 
@@ -46,9 +49,9 @@ class TestPackertoolsFunctions(unittest.TestCase):
         manifestPath = comm.ConstPath + "/../testapp/example/manifest.json"
         cmd = "python %smake_apk.py --package=org.xwalk.example --name=example --arch=%s --mode=%s --manifest=%s --undefinedOption=undefined" % \
               (comm.Pck_Tools, comm.ARCH, comm.MODE, manifestPath)
-        #print cmd
+        # print cmd
         packstatus = commands.getstatusoutput(cmd)
-        #print packstatus
+        # print packstatus
         errorInfo = "no such option: --undefinedOption"
         self.assertIn(errorInfo, packstatus[1])
 
@@ -58,10 +61,10 @@ class TestPackertoolsFunctions(unittest.TestCase):
         cmd = "python %smake_apk.py --package=org.xwalk.example --name=example --arch=%s --mode=%s --app-root=%s --app-local-path=index.html" % \
               (comm.Pck_Tools, comm.ARCH, comm.MODE, appRoot)
         packstatus = commands.getstatusoutput(cmd)
-        cmd_ver = "python %smake_apk.py --package=org.xwalk.example --name=example --arch=%s --mode=%s --app-root=%s --app-local-path=index.html --verbose"% \
-              (comm.Pck_Tools, comm.ARCH, comm.MODE, appRoot)
+        cmd_ver = "python %smake_apk.py --package=org.xwalk.example --name=example --arch=%s --mode=%s --app-root=%s --app-local-path=index.html --verbose" % \
+            (comm.Pck_Tools, comm.ARCH, comm.MODE, appRoot)
         packstatus_ver = commands.getstatusoutput(cmd_ver)
         self.assertGreater(len(packstatus_ver[1]), len(packstatus[1]))
 
 if __name__ == '__main__':
-    unittest.main()  
+    unittest.main()

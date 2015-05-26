@@ -31,10 +31,12 @@
 #
 # Author: belem.zhang@intel.com
 
-import os, sys
+import os
+import sys
 from datetime import *
 from lxml import etree as et
 import comm
+
 
 def insert_xml_result(pathname, apkfile, apksize, appname, packagename,
                       launchableactivity, versioncode, versionname, sdkversion, targetsdkversion,
@@ -93,7 +95,12 @@ def insert_xml_result(pathname, apkfile, apksize, appname, packagename,
         if list.strip():
             xasset = et.SubElement(xapk, 'asset')
             xasset.text = list.strip()
-    tree.write(pathname, pretty_print=True, xml_declaration=True, encoding='utf-8')
+    tree.write(
+        pathname,
+        pretty_print=True,
+        xml_declaration=True,
+        encoding='utf-8')
+
 
 def generate_xml_report(pathname):
     tmp = pathname.split('/')[-1]
@@ -103,8 +110,14 @@ def generate_xml_report(pathname):
 
     date = datetime.now().strftime('%Y-%m-%d %H:%M:%S')
     root = et.Element('apks')
-    root.addprevious(et.PI('xml-stylesheet', 'type="text/xsl" href="apk-analyser-result.xsl"'))
+    root.addprevious(
+        et.PI(
+            'xml-stylesheet',
+            'type="text/xsl" href="apk-analyser-result.xsl"'))
     root.attrib['datetime'] = date
     file = et.ElementTree(root)
-    file.write(pathname, pretty_print=True, xml_declaration=True, encoding='utf-8')
-
+    file.write(
+        pathname,
+        pretty_print=True,
+        xml_declaration=True,
+        encoding='utf-8')

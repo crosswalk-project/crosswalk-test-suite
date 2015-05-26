@@ -33,12 +33,14 @@ import os
 import comm
 import commands
 
+
 class TestCrosswalkApptoolsFunctions(unittest.TestCase):
+
     def test_build_normal(self):
         comm.setUp()
         comm.create(self)
         os.chdir('org.xwalk.test')
-        buildcmd =  comm.PackTools + "crosswalk-app build"
+        buildcmd = comm.PackTools + "crosswalk-app build"
         comm.build(self, buildcmd)
         comm.clear("org.xwalk.test")
 
@@ -46,7 +48,7 @@ class TestCrosswalkApptoolsFunctions(unittest.TestCase):
         comm.setUp()
         comm.create(self)
         os.chdir('org.xwalk.test')
-        buildcmd =  comm.PackTools + "crosswalk-app build release"
+        buildcmd = comm.PackTools + "crosswalk-app build release"
         comm.build(self, buildcmd)
         comm.clear("org.xwalk.test")
 

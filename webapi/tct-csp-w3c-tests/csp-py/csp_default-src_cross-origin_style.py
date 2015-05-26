@@ -51,7 +51,7 @@ Authors:
     <script src="../resources/testharness.js"></script>
     <script src="../resources/testharnessreport.js"></script>
     <link rel="stylesheet" type="text/css" href='""" + url1 + """/tests/csp/support/w3c/canvas-index.css'/>
-    <link rel="stylesheet" type="text/css" href='""" + url2+ """/tests/csp/support/w3c/a-green.css'/>
+    <link rel="stylesheet" type="text/css" href='""" + url2 + """/tests/csp/support/w3c/a-green.css'/>
     <link rel="stylesheet" type="text/css" href="support/blue-100x100.css"/>
     <style>
       #test-green {

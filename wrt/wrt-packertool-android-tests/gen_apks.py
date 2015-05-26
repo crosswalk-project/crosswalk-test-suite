@@ -3,8 +3,14 @@
 # Author:
 #         Li, Jiajia <jiajiax.li@intel.com>
 
-import sys, os, os.path, shutil, time
-import commands, traceback, glob
+import sys
+import os
+import os.path
+import shutil
+import time
+import commands
+import traceback
+import glob
 import threading
 import time
 import logging
@@ -16,10 +22,10 @@ ConstPath = os.path.dirname(SCRIPT_PATH)
 
 LOG = None
 LOG_LEVEL = logging.DEBUG
-BUILD_TIME = time.strftime('%Y%m%d',time.localtime(time.time()))
+BUILD_TIME = time.strftime('%Y%m%d', time.localtime(time.time()))
 DEFAULT_CMD_TIMEOUT = 1200
 #RES_STDICT = {"positive":0,"negative":1}
-RESULT_DIR = os.path.join(ConstPath,"apks")
+RESULT_DIR = os.path.join(ConstPath, "apks")
 MAX_RUNNING_THREAD_NUM = 12
 
 
@@ -39,7 +45,7 @@ class ColorFormatter(logging.Formatter):
             msg = "\33[07m" + msg + "\033[0m"
         levelname = record.levelname
         if levelname in colors:
-            msg_color = "\033[0;%dm" % ( 
+            msg_color = "\033[0;%dm" % (
                 31 + colors[levelname]) + msg + "\033[0m"
             record.msg = msg_color
 
@@ -50,7 +56,7 @@ def doCMDWithOutput(cmd, time_out=DEFAULT_CMD_TIMEOUT):
     LOG.info("Doing CMD: [ %s ]" % cmd)
     pre_time = time.time()
     output = []
-    cmd_return_code = 1 
+    cmd_return_code = 1
     cmd_proc = subprocess.Popen(
         cmd, stdout=subprocess.PIPE, stderr=subprocess.STDOUT, shell=True)
 
@@ -75,19 +81,17 @@ def doCMDWithOutput(cmd, time_out=DEFAULT_CMD_TIMEOUT):
     return (cmd_return_code, output)
 
 
-
 def init_env(arch_arg):
 
     global RES_FILE
     global RES_ARCH_DIR
 
-    RES_ARCH_DIR = os.path.join(RESULT_DIR,arch_arg)
-    RES_FILE = os.path.join(RESULT_DIR,arch_arg,"Pkg_result.txt")
+    RES_ARCH_DIR = os.path.join(RESULT_DIR, arch_arg)
+    RES_FILE = os.path.join(RESULT_DIR, arch_arg, "Pkg_result.txt")
 
     if os.path.exists(RES_ARCH_DIR):
         shutil.rmtree(RES_ARCH_DIR)
 
-    
     os.makedirs(RES_ARCH_DIR)
     os.mknod(RES_FILE)
 
@@ -107,7 +111,7 @@ def ge_apks(suite_dir, arch_arg, res_arch_dir):
     #manifest_path = os.path.join(suite_dir, "manifest.json")
     res_suite_dir = os.path.join(res_arch_dir, suitename_without_flag)
 
-    #if not os.path.exists(manifest_path):
+    # if not os.path.exists(manifest_path):
     #    LOG.error("%s not exists !!!" % manifest_path)
     #    ores_file.write(suitename_without_flag + "\t" + flag + "\t" + "Manifest not exists !!!" + "\n")
     #    return
@@ -123,13 +127,15 @@ def ge_apks(suite_dir, arch_arg, res_arch_dir):
             if 'target-dir' in command:
                 resdir_name = command.split('"')[-2]
 
-    if resdir_name != None and resdir_name != './' and os.path.exists(resdir_name + "/Intel_" + BUILD_PARAMETERS.pkgarch + ".apk"):
-        #for eapk in glob.glob(resdir_name + "/*.apk"):
+    if resdir_name is not None and resdir_name != './' and os.path.exists(
+            resdir_name + "/Intel_" + BUILD_PARAMETERS.pkgarch + ".apk"):
+        # for eapk in glob.glob(resdir_name + "/*.apk"):
         os.remove(resdir_name + "/Intel_" + BUILD_PARAMETERS.pkgarch + ".apk")
-    
+
     status, info = doCMDWithOutput(cmd)
 
-    if (status == 0 and flag == 'positive') or (status != 0 and flag == 'negative'):
+    if (status == 0 and flag == 'positive') or (
+            status != 0 and flag == 'negative'):
         result = "PASS"
     else:
         result = "FAIL"
@@ -137,22 +143,35 @@ def ge_apks(suite_dir, arch_arg, res_arch_dir):
     if status != 0:
         shutil.rmtree(res_suite_dir)
     else:
-        if resdir_name != None and resdir_name != './' and os.path.exists(resdir_name + "/Intel_" + BUILD_PARAMETERS.pkgarch + ".apk"):
-            shutil.move(resdir_name + "/Intel_" + BUILD_PARAMETERS.pkgarch + ".apk", res_suite_dir)
-        
-    
+        if resdir_name is not None and resdir_name != './' and os.path.exists(
+                resdir_name + "/Intel_" + BUILD_PARAMETERS.pkgarch + ".apk"):
+            shutil.move(
+                resdir_name +
+                "/Intel_" +
+                BUILD_PARAMETERS.pkgarch +
+                ".apk",
+                res_suite_dir)
 
-    ores_file.write(suitename_without_flag + "\t"  + flag + "\t" + result + "\n")
+    ores_file.write(
+        suitename_without_flag +
+        "\t" +
+        flag +
+        "\t" +
+        result +
+        "\n")
 
     if result == "PASS":
-        LOG.info("Built Done: [ %s %s %s %s ] !!! "%(suitename_without_flag, flag, result, status))
+        LOG.info(
+            "Built Done: [ %s %s %s %s ] !!! " %
+            (suitename_without_flag, flag, result, status))
     else:
-        LOG.error("Built Done: [ %s %s %s %s ] !!! "%(suitename_without_flag, flag, result, status))
-        
+        LOG.error(
+            "Built Done: [ %s %s %s %s ] !!! " %
+            (suitename_without_flag, flag, result, status))
+
     if threading.activeCount() >= MAX_RUNNING_THREAD_NUM:
         max_num.release()
 
-    
 
 if __name__ == "__main__":
 
@@ -199,23 +218,36 @@ if __name__ == "__main__":
             ConstPath, "..", "..", "tools")
     BUILD_PARAMETERS.pkgpacktools = os.path.expanduser(
         BUILD_PARAMETERS.pkgpacktools)
-    pkg_script = os.path.join(BUILD_PARAMETERS.pkgpacktools, 'crosswalk', 'make_apk.py')
-
+    pkg_script = os.path.join(
+        BUILD_PARAMETERS.pkgpacktools,
+        'crosswalk',
+        'make_apk.py')
 
     init_env(BUILD_PARAMETERS.pkgarch)
 
-    ores_file = open(RES_FILE,'w')
+    ores_file = open(RES_FILE, 'w')
 
     max_num = threading.Semaphore(MAX_RUNNING_THREAD_NUM)
-    for suite in os.listdir(os.path.join(ConstPath, 'tcs', BUILD_PARAMETERS.pkgarch)):
-        suite_abspath = os.path.join(ConstPath, 'tcs', BUILD_PARAMETERS.pkgarch, suite)
-        pack_threads.append(threading.Thread(target=ge_apks, args=(suite_abspath, BUILD_PARAMETERS.pkgarch, RES_ARCH_DIR)))
+    for suite in os.listdir(
+            os.path.join(ConstPath, 'tcs', BUILD_PARAMETERS.pkgarch)):
+        suite_abspath = os.path.join(
+            ConstPath,
+            'tcs',
+            BUILD_PARAMETERS.pkgarch,
+            suite)
+        pack_threads.append(
+            threading.Thread(
+                target=ge_apks,
+                args=(
+                    suite_abspath,
+                    BUILD_PARAMETERS.pkgarch,
+                    RES_ARCH_DIR)))
 
     for sthread in pack_threads:
-        #if max_num.acquire():
+        # if max_num.acquire():
         sthread.daemon = True
         sthread.start()
-        #if len(threading.enumerate()) < 3:
+        # if len(threading.enumerate()) < 3:
         #    max_num.release()
 
     for sthread in pack_threads:

@@ -26,15 +26,16 @@
 # Authors:
 #         Fan,Weiwei <weiwix.fan@intel.com>
 
+
 def main(request, response):
-  response.headers.update([("Access-Control-Allow-Origin", request.headers["host"]),
-                           ("Cache-Control", "no-cache"),
-                           ("Pragma", "no-cache"),
-                           ("Content-Type", "text/plain")
-                         ])
-  get_message = request.GET.first("message", "");
-  post_message = request.POST.first("message", "");
-  if get_message == "test" or post_message == "test":
-    return "test"
-  else:
-    return ""
+    response.headers.update([("Access-Control-Allow-Origin", request.headers["host"]),
+                             ("Cache-Control", "no-cache"),
+                             ("Pragma", "no-cache"),
+                             ("Content-Type", "text/plain")
+                             ])
+    get_message = request.GET.first("message", "")
+    post_message = request.POST.first("message", "")
+    if get_message == "test" or post_message == "test":
+        return "test"
+    else:
+        return ""

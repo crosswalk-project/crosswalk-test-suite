@@ -34,10 +34,27 @@ import commands
 import shutil
 import comm
 
+
 def generate_cmd():
     comm.setUp()
-    positive_data = ['org.xwalk.tests', 'org.xwalk.t1234', 'org.example.xwal_', 'org.example.te_st', 'or_g.example.xwalk', 'org000.example.xwalk', 'org.example123.xwalk']
-    negative_data = ['org.xwalk', 'test', 'org.example.1234test', 'org.example.1234', '123org.example.xwalk', 'org.123example.xwalk', 'org.example._xwalk', 'org.xwalk.Tests', '_org.example.xwalk']
+    positive_data = [
+        'org.xwalk.tests',
+        'org.xwalk.t1234',
+        'org.example.xwal_',
+        'org.example.te_st',
+        'or_g.example.xwalk',
+        'org000.example.xwalk',
+        'org.example123.xwalk']
+    negative_data = [
+        'org.xwalk',
+        'test',
+        'org.example.1234test',
+        'org.example.1234',
+        '123org.example.xwalk',
+        'org.123example.xwalk',
+        'org.example._xwalk',
+        'org.xwalk.Tests',
+        '_org.example.xwalk']
     flag = ''
     num = 0
     os.chdir(comm.ConstPath + '/../')
@@ -48,17 +65,20 @@ def generate_cmd():
     for i in positive_data:
         num = num + 1
         flag = 'positive' + str(num)
-        cmd = flag + '\tcrosswalk-app create ' + i + ' --android-crosswalk=' + '\n'
-        #print cmd
+        cmd = flag + '\tcrosswalk-app create ' + \
+            i + ' --android-crosswalk=' + '\n'
+        # print cmd
         fp.write(cmd)
     for j in negative_data:
         num = num + 1
         flag = 'negative' + str(num)
-        cmd = flag + '\tcrosswalk-app create ' + j + ' --android-crosswalk=' + '\n'
+        cmd = flag + '\tcrosswalk-app create ' + \
+            j + ' --android-crosswalk=' + '\n'
 
-        #print cmd
+        # print cmd
         fp.write(cmd)
     fp.close()
+
 
 def generate_unittest():
     try:
@@ -66,9 +86,9 @@ def generate_unittest():
         fp = open(comm.ConstPath + '/../report/cmd.txt')
         if os.path.exists(comm.ConstPath + "/pkgName.py"):
             os.remove(comm.ConstPath + "/pkgName.py")
-        testfile = open(comm.ConstPath + "/pkgName.py" ,'a+')
-        testTitle = '''#!/usr/bin/env python 
-# coding=utf-8 
+        testfile = open(comm.ConstPath + "/pkgName.py", 'a+')
+        testTitle = '''#!/usr/bin/env python
+# coding=utf-8
 #
 # Copyright (c) 2015 Intel Corporation.
 #
@@ -98,31 +118,37 @@ def generate_unittest():
 # Authors:
 #         Hongjuan, Wang<hongjuanx.wang@intel.com>'''
         testfile.write(testTitle + "\n")
-        testfile.write("\nimport random,os,sys,unittest,allpairs \nreload(sys) \nsys.setdefaultencoding( \"utf-8\" ) \nclass TestCaseUnit(unittest.TestCase): \n ")
+        testfile.write(
+            "\nimport random,os,sys,unittest,allpairs \nreload(sys) \nsys.setdefaultencoding( \"utf-8\" ) \nclass TestCaseUnit(unittest.TestCase): \n ")
         lines = fp.readlines()
         for line in lines:
             item = line.strip('\t\n')
             flag = item[:10].strip()
             cmd = item[10:].strip()
-            #print flag, cmd[cmd.index("create")+6:].strip()[-5:]
-            casenum = "\n  def test_pkgName_" + flag + "(self):\n     self.assertEqual(\"PASS\", allpairs.tryRunApp(\"" + flag +"\", \"" + cmd+ "\"))"+ "\n"
+            # print flag, cmd[cmd.index("create")+6:].strip()[-5:]
+            casenum = "\n  def test_pkgName_" + flag + \
+                "(self):\n     self.assertEqual(\"PASS\", allpairs.tryRunApp(\"" + \
+                flag + "\", \"" + cmd + "\"))" + "\n"
             testfile.write(casenum)
             testfile.flush()
         testfile.write("\nif __name__ == '__main__':\n    unittest.main()")
         fp.close()
         testfile.close()
         os.system("chmod +x " + comm.ConstPath + "/pkgName.py")
-    except Exception,e:
-        print Exception,"Generate pkgName.py error:",e
+    except Exception as e:
+        print Exception, "Generate pkgName.py error:", e
         sys.exit(1)
+
 
 def tryRunApp(item, cmd):
     try:
         comm.setUp()
         os.chdir(comm.XwalkPath)
-        package = cmd[cmd.index("create")+6:cmd.index("--android-crosswalk")].strip()
+        package = cmd[
+            cmd.index("create") +
+            6:cmd.index("--android-crosswalk")].strip()
         exec_cmd = comm.PackTools + cmd + comm.crosswalkVersion
-        #print exec_cmd
+        # print exec_cmd
         if 'negative' in item:
             packstatus = commands.getstatusoutput(exec_cmd)
             if packstatus[0] != 0:
@@ -147,8 +173,8 @@ def tryRunApp(item, cmd):
                 comm.clear(package)
                 result = 'FAIL'
                 return result
-    except Exception,e:
-        print Exception,"Generate pkgName.py error:",e
+    except Exception as e:
+        print Exception, "Generate pkgName.py error:", e
         sys.exit(1)
 
 if __name__ == '__main__':

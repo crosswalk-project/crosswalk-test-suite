@@ -35,7 +35,9 @@ import subprocess
 import comm
 import time
 
+
 class TestPackertoolsFunctions(unittest.TestCase):
+
     def test_temp_hostApp(self):
         comm.setUp()
         cmd = "python %smake_apk.py --package=org.xwalk.example --name=example --arch=%s --mode=%s --app-url=https://crosswalk-project.org/" % \

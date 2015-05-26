@@ -60,7 +60,7 @@ def setUp():
     crosswalkVersion = vp.read().strip("\n\t")
     vp.close()
 
-    PackTools = ConstPath +  "/../tools/crosswalk-app-tools/src/"
+    PackTools = ConstPath + "/../tools/crosswalk-app-tools/src/"
 
     XwalkPath = ConstPath + "/../tools/"
     if "crosswalk-app-tools" not in os.listdir(XwalkPath):
@@ -70,21 +70,26 @@ def setUp():
         print "Please check if the Crosswalk Binary exists in " + ConstPath + "/../tools/"
         sys.exit(1)
 
+
 def clear(pkg):
     if os.path.exists(ConstPath + "/../tools/" + pkg):
         try:
             shutil.rmtree(XwalkPath + pkg)
-        except Exception,e:
+        except Exception as e:
             os.system("rm -rf " + XwalkPath + pkg + " &>/dev/null")
+
 
 def create(self):
     clear("org.xwalk.test")
     setUp()
     os.chdir(XwalkPath)
-    cmd = PackTools + "crosswalk-app create org.xwalk.test --android-crosswalk=" + crosswalkVersion
+    cmd = PackTools + \
+        "crosswalk-app create org.xwalk.test --android-crosswalk=" + \
+        crosswalkVersion
     packstatus = commands.getstatusoutput(cmd)
     self.assertEquals(packstatus[0], 0)
     self.assertIn("org.xwalk.test", os.listdir(os.getcwd()))
+
 
 def build(self, cmd):
     buildstatus = commands.getstatusoutput(cmd)
@@ -98,15 +103,16 @@ def build(self, cmd):
         if "x86" in apks[i]:
             self.assertIn("x86", apks[i])
             if i < len(os.listdir(os.getcwd())):
-                self.assertIn("arm", apks[i-1])
+                self.assertIn("arm", apks[i - 1])
             else:
-                self.assertIn("arm", apks[i+1])
+                self.assertIn("arm", apks[i + 1])
         elif "arm" in apks[i]:
             self.assertIn("arm", apks[i])
             if i < len(os.listdir(os.getcwd())):
-                self.assertIn("x86", apks[i-1])
+                self.assertIn("x86", apks[i - 1])
             else:
-                self.assertIn("x86", apks[i+1])
+                self.assertIn("x86", apks[i + 1])
+
 
 def update(self, cmd):
     updatestatus = commands.getstatusoutput(cmd)
@@ -114,7 +120,7 @@ def update(self, cmd):
     self.assertNotIn("ERROR:", updatestatus[1])
     version = updatestatus[1].split('\n')[-1].split(' ')[-1][1:-1]
     if not cachedir:
-        namelist = os.listdir(os.getcwd())        
+        namelist = os.listdir(os.getcwd())
     else:
         newcachedir = os.environ.get('CROSSWALK_APP_TOOLS_CACHE_DIR')
         os.chdir(newcachedir)
@@ -124,39 +130,67 @@ def update(self, cmd):
     self.assertIn(crosswalk, namelist)
     return version
 
+
 def run(self):
     setUp()
     apks = os.listdir(os.getcwd())
     for apk in apks:
         if ARCH in apk:
-            inststatus = commands.getstatusoutput('adb -s ' + device + ' install -r ' + os.getcwd() + '/' + apk)
-            #print inststatus
+            inststatus = commands.getstatusoutput(
+                'adb -s ' +
+                device +
+                ' install -r ' +
+                os.getcwd() +
+                '/' +
+                apk)
+            # print inststatus
             self.assertEquals(inststatus[0], 0)
             self.assertIn("Success", inststatus[1])
-            pmstatus = commands.getstatusoutput('adb -s ' + device + ' shell pm list package |grep org.xwalk.test')
+            pmstatus = commands.getstatusoutput(
+                'adb -s ' +
+                device +
+                ' shell pm list package |grep org.xwalk.test')
             self.assertEquals(pmstatus[0], 0)
-            launstatus = commands.getstatusoutput('adb -s ' + device + ' shell am start -n org.xwalk.test/.TestActivity')
+            launstatus = commands.getstatusoutput(
+                'adb -s ' +
+                device +
+                ' shell am start -n org.xwalk.test/.TestActivity')
             self.assertEquals(launstatus[0], 0)
-            stopstatus = commands.getstatusoutput('adb -s ' + device + ' shell am force-stop org.xwalk.test')
+            stopstatus = commands.getstatusoutput(
+                'adb -s ' +
+                device +
+                ' shell am force-stop org.xwalk.test')
             self.assertEquals(stopstatus[0], 0)
-            uninstatus = commands.getstatusoutput('adb -s ' + device + ' uninstall org.xwalk.test')
+            uninstatus = commands.getstatusoutput(
+                'adb -s ' +
+                device +
+                ' uninstall org.xwalk.test')
             self.assertEquals(uninstatus[0], 0)
 
+
 def channel(self, channel):
-    createcmd = PackTools + "crosswalk-app create org.xwalk.test --android-crosswalk=" + channel
+    createcmd = PackTools + \
+        "crosswalk-app create org.xwalk.test --android-crosswalk=" + channel
     packstatus = commands.getstatusoutput(createcmd)
     self.assertEquals(packstatus[0], 0)
     self.assertIn(channel, packstatus[1])
-    crosswalklist = urllib2.urlopen('https://download.01.org/crosswalk/releases/crosswalk/android/' + channel + '/').read()
+    crosswalklist = urllib2.urlopen(
+        'https://download.01.org/crosswalk/releases/crosswalk/android/' +
+        channel +
+        '/').read()
     fp = open('test', 'w')
     fp.write(crosswalklist)
     fp.close()
-    line = commands.getstatusoutput("cat test|sed -n  '/src\=\"\/icons\/folder.gif\"/=' |sed -n '$p'")[1].strip()
-    cmd = "cat test |sed -n '%dp' |awk -F 'href=' '{print $2}' |awk -F '\"|/' '{print $2}'" % int(line)
+    line = commands.getstatusoutput(
+        "cat test|sed -n  '/src\=\"\/icons\/folder.gif\"/=' |sed -n '$p'")[1].strip()
+    cmd = "cat test |sed -n '%dp' |awk -F 'href=' '{print $2}' |awk -F '\"|/' '{print $2}'" % int(
+        line)
     version = commands.getstatusoutput(cmd)[1]
     if not '.' in version:
-        line = commands.getstatusoutput("tac test|sed -n  '/src\=\"\/icons\/folder.gif\"/=' |sed -n '2p'")[1].strip()
-        cmd = "tac test |sed -n '%dp' |awk -F 'href=' '{print $2}' |awk -F '\"|/' '{print $2}'" % int(line)
+        line = commands.getstatusoutput(
+            "tac test|sed -n  '/src\=\"\/icons\/folder.gif\"/=' |sed -n '2p'")[1].strip()
+        cmd = "tac test |sed -n '%dp' |awk -F 'href=' '{print $2}' |awk -F '\"|/' '{print $2}'" % int(
+            line)
         version = commands.getstatusoutput(cmd)[1]
     commands.getstatusoutput("rm -rf test")
     crosswalk = 'crosswalk-{}.zip'.format(version)

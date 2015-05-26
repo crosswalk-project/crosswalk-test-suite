@@ -1,7 +1,9 @@
 def main(request, response):
     _URL = request.url
-    _CSP = "default-src " + _URL[:_URL.index('/csp')+1] + " http://www.tizen.com;  style-src 'unsafe-inline'"
-    _CSSURL = _URL[:_URL.index('/csp')+1] +"csp/support/w3c/CanvasTest.ttf"
+    _CSP = "default-src " + \
+        _URL[:_URL.index('/csp') + 1] + \
+        " http://www.tizen.com;  style-src 'unsafe-inline'"
+    _CSSURL = _URL[:_URL.index('/csp') + 1] + "csp/support/w3c/CanvasTest.ttf"
     print _CSSURL
     response.headers.set("Content-Security-Policy", _CSP)
     response.headers.set("X-Content-Security-Policy", _CSP)

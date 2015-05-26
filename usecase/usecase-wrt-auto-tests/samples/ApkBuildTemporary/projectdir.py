@@ -35,6 +35,7 @@ import commands
 import shutil
 import comm
 
+
 class TestPackertoolsFunctions(unittest.TestCase):
 
     def test_projectdir_antbuild(self):
@@ -43,15 +44,15 @@ class TestPackertoolsFunctions(unittest.TestCase):
             try:
                 shutil.rmtree(comm.Pck_Tools + "example")
                 os.remove(comm.Pck_Tools + comm.AppName)
-            except Exception,e:
-                os.system("rm -rf "  + comm.Pck_Tools + "example &>/dev/null")
-                os.system("rm -rf "  + comm.Pck_Tools + "*apk &>/dev/null")
+            except Exception as e:
+                os.system("rm -rf " + comm.Pck_Tools + "example &>/dev/null")
+                os.system("rm -rf " + comm.Pck_Tools + "*apk &>/dev/null")
         os.chdir(comm.Pck_Tools)
         manifestPath = comm.ConstPath + "/res/manifest.json"
         cmd = "python make_apk.py --package=org.xwalk.example --arch=%s --mode=%s --manifest=%s --project-dir=example" % \
               (comm.ARCH, comm.MODE, manifestPath)
         packstatus = commands.getstatusoutput(cmd)
-        self.assertEqual(packstatus[0] ,0)
+        self.assertEqual(packstatus[0], 0)
         os.remove(comm.Pck_Tools + comm.AppName)
         buildDir = comm.Pck_Tools + "example/Example"
         buildList = os.listdir(buildDir)
@@ -59,24 +60,48 @@ class TestPackertoolsFunctions(unittest.TestCase):
         self.assertIn("res", buildList)
         self.assertIn("bin", buildList)
         self.assertIn("AndroidManifest.xml", buildList)
-        buildstatus = commands.getstatusoutput("ant release -f " + buildDir + "/build.xml")
-        self.assertEqual(buildstatus[0] ,0)
+        buildstatus = commands.getstatusoutput(
+            "ant release -f " +
+            buildDir +
+            "/build.xml")
+        self.assertEqual(buildstatus[0], 0)
         apkName = "Example-release.apk"
         self.assertIn(apkName, os.listdir(buildDir + "/bin"))
-        shutil.copyfile(buildDir + "/bin/" + apkName, comm.Pck_Tools + comm.AppName)
-        inststatus = commands.getstatusoutput("adb -s " + comm.device + " install -r " + comm.AppName)
+        shutil.copyfile(
+            buildDir +
+            "/bin/" +
+            apkName,
+            comm.Pck_Tools +
+            comm.AppName)
+        inststatus = commands.getstatusoutput(
+            "adb -s " +
+            comm.device +
+            " install -r " +
+            comm.AppName)
         self.assertEquals(0, inststatus[0])
         print "Install APK ----------------> OK"
-        pmstatus = commands.getstatusoutput("adb -s " + comm.device + " shell pm list packages |grep org.xwalk.example")
+        pmstatus = commands.getstatusoutput(
+            "adb -s " +
+            comm.device +
+            " shell pm list packages |grep org.xwalk.example")
         self.assertEquals(0, pmstatus[0])
         print "Find Package in comm.device ---------------->O.K"
-        launchstatus = commands.getstatusoutput("adb -s " + comm.device + " shell am start -n org.xwalk.example/.ExampleActivity")
+        launchstatus = commands.getstatusoutput(
+            "adb -s " +
+            comm.device +
+            " shell am start -n org.xwalk.example/.ExampleActivity")
         self.assertEquals(0, launchstatus[0])
         print "Launch APK ---------------->OK"
-        stopstatus = commands.getstatusoutput("adb -s " + comm.device + " shell am force-stop org.xwalk.example")
+        stopstatus = commands.getstatusoutput(
+            "adb -s " +
+            comm.device +
+            " shell am force-stop org.xwalk.example")
         if stopstatus[0] == 0:
             print "Stop APK ---------------->O.K"
-            unistatus = commands.getstatusoutput("adb -s " + comm.device + " uninstall org.xwalk.example")
+            unistatus = commands.getstatusoutput(
+                "adb -s " +
+                comm.device +
+                " uninstall org.xwalk.example")
             self.assertEquals(0, unistatus[0])
             print "Uninstall APK ---------------->O.K"
         else:
@@ -86,9 +111,9 @@ class TestPackertoolsFunctions(unittest.TestCase):
             try:
                 shutil.rmtree(comm.Pck_Tools + "example")
                 os.remove(comm.Pck_Tools + comm.AppName)
-            except Exception,e:
-                os.system("rm -rf "  + comm.Pck_Tools + "example &>/dev/null")
-                os.system("rm -rf "  + comm.Pck_Tools + "*apk &>/dev/null")
+            except Exception as e:
+                os.system("rm -rf " + comm.Pck_Tools + "example &>/dev/null")
+                os.system("rm -rf " + comm.Pck_Tools + "*apk &>/dev/null")
 
 if __name__ == '__main__':
     unittest.main()

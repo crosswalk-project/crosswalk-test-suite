@@ -1,10 +1,16 @@
 def main(request, response):
     _URL = request.url
-    _CSSURL = _URL[:_URL.index('/csp')+1] +"csp/support/w3c/CanvasTest.ttf"
+    _CSSURL = _URL[:_URL.index('/csp') + 1] + "csp/support/w3c/CanvasTest.ttf"
     print _CSSURL
-    response.headers.set("Content-Security-Policy", "default-src http://www.tizen.com http://tizen.org; style-src 'unsafe-inline'")
-    response.headers.set("X-Content-Security-Policy", "default-src http://www.tizen.com http://tizen.org; style-src 'unsafe-inline'")
-    response.headers.set("X-WebKit-CSP", "default-src http://www.tizen.com http://tizen.org; style-src 'unsafe-inline'")
+    response.headers.set(
+        "Content-Security-Policy",
+        "default-src http://www.tizen.com http://tizen.org; style-src 'unsafe-inline'")
+    response.headers.set(
+        "X-Content-Security-Policy",
+        "default-src http://www.tizen.com http://tizen.org; style-src 'unsafe-inline'")
+    response.headers.set(
+        "X-WebKit-CSP",
+        "default-src http://www.tizen.com http://tizen.org; style-src 'unsafe-inline'")
     return """<!DOCTYPE html>
 <!--
 Copyright (c) 2013 Intel Corporation.

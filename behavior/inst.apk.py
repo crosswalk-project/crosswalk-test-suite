@@ -22,7 +22,7 @@ def doCMD(cmd):
         cmd, stdout=subprocess.PIPE, stderr=subprocess.PIPE, shell=True)
     while True:
         cmd_return_code = cmd_proc.poll()
-        if cmd_return_code != None:
+        if cmd_return_code is not None:
             break
 
     if not cmd.endswith("&"):
@@ -78,7 +78,7 @@ def main():
             "-u", dest="buninstpkg", action="store_true", help="Uninstall package")
         global PARAMETERS
         (PARAMETERS, args) = opts_parser.parse_args()
-    except Exception, e:
+    except Exception as e:
         print "Got wrong option: %s, exit ..." % e
         sys.exit(1)
 

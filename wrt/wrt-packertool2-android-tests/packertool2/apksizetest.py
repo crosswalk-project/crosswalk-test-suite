@@ -29,10 +29,16 @@
 #         Hongjuan, Wang<hongjuanx.wang@intel.com>
 
 import unittest
-import os, sys, commands, shutil, glob
+import os
+import sys
+import commands
+import shutil
+import glob
 import comm
 
-class TestPackertoolsFunctions(unittest.TestCase):      
+
+class TestPackertoolsFunctions(unittest.TestCase):
+
     def test_apksize(self):
         comm.setUp()
         os.chdir(comm.ConstPath)
@@ -55,5 +61,5 @@ class TestPackertoolsFunctions(unittest.TestCase):
         val2 = data['apk0'] + 1024 * 1024
         self.assertTrue(val1 <= data['apk1'] <= val2)
 
-if __name__ == '__main__':  
-    unittest.main()  
+if __name__ == '__main__':
+    unittest.main()

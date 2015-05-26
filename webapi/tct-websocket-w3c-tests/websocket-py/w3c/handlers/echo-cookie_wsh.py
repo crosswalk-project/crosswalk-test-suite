@@ -2,8 +2,10 @@
 
 from mod_pywebsocket import msgutil
 
+
 def web_socket_do_extra_handshake(request):
     request.ws_cookie = request.headers_in.get('Cookie')
+
 
 def web_socket_transfer_data(request):
     if request.ws_cookie is not None:

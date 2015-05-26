@@ -39,6 +39,7 @@ SCRIPT_DIR_NAME = os.path.dirname(SCRIPT_FILE_PATH)
 TEMP_DATA_PATH = os.path.join(SCRIPT_DIR_NAME, "../tempdata/")
 TEST_PROJECT_COMM = "org.xwalk.testlinux"
 
+
 def setUp():
     if not 'crosswalk-app' in os.environ.get('PATH'):
         print "Please set environment path for crosswalk-app"
@@ -47,39 +48,49 @@ def setUp():
     if not os.path.exists(TEMP_DATA_PATH):
         os.mkdir(TEMP_DATA_PATH)
         os.system("chmod +x " + TEMP_DATA_PATH)
-    
+
+
 def cleanTempData(removeFolder):
     removeFolder = os.path.join(TEMP_DATA_PATH, removeFolder)
     if os.path.exists(removeFolder):
         shutil.rmtree(removeFolder)
+
 
 def delete():
     if os.path.exists(TEMP_DATA_PATH):
         os.chdir(SCRIPT_DIR_NAME)
         os.system("rm -R " + TEMP_DATA_PATH)
 
+
 def create(self):
     try:
-		setUp()
-		os.chdir(TEMP_DATA_PATH)
-		cleanTempData(TEST_PROJECT_COMM)
-		cmd = "crosswalk-app create " + TEST_PROJECT_COMM
-		packstatus = commands.getstatusoutput(cmd)
-		self.assertEquals(packstatus[0], 0)
-		self.assertIn(TEST_PROJECT_COMM, os.listdir(TEMP_DATA_PATH))
-    except Exception,e:
-        print Exception,"Create org.xwalk.testlinux error:",e
+        setUp()
+        os.chdir(TEMP_DATA_PATH)
+        cleanTempData(TEST_PROJECT_COMM)
+        cmd = "crosswalk-app create " + TEST_PROJECT_COMM
+        packstatus = commands.getstatusoutput(cmd)
+        self.assertEquals(packstatus[0], 0)
+        self.assertIn(TEST_PROJECT_COMM, os.listdir(TEMP_DATA_PATH))
+    except Exception as e:
+        print Exception, "Create org.xwalk.testlinux error:", e
         sys.exit(1)
+
 
 def build(self, cmd):
     buildstatus = commands.getstatusoutput(cmd)
     self.assertEquals(buildstatus[0], 0)
-    self.assertIn("pkg", os.listdir(os.path.join(TEMP_DATA_PATH, TEST_PROJECT_COMM)))
+    self.assertIn(
+        "pkg",
+        os.listdir(
+            os.path.join(
+                TEMP_DATA_PATH,
+                TEST_PROJECT_COMM)))
     os.chdir('pkg')
     debs = os.listdir(os.getcwd())
     for deb in debs:
         print "The pkg deb is " + deb
         self.assertIn(".deb", deb)
+
 
 def run(self):
     setUp()
@@ -90,7 +101,7 @@ def run(self):
         print "Begin install deb file ", project_name
         status, output = commands.getstatusoutput("sudo dpkg -i " + deb)
         self.assertEquals(status, 0)
-        
+
         print "Begin search deb file ", project_name
         status = commands.getstatusoutput("dpkg -l " + project_name)
         self.assertTrue(status)
@@ -100,12 +111,13 @@ def run(self):
         # wait 3 second, then check application is running
         time.sleep(3)
 
-        status, output = commands.getstatusoutput("ps -ef | grep " \
-            + project_name + " | grep -v \"grep\" | wc -l")
+        status, output = commands.getstatusoutput("ps -ef | grep "
+                                                  + project_name + " | grep -v \"grep\" | wc -l")
         self.assertEquals(status, 0)
 
         # kill application
-        status, output = commands.getstatusoutput("ps aux | grep xwalk | grep " + project_name + " | grep -v \"grep\"")
+        status, output = commands.getstatusoutput(
+            "ps aux | grep xwalk | grep " + project_name + " | grep -v \"grep\"")
         for ps in output.split("\n"):
             for pid in ps.split(" "):
                 if pid.isdigit():
@@ -113,6 +125,6 @@ def run(self):
                     break
 
         print "Begin uninstall deb file ", project_name
-        status, output = commands.getstatusoutput("sudo dpkg -P " \
-            + project_name)
+        status, output = commands.getstatusoutput("sudo dpkg -P "
+                                                  + project_name)
         self.assertEquals(status, 0)

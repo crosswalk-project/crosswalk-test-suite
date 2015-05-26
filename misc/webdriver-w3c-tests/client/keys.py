@@ -1,6 +1,8 @@
 """Constants for special keys."""
 
+
 class Keys:
+
     """Constants for special keys."""
     NULL = '\uE000'
     CANCEL = '\uE001'
