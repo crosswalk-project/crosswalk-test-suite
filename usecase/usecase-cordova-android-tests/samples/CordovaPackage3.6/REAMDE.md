@@ -2,10 +2,12 @@
 
 This sample demonstrates Cordova Package feature basic functionalities, include:
 
-* Build cordova package using cordova-plugin-crosswalk-webview
+* Create cordova package
+* Build cordova package
 * Install, Launch, Run and Exit the cordova package
 
 This usecase covers following methods:
 
-* $ plugman install --platform android --plugin ../cordova-plugin-crosswalk-webview/ --project .
+* $ ./bin/create
 * $ ./cordova/build
+* $ ./cordova/run
