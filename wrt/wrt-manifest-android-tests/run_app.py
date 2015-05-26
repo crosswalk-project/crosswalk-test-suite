@@ -1,10 +1,14 @@
 #!/usr/bin/env python
-import sys, os, os.path, shutil
+import sys
+import os
+import os.path
+import shutil
 import commands
- 
+
 SCRIPT_PATH = os.path.realpath(__file__)
 ConstPath = os.path.dirname(SCRIPT_PATH)
-ARCH="x86"
+ARCH = "x86"
+
 
 def tryRunApp(num, caseDir):
     try:
@@ -36,24 +40,49 @@ def tryRunApp(num, caseDir):
                 print num
                 print "##########"
                 print "Install APK ---------------->Start"
-                instatus = commands.getstatusoutput("adb -s " + device + " install -r " + apkDir + "/apks/" + ARCH + "/" + num + "/" + "*.apk")
+                instatus = commands.getstatusoutput(
+                    "adb -s " +
+                    device +
+                    " install -r " +
+                    apkDir +
+                    "/apks/" +
+                    ARCH +
+                    "/" +
+                    num +
+                    "/" +
+                    "*.apk")
                 if instatus[0] == 0:
                     print "Install APK ---------------->O.K"
-                    pmstatus = commands.getstatusoutput("adb -s " + device + " shell pm list packages |grep org.xwalk.test")
+                    pmstatus = commands.getstatusoutput(
+                        "adb -s " +
+                        device +
+                        " shell pm list packages |grep org.xwalk.test")
                     if pmstatus[0] == 0:
                         print "Find Package in device ---------------->O.K"
-                        launchstatus = commands.getstatusoutput("adb -s " + device + " shell am start -n org.xwalk.test/.TestActivity")
+                        launchstatus = commands.getstatusoutput(
+                            "adb -s " +
+                            device +
+                            " shell am start -n org.xwalk.test/.TestActivity")
                         if launchstatus[0] != 0:
                             print "Launch APK ---------------->Error"
-                            os.system("adb -s " + device + " uninstall org.xwalk.test")
+                            os.system(
+                                "adb -s " +
+                                device +
+                                " uninstall org.xwalk.test")
                             result = "FAIL"
                             return result
                         else:
                             print "Launch APK ---------------->O.K"
-                            stopstatus = commands.getstatusoutput("adb -s " + device + " shell am force-stop org.xwalk.test")
+                            stopstatus = commands.getstatusoutput(
+                                "adb -s " +
+                                device +
+                                " shell am force-stop org.xwalk.test")
                             if stopstatus[0] == 0:
                                 print "Stop APK ---------------->O.K"
-                                unistatus = commands.getstatusoutput("adb -s " + device + " uninstall org.xwalk.test")
+                                unistatus = commands.getstatusoutput(
+                                    "adb -s " +
+                                    device +
+                                    " uninstall org.xwalk.test")
                                 if unistatus[0] == 0:
                                     print "Uninstall APK ---------------->O.K"
                                     result = "PASS"
@@ -65,11 +94,17 @@ def tryRunApp(num, caseDir):
                             else:
                                 print "Stop APK ---------------->Error"
                                 result = "FAIL"
-                                os.system("adb -s " + device + " uninstall org.xwalk.test")
+                                os.system(
+                                    "adb -s " +
+                                    device +
+                                    " uninstall org.xwalk.test")
                                 return result
                     else:
                         print "Find Package in device ---------------->Error"
-                        os.system("adb -s " + device + " uninstall org.xwalk.test")
+                        os.system(
+                            "adb -s " +
+                            device +
+                            " uninstall org.xwalk.test")
                         result = "FAIL"
                         return result
                 else:
@@ -80,7 +115,7 @@ def tryRunApp(num, caseDir):
                 print "Run negative test ---------------->OK"
                 result = "PASS"
                 return result
-    except Exception,e:
-        print Exception,":",e
+    except Exception as e:
+        print Exception, ":", e
         print "Try run webapp ---------------->Error"
         sys.exit(1)

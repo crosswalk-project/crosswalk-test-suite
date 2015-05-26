@@ -19,12 +19,13 @@ import re
 import time
 from SocketServer import ThreadingMixIn
 
+
 class EasyServer(ThreadingMixIn, BaseHTTPServer.HTTPServer):
     allow_reuse_address = True
     acceptable_errors = (errno.EPIPE, errno.ECONNABORTED)
 
     def handle_error(self, request, client_address):
-        error = sys.exc_value
+        error = sys.exc_info()[1]
 
         if ((isinstance(error, socket.error) and
              isinstance(error.args, tuple) and
@@ -38,6 +39,7 @@ class EasyServer(ThreadingMixIn, BaseHTTPServer.HTTPServer):
 
 
 class Request(object):
+
     """Details of a request."""
 
     # attributes from urlsplit that this class also sets
@@ -61,7 +63,7 @@ class Request(object):
 
 class RequestHandler(SimpleHTTPServer.SimpleHTTPRequestHandler):
 
-    docroot = os.getcwd() # current working directory at time of import
+    docroot = os.getcwd()  # current working directory at time of import
     proxy_host_dirs = False
     request_log = []
     log_requests = False
@@ -69,9 +71,9 @@ class RequestHandler(SimpleHTTPServer.SimpleHTTPRequestHandler):
 
     def _try_handler(self, method):
         if self.log_requests:
-            self.request_log.append({ 'method': method,
-                                      'path': self.request.path,
-                                      'time': time.time() })
+            self.request_log.append({'method': method,
+                                     'path': self.request.path,
+                                     'time': time.time()})
 
         handlers = [handler for handler in self.urlhandlers
                     if handler['method'] == method]
@@ -145,10 +147,10 @@ class RequestHandler(SimpleHTTPServer.SimpleHTTPRequestHandler):
         for word in words:
             drive, word = os.path.splitdrive(word)
             head, word = os.path.split(word)
-            if word in (os.curdir, os.pardir): continue
+            if word in (os.curdir, os.pardir):
+                continue
             path = os.path.join(path, word)
         return path
-
 
     # I found on my local network that calls to this were timing out
     # I believe all of these calls are from log_message
@@ -161,6 +163,7 @@ class RequestHandler(SimpleHTTPServer.SimpleHTTPRequestHandler):
 
 
 class Httpd(object):
+
     """
     Very basic HTTP server class. Takes a docroot (path on the filesystem)
     and a set of urlhandler dictionaries of the form:
@@ -224,12 +227,12 @@ class Httpd(object):
             self.httpd.serve_forever()
         else:
             self.server = threading.Thread(target=self.httpd.serve_forever)
-            self.server.setDaemon(True) # don't hang on exit
+            self.server.setDaemon(True)  # don't hang on exit
             self.server.start()
 
     def stop(self):
         if self.httpd:
-            ### FIXME: There is no shutdown() method in Python 2.4...
+            # FIXME: There is no shutdown() method in Python 2.4...
             try:
                 self.httpd.shutdown()
             except AttributeError:
@@ -279,4 +282,3 @@ def main(args=sys.argv[1:]):
 
 if __name__ == '__main__':
     main()
-

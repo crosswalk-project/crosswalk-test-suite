@@ -2,7 +2,9 @@
 
 import searchcontext
 
+
 class WebElement(searchcontext.SearchContext):
+
     """Corresponds to a DOM element in the current page."""
 
     def __init__(self, driver, id):
@@ -26,7 +28,8 @@ class WebElement(searchcontext.SearchContext):
 
     def get_attribute(self, name):
         """Get the value of an element property or attribute."""
-        return self.execute('GET', '/attribute/%s' % name, 'getElementAttribute')
+        return self.execute('GET', '/attribute/%s' %
+                            name, 'getElementAttribute')
 
     def get_text(self):
         """Get the visible text for this element."""

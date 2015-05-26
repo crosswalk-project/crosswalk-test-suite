@@ -29,10 +29,16 @@
 #         Hongjuan, Wang<hongjuanx.wang@intel.com>
 
 import unittest
-import os, sys, commands, shutil, stat
+import os
+import sys
+import commands
+import shutil
+import stat
 import comm
 
+
 class TestPackertoolsFunctions(unittest.TestCase):
+
     def test_projectdir_readOnly(self):
         comm.setUp()
         os.chdir(comm.Pck_Tools)
@@ -44,15 +50,15 @@ class TestPackertoolsFunctions(unittest.TestCase):
               (comm.ARCH, comm.MODE, manifestPath)
         packstatus = commands.getstatusoutput(cmd)
         errormsg = "OSError: [Errno 13] Permission denied"
-        self.assertNotEqual(packstatus[0] ,0)
+        self.assertNotEqual(packstatus[0], 0)
         self.assertIn(errormsg, packstatus[1])
         self.assertIn(comm.AppName, os.listdir(comm.Pck_Tools))
         try:
             shutil.rmtree(comm.Pck_Tools + "readOnly")
             os.remove(comm.Pck_Tools + comm.AppName)
-        except Exception,e:
-            os.system("rm -rf "  + comm.Pck_Tools + "readOnly &>/dev/null")
-            os.system("rm -rf "  + comm.Pck_Tools + "*apk &>/dev/null")
+        except Exception as e:
+            os.system("rm -rf " + comm.Pck_Tools + "readOnly &>/dev/null")
+            os.system("rm -rf " + comm.Pck_Tools + "*apk &>/dev/null")
 
     def test_projectdir_existFile(self):
         comm.setUp()
@@ -64,7 +70,7 @@ class TestPackertoolsFunctions(unittest.TestCase):
               (comm.ARCH, comm.MODE, manifestPath)
         packstatus = commands.getstatusoutput(cmd)
         errormsg = "Unable to create a project directory during the build"
-        self.assertEqual(packstatus[0] ,0)
+        self.assertEqual(packstatus[0], 0)
         self.assertIn(errormsg, packstatus[1])
         self.assertIn(comm.AppName, os.listdir(comm.Pck_Tools))
         os.remove(comm.Pck_Tools + "/existFile.txt")
@@ -79,7 +85,7 @@ class TestPackertoolsFunctions(unittest.TestCase):
         cmd = "python make_apk.py --package=org.xwalk.example --arch=%s --mode=%s --manifest=%s --project-dir=testapp/testapp" % \
               (comm.ARCH, comm.MODE, manifestPath)
         packstatus = commands.getstatusoutput(cmd)
-        self.assertEqual(packstatus[0] ,0)
+        self.assertEqual(packstatus[0], 0)
         buildDir = comm.Pck_Tools + "testapp/testapp/Example"
         buildList = os.listdir(buildDir)
         self.assertTrue(os.path.isdir(buildDir + "/res"))
@@ -89,9 +95,9 @@ class TestPackertoolsFunctions(unittest.TestCase):
         try:
             shutil.rmtree(comm.Pck_Tools + "testapp")
             os.remove(comm.Pck_Tools + comm.AppName)
-        except Exception,e:
-            os.system("rm -rf "  + comm.Pck_Tools + "testapp &>/dev/null")
-            os.system("rm -rf "  + comm.Pck_Tools + "*apk &>/dev/null")
+        except Exception as e:
+            os.system("rm -rf " + comm.Pck_Tools + "testapp &>/dev/null")
+            os.system("rm -rf " + comm.Pck_Tools + "*apk &>/dev/null")
 
 if __name__ == '__main__':
     unittest.main()

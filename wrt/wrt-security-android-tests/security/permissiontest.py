@@ -29,13 +29,18 @@
 #         Hongjuan, Wang<hongjuanx.wang@intel.com>
 
 import unittest
-import os, sys, commands
+import os
+import sys
+import commands
 import comm
 
+
 class TestSecurityFunctions(unittest.TestCase):
+
     def test_permission_chinese(self):
         comm.setUp()
-        manifestPath = comm.ConstPath + "/../testapp/permission_field_chinese_tests/manifest.json"
+        manifestPath = comm.ConstPath + \
+            "/../testapp/permission_field_chinese_tests/manifest.json"
         cmd = "python %smake_apk.py --package=org.xwalk.example --arch=%s --mode=%s --manifest=%s" % \
               (comm.Pck_Tools, comm.ARCH, comm.MODE, manifestPath)
         packInfo = commands.getstatusoutput(cmd)
@@ -43,7 +48,8 @@ class TestSecurityFunctions(unittest.TestCase):
 
     def test_permission_noapi(self):
         comm.setUp()
-        manifestPath = comm.ConstPath + "/../testapp/permission_field_noapi_tests/manifest.json"
+        manifestPath = comm.ConstPath + \
+            "/../testapp/permission_field_noapi_tests/manifest.json"
         cmd = "python %smake_apk.py --package=org.xwalk.example --arch=%s --mode=%s --manifest=%s" % \
               (comm.Pck_Tools, comm.ARCH, comm.MODE, manifestPath)
         packInfo = commands.getstatusoutput(cmd)
@@ -51,14 +57,16 @@ class TestSecurityFunctions(unittest.TestCase):
 
     def test_permission_null(self):
         comm.setUp()
-        manifestPath = comm.ConstPath + "/../testapp/permission_field_null_tests/manifest.json"
+        manifestPath = comm.ConstPath + \
+            "/../testapp/permission_field_null_tests/manifest.json"
         cmd = "python %smake_apk.py --package=org.xwalk.example --arch=%s --mode=%s --manifest=%s" % \
               (comm.Pck_Tools, comm.ARCH, comm.MODE, manifestPath)
         comm.gen_pkg(cmd, self)
 
     def test_permission_splite(self):
         comm.setUp()
-        manifestPath = comm.ConstPath + "/../testapp/permission_field_splite_tests/manifest.json"
+        manifestPath = comm.ConstPath + \
+            "/../testapp/permission_field_splite_tests/manifest.json"
         cmd = "python %smake_apk.py --package=org.xwalk.example --arch=%s --mode=%s --manifest=%s" % \
               (comm.Pck_Tools, comm.ARCH, comm.MODE, manifestPath)
         packInfo = commands.getstatusoutput(cmd)

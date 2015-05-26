@@ -1,6 +1,8 @@
 """WebDriver alert handling."""
 
+
 class Alert(object):
+
     """Class that provides access to the WebDriver alert handling functions."""
 
     def __init__(self, driver):
@@ -23,4 +25,4 @@ class Alert(object):
 
     def send_keys(self, keys):
         """Type into the text input of the alert if available."""
-        self._execute('POST', '/alert_text', 'sendKeys', { 'text': keys })
+        self._execute('POST', '/alert_text', 'sendKeys', {'text': keys})

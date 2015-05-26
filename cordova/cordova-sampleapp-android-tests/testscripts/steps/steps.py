@@ -30,12 +30,12 @@
 from atip.common.steps import *
 from atip.web.steps import *
 
+
 @step(u'I verify "{text}" with link "{link}"')
 def check_link_by_text(context, link, text):
-   element = context.app.driver.find_element_by_link_text(text)
-   hyperlink = element.get_attribute('href')
-   if hyperlink == link:
-      assert True
-   else:
-      assert False
-
+    element = context.app.driver.find_element_by_link_text(text)
+    hyperlink = element.get_attribute('href')
+    if hyperlink == link:
+        assert True
+    else:
+        assert False

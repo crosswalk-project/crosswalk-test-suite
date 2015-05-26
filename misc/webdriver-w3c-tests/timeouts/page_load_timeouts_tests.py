@@ -5,8 +5,13 @@ import sys
 import unittest
 from selenium.common.exceptions import TimeoutException
 
-sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), os.path.pardir)))
+sys.path.append(
+    os.path.abspath(
+        os.path.join(
+            os.path.dirname(__file__),
+            os.path.pardir)))
 import base_test
+
 
 class PageLoadTimeoutTest(base_test.WebDriverBaseTest):
 
@@ -21,7 +26,8 @@ class PageLoadTimeoutTest(base_test.WebDriverBaseTest):
         pass
 
     def load_page(self):
-        self.driver.get(self.webserver.where_is('timeouts/res/page_load_timeouts_tests.html'))
+        self.driver.get(
+            self.webserver.where_is('timeouts/res/page_load_timeouts_tests.html'))
 
 if __name__ == "__main__":
     unittest.main()

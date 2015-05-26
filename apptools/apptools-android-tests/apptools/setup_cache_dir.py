@@ -33,7 +33,9 @@ import comm
 import commands
 import shutil
 
+
 class TestCrosswalkApptoolsFunctions(unittest.TestCase):
+
     def test_setup_cache_dir(self):
         comm.setUp()
         os.chdir(comm.XwalkPath)
@@ -41,7 +43,7 @@ class TestCrosswalkApptoolsFunctions(unittest.TestCase):
         comm.create(self)
         os.environ["CROSSWALK_APP_TOOLS_CACHE_DIR"] = comm.XwalkPath + "cache"
         os.chdir('org.xwalk.test')
-        updatecmd =  comm.PackTools + "crosswalk-app update 13.42.319.5"
+        updatecmd = comm.PackTools + "crosswalk-app update 13.42.319.5"
         comm.update(self, updatecmd)
         namelist = os.listdir(os.getcwd())
         os.chdir(comm.XwalkPath + "cache")

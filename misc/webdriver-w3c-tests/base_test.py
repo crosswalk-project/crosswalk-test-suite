@@ -8,6 +8,7 @@ import unittest
 from webserver import Httpd
 from network import get_lan_ip
 
+
 class WebDriverBaseTest(unittest.TestCase):
 
     @classmethod
@@ -15,7 +16,9 @@ class WebDriverBaseTest(unittest.TestCase):
         cls.driver = create_driver()
 
         cls.webserver = Httpd(host=get_lan_ip())
-        cls.webserver.__dict__['mobile'] = os.environ.get("WD_BROWSER", 'firefox')
+        cls.webserver.__dict__['mobile'] = os.environ.get(
+            "WD_BROWSER",
+            'firefox')
         cls.webserver.__dict__['appId'] = appId
         cls.webserver.start()
 
@@ -26,6 +29,8 @@ class WebDriverBaseTest(unittest.TestCase):
             cls.driver.quit()
 
 appId = None
+
+
 def create_driver():
     config = ConfigParser.ConfigParser()
     config.read('webdriver.cfg')

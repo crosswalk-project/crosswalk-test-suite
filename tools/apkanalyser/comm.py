@@ -31,9 +31,13 @@
 #
 # Author: belem.zhang@intel.com
 
-import os, sys
-import re, codecs
-import shutil, glob
+import os
+import sys
+import re
+import codecs
+import shutil
+import glob
+
 
 def _find(pathname, matchFunc=os.path.isfile):
     for dirname in sys.path:
@@ -41,16 +45,19 @@ def _find(pathname, matchFunc=os.path.isfile):
         if matchFunc(candidate):
             return candidate
 
+
 def mk_dir(path):
     if not find_dir(path):
         os.mkdir(path)
 
+
 def find_file(pathname):
     return _find(pathname)
+
 
 def find_dir(path):
     return _find(path, matchFunc=os.path.isdir)
 
+
 def find_glob_path(filepath):
     return glob.glob(filepath)
-

@@ -38,20 +38,22 @@ ConstPath = os.path.dirname(SCRIPT_PATH)
 
 
 def setUp():
-    global  XwalkPath, PackTools 
+    global XwalkPath, PackTools
 
-    PackTools = ConstPath +  "/../tools/crosswalk-app-tools/src/"
+    PackTools = ConstPath + "/../tools/crosswalk-app-tools/src/"
 
     XwalkPath = ConstPath + "/../tools/"
     if "crosswalk-app-tools" not in os.listdir(XwalkPath):
         print "Please check if the crosswalk-app-tools exists in " + ConstPath + "/../tools/"
         sys.exit(1)
 
+
 def clear(pkg):
     try:
         shutil.rmtree(XwalkPath + pkg)
-    except Exception,e:
+    except Exception as e:
         os.system("rm -rf " + XwalkPath + pkg + " &>/dev/null")
+
 
 def create(self):
     setUp()
@@ -61,6 +63,7 @@ def create(self):
     packstatus = commands.getstatusoutput(cmd)
     self.assertEquals(packstatus[0], 0)
     self.assertIn("org.xwalk.test", os.listdir(os.getcwd()))
+
 
 def build(self, cmd):
     buildstatus = commands.getstatusoutput(cmd)

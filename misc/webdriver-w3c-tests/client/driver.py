@@ -9,10 +9,11 @@ import base64
 
 
 class WebDriver(searchcontext.SearchContext):
+
     """Controls a web browser."""
 
     def __init__(self, host, required, desired, mode='strict'):
-        args = { 'desiredCapabilities': desired }
+        args = {'desiredCapabilities': desired}
         if required:
             args['requiredCapabilities'] = required
 
@@ -24,7 +25,7 @@ class WebDriver(searchcontext.SearchContext):
         self._session_id = resp['sessionId']
         self.mode = mode
 
-    def execute(self, method, path, name, parameters= None):
+    def execute(self, method, path, name, parameters=None):
         """Execute a command against the current WebDriver session."""
         data = self._executor.execute(
             method,
@@ -38,7 +39,7 @@ class WebDriver(searchcontext.SearchContext):
 
     def get(self, url):
         """Navigate to url."""
-        self.execute('POST', '/url', 'get', { 'url': url })
+        self.execute('POST', '/url', 'get', {'url': url})
 
     def get_current_url(self):
         """Get the current value of the location bar."""
@@ -85,7 +86,7 @@ class WebDriver(searchcontext.SearchContext):
     def get_window_size(self):
         """Get the dimensions of the current window."""
         result = self._window_command('GET', '/size', 'getWindowSize')
-        return { 'height': result[height], 'width': result[width] }
+        return {'height': result[height], 'width': result[width]}
 
     def set_window_size(self, height, width):
         """Set the size of the current window."""
@@ -93,22 +94,22 @@ class WebDriver(searchcontext.SearchContext):
             'POST',
             '/size',
             'setWindowSize',
-            { 'height': height, 'width': width})
+            {'height': height, 'width': width})
 
     def fullscreen_window(self):
         """Make the current window fullscreen."""
-        pass # implement when end point is defined
+        pass  # implement when end point is defined
 
     def switch_to_window(self, name):
         """Switch to the window with the given handle or name."""
-        self.execute('POST', '/window', 'switchToWindow', { 'name': name })
+        self.execute('POST', '/window', 'switchToWindow', {'name': name})
 
     def switch_to_frame(self, id):
         """Switch to a frame.
 
         id can be either a WebElement or an integer.
         """
-        self.execute('POST', '/frame', 'switchToFrame', { 'id': id})
+        self.execute('POST', '/frame', 'switchToFrame', {'id': id})
 
     def switch_to_parent_frame(self):
         """Move to the browsing context containing the currently selected frame.
@@ -129,7 +130,7 @@ class WebDriver(searchcontext.SearchContext):
             'POST',
             '/execute',
             'executeScript',
-            { 'script': script, 'args': args })
+            {'script': script, 'args': args})
 
     def execute_script_async(self, script, args=[]):
         """Execute a Javascript script in the current browsing context."""
@@ -137,7 +138,7 @@ class WebDriver(searchcontext.SearchContext):
             'POST',
             '/execute_async',
             'executeScriptAsync',
-            { 'script': script, 'args': args })
+            {'script': script, 'args': args})
 
     def take_screenshot(self, element=None):
         """Take a screenshot.
@@ -146,19 +147,19 @@ class WebDriver(searchcontext.SearchContext):
         current page, otherwise the screenshot should be of the given element.
         """
         if self.mode == 'strict':
-            pass # implement when endpoint is defined
+            pass  # implement when endpoint is defined
         elif self.mode == 'compatibility':
             if element:
-                pass # element screenshots are unsupported in compatibility
+                pass  # element screenshots are unsupported in compatibility
             else:
                 return base64.standard_b64decode(
                     self.execute('GET', '/screenshot', 'takeScreenshot'))
 
     def add_cookie(self, cookie):
         """Add a cookie to the browser."""
-        self.execute('POST', '/cookie', 'addCookie', { 'cookie': cookie })
+        self.execute('POST', '/cookie', 'addCookie', {'cookie': cookie})
 
-    def get_cookie(self, name = None):
+    def get_cookie(self, name=None):
         """Get the cookies accessible from the current page."""
         if self.mode == 'compatibility':
             cookies = self.execute('GET', '/cookie', 'getCookie')
@@ -170,7 +171,7 @@ class WebDriver(searchcontext.SearchContext):
                 return cookies_
             return cookies
         elif self.mode == 'strict':
-             pass # implement when wire protocol for this has been defined
+            pass  # implement when wire protocol for this has been defined
 
     def set_implicit_timeout(self, ms):
         self._set_timeout('implicit', ms)
@@ -182,18 +183,17 @@ class WebDriver(searchcontext.SearchContext):
         self._set_timeout('script', ms)
 
     def _set_timeout(self, type, ms):
-        params = { 'type': type, 'ms': ms }
+        params = {'type': type, 'ms': ms}
         self.execute('POST', '/timeouts', 'timeouts', params)
 
-    def _window_command(self, method, path, name, parameters = None):
+    def _window_command(self, method, path, name, parameters=None):
         if self.mode == 'compatibility':
             return self.execute(
                 method, '/window/current' + path, name, parameters)
         elif self.mode == 'strict':
-            pass # implement this when end-points are defined in doc
+            pass  # implement this when end-points are defined in doc
 
     def _object_hook(self, obj):
         if 'ELEMENT' in obj:
             return webelement.WebElement(self, obj['ELEMENT'])
         return obj
-

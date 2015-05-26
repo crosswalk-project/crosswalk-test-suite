@@ -1,6 +1,10 @@
 def main(request, response):
-    response.headers.set("Content-Security-Policy", "child-src http://www.w3c.com")
-    response.headers.set("X-Content-Security-Policy", "child-src http://www.w3c.com")
+    response.headers.set(
+        "Content-Security-Policy",
+        "child-src http://www.w3c.com")
+    response.headers.set(
+        "X-Content-Security-Policy",
+        "child-src http://www.w3c.com")
     response.headers.set("X-WebKit-CSP", "child-src http://www.w3c.com")
     return """<!DOCTYPE html>
 <!--

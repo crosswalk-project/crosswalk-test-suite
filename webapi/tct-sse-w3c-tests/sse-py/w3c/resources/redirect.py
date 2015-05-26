@@ -1,5 +1,6 @@
 from urlparse import urlparse
 
+
 def main(request, response):
     """Simple handler that causes redirection.
 
@@ -21,9 +22,9 @@ def main(request, response):
 
         local_parsed = urlparse(location)
         request_parsed = urlparse(request.url)
-        if local_parsed.hostname != None and local_parsed.hostname != request_parsed.hostname:
+        if local_parsed.hostname is not None and local_parsed.hostname != request_parsed.hostname:
             return "illegal redirect url"
 
         response.headers.set("Location", location)
-    except Exception,ex:
+    except Exception as ex:
         return "error"

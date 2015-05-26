@@ -35,6 +35,7 @@ import os
 import yaml
 import codecs
 
+
 def removeTestCase(dir):
     if os.path.isdir(dir):
         paths = os.listdir(dir)
@@ -57,9 +58,14 @@ removeTestCase(parentDir)
 
 # generate all test cases
 for data in datas:
-    file = codecs.open(parentDir + os.path.sep + data['id'] + '.html', 'w', 'utf-8')
+    file = codecs.open(
+        parentDir +
+        os.path.sep +
+        data['id'] +
+        '.html',
+        'w',
+        'utf-8')
     if data['id'][:8] == "DataView":
         file.write(template_dataview % data)
     else:
         file.write(template % data)
-

@@ -1,5 +1,5 @@
 #!/usr/bin/env python
-#coding=utf-8
+# coding=utf-8
 #
 # Copyright (c) 2015 Intel Corporation.
 #
@@ -30,14 +30,18 @@
 #         Hongjuan, Wang<hongjuanx.wang@intel.com>
 
 import unittest
-import os, sys, commands, shutil
+import os
+import sys
+import commands
+import shutil
 reload(sys)
-sys.setdefaultencoding( "utf-8" )
+sys.setdefaultencoding("utf-8")
 
 SCRIPT_PATH = os.path.realpath(__file__)
 ConstPath = os.path.dirname(SCRIPT_PATH)
 APP_PATH = ConstPath + "/../testapp/example/"
 Pck_Tools = ConstPath + "/../tools/crosswalk/"
+
 
 def setUp():
     global ARCH, MODE, AppName, device
@@ -58,13 +62,15 @@ def setUp():
     mode = open(ConstPath + "/../mode.txt", 'r')
     if mode.read().strip("\n\t") != "shared":
         MODE = "embedded"
-        AppName = "Example_" + ARCH +".apk"
+        AppName = "Example_" + ARCH + ".apk"
     else:
         MODE = "shared"
         AppName = "Example.apk"
     mode.close()
 
 # test for build, install, launch and uninstall
+
+
 def gen_pkg(cmd, self):
     setUp()
     if os.path.exists(Pck_Tools + "/" + AppName):
@@ -76,19 +82,35 @@ def gen_pkg(cmd, self):
     print "Generate APK ----------------> OK!"
     result = commands.getstatusoutput("ls")
     self.assertIn(AppName, result[1])
-    inststatus = commands.getstatusoutput("adb -s " + device + " install -r " + AppName)
+    inststatus = commands.getstatusoutput(
+        "adb -s " +
+        device +
+        " install -r " +
+        AppName)
     self.assertEquals(0, inststatus[0])
     print "Install APK ----------------> OK"
-    pmstatus = commands.getstatusoutput("adb -s " + device + " shell pm list packages |grep org.xwalk.example")
+    pmstatus = commands.getstatusoutput(
+        "adb -s " +
+        device +
+        " shell pm list packages |grep org.xwalk.example")
     self.assertEquals(0, pmstatus[0])
     print "Find Package in device ---------------->O.K"
-    launchstatus = commands.getstatusoutput("adb -s " + device + " shell am start -n org.xwalk.example/.ExampleActivity")
+    launchstatus = commands.getstatusoutput(
+        "adb -s " +
+        device +
+        " shell am start -n org.xwalk.example/.ExampleActivity")
     self.assertEquals(0, launchstatus[0])
     print "Launch APK ---------------->OK"
-    stopstatus = commands.getstatusoutput("adb -s " + device + " shell am force-stop org.xwalk.example")
+    stopstatus = commands.getstatusoutput(
+        "adb -s " +
+        device +
+        " shell am force-stop org.xwalk.example")
     if stopstatus[0] == 0:
         print "Stop APK ---------------->O.K"
-        unistatus = commands.getstatusoutput("adb -s " + device + " uninstall org.xwalk.example")
+        unistatus = commands.getstatusoutput(
+            "adb -s " +
+            device +
+            " uninstall org.xwalk.example")
         self.assertEquals(0, unistatus[0])
         print "Uninstall APK ---------------->O.K"
     else:

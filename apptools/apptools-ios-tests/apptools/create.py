@@ -33,7 +33,9 @@ import os
 import commands
 import comm
 
+
 class TestCrosswalkApptoolsFunctions(unittest.TestCase):
+
     def test_dir_exist(self):
         comm.setUp()
         os.chdir(comm.XwalkPath)

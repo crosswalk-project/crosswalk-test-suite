@@ -33,13 +33,15 @@ import os
 import commands
 import comm
 
+
 class TestCrosswalkApptoolsFunctions(unittest.TestCase):
 
     def test_create_version(self):
         comm.setUp()
         comm.clear("org.xwalk.test")
         os.chdir(comm.XwalkPath)
-        createcmd = comm.PackTools + "crosswalk-app create org.xwalk.test --android-crosswalk=13.42.319.7"
+        createcmd = comm.PackTools + \
+            "crosswalk-app create org.xwalk.test --android-crosswalk=13.42.319.7"
         packstatus = commands.getstatusoutput(createcmd)
         crosswalk = 'crosswalk-13.42.319.7.zip'
         namelist = os.listdir(os.getcwd())

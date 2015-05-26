@@ -34,10 +34,27 @@ import commands
 import shutil
 import comm
 
+
 def generate_cmd():
     comm.setUp()
-    positive_data = ['org.xwalk.tests', 'org.xwalk.t1234', 'org.example.xwal_', 'org.example.te_st', 'or_g.example.xwalk', 'org000.example.xwalk', 'org.example123.xwalk']
-    negative_data = ['org.xwalk', 'test', 'org.example.1234test', 'org.example.1234', '123org.example.xwalk', 'org.123example.xwalk', 'org.example._xwalk', 'org.xwalk.Tests', '_org.example.xwalk']
+    positive_data = [
+        'org.xwalk.tests',
+        'org.xwalk.t1234',
+        'org.example.xwal_',
+        'org.example.te_st',
+        'or_g.example.xwalk',
+        'org000.example.xwalk',
+        'org.example123.xwalk']
+    negative_data = [
+        'org.xwalk',
+        'test',
+        'org.example.1234test',
+        'org.example.1234',
+        '123org.example.xwalk',
+        'org.123example.xwalk',
+        'org.example._xwalk',
+        'org.xwalk.Tests',
+        '_org.example.xwalk']
     flag = ''
     num = 0
     os.chdir(comm.ConstPath + '/../')
@@ -56,15 +73,16 @@ def generate_cmd():
         cmd = flag + '\tcrosswalk-app create ' + j + '\n'
         fp.write(cmd)
 
+
 def generate_unittest():
     try:
         generate_cmd()
         fp = open(comm.ConstPath + '/../report/cmd.txt')
         if os.path.exists(comm.ConstPath + "/pkgName.py"):
             os.remove(comm.ConstPath + "/pkgName.py")
-        testfile = open(comm.ConstPath + "/pkgName.py" ,'a+')
-        testTitle = '''#!/usr/bin/env python 
-# coding=utf-8 
+        testfile = open(comm.ConstPath + "/pkgName.py", 'a+')
+        testTitle = '''#!/usr/bin/env python
+# coding=utf-8
 #
 # Copyright (c) 2015 Intel Corporation.
 #
@@ -94,22 +112,26 @@ def generate_unittest():
 # Authors:
 #         Hongjuan, Wang<hongjuanx.wang@intel.com>'''
         testfile.write(testTitle + "\n")
-        testfile.write("\nimport random,os,sys,unittest,allpairs \nreload(sys) \nsys.setdefaultencoding( \"utf-8\" ) \nclass TestCaseUnit(unittest.TestCase): \n ")
+        testfile.write(
+            "\nimport random,os,sys,unittest,allpairs \nreload(sys) \nsys.setdefaultencoding( \"utf-8\" ) \nclass TestCaseUnit(unittest.TestCase): \n ")
         lines = fp.readlines()
         for line in lines:
             item = line.strip('\t\n')
             flag = item[:10].strip()
             cmd = item[10:].strip()
-            #print flag, cmd[cmd.index("create")+6:].strip()[-5:]
-            casenum = "\n  def test_pkgName_" + flag + "(self):\n     self.assertEqual(\"PASS\", allpairs.tryRunApp(\"" + flag +"\", \"" + cmd+ "\"))"+ "\n"
+            # print flag, cmd[cmd.index("create")+6:].strip()[-5:]
+            casenum = "\n  def test_pkgName_" + flag + \
+                "(self):\n     self.assertEqual(\"PASS\", allpairs.tryRunApp(\"" + \
+                flag + "\", \"" + cmd + "\"))" + "\n"
             testfile.write(casenum)
             testfile.flush()
         testfile.write("\nif __name__ == '__main__':\n    unittest.main()")
         testfile.close()
         os.system("chmod +x " + comm.ConstPath + "/pkgName.py")
-    except Exception,e:
-        print Exception,"Generate pkgName.py error:",e
+    except Exception as e:
+        print Exception, "Generate pkgName.py error:", e
         sys.exit(1)
+
 
 def tryRunApp(item, cmd):
     try:
@@ -118,11 +140,11 @@ def tryRunApp(item, cmd):
         lines = fp.readlines()
         print item
         flag = item[:10].strip()
-        package = cmd[cmd.index("create")+6:].strip()
+        package = cmd[cmd.index("create") + 6:].strip()
         exec_cmd = comm.PackTools + cmd
         os.chdir(comm.XwalkPath)
         packstatus = commands.getstatusoutput(exec_cmd)
-        #print packstatus
+        # print packstatus
         if 'negative' in flag:
             if packstatus[0] != 0:
                 print "Genarate APK ---------------->O.K"
@@ -145,8 +167,8 @@ def tryRunApp(item, cmd):
                 comm.clear(package)
                 result = 'FAIL'
                 return result
-    except Exception,e:
-        print Exception,"Generate pkgName.py error:",e
+    except Exception as e:
+        print Exception, "Generate pkgName.py error:", e
         sys.exit(1)
 
 if __name__ == '__main__':

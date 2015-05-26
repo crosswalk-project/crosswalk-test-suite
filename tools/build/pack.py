@@ -51,7 +51,14 @@ sys.setdefaultencoding('utf8')
 TOOL_VERSION = "v0.1"
 VERSION_FILE = "VERSION"
 DEFAULT_CMD_TIMEOUT = 600
-PKG_TYPES = ["apk", "xpk", "wgt", "apk-aio", "cordova-aio", "cordova", "embeddingapi"]
+PKG_TYPES = [
+    "apk",
+    "xpk",
+    "wgt",
+    "apk-aio",
+    "cordova-aio",
+    "cordova",
+    "embeddingapi"]
 PKG_MODES = ["shared", "embedded"]
 PKG_ARCHS = ["x86", "arm"]
 PKG_BLACK_LIST = []
@@ -66,7 +73,8 @@ BUILD_ROOT_PKG = None
 BUILD_ROOT_PKG_APP = None
 LOG = None
 LOG_LEVEL = logging.DEBUG
-BUILD_TIME = time.strftime('%Y%m%d',time.localtime(time.time()))
+BUILD_TIME = time.strftime('%Y%m%d', time.localtime(time.time()))
+
 
 class ColorFormatter(logging.Formatter):
 
@@ -96,20 +104,21 @@ def iterfindfiles(path, fnexp):
         for filename in fnmatch.filter(files, fnexp):
             yield os.path.join(root, filename)
 
+
 def replaceUserString(path, fnexp, old_s, new_s):
-    for sub_file in iterfindfiles(path,fnexp):
+    for sub_file in iterfindfiles(path, fnexp):
         try:
-            with open(sub_file,'r') as sub_read_obj:
+            with open(sub_file, 'r') as sub_read_obj:
                 read_string = sub_read_obj.read()
         except IOError as err:
-            LOG.error("Read %s Error : "%sub_file + str(err))
+            LOG.error("Read %s Error : " % sub_file + str(err))
             continue
         if read_string.find(old_s) >= 0:
             try:
-                with open(sub_file,'w') as sub_write_obj:
-                    sub_write_obj.write(re.sub(old_s,new_s,read_string))
+                with open(sub_file, 'w') as sub_write_obj:
+                    sub_write_obj.write(re.sub(old_s, new_s, read_string))
             except IOError as err:
-                LOG.error("Modify %s Error : "%sub_file + str(err))
+                LOG.error("Modify %s Error : " % sub_file + str(err))
                 continue
 
 
@@ -352,7 +361,12 @@ def prepareBuildRoot():
     if not doCopy(BUILD_PARAMETERS.srcdir, BUILD_ROOT_SRC):
         return False
     else:
-        replaceUserString(BUILD_ROOT_SRC,'*','TESTER-HOME-DIR',"/home/%s"%BUILD_PARAMETERS.user)
+        replaceUserString(
+            BUILD_ROOT_SRC,
+            '*',
+            'TESTER-HOME-DIR',
+            "/home/%s" %
+            BUILD_PARAMETERS.user)
 
     if not doRemove(
             glob.glob(os.path.join(BUILD_ROOT_SRC, "%s*.zip" % PKG_NAME))):
@@ -501,8 +515,9 @@ def packAPK(build_json=None, app_src=None, app_dest=None, app_name=None):
 
     tmp_opt = safelyGetValue(build_json, "apk-version-opt")
     if tmp_opt:
-        version_opt = "--app-version='%s'" % ''.join([tmp_opt,BUILD_TIME])
-        version_code_opt = "--app-versionCode='%s'" % ''.join(['6',BUILD_TIME])
+        version_opt = "--app-version='%s'" % ''.join([tmp_opt, BUILD_TIME])
+        version_code_opt = "--app-versionCode='%s'" % ''.join(
+            ['6', BUILD_TIME])
 
     tmp_opt = safelyGetValue(build_json, "apk-fullscreen-opt")
     if tmp_opt:
@@ -588,13 +603,16 @@ def packAPK(build_json=None, app_src=None, app_dest=None, app_name=None):
     os.chdir(orig_dir)
     return True
 
-def packCordova_cli(build_json=None, app_src=None, app_dest=None, app_name=None):
+
+def packCordova_cli(
+        build_json=None, app_src=None, app_dest=None, app_name=None):
     app_name = app_name.replace("-", "_")
     project_root = os.path.join(BUILD_ROOT, app_name)
 
     output = commands.getoutput("cordova -v")
     if output != "5.0.0":
-        LOG.error("Cordova 4.0 build requires Cordova-CLI 5.0.0, install with command: '$ sudo npm install cordova@5.0.0 -g'")
+        LOG.error(
+            "Cordova 4.0 build requires Cordova-CLI 5.0.0, install with command: '$ sudo npm install cordova@5.0.0 -g'")
         return False
 
     plugin_tool = os.path.join(BUILD_ROOT, "cordova_plugins")
@@ -611,10 +629,19 @@ def packCordova_cli(build_json=None, app_src=None, app_dest=None, app_name=None)
         os.chdir(orig_dir)
         return False
 
-    ### Set activity name as app_name
-    replaceUserString(project_root, 'config.xml', '<widget', '<widget android-activityName="%s"' % app_name)
-    ### Workaround for XWALK-3679
-    replaceUserString(project_root, 'config.xml', '</widget>', '    <allow-navigation href="*" />\n</widget>')
+    # Set activity name as app_name
+    replaceUserString(
+        project_root,
+        'config.xml',
+        '<widget',
+        '<widget android-activityName="%s"' %
+        app_name)
+    # Workaround for XWALK-3679
+    replaceUserString(
+        project_root,
+        'config.xml',
+        '</widget>',
+        '    <allow-navigation href="*" />\n</widget>')
 
     if not doRemove([os.path.join(project_root, "www")]):
         return False
@@ -644,25 +671,44 @@ def packCordova_cli(build_json=None, app_src=None, app_dest=None, app_name=None)
         os.chdir(orig_dir)
         return False
 
-    outputs_dir = os.path.join(project_root, "platforms", "android", "build", "outputs", "apk")
+    outputs_dir = os.path.join(
+        project_root,
+        "platforms",
+        "android",
+        "build",
+        "outputs",
+        "apk")
 
     if BUILD_PARAMETERS.pkgarch == "x86":
-        cordova_tmp_path = os.path.join(outputs_dir, "%s-x86-debug.apk"%app_name)
-        cordova_tmp_path_spare = os.path.join(outputs_dir, "android-x86-debug.apk")
+        cordova_tmp_path = os.path.join(
+            outputs_dir,
+            "%s-x86-debug.apk" %
+            app_name)
+        cordova_tmp_path_spare = os.path.join(
+            outputs_dir,
+            "android-x86-debug.apk")
     else:
-        cordova_tmp_path = os.path.join(outputs_dir, "%s-armv7-debug.apk"%app_name)
-        cordova_tmp_path_spare = os.path.join(outputs_dir, "android-armv7-debug.apk")
+        cordova_tmp_path = os.path.join(
+            outputs_dir,
+            "%s-armv7-debug.apk" %
+            app_name)
+        cordova_tmp_path_spare = os.path.join(
+            outputs_dir,
+            "android-armv7-debug.apk")
 
     if not os.path.exists(cordova_tmp_path):
-        if not doCopy(cordova_tmp_path_spare, os.path.join(app_dest, "%s.apk" % app_name)):
+        if not doCopy(
+                cordova_tmp_path_spare, os.path.join(app_dest, "%s.apk" % app_name)):
             os.chdir(orig_dir)
             return False
     else:
-        if not doCopy(cordova_tmp_path, os.path.join(app_dest, "%s.apk" % app_name)):
+        if not doCopy(
+                cordova_tmp_path, os.path.join(app_dest, "%s.apk" % app_name)):
             os.chdir(orig_dir)
             return False
     os.chdir(orig_dir)
     return True
+
 
 def packCordova(build_json=None, app_src=None, app_dest=None, app_name=None):
     pack_tool = os.path.join(BUILD_ROOT, "cordova")
@@ -681,7 +727,6 @@ def packCordova(build_json=None, app_src=None, app_dest=None, app_name=None):
 
     orig_dir = os.getcwd()
     os.chdir(pack_tool)
-
 
     if BUILD_PARAMETERS.pkgmode == "shared":
         pack_cmd = "bin/create %s org.xwalk.%s %s --xwalk-shared-library" % (
@@ -714,11 +759,33 @@ def packCordova(build_json=None, app_src=None, app_dest=None, app_name=None):
 
     if BUILD_PARAMETERS.subversion == '4.0':
         if BUILD_PARAMETERS.pkgarch == "x86":
-            cordova_tmp_path = os.path.join(BUILD_ROOT, "cordova", app_name, "build", "outputs", "apk", "%s-x86-debug.apk"%app_name)
+            cordova_tmp_path = os.path.join(
+                BUILD_ROOT,
+                "cordova",
+                app_name,
+                "build",
+                "outputs",
+                "apk",
+                "%s-x86-debug.apk" %
+                app_name)
         else:
-            cordova_tmp_path = os.path.join(BUILD_ROOT, "cordova", app_name, "build", "outputs", "apk", "%s-armv7-debug.apk"%app_name)
+            cordova_tmp_path = os.path.join(
+                BUILD_ROOT,
+                "cordova",
+                app_name,
+                "build",
+                "outputs",
+                "apk",
+                "%s-armv7-debug.apk" %
+                app_name)
     else:
-        cordova_tmp_path = os.path.join(BUILD_ROOT, "cordova", app_name, "bin", "%s-debug.apk"%app_name)
+        cordova_tmp_path = os.path.join(
+            BUILD_ROOT,
+            "cordova",
+            app_name,
+            "bin",
+            "%s-debug.apk" %
+            app_name)
     if not doCMD(pack_cmd, DEFAULT_CMD_TIMEOUT):
         pack_cmd = "ant debug"
         if not doCMD(pack_cmd, DEFAULT_CMD_TIMEOUT):
@@ -726,11 +793,12 @@ def packCordova(build_json=None, app_src=None, app_dest=None, app_name=None):
             return False
 
     if not doCopy(cordova_tmp_path,
-            os.path.join(app_dest, "%s.apk" % app_name)):
+                  os.path.join(app_dest, "%s.apk" % app_name)):
         os.chdir(orig_dir)
         return False
     os.chdir(orig_dir)
     return True
+
 
 def packEmbeddingAPI_ant(
         build_json=None, app_src=None, app_dest=None, app_name=None, app_version=None):
@@ -837,7 +905,9 @@ def packEmbeddingAPI_ant(
     os.chdir(orig_dir)
     return True
 
-def packEmbeddingAPI_gradle(build_json=None, app_src=None, app_dest=None, app_name=None, app_version=None):
+
+def packEmbeddingAPI_gradle(
+        build_json=None, app_src=None, app_dest=None, app_name=None, app_version=None):
     app_name = app_name.replace("-", "_")
     orig_dir = os.getcwd()
     LOG.info("app_src: %s" % app_src)
@@ -848,53 +918,80 @@ def packEmbeddingAPI_gradle(build_json=None, app_src=None, app_dest=None, app_na
         return False
     if BUILD_PARAMETERS.pkgarch and BUILD_PARAMETERS.pkgarch == "arm":
         if not doCopy(
-            os.path.join(app_src, "build", "outputs", "apk", "%s-armv7-debug.apk" % app_name),
-            os.path.join(app_dest, "%s.apk" % app_name)):
+                os.path.join(
+                    app_src,
+                    "build",
+                    "outputs",
+                    "apk",
+                    "%s-armv7-debug.apk" %
+                    app_name),
+                os.path.join(app_dest, "%s.apk" % app_name)):
             return False
     else:
         if not doCopy(
-            os.path.join(app_src, "build", "outputs", "apk", "%s-x86-debug.apk" % app_name),
-            os.path.join(app_dest, "%s.apk" % app_name)):
+                os.path.join(
+                    app_src,
+                    "build",
+                    "outputs",
+                    "apk",
+                    "%s-x86-debug.apk" %
+                    app_name),
+                os.path.join(app_dest, "%s.apk" % app_name)):
             return False
     os.chdir(orig_dir)
     return True
 
-def packEmbeddingAPI_maven(build_json=None, app_src=None, app_dest=None, app_name=None, app_version=None):
+
+def packEmbeddingAPI_maven(
+        build_json=None, app_src=None, app_dest=None, app_name=None, app_version=None):
     app_name = app_name.replace("-", "_")
     orig_dir = os.getcwd()
     LOG.info("app_src: %s" % app_src)
     LOG.info("app_dest: %s" % app_dest)
     os.chdir(app_src)
-    replaceUserString(app_src,'AndroidManifest.xml','android:versionCode=\"1\"','android:versionCode=\"${app.version.code}\"')
-    replaceUserString(app_src,'AndroidManifest.xml','android:versionName=\"1.0\"','android:versionName=\"${app.version.name}\"')
+    replaceUserString(
+        app_src,
+        'AndroidManifest.xml',
+        'android:versionCode=\"1\"',
+        'android:versionCode=\"${app.version.code}\"')
+    replaceUserString(
+        app_src,
+        'AndroidManifest.xml',
+        'android:versionName=\"1.0\"',
+        'android:versionName=\"${app.version.name}\"')
     if not doCopy(
-        os.path.join(app_src, "AndroidManifest.xml"), os.path.join(app_src, "src", "main", "AndroidManifest.xml")):
+            os.path.join(app_src, "AndroidManifest.xml"), os.path.join(app_src, "src", "main", "AndroidManifest.xml")):
         return False
     if not doCopy(
-        os.path.join(app_src, "res"), os.path.join(app_src, "src", "main", "res")):
+            os.path.join(app_src, "res"), os.path.join(app_src, "src", "main", "res")):
         return False
     if not doCopy(
-        os.path.join(app_src, "assets"), os.path.join(app_src, "src", "main", "assets")):
+            os.path.join(app_src, "assets"), os.path.join(app_src, "src", "main", "assets")):
         return False
     if not doCopy(
-        os.path.join(app_src, "src", "org"), os.path.join(app_src, "src", "main", "java", "org")):
+            os.path.join(app_src, "src", "org"), os.path.join(app_src, "src", "main", "java", "org")):
         return False
     if BUILD_PARAMETERS.pkgarch and BUILD_PARAMETERS.pkgarch == "arm":
         if not doCMD("mvn clean install -Px86"):
             return False
         if not doCopy(
-            os.path.join(app_src, "target", "%s-armv7-debug.apk" % app_name),
-            os.path.join(app_dest, "%s.apk" % app_name)):
+                os.path.join(
+                    app_src,
+                    "target",
+                    "%s-armv7-debug.apk" %
+                    app_name),
+                os.path.join(app_dest, "%s.apk" % app_name)):
             return False
     else:
         if not doCMD("mvn clean install -Parm"):
             return False
         if not doCopy(
-            os.path.join(app_src, "target", "%s-x86-debug.apk" % app_name),
-            os.path.join(app_dest, "%s.apk" % app_name)):
+                os.path.join(app_src, "target", "%s-x86-debug.apk" % app_name),
+                os.path.join(app_dest, "%s.apk" % app_name)):
             return False
     os.chdir(orig_dir)
     return True
+
 
 def packAPP(build_json=None, app_src=None, app_dest=None, app_name=None):
     LOG.info("Packing %s(%s)" % (app_name, app_src))
@@ -927,20 +1024,39 @@ def packAPP(build_json=None, app_src=None, app_dest=None, app_name=None):
         app_version = None
         if "_" in app_name:
             index_flag = app_name.index("_")
-            app_version = app_name[index_flag + 1 : ]
+            app_version = app_name[index_flag + 1:]
         if app_version:
-            replaceUserString(app_src,'AndroidManifest.xml','org.xwalk.embedding.test',"org.xwalk.embedding.test." + app_version)
-            replaceUserString(app_src,'AndroidManifest.xml','EmbeddingApiTestUnit',"EmbeddingApiTestUnit" + app_version)
+            replaceUserString(
+                app_src,
+                'AndroidManifest.xml',
+                'org.xwalk.embedding.test',
+                "org.xwalk.embedding.test." +
+                app_version)
+            replaceUserString(
+                app_src,
+                'AndroidManifest.xml',
+                'EmbeddingApiTestUnit',
+                "EmbeddingApiTestUnit" +
+                app_version)
             main_dest = os.path.join(app_src, "src/org/xwalk/embedding")
-            replaceUserString(main_dest,'MainActivity.java','org.xwalk.embedding.test', "org.xwalk.embedding.test." + app_version)
-        if BUILD_PARAMETERS.packtype and checkContains(BUILD_PARAMETERS.packtype, "GRADLE"):
-            if not packEmbeddingAPI_gradle(build_json, app_src, app_dest, app_name, app_version):
+            replaceUserString(
+                main_dest,
+                'MainActivity.java',
+                'org.xwalk.embedding.test',
+                "org.xwalk.embedding.test." +
+                app_version)
+        if BUILD_PARAMETERS.packtype and checkContains(
+                BUILD_PARAMETERS.packtype, "GRADLE"):
+            if not packEmbeddingAPI_gradle(
+                    build_json, app_src, app_dest, app_name, app_version):
                 return False
         elif BUILD_PARAMETERS.packtype and checkContains(BUILD_PARAMETERS.packtype, "MAVEN"):
-            if not packEmbeddingAPI_maven(build_json, app_src, app_dest, app_name, app_version):
+            if not packEmbeddingAPI_maven(
+                    build_json, app_src, app_dest, app_name, app_version):
                 return False
         else:
-            if not packEmbeddingAPI_ant(build_json, app_src, app_dest, app_name, app_version):
+            if not packEmbeddingAPI_ant(
+                    build_json, app_src, app_dest, app_name, app_version):
                 return False
     else:
         LOG.error("Got wrong pkg type: %s" % BUILD_PARAMETERS.pkgtype)
@@ -1174,7 +1290,6 @@ def main():
     if not BUILD_PARAMETERS.user:
         BUILD_PARAMETERS.user = "app"
 
-
     if not os.path.exists(
             os.path.join(BUILD_PARAMETERS.srcdir, "..", "..", VERSION_FILE)):
         if not os.path.exists(
@@ -1298,34 +1413,38 @@ def main():
 
         if BUILD_PARAMETERS.pkgarch and not BUILD_PARAMETERS.pkgarch in PKG_ARCHS:
             LOG.error("Wrong pkg-arch, only support: %s, exit ..." %
-                  PKG_ARCHS)
+                      PKG_ARCHS)
             sys.exit(1)
 
         if BUILD_PARAMETERS.pkgmode and not BUILD_PARAMETERS.pkgmode in PKG_MODES:
             LOG.error("Wrong pkg-mode, only support: %s, exit ..." %
-                  PKG_MODES)
+                      PKG_MODES)
             sys.exit(1)
 
         if BUILD_PARAMETERS.subversion:
-            if not str(BUILD_PARAMETERS.subversion) in cordova_subv_list :
-                LOG.error("The argument of cordova --sub-version can only be '3.6' or '4.0' , exit ...")
+            if not str(BUILD_PARAMETERS.subversion) in cordova_subv_list:
+                LOG.error(
+                    "The argument of cordova --sub-version can only be '3.6' or '4.0' , exit ...")
                 sys.exit(1)
             if BUILD_PARAMETERS.subversion == '4.0' and BUILD_PARAMETERS.pkgmode:
                 LOG.error("Command -m is only for cordova version 3.6")
                 sys.exit(1)
-            parameters_type = BUILD_PARAMETERS.pkgtype + BUILD_PARAMETERS.subversion
+            parameters_type = BUILD_PARAMETERS.pkgtype + \
+                BUILD_PARAMETERS.subversion
 
-        if (BUILD_PARAMETERS.subversion == '3.6' or not BUILD_PARAMETERS.subversion) and BUILD_PARAMETERS.pkgarch:
+        if (BUILD_PARAMETERS.subversion ==
+                '3.6' or not BUILD_PARAMETERS.subversion) and BUILD_PARAMETERS.pkgarch:
             LOG.error("Command -a is not for cordova version 3.6")
             sys.exit(1)
-    
+
     if BUILD_PARAMETERS.pkgtype == "embeddingapi":
-        if BUILD_PARAMETERS.packtype and not BUILD_PARAMETERS.packtype in PACK_TYPES: 
+        if BUILD_PARAMETERS.packtype and not BUILD_PARAMETERS.packtype in PACK_TYPES:
             LOG.error("embeddingapi packtype can only be gradle, maven or ant")
             sys.exit(1)
         if BUILD_PARAMETERS.subversion:
-            BUILD_PARAMETERS.pkgtype = BUILD_PARAMETERS.pkgtype + BUILD_PARAMETERS.subversion
-    
+            BUILD_PARAMETERS.pkgtype = BUILD_PARAMETERS.pkgtype + \
+                BUILD_PARAMETERS.subversion
+
     all_pkg_string = "".join(config_json["pkg-list"].keys())
     if parameters_type and parameters_type in all_pkg_string:
         for i_pkg in config_json["pkg-list"].keys():
@@ -1340,7 +1459,8 @@ def main():
                 pkg_json = config_json["pkg-list"][i_pkg]
                 break
 
-    if (pkg_json == config_json['pkg-list'].get('apk') or pkg_json == config_json['pkg-list'].get('apk,cordova'))  and int(str(pkg_main_version).split('.')[-1]) != 0 and config_json['pkg-list'].get('apk-googleplayer') != None :
+    if (pkg_json == config_json['pkg-list'].get('apk') or pkg_json == config_json['pkg-list'].get('apk,cordova')) and int(
+            str(pkg_main_version).split('.')[-1]) != 0 and config_json['pkg-list'].get('apk-googleplayer') is not None:
         pkg_json = config_json["pkg-list"]['apk-googleplayer']
 
     if not pkg_json:

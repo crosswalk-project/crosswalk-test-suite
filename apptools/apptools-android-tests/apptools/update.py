@@ -34,23 +34,30 @@ import comm
 import commands
 import urllib2
 
+
 class TestCrosswalkApptoolsFunctions(unittest.TestCase):
+
     def test_update_no_argument(self):
         comm.setUp()
         comm.create(self)
         os.chdir('org.xwalk.test')
-        updatecmd =  comm.PackTools + "crosswalk-app update"
+        updatecmd = comm.PackTools + "crosswalk-app update"
         currentVersion = comm.update(self, updatecmd)
-        crosswalklist = urllib2.urlopen('https://download.01.org/crosswalk/releases/crosswalk/android/stable/').read()
+        crosswalklist = urllib2.urlopen(
+            'https://download.01.org/crosswalk/releases/crosswalk/android/stable/').read()
         fp = open('test', 'w')
         fp.write(crosswalklist)
         fp.close()
-        line = commands.getstatusoutput("cat test|sed -n  '/src\=\"\/icons\/folder.gif\"/=' |sed -n '$p'")[1].strip()
-        cmd = "cat test |sed -n '%dp' |awk -F 'href=' '{print $2}' |awk -F '\"|/' '{print $2}'" % int(line)
+        line = commands.getstatusoutput(
+            "cat test|sed -n  '/src\=\"\/icons\/folder.gif\"/=' |sed -n '$p'")[1].strip()
+        cmd = "cat test |sed -n '%dp' |awk -F 'href=' '{print $2}' |awk -F '\"|/' '{print $2}'" % int(
+            line)
         version = commands.getstatusoutput(cmd)[1]
         if not '.' in version:
-            line = commands.getstatusoutput("tac test|sed -n  '/src\=\"\/icons\/folder.gif\"/=' |sed -n '2p'")[1].strip()
-            cmd = "tac test |sed -n '%dp' |awk -F 'href=' '{print $2}' |awk -F '\"|/' '{print $2}'" % int(line)
+            line = commands.getstatusoutput(
+                "tac test|sed -n  '/src\=\"\/icons\/folder.gif\"/=' |sed -n '2p'")[1].strip()
+            cmd = "tac test |sed -n '%dp' |awk -F 'href=' '{print $2}' |awk -F '\"|/' '{print $2}'" % int(
+                line)
             version = commands.getstatusoutput(cmd)[1]
         commands.getstatusoutput("rm -rf test")
         comm.clear("org.xwalk.test")
@@ -60,18 +67,23 @@ class TestCrosswalkApptoolsFunctions(unittest.TestCase):
         comm.setUp()
         comm.create(self)
         os.chdir('org.xwalk.test')
-        updatecmd =  comm.PackTools + "crosswalk-app update beta"
+        updatecmd = comm.PackTools + "crosswalk-app update beta"
         currentVersion = comm.update(self, updatecmd)
-        crosswalklist = urllib2.urlopen('https://download.01.org/crosswalk/releases/crosswalk/android/beta/').read()
+        crosswalklist = urllib2.urlopen(
+            'https://download.01.org/crosswalk/releases/crosswalk/android/beta/').read()
         fp = open('test', 'w')
         fp.write(crosswalklist)
         fp.close()
-        line = commands.getstatusoutput("cat test|sed -n  '/src\=\"\/icons\/folder.gif\"/=' |sed -n '$p'")[1].strip()
-        cmd = "cat test |sed -n '%dp' |awk -F 'href=' '{print $2}' |awk -F '\"|/' '{print $2}'" % int(line)
+        line = commands.getstatusoutput(
+            "cat test|sed -n  '/src\=\"\/icons\/folder.gif\"/=' |sed -n '$p'")[1].strip()
+        cmd = "cat test |sed -n '%dp' |awk -F 'href=' '{print $2}' |awk -F '\"|/' '{print $2}'" % int(
+            line)
         version = commands.getstatusoutput(cmd)[1]
         if not '.' in version:
-            line = commands.getstatusoutput("tac test|sed -n  '/src\=\"\/icons\/folder.gif\"/=' |sed -n '2p'")[1].strip()
-            cmd = "tac test |sed -n '%dp' |awk -F 'href=' '{print $2}' |awk -F '\"|/' '{print $2}'" % int(line)
+            line = commands.getstatusoutput(
+                "tac test|sed -n  '/src\=\"\/icons\/folder.gif\"/=' |sed -n '2p'")[1].strip()
+            cmd = "tac test |sed -n '%dp' |awk -F 'href=' '{print $2}' |awk -F '\"|/' '{print $2}'" % int(
+                line)
             version = commands.getstatusoutput(cmd)[1]
         commands.getstatusoutput("rm -rf test")
         comm.clear("org.xwalk.test")
@@ -81,18 +93,23 @@ class TestCrosswalkApptoolsFunctions(unittest.TestCase):
         comm.setUp()
         comm.create(self)
         os.chdir('org.xwalk.test')
-        updatecmd =  comm.PackTools + "crosswalk-app update canary"
+        updatecmd = comm.PackTools + "crosswalk-app update canary"
         currentVersion = comm.update(self, updatecmd)
-        crosswalklist = urllib2.urlopen('https://download.01.org/crosswalk/releases/crosswalk/android/canary/').read()
+        crosswalklist = urllib2.urlopen(
+            'https://download.01.org/crosswalk/releases/crosswalk/android/canary/').read()
         fp = open('test', 'w')
         fp.write(crosswalklist)
         fp.close()
-        line = commands.getstatusoutput("cat test|sed -n  '/src\=\"\/icons\/folder.gif\"/=' |sed -n '$p'")[1].strip()
-        cmd = "cat test |sed -n '%dp' |awk -F 'href=' '{print $2}' |awk -F '\"|/' '{print $2}'" % int(line)
+        line = commands.getstatusoutput(
+            "cat test|sed -n  '/src\=\"\/icons\/folder.gif\"/=' |sed -n '$p'")[1].strip()
+        cmd = "cat test |sed -n '%dp' |awk -F 'href=' '{print $2}' |awk -F '\"|/' '{print $2}'" % int(
+            line)
         version = commands.getstatusoutput(cmd)[1]
         if not '.' in version:
-            line = commands.getstatusoutput("tac test|sed -n  '/src\=\"\/icons\/folder.gif\"/=' |sed -n '2p'")[1].strip()
-            cmd = "tac test |sed -n '%dp' |awk -F 'href=' '{print $2}' |awk -F '\"|/' '{print $2}'" % int(line)
+            line = commands.getstatusoutput(
+                "tac test|sed -n  '/src\=\"\/icons\/folder.gif\"/=' |sed -n '2p'")[1].strip()
+            cmd = "tac test |sed -n '%dp' |awk -F 'href=' '{print $2}' |awk -F '\"|/' '{print $2}'" % int(
+                line)
             version = commands.getstatusoutput(cmd)[1]
         commands.getstatusoutput("rm -rf test")
         comm.clear("org.xwalk.test")
@@ -102,18 +119,23 @@ class TestCrosswalkApptoolsFunctions(unittest.TestCase):
         comm.setUp()
         comm.create(self)
         os.chdir('org.xwalk.test')
-        updatecmd =  comm.PackTools + "crosswalk-app update stable"
+        updatecmd = comm.PackTools + "crosswalk-app update stable"
         currentVersion = comm.update(self, updatecmd)
-        crosswalklist = urllib2.urlopen('https://download.01.org/crosswalk/releases/crosswalk/android/stable/').read()
+        crosswalklist = urllib2.urlopen(
+            'https://download.01.org/crosswalk/releases/crosswalk/android/stable/').read()
         fp = open('test', 'w')
         fp.write(crosswalklist)
         fp.close()
-        line = commands.getstatusoutput("cat test|sed -n  '/src\=\"\/icons\/folder.gif\"/=' |sed -n '$p'")[1].strip()
-        cmd = "cat test |sed -n '%dp' |awk -F 'href=' '{print $2}' |awk -F '\"|/' '{print $2}'" % int(line)
+        line = commands.getstatusoutput(
+            "cat test|sed -n  '/src\=\"\/icons\/folder.gif\"/=' |sed -n '$p'")[1].strip()
+        cmd = "cat test |sed -n '%dp' |awk -F 'href=' '{print $2}' |awk -F '\"|/' '{print $2}'" % int(
+            line)
         version = commands.getstatusoutput(cmd)[1]
         if not '.' in version:
-            line = commands.getstatusoutput("tac test|sed -n  '/src\=\"\/icons\/folder.gif\"/=' |sed -n '2p'")[1].strip()
-            cmd = "tac test |sed -n '%dp' |awk -F 'href=' '{print $2}' |awk -F '\"|/' '{print $2}'" % int(line)
+            line = commands.getstatusoutput(
+                "tac test|sed -n  '/src\=\"\/icons\/folder.gif\"/=' |sed -n '2p'")[1].strip()
+            cmd = "tac test |sed -n '%dp' |awk -F 'href=' '{print $2}' |awk -F '\"|/' '{print $2}'" % int(
+                line)
             version = commands.getstatusoutput(cmd)[1]
         commands.getstatusoutput("rm -rf test")
         comm.clear("org.xwalk.test")
@@ -123,7 +145,7 @@ class TestCrosswalkApptoolsFunctions(unittest.TestCase):
         comm.setUp()
         comm.create(self)
         os.chdir('org.xwalk.test')
-        updatecmd =  comm.PackTools + "crosswalk-app update channel"
+        updatecmd = comm.PackTools + "crosswalk-app update channel"
         updatestatus = commands.getstatusoutput(updatecmd)
         comm.clear("org.xwalk.test")
         self.assertIn("ERROR:", updatestatus[1])
@@ -132,7 +154,7 @@ class TestCrosswalkApptoolsFunctions(unittest.TestCase):
         comm.setUp()
         comm.create(self)
         os.chdir('org.xwalk.test')
-        updatecmd =  comm.PackTools + "crosswalk-app update 13.42.319.7"
+        updatecmd = comm.PackTools + "crosswalk-app update 13.42.319.7"
         comm.update(self, updatecmd)
         comm.clear("org.xwalk.test")
 
@@ -140,9 +162,9 @@ class TestCrosswalkApptoolsFunctions(unittest.TestCase):
         comm.setUp()
         comm.create(self)
         os.chdir('org.xwalk.test')
-        updatecmd =  comm.PackTools + "crosswalk-app update 13.42.319.7"
+        updatecmd = comm.PackTools + "crosswalk-app update 13.42.319.7"
         comm.update(self, updatecmd)
-        newupdatecmd =  comm.PackTools + "crosswalk-app update 13.42.319.7"
+        newupdatecmd = comm.PackTools + "crosswalk-app update 13.42.319.7"
         updatestatus = commands.getstatusoutput(newupdatecmd)
         self.assertIn("Using cached", updatestatus[1])
         comm.clear("org.xwalk.test")
@@ -151,9 +173,9 @@ class TestCrosswalkApptoolsFunctions(unittest.TestCase):
         comm.setUp()
         comm.create(self)
         os.chdir('org.xwalk.test')
-        updatecmd =  comm.PackTools + "crosswalk-app update 13.42.319.7"
+        updatecmd = comm.PackTools + "crosswalk-app update 13.42.319.7"
         comm.update(self, updatecmd)
-        newupdatecmd =  comm.PackTools + "crosswalk-app update 11.40.277.1"
+        newupdatecmd = comm.PackTools + "crosswalk-app update 11.40.277.1"
         comm.update(self, newupdatecmd)
         comm.clear("org.xwalk.test")
 
@@ -161,7 +183,7 @@ class TestCrosswalkApptoolsFunctions(unittest.TestCase):
         comm.setUp()
         comm.create(self)
         os.chdir('org.xwalk.test')
-        updatecmd =  comm.PackTools + "crosswalk-app update 0.0.0.0"
+        updatecmd = comm.PackTools + "crosswalk-app update 0.0.0.0"
         updatestatus = commands.getstatusoutput(updatecmd)
         comm.clear("org.xwalk.test")
         self.assertIn("ERROR:", updatestatus[1])
@@ -170,7 +192,7 @@ class TestCrosswalkApptoolsFunctions(unittest.TestCase):
         comm.setUp()
         comm.create(self)
         os.chdir('org.xwalk.test/pkg')
-        updatecmd =  comm.PackTools + "crosswalk-app update"
+        updatecmd = comm.PackTools + "crosswalk-app update"
         updatestatus = commands.getstatusoutput(updatecmd)
         print updatestatus[1]
         comm.clear("org.xwalk.test")

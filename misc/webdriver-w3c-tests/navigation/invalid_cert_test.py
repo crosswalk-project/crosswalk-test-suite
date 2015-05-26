@@ -20,7 +20,8 @@ class InvalidCertTest(base_test.WebDriverBaseTest):
             self.webserver.httpd.socket,
             certfile=os.path.join(_THIS_DIR, 'res/self-signed.key'),
             server_side=True)
-	expected = self.webserver.where_is('navigation/res/empty.html').replace('http:', 'https:', 1)
+        expected = self.webserver.where_is(
+            'navigation/res/empty.html').replace('http:', 'https:', 1)
 
         self.driver.get(expected)
 

@@ -26,12 +26,14 @@
 # Authors:
 #         Fan,Weiwei <weiwix.fan@intel.com>
 
+
 def main(request, response):
-  response.headers.update([("Access-Control-Allow-Origin", request.headers["host"]),
-                           ("Access-Control-Allow-Credentials", "true"),
-                           ("Access-Control-Expose-Headers", "Access-Control-Allow-Credentials"),
-                           ("Cache-Control", "no-cache"),
-                           ("Pragma", "no-cache"),
-                           ("Content-Type", "text/plain")
-                         ])
-  return "HelloWorld"
+    response.headers.update([("Access-Control-Allow-Origin", request.headers["host"]),
+                             ("Access-Control-Allow-Credentials", "true"),
+                             ("Access-Control-Expose-Headers",
+                              "Access-Control-Allow-Credentials"),
+                             ("Cache-Control", "no-cache"),
+                             ("Pragma", "no-cache"),
+                             ("Content-Type", "text/plain")
+                             ])
+    return "HelloWorld"

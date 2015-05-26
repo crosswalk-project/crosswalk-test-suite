@@ -27,7 +27,7 @@ def doCMD(cmd):
     while True:
         output_line = cmd_proc.stdout.readline().strip("\r\n")
         cmd_return_code = cmd_proc.poll()
-        if output_line == '' and cmd_return_code != None:
+        if output_line == '' and cmd_return_code is not None:
             break
         sys.stdout.write("%s\n" % output_line)
         sys.stdout.flush()
@@ -43,8 +43,11 @@ def uninstPKGs():
             if file.endswith("%s.apk" % PKG_NAME):
                 cmd = "%s -s %s uninstall org.xwalk.%s" % (
                     ADB_CMD, PARAMETERS.device, os.path.basename(os.path.splitext(file)[0]))
-                if os.path.basename(os.path.splitext(file)[0]) == "XWalkRuntimeLib":
-                    cmd = "%s -s %s uninstall %s" % (ADB_CMD, PARAMETERS.device, "org.xwalk.runtime.lib")
+                if os.path.basename(
+                        os.path.splitext(file)[0]) == "XWalkRuntimeLib":
+                    cmd = "%s -s %s uninstall %s" % (ADB_CMD,
+                                                     PARAMETERS.device,
+                                                     "org.xwalk.runtime.lib")
                 (return_code, output) = doCMD(cmd)
                 for line in output:
                     if "Failure" in line:
@@ -80,7 +83,7 @@ def main():
             "-u", dest="buninstpkg", action="store_true", help="Uninstall package")
         global PARAMETERS
         (PARAMETERS, args) = opts_parser.parse_args()
-    except Exception, e:
+    except Exception as e:
         print "Got wrong option: %s, exit ..." % e
         sys.exit(1)
 
@@ -100,11 +103,19 @@ def main():
         sys.exit(1)
 
     if PARAMETERS.buninstpkg:
-        os.system("%s -s %s uninstall %s" % (ADB_CMD, PARAMETERS.device, "org.xwalk.runtime.lib"))
+        os.system(
+            "%s -s %s uninstall %s" %
+            (ADB_CMD,
+             PARAMETERS.device,
+             "org.xwalk.runtime.lib"))
         if not uninstPKGs():
             sys.exit(1)
     else:
-        os.system("%s -s %s install -r %s" % (ADB_CMD, PARAMETERS.device, "resource/XWalkRuntimeLib.apk"))
+        os.system(
+            "%s -s %s install -r %s" %
+            (ADB_CMD,
+             PARAMETERS.device,
+             "resource/XWalkRuntimeLib.apk"))
         if not instPKGs():
             sys.exit(1)
 

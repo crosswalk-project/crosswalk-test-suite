@@ -8,6 +8,7 @@ from optparse import OptionParser
 SCRIPT_DIR = os.path.dirname(os.path.abspath(__file__))
 PARAMETERS = None
 
+
 def doCMD(cmd):
     print "-->> \"%s\"" % cmd
     output = []
@@ -18,13 +19,14 @@ def doCMD(cmd):
     while True:
         output_line = cmd_proc.stdout.readline().strip("\r\n")
         cmd_return_code = cmd_proc.poll()
-        if output_line == '' and cmd_return_code != None:
+        if output_line == '' and cmd_return_code is not None:
             break
         sys.stdout.write("%s\n" % output_line)
         sys.stdout.flush()
         output.append(output_line)
 
     return (cmd_return_code, output)
+
 
 def uninstPKGs():
     action_status = True
@@ -40,6 +42,7 @@ def uninstPKGs():
                     break
     return action_status
 
+
 def instPKGs():
     action_status = True
     for root, dirs, files in os.walk(SCRIPT_DIR):
@@ -52,6 +55,7 @@ def instPKGs():
                     break
     return action_status
 
+
 def main():
     try:
         usage = "usage: inst.py -i"
@@ -62,7 +66,7 @@ def main():
             "-u", dest="buninstpkg", action="store_true", help="Uninstall package")
         global PARAMETERS
         (PARAMETERS, args) = opts_parser.parse_args()
-    except Exception, e:
+    except Exception as e:
         print "Got wrong option: %s, exit ..." % e
         sys.exit(1)
 

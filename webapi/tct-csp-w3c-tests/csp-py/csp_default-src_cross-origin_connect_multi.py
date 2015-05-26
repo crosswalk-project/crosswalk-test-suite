@@ -1,7 +1,13 @@
 def main(request, response):
-    response.headers.set("Content-Security-Policy", "default-src http://www.w3.org https://www.tizen.org; script-src 'self' 'unsafe-inline'")
-    response.headers.set("X-Content-Security-Policy", "default-src http://www.w3.org https://www.tizen.org; script-src 'self' 'unsafe-inline'")
-    response.headers.set("X-WebKit-CSP", "default-src http://www.w3.org https://www.tizen.org; script-src 'self' 'unsafe-inline'")
+    response.headers.set(
+        "Content-Security-Policy",
+        "default-src http://www.w3.org https://www.tizen.org; script-src 'self' 'unsafe-inline'")
+    response.headers.set(
+        "X-Content-Security-Policy",
+        "default-src http://www.w3.org https://www.tizen.org; script-src 'self' 'unsafe-inline'")
+    response.headers.set(
+        "X-WebKit-CSP",
+        "default-src http://www.w3.org https://www.tizen.org; script-src 'self' 'unsafe-inline'")
     return """<!DOCTYPE html>
 <!--
 Copyright (c) 2013 Intel Corporation.

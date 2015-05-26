@@ -1,6 +1,6 @@
 def main(request, response):
     _URL = request.url
-    _CSP = "child-src " + _URL[:_URL.index('/csp')+1]
+    _CSP = "child-src " + _URL[:_URL.index('/csp') + 1]
     print _CSP
     response.headers.set("Content-Security-Policy", _CSP)
     response.headers.set("X-Content-Security-Policy", _CSP)
@@ -51,7 +51,7 @@ Authors:
     <p>Test passes if there is <strong>red</strong>.</p>
     <iframe id="test" frameborder="no" border="0"></iframe>
     <script>
-      document.getElementById("test").src =' """+ _URL[:_URL.index('/csp')+1] +"""csp/support/red-100x100.png';
+      document.getElementById("test").src =' """ + _URL[:_URL.index('/csp') + 1] + """csp/support/red-100x100.png';
     </script>
   </body>
 </html> """

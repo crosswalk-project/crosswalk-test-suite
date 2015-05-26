@@ -29,7 +29,7 @@ def doCMD(cmd):
     while True:
         output_line = cmd_proc.stdout.readline().strip("\r\n")
         cmd_return_code = cmd_proc.poll()
-        if output_line == '' and cmd_return_code != None:
+        if output_line == '' and cmd_return_code is not None:
             break
         sys.stdout.write("%s\n" % output_line)
         sys.stdout.flush()
@@ -42,13 +42,15 @@ def updateCMD(cmd=None):
     if "pkgcmd" in cmd:
         cmd = "su - %s -c '%s;%s'" % (PARAMETERS.user, XW_ENV, cmd)
     return cmd
+
+
 def getUSERID():
     if PARAMETERS.mode == "SDB":
         cmd = "sdb -s %s shell id -u %s" % (
             PARAMETERS.device, PARAMETERS.user)
     else:
         cmd = "ssh %s \"id -u %s\"" % (
-            PARAMETERS.device, PARAMETERS.user )
+            PARAMETERS.device, PARAMETERS.user)
     return doCMD(cmd)
 
 
@@ -68,7 +70,7 @@ def getPKGID(pkg_name=None):
     for line in output:
         if line.find("[" + pkg_name + "]") != -1:
             pkgidIndex = line.split().index("pkgid")
-            test_pkg_id = line.split()[pkgidIndex+1].strip("[]")
+            test_pkg_id = line.split()[pkgidIndex + 1].strip("[]")
             break
     return test_pkg_id
 
@@ -139,7 +141,8 @@ def instPKGs():
     for root, dirs, files in os.walk(SCRIPT_DIR):
         for file in files:
             if file.endswith(".xpk"):
-                if not doRemoteCopy(os.path.join(root, file), "%s/%s" % (SRC_DIR, file)):
+                if not doRemoteCopy(
+                        os.path.join(root, file), "%s/%s" % (SRC_DIR, file)):
                     action_status = False
                 (return_code, output) = doRemoteCMD(
                     "pkgcmd -i -t xpk -q -p %s/%s" % (SRC_DIR, file))
@@ -153,14 +156,16 @@ def instPKGs():
     if return_code != 0:
         action_status = False
 
-    if not doRemoteCopy("%s/webapi-tizen-messaging-test_image.jpg" % SCRIPT_DIR, "%s/Images" % SRC_DIR):
+    if not doRemoteCopy(
+            "%s/webapi-tizen-messaging-test_image.jpg" % SCRIPT_DIR, "%s/Images" % SRC_DIR):
         action_status = False
 
     (return_code, output) = doRemoteCMD("mkdir -p %s/Sounds" % SRC_DIR)
     if return_code != 0:
         action_status = False
 
-    if not doRemoteCopy("%s/webapi-tizen-messaging-test_noise.mp3" % SCRIPT_DIR, "%s/Sounds" % SRC_DIR):
+    if not doRemoteCopy(
+            "%s/webapi-tizen-messaging-test_noise.mp3" % SCRIPT_DIR, "%s/Sounds" % SRC_DIR):
         action_status = False
 
     return action_status
@@ -182,7 +187,7 @@ def main():
             "-a", dest="user", action="store", help="User name")
         global PARAMETERS
         (PARAMETERS, args) = opts_parser.parse_args()
-    except Exception, e:
+    except Exception as e:
         print "Got wrong option: %s, exit ..." % e
         sys.exit(1)
 
@@ -212,12 +217,13 @@ def main():
 
     user_info = getUSERID()
     re_code = user_info[0]
-    if re_code == 0 :
+    if re_code == 0:
         global XW_ENV
         userid = user_info[1][0]
-        XW_ENV = "export DBUS_SESSION_BUS_ADDRESS=unix:path=/run/user/%s/dbus/user_bus_socket"%str(userid)
+        XW_ENV = "export DBUS_SESSION_BUS_ADDRESS=unix:path=/run/user/%s/dbus/user_bus_socket" % str(
+            userid)
     else:
-        print "[Error] cmd commands error : %s"%str(user_info[1])
+        print "[Error] cmd commands error : %s" % str(user_info[1])
         sys.exit(1)
     if PARAMETERS.binstpkg and PARAMETERS.buninstpkg:
         print "-i and -u are conflict"

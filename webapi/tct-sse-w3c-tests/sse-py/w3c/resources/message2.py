@@ -1,5 +1,6 @@
 import time
 
+
 def main(request, response):
     response.headers.set('Content-Type', 'text/event-stream')
     response.headers.set('Cache-Control', 'no-cache')

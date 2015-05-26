@@ -29,15 +29,18 @@
 #         Lin, Wanming <wanming.lin@intel.com>
 
 import unittest
-import os, commands
+import os
+import commands
 import comm
 
+
 class TestGalleryAppFunctions(unittest.TestCase):
+
     def test_install(self):
         comm.setUp()
         app_name = "gallery"
         pkg_name = "com.example." + app_name.lower()
         comm.app_install(app_name, pkg_name, self)
 
-if __name__ == '__main__':  
+if __name__ == '__main__':
     unittest.main()

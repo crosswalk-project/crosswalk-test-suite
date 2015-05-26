@@ -29,13 +29,18 @@
 #         Hongjuan, Wang<hongjuanx.wang@intel.com>
 
 import unittest
-import os, sys, commands
+import os
+import sys
+import commands
 import comm
 
+
 class TestManifestFunctions(unittest.TestCase):
+
     def test_negative_nullfields(self):
         comm.setUp()
-        manifestPath = comm.ConstPath + "/../testapp/manifest_negative_nullfields_app/manifest.json"
+        manifestPath = comm.ConstPath + \
+            "/../testapp/manifest_negative_nullfields_app/manifest.json"
         cmd = "python %smake_apk.py --package=org.xwalk.example --arch=%s --mode=%s --manifest=%s" % \
               (comm.Pck_Tools, comm.ARCH, comm.MODE, manifestPath)
         packInfo = commands.getstatusoutput(cmd)
@@ -45,7 +50,8 @@ class TestManifestFunctions(unittest.TestCase):
 
     def test_negative_nullvalue(self):
         comm.setUp()
-        manifestPath = comm.ConstPath + "/../testapp/manifest_negative_nullvalue_app/manifest.json"
+        manifestPath = comm.ConstPath + \
+            "/../testapp/manifest_negative_nullvalue_app/manifest.json"
         cmd = "python %smake_apk.py --package=org.xwalk.example --arch=%s --mode=%s --manifest=%s" % \
               (comm.Pck_Tools, comm.ARCH, comm.MODE, manifestPath)
         packInfo = commands.getstatusoutput(cmd)
@@ -55,7 +61,8 @@ class TestManifestFunctions(unittest.TestCase):
 
     def test_negative_description(self):
         comm.setUp()
-        targetDir = comm.ConstPath + "/../testapp/manifest_negative_nullvalue_description"
+        targetDir = comm.ConstPath + \
+            "/../testapp/manifest_negative_nullvalue_description"
         manifestPath = targetDir + "/manifest.json"
         os.chdir(targetDir)
         cmd = "python %smake_apk.py --package=org.xwalk.example --arch=%s --mode=%s --manifest=%s --project-dir=desc" % \
@@ -85,7 +92,9 @@ class TestManifestFunctions(unittest.TestCase):
             if j < len(descs):
                 if findLine in d:
                     print "Find"
-                    self.assertFalse(True, "There should not have description attribute")
+                    self.assertFalse(
+                        True,
+                        "There should not have description attribute")
                     break
                 else:
                     print "Continue find"
@@ -94,13 +103,14 @@ class TestManifestFunctions(unittest.TestCase):
         try:
             os.remove(targetDir + "/Example.apk")
             shutil.rmtree(targetDir + "/desc")
-        except Exception,e:
+        except Exception as e:
             os.system("rm -rf " + targetDir + "/*.apk")
             os.system("rm -rf " + targetDir + "/desc")
 
     def test_negative_name(self):
         comm.setUp()
-        manifestPath = comm.ConstPath + "/../testapp/manifest_negative_nullvalue_name/manifest.json"
+        manifestPath = comm.ConstPath + \
+            "/../testapp/manifest_negative_nullvalue_name/manifest.json"
         cmd = "python %smake_apk.py --package=org.xwalk.example --arch=%s --mode=%s --manifest=%s" % \
               (comm.Pck_Tools, comm.ARCH, comm.MODE, manifestPath)
         packInfo = commands.getstatusoutput(cmd)

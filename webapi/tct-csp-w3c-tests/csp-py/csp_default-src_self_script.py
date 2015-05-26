@@ -4,8 +4,12 @@ def main(request, response):
     source = f.read()
     s = json.JSONDecoder().decode(source)
     url1 = "http://" + s['host'] + ":" + str(s['ports']['http'][1])
-    response.headers.set("Content-Security-Policy", "default-src 'self' 'unsafe-inline'")
-    response.headers.set("X-Content-Security-Policy", "default-src 'self' 'unsafe-inline'")
+    response.headers.set(
+        "Content-Security-Policy",
+        "default-src 'self' 'unsafe-inline'")
+    response.headers.set(
+        "X-Content-Security-Policy",
+        "default-src 'self' 'unsafe-inline'")
     response.headers.set("X-WebKit-CSP", "default-src 'self' 'unsafe-inline'")
     return """<!DOCTYPE html>
 <!--

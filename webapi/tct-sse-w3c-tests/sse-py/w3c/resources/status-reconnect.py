@@ -11,11 +11,10 @@ def main(request, response):
         response.delete_cookie(cookie_name)
         body = "data: data\n\n"
     else:
-        response.set_cookie(cookie_name, status_code + ";httponly");
+        response.set_cookie(cookie_name, status_code + ";httponly")
         status = (int(status_code), "TEST")
         body = "retry: 2\n"
         if "ok_first" in request.GET:
             body += "data: ok\n\n"
 
     return status, headers, body
-

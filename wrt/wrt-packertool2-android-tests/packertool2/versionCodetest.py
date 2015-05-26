@@ -29,10 +29,14 @@
 #         Hongjuan, Wang<hongjuanx.wang@intel.com>
 
 import unittest
-import os, sys, commands
+import os
+import sys
+import commands
 import comm
 
-class TestPackertoolsFunctions(unittest.TestCase):      
+
+class TestPackertoolsFunctions(unittest.TestCase):
+
     def test_manifest_versionCode(self):
         comm.setUp()
         comm.clear_versionCode()
@@ -42,7 +46,7 @@ class TestPackertoolsFunctions(unittest.TestCase):
         versionCode = " --app-versionCode=11"
         versionCodeBase = ""
         cmd = "python %smake_apk.py --package=org.xwalk.example --arch=%s --mode=%s --manifest=%s --project-dir=test" % \
-        (comm.Pck_Tools, comm.ARCH, comm.MODE, manfiestPath)
+            (comm.Pck_Tools, comm.ARCH, comm.MODE, manfiestPath)
         comm.versionCode(cmd, versionCode, versionCodeBase, self)
         comm.clear_versionCode()
 
@@ -55,7 +59,7 @@ class TestPackertoolsFunctions(unittest.TestCase):
         versionCode = ""
         versionCodeBase = ""
         cmd = "python %smake_apk.py --package=org.xwalk.example --arch=%s --mode=%s --manifest=%s --project-dir=test" % \
-        (comm.Pck_Tools, comm.ARCH, comm.MODE, manfiestPath)
+            (comm.Pck_Tools, comm.ARCH, comm.MODE, manfiestPath)
         comm.versionCode(cmd, versionCode, versionCodeBase, self)
         comm.clear_versionCode()
 
@@ -69,7 +73,7 @@ class TestPackertoolsFunctions(unittest.TestCase):
         versionCodeBase = ""
         versionCodeBase = " --app-versionCodeBase=1234567"
         cmd = "python %smake_apk.py --package=org.xwalk.example --arch=%s --mode=%s --manifest=%s --project-dir=test --app-version=1.0.0" % \
-        (comm.Pck_Tools, comm.ARCH, comm.MODE, manfiestPath)
+            (comm.Pck_Tools, comm.ARCH, comm.MODE, manfiestPath)
         comm.versionCode(cmd, versionCode, versionCodeBase, self)
         comm.clear_versionCode()
 
@@ -82,12 +86,12 @@ class TestPackertoolsFunctions(unittest.TestCase):
         versionCode = ""
         versionCodeBase = ""
         cmd = "python %smake_apk.py --package=org.xwalk.example --arch=%s --mode=%s --manifest=%s --project-dir=test --app-version=1.0.0.0" % \
-        (comm.Pck_Tools, comm.ARCH, comm.MODE, manfiestPath)
+            (comm.Pck_Tools, comm.ARCH, comm.MODE, manfiestPath)
         packstatus = commands.getstatusoutput(cmd)
         errorinfo = "please specify --app-versionCode or --app-versionCodeBase"
         self.assertNotEquals(0, packstatus[0])
         self.assertIn(errorinfo, packstatus[1])
         comm.clear_versionCode()
 
-if __name__ == '__main__':  
-    unittest.main()  
+if __name__ == '__main__':
+    unittest.main()

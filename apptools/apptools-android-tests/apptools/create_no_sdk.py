@@ -33,12 +33,14 @@ import os
 import commands
 import comm
 
+
 class TestCrosswalkApptoolsFunctions(unittest.TestCase):
 
     def test_no_sdk(self):
         comm.setUp()
         comm.clear("org.xwalk.test")
-        android_home = commands.getoutput("(dirname $(dirname $(dirname $(which android))))")
+        android_home = commands.getoutput(
+            "(dirname $(dirname $(dirname $(which android))))")
         android_home1 = android_home + "/sdk"
         android_home2 = android_home + "/sdkk"
         allpath = commands.getoutput("echo $PATH")
@@ -47,15 +49,17 @@ class TestCrosswalkApptoolsFunctions(unittest.TestCase):
             if android_home1 in paths[i]:
                 paths[i] = paths[i].replace(android_home1, android_home2)
                 new_path = ":".join(paths).strip()
-        #print 'new_path', new_path
+        # print 'new_path', new_path
         os.environ['PATH'] = new_path
         #new = commands.getoutput("echo $PATH")
-        #print new
+        # print new
         os.chdir(comm.XwalkPath)
-        cmd = comm.PackTools + "crosswalk-app create org.xwalk.test --android-crosswalk=" + comm.crosswalkVersion
+        cmd = comm.PackTools + \
+            "crosswalk-app create org.xwalk.test --android-crosswalk=" + \
+            comm.crosswalkVersion
         packstatus = commands.getstatusoutput(cmd)
         os.environ['PATH'] = allpath
-        #print packstatus
+        # print packstatus
         self.assertIn("ERROR", packstatus[1])
         comm.clear("org.xwalk.test")
 
