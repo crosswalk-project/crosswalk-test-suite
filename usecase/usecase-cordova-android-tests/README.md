@@ -11,6 +11,18 @@ It has these features:
 
 * Lin, Wanming <wanmingx.lin@intel.com>
 
+## Pre-condition
+
+There are third-party plugins needed for cordova usecase:
+* Screenshot4.0: https://github.com/gitawego/cordova-screenshot
+* Screenshot3.6: Get https://github.com/gitawego/cordova-screenshot and return to commit:6ac9f15316b680110f6c448798fabdb978698b44
+
+Make a directory named "thirdparty_plugins", and git clone these plugins in it.
+
+For easy to be used in suite.json, need rename the plugins:
+* For Cordova 3.6: cordova-screenshot -> cordova-screenshot-3.6
+* For Cordova 4.0: cordova-screenshot -> cordova-screenshot-4.0
+
 ## LICENSE
 
 Copyright (c) 2013 Intel Corporation.  All rights reserved.
