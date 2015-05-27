@@ -180,3 +180,13 @@ This usecase covers following interface and methods:
 
 * XWalkView interface: load, clearCache methods
 * UIClient interface: onPageLoadStopped methods
+
+
+
+### 18. The [ZoomInAndOutXWalkViewActivity](ZoomInAndOutXWalkViewActivity.java) sample check whether xwalkview can zoom, include:
+
+* XWalkView can zoom in, zoom out, zoom by
+
+This usecase covers following interface and methods:
+
+* XWalkView interface: load, zoomIn, zoomOut, zoomBy, canZoomOut, canZoomIn methods
