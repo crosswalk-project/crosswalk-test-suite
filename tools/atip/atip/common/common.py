@@ -34,6 +34,7 @@ import string
 import os
 import md5
 
+
 class APP():
 
     def __init__(self, app_config=None, app_name=None, timeout=2):
@@ -42,30 +43,31 @@ class APP():
     def quit(self):
         pass
 
-    #standardize the image
-    def make_regalur_image(self, img, size = (256, 256)):
+    # standardize the image
+    def make_regalur_image(self, img, size=(256, 256)):
         return img.resize(size).convert('RGB')
 
     def hist_similar(self, lh, rh):
         assert len(lh) == len(rh)
-        return sum(1 - (0 if l == r else float(abs(l - r))/max(l, r)) for l, r in zip(lh, rh))/len(lh)
+        return sum(1 - (0 if l == r else float(abs(l - r)) / max(l, r))
+                   for l, r in zip(lh, rh)) / len(lh)
 
-    #Images similarity calculation
+    # Images similarity calculation
     def cal_images_similar(self, img1, img2):
-        fimg1=Image.open(img1)
-        fimg2=Image.open(img2)
+        fimg1 = Image.open(img1)
+        fimg2 = Image.open(img2)
         reg_img1 = self.make_regalur_image(fimg1)
         reg_img2 = self.make_regalur_image(fimg2)
 
-        #calculate the similar
-        ret= self.hist_similar(reg_img1.histogram(), reg_img2.histogram())
-        return ret*100
+        # calculate the similar
+        ret = self.hist_similar(reg_img1.histogram(), reg_img2.histogram())
+        return ret * 100
 
     def convert_pic(self, pic_name, ratio):
         im = Image.open(pic_name)
         smalling = im.resize(ratio, Image.ANTIALIAS)
         smalling.save(pic_name, "png")
-        
+
     def crop_pic(self, page_pic, element_pic, box):
         im = Image.open(page_pic)
         regin = im.crop(box)
@@ -73,26 +75,25 @@ class APP():
 
     def check_pic_same(self, pic1, pic2, similarity):
         try:
-           pic_similarity = self.cal_images_similar(pic1, pic2)
-           if pic_similarity >= string.atoi(similarity):
-              return True
-           else:
-              print "The similarity is: %s" % pic_similarity
-              return False
+            pic_similarity = self.cal_images_similar(pic1, pic2)
+            if pic_similarity >= string.atoi(similarity):
+                return True
+            else:
+                print "The similarity is: %s" % pic_similarity
+                return False
         except Exception as e:
-           print "Check similarity failed: %s" % e
-           return False
+            print "Check similarity failed: %s" % e
+            return False
 
     def check_pic_different(self, pic1, pic2, similarity):
         pic_similarity = self.cal_images_similar(pic1, pic2)
         if pic_similarity >= string.atoi(similarity):
-           print "The similarity is: %s" % pic_similarity
-           return False
+            print "The similarity is: %s" % pic_similarity
+            return False
         else:
-           return True
+            return True
 
-    def get_string_md5(self,data_str):
+    def get_string_md5(self, data_str):
         m = md5.new()
         m.update(data_str)
         return m.hexdigest()
-  

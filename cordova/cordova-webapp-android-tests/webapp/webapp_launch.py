@@ -29,10 +29,14 @@
 #         Lin, Wanming <wanming.lin@intel.com>
 
 import unittest
-import os, sys, commands
+import os
+import sys
+import commands
 import comm
 
+
 class TestWebAppFunctions(unittest.TestCase):
+
     def test_launch(self):
         comm.setUp()
         app_name = "helloworld"
@@ -41,5 +45,5 @@ class TestWebAppFunctions(unittest.TestCase):
             comm.app_install(app_name, pkg_name, self)
         comm.app_launch(app_name, pkg_name, self)
 
-if __name__ == '__main__':  
+if __name__ == '__main__':
     unittest.main()

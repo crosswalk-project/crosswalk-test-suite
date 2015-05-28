@@ -1,5 +1,5 @@
 #!/usr/bin/env python
-#coding=utf-8
+# coding=utf-8
 #
 # Copyright (c) 2015 Intel Corporation.
 #
@@ -34,11 +34,12 @@ import sys
 import subprocess
 
 reload(sys)
-sys.setdefaultencoding( "utf-8" )
+sys.setdefaultencoding("utf-8")
 
 SCRIPT_PATH = os.path.realpath(__file__)
 ConstPath = os.path.dirname(SCRIPT_PATH)
 Pck_Tools = ConstPath + "/../../tools/crosswalk/"
+
 
 def setUp():
     global ARCH, MODE, device, AppName
@@ -65,6 +66,7 @@ def setUp():
         AppName = "Example.apk"
     mode.close()
 
+
 def check_dir():
     flag = False
     count = 3
@@ -87,11 +89,16 @@ def check_dir():
         else:
             time.sleep(1)
 
+
 def gen_pkg(cmd, self):
-    p1 = subprocess.Popen(cmd, shell=True, stdout=subprocess.PIPE, stderr=subprocess.PIPE)
+    p1 = subprocess.Popen(
+        cmd,
+        shell=True,
+        stdout=subprocess.PIPE,
+        stderr=subprocess.PIPE)
     while True:
         buff = p1.stdout.readline()
-        print buff 
+        print buff
         check_str = "Checking system requirements..."
         if buff.startswith(check_str):
             flag = check_dir()

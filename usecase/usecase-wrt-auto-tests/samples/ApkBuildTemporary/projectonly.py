@@ -34,31 +34,33 @@ import sys
 import commands
 import comm
 
-class TestPackertoolsFunctions(unittest.TestCase):      
+
+class TestPackertoolsFunctions(unittest.TestCase):
+
     def test_projectonly1(self):
         comm.setUp()
         os.chdir(comm.ConstPath + "/res")
         cmd = "python %smake_apk.py --package=org.xwalk.example --arch=%s --mode=%s --manifest=./manifest.json --project-only" % \
-        (comm.Pck_Tools, comm.ARCH, comm.MODE)
+            (comm.Pck_Tools, comm.ARCH, comm.MODE)
         packstatus = commands.getstatusoutput(cmd)
         errormsg = "--project-only must be used with --project-dir"
-        self.assertNotEqual(packstatus[0] ,0)
+        self.assertNotEqual(packstatus[0], 0)
         self.assertIn(errormsg, packstatus[1])
-        
+
     def test_projectonly2(self):
         comm.setUp()
         cmd = "python %smake_apk.py --package=org.xwalk.example --arch=%s --mode=%s --manifest=./manifest.json --project-only --project-dir=example" % \
-        (comm.Pck_Tools, comm.ARCH, comm.MODE)
+            (comm.Pck_Tools, comm.ARCH, comm.MODE)
         packstatus = commands.getstatusoutput(cmd)
-        self.assertEqual(packstatus[0] ,0)
+        self.assertEqual(packstatus[0], 0)
         result = os.listdir(comm.ConstPath + "/res")
         self.assertNotIn("Example.apk", result)
         self.assertIn("example", result)
         if os.path.exists(comm.ConstPath + "/res/example"):
             try:
                 shutil.rmtree(comm.ConstPath + "/res/example")
-            except Exception,e:
+            except Exception as e:
                 os.system("rm -rf " + comm.ConstPath + "/res/example")
 
-if __name__ == '__main__':  
-    unittest.main()  
+if __name__ == '__main__':
+    unittest.main()

@@ -29,18 +29,23 @@
 #         Li, Cici<cici.x.li@intel.com>
 
 import unittest
-import os, sys, commands
+import os
+import sys
+import commands
 import comm
 import time
 
+
 class TestSampleAppFunctions(unittest.TestCase):
+
     def test_uninstall_withAppRunning(self):
         comm.setUp()
         app_name = "Hexgl"
-        cmdfind = "adb -s " + comm.device + " shell pm list packages |grep org.xwalk.%s" % (app_name.lower())
-        #print "cmdfind: ", cmdfind
+        cmdfind = "adb -s " + comm.device + \
+            " shell pm list packages |grep org.xwalk.%s" % (app_name.lower())
+        # print "cmdfind: ", cmdfind
         pmstatus = commands.getstatusoutput(cmdfind)
-        #print "pmstatus: ", pmstatus
+        # print "pmstatus: ", pmstatus
 
         if pmstatus[0] != 0:
             print "Uninstall APK ----------------> %s App haven't installed, need to install it!" % app_name
@@ -51,13 +56,14 @@ class TestSampleAppFunctions(unittest.TestCase):
 
         # Make sure the app is running
         cmd = "adb -s " + comm.device + " shell am start -n org.xwalk.%s/.%sActivity" % \
-        (app_name.lower(), app_name)
+            (app_name.lower(), app_name)
         comm.app_launch(cmd, self)
         time.sleep(2)
 
         # Uninstall the app
-        cmduninst = "adb -s " + comm.device + " uninstall org.xwalk.%s" % (app_name.lower()) 
+        cmduninst = "adb -s " + comm.device + \
+            " uninstall org.xwalk.%s" % (app_name.lower())
         comm.app_uninstall(cmduninst, self)
 
-if __name__ == '__main__':  
+if __name__ == '__main__':
     unittest.main()

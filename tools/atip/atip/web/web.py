@@ -51,7 +51,8 @@ except ImportError:
 
 class WebAPP(common.APP):
 
-    def __init__(self, app_config=None, app_name=None, apk_pkg_name=None, apk_activity_name=None):
+    def __init__(self, app_config=None, app_name=None,
+                 apk_pkg_name=None, apk_activity_name=None):
         self.driver = None
         self.app_type = common.APP_TYPE_WEB
         self.app_name = app_name
@@ -64,7 +65,15 @@ class WebAPP(common.APP):
         self.baseline_path = self.cur_path + "/data/" + self.device_platform
         self.text_value = {}
         self.picture_list = []
-        self.color_dict = {"rgb(255, 0, 0)": "red","rgb(0, 255, 0)": "green","rgb(0, 0, 255)": "blue","rgb(255, 255, 0)": "yellow","rgb(0, 0, 0)": "black","rgb(0, 128, 0)": "green","rgb(255, 255, 255)": "white","rgba(0, 0, 0, 0)": "white"}
+        self.color_dict = {
+            "rgb(255, 0, 0)": "red",
+            "rgb(0, 255, 0)": "green",
+            "rgb(0, 0, 255)": "blue",
+            "rgb(255, 255, 0)": "yellow",
+            "rgb(0, 0, 0)": "black",
+            "rgb(0, 128, 0)": "green",
+            "rgb(255, 255, 255)": "white",
+            "rgba(0, 0, 0, 0)": "white"}
         apk_activity_name = apk_activity_name
         apk_pkg_name = apk_pkg_name
         if "platform" in app_config and "name" in app_config["platform"]:
@@ -72,14 +81,16 @@ class WebAPP(common.APP):
                 self.app_id = tizen.get_appid_by_name(
                     self.app_name, app_config["platform"], app_config["tizen_user"])
             if app_config["platform"]["name"].upper().find('ANDROID') >= 0:
-                if apk_activity_name == apk_pkg_name == None:
-                    if "app_launcher" in app_config and app_config["app_launcher"] == "XWalkLauncher":
+                if apk_activity_name == apk_pkg_name is None:
+                    if "app_launcher" in app_config and app_config[
+                            "app_launcher"] == "XWalkLauncher":
                         self.app_name = self.app_name.replace("-", "_")
                         apk_name_update = "".join(
                             [i.capitalize() for i in self.app_name.split("_") if i])
                         apk_activity_name = ".%sActivity" % apk_name_update
                         apk_pkg_name = "org.xwalk.%s" % self.app_name
-                    if "app_launcher" in app_config and app_config["app_launcher"] == "CordovaLauncher":
+                    if "app_launcher" in app_config and app_config[
+                            "app_launcher"] == "CordovaLauncher":
                         self.app_name = self.app_name.replace("-", "_")
                         apk_activity_name = ".%s" % self.app_name
                         apk_pkg_name = "org.xwalk.%s" % self.app_name
@@ -98,9 +109,9 @@ class WebAPP(common.APP):
         try:
             config = ConfigParser.ConfigParser()
             with open(self.config_file, "r") as cfgfile:
-                 config.readfp(cfgfile)
-            self.device_platform = config.get('info','platform')
-            self.test_type = config.get('info','test_type')
+                config.readfp(cfgfile)
+            self.device_platform = config.get('info', 'platform')
+            self.test_type = config.get('info', 'test_type')
         except Exception as e:
             print "Parser config data.config failed: %s" % e
 
@@ -242,13 +253,13 @@ class WebAPP(common.APP):
         if element:
             try:
                 e_list = element.find_elements_by_xpath(str(
-                        '//*[@value="{text}"]|'
-                        '//*[contains(normalize-space(.),"{text}") '
-                        'and not(./*[contains(normalize-space(.),"{text}")])]'
-                        .format(text=text)))
+                    '//*[@value="{text}"]|'
+                    '//*[contains(normalize-space(.),"{text}") '
+                    'and not(./*[contains(normalize-space(.),"{text}")])]'
+                    .format(text=text)))
                 for i_element in e_list:
                     if i_element.text == text:
-                       return False
+                        return False
                 return True
             except Exception as e:
                 print "Failed to get element: %s" % e
@@ -287,7 +298,8 @@ class WebAPP(common.APP):
 
     def save_content(self, p_name=None, key=None):
         try:
-            js_script = 'var style=document.getElementById(\"' + key + '\").innerHTML; return style'
+            js_script = 'var style=document.getElementById(\"' + \
+                key + '\").innerHTML; return style'
             style = self.driver.execute_script(js_script)
             self.text_value[p_name] = style
             return True
@@ -379,61 +391,64 @@ class WebAPP(common.APP):
 
     def check_background_color(self, key=None, color=None, display=True):
         try:
-            js_script = 'var bg_color=document.getElementById(\"' + key + '\").style.backgroundColor; return bg_color'
+            js_script = 'var bg_color=document.getElementById(\"' + \
+                key + '\").style.backgroundColor; return bg_color'
             bg_color = self.driver.execute_script(js_script)
             if not bg_color:
                 js_script = 'var element=document.getElementById(\"' + key + '\");' \
-                        ' if(element.currentStyle) {return element.currentStyle.backgroundColor;} ' \
-                        ' else { return  document.defaultView.getComputedStyle(element,null).backgroundColor; } '
+                    ' if(element.currentStyle) {return element.currentStyle.backgroundColor;} ' \
+                    ' else { return  document.defaultView.getComputedStyle(element,null).backgroundColor; } '
                 bg_color = self.driver.execute_script(js_script)
             if not bg_color:
                 bg_color = "white"
-            number = re.match(r'[A-Za-z]+$',bg_color)
+            number = re.match(r'[A-Za-z]+$', bg_color)
             if not number:
                 bg_color = self.color_dict[bg_color]
             if bg_color.strip() == color:
-              return True
+                return True
         except Exception as e:
             print "Failed to get element color: %s" % e
         return False
 
     def check_text_color(self, key=None, color=None, display=True):
         try:
-            js_script = 'var text_color=document.getElementById(\"' + key + '\").style.color; return text_color'
+            js_script = 'var text_color=document.getElementById(\"' + \
+                key + '\").style.color; return text_color'
             text_color = self.driver.execute_script(js_script)
             if not text_color:
                 js_script = 'var element=document.getElementById(\"' + key + '\");' \
-                        ' if(element.currentStyle) {return element.currentStyle.color;} ' \
-                        ' else { return  document.defaultView.getComputedStyle(element,null).color; } '
+                    ' if(element.currentStyle) {return element.currentStyle.color;} ' \
+                    ' else { return  document.defaultView.getComputedStyle(element,null).color; } '
                 text_color = self.driver.execute_script(js_script)
             if not text_color:
                 text_color = "black"
-            is_rgb = re.match(r'[A-Za-z]+$',text_color)
+            is_rgb = re.match(r'[A-Za-z]+$', text_color)
             if not is_rgb:
                 text_color = self.color_dict[text_color]
             if text_color.strip() == color:
-              return True
+                return True
         except Exception as e:
             print "Failed to get element: %s" % e
         return False
 
     def check_content_type(self, key=None, display=True):
         try:
-            js_script = 'var text=document.getElementById(\"' + key + '\").innerText; return text'
+            js_script = 'var text=document.getElementById(\"' + \
+                key + '\").innerText; return text'
             text = self.driver.execute_script(js_script)
             if text.strip() == '':
-               return 'none'
-            number = re.match(r'(-?\d+)(\.\d+)?',text)
+                return 'none'
+            number = re.match(r'(-?\d+)(\.\d+)?', text)
             if number:
-               if "." in text:
-                   return "float"
-               else:
-                   return "int"
+                if "." in text:
+                    return "float"
+                else:
+                    return "int"
             else:
-               if text.upper() == "TRUE" or text.upper() == "FALSE":
-                   return "boolean"
-               else:
-                   return "string"
+                if text.upper() == "TRUE" or text.upper() == "FALSE":
+                    return "boolean"
+                else:
+                    return "string"
         except Exception as e:
             print "Failed to get element text: %s" % e
 
@@ -500,70 +515,74 @@ class WebAPP(common.APP):
 
     def execute_js_code(self, js_code):
         try:
-           return self.driver.execute_script(js_code)
+            return self.driver.execute_script(js_code)
         except Exception as e:
-           print "Execute js code failed: %s" % e
-           return 0   
- 
-    #Calculate the location params of element
+            print "Execute js code failed: %s" % e
+            return 0
+
+    # Calculate the location params of element
     def calculate_element_location(self, key, width=0, height=0):
         try:
-           if width:
-              width = string.atoi(width)
-           if height:
-              height = string.atoi(height)
-           js_script = 'var top=document.getElementById(\"' + key + '\").getBoundingClientRect().top;  return top'
-           top = self.execute_js_code(js_script)
-           js_script = 'var left=document.getElementById(\"' + key + '\").getBoundingClientRect().left; return left'
-           left = self.execute_js_code(js_script)
-           if not width:
-               js_script = 'var width=document.getElementById(\"' + key + '\").getBoundingClientRect().width; return width'
-               width = self.execute_js_code(js_script)
-           if not height:
-               js_script = 'var height=document.getElementById(\"' + key + '\").getBoundingClientRect().height; return height'
-               height = self.execute_js_code(js_script)
-           return (left, top, left + width, top+height)
+            if width:
+                width = string.atoi(width)
+            if height:
+                height = string.atoi(height)
+            js_script = 'var top=document.getElementById(\"' + \
+                key + '\").getBoundingClientRect().top;  return top'
+            top = self.execute_js_code(js_script)
+            js_script = 'var left=document.getElementById(\"' + \
+                key + '\").getBoundingClientRect().left; return left'
+            left = self.execute_js_code(js_script)
+            if not width:
+                js_script = 'var width=document.getElementById(\"' + \
+                    key + '\").getBoundingClientRect().width; return width'
+                width = self.execute_js_code(js_script)
+            if not height:
+                js_script = 'var height=document.getElementById(\"' + \
+                    key + '\").getBoundingClientRect().height; return height'
+                height = self.execute_js_code(js_script)
+            return (left, top, left + width, top + height)
         except Exception as e:
-           print "Get element location failed: %s" % e
-           return 0
+            print "Get element location failed: %s" % e
+            return 0
 
     def calculate_resolution_ratio(self, pic_name):
         try:
-           js_script = 'var width=window.screen.availWidth; return width'
-           body_width = self.execute_js_code(js_script)
-           js_script = 'var height=window.screen.availHeight; return height'
-           body_height = self.execute_js_code(js_script)
-           im = Image.open(pic_name)
-           w,h = im.size
-           ratio_w = w/body_width
-           ratio_h = h/body_height
-           ration = 0
-           if ratio_w > ratio_h:
-               ratio = ratio_w
-           else:
-               ratio = ratio_h
-           return w/ratio,h/ratio
+            js_script = 'var width=window.screen.availWidth; return width'
+            body_width = self.execute_js_code(js_script)
+            js_script = 'var height=window.screen.availHeight; return height'
+            body_height = self.execute_js_code(js_script)
+            im = Image.open(pic_name)
+            w, h = im.size
+            ratio_w = w / body_width
+            ratio_h = h / body_height
+            ration = 0
+            if ratio_w > ratio_h:
+                ratio = ratio_w
+            else:
+                ratio = ratio_h
+            return w / ratio, h / ratio
         except Exception as e:
-           print "Calculate page picture resolution failed: %s" % e
-           return 0 
-             
-    #Save the specified element as a single picture
+            print "Calculate page picture resolution failed: %s" % e
+            return 0
+
+    # Save the specified element as a single picture
     def save_div_as_picture(self, key, element_pic, width=0, height=0):
         try:
-           page_pic = "page.png"
-           self.driver.get_screenshot_as_file(page_pic)
-           self.picture_list.append(page_pic)
-           ratio = self.calculate_resolution_ratio(page_pic)
-           self.convert_pic(page_pic, ratio)
-           box = self.calculate_element_location(key, width, height)
-           self.crop_pic(page_pic, element_pic, box)
-           self.picture_list.append(element_pic)
-           return True
+            page_pic = "page.png"
+            self.driver.get_screenshot_as_file(page_pic)
+            self.picture_list.append(page_pic)
+            ratio = self.calculate_resolution_ratio(page_pic)
+            self.convert_pic(page_pic, ratio)
+            box = self.calculate_element_location(key, width, height)
+            self.crop_pic(page_pic, element_pic, box)
+            self.picture_list.append(element_pic)
+            return True
         except Exception as e:
-           print "Save element picture failed: %s" % e
-           return False
+            print "Save element picture failed: %s" % e
+            return False
 
-    #Remove these temporary pictures
+    # Remove these temporary pictures
     def remove_picture(self):
         try:
             picture_list = list(set(self.picture_list))
@@ -575,18 +594,19 @@ class WebAPP(common.APP):
             print "Remove the tmp pictures fail: %s" % e
             return False
 
-    #Check if 2 files content are the same
+    # Check if 2 files content are the same
     def check_md5_file_same(self, file_name):
         try:
             result_path = self.baseline_path + "/" + file_name + ".md5"
-            fp_result = open(result_path,"r")
+            fp_result = open(result_path, "r")
             str_result = fp_result.read()
             fp_result.close()
-            baseline_path = self.baseline_path + "/" + file_name + "_baseline.md5"
-            fp_baseline = open(baseline_path,"r")
+            baseline_path = self.baseline_path + \
+                "/" + file_name + "_baseline.md5"
+            fp_baseline = open(baseline_path, "r")
             str_baseline = fp_baseline.read()
             fp_baseline.close()
-            index = cmp(str_result,str_baseline)
+            index = cmp(str_result, str_baseline)
             if not index:
                 return True
             else:
@@ -594,41 +614,43 @@ class WebAPP(common.APP):
         except Exception as e:
             print "Check md5 file failed: %s" % e
             return False
-            
-    #Save pic as base64 data's md5
+
+    # Save pic as base64 data's md5
     def save_base64_md5_pic(self, pic_name):
         try:
             md5file_path = ""
             if self.test_type == "result":
                 md5file_path = self.baseline_path + "/" + pic_name + ".md5"
             elif self.test_type == "baseline":
-                md5file_path = self.baseline_path + "/" + pic_name + "_baseline.md5"
+                md5file_path = self.baseline_path + \
+                    "/" + pic_name + "_baseline.md5"
             pic_base64 = self.driver.get_screenshot_as_base64()
             pic_md5 = self.get_string_md5(pic_base64)
-            fp = open(md5file_path,"w")
+            fp = open(md5file_path, "w")
             fp.write(pic_md5)
             fp.close()
             return True
         except Exception as e:
             print "Save pic as base64 failed: %s" % e
             return False
-           
-    #Save page as pictures
+
+    # Save page as pictures
     def save_page_per_conf(self, pic_name):
         try:
-           if not os.path.exists(self.baseline_path):
-              os.makedirs(self.baseline_path)
-           if self.test_type == "result":
-              picname_result = self.baseline_path + "/" + pic_name + ".png"
-              self.driver.get_screenshot_as_file(picname_result)
-              return True
-           elif self.test_type == "baseline":
-              picname_baseline = self.baseline_path + "/" + pic_name + "_baseline.png"
-              self.driver.get_screenshot_as_file(picname_baseline)
-              return True
-           else:
-              print "Test_type is wrong. It should be baseline or result. Please check the data.config file."
-              return False
+            if not os.path.exists(self.baseline_path):
+                os.makedirs(self.baseline_path)
+            if self.test_type == "result":
+                picname_result = self.baseline_path + "/" + pic_name + ".png"
+                self.driver.get_screenshot_as_file(picname_result)
+                return True
+            elif self.test_type == "baseline":
+                picname_baseline = self.baseline_path + \
+                    "/" + pic_name + "_baseline.png"
+                self.driver.get_screenshot_as_file(picname_baseline)
+                return True
+            else:
+                print "Test_type is wrong. It should be baseline or result. Please check the data.config file."
+                return False
         except Exception as e:
             print "Save baseline pictures fail: %s" % e
             return False
@@ -637,13 +659,12 @@ class WebAPP(common.APP):
         resu_pic = self.baseline_path + "/" + pic_name + ".png"
         base_pic = self.baseline_path + "/" + pic_name + "_baseline.png"
         if not os.path.exists(resu_pic):
-           print "The result picture %s is not existed! Case fail" % pic_name
-           return False
+            print "The result picture %s is not existed! Case fail" % pic_name
+            return False
         if not os.path.exists(base_pic):
-           print "The baseline picture %s is not existed! Case fail" % base_pic
-           return False
+            print "The baseline picture %s is not existed! Case fail" % base_pic
+            return False
         return self.check_pic_same(base_pic, resu_pic, similarity)
-
 
     def fill_element_by_key(self, key, text, display=True):
         element = self.__get_element_by_key(key, display)
@@ -709,13 +730,16 @@ class WebAPP(common.APP):
         if self.driver:
             self.driver.quit()
 
-def launch_webapp_by_name(context, app_name, apk_pkg_name=None, apk_activity_name=None):
+
+def launch_webapp_by_name(
+        context, app_name, apk_pkg_name=None, apk_activity_name=None):
     if not context.web_config:
         assert False
 
     if app_name in context.apps:
         context.apps[app_name].quit()
-    context.apps.update({app_name: WebAPP(context.web_config, app_name, apk_pkg_name, apk_activity_name)})
+    context.apps.update(
+        {app_name: WebAPP(context.web_config, app_name, apk_pkg_name, apk_activity_name)})
     context.app = context.apps[app_name]
     if not context.app.launch_app():
         assert False

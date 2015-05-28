@@ -34,20 +34,32 @@ import sys
 import filecmp
 import common
 
-class TestPackertoolsFunctions(unittest.TestCase):
-  def test_compressor_minify(self):
-      common.clear_compressor()
-      compre = " --compressor"
-      common.compressor(compre, self)
-      self.assertFalse(filecmp.cmp(common.compDir + "script.js", common.oriDir + "script.js"))
-      self.assertFalse(filecmp.cmp(common.compDir + "style.css", common.oriDir + "style.css"))
-      compscript = os.path.getsize(common.compDir + "script.js")
-      oriscript = os.path.getsize(common.oriDir + "script.js")
-      compstyle = os.path.getsize(common.compDir + "style.css")
-      oristyle = os.path.getsize(common.oriDir + "style.css")
-      self.assertTrue((oriscript > compscript))
-      self.assertTrue((oristyle > compstyle))
-      common.clear_compressor()
 
-if __name__ == '__main__':  
+class TestPackertoolsFunctions(unittest.TestCase):
+
+    def test_compressor_minify(self):
+        common.clear_compressor()
+        compre = " --compressor"
+        common.compressor(compre, self)
+        self.assertFalse(
+            filecmp.cmp(
+                common.compDir +
+                "script.js",
+                common.oriDir +
+                "script.js"))
+        self.assertFalse(
+            filecmp.cmp(
+                common.compDir +
+                "style.css",
+                common.oriDir +
+                "style.css"))
+        compscript = os.path.getsize(common.compDir + "script.js")
+        oriscript = os.path.getsize(common.oriDir + "script.js")
+        compstyle = os.path.getsize(common.compDir + "style.css")
+        oristyle = os.path.getsize(common.oriDir + "style.css")
+        self.assertTrue((oriscript > compscript))
+        self.assertTrue((oristyle > compstyle))
+        common.clear_compressor()
+
+if __name__ == '__main__':
     unittest.main()

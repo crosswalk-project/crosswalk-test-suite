@@ -19,11 +19,14 @@ from exceptions import NoSuchElementException
 from exceptions import TimeoutException
 
 POLL_FREQUENCY = 0.5  # How long to sleep inbetween calls to the method
-IGNORED_EXCEPTIONS = [NoSuchElementException]  # list of exceptions ignored during calls to the method
+# list of exceptions ignored during calls to the method
+IGNORED_EXCEPTIONS = [NoSuchElementException]
+
 
 class WebDriverWait(object):
 
-    def __init__(self, driver, timeout, poll_frequency=POLL_FREQUENCY, ignored_exceptions=None):
+    def __init__(
+            self, driver, timeout, poll_frequency=POLL_FREQUENCY, ignored_exceptions=None):
         """Constructor, takes a WebDriver instance and timeout in seconds.
 
            :Args:

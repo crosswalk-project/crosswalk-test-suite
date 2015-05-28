@@ -1,5 +1,5 @@
 #!/usr/bin/python
-#encoding:utf-8
+# encoding:utf-8
 
 # Copyright (c) 2014 Intel Corporation.
 #
@@ -34,12 +34,13 @@ import csv
 import re
 import sys
 import platform
-import logging  
+import logging
 import logging.handlers
 from xml.etree import ElementTree
 
 LOG = None
 LOG_LEVEL = logging.DEBUG
+
 
 class ColorFormatter(logging.Formatter):
 
@@ -76,12 +77,13 @@ def verify_xml(xml_dir, split_sign):
                 return
             else:
                 verify_path(xml_dir, split_sign)
-            
-    paths = [ item for item in os.walk(xml_dir) ]
+
+    paths = [item for item in os.walk(xml_dir)]
     for path, dirs, files in paths:
         for filename in files:
             if filename == "tests.full.xml":
                 verify_path(path + split_sign + filename, split_sign)
+
 
 def verify_path(xml_path, split_sign):
     LOG.info("+Verify xml: " + xml_path)
@@ -107,13 +109,13 @@ def verify_path(xml_path, split_sign):
             break
         case_nodes = set_node.findall('testcase')
         for case_node in case_nodes:
-            verify_path =  os.path.dirname(xml_path)
+            verify_path = os.path.dirname(xml_path)
             casepath = case_node.find('description/test_script_entry').text
             if casepath is None:
                 break
             id_list.append(case_node.attrib['id'])
             purpose_list.append(case_node.attrib['purpose'])
-            arraypath =  casepath.split('?')[0].split(split_sign)
+            arraypath = casepath.split('?')[0].split(split_sign)
             if len(arraypath) < 3:
                 break
             if arraypath.count('http:') > 0:
@@ -122,21 +124,25 @@ def verify_path(xml_path, split_sign):
                 del arraypath[0:3]
             for i in range(len(arraypath)):
                 verify_path += split_sign + arraypath[i]
-            
+
             if not os.path.exists(verify_path):
                 LOG.info("path no found: " + verify_path)
     temp_array = []
     for xid in range(len(id_list)):
-        if id_list.count(id_list[xid]) > 1 and id_list[xid] not in temp_array: 
-            LOG.info(str(id_list.count(id_list[xid])) + " same id : " + id_list[xid])
+        if id_list.count(id_list[xid]) > 1 and id_list[xid] not in temp_array:
+            LOG.info(
+                str(id_list.count(id_list[xid])) + " same id : " + id_list[xid])
             temp_array.append(id_list[xid])
     del temp_array[:]
     for xpurpose in range(len(purpose_list)):
-        if purpose_list.count(purpose_list[xpurpose]) > 1 and purpose_list[xpurpose] not in temp_array: 
-            LOG.info(str(purpose_list.count(purpose_list[xpurpose])) + " same purpose: " + purpose_list[xpurpose])
+        if purpose_list.count(purpose_list[xpurpose]) > 1 and purpose_list[
+                xpurpose] not in temp_array:
+            LOG.info(str(purpose_list.count(
+                purpose_list[xpurpose])) + " same purpose: " + purpose_list[xpurpose])
             temp_array.append(purpose_list[xpurpose])
     del temp_array[:]
     LOG.info("===Verify case path, id and purpose finish===")
+
 
 def echo_about():
     """
@@ -145,6 +151,7 @@ def echo_about():
     about = 'xmlverifier V1.0\n-v <path>  |  Verify case path, id, purpose and set type are right\n'
     print about
     sys.exit()
+
 
 def main():
     """
@@ -168,7 +175,7 @@ def main():
         print 'Error: No enough argv!'
         echo_about()
     else:
-        {'-v': lambda : verify_xml(sys.argv[2], split_sign)}[sys.argv[1]]()
+        {'-v': lambda: verify_xml(sys.argv[2], split_sign)}[sys.argv[1]]()
 
 if __name__ == '__main__':
     main()

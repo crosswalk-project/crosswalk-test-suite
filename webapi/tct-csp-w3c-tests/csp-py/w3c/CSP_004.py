@@ -28,11 +28,11 @@ def main(request, response):
                 fail when something that should happend doesn't.  Use script with
 		conditional execution based on the policy being tested to set a variable,
 		then use script we know will execute by policy to check if it is set.
-		
+
 		Some limitations on this approach, obviously, if policy enforcement is
 		very broken - when we can't count on any script to execute - but this
 		is a start, at least.
-	-->	
+	-->
 
         <script>
 		test(function() {assert_true(false)}, "assert_true with false from unsafe inline script");

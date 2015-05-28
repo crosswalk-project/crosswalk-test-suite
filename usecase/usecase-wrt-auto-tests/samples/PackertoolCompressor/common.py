@@ -1,5 +1,5 @@
 #!/usr/bin/env python
-#coding=utf-8
+# coding=utf-8
 #
 # Copyright (c) 2015 Intel Corporation.
 #
@@ -36,11 +36,12 @@ import commands
 import shutil
 
 reload(sys)
-sys.setdefaultencoding( "utf-8" )
+sys.setdefaultencoding("utf-8")
 
 SCRIPT_PATH = os.path.realpath(__file__)
 ConstPath = os.path.dirname(SCRIPT_PATH)
 Pck_Tools = ConstPath + "/../../tools/crosswalk/"
+
 
 def setUp():
     global ARCH, MODE, AppName
@@ -62,14 +63,17 @@ def setUp():
     mode.close()
 
 # test for compressor
+
+
 def clear_compressor():
     if os.path.exists(ConstPath + "/res/compressor"):
-       try:
-          os.remove(ConstPath + "/res/" + AppName)
-          shutil.rmtree(ConstPath + "/res/compressor")
-       except Exception,e:
-          os.system("rm -rf " + ConstPath + "/res/compressor")
-          os.system(ConstPath + "/res/*.apk")
+        try:
+            os.remove(ConstPath + "/res/" + AppName)
+            shutil.rmtree(ConstPath + "/res/compressor")
+        except Exception as e:
+            os.system("rm -rf " + ConstPath + "/res/compressor")
+            os.system(ConstPath + "/res/*.apk")
+
 
 def compressor(compre, self):
     setUp()
@@ -77,7 +81,7 @@ def compressor(compre, self):
     manifestPath = ConstPath + "/res/manifest.json"
     os.chdir(ConstPath + "/res")
     cmd = "python %smake_apk.py --package=org.xwalk.compressor --arch=%s --mode=%s --manifest=%s --project-dir=compressor" % \
-            (Pck_Tools, ARCH, MODE, manifestPath)
+        (Pck_Tools, ARCH, MODE, manifestPath)
     packstatus = commands.getstatusoutput(cmd + compre)
     self.assertEquals(0, packstatus[0])
     print "Generate APK ----------------> OK!"
@@ -85,4 +89,3 @@ def compressor(compre, self):
     oriDir = ConstPath + "/res/resource/"
     self.assertIn("script.js", os.listdir(compDir))
     self.assertIn("style.css", os.listdir(compDir))
-

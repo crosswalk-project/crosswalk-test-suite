@@ -49,4 +49,3 @@ def main(request, response):
     </script>
   </body>
 </html> """
-

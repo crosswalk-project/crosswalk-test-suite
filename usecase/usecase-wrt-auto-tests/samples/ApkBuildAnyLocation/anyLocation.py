@@ -35,30 +35,32 @@ import commands
 import shutil
 import comm
 
+
 class TestPackertoolsFunctions(unittest.TestCase):
-  def test_anyLocation_hostApp(self):
-      comm.setUp()
-      cmd = "make_apk.py --package=org.xwalk.example --name=example --arch=%s --mode=%s --app-url=https://crosswalk-project.org/" % \
-            (comm.ARCH, comm.MODE)
-      os.chdir(comm.ConstPath)
-      comm.gen_pkg(cmd, self)
 
-  def test_anyLocationtest_manifest(self):
-      comm.setUp()
-      manifestPath = comm.ConstPath + "/res/manifest.json"
-      cmd = "make_apk.py --package=org.xwalk.example --arch=%s --mode=%s --manifest=%s" % \
-            (comm.ARCH, comm.MODE, manifestPath)
-      os.chdir(comm.ConstPath + '/../../tools')
-      comm.gen_pkg(cmd, self)
+    def test_anyLocation_hostApp(self):
+        comm.setUp()
+        cmd = "make_apk.py --package=org.xwalk.example --name=example --arch=%s --mode=%s --app-url=https://crosswalk-project.org/" % \
+              (comm.ARCH, comm.MODE)
+        os.chdir(comm.ConstPath)
+        comm.gen_pkg(cmd, self)
 
-  def test_anyLocationtest_package(self):
-      comm.setUp()
-      appRoot = comm.ConstPath + "/res/"
-      cmd = "make_apk.py --package=org.xwalk.example --name=example --arch=%s --mode=%s --app-root=%s --app-local-path=index.html" % \
-            (comm.ARCH, comm.MODE, appRoot)
-      os.chdir(comm.ConstPath + '/../../tools/crosswalk')
-      comm.gen_pkg(cmd, self)
+    def test_anyLocationtest_manifest(self):
+        comm.setUp()
+        manifestPath = comm.ConstPath + "/res/manifest.json"
+        cmd = "make_apk.py --package=org.xwalk.example --arch=%s --mode=%s --manifest=%s" % \
+              (comm.ARCH, comm.MODE, manifestPath)
+        os.chdir(comm.ConstPath + '/../../tools')
+        comm.gen_pkg(cmd, self)
+
+    def test_anyLocationtest_package(self):
+        comm.setUp()
+        appRoot = comm.ConstPath + "/res/"
+        cmd = "make_apk.py --package=org.xwalk.example --name=example --arch=%s --mode=%s --app-root=%s --app-local-path=index.html" % \
+              (comm.ARCH, comm.MODE, appRoot)
+        os.chdir(comm.ConstPath + '/../../tools/crosswalk')
+        comm.gen_pkg(cmd, self)
 
 
-if __name__ == '__main__':  
+if __name__ == '__main__':
     unittest.main()

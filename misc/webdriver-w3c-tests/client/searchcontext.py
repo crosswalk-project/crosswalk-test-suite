@@ -1,6 +1,8 @@
 """WebDriver element location functionality."""
 
+
 class SearchContext(object):
+
     """Abstract class that provides the core element location functionality."""
 
     def find_element_by_css(self, selector):

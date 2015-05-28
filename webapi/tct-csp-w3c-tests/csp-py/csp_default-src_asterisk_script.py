@@ -1,6 +1,10 @@
 def main(request, response):
-    response.headers.set("Content-Security-Policy", "default-src * 'unsafe-inline'")
-    response.headers.set("X-Content-Security-Policy", "default-src * 'unsafe-inline'")
+    response.headers.set(
+        "Content-Security-Policy",
+        "default-src * 'unsafe-inline'")
+    response.headers.set(
+        "X-Content-Security-Policy",
+        "default-src * 'unsafe-inline'")
     response.headers.set("X-WebKit-CSP", "default-src * 'unsafe-inline'")
     return """<!DOCTYPE html>
 <!--

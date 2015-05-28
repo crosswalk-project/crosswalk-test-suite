@@ -1,5 +1,5 @@
 #!/usr/bin/python
-#encoding:utf-8
+# encoding:utf-8
 
 # Copyright (c) 2014 Intel Corporation.
 #
@@ -34,12 +34,13 @@ import csv
 import re
 import sys
 import platform
-import logging  
+import logging
 import logging.handlers
 from xml.etree import ElementTree
 
 LOG = None
 LOG_LEVEL = logging.DEBUG
+
 
 class ColorFormatter(logging.Formatter):
 
@@ -63,6 +64,7 @@ class ColorFormatter(logging.Formatter):
 
         return logging.Formatter.format(self, record)
 
+
 def csv2full(csv_path, split_sign):
     if not os.path.isfile(csv_path):
         print '%s is not a file' % csv_path
@@ -85,32 +87,53 @@ def csv2full(csv_path, split_sign):
     set_name = name.split(split_sign)[-1]
     folder = os.path.dirname(csv_path)
     full_test_path = '%s%stests.full(%s).xml' % (folder, split_sign, set_name)
-    make_full_test(csv_content, full_test_path, suite_name, set_name, category_name)
+    make_full_test(
+        csv_content,
+        full_test_path,
+        suite_name,
+        set_name,
+        category_name)
     LOG.info('General %s' % full_test_path)
     test_path = '%s%stests(%s).xml' % (folder, split_sign, set_name)
     make_test(csv_content, test_path, suite_name, set_name, category_name)
     LOG.info('General %s' % test_path)
     LOG.info("== Convert csv to xml finish==")
 
-def make_full_test(csv_content, full_test_name, suite_name, set_name, category_name):
+
+def make_full_test(
+        csv_content, full_test_name, suite_name, set_name, category_name):
     full_test_file = open(full_test_name, 'w')
-    content = '<?xml version="1.0" encoding="UTF-8"?>\n<?xml-stylesheet type="text/xsl" href="./testcase.xsl"?>\n<test_definition>\n  <suite name="%s" launcher="WRTLauncher" category="%s">\n    <set name="%s">' % (suite_name, category_name, set_name)
+    content = '<?xml version="1.0" encoding="UTF-8"?>\n<?xml-stylesheet type="text/xsl" href="./testcase.xsl"?>\n<test_definition>\n  <suite name="%s" launcher="WRTLauncher" category="%s">\n    <set name="%s">' % (
+        suite_name, category_name, set_name)
     for line in csv_content:
         content += '\n      <testcase purpose="%s" type="%s" status="%s" component="%s" execution_type="%s" priority="%s" id="%s">\n        <description>\n          <test_script_entry>%s</test_script_entry>\n        </description>\n        <specs>\n          <spec>\n            <spec_assertion element_type="%s" element_name="%s" interface="%s" specification="%s" section="%s" category="%s"/>\n            <spec_url>%s</spec_url>\n            <spec_statement/>\n          </spec>\n        </specs>\n      </testcase>' % (line[1],
-         line[17],
-         line[15],
-         line[2],
-         line[4],
-         line[6],
-         line[0],
-         line[16],
-         line[7],
-         line[8],
-         line[9],
-         line[10],
-         line[11],
-         line[12],
-         line[13])
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                          line[
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                              17],
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                          line[
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                              15],
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                          line[
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                              2],
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                          line[
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                              4],
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                          line[
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                              6],
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                          line[
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                              0],
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                          line[
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                              16],
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                          line[
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                              7],
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                          line[
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                              8],
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                          line[
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                              9],
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                          line[
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                              10],
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                          line[
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                              11],
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                          line[
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                              12],
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                          line[13])
 
     content += '\n    </set>\n  </suite>\n</test_definition>'
     full_test_file.seek(0)
@@ -118,21 +141,27 @@ def make_full_test(csv_content, full_test_name, suite_name, set_name, category_n
     full_test_file.write(content)
     full_test_file.close()
 
+
 def make_test(csv_content, test_name, suite_name, set_name, category_name):
     test_file = open(test_name, 'w')
-    content = '<?xml version="1.0" encoding="UTF-8"?>\n<?xml-stylesheet type="text/xsl" href="./testcase.xsl"?>\n<test_definition>\n  <suite name="%s" category="%s" launcher="WRTLauncher">\n    <set name="%s">' % (suite_name, category_name, set_name)
+    content = '<?xml version="1.0" encoding="UTF-8"?>\n<?xml-stylesheet type="text/xsl" href="./testcase.xsl"?>\n<test_definition>\n  <suite name="%s" category="%s" launcher="WRTLauncher">\n    <set name="%s">' % (
+        suite_name, category_name, set_name)
     for line in csv_content:
         content += '\n      <testcase component="%s" execution_type="%s" id="%s" purpose="%s">\n        <description>\n          <test_script_entry>%s</test_script_entry>\n        </description>\n      </testcase>' % (line[2],
-         line[4],
-         line[0],
-         line[1],
-         line[16])
+                                                                                                                                                                                                                          line[
+                                                                                                                                                                                                                              4],
+                                                                                                                                                                                                                          line[
+                                                                                                                                                                                                                              0],
+                                                                                                                                                                                                                          line[
+                                                                                                                                                                                                                              1],
+                                                                                                                                                                                                                          line[16])
 
     content += '\n    </set>\n  </suite>\n</test_definition>'
     test_file.seek(0)
     test_file.truncate()
     test_file.write(content)
     test_file.close()
+
 
 def echo_about():
     """
@@ -141,6 +170,7 @@ def echo_about():
     about = 'csv2xml V1.0\n-c <path>  |  Convert csv file to tests.full.xml and tests.xml\n'
     print about
     sys.exit()
+
 
 def main():
     """
@@ -164,7 +194,7 @@ def main():
         print 'Error: No enough argv!'
         echo_about()
     else:
-        {'-c': lambda : csv2full(sys.argv[2], split_sign)}[sys.argv[1]]()
+        {'-c': lambda: csv2full(sys.argv[2], split_sign)}[sys.argv[1]]()
 
 if __name__ == '__main__':
     main()

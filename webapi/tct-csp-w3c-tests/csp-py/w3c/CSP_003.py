@@ -23,14 +23,14 @@ def main(request, response):
 		<div id=log></div>
 	</body>
 	<!--
-		This test demonstrates how to test something that should not happen, or 
+		This test demonstrates how to test something that should not happen, or
 		fail when something that should happend does not.  Use script with
 		conditional execution based on the policy being tested to set a variable,
 		then use script we know will execute by policy to check if it is set.
-		
+
 		Some limitations on this approach, obviously, if policy enforcement is
 		very broken - when we can not count on any script to execute - but this
 		is a start, at least.
-	-->	
+	-->
 	<script src="CSP_passTest001.py"></script>
 </html> """

@@ -29,16 +29,20 @@
 #         Li, Cici<cici.x.li@intel.com>
 
 import unittest
-import os, sys, commands
+import os
+import sys
+import commands
 import comm
 
+
 class TestSampleAppFunctions(unittest.TestCase):
+
     def test_launch(self):
         comm.setUp()
         app_name = "Simd"
-	cmd = "adb -s " + comm.device + " shell am start -n org.xwalk.%s/.%sActivity" % \
-        (app_name.lower(), app_name)
+        cmd = "adb -s " + comm.device + " shell am start -n org.xwalk.%s/.%sActivity" % \
+            (app_name.lower(), app_name)
         comm.app_launch(cmd, self)
 
-if __name__ == '__main__':  
+if __name__ == '__main__':
     unittest.main()

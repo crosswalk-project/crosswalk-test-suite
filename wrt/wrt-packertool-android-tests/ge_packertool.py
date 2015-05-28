@@ -1,6 +1,11 @@
 #!/usr/bin/env python
-import sys, os, os.path, time, shutil
-import commands,glob
+import sys
+import os
+import os.path
+import time
+import shutil
+import commands
+import glob
 
 import metacomm.combinatorics.all_pairs2
 all_pairs = metacomm.combinatorics.all_pairs2.all_pairs2
@@ -11,11 +16,13 @@ ConstPath = os.path.dirname(SCRIPT_PATH)
 ARCH = "x86"
 totalNum = 0
 
+
 def lineCount(fp):
     fileTmp = open(fp)
     count = len(fileTmp.readlines())
     fileTmp.close()
     return count
+
 
 def genSelfcom(combIn, combOut):
     try:
@@ -26,8 +33,8 @@ def genSelfcom(combIn, combOut):
         comb.close()
         print "Update selfcomb.txt ---------------->O.k"
         return
-    except Exception,e:
-        print Exception,":",e
+    except Exception as e:
+        print Exception, ":", e
         print "Update selfcomb.txt ---------------->Error"
         sys.exit(1)
 
@@ -47,7 +54,12 @@ def processTest(seedIn, flag):
             sectionName = items[0].split("--")[0]
             if sectionName not in sectionList:
                 sectionList.append(sectionName)
-            inputTxt = open(ConstPath + "/self/" + sectionName + "_input.txt", "a+")
+            inputTxt = open(
+                ConstPath +
+                "/self/" +
+                sectionName +
+                "_input.txt",
+                "a+")
             inputTxt.write(line)
             inputTxt.close()
         fp.close()
@@ -65,29 +77,49 @@ def processTest(seedIn, flag):
                     row = row + 1
                 inputTxt.close()
                 pairs = all_pairs(lists)
-                outTxt = open(ConstPath + "/self/" + section + "_output.txt", 'w+')
+                outTxt = open(
+                    ConstPath +
+                    "/self/" +
+                    section +
+                    "_output.txt",
+                    'w+')
                 for e, v in enumerate(pairs):
                     for c in range(len(v)):
                         caseline = caseline + v[c] + ","
                 outTxt.write(section + ":" + caseline[:-1] + "\n")
                 outTxt.close()
             else:
-                shutil.copy(ConstPath + "/self/" + section + "_input.txt", ConstPath + "/self/" + section + "_output.txt")
+                shutil.copy(
+                    ConstPath +
+                    "/self/" +
+                    section +
+                    "_input.txt",
+                    ConstPath +
+                    "/self/" +
+                    section +
+                    "_output.txt")
 
-        #1*********XX_output.txt -> selfcomb.txt
-            genSelfcom(ConstPath + "/self/" + section + "_output.txt", ConstPath + "/allpairs/selfcomb.txt")
+        # 1*********XX_output.txt -> selfcomb.txt
+            genSelfcom(
+                ConstPath +
+                "/self/" +
+                section +
+                "_output.txt",
+                ConstPath +
+                "/allpairs/selfcomb.txt")
 
-        #2*********selfcomb.txt -> caseXX.txt
+        # 2*********selfcomb.txt -> caseXX.txt
         genCases(ConstPath + "/allpairs/selfcomb.txt", name, flag)
 
-        #3*********output -> command
+        # 3*********output -> command
         genCmd(ConstPath + "/allpairs/" + name + "_case.txt", flag)
 
         print "Excute " + flag + " cases ------------------------->O.K"
-    except Exception,e:
-        print Exception,":",e
+    except Exception as e:
+        print Exception, ":", e
         print "Excute " + flag + " cases ------------------------->Error"
         sys.exit(1)
+
 
 def genCases(selfcomb, name, flag):
     try:
@@ -114,8 +146,8 @@ def genCases(selfcomb, name, flag):
             pairs = all_pairs(lists)
             for e, v in enumerate(pairs):
                 case = ""
-                for c in range(0,len(v)):
-                    case = case + v[c] +"\t"
+                for c in range(0, len(v)):
+                    case = case + v[c] + "\t"
                 caseFile.write(case.rstrip("\t") + "\n")
         else:
             line = fobj.readline()
@@ -125,17 +157,23 @@ def genCases(selfcomb, name, flag):
                 caseFile.write(case + "\n")
         caseFile.close()
         print "Genarate " + flag + " case.txt file ---------------->O.k"
-    except Exception,e:
+    except Exception as e:
         print "Generate " + flag + " case.txt file ---------------->Error"
-        print Exception,":",e
+        print Exception, ":", e
         sys.exit(1)
+
 
 def genCmd(caseInput, flag):
     try:
         global ARCH, totalNum
 
         print "Excute cases ------------------------->Start"
-        packageLog = open(ConstPath + "/report/packertool_"+ flag + ".txt", 'a+')
+        packageLog = open(
+            ConstPath +
+            "/report/packertool_" +
+            flag +
+            ".txt",
+            'a+')
         caseIn = open(caseInput)
         pgName = open(ConstPath + "/report/pgName.txt", 'a+')
         targetDir = open(ConstPath + "/report/targetDir.txt", 'a+')
@@ -146,7 +184,7 @@ def genCmd(caseInput, flag):
         if fp.read().strip("\n\t") != "x86":
             ARCH = "arm"
         fp.close()
-        
+
         if not os.path.exists(ConstPath + "/tcs/" + ARCH):
             if ARCH in os.listdir(ConstPath + "/tcs"):
                 shutil.rmtree(ConstPath + "/tcs/" + ARCH)
@@ -157,8 +195,9 @@ def genCmd(caseInput, flag):
         for line in caseIn:
             message = ""
             totalNum = totalNum + 1
-            
-            caseDir = ConstPath + "/tcs/" + ARCH + "/cmd" + str(totalNum) + "-" + flag 
+
+            caseDir = ConstPath + "/tcs/" + ARCH + \
+                "/cmd" + str(totalNum) + "-" + flag
             if not os.path.exists(caseDir):
                 os.mkdir(caseDir)
             fp = open(caseDir + "/cmd.txt", 'w+')
@@ -173,7 +212,8 @@ def genCmd(caseInput, flag):
                 else:
                     items[i] = items[i].replace("000", " ")
                     items[i] = items[i].replace("comma", ",")
-                    command = command + "--" + sectionList[i] + "=" + '"' + items[i] + '" '
+                    command = command + "--" + \
+                        sectionList[i] + "=" + '"' + items[i] + '" '
             command = command.strip()
 
             if not "arch" in sectionList:
@@ -183,7 +223,14 @@ def genCmd(caseInput, flag):
                 dirIndex = sectionList.index("target-dir")
                 if items[dirIndex] != "DEFAULT":
                     direc = items[dirIndex]
-                    targetDir.write("cmd" + str(totalNum) + "-" + flag + "\t" + direc + "\n")
+                    targetDir.write(
+                        "cmd" +
+                        str(totalNum) +
+                        "-" +
+                        flag +
+                        "\t" +
+                        direc +
+                        "\n")
                 else:
                     direc = "./"
             else:
@@ -202,33 +249,47 @@ def genCmd(caseInput, flag):
             if "package" in sectionList:
                 index = sectionList.index("package")
                 package = items[index]
-                pgName.write("cmd" + str(totalNum) + "-" + flag + "\t" + package + "\n")
+                pgName.write(
+                    "cmd" +
+                    str(totalNum) +
+                    "-" +
+                    flag +
+                    "\t" +
+                    package +
+                    "\n")
 
-            packageLog.write("Packertool" + str(totalNum) + "\n--------------------------------\n" + command + "\n--------------------------------\n")
+            packageLog.write(
+                "Packertool" +
+                str(totalNum) +
+                "\n--------------------------------\n" +
+                command +
+                "\n--------------------------------\n")
             fp.write(command)
             fp.close()
             print "##########"
             print "Case" + str(totalNum) + " :"
             print "Packer Tool Command:"
             print command
-            
+
         packageLog.close()
         caseIn.close()
         pgName.close()
         print "Excute cases ------------------------->O.K"
-    except Exception,e:
-        print Exception,":",e
+    except Exception as e:
+        print Exception, ":", e
         print "Execute case ---------------->Error"
         sys.exit(1)
 
+
 def sourceInit():
     try:
-        if os.path.exists(ConstPath + "/tcs") or os.path.exists(ConstPath + "/apks") or os.path.exists(ConstPath + "/report"):
+        if os.path.exists(ConstPath + "/tcs") or os.path.exists(ConstPath +
+                                                                "/apks") or os.path.exists(ConstPath + "/report"):
             try:
                 shutil.rmtree(ConstPath + "/tcs")
                 shutil.rmtree(ConstPath + "/apks")
                 shutil.rmtree(ConstPath + "/report")
-            except Exception,e:
+            except Exception as e:
                 os.system("rm -rf " + ConstPath + "/tcs/* &>/dev/null")
                 os.system("rm -rf " + ConstPath + "/apks/* &>/dev/null")
                 os.system("rm -rf " + ConstPath + "/report/* &>/dev/null")
@@ -243,8 +304,7 @@ def sourceInit():
         else:
             os.mkdir(ConstPath + "/tcs")
             os.mkdir(ConstPath + "/report")
-        
-        
+
         Start = time.strftime("%Y-%m-%d %H:%M:%S")
         print "Start time: " + Start
         for flag in ["positive", "negative"]:
@@ -255,20 +315,29 @@ def sourceInit():
                         os.remove(item)
                 else:
                     os.mkdir(ConstPath + "/self")
-                
+
                 if os.path.exists(ConstPath + "/allpairs/selfcomb.txt"):
                     try:
                         os.remove(ConstPath + "/allpairs/selfcomb.txt")
-                    except Exception,e:
-                        os.system("rm -rf " + ConstPath + "/allpairs/selfcomb.txt &>/dev/null")
+                    except Exception as e:
+                        os.system(
+                            "rm -rf " +
+                            ConstPath +
+                            "/allpairs/selfcomb.txt &>/dev/null")
 
-                processTest(ConstPath + "/allpairs/" + flag + "/" + seedIn, flag)
+                processTest(
+                    ConstPath +
+                    "/allpairs/" +
+                    flag +
+                    "/" +
+                    seedIn,
+                    flag)
         End = time.strftime("%Y-%m-%d %H:%M:%S")
         print "End time: " + End
-    except Exception,e:
-        print Exception,":",e
+    except Exception as e:
+        print Exception, ":", e
         sys.exit(1)
 
 
-if __name__=="__main__":
+if __name__ == "__main__":
     sourceInit()

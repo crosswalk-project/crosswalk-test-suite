@@ -1,6 +1,8 @@
 """Definition of various capability-related constants."""
 
+
 class Capability:
+
     """Standard capability names."""
     BROWSER_NAME = 'browserName'
     BROWSER_VERSION = 'browserVersion'
@@ -12,7 +14,9 @@ class Capability:
     TAKE_ELEMENT_SCREENSHOT = 'takeElementScreenshot'
     TOUCH_ENABLED = 'touchEnabled'
 
+
 class Platform:
+
     """Standard OS names."""
     ANY = 'any'
     ANDROID = 'android'
@@ -22,7 +26,9 @@ class Platform:
     UNIX = 'unix'
     WINDOW = 'windows'
 
+
 class PageLoadingStrategy:
+
     """Standard page loading strategies."""
     CONSERVATIVE = 'conservative'
     NORMAL = 'normal'

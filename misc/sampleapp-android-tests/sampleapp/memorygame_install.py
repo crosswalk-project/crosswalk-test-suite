@@ -29,18 +29,23 @@
 #         Li, Cici<cici.x.li@intel.com>
 
 import unittest
-import os, sys, commands
+import os
+import sys
+import commands
 import comm
 
+
 class TestSampleAppFunctions(unittest.TestCase):
+
     def test_install(self):
         comm.setUp()
         os.chdir(comm.const_path + "/../testapp/")
         app_name = "Memorygame"
-	apk_file = commands.getstatusoutput("ls | grep %s" % app_name)[1]
-	cmd = "adb -s " + comm.device + " install -r " + apk_file
-        cmdfind = "adb -s " + comm.device + " shell pm list packages |grep org.xwalk.%s" % (app_name.lower())
+        apk_file = commands.getstatusoutput("ls | grep %s" % app_name)[1]
+        cmd = "adb -s " + comm.device + " install -r " + apk_file
+        cmdfind = "adb -s " + comm.device + \
+            " shell pm list packages |grep org.xwalk.%s" % (app_name.lower())
         comm.app_install(cmd, cmdfind, self)
 
-if __name__ == '__main__':  
+if __name__ == '__main__':
     unittest.main()

@@ -33,22 +33,36 @@ import os
 import commands
 import comm
 
+
 class TestCrosswalkApptoolsFunctions(unittest.TestCase):
+
     def test_check_log(self):
         comm.setUp()
         comm.clear("org.xwalk.test")
         os.chdir(comm.XwalkPath)
         createcmd = comm.PackTools + "crosswalk-app create org.xwalk.test"
         createstatus = commands.getstatusoutput(createcmd)
-        create_common = open(comm.ConstPath + "/../tools/org.xwalk.test/log/common.log", 'r')
-        create_android = open(comm.ConstPath + "/../tools/org.xwalk.test/log/ios.log", 'r')
+        create_common = open(
+            comm.ConstPath +
+            "/../tools/org.xwalk.test/log/common.log",
+            'r')
+        create_android = open(
+            comm.ConstPath +
+            "/../tools/org.xwalk.test/log/ios.log",
+            'r')
         create_common_log = create_common.read().strip("\n\t")
         create_android_log = create_android.read().strip("\n\t")
         os.chdir('org.xwalk.test')
-        buildcmd =  comm.PackTools + "crosswalk-app build"
+        buildcmd = comm.PackTools + "crosswalk-app build"
         buildstatus = commands.getstatusoutput(buildcmd)
-        build_common = open(comm.ConstPath + "/../tools/org.xwalk.test/log/common.log", 'r')
-        build_android = open(comm.ConstPath + "/../tools/org.xwalk.test/log/ios.log", 'r')
+        build_common = open(
+            comm.ConstPath +
+            "/../tools/org.xwalk.test/log/common.log",
+            'r')
+        build_android = open(
+            comm.ConstPath +
+            "/../tools/org.xwalk.test/log/ios.log",
+            'r')
         build_common_log = build_common.read().strip("\n\t")
         build_android_log = build_android.read().strip("\n\t")
         comm.clear("org.xwalk.test")

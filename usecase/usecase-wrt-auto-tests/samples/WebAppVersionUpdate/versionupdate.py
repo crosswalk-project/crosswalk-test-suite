@@ -37,6 +37,7 @@ SCRIPT_PATH = os.path.realpath(__file__)
 ConstPath = os.path.dirname(SCRIPT_PATH)
 Pck_Tools = ConstPath + "/../../tools/crosswalk/"
 
+
 def setUp():
     global ARCH, MODE
 
@@ -54,14 +55,16 @@ def setUp():
         MODE = "shared"
     mode.close()
 
+
 def clear_test(Version):
     if os.path.exists(ConstPath + "/test"):
-       try:
-          os.remove(ConstPath + "/Test_" + Version + "_"  + ARCH +".apk")
-          shutil.rmtree(ConstPath + "/test")
-       except Exception,e:
-          os.system("rm -rf " + ConstPath + "/*.apk")
-          os.system("rm -rf " + ConstPath + "/test")
+        try:
+            os.remove(ConstPath + "/Test_" + Version + "_" + ARCH + ".apk")
+            shutil.rmtree(ConstPath + "/test")
+        except Exception as e:
+            os.system("rm -rf " + ConstPath + "/*.apk")
+            os.system("rm -rf " + ConstPath + "/test")
+
 
 def checkValue(cmd, self):
     os.chdir(ConstPath)
@@ -69,12 +72,15 @@ def checkValue(cmd, self):
     self.assertEquals(0, packstatus[0])
     fp = open(ConstPath + "/test/Test/AndroidManifest.xml")
     lines = fp.readlines()
-    for i in range(len(lines)): 
+    for i in range(len(lines)):
         l = lines[i].strip("\n\r").strip()
         if i < len(lines):
             if "versionName" in l:
                 self.assertIn("versionName", l)
-                target_value = l[l.index("versionName")+13:l.index("versionName")+18]
+                target_value = l[
+                    l.index("versionName") +
+                    13:l.index("versionName") +
+                    18]
                 print "Find"
                 clear_test(target_value)
                 return target_value
@@ -85,6 +91,7 @@ def checkValue(cmd, self):
             self.assertFalse(true, "No Find " + "version")
     clear_test(target_value)
 
+
 class TestPackertoolsFunctions(unittest.TestCase):
 
     def test_version_update(self):
@@ -92,7 +99,7 @@ class TestPackertoolsFunctions(unittest.TestCase):
         cmd1 = "python %smake_apk.py --name=Test --package=org.xwalk.test --app-url=http://www.baidu.com --app-version=1.0.0 --arch=%s --mode=%s --project-dir=test" % \
                (Pck_Tools, ARCH, MODE)
         app_version = "1.0.0"
-        #clear_test(app_version)
+        # clear_test(app_version)
         value1 = checkValue(cmd1, self)
         cmd2 = "python %smake_apk.py --name=Test --package=org.xwalk.test --app-url=http://www.baidu.com --app-version=1.0.1 --arch=%s --mode=%s --project-dir=test" % \
                (Pck_Tools, ARCH, MODE)
@@ -103,4 +110,4 @@ class TestPackertoolsFunctions(unittest.TestCase):
 
 
 if __name__ == '__main__':
-    unittest.main()  
+    unittest.main()

@@ -4,9 +4,15 @@ def main(request, response):
     source = f.read()
     s = json.JSONDecoder().decode(source)
     url1 = "http://" + s['host'] + ":" + str(s['ports']['http'][1])
-    response.headers.set("Content-Security-Policy", "base-uri http://www.w3.org 'unsafe-inline'")
-    response.headers.set("X-Content-Security-Policy", "base-uri http://www.w3.org 'unsafe-inline'")
-    response.headers.set("X-WebKit-CSP", "base-uri http://www.w3.org 'unsafe-inline'")
+    response.headers.set(
+        "Content-Security-Policy",
+        "base-uri http://www.w3.org 'unsafe-inline'")
+    response.headers.set(
+        "X-Content-Security-Policy",
+        "base-uri http://www.w3.org 'unsafe-inline'")
+    response.headers.set(
+        "X-WebKit-CSP",
+        "base-uri http://www.w3.org 'unsafe-inline'")
     return """<!DOCTYPE html>
 <!--
 Copyright (c) 2013 Intel Corporation.
@@ -47,7 +53,7 @@ Authors:
     <meta name="flags" content=""/>
     <meta name="assert" content="base-uri http://www.w3.org"/>
     <meta charset="utf-8"/>
-    <base id="test" href='""" + url1 +"""/tests/csp/support/'/>
+    <base id="test" href='""" + url1 + """/tests/csp/support/'/>
   </head>
   <body>
     <p>Test passes if there is no blue.</p>

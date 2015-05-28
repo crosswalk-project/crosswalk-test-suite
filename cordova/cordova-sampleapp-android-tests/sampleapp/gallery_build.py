@@ -29,10 +29,14 @@
 #         Lin, Wanming <wanming.lin@intel.com>
 
 import unittest
-import os, commands, glob
+import os
+import commands
+import glob
 import comm
 
+
 class TestGalleryAppFunctions(unittest.TestCase):
+
     def test_build(self):
         comm.setUp()
         app_name = "gallery"
@@ -41,5 +45,5 @@ class TestGalleryAppFunctions(unittest.TestCase):
         comm.create(app_name, pkg_name, comm.MODE, sample_src_pref, None, self)
         comm.build(app_name, False, self)
 
-if __name__ == '__main__':  
+if __name__ == '__main__':
     unittest.main()

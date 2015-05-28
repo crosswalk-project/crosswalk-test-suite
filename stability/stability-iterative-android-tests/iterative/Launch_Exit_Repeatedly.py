@@ -1,5 +1,5 @@
 #!/usr/bin/env python
-#coding=utf-8
+# coding=utf-8
 #
 # Copyright (c) 2015 Intel Corporation.
 #
@@ -30,14 +30,18 @@
 #         Hongjuan, Wang<hongjuanx.wang@intel.com>
 
 import unittest
-import os, sys, commands, shutil
+import os
+import sys
+import commands
+import shutil
 import time
 import subprocess
 reload(sys)
-sys.setdefaultencoding( 'utf-8' )
+sys.setdefaultencoding('utf-8')
 
 SCRIPT_PATH = os.path.realpath(__file__)
 ConstPath = os.path.dirname(SCRIPT_PATH)
+
 
 def setUp():
     global device
@@ -47,42 +51,64 @@ def setUp():
         print 'Get env error\n'
         sys.exit(1)
 
+
 class TestStabilityIterativeFunctions(unittest.TestCase):
+
     def test_launch_exit_repeatedly(self):
         setUp()
         runtime = 14400
         pre_time = time.time()
         testName = "test_launch_exit_repeatedly"
         sysmon_path = ConstPath + '/sysmon.sh'
-        sysmon_cmd = sysmon_path + ' ' + testName + ' ' + str(runtime) + ' org.xwalk.*'
+        sysmon_cmd = sysmon_path + ' ' + testName + \
+            ' ' + str(runtime) + ' org.xwalk.*'
         subprocess.Popen(args=sysmon_cmd, shell=True)
         i = 0
         while True:
             i = i + 1
-            apps_list = { 'tct_fileapi_w3c_tests':'TctFileapiW3cTests',
-                          'tct_fullscreen_nonw3c_tests':'TctFullscreenNonw3cTests',
-                          'tct_mediacapture_w3c_tests':'TctMediacaptureW3cTests',
-                          'tct_websocket_w3c_tests':'TctWebsocketW3cTests',
-                          'gallery':'Gallery',
-                          'hangonman':'Hangonman',
-                          'hexgl':'Hexgl',
-                          'sysapps':'Sysapps',
-                          'memorygame':'Memorygame'
-            }
+            apps_list = {'tct_fileapi_w3c_tests': 'TctFileapiW3cTests',
+                         'tct_fullscreen_nonw3c_tests': 'TctFullscreenNonw3cTests',
+                         'tct_mediacapture_w3c_tests': 'TctMediacaptureW3cTests',
+                         'tct_websocket_w3c_tests': 'TctWebsocketW3cTests',
+                         'gallery': 'Gallery',
+                         'hangonman': 'Hangonman',
+                         'hexgl': 'Hexgl',
+                         'sysapps': 'Sysapps',
+                         'memorygame': 'Memorygame'
+                         }
             elapsed_time = time.time() - pre_time
             if elapsed_time >= runtime:
                 print i, elapsed_time, 'Process finished'
                 break
             else:
                 for name, pkg in apps_list.items():
-                    #print '%s\t%s' % (name, pkg)
-                    print i,  elapsed_time, 'Continue'
-                    pmstatus = commands.getstatusoutput('adb -s ' + device + ' shell pm list packages |grep org.xwalk.' + name)
+                    # print '%s\t%s' % (name, pkg)
+                    print i, elapsed_time, 'Continue'
+                    pmstatus = commands.getstatusoutput(
+                        'adb -s ' +
+                        device +
+                        ' shell pm list packages |grep org.xwalk.' +
+                        name)
                     if pmstatus[0] == 0:
-                        launchstatus = commands.getstatusoutput('adb -s ' + device + ' shell am start -n org.xwalk.' + name + '/.' + pkg + 'Activity')
+                        launchstatus = commands.getstatusoutput(
+                            'adb -s ' +
+                            device +
+                            ' shell am start -n org.xwalk.' +
+                            name +
+                            '/.' +
+                            pkg +
+                            'Activity')
                         self.assertNotIn('Error', launchstatus[1])
-                        commands.getstatusoutput('adb -s ' + device + ' shell am force-stop org.xwalk.' + name)
-                        stopresult = commands.getstatusoutput('adb -s ' + device + ' shell ps |grep org.xwalk.' + name)
+                        commands.getstatusoutput(
+                            'adb -s ' +
+                            device +
+                            ' shell am force-stop org.xwalk.' +
+                            name)
+                        stopresult = commands.getstatusoutput(
+                            'adb -s ' +
+                            device +
+                            ' shell ps |grep org.xwalk.' +
+                            name)
                         self.assertNotIn('org.xwalk.' + name, stopresult[1])
                     else:
                         print 'Please install apk ' + name + ' frist'

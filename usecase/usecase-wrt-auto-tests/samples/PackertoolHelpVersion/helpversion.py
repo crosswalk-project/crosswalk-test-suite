@@ -37,6 +37,7 @@ SCRIPT_PATH = os.path.realpath(__file__)
 ConstPath = os.path.dirname(SCRIPT_PATH)
 Pck_Tools = ConstPath + "/../../tools/crosswalk/"
 
+
 def setUp():
     global ARCH, MODE
 
@@ -54,6 +55,7 @@ def setUp():
         MODE = "shared"
     mode.close()
 
+
 class TestPackertoolsFunctions(unittest.TestCase):
 
     def test_packertool_help(self):
@@ -67,13 +69,13 @@ class TestPackertoolsFunctions(unittest.TestCase):
         packstatus2 = commands.getstatusoutput(cmd2)
         self.assertEquals(0, packstatus2[0])
 
-
     def test_packertool_version(self):
         setUp()
         os.chdir(Pck_Tools)
         fp = open(Pck_Tools + "VERSION")
         lines = fp.readlines()
-        version = lines[0][6:].strip("\n\t") + "." + lines[1][6:].strip("\n\t") + "." + lines[2][6:].strip("\n\t") + "." + lines[3][6:].strip("\n\t")
+        version = lines[0][6:].strip("\n\t") + "." + lines[1][6:].strip(
+            "\n\t") + "." + lines[2][6:].strip("\n\t") + "." + lines[3][6:].strip("\n\t")
         cmd = "python %smake_apk.py -v" % (Pck_Tools)
         packstatus = commands.getstatusoutput(cmd)
         self.assertEquals(0, packstatus[0])
@@ -84,4 +86,4 @@ class TestPackertoolsFunctions(unittest.TestCase):
         self.assertIn(version, packstatus2[1])
 
 if __name__ == '__main__':
-    unittest.main()  
+    unittest.main()

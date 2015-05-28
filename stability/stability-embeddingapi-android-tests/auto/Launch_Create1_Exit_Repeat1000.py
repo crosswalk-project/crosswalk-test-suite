@@ -1,5 +1,5 @@
 #!/usr/bin/env python
-#coding=utf-8
+# coding=utf-8
 #
 # Copyright (c) 2015 Intel Corporation.
 #
@@ -30,14 +30,18 @@
 #         Yongyong, Zhu<yongyongx.zhu@intel.com>
 
 import unittest
-import os, sys, commands, shutil
+import os
+import sys
+import commands
+import shutil
 import time
 import subprocess
 reload(sys)
-sys.setdefaultencoding( 'utf-8' )
+sys.setdefaultencoding('utf-8')
 
 SCRIPT_PATH = os.path.realpath(__file__)
 ConstPath = os.path.dirname(SCRIPT_PATH)
+
 
 def setUp():
     global device
@@ -47,31 +51,47 @@ def setUp():
         print 'Get env error\n'
         sys.exit(1)
 
+
 class TestStabilityIterativeFunctions(unittest.TestCase):
+
     def test_launch_exit_repeatedly(self):
         setUp()
         runtime = 1000
         pre_time = time.time()
         testName = "test_launch_exit_repeatedly_1000"
         sysmon_path = ConstPath + '/sysmon.sh'
-        sysmon_cmd = sysmon_path + ' ' + testName + ' ' + str(runtime) + ' org.xwalkview.maximum.app'
+        sysmon_cmd = sysmon_path + ' ' + testName + ' ' + \
+            str(runtime) + ' org.xwalkview.maximum.app'
         subprocess.Popen(args=sysmon_cmd, shell=True)
         i = 0
         for i in range(0, 1000):
             i = i + 1
             print i, 'Times'
-            pmstatus = commands.getstatusoutput('adb -s ' + device + ' shell pm list packages |grep org.xwalkview.maximum.app')
+            pmstatus = commands.getstatusoutput(
+                'adb -s ' +
+                device +
+                ' shell pm list packages |grep org.xwalkview.maximum.app')
             if pmstatus[0] == 0:
-                launchstatus = commands.getstatusoutput('adb -s ' + device + ' shell am start -n org.xwalkview.maximum.app' + '/.XWalkViewsActivity')
+                launchstatus = commands.getstatusoutput(
+                    'adb -s ' +
+                    device +
+                    ' shell am start -n org.xwalkview.maximum.app' +
+                    '/.XWalkViewsActivity')
                 self.assertNotIn('Error', launchstatus[1])
                 time.sleep(20)
-                commands.getstatusoutput('adb -s ' + device + ' shell am force-stop org.xwalkview.maximum.app')
-                stopresult = commands.getstatusoutput('adb -s ' + device + ' shell ps |grep org.xwalkview.maximum.app')
+                commands.getstatusoutput(
+                    'adb -s ' +
+                    device +
+                    ' shell am force-stop org.xwalkview.maximum.app')
+                stopresult = commands.getstatusoutput(
+                    'adb -s ' +
+                    device +
+                    ' shell ps |grep org.xwalkview.maximum.app')
                 self.assertNotIn('org.xwalkview.maximum.app', stopresult[1])
             else:
                 print 'Please install apk frist'
-                sys.exit(1) 
-   
+                sys.exit(1)
+
 
 if __name__ == '__main__':
     unittest.main()

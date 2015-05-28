@@ -29,27 +29,34 @@
 #         Hongjuan, Wang<hongjuanx.wang@intel.com>
 
 import unittest
-import os, sys, commands
+import os
+import sys
+import commands
 import comm
 
+
 class TestManifestFunctions(unittest.TestCase):
+
     def test_description_chinese(self):
         comm.setUp()
-        manifestPath = comm.ConstPath + "/../testapp/manifest_desc_chinese_tests/manifest.json"
+        manifestPath = comm.ConstPath + \
+            "/../testapp/manifest_desc_chinese_tests/manifest.json"
         cmd = "python %smake_apk.py --package=org.xwalk.example --arch=%s --mode=%s --manifest=%s" % \
               (comm.Pck_Tools, comm.ARCH, comm.MODE, manifestPath)
         comm.gen_pkg(cmd, self)
 
     def test_description_long(self):
         comm.setUp()
-        manifestPath = comm.ConstPath + "/../testapp/manifest_desc_long_tests/manifest.json"
+        manifestPath = comm.ConstPath + \
+            "/../testapp/manifest_desc_long_tests/manifest.json"
         cmd = "python %smake_apk.py --package=org.xwalk.example --arch=%s --mode=%s --manifest=%s" % \
               (comm.Pck_Tools, comm.ARCH, comm.MODE, manifestPath)
         comm.gen_pkg(cmd, self)
 
     def test_description_null(self):
         comm.setUp()
-        manifestPath = comm.ConstPath + "/../testapp/manifest_desc_null_tests/manifest.json"
+        manifestPath = comm.ConstPath + \
+            "/../testapp/manifest_desc_null_tests/manifest.json"
         cmd = "python %smake_apk.py --package=org.xwalk.example --arch=%s --mode=%s --manifest=%s" % \
               (comm.Pck_Tools, comm.ARCH, comm.MODE, manifestPath)
         packInfo = commands.getstatusoutput(cmd)
@@ -57,7 +64,8 @@ class TestManifestFunctions(unittest.TestCase):
 
     def test_description_specific(self):
         comm.setUp()
-        manifestPath = comm.ConstPath + "/../testapp/manifest_desc_specific_tests/manifest.json"
+        manifestPath = comm.ConstPath + \
+            "/../testapp/manifest_desc_specific_tests/manifest.json"
         cmd = "python %smake_apk.py --package=org.xwalk.example --arch=%s --mode=%s --manifest=%s" % \
               (comm.Pck_Tools, comm.ARCH, comm.MODE, manifestPath)
         comm.gen_pkg(cmd, self)

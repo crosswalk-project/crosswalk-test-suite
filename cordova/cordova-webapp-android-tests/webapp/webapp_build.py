@@ -29,10 +29,14 @@
 #         Lin, Wanming <wanming.lin@intel.com>
 
 import unittest
-import os, sys, commands
+import os
+import sys
+import commands
 import comm
 
+
 class TestWebAppFunctions(unittest.TestCase):
+
     def test_build(self):
         comm.setUp()
         app_name = "helloworld"
@@ -40,9 +44,15 @@ class TestWebAppFunctions(unittest.TestCase):
         content = "<a href='http://www.intel.com'>Intel</a>\n</body>"
         key = "</body>"
         replace_index_list = [key, content]
-        comm.create(app_name, pkg_name, comm.MODE, None, replace_index_list, self)
+        comm.create(
+            app_name,
+            pkg_name,
+            comm.MODE,
+            None,
+            replace_index_list,
+            self)
         comm.build(app_name, False, self)
 
 
-if __name__ == '__main__':  
+if __name__ == '__main__':
     unittest.main()

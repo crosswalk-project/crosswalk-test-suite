@@ -29,11 +29,14 @@
 #         Lin, Wanming <wanming.lin@intel.com>
 
 import unittest
-import os, commands
+import os
+import commands
 import comm
 import time
 
+
 class TestGalleryAppFunctions(unittest.TestCase):
+
     def test_close(self):
         comm.setUp()
         app_name = "gallery"
@@ -46,5 +49,5 @@ class TestGalleryAppFunctions(unittest.TestCase):
             time.sleep(1)
         comm.app_stop(pkg_name, self)
 
-if __name__ == '__main__':  
+if __name__ == '__main__':
     unittest.main()

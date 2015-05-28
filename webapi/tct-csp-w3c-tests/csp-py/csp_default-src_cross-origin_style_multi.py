@@ -5,7 +5,8 @@ def main(request, response):
     s = json.JSONDecoder().decode(source)
     url1 = "http://" + s['host'] + ":" + str(s['ports']['http'][1])
     url2 = "http://" + s['host'] + ":" + str(s['ports']['http'][0])
-    _CSP = "default-src " + url1 + " " + url2 +";script-src 'self' 'unsafe-inline'"
+    _CSP = "default-src " + url1 + " " + url2 + \
+        ";script-src 'self' 'unsafe-inline'"
     response.headers.set("Content-Security-Policy", _CSP)
     response.headers.set("X-Content-Security-Policy", _CSP)
     response.headers.set("X-WebKit-CSP", _CSP)

@@ -8,19 +8,19 @@ def main(request, response):
 
         if state == 'opened':
             status = (200, "RECONNECT")
-            response.set_cookie(name, "reconnected");
-            body = "data: reconnected\n\n";
+            response.set_cookie(name, "reconnected")
+            body = "data: reconnected\n\n"
 
         elif state == 'reconnected':
             status = (204, "NO CONTENT (CLOSE)")
-            response.delete_cookie(name);
-            body = "data: closed\n\n" # Will never get through
+            response.delete_cookie(name)
+            body = "data: closed\n\n"  # Will never get through
 
         else:
-            status = (200, "OPEN");
-            response.set_cookie(name, "opened");
-            body = "retry: 2\ndata: opened\n\n";
+            status = (200, "OPEN")
+            response.set_cookie(name, "opened")
+            body = "retry: 2\ndata: opened\n\n"
 
         return status, headers, body
-    except Exception,ex:
+    except Exception as ex:
         return "error"

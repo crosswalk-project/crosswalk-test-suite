@@ -194,8 +194,8 @@ def should_see_alert_text(context, text):
 
 
 @step(u'I wait {n:d} seconds')
-def wait_senconds(context,n):
-   time.sleep(n)
+def wait_senconds(context, n):
+    time.sleep(n)
 
 
 @step(u'I go to frame "{key}"')
@@ -240,7 +240,8 @@ def check_type_by_key(context, key, expecttype):
         assert False
 
 
-@step(u'I save div "{key}" as "{pic_name}" with width "{width}" and height "{height}"')
+@step(
+    u'I save div "{key}" as "{pic_name}" with width "{width}" and height "{height}"')
 def save_div(context, key, pic_name, width, height):
     assert context.app.save_div_as_picture(key, pic_name, width, height)
 
@@ -259,16 +260,19 @@ def remove_pic(context):
 def save_page_per_conf(context, pic_name):
     assert context.app.save_page_per_conf(pic_name)
 
+
 @step(u'I save the screenshot md5 as "{pic_name}"')
 def save_page_as_base64(context, pic_name):
     assert context.app.save_base64_md5_pic(pic_name)
+
 
 @step(u'file "{file_name}" of baseline and result should be the same')
 def check_md5_file(context, file_name):
     assert context.app.check_md5_file_same(file_name)
 
 
-@step(u'pic "{pic_name}" of baseline and result should be "{similarity}" similar if have results')
+@step(
+    u'pic "{pic_name}" of baseline and result should be "{similarity}" similar if have results')
 def check_base_result_similarity(context, pic_name, similarity):
     assert context.app.check_base_result_similarity(pic_name, similarity)
 
@@ -290,7 +294,8 @@ def fill_element_by_attr_with_text(context, key, attr, text):
 
 @step(u'"{second}" should be greater than "{first}"')
 def check_type_by_key(context, first, second):
-    assert context.app.compare_two_values(first, second), u'The second value is less than the first one'
+    assert context.app.compare_two_values(
+        first, second), u'The second value is less than the first one'
 
 
 @step(u'I should not see "{text}" in "{key}" area')

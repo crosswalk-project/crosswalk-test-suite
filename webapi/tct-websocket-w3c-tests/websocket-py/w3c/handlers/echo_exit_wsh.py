@@ -3,6 +3,7 @@ from mod_pywebsocket import msgutil
 
 _GOODBYE_MESSAGE = u'Goodbye'
 
+
 def web_socket_do_extra_handshake(request):
     # This example handler accepts any request. See origin_check_wsh.py for how
     # to reject access from untrusted scripts based on origin value.
@@ -18,4 +19,3 @@ def web_socket_transfer_data(request):
         if isinstance(line, unicode):
             if line == _GOODBYE_MESSAGE:
                 return
-

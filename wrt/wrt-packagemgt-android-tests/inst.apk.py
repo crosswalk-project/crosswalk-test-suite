@@ -27,7 +27,7 @@ def doCMD(cmd):
     while True:
         output_line = cmd_proc.stdout.readline().strip("\r\n")
         cmd_return_code = cmd_proc.poll()
-        if output_line == '' and cmd_return_code != None:
+        if output_line == '' and cmd_return_code is not None:
             break
         sys.stdout.write("%s\n" % output_line)
         sys.stdout.flush()
@@ -55,7 +55,7 @@ def overwriteCopy(src, dest, symlinks=False, ignore=None):
                 s_path_s = os.lstat(s_path)
                 s_path_mode = stat.S_IMODE(s_path_s.st_mode)
                 os.lchmod(d_path, s_path_mode)
-            except Exception, e:
+            except Exception as e:
                 pass
         elif os.path.isdir(s_path):
             overwriteCopy(s_path, d_path, symlinks, ignore)
@@ -71,7 +71,7 @@ def doCopy(src_item=None, dest_item=None):
             if not os.path.exists(os.path.dirname(dest_item)):
                 os.makedirs(os.path.dirname(dest_item))
             shutil.copy2(src_item, dest_item)
-    except Exception, e:
+    except Exception as e:
         return False
 
     return True
@@ -94,7 +94,7 @@ def uninstPKGs():
 
 def instPKGs():
     action_status = True
-    #for root, dirs, files in os.walk(SCRIPT_DIR):
+    # for root, dirs, files in os.walk(SCRIPT_DIR):
     #    for file in files:
     #        if file.endswith(".apk"):
     #            cmd = "%s -s %s install %s" % (ADB_CMD,
@@ -111,8 +111,9 @@ def instPKGs():
             continue
         else:
             item_name = os.path.basename(item)
-            if not doCopy(item, "%s/opt/%s/%s" % (TEST_PREFIX, PKG_NAME, item_name)):
-            #if not doRemoteCopy(item, PKG_SRC_DIR):
+            if not doCopy(item, "%s/opt/%s/%s" %
+                          (TEST_PREFIX, PKG_NAME, item_name)):
+                # if not doRemoteCopy(item, PKG_SRC_DIR):
                 action_status = False
     print "Package push to host %s/opt/%s successfully!" % (TEST_PREFIX, PKG_NAME)
     return action_status
@@ -133,7 +134,7 @@ def main():
             "-t", dest="testprefix", action="store", help="unzip path prefix", default=os.environ["HOME"])
         global PARAMETERS
         (PARAMETERS, args) = opts_parser.parse_args()
-    except Exception, e:
+    except Exception as e:
         print "Got wrong option: %s, exit ..." % e
         sys.exit(1)
 
@@ -156,12 +157,12 @@ def main():
 
     if PARAMETERS.buninstpkg:
         pass
-        #if not uninstPKGs():
-            #sys.exit(1)
+        # if not uninstPKGs():
+        # sys.exit(1)
     else:
         pass
-        #if not instPKGs():
-            #sys.exit(1)
+        # if not instPKGs():
+        # sys.exit(1)
 
 if __name__ == "__main__":
     main()

@@ -28,8 +28,8 @@
 
 from datetime import *
 
-def main(request, response):
-  response.headers.update([("Content-Type", "text/event-stream")])
-  curDate = datetime.now().strftime("%Y-%m-%d %H:%M:%S")
-  return 'data: {"the server time is": "' + curDate + '"}\n\n'
 
+def main(request, response):
+    response.headers.update([("Content-Type", "text/event-stream")])
+    curDate = datetime.now().strftime("%Y-%m-%d %H:%M:%S")
+    return 'data: {"the server time is": "' + curDate + '"}\n\n'
