@@ -180,3 +180,13 @@ This usecase covers following interface and methods:
 
 * XWalkView interface: load, clearCache methods
 * UIClient interface: onPageLoadStopped methods
+
+
+
+### 19. The [XWalkViewWithDownloadListener](XWalkViewWithDownloadListenerActivity.java) sample check whether xwalkview can setDownloadListener & override onDownloadStart, include:
+
+* XWalkView can setDownloadListener & override onDownloadStart
+
+This usecase covers following interface and methods:
+
+* XWalkView interface: load, setDownloadListener, onDownloadStart methods
