@@ -1,0 +1,15 @@
+## Usecase Design
+
+This sample demonstrates Cordova Package feature basic functionalities, include:
+
+* Create cordova package
+* Build cordova package using cordova-plugin-crosswalk-webview
+* Install, Launch, Run and Exit the cordova package
+* The Cordova StatusBar plugin can work when app in fullscreen mode
+
+This usecase covers following methods:
+
+* $ cordova-android/bin/create
+* $ cordova plugin add --plugin org.apache.cordova.statusbar
+* $ cordova plugin add ../cordova-plugin-crosswalk-webview
+* $ ./cordova/build
