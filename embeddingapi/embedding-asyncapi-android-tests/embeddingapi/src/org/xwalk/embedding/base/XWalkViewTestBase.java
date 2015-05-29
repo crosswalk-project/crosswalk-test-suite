@@ -23,6 +23,7 @@ import org.chromium.content.browser.test.util.Criteria;
 import org.chromium.content.browser.test.util.CriteriaHelper;
 import org.chromium.net.test.util.TestWebServer;
 import org.xwalk.core.JavascriptInterface;
+import org.xwalk.core.XWalkDownloadListener;
 import org.xwalk.core.XWalkNavigationHistory;
 import org.xwalk.core.XWalkNavigationItem;
 import org.xwalk.core.XWalkView;
@@ -105,7 +106,7 @@ public class XWalkViewTestBase extends ActivityInstrumentationTestCase2<MainActi
     protected void setUp() throws Exception {
         super.setUp();
         mainActivity = (MainActivity) getActivity();
-        mWebServer = TestWebServer.start();
+
         getInstrumentation().runOnMainSync(new Runnable() {
             @Override
             public void run() {
@@ -793,6 +794,24 @@ public class XWalkViewTestBase extends ActivityInstrumentationTestCase2<MainActi
             @Override
             public void run() {
                 mXWalkView.onDestroy();
+            }
+        });
+    }
+
+    protected void setDownloadListener() {
+        getInstrumentation().runOnMainSync(new Runnable() {
+            @Override
+            public void run() {
+                mXWalkView.setDownloadListener(new XWalkDownloadListener(getActivity()) {
+					
+					@Override
+					public void onDownloadStart(String url, String userAgent,
+			                String contentDisposition, String mimetype, long contentLength) {
+						// TODO Auto-generated method stub
+			            mTestHelperBridge.onDownloadStart(url, userAgent, contentDisposition,
+			                    mimetype, contentLength);
+					}
+				});
             }
         });
     }

@@ -38,6 +38,7 @@ public class TestHelperBridge {
     private final OnFullscreenToggledHelper mOnFullscreenToggledHelper;
     private final OpenFileChooserHelper mOpenFileChooserHelper;
     private final OnConsoleMessageHelper mOnConsoleMessageHelper;
+    private final OnDownloadStartHelper mOnDownloadStartHelper;
 
     TestHelperBridge() {
         mOnPageStartedHelper = new OnPageStartedHelper();
@@ -60,6 +61,7 @@ public class TestHelperBridge {
         mOnFullscreenToggledHelper = new OnFullscreenToggledHelper();
         mOpenFileChooserHelper = new OpenFileChooserHelper();
         mOnConsoleMessageHelper = new OnConsoleMessageHelper();
+	mOnDownloadStartHelper = new OnDownloadStartHelper();
     }
 
     public WebResourceResponse shouldInterceptLoadRequest(String url) {
@@ -232,5 +234,15 @@ public class TestHelperBridge {
             String sourceId, ConsoleMessageType messageType) {
         mOnConsoleMessageHelper.notifyCalled(message, lineNumber, sourceId, messageType);
         return true;
+    }
+
+    public OnDownloadStartHelper getOnDownloadStartHelper() {
+    	return mOnDownloadStartHelper;
+    }
+    
+    public void onDownloadStart(String url, String userAgent,
+            String contentDisposition, String mimetype, long contentLength) {
+        mOnDownloadStartHelper.notifyCalled(url, userAgent, contentDisposition,
+                mimetype, contentLength);
     }
 }
