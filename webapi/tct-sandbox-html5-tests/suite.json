@@ -42,7 +42,17 @@
             "blacklist": [],
             "copylist": {
                 "PACK-TOOL-ROOT/resources/testharness": "resources",
-                "PACK-TOOL-ROOT/resources/webrunner": "webrunner"
+                "PACK-TOOL-ROOT/resources/webrunner": "webrunner",
+                "html5-sandbox-app/testscripts": "HOST_RESOURCES/html5-sandbox-app/testscripts"
+            },
+            "subapp-list": {
+                "html5-sandbox-app": {
+                    "apk-common-opts": "--enable-remote-debugging",
+                    "copylist": {
+                        "../sandbox/w3c/bdd": "w3c",
+                        "../sandbox/w3c/support": "w3c/support"
+                    }
+                }
             }
         },
         "wgt": {
