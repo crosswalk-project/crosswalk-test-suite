@@ -47,7 +47,20 @@
             "blacklist": [],
             "copylist": {
                 "PACK-TOOL-ROOT/resources/testharness": "resources",
-                "PACK-TOOL-ROOT/resources/webrunner": "webrunner"
+                "PACK-TOOL-ROOT/resources/webrunner": "webrunner",
+                "css3-text-app/testscripts": "HOST_RESOURCES/css3-text-app/testscripts",
+                "css3-text-app/data": "HOST_RESOURCES/data"
+            },
+            "subapp-list": {
+                "css3-text-app": {
+                    "apk-common-opts": "--enable-remote-debugging",
+                    "apk-icon-opt": "",
+                    "copylist": {
+                        "../text/bdd": "text",
+                        "../text/csswg/bdd": "text/csswg",
+                        "../text/webkit/bdd": "text/webkit"
+                    }
+                }
             }
         },
         "wgt": {

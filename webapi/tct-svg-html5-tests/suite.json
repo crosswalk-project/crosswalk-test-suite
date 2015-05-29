@@ -45,7 +45,18 @@
             "blacklist": [],
             "copylist": {
                 "PACK-TOOL-ROOT/resources/testharness": "resources",
-                "PACK-TOOL-ROOT/resources/webrunner": "webrunner"
+                "PACK-TOOL-ROOT/resources/webrunner": "webrunner",
+                "html5-svg-app/testscripts": "HOST_RESOURCES/html5-svg-app/testscripts",
+                "html5-svg-app/data": "HOST_RESOURCES/data"
+            },
+            "subapp-list": {
+                "html5-svg-app": {
+                    "apk-common-opts": "--enable-remote-debugging",
+                    "apk-icon-opt": "",
+                    "copylist": {
+                        "../svg/w3c/bdd": "svg/w3c"
+                    }
+                }
             }
         },
         "wgt": {
