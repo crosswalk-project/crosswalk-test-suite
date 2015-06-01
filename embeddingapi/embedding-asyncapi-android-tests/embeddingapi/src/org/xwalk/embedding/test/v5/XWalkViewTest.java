@@ -4,6 +4,8 @@
 
 package org.xwalk.embedding.test.v5;
 
+import java.util.concurrent.Callable;
+
 import android.graphics.Color;
 import org.xwalk.embedding.base.XWalkViewTestBase;
 import android.annotation.SuppressLint;
@@ -131,5 +133,113 @@ public class XWalkViewTest extends XWalkViewTestBase {
             e.printStackTrace();
             assertTrue(false);
         }
+    }
+
+    @SmallTest
+    public void testOnCanZoomInAndOut() {
+        try {
+        	final float mPageMinimumScale = 0.5f;
+        	String url = "file:///android_asset/zoom.html";
+        	assertFalse("Should not be able to zoom in", canZoomInOnUiThread());
+        	loadUrlSync(url);
+            pollOnUiThread(new Callable<Boolean>() {
+                @Override
+                public Boolean call() throws Exception {
+                    return mPageMinimumScale == mTestHelperBridge.getOnScaleChangedHelper().getScale();
+                }
+            });
+            assertTrue("Should be able to zoom in", canZoomInOnUiThread());
+            assertFalse("Should not be able to zoom out", canZoomOutOnUiThread());
+
+        } catch (Exception e) {
+            assertTrue(false);
+            e.printStackTrace();
+        } catch (Throwable e) {
+			// TODO: handle exception
+            assertTrue(false);
+            e.printStackTrace();
+		}
+    }
+    
+    @SmallTest
+    public void testOnZoomByLimited() {
+        try {
+        	final float MAXIMUM_SCALE = 2.0f;
+        	final float mPageMinimumScale = 0.5f;
+        	String url = "file:///android_asset/zoom.html";
+        	assertFalse("Should not be able to zoom in", canZoomInOnUiThread());
+        	loadUrlSync(url);
+            pollOnUiThread(new Callable<Boolean>() {
+                @Override
+                public Boolean call() throws Exception {
+                    return mPageMinimumScale == mTestHelperBridge.getOnScaleChangedHelper().getScale();
+                }
+            });
+            
+            zoomByOnUiThreadAndWait(4.0f);
+            pollOnUiThread(new Callable<Boolean>() {
+                @Override
+                public Boolean call() throws Exception {
+                    return MAXIMUM_SCALE == mTestHelperBridge.getOnScaleChangedHelper().getScale();
+                }
+            });
+            
+            zoomByOnUiThreadAndWait(0.5f);
+            pollOnUiThread(new Callable<Boolean>() {
+                @Override
+                public Boolean call() throws Exception {
+                    return MAXIMUM_SCALE * 0.5f == mTestHelperBridge.getOnScaleChangedHelper().getScale();
+                }
+            });
+
+            zoomByOnUiThreadAndWait(0.01f);
+            pollOnUiThread(new Callable<Boolean>() {
+                @Override
+                public Boolean call() throws Exception {
+                    return mPageMinimumScale == mTestHelperBridge.getOnScaleChangedHelper().getScale();
+                }
+            });
+        } catch (Exception e) {
+            assertTrue(false);
+            e.printStackTrace();
+        } catch (Throwable e) {
+			// TODO: handle exception
+            assertTrue(false);
+            e.printStackTrace();
+		}
+    }
+    
+    @SmallTest
+    public void testOnZoomInAndOut() {
+        try {
+        	final float mPageMinimumScale = 0.5f;
+        	String url = "file:///android_asset/zoom.html";
+        	assertFalse("Should not be able to zoom in", canZoomInOnUiThread());
+        	loadUrlSync(url);
+            pollOnUiThread(new Callable<Boolean>() {
+                @Override
+                public Boolean call() throws Exception {
+                    return mPageMinimumScale == mTestHelperBridge.getOnScaleChangedHelper().getScale();
+                }
+            });
+
+            while (canZoomInOnUiThread()) {
+                zoomInOnUiThreadAndWait();
+            }
+            assertTrue("Should be able to zoom out", canZoomOutOnUiThread());
+
+            while (canZoomOutOnUiThread()) {
+                zoomOutOnUiThreadAndWait();
+            }
+            assertTrue("Should be able to zoom in", canZoomInOnUiThread());
+            
+        } catch (Exception e) {
+            assertTrue(false);
+            e.printStackTrace();
+        } catch (Throwable e) {
+			// TODO: handle exception
+            assertTrue(false);
+            e.printStackTrace();
+		}
     }
 }
