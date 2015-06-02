@@ -27,6 +27,7 @@ EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
 Authors:
         Yin, Haichao <haichaox.yin@intel.com>
+        Wang, Hongjuan <hongjuanx.wang@intel.com>
 
 -->
 <html>
@@ -47,28 +48,14 @@ Authors:
       <div data-role="content">
         <h4>Test Steps</h4>
         <ol>
-          <li>Pack an apk with Crosswalk binary</li>
-          <li>Install the packaged apk on device</li>
-          <li>Launch the app on device</li>
+          <li>Check the size of the apk named like lzmatest.apk </li>
+          <li>Decompress the apk, and check the extracting folder</li>
+          <li>Install and launch apk, then check the launching screen</li>
         </ol>
       </div>
       <div data-role="footer" data-position="fixed">
       </div>
       <div data-role="popup" id="popup_info">
-        <font class="fontSize">
-          <p>Purpose:</p>
-          <ul>
-            <li>Verifies when pack an apk and run the app, the compression and decompression work properly or not, at the same time the progress bar UI display normal or not </li>
-          <ul>
-          <p>Expected Result:</p>
-          <ol>
-            <li>When pack the apk, the LZMA compression works fine</li>
-            <li>Install the packaged apk successfully</li>
-            <li>Launch the app first time and found pop up a progress bar with message('Runtime is preparing..'), the progress bar has no truncation or other display issue</li>
-            <li>When decompression, the decompression time is reasonable and the progress bar will disappear</li>
-            <li>App runs successfully</li>
-          </ol>
-        </font>
       </div>
     </div>
   </body>

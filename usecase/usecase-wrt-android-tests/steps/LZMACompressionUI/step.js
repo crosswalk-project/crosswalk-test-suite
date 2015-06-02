@@ -1,11 +1,8 @@
 var step = '<p>Purpose:</p>'
-            +'<p>Verifies when pack an apk and run the app, the compression and decompression work properly or not, at the same time the progress bar UI display normal or not</p>'
+            +'<p>Verify the test app can work well that build with enable-lzma parameters</p>'
             +'<p>Expected Results:</p>'
             +'<ol>'
-            +'<li>When pack the apk, the LZMA compression works fine</li>'
-            +'<li>Install the packaged apk successfully</li>'
-            +'<li>Launch the app first time and found pop up a progress bar with message("Runtime is preparing.."), the progress bar has no truncation or other display issue</li>'
-            +'<li>When decompression, the decompression time is reasonable and the progress bar will disappear</li>'
-            +'<li>App runs successfully</li>'
-            +'</ol>'
-          +'</font>';
+            +'<li>The size is smaller than normal apk that build without enable-lzma parameters</li>'
+            +'<li>Find a file named like: libxwalkcore.so.lzma under the directory res/raw of the extracting folder</li>'
+            +'<li>Display message just like :Decompressing the Crosswalk Project runtime, open the crosswalk main page without crash or other display issue after complate decompressing</li>'
+            +'</ol>';
