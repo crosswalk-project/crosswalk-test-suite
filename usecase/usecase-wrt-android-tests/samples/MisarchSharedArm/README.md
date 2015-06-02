@@ -6,4 +6,4 @@ This sample demonstrates MisarchSharedArm feature basic functionalities, include
 
 This usecase covers following method:
 
-* $ python make_apk.py --mode=shared --arch=arm
+* $ python make_apk.py --mode=shared --arch=x86

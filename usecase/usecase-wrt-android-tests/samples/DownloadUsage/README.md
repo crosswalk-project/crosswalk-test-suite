@@ -8,5 +8,5 @@ This usecase covers following interface and attributes:
 
 * terminate shared apps during download lib
 * uninstall shared apps during download lib
-* download from google player both in two shared apps at the same time
+* download from google play both in two shared apps at the same time
 * install one sharedmode app with previous sharedmode app downloaded the lib 

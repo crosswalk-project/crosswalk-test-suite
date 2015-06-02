@@ -44,13 +44,13 @@ Authors:
 <div class="content">
   <h4>Pre-condition</h4>
   <ol>
-    <li>Install RuntimeLib for arm on x86 devices</li>
+    <li>The test device doesn't install the Crosswalk Runtime Library</li>
     <li>Setup a web server and make sure the test device can connect it</li>
   </ol>
   <h4>Test Steps</h4>
   <ol>
     <li>Build a webapp with below command:<br/>
-        $ python make_apk.py --package=[package] --manifest=res/manifest.json --arch=x86 --xwalk-apk-url=[http://host/XWalkRuntimeLib.apk] --mode=shared<br/>
+        $ python make_apk.py --package=[package] --manifest=res/manifest.json --arch=arm --xwalk-apk-url=[http://host/XWalkRuntimeLib.apk] --mode=shared<br/>
         Then install it on x86 devices and launch it
     </li>
     <li>Click "Get Crosswalk", check the launching screen</li>
