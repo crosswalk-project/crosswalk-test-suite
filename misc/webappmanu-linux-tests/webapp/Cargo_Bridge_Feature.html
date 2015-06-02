@@ -41,17 +41,17 @@ Authors:
       <strong>Test steps:</strong>
     </p>
     <ol>
-      <li>Install the "cargobridge.deb" webapp and launch it. </li>
-      <li>Validate the plug-in loading. </li>
-      <li>Click the button "Play". </li>
+      <li>Install the "cargobridge.deb" webapp and launch it with command like:<br>
+          xwalk $(dirname $(realpath $(which cargobridge)))/www/manifest.json --ppapi-flash-path=/path/to/chrome/PepperFlash/libpepflashplayer.so
+      </li>
+      <li>Click button "Play"</li>
     </ol>
     <p>
       <strong>Expected Output:</strong>
     </p>
     <ol>
-      <li>Webapp could be launched successfully. </li>
-      <li>The plug-in load successfully. </li>
-      <li>The button is be able to click and open a new page. </li>
+      <li>Webapp could be launched successfully</li>
+      <li>Button "Play" could be clicked and new page would be created</li>
     </ol>
   </body>
 </html>
