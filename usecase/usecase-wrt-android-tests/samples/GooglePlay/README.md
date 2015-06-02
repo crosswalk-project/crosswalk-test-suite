@@ -1,6 +1,6 @@
 ## Usecase Design
 
-This sample demonstrates GooglePlayer feature basic functionalities, include:
+This sample demonstrates GooglePlay feature basic functionalities, include:
 
 * the function and the UI display information about shared mode app on google play
 
