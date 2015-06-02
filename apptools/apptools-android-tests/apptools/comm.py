@@ -72,6 +72,7 @@ def setUp():
 
 
 def clear(pkg):
+    os.chdir(XwalkPath)
     if os.path.exists(ConstPath + "/../tools/" + pkg):
         try:
             shutil.rmtree(XwalkPath + pkg)
