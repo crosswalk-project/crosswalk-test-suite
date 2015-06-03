@@ -22,6 +22,7 @@ import org.chromium.content.browser.test.util.CallbackHelper;
 import org.chromium.content.browser.test.util.Criteria;
 import org.chromium.content.browser.test.util.CriteriaHelper;
 import org.chromium.net.test.util.TestWebServer;
+import org.chromium.ui.gfx.DeviceDisplayInfo;
 import org.xwalk.core.JavascriptInterface;
 import org.xwalk.core.XWalkDownloadListener;
 import org.xwalk.core.XWalkNavigationHistory;
@@ -812,6 +813,78 @@ public class XWalkViewTestBase extends ActivityInstrumentationTestCase2<MainActi
 			                    mimetype, contentLength);
 					}
 				});
+            }
+        });
+    }
+
+    protected boolean canZoomInOnUiThread() throws Exception {
+        return runTestOnUiThreadAndGetResult(new Callable<Boolean>() {
+            @Override
+            public Boolean call() throws Exception {
+                return mXWalkView.canZoomIn();
+            }
+        });
+    }
+    
+    protected boolean canZoomOutOnUiThread() throws Exception {
+        return runTestOnUiThreadAndGetResult(new Callable<Boolean>() {
+            @Override
+            public Boolean call() throws Exception {
+                return mXWalkView.canZoomOut();
+            }
+        });
+    }
+    
+    protected void zoomInOnUiThreadAndWait() throws Throwable {
+    	final double dipScale = DeviceDisplayInfo.create(getActivity()).getDIPScale() ;
+        final float previousScale = mTestHelperBridge.getOnScaleChangedHelper().getScale() * (float)dipScale;
+        assertTrue(runTestOnUiThreadAndGetResult(new Callable<Boolean>() {
+            @Override
+            public Boolean call() throws Exception {
+                return mXWalkView.zoomIn();
+            }
+        }));
+        // The zoom level is updated asynchronously.
+        pollOnUiThread(new Callable<Boolean>() {
+            @Override
+            public Boolean call() throws Exception {
+                return previousScale != mTestHelperBridge.getOnScaleChangedHelper().getScale() * (float)dipScale;
+            }
+        });
+    }
+
+    protected void zoomOutOnUiThreadAndWait() throws Throwable {
+    	final double dipScale = DeviceDisplayInfo.create(getActivity()).getDIPScale() ;
+        final float previousScale = mTestHelperBridge.getOnScaleChangedHelper().getScale() * (float)dipScale;
+        assertTrue(runTestOnUiThreadAndGetResult(new Callable<Boolean>() {
+            @Override
+            public Boolean call() throws Exception {
+                return mXWalkView.zoomOut();
+            }
+        }));
+        // The zoom level is updated asynchronously.
+        pollOnUiThread(new Callable<Boolean>() {
+            @Override
+            public Boolean call() throws Exception {
+                return previousScale != mTestHelperBridge.getOnScaleChangedHelper().getScale() * (float)dipScale;
+            }
+        });
+    }
+    
+    protected void zoomByOnUiThreadAndWait(final float delta) throws Throwable {
+    	final double dipScale = DeviceDisplayInfo.create(getActivity()).getDIPScale() ;
+        final float previousScale = mTestHelperBridge.getOnScaleChangedHelper().getScale() * (float)dipScale;
+        getInstrumentation().runOnMainSync(new Runnable() {
+            @Override
+            public void run() {
+                mXWalkView.zoomBy(delta);
+            }
+        });
+        // The zoom level is updated asynchronously.
+        pollOnUiThread(new Callable<Boolean>() {
+            @Override
+            public Boolean call() throws Exception {
+                return previousScale != mTestHelperBridge.getOnScaleChangedHelper().getScale() * (float)dipScale;
             }
         });
     }
