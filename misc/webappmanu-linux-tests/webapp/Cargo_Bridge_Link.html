@@ -41,15 +41,17 @@ Authors:
       <strong>Test steps:</strong>
     </p>
     <ol>
-      <li>Install the "cargobridge.deb" webapp and launch it. </li>
-      <li>Click the different links in the page several times. </li>
+      <li>Install the "cargobridge.deb" webapp and launch it with command like:<br>
+          xwalk $(dirname $(realpath $(which cargobridge)))/www/manifest.json --ppapi-flash-path=/path/to/chrome/PepperFlash/libpepflashplayer.so
+      </li>
+      <li>Click the different links in the page several times</li>
     </ol>
     <p>
       <strong>Expected Output:</strong>
     </p>
     <ol>
-      <li>Webapp could be launched successfully. </li>
-      <li>The links can be clicked and jumped correct. </li>
+      <li>Webapp could be launched successfully</li>
+      <li>The links can be clicked and jumped correct</li>
     </ol>
   </body>
 </html>
