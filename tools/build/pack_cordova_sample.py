@@ -28,6 +28,7 @@
 # Authors:
 #         Fan, Yugang <yugang.fan@intel.com>
 #         Lin, Wanming <wanming.lin@intel.com>
+#         Zhu, Yongyong <yongyongx.zhu@intel.com>
 
 import os
 import shutil
@@ -52,7 +53,7 @@ sys.setdefaultencoding('utf8')
 TOOL_VERSION = "v0.1"
 VERSION_FILE = "VERSION"
 DEFAULT_CMD_TIMEOUT = 600
-PKG_NAMES = ["gallery", "helloworld", "remotedebugging", "mobilespec"]
+PKG_NAMES = ["gallery", "helloworld", "remotedebugging", "mobilespec", "CIRC"]
 CORDOVA_VERSIONS = ["3.6", "4.0"]
 PKG_MODES = ["shared", "embedded"]
 PKG_ARCHS = ["x86", "arm"]
@@ -361,7 +362,6 @@ def packMobileSpec(app_name=None):
     os.chdir(orig_dir)
     return True
 
-
 def packSampleApp(app_name=None):
     pack_tool = os.path.join(BUILD_ROOT, "cordova")
     if not os.path.exists(pack_tool):
@@ -473,6 +473,96 @@ def packSampleApp(app_name=None):
     os.chdir(orig_dir)
     return True
 
+def packCIRC(app_name=None):
+    project_root = os.path.join(BUILD_ROOT, app_name)
+    output = commands.getoutput("cca -v")
+    if output != "0.7.0":
+        LOG.error(
+            "Circ build requires cca, install with command: '$ sudo npm install cca@0.7.0 -g'")
+        return False
+
+    cordova_circ = os.path.join(BUILD_ROOT, "circ")
+    if not doCopy(os.path.join(BUILD_PARAMETERS.pkgpacktools,
+                               "circ"), cordova_circ):
+        return False
+
+    orig_dir = os.getcwd()
+    os.chdir(cordova_circ)
+    pull_cmd = "git pull"
+    if not doCMD(pull_cmd, DEFAULT_CMD_TIMEOUT):
+        os.chdir(orig_dir)
+        return False
+
+    os.chdir(BUILD_ROOT)
+    creat_cmd = "cca create " + app_name + " --link-to circ/package"
+    if not doCMD(creat_cmd, DEFAULT_CMD_TIMEOUT):
+        os.chdir(orig_dir)
+        return False
+
+    os.chdir(project_root)
+    plugin_tool = os.path.join(project_root, "plugins", "cordova-plugin-crosswalk-webview")
+    
+    if not doCopy(os.path.join(
+            BUILD_PARAMETERS.pkgpacktools, "cordova_plugins", "cordova-plugin-crosswalk-webview"), plugin_tool):
+        return False
+
+    # Set activity name as app_name
+    replaceUserString(
+        project_root,
+        'config.xml',
+        '<widget',
+        '<widget android-activityName="%s"' %
+        app_name)
+    # Workaround for XWALK-3679
+    replaceUserString(
+        project_root,
+        'config.xml',
+        '</widget>',
+        '    <allow-navigation href="*" />\n</widget>')
+
+    build_cmd = "cca build android"
+    if not doCMD(build_cmd, DEFAULT_CMD_TIMEOUT):
+        os.chdir(orig_dir)
+        return False
+
+    outputs_dir = os.path.join(
+        project_root,
+        "platforms",
+        "android",
+        "build",
+        "outputs",
+        "apk")
+    if BUILD_PARAMETERS.pkgarch == "x86":
+        cordova_tmp_path = os.path.join(
+            outputs_dir,
+            "%s-x86-debug.apk" %
+            app_name)
+        cordova_tmp_path_spare = os.path.join(
+            outputs_dir,
+            "android-x86-debug.apk")
+    else:
+        cordova_tmp_path = os.path.join(
+            outputs_dir,
+            "%s-armv7-debug.apk" %
+            app_name)
+        cordova_tmp_path_spare = os.path.join(
+            outputs_dir,
+            "android-armv7-debug.apk")
+    if os.path.exists(cordova_tmp_path):
+        if not doCopy(
+                cordova_tmp_path, os.path.join(orig_dir, "%s.apk" % app_name)):
+            os.chdir(orig_dir)
+            return False
+    elif os.path.exists(cordova_tmp_path_spare):
+        if not doCopy(
+                cordova_tmp_path_spare, os.path.join(orig_dir, "%s.apk" % app_name)):
+            os.chdir(orig_dir)
+            return False
+    else:
+        os.chdir(orig_dir)
+        return False
+    os.chdir(orig_dir)
+    return True
 
 def packMobileSpec_cli(app_name=None):
     project_root = os.path.join(BUILD_ROOT, app_name)
@@ -736,6 +826,13 @@ def packAPP(app_name=None):
         else:
             if not packMobileSpec(app_name):
                 return False
+    if checkContains(app_name, "CIRC"):
+        if BUILD_PARAMETERS.cordovaversion == "4.0":
+            if not packCIRC(app_name):
+                return False
+        else:
+            LOG.error("CIRC is only for cordova 4.0")
+            return False
     else:
         if BUILD_PARAMETERS.cordovaversion == '4.0':
             if not packSampleApp_cli(app_name):

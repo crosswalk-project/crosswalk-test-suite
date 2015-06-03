@@ -7,7 +7,7 @@ pack_cordova_sample.py is used for auto build Cordova sample apps, including mob
 
 ###mobilespec build based on Cordova 4.0
 * Require Android API level 22
-* Require Cordova-CLI 5.0.0, install with command: '$ sudo npm install cordova@5.0.0 -g
+* Require Cordova-CLI 5.0.0, install with command: ```sudo npm install cordova@5.0.0 -g```  
 * Copy 'mobilespec' suite to crosswalk-test-suite/tools/mobilespec
 * Copy 'cordova-mobile-spec' suite(https://github.com/apache/cordova-mobile-spec.git) to crosswalk-test-suite/tools/mobilespec
 * Copy 'cordova-coho' suite(https://github.com/apache/cordova-coho.git) to crosswalk-test-suite/tools/mobilespec
@@ -17,9 +17,15 @@ pack_cordova_sample.py is used for auto build Cordova sample apps, including mob
 * Copy 'mobilespec' folder to crosswalk-test-suite/tools
 * You may need to install latest cordova by ```sudo npm -g install cordova```  
 
+###CIRC build based on Cordova 4.0
+* Require the support repository downloaded into your android SDK  
+**Steps**: 1. Open the SDK manager (from command line, type "android"); 2. Under "Extras", Make sure you have "Android Support Repository" and "Google Repository" downloaded 
+* Require cca 0.7.0, install with command: ```sudo npm install cca@0.7.0 -g```  
+* Copy 'circ'(https://github.com/flackr/circ) folder to crosswalk-test-suite/tools
+
 ###Sample apps build based on Cordova 4.0
 * Require Android API level 22
-* Require Cordova-CLI 5.0.0, install with command: '$ sudo npm install cordova@5.0.0 -g
+* Require Cordova-CLI 5.0.0, install with command: ```sudo npm install cordova@5.0.0 -g```  
 * latest plugman tool, steps as below:  
   ```git clone https://git-wip-us.apache.org/repos/asf/cordova-plugman.git```  
   ```cd cordova-plugman```  
@@ -28,10 +34,10 @@ pack_cordova_sample.py is used for auto build Cordova sample apps, including mob
 ## Usage
 
 * ```./pack_cordova_sample.py -n <pkg-name> --cordova-version <cordova-version> [-m <pkg-mode>] [-a <pkg-arch>] [--tools=<tools-path>]```  
-**pkg-name**: mobilespec, helloworld, remotedebugging, gallery  
+**pkg-name**: mobilespec, helloworld, remotedebugging, gallery, CIRC  
 **cordova-version**: 3.6, 4.0  
-**pkg-mode**: embedded(default), shared
-**pkg-arch**: arm(default), x86 
+**pkg-mode**: embedded(default), shared  
+**pkg-arch**: arm(default), x86  
 **Note**: -m argument is only for cordova version 3.6, -a argument is only for cordova version 4.0, if no --tools argument, please run script under the path where it is.
 
 ## Authors:
