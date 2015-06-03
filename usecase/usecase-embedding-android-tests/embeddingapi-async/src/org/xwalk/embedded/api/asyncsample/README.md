@@ -183,6 +183,16 @@ This usecase covers following interface and methods:
 
 
 
+### 18. The [ZoomInAndOutXWalkViewActivity](ZoomInAndOutXWalkViewActivity.java) sample check whether xwalkview can zoom, include:
+
+* XWalkView can zoom in, zoom out, zoom by
+
+This usecase covers following interface and methods:
+
+* XWalkView interface: load, zoomIn, zoomOut, zoomBy, canZoomOut, canZoomIn methods
+
+
+
 ### 19. The [XWalkViewWithDownloadListener](XWalkViewWithDownloadListenerActivity.java) sample check whether xwalkview can setDownloadListener & override onDownloadStart, include:
 
 * XWalkView can setDownloadListener & override onDownloadStart
