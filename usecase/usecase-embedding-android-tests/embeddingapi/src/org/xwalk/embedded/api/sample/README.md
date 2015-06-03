@@ -183,6 +183,17 @@ This usecase covers following interface and methods:
 
 
 
+### 17. The [ContactExtensionActivity](ContactExtensionActivity.java) sample demonstrates XWALK-3917 feature basic functionalities, include:
+
+* extension can be supported with additional permissions
+
+These two usecases cover following interface and methods:
+
+* XWalkExtension interface: onMessage methods
+* XWalkView interface: load method
+
+
+
 ### 18. The [ZoomInAndOutXWalkViewActivity](ZoomInAndOutXWalkViewActivity.java) sample check whether xwalkview can zoom, include:
 
 * XWalkView can zoom in, zoom out, zoom by

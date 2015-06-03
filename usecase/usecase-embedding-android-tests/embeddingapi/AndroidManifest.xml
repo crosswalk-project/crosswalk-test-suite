@@ -25,6 +25,8 @@
     <uses-permission android:name="android.permission.RECORD_AUDIO" />
     <uses-permission android:name="android.permission.WAKE_LOCK" />
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.WRITE_CONTACTS"/>
+    <uses-permission android:name="android.permission.READ_CONTACTS"/>
 
     <application
         android:name="org.xwalk.core.XWalkApplication"
@@ -249,6 +251,15 @@
         <activity
             android:name=".ZoomInAndOutXWalkViewActivity"
             android:label="ZoomInAndOutXWalkView"
+            android:parentActivityName=".XWalkEmbeddedAPISample" >
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.SAMPLE_CODE" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name=".ContactExtensionActivity"
+            android:label="ContactExtension"
             android:parentActivityName=".XWalkEmbeddedAPISample" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
