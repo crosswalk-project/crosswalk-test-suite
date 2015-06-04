@@ -40,6 +40,26 @@ var __testFailCount__ = 0;
 var __testLog__;
 var __backlog__ = [];
 
+var caseName = null;
+var subcaseIndex = 0;
+
+function KhronosUnitTest(name) {
+  this.name = name;
+  this.status = null;
+  this.message = null;
+}
+
+var khronosUnitTests = [];
+var khronosUnitTestMsg = null;
+
+function Status() {
+  this.status = null;
+  this.message = null;
+}
+
+var statusObj = new Status();
+statusObj.status = 0;
+
 Object.toSource = function(a, seen){
   if (a == null) return "null";
   if (typeof a == 'boolean') return a ? "true" : "false";
@@ -136,6 +156,9 @@ function runTests() {
     __testLog__ = document.createElement('div');
     __testSuccess__ = true;
     try {
+      caseName = i;
+      subcaseIndex = 1;
+
       doTestNotify (i);
       var args = setup_args;
       if (Tests.setup != null)
@@ -184,6 +207,12 @@ function doTestNotify(name) {
 }
 
 function testFailed(assertName, name) {
+  var kutest = new KhronosUnitTest(caseName + "/" + subcaseIndex);
+  kutest.status = 1;
+  kutest.message = name;
+  khronosUnitTests.push(kutest);
+  subcaseIndex += 1;
+
   var d = document.createElement('div');
   var h = document.createElement('h3');
   var d1 = document.createElement("span");
@@ -209,6 +238,12 @@ function testFailed(assertName, name) {
 }
 
 function testPassed(assertName, name) {
+  var kutest = new KhronosUnitTest(caseName + "/" + subcaseIndex);
+  kutest.status = 0;
+  kutest.message = name;
+  khronosUnitTests.push(kutest);
+  subcaseIndex += 1;
+
   var d = document.createElement('div');
   var h = document.createElement('h3');
   var d1 = document.createElement("span");
@@ -218,6 +253,7 @@ function testPassed(assertName, name) {
   h.appendChild(document.createTextNode(
       name==null ? assertName : name + " (in " + assertName + ")"));
   d.appendChild(h);
+  kutest.message = name==null ? assertName : name + " (in " + assertName + ")";
   var args = []
   for (var i=2; i<arguments.length; i++) {
     var a = arguments[i];
@@ -225,6 +261,7 @@ function testPassed(assertName, name) {
     p.style.whiteSpace = 'pre';
     p.textContent = (a == null) ? "null" :
                     (typeof a == 'boolean' || typeof a == 'string') ? a : Object.toSource(a);
+    kutest.message += "\n" + p.textContent;
     args.push(p.textContent);
     d.appendChild(p);
   }
@@ -836,6 +873,10 @@ function reportTestResultsToHarness(success, msg) {
 }
 
 function notifyFinishedToHarness() {
+  if (window.parent.completion_callback) {
+    window.parent.completion_callback(khronosUnitTests, statusObj);
+  }
+
   if (window.parent.webglTestHarness) {
     window.parent.webglTestHarness.notifyFinished();
   }
