@@ -366,6 +366,99 @@
                 }
             }
         },
+        "apk-shared": {
+            "blacklist": [],
+            "copylist": {
+                "PACK-TOOL-ROOT/resources/bddrunner": "bddrunner",
+                "testscripts": "testscripts",
+                "inst.apk.py": "inst.py",
+                "tests.shared.xml": "tests.xml",
+                "tests.full.xml": "tests.full.xml"
+            },
+            "subapp-list": {
+                ".": {
+                    "app-name": "usecase-wrt-android-tests",
+                    "apk-common-opts": "--enable-remote-debugging",
+                    "blacklist": [
+                        "manifest.json"
+                    ],
+                    "copylist": {
+                        "tests.shared.xml": "tests.xml",
+                        "steps": "steps",
+                        "PACK-TOOL-ROOT/bootstrap-fw": "."
+                    },
+                    "install-path": "."
+                },
+                "samples/CopyPasteNative/res": {
+                    "apk-icon-opt": "",
+                    "apk-mode-opt": "shared",
+                    "app-name": "copypastenative",
+                    "install-path": "."
+                },
+                "samples/ExtensionPermission/res": {
+                    "apk-ext-opt": "samples/ExtensionPermission/res/contactextension",
+                    "apk-mode-opt": "shared",
+                    "app-name": "extensionpermission",
+                    "install-path": "."
+                },
+                "samples/OpenFile/res": {
+                    "apk-icon-opt": "",
+                    "apk-mode-opt": "shared",
+                    "app-name": "openfile",
+                    "install-path": "."
+                },
+                "samples/PermissionApiContacts/res": {
+                    "apk-icon-opt": "",
+                    "apk-mode-opt": "shared",
+                    "app-name": "permissionapicontacts",
+                    "apk-common-opts": "--enable-remote-debugging",
+                    "install-path": "."
+                },
+                "samples/WebAppHWKey/res": {
+                    "apk-icon-opt": "",
+                    "apk-mode-opt": "shared",
+                    "app-name": "webapphwkey",
+                    "install-path": "."
+                },
+                "samples/WebAppXwalkHost/res": {
+                    "apk-icon-opt": "",
+                    "apk-mode-opt": "shared",
+                    "app-name": "webappxwalkhost",
+                    "apk-common-opts": "--enable-remote-debugging",
+                    "install-path": "."
+                },
+                "samples/SchemesCheck/res": {
+                    "apk-icon-opt": "",
+                    "apk-mode-opt": "shared",
+                    "app-name": "schemescheck",
+                    "install-path": "."
+                },
+                "samples/LocalDownload/res": {
+                    "apk-icon-opt": "",
+                    "apk-mode-opt": "shared",
+                    "app-name": "localdownload",
+                    "install-path": "."
+                },
+                "samples/WebAppsCoexist/res/webapps/res1": {
+                    "apk-type": "MANIFEST",
+                    "apk-mode-opt": "shared",
+                    "app-name": "sharedapp1",
+                    "install-path": "."
+                },
+                "samples/WebAppsCoexist/res/webapps/res2": {
+                    "apk-type": "MANIFEST",
+                    "apk-mode-opt": "embedded",
+                    "app-name": "embeddedapp",
+                    "install-path": "."
+                },
+                "samples/WebAppsCoexist/res/webapps/res3": {
+                    "apk-type": "MANIFEST",
+                    "apk-mode-opt": "shared",
+                    "app-name": "sharedapp2",
+                    "install-path": "."
+                }
+            }
+        },
         "apk-aio": {
             "blacklist": []
         }
