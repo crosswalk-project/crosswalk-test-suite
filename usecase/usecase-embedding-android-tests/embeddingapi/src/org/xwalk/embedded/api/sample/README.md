@@ -211,3 +211,14 @@ This usecase covers following interface and methods:
 This usecase covers following interface and methods:
 
 * XWalkView interface: load, setDownloadListener, onDownloadStart methods
+
+
+
+### 20. The [XWalkBlockAndErrorRedirection](XWalkBlockAndErrorRedirection.java) sample check whether xwalkview can block response and redirect when url or internet is not avaliable, include:
+
+* XWalkView can block response & make error redirection
+
+This usecase covers following interface and methods:
+
+* XWalkView interface: load, setResourceClient methods
+* ResourceClient interface: shouldInterceptLoadRequest, onReceivedLoadError methods
