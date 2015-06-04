@@ -36,6 +36,7 @@ Authors:
 <link rel="help" href="https://dvcs.w3.org/hg/speech-api/raw-file/tip/speechapi.html#speechreco-section">
 <meta name="flags" content="">
 <meta name="assert" content="Test checks if speechrecognition interface works well">
+<script src="support/webspeech_common.js"></script>
 <p>Test pass if the text below showing the correct final results in black and interim results in grey.</p>
 <button id="button" onclick="toggleStartStop()"></button>
 <div style="border:dotted;padding:10px">
@@ -44,21 +45,18 @@ Authors:
 </div>
 <script>
 
-var recognition;
-var recognition = new webkitSpeechRecognition();
+var recognition = new speechRecognition();
 recognition.continuous = true;
-recognition.interim = true;
 reset();
 recognition.onend = reset;
-
+var final = "";
+var interim = "";
 recognition.onresult = function (event) {
-  var final = "";
-  var interim = "";
-  for (var i = 0; i < event.results.length; ++i) {
+  for (var i = event.resultIndex; i < event.results.length; i++) {
     if (event.results[i].final) {
-      final += event.results[i][0].transcript;
+       final += event.results[i][0].transcript;
     } else {
-      interim += event.results[i][0].transcript;
+       interim += event.results[i][0].transcript;
     }
   }
   final_span.innerHTML = final;
@@ -78,6 +76,8 @@ function toggleStartStop() {
     recognition.start();
     recognizing = true;
     button.innerHTML = "Click to Stop";
+    final = "";
+    interim = "";
     final_span.innerHTML = "";
     interim_span.innerHTML = "";
   }

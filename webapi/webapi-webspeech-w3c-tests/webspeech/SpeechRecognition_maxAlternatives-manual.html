@@ -34,29 +34,39 @@ Authors:
 <title>Web Speech API Test: SpeechRecognition maxAlternatives attribute</title>
 <link rel="author" title="Intel" href="http://www.intel.com">
 <link rel="help" href="http://dvcs.w3.org/hg/speech-api/raw-file/tip/speechapi.html">
+<meta name='flags' content='interact'>
+<meta name="timeout" content="long">
+<meta name="assert" content="Test if the maximum number of SpeechRecognitionAlternatives per result is maxAlternatives when maxAlternatives is set">
 <script src="../resources/testharness.js"></script>
 <script src="../resources/testharnessreport.js"></script>
-<p>Speak 3 words in 1 second</p>
+<script src="support/webspeech_common.js"></script>
+<p>Speak "How are you" in 10 seconds</p>
 <div id="log"></div>
 <script>
 
-var t = async_test("Test if the maximum number of SpeechRecognitionAlternatives per result is 0 when set maxAlternatives attribute to be 0", { timeout: 5000});
-
-t.step(function () {
-  var speechReco = new webkitSpeechRecognition();
-  speechReco.maxAlternatives = 0;
+async_test(function(t) {
+  var speechReco = new speechRecognition();
+  speechReco.continuous = true;
+  var maxAlternatives = 2;
+  var alternativeLength = 3;
+  speechReco.maxAlternatives = maxAlternatives;
   speechReco.onresult = t.step_func(function (evt) {
-    assert_equals(evt.results.length, 0);
+      if(evt.results.length > 0) {
+        alternativeLength = evt.results[0].length;
+      }
+  });
+  speechReco.onspeechend = t.step_func(function (evt) {
+    assert_less_than_equal(alternativeLength, maxAlternatives);
     t.done();
   });
   speechReco.onerror = t.step_func(function (evt) {
-    assert_unreached("SpeechRecognition get error " + evt.error);
+    assert_unreached("Error:" + evt.error);
     t.done();
   });
   speechReco.start();
   setTimeout(function () {
     speechReco.stop();
-  }, 1000);
-});
+  }, 10000);
+}, document.getElementsByName("assert")[0].content);
 
 </script>

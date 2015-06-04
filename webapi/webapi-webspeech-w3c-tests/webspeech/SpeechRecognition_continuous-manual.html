@@ -34,39 +34,36 @@ Authors:
 <title>Web Speech API Test: SpeechRecognition continuous attribute</title>
 <link rel="author" title="Intel" href="http://www.intel.com">
 <link rel="help" href="http://dvcs.w3.org/hg/speech-api/raw-file/tip/speechapi.html">
+<meta name='flags' content='interact'>
+<meta name="timeout" content="long">
+<meta name="assert" content="Test if the user agent must return zero or more final results representing multiple consecutive recognitions in response to starting recognition when the continuous attribute is set to true">
 <script src="../resources/testharness.js"></script>
 <script src="../resources/testharnessreport.js"></script>
-<p>Speak 3 words in 1 second</p>
+<script src="support/webspeech_common.js"></script>
+<p>Speak some words</p>
 <div id="log"></div>
 <script>
 
-var t = async_test("Test if the user agent must return zero or more final results representing multiple consecutive recognitions in response to starting recognition when the continuous attribute is set to true", { timeout: 5000});
-
-t.step(function () {
-  var speechReco = new webkitSpeechRecognition();
+async_test(function(t) {
+  var speechReco = new speechRecognition();
   speechReco.continuous = true;
   var finalNum = 0;
-  speechReco.onresult = function (evt) {
+  speechReco.onresult = t.step_func(function (evt) {
     for (var i = 0; i < evt.results.length; ++i) {
-      for (var m = 0; m < evt.results[i].length; ++m) {
-        if (event.results[i][m].final) {
-          finalNum++;
-        }
+      if (event.results[i].final) {
+        finalNum++;
       }
     }
-  };
-  speechReco.onspeechend = t.step_func(function () {
     assert_greater_than_equal(finalNum, 0);
+    speechReco.stop();
     t.done();
+
   });
   speechReco.onerror = t.step_func(function (evt) {
-    assert_unreached("SpeechRecognition get error " + evt.error);
+    assert_unreached("Error:" + evt.error);
     t.done();
   });
   speechReco.start();
-  setTimeout(function () {
-    speechReco.stop();
-  }, 1000);
-});
+}, document.getElementsByName("assert")[0].content);
 
 </script>

@@ -31,32 +31,34 @@ Authors:
 -->
 
 <meta charset="utf-8">
-<title>Web Speech API Test: SpeechRecognitionResult item getter</title>
+<title>Web Speech API Test: SpeechRecognitionList item getter</title>
 <link rel="author" title="Intel" href="http://www.intel.com">
 <link rel="help" href="http://dvcs.w3.org/hg/speech-api/raw-file/tip/speechapi.html">
+<meta name='flags' content='interact'>
+<meta name="timeout" content="long">
+<meta name="assert" content="Test if SpeechRecognitionList item returns null when index is greater than or equal to length">
 <script src="../resources/testharness.js"></script>
 <script src="../resources/testharnessreport.js"></script>
-<p>Speak 3 words in 1 second</p>
+<script src="support/webspeech_common.js"></script>
+<p>Speak some words</p>
 <div id="log"></div>
 <script>
 
-var t = async_test("Test if item returns null when index is greater than or equal to length", { timeout: 5000});
-
-t.step(function () {
-  var speechReco = new webkitSpeechRecognition();
+async_test(function(t) {
+  var speechReco = new speechRecognition();
   speechReco.continuous = true;
-  speechReco.onresult = function (evt) {
-    assert_euqals(evt.results[evt.results.length], null);
-    t.done();
-  };
+  speechReco.onresult = t.step_func(function (evt) {
+    if(evt.results.length > 0) {
+      assert_equals(evt.results[evt.results.length], null);
+      speechReco.stop();
+      t.done();
+    }
+  });
   speechReco.onerror = t.step_func(function (evt) {
-    assert_unreached("SpeechRecognition get error " + evt.error);
+    assert_unreached("Error:" + evt.error);
     t.done();
   });
   speechReco.start();
-  setTimeout(function () {
-    speechReco.stop();
-  }, 1000);
-});
+}, document.getElementsByName("assert")[0].content);
 
 </script>

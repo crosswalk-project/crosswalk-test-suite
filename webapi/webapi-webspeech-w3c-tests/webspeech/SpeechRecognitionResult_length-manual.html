@@ -34,32 +34,43 @@ Authors:
 <title>Web Speech API Test: SpeechRecognitionResult length attribute</title>
 <link rel="author" title="Intel" href="http://www.intel.com">
 <link rel="help" href="http://dvcs.w3.org/hg/speech-api/raw-file/tip/speechapi.html">
+<meta name='flags' content='interact'>
+<meta name="timeout" content="long">
+<meta name="assert" content="Test if the length attribute represents how many n-best alternatives are represented in the item array">
 <script src="../resources/testharness.js"></script>
 <script src="../resources/testharnessreport.js"></script>
-<p>Speak 3 words in 1 second</p>
+<script src="support/webspeech_common.js"></script>
+<p>Speak "How are you" in 10 seconds</p>
 <div id="log"></div>
 <script>
 
-var t = async_test("Test if the long attribute represents how many n-best alternatives are represented in the item array", { timeout: 5000});
-
-t.step(function () {
-  var speechReco = new webkitSpeechRecognition();
-  speechReco.onresult = function (evt) {
-    var actual_long = 0;
-    for (var i in evt.results) {
-      actual_long++;
+async_test(function(t) {
+  var speechReco = new speechRecognition();
+  speechReco.continuous = true;
+  speechReco.interimResults = true;
+  var results_length = 1;
+  var actual_length = 0;
+  speechReco.onresult = t.step_func(function (evt) {
+    for(var i = evt.resultIndex; i < evt.results.length; i++) {
+      var result = evt.results[i];
+      for(var j = 0; j < result.length; j++) {
+        actual_length++;
+      }
     }
-    assert_euqals(actual_long, evt.results.length);
+    results_length = evt.results.length;
+  });
+  speechReco.onend = t.step_func(function (evt) {
+    assert_equals(actual_length, results_length);
     t.done();
-  };
+  });
   speechReco.onerror = t.step_func(function (evt) {
-    assert_unreached("SpeechRecognition get error " + evt.error);
+    assert_unreached("Error:" + evt.error);
     t.done();
   });
   speechReco.start();
   setTimeout(function () {
     speechReco.stop();
-  }, 1000);
-});
+  }, 10000);
+}, document.getElementsByName("assert")[0].content);
 
 </script>
