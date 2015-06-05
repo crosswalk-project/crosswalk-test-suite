@@ -53,6 +53,12 @@ public class ResourceAndUIClientsActivity extends Activity implements XWalkIniti
             Log.d(TAG, "Load Failed:" + description);
             super.onReceivedLoadError(view, errorCode, description, failingUrl);
         }
+
+	public void onDocumentLoadedInFrame(XWalkView view, long frameId) {
+	    // TODO Auto-generated method stub
+	    super.onDocumentLoadedInFrame(view, frameId);
+	    Log.d(TAG, "onDocumentLoadedInFrame frameId: " + frameId);
+	}
     }
 
     class UIClient extends XWalkUIClient {
