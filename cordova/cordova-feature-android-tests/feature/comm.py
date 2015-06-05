@@ -159,6 +159,51 @@ def create(appname, pkgname, mode, sourcecodepath, replace_index_list, self):
                     "assets",
                     "www"))
 
+def buildCIRC(appname, sourcecodepath, self):
+    os.chdir(tool_path)
+    if os.path.exists(os.path.join(tool_path, appname)):
+        print "Existing %s project, try to clean up..." % appname
+        do_remove(glob.glob(os.path.join(tool_path, appname)))
+    print "Build project %s ----------------> START" % appname
+    if sourcecodepath is None:
+        print "sourcecodepath can't be none"
+        return False
+    cordova_circ = os.path.join(tool_path, "circ")
+    if os.path.exists(cordova_circ):
+        do_remove(glob.glob(cordova_circ))
+    if not do_copy(sourcecodepath, cordova_circ):
+        return False
+
+    create_cmd = "cca create " + appname + " --link-to circ/package"
+    print create_cmd
+    buildstatus = commands.getstatusoutput(create_cmd)
+    self.assertEquals(0, buildstatus[0])
+    os.chdir(os.path.join(tool_path, appname))
+
+    plugin_tool = os.path.join(tool_path, appname, "plugins", "cordova-plugin-crosswalk-webview")
+    if not do_copy(os.path.join(
+            tool_path, "cordova-plugin-crosswalk-webview"), plugin_tool):
+        return False
+
+    build_cmd = "cca build android"
+    buildstatus = commands.getstatusoutput(build_cmd)
+    self.assertEquals(0, buildstatus[0])
+    os.chdir(
+        os.path.join(
+            tool_path,
+            appname,
+            "platforms",
+            "android",
+            "build",
+            "outputs",
+            "apk"))
+    result = commands.getstatusoutput("ls")
+    self.assertIn(".apk", result[1])
+    print result[1]
+    if "android" in result[1]:
+        self.assertIn("android", result[1])
+    else:
+        self.assertIn(appname, result[1])
 
 def build(appname, isDebug, self):
     os.chdir(os.path.join(tool_path, appname))
@@ -317,7 +362,6 @@ def do_remove(target_file_list=None):
             print "Fail to remove file %s: %s" % (i_file, e)
             return False
     return True
-
 
 def do_copy(src_item=None, dest_item=None):
     print "Copying %s to %s" % (src_item, dest_item)

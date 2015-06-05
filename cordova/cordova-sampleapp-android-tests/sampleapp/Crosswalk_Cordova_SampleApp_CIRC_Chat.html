@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<!--
+Copyright (c) 2015 Intel Corporation.
+
+Redistribution and use in source and binary forms, with or without modification,
+are permitted provided that the following conditions are met:
+
+* Redistributions of works must retain the original copyright notice, this list
+  of conditions and the following disclaimer.
+* Redistributions in binary form must reproduce the original copyright notice,
+  this list of conditions and the following disclaimer in the documentation
+  and/or other materials provided with the distribution.
+* Neither the name of Intel Corporation nor the names of its contributors
+  may be used to endorse or promote products derived from this work without
+  specific prior written permission.
+
+THIS SOFTWARE IS PROVIDED BY INTEL CORPORATION "AS IS"
+AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE
+IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE
+ARE DISCLAIMED. IN NO EVENT SHALL INTEL CORPORATION BE LIABLE FOR ANY DIRECT,
+INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING,
+BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE,
+DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY
+OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING
+NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE,
+EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
+
+Authors:
+    Zhu,Yongyong <yongyongx.zhu@intel.com>
+
+-->
+
+<html>
+  <head>
+    <meta charset='utf-8'>
+    <title>Crosswalk_Cordova_SampleApp_CIRC_Chat</title>
+    <link rel="author" title="Intel" href="http://www.intel.com">
+  </head>
+  <body>
+    <h4>Note</h4>
+    <ol>
+      <li>It's only for Cordova version 4.0</li>
+    </ol>
+    <p>
+      <strong>Preconditions:</strong>
+    </p>
+    <ol>
+      <li>Need a good network</li>
+    </ol>
+    <p>
+      <strong>Test steps:</strong>
+    </p>
+    <ol>
+      <li>Connect to the IRC server for the first android device
+        <div>
+          $ /server irc.freenode.net<br/>
+        </div>
+      </li>
+      <li>Set the nick name in the first android device, e.g. take "test_1" as the nick name
+        <div>
+          $ /nick test_1<br/>
+        </div>
+      </li>
+      <li>Connect to the IRC server for the second android device
+        <div>
+          $ /server irc.freenode.net<br/>
+        </div>
+      </li>
+      <li>Set the nick name in the second android device, e.g. take "test_2" as the nick name
+        <div>
+          $ /nick test_2<br/>
+        </div>
+      </li>
+      <li>Use test_1 to chat with test_2, take "hello" as the chat content
+        <div>
+          $ /msg test_2 hello<br/>
+        </div>
+      </li>
+      <li>Check if test_2 receive the "hello" message that test_1 send</li>
+      <li>Use test_2 to chat with test_1, take "hello" as the chat content
+        <div>
+          $ /msg test_1 hello<br/>
+        </div>
+      </li>
+      <li>Check if test_1 receive the "hello" message that test_2 send</li>
+      <li>test_1 leave the chat
+        <div>
+          $ /leave test_2<br/>
+        </div>
+      </li>
+      <li>test_2 leave the chat
+        <div>
+          $ /leave test_1<br/>
+        </div>
+      </li>
+      <li>test_1 disconnect to the IRC server
+        <div>
+          $ /quit<br/>
+        </div>
+      </li>
+      <li>test_2 disconnect to the IRC server
+        <div>
+          $ /quit<br/>
+        </div>
+      </li>
+    </ol>
+    <p>
+      <strong>Expected Output:</strong>
+    </p>
+    <ol>
+      <li>The first android device connect to the IRC server successfully</li>
+      <li>The first android device set the nick name(e.g. "test_1") successfully</li>
+      <li>The second android device connect to the IRC server successfully</li>
+      <li>The second android device set the nick name(e.g. "test_2") successfully</li>
+      <li>test_2 receive the "hello" message that test_1 send</li>
+      <li>test_1 receive the "hello" message that test_2 send</li>
+      <li>test_1 leave the chat successfully</li>
+      <li>test_2 leave the chat successfully</li>
+      <li>test_1 disconnect to the IRC server successfully</li>
+      <li>test_2 disconnect to the IRC server successfully</li>
+    </ol>
+  </body>
+</html>
