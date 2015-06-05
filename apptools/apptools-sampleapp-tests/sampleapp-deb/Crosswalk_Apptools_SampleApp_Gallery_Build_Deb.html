@@ -47,31 +47,32 @@ Authors:
       <strong>Test steps:</strong>
     </p>
     <ol>
-      <li>If com.example.gallery exists in apptools-sampleapp-tests/tools/ directory, remove it</li>
-      <li>Then run below commands under apptools-sampleapp-tests/tools/ directory:
-        <ul>
-          <li>$ crosswalk-app create com.example.gallery</li>
-          <li>$ cd com.example.gallery</li>
-          <li>$ git clone https://github.com/blueimp/Gallery.git</li>
-          <li>$ mv Gallery/* app/</li>
-          <li>$ crosswalk-app build</li>
-          <li>Install /path/to/com.example.gallery/pkg/gallery_0.0.1-1_amd64.deb on depin</li>
-          <li>Find gallery app in depin</li>
-          <li>Launch gallery app in depin</li>
-          <li>Check the homepage of gallery app</li>
-          <li>Close gallery app via clicking the close button</li>
-          <li>Uninstall gallery app in depin</li>
-        </ul>
+      <li>If com.example.gallery exists in apptools-sampleapp-tests/tools/ directory, remove it</br>
+        Then run below commands under apptools-sampleapp-tests/tools/ directory:</br>
+        $ crosswalk-app create com.example.gallery</br>
+        $ cd com.example.gallery</br>
+        $ git clone https://github.com/blueimp/Gallery.git</br>
+        $ mv Gallery/* app/</br>
+        $ crosswalk-app build
       </li>
+      <li>Install /path/to/com.example.gallery/pkg/gallery_0.0.1-1_amd64.deb on depin</li>
+      <li>Find gallery app in depin</li>
+      <li>Launch gallery app in depin</li>
+      <li>Check the homepage of gallery app</li>
+      <li>Uninstall the app by typing "dpkg -P $pkgName" on the command line when the app running</li>
+      <li>Install and launch the gallery app again. Close gallery app via clicking the close button, and run command: $ ps -ef | grep gallery |awk '{print $2}' |xargs -I% kill -9 %</li>
+      <li>Uninstall gallery app in depin</li>
     </ol>
     <p>
       <strong>Expected Output:</strong>
     </p>
     <ol>
+      <li>Create/Build com.example.gallery successfully</li>
       <li>Install the gallery app successfully</li>
       <li>Find the gallery app successfully</li>
       <li>Launch the gallery app successfully</li>
       <li>You can see Gallery UI on the device</li>
+      <li>Unistall the gallery app successfully when the app running</li>
       <li>Stop the gallery app successfully</li>
       <li>Unistall the gallery app successfully</li>
     </ol>
