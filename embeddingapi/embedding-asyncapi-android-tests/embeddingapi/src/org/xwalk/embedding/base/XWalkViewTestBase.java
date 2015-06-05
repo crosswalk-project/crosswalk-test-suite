@@ -107,7 +107,7 @@ public class XWalkViewTestBase extends ActivityInstrumentationTestCase2<MainActi
     protected void setUp() throws Exception {
         super.setUp();
         mainActivity = (MainActivity) getActivity();
-
+	mWebServer = TestWebServer.start();
         getInstrumentation().runOnMainSync(new Runnable() {
             @Override
             public void run() {

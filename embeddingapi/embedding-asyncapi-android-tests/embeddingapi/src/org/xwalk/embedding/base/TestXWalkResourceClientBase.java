@@ -51,4 +51,9 @@ public class TestXWalkResourceClientBase extends XWalkResourceClient{
             ValueCallback<Boolean> callback, SslError error) {
         mInnerContentsClient.onReceivedSsl();
     }
+
+    @Override
+    public void onDocumentLoadedInFrame(XWalkView view, long frameId) {
+        mInnerContentsClient.onDocumentLoadedInFrame(frameId);
+    }
 }

@@ -7,7 +7,6 @@ package org.xwalk.embedding.test.v5;
 import java.util.ArrayList;
 import java.util.List;
 
-import org.chromium.net.test.util.TestWebServer;
 import org.xwalk.embedding.base.OnDownloadStartHelper;
 import org.xwalk.embedding.base.OnConsoleMessageHelper;
 import org.xwalk.embedding.base.XWalkViewTestBase;
@@ -207,8 +206,6 @@ public class XWalkUIClientTest extends XWalkViewTestBase {
 
     @SmallTest
     public void testOnDownloadStart() throws Throwable {
-    	setUp();
-    	
     	OnDownloadStartHelper mDownloadStartHelper = mTestHelperBridge.getOnDownloadStartHelper();
         final String data = "download data";
         final String contentDisposition = "attachment;filename=\"download.txt\"";
@@ -220,9 +217,9 @@ public class XWalkUIClientTest extends XWalkViewTestBase {
         downloadHeaders.add(Pair.create("Content-Length", Integer.toString(data.length())));
 
         setDownloadListener();
-        TestWebServer webServer = TestWebServer.start();
+
         try {
-            final String pageUrl = webServer.setResponse("/download.txt", data, downloadHeaders);
+            final String pageUrl = mWebServer.setResponse("/download.txt", data, downloadHeaders);
             final int callCount = mDownloadStartHelper.getCallCount();
             loadUrlAsync(pageUrl);
             mDownloadStartHelper.waitForCallback(callCount);
@@ -232,11 +229,9 @@ public class XWalkUIClientTest extends XWalkViewTestBase {
             assertEquals(mimeType, mDownloadStartHelper.getMimeType());
             assertEquals(data.length(), mDownloadStartHelper.getContentLength());
         } catch (Exception e) {
-			// TODO Auto-generated catch block
+	    // TODO Auto-generated catch block
             assertFalse(true);
-			e.printStackTrace();
-		} finally {
-            webServer.shutdown();
-        } 
+	    e.printStackTrace();
+	}
     }
 }
