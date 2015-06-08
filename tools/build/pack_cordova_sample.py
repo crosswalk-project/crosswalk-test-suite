@@ -593,15 +593,19 @@ def packMobileSpec_cli(app_name=None):
 
     os.chdir(cordova_mobilespec)
     output = commands.getoutput("git pull").strip("\r\n")
-    if output == "Already up-to-date.":
-        if not doCopy(os.path.join(
-                BUILD_PARAMETERS.pkgpacktools, "mobilespec", "mobilespec"), project_root):
+    mobilespec_path = os.path.join(
+                BUILD_PARAMETERS.pkgpacktools, "mobilespec", "mobilespec")
+    if output == "Already up-to-date." and os.path.exists(mobilespec_path):
+        if not doCopy(mobilespec_path, project_root):
             return False
     else:
-        node_modules = os.path.join(
+        # Set activity name as app_name
+        replaceUserString(
             cordova_mobilespec,
-            "createmobilespec",
-            "node_modules")
+            'config.xml',
+            '<widget',
+            '<widget android-activityName="%s"' %
+            app_name)
         os.chdir(os.path.join(cordova_mobilespec, "createmobilespec"))
         install_cmd = "sudo npm install"
         LOG.info("Doing CMD: [ %s ]" % install_cmd)
@@ -626,18 +630,35 @@ def packMobileSpec_cli(app_name=None):
 
         os.chdir(BUILD_ROOT)
         createmobilespec_cmd = "cordova-mobile-spec/createmobilespec/createmobilespec.js --android --global"
-        if not doCMD(createmobilespec_cmd, DEFAULT_CMD_TIMEOUT * 3):
+        if not doCMD(createmobilespec_cmd, DEFAULT_CMD_TIMEOUT * 5):
             os.chdir(orig_dir)
             return False
+
         os.chdir(project_root)
-        mv_cmd = "mv platforms/android/src/org/apache/mobilespec/MainActivity.java platforms/android/src/org/apache/mobilespec/mobilespec.java"
-        if not doCMD(mv_cmd, DEFAULT_CMD_TIMEOUT):
+        add_nativePage_cmd = "cordova plugin add com.telerik.plugins.nativepagetransitions@0.4.0"
+        if not doCMD(add_nativePage_cmd, DEFAULT_CMD_TIMEOUT):
             os.chdir(orig_dir)
             return False
-        sed_cmd = "sed -i 's/MainActivity/mobilespec/g' `grep MainActivity -rl *`"
-        if not doCMD(sed_cmd, DEFAULT_CMD_TIMEOUT):
+        add_thirdparty_cmd = "cordova plugin add ../cordova-mobile-spec/cordova-plugin-thirdparty-tests"
+        if not doCMD(add_thirdparty_cmd, DEFAULT_CMD_TIMEOUT):
             os.chdir(orig_dir)
             return False
+
+        os.chdir(os.path.join(cordova_mobilespec, "createmobilespec"))
+        node_modules = os.chdir(os.path.join(cordova_mobilespec, "createmobilespec", "node_modules"))
+        if not BUILD_PARAMETERS.bnotclean and os.path.exists(node_modules):
+            rm_node_modules_cmd = "sudo rm -rf node_modules"
+            run = pexpect.spawn(rm_node_modules_cmd)
+            LOG.info("Removing node_modules file in %s" % (os.path.join(cordova_mobilespec, "createmobilespec")))
+            index = run.expect(['password', pexpect.EOF, pexpect.TIMEOUT])
+            if index == 0:
+                run.sendline(BUILD_PARAMETERS.userpassword)
+                index = run.expect(['password', pexpect.EOF, pexpect.TIMEOUT])
+                if index == 0:
+                    print 'The user password is wrong'
+                    run.close(force=True)
+                    return False
+
     os.chdir(project_root)
     add_webview_cmd = "cordova plugin add ../cordova-plugin-crosswalk-webview/"
     if not doCMD(add_webview_cmd, DEFAULT_CMD_TIMEOUT):
@@ -646,6 +667,7 @@ def packMobileSpec_cli(app_name=None):
 
     ANDROID_HOME = "echo $(dirname $(dirname $(which android)))"
     os.environ['ANDROID_HOME'] = commands.getoutput(ANDROID_HOME)
+
     pack_cmd = "cordova build android"
     if not doCMD(pack_cmd, DEFAULT_CMD_TIMEOUT):
         os.chdir(orig_dir)
@@ -686,6 +708,7 @@ def packMobileSpec_cli(app_name=None):
     else:
         os.chdir(orig_dir)
         return False
+
     os.chdir(orig_dir)
     return True
 
@@ -826,7 +849,7 @@ def packAPP(app_name=None):
         else:
             if not packMobileSpec(app_name):
                 return False
-    if checkContains(app_name, "CIRC"):
+    elif checkContains(app_name, "CIRC"):
         if BUILD_PARAMETERS.cordovaversion == "4.0":
             if not packCIRC(app_name):
                 return False
