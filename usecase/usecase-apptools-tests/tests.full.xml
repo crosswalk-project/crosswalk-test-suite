@@ -28,10 +28,14 @@
               <expected>You can see "This is a Crosswalk Sample Application" on the device</expected>
             </step>
             <step order="6">
-              <step_desc>Close foo app via clicking the home button</step_desc>
-              <expected>Success to stop foo app</expected>
+              <step_desc>Uninstall the app by typing "adb -s `adb devices -l |sed -n '2p' |awk '{print $1}'` uninstall org.test.foo" on the command line when the app running</step_desc>
+              <expected>Success to uninstall foo app</expected>
             </step>
             <step order="7">
+              <step_desc>Install and launch the foo app again. Close foo app via clicking the home button, and kill foo app from Task Manager</step_desc>
+              <expected>Success to stop foo app</expected>
+            </step>
+            <step order="8">
               <step_desc>Long press the icon of foo app to uninstall it</step_desc>
               <expected>Success to uninstall foo app</expected>
             </step>
@@ -64,10 +68,14 @@
               <expected>You can see "This is a Crosswalk Sample Application" on the device</expected>
             </step>
             <step order="6">
-              <step_desc>Close foo app via clicking the home button</step_desc>
-              <expected>Success to stop foo app</expected>
+              <step_desc>Uninstall the app by typing "adb -s `adb devices -l |sed -n '2p' |awk '{print $1}'` uninstall org.test.foo" on the command line when the app running</step_desc>
+              <expected>Success to uninstall foo app</expected>
             </step>
             <step order="7">
+              <step_desc>Install and launch the foo app again. Close foo app via clicking the home button, and kill foo app from Task Manager</step_desc>
+              <expected>Success to stop foo app</expected>
+            </step>
+            <step order="8">
               <step_desc>Long press the icon of foo app to uninstall it</step_desc>
               <expected>Success to uninstall foo app</expected>
             </step>
@@ -100,10 +108,14 @@
               <expected>You can see "This is a Crosswalk Sample Application" on the page</expected>
             </step>
             <step order="6">
-              <step_desc>Close foo app via clicking the close button</step_desc>
-              <expected>Success to stop foo app</expected>
+              <step_desc>Uninstall the app by typing "dpkg -P $pkgName" on the command line when the app running</step_desc>
+              <expected>Success to uninstall foo app</expected>
             </step>
             <step order="7">
+              <step_desc>Install and launch the foo app again. Close foo app via clicking the close button, and run command: $ ps -ef | grep foo |awk '{print $2}' |xargs -I% kill -9 %</step_desc>
+              <expected>Success to stop foo app</expected>
+            </step>
+            <step order="8">
               <step_desc>Uninstall foo app</step_desc>
               <expected>Success to uninstall foo app</expected>
             </step>
@@ -136,7 +148,7 @@
               <expected>You can see "This is a Crosswalk Sample Application" on the page</expected>
             </step>
             <step order="6">
-              <step_desc>Close foo app via clicking the home button</step_desc>
+              <step_desc>Close foo app via clicking the home button, and kill foo app from Task Manager</step_desc>
               <expected>Success to stop foo app</expected>
             </step>
             <step order="7">

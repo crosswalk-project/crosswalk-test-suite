@@ -45,38 +45,23 @@ Authors:
 <div class="content">
   <h4>Precondition</h4>
   <ol>
-    <li>Connect Android devices to your localhost</li>
-    <li>The node.js, Android SDK, and git must be functional</li>
-    <li>Install nodeunit: sudo npm install nodeunit -g</li>
-    <li>Download crosswalk-app-tools to usecase-apptools-tests/tools, then install npm
-      <ul>
-        <li>cd tools, then clone source code from https://github.com/crosswalk-project/crosswalk-app-tools</li>
-        <li>Run commands: cd crosswalk-app-tools, then run: sudo npm install</li>
-      </ul>
-    </li>
-    <li>Environment variable configuration:
-      <ul>
-        <li>export ANDROID_HOME=$(dirname $(dirname $(which android)))</li>
-        <li>export CROSSWALK_APP_TOOLS_CACHE_DIR = /path/to/opt/usecase-apptools-tests/tools</li>
-      </ul>
-    </li>
+    <li>Please refer to README file</li>
   </ol>
   <h4>Test Steps</h4>
   <ol>
-    <li>If org.test.foo exists in usecase-apptools-tests/tools/ directory, remove it</li>
-    <li>Then run below commands under usecase-apptools-tests/tools/ directory:
-      <ul>
-        <li>$ ./crosswalk-app-tools/src/crosswalk-app create org.test.foo</li>
-        <li>$ cd org.test.foo</li>
-        <li>$ ../crosswalk-app-tools/src/crosswalk-app build</li>
-        <li>Install /path/to/org.test.foo/pkg/foo-debug.x86.apk on your android device which is "x86" architecture</li>
-        <li>Check icon of foo app in your android device</li>
-        <li>Launch foo app in your android device</li>
-        <li>Check the homepage of foo app</li>
-        <li>Close foo app via clicking the home button</li>
-        <li>Long press the icon of foo app to uninstall it</li>
-      </ul>
+    <li>If org.test.foo exists in usecase-apptools-tests/tools/ directory, remove it</br>
+      Then run below commands under usecase-apptools-tests/tools/ directory:</br>
+      $ crosswalk-app create org.test.foo</br>
+      $ cd org.test.foo</br>
+      $ crosswalk-app build
     </li>
+    <li>Install /path/to/org.test.foo/pkg/foo-debug.x86.apk on your android device which is "x86" architecture</li>
+    <li>Check icon of foo app in your android device</li>
+    <li>Launch foo app in your android device</li>
+    <li>Check the homepage of foo app</li>
+    <li>Uninstall the app by typing "adb -s `adb devices -l |sed -n '2p' |awk '{print $1}'` uninstall org.test.foo" on the command line when the app running</li>
+    <li>Install and launch the foo app again. Close foo app via clicking the home button, and kill foo app from Task Manager</li>
+    <li>Long press the icon of foo app to uninstall it</li>
   </ol>
 </div>
 <div class="footer">
@@ -87,10 +72,12 @@ Authors:
   <p>Verifies foo app can run successfully</p>
   <p>Expected Result:</p>
   <ol>
+    <li>Create/Build org.test.foo successfully</li>
     <li>Install the foo app successfully</li>
     <li>Find the foo app successfully</li>
     <li>Launch the foo app successfully</li>
     <li>You can see "This is a Crosswalk Sample Application" on the device</li>
+    <li>Unistall the foo app successfully when the app running</li>
     <li>Stop the foo app successfully</li>
     <li>Unistall the foo app successfully</li>
   </ol>

@@ -45,32 +45,23 @@ Authors:
 <div class="content">
   <h4>Precondition</h4>
   <ol>
-    <li>The Node.js, the debuild tool, the Crosswalk runtime, and git must be functional</li>
-    <li>Download crosswalk-app-tools and configure it</li>
-      <ul>
-        <li>cd tools, then download Crosswalk app tools:  git clone https://github.com/crosswalk-project/crosswalk-app-tools.git</li>
-        <li>Initialize the Crosswalk app tools:  cd crosswalk-app-tools , then  npm install</li>
-        <li>Checkout the deb backend:  cd node_modules , then  git clone https://github.com/crosswalk-project/crosswalk-app-tools-deb.git crosswalk-app-tools-backend-deb</li>
-        <li>Install dependencies:  cd crosswalk-app-tools-backend-deb , then  npm install , and  cd ../..</li>
-      </ul>
-    </li>
+    <li>Please refer to README file</li>
   </ol>
   <h4>Test Steps</h4>
   <ol>
-    <li>If org.test.foo exists in usecase-apptools-tests/tools/ directory, remove it</li>
-    <li>Then run below commands under usecase-apptools-tests/tools/ directory:
-      <ul>
-        <li>$ ./crosswalk-app-tools/src/crosswalk-app create org.test.foo</li>
-        <li>$ cd org.test.foo</li>
-        <li>$ ../crosswalk-app-tools/src/crosswalk-app build</li>
-        <li>Install /path/to/org.test.foo/pkg/foo_0.0.1-1_amd64.deb on depin</li>
-        <li>Find foo app in depin</li>
-        <li>Launch foo app in depin</li>
-        <li>Check the homepage of foo app</li>
-        <li>Close foo app via clicking the close button</li>
-        <li>Uninstall foo app</li>
-      </ul>
+    <li>If org.test.foo exists in usecase-apptools-tests/tools/ directory, remove it</br>
+      Then run below commands under usecase-apptools-tests/tools/ directory:</br>
+      $ crosswalk-app create org.test.foo</br>
+      $ cd org.test.foo</br>
+      $ crosswalk-app build
     </li>
+    <li>Install /path/to/org.test.foo/pkg/foo_0.0.1-1_amd64.deb on depin</li>
+    <li>Find foo app in depin</li>
+    <li>Launch foo app in depin</li>
+    <li>Check the homepage of foo app</li>
+    <li>Uninstall the app by typing "dpkg -P $pkgName" on the command line when the app running</li>
+    <li>Install and launch the foo app again. Close foo app via clicking the close button, and run command: $ ps -ef | grep foo |awk '{print $2}' |xargs -I% kill -9 %</li>
+    <li>Uninstall foo app</li>
   </ol>
 </div>
 <div class="footer">
@@ -81,10 +72,12 @@ Authors:
   <p>Verifies foo app can run successfully</p>
   <p>Expected Result:</p>
   <ol>
+    <li>Create/Build org.test.foo successfully</li>
     <li>Install the foo app successfully</li>
     <li>Find the foo app successfully</li>
     <li>Launch the foo app successfully</li>
     <li>You can see "This is a Crosswalk Sample Application" on the page</li>
+    <li>Unistall the foo app successfully when the app running</li>
     <li>Stop the foo app successfully</li>
     <li>Unistall the foo app successfully</li>
   </ol>
