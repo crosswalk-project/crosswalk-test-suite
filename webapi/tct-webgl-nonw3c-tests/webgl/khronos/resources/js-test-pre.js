@@ -20,6 +20,25 @@
 ** TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE
 ** MATERIALS OR THE USE OR OTHER DEALINGS IN THE MATERIALS.
 */
+var caseName = document.title;
+var subcaseIndex = 1;
+
+function KhronosTest(name) {
+  this.name = name;
+  this.status = null;
+  this.message = null;
+}
+
+var khronosTests = [];
+var khronosTestMsg = null;
+
+function Status() {
+  this.status = null;
+  this.message = null;
+}
+
+var statusObj = new Status();
+statusObj.status = 0;
 
 (function() {
   var testHarnessInitialized = false;
@@ -63,6 +82,10 @@ function reportTestResultsToHarness(success, msg) {
 }
 
 function notifyFinishedToHarness() {
+  if (window.parent.completion_callback) {
+    window.parent.completion_callback(khronosTests, statusObj);
+  }
+
   if (window.parent.webglTestHarness) {
     window.parent.webglTestHarness.notifyFinished(window.location.pathname);
   }
@@ -73,6 +96,11 @@ function description(msg)
     initTestingHarness();
     if (msg === undefined) {
       msg = document.title;
+    }
+    else {
+      if (document.title.length === 0) {
+        caseName = msg;
+      }
     }
     // For MSIE 6 compatibility
     var span = document.createElement("span");
@@ -98,12 +126,29 @@ function escapeHTML(text)
 
 function testPassed(msg)
 {
+    //console.log("webgl function testPassed:" + msg)
+    if (msg !== "successfullyParsed is true") {
+      var ktest = new KhronosTest(caseName + "/" + subcaseIndex);
+      ktest.status = 0;
+      ktest.message = escapeHTML(msg);
+      khronosTests.push(ktest);
+      subcaseIndex++;
+    }
+
     reportTestResultsToHarness(true, msg);
     debug('<span><span class="pass">PASS</span> ' + escapeHTML(msg) + '</span>');
 }
 
 function testFailed(msg)
 {
+    if (msg.indexOf("successfullyParsed should be true") === -1) {
+        var ktest = new KhronosTest(caseName + "/" + subcaseIndex);
+        ktest.status = 1;
+        ktest.message = escapeHTML(msg);
+        khronosTests.push(ktest);
+        subcaseIndex++;
+    }
+
     reportTestResultsToHarness(false, msg);
     debug('<span><span class="fail">FAIL</span> ' + escapeHTML(msg) + '</span>');
 }

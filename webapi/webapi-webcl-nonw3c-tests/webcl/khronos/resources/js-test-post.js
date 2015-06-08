@@ -22,6 +22,13 @@
 */
 
 shouldBe("successfullyParsed", "true", true);
-webcl.releaseAll();
+
+try {
+  webcl.releaseAll();
+}
+catch (e) {
+  console.log(e.name);
+}
+
 debug('<br /><span class="pass">TEST COMPLETE</span>');
 notifyFinishedToHarness()

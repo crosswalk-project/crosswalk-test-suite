@@ -8,6 +8,23 @@
  * http://jquery.org/license
  */
 
+function QUnitTest( name ) {
+	this.name = name;
+	this.status = null;
+	this.message = null;
+}
+
+var QUnitTests = [];
+var QUnitTestMsg = null;
+
+function Status() {
+	this.status = null;
+	this.message = null;
+}
+
+var StatusObj = new Status();
+StatusObj.status = 0;
+
 (function( window ) {
 
 var QUnit,
@@ -238,26 +255,47 @@ Test.prototype = {
 		this.runtime = +new Date() - this.started;
 		config.stats.all += this.assertions.length;
 		config.moduleStats.all += this.assertions.length;
+                var result_list = []
 
 		if ( tests ) {
 			ol = document.createElement( "ol" );
 			ol.className = "qunit-assert-list";
 
 			for ( i = 0; i < this.assertions.length; i++ ) {
+				var qunittest = null;
+
+				if ( this.assertions.length > 1 ) {
+					var index = i + 1;
+					qunittest = new QUnitTest( this.testName + "/" + index );
+				}
+				else {
+					qunittest = new QUnitTest( this.testName );
+				}
+
 				assertion = this.assertions[i];
 
 				li = document.createElement( "li" );
 				li.className = assertion.result ? "pass" : "fail";
 				li.innerHTML = assertion.message || ( assertion.result ? "okay" : "failed" );
+
+				if ( assertion.outmsg ) {
+					if ( ! assertion.result ) {
+						qunittest.message = assertion.outmsg;
+					}
+				}
 				ol.appendChild( li );
 
 				if ( assertion.result ) {
 					good++;
+					qunittest.status = 0;
 				} else {
 					bad++;
+					qunittest.status = 1;
 					config.stats.bad++;
 					config.moduleStats.bad++;
 				}
+
+				QUnitTests.push( qunittest );
 			}
 
 			// store result when possible
@@ -899,6 +937,7 @@ extend( QUnit, {
 			throw new Error( "assertion outside test context, was " + sourceFromStacktrace() );
 		}
 
+		var showmsg = message;
 		var output, source,
 			details = {
 				module: config.current.module,
@@ -928,6 +967,7 @@ extend( QUnit, {
 			if ( source ) {
 				details.source = source;
 				output += "<tr class='test-source'><th>Source: </th><td><pre>" + escapeText( source ) + "</pre></td></tr>";
+				showmsg += "\nSource: " + escapeText( source );
 			}
 
 			output += "</table>";
@@ -937,7 +977,8 @@ extend( QUnit, {
 
 		config.current.assertions.push({
 			result: !!result,
-			message: output
+			message: output,
+			outmsg: showmsg
 		});
 	},
 
@@ -946,6 +987,7 @@ extend( QUnit, {
 			throw new Error( "pushFailure() assertion outside test context, was " + sourceFromStacktrace(2) );
 		}
 
+		var showmsg = message;
 		var output,
 			details = {
 				module: config.current.module,
@@ -967,6 +1009,7 @@ extend( QUnit, {
 		if ( source ) {
 			details.source = source;
 			output += "<tr class='test-source'><th>Source: </th><td><pre>" + escapeText( source ) + "</pre></td></tr>";
+			showmsg += "\nSource: " + escapeText( source );
 		}
 
 		output += "</table>";
@@ -975,7 +1018,8 @@ extend( QUnit, {
 
 		config.current.assertions.push({
 			result: false,
-			message: output
+			message: output,
+			outmsg: showmsg
 		});
 	},
 
@@ -1217,6 +1261,10 @@ window.onerror = function ( error, filePath, linerNr ) {
 
 function done() {
 	config.autorun = true;
+
+	if ( window.parent.completion_callback ) {
+		window.parent.completion_callback( QUnitTests, StatusObj );
+	}
 
 	// Log the last module results
 	if ( config.currentModule ) {

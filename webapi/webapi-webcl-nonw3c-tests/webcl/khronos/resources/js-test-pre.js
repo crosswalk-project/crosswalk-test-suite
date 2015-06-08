@@ -22,6 +22,25 @@
 */
 
 // Modified by Samsung Electronics Corporation for WebCL
+var caseName = document.title;
+var subcaseIndex = 1;
+
+function KhronosTest(name) {
+  this.name = name;
+  this.status = null;
+  this.message = null;
+}
+
+var khronosTests = [];
+var khronosTestMsg = null;
+
+function Status() {
+  this.status = null;
+  this.message = null;
+}
+
+var statusObj = new Status();
+statusObj.status = 0;
 
 (function() {
   var testHarnessInitialized = false;
@@ -92,6 +111,10 @@ function getTestCaseCount() {
 }
 
 function notifyFinishedToHarness() {
+  if (window.parent.completion_callback) {
+    window.parent.completion_callback(khronosTests, statusObj);
+  }
+
   if (window.parent.webclTestHarness) {
     window.parent.webclTestHarness.notifyFinished(window.location.pathname);
   }
@@ -102,6 +125,11 @@ function description(msg)
     initTestingHarness();
     if (msg === undefined) {
       msg = document.title;
+    }
+    else {
+      if (document.title.length === 0) {
+        caseName = msg;
+      }
     }
     // For MSIE 6 compatibility
     var span = document.createElement("span");
@@ -127,6 +155,14 @@ function escapeHTML(text)
 
 function testPassed(msg)
 {
+    if (msg !== "successfullyParsed is true") {
+        var ktest = new KhronosTest(caseName + "/" + subcaseIndex);
+        ktest.status = 0;
+        ktest.message = escapeHTML(msg);
+        khronosTests.push(ktest);
+        subcaseIndex++;
+    }
+
     reportTestResultsToHarness(true, msg);
     var tid = getTestCaseCount();
     if (tid)
@@ -137,6 +173,14 @@ function testPassed(msg)
 
 function testFailed(msg)
 {
+    if (msg.indexOf("successfullyParsed should be true") === -1) {
+        var ktest = new KhronosTest(caseName + "/" + subcaseIndex);
+        ktest.status = 1;
+        ktest.message = escapeHTML(msg);
+        khronosTests.push(ktest);
+        subcaseIndex++;
+    }
+
     reportTestResultsToHarness(false, msg);
     var tid = getTestCaseCount();
     if (tid)
