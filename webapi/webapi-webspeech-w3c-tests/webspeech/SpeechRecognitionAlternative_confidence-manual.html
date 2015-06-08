@@ -34,30 +34,31 @@ Authors:
 <title>Web Speech API Test: SpeechRecognitionAlternative confidence attribute</title>
 <link rel="author" title="Intel" href="http://www.intel.com">
 <link rel="help" href="http://dvcs.w3.org/hg/speech-api/raw-file/tip/speechapi.html">
+<meta name='flags' content='interact'>
+<meta name="timeout" content="long">
+<meta name="assert" content="Test if the confidence represents a numeric estimate between 0 and 1 of how confident the recognition system is that the recognition is correct">
 <script src="../resources/testharness.js"></script>
 <script src="../resources/testharnessreport.js"></script>
-<p>Speak 3 words in 1 second</p>
+<script src="support/webspeech_common.js"></script>
+<p>Speak some words</p>
 <div id="log"></div>
 <script>
 
-var t = async_test("Test if the confidence represents a numeric estimate between 0 and 1 of how confident the recognition system is that the recognition is correct", { timeout: 5000});
-
-t.step(function () {
-  var speechReco = new webkitSpeechRecognition();
-  speechReco.onresult = function (evt) {
+async_test(function(t) {
+  var speechReco = new speechRecognition();
+  speechReco.continuous = true;
+  speechReco.onresult = t.step_func(function (evt) {
     for (var i = 0; i < evt.results.length; ++i) {
-      assert_true(0 < evt.results[i][0].confidence < 1);
-      t.done();
+      assert_true(evt.results[i][0].confidence >= 0 && evt.results[i][0].confidence <= 1);
     }
-  };
+    speechReco.stop();
+    t.done();
+  });
   speechReco.onerror = t.step_func(function (evt) {
-    assert_unreached("SpeechRecognition get error " + evt.error);
+    assert_unreached("Error:" + evt.error);
     t.done();
   });
   speechReco.start();
-  setTimeout(function () {
-    speechReco.stop();
-  }, 1000);
-});
+}, document.getElementsByName("assert")[0].content);
 
 </script>

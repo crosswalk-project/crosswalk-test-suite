@@ -40,12 +40,13 @@ Authors:
 <script src="../resources/testharness.js"></script>
 <script src="../resources/testharnessreport.js"></script>
 <script src="support/webspeech_common.js"></script>
-<p>Speak 3 words in 1 second</p>
+<p>Speak some words</p>
 <div id="log"></div>
 <script>
 
 async_test(function(t) {
   var speechReco = new speechRecognition();
+  speechReco.continuous = true;
   speechReco.onresult = t.step_func(function (evt) {
     assert_true("results" in evt, "results attribute exist in SpeechRecognitionEvent");
     assert_true(evt.results.length >= evt.resultIndex, "The length of the results array must not be less than resultIndex");

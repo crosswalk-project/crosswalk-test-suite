@@ -30,57 +30,39 @@ Authors:
 
 -->
 
-<meta charset='utf-8'>
-<title>Web Speech API Test: speechrecognition</title>
-<link rel="author" title="Intel" href="http://www.intel.com/">
-<link rel="help" href="https://dvcs.w3.org/hg/speech-api/raw-file/tip/speechapi.html#speechreco-section">
-<meta name="flags" content="">
-<meta name="assert" content="Test checks if speechrecognition interface works well">
-<p>Test pass if the text below showing the correct final results in black and interim results in grey.</p>
-<button id="button" onclick="toggleStartStop()"></button>
-<div style="border:dotted;padding:10px">
-  <span id="final_span"></span>
-  <span id="interim_span" style="color:grey"></span>
-</div>
+<meta charset="utf-8">
+<title>Web Speech API Test: SpeechRecognitionResult final attribute</title>
+<link rel="author" title="Intel" href="http://www.intel.com">
+<link rel="help" href="http://dvcs.w3.org/hg/speech-api/raw-file/tip/speechapi.html">
+<meta name='flags' content='interact'>
+<meta name="timeout" content="long">
+<meta name="assert" content="Test if the final boolean is set to true if this is the final time the speech service will return this particular index value">
+<script src="../resources/testharness.js"></script>
+<script src="../resources/testharnessreport.js"></script>
+<script src="support/webspeech_common.js"></script>
+<p>Speak some words</p>
+<div id="log"></div>
 <script>
 
-var recognition;
-var recognition = new webkitSpeechRecognition();
-recognition.continuous = true;
-recognition.interim = true;
-reset();
-recognition.onend = reset;
-
-recognition.onresult = function (event) {
-  var final = "";
-  var interim = "";
-  for (var i = 0; i < event.results.length; ++i) {
-    if (event.results[i].final) {
-      final += event.results[i][0].transcript;
-    } else {
-      interim += event.results[i][0].transcript;
+async_test(function(t) {
+  var speechReco = new speechRecognition();
+  speechReco.continuous = true;
+  var final_flag = false;
+  speechReco.onresult = t.step_func(function (evt) {
+    for (var i = 0; i < evt.results.length; ++i) {
+      if (evt.results[i].final) {
+        final_flag = true;
+      }
     }
-  }
-  final_span.innerHTML = final;
-  interim_span.innerHTML = interim;
-}
-
-function reset() {
-  recognizing = false;
-  button.innerHTML = "Click to Speak";
-}
-
-function toggleStartStop() {
-  if (recognizing) {
-    recognition.stop();
-    reset();
-  } else {
-    recognition.start();
-    recognizing = true;
-    button.innerHTML = "Click to Stop";
-    final_span.innerHTML = "";
-    interim_span.innerHTML = "";
-  }
-}
+    assert_true(final_flag);
+    speechReco.stop();
+    t.done();
+  });
+  speechReco.onerror = t.step_func(function (evt) {
+    assert_unreached("Error:" + evt.error);
+    t.done();
+  });
+  speechReco.start();
+}, document.getElementsByName("assert")[0].content);
 
 </script>
