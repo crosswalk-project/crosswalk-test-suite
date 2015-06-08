@@ -37,10 +37,14 @@
               <expected>You can see Gallery UI on the device</expected>
             </step>
             <step order="6">
-              <step_desc>Close gallery app via clicking the close button</step_desc>
-              <expected>Stop the gallery app successfully</expected>
+              <step_desc>Uninstall the app by typing "dpkg -P $pkgName" on the command line when the app running</step_desc>
+              <expected>Unistall the gallery app successfully</expected>
             </step>
             <step order="7">
+              <step_desc>Install and launch the gallery app again. Close gallery app via clicking the close button, and run command: $ ps -ef | grep gallery |awk '{print $2}' |xargs -I% kill -9 %</step_desc>
+              <expected>Stop the gallery app successfully</expected>
+            </step>
+            <step order="8">
               <step_desc>Uninstall gallery app in depin</step_desc>
               <expected>Unistall the gallery app successfully</expected>
             </step>

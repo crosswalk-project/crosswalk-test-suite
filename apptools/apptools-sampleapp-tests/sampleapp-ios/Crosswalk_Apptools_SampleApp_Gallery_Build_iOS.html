@@ -47,28 +47,28 @@ Authors:
       <strong>Test steps:</strong>
     </p>
     <ol>
-      <li>If com.example.gallery exists in apptools-sampleapp-tests/tools/ directory, remove it</li>
-      <li>Then run below commands under apptools-sampleapp-tests/tools/ directory:
-        <ul>
-          <li>$ crosswalk-app create com.example.gallery</li>
-          <li>$ cd com.example.gallery</li>
-          <li>$ git clone https://github.com/blueimp/Gallery.git</li>
-          <li>$ mv Gallery/* app/</li>
-          <li>$ crosswalk-app build</li>
-          <li>Connect your iOS device to your iMac. Open iTunes->"Your Device"->Apps</li>
-          <li>Double click /path/to/com.example.gallery/pkg/gallery.ipa. Click "Install" button of gallery app on iTunes</li>
-          <li>Click "Apply" button at the lower right corner of iTunes. Check icon of gallery app in your iOS device</li>
-          <li>Launch gallery app in your iOS device</li>
-          <li>Check the homepage of gallery app</li>
-          <li>Close gallery app via clicking the home button</li>
-          <li>Long press the icon of gallery app to uninstall it</li>
-        </ul>
+      <li>If com.example.gallery exists in apptools-sampleapp-tests/tools/ directory, remove it</br>
+        Then run below commands under apptools-sampleapp-tests/tools/ directory:</br>
+        $ crosswalk-app create com.example.gallery</br>
+        $ cd com.example.gallery</br>
+        $ git clone https://github.com/blueimp/Gallery.git</br>
+        $ mv Gallery/* app/</br>
+        $ crosswalk-app build
       </li>
+      <li>Connect your iOS device to your iMac. Open iTunes->"Your Device"->Apps</br>
+        Double click /path/to/com.example.gallery/pkg/gallery.ipa. Click "Install" button of gallery app on iTunes
+      </li>
+      <li>Click "Apply" button at the lower right corner of iTunes. Check icon of gallery app in your iOS device</li>
+      <li>Launch gallery app in your iOS device</li>
+      <li>Check the homepage of gallery app</li>
+      <li>Close gallery app via clicking the home button, and kill gallery app from Task Manager</li>
+      <li>Long press the icon of gallery app to uninstall it</li>
     </ol>
     <p>
       <strong>Expected Output:</strong>
     </p>
     <ol>
+      <li>Create/Build com.example.gallery successfully</li>
       <li>Install the gallery app successfully</li>
       <li>Find the gallery app successfully</li>
       <li>Launch the gallery app successfully</li>
