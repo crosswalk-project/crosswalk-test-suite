@@ -1,0 +1,12 @@
+var step = '<p>Purpose:</p>'
+            +'<p>Validate the localStorage is exists when restart the app</p>'
+            +'<p>Expected Results:</p>'
+            +'<ol>'
+            +'<li>Install the app successfully</li>'
+            +'<li>Display "Save localStorage value successfully: test"</li>'
+            +'<li>Display "Get localStorage value successfully: test"</li>'
+            +'<li>Launch the app successfully</li>'
+            +'<li>Display "Get localStorage value successfully: test"</li>'
+            +'<li>Display "Clear all localStorage value"</li>'
+            +'<li>The localStorage is exists</li>'
+            +'</ol>';
