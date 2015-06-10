@@ -34,7 +34,7 @@ import commands
 import comm
 
 
-class TestGalleryAppFunctions(unittest.TestCase):
+class TestCIRCAppInstall(unittest.TestCase):
 
     def test_install(self):
         comm.setUp()

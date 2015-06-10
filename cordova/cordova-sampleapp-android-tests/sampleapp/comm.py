@@ -159,7 +159,7 @@ def create(appname, pkgname, mode, sourcecodepath, replace_index_list, self):
                     "assets",
                     "www"))
 
-def buildCIRC(appname, sourcecodepath, self):
+def buildGoogleApp(appname, sourcecodepath, self):
     os.chdir(tool_path)
     if os.path.exists(os.path.join(tool_path, appname)):
         print "Existing %s project, try to clean up..." % appname
@@ -168,13 +168,19 @@ def buildCIRC(appname, sourcecodepath, self):
     if sourcecodepath is None:
         print "sourcecodepath can't be none"
         return False
-    cordova_circ = os.path.join(tool_path, "circ")
-    if os.path.exists(cordova_circ):
-        do_remove(glob.glob(cordova_circ))
-    if not do_copy(sourcecodepath, cordova_circ):
+
+    if checkContains(appname, "CIRC"):
+        cordova_app = os.path.join(tool_path, "circ")
+        create_cmd = "cca create " + appname + " --link-to circ/package"
+    elif checkContains(appname, "EH"):
+        cordova_app = os.path.join(tool_path, "workshop-cca-eh")
+        create_cmd = "cca create " + appname + " --link-to workshop-cca-eh/workshop/step4"
+
+    if os.path.exists(cordova_app):
+        do_remove(glob.glob(cordova_app))
+    if not do_copy(sourcecodepath, cordova_app):
         return False
 
-    create_cmd = "cca create " + appname + " --link-to circ/package"
     print create_cmd
     buildstatus = commands.getstatusoutput(create_cmd)
     self.assertEquals(0, buildstatus[0])
@@ -268,12 +274,6 @@ def app_install(appname, pkgname, self):
     self.assertEquals(0, inststatus[0])
     print "Install APK ----------------> OK"
     self.assertTrue(check_app_installed(pkgname, self))
-
-
-def iterfindfiles(path, fnexp):
-    for root, dirs, files in os.walk(path):
-        for filename in fnmatch.filter(files, fnexp):
-            yield os.path.join(root, filename)
 
 
 def checkContains(origin_str=None, key_str=None):

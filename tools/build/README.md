@@ -17,11 +17,12 @@ pack_cordova_sample.py is used for auto build Cordova sample apps, including mob
 * Copy 'mobilespec' folder to crosswalk-test-suite/tools
 * You may need to install latest cordova by ```sudo npm -g install cordova```  
 
-###CIRC build based on Cordova 4.0
+###CIRC and Eh build based on Cordova 4.0
 * Require the support repository downloaded into your android SDK  
 **Steps**: 1. Open the SDK manager (from command line, type "android"); 2. Under "Extras", Make sure you have "Android Support Repository" and "Google Repository" downloaded 
 * Require cca 0.7.0, install with command: ```sudo npm install cca@0.7.0 -g```  
-* Copy 'circ'(https://github.com/flackr/circ) folder to crosswalk-test-suite/tools
+* Clone https://github.com/flackr/circ to crosswalk-test-suite/tools
+* Clone https://github.com/MobileChromeApps/workshop-cca-eh to crosswalk-test-suite/tools
 
 ###Sample apps build based on Cordova 4.0
 * Require Android API level 22

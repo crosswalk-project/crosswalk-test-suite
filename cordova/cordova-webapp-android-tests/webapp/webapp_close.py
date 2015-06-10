@@ -36,7 +36,7 @@ import comm
 import time
 
 
-class TestWebAppFunctions(unittest.TestCase):
+class TestWebAppClose(unittest.TestCase):
 
     def test_close(self):
         comm.setUp()

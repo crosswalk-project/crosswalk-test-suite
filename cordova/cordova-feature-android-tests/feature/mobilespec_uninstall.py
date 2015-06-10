@@ -34,7 +34,7 @@ import commands
 import comm
 
 
-class TestMobileSpecAppFunctions(unittest.TestCase):
+class TestMobileSpecAppUninstall(unittest.TestCase):
 
     def test_uninstall(self):
         comm.setUp()

@@ -53,7 +53,7 @@ sys.setdefaultencoding('utf8')
 TOOL_VERSION = "v0.1"
 VERSION_FILE = "VERSION"
 DEFAULT_CMD_TIMEOUT = 600
-PKG_NAMES = ["gallery", "helloworld", "remotedebugging", "mobilespec", "CIRC"]
+PKG_NAMES = ["gallery", "helloworld", "remotedebugging", "mobilespec", "CIRC", "Eh"]
 CORDOVA_VERSIONS = ["3.6", "4.0"]
 PKG_MODES = ["shared", "embedded"]
 PKG_ARCHS = ["x86", "arm"]
@@ -144,6 +144,10 @@ def killProcesses(ppid=None):
                 except Exception:
                     return False
 
+def safelyGetValue(origin_json=None, key=None):
+    if origin_json and key and key in origin_json:
+        return origin_json[key]
+    return None
 
 def checkContains(origin_str=None, key_str=None):
     if origin_str.upper().find(key_str.upper()) >= 0:
@@ -473,35 +477,63 @@ def packSampleApp(app_name=None):
     os.chdir(orig_dir)
     return True
 
-def packCIRC(app_name=None):
+def packGoogleApp(app_name=None):
     project_root = os.path.join(BUILD_ROOT, app_name)
     output = commands.getoutput("cca -v")
     if output != "0.7.0":
         LOG.error(
-            "Circ build requires cca, install with command: '$ sudo npm install cca@0.7.0 -g'")
+            "App build requires cca, install with command: '$ sudo npm install cca@0.7.0 -g'")
         return False
 
-    cordova_circ = os.path.join(BUILD_ROOT, "circ")
-    if not doCopy(os.path.join(BUILD_PARAMETERS.pkgpacktools,
-                               "circ"), cordova_circ):
-        return False
+    if checkContains(app_name, "CIRC"):
+        cordova_app = os.path.join(BUILD_ROOT, "circ")
+        if not doCopy(os.path.join(
+                BUILD_PARAMETERS.pkgpacktools, "circ"), cordova_app):
+            return False
+        creat_cmd = "cca create " + app_name + " --link-to circ/package"
+    elif checkContains(app_name, "EH"):
+        client_id = safelyGetValue(config_json, "client_id")
+        project_number = safelyGetValue(config_json, "project_number")
+        LOG.info("client_id: %s" % client_id)
+        LOG.info("project_number: %s" % project_number)
+        if client_id is None:
+            LOG.error("client_id in config_cordova_sample.json can't be None")
+            return False
+        if project_number is None:
+            LOG.error("project_number in config_cordova_sample.json can't be None")
+            return False
+
+        cordova_app = os.path.join(BUILD_ROOT, "workshop-cca-eh")
+        if not doCopy(os.path.join(
+                BUILD_PARAMETERS.pkgpacktools, "workshop-cca-eh"), cordova_app):
+            return False
+        creat_cmd = "cca create " + app_name + " --link-to workshop-cca-eh/workshop/step4"
+        if not replaceKey(os.path.join(cordova_app, "workshop", "step4", "background.js"),
+                          project_number,
+                          "YOUR_SENDER_ID"):
+            os.chdir(orig_dir)
+            return False
+        if not replaceKey(os.path.join(cordova_app, "workshop", "step4", "manifest.json"),
+                          client_id,
+                          "YOUR_DESKTOP_CLIENT_ID"):
+            os.chdir(orig_dir)
+            return False
 
     orig_dir = os.getcwd()
-    os.chdir(cordova_circ)
+    os.chdir(cordova_app)
     pull_cmd = "git pull"
     if not doCMD(pull_cmd, DEFAULT_CMD_TIMEOUT):
         os.chdir(orig_dir)
         return False
 
     os.chdir(BUILD_ROOT)
-    creat_cmd = "cca create " + app_name + " --link-to circ/package"
+
     if not doCMD(creat_cmd, DEFAULT_CMD_TIMEOUT):
         os.chdir(orig_dir)
         return False
 
     os.chdir(project_root)
     plugin_tool = os.path.join(project_root, "plugins", "cordova-plugin-crosswalk-webview")
-    
     if not doCopy(os.path.join(
             BUILD_PARAMETERS.pkgpacktools, "cordova_plugins", "cordova-plugin-crosswalk-webview"), plugin_tool):
         return False
@@ -521,7 +553,7 @@ def packCIRC(app_name=None):
         '    <allow-navigation href="*" />\n</widget>')
 
     build_cmd = "cca build android"
-    if not doCMD(build_cmd, DEFAULT_CMD_TIMEOUT):
+    if not doCMD(build_cmd, DEFAULT_CMD_TIMEOUT * 2):
         os.chdir(orig_dir)
         return False
 
@@ -616,7 +648,7 @@ def packMobileSpec_cli(app_name=None):
         if index == 0:
             run.sendline(BUILD_PARAMETERS.userpassword)
             index = run.expect(
-                ['node_modules', 'password', pexpect.EOF, pexpect.TIMEOUT])
+                ['node_modules', 'password', pexpect.EOF, pexpect.TIMEOUT], timeout=DEFAULT_CMD_TIMEOUT)
             if index == 0:
                 print 'The user password is Correctly'
             else:
@@ -849,12 +881,12 @@ def packAPP(app_name=None):
         else:
             if not packMobileSpec(app_name):
                 return False
-    elif checkContains(app_name, "CIRC"):
+    elif checkContains(app_name, "CIRC") or checkContains(app_name, "EH"):
         if BUILD_PARAMETERS.cordovaversion == "4.0":
-            if not packCIRC(app_name):
+            if not packGoogleApp(app_name):
                 return False
         else:
-            LOG.error("CIRC is only for cordova 4.0")
+            LOG.error("%s is only for cordova 4.0" % app_name)
             return False
     else:
         if BUILD_PARAMETERS.cordovaversion == '4.0':
@@ -977,7 +1009,17 @@ def main():
     BUILD_PARAMETERS.pkgpacktools = os.path.expanduser(
         BUILD_PARAMETERS.pkgpacktools)
 
-    config_json = None
+    global config_json
+    config_json_file_path = "config_cordova_sample.json"
+    try:
+        LOG.info("Using config json file: %s" % config_json_file_path)
+        with open(config_json_file_path, "rt") as config_json_file:
+            config_raw = config_json_file.read()
+            config_json_file.close()
+            config_json = json.loads(config_raw)
+    except Exception as e:
+        LOG.error("Fail to read config json file: %s, exit ..." % e)
+        sys.exit(1)
 
     global PKG_NAME, CORDOVA_VERSION
     PKG_NAME = BUILD_PARAMETERS.pkgname

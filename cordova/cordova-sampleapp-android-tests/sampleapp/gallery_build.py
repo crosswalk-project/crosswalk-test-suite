@@ -35,7 +35,7 @@ import glob
 import comm
 
 
-class TestGalleryAppFunctions(unittest.TestCase):
+class TestGalleryAppBuild(unittest.TestCase):
 
     def test_build(self):
         comm.setUp()

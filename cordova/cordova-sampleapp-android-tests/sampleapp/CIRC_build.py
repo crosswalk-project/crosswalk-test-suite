@@ -35,13 +35,13 @@ import glob
 import comm
 
 
-class TestGalleryAppFunctions(unittest.TestCase):
+class TestCIRCAppBuild(unittest.TestCase):
 
     def test_build(self):
         comm.setUp()
         app_name = "CIRC"
         sample_src_pref = "/tmp/crosswalk-demos/circ"
-        comm.buildCIRC(app_name, sample_src_pref, self)
+        comm.buildGoogleApp(app_name, sample_src_pref, self)
 
 if __name__ == '__main__':
     unittest.main()
