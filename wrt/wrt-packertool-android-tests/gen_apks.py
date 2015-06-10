@@ -109,7 +109,7 @@ def ge_apks(suite_dir, arch_arg, res_arch_dir):
         cmd_origin = cmdfile.read()
     cmd = cmd_origin.replace('make_apk.py', pkg_script)
     #manifest_path = os.path.join(suite_dir, "manifest.json")
-    res_suite_dir = os.path.join(res_arch_dir, suitename_without_flag)
+    res_suite_dir = os.path.join(res_arch_dir, suite_name)
 
     # if not os.path.exists(manifest_path):
     #    LOG.error("%s not exists !!!" % manifest_path)
@@ -153,8 +153,8 @@ def ge_apks(suite_dir, arch_arg, res_arch_dir):
                 res_suite_dir)
 
     ores_file.write(
-        suitename_without_flag +
-        "\t" +
+        suite_name +
+        "-" +
         flag +
         "\t" +
         result +

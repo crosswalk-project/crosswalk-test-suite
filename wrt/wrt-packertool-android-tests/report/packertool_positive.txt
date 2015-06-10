@@ -1,840 +1,640 @@
 Packertool1
 --------------------------------
-python make_apk.py --name="appurl_test" --package="org.xwalk.intel" --mode="embedded" --app-url="https://www.baidu.com" --arch=x86
+python make_apk.py --name="permission_test" --package="org.xwalk.intel" --mode="embedded" --app-url="http://www.baidu.com" --permission="GEOLOCATION" --arch=arm
 --------------------------------
 Packertool2
 --------------------------------
-python make_apk.py --name="appurl_test" --package="org.xwalk.intel" --mode="embedded" --app-url="http://www.nonexist.com" --arch=x86
+python make_apk.py --name="permission_test" --package="org.xwalk.intel" --mode="embedded" --app-url="http://www.baidu.com" --permission="geolocation:Contacts" --arch=arm
 --------------------------------
 Packertool3
 --------------------------------
-python make_apk.py --name="abcd" --package="org.xwalk" --mode="embedded" --app-version="1.1" --app-versionCode="1" --app-versionCodeBase="24" --app-url="http://www.baidu.com" --permission="geolocation" --description="appdescription" --arch=x86
+python make_apk.py --name="permission_test" --package="org.xwalk.intel" --mode="embedded" --app-url="http://www.baidu.com" --permission="contacts:Contacts" --arch=arm
 --------------------------------
 Packertool4
 --------------------------------
-python make_apk.py --name=" z" --package="org.xwalk1234" --mode="shared" --app-version="1.0.0" --app-versionCode="6123456" --app-versionCodeBase="24" --app-url="http://www.baidu.com" --permission="geolocation" --description="appdescription" --arch=x86
+python make_apk.py --name="permission_test" --package="org.xwalk.intel" --mode="embedded" --app-url="http://www.baidu.com" --permission="contacts:geolocation:messaging:vibration" --arch=arm
 --------------------------------
 Packertool5
 --------------------------------
-python make_apk.py --name="123" --package="org.xwalk.intel" --app-version="1.0.0.1" --app-versionCode="6123456" --app-versionCodeBase="24" --app-url="http://www.baidu.com" --permission="geolocation" --description="appdescription" --arch=x86
+python make_apk.py --name="appurl_test" --package="org.xwalk.intel" --mode="embedded" --app-url="https://www.baidu.com" --arch=arm
 --------------------------------
 Packertool6
 --------------------------------
-python make_apk.py --name=" z" --package="org.xwalk.xwalk.test" --app-version="1.0.0" --app-versionCode="1" --app-versionCodeBase="24" --app-url="http://www.baidu.com" --permission="geolocation" --description="appdescription" --arch=x86
+python make_apk.py --name="appurl_test" --package="org.xwalk.intel" --mode="embedded" --app-url="http://www.nonexist.com" --arch=arm
 --------------------------------
 Packertool7
 --------------------------------
-python make_apk.py --name="x_y" --package="org.xwalk.xwalk.test" --mode="shared" --app-version="1.1" --app-versionCode="6123456" --app-versionCodeBase="24" --app-url="http://www.baidu.com" --permission="geolocation" --description="appdescription" --arch=x86
+python make_apk.py --name="targetdir_test" --package="org.xwalk.intel" --mode="embedded" --app-url="http://www.baidu.com" --arch=arm
 --------------------------------
 Packertool8
 --------------------------------
-python make_apk.py --name=" z" --package="org.xwalk.intel" --mode="embedded" --app-version="1.0.0" --app-versionCode="6123456" --app-versionCodeBase="24" --app-url="http://www.baidu.com" --permission="geolocation" --description="appdescription" --arch=x86
+python make_apk.py --name="targetdir_test" --package="org.xwalk.intel" --mode="embedded" --app-url="http://www.baidu.com" --target-dir="./" --arch=arm
 --------------------------------
 Packertool9
 --------------------------------
-python make_apk.py --name="-" --package="org.xwalk1234" --mode="embedded" --app-version="1.0.0.1" --app-versionCode="1" --app-versionCodeBase="24" --app-url="http://www.baidu.com" --permission="geolocation" --description="appdescription" --arch=x86
+python make_apk.py --name="targetdir_test" --package="org.xwalk.intel" --mode="embedded" --app-url="http://www.baidu.com" --target-dir="/tmp" --arch=arm
 --------------------------------
 Packertool10
 --------------------------------
-python make_apk.py --name=" z" --package="org.xwalk" --mode="shared" --app-version="1.0.0.1" --app-versionCode="6123456" --app-versionCodeBase="24" --app-url="http://www.baidu.com" --permission="geolocation" --description="appdescription" --arch=x86
+python make_apk.py --name="targetdir_test" --package="org.xwalk.intel" --mode="embedded" --app-url="http://www.baidu.com" --target-dir="apkdir" --arch=arm
 --------------------------------
 Packertool11
 --------------------------------
-python make_apk.py --name="汉字" --package="org.xwalk.intel" --mode="shared" --app-version="1.1" --app-versionCode="1" --app-versionCodeBase="24" --app-url="http://www.baidu.com" --permission="geolocation" --description="appdescription" --arch=x86
+python make_apk.py --name="abcd" --package="org.xwalk.intel" --mode="embedded" --app-version="1.1" --app-versionCode="1" --app-versionCodeBase="24" --app-url="http://www.baidu.com" --permission="geolocation" --description="appdescription" --arch=arm
 --------------------------------
 Packertool12
 --------------------------------
-python make_apk.py --name=" z" --package="org.xwalk" --app-version="1.0.0" --app-versionCode="6123456" --app-versionCodeBase="24" --app-url="http://www.baidu.com" --permission="geolocation" --description="appdescription" --arch=x86
+python make_apk.py --name=" z" --package="org.xwalk.intel" --mode="shared" --app-version="1.0.0" --app-versionCode="6123456" --app-versionCodeBase="24" --app-url="http://www.baidu.com" --permission="geolocation" --description="appdescription" --arch=arm
 --------------------------------
 Packertool13
 --------------------------------
-python make_apk.py --name="汉字" --package="org.xwalk1234" --app-version="1.1" --app-versionCode="6123456" --app-versionCodeBase="24" --app-url="http://www.baidu.com" --permission="geolocation" --description="appdescription" --arch=x86
+python make_apk.py --name="123" --package="org.xwalk.intel" --app-version="1.0.0.1" --app-versionCode="6123456" --app-versionCodeBase="24" --app-url="http://www.baidu.com" --permission="geolocation" --description="appdescription" --arch=arm
 --------------------------------
 Packertool14
 --------------------------------
-python make_apk.py --name=".b" --package="org.xwalk.xwalk.test" --mode="embedded" --app-version="1.0.0.1" --app-versionCode="6123456" --app-versionCodeBase="24" --app-url="http://www.baidu.com" --permission="geolocation" --description="appdescription" --arch=x86
+python make_apk.py --name=" z" --package="org.xwalk.intel" --app-version="1.0.0" --app-versionCode="1" --app-versionCodeBase="24" --app-url="http://www.baidu.com" --permission="geolocation" --description="appdescription" --arch=arm
 --------------------------------
 Packertool15
 --------------------------------
-python make_apk.py --name="-" --package="org.xwalk.xwalk.test" --mode="embedded" --app-version="1.0.0.1" --app-versionCode="6123456" --app-versionCodeBase="24" --app-url="http://www.baidu.com" --permission="geolocation" --description="appdescription" --arch=x86
+python make_apk.py --name="x_y" --package="org.xwalk.intel" --mode="shared" --app-version="1.1" --app-versionCode="1" --app-versionCodeBase="24" --app-url="http://www.baidu.com" --permission="geolocation" --description="appdescription" --arch=arm
 --------------------------------
 Packertool16
 --------------------------------
-python make_apk.py --name=".b" --package="org.xwalk.xwalk.test" --mode="embedded" --app-version="1.0.0.1" --app-versionCode="6123456" --app-versionCodeBase="24" --app-url="http://www.baidu.com" --permission="geolocation" --description="appdescription" --arch=x86
+python make_apk.py --name=" z" --package="org.xwalk.intel" --mode="embedded" --app-version="1.0.0.1" --app-versionCode="1" --app-versionCodeBase="24" --app-url="http://www.baidu.com" --permission="geolocation" --description="appdescription" --arch=arm
 --------------------------------
 Packertool17
 --------------------------------
-python make_apk.py --name="x_y" --package="org.xwalk.xwalk.test" --mode="embedded" --app-version="1.0.0.1" --app-versionCode="6123456" --app-versionCodeBase="24" --app-url="http://www.baidu.com" --permission="geolocation" --description="appdescription" --arch=x86
+python make_apk.py --name="-" --package="org.xwalk.intel" --mode="embedded" --app-version="1.0.0" --app-versionCode="6123456" --app-versionCodeBase="24" --app-url="http://www.baidu.com" --permission="geolocation" --description="appdescription" --arch=arm
 --------------------------------
 Packertool18
 --------------------------------
-python make_apk.py --name=".b" --package="org.xwalk.xwalk.test" --mode="embedded" --app-version="1.0.0.1" --app-versionCode="6123456" --app-versionCodeBase="24" --app-url="http://www.baidu.com" --permission="geolocation" --description="appdescription" --arch=x86
+python make_apk.py --name=" z" --package="org.xwalk.intel" --mode="shared" --app-version="1.0.0.1" --app-versionCode="1" --app-versionCodeBase="24" --app-url="http://www.baidu.com" --permission="geolocation" --description="appdescription" --arch=arm
 --------------------------------
 Packertool19
 --------------------------------
-python make_apk.py --name="123" --package="org.xwalk.xwalk.test" --mode="embedded" --app-version="1.0.0.1" --app-versionCode="6123456" --app-versionCodeBase="24" --app-url="http://www.baidu.com" --permission="geolocation" --description="appdescription" --arch=x86
+python make_apk.py --name="汉字" --package="org.xwalk.intel" --app-version="1.1" --app-versionCode="6123456" --app-versionCodeBase="24" --app-url="http://www.baidu.com" --permission="geolocation" --description="appdescription" --arch=arm
 --------------------------------
 Packertool20
 --------------------------------
-python make_apk.py --name=".b" --package="org.xwalk.xwalk.test" --mode="embedded" --app-version="1.0.0.1" --app-versionCode="6123456" --app-versionCodeBase="24" --app-url="http://www.baidu.com" --permission="geolocation" --description="appdescription" --arch=x86
+python make_apk.py --name=" z" --package="org.xwalk.intel" --app-version="1.1" --app-versionCode="1" --app-versionCodeBase="24" --app-url="http://www.baidu.com" --permission="geolocation" --description="appdescription" --arch=arm
 --------------------------------
 Packertool21
 --------------------------------
-python make_apk.py --name="abcd" --package="org.xwalk.xwalk.test" --mode="embedded" --app-version="1.0.0.1" --app-versionCode="6123456" --app-versionCodeBase="24" --app-url="http://www.baidu.com" --permission="geolocation" --description="appdescription" --arch=x86
+python make_apk.py --name="汉字" --package="org.xwalk.intel" --app-version="1.1" --app-versionCode="1" --app-versionCodeBase="24" --app-url="http://www.baidu.com" --permission="geolocation" --description="appdescription" --arch=arm
 --------------------------------
 Packertool22
 --------------------------------
-python make_apk.py --name=".b" --package="org.xwalk.xwalk.test" --mode="embedded" --app-version="1.0.0.1" --app-versionCode="6123456" --app-versionCodeBase="24" --app-url="http://www.baidu.com" --permission="geolocation" --description="appdescription" --arch=x86
+python make_apk.py --name=".b" --package="org.xwalk.intel" --app-version="1.1" --app-versionCode="1" --app-versionCodeBase="24" --app-url="http://www.baidu.com" --permission="geolocation" --description="appdescription" --arch=arm
 --------------------------------
 Packertool23
 --------------------------------
-python make_apk.py --name="abcd" --package="org.xwalk.xwalk.test" --mode="embedded" --app-version="1.0.0.1" --app-versionCode="6123456" --app-versionCodeBase="24" --app-url="http://www.baidu.com" --permission="geolocation" --description="appdescription" --arch=x86
+python make_apk.py --name="-" --package="org.xwalk.intel" --app-version="1.1" --app-versionCode="1" --app-versionCodeBase="24" --app-url="http://www.baidu.com" --permission="geolocation" --description="appdescription" --arch=arm
 --------------------------------
 Packertool24
 --------------------------------
-python make_apk.py --name="*<q>~!#$%^&*()-+={}[]" --package="org.xwalk.xwalk.test" --mode="embedded" --app-version="1.0.0.1" --app-versionCode="6123456" --app-versionCodeBase="24" --app-url="http://www.baidu.com" --permission="geolocation" --description="appdescription" --arch=x86
+python make_apk.py --name=".b" --package="org.xwalk.intel" --app-version="1.1" --app-versionCode="1" --app-versionCodeBase="24" --app-url="http://www.baidu.com" --permission="geolocation" --description="appdescription" --arch=arm
 --------------------------------
 Packertool25
 --------------------------------
-python make_apk.py --name="123" --package="org.xwalk.xwalk.test" --mode="embedded" --app-version="1.0.0.1" --app-versionCode="6123456" --app-versionCodeBase="24" --app-url="http://www.baidu.com" --permission="geolocation" --description="appdescription" --arch=x86
+python make_apk.py --name="x_y" --package="org.xwalk.intel" --app-version="1.1" --app-versionCode="1" --app-versionCodeBase="24" --app-url="http://www.baidu.com" --permission="geolocation" --description="appdescription" --arch=arm
 --------------------------------
 Packertool26
 --------------------------------
-python make_apk.py --name="*<q>~!#$%^&*()-+={}[]" --package="org.xwalk.xwalk.test" --mode="embedded" --app-version="1.0.0.1" --app-versionCode="6123456" --app-versionCodeBase="24" --app-url="http://www.baidu.com" --permission="geolocation" --description="appdescription" --arch=x86
+python make_apk.py --name=".b" --package="org.xwalk.intel" --app-version="1.1" --app-versionCode="1" --app-versionCodeBase="24" --app-url="http://www.baidu.com" --permission="geolocation" --description="appdescription" --arch=arm
 --------------------------------
 Packertool27
 --------------------------------
-python make_apk.py --name="x_y" --package="org.xwalk.xwalk.test" --mode="embedded" --app-version="1.0.0.1" --app-versionCode="6123456" --app-versionCodeBase="24" --app-url="http://www.baidu.com" --permission="geolocation" --description="appdescription" --arch=x86
+python make_apk.py --name="123" --package="org.xwalk.intel" --app-version="1.1" --app-versionCode="1" --app-versionCodeBase="24" --app-url="http://www.baidu.com" --permission="geolocation" --description="appdescription" --arch=arm
 --------------------------------
 Packertool28
 --------------------------------
-python make_apk.py --name="*<q>~!#$%^&*()-+={}[]" --package="org.xwalk.xwalk.test" --mode="embedded" --app-version="1.0.0.1" --app-versionCode="6123456" --app-versionCodeBase="24" --app-url="http://www.baidu.com" --permission="geolocation" --description="appdescription" --arch=x86
+python make_apk.py --name=".b" --package="org.xwalk.intel" --app-version="1.1" --app-versionCode="1" --app-versionCodeBase="24" --app-url="http://www.baidu.com" --permission="geolocation" --description="appdescription" --arch=arm
 --------------------------------
 Packertool29
 --------------------------------
-python make_apk.py --name="-" --package="org.xwalk.xwalk.test" --mode="embedded" --app-version="1.0.0.1" --app-versionCode="6123456" --app-versionCodeBase="24" --app-url="http://www.baidu.com" --permission="geolocation" --description="appdescription" --arch=x86
+python make_apk.py --name="abcd" --package="org.xwalk.intel" --app-version="1.1" --app-versionCode="1" --app-versionCodeBase="24" --app-url="http://www.baidu.com" --permission="geolocation" --description="appdescription" --arch=arm
 --------------------------------
 Packertool30
 --------------------------------
-python make_apk.py --name="*<q>~!#$%^&*()-+={}[]" --package="org.xwalk.xwalk.test" --mode="embedded" --app-version="1.0.0.1" --app-versionCode="6123456" --app-versionCodeBase="24" --app-url="http://www.baidu.com" --permission="geolocation" --description="appdescription" --arch=x86
+python make_apk.py --name=".b" --package="org.xwalk.intel" --app-version="1.1" --app-versionCode="1" --app-versionCodeBase="24" --app-url="http://www.baidu.com" --permission="geolocation" --description="appdescription" --arch=arm
 --------------------------------
 Packertool31
 --------------------------------
-python make_apk.py --name="汉字" --package="org.xwalk.xwalk.test" --mode="embedded" --app-version="1.0.0.1" --app-versionCode="6123456" --app-versionCodeBase="24" --app-url="http://www.baidu.com" --permission="geolocation" --description="appdescription" --arch=x86
+python make_apk.py --name="abcd" --package="org.xwalk.intel" --app-version="1.1" --app-versionCode="1" --app-versionCodeBase="24" --app-url="http://www.baidu.com" --permission="geolocation" --description="appdescription" --arch=arm
 --------------------------------
 Packertool32
 --------------------------------
-python make_apk.py --name="*<q>~!#$%^&*()-+={}[]" --package="org.xwalk.xwalk.test" --mode="embedded" --app-version="1.0.0.1" --app-versionCode="6123456" --app-versionCodeBase="24" --app-url="http://www.baidu.com" --permission="geolocation" --description="appdescription" --arch=x86
+python make_apk.py --name="*<q>~!#$%^&*()-+={}[]" --package="org.xwalk.intel" --app-version="1.1" --app-versionCode="1" --app-versionCodeBase="24" --app-url="http://www.baidu.com" --permission="geolocation" --description="appdescription" --arch=arm
 --------------------------------
 Packertool33
 --------------------------------
-python make_apk.py --name="汉字" --package="org.xwalk.xwalk.test" --mode="embedded" --app-version="1.0.0.1" --app-versionCode="6123456" --app-versionCodeBase="24" --app-url="http://www.baidu.com" --permission="geolocation" --description="appdescription" --arch=x86
+python make_apk.py --name="123" --package="org.xwalk.intel" --app-version="1.1" --app-versionCode="1" --app-versionCodeBase="24" --app-url="http://www.baidu.com" --permission="geolocation" --description="appdescription" --arch=arm
 --------------------------------
 Packertool34
 --------------------------------
-python make_apk.py --name="\\\n" --package="org.xwalk.xwalk.test" --mode="embedded" --app-version="1.0.0.1" --app-versionCode="6123456" --app-versionCodeBase="24" --app-url="http://www.baidu.com" --permission="geolocation" --description="appdescription" --arch=x86
+python make_apk.py --name="*<q>~!#$%^&*()-+={}[]" --package="org.xwalk.intel" --app-version="1.1" --app-versionCode="1" --app-versionCodeBase="24" --app-url="http://www.baidu.com" --permission="geolocation" --description="appdescription" --arch=arm
 --------------------------------
 Packertool35
 --------------------------------
-python make_apk.py --name="-" --package="org.xwalk.xwalk.test" --mode="embedded" --app-version="1.0.0.1" --app-versionCode="6123456" --app-versionCodeBase="24" --app-url="http://www.baidu.com" --permission="geolocation" --description="appdescription" --arch=x86
+python make_apk.py --name="x_y" --package="org.xwalk.intel" --app-version="1.1" --app-versionCode="1" --app-versionCodeBase="24" --app-url="http://www.baidu.com" --permission="geolocation" --description="appdescription" --arch=arm
 --------------------------------
 Packertool36
 --------------------------------
-python make_apk.py --name="\\\n" --package="org.xwalk.xwalk.test" --mode="embedded" --app-version="1.0.0.1" --app-versionCode="6123456" --app-versionCodeBase="24" --app-url="http://www.baidu.com" --permission="geolocation" --description="appdescription" --arch=x86
+python make_apk.py --name="*<q>~!#$%^&*()-+={}[]" --package="org.xwalk.intel" --app-version="1.1" --app-versionCode="1" --app-versionCodeBase="24" --app-url="http://www.baidu.com" --permission="geolocation" --description="appdescription" --arch=arm
 --------------------------------
 Packertool37
 --------------------------------
-python make_apk.py --name="x_y" --package="org.xwalk.xwalk.test" --mode="embedded" --app-version="1.0.0.1" --app-versionCode="6123456" --app-versionCodeBase="24" --app-url="http://www.baidu.com" --permission="geolocation" --description="appdescription" --arch=x86
+python make_apk.py --name="-" --package="org.xwalk.intel" --app-version="1.1" --app-versionCode="1" --app-versionCodeBase="24" --app-url="http://www.baidu.com" --permission="geolocation" --description="appdescription" --arch=arm
 --------------------------------
 Packertool38
 --------------------------------
-python make_apk.py --name="\\\n" --package="org.xwalk.xwalk.test" --mode="embedded" --app-version="1.0.0.1" --app-versionCode="6123456" --app-versionCodeBase="24" --app-url="http://www.baidu.com" --permission="geolocation" --description="appdescription" --arch=x86
+python make_apk.py --name="*<q>~!#$%^&*()-+={}[]" --package="org.xwalk.intel" --app-version="1.1" --app-versionCode="1" --app-versionCodeBase="24" --app-url="http://www.baidu.com" --permission="geolocation" --description="appdescription" --arch=arm
 --------------------------------
 Packertool39
 --------------------------------
-python make_apk.py --name="123" --package="org.xwalk.xwalk.test" --mode="embedded" --app-version="1.0.0.1" --app-versionCode="6123456" --app-versionCodeBase="24" --app-url="http://www.baidu.com" --permission="geolocation" --description="appdescription" --arch=x86
+python make_apk.py --name="汉字" --package="org.xwalk.intel" --app-version="1.1" --app-versionCode="1" --app-versionCodeBase="24" --app-url="http://www.baidu.com" --permission="geolocation" --description="appdescription" --arch=arm
 --------------------------------
 Packertool40
 --------------------------------
-python make_apk.py --name="\\\n" --package="org.xwalk.xwalk.test" --mode="embedded" --app-version="1.0.0.1" --app-versionCode="6123456" --app-versionCodeBase="24" --app-url="http://www.baidu.com" --permission="geolocation" --description="appdescription" --arch=x86
+python make_apk.py --name="*<q>~!#$%^&*()-+={}[]" --package="org.xwalk.intel" --app-version="1.1" --app-versionCode="1" --app-versionCodeBase="24" --app-url="http://www.baidu.com" --permission="geolocation" --description="appdescription" --arch=arm
 --------------------------------
 Packertool41
 --------------------------------
-python make_apk.py --name="abcd" --package="org.xwalk.xwalk.test" --mode="embedded" --app-version="1.0.0.1" --app-versionCode="6123456" --app-versionCodeBase="24" --app-url="http://www.baidu.com" --permission="geolocation" --description="appdescription" --arch=x86
+python make_apk.py --name="汉字" --package="org.xwalk.intel" --app-version="1.1" --app-versionCode="1" --app-versionCodeBase="24" --app-url="http://www.baidu.com" --permission="geolocation" --description="appdescription" --arch=arm
 --------------------------------
 Packertool42
 --------------------------------
-python make_apk.py --name="\\\n" --package="org.xwalk.xwalk.test" --mode="embedded" --app-version="1.0.0.1" --app-versionCode="6123456" --app-versionCodeBase="24" --app-url="http://www.baidu.com" --permission="geolocation" --description="appdescription" --arch=x86
+python make_apk.py --name="\\\n" --package="org.xwalk.intel" --app-version="1.1" --app-versionCode="1" --app-versionCodeBase="24" --app-url="http://www.baidu.com" --permission="geolocation" --description="appdescription" --arch=arm
 --------------------------------
 Packertool43
 --------------------------------
-python make_apk.py --name="abcd" --package="org.xwalk.xwalk.test" --mode="embedded" --app-version="1.0.0.1" --app-versionCode="6123456" --app-versionCodeBase="24" --app-url="http://www.baidu.com" --permission="geolocation" --description="appdescription" --arch=x86
+python make_apk.py --name="-" --package="org.xwalk.intel" --app-version="1.1" --app-versionCode="1" --app-versionCodeBase="24" --app-url="http://www.baidu.com" --permission="geolocation" --description="appdescription" --arch=arm
 --------------------------------
 Packertool44
 --------------------------------
-python make_apk.py --name="qwertyuiopasdfghjklzxcvbnm" --package="org.xwalk.xwalk.test" --mode="embedded" --app-version="1.0.0.1" --app-versionCode="6123456" --app-versionCodeBase="24" --app-url="http://www.baidu.com" --permission="geolocation" --description="appdescription" --arch=x86
+python make_apk.py --name="\\\n" --package="org.xwalk.intel" --app-version="1.1" --app-versionCode="1" --app-versionCodeBase="24" --app-url="http://www.baidu.com" --permission="geolocation" --description="appdescription" --arch=arm
 --------------------------------
 Packertool45
 --------------------------------
-python make_apk.py --name="123" --package="org.xwalk.xwalk.test" --mode="embedded" --app-version="1.0.0.1" --app-versionCode="6123456" --app-versionCodeBase="24" --app-url="http://www.baidu.com" --permission="geolocation" --description="appdescription" --arch=x86
+python make_apk.py --name="x_y" --package="org.xwalk.intel" --app-version="1.1" --app-versionCode="1" --app-versionCodeBase="24" --app-url="http://www.baidu.com" --permission="geolocation" --description="appdescription" --arch=arm
 --------------------------------
 Packertool46
 --------------------------------
-python make_apk.py --name="qwertyuiopasdfghjklzxcvbnm" --package="org.xwalk.xwalk.test" --mode="embedded" --app-version="1.0.0.1" --app-versionCode="6123456" --app-versionCodeBase="24" --app-url="http://www.baidu.com" --permission="geolocation" --description="appdescription" --arch=x86
+python make_apk.py --name="\\\n" --package="org.xwalk.intel" --app-version="1.1" --app-versionCode="1" --app-versionCodeBase="24" --app-url="http://www.baidu.com" --permission="geolocation" --description="appdescription" --arch=arm
 --------------------------------
 Packertool47
 --------------------------------
-python make_apk.py --name="x_y" --package="org.xwalk.xwalk.test" --mode="embedded" --app-version="1.0.0.1" --app-versionCode="6123456" --app-versionCodeBase="24" --app-url="http://www.baidu.com" --permission="geolocation" --description="appdescription" --arch=x86
+python make_apk.py --name="123" --package="org.xwalk.intel" --app-version="1.1" --app-versionCode="1" --app-versionCodeBase="24" --app-url="http://www.baidu.com" --permission="geolocation" --description="appdescription" --arch=arm
 --------------------------------
 Packertool48
 --------------------------------
-python make_apk.py --name="qwertyuiopasdfghjklzxcvbnm" --package="org.xwalk.xwalk.test" --mode="embedded" --app-version="1.0.0.1" --app-versionCode="6123456" --app-versionCodeBase="24" --app-url="http://www.baidu.com" --permission="geolocation" --description="appdescription" --arch=x86
+python make_apk.py --name="\\\n" --package="org.xwalk.intel" --app-version="1.1" --app-versionCode="1" --app-versionCodeBase="24" --app-url="http://www.baidu.com" --permission="geolocation" --description="appdescription" --arch=arm
 --------------------------------
 Packertool49
 --------------------------------
-python make_apk.py --name="-" --package="org.xwalk.xwalk.test" --mode="embedded" --app-version="1.0.0.1" --app-versionCode="6123456" --app-versionCodeBase="24" --app-url="http://www.baidu.com" --permission="geolocation" --description="appdescription" --arch=x86
+python make_apk.py --name="abcd" --package="org.xwalk.intel" --app-version="1.1" --app-versionCode="1" --app-versionCodeBase="24" --app-url="http://www.baidu.com" --permission="geolocation" --description="appdescription" --arch=arm
 --------------------------------
 Packertool50
 --------------------------------
-python make_apk.py --name="qwertyuiopasdfghjklzxcvbnm" --package="org.xwalk.xwalk.test" --mode="embedded" --app-version="1.0.0.1" --app-versionCode="6123456" --app-versionCodeBase="24" --app-url="http://www.baidu.com" --permission="geolocation" --description="appdescription" --arch=x86
+python make_apk.py --name="\\\n" --package="org.xwalk.intel" --app-version="1.1" --app-versionCode="1" --app-versionCodeBase="24" --app-url="http://www.baidu.com" --permission="geolocation" --description="appdescription" --arch=arm
 --------------------------------
 Packertool51
 --------------------------------
-python make_apk.py --name="汉字" --package="org.xwalk.xwalk.test" --mode="embedded" --app-version="1.0.0.1" --app-versionCode="6123456" --app-versionCodeBase="24" --app-url="http://www.baidu.com" --permission="geolocation" --description="appdescription" --arch=x86
+python make_apk.py --name="abcd" --package="org.xwalk.intel" --app-version="1.1" --app-versionCode="1" --app-versionCodeBase="24" --app-url="http://www.baidu.com" --permission="geolocation" --description="appdescription" --arch=arm
 --------------------------------
 Packertool52
 --------------------------------
-python make_apk.py --name="qwertyuiopasdfghjklzxcvbnm" --package="org.xwalk.xwalk.test" --mode="embedded" --app-version="1.0.0.1" --app-versionCode="6123456" --app-versionCodeBase="24" --app-url="http://www.baidu.com" --permission="geolocation" --description="appdescription" --arch=x86
+python make_apk.py --name="qwertyuiopasdfghjklzxcvbnm" --package="org.xwalk.intel" --app-version="1.1" --app-versionCode="1" --app-versionCodeBase="24" --app-url="http://www.baidu.com" --permission="geolocation" --description="appdescription" --arch=arm
 --------------------------------
 Packertool53
 --------------------------------
-python make_apk.py --name="qwertyuiopasdfghjklzxcvbnm" --package="org.xwalk1234" --app-version="1.1" --app-versionCode="1" --app-versionCodeBase="24" --app-url="http://www.baidu.com" --permission="geolocation" --description="appdescription" --arch=x86
+python make_apk.py --name="123" --package="org.xwalk.intel" --app-version="1.1" --app-versionCode="1" --app-versionCodeBase="24" --app-url="http://www.baidu.com" --permission="geolocation" --description="appdescription" --arch=arm
 --------------------------------
 Packertool54
 --------------------------------
-python make_apk.py --name="汉字" --package="org.xwalk1234" --app-version="1.1" --app-versionCode="1" --app-versionCodeBase="24" --app-url="http://www.baidu.com" --permission="geolocation" --description="appdescription" --arch=x86
+python make_apk.py --name="qwertyuiopasdfghjklzxcvbnm" --package="org.xwalk.intel" --app-version="1.1" --app-versionCode="1" --app-versionCodeBase="24" --app-url="http://www.baidu.com" --permission="geolocation" --description="appdescription" --arch=arm
 --------------------------------
 Packertool55
 --------------------------------
-python make_apk.py --name="qwertyuiopasdfghjklzxcvbnm" --package="org.xwalk1234" --app-version="1.1" --app-versionCode="1" --app-versionCodeBase="24" --app-url="http://www.baidu.com" --permission="geolocation" --description="appdescription" --arch=x86
+python make_apk.py --name="x_y" --package="org.xwalk.intel" --app-version="1.1" --app-versionCode="1" --app-versionCodeBase="24" --app-url="http://www.baidu.com" --permission="geolocation" --description="appdescription" --arch=arm
 --------------------------------
 Packertool56
 --------------------------------
-python make_apk.py --name="-" --package="org.xwalk1234" --app-version="1.1" --app-versionCode="1" --app-versionCodeBase="24" --app-url="http://www.baidu.com" --permission="geolocation" --description="appdescription" --arch=x86
+python make_apk.py --name="qwertyuiopasdfghjklzxcvbnm" --package="org.xwalk.intel" --app-version="1.1" --app-versionCode="1" --app-versionCodeBase="24" --app-url="http://www.baidu.com" --permission="geolocation" --description="appdescription" --arch=arm
 --------------------------------
 Packertool57
 --------------------------------
-python make_apk.py --name="qwertyuiopasdfghjklzxcvbnm" --package="org.xwalk1234" --app-version="1.1" --app-versionCode="1" --app-versionCodeBase="24" --app-url="http://www.baidu.com" --permission="geolocation" --description="appdescription" --arch=x86
+python make_apk.py --name="-" --package="org.xwalk.intel" --app-version="1.1" --app-versionCode="1" --app-versionCodeBase="24" --app-url="http://www.baidu.com" --permission="geolocation" --description="appdescription" --arch=arm
 --------------------------------
 Packertool58
 --------------------------------
-python make_apk.py --name="x_y" --package="org.xwalk1234" --app-version="1.1" --app-versionCode="1" --app-versionCodeBase="24" --app-url="http://www.baidu.com" --permission="geolocation" --description="appdescription" --arch=x86
+python make_apk.py --name="qwertyuiopasdfghjklzxcvbnm" --package="org.xwalk.intel" --app-version="1.1" --app-versionCode="1" --app-versionCodeBase="24" --app-url="http://www.baidu.com" --permission="geolocation" --description="appdescription" --arch=arm
 --------------------------------
 Packertool59
 --------------------------------
-python make_apk.py --name="qwertyuiopasdfghjklzxcvbnm" --package="org.xwalk1234" --app-version="1.1" --app-versionCode="1" --app-versionCodeBase="24" --app-url="http://www.baidu.com" --permission="geolocation" --description="appdescription" --arch=x86
+python make_apk.py --name="汉字" --package="org.xwalk.intel" --app-version="1.1" --app-versionCode="1" --app-versionCodeBase="24" --app-url="http://www.baidu.com" --permission="geolocation" --description="appdescription" --arch=arm
 --------------------------------
 Packertool60
 --------------------------------
-python make_apk.py --name="123" --package="org.xwalk1234" --app-version="1.1" --app-versionCode="1" --app-versionCodeBase="24" --app-url="http://www.baidu.com" --permission="geolocation" --description="appdescription" --arch=x86
+python make_apk.py --name="qwertyuiopasdfghjklzxcvbnm" --package="org.xwalk.intel" --app-version="1.1" --app-versionCode="1" --app-versionCodeBase="24" --app-url="http://www.baidu.com" --permission="geolocation" --description="appdescription" --arch=arm
 --------------------------------
 Packertool61
 --------------------------------
-python make_apk.py --name="qwertyuiopasdfghjklzxcvbnm" --package="org.xwalk1234" --app-version="1.1" --app-versionCode="1" --app-versionCodeBase="24" --app-url="http://www.baidu.com" --permission="geolocation" --description="appdescription" --arch=x86
+python make_apk.py --name="qwertyuiopasdfghjklzxcvbnm" --package="org.xwalk.intel" --mode="shared" --app-version="1.0.0.1" --app-versionCode="6123456" --app-versionCodeBase="24" --app-url="http://www.baidu.com" --permission="geolocation" --description="appdescription" --arch=arm
 --------------------------------
 Packertool62
 --------------------------------
-python make_apk.py --name="abcd" --package="org.xwalk1234" --app-version="1.1" --app-versionCode="1" --app-versionCodeBase="24" --app-url="http://www.baidu.com" --permission="geolocation" --description="appdescription" --arch=x86
+python make_apk.py --name="汉字" --package="org.xwalk.intel" --mode="shared" --app-version="1.0.0.1" --app-versionCode="6123456" --app-versionCodeBase="24" --app-url="http://www.baidu.com" --permission="geolocation" --description="appdescription" --arch=arm
 --------------------------------
 Packertool63
 --------------------------------
-python make_apk.py --name="\\\n" --package="org.xwalk1234" --app-version="1.1" --app-versionCode="1" --app-versionCodeBase="24" --app-url="http://www.baidu.com" --permission="geolocation" --description="appdescription" --arch=x86
+python make_apk.py --name="qwertyuiopasdfghjklzxcvbnm" --package="org.xwalk.intel" --mode="shared" --app-version="1.0.0.1" --app-versionCode="6123456" --app-versionCodeBase="24" --app-url="http://www.baidu.com" --permission="geolocation" --description="appdescription" --arch=arm
 --------------------------------
 Packertool64
 --------------------------------
-python make_apk.py --name="abcd" --package="org.xwalk1234" --app-version="1.1" --app-versionCode="1" --app-versionCodeBase="24" --app-url="http://www.baidu.com" --permission="geolocation" --description="appdescription" --arch=x86
+python make_apk.py --name="-" --package="org.xwalk.intel" --mode="shared" --app-version="1.0.0.1" --app-versionCode="6123456" --app-versionCodeBase="24" --app-url="http://www.baidu.com" --permission="geolocation" --description="appdescription" --arch=arm
 --------------------------------
 Packertool65
 --------------------------------
-python make_apk.py --name="\\\n" --package="org.xwalk1234" --app-version="1.1" --app-versionCode="1" --app-versionCodeBase="24" --app-url="http://www.baidu.com" --permission="geolocation" --description="appdescription" --arch=x86
+python make_apk.py --name="qwertyuiopasdfghjklzxcvbnm" --package="org.xwalk.intel" --mode="shared" --app-version="1.0.0.1" --app-versionCode="6123456" --app-versionCodeBase="24" --app-url="http://www.baidu.com" --permission="geolocation" --description="appdescription" --arch=arm
 --------------------------------
 Packertool66
 --------------------------------
-python make_apk.py --name="123" --package="org.xwalk1234" --app-version="1.1" --app-versionCode="1" --app-versionCodeBase="24" --app-url="http://www.baidu.com" --permission="geolocation" --description="appdescription" --arch=x86
+python make_apk.py --name="x_y" --package="org.xwalk.intel" --mode="shared" --app-version="1.0.0.1" --app-versionCode="6123456" --app-versionCodeBase="24" --app-url="http://www.baidu.com" --permission="geolocation" --description="appdescription" --arch=arm
 --------------------------------
 Packertool67
 --------------------------------
-python make_apk.py --name="\\\n" --package="org.xwalk1234" --app-version="1.1" --app-versionCode="1" --app-versionCodeBase="24" --app-url="http://www.baidu.com" --permission="geolocation" --description="appdescription" --arch=x86
+python make_apk.py --name="qwertyuiopasdfghjklzxcvbnm" --package="org.xwalk.intel" --mode="shared" --app-version="1.0.0.1" --app-versionCode="6123456" --app-versionCodeBase="24" --app-url="http://www.baidu.com" --permission="geolocation" --description="appdescription" --arch=arm
 --------------------------------
 Packertool68
 --------------------------------
-python make_apk.py --name="x_y" --package="org.xwalk1234" --app-version="1.1" --app-versionCode="1" --app-versionCodeBase="24" --app-url="http://www.baidu.com" --permission="geolocation" --description="appdescription" --arch=x86
+python make_apk.py --name="123" --package="org.xwalk.intel" --mode="shared" --app-version="1.0.0.1" --app-versionCode="6123456" --app-versionCodeBase="24" --app-url="http://www.baidu.com" --permission="geolocation" --description="appdescription" --arch=arm
 --------------------------------
 Packertool69
 --------------------------------
-python make_apk.py --name="\\\n" --package="org.xwalk1234" --app-version="1.1" --app-versionCode="1" --app-versionCodeBase="24" --app-url="http://www.baidu.com" --permission="geolocation" --description="appdescription" --arch=x86
+python make_apk.py --name="qwertyuiopasdfghjklzxcvbnm" --package="org.xwalk.intel" --mode="shared" --app-version="1.0.0.1" --app-versionCode="6123456" --app-versionCodeBase="24" --app-url="http://www.baidu.com" --permission="geolocation" --description="appdescription" --arch=arm
 --------------------------------
 Packertool70
 --------------------------------
-python make_apk.py --name="-" --package="org.xwalk1234" --app-version="1.1" --app-versionCode="1" --app-versionCodeBase="24" --app-url="http://www.baidu.com" --permission="geolocation" --description="appdescription" --arch=x86
+python make_apk.py --name="abcd" --package="org.xwalk.intel" --mode="shared" --app-version="1.0.0.1" --app-versionCode="6123456" --app-versionCodeBase="24" --app-url="http://www.baidu.com" --permission="geolocation" --description="appdescription" --arch=arm
 --------------------------------
 Packertool71
 --------------------------------
-python make_apk.py --name="\\\n" --package="org.xwalk1234" --app-version="1.1" --app-versionCode="1" --app-versionCodeBase="24" --app-url="http://www.baidu.com" --permission="geolocation" --description="appdescription" --arch=x86
+python make_apk.py --name="\\\n" --package="org.xwalk.intel" --mode="shared" --app-version="1.0.0.1" --app-versionCode="6123456" --app-versionCodeBase="24" --app-url="http://www.baidu.com" --permission="geolocation" --description="appdescription" --arch=arm
 --------------------------------
 Packertool72
 --------------------------------
-python make_apk.py --name="汉字" --package="org.xwalk1234" --app-version="1.1" --app-versionCode="1" --app-versionCodeBase="24" --app-url="http://www.baidu.com" --permission="geolocation" --description="appdescription" --arch=x86
+python make_apk.py --name="abcd" --package="org.xwalk.intel" --mode="shared" --app-version="1.0.0.1" --app-versionCode="6123456" --app-versionCodeBase="24" --app-url="http://www.baidu.com" --permission="geolocation" --description="appdescription" --arch=arm
 --------------------------------
 Packertool73
 --------------------------------
-python make_apk.py --name="*<q>~!#$%^&*()-+={}[]" --package="org.xwalk1234" --app-version="1.1" --app-versionCode="1" --app-versionCodeBase="24" --app-url="http://www.baidu.com" --permission="geolocation" --description="appdescription" --arch=x86
+python make_apk.py --name="\\\n" --package="org.xwalk.intel" --mode="shared" --app-version="1.0.0.1" --app-versionCode="6123456" --app-versionCodeBase="24" --app-url="http://www.baidu.com" --permission="geolocation" --description="appdescription" --arch=arm
 --------------------------------
 Packertool74
 --------------------------------
-python make_apk.py --name="汉字" --package="org.xwalk1234" --app-version="1.1" --app-versionCode="1" --app-versionCodeBase="24" --app-url="http://www.baidu.com" --permission="geolocation" --description="appdescription" --arch=x86
+python make_apk.py --name="123" --package="org.xwalk.intel" --mode="shared" --app-version="1.0.0.1" --app-versionCode="6123456" --app-versionCodeBase="24" --app-url="http://www.baidu.com" --permission="geolocation" --description="appdescription" --arch=arm
 --------------------------------
 Packertool75
 --------------------------------
-python make_apk.py --name="*<q>~!#$%^&*()-+={}[]" --package="org.xwalk1234" --app-version="1.1" --app-versionCode="1" --app-versionCodeBase="24" --app-url="http://www.baidu.com" --permission="geolocation" --description="appdescription" --arch=x86
+python make_apk.py --name="\\\n" --package="org.xwalk.intel" --mode="shared" --app-version="1.0.0.1" --app-versionCode="6123456" --app-versionCodeBase="24" --app-url="http://www.baidu.com" --permission="geolocation" --description="appdescription" --arch=arm
 --------------------------------
 Packertool76
 --------------------------------
-python make_apk.py --name="-" --package="org.xwalk1234" --app-version="1.1" --app-versionCode="1" --app-versionCodeBase="24" --app-url="http://www.baidu.com" --permission="geolocation" --description="appdescription" --arch=x86
+python make_apk.py --name="x_y" --package="org.xwalk.intel" --mode="shared" --app-version="1.0.0.1" --app-versionCode="6123456" --app-versionCodeBase="24" --app-url="http://www.baidu.com" --permission="geolocation" --description="appdescription" --arch=arm
 --------------------------------
 Packertool77
 --------------------------------
-python make_apk.py --name="*<q>~!#$%^&*()-+={}[]" --package="org.xwalk1234" --app-version="1.1" --app-versionCode="1" --app-versionCodeBase="24" --app-url="http://www.baidu.com" --permission="geolocation" --description="appdescription" --arch=x86
+python make_apk.py --name="\\\n" --package="org.xwalk.intel" --mode="shared" --app-version="1.0.0.1" --app-versionCode="6123456" --app-versionCodeBase="24" --app-url="http://www.baidu.com" --permission="geolocation" --description="appdescription" --arch=arm
 --------------------------------
 Packertool78
 --------------------------------
-python make_apk.py --name="x_y" --package="org.xwalk1234" --app-version="1.1" --app-versionCode="1" --app-versionCodeBase="24" --app-url="http://www.baidu.com" --permission="geolocation" --description="appdescription" --arch=x86
+python make_apk.py --name="-" --package="org.xwalk.intel" --mode="shared" --app-version="1.0.0.1" --app-versionCode="6123456" --app-versionCodeBase="24" --app-url="http://www.baidu.com" --permission="geolocation" --description="appdescription" --arch=arm
 --------------------------------
 Packertool79
 --------------------------------
-python make_apk.py --name="*<q>~!#$%^&*()-+={}[]" --package="org.xwalk1234" --app-version="1.1" --app-versionCode="1" --app-versionCodeBase="24" --app-url="http://www.baidu.com" --permission="geolocation" --description="appdescription" --arch=x86
+python make_apk.py --name="\\\n" --package="org.xwalk.intel" --mode="shared" --app-version="1.0.0.1" --app-versionCode="6123456" --app-versionCodeBase="24" --app-url="http://www.baidu.com" --permission="geolocation" --description="appdescription" --arch=arm
 --------------------------------
 Packertool80
 --------------------------------
-python make_apk.py --name="123" --package="org.xwalk1234" --app-version="1.1" --app-versionCode="1" --app-versionCodeBase="24" --app-url="http://www.baidu.com" --permission="geolocation" --description="appdescription" --arch=x86
+python make_apk.py --name="汉字" --package="org.xwalk.intel" --mode="shared" --app-version="1.0.0.1" --app-versionCode="6123456" --app-versionCodeBase="24" --app-url="http://www.baidu.com" --permission="geolocation" --description="appdescription" --arch=arm
 --------------------------------
 Packertool81
 --------------------------------
-python make_apk.py --name="*<q>~!#$%^&*()-+={}[]" --package="org.xwalk1234" --app-version="1.1" --app-versionCode="1" --app-versionCodeBase="24" --app-url="http://www.baidu.com" --permission="geolocation" --description="appdescription" --arch=x86
+python make_apk.py --name="*<q>~!#$%^&*()-+={}[]" --package="org.xwalk.intel" --mode="shared" --app-version="1.0.0.1" --app-versionCode="6123456" --app-versionCodeBase="24" --app-url="http://www.baidu.com" --permission="geolocation" --description="appdescription" --arch=arm
 --------------------------------
 Packertool82
 --------------------------------
-python make_apk.py --name="abcd" --package="org.xwalk1234" --app-version="1.1" --app-versionCode="1" --app-versionCodeBase="24" --app-url="http://www.baidu.com" --permission="geolocation" --description="appdescription" --arch=x86
+python make_apk.py --name="汉字" --package="org.xwalk.intel" --mode="shared" --app-version="1.0.0.1" --app-versionCode="6123456" --app-versionCodeBase="24" --app-url="http://www.baidu.com" --permission="geolocation" --description="appdescription" --arch=arm
 --------------------------------
 Packertool83
 --------------------------------
-python make_apk.py --name=".b" --package="org.xwalk1234" --app-version="1.1" --app-versionCode="1" --app-versionCodeBase="24" --app-url="http://www.baidu.com" --permission="geolocation" --description="appdescription" --arch=x86
+python make_apk.py --name="*<q>~!#$%^&*()-+={}[]" --package="org.xwalk.intel" --mode="shared" --app-version="1.0.0.1" --app-versionCode="6123456" --app-versionCodeBase="24" --app-url="http://www.baidu.com" --permission="geolocation" --description="appdescription" --arch=arm
 --------------------------------
 Packertool84
 --------------------------------
-python make_apk.py --name="abcd" --package="org.xwalk1234" --app-version="1.1" --app-versionCode="1" --app-versionCodeBase="24" --app-url="http://www.baidu.com" --permission="geolocation" --description="appdescription" --arch=x86
+python make_apk.py --name="-" --package="org.xwalk.intel" --mode="shared" --app-version="1.0.0.1" --app-versionCode="6123456" --app-versionCodeBase="24" --app-url="http://www.baidu.com" --permission="geolocation" --description="appdescription" --arch=arm
 --------------------------------
 Packertool85
 --------------------------------
-python make_apk.py --name=".b" --package="org.xwalk1234" --app-version="1.1" --app-versionCode="1" --app-versionCodeBase="24" --app-url="http://www.baidu.com" --permission="geolocation" --description="appdescription" --arch=x86
+python make_apk.py --name="*<q>~!#$%^&*()-+={}[]" --package="org.xwalk.intel" --mode="shared" --app-version="1.0.0.1" --app-versionCode="6123456" --app-versionCodeBase="24" --app-url="http://www.baidu.com" --permission="geolocation" --description="appdescription" --arch=arm
 --------------------------------
 Packertool86
 --------------------------------
-python make_apk.py --name="123" --package="org.xwalk1234" --app-version="1.1" --app-versionCode="1" --app-versionCodeBase="24" --app-url="http://www.baidu.com" --permission="geolocation" --description="appdescription" --arch=x86
+python make_apk.py --name="x_y" --package="org.xwalk.intel" --mode="shared" --app-version="1.0.0.1" --app-versionCode="6123456" --app-versionCodeBase="24" --app-url="http://www.baidu.com" --permission="geolocation" --description="appdescription" --arch=arm
 --------------------------------
 Packertool87
 --------------------------------
-python make_apk.py --name=".b" --package="org.xwalk1234" --app-version="1.1" --app-versionCode="1" --app-versionCodeBase="24" --app-url="http://www.baidu.com" --permission="geolocation" --description="appdescription" --arch=x86
+python make_apk.py --name="*<q>~!#$%^&*()-+={}[]" --package="org.xwalk.intel" --mode="shared" --app-version="1.0.0.1" --app-versionCode="6123456" --app-versionCodeBase="24" --app-url="http://www.baidu.com" --permission="geolocation" --description="appdescription" --arch=arm
 --------------------------------
 Packertool88
 --------------------------------
-python make_apk.py --name="x_y" --package="org.xwalk1234" --app-version="1.1" --app-versionCode="1" --app-versionCodeBase="24" --app-url="http://www.baidu.com" --permission="geolocation" --description="appdescription" --arch=x86
+python make_apk.py --name="123" --package="org.xwalk.intel" --mode="shared" --app-version="1.0.0.1" --app-versionCode="6123456" --app-versionCodeBase="24" --app-url="http://www.baidu.com" --permission="geolocation" --description="appdescription" --arch=arm
 --------------------------------
 Packertool89
 --------------------------------
-python make_apk.py --name=".b" --package="org.xwalk1234" --app-version="1.1" --app-versionCode="1" --app-versionCodeBase="24" --app-url="http://www.baidu.com" --permission="geolocation" --description="appdescription" --arch=x86
+python make_apk.py --name="*<q>~!#$%^&*()-+={}[]" --package="org.xwalk.intel" --mode="shared" --app-version="1.0.0.1" --app-versionCode="6123456" --app-versionCodeBase="24" --app-url="http://www.baidu.com" --permission="geolocation" --description="appdescription" --arch=arm
 --------------------------------
 Packertool90
 --------------------------------
-python make_apk.py --name="-" --package="org.xwalk1234" --app-version="1.1" --app-versionCode="1" --app-versionCodeBase="24" --app-url="http://www.baidu.com" --permission="geolocation" --description="appdescription" --arch=x86
+python make_apk.py --name="abcd" --package="org.xwalk.intel" --mode="shared" --app-version="1.0.0.1" --app-versionCode="6123456" --app-versionCodeBase="24" --app-url="http://www.baidu.com" --permission="geolocation" --description="appdescription" --arch=arm
 --------------------------------
 Packertool91
 --------------------------------
-python make_apk.py --name=".b" --package="org.xwalk1234" --app-version="1.1" --app-versionCode="1" --app-versionCodeBase="24" --app-url="http://www.baidu.com" --permission="geolocation" --description="appdescription" --arch=x86
+python make_apk.py --name=".b" --package="org.xwalk.intel" --mode="shared" --app-version="1.0.0.1" --app-versionCode="6123456" --app-versionCodeBase="24" --app-url="http://www.baidu.com" --permission="geolocation" --description="appdescription" --arch=arm
 --------------------------------
 Packertool92
 --------------------------------
-python make_apk.py --name="汉字" --package="org.xwalk.xwalk.test" --mode="embedded" --app-version="1.0.0.1" --app-versionCode="1" --app-versionCodeBase="24" --app-url="http://www.baidu.com" --permission="geolocation" --description="appdescription" --arch=x86
+python make_apk.py --name="abcd" --package="org.xwalk.intel" --mode="shared" --app-version="1.0.0.1" --app-versionCode="6123456" --app-versionCodeBase="24" --app-url="http://www.baidu.com" --permission="geolocation" --description="appdescription" --arch=arm
 --------------------------------
 Packertool93
 --------------------------------
-python make_apk.py --name=" z" --package="org.xwalk.xwalk.test" --mode="embedded" --app-version="1.0.0.1" --app-versionCode="1" --app-versionCodeBase="24" --app-url="http://www.baidu.com" --permission="geolocation" --description="appdescription" --arch=x86
+python make_apk.py --name=".b" --package="org.xwalk.intel" --mode="shared" --app-version="1.0.0.1" --app-versionCode="6123456" --app-versionCodeBase="24" --app-url="http://www.baidu.com" --permission="geolocation" --description="appdescription" --arch=arm
 --------------------------------
 Packertool94
 --------------------------------
-python make_apk.py --name="汉字" --package="org.xwalk.xwalk.test" --mode="embedded" --app-version="1.0.0.1" --app-versionCode="6123456" --app-versionCodeBase="24" --app-url="http://www.baidu.com" --permission="geolocation" --description="appdescription" --arch=x86
+python make_apk.py --name="123" --package="org.xwalk.intel" --mode="shared" --app-version="1.0.0.1" --app-versionCode="6123456" --app-versionCodeBase="24" --app-url="http://www.baidu.com" --permission="geolocation" --description="appdescription" --arch=arm
 --------------------------------
 Packertool95
 --------------------------------
-python make_apk.py --name=" z" --package="org.xwalk.xwalk.test" --mode="embedded" --app-version="1.1" --app-versionCode="1" --app-versionCodeBase="24" --app-url="http://www.baidu.com" --permission="geolocation" --description="appdescription" --arch=x86
+python make_apk.py --name=".b" --package="org.xwalk.intel" --mode="shared" --app-version="1.0.0.1" --app-versionCode="6123456" --app-versionCodeBase="24" --app-url="http://www.baidu.com" --permission="geolocation" --description="appdescription" --arch=arm
 --------------------------------
 Packertool96
 --------------------------------
-python make_apk.py --name="-" --package="org.xwalk.xwalk.test" --app-version="1.1" --app-versionCode="6123456" --app-versionCodeBase="24" --app-url="http://www.baidu.com" --permission="geolocation" --description="appdescription" --arch=x86
+python make_apk.py --name="x_y" --package="org.xwalk.intel" --mode="shared" --app-version="1.0.0.1" --app-versionCode="6123456" --app-versionCodeBase="24" --app-url="http://www.baidu.com" --permission="geolocation" --description="appdescription" --arch=arm
 --------------------------------
 Packertool97
 --------------------------------
-python make_apk.py --name=" z" --package="org.xwalk.xwalk.test" --app-version="1.1" --app-versionCode="1" --app-versionCodeBase="24" --app-url="http://www.baidu.com" --permission="geolocation" --description="appdescription" --arch=x86
+python make_apk.py --name=".b" --package="org.xwalk.intel" --mode="shared" --app-version="1.0.0.1" --app-versionCode="6123456" --app-versionCodeBase="24" --app-url="http://www.baidu.com" --permission="geolocation" --description="appdescription" --arch=arm
 --------------------------------
 Packertool98
 --------------------------------
-python make_apk.py --name="x_y" --package="org.xwalk1234" --mode="embedded" --app-version="1.0.0.1" --app-versionCode="1" --app-versionCodeBase="24" --app-url="http://www.baidu.com" --permission="geolocation" --description="appdescription" --arch=x86
+python make_apk.py --name="-" --package="org.xwalk.intel" --mode="shared" --app-version="1.0.0.1" --app-versionCode="6123456" --app-versionCodeBase="24" --app-url="http://www.baidu.com" --permission="geolocation" --description="appdescription" --arch=arm
 --------------------------------
 Packertool99
 --------------------------------
-python make_apk.py --name=" z" --package="org.xwalk1234" --mode="embedded" --app-version="1.0.0.1" --app-versionCode="6123456" --app-versionCodeBase="24" --app-url="http://www.baidu.com" --permission="geolocation" --description="appdescription" --arch=x86
+python make_apk.py --name=".b" --package="org.xwalk.intel" --mode="shared" --app-version="1.0.0.1" --app-versionCode="6123456" --app-versionCodeBase="24" --app-url="http://www.baidu.com" --permission="geolocation" --description="appdescription" --arch=arm
 --------------------------------
 Packertool100
 --------------------------------
-python make_apk.py --name="123" --package="org.xwalk.xwalk.test" --mode="embedded" --app-version="1.1" --app-versionCode="1" --app-versionCodeBase="24" --app-url="http://www.baidu.com" --permission="geolocation" --description="appdescription" --arch=x86
+python make_apk.py --name="汉字" --package="org.xwalk.intel" --mode="shared" --app-version="1.0.0.1" --app-versionCode="6123456" --app-versionCodeBase="24" --app-url="http://www.baidu.com" --permission="geolocation" --description="appdescription" --arch=arm
 --------------------------------
 Packertool101
 --------------------------------
-python make_apk.py --name=" z" --package="org.xwalk.xwalk.test" --mode="embedded" --app-version="1.1" --app-versionCode="1" --app-versionCodeBase="24" --app-url="http://www.baidu.com" --permission="geolocation" --description="appdescription" --arch=x86
+python make_apk.py --name=" z" --package="org.xwalk.intel" --mode="shared" --app-version="1.0.0.1" --app-versionCode="6123456" --app-versionCodeBase="24" --app-url="http://www.baidu.com" --permission="geolocation" --description="appdescription" --arch=arm
 --------------------------------
 Packertool102
 --------------------------------
-python make_apk.py --name="abcd" --package="org.xwalk.xwalk.test" --app-version="1.0.0.1" --app-versionCode="6123456" --app-versionCodeBase="24" --app-url="http://www.baidu.com" --permission="geolocation" --description="appdescription" --arch=x86
+python make_apk.py --name="汉字" --package="org.xwalk.intel" --mode="shared" --app-version="1.0.0.1" --app-versionCode="1" --app-versionCodeBase="24" --app-url="http://www.baidu.com" --permission="geolocation" --description="appdescription" --arch=arm
 --------------------------------
 Packertool103
 --------------------------------
-python make_apk.py --name="abcd" --package="org.xwalk1234" --mode="shared" --app-version="1.0.0" --app-versionCode="6123456" --app-versionCodeBase="24" --app-url="http://www.baidu.com" --permission="geolocation" --description="appdescription" --arch=x86
+python make_apk.py --name=" z" --package="org.xwalk.intel" --app-version="1.1" --app-versionCode="6123456" --app-versionCodeBase="24" --app-url="http://www.baidu.com" --permission="geolocation" --description="appdescription" --arch=arm
 --------------------------------
 Packertool104
 --------------------------------
-python make_apk.py --name=" z" --package="org.xwalk.intel" --app-version="1.0.0.1" --app-versionCode="6123456" --app-versionCodeBase="24" --app-url="http://www.baidu.com" --permission="geolocation" --description="appdescription" --arch=x86
+python make_apk.py --name="-" --package="org.xwalk.intel" --app-version="1.1" --app-versionCode="1" --app-versionCodeBase="24" --app-url="http://www.baidu.com" --permission="geolocation" --description="appdescription" --arch=arm
 --------------------------------
 Packertool105
 --------------------------------
-python make_apk.py --name="123" --package="org.xwalk1234" --mode="shared" --app-version="1.0.0" --app-versionCode="6123456" --app-versionCodeBase="24" --app-url="http://www.baidu.com" --permission="geolocation" --description="appdescription" --arch=x86
+python make_apk.py --name=" z" --package="org.xwalk.intel" --app-version="1.1" --app-versionCode="6123456" --app-versionCodeBase="24" --app-url="http://www.baidu.com" --permission="geolocation" --description="appdescription" --arch=arm
 --------------------------------
 Packertool106
 --------------------------------
-python make_apk.py --name=" z" --package="org.xwalk.intel" --mode="shared" --app-version="1.1" --app-versionCode="6123456" --app-versionCodeBase="24" --app-url="http://www.baidu.com" --permission="geolocation" --description="appdescription" --arch=x86
+python make_apk.py --name="x_y" --package="org.xwalk.intel" --app-version="1.0.0.1" --app-versionCode="6123456" --app-versionCodeBase="24" --app-url="http://www.baidu.com" --permission="geolocation" --description="appdescription" --arch=arm
 --------------------------------
 Packertool107
 --------------------------------
-python make_apk.py --name="x_y" --package="org.xwalk.intel" --app-version="1.0.0" --app-versionCode="6123456" --app-versionCodeBase="24" --app-url="http://www.baidu.com" --permission="geolocation" --description="appdescription" --arch=x86
+python make_apk.py --name=" z" --package="org.xwalk.intel" --mode="shared" --app-version="1.1" --app-versionCode="6123456" --app-versionCodeBase="24" --app-url="http://www.baidu.com" --permission="geolocation" --description="appdescription" --arch=arm
 --------------------------------
 Packertool108
 --------------------------------
-python make_apk.py --name=" z" --package="org.xwalk1234" --mode="shared" --app-version="1.0.0.1" --app-versionCode="6123456" --app-versionCodeBase="24" --app-url="http://www.baidu.com" --permission="geolocation" --description="appdescription" --arch=x86
+python make_apk.py --name="123" --package="org.xwalk.intel" --mode="shared" --app-version="1.1" --app-versionCode="1" --app-versionCodeBase="24" --app-url="http://www.baidu.com" --permission="geolocation" --description="appdescription" --arch=arm
 --------------------------------
 Packertool109
 --------------------------------
-python make_apk.py --name="-" --package="org.xwalk.intel" --mode="shared" --app-version="1.0.0" --app-versionCode="6123456" --app-versionCodeBase="24" --app-url="http://www.baidu.com" --permission="geolocation" --description="appdescription" --arch=x86
+python make_apk.py --name=" z" --package="org.xwalk.intel" --app-version="1.1" --app-versionCode="1" --app-versionCodeBase="24" --app-url="http://www.baidu.com" --permission="geolocation" --description="appdescription" --arch=arm
 --------------------------------
 Packertool110
 --------------------------------
-python make_apk.py --name=" z" --package="org.xwalk1234" --app-version="1.0.0" --app-versionCode="6123456" --app-versionCodeBase="24" --app-url="http://www.baidu.com" --permission="geolocation" --description="appdescription" --arch=x86
+python make_apk.py --name="abcd" --package="org.xwalk.intel" --app-version="1.0.0.1" --app-versionCode="6123456" --app-versionCodeBase="24" --app-url="http://www.baidu.com" --permission="geolocation" --description="appdescription" --arch=arm
 --------------------------------
 Packertool111
 --------------------------------
-python make_apk.py --name="汉字" --package="org.xwalk1234" --app-version="1.0.0" --app-versionCode="6123456" --app-versionCodeBase="24" --app-url="http://www.baidu.com" --permission="geolocation" --description="appdescription" --arch=x86
+python make_apk.py --name="abcd" --package="org.xwalk.intel" --mode="shared" --app-version="1.0.0" --app-versionCode="6123456" --app-versionCodeBase="24" --app-url="http://www.baidu.com" --permission="geolocation" --description="appdescription" --arch=arm
 --------------------------------
 Packertool112
 --------------------------------
-python make_apk.py --name=" z" --package="org.xwalk1234" --mode="shared" --app-version="1.1" --app-versionCode="6123456" --app-versionCodeBase="24" --app-url="http://www.baidu.com" --permission="geolocation" --description="appdescription" --arch=x86
+python make_apk.py --name=" z" --package="org.xwalk.intel" --mode="embedded" --app-version="1.0.0.1" --app-versionCode="6123456" --app-versionCodeBase="24" --app-url="http://www.baidu.com" --permission="geolocation" --description="appdescription" --arch=arm
 --------------------------------
 Packertool113
 --------------------------------
-python make_apk.py --name="汉字" --package="org.xwalk.intel" --mode="shared" --app-version="1.0.0" --app-versionCode="6123456" --app-versionCodeBase="24" --app-url="http://www.baidu.com" --permission="geolocation" --description="appdescription" --arch=x86
+python make_apk.py --name="123" --package="org.xwalk.intel" --mode="embedded" --app-version="1.0.0" --app-versionCode="6123456" --app-versionCodeBase="24" --app-url="http://www.baidu.com" --permission="geolocation" --description="appdescription" --arch=arm
 --------------------------------
 Packertool114
 --------------------------------
-python make_apk.py --name=".b" --package="org.xwalk.intel" --mode="shared" --app-version="1.0.0" --app-versionCode="6123456" --app-versionCodeBase="24" --app-url="http://www.baidu.com" --permission="geolocation" --description="appdescription" --arch=x86
+python make_apk.py --name=" z" --package="org.xwalk.intel" --mode="embedded" --app-version="1.0.0.1" --app-versionCode="6123456" --app-versionCodeBase="24" --app-url="http://www.baidu.com" --permission="geolocation" --description="appdescription" --arch=arm
 --------------------------------
 Packertool115
 --------------------------------
-python make_apk.py --name="-" --package="org.xwalk.intel" --mode="shared" --app-version="1.0.0" --app-versionCode="6123456" --app-versionCodeBase="24" --app-url="http://www.baidu.com" --permission="geolocation" --description="appdescription" --arch=x86
+python make_apk.py --name="x_y" --package="org.xwalk.intel" --mode="embedded" --app-version="1.0.0" --app-versionCode="6123456" --app-versionCodeBase="24" --app-url="http://www.baidu.com" --permission="geolocation" --description="appdescription" --arch=arm
 --------------------------------
 Packertool116
 --------------------------------
-python make_apk.py --name=".b" --package="org.xwalk.intel" --mode="shared" --app-version="1.0.0" --app-versionCode="6123456" --app-versionCodeBase="24" --app-url="http://www.baidu.com" --permission="geolocation" --description="appdescription" --arch=x86
+python make_apk.py --name=" z" --package="org.xwalk.intel" --mode="shared" --app-version="1.0.0" --app-versionCode="6123456" --app-versionCodeBase="24" --app-url="http://www.baidu.com" --permission="geolocation" --description="appdescription" --arch=arm
 --------------------------------
 Packertool117
 --------------------------------
-python make_apk.py --name="x_y" --package="org.xwalk.intel" --mode="shared" --app-version="1.0.0" --app-versionCode="6123456" --app-versionCodeBase="24" --app-url="http://www.baidu.com" --permission="geolocation" --description="appdescription" --arch=x86
+python make_apk.py --name="-" --package="org.xwalk.intel" --mode="shared" --app-version="1.0.0.1" --app-versionCode="6123456" --app-versionCodeBase="24" --app-url="http://www.baidu.com" --permission="geolocation" --description="appdescription" --arch=arm
 --------------------------------
 Packertool118
 --------------------------------
-python make_apk.py --name=".b" --package="org.xwalk.intel" --mode="shared" --app-version="1.0.0" --app-versionCode="6123456" --app-versionCodeBase="24" --app-url="http://www.baidu.com" --permission="geolocation" --description="appdescription" --arch=x86
+python make_apk.py --name=" z" --package="org.xwalk.intel" --mode="embedded" --app-version="1.0.0" --app-versionCode="6123456" --app-versionCodeBase="24" --app-url="http://www.baidu.com" --permission="geolocation" --description="appdescription" --arch=arm
 --------------------------------
 Packertool119
 --------------------------------
-python make_apk.py --name="123" --package="org.xwalk.intel" --mode="shared" --app-version="1.0.0" --app-versionCode="6123456" --app-versionCodeBase="24" --app-url="http://www.baidu.com" --permission="geolocation" --description="appdescription" --arch=x86
+python make_apk.py --name="汉字" --package="org.xwalk.intel" --mode="embedded" --app-version="1.0.0" --app-versionCode="6123456" --app-versionCodeBase="24" --app-url="http://www.baidu.com" --permission="geolocation" --description="appdescription" --arch=arm
 --------------------------------
 Packertool120
 --------------------------------
-python make_apk.py --name=".b" --package="org.xwalk.intel" --mode="shared" --app-version="1.0.0" --app-versionCode="6123456" --app-versionCodeBase="24" --app-url="http://www.baidu.com" --permission="geolocation" --description="appdescription" --arch=x86
+python make_apk.py --name=" z" --package="org.xwalk.intel" --mode="embedded" --app-version="1.0.0" --app-versionCode="6123456" --app-versionCodeBase="24" --app-url="http://www.baidu.com" --permission="geolocation" --description="appdescription" --arch=arm
 --------------------------------
 Packertool121
 --------------------------------
-python make_apk.py --name="abcd" --package="org.xwalk.intel" --mode="shared" --app-version="1.0.0" --app-versionCode="6123456" --app-versionCodeBase="24" --app-url="http://www.baidu.com" --permission="geolocation" --description="appdescription" --arch=x86
+python make_apk.py --name="汉字" --package="org.xwalk.intel" --mode="embedded" --app-version="1.0.0" --app-versionCode="6123456" --app-versionCodeBase="24" --app-url="http://www.baidu.com" --permission="geolocation" --description="appdescription" --arch=arm
 --------------------------------
 Packertool122
 --------------------------------
-python make_apk.py --name=".b" --package="org.xwalk.intel" --mode="shared" --app-version="1.0.0" --app-versionCode="6123456" --app-versionCodeBase="24" --app-url="http://www.baidu.com" --permission="geolocation" --description="appdescription" --arch=x86
+python make_apk.py --name=".b" --package="org.xwalk.intel" --mode="embedded" --app-version="1.0.0" --app-versionCode="6123456" --app-versionCodeBase="24" --app-url="http://www.baidu.com" --permission="geolocation" --description="appdescription" --arch=arm
 --------------------------------
 Packertool123
 --------------------------------
-python make_apk.py --name="abcd" --package="org.xwalk.intel" --mode="shared" --app-version="1.0.0" --app-versionCode="6123456" --app-versionCodeBase="24" --app-url="http://www.baidu.com" --permission="geolocation" --description="appdescription" --arch=x86
+python make_apk.py --name="-" --package="org.xwalk.intel" --mode="embedded" --app-version="1.0.0" --app-versionCode="6123456" --app-versionCodeBase="24" --app-url="http://www.baidu.com" --permission="geolocation" --description="appdescription" --arch=arm
 --------------------------------
 Packertool124
 --------------------------------
-python make_apk.py --name="*<q>~!#$%^&*()-+={}[]" --package="org.xwalk.intel" --mode="shared" --app-version="1.0.0" --app-versionCode="6123456" --app-versionCodeBase="24" --app-url="http://www.baidu.com" --permission="geolocation" --description="appdescription" --arch=x86
+python make_apk.py --name=".b" --package="org.xwalk.intel" --mode="embedded" --app-version="1.0.0" --app-versionCode="6123456" --app-versionCodeBase="24" --app-url="http://www.baidu.com" --permission="geolocation" --description="appdescription" --arch=arm
 --------------------------------
 Packertool125
 --------------------------------
-python make_apk.py --name="123" --package="org.xwalk.intel" --mode="shared" --app-version="1.0.0" --app-versionCode="6123456" --app-versionCodeBase="24" --app-url="http://www.baidu.com" --permission="geolocation" --description="appdescription" --arch=x86
+python make_apk.py --name="x_y" --package="org.xwalk.intel" --mode="embedded" --app-version="1.0.0" --app-versionCode="6123456" --app-versionCodeBase="24" --app-url="http://www.baidu.com" --permission="geolocation" --description="appdescription" --arch=arm
 --------------------------------
 Packertool126
 --------------------------------
-python make_apk.py --name="*<q>~!#$%^&*()-+={}[]" --package="org.xwalk.intel" --mode="shared" --app-version="1.0.0" --app-versionCode="6123456" --app-versionCodeBase="24" --app-url="http://www.baidu.com" --permission="geolocation" --description="appdescription" --arch=x86
+python make_apk.py --name=".b" --package="org.xwalk.intel" --mode="embedded" --app-version="1.0.0" --app-versionCode="6123456" --app-versionCodeBase="24" --app-url="http://www.baidu.com" --permission="geolocation" --description="appdescription" --arch=arm
 --------------------------------
 Packertool127
 --------------------------------
-python make_apk.py --name="x_y" --package="org.xwalk.intel" --mode="shared" --app-version="1.0.0" --app-versionCode="6123456" --app-versionCodeBase="24" --app-url="http://www.baidu.com" --permission="geolocation" --description="appdescription" --arch=x86
+python make_apk.py --name="123" --package="org.xwalk.intel" --mode="embedded" --app-version="1.0.0" --app-versionCode="6123456" --app-versionCodeBase="24" --app-url="http://www.baidu.com" --permission="geolocation" --description="appdescription" --arch=arm
 --------------------------------
 Packertool128
 --------------------------------
-python make_apk.py --name="*<q>~!#$%^&*()-+={}[]" --package="org.xwalk.intel" --mode="shared" --app-version="1.0.0" --app-versionCode="6123456" --app-versionCodeBase="24" --app-url="http://www.baidu.com" --permission="geolocation" --description="appdescription" --arch=x86
+python make_apk.py --name=".b" --package="org.xwalk.intel" --mode="embedded" --app-version="1.0.0" --app-versionCode="6123456" --app-versionCodeBase="24" --app-url="http://www.baidu.com" --permission="geolocation" --description="appdescription" --arch=arm
 --------------------------------
 Packertool129
 --------------------------------
-python make_apk.py --name="-" --package="org.xwalk.intel" --mode="shared" --app-version="1.0.0" --app-versionCode="6123456" --app-versionCodeBase="24" --app-url="http://www.baidu.com" --permission="geolocation" --description="appdescription" --arch=x86
+python make_apk.py --name="abcd" --package="org.xwalk.intel" --mode="embedded" --app-version="1.0.0" --app-versionCode="6123456" --app-versionCodeBase="24" --app-url="http://www.baidu.com" --permission="geolocation" --description="appdescription" --arch=arm
 --------------------------------
 Packertool130
 --------------------------------
-python make_apk.py --name="*<q>~!#$%^&*()-+={}[]" --package="org.xwalk.intel" --mode="shared" --app-version="1.0.0" --app-versionCode="6123456" --app-versionCodeBase="24" --app-url="http://www.baidu.com" --permission="geolocation" --description="appdescription" --arch=x86
+python make_apk.py --name=".b" --package="org.xwalk.intel" --mode="embedded" --app-version="1.0.0" --app-versionCode="6123456" --app-versionCodeBase="24" --app-url="http://www.baidu.com" --permission="geolocation" --description="appdescription" --arch=arm
 --------------------------------
 Packertool131
 --------------------------------
-python make_apk.py --name="汉字" --package="org.xwalk.intel" --mode="shared" --app-version="1.0.0" --app-versionCode="6123456" --app-versionCodeBase="24" --app-url="http://www.baidu.com" --permission="geolocation" --description="appdescription" --arch=x86
+python make_apk.py --name="abcd" --package="org.xwalk.intel" --mode="embedded" --app-version="1.0.0" --app-versionCode="6123456" --app-versionCodeBase="24" --app-url="http://www.baidu.com" --permission="geolocation" --description="appdescription" --arch=arm
 --------------------------------
 Packertool132
 --------------------------------
-python make_apk.py --name="*<q>~!#$%^&*()-+={}[]" --package="org.xwalk.intel" --mode="shared" --app-version="1.0.0" --app-versionCode="6123456" --app-versionCodeBase="24" --app-url="http://www.baidu.com" --permission="geolocation" --description="appdescription" --arch=x86
+python make_apk.py --name="*<q>~!#$%^&*()-+={}[]" --package="org.xwalk.intel" --mode="embedded" --app-version="1.0.0" --app-versionCode="6123456" --app-versionCodeBase="24" --app-url="http://www.baidu.com" --permission="geolocation" --description="appdescription" --arch=arm
 --------------------------------
 Packertool133
 --------------------------------
-python make_apk.py --name="汉字" --package="org.xwalk.intel" --mode="shared" --app-version="1.0.0" --app-versionCode="6123456" --app-versionCodeBase="24" --app-url="http://www.baidu.com" --permission="geolocation" --description="appdescription" --arch=x86
+python make_apk.py --name="123" --package="org.xwalk.intel" --mode="embedded" --app-version="1.0.0" --app-versionCode="6123456" --app-versionCodeBase="24" --app-url="http://www.baidu.com" --permission="geolocation" --description="appdescription" --arch=arm
 --------------------------------
 Packertool134
 --------------------------------
-python make_apk.py --name="\\\n" --package="org.xwalk.intel" --mode="shared" --app-version="1.0.0" --app-versionCode="6123456" --app-versionCodeBase="24" --app-url="http://www.baidu.com" --permission="geolocation" --description="appdescription" --arch=x86
+python make_apk.py --name="*<q>~!#$%^&*()-+={}[]" --package="org.xwalk.intel" --mode="embedded" --app-version="1.0.0" --app-versionCode="6123456" --app-versionCodeBase="24" --app-url="http://www.baidu.com" --permission="geolocation" --description="appdescription" --arch=arm
 --------------------------------
 Packertool135
 --------------------------------
-python make_apk.py --name="-" --package="org.xwalk.intel" --mode="shared" --app-version="1.0.0" --app-versionCode="6123456" --app-versionCodeBase="24" --app-url="http://www.baidu.com" --permission="geolocation" --description="appdescription" --arch=x86
+python make_apk.py --name="x_y" --package="org.xwalk.intel" --mode="embedded" --app-version="1.0.0" --app-versionCode="6123456" --app-versionCodeBase="24" --app-url="http://www.baidu.com" --permission="geolocation" --description="appdescription" --arch=arm
 --------------------------------
 Packertool136
 --------------------------------
-python make_apk.py --name="\\\n" --package="org.xwalk.intel" --mode="shared" --app-version="1.0.0" --app-versionCode="6123456" --app-versionCodeBase="24" --app-url="http://www.baidu.com" --permission="geolocation" --description="appdescription" --arch=x86
+python make_apk.py --name="*<q>~!#$%^&*()-+={}[]" --package="org.xwalk.intel" --mode="embedded" --app-version="1.0.0" --app-versionCode="6123456" --app-versionCodeBase="24" --app-url="http://www.baidu.com" --permission="geolocation" --description="appdescription" --arch=arm
 --------------------------------
 Packertool137
 --------------------------------
-python make_apk.py --name="x_y" --package="org.xwalk.intel" --mode="shared" --app-version="1.0.0" --app-versionCode="6123456" --app-versionCodeBase="24" --app-url="http://www.baidu.com" --permission="geolocation" --description="appdescription" --arch=x86
+python make_apk.py --name="-" --package="org.xwalk.intel" --mode="embedded" --app-version="1.0.0" --app-versionCode="6123456" --app-versionCodeBase="24" --app-url="http://www.baidu.com" --permission="geolocation" --description="appdescription" --arch=arm
 --------------------------------
 Packertool138
 --------------------------------
-python make_apk.py --name="\\\n" --package="org.xwalk.intel" --mode="shared" --app-version="1.0.0" --app-versionCode="6123456" --app-versionCodeBase="24" --app-url="http://www.baidu.com" --permission="geolocation" --description="appdescription" --arch=x86
+python make_apk.py --name="*<q>~!#$%^&*()-+={}[]" --package="org.xwalk.intel" --mode="embedded" --app-version="1.0.0" --app-versionCode="6123456" --app-versionCodeBase="24" --app-url="http://www.baidu.com" --permission="geolocation" --description="appdescription" --arch=arm
 --------------------------------
 Packertool139
 --------------------------------
-python make_apk.py --name="123" --package="org.xwalk.intel" --mode="shared" --app-version="1.0.0" --app-versionCode="6123456" --app-versionCodeBase="24" --app-url="http://www.baidu.com" --permission="geolocation" --description="appdescription" --arch=x86
+python make_apk.py --name="汉字" --package="org.xwalk.intel" --mode="embedded" --app-version="1.0.0" --app-versionCode="6123456" --app-versionCodeBase="24" --app-url="http://www.baidu.com" --permission="geolocation" --description="appdescription" --arch=arm
 --------------------------------
 Packertool140
 --------------------------------
-python make_apk.py --name="\\\n" --package="org.xwalk.intel" --mode="shared" --app-version="1.0.0" --app-versionCode="6123456" --app-versionCodeBase="24" --app-url="http://www.baidu.com" --permission="geolocation" --description="appdescription" --arch=x86
+python make_apk.py --name="*<q>~!#$%^&*()-+={}[]" --package="org.xwalk.intel" --mode="embedded" --app-version="1.0.0" --app-versionCode="6123456" --app-versionCodeBase="24" --app-url="http://www.baidu.com" --permission="geolocation" --description="appdescription" --arch=arm
 --------------------------------
 Packertool141
 --------------------------------
-python make_apk.py --name="abcd" --package="org.xwalk.intel" --mode="shared" --app-version="1.0.0" --app-versionCode="6123456" --app-versionCodeBase="24" --app-url="http://www.baidu.com" --permission="geolocation" --description="appdescription" --arch=x86
+python make_apk.py --name="汉字" --package="org.xwalk.intel" --mode="embedded" --app-version="1.0.0" --app-versionCode="6123456" --app-versionCodeBase="24" --app-url="http://www.baidu.com" --permission="geolocation" --description="appdescription" --arch=arm
 --------------------------------
 Packertool142
 --------------------------------
-python make_apk.py --name="\\\n" --package="org.xwalk.intel" --mode="shared" --app-version="1.0.0" --app-versionCode="6123456" --app-versionCodeBase="24" --app-url="http://www.baidu.com" --permission="geolocation" --description="appdescription" --arch=x86
+python make_apk.py --name="\\\n" --package="org.xwalk.intel" --mode="embedded" --app-version="1.0.0" --app-versionCode="6123456" --app-versionCodeBase="24" --app-url="http://www.baidu.com" --permission="geolocation" --description="appdescription" --arch=arm
 --------------------------------
 Packertool143
 --------------------------------
-python make_apk.py --name="abcd" --package="org.xwalk.intel" --mode="shared" --app-version="1.0.0" --app-versionCode="6123456" --app-versionCodeBase="24" --app-url="http://www.baidu.com" --permission="geolocation" --description="appdescription" --arch=x86
+python make_apk.py --name="-" --package="org.xwalk.intel" --mode="embedded" --app-version="1.0.0" --app-versionCode="6123456" --app-versionCodeBase="24" --app-url="http://www.baidu.com" --permission="geolocation" --description="appdescription" --arch=arm
 --------------------------------
 Packertool144
 --------------------------------
-python make_apk.py --name="qwertyuiopasdfghjklzxcvbnm" --package="org.xwalk.intel" --mode="shared" --app-version="1.0.0" --app-versionCode="6123456" --app-versionCodeBase="24" --app-url="http://www.baidu.com" --permission="geolocation" --description="appdescription" --arch=x86
+python make_apk.py --name="\\\n" --package="org.xwalk.intel" --mode="embedded" --app-version="1.0.0" --app-versionCode="6123456" --app-versionCodeBase="24" --app-url="http://www.baidu.com" --permission="geolocation" --description="appdescription" --arch=arm
 --------------------------------
 Packertool145
 --------------------------------
-python make_apk.py --name="123" --package="org.xwalk.intel" --mode="shared" --app-version="1.0.0" --app-versionCode="6123456" --app-versionCodeBase="24" --app-url="http://www.baidu.com" --permission="geolocation" --description="appdescription" --arch=x86
+python make_apk.py --name="x_y" --package="org.xwalk.intel" --mode="embedded" --app-version="1.0.0" --app-versionCode="6123456" --app-versionCodeBase="24" --app-url="http://www.baidu.com" --permission="geolocation" --description="appdescription" --arch=arm
 --------------------------------
 Packertool146
 --------------------------------
-python make_apk.py --name="qwertyuiopasdfghjklzxcvbnm" --package="org.xwalk.intel" --mode="shared" --app-version="1.0.0" --app-versionCode="6123456" --app-versionCodeBase="24" --app-url="http://www.baidu.com" --permission="geolocation" --description="appdescription" --arch=x86
+python make_apk.py --name="\\\n" --package="org.xwalk.intel" --mode="embedded" --app-version="1.0.0" --app-versionCode="6123456" --app-versionCodeBase="24" --app-url="http://www.baidu.com" --permission="geolocation" --description="appdescription" --arch=arm
 --------------------------------
 Packertool147
 --------------------------------
-python make_apk.py --name="x_y" --package="org.xwalk.intel" --mode="shared" --app-version="1.0.0" --app-versionCode="6123456" --app-versionCodeBase="24" --app-url="http://www.baidu.com" --permission="geolocation" --description="appdescription" --arch=x86
+python make_apk.py --name="123" --package="org.xwalk.intel" --mode="embedded" --app-version="1.0.0" --app-versionCode="6123456" --app-versionCodeBase="24" --app-url="http://www.baidu.com" --permission="geolocation" --description="appdescription" --arch=arm
 --------------------------------
 Packertool148
 --------------------------------
-python make_apk.py --name="qwertyuiopasdfghjklzxcvbnm" --package="org.xwalk.intel" --mode="shared" --app-version="1.0.0" --app-versionCode="6123456" --app-versionCodeBase="24" --app-url="http://www.baidu.com" --permission="geolocation" --description="appdescription" --arch=x86
+python make_apk.py --name="\\\n" --package="org.xwalk.intel" --mode="embedded" --app-version="1.0.0" --app-versionCode="6123456" --app-versionCodeBase="24" --app-url="http://www.baidu.com" --permission="geolocation" --description="appdescription" --arch=arm
 --------------------------------
 Packertool149
 --------------------------------
-python make_apk.py --name="-" --package="org.xwalk.intel" --mode="shared" --app-version="1.0.0" --app-versionCode="6123456" --app-versionCodeBase="24" --app-url="http://www.baidu.com" --permission="geolocation" --description="appdescription" --arch=x86
+python make_apk.py --name="abcd" --package="org.xwalk.intel" --mode="embedded" --app-version="1.0.0" --app-versionCode="6123456" --app-versionCodeBase="24" --app-url="http://www.baidu.com" --permission="geolocation" --description="appdescription" --arch=arm
 --------------------------------
 Packertool150
 --------------------------------
-python make_apk.py --name="qwertyuiopasdfghjklzxcvbnm" --package="org.xwalk.intel" --mode="shared" --app-version="1.0.0" --app-versionCode="6123456" --app-versionCodeBase="24" --app-url="http://www.baidu.com" --permission="geolocation" --description="appdescription" --arch=x86
+python make_apk.py --name="\\\n" --package="org.xwalk.intel" --mode="embedded" --app-version="1.0.0" --app-versionCode="6123456" --app-versionCodeBase="24" --app-url="http://www.baidu.com" --permission="geolocation" --description="appdescription" --arch=arm
 --------------------------------
 Packertool151
 --------------------------------
-python make_apk.py --name="汉字" --package="org.xwalk.intel" --mode="shared" --app-version="1.0.0" --app-versionCode="6123456" --app-versionCodeBase="24" --app-url="http://www.baidu.com" --permission="geolocation" --description="appdescription" --arch=x86
+python make_apk.py --name="abcd" --package="org.xwalk.intel" --mode="embedded" --app-version="1.0.0" --app-versionCode="6123456" --app-versionCodeBase="24" --app-url="http://www.baidu.com" --permission="geolocation" --description="appdescription" --arch=arm
 --------------------------------
 Packertool152
 --------------------------------
-python make_apk.py --name="qwertyuiopasdfghjklzxcvbnm" --package="org.xwalk.intel" --mode="shared" --app-version="1.0.0" --app-versionCode="6123456" --app-versionCodeBase="24" --app-url="http://www.baidu.com" --permission="geolocation" --description="appdescription" --arch=x86
+python make_apk.py --name="qwertyuiopasdfghjklzxcvbnm" --package="org.xwalk.intel" --mode="embedded" --app-version="1.0.0" --app-versionCode="6123456" --app-versionCodeBase="24" --app-url="http://www.baidu.com" --permission="geolocation" --description="appdescription" --arch=arm
 --------------------------------
 Packertool153
 --------------------------------
-python make_apk.py --name="qwertyuiopasdfghjklzxcvbnm" --package="org.xwalk" --mode="shared" --app-version="1.0.0" --app-versionCode="6123456" --app-versionCodeBase="24" --app-url="http://www.baidu.com" --permission="geolocation" --description="appdescription" --arch=x86
+python make_apk.py --name="123" --package="org.xwalk.intel" --mode="embedded" --app-version="1.0.0" --app-versionCode="6123456" --app-versionCodeBase="24" --app-url="http://www.baidu.com" --permission="geolocation" --description="appdescription" --arch=arm
 --------------------------------
 Packertool154
 --------------------------------
-python make_apk.py --name="汉字" --package="org.xwalk" --mode="shared" --app-version="1.0.0" --app-versionCode="6123456" --app-versionCodeBase="24" --app-url="http://www.baidu.com" --permission="geolocation" --description="appdescription" --arch=x86
+python make_apk.py --name="qwertyuiopasdfghjklzxcvbnm" --package="org.xwalk.intel" --mode="embedded" --app-version="1.0.0" --app-versionCode="6123456" --app-versionCodeBase="24" --app-url="http://www.baidu.com" --permission="geolocation" --description="appdescription" --arch=arm
 --------------------------------
 Packertool155
 --------------------------------
-python make_apk.py --name="qwertyuiopasdfghjklzxcvbnm" --package="org.xwalk" --mode="shared" --app-version="1.0.0" --app-versionCode="6123456" --app-versionCodeBase="24" --app-url="http://www.baidu.com" --permission="geolocation" --description="appdescription" --arch=x86
+python make_apk.py --name="x_y" --package="org.xwalk.intel" --mode="embedded" --app-version="1.0.0" --app-versionCode="6123456" --app-versionCodeBase="24" --app-url="http://www.baidu.com" --permission="geolocation" --description="appdescription" --arch=arm
 --------------------------------
 Packertool156
 --------------------------------
-python make_apk.py --name="-" --package="org.xwalk" --mode="shared" --app-version="1.0.0" --app-versionCode="6123456" --app-versionCodeBase="24" --app-url="http://www.baidu.com" --permission="geolocation" --description="appdescription" --arch=x86
+python make_apk.py --name="qwertyuiopasdfghjklzxcvbnm" --package="org.xwalk.intel" --mode="embedded" --app-version="1.0.0" --app-versionCode="6123456" --app-versionCodeBase="24" --app-url="http://www.baidu.com" --permission="geolocation" --description="appdescription" --arch=arm
 --------------------------------
 Packertool157
 --------------------------------
-python make_apk.py --name="qwertyuiopasdfghjklzxcvbnm" --package="org.xwalk" --mode="shared" --app-version="1.0.0" --app-versionCode="6123456" --app-versionCodeBase="24" --app-url="http://www.baidu.com" --permission="geolocation" --description="appdescription" --arch=x86
+python make_apk.py --name="-" --package="org.xwalk.intel" --mode="embedded" --app-version="1.0.0" --app-versionCode="6123456" --app-versionCodeBase="24" --app-url="http://www.baidu.com" --permission="geolocation" --description="appdescription" --arch=arm
 --------------------------------
 Packertool158
 --------------------------------
-python make_apk.py --name="x_y" --package="org.xwalk" --mode="shared" --app-version="1.0.0" --app-versionCode="6123456" --app-versionCodeBase="24" --app-url="http://www.baidu.com" --permission="geolocation" --description="appdescription" --arch=x86
+python make_apk.py --name="qwertyuiopasdfghjklzxcvbnm" --package="org.xwalk.intel" --mode="embedded" --app-version="1.0.0" --app-versionCode="6123456" --app-versionCodeBase="24" --app-url="http://www.baidu.com" --permission="geolocation" --description="appdescription" --arch=arm
 --------------------------------
 Packertool159
 --------------------------------
-python make_apk.py --name="qwertyuiopasdfghjklzxcvbnm" --package="org.xwalk" --mode="shared" --app-version="1.0.0" --app-versionCode="6123456" --app-versionCodeBase="24" --app-url="http://www.baidu.com" --permission="geolocation" --description="appdescription" --arch=x86
+python make_apk.py --name="汉字" --package="org.xwalk.intel" --mode="embedded" --app-version="1.0.0" --app-versionCode="6123456" --app-versionCodeBase="24" --app-url="http://www.baidu.com" --permission="geolocation" --description="appdescription" --arch=arm
 --------------------------------
 Packertool160
 --------------------------------
-python make_apk.py --name="123" --package="org.xwalk" --mode="shared" --app-version="1.0.0" --app-versionCode="6123456" --app-versionCodeBase="24" --app-url="http://www.baidu.com" --permission="geolocation" --description="appdescription" --arch=x86
---------------------------------
-Packertool161
---------------------------------
-python make_apk.py --name="qwertyuiopasdfghjklzxcvbnm" --package="org.xwalk" --mode="shared" --app-version="1.0.0" --app-versionCode="6123456" --app-versionCodeBase="24" --app-url="http://www.baidu.com" --permission="geolocation" --description="appdescription" --arch=x86
---------------------------------
-Packertool162
---------------------------------
-python make_apk.py --name="abcd" --package="org.xwalk" --mode="shared" --app-version="1.0.0" --app-versionCode="6123456" --app-versionCodeBase="24" --app-url="http://www.baidu.com" --permission="geolocation" --description="appdescription" --arch=x86
---------------------------------
-Packertool163
---------------------------------
-python make_apk.py --name="\\\n" --package="org.xwalk" --mode="shared" --app-version="1.0.0" --app-versionCode="6123456" --app-versionCodeBase="24" --app-url="http://www.baidu.com" --permission="geolocation" --description="appdescription" --arch=x86
---------------------------------
-Packertool164
---------------------------------
-python make_apk.py --name="abcd" --package="org.xwalk" --mode="shared" --app-version="1.0.0" --app-versionCode="6123456" --app-versionCodeBase="24" --app-url="http://www.baidu.com" --permission="geolocation" --description="appdescription" --arch=x86
---------------------------------
-Packertool165
---------------------------------
-python make_apk.py --name="\\\n" --package="org.xwalk" --mode="shared" --app-version="1.0.0" --app-versionCode="6123456" --app-versionCodeBase="24" --app-url="http://www.baidu.com" --permission="geolocation" --description="appdescription" --arch=x86
---------------------------------
-Packertool166
---------------------------------
-python make_apk.py --name="123" --package="org.xwalk" --mode="shared" --app-version="1.0.0" --app-versionCode="6123456" --app-versionCodeBase="24" --app-url="http://www.baidu.com" --permission="geolocation" --description="appdescription" --arch=x86
---------------------------------
-Packertool167
---------------------------------
-python make_apk.py --name="\\\n" --package="org.xwalk" --mode="shared" --app-version="1.0.0" --app-versionCode="6123456" --app-versionCodeBase="24" --app-url="http://www.baidu.com" --permission="geolocation" --description="appdescription" --arch=x86
---------------------------------
-Packertool168
---------------------------------
-python make_apk.py --name="x_y" --package="org.xwalk" --mode="shared" --app-version="1.0.0" --app-versionCode="6123456" --app-versionCodeBase="24" --app-url="http://www.baidu.com" --permission="geolocation" --description="appdescription" --arch=x86
---------------------------------
-Packertool169
---------------------------------
-python make_apk.py --name="\\\n" --package="org.xwalk" --mode="shared" --app-version="1.0.0" --app-versionCode="6123456" --app-versionCodeBase="24" --app-url="http://www.baidu.com" --permission="geolocation" --description="appdescription" --arch=x86
---------------------------------
-Packertool170
---------------------------------
-python make_apk.py --name="-" --package="org.xwalk" --mode="shared" --app-version="1.0.0" --app-versionCode="6123456" --app-versionCodeBase="24" --app-url="http://www.baidu.com" --permission="geolocation" --description="appdescription" --arch=x86
---------------------------------
-Packertool171
---------------------------------
-python make_apk.py --name="\\\n" --package="org.xwalk" --mode="shared" --app-version="1.0.0" --app-versionCode="6123456" --app-versionCodeBase="24" --app-url="http://www.baidu.com" --permission="geolocation" --description="appdescription" --arch=x86
---------------------------------
-Packertool172
---------------------------------
-python make_apk.py --name="汉字" --package="org.xwalk" --mode="shared" --app-version="1.0.0" --app-versionCode="6123456" --app-versionCodeBase="24" --app-url="http://www.baidu.com" --permission="geolocation" --description="appdescription" --arch=x86
---------------------------------
-Packertool173
---------------------------------
-python make_apk.py --name="*<q>~!#$%^&*()-+={}[]" --package="org.xwalk" --mode="shared" --app-version="1.0.0" --app-versionCode="6123456" --app-versionCodeBase="24" --app-url="http://www.baidu.com" --permission="geolocation" --description="appdescription" --arch=x86
---------------------------------
-Packertool174
---------------------------------
-python make_apk.py --name="汉字" --package="org.xwalk" --mode="shared" --app-version="1.0.0" --app-versionCode="6123456" --app-versionCodeBase="24" --app-url="http://www.baidu.com" --permission="geolocation" --description="appdescription" --arch=x86
---------------------------------
-Packertool175
---------------------------------
-python make_apk.py --name="*<q>~!#$%^&*()-+={}[]" --package="org.xwalk" --mode="shared" --app-version="1.0.0" --app-versionCode="6123456" --app-versionCodeBase="24" --app-url="http://www.baidu.com" --permission="geolocation" --description="appdescription" --arch=x86
---------------------------------
-Packertool176
---------------------------------
-python make_apk.py --name="-" --package="org.xwalk" --mode="shared" --app-version="1.0.0" --app-versionCode="6123456" --app-versionCodeBase="24" --app-url="http://www.baidu.com" --permission="geolocation" --description="appdescription" --arch=x86
---------------------------------
-Packertool177
---------------------------------
-python make_apk.py --name="*<q>~!#$%^&*()-+={}[]" --package="org.xwalk" --mode="shared" --app-version="1.0.0" --app-versionCode="6123456" --app-versionCodeBase="24" --app-url="http://www.baidu.com" --permission="geolocation" --description="appdescription" --arch=x86
---------------------------------
-Packertool178
---------------------------------
-python make_apk.py --name="x_y" --package="org.xwalk" --mode="shared" --app-version="1.0.0" --app-versionCode="6123456" --app-versionCodeBase="24" --app-url="http://www.baidu.com" --permission="geolocation" --description="appdescription" --arch=x86
---------------------------------
-Packertool179
---------------------------------
-python make_apk.py --name="*<q>~!#$%^&*()-+={}[]" --package="org.xwalk" --mode="shared" --app-version="1.0.0" --app-versionCode="6123456" --app-versionCodeBase="24" --app-url="http://www.baidu.com" --permission="geolocation" --description="appdescription" --arch=x86
---------------------------------
-Packertool180
---------------------------------
-python make_apk.py --name="123" --package="org.xwalk" --mode="shared" --app-version="1.0.0" --app-versionCode="6123456" --app-versionCodeBase="24" --app-url="http://www.baidu.com" --permission="geolocation" --description="appdescription" --arch=x86
---------------------------------
-Packertool181
---------------------------------
-python make_apk.py --name="*<q>~!#$%^&*()-+={}[]" --package="org.xwalk" --mode="shared" --app-version="1.0.0" --app-versionCode="6123456" --app-versionCodeBase="24" --app-url="http://www.baidu.com" --permission="geolocation" --description="appdescription" --arch=x86
---------------------------------
-Packertool182
---------------------------------
-python make_apk.py --name="abcd" --package="org.xwalk" --mode="shared" --app-version="1.0.0" --app-versionCode="6123456" --app-versionCodeBase="24" --app-url="http://www.baidu.com" --permission="geolocation" --description="appdescription" --arch=x86
---------------------------------
-Packertool183
---------------------------------
-python make_apk.py --name=".b" --package="org.xwalk" --mode="shared" --app-version="1.0.0" --app-versionCode="6123456" --app-versionCodeBase="24" --app-url="http://www.baidu.com" --permission="geolocation" --description="appdescription" --arch=x86
---------------------------------
-Packertool184
---------------------------------
-python make_apk.py --name="abcd" --package="org.xwalk" --mode="shared" --app-version="1.0.0" --app-versionCode="6123456" --app-versionCodeBase="24" --app-url="http://www.baidu.com" --permission="geolocation" --description="appdescription" --arch=x86
---------------------------------
-Packertool185
---------------------------------
-python make_apk.py --name=".b" --package="org.xwalk" --mode="shared" --app-version="1.0.0" --app-versionCode="6123456" --app-versionCodeBase="24" --app-url="http://www.baidu.com" --permission="geolocation" --description="appdescription" --arch=x86
---------------------------------
-Packertool186
---------------------------------
-python make_apk.py --name="123" --package="org.xwalk" --mode="shared" --app-version="1.0.0" --app-versionCode="6123456" --app-versionCodeBase="24" --app-url="http://www.baidu.com" --permission="geolocation" --description="appdescription" --arch=x86
---------------------------------
-Packertool187
---------------------------------
-python make_apk.py --name=".b" --package="org.xwalk" --mode="shared" --app-version="1.0.0" --app-versionCode="6123456" --app-versionCodeBase="24" --app-url="http://www.baidu.com" --permission="geolocation" --description="appdescription" --arch=x86
---------------------------------
-Packertool188
---------------------------------
-python make_apk.py --name="x_y" --package="org.xwalk" --mode="shared" --app-version="1.0.0" --app-versionCode="6123456" --app-versionCodeBase="24" --app-url="http://www.baidu.com" --permission="geolocation" --description="appdescription" --arch=x86
---------------------------------
-Packertool189
---------------------------------
-python make_apk.py --name=".b" --package="org.xwalk" --mode="shared" --app-version="1.0.0" --app-versionCode="6123456" --app-versionCodeBase="24" --app-url="http://www.baidu.com" --permission="geolocation" --description="appdescription" --arch=x86
---------------------------------
-Packertool190
---------------------------------
-python make_apk.py --name="-" --package="org.xwalk" --mode="shared" --app-version="1.0.0" --app-versionCode="6123456" --app-versionCodeBase="24" --app-url="http://www.baidu.com" --permission="geolocation" --description="appdescription" --arch=x86
---------------------------------
-Packertool191
---------------------------------
-python make_apk.py --name=".b" --package="org.xwalk" --mode="shared" --app-version="1.0.0" --app-versionCode="6123456" --app-versionCodeBase="24" --app-url="http://www.baidu.com" --permission="geolocation" --description="appdescription" --arch=x86
---------------------------------
-Packertool192
---------------------------------
-python make_apk.py --name="汉字" --package="org.xwalk" --mode="shared" --app-version="1.0.0" --app-versionCode="6123456" --app-versionCodeBase="24" --app-url="http://www.baidu.com" --permission="geolocation" --description="appdescription" --arch=x86
---------------------------------
-Packertool193
---------------------------------
-python make_apk.py --name=" z" --package="org.xwalk.intel" --mode="shared" --app-version="1.0.0" --app-versionCode="6123456" --app-versionCodeBase="24" --app-url="http://www.baidu.com" --permission="geolocation" --description="appdescription" --arch=x86
---------------------------------
-Packertool194
---------------------------------
-python make_apk.py --name="汉字" --package="org.xwalk" --mode="shared" --app-version="1.0.0" --app-versionCode="6123456" --app-versionCodeBase="24" --app-url="http://www.baidu.com" --permission="geolocation" --description="appdescription" --arch=x86
---------------------------------
-Packertool195
---------------------------------
-python make_apk.py --name=" z" --package="org.xwalk.intel" --mode="shared" --app-version="1.0.0" --app-versionCode="6123456" --app-versionCodeBase="24" --app-url="http://www.baidu.com" --permission="geolocation" --description="appdescription" --arch=x86
---------------------------------
-Packertool196
---------------------------------
-python make_apk.py --name="-" --package="org.xwalk" --mode="shared" --app-version="1.0.0" --app-versionCode="6123456" --app-versionCodeBase="24" --app-url="http://www.baidu.com" --permission="geolocation" --description="appdescription" --arch=x86
---------------------------------
-Packertool197
---------------------------------
-python make_apk.py --name=" z" --package="org.xwalk" --mode="shared" --app-version="1.0.0" --app-versionCode="6123456" --app-versionCodeBase="24" --app-url="http://www.baidu.com" --permission="geolocation" --description="appdescription" --arch=x86
---------------------------------
-Packertool198
---------------------------------
-python make_apk.py --name="x_y" --package="org.xwalk" --mode="shared" --app-version="1.0.0" --app-versionCode="6123456" --app-versionCodeBase="24" --app-url="http://www.baidu.com" --permission="geolocation" --description="appdescription" --arch=x86
---------------------------------
-Packertool199
---------------------------------
-python make_apk.py --name=" z" --package="org.xwalk" --mode="shared" --app-version="1.0.0" --app-versionCode="6123456" --app-versionCodeBase="24" --app-url="http://www.baidu.com" --permission="geolocation" --description="appdescription" --arch=x86
---------------------------------
-Packertool200
---------------------------------
-python make_apk.py --name="123" --package="org.xwalk" --mode="shared" --app-version="1.0.0" --app-versionCode="6123456" --app-versionCodeBase="24" --app-url="http://www.baidu.com" --permission="geolocation" --description="appdescription" --arch=x86
---------------------------------
-Packertool201
---------------------------------
-python make_apk.py --name=" z" --package="org.xwalk" --mode="shared" --app-version="1.0.0" --app-versionCode="6123456" --app-versionCodeBase="24" --app-url="http://www.baidu.com" --permission="geolocation" --description="appdescription" --arch=x86
---------------------------------
-Packertool202
---------------------------------
-python make_apk.py --name="abcd" --package="org.xwalk.intel" --mode="shared" --app-version="1.0.0" --app-versionCode="6123456" --app-versionCodeBase="24" --app-url="http://www.baidu.com" --permission="geolocation" --description="appdescription" --arch=x86
---------------------------------
-Packertool203
---------------------------------
-python make_apk.py --name="targetdir_test" --package="org.xwalk.intel" --mode="embedded" --app-url="http://www.baidu.com" --arch=x86
---------------------------------
-Packertool204
---------------------------------
-python make_apk.py --name="targetdir_test" --package="org.xwalk.intel" --mode="embedded" --app-url="http://www.baidu.com" --target-dir="./" --arch=x86
---------------------------------
-Packertool205
---------------------------------
-python make_apk.py --name="targetdir_test" --package="org.xwalk.intel" --mode="embedded" --app-url="http://www.baidu.com" --target-dir="/tmp" --arch=x86
---------------------------------
-Packertool206
---------------------------------
-python make_apk.py --name="targetdir_test" --package="org.xwalk.intel" --mode="embedded" --app-url="http://www.baidu.com" --target-dir="apkdir" --arch=x86
---------------------------------
-Packertool207
---------------------------------
-python make_apk.py --name="permission_test" --package="org.xwalk.intel" --mode="embedded" --app-url="http://www.baidu.com" --permission="GEOLOCATION" --arch=x86
---------------------------------
-Packertool208
---------------------------------
-python make_apk.py --name="permission_test" --package="org.xwalk.intel" --mode="embedded" --app-url="http://www.baidu.com" --permission="geolocation:Contacts" --arch=x86
---------------------------------
-Packertool209
---------------------------------
-python make_apk.py --name="permission_test" --package="org.xwalk.intel" --mode="embedded" --app-url="http://www.baidu.com" --permission="contacts:Contacts" --arch=x86
---------------------------------
-Packertool210
---------------------------------
-python make_apk.py --name="permission_test" --package="org.xwalk.intel" --mode="embedded" --app-url="http://www.baidu.com" --permission="contacts:geolocation:messaging:vibration" --arch=x86
+python make_apk.py --name="qwertyuiopasdfghjklzxcvbnm" --package="org.xwalk.intel" --mode="embedded" --app-version="1.0.0" --app-versionCode="6123456" --app-versionCodeBase="24" --app-url="http://www.baidu.com" --permission="geolocation" --description="appdescription" --arch=arm
 --------------------------------

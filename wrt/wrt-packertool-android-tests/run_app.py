@@ -28,12 +28,13 @@ def tryRunApp(num, caseDir):
             print (" get env error\n")
             sys.exit(1)
 
-        resultfile = open(ConstPath + "/report/packRes.txt")
+
         fp = open(ConstPath + "/arch.txt")
         if fp.read().strip("\n\t") != "x86":
             ARCH = "arm"
         fp.close()
 
+        resultfile = open(apkDir + "/apks/" + ARCH + "/Pkg_result.txt")
         pg = open(ConstPath + "/report/pgName.txt")
         lines = resultfile.readlines()
         pglines = pg.readlines()
@@ -52,17 +53,12 @@ def tryRunApp(num, caseDir):
                     androidName = pgName.split(".")[-1].split("_")
                     acivityName = ''.join([i.capitalize()
                                            for i in androidName if i])
-                    instatus = commands.getstatusoutput(
-                        "adb -s " +
-                        device +
-                        " install -r " +
-                        apkDir +
-                        "/apks/" +
-                        ARCH +
-                        "/" +
-                        num +
-                        "/" +
-                        "*.apk")
+                    apkpath = apkDir + "/apks/" + ARCH + "/" + num
+                    if os.path.exists(apkpath + "/apkdir"):
+                        instcmd = "adb -s " + device + " install -r " + apkpath + "/apkdir/*.apk"
+                    else:
+                        instcmd = "adb -s " + device + " install -r " + apkpath + "/*.apk"
+                    instatus = commands.getstatusoutput(instcmd)
                     if instatus[0] == 0:
                         print "Install APK ---------------->O.K"
                         pmstatus = commands.getstatusoutput(
