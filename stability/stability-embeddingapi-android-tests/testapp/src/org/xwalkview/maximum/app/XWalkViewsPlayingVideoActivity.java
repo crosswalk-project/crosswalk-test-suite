@@ -4,10 +4,9 @@
 
 package org.xwalkview.maximum.app;
 
-import org.xwalk.core.XWalkPreferences;
 import org.xwalk.core.XWalkUIClient;
 import org.xwalk.core.XWalkView;
-import org.xwalkview.maximum.base.XWalkBaseTabActivity;
+import org.xwalkview.maximum.base.XWalkBaseTabVideoActivity;
 
 import android.os.Bundle;
 import android.text.TextUtils;
@@ -15,13 +14,12 @@ import android.view.View;
 import android.widget.TabHost.TabContentFactory;
 import android.widget.TabHost.TabSpec;
 
-public class TabTextureViewsActivity extends XWalkBaseTabActivity {
+public class XWalkViewsPlayingVideoActivity extends XWalkBaseTabVideoActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        XWalkPreferences.setValue(XWalkPreferences.ANIMATABLE_XWALK_VIEW, true);
-
+        views_num_text.setText(VIEWS_NUM_ONE);
         mAddViewsButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -44,7 +42,7 @@ public class TabTextureViewsActivity extends XWalkBaseTabActivity {
 
                         @Override
                         public View createTabContent(String tag) {
-                            XWalkView mXWalkView = new XWalkView(TabTextureViewsActivity.this, TabTextureViewsActivity.this);
+                            XWalkView mXWalkView = new XWalkView(XWalkViewsPlayingVideoActivity.this, XWalkViewsPlayingVideoActivity.this);
                             mXWalkView.setUIClient(new TestXWalkUIClientBase(mXWalkView));
                             mXWalkView.load(checkBoxList.get(url_index).getText().toString(), null);
                             return mXWalkView;
@@ -66,6 +64,7 @@ public class TabTextureViewsActivity extends XWalkBaseTabActivity {
                 System.exit(0);
             }
         });
+        mAddViewsButton.performClick();
         setContentView(root);
     }
 

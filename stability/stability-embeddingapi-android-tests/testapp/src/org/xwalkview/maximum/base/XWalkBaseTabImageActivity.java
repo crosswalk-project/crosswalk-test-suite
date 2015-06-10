@@ -2,10 +2,12 @@
 // Use of this source code is governed by a BSD-style license that can be
 // found in the LICENSE file.
 
-package org.xwalkview.maximum.app;
+package org.xwalkview.maximum.base;
 
 import java.util.ArrayList;
 import java.util.List;
+
+import org.xwalkview.maximum.app.R;
 
 
 import android.app.Activity;
@@ -22,7 +24,7 @@ import android.widget.TextView;
 import android.widget.CheckBox;
 import android.widget.Toast;
 
-public class XWalkBaseTabActivity extends Activity implements
+public class XWalkBaseTabImageActivity extends Activity implements
 TabHost.TabContentFactory {
     protected List<CheckBox> checkBoxList = new ArrayList<CheckBox>();
 
@@ -42,22 +44,16 @@ TabHost.TabContentFactory {
     protected EditText views_num_text;
 
     //CheckBox for URL
-    protected CheckBox cb_yahoo;
-    protected CheckBox cb_sina;
-    protected CheckBox cb_qq;
-    protected CheckBox cb_sohu;
-    protected CheckBox cb_bing;
-    protected CheckBox cb_w3;
-    protected CheckBox cb_163;
+    protected CheckBox cb_flickr;
 
     protected TabHost tabHost;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.view_tab_scroll);
+        setContentView(R.layout.view_tab_scroll_image);
 
-        root = (RelativeLayout) findViewById(R.id.view_tab_scroll);
+        root = (RelativeLayout) findViewById(R.id.view_tab_scroll_image);
         view_root = (RelativeLayout) findViewById(R.id.view_root);
         textDes = (TextView)findViewById(R.id.xwalk_des);
         textDes.setText("This sample demonstrates the maximum of SurfaceViews could be opend.");
@@ -66,20 +62,8 @@ TabHost.TabContentFactory {
 
         views_num_text = (EditText) findViewById(R.id.views_num);
 
-        cb_yahoo = (CheckBox) findViewById(R.id.cb_yahoo);
-        checkBoxList.add(cb_yahoo);
-        cb_sina = (CheckBox) findViewById(R.id.cb_sina);
-        checkBoxList.add(cb_sina);
-        cb_qq = (CheckBox) findViewById(R.id.cb_qq);
-        checkBoxList.add(cb_qq);
-        cb_sohu = (CheckBox) findViewById(R.id.cb_sohu);
-        checkBoxList.add(cb_sohu);
-        cb_bing = (CheckBox) findViewById(R.id.cb_bing);
-        checkBoxList.add(cb_bing);
-        cb_w3 = (CheckBox) findViewById(R.id.cb_w3);
-        checkBoxList.add(cb_w3);
-        cb_163 = (CheckBox) findViewById(R.id.cb_163);
-        checkBoxList.add(cb_163);
+        cb_flickr = (CheckBox) findViewById(R.id.cb_flickr);
+        checkBoxList.add(cb_flickr);
 
         for(CheckBox checkBox : checkBoxList) {
         	checkBox.setOnCheckedChangeListener(listener);
