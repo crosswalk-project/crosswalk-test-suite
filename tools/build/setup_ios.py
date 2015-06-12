@@ -38,48 +38,46 @@ from shutil import copytree
 from optparse import OptionParser
 
 SCRIPT_PATH = os.path.realpath(__file__)
-ConstPath = os.path.dirname(SCRIPT_PATH)
+CONST_PATH = os.path.dirname(SCRIPT_PATH)
 
-
-def cloneCode(tag=None):
+def clone_code(tag=None):
     try:
-        os.chdir(ConstPath)
-        msstatus = commands.getstatusoutput(
-            "git clone https://git.coding.net/jondong/mobileSpec-crosswalk.git")
+        os.chdir(CONST_PATH)
+        clone_url = "https://git.coding.net/jondong/mobileSpec-crosswalk.git"
+        msstatus = commands.getstatusoutput("git clone %s" % clone_url)
         print "Cloning into mobileSpec..."
         if msstatus[0] == 0:
             print "Clone into mobileSpec done!"
-            os.chdir(ConstPath + "/mobileSpec-crosswalk")
-            if len(
-                    os.listdir(ConstPath + "/mobileSpec-crosswalk/crosswalk-ios/")) == 0:
-                codestatus = commands.getstatusoutput(
-                    "git clone https://github.com/crosswalk-project/crosswalk-ios.git")
+            os.chdir(CONST_PATH + "/mobileSpec-crosswalk")
+            if len(os.listdir("crosswalk-ios/")) == 0:
+                xwalkios_url = "https://github.com/crosswalk-project/" \
+                "crosswalk-ios.git"
+                codestatus = commands.getstatusoutput("git clone %s" % \
+                    xwalkios_url)
                 print "Cloning into crosswalk-ios..."
                 if codestatus[0] == 0:
                     print "Clone into crosswalk-ios done!"
                 else:
                     print "Clone into crosswalk-ios failed!"
             os.chdir('crosswalk-ios')
-            tpstatus = commands.getstatusoutput(
-                "git submodule update --init --recursive")
+            update_cmd = "git submodule update --init --recursive"
+            tpstatus = commands.getstatusoutput(update_cmd)
             print "Cloning into submodule repos..."
             if tpstatus[0] != 0:
                 tar = os.getcwd() + '/.git/config'
                 for line in fileinput.input('.git/config', inplace=1):
                     print line.rstrip().replace('git:', 'https:')
-                rtpstatus = commands.getstatusoutput(
-                    "git submodule update --init --recursive")
+                rtpstatus = commands.getstatusoutput(update_cmd)
                 icen = os.listdir(os.getcwd() + "/third-party/Icenium/")
                 cord = os.listdir(os.getcwd() + "/third-party/cordova-ios/")
-                # print rtpstatus
+                #print rtpstatus
                 if rtpstatus[0] != 0:
                     print "Clone submodule repos failed!"
-                elif len(icen) > 0 and len(cord) > 0:
+                elif len(icen) > 0 and len(cord) > 0 :
                     print "Clone into submodule repos done!"
                     if tag:
-                        tagstatus = commands.getstatusoutput(
-                            "git checkout %s" %
-                            tag)
+                        tagstatus = commands.getstatusoutput(\
+                            "git checkout %s" % tag)
                         print "Checking out %s" % tag
                         if tagstatus[0] == 0:
                             print "The branch is %s" % tag
@@ -87,18 +85,17 @@ def cloneCode(tag=None):
                             print "Please check if the tag is exist"
                             print tagstatus[1]
                     else:
-                        print "The project crosswalk-ios default branch is master"
-                    print "Copying the project crosswalk-ios to the same path with mobileSpec-crosswalk"
-                    os.chdir(ConstPath)
+                        print "The project crosswalk-ios default"\
+                        "branch is master"
+                    print "Copying the project crosswalk-ios to the same "\
+                    "path with mobileSpec-crosswalk"
+                    os.chdir(CONST_PATH)
                     try:
-                        shutil.copytree(
-                            ConstPath +
-                            "/mobileSpec-crosswalk/crosswalk-ios",
-                            ConstPath +
-                            "/crosswalk-ios")
+                        shutil.copytree(CONST_PATH + "/mobileSpec-crosswalk/" \
+                            "crosswalk-ios", CONST_PATH + "/crosswalk-ios")
                     except:
                         print traceback.print_exc()
-                    if os.path.exists(ConstPath + "/crosswalk-ios"):
+                    if os.path.exists(CONST_PATH + "/crosswalk-ios"):
                         print "Copy the project crosswalk-ios done!"
                     else:
                         print "Copy the project crosswalk-ios failed!"
@@ -106,6 +103,10 @@ def cloneCode(tag=None):
                     print "Clone submodule repos failed!"
             else:
                 print "Clone into submodule repos done!"
+        else:
+            print "Clone mobileSpec failed"
+            print msstatus[1]
+            sys.exit(1)
     except Exception as e:
         print Exception, "Clone into crosswalk-ios failed!"
         sys.exit(1)
@@ -113,31 +114,42 @@ def cloneCode(tag=None):
 
 def main():
     try:
-        global dest
-        usage = 'Usage: ./%prog -d "platform=iOS Simulator,name=iPhone 6,OS=8.3"'
+        global dest, uuid
+        usage = 'Usage: ./%prog -d "platform=iOS Simulator," \
+        "name=iPhone 6,OS=8.3"'
         opts_parser = OptionParser(usage=usage)
-        opts_parser.add_option(
-            "-t",
-            "--tag",
-            dest="tag",
-            help="specify the tag that you want to checkout, default branch is master"
-        )
         opts_parser.add_option(
             "-d",
             "--dest",
-            dest="destination",
-            help='specify the destination that you want to use,'
-            'the options should be within double quotations,'
-            'e.g. "platform=iOS Simulator;name=iPhone 6;OS=8.3",'
-            '"platform=iOS;name=iPad Air"'
+            dest = "destination",
+            help = 'specify the destination that you want to use,' \
+                   'the options should be within double quotations,' \
+                   'e.g. "platform=iOS Simulator,name=iPhone 6;OS=8.3",' \
+                   '"platform=iOS,name=iPad Air"'
         )
+        opts_parser.add_option(
+            "-u",
+            "--uuid",
+            dest = "deviceuuid",
+            help = "specify the uuid of the test devices"
+        )
+        opts_parser.add_option(
+            "-t",
+            "--tag",
+            dest = "tag",
+            help = "specify the tag that you want to checkout, " \
+            "default branch is master"
+        )
+
         if len(sys.argv) == 1:
             sys.argv.append("-h")
 
         (PARAMETERS, args) = opts_parser.parse_args()
-        cloneCode(PARAMETERS.tag)
+        clone_code(PARAMETERS.tag)
         dest = PARAMETERS.destination
-        # print 'dest', dest
+        #print 'dest', dest
+        uuid = PARAMETERS.deviceuuid
+        #print 'uuid', uuid
 
     except Exception as e:
         print("Get wrong options: %s, exit ..." % e)
