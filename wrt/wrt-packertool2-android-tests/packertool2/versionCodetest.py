@@ -84,9 +84,13 @@ class TestPackertoolsFunctions(unittest.TestCase):
         cmd = "python %smake_apk.py --package=org.xwalk.example --arch=%s --mode=%s --manifest=%s --project-dir=test --app-version=1.0.0.0" % \
         (comm.Pck_Tools, comm.ARCH, comm.MODE, manfiestPath)
         packstatus = commands.getstatusoutput(cmd)
-        errorinfo = "please specify --app-versionCode or --app-versionCodeBase"
+        errorinfo1 = "Error"
+        errorinfo2 = "--app-versionCode"
+        errorinfo3 = "--app-versionCodeBase"
         self.assertNotEquals(0, packstatus[0])
-        self.assertIn(errorinfo, packstatus[1])
+        self.assertIn(errorinfo1, packstatus[1])
+        self.assertIn(errorinfo2, packstatus[1])
+        self.assertIn(errorinfo3, packstatus[1])
         comm.clear_versionCode()
 
 if __name__ == '__main__':  
