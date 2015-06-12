@@ -35,7 +35,7 @@ import comm
 import time
 
 
-class TestMobileSpecAppFunctions(unittest.TestCase):
+class TestMobileSpecAppClose(unittest.TestCase):
 
     def test_close(self):
         comm.setUp()

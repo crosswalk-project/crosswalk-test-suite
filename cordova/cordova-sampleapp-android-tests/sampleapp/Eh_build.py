@@ -26,24 +26,22 @@
 # EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 #
 # Authors:
-#         Lin, Wanming <wanming.lin@intel.com>
+#         Zhu, Yongyong <yongyongx.zhu@intel.com>
 
 import unittest
 import os
-import sys
 import commands
+import glob
 import comm
 
 
-class TestSWebAppUninstall(unittest.TestCase):
+class TestEhAppBuild(unittest.TestCase):
 
-    def test_uninstall(self):
+    def test_build(self):
         comm.setUp()
-        app_name = "helloworld"
-        pkg_name = "com.example." + app_name.lower()
-        if not comm.check_app_installed(pkg_name, self):
-            comm.app_install(app_name, pkg_name, self)
-        comm.app_uninstall(pkg_name, self)
+        app_name = "Eh"
+        sample_src_pref = "/tmp/crosswalk-demos/workshop-cca-eh"
+        comm.buildGoogleApp(app_name, sample_src_pref, self)
 
 if __name__ == '__main__':
     unittest.main()

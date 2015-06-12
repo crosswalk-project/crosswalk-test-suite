@@ -34,7 +34,7 @@ import commands
 import comm
 
 
-class TestMobileSpecAppFunctions(unittest.TestCase):
+class TestMobileSpecAppLaunch(unittest.TestCase):
 
     def test_launch(self):
         comm.setUp()

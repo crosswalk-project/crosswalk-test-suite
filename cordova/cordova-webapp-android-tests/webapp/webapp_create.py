@@ -35,7 +35,7 @@ import commands
 import comm
 
 
-class TestWebAppFunctions(unittest.TestCase):
+class TestWebAppCreate(unittest.TestCase):
 
     def test_create(self):
         comm.setUp()

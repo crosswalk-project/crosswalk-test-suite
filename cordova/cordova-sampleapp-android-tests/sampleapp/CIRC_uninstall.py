@@ -34,7 +34,7 @@ import commands
 import comm
 
 
-class TestGalleryAppFunctions(unittest.TestCase):
+class TestCIRCAppUninstall(unittest.TestCase):
 
     def test_uninstall(self):
         comm.setUp()

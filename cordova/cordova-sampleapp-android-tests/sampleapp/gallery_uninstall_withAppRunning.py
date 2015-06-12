@@ -35,7 +35,7 @@ import comm
 import time
 
 
-class TestGalleryAppFunctions(unittest.TestCase):
+class TestGalleryAppUninstallWithAppRunning(unittest.TestCase):
 
     def test_uninstall_withAppRunning(self):
         comm.setUp()

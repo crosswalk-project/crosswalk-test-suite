@@ -34,7 +34,7 @@ import commands
 import comm
 
 
-class TestRemoteDebuggingAppFunctions(unittest.TestCase):
+class TestRemoteDebuggingAppBuild(unittest.TestCase):
 
     def test_build(self):
         comm.setUp()

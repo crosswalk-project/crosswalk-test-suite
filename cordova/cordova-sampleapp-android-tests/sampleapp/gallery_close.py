@@ -35,7 +35,7 @@ import comm
 import time
 
 
-class TestGalleryAppFunctions(unittest.TestCase):
+class TestGalleryAppClose(unittest.TestCase):
 
     def test_close(self):
         comm.setUp()

@@ -34,7 +34,7 @@ import commands
 import comm
 
 
-class TestGalleryAppFunctions(unittest.TestCase):
+class TestGalleryAppLaunch(unittest.TestCase):
 
     def test_launch(self):
         comm.setUp()
