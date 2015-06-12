@@ -123,6 +123,12 @@ def should_see_text_element(context, text, key):
         text, key), u'Text was not found'
 
 
+@step(u'I should not see "{text}" in "{key}" area')
+def should_not_see_text_element(context, text, key):
+    assert context.app.check_normal_text_element_not_exist(
+        text, key, display=True), u'Text was found!'
+
+
 @step(u'I press "{key}"')
 def i_press(context, key):
     assert context.app.press_element_by_key(key)
@@ -292,8 +298,3 @@ def fill_element_by_attr_with_text(context, key, attr, text):
 def check_type_by_key(context, first, second):
     assert context.app.compare_two_values(first, second), u'The second value is less than the first one'
 
-
-@step(u'I should not see "{text}" in "{key}" area')
-def should_see_text_element(context, text, key):
-    assert context.app.check_normal_text_element_not_exist(
-        text, key, display=True), u'Text exists!'
