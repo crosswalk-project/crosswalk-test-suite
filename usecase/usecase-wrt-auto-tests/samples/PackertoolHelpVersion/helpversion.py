@@ -69,21 +69,5 @@ class TestPackertoolsFunctions(unittest.TestCase):
         packstatus2 = commands.getstatusoutput(cmd2)
         self.assertEquals(0, packstatus2[0])
 
-    def test_packertool_version(self):
-        setUp()
-        os.chdir(Pck_Tools)
-        fp = open(Pck_Tools + "VERSION")
-        lines = fp.readlines()
-        version = lines[0][6:].strip("\n\t") + "." + lines[1][6:].strip(
-            "\n\t") + "." + lines[2][6:].strip("\n\t") + "." + lines[3][6:].strip("\n\t")
-        cmd = "python %smake_apk.py -v" % (Pck_Tools)
-        packstatus = commands.getstatusoutput(cmd)
-        self.assertEquals(0, packstatus[0])
-        self.assertIn(version, packstatus[1])
-        cmd2 = "python %smake_apk.py --version" % (Pck_Tools)
-        packstatus2 = commands.getstatusoutput(cmd2)
-        self.assertEquals(0, packstatus2[0])
-        self.assertIn(version, packstatus2[1])
-
 if __name__ == '__main__':
     unittest.main()
