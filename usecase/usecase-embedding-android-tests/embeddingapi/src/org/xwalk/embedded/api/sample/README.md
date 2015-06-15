@@ -140,7 +140,50 @@ This usecase covers following interface and methods:
 
 
 
-### 13. The [XWalkViewWithTransparent](XWalkViewWithTransparent.java) sample check XWalkView's transparent feature whether display the view under the webview, include:
+### 13. The [OnIconAvailableOnReceivedIconActivity](OnIconAvailableOnReceivedIconActivity.java) sample demonstrates how to load icon when it's available, include:
+
+* XWalkView can load icon when it's available
+
+This usecase covers following interface and methods:
+
+* XWalkView interface: load method
+* UIClient interface: onIconAvailable, onReceivedIcon methods
+
+
+
+### 14. The [OnCreateWindowRequestedActivity](OnCreateWindowRequestedActivity.java) sample demonstrates how to create new window, include:
+
+* XWalkView can create new window
+
+This usecase covers following interface and methods:
+
+* XWalkView interface: load method
+* UIClient interface: onCreateWindowRequested methods
+
+
+
+### 15. The [FullScreenActivity](FullScreenActivity.java) sample demonstrates how to enter and exit fullscreen, include:
+
+* XWalkView can enter and exit fullscreen
+
+This usecase covers following interface and methods:
+
+* XWalkView interface: load, leaveFullscreen method
+
+
+
+### 16. The [ShouldOverrideUrlLoadingActivity](ShouldOverrideUrlLoadingActivity.java) sample demonstrates how to trigger shouldOverrideUrlLoading method, include:
+
+* XWalkView can trigger shouldOverrideUrlLoading method
+
+This usecase covers following interface and methods:
+
+* XWalkView interface: load method
+* ResourceClient interface: shouldOverrideUrlLoading methods
+
+
+
+### 17. The [XWalkViewWithTransparent](XWalkViewWithTransparent.java) sample check XWalkView's transparent feature whether display the view under the webview, include:
 
 * XWalkView's transparent can display the view under the webview
 
@@ -150,7 +193,7 @@ This usecase covers following interface and methods:
 
 
 
-### 14. The [XWalkViewWithRedirection](XWalkViewWithRedirection.java) sample verifies how many times onPageLoadStopped called when visit a web page with redirection, include:
+### 18. The [XWalkViewWithRedirection](XWalkViewWithRedirection.java) sample verifies how many times onPageLoadStopped called when visit a web page with redirection, include:
 
 * XWalkUIClient's onPageLoadStopped() method just be called once when visit a web page with redirection
 
@@ -162,7 +205,7 @@ This usecase covers following interface and methods:
 
 
 
-### 15. The [XWalkViewWithLoadImage](XWalkViewWithLoadImage.java) sample load image from XWalkView, include:
+### 19. The [XWalkViewWithLoadImage](XWalkViewWithLoadImage.java) sample load image from XWalkView, include:
 
 * XWalkView can load image
 
@@ -172,7 +215,7 @@ This usecase covers following interface and methods:
 
 
 
-### 16. The [XWalkViewWithClearCache](XWalkViewWithClearCache.java) sample check whether xwalkview can clear cache, include:
+### 20. The [XWalkViewWithClearCache](XWalkViewWithClearCache.java) sample check whether xwalkview can clear cache, include:
 
 * XWalkView can clear cache
 
@@ -183,7 +226,7 @@ This usecase covers following interface and methods:
 
 
 
-### 17. The [ContactExtensionActivity](ContactExtensionActivity.java) sample demonstrates XWALK-3917 feature basic functionalities, include:
+### 21. The [ContactExtensionActivity](ContactExtensionActivity.java) sample demonstrates XWALK-3917 feature basic functionalities, include:
 
 * extension can be supported with additional permissions
 
@@ -194,7 +237,7 @@ These two usecases cover following interface and methods:
 
 
 
-### 18. The [ZoomInAndOutXWalkViewActivity](ZoomInAndOutXWalkViewActivity.java) sample check whether xwalkview can zoom, include:
+### 22. The [ZoomInAndOutXWalkViewActivity](ZoomInAndOutXWalkViewActivity.java) sample check whether xwalkview can zoom, include:
 
 * XWalkView can zoom in, zoom out, zoom by
 
@@ -204,7 +247,7 @@ This usecase covers following interface and methods:
 
 
 
-### 19. The [XWalkViewWithDownloadListener](XWalkViewWithDownloadListenerActivity.java) sample check whether xwalkview can setDownloadListener & override onDownloadStart, include:
+### 23. The [XWalkViewWithDownloadListener](XWalkViewWithDownloadListenerActivity.java) sample check whether xwalkview can setDownloadListener & override onDownloadStart, include:
 
 * XWalkView can setDownloadListener & override onDownloadStart
 
@@ -214,7 +257,7 @@ This usecase covers following interface and methods:
 
 
 
-### 20. The [XWalkBlockAndErrorRedirection](XWalkBlockAndErrorRedirection.java) sample check whether xwalkview can block response and redirect when url or internet is not avaliable, include:
+### 24. The [XWalkBlockAndErrorRedirection](XWalkBlockAndErrorRedirection.java) sample check whether xwalkview can block response and redirect when url or internet is not avaliable, include:
 
 * XWalkView can block response & make error redirection
 
