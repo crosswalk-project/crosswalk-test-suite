@@ -275,3 +275,14 @@ This usecase covers following interface and methods:
 This usecase covers following interface and methods:
 
 * XWalkView interface: load, saveState, restoreState methods
+
+
+
+### 26. The [XWalkWithInputConnection](XWalkWithInputConnection.java) sample check whether xwalkview can use onCreateInputConnection method, include:
+
+* XWalkView can use onCreateInputConnection method
+
+This usecase covers following interface and methods:
+
+* XWalkView interface: load, onCreateInputConnection methods
+
