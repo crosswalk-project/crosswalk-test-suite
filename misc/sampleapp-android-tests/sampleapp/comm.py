@@ -28,6 +28,7 @@
 #
 # Authors:
 #         Cici,Li<cici.x.li@intel.com>
+#         Yun, Liu<yunx.liu@intel.com>
 
 import unittest
 import os
@@ -40,7 +41,7 @@ sys.setdefaultencoding("utf-8")
 script_path = os.path.realpath(__file__)
 const_path = os.path.dirname(script_path)
 sample_src_pref = "/tmp/crosswalk-demos/"
-pack_tools = const_path + "/../tools/crosswalk/"
+pack_tools = const_path + "/../tools/crosswalk-app-tools/src/"
 index_path = "index.html"
 
 
@@ -71,13 +72,33 @@ def setUp():
 def pack(cmd, appname, self):
     setUp()
     os.chdir(const_path + "/../testapp/")
+    if os.path.exists("org.xwalk." + appname.lower()):
+        shutil.rmtree("org.xwalk." + appname.lower())
     print "Generate APK %s ----------------> START" % appname
     print cmd
     packstatus = commands.getstatusoutput(cmd)
     self.assertEquals(0, packstatus[0])
+    os.chdir("org.xwalk." + appname.lower())
+    commands.getstatusoutput("cp -r " + sample_src_pref + appname + "/* app/")
+    commands.getstatusoutput(pack_tools + "crosswalk-app build")
+    os.chdir('pkg')
+    apks = os.listdir(os.getcwd())
+    self.assertNotEquals(len(apks), 0)
+    for i in range(len(apks)):
+        self.assertTrue(apks[i].endswith(".apk"))
+        if "x86" in apks[i]:
+            self.assertIn("x86", apks[i])
+            if i < len(os.listdir(os.getcwd())):
+                self.assertIn("arm", apks[i - 1])
+            else:
+                self.assertIn("arm", apks[i + 1])
+        elif "arm" in apks[i]:
+            self.assertIn("arm", apks[i])
+            if i < len(os.listdir(os.getcwd())):
+                self.assertIn("x86", apks[i - 1])
+            else:
+                self.assertIn("x86", apks[i + 1])
     print "\nGenerate APK %s ----------------> OK\n" % appname
-    result = commands.getstatusoutput("ls")
-    self.assertIn(appname, result[1])
     os.chdir("../..")
 
 
@@ -110,10 +131,3 @@ def app_uninstall(cmd, self):
     unistatus = commands.getstatusoutput(cmd)
     self.assertEquals(0, unistatus[0])
     print "Uninstall APK ----------------> OK"
-
-
-def others():
-    if os.path.exists(pack_tools + "/" + AppName):
-        os.remove(pack_tools + "/" + AppName)
-    if os.path.exists(const_path + "/../" + AppName):
-        os.remove(const_path + "/../" + AppName)

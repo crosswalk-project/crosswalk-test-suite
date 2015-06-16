@@ -2,10 +2,24 @@
 
 This test suite is for testing sampleapp-android-tests specification
 
+## Precondition
+
+1. The node.js and Android SDK must be functional
+2. Install nodeunit: sudo npm install nodeunit -g
+3. Download crosswalk-app-tools to apptools-sampleapp-tests/tools, then install npm
+  3.1 cd tools, then download source code from https://github.com/crosswalk-project/crosswalk-app-tools
+  3.2 Run commands: cd crosswalk-app-tools, then run: npm install
+4. Connect Android devices to your localhost
+5. The main script is crosswalk-app-tools/src/crosswalk-app. Set environment PATH or invoke with directory
+6. Environment variable configuration:
+  6.1 export ANDROID_HOME=$(dirname $(dirname $(which android)))
+  6.2 export CROSSWALK_APP_TOOLS_CACHE_DIR=/path/to/opt/apptools-sampleapp-tests/tools
+
 ## Authors:
 
 * Xu,Yuhan <yuhanx.xu@intel.com>
 * Li, cici <cici.x.li@intel.com>
+* Liu, Yun <yunx.liu@intel.com>
 
 ## LICENSE
 

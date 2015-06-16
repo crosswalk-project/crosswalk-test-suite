@@ -27,6 +27,7 @@
 #
 # Authors:
 #         Li, Cici<cici.x.li@intel.com>
+#         Liu, Yun <yunx.liu@intel.com>
 
 import unittest
 import os
@@ -40,14 +41,9 @@ class TestSampleAppFunctions(unittest.TestCase):
     def test_pack(self):
         comm.setUp()
         app_name = "Simd"
-        app_url = "http://peterjensen.github.io/mandelbrot/js/mandelbrot-xdk.html"
-        cmd = "python %smake_apk.py --package=org.xwalk.%s --name=%s --app-url=%s --arch=%s --mode=%s --enable-remote-debugging" % \
+        cmd = "%scrosswalk-app create org.xwalk.%s" % \
             (comm.pack_tools,
-             app_name.lower(),
-             app_name,
-             app_url,
-             comm.ARCH,
-             comm.MODE)
+             app_name.lower())
         comm.pack(cmd, app_name, self)
 
 if __name__ == '__main__':

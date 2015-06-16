@@ -27,6 +27,7 @@
 #
 # Authors:
 #         Li, Cici<cici.x.li@intel.com>
+#         Liu, Yun <yunx.liu@intel.com>
 
 import unittest
 import os
@@ -40,14 +41,9 @@ class TestSampleAppFunctions(unittest.TestCase):
     def test_pack(self):
         comm.setUp()
         app_name = "Sysapps"
-        sample_src = "/SysApps_DeviceCapabilities/src/"
-        manifest_file = comm.sample_src_pref + sample_src + "manifest.json"
-        cmd = "python %smake_apk.py --package=org.xwalk.%s --manifest=%s --arch=%s --mode=%s --enable-remote-debugging" % \
+        cmd = "%scrosswalk-app create org.xwalk.%s" % \
             (comm.pack_tools,
-             app_name.lower(),
-             manifest_file,
-             comm.ARCH,
-             comm.MODE)
+             app_name.lower())
         comm.pack(cmd, app_name, self)
 
 if __name__ == '__main__':

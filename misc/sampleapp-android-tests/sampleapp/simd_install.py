@@ -27,6 +27,7 @@
 #
 # Authors:
 #         Li, Cici<cici.x.li@intel.com>
+#         Liu, Yun <yunx.liu@intel.com>
 
 import unittest
 import os
@@ -39,10 +40,13 @@ class TestSampleAppFunctions(unittest.TestCase):
 
     def test_install(self):
         comm.setUp()
-        os.chdir(comm.const_path + "/../testapp/")
+        os.chdir(comm.const_path + "/../testapp/org.xwalk.simd/pkg/")
         app_name = "Simd"
-        apk_file = commands.getstatusoutput("ls | grep %s" % app_name)[1]
-        cmd = "adb -s " + comm.device + " install -r " + apk_file
+        apks = os.listdir(os.getcwd())
+        self.assertNotEquals(len(apks), 0)
+        for i in range(len(apks)):
+            if comm.ARCH in apks[i]:
+                cmd = "adb -s " + comm.device + " install -r " + apks[i]
         cmdfind = "adb -s " + comm.device + \
             " shell pm list packages |grep org.xwalk.%s" % (app_name.lower())
         comm.app_install(cmd, cmdfind, self)
