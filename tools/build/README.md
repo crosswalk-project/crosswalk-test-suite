@@ -26,11 +26,7 @@ pack_cordova_sample.py is used for auto build Cordova sample apps, including mob
 
 ###Sample apps build based on Cordova 4.0
 * Require Android API level 22
-* Require the latest Cordova CLI, and must >= 5.0.0, install with command: ```sudo npm install cordova -g```  
-* latest plugman tool, steps as below:  
-  ```git clone https://git-wip-us.apache.org/repos/asf/cordova-plugman.git```  
-  ```cd cordova-plugman```  
-  ```sudo npm -g install```
+* Require the latest Cordova CLI, and must >= 5.0.0, install with command: ```sudo npm install cordova -g```
 
 ## Usage
 
