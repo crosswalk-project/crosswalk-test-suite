@@ -111,7 +111,7 @@ def ge_apks(suite_dir, arch_arg, res_arch_dir):
         'crosswalk',
         'make_apk.py') + " --package=org.xwalk.test --app-versionCode=123 --arch=" + arch_arg + " --manifest="
     manifest_path = os.path.join(suite_dir, "manifest.json")
-    res_suite_dir = os.path.join(res_arch_dir, suitename_without_flag)
+    res_suite_dir = os.path.join(res_arch_dir, suite_name)
 
     if not os.path.exists(manifest_path):
         LOG.error("%s not exists !!!" % manifest_path)
@@ -141,7 +141,7 @@ def ge_apks(suite_dir, arch_arg, res_arch_dir):
         shutil.rmtree(res_suite_dir)
 
     ores_file.write(
-        suitename_without_flag +
+        suite_name +
         "\t" +
         flag +
         "\t" +
@@ -224,6 +224,7 @@ if __name__ == "__main__":
     for sthread in pack_threads:
         # if max_num.acquire():
         sthread.daemon = True
+        time.sleep(2)
         sthread.start()
         # if len(threading.enumerate()) < 3:
         #    max_num.release()
