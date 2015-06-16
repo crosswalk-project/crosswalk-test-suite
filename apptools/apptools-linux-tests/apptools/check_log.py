@@ -44,13 +44,11 @@ class TestCrosswalkApptoolsFunctions(unittest.TestCase):
         createstatus = commands.getstatusoutput(createcmd)
         create_common = open(
             comm.TEMP_DATA_PATH +
-            "/../tools/" +
             comm.TEST_PROJECT_COMM +
             "/log/common.log",
             'r')
         create_android = open(
             comm.TEMP_DATA_PATH +
-            "/../tools/" +
             comm.TEST_PROJECT_COMM +
             "/log/deb.log",
             'r')
@@ -61,13 +59,11 @@ class TestCrosswalkApptoolsFunctions(unittest.TestCase):
         buildstatus = commands.getstatusoutput(buildcmd)
         build_common = open(
             comm.TEMP_DATA_PATH +
-            "/../tools/" +
             comm.TEST_PROJECT_COMM +
             "/log/common.log",
             'r')
         build_android = open(
             comm.TEMP_DATA_PATH +
-            "/../tools/" +
             comm.TEST_PROJECT_COMM +
             "/log/deb.log",
             'r')
