@@ -265,3 +265,13 @@ This usecase covers following interface and methods:
 
 * XWalkView interface: load, setResourceClient methods
 * ResourceClient interface: shouldInterceptLoadRequest, onReceivedLoadError methods
+
+
+
+### 25. The [XWalkWithSaveState](XWalkWithSaveState.java) sample check whether xwalkview can saveState & restoreState bundle, include:
+
+* XWalkView can saveState & restoreState bundle
+
+This usecase covers following interface and methods:
+
+* XWalkView interface: load, saveState, restoreState methods
