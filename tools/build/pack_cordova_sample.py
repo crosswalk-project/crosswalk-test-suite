@@ -668,7 +668,7 @@ def packMobileSpec_cli(app_name=None):
             return False
 
         os.chdir(project_root)
-        add_nativePage_cmd = "cordova plugin add com.telerik.plugins.nativepagetransitions@0.4.0"
+        add_nativePage_cmd = "cordova plugin add https://github.com/Telerik-Verified-Plugins/NativePageTransitions.git#r0.4.1"
         if not doCMD(add_nativePage_cmd, DEFAULT_CMD_TIMEOUT):
             os.chdir(orig_dir)
             return False
