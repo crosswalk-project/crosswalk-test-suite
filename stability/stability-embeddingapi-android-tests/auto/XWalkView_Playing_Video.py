@@ -57,6 +57,7 @@ class TestStabilityIterativeFunctions(unittest.TestCase):
     def test_launch_exit_repeatedly(self):
         setUp()
         activity_name = "XWalkViewsPlayingVideoActivity"
+        package_name = "org.xwalkview.stability.app"
         sysmon_runtimes = 4000
         repeat_times = 1
         sleep_time = 43200
@@ -64,7 +65,7 @@ class TestStabilityIterativeFunctions(unittest.TestCase):
         testName = "XWalkView_Playing_Video"
         sysmon_path = ConstPath + '/sysmon.sh'
         sysmon_cmd = sysmon_path + ' ' + testName + ' ' + \
-            str(sysmon_runtimes) + ' org.xwalkview.maximum.app'
+            str(sysmon_runtimes) + ' ' + package_name
         subprocess.Popen(args=sysmon_cmd, shell=True)
         i = 0
         for i in range(0, repeat_times):
@@ -73,12 +74,12 @@ class TestStabilityIterativeFunctions(unittest.TestCase):
             pmstatus = commands.getstatusoutput(
                 'adb -s ' +
                 device +
-                ' shell pm list packages |grep org.xwalkview.maximum.app')
+                ' shell pm list packages |grep ' + package_name)
             if pmstatus[0] == 0:
                 launchstatus = commands.getstatusoutput(
                     'adb -s ' +
                     device +
-                    ' shell am start -n org.xwalkview.maximum.app' +
+                    ' shell am start -n ' + package_name +
                     '/.%s' %
                     activity_name)
                 self.assertNotIn('Error', launchstatus[1])
@@ -86,12 +87,12 @@ class TestStabilityIterativeFunctions(unittest.TestCase):
                 commands.getstatusoutput(
                     'adb -s ' +
                     device +
-                    ' shell am force-stop org.xwalkview.maximum.app')
+                    ' shell am force-stop ' + package_name)
                 stopresult = commands.getstatusoutput(
                     'adb -s ' +
                     device +
-                    ' shell ps |grep org.xwalkview.maximum.app')
-                self.assertNotIn('org.xwalkview.maximum.app', stopresult[1])
+                    ' shell ps |grep ' + package_name)
+                self.assertNotIn(package_name, stopresult[1])
             else:
                 print 'Please install apk contains %s frist' % activity_name
                 sys.exit(1)

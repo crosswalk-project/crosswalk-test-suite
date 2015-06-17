@@ -56,13 +56,13 @@ class TestStabilityIterativeFunctions(unittest.TestCase):
 
     def test_launch_exit_repeatedly(self):
         setUp()
-        activity_name = "XWalkViewsPlayingGameActivity"
+        activity_name = "AutoMultiXWalkViewsActivity"
         package_name = "org.xwalkview.stability.app"
-        sysmon_runtimes = 4000
-        repeat_times = 1
-        sleep_time = 43200
+        sysmon_runtimes = 300
+        repeat_times = 50
+        sleep_time = 60
         pre_time = time.time()
-        testName = "XWalkView_Playing_Game"
+        testName = "Launch_Create5_Exit_Repeat"
         sysmon_path = ConstPath + '/sysmon.sh'
         sysmon_cmd = sysmon_path + ' ' + testName + ' ' + \
             str(sysmon_runtimes) + ' ' + package_name

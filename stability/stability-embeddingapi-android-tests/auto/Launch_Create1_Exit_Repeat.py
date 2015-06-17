@@ -56,16 +56,17 @@ class TestStabilityIterativeFunctions(unittest.TestCase):
 
     def test_launch_exit_repeatedly(self):
         setUp()
-        activity_name = "XWalkViewsPlayingGameActivity"
+        activity_name = "AutoOneXWalkViewsActivity"
         package_name = "org.xwalkview.stability.app"
-        sysmon_runtimes = 4000
-        repeat_times = 1
-        sleep_time = 43200
+        sysmon_runtimes = 300
+        repeat_times = 300
+        sleep_time = 10
         pre_time = time.time()
-        testName = "XWalkView_Playing_Game"
+        testName = "Launch_Create1_Exit_Repeat"
         sysmon_path = ConstPath + '/sysmon.sh'
         sysmon_cmd = sysmon_path + ' ' + testName + ' ' + \
             str(sysmon_runtimes) + ' ' + package_name
+        print sysmon_cmd
         subprocess.Popen(args=sysmon_cmd, shell=True)
         i = 0
         for i in range(0, repeat_times):
@@ -96,7 +97,6 @@ class TestStabilityIterativeFunctions(unittest.TestCase):
             else:
                 print 'Please install apk contains %s frist' % activity_name
                 sys.exit(1)
-
 
 if __name__ == '__main__':
     unittest.main()

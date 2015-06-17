@@ -44,7 +44,7 @@ def uninstPKGs():
                 (return_code, output) = doCMD(cmd)
                 for line in output:
                     if "Failure" in line:
-                        cmd = "%s -s %s uninstall org.xwalkview.maximum.app" % (
+                        cmd = "%s -s %s uninstall org.xwalkview.stability.app" % (
                             ADB_CMD, PARAMETERS.device)
                         (return_code, output) = doCMD(cmd)
                         for line in output:
