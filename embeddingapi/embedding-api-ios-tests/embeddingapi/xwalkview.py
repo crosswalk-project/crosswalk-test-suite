@@ -32,19 +32,20 @@ import os
 import sys
 import shutil
 import commands
-from optparse import OptionParser
 import setup_ios
 
 SCRIPT_PATH = os.path.realpath(__file__)
-ConstPath = os.path.dirname(SCRIPT_PATH)
+CONST_PATH = os.path.dirname(SCRIPT_PATH)
 
 
 def run(dest=None):
     try:
-        # print 'dest', dest
         if dest:
-            runstatus = commands.getstatusoutput("xcodebuild test -project %s/crosswalk-ios/XWalkView/XWalkView.xcodeproj/ "
-                                                 "-scheme XWalkViewTests -destination '%s'" % (ConstPath, dest))
+            os.chdir(CONST_PATH + "/crosswalk-ios/XwalkView/")
+            runcmd = "xcodebuild test -project " \
+            "XWalkView.xcodeproj/ -scheme XWalkViewTests " \
+            "-destination '%s'" % dest
+            runstatus = commands.getstatusoutput(runcmd)
             print runstatus[1]
             if runstatus[0] == 0:
                 print "Test done"
@@ -61,13 +62,12 @@ def init():
     try:
         setup_ios.main()
         try:
-            shutil.rmtree(ConstPath + "/mobileSpec-crosswalk")
+            shutil.rmtree(CONST_PATH + "/mobileSpec-crosswalk")
         except:
             os.system(
                 "rm -rf " +
-                ConstPath +
+                CONST_PATH +
                 "/mobileSpec-crosswalk &>/dev/null")
-            # print traceback.print_exc()
         run(setup_ios.dest)
 
     except Exception as e:
