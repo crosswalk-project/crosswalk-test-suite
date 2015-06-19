@@ -51,6 +51,7 @@ def setUp():
 
 
 def cleanTempData(removeFolder):
+    os.chdir(TEMP_DATA_PATH)
     removeFolder = os.path.join(TEMP_DATA_PATH, removeFolder)
     if os.path.exists(removeFolder):
         shutil.rmtree(removeFolder)
