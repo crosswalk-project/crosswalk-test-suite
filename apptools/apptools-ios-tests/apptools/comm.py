@@ -49,6 +49,7 @@ def setUp():
 
 
 def clear(pkg):
+    os.chdir(XwalkPath)
     try:
         shutil.rmtree(XwalkPath + pkg)
     except Exception as e:
