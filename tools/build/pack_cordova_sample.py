@@ -678,7 +678,7 @@ def packMobileSpec_cli(app_name=None):
             return False
 
         os.chdir(os.path.join(cordova_mobilespec, "createmobilespec"))
-        node_modules = os.chdir(os.path.join(cordova_mobilespec, "createmobilespec", "node_modules"))
+        node_modules = os.path.join(cordova_mobilespec, "createmobilespec", "node_modules")
         if not BUILD_PARAMETERS.bnotclean and os.path.exists(node_modules):
             rm_node_modules_cmd = "sudo rm -rf node_modules"
             run = pexpect.spawn(rm_node_modules_cmd)
