@@ -6,5 +6,5 @@ This sample demonstrates CordovaPluginFileDemo feature basic functionalities, in
 
 This usecase covers following method:
 
-* open CordovaPluginFileDemo.xcworkspace
+* open CordovaPluginFileDemo.xcodeproj
 * CordovaPluginFileDemo can be built with Xcode
