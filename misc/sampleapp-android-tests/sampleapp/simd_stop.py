@@ -27,6 +27,7 @@
 #
 # Authors:
 #         Li, Cici<cici.x.li@intel.com>
+#         Liu, Yun <yunx.liu@intel.com>
 
 import unittest
 import os
@@ -47,8 +48,7 @@ class TestSampleAppFunctions(unittest.TestCase):
         launched = commands.getstatusoutput(cmdacti)
         if launched[0] != 0:
             print "Stop APK ---------------->%s App haven't launched, need to launch it!" % app_name
-            cmdstart = "adb -s " + comm.device + " shell am start -n org.xwalk.%s/.%sActivity" % \
-                (app_name.lower(), app_name)
+            cmdstart = "adb -s " + comm.device + " shell am start -n org.xwalk.%s/.MainActivity" % app_name.lower()
             comm.app_launch(cmdstart, self)
             time.sleep(1)
         cmdstop = "adb -s " + comm.device + \

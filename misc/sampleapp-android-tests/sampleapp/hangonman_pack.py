@@ -27,6 +27,7 @@
 #
 # Authors:
 #         Li, Cici<cici.x.li@intel.com>
+#         Liu, Yun <yunx.liu@intel.com>
 
 import unittest
 import os
@@ -41,16 +42,9 @@ class TestSampleAppFunctions(unittest.TestCase):
         comm.setUp()
         #memorygame, hexgl,hangoman
         app_name = "Hangonman"
-        sample_src = "/HangOnMan/src/app/"
-        app_root = comm.sample_src_pref + sample_src
-        cmd = "python %smake_apk.py --package=org.xwalk.%s --name=%s --app-root=%s --app-local-path=%s --arch=%s --mode=%s --enable-remote-debugging" % \
+        cmd = "%scrosswalk-app create org.xwalk.%s" % \
             (comm.pack_tools,
-             app_name.lower(),
-             app_name,
-             app_root,
-             comm.index_path,
-             comm.ARCH,
-             comm.MODE)
+             app_name.lower())
         comm.pack(cmd, app_name, self)
 
 if __name__ == '__main__':

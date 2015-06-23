@@ -27,6 +27,7 @@
 #
 # Authors:
 #         Li, Cici<cici.x.li@intel.com>
+#         Liu, Yun <yunx.liu@intel.com>
 
 import unittest
 import os
@@ -40,8 +41,7 @@ class TestSampleAppFunctions(unittest.TestCase):
     def test_launch(self):
         comm.setUp()
         app_name = "Hangonman"
-        cmd = "adb -s " + comm.device + " shell am start -n org.xwalk.%s/.%sActivity" % \
-            (app_name.lower(), app_name)
+        cmd = "adb -s " + comm.device + " shell am start -n org.xwalk.%s/.MainActivity" % app_name.lower()
         comm.app_launch(cmd, self)
 
 if __name__ == '__main__':

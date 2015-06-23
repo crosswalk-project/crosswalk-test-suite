@@ -27,6 +27,7 @@
 #
 # Authors:
 #         Li, Cici<cici.x.li@intel.com>
+#         Liu, Yun <yunx.liu@intel.com>
 
 import unittest
 import os
@@ -47,14 +48,16 @@ class TestSampleAppFunctions(unittest.TestCase):
 
         if pmstatus[0] != 0:
             print "Uninstall APK ----------------> %s App haven't installed, need to install it!" % app_name
-            os.chdir(comm.const_path + "/../testapp/")
-            apk_file = commands.getstatusoutput("ls | grep %s" % app_name)[1]
-            cmdinst = "adb -s " + comm.device + " install -r " + apk_file
+            os.chdir(comm.const_path + "/../testapp/org.xwalk.sysapps/pkg/")
+            apks = os.listdir(os.getcwd())
+            self.assertNotEquals(len(apks), 0)
+            for i in range(len(apks)):
+                if comm.ARCH in apks[i]:
+                    cmdinst = "adb -s " + comm.device + " install -r " + apks[i]
             comm.app_install(cmdinst, cmdfind, self)
 
         # Make sure the app is running
-        cmd = "adb -s " + comm.device + " shell am start -n org.xwalk.%s/.%sActivity" % \
-            (app_name.lower(), app_name)
+        cmd = "adb -s " + comm.device + " shell am start -n org.xwalk.%s/.MainActivity" % app_name.lower()
         comm.app_launch(cmd, self)
         time.sleep(3)
 
