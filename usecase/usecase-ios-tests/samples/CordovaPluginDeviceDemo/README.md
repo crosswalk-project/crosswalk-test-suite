@@ -6,5 +6,5 @@ This sample demonstrates CordovaPluginDeviceDemo feature basic functionalities, 
 
 This usecase covers following method:
 
-* open CordovaPluginDeviceDemo.xcworkspace
+* open CordovaPluginDeviceDemo.xcodeproj
 * CordovaPluginDeviceDemo can be built with Xcode
