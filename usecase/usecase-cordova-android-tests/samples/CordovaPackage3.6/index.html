@@ -45,8 +45,11 @@ Authors:
 <div class="content">
   <h4>Test Steps</h4>
   <ol>
-    <li>Copy the 'usecase-cordova-android-tests/res/CordovaPackage/test.py' file to crosswalk-cordova directory</li>
-    <li>Run the python script:<br/>$ python test.py</li>
+    <li>Enter 'usecase-cordova-android-tests/res/CordovaPackage' directory, copy test_embedded.py and test_shared.py files to crosswalk-cordova directory</li>
+    <li>Run the python script:<br/>
+      For embedded mode: $ python test_embedded.py<br/>
+      For Shared mode: $ python test_shared.py<br/>
+    </li>
     <li>Check the command output</li>
     <li>Quick press back button to exit 'hello' app after the app launch</li>
   </ol>
@@ -59,7 +62,7 @@ Authors:
   <p>Verify the Cordova package can build, install and launch successfully</p>
   <p>Expected Results:</p>
   <ol>
-    <li>There has test.py in crosswalk-cordova directory</li>
+    <li>There are test_embedded.py and test_shared.py in crosswalk-cordova directory</li>
     <li>The command run successfully, no error</li>
     <li>Display 'Build Package Successfully' and 'Package Name Consistent'</li>
     <li>The app can exit successfully</li>
