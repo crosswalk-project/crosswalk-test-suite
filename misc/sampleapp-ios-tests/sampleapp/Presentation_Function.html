@@ -31,25 +31,38 @@ Authors:
 -->
 
 <meta charset="utf-8">
-<title>SampleApp_XWalkView_Build</title>
+<title>Presentation_Function</title>
 <link rel="author" title="Intel" href="http://www.intel.com">
 <body>
   <p>
     <strong>Test steps:</strong>
   </p>
   <ol>
-    <li>Run below commands to build project under crosswalk-ios directory:<br/>
-        $ cd Demos/Sample <br/>
-        $ open Sample.xcodeproj/
+    <li>Run below commands to build project under HexGL-iOS/HexGLAppp directory: <br/>
+        $ open HexGLApp.xcodeproj
     </li>
-    <li>Select the project "XwalkView" --&gt; set the active scheme --&gt; XwalkView --&gt; &lt;iOS Device&gt; -- &gt; Product --&gt; Build</li>
+    <li>Select the project "HexGLApp" --&gt; set the active scheme --&gt; HexGLAppp --&gt; &lt;iOS Device&gt; -- &gt; Product --&gt; Build</li>
+    <li>Check the test device</li>
+    <li>Click "Hardware" --&gt; "External Display"  --&gt; &lt;Choose one value(such as 1024 x 768)&gt;(if the test device isn't emulator, please skip this step)</li>
+    <li>Change the "REMOTE DISPLAY:OFF" to "REMOTE DISPLAY:ON" on the lauching screen</li>
+    <li>Click "Start"</li>
+    <li>Touch the screen</li>
+    <li>Play the game until display "DESTROYED"</li>
+    <li>Touch the screen to restart the game</li>
   </ol>
   <p>
     <strong>Expected Results:</strong>
   </p>
   <ol>
-    <li>Open the app named "Xcode" and display three project named "XwalkView" and "SampleApp" on the left</li>
+    <li>Open the app named "Xcode" and display one project named "HexGLApp" on the left</li>
     <li>Display message "Build Succeeded"</li>
+    <li>Launch the app named like "HexGL" successfully, and no error message, no crash, and display "START", "CONTAOLS", "REMOTE DISPLAY:OFF" and so on</li>
+    <li>Open the External Display</li>
+    <li>Display "REMOTE DISPLAY:ON"</li>
+    <li>Display "CLICK/TOUCH TO CONTINUE", "TURN" and "ACCEL"</li>
+    <li>Display the game main page normally on the external display and enter the "START" page and you can play the game when display "GO" on the screen</li>
+    <li>Display message like: "CLICK/TOUCH TO CONTINUE" and play time</li>
+    <li>Display "START", "CONTAOLS", "REMOTE DISPLAY:OFF" and so on</li>
   </ol>
 </body>
 
