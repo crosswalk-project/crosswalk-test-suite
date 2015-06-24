@@ -17,7 +17,6 @@ public class XWalkViewWithTransparent extends XWalkActivity{
 
     @Override
     protected void onXWalkReady() {
-        XWalkPreferences.setValue(XWalkPreferences.ANIMATABLE_XWALK_VIEW, false);
         
         setContentView(R.layout.xwview_transparent_layout);
         StringBuffer mess = new StringBuffer();

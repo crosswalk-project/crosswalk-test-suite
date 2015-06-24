@@ -52,7 +52,6 @@ public class MultiSurfaceViewsActivity extends Activity implements XWalkInitiali
         .setPositiveButton("confirm" ,  null )
         .show();
 
-        XWalkPreferences.setValue(XWalkPreferences.ANIMATABLE_XWALK_VIEW, false);
         RelativeLayout root = new RelativeLayout(this);
 
         for (int i = 0; i < 3; i++) {
