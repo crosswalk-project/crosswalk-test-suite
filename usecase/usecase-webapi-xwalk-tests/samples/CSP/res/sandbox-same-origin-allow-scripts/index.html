@@ -27,6 +27,7 @@ EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 l
 Authors:
         Hao, Yunfei <yunfenx.hao@intel.com>
+        Yun, Liu <yunx.liu@intel.com>
 
 -->
 
@@ -44,36 +45,23 @@ Authors:
     <meta http-equiv="Content-Security-Policy" content="sandbox allow-same-origin allow-scripts ">
     <meta http-equiv="x-Content-Security-Policy" content="sandbox allow-same-origin allow-scripts ">
     <meta http-equiv="X-WebKit-CSP" content="sandbox allow-same-origin allow-scripts ">
-    <style>
-        .button {
-            background: #eee;
-            border: 1px solid #ccc;
-            border-radius: 5px;
-            font-weight: bold;
-            font-size: 15px;
-            padding: 8px 2px;
-            width: 100%;
-        }
-    </style>
+    <script src="../resources/js/csp.js"></script>
   </head>
   <body>
     <div id="header">
       <h3 id="main_page_title"></h3>
     </div>
     <div class="content">
-      <input type="hidden" id="wgt_name" value="sandbox-same-origin-allow-scripts"/>
-      <script src="support/csp.js"></script>
-      <p>Test passes if they are all pass.</p>
+      <div id="test"></div>
       <script>
-          document.write("Pass -- The script of this page is loaded<br>");
-          if(typeof X == "number"){
-              document.write("Pass -- The script in this widget is loaded<br>");
+          if(typeof addLocalStyle == "function"){
+              document.write("Filler Text<br>");
           }else{
-              document.write("Fail -- The script in this widget is not loaded<br>");
+              document.write("The script in this widget is not loaded<br>");
           };
       </script>
       <img style="display:none"
-          onerror="javascript:test(function() {assert_true(true)});"
+          onerror="javascript:document.getElementById('test').innerHTML='Filler Text'"
           src="about:blank">
       </img>
     </div>
@@ -81,9 +69,7 @@ Authors:
       <div id="footer"></div>
     </div>
     <div class="modal fade" id="popup_info">
-      <p>Test Purpose: Verifies the sandbox-same-origin-allow-scripts of CSP worked well.</p>
-      <p>Expected Result: </p>
-      <p>Test passes if pass displayed.</p>
+      <p>Verifies 'sandbox: allow-same-origin allow-scripts' allow to load resources in same orgin.</p>
     </div>
   </body>
 </html>
