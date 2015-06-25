@@ -532,6 +532,7 @@ public class XWalkViewTest extends XWalkViewTestBase {
             String url = "file:///android_asset/pause_timers.html";
             addJavascriptInterface();
             loadUrlSync(url);
+	    resumeTimers();
             SystemClock.sleep(2000);
             String date = new Date().toString();
             pauseTimers();
