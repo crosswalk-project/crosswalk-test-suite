@@ -20,14 +20,19 @@
                 "html5-extra-app/testscripts": "html5-extra-app/testscripts",
                 "inst.apk.py": "inst.py",
                 "tests.xml": "tests.xml",
-                "w3c-webstorage-app/testscripts": "w3c-webstorage-app/testscripts"
+                "w3c-webstorage-app/testscripts": "w3c-webstorage-app/testscripts",
+                "PACK-TOOL-ROOT/resources/xsl": "."
             },
             "pkg-app": {
                 "apk-common-opts": "--enable-remote-debugging",
                 "blacklist": [
                     "html5-extra-app",
                     "w3c-webstorage-app"
-                ]
+                ],
+                "copylist": {
+                    "PACK-TOOL-ROOT/resources/webrunner": "webrunner",
+                    "PACK-TOOL-ROOT/resources/testharness": "resources"
+                }
             },
             "subapp-list": {
                 "html5-extra-app": {

@@ -14,13 +14,19 @@
             "blacklist": [
                 "*"
             ],
-            "subapp-list": {"WebRTC": {}},            
+            "subapp-list": {"WebRTC": {}},
             "copylist": {
                 "inst.wgt.py": "inst.py",
                 "tests.full.xml": "tests.full.xml",
-                "tests.xml": "tests.xml"
+                "tests.xml": "tests.xml",
+                "PACK-TOOL-ROOT/resources/xsl": "."
             },
-            "pkg-app": {}
+            "pkg-app": {
+                "copylist": {
+                    "PACK-TOOL-ROOT/resources/webrunner": "webrunner",
+                    "PACK-TOOL-ROOT/resources/testharness": "resources"
+                }
+            }
         },
         "xpk": {
             "blacklist": [
@@ -29,10 +35,15 @@
             "copylist": {
                 "inst.xpk.py": "inst.py",
                 "tests.full.xml": "tests.full.xml",
-                "tests.xml": "tests.xml"
+                "tests.xml": "tests.xml",
+                "PACK-TOOL-ROOT/resources/xsl": "."
             },
             "pkg-app": {
-                "blacklist": []
+                "blacklist": [],
+                "copylist": {
+                    "PACK-TOOL-ROOT/resources/webrunner": "webrunner",
+                    "PACK-TOOL-ROOT/resources/testharness": "resources"
+                }
             }
         }
     },
