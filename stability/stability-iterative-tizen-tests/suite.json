@@ -18,9 +18,10 @@
                 "inst.wgt.py": "inst.py",
                 "tests.full.xml": "tests.full.xml",
                 "tests.xml": "tests.xml",
-                "iterative": "iterative"
+                "iterative": "iterative",
+                "PACK-TOOL-ROOT/resources/xsl": "."
             },
-            "subapp-list": {"launch_exist_test": {}}  
+            "subapp-list": {"launch_exist_test": {}}
         },
         "xpk": {
             "blacklist": [
@@ -29,10 +30,14 @@
             "copylist": {
                 "inst.xpk.py": "inst.py",
                 "tests.full.xml": "tests.full.xml",
-                "tests.xml": "tests.xml"
+                "tests.xml": "tests.xml",
+                "PACK-TOOL-ROOT/resources/xsl": "."
             },
             "pkg-app": {
-                "blacklist": []
+                "blacklist": [],
+                "copylist": {
+                    "PACK-TOOL-ROOT/resources/webrunner": "webrunner"
+                }
             }
         }
     },

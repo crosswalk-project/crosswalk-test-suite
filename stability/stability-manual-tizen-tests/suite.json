@@ -18,13 +18,18 @@
             "copylist": {
                 "inst.wgt.py": "inst.py",
                 "tests.full.xml": "tests.full.xml",
-                "tests.xml": "tests.xml"
+                "tests.xml": "tests.xml",
+                "PACK-TOOL-ROOT/resources/xsl": "."
             },
             "subapp-list": {
                 "play_test": {},
                 "capture_video_camera": {}
             },
-            "pkg-app": {}
+            "pkg-app": {
+                "copylist": {
+                    "PACK-TOOL-ROOT/resources/webrunner": "webrunner"
+                }
+            }
         },
         "xpk": {
             "blacklist": [
@@ -33,10 +38,14 @@
             "copylist": {
                 "inst.xpk.py": "inst.py",
                 "tests.full.xml": "tests.full.xml",
-                "tests.xml": "tests.xml"
+                "tests.xml": "tests.xml",
+                "PACK-TOOL-ROOT/resources/xsl": "."
             },
             "pkg-app": {
-                "blacklist": []
+                "blacklist": [],
+                "copylist": {
+                    "PACK-TOOL-ROOT/resources/webrunner": "webrunner"
+                }
             }
         }
     },
