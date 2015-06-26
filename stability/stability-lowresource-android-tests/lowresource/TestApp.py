@@ -115,15 +115,14 @@ class TestApp():
         # If in Activity, switch to background, otherwise switch to front
         if self.isActivity():
             # Switch to Home
-            cmd = "%s -s %s shell dumpsys activity|grep %s|awk -F \"cmp=\" '{print $2}'|awk '{print $1}'" % (ADB_CMD, self.device, "android.intent.category.HOME")
+            # keycode
+            # 3 --> "KEYCODE_HOME"
+            cmd = "%s -s %s shell input keyevent 3" % (ADB_CMD, self.device)
             (return_code, output) = doCMD(cmd)
-            if len(output) > 0:
-                cmd = "%s -s %s shell am start -n %s" % (ADB_CMD, self.device, output[0])
-                (return_code, output) = doCMD(cmd)
-                if not self.isActivity():
-                    action_status = True
-                else:
-                    print "-->> %s fail to switch to background." % self.pkgname
+            if not self.isActivity():
+                action_status = True
+            else:
+                print "-->> %s fail to switch to background." % self.pkgname
         else:
             cmd = "%s -s %s shell am start -n %s/.%s" % (ADB_CMD, self.device, self.pkgname, self.activname)
             (return_code, output) = doCMD(cmd)
@@ -146,7 +145,6 @@ class TestApp():
         else:
             print "-->> %s has been stoped." % self.pkgname
         return action_status
-
 
     def isInstalled(self):
         action_status = False
