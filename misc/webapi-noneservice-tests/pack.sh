@@ -63,7 +63,7 @@ echo "        ]
 if [ $pack_type == "cordova" ]; then
     for suite in $LIST;do
         if [ $sub_version == "4.0" ]; then
-            python $SRC_ROOT/../../tools/build/pack.py -t ${pack_type}-aio -a $arch -d $BUILD_DEST --sub-version $sub_version -s $SRC_ROOT/../../webapi/`basename $suite`
+            python $SRC_ROOT/../../tools/build/pack.py -t ${pack_type}-aio -m $pack_mode -a $arch -d $BUILD_DEST --sub-version $sub_version -s $SRC_ROOT/../../webapi/`basename $suite`
         elif [ $sub_version == "3.6" ]; then
             python $SRC_ROOT/../../tools/build/pack.py -t ${pack_type}-aio -m $pack_mode -d $BUILD_DEST --sub-version $sub_version -s $SRC_ROOT/../../webapi/`basename $suite`
         else
@@ -136,6 +136,13 @@ elif [ $pack_type == "cordova" ]; then
         do
             cordova plugin add $BUILD_ROOT/cordova_plugins/$plugin
         done
+
+        if [ $pack_mode == "shared" ]; then
+            sed -i "s/<preference name=\"lib_mode\" value=\"embedd\"/<preference name=\"lib_mode\" value=\"shared\"/g" $BUILD_ROOT/$appname/config.xml
+            sed -i "s/<application/<application android:name=\"org.xwalk.core.XWalkApplication\"/g" $BUILD_ROOT/$appname/platforms/android/AndroidManifest.xml
+            sed -i "s/        loadUrl/    }\n\n    @Override\n    protected void onXWalkReady() {\n        super.init();\n        loadUrl/g" $BUILD_ROOT/$appname/platforms/android/src/org/xwalk/$appname/$appname.java
+            sed -i "s/public class CordovaActivity extends Activity {/import org.xwalk.core.XWalkActivity;\npublic abstract class CordovaActivity extends XWalkActivity implements CordovaInterface {/g" $BUILD_ROOT/$appname/platforms/android/CordovaLib/src/org/apache/cordova/CordovaActivity.java
+        fi
 
         cordova build android
         if [ $arch == 'x86' ]; then
