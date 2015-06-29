@@ -62,6 +62,7 @@ PKG_TYPES = [
 PKG_MODES = ["shared", "embedded"]
 PKG_ARCHS = ["x86", "arm"]
 PKG_BLACK_LIST = []
+PACK_TYPES = ["ant", "gradle", "maven"]
 PKG_NAME = None
 BUILD_PARAMETERS = None
 BUILD_ROOT = None
@@ -669,6 +670,35 @@ def packCordova_cli(
             os.chdir(orig_dir)
             return False
 
+    if BUILD_PARAMETERS.pkgmode == "shared":
+        replaceUserString(
+            project_root,
+            'config.xml',
+            '<preference name="lib_mode" value="embedd" />',
+            '<preference name="lib_mode" value="shared" />')
+
+        android_path = os.path.join(project_root, "platforms", "android")
+        replaceUserString(
+           android_path,
+            'AndroidManifest.xml',
+            '<application',
+            '<application android:name="org.xwalk.core.XWalkApplication"')
+
+        mainActivity_path = os.path.join(android_path, "src", "org", "xwalk", app_name)
+        LOG.info("mainActivity_path: %s" % mainActivity_path)
+        replaceUserString(
+           mainActivity_path,
+            '%s.java' % app_name,
+            '        loadUrl',
+            '    }\n\n    @Override\n    protected void onXWalkReady() {\n        super.onXWalkReady();\n        loadUrl')
+
+        cordova_path = os.path.join(android_path, "CordovaLib", "src", "org", "apache", "cordova")
+        replaceUserString(
+           cordova_path,
+            'CordovaActivity.java',
+            'public class CordovaActivity extends Activity {',
+            'import org.xwalk.core.XWalkActivity;\npublic abstract class CordovaActivity extends XWalkActivity implements CordovaInterface {')
+
     ANDROID_HOME = "echo $(dirname $(dirname $(which android)))"
     os.environ['ANDROID_HOME'] = commands.getoutput(ANDROID_HOME)
     pack_cmd = "cordova build android"
@@ -970,34 +1000,58 @@ def packEmbeddingAPI_maven(
         'AndroidManifest.xml',
         'android:versionName=\"1.0\"',
         'android:versionName=\"${app.version.name}\"')
+    manifest_path = os.path.join(app_src, "AndroidManifest.xml")
     if not doCopy(
-            os.path.join(app_src, "AndroidManifest.xml"), os.path.join(app_src, "src", "main", "AndroidManifest.xml")):
+            manifest_path, os.path.join(app_src, "src", "main", "AndroidManifest.xml")):
         return False
+    if not doRemove([manifest_path]):
+        return False
+
+    res_path = os.path.join(app_src, "res")
+    if os.path.exists(res_path):
+        if not doCopy(res_path, os.path.join(app_src, "src", "main", "res")):
+            return False
+        if not doRemove([res_path]):
+            return False
+
+    assets_path = os.path.join(app_src, "assets")
+    if os.path.exists(assets_path):
+        if not doCopy(
+                assets_path, os.path.join(app_src, "src", "main", "assets")):
+            return False
+        if not doRemove([assets_path]):
+            return False
+
+    src_org_path = os.path.join(app_src, "src", "org")
     if not doCopy(
-            os.path.join(app_src, "res"), os.path.join(app_src, "src", "main", "res")):
+            src_org_path, os.path.join(app_src, "src", "main", "java", "org")):
         return False
-    if not doCopy(
-            os.path.join(app_src, "assets"), os.path.join(app_src, "src", "main", "assets")):
+    if not doRemove([src_org_path]):
         return False
-    if not doCopy(
-            os.path.join(app_src, "src", "org"), os.path.join(app_src, "src", "main", "java", "org")):
-        return False
+
+    libs_path = os.path.join(app_src, "libs")
+    if os.path.exists(libs_path):
+        if not doCopy(
+                libs_path, os.path.join(app_src, "../libs")):
+            return False
+        if not doRemove([libs_path]):
+            return False
+
     if BUILD_PARAMETERS.pkgarch and BUILD_PARAMETERS.pkgarch == "arm":
-        if not doCMD("mvn clean install -Px86"):
+        if not doCMD("mvn clean install -Parm"):
             return False
         if not doCopy(
                 os.path.join(
                     app_src,
                     "target",
-                    "%s-armv7-debug.apk" %
-                    app_name),
+                    "embeddingapi-tests-arm.apk"),
                 os.path.join(app_dest, "%s.apk" % app_name)):
             return False
     else:
-        if not doCMD("mvn clean install -Parm"):
+        if not doCMD("mvn clean install -Px86"):
             return False
         if not doCopy(
-                os.path.join(app_src, "target", "%s-x86-debug.apk" % app_name),
+                os.path.join(app_src, "target", "embeddingapi-tests-x86.apk"),
                 os.path.join(app_dest, "%s.apk" % app_name)):
             return False
     os.chdir(orig_dir)
@@ -1437,9 +1491,9 @@ def main():
                 LOG.error(
                     "The argument of cordova --sub-version can only be '3.6' or '4.0' , exit ...")
                 sys.exit(1)
-            if BUILD_PARAMETERS.subversion == '4.0' and BUILD_PARAMETERS.pkgmode:
-                LOG.error("Command -m is only for cordova version 3.6")
-                sys.exit(1)
+            #if BUILD_PARAMETERS.subversion == '4.0' and BUILD_PARAMETERS.pkgmode:
+            #    LOG.error("Command -m is only for cordova version 3.6")
+            #    sys.exit(1)
             parameters_type = BUILD_PARAMETERS.pkgtype + \
                 BUILD_PARAMETERS.subversion
 
