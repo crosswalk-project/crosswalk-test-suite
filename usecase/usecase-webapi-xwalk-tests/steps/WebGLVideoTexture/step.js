@@ -1,0 +1,6 @@
+var step = '<font class="fontSize">'
+           + '<p>Test Purpose:</p>'
+           + '<p>Verifies support WebGL video texture</p>'
+           + '<p>Expected Result:</p>'
+           + '<p>Test passes if the cube display and rotate normally, each side is a playing video</p>'
+         + '</font>'
