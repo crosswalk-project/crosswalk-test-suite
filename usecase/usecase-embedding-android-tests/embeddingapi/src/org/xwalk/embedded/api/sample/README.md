@@ -286,3 +286,13 @@ This usecase covers following interface and methods:
 
 * XWalkView interface: load, onCreateInputConnection methods
 
+
+
+### 27. The [XWalkViewWithDispatchKeyEvent](XWalkViewWithDispatchKeyEvent.java) sample check whether xwalkview can use dispatchKeyEvent method, include:
+
+* XWalkView can use dispatchKeyEvent method
+
+This usecase covers following interface and methods:
+
+* XWalkView interface: load, dispatchKeyEvent methods
+
