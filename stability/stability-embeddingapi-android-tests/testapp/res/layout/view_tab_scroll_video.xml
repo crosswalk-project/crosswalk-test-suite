@@ -4,7 +4,7 @@
      Use of this source code is governed by a BSD-style license that can be
      found in the LICENSE file.
 -->
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:id="@+id/view_tab_scroll_video"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
@@ -14,87 +14,94 @@
         android:layout_width="wrap_content"  
         android:layout_height="wrap_content"/>
     <TextView
-        android:id="@+id/result_show"  
-        android:layout_width="wrap_content"  
+        android:id="@+id/line"  
+        android:layout_width="match_parent"  
+        android:layout_height="1px"
+        android:layout_gravity="top"
+        android:background="#0000FF"/>
+    <LinearLayout
+        android:id="@+id/result_lay"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:translationX="15px"
-        android:translationY="80px"
-        android:text="0"/>
-    <EditText
-        android:id="@+id/views_num"
-        android:numeric="integer"
-        android:maxLength="3"
-        android:layout_width="80px"
-        android:layout_height="wrap_content"  
-        android:padding="5px"
-        android:singleLine="true"  
-        android:lines="1"
-        android:translationX="10px"
-        android:translationY="330px"
-        android:text="20"/>
+        android:orientation="horizontal">
+        <TextView
+            android:id="@+id/result_des"  
+            android:layout_width="wrap_content"  
+            android:layout_height="wrap_content"
+            android:text="Added Views Num: "/>
+        <TextView
+            android:id="@+id/result_show"  
+            android:layout_width="wrap_content"  
+            android:layout_height="wrap_content"
+            android:text="0"/>
+    </LinearLayout>
     <CheckBox 
         android:id="@+id/cb_localvideo"
         android:layout_width="wrap_content" 
         android:layout_height="wrap_content"
         android:checked="true"
-        android:text="file:///android_asset/index.html"
-        android:translationX="0px"
-        android:translationY="100px"/>
-  <LinearLayout
+        android:text="file:///android_asset/index.html"/>
+    <TextView
+        android:id="@+id/views_num_des"  
+        android:layout_width="match_parent"  
+        android:layout_height="wrap_content"
+        android:text="Add Views Num: "/>
+    <LinearLayout
         android:id="@+id/btns_lay"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        android:translationX="100px"
-        android:translationY="320px">
-    <Button android:id="@+id/run_add"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:gravity="end"
-            android:text="Add Views"/>
-
-    <Button android:id="@+id/run_exit"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:gravity="end"
-            android:text="Exit"/>
-  </LinearLayout>
-  <RelativeLayout
+        android:orientation="horizontal">
+	    <EditText
+	        android:id="@+id/views_num"
+	        android:numeric="integer"
+	        android:maxLength="3"
+	        android:layout_width="80px"
+	        android:layout_height="match_parent"  
+	        android:padding="5px"
+	        android:singleLine="true"  
+	        android:lines="1"
+	        android:text="20"/>
+	    <Button android:id="@+id/run_add"
+	        android:layout_width="wrap_content"
+	        android:layout_height="wrap_content"
+	        android:gravity="end"
+	        android:text="Add Views"
+	        android:visibility="gone"/>
+	    <Button android:id="@+id/run_exit"
+	        android:layout_width="wrap_content"
+	        android:layout_height="wrap_content"
+	        android:gravity="end"
+	        android:text="Exit"/>
+    </LinearLayout>
+    <FrameLayout
         android:id="@+id/view_root"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:orientation="vertical">
         <TabHost
-        android:id="@+id/myTabHost"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:translationY="380px">
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:orientation="vertical"
-            android:padding="5dp" >
-
-            <HorizontalScrollView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:scrollbars="none" >
-
-                <TabWidget
-
-                    android:id="@android:id/tabs"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content" />
-            </HorizontalScrollView>
-
-            <FrameLayout
-                android:id="@android:id/tabcontent"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:padding="5dp" />
-        </LinearLayout>
-    </TabHost>
-  </RelativeLayout>
-
-</RelativeLayout>
+	        android:id="@+id/myTabHost"
+	        android:layout_width="match_parent"
+	        android:layout_height="match_parent">
+	        <LinearLayout
+	            android:layout_width="match_parent"
+	            android:layout_height="match_parent"
+	            android:orientation="vertical"
+	            android:padding="5dp" >
+	            <HorizontalScrollView
+	                android:layout_width="match_parent"
+	                android:layout_height="wrap_content"
+	                android:scrollbars="none" >
+	                <TabWidget
+	                    android:id="@android:id/tabs"
+	                    android:layout_width="wrap_content"
+	                    android:layout_height="wrap_content" />
+	            </HorizontalScrollView>
+	            <FrameLayout
+	                android:id="@android:id/tabcontent"
+	                android:layout_width="match_parent"
+	                android:layout_height="match_parent"
+	                android:padding="5dp" />
+            </LinearLayout>
+        </TabHost>
+    </FrameLayout>
+</LinearLayout>

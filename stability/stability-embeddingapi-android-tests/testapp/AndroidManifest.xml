@@ -8,7 +8,7 @@
 -->
 
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="org.xwalkview.maximum.app"
+    package="org.xwalkview.stability.app"
     android:versionCode="1"
     android:versionName="1.0" >
 
@@ -27,12 +27,12 @@
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
 
     <application
-        android:name="android.app.Application"
+        android:name="org.xwalk.core.XWalkApplication"
         android:hardwareAccelerated="true"
-        android:label="views_maximum_test">
+        android:label="XWalkView-Stability-Test">
         <activity
-            android:name="org.xwalkview.maximum.app.XWalkEmbeddedAPISample"
-            android:label="views_maximum_test" >
+            android:name="org.xwalkview.stability.app.XWalkEmbeddedAPISample"
+            android:label="XWalkView-Stability-Test" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -40,9 +40,9 @@
             </intent-filter>
         </activity>
         <activity
-            android:name="org.xwalkview.maximum.app.AddWebViewsActivity"
+            android:name="org.xwalkview.stability.app.AddWebViewsActivity"
             android:label="WebView Maximum"
-            android:parentActivityName="org.xwalkview.maximum.app.XWalkEmbeddedAPISample" >
+            android:parentActivityName="org.xwalkview.stability.app.XWalkEmbeddedAPISample" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -50,189 +50,173 @@
             </intent-filter>
         </activity>
         <activity
-            android:name="org.xwalkview.maximum.app.AddSurfaceViewsActivity"
-            android:label="SurfaceView Maximum"
-            android:parentActivityName="org.xwalkview.maximum.app.XWalkEmbeddedAPISample" >
+            android:name="org.xwalkview.stability.app.AddXWalkViewsActivity"
+            android:label="XWalkView Maximum"
+            android:parentActivityName="org.xwalkview.stability.app.XWalkEmbeddedAPISample" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
                 <category android:name="android.intent.category.SAMPLE_CODE" />
             </intent-filter>
         </activity>
         <activity
-            android:name="org.xwalkview.maximum.app.AddTextureViewsActivity"
-            android:label="TextureView Maximum"
-            android:parentActivityName="org.xwalkview.maximum.app.XWalkEmbeddedAPISample" >
+            android:name="org.xwalkview.stability.app.NavigationWebViewsActivity"
+            android:label="WebView Navigation"
+            android:parentActivityName="org.xwalkview.stability.app.XWalkEmbeddedAPISample" >
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.SAMPLE_CODE" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name="org.xwalkview.stability.app.NavigationXWalkViewsActivity"
+            android:label="XWalkView Navigation"
+            android:parentActivityName="org.xwalkview.stability.app.XWalkEmbeddedAPISample" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
                 <category android:name="android.intent.category.SAMPLE_CODE" />
             </intent-filter>
         </activity>
         <activity
-            android:name="org.xwalkview.maximum.app.ImageSurfaceViewsActivity"
-            android:label="SurfaceViews Load Image Webpages"
-            android:parentActivityName="org.xwalkview.maximum.app.XWalkEmbeddedAPISample" >
+            android:name="org.xwalkview.stability.app.SwipeWebViewsActivity"
+            android:label="WebView Swipe"
+            android:parentActivityName="org.xwalkview.stability.app.XWalkEmbeddedAPISample" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
+
                 <category android:name="android.intent.category.SAMPLE_CODE" />
             </intent-filter>
         </activity>
-                <activity
-            android:name="org.xwalkview.maximum.app.ImageTextureViewsActivity"
-            android:label="TextureViews Load Image Webpages"
-            android:parentActivityName="org.xwalkview.maximum.app.XWalkEmbeddedAPISample" >
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
-                <category android:name="android.intent.category.SAMPLE_CODE" />
-            </intent-filter>
-        </activity>
-                <activity
-            android:name="org.xwalkview.maximum.app.ImageWebViewsActivity"
-            android:label="WebViews Load Image Webpages"
-            android:parentActivityName="org.xwalkview.maximum.app.XWalkEmbeddedAPISample" >
+        <activity
+            android:name="org.xwalkview.stability.app.SwipeXWalkViewsActivity"
+            android:label="XWalkView Swipe"
+            android:parentActivityName="org.xwalkview.stability.app.XWalkEmbeddedAPISample" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
                 <category android:name="android.intent.category.SAMPLE_CODE" />
             </intent-filter>
         </activity>
         <activity
-            android:name="org.xwalkview.maximum.app.VideoSurfaceViewsActivity"
-            android:label="SurfaceViews Load Playing Video Webpages"
-            android:parentActivityName="org.xwalkview.maximum.app.XWalkEmbeddedAPISample" >
+            android:name="org.xwalkview.stability.app.ImageXWalkViewsActivity"
+            android:label="XWalkView Load Image Webpages"
+            android:parentActivityName="org.xwalkview.stability.app.XWalkEmbeddedAPISample" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
                 <category android:name="android.intent.category.SAMPLE_CODE" />
             </intent-filter>
         </activity>
         <activity
-            android:name="org.xwalkview.maximum.app.VideoTextureViewsActivity"
-            android:label="TextureViews Load Playing Video Webpages"
-            android:parentActivityName="org.xwalkview.maximum.app.XWalkEmbeddedAPISample" >
+            android:name="org.xwalkview.stability.app.ImageWebViewsActivity"
+            android:label="WebView Load Image Webpages"
+            android:parentActivityName="org.xwalkview.stability.app.XWalkEmbeddedAPISample" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
                 <category android:name="android.intent.category.SAMPLE_CODE" />
             </intent-filter>
         </activity>
         <activity
-            android:name="org.xwalkview.maximum.app.VideoWebViewsActivity"
-            android:label="WebViews Load Playing Video Webpages"
-            android:parentActivityName="org.xwalkview.maximum.app.XWalkEmbeddedAPISample" >
+            android:name="org.xwalkview.stability.app.VideoXWalkViewsActivity"
+            android:label="XWalkView Load Playing Video Webpages"
+            android:parentActivityName="org.xwalkview.stability.app.XWalkEmbeddedAPISample" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
                 <category android:name="android.intent.category.SAMPLE_CODE" />
             </intent-filter>
         </activity>
         <activity
-            android:name="org.xwalkview.maximum.app.TabSurfaceViewsActivity"
-            android:label="Multi Tab SurfaceViews"
-            android:parentActivityName="org.xwalkview.maximum.app.XWalkEmbeddedAPISample" >
+            android:name="org.xwalkview.stability.app.VideoWebViewsActivity"
+            android:label="WebView Load Playing Video Webpages"
+            android:parentActivityName="org.xwalkview.stability.app.XWalkEmbeddedAPISample" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
                 <category android:name="android.intent.category.SAMPLE_CODE" />
             </intent-filter>
         </activity>
         <activity
-            android:name="org.xwalkview.maximum.app.TabTextureViewsActivity"
-            android:label="Multi Tab TextureViews"
-            android:parentActivityName="org.xwalkview.maximum.app.XWalkEmbeddedAPISample" >
+            android:name="org.xwalkview.stability.app.TabXWalkViewsActivity"
+            android:label="Multi Tab XWalkViews"
+            android:parentActivityName="org.xwalkview.stability.app.XWalkEmbeddedAPISample" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
                 <category android:name="android.intent.category.SAMPLE_CODE" />
             </intent-filter>
         </activity>
         <activity
-            android:name="org.xwalkview.maximum.app.TabWebViewsActivity"
+            android:name="org.xwalkview.stability.app.TabWebViewsActivity"
             android:label="Multi Tab WebViews"
-            android:parentActivityName="org.xwalkview.maximum.app.XWalkEmbeddedAPISample" >
+            android:parentActivityName="org.xwalkview.stability.app.XWalkEmbeddedAPISample" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
                 <category android:name="android.intent.category.SAMPLE_CODE" />
             </intent-filter>
         </activity>
         <activity
-            android:name="org.xwalkview.maximum.app.TabImageSurfaceViewsActivity"
-            android:label="Multi Tab SurfaceViews Load Image Webpages"
-            android:parentActivityName="org.xwalkview.maximum.app.XWalkEmbeddedAPISample" >
+            android:name="org.xwalkview.stability.app.TabImageXWalkViewsActivity"
+            android:label="Multi Tab XWalkViews Load Image Webpages"
+            android:parentActivityName="org.xwalkview.stability.app.XWalkEmbeddedAPISample" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
                 <category android:name="android.intent.category.SAMPLE_CODE" />
             </intent-filter>
         </activity>
         <activity
-            android:name="org.xwalkview.maximum.app.TabImageTextureViewsActivity"
-            android:label="Multi Tab TextureViews Load Image Webpages"
-            android:parentActivityName="org.xwalkview.maximum.app.XWalkEmbeddedAPISample" >
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
-                <category android:name="android.intent.category.SAMPLE_CODE" />
-            </intent-filter>
-        </activity>
-        <activity
-            android:name="org.xwalkview.maximum.app.TabImageWebViewsActivity"
+            android:name="org.xwalkview.stability.app.TabImageWebViewsActivity"
             android:label="Multi Tab WebViews Load Image Webpages"
-            android:parentActivityName="org.xwalkview.maximum.app.XWalkEmbeddedAPISample" >
+            android:parentActivityName="org.xwalkview.stability.app.XWalkEmbeddedAPISample" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
                 <category android:name="android.intent.category.SAMPLE_CODE" />
             </intent-filter>
         </activity>
         <activity
-            android:name="org.xwalkview.maximum.app.TabVideoSurfaceViewsActivity"
-            android:label="Multi Tab SurfaceViews Load Video Webpages"
-            android:parentActivityName="org.xwalkview.maximum.app.XWalkEmbeddedAPISample" >
+            android:name="org.xwalkview.stability.app.TabVideoXWalkViewsActivity"
+            android:label="Multi Tab XWalkViews Load Video Webpages"
+            android:parentActivityName="org.xwalkview.stability.app.XWalkEmbeddedAPISample" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
                 <category android:name="android.intent.category.SAMPLE_CODE" />
             </intent-filter>
         </activity>
         <activity
-            android:name="org.xwalkview.maximum.app.TabVideoTextureViewsActivity"
-            android:label="Multi Tab TextureViews Load Video Webpages"
-            android:parentActivityName="org.xwalkview.maximum.app.XWalkEmbeddedAPISample" >
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
-                <category android:name="android.intent.category.SAMPLE_CODE" />
-            </intent-filter>
-        </activity>
-        <activity
-            android:name="org.xwalkview.maximum.app.TabVideoWebViewsActivity"
+            android:name="org.xwalkview.stability.app.TabVideoWebViewsActivity"
             android:label="Multi Tab WebViews Load Video Webpages"
-            android:parentActivityName="org.xwalkview.maximum.app.XWalkEmbeddedAPISample" >
+            android:parentActivityName="org.xwalkview.stability.app.XWalkEmbeddedAPISample" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
                 <category android:name="android.intent.category.SAMPLE_CODE" />
             </intent-filter>
         </activity>
         <activity
-            android:name="org.xwalkview.maximum.app.XWalkViewsActivity"
-            android:label="Repeat Create 1 XWalkView"
-            android:parentActivityName="org.xwalkview.maximum.app.XWalkEmbeddedAPISample" >
+            android:name="org.xwalkview.stability.app.AutoOneXWalkViewsActivity"
+            android:label="Repeat Create 1 XWalkView for auto cases"
+            android:parentActivityName="org.xwalkview.stability.app.XWalkEmbeddedAPISample" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
                 <category android:name="android.intent.category.SAMPLE_CODE" />
             </intent-filter>
         </activity>
         <activity
-            android:name="org.xwalkview.maximum.app.XWalkMultiViewsActivity"
-            android:label="Repeat Create 5 XWalkViews"
-            android:parentActivityName="org.xwalkview.maximum.app.XWalkEmbeddedAPISample" >
+            android:name="org.xwalkview.stability.app.AutoMultiXWalkViewsActivity"
+            android:label="Repeat Create 5 XWalkViews for auto cases"
+            android:parentActivityName="org.xwalkview.stability.app.XWalkEmbeddedAPISample" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
                 <category android:name="android.intent.category.SAMPLE_CODE" />
             </intent-filter>
         </activity>
         <activity
-            android:name="org.xwalkview.maximum.app.XWalkViewsPlayingVideoActivity"
-            android:label="Long Time Playing Video"
-            android:parentActivityName="org.xwalkview.maximum.app.XWalkEmbeddedAPISample" >
+            android:name="org.xwalkview.stability.app.XWalkViewsPlayingVideoActivity"
+            android:label="XWalkView Long Time Playing Video for auto cases"
+            android:parentActivityName="org.xwalkview.stability.app.XWalkEmbeddedAPISample" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
                 <category android:name="android.intent.category.SAMPLE_CODE" />
             </intent-filter>
         </activity>
         <activity
-            android:name="org.xwalkview.maximum.app.XWalkViewsPlayingGameActivity"
-            android:label="Long Time Playing Game"
-            android:parentActivityName="org.xwalkview.maximum.app.XWalkEmbeddedAPISample" >
+            android:name="org.xwalkview.stability.app.XWalkViewsPlayingGameActivity"
+            android:label="XWalkView Long Time Playing Game for auto cases"
+            android:parentActivityName="org.xwalkview.stability.app.XWalkEmbeddedAPISample" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
                 <category android:name="android.intent.category.SAMPLE_CODE" />
