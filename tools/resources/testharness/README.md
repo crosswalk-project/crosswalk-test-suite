@@ -25,6 +25,6 @@ You can also read a tutorial on
 ## Note ##
 
 The testharness files come from
-https://github.com/w3c/testharness.js (commit 2486f01bf4c58de1c1b7cb39322af7b55c6c700b)
+https://github.com/w3c/testharness.js (commit cf0b67dff57c3140c882b1ffd2b5f4c7adc2ba44)
 without any modification.
 
