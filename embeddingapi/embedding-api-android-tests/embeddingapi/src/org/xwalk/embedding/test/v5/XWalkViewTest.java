@@ -242,4 +242,21 @@ public class XWalkViewTest extends XWalkViewTestBase {
             e.printStackTrace();
 		}
     }
+
+    @SmallTest
+    public void testSetAcceptLanuages() throws Throwable {
+        String result;
+        final String script = "navigator.languages";
+        final String[] languages = {"en;q=0.7", "zh-cn", "da,en-gb;q=0.8,en;q=0.7"};
+        final String[] expectedLanguages = {"[\"en;q=0.7\"]", "[\"zh-cn\"]", "[\"da\",\"en-gb;q=0.8\",\"en;q=0.7\"]"};
+
+        result = executeJavaScriptAndWaitForResult(script);
+        assertNotNull(result);
+
+        for (int i = 0; i < languages.length; i++) {
+            setAcceptLanguages(languages[i]);
+            result = executeJavaScriptAndWaitForResult(script);
+            assertEquals(expectedLanguages[i], result);
+        }
+    }
 }

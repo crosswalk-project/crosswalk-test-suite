@@ -889,6 +889,15 @@ public class XWalkViewTestBase extends ActivityInstrumentationTestCase2<MainActi
         });
     }
 
+    protected void setAcceptLanguages(final String languages) {
+        getInstrumentation().runOnMainSync(new Runnable() {
+            @Override
+            public void run() {
+                mXWalkView.setAcceptLanguages(languages);
+            }
+        });
+    }
+
     public static final String ABOUT_TITLE = "About the Google";
 
     protected String addAboutPageToTestServer(TestWebServer webServer) {
