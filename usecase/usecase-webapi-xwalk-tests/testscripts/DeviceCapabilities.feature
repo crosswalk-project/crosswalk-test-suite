@@ -2,7 +2,7 @@ Feature: Usecase WebAPI
  Scenario: Experimental API/DeviceCapabilities Test
     When launch "usecase-webapi-xwalk-tests"
      And I go to "/samples/DeviceCapabilities/index.html"
-     And I wait 1 seconds
+     And I wait 3 seconds
     Then I verify value in "NumOfProcessors" is "int" type
     Then I verify value in "ArchName" is "string" type
     Then I verify value in "Load" is "float" type
