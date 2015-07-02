@@ -83,6 +83,96 @@
           <test_script_entry>/opt/usecase-apptools-tests/samples/AppTools_arm/index.html</test_script_entry>
         </description>
       </testcase>
+      <testcase component="Crosswalk Use Cases/AppTools" execution_type="manual" id="AppTools_install_crosswalk_app_x86" platform="android" priority="P0" purpose="AppTools_install_crosswalk_app_x86 Test" status="approved" type="compliance">
+        <description>
+          <pre_condition>Remove environment PATH with 'crosswalk-app-tools/src/crosswalk-app'. Install crosswalk-app by run command: $ sudo npm install crosswalk-app-tools -g</pre_condition>
+          <steps>
+            <step order="1">
+              <step_desc>If org.test.foo exists in usecase-apptools-tests/tools/ directory, remove it.
+                Then run below commands under usecase-apptools-tests/tools/crosswalk-app-tools/ directory:
+                $ crosswalk-app create org.test.foo
+                $ cd org.test.foo
+                $ crosswalk-app build
+              </step_desc>
+              <expected>Success to create/build org.test.foo</expected>
+            </step>
+            <step order="2">
+              <step_desc>Install /path/to/org.test.foo/pkg/foo-debug.x86.apk on your android device which is "x86" architecture</step_desc>
+              <expected>Success to install foo app</expected>
+            </step>
+            <step order="3">
+              <step_desc>Check icon of foo app in your android device</step_desc>
+              <expected>Success to find foo app</expected>
+            </step>
+            <step order="4">
+              <step_desc>Launch foo app in your android device</step_desc>
+              <expected>Success to launch foo app</expected>
+            </step>
+            <step order="5">
+              <step_desc>Check the homepage of foo app</step_desc>
+              <expected>You can see "This is a Crosswalk Sample Application" on the device</expected>
+            </step>
+            <step order="6">
+              <step_desc>Uninstall the app by typing "adb -s `adb devices -l |sed -n '2p' |awk '{print $1}'` uninstall org.test.foo" on the command line when the app running</step_desc>
+              <expected>Success to uninstall foo app</expected>
+            </step>
+            <step order="7">
+              <step_desc>Install and launch the foo app again. Close foo app via clicking the home button, and kill foo app from Task Manager</step_desc>
+              <expected>Success to stop foo app</expected>
+            </step>
+            <step order="8">
+              <step_desc>Long press the icon of foo app to uninstall it</step_desc>
+              <expected>Success to uninstall foo app</expected>
+            </step>
+          </steps>
+          <test_script_entry>/opt/usecase-apptools-tests/samples/AppTools_install_crosswalk_app_x86/index.html</test_script_entry>
+        </description>
+      </testcase>
+      <testcase component="Crosswalk Use Cases/AppTools" execution_type="manual" id="AppTools_install_crosswalk_app_arm" platform="android" priority="P0" purpose="AppTools_install_crosswalk_app_arm Test" status="approved" type="compliance">
+        <description>
+          <pre_condition>Remove environment PATH with 'crosswalk-app-tools/src/crosswalk-app'. Install crosswalk-app by run command: $ sudo npm install crosswalk-app-tools -g</pre_condition>
+          <steps>
+            <step order="1">
+              <step_desc>If org.test.foo exists in usecase-apptools-tests/tools/ directory, remove it.
+                Then run below commands under usecase-apptools-tests/tools/crosswalk-app-tools/ directory:
+                $ crosswalk-app create org.test.foo
+                $ cd org.test.foo
+                $ crosswalk-app build
+              </step_desc>
+              <expected>Success to create/build org.test.foo</expected>
+            </step>
+            <step order="2">
+              <step_desc>Install /path/to/org.test.foo/pkg/foo-debug.armeabi-v7a.apk on your android device which is "arm" architecture</step_desc>
+              <expected>Success to install foo app</expected>
+            </step>
+            <step order="3">
+              <step_desc>Check icon of foo app in your android device</step_desc>
+              <expected>Success to find foo app</expected>
+            </step>
+            <step order="4">
+              <step_desc>Launch foo app in your android device</step_desc>
+              <expected>Success to launch foo app</expected>
+            </step>
+            <step order="5">
+              <step_desc>Check the homepage of foo app</step_desc>
+              <expected>You can see "This is a Crosswalk Sample Application" on the device</expected>
+            </step>
+            <step order="6">
+              <step_desc>Uninstall the app by typing "adb -s `adb devices -l |sed -n '2p' |awk '{print $1}'` uninstall org.test.foo" on the command line when the app running</step_desc>
+              <expected>Success to uninstall foo app</expected>
+            </step>
+            <step order="7">
+              <step_desc>Install and launch the foo app again. Close foo app via clicking the home button, and kill foo app from Task Manager</step_desc>
+              <expected>Success to stop foo app</expected>
+            </step>
+            <step order="8">
+              <step_desc>Long press the icon of foo app to uninstall it</step_desc>
+              <expected>Success to uninstall foo app</expected>
+            </step>
+          </steps>
+          <test_script_entry>/opt/usecase-apptools-tests/samples/AppTools_install_crosswalk_app_arm/index.html</test_script_entry>
+        </description>
+      </testcase>
       <testcase component="Crosswalk Use Cases/AppTools" execution_type="manual" id="AppTools_deb" platform="linux" priority="P0" purpose="AppTools_deb Test" status="approved" type="compliance">
         <description>
           <pre_condition>Please refer to README file.</pre_condition>
