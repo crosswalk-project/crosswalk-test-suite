@@ -4,7 +4,11 @@ This test suite is for testing Embedding API crosswalk module.
 
 ## Pre-conditions
 
-* Please make sure copy crosswalk-webview-xxxx and rename it to /crosswalk-webview folder.
+* Require Android API level 21
+* For ant build: Please make sure copy the downloaded crosswalk-webview-xxxx to crosswalk-test-suite/tools directory, then rename it to /crosswalk-webview folder.
+* For gradle build: Need to configure the crosswalk version in the dependencies of embeddingapi/build.gradle
+* For maven build: Need to configure the crosswalk version in the profiles of embeddingapi/pom.xml
+
 
 ## Authors:
 
@@ -27,4 +31,7 @@ Please see the COPYING file for the BSD-3-Clause License.
     sudo apt-get install ant
 
 3. install jdk
-
+4. install Gradle(gradle-2.3 is known work)
+5. install Maven(apache-maven-3.2.5 is known work)
+6. install Maven Android SDK Deployer
+7. install Maven Android Plugin

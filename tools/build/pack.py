@@ -55,6 +55,7 @@ PKG_TYPES = ["apk", "xpk", "wgt", "apk-aio", "cordova-aio", "cordova", "embeddin
 PKG_MODES = ["shared", "embedded"]
 PKG_ARCHS = ["x86", "arm"]
 PKG_BLACK_LIST = []
+PACK_TYPES = ["ant", "gradle", "maven"]
 PKG_NAME = None
 BUILD_PARAMETERS = None
 BUILD_ROOT = None
@@ -869,39 +870,76 @@ def packEmbeddingAPI_gradle(build_json=None, app_src=None, app_dest=None, app_na
     os.chdir(orig_dir)
     return True
 
-def packEmbeddingAPI_maven(build_json=None, app_src=None, app_dest=None, app_name=None, app_version=None):
+def packEmbeddingAPI_maven(
+        build_json=None, app_src=None, app_dest=None, app_name=None, app_version=None):
     app_name = app_name.replace("-", "_")
     orig_dir = os.getcwd()
     LOG.info("app_src: %s" % app_src)
     LOG.info("app_dest: %s" % app_dest)
     os.chdir(app_src)
-    replaceUserString(app_src,'AndroidManifest.xml','android:versionCode=\"1\"','android:versionCode=\"${app.version.code}\"')
-    replaceUserString(app_src,'AndroidManifest.xml','android:versionName=\"1.0\"','android:versionName=\"${app.version.name}\"')
+    replaceUserString(
+        app_src,
+        'AndroidManifest.xml',
+        'android:versionCode=\"1\"',
+        'android:versionCode=\"${app.version.code}\"')
+    replaceUserString(
+        app_src,
+        'AndroidManifest.xml',
+        'android:versionName=\"1.0\"',
+        'android:versionName=\"${app.version.name}\"')
+    manifest_path = os.path.join(app_src, "AndroidManifest.xml")
     if not doCopy(
-        os.path.join(app_src, "AndroidManifest.xml"), os.path.join(app_src, "src", "main", "AndroidManifest.xml")):
+            manifest_path, os.path.join(app_src, "src", "main", "AndroidManifest.xml")):
         return False
-    if not doCopy(
-        os.path.join(app_src, "res"), os.path.join(app_src, "src", "main", "res")):
+    if not doRemove([manifest_path]):
         return False
-    if not doCopy(
-        os.path.join(app_src, "assets"), os.path.join(app_src, "src", "main", "assets")):
-        return False
-    if not doCopy(
-        os.path.join(app_src, "src", "org"), os.path.join(app_src, "src", "main", "java", "org")):
-        return False
-    if BUILD_PARAMETERS.pkgarch and BUILD_PARAMETERS.pkgarch == "arm":
-        if not doCMD("mvn clean install -Px86"):
+
+    res_path = os.path.join(app_src, "res")
+    if os.path.exists(res_path):
+        if not doCopy(res_path, os.path.join(app_src, "src", "main", "res")):
             return False
+        if not doRemove([res_path]):
+            return False
+
+    assets_path = os.path.join(app_src, "assets")
+    if os.path.exists(assets_path):
         if not doCopy(
-            os.path.join(app_src, "target", "%s-armv7-debug.apk" % app_name),
-            os.path.join(app_dest, "%s.apk" % app_name)):
+                assets_path, os.path.join(app_src, "src", "main", "assets")):
             return False
-    else:
+        if not doRemove([assets_path]):
+            return False
+
+    src_org_path = os.path.join(app_src, "src", "org")
+    if not doCopy(
+            src_org_path, os.path.join(app_src, "src", "main", "java", "org")):
+        return False
+    if not doRemove([src_org_path]):
+        return False
+
+    libs_path = os.path.join(app_src, "libs")
+    if os.path.exists(libs_path):
+        if not doCopy(
+                libs_path, os.path.join(app_src, "../libs")):
+            return False
+        if not doRemove([libs_path]):
+            return False
+
+    if BUILD_PARAMETERS.pkgarch and BUILD_PARAMETERS.pkgarch == "arm":
         if not doCMD("mvn clean install -Parm"):
             return False
         if not doCopy(
-            os.path.join(app_src, "target", "%s-x86-debug.apk" % app_name),
-            os.path.join(app_dest, "%s.apk" % app_name)):
+                os.path.join(
+                    app_src,
+                    "target",
+                    "embeddingapi-tests-arm.apk"),
+                os.path.join(app_dest, "%s.apk" % app_name)):
+            return False
+    else:
+        if not doCMD("mvn clean install -Px86"):
+            return False
+        if not doCopy(
+                os.path.join(app_src, "target", "embeddingapi-tests-x86.apk"),
+                os.path.join(app_dest, "%s.apk" % app_name)):
             return False
     os.chdir(orig_dir)
     return True
