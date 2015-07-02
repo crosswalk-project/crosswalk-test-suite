@@ -19,6 +19,7 @@ import android.widget.TextView;
 
 public class XWalkNavigationActivity extends Activity implements XWalkInitializer.XWalkInitListener {
     private XWalkView mXWalkView;
+    private XWalkInitializer mXWalkInitializer;
     private ImageButton mNextButton;
     private ImageButton mPrevButton;
 
@@ -39,7 +40,8 @@ public class XWalkNavigationActivity extends Activity implements XWalkInitialize
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
-        XWalkInitializer.initAsync(this, this);
+        mXWalkInitializer = new XWalkInitializer(this, this);
+        mXWalkInitializer.initAsync();
     }
 
     @Override

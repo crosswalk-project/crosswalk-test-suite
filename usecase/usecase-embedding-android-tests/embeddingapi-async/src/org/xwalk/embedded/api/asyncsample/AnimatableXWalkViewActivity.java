@@ -25,6 +25,7 @@ public class AnimatableXWalkViewActivity extends Activity implements XWalkInitia
     private final static float ANIMATION_FACTOR = 0.6f;
     private Button mRunAnimationButton;
     private XWalkView mXWalkView;
+    private XWalkInitializer mXWalkInitializer;
 
     private void startAnimation() {
         AnimatorSet combo = new AnimatorSet();
@@ -48,7 +49,8 @@ public class AnimatableXWalkViewActivity extends Activity implements XWalkInitia
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
-        XWalkInitializer.initAsync(this, this);
+        mXWalkInitializer = new XWalkInitializer(this, this);
+        mXWalkInitializer.initAsync();
     }
 
     @Override

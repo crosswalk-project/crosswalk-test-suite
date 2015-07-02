@@ -26,6 +26,7 @@ public class XWalkViewWithClearCache extends Activity implements XWalkInitialize
 	private static final String EXTRA_CACHE_PATH
 				= "/data/data/org.xwalk.embedded.api.asyncsample/app_xwalkcore/Default/Cache";
     private XWalkView mXWalkView;
+    private XWalkInitializer mXWalkInitializer;
     private Button clearCacheButton;
     private TextView cacheSizeTextView;
 
@@ -33,7 +34,8 @@ public class XWalkViewWithClearCache extends Activity implements XWalkInitialize
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
-        XWalkInitializer.initAsync(this, this);
+        mXWalkInitializer = new XWalkInitializer(this, this);
+        mXWalkInitializer.initAsync();
     }
 
     @Override

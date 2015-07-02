@@ -18,12 +18,14 @@ public class EchoExtensionActivity extends Activity implements XWalkInitializer.
     private ExtensionEcho mExtension;
     private XWalkView mXWalkView1;
     private XWalkView mXWalkView2;
+    private XWalkInitializer mXWalkInitializer;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
-        XWalkInitializer.initAsync(this, this);
+        mXWalkInitializer = new XWalkInitializer(this, this);
+        mXWalkInitializer.initAsync();
     }
 
     @Override

@@ -20,6 +20,7 @@ import android.webkit.WebResourceResponse;
 
 public class ResourceAndUIClientsActivity extends Activity implements XWalkInitializer.XWalkInitListener {
     private XWalkView mXWalkView;
+    private XWalkInitializer mXWalkInitializer;
     private static final String TAG = ResourceAndUIClientsActivity.class.getName();
 
     class ResourceClient extends XWalkResourceClient {
@@ -104,7 +105,8 @@ public class ResourceAndUIClientsActivity extends Activity implements XWalkIniti
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
-        XWalkInitializer.initAsync(this, this);
+        mXWalkInitializer = new XWalkInitializer(this, this);
+        mXWalkInitializer.initAsync();
     }
 
     @Override

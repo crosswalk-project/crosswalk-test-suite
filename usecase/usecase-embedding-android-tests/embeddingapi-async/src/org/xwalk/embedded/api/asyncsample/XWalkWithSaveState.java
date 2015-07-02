@@ -16,6 +16,7 @@ import android.widget.FrameLayout;
 
 public class XWalkWithSaveState extends Activity implements XWalkInitializer.XWalkInitListener {
     private XWalkView xWalkView;
+    private XWalkInitializer mXWalkInitializer;
     private Button button_one;
     private Button button_two;
     private Button button_three;
@@ -26,7 +27,8 @@ public class XWalkWithSaveState extends Activity implements XWalkInitializer.XWa
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
-        XWalkInitializer.initAsync(this, this);
+        mXWalkInitializer = new XWalkInitializer(this, this);
+        mXWalkInitializer.initAsync();
     }
 
     @Override
