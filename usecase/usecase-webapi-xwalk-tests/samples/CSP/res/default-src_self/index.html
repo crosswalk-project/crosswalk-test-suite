@@ -27,6 +27,7 @@ EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
 Authors:
         Yue, Ma <yuex.ma@intel.com>
+        Yun, Liu <yunx.liu@intel.com>
 
 -->
 
@@ -41,39 +42,18 @@ Authors:
     <script src="../../../../js/bootstrap.min.js"></script>
     <script src="../../../../js/common.js"></script>
     <script src="../../../../js/tests.js"></script>
-    <meta http-equiv="Content-Security-Policy" content="default-src 'self' 'unsafe-inline'">
-    <meta http-equiv="x-Content-Security-Policy" content="default-src 'self' 'unsafe-inline'">
-    <meta http-equiv="X-WebKit-CSP" content="default-src 'self' 'unsafe-inline'">
-    <script src="support/csp.js"></script>
-    <script src="http://127.0.0.1:8081/opt/webapi-usecase-tests/res/js/test.js"></script>
-    <link rel="stylesheet" type="text/css" href="support/blue-100x100.css"/>
-    <link rel="stylesheet" type="text/css" href="http://127.0.0.1:8081/opt/webapi-usecase-tests/res/css/canvas-index.css"/>
+    <meta http-equiv="Content-Security-Policy" content="default-src 'self' 'unsafe-inline'"/>
+    <meta http-equiv="x-Content-Security-Policy" content="default-src 'self' 'unsafe-inline'"/>
+    <meta http-equiv="X-WebKit-CSP" content="default-src 'self' 'unsafe-inline'"/>
+    <script src="../resources/js/csp.js"></script>
+    <script src="http://127.0.0.1:8081/opt/csp/resources/js/csp_online.js"></script>
+    <link rel="stylesheet" href="../resources/css/csp_style.css"/>
+    <link rel="stylesheet" href="http://127.0.0.1:8081/opt/csp/resources/css/csp_style_online.css"/>
     <style>
-        #test-green {
-            background-color: green;
-        }
-        @font-face {
-            font-family: Canvas;
-            src: url("w3c/support/CanvasTest.ttf");
-        }
-        #test {
-            font-family: Canvas;
-        }
-        @font-face {
-            font-family: Canvas1;
-            src: url("http://127.0.0.1:8081/opt/webapi-usecase-tests/res/font/CanvasTest.ttf");
-        }
-        #test1 {
-            font-family: Canvas1;
-        }
-        .button {
-            background: #eee;
-            border: 1px solid #ccc;
-            border-radius: 5px;
-            font-weight: bold;
-            font-size: 15px;
-            padding: 8px 2px;
-            width: 100%;
+        .csp_error {
+            background-image: url("../resources/images/red-100x100.png");
+            width: 100px;
+            height: 100px;
         }
     </style>
   </head>
@@ -82,49 +62,24 @@ Authors:
       <h3 id="main_page_title"></h3>
     </div>
     <div class="content">
-      <input type="hidden" id="wgt_name" value="default-src-self"/>
-      <p>Test 1: passes if the first two lines are the same in font and different from line 3.</p>
-      <div id="test1">1234 ABCD</div>
-      <div id="test2">1234 ABCD</div>
-      <div id="test">1234 ABCD</div>
-      <hr />
-      <p>Test 2: passes if a blue filled square with a "PASS" plug in is displayed .</p>
-      <div id="test-blue"></div>
-      <div id="test-green"></div>
-      <h3></h3>
-      <script language="javascript" type="text/javascript">
-          var connect;
-          var script_allow = typeof(X) == "number" ? true : false;
-          var script_not_allow =  typeof(getVideoURI) != "function" ? true : false;
-          var h3 = document.querySelector("h3");
-          var display = getComputedStyle(h3)["display"];
-          var style_not_allow = display != "inline" ? true : false;
-          var blue = document.querySelector("#test-blue");
-          var backgroundColor = getComputedStyle(blue)["backgroundColor"];
-          var style_allow = backgroundColor == "rgb(0, 0, 255)" ? true : false;
-          var green = document.querySelector("#test-green");
-          var fix = getComputedStyle(green)["backgroundColor"];
-          var style_green_allow = fix == "rgb(0, 128, 0)" ? true : false;
+      <div id="csp_local">ABCD</div>
+      <div id="csp_online">ABCD</div>
+      <script>
           var xhr = new XMLHttpRequest();
           try {
-              xhr.open("GET", "support/csp.js");
-              connect =  true;
+              xhr.open("GET", "http://www.w3.org");
+              addOnlineStyle();
           } catch(e) {
-              connect =  false;
-          }
-          if(script_allow && script_not_allow && style_not_allow && style_allow && style_green_allow && connect) {
-              document.getElementById("test-blue").innerHTML = "<span id='text1' style='color:white'>PASS</span>.";
+              addLocalStyle();
+              $("#csp_online").addClass("csp_error");
           }
       </script>
-      <hr />
     </div>
     <div class="footer">
       <div id="footer"></div>
     </div>
     <div class="modal fade" id="popup_info">
-      <p>Test Purpose: Verifies the default-src-self of CSP worked well.</p>
-      <p>Expected Result: </p>
-      <p>Test passes if all sub-tests pass.</p>
+      <p>Verifies 'default-src: self' allow to load resources in same orgin and deny cross orgin's.</p>
     </div>
   </body>
 </html>

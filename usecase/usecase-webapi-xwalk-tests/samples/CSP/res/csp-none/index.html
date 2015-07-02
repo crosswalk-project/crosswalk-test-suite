@@ -27,6 +27,7 @@ EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
 Authors:
         Xu, Jianfeng <jianfengx.xu@intel.com>
+        Yun, Liu <yunx.liu@intel.com>
 
 -->
 
@@ -41,50 +42,45 @@ Authors:
     <script src="../../../../js/bootstrap.min.js"></script>
     <script src="../../../../js/common.js"></script>
     <script src="../../../../js/tests.js"></script>
-    <meta http-equiv="Content-Security-Policy" content="default-src 'unsafe-inline';connect-src 'none';font-src 'none';frame-src 'none';img-src 'none';media-src 'none';object-src 'none';style-src 'none'">
-    <meta http-equiv="x-Content-Security-Policy" content="default-src 'unsafe-inline';connect-src 'none';font-src 'none';frame-src 'none';img-src 'none';media-src 'none';object-src 'none';style-src 'none'">
-    <meta http-equiv="X-WebKit-CSP" content="default-src 'unsafe-inline';connect-src 'none';font-src 'none';frame-src 'none';img-src 'none';media-src 'none';object-src 'none';style-src 'none'">
-    <link rel="stylesheet" type="text/css" href="support/blue-100x100.css"/>
+    <meta http-equiv="Content-Security-Policy" content="connect-src 'none';font-src 'none';img-src 'none' 'unsafe-inline';style-src 'none' 'unsafe-inline';script-src 'none' 'unsafe-inline'"/>
+    <meta http-equiv="x-Content-Security-Policy" content="connect-src 'none';font-src 'none';img-src 'none' 'unsafe-inline';style-src 'none' 'unsafe-inline';script-src 'none' 'unsafe-inline'"/>
+    <meta http-equiv="X-WebKit-CSP" content="connect-src 'none';font-src 'none';img-src 'none' 'unsafe-inline';style-src 'none' 'unsafe-inline';script-src 'none' 'unsafe-inline'"/>
+    <script src="../resources/js/csp.js"></script>
+    <script src="http://127.0.0.1:8081/opt/csp/resources/js/csp_online.js"></script>
+    <link rel="stylesheet" href="../resources/css/csp_style.css"/>
+    <link rel="stylesheet" href="http://127.0.0.1:8081/opt/csp/resources/css/csp_style_online.css"/>
+    <style>
+        .csp_error {
+            color: red;
+        }
+    </style>
   </head>
   <body>
     <div id="header">
       <h3 id="main_page_title"></h3>
     </div>
     <div class="content">
-      <input type="hidden" id="wgt_name" value="csp-none"/>
-      <p>Test 1: passes if no red suqare is displayed below.</p>
-      <object id="t1" data="support/red-100x100.png"></object>
-      <hr />
-      <p>Test 2: passes if a "PASS" in bold letters is displayed below.</p>
-      <div id="test-blue"></div>
-      <div id="test-green"></div>
-      <h3 id="h3"></h3>
+      <div id="csp_local">ABCD</div>
+      <div id="csp_online">ABCD</div>
       <script>
-          var h3 = document.querySelector("h3");
-          var display = getComputedStyle(h3)["display"];
-          var display_h3 = display != "inline" ? true : false;
-          var blue = document.querySelector("#test-blue");
-          var color_blue = getComputedStyle(blue)["backgroundColor"];
-          var blue_not_allow = color_blue != "rgb(0, 0, 255)" ? true : false;
-          var green = document.querySelector("#test-green");
-          var color_green = getComputedStyle(green)["backgroundColor"];
-          var green_not_allow = color_green != "rgb(0, 128, 0)" ? true : false;
-          if(display_h3 && blue_not_allow && green_not_allow) {
-              document.getElementById("h3").innerText = "PASS";
-          } else {
-              document.getElementById("h3").innerText = "FAIL";
+          var xhr = new XMLHttpRequest();
+          try {
+              xhr.open("GET", "http://www.w3.org");
+              addLocalStyle();
+              addOnlineStyle();
+          } catch(e) {
+              $("#csp_local").addClass("csp_error");
+              $("#csp_online").addClass("csp_error");
           }
       </script>
-      <hr />
+      <hr/>
       <font size="2">Note: The css style on the following button losing effects are expected result, since the csp security rule are set to "none" in this test.</font>
     </div>
     <div class="footer">
       <div id="footer"></div>
     </div>
     <div class="modal fade" id="popup_info">
-      <p>Test Purpose: Verifies the csp-none of CSP worked well.</p>
-      <p>Expected Result: </p>
-      <p>Test passes if all sub-tests pass.</p>
+      <p>Verifies 'csp: none' deny to load resources in same orgin and cross orgin's.</p>
     </div>
   </body>
 </html>

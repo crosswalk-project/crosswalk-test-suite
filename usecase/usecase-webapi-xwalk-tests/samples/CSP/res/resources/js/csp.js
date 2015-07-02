@@ -25,12 +25,10 @@ NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE,
 EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
 Authors:
-        Hao, Yunfei <yunfeix.hao@intel.com>
+        Yun, Liu <yunx.liu@intel.com>
 
 */
 
-#test-blue {
-    background-color: blue;
-    height: 100px;
-    width: 100px;
+function addLocalStyle() {
+  $("#csp_local").addClass("csp_local");
 }

@@ -25,9 +25,11 @@ NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE,
 EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
 Authors:
-        Zhang, Zhiqiang <zhiqiang.zhang@intel.com>
+        Yun, Liu <yunx.liu@intel.com>
 
 */
 
-var X = 10;
-var Y = eval(X + 17);
+
+function addOnlineStyle() {
+  $("#csp_online").addClass("csp_online");
+}
