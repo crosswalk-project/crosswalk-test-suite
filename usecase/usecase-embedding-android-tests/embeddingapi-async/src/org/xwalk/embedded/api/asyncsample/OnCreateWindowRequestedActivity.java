@@ -16,6 +16,7 @@ public class OnCreateWindowRequestedActivity extends Activity implements XWalkIn
     private TextView mTitleText1;
     private TextView mTitleText2;
     private int count;
+    private XWalkInitializer mXWalkInitializer;
 
     class TestXWalkUIClientBase extends XWalkUIClient {
 
@@ -36,7 +37,8 @@ public class OnCreateWindowRequestedActivity extends Activity implements XWalkIn
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
-        XWalkInitializer.initAsync(this, this);
+        mXWalkInitializer = new XWalkInitializer(this, this);
+        mXWalkInitializer.initAsync();
     }
 
     @Override

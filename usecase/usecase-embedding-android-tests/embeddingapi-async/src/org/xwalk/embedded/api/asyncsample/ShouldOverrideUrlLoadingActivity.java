@@ -12,6 +12,7 @@ import android.widget.TextView;
 
 public class ShouldOverrideUrlLoadingActivity extends Activity implements XWalkInitializer.XWalkInitListener {
     private XWalkView mXWalkView;
+    private XWalkInitializer mXWalkInitializer;
     private TextView mTitleText1;
     private TextView mTitleText2;
     private int count;
@@ -37,7 +38,8 @@ public class ShouldOverrideUrlLoadingActivity extends Activity implements XWalkI
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
-        XWalkInitializer.initAsync(this, this);
+        mXWalkInitializer = new XWalkInitializer(this, this);
+        mXWalkInitializer.initAsync();
     }
 
     @Override

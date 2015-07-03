@@ -16,6 +16,7 @@ import android.widget.ImageButton;
 
 public class PauseTimersActivity extends Activity implements XWalkInitializer.XWalkInitListener {
     private XWalkView mXWalkView;
+    private XWalkInitializer mXWalkInitializer;
     private ImageButton mButton;
     private boolean isPaused;
 
@@ -23,7 +24,8 @@ public class PauseTimersActivity extends Activity implements XWalkInitializer.XW
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
-        XWalkInitializer.initAsync(this, this);
+        mXWalkInitializer = new XWalkInitializer(this, this);
+        mXWalkInitializer.initAsync();
     }
 
     @Override

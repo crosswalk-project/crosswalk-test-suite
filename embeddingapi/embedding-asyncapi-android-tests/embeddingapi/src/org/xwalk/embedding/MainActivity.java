@@ -22,6 +22,7 @@ import android.os.PowerManager.WakeLock;
 public class MainActivity extends Activity implements XWalkInitializer.XWalkInitListener  {
 
     protected XWalkView mXWalkView;
+    protected XWalkInitializer mXWalkInitializer;
 
     public XWalkView getXWalkView()
     {
@@ -50,7 +51,8 @@ public class MainActivity extends Activity implements XWalkInitializer.XWalkInit
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
-        XWalkInitializer.initAsync(this, this);
+        mXWalkInitializer = new XWalkInitializer(this, this);
+        mXWalkInitializer.initAsync();
     }
 
     @Override

@@ -14,6 +14,7 @@ import android.os.Bundle;
 
 public class XWalkViewWithLoadImage extends Activity implements XWalkInitializer.XWalkInitListener {
     private XWalkView mXWalkView;
+    private XWalkInitializer mXWalkInitializer;
     
 	@Override
 	protected void onActivityResult(int requestCode, int resultCode, Intent data) {
@@ -26,7 +27,8 @@ public class XWalkViewWithLoadImage extends Activity implements XWalkInitializer
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
-        XWalkInitializer.initAsync(this, this);
+        mXWalkInitializer = new XWalkInitializer(this, this);
+        mXWalkInitializer.initAsync();
     }
 
     @Override

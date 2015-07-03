@@ -16,6 +16,7 @@ import android.content.res.AssetManager;
 import android.os.Bundle;
 
 public class LoadAppFromManifestLayoutActivity extends Activity implements XWalkInitializer.XWalkInitListener {
+    private XWalkInitializer mXWalkInitializer;
 
     private String getAssetsFileContent(AssetManager assetManager, String fileName)
             throws IOException {
@@ -39,7 +40,8 @@ public class LoadAppFromManifestLayoutActivity extends Activity implements XWalk
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
-        XWalkInitializer.initAsync(this, this);
+        mXWalkInitializer = new XWalkInitializer(this, this);
+        mXWalkInitializer.initAsync();
     }
 
     @Override

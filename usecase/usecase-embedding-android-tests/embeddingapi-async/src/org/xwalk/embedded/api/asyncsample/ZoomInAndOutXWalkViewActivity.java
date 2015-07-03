@@ -20,6 +20,7 @@ import android.os.Bundle;
 
 public class ZoomInAndOutXWalkViewActivity extends Activity implements XWalkInitializer.XWalkInitListener {
     private XWalkView mXWalkView;
+    private XWalkInitializer mXWalkInitializer;
     private Button zoomInBtn;
     private Button zoomOutBtn;
     private SeekBar zoomSeekBar;
@@ -30,7 +31,8 @@ public class ZoomInAndOutXWalkViewActivity extends Activity implements XWalkInit
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
-        XWalkInitializer.initAsync(this, this);
+        mXWalkInitializer = new XWalkInitializer(this, this);
+        mXWalkInitializer.initAsync();
     }
 
     @Override

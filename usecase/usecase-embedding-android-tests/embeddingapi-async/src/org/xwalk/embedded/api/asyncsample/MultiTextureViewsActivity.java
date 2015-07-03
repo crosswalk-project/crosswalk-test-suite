@@ -12,6 +12,7 @@ import android.webkit.WebView;
 import android.widget.RelativeLayout;
 
 public class MultiTextureViewsActivity extends Activity implements XWalkInitializer.XWalkInitListener {
+    private XWalkInitializer mXWalkInitializer;
 
     private void resizeLoop(final RelativeLayout views) {
         views.postDelayed(new Runnable() {
@@ -40,7 +41,8 @@ public class MultiTextureViewsActivity extends Activity implements XWalkInitiali
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
-        XWalkInitializer.initAsync(this, this);
+        mXWalkInitializer = new XWalkInitializer(this, this);
+        mXWalkInitializer.initAsync();
     }
 
     @Override

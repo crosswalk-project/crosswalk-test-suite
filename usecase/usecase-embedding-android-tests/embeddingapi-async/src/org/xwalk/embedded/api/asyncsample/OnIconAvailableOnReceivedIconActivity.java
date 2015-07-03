@@ -15,6 +15,7 @@ import org.xwalk.core.XWalkUIClient;
 
 public class OnIconAvailableOnReceivedIconActivity extends Activity implements XWalkInitializer.XWalkInitListener {
     private XWalkView mXWalkView;
+    private XWalkInitializer mXWalkInitializer;
     private TextView mTitleText1;
     private TextView mTitleText2;
     private ImageView mFavicon1;
@@ -53,7 +54,8 @@ public class OnIconAvailableOnReceivedIconActivity extends Activity implements X
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
-        XWalkInitializer.initAsync(this, this);
+        mXWalkInitializer = new XWalkInitializer(this, this);
+        mXWalkInitializer.initAsync();
     }
 
     @Override

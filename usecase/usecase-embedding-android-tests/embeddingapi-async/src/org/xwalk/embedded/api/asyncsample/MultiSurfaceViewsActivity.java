@@ -11,12 +11,14 @@ import android.webkit.WebView;
 import android.widget.RelativeLayout;
 
 public class MultiSurfaceViewsActivity extends Activity implements XWalkInitializer.XWalkInitListener {
+    private XWalkInitializer mXWalkInitializer;
     
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
-        XWalkInitializer.initAsync(this, this);
+        mXWalkInitializer = new XWalkInitializer(this, this);
+        mXWalkInitializer.initAsync();
     }
 
     @Override

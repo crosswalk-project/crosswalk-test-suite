@@ -15,6 +15,7 @@ public class XWalkViewWithRedirection extends Activity implements XWalkInitializ
 	private static final String TAG = XWalkViewWithRedirection.class.getSimpleName();
 	
     private XWalkView mXWalkView;
+    private XWalkInitializer mXWalkInitializer;
     private TextView LoadstoppedTimes;
     private int times_started = 0;
     private int times_stopped = 0;
@@ -78,7 +79,8 @@ public class XWalkViewWithRedirection extends Activity implements XWalkInitializ
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
-        XWalkInitializer.initAsync(this, this);
+        mXWalkInitializer = new XWalkInitializer(this, this);
+        mXWalkInitializer.initAsync();
     }
 
     @Override

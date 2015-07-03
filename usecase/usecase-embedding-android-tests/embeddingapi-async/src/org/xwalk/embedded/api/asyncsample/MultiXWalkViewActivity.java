@@ -16,12 +16,14 @@ import android.widget.LinearLayout;
 public class MultiXWalkViewActivity extends Activity implements XWalkInitializer.XWalkInitListener {
     private XWalkView mXWalkView;
     private XWalkView mXWalkView2;
+    private XWalkInitializer mXWalkInitializer;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
-        XWalkInitializer.initAsync(this, this);
+        mXWalkInitializer = new XWalkInitializer(this, this);
+        mXWalkInitializer.initAsync();
     }
 
     @Override
