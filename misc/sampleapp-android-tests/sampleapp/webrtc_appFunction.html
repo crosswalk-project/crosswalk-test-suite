@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <!--
-Copyright (c) 2015 Intel Corporation.
+Copyright (c) 2013 Intel Corporation.
 
 Redistribution and use in source and binary forms, with or without modification,
 are permitted provided that the following conditions are met:
@@ -26,25 +26,30 @@ NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE,
 EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
 Authors:
-        Wang, Hongjuan <hongjuanx.wang@intel.com>
-        Liu, Yun<yunx.liu@intel.com>
+    Liu, Yun<yunx.liu@intel.com>
 
 -->
 
-<meta charset='utf-8'>
-<title>SIMD_AppFunction</title>
-<link rel="author" title="Intel" href="http://www.intel.com">
-<body>
-  <h4>Preconditions:</h4>
-  <ol>
-    <li>Make sure the SIMD is installed and launched</li>
-  </ol>
-  <h4>Test steps:</h4>
-  <ol>
-    <li>Click the "Start",wait a minute and remember the changing number, click "Turn On SIMD", Re-click "Turn Off SIMD", then click "Stop"</li>
-  </ol>
-  <h4>Expected Results:</h4>
-  <ol>
-    <li>The button value from "Turn On SIMD" changes to "Turn Off SIMD" , and current number is 1.5 times or more after click "Turn On SIMD"</li>
-  </ol>
-</body>
+<html>
+  <head>
+    <meta charset='utf-8'>
+    <title>WebRTC_AppFunction</title>
+    <link rel="author" title="Intel" href="http://www.intel.com">
+  </head>
+  <body>
+    <p>
+      <strong>Test steps:</strong>
+    </p>
+    <ol>
+      <li>On two android devices, input "Connect as:" as a peer name to connect server, click "Connect" </li>
+      <li>On two android devices, input "Make call to:" with another peer name</li>
+    </ol>
+    <p>
+      <strong>Expected Output:</strong>
+    </p>
+    <ol>
+      <li>Own video is opened successfully under "LOCAL:"</li>
+      <li>Another peer video is opened successfully under "REMOTE:"</li>
+    </ol>
+  </body>
+</html>

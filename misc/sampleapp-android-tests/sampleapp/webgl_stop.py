@@ -26,7 +26,6 @@
 # EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 #
 # Authors:
-#         Li, Cici<cici.x.li@intel.com>
 #         Liu, Yun<yunx.liu@intel.com>
 
 import unittest
@@ -34,22 +33,27 @@ import os
 import sys
 import commands
 import comm
+import time
 
 
 class TestSampleAppFunctions(unittest.TestCase):
 
-    def test_pack(self):
+    def test_stop(self):
         comm.setUp()
-        app_name = "Simd"
-        sample_src = "/simd-mandelbrot/"
-        manifest_file = comm.sample_src_pref + sample_src + "manifest.json"
-        cmd = "python %smake_apk.py --package=org.xwalk.%s --manifest=%s --app-versionCode=1 --arch=%s --mode=%s --enable-remote-debugging" % \
-            (comm.pack_tools,
-             app_name.lower(),
-             manifest_file,
-             comm.ARCH,
-             comm.MODE)
-        comm.pack(cmd, app_name, self)
+        app_name = "Webgl"
+        # Find whether the app have launched
+        cmdacti = "adb -s " + comm.device + \
+            " shell dumpsys activity activities | grep org.xwalk.%s" % app_name.lower()
+        launched = commands.getstatusoutput(cmdacti)
+        if launched[0] != 0:
+            print "Stop APK ---------------->%s App haven't launched, need to launch it!" % app_name
+            cmdstart = "adb -s " + comm.device + " shell am start -n org.xwalk.%s/.%sActivity" % \
+                (app_name.lower(), app_name)
+            comm.app_launch(cmdstart, self)
+            time.sleep(1)
+        cmdstop = "adb -s " + comm.device + \
+            " shell am force-stop org.xwalk.%s" % app_name.lower()
+        comm.app_stop(cmdstop, self)
 
 if __name__ == '__main__':
     unittest.main()
