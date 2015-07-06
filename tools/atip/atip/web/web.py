@@ -296,6 +296,17 @@ class WebAPP(common.APP):
             print "Failed to compare these two param: %s" % e
         return False
 
+    def compare_two_values_range(self, first=None, second=None, value=None):
+        try:
+            result = eval(self.text_value[second]) - eval(self.text_value[first])
+            if  result >= eval(value) :
+                return True
+            else:
+                return False
+        except Exception as e:
+            print "Failed to compare these two param with value: %s" % e
+        return False
+
     def save_content(self, p_name=None, key=None):
         try:
             js_script = 'var style=document.getElementById(\"' + \

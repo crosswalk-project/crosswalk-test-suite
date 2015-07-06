@@ -135,7 +135,7 @@ def i_press(context, key):
 
 
 @step(u'press "{key_c}" in "{key_p}"')
-def i_press(context, key_p, key_c):
+def i_press_in_key(context, key_p, key_c):
     assert context.app.press_element_by_keys(key_p, key_c)
 
 
@@ -226,7 +226,7 @@ def check_text_by_key(context, attr, key):
 
 
 @step(u'I should see "{text}" with "{color}" color in "{key}" area')
-def should_see_text_element_with_color(context, text, key, color):
+def should_see_text_element_with_color_in_area(context, text, key, color):
     assert context.app.check_normal_text_element_timeout_with_color(
         text, key, color), u'The text or color is wrong'
 
@@ -248,7 +248,7 @@ def check_type_by_key(context, key, expecttype):
 
 @step(
     u'I save div "{key}" as "{pic_name}" with width "{width}" and height "{height}"')
-def save_div(context, key, pic_name, width, height):
+def save_div_with_attr(context, key, pic_name, width, height):
     assert context.app.save_div_as_picture(key, pic_name, width, height)
 
 
@@ -284,7 +284,7 @@ def check_base_result_similarity(context, pic_name, similarity):
 
 
 @step(u'I save "{p_name}" from "{key}" area')
-def check_type_by_key(context, p_name, key):
+def save_content_by_key(context, p_name, key):
     assert context.app.save_content(p_name, key)
 
 
@@ -299,6 +299,10 @@ def fill_element_by_attr_with_text(context, key, attr, text):
 
 
 @step(u'"{second}" should be greater than "{first}"')
-def check_type_by_key(context, first, second):
+def compare_two_value(context, first, second):
     assert context.app.compare_two_values(
         first, second), u'The second value is less than the first one'
+
+@step(u'"{first}" should be less than "{second}" beyond "{value}"')
+def compare_two_value_with_range(context, first, second, value):
+    assert context.app.compare_two_values_range(first, second, value)
