@@ -26,7 +26,6 @@
 # EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 #
 # Authors:
-#         Li, Cici<cici.x.li@intel.com>
 #         Liu, Yun<yunx.liu@intel.com>
 
 import unittest
@@ -34,22 +33,35 @@ import os
 import sys
 import commands
 import comm
+import time
 
 
 class TestSampleAppFunctions(unittest.TestCase):
 
-    def test_pack(self):
+    def test_uninstall_withAppRunning(self):
         comm.setUp()
-        app_name = "Simd"
-        sample_src = "/simd-mandelbrot/"
-        manifest_file = comm.sample_src_pref + sample_src + "manifest.json"
-        cmd = "python %smake_apk.py --package=org.xwalk.%s --manifest=%s --app-versionCode=1 --arch=%s --mode=%s --enable-remote-debugging" % \
-            (comm.pack_tools,
-             app_name.lower(),
-             manifest_file,
-             comm.ARCH,
-             comm.MODE)
-        comm.pack(cmd, app_name, self)
+        app_name = "Webgl"
+        cmdfind = "adb -s " + comm.device + \
+            " shell pm list packages |grep org.xwalk.%s" % (app_name.lower())
+        pmstatus = commands.getstatusoutput(cmdfind)
+
+        if pmstatus[0] != 0:
+            print "Uninstall APK ----------------> %s App haven't installed, need to install it!" % app_name
+            os.chdir(comm.const_path + "/../testapp/")
+            apk_file = commands.getstatusoutput("ls | grep %s" % app_name)[1]
+            cmdinst = "adb -s " + comm.device + " install -r " + apk_file
+            comm.app_install(cmdinst, cmdfind, self)
+
+        # Make sure the app is running
+        cmd = "adb -s " + comm.device + " shell am start -n org.xwalk.%s/.%sActivity" % \
+            (app_name.lower(), app_name)
+        comm.app_launch(cmd, self)
+        time.sleep(3)
+
+        # Uninstall the app
+        cmduninst = "adb -s " + comm.device + \
+            " uninstall org.xwalk.%s" % (app_name.lower())
+        comm.app_uninstall(cmduninst, self)
 
 if __name__ == '__main__':
     unittest.main()

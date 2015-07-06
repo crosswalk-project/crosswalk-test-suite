@@ -26,7 +26,6 @@
 # EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 #
 # Authors:
-#         Li, Cici<cici.x.li@intel.com>
 #         Liu, Yun<yunx.liu@intel.com>
 
 import unittest
@@ -40,8 +39,8 @@ class TestSampleAppFunctions(unittest.TestCase):
 
     def test_pack(self):
         comm.setUp()
-        app_name = "Simd"
-        sample_src = "/simd-mandelbrot/"
+        app_name = "Webgl"
+        sample_src = "/webgl/"
         manifest_file = comm.sample_src_pref + sample_src + "manifest.json"
         cmd = "python %smake_apk.py --package=org.xwalk.%s --manifest=%s --app-versionCode=1 --arch=%s --mode=%s --enable-remote-debugging" % \
             (comm.pack_tools,

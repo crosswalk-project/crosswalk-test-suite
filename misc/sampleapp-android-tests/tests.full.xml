@@ -344,6 +344,36 @@
           <test_script_entry>/opt/sampleapp-android-tests/sampleapp/simd_uninstall_withAppRunning.py</test_script_entry>
         </description>
       </testcase>
+      <testcase component="Sample Apps" execution_type="auto" id="webgl_pack" priority="P0" purpose="Check if WebGL can be packed" status="approved" type="Functional">
+        <description>
+          <test_script_entry>/opt/sampleapp-android-tests/sampleapp/webgl_pack.py</test_script_entry>
+        </description>
+      </testcase>
+      <testcase component="Sample Apps" execution_type="auto" id="webgl_install" priority="P0" purpose="Check if WebGL can be installed" status="approved" type="Functional">
+        <description>
+          <test_script_entry>/opt/sampleapp-android-tests/sampleapp/webgl_install.py</test_script_entry>
+        </description>
+      </testcase>
+      <testcase component="Sample Apps" execution_type="auto" id="webgl_launch" priority="P0" purpose="Check if WebGL can be launched" status="approved" type="Functional">
+        <description>
+          <test_script_entry>/opt/sampleapp-android-tests/sampleapp/webgl_launch.py</test_script_entry>
+        </description>
+      </testcase>
+      <testcase component="Sample Apps" execution_type="auto" id="webgl_stop" priority="P1" purpose="Check if WebGL can be stopped" status="approved" type="Functional">
+        <description>
+          <test_script_entry>/opt/sampleapp-android-tests/sampleapp/webgl_stop.py</test_script_entry>
+        </description>
+      </testcase>
+      <testcase component="Sample Apps" execution_type="auto" id="webgl_uninstall" priority="P1" purpose="Check if WebGL can be uninstalled" status="approved" type="Functional">
+        <description>
+          <test_script_entry>/opt/sampleapp-android-tests/sampleapp/webgl_uninstall.py</test_script_entry>
+        </description>
+      </testcase>
+      <testcase component="Sample Apps" execution_type="auto" id="webgl_uninstall_withAppRunning" priority="P2" purpose="Check if WebGL can be uninstalled with app running" status="approved" type="Functional">
+        <description>
+          <test_script_entry>/opt/sampleapp-android-tests/sampleapp/webgl_uninstall_withAppRunning.py</test_script_entry>
+        </description>
+      </testcase>
     </set>
     <set name="SampleApp-bdd" type="js" ui-auto="bdd">
       <testcase component="Sample Apps" execution_type="manual" id="hexgl_appFunction" priority="P2" purpose="Validate if sample app HexGL function could work well" status="approved" type="Functional">
@@ -481,9 +511,9 @@
       <testcase component="Sample Apps" execution_type="manual" id="webrtc_icon" priority="P2" purpose="Validate if sample app WebRTC icon display normally" status="approved" type="Functional">
         <description>
           <pre_condition>
-            1.Make sure Crosswalk binary is installed;
-            2.Make sure webrtc webapp is installed and http://10.239.97.60/chatbox/login.html is available;
-            3.Make sure webrtc webapp is available.
+            1.Please refer to README file under "/tmp/crosswalk-demos/webrtc/" dir
+            2.Build WebRTC webapp, then install it on two android devices
+            3.Make sure network can be used.
           </pre_condition>
           <post_condition/>
           <test_script_entry>/opt/sampleapp-android-tests/sampleapp/webrtc_icon.html</test_script_entry>
@@ -492,8 +522,8 @@
       <testcase component="Sample Apps" execution_type="manual" id="webrtc_switch" priority="P2" purpose="Validate if sample app WebRTC could switch back successfully" status="approved" type="Functional">
         <description>
           <pre_condition>
-            1.Make sure Crosswalk binary is installed;
-            2.Make sure webrtc webapp is launched and http://10.239.97.60/chatbox/login.html is available;
+            1.Please refer to README file under "/tmp/crosswalk-demos/webrtc/" dir
+            2.Build WebRTC webapp, then install and launch it on two android devices
             3.Make sure network can be used.
           </pre_condition>
           <post_condition/>
@@ -503,45 +533,23 @@
       <testcase component="Sample Apps" execution_type="manual" id="webrtc_orientation" priority="P2" purpose="Validate if sample app WebRTC could rotate between portrait orientation screen and landscape orientation screen" status="approved" type="Functional">
         <description>
           <pre_condition>
-            1.Make sure Crosswalk binary is installed;
-            2.Make sure webrtc webapp is launched and http://10.239.97.60/chatbox/login.html is available;
+            1.Please refer to README file under "/tmp/crosswalk-demos/webrtc/" dir
+            2.Build WebRTC webapp, then install and launch it on two android devices
             3.Make sure network can be used.
           </pre_condition>
           <post_condition/>
           <test_script_entry>/opt/sampleapp-android-tests/sampleapp/webrtc_orientation.html</test_script_entry>
         </description>
       </testcase>
-      <testcase component="Sample Apps" execution_type="manual" id="webrtc_login" priority="P2" purpose="Validate WebRTC sample app  could login successfully" status="approved" type="Functional">
+      <testcase component="Sample Apps" execution_type="manual" id="webrtc_appFunction" priority="P2" purpose="Validate WebRTC sample app could video chat" status="approved" type="Functional">
         <description>
           <pre_condition>
-            1.Make sure Crosswalk binary is installed;
-            2.Make sure webrtc webapp is launched and http://10.239.97.60/chatbox/login.html is available;
+            1.Please refer to README file under "/tmp/crosswalk-demos/webrtc/" dir
+            2.Build WebRTC webapp, then install and launch it on two android devices
             3.Make sure network can be used.
           </pre_condition>
           <post_condition/>
-          <test_script_entry>/opt/sampleapp-android-tests/sampleapp/webrtc_login.html</test_script_entry>
-        </description>
-      </testcase>
-      <testcase component="Sample Apps" execution_type="manual" id="webrtc_textChat" priority="P1" purpose="Validate WebRTC sample app  could text chat" status="approved" type="Functional">
-        <description>
-          <pre_condition>
-            1.Make sure Crosswalk binary is installed;
-            2.Make sure the http://10.239.97.60/chatbox/login.html is available and webrtc webapp is login;
-            3.Make sure network can be used.
-          </pre_condition>
-          <post_condition/>
-          <test_script_entry>/opt/sampleapp-android-tests/sampleapp/webrtc_textChat.html</test_script_entry>
-        </description>
-      </testcase>
-      <testcase component="Sample Apps" execution_type="manual" id="webrtc_videoChat" priority="P2" purpose="Validate WebRTC sample app  could video chat" status="approved" type="Functional">
-        <description>
-          <pre_condition>
-            1.Make sure Crosswalk binary is installed;
-            2.Make sure the http://10.239.97.60/chatbox/login.html is available and webrtc webapp is login;
-            3.Make sure network can be used.
-          </pre_condition>
-          <post_condition/>
-          <test_script_entry>/opt/sampleapp-android-tests/sampleapp/webrtc_videoChat.html</test_script_entry>
+          <test_script_entry>/opt/sampleapp-android-tests/sampleapp/webrtc_appFunction.html</test_script_entry>
         </description>
       </testcase>
       <testcase component="Sample Apps" execution_type="manual" id="gallery_icon" priority="P2" purpose="Validate if sample app Gallery icon display normally" status="approved" type="Functional">
@@ -826,6 +834,39 @@
       <testcase component="Sample Apps" execution_type="manual" id="M43_FetchAPI_ResponseStream" priority="P2" purpose="Check that Fetch API supports response.body property or not" status="approved" type="Functional">
         <description>
           <test_script_entry>/opt/sampleapp-android-tests/sampleapp/M43_FetchAPI_ResponseStream.html</test_script_entry>
+        </description>
+      </testcase>
+      <testcase component="Sample Apps" execution_type="manual" id="webgl_icon" priority="P2" purpose="Validate if sample app WebGL icon display normally" status="approved" type="Functional">
+        <description>
+          <pre_condition>
+            1.Make sure WebGL webapp is installed;
+            2.Make sure WebGL webapp is available.
+          </pre_condition>
+          <test_script_entry>/opt/sampleapp-android-tests/sampleapp/webgl_icon.html</test_script_entry>
+        </description>
+      </testcase>
+      <testcase component="Sample Apps" execution_type="manual" id="webgl_switch" priority="P2" purpose="Validate if sample app WebGL could switch back successfully" status="approved" type="Functional">
+        <description>
+          <pre_condition>
+            1.Make sure the WebGL webapp is launched
+          </pre_condition>
+          <test_script_entry>/opt/sampleapp-android-tests/sampleapp/webgl_switch.html</test_script_entry>
+        </description>
+      </testcase>
+      <testcase component="Sample Apps" execution_type="manual" id="webgl_orientation" priority="P2" purpose="Validate if sample app WebGL could rotate between portrait orientation screen and landscape orientation screen" status="approved" type="Functional">
+        <description>
+          <pre_condition>
+            1.Make sure the WebGL webapp is launched
+          </pre_condition>
+          <test_script_entry>/opt/sampleapp-android-tests/sampleapp/webgl_orientation.html</test_script_entry>
+        </description>
+      </testcase>
+      <testcase component="Sample Apps" execution_type="manual" id="webgl_appFunction" priority="P2" purpose="Validate if sample app WebGL function could work well" status="approved" type="Functional">
+        <description>
+          <pre_condition>
+            1.Make sure the WebGL webapp is launched
+          </pre_condition>
+          <test_script_entry>/opt/sampleapp-android-tests/sampleapp/webgl_appFunction.html</test_script_entry>
         </description>
       </testcase>
     </set>
