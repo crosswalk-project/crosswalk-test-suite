@@ -30,32 +30,26 @@
 
 import json
 import os
+import os.path
+import glob
 import sys
 import shutil
 from optparse import OptionParser
 
 #
-# Usage: python copy.py  [-j /path/to/resources.json] [-n specify the file or dir you want to copy,please split them by comma]
+# Usage: python copy.py  [-j /path/to/xxxx.json] [-s webapi-xxxx-tests]
 #
-# This script is used to copy common resource files to each suite as configured in resources.json.
+# This script is used to deploy common resources to corresponding test suite and sub app as configured in json files.
 #
-# The default directory for test suite is: path/crosswalk-test-suite/webapi.
-# The default directory shared files saved at is: path/crosswalk-test-suite/tools/script.
+# Json files for configure is located at /path/to/crosswalk-test-suite/tools/resources as default. You can change it by option -j like "-j /path/to/xxxx.json".
 #
-# Directory or a single file both can be configured in resources.json.
-#
-# Resources.json file is saved at path/crosswalk-test-suite/tools/script by default. You can change it by -j option.
-# You can specify only copy portion of the shared files by option: -n(if more than one,please them by comma).The default is all #the shared files are all need to copy.
-#
-
+# Common resources will be deployed to all suites and sub apps configured in json files as default. You can deploy resources to the specified suite by option -s like "-s webapi-xxxx-tests".
 
 def doCopy(src, dest):
     try:
-        if not os.path.exists(src):
-            print "src %s does not exists." % src
-            return
-        if not os.path.exists(dest):
+        if os.path.isdir(src) and not os.path.isdir(dest):
             os.mkdir(dest)
+
         if os.path.isfile(src):
             shutil.copy(src, dest)
         else:
@@ -65,77 +59,71 @@ def doCopy(src, dest):
     except Exception as e:
         print "Get error when copy file: %s" % e
 
-
 def safelyGetValue(origin_json=None, key=None):
     if origin_json and key and key in origin_json:
         return origin_json[key]
     return None
 
 
-def parseJsonFile(json_file=None, node=None):
+def parseJsonFile(json_file=None, suite=None):
     try:
-        script_path = sys.path[0]
-        srcdir = os.path.join(os.path.dirname(script_path), "resources")
-        destdir = os.path.dirname(os.path.dirname(script_path))
+        jsons = []
+        toolsdir = os.path.dirname(os.path.dirname(os.path.realpath(__file__)))
+        srcdir = os.path.join(toolsdir, "resources")
+        destdir = os.path.dirname(toolsdir)
         if not json_file:
-            json_file = os.path.join(srcdir, "resources.json")
-        if os.path.isfile(json_file):
-            with open(json_file, "rt") as config_json_file:
-                config_raw = config_json_file.read()
-                config_json_file.close()
-                config_json = json.loads(config_raw)
-                node_list = config_json.keys()
-                if node:
-                    tmp_list = node.split(",")
-                    for element in tmp_list:
-                        if not element in node_list:
-                            print "The node you specify is invalid.Please input again."
-                            return
-                    node_list = tmp_list
-                for key in node_list:
-                    file_list = safelyGetValue(config_json, key)
-                    if file_list:
-                        for element in file_list:
-                            src = os.path.join(srcdir, key)
-                            dest = os.path.join(destdir, element)
-                            if not os.path.exists(os.path.dirname(dest)):
-                                print "Dest source does not exists: %s" % dest
-                                return
-                            if not os.path.exists(os.path.dirname(src)):
-                                print "Src source does not exists: %s" % src
-                                return
-                            doCopy(src, dest)
-                print "Well done!"
+            jsons.extend(glob.glob(os.path.join(srcdir, "*json")))
         else:
-            print "can not find the file : %s" % json_file
+            jsons.append(json_file)
+
+        for json_file in jsons:
+            if os.path.isfile(json_file):
+                with open(json_file, "rt") as config_json_file:
+                    config_raw = config_json_file.read()
+                    config_json = json.loads(config_raw)
+                    node_list = config_json.keys()
+                    for key in node_list:
+                        file_list = safelyGetValue(config_json, key)
+                        if file_list:
+                            for element in file_list:
+                                if not suite:
+                                    pass
+                                elif element.find(suite) == -1:
+                                    continue
+                                src = os.path.join(srcdir, key)
+                                dest = os.path.join(destdir, element)
+                                if not os.path.exists(src):
+                                    print "Src source does not exists: %s" % src
+                                    return
+                                doCopy(src, dest)
+            else:
+                print "can not find the file : %s" % json_file
+        print "Well done!"
     except Exception as e:
         print "Get error when parse json file: %s" % e
 
 
 def main():
     try:
-        usage = "Usage: python copy.py  -j /path/to/resources.json \
-                 -n specify the file or dir you want to copy,please split them by comma"
+        usage = "Usage: python copy.py -j /path/to/xxxx.json -n webapi-xxxx-tests"
         opts_parser = OptionParser(usage=usage)
         opts_parser.add_option(
             "-j",
             "--json",
             dest="json",
-            help="specify the path of resources.json file saved")
+            help="specify the path to json file")
         opts_parser.add_option(
-            "-n",
-            "--node",
-            dest="node",
-            help="specify the file or dir you want to copy,please split them by commma")
+            "-s",
+            "--suite",
+            dest="suite",
+            help="specify the suite which need to deploy common resources")
 
         (PARAMETERS, args) = opts_parser.parse_args()
 
-        parseJsonFile(PARAMETERS.json, PARAMETERS.node)
-
+        parseJsonFile(PARAMETERS.json, PARAMETERS.suite)
     except Exception as e:
-        print("Get wrong options: %s, exit ..." % e)
+        print "Get wrong options: %s, exit ..." % e
         sys.exit(1)
-
 
 if __name__ == '__main__':
     main()
