@@ -42,7 +42,7 @@ Authors:
     </p>
     <ol>
       <li>Install the "baiduonlinestorage.deb" webapp and launch it with command like:<br>
-          xwalk $(dirname $(realpath $(which baiduonlinestorage)))/www/manifest.json --ppapi-flash-path=/path/to/chrome/PepperFlash/libpepflashplayer.so
+          xwalk $(dirname $(readlink -f $(which baiduonlinestorage)))/www/manifest.json --ppapi-flash-path=/path/to/chrome/PepperFlash/libpepflashplayer.so
       </li>
       <li>Use the baidu account login in the web system. </li>
       <li>Click the "Upload File" button to upload a file. </li>

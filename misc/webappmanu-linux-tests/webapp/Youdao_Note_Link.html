@@ -42,7 +42,7 @@ Authors:
     </p>
     <ol>
       <li>Install the "youdaonote.deb" webapp and launch it with command like:<br>
-          xwalk $(dirname $(realpath $(which youdaonote)))/www/manifest.json --ppapi-flash-path=/path/to/chrome/PepperFlash/libpepflashplayer.so
+          xwalk $(dirname $(readlink -f $(which youdaonote)))/www/manifest.json --ppapi-flash-path=/path/to/chrome/PepperFlash/libpepflashplayer.so
       </li>
       <li>Click the different links in the page several times. </li>
     </ol>
