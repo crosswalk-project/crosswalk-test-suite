@@ -311,12 +311,6 @@ class TestCaseUnit(unittest.TestCase):
   def test_negative_cmd190(self):
      self.assertEqual("PASS", run_app.tryRunApp("cmd190-negative", "/opt/wrt-packertool-android-tests/apks/arm/cmd190-negative"))
 
-  def test_negative_cmd191(self):
-     self.assertEqual("PASS", run_app.tryRunApp("cmd191-negative", "/opt/wrt-packertool-android-tests/apks/arm/cmd191-negative"))
-
-  def test_negative_cmd192(self):
-     self.assertEqual("PASS", run_app.tryRunApp("cmd192-negative", "/opt/wrt-packertool-android-tests/apks/arm/cmd192-negative"))
-
   def test_positive_cmd2(self):
      self.assertEqual("PASS", run_app.tryRunApp("cmd2-positive", "/opt/wrt-packertool-android-tests/apks/arm/cmd2-positive"))
 

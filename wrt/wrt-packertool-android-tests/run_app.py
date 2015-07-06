@@ -76,7 +76,8 @@ def tryRunApp(num, caseDir):
                                 "/." +
                                 acivityName +
                                 "Activity")
-                            if launchstatus[0] != 0:
+                            if launchstatus[0] != 0 and \
+                            "error" not in launchstatus[1].lower():
                                 print "Launch APK ---------------->Error"
                                 os.system(
                                     "adb -s " +

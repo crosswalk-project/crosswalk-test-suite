@@ -27,11 +27,11 @@ def tryRunApp(num, caseDir):
             print (" get env error\n")
             sys.exit(1)
 
-        resultfile = open(ConstPath + "/report/packRes.txt")
         fp = open(ConstPath + "/arch.txt")
         if fp.read().strip("\n\t") != "x86":
             ARCH = "arm"
         fp.close()
+        resultfile = open(apkDir + "/apks/" + ARCH + "/Pkg_result.txt")
         lines = resultfile.readlines()
         for line in lines:
             if line.startswith(num) and 'positive' in line and 'PASS' in line:
@@ -63,7 +63,8 @@ def tryRunApp(num, caseDir):
                             "adb -s " +
                             device +
                             " shell am start -n org.xwalk.test/.TestActivity")
-                        if launchstatus[0] != 0:
+                        if launchstatus[0] != 0 and \
+                        "error" not in launchstatus[1].lower():
                             print "Launch APK ---------------->Error"
                             os.system(
                                 "adb -s " +
