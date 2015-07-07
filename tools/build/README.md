@@ -8,13 +8,12 @@ pack_cordova_sample.py is used for auto build Cordova sample apps, including mob
 ###mobilespec build based on Cordova 4.0
 * Require Android API level 22
 * Require the latest Cordova CLI, and must >= 5.0.0, install with command: ```sudo npm install cordova -g```  
-* Copy 'mobilespec' suite to crosswalk-test-suite/tools/mobilespec
-* Copy 'cordova-mobile-spec' suite(https://github.com/apache/cordova-mobile-spec.git) to crosswalk-test-suite/tools/mobilespec
-* Copy 'cordova-coho' suite(https://github.com/apache/cordova-coho.git) to crosswalk-test-suite/tools/mobilespec
+* Copy 'cordova-mobile-spec' suite(https://github.com/apache/cordova-mobile-spec.git) to crosswalk-test-suite/tools/mobilespec/mobilespec_4.0
+* Copy 'cordova-coho' suite(https://github.com/apache/cordova-coho.git) to crosswalk-test-suite/tools/mobilespec/mobilespec_4.0
 
 ###mobilespec build based on Cordova 3.6
 * Build upstream Cordova with Mobile Spec 3.6, steps please follow [https://github.com/apache/cordova-mobile-spec/blob/3.6.x/createmobilespec/README.md](https://github.com/apache/cordova-mobile-spec/blob/3.6.x/createmobilespec/README.md), here will generate a 'mobilespec' folder
-* Copy 'mobilespec' folder to crosswalk-test-suite/tools
+* Copy 'mobilespec' folder to crosswalk-test-suite/tools/mobilespec/mobilespec_3.6
 * You may need to install latest cordova by ```sudo npm -g install cordova```  
 
 ###CIRC and Eh build based on Cordova 4.0
