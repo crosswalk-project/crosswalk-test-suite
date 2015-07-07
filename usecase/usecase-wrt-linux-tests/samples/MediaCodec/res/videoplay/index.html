@@ -50,7 +50,7 @@ Authors:
       <h2>Test Steps:</h2>
       <ol>
         <li>Install the webapp 'videoplay.deb', then execute command like:<br>
-            xwalk $(dirname $(realpath  $(which videoplay)))/www/manifest.json --proprietary-codec-lib-path=/path/to/chrome/libffmpegsumo.so</li>
+            xwalk $(dirname $(readlink -f $(which videoplay)))/www/manifest.json --proprietary-codec-lib-path=/path/to/chrome/libffmpegsumo.so</li>
         <li>Click Video MP4 play button</li>
       </ol>
       <h2>Expected Result:</h2>

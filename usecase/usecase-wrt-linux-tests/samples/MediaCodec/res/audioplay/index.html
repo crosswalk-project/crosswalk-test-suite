@@ -50,7 +50,7 @@ Authors:
       <h2>Test Steps:</h2>
       <ol>
         <li>Install the webapp 'audioplay.deb', then execute command like:<br>
-            xwalk $(dirname $(realpath  $(which audioplay)))/www/manifest.json --proprietary-codec-lib-path=/path/to/chrome/libffmpegsumo.so</li>
+            xwalk $(dirname $(readlink -f $(which audioplay)))/www/manifest.json --proprietary-codec-lib-path=/path/to/chrome/libffmpegsumo.so</li>
         <li>Click Audio MP3 play button</li>
         <li>Click Audio MP4 play button</li>
       </ol>
