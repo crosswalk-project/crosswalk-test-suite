@@ -42,7 +42,7 @@ Authors:
     </p>
     <ol>
       <li>Install the "youdaonote.deb" webapp and launch it with command like:<br>
-          xwalk $(dirname $(realpath $(which youdaonote)))/www/manifest.json --ppapi-flash-path=/path/to/chrome/PepperFlash/libpepflashplayer.so
+          xwalk $(dirname $(readlink -f $(which youdaonote)))/www/manifest.json --ppapi-flash-path=/path/to/chrome/PepperFlash/libpepflashplayer.so
       </li>
       <li>Click the "Login in cloud note" link and Use the youdao account login in the web system. </li>
       <li>Click the "Create Note" button to create a note and save. </li>

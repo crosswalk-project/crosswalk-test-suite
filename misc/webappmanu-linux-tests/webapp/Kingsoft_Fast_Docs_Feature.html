@@ -42,7 +42,7 @@ Authors:
     </p>
     <ol>
       <li>Install the "kingsoftfastdocs.deb" webapp and launch it with command like:<br>
-          xwalk $(dirname $(realpath $(which kingsoftfastdocs)))/www/manifest.json --ppapi-flash-path=/path/to/chrome/PepperFlash/libpepflashplayer.so
+          xwalk $(dirname $(readlink -f $(which kingsoftfastdocs)))/www/manifest.json --ppapi-flash-path=/path/to/chrome/PepperFlash/libpepflashplayer.so
       </li>
       <li>Use the kingsoft account login in the web system. </li>
       <li>Click the "Create" button to create a document and save. </li>

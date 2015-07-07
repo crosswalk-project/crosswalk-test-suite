@@ -42,7 +42,7 @@ Authors:
     </p>
     <ol>
       <li>Install the "cargobridge.deb" webapp and launch it with command like:<br>
-          xwalk $(dirname $(realpath $(which cargobridge)))/www/manifest.json --ppapi-flash-path=/path/to/chrome/PepperFlash/libpepflashplayer.so
+          xwalk $(dirname $(readlink -f $(which cargobridge)))/www/manifest.json --ppapi-flash-path=/path/to/chrome/PepperFlash/libpepflashplayer.so
       </li>
       <li>Validate the page layout and display</li>
     </ol>
