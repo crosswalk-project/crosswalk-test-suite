@@ -1,7 +1,10 @@
+import hashlib
+
 def main(request, response):
     try:
-        name = "recon_fail_" + request.GET.first("id")
-
+        m = hashlib.md5()
+        m.update(request.GET.first("id"))
+        name = m.hexdigest()
         headers = [("Content-Type", "text/event-stream")]
         cookie = request.cookies.first(name, None)
         state = cookie.value if cookie is not None else None
