@@ -47,7 +47,7 @@ Authors:
   <h2>Test Steps:</h2>
   <ol>
     <li>Install the webapp 'flashplugin.deb' and launch webapp with command like:<br>
-        xwalk $(dirname $(realpath $(which flashplugin)))/www/manifest.json --ppapi-flash-path=/path/to/chrome/PepperFlash/libpepflashplayer.so
+        xwalk $(dirname $(readlink -f $(which flashplugin)))/www/manifest.json --ppapi-flash-path=/path/to/chrome/PepperFlash/libpepflashplayer.so
     </li>
   </ol>
   <h2>Expected Result:</h2>
