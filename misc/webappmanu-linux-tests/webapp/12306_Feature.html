@@ -41,7 +41,9 @@ Authors:
       <strong>Test steps:</strong>
     </p>
     <ol>
-      <li>Install the "test12306.deb" webapp and launch it. </li>
+      <li>Install the "test12306.deb" webapp and launch it with command like:<br>
+          xwalk $(dirname $(readlink -f $(which test12306)))/www/manifest.json --ppapi-flash-path=/path/to/chrome/PepperFlash/libpepflashplayer.so
+      </li>
       <li>Enter the address into the origin and destination input box, as well as the time, then click the "Search" button. </li>
       <li>Click the "Booking Tickets" button in the search result list. </li>
     </ol>

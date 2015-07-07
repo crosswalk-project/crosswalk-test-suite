@@ -41,7 +41,9 @@ Authors:
       <strong>Test steps:</strong>
     </p>
     <ol>
-      <li>Install the "baiduhi.deb" webapp and launch it. </li>
+      <li>Install the "baiduhi.deb" webapp and launch it with command like:<br>
+          xwalk $(dirname $(readlink -f $(which baiduhi)))/www/manifest.json --ppapi-flash-path=/path/to/chrome/PepperFlash/libpepflashplayer.so
+      </li>
       <li>Click the different links in the page several times. </li>
     </ol>
     <p>

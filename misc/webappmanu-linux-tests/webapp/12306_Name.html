@@ -41,7 +41,9 @@ Authors:
       <strong>Test steps:</strong>
     </p>
     <ol>
-      <li>Install the "test12306.deb" webapp and launch it. </li>
+      <li>Install the "test12306.deb" webapp and launch it with command like:<br>
+          xwalk $(dirname $(readlink -f $(which test12306)))/www/manifest.json --ppapi-flash-path=/path/to/chrome/PepperFlash/libpepflashplayer.so
+      </li>
       <li>Search "test12306" app shortcut in the launcher and check the app name. </li>
     </ol>
     <p>
