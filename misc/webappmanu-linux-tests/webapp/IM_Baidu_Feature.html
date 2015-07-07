@@ -41,7 +41,9 @@ Authors:
       <strong>Test steps:</strong>
     </p>
     <ol>
-      <li>Install the "baiduhi.deb" webapp and launch it. </li>
+      <li>Install the "baiduhi.deb" webapp and launch it with command like:<br>
+          xwalk $(dirname $(readlink -f $(which baiduhi)))/www/manifest.json --ppapi-flash-path=/path/to/chrome/PepperFlash/libpepflashplayer.so
+      </li>
       <li>Use the baidu account login in the web system. </li>
       <li>Choose the linkman tab and click the "Add a contact" button. </li>
       <li>Click the "Hi_Wonderful" link which under the "Space Friends" tag and click the "Send" button after enter message in the right inputbox. </li>
