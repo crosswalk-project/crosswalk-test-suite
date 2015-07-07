@@ -1,10 +1,13 @@
+import hashlib
+
 def main(request, response):
     status_code = request.GET.first("status", "204")
-    name = request.GET.first("id", status_code)
-
+    m = hashlib.md5()
+    m.update(request.GET.first("id", status_code))
+    name = m.hexdigest()
     headers = [("Content-Type", "text/event-stream")]
 
-    cookie_name = "request" + name
+    cookie_name = "request_" + name
 
     if request.cookies.first(cookie_name, "") == status_code:
         status = 200
