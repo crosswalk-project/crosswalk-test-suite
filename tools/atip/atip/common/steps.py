@@ -59,6 +59,15 @@ def switch_to_app_name(context, app_name):
         assert False
 
 
+@step(u'quit "{app_name}"')
+def quit_app_by_name(context, app_name):
+    if app_name in context.apps:
+        context.app.quit()
+        assert True
+    else:
+        assert False
+
+
 @step(
     u'pic "{pic1}" and pic "{pic2}" should be more than "{similarity}" similar')
 def check_picture(context, pic1, pic2, similarity):
