@@ -3,978 +3,743 @@
 <test_definition>
   <suite category="W3C/HTML5 APIs" name="tct-webstorage-w3c-tests">
     <set name="WebStorage" type="js">
-      <testcase component="W3C_HTML5 APIs/Storage/Web Storage" execution_type="auto" id="Storage_getItem_base" purpose="Check if the current value associated with the given key returned when Storage.getItem has a valid argument">
+      <testcase component="W3C_HTML5 APIs/Storage/Web Storage" execution_type="auto" id="event_basic_entry1" purpose="sessionStorage mutations fire StorageEvents that are caught by the event listener set via window.onstorage">
         <description>
-          <test_script_entry>/opt/tct-webstorage-w3c-tests/webstorage/Storage_getItem_base.html</test_script_entry>
+          <test_script_entry>/opt/tct-webstorage-w3c-tests/webstorage/w3c/event_basic.html?total_num=2&amp;amp;locator_key=id&amp;amp;value=1</test_script_entry>
         </description>
       </testcase>
-      <testcase component="W3C_HTML5 APIs/Storage/Web Storage" execution_type="auto" id="storage_getItem_exist" purpose="Check if the getItem method exists in storage interface">
+      <testcase component="W3C_HTML5 APIs/Storage/Web Storage" execution_type="auto" id="event_basic_entry2" purpose="localStorage mutations fire StorageEvents that are caught by the event listener set via window.onstorage">
         <description>
-          <test_script_entry>/opt/tct-webstorage-w3c-tests/webstorage/storage_getItem_exist.html</test_script_entry>
+          <test_script_entry>/opt/tct-webstorage-w3c-tests/webstorage/w3c/event_basic.html?total_num=2&amp;amp;locator_key=id&amp;amp;value=2</test_script_entry>
         </description>
       </testcase>
-      <testcase component="W3C_HTML5 APIs/Storage/Web Storage" execution_type="auto" id="Storage_getItem_key_null" purpose="Check if the current value associated with the given key returned when Storage.getItem has null argument">
+      <testcase component="W3C_HTML5 APIs/Storage/Web Storage" execution_type="auto" id="event_body_attribute_entry1" purpose="sessionStorage mutations fire StorageEvents that are caught by the event listener specified as an attribute on the body">
         <description>
-          <test_script_entry>/opt/tct-webstorage-w3c-tests/webstorage/Storage_getItem_key_null.html</test_script_entry>
+          <test_script_entry>/opt/tct-webstorage-w3c-tests/webstorage/w3c/event_body_attribute.html?total_num=2&amp;amp;locator_key=id&amp;amp;value=1</test_script_entry>
         </description>
       </testcase>
-      <testcase component="W3C_HTML5 APIs/Storage/Web Storage" execution_type="auto" id="Storage_getItem_key_undefined" purpose="Check if the current value associated with the given key returned when Storage.getItem has undefined argument">
+      <testcase component="W3C_HTML5 APIs/Storage/Web Storage" execution_type="auto" id="event_body_attribute_entry2" purpose="localStorage mutations fire StorageEvents that are caught by the event listener specified as an attribute on the body">
         <description>
-          <test_script_entry>/opt/tct-webstorage-w3c-tests/webstorage/Storage_getItem_key_undefined.html</test_script_entry>
+          <test_script_entry>/opt/tct-webstorage-w3c-tests/webstorage/w3c/event_body_attribute.html?total_num=2&amp;amp;locator_key=id&amp;amp;value=2</test_script_entry>
         </description>
       </testcase>
-      <testcase component="W3C_HTML5 APIs/Storage/Web Storage" execution_type="auto" id="Storage_getItem_no_argument" purpose="Check if an exception thrown when Storage.getItem has no argument">
+      <testcase component="W3C_HTML5 APIs/Storage/Web Storage" execution_type="auto" id="event_case_sensitive_entry1" purpose="sessionStorage storage events fire even when only the case of the value changes">
         <description>
-          <test_script_entry>/opt/tct-webstorage-w3c-tests/webstorage/Storage_getItem_no_argument.html</test_script_entry>
+          <test_script_entry>/opt/tct-webstorage-w3c-tests/webstorage/w3c/event_case_sensitive.html?total_num=2&amp;amp;locator_key=id&amp;amp;value=1</test_script_entry>
         </description>
       </testcase>
-      <testcase component="W3C_HTML5 APIs/Storage/Web Storage" execution_type="auto" id="storage_getItem_unexisted_key" purpose="Check if can call 'getItem' with unexisted key">
+      <testcase component="W3C_HTML5 APIs/Storage/Web Storage" execution_type="auto" id="event_case_sensitive_entry2" purpose="localStorage storage events fire even when only the case of the value changes">
         <description>
-          <test_script_entry>/opt/tct-webstorage-w3c-tests/webstorage/storage_getItem_unexisted_key.html</test_script_entry>
+          <test_script_entry>/opt/tct-webstorage-w3c-tests/webstorage/w3c/event_case_sensitive.html?total_num=2&amp;amp;locator_key=id&amp;amp;value=2</test_script_entry>
         </description>
       </testcase>
-      <testcase component="W3C_HTML5 APIs/Storage/Web Storage" execution_type="auto" id="window_localStorage_getItem_exist" purpose="Check if the getItem method exists in localStorage interface">
+      <testcase component="W3C_HTML5 APIs/Storage/Web Storage" execution_type="auto" id="event_constructor_entry1" purpose="The initial values of storage event properties">
         <description>
-          <test_script_entry>/opt/tct-webstorage-w3c-tests/webstorage/window_localStorage_getItem_exist.html</test_script_entry>
+          <test_script_entry>/opt/tct-webstorage-w3c-tests/webstorage/w3c/event_constructor.html?total_num=2&amp;amp;locator_key=id&amp;amp;value=1</test_script_entry>
         </description>
       </testcase>
-      <testcase component="W3C_HTML5 APIs/Storage/Web Storage" execution_type="auto" id="window_localStorage_getItem_key_nonexisted" purpose="Check if localStorage.getItem returns null when the given key nonexisted">
+      <testcase component="W3C_HTML5 APIs/Storage/Web Storage" execution_type="auto" id="event_constructor_entry2" purpose="storageeventinit test">
         <description>
-          <test_script_entry>/opt/tct-webstorage-w3c-tests/webstorage/window_localStorage_getItem_key_nonexisted.html</test_script_entry>
+          <test_script_entry>/opt/tct-webstorage-w3c-tests/webstorage/w3c/event_constructor.html?total_num=2&amp;amp;locator_key=id&amp;amp;value=2</test_script_entry>
         </description>
       </testcase>
-      <testcase component="W3C_HTML5 APIs/Storage/Web Storage" execution_type="auto" id="window_localStorage_getItem_key_null" purpose="Check if the current value associated with the given key returned when localStorage.getItem has null argument">
+      <testcase component="W3C_HTML5 APIs/Storage/Web Storage" execution_type="auto" id="event_constructor_eventinit_entry1" purpose="Construct StorageEvent with StorageEventInit">
         <description>
-          <test_script_entry>/opt/tct-webstorage-w3c-tests/webstorage/window_localStorage_getItem_key_null.html</test_script_entry>
+          <test_script_entry>/opt/tct-webstorage-w3c-tests/webstorage/w3c/event_constructor_eventinit.html?total_num=2&amp;amp;locator_key=id&amp;amp;value=1</test_script_entry>
         </description>
       </testcase>
-      <testcase component="W3C_HTML5 APIs/Storage/Web Storage" execution_type="auto" id="window_localStorage_getItem_key_undefined" purpose="Check if the current value associated with the given key returned when localStorage.getItem has undefined argument">
+      <testcase component="W3C_HTML5 APIs/Storage/Web Storage" execution_type="auto" id="event_constructor_eventinit_entry2" purpose="StorageEvent constructor and nulls">
         <description>
-          <test_script_entry>/opt/tct-webstorage-w3c-tests/webstorage/window_localStorage_getItem_key_undefined.html</test_script_entry>
+          <test_script_entry>/opt/tct-webstorage-w3c-tests/webstorage/w3c/event_constructor_eventinit.html?total_num=2&amp;amp;locator_key=id&amp;amp;value=2</test_script_entry>
         </description>
       </testcase>
-      <testcase component="W3C_HTML5 APIs/Storage/Web Storage" execution_type="auto" id="window_localStorage_getItem_no_argument" purpose="Check if an exception thrown when localStorage.getItem has no argument">
+      <testcase component="W3C_HTML5 APIs/Storage/Web Storage" execution_type="auto" id="event_local_key_entry1" purpose="key property test of local event">
         <description>
-          <test_script_entry>/opt/tct-webstorage-w3c-tests/webstorage/window_localStorage_getItem_no_argument.html</test_script_entry>
+          <test_script_entry>/opt/tct-webstorage-w3c-tests/webstorage/w3c/event_local_key.html?total_num=2&amp;amp;locator_key=id&amp;amp;value=1</test_script_entry>
         </description>
       </testcase>
-      <testcase component="W3C_HTML5 APIs/Storage/Web Storage" execution_type="auto" id="window_sessionStorage_getItem_exist" purpose="Check if the getItem method exists in sessionStorage interface">
+      <testcase component="W3C_HTML5 APIs/Storage/Web Storage" execution_type="auto" id="event_local_key_entry2" purpose="Local event is fired due to an invocation of the setItem(), clear() methods for local key">
         <description>
-          <test_script_entry>/opt/tct-webstorage-w3c-tests/webstorage/window_sessionStorage_getItem_exist.html</test_script_entry>
+          <test_script_entry>/opt/tct-webstorage-w3c-tests/webstorage/w3c/event_local_key.html?total_num=2&amp;amp;locator_key=id&amp;amp;value=2</test_script_entry>
         </description>
       </testcase>
-      <testcase component="W3C_HTML5 APIs/Storage/Web Storage" execution_type="auto" id="window_sessionStorage_getItem_key_nonexisted" purpose="Check if sessionStorage.getItem returns null when the given key nonexisted">
+      <testcase component="W3C_HTML5 APIs/Storage/Web Storage" execution_type="auto" id="event_local_newvalue_entry1" purpose="newValue property test of local event">
         <description>
-          <test_script_entry>/opt/tct-webstorage-w3c-tests/webstorage/window_sessionStorage_getItem_key_nonexisted.html</test_script_entry>
+          <test_script_entry>/opt/tct-webstorage-w3c-tests/webstorage/w3c/event_local_newvalue.html?total_num=2&amp;amp;locator_key=id&amp;amp;value=1</test_script_entry>
         </description>
       </testcase>
-      <testcase component="W3C_HTML5 APIs/Storage/Web Storage" execution_type="auto" id="window_sessionStorage_getItem_key_null" purpose="Check if the current value associated with the given key returned when sessionStorage.getItem has null argument">
+      <testcase component="W3C_HTML5 APIs/Storage/Web Storage" execution_type="auto" id="event_local_newvalue_entry2" purpose="Local event is fired due to an invocation of the setItem(), clear() methods for local newValue">
         <description>
-          <test_script_entry>/opt/tct-webstorage-w3c-tests/webstorage/window_sessionStorage_getItem_key_null.html</test_script_entry>
+          <test_script_entry>/opt/tct-webstorage-w3c-tests/webstorage/w3c/event_local_newvalue.html?total_num=2&amp;amp;locator_key=id&amp;amp;value=2</test_script_entry>
         </description>
       </testcase>
-      <testcase component="W3C_HTML5 APIs/Storage/Web Storage" execution_type="auto" id="window_sessionStorage_getItem_key_undefined" purpose="Check if the current value associated with the given key returned when sessionStorage.getItem has undefined argument">
+      <testcase component="W3C_HTML5 APIs/Storage/Web Storage" execution_type="auto" id="event_local_oldvalue_entry1" purpose="oldValue property test of local event">
         <description>
-          <test_script_entry>/opt/tct-webstorage-w3c-tests/webstorage/window_sessionStorage_getItem_key_undefined.html</test_script_entry>
+          <test_script_entry>/opt/tct-webstorage-w3c-tests/webstorage/w3c/event_local_oldvalue.html?total_num=2&amp;amp;locator_key=id&amp;amp;value=1</test_script_entry>
         </description>
       </testcase>
-      <testcase component="W3C_HTML5 APIs/Storage/Web Storage" execution_type="auto" id="window_sessionStorage_getItem_no_argument" purpose="Check if an exception thrown when sessionStorage.getItem has no argument">
+      <testcase component="W3C_HTML5 APIs/Storage/Web Storage" execution_type="auto" id="event_local_oldvalue_entry2" purpose="Local event is fired due to an invocation of the setItem(), clear() methods for local oldValue">
         <description>
-          <test_script_entry>/opt/tct-webstorage-w3c-tests/webstorage/window_sessionStorage_getItem_no_argument.html</test_script_entry>
+          <test_script_entry>/opt/tct-webstorage-w3c-tests/webstorage/w3c/event_local_oldvalue.html?total_num=2&amp;amp;locator_key=id&amp;amp;value=2</test_script_entry>
         </description>
       </testcase>
-      <testcase component="W3C_HTML5 APIs/Storage/Web Storage" execution_type="auto" id="StorageEvent_key_empty_string" purpose="Check if the value of StorageEvent.key is empty string">
+      <testcase component="W3C_HTML5 APIs/Storage/Web Storage" execution_type="auto" id="event_local_removeitem" purpose="key property test of local event for removeItem">
         <description>
-          <test_script_entry>/opt/tct-webstorage-w3c-tests/webstorage/StorageEvent_key_empty_string.html</test_script_entry>
+          <test_script_entry>/opt/tct-webstorage-w3c-tests/webstorage/w3c/event_local_removeitem.html</test_script_entry>
         </description>
       </testcase>
-      <testcase component="W3C_HTML5 APIs/Storage/Web Storage" execution_type="auto" id="StorageEvent_key_exist" purpose="Check if StorageEvent.key exists">
+      <testcase component="W3C_HTML5 APIs/Storage/Web Storage" execution_type="auto" id="event_local_storagearea_entry1" purpose="storageArea property test of local event">
         <description>
-          <test_script_entry>/opt/tct-webstorage-w3c-tests/webstorage/StorageEvent_key_exist.html</test_script_entry>
+          <test_script_entry>/opt/tct-webstorage-w3c-tests/webstorage/w3c/event_local_storagearea.html?total_num=2&amp;amp;locator_key=id&amp;amp;value=1</test_script_entry>
         </description>
       </testcase>
-      <testcase component="W3C_HTML5 APIs/Storage/Web Storage" execution_type="auto" id="StorageEvent_key_normal_value" purpose="Check if the value of StorageEvent.key is normal value">
+      <testcase component="W3C_HTML5 APIs/Storage/Web Storage" execution_type="auto" id="event_local_storagearea_entry2" purpose="Local event is fired due to an invocation of the setItem() method for local storageArea">
         <description>
-          <test_script_entry>/opt/tct-webstorage-w3c-tests/webstorage/StorageEvent_key_normal_value.html</test_script_entry>
+          <test_script_entry>/opt/tct-webstorage-w3c-tests/webstorage/w3c/event_local_storagearea.html?total_num=2&amp;amp;locator_key=id&amp;amp;value=2</test_script_entry>
         </description>
       </testcase>
-      <testcase component="W3C_HTML5 APIs/Storage/Web Storage" execution_type="auto" id="StorageEvent_key_readonly" purpose="Check if StorageEvent.key is readonly">
+      <testcase component="W3C_HTML5 APIs/Storage/Web Storage" execution_type="auto" id="event_local_storageeventinit_entry1" purpose="Storage event is fired due to set values for StorageEventInit">
         <description>
-          <test_script_entry>/opt/tct-webstorage-w3c-tests/webstorage/StorageEvent_key_readonly.html</test_script_entry>
+          <test_script_entry>/opt/tct-webstorage-w3c-tests/webstorage/w3c/event_local_storageeventinit.html?total_num=2&amp;amp;locator_key=id&amp;amp;value=1</test_script_entry>
         </description>
       </testcase>
-      <testcase component="W3C_HTML5 APIs/Storage/Web Storage" execution_type="auto" id="StorageEvent_key_type" purpose="Check if the type of StorageEvent.key is string">
+      <testcase component="W3C_HTML5 APIs/Storage/Web Storage" execution_type="auto" id="event_local_storageeventinit_entry2" purpose="storageeventinit test for event_local_storageeventinit">
         <description>
-          <test_script_entry>/opt/tct-webstorage-w3c-tests/webstorage/StorageEvent_key_type.html</test_script_entry>
+          <test_script_entry>/opt/tct-webstorage-w3c-tests/webstorage/w3c/event_local_storageeventinit.html?total_num=2&amp;amp;locator_key=id&amp;amp;value=2</test_script_entry>
         </description>
       </testcase>
-      <testcase component="W3C_HTML5 APIs/Storage/Web Storage" execution_type="auto" id="Storage_keys_numeric" purpose="Check if can use numbers as keys">
+      <testcase component="W3C_HTML5 APIs/Storage/Web Storage" execution_type="auto" id="event_local_url_entry1" purpose="url property test of local event">
         <description>
-          <test_script_entry>/opt/tct-webstorage-w3c-tests/webstorage/Storage_keys_numeric.html</test_script_entry>
+          <test_script_entry>/opt/tct-webstorage-w3c-tests/webstorage/w3c/event_local_url.html?total_num=2&amp;amp;locator_key=id&amp;amp;value=1</test_script_entry>
         </description>
       </testcase>
-      <testcase component="W3C_HTML5 APIs/Storage/Web Storage" execution_type="auto" id="Storage_key_empty_string" purpose="Check if can set/get item key as empty string">
+      <testcase component="W3C_HTML5 APIs/Storage/Web Storage" execution_type="auto" id="event_local_url_entry2" purpose="Local event is fired due to an invocation of the setItem() method for local url">
         <description>
-          <test_script_entry>/opt/tct-webstorage-w3c-tests/webstorage/Storage_key_empty_string.html</test_script_entry>
+          <test_script_entry>/opt/tct-webstorage-w3c-tests/webstorage/w3c/event_local_url.html?total_num=2&amp;amp;locator_key=id&amp;amp;value=2</test_script_entry>
         </description>
       </testcase>
-      <testcase component="W3C_HTML5 APIs/Storage/Web Storage" execution_type="auto" id="Storage_key_exist" purpose="Check if the key attibute exists in storage interface">
+      <testcase component="W3C_HTML5 APIs/Storage/Web Storage" execution_type="auto" id="event_session_key_entry1" purpose="key property test of session event">
         <description>
-          <test_script_entry>/opt/tct-webstorage-w3c-tests/webstorage/Storage_key_exist.html</test_script_entry>
+          <test_script_entry>/opt/tct-webstorage-w3c-tests/webstorage/w3c/event_session_key.html?total_num=2&amp;amp;locator_key=id&amp;amp;value=1</test_script_entry>
         </description>
       </testcase>
-      <testcase component="W3C_HTML5 APIs/Storage/Web Storage" execution_type="auto" id="Storage_key_index_equals_length" purpose="Check if a null key returned when index is equal to the number of key/value pairs in the object">
+      <testcase component="W3C_HTML5 APIs/Storage/Web Storage" execution_type="auto" id="event_session_key_entry2" purpose="Session event is fired due to an invocation of the setItem(), clear() methods for session key">
         <description>
-          <test_script_entry>/opt/tct-webstorage-w3c-tests/webstorage/Storage_key_index_equals_length.html</test_script_entry>
+          <test_script_entry>/opt/tct-webstorage-w3c-tests/webstorage/w3c/event_session_key.html?total_num=2&amp;amp;locator_key=id&amp;amp;value=2</test_script_entry>
         </description>
       </testcase>
-      <testcase component="W3C_HTML5 APIs/Storage/Web Storage" execution_type="auto" id="Storage_key_index_greater_length" purpose="Check if a null key returned when index is greater than the number of key/value pairs in the object">
+      <testcase component="W3C_HTML5 APIs/Storage/Web Storage" execution_type="auto" id="event_session_newvalue_entry1" purpose="newvalue property test of session event">
         <description>
-          <test_script_entry>/opt/tct-webstorage-w3c-tests/webstorage/Storage_key_index_greater_length.html</test_script_entry>
+          <test_script_entry>/opt/tct-webstorage-w3c-tests/webstorage/w3c/event_session_newvalue.html?total_num=2&amp;amp;locator_key=id&amp;amp;value=1</test_script_entry>
         </description>
       </testcase>
-      <testcase component="W3C_HTML5 APIs/Storage/Web Storage" execution_type="auto" id="Storage_key_index_nonascii" purpose="Check if can use non-ascii character in keys">
+      <testcase component="W3C_HTML5 APIs/Storage/Web Storage" execution_type="auto" id="event_session_newvalue_entry2" purpose="Session event is fired due to an invocation of the setItem(), clear() methods for session newValue">
         <description>
-          <test_script_entry>/opt/tct-webstorage-w3c-tests/webstorage/Storage_key_index_nonascii.html</test_script_entry>
+          <test_script_entry>/opt/tct-webstorage-w3c-tests/webstorage/w3c/event_session_newvalue.html?total_num=2&amp;amp;locator_key=id&amp;amp;value=2</test_script_entry>
         </description>
       </testcase>
-      <testcase component="W3C_HTML5 APIs/Storage/Web Storage" execution_type="auto" id="Storage_key_index_nonexisted" purpose="Check if Storage.key returns null when the index is non-existed">
+      <testcase component="W3C_HTML5 APIs/Storage/Web Storage" execution_type="auto" id="event_session_oldvalue_entry1" purpose="oldvalue property test of session event">
         <description>
-          <test_script_entry>/opt/tct-webstorage-w3c-tests/webstorage/Storage_key_index_nonexisted.html</test_script_entry>
+          <test_script_entry>/opt/tct-webstorage-w3c-tests/webstorage/w3c/event_session_oldvalue.html?total_num=2&amp;amp;locator_key=id&amp;amp;value=1</test_script_entry>
         </description>
       </testcase>
-      <testcase component="W3C_HTML5 APIs/Storage/Web Storage" execution_type="auto" id="Storage_key_index_undefined" purpose="Check if the name of the key returned when Storage.key has a undefined argument ">
+      <testcase component="W3C_HTML5 APIs/Storage/Web Storage" execution_type="auto" id="event_session_oldvalue_entry2" purpose="Session event is fired due to an invocation of the setItem(), clear() methods for session oldValue">
         <description>
-          <test_script_entry>/opt/tct-webstorage-w3c-tests/webstorage/Storage_key_index_undefined.html</test_script_entry>
+          <test_script_entry>/opt/tct-webstorage-w3c-tests/webstorage/w3c/event_session_oldvalue.html?total_num=2&amp;amp;locator_key=id&amp;amp;value=2</test_script_entry>
         </description>
       </testcase>
-      <testcase component="W3C_HTML5 APIs/Storage/Web Storage" execution_type="auto" id="Storage_key_index_zero" purpose="Check the zero index of Storage.key">
+      <testcase component="W3C_HTML5 APIs/Storage/Web Storage" execution_type="auto" id="event_session_removeitem" purpose="key property test of session event for session removeItem">
         <description>
-          <test_script_entry>/opt/tct-webstorage-w3c-tests/webstorage/Storage_key_index_zero.html</test_script_entry>
+          <test_script_entry>/opt/tct-webstorage-w3c-tests/webstorage/w3c/event_session_removeitem.html</test_script_entry>
         </description>
       </testcase>
-      <testcase component="W3C_HTML5 APIs/Storage/Web Storage" execution_type="auto" id="storage_key_invalid_parameter" purpose="Check if can use invalid argument in key()">
+      <testcase component="W3C_HTML5 APIs/Storage/Web Storage" execution_type="auto" id="event_session_storagearea_entry1" purpose="storageArea property test of session event">
         <description>
-          <test_script_entry>/opt/tct-webstorage-w3c-tests/webstorage/storage_key_invalid_parameter.html</test_script_entry>
+          <test_script_entry>/opt/tct-webstorage-w3c-tests/webstorage/w3c/event_session_storagearea.html?total_num=2&amp;amp;locator_key=id&amp;amp;value=1</test_script_entry>
         </description>
       </testcase>
-      <testcase component="W3C_HTML5 APIs/Storage/Web Storage" execution_type="auto" id="Storage_key_no_argument" purpose="Check if an exception thrown when Storage.key has no argument ">
+      <testcase component="W3C_HTML5 APIs/Storage/Web Storage" execution_type="auto" id="event_session_storagearea_entry2" purpose="Session event is fired due to an invocation of the setItem() method for session storageArea">
         <description>
-          <test_script_entry>/opt/tct-webstorage-w3c-tests/webstorage/Storage_key_no_argument.html</test_script_entry>
+          <test_script_entry>/opt/tct-webstorage-w3c-tests/webstorage/w3c/event_session_storagearea.html?total_num=2&amp;amp;locator_key=id&amp;amp;value=2</test_script_entry>
         </description>
       </testcase>
-      <testcase component="W3C_HTML5 APIs/Storage/Web Storage" execution_type="auto" id="Storage_key_undefined" purpose="Check if can set key as undefined">
+      <testcase component="W3C_HTML5 APIs/Storage/Web Storage" execution_type="auto" id="event_session_storageeventinit_entry1" purpose="Storage event is fired due to set values for session StorageEventInit">
         <description>
-          <test_script_entry>/opt/tct-webstorage-w3c-tests/webstorage/Storage_key_undefined.html</test_script_entry>
+          <test_script_entry>/opt/tct-webstorage-w3c-tests/webstorage/w3c/event_session_storageeventinit.html?total_num=2&amp;amp;locator_key=id&amp;amp;value=1</test_script_entry>
         </description>
       </testcase>
-      <testcase component="W3C_HTML5 APIs/Storage/Web Storage" execution_type="auto" id="window_localStorage_key_zero" purpose="Check the value of localStorage.key(0) ">
+      <testcase component="W3C_HTML5 APIs/Storage/Web Storage" execution_type="auto" id="event_session_storageeventinit_entry2" purpose="storageeventinit test for event_session_storageeventinit">
         <description>
-          <test_script_entry>/opt/tct-webstorage-w3c-tests/webstorage/window_localStorage_key_zero.html</test_script_entry>
+          <test_script_entry>/opt/tct-webstorage-w3c-tests/webstorage/w3c/event_session_storageeventinit.html?total_num=2&amp;amp;locator_key=id&amp;amp;value=2</test_script_entry>
         </description>
       </testcase>
-      <testcase component="W3C_HTML5 APIs/Storage/Web Storage" execution_type="auto" id="window_sessionStorage_key_zero" purpose="Check the value of sessionStorage.key(0)">
+      <testcase component="W3C_HTML5 APIs/Storage/Web Storage" execution_type="auto" id="event_session_url_entry1" purpose="url property test of session event">
         <description>
-          <test_script_entry>/opt/tct-webstorage-w3c-tests/webstorage/window_sessionStorage_key_zero.html</test_script_entry>
+          <test_script_entry>/opt/tct-webstorage-w3c-tests/webstorage/w3c/event_session_url.html?total_num=2&amp;amp;locator_key=id&amp;amp;value=1</test_script_entry>
         </description>
       </testcase>
-      <testcase component="W3C_HTML5 APIs/Storage/Web Storage" execution_type="auto" id="Storage_length_exist" purpose="Check if the length attibute exists in storage interface">
+      <testcase component="W3C_HTML5 APIs/Storage/Web Storage" execution_type="auto" id="event_session_url_entry2" purpose="Session event is fired due to an invocation of the setItem() method for session url">
         <description>
-          <test_script_entry>/opt/tct-webstorage-w3c-tests/webstorage/Storage_length_exist.html</test_script_entry>
+          <test_script_entry>/opt/tct-webstorage-w3c-tests/webstorage/w3c/event_session_url.html?total_num=2&amp;amp;locator_key=id&amp;amp;value=2</test_script_entry>
         </description>
       </testcase>
-      <testcase component="W3C_HTML5 APIs/Storage/Web Storage" execution_type="auto" id="Storage_length_normal_value" purpose="Check if Storage.length has a normal value">
+      <testcase component="W3C_HTML5 APIs/Storage/Web Storage" execution_type="auto" id="event_setattribute_entry1" purpose="sessionStorage mutations fire StorageEvents that are caught by the event listener attached via setattribute">
         <description>
-          <test_script_entry>/opt/tct-webstorage-w3c-tests/webstorage/Storage_length_normal_value.html</test_script_entry>
+          <test_script_entry>/opt/tct-webstorage-w3c-tests/webstorage/w3c/event_setattribute.html?total_num=2&amp;amp;locator_key=id&amp;amp;value=1</test_script_entry>
         </description>
       </testcase>
-      <testcase component="W3C_HTML5 APIs/Storage/Web Storage" execution_type="auto" id="Storage_length_readonly" purpose="Check if Storage.length attribute is readonly">
+      <testcase component="W3C_HTML5 APIs/Storage/Web Storage" execution_type="auto" id="event_setattribute_entry2" purpose="localStorage mutations fire StorageEvents that are caught by the event listener attached via setattribute">
         <description>
-          <test_script_entry>/opt/tct-webstorage-w3c-tests/webstorage/Storage_length_readonly.html</test_script_entry>
+          <test_script_entry>/opt/tct-webstorage-w3c-tests/webstorage/w3c/event_setattribute.html?total_num=2&amp;amp;locator_key=id&amp;amp;value=2</test_script_entry>
         </description>
       </testcase>
-      <testcase component="W3C_HTML5 APIs/Storage/Web Storage" execution_type="auto" id="Storage_length_type" purpose="Check if the type of Storage.length attribute is number">
-        <description>
-          <test_script_entry>/opt/tct-webstorage-w3c-tests/webstorage/Storage_length_type.html</test_script_entry>
-        </description>
-      </testcase>
-      <testcase component="W3C_HTML5 APIs/Storage/Web Storage" execution_type="auto" id="Storage_length_zero" purpose="Check if the value of Storage.length attribute is zero">
-        <description>
-          <test_script_entry>/opt/tct-webstorage-w3c-tests/webstorage/Storage_length_zero.html</test_script_entry>
-        </description>
-      </testcase>
-      <testcase component="W3C_HTML5 APIs/Storage/Web Storage" execution_type="auto" id="window_localStorage_length_exist" purpose="Check if the length attibute exists in localStorage interface">
-        <description>
-          <test_script_entry>/opt/tct-webstorage-w3c-tests/webstorage/window_localStorage_length_exist.html</test_script_entry>
-        </description>
-      </testcase>
-      <testcase component="W3C_HTML5 APIs/Storage/Web Storage" execution_type="auto" id="window_localStorage_length_readonly" purpose="Check if localStorage.length attribute is readonly">
-        <description>
-          <test_script_entry>/opt/tct-webstorage-w3c-tests/webstorage/window_localStorage_length_readonly.html</test_script_entry>
-        </description>
-      </testcase>
-      <testcase component="W3C_HTML5 APIs/Storage/Web Storage" execution_type="auto" id="window_localStorage_length_type" purpose="Check if the type of localStorage.length attribute is number">
-        <description>
-          <test_script_entry>/opt/tct-webstorage-w3c-tests/webstorage/window_localStorage_length_type.html</test_script_entry>
-        </description>
-      </testcase>
-      <testcase component="W3C_HTML5 APIs/Storage/Web Storage" execution_type="auto" id="window_sessionStorage_length_exist" purpose="Check if length attibute exists in sessionStorage interface">
-        <description>
-          <test_script_entry>/opt/tct-webstorage-w3c-tests/webstorage/window_sessionStorage_length_exist.html</test_script_entry>
-        </description>
-      </testcase>
-      <testcase component="W3C_HTML5 APIs/Storage/Web Storage" execution_type="auto" id="window_sessionStorage_length_readonly" purpose="Check if sessionStorage.length attribute is readonly">
-        <description>
-          <test_script_entry>/opt/tct-webstorage-w3c-tests/webstorage/window_sessionStorage_length_readonly.html</test_script_entry>
-        </description>
-      </testcase>
-      <testcase component="W3C_HTML5 APIs/Storage/Web Storage" execution_type="auto" id="window_sessionStorage_length_type" purpose="Check if the type of sessionStorage.length attribute is number">
-        <description>
-          <test_script_entry>/opt/tct-webstorage-w3c-tests/webstorage/window_sessionStorage_length_type.html</test_script_entry>
-        </description>
-      </testcase>
-      <testcase component="W3C_HTML5 APIs/Storage/Web Storage" execution_type="auto" id="window_localStorage_exist" purpose="Check if localStorage attribute exists">
-        <description>
-          <test_script_entry>/opt/tct-webstorage-w3c-tests/webstorage/window_localStorage_exist.html</test_script_entry>
-        </description>
-      </testcase>
-      <testcase component="W3C_HTML5 APIs/Storage/Web Storage" execution_type="auto" id="window_localStorage_readonly" purpose="Check if window.localStorage is readonly">
-        <description>
-          <test_script_entry>/opt/tct-webstorage-w3c-tests/webstorage/window_localStorage_readonly.html</test_script_entry>
-        </description>
-      </testcase>
-      <testcase component="W3C_HTML5 APIs/Storage/Web Storage" execution_type="auto" id="window_localStorage_type" purpose="Check if the type of window.localStorage is Storage">
-        <description>
-          <test_script_entry>/opt/tct-webstorage-w3c-tests/webstorage/window_localStorage_type.html</test_script_entry>
-        </description>
-      </testcase>
-      <testcase component="W3C_HTML5 APIs/Storage/Web Storage" execution_type="auto" id="StorageEvent_newValue_empty_string.html" purpose="Check if the value of StorageEvent.newValue is empty string">
-        <description>
-          <test_script_entry>/opt/tct-webstorage-w3c-tests/webstorage/StorageEvent_newValue_empty_string.html.html</test_script_entry>
-        </description>
-      </testcase>
-      <testcase component="W3C_HTML5 APIs/Storage/Web Storage" execution_type="auto" id="StorageEvent_newValue_exist" purpose="Check if StorageEvent.newValue exists">
-        <description>
-          <test_script_entry>/opt/tct-webstorage-w3c-tests/webstorage/StorageEvent_newValue_exist.html</test_script_entry>
-        </description>
-      </testcase>
-      <testcase component="W3C_HTML5 APIs/Storage/Web Storage" execution_type="auto" id="StorageEvent_newValue_normal_value" purpose="Check if StorageEvent.newValue has a normal value">
-        <description>
-          <test_script_entry>/opt/tct-webstorage-w3c-tests/webstorage/StorageEvent_newValue_normal_value.html</test_script_entry>
-        </description>
-      </testcase>
-      <testcase component="W3C_HTML5 APIs/Storage/Web Storage" execution_type="auto" id="StorageEvent_newValue_readonly" purpose="Check if StorageEvent.newValue is readonly">
-        <description>
-          <test_script_entry>/opt/tct-webstorage-w3c-tests/webstorage/StorageEvent_newValue_readonly.html</test_script_entry>
-        </description>
-      </testcase>
-      <testcase component="W3C_HTML5 APIs/Storage/Web Storage" execution_type="auto" id="StorageEvent_newValue_type" purpose="Check if the type of StorageEvent.newValue is string">
-        <description>
-          <test_script_entry>/opt/tct-webstorage-w3c-tests/webstorage/StorageEvent_newValue_type.html</test_script_entry>
-        </description>
-      </testcase>
-      <testcase component="W3C_HTML5 APIs/Storage/Web Storage" execution_type="auto" id="StorageEvent_oldValue_empty_string" purpose="Check if the value of StorageEvent.oldValue is empty string">
-        <description>
-          <test_script_entry>/opt/tct-webstorage-w3c-tests/webstorage/StorageEvent_oldValue_empty_string.html</test_script_entry>
-        </description>
-      </testcase>
-      <testcase component="W3C_HTML5 APIs/Storage/Web Storage" execution_type="auto" id="StorageEvent_oldValue_exist" purpose="Check if StorageEvent.oldValue exists">
-        <description>
-          <test_script_entry>/opt/tct-webstorage-w3c-tests/webstorage/StorageEvent_oldValue_exist.html</test_script_entry>
-        </description>
-      </testcase>
-      <testcase component="W3C_HTML5 APIs/Storage/Web Storage" execution_type="auto" id="StorageEvent_oldValue_normal_value" purpose="Check if StorageEvent.oldValue has a normal value">
-        <description>
-          <test_script_entry>/opt/tct-webstorage-w3c-tests/webstorage/StorageEvent_oldValue_normal_value.html</test_script_entry>
-        </description>
-      </testcase>
-      <testcase component="W3C_HTML5 APIs/Storage/Web Storage" execution_type="auto" id="StorageEvent_oldValue_readonly" purpose="Check if StorageEvent.oldValue is readonly">
-        <description>
-          <test_script_entry>/opt/tct-webstorage-w3c-tests/webstorage/StorageEvent_oldValue_readonly.html</test_script_entry>
-        </description>
-      </testcase>
-      <testcase component="W3C_HTML5 APIs/Storage/Web Storage" execution_type="auto" id="StorageEvent_oldValue_type" purpose="Check if the type of StorageEvent.oldValue is string">
-        <description>
-          <test_script_entry>/opt/tct-webstorage-w3c-tests/webstorage/StorageEvent_oldValue_type.html</test_script_entry>
-        </description>
-      </testcase>
-      <testcase component="W3C_HTML5 APIs/Storage/Web Storage" execution_type="auto" id="Storage_removeItem_base" purpose="Check if the current value associated with the given key removed when Storage.removeItem has normal argument">
-        <description>
-          <test_script_entry>/opt/tct-webstorage-w3c-tests/webstorage/Storage_removeItem_base.html</test_script_entry>
-        </description>
-      </testcase>
-      <testcase component="W3C_HTML5 APIs/Storage/Web Storage" execution_type="auto" id="Storage_removeItem_key_null" purpose="Check if localStorage.length attribute value equals to 0.">
-        <description>
-          <test_script_entry>/opt/tct-webstorage-w3c-tests/webstorage/Storage_removeItem_key_null.html</test_script_entry>
-        </description>
-      </testcase>
-      <testcase component="W3C_HTML5 APIs/Storage/Web Storage" execution_type="auto" id="Storage_removeItem_key_undefined" purpose="Check if the current value associated with the given key removed Storage.removeItem has undefined argument">
-        <description>
-          <test_script_entry>/opt/tct-webstorage-w3c-tests/webstorage/Storage_removeItem_key_undefined.html</test_script_entry>
-        </description>
-      </testcase>
-      <testcase component="W3C_HTML5 APIs/Storage/Web Storage" execution_type="auto" id="Storage_removeItem_nonexisted_item" purpose="Check if the function will do nothing when removeItem has a nonexisted key">
-        <description>
-          <test_script_entry>/opt/tct-webstorage-w3c-tests/webstorage/Storage_removeItem_nonexisted_item.htm</test_script_entry>
-        </description>
-      </testcase>
-      <testcase component="W3C_HTML5 APIs/Storage/Web Storage" execution_type="auto" id="Storage_removeItem_no_argument" purpose="Check if an exception thrown when Storage.removeItem has no argument">
-        <description>
-          <test_script_entry>/opt/tct-webstorage-w3c-tests/webstorage/Storage_removeItem_no_argument.html</test_script_entry>
-        </description>
-      </testcase>
-      <testcase component="W3C_HTML5 APIs/Storage/Web Storage" execution_type="auto" id="window_sessionStorage_exist" purpose="Check if sessionStorage attribute exists">
-        <description>
-          <test_script_entry>/opt/tct-webstorage-w3c-tests/webstorage/window_sessionStorage_exist.html</test_script_entry>
-        </description>
-      </testcase>
-      <testcase component="W3C_HTML5 APIs/Storage/Web Storage" execution_type="auto" id="window_sessionStorage_readonly" purpose="Check if window.sessionStorage is readonly">
-        <description>
-          <test_script_entry>/opt/tct-webstorage-w3c-tests/webstorage/window_sessionStorage_readonly.html</test_script_entry>
-        </description>
-      </testcase>
-      <testcase component="W3C_HTML5 APIs/Storage/Web Storage" execution_type="auto" id="window_sessionStorage_type" purpose="Check if the type of window.sessionStorage is Storage">
-        <description>
-          <test_script_entry>/opt/tct-webstorage-w3c-tests/webstorage/window_sessionStorage_type.html</test_script_entry>
-        </description>
-      </testcase>
-      <testcase component="W3C_HTML5 APIs/Storage/Web Storage" execution_type="auto" id="Storage_setItem_base" purpose="Check if a key/value pair added to the list when Storage.setItem has two valid arguments">
-        <description>
-          <test_script_entry>/opt/tct-webstorage-w3c-tests/webstorage/Storage_setItem_base.html</test_script_entry>
-        </description>
-      </testcase>
-      <testcase component="W3C_HTML5 APIs/Storage/Web Storage" execution_type="auto" id="Storage_setItem_exist" purpose="Check if the setItem method exists in storage interface">
-        <description>
-          <test_script_entry>/opt/tct-webstorage-w3c-tests/webstorage/Storage_setItem_exist.html</test_script_entry>
-        </description>
-      </testcase>
-      <testcase component="W3C_HTML5 APIs/Storage/Web Storage" execution_type="auto" id="Storage_setItem_key_null" purpose="Check if a new key/value pair is added to the list when the 'key' argument of the Storage.setItem is null">
-        <description>
-          <test_script_entry>/opt/tct-webstorage-w3c-tests/webstorage/Storage_setItem_key_null.html</test_script_entry>
-        </description>
-      </testcase>
-      <testcase component="W3C_HTML5 APIs/Storage/Web Storage" execution_type="auto" id="Storage_setItem_key_null_value_null" purpose="Check if a new key/value pair is added to the list when the arguments of the Storage.setItem are all null">
-        <description>
-          <test_script_entry>/opt/tct-webstorage-w3c-tests/webstorage/Storage_setItem_key_null_value_null.html</test_script_entry>
-        </description>
-      </testcase>
-      <testcase component="W3C_HTML5 APIs/Storage/Web Storage" execution_type="auto" id="Storage_setItem_key_undefined" purpose="Check if a key/value pair is added to the list when Storage.setItem has a undefined argument">
-        <description>
-          <test_script_entry>/opt/tct-webstorage-w3c-tests/webstorage/Storage_setItem_key_undefined.html</test_script_entry>
-        </description>
-      </testcase>
-      <testcase component="W3C_HTML5 APIs/Storage/Web Storage" execution_type="auto" id="Storage_setItem_no_argument" purpose="Check if an exception is thrown when Storage.setItem has no argument">
-        <description>
-          <test_script_entry>/opt/tct-webstorage-w3c-tests/webstorage/Storage_setItem_no_argument.html</test_script_entry>
-        </description>
-      </testcase>
-      <testcase component="W3C_HTML5 APIs/Storage/Web Storage" execution_type="auto" id="Storage_setItem_update_value" purpose="Check if the setItem can update value">
-        <description>
-          <test_script_entry>/opt/tct-webstorage-w3c-tests/webstorage/Storage_setItem_update_value.html</test_script_entry>
-        </description>
-      </testcase>
-      <testcase component="W3C_HTML5 APIs/Storage/Web Storage" execution_type="auto" id="Storage_setItem_value_null" purpose="Check if a new key/value pair is added to the list when the 'value' argument of the Storage.setItem is null">
-        <description>
-          <test_script_entry>/opt/tct-webstorage-w3c-tests/webstorage/Storage_setItem_value_null.html</test_script_entry>
-        </description>
-      </testcase>
-      <testcase component="W3C_HTML5 APIs/Storage/Web Storage" execution_type="auto" id="Storage_setItem_value_same" purpose="Check if Storage.setItem can add a new key/value pair with same value to the list">
-        <description>
-          <test_script_entry>/opt/tct-webstorage-w3c-tests/webstorage/Storage_setItem_value_same.html</test_script_entry>
-        </description>
-      </testcase>
-      <testcase component="W3C_HTML5 APIs/Storage/Web Storage" execution_type="auto" id="window_localStorage_setItem_base" purpose="Check if localStorage.setItem add a key/value pair with the given key in the list associated with the object">
-        <description>
-          <test_script_entry>/opt/tct-webstorage-w3c-tests/webstorage/window_localStorage_setItem_base.html</test_script_entry>
-        </description>
-      </testcase>
-      <testcase component="W3C_HTML5 APIs/Storage/Web Storage" execution_type="auto" id="window_localStorage_setItem_exist" purpose="Check if the setItem method exists in localStorage interface">
-        <description>
-          <test_script_entry>/opt/tct-webstorage-w3c-tests/webstorage/window_localStorage_setItem_exist.html</test_script_entry>
-        </description>
-      </testcase>
-      <testcase component="W3C_HTML5 APIs/Storage/Web Storage" execution_type="auto" id="window_localStorage_setItem_empty_string" purpose="Check if the value of localStorage.setItem is empty string">
-        <description>
-          <test_script_entry>/opt/tct-webstorage-w3c-tests/webstorage/window_localStorage_setItem_empty_string.html</test_script_entry>
-        </description>
-      </testcase>
-      <testcase component="W3C_HTML5 APIs/Storage/Web Storage" execution_type="auto" id="window_localStorage_setItem_no_argument" purpose="Check if the localStorage.setItem has no argument">
-        <description>
-          <test_script_entry>/opt/tct-webstorage-w3c-tests/webstorage/window_localStorage_setItem_no_argument.html</test_script_entry>
-        </description>
-      </testcase>
-      <testcase component="W3C_HTML5 APIs/Storage/Web Storage" execution_type="auto" id="window_localStorage_setItem_no_value" purpose="Check if the localStorage.setItem haven't any value">
-        <description>
-          <test_script_entry>/opt/tct-webstorage-w3c-tests/webstorage/window_localStorage_setItem_no_value.html</test_script_entry>
-        </description>
-      </testcase>
-      <testcase component="W3C_HTML5 APIs/Storage/Web Storage" execution_type="auto" id="window_localStorage_setItem_null" purpose="Check if the value of localStorage.setItem is null">
-        <description>
-          <test_script_entry>/opt/tct-webstorage-w3c-tests/webstorage/window_localStorage_setItem_null.html</test_script_entry>
-        </description>
-      </testcase>
-      <testcase component="W3C_HTML5 APIs/Storage/Web Storage" execution_type="auto" id="window_localStorage_setItem_undefined" purpose="Check if the value of localStorage.setItem is undefined">
-        <description>
-          <test_script_entry>/opt/tct-webstorage-w3c-tests/webstorage/window_localStorage_setItem_undefined.html</test_script_entry>
-        </description>
-      </testcase>
-      <testcase component="W3C_HTML5 APIs/Storage/Web Storage" execution_type="auto" id="window_localStorage_setItem_update_value" purpose="Check if the localStorage.setItem updates value">
-        <description>
-          <test_script_entry>/opt/tct-webstorage-w3c-tests/webstorage/window_localStorage_setItem_update_value.html</test_script_entry>
-        </description>
-      </testcase>
-      <testcase component="W3C_HTML5 APIs/Storage/Web Storage" execution_type="auto" id="window_localStorage_set_value_with_enumerate_way" purpose="Check if localStorage can set values with 'localStorage.key = value'">
-        <description>
-          <test_script_entry>/opt/tct-webstorage-w3c-tests/webstorage/window_localStorage_set_value_with_enumerate_way.html</test_script_entry>
-        </description>
-      </testcase>
-      <testcase component="W3C_HTML5 APIs/Storage/Web Storage" execution_type="auto" id="window_sessionStorage_setItem_exist" purpose="Check if the setItem method exists in sessionStorage interface">
-        <description>
-          <test_script_entry>/opt/tct-webstorage-w3c-tests/webstorage/window_sessionStorage_setItem_exist.html</test_script_entry>
-        </description>
-      </testcase>
-      <testcase component="W3C_HTML5 APIs/Storage/Web Storage" execution_type="auto" id="window_sessionStorage_setItem_base" purpose="Check if the sessionStorage.setItem add a key/value pair with the given key in the list associated with the object">
-        <description>
-          <test_script_entry>/opt/tct-webstorage-w3c-tests/webstorage/window_sessionStorage_setItem_base.html</test_script_entry>
-        </description>
-      </testcase>
-      <testcase component="W3C_HTML5 APIs/Storage/Web Storage" execution_type="auto" id="window_sessionStorage_setItem_empty_string" purpose="Check if the value of sessionStorage.setItem is empty string">
-        <description>
-          <test_script_entry>/opt/tct-webstorage-w3c-tests/webstorage/window_sessionStorage_setItem_empty_string.html</test_script_entry>
-        </description>
-      </testcase>
-      <testcase component="W3C_HTML5 APIs/Storage/Web Storage" execution_type="auto" id="window_sessionStorage_setItem_no_argument" purpose="Check if the sessionStorage.setItem has no argument">
-        <description>
-          <test_script_entry>/opt/tct-webstorage-w3c-tests/webstorage/window_sessionStorage_setItem_no_argument.html</test_script_entry>
-        </description>
-      </testcase>
-      <testcase component="W3C_HTML5 APIs/Storage/Web Storage" execution_type="auto" id="window_sessionStorage_setItem_no_value" purpose="Check if the sessionStorage.setItem haven't any value">
-        <description>
-          <test_script_entry>/opt/tct-webstorage-w3c-tests/webstorage/window_sessionStorage_setItem_no_value.html</test_script_entry>
-        </description>
-      </testcase>
-      <testcase component="W3C_HTML5 APIs/Storage/Web Storage" execution_type="auto" id="window_sessionStorage_setItem_null" purpose="Check if the value of sessionStorage.setItem is null">
-        <description>
-          <test_script_entry>/opt/tct-webstorage-w3c-tests/webstorage/window_sessionStorage_setItem_null.html</test_script_entry>
-        </description>
-      </testcase>
-      <testcase component="W3C_HTML5 APIs/Storage/Web Storage" execution_type="auto" id="window_sessionStorage_setItem_undefined" purpose="Check if the value of sessionStorage.setItem is undefined">
-        <description>
-          <test_script_entry>/opt/tct-webstorage-w3c-tests/webstorage/window_sessionStorage_setItem_undefined.html</test_script_entry>
-        </description>
-      </testcase>
-      <testcase component="W3C_HTML5 APIs/Storage/Web Storage" execution_type="auto" id="window_sessionStorage_setItem_update_value" purpose="Check if the sessionStorage.setItem updates value">
-        <description>
-          <test_script_entry>/opt/tct-webstorage-w3c-tests/webstorage/window_sessionStorage_setItem_update_value.html</test_script_entry>
-        </description>
-      </testcase>
-      <testcase component="W3C_HTML5 APIs/Storage/Web Storage" execution_type="auto" id="window_sessionStorage_set_value_with_enumerate_way" purpose="Check if sessionStorage can set values with 'sessionStorage.key = value'">
-        <description>
-          <test_script_entry>/opt/tct-webstorage-w3c-tests/webstorage/window_sessionStorage_set_value_with_enumerate_way.html</test_script_entry>
-        </description>
-      </testcase>
-      <testcase component="W3C_HTML5 APIs/Storage/Web Storage" execution_type="auto" id="StorageEvent_storageArea_clear_base" purpose="Check if StorageEvent.storageArea.clear can clear the key/value pair from the list">
-        <description>
-          <test_script_entry>/opt/tct-webstorage-w3c-tests/webstorage/StorageEvent_storageArea_clear_base.html</test_script_entry>
-        </description>
-      </testcase>
-      <testcase component="W3C_HTML5 APIs/Storage/Web Storage" execution_type="auto" id="StorageEvent_storageArea_exist" purpose="Check if StorageEvent.storageArea exists">
-        <description>
-          <test_script_entry>/opt/tct-webstorage-w3c-tests/webstorage/StorageEvent_storageArea_exist.html</test_script_entry>
-        </description>
-      </testcase>
-      <testcase component="W3C_HTML5 APIs/Storage/Web Storage" execution_type="auto" id="StorageEvent_storageArea_getItem_base" purpose="Check if StorageEvent.storageArea.getItem returns the current value associated with the given key">
-        <description>
-          <test_script_entry>/opt/tct-webstorage-w3c-tests/webstorage/StorageEvent_storageArea_getItem_base.html</test_script_entry>
-        </description>
-      </testcase>
-      <testcase component="W3C_HTML5 APIs/Storage/Web Storage" execution_type="auto" id="StorageEvent_storageArea_key_base" purpose="Check if StorageEvent.storageArea.key returns the name of the nth key in the list">
-        <description>
-          <test_script_entry>/opt/tct-webstorage-w3c-tests/webstorage/StorageEvent_storageArea_key_base.html</test_script_entry>
-        </description>
-      </testcase>
-      <testcase component="W3C_HTML5 APIs/Storage/Web Storage" execution_type="auto" id="StorageEvent_storageArea_length_normal_value" purpose="Check if StorageEvent.storageArea.length has a normal value">
-        <description>
-          <test_script_entry>/opt/tct-webstorage-w3c-tests/webstorage/StorageEvent_storageArea_length_normal_value.html</test_script_entry>
-        </description>
-      </testcase>
-      <testcase component="W3C_HTML5 APIs/Storage/Web Storage" execution_type="auto" id="StorageEvent_storageArea_localStorage" purpose="Check if the value of StorageEvent.storageArea is localStorage object">
-        <description>
-          <test_script_entry>/opt/tct-webstorage-w3c-tests/webstorage/StorageEvent_storageArea_localStorage.html</test_script_entry>
-        </description>
-      </testcase>
-      <testcase component="W3C_HTML5 APIs/Storage/Web Storage" execution_type="auto" id="StorageEvent_storageArea_readonly" purpose="Check if StorageEvent.storageArea is readonly">
-        <description>
-          <test_script_entry>/opt/tct-webstorage-w3c-tests/webstorage/StorageEvent_storageArea_readonly.html</test_script_entry>
-        </description>
-      </testcase>
-      <testcase component="W3C_HTML5 APIs/Storage/Web Storage" execution_type="auto" id="StorageEvent_storageArea_removeItem_base" purpose="Check if StorageEvent.storageArea.removeItem can remove the key/value pair from the list">
-        <description>
-          <test_script_entry>/opt/tct-webstorage-w3c-tests/webstorage/StorageEvent_storageArea_removeItem_base.html</test_script_entry>
-        </description>
-      </testcase>
-      <testcase component="W3C_HTML5 APIs/Storage/Web Storage" execution_type="auto" id="StorageEvent_storageArea_sessionStorage" purpose="Check if the value of StorageEvent.storageArea is sessionStorage object">
-        <description>
-          <test_script_entry>/opt/tct-webstorage-w3c-tests/webstorage/StorageEvent_storageArea_sessionStorage.html</test_script_entry>
-        </description>
-      </testcase>
-      <testcase component="W3C_HTML5 APIs/Storage/Web Storage" execution_type="auto" id="StorageEvent_storageArea_type" purpose="Check if the type of StorageEvent.storageArea is Storage">
-        <description>
-          <test_script_entry>/opt/tct-webstorage-w3c-tests/webstorage/StorageEvent_storageArea_type.html</test_script_entry>
-        </description>
-      </testcase>
-      <testcase component="W3C_HTML5 APIs/Storage/Web Storage" execution_type="auto" id="StorageEvent_url_empty_string" purpose="Check if the value of StorageEvent.url is empty string">
-        <description>
-          <test_script_entry>/opt/tct-webstorage-w3c-tests/webstorage/StorageEvent_url_empty_string.html</test_script_entry>
-        </description>
-      </testcase>
-      <testcase component="W3C_HTML5 APIs/Storage/Web Storage" execution_type="auto" id="StorageEvent_url_exist" purpose="Check if StorageEvent.url exists">
-        <description>
-          <test_script_entry>/opt/tct-webstorage-w3c-tests/webstorage/StorageEvent_url_exist.html</test_script_entry>
-        </description>
-      </testcase>
-      <testcase component="W3C_HTML5 APIs/Storage/Web Storage" execution_type="auto" id="StorageEvent_url_normal_value" purpose="Check if StorageEvent.url has a normal value">
-        <description>
-          <test_script_entry>/opt/tct-webstorage-w3c-tests/webstorage/StorageEvent_url_normal_value.html</test_script_entry>
-        </description>
-      </testcase>
-      <testcase component="W3C_HTML5 APIs/Storage/Web Storage" execution_type="auto" id="StorageEvent_url_readonly" purpose="Check if StorageEvent.url is readonly">
-        <description>
-          <test_script_entry>/opt/tct-webstorage-w3c-tests/webstorage/StorageEvent_url_readonly.html</test_script_entry>
-        </description>
-      </testcase>
-      <testcase component="W3C_HTML5 APIs/Storage/Web Storage" execution_type="auto" id="StorageEvent_url_type" purpose="Check if the type of StorageEvent.url is string">
-        <description>
-          <test_script_entry>/opt/tct-webstorage-w3c-tests/webstorage/StorageEvent_url_type.html</test_script_entry>
-        </description>
-      </testcase>
-      <testcase component="W3C_HTML5 APIs/Storage/Web Storage" execution_type="auto" id="Idlharness_13" purpose="Check if window.localStorage can be stringify">
-        <description>
-          <test_script_entry>/opt/tct-webstorage-w3c-tests/webstorage/w3c/idlharness.html?total_num=32&amp;amp;locator_key=id&amp;amp;value=13</test_script_entry>
-        </description>
-      </testcase>
-      <testcase component="W3C_HTML5 APIs/Storage/Web Storage" execution_type="auto" id="Idlharness_15" purpose="Check if window.localStorage inherit property &quot;key&quot; with the proper type">
-        <description>
-          <test_script_entry>/opt/tct-webstorage-w3c-tests/webstorage/w3c/idlharness.html?total_num=32&amp;amp;locator_key=id&amp;amp;value=15</test_script_entry>
-        </description>
-      </testcase>
-      <testcase component="W3C_HTML5 APIs/Storage/Web Storage" execution_type="auto" id="Idlharness_17" purpose="Check if window.localStorage inherit property &quot;getItem&quot; with the proper type">
-        <description>
-          <test_script_entry>/opt/tct-webstorage-w3c-tests/webstorage/w3c/idlharness.html?total_num=32&amp;amp;locator_key=id&amp;amp;value=17</test_script_entry>
-        </description>
-      </testcase>
-      <testcase component="W3C_HTML5 APIs/Storage/Web Storage" execution_type="auto" id="Idlharness_19" purpose="Check if window.localStorage inherit property &quot;setItem&quot; with the proper type">
-        <description>
-          <test_script_entry>/opt/tct-webstorage-w3c-tests/webstorage/w3c/idlharness.html?total_num=32&amp;amp;locator_key=id&amp;amp;value=19</test_script_entry>
-        </description>
-      </testcase>
-      <testcase component="W3C_HTML5 APIs/Storage/Web Storage" execution_type="auto" id="Idlharness_21" purpose="Check if window.localStorage inherit property &quot;removeItem&quot; with the proper type">
-        <description>
-          <test_script_entry>/opt/tct-webstorage-w3c-tests/webstorage/w3c/idlharness.html?total_num=32&amp;amp;locator_key=id&amp;amp;value=21</test_script_entry>
-        </description>
-      </testcase>
-      <testcase component="W3C_HTML5 APIs/Storage/Web Storage" execution_type="auto" id="Idlharness_23" purpose="Check if window.localStorage inherit property &quot;clear&quot; with the proper type">
-        <description>
-          <test_script_entry>/opt/tct-webstorage-w3c-tests/webstorage/w3c/idlharness.html?total_num=32&amp;amp;locator_key=id&amp;amp;value=23</test_script_entry>
-        </description>
-      </testcase>
-      <testcase component="W3C_HTML5 APIs/Storage/Web Storage" execution_type="auto" id="missing_arguments_1" purpose="Check if throw TypeError when calling function localStorage.key()">
+      <testcase component="W3C_HTML5 APIs/Storage/Web Storage" execution_type="auto" id="missing_arguments_entry1" purpose="Should throw TypeError for function 'function () { localStorage.key(); }'">
         <description>
           <test_script_entry>/opt/tct-webstorage-w3c-tests/webstorage/w3c/missing_arguments.html?total_num=11&amp;amp;locator_key=id&amp;amp;value=1</test_script_entry>
         </description>
       </testcase>
-      <testcase component="W3C_HTML5 APIs/Storage/Web Storage" execution_type="auto" id="missing_arguments_2" purpose="Check if throw TypeError when calling function localStorage.getItem()">
+      <testcase component="W3C_HTML5 APIs/Storage/Web Storage" execution_type="auto" id="missing_arguments_entry2" purpose="Should throw TypeError for function 'function () { localStorage.getItem(); }'">
         <description>
           <test_script_entry>/opt/tct-webstorage-w3c-tests/webstorage/w3c/missing_arguments.html?total_num=11&amp;amp;locator_key=id&amp;amp;value=2</test_script_entry>
         </description>
       </testcase>
-      <testcase component="W3C_HTML5 APIs/Storage/Web Storage" execution_type="auto" id="missing_arguments_3" purpose="Check if throw TypeError when calling function localStorage.setItem()">
+      <testcase component="W3C_HTML5 APIs/Storage/Web Storage" execution_type="auto" id="missing_arguments_entry3" purpose="Should throw TypeError for function 'function () { localStorage.setItem(); }'">
         <description>
           <test_script_entry>/opt/tct-webstorage-w3c-tests/webstorage/w3c/missing_arguments.html?total_num=11&amp;amp;locator_key=id&amp;amp;value=3</test_script_entry>
         </description>
       </testcase>
-      <testcase component="W3C_HTML5 APIs/Storage/Web Storage" execution_type="auto" id="missing_arguments_4" purpose="Check if throw TypeError when calling function localStorage.setItem('a')">
+      <testcase component="W3C_HTML5 APIs/Storage/Web Storage" execution_type="auto" id="missing_arguments_entry4" purpose="Should throw TypeError for function 'function () { localStorage.setItem('a'); }'">
         <description>
           <test_script_entry>/opt/tct-webstorage-w3c-tests/webstorage/w3c/missing_arguments.html?total_num=11&amp;amp;locator_key=id&amp;amp;value=4</test_script_entry>
         </description>
       </testcase>
-      <testcase component="W3C_HTML5 APIs/Storage/Web Storage" execution_type="auto" id="missing_arguments_5" purpose="Check if throw TypeError when calling function localStorage.removeItem()">
+      <testcase component="W3C_HTML5 APIs/Storage/Web Storage" execution_type="auto" id="missing_arguments_entry5" purpose="Should throw TypeError for function 'function () { localStorage.removeItem(); }'">
         <description>
           <test_script_entry>/opt/tct-webstorage-w3c-tests/webstorage/w3c/missing_arguments.html?total_num=11&amp;amp;locator_key=id&amp;amp;value=5</test_script_entry>
         </description>
       </testcase>
-      <testcase component="W3C_HTML5 APIs/Storage/Web Storage" execution_type="auto" id="missing_arguments_6" purpose="Check if throw TypeError when calling function sessionStorage.key()">
+      <testcase component="W3C_HTML5 APIs/Storage/Web Storage" execution_type="auto" id="missing_arguments_entry6" purpose="Should throw TypeError for function 'function () { sessionStorage.key(); }'">
         <description>
           <test_script_entry>/opt/tct-webstorage-w3c-tests/webstorage/w3c/missing_arguments.html?total_num=11&amp;amp;locator_key=id&amp;amp;value=6</test_script_entry>
         </description>
       </testcase>
-      <testcase component="W3C_HTML5 APIs/Storage/Web Storage" execution_type="auto" id="missing_arguments_7" purpose="Check if throw TypeError when calling function sessionStorage.getItem()">
+      <testcase component="W3C_HTML5 APIs/Storage/Web Storage" execution_type="auto" id="missing_arguments_entry7" purpose="Should throw TypeError for function 'function () { sessionStorage.getItem(); }'">
         <description>
           <test_script_entry>/opt/tct-webstorage-w3c-tests/webstorage/w3c/missing_arguments.html?total_num=11&amp;amp;locator_key=id&amp;amp;value=7</test_script_entry>
         </description>
       </testcase>
-      <testcase component="W3C_HTML5 APIs/Storage/Web Storage" execution_type="auto" id="missing_arguments_8" purpose="Check if throw TypeError when calling function sessionStorage.setItem()">
+      <testcase component="W3C_HTML5 APIs/Storage/Web Storage" execution_type="auto" id="missing_arguments_entry8" purpose="Should throw TypeError for function 'function () { sessionStorage.setItem(); }'">
         <description>
           <test_script_entry>/opt/tct-webstorage-w3c-tests/webstorage/w3c/missing_arguments.html?total_num=11&amp;amp;locator_key=id&amp;amp;value=8</test_script_entry>
         </description>
       </testcase>
-      <testcase component="W3C_HTML5 APIs/Storage/Web Storage" execution_type="auto" id="missing_arguments_9" purpose="Check if throw TypeError when calling function sessionStorage.setItem('a')">
+      <testcase component="W3C_HTML5 APIs/Storage/Web Storage" execution_type="auto" id="missing_arguments_entry9" purpose="Should throw TypeError for function 'function () { sessionStorage.setItem('a'); }'">
         <description>
           <test_script_entry>/opt/tct-webstorage-w3c-tests/webstorage/w3c/missing_arguments.html?total_num=11&amp;amp;locator_key=id&amp;amp;value=9</test_script_entry>
         </description>
       </testcase>
-      <testcase component="W3C_HTML5 APIs/Storage/Web Storage" execution_type="auto" id="missing_arguments_10" purpose="Check if throw TypeError when calling function sessionStorage.removeItem()">
+      <testcase component="W3C_HTML5 APIs/Storage/Web Storage" execution_type="auto" id="missing_arguments_entry10" purpose="Should throw TypeError for function 'function () { sessionStorage.removeItem(); }'">
         <description>
           <test_script_entry>/opt/tct-webstorage-w3c-tests/webstorage/w3c/missing_arguments.html?total_num=11&amp;amp;locator_key=id&amp;amp;value=10</test_script_entry>
         </description>
       </testcase>
-      <testcase component="W3C_HTML5 APIs/Storage/Web Storage" execution_type="auto" id="storage_local_in_js_1" purpose="Check if a attribute is in localStorage when the attribute added by localStorage index">
+      <testcase component="W3C_HTML5 APIs/Storage/Web Storage" execution_type="auto" id="missing_arguments_entry11" purpose="Should throw TypeError for function 'function () { new StorageEvent(); }'">
         <description>
-          <test_script_entry>/opt/tct-webstorage-w3c-tests/webstorage/w3c/storage_local_in_js.html?total_num=2&amp;amp;locator_key=id&amp;amp;value=1</test_script_entry>
+          <test_script_entry>/opt/tct-webstorage-w3c-tests/webstorage/w3c/missing_arguments.html?total_num=11&amp;amp;locator_key=id&amp;amp;value=11</test_script_entry>
         </description>
       </testcase>
-      <testcase component="W3C_HTML5 APIs/Storage/Web Storage" execution_type="auto" id="storage_local_in_js_2" purpose="Check if a attribute is in localStorage when the attribute added by localStorage.setItem">
+      <testcase component="W3C_HTML5 APIs/Storage/Web Storage" execution_type="auto" id="storage_builtins_entry1" purpose="Builtins in localStorage">
         <description>
-          <test_script_entry>/opt/tct-webstorage-w3c-tests/webstorage/w3c/storage_local_in_js.html?total_num=2&amp;amp;locator_key=id&amp;amp;value=2</test_script_entry>
+          <test_script_entry>/opt/tct-webstorage-w3c-tests/webstorage/w3c/storage_builtins.html?total_num=2&amp;amp;locator_key=id&amp;amp;value=1</test_script_entry>
         </description>
       </testcase>
-      <testcase component="W3C_HTML5 APIs/Storage/Web Storage" execution_type="auto" id="storage_local_index_js_1" purpose="Check if enable localStorage interface">
+      <testcase component="W3C_HTML5 APIs/Storage/Web Storage" execution_type="auto" id="storage_builtins_entry2" purpose="Builtins in sessionStorage">
         <description>
-          <test_script_entry>/opt/tct-webstorage-w3c-tests/webstorage/w3c/storage_local_index_js.html?total_num=4&amp;amp;locator_key=id&amp;amp;value=1</test_script_entry>
+          <test_script_entry>/opt/tct-webstorage-w3c-tests/webstorage/w3c/storage_builtins.html?total_num=2&amp;amp;locator_key=id&amp;amp;value=2</test_script_entry>
         </description>
       </testcase>
-      <testcase component="W3C_HTML5 APIs/Storage/Web Storage" execution_type="auto" id="storage_local_index_js_2" purpose="Check if can get localStorage attributes from numeric index">
+      <testcase component="W3C_HTML5 APIs/Storage/Web Storage" execution_type="auto" id="storage_clear_entry1" purpose="Clear in localStorage">
         <description>
-          <test_script_entry>/opt/tct-webstorage-w3c-tests/webstorage/w3c/storage_local_index_js.html?total_num=4&amp;amp;locator_key=id&amp;amp;value=2</test_script_entry>
+          <test_script_entry>/opt/tct-webstorage-w3c-tests/webstorage/w3c/storage_clear.html?total_num=2&amp;amp;locator_key=id&amp;amp;value=1</test_script_entry>
         </description>
       </testcase>
-      <testcase component="W3C_HTML5 APIs/Storage/Web Storage" execution_type="auto" id="storage_local_index_js_3" purpose="Check if can get localStorage attributes from index string">
+      <testcase component="W3C_HTML5 APIs/Storage/Web Storage" execution_type="auto" id="storage_clear_entry2" purpose="Clear in localStorage">
         <description>
-          <test_script_entry>/opt/tct-webstorage-w3c-tests/webstorage/w3c/storage_local_index_js.html?total_num=4&amp;amp;locator_key=id&amp;amp;value=3</test_script_entry>
+          <test_script_entry>/opt/tct-webstorage-w3c-tests/webstorage/w3c/storage_clear.html?total_num=2&amp;amp;locator_key=id&amp;amp;value=2</test_script_entry>
         </description>
       </testcase>
-      <testcase component="W3C_HTML5 APIs/Storage/Web Storage" execution_type="auto" id="storage_local_index_js_4" purpose="Check if can get localStorage attributes from the key">
+      <testcase component="W3C_HTML5 APIs/Storage/Web Storage" execution_type="auto" id="storage_enumerate_entry1" purpose="localStorage: enumerate a Storage object and get only the keys as a result and the built-in properties of the Storage object should be ignored">
         <description>
-          <test_script_entry>/opt/tct-webstorage-w3c-tests/webstorage/w3c/storage_local_index_js.html?total_num=4&amp;amp;locator_key=id&amp;amp;value=4</test_script_entry>
+          <test_script_entry>/opt/tct-webstorage-w3c-tests/webstorage/w3c/storage_enumerate.html?total_num=2&amp;amp;locator_key=id&amp;amp;value=1</test_script_entry>
         </description>
       </testcase>
-      <testcase component="W3C_HTML5 APIs/Storage/Web Storage" execution_type="auto" id="storage_session_in_js_1" purpose="Check if a attribute is in localStorage when the attribute added by sessionStorage index">
+      <testcase component="W3C_HTML5 APIs/Storage/Web Storage" execution_type="auto" id="storage_enumerate_entry2" purpose="sessionStorage: enumerate a Storage object and get only the keys as a result and the built-in properties of the Storage object should be ignored">
         <description>
-          <test_script_entry>/opt/tct-webstorage-w3c-tests/webstorage/w3c/storage_session_in_js.html?total_num=2&amp;amp;locator_key=id&amp;amp;value=1</test_script_entry>
+          <test_script_entry>/opt/tct-webstorage-w3c-tests/webstorage/w3c/storage_enumerate.html?total_num=2&amp;amp;locator_key=id&amp;amp;value=2</test_script_entry>
         </description>
       </testcase>
-      <testcase component="W3C_HTML5 APIs/Storage/Web Storage" execution_type="auto" id="storage_session_in_js_2" purpose="Check if a attribute is in localStorage when the attribute added by sessionStorage.setItem">
+      <testcase component="W3C_HTML5 APIs/Storage/Web Storage" execution_type="auto" id="storage_functions_not_overwritten_entry1" purpose="localStorage should be not rendered unusable by setting a key with the same name as a storage function such that the function is hidden">
         <description>
-          <test_script_entry>/opt/tct-webstorage-w3c-tests/webstorage/w3c/storage_session_in_js.html?total_num=2&amp;amp;locator_key=id&amp;amp;value=2</test_script_entry>
+          <test_script_entry>/opt/tct-webstorage-w3c-tests/webstorage/w3c/storage_functions_not_overwritten.html?total_num=2&amp;amp;locator_key=id&amp;amp;value=1</test_script_entry>
         </description>
       </testcase>
-      <testcase component="W3C_HTML5 APIs/Storage/Web Storage" execution_type="auto" id="storage_session_index_js_1" purpose="Check if enable sessionStorage interface">
+      <testcase component="W3C_HTML5 APIs/Storage/Web Storage" execution_type="auto" id="storage_functions_not_overwritten_entry2" purpose="sessionStorage should be not rendered unusable by setting a key with the same name as a storage function such that the function is hidden">
         <description>
-          <test_script_entry>/opt/tct-webstorage-w3c-tests/webstorage/w3c/storage_session_index_js.html?total_num=4&amp;amp;locator_key=id&amp;amp;value=1</test_script_entry>
+          <test_script_entry>/opt/tct-webstorage-w3c-tests/webstorage/w3c/storage_functions_not_overwritten.html?total_num=2&amp;amp;locator_key=id&amp;amp;value=2</test_script_entry>
         </description>
       </testcase>
-      <testcase component="W3C_HTML5 APIs/Storage/Web Storage" execution_type="auto" id="storage_session_index_js_2" purpose="Check if can get sessionStorage attributes from numeric index">
+      <testcase component="W3C_HTML5 APIs/Storage/Web Storage" execution_type="auto" id="storage_getitem_entry1" purpose="Get value by getIten(key) and named access in localStorage">
         <description>
-          <test_script_entry>/opt/tct-webstorage-w3c-tests/webstorage/w3c/storage_session_index_js.html?total_num=4&amp;amp;locator_key=id&amp;amp;value=2</test_script_entry>
+          <test_script_entry>/opt/tct-webstorage-w3c-tests/webstorage/w3c/storage_getitem.html?total_num=8&amp;amp;locator_key=id&amp;amp;value=1</test_script_entry>
         </description>
       </testcase>
-      <testcase component="W3C_HTML5 APIs/Storage/Web Storage" execution_type="auto" id="storage_session_index_js_3" purpose="Check if can get sessionStorage attributes from index string">
+      <testcase component="W3C_HTML5 APIs/Storage/Web Storage" execution_type="auto" id="storage_getitem_entry2" purpose="All items should be added to localStorage">
         <description>
-          <test_script_entry>/opt/tct-webstorage-w3c-tests/webstorage/w3c/storage_session_index_js.html?total_num=4&amp;amp;locator_key=id&amp;amp;value=3</test_script_entry>
+          <test_script_entry>/opt/tct-webstorage-w3c-tests/webstorage/w3c/storage_getitem.html?total_num=8&amp;amp;locator_key=id&amp;amp;value=2</test_script_entry>
         </description>
       </testcase>
-      <testcase component="W3C_HTML5 APIs/Storage/Web Storage" execution_type="auto" id="storage_session_index_js_4" purpose="Check if can get sessionStorage attributes from the key">
+      <testcase component="W3C_HTML5 APIs/Storage/Web Storage" execution_type="auto" id="storage_getitem_entry3" purpose="Named access to localStorage should be correct">
         <description>
-          <test_script_entry>/opt/tct-webstorage-w3c-tests/webstorage/w3c/storage_session_index_js.html?total_num=4&amp;amp;locator_key=id&amp;amp;value=4</test_script_entry>
+          <test_script_entry>/opt/tct-webstorage-w3c-tests/webstorage/w3c/storage_getitem.html?total_num=8&amp;amp;locator_key=id&amp;amp;value=3</test_script_entry>
         </description>
       </testcase>
-      <testcase component="W3C_HTML5 APIs/Storage/Web Storage" execution_type="auto" id="StorageEvent_constructor_base" purpose="Check if StorageEvent's constructor has two valid arguments that expecting StorageEvent object is to be created">
+      <testcase component="W3C_HTML5 APIs/Storage/Web Storage" execution_type="auto" id="storage_getitem_entry4" purpose="localStorage.getItem should be correct">
         <description>
-          <test_script_entry>/opt/tct-webstorage-w3c-tests/webstorage/StorageEvent_constructor_base.html</test_script_entry>
+          <test_script_entry>/opt/tct-webstorage-w3c-tests/webstorage/w3c/storage_getitem.html?total_num=8&amp;amp;locator_key=id&amp;amp;value=4</test_script_entry>
         </description>
       </testcase>
-      <testcase component="W3C_HTML5 APIs/Storage/Web Storage" execution_type="auto" id="StorageEvent_constructor_key_undefined" purpose="Check if the value of StorageEvent.key is 'undefined' when set it undefined">
+      <testcase component="W3C_HTML5 APIs/Storage/Web Storage" execution_type="auto" id="storage_getitem_entry5" purpose="Get value by getIten(key) and named access in sessionStorage">
         <description>
-          <test_script_entry>/opt/tct-webstorage-w3c-tests/webstorage/StorageEvent_constructor_key_undefined.html</test_script_entry>
+          <test_script_entry>/opt/tct-webstorage-w3c-tests/webstorage/w3c/storage_getitem.html?total_num=8&amp;amp;locator_key=id&amp;amp;value=5</test_script_entry>
         </description>
       </testcase>
-      <testcase component="W3C_HTML5 APIs/Storage/Web Storage" execution_type="auto" id="StorageEvent_constructor_newValue_undefined" purpose="Check if the value of StorageEvent.newValue is 'undefined' when set it undefined">
+      <testcase component="W3C_HTML5 APIs/Storage/Web Storage" execution_type="auto" id="storage_getitem_entry6" purpose="All items should be added to sessionStorage">
         <description>
-          <test_script_entry>/opt/tct-webstorage-w3c-tests/webstorage/StorageEvent_constructor_newValue_undefined.html</test_script_entry>
+          <test_script_entry>/opt/tct-webstorage-w3c-tests/webstorage/w3c/storage_getitem.html?total_num=8&amp;amp;locator_key=id&amp;amp;value=6</test_script_entry>
         </description>
       </testcase>
-      <testcase component="W3C_HTML5 APIs/Storage/Web Storage" execution_type="auto" id="StorageEvent_constructor_no_key" purpose="Check if the value of StorageEvent.key is null when StorageEvent's constructor no key">
+      <testcase component="W3C_HTML5 APIs/Storage/Web Storage" execution_type="auto" id="storage_getitem_entry7" purpose="Named access to sessionStorage should be correct">
         <description>
-          <test_script_entry>/opt/tct-webstorage-w3c-tests/webstorage/StorageEvent_constructor_no_key.html</test_script_entry>
+          <test_script_entry>/opt/tct-webstorage-w3c-tests/webstorage/w3c/storage_getitem.html?total_num=8&amp;amp;locator_key=id&amp;amp;value=7</test_script_entry>
         </description>
       </testcase>
-      <testcase component="W3C_HTML5 APIs/Storage/Web Storage" execution_type="auto" id="StorageEvent_constructor_no_newValue" purpose="Check if the value of StorageEvent.newValue is null when StorageEvent's constructor no newValue">
+      <testcase component="W3C_HTML5 APIs/Storage/Web Storage" execution_type="auto" id="storage_getitem_entry8" purpose="sessionStorage.getItem should be correct">
         <description>
-          <test_script_entry>/opt/tct-webstorage-w3c-tests/webstorage/StorageEvent_constructor_no_newValue.html</test_script_entry>
+          <test_script_entry>/opt/tct-webstorage-w3c-tests/webstorage/w3c/storage_getitem.html?total_num=8&amp;amp;locator_key=id&amp;amp;value=8</test_script_entry>
         </description>
       </testcase>
-      <testcase component="W3C_HTML5 APIs/Storage/Web Storage" execution_type="auto" id="StorageEvent_constructor_no_oldValue" purpose="Check if the value of StorageEvent.oldValue is null when StorageEvent's contructor no oldValue">
+      <testcase component="W3C_HTML5 APIs/Storage/Web Storage" execution_type="auto" id="storage_in_entry1" purpose="The in operator in localStorage: property access">
         <description>
-          <test_script_entry>/opt/tct-webstorage-w3c-tests/webstorage/StorageEvent_constructor_no_oldValue.html</test_script_entry>
+          <test_script_entry>/opt/tct-webstorage-w3c-tests/webstorage/w3c/storage_in.html?total_num=4&amp;amp;locator_key=id&amp;amp;value=1</test_script_entry>
         </description>
       </testcase>
-      <testcase component="W3C_HTML5 APIs/Storage/Web Storage" execution_type="auto" id="StorageEvent_constructor_no_url" purpose="Check if the value of StorageEvent.url is empty string when StorageEvent's constructor no url">
+      <testcase component="W3C_HTML5 APIs/Storage/Web Storage" execution_type="auto" id="storage_in_entry2" purpose="The in operator in localStorage: method access">
         <description>
-          <test_script_entry>/opt/tct-webstorage-w3c-tests/webstorage/StorageEvent_constructor_no_url.html</test_script_entry>
+          <test_script_entry>/opt/tct-webstorage-w3c-tests/webstorage/w3c/storage_in.html?total_num=4&amp;amp;locator_key=id&amp;amp;value=2</test_script_entry>
         </description>
       </testcase>
-      <testcase component="W3C_HTML5 APIs/Storage/Web Storage" execution_type="auto" id="StorageEvent_constructor_oldValue_undefined" purpose="Check if the value of StorageEvent.oldValue is 'undefined' when set it undefined">
+      <testcase component="W3C_HTML5 APIs/Storage/Web Storage" execution_type="auto" id="storage_in_entry3" purpose="The in operator in sessionStorage: property access ">
         <description>
-          <test_script_entry>/opt/tct-webstorage-w3c-tests/webstorage/StorageEvent_constructor_oldValue_undefined.html</test_script_entry>
+          <test_script_entry>/opt/tct-webstorage-w3c-tests/webstorage/w3c/storage_in.html?total_num=4&amp;amp;locator_key=id&amp;amp;value=3</test_script_entry>
         </description>
       </testcase>
-      <testcase component="W3C_HTML5 APIs/Storage/Web Storage" execution_type="auto" id="StorageEvent_constructor_url_undefined" purpose="Check if the value of StorageEvent.url is 'undefined' when set it undefined">
+      <testcase component="W3C_HTML5 APIs/Storage/Web Storage" execution_type="auto" id="storage_in_entry4" purpose="The in operator in sessionStorage: method access ">
         <description>
-          <test_script_entry>/opt/tct-webstorage-w3c-tests/webstorage/StorageEvent_constructor_url_undefined.html</test_script_entry>
+          <test_script_entry>/opt/tct-webstorage-w3c-tests/webstorage/w3c/storage_in.html?total_num=4&amp;amp;locator_key=id&amp;amp;value=4</test_script_entry>
         </description>
       </testcase>
-      <testcase component="W3C_HTML5 APIs/Storage/Web Storage" execution_type="auto" id="StorageEvent_newValue_initial_value" purpose="Check if the initial value of StorageEvent.newValue is null">
+      <testcase component="W3C_HTML5 APIs/Storage/Web Storage" execution_type="auto" id="storage_indexing_entry1" purpose="Indexed getter on localStorage">
         <description>
-          <test_script_entry>/opt/tct-webstorage-w3c-tests/webstorage/StorageEvent_newValue_initial_value.html</test_script_entry>
+          <test_script_entry>/opt/tct-webstorage-w3c-tests/webstorage/w3c/storage_indexing.html?total_num=8&amp;amp;locator_key=id&amp;amp;value=1</test_script_entry>
         </description>
       </testcase>
-      <testcase component="W3C_HTML5 APIs/Storage/Web Storage" execution_type="auto" id="StorageEvent_oldValue_initial_value" purpose="Check if the initial value of StorageEvent.oldValue is null">
+      <testcase component="W3C_HTML5 APIs/Storage/Web Storage" execution_type="auto" id="storage_indexing_entry2" purpose="Getting number properties on localStorage">
         <description>
-          <test_script_entry>/opt/tct-webstorage-w3c-tests/webstorage/StorageEvent_oldValue_initial_value.html</test_script_entry>
+          <test_script_entry>/opt/tct-webstorage-w3c-tests/webstorage/w3c/storage_indexing.html?total_num=8&amp;amp;locator_key=id&amp;amp;value=2</test_script_entry>
         </description>
       </testcase>
-      <testcase component="W3C_HTML5 APIs/Storage/Web Storage" execution_type="auto" id="StorageEvent_storageArea_initial_value" purpose="Check if the initial value of StorageEvent.storageArea is null">
+      <testcase component="W3C_HTML5 APIs/Storage/Web Storage" execution_type="auto" id="storage_indexing_entry3" purpose="Getting number-valued string properties on localStorage">
         <description>
-          <test_script_entry>/opt/tct-webstorage-w3c-tests/webstorage/StorageEvent_storageArea_initial_value.html</test_script_entry>
+          <test_script_entry>/opt/tct-webstorage-w3c-tests/webstorage/w3c/storage_indexing.html?total_num=8&amp;amp;locator_key=id&amp;amp;value=3</test_script_entry>
         </description>
       </testcase>
-      <testcase component="W3C_HTML5 APIs/Storage/Web Storage" execution_type="auto" id="StorageEvent_url_initial_value" purpose="Check if the initial value of StorageEvent.url is empty string">
+      <testcase component="W3C_HTML5 APIs/Storage/Web Storage" execution_type="auto" id="storage_indexing_entry4" purpose="Getting existing number-valued properties on localStorage">
         <description>
-          <test_script_entry>/opt/tct-webstorage-w3c-tests/webstorage/StorageEvent_url_initial_value.html</test_script_entry>
+          <test_script_entry>/opt/tct-webstorage-w3c-tests/webstorage/w3c/storage_indexing.html?total_num=8&amp;amp;locator_key=id&amp;amp;value=4</test_script_entry>
         </description>
       </testcase>
-      <testcase component="W3C_HTML5 APIs/Storage/Web Storage" execution_type="auto" id="Storage_clear_empty_storage" purpose="Check if clear empty storage">
+      <testcase component="W3C_HTML5 APIs/Storage/Web Storage" execution_type="auto" id="storage_indexing_entry5" purpose="Indexed getter on sessionStorage">
         <description>
-          <test_script_entry>/opt/tct-webstorage-w3c-tests/webstorage/Storage_clear_empty_storage.html</test_script_entry>
+          <test_script_entry>/opt/tct-webstorage-w3c-tests/webstorage/w3c/storage_indexing.html?total_num=8&amp;amp;locator_key=id&amp;amp;value=5</test_script_entry>
         </description>
       </testcase>
-      <testcase component="W3C_HTML5 APIs/Storage/Web Storage" execution_type="auto" id="Storage_keys_case_sensitive" purpose="Check if storage key is case sensitive or not">
+      <testcase component="W3C_HTML5 APIs/Storage/Web Storage" execution_type="auto" id="storage_indexing_entry6" purpose="Getting number properties on sessionStorage">
         <description>
-          <test_script_entry>/opt/tct-webstorage-w3c-tests/webstorage/Storage_keys_case_sensitive.html</test_script_entry>
+          <test_script_entry>/opt/tct-webstorage-w3c-tests/webstorage/w3c/storage_indexing.html?total_num=8&amp;amp;locator_key=id&amp;amp;value=6</test_script_entry>
         </description>
       </testcase>
-      <testcase component="W3C_HTML5 APIs/Storage/Web Storage" execution_type="auto" id="Storage_key_override_length" purpose="Check if set key name as 'length', to override storage attribute length">
+      <testcase component="W3C_HTML5 APIs/Storage/Web Storage" execution_type="auto" id="storage_indexing_entry7" purpose="Getting number-valued string properties on sessionStorage">
         <description>
-          <test_script_entry>/opt/tct-webstorage-w3c-tests/webstorage/Storage_key_override_length.html</test_script_entry>
+          <test_script_entry>/opt/tct-webstorage-w3c-tests/webstorage/w3c/storage_indexing.html?total_num=8&amp;amp;locator_key=id&amp;amp;value=7</test_script_entry>
         </description>
       </testcase>
-      <testcase component="W3C_HTML5 APIs/Storage/Web Storage" execution_type="auto" id="Storage_removeItem_change_order" purpose="Check if Storage.removeItem can change the order of keys">
+      <testcase component="W3C_HTML5 APIs/Storage/Web Storage" execution_type="auto" id="storage_indexing_entry8" purpose="Getting existing number-valued properties on sessionStorage">
         <description>
-          <test_script_entry>/opt/tct-webstorage-w3c-tests/webstorage/Storage_removeItem_change_order.html</test_script_entry>
+          <test_script_entry>/opt/tct-webstorage-w3c-tests/webstorage/w3c/storage_indexing.html?total_num=8&amp;amp;locator_key=id&amp;amp;value=8</test_script_entry>
         </description>
       </testcase>
-      <testcase component="W3C_HTML5 APIs/Storage/Web Storage" execution_type="auto" id="window_localStorage_enumerate_storage" purpose="Check if that can enumerate a Storage object with the way localStorage.key and get the values">
+      <testcase component="W3C_HTML5 APIs/Storage/Web Storage" execution_type="auto" id="storage_key_entry1" purpose="localStorage.key">
         <description>
-          <test_script_entry>/opt/tct-webstorage-w3c-tests/webstorage/window_localStorage_enumerate_storage.html</test_script_entry>
+          <test_script_entry>/opt/tct-webstorage-w3c-tests/webstorage/w3c/storage_key.html?total_num=22&amp;amp;locator_key=id&amp;amp;value=1</test_script_entry>
         </description>
       </testcase>
-      <testcase component="W3C_HTML5 APIs/Storage/Web Storage" execution_type="auto" id="window_localStorage_iframe_item" purpose="Check if localStorage access to the API for pages from other domains running in iframes">
+      <testcase component="W3C_HTML5 APIs/Storage/Web Storage" execution_type="auto" id="storage_key_entry2" purpose="localStorage.key(0) should return the right thing">
         <description>
-          <test_script_entry>/opt/tct-webstorage-w3c-tests/webstorage/window_localStorage_iframe_item.html</test_script_entry>
+          <test_script_entry>/opt/tct-webstorage-w3c-tests/webstorage/w3c/storage_key.html?total_num=22&amp;amp;locator_key=id&amp;amp;value=2</test_script_entry>
         </description>
       </testcase>
-      <testcase component="W3C_HTML5 APIs/Storage/Web Storage" execution_type="auto" id="window_localStorage_store_nonstrings" purpose="Check if localStorage can only stores strings">
+      <testcase component="W3C_HTML5 APIs/Storage/Web Storage" execution_type="auto" id="storage_key_entry3" purpose="localStorage.key(4294967296) should return the right thing">
         <description>
-          <test_script_entry>/opt/tct-webstorage-w3c-tests/webstorage/window_localStorage_store_nonstrings.html</test_script_entry>
+          <test_script_entry>/opt/tct-webstorage-w3c-tests/webstorage/w3c/storage_key.html?total_num=22&amp;amp;locator_key=id&amp;amp;value=3</test_script_entry>
         </description>
       </testcase>
-      <testcase component="W3C_HTML5 APIs/Storage/Web Storage" execution_type="auto" id="window_sessionStorage_enumerate_storage" purpose="Check if that can enumerate a Storage object with the way sessionStorage.key and get the values">
+      <testcase component="W3C_HTML5 APIs/Storage/Web Storage" execution_type="auto" id="storage_key_entry4" purpose="localStorage.key(1) should return the right thing">
         <description>
-          <test_script_entry>/opt/tct-webstorage-w3c-tests/webstorage/window_sessionStorage_enumerate_storage.html</test_script_entry>
+          <test_script_entry>/opt/tct-webstorage-w3c-tests/webstorage/w3c/storage_key.html?total_num=22&amp;amp;locator_key=id&amp;amp;value=4</test_script_entry>
         </description>
       </testcase>
-      <testcase component="W3C_HTML5 APIs/Storage/Web Storage" execution_type="auto" id="window_sessionStorage_iframe_item" purpose="Check if sessionStorage access to the API for pages from other domains running in iframes">
+      <testcase component="W3C_HTML5 APIs/Storage/Web Storage" execution_type="auto" id="storage_key_entry5" purpose="localStorage.key(4294967297) should return the right thing">
         <description>
-          <test_script_entry>/opt/tct-webstorage-w3c-tests/webstorage/window_sessionStorage_iframe_item.html</test_script_entry>
+          <test_script_entry>/opt/tct-webstorage-w3c-tests/webstorage/w3c/storage_key.html?total_num=22&amp;amp;locator_key=id&amp;amp;value=5</test_script_entry>
         </description>
       </testcase>
-      <testcase component="W3C_HTML5 APIs/Storage/Web Storage" execution_type="auto" id="window_sessionStorage_store_nonstrings" purpose="Check if sessionStorage can only stores strings">
+      <testcase component="W3C_HTML5 APIs/Storage/Web Storage" execution_type="auto" id="storage_key_entry6" purpose="localStorage.key(2) should return the right thing">
         <description>
-          <test_script_entry>/opt/tct-webstorage-w3c-tests/webstorage/window_sessionStorage_store_nonstrings.html</test_script_entry>
+          <test_script_entry>/opt/tct-webstorage-w3c-tests/webstorage/w3c/storage_key.html?total_num=22&amp;amp;locator_key=id&amp;amp;value=6</test_script_entry>
         </description>
       </testcase>
-      <testcase component="W3C_HTML5 APIs/Storage/Web Storage" execution_type="auto" id="event_constructor" purpose="Check if the argument eventInitDict of the StorageEvent's constructor that expecting StorageEvent object is to be created">
+      <testcase component="W3C_HTML5 APIs/Storage/Web Storage" execution_type="auto" id="storage_key_entry7" purpose="localStorage.key(4294967298) should return the right thing">
         <description>
-          <test_script_entry>/opt/tct-webstorage-w3c-tests/webstorage/w3c/event_constructor.html</test_script_entry>
+          <test_script_entry>/opt/tct-webstorage-w3c-tests/webstorage/w3c/storage_key.html?total_num=22&amp;amp;locator_key=id&amp;amp;value=7</test_script_entry>
         </description>
       </testcase>
-      <testcase component="W3C_HTML5 APIs/Storage/Web Storage" execution_type="auto" id="event_constructor_js" purpose="Check if the value of the argument eventInitDict of the StorageEvent's constructor is 'null' when set it null">
+      <testcase component="W3C_HTML5 APIs/Storage/Web Storage" execution_type="auto" id="storage_key_entry8" purpose="localStorage.key(3) should return the right thing">
         <description>
-          <test_script_entry>/opt/tct-webstorage-w3c-tests/webstorage/w3c/event_constructor_js.html</test_script_entry>
+          <test_script_entry>/opt/tct-webstorage-w3c-tests/webstorage/w3c/storage_key.html?total_num=22&amp;amp;locator_key=id&amp;amp;value=8</test_script_entry>
         </description>
       </testcase>
-      <testcase component="W3C_HTML5 APIs/Storage/Web Storage" execution_type="auto" id="event_local_key" purpose="Check if key add of local event can be listener">
+      <testcase component="W3C_HTML5 APIs/Storage/Web Storage" execution_type="auto" id="storage_key_entry9" purpose="localStorage.key(4294967299) should return the right thing">
         <description>
-          <test_script_entry>/opt/tct-webstorage-w3c-tests/webstorage/w3c/event_local_key.html</test_script_entry>
+          <test_script_entry>/opt/tct-webstorage-w3c-tests/webstorage/w3c/storage_key.html?total_num=22&amp;amp;locator_key=id&amp;amp;value=9</test_script_entry>
         </description>
       </testcase>
-      <testcase component="W3C_HTML5 APIs/Storage/Web Storage" execution_type="auto" id="event_local_newvalue" purpose="Check if newValue change of local event can be listener">
+      <testcase component="W3C_HTML5 APIs/Storage/Web Storage" execution_type="auto" id="storage_key_entry10" purpose="localStorage.key() should return null for out-of-range arguments">
         <description>
-          <test_script_entry>/opt/tct-webstorage-w3c-tests/webstorage/w3c/event_local_newvalue.html</test_script_entry>
+          <test_script_entry>/opt/tct-webstorage-w3c-tests/webstorage/w3c/storage_key.html?total_num=22&amp;amp;locator_key=id&amp;amp;value=10</test_script_entry>
         </description>
       </testcase>
-      <testcase component="W3C_HTML5 APIs/Storage/Web Storage" execution_type="auto" id="event_local_oldvalue" purpose="Check if oldValue change of local event can be listener">
+      <testcase component="W3C_HTML5 APIs/Storage/Web Storage" execution_type="auto" id="storage_key_entry11" purpose="localStorage.key with value changes">
         <description>
-          <test_script_entry>/opt/tct-webstorage-w3c-tests/webstorage/w3c/event_local_oldvalue.html</test_script_entry>
+          <test_script_entry>/opt/tct-webstorage-w3c-tests/webstorage/w3c/storage_key.html?total_num=22&amp;amp;locator_key=id&amp;amp;value=11</test_script_entry>
         </description>
       </testcase>
-      <testcase component="W3C_HTML5 APIs/Storage/Web Storage" execution_type="auto" id="event_local_storagearea" purpose="Check if storageArea change of local event can be listener">
+      <testcase component="W3C_HTML5 APIs/Storage/Web Storage" execution_type="auto" id="storage_key_entry12" purpose="sessionStorage.key">
         <description>
-          <test_script_entry>/opt/tct-webstorage-w3c-tests/webstorage/w3c/event_local_storagearea.html</test_script_entry>
+          <test_script_entry>/opt/tct-webstorage-w3c-tests/webstorage/w3c/storage_key.html?total_num=22&amp;amp;locator_key=id&amp;amp;value=12</test_script_entry>
         </description>
       </testcase>
-      <testcase component="W3C_HTML5 APIs/Storage/Web Storage" execution_type="auto" id="event_local_storageeventinit" purpose="Check if the initial of local StorageEvent.storageArea to be initial">
+      <testcase component="W3C_HTML5 APIs/Storage/Web Storage" execution_type="auto" id="storage_key_entry13" purpose="sessionStorage.key(0) should return the right thing">
         <description>
-          <test_script_entry>/opt/tct-webstorage-w3c-tests/webstorage/w3c/event_local_storageeventinit.html</test_script_entry>
+          <test_script_entry>/opt/tct-webstorage-w3c-tests/webstorage/w3c/storage_key.html?total_num=22&amp;amp;locator_key=id&amp;amp;value=13</test_script_entry>
         </description>
       </testcase>
-      <testcase component="W3C_HTML5 APIs/Storage/Web Storage" execution_type="auto" id="event_local_url" purpose="Check if url change of local event can be listener">
+      <testcase component="W3C_HTML5 APIs/Storage/Web Storage" execution_type="auto" id="storage_key_entry14" purpose="sessionStorage.key(4294967296) should return the right thing">
         <description>
-          <test_script_entry>/opt/tct-webstorage-w3c-tests/webstorage/w3c/event_local_url.html</test_script_entry>
+          <test_script_entry>/opt/tct-webstorage-w3c-tests/webstorage/w3c/storage_key.html?total_num=22&amp;amp;locator_key=id&amp;amp;value=14</test_script_entry>
         </description>
       </testcase>
-      <testcase component="W3C_HTML5 APIs/Storage/Web Storage" execution_type="auto" id="event_session_key" purpose="Check if key add of session event can be listener">
+      <testcase component="W3C_HTML5 APIs/Storage/Web Storage" execution_type="auto" id="storage_key_entry15" purpose="sessionStorage.key(1) should return the right thing">
         <description>
-          <test_script_entry>/opt/tct-webstorage-w3c-tests/webstorage/w3c/event_session_key.html</test_script_entry>
+          <test_script_entry>/opt/tct-webstorage-w3c-tests/webstorage/w3c/storage_key.html?total_num=22&amp;amp;locator_key=id&amp;amp;value=15</test_script_entry>
         </description>
       </testcase>
-      <testcase component="W3C_HTML5 APIs/Storage/Web Storage" execution_type="auto" id="event_session_newvalue" purpose="Check if newvalue change of session event can be listener">
+      <testcase component="W3C_HTML5 APIs/Storage/Web Storage" execution_type="auto" id="storage_key_entry16" purpose="sessionStorage.key(4294967297) should return the right thing">
         <description>
-          <test_script_entry>/opt/tct-webstorage-w3c-tests/webstorage/w3c/event_session_newvalue.html</test_script_entry>
+          <test_script_entry>/opt/tct-webstorage-w3c-tests/webstorage/w3c/storage_key.html?total_num=22&amp;amp;locator_key=id&amp;amp;value=16</test_script_entry>
         </description>
       </testcase>
-      <testcase component="W3C_HTML5 APIs/Storage/Web Storage" execution_type="auto" id="event_session_oldvalue" purpose="Check if oldvalue change of session event can be listener">
+      <testcase component="W3C_HTML5 APIs/Storage/Web Storage" execution_type="auto" id="storage_key_entry17" purpose="sessionStorage.key(2) should return the right thing">
         <description>
-          <test_script_entry>/opt/tct-webstorage-w3c-tests/webstorage/w3c/event_session_oldvalue.html</test_script_entry>
+          <test_script_entry>/opt/tct-webstorage-w3c-tests/webstorage/w3c/storage_key.html?total_num=22&amp;amp;locator_key=id&amp;amp;value=17</test_script_entry>
         </description>
       </testcase>
-      <testcase component="W3C_HTML5 APIs/Storage/Web Storage" execution_type="auto" id="event_session_storagearea" purpose="Check if storageArea change of session event can be listener">
+      <testcase component="W3C_HTML5 APIs/Storage/Web Storage" execution_type="auto" id="storage_key_entry18" purpose="sessionStorage.key(4294967298) should return the right thing">
         <description>
-          <test_script_entry>/opt/tct-webstorage-w3c-tests/webstorage/w3c/event_session_storagearea.html</test_script_entry>
+          <test_script_entry>/opt/tct-webstorage-w3c-tests/webstorage/w3c/storage_key.html?total_num=22&amp;amp;locator_key=id&amp;amp;value=18</test_script_entry>
         </description>
       </testcase>
-      <testcase component="W3C_HTML5 APIs/Storage/Web Storage" execution_type="auto" id="event_session_storageeventinit" purpose="Check if the initial of session storageeventinit test to be inital">
+      <testcase component="W3C_HTML5 APIs/Storage/Web Storage" execution_type="auto" id="storage_key_entry19" purpose="sessionStorage.key(3) should return the right thing">
         <description>
-          <test_script_entry>/opt/tct-webstorage-w3c-tests/webstorage/w3c/event_session_storageeventinit.html</test_script_entry>
+          <test_script_entry>/opt/tct-webstorage-w3c-tests/webstorage/w3c/storage_key.html?total_num=22&amp;amp;locator_key=id&amp;amp;value=19</test_script_entry>
         </description>
       </testcase>
-      <testcase component="W3C_HTML5 APIs/Storage/Web Storage" execution_type="auto" id="event_session_url" purpose="Check if url change of session event can be listener">
+      <testcase component="W3C_HTML5 APIs/Storage/Web Storage" execution_type="auto" id="storage_key_entry20" purpose="sessionStorage.key(4294967299) should return the right thing">
         <description>
-          <test_script_entry>/opt/tct-webstorage-w3c-tests/webstorage/w3c/event_session_url.html</test_script_entry>
+          <test_script_entry>/opt/tct-webstorage-w3c-tests/webstorage/w3c/storage_key.html?total_num=22&amp;amp;locator_key=id&amp;amp;value=20</test_script_entry>
         </description>
       </testcase>
-      <testcase component="W3C_HTML5 APIs/Storage/Web Storage" execution_type="auto" id="storage_local_builtins" purpose="Check if the builtins of localStorage">
+      <testcase component="W3C_HTML5 APIs/Storage/Web Storage" execution_type="auto" id="storage_key_entry21" purpose="sessionStorage.key() should return null for out-of-range arguments">
         <description>
-          <test_script_entry>/opt/tct-webstorage-w3c-tests/webstorage/w3c/storage_local_builtins.html</test_script_entry>
+          <test_script_entry>/opt/tct-webstorage-w3c-tests/webstorage/w3c/storage_key.html?total_num=22&amp;amp;locator_key=id&amp;amp;value=21</test_script_entry>
         </description>
       </testcase>
-      <testcase component="W3C_HTML5 APIs/Storage/Web Storage" execution_type="auto" id="storage_local_clear" purpose="Check if localStorage.clear removes all the key/value pairs associated with the object">
+      <testcase component="W3C_HTML5 APIs/Storage/Web Storage" execution_type="auto" id="storage_key_entry22" purpose="sessionStorage.key with value changes">
         <description>
-          <test_script_entry>/opt/tct-webstorage-w3c-tests/webstorage/w3c/storage_local_clear.html</test_script_entry>
+          <test_script_entry>/opt/tct-webstorage-w3c-tests/webstorage/w3c/storage_key.html?total_num=22&amp;amp;locator_key=id&amp;amp;value=22</test_script_entry>
         </description>
       </testcase>
-      <testcase component="W3C_HTML5 APIs/Storage/Web Storage" execution_type="auto" id="storage_local_getitem" purpose="Check if localStorage.getItem returns the current value associated with the given key">
+      <testcase component="W3C_HTML5 APIs/Storage/Web Storage" execution_type="auto" id="storage_key_empty_string_entry1" purpose="localStorage.key with empty string">
         <description>
-          <test_script_entry>/opt/tct-webstorage-w3c-tests/webstorage/w3c/storage_local_getitem.html</test_script_entry>
+          <test_script_entry>/opt/tct-webstorage-w3c-tests/webstorage/w3c/storage_key_empty_string.html?total_num=2&amp;amp;locator_key=id&amp;amp;value=1</test_script_entry>
         </description>
       </testcase>
-      <testcase component="W3C_HTML5 APIs/Storage/Web Storage" execution_type="auto" id="storage_local_key" purpose="Check if localStorage.key(n) should return the right thing">
+      <testcase component="W3C_HTML5 APIs/Storage/Web Storage" execution_type="auto" id="storage_key_empty_string_entry2" purpose="sessionStorage.key with empty string">
         <description>
-          <test_script_entry>/opt/tct-webstorage-w3c-tests/webstorage/w3c/storage_local_key.html</test_script_entry>
+          <test_script_entry>/opt/tct-webstorage-w3c-tests/webstorage/w3c/storage_key_empty_string.html?total_num=2&amp;amp;locator_key=id&amp;amp;value=2</test_script_entry>
         </description>
       </testcase>
-      <testcase component="W3C_HTML5 APIs/Storage/Web Storage" execution_type="auto" id="storage_local_length" purpose="Check if localStorage.length attribute can returns the number of key/value pairs associated with the object">
+      <testcase component="W3C_HTML5 APIs/Storage/Web Storage" execution_type="auto" id="storage_length_entry1" purpose="localStorage.length (method access)">
         <description>
-          <test_script_entry>/opt/tct-webstorage-w3c-tests/webstorage/w3c/storage_local_length.html</test_script_entry>
+          <test_script_entry>/opt/tct-webstorage-w3c-tests/webstorage/w3c/storage_length.html?total_num=4&amp;amp;locator_key=id&amp;amp;value=1</test_script_entry>
         </description>
       </testcase>
-      <testcase component="W3C_HTML5 APIs/Storage/Web Storage" execution_type="auto" id="storage_local_removeitem" purpose="Check if localStorage.removeItem can removes the key/value pair associated with the object">
+      <testcase component="W3C_HTML5 APIs/Storage/Web Storage" execution_type="auto" id="storage_length_entry2" purpose=" localStorage.length (proprty access)">
         <description>
-          <test_script_entry>/opt/tct-webstorage-w3c-tests/webstorage/w3c/storage_local_removeitem.html</test_script_entry>
+          <test_script_entry>/opt/tct-webstorage-w3c-tests/webstorage/w3c/storage_length.html?total_num=4&amp;amp;locator_key=id&amp;amp;value=2</test_script_entry>
         </description>
       </testcase>
-      <testcase component="W3C_HTML5 APIs/Storage/Web Storage" execution_type="auto" id="storage_local_setitem" purpose="Check if localStorage.setItem can add a key/value pair">
+      <testcase component="W3C_HTML5 APIs/Storage/Web Storage" execution_type="auto" id="storage_length_entry3" purpose="sessionStorage.length (method access)">
         <description>
-          <test_script_entry>/opt/tct-webstorage-w3c-tests/webstorage/w3c/storage_local_setitem.html</test_script_entry>
+          <test_script_entry>/opt/tct-webstorage-w3c-tests/webstorage/w3c/storage_length.html?total_num=4&amp;amp;locator_key=id&amp;amp;value=3</test_script_entry>
         </description>
       </testcase>
-      <testcase component="W3C_HTML5 APIs/Storage/Web Storage" execution_type="auto" id="storage_local_setitem_quotaexceedederr" purpose="Check if localStorage.setItem failed can throw an QuotaExceededError exception">
+      <testcase component="W3C_HTML5 APIs/Storage/Web Storage" execution_type="auto" id="storage_length_entry4" purpose="sessionStorage.length (proprty access)">
         <description>
-          <test_script_entry timeout="600">/opt/tct-webstorage-w3c-tests/webstorage/w3c/storage_local_setitem_quotaexceedederr.html</test_script_entry>
+          <test_script_entry>/opt/tct-webstorage-w3c-tests/webstorage/w3c/storage_length.html?total_num=4&amp;amp;locator_key=id&amp;amp;value=4</test_script_entry>
         </description>
       </testcase>
-      <testcase component="W3C_HTML5 APIs/Storage/Web Storage" execution_type="auto" id="storage_session_builtins" purpose="Check if the builtins of sessionStorage">
+      <testcase component="W3C_HTML5 APIs/Storage/Web Storage" execution_type="auto" id="storage_local_setitem_quotaexceedederr" purpose="Throws QuotaExceededError when the quota has been exceeded for localStorage">
         <description>
-          <test_script_entry>/opt/tct-webstorage-w3c-tests/webstorage/w3c/storage_session_builtins.html</test_script_entry>
+          <test_script_entry>/opt/tct-webstorage-w3c-tests/webstorage/w3c/storage_local_setitem_quotaexceedederr.html</test_script_entry>
         </description>
       </testcase>
-      <testcase component="W3C_HTML5 APIs/Storage/Web Storage" execution_type="auto" id="storage_session_clear" purpose="Check if sessionStorage.clear can removes all the key/value pairs associated with the object">
+      <testcase component="W3C_HTML5 APIs/Storage/Web Storage" execution_type="auto" id="storage_removeitem_entry1" purpose="localStorage.removeItem()">
         <description>
-          <test_script_entry>/opt/tct-webstorage-w3c-tests/webstorage/w3c/storage_session_clear.html</test_script_entry>
+          <test_script_entry>/opt/tct-webstorage-w3c-tests/webstorage/w3c/storage_removeitem.html?total_num=8&amp;amp;locator_key=id&amp;amp;value=1</test_script_entry>
         </description>
       </testcase>
-      <testcase component="W3C_HTML5 APIs/Storage/Web Storage" execution_type="auto" id="storage_session_getitem" purpose="Check if sessionStorage.getItem can returns the current value associated with the given key">
+      <testcase component="W3C_HTML5 APIs/Storage/Web Storage" execution_type="auto" id="storage_removeitem_entry2" purpose="delete localStorage[]">
         <description>
-          <test_script_entry>/opt/tct-webstorage-w3c-tests/webstorage/w3c/storage_session_getitem.html</test_script_entry>
+          <test_script_entry>/opt/tct-webstorage-w3c-tests/webstorage/w3c/storage_removeitem.html?total_num=8&amp;amp;locator_key=id&amp;amp;value=2</test_script_entry>
         </description>
       </testcase>
-      <testcase component="W3C_HTML5 APIs/Storage/Web Storage" execution_type="auto" id="storage_session_key" purpose="Check if sessionStorage.key(n) can returns the name of the nth key in the list">
+      <testcase component="W3C_HTML5 APIs/Storage/Web Storage" execution_type="auto" id="storage_removeitem_entry3" purpose="delete localStorage[]">
         <description>
-          <test_script_entry>/opt/tct-webstorage-w3c-tests/webstorage/w3c/storage_session_key.html</test_script_entry>
+          <test_script_entry>/opt/tct-webstorage-w3c-tests/webstorage/w3c/storage_removeitem.html?total_num=8&amp;amp;locator_key=id&amp;amp;value=3</test_script_entry>
         </description>
       </testcase>
-      <testcase component="W3C_HTML5 APIs/Storage/Web Storage" execution_type="auto" id="storage_session_length" purpose="Check if sessionStorage.length attribute can returns the number of key/value pairs associated with the object">
+      <testcase component="W3C_HTML5 APIs/Storage/Web Storage" execution_type="auto" id="storage_removeitem_entry4" purpose="localStorage.removeItem(undefined) ">
         <description>
-          <test_script_entry>/opt/tct-webstorage-w3c-tests/webstorage/w3c/storage_session_length.html</test_script_entry>
+          <test_script_entry>/opt/tct-webstorage-w3c-tests/webstorage/w3c/storage_removeitem.html?total_num=8&amp;amp;locator_key=id&amp;amp;value=4</test_script_entry>
         </description>
       </testcase>
-      <testcase component="W3C_HTML5 APIs/Storage/Web Storage" execution_type="auto" id="storage_session_removeitem" purpose="Check if sessionStorage.removeItem can removes the key/value pair associated with the object">
+      <testcase component="W3C_HTML5 APIs/Storage/Web Storage" execution_type="auto" id="storage_removeitem_entry5" purpose="sessionStorage.removeItem()">
         <description>
-          <test_script_entry>/opt/tct-webstorage-w3c-tests/webstorage/w3c/storage_session_removeitem.html</test_script_entry>
+          <test_script_entry>/opt/tct-webstorage-w3c-tests/webstorage/w3c/storage_removeitem.html?total_num=8&amp;amp;locator_key=id&amp;amp;value=5</test_script_entry>
         </description>
       </testcase>
-      <testcase component="W3C_HTML5 APIs/Storage/Web Storage" execution_type="auto" id="storage_session_setitem" purpose="Check if the sessionStorage.setItem can add a key/value pair">
+      <testcase component="W3C_HTML5 APIs/Storage/Web Storage" execution_type="auto" id="storage_removeitem_entry6" purpose="delete sessionStorage[]">
         <description>
-          <test_script_entry>/opt/tct-webstorage-w3c-tests/webstorage/w3c/storage_session_setitem.html</test_script_entry>
+          <test_script_entry>/opt/tct-webstorage-w3c-tests/webstorage/w3c/storage_removeitem.html?total_num=8&amp;amp;locator_key=id&amp;amp;value=6</test_script_entry>
         </description>
       </testcase>
-      <testcase component="W3C_HTML5 APIs/Storage/Web Storage" execution_type="auto" id="storage_session_setitem_quotaexceedederr" purpose="Check if the sessionStorage.setItem failed can throw an QuotaExceededError exception">
+      <testcase component="W3C_HTML5 APIs/Storage/Web Storage" execution_type="auto" id="storage_removeitem_entry7" purpose="sessionStorage.removeItem(null) ">
         <description>
-          <test_script_entry timeout="600">/opt/tct-webstorage-w3c-tests/webstorage/w3c/storage_session_setitem_quotaexceedederr.html</test_script_entry>
+          <test_script_entry>/opt/tct-webstorage-w3c-tests/webstorage/w3c/storage_removeitem.html?total_num=8&amp;amp;locator_key=id&amp;amp;value=7</test_script_entry>
         </description>
       </testcase>
-      <testcase component="W3C_HTML5 APIs/Storage/Web Storage" execution_type="auto" id="storage_local_index_js" purpose="Check if the localStorage key(index) get the value">
+      <testcase component="W3C_HTML5 APIs/Storage/Web Storage" execution_type="auto" id="storage_removeitem_entry8" purpose="sessionStorage.removeItem(undefined) ">
         <description>
-          <test_script_entry>/opt/tct-webstorage-w3c-tests/webstorage/w3c/storage_local_index_js.html</test_script_entry>
+          <test_script_entry>/opt/tct-webstorage-w3c-tests/webstorage/w3c/storage_removeitem.html?total_num=8&amp;amp;locator_key=id&amp;amp;value=8</test_script_entry>
         </description>
       </testcase>
-      <testcase component="W3C_HTML5 APIs/Storage/Web Storage" execution_type="auto" id="storage_session_index_js" purpose="Check if the sessionStorage key(index) get the value">
+      <testcase component="W3C_HTML5 APIs/Storage/Web Storage" execution_type="auto" id="storage_session_setitem_quotaexceedederr" purpose="Throws QuotaExceededError when the quota has been exceeded for sessionStorage">
         <description>
-          <test_script_entry>/opt/tct-webstorage-w3c-tests/webstorage/w3c/storage_session_index_js.html</test_script_entry>
+          <test_script_entry>/opt/tct-webstorage-w3c-tests/webstorage/w3c/storage_session_setitem_quotaexceedederr.html</test_script_entry>
+        </description>
+      </testcase>
+      <testcase component="W3C_HTML5 APIs/Storage/Web Storage" execution_type="auto" id="storage_setitem_entry1" purpose="localStorage.setItem()">
+        <description>
+          <test_script_entry>/opt/tct-webstorage-w3c-tests/webstorage/w3c/storage_setitem.html?total_num=26&amp;amp;locator_key=id&amp;amp;value=1</test_script_entry>
+        </description>
+      </testcase>
+      <testcase component="W3C_HTML5 APIs/Storage/Web Storage" execution_type="auto" id="storage_setitem_entry2" purpose="localStorage.setItem()">
+        <description>
+          <test_script_entry>/opt/tct-webstorage-w3c-tests/webstorage/w3c/storage_setitem.html?total_num=26&amp;amp;locator_key=id&amp;amp;value=2</test_script_entry>
+        </description>
+      </testcase>
+      <testcase component="W3C_HTML5 APIs/Storage/Web Storage" execution_type="auto" id="storage_setitem_entry3" purpose="localStorage.setItem()">
+        <description>
+          <test_script_entry>/opt/tct-webstorage-w3c-tests/webstorage/w3c/storage_setitem.html?total_num=26&amp;amp;locator_key=id&amp;amp;value=3</test_script_entry>
+        </description>
+      </testcase>
+      <testcase component="W3C_HTML5 APIs/Storage/Web Storage" execution_type="auto" id="storage_setitem_entry4" purpose="localStorage.setItem()">
+        <description>
+          <test_script_entry>/opt/tct-webstorage-w3c-tests/webstorage/w3c/storage_setitem.html?total_num=26&amp;amp;locator_key=id&amp;amp;value=4</test_script_entry>
+        </description>
+      </testcase>
+      <testcase component="W3C_HTML5 APIs/Storage/Web Storage" execution_type="auto" id="storage_setitem_entry5" purpose="localStorage[] = null">
+        <description>
+          <test_script_entry>/opt/tct-webstorage-w3c-tests/webstorage/w3c/storage_setitem.html?total_num=26&amp;amp;locator_key=id&amp;amp;value=5</test_script_entry>
+        </description>
+      </testcase>
+      <testcase component="W3C_HTML5 APIs/Storage/Web Storage" execution_type="auto" id="storage_setitem_entry6" purpose="localStorage.setItem(_, undefined)">
+        <description>
+          <test_script_entry>/opt/tct-webstorage-w3c-tests/webstorage/w3c/storage_setitem.html?total_num=26&amp;amp;locator_key=id&amp;amp;value=6</test_script_entry>
+        </description>
+      </testcase>
+      <testcase component="W3C_HTML5 APIs/Storage/Web Storage" execution_type="auto" id="storage_setitem_entry7" purpose="localStorage[] = undefined">
+        <description>
+          <test_script_entry>/opt/tct-webstorage-w3c-tests/webstorage/w3c/storage_setitem.html?total_num=26&amp;amp;locator_key=id&amp;amp;value=7</test_script_entry>
+        </description>
+      </testcase>
+      <testcase component="W3C_HTML5 APIs/Storage/Web Storage" execution_type="auto" id="storage_setitem_entry8" purpose="localStorage.setItem({ throws })">
+        <description>
+          <test_script_entry>/opt/tct-webstorage-w3c-tests/webstorage/w3c/storage_setitem.html?total_num=26&amp;amp;locator_key=id&amp;amp;value=8</test_script_entry>
+        </description>
+      </testcase>
+      <testcase component="W3C_HTML5 APIs/Storage/Web Storage" execution_type="auto" id="storage_setitem_entry9" purpose="localStorage[] = { throws }">
+        <description>
+          <test_script_entry>/opt/tct-webstorage-w3c-tests/webstorage/w3c/storage_setitem.html?total_num=26&amp;amp;locator_key=id&amp;amp;value=9</test_script_entry>
+        </description>
+      </testcase>
+      <testcase component="W3C_HTML5 APIs/Storage/Web Storage" execution_type="auto" id="storage_setitem_entry10" purpose="localStorage.setItem(undefined, _)">
+        <description>
+          <test_script_entry>/opt/tct-webstorage-w3c-tests/webstorage/w3c/storage_setitem.html?total_num=26&amp;amp;locator_key=id&amp;amp;value=10</test_script_entry>
+        </description>
+      </testcase>
+      <testcase component="W3C_HTML5 APIs/Storage/Web Storage" execution_type="auto" id="storage_setitem_entry11" purpose="localStorage[undefined]">
+        <description>
+          <test_script_entry>/opt/tct-webstorage-w3c-tests/webstorage/w3c/storage_setitem.html?total_num=26&amp;amp;locator_key=id&amp;amp;value=11</test_script_entry>
+        </description>
+      </testcase>
+      <testcase component="W3C_HTML5 APIs/Storage/Web Storage" execution_type="auto" id="storage_setitem_entry12" purpose="localStorage.setItem(null, _)">
+        <description>
+          <test_script_entry>/opt/tct-webstorage-w3c-tests/webstorage/w3c/storage_setitem.html?total_num=26&amp;amp;locator_key=id&amp;amp;value=12</test_script_entry>
+        </description>
+      </testcase>
+      <testcase component="W3C_HTML5 APIs/Storage/Web Storage" execution_type="auto" id="storage_setitem_entry13" purpose="localStorage[null]">
+        <description>
+          <test_script_entry>/opt/tct-webstorage-w3c-tests/webstorage/w3c/storage_setitem.html?total_num=26&amp;amp;locator_key=id&amp;amp;value=13</test_script_entry>
+        </description>
+      </testcase>
+      <testcase component="W3C_HTML5 APIs/Storage/Web Storage" execution_type="auto" id="storage_setitem_entry14" purpose="sessionStorage.setItem()">
+        <description>
+          <test_script_entry>/opt/tct-webstorage-w3c-tests/webstorage/w3c/storage_setitem.html?total_num=26&amp;amp;locator_key=id&amp;amp;value=14</test_script_entry>
+        </description>
+      </testcase>
+      <testcase component="W3C_HTML5 APIs/Storage/Web Storage" execution_type="auto" id="storage_setitem_entry15" purpose="sessionStorage[]">
+        <description>
+          <test_script_entry>/opt/tct-webstorage-w3c-tests/webstorage/w3c/storage_setitem.html?total_num=26&amp;amp;locator_key=id&amp;amp;value=15</test_script_entry>
+        </description>
+      </testcase>
+      <testcase component="W3C_HTML5 APIs/Storage/Web Storage" execution_type="auto" id="storage_setitem_entry16" purpose="sessionStorage[] update">
+        <description>
+          <test_script_entry>/opt/tct-webstorage-w3c-tests/webstorage/w3c/storage_setitem.html?total_num=26&amp;amp;locator_key=id&amp;amp;value=16</test_script_entry>
+        </description>
+      </testcase>
+      <testcase component="W3C_HTML5 APIs/Storage/Web Storage" execution_type="auto" id="storage_setitem_entry17" purpose="sessionStorage.setItem(_, null)">
+        <description>
+          <test_script_entry>/opt/tct-webstorage-w3c-tests/webstorage/w3c/storage_setitem.html?total_num=26&amp;amp;locator_key=id&amp;amp;value=17</test_script_entry>
+        </description>
+      </testcase>
+      <testcase component="W3C_HTML5 APIs/Storage/Web Storage" execution_type="auto" id="storage_setitem_entry18" purpose="sessionStorage[] = null">
+        <description>
+          <test_script_entry>/opt/tct-webstorage-w3c-tests/webstorage/w3c/storage_setitem.html?total_num=26&amp;amp;locator_key=id&amp;amp;value=18</test_script_entry>
+        </description>
+      </testcase>
+      <testcase component="W3C_HTML5 APIs/Storage/Web Storage" execution_type="auto" id="storage_setitem_entry19" purpose="sessionStorage.setItem(_, undefined)">
+        <description>
+          <test_script_entry>/opt/tct-webstorage-w3c-tests/webstorage/w3c/storage_setitem.html?total_num=26&amp;amp;locator_key=id&amp;amp;value=19</test_script_entry>
+        </description>
+      </testcase>
+      <testcase component="W3C_HTML5 APIs/Storage/Web Storage" execution_type="auto" id="storage_setitem_entry20" purpose="sessionStorage[] = undefined">
+        <description>
+          <test_script_entry>/opt/tct-webstorage-w3c-tests/webstorage/w3c/storage_setitem.html?total_num=26&amp;amp;locator_key=id&amp;amp;value=20</test_script_entry>
+        </description>
+      </testcase>
+      <testcase component="W3C_HTML5 APIs/Storage/Web Storage" execution_type="auto" id="storage_setitem_entry21" purpose="sessionStorage.setItem({ throws })">
+        <description>
+          <test_script_entry>/opt/tct-webstorage-w3c-tests/webstorage/w3c/storage_setitem.html?total_num=26&amp;amp;locator_key=id&amp;amp;value=21</test_script_entry>
+        </description>
+      </testcase>
+      <testcase component="W3C_HTML5 APIs/Storage/Web Storage" execution_type="auto" id="storage_setitem_entry22" purpose="sessionStorage[] = { throws } ">
+        <description>
+          <test_script_entry>/opt/tct-webstorage-w3c-tests/webstorage/w3c/storage_setitem.html?total_num=26&amp;amp;locator_key=id&amp;amp;value=22</test_script_entry>
+        </description>
+      </testcase>
+      <testcase component="W3C_HTML5 APIs/Storage/Web Storage" execution_type="auto" id="storage_setitem_entry23" purpose="sessionStorage.setItem(undefined, _)">
+        <description>
+          <test_script_entry>/opt/tct-webstorage-w3c-tests/webstorage/w3c/storage_setitem.html?total_num=26&amp;amp;locator_key=id&amp;amp;value=23</test_script_entry>
+        </description>
+      </testcase>
+      <testcase component="W3C_HTML5 APIs/Storage/Web Storage" execution_type="auto" id="storage_setitem_entry24" purpose="sessionStorage[undefined]">
+        <description>
+          <test_script_entry>/opt/tct-webstorage-w3c-tests/webstorage/w3c/storage_setitem.html?total_num=26&amp;amp;locator_key=id&amp;amp;value=24</test_script_entry>
+        </description>
+      </testcase>
+      <testcase component="W3C_HTML5 APIs/Storage/Web Storage" execution_type="auto" id="storage_setitem_entry25" purpose="sessionStorage.setItem(null, _)">
+        <description>
+          <test_script_entry>/opt/tct-webstorage-w3c-tests/webstorage/w3c/storage_setitem.html?total_num=26&amp;amp;locator_key=id&amp;amp;value=25</test_script_entry>
+        </description>
+      </testcase>
+      <testcase component="W3C_HTML5 APIs/Storage/Web Storage" execution_type="auto" id="storage_setitem_entry26" purpose="sessionStorage[null]">
+        <description>
+          <test_script_entry>/opt/tct-webstorage-w3c-tests/webstorage/w3c/storage_setitem.html?total_num=26&amp;amp;locator_key=id&amp;amp;value=26</test_script_entry>
+        </description>
+      </testcase>
+      <testcase component="W3C_HTML5 APIs/Storage/Web Storage" execution_type="auto" id="storage_set_value_enumerate_entry1" purpose="enumerate a localStorage object with the key and get the values">
+        <description>
+          <test_script_entry>/opt/tct-webstorage-w3c-tests/webstorage/w3c/storage_set_value_enumerate.html?total_num=2&amp;amp;locator_key=id&amp;amp;value=1</test_script_entry>
+        </description>
+      </testcase>
+      <testcase component="W3C_HTML5 APIs/Storage/Web Storage" execution_type="auto" id="storage_set_value_enumerate_entry2" purpose="enumerate a sessionStorage object with the key and get the values">
+        <description>
+          <test_script_entry>/opt/tct-webstorage-w3c-tests/webstorage/w3c/storage_set_value_enumerate.html?total_num=2&amp;amp;locator_key=id&amp;amp;value=2</test_script_entry>
+        </description>
+      </testcase>
+      <testcase component="W3C_HTML5 APIs/Storage/Web Storage" execution_type="auto" id="storage_string_conversion_entry1" purpose="localStorage only stores strings ">
+        <description>
+          <test_script_entry>/opt/tct-webstorage-w3c-tests/webstorage/w3c/storage_string_conversion.html?total_num=2&amp;amp;locator_key=id&amp;amp;value=1</test_script_entry>
+        </description>
+      </testcase>
+      <testcase component="W3C_HTML5 APIs/Storage/Web Storage" execution_type="auto" id="storage_string_conversion_entry2" purpose="sessionStorage only stores strings">
+        <description>
+          <test_script_entry>/opt/tct-webstorage-w3c-tests/webstorage/w3c/storage_string_conversion.html?total_num=2&amp;amp;locator_key=id&amp;amp;value=2</test_script_entry>
         </description>
       </testcase>
     </set>
-    <set name="webstorage-bdd" type="js" ui-auto="bdd">
-      <testcase component="W3C_HTML5 APIs/Storage/Web Storage" execution_type="manual" id="Storage_example_insurance_on_trip" purpose="Check if the user had been insurance on this trip">
+    <set name="WebStorage-bdd" type="js" ui-auto="bdd">
+      <testcase component="W3C_HTML5 APIs/Storage/Web Storage" execution_type="manual" id="storage_local" purpose="store data using Local Storage which means that close the page, and re-open it, the data saved before should be loaded again">
         <description>
-          <test_script_entry>/opt/tct-webstorage-w3c-tests/webstorage/bdd/Storage_example_insurance_on_trip-manual.html</test_script_entry>
-          <bdd_test_script_entry test_script_expected_result="0">/opt/tct-webstorage-w3c-tests/w3c-webstorage-app/testscripts/Storage_example_insurance_on_trip.feature</bdd_test_script_entry>
+          <test_script_entry>/opt/tct-webstorage-w3c-tests/webstorage/w3c/bdd/storage_local-manual.html</test_script_entry>
+          <bdd_test_script_entry test_script_expected_result="0">/opt/tct-webstorage-w3c-tests/w3c-webstorage-app/testscripts/storage_local.feature</bdd_test_script_entry>
         </description>
       </testcase>
-      <testcase component="W3C_HTML5 APIs/Storage/Web Storage" execution_type="manual" id="Storage_example_load_page_times" purpose="Check if the page can display a count of how many times the user has loaded it">
+      <testcase component="W3C_HTML5 APIs/Storage/Web Storage" execution_type="manual" id="storage_session" purpose="store the data using Session Storage which means that even if you close the page, and re-open it, the data saved before should be lost">
         <description>
-          <test_script_entry>/opt/tct-webstorage-w3c-tests/webstorage/bdd/Storage_example_load_page_times-manual.html</test_script_entry>
-          <bdd_test_script_entry test_script_expected_result="0">/opt/tct-webstorage-w3c-tests/w3c-webstorage-app/testscripts/Storage_example_load_page_times.feature</bdd_test_script_entry>
+          <test_script_entry>/opt/tct-webstorage-w3c-tests/webstorage/w3c/bdd/storage_session-manual.html</test_script_entry>
+          <bdd_test_script_entry test_script_expected_result="0">/opt/tct-webstorage-w3c-tests/w3c-webstorage-app/testscripts/storage_session.feature</bdd_test_script_entry>
         </description>
       </testcase>
     </set>
