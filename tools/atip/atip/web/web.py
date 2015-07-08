@@ -61,7 +61,8 @@ class WebAPP(common.APP):
         self.device_platform = ""
         self.test_type = ""
         self.read_config()
-        self.baseline_path = self.cur_path + "/data/" + self.device_platform
+        self.test_url = app_config["test-url"]
+        self.baseline_path = self.test_url + "/../../data/" + self.device_platform
         self.text_value = {}
         self.picture_list = []
         self.color_dict = {"rgb(255, 0, 0)": "red","rgb(0, 255, 0)": "green","rgb(0, 0, 255)": "blue","rgb(255, 255, 0)": "yellow","rgb(0, 0, 0)": "black","rgb(0, 128, 0)": "green","rgb(255, 255, 255)": "white","rgba(0, 0, 0, 0)": "white"}
