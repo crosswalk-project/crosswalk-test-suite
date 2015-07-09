@@ -11,7 +11,12 @@ crosswalk_test_suite_dir=$home/../..
 work=${crosswalk_test_suite_dir}/webapi
 
 rm -rf *zip /tmp/tests
-mkdir -p /tmp/tests
+mkdir -p /tmp/tests/common
+mkdir -p /tmp/tests/resources
+
+#Add version.json file
+export LANG="en_US"
+echo "{\"tests_version\": \"`date +%c`\"}" >/tmp/tests/version.json
 
 #move spec file
 cd $work
@@ -43,18 +48,13 @@ do
             fi 
         fi
     fi
+    test -d $suite/common && cp -rf $suite/common/* /tmp/tests/common
+    test -d $suite/resources && cp -rf $suite/resources/* /tmp/tests/resources
 done
-
-#rm Makefile
-find /tmp/tests -name "Makefile*" |xargs -I% rm -rf %
 
 #zip file
 cd /tmp/tests/
 rm -fr ./typedarrays/tools
-## TODO: this will remove after the redirect.py has been fixed
-#grep redirect.py -rl *|xargs -I% rm %
-#find . -name "redirect.py" -delete
-## end
 
 ## TODO: move qunit to manual
 
