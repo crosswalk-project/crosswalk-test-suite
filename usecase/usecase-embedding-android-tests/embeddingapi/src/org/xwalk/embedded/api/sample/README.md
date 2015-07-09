@@ -296,3 +296,14 @@ This usecase covers following interface and methods:
 
 * XWalkView interface: load, dispatchKeyEvent methods
 
+
+
+### 28. The [XWalkViewWithSetLanguage](XWalkViewWithSetLanguage.java) sample check whether xwalkview can set accept language, include:
+
+* XWalkView can use setAcceptLanguages method
+
+This usecase covers following interface and methods:
+
+* XWalkView interface: load, setAcceptLanguages methods
+
+
