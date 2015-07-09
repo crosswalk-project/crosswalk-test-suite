@@ -381,6 +381,22 @@ class WebAPP(common.APP):
             time.sleep(0.2)
         return False
 
+    def check_normal_text_element_isvalidate(
+            self, num_a=None, num_b=None, key=None, display=True):
+        element = self.__get_element_by_key(key, display)
+        if element:
+            if int(element.text) <= int(num_b) and int(element.text) >= int(num_a):
+                return True
+        return False
+
+    def check_normal_text_element_isgreater(
+            self, key=None, num_a=None, display=True):
+        element = self.__get_element_by_key(key, display)
+        if element:
+            if element.text >= num_a:
+                return True
+        return False
+
     def check_normal_text_element_timeout_with_color(
             self, text=None, key=None, color=None, display=True, timeout=2):
         end_time = time.time() + timeout
@@ -709,6 +725,32 @@ class WebAPP(common.APP):
             if element.is_selected():
                 element.click()
             return True
+        return False
+
+    def check_checkbox_by_compare_values(self, key, islarger, key1, islarger2, key2, nsec, display=True):
+        element = self.__get_element_by_key(key, display)
+        value_start = element.text
+        element = self.__get_element_by_key(key1, display)
+        value_start_1 = element.text
+        element = self.__get_element_by_key(key2, display)
+        ActionChains(self.driver).click(element).perform()
+        time.sleep(nsec)
+        element = self.__get_element_by_key(key, display)
+        value_end = element.text
+        element = self.__get_element_by_key(key1, display)
+        value_end_1 = element.text
+        if islarger == "smaller":
+            if int(value_start) < int(value_end):
+                return True
+        elif islarger == "larger":
+            if int(value_start) > int(value_end):
+                return True
+        if islarger2 == "smaller":
+            if int(value_start_1) < int(value_end_1):
+                return True
+        elif islarger2 == "larger":
+            if int(value_start_1) > int(value_end_1):
+                return True
         return False
 
     def get_alert_text(self):
