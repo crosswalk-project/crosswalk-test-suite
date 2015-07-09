@@ -53,6 +53,8 @@ public class MainActivity extends Activity implements XWalkInitializer.XWalkInit
 
         mXWalkInitializer = new XWalkInitializer(this, this);
         mXWalkInitializer.initAsync();
+        setContentView(R.layout.xwview_layout);
+        mXWalkView = (XWalkView) findViewById(R.id.xwalkview);
     }
 
     @Override
@@ -72,8 +74,6 @@ public class MainActivity extends Activity implements XWalkInitializer.XWalkInit
 
     @Override
     public final void onXWalkInitCompleted() {
-        setContentView(R.layout.xwview_layout);
-        mXWalkView = (XWalkView) findViewById(R.id.xwalkview);
         XWalkPreferences.setValue(XWalkPreferences.SUPPORT_MULTIPLE_WINDOWS, true);
         PowerManager pm = (PowerManager)getSystemService(POWER_SERVICE);
         WakeLock mWakelock = pm.newWakeLock(PowerManager.ACQUIRE_CAUSES_WAKEUP |PowerManager.SCREEN_DIM_WAKE_LOCK, "SimpleTimer");
