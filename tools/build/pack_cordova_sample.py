@@ -566,6 +566,40 @@ def packGoogleApp(app_name=None):
         '</widget>',
         '    <allow-navigation href="*" />\n</widget>')
 
+    add_android_cmd = "cca platform add android"
+    if not doCMD(add_android_cmd, DEFAULT_CMD_TIMEOUT):
+        os.chdir(orig_dir)
+        return False
+
+    if BUILD_PARAMETERS.pkgmode == "shared":
+        replaceUserString(
+            project_root,
+            'config.xml',
+            '<preference name="lib_mode" value="embedd"',
+            '<preference name="lib_mode" value="shared"')
+
+        android_path = os.path.join(project_root, "platforms", "android")
+        replaceUserString(
+           android_path,
+            'AndroidManifest.xml',
+            '<application',
+            '<application android:name="org.xwalk.core.XWalkApplication"')
+
+        mainActivity_path = os.path.join(android_path, "src", "org", "xwalk", app_name)
+        LOG.info("mainActivity_path: %s" % mainActivity_path)
+        replaceUserString(
+           mainActivity_path,
+            '%s.java' % app_name,
+            '        loadUrl',
+            '    }\n\n    @Override\n    protected void onXWalkReady() {\n        super.init();\n        loadUrl')
+
+        cordova_path = os.path.join(android_path, "CordovaLib", "src", "org", "apache", "cordova")
+        replaceUserString(
+           cordova_path,
+            'CordovaActivity.java',
+            'public class CordovaActivity extends Activity {',
+            'import org.xwalk.core.XWalkActivity;\npublic abstract class CordovaActivity extends XWalkActivity implements CordovaInterface {')
+
     build_cmd = "cca build android"
     if not doCMD(build_cmd, DEFAULT_CMD_TIMEOUT * 2):
         os.chdir(orig_dir)
@@ -737,6 +771,35 @@ def packMobileSpec_cli(app_name=None):
                 os.chdir(orig_dir)
                 return False
 
+    if BUILD_PARAMETERS.pkgmode == "shared":
+        replaceUserString(
+            project_root,
+            'config.xml',
+            '<preference name="lib_mode" value="embedd"',
+            '<preference name="lib_mode" value="shared"')
+
+        android_path = os.path.join(project_root, "platforms", "android")
+        replaceUserString(
+           android_path,
+            'AndroidManifest.xml',
+            '<application',
+            '<application android:name="org.xwalk.core.XWalkApplication"')
+
+        mainActivity_path = os.path.join(android_path, "src", "com", "example", app_name)
+        LOG.info("mainActivity_path: %s" % mainActivity_path)
+        replaceUserString(
+           mainActivity_path,
+            '%s.java' % app_name,
+            '        loadUrl',
+            '    }\n\n    @Override\n    protected void onXWalkReady() {\n        super.init();\n        loadUrl')
+
+        cordova_path = os.path.join(android_path, "CordovaLib", "src", "org", "apache", "cordova")
+        replaceUserString(
+           cordova_path,
+            'CordovaActivity.java',
+            'public class CordovaActivity extends Activity {',
+            'import org.xwalk.core.XWalkActivity;\npublic abstract class CordovaActivity extends XWalkActivity implements CordovaInterface {')
+
     ANDROID_HOME = "echo $(dirname $(dirname $(which android)))"
     os.environ['ANDROID_HOME'] = commands.getoutput(ANDROID_HOME)
 
@@ -873,6 +936,35 @@ def packSampleApp_cli(app_name=None):
         if not doCMD(plugin_install_cmd, DEFAULT_CMD_TIMEOUT):
             os.chdir(orig_dir)
             return False
+
+    if BUILD_PARAMETERS.pkgmode == "shared":
+        replaceUserString(
+            project_root,
+            'config.xml',
+            '<preference name="lib_mode" value="embedd"',
+            '<preference name="lib_mode" value="shared"')
+
+        android_path = os.path.join(project_root, "platforms", "android")
+        replaceUserString(
+           android_path,
+            'AndroidManifest.xml',
+            '<application',
+            '<application android:name="org.xwalk.core.XWalkApplication"')
+
+        mainActivity_path = os.path.join(android_path, "src", "com", "example", app_name)
+        LOG.info("mainActivity_path: %s" % mainActivity_path)
+        replaceUserString(
+           mainActivity_path,
+            '%s.java' % app_name,
+            '        loadUrl',
+            '    }\n\n    @Override\n    protected void onXWalkReady() {\n        super.init();\n        loadUrl')
+
+        cordova_path = os.path.join(android_path, "CordovaLib", "src", "org", "apache", "cordova")
+        replaceUserString(
+           cordova_path,
+            'CordovaActivity.java',
+            'public class CordovaActivity extends Activity {',
+            'import org.xwalk.core.XWalkActivity;\npublic abstract class CordovaActivity extends XWalkActivity implements CordovaInterface {')
 
     ANDROID_HOME = "echo $(dirname $(dirname $(which android)))"
     os.environ['ANDROID_HOME'] = commands.getoutput(ANDROID_HOME)
@@ -1050,10 +1142,6 @@ def main():
 
     if BUILD_PARAMETERS.cordovaversion == '3.6' and BUILD_PARAMETERS.pkgarch:
         LOG.error("Command -a is not for cordova version 3.6")
-        sys.exit(1)
-
-    if BUILD_PARAMETERS.cordovaversion == '4.0' and BUILD_PARAMETERS.pkgmode:
-        LOG.error("Command -m is only for cordova version 3.6")
         sys.exit(1)
 
     if not BUILD_PARAMETERS.pkgpacktools:

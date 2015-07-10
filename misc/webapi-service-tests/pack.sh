@@ -69,6 +69,12 @@ elif [ $pack_type == "cordova" ];then
     <meta http-equiv="Refresh" content="1; url=http://127.0.0.1:8080/index.html">
 </head>
 EOF
+        if [ $pack_mode == "shared" ]; then
+            sed -i "s/<preference name=\"lib_mode\" value=\"embedd\"/<preference name=\"lib_mode\" value=\"shared\"/g" $BUILD_ROOT/$appname/config.xml
+            sed -i "s/<application/<application android:name=\"org.xwalk.core.XWalkApplication\"/g" $BUILD_ROOT/$appname/platforms/android/AndroidManifest.xml
+            sed -i "s/        loadUrl/    }\n\n    @Override\n    protected void onXWalkReady() {\n        super.init();\n        loadUrl/g" $BUILD_ROOT/$appname/platforms/android/src/org/xwalk/$appname/$appname.java
+            sed -i "s/public class CordovaActivity extends Activity {/import org.xwalk.core.XWalkActivity;\npublic abstract class CordovaActivity extends XWalkActivity implements CordovaInterface {/g" $BUILD_ROOT/$appname/platforms/android/CordovaLib/src/org/apache/cordova/CordovaActivity.java
+        fi
         cd $BUILD_ROOT/$appname
         cordova build android
     elif [ $sub_version == "3.6" ]; then
