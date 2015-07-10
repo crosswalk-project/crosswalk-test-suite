@@ -1,10 +1,15 @@
-#!/bin/sh
-echo "Content-Security-Policy-Report-Only: media-src http://www.w3.org; script-src 'self' 'unsafe-inline'"
-echo "X-Content-Security-Policy-Report-Only: media-src http://www.w3.org; script-src 'self' 'unsafe-inline'"
-echo "X-WebKit-CSP-Report-Only: media-src http://www.w3.org; script-src 'self' 'unsafe-inline'"
-echo
-echo '<!DOCTYPE html>
-
+def main(request, response):
+    import simplejson as json
+    f = file('config.json')
+    source = f.read()
+    s = json.JSONDecoder().decode(source)
+    url1 = "http://" + s['host'] + ":" + str(s['ports']['http'][1])
+    url2 = "http://" + s['host'] + ":" + str(s['ports']['http'][0])
+    _CSP = "media-src 'none'; script-src 'self' 'unsafe-inline'"
+    response.headers.set("Content-Security-Policy", _CSP)
+    response.headers.set("X-Content-Security-Policy", _CSP)
+    response.headers.set("X-WebKit-CSP", _CSP)
+    return """<!DOCTYPE html>
 <!--
 Copyright (c) 2013 Samsung Electronics Co., Ltd.
 
@@ -26,18 +31,18 @@ Authors:
 
 <html>
   <head>
-    <title>CSP Test: csp_ro_media-src_cross-origin_audio_blocked_int</title>
+    <title>CSP Test: csp_ro_media-src_none_video_blocked_int</title>
     <link rel="author" title="Samsung" href="http://www.Samsung.com"/>
     <link rel="help" href="http://www.w3.org/TR/2012/CR-CSP-20121115/#media-src"/>
     <meta name="flags" content=""/>
-    <meta name="assert" content="media-src http://www.w3.org; script-src 'self' 'unsafe-inline'"/>
+    <meta name="assert" content="media-src *; script-src 'self' 'unsafe-inline'"/>
     <meta charset="utf-8"/>
     <script src="../resources/testharness.js"></script>
     <script src="../resources/testharnessreport.js"></script>
   </head>
   <body>
     <div id="log"></div>
-    <audio id="m"></audio>
+    <video id="m"></video>
     <script>
         var t = async_test(document.title);
         var m = document.getElementById("m");
@@ -45,10 +50,10 @@ Authors:
         window.setTimeout(function() {
             t.step(function() {
                 assert_false(m.currentSrc == "",
-                    "audio.currentSrc should not be empty even use the not allowed internal audio resource in report only mode");
+                    "video.currentSrc should not be empty if use the internal video resource when media-src is none in report only mode.");
             });
             t.done();
         }, 0);
     </script>
   </body>
-</html> '
+</html>"""
