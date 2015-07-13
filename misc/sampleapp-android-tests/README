@@ -6,9 +6,20 @@ This test suite is for testing sampleapp-android-tests specification
 
 * Xu,Yuhan <yuhanx.xu@intel.com>
 * Li, cici <cici.x.li@intel.com>
+* Wang, Hongjuan <hongjuanx.wang@intel.com>
 
 ## LICENSE
 
 Copyright (c) 2013 Intel Corporation.
 Except as noted, this software is licensed under BSD-3-Clause License.
 Please see the COPYING file for the BSD-3-Clause License.
+
+1. The folder testapp is in order to put sample apps' APK file
+
+Test Step:
+1. Copy the source code folder named like crosswalk-demo to the path /tmp/
+2. unzip sampleapp-android-tests<version>.zip -d [testprefix-path]
+3. cd [testprefix-path]/opt/sampleapp-android-tests/
+4. run test case
+   testkit-lite -f [testprefix-path]/opt/sampleapp-android-tests/tests.xml -A -o [testprefix-path]/opt/sampleapp-android-tests/result.xml --comm androidmobile --testenvs "DEVICE_ID=Medfield3C6DFF2E;CHANNEL=canary;XWALK_VERSION='15.44.375.0'" --testprefix=[testprefix-path], DEVICE_ID can also be multiple ids like "DEVICE_ID=Medfield3C6DFF2E,Medfield3C6DFF00".
+Query device id by command "adb devices -l" in host
