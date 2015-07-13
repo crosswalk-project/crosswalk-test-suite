@@ -1,7 +1,8 @@
 #!/bin/bash
 source $(dirname $0)/webapi-service-tests.spec
 SRC_ROOT=$(cd $(dirname $0);pwd)
-BUILD_ROOT=/tmp/$name-$path_flag
+BUILD_ROOT=/tmp/${name}-${path_flag}_pack
+BUILD_DEST=/tmp/${name}-${path_flag}
 
 usage="Usage: ./pack.sh [-t <package type: apk | cordova>] [-a <apk runtime arch: x86 | arm>] [-m <package mode: embedded | shared>] [-v <sub version: 3.6 | 4.0>]
 [-t apk] option was set as default.
@@ -34,11 +35,39 @@ rm -rf $dest_dir/$name-$version-$sub_version.$pack_type.zip
 function clean_workspace(){
     echo "cleaning workspace... >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>"
     rm -rf $BUILD_ROOT
+    rm -rf $BUILD_DEST
 }
 
 echo "cleaning workspace... >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>"
 clean_workspace
-mkdir -p $BUILD_ROOT
+mkdir -p $BUILD_ROOT $BUILD_DEST
+
+if [ $pack_type == "cordova" ]; then
+    for list in $LIST;do
+        python $SRC_ROOT/../../tools/build/pack.py -t ${pack_type}-aio -m $pack_mode -d $BUILD_DEST -s $SRC_ROOT/../../webapi/$list
+        if [ -d $BUILD_DEST/opt/$list/HOST_RESOURCES ]; then
+            mkdir -p $BUILD_ROOT/opt/$name/opt/$list
+            mv $BUILD_DEST/opt/$list/HOST_RESOURCES/* $BUILD_ROOT/opt/$name/opt/$list
+        fi
+    done
+else
+    for list in $LIST;do
+        python $SRC_ROOT/../../tools/build/pack.py -t ${pack_type}-aio -m $pack_mode -a $arch -d $BUILD_DEST -s $SRC_ROOT/../../webapi/$list
+        if [ -d $BUILD_DEST/opt/$list/HOST_RESOURCES ]; then
+            mkdir -p $BUILD_ROOT/opt/$name/opt/$list
+            mv $BUILD_DEST/opt/$list/HOST_RESOURCES/* $BUILD_ROOT/opt/$name/opt/$list
+        fi
+    done
+
+fi
+
+if [ -d $BUILD_ROOT/opt/$name/opt ]; then
+    mkdir -p $BUILD_ROOT/opt/$name/apps
+    mv `find $BUILD_DEST -name '*apk'` $BUILD_ROOT/opt/$name/apps
+    cp -a $SRC_ROOT/../../tools/resources/bdd/bddrunner $BUILD_ROOT/opt/$name
+    cp -a $SRC_ROOT/../../tools/resources/bdd/data.conf $BUILD_ROOT/opt/$name
+    cp -a $SRC_ROOT/../../tools/resources/xsl/* $BUILD_ROOT/opt/$name
+fi
 
 ## creat apk ##
 cp -a $SRC_ROOT/icon.png     $BUILD_ROOT/

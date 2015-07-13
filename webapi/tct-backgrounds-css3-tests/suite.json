@@ -49,10 +49,24 @@
         "apk-aio, cordova-aio": {
             "blacklist": [],
             "copylist": {
+                "backgrounds/csswg/support": "backgrounds/csswg/bdd/support",
+                "backgrounds/webkit/resources": "backgrounds/bdd/webkit/resources",
                 "PACK-TOOL-ROOT/resources/testharness": "resources",
                 "PACK-TOOL-ROOT/resources/webrunner": "webrunner",
-                "backgrounds/csswg/support": "backgrounds/csswg/bdd/support",
-                "backgrounds/webkit/resources": "backgrounds/bdd/webkit/resources"
+                "css3-backgrounds-app/testscripts": "HOST_RESOURCES/css3-backgrounds-app/testscripts",
+                "css3-backgrounds-app/data": "HOST_RESOURCES/data"
+            },
+            "subapp-list": {
+                "css3-backgrounds-app": {
+                    "apk-common-opts": "--enable-remote-debugging",
+                    "apk-icon-opt": "",
+                    "copylist": {
+                        "../backgrounds/bdd": "backgrounds",
+                        "../backgrounds/csswg/bdd": "backgrounds/csswg",
+                        "../backgrounds/webkit/resources": "backgrounds/webkit/resources",
+                        "../backgrounds/csswg/support": "backgrounds/csswg/support"
+                    }
+                }
             }
         },
         "wgt": {
