@@ -1,10 +1,15 @@
-#!/bin/sh
-echo "Content-Security-Policy-Report-Only: connect-src 'none'; script-src 'self' 'unsafe-inline'"
-echo "X-Content-Security-Policy-Report-Only: connect-src 'none'; script-src 'self' 'unsafe-inline'"
-echo "X-WebKit-CSP-Report-Only: connect-src 'none'; script-src 'self' 'unsafe-inline'"
-echo
-echo '<!DOCTYPE html>
-
+def main(request, response):
+    import simplejson as json
+    f = file('config.json')
+    source = f.read()
+    s = json.JSONDecoder().decode(source)
+    url1 = "http://" + s['host'] + ":" + str(s['ports']['http'][1])
+    url2 = "http://" + s['host'] + ":" + str(s['ports']['http'][0])
+    _CSP = "connect-src 'none'; script-src 'self' 'unsafe-inline'"
+    response.headers.set("Content-Security-Policy", _CSP)
+    response.headers.set("X-Content-Security-Policy", _CSP)
+    response.headers.set("X-WebKit-CSP", _CSP)
+    return """<!DOCTYPE html>
 <!--
 Copyright (c) 2013 Samsung Electronics Co., Ltd.
 
@@ -57,4 +62,4 @@ Authors:
         }, document.title + "_blocked_ext");
     </script>
   </body>
-</html> '
+</html>"""
