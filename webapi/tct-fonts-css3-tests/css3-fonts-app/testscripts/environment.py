@@ -64,6 +64,7 @@ def load_default_config():
         platform.update({"comm-mode": comm_mode})
         platform.update({"device": device})
         webdriver_json.update({"platform": platform})
+        webdriver_json.update({"test-url": os.path.split(os.path.realpath(__file__))[0]})
         if platform_name == "TIZEN":
             tizen_user = os.environ['TIZEN_USER']
             webdriver_json.update({"tizen_user": tizen_user})
