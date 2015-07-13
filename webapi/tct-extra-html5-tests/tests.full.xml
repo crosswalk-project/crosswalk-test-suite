@@ -7624,6 +7624,35 @@
         </specs>
       </testcase>
     </set>
+    <set name="Systemstate" type="js">
+      <testcase component="W3C_HTML5 APIs/W3C_EXTRAHTML5/Systemstateandcapabilities" execution_type="auto" id="navigatorlanguage" priority="P2" purpose="the most preferred language is the one returned by navigator.language" status="approved" type="compliance">
+        <description>
+          <test_script_entry>/opt/tct-extra-html5-tests/w3c/system-state-and-capabilities/the-navigator-object/navigatorlanguage.html</test_script_entry>
+        </description>
+        <specs>
+          <spec>
+            <spec_assertion category="W3C HTML5 API Specifications" element_name="language" element_type="attribute" interface="NavigatorLanguage" section="ExtraHTML5" specification="Language preferences"/>
+            <spec_url>https://html.spec.whatwg.org/multipage/webappapis.html#navigatorlanguage</spec_url>
+            <spec_statement/>
+          </spec>
+        </specs>
+      </testcase>
+      <testcase component="W3C_HTML5 APIs/W3C_EXTRAHTML5/Systemstateandcapabilities" execution_type="manual" id="get-navigatorlanguage" priority="P2" purpose="navigator.language returns the user's preferred language" status="approved" type="compliance">
+        <description>
+          <pre_condition>
+            Set Android phone language to Espanol (Estados Unidos).
+          </pre_condition>
+          <test_script_entry>/opt/tct-extra-html5-tests/w3c/system-state-and-capabilities/the-navigator-object/get-navigatorlanguage-manual.html</test_script_entry>
+        </description>
+        <specs>
+          <spec>
+            <spec_assertion category="W3C HTML5 API Specifications" element_name="language" element_type="attribute" interface="NavigatorLanguage" section="ExtraHTML5" specification="Language preferences"/>
+            <spec_url>https://html.spec.whatwg.org/multipage/webappapis.html#navigatorlanguage</spec_url>
+            <spec_statement/>
+          </spec>
+        </specs>
+      </testcase>
+    </set>
     <set name="browsers-bdd" type="js" ui-auto="bdd">
       <testcase component="W3C_HTML5 APIs/W3C_EXTRAHTML5/Browsers" execution_type="manual" id="window_alert_base" priority="P3" purpose="Check if pop the alert dialog" status="approved" type="compliance">
         <description>
