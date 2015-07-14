@@ -43,41 +43,17 @@ Authors:
   <h3 id="main_page_title"></h3>
 </div>
 <div class="content">
-  <h4>Preconditions</h4>
-  <ol>
-    <li>Requires the latest Cordova CLI, and must >= 5.0.0, install with command: '$ sudo npm install cordova -g'</li>
-  </ol>
-
   <h4>Test Steps</h4>
   <ol>
-    <li>Get cordova-plugin-crosswalk-webview:
+    <li>Get cordova4.0_sampleapp.zip from internal release link, then unzip it to /tmp/cordova-sampleapp/</li>
+    <li>Install statusbar.apk</li>
       <div>
-        $ git clone https://github.com/crosswalk-project/cordova-plugin-crosswalk-webview.git<br/>
+        $ adb install /tmp/cordova-sampleapp/statusbar.apk<br/>
       </div>
-    </li>
-    <li>Create Cordova example app, e.g. “hello”:
-      <div>
-        $ cordova create hello com.example.hello HelloWorld<br/>
-      </div>
-    </li>
-    <li>Setup Cordova example app:
-      <div>
-        $ cd hello<br/>
-        $ cordova platform add android<br/>
-        $ sed -i "s/&lt;\/widget&gt;/&nbsp;&nbsp;&nbsp;&nbsp;&lt;preference name=\"Fullscreen\" value=\"true\" \/&gt;\\n&lt;\/widget&gt;/g" config.xml<br/>
-        $ sed -i "s/&lt;\/widget&gt;/&nbsp;&nbsp;&nbsp;&nbsp;&lt;preference name=\"disableImmersive\" value=\"true\" \/&gt;\\n&lt;\/widget&gt;/g" config.xml<br/>
-        $ cordova plugin add --plugin org.apache.cordova.statusbar<br/>
-        $ cordova plugin add ../cordova-plugin-crosswalk-webview<br/>
-      </div>
-    </li>
-    <li>Copy the 'usecase-cordova-android-tests/res/StatusBar/index.html' file to hello/www directory</li>
-    <li>Build Cordova example app:
-      <div>
-        $ cordova build android<br/>
-      </div>
-    </li>
-    <li>Check the apk file generated in hello/build/outputs/apk directory</li>
-    <li>Install, Launch, Run, Click the buttons and Exit the app</li>
+    <li>Launch and Run the app</li>
+    <li>Click the "Status Bar Show" button</li>
+    <li>Click the "Status Bar Hide" button</li>
+    <li>Exit the app</li>
   </ol>
 </div>
 <div class="footer">
@@ -88,8 +64,6 @@ Authors:
   <p>Verify the Cordova StatusBar plugin can work when app in fullscreen mode</p>
   <p>Expected Results:</p>
   <ol>
-    <li>Create test suite(hello) successfully</li>
-    <li>Build the apk successfully</li>
     <li>The app can be installed successfully</li>
     <li>The app can launch successfully</li>
     <li>The app can run successfully</li>
