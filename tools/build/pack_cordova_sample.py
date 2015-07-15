@@ -53,7 +53,7 @@ sys.setdefaultencoding('utf8')
 TOOL_VERSION = "v0.1"
 VERSION_FILE = "VERSION"
 DEFAULT_CMD_TIMEOUT = 600
-PKG_NAMES = ["gallery", "helloworld", "remotedebugging", "mobilespec", "CIRC", "Eh"]
+PKG_NAMES = ["gallery", "helloworld", "remotedebugging", "mobilespec", "CIRC", "Eh", "statusbar"]
 CORDOVA_VERSIONS = ["3.6", "4.0"]
 PKG_MODES = ["shared", "embedded"]
 PKG_ARCHS = ["x86", "arm"]
@@ -98,7 +98,7 @@ def replaceUserString(path, fnexp, old_s, new_s):
         if read_string.find(old_s) >= 0:
             try:
                 with open(sub_file, 'w') as sub_write_obj:
-                    sub_write_obj.write(re.sub(old_s, new_s, read_string))
+                    sub_write_obj.write(read_string.replace(old_s, new_s))
             except IOError as err:
                 LOG.error("Modify %s Error : " % sub_file + str(err))
                 continue
@@ -298,6 +298,25 @@ def replaceKey(file_path, content, key):
         return False
     return True
 
+def createIndexFile(index_file_path=None, hosted_app=None):
+    try:
+        if hosted_app == "statusbar":
+            html_content = '<script src="./cordova.js"></script>\n' \
+                           '<div id="header">\n' \
+                           '  <h3 id="main_page_title">Status Bar Test In Fullscreen</h3>\n' \
+                           '</div>\n<br><br>\n' \
+                           '<p>Click "Status Bar Show" button to show status bar:</p>\n' \
+                           '<button onclick="StatusBar.show();">Status Bar Show</button><br><br>\n' \
+                           '<p>Click "Status Bar Hide" button to hide status bar:</p>\n' \
+                           '<button onclick="StatusBar.hide();">Status Bar Hide</button>'
+        index_file = open(index_file_path, "w")
+        index_file.write(html_content)
+        index_file.close()
+    except Exception as e:
+        LOG.error("Fail to create index.html for top-app: %s" % e)
+        return False
+    LOG.info("Success to create index file %s" % index_file_path)
+    return True
 
 def packMobileSpec(app_name=None):
     pack_tool = os.path.join(BUILD_ROOT, "cordova")
@@ -422,6 +441,25 @@ def packSampleApp(app_name=None):
             return False
 
     os.chdir(os.path.join(pack_tool, app_name))
+
+    if checkContains(app_name, "STATUSBAR"):
+        xml_path = os.path.join(pack_tool, app_name, "res", "xml")
+        replaceUserString(
+            xml_path,
+            'config.xml',
+            '</widget>',
+            '<preference name="Fullscreen" value="true" />\n</widget>')
+        replaceUserString(
+            xml_path,
+            'config.xml',
+            '</widget>',
+            '<preference name="disableImmersive" value="true" />\n</widget>')
+        createIndexFile(os.path.join(pack_tool, app_name, "assets", "www", "index.html"), "statusbar")
+
+        status_plugman_cmd = "plugman install --platform android --project . --plugin org.apache.cordova.statusbar@0.1.9"
+        if not doCMD(status_plugman_cmd, DEFAULT_CMD_TIMEOUT):
+            os.chdir(orig_dir)
+            return False
 
     if BUILD_PARAMETERS.cordovaversion == "4.0":
         if BUILD_PARAMETERS.pkgarch == "x86":
@@ -732,6 +770,9 @@ def packMobileSpec_cli(app_name=None):
         plugin_dirs = os.listdir(plugin_tool)
         for i_dir in plugin_dirs:
             i_plugin_dir = os.path.join(plugin_tool, i_dir)
+            os.chdir(i_plugin_dir)
+            output = commands.getoutput("git pull").strip("\r\n")
+            os.chdir(project_root)
             plugin_install_cmd = "cordova plugin add %s" % i_plugin_dir
             if not doCMD(plugin_install_cmd, DEFAULT_CMD_TIMEOUT):
                 os.chdir(orig_dir)
@@ -861,10 +902,30 @@ def packSampleApp_cli(app_name=None):
             return False
 
     os.chdir(project_root)
+
     pack_cmd = "cordova platform add android"
     if not doCMD(pack_cmd, DEFAULT_CMD_TIMEOUT):
         os.chdir(orig_dir)
         return False
+
+    if checkContains(app_name, "STATUSBAR"):
+        replaceUserString(
+            project_root,
+            'config.xml',
+            '</widget>',
+            '    <preference name="Fullscreen" value="true" />\n</widget>')
+        replaceUserString(
+            project_root,
+            'config.xml',
+            '</widget>',
+            '    <preference name="disableImmersive" value="true" />\n</widget>')
+
+        createIndexFile(os.path.join(project_root, "www", "index.html"), "statusbar")
+
+        status_plugman_cmd = "cordova plugin add cordova-plugin-statusbar"
+        if not doCMD(status_plugman_cmd, DEFAULT_CMD_TIMEOUT):
+            os.chdir(orig_dir)
+            return False
 
     plugin_dirs = os.listdir(plugin_tool)
     for i_dir in plugin_dirs:

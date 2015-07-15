@@ -43,41 +43,17 @@ Authors:
   <h3 id="main_page_title"></h3>
 </div>
 <div class="content">
-  <h4>Preconditions</h4>
-  <ol>
-    <li>Require npm</li>
-    <li>Require plugman
-      <div>
-        $ sudo npm install plugman­ -g<br/>
-        Please install plugman with "sudo npm install plugman -g"<br/>
-      </div>
-    </li>
-  </ol>
   <h4>Test Steps</h4>
   <ol>
-    <li>Download crosswalk-cordova-<version>-arm.zip and unzip it</li>
-    <li>Create Cordova example app, e.g. “hello”:</li>
+    <li>Get cordova3.6_sampleapp.zip from internal release link, then unzip it to /tmp/cordova-sampleapp/</li>
+    <li>Install statusbar.apk</li>
       <div>
-        $ cd crosswalk-cordova-<version><br/>
-        For embedded mode: $ ./bin/create hello com.example.hello hello<br/>
-        For Shared mode: $ ./bin/create hello com.example.hello hello --xwalk-shared-library<br/>
+        $ adb install /tmp/cordova-sampleapp/statusbar.apk<br/>
       </div>
-    <li>Setup Cordova example app:
-      <div>
-        $ cd hello<br/>
-        $ sed -i "s/&lt;\/widget&gt;/&nbsp;&nbsp;&nbsp;&nbsp;&lt;preference name=\"Fullscreen\" value=\"true\" \/&gt;\\n&lt;\/widget&gt;/g" res/xml/config.xml<br/>
-        $ sed -i "s/&lt;\/widget&gt;/&nbsp;&nbsp;&nbsp;&nbsp;&lt;preference name=\"disableImmersive\" value=\"true\" \/&gt;\\n&lt;\/widget&gt;/g" res/xml/config.xml<br/>
-        $ plugman install --platform android --project . --plugin org.apache.cordova.statusbar@0.1.9<br/>
-      </div>
-    </li>
-    <li>Copy the 'usecase-cordova-android-tests/res/StatusBar/index.html' file to hello/assets/www directory</li>
-    <li>Build Cordova example app:
-      <div>
-        $ ./cordova/build<br/>
-      </div>
-    </li>
-    <li>Check the apk file generated in hello/bin directory</li>
-    <li>Install, Launch, Run, Click the buttons and Exit the app</li>
+    <li>Launch and Run the app</li>
+    <li>Click the "Status Bar Show" button</li>
+    <li>Click the "Status Bar Hide" button</li>
+    <li>Exit the app</li>
   </ol>
 </div>
 <div class="footer">
@@ -88,8 +64,6 @@ Authors:
   <p>Verify the Cordova StatusBar plugin can work when app in fullscreen mode</p>
   <p>Expected Results:</p>
   <ol>
-    <li>Create test suite(hello) successfully</li>
-    <li>Build the apk successfully</li>
     <li>The app can be installed successfully</li>
     <li>The app can launch successfully</li>
     <li>The app can run successfully</li>
