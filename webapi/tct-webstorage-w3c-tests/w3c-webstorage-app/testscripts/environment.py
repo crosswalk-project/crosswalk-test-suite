@@ -34,9 +34,11 @@ try:
     from urllib2 import URLError
 except ImportError:
     from urllib.error import URLError
+reload(sys)
+sys.setdefaultencoding('utf-8')
 
-webdriver_json_path = os.path.join(
-    os.path.dirname(os.path.abspath(__file__)), "webdriver.json")
+bdd_json_path = os.path.join(
+    os.path.dirname(os.path.abspath(__file__)), "bdd.json")
 
 
 def clean_context(context):
@@ -51,52 +53,52 @@ def clean_context(context):
 
 
 def load_default_config():
-    webdriver_json = None
+    bdd_json = None
     try:
         platform_name = os.environ['TEST_PLATFORM']
         device = os.environ['DEVICE_ID']
         comm_mode = os.environ['CONNECT_TYPE']
         app_launcher = os.environ['LAUNCHER']
-        webdriver_envs = json.loads(os.environ['WEBDRIVER_VARS'])
-        webdriver_json = {}
+        bdd_envs = json.loads(os.environ['WEBDRIVER_VARS'])
+        bdd_json = {}
         platform = {}
         platform.update({"name": platform_name})
         platform.update({"comm-mode": comm_mode})
         platform.update({"device": device})
-        webdriver_json.update({"platform": platform})
-        webdriver_json.update({"test-url": os.path.split(os.path.realpath(__file__))[0]})
+        bdd_json.update({"platform": platform})
+        bdd_json.update({"test-url": os.path.split(os.path.realpath(__file__))[0]})
         if platform_name == "TIZEN":
             tizen_user = os.environ['TIZEN_USER']
-            webdriver_json.update({"tizen_user": tizen_user})
-        webdriver_json.update({"app_launcher": app_launcher})
-        webdriver_json.update(
-            {"desired-capabilities": webdriver_envs["desired_capabilities"]})
-        webdriver_json.update({"driver-url": webdriver_envs["webdriver_url"]})
-        if "test_prefix" in webdriver_envs:
-            webdriver_json.update(
-                {"url-prefix": webdriver_envs["test_prefix"]})
+            bdd_json.update({"tizen_user": tizen_user})
+        bdd_json.update({"app_launcher": app_launcher})
+        bdd_json.update(
+            {"desired-capabilities": bdd_envs["desired_capabilities"]})
+        bdd_json.update({"driver-url": bdd_envs["webdriver_url"]})
+        if "test_prefix" in bdd_envs:
+            bdd_json.update(
+                {"url-prefix": bdd_envs["test_prefix"]})
         else:
-            webdriver_json.update({"url-prefix": ""})
+            bdd_json.update({"url-prefix": ""})
     except Exception as e:
-        print "Failed to get test envs: %s, switch to webdriver.json" % e
+        print "Failed to get test envs: %s, switch to bdd.json" % e
         try:
-            with open(webdriver_json_path, "rt") as webdriver_json_file:
-                webdriver_json_raw = webdriver_json_file.read()
-                webdriver_json_file.close()
-                webdriver_json = json.loads(webdriver_json_raw)
+            with open(bdd_json_path, "rt") as bdd_json_file:
+                bdd_json_raw = bdd_json_file.read()
+                bdd_json_file.close()
+                bdd_json = json.loads(bdd_json_raw)
         except Exception as e:
-            print "Failed to read webdriver json: %s" % e
+            print "Failed to read bdd json: %s" % e
             return None
 
-    return webdriver_json
+    return bdd_json
 
 
 def before_all(context):
     atipenv.before_all(context)
     context.app = None
     context.apps = {}
-    context.web_config = load_default_config()
-    if not context.web_config:
+    context.bdd_config = load_default_config()
+    if not context.bdd_config:
         sys.exit(1)
 
 

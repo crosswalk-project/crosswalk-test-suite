@@ -20,16 +20,16 @@ In Crosswalk testing, the template need to know the some test vars, e.g. which d
 
 ATIP source provides a script "tools/set_env.sh" which can help you to setup those environment vars. Especially, the environment.py template can get those environment vars from Testkit-lite tool automatically:
 
-A JSON config file which named "webdriver.json for environment vars sharing, a template provided for reference: "atip/tools/webdriver.*.json"  
+A JSON config file which named "bdd.json" for environment vars sharing, a template provided for reference: "atip/tools/bdd.*.json"  
 
 * Configuration source layout
 ```
 tools/
 |-- set_env.sh
-|-- webdriver.chrome.json
-|-- webdriver.xw_android_cordova.json
-|-- webdriver.xw_android_xwalk.json
-`-- webdriver.xw_tizen.json
+|-- bdd.chrome.json
+|-- bdd.android_cordova.json
+|-- bdd.android_xwalk.json
+`-- bdd.xw_tizen.json
 ```
 
 ## Tests Development

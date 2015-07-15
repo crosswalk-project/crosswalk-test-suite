@@ -35,20 +35,23 @@ if [[ $# == 0 ]]; then
     unset TIZEN_USER
     unset LAUNCHER
     unset WEBDRIVER_VARS
-elif [[ $1 == "xw_android_xwalk" ]]; then
+    unset ANDROID_VARS
+elif [[ $1 == "android_xwalk" ]]; then
     export TEST_PLATFORM="android"
     export DEVICE_ID=""
     export CONNECT_TYPE="adb"
     export TIZEN_USER=""
     export LAUNCHER="XWalkLauncher"
     export WEBDRIVER_VARS="{\"webdriver_url\":\"http://127.0.0.1:9515\", \"desired_capabilities\": {\"xwalkOptions\": {\"androidPackage\": \"TEST_PKG_NAME\", \"androidActivity\": \"TEST_ACTIVITY_NAME\"}}, \"test_prefix\": \"file:///android_asset/www/\"}"
-elif [[ $1 == "xw_android_cordova" ]]; then
+    export ANDROID_VARS="{\"androidPackage\": \"org.xwalk.embedded.api.sample\", \"androidActivity\": \"XWalkEmbeddedAPISample\"}"    
+elif [[ $1 == "android_cordova" ]]; then
     export TEST_PLATFORM="android"
     export DEVICE_ID=""
     export CONNECT_TYPE="adb"
     export TIZEN_USER=""
     export LAUNCHER="CordovaLauncher"
     export WEBDRIVER_VARS="{\"webdriver_url\":\"http://127.0.0.1:9515\", \"desired_capabilities\": {\"xwalkOptions\": {\"androidPackage\": \"TEST_PKG_NAME\", \"androidActivity\": \"TEST_ACTIVITY_NAME\"}}, \"test_prefix\": \"file:///android_asset/www/\"}"
+    export ANDROID_VARS="{\"androidPackage\": \"org.xwalk.embedded.api.sample\", \"androidActivity\": \"XWalkEmbeddedAPISample\"}"    
 elif [[ $1 == "xw_tizen" ]]; then
     export TEST_PLATFORM="tizen"
     export DEVICE_ID=""
