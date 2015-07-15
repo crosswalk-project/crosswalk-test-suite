@@ -72,8 +72,7 @@
         <extensions>true</extensions>
         <configuration>
             <undeployBeforeDeploy>true</undeployBeforeDeploy>
-            <!-- tell build process to use filtered manifest 
-            <androidManifestFile>${project.build.directory}/filtered-manifest/src/main/AndroidManifest.xml</androidManifestFile>-->
+            <!-- tell build process to use filtered manifest -->
             <androidManifestFile>${project.build.directory}/filtered-manifest/src/main/AndroidManifest.xml</androidManifestFile>
             <sdk>
             <platform>21</platform>
@@ -105,14 +104,6 @@
                 </execution>
             </executions>
         </plugin>
-     <!--plugin>
-        <groupId>org.apache.maven.plugins</groupId>
-        <artifactId>maven-surefire-plugin</artifactId>
-        <configuration>
-          <argLine>-Xmx512m -XX:MaxPermSize=128m</argLine>
-          <testFailureIgnore>true</testFailureIgnore>
-        </configuration>
-      </plugin-->
     </plugins>
   </build>
 
@@ -126,7 +117,7 @@
             <dependency>
               <groupId>org.xwalk</groupId>
               <artifactId>xwalk_core_library_beta</artifactId>
-              <version>14.43.343.15</version>
+              <version>{crosswalk.version}</version>
               <classifier>x86</classifier>
               <type>aar</type>
             </dependency>
@@ -147,7 +138,7 @@
             <dependency>
               <groupId>org.xwalk</groupId>
               <artifactId>xwalk_core_library_beta</artifactId>
-              <version>14.43.343.15</version>
+              <version>{crosswalk.version}</version>
               <classifier>arm</classifier>
               <type>aar</type>
             </dependency>
