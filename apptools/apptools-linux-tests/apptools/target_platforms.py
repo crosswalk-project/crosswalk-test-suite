@@ -36,10 +36,10 @@ import commands
 
 class TestCrosswalkApptoolsFunctions(unittest.TestCase):
 
-    def test_list_backends(self):
+    def test_list_target_platforms(self):
         comm.setUp()
         os.chdir(comm.TEMP_DATA_PATH)
-        cmd = "crosswalk-app backends"
+        cmd = "crosswalk-app platforms"
         status = os.popen(cmd).readlines()
         self.assertEquals("deb", status[0].strip(" *\n"))
         self.assertEquals("android", status[1].strip(" *\n"))
