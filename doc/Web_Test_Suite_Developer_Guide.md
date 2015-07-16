@@ -565,8 +565,8 @@ Tests.xml Example.
 - W3C API Specifications:Graphics:HTML5 canvas element
 - W3C API Specifications:Graphics:HTML5 2D Canvas Context
 - W3C API Specifications:Graphics:HTML5 SVG
-- W3C API Specifications:Media:HTML5 audio element
-- W3C API Specifications:Media:HTML5 video element
+- W3C API Specifications:Media:HTML5 Audio Element
+- W3C API Specifications:Media:HTML5 Video Element
 - W3C API Specifications:Media:getUserMedia
 - W3C API Specifications:Media:Web Audio API (Partial)
 - W3C API Specifications:Media:HTML Media Capture
