@@ -16,22 +16,47 @@
         "apk,cordova": {
             "blacklist": [],
             "copylist": {
+                "PACK-TOOL-ROOT/resources/bdd/bddrunner": "bddrunner",
+                "PACK-TOOL-ROOT/resources/bdd/data.conf": "data.conf",
                 "inst.apk.py": "inst.py",
                 "PACK-TOOL-ROOT/resources/testharness": "resources",
                 "PACK-TOOL-ROOT/resources/webrunner": "webrunner",
                 "tests.full.xml": "tests.full.xml",
-                "tests.xml": "tests.xml"
+                "tests.xml": "tests.xml",
+                "html5-canvas-app/testscripts": "html5-canvas-app/testscripts",
+                "html5-canvas-app/data": "data"
             },
             "pkg-app": {
+                "apk-common-opts":"--enable-remote-debugging",
                 "blacklist": [],
                 "hosted-app": "true"
+            },
+            "subapp-list": {
+                "html5-canvas-app": {
+                    "apk-common-opts": "--enable-remote-debugging",
+                    "apk-icon-opt": "",
+                    "copylist": {
+                        "../canvas/w3c/bdd": "canvas/w3c"
+                    }
+                }
             }
         },
         "apk-aio, cordova-aio": {
             "blacklist": [],
             "copylist": {
                 "PACK-TOOL-ROOT/resources/testharness": "resources",
-                "PACK-TOOL-ROOT/resources/webrunner": "webrunner"
+                "PACK-TOOL-ROOT/resources/webrunner": "webrunner",
+                "html5-canvas-app/testscripts": "HOST_RESOURCES/html5-canvas-app/testscripts",
+                "html5-canvas-app/data": "HOST_RESOURCES/data"
+            },
+            "subapp-list": {
+                "html5-canvas-app": {
+                    "apk-common-opts": "--enable-remote-debugging",
+                    "apk-icon-opt": "",
+                    "copylist": {
+                        "../canvas/w3c/bdd": "canvas/w3c"
+                    }
+                }
             }
         },
         "wgt": {
