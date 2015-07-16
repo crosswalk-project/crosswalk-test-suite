@@ -40,14 +40,14 @@ bdd_json_path = os.path.join(
 
 
 def clean_context(context):
-    for app in context.apps.values():
+    for app in context.webs.values():
         try:
             app.quit()
         except URLError:
             pass
 
-    context.app = None
-    context.apps = {}
+    context.web = None
+    context.webs = {}
 
 
 def load_default_config():
@@ -93,8 +93,8 @@ def load_default_config():
 
 def before_all(context):
     atipenv.before_all(context)
-    context.app = None
-    context.apps = {}
+    context.web = None
+    context.webs = {}
     context.bdd_config = load_default_config()
     if not context.bdd_config:
         sys.exit(1)

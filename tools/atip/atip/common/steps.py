@@ -52,8 +52,8 @@ def launch_app_by_names(context, app_name, apk_pkg_name, apk_activity_name):
 
 @step(u'switch to "{app_name}"')
 def switch_to_app_name(context, app_name):
-    if app_name in context.apps:
-        context.app = context.apps[app_name]
+    if app_name in context.webs:
+        context.web = context.webs[app_name]
         assert True
     else:
         assert False
@@ -61,8 +61,8 @@ def switch_to_app_name(context, app_name):
 
 @step(u'quit "{app_name}"')
 def quit_app_by_name(context, app_name):
-    if app_name in context.apps:
-        context.app.quit()
+    if app_name in context.webs:
+        context.web.quit()
         assert True
     else:
         assert False
@@ -71,10 +71,10 @@ def quit_app_by_name(context, app_name):
 @step(
     u'pic "{pic1}" and pic "{pic2}" should be more than "{similarity}" similar')
 def check_picture(context, pic1, pic2, similarity):
-    assert context.app.check_pic_same(pic1, pic2, similarity)
+    assert context.web.check_pic_same(pic1, pic2, similarity)
 
 
 @step(
     u'pic "{pic1}" and pic "{pic2}" should be less than "{similarity}" similar')
 def check_picture(context, pic1, pic2, similarity):
-    assert context.app.check_pic_different(pic1, pic2, similarity)
+    assert context.web.check_pic_different(pic1, pic2, similarity)

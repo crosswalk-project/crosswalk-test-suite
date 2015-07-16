@@ -62,7 +62,7 @@ A simple step example as below
 @step(u'I go to "{url}"')
 def i_visit_url(context, url):
     url = get_page_url(context, url)
-    assert context.app.switch_url(url, True)
+    assert context.web.switch_url(url, True)
 ```
 
 ## ATIP Library  

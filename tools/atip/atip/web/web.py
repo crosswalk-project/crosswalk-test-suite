@@ -748,11 +748,11 @@ def launch_webapp_by_name(
     if not context.web_config:
         assert False
 
-    if app_name in context.apps:
-        context.apps[app_name].quit()
-    context.apps.update(
+    if app_name in context.webs:
+        context.webs[app_name].quit()
+    context.webs.update(
         {app_name: WebAPP(context.web_config, app_name, apk_pkg_name, apk_activity_name)})
-    context.app = context.apps[app_name]
-    if not context.app.launch_app():
+    context.web = context.webs[app_name]
+    if not context.web.launch_app():
         assert False
     assert True
