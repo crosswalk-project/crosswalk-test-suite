@@ -16,7 +16,7 @@
                 "*"
             ],
             "copylist": {
-                "bddrunner": "bddrunner",
+                "PACK-TOOL-ROOT/resources/bdd/bddrunner": "bddrunner",
                 "inst.apk.py": "inst.py",
                 "tests.full.xml": "tests.full.xml",
                 "tests.xml": "tests.xml",
@@ -43,17 +43,18 @@
                 "blacklist": [],
                 "copylist": {
                     "PACK-TOOL-ROOT/resources/testharness": "resources",
-                    "PACK-TOOL-ROOT/resources/webrunner": "webrunner"
+                    "PACK-TOOL-ROOT/resources/webrunner": "webrunner",
+                    "w3c-webstorage-app/testscripts": "HOST_RESOURCES/w3c-webstorage-app/testscripts"
                 },
-            "subapp-list": {
-                "w3c-webstorage-app": {
-                    "apk-common-opts": "--enable-remote-debugging",
-                    "install-path": "app",
-                    "copylist": {
-                        "../webstorage/bdd": "webstorage"
+                "subapp-list": {
+                    "w3c-webstorage-app": {
+                        "apk-common-opts": "--enable-remote-debugging",
+                        "install-path": "app",
+                        "copylist": {
+                            "../webstorage/bdd": "webstorage"
+                        }
                     }
                 }
-            }
         },
         "wgt": {
             "blacklist": [

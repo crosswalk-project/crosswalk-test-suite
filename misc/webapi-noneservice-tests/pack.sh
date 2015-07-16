@@ -62,19 +62,29 @@ echo "        ]
 
 if [ $pack_type == "cordova" ]; then
     for suite in $LIST;do
+        suitename=`basename $suite`
         if [ $sub_version == "4.0" ]; then
-            python $SRC_ROOT/../../tools/build/pack.py -t ${pack_type}-aio -a $arch -d $BUILD_DEST --sub-version $sub_version -s $SRC_ROOT/../../webapi/`basename $suite`
+            python $SRC_ROOT/../../tools/build/pack.py -t ${pack_type}-aio -a $arch -d $BUILD_DEST --sub-version $sub_version -s $SRC_ROOT/../../webapi/$suitename
         elif [ $sub_version == "3.6" ]; then
-            python $SRC_ROOT/../../tools/build/pack.py -t ${pack_type}-aio -m $pack_mode -d $BUILD_DEST --sub-version $sub_version -s $SRC_ROOT/../../webapi/`basename $suite`
+            python $SRC_ROOT/../../tools/build/pack.py -t ${pack_type}-aio -m $pack_mode -d $BUILD_DEST --sub-version $sub_version -s $SRC_ROOT/../../webapi/$suitename
         else
             echo "package sub version can only be 3.6 or 4.0, now exit.... >>>>>>>>>>>>>>>>>>>>>>>>>"
             clean_workspace
             exit 1
         fi
+        if [ -d $BUILD_DEST/opt/$suitename/HOST_RESOURCES ]; then
+            mkdir -p $BUILD_ROOT/host_resources/opt/$suitename
+            mv $BUILD_DEST/opt/$suitename/HOST_RESOURCES/* $BUILD_ROOT/host_resources/opt/$suitename
+        fi
     done
 else
     for suite in $LIST;do
-        python $SRC_ROOT/../../tools/build/pack.py -t ${pack_type}-aio -m $pack_mode -a $arch -d $BUILD_DEST -s $SRC_ROOT/../../webapi/`basename $suite`
+        suitename=`basename $suite`
+        python $SRC_ROOT/../../tools/build/pack.py -t ${pack_type}-aio -m $pack_mode -a $arch -d $BUILD_DEST -s $SRC_ROOT/../../webapi/$suitename
+        if [ -d $BUILD_DEST/opt/$suitename/HOST_RESOURCES ]; then
+            mkdir -p $BUILD_ROOT/host_resources/opt/$suitename
+            mv $BUILD_DEST/opt/$suitename/HOST_RESOURCES/* $BUILD_ROOT/host_resources/opt/$suitename
+        fi
     done
 fi
 
@@ -207,6 +217,12 @@ fi
 ## cp tests.xml and inst.sh ##
 cp $BUILD_ROOT/inst.py $BUILD_DEST/opt/$name/inst.py
 cp -a $BUILD_ROOT/apps $BUILD_DEST/opt/$name
+if [ -d $BUILD_ROOT/host_resources/opt ]; then
+    cp -r $BUILD_ROOT/host_resources/opt $BUILD_DEST/opt/$name
+fi
+cp -a $SRC_ROOT/../../tools/resources/bdd/bddrunner $BUILD_DEST/opt/$name
+cp -a $SRC_ROOT/../../tools/resources/bdd/data.conf $BUILD_DEST/opt/$name
+cp -a $SRC_ROOT/../../tools/resources/xsl/* $BUILD_DEST/opt/$name
 
 for suite in `ls $BUILD_ROOT |grep "\-tests" |grep -v spec$`;do
     cp $BUILD_ROOT/$suite/tests.xml  $BUILD_DEST/opt/$name/$suite.tests.xml

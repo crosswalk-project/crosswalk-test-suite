@@ -16,8 +16,8 @@
                 "*"
             ],
             "copylist": {
-                "bddrunner": "bddrunner",
-                "data.conf": "data.conf",
+                "PACK-TOOL-ROOT/resources/bdd/bddrunner": "bddrunner",
+                "PACK-TOOL-ROOT/resources/bdd/data.conf": "data.conf",
                 "inst.apk.py": "inst.py",
                 "tests.full.xml": "tests.full.xml",
                 "tests.xml": "tests.xml",
@@ -48,7 +48,19 @@
             "copylist": {
                 "PACK-TOOL-ROOT/resources/testharness": "resources",
                 "PACK-TOOL-ROOT/resources/webrunner": "webrunner",
-                "fonts/csswg/support": "fonts/csswg/bdd/support"
+                "fonts/csswg/support": "fonts/csswg/bdd/support",
+                "css3-fonts-app/testscripts": "HOST_RESOURCES/css3-fonts-app/testscripts",
+                "css3-fonts-app/data": "HOST_RESOURCES/data"
+            },
+            "subapp-list": {
+                "css3-fonts-app": {
+                    "apk-common-opts": "--enable-remote-debugging",
+                    "apk-icon-opt": "",
+                    "copylist": {
+                        "../fonts/csswg/bdd": "fonts/csswg",
+                        "../fonts/csswg/support": "fonts/csswg/support"
+                    }
+                }
             }
         },
         "wgt": {
