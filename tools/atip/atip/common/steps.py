@@ -29,43 +29,11 @@
 import time
 from behave import step
 from atip.web import web
-
+from atip.android import android
 
 @step(u'I wait for {timeout:d} seconds')
 def wait_for_timeout(context, timeout):
     time.sleep(timeout)
-
-
-@step(u'launch "{app_name}"')
-def launch_app_by_name(context, app_name):
-    web.launch_webapp_by_name(context, app_name)
-
-
-@step(u'I launch "{app_name}" with "{apk_pkg_name}" and "{apk_activity_name}"')
-def launch_app_by_names(context, app_name, apk_pkg_name, apk_activity_name):
-    web.launch_webapp_by_name(
-        context,
-        app_name,
-        apk_pkg_name,
-        apk_activity_name)
-
-
-@step(u'switch to "{app_name}"')
-def switch_to_app_name(context, app_name):
-    if app_name in context.apps:
-        context.app = context.apps[app_name]
-        assert True
-    else:
-        assert False
-
-
-@step(u'quit "{app_name}"')
-def quit_app_by_name(context, app_name):
-    if app_name in context.apps:
-        context.app.quit()
-        assert True
-    else:
-        assert False
 
 
 @step(
