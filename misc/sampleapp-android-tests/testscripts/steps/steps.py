@@ -51,16 +51,16 @@ def i_press_cycle(context, key_prefix, n):
         for j in range(i, n + 1):
             key1 = key_prefix + str(i)
             # print "key:" + key1
-            assert context.app.press_element_by_key(key1)
+            assert context.web.press_element_by_key(key1)
             time.sleep(1)
             key2 = key_prefix + str(j)
-            assert context.app.press_element_by_key(key2)
+            assert context.web.press_element_by_key(key2)
             time.sleep(0.1)
 
 
 @step(u'I verify "{text}" with link "{link}"')
 def check_link_by_text(context, link, text):
-    element = context.app.driver.find_element_by_link_text(text)
+    element = context.web.driver.find_element_by_link_text(text)
     # print "hyperlink:" , element.get_attribute('href')
     # print "link:", link
     hyperlink = element.get_attribute('href')
@@ -73,7 +73,7 @@ def check_link_by_text(context, link, text):
 
 @step(u'I click button with class "{classname}" and text "{text}"')
 def click_button_by_class_and_text(context, classname, text):
-    elements = context.app.driver.find_elements_by_class_name(classname)
+    elements = context.web.driver.find_elements_by_class_name(classname)
     length = len(elements)
     for i in range(0, length):
         # print "loop i:", i
@@ -91,8 +91,8 @@ def wait_senconds(context, n):
 
 @step(u'I check screenshot should be "{exp_md5}"')
 def i_check_screenshot_base64_md5(context, exp_md5):
-    pic_base64 = context.app.driver.get_screenshot_as_base64()
-    # context.app.driver.get_screenshot_as_file("/home/cici/webdriver/auto/wrt-sampleapp-android-tests/testscripts/pic.png")
+    pic_base64 = context.web.driver.get_screenshot_as_base64()
+    # context.web.driver.get_screenshot_as_file("/home/cici/webdriver/auto/wrt-sampleapp-android-tests/testscripts/pic.png")
     pic_md5 = get_string_md5(pic_base64)
     print "pic_md5", pic_md5
     print "exp_md5", exp_md5
@@ -105,7 +105,7 @@ def i_check_screenshot_base64_md5(context, exp_md5):
 @step(
     u'I check screenshot "{img}" should have {percent:d} similarity with "{baseline_img}"')
 def i_check_screenshot(context, img, baseline_img, percent):
-    context.app.driver.get_screenshot_as_file(img)
+    context.web.driver.get_screenshot_as_file(img)
     # print "screenshot:", img
     # print "baseline img:", baseline_img
     similarity = cal_images_similar(img, baseline_img)
@@ -128,14 +128,14 @@ def compare_values(value1, value2, num):
 @step(
     u'I check "{eid}" is {num:f} times after click "{eid2}" for {nsec:d} seconds')
 def I_compare_values(context, eid, num, eid2, nsec):
-    element = context.app.driver.find_element_by_id(eid)
+    element = context.web.driver.find_element_by_id(eid)
     text = element.text
     value_start = float(text)
-    element = context.app.driver.find_element_by_id(eid2)
+    element = context.web.driver.find_element_by_id(eid2)
     # print "element2:", element.text
     element.click()
     time.sleep(nsec)
-    element = context.app.driver.find_element_by_id(eid)
+    element = context.web.driver.find_element_by_id(eid)
     text = element.text
     value_end = float(text)
     compare_values(value_start, value_end, num)
