@@ -745,13 +745,13 @@ class WebAPP(common.APP):
 
 def launch_webapp_by_name(
         context, app_name, apk_pkg_name=None, apk_activity_name=None):
-    if not context.web_config:
+    if not context.bdd_config:
         assert False
 
     if app_name in context.webs:
         context.webs[app_name].quit()
     context.webs.update(
-        {app_name: WebAPP(context.web_config, app_name, apk_pkg_name, apk_activity_name)})
+        {app_name: WebAPP(context.bdd_config, app_name, apk_pkg_name, apk_activity_name)})
     context.web = context.webs[app_name]
     if not context.web.launch_app():
         assert False
