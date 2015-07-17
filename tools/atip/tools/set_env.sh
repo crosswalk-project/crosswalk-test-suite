@@ -35,14 +35,14 @@ if [[ $# == 0 ]]; then
     unset TIZEN_USER
     unset LAUNCHER
     unset WEBDRIVER_VARS
-elif [[ $1 == "xw_android_xwalk" ]]; then
+elif [[ $1 == "android_xwalk" ]]; then
     export TEST_PLATFORM="android"
     export DEVICE_ID=""
     export CONNECT_TYPE="adb"
     export TIZEN_USER=""
     export LAUNCHER="XWalkLauncher"
     export WEBDRIVER_VARS="{\"webdriver_url\":\"http://127.0.0.1:9515\", \"desired_capabilities\": {\"xwalkOptions\": {\"androidPackage\": \"TEST_PKG_NAME\", \"androidActivity\": \"TEST_ACTIVITY_NAME\"}}, \"test_prefix\": \"file:///android_asset/www/\"}"
-elif [[ $1 == "xw_android_cordova" ]]; then
+elif [[ $1 == "android_cordova" ]]; then
     export TEST_PLATFORM="android"
     export DEVICE_ID=""
     export CONNECT_TYPE="adb"
