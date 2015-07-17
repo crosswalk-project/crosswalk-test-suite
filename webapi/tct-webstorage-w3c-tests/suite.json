@@ -17,6 +17,7 @@
             ],
             "copylist": {
                 "PACK-TOOL-ROOT/resources/bdd/bddrunner": "bddrunner",
+                "PACK-TOOL-ROOT/atip/tests/environment.py": "w3c-webstorage-app/testscripts/environment.py",
                 "inst.apk.py": "inst.py",
                 "tests.full.xml": "tests.full.xml",
                 "tests.xml": "tests.xml",
@@ -40,21 +41,22 @@
             }
         },
         "apk-aio, cordova-aio": {
-                "blacklist": [],
-                "copylist": {
-                    "PACK-TOOL-ROOT/resources/testharness": "resources",
-                    "PACK-TOOL-ROOT/resources/webrunner": "webrunner",
-                    "w3c-webstorage-app/testscripts": "HOST_RESOURCES/w3c-webstorage-app/testscripts"
-                },
-                "subapp-list": {
-                    "w3c-webstorage-app": {
-                        "apk-common-opts": "--enable-remote-debugging",
-                        "install-path": "app",
-                        "copylist": {
-                            "../webstorage/bdd": "webstorage"
-                        }
+            "blacklist": [],
+            "copylist": {
+                "PACK-TOOL-ROOT/resources/testharness": "resources",
+                "PACK-TOOL-ROOT/resources/webrunner": "webrunner",
+                "PACK-TOOL-ROOT/atip/tests/environment.py": "HOST_RESOURCES/w3c-webstorage-app/testscripts/environment.py",
+                "w3c-webstorage-app/testscripts": "HOST_RESOURCES/w3c-webstorage-app/testscripts"
+            },
+            "subapp-list": {
+                "w3c-webstorage-app": {
+                    "apk-common-opts": "--enable-remote-debugging",
+                    "install-path": "app",
+                    "copylist": {
+                        "../webstorage/bdd": "webstorage"
                     }
                 }
+            }
         },
         "wgt": {
             "blacklist": [
