@@ -2424,16 +2424,6 @@
           <test_script_entry test_script_expected_result="0">/opt/tct-extra-html5-tests/semantics/sections/the-footer-element/footer_element.html?total_num=3&amp;amp;locator_key=id&amp;amp;value=1</test_script_entry>
         </description>
       </testcase>
-      <testcase component="W3C_HTML5 APIs/W3C_EXTRAHTML5/Semantics" execution_type="manual" id="figure_element_support" purpose="Check the figure element visual effect">
-        <description>
-          <test_script_entry test_script_expected_result="0">/opt/tct-extra-html5-tests/semantics/grouping-content/the-figure-element/figure_element-manual.html</test_script_entry>
-        </description>
-      </testcase>
-      <testcase component="W3C_HTML5 APIs/W3C_EXTRAHTML5/Semantics" execution_type="manual" id="figcaption_element_support" purpose="Check the figcaption element visual effect">
-        <description>
-          <test_script_entry test_script_expected_result="0">/opt/tct-extra-html5-tests/semantics/grouping-content/the-figcaption-element/figcaption_element-manual.html</test_script_entry>
-        </description>
-      </testcase>
       <testcase component="W3C_HTML5 APIs/W3C_EXTRAHTML5/Semantics" execution_type="auto" id="mark_element_support" purpose="Check if the mark element supports">
         <description>
           <test_script_entry test_script_expected_result="0">/opt/tct-extra-html5-tests/semantics/text-level-semantics/the-mark-element/mark_element_exist.html</test_script_entry>
@@ -2569,11 +2559,6 @@
           <test_script_entry>/opt/tct-extra-html5-tests/semantics/forms/the-input-element/input_required.html</test_script_entry>
         </description>
       </testcase>
-      <testcase component="W3C_HTML5 APIs/W3C_EXTRAHTML5/Semantics" execution_type="manual" id="textarea-placeholder" purpose="Check if there is a 'Placeholder Text' in the text area, and if the 'Placeholder Text' disappears after type in any character">
-        <description>
-          <test_script_entry test_script_expected_result="0">/opt/tct-extra-html5-tests/w3c/semantics/forms/the-textarea-element/textarea-placeholder-manual.html</test_script_entry>
-        </description>
-      </testcase>
       <testcase component="W3C_HTML5 APIs/W3C_EXTRAHTML5/Semantics" execution_type="auto" id="textarea_element_maxLength" purpose="Check the textarea maxlength attribute exists">
         <description>
           <test_script_entry>/opt/tct-extra-html5-tests/w3c/semantics/forms/the-textarea-element/form-validation-validity-tooLong.html?total_num=63&amp;amp;locator_key=id&amp;amp;value=59</test_script_entry>
@@ -2612,11 +2597,6 @@
       <testcase component="W3C_HTML5 APIs/W3C_EXTRAHTML5/Semantics" execution_type="auto" id="details_open_support" purpose="Check if details.open exists">
         <description>
           <test_script_entry test_script_expected_result="0">/opt/tct-extra-html5-tests/semantics/interactive-elements/the-details-element/details_attributes.html?total_num=2&amp;amp;locator_key=id&amp;amp;value=1</test_script_entry>
-        </description>
-      </testcase>
-      <testcase component="W3C_HTML5 APIs/W3C_EXTRAHTML5/Semantics" execution_type="manual" id="mark_background_is_yellow" purpose="Check if the mark background is yellow">
-        <description>
-          <test_script_entry test_script_expected_result="0">/opt/tct-extra-html5-tests/semantics/text-level-semantics/the-mark-element/mark_element_base_usage-manual.html</test_script_entry>
         </description>
       </testcase>
       <testcase component="W3C_HTML5 APIs/W3C_EXTRAHTML5/Semantics" execution_type="auto" id="details_open_value" purpose="Check if details open default value is false">
@@ -3319,6 +3299,32 @@
         <description>
           <test_script_entry test_script_expected_result="0">/opt/tct-extra-html5-tests/xhtml5/w3c/object_border_pixel-manual.xhtml</test_script_entry>
           <refer_test_script_entry timeout="90">/opt/tct-extra-html5-tests/xhtml5/w3c/object_border-ref.xhtml</refer_test_script_entry>
+        </description>
+      </testcase>
+    </set>
+    <set name="semantics-bdd" type="js" ui-auto="bdd">
+      <testcase component="W3C_HTML5 APIs/W3C_EXTRAHTML5/Semantics" execution_type="manual" id="figure_element_support" purpose="Check the figure element visual effect">
+        <description>
+          <test_script_entry test_script_expected_result="0">/opt/tct-extra-html5-tests/semantics/grouping-content/the-figure-element/bdd/figure_element-manual.html</test_script_entry>
+          <bdd_test_script_entry test_script_expected_result="0">/opt/tct-extra-html5-tests/html5-extra-app/testscripts/figure_element.feature</bdd_test_script_entry>
+        </description>
+      </testcase>
+      <testcase component="W3C_HTML5 APIs/W3C_EXTRAHTML5/Semantics" execution_type="manual" id="figcaption_element_support" purpose="Check the figcaption element visual effect">
+        <description>
+          <test_script_entry test_script_expected_result="0">/opt/tct-extra-html5-tests/semantics/grouping-content/the-figcaption-element/bdd/figcaption_element-manual.html</test_script_entry>
+          <bdd_test_script_entry test_script_expected_result="0">/opt/tct-extra-html5-tests/html5-extra-app/testscripts/figcaption_element.feature</bdd_test_script_entry>
+        </description>
+      </testcase>
+      <testcase component="W3C_HTML5 APIs/W3C_EXTRAHTML5/Semantics" execution_type="manual" id="mark_background_is_yellow" purpose="Check if the mark background is yellow">
+        <description>
+          <test_script_entry test_script_expected_result="0">/opt/tct-extra-html5-tests/semantics/text-level-semantics/the-mark-element/bdd/mark_element_base_usage-manual.html</test_script_entry>
+          <bdd_test_script_entry test_script_expected_result="0">/opt/tct-extra-html5-tests/html5-extra-app/testscripts/mark_element_base_usage.feature</bdd_test_script_entry>
+        </description>
+      </testcase>
+      <testcase component="W3C_HTML5 APIs/W3C_EXTRAHTML5/Semantics" execution_type="manual" id="textarea-placeholder" purpose="Check if there is a 'Placeholder Text' in the text area, and if the 'Placeholder Text' disappears after type in any character">
+        <description>
+          <test_script_entry test_script_expected_result="0">/opt/tct-extra-html5-tests/w3c/semantics/forms/the-textarea-element/bdd/textarea-placeholder-manual.html</test_script_entry>
+          <bdd_test_script_entry test_script_expected_result="0">/opt/tct-extra-html5-tests/html5-extra-app/testscripts/textarea-placeholder.feature</bdd_test_script_entry>
         </description>
       </testcase>
     </set>

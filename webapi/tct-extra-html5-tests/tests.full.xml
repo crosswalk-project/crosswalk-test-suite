@@ -5777,30 +5777,6 @@
           </spec>
         </specs>
       </testcase>
-      <testcase component="W3C_HTML5 APIs/W3C_EXTRAHTML5/Semantics" execution_type="manual" id="figure_element_support" priority="P3" purpose="Check the figure element visual effect" status="approved" type="compliance">
-        <description>
-          <test_script_entry test_script_expected_result="0">/opt/tct-extra-html5-tests/semantics/grouping-content/the-figure-element/figure_element-manual.html</test_script_entry>
-        </description>
-        <specs>
-          <spec>
-            <spec_assertion category="W3C HTML5 API Specifications" interface="HTMLElement" section="ExtraHTML5" specification="HTML5 element" usage="true"/>
-            <spec_url>http://www.w3.org/TR/2012/CR-html5-20121217/grouping-content.html#the-figure-element</spec_url>
-            <spec_statement/>
-          </spec>
-        </specs>
-      </testcase>
-      <testcase component="W3C_HTML5 APIs/W3C_EXTRAHTML5/Semantics" execution_type="manual" id="figcaption_element_support" priority="P3" purpose="Check the figcaption element visual effect" status="approved" type="compliance">
-        <description>
-          <test_script_entry test_script_expected_result="0">/opt/tct-extra-html5-tests/semantics/grouping-content/the-figcaption-element/figcaption_element-manual.html</test_script_entry>
-        </description>
-        <specs>
-          <spec>
-            <spec_assertion category="W3C HTML5 API Specifications" interface="HTMLElement" section="ExtraHTML5" specification="HTML5 element" usage="true"/>
-            <spec_url>http://www.w3.org/TR/2012/CR-html5-20121217/grouping-content.html#the-figcaption-element</spec_url>
-            <spec_statement/>
-          </spec>
-        </specs>
-      </testcase>
       <testcase component="W3C_HTML5 APIs/W3C_EXTRAHTML5/Semantics" execution_type="auto" id="mark_element_support" priority="P3" purpose="Check if the mark element supports" status="approved" type="compliance">
         <description>
           <test_script_entry test_script_expected_result="0">/opt/tct-extra-html5-tests/semantics/text-level-semantics/the-mark-element/mark_element_exist.html</test_script_entry>
@@ -6123,18 +6099,6 @@
           </spec>
         </specs>
       </testcase>
-      <testcase component="W3C_HTML5 APIs/W3C_EXTRAHTML5/Semantics" execution_type="manual" id="textarea-placeholder" priority="P1" purpose="Check if there is a 'Placeholder Text' in the text area, and if the 'Placeholder Text' disappears after type in any character" status="approved" type="compliance">
-        <description>
-          <test_script_entry test_script_expected_result="0">/opt/tct-extra-html5-tests/w3c/semantics/forms/the-textarea-element/textarea-placeholder-manual.html</test_script_entry>
-        </description>
-        <specs>
-          <spec>
-            <spec_assertion category="W3C HTML5 API Specifications" element_name="placeholder" element_type="attribute" interface="HTMLTextAreaElement" section="ExtraHTML5" specification="HTML5 textarea element"/>
-            <spec_url>https://html.spec.whatwg.org/multipage/#attr-textarea-placeholder</spec_url>
-            <spec_statement/>
-          </spec>
-        </specs>
-      </testcase>
       <testcase component="W3C_HTML5 APIs/W3C_EXTRAHTML5/Semantics" execution_type="auto" id="textarea_element_maxLength" priority="P1" purpose="Check the textarea maxlength attribute exists" status="approved" type="compliance">
         <description>
           <test_script_entry>/opt/tct-extra-html5-tests/w3c/semantics/forms/the-textarea-element/form-validation-validity-tooLong.html?total_num=63&amp;amp;locator_key=id&amp;amp;value=59</test_script_entry>
@@ -6227,18 +6191,6 @@
           <spec>
             <spec_assertion category="W3C HTML5 API Specifications" element_name="open" element_type="attribute" interface="HTMLDetailsElement" section="ExtraHTML5" specification="HTML5 details element"/>
             <spec_url>http://www.w3.org/TR/2012/CR-html5-20121217/interactive-elements.html#the-details-element</spec_url>
-            <spec_statement/>
-          </spec>
-        </specs>
-      </testcase>
-      <testcase component="W3C_HTML5 APIs/W3C_EXTRAHTML5/Semantics" execution_type="manual" id="mark_background_is_yellow" priority="P3" purpose="Check if the mark background is yellow" status="approved" type="compliance">
-        <description>
-          <test_script_entry test_script_expected_result="0">/opt/tct-extra-html5-tests/semantics/text-level-semantics/the-mark-element/mark_element_base_usage-manual.html</test_script_entry>
-        </description>
-        <specs>
-          <spec>
-            <spec_assertion category="W3C HTML5 API Specifications" interface="HTMLElement" section="ExtraHTML5" specification="HTML5 element" usage="true"/>
-            <spec_url>http://www.w3.org/TR/2012/CR-html5-20121217/text-level-semantics.html#the-mark-element</spec_url>
             <spec_statement/>
           </spec>
         </specs>
@@ -7802,6 +7754,60 @@
           <spec>
             <spec_assertion category="W3C HTML5 API Specifications" element_name="border" element_type="attribute" interface="HTMLObjectElement" section="ExtraHTML5" specification="HTML5 object element"/>
             <spec_url/>
+            <spec_statement/>
+          </spec>
+        </specs>
+      </testcase>
+    </set>
+    <set name="semantics-bdd" type="js" ui-auto="bdd">
+      <testcase component="W3C_HTML5 APIs/W3C_EXTRAHTML5/Semantics" execution_type="manual" id="figure_element_support" priority="P3" purpose="Check the figure element visual effect" status="approved" type="compliance">
+        <description>
+          <test_script_entry test_script_expected_result="0">/opt/tct-extra-html5-tests/semantics/grouping-content/the-figure-element/bdd/figure_element-manual.html</test_script_entry>
+          <bdd_test_script_entry test_script_expected_result="0">/opt/tct-extra-html5-tests/html5-extra-app/testscripts/figure_element.feature</bdd_test_script_entry>
+        </description>
+        <specs>
+          <spec>
+            <spec_assertion category="W3C HTML5 API Specifications" interface="HTMLElement" section="ExtraHTML5" specification="HTML5 element" usage="true"/>
+            <spec_url>http://www.w3.org/TR/2012/CR-html5-20121217/grouping-content.html#the-figure-element</spec_url>
+            <spec_statement/>
+          </spec>
+        </specs>
+      </testcase>
+      <testcase component="W3C_HTML5 APIs/W3C_EXTRAHTML5/Semantics" execution_type="manual" id="figcaption_element_support" priority="P3" purpose="Check the figcaption element visual effect" status="approved" type="compliance">
+        <description>
+          <test_script_entry test_script_expected_result="0">/opt/tct-extra-html5-tests/semantics/grouping-content/the-figcaption-element/bdd/figcaption_element-manual.html</test_script_entry>
+          <bdd_test_script_entry test_script_expected_result="0">/opt/tct-extra-html5-tests/html5-extra-app/testscripts/figcaption_element.feature</bdd_test_script_entry>
+        </description>
+        <specs>
+          <spec>
+            <spec_assertion category="W3C HTML5 API Specifications" interface="HTMLElement" section="ExtraHTML5" specification="HTML5 element" usage="true"/>
+            <spec_url>http://www.w3.org/TR/2012/CR-html5-20121217/grouping-content.html#the-figcaption-element</spec_url>
+            <spec_statement/>
+          </spec>
+        </specs>
+      </testcase>
+      <testcase component="W3C_HTML5 APIs/W3C_EXTRAHTML5/Semantics" execution_type="manual" id="mark_background_is_yellow" priority="P3" purpose="Check if the mark background is yellow" status="approved" type="compliance">
+        <description>
+          <test_script_entry test_script_expected_result="0">/opt/tct-extra-html5-tests/semantics/text-level-semantics/the-mark-element/bdd/mark_element_base_usage-manual.html</test_script_entry>
+          <bdd_test_script_entry test_script_expected_result="0">/opt/tct-extra-html5-tests/html5-extra-app/testscripts/mark_element_base_usage.feature</bdd_test_script_entry>
+        </description>
+        <specs>
+          <spec>
+            <spec_assertion category="W3C HTML5 API Specifications" interface="HTMLElement" section="ExtraHTML5" specification="HTML5 element" usage="true"/>
+            <spec_url>http://www.w3.org/TR/2012/CR-html5-20121217/text-level-semantics.html#the-mark-element</spec_url>
+            <spec_statement/>
+          </spec>
+        </specs>
+      </testcase>
+      <testcase component="W3C_HTML5 APIs/W3C_EXTRAHTML5/Semantics" execution_type="manual" id="textarea-placeholder" priority="P1" purpose="Check if there is a 'Placeholder Text' in the text area, and if the 'Placeholder Text' disappears after type in any character" status="approved" type="compliance">
+        <description>
+          <test_script_entry test_script_expected_result="0">/opt/tct-extra-html5-tests/w3c/semantics/forms/the-textarea-element/bdd/textarea-placeholder-manual.html</test_script_entry>
+          <bdd_test_script_entry test_script_expected_result="0">/opt/tct-extra-html5-tests/html5-extra-app/testscripts/textarea-placeholder.feature</bdd_test_script_entry>
+        </description>
+        <specs>
+          <spec>
+            <spec_assertion category="W3C HTML5 API Specifications" element_name="placeholder" element_type="attribute" interface="HTMLTextAreaElement" section="ExtraHTML5" specification="HTML5 textarea element"/>
+            <spec_url>https://html.spec.whatwg.org/multipage/#attr-textarea-placeholder</spec_url>
             <spec_statement/>
           </spec>
         </specs>
