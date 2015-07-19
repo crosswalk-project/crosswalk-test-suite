@@ -3,18 +3,6 @@
 <test_definition>
   <suite category="W3C/HTML5 APIs" name="tct-svg-html5-tests">
     <set name="SVG" type="js">
-      <testcase component="W3C_HTML5 APIs/Graphics/HTML5 SVG" execution_type="manual" id="svg_label_inline" priority="P3" purpose="Check if the SVG inside HTML label element parses correctly" status="approved" type="compliance">
-        <description>
-          <test_script_entry>/opt/tct-svg-html5-tests/svg/svg_label_inline-manual.html</test_script_entry>
-        </description>
-        <specs>
-          <spec>
-            <spec_assertion category="Tizen W3C API Specifications" interface="SVGSVGElement" section="Graphics" specification="HTML5 SVG" usage="true" />
-            <spec_url>http://www.w3.org/TR/2012/WD-html5-20121025/mathml.html#svg</spec_url>
-            <spec_statement />
-          </spec>
-        </specs>
-      </testcase>
       <testcase component="W3C_HTML5 APIs/Graphics/HTML5 SVG" execution_type="auto" id="foreign_content_ten_circle_rect_svg" priority="P1" purpose="Check if SVG Self Closing tags (circle and rect in svg) is parsed properly" status="approved" type="compliance">
         <description>
           <test_script_entry test_script_expected_result="0">/opt/tct-svg-html5-tests/svg/w3c/foreign_content_010.html</test_script_entry>
@@ -150,6 +138,19 @@
         <description>
           <test_script_entry test_script_expected_result="0">/opt/tct-svg-html5-tests/svg/w3c/bdd/foreign_content_004-manual.html</test_script_entry>
           <bdd_test_script_entry test_script_expected_result="0">/opt/tct-svg-html5-tests/html5-svg-app/testscripts/foreign_content_004.feature</bdd_test_script_entry>
+        </description>
+        <specs>
+          <spec>
+            <spec_assertion category="Tizen W3C API Specifications" interface="SVGSVGElement" section="Graphics" specification="HTML5 SVG" usage="true" />
+            <spec_url>http://www.w3.org/TR/2012/WD-html5-20121025/mathml.html#svg</spec_url>
+            <spec_statement />
+          </spec>
+        </specs>
+      </testcase>
+      <testcase component="W3C_HTML5 APIs/Graphics/HTML5 SVG" execution_type="manual" id="svg_label_inline" priority="P3" purpose="Check if the SVG inside HTML label element parses correctly" status="approved" type="compliance">
+        <description>
+          <test_script_entry>/opt/tct-svg-html5-tests/svg/bdd/svg_label_inline-manual.html</test_script_entry>
+          <bdd_test_script_entry test_script_expected_result="0">/opt/tct-svg-html5-tests/html5-svg-app/testscripts/svg_label_inline.feature</bdd_test_script_entry>
         </description>
         <specs>
           <spec>
