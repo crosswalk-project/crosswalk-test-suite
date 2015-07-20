@@ -33,7 +33,7 @@ function showMessage(type, msg) {
   $("#modal-body").html(msg);
   switch(type) {
     case "help":
-      $("#modal-footer").html("<div style='text-align: center; font-size:70%; color:gray'>Icons from <a href='http://glyphicon.com/'>Glyphicons</a></div>");
+      $("#modal-footer").html("<div style='text-align: center; font-size:70%; color:gray'>Icons from <a href='http://glyphicon.com/'>Glyphicons</a> under <a href='https://creativecommons.org/licenses/by/3.0/'>CC BY 3.0</a></div>");
       $("#modal-dialog").css("bottom", "10px");
       $("#modal-dialog").css("width", "70%");
       $("#modal-dialog").css("left", "15%");
