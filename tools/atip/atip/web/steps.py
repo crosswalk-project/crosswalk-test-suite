@@ -129,6 +129,17 @@ def should_not_see_text_element(context, text, key):
         text, key, display=True), u'Text was found!'
 
 
+@step(u'I should see between "{num_a}" and "{num_b}" in "{key}" area')
+def should_see_between_text_element(context, num_a, num_b, key):
+    assert context.app.check_normal_text_element_isvalidate(
+        num_a, num_b, key), u'Text was not validate'
+
+@step(u'I should see num in "{key}" area greater than "{num_a}"')
+def should_see_greater_text_element(context, key, num_a):
+    assert context.app.check_normal_text_element_isgreater(
+        key, num_a), u'Text was not greater'
+
+
 @step(u'I press "{key}"')
 def i_press(context, key):
     assert context.web.press_element_by_key(key)
@@ -177,6 +188,11 @@ def check_checkbox(context, key):
 @step(u'I uncheck "{key}"')
 def uncheck_checkbox(context, key):
     assert context.web.uncheck_checkbox_by_key(key)
+
+
+@step(u'I check "{key}" is "{islarger}" and "{key1}" is "{islarger2}" than after click "{key2}" for {nsec:d} seconds')
+def check_checkvalue(context, key, islarger, key1, islarger2, key2, nsec):
+    assert context.app.check_checkbox_by_compare_values(key, islarger, key1, islarger2, key2, nsec)
 
 
 @step(u'I should see an alert')
