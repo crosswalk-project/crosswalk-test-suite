@@ -21,7 +21,6 @@ tct-wgtapi
 tct-widget
 tct-xmlhttprequest-w3c-tests
 tizen-tests
-webapi-ambientlight-w3c-tests
 webapi-dlna-xwalk-tests
 webapi-imports-w3c-tests
 webapi-resourcetiming-w3c-tests
