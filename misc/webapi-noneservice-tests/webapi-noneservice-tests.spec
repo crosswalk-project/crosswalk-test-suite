@@ -24,8 +24,7 @@ tizen-tests
 webapi-ambientlight-w3c-tests
 webapi-dlna-xwalk-tests
 webapi-imports-w3c-tests
-webapi-resourcetiming-w3c-tests
-webapi-shadowdom-w3c-tests"
+webapi-resourcetiming-w3c-tests"
 
 for list in $LIST;do
     suite_name=`echo $list |awk -F "/" '{print $NF}'`
