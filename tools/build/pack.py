@@ -63,6 +63,7 @@ PKG_MODES = ["shared", "embedded"]
 PKG_ARCHS = ["x86", "arm"]
 PKG_BLACK_LIST = []
 PACK_TYPES = ["ant", "gradle", "maven"]
+CROSSWALK_VERSION = ""
 PKG_NAME = None
 BUILD_PARAMETERS = None
 BUILD_ROOT = None
@@ -920,10 +921,59 @@ def packEmbeddingAPI_ant(
 
 def packEmbeddingAPI_gradle(
         build_json=None, app_src=None, app_dest=None, app_name=None, app_version=None):
+    app_name_origin = app_name
     app_name = app_name.replace("-", "_")
     orig_dir = os.getcwd()
     LOG.info("app_src: %s" % app_src)
     LOG.info("app_dest: %s" % app_dest)
+
+    os.chdir(BUILD_ROOT)
+    replaceUserString(
+        app_src,
+        'build.gradle',
+        '{crosswalk.version}',
+        CROSSWALK_VERSION)
+
+    version_parts = CROSSWALK_VERSION.split('.')
+    if len(version_parts) < 4:
+        LOG.error("The crosswalk version is not configured exactly!")
+        return False
+    versionType = version_parts[3]
+    if versionType == '0':
+        replaceUserString(
+            app_src,
+            'build.gradle',
+            'xwalk_core_library_beta',
+            'xwalk_core_library')
+        replaceUserString(
+            app_src,
+            'build.gradle',
+            'maven {\n        url \'https://download.01.org/crosswalk/releases/crosswalk/android/maven2\'\n    }',
+            '    mavenLocal()')
+
+        username = commands.getoutput("echo $USER")
+        repository_aar_path = "/home/%s/.m2/repository/org/xwalk/xwalk_core_library/%s/" \
+            "xwalk_core_library-%s.aar" % \
+            (username, CROSSWALK_VERSION, CROSSWALK_VERSION)
+        repository_pom_path = "/home/%s/.m2/repository/org/xwalk/xwalk_core_library/%s/" \
+            "xwalk_core_library-%s.pom" % \
+            (username, CROSSWALK_VERSION, CROSSWALK_VERSION)
+
+        if not os.path.exists(repository_aar_path) or not os.path.exists(repository_pom_path):
+            wget_cmd = "wget https://download.01.org/crosswalk/releases/crosswalk/" \
+                "android/canary/%s/crosswalk-%s.aar" % \
+                (CROSSWALK_VERSION, CROSSWALK_VERSION)
+            if not doCMD(wget_cmd, DEFAULT_CMD_TIMEOUT * 3):
+                os.chdir(orig_dir)
+                return False
+            install_cmd = "mvn install:install-file -DgroupId=org.xwalk " \
+                "-DartifactId=xwalk_core_library -Dversion=%s -Dpackaging=aar " \
+                "-Dfile=crosswalk-%s.aar -DgeneratePom=true" % \
+                (CROSSWALK_VERSION, CROSSWALK_VERSION)
+            if not doCMD(install_cmd, DEFAULT_CMD_TIMEOUT):
+                os.chdir(orig_dir)
+                return False
+
     os.chdir(app_src)
     if not doCMD("gradle build"):
         os.chdir("..")
@@ -936,7 +986,7 @@ def packEmbeddingAPI_gradle(
                     "outputs",
                     "apk",
                     "%s-armv7-debug.apk" %
-                    app_name),
+                    app_name_origin),
                 os.path.join(app_dest, "%s.apk" % app_name)):
             return False
     else:
@@ -947,7 +997,7 @@ def packEmbeddingAPI_gradle(
                     "outputs",
                     "apk",
                     "%s-x86-debug.apk" %
-                    app_name),
+                    app_name_origin),
                 os.path.join(app_dest, "%s.apk" % app_name)):
             return False
     os.chdir(orig_dir)
@@ -960,6 +1010,69 @@ def packEmbeddingAPI_maven(
     orig_dir = os.getcwd()
     LOG.info("app_src: %s" % app_src)
     LOG.info("app_dest: %s" % app_dest)
+
+    os.chdir(BUILD_ROOT)
+    replaceUserString(
+        app_src,
+        'pom.xml',
+        '{crosswalk.version}',
+        CROSSWALK_VERSION)
+
+    version_parts = CROSSWALK_VERSION.split('.')
+    if len(version_parts) < 4:
+        LOG.error("The crosswalk version is not configured exactly!")
+        return False
+    versionType = version_parts[3]
+
+    if versionType == '0':
+        replaceUserString(
+            app_src,
+            'pom.xml',
+            'xwalk_core_library_beta',
+            'xwalk_core_library')
+
+        username = commands.getoutput("echo $USER")
+        repository_path = "/home/%s/.m2/repository/org/xwalk/xwalk_core_library/%s" % \
+            (username, CROSSWALK_VERSION)
+        repository_aar_path = "/home/%s/.m2/repository/org/xwalk/xwalk_core_library/%s/" \
+            "xwalk_core_library-%s.aar" % \
+            (username, CROSSWALK_VERSION, CROSSWALK_VERSION)
+        repository_pom_path = "/home/%s/.m2/repository/org/xwalk/xwalk_core_library/%s/" \
+            "xwalk_core_library-%s.pom" % \
+            (username, CROSSWALK_VERSION, CROSSWALK_VERSION)
+
+        if not os.path.exists(repository_aar_path) or not os.path.exists(repository_pom_path):
+            wget_cmd = "wget https://download.01.org/crosswalk/releases/crosswalk/android" \
+                "/canary/%s/crosswalk-%s.aar" % \
+                (CROSSWALK_VERSION, CROSSWALK_VERSION)
+            if not doCMD(wget_cmd, DEFAULT_CMD_TIMEOUT * 3):
+                os.chdir(orig_dir)
+                return False
+            install_cmd = "mvn install:install-file -DgroupId=org.xwalk " \
+                "-DartifactId=xwalk_core_library -Dversion=%s -Dpackaging=aar " \
+                "-Dfile=crosswalk-%s.aar -DgeneratePom=true" % \
+                (CROSSWALK_VERSION, CROSSWALK_VERSION)
+            if not doCMD(install_cmd, DEFAULT_CMD_TIMEOUT):
+                os.chdir(orig_dir)
+                return False
+
+        if not doCopy(
+                repository_aar_path,
+                os.path.join(repository_path, "xwalk_core_library-%s-x86.aar" % CROSSWALK_VERSION)):
+            os.chdir(orig_dir)
+            return False
+        if not doCopy(
+                repository_aar_path,
+                os.path.join(repository_path, "xwalk_core_library-%s-arm.aar" % CROSSWALK_VERSION)):
+            os.chdir(orig_dir)
+            return False
+
+        replaceUserString(
+            app_src,
+            'pom.xml',
+            'https://download.01.org/crosswalk/releases/crosswalk/android/maven2',
+            'file:///home/%s/.m2/repository' % username)
+
     os.chdir(app_src)
     replaceUserString(
         app_src,
@@ -1227,6 +1340,7 @@ def buildPKG(build_json=None):
 
 def main():
     global LOG
+    global CROSSWALK_VERSION
     LOG = logging.getLogger("pack-tool")
     LOG.setLevel(LOG_LEVEL)
     stream_handler = logging.StreamHandler()
@@ -1363,6 +1477,7 @@ def main():
     except Exception as e:
         LOG.error("Fail to read pkg version file: %s, exit ..." % e)
         sys.exit(1)
+    CROSSWALK_VERSION = pkg_main_version
 
     if not BUILD_PARAMETERS.pkgtype:
         LOG.error("No pkg type provided, exit ...")
