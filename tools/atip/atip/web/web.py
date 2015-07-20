@@ -43,6 +43,7 @@ from selenium.common.exceptions import (
     WebDriverException)
 from atip.tizen import tizen
 from atip.common import common
+from atip.android import android
 try:
     from urlparse import urljoin, urlparse
 except ImportError:
@@ -752,7 +753,10 @@ def launch_webapp_by_name(
         context.apps[app_name].quit()
     context.apps.update(
         {app_name: WebAPP(context.bdd_config, app_name, apk_pkg_name, apk_activity_name)})
+    context.apps.update(
+        {"android": android.Android(context.bdd_config, app_name, apk_pkg_name, apk_activity_name)})
     context.web = context.apps[app_name]
+    context.android = context.apps["android"]
     if not context.web.launch_app():
         assert False
     assert True
