@@ -51,7 +51,7 @@ echo "{\"tests_version\": \"`date +%c`\"}" >/tmp/tests/version.json
 
 #move spec file
 cd $work
-cat $home/test_suites.list | while read suite
+cat $home/released_suites/WTS | while read suite
 do
     ls $suite &>/dev/null
     if [ $? -ne 0 ];then
