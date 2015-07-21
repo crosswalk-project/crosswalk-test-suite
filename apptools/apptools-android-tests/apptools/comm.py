@@ -31,6 +31,7 @@
 
 import os
 import sys
+import stat
 import commands
 import shutil
 import urllib2
@@ -77,6 +78,8 @@ def clear(pkg):
         try:
             shutil.rmtree(XwalkPath + pkg)
         except Exception as e:
+            if os.path.exists(XwalkPath + pkg + "/prj/android/xwalk_core_library/libs/x86"):
+                os.chmod(XwalkPath + pkg + "/prj/android/xwalk_core_library/libs/x86", stat.S_IRWXU|stat.S_IRGRP|stat.S_IROTH)
             os.system("rm -rf " + XwalkPath + pkg + " &>/dev/null")
 
 
