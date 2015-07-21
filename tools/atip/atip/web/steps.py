@@ -27,6 +27,7 @@
 #         Fan, Yugang <yugang.fan@intel.com>
 
 from behave import step
+import web
 import time
 import datetime
 try:
@@ -63,6 +64,29 @@ def get_page_url(context, text):
     return url
 
 
+@step(u'launch "{app_name}"')
+def launch_app_by_name(context, app_name):
+    web.launch_webapp_by_name(context, app_name)
+
+
+@step(u'I launch "{app_name}" with "{apk_pkg_name}" and "{apk_activity_name}"')
+def launch_app_by_names(context, app_name, apk_pkg_name, apk_activity_name):
+    web.launch_webapp_by_name(
+        context,
+        app_name,
+        apk_pkg_name,
+        apk_activity_name)
+
+
+@step(u'switch to "{app_name}"')
+def switch_to_app_name(context, app_name):
+    if app_name in context.apps:
+        context.web = context.apps[app_name]
+        assert True
+    else:
+        assert False
+
+
 @step(u'I go to "{url}"')
 def i_visit_url(context, url):
     url = get_page_url(context, url)
@@ -83,6 +107,13 @@ def go_back(context):
 def go_forward(context):
     assert context.web.forward()
 
+@step(u'quit "{app_name}"')
+def quit_app_by_name(context, app_name):
+    if app_name in context.apps:
+        context.web.quit()
+        assert True
+    else:
+        assert False
 
 @step(u'The current URL should be "{text}"')
 def url_should_be_text(context, text):

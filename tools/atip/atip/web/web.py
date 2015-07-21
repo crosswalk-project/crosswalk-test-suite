@@ -62,7 +62,7 @@ class WebAPP(common.APP):
         self.device_platform = ""
         self.test_type = ""
         self.read_config()
-	self.test_url = app_config["test-url"]
+        self.test_url = app_config["test-url"]
         self.baseline_path = self.test_url + "/../../data/" + self.device_platform
         self.text_value = {}
         self.picture_list = []
@@ -748,11 +748,11 @@ def launch_webapp_by_name(
     if not context.bdd_config:
         assert False
 
-    if app_name in context.webs:
-        context.webs[app_name].quit()
-    context.webs.update(
+    if app_name in context.apps:
+        context.apps[app_name].quit()
+    context.apps.update(
         {app_name: WebAPP(context.bdd_config, app_name, apk_pkg_name, apk_activity_name)})
-    context.web = context.webs[app_name]
+    context.web = context.apps[app_name]
     if not context.web.launch_app():
         assert False
     assert True
