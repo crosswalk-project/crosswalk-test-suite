@@ -8,4 +8,5 @@ Feature: Usecase WebAPI
      And I go out of frame
      And I go to frame "frame2"
      And I click "mySubmit"
+     And I wait 2 seconds
     Then I should see "Filler Text" with "green" color in "text" area
