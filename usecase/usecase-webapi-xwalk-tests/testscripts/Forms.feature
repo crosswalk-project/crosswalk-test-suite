@@ -10,5 +10,6 @@ Feature: Usecase WebAPI
      And I click "Reset"
     Then I should see nothing in "value" attr of "myinput" area
      And I click "Submit"
+     And I wait 2 seconds
     Then I should see "PASS" with "green" color in "test1" area
 
