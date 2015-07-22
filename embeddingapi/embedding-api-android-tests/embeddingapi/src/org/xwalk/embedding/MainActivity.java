@@ -65,4 +65,9 @@ public class MainActivity extends XWalkActivity  {
         KeyguardLock keyguardLock = keyguardManager.newKeyguardLock("");
         keyguardLock.disableKeyguard();
     }
+
+    @Override
+    public boolean isXWalkReady() {
+	    return super.isXWalkReady();
+    }
 }
