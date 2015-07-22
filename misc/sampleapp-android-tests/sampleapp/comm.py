@@ -50,7 +50,7 @@ def setUp():
     device = os.environ.get('DEVICE_ID')
 
     if not device:
-        print (" get env error\n")
+        print (" get device id error\n")
         sys.exit(1)
 
     fp = open(const_path + "/../arch.txt", 'r')

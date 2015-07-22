@@ -26,30 +26,41 @@ NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE,
 EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
 Authors:
-    Wang. Hongjuan <hongjuanx.wang@intel.com>
+    Wang, Hongjuan <hongjuanx.wang@intel.com>
 
 -->
 
 <html>
   <head>
     <meta charset='utf-8'>
-    <title>Extensionsandroid_Switch</title>
+    <title>hexgl_presentation_function</title>
     <link rel="author" title="Intel" href="http://www.intel.com">
   </head>
   <body>
     <p>
+      <strong>Precondition</strong>
+    </p>
+    <ol>
+      <li>Setup the test environment about how to make the test device can mirror onto the monitor screen, for example using Netgear and Memo Pad 8</li>
+      <ol>
+        <li>Connect the Netgear to the display monitor (the HDMI converter may be needed here), then remember the adaptor name of the display monitor</li>
+        <li>On Android pad, select "Settings" --&gt; "Wireless &amp; neworks" --&gt; PlayTo, a search dialog will be opened, if everything goes well you can see the "MyBox(adaptor name)" available. Then you can connect it and run the HexGL demo with "Remote Display: On".</li>
+      </ol>
+      <li>The test app named like: HexGL is available</li>
+    </ol>
+    <p>
       <strong>Test steps:</strong>
     </p>
     <ol>
-      <li>Press home button to background xwalk_echo_app.</li>
-      <li>Open task manager, then tap xwalk_echo_app icon to switch back to xwalk_echo_app</li>
+      <li>Install the test app named like: HexGL, and connect the monitor with test device, then launch it</li>
+      <li>Play the game with "Remote Display: On" and set the "CONTROLS" to "MOTION", "GAMEPAD" or "TOUCH"</li>
     </ol>
     <p>
       <strong>Expected Output:</strong>
     </p>
     <ol>
-      <li>xwalk_echo_app is background.</li>
-      <li>xwalk_echo_app is able to switch back.</li>
+      <li>Launch app normally, it display well onto the monitor screen</li>
+      <li>Play the game well, no crash, no blank screen</li>
     </ol>
   </body>
 </html>

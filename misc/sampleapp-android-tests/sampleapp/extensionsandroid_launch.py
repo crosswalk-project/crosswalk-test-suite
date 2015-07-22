@@ -41,8 +41,8 @@ class TestSampleAppFunctions(unittest.TestCase):
         comm.setUp()
         app_name = "Extensionsandroid"
         cmd = "adb -s " + comm.device + " shell am start -n "\
-        "org.xwalk.%s/.%sActivity" % \
-            (app_name.lower(), app_name)
+        "org.crosswalkproject.sample/.xwalk_echo_appActivity"
+        print cmd
         comm.app_launch(cmd, self)
 
 if __name__ == '__main__':

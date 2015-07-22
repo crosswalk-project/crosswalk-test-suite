@@ -28,22 +28,74 @@
 # Authors:
 #         Wang. Hongjuan <hongjuanx.wang@intel.com>
 
+import xml.etree.ElementTree as ET
 import unittest
 import os
-import sys
-import commands
 import comm
+import commands
+import shutil
 
+def init(xmlpath):
+    channel = os.environ.get('CHANNEL')
+    if not channel:
+        print (" get channel error\n")
+        sys.exit(1)
+
+    xwalk_version = os.environ.get('XWALK_VERSION')
+    if not xwalk_version:
+        print (" get crosswalk version error\n")
+        sys.exit(1)
+
+    tree = ET.parse(xmlpath)
+    for elem in tree.iter(tag='property'):
+        xwalk_version_name = elem.attrib.get('name')
+        if xwalk_version_name == 'crosswalk-version':
+            #elem.set(str(elem.attrib.items()[1][0]),'15.44.375.0')
+            elem.set(str(elem.attrib.items()[1][0]), xwalk_version)
+            for node in tree.iter(tag='get'):
+                #src_val = node.attrib.get('src').replace('stable', 'canary')
+                src_val = node.attrib.get('src').replace('stable', channel)
+                print node.attrib.items()[1][0]
+                node.set(str(node.attrib.items()[1][0]), src_val)
+                print src_val
+                tree.write(xmlpath, "utf-8", "xml")
 
 class TestSampleAppFunctions(unittest.TestCase):
 
     def test_pack(self):
         comm.setUp()
-        app_name = "Extensionsandroid"
+        global app_name
+        app_name = "xwalk_echo_app"
         sample_src = "extensions-android"
         app_root = comm.sample_src_pref + sample_src
+        xmlpath = app_root + '/xwalk-echo-extension-src/build.xml'
+        init(xmlpath)
         cmd = "%s/build.sh" % app_root
-        comm.pack(cmd, app_name, self)
+        target_apk_path = comm.const_path + "/../testapp/"
+        os.chdir(target_apk_path)
+        print "Generate APK %s ----------------> START" % app_name
+        packstatus = commands.getstatusoutput(cmd)
+        self.assertEquals(0, packstatus[0])
+        self.assertNotIn("error", packstatus[1].lower())
+        print "\nGenerate APK %s ----------------> OK\n" % app_name
+        apk_path = app_root + "/xwalk-echo-extension-src/lib/"
+        for index, name in enumerate(os.listdir(apk_path)):
+            if os.path.isdir(apk_path + "/" + name):
+                apk_path += name
+                for apk_index, apkname in enumerate(os.listdir(apk_path)):
+                    if apk_index <= len(os.listdir(apk_path)) and \
+                    apkname.endswith(".apk"):
+                        os.chdir(apk_path)
+                        self.assertTrue(apkname.startswith(app_name))
+                        print 'Found apk %s' % apkname
+                        shutil.move(apkname, target_apk_path)
+                    elif apkname.find(".apk") != -1:
+                        print 'Continue'
+            elif index > len(os.listdir(apk_path)) and \
+            os.path.isdir(apk_path + "/" + name) == False:
+                print 'Not found Crosswalk Runtime Binary'
+                self.assertFalse('Not found Crosswalk Runtime Binary')
+
 
 if __name__ == '__main__':
     unittest.main()
