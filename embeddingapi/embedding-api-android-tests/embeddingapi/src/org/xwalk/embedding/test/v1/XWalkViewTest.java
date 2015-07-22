@@ -532,12 +532,23 @@ public class XWalkViewTest extends XWalkViewTestBase {
             String url = "file:///android_asset/pause_timers.html";
             addJavascriptInterface();
             loadUrlSync(url);
-	    resumeTimers();
+            resumeTimers();
             SystemClock.sleep(2000);
             String date = new Date().toString();
             pauseTimers();
             SystemClock.sleep(2000);
-            assertEquals(date, getTitleOnUiThread());
+            String title = getTitleOnUiThread();
+            long seconds = Integer.valueOf(date.substring(11, 12))*3600
+            		+ Integer.valueOf(date.substring(14, 15))*60 
+            		+ Integer.valueOf(date.substring(17, 18));
+            long seconds2 = Integer.valueOf(title.substring(11, 12))*3600
+            		+ Integer.valueOf(title.substring(14, 15))*60 
+            		+ Integer.valueOf(title.substring(17, 18));
+            if (seconds==seconds2 || Math.abs(seconds-seconds2)==1) {
+                assertTrue(true);
+            } else {
+                assertTrue(false);
+            }
         } catch (Exception e) {
             e.printStackTrace();
             assertTrue(false);
@@ -556,7 +567,18 @@ public class XWalkViewTest extends XWalkViewTestBase {
             resumeTimers();
             SystemClock.sleep(1000);
             String date = new Date().toString();
-            assertEquals(date, getTitleOnUiThread());
+            String title = getTitleOnUiThread();
+            long seconds = Integer.valueOf(date.substring(11, 12))*3600
+            		+ Integer.valueOf(date.substring(14, 15))*60 
+            		+ Integer.valueOf(date.substring(17, 18));
+            long seconds2 = Integer.valueOf(title.substring(11, 12))*3600
+            		+ Integer.valueOf(title.substring(14, 15))*60 
+            		+ Integer.valueOf(title.substring(17, 18));
+            if (seconds==seconds2 || Math.abs(seconds-seconds2)==1) {
+                assertTrue(true);
+            } else {
+                assertTrue(false);
+            }
         } catch (Exception e) {
             e.printStackTrace();
             assertTrue(false);
