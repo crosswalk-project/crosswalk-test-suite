@@ -308,6 +308,19 @@ class WebAPP(common.APP):
             print "Failed to compare these two param with value: %s" % e
         return False
 
+    def judge_value_range(self, value=None, first=None, second=None):
+        try:
+            result = eval(self.text_value[value])
+            if  (eval(second) >= result) and (eval(first) <= result) :
+                return True
+            elif  (eval(second) <= result) and (eval(first) >= result) :
+                return True
+            else:
+                return False
+        except Exception as e:
+            print "Failed to judge value range: %s" % e
+        return False
+
     def save_content(self, p_name=None, key=None):
         try:
             js_script = 'var style=document.getElementById(\"' + \

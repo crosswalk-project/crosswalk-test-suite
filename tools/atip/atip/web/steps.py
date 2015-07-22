@@ -337,3 +337,7 @@ def compare_two_value(context, first, second):
 @step(u'"{first}" should be less than "{second}" beyond "{value}"')
 def compare_two_value_with_range(context, first, second, value):
     assert context.web.compare_two_values_range(first, second, value)
+
+@step(u'"{value}" should be between "{first}" to "{second}"')
+def judge_value_with_range(context, value, first, second):
+    assert context.web.judge_value_range(value, first, second)
