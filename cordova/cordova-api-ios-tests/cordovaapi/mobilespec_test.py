@@ -104,7 +104,7 @@ def build_mobilespec(dest, uuid):
     output_lines = build_status.stdout.read()
     run_poll = build_status.poll()
     print 'debug', run_poll
-    if run_poll  == 0 and output_lines.find("BUILD SUCCEEDED") != -1:
+    if output_lines.find("MobileSpec.app") != -1 and output_lines.find("BUILD SUCCEEDED") != -1:
         print "Build project MobileSpec succeeded!"
         install_app(uuid)
     else:
