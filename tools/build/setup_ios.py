@@ -40,7 +40,40 @@ from optparse import OptionParser
 SCRIPT_PATH = os.path.realpath(__file__)
 CONST_PATH = os.path.dirname(SCRIPT_PATH)
 
-def clone_code(tag=None):
+# Clone source code ios-extensions-crosswalk
+def clone_ios_extension(tag=None):
+    xwalkios_url = "https://github.com/crosswalk-project/" \
+    "ios-extensions-crosswalk.git"
+    codestatus = commands.getstatusoutput("git clone %s" % \
+        xwalkios_url)
+    print "Cloning into ios-extensions-crosswalk..."
+    if codestatus[0] == 0:
+        print "Clone into ios-extensions-crosswalk done!"
+    else:
+        print "Clone into ios-extensions-crosswalk failed!"
+    os.chdir("ios-extensions-crosswalk")
+    submodule_cmd = "git submodule update --init --recursive"
+    tpstatus = commands.getstatusoutput(submodule_cmd)
+    if tpstatus[0] == 0:
+        print "Cloning into submodule repos..."
+        if tag:
+            tagstatus = commands.getstatusoutput(
+                "git checkout %s" % tag)
+            print "Checking out %s" % tag
+            if tagstatus[0] == 0:
+                print "The branch is %s" % tag
+            else:
+                print "Please check if the tag is exist"
+                print tagstatus[1]
+        else:
+            print "The project ios-extensions-crosswalk default "\
+            "branch is master"
+    else:
+        print "Clone into the submodule failed!"
+
+
+# Clone source code MobileSpec
+def clone_mobilespec():
     try:
         os.chdir(CONST_PATH)
         clone_url = "https://git.coding.net/jondong/mobileSpec-crosswalk.git"
@@ -48,75 +81,20 @@ def clone_code(tag=None):
         print "Cloning into mobileSpec..."
         if msstatus[0] == 0:
             print "Clone into mobileSpec done!"
-            os.chdir(CONST_PATH + "/mobileSpec-crosswalk")
-            if len(os.listdir("crosswalk-ios/")) == 0:
-                xwalkios_url = "https://github.com/crosswalk-project/" \
-                "crosswalk-ios.git"
-                codestatus = commands.getstatusoutput("git clone %s" % \
-                    xwalkios_url)
-                print "Cloning into crosswalk-ios..."
-                if codestatus[0] == 0:
-                    print "Clone into crosswalk-ios done!"
-                else:
-                    print "Clone into crosswalk-ios failed!"
-            os.chdir('crosswalk-ios')
-            update_cmd = "git submodule update --init --recursive"
-            tpstatus = commands.getstatusoutput(update_cmd)
-            print "Cloning into submodule repos..."
-            if tpstatus[0] != 0:
-                tar = os.getcwd() + '/.git/config'
-                for line in fileinput.input('.git/config', inplace=1):
-                    print line.rstrip().replace('git:', 'https:')
-                rtpstatus = commands.getstatusoutput(update_cmd)
-                icen = os.listdir(os.getcwd() + "/third-party/Icenium/")
-                cord = os.listdir(os.getcwd() + "/third-party/cordova-ios/")
-                #print rtpstatus
-                if rtpstatus[0] != 0:
-                    print "Clone submodule repos failed!"
-                elif len(icen) > 0 and len(cord) > 0 :
-                    print "Clone into submodule repos done!"
-                    if tag:
-                        tagstatus = commands.getstatusoutput(\
-                            "git checkout %s" % tag)
-                        print "Checking out %s" % tag
-                        if tagstatus[0] == 0:
-                            print "The branch is %s" % tag
-                        else:
-                            print "Please check if the tag is exist"
-                            print tagstatus[1]
-                    else:
-                        print "The project crosswalk-ios default"\
-                        "branch is master"
-                    print "Copying the project crosswalk-ios to the same "\
-                    "path with mobileSpec-crosswalk"
-                    os.chdir(CONST_PATH)
-                    try:
-                        shutil.copytree(CONST_PATH + "/mobileSpec-crosswalk/" \
-                            "crosswalk-ios", CONST_PATH + "/crosswalk-ios")
-                    except:
-                        print traceback.print_exc()
-                    if os.path.exists(CONST_PATH + "/crosswalk-ios"):
-                        print "Copy the project crosswalk-ios done!"
-                    else:
-                        print "Copy the project crosswalk-ios failed!"
-                else:
-                    print "Clone submodule repos failed!"
-            else:
-                print "Clone into submodule repos done!"
         else:
             print "Clone mobileSpec failed"
             print msstatus[1]
             sys.exit(1)
     except Exception as e:
-        print Exception, "Clone into crosswalk-ios failed!"
+        print e, "Clone into mobileSpec-crosswalk failed!"
         sys.exit(1)
 
 
 def main():
     try:
         global dest, uuid
-        usage = 'Usage: ./%prog -d "platform=iOS Simulator," \
-        "name=iPhone 6,OS=8.3"'
+        usage = "Usage: ./%prog -d 'platform=iOS Simulator,"\
+        "name=iPhone 6,OS=8.3'"
         opts_parser = OptionParser(usage=usage)
         opts_parser.add_option(
             "-d",
@@ -145,7 +123,8 @@ def main():
             sys.argv.append("-h")
 
         (PARAMETERS, args) = opts_parser.parse_args()
-        clone_code(PARAMETERS.tag)
+        os.chdir(CONST_PATH)
+        clone_ios_extension(PARAMETERS.tag)
         dest = PARAMETERS.destination
         #print 'dest', dest
         uuid = PARAMETERS.deviceuuid
