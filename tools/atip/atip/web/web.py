@@ -289,10 +289,16 @@ class WebAPP(common.APP):
 
     def compare_two_values(self, first=None, second=None):
         try:
-            if eval(self.text_value[first]) < eval(self.text_value[second]):
-                return True
+            if first.isdigit():
+                if eval(first) < eval(self.text_value[second]):
+                    return True
+                else:
+                    return False
             else:
-                return False
+                if eval(self.text_value[first]) < eval(self.text_value[second]):
+                    return True
+                else:
+                    return False
         except Exception as e:
             print "Failed to compare these two param: %s" % e
         return False
