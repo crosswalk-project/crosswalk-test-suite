@@ -246,6 +246,7 @@ if __name__ == "__main__":
     for sthread in pack_threads:
         # if max_num.acquire():
         sthread.daemon = True
+        time.sleep(2)
         sthread.start()
         # if len(threading.enumerate()) < 3:
         #    max_num.release()
