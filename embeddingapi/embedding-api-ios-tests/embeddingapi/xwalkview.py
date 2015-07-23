@@ -41,7 +41,7 @@ CONST_PATH = os.path.dirname(SCRIPT_PATH)
 def run(dest=None):
     try:
         if dest:
-            os.chdir(CONST_PATH + "/crosswalk-ios/XwalkView/")
+            os.chdir(CONST_PATH + "/ios-extensions-crosswalk/crosswalk-ios/XwalkView/")
             runcmd = "xcodebuild test -project " \
             "XWalkView.xcodeproj/ -scheme XWalkViewTests " \
             "-destination '%s'" % dest
