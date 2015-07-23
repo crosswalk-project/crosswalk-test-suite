@@ -154,6 +154,12 @@ def main():
             dest="symlinks",
             action="store_true",
             help="follow symlinks")
+        opts_parser.add_option(
+            "-m",
+            "--minimize",
+            dest="minimize",
+            action="store_true",
+            help="minimize the json file")
 
         if len(sys.argv) == 1:
             sys.argv.append("-h")
@@ -198,10 +204,16 @@ def main():
                 original_json_raw = original_json_file.read()
                 original_json_file.close()
                 original_json = json.loads(original_json_raw)
-                updated_json_tmp = json.dumps(
-                    original_json,
-                    indent=json_indent,
-                    sort_keys=json_sort)
+                if options.minimize:
+                    updated_json_tmp = json.dumps(
+                        original_json,
+                        separators=(',', ':'),
+                        sort_keys=json_sort)
+                else:
+                    updated_json_tmp = json.dumps(
+                        original_json,
+                        indent=json_indent,
+                        sort_keys=json_sort)
                 updated_json = None
                 for i_line in updated_json_tmp.splitlines():
                     i_line = i_line.rstrip()
