@@ -15,6 +15,8 @@ import java.util.concurrent.Callable;
 import java.util.concurrent.FutureTask;
 import java.util.concurrent.TimeUnit;
 import java.util.concurrent.atomic.AtomicBoolean;
+import java.util.Timer;
+import java.util.TimerTask;
 
 import junit.framework.Assert;
 
@@ -67,6 +69,7 @@ public class XWalkViewTestBase extends ActivityInstrumentationTestCase2<MainActi
     protected final static int WAIT_TIMEOUT_SECONDS = 15;
     protected final static long WAIT_TIMEOUT_MS = 2000;
     private final static int CHECK_INTERVAL = 100;
+    private Timer mTimer = new Timer();
     
     protected XWalkView mXWalkView;
     protected XWalkView mRestoreXWalkView;
@@ -107,7 +110,12 @@ public class XWalkViewTestBase extends ActivityInstrumentationTestCase2<MainActi
     protected void setUp() throws Exception {
         super.setUp();
         mainActivity = (MainActivity) getActivity();
-	mWebServer = TestWebServer.start();
+        mWebServer = TestWebServer.start();
+        while(!mainActivity.isXWalkReady()) {
+            try{
+                waitForTimerFinish(200);
+            }catch(Exception e){}
+        }
         getInstrumentation().runOnMainSync(new Runnable() {
             @Override
             public void run() {
@@ -117,6 +125,31 @@ public class XWalkViewTestBase extends ActivityInstrumentationTestCase2<MainActi
                 mXWalkView.setResourceClient(new TestXWalkResourceClient());
             }
         });
+    }
+
+    public void waitForTimerFinish(int timer) throws Exception {
+        Object notify = new Object();
+        synchronized (notify) {
+            NotifyTask testTask = new NotifyTask(notify);
+            mTimer.schedule(testTask, timer);
+            notify.wait();
+        }
+    }
+
+    public class NotifyTask extends TimerTask {
+        private Object mObj;
+
+        public NotifyTask(Object obj) {
+            super();
+            mObj = obj;
+        }
+
+        @Override
+        public void run() {
+            synchronized (mObj) {
+                mObj.notify();
+            }
+        }
     }
 
     protected void loadUrlAsync(final String url) throws Exception {
