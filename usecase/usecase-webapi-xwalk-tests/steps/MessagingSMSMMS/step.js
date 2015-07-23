@@ -1,6 +1,0 @@
-var step =  '<font class="fontSize">'
-         +  '  <p>Test Purpose: </p>'
-         +  '  <p>Verifies the message of navigation timing all attributes can be display.</p>'
-         +  '  <p>Expected Result: </p>'
-         +  '  <p>Test passes if can get the values of Performance Timing.</p>'
-         +  '</font>'
