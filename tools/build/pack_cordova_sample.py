@@ -623,8 +623,10 @@ def packSampleApp_cli(app_name=None):
     project_root = os.path.join(BUILD_ROOT, app_name)
 
     output = commands.getoutput("cordova -v")
-    if output != "5.0.0":
-        LOG.error("Cordova 4.0 build requires Cordova-CLI 5.0.0, install with command: '$ sudo npm install cordova@5.0.0 -g'")
+    output_version = int(output[0])
+    if output_version < 5:
+        LOG.error(
+            "Cordova 4.0 build requires the latest Cordova-CLI, and must >= 5.0.0, install with command: '$ sudo npm install cordova -g'")
         return False
 
     plugin_tool = os.path.join(BUILD_ROOT, "cordova_plugins")
