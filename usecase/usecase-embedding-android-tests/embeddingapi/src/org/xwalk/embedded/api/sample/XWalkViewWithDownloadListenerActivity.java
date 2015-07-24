@@ -34,7 +34,7 @@ public class XWalkViewWithDownloadListenerActivity extends XWalkActivity {
         
         mXWalkView = (XWalkView) findViewById(R.id.xwalkview);
         downloadText = (TextView) findViewById(R.id.text1);
-        
+        mXWalkView.setUserAgentString("Chrome/44.0.2403.81 Crosswalk/15.44.376.0 Mobile Safari/537.36");
         mXWalkView.setDownloadListener(new XWalkDownloadListener(getApplicationContext()) {
 			
 			@Override
@@ -42,10 +42,11 @@ public class XWalkViewWithDownloadListenerActivity extends XWalkActivity {
 			                String contentDisposition, String mimetype, long contentLength) {
 				// TODO Auto-generated method stub
 				// You can realize your down here.
-				downloadText.setText("url: " + url + "\n" +									 "userAgent: " + userAgent + "\n" +
-									 "contentDisposition: " + contentDisposition + "\n" +
-									 "mimeType: " + mimetype + "\n" +
-									 "contentLength: " + contentLength);
+				downloadText.setText("url: " + url + "\n" + 
+				                    "userAgent: " + userAgent + "\n" + 
+				                    "contentDisposition: " + contentDisposition + "\n" + 
+				                    "mimeType: " + mimetype + "\n" + 
+				                    "contentLength: " + contentLength);
 			}
 		});
         mXWalkView.load("http://www.baidu.com/", null);

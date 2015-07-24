@@ -930,6 +930,15 @@ public class XWalkViewTestBase extends ActivityInstrumentationTestCase2<MainActi
             }
         });
     }
+    
+	protected void setUserAgent(final String userAgent) {
+	    getInstrumentation().runOnMainSync(new Runnable() {
+	        @Override
+	        public void run() {
+	            mXWalkView.setUserAgentString(userAgent);
+	        }
+	    });
+	}    
 
     public static final String ABOUT_TITLE = "About the Google";
 
