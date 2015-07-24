@@ -2,98 +2,45 @@
 <?xml-stylesheet type="text/xsl" href="./testcase.xsl"?>
 <test_definition>
   <suite name="embedding-build-android-tests" category="Crosswalk_Packer_Tool">
+    <set name="build_auto" type="pyunit">
+      <testcase component="Crosswalk API/Embedding Build" execution_type="auto" id="crosswalk_ant_build_app" priority="P0" purpose="Validate app using crosswalk can be built with ant" status="approved" type="Functional">
+        <description>
+          <test_script_entry>/opt/embedding-build-android-tests/ant/crosswalk_ant_build_app.py</test_script_entry>
+        </description>
+      </testcase>
+      <testcase component="Crosswalk API/Embedding Build" execution_type="auto" id="crosswalk_local_gradle_build_app" priority="P0" purpose="Validate app using local crosswalk can be built with gradle" status="approved" type="Functional">
+        <description>
+          <test_script_entry>/opt/embedding-build-android-tests/gradle/crosswalk_local_gradle_build_app.py</test_script_entry>
+        </description>
+      </testcase>
+      <testcase component="Crosswalk API/Embedding Build" execution_type="auto" id="crosswalk_local_gradle_build_all_app" priority="P1" purpose="Validate app using local crosswalk can be built to ia and arm apks concurrently with gradle" status="approved" type="Functional">
+        <description>
+          <test_script_entry>/opt/embedding-build-android-tests/gradle/crosswalk_local_gradle_build_all_app.py</test_script_entry>
+        </description>
+      </testcase>
+      <testcase component="Crosswalk API/Embedding Build" execution_type="auto" id="crosswalk_online_gradle_build_app" priority="P0" purpose="Validate app using online crosswalk can be built with gradle" status="approved" type="Functional">
+        <description>
+          <test_script_entry>/opt/embedding-build-android-tests/gradle/crosswalk_online_gradle_build_app.py</test_script_entry>
+        </description>
+      </testcase>
+      <testcase component="Crosswalk API/Embedding Build" execution_type="auto" id="crosswalk_online_gradle_build_all_app" priority="P1" purpose="Validate app using online crosswalk can be built to ia and arm apks concurrently with gradle" status="approved" type="Functional">
+        <description>
+          <test_script_entry>/opt/embedding-build-android-tests/gradle/crosswalk_online_gradle_build_all_app.py</test_script_entry>
+        </description>
+      </testcase>
+      <testcase component="Crosswalk API/Embedding Build" execution_type="auto" id="crosswalk_local_maven_build_app" priority="P0" purpose="Validate app using local crosswalk can be built with maven" status="approved" type="Functional">
+        <description>
+          <test_script_entry>/opt/embedding-build-android-tests/maven/crosswalk_local_maven_build_app.py</test_script_entry>
+        </description>
+      </testcase>
+      <testcase component="Crosswalk API/Embedding Build" execution_type="auto" id="crosswalk_online_maven_build_app" priority="P0" purpose="Validate app using online crosswalk can be built with maven" status="approved" type="Functional">
+        <description>
+          <test_script_entry>/opt/embedding-build-android-tests/maven/crosswalk_online_maven_build_app.py</test_script_entry>
+        </description>
+      </testcase>
+    </set>
     <set name="packertool" type="js">
-      <testcase purpose="Validate IA version test apk can be built successfully when using online crosswalk" type="Functional" status="approved" component="Crosswalk API/Embedding Build" execution_type="manual" priority="P2" id="Crosswalk_Online_Beta_Gradlew_Build_IA_AndroidApp">
-        <description>
-          <pre_condition>
-            1.Make sure the steps of Precondition in README document have been executed.
-            2.Make sure device connected with ubuntu.
-          </pre_condition>
-          <test_script_entry>/opt/embedding-build-android-tests/gradlew/Crosswalk_Online_Beta_Gradlew_Build_IA_AndroidApp.html</test_script_entry>
-        </description>
-      </testcase>
-      <testcase purpose="Validate ARM version test apk can be built successfully when using online crosswalk" type="Functional" status="approved" component="Crosswalk API/Embedding Build" execution_type="manual" priority="P2" id="Crosswalk_Online_Beta_Gradlew_Build_ARM_AndroidApp">
-        <description>
-          <pre_condition>
-            1.Make sure the steps of Precondition in README document have been executed.
-            2.Make sure device connected with ubuntu.
-          </pre_condition>
-          <test_script_entry>/opt/embedding-build-android-tests/gradlew/Crosswalk_Online_Beta_Gradlew_Build_ARM_AndroidApp.html</test_script_entry>
-        </description>
-      </testcase>
-      <testcase purpose="Validate IA and ARM version test apk can be built successfully when using online crosswalk" type="Functional" status="approved" component="Crosswalk API/Embedding Build" execution_type="manual" priority="P2" id="Crosswalk_Online_Beta_Gradlew_Build_IA_ARM_AndroidApp">
-        <description>
-          <pre_condition>
-            1.Make sure the steps of Precondition in README document have been executed.
-            2.Make sure device connected with ubuntu.
-          </pre_condition>
-          <test_script_entry>/opt/embedding-build-android-tests/gradlew/Crosswalk_Online_Beta_Gradlew_Build_IA_ARM_AndroidApp.html</test_script_entry>
-        </description>
-      </testcase>
-      <testcase purpose="Validate IA and ARM version test apk can be built successfully when using online crosswalk and different crosswalk version" type="Functional" status="approved" component="Crosswalk API/Embedding Build" execution_type="manual" priority="P2" id="Crosswalk_Online_Canary_Gradlew_Build_IA_ARM_AndroidApp">
-        <description>
-          <pre_condition>
-            1.Make sure the steps of Precondition in README document have been executed.
-            2.Make sure device connected with ubuntu.
-          </pre_condition>
-          <test_script_entry>/opt/embedding-build-android-tests/gradlew/Crosswalk_Online_Canary_Gradlew_Build_IA_ARM_AndroidApp.html</test_script_entry>
-        </description>
-      </testcase>
-      <testcase purpose="Validate IA version test apk can be built successfully when using local crosswalk" type="Functional" status="approved" component="Crosswalk API/Embedding Build" execution_type="manual" priority="P2" id="Crosswalk_Local_Beta_Gradlew_Build_IA_AndroidApp">
-        <description>
-          <pre_condition>
-            1.Make sure the steps of Precondition in README document have been executed.
-            2.Make sure device connected with ubuntu.
-          </pre_condition>
-          <test_script_entry>/opt/embedding-build-android-tests/gradlew/Crosswalk_Local_Beta_Gradlew_Build_IA_AndroidApp.html</test_script_entry>
-        </description>
-      </testcase>
-      <testcase purpose="Validate ARM version test apk can be built successfully when using local crosswalk" type="Functional" status="approved" component="Crosswalk API/Embedding Build" execution_type="manual" priority="P2" id="Crosswalk_Local_Beta_Gradlew_Build_ARM_AndroidApp">
-        <description>
-          <pre_condition>
-            1.Make sure the steps of Precondition in README document have been executed.
-            2.Make sure device connected with ubuntu.
-          </pre_condition>
-          <test_script_entry>/opt/embedding-build-android-tests/gradlew/Crosswalk_Local_Beta_Gradlew_Build_ARM_AndroidApp.html</test_script_entry>
-        </description>
-      </testcase>
-      <testcase purpose="Validate IA and ARM version test apk can be built successfully when using local crosswalk" type="Functional" status="approved" component="Crosswalk API/Embedding Build" execution_type="manual" priority="P2" id="Crosswalk_Local_Beta_Gradlew_Build_IA_ARM_AndroidApp">
-        <description>
-          <pre_condition>
-            1.Make sure the steps of Precondition in README document have been executed.
-            2.Make sure device connected with ubuntu.
-          </pre_condition>
-          <test_script_entry>/opt/embedding-build-android-tests/gradlew/Crosswalk_Local_Beta_Gradlew_Build_IA_ARM_AndroidApp.html</test_script_entry>
-        </description>
-      </testcase>
-      <testcase purpose="Validate IA and ARM version test apk can be built successfully when using local crosswalk and different crosswalk version" type="Functional" status="approved" component="Crosswalk API/Embedding Build" execution_type="manual" priority="P2" id="Crosswalk_Local_Canary_Gradlew_Build_IA_ARM_AndroidApp">
-        <description>
-          <pre_condition>
-            1.Make sure the steps of Precondition in README document have been executed.
-            2.Make sure device connected with ubuntu.
-          </pre_condition>
-          <test_script_entry>/opt/embedding-build-android-tests/gradlew/Crosswalk_Local_Canary_Gradlew_Build_IA_ARM_AndroidApp.html</test_script_entry>
-        </description>
-      </testcase>
-      <testcase purpose="Validate ARM version test apk can be built successfully when using online crosswalk" type="Functional" status="approved" component="Crosswalk API/Embedding Build" execution_type="manual" priority="P2" id="Crosswalk_Online_Beta_Maven_Build_ARM_AndroidApp">
-        <description>
-          <pre_condition>
-            1.Make sure the steps of Precondition in README document have been executed.
-            2.Make sure device connected with ubuntu.
-          </pre_condition>
-          <test_script_entry>/opt/embedding-build-android-tests/maven/Crosswalk_Online_Beta_Maven_Build_ARM_AndroidApp.html</test_script_entry>
-        </description>
-      </testcase>
-      <testcase purpose="Validate IA version test apk can be built successfully when using online crosswalk" type="Functional" status="approved" component="Crosswalk API/Embedding Build" execution_type="manual" priority="P2" id="Crosswalk_Online_Beta_Maven_Build_IA_AndroidApp">
-        <description>
-          <pre_condition>
-            1.Make sure the steps of Precondition in README document have been executed.
-            2.Make sure device connected with ubuntu.
-          </pre_condition>
-          <test_script_entry>/opt/embedding-build-android-tests/maven/Crosswalk_Online_Beta_Maven_Build_IA_AndroidApp.html</test_script_entry>
-        </description>
-      </testcase>
-      <testcase purpose="Validate ARM version test app can be built with adt tool" type="Functional" status="approved" component="Crosswalk API/Embedding Build" execution_type="manual" priority="P2" id="Crosswalk_Adt_Build_ARM_AndroidApp">
+      <testcase component="Crosswalk API/Embedding Build" execution_type="manual" id="Crosswalk_Adt_Build_ARM_AndroidApp"  priority="P1" purpose="Validate ARM version test app can be built with adt tool" status="approved" type="Functional">
         <description>
           <pre_condition>
             1.Make sure device connected with ubuntu.
@@ -101,28 +48,12 @@
           <test_script_entry>/opt/embedding-build-android-tests/adt/Crosswalk_Adt_Build_ARM_AndroidApp.html</test_script_entry>
         </description>
       </testcase>
-      <testcase purpose="Validate IA version test app can be built with adt tool" type="Functional" status="approved" component="Crosswalk API/Embedding Build" execution_type="manual" priority="P2" id="Crosswalk_Adt_Build_IA_AndroidApp">
+      <testcase component="Crosswalk API/Embedding Build" execution_type="manual" id="Crosswalk_Adt_Build_IA_AndroidApp"   priority="P1" purpose="Validate IA version test app can be built with adt tool" status="approved" type="Functional">
         <description>
           <pre_condition>
             1.Make sure device connected with ubuntu.
           </pre_condition>
           <test_script_entry>/opt/embedding-build-android-tests/adt/Crosswalk_Adt_Build_IA_AndroidApp.html</test_script_entry>
-        </description>
-      </testcase>
-      <testcase purpose="Validate ARM version test app can be built with ant script" type="Functional" status="approved" component="Crosswalk API/Embedding Build" execution_type="manual" priority="P2" id="Crosswalk_Ant_Build_ARM_Embedded_AndroidApp">
-        <description>
-          <pre_condition>
-            1.Make sure device connected with ubuntu.
-          </pre_condition>
-          <test_script_entry>/opt/embedding-build-android-tests/ant/Crosswalk_Ant_Build_ARM_Embedded_AndroidApp.html</test_script_entry>
-        </description>
-      </testcase>
-      <testcase purpose="Validate IA version test app can be built with ant script" type="Functional" status="approved" component="Crosswalk API/Embedding Build" execution_type="manual" priority="P2" id="Crosswalk_Ant_Build_IA_Embedded_AndroidApp">
-        <description>
-          <pre_condition>
-            1.Make sure device connected with ubuntu.
-          </pre_condition>
-          <test_script_entry>/opt/embedding-build-android-tests/ant/Crosswalk_Ant_Build_IA_Embedded_AndroidApp.html</test_script_entry>
         </description>
       </testcase>
     </set>
