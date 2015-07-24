@@ -28,15 +28,11 @@
 
 import os
 import sys
-import time
-import subprocess
 import json
-import signal
 from atip.common import common
 from uiautomator import *
 reload(sys)
 sys.setdefaultencoding('utf-8')
-DEFAULT_CMD_TIMEOUT = 60
 DEFAULT_PARAMETER_KEYS = ["text", "textContains", "description", "descriptionContains"
                 "resourceId", "resourceIdMatches"]
 OBJECT_INFO_KEYS = ["contentDescription", "checked", "scrollable", "text", "packageName"
@@ -89,7 +85,7 @@ class Android(common.APP):
                 return False
         except Exception as e:
             return False
-        return self.checkLauncher()
+        return self.checkCurrentApp()
 
 
     def quit(self):
@@ -106,69 +102,7 @@ class Android(common.APP):
                 print("Please check your cmd: %s" % stop_cmd)
 
 
-    def devices(self):
-        out = "\n".join(self.doCMD("adb devices")[1])
-        match = "List of devices attached"
-        index = out.find(match)
-        if index < 0:
-            print("adb is not working.")
-        return dict([s.split("\t") for s in out[index + len(match):].strip().splitlines() if s.strip()])        
-
-
-    def doCMD(self, cmd, time_out=DEFAULT_CMD_TIMEOUT):
-        pre_time = time.time()
-        output = []
-        cmd_return_code = 1
-        cmd_proc = subprocess.Popen(
-            cmd, stdout=subprocess.PIPE, stderr=subprocess.STDOUT, shell=True)
-
-        while True:
-            output_line = cmd_proc.stdout.readline().strip("\r\n")
-            cmd_return_code = cmd_proc.poll()
-            elapsed_time = time.time() - pre_time
-            if cmd_return_code is None:
-                if elapsed_time >= time_out:
-                    self.killProcesses(ppid=cmd_proc.pid)
-                    return (None, None)
-            elif output_line == '' and cmd_return_code is not None:
-                break
-
-            output.append(output_line)
-        if cmd_return_code != 0:
-            pass
-
-        return (cmd_return_code, output)
-
-
-    def killProcesses(self, ppid=None):
-        ppid = str(ppid)
-        pidgrp = []
-
-        def GetChildPids(ppid):
-            command = "ps -ef | awk '{if ($3 ==%s) print $2;}'" % str(ppid)
-            pids = os.popen(command).read()
-            pids = pids.split()
-            return pids
-
-        pidgrp.extend(GetChildPids(ppid))
-        for pid in pidgrp:
-            pidgrp.extend(GetChildPids(pid))
-
-        pidgrp.insert(0, ppid)
-        while len(pidgrp) > 0:
-            pid = pidgrp.pop()
-            try:
-                os.kill(int(pid), signal.SIGKILL)
-                return True
-            except OSError:
-                try:
-                    os.popen("kill -9 %d" % int(pid))
-                    return True
-                except Exception:
-                    return False
-
-
-    def checkLauncher(self):
+    def checkCurrentApp(self):
         currentPackageName = self.d.info["currentPackageName"]
         if currentPackageName == self.package_name:
             return True
@@ -198,11 +132,11 @@ class Android(common.APP):
         self.d.watchers.run()
 
 
-    def turnOnDevice(self):
+    def turnOnScreen(self):
         self.d.wakeup()
 
 
-    def turnOffDevice(self):
+    def turnOffScreen(self):
         self.d.sleep()        
 
 
@@ -344,7 +278,7 @@ class Android(common.APP):
         return None
 
 
-    def clickBtnObject(self, ob):
+    def clickObject(self, ob):
         if ob.exists:
             ob.click()
             return True
@@ -388,7 +322,7 @@ class Android(common.APP):
         return self.d(scrollable=True).fling.toEnd()
 
 
-    def scrollBy(self, steps=10):
+    def scrollForward(self, steps=10):
         # scroll forward(default) vertically(default)
         return self.d(scrollable=True).scroll(steps=steps)
 
@@ -428,5 +362,4 @@ def launch_app_by_name(
     context.android = context.apps[app_name]
     if not context.android.launch_app():
         assert False
-    print(context.android)
     assert True
