@@ -1,5 +1,6 @@
 package org.xwalk.embedded.api.sample;
 
+import android.os.Bundle;
 import org.xwalk.core.XWalkActivity;
 import org.xwalk.core.XWalkView;
 
@@ -9,6 +10,13 @@ public class ContactExtensionActivity extends XWalkActivity {
     private ExtensionContact mExtension;
     private XWalkView mXWalkView;
 
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.xwview_layout);
+        mXWalkView = (XWalkView) findViewById(R.id.xwalkview);                
+    }
+    
 	@Override
 	protected void onXWalkReady() {
 		// TODO Auto-generated method stub
@@ -27,10 +35,7 @@ public class ContactExtensionActivity extends XWalkActivity {
         .setPositiveButton("confirm" ,  null )
         .show();
 
-        setContentView(R.layout.xwview_layout);
         mExtension = new ExtensionContact(ContactExtensionActivity.this);
-        
-        mXWalkView = (XWalkView) findViewById(R.id.xwalkview);
         mXWalkView.load("file:///android_asset/contact.html", null);
 	}
 

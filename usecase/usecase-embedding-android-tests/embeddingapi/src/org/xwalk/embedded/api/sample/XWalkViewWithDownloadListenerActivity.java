@@ -8,6 +8,7 @@ package org.xwalk.embedded.api.sample;
 import org.xwalk.core.XWalkActivity;
 import org.xwalk.core.XWalkDownloadListener;
 
+import android.os.Bundle;
 import org.xwalk.core.XWalkView;
 import android.app.AlertDialog;
 import android.widget.TextView;
@@ -17,8 +18,15 @@ public class XWalkViewWithDownloadListenerActivity extends XWalkActivity {
     private TextView downloadText;
     
     @Override
-    protected void onXWalkReady() {
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
         setContentView(R.layout.version_layout);
+        mXWalkView = (XWalkView) findViewById(R.id.xwalkview);                
+    }
+        
+    @Override
+    protected void onXWalkReady() {
+
         StringBuffer mess = new StringBuffer();
         mess.append("Test Purpose: \n\n")
         .append("Verifies XWalkView can set DownloadListener & override onDownloadStart.\n\n")
@@ -31,9 +39,9 @@ public class XWalkViewWithDownloadListenerActivity extends XWalkActivity {
         .setMessage(mess.toString())
         .setPositiveButton("confirm" ,  null )
         .show();
-        
-        mXWalkView = (XWalkView) findViewById(R.id.xwalkview);
+                
         downloadText = (TextView) findViewById(R.id.text1);
+        
         mXWalkView.setUserAgentString("Chrome/44.0.2403.81 Crosswalk/15.44.376.0 Mobile Safari/537.36");
         mXWalkView.setDownloadListener(new XWalkDownloadListener(getApplicationContext()) {
 			

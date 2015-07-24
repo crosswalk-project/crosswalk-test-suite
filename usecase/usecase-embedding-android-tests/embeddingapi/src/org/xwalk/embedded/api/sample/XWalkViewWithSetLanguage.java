@@ -17,11 +17,12 @@ public class XWalkViewWithSetLanguage extends XWalkActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        setContentView(R.layout.xwview_layout);        
+        mXWalkView = (XWalkView) findViewById(R.id.xwalkview);        
     }
 
     @Override
     protected void onXWalkReady() {
-        setContentView(R.layout.xwview_layout);
         StringBuffer mess = new StringBuffer();
         mess.append("Test Purpose: \n\n")
         .append("Verifies XWalkView can update the accept language.\n\n")
@@ -32,7 +33,7 @@ public class XWalkViewWithSetLanguage extends XWalkActivity {
         .setMessage(mess.toString())
         .setPositiveButton("confirm" ,  null )
         .show();
-        mXWalkView = (XWalkView) findViewById(R.id.xwalkview);
+
         mXWalkView.setAcceptLanguages("zh-CN");
         mXWalkView.load("http://www.bing.com", null);
     }

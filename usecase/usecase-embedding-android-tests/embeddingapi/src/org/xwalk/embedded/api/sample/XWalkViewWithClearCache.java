@@ -31,11 +31,12 @@ public class XWalkViewWithClearCache extends XWalkActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        setContentView(R.layout.clearcache_layout);        
+        mXWalkView = (XWalkView) findViewById(R.id.xwalkview);        
     }
 
     @Override
     protected void onXWalkReady() {
-        setContentView(R.layout.clearcache_layout);
         StringBuffer mess = new StringBuffer();
         mess.append("Test Purpose: \n\n")
         .append("Verifies XWalkView can clear the cache.\n\n")
@@ -61,7 +62,7 @@ public class XWalkViewWithClearCache extends XWalkActivity {
 				}
 			}
 		});
-        mXWalkView = (XWalkView) findViewById(R.id.xwalkview);        
+   
         mXWalkView.setUIClient(new UIClient(mXWalkView));
         mXWalkView.load("http://www.baidu.com/", null);
     }

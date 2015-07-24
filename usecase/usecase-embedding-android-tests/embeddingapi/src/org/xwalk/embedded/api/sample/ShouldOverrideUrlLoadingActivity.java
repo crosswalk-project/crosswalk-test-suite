@@ -17,6 +17,8 @@ public class ShouldOverrideUrlLoadingActivity extends XWalkActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        setContentView(R.layout.embedding_main);
+        mXWalkView = (XWalkView) findViewById(R.id.xwalkview_embedding);        
     }
 
     class TestXWalkResourceClientBase extends XWalkResourceClient {
@@ -49,8 +51,6 @@ public class ShouldOverrideUrlLoadingActivity extends XWalkActivity {
         .setPositiveButton("confirm" ,  null )
         .show();
 
-        setContentView(R.layout.embedding_main);
-        mXWalkView = (XWalkView) findViewById(R.id.xwalkview_embedding);
         mXWalkView.setResourceClient(new TestXWalkResourceClientBase(mXWalkView));
 
         XWalkPreferences.setValue(XWalkPreferences.SUPPORT_MULTIPLE_WINDOWS, true);

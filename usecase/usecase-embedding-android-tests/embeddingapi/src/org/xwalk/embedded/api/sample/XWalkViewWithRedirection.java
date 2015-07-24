@@ -23,6 +23,8 @@ public class XWalkViewWithRedirection extends XWalkActivity{
 	protected void onCreate(Bundle savedInstanceState) {
 		// TODO Auto-generated method stub
         super.onCreate(savedInstanceState);
+        setContentView(R.layout.version_layout);
+        mXWalkView = (XWalkView) findViewById(R.id.xwalkview);        
     }
 
 	
@@ -97,8 +99,6 @@ public class XWalkViewWithRedirection extends XWalkActivity{
         .setPositiveButton("confirm" ,  null )
         .show();
  
-        setContentView(R.layout.version_layout);
-        mXWalkView = (XWalkView) findViewById(R.id.xwalkview);
         LoadstoppedTimes = (TextView) findViewById(R.id.text1);
 
         mXWalkView.setUIClient(new UIClient(mXWalkView));

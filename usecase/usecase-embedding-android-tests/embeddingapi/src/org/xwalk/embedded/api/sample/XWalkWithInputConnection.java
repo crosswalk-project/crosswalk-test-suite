@@ -22,6 +22,7 @@ public class XWalkWithInputConnection extends XWalkActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        setContentView(R.layout.container);        
     }
 
     @Override
@@ -40,7 +41,6 @@ public class XWalkWithInputConnection extends XWalkActivity {
         .setPositiveButton("confirm" ,  null )
         .show();
         
-        setContentView(R.layout.container);
         LinearLayout parent = (LinearLayout) findViewById(R.id.container);
 
         mXWalkView = new myXWalkView(this, this);

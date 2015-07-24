@@ -17,6 +17,8 @@ public class XWalkVersionAndAPIVersion extends XWalkActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        setContentView(R.layout.version_layout);
+        mXWalkView = (XWalkView) findViewById(R.id.xwalkview);        
     }
 
     @Override
@@ -31,8 +33,7 @@ public class XWalkVersionAndAPIVersion extends XWalkActivity {
         .setMessage(mess.toString())
         .setPositiveButton("confirm" ,  null )
         .show();
-        setContentView(R.layout.version_layout);
-        mXWalkView = (XWalkView) findViewById(R.id.xwalkview);
+
         String apiVersion = mXWalkView.getAPIVersion();
         String xwalkVersion = mXWalkView.getXWalkVersion();
         TextView text1 = (TextView) super.findViewById(R.id.text1);

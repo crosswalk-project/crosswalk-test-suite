@@ -24,6 +24,8 @@ public class OnIconAvailableOnReceivedIconActivity extends XWalkActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
     	super.onCreate(savedInstanceState);
+        setContentView(R.layout.embedding_main);
+        mXWalkView = (XWalkView) findViewById(R.id.xwalkview_embedding);    	
     }
 
     class TestXWalkUIClientBase extends XWalkUIClient {
@@ -68,8 +70,6 @@ public class OnIconAvailableOnReceivedIconActivity extends XWalkActivity {
         .setPositiveButton("confirm" ,  null )
         .show();
 
-        setContentView(R.layout.embedding_main);
-        mXWalkView = (XWalkView) findViewById(R.id.xwalkview_embedding);
         mXWalkView.setUIClient(new TestXWalkUIClientBase(mXWalkView));
 
         XWalkPreferences.setValue(XWalkPreferences.SUPPORT_MULTIPLE_WINDOWS, true);
