@@ -34,16 +34,22 @@ Authors:
 <title>Presentation_Function</title>
 <link rel="author" title="Intel" href="http://www.intel.com">
 <body>
+    <p>
+      <strong>Precondition</strong>
+    </p>
+    <ol>
+      <li>Setup the test environment about how to make the test device can mirror onto the monitor screen, for example using MiBox and iPad mini 3</li>
+      <ol>
+        <li>Connect the MiBox to the display monitor (the HDMI converter may be needed here), and make sure the MiBox and test device are connected into the same WIFI network</li>
+        <li>On iPad's home screen, swipe bottom-up to drag the action menu out. The "remote display" button should be appeared beside the "AirDrop" button. Select it and choose "MyBox(MiBox name)", and keep the "Mirroring" button enabled.Then the iPad's screen should be mirrored onto the display</li>
+      </ol>
+      <li>The test app named like: HexGLApp is available</li>
+    </ol>
   <p>
     <strong>Test steps:</strong>
   </p>
   <ol>
-    <li>Run below commands to build project under HexGL-iOS/HexGLAppp directory: <br/>
-        $ open HexGLApp.xcodeproj
-    </li>
-    <li>Select the project "HexGLApp" --&gt; set the active scheme --&gt; HexGLAppp --&gt; &lt;iOS Device&gt; -- &gt; Product --&gt; Build --&gt; Run</li>
-    <li>Check the test device</li>
-    <li>Click "Hardware" --&gt; "External Display"  --&gt; &lt;Choose one value(such as 1024 x 768)&gt;(if the test device isn't emulator, please skip this step)</li>
+    <li>Install the app named like "HexGLApp" and launch it</li>
     <li>Change the "REMOTE DISPLAY:OFF" to "REMOTE DISPLAY:ON" on the lauching screen</li>
     <li>Click "Start"</li>
     <li>Touch the screen</li>
@@ -54,10 +60,7 @@ Authors:
     <strong>Expected Results:</strong>
   </p>
   <ol>
-    <li>Open the app named "Xcode" and display one project named "HexGLApp" on the left</li>
-    <li>Display message "Build Succeeded" and running the build app</li>
-    <li>Launch the app named like "HexGL" successfully, and no error message, no crash, and display "START", "CONTAOLS", "REMOTE DISPLAY:OFF" and so on</li>
-    <li>Open the External Display</li>
+    <li>Launch the app named like "HexGLApp" successfully, and no error message, no crash, and display "START", "CONTAOLS", "REMOTE DISPLAY:OFF" and so on</li>
     <li>Display "REMOTE DISPLAY:ON"</li>
     <li>Display "CLICK/TOUCH TO CONTINUE", "TURN" and "ACCEL"</li>
     <li>Display the game main page normally on the external display and enter the "START" page and you can play the game when display "GO" on the screen</li>
