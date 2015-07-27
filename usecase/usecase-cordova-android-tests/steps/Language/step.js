@@ -1,0 +1,10 @@
+var step = '<font class="fontSize">'
+            +'<p>Purpose:</p>'
+            +'<p>Verify the window.navigator.language can be got correctly in Cordova app</p>'
+            +'<p>Expected Results:</p>'
+            +'<ol>'
+            +'<li>The command run successfully, no error</li>'
+            +'<li>The console display \'Build Package Successfully\' and \'Package Name Consistent\'</li>'
+            +'<li>The app is running normally and alert \'es-US\'</li>'
+            +'</ol>'
+          +'</font>';
