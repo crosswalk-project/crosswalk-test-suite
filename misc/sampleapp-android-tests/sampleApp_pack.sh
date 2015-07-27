@@ -19,7 +19,8 @@
 # Modified:
 #   2015-07-08: Add 6 sample apps from repository https://github.com/crosswalk-project/crosswalk-samples
 #               Related: https://crosswalk-project.org/jira/browse/XWALK-4555
-#
+#   2015-07-23:  Modified the server IP and port for test team before packing the webrtc sample app.
+#               Releated: https://crosswalk-project.org/jira/browse/XWALK-4663
 
 . /etc/profile
 usage="Usage: ./sampleApp_pack.sh -v <sdk_version> -r
@@ -95,6 +96,9 @@ cp -a $ROOT_DIR/crosswalk-samples/space-dodge-game $ROOT_DIR/crosswalk-demos/
 cp -a $ROOT_DIR/crosswalk-samples/tizen_apis $ROOT_DIR/crosswalk-demos/
 cp -a $ROOT_DIR/crosswalk-samples/webgl $ROOT_DIR/crosswalk-demos/
 cp -a $ROOT_DIR/crosswalk-samples/webrtc $ROOT_DIR/crosswalk-demos/
+# subsitute the server IP and port in webrtc/client/main.js
+sed -i "s|var SERVER_IP = '192.168.0.25'|var SERVER_IP = '106.187.98.180'|" $ROOT_DIR/crosswalk-demos/webrtc/client/main.js
+sed -i "s|var SERVER_PORT = 9000|var SERVER_PORT = 9001|" $ROOT_DIR/crosswalk-demos/webrtc/client/main.js
 
 if [ -n $SDK_VERSION ];then
     if [ -d $PKG_TOOLS_DIR/crosswalk-$SDK_VERSION ];then
