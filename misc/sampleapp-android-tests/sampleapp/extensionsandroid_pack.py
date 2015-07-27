@@ -64,8 +64,7 @@ class TestSampleAppFunctions(unittest.TestCase):
 
     def test_pack(self):
         comm.setUp()
-        global app_name
-        app_name = "xwalk_echo_app"
+        comm.check_appname()
         sample_src = "extensions-android"
         app_root = comm.sample_src_pref + sample_src
         xmlpath = app_root + '/xwalk-echo-extension-src/build.xml'
@@ -73,11 +72,11 @@ class TestSampleAppFunctions(unittest.TestCase):
         cmd = "%s/build.sh" % app_root
         target_apk_path = comm.const_path + "/../testapp/"
         os.chdir(target_apk_path)
-        print "Generate APK %s ----------------> START" % app_name
+        print "Generate APK %s ----------------> START" % comm.app_name
         packstatus = commands.getstatusoutput(cmd)
         self.assertEquals(0, packstatus[0])
-        self.assertNotIn("error", packstatus[1].lower())
-        print "\nGenerate APK %s ----------------> OK\n" % app_name
+        self.assertIn("build successful", packstatus[1].lower())
+        print "\nGenerate APK %s ----------------> OK\n" % comm.app_name
         apk_path = app_root + "/xwalk-echo-extension-src/lib/"
         for index, name in enumerate(os.listdir(apk_path)):
             if os.path.isdir(apk_path + "/" + name):
@@ -86,7 +85,7 @@ class TestSampleAppFunctions(unittest.TestCase):
                     if apk_index <= len(os.listdir(apk_path)) and \
                     apkname.endswith(".apk"):
                         os.chdir(apk_path)
-                        self.assertTrue(apkname.startswith(app_name))
+                        self.assertTrue(apkname.startswith(comm.app_name))
                         print 'Found apk %s' % apkname
                         shutil.move(apkname, target_apk_path)
                     elif apkname.find(".apk") != -1:

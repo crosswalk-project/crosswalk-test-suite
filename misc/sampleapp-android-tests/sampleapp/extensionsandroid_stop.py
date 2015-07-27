@@ -40,7 +40,7 @@ class TestSampleAppFunctions(unittest.TestCase):
 
     def test_stop(self):
         comm.setUp()
-        app_name = "xwalk_echo_app"
+        comm.check_appname()
         # Find whether the app have launched
         cmdacti = "adb -s " + comm.device + \
             " shell dumpsys activity activities | grep "\
@@ -48,9 +48,9 @@ class TestSampleAppFunctions(unittest.TestCase):
         launched = commands.getstatusoutput(cmdacti)
         if launched[0] != 0:
             print "Stop APK ---------------->%s App haven't launched,"\
-            " need to launch it!" % app_name
+            " need to launch it!" % comm.app_name
             cmdstart = "adb -s " + comm.device + " shell am start -n "\
-            "org.crosswalkproject.sample/.xwalk_echo_appActivity"
+            "org.crosswalkproject.sample/.%sActivity" % comm.app_name
             comm.app_launch(cmdstart, self)
             time.sleep(1)
         cmdstop = "adb -s " + comm.device + \
