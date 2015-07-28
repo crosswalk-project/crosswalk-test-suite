@@ -1,7 +1,7 @@
 ## Introduction
 
 pack_cordova_sample.py is used for auto build Cordova sample apps, including mobilespec, helloworld, remotedebugging, gallery, and support both Cordova 3.6 and Cordova 4.0 build.  
-**Note**: mobilespec build based on Cordova 4.0 is not in scope currently.
+**Note**: For cordova 4.0 pkg, need to configure crosswalk version in crosswalk-test-suite/VERSION file
 
 ## Pre-conditions
 
@@ -34,7 +34,7 @@ pack_cordova_sample.py is used for auto build Cordova sample apps, including mob
 **cordova-version**: 3.6, 4.0  
 **pkg-mode**: embedded(default), shared  
 **pkg-arch**: arm(default), x86  
-**Note**: -m argument is only for cordova version 3.6, -a argument is only for cordova version 4.0, if no --tools argument, please run script under the path where it is.
+**Note**: -a argument is only for cordova version 4.0, if no --tools argument, please run script under the path where it is.
 
 ## Authors:
 
