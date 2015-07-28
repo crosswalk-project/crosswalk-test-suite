@@ -68,6 +68,16 @@ def setUp():
     mode.close()
 
 
+def check_appname():
+    global app_name
+    xwalk_version = os.environ.get('XWALK_VERSION')
+    #xwalk_version = '8.38.208.0'
+    if int(xwalk_version.split('.')[0]) < 9:
+        app_name = 'xwalk_echo_app'
+    else:
+        app_name = 'Sample'
+
+
 def pack(cmd, appname, self):
     setUp()
     os.chdir(const_path + "/../testapp/")

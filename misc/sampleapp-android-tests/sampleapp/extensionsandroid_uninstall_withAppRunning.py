@@ -40,7 +40,7 @@ class TestSampleAppFunctions(unittest.TestCase):
 
     def test_uninstall_withAppRunning(self):
         comm.setUp()
-        app_name = "xwalk_echo_app"
+        comm.check_appname()
         cmdfind = "adb -s " + comm.device + \
             " shell pm list packages |grep org.crosswalkproject.sample"
         # print "cmdfind: ", cmdfind
@@ -49,16 +49,16 @@ class TestSampleAppFunctions(unittest.TestCase):
 
         if pmstatus[0] != 0:
             print "Uninstall APK ----------------> %s App haven't installed,"\
-            " need to install it!" % app_name
+            " need to install it!" % comm.app_name
             os.chdir(comm.const_path + "/../testapp/")
             apk_file = commands.getstatusoutput("ls | grep %s | grep %s" % \
-                (app_name, comm.ARCH))[1]
+                (comm.app_name, comm.ARCH))[1]
             cmdinst = "adb -s " + comm.device + " install -r " + apk_file
             comm.app_install(cmdinst, cmdfind, self)
 
         # Make sure the app is running
         cmd = "adb -s " + comm.device + " shell am start -n "\
-        "org.crosswalkproject.sample/.xwalk_echo_appActivity"
+        "org.crosswalkproject.sample/.%sActivity" % comm.app_name
         comm.app_launch(cmd, self)
         time.sleep(2)
 

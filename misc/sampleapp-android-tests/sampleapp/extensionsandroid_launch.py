@@ -39,9 +39,9 @@ class TestSampleAppFunctions(unittest.TestCase):
 
     def test_launch(self):
         comm.setUp()
-        app_name = "Extensionsandroid"
+        comm.check_appname()
         cmd = "adb -s " + comm.device + " shell am start -n "\
-        "org.crosswalkproject.sample/.xwalk_echo_appActivity"
+        "org.crosswalkproject.sample/.%sActivity" % comm.app_name
         print cmd
         comm.app_launch(cmd, self)
 

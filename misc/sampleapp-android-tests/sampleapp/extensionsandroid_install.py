@@ -39,11 +39,12 @@ class TestSampleAppFunctions(unittest.TestCase):
 
     def test_install(self):
         comm.setUp()
+        comm.check_appname()
         os.chdir(comm.const_path + "/../testapp/")
-        app_name = "xwalk_echo_app"
         apk_file = commands.getstatusoutput("ls | grep %s | grep %s" % \
-            (app_name, comm.ARCH))[1]
+            (comm.app_name, comm.ARCH))[1]
         cmd = "adb -s " + comm.device + " install -r " + apk_file
+        print cmd
         cmdfind = "adb -s " + comm.device + \
             " shell pm list packages |grep org.crosswalkproject.sample"
         comm.app_install(cmd, cmdfind, self)
