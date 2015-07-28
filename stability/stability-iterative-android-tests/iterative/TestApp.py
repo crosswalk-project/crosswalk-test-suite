@@ -133,6 +133,18 @@ class TestApp():
 
         return action_status
 
+    def switchTo(self, switchapp):
+        action_status = False
+
+        cmd = "%s -s %s shell am start -n %s/.%s" % (ADB_CMD, self.device, switchapp.pkgname, switchapp.activname)
+        (return_code, output) = doCMD(cmd)
+        if switchapp.isActivity():
+            action_status = True
+        else:
+            print "-->> Fail to switch to %s." % switchapp.pkgname
+
+        return action_status
+
     def stop(self):
         action_status = False
         if self.isRunning():
