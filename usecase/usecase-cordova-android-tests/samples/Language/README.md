@@ -4,7 +4,4 @@ This sample demonstrates cordova app can get the android device language correct
 
 This usecase covers following methods:
 
-* $ ./bin/create
-* $ ./cordova/build
-* $ ./cordova/run
-* alert(window.navigator.language);
+* window.navigator.language

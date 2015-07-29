@@ -9,7 +9,4 @@ This sample demonstrates Cordova Package feature basic functionalities, include:
 
 This usecase covers following methods:
 
-* $ cordova-android/bin/create
-* $ cordova plugin add --plugin org.apache.cordova.statusbar
-* $ cordova plugin add ../cordova-plugin-crosswalk-webview
-* $ ./cordova/build
+* $ StatusBar.show()
