@@ -56,6 +56,7 @@ PKG_MODES = ["shared", "embedded"]
 PKG_ARCHS = ["x86", "arm"]
 PKG_BLACK_LIST = []
 PACK_TYPES = ["ant", "gradle", "maven"]
+CROSSWALK_VERSION = ""
 PKG_NAME = None
 BUILD_PARAMETERS = None
 BUILD_ROOT = None
