@@ -37,6 +37,7 @@ import shutil
 import glob
 import fnmatch
 import re
+import json
 reload(sys)
 sys.setdefaultencoding("utf-8")
 script_path = os.path.realpath(__file__)
@@ -47,7 +48,7 @@ testapp_path = "/tmp/cordova-sampleapp/"
 
 
 def setUp():
-    global ARCH, MODE, VERSION, device
+    global ARCH, MODE, CORDOVA_VERSION, device, CROSSWALK_VERSION
 
     device = os.environ.get('DEVICE_ID')
 
@@ -81,10 +82,17 @@ def setUp():
 
     f_version = open(const_path + "/../cordova-version", 'r')
     if f_version.read().strip("\n\t") != "3.6":
-        VERSION = "4.0"
+        CORDOVA_VERSION = "4.0"
     else:
-        VERSION = "3.6"
+        CORDOVA_VERSION = "3.6"
     f_version.close()
+
+    with open(const_path + "/../VERSION", "rt") as pkg_version_file:
+        pkg_version_raw = pkg_version_file.read()
+        pkg_version_file.close()
+        pkg_version_json = json.loads(pkg_version_raw)
+        CROSSWALK_VERSION = pkg_version_json["main-version"]
+
 
 
 def create(appname, pkgname, mode, sourcecodepath, replace_index_list, self):
@@ -93,7 +101,7 @@ def create(appname, pkgname, mode, sourcecodepath, replace_index_list, self):
         print "Existing %s project, try to clean up..." % appname
         do_remove(glob.glob(os.path.join(tool_path, appname)))
     print "Create project %s ----------------> START" % appname
-    if VERSION == "4.0":
+    if CORDOVA_VERSION == "4.0":
         cmd = "cordova create %s %s %s" % (appname, pkgname, appname)
     else:
         if mode == "shared":
@@ -107,7 +115,7 @@ def create(appname, pkgname, mode, sourcecodepath, replace_index_list, self):
     result = commands.getstatusoutput("ls")
     self.assertIn(appname, result[1])
     project_root = os.path.join(tool_path, appname)
-    if VERSION == "4.0":
+    if CORDOVA_VERSION == "4.0":
         os.chdir(project_root)
         if not replace_key(os.path.join(project_root, 'config.xml'),
                            '<widget android-activityName="%s"' % appname, '<widget'):
@@ -124,9 +132,15 @@ def create(appname, pkgname, mode, sourcecodepath, replace_index_list, self):
         self.assertEquals(0, platformstatus[0])
 
         print "Install Crosswalk WebView Plugin --------------> START"
-        plugin_install_cmd = "cordova plugin add %s" % plugin_tool
+        plugin_install_webview = "cordova plugin add %s --variable CROSSWALK_ANDROID_VERSION=\"%s\"" % (plugin_tool, CROSSWALK_VERSION)
+        if mode == "shared":
+            plugin_install_cmd = plugin_install_webview + " --variable LIB_MODE=\"shared\""
+        else:
+            plugin_install_cmd = plugin_install_webview + " --variable LIB_MODE=\"embedd\""
+
         pluginstatus = commands.getstatusoutput(plugin_install_cmd)
         self.assertEquals(0, pluginstatus[0])
+
         if replace_index_list is not None and len(replace_index_list) >= 2:
             index_file_path = os.path.join(project_root, "www", "index.html")
             key = replace_index_list[0]
@@ -186,10 +200,25 @@ def buildGoogleApp(appname, sourcecodepath, self):
     self.assertEquals(0, buildstatus[0])
     os.chdir(os.path.join(tool_path, appname))
 
-    plugin_tool = os.path.join(tool_path, appname, "plugins", "cordova-plugin-crosswalk-webview")
-    if not do_copy(os.path.join(
-            tool_path, "cordova-plugin-crosswalk-webview"), plugin_tool):
-        return False
+    print "Add android platforms to this project --------------> START"
+    add_android_cmd = "cca platform add android"
+    addstatus = commands.getstatusoutput(add_android_cmd)
+    self.assertEquals(0, addstatus[0])
+
+    print "uninstall webview default plugin from this project --------------> START"
+    plugin_uninstall_webview = "cordova plugin remove cordova-plugin-crosswalk-webview"
+    uninstallStatus = commands.getstatusoutput(plugin_uninstall_webview)
+    self.assertEquals(0, uninstallStatus[0])
+
+    print "Install Crosswalk WebView Plugin --------------> START"
+    plugin_install_webview = "cordova plugin add %s --variable CROSSWALK_ANDROID_VERSION=\"%s\"" % (plugin_tool, CROSSWALK_VERSION)
+    if MODE == "shared":
+        plugin_install_cmd = plugin_install_webview + " --variable LIB_MODE=\"shared\""
+    else:
+        plugin_install_cmd = plugin_install_webview + " --variable LIB_MODE=\"embedd\""
+
+    pluginstatus = commands.getstatusoutput(plugin_install_cmd)
+    self.assertEquals(0, pluginstatus[0])
 
     build_cmd = "cca build android"
     buildstatus = commands.getstatusoutput(build_cmd)
@@ -214,7 +243,7 @@ def buildGoogleApp(appname, sourcecodepath, self):
 def build(appname, isDebug, self):
     os.chdir(os.path.join(tool_path, appname))
     print "Build project %s ----------------> START" % appname
-    if VERSION == "4.0":
+    if CORDOVA_VERSION == "4.0":
         cmd = "cordova build android"
         if isDebug == True:
             print "build debug app"
@@ -228,7 +257,7 @@ def build(appname, isDebug, self):
     buildstatus = commands.getstatusoutput(cmd)
     self.assertEquals(0, buildstatus[0])
     print "\nBuild project %s ----------------> OK\n" % appname
-    if VERSION == "4.0":
+    if CORDOVA_VERSION == "4.0":
         os.chdir(
             os.path.join(
                 tool_path,
@@ -252,7 +281,7 @@ def build(appname, isDebug, self):
 def run(appname, self):
     os.chdir(os.path.join(tool_path, appname))
     print "Run project %s ----------------> START" % appname
-    if VERSION == "4.0":
+    if CORDOVA_VERSION == "4.0":
         cmd = "cordova run android"
     else:
         cmd = "./cordova/run"
