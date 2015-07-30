@@ -33,6 +33,10 @@ import Image
 import string
 import os
 import md5
+import time
+import subprocess
+import signal
+DEFAULT_CMD_TIMEOUT = 60
 
 
 class APP():
@@ -97,3 +101,64 @@ class APP():
         m = md5.new()
         m.update(data_str)
         return m.hexdigest()
+
+    def devices(self):
+        out = "\n".join(self.doCMD("adb devices")[1])
+        match = "List of devices attached"
+        index = out.find(match)
+        if index < 0:
+            print("adb is not working.")
+        return dict([s.split("\t") for s in out[index + len(match):].strip().splitlines() if s.strip()])        
+
+
+    def doCMD(self, cmd, time_out=DEFAULT_CMD_TIMEOUT):
+        pre_time = time.time()
+        output = []
+        cmd_return_code = 1
+        cmd_proc = subprocess.Popen(
+            cmd, stdout=subprocess.PIPE, stderr=subprocess.STDOUT, shell=True)
+
+        while True:
+            output_line = cmd_proc.stdout.readline().strip("\r\n")
+            cmd_return_code = cmd_proc.poll()
+            elapsed_time = time.time() - pre_time
+            if cmd_return_code is None:
+                if elapsed_time >= time_out:
+                    self.killProcesses(ppid=cmd_proc.pid)
+                    return (None, None)
+            elif output_line == '' and cmd_return_code is not None:
+                break
+
+            output.append(output_line)
+        if cmd_return_code != 0:
+            pass
+
+        return (cmd_return_code, output)
+
+
+    def killProcesses(self, ppid=None):
+        ppid = str(ppid)
+        pidgrp = []
+
+        def GetChildPids(ppid):
+            command = "ps -ef | awk '{if ($3 ==%s) print $2;}'" % str(ppid)
+            pids = os.popen(command).read()
+            pids = pids.split()
+            return pids
+
+        pidgrp.extend(GetChildPids(ppid))
+        for pid in pidgrp:
+            pidgrp.extend(GetChildPids(pid))
+
+        pidgrp.insert(0, ppid)
+        while len(pidgrp) > 0:
+            pid = pidgrp.pop()
+            try:
+                os.kill(int(pid), signal.SIGKILL)
+                return True
+            except OSError:
+                try:
+                    os.popen("kill -9 %d" % int(pid))
+                    return True
+                except Exception:
+                    return False

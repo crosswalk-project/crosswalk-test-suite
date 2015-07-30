@@ -55,5 +55,6 @@ setup(
     install_requires=[
             'setuptools',
             'behave',
-            'selenium'],
+            'selenium',
+            'uiautomator'],
 )

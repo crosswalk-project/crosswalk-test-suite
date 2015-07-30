@@ -1,4 +1,4 @@
-# Copyright (c) 2014 Intel Corporation.
+# Copyright (c) 2015 Intel Corporation.
 #
 # Redistribution and use in source and binary forms, with or without modification,
 # are permitted provided that the following conditions are met:
@@ -25,28 +25,30 @@
 #
 # Authors:
 #         Fan, Yugang <yugang.fan@intel.com>
+#         Yang, Yunlong <yunlongx.yang@intel.com>
 
 import os
 import sys
 import json
 from atip import environment as atipenv
-try:
-    from urllib2 import URLError
-except ImportError:
-    from urllib.error import URLError
+reload(sys)
+sys.setdefaultencoding('utf-8')
 
 bdd_json_path = os.path.join(
     os.path.dirname(os.path.abspath(__file__)), "bdd.json")
 
 
 def clean_context(context):
-    for app in context.apps.values():
+    for (app_name, app) in context.apps.items():
+        if app_name == "android":
+            continue
         try:
             app.quit()
-        except URLError:
+        except Exception:
             pass
 
     context.web = None
+    context.android = None
     context.apps = {}
 
 
@@ -78,14 +80,14 @@ def load_default_config():
         else:
             bdd_json.update({"url-prefix": ""})
     except Exception as e:
-        print "Failed to get test envs: %s, switch to bdd.json" % e
+        print("Failed to get test envs: %s, switch to bdd.json" % e)
         try:
             with open(bdd_json_path, "rt") as bdd_json_file:
                 bdd_json_raw = bdd_json_file.read()
                 bdd_json_file.close()
                 bdd_json = json.loads(bdd_json_raw)
         except Exception as e:
-            print "Failed to read bdd json: %s" % e
+            print("Failed to read bdd json: %s" % e)
             return None
 
     return bdd_json
@@ -94,6 +96,7 @@ def load_default_config():
 def before_all(context):
     atipenv.before_all(context)
     context.web = None
+    context.android = None
     context.apps = {}
     context.bdd_config = load_default_config()
     if not context.bdd_config:

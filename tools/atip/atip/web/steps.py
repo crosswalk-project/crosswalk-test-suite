@@ -64,11 +64,6 @@ def get_page_url(context, text):
     return url
 
 
-@step(u'launch "{app_name}"')
-def launch_app_by_name(context, app_name):
-    web.launch_webapp_by_name(context, app_name)
-
-
 @step(u'I launch "{app_name}" with "{apk_pkg_name}" and "{apk_activity_name}"')
 def launch_app_by_names(context, app_name, apk_pkg_name, apk_activity_name):
     web.launch_webapp_by_name(
