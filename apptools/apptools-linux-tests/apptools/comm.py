@@ -80,52 +80,49 @@ def create(self):
 def build(self, cmd):
     buildstatus = commands.getstatusoutput(cmd)
     self.assertEquals(buildstatus[0], 0)
-    self.assertIn(
-        "pkg",
-        os.listdir(
-            os.path.join(
-                TEMP_DATA_PATH,
-                TEST_PROJECT_COMM)))
-    os.chdir('pkg')
     debs = os.listdir(os.getcwd())
+    debLength = 0
     for deb in debs:
-        print "The pkg deb is " + deb
-        self.assertIn(".deb", deb)
+        if deb.endswith(".deb"):
+            print "The pkg deb is " + deb
+            debLength = debLength + 1
+    self.assertEquals(debLength, 1)
 
 
 def run(self):
     setUp()
     debs = os.listdir(os.getcwd())
     for deb in debs:
-        project_name = deb.split("_")[0]
+        if deb.endswith(".deb"):
+            project_name = deb.split("_")[0]
 
-        print "Begin install deb file ", project_name
-        status, output = commands.getstatusoutput("sudo dpkg -i " + deb)
-        self.assertEquals(status, 0)
+            print "Begin install deb file ", project_name
+            status, output = commands.getstatusoutput("sudo dpkg -i " + deb)
+            self.assertEquals(status, 0)
 
-        print "Begin search deb file ", project_name
-        status = commands.getstatusoutput("dpkg -l " + project_name)
-        self.assertTrue(status)
+            print "Begin search deb file ", project_name
+            status = commands.getstatusoutput("dpkg -l " + project_name)
+            self.assertTrue(status)
 
-        print "Begin launch deb file ", project_name
-        os.system(project_name + " & sleep 5")
-        # wait 3 second, then check application is running
-        time.sleep(3)
+            print "Begin launch deb file ", project_name
+            os.system(project_name + " & sleep 5")
+            # wait 3 second, then check application is running
+            time.sleep(3)
 
-        status, output = commands.getstatusoutput("ps -ef | grep "
-                                                  + project_name + " | grep -v \"grep\" | wc -l")
-        self.assertEquals(status, 0)
+            status, output = commands.getstatusoutput("ps -ef | grep "
+                                                      + project_name + " | grep -v \"grep\" | wc -l")
+            self.assertEquals(status, 0)
 
-        # kill application
-        status, output = commands.getstatusoutput(
-            "ps aux | grep xwalk | grep " + project_name + " | grep -v \"grep\"")
-        for ps in output.split("\n"):
-            for pid in ps.split(" "):
-                if pid.isdigit():
-                    os.kill(int(pid), 9)
-                    break
+            # kill application
+            status, output = commands.getstatusoutput(
+                "ps aux | grep xwalk | grep " + project_name + " | grep -v \"grep\"")
+            for ps in output.split("\n"):
+                for pid in ps.split(" "):
+                    if pid.isdigit():
+                        os.kill(int(pid), 9)
+                        break
 
-        print "Begin uninstall deb file ", project_name
-        status, output = commands.getstatusoutput("sudo dpkg -P "
-                                                  + project_name)
-        self.assertEquals(status, 0)
+            print "Begin uninstall deb file ", project_name
+            status, output = commands.getstatusoutput("sudo dpkg -P "
+                                                      + project_name)
+            self.assertEquals(status, 0)

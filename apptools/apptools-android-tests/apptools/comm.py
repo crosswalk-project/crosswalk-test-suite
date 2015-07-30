@@ -98,24 +98,14 @@ def create(self):
 def build(self, cmd):
     buildstatus = commands.getstatusoutput(cmd)
     self.assertEquals(buildstatus[0], 0)
-    self.assertIn("pkg", os.listdir(XwalkPath + "org.xwalk.test"))
-    os.chdir('pkg')
     apks = os.listdir(os.getcwd())
-    self.assertNotEquals(len(apks), 0)
+    apkLength = 0
     for i in range(len(apks)):
-        self.assertTrue(apks[i].endswith(".apk"))
-        if "x86" in apks[i]:
-            self.assertIn("x86", apks[i])
-            if i < len(os.listdir(os.getcwd())):
-                self.assertIn("arm", apks[i - 1])
-            else:
-                self.assertIn("arm", apks[i + 1])
-        elif "arm" in apks[i]:
-            self.assertIn("arm", apks[i])
-            if i < len(os.listdir(os.getcwd())):
-                self.assertIn("x86", apks[i - 1])
-            else:
-                self.assertIn("x86", apks[i + 1])
+        if apks[i].endswith(".apk") and "x86" in apks[i]:
+            apkLength = apkLength + 1
+        if apks[i].endswith(".apk") and "arm" in apks[i]:
+            apkLength = apkLength + 1
+    self.assertEquals(apkLength, 2)
 
 
 def update(self, cmd):

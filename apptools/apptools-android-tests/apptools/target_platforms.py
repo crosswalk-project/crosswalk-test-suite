@@ -42,6 +42,7 @@ class TestCrosswalkApptoolsFunctions(unittest.TestCase):
         cmd = comm.PackTools + "crosswalk-app platforms"
         status = os.popen(cmd).readlines()
         self.assertEquals("android", status[0].strip(" *\n"))
+        self.assertEquals("windows", status[1].strip(" *\n"))
 
 if __name__ == '__main__':
     unittest.main()

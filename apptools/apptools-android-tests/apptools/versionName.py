@@ -42,7 +42,7 @@ class TestCrosswalkApptoolsFunctions(unittest.TestCase):
         comm.setUp()
         comm.create(self)
         os.chdir('org.xwalk.test')
-        with open(comm.ConstPath + "/../tools/org.xwalk.test/manifest.json") as json_file:
+        with open(comm.ConstPath + "/../tools/org.xwalk.test/app/manifest.json") as json_file:
             data = json.load(json_file)
         buildcmd = comm.PackTools + "crosswalk-app build"
         buildstatus = commands.getstatusoutput(buildcmd)
@@ -60,13 +60,13 @@ class TestCrosswalkApptoolsFunctions(unittest.TestCase):
         comm.setUp()
         comm.create(self)
         os.chdir('org.xwalk.test')
-        jsonfile = open(comm.ConstPath + "/../tools/org.xwalk.test/manifest.json", "r")
+        jsonfile = open(comm.ConstPath + "/../tools/org.xwalk.test/app/manifest.json", "r")
         jsons = jsonfile.read()
         jsonfile.close()
         jsonDict = json.loads(jsons)
         jsonDict["crosswalk_app_version"] = "0.1"
-        json.dump(jsonDict, open(comm.ConstPath + "/../tools/org.xwalk.test/manifest.json", "w"))
-        with open(comm.ConstPath + "/../tools/org.xwalk.test/manifest.json") as json_file:
+        json.dump(jsonDict, open(comm.ConstPath + "/../tools/org.xwalk.test/app/manifest.json", "w"))
+        with open(comm.ConstPath + "/../tools/org.xwalk.test/app/manifest.json") as json_file:
             data = json.load(json_file)
         buildcmd = comm.PackTools + "crosswalk-app build"
         buildstatus = commands.getstatusoutput(buildcmd)

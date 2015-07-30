@@ -69,6 +69,9 @@ def create(self):
 def build(self, cmd):
     buildstatus = commands.getstatusoutput(cmd)
     self.assertEquals(buildstatus[0], 0)
-    self.assertIn("pkg", os.listdir(XwalkPath + "org.xwalk.test"))
-    os.chdir('pkg')
-    self.assertIn("test.ipa", os.listdir(os.getcwd()))
+    apks = os.listdir(os.getcwd())
+    ipaLength = 0
+    for i in range(len(apks)):
+        if apks[i].endswith(".ipa"):
+            ipaLength = ipaLength + 1
+    self.assertEquals(ipaLength, 1)
