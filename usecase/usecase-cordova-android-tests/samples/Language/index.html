@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <!--
-Copyright (c) 2014 Intel Corporation.
+Copyright (c) 2015 Intel Corporation.
 
 Redistribution and use in source and binary forms, with or without modification,
 are permitted provided that the following conditions are met:
@@ -26,39 +26,31 @@ NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE,
 EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
 Authors:
-        Wang, Hongjuan <hongjuanx.wang@intel.com>
         Zhu, Yongyong <yongyongx.zhu@intel.com>
 
 -->
 
 <meta charset="utf-8" />
-<meta name="viewport" content="initial-scale=1.0, maximum-scale=1.0, width=device-width" />
+<meta name="viewport" content="initial-scale=1.0, maximum-scale=1.0, width=device-width">
 <link rel="stylesheet" type="text/css" href="../../css/bootstrap.css">
 <link rel="stylesheet" type="text/css" href="../../css/main.css">
 <script src="../../js/jquery-2.1.3.min.js"></script>
 <script src="../../js/bootstrap.min.js"></script>
 <script src="../../js/common.js"></script>
 <script src="../../js/tests.js"></script>
+<script>
+  setTimeout(function(){showLanguage()},500);
+  function showLanguage()
+  {
+    document.getElementById("demo").innerHTML=window.navigator.language;
+  }
+</script>
 
 <div id="header">
   <h3 id="main_page_title"></h3>
 </div>
 <div class="content">
-  <h4>Preconditions</h4>
-  <ol>
-    <li>Connect the android device to the host</li>
-    <li>Set the android device language to 'Espanol (Estados Unidos)'</li>
-  </ol>
-  <h4>Test Steps</h4>
-  <ol>
-    <li>Enter 'usecase-cordova-android-tests/res/CordovaPackage' directory, copy test.py, index.html files to crosswalk-cordova directory</li>
-    <li>Run the python script:<br/>
-      For embedded mode: $ python test.py -m embedded<br/>
-      For Shared mode: $ python test.py -m shared<br/>
-    </li>
-    <li>Check the command output</li>
-    <li>Check the app on the device</li>
-  </ol>
+  <h1><p id="demo"></p></h1>
 </div>
 <div class="footer">
   <div id="footer"></div>

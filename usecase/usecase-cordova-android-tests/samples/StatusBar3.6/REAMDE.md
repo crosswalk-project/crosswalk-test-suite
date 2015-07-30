@@ -9,6 +9,4 @@ This sample demonstrates Cordova Package feature basic functionalities, include:
 
 This usecase covers following methods:
 
-* $ ./bin/create
-* $ plugman install --platform android --project . --plugin org.apache.cordova.statusbar
-* $ ./cordova/build
+* $ StatusBar.show()
