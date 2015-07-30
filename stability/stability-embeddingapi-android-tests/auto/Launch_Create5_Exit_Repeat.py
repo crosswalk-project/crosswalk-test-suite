@@ -36,6 +36,7 @@ import commands
 import shutil
 import time
 import subprocess
+from xwalk_utils import *
 reload(sys)
 sys.setdefaultencoding('utf-8')
 
@@ -60,7 +61,7 @@ class TestStabilityIterativeFunctions(unittest.TestCase):
         package_name = "org.xwalkview.stability.app"
         sysmon_runtimes = 300
         repeat_times = 50
-        sleep_time = 60
+        timeout = 60
         pre_time = time.time()
         testName = "Launch_Create5_Exit_Repeat"
         sysmon_path = ConstPath + '/sysmon.sh'
@@ -83,7 +84,7 @@ class TestStabilityIterativeFunctions(unittest.TestCase):
                     '/.%s' %
                     activity_name)
                 self.assertNotIn('Error', launchstatus[1])
-                time.sleep(sleep_time)
+                checkStorageFlag(device, timeout)
                 commands.getstatusoutput(
                     'adb -s ' +
                     device +
@@ -95,7 +96,7 @@ class TestStabilityIterativeFunctions(unittest.TestCase):
                 self.assertNotIn(package_name, stopresult[1])
             else:
                 print 'Please install apk contains %s frist' % activity_name
-                sys.exit(1)
+                sys.exit(1)               
 
 
 if __name__ == '__main__':

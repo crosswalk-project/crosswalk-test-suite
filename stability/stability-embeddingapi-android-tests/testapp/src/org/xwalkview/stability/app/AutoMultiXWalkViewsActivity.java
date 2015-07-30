@@ -8,6 +8,7 @@ import org.xwalk.core.XWalkPreferences;
 import org.xwalk.core.XWalkUIClient;
 import org.xwalk.core.XWalkView;
 import org.xwalkview.stability.base.XWalkBaseActivity;
+import org.xwalkview.stability.base.XWalkBaseUtil;
 
 import android.text.TextUtils;
 import android.view.Gravity;
@@ -24,6 +25,7 @@ public class AutoMultiXWalkViewsActivity extends XWalkBaseActivity {
         mAddViewsButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                XWalkBaseUtil.createStorageFile(false);
                 int add_num = 0;
                 int max_num = view_num;
                 if(!TextUtils.isEmpty(views_num_text.getText())){
@@ -89,6 +91,7 @@ public class AutoMultiXWalkViewsActivity extends XWalkBaseActivity {
                 count_num++;
                 if(count_num == view_num) {
                     mAddViewsButton.setClickable(true);
+                    XWalkBaseUtil.createStorageFile(true);
                 }
                 textResultTextView.setText(String.valueOf(count_num));
             }
