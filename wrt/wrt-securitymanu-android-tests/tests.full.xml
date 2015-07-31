@@ -3,40 +3,13 @@
 <test_definition>
   <suite category="Crosswalk WRT" name="wrt-securitymanu-android-tests">
     <set name="security" type="js">
-      <testcase component="Crosswalk WRT/Security" execution_type="manual" id="Crosswalk_WebApp_CSP_Connect_Src_None" priority="P1" purpose="Validate if enable 'none' value of csp directives: connect-src in Crosswalk" status="approved" type="Functional">
+      <testcase component="Crosswalk WRT/Security" execution_type="manual" id="Crosswalk_Permission_Field_Geolocation" priority="P1" purpose="Validate if enable the 'Geolocation' permission" status="approved" type="Functional">
         <description>
           <pre_condition>
-            1. Make sure Crosswalk binary is installed
-            2. Make sure the device connected to network
+            1. Make sure Crosswalk binary is installed on device;
+            2. Make sure test on ARM device.
           </pre_condition>
-          <test_script_entry>/opt/wrt-securitymanu-android-tests/securitymanu/Crosswalk_WebApp_CSP_Connect_Src_None.html</test_script_entry>
-        </description>
-      </testcase>
-      <testcase component="Crosswalk WRT/Security" execution_type="manual" id="Crosswalk_WebApp_CSP_Connect_Src_Value" priority="P1" purpose="Validate if enable csp directives: connect-src in Crosswalk" status="approved" type="Functional">
-        <description>
-          <pre_condition>
-            1. Make sure Crosswalk binary is installed
-            2. Make sure the device connected to network
-          </pre_condition>
-          <test_script_entry>/opt/wrt-securitymanu-android-tests/securitymanu/Crosswalk_WebApp_CSP_Connect_Src_Value.html</test_script_entry>
-        </description>
-      </testcase>
-      <testcase component="Crosswalk WRT/Security" execution_type="manual" id="Crosswalk_WebApp_CSP_Frame_Src_None" priority="P2" purpose="Validate if enable 'none' value of csp directives: frame-src in Crosswalk" status="approved" type="Functional">
-        <description>
-          <pre_condition>
-            1. Make sure Crosswalk binary is installed
-            2. Make sure the device connected to network
-          </pre_condition>
-          <test_script_entry>/opt/wrt-securitymanu-android-tests/securitymanu/Crosswalk_WebApp_CSP_Frame_Src_None.html</test_script_entry>
-        </description>
-      </testcase>
-      <testcase component="Crosswalk WRT/Security" execution_type="manual" id="Crosswalk_WebApp_CSP_Frame_Src_Value" priority="P2" purpose="Validate if enable csp directives: frame-src in Crosswalk" status="approved" type="Functional">
-        <description>
-          <pre_condition>
-            1. Make sure Crosswalk binary is installed
-            2. Make sure the device connected to network
-          </pre_condition>
-          <test_script_entry>/opt/wrt-securitymanu-android-tests/securitymanu/Crosswalk_WebApp_CSP_Frame_Src_Value.html</test_script_entry>
+          <test_script_entry>/opt/wrt-securitymanu-android-tests/securitymanu/Crosswalk_Permission_Field_Geolocation.html</test_script_entry>
         </description>
       </testcase>
       <testcase component="Crosswalk WRT/Security" execution_type="manual" id="Crosswalk_WebApp_CSP_Img_Src_None" priority="P2" purpose="Validate if enable 'none' value of csp directives: img-src in Crosswalk" status="approved" type="Functional">
@@ -73,101 +46,6 @@
             2. Make sure the device connected to network
           </pre_condition>
           <test_script_entry>/opt/wrt-securitymanu-android-tests/securitymanu/Crosswalk_WebApp_CSP_Media_Src_Value.html</test_script_entry>
-        </description>
-      </testcase>
-      <testcase component="Crosswalk WRT/Security" execution_type="manual" id="Crosswalk_WebApp_CSP_Style_Src_None" priority="P2" purpose="Validate if enable 'none' value of csp directives: style-src in Crosswalk" status="approved" type="Functional">
-        <description>
-          <pre_condition>
-            1. Make sure Crosswalk binary is installed
-            2. Make sure the device connected to network
-          </pre_condition>
-          <test_script_entry>/opt/wrt-securitymanu-android-tests/securitymanu/Crosswalk_WebApp_CSP_Style_Src_None.html</test_script_entry>
-        </description>
-      </testcase>
-      <testcase component="Crosswalk WRT/Security" execution_type="manual" id="Crosswalk_WebApp_CSP_Style_Src_Value" priority="P2" purpose="Validate if enable csp directives: style-src in Crosswalk" status="approved" type="Functional">
-        <description>
-          <pre_condition>
-            1. Make sure Crosswalk binary is installed
-            2. Make sure the device connected to network
-          </pre_condition>
-          <test_script_entry>/opt/wrt-securitymanu-android-tests/securitymanu/Crosswalk_WebApp_CSP_Style_Src_Value.html</test_script_entry>
-        </description>
-      </testcase>
-      <testcase component="Crosswalk WRT/Security" execution_type="manual" id="Crosswalk_WebApp_CSP_Script_Src_None" priority="P2" purpose="Validate if enable 'none' value of csp directives: script-src in Crosswalk" status="approved" type="Functional">
-        <description>
-          <pre_condition>
-            1. Make sure Crosswalk binary is installed
-            2. Make sure the device connected to network
-          </pre_condition>
-          <test_script_entry>/opt/wrt-securitymanu-android-tests/securitymanu/Crosswalk_WebApp_CSP_Script_Src_None.html</test_script_entry>
-        </description>
-      </testcase>
-      <testcase component="Crosswalk WRT/Security" execution_type="manual" id="Crosswalk_WebApp_CSP_Script_Src_Self" priority="P2" purpose="Validate if enable 'self' value of csp directives: script-src in Crosswalk" status="approved" type="Functional">
-        <description>
-          <pre_condition>
-            1. Make sure Crosswalk binary is installed
-            2. Make sure the device connected to network
-          </pre_condition>
-          <test_script_entry>/opt/wrt-securitymanu-android-tests/securitymanu/Crosswalk_WebApp_CSP_Script_Src_Self.html</test_script_entry>
-        </description>
-      </testcase>
-      <testcase component="Crosswalk WRT/Security" execution_type="manual" id="Crosswalk_WebApp_CSP_Script_Src_Unsafe" priority="P2" purpose="Validate if enable csp directives: script-src in Crosswalk" status="approved" type="Functional">
-        <description>
-          <pre_condition>
-            1. Make sure Crosswalk binary is installed
-            2. Make sure the device connected to network
-          </pre_condition>
-          <test_script_entry>/opt/wrt-securitymanu-android-tests/securitymanu/Crosswalk_WebApp_CSP_Script_Src_Unsafe.html</test_script_entry>
-        </description>
-      </testcase>
-      <testcase component="Crosswalk WRT/Security" execution_type="manual" id="Crosswalk_Permission_Field_Contacts" priority="P1" purpose="Validate if enable the 'Contacts' permission" status="approved" type="Functional">
-        <description>
-          <pre_condition>
-            Make sure Crosswalk binary is installed on device.
-          </pre_condition>
-          <test_script_entry>/opt/wrt-securitymanu-android-tests/securitymanu/Crosswalk_Permission_Field_Contacts.html</test_script_entry>
-        </description>
-      </testcase>
-      <testcase component="Crosswalk WRT/Security" execution_type="manual" id="Crosswalk_Permission_Field_Geolocation" priority="P1" purpose="Validate if enable the 'Geolocation' permission" status="approved" type="Functional">
-        <description>
-          <pre_condition>
-            1. Make sure Crosswalk binary is installed on device;
-            2. Make sure test on ARM device.
-          </pre_condition>
-          <test_script_entry>/opt/wrt-securitymanu-android-tests/securitymanu/Crosswalk_Permission_Field_Geolocation.html</test_script_entry>
-        </description>
-      </testcase>
-      <testcase component="Crosswalk WRT/Security" execution_type="manual" id="Crosswalk_Permission_Field_Messaging" priority="P2" purpose="Validate if enable the 'messaging' permission" status="approved" type="Functional">
-        <description>
-          <pre_condition>
-            Make sure Crosswalk binary is installed on device.
-          </pre_condition>
-          <test_script_entry>/opt/wrt-securitymanu-android-tests/securitymanu/Crosswalk_Permission_Field_Messaging.html</test_script_entry>
-        </description>
-      </testcase>
-      <testcase component="Crosswalk WRT/Security" execution_type="manual" id="Crosswalk_Permission_Undefined_Contacts" priority="P1" purpose="Validate if unsupported the related API when undefined the 'Contacts' permission" status="approved" type="Functional">
-        <description>
-          <pre_condition>
-            Make sure Crosswalk binary is installed on device.
-          </pre_condition>
-          <test_script_entry>/opt/wrt-securitymanu-android-tests/securitymanu/Crosswalk_Permission_Undefined_Contacts.html</test_script_entry>
-        </description>
-      </testcase>
-      <testcase component="Crosswalk WRT/Security" execution_type="manual" id="Crosswalk_Permission_Undefined_Geolocation" priority="P2" purpose="Validate if unsupported the related API when undefined the 'Geolocation' permission" status="approved" type="Functional">
-        <description>
-          <pre_condition>
-            1. Make sure Crosswalk binary is installed on device;
-            2. Make sure test on ARM device.
-          </pre_condition>
-          <test_script_entry>/opt/wrt-securitymanu-android-tests/securitymanu/Crosswalk_Permission_Undefined_Geolocation.html</test_script_entry>
-        </description>
-      </testcase>
-      <testcase component="Crosswalk WRT/Security" execution_type="manual" id="Crosswalk_Permission_Undefined_Messaging" priority="P2" purpose="Validate if unsupported the related API when undefined the 'messaging' permission" status="approved" type="Functional">
-        <description>
-          <pre_condition>
-            Make sure Crosswalk binary is installed on device.
-          </pre_condition>
-          <test_script_entry>/opt/wrt-securitymanu-android-tests/securitymanu/Crosswalk_Permission_Undefined_Messaging.html</test_script_entry>
         </description>
       </testcase>
       <testcase component="Crosswalk WRT/Security" execution_type="manual" id="Crosswalk_WebApp_Certificate_Trusted" priority="P1" purpose="Validate if support accept the untrused security certificate website" status="approved" type="Functional">
@@ -222,6 +100,144 @@
             2. Make sure the device connected to network.
           </pre_condition>
           <test_script_entry>/opt/wrt-securitymanu-android-tests/securitymanu/Crosswalk_WebApp_Certificate_Untrusted_ReInstall.html</test_script_entry>
+        </description>
+      </testcase>
+    </set>
+    <set name="security-bdd" type="js" ui-auto="bdd">
+      <testcase component="Crosswalk WRT/Security" execution_type="manual" id="Crosswalk_WebApp_CSP_Connect_Src_None" priority="P1" purpose="Validate if enable 'none' value of csp directives: connect-src in Crosswalk" status="approved" type="Functional">
+        <description>
+          <pre_condition>
+            1. Make sure Crosswalk binary is installed
+            2. Make sure the device connected to network
+          </pre_condition>
+          <test_script_entry>/opt/wrt-securitymanu-android-tests/securitymanu/Crosswalk_WebApp_CSP_Connect_Src_None.html</test_script_entry>
+          <bdd_test_script_entry test_script_expected_result="0">/opt/wrt-securitymanu-android-tests/wrt-security-app/testscripts/Crosswalk_WebApp_CSP_Connect_Src_None.feature</bdd_test_script_entry>
+        </description>
+      </testcase>
+      <testcase component="Crosswalk WRT/Security" execution_type="manual" id="Crosswalk_WebApp_CSP_Connect_Src_Value" priority="P1" purpose="Validate if enable csp directives: connect-src in Crosswalk" status="approved" type="Functional">
+        <description>
+          <pre_condition>
+            1. Make sure Crosswalk binary is installed
+            2. Make sure the device connected to network
+          </pre_condition>
+          <test_script_entry>/opt/wrt-securitymanu-android-tests/securitymanu/Crosswalk_WebApp_CSP_Connect_Src_Value.html</test_script_entry>
+          <bdd_test_script_entry test_script_expected_result="0">/opt/wrt-securitymanu-android-tests/wrt-security-app/testscripts/Crosswalk_WebApp_CSP_Connect_Src_Value.feature</bdd_test_script_entry>
+        </description>
+      </testcase>
+      <testcase component="Crosswalk WRT/Security" execution_type="manual" id="Crosswalk_WebApp_CSP_Frame_Src_None" priority="P2" purpose="Validate if enable 'none' value of csp directives: frame-src in Crosswalk" status="approved" type="Functional">
+        <description>
+          <pre_condition>
+            1. Make sure Crosswalk binary is installed
+            2. Make sure the device connected to network
+          </pre_condition>
+          <test_script_entry>/opt/wrt-securitymanu-android-tests/securitymanu/Crosswalk_WebApp_CSP_Frame_Src_None.html</test_script_entry>
+          <bdd_test_script_entry test_script_expected_result="0">/opt/wrt-securitymanu-android-tests/wrt-security-app/testscripts/Crosswalk_WebApp_CSP_Frame_Src_None.feature</bdd_test_script_entry>
+        </description>
+      </testcase>
+      <testcase component="Crosswalk WRT/Security" execution_type="manual" id="Crosswalk_WebApp_CSP_Frame_Src_Value" priority="P2" purpose="Validate if enable csp directives: frame-src in Crosswalk" status="approved" type="Functional">
+        <description>
+          <pre_condition>
+            1. Make sure Crosswalk binary is installed
+            2. Make sure the device connected to network
+          </pre_condition>
+          <test_script_entry>/opt/wrt-securitymanu-android-tests/securitymanu/Crosswalk_WebApp_CSP_Frame_Src_Value.html</test_script_entry>
+          <bdd_test_script_entry test_script_expected_result="0">/opt/wrt-securitymanu-android-tests/wrt-security-app/testscripts/Crosswalk_WebApp_CSP_Frame_Src_Value.feature</bdd_test_script_entry>
+        </description>
+      </testcase>
+      <testcase component="Crosswalk WRT/Security" execution_type="manual" id="Crosswalk_WebApp_CSP_Style_Src_None" priority="P2" purpose="Validate if enable 'none' value of csp directives: style-src in Crosswalk" status="approved" type="Functional">
+        <description>
+          <pre_condition>
+            1. Make sure Crosswalk binary is installed
+            2. Make sure the device connected to network
+          </pre_condition>
+          <test_script_entry>/opt/wrt-securitymanu-android-tests/securitymanu/Crosswalk_WebApp_CSP_Style_Src_None.html</test_script_entry>
+          <bdd_test_script_entry test_script_expected_result="0">/opt/wrt-securitymanu-android-tests/wrt-security-app/testscripts/Crosswalk_WebApp_CSP_Style_Src_None.feature</bdd_test_script_entry>
+        </description>
+      </testcase>
+      <testcase component="Crosswalk WRT/Security" execution_type="manual" id="Crosswalk_WebApp_CSP_Style_Src_Value" priority="P2" purpose="Validate if enable csp directives: style-src in Crosswalk" status="approved" type="Functional">
+        <description>
+          <pre_condition>
+            1. Make sure Crosswalk binary is installed
+            2. Make sure the device connected to network
+          </pre_condition>
+          <test_script_entry>/opt/wrt-securitymanu-android-tests/securitymanu/Crosswalk_WebApp_CSP_Style_Src_Value.html</test_script_entry>
+          <bdd_test_script_entry test_script_expected_result="0">/opt/wrt-securitymanu-android-tests/wrt-security-app/testscripts/Crosswalk_WebApp_CSP_Style_Src_Value.feature</bdd_test_script_entry>
+        </description>
+      </testcase>
+      <testcase component="Crosswalk WRT/Security" execution_type="manual" id="Crosswalk_WebApp_CSP_Script_Src_None" priority="P2" purpose="Validate if enable 'none' value of csp directives: script-src in Crosswalk" status="approved" type="Functional">
+        <description>
+          <pre_condition>
+            1. Make sure Crosswalk binary is installed
+            2. Make sure the device connected to network
+          </pre_condition>
+          <test_script_entry>/opt/wrt-securitymanu-android-tests/securitymanu/Crosswalk_WebApp_CSP_Script_Src_None.html</test_script_entry>
+          <bdd_test_script_entry test_script_expected_result="0">/opt/wrt-securitymanu-android-tests/wrt-security-app/testscripts/Crosswalk_WebApp_CSP_Script_Src_None.feature</bdd_test_script_entry>
+        </description>
+      </testcase>
+      <testcase component="Crosswalk WRT/Security" execution_type="manual" id="Crosswalk_WebApp_CSP_Script_Src_Self" priority="P2" purpose="Validate if enable 'self' value of csp directives: script-src in Crosswalk" status="approved" type="Functional">
+        <description>
+          <pre_condition>
+            1. Make sure Crosswalk binary is installed
+            2. Make sure the device connected to network
+          </pre_condition>
+          <test_script_entry>/opt/wrt-securitymanu-android-tests/securitymanu/Crosswalk_WebApp_CSP_Script_Src_Self.html</test_script_entry>
+          <bdd_test_script_entry test_script_expected_result="0">/opt/wrt-securitymanu-android-tests/wrt-security-app/testscripts/Crosswalk_WebApp_CSP_Script_Src_Self.feature</bdd_test_script_entry>
+        </description>
+      </testcase>
+      <testcase component="Crosswalk WRT/Security" execution_type="manual" id="Crosswalk_WebApp_CSP_Script_Src_Unsafe" priority="P2" purpose="Validate if enable csp directives: script-src in Crosswalk" status="approved" type="Functional">
+        <description>
+          <pre_condition>
+            1. Make sure Crosswalk binary is installed
+            2. Make sure the device connected to network
+          </pre_condition>
+          <test_script_entry>/opt/wrt-securitymanu-android-tests/securitymanu/Crosswalk_WebApp_CSP_Script_Src_Unsafe.html</test_script_entry>
+          <bdd_test_script_entry test_script_expected_result="0">/opt/wrt-securitymanu-android-tests/wrt-security-app/testscripts/Crosswalk_WebApp_CSP_Script_Src_Unsafe.feature</bdd_test_script_entry>
+        </description>
+      </testcase>
+      <testcase component="Crosswalk WRT/Security" execution_type="manual" id="Crosswalk_Permission_Field_Contacts" priority="P1" purpose="Validate if enable the 'Contacts' permission" status="approved" type="Functional">
+        <description>
+          <pre_condition>
+            Make sure Crosswalk binary is installed on device.
+          </pre_condition>
+          <test_script_entry>/opt/wrt-securitymanu-android-tests/securitymanu/Crosswalk_Permission_Field_Contacts.html</test_script_entry>
+          <bdd_test_script_entry test_script_expected_result="0">/opt/wrt-securitymanu-android-tests/wrt-security-app/testscripts/Crosswalk_Permission_Field_Contacts.feature</bdd_test_script_entry>
+        </description>
+      </testcase>
+      <testcase component="Crosswalk WRT/Security" execution_type="manual" id="Crosswalk_Permission_Field_Messaging" priority="P2" purpose="Validate if enable the 'messaging' permission" status="approved" type="Functional">
+        <description>
+          <pre_condition>
+            Make sure Crosswalk binary is installed on device.
+          </pre_condition>
+          <test_script_entry>/opt/wrt-securitymanu-android-tests/securitymanu/Crosswalk_Permission_Field_Messaging.html</test_script_entry>
+          <bdd_test_script_entry test_script_expected_result="0">/opt/wrt-securitymanu-android-tests/wrt-security-app/testscripts/Crosswalk_Permission_Field_Messaging.feature</bdd_test_script_entry>
+        </description>
+      </testcase>
+      <testcase component="Crosswalk WRT/Security" execution_type="manual" id="Crosswalk_Permission_Undefined_Contacts" priority="P1" purpose="Validate if unsupported the related API when undefined the 'Contacts' permission" status="approved" type="Functional">
+        <description>
+          <pre_condition>
+            Make sure Crosswalk binary is installed on device.
+          </pre_condition>
+          <test_script_entry>/opt/wrt-securitymanu-android-tests/securitymanu/Crosswalk_Permission_Undefined_Contacts.html</test_script_entry>
+          <bdd_test_script_entry test_script_expected_result="0">/opt/wrt-securitymanu-android-tests/wrt-security-app/testscripts/Crosswalk_Permission_Undefined_Contacts.feature</bdd_test_script_entry>
+        </description>
+      </testcase>
+      <testcase component="Crosswalk WRT/Security" execution_type="manual" id="Crosswalk_Permission_Undefined_Geolocation" priority="P2" purpose="Validate if unsupported the related API when undefined the 'Geolocation' permission" status="approved" type="Functional">
+        <description>
+          <pre_condition>
+            1. Make sure Crosswalk binary is installed on device;
+            2. Make sure test on ARM device.
+          </pre_condition>
+          <test_script_entry>/opt/wrt-securitymanu-android-tests/securitymanu/Crosswalk_Permission_Undefined_Geolocation.html</test_script_entry>
+          <bdd_test_script_entry test_script_expected_result="0">/opt/wrt-securitymanu-android-tests/wrt-security-app/testscripts/Crosswalk_Permission_Undefined_Geolocation.feature</bdd_test_script_entry>
+        </description>
+      </testcase>
+      <testcase component="Crosswalk WRT/Security" execution_type="manual" id="Crosswalk_Permission_Undefined_Messaging" priority="P2" purpose="Validate if unsupported the related API when undefined the 'messaging' permission" status="approved" type="Functional">
+        <description>
+          <pre_condition>
+            Make sure Crosswalk binary is installed on device.
+          </pre_condition>
+          <test_script_entry>/opt/wrt-securitymanu-android-tests/securitymanu/Crosswalk_Permission_Undefined_Messaging.html</test_script_entry>
+          <bdd_test_script_entry test_script_expected_result="0">/opt/wrt-securitymanu-android-tests/wrt-security-app/testscripts/Crosswalk_Permission_Undefined_Messaging.feature</bdd_test_script_entry>
         </description>
       </testcase>
     </set>
