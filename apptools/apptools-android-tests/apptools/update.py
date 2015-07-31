@@ -191,7 +191,7 @@ class TestCrosswalkApptoolsFunctions(unittest.TestCase):
     def test_update_toplevel_dir(self):
         comm.setUp()
         comm.create(self)
-        os.chdir('org.xwalk.test/pkg')
+        os.chdir('org.xwalk.test/app')
         updatecmd = comm.PackTools + "crosswalk-app update"
         updatestatus = commands.getstatusoutput(updatecmd)
         print updatestatus[1]

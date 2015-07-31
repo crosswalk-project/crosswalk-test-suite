@@ -65,9 +65,12 @@ class TestCrosswalkApptoolsFunctions(unittest.TestCase):
             buildcmd = comm.PackTools + "crosswalk-app build"
             buildstatus = commands.getstatusoutput(buildcmd)
             self.assertEquals(buildstatus[0], 0)
-            os.chdir('pkg')
             pkgs = os.listdir(os.getcwd())
-            self.assertNotIn("test-debug.armeabi-v7a.apk", pkgs)
+            armLength = 0
+            for i in range(len(pkgs)):
+                if pkgs[i].endswith(".apk") and "arm" in pkgs[i]:
+                    armLength = armLength + 1
+            self.assertEquals(armLength, 0)
         else:
             os.remove(
                 os.getcwd() +
@@ -75,9 +78,12 @@ class TestCrosswalkApptoolsFunctions(unittest.TestCase):
             buildcmd = comm.PackTools + "crosswalk-app build"
             buildstatus = commands.getstatusoutput(buildcmd)
             self.assertEquals(buildstatus[0], 0)
-            os.chdir('pkg')
             pkgs = os.listdir(os.getcwd())
-            self.assertNotIn("test-debug.x86.apk", pkgs)
+            x86Length = 0
+            for i in range(len(pkgs)):
+                if pkgs[i].endswith(".apk") and "x86" in pkgs[i]:
+                    x86Length = x86Length + 1
+            self.assertEquals(x86Length, 0)
         comm.run(self)
         comm.clear("org.xwalk.test")
 
