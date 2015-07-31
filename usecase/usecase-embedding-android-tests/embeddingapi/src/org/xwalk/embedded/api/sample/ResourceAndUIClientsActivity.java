@@ -102,6 +102,8 @@ public class ResourceAndUIClientsActivity extends XWalkActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        setContentView(R.layout.xwview_layout);
+        mXWalkView = (XWalkView) findViewById(R.id.xwalkview);        
     }
 
     @Override
@@ -116,8 +118,7 @@ public class ResourceAndUIClientsActivity extends XWalkActivity {
         .setMessage(mess.toString())
         .setPositiveButton("confirm" ,  null )
         .show();
-        setContentView(R.layout.xwview_layout);
-        mXWalkView = (XWalkView) findViewById(R.id.xwalkview);
+
         mXWalkView.setResourceClient(new ResourceClient(mXWalkView));
         mXWalkView.setUIClient(new UIClient(mXWalkView));
         mXWalkView.load("http://www.baidu.com", null);

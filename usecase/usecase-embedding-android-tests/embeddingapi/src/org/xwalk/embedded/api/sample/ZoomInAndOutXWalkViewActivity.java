@@ -15,6 +15,7 @@ import android.widget.Button;
 import android.widget.SeekBar;
 import android.widget.SeekBar.OnSeekBarChangeListener;
 import android.widget.TextView;
+import android.os.Bundle;
 
 public class ZoomInAndOutXWalkViewActivity extends XWalkActivity {
     private XWalkView mXWalkView;
@@ -25,8 +26,14 @@ public class ZoomInAndOutXWalkViewActivity extends XWalkActivity {
     private static final String ZOOMRANGE = "Set zoom range: 0.5~2.0\n";
     
     @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.zoom_layout);      
+        mXWalkView = (XWalkView) findViewById(R.id.xwalkview);   
+    }    
+    
+    @Override
     protected void onXWalkReady() {
-        setContentView(R.layout.zoom_layout);
         StringBuffer mess = new StringBuffer();
         mess.append("Test Purpose: \n\n")
         .append("Verifies XWalkView can zoom.\n\n")
@@ -42,7 +49,6 @@ public class ZoomInAndOutXWalkViewActivity extends XWalkActivity {
         .setPositiveButton("confirm" ,  null )
         .show();
 
-        mXWalkView = (XWalkView) findViewById(R.id.xwalkview);
         zoomInBtn = (Button) findViewById(R.id.zoomin_btn);
         zoomOutBtn = (Button) findViewById(R.id.zoomout_btn);
         canZoomText = (TextView) findViewById(R.id.zommtv);

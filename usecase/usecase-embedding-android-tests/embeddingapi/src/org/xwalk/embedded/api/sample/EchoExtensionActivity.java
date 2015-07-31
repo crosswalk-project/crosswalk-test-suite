@@ -22,6 +22,7 @@ public class EchoExtensionActivity extends XWalkActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        setContentView(R.layout.container);        
     }
 
     @Override
@@ -37,9 +38,7 @@ public class EchoExtensionActivity extends XWalkActivity {
         .setPositiveButton("confirm" ,  null )
         .show();
         
-        setContentView(R.layout.container);
         LinearLayout parent = (LinearLayout) findViewById(R.id.container);
-
         LinearLayout.LayoutParams params = new LinearLayout.LayoutParams(
                 LinearLayout.LayoutParams.MATCH_PARENT,
                 LinearLayout.LayoutParams.MATCH_PARENT);

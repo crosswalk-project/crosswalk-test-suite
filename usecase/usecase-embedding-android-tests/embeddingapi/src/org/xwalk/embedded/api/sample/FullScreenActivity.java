@@ -18,6 +18,8 @@ public class FullScreenActivity extends XWalkActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        setContentView(R.layout.xwview_fullscreen);
+        mXWalkView = (XWalkView) findViewById(R.id.xwalkview_fullscreen);        
     }
 
     @Override
@@ -32,8 +34,7 @@ public class FullScreenActivity extends XWalkActivity {
         .setMessage(mess.toString())
         .setPositiveButton("confirm", null)
         .show();
-        setContentView(R.layout.xwview_fullscreen);
-        mXWalkView = (XWalkView) findViewById(R.id.xwalkview_fullscreen);
+
         Button leaveFullScreenBtn = (Button) findViewById(R.id.leave_fullscreen);
         leaveFullScreenBtn.setOnClickListener(new View.OnClickListener() {
             @Override

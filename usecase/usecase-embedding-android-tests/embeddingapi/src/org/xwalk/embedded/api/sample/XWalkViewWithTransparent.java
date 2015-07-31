@@ -13,12 +13,12 @@ public class XWalkViewWithTransparent extends XWalkActivity{
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        setContentView(R.layout.xwview_transparent_layout);        
+        mXWalkView = (XWalkView) findViewById(R.id.xwalkview_transparent);        
     }
 
     @Override
     protected void onXWalkReady() {
-        
-        setContentView(R.layout.xwview_transparent_layout);
         StringBuffer mess = new StringBuffer();
         mess.append("Test Purpose: \n\n")
         .append("Check XWalkView's transparent feature whether display the view under the webview.\n\n")
@@ -29,7 +29,7 @@ public class XWalkViewWithTransparent extends XWalkActivity{
         .setMessage(mess.toString())
         .setPositiveButton("confirm" ,  null )
         .show();
-        mXWalkView = (XWalkView) findViewById(R.id.xwalkview_transparent);
+
         mXWalkView.setZOrderOnTop(true);
         mXWalkView.setBackgroundColor(0);
         mXWalkView.load("http://www.baidu.com/", null);

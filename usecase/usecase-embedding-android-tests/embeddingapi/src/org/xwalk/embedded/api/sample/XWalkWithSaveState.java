@@ -24,6 +24,7 @@ public class XWalkWithSaveState extends XWalkActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        setContentView(R.layout.savestate_layout);        
     }
 
     @Override
@@ -43,7 +44,6 @@ public class XWalkWithSaveState extends XWalkActivity {
         .setPositiveButton("confirm" ,  null )
         .show();
         
-        setContentView(R.layout.savestate_layout);
         button_one = (Button) findViewById(R.id.button_one);
         button_two = (Button) findViewById(R.id.button_two);
         button_three = (Button) findViewById(R.id.button_three);

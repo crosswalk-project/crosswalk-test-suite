@@ -15,6 +15,7 @@ import android.content.res.AssetManager;
 import android.os.Bundle;
 
 public class LoadAppFromManifestLayoutActivity extends XWalkActivity {
+    private XWalkView xwalkView;
 
     private String getAssetsFileContent(AssetManager assetManager, String fileName)
             throws IOException {
@@ -37,6 +38,8 @@ public class LoadAppFromManifestLayoutActivity extends XWalkActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        setContentView(R.layout.xwview_layout);
+        xwalkView = (XWalkView) findViewById(R.id.xwalkview);        
     }
 
     @Override
@@ -51,8 +54,7 @@ public class LoadAppFromManifestLayoutActivity extends XWalkActivity {
         .setMessage(mess.toString())
         .setPositiveButton("confirm" ,  null )
         .show();
-        setContentView(R.layout.xwview_layout);
-        XWalkView xwalkView = (XWalkView) findViewById(R.id.xwalkview);
+
         String manifestContent = "";
         try {
             manifestContent = getAssetsFileContent(this.getAssets(), "manifest.json");

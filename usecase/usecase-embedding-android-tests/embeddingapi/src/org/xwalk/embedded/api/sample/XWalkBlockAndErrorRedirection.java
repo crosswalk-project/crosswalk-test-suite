@@ -7,6 +7,7 @@ import org.xwalk.core.XWalkPreferences;
 import org.xwalk.core.XWalkResourceClient;
 import org.xwalk.core.XWalkView;
 
+import android.os.Bundle;
 import android.app.AlertDialog;
 import android.util.Log;
 import android.webkit.WebResourceResponse;
@@ -15,6 +16,13 @@ import android.webkit.WebResourceResponse;
 public class XWalkBlockAndErrorRedirection extends XWalkActivity{
     private XWalkView mXWalkView;
     private static final String TAG = XWalkBlockAndErrorRedirection.class.getName();
+    
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.xwview_layout);        
+        mXWalkView = (XWalkView) findViewById(R.id.xwalkview);        
+    }    
 
     class ResourceClient extends XWalkResourceClient {
 
@@ -64,7 +72,7 @@ public class XWalkBlockAndErrorRedirection extends XWalkActivity{
         StringBuffer mess = new StringBuffer();
         mess.append("Test Purpose: \n\n")
         .append("Verifies XWalkView can block response.\n\n")
-	.append("Verifies XWalkView can redirect to default page when load error page.\n\n")
+	    .append("Verifies XWalkView can redirect to default page when load error page.\n\n")
         .append("Expected Result:\n\n")
         .append("1. Test passes if click first link to show a cat image.\n\n")
         .append("2. Test passes if click second link to show baidu homepage.\n\n");
@@ -78,9 +86,7 @@ public class XWalkBlockAndErrorRedirection extends XWalkActivity{
         XWalkPreferences.setValue(XWalkPreferences.REMOTE_DEBUGGING, true);
         XWalkPreferences.setValue(XWalkPreferences.JAVASCRIPT_CAN_OPEN_WINDOW, true);
 
-        setContentView(R.layout.xwview_layout);        
-        mXWalkView = (XWalkView) findViewById(R.id.xwalkview);
         mXWalkView.setResourceClient(new ResourceClient(mXWalkView));
         mXWalkView.load("file:///android_asset/block_redirect_url.html", null);
-    }  
+    }   
 }

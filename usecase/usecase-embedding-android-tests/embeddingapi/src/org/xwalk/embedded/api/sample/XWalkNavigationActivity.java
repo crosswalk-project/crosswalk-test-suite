@@ -27,6 +27,8 @@ public class XWalkNavigationActivity extends XWalkActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        setContentView(R.layout.navigation_layout);
+        mXWalkView = (XWalkView) findViewById(R.id.xwalkview);        
     }
 
     private void showNavigationItemInfo(XWalkNavigationItem navigationItem){
@@ -55,10 +57,8 @@ public class XWalkNavigationActivity extends XWalkActivity {
         .setPositiveButton("confirm" ,  null )
         .show();
  
-        setContentView(R.layout.navigation_layout);
         mPrevButton = (ImageButton) findViewById(R.id.prev);
         mNextButton = (ImageButton) findViewById(R.id.next);
-        mXWalkView = (XWalkView) findViewById(R.id.xwalkview);
 
         text1 = (TextView) super.findViewById(R.id.text1);
         text2 = (TextView) super.findViewById(R.id.text2);

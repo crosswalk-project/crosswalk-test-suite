@@ -21,6 +21,8 @@ public class PauseTimersActivity extends XWalkActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        setContentView(R.layout.pause_timers_layout);
+        mXWalkView = (XWalkView) findViewById(R.id.xwalkview);        
     }
 
     @Override
@@ -37,8 +39,6 @@ public class PauseTimersActivity extends XWalkActivity {
         .setMessage(mess.toString())
         .setPositiveButton("confirm" ,  null )
         .show();
-        setContentView(R.layout.pause_timers_layout);
-        mXWalkView = (XWalkView) findViewById(R.id.xwalkview);
 
         isPaused = false;
         mButton = (ImageButton) findViewById(R.id.pause);
