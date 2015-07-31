@@ -5,32 +5,40 @@
         "testresult.xsl",
         "tests.css",
         "icon.png",
-        "manifest.json",
         "suite.json",
-        "inst.*"
+        "inst.apk.py"
     ],
     "pkg-list": {
-        "apk,cordova": {
+        "apk": {
             "blacklist": [
                 "*"
             ],
             "copylist": {
+                "PACK-TOOL-ROOT/crosswalk-webview": "tools/crosswalk-webview",
+                "README": "README",
+                "demo": "demo",
+                "gradle": "gradle",
+                "maven": "maven",
+                "ant": "ant",
                 "inst.apk.py": "inst.py",
                 "tests.full.xml": "tests.full.xml",
                 "tests.xml": "tests.xml",
-                "PACK-TOOL-ROOT/resources/xsl": ".",
-                "PACK-TOOL-ROOT/XWalkRuntimeLib.apk": "resource/XWalkRuntimeLib.apk"
+                "libraries.gradle": "libraries.gradle",
+                "build.gradle": "build.gradle",
+                "pom.xml": "pom.xml",
+                "comm.py": "comm.py",
+                "PACK-TOOL-ROOT/../VERSION": "crosswalk-version",
+                "crosswalk-type": "crosswalk-type",
+                "arch": "arch",
+                "PACK-TOOL-ROOT/resources/xsl": "."
             },
             "pkg-app": {
+                "blacklist": [],
                 "copylist": {
+                    "tests.xml": "tests.xml",
                     "PACK-TOOL-ROOT/resources/webrunner": "webrunner"
                 }
-            },
-            "subapp-list": {
             }
-        },
-        "apk-aio": {
-            "blacklist": []
         }
     },
     "pkg-name": "embedding-build-android-tests"
