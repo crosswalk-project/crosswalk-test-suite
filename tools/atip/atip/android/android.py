@@ -73,7 +73,7 @@ class Android(common.APP):
                 self.package_name + "/" + \
                 self.package_name + "." + \
                 self.activity_name
-        self.d.screen.on()                
+        self.d.screen.on()
         self.d.press.home()
         self.d.orientation = "n"
         try:
@@ -102,6 +102,38 @@ class Android(common.APP):
                 print("Please check your cmd: %s" % stop_cmd)
 
 
+    def wifiOperate(self, wifi_name, turnon=True):
+        settings_cmd = self.adb + \
+                    " am start -n " + \
+                    "com.android.settings/.Settings"
+        try:
+            (return_code, output) = self.doCMD(settings_cmd)
+            if return_code == 0:
+                pass
+            else:
+                print("\n".join(output))
+                return False
+        except Exception as e:
+            return False
+        if self.d.info["currentPackageName"] == "com.android.settings":
+            wifi = self.d(className="android.widget.ListView", resourceId="android:id/list") \
+                    .child_by_text(wifi_name.replace('-', u'\u2011'), className="android.widget.LinearLayout") \
+                    .child(className="android.widget.Switch")
+            wifi_state = self.getObjectInfo(wifi, "checked")
+            if turnon:
+                if wifi_state:
+                    pass
+                else:
+                    self.clickObject(wifi)
+            else:
+                if not wifi_state:
+                    pass
+                else:
+                    self.clickObject(wifi)
+            return True
+        return False
+
+
     def checkCurrentApp(self):
         currentPackageName = self.d.info["currentPackageName"]
         if currentPackageName == self.package_name:
@@ -117,7 +149,7 @@ class Android(common.APP):
                                         .click(text=clickText)
         else:
             self.d.watcher(watcherName).when(text=whenText1) \
-                                        .click(text=clickText)            
+                                        .click(text=clickText)
 
 
     def removeAllWatchers(self):
@@ -137,7 +169,7 @@ class Android(common.APP):
 
 
     def turnOffScreen(self):
-        self.d.sleep()        
+        self.d.sleep()
 
 
     def pressKeyBy(self, device_key):
@@ -216,7 +248,7 @@ class Android(common.APP):
             ob = self.selcetObjectBy(key, button_name, "android.widget.Button")
             if self.waitObjectShow(ob):
                 return ob
-        return self.AutomatorDeviceObject    
+        return self.AutomatorDeviceObject
 
 
     def selectEdtObjectBy(self, edittext_name):
@@ -232,7 +264,7 @@ class Android(common.APP):
             ob = self.selcetObjectBy(key, imageview_name, "android.widget.ImageView")
             if self.waitObjectShow(ob):
                 return ob
-        return self.AutomatorDeviceObject        
+        return self.AutomatorDeviceObject
 
 
     def selectImageBtnObjectBy(self, imagebtn_name):
@@ -256,7 +288,7 @@ class Android(common.APP):
             ob = self.selcetObjectBy(key, web_desc, "android.webkit.WebView")
             if self.waitObjectShow(ob, 3000):
                 return ob
-        return self.AutomatorDeviceObject  
+        return self.AutomatorDeviceObject
 
 
     def getObjectInfo(self, ob, str_key="text"):
@@ -286,7 +318,7 @@ class Android(common.APP):
 
 
     def setEditText(self, ob, text):
-        if ob.exists:        
+        if ob.exists:
             ob.set_text(text)
             return True
         return False
@@ -340,7 +372,7 @@ class Android(common.APP):
     def swipeTo(self, ob, direction):
         if ob.exists:
             if direction == "left":
-                return ob.swipe.left()        
+                return ob.swipe.left()
             elif direction == "right":
                 return ob.swipe.right()
             elif direction == "up":

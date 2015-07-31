@@ -26,9 +26,12 @@
 # Authors:
 #         Fan, Yugang <yugang.fan@intel.com>
 
+import sys
 import time
 from behave import step
 from atip.web import web
+reload(sys)
+sys.setdefaultencoding('utf-8')
 
 def get_test_platform(context):
     if context.bdd_config:
@@ -102,9 +105,24 @@ def open_quick_settings(context):
     if get_test_platform(context) == "android":
         assert context.android.openQuickSettings()
 
+
 # frequently-used key: home, back, left, right, up, down, center, menu, search, enter, 
 # delete(or del), recent(recent apps), volume_up, volume_down, volume_mute, camera, power
 @step(u'I press "{key}" hardware key')
 def press_key(context, key):
     if get_test_platform(context) == "android":
         context.android.pressKeyBy(key)
+
+
+# open android system wifi
+@step(u'I open wifi with "{wifi_name}"')
+def open_wifi(context, wifi_name):
+    if get_test_platform(context) == "android":
+        assert context.android.wifiOperate(wifi_name, True)
+
+
+# close android system wifi
+@step(u'I close wifi with "{wifi_name}"')
+def close_wifi(context, wifi_name):
+    if get_test_platform(context) == "android":
+        assert context.android.wifiOperate(wifi_name, False)
