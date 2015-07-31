@@ -102,7 +102,8 @@ class Android(common.APP):
                 print("Please check your cmd: %s" % stop_cmd)
 
 
-    def wifiOperate(self, wifi_name, turnon=True):
+    def wifiOperate(self, turnon):
+        wifi_name_list = [u'Wi\u2011Fi', 'WLAN']
         settings_cmd = self.adb + \
                     " am start -n " + \
                     "com.android.settings/.Settings"
@@ -116,21 +117,25 @@ class Android(common.APP):
         except Exception as e:
             return False
         if self.d.info["currentPackageName"] == "com.android.settings":
-            wifi = self.d(className="android.widget.ListView", resourceId="android:id/list") \
-                    .child_by_text(wifi_name.replace('-', u'\u2011'), className="android.widget.LinearLayout") \
-                    .child(className="android.widget.Switch")
-            wifi_state = self.getObjectInfo(wifi, "checked")
-            if turnon:
-                if wifi_state:
-                    pass
+            for wifi_name in wifi_name_list:
+                wifi = self.d(className="android.widget.ListView", resourceId="android:id/list") \
+                        .child_by_text(wifi_name, className="android.widget.LinearLayout") \
+                        .child(className="android.widget.Switch")
+                if wifi.exists:
+                    break
+            if wifi.exists:
+                wifi_state = self.getObjectInfo(wifi, "checked")
+                if turnon:
+                    if wifi_state:
+                        pass
+                    else:
+                        self.clickObject(wifi)
                 else:
-                    self.clickObject(wifi)
-            else:
-                if not wifi_state:
-                    pass
-                else:
-                    self.clickObject(wifi)
-            return True
+                    if not wifi_state:
+                        pass
+                    else:
+                        self.clickObject(wifi)
+                return True
         return False
 
 

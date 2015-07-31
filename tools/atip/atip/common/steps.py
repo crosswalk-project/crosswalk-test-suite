@@ -106,7 +106,7 @@ def open_quick_settings(context):
         assert context.android.openQuickSettings()
 
 
-# frequently-used key: home, back, left, right, up, down, center, menu, search, enter, 
+# frequently-used key: home, back, left, right, up, down, center, menu, search, enter,
 # delete(or del), recent(recent apps), volume_up, volume_down, volume_mute, camera, power
 @step(u'I press "{key}" hardware key')
 def press_key(context, key):
@@ -115,14 +115,14 @@ def press_key(context, key):
 
 
 # open android system wifi
-@step(u'I open wifi with "{wifi_name}"')
-def open_wifi(context, wifi_name):
+@step(u'I open wifi')
+def open_wifi(context):
     if get_test_platform(context) == "android":
-        assert context.android.wifiOperate(wifi_name, True)
+        assert context.android.wifiOperate(True)
 
 
 # close android system wifi
-@step(u'I close wifi with "{wifi_name}"')
-def close_wifi(context, wifi_name):
+@step(u'I close wifi')
+def close_wifi(context):
     if get_test_platform(context) == "android":
-        assert context.android.wifiOperate(wifi_name, False)
+        assert context.android.wifiOperate(False)
