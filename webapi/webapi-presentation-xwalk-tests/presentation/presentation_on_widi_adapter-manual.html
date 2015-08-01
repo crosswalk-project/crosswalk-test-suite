@@ -32,71 +32,27 @@ Authors:
 
 <html>
 <head>
-<title>Simple WiDi Demo</title>
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<link rel="stylesheet" type="text/css" href="style.css" />
-<script>
-var presentationWindow = null;
-
-function closePresentationWindow() {
-  if (presentationWindow !== null)
-    presentationWindow.close();
-  reset();
-}
-
-function reset() {
-  var msg = document.getElementById("message");
-  msg.innerHTML = "Received message: N/A";
-  var result = document.getElementById("result");
-  result.innerHTML = "Result: N/A";
-}
-
-function showSucceed(w) {
-  var e = document.getElementById("result");
-  e.innerHTML = "Result: OK";
-
-  presentationWindow = w;
-  presentationWindow.postMessage("I am from opener window", "*");
-}
-
-function showError(e) {
-  var elem = document.getElementById("result");
-  elem.innerHTML = "Result: " + e.name;
-}
-
-function requestShow() {
-  navigator.presentation.requestShow("contents.html", showSucceed, showError);
-}
-
-function init() {
-  var e = document.getElementById("available");
-  e.innerHTML = navigator.presentation.displayAvailable ?
-                "Display Availability: true" : "Display Availability: false";
-
-  navigator.presentation.addEventListener("displayavailablechange", function() {
-    e.innerHTML = navigator.presentation.displayAvailable ?
-                  "Display Availability: true" : "Display Availability: false";
-    if (!navigator.presentation.displayAvailable) {
-      var button = document.getElementById("available");
-      button.disabled = true;
-    }
-  });
-}
-
-window.onload = init;
-
-window.onmessage = function(evt) {
-  var e = document.getElementById("message");
-  e.innerHTML = "Received message: " + evt.data;
-}
-</script>
-
+<meta charset='utf-8'>
+<title>Presentation Test: Presentation work on Widi Adapter</title>
+<link rel="author" title="Intel" href="http://www.intel.com">
+<link rel="help" href="http://webscreens.github.io/presentation-api/">
+<meta name="assert" content="Test checks that the presentation works well on Widi Adapter.">
+<script src="support/support.js"></script>
 </head>
 <body>
-  <h1> Simple WiDi Demo </h1>
-  <div>
-    <h3 id="available">Display Availability: N/A</h3>
-  </div>
+  <p class="precondition">
+    <strong>Widi adapter should be successfully connected with the device, and display mirror screen on the monitor.</strong>
+  </p>
+  <ol class="instructions">
+    <li>Click 'Request Show Presentation' button and then check if 
+      <p>The 'Result' should be 'Ok', the 'Received message' should be 'I am from presentation window';</p>
+      <p>The secondary display should display: 'Presentation Window showed on Wireless Display' 'Received message: I am from opener window'.</p>
+    </li>
+    <li>Click 'Close Presentation' button and then check if
+      <p>The 'Result' and 'Received message' should be 'N/A'; The secondary display should display mirror screen.</p>
+    </li>
+    <li>If the above two steps are both true the test case pass, otherwise it fail</li>
+  </ol>
   <div>
     <h2 id="result">Result: N/A</h2>
   </div>

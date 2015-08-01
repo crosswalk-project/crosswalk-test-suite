@@ -33,12 +33,16 @@ Authors:
 <html>
   <head>
     <meta charset='utf-8'>
-    <title>Presentation Test: Presentation secondary page can open</title>
+    <title>Presentation Test: Presentation secondary page can play video</title>
     <link rel="author" title="Intel" href="http://www.intel.com">
     <link rel="help" href="http://webscreens.github.io/presentation-api/">
+    <meta name="assert" content="Test checks that the presentation secondary page can play video.">
   </head>
   <body>
-    <p>Test passes if display message "Receive message for its opener: Hello" with green color after clicking the below button.</p>
+    <p>
+      <strong>Make sure connect to an available network.</strong>
+    </p>
+    <p>Test passes if play a video after clicking the below button.</p>
     <input type="button" style="background:#F0F0F0 repeat-x;width:150px; height:30px;" onclick="showPresentation();" value="click me" />
 
     <div id="availableMessage" style="margin-top: 20px;"></div>
@@ -46,7 +50,7 @@ Authors:
       var presentationWindow = null;
       function onsuccess(w) {
         presentationWindow = w;
-        w.postMessage("hello", "*");
+        w.postMessage("http://media.w3.org/2010/05/video/movie_5.mp4", "*");
       }
 
       function onerror(error) {
@@ -68,7 +72,7 @@ Authors:
           if (!navigator.presentation.displayAvailable)
             presentationWindow = null;
         });
-        navigator.presentation.requestShow("content.html", onsuccess, onerror);
+        navigator.presentation.requestShow("display/player.html", onsuccess, onerror);
       }
     </script>
   </body>

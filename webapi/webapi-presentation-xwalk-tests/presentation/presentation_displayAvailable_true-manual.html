@@ -31,26 +31,22 @@ Authors:
 -->
 
 <html>
-  <head>
-    <meta charset='utf-8'>
-    <title>Presentation Test: Presentation_work_on_Widi_Adapter</title>
-    <link rel="author" title="Intel" href="http://www.intel.com">
-    <link rel="help" href="http://webscreens.github.io/presentation-api/">
-  </head>
-  <body>
-    <p>
-      <strong>Test steps:</strong>
-    </p>
-    <ol>
-      <li>Launch 'Presentation_test' app on Android device; Press 'Request Show Presentation' Button, check the device.</li>
-      <li>Press 'Close Presentation' Button, check the device.</li>
-    </ol>
-    <p>
-      <strong>Expected Output:</strong>
-    </p>
-    <ol>
-      <li>After step 1: The 'Result' should be 'Ok'; The 'Received message' should be 'I am from presentation window'; The secondary display should display: 'Presentation Window showed on Wireless Display' 'Received message: I am from opener window'.</li>
-      <li>After step 2: The 'Result' and 'Received message' should be 'N/A'; The secondary display should display mirror screen.</li>
-    </ol>
-  </body>
+<head>
+<meta charset='utf-8'>
+<title>Presentation Test: displayAvailable - true</title>
+<link rel="author" title="Intel" href="http://www.intel.com">
+<link rel="help" href="http://webscreens.github.io/presentation-api/">
+<meta name="assert" content="Test checks that the attribute displayAvailable of presentation value can be true.">
+<script src="support/support.js"></script>
+</head>
+<body>
+  <p>Test passes if the value of 'Display Availability' should be 'true'.</p>
+  <div>
+    <h3 id="available">Display Availability: N/A</h3>
+  </div>
+  
+  <script>
+    window.onload = init;
+  </script>
+</body>
 </html>

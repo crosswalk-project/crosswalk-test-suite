@@ -18,101 +18,104 @@
           <test_script_entry>/opt/webapi-presentation-xwalk-tests/presentation/Presentation_attributes_basic.html?total_num=3&amp;locator_key=id&amp;value=3</test_script_entry>
         </description>
       </testcase>
-      <testcase component="Crosswalk APIs/Experimental/Screen Presentation APIs" execution_type="manual" id="presentation_secondary_page_image" purpose="Test checks that the presentation secondary page can display picture">
+      <testcase component="Crosswalk APIs/Experimental/Screen Presentation APIs" execution_type="manual" id="presentation_image" purpose="Test checks that display a cat picture after clicking the below button">
         <description>
-          <pre_condition>1. Connect to an available network; 2. Android 4.2 or above; 3. Turn on 'Simulate Secondary Display' by 'Setting' app.</pre_condition>
-          <steps>
-            <step order="1">
-              <step_desc>Launch 'presentation_secondary_page_image' app on Android device.</step_desc>
-              <expected>Tests page dispaly, test passes if all operations in 'presentation_secondary_page_image' app passed</expected>
-            </step>
-          </steps>
-          <test_script_entry>/opt/webapi-presentation-xwalk-tests/presentation/presentation_secondary_page_image/steps-manual.html</test_script_entry>
+          <pre_condition>
+            1. Connect to an available network;
+            2. Android 4.2 or above; 3. Turn on 'Simulate Secondary Display' by 'Setting' app.
+          </pre_condition>
+          <test_script_entry>/opt/webapi-presentation-xwalk-tests/presentation/presentation_image-manual.html</test_script_entry>
         </description>
       </testcase>
-      <testcase component="Crosswalk APIs/Experimental/Screen Presentation APIs" execution_type="manual" id="presentation_secondary_page_message" purpose="Test checks that the presentation secondary page can open">
+      <testcase component="Crosswalk APIs/Experimental/Screen Presentation APIs" execution_type="manual" id="presentation_message" purpose="Test checks that the presentation secondary page can open">
         <description>
-          <pre_condition>1. Android 4.2 or above; 2. Turn on 'Simulate Secondary Display' by 'Setting' app.</pre_condition>
-          <steps>
-            <step order="1">
-              <step_desc>Launch 'presentation_secondary_page_message' app on Android device.</step_desc>
-              <expected>Tests page dispaly, test passes if all operations in 'presentation_secondary_page_message' app passed</expected>
-            </step>
-          </steps>
-          <test_script_entry>/opt/webapi-presentation-xwalk-tests/presentation/presentation_secondary_page_message/steps-manual.html</test_script_entry>
+          <pre_condition>
+            1. Android 4.2 or above;
+            2. Turn on 'Simulate Secondary Display' by 'Setting' app.
+          </pre_condition>
+          <test_script_entry>/opt/webapi-presentation-xwalk-tests/presentation/presentation_message-manual.html</test_script_entry>
         </description>
       </testcase>
-      <testcase component="Crosswalk APIs/Experimental/Screen Presentation APIs" execution_type="manual" id="presentation_secondary_page_video" purpose="Test checks that the presentation secondary page can play video">
+      <testcase component="Crosswalk APIs/Experimental/Screen Presentation APIs" execution_type="manual" id="presentation_video" purpose="Test checks that the presentation secondary page can play video">
         <description>
-          <pre_condition>1. Connect to an available network; 2. Android 4.2 or above; 3. Turn on 'Simulate Secondary Display' by 'Setting' app.</pre_condition>
-          <steps>
-            <step order="1">
-              <step_desc>Launch 'presentation_secondary_page_video' app on Android device.</step_desc>
-              <expected>Tests page dispaly, test passes if all operations in 'presentation_secondary_page_video' app passed</expected>
-            </step>
-          </steps>
-          <test_script_entry>/opt/webapi-presentation-xwalk-tests/presentation/presentation_secondary_page_video/steps-manual.html</test_script_entry>
+          <pre_condition>
+            1. Connect to an available network;
+            2. Android 4.2 or above; 3. Turn on 'Simulate Secondary Display' by 'Setting' app.
+          </pre_condition>
+          <test_script_entry>/opt/webapi-presentation-xwalk-tests/presentation/presentation_video-manual.html</test_script_entry>
         </description>
       </testcase>
-      <testcase component="Crosswalk APIs/Experimental/Screen Presentation APIs" execution_type="manual" id="Presentation_displayAvailable_true" purpose="Test checks that the attribute displayAvailable of presentation value can be true">
+      <testcase component="Crosswalk APIs/Experimental/Screen Presentation APIs" execution_type="manual" id="presentation_displayAvailable_true" purpose="Test checks that the attribute displayAvailable of presentation value can be true">
         <description>
-          <pre_condition>1. Android 4.2 or above; 2. Turn on 'Simulate Secondary Display' by 'Setting' app.</pre_condition>
-          <steps>
-            <step order="1">
-              <step_desc>Launch 'presentation_test' app on Android device, check the device.</step_desc>
-              <expected>The 'Display Availability' should be 'true'</expected>
-            </step>
-          </steps>
-          <test_script_entry>/opt/webapi-presentation-xwalk-tests/presentation/presentation_test/steps01-manual.html</test_script_entry>
+          <pre_condition>
+            1. Android 4.2 or above;
+            2. Turn on 'Simulate Secondary Display' by 'Setting' app.
+          </pre_condition>
+          <test_script_entry>/opt/webapi-presentation-xwalk-tests/presentation/presentation_displayAvailable_true-manual.html</test_script_entry>
         </description>
       </testcase>
-      <testcase component="Crosswalk APIs/Experimental/Screen Presentation APIs" execution_type="manual" id="Presentation_requestShow_with_simulate_open" purpose="Test checks that the method requestShow of presentation can work, when simulate secondary display open">
+      <testcase component="Crosswalk APIs/Experimental/Screen Presentation APIs" execution_type="manual" id="presentation_requestShow_open" purpose="Test checks that the method requestShow of presentation can work, when simulate secondary display open">
         <description>
-          <pre_condition>1. Android 4.2 or above; 2. Turn on 'Simulate Secondary Display' by 'Setting' app.</pre_condition>
+          <pre_condition>
+            1. Android 4.2 or above;
+            2. Turn on 'Simulate Secondary Display' by 'Setting' app.
+          </pre_condition>
           <steps>
             <step order="1">
-              <step_desc>1. Launch 'presentation_test' app on Android device; 2. Press 'Request Show Presentation' Button, check the device.</step_desc>
-              <expected>1. The 'Result'should be 'Ok'; 2. The 'Received message' should be 'I am from presentation window'; 3. The secondary display should display: 'Presentation Window showed on Wireless Display'
-    'Received message: I am from opener window'.</expected>
+              <step_desc>Press 'Request Show Presentation' Button, check the device.</step_desc>
+              <expected>
+                1. The 'Result'should be 'Ok';
+                2. The 'Received message' should be 'I am from presentation window';
+                3. The secondary display should display: 'Presentation Window showed on Wireless Display' 'Received message: I am from opener window'.
+              </expected>
             </step>
             <step order="2">
               <step_desc>Press 'Close Presentation' Button, check the device.</step_desc>
-              <expected>1. The 'Result' and 'Received message' should be 'N/A'; 2. The secondary display should display mirror screen.</expected>
+              <expected>
+                1. The 'Result' and 'Received message' should be 'N/A';
+                2. The secondary display should display mirror screen.
+              </expected>
             </step>
           </steps>
-          <test_script_entry>/opt/webapi-presentation-xwalk-tests/presentation/presentation_test/steps02-manual.html</test_script_entry>
+          <test_script_entry>/opt/webapi-presentation-xwalk-tests/presentation/presentation_requestShow_open-manual.html</test_script_entry>
         </description>
       </testcase>
-      <testcase component="Crosswalk APIs/Experimental/Screen Presentation APIs" execution_type="manual" id="Presentation_displayAvailable_false" purpose="Test checks that the attribute displayAvailable of presentation value can be false">
+      <testcase component="Crosswalk APIs/Experimental/Screen Presentation APIs" execution_type="manual" id="presentation_displayAvailable_false" purpose="Test checks that the attribute displayAvailable of presentation value can be false">
         <description>
-          <pre_condition>1. Android 4.2 or above; 2. Turn off 'Simulate Secondary Display' by 'Setting' app.</pre_condition>
+          <pre_condition>
+            1. Android 4.2 or above;
+            2. Turn off 'Simulate Secondary Display' by 'Setting' app.
+          </pre_condition>
+          <test_script_entry>/opt/webapi-presentation-xwalk-tests/presentation/presentation_displayAvailable_false-manual.html</test_script_entry>
+        </description>
+      </testcase>
+      <testcase component="Crosswalk APIs/Experimental/Screen Presentation APIs" execution_type="manual" id="presentation_requestShow_close" purpose="Test checks that the method requestShow of presentation can work, when simulate secondary display close">
+        <description>
+          <pre_condition>
+            1. Android 4.2 or above;
+            2. Turn off 'Simulate Secondary Display' by 'Setting' app.
+          </pre_condition>
           <steps>
             <step order="1">
-              <step_desc>Launch 'presentation_test' app on Android device, check the device.</step_desc>
-              <expected>The 'Display Availability' should be 'off'</expected>
+              <step_desc>Press 'Request Show Presentation' Button, check the device.</step_desc>
+              <expected>
+                The 'Result'should be 'NotFoundError';
+                The 'Received message' should be 'N/A'.
+              </expected>
             </step>
           </steps>
-          <test_script_entry>/opt/webapi-presentation-xwalk-tests/presentation/presentation_test/steps03-manual.html</test_script_entry>
+          <test_script_entry>/opt/webapi-presentation-xwalk-tests/presentation/presentation_requestShow_close-manual.html</test_script_entry>
         </description>
       </testcase>
-      <testcase component="Crosswalk APIs/Experimental/Screen Presentation APIs" execution_type="manual" id="Presentation_requestShow_with_simulate_close" purpose="Test checks that the method requestShow of presentation can work, when simulate secondary display close">
+      <testcase component="Crosswalk APIs/Experimental/Screen Presentation APIs" execution_type="manual" id="presentation_lifecycle_open" purpose="Test checks that the presentation lifecycle, when simulate secondary display open">
         <description>
-          <pre_condition>1. Android 4.2 or above; 2. Turn off 'Simulate Secondary Display' by 'Setting' app.</pre_condition>
+          <pre_condition>
+            1. Android 4.2 or above;
+            2. Turn on 'Simulate Secondary Display' by 'Setting' app.
+          </pre_condition>
           <steps>
             <step order="1">
-              <step_desc>Launch 'presentation_test' app on Android device; Press 'Request Show Presentation' Button, check the device.</step_desc>
-              <expected>The 'Result'should be 'NotFoundError'; The 'Received message' should be 'N/A'.</expected>
-            </step>
-          </steps>
-          <test_script_entry>/opt/webapi-presentation-xwalk-tests/presentation/presentation_test/steps04-manual.html</test_script_entry>
-        </description>
-      </testcase>
-      <testcase component="Crosswalk APIs/Experimental/Screen Presentation APIs" execution_type="manual" id="Presentation_lifecycle_with_simulate_open" purpose="Test checks that the presentation lifecycle, when simulate secondary display open">
-        <description>
-          <pre_condition>1. Android 4.2 or above; 2. Turn on 'Simulate Secondary Display' by 'Setting' app.</pre_condition>
-          <steps>
-            <step order="1">
-              <step_desc>1. Launch 'presentation_test app on Android device; 2. Press 'Request Show Presentation' Button, check the device.</step_desc>
+              <step_desc>Press 'Request Show Presentation' Button, check the device.</step_desc>
               <expected>Everything should displayed right.</expected>
             </step>
             <step order="2">
@@ -120,52 +123,67 @@
               <expected>The 'Simulate Secondary Display' should display mirror screen.</expected>
             </step>
             <step order="3">
-              <step_desc>Relaunch the app, check the device.</step_desc>
+              <step_desc>Re-open the page, check the device.</step_desc>
               <expected> The 'Simulate Secondary Display' should display as step 2.</expected>
             </step>
           </steps>
-          <test_script_entry>/opt/webapi-presentation-xwalk-tests/presentation/presentation_test/steps05-manual.html</test_script_entry>
+          <test_script_entry>/opt/webapi-presentation-xwalk-tests/presentation/presentation_lifecycle_open-manual.html</test_script_entry>
         </description>
       </testcase>
-      <testcase component="Crosswalk APIs/Experimental/Screen Presentation APIs" execution_type="manual" id="Presentation_lifecycle_with_simulate_close" purpose="Test checks that the presentation lifecycle, when simulate secondary display close">
+      <testcase component="Crosswalk APIs/Experimental/Screen Presentation APIs" execution_type="manual" id="presentation_lifecycle_close" purpose="Test checks that the presentation lifecycle, when simulate secondary display close">
         <description>
-          <pre_condition>1. Android 4.2 or above; 2. Turn off 'Simulate Secondary Display' by 'Setting' app.</pre_condition>
+          <pre_condition>
+            1. Android 4.2 or above;
+            2. Turn off 'Simulate Secondary Display' by 'Setting' app.
+          </pre_condition>
           <steps>
             <step order="1">
-              <step_desc>Launch 'presentation_test' app on Android device, check the device.</step_desc>
+              <step_desc>Press 'Request Show Presentation' Button, check the device.</step_desc>
               <expected>The 'Display Available' should be 'false'.</expected>
             </step>
             <step order="2">
-              <step_desc>1. Press Home button on the device; 2. Go to Settings, turn on 'Simulate Secondary Display'; Relaunch 'presentation_test', check the device</step_desc>
+              <step_desc>
+                1. Press Home button on the device;
+                2. Go to Settings, turn on 'Simulate Secondary Display'; Re-open the page, check the device.
+              </step_desc>
               <expected>The 'Display Available' should be 'true'.</expected>
             </step>
           </steps>
-          <test_script_entry>/opt/webapi-presentation-xwalk-tests/presentation/presentation_test/steps06-manual.html</test_script_entry>
+          <test_script_entry>/opt/webapi-presentation-xwalk-tests/presentation/presentation_lifecycle_close-manual.html</test_script_entry>
         </description>
       </testcase>
-      <testcase component="Crosswalk APIs/Experimental/Screen Presentation APIs" execution_type="manual" id="Presentation_work_on_Widi_Adapter" purpose="Test checks that the presentation works well on Widi Adapter">
+      <testcase component="Crosswalk APIs/Experimental/Screen Presentation APIs" execution_type="manual" id="presentation_on_widi_adapter" purpose="Test checks that the presentation works well on Widi Adapter">
         <description>
-          <pre_condition>1. Android 4.2 or above; 2. Widi adapter should be successfully connected with the device, and display mirror screen on the monitor.</pre_condition>
+          <pre_condition>
+            1. Android 4.2 or above;
+            2. Widi adapter should be successfully connected with the device, and display mirror screen on the monitor.
+          </pre_condition>
           <steps>
             <step order="1">
-              <step_desc>1. Launch 'presentation_test' app on Android device; 2. Press 'Request Show Presentation' Button, check the device.</step_desc>
-              <expected>1. The 'Result' should be 'Ok'; 2. The 'Received message' should be 'I am from presentation window'; 3. The secondary display should display: 'Presentation Window showed on Wireless Display'
-    'Received message: I am from opener window'.</expected>
+              <step_desc>Press 'Request Show Presentation' Button, check the device.</step_desc>
+              <expected>
+                1. The 'Result' should be 'Ok';
+                2. The 'Received message' should be 'I am from presentation window';
+                3. The secondary display should display: 'Presentation Window showed on Wireless Display' 'Received message: I am from opener window'.
+              </expected>
             </step>
             <step order="2">
               <step_desc>Press 'Close Presentation' Button, check the device</step_desc>
-              <expected>1. The 'Result' and 'Received message' should be 'N/A'; 2. The secondary display should display mirror screen.</expected>
+              <expected>
+                1. The 'Result' and 'Received message' should be 'N/A';
+                2. The secondary display should display mirror screen.
+              </expected>
             </step>
           </steps>
-          <test_script_entry>/opt/webapi-presentation-xwalk-tests/presentation/presentation_test/steps07-manual.html</test_script_entry>
+          <test_script_entry>/opt/webapi-presentation-xwalk-tests/presentation/presentation_on_widi_adapter-manual.html</test_script_entry>
         </description>
       </testcase>
-      <testcase component="Crosswalk APIs/Experimental/Screen Presentation APIs" execution_type="manual" id="Presentation_displayavailablechange_on_Widi_Adapter" purpose="Test checks that the presentation displayavailablechange event on Widi Adapter">
+      <testcase component="Crosswalk APIs/Experimental/Screen Presentation APIs" execution_type="manual" id="presentation_displayavailablechange_on_widi_adapter" purpose="Test checks that the presentation displayavailablechange event on Widi Adapter">
         <description>
           <pre_condition>1. Android 4.2 or above; 2. Widi adapter should be successfully connected with the device, and display mirror screen on the monitor.</pre_condition>
           <steps>
             <step order="1">
-              <step_desc>1. Launch 'presentation_test' app on Android device; 2. Press 'Request Show Presentation' Button, check the device.</step_desc>
+              <step_desc>Press 'Request Show Presentation' Button, check the device.</step_desc>
               <expected>Everything should displayed right.</expected>
             </step>
             <step order="2">
@@ -177,23 +195,26 @@
               <expected>'Display Available' should be changed to 'true'.</expected>
             </step>
           </steps>
-          <test_script_entry>/opt/webapi-presentation-xwalk-tests/presentation/presentation_test/steps08-manual.html</test_script_entry>
+          <test_script_entry>/opt/webapi-presentation-xwalk-tests/presentation/presentation_displayavailablechange_on_widi_adapter-manual.html</test_script_entry>
         </description>
       </testcase>
-      <testcase component="Crosswalk APIs/Experimental/Screen Presentation APIs" execution_type="manual" id="Presentation_requestShow_old_version_android" purpose="Test checks that the presentation requestShow on older version of Android">
+      <testcase component="Crosswalk APIs/Experimental/Screen Presentation APIs" execution_type="manual" id="presentation_requestShow_old_version_android" purpose="Test checks that the presentation requestShow on older version of Android">
         <description>
           <pre_condition>Older version of Android (less than 4.2).</pre_condition>
           <steps>
             <step order="1">
-              <step_desc>Launch 'presentation_test' app on Android device, check the device.</step_desc>
+              <step_desc>Open the page.</step_desc>
               <expected>The 'Display Available' should be 'false'.</expected>
             </step>
             <step order="2">
               <step_desc>Press 'Request Show Presentation' Button, check the device.</step_desc>
-              <expected>The 'Result'should be 'NotSupportedError'; The 'Received message' should be 'N/A'.</expected>
+              <expected>
+                The 'Result'should be 'NotSupportedError';
+                The 'Received message' should be 'N/A'.
+              </expected>
             </step>
           </steps>
-          <test_script_entry>/opt/webapi-presentation-xwalk-tests/presentation/presentation_test/steps09-manual.html</test_script_entry>
+          <test_script_entry>/opt/webapi-presentation-xwalk-tests/presentation/presentation_requestShow_old_version_android-manual.html</test_script_entry>
         </description>
       </testcase>
     </set>
