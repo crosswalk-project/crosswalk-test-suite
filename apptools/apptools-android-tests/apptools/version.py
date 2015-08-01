@@ -31,7 +31,6 @@
 import unittest
 import os
 import comm
-import commands
 import urllib2
 import json
 
@@ -41,13 +40,13 @@ class TestCrosswalkApptoolsFunctions(unittest.TestCase):
     def test_version_normal(self):
         comm.setUp()
         os.chdir(comm.XwalkPath)
-        cmd = comm.PackTools + "crosswalk-app version"
-        versionstatus = commands.getstatusoutput(cmd)
+        cmd = comm.HOST_PREFIX + comm.PackTools + "crosswalk-app version"
+        (return_code, output) = comm.getstatusoutput(cmd)
         with open(comm.ConstPath + "/../tools/crosswalk-app-tools/package.json") as json_file:
             data = json.load(json_file)
         self.assertEquals(
-            data['version'].strip("\n\t"),
-            versionstatus[1].strip("\n\t"))
+            data['version'].strip(os.linesep),
+            output[0].strip(os.linesep))
 
 if __name__ == '__main__':
     unittest.main()

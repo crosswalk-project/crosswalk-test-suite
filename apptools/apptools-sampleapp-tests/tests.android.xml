@@ -12,11 +12,18 @@
             <step order="1">
               <step_desc>If com.example.gallery exists in apptools-sampleapp-tests/tools/ directory, remove it 
                 Then run below commands under apptools-sampleapp-tests/tools/ directory: 
-                $ crosswalk-app create com.example.gallery
-                $ cd com.example.gallery
-                $ git clone https://github.com/blueimp/Gallery.git
-                $ mv Gallery/* app/
-                $ crosswalk-app build
+                On Android:
+                  $ crosswalk-app create com.example.gallery
+                  $ cd com.example.gallery
+                  $ git clone https://github.com/blueimp/Gallery.git
+                  $ mv Gallery/* app/
+                  $ crosswalk-app build
+                On Windows:
+                  $ node crosswalk-app create com.example.gallery
+                  $ cd com.example.gallery
+                  $ git clone https://github.com/blueimp/Gallery.git
+                  $ xcopy /s /e /i /y Gallery\* app\
+                  $ node crosswalk-app build
               </step_desc>
               <expected>Success to create/build com.example.gallery</expected>
             </step>
@@ -37,7 +44,7 @@
               <expected>You can see Gallery UI on the device</expected>
             </step>
             <step order="6">
-              <step_desc>Uninstall the app by typing "adb -s `adb devices -l |sed -n '2p' |awk '{print $1}'` uninstall com.example.gallery" on the command line when the app running</step_desc>
+              <step_desc>Uninstall the app when it is running</step_desc>
               <expected>Unistall the gallery app successfully</expected>
             </step>
             <step order="7">
@@ -61,11 +68,18 @@
             <step order="1">
               <step_desc>If com.example.gallery exists in apptools-sampleapp-tests/tools/ directory, remove it 
                 Then run below commands under apptools-sampleapp-tests/tools/ directory: 
-                $ crosswalk-app create com.example.gallery
-                $ cd com.example.gallery
-                $ git clone https://github.com/blueimp/Gallery.git
-                $ mv Gallery/* app/
-                $ crosswalk-app build
+                On Android:
+                  $ crosswalk-app create com.example.gallery
+                  $ cd com.example.gallery
+                  $ git clone https://github.com/blueimp/Gallery.git
+                  $ mv Gallery/* app/
+                  $ crosswalk-app build
+                On Windows:
+                  $ node crosswalk-app create com.example.gallery
+                  $ cd com.example.gallery
+                  $ git clone https://github.com/blueimp/Gallery.git
+                  $ xcopy /s /e /i /y Gallery\* app\
+                  $ node crosswalk-app build
               </step_desc>
               <expected>Success to create/build com.example.gallery</expected>
             </step>
@@ -86,7 +100,7 @@
               <expected>You can see Gallery UI on the device</expected>
             </step>
             <step order="6">
-              <step_desc>Uninstall the app by typing "adb -s `adb devices -l |sed -n '2p' |awk '{print $1}'` uninstall com.example.gallery" on the command line when the app running</step_desc>
+              <step_desc>Uninstall the app when it is running</step_desc>
               <expected>Unistall the gallery app successfully</expected>
             </step>
             <step order="7">

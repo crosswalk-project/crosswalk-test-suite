@@ -40,9 +40,14 @@ Authors:
   <ol>
     <li>If org.xwalk.test exists in apptools-android-tests/tools/ directory, remove it <br/>
         Then run below commands under apptools-android-tests/tools/ directory: <br/>
-        $ ./crosswalk-app-tools/src/crosswalk-app create org.xwalk.test <br/>
-        $ cd org.xwalk.test <br/>
-        $ ../crosswalk-app-tools/src/crosswalk-app build debug <br/>
+        On Android: <br/>
+        &nbsp; &nbsp; $ ./crosswalk-app-tools/src/crosswalk-app create org.xwalk.test <br/>
+        &nbsp; &nbsp; $ cd org.xwalk.test <br/>
+        &nbsp; &nbsp; $ ../crosswalk-app-tools/src/crosswalk-app build debug <br/>
+        On Windows: <br/>
+        &nbsp; &nbsp; $ node ./crosswalk-app-tools/src/crosswalk-app create org.xwalk.test <br/>
+        &nbsp; &nbsp; $ cd org.xwalk.test <br/>
+        &nbsp; &nbsp; $ node ..\crosswalk-app-tools\src\crosswalk-app build debug <br/>
         $ cd pkg <br/>
         Install the app on android device <br/>
         Launch the app on android device <br/>

@@ -27,10 +27,10 @@
 #
 # Authors:
 #         Hongjuan, Wang<hongjuanx.wang@intel.com>
+#         Yun, Liu<yunx.liu@intel.com>
 
 import unittest
 import os
-import commands
 import comm
 
 
@@ -39,29 +39,26 @@ class TestCrosswalkApptoolsFunctions(unittest.TestCase):
     def test_no_sdk(self):
         comm.setUp()
         comm.clear("org.xwalk.test")
-        android_home = commands.getoutput(
-            "(dirname $(dirname $(dirname $(which android))))")
-        android_home1 = android_home + "/sdk"
+        android_home = os.getenv('ANDROID_HOME')
         android_home2 = android_home + "/sdkk"
-        allpath = commands.getoutput("echo $PATH")
-        paths = allpath.split(":")
+        allpath = os.getenv('PATH')
+        paths = allpath.split(os.linesep)
+        new_path = ""
         for i in range(len(paths)):
-            if android_home1 in paths[i]:
-                paths[i] = paths[i].replace(android_home1, android_home2)
-                new_path = ":".join(paths).strip()
-        # print 'new_path', new_path
+            print paths[i]
+            if android_home in paths[i]:
+                paths[i] = paths[i].replace(android_home, android_home2)
+                new_path = os.linesep.join(paths).strip()
         os.environ['PATH'] = new_path
-        #new = commands.getoutput("echo $PATH")
-        # print new
         os.chdir(comm.XwalkPath)
-        cmd = comm.PackTools + \
+        cmd = comm.HOST_PREFIX + comm.PackTools + \
             "crosswalk-app create org.xwalk.test --android-crosswalk=" + \
             comm.crosswalkVersion
-        packstatus = commands.getstatusoutput(cmd)
+        (return_create_code, packstatus) = comm.getstatusoutput(cmd)
+        os.environ['ANDROID_HOME'] = android_home
         os.environ['PATH'] = allpath
-        # print packstatus
-        self.assertIn("ERROR", packstatus[1])
         comm.clear("org.xwalk.test")
+        self.assertIn("ERROR", packstatus[0])
 
 if __name__ == '__main__':
     unittest.main()

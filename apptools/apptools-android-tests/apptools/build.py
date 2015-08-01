@@ -27,11 +27,11 @@
 #
 # Authors:
 #         Hongjuan, Wang<hongjuanx.wang@intel.com>
+#         Yun, Liu<yunx.liu@intel.com>
 
 import unittest
 import os
 import comm
-import commands
 
 
 class TestCrosswalkApptoolsFunctions(unittest.TestCase):
@@ -40,19 +40,21 @@ class TestCrosswalkApptoolsFunctions(unittest.TestCase):
         comm.setUp()
         comm.create(self)
         os.chdir('org.xwalk.test')
-        buildcmd = comm.PackTools + "crosswalk-app build"
+        buildcmd = comm.HOST_PREFIX + comm.PackTools + "crosswalk-app build"
         comm.build(self, buildcmd)
         comm.run(self)
         comm.clear("org.xwalk.test")
+        os.system('adb start-server')
 
     def test_build_release(self):
         comm.setUp()
         comm.create(self)
         os.chdir('org.xwalk.test')
-        buildcmd = comm.PackTools + "crosswalk-app build release"
+        buildcmd = comm.HOST_PREFIX + comm.PackTools + "crosswalk-app build release"
         comm.build(self, buildcmd)
         comm.run(self)
         comm.clear("org.xwalk.test")
+        os.system('adb start-server')
 
     def test_build_missing_so_file(self):
         comm.setUp()
@@ -62,9 +64,9 @@ class TestCrosswalkApptoolsFunctions(unittest.TestCase):
             os.remove(
                 os.getcwd() +
                 '/prj/android/xwalk_core_library/libs/armeabi-v7a/libxwalkcore.so')
-            buildcmd = comm.PackTools + "crosswalk-app build"
-            buildstatus = commands.getstatusoutput(buildcmd)
-            self.assertEquals(buildstatus[0], 0)
+            buildcmd = comm.HOST_PREFIX + comm.PackTools + "crosswalk-app build"
+            buildstatus = os.system(buildcmd)
+            self.assertEquals(buildstatus, 0)
             pkgs = os.listdir(os.getcwd())
             armLength = 0
             for i in range(len(pkgs)):
@@ -75,9 +77,9 @@ class TestCrosswalkApptoolsFunctions(unittest.TestCase):
             os.remove(
                 os.getcwd() +
                 '/prj/android/xwalk_core_library/libs/x86/libxwalkcore.so')
-            buildcmd = comm.PackTools + "crosswalk-app build"
-            buildstatus = commands.getstatusoutput(buildcmd)
-            self.assertEquals(buildstatus[0], 0)
+            buildcmd = comm.HOST_PREFIX + comm.PackTools + "crosswalk-app build"
+            buildstatus = os.system(buildcmd)
+            self.assertEquals(buildstatus, 0)
             pkgs = os.listdir(os.getcwd())
             x86Length = 0
             for i in range(len(pkgs)):
@@ -86,6 +88,7 @@ class TestCrosswalkApptoolsFunctions(unittest.TestCase):
             self.assertEquals(x86Length, 0)
         comm.run(self)
         comm.clear("org.xwalk.test")
+        os.system('adb start-server')
 
     def test_build_missing_both_so_file(self):
         comm.setUp()
@@ -97,10 +100,10 @@ class TestCrosswalkApptoolsFunctions(unittest.TestCase):
         os.remove(
             os.getcwd() +
             '/prj/android/xwalk_core_library/libs/x86/libxwalkcore.so')
-        buildcmd = comm.PackTools + "crosswalk-app build"
-        buildstatus = commands.getstatusoutput(buildcmd)
+        buildcmd = comm.HOST_PREFIX + comm.PackTools + "crosswalk-app build"
+        buildstatus = os.system(buildcmd)
         comm.clear("org.xwalk.test")
-        self.assertEquals(buildstatus[0], 1)
+        self.assertEquals(buildstatus, 1)
 
 if __name__ == '__main__':
     unittest.main()

@@ -27,10 +27,10 @@
 #
 # Authors:
 #         Hongjuan, Wang<hongjuanx.wang@intel.com>
+#         Yun, Liu<yunx.liu@intel.com>
 
 import os
 import sys
-import commands
 import shutil
 import comm
 
@@ -144,14 +144,13 @@ def tryRunApp(item, cmd):
     try:
         comm.setUp()
         os.chdir(comm.XwalkPath)
-        package = cmd[
-            cmd.index("create") +
-            6:cmd.index("--android-crosswalk")].strip()
-        exec_cmd = comm.PackTools + cmd + comm.crosswalkVersion
+        package = cmd[cmd.index("create") + 6:cmd.index("--android-crosswalk")].strip()
+        exec_cmd = comm.HOST_PREFIX + comm.PackTools + cmd + comm.crosswalkVersion
         # print exec_cmd
         if 'negative' in item:
-            packstatus = commands.getstatusoutput(exec_cmd)
-            if packstatus[0] != 0:
+            comm.clear(package)
+            return_code = os.system(exec_cmd)
+            if return_code != 0:
                 print "Genarate APK ---------------->O.K"
                 comm.clear(package)
                 result = 'PASS'
@@ -162,8 +161,9 @@ def tryRunApp(item, cmd):
                 result = 'FAIL'
                 return result
         elif 'positive' in item:
-            packstatus = commands.getstatusoutput(exec_cmd)
-            if packstatus[0] == 0:
+            comm.clear(package)
+            return_code = os.system(exec_cmd)
+            if return_code == 0:
                 print "Genarate APK ---------------->O.K"
                 comm.clear(package)
                 result = 'PASS'

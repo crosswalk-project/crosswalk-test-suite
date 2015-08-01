@@ -31,7 +31,6 @@
 import unittest
 import os
 import comm
-import commands
 from xml.etree import ElementTree
 import json
 
@@ -44,8 +43,8 @@ class TestCrosswalkApptoolsFunctions(unittest.TestCase):
         os.chdir('org.xwalk.test')
         with open(comm.ConstPath + "/../tools/org.xwalk.test/app/manifest.json") as json_file:
             data = json.load(json_file)
-        buildcmd = comm.PackTools + "crosswalk-app build"
-        buildstatus = commands.getstatusoutput(buildcmd)
+        buildcmd = comm.HOST_PREFIX + comm.PackTools + "crosswalk-app build"
+        buildstatus = os.system(buildcmd)
         root = ElementTree.parse(comm.ConstPath + "/../tools/org.xwalk.test/prj/android/AndroidManifest.xml").getroot()
         attributes = root.attrib
         for x in attributes.keys():
@@ -53,7 +52,7 @@ class TestCrosswalkApptoolsFunctions(unittest.TestCase):
                 versionName_xml = attributes[x]
                 break
         comm.clear("org.xwalk.test")
-        self.assertEquals(buildstatus[0], 0)
+        self.assertEquals(buildstatus, 0)
         self.assertEquals(data['crosswalk_app_version'].strip("\n\t"), versionName_xml)
 
     def test_update_app_version(self):
@@ -68,8 +67,8 @@ class TestCrosswalkApptoolsFunctions(unittest.TestCase):
         json.dump(jsonDict, open(comm.ConstPath + "/../tools/org.xwalk.test/app/manifest.json", "w"))
         with open(comm.ConstPath + "/../tools/org.xwalk.test/app/manifest.json") as json_file:
             data = json.load(json_file)
-        buildcmd = comm.PackTools + "crosswalk-app build"
-        buildstatus = commands.getstatusoutput(buildcmd)
+        buildcmd = comm.HOST_PREFIX + comm.PackTools + "crosswalk-app build"
+        buildstatus = os.system(buildcmd)
         root = ElementTree.parse(comm.ConstPath + "/../tools/org.xwalk.test/prj/android/AndroidManifest.xml").getroot()
         attributes = root.attrib
         for x in attributes.keys():
@@ -78,7 +77,7 @@ class TestCrosswalkApptoolsFunctions(unittest.TestCase):
                 break
         comm.clear("org.xwalk.test")
         self.assertEquals(data['crosswalk_app_version'].strip("\n\t"), "0.1")
-        self.assertEquals(buildstatus[0], 0)
+        self.assertEquals(buildstatus, 0)
         self.assertEquals(data['crosswalk_app_version'].strip("\n\t"), versionName_xml)
 
 if __name__ == '__main__':

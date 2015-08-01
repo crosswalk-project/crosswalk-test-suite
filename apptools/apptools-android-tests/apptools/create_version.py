@@ -30,7 +30,6 @@
 
 import unittest
 import os
-import commands
 import comm
 
 
@@ -40,14 +39,14 @@ class TestCrosswalkApptoolsFunctions(unittest.TestCase):
         comm.setUp()
         comm.clear("org.xwalk.test")
         os.chdir(comm.XwalkPath)
-        createcmd = comm.PackTools + \
+        createcmd = comm.HOST_PREFIX + comm.PackTools + \
             "crosswalk-app create org.xwalk.test --android-crosswalk=13.42.319.7"
-        packstatus = commands.getstatusoutput(createcmd)
+        (return_code, output) = comm.getstatusoutput(createcmd)
         crosswalk = 'crosswalk-13.42.319.7.zip'
         namelist = os.listdir(os.getcwd())
         comm.clear("org.xwalk.test")
-        self.assertEquals(packstatus[0], 0)
-        self.assertIn("13.42.319.7", packstatus[1])
+        self.assertEquals(return_code, 0)
+        self.assertIn("13.42.319.7", output[0])
         self.assertIn(crosswalk, namelist)
 
 if __name__ == '__main__':

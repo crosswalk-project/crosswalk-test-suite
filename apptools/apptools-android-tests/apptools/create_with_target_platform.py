@@ -30,7 +30,6 @@
 
 import unittest
 import os
-import commands
 import comm
 
 
@@ -39,42 +38,42 @@ class TestCrosswalkApptoolsFunctions(unittest.TestCase):
     def test_create_with_platform_android(self):
         comm.setUp()
         os.chdir(comm.XwalkPath)
-        cmd = comm.PackTools + "crosswalk-app create org.xwalk.test --platforms=android"
-        packstatus = commands.getstatusoutput(cmd)
+        cmd = comm.HOST_PREFIX + comm.PackTools + "crosswalk-app create org.xwalk.test --platforms=android"
+        packstatus = os.system(cmd)
         comm.clear("org.xwalk.test")
-        self.assertEquals(packstatus[0], 0)
+        self.assertEquals(packstatus, 0)
 
     def test_create_with_platform_windows(self):
         comm.setUp()
         os.chdir(comm.XwalkPath)
-        cmd = comm.PackTools + "crosswalk-app create org.xwalk.test --platforms=windows"
-        packstatus = commands.getstatusoutput(cmd)
+        cmd = comm.HOST_PREFIX + comm.PackTools + "crosswalk-app create org.xwalk.test --platforms=windows"
+        packstatus = os.system(cmd)
         comm.clear("org.xwalk.test")
-        self.assertEquals(packstatus[0], 0)
+        self.assertEquals(packstatus, 0)
 
     def test_create_with_platform_ios(self):
         comm.setUp()
         os.chdir(comm.XwalkPath)
-        cmd = comm.PackTools + "crosswalk-app create org.xwalk.test --platforms=ios"
-        packstatus = commands.getstatusoutput(cmd)
+        cmd = comm.HOST_PREFIX + comm.PackTools + "crosswalk-app create org.xwalk.test --platforms=ios"
+        packstatus = os.system(cmd)
         comm.clear("org.xwalk.test")
-        self.assertNotEquals(packstatus[0], 0)
+        self.assertNotEquals(packstatus, 0)
 
     def test_create_with_platform_deb(self):
         comm.setUp()
         os.chdir(comm.XwalkPath)
-        cmd = comm.PackTools + "crosswalk-app create org.xwalk.test --platforms=deb"
-        packstatus = commands.getstatusoutput(cmd)
+        cmd = comm.HOST_PREFIX + comm.PackTools + "crosswalk-app create org.xwalk.test --platforms=deb"
+        packstatus = os.system(cmd)
         comm.clear("org.xwalk.test")
-        self.assertNotEquals(packstatus[0], 0)
+        self.assertNotEquals(packstatus, 0)
 
     def test_create_with_invalid_platform(self):
         comm.setUp()
         os.chdir(comm.XwalkPath)
-        cmd = comm.PackTools + "crosswalk-app create org.xwalk.test --platforms=target"
-        packstatus = commands.getstatusoutput(cmd)
+        cmd = comm.HOST_PREFIX + comm.PackTools + "crosswalk-app create org.xwalk.test --platforms=target"
+        packstatus = os.system(cmd)
         comm.clear("org.xwalk.test")
-        self.assertNotEquals(packstatus[0], 0)
+        self.assertNotEquals(packstatus, 0)
 
 if __name__ == '__main__':
     unittest.main()

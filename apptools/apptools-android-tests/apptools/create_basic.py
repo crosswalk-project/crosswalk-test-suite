@@ -27,10 +27,10 @@
 #
 # Authors:
 #         Hongjuan, Wang<hongjuanx.wang@intel.com>
+#         Yun, Liu<yunx.liu@intel.com>
 
 import unittest
 import os
-import commands
 import comm
 
 
@@ -39,12 +39,13 @@ class TestCrosswalkApptoolsFunctions(unittest.TestCase):
     def test_dir_exist(self):
         comm.setUp()
         os.chdir(comm.XwalkPath)
+        comm.clear("org.xwalk.test")
         os.mkdir("org.xwalk.test")
-        cmd = comm.PackTools + \
+        cmd = comm.HOST_PREFIX + comm.PackTools + \
             "crosswalk-app create org.xwalk.test --android-crosswalk=" + \
             comm.crosswalkVersion
-        packstatus = commands.getstatusoutput(cmd)
-        self.assertNotEquals(packstatus[0], 0)
+        return_code = os.system(cmd)
+        self.assertNotEquals(return_code, 0)
         comm.clear("org.xwalk.test")
 
     def test_main_activity(self):
@@ -66,6 +67,7 @@ class TestCrosswalkApptoolsFunctions(unittest.TestCase):
                     print "Continue find"
             else:
                 self.assertIn(findLine, line)
+        fp.close()
         comm.clear("org.xwalk.test")
 
 if __name__ == '__main__':
