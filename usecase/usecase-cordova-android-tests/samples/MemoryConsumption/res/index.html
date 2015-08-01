@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title>test</title>
+    <script src="zepto.js"></script>
+</head>
+<body>
+<button style="width: 200px;height: 50px;font-size: 30px" id="create">create</button>
+<button style="width: 200px;height: 50px;font-size: 30px" id="destroy">destroy</button>
+
+<div id="imgContainer"></div>
+</body>
+<script>
+    var imgContainer = $("#imgContainer");
+    var imgSrc = "yaoyiyao.png";
+
+    function create(){
+        var html = "";
+        for(var i = 0;i < 10; i++){
+            html += "<img src='"+imgSrc + "?" + Math.random()+"'>";
+        }
+        imgContainer.html(html);
+    }
+
+    function destroy(){
+        imgContainer.html("");
+    }
+
+    $("#create").on("click",function(){
+        create();
+    });
+
+    $("#destroy").on("click",function(){
+        destroy();
+    });
+</script>
+</html>
