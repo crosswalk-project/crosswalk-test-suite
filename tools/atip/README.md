@@ -253,6 +253,14 @@ def i_visit_url(context, url):
         </tr>
         <tr>
                 <td></td>
+                <td>Turn on/off wifi</td>
+        </tr>
+        <tr>
+                <td></td>
+                <td>Turn on/off airplane mode</td>
+        </tr>                
+        <tr>
+                <td></td>
                 <td>Identify current launched app</td>
         </tr>
         <tr>
@@ -374,7 +382,6 @@ def i_visit_url(context, url):
 
 * "web" steps - done
 ```
-@step(u'launch "{app_name}"')
 @step(u'I launch "{app_name}" with "{apk_pkg_name}" and "{apk_activity_name}"')
 @step(u'switch to "{app_name}"')
 @step(u'I go to "{url}"')
@@ -405,13 +412,6 @@ def i_visit_url(context, url):
 * "android" steps - done
 ```
 @step(u'I launch "{app_name}" with "{apk_pkg_name}" and "{apk_activity_name}" on android')
-@step(u'I turn on device')
-@step(u'I turn off device')
-@step(u'I set orientation "{orientation}"')
-@step(u'I take screenshot as "{name}"')
-@step(u'I open notification')
-@step(u'I open quick settings')
-@step(u'I press "{key}" key')
 @step(u'I scroll to end')
 @step(u'I fling "{orientation}" goto "{direction}"')
 @step(u'I swipe object "{key}" to "{orientation}"')
@@ -457,6 +457,18 @@ def i_visit_url(context, url):
 @step(u'I wait for {timeout:d} seconds')
 @step(u'call "{js}" scripts') - TBD
 @step(u'call PIL to handle "{image_file}"') - TBD
+@step(u'launch "{app_name}"')
+@step(u'I turn on device')
+@step(u'I turn off device')
+@step(u'I set orientation "{orientation}"')
+@step(u'I take screenshot as "{name}"')
+@step(u'I open notification')
+@step(u'I open quick settings')
+@step(u'I press "{key}" hardware key')
+@step(u'I open wifi')
+@step(u'I close wifi')
+@step(u'I open airplane mode')
+@step(u'I close airplane mode')
 ```
 
 ## Run Tests 

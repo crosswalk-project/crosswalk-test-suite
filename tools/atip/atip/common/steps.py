@@ -126,3 +126,17 @@ def open_wifi(context):
 def close_wifi(context):
     if get_test_platform(context) == "android":
         assert context.android.wifiOperate(False)
+
+
+# open android system airplane mode
+@step(u'I open airplane mode')
+def open_airplane_mode(context):
+    if get_test_platform(context) == "android":
+        assert context.android.airplaneModeOperate(True)
+
+
+# close android system airplane mode
+@step(u'I close airplane mode')
+def close_airplane_mode(context):
+    if get_test_platform(context) == "android":
+        assert context.android.airplaneModeOperate(False)
