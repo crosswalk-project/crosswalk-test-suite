@@ -1,0 +1,11 @@
+var step = '<font class="fontSize">'
+            +'<p>Test Purpose: </p>'
+            +'<p>Verifies the memory consumption within crosswalk runtime</p>'
+            +'<p>Test step: </p>'
+            +'<p>1. The commend can get the memory consumption of webapp: adb shell dumpsys meminfo |grep "org.xwalk.usecase_cordova_android_tests"</p>'
+            +'<p>2. Click "create" button to create images.</p>'
+            +'<p>3. Use the commend to get the memory consumption every time you click "create" button.</p>'
+            +'<p>4. Click "destroy" button.</p>'
+            +'<p>Expected Result: </p>'
+            +'<p>The memory consumption of webapp should changes in small range every time click "create" button, and become less when click "destroy" button.</p>'
+          +'</font>';
