@@ -8,23 +8,6 @@
           <test_script_entry>/opt/wrt-uxmanu-android-tests/uxmanu/Crosswalk_WebApp_Video_HWAccelerate.html</test_script_entry>
         </description>
       </testcase>
-      <testcase component="Crosswalk WRT/User Experience" execution_type="manual" id="Crosswalk_WebApp_HTML5_Notification" purpose="Validate if enable the feature of HTML5 Notification in Crosswalk">
-        <description>
-          <pre_condition>
-            1.Make sure Crosswalk binary is installed
-          </pre_condition>
-          <test_script_entry>/opt/wrt-uxmanu-android-tests/uxmanu/Crosswalk_WebApp_HTML5_Notification.html</test_script_entry>
-        </description>
-      </testcase>
-      <testcase component="Crosswalk WRT/User Experience" execution_type="manual" id="Crosswalk_Lock_And_Unlock_Screen" purpose="Validate Crosswalk suppor lock and unlock screen when running Web Apps">
-        <description>
-          <pre_condition>
-            1.Make sure Crosswalk application is launched;
-            2.Make sure there some webapps are available.
-          </pre_condition>
-          <test_script_entry>/opt/wrt-uxmanu-android-tests/uxmanu/Crosswalk_Lock_And_Unlock_Screen.html</test_script_entry>
-        </description>
-      </testcase>
       <testcase component="Crosswalk WRT/User Experience" execution_type="manual" id="Crosswalk_WebApps_Volume" purpose="Validate if web app sound volume work fine on Crosswalk">
         <description>
           <pre_condition>
@@ -40,15 +23,6 @@
             2. Make sure there has one Web App is running.
           </pre_condition>
           <test_script_entry>/opt/wrt-uxmanu-android-tests/uxmanu/Crosswalk_System_Interruption.html </test_script_entry>
-        </description>
-      </testcase>
-      <testcase component="Crosswalk WRT/User Experience" execution_type="manual" id="Crosswalk_WebApp_Terminated_TaskManager" purpose="Validate if Web App could be termined in task manager">
-        <description>
-          <pre_condition>
-            1. Make sure Crosswalk is installed
-            2. Make sure there some webapps are available
-          </pre_condition>
-          <test_script_entry>/opt/wrt-uxmanu-android-tests/uxmanu/Crosswalk_WebApp_Terminated_TaskManager.html </test_script_entry>
         </description>
       </testcase>
       <testcase component="Crosswalk WRT/User Experience" execution_type="manual" id="Crosswalk_WebApp_Integration_Switch" purpose="Validate if Crosswalk support Web Apps could be switch successfully">
@@ -126,16 +100,6 @@
           <test_script_entry>/opt/wrt-uxmanu-android-tests/uxmanu/Crosswalk_WebApp_Touch_Gesture_Swipe.html </test_script_entry>
         </description>
       </testcase>
-      <testcase component="Crosswalk WRT/User Experience" execution_type="manual" id="Crosswalk_WebApp_Touch_Gesture_Click" purpose="Validate if Crosswalk support click gesture on Web Apps">
-        <description>
-          <pre_condition>
-            1. Make sure Crosswalk application is launched and the device connected to network
-            2. Package a Web App,it contains below web links:Open website link: http://www.hao123.com
-            3. Install this Web App
-          </pre_condition>
-          <test_script_entry>/opt/wrt-uxmanu-android-tests/uxmanu/Crosswalk_WebApp_Touch_Gesture_Click.html </test_script_entry>
-        </description>
-      </testcase>
       <testcase component="Crosswalk WRT/User Experience" execution_type="manual" id="Crosswalk_WebApp_Orientation" purpose="Validate Crosswalk support rotate between portrait orientation screen and landscape orientation screen">
         <description>
           <pre_condition>
@@ -143,26 +107,6 @@
             2. Make sure there some webapps are available
           </pre_condition>
           <test_script_entry>/opt/wrt-uxmanu-android-tests/uxmanu/Crosswalk_WebApp_Orientation.html </test_script_entry>
-        </description>
-      </testcase>
-      <testcase component="Crosswalk WRT/User Experience" execution_type="manual" id="Crosswalk_WebApp_BackKey_Exit" purpose="Validate if Crosswalk support stop activity by back key">
-        <description>
-          <pre_condition>
-            1.Make sure Crosswalk application is installed and the device connected to network;
-            2.Package a web app,it contains below web links:Open website link: http://www.hao123.com ;
-            3.Install this web app
-          </pre_condition>
-          <test_script_entry>/opt/wrt-uxmanu-android-tests/uxmanu/Crosswalk_WebApp_BackKey_Exit.html </test_script_entry>
-        </description>
-      </testcase>
-      <testcase component="Crosswalk WRT/User Experience" execution_type="manual" id="Crosswalk_WebApp_BackKey_Back" purpose="Validate if Crosswalk support go back to previous page by back key">
-        <description>
-          <pre_condition>
-            1.Make sure Crosswalk application is installed and the device connected to network;
-            2.Package a web app,it contains below web links:Open website link: http://www.hao123.com ;
-            3.Install this web app
-          </pre_condition>
-          <test_script_entry>/opt/wrt-uxmanu-android-tests/uxmanu/Crosswalk_WebApp_BackKey_Back.html </test_script_entry>
         </description>
       </testcase>
       <testcase component="Crosswalk WRT/User Experience" execution_type="manual" id="Crosswalk_CopyAndPaste_Copy_Hyperlink" purpose="Validate if could copy hyperlink">
@@ -337,6 +281,58 @@
             3.Use the IA device which WebGL is enable in it
           </pre_condition>
           <test_script_entry>/opt/wrt-uxmanu-android-tests/uxmanu/Crosswalk_UseChromeBlacklist_WebGLSupport_IA.html </test_script_entry>
+        </description>
+      </testcase>
+    </set>
+    <set name="Integration-bdd" type="js" ui-auto="bdd">
+      <testcase component="Crosswalk WRT/User Experience" execution_type="manual" id="Crosswalk_WebApp_Terminated_TaskManager" purpose="Validate if Web App could be terminated in task manager">
+        <description>
+          <pre_condition>
+            1. Make sure Crosswalk is installed
+            2. Make sure there some webapps are available
+          </pre_condition>
+          <test_script_entry>/opt/wrt-uxmanu-android-tests/uxmanu/bdd/Crosswalk_WebApp_Terminated_TaskManager.html </test_script_entry>
+          <bdd_test_script_entry test_script_expected_result="0">/opt/wrt-uxmanu-android-tests/wrt-ux-app/testscripts/Crosswalk_WebApp_Terminated_TaskManager.feature</bdd_test_script_entry>
+        </description>
+      </testcase>
+      <testcase component="Crosswalk WRT/User Experience" execution_type="manual" id="Crosswalk_WebApp_HTML5_Notification" purpose="Validate if enable the feature of HTML5 Notification in Crosswalk">
+        <description>
+          <pre_condition>
+            1.Make sure Crosswalk binary is installed
+          </pre_condition>
+          <test_script_entry>/opt/wrt-uxmanu-android-tests/uxmanu/bdd/Crosswalk_WebApp_HTML5_Notification.html</test_script_entry>
+          <bdd_test_script_entry test_script_expected_result="0">/opt/wrt-uxmanu-android-tests/wrt-ux-app/testscripts/Crosswalk_WebApp_HTML5_Notification.feature</bdd_test_script_entry>
+        </description>
+      </testcase>
+      <testcase component="Crosswalk WRT/User Experience" execution_type="manual" id="Crosswalk_WebApp_Touch_Gesture_Click" purpose="Validate if Crosswalk support click gesture on Web Apps">
+        <description>
+          <test_script_entry>/opt/wrt-uxmanu-android-tests/uxmanu/bdd/Crosswalk_WebApp_Touch_Gesture_Click.html </test_script_entry>
+          <bdd_test_script_entry test_script_expected_result="0">/opt/wrt-uxmanu-android-tests/wrt-ux-app/testscripts/Crosswalk_WebApp_Touch_Gesture_Click.feature</bdd_test_script_entry>
+        </description>
+      </testcase>
+      <testcase component="Crosswalk WRT/User Experience" execution_type="manual" id="Crosswalk_WebApp_BackKey_Back" purpose="Validate if Crosswalk support go back to previous page by back key">
+        <description>
+          <test_script_entry>/opt/wrt-uxmanu-android-tests/uxmanu/bdd/Crosswalk_WebApp_BackKey_Back.html </test_script_entry>
+          <bdd_test_script_entry test_script_expected_result="0">/opt/wrt-uxmanu-android-tests/wrt-ux-app/testscripts/Crosswalk_WebApp_BackKey_Back.feature</bdd_test_script_entry>
+        </description>
+      </testcase>
+      <testcase component="Crosswalk WRT/User Experience" execution_type="manual" id="Crosswalk_WebApp_BackKey_Exit" purpose="Validate if Crosswalk support stop activity by back key">
+        <description>
+          <pre_condition>
+            1.Make sure Crosswalk application is installed and the device connected to network;
+          </pre_condition>
+          <test_script_entry>/opt/wrt-uxmanu-android-tests/uxmanu/bdd/Crosswalk_WebApp_BackKey_Exit.html </test_script_entry>
+          <bdd_test_script_entry test_script_expected_result="0">/opt/wrt-uxmanu-android-tests/wrt-ux-app/testscripts/Crosswalk_WebApp_BackKey_Exit.feature</bdd_test_script_entry>
+        </description>
+      </testcase>
+      <testcase component="Crosswalk WRT/User Experience" execution_type="manual" id="Crosswalk_Lock_And_Unlock_Screen" purpose="Validate Crosswalk suppor lock and unlock screen when running Web Apps">
+        <description>
+          <pre_condition>
+            1.Make sure Crosswalk application is launched;
+            2.Make sure there some webapps are available.
+          </pre_condition>
+          <test_script_entry>/opt/wrt-uxmanu-android-tests/uxmanu/bdd/Crosswalk_Lock_And_Unlock_Screen.html</test_script_entry>
+          <bdd_test_script_entry test_script_expected_result="0">/opt/wrt-uxmanu-android-tests/wrt-ux-app/testscripts/Crosswalk_Lock_And_Unlock_Screen.feature</bdd_test_script_entry>
         </description>
       </testcase>
     </set>
