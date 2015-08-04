@@ -4,6 +4,7 @@
 
 package org.xwalk.embedded.api.asyncsample;
 
+import org.xwalk.core.ClientCertRequest;
 import android.app.Activity;
 import org.xwalk.core.XWalkInitializer;
 import org.xwalk.core.XWalkJavascriptResult;
@@ -55,11 +56,18 @@ public class ResourceAndUIClientsActivity extends Activity implements XWalkIniti
             super.onReceivedLoadError(view, errorCode, description, failingUrl);
         }
 
-	public void onDocumentLoadedInFrame(XWalkView view, long frameId) {
-	    // TODO Auto-generated method stub
-	    super.onDocumentLoadedInFrame(view, frameId);
-	    Log.d(TAG, "onDocumentLoadedInFrame frameId: " + frameId);
-	}
+        public void onDocumentLoadedInFrame(XWalkView view, long frameId) {
+        // TODO Auto-generated method stub
+            super.onDocumentLoadedInFrame(view, frameId);
+            Log.d(TAG, "onDocumentLoadedInFrame frameId: " + frameId);
+        }
+
+        public void onReceivedClientCertRequest(XWalkView view,
+                ClientCertRequest handler) {
+            // TODO Auto-generated method stub
+            Log.d(TAG, "ClientCert Request:" + handler);
+            super.onReceivedClientCertRequest(view, handler);
+        }
     }
 
     class UIClient extends XWalkUIClient {
@@ -130,7 +138,7 @@ public class ResourceAndUIClientsActivity extends Activity implements XWalkIniti
         mess.append("Test Purpose: \n\n")
         .append("Verifies XWalkView can set resource client and UI client.\n\n")
         .append("Expected Result:\n\n")
-        .append("Test passes if app load 'baidu.com' page.");
+        .append("Test passes if app get attention \"Bad SSL client authentication certificate\".");
         new  AlertDialog.Builder(this)
         .setTitle("Info" )
         .setMessage(mess.toString())
@@ -140,6 +148,6 @@ public class ResourceAndUIClientsActivity extends Activity implements XWalkIniti
         mXWalkView = (XWalkView) findViewById(R.id.xwalkview);
         mXWalkView.setResourceClient(new ResourceClient(mXWalkView));
         mXWalkView.setUIClient(new UIClient(mXWalkView));
-        mXWalkView.load("http://www.baidu.com", null);
+        mXWalkView.load("https://egov.privasphere.com/", null);
     }
 }
