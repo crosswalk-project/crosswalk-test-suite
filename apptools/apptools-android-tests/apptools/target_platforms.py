@@ -31,7 +31,6 @@
 import unittest
 import os
 import comm
-import commands
 
 
 class TestCrosswalkApptoolsFunctions(unittest.TestCase):
@@ -39,10 +38,10 @@ class TestCrosswalkApptoolsFunctions(unittest.TestCase):
     def test_list_target_platforms(self):
         comm.setUp()
         os.chdir(comm.XwalkPath)
-        cmd = comm.PackTools + "crosswalk-app platforms"
+        cmd = comm.HOST_PREFIX + comm.PackTools + "crosswalk-app platforms"
         status = os.popen(cmd).readlines()
-        self.assertEquals("android", status[0].strip(" *\n"))
-        self.assertEquals("windows", status[1].strip(" *\n"))
+        self.assertEquals("android", status[0].strip(" * " + os.linesep))
+        self.assertEquals("windows", status[1].strip(" * " + os.linesep))
 
 if __name__ == '__main__':
     unittest.main()

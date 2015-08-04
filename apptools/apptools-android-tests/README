@@ -3,21 +3,44 @@
 This test suite is for apptools-android-tests
 1. ./allpairs.py is create pkgName.py and report directory for package name
 
-## Precondition
+## Common Precondition
 
 1. Connect Android devices to your localhost
 2. Need to edit the file "apptools-android-tests/arch.txt" according to the type of test device.
 If test device is "arm" platform, content of the file should be "arm", default value is "x86"
-3. Need to edit the file "apptools-android-tests/version.txt" according to the Crosswalk which you want to test.
+3. Need to edit the file "apptools-android-tests/host.txt" according to the type of test host.
+If test host is "Windows" platform, content of the file should be "Windows", default value is "Android"
+4. Need to edit the file "apptools-android-tests/version.txt" according to the Crosswalk which you want to test.
 For example: if you want to test with "crosswalk-13.42.319.11.zip", content of the file should be "13.42.319.11"
-4. The node.js, Android SDK, and git must be functional
-5. Install nodeunit: sudo npm install nodeunit -g
-6. Download crosswalk-app-tools to apptools-android-tests/tools, then install npm
-  6.1 cd tools, then clone source code from https://github.com/crosswalk-project/crosswalk-app-tools
-  6.2 Run commands: cd crosswalk-app-tools, then run: sudo npm install
-7. Environment variable configuration:
-  7.1 export ANDROID_HOME=$(dirname $(dirname $(which android)))
-  7.2 export CROSSWALK_APP_TOOLS_CACHE_DIR=/path/to/opt/apptools-android-tests/tools
+5. The node.js, Android SDK, JDK, apache ant, and git must be functional
+
+
+## Precondition for AppTools on Android
+
+1. Download crosswalk-app-tools to apptools-android-tests/tools, then install npm
+  1.1 cd tools, then clone source code from https://github.com/crosswalk-project/crosswalk-app-tools
+  1.2 Run commands: cd crosswalk-app-tools, then run: sudo npm install
+2. Install nodeunit: sudo npm install nodeunit -g
+3. Environment variable configuration:
+  3.1 export ANDROID_HOME=$(dirname $(dirname $(which android)))
+  3.2 export CROSSWALK_APP_TOOLS_CACHE_DIR=/path/to/opt/apptools-android-tests/tools
+4. Install BeautifulSoup: sudo pip install BeautifulSoup
+
+
+## Precondition for AppTools on Windows
+
+1. Download crosswalk-app-tools to apptools-android-tests/tools, then install npm
+  1.1 cd tools, then clone source code from https://github.com/crosswalk-project/crosswalk-app-tools
+  1.2 Run commands: cd crosswalk-app-tools, then run: npm install
+2. Install grunt-cli:
+  2.1 $ cd /path/to/opt/apptools-android-tests/tools/crosswalk-app-tools
+  2.2 $ npm install -g grunt-cli
+  2.2 $ grunt test
+If wanning: grunt is not recognized. Please add "C:/Users/AppData/Roaming/npm/" dir to path env.
+3. Environment variable configuration:
+  3.1 Set ANDORID_HOME env
+  3.2 Set CROSSWALK_APP_TOOLS_CACHE_DIR env to /path/to/opt/apptools-sampleapp-tests/tools
+4. Install BeautifulSoup: pip install BeautifulSoup
 
 ## Test Steps
 
@@ -31,6 +54,7 @@ Query device id by command "adb devices -l" in host.
 ## Authors:
 
 * Wang, Hongjuan <hongjuanx.wang@intel.com>
+* Yun, Liu<yunx.liu@intel.com>
 
 ## LICENSE
 

@@ -40,10 +40,16 @@ Authors:
   <ol>
     <li>If org.xwalk.test exists in apptools-android-tests/tools/ directory, remove it <br/>
         Then run below commands under apptools-android-tests/tools/ directory: <br/>
-        $ ./crosswalk-app-tools/src/crosswalk-app create org.xwalk.test <br/>
-        $ cd org.xwalk.test <br/>
-        Update "crosswalk_app_version" in app/manifest.json file <br/>
-        $ ../crosswalk-app-tools/src/crosswalk-app build <br/>
+        On Android: <br/>
+        &nbsp; &nbsp; $ ./crosswalk-app-tools/src/crosswalk-app create org.xwalk.test <br/>
+        &nbsp; &nbsp; $ cd org.xwalk.test <br/>
+        &nbsp; &nbsp; Update "crosswalk_app_version" in app/manifest.json file <br/>
+        &nbsp; &nbsp; $ ../crosswalk-app-tools/src/crosswalk-app build <br/>
+        On Windows: <br/>
+        &nbsp; &nbsp; $ node .\crosswalk-app-tools\src\crosswalk-app create org.xwalk.test <br/>
+        &nbsp; &nbsp; $ cd org.xwalk.test <br/>
+        &nbsp; &nbsp; Update "crosswalk_app_version" in app\manifest.json file <br/>
+        &nbsp; &nbsp; $ node ..\crosswalk-app-tools\src\crosswalk-app build <br/>
         Install the app on android device <br/>
         In android device application list, check if the app version is same with "crosswalk_app_version" which you update in manifest.json file
     </li>

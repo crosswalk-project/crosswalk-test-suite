@@ -27,13 +27,15 @@
 #
 # Authors:
 #         Hongjuan, Wang<hongjuanx.wang@intel.com>
+#         Yun, Liu<yunx.liu@intel.com>
 
 import unittest
 import os
-import commands
 import comm
 import shutil
 import urllib2
+import re
+from bs4 import BeautifulSoup
 
 
 class TestCrosswalkApptoolsFunctions(unittest.TestCase):
@@ -42,30 +44,23 @@ class TestCrosswalkApptoolsFunctions(unittest.TestCase):
         comm.setUp()
         comm.clear("org.xwalk.test")
         os.chdir(comm.XwalkPath)
-        createcmd = comm.PackTools + "crosswalk-app create org.xwalk.test"
-        packstatus = commands.getstatusoutput(createcmd)
-        crosswalklist = urllib2.urlopen(
+        createcmd = comm.HOST_PREFIX + comm.PackTools + "crosswalk-app create org.xwalk.test"
+        return_code = os.system(createcmd)
+        htmlDoc = urllib2.urlopen(
             'https://download.01.org/crosswalk/releases/crosswalk/android/stable/').read()
-        fp = open('test', 'w')
-        fp.write(crosswalklist)
-        fp.close()
-        line = commands.getstatusoutput(
-            "cat test|sed -n  '/src\=\"\/icons\/folder.gif\"/=' |sed -n '$p'")[1].strip()
-        cmd = "cat test |sed -n '%dp' |awk -F 'href=' '{print $2}' |awk -F '\"|/' '{print $2}'" % int(
-            line)
-        version = commands.getstatusoutput(cmd)[1]
-        if not '.' in version:
-            line = commands.getstatusoutput(
-                "tac test|sed -n  '/src\=\"\/icons\/folder.gif\"/=' |sed -n '2p'")[1].strip()
-            cmd = "tac test |sed -n '%dp' |awk -F 'href=' '{print $2}' |awk -F '\"|/' '{print $2}'" % int(
-                line)
-            version = commands.getstatusoutput(cmd)[1]
-        commands.getstatusoutput("rm -rf test")
+        soup = BeautifulSoup(htmlDoc)
+        alist = soup.find_all('a')
+        version = ''
+        for  index in range(-1, -len(alist)-1, -1):
+            aEle = alist[index]
+            version = aEle['href'].strip('/')
+            if re.search('[0-9]*\.[0-9]*\.[0-9]*\.[0-9]*', version):
+                break
         crosswalk = 'crosswalk-{}.zip'.format(version)
         namelist = os.listdir(os.getcwd())
-        self.assertIn(crosswalk, namelist)
         comm.clear("org.xwalk.test")
-        self.assertEquals(packstatus[0], 0)
+        self.assertIn(crosswalk, namelist)
+        self.assertEquals(return_code, 0)
 
 if __name__ == '__main__':
     unittest.main()

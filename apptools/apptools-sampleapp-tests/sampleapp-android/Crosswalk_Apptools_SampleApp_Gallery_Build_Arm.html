@@ -49,17 +49,24 @@ Authors:
     <ol>
       <li>If com.example.gallery exists in apptools-sampleapp-tests/tools/ directory, remove it</br>
         Then run below commands under apptools-sampleapp-tests/tools/ directory:</br>
-        $ crosswalk-app create com.example.gallery</br>
-        $ cd com.example.gallery</br>
-        $ git clone https://github.com/blueimp/Gallery.git</br>
-        $ mv Gallery/* app/</br>
-        $ crosswalk-app build
+        On Android: <br/>
+        &nbsp; &nbsp; $ crosswalk-app create com.example.gallery</br>
+        &nbsp; &nbsp; $ cd com.example.gallery</br>
+        &nbsp; &nbsp; $ git clone https://github.com/blueimp/Gallery.git</br>
+        &nbsp; &nbsp; $ mv Gallery/* app/</br>
+        &nbsp; &nbsp; $ crosswalk-app build</br>
+        On Windows: <br/>
+        &nbsp; &nbsp; $ node crosswalk-app create com.example.gallery</br>
+        &nbsp; &nbsp; $ cd com.example.gallery</br>
+        &nbsp; &nbsp; $ git clone https://github.com/blueimp/Gallery.git</br>
+        &nbsp; &nbsp; $ xcopy /s /e /i /y Gallery\* app\</br>
+        &nbsp; &nbsp; $ node crosswalk-app build
       </li>
       <li>Install arm gallery app on your android device which is "arm" architecture</li>
       <li>Check icon of gallery app in your android device</li>
       <li>Launch gallery app in your android device</li>
       <li>Check the homepage of gallery app</li>
-      <li>Uninstall the app by typing "adb -s `adb devices -l |sed -n '2p' |awk '{print $1}'` uninstall com.example.gallery" on the command line when the app running</li>
+      <li>Uninstall the app when it is running</li>
       <li>Install and launch the gallery app again. Close gallery app via clicking the home button, and kill gallery app from Task Manager</li>
       <li>Long press the icon of gallery app to uninstall it</li>
     </ol>

@@ -32,18 +32,22 @@
 import os
 import sys
 import stat
-import commands
 import shutil
 import urllib2
+import subprocess
+import time
+import re
+from bs4 import BeautifulSoup
 
 SCRIPT_PATH = os.path.realpath(__file__)
 ConstPath = os.path.dirname(SCRIPT_PATH)
+DEFAULT_CMD_TIMEOUT = 600
 
 
 def setUp():
-    global device, XwalkPath, crosswalkVersion, PackTools, ARCH, cachedir
+    global device, XwalkPath, crosswalkVersion, PackTools, ARCH, cachedir, HOST_PREFIX, SHELL_FLAG
 
-    #device = "E6OKCY411012"
+    #device = "MedfieldC35A9F49"
     device = os.environ.get('DEVICE_ID')
     cachedir = os.environ.get('CROSSWALK_APP_TOOLS_CACHE_DIR')
     if not device:
@@ -56,6 +60,15 @@ def setUp():
     else:
         ARCH = "x86"
     fp.close()
+
+    host = open(ConstPath + "/../host.txt", 'r')
+    if host.read().strip("\n\t") != "Android":
+        HOST_PREFIX = "node "
+        SHELL_FLAG = "False"
+    else:
+        HOST_PREFIX = ""
+        SHELL_FLAG = "True"
+    host.close()
 
     vp = open(ConstPath + "/../version.txt", 'r')
     crosswalkVersion = vp.read().strip("\n\t")
@@ -71,33 +84,50 @@ def setUp():
         print "Please check if the Crosswalk Binary exists in " + ConstPath + "/../tools/"
         sys.exit(1)
 
+def getstatusoutput(cmd, time_out=DEFAULT_CMD_TIMEOUT):
+    pre_time = time.time()
+    output = []
+    cmd_return_code = 1
+    cmd_proc = subprocess.Popen(
+        cmd, stdout=subprocess.PIPE, stderr=subprocess.STDOUT, shell=SHELL_FLAG)
+    while True:
+        output_line = cmd_proc.stdout.read()
+        cmd_return_code = cmd_proc.poll()
+        elapsed_time = time.time() - pre_time
+        if cmd_return_code is None:
+            if elapsed_time >= time_out:
+                killProcesses(ppid=cmd_proc.pid)
+                return False
+        elif output_line == '' and cmd_return_code is not None:
+            break
+        sys.stdout.write(output_line)
+        sys.stdout.flush()
+        output.append(output_line)
+    return (cmd_return_code, output)
 
 def clear(pkg):
     os.chdir(XwalkPath)
     if os.path.exists(ConstPath + "/../tools/" + pkg):
-        try:
-            shutil.rmtree(XwalkPath + pkg)
-        except Exception as e:
-            if os.path.exists(XwalkPath + pkg + "/prj/android/xwalk_core_library/libs/x86"):
-                os.chmod(XwalkPath + pkg + "/prj/android/xwalk_core_library/libs/x86", stat.S_IRWXU|stat.S_IRGRP|stat.S_IROTH)
-            os.system("rm -rf " + XwalkPath + pkg + " &>/dev/null")
+        if os.path.exists(ConstPath + "/../tools/" + pkg + "/prj"):
+            shutil.rmtree(pkg + "/prj")
+        shutil.rmtree(pkg)
 
 
 def create(self):
     clear("org.xwalk.test")
     setUp()
     os.chdir(XwalkPath)
-    cmd = PackTools + \
+    cmd = HOST_PREFIX + PackTools + \
         "crosswalk-app create org.xwalk.test --android-crosswalk=" + \
         crosswalkVersion
-    packstatus = commands.getstatusoutput(cmd)
-    self.assertEquals(packstatus[0], 0)
+    return_code = os.system(cmd)
+    self.assertEquals(return_code, 0)
     self.assertIn("org.xwalk.test", os.listdir(os.getcwd()))
 
 
 def build(self, cmd):
-    buildstatus = commands.getstatusoutput(cmd)
-    self.assertEquals(buildstatus[0], 0)
+    return_code = os.system(cmd)
+    self.assertEquals(return_code, 0)
     apks = os.listdir(os.getcwd())
     apkLength = 0
     for i in range(len(apks)):
@@ -109,10 +139,10 @@ def build(self, cmd):
 
 
 def update(self, cmd):
-    updatestatus = commands.getstatusoutput(cmd)
-    self.assertEquals(updatestatus[0], 0)
-    self.assertNotIn("ERROR:", updatestatus[1])
-    version = updatestatus[1].split('\n')[-1].split(' ')[-1][1:-1]
+    (return_update_code, update_output) = getstatusoutput(cmd)
+    self.assertEquals(return_update_code, 0)
+    self.assertNotIn("ERROR:", update_output[0])
+    version = update_output[0].split(" * " + os.linesep)[-1].split(' ')[-1][1:-2]
     if not cachedir:
         namelist = os.listdir(os.getcwd())
     else:
@@ -130,63 +160,49 @@ def run(self):
     apks = os.listdir(os.getcwd())
     for apk in apks:
         if ARCH in apk:
-            inststatus = commands.getstatusoutput(
+            return_inst_code = os.system('adb -s ' + device + ' install -r ' + apk)
+            (return_pm_code, pmstatus) = getstatusoutput(
                 'adb -s ' +
                 device +
-                ' install -r ' +
-                os.getcwd() +
-                '/' +
-                apk)
-            # print inststatus
-            self.assertEquals(inststatus[0], 0)
-            self.assertIn("Success", inststatus[1])
-            pmstatus = commands.getstatusoutput(
+                ' shell pm list package')
+            (return_laun_code, launstatus) = getstatusoutput(
                 'adb -s ' +
                 device +
-                ' shell pm list package |grep org.xwalk.test')
-            self.assertEquals(pmstatus[0], 0)
-            launstatus = commands.getstatusoutput(
-                'adb -s ' +
-                device +
-                ' shell am start -n org.xwalk.test/.TestActivity')
-            self.assertEquals(launstatus[0], 0)
-            stopstatus = commands.getstatusoutput(
+                ' shell am start -n org.xwalk.test/.MainActivity')
+            return_stop_code = os.system(
                 'adb -s ' +
                 device +
                 ' shell am force-stop org.xwalk.test')
-            self.assertEquals(stopstatus[0], 0)
-            uninstatus = commands.getstatusoutput(
-                'adb -s ' +
-                device +
-                ' uninstall org.xwalk.test')
-            self.assertEquals(uninstatus[0], 0)
+            uninstatus = os.popen('adb -s ' + device + ' uninstall org.xwalk.test').read()
+            os.system('adb kill-server')
+            self.assertEquals(return_inst_code, 0)
+            self.assertIn("org.xwalk.test", pmstatus[0])
+            self.assertEquals(return_laun_code, 0)
+            self.assertNotEquals("Error", launstatus[0])
+            self.assertEquals(return_stop_code, 0)
+            self.assertNotEquals("Success", uninstatus)
 
 
 def channel(self, channel):
-    createcmd = PackTools + \
+    createcmd = HOST_PREFIX + PackTools + \
         "crosswalk-app create org.xwalk.test --android-crosswalk=" + channel
-    packstatus = commands.getstatusoutput(createcmd)
-    self.assertEquals(packstatus[0], 0)
-    self.assertIn(channel, packstatus[1])
-    crosswalklist = urllib2.urlopen(
+    (return_create_code, output) = getstatusoutput(createcmd)
+    htmlDoc = urllib2.urlopen(
         'https://download.01.org/crosswalk/releases/crosswalk/android/' +
         channel +
         '/').read()
-    fp = open('test', 'w')
-    fp.write(crosswalklist)
-    fp.close()
-    line = commands.getstatusoutput(
-        "cat test|sed -n  '/src\=\"\/icons\/folder.gif\"/=' |sed -n '$p'")[1].strip()
-    cmd = "cat test |sed -n '%dp' |awk -F 'href=' '{print $2}' |awk -F '\"|/' '{print $2}'" % int(
-        line)
-    version = commands.getstatusoutput(cmd)[1]
-    if not '.' in version:
-        line = commands.getstatusoutput(
-            "tac test|sed -n  '/src\=\"\/icons\/folder.gif\"/=' |sed -n '2p'")[1].strip()
-        cmd = "tac test |sed -n '%dp' |awk -F 'href=' '{print $2}' |awk -F '\"|/' '{print $2}'" % int(
-            line)
-        version = commands.getstatusoutput(cmd)[1]
-    commands.getstatusoutput("rm -rf test")
+    soup = BeautifulSoup(htmlDoc)
+    alist = soup.find_all('a')
+    version = ''
+    for  index in range(-1, -len(alist)-1, -1):
+        aEle = alist[index]
+        version = aEle['href'].strip('/')
+        if re.search('[0-9]*\.[0-9]*\.[0-9]*\.[0-9]*', version):
+            break
+    print "-----------" + version
     crosswalk = 'crosswalk-{}.zip'.format(version)
     namelist = os.listdir(os.getcwd())
+    clear("org.xwalk.test")
+    self.assertEquals(return_create_code, 0)
+    self.assertIn(channel, output[0])
     self.assertIn(crosswalk, namelist)
