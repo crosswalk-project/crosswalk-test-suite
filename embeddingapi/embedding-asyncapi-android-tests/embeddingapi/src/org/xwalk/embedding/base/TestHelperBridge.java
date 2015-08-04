@@ -7,8 +7,10 @@ package org.xwalk.embedding.base;
 import org.chromium.content.browser.test.util.TestCallbackHelperContainer.OnPageFinishedHelper;
 import org.chromium.content.browser.test.util.TestCallbackHelperContainer.OnPageStartedHelper;
 import org.chromium.content.browser.test.util.TestCallbackHelperContainer.OnReceivedErrorHelper;
+import org.xwalk.core.ClientCertRequest;
 import org.xwalk.core.XWalkUIClient.ConsoleMessageType;
 import org.xwalk.core.XWalkUIClient.LoadStatus;
+import org.xwalk.core.XWalkView;
 
 import android.net.Uri;
 import android.webkit.ValueCallback;
@@ -40,6 +42,7 @@ public class TestHelperBridge {
     private final OnConsoleMessageHelper mOnConsoleMessageHelper;
     private final OnDownloadStartHelper mOnDownloadStartHelper;
     private final OnDocumentLoadedInFrameHelper mOnDocumentLoadedInFrameHelper;
+    private final OnReceivedClientCertRequestHelper mOnReceivedClientCertRequestHelper;    
 
     TestHelperBridge() {
         mOnPageStartedHelper = new OnPageStartedHelper();
@@ -62,8 +65,9 @@ public class TestHelperBridge {
         mOnFullscreenToggledHelper = new OnFullscreenToggledHelper();
         mOpenFileChooserHelper = new OpenFileChooserHelper();
         mOnConsoleMessageHelper = new OnConsoleMessageHelper();
-	mOnDownloadStartHelper = new OnDownloadStartHelper();
+        mOnDownloadStartHelper = new OnDownloadStartHelper();
         mOnDocumentLoadedInFrameHelper = new OnDocumentLoadedInFrameHelper();
+        mOnReceivedClientCertRequestHelper = new OnReceivedClientCertRequestHelper();  
     }
 
     public WebResourceResponse shouldInterceptLoadRequest(String url) {
@@ -255,4 +259,12 @@ public class TestHelperBridge {
     public OnDocumentLoadedInFrameHelper getOnDocumentLoadedInFrameHelper() {
         return mOnDocumentLoadedInFrameHelper;
     }
+    
+    public OnReceivedClientCertRequestHelper getOnReceivedClientCertRequestHelper() {
+    	return mOnReceivedClientCertRequestHelper;
+    }
+    
+    public void onReceivedClientCertRequest(XWalkView view, ClientCertRequest handler) {
+    	mOnReceivedClientCertRequestHelper.notifyCalled(handler);
+    }    
 }
