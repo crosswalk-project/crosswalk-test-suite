@@ -103,7 +103,8 @@ class Android(common.APP):
 
 
     def wifiOperate(self, turnon):
-        wifi_name_list = [u'Wi\u2011Fi', 'WLAN']
+        self.doCMD(self.adb + " am force-stop com.android.settings")
+        wifi_name_list = [u'Wi\u2011Fi', u'WLAN']
         settings_cmd = self.adb + \
                     " am start -n " + \
                     "com.android.settings/.Settings"
@@ -117,13 +118,18 @@ class Android(common.APP):
         except Exception as e:
             return False
         if self.d.info["currentPackageName"] == "com.android.settings":
+            object_exists = False
             for wifi_name in wifi_name_list:
-                wifi = self.d(className="android.widget.ListView", resourceId="android:id/list") \
-                        .child_by_text(wifi_name, className="android.widget.LinearLayout") \
-                        .child(className="android.widget.Switch")
-                if wifi.exists:
-                    break
-            if wifi.exists:
+                try:
+                    wifi = self.d(className="android.widget.ListView", resourceId="android:id/list") \
+                            .child_by_text(wifi_name, className="android.widget.LinearLayout") \
+                            .child(className="android.widget.Switch")
+                    if wifi.exists:
+                        object_exists = True
+                        break
+                except Exception as e:
+                    pass
+            if object_exists:
                 wifi_state = self.getObjectInfo(wifi, "checked")
                 if turnon:
                     if wifi_state:
@@ -135,6 +141,89 @@ class Android(common.APP):
                         pass
                     else:
                         self.clickObject(wifi)
+                return True
+        return False
+
+
+    def airplaneModeOperate(self, turnon):
+        self.doCMD(self.adb + " am force-stop com.android.settings")
+        airplane_name_top = [u'Airplane mode',]
+        settings_cmd = self.adb + \
+                    " am start -n " + \
+                    "com.android.settings/.Settings"
+        try:
+            (return_code, output) = self.doCMD(settings_cmd)
+            if return_code == 0:
+                pass
+            else:
+                print("\n".join(output))
+                return False
+        except Exception as e:
+            return False
+        if self.d.info["currentPackageName"] == "com.android.settings":
+            object_exists = False
+            for airplane_name in airplane_name_top:
+                try:
+                    airplane = self.d(className="android.widget.ListView", resourceId="android:id/list") \
+                            .child_by_text(airplane_name, className="android.widget.LinearLayout") \
+                            .child(className="android.widget.Switch")
+                    if airplane.exists:
+                        object_exists = True
+                        break
+                except Exception as e:
+                    pass
+            if object_exists:
+                airplane_state = self.getObjectInfo(airplane, "checked")
+                if turnon:
+                    if airplane_state:
+                        pass
+                    else:
+                        self.clickObject(airplane)
+                else:
+                    if not airplane_state:
+                        pass
+                    else:
+                        self.clickObject(airplane)
+                return True
+            return self.airplaneModeMore(turnon)
+        return False
+
+
+    def airplaneModeMore(self, turnon):
+        airplane_name_more = [u'Airplane mode',]
+        object_exists = False
+        try:
+            more = self.d(className="android.widget.ListView", resourceId="android:id/list") \
+                        .child_by_text(u'More\u2026', className="android.widget.LinearLayout")
+            if more.exists:
+                object_exists = True
+        except Exception as e:
+            pass
+        if object_exists:
+            self.clickObject(more)
+            object_exists = False
+            for airplane_name in airplane_name_more:
+                try:
+                    airplane = self.d(className="android.widget.ListView", resourceId="android:id/list") \
+                            .child_by_text(airplane_name, className="android.widget.LinearLayout") \
+                            .child(className="android.widget.CheckBox")
+                    if airplane.exists:
+                        object_exists = True
+                        break
+                except Exception as e:
+                    pass
+            if object_exists:
+                airplane_state = self.getObjectInfo(airplane, "checked")
+                if turnon:
+                    if airplane_state:
+                        pass
+                    else:
+                        self.clickObject(airplane)
+                else:
+                    if not airplane_state:
+                        pass
+                    else:
+                        self.clickObject(airplane)
                 return True
         return False
 
