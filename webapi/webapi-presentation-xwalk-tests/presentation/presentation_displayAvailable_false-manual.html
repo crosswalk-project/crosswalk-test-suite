@@ -31,26 +31,25 @@ Authors:
 -->
 
 <html>
-  <head>
-    <meta charset='utf-8'>
-    <title>Presentation Test: Presentation_requestShow_old_version_android</title>
-    <link rel="author" title="Intel" href="http://www.intel.com">
-    <link rel="help" href="http://webscreens.github.io/presentation-api/">
-  </head>
-  <body>
-    <p>
-      <strong>Test steps:</strong>
-    </p>
-    <ol>
-      <li>Launch 'Presentation_test' app on Android device, check the device.</li>
-      <li>Press 'Request Show Presentation' Button, check the device.</li>
-    </ol>
-    <p>
-      <strong>Expected Output:</strong>
-    </p>
-    <ol>
-      <li>After step 1: The 'Display Available' should be 'false'.</li>
-      <li>After step 2: The 'Result' should be 'NotSupportedError'; 2. The 'Received message' should be 'N/A'.</li>
-    </ol>
-  </body>
+<head>
+<meta charset='utf-8'>
+<title>Presentation Test: displayAvailable - false</title>
+<link rel="author" title="Intel" href="http://www.intel.com">
+<link rel="help" href="http://webscreens.github.io/presentation-api/">
+<meta name="assert" content="Test checks that the attribute displayAvailable of presentation value can be false.">
+<script src="support/support.js"></script>
+</head>
+<body>
+  <p class="precondition">
+    <strong>Turn off 'Simulate Secondary Display' by 'Setting' app.</strong>
+  </p>
+  <p>Test passes if the value of 'Display Availability' should be 'false'.</p>
+  <div>
+    <h3 id="available">Display Availability: N/A</h3>
+  </div>
+  
+  <script>
+    window.onload = init;
+  </script>
+</body>
 </html>

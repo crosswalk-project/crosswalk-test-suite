@@ -31,24 +31,39 @@ Authors:
 -->
 
 <html>
-  <head>
-    <meta charset='utf-8'>
-    <title>Presentation Test: Presentation_secondary_page_video</title>
-    <link rel="author" title="Intel" href="http://www.intel.com">
-    <link rel="help" href="http://webscreens.github.io/presentation-api/">
-  </head>
-  <body>
-    <p>
-      <strong>Test steps:</strong>
-    </p>
-    <ol>
-      <li>Launch 'Presentation_secondary_page_video' app on Android device.</li>
-    </ol>
-    <p>
-      <strong>Expected Output:</strong>
-    </p>
-    <ol>
-      <li>After step 1: Tests page dispaly, test passes if all operations in 'Presentation_secondary_page_video' app passed.</li>
-    </ol>
-  </body>
+<head>
+<meta charset='utf-8'>
+<title>Presentation Test: Presentation lifecycle with simulate close</title>
+<link rel="author" title="Intel" href="http://www.intel.com">
+<link rel="help" href="http://webscreens.github.io/presentation-api/">
+<meta name="assert" content="Test checks that the presentation lifecycle, when simulate secondary display close.">
+<script src="support/support.js"></script>
+</head>
+<body>
+  <p class="precondition">
+    <strong>Turn off 'Simulate Secondary Display' by 'Setting' app.</strong>
+  </p>
+  <ol class="instructions">
+    <li>Click 'Request Show Presentation' button and then check if the 'Display Available' should be 'false'.</li>
+    <li>Press Home button on the device; Go to Settings, turn on 'Simulate Secondary Display'</li>
+    <li>Re-open the page and check if the 'Display Available' should be 'true'.</li>
+    <li>If the above steps are all true the test case pass, otherwise it fail</li>
+  </ol>
+  <div>
+    <h3 id="available">Display Availability: N/A</h3>
+  </div>
+  <div>
+    <h2 id="result">Result: N/A</h2>
+  </div>
+  <div>
+    <h3 id="message">Received message: N/A</h3>
+  </div>
+  <div >
+    <input class="button" type="button" value="Request Show Presentation" onclick="requestShow();"></input>
+  </div>
+  
+  <script>
+    window.onload = init;
+  </script>
+</body>
 </html>
