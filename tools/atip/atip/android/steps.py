@@ -103,6 +103,47 @@ def select_relative_any_object(context, class_target, relative, class_name, view
     assert context.android.selectRelativeObjectBy(ob, relative, class_target).exists
 
 
+@step(u'I should not see text "{text_name}"')
+def select_text_object(context, text_name):
+    assert not context.android.selectTvObjectBy(text_name).exists
+
+
+@step(u'I should not see image "{image_name}"')
+def select_image_object(context, image_name):
+    assert not context.android.selectImageViewObjectBy(image_name).exists
+
+
+@step(u'I should not see web "{web_desc}"')
+def select_web_object(context, web_desc):
+    assert not context.android.selectWebObjectBy(web_desc).exists
+
+
+@step(u'I should not see view "{view_desc}"')
+def select_view_object(context, view_desc):
+    assert not context.android.selectViewObjectBy(view_desc).exists
+
+
+@step(u'I should not see class "{class_name}" on the "{relative}" side of text "{text_name}"')
+def select_relative_text_object(context, class_name, relative, text_name):
+    ob = context.android.selectTvObjectBy(text_name)
+    assert not ob.exists
+    assert not context.android.selectRelativeObjectBy(ob, relative, class_name).exists
+
+
+@step(u'I should not see class "{class_name}" on the "{relative}" side of view "{view_desc}"')
+def select_relative_view_object(context, class_name, relative, view_desc):
+    ob = context.android.selectViewObjectBy(view_desc)
+    assert not ob.exists
+    assert not context.android.selectRelativeObjectBy(ob, relative, class_name).exists
+
+
+@step(u'I should not see class "{class_target}" on the "{relative}" side of any "{class_name}" "{value_name}"')
+def select_relative_any_object(context, class_target, relative, class_name, view_desc):
+    ob = context.android.selectAnyObjectBy(value_name, class_name)
+    assert not ob.exists
+    assert not context.android.selectRelativeObjectBy(ob, relative, class_target).exists
+
+
 @step(u'I click button "{button_name}"')
 def click_button_object(context, button_name):
     ob = context.android.selectBtnObjectBy(button_name)
@@ -117,7 +158,7 @@ def click_button_object(context, button_name):
 @step(u'I click other "{class_name}" by "{which_key}" "{which_value}"')
 def click_other_view(context, class_name, which_key, which_value):
     ob = context.android.selcetObjectBy(which_key, which_value, class_name)
-    assert ob.exists
+    assert context.android.waitObjectShow(ob)
     assert context.android.clickObject(ob)
 
 
