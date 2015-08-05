@@ -33,13 +33,13 @@
       </testcase>
     </set>
     <set name="connectsrccrossoriginmultixmlhttprequestblockedint" type="wrt">
-      <testcase component="Crosswalk WRT/CSP" execution_type="auto" id="connectsrccrossoriginmultixmlhttprequestblockedint" priority="P1" purpose="Check if user agent is unable to open not-allowed external resource by xhr when connect-src is multi cross-origin." status="approved" type="compliance">
+      <testcase component="Crosswalk WRT/CSP" execution_type="auto" id="connectsrccrossoriginmultixmlhttprequestblockedint" priority="P1" purpose="Check if user agent is unable to open not-allowed local script resource by xhr when connect-src is multi cross-origin." status="approved" type="compliance">
         <description>
           <pre_condition/>
           <post_condition/>
           <steps>
             <step order="1">
-              <step_desc>Check if user agent is unable to open not-allowed external resource by xhr when connect-src is multi cross-origin.</step_desc>
+              <step_desc>Check if user agent is unable to open not-allowed local script resource by xhr when connect-src is multi cross-origin.</step_desc>
               <expected>PASS</expected>
             </step>
           </steps>
@@ -108,13 +108,13 @@
       </testcase>
     </set>
     <set name="connectsrcselfxmlhttprequestallowed" type="wrt">
-      <testcase component="Crosswalk WRT/CSP" execution_type="auto" id="connectsrcselfxmlhttprequestallowed" priority="P1" purpose="Check if user agent is able to open internal resource by xhr when connect-src is 'self'." status="approved" type="compliance">
+      <testcase component="Crosswalk WRT/CSP" execution_type="auto" id="connectsrcselfxmlhttprequestallowed" priority="P1" purpose="Check if user agent is able to open local resource by xhr when connect-src is 'self'." status="approved" type="compliance">
         <description>
           <pre_condition/>
           <post_condition/>
           <steps>
             <step order="1">
-              <step_desc>Check if user agent is able to open internal resource by xhr when connect-src is 'self'.</step_desc>
+              <step_desc>Check if user agent is able to open local resource by xhr when connect-src is 'self'.</step_desc>
               <expected>PASS</expected>
             </step>
           </steps>
@@ -123,13 +123,13 @@
       </testcase>
     </set>
     <set name="connectsrcselfxmlhttprequestblocked" type="wrt">
-      <testcase component="Crosswalk WRT/CSP" execution_type="auto" id="connectsrcselfxmlhttprequestblocked" priority="P1" purpose="Check if user agent is able to open internal resource by xhr when connect-src is 'self'." status="approved" type="compliance">
+      <testcase component="Crosswalk WRT/CSP" execution_type="auto" id="connectsrcselfxmlhttprequestblocked" priority="P1" purpose="Check if user agent is not able to open external resource by xhr when connect-src is 'self'." status="approved" type="compliance">
         <description>
           <pre_condition/>
           <post_condition/>
           <steps>
             <step order="1">
-              <step_desc>Check if user agent is able to open internal resource by xhr when connect-src is 'self'.</step_desc>
+              <step_desc>Check if user agent is not able to open external resource by xhr when connect-src is 'self'.</step_desc>
               <expected>PASS</expected>
             </step>
           </steps>
