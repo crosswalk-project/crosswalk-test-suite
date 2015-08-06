@@ -1,0 +1,11 @@
+var step = '<font class="fontSize">'
+            +'<p>Purpose:</p>'
+            +'<p>Verify the Cordova app pkg name can be renamed when build this app</p>'
+            +'<p>Expected Results:</p>'
+            +'<ol>'
+            +'<li>The app package name is "com.test.renamePkg"</li>'
+            +'<li>The app can be installed successfully</li>'
+            +'<li>The app can launch and run successfully</li>'
+            +'<li>The app can exit successfully</li>'
+            +'</ol>'
+          +'</font>';

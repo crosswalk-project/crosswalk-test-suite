@@ -53,7 +53,7 @@ sys.setdefaultencoding('utf8')
 TOOL_VERSION = "v0.1"
 VERSION_FILE = "VERSION"
 DEFAULT_CMD_TIMEOUT = 600
-PKG_NAMES = ["gallery", "helloworld", "remotedebugging", "mobilespec", "CIRC", "Eh", "statusbar"]
+PKG_NAMES = ["gallery", "helloworld", "remotedebugging", "mobilespec", "CIRC", "Eh", "statusbar", "renamePkg"]
 CORDOVA_VERSIONS = ["3.6", "4.0"]
 PKG_MODES = ["shared", "embedded"]
 PKG_ARCHS = ["x86", "arm"]
@@ -461,6 +461,7 @@ def packSampleApp(app_name=None):
         if not doCMD(status_plugman_cmd, DEFAULT_CMD_TIMEOUT):
             os.chdir(orig_dir)
             return False
+
 
     if BUILD_PARAMETERS.cordovaversion == "4.0":
         if BUILD_PARAMETERS.pkgarch == "x86":
@@ -990,6 +991,13 @@ def packSampleApp_cli(app_name=None):
         else:
             plugin_install_cmd = "cordova plugin add %s" % i_plugin_dir
         if not doCMD(plugin_install_cmd, DEFAULT_CMD_TIMEOUT):
+            os.chdir(orig_dir)
+            return False
+
+    if checkContains(app_name, "renamePkg"):
+        if not replaceKey(os.path.join(project_root, "config.xml"),
+                          "id=\"com.test.renamePkg\"",
+                          "id=\"com.example.renamePkg\""):
             os.chdir(orig_dir)
             return False
 
