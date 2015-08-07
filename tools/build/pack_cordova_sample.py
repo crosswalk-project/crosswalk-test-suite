@@ -1076,6 +1076,9 @@ def packAPP(app_name=None):
             if not packSampleApp_cli(app_name):
                 return False
         else:
+            if checkContains(app_name, "renamePkg"):
+                LOG.error("%s is only for cordova 4.0" % app_name)
+                return False
             if not packSampleApp(app_name):
                 return False
 
