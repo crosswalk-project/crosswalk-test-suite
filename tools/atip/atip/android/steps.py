@@ -82,25 +82,44 @@ def select_view_object(context, view_desc):
     assert context.android.selectViewObjectBy(view_desc).exists
 
 
+@step(u'I should see any "{class_name}" "{value_name}"')
+def select_any_object(context, class_name, value_name):
+    assert context.android.selectAnyObjectBy(value_name, class_name).exists
+
+
 @step(u'I should see class "{class_name}" on the "{relative}" side of text "{text_name}"')
 def select_relative_text_object(context, class_name, relative, text_name):
     ob = context.android.selectTvObjectBy(text_name)
     assert ob.exists
-    assert context.android.selectRelativeObjectBy(ob, relative, class_name).exists
+    assert context.android.getRelativeObjectBy(ob, relative, class_name).exists
+
+
+@step(u'I should see "{class_name}" "{value_target}" on the "{relative}" side of text "{text_name}"')
+def select_relative_text_object(context, class_name, value_target, relative, text_name):
+    ob = context.android.selectTvObjectBy(text_name)
+    assert ob.exists
+    assert context.android.getRelativeObjectBy(ob, relative, class_name, value_target).exists
 
 
 @step(u'I should see class "{class_name}" on the "{relative}" side of view "{view_desc}"')
 def select_relative_view_object(context, class_name, relative, view_desc):
     ob = context.android.selectViewObjectBy(view_desc)
     assert ob.exists
-    assert context.android.selectRelativeObjectBy(ob, relative, class_name).exists
+    assert context.android.getRelativeObjectBy(ob, relative, class_name).exists
 
 
 @step(u'I should see class "{class_target}" on the "{relative}" side of any "{class_name}" "{value_name}"')
-def select_relative_any_object(context, class_target, relative, class_name, view_desc):
+def select_relative_any_object(context, class_target, relative, class_name, value_name):
     ob = context.android.selectAnyObjectBy(value_name, class_name)
     assert ob.exists
-    assert context.android.selectRelativeObjectBy(ob, relative, class_target).exists
+    assert context.android.getRelativeObjectBy(ob, relative, class_target).exists
+
+
+@step(u'I should see "{class_target}" "{value_target}" on the "{relative}" side of any "{class_name}" "{value_name}"')
+def select_relative_more_object(context, class_target, value_target, relative, class_name, value_name):
+    ob = context.android.selectAnyObjectBy(value_name, class_name)
+    assert ob.exists
+    assert context.android.getRelativeObjectBy(ob, relative, class_target, value_target).exists
 
 
 @step(u'I should not see text "{text_name}"')
@@ -123,25 +142,44 @@ def select_view_object(context, view_desc):
     assert not context.android.selectViewObjectBy(view_desc).exists
 
 
+@step(u'I should not see any "{class_name}" "{value_name}"')
+def select_any_object(context, class_name, value_name):
+    assert not context.android.selectAnyObjectBy(value_name, class_name).exists
+
+
 @step(u'I should not see class "{class_name}" on the "{relative}" side of text "{text_name}"')
 def select_relative_text_object(context, class_name, relative, text_name):
     ob = context.android.selectTvObjectBy(text_name)
     assert not ob.exists
-    assert not context.android.selectRelativeObjectBy(ob, relative, class_name).exists
+    assert not context.android.getRelativeObjectBy(ob, relative, class_name).exists
+
+
+@step(u'I should not see "{class_name}" "{value_target}" on the "{relative}" side of text "{text_name}"')
+def select_relative_text_object(context, class_name, value_target, relative, text_name):
+    ob = context.android.selectTvObjectBy(text_name)
+    assert not ob.exists
+    assert not context.android.getRelativeObjectBy(ob, relative, class_name, value_target).exists
 
 
 @step(u'I should not see class "{class_name}" on the "{relative}" side of view "{view_desc}"')
 def select_relative_view_object(context, class_name, relative, view_desc):
     ob = context.android.selectViewObjectBy(view_desc)
     assert not ob.exists
-    assert not context.android.selectRelativeObjectBy(ob, relative, class_name).exists
+    assert not context.android.getRelativeObjectBy(ob, relative, class_name).exists
 
 
 @step(u'I should not see class "{class_target}" on the "{relative}" side of any "{class_name}" "{value_name}"')
-def select_relative_any_object(context, class_target, relative, class_name, view_desc):
+def select_relative_any_object(context, class_target, relative, class_name, value_name):
     ob = context.android.selectAnyObjectBy(value_name, class_name)
     assert not ob.exists
-    assert not context.android.selectRelativeObjectBy(ob, relative, class_target).exists
+    assert not context.android.getRelativeObjectBy(ob, relative, class_target).exists
+
+
+@step(u'I should not see "{class_target}" "{value_target}" on the "{relative}" side of any "{class_name}" "{value_name}"')
+def select_relative_more_object(context, class_target, value_target, relative, class_name, value_name):
+    ob = context.android.selectAnyObjectBy(value_name, class_name)
+    assert not ob.exists
+    assert not context.android.getRelativeObjectBy(ob, relative, class_target, value_target).exists
 
 
 @step(u'I click button "{button_name}"')
@@ -228,7 +266,16 @@ def save_any_info_temp(context, class_name, value_name, key):
 def save_relative_text_object(context, class_name, relative, text_name, key):
     ob = context.android.selectTvObjectBy(text_name)
     assert ob.exists
-    relative_ob = context.android.selectRelativeObjectBy(ob, relative, class_name)
+    relative_ob = context.android.getRelativeObjectBy(ob, relative, class_name)
+    assert relative_ob.exists
+    assert context.android.save2InfoTemp(relative_ob, key)
+
+
+@step(u'I save2 "{class_name}" "{value_target}" on the "{relative}" side of text "{text_name}" to temporary value "{key}"')
+def save_relative_text_object(context, class_name, value_target, relative, text_name, key):
+    ob = context.android.selectTvObjectBy(text_name)
+    assert ob.exists
+    relative_ob = context.android.getRelativeObjectBy(ob, relative, class_name, value_target)
     assert relative_ob.exists
     assert context.android.save2InfoTemp(relative_ob, key)
 
@@ -237,7 +284,7 @@ def save_relative_text_object(context, class_name, relative, text_name, key):
 def save_relative_view_object(context, class_name, relative, view_desc, key):
     ob = context.android.selectViewObjectBy(view_desc)
     assert ob.exists
-    relative_ob = context.android.selectRelativeObjectBy(ob, relative, class_name)
+    relative_ob = context.android.getRelativeObjectBy(ob, relative, class_name)
     assert relative_ob.exists
     assert context.android.save2InfoTemp(relative_ob, key)
 
@@ -246,7 +293,16 @@ def save_relative_view_object(context, class_name, relative, view_desc, key):
 def save_relative_any_object(context, class_target, relative, class_name, value_name, key):
     ob = context.android.selectAnyObjectBy(value_name, class_name)
     assert ob.exists
-    relative_ob = context.android.selectRelativeObjectBy(ob, relative, class_target)
+    relative_ob = context.android.getRelativeObjectBy(ob, relative, class_target)
+    assert relative_ob.exists
+    assert context.android.save2InfoTemp(relative_ob, key)
+
+
+@step(u'I save2 "{class_target}" "{value_target}" on the "{relative}" side of any "{class_name}" "{value_name}" to temporary value "{key}"')
+def save_relative_more_object(context, class_target, value_target, relative, class_name, value_name, key):
+    ob = context.android.selectAnyObjectBy(value_name, class_name)
+    assert ob.exists
+    relative_ob = context.android.getRelativeObjectBy(ob, relative, class_target, value_target)
     assert relative_ob.exists
     assert context.android.save2InfoTemp(relative_ob, key)
 
@@ -340,7 +396,23 @@ def process_relative_text_object(context, class_name="", relative="", text_name=
     def save_process():
         ob = context.android.selectTvObjectBy(text_name)
         assert ob.exists
-        relative_ob = context.android.selectRelativeObjectBy(ob, relative, class_name)
+        relative_ob = context.android.getRelativeObjectBy(ob, relative, class_name)
+        assert relative_ob.exists
+        return relative_ob
+    return save_process
+
+
+@step(u'I process2 "{class_name}" "{value_target}" on the "{relative}" side of text "{text_name}"')
+def process_relative_text_object2(context, class_name="", value_target="", relative="", text_name=""):
+    context.android.process_args['func_name'] = process_relative_text_object2
+    if class_name and value_target and relative and text_name:
+        context.android.process_args["func_args"] = [class_name, value_target, relative, text_name]
+    else:
+        class_name, value_target, relative, text_name = context.android.process_args["func_args"]
+    def save_process():
+        ob = context.android.selectTvObjectBy(text_name)
+        assert ob.exists
+        relative_ob = context.android.getRelativeObjectBy(ob, relative, class_name, value_target)
         assert relative_ob.exists
         return relative_ob
     return save_process
@@ -356,7 +428,7 @@ def process_relative_view_object(context, class_name="", relative="", view_desc=
     def save_process():
         ob = context.android.selectViewObjectBy(view_desc)
         assert ob.exists
-        relative_ob = context.android.selectRelativeObjectBy(ob, relative, class_name)
+        relative_ob = context.android.getRelativeObjectBy(ob, relative, class_name)
         assert relative_ob.exists
         return relative_ob
     return save_process
@@ -372,7 +444,23 @@ def process_relative_any_object(context, class_target="", relative="", class_nam
     def save_process():
         ob = context.android.selectAnyObjectBy(value_name, class_name)
         assert ob.exists
-        relative_ob = context.android.selectRelativeObjectBy(ob, relative, class_target)
+        relative_ob = context.android.getRelativeObjectBy(ob, relative, class_target)
+        assert relative_ob.exists
+        return relative_ob
+    return save_process
+
+
+@step(u'I process2 "{class_target}" "{value_target}" on the "{relative}" side of any "{class_name}" "{value_name}"')
+def process_relative_more_object(context, class_target="", value_target="", relative="", class_name="", value_name=""):
+    context.android.process_args['func_name'] = process_relative_more_object
+    if class_target and value_target and relative and class_name and value_name:
+        context.android.process_args["func_args"] = [class_target, value_target, relative, class_name, value_name]
+    else:
+        class_target, value_target, relative, class_name, value_name = context.android.process_args["func_args"]
+    def save_process():
+        ob = context.android.selectAnyObjectBy(value_name, class_name)
+        assert ob.exists
+        relative_ob = context.android.getRelativeObjectBy(ob, relative, class_target, value_target)
         assert relative_ob.exists
         return relative_ob
     return save_process

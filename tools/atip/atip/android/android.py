@@ -33,9 +33,9 @@ from atip.common import common
 from uiautomator import *
 reload(sys)
 sys.setdefaultencoding('utf-8')
-DEFAULT_PARAMETER_KEYS = ["text", "textContains", "description", "descriptionContains"
+DEFAULT_PARAMETER_KEYS = ["text", "textContains", "description", "descriptionContains",
                 "resourceId", "resourceIdMatches"]
-OBJECT_INFO_KEYS = ["contentDescription", "checked", "scrollable", "text", "packageName"
+OBJECT_INFO_KEYS = ["contentDescription", "checked", "scrollable", "text", "packageName",
                 "selected", "enabled", "className"]
 
 class Android(common.APP):
@@ -418,16 +418,28 @@ class Android(common.APP):
         return False
 
 
-    def selectRelativeObjectBy(self, ob, direction, class_name):
+    def selectRelativeObjectBy(self, ob, direction, **kw):
+        if direction == "left":
+            return ob.left(**kw)
+        elif direction == "right":
+            return ob.right(**kw)
+        elif direction == "up":
+            return ob.up(**kw)
+        elif direction == "down":
+            return ob.down(**kw)
+
+
+    def getRelativeObjectBy(self, ob, direction, class_name, value_name=None):
         if ob.exists:
-            if direction == "left":
-                return ob.left(className=class_name)
-            elif direction == "right":
-                return ob.right(className=class_name)
-            elif direction == "up":
-                return ob.up(className=class_name)
-            elif direction == "down":
-                return ob.down(className=class_name)
+            if value_name == None:
+                return self.selectRelativeObjectBy(ob, direction, className=class_name)
+            for key in DEFAULT_PARAMETER_KEYS:
+                param_kw = {}
+                param_kw.update({'className': class_name})
+                param_kw.update({key: value_name})
+                relative_ob = self.selectRelativeObjectBy(ob, direction, **param_kw)
+                if relative_ob and relative_ob.exists:
+                    return relative_ob
         return self.AutomatorDeviceObject
 
 
