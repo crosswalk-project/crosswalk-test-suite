@@ -53,7 +53,7 @@ class TestCrosswalkApptoolsFunctions(unittest.TestCase):
                 break
         comm.clear("org.xwalk.test")
         self.assertEquals(buildstatus, 0)
-        self.assertEquals(data['crosswalk_app_version'].strip("\n\t"), versionName_xml)
+        self.assertEquals(data['xwalk_app_version'].strip("\n\t"), versionName_xml)
 
     def test_update_app_version(self):
         comm.setUp()
@@ -63,7 +63,7 @@ class TestCrosswalkApptoolsFunctions(unittest.TestCase):
         jsons = jsonfile.read()
         jsonfile.close()
         jsonDict = json.loads(jsons)
-        jsonDict["crosswalk_app_version"] = "0.1"
+        jsonDict["xwalk_app_version"] = "0.1"
         json.dump(jsonDict, open(comm.ConstPath + "/../tools/org.xwalk.test/app/manifest.json", "w"))
         with open(comm.ConstPath + "/../tools/org.xwalk.test/app/manifest.json") as json_file:
             data = json.load(json_file)
@@ -76,9 +76,9 @@ class TestCrosswalkApptoolsFunctions(unittest.TestCase):
                 versionName_xml = attributes[x]
                 break
         comm.clear("org.xwalk.test")
-        self.assertEquals(data['crosswalk_app_version'].strip("\n\t"), "0.1")
+        self.assertEquals(data['xwalk_app_version'].strip("\n\t"), "0.1")
         self.assertEquals(buildstatus, 0)
-        self.assertEquals(data['crosswalk_app_version'].strip("\n\t"), versionName_xml)
+        self.assertEquals(data['xwalk_app_version'].strip("\n\t"), versionName_xml)
 
 if __name__ == '__main__':
     unittest.main()
