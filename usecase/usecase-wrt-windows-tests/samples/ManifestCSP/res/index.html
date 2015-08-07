@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<!--
+Copyright (c) 2013 Intel Corporation.
+
+Redistribution and use in source and binary forms, with or without modification,
+are permitted provided that the following conditions are met:
+
+* Redistributions of works must retain the original copyright notice, this list
+  of conditions and the following disclaimer.
+* Redistributions in binary form must reproduce the original copyright notice,
+  this list of conditions and the following disclaimer in the documentation
+  and/or other materials provided with the distribution.
+* Neither the name of Intel Corporation nor the names of its contributors
+  may be used to endorse or promote products derived from this work without
+  specific prior written permission.
+
+THIS SOFTWARE IS PROVIDED BY INTEL CORPORATION "AS IS"
+AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE
+IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE
+ARE DISCLAIMED. IN NO EVENT SHALL INTEL CORPORATION BE LIABLE FOR ANY DIRECT,
+INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING,
+BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE,
+DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY
+OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING
+NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE,
+EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
+
+Authors:
+        Xu,Yuhan <yuhanx.xu@intel.com>
+        Wang, Hongjuan <hongjuanx.wang@intel.com>s
+
+-->
+
+<meta charset="utf-8">
+<title>manifest_csp_tests</title>
+<link rel="author" title="Intel" href="http://www.intel.com">
+<link rel="help" href="http://w3c.github.io/webappsec/specs/content-security-policy/csp-specification.dev.html">
+<script src="resources/js/jquery.js"></script>
+<script src="resources/js/script_local.js"></script>
+<script src="http://127.0.0.1:8081/opt/ManifestCSP/res/resources/js/script_online.js"></script>
+<style>
+  .script_css {
+    color: green
+  }
+  @font-face {
+    font-family: Canvas;
+    src: url("resources/font/w3c/CanvasTest.ttf");
+  }
+
+  #font_local {
+    font-family: Canvas;
+  }
+
+  @font-face {
+    font-family: Canvas1;
+    src: url("http://127.0.0.1:8081/opt/ManifestCSP/res/resources/font/w3c/CanvasTest.ttf");
+  }
+
+  #font_online {
+    font-family: Canvas1;
+  }
+  .word {
+    position: absolute;
+  }
+</style>
+<body>
+  <h4>This sample demonstrates CSP feature basic functionalities:</h4>
+  <hr/>
+  <div>
+    <p>Demonstrate "connect-src" directive, set to "http://w3school.com.cn"</p>
+    <p>It allow to load content from "http://w3school.com.cn" access permitted and other content access denied</p>
+  </div>
+  <div>
+    <div><input type="text" style="margin-top: 5px;width: 50%" id="txtconnect"/></div>
+    <div id="connect_result"></div>
+    <div><button id="connect"onclick="connectUrl();">Connect</button></div>
+  </div>
+  <script>
+    function connectUrl () {
+      var xhr = new XMLHttpRequest();
+      try {
+        xhr.open("GET", $("#txtconnect").val());
+        $("#connect_result").html("access permitted");
+      } catch(e) {
+        $("#connect_result").html("access denied");
+      }
+    }
+  </script>
+  <hr/>
+  <div>
+    <p>Demonstrate "style-src" directive, set to "unsafe-inline"</p>
+    <p>The CSP restriction allow to load style in same orgin (show green color) and deny cross orgin's (no color effect)</p>
+  </div>
+  <p style="color:green">This line apply style css file in same orgin</p>
+  <p class="http://www.w3school.com.cn/html/csstest1.css">This line apply style css file in different orgin</p>
+  <hr/>
+  <div>
+    <p>Demonstrate "script-src" directive, set to "'self''unsafe-inline'"</p>
+    <p>The CSP restriction allow to load script in same orgin (show green color) and deny cross orgin's (no color effect)</p>
+    <p><span id="script_local">This line apply script file in same orgin</span></p>
+    <p><span id="script_online">This line apply script file in different orgin</span></p>
+  </div>
+  <hr/>
+  <div>
+    <p>Demonstrate "font-src" directive, set to "self"</p>
+    <p>The CSP restriction deny to load font in same orgin (show larger spacing between words with 'Canvas' font) and cross orgin's (no font effect)</p>
+    <p><span id="font_local">This line apply font file in same orgin</span></p>
+    <p><span id="font_online">This line apply font file in different orgin</span></p>
+  </div>
+  <hr/>
+  <div>
+    <p>Demonstrate "img-src" directive, set to "self"</p>
+    <p>The CSP restriction allow to load image in same orgin (load scuessfully) and deny cross orgin's (load failed)</p>
+    <span>Loading image in same orgin</span>
+    <div>
+      <img src="resources/image/w3c/cat.png" />
+    </div>
+    <span>Loading image in different orgin</span>
+    <div style="width: 150px; height: 150px;">
+      <img src="http://127.0.0.1:8081/opt/ManifestCSP/res/resources/image/w3c/cat.png"/>
+    </div>
+  </div>
+  <hr/>
+  <div>
+    <p>Demonstrate "media-src" directive, set to "*"</p>
+    <p>The CSP restriction allow to load media in same orgin and cross orgin's (play normally in two videos)</p>
+    <span>Loading video in different orgin</span>
+    <div>
+      <video src="http://127.0.0.1:8081/opt/ManifestCSP/res/resources/media/meego/MP4_h264_CIF_15FPS_387Kbps_MP3_44.1KHz_64Kbps_60sec(3.4Mb)_BBB(hinted).mp4" width="200" controls="controls"></video>
+    </div>
+    <span>Loading video in same orgin</span>
+    <div>
+      <video src="resources/media/meego/MP4_h264_CIF_15FPS_387Kbps_MP3_44.1KHz_64Kbps_60sec(3.4Mb)_BBB(hinted).mp4" width="200" controls="controls"></video>
+    </div>
+  </div>
+  <hr/>
+  <div>
+    <p>Demonstrate "frame-src" directive, set to "http://w3school.com.cn"</p>
+    <p>The CSP restriction allow cross orgin's (show a purple suqare) and deny to load iframe in same orgin (show blank)</p>
+  </div>
+  <span>Loading iframe in different orgin</span>
+  <div>
+    <iframe src="http://w3school.com.cn/example/html/frame_a.html"></iframe>
+  </div>
+  <span>Loading iframe in same orgin</span>
+  <div>
+    <iframe src="resources/image/green-100x100.png"></iframe>
+  </div>
+</body>
