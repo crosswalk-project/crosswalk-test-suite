@@ -148,6 +148,10 @@ def should_see_text_element(context, text, key):
     assert context.web.check_normal_text_element_timeout(
         text, key), u'Text was not found'
 
+@step(u'I should see title "{text}" in {timeout:d} seconds')
+def should_see_title_timeout(context, text, timeout):
+    assert context.web.check_normal_title_timeout(
+        text, timeout=timeout), u'Title not found'
 
 @step(u'I should not see "{text}" in "{key}" area')
 def should_not_see_text_element(context, text, key):
