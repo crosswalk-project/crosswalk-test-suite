@@ -393,6 +393,14 @@ class WebAPP(common.APP):
             time.sleep(0.2)
         return False
 
+    def check_normal_title_timeout(self, text=None, display=True, timeout=2):
+        end_time = time.time() + timeout
+        while time.time() < end_time:
+            if self.title() == text:
+                return True
+            time.sleep(0.2)
+        return False
+
     def check_normal_text_element_timeout(
             self, text=None, key=None, display=True, timeout=2):
         end_time = time.time() + timeout
