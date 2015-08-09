@@ -33,22 +33,27 @@ Authors:
 <html>
   <head>
     <meta charset='utf-8'>
-    <title>Crosswalk_FilePicker</title>
+    <title>Crosswalk_LocalStorage_upgrade</title>
     <link rel="author" title="Intel" href="http://www.intel.com">
-    <script src="resources/jquery-2.1.3.min.js"></script>
-    <script src="resources/fullscreen.js"></script>
-    <style>
-      button {
-        margin: 0px auto;
-        width: 280px;
-        height: 30px;
-        border: 1px solid black;
-        font-size: 20px;
-      }
-    </style>
   </head>
   <body>
-    <button id="requestFullScreen">FullScreen</button>
-    <button id="cancelFullScreen">Cancel FullScreen</button> 
+    <p>
+      <strong>Test steps:</strong>
+    </p>
+    <ol>
+      <li>Use command "adb install localstorage.apk" to install localstorage.apk and open LocalStorage app on device.</li>
+      <li>Input text in "localStorage" area, click button "Add Storage"</li>
+      <li>Input key which needs removed in "localStorage" area, click button "Remove Storage"</li>
+      <li>Use command "adb install -r localstorage_upgrade.apk" to upgrade LocalStorage app.</li>
+      <li>Repeat step 2 and step3.</li>
+    </ol>
+    <p>
+      <strong>Expected Output:</strong>
+    </p>
+    <ol>
+      <li>Stored data should be displayed in "Message" area after clicking button "Add Storage".</li>
+      <li>Left data should be displayed in "Message" area after clicking button "Remove Storage".</li>
+      <li>LocalStorage data is persistent after upgrading app.</li>
+    </ol>
   </body>
 </html>
