@@ -3,9 +3,9 @@
 <test_definition>
   <suite category="W3C/HTML5 APIs" name="tct-webstorage-w3c-tests">
     <set name="WebStorage" type="js">
-      <testcase purpose="sessionStorage mutations fire StorageEvents that are caught by the event listener set via window.onstorage" type="compliance" status="approved" component="W3C_HTML5 APIs/Storage/Web Storage" execution_type="auto" priority="P2" id="event_basic_entry1">
+      <testcase purpose="StorageEvent basic Test" type="compliance" status="approved" component="W3C_HTML5 APIs/Storage/Web Storage" execution_type="auto" priority="P2" id="event_basic" subcase="2">
         <description>
-          <test_script_entry>/opt/tct-webstorage-w3c-tests/webstorage/w3c/event_basic.html?total_num=2&amp;amp;locator_key=id&amp;amp;value=1</test_script_entry>
+          <test_script_entry>/opt/tct-webstorage-w3c-tests/webstorage/w3c/event_basic.html</test_script_entry>
         </description>
         <specs>
           <spec>
@@ -15,21 +15,9 @@
           </spec>
         </specs>
       </testcase>
-      <testcase purpose="localStorage mutations fire StorageEvents that are caught by the event listener set via window.onstorage" type="compliance" status="approved" component="W3C_HTML5 APIs/Storage/Web Storage" execution_type="auto" priority="P2" id="event_basic_entry2">
+      <testcase purpose="set onstorage as body attribute Test" type="compliance" status="approved" component="W3C_HTML5 APIs/Storage/Web Storage" execution_type="auto" priority="P2" id="event_body_attribute" subcase="2">
         <description>
-          <test_script_entry>/opt/tct-webstorage-w3c-tests/webstorage/w3c/event_basic.html?total_num=2&amp;amp;locator_key=id&amp;amp;value=2</test_script_entry>
-        </description>
-        <specs>
-          <spec>
-            <spec_assertion element_type="attribute" element_name="StorageEvent" interface="StorageEvent" specification="Web Storage (Partial)" section="Storage" category="Tizen W3C API Specifications"/>
-            <spec_url>https://w3c.github.io/webstorage/#storageevent</spec_url>
-            <spec_statement/>
-          </spec>
-        </specs>
-      </testcase>
-      <testcase purpose="sessionStorage mutations fire StorageEvents that are caught by the event listener specified as an attribute on the body" type="compliance" status="approved" component="W3C_HTML5 APIs/Storage/Web Storage" execution_type="auto" priority="P2" id="event_body_attribute_entry1">
-        <description>
-          <test_script_entry>/opt/tct-webstorage-w3c-tests/webstorage/w3c/event_body_attribute.html?total_num=2&amp;amp;locator_key=id&amp;amp;value=1</test_script_entry>
+          <test_script_entry>/opt/tct-webstorage-w3c-tests/webstorage/w3c/event_body_attribute.html</test_script_entry>
         </description>
         <specs>
           <spec>
@@ -39,21 +27,9 @@
           </spec>
         </specs>
       </testcase>
-      <testcase purpose="localStorage mutations fire StorageEvents that are caught by the event listener specified as an attribute on the body" type="compliance" status="approved" component="W3C_HTML5 APIs/Storage/Web Storage" execution_type="auto" priority="P2" id="event_body_attribute_entry2">
+      <testcase purpose="StorageEvent case sensitive Test" type="compliance" status="approved" component="W3C_HTML5 APIs/Storage/Web Storage" execution_type="auto" priority="P2" id="event_case_sensitive" subcase="2">
         <description>
-          <test_script_entry>/opt/tct-webstorage-w3c-tests/webstorage/w3c/event_body_attribute.html?total_num=2&amp;amp;locator_key=id&amp;amp;value=2</test_script_entry>
-        </description>
-        <specs>
-          <spec>
-            <spec_assertion element_type="attribute" element_name="onstorage" interface="StorageEvent" specification="Web Storage (Partial)" section="Storage" category="Tizen W3C API Specifications"/>
-            <spec_url>https://w3c.github.io/webstorage/#storageevent</spec_url>
-            <spec_statement/>
-          </spec>
-        </specs>
-      </testcase>
-      <testcase purpose="sessionStorage storage events fire even when only the case of the value changes" type="compliance" status="approved" component="W3C_HTML5 APIs/Storage/Web Storage" execution_type="auto" priority="P2" id="event_case_sensitive_entry1">
-        <description>
-          <test_script_entry>/opt/tct-webstorage-w3c-tests/webstorage/w3c/event_case_sensitive.html?total_num=2&amp;amp;locator_key=id&amp;amp;value=1</test_script_entry>
+          <test_script_entry>/opt/tct-webstorage-w3c-tests/webstorage/w3c/event_case_sensitive.html</test_script_entry>
         </description>
         <specs>
           <spec>
@@ -63,9 +39,9 @@
           </spec>
         </specs>
       </testcase>
-      <testcase purpose="localStorage storage events fire even when only the case of the value changes" type="compliance" status="approved" component="W3C_HTML5 APIs/Storage/Web Storage" execution_type="auto" priority="P2" id="event_case_sensitive_entry2">
+      <testcase purpose="StorageEvent constructor Test" type="compliance" status="approved" component="W3C_HTML5 APIs/Storage/Web Storage" execution_type="auto" priority="P2" id="event_constructor" subcase="2">
         <description>
-          <test_script_entry>/opt/tct-webstorage-w3c-tests/webstorage/w3c/event_case_sensitive.html?total_num=2&amp;amp;locator_key=id&amp;amp;value=2</test_script_entry>
+          <test_script_entry>/opt/tct-webstorage-w3c-tests/webstorage/w3c/event_constructor.html</test_script_entry>
         </description>
         <specs>
           <spec>
@@ -75,33 +51,9 @@
           </spec>
         </specs>
       </testcase>
-      <testcase purpose="The initial values of storage event properties" type="compliance" status="approved" component="W3C_HTML5 APIs/Storage/Web Storage" execution_type="auto" priority="P2" id="event_constructor_entry1">
+      <testcase purpose="Construct StorageEvent with StorageEventInit Test" type="compliance" status="approved" component="W3C_HTML5 APIs/Storage/Web Storage" execution_type="auto" priority="P2" id="event_constructor_eventinit" subcase="2">
         <description>
-          <test_script_entry>/opt/tct-webstorage-w3c-tests/webstorage/w3c/event_constructor.html?total_num=2&amp;amp;locator_key=id&amp;amp;value=1</test_script_entry>
-        </description>
-        <specs>
-          <spec>
-            <spec_assertion element_type="attribute" element_name="StorageEvent" interface="StorageEvent" specification="Web Storage (Partial)" section="Storage" category="Tizen W3C API Specifications"/>
-            <spec_url>https://w3c.github.io/webstorage/#storageevent</spec_url>
-            <spec_statement/>
-          </spec>
-        </specs>
-      </testcase>
-      <testcase purpose="storageeventinit test" type="compliance" status="approved" component="W3C_HTML5 APIs/Storage/Web Storage" execution_type="auto" priority="P2" id="event_constructor_entry2">
-        <description>
-          <test_script_entry>/opt/tct-webstorage-w3c-tests/webstorage/w3c/event_constructor.html?total_num=2&amp;amp;locator_key=id&amp;amp;value=2</test_script_entry>
-        </description>
-        <specs>
-          <spec>
-            <spec_assertion element_type="attribute" element_name="StorageEvent" interface="StorageEvent" specification="Web Storage (Partial)" section="Storage" category="Tizen W3C API Specifications"/>
-            <spec_url>https://w3c.github.io/webstorage/#storageevent</spec_url>
-            <spec_statement/>
-          </spec>
-        </specs>
-      </testcase>
-      <testcase purpose="Construct StorageEvent with StorageEventInit" type="compliance" status="approved" component="W3C_HTML5 APIs/Storage/Web Storage" execution_type="auto" priority="P2" id="event_constructor_eventinit_entry1">
-        <description>
-          <test_script_entry>/opt/tct-webstorage-w3c-tests/webstorage/w3c/event_constructor_eventinit.html?total_num=2&amp;amp;locator_key=id&amp;amp;value=1</test_script_entry>
+          <test_script_entry>/opt/tct-webstorage-w3c-tests/webstorage/w3c/event_constructor_eventinit.html</test_script_entry>
         </description>
         <specs>
           <spec>
@@ -111,21 +63,9 @@
           </spec>
         </specs>
       </testcase>
-      <testcase purpose="StorageEvent constructor and nulls" type="compliance" status="approved" component="W3C_HTML5 APIs/Storage/Web Storage" execution_type="auto" priority="P2" id="event_constructor_eventinit_entry2">
+      <testcase purpose="key of local storage event Test" type="compliance" status="approved" component="W3C_HTML5 APIs/Storage/Web Storage" execution_type="auto" priority="P2" id="event_local_key" subcase="2">
         <description>
-          <test_script_entry>/opt/tct-webstorage-w3c-tests/webstorage/w3c/event_constructor_eventinit.html?total_num=2&amp;amp;locator_key=id&amp;amp;value=2</test_script_entry>
-        </description>
-        <specs>
-          <spec>
-            <spec_assertion element_type="attribute" element_name="StorageEventInit" interface="StorageEvent" specification="Web Storage (Partial)" section="Storage" category="Tizen W3C API Specifications"/>
-            <spec_url>https://w3c.github.io/webstorage/#storageevent</spec_url>
-            <spec_statement/>
-          </spec>
-        </specs>
-      </testcase>
-      <testcase purpose="key property test of local event" type="compliance" status="approved" component="W3C_HTML5 APIs/Storage/Web Storage" execution_type="auto" priority="P2" id="event_local_key_entry1">
-        <description>
-          <test_script_entry>/opt/tct-webstorage-w3c-tests/webstorage/w3c/event_local_key.html?total_num=2&amp;amp;locator_key=id&amp;amp;value=1</test_script_entry>
+          <test_script_entry>/opt/tct-webstorage-w3c-tests/webstorage/w3c/event_local_key.html</test_script_entry>
         </description>
         <specs>
           <spec>
@@ -135,21 +75,9 @@
           </spec>
         </specs>
       </testcase>
-      <testcase purpose="Local event is fired due to an invocation of the setItem(), clear() methods for local key" type="compliance" status="approved" component="W3C_HTML5 APIs/Storage/Web Storage" execution_type="auto" priority="P2" id="event_local_key_entry2">
+      <testcase purpose="newvalue of local storage event Test" type="compliance" status="approved" component="W3C_HTML5 APIs/Storage/Web Storage" execution_type="auto" priority="P2" id="event_local_newvalue" subcase="2">
         <description>
-          <test_script_entry>/opt/tct-webstorage-w3c-tests/webstorage/w3c/event_local_key.html?total_num=2&amp;amp;locator_key=id&amp;amp;value=2</test_script_entry>
-        </description>
-        <specs>
-          <spec>
-            <spec_assertion element_type="method" element_name="setItem" interface="StorageEvent" specification="Web Storage (Partial)" section="Storage" category="Tizen W3C API Specifications"/>
-            <spec_url>https://w3c.github.io/webstorage/#storageevent</spec_url>
-            <spec_statement/>
-          </spec>
-        </specs>
-      </testcase>
-      <testcase purpose="newValue property test of local event" type="compliance" status="approved" component="W3C_HTML5 APIs/Storage/Web Storage" execution_type="auto" priority="P2" id="event_local_newvalue_entry1">
-        <description>
-          <test_script_entry>/opt/tct-webstorage-w3c-tests/webstorage/w3c/event_local_newvalue.html?total_num=2&amp;amp;locator_key=id&amp;amp;value=1</test_script_entry>
+          <test_script_entry>/opt/tct-webstorage-w3c-tests/webstorage/w3c/event_local_newvalue.html</test_script_entry>
         </description>
         <specs>
           <spec>
@@ -159,37 +87,13 @@
           </spec>
         </specs>
       </testcase>
-      <testcase purpose="Local event is fired due to an invocation of the setItem(), clear() methods for local newValue" type="compliance" status="approved" component="W3C_HTML5 APIs/Storage/Web Storage" execution_type="auto" priority="P2" id="event_local_newvalue_entry2">
+      <testcase purpose="oldvalue of local storage event Test" type="compliance" status="approved" component="W3C_HTML5 APIs/Storage/Web Storage" execution_type="auto" priority="P2" id="event_local_oldvalue_entry1" subcase="2">
         <description>
-          <test_script_entry>/opt/tct-webstorage-w3c-tests/webstorage/w3c/event_local_newvalue.html?total_num=2&amp;amp;locator_key=id&amp;amp;value=2</test_script_entry>
-        </description>
-        <specs>
-          <spec>
-            <spec_assertion element_type="attribute" element_name="setItem" interface="StorageEvent" specification="Web Storage (Partial)" section="Storage" category="Tizen W3C API Specifications"/>
-            <spec_url>https://w3c.github.io/webstorage/#storageevent</spec_url>
-            <spec_statement/>
-          </spec>
-        </specs>
-      </testcase>
-      <testcase purpose="oldValue property test of local event" type="compliance" status="approved" component="W3C_HTML5 APIs/Storage/Web Storage" execution_type="auto" priority="P2" id="event_local_oldvalue_entry1">
-        <description>
-          <test_script_entry>/opt/tct-webstorage-w3c-tests/webstorage/w3c/event_local_oldvalue.html?total_num=2&amp;amp;locator_key=id&amp;amp;value=1</test_script_entry>
+          <test_script_entry>/opt/tct-webstorage-w3c-tests/webstorage/w3c/event_local_oldvalue.html</test_script_entry>
         </description>
         <specs>
           <spec>
             <spec_assertion element_type="attribute" element_name="oldValue" interface="StorageEvent" specification="Web Storage (Partial)" section="Storage" category="Tizen W3C API Specifications"/>
-            <spec_url>https://w3c.github.io/webstorage/#storageevent</spec_url>
-            <spec_statement/>
-          </spec>
-        </specs>
-      </testcase>
-      <testcase purpose="Local event is fired due to an invocation of the setItem(), clear() methods for local oldValue" type="compliance" status="approved" component="W3C_HTML5 APIs/Storage/Web Storage" execution_type="auto" priority="P2" id="event_local_oldvalue_entry2">
-        <description>
-          <test_script_entry>/opt/tct-webstorage-w3c-tests/webstorage/w3c/event_local_oldvalue.html?total_num=2&amp;amp;locator_key=id&amp;amp;value=2</test_script_entry>
-        </description>
-        <specs>
-          <spec>
-            <spec_assertion element_type="method" element_name="setItem" interface="StorageEvent" specification="Web Storage (Partial)" section="Storage" category="Tizen W3C API Specifications"/>
             <spec_url>https://w3c.github.io/webstorage/#storageevent</spec_url>
             <spec_statement/>
           </spec>
@@ -207,9 +111,9 @@
           </spec>
         </specs>
       </testcase>
-      <testcase purpose="storageArea property test of local event" type="compliance" status="approved" component="W3C_HTML5 APIs/Storage/Web Storage" execution_type="auto" priority="P2" id="event_local_storagearea_entry1">
+      <testcase purpose="storagearea of local storage event Test" type="compliance" status="approved" component="W3C_HTML5 APIs/Storage/Web Storage" execution_type="auto" priority="P2" id="event_local_storagearea" subcase="2">
         <description>
-          <test_script_entry>/opt/tct-webstorage-w3c-tests/webstorage/w3c/event_local_storagearea.html?total_num=2&amp;amp;locator_key=id&amp;amp;value=1</test_script_entry>
+          <test_script_entry>/opt/tct-webstorage-w3c-tests/webstorage/w3c/event_local_storagearea.html</test_script_entry>
         </description>
         <specs>
           <spec>
@@ -219,21 +123,9 @@
           </spec>
         </specs>
       </testcase>
-      <testcase purpose="Local event is fired due to an invocation of the setItem() method for local storageArea" type="compliance" status="approved" component="W3C_HTML5 APIs/Storage/Web Storage" execution_type="auto" priority="P2" id="event_local_storagearea_entry2">
+      <testcase purpose="storageeventinit of local storage event Test" type="compliance" status="approved" component="W3C_HTML5 APIs/Storage/Web Storage" execution_type="auto" priority="P2" id="event_local_storageeventinit" subcase="2">
         <description>
-          <test_script_entry>/opt/tct-webstorage-w3c-tests/webstorage/w3c/event_local_storagearea.html?total_num=2&amp;amp;locator_key=id&amp;amp;value=2</test_script_entry>
-        </description>
-        <specs>
-          <spec>
-            <spec_assertion element_type="attribute" element_name="storageArea" interface="StorageEvent" specification="Web Storage (Partial)" section="Storage" category="Tizen W3C API Specifications"/>
-            <spec_url>https://w3c.github.io/webstorage/#storageevent</spec_url>
-            <spec_statement/>
-          </spec>
-        </specs>
-      </testcase>
-      <testcase purpose="Storage event is fired due to set values for StorageEventInit" type="compliance" status="approved" component="W3C_HTML5 APIs/Storage/Web Storage" execution_type="auto" priority="P2" id="event_local_storageeventinit_entry1">
-        <description>
-          <test_script_entry>/opt/tct-webstorage-w3c-tests/webstorage/w3c/event_local_storageeventinit.html?total_num=2&amp;amp;locator_key=id&amp;amp;value=1</test_script_entry>
+          <test_script_entry>/opt/tct-webstorage-w3c-tests/webstorage/w3c/event_local_storageeventinit.html</test_script_entry>
         </description>
         <specs>
           <spec>
@@ -243,21 +135,9 @@
           </spec>
         </specs>
       </testcase>
-      <testcase purpose="storageeventinit test for event_local_storageeventinit" type="compliance" status="approved" component="W3C_HTML5 APIs/Storage/Web Storage" execution_type="auto" priority="P2" id="event_local_storageeventinit_entry2">
+      <testcase purpose="url of local storage event Test" type="compliance" status="approved" component="W3C_HTML5 APIs/Storage/Web Storage" execution_type="auto" priority="P2" id="event_local_url" subcase="2">
         <description>
-          <test_script_entry>/opt/tct-webstorage-w3c-tests/webstorage/w3c/event_local_storageeventinit.html?total_num=2&amp;amp;locator_key=id&amp;amp;value=2</test_script_entry>
-        </description>
-        <specs>
-          <spec>
-            <spec_assertion element_type="attribute" element_name="key" interface="StorageEvent" specification="Web Storage (Partial)" section="Storage" category="Tizen W3C API Specifications"/>
-            <spec_url>https://w3c.github.io/webstorage/#storageevent</spec_url>
-            <spec_statement/>
-          </spec>
-        </specs>
-      </testcase>
-      <testcase purpose="url property test of local event" type="compliance" status="approved" component="W3C_HTML5 APIs/Storage/Web Storage" execution_type="auto" priority="P2" id="event_local_url_entry1">
-        <description>
-          <test_script_entry>/opt/tct-webstorage-w3c-tests/webstorage/w3c/event_local_url.html?total_num=2&amp;amp;locator_key=id&amp;amp;value=1</test_script_entry>
+          <test_script_entry>/opt/tct-webstorage-w3c-tests/webstorage/w3c/event_local_url.html</test_script_entry>
         </description>
         <specs>
           <spec>
@@ -267,21 +147,9 @@
           </spec>
         </specs>
       </testcase>
-      <testcase purpose="Local event is fired due to an invocation of the setItem() method for local url" type="compliance" status="approved" component="W3C_HTML5 APIs/Storage/Web Storage" execution_type="auto" priority="P2" id="event_local_url_entry2">
+      <testcase purpose="key of session storage event Test" type="compliance" status="approved" component="W3C_HTML5 APIs/Storage/Web Storage" execution_type="auto" priority="P2" id="event_session_key" subcase="2">
         <description>
-          <test_script_entry>/opt/tct-webstorage-w3c-tests/webstorage/w3c/event_local_url.html?total_num=2&amp;amp;locator_key=id&amp;amp;value=2</test_script_entry>
-        </description>
-        <specs>
-          <spec>
-            <spec_assertion element_type="method" element_name="setItem" interface="StorageEvent" specification="Web Storage (Partial)" section="Storage" category="Tizen W3C API Specifications"/>
-            <spec_url>https://w3c.github.io/webstorage/#storageevent</spec_url>
-            <spec_statement/>
-          </spec>
-        </specs>
-      </testcase>
-      <testcase purpose="key property test of session event" type="compliance" status="approved" component="W3C_HTML5 APIs/Storage/Web Storage" execution_type="auto" priority="P2" id="event_session_key_entry1">
-        <description>
-          <test_script_entry>/opt/tct-webstorage-w3c-tests/webstorage/w3c/event_session_key.html?total_num=2&amp;amp;locator_key=id&amp;amp;value=1</test_script_entry>
+          <test_script_entry>/opt/tct-webstorage-w3c-tests/webstorage/w3c/event_session_key.html</test_script_entry>
         </description>
         <specs>
           <spec>
@@ -291,21 +159,9 @@
           </spec>
         </specs>
       </testcase>
-      <testcase purpose="Session event is fired due to an invocation of the setItem(), clear() methods for session key" type="compliance" status="approved" component="W3C_HTML5 APIs/Storage/Web Storage" execution_type="auto" priority="P2" id="event_session_key_entry2">
+      <testcase purpose="newvalue of session storage event Test" type="compliance" status="approved" component="W3C_HTML5 APIs/Storage/Web Storage" execution_type="auto" priority="P2" id="event_session_newvalue" subcase="2">
         <description>
-          <test_script_entry>/opt/tct-webstorage-w3c-tests/webstorage/w3c/event_session_key.html?total_num=2&amp;amp;locator_key=id&amp;amp;value=2</test_script_entry>
-        </description>
-        <specs>
-          <spec>
-            <spec_assertion element_type="method" element_name="setItem" interface="StorageEvent" specification="Web Storage (Partial)" section="Storage" category="Tizen W3C API Specifications"/>
-            <spec_url>https://w3c.github.io/webstorage/#storageevent</spec_url>
-            <spec_statement/>
-          </spec>
-        </specs>
-      </testcase>
-      <testcase purpose="newvalue property test of session event" type="compliance" status="approved" component="W3C_HTML5 APIs/Storage/Web Storage" execution_type="auto" priority="P2" id="event_session_newvalue_entry1">
-        <description>
-          <test_script_entry>/opt/tct-webstorage-w3c-tests/webstorage/w3c/event_session_newvalue.html?total_num=2&amp;amp;locator_key=id&amp;amp;value=1</test_script_entry>
+          <test_script_entry>/opt/tct-webstorage-w3c-tests/webstorage/w3c/event_session_newvalue.html</test_script_entry>
         </description>
         <specs>
           <spec>
@@ -315,37 +171,13 @@
           </spec>
         </specs>
       </testcase>
-      <testcase purpose="Session event is fired due to an invocation of the setItem(), clear() methods for session newValue" type="compliance" status="approved" component="W3C_HTML5 APIs/Storage/Web Storage" execution_type="auto" priority="P2" id="event_session_newvalue_entry2">
+      <testcase purpose="oldvalue of session storage event Test" type="compliance" status="approved" component="W3C_HTML5 APIs/Storage/Web Storage" execution_type="auto" priority="P2" id="event_session_oldvalue" subcase="2">
         <description>
-          <test_script_entry>/opt/tct-webstorage-w3c-tests/webstorage/w3c/event_session_newvalue.html?total_num=2&amp;amp;locator_key=id&amp;amp;value=2</test_script_entry>
-        </description>
-        <specs>
-          <spec>
-            <spec_assertion element_type="method" element_name="clear" interface="StorageEvent" specification="Web Storage (Partial)" section="Storage" category="Tizen W3C API Specifications"/>
-            <spec_url>https://w3c.github.io/webstorage/#storageevent</spec_url>
-            <spec_statement/>
-          </spec>
-        </specs>
-      </testcase>
-      <testcase purpose="oldvalue property test of session event" type="compliance" status="approved" component="W3C_HTML5 APIs/Storage/Web Storage" execution_type="auto" priority="P2" id="event_session_oldvalue_entry1">
-        <description>
-          <test_script_entry>/opt/tct-webstorage-w3c-tests/webstorage/w3c/event_session_oldvalue.html?total_num=2&amp;amp;locator_key=id&amp;amp;value=1</test_script_entry>
+          <test_script_entry>/opt/tct-webstorage-w3c-tests/webstorage/w3c/event_session_oldvalue.html</test_script_entry>
         </description>
         <specs>
           <spec>
             <spec_assertion element_type="attribute" element_name="oldValue" interface="StorageEvent" specification="Web Storage (Partial)" section="Storage" category="Tizen W3C API Specifications"/>
-            <spec_url>https://w3c.github.io/webstorage/#storageevent</spec_url>
-            <spec_statement/>
-          </spec>
-        </specs>
-      </testcase>
-      <testcase purpose="Session event is fired due to an invocation of the setItem(), clear() methods for session oldValue" type="compliance" status="approved" component="W3C_HTML5 APIs/Storage/Web Storage" execution_type="auto" priority="P2" id="event_session_oldvalue_entry2">
-        <description>
-          <test_script_entry>/opt/tct-webstorage-w3c-tests/webstorage/w3c/event_session_oldvalue.html?total_num=2&amp;amp;locator_key=id&amp;amp;value=2</test_script_entry>
-        </description>
-        <specs>
-          <spec>
-            <spec_assertion element_type="method" element_name="setItem" interface="StorageEvent" specification="Web Storage (Partial)" section="Storage" category="Tizen W3C API Specifications"/>
             <spec_url>https://w3c.github.io/webstorage/#storageevent</spec_url>
             <spec_statement/>
           </spec>
@@ -363,9 +195,9 @@
           </spec>
         </specs>
       </testcase>
-      <testcase purpose="storageArea property test of session event" type="compliance" status="approved" component="W3C_HTML5 APIs/Storage/Web Storage" execution_type="auto" priority="P2" id="event_session_storagearea_entry1">
+      <testcase purpose="storagearea of session storage event Test" type="compliance" status="approved" component="W3C_HTML5 APIs/Storage/Web Storage" execution_type="auto" priority="P2" id="event_session_storagearea" subcase="2">
         <description>
-          <test_script_entry>/opt/tct-webstorage-w3c-tests/webstorage/w3c/event_session_storagearea.html?total_num=2&amp;amp;locator_key=id&amp;amp;value=1</test_script_entry>
+          <test_script_entry>/opt/tct-webstorage-w3c-tests/webstorage/w3c/event_session_storagearea.html</test_script_entry>
         </description>
         <specs>
           <spec>
@@ -375,21 +207,9 @@
           </spec>
         </specs>
       </testcase>
-      <testcase purpose="Session event is fired due to an invocation of the setItem() method for session storageArea" type="compliance" status="approved" component="W3C_HTML5 APIs/Storage/Web Storage" execution_type="auto" priority="P2" id="event_session_storagearea_entry2">
+      <testcase purpose="Storage event is fired due to set values for session StorageEventInit" type="compliance" status="approved" component="W3C_HTML5 APIs/Storage/Web Storage" execution_type="auto" priority="P2" id="event_session_storageeventinit" subcase="2">
         <description>
-          <test_script_entry>/opt/tct-webstorage-w3c-tests/webstorage/w3c/event_session_storagearea.html?total_num=2&amp;amp;locator_key=id&amp;amp;value=2</test_script_entry>
-        </description>
-        <specs>
-          <spec>
-            <spec_assertion element_type="method" element_name="setItem" interface="StorageEvent" specification="Web Storage (Partial)" section="Storage" category="Tizen W3C API Specifications"/>
-            <spec_url>https://w3c.github.io/webstorage/#storageevent</spec_url>
-            <spec_statement/>
-          </spec>
-        </specs>
-      </testcase>
-      <testcase purpose="Storage event is fired due to set values for session StorageEventInit" type="compliance" status="approved" component="W3C_HTML5 APIs/Storage/Web Storage" execution_type="auto" priority="P2" id="event_session_storageeventinit_entry1">
-        <description>
-          <test_script_entry>/opt/tct-webstorage-w3c-tests/webstorage/w3c/event_session_storageeventinit.html?total_num=2&amp;amp;locator_key=id&amp;amp;value=1</test_script_entry>
+          <test_script_entry>/opt/tct-webstorage-w3c-tests/webstorage/w3c/event_session_storageeventinit.html</test_script_entry>
         </description>
         <specs>
           <spec>
@@ -399,21 +219,9 @@
           </spec>
         </specs>
       </testcase>
-      <testcase purpose="storageeventinit test for event_session_storageeventinit" type="compliance" status="approved" component="W3C_HTML5 APIs/Storage/Web Storage" execution_type="auto" priority="P2" id="event_session_storageeventinit_entry2">
+      <testcase purpose="url of session storage event Test" type="compliance" status="approved" component="W3C_HTML5 APIs/Storage/Web Storage" execution_type="auto" priority="P2" id="event_session_url" subcase="2">
         <description>
-          <test_script_entry>/opt/tct-webstorage-w3c-tests/webstorage/w3c/event_session_storageeventinit.html?total_num=2&amp;amp;locator_key=id&amp;amp;value=2</test_script_entry>
-        </description>
-        <specs>
-          <spec>
-            <spec_assertion element_type="attribute" element_name="key" interface="StorageEvent" specification="Web Storage (Partial)" section="Storage" category="Tizen W3C API Specifications"/>
-            <spec_url>https://w3c.github.io/webstorage/#storageevent</spec_url>
-            <spec_statement/>
-          </spec>
-        </specs>
-      </testcase>
-      <testcase purpose="url property test of session event" type="compliance" status="approved" component="W3C_HTML5 APIs/Storage/Web Storage" execution_type="auto" priority="P2" id="event_session_url_entry1">
-        <description>
-          <test_script_entry>/opt/tct-webstorage-w3c-tests/webstorage/w3c/event_session_url.html?total_num=2&amp;amp;locator_key=id&amp;amp;value=1</test_script_entry>
+          <test_script_entry>/opt/tct-webstorage-w3c-tests/webstorage/w3c/event_session_url.html</test_script_entry>
         </description>
         <specs>
           <spec>
@@ -423,21 +231,9 @@
           </spec>
         </specs>
       </testcase>
-      <testcase purpose="Session event is fired due to an invocation of the setItem() method for session url" type="compliance" status="approved" component="W3C_HTML5 APIs/Storage/Web Storage" execution_type="auto" priority="P2" id="event_session_url_entry2">
+      <testcase purpose="StorageEvent is attached to setAttribute Test" type="compliance" status="approved" component="W3C_HTML5 APIs/Storage/Web Storage" execution_type="auto" priority="P2" id="event_setattribute" subcase="2">
         <description>
-          <test_script_entry>/opt/tct-webstorage-w3c-tests/webstorage/w3c/event_session_url.html?total_num=2&amp;amp;locator_key=id&amp;amp;value=2</test_script_entry>
-        </description>
-        <specs>
-          <spec>
-            <spec_assertion element_type="method" element_name="setItem" interface="StorageEvent" specification="Web Storage (Partial)" section="Storage" category="Tizen W3C API Specifications"/>
-            <spec_url>https://w3c.github.io/webstorage/#storageevent</spec_url>
-            <spec_statement/>
-          </spec>
-        </specs>
-      </testcase>
-      <testcase purpose="sessionStorage mutations fire StorageEvents that are caught by the event listener attached via setattribute" type="compliance" status="approved" component="W3C_HTML5 APIs/Storage/Web Storage" execution_type="auto" priority="P2" id="event_setattribute_entry1">
-        <description>
-          <test_script_entry>/opt/tct-webstorage-w3c-tests/webstorage/w3c/event_setattribute.html?total_num=2&amp;amp;locator_key=id&amp;amp;value=1</test_script_entry>
+          <test_script_entry>/opt/tct-webstorage-w3c-tests/webstorage/w3c/event_setattribute.html</test_script_entry>
         </description>
         <specs>
           <spec>
@@ -447,21 +243,9 @@
           </spec>
         </specs>
       </testcase>
-      <testcase purpose="localStorage mutations fire StorageEvents that are caught by the event listener attached via setattribute" type="compliance" status="approved" component="W3C_HTML5 APIs/Storage/Web Storage" execution_type="auto" priority="P2" id="event_setattribute_entry2">
+      <testcase purpose="methods with missing arguments Test" type="compliance" status="approved" component="W3C_HTML5 APIs/Storage/Web Storage" execution_type="auto" priority="P2" id="missing_arguments" subcase="11">
         <description>
-          <test_script_entry>/opt/tct-webstorage-w3c-tests/webstorage/w3c/event_setattribute.html?total_num=2&amp;amp;locator_key=id&amp;amp;value=2</test_script_entry>
-        </description>
-        <specs>
-          <spec>
-            <spec_assertion element_type="method" element_name="setAttribute" interface="StorageEvent" specification="Web Storage (Partial)" section="Storage" category="Tizen W3C API Specifications"/>
-            <spec_url>https://w3c.github.io/webstorage/#storageevent</spec_url>
-            <spec_statement/>
-          </spec>
-        </specs>
-      </testcase>
-      <testcase purpose="Should throw TypeError for function 'function () { localStorage.key(); }'" type="compliance" status="approved" component="W3C_HTML5 APIs/Storage/Web Storage" execution_type="auto" priority="P2" id="missing_arguments_entry1">
-        <description>
-          <test_script_entry>/opt/tct-webstorage-w3c-tests/webstorage/w3c/missing_arguments.html?total_num=11&amp;amp;locator_key=id&amp;amp;value=1</test_script_entry>
+          <test_script_entry>/opt/tct-webstorage-w3c-tests/webstorage/w3c/missing_arguments.html</test_script_entry>
         </description>
         <specs>
           <spec>
@@ -471,129 +255,9 @@
           </spec>
         </specs>
       </testcase>
-      <testcase purpose="Should throw TypeError for function 'function () { localStorage.getItem(); }'" type="compliance" status="approved" component="W3C_HTML5 APIs/Storage/Web Storage" execution_type="auto" priority="P2" id="missing_arguments_entry2">
+      <testcase purpose="Storage  builtins Test" type="compliance" status="approved" component="W3C_HTML5 APIs/Storage/Web Storage" execution_type="auto" priority="P2" id="storage_builtins" subcase="2">
         <description>
-          <test_script_entry>/opt/tct-webstorage-w3c-tests/webstorage/w3c/missing_arguments.html?total_num=11&amp;amp;locator_key=id&amp;amp;value=2</test_script_entry>
-        </description>
-        <specs>
-          <spec>
-            <spec_assertion element_type="method" element_name="getItem" interface="Storage" specification="Web Storage (Partial)" section="Storage" category="Tizen W3C API Specifications"/>
-            <spec_url>https://w3c.github.io/webstorage/#the-storage-interface</spec_url>
-            <spec_statement/>
-          </spec>
-        </specs>
-      </testcase>
-      <testcase purpose="Should throw TypeError for function 'function () { localStorage.setItem(); }'" type="compliance" status="approved" component="W3C_HTML5 APIs/Storage/Web Storage" execution_type="auto" priority="P2" id="missing_arguments_entry3">
-        <description>
-          <test_script_entry>/opt/tct-webstorage-w3c-tests/webstorage/w3c/missing_arguments.html?total_num=11&amp;amp;locator_key=id&amp;amp;value=3</test_script_entry>
-        </description>
-        <specs>
-          <spec>
-            <spec_assertion element_type="method" element_name="setItem" interface="Storage" specification="Web Storage (Partial)" section="Storage" category="Tizen W3C API Specifications"/>
-            <spec_url>https://w3c.github.io/webstorage/#the-storage-interface</spec_url>
-            <spec_statement/>
-          </spec>
-        </specs>
-      </testcase>
-      <testcase purpose="Should throw TypeError for function 'function () { localStorage.setItem('a'); }'" type="compliance" status="approved" component="W3C_HTML5 APIs/Storage/Web Storage" execution_type="auto" priority="P2" id="missing_arguments_entry4">
-        <description>
-          <test_script_entry>/opt/tct-webstorage-w3c-tests/webstorage/w3c/missing_arguments.html?total_num=11&amp;amp;locator_key=id&amp;amp;value=4</test_script_entry>
-        </description>
-        <specs>
-          <spec>
-            <spec_assertion element_type="method" element_name="setItem" interface="Storage" specification="Web Storage (Partial)" section="Storage" category="Tizen W3C API Specifications"/>
-            <spec_url>https://w3c.github.io/webstorage/#the-storage-interface</spec_url>
-            <spec_statement/>
-          </spec>
-        </specs>
-      </testcase>
-      <testcase purpose="Should throw TypeError for function 'function () { localStorage.removeItem(); }'" type="compliance" status="approved" component="W3C_HTML5 APIs/Storage/Web Storage" execution_type="auto" priority="P2" id="missing_arguments_entry5">
-        <description>
-          <test_script_entry>/opt/tct-webstorage-w3c-tests/webstorage/w3c/missing_arguments.html?total_num=11&amp;amp;locator_key=id&amp;amp;value=5</test_script_entry>
-        </description>
-        <specs>
-          <spec>
-            <spec_assertion element_type="method" element_name="removeItem" interface="Storage" specification="Web Storage (Partial)" section="Storage" category="Tizen W3C API Specifications"/>
-            <spec_url>https://w3c.github.io/webstorage/#the-storage-interface</spec_url>
-            <spec_statement/>
-          </spec>
-        </specs>
-      </testcase>
-      <testcase purpose="Should throw TypeError for function 'function () { sessionStorage.key(); }'" type="compliance" status="approved" component="W3C_HTML5 APIs/Storage/Web Storage" execution_type="auto" priority="P2" id="missing_arguments_entry6">
-        <description>
-          <test_script_entry>/opt/tct-webstorage-w3c-tests/webstorage/w3c/missing_arguments.html?total_num=11&amp;amp;locator_key=id&amp;amp;value=6</test_script_entry>
-        </description>
-        <specs>
-          <spec>
-            <spec_assertion element_type="method" element_name="key" interface="Storage" specification="Web Storage (Partial)" section="Storage" category="Tizen W3C API Specifications"/>
-            <spec_url>https://w3c.github.io/webstorage/#the-storage-interface</spec_url>
-            <spec_statement/>
-          </spec>
-        </specs>
-      </testcase>
-      <testcase purpose="Should throw TypeError for function 'function () { sessionStorage.getItem(); }'" type="compliance" status="approved" component="W3C_HTML5 APIs/Storage/Web Storage" execution_type="auto" priority="P2" id="missing_arguments_entry7">
-        <description>
-          <test_script_entry>/opt/tct-webstorage-w3c-tests/webstorage/w3c/missing_arguments.html?total_num=11&amp;amp;locator_key=id&amp;amp;value=7</test_script_entry>
-        </description>
-        <specs>
-          <spec>
-            <spec_assertion element_type="method" element_name="getItem" interface="Storage" specification="Web Storage (Partial)" section="Storage" category="Tizen W3C API Specifications"/>
-            <spec_url>https://w3c.github.io/webstorage/#the-storage-interface</spec_url>
-            <spec_statement/>
-          </spec>
-        </specs>
-      </testcase>
-      <testcase purpose="Should throw TypeError for function 'function () { sessionStorage.setItem(); }'" type="compliance" status="approved" component="W3C_HTML5 APIs/Storage/Web Storage" execution_type="auto" priority="P2" id="missing_arguments_entry8">
-        <description>
-          <test_script_entry>/opt/tct-webstorage-w3c-tests/webstorage/w3c/missing_arguments.html?total_num=11&amp;amp;locator_key=id&amp;amp;value=8</test_script_entry>
-        </description>
-        <specs>
-          <spec>
-            <spec_assertion element_type="method" element_name="setItem" interface="Storage" specification="Web Storage (Partial)" section="Storage" category="Tizen W3C API Specifications"/>
-            <spec_url>https://w3c.github.io/webstorage/#the-storage-interface</spec_url>
-            <spec_statement/>
-          </spec>
-        </specs>
-      </testcase>
-      <testcase purpose="Should throw TypeError for function 'function () { sessionStorage.setItem('a'); }'" type="compliance" status="approved" component="W3C_HTML5 APIs/Storage/Web Storage" execution_type="auto" priority="P2" id="missing_arguments_entry9">
-        <description>
-          <test_script_entry>/opt/tct-webstorage-w3c-tests/webstorage/w3c/missing_arguments.html?total_num=11&amp;amp;locator_key=id&amp;amp;value=9</test_script_entry>
-        </description>
-        <specs>
-          <spec>
-            <spec_assertion element_type="method" element_name="setItem" interface="Storage" specification="Web Storage (Partial)" section="Storage" category="Tizen W3C API Specifications"/>
-            <spec_url>https://w3c.github.io/webstorage/#the-storage-interface</spec_url>
-            <spec_statement/>
-          </spec>
-        </specs>
-      </testcase>
-      <testcase purpose="Should throw TypeError for function 'function () { sessionStorage.removeItem(); }'" type="compliance" status="approved" component="W3C_HTML5 APIs/Storage/Web Storage" execution_type="auto" priority="P2" id="missing_arguments_entry10">
-        <description>
-          <test_script_entry>/opt/tct-webstorage-w3c-tests/webstorage/w3c/missing_arguments.html?total_num=11&amp;amp;locator_key=id&amp;amp;value=10</test_script_entry>
-        </description>
-        <specs>
-          <spec>
-            <spec_assertion element_type="method" element_name="removeItem" interface="Storage" specification="Web Storage (Partial)" section="Storage" category="Tizen W3C API Specifications"/>
-            <spec_url>https://w3c.github.io/webstorage/#the-storage-interface</spec_url>
-            <spec_statement/>
-          </spec>
-        </specs>
-      </testcase>
-      <testcase purpose="Should throw TypeError for function 'function () { new StorageEvent(); }'" type="compliance" status="approved" component="W3C_HTML5 APIs/Storage/Web Storage" execution_type="auto" priority="P2" id="missing_arguments_entry11">
-        <description>
-          <test_script_entry>/opt/tct-webstorage-w3c-tests/webstorage/w3c/missing_arguments.html?total_num=11&amp;amp;locator_key=id&amp;amp;value=11</test_script_entry>
-        </description>
-        <specs>
-          <spec>
-            <spec_assertion element_type="method" element_name="StorageEvent" interface="Storage" specification="Web Storage (Partial)" section="Storage" category="Tizen W3C API Specifications"/>
-            <spec_url>https://w3c.github.io/webstorage/#storageevent</spec_url>
-            <spec_statement/>
-          </spec>
-        </specs>
-      </testcase>
-      <testcase purpose="Builtins in localStorage" type="compliance" status="approved" component="W3C_HTML5 APIs/Storage/Web Storage" execution_type="auto" priority="P2" id="storage_builtins_entry1">
-        <description>
-          <test_script_entry>/opt/tct-webstorage-w3c-tests/webstorage/w3c/storage_builtins.html?total_num=2&amp;amp;locator_key=id&amp;amp;value=1</test_script_entry>
+          <test_script_entry>/opt/tct-webstorage-w3c-tests/webstorage/w3c/storage_builtins.html</test_script_entry>
         </description>
         <specs>
           <spec>
@@ -603,21 +267,9 @@
           </spec>
         </specs>
       </testcase>
-      <testcase purpose="Builtins in sessionStorage" type="compliance" status="approved" component="W3C_HTML5 APIs/Storage/Web Storage" execution_type="auto" priority="P2" id="storage_builtins_entry2">
+      <testcase purpose="Storage clear Test" type="compliance" status="approved" component="W3C_HTML5 APIs/Storage/Web Storage" execution_type="auto" priority="P2" id="storage_clear" subcase="2">
         <description>
-          <test_script_entry>/opt/tct-webstorage-w3c-tests/webstorage/w3c/storage_builtins.html?total_num=2&amp;amp;locator_key=id&amp;amp;value=2</test_script_entry>
-        </description>
-        <specs>
-          <spec>
-            <spec_assertion element_type="attribute" element_name="prototype" interface="Storage" specification="Web Storage (Partial)" section="Storage" category="Tizen W3C API Specifications"/>
-            <spec_url>https://w3c.github.io/webstorage/#the-storage-interface</spec_url>
-            <spec_statement/>
-          </spec>
-        </specs>
-      </testcase>
-      <testcase purpose="Clear in localStorage" type="compliance" status="approved" component="W3C_HTML5 APIs/Storage/Web Storage" execution_type="auto" priority="P2" id="storage_clear_entry1">
-        <description>
-          <test_script_entry>/opt/tct-webstorage-w3c-tests/webstorage/w3c/storage_clear.html?total_num=2&amp;amp;locator_key=id&amp;amp;value=1</test_script_entry>
+          <test_script_entry>/opt/tct-webstorage-w3c-tests/webstorage/w3c/storage_clear.html</test_script_entry>
         </description>
         <specs>
           <spec>
@@ -627,21 +279,9 @@
           </spec>
         </specs>
       </testcase>
-      <testcase purpose="Clear in sessionStorage" type="compliance" status="approved" component="W3C_HTML5 APIs/Storage/Web Storage" execution_type="auto" priority="P2" id="storage_clear_entry2">
+      <testcase purpose="Storage enumerate and built-in properties Test" type="compliance" status="approved" component="W3C_HTML5 APIs/Storage/Web Storage" execution_type="auto" priority="P2" id="storage_enumerate" subcase="2">
         <description>
-          <test_script_entry>/opt/tct-webstorage-w3c-tests/webstorage/w3c/storage_clear.html?total_num=2&amp;amp;locator_key=id&amp;amp;value=2</test_script_entry>
-        </description>
-        <specs>
-          <spec>
-            <spec_assertion element_type="method" element_name="clear" interface="Storage" specification="Web Storage (Partial)" section="Storage" category="Tizen W3C API Specifications"/>
-            <spec_url>https://w3c.github.io/webstorage/#the-storage-interface</spec_url>
-            <spec_statement/>
-          </spec>
-        </specs>
-      </testcase>
-      <testcase purpose="localStorage: enumerate a Storage object and get only the keys as a result and the built-in properties of the Storage object should be ignored" type="compliance" status="approved" component="W3C_HTML5 APIs/Storage/Web Storage" execution_type="auto" priority="P2" id="storage_enumerate_entry1">
-        <description>
-          <test_script_entry>/opt/tct-webstorage-w3c-tests/webstorage/w3c/storage_enumerate.html?total_num=2&amp;amp;locator_key=id&amp;amp;value=1</test_script_entry>
+          <test_script_entry>/opt/tct-webstorage-w3c-tests/webstorage/w3c/storage_enumerate.html</test_script_entry>
         </description>
         <specs>
           <spec>
@@ -651,21 +291,9 @@
           </spec>
         </specs>
       </testcase>
-      <testcase purpose="sessionStorage: enumerate a Storage object and get only the keys as a result and the built-in properties of the Storage object should be ignored" type="compliance" status="approved" component="W3C_HTML5 APIs/Storage/Web Storage" execution_type="auto" priority="P2" id="storage_enumerate_entry2">
+      <testcase purpose="Storage set key with the same name as storage function Test" type="compliance" status="approved" component="W3C_HTML5 APIs/Storage/Web Storage" execution_type="auto" priority="P2" id="storage_functions_not_overwritten" subcase="2">
         <description>
-          <test_script_entry>/opt/tct-webstorage-w3c-tests/webstorage/w3c/storage_enumerate.html?total_num=2&amp;amp;locator_key=id&amp;amp;value=2</test_script_entry>
-        </description>
-        <specs>
-          <spec>
-            <spec_assertion element_type="attribute" element_name="sessionStorage" interface="Storage" specification="Web Storage (Partial)" section="Storage" category="Tizen W3C API Specifications"/>
-            <spec_url>https://w3c.github.io/webstorage/#the-storage-interface</spec_url>
-            <spec_statement/>
-          </spec>
-        </specs>
-      </testcase>
-      <testcase purpose="localStorage should be not rendered unusable by setting a key with the same name as a storage function such that the function is hidden" type="compliance" status="approved" component="W3C_HTML5 APIs/Storage/Web Storage" execution_type="auto" priority="P2" id="storage_functions_not_overwritten_entry1">
-        <description>
-          <test_script_entry>/opt/tct-webstorage-w3c-tests/webstorage/w3c/storage_functions_not_overwritten.html?total_num=2&amp;amp;locator_key=id&amp;amp;value=1</test_script_entry>
+          <test_script_entry>/opt/tct-webstorage-w3c-tests/webstorage/w3c/storage_functions_not_overwritten.html</test_script_entry>
         </description>
         <specs>
           <spec>
@@ -675,21 +303,9 @@
           </spec>
         </specs>
       </testcase>
-      <testcase purpose="sessionStorage should be not rendered unusable by setting a key with the same name as a storage function such that the function is hidden" type="compliance" status="approved" component="W3C_HTML5 APIs/Storage/Web Storage" execution_type="auto" priority="P2" id="storage_functions_not_overwritten_entry2">
+      <testcase purpose="Storage getItem(key) and named getter Test" type="compliance" status="approved" component="W3C_HTML5 APIs/Storage/Web Storage" execution_type="auto" priority="P2" id="storage_getitem" subcase="8">
         <description>
-          <test_script_entry>/opt/tct-webstorage-w3c-tests/webstorage/w3c/storage_functions_not_overwritten.html?total_num=2&amp;amp;locator_key=id&amp;amp;value=2</test_script_entry>
-        </description>
-        <specs>
-          <spec>
-            <spec_assertion element_type="attribute" element_name="sessionStorage" interface="Storage" specification="Web Storage (Partial)" section="Storage" category="Tizen W3C API Specifications"/>
-            <spec_url>https://w3c.github.io/webstorage/#the-storage-interface</spec_url>
-            <spec_statement/>
-          </spec>
-        </specs>
-      </testcase>
-      <testcase purpose="Get value by getIten(key) and named access in localStorage" type="compliance" status="approved" component="W3C_HTML5 APIs/Storage/Web Storage" execution_type="auto" priority="P2" id="storage_getitem_entry1">
-        <description>
-          <test_script_entry>/opt/tct-webstorage-w3c-tests/webstorage/w3c/storage_getitem.html?total_num=8&amp;amp;locator_key=id&amp;amp;value=1</test_script_entry>
+          <test_script_entry>/opt/tct-webstorage-w3c-tests/webstorage/w3c/storage_getitem.html</test_script_entry>
         </description>
         <specs>
           <spec>
@@ -699,93 +315,9 @@
           </spec>
         </specs>
       </testcase>
-      <testcase purpose="All items should be added to localStorage" type="compliance" status="approved" component="W3C_HTML5 APIs/Storage/Web Storage" execution_type="auto" priority="P2" id="storage_getitem_entry2">
+      <testcase purpose="Storage in operator Test" type="compliance" status="approved" component="W3C_HTML5 APIs/Storage/Web Storage" execution_type="auto" priority="P2" id="storage_in" subcase="4">
         <description>
-          <test_script_entry>/opt/tct-webstorage-w3c-tests/webstorage/w3c/storage_getitem.html?total_num=8&amp;amp;locator_key=id&amp;amp;value=2</test_script_entry>
-        </description>
-        <specs>
-          <spec>
-            <spec_assertion element_type="method" element_name="getItem" interface="Storage" specification="Web Storage (Partial)" section="Storage" category="Tizen W3C API Specifications"/>
-            <spec_url>https://w3c.github.io/webstorage/#the-storage-interface</spec_url>
-            <spec_statement/>
-          </spec>
-        </specs>
-      </testcase>
-      <testcase purpose="Named access to localStorage should be correct" type="compliance" status="approved" component="W3C_HTML5 APIs/Storage/Web Storage" execution_type="auto" priority="P2" id="storage_getitem_entry3">
-        <description>
-          <test_script_entry>/opt/tct-webstorage-w3c-tests/webstorage/w3c/storage_getitem.html?total_num=8&amp;amp;locator_key=id&amp;amp;value=3</test_script_entry>
-        </description>
-        <specs>
-          <spec>
-            <spec_assertion element_type="method" element_name="getItem" interface="Storage" specification="Web Storage (Partial)" section="Storage" category="Tizen W3C API Specifications"/>
-            <spec_url>https://w3c.github.io/webstorage/#the-storage-interface</spec_url>
-            <spec_statement/>
-          </spec>
-        </specs>
-      </testcase>
-      <testcase purpose="localStorage.getItem should be correct" type="compliance" status="approved" component="W3C_HTML5 APIs/Storage/Web Storage" execution_type="auto" priority="P2" id="storage_getitem_entry4">
-        <description>
-          <test_script_entry>/opt/tct-webstorage-w3c-tests/webstorage/w3c/storage_getitem.html?total_num=8&amp;amp;locator_key=id&amp;amp;value=4</test_script_entry>
-        </description>
-        <specs>
-          <spec>
-            <spec_assertion element_type="method" element_name="getItem" interface="Storage" specification="Web Storage (Partial)" section="Storage" category="Tizen W3C API Specifications"/>
-            <spec_url>https://w3c.github.io/webstorage/#the-storage-interface</spec_url>
-            <spec_statement/>
-          </spec>
-        </specs>
-      </testcase>
-      <testcase purpose="Get value by getIten(key) and named access in sessionStorage" type="compliance" status="approved" component="W3C_HTML5 APIs/Storage/Web Storage" execution_type="auto" priority="P2" id="storage_getitem_entry5">
-        <description>
-          <test_script_entry>/opt/tct-webstorage-w3c-tests/webstorage/w3c/storage_getitem.html?total_num=8&amp;amp;locator_key=id&amp;amp;value=5</test_script_entry>
-        </description>
-        <specs>
-          <spec>
-            <spec_assertion element_type="method" element_name="getItem" interface="Storage" specification="Web Storage (Partial)" section="Storage" category="Tizen W3C API Specifications"/>
-            <spec_url>https://w3c.github.io/webstorage/#the-storage-interface</spec_url>
-            <spec_statement/>
-          </spec>
-        </specs>
-      </testcase>
-      <testcase purpose="All items should be added to sessionStorage" type="compliance" status="approved" component="W3C_HTML5 APIs/Storage/Web Storage" execution_type="auto" priority="P2" id="storage_getitem_entry6">
-        <description>
-          <test_script_entry>/opt/tct-webstorage-w3c-tests/webstorage/w3c/storage_getitem.html?total_num=8&amp;amp;locator_key=id&amp;amp;value=6</test_script_entry>
-        </description>
-        <specs>
-          <spec>
-            <spec_assertion element_type="method" element_name="getItem" interface="Storage" specification="Web Storage (Partial)" section="Storage" category="Tizen W3C API Specifications"/>
-            <spec_url>https://w3c.github.io/webstorage/#the-storage-interface</spec_url>
-            <spec_statement/>
-          </spec>
-        </specs>
-      </testcase>
-      <testcase purpose="Named access to sessionStorage should be correct" type="compliance" status="approved" component="W3C_HTML5 APIs/Storage/Web Storage" execution_type="auto" priority="P2" id="storage_getitem_entry7">
-        <description>
-          <test_script_entry>/opt/tct-webstorage-w3c-tests/webstorage/w3c/storage_getitem.html?total_num=8&amp;amp;locator_key=id&amp;amp;value=7</test_script_entry>
-        </description>
-        <specs>
-          <spec>
-            <spec_assertion element_type="method" element_name="getItem" interface="Storage" specification="Web Storage (Partial)" section="Storage" category="Tizen W3C API Specifications"/>
-            <spec_url>https://w3c.github.io/webstorage/#the-storage-interface</spec_url>
-            <spec_statement/>
-          </spec>
-        </specs>
-      </testcase>
-      <testcase purpose="sessionStorage.getItem should be correct" type="compliance" status="approved" component="W3C_HTML5 APIs/Storage/Web Storage" execution_type="auto" priority="P2" id="storage_getitem_entry8">
-        <description>
-          <test_script_entry>/opt/tct-webstorage-w3c-tests/webstorage/w3c/storage_getitem.html?total_num=8&amp;amp;locator_key=id&amp;amp;value=8</test_script_entry>
-        </description>
-        <specs>
-          <spec>
-            <spec_assertion element_type="method" element_name="getItem" interface="Storage" specification="Web Storage (Partial)" section="Storage" category="Tizen W3C API Specifications"/>
-            <spec_url>https://w3c.github.io/webstorage/#the-storage-interface</spec_url>
-            <spec_statement/>
-          </spec>
-        </specs>
-      </testcase>
-      <testcase purpose="The in operator in localStorage: property access" type="compliance" status="approved" component="W3C_HTML5 APIs/Storage/Web Storage" execution_type="auto" priority="P2" id="storage_in_entry1">
-        <description>
-          <test_script_entry>/opt/tct-webstorage-w3c-tests/webstorage/w3c/storage_in.html?total_num=4&amp;amp;locator_key=id&amp;amp;value=1</test_script_entry>
+          <test_script_entry>/opt/tct-webstorage-w3c-tests/webstorage/w3c/storage_in.html</test_script_entry>
         </description>
         <specs>
           <spec>
@@ -795,9 +327,9 @@
           </spec>
         </specs>
       </testcase>
-      <testcase purpose="The in operator in localStorage: method access" type="compliance" status="approved" component="W3C_HTML5 APIs/Storage/Web Storage" execution_type="auto" priority="P2" id="storage_in_entry2">
+      <testcase purpose="Storage Indexed getter Test" type="compliance" status="approved" component="W3C_HTML5 APIs/Storage/Web Storage" execution_type="auto" priority="P2" id="storage_indexing" subcase="8">
         <description>
-          <test_script_entry>/opt/tct-webstorage-w3c-tests/webstorage/w3c/storage_in.html?total_num=4&amp;amp;locator_key=id&amp;amp;value=2</test_script_entry>
+          <test_script_entry>/opt/tct-webstorage-w3c-tests/webstorage/w3c/storage_indexing.html</test_script_entry>
         </description>
         <specs>
           <spec>
@@ -807,129 +339,9 @@
           </spec>
         </specs>
       </testcase>
-      <testcase purpose="The in operator in sessionStorage: property access " type="compliance" status="approved" component="W3C_HTML5 APIs/Storage/Web Storage" execution_type="auto" priority="P2" id="storage_in_entry3">
+      <testcase purpose="Storage key(index) Test" type="compliance" status="approved" component="W3C_HTML5 APIs/Storage/Web Storage" execution_type="auto" priority="P2" id="storage_key" subcase="22">
         <description>
-          <test_script_entry>/opt/tct-webstorage-w3c-tests/webstorage/w3c/storage_in.html?total_num=4&amp;amp;locator_key=id&amp;amp;value=3</test_script_entry>
-        </description>
-        <specs>
-          <spec>
-            <spec_assertion element_type="attribute" element_name="sessionStorage" interface="Storage" specification="Web Storage (Partial)" section="Storage" category="Tizen W3C API Specifications"/>
-            <spec_url>https://w3c.github.io/webstorage/#the-storage-interface</spec_url>
-            <spec_statement/>
-          </spec>
-        </specs>
-      </testcase>
-      <testcase purpose="The in operator in sessionStorage: method access " type="compliance" status="approved" component="W3C_HTML5 APIs/Storage/Web Storage" execution_type="auto" priority="P2" id="storage_in_entry4">
-        <description>
-          <test_script_entry>/opt/tct-webstorage-w3c-tests/webstorage/w3c/storage_in.html?total_num=4&amp;amp;locator_key=id&amp;amp;value=4</test_script_entry>
-        </description>
-        <specs>
-          <spec>
-            <spec_assertion element_type="attribute" element_name="sessionStorage" interface="Storage" specification="Web Storage (Partial)" section="Storage" category="Tizen W3C API Specifications"/>
-            <spec_url>https://w3c.github.io/webstorage/#the-storage-interface</spec_url>
-            <spec_statement/>
-          </spec>
-        </specs>
-      </testcase>
-      <testcase purpose="Indexed getter on localStorage" type="compliance" status="approved" component="W3C_HTML5 APIs/Storage/Web Storage" execution_type="auto" priority="P2" id="storage_indexing_entry1">
-        <description>
-          <test_script_entry>/opt/tct-webstorage-w3c-tests/webstorage/w3c/storage_indexing.html?total_num=8&amp;amp;locator_key=id&amp;amp;value=1</test_script_entry>
-        </description>
-        <specs>
-          <spec>
-            <spec_assertion element_type="attribute" element_name="localStorage" interface="Storage" specification="Web Storage (Partial)" section="Storage" category="Tizen W3C API Specifications"/>
-            <spec_url>https://w3c.github.io/webstorage/#the-storage-interface</spec_url>
-            <spec_statement/>
-          </spec>
-        </specs>
-      </testcase>
-      <testcase purpose="Getting number properties on localStorage" type="compliance" status="approved" component="W3C_HTML5 APIs/Storage/Web Storage" execution_type="auto" priority="P2" id="storage_indexing_entry2">
-        <description>
-          <test_script_entry>/opt/tct-webstorage-w3c-tests/webstorage/w3c/storage_indexing.html?total_num=8&amp;amp;locator_key=id&amp;amp;value=2</test_script_entry>
-        </description>
-        <specs>
-          <spec>
-            <spec_assertion element_type="attribute" element_name="localStorage" interface="Storage" specification="Web Storage (Partial)" section="Storage" category="Tizen W3C API Specifications"/>
-            <spec_url>https://w3c.github.io/webstorage/#the-storage-interface</spec_url>
-            <spec_statement/>
-          </spec>
-        </specs>
-      </testcase>
-      <testcase purpose="Getting number-valued string properties on localStorage" type="compliance" status="approved" component="W3C_HTML5 APIs/Storage/Web Storage" execution_type="auto" priority="P2" id="storage_indexing_entry3">
-        <description>
-          <test_script_entry>/opt/tct-webstorage-w3c-tests/webstorage/w3c/storage_indexing.html?total_num=8&amp;amp;locator_key=id&amp;amp;value=3</test_script_entry>
-        </description>
-        <specs>
-          <spec>
-            <spec_assertion element_type="attribute" element_name="localStorage" interface="Storage" specification="Web Storage (Partial)" section="Storage" category="Tizen W3C API Specifications"/>
-            <spec_url>https://w3c.github.io/webstorage/#the-storage-interface</spec_url>
-            <spec_statement/>
-          </spec>
-        </specs>
-      </testcase>
-      <testcase purpose="Getting existing number-valued properties on localStorage" type="compliance" status="approved" component="W3C_HTML5 APIs/Storage/Web Storage" execution_type="auto" priority="P2" id="storage_indexing_entry4">
-        <description>
-          <test_script_entry>/opt/tct-webstorage-w3c-tests/webstorage/w3c/storage_indexing.html?total_num=8&amp;amp;locator_key=id&amp;amp;value=4</test_script_entry>
-        </description>
-        <specs>
-          <spec>
-            <spec_assertion element_type="attribute" element_name="localStorage" interface="Storage" specification="Web Storage (Partial)" section="Storage" category="Tizen W3C API Specifications"/>
-            <spec_url>https://w3c.github.io/webstorage/#the-storage-interface</spec_url>
-            <spec_statement/>
-          </spec>
-        </specs>
-      </testcase>
-      <testcase purpose="Indexed getter on sessionStorage" type="compliance" status="approved" component="W3C_HTML5 APIs/Storage/Web Storage" execution_type="auto" priority="P2" id="storage_indexing_entry5">
-        <description>
-          <test_script_entry>/opt/tct-webstorage-w3c-tests/webstorage/w3c/storage_indexing.html?total_num=8&amp;amp;locator_key=id&amp;amp;value=5</test_script_entry>
-        </description>
-        <specs>
-          <spec>
-            <spec_assertion element_type="attribute" element_name="sessionStorage" interface="Storage" specification="Web Storage (Partial)" section="Storage" category="Tizen W3C API Specifications"/>
-            <spec_url>https://w3c.github.io/webstorage/#the-storage-interface</spec_url>
-            <spec_statement/>
-          </spec>
-        </specs>
-      </testcase>
-      <testcase purpose="Getting number properties on sessionStorage" type="compliance" status="approved" component="W3C_HTML5 APIs/Storage/Web Storage" execution_type="auto" priority="P2" id="storage_indexing_entry6">
-        <description>
-          <test_script_entry>/opt/tct-webstorage-w3c-tests/webstorage/w3c/storage_indexing.html?total_num=8&amp;amp;locator_key=id&amp;amp;value=6</test_script_entry>
-        </description>
-        <specs>
-          <spec>
-            <spec_assertion element_type="attribute" element_name="sessionStorage" interface="Storage" specification="Web Storage (Partial)" section="Storage" category="Tizen W3C API Specifications"/>
-            <spec_url>https://w3c.github.io/webstorage/#the-storage-interface</spec_url>
-            <spec_statement/>
-          </spec>
-        </specs>
-      </testcase>
-      <testcase purpose="Getting number-valued string properties on sessionStorage" type="compliance" status="approved" component="W3C_HTML5 APIs/Storage/Web Storage" execution_type="auto" priority="P2" id="storage_indexing_entry7">
-        <description>
-          <test_script_entry>/opt/tct-webstorage-w3c-tests/webstorage/w3c/storage_indexing.html?total_num=8&amp;amp;locator_key=id&amp;amp;value=7</test_script_entry>
-        </description>
-        <specs>
-          <spec>
-            <spec_assertion element_type="attribute" element_name="sessionStorage" interface="Storage" specification="Web Storage (Partial)" section="Storage" category="Tizen W3C API Specifications"/>
-            <spec_url>https://w3c.github.io/webstorage/#the-storage-interface</spec_url>
-            <spec_statement/>
-          </spec>
-        </specs>
-      </testcase>
-      <testcase purpose="Getting existing number-valued properties on sessionStorage" type="compliance" status="approved" component="W3C_HTML5 APIs/Storage/Web Storage" execution_type="auto" priority="P2" id="storage_indexing_entry8">
-        <description>
-          <test_script_entry>/opt/tct-webstorage-w3c-tests/webstorage/w3c/storage_indexing.html?total_num=8&amp;amp;locator_key=id&amp;amp;value=8</test_script_entry>
-        </description>
-        <specs>
-          <spec>
-            <spec_assertion element_type="attribute" element_name="sessionStorage" interface="Storage" specification="Web Storage (Partial)" section="Storage" category="Tizen W3C API Specifications"/>
-            <spec_url>https://w3c.github.io/webstorage/#the-storage-interface</spec_url>
-            <spec_statement/>
-          </spec>
-        </specs>
-      </testcase>
-      <testcase purpose="localStorage.key" type="compliance" status="approved" component="W3C_HTML5 APIs/Storage/Web Storage" execution_type="auto" priority="P2" id="storage_key_entry1">
-        <description>
-          <test_script_entry>/opt/tct-webstorage-w3c-tests/webstorage/w3c/storage_key.html?total_num=22&amp;amp;locator_key=id&amp;amp;value=1</test_script_entry>
+          <test_script_entry>/opt/tct-webstorage-w3c-tests/webstorage/w3c/storage_key.html</test_script_entry>
         </description>
         <specs>
           <spec>
@@ -939,9 +351,9 @@
           </spec>
         </specs>
       </testcase>
-      <testcase purpose="localStorage.key(0) should return the right thing" type="compliance" status="approved" component="W3C_HTML5 APIs/Storage/Web Storage" execution_type="auto" priority="P2" id="storage_key_entry2">
+      <testcase purpose="Storage key() with empty string Test" type="compliance" status="approved" component="W3C_HTML5 APIs/Storage/Web Storage" execution_type="auto" priority="P2" id="storage_key_empty_string_entry1" subcase="2">
         <description>
-          <test_script_entry>/opt/tct-webstorage-w3c-tests/webstorage/w3c/storage_key.html?total_num=22&amp;amp;locator_key=id&amp;amp;value=2</test_script_entry>
+          <test_script_entry>/opt/tct-webstorage-w3c-tests/webstorage/w3c/storage_key_empty_string.html</test_script_entry>
         </description>
         <specs>
           <spec>
@@ -951,309 +363,9 @@
           </spec>
         </specs>
       </testcase>
-      <testcase purpose="localStorage.key(4294967296) should return the right thing" type="compliance" status="approved" component="W3C_HTML5 APIs/Storage/Web Storage" execution_type="auto" priority="P2" id="storage_key_entry3">
+      <testcase purpose="Storage length Test" type="compliance" status="approved" component="W3C_HTML5 APIs/Storage/Web Storage" execution_type="auto" priority="P2" id="torage_length" subcase="4">
         <description>
-          <test_script_entry>/opt/tct-webstorage-w3c-tests/webstorage/w3c/storage_key.html?total_num=22&amp;amp;locator_key=id&amp;amp;value=3</test_script_entry>
-        </description>
-        <specs>
-          <spec>
-            <spec_assertion element_type="method" element_name="key" interface="Storage" specification="Web Storage (Partial)" section="Storage" category="Tizen W3C API Specifications"/>
-            <spec_url>https://w3c.github.io/webstorage/#the-storage-interface</spec_url>
-            <spec_statement/>
-          </spec>
-        </specs>
-      </testcase>
-      <testcase purpose="localStorage.key(1) should return the right thing" type="compliance" status="approved" component="W3C_HTML5 APIs/Storage/Web Storage" execution_type="auto" priority="P2" id="storage_key_entry4">
-        <description>
-          <test_script_entry>/opt/tct-webstorage-w3c-tests/webstorage/w3c/storage_key.html?total_num=22&amp;amp;locator_key=id&amp;amp;value=4</test_script_entry>
-        </description>
-        <specs>
-          <spec>
-            <spec_assertion element_type="method" element_name="key" interface="Storage" specification="Web Storage (Partial)" section="Storage" category="Tizen W3C API Specifications"/>
-            <spec_url>https://w3c.github.io/webstorage/#the-storage-interface</spec_url>
-            <spec_statement/>
-          </spec>
-        </specs>
-      </testcase>
-      <testcase purpose="localStorage.key(4294967297) should return the right thing" type="compliance" status="approved" component="W3C_HTML5 APIs/Storage/Web Storage" execution_type="auto" priority="P2" id="storage_key_entry5">
-        <description>
-          <test_script_entry>/opt/tct-webstorage-w3c-tests/webstorage/w3c/storage_key.html?total_num=22&amp;amp;locator_key=id&amp;amp;value=5</test_script_entry>
-        </description>
-        <specs>
-          <spec>
-            <spec_assertion element_type="method" element_name="key" interface="Storage" specification="Web Storage (Partial)" section="Storage" category="Tizen W3C API Specifications"/>
-            <spec_url>https://w3c.github.io/webstorage/#the-storage-interface</spec_url>
-            <spec_statement/>
-          </spec>
-        </specs>
-      </testcase>
-      <testcase purpose="localStorage.key(2) should return the right thing" type="compliance" status="approved" component="W3C_HTML5 APIs/Storage/Web Storage" execution_type="auto" priority="P2" id="storage_key_entry6">
-        <description>
-          <test_script_entry>/opt/tct-webstorage-w3c-tests/webstorage/w3c/storage_key.html?total_num=22&amp;amp;locator_key=id&amp;amp;value=6</test_script_entry>
-        </description>
-        <specs>
-          <spec>
-            <spec_assertion element_type="method" element_name="key" interface="Storage" specification="Web Storage (Partial)" section="Storage" category="Tizen W3C API Specifications"/>
-            <spec_url>https://w3c.github.io/webstorage/#the-storage-interface</spec_url>
-            <spec_statement/>
-          </spec>
-        </specs>
-      </testcase>
-      <testcase purpose="localStorage.key(4294967298) should return the right thing" type="compliance" status="approved" component="W3C_HTML5 APIs/Storage/Web Storage" execution_type="auto" priority="P2" id="storage_key_entry7">
-        <description>
-          <test_script_entry>/opt/tct-webstorage-w3c-tests/webstorage/w3c/storage_key.html?total_num=22&amp;amp;locator_key=id&amp;amp;value=7</test_script_entry>
-        </description>
-        <specs>
-          <spec>
-            <spec_assertion element_type="method" element_name="key" interface="Storage" specification="Web Storage (Partial)" section="Storage" category="Tizen W3C API Specifications"/>
-            <spec_url>https://w3c.github.io/webstorage/#the-storage-interface</spec_url>
-            <spec_statement/>
-          </spec>
-        </specs>
-      </testcase>
-      <testcase purpose="localStorage.key(3) should return the right thing" type="compliance" status="approved" component="W3C_HTML5 APIs/Storage/Web Storage" execution_type="auto" priority="P2" id="storage_key_entry8">
-        <description>
-          <test_script_entry>/opt/tct-webstorage-w3c-tests/webstorage/w3c/storage_key.html?total_num=22&amp;amp;locator_key=id&amp;amp;value=8</test_script_entry>
-        </description>
-        <specs>
-          <spec>
-            <spec_assertion element_type="method" element_name="key" interface="Storage" specification="Web Storage (Partial)" section="Storage" category="Tizen W3C API Specifications"/>
-            <spec_url>https://w3c.github.io/webstorage/#the-storage-interface</spec_url>
-            <spec_statement/>
-          </spec>
-        </specs>
-      </testcase>
-      <testcase purpose="localStorage.key(4294967299) should return the right thing" type="compliance" status="approved" component="W3C_HTML5 APIs/Storage/Web Storage" execution_type="auto" priority="P2" id="storage_key_entry9">
-        <description>
-          <test_script_entry>/opt/tct-webstorage-w3c-tests/webstorage/w3c/storage_key.html?total_num=22&amp;amp;locator_key=id&amp;amp;value=9</test_script_entry>
-        </description>
-        <specs>
-          <spec>
-            <spec_assertion element_type="method" element_name="key" interface="Storage" specification="Web Storage (Partial)" section="Storage" category="Tizen W3C API Specifications"/>
-            <spec_url>https://w3c.github.io/webstorage/#the-storage-interface</spec_url>
-            <spec_statement/>
-          </spec>
-        </specs>
-      </testcase>
-      <testcase purpose="localStorage.key() should return null for out-of-range arguments" type="compliance" status="approved" component="W3C_HTML5 APIs/Storage/Web Storage" execution_type="auto" priority="P2" id="storage_key_entry10">
-        <description>
-          <test_script_entry>/opt/tct-webstorage-w3c-tests/webstorage/w3c/storage_key.html?total_num=22&amp;amp;locator_key=id&amp;amp;value=10</test_script_entry>
-        </description>
-        <specs>
-          <spec>
-            <spec_assertion element_type="method" element_name="key" interface="Storage" specification="Web Storage (Partial)" section="Storage" category="Tizen W3C API Specifications"/>
-            <spec_url>https://w3c.github.io/webstorage/#the-storage-interface</spec_url>
-            <spec_statement/>
-          </spec>
-        </specs>
-      </testcase>
-      <testcase purpose="localStorage.key with value changes" type="compliance" status="approved" component="W3C_HTML5 APIs/Storage/Web Storage" execution_type="auto" priority="P2" id="storage_key_entry11">
-        <description>
-          <test_script_entry>/opt/tct-webstorage-w3c-tests/webstorage/w3c/storage_key.html?total_num=22&amp;amp;locator_key=id&amp;amp;value=11</test_script_entry>
-        </description>
-        <specs>
-          <spec>
-            <spec_assertion element_type="method" element_name="key" interface="Storage" specification="Web Storage (Partial)" section="Storage" category="Tizen W3C API Specifications"/>
-            <spec_url>https://w3c.github.io/webstorage/#the-storage-interface</spec_url>
-            <spec_statement/>
-          </spec>
-        </specs>
-      </testcase>
-      <testcase purpose="sessionStorage.key" type="compliance" status="approved" component="W3C_HTML5 APIs/Storage/Web Storage" execution_type="auto" priority="P2" id="storage_key_entry12">
-        <description>
-          <test_script_entry>/opt/tct-webstorage-w3c-tests/webstorage/w3c/storage_key.html?total_num=22&amp;amp;locator_key=id&amp;amp;value=12</test_script_entry>
-        </description>
-        <specs>
-          <spec>
-            <spec_assertion element_type="method" element_name="key" interface="Storage" specification="Web Storage (Partial)" section="Storage" category="Tizen W3C API Specifications"/>
-            <spec_url>https://w3c.github.io/webstorage/#the-storage-interface</spec_url>
-            <spec_statement/>
-          </spec>
-        </specs>
-      </testcase>
-      <testcase purpose="sessionStorage.key(0) should return the right thing" type="compliance" status="approved" component="W3C_HTML5 APIs/Storage/Web Storage" execution_type="auto" priority="P2" id="storage_key_entry13">
-        <description>
-          <test_script_entry>/opt/tct-webstorage-w3c-tests/webstorage/w3c/storage_key.html?total_num=22&amp;amp;locator_key=id&amp;amp;value=13</test_script_entry>
-        </description>
-        <specs>
-          <spec>
-            <spec_assertion element_type="method" element_name="key" interface="Storage" specification="Web Storage (Partial)" section="Storage" category="Tizen W3C API Specifications"/>
-            <spec_url>https://w3c.github.io/webstorage/#the-storage-interface</spec_url>
-            <spec_statement/>
-          </spec>
-        </specs>
-      </testcase>
-      <testcase purpose="sessionStorage.key(4294967296) should return the right thing" type="compliance" status="approved" component="W3C_HTML5 APIs/Storage/Web Storage" execution_type="auto" priority="P2" id="storage_key_entry14">
-        <description>
-          <test_script_entry>/opt/tct-webstorage-w3c-tests/webstorage/w3c/storage_key.html?total_num=22&amp;amp;locator_key=id&amp;amp;value=14</test_script_entry>
-        </description>
-        <specs>
-          <spec>
-            <spec_assertion element_type="method" element_name="key" interface="Storage" specification="Web Storage (Partial)" section="Storage" category="Tizen W3C API Specifications"/>
-            <spec_url>https://w3c.github.io/webstorage/#the-storage-interface</spec_url>
-            <spec_statement/>
-          </spec>
-        </specs>
-      </testcase>
-      <testcase purpose="sessionStorage.key(1) should return the right thing" type="compliance" status="approved" component="W3C_HTML5 APIs/Storage/Web Storage" execution_type="auto" priority="P2" id="storage_key_entry15">
-        <description>
-          <test_script_entry>/opt/tct-webstorage-w3c-tests/webstorage/w3c/storage_key.html?total_num=22&amp;amp;locator_key=id&amp;amp;value=15</test_script_entry>
-        </description>
-        <specs>
-          <spec>
-            <spec_assertion element_type="method" element_name="key" interface="Storage" specification="Web Storage (Partial)" section="Storage" category="Tizen W3C API Specifications"/>
-            <spec_url>https://w3c.github.io/webstorage/#the-storage-interface</spec_url>
-            <spec_statement/>
-          </spec>
-        </specs>
-      </testcase>
-      <testcase purpose="sessionStorage.key(4294967297) should return the right thing" type="compliance" status="approved" component="W3C_HTML5 APIs/Storage/Web Storage" execution_type="auto" priority="P2" id="storage_key_entry16">
-        <description>
-          <test_script_entry>/opt/tct-webstorage-w3c-tests/webstorage/w3c/storage_key.html?total_num=22&amp;amp;locator_key=id&amp;amp;value=16</test_script_entry>
-        </description>
-        <specs>
-          <spec>
-            <spec_assertion element_type="method" element_name="key" interface="Storage" specification="Web Storage (Partial)" section="Storage" category="Tizen W3C API Specifications"/>
-            <spec_url>https://w3c.github.io/webstorage/#the-storage-interface</spec_url>
-            <spec_statement/>
-          </spec>
-        </specs>
-      </testcase>
-      <testcase purpose="sessionStorage.key(2) should return the right thing" type="compliance" status="approved" component="W3C_HTML5 APIs/Storage/Web Storage" execution_type="auto" priority="P2" id="storage_key_entry17">
-        <description>
-          <test_script_entry>/opt/tct-webstorage-w3c-tests/webstorage/w3c/storage_key.html?total_num=22&amp;amp;locator_key=id&amp;amp;value=17</test_script_entry>
-        </description>
-        <specs>
-          <spec>
-            <spec_assertion element_type="method" element_name="key" interface="Storage" specification="Web Storage (Partial)" section="Storage" category="Tizen W3C API Specifications"/>
-            <spec_url>https://w3c.github.io/webstorage/#the-storage-interface</spec_url>
-            <spec_statement/>
-          </spec>
-        </specs>
-      </testcase>
-      <testcase purpose="sessionStorage.key(4294967298) should return the right thing" type="compliance" status="approved" component="W3C_HTML5 APIs/Storage/Web Storage" execution_type="auto" priority="P2" id="storage_key_entry18">
-        <description>
-          <test_script_entry>/opt/tct-webstorage-w3c-tests/webstorage/w3c/storage_key.html?total_num=22&amp;amp;locator_key=id&amp;amp;value=18</test_script_entry>
-        </description>
-        <specs>
-          <spec>
-            <spec_assertion element_type="method" element_name="key" interface="Storage" specification="Web Storage (Partial)" section="Storage" category="Tizen W3C API Specifications"/>
-            <spec_url>https://w3c.github.io/webstorage/#the-storage-interface</spec_url>
-            <spec_statement/>
-          </spec>
-        </specs>
-      </testcase>
-      <testcase purpose="sessionStorage.key(3) should return the right thing" type="compliance" status="approved" component="W3C_HTML5 APIs/Storage/Web Storage" execution_type="auto" priority="P2" id="storage_key_entry19">
-        <description>
-          <test_script_entry>/opt/tct-webstorage-w3c-tests/webstorage/w3c/storage_key.html?total_num=22&amp;amp;locator_key=id&amp;amp;value=19</test_script_entry>
-        </description>
-        <specs>
-          <spec>
-            <spec_assertion element_type="method" element_name="key" interface="Storage" specification="Web Storage (Partial)" section="Storage" category="Tizen W3C API Specifications"/>
-            <spec_url>https://w3c.github.io/webstorage/#the-storage-interface</spec_url>
-            <spec_statement/>
-          </spec>
-        </specs>
-      </testcase>
-      <testcase purpose="sessionStorage.key(4294967299) should return the right thing" type="compliance" status="approved" component="W3C_HTML5 APIs/Storage/Web Storage" execution_type="auto" priority="P2" id="storage_key_entry20">
-        <description>
-          <test_script_entry>/opt/tct-webstorage-w3c-tests/webstorage/w3c/storage_key.html?total_num=22&amp;amp;locator_key=id&amp;amp;value=20</test_script_entry>
-        </description>
-        <specs>
-          <spec>
-            <spec_assertion element_type="method" element_name="key" interface="Storage" specification="Web Storage (Partial)" section="Storage" category="Tizen W3C API Specifications"/>
-            <spec_url>https://w3c.github.io/webstorage/#the-storage-interface</spec_url>
-            <spec_statement/>
-          </spec>
-        </specs>
-      </testcase>
-      <testcase purpose="sessionStorage.key() should return null for out-of-range arguments" type="compliance" status="approved" component="W3C_HTML5 APIs/Storage/Web Storage" execution_type="auto" priority="P2" id="storage_key_entry21">
-        <description>
-          <test_script_entry>/opt/tct-webstorage-w3c-tests/webstorage/w3c/storage_key.html?total_num=22&amp;amp;locator_key=id&amp;amp;value=21</test_script_entry>
-        </description>
-        <specs>
-          <spec>
-            <spec_assertion element_type="method" element_name="key" interface="Storage" specification="Web Storage (Partial)" section="Storage" category="Tizen W3C API Specifications"/>
-            <spec_url>https://w3c.github.io/webstorage/#the-storage-interface</spec_url>
-            <spec_statement/>
-          </spec>
-        </specs>
-      </testcase>
-      <testcase purpose="sessionStorage.key with value changes" type="compliance" status="approved" component="W3C_HTML5 APIs/Storage/Web Storage" execution_type="auto" priority="P2" id="storage_key_entry22">
-        <description>
-          <test_script_entry>/opt/tct-webstorage-w3c-tests/webstorage/w3c/storage_key.html?total_num=22&amp;amp;locator_key=id&amp;amp;value=22</test_script_entry>
-        </description>
-        <specs>
-          <spec>
-            <spec_assertion element_type="method" element_name="key" interface="Storage" specification="Web Storage (Partial)" section="Storage" category="Tizen W3C API Specifications"/>
-            <spec_url>https://w3c.github.io/webstorage/#the-storage-interface</spec_url>
-            <spec_statement/>
-          </spec>
-        </specs>
-      </testcase>
-      <testcase purpose="localStorage.key with empty string" type="compliance" status="approved" component="W3C_HTML5 APIs/Storage/Web Storage" execution_type="auto" priority="P2" id="storage_key_empty_string_entry1">
-        <description>
-          <test_script_entry>/opt/tct-webstorage-w3c-tests/webstorage/w3c/storage_key_empty_string.html?total_num=2&amp;amp;locator_key=id&amp;amp;value=1</test_script_entry>
-        </description>
-        <specs>
-          <spec>
-            <spec_assertion element_type="method" element_name="key" interface="Storage" specification="Web Storage (Partial)" section="Storage" category="Tizen W3C API Specifications"/>
-            <spec_url>https://w3c.github.io/webstorage/#the-storage-interface</spec_url>
-            <spec_statement/>
-          </spec>
-        </specs>
-      </testcase>
-      <testcase purpose="sessionStorage.key with empty string" type="compliance" status="approved" component="W3C_HTML5 APIs/Storage/Web Storage" execution_type="auto" priority="P2" id="storage_key_empty_string_entry2">
-        <description>
-          <test_script_entry>/opt/tct-webstorage-w3c-tests/webstorage/w3c/storage_key_empty_string.html?total_num=2&amp;amp;locator_key=id&amp;amp;value=2</test_script_entry>
-        </description>
-        <specs>
-          <spec>
-            <spec_assertion element_type="method" element_name="key" interface="Storage" specification="Web Storage (Partial)" section="Storage" category="Tizen W3C API Specifications"/>
-            <spec_url>https://w3c.github.io/webstorage/#the-storage-interface</spec_url>
-            <spec_statement/>
-          </spec>
-        </specs>
-      </testcase>
-      <testcase purpose="localStorage.length (method access)" type="compliance" status="approved" component="W3C_HTML5 APIs/Storage/Web Storage" execution_type="auto" priority="P2" id="storage_length_entry1">
-        <description>
-          <test_script_entry>/opt/tct-webstorage-w3c-tests/webstorage/w3c/storage_length.html?total_num=4&amp;amp;locator_key=id&amp;amp;value=1</test_script_entry>
-        </description>
-        <specs>
-          <spec>
-            <spec_assertion element_type="attribute" element_name="length" interface="Storage" specification="Web Storage (Partial)" section="Storage" category="Tizen W3C API Specifications"/>
-            <spec_url>https://w3c.github.io/webstorage/#the-storage-interface</spec_url>
-            <spec_statement/>
-          </spec>
-        </specs>
-      </testcase>
-      <testcase purpose=" localStorage.length (proprty access)" type="compliance" status="approved" component="W3C_HTML5 APIs/Storage/Web Storage" execution_type="auto" priority="P2" id="storage_length_entry2">
-        <description>
-          <test_script_entry>/opt/tct-webstorage-w3c-tests/webstorage/w3c/storage_length.html?total_num=4&amp;amp;locator_key=id&amp;amp;value=2</test_script_entry>
-        </description>
-        <specs>
-          <spec>
-            <spec_assertion element_type="attribute" element_name="length" interface="Storage" specification="Web Storage (Partial)" section="Storage" category="Tizen W3C API Specifications"/>
-            <spec_url>https://w3c.github.io/webstorage/#the-storage-interface</spec_url>
-            <spec_statement/>
-          </spec>
-        </specs>
-      </testcase>
-      <testcase purpose="sessionStorage.length (method access)" type="compliance" status="approved" component="W3C_HTML5 APIs/Storage/Web Storage" execution_type="auto" priority="P2" id="storage_length_entry3">
-        <description>
-          <test_script_entry>/opt/tct-webstorage-w3c-tests/webstorage/w3c/storage_length.html?total_num=4&amp;amp;locator_key=id&amp;amp;value=3</test_script_entry>
-        </description>
-        <specs>
-          <spec>
-            <spec_assertion element_type="attribute" element_name="length" interface="Storage" specification="Web Storage (Partial)" section="Storage" category="Tizen W3C API Specifications"/>
-            <spec_url>https://w3c.github.io/webstorage/#the-storage-interface</spec_url>
-            <spec_statement/>
-          </spec>
-        </specs>
-      </testcase>
-      <testcase purpose="sessionStorage.length (proprty access)" type="compliance" status="approved" component="W3C_HTML5 APIs/Storage/Web Storage" execution_type="auto" priority="P2" id="storage_length_entry4">
-        <description>
-          <test_script_entry>/opt/tct-webstorage-w3c-tests/webstorage/w3c/storage_length.html?total_num=4&amp;amp;locator_key=id&amp;amp;value=4</test_script_entry>
+          <test_script_entry>/opt/tct-webstorage-w3c-tests/webstorage/w3c/storage_length.html</test_script_entry>
         </description>
         <specs>
           <spec>
@@ -1275,93 +387,9 @@
           </spec>
         </specs>
       </testcase>
-      <testcase purpose="localStorage.removeItem()" type="compliance" status="approved" component="W3C_HTML5 APIs/Storage/Web Storage" execution_type="auto" priority="P2" id="storage_removeitem_entry1">
+      <testcase purpose="Storage removeItem(key) Test" type="compliance" status="approved" component="W3C_HTML5 APIs/Storage/Web Storage" execution_type="auto" priority="P2" id="storage_removeitem" subcase="8">
         <description>
-          <test_script_entry>/opt/tct-webstorage-w3c-tests/webstorage/w3c/storage_removeitem.html?total_num=8&amp;amp;locator_key=id&amp;amp;value=1</test_script_entry>
-        </description>
-        <specs>
-          <spec>
-            <spec_assertion element_type="method" element_name="removeItem" interface="Storage" specification="Web Storage (Partial)" section="Storage" category="Tizen W3C API Specifications"/>
-            <spec_url>https://w3c.github.io/webstorage/#the-storage-interface</spec_url>
-            <spec_statement/>
-          </spec>
-        </specs>
-      </testcase>
-      <testcase purpose="delete localStorage[]" type="compliance" status="approved" component="W3C_HTML5 APIs/Storage/Web Storage" execution_type="auto" priority="P2" id="storage_removeitem_entry2">
-        <description>
-          <test_script_entry>/opt/tct-webstorage-w3c-tests/webstorage/w3c/storage_removeitem.html?total_num=8&amp;amp;locator_key=id&amp;amp;value=2</test_script_entry>
-        </description>
-        <specs>
-          <spec>
-            <spec_assertion element_type="method" element_name="removeItem" interface="Storage" specification="Web Storage (Partial)" section="Storage" category="Tizen W3C API Specifications"/>
-            <spec_url>https://w3c.github.io/webstorage/#the-storage-interface</spec_url>
-            <spec_statement/>
-          </spec>
-        </specs>
-      </testcase>
-      <testcase purpose="localStorage.removeItem(null)" type="compliance" status="approved" component="W3C_HTML5 APIs/Storage/Web Storage" execution_type="auto" priority="P2" id="storage_removeitem_entry3">
-        <description>
-          <test_script_entry>/opt/tct-webstorage-w3c-tests/webstorage/w3c/storage_removeitem.html?total_num=8&amp;amp;locator_key=id&amp;amp;value=3</test_script_entry>
-        </description>
-        <specs>
-          <spec>
-            <spec_assertion element_type="method" element_name="removeItem" interface="Storage" specification="Web Storage (Partial)" section="Storage" category="Tizen W3C API Specifications"/>
-            <spec_url>https://w3c.github.io/webstorage/#the-storage-interface</spec_url>
-            <spec_statement/>
-          </spec>
-        </specs>
-      </testcase>
-      <testcase purpose="localStorage.removeItem(undefined) " type="compliance" status="approved" component="W3C_HTML5 APIs/Storage/Web Storage" execution_type="auto" priority="P2" id="storage_removeitem_entry4">
-        <description>
-          <test_script_entry>/opt/tct-webstorage-w3c-tests/webstorage/w3c/storage_removeitem.html?total_num=8&amp;amp;locator_key=id&amp;amp;value=4</test_script_entry>
-        </description>
-        <specs>
-          <spec>
-            <spec_assertion element_type="method" element_name="removeItem" interface="Storage" specification="Web Storage (Partial)" section="Storage" category="Tizen W3C API Specifications"/>
-            <spec_url>https://w3c.github.io/webstorage/#the-storage-interface</spec_url>
-            <spec_statement/>
-          </spec>
-        </specs>
-      </testcase>
-      <testcase purpose="sessionStorage.removeItem()" type="compliance" status="approved" component="W3C_HTML5 APIs/Storage/Web Storage" execution_type="auto" priority="P2" id="storage_removeitem_entry5">
-        <description>
-          <test_script_entry>/opt/tct-webstorage-w3c-tests/webstorage/w3c/storage_removeitem.html?total_num=8&amp;amp;locator_key=id&amp;amp;value=5</test_script_entry>
-        </description>
-        <specs>
-          <spec>
-            <spec_assertion element_type="method" element_name="removeItem" interface="Storage" specification="Web Storage (Partial)" section="Storage" category="Tizen W3C API Specifications"/>
-            <spec_url>https://w3c.github.io/webstorage/#the-storage-interface</spec_url>
-            <spec_statement/>
-          </spec>
-        </specs>
-      </testcase>
-      <testcase purpose="delete sessionStorage[]" type="compliance" status="approved" component="W3C_HTML5 APIs/Storage/Web Storage" execution_type="auto" priority="P2" id="storage_removeitem_entry6">
-        <description>
-          <test_script_entry>/opt/tct-webstorage-w3c-tests/webstorage/w3c/storage_removeitem.html?total_num=8&amp;amp;locator_key=id&amp;amp;value=6</test_script_entry>
-        </description>
-        <specs>
-          <spec>
-            <spec_assertion element_type="method" element_name="removeItem" interface="Storage" specification="Web Storage (Partial)" section="Storage" category="Tizen W3C API Specifications"/>
-            <spec_url>https://w3c.github.io/webstorage/#the-storage-interface</spec_url>
-            <spec_statement/>
-          </spec>
-        </specs>
-      </testcase>
-      <testcase purpose="sessionStorage.removeItem(null) " type="compliance" status="approved" component="W3C_HTML5 APIs/Storage/Web Storage" execution_type="auto" priority="P2" id="storage_removeitem_entry7">
-        <description>
-          <test_script_entry>/opt/tct-webstorage-w3c-tests/webstorage/w3c/storage_removeitem.html?total_num=8&amp;amp;locator_key=id&amp;amp;value=7</test_script_entry>
-        </description>
-        <specs>
-          <spec>
-            <spec_assertion element_type="method" element_name="removeItem" interface="Storage" specification="Web Storage (Partial)" section="Storage" category="Tizen W3C API Specifications"/>
-            <spec_url>https://w3c.github.io/webstorage/#the-storage-interface</spec_url>
-            <spec_statement/>
-          </spec>
-        </specs>
-      </testcase>
-      <testcase purpose="sessionStorage.removeItem(undefined) " type="compliance" status="approved" component="W3C_HTML5 APIs/Storage/Web Storage" execution_type="auto" priority="P2" id="storage_removeitem_entry8">
-        <description>
-          <test_script_entry>/opt/tct-webstorage-w3c-tests/webstorage/w3c/storage_removeitem.html?total_num=8&amp;amp;locator_key=id&amp;amp;value=8</test_script_entry>
+          <test_script_entry>/opt/tct-webstorage-w3c-tests/webstorage/w3c/storage_removeitem.html</test_script_entry>
         </description>
         <specs>
           <spec>
@@ -1383,9 +411,9 @@
           </spec>
         </specs>
       </testcase>
-      <testcase purpose="localStorage.setItem()" type="compliance" status="approved" component="W3C_HTML5 APIs/Storage/Web Storage" execution_type="auto" priority="P2" id="storage_setitem_entry1">
+      <testcase purpose="Storage setItem(key, value) Test" type="compliance" status="approved" component="W3C_HTML5 APIs/Storage/Web Storage" execution_type="auto" priority="P2" id="storage_setitem" subcase="26">
         <description>
-          <test_script_entry>/opt/tct-webstorage-w3c-tests/webstorage/w3c/storage_setitem.html?total_num=26&amp;amp;locator_key=id&amp;amp;value=1</test_script_entry>
+          <test_script_entry>/opt/tct-webstorage-w3c-tests/webstorage/w3c/storage_setitem.html</test_script_entry>
         </description>
         <specs>
           <spec>
@@ -1395,309 +423,9 @@
           </spec>
         </specs>
       </testcase>
-      <testcase purpose="localStorage[]" type="compliance" status="approved" component="W3C_HTML5 APIs/Storage/Web Storage" execution_type="auto" priority="P2" id="storage_setitem_entry2">
+      <testcase purpose="Storage set value with enumerate Test" type="compliance" status="approved" component="W3C_HTML5 APIs/Storage/Web Storage" execution_type="auto" priority="P2" id="storage_set_value_enumerate" subcase="2">
         <description>
-          <test_script_entry>/opt/tct-webstorage-w3c-tests/webstorage/w3c/storage_setitem.html?total_num=26&amp;amp;locator_key=id&amp;amp;value=2</test_script_entry>
-        </description>
-        <specs>
-          <spec>
-            <spec_assertion element_type="method" element_name="setItem" interface="Storage" specification="Web Storage (Partial)" section="Storage" category="Tizen W3C API Specifications"/>
-            <spec_url>https://w3c.github.io/webstorage/#the-storage-interface</spec_url>
-            <spec_statement/>
-          </spec>
-        </specs>
-      </testcase>
-      <testcase purpose="localStorage[] update" type="compliance" status="approved" component="W3C_HTML5 APIs/Storage/Web Storage" execution_type="auto" priority="P2" id="storage_setitem_entry3">
-        <description>
-          <test_script_entry>/opt/tct-webstorage-w3c-tests/webstorage/w3c/storage_setitem.html?total_num=26&amp;amp;locator_key=id&amp;amp;value=3</test_script_entry>
-        </description>
-        <specs>
-          <spec>
-            <spec_assertion element_type="method" element_name="setItem" interface="Storage" specification="Web Storage (Partial)" section="Storage" category="Tizen W3C API Specifications"/>
-            <spec_url>https://w3c.github.io/webstorage/#the-storage-interface</spec_url>
-            <spec_statement/>
-          </spec>
-        </specs>
-      </testcase>
-      <testcase purpose="localStorage.setItem(_, null)" type="compliance" status="approved" component="W3C_HTML5 APIs/Storage/Web Storage" execution_type="auto" priority="P2" id="storage_setitem_entry4">
-        <description>
-          <test_script_entry>/opt/tct-webstorage-w3c-tests/webstorage/w3c/storage_setitem.html?total_num=26&amp;amp;locator_key=id&amp;amp;value=4</test_script_entry>
-        </description>
-        <specs>
-          <spec>
-            <spec_assertion element_type="method" element_name="setItem" interface="Storage" specification="Web Storage (Partial)" section="Storage" category="Tizen W3C API Specifications"/>
-            <spec_url>https://w3c.github.io/webstorage/#the-storage-interface</spec_url>
-            <spec_statement/>
-          </spec>
-        </specs>
-      </testcase>
-      <testcase purpose="localStorage[] = null" type="compliance" status="approved" component="W3C_HTML5 APIs/Storage/Web Storage" execution_type="auto" priority="P2" id="storage_setitem_entry5">
-        <description>
-          <test_script_entry>/opt/tct-webstorage-w3c-tests/webstorage/w3c/storage_setitem.html?total_num=26&amp;amp;locator_key=id&amp;amp;value=5</test_script_entry>
-        </description>
-        <specs>
-          <spec>
-            <spec_assertion element_type="method" element_name="setItem" interface="Storage" specification="Web Storage (Partial)" section="Storage" category="Tizen W3C API Specifications"/>
-            <spec_url>https://w3c.github.io/webstorage/#the-storage-interface</spec_url>
-            <spec_statement/>
-          </spec>
-        </specs>
-      </testcase>
-      <testcase purpose="localStorage.setItem(_, undefined)" type="compliance" status="approved" component="W3C_HTML5 APIs/Storage/Web Storage" execution_type="auto" priority="P2" id="storage_setitem_entry6">
-        <description>
-          <test_script_entry>/opt/tct-webstorage-w3c-tests/webstorage/w3c/storage_setitem.html?total_num=26&amp;amp;locator_key=id&amp;amp;value=6</test_script_entry>
-        </description>
-        <specs>
-          <spec>
-            <spec_assertion element_type="method" element_name="setItem" interface="Storage" specification="Web Storage (Partial)" section="Storage" category="Tizen W3C API Specifications"/>
-            <spec_url>https://w3c.github.io/webstorage/#the-storage-interface</spec_url>
-            <spec_statement/>
-          </spec>
-        </specs>
-      </testcase>
-      <testcase purpose="localStorage[] = undefined" type="compliance" status="approved" component="W3C_HTML5 APIs/Storage/Web Storage" execution_type="auto" priority="P2" id="storage_setitem_entry7">
-        <description>
-          <test_script_entry>/opt/tct-webstorage-w3c-tests/webstorage/w3c/storage_setitem.html?total_num=26&amp;amp;locator_key=id&amp;amp;value=7</test_script_entry>
-        </description>
-        <specs>
-          <spec>
-            <spec_assertion element_type="method" element_name="setItem" interface="Storage" specification="Web Storage (Partial)" section="Storage" category="Tizen W3C API Specifications"/>
-            <spec_url>https://w3c.github.io/webstorage/#the-storage-interface</spec_url>
-            <spec_statement/>
-          </spec>
-        </specs>
-      </testcase>
-      <testcase purpose="localStorage.setItem({ throws })" type="compliance" status="approved" component="W3C_HTML5 APIs/Storage/Web Storage" execution_type="auto" priority="P2" id="storage_setitem_entry8">
-        <description>
-          <test_script_entry>/opt/tct-webstorage-w3c-tests/webstorage/w3c/storage_setitem.html?total_num=26&amp;amp;locator_key=id&amp;amp;value=8</test_script_entry>
-        </description>
-        <specs>
-          <spec>
-            <spec_assertion element_type="method" element_name="setItem" interface="Storage" specification="Web Storage (Partial)" section="Storage" category="Tizen W3C API Specifications"/>
-            <spec_url>https://w3c.github.io/webstorage/#the-storage-interface</spec_url>
-            <spec_statement/>
-          </spec>
-        </specs>
-      </testcase>
-      <testcase purpose="localStorage[] = { throws }" type="compliance" status="approved" component="W3C_HTML5 APIs/Storage/Web Storage" execution_type="auto" priority="P2" id="storage_setitem_entry9">
-        <description>
-          <test_script_entry>/opt/tct-webstorage-w3c-tests/webstorage/w3c/storage_setitem.html?total_num=26&amp;amp;locator_key=id&amp;amp;value=9</test_script_entry>
-        </description>
-        <specs>
-          <spec>
-            <spec_assertion element_type="method" element_name="setItem" interface="Storage" specification="Web Storage (Partial)" section="Storage" category="Tizen W3C API Specifications"/>
-            <spec_url>https://w3c.github.io/webstorage/#the-storage-interface</spec_url>
-            <spec_statement/>
-          </spec>
-        </specs>
-      </testcase>
-      <testcase purpose="localStorage.setItem(undefined, _)" type="compliance" status="approved" component="W3C_HTML5 APIs/Storage/Web Storage" execution_type="auto" priority="P2" id="storage_setitem_entry10">
-        <description>
-          <test_script_entry>/opt/tct-webstorage-w3c-tests/webstorage/w3c/storage_setitem.html?total_num=26&amp;amp;locator_key=id&amp;amp;value=10</test_script_entry>
-        </description>
-        <specs>
-          <spec>
-            <spec_assertion element_type="method" element_name="setItem" interface="Storage" specification="Web Storage (Partial)" section="Storage" category="Tizen W3C API Specifications"/>
-            <spec_url>https://w3c.github.io/webstorage/#the-storage-interface</spec_url>
-            <spec_statement/>
-          </spec>
-        </specs>
-      </testcase>
-      <testcase purpose="localStorage[undefined]" type="compliance" status="approved" component="W3C_HTML5 APIs/Storage/Web Storage" execution_type="auto" priority="P2" id="storage_setitem_entry11">
-        <description>
-          <test_script_entry>/opt/tct-webstorage-w3c-tests/webstorage/w3c/storage_setitem.html?total_num=26&amp;amp;locator_key=id&amp;amp;value=11</test_script_entry>
-        </description>
-        <specs>
-          <spec>
-            <spec_assertion element_type="method" element_name="setItem" interface="Storage" specification="Web Storage (Partial)" section="Storage" category="Tizen W3C API Specifications"/>
-            <spec_url>https://w3c.github.io/webstorage/#the-storage-interface</spec_url>
-            <spec_statement/>
-          </spec>
-        </specs>
-      </testcase>
-      <testcase purpose="localStorage.setItem(null, _)" type="compliance" status="approved" component="W3C_HTML5 APIs/Storage/Web Storage" execution_type="auto" priority="P2" id="storage_setitem_entry12">
-        <description>
-          <test_script_entry>/opt/tct-webstorage-w3c-tests/webstorage/w3c/storage_setitem.html?total_num=26&amp;amp;locator_key=id&amp;amp;value=12</test_script_entry>
-        </description>
-        <specs>
-          <spec>
-            <spec_assertion element_type="method" element_name="setItem" interface="Storage" specification="Web Storage (Partial)" section="Storage" category="Tizen W3C API Specifications"/>
-            <spec_url>https://w3c.github.io/webstorage/#the-storage-interface</spec_url>
-            <spec_statement/>
-          </spec>
-        </specs>
-      </testcase>
-      <testcase purpose="localStorage[null]" type="compliance" status="approved" component="W3C_HTML5 APIs/Storage/Web Storage" execution_type="auto" priority="P2" id="storage_setitem_entry13">
-        <description>
-          <test_script_entry>/opt/tct-webstorage-w3c-tests/webstorage/w3c/storage_setitem.html?total_num=26&amp;amp;locator_key=id&amp;amp;value=13</test_script_entry>
-        </description>
-        <specs>
-          <spec>
-            <spec_assertion element_type="method" element_name="setItem" interface="Storage" specification="Web Storage (Partial)" section="Storage" category="Tizen W3C API Specifications"/>
-            <spec_url>https://w3c.github.io/webstorage/#the-storage-interface</spec_url>
-            <spec_statement/>
-          </spec>
-        </specs>
-      </testcase>
-      <testcase purpose="sessionStorage.setItem()" type="compliance" status="approved" component="W3C_HTML5 APIs/Storage/Web Storage" execution_type="auto" priority="P2" id="storage_setitem_entry14">
-        <description>
-          <test_script_entry>/opt/tct-webstorage-w3c-tests/webstorage/w3c/storage_setitem.html?total_num=26&amp;amp;locator_key=id&amp;amp;value=14</test_script_entry>
-        </description>
-        <specs>
-          <spec>
-            <spec_assertion element_type="method" element_name="setItem" interface="Storage" specification="Web Storage (Partial)" section="Storage" category="Tizen W3C API Specifications"/>
-            <spec_url>https://w3c.github.io/webstorage/#the-storage-interface</spec_url>
-            <spec_statement/>
-          </spec>
-        </specs>
-      </testcase>
-      <testcase purpose="sessionStorage[]" type="compliance" status="approved" component="W3C_HTML5 APIs/Storage/Web Storage" execution_type="auto" priority="P2" id="storage_setitem_entry15">
-        <description>
-          <test_script_entry>/opt/tct-webstorage-w3c-tests/webstorage/w3c/storage_setitem.html?total_num=26&amp;amp;locator_key=id&amp;amp;value=15</test_script_entry>
-        </description>
-        <specs>
-          <spec>
-            <spec_assertion element_type="method" element_name="setItem" interface="Storage" specification="Web Storage (Partial)" section="Storage" category="Tizen W3C API Specifications"/>
-            <spec_url>https://w3c.github.io/webstorage/#the-storage-interface</spec_url>
-            <spec_statement/>
-          </spec>
-        </specs>
-      </testcase>
-      <testcase purpose="sessionStorage[] update" type="compliance" status="approved" component="W3C_HTML5 APIs/Storage/Web Storage" execution_type="auto" priority="P2" id="storage_setitem_entry16">
-        <description>
-          <test_script_entry>/opt/tct-webstorage-w3c-tests/webstorage/w3c/storage_setitem.html?total_num=26&amp;amp;locator_key=id&amp;amp;value=16</test_script_entry>
-        </description>
-        <specs>
-          <spec>
-            <spec_assertion element_type="method" element_name="setItem" interface="Storage" specification="Web Storage (Partial)" section="Storage" category="Tizen W3C API Specifications"/>
-            <spec_url>https://w3c.github.io/webstorage/#the-storage-interface</spec_url>
-            <spec_statement/>
-          </spec>
-        </specs>
-      </testcase>
-      <testcase purpose="sessionStorage.setItem(_, null)" type="compliance" status="approved" component="W3C_HTML5 APIs/Storage/Web Storage" execution_type="auto" priority="P2" id="storage_setitem_entry17">
-        <description>
-          <test_script_entry>/opt/tct-webstorage-w3c-tests/webstorage/w3c/storage_setitem.html?total_num=26&amp;amp;locator_key=id&amp;amp;value=17</test_script_entry>
-        </description>
-        <specs>
-          <spec>
-            <spec_assertion element_type="method" element_name="setItem" interface="Storage" specification="Web Storage (Partial)" section="Storage" category="Tizen W3C API Specifications"/>
-            <spec_url>https://w3c.github.io/webstorage/#the-storage-interface</spec_url>
-            <spec_statement/>
-          </spec>
-        </specs>
-      </testcase>
-      <testcase purpose="sessionStorage[] = null" type="compliance" status="approved" component="W3C_HTML5 APIs/Storage/Web Storage" execution_type="auto" priority="P2" id="storage_setitem_entry18">
-        <description>
-          <test_script_entry>/opt/tct-webstorage-w3c-tests/webstorage/w3c/storage_setitem.html?total_num=26&amp;amp;locator_key=id&amp;amp;value=18</test_script_entry>
-        </description>
-        <specs>
-          <spec>
-            <spec_assertion element_type="method" element_name="setItem" interface="Storage" specification="Web Storage (Partial)" section="Storage" category="Tizen W3C API Specifications"/>
-            <spec_url>https://w3c.github.io/webstorage/#the-storage-interface</spec_url>
-            <spec_statement/>
-          </spec>
-        </specs>
-      </testcase>
-      <testcase purpose="sessionStorage.setItem(_, undefined)" type="compliance" status="approved" component="W3C_HTML5 APIs/Storage/Web Storage" execution_type="auto" priority="P2" id="storage_setitem_entry19">
-        <description>
-          <test_script_entry>/opt/tct-webstorage-w3c-tests/webstorage/w3c/storage_setitem.html?total_num=26&amp;amp;locator_key=id&amp;amp;value=19</test_script_entry>
-        </description>
-        <specs>
-          <spec>
-            <spec_assertion element_type="method" element_name="setItem" interface="Storage" specification="Web Storage (Partial)" section="Storage" category="Tizen W3C API Specifications"/>
-            <spec_url>https://w3c.github.io/webstorage/#the-storage-interface</spec_url>
-            <spec_statement/>
-          </spec>
-        </specs>
-      </testcase>
-      <testcase purpose="sessionStorage[] = undefined" type="compliance" status="approved" component="W3C_HTML5 APIs/Storage/Web Storage" execution_type="auto" priority="P2" id="storage_setitem_entry20">
-        <description>
-          <test_script_entry>/opt/tct-webstorage-w3c-tests/webstorage/w3c/storage_setitem.html?total_num=26&amp;amp;locator_key=id&amp;amp;value=20</test_script_entry>
-        </description>
-        <specs>
-          <spec>
-            <spec_assertion element_type="method" element_name="setItem" interface="Storage" specification="Web Storage (Partial)" section="Storage" category="Tizen W3C API Specifications"/>
-            <spec_url>https://w3c.github.io/webstorage/#the-storage-interface</spec_url>
-            <spec_statement/>
-          </spec>
-        </specs>
-      </testcase>
-      <testcase purpose="sessionStorage.setItem({ throws })" type="compliance" status="approved" component="W3C_HTML5 APIs/Storage/Web Storage" execution_type="auto" priority="P2" id="storage_setitem_entry21">
-        <description>
-          <test_script_entry>/opt/tct-webstorage-w3c-tests/webstorage/w3c/storage_setitem.html?total_num=26&amp;amp;locator_key=id&amp;amp;value=21</test_script_entry>
-        </description>
-        <specs>
-          <spec>
-            <spec_assertion element_type="method" element_name="setItem" interface="Storage" specification="Web Storage (Partial)" section="Storage" category="Tizen W3C API Specifications"/>
-            <spec_url>https://w3c.github.io/webstorage/#the-storage-interface</spec_url>
-            <spec_statement/>
-          </spec>
-        </specs>
-      </testcase>
-      <testcase purpose="sessionStorage[] = { throws } " type="compliance" status="approved" component="W3C_HTML5 APIs/Storage/Web Storage" execution_type="auto" priority="P2" id="storage_setitem_entry22">
-        <description>
-          <test_script_entry>/opt/tct-webstorage-w3c-tests/webstorage/w3c/storage_setitem.html?total_num=26&amp;amp;locator_key=id&amp;amp;value=22</test_script_entry>
-        </description>
-        <specs>
-          <spec>
-            <spec_assertion element_type="method" element_name="setItem" interface="Storage" specification="Web Storage (Partial)" section="Storage" category="Tizen W3C API Specifications"/>
-            <spec_url>https://w3c.github.io/webstorage/#the-storage-interface</spec_url>
-            <spec_statement/>
-          </spec>
-        </specs>
-      </testcase>
-      <testcase purpose="sessionStorage.setItem(undefined, _)" type="compliance" status="approved" component="W3C_HTML5 APIs/Storage/Web Storage" execution_type="auto" priority="P2" id="storage_setitem_entry23">
-        <description>
-          <test_script_entry>/opt/tct-webstorage-w3c-tests/webstorage/w3c/storage_setitem.html?total_num=26&amp;amp;locator_key=id&amp;amp;value=23</test_script_entry>
-        </description>
-        <specs>
-          <spec>
-            <spec_assertion element_type="method" element_name="setItem" interface="Storage" specification="Web Storage (Partial)" section="Storage" category="Tizen W3C API Specifications"/>
-            <spec_url>https://w3c.github.io/webstorage/#the-storage-interface</spec_url>
-            <spec_statement/>
-          </spec>
-        </specs>
-      </testcase>
-      <testcase purpose="sessionStorage[undefined]" type="compliance" status="approved" component="W3C_HTML5 APIs/Storage/Web Storage" execution_type="auto" priority="P2" id="storage_setitem_entry24">
-        <description>
-          <test_script_entry>/opt/tct-webstorage-w3c-tests/webstorage/w3c/storage_setitem.html?total_num=26&amp;amp;locator_key=id&amp;amp;value=24</test_script_entry>
-        </description>
-        <specs>
-          <spec>
-            <spec_assertion element_type="method" element_name="setItem" interface="Storage" specification="Web Storage (Partial)" section="Storage" category="Tizen W3C API Specifications"/>
-            <spec_url>https://w3c.github.io/webstorage/#the-storage-interface</spec_url>
-            <spec_statement/>
-          </spec>
-        </specs>
-      </testcase>
-      <testcase purpose="sessionStorage.setItem(null, _)" type="compliance" status="approved" component="W3C_HTML5 APIs/Storage/Web Storage" execution_type="auto" priority="P2" id="storage_setitem_entry25">
-        <description>
-          <test_script_entry>/opt/tct-webstorage-w3c-tests/webstorage/w3c/storage_setitem.html?total_num=26&amp;amp;locator_key=id&amp;amp;value=25</test_script_entry>
-        </description>
-        <specs>
-          <spec>
-            <spec_assertion element_type="method" element_name="setItem" interface="Storage" specification="Web Storage (Partial)" section="Storage" category="Tizen W3C API Specifications"/>
-            <spec_url>https://w3c.github.io/webstorage/#the-storage-interface</spec_url>
-            <spec_statement/>
-          </spec>
-        </specs>
-      </testcase>
-      <testcase purpose="sessionStorage[null]" type="compliance" status="approved" component="W3C_HTML5 APIs/Storage/Web Storage" execution_type="auto" priority="P2" id="storage_setitem_entry26">
-        <description>
-          <test_script_entry>/opt/tct-webstorage-w3c-tests/webstorage/w3c/storage_setitem.html?total_num=26&amp;amp;locator_key=id&amp;amp;value=26</test_script_entry>
-        </description>
-        <specs>
-          <spec>
-            <spec_assertion element_type="method" element_name="setItem" interface="Storage" specification="Web Storage (Partial)" section="Storage" category="Tizen W3C API Specifications"/>
-            <spec_url>https://w3c.github.io/webstorage/#the-storage-interface</spec_url>
-            <spec_statement/>
-          </spec>
-        </specs>
-      </testcase>
-      <testcase purpose="enumerate a localStorage object with the key and get the values" type="compliance" status="approved" component="W3C_HTML5 APIs/Storage/Web Storage" execution_type="auto" priority="P2" id="storage_set_value_enumerate_entry1">
-        <description>
-          <test_script_entry>/opt/tct-webstorage-w3c-tests/webstorage/w3c/storage_set_value_enumerate.html?total_num=2&amp;amp;locator_key=id&amp;amp;value=1</test_script_entry>
+          <test_script_entry>/opt/tct-webstorage-w3c-tests/webstorage/w3c/storage_set_value_enumerate.html</test_script_entry>
         </description>
         <specs>
           <spec>
@@ -1707,37 +435,13 @@
           </spec>
         </specs>
       </testcase>
-      <testcase purpose="enumerate a sessionStorage object with the key and get the values" type="compliance" status="approved" component="W3C_HTML5 APIs/Storage/Web Storage" execution_type="auto" priority="P2" id="storage_set_value_enumerate_entry2">
+      <testcase purpose="Storage only store strings Test" type="compliance" status="approved" component="W3C_HTML5 APIs/Storage/Web Storage" execution_type="auto" priority="P2" id="storage_string_conversion" subcase="2">
         <description>
-          <test_script_entry>/opt/tct-webstorage-w3c-tests/webstorage/w3c/storage_set_value_enumerate.html?total_num=2&amp;amp;locator_key=id&amp;amp;value=2</test_script_entry>
-        </description>
-        <specs>
-          <spec>
-            <spec_assertion element_type="attribute" element_name="sessionStorage" interface="Storage" specification="Web Storage (Partial)" section="Storage" category="Tizen W3C API Specifications"/>
-            <spec_url>https://w3c.github.io/webstorage/#the-storage-interface</spec_url>
-            <spec_statement/>
-          </spec>
-        </specs>
-      </testcase>
-      <testcase purpose="localStorage only stores strings " type="compliance" status="approved" component="W3C_HTML5 APIs/Storage/Web Storage" execution_type="auto" priority="P2" id="storage_string_conversion_entry1">
-        <description>
-          <test_script_entry>/opt/tct-webstorage-w3c-tests/webstorage/w3c/storage_string_conversion.html?total_num=2&amp;amp;locator_key=id&amp;amp;value=1</test_script_entry>
+          <test_script_entry>/opt/tct-webstorage-w3c-tests/webstorage/w3c/storage_string_conversion.html</test_script_entry>
         </description>
         <specs>
           <spec>
             <spec_assertion element_type="attribute" element_name="localStorage" interface="Storage" specification="Web Storage (Partial)" section="Storage" category="Tizen W3C API Specifications"/>
-            <spec_url>https://w3c.github.io/webstorage/#the-storage-interface</spec_url>
-            <spec_statement/>
-          </spec>
-        </specs>
-      </testcase>
-      <testcase purpose="sessionStorage only stores strings" type="compliance" status="approved" component="W3C_HTML5 APIs/Storage/Web Storage" execution_type="auto" priority="P2" id="storage_string_conversion_entry2">
-        <description>
-          <test_script_entry>/opt/tct-webstorage-w3c-tests/webstorage/w3c/storage_string_conversion.html?total_num=2&amp;amp;locator_key=id&amp;amp;value=2</test_script_entry>
-        </description>
-        <specs>
-          <spec>
-            <spec_assertion element_type="attribute" element_name="sessionStorage" interface="Storage" specification="Web Storage (Partial)" section="Storage" category="Tizen W3C API Specifications"/>
             <spec_url>https://w3c.github.io/webstorage/#the-storage-interface</spec_url>
             <spec_statement/>
           </spec>
