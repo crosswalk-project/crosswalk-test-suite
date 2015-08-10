@@ -198,11 +198,6 @@
           <test_script_entry>/opt/tct-audio-html5-tests/audio/audio_TimeRanges_start_exists.html</test_script_entry>
         </description>
       </testcase>
-      <testcase component="W3C_HTML5 APIs/Media/HTML5 The audio element (Partial)" execution_type="auto" id="audio_volume_normal" purpose="Check if user agent is able to set audio.volume with new value in the range 0.0 to 1.0 inclusive">
-        <description>
-          <test_script_entry>/opt/tct-audio-html5-tests/audio/w3c/audio_volume_check.html?total_num=6&amp;amp;locator_key=id&amp;amp;value=2</test_script_entry>
-        </description>
-      </testcase>
       <testcase component="W3C_HTML5 APIs/Media/HTML5 The audio element (Partial)" execution_type="auto" id="audio_MediaController_playbackState_exists" purpose="Check if audio.MediaController.playbackState attribute exists">
         <description>
           <test_script_entry>/opt/tct-audio-html5-tests/audio/audio_MediaController_playbackState_exists.html</test_script_entry>
@@ -288,11 +283,6 @@
           <test_script_entry test_script_expected_result="0">/opt/tct-audio-html5-tests/audio/w3c/networkState_property_exists.html</test_script_entry>
         </description>
       </testcase>
-      <testcase component="W3C_HTML5 APIs/Media/HTML5 The audio element (Partial)" execution_type="auto" id="audio_currentsrc_nonempty_after_setting_src" purpose="Check that audio.currentSrc returns non-empty after setting src attribute">
-        <description>
-          <test_script_entry test_script_expected_result="0">/opt/tct-audio-html5-tests/audio/w3c/currentSrc.html?total_num=18&amp;amp;locator_key=id&amp;amp;value=4</test_script_entry>
-        </description>
-      </testcase>
       <testcase component="W3C_HTML5 APIs/Media/HTML5 The audio element (Partial)" execution_type="auto" id="audio_preload_reflects_none_autoplay" purpose="Check that audio.preload reflects 'none' value even if autoplay attribute is present">
         <description>
           <test_script_entry test_script_expected_result="0">/opt/tct-audio-html5-tests/audio/w3c/preload_reflects_none_autoplay.html</test_script_entry>
@@ -303,19 +293,14 @@
           <test_script_entry test_script_expected_result="0">/opt/tct-audio-html5-tests/audio/w3c/readyState_during_loadedmetadata.html</test_script_entry>
         </description>
       </testcase>
-      <testcase component="W3C_HTML5 APIs/Media/HTML5 The audio element (Partial)" execution_type="auto" id="audio_currentsrc_empty_if_no_src" purpose="Check that audio.currentSrc returns empty if there is no source">
+      <testcase component="W3C_HTML5 APIs/Media/HTML5 The audio element (Partial)" execution_type="auto" id="audio_currentsrc" purpose="audio currentSrc Test" subcase="18">
         <description>
-          <test_script_entry test_script_expected_result="0">/opt/tct-audio-html5-tests/audio/w3c/currentSrc.html?total_num=18&amp;amp;locator_key=id&amp;amp;value=1</test_script_entry>
+          <test_script_entry test_script_expected_result="0">/opt/tct-audio-html5-tests/audio/w3c/currentSrc.html</test_script_entry>
         </description>
       </testcase>
       <testcase component="W3C_HTML5 APIs/Media/HTML5 The audio element (Partial)" execution_type="auto" id="audio_src_removal_does_not_trigger_loadstart" purpose="Check that removing audio.src attribute tiggers loadstart event">
         <description>
           <test_script_entry test_script_expected_result="0">/opt/tct-audio-html5-tests/audio/w3c/src_removal_does_not_trigger_loadstart.html</test_script_entry>
-        </description>
-      </testcase>
-      <testcase component="W3C_HTML5 APIs/Media/HTML5 The audio element (Partial)" execution_type="auto" id="audio_currentsrc_nonempty_after_adding_source_child" purpose="Check that audio.currentSrc returns non-empty if add source element">
-        <description>
-          <test_script_entry test_script_expected_result="0">/opt/tct-audio-html5-tests/audio/w3c/currentSrc.html?total_num=18&amp;amp;locator_key=id&amp;amp;value=5</test_script_entry>
         </description>
       </testcase>
       <testcase component="W3C_HTML5 APIs/Media/HTML5 The audio element (Partial)" execution_type="auto" id="audio_canplaytype_mp4_supported_but_no_codecs_parameter" purpose="Check that audio.canPlayType method supported mp4 format codecs parameter">
@@ -338,39 +323,14 @@
           <test_script_entry test_script_expected_result="0">/opt/tct-audio-html5-tests/audio/w3c/canPlayType_application_octet_stream.html</test_script_entry>
         </description>
       </testcase>
-      <testcase component="W3C_HTML5 APIs/Media/HTML5 The audio element (Partial)" execution_type="auto" id="audio_controls_true_controls_present" purpose="Check that audio.controls returns true if the controls attribute is present in the audio element">
+      <testcase component="W3C_HTML5 APIs/Media/HTML5 The audio element (Partial)" execution_type="auto" id="audio_controls_reflect" purpose="audio controls reflect Test" subcase="3">
         <description>
-          <test_script_entry>/opt/tct-audio-html5-tests/audio/w3c/audio_controls_reflect.html?total_num=3&amp;amp;locator_key=id&amp;amp;value=1</test_script_entry>
+          <test_script_entry>/opt/tct-audio-html5-tests/audio/w3c/audio_controls_reflect.html</test_script_entry>
         </description>
       </testcase>
-      <testcase component="W3C_HTML5 APIs/Media/HTML5 The audio element (Partial)" execution_type="auto" id="audio_controls_reflects_false" purpose="Check that audio.controls returns false if the controls attribute is set to false">
+      <testcase component="W3C_HTML5 APIs/Media/HTML5 The audio element (Partial)" execution_type="auto" id="audio_defaultMuted_reflect" purpose="audio defaultMuted reflect Test" subcase="4">
         <description>
-          <test_script_entry>/opt/tct-audio-html5-tests/audio/w3c/audio_controls_reflect.html?total_num=3&amp;amp;locator_key=id&amp;amp;value=2</test_script_entry>
-        </description>
-      </testcase>
-      <testcase component="W3C_HTML5 APIs/Media/HTML5 The audio element (Partial)" execution_type="auto" id="audio_controls_reflects_true" purpose="Check that audio.controls returns true if the controls attribute is set to true">
-        <description>
-          <test_script_entry>/opt/tct-audio-html5-tests/audio/w3c/audio_controls_reflect.html?total_num=3&amp;amp;locator_key=id&amp;amp;value=3</test_script_entry>
-        </description>
-      </testcase>
-      <testcase component="W3C_HTML5 APIs/Media/HTML5 The audio element (Partial)" execution_type="auto" id="audio_defaultMuted_true_muted_present" purpose="Check that audio.defaultMuted returns true if the muted attribute is present in the audio element">
-        <description>
-          <test_script_entry>/opt/tct-audio-html5-tests/audio/w3c/audio_defaultMuted_reflect.html?total_num=4&amp;amp;locator_key=id&amp;amp;value=1</test_script_entry>
-        </description>
-      </testcase>
-      <testcase component="W3C_HTML5 APIs/Media/HTML5 The audio element (Partial)" execution_type="auto" id="audio_defaultMuted_no_dynamic_effect_muted" purpose="Check that media.defaultMuted returns true if the muted attribute is set to false and the muted attribute is present in the audio element">
-        <description>
-          <test_script_entry>/opt/tct-audio-html5-tests/audio/w3c/audio_defaultMuted_reflect.html?total_num=4&amp;amp;locator_key=id&amp;amp;value=2</test_script_entry>
-        </description>
-      </testcase>
-      <testcase component="W3C_HTML5 APIs/Media/HTML5 The audio element (Partial)" execution_type="auto" id="audio_defaultMuted_false_muted_absent" purpose="Check that audio.defaultMuted returns false if the muted attribute is absent in the audio element">
-        <description>
-          <test_script_entry>/opt/tct-audio-html5-tests/audio/w3c/audio_defaultMuted_reflect.html?total_num=4&amp;amp;locator_key=id&amp;amp;value=3</test_script_entry>
-        </description>
-      </testcase>
-      <testcase component="W3C_HTML5 APIs/Media/HTML5 The audio element (Partial)" execution_type="auto" id="audio_defaultMuted_no_dynamic_effect" purpose="Check that audio.defaultMuted returns false if the muted attribute is set to true and the muted attribute is asent in the audio element">
-        <description>
-          <test_script_entry>/opt/tct-audio-html5-tests/audio/w3c/audio_defaultMuted_reflect.html?total_num=4&amp;amp;locator_key=id&amp;amp;value=4</test_script_entry>
+          <test_script_entry>/opt/tct-audio-html5-tests/audio/w3c/audio_defaultMuted_reflect.html</test_script_entry>
         </description>
       </testcase>
       <testcase component="W3C_HTML5 APIs/Media/HTML5 The audio element (Partial)" execution_type="auto" id="audio_loop_base" onload_delay="15" purpose="Check that seeking event is triggered more than once if audio.loop is set to true">
@@ -378,69 +338,14 @@
           <test_script_entry>/opt/tct-audio-html5-tests/audio/w3c/audio_loop_base.html</test_script_entry>
         </description>
       </testcase>
-      <testcase component="W3C_HTML5 APIs/Media/HTML5 The audio element (Partial)" execution_type="auto" id="audio_loop_true_loop_present" purpose="Check that audio.loop returns true if the loop attribute is present in the audio element">
+      <testcase component="W3C_HTML5 APIs/Media/HTML5 The audio element (Partial)" execution_type="auto" id="audio_loop_reflect" purpose="audio loop reflect Test" subcase="3">
         <description>
-          <test_script_entry>/opt/tct-audio-html5-tests/audio/w3c/audio_loop_reflect.html?total_num=3&amp;amp;locator_key=id&amp;amp;value=1</test_script_entry>
+          <test_script_entry>/opt/tct-audio-html5-tests/audio/w3c/audio_loop_reflect.html</test_script_entry>
         </description>
       </testcase>
-      <testcase component="W3C_HTML5 APIs/Media/HTML5 The audio element (Partial)" execution_type="auto" id="audio_loop_reflects_false" purpose="Check if audio.loop can be set to false">
+      <testcase component="W3C_HTML5 APIs/Media/HTML5 The audio element (Partial)" execution_type="auto" id="audio_muted" purpose="audio muted Test" subcase="21">
         <description>
-          <test_script_entry>/opt/tct-audio-html5-tests/audio/w3c/audio_loop_reflect.html?total_num=3&amp;amp;locator_key=id&amp;amp;value=2</test_script_entry>
-        </description>
-      </testcase>
-      <testcase component="W3C_HTML5 APIs/Media/HTML5 The audio element (Partial)" execution_type="auto" id="audio_loop_reflects_true" purpose="Check if audio.loop can be set to true">
-        <description>
-          <test_script_entry>/opt/tct-audio-html5-tests/audio/w3c/audio_loop_reflect.html?total_num=3&amp;amp;locator_key=id&amp;amp;value=3</test_script_entry>
-        </description>
-      </testcase>
-      <testcase component="W3C_HTML5 APIs/Media/HTML5 The audio element (Partial)" execution_type="auto" id="audio_muted_present_get" purpose="Check that audio.muted returns true if the muted attribute is present in the audio element">
-        <description>
-          <test_script_entry>/opt/tct-audio-html5-tests/audio/w3c/muted.html?total_num=21&amp;amp;locator_key=id&amp;amp;value=3</test_script_entry>
-        </description>
-      </testcase>
-      <testcase component="W3C_HTML5 APIs/Media/HTML5 The audio element (Partial)" execution_type="auto" id="audio_muted_notpresent_get" purpose="Check that audio.muted returns false if the muted attribute is not present in the audio element">
-        <description>
-          <test_script_entry>/opt/tct-audio-html5-tests/audio/w3c/muted.html?total_num=21&amp;amp;locator_key=id&amp;amp;value=1</test_script_entry>
-        </description>
-      </testcase>
-      <testcase component="W3C_HTML5 APIs/Media/HTML5 The audio element (Partial)" execution_type="auto" id="audio_muted_present_set" purpose="Check if the audio.muted can be set if the muted attribute is present in the audio element">
-        <description>
-          <test_script_entry>/opt/tct-audio-html5-tests/audio/w3c/muted.html?total_num=21&amp;amp;locator_key=id&amp;amp;value=4</test_script_entry>
-        </description>
-      </testcase>
-      <testcase component="W3C_HTML5 APIs/Media/HTML5 The audio element (Partial)" execution_type="auto" id="audio_muted_notpresent_set" purpose="Check if the audio.muted can be set if the muted attribute is not present in the audio element">
-        <description>
-          <test_script_entry>/opt/tct-audio-html5-tests/audio/w3c/muted.html?total_num=21&amp;amp;locator_key=id&amp;amp;value=2</test_script_entry>
-        </description>
-      </testcase>
-      <testcase component="W3C_HTML5 APIs/Media/HTML5 The audio element (Partial)" execution_type="auto" id="audio_muted_script_get1" purpose="Check that audio.muted can be get (script-created)">
-        <description>
-          <test_script_entry>/opt/tct-audio-html5-tests/audio/w3c/muted.html?total_num=21&amp;amp;locator_key=id&amp;amp;value=10</test_script_entry>
-        </description>
-      </testcase>
-      <testcase component="W3C_HTML5 APIs/Media/HTML5 The audio element (Partial)" execution_type="auto" id="audio_muted_script_set1" purpose="Check that audio.muted can be set (script-created)">
-        <description>
-          <test_script_entry>/opt/tct-audio-html5-tests/audio/w3c/muted.html?total_num=21&amp;amp;locator_key=id&amp;amp;value=11</test_script_entry>
-        </description>
-      </testcase>
-      <testcase component="W3C_HTML5 APIs/Media/HTML5 The audio element (Partial)" execution_type="auto" id="audio_muted_script_get2" purpose="Check that audio.muted can be get with muted='' (script-created)">
-        <description>
-          <test_script_entry>/opt/tct-audio-html5-tests/audio/w3c/muted.html?total_num=21&amp;amp;locator_key=id&amp;amp;value=12</test_script_entry>
-        </description>
-      </testcase>
-      <testcase component="W3C_HTML5 APIs/Media/HTML5 The audio element (Partial)" execution_type="auto" id="audio_muted_script_set2" purpose="Check that audio.muted can be set with muted='' (script-created)">
-        <description>
-          <test_script_entry>/opt/tct-audio-html5-tests/audio/w3c/muted.html?total_num=21&amp;amp;locator_key=id&amp;amp;value=13</test_script_entry>
-        </description>
-      </testcase>
-      <testcase component="W3C_HTML5 APIs/Media/HTML5 The audio element (Partial)" execution_type="auto" id="audio_muted_innerHTML_get" purpose="Check that audio.muted can be get with muted='' (innerHTML-created)">
-        <description>
-          <test_script_entry>/opt/tct-audio-html5-tests/audio/w3c/muted.html?total_num=21&amp;amp;locator_key=id&amp;amp;value=14</test_script_entry>
-        </description>
-      </testcase>
-      <testcase component="W3C_HTML5 APIs/Media/HTML5 The audio element (Partial)" execution_type="auto" id="audio_muted_write_get" purpose="Check that audio.muted can be get with muted='' (document.write-created)">
-        <description>
-          <test_script_entry>/opt/tct-audio-html5-tests/audio/w3c/muted.html?total_num=21&amp;amp;locator_key=id&amp;amp;value=15</test_script_entry>
+          <test_script_entry>/opt/tct-audio-html5-tests/audio/w3c/muted.html</test_script_entry>
         </description>
       </testcase>
       <testcase component="W3C_HTML5 APIs/Media/HTML5 The audio element (Partial)" execution_type="auto" id="audio_muted_volumechange" purpose="Check that volumechange event is triggered if audio.muted is changed">
@@ -448,29 +353,9 @@
           <test_script_entry>/opt/tct-audio-html5-tests/audio/w3c/audio_muted_volumechange.html</test_script_entry>
         </description>
       </testcase>
-      <testcase component="W3C_HTML5 APIs/Media/HTML5 The audio element (Partial)" execution_type="auto" id="audio_volume_initial" purpose="Check if the intial value of the audio.volume is in the range 0.0 to 1.0 inclusive">
+      <testcase component="W3C_HTML5 APIs/Media/HTML5 The audio element (Partial)" execution_type="auto" id="audio_volume_check" purpose="audio volume Test" subcase="6">
         <description>
-          <test_script_entry>/opt/tct-audio-html5-tests/audio/w3c/audio_volume_check.html?total_num=6&amp;amp;locator_key=id&amp;amp;value=1</test_script_entry>
-        </description>
-      </testcase>
-      <testcase component="W3C_HTML5 APIs/Media/HTML5 The audio element (Partial)" execution_type="auto" id="audio_volume_silent" purpose="Check if user agent is able to set audio.volume with new value 0.0">
-        <description>
-          <test_script_entry>/opt/tct-audio-html5-tests/audio/w3c/audio_volume_check.html?total_num=6&amp;amp;locator_key=id&amp;amp;value=3</test_script_entry>
-        </description>
-      </testcase>
-      <testcase component="W3C_HTML5 APIs/Media/HTML5 The audio element (Partial)" execution_type="auto" id="audio_volume_loudest" purpose="Check if user agent is able to set audio.volume with new value 1.0">
-        <description>
-          <test_script_entry>/opt/tct-audio-html5-tests/audio/w3c/audio_volume_check.html?total_num=6&amp;amp;locator_key=id&amp;amp;value=4</test_script_entry>
-        </description>
-      </testcase>
-      <testcase component="W3C_HTML5 APIs/Media/HTML5 The audio element (Partial)" execution_type="auto" id="audio_volume_exception_lower" purpose="Check that user agent is able to get an INDEX_SIZE_ERR exception if set audio.volume with new value less than 0.0">
-        <description>
-          <test_script_entry>/opt/tct-audio-html5-tests/audio/w3c/audio_volume_check.html?total_num=6&amp;amp;locator_key=id&amp;amp;value=5</test_script_entry>
-        </description>
-      </testcase>
-      <testcase component="W3C_HTML5 APIs/Media/HTML5 The audio element (Partial)" execution_type="auto" id="audio_volume_exception_upper" purpose="Check that user agent is able to get an INDEX_SIZE_ERR exception if set audio.volume with new value more than 1.0">
-        <description>
-          <test_script_entry>/opt/tct-audio-html5-tests/audio/w3c/audio_volume_check.html?total_num=6&amp;amp;locator_key=id&amp;amp;value=6</test_script_entry>
+          <test_script_entry>/opt/tct-audio-html5-tests/audio/w3c/audio_volume_check.html</test_script_entry>
         </description>
       </testcase>
       <testcase component="W3C_HTML5 APIs/Media/HTML5 The audio element (Partial)" execution_type="auto" id="audio_volume_volumechange" purpose="Check that volumechange event is triggered if audio.volume is changed">
@@ -513,390 +398,9 @@
           <test_script_entry>/opt/tct-audio-html5-tests/audio/w3c/audio_loop_current_media_controller-manual.html</test_script_entry>
         </description>
       </testcase>
-      <testcase component="W3C_HTML5 APIs/Media/HTML5 The audio element (Partial)" execution_type="auto" id="audio_error_attribute_type" purpose="Check if the type of audio.error is object">
+      <testcase component="W3C_HTML5 APIs/Media/HTML5 The audio element (Partial)" execution_type="auto" id="audio_attributes" purpose="audio attributes Test" subcase="89">
         <description>
-          <test_script_entry>/opt/tct-audio-html5-tests/audio/w3c/audio_attributes.html?total_num=89&amp;amp;locator_key=id&amp;amp;value=2</test_script_entry>
-        </description>
-      </testcase>
-      <testcase component="W3C_HTML5 APIs/Media/HTML5 The audio element (Partial)" execution_type="auto" id="audio_src_attribute_exists" purpose="Check if audio.src exists">
-        <description>
-          <test_script_entry>/opt/tct-audio-html5-tests/audio/w3c/audio_attributes.html?total_num=89&amp;amp;locator_key=id&amp;amp;value=3</test_script_entry>
-        </description>
-      </testcase>
-      <testcase component="W3C_HTML5 APIs/Media/HTML5 The audio element (Partial)" execution_type="auto" id="audio_src_attribute_type" purpose="Check if the type of audio.src is string">
-        <description>
-          <test_script_entry>/opt/tct-audio-html5-tests/audio/w3c/audio_attributes.html?total_num=89&amp;amp;locator_key=id&amp;amp;value=4</test_script_entry>
-        </description>
-      </testcase>
-      <testcase component="W3C_HTML5 APIs/Media/HTML5 The audio element (Partial)" execution_type="auto" id="audio_currentSrc_attribute_type" purpose="Check if the type of audio.currentsrc is string">
-        <description>
-          <test_script_entry>/opt/tct-audio-html5-tests/audio/w3c/audio_attributes.html?total_num=89&amp;amp;locator_key=id&amp;amp;value=6</test_script_entry>
-        </description>
-      </testcase>
-      <testcase component="W3C_HTML5 APIs/Media/HTML5 The audio element (Partial)" execution_type="auto" id="audio_NETWORK_EMPTY_constant_exists" purpose="Check if the audio.NETWORK_EMPTY exists">
-        <description>
-          <test_script_entry>/opt/tct-audio-html5-tests/audio/w3c/audio_attributes.html?total_num=89&amp;amp;locator_key=id&amp;amp;value=9</test_script_entry>
-        </description>
-      </testcase>
-      <testcase component="W3C_HTML5 APIs/Media/HTML5 The audio element (Partial)" execution_type="auto" id="audio_NETWORK_EMPTY_constant_type" purpose="Check if the type of audio.NETWORK_EMPTY is number">
-        <description>
-          <test_script_entry>/opt/tct-audio-html5-tests/audio/w3c/audio_attributes.html?total_num=89&amp;amp;locator_key=id&amp;amp;value=10</test_script_entry>
-        </description>
-      </testcase>
-      <testcase component="W3C_HTML5 APIs/Media/HTML5 The audio element (Partial)" execution_type="auto" id="audio_NETWORK_EMPTY_constant_value" purpose="Check if audio.NETWORK_EMPTY const value is 0">
-        <description>
-          <test_script_entry>/opt/tct-audio-html5-tests/audio/w3c/audio_attributes.html?total_num=89&amp;amp;locator_key=id&amp;amp;value=11</test_script_entry>
-        </description>
-      </testcase>
-      <testcase component="W3C_HTML5 APIs/Media/HTML5 The audio element (Partial)" execution_type="auto" id="audio_NETWORK_IDLE_constant_exists" purpose="Check if the audio.NETWORK_IDLE exists">
-        <description>
-          <test_script_entry>/opt/tct-audio-html5-tests/audio/w3c/audio_attributes.html?total_num=89&amp;amp;locator_key=id&amp;amp;value=12</test_script_entry>
-        </description>
-      </testcase>
-      <testcase component="W3C_HTML5 APIs/Media/HTML5 The audio element (Partial)" execution_type="auto" id="audio_NETWORK_IDLE_constant_type" purpose="Check if the type of audio.NETWORK_IDLE is number">
-        <description>
-          <test_script_entry>/opt/tct-audio-html5-tests/audio/w3c/audio_attributes.html?total_num=89&amp;amp;locator_key=id&amp;amp;value=13</test_script_entry>
-        </description>
-      </testcase>
-      <testcase component="W3C_HTML5 APIs/Media/HTML5 The audio element (Partial)" execution_type="auto" id="audio_NETWORK_IDLE_constant_value" purpose="Check if audio.NETWORK_IDLE const value is 1">
-        <description>
-          <test_script_entry>/opt/tct-audio-html5-tests/audio/w3c/audio_attributes.html?total_num=89&amp;amp;locator_key=id&amp;amp;value=14</test_script_entry>
-        </description>
-      </testcase>
-      <testcase component="W3C_HTML5 APIs/Media/HTML5 The audio element (Partial)" execution_type="auto" id="audio_NETWORK_LOADING_constant_exists" purpose="Check if the audio.NETWORK_LOADING exists">
-        <description>
-          <test_script_entry>/opt/tct-audio-html5-tests/audio/w3c/audio_attributes.html?total_num=89&amp;amp;locator_key=id&amp;amp;value=15</test_script_entry>
-        </description>
-      </testcase>
-      <testcase component="W3C_HTML5 APIs/Media/HTML5 The audio element (Partial)" execution_type="auto" id="audio_NETWORK_LOADING_constant_type" purpose="Check if the type of audio.NETWORK_LOADING is number">
-        <description>
-          <test_script_entry>/opt/tct-audio-html5-tests/audio/w3c/audio_attributes.html?total_num=89&amp;amp;locator_key=id&amp;amp;value=16</test_script_entry>
-        </description>
-      </testcase>
-      <testcase component="W3C_HTML5 APIs/Media/HTML5 The audio element (Partial)" execution_type="auto" id="audio_NETWORK_LOADING_constant_value" purpose="Check if audio.NETWORK_LOADING const value is 2">
-        <description>
-          <test_script_entry>/opt/tct-audio-html5-tests/audio/w3c/audio_attributes.html?total_num=89&amp;amp;locator_key=id&amp;amp;value=17</test_script_entry>
-        </description>
-      </testcase>
-      <testcase component="W3C_HTML5 APIs/Media/HTML5 The audio element (Partial)" execution_type="auto" id="audio_NETWORK_NO_SOURCE_constant_exists" purpose="Check if the audio.NETWORK_NO_SOURCE exists">
-        <description>
-          <test_script_entry>/opt/tct-audio-html5-tests/audio/w3c/audio_attributes.html?total_num=89&amp;amp;locator_key=id&amp;amp;value=18</test_script_entry>
-        </description>
-      </testcase>
-      <testcase component="W3C_HTML5 APIs/Media/HTML5 The audio element (Partial)" execution_type="auto" id="audio_NETWORK_NO_SOURCE_constant_type" purpose="Check if the type of audio.NETWORK_NO_SOURCE is number">
-        <description>
-          <test_script_entry>/opt/tct-audio-html5-tests/audio/w3c/audio_attributes.html?total_num=89&amp;amp;locator_key=id&amp;amp;value=19</test_script_entry>
-        </description>
-      </testcase>
-      <testcase component="W3C_HTML5 APIs/Media/HTML5 The audio element (Partial)" execution_type="auto" id="audio_NETWORK_NO_SOURCE_constant_value" purpose="Check if audio.NETWORK_NO_SOURCE const value is 3">
-        <description>
-          <test_script_entry>/opt/tct-audio-html5-tests/audio/w3c/audio_attributes.html?total_num=89&amp;amp;locator_key=id&amp;amp;value=20</test_script_entry>
-        </description>
-      </testcase>
-      <testcase component="W3C_HTML5 APIs/Media/HTML5 The audio element (Partial)" execution_type="auto" id="audio_networkState_attribute_type" purpose="Check if the type of audio.networkState is number">
-        <description>
-          <test_script_entry>/opt/tct-audio-html5-tests/audio/w3c/audio_attributes.html?total_num=89&amp;amp;locator_key=id&amp;amp;value=22</test_script_entry>
-        </description>
-      </testcase>
-      <testcase component="W3C_HTML5 APIs/Media/HTML5 The audio element (Partial)" execution_type="auto" id="audio_preload_attribute_type" purpose="Check if the type of audio.preload is string">
-        <description>
-          <test_script_entry>/opt/tct-audio-html5-tests/audio/w3c/audio_attributes.html?total_num=89&amp;amp;locator_key=id&amp;amp;value=25</test_script_entry>
-        </description>
-      </testcase>
-      <testcase component="W3C_HTML5 APIs/Media/HTML5 The audio element (Partial)" execution_type="auto" id="audio_buffered_exists" purpose="Check if the audio.buffered attribute exists">
-        <description>
-          <test_script_entry>/opt/tct-audio-html5-tests/audio/w3c/audio_attributes.html?total_num=89&amp;amp;locator_key=id&amp;amp;value=26</test_script_entry>
-        </description>
-      </testcase>
-      <testcase component="W3C_HTML5 APIs/Media/HTML5 The audio element (Partial)" execution_type="auto" id="audio_buffered_type" purpose="Check if the type of audio.buffered is object">
-        <description>
-          <test_script_entry>/opt/tct-audio-html5-tests/audio/w3c/audio_attributes.html?total_num=89&amp;amp;locator_key=id&amp;amp;value=27</test_script_entry>
-        </description>
-      </testcase>
-      <testcase component="W3C_HTML5 APIs/Media/HTML5 The audio element (Partial)" execution_type="auto" id="audio_HAVE_NOTHING_constant_exists" purpose="Check if the audio.HAVE_NOTHING exists">
-        <description>
-          <test_script_entry>/opt/tct-audio-html5-tests/audio/w3c/audio_attributes.html?total_num=89&amp;amp;locator_key=id&amp;amp;value=28</test_script_entry>
-        </description>
-      </testcase>
-      <testcase component="W3C_HTML5 APIs/Media/HTML5 The audio element (Partial)" execution_type="auto" id="audio_HAVE_NOTHING_constant_type" purpose="Check if the type of audio.HAVE_NOTHING is number">
-        <description>
-          <test_script_entry>/opt/tct-audio-html5-tests/audio/w3c/audio_attributes.html?total_num=89&amp;amp;locator_key=id&amp;amp;value=29</test_script_entry>
-        </description>
-      </testcase>
-      <testcase component="W3C_HTML5 APIs/Media/HTML5 The audio element (Partial)" execution_type="auto" id="audio_HAVE_NOTHING_constant_value" purpose="Check if the constant value of audio.HAVE_NOTHING is 0">
-        <description>
-          <test_script_entry>/opt/tct-audio-html5-tests/audio/w3c/audio_attributes.html?total_num=89&amp;amp;locator_key=id&amp;amp;value=30</test_script_entry>
-        </description>
-      </testcase>
-      <testcase component="W3C_HTML5 APIs/Media/HTML5 The audio element (Partial)" execution_type="auto" id="audio_HAVE_METADATA_constant_exists" purpose="Check if the audio.HAVE_METADATA exists">
-        <description>
-          <test_script_entry>/opt/tct-audio-html5-tests/audio/w3c/audio_attributes.html?total_num=89&amp;amp;locator_key=id&amp;amp;value=31</test_script_entry>
-        </description>
-      </testcase>
-      <testcase component="W3C_HTML5 APIs/Media/HTML5 The audio element (Partial)" execution_type="auto" id="audio_HAVE_METADATA_constant_type" purpose="Check if the type of audio.HAVE_METADATA is number">
-        <description>
-          <test_script_entry>/opt/tct-audio-html5-tests/audio/w3c/audio_attributes.html?total_num=89&amp;amp;locator_key=id&amp;amp;value=
-32</test_script_entry>
-        </description>
-      </testcase>
-      <testcase component="W3C_HTML5 APIs/Media/HTML5 The audio element (Partial)" execution_type="auto" id="audio_HAVE_METADATA_constant_value" purpose="Check if the constant value of audio.HAVE_METADATA is 1">
-        <description>
-          <test_script_entry>/opt/tct-audio-html5-tests/audio/w3c/audio_attributes.html?total_num=89&amp;amp;locator_key=id&amp;amp;value=33</test_script_entry>
-        </description>
-      </testcase>
-      <testcase component="W3C_HTML5 APIs/Media/HTML5 The audio element (Partial)" execution_type="auto" id="audio_HAVE_CURRENT_DATA_constant_exists" purpose="Check if the audio.HAVE_CURRENT_DATA exists">
-        <description>
-          <test_script_entry>/opt/tct-audio-html5-tests/audio/w3c/audio_attributes.html?total_num=89&amp;amp;locator_key=id&amp;amp;value=34</test_script_entry>
-        </description>
-      </testcase>
-      <testcase component="W3C_HTML5 APIs/Media/HTML5 The audio element (Partial)" execution_type="auto" id="audio_HAVE_CURRENT_DATA_constant_type" purpose="Check if the type of audio.HAVE_CURRENT_DATA is number">
-        <description>
-          <test_script_entry>/opt/tct-audio-html5-tests/audio/w3c/audio_attributes.html?total_num=89&amp;amp;locator_key=id&amp;amp;value=35</test_script_entry>
-        </description>
-      </testcase>
-      <testcase component="W3C_HTML5 APIs/Media/HTML5 The audio element (Partial)" execution_type="auto" id="audio_HAVE_CURRENT_DATA_constant_value" purpose="Check if the constant value of audio.HAVE_CURRENT_DATA is 2">
-        <description>
-          <test_script_entry>/opt/tct-audio-html5-tests/audio/w3c/audio_attributes.html?total_num=89&amp;amp;locator_key=id&amp;amp;value=36</test_script_entry>
-        </description>
-      </testcase>
-      <testcase component="W3C_HTML5 APIs/Media/HTML5 The audio element (Partial)" execution_type="auto" id="audio_HAVE_FUTURE_DATA_constant_exists" purpose="Check if the audio.HAVE_FUTURE_DATA exists">
-        <description>
-          <test_script_entry>/opt/tct-audio-html5-tests/audio/w3c/audio_attributes.html?total_num=89&amp;amp;locator_key=id&amp;amp;value=37</test_script_entry>
-        </description>
-      </testcase>
-      <testcase component="W3C_HTML5 APIs/Media/HTML5 The audio element (Partial)" execution_type="auto" id="audio_HAVE_FUTURE_DATA_constant_type" purpose="Check if the type of audio.HAVE_FUTURE_DATA is number">
-        <description>
-          <test_script_entry>/opt/tct-audio-html5-tests/audio/w3c/audio_attributes.html?total_num=89&amp;amp;locator_key=id&amp;amp;value=38</test_script_entry>
-        </description>
-      </testcase>
-      <testcase component="W3C_HTML5 APIs/Media/HTML5 The audio element (Partial)" execution_type="auto" id="audio_HAVE_FUTURE_DATA_constant_value" purpose="Check if the constant value of audio.HAVE_FUTURE_DATA is 3">
-        <description>
-          <test_script_entry>/opt/tct-audio-html5-tests/audio/w3c/audio_attributes.html?total_num=89&amp;amp;locator_key=id&amp;amp;value=39</test_script_entry>
-        </description>
-      </testcase>
-      <testcase component="W3C_HTML5 APIs/Media/HTML5 The audio element (Partial)" execution_type="auto" id="audio_HAVE_ENOUGH_DATA_constant_exists" purpose="Check if the audio.HAVE_ENOUGH_DATA exists">
-        <description>
-          <test_script_entry>/opt/tct-audio-html5-tests/audio/w3c/audio_attributes.html?total_num=89&amp;amp;locator_key=id&amp;amp;value=40</test_script_entry>
-        </description>
-      </testcase>
-      <testcase component="W3C_HTML5 APIs/Media/HTML5 The audio element (Partial)" execution_type="auto" id="audio_HAVE_ENOUGH_DATA_constant_type" purpose="Check if the type of audio.HAVE_ENOUGH_DATA is number">
-        <description>
-          <test_script_entry>/opt/tct-audio-html5-tests/audio/w3c/audio_attributes.html?total_num=89&amp;amp;locator_key=id&amp;amp;value=41</test_script_entry>
-        </description>
-      </testcase>
-      <testcase component="W3C_HTML5 APIs/Media/HTML5 The audio element (Partial)" execution_type="auto" id="audio_HAVE_ENOUGH_DATA_constant_value" purpose="Check if the constant value of audio.HAVE_ENOUGH_DATA is 4">
-        <description>
-          <test_script_entry>/opt/tct-audio-html5-tests/audio/w3c/audio_attributes.html?total_num=89&amp;amp;locator_key=id&amp;amp;value=42</test_script_entry>
-        </description>
-      </testcase>
-      <testcase component="W3C_HTML5 APIs/Media/HTML5 The audio element (Partial)" execution_type="auto" id="audio_readyState_attribute_type" purpose="Check if the type of audio.readyState attribute is number">
-        <description>
-          <test_script_entry>/opt/tct-audio-html5-tests/audio/w3c/audio_attributes.html?total_num=89&amp;amp;locator_key=id&amp;amp;value=44</test_script_entry>
-        </description>
-      </testcase>
-      <testcase component="W3C_HTML5 APIs/Media/HTML5 The audio element (Partial)" execution_type="auto" id="audio_seeking_attribute_exists" purpose="Check if the audio.seeking attribute exists">
-        <description>
-          <test_script_entry>/opt/tct-audio-html5-tests/audio/w3c/audio_attributes.html?total_num=89&amp;amp;locator_key=id&amp;amp;value=46</test_script_entry>
-        </description>
-      </testcase>
-      <testcase component="W3C_HTML5 APIs/Media/HTML5 The audio element (Partial)" execution_type="auto" id="audio_seeking_attribute_type" purpose="Check if the type of audio.seeking attribute is boolean">
-        <description>
-          <test_script_entry>/opt/tct-audio-html5-tests/audio/w3c/audio_attributes.html?total_num=89&amp;amp;locator_key=id&amp;amp;value=47</test_script_entry>
-        </description>
-      </testcase>
-      <testcase component="W3C_HTML5 APIs/Media/HTML5 The audio element (Partial)" execution_type="auto" id="audio_seeking_default_value" purpose="Check if the audio.seeking attribute must initially have the value false">
-        <description>
-          <test_script_entry>/opt/tct-audio-html5-tests/audio/w3c/audio_attributes.html?total_num=89&amp;amp;locator_key=id&amp;amp;value=48</test_script_entry>
-        </description>
-      </testcase>
-      <testcase component="W3C_HTML5 APIs/Media/HTML5 The audio element (Partial)" execution_type="auto" id="audio_currentTime_attribute_exists" purpose="Check if the audio.currentTime attribute exists">
-        <description>
-          <test_script_entry>/opt/tct-audio-html5-tests/audio/w3c/audio_attributes.html?total_num=89&amp;amp;locator_key=id&amp;amp;value=49</test_script_entry>
-        </description>
-      </testcase>
-      <testcase component="W3C_HTML5 APIs/Media/HTML5 The audio element (Partial)" execution_type="auto" id="audio_currentTime_attribute_type" purpose="Check if the type of audio.currentTime attribute is number">
-        <description>
-          <test_script_entry>/opt/tct-audio-html5-tests/audio/w3c/audio_attributes.html?total_num=89&amp;amp;locator_key=id&amp;amp;value=50</test_script_entry>
-        </description>
-      </testcase>
-      <testcase component="W3C_HTML5 APIs/Media/HTML5 The audio element (Partial)" execution_type="auto" id="audio_duration_attribute_exists" purpose="Check if the audio.duration attribute exists">
-        <description>
-          <test_script_entry>/opt/tct-audio-html5-tests/audio/w3c/audio_attributes.html?total_num=89&amp;amp;locator_key=id&amp;amp;value=51</test_script_entry>
-        </description>
-      </testcase>
-      <testcase component="W3C_HTML5 APIs/Media/HTML5 The audio element (Partial)" execution_type="auto" id="audio_duration_attribute_type" purpose="Check if the type of audio.duration attribute is number">
-        <description>
-          <test_script_entry>/opt/tct-audio-html5-tests/audio/w3c/audio_attributes.html?total_num=89&amp;amp;locator_key=id&amp;amp;value=52</test_script_entry>
-        </description>
-      </testcase>
-      <testcase component="W3C_HTML5 APIs/Media/HTML5 The audio element (Partial)" execution_type="auto" id="audio_paused_attribute_exists" purpose="Check if the audio.paused attribute exists">
-        <description>
-          <test_script_entry>/opt/tct-audio-html5-tests/audio/w3c/audio_attributes.html?total_num=89&amp;amp;locator_key=id&amp;amp;value=55</test_script_entry>
-        </description>
-      </testcase>
-      <testcase component="W3C_HTML5 APIs/Media/HTML5 The audio element (Partial)" execution_type="auto" id="audio_paused_attribute_type" purpose="Check if the type of audio.paused attribute is boolean">
-        <description>
-          <test_script_entry>/opt/tct-audio-html5-tests/audio/w3c/audio_attributes.html?total_num=89&amp;amp;locator_key=id&amp;amp;value=56</test_script_entry>
-        </description>
-      </testcase>
-      <testcase component="W3C_HTML5 APIs/Media/HTML5 The audio element (Partial)" execution_type="auto" id="audio_paused_attribute_default_value" purpose="Check if the audio.paused attribute must initially be true">
-        <description>
-          <test_script_entry>/opt/tct-audio-html5-tests/audio/w3c/audio_attributes.html?total_num=89&amp;amp;locator_key=id&amp;amp;value=57</test_script_entry>
-        </description>
-      </testcase>
-      <testcase component="W3C_HTML5 APIs/Media/HTML5 The audio element (Partial)" execution_type="auto" id="audio_defaultPlaybackRate_attribute_exists" purpose="Check if the audio.defaultPlaybackRate attribute exists">
-        <description>
-          <test_script_entry>/opt/tct-audio-html5-tests/audio/w3c/audio_attributes.html?total_num=89&amp;amp;locator_key=id&amp;amp;value=58</test_script_entry>
-        </description>
-      </testcase>
-      <testcase component="W3C_HTML5 APIs/Media/HTML5 The audio element (Partial)" execution_type="auto" id="audio_defaultPlaybackRate_attribute_type" purpose="Check if the type of audio.defaultPlaybackRate attribute is number">
-        <description>
-          <test_script_entry>/opt/tct-audio-html5-tests/audio/w3c/audio_attributes.html?total_num=89&amp;amp;locator_key=id&amp;amp;value=59</test_script_entry>
-        </description>
-      </testcase>
-      <testcase component="W3C_HTML5 APIs/Media/HTML5 The audio element (Partial)" execution_type="auto" id="audio_playbackRate_attribute_exists" purpose="Check if the audio.playbackRate attribute exists">
-        <description>
-          <test_script_entry>/opt/tct-audio-html5-tests/audio/w3c/audio_attributes.html?total_num=89&amp;amp;locator_key=id&amp;amp;value=60</test_script_entry>
-        </description>
-      </testcase>
-      <testcase component="W3C_HTML5 APIs/Media/HTML5 The audio element (Partial)" execution_type="auto" id="audio_playbackRate_attribute_type" purpose="Check if the type of audio.playbackRate attribute is number">
-        <description>
-          <test_script_entry>/opt/tct-audio-html5-tests/audio/w3c/audio_attributes.html?total_num=89&amp;amp;locator_key=id&amp;amp;value=61</test_script_entry>
-        </description>
-      </testcase>
-      <testcase component="W3C_HTML5 APIs/Media/HTML5 The audio element (Partial)" execution_type="auto" id="audio_played_attribute_exists" purpose="Check if the type of audio.played attribute is [object TimeRanges]">
-        <description>
-          <test_script_entry>/opt/tct-audio-html5-tests/audio/w3c/audio_attributes.html?total_num=89&amp;amp;locator_key=id&amp;amp;value=62</test_script_entry>
-        </description>
-      </testcase>
-      <testcase component="W3C_HTML5 APIs/Media/HTML5 The audio element (Partial)" execution_type="auto" id="audio_played_attribute_type" purpose="Check if the type of attribute audio.played is object">
-        <description>
-          <test_script_entry>/opt/tct-audio-html5-tests/audio/w3c/audio_attributes.html?total_num=89&amp;amp;locator_key=id&amp;amp;value=63</test_script_entry>
-        </description>
-      </testcase>
-      <testcase component="W3C_HTML5 APIs/Media/HTML5 The audio element (Partial)" execution_type="auto" id="audio_seekable_attribute_exists" purpose="Check if attribute audio.seekable attribute exists">
-        <description>
-          <test_script_entry>/opt/tct-audio-html5-tests/audio/w3c/audio_attributes.html?total_num=89&amp;amp;locator_key=id&amp;amp;value=64</test_script_entry>
-        </description>
-      </testcase>
-      <testcase component="W3C_HTML5 APIs/Media/HTML5 The audio element (Partial)" execution_type="auto" id="audio_seekable_attribute_type" purpose="Check if the type of audio.seekable attribute is boolean">
-        <description>
-          <test_script_entry>/opt/tct-audio-html5-tests/audio/w3c/audio_attributes.html?total_num=89&amp;amp;locator_key=id&amp;amp;value=65</test_script_entry>
-        </description>
-      </testcase>
-      <testcase component="W3C_HTML5 APIs/Media/HTML5 The audio element (Partial)" execution_type="auto" id="audio_ended_attribute_exists" purpose="Check if audio.ended attribute exists">
-        <description>
-          <test_script_entry>/opt/tct-audio-html5-tests/audio/w3c/audio_attributes.html?total_num=89&amp;amp;locator_key=id&amp;amp;value=66</test_script_entry>
-        </description>
-      </testcase>
-      <testcase component="W3C_HTML5 APIs/Media/HTML5 The audio element (Partial)" execution_type="auto" id="audio_ended_attribute_type" purpose="Check if the type of audio.ended is boolean">
-        <description>
-          <test_script_entry>/opt/tct-audio-html5-tests/audio/w3c/audio_attributes.html?total_num=89&amp;amp;locator_key=id&amp;amp;value=67</test_script_entry>
-        </description>
-      </testcase>
-      <testcase component="W3C_HTML5 APIs/Media/HTML5 The audio element (Partial)" execution_type="auto" id="audio_ended_default_value" purpose="Check if the default value of attribute audio.ended is false">
-        <description>
-          <test_script_entry>/opt/tct-audio-html5-tests/audio/w3c/audio_attributes.html?total_num=89&amp;amp;locator_key=id&amp;amp;value=68</test_script_entry>
-        </description>
-      </testcase>
-      <testcase component="W3C_HTML5 APIs/Media/HTML5 The audio element (Partial)" execution_type="auto" id="audio_autoplay_attribute_exists" purpose="Check if the audio.autoplay attritbute exists">
-        <description>
-          <test_script_entry>/opt/tct-audio-html5-tests/audio/w3c/audio_attributes.html?total_num=89&amp;amp;locator_key=id&amp;amp;value=69</test_script_entry>
-        </description>
-      </testcase>
-      <testcase component="W3C_HTML5 APIs/Media/HTML5 The audio element (Partial)" execution_type="auto" id="audio_autoplay_attribute_type" purpose="Check if the type of audio.autoplay attribute is boolean">
-        <description>
-          <test_script_entry>/opt/tct-audio-html5-tests/audio/w3c/audio_attributes.html?total_num=89&amp;amp;locator_key=id&amp;amp;value=70</test_script_entry>
-        </description>
-      </testcase>
-      <testcase component="W3C_HTML5 APIs/Media/HTML5 The audio element (Partial)" execution_type="auto" id="audio_autoplay_default_value" purpose="Check if audio.autoplay attribute default is false">
-        <description>
-          <test_script_entry>/opt/tct-audio-html5-tests/audio/w3c/audio_attributes.html?total_num=89&amp;amp;locator_key=id&amp;amp;value=71</test_script_entry>
-        </description>
-      </testcase>
-      <testcase component="W3C_HTML5 APIs/Media/HTML5 The audio element (Partial)" execution_type="auto" id="audio_loop_attribute_exists" purpose="Check if audio.loop attribute exists">
-        <description>
-          <test_script_entry>/opt/tct-audio-html5-tests/audio/w3c/audio_attributes.html?total_num=89&amp;amp;locator_key=id&amp;amp;value=72</test_script_entry>
-        </description>
-      </testcase>
-      <testcase component="W3C_HTML5 APIs/Media/HTML5 The audio element (Partial)" execution_type="auto" id="audio_loop_attribute_type" purpose="Check if the type of audio.loop is boolean">
-        <description>
-          <test_script_entry>/opt/tct-audio-html5-tests/audio/w3c/audio_attributes.html?total_num=89&amp;amp;locator_key=id&amp;amp;value=73</test_script_entry>
-        </description>
-      </testcase>
-      <testcase component="W3C_HTML5 APIs/Media/HTML5 The audio element (Partial)" execution_type="auto" id="audio_loop_attribute_initial" purpose="Check if audio.loop initial value is false">
-        <description>
-          <test_script_entry>/opt/tct-audio-html5-tests/audio/w3c/audio_attributes.html?total_num=89&amp;amp;locator_key=id&amp;amp;value=74</test_script_entry>
-        </description>
-      </testcase>
-      <testcase component="W3C_HTML5 APIs/Media/HTML5 The audio element (Partial)" execution_type="auto" id="audio_mediaGroup_attribute_exists" purpose="Check if audio.mediaGroup exists">
-        <description>
-          <test_script_entry>/opt/tct-audio-html5-tests/audio/w3c/audio_attributes.html?total_num=89&amp;amp;locator_key=id&amp;amp;value=75</test_script_entry>
-        </description>
-      </testcase>
-      <testcase component="W3C_HTML5 APIs/Media/HTML5 The audio element (Partial)" execution_type="auto" id="audio_mediaGroup_attribute_type" purpose="Check if the type of audio.mediagroup is string">
-        <description>
-          <test_script_entry>/opt/tct-audio-html5-tests/audio/w3c/audio_attributes.html?total_num=89&amp;amp;locator_key=id&amp;amp;value=76</test_script_entry>
-        </description>
-      </testcase>
-      <testcase component="W3C_HTML5 APIs/Media/HTML5 The audio element (Partial)" execution_type="auto" id="audio_controller_attribute_exists" purpose="Check if the audio.controller exists">
-        <description>
-          <test_script_entry>/opt/tct-audio-html5-tests/audio/w3c/audio_attributes.html?total_num=89&amp;amp;locator_key=id&amp;amp;value=77</test_script_entry>
-        </description>
-      </testcase>
-      <testcase component="W3C_HTML5 APIs/Media/HTML5 The audio element (Partial)" execution_type="auto" id="audio_controller_attribute_type" purpose="Check if the type of audio.controller is object">
-        <description>
-          <test_script_entry>/opt/tct-audio-html5-tests/audio/w3c/audio_attributes.html?total_num=89&amp;amp;locator_key=id&amp;amp;value=78</test_script_entry>
-        </description>
-      </testcase>
-      <testcase component="W3C_HTML5 APIs/Media/HTML5 The audio element (Partial)" execution_type="auto" id="audio_controls_attribute_exists" purpose="Check if the audio.controls exists">
-        <description>
-          <test_script_entry>/opt/tct-audio-html5-tests/audio/w3c/audio_attributes.html?total_num=89&amp;amp;locator_key=id&amp;amp;value=79</test_script_entry>
-        </description>
-      </testcase>
-      <testcase component="W3C_HTML5 APIs/Media/HTML5 The audio element (Partial)" execution_type="auto" id="audio_controls_attribute_type" purpose="Check if the type of audio.controls is boolean">
-        <description>
-          <test_script_entry>/opt/tct-audio-html5-tests/audio/w3c/audio_attributes.html?total_num=89&amp;amp;locator_key=id&amp;amp;value=80</test_script_entry>
-        </description>
-      </testcase>
-      <testcase component="W3C_HTML5 APIs/Media/HTML5 The audio element (Partial)" execution_type="auto" id="audio_volume_attribute_exists" purpose="Check if audio.volume attribute exists">
-        <description>
-          <test_script_entry>/opt/tct-audio-html5-tests/audio/w3c/audio_attributes.html?total_num=89&amp;amp;locator_key=id&amp;amp;value=82</test_script_entry>
-        </description>
-      </testcase>
-      <testcase component="W3C_HTML5 APIs/Media/HTML5 The audio element (Partial)" execution_type="auto" id="audio_volume_attribute_type" purpose="Check if the type of audio.volume attribute is number">
-        <description>
-          <test_script_entry>/opt/tct-audio-html5-tests/audio/w3c/audio_attributes.html?total_num=89&amp;amp;locator_key=id&amp;amp;value=83</test_script_entry>
-        </description>
-      </testcase>
-      <testcase component="W3C_HTML5 APIs/Media/HTML5 The audio element (Partial)" execution_type="auto" id="audio_muted_attribute_exists" purpose="Check if audio.muted exists">
-        <description>
-          <test_script_entry>/opt/tct-audio-html5-tests/audio/w3c/audio_attributes.html?total_num=89&amp;amp;locator_key=id&amp;amp;value=84</test_script_entry>
-        </description>
-      </testcase>
-      <testcase component="W3C_HTML5 APIs/Media/HTML5 The audio element (Partial)" execution_type="auto" id="audio_muted_attribute_type" purpose="Check if the type of audio.muted is boolean">
-        <description>
-          <test_script_entry>/opt/tct-audio-html5-tests/audio/w3c/audio_attributes.html?total_num=89&amp;amp;locator_key=id&amp;amp;value=85</test_script_entry>
-        </description>
-      </testcase>
-      <testcase component="W3C_HTML5 APIs/Media/HTML5 The audio element (Partial)" execution_type="auto" id="audio_muted_attribute_initial" purpose="Check if audio.muted initial value is false">
-        <description>
-          <test_script_entry>/opt/tct-audio-html5-tests/audio/w3c/audio_attributes.html?total_num=89&amp;amp;locator_key=id&amp;amp;value=86</test_script_entry>
-        </description>
-      </testcase>
-      <testcase component="W3C_HTML5 APIs/Media/HTML5 The audio element (Partial)" execution_type="auto" id="audio_defaultMuted_attribute_exists" purpose="Check if the audio.defaultMuted attribute exists">
-        <description>
-          <test_script_entry>/opt/tct-audio-html5-tests/audio/w3c/audio_attributes.html?total_num=89&amp;amp;locator_key=id&amp;amp;value=87</test_script_entry>
-        </description>
-      </testcase>
-      <testcase component="W3C_HTML5 APIs/Media/HTML5 The audio element (Partial)" execution_type="auto" id="audio_defaultMuted_attribute_type" purpose="Check if the type of audio.defaultMuted is boolean">
-        <description>
-          <test_script_entry>/opt/tct-audio-html5-tests/audio/w3c/audio_attributes.html?total_num=89&amp;amp;locator_key=id&amp;amp;value=88</test_script_entry>
-        </description>
-      </testcase>
-      <testcase component="W3C_HTML5 APIs/Media/HTML5 The audio element (Partial)" execution_type="auto" id="audio_defaultMuted_attribute_initial" purpose="Check if audio.defaultMuted initial value is false">
-        <description>
-          <test_script_entry>/opt/tct-audio-html5-tests/audio/w3c/audio_attributes.html?total_num=89&amp;amp;locator_key=id&amp;amp;value=89</test_script_entry>
+          <test_script_entry>/opt/tct-audio-html5-tests/audio/w3c/audio_attributes.html</test_script_entry>
         </description>
       </testcase>
       <testcase component="W3C_HTML5 APIs/Media/HTML5 The audio element (Partial)" execution_type="auto" id="audio_canPlayType_mp3" purpose="Check if the browser really supports playing MP3s">
