@@ -28,6 +28,7 @@
 #
 # Authors:
 #         Liu, xin <xinx.liu@intel.com>
+#         Li, Hao <haox.li@intel.com>
 
 import os
 import csv
@@ -40,6 +41,78 @@ from xml.etree import ElementTree
 
 LOG = None
 LOG_LEVEL = logging.DEBUG
+
+class Set():
+    set_name = ""
+    set_type = ""
+    ui_auto = ""
+    testcase = []
+
+    def __init__(self, setname, settype, uiauto):
+        self.set_name = setname
+        self.set_type = settype
+        self.ui_auto = uiauto
+        self.testcase = []
+
+    def __init__(self, setname, settype, uiauto, testcase):
+        self.set_name = setname
+        self.set_type = settype
+        self.ui_auto = uiauto
+        self.testcase = testcase
+
+
+
+class TestCase():
+    case_id = ""
+    purpose = ""
+    component = ""
+    priority = ""
+    execution_type = ""
+    status = ""
+    case_type = ""
+    onload_delay = ""
+    subcase = ""
+    pre_condition = ""
+    post_condition = ""
+    steps = []
+    test_script_entry = ""
+    refer_test_script_entry = ""
+    bdd_test_script_entry = ""
+    spec_category = ""
+    spec_section = ""
+    spec_specification = ""
+    spec_interface = ""
+    spec_element_name = ""
+    spec_element_type = ""
+    spec_url = ""
+    spec_statement = ""
+
+    def __init__(self, caseid, purpose, component, priority, executiontype, status, casetype,\
+                 onloaddelay, subcase, precondition, postcondition, steps, testscriptentry,\
+                 refertestscriptentry, bddtestscriptentry, speccategory, specsection,\
+                 specification, specinterface, specelementname, specelementtype, specurl):
+        self.case_id = caseid
+        self.purpose = purpose
+        self.component = component
+        self.priority = priority
+        self.execution_type = executiontype
+        self.status = status
+        self.case_type = casetype
+        self.onload_delay = onloaddelay
+        self.subcase = subcase
+        self.pre_condition = precondition
+        self.post_condition = postcondition
+        self.steps = steps
+        self.test_script_entry = testscriptentry
+        self.refer_test_script_entry = refertestscriptentry
+        self.bdd_test_script_entry = bddtestscriptentry
+        self.spec_category = speccategory
+        self.spec_section = specsection
+        self.spec_specification = specification
+        self.spec_interface = specinterface
+        self.spec_element_name = specelementname
+        self.spec_element_type = specelementtype
+        self.spec_url = specurl
 
 
 class ColorFormatter(logging.Formatter):
@@ -73,94 +146,90 @@ def csv2full(csv_path, split_sign):
     if not ext == '.csv':
         print '%s is not a csv' % csv_path
         return
-    LOG.info("+Convert csv to xml start ...")
+    LOG.info("+Convert csv to test.full.xml start ...")
     csv_file = file(csv_path, 'rb')
     csv_file.readline()
     reader = csv.reader(csv_file)
-    csv_content = []
+    test_suite = {}
     for line in reader:
-        csv_content.append(line)
+        if test_suite.get(line[0]) is None:
+            testset = Set(line[0], line[1], line[2], [])
+            test_suite[line[0]] = testset
+
+        testcase = TestCase(line[3], line[4], line[5], line[8], line[7], line[17], line[22],\
+                            str(line[6]), str(line[21]), line[23], line[24], line[25], line[18], line[19],\
+                            line[20], line[14], line[13], line[12], line[11], line[10], line[9], line[15])
+        test_suite[line[0]].testcase.append(testcase)
 
     csv_file.close()
-    suite_name = csv_content[0][16].split('/')[2]
-    category_name = csv_content[0][12]
-    set_name = name.split(split_sign)[-1]
+
+    suite_name = test_suite.values()[0].testcase[0].test_script_entry.split('/')[2]
+    category_name = test_suite.values()[0].testcase[0].component.split('/')[0]
     folder = os.path.dirname(csv_path)
-    full_test_path = '%s%stests.full(%s).xml' % (folder, split_sign, set_name)
+    full_test_path = '%s%s%s-tests.full.xml' % (folder, split_sign, suite_name)
     make_full_test(
-        csv_content,
+        test_suite,
         full_test_path,
         suite_name,
-        set_name,
         category_name)
     LOG.info('General %s' % full_test_path)
-    test_path = '%s%stests(%s).xml' % (folder, split_sign, set_name)
-    make_test(csv_content, test_path, suite_name, set_name, category_name)
-    LOG.info('General %s' % test_path)
-    LOG.info("== Convert csv to xml finish==")
 
 
-def make_full_test(
-        csv_content, full_test_name, suite_name, set_name, category_name):
+def make_full_test(test_suite, full_test_name, suite_name, category_name):
     full_test_file = open(full_test_name, 'w')
-    content = '<?xml version="1.0" encoding="UTF-8"?>\n<?xml-stylesheet type="text/xsl" href="./testcase.xsl"?>\n<test_definition>\n  <suite name="%s" launcher="WRTLauncher" category="%s">\n    <set name="%s">' % (
-        suite_name, category_name, set_name)
-    for line in csv_content:
-        content += '\n      <testcase purpose="%s" type="%s" status="%s" component="%s" execution_type="%s" priority="%s" id="%s">\n        <description>\n          <test_script_entry>%s</test_script_entry>\n        </description>\n        <specs>\n          <spec>\n            <spec_assertion element_type="%s" element_name="%s" interface="%s" specification="%s" section="%s" category="%s"/>\n            <spec_url>%s</spec_url>\n            <spec_statement/>\n          </spec>\n        </specs>\n      </testcase>' % (line[1],
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                          line[
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                              17],
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                          line[
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                              15],
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                          line[
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                              2],
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                          line[
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                              4],
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                          line[
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                              6],
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                          line[
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                              0],
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                          line[
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                              16],
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                          line[
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                              7],
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                          line[
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                              8],
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                          line[
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                              9],
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                          line[
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                              10],
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                          line[
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                              11],
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                          line[
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                              12],
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                          line[13])
+    content = '<?xml version="1.0" encoding="UTF-8"?>\n'\
+            + '<?xml-stylesheet type="text/xsl" href="./testcase.xsl"?>\n'\
+            + '<test_definition>\n'\
+            + '  <suite category="%s" name="%s">\n' % (category_name, suite_name)
+    for testset in test_suite.values():
+        set_ui_auto = ""
+        if testset.ui_auto is not "":
+            set_ui_auto = ' ui-auto="%s"' % testset.ui_auto
+        content += '    <set name="%s" type="%s"%s>\n' % (testset.set_name, testset.set_type, set_ui_auto)
+        testcasestr = ""
+        for testcase in testset.testcase:
+            onload_delay = ' onload_delay="%s"' % testcase.onload_delay if testcase.onload_delay is not "" else ""
+            subcase = ' subcase="%s"' % testcase.subcase if testcase.subcase is not "" else ""
+            pre_condition = '\
+          <pre_condition>\n\
+              %s\n\
+          </pre_condition>\n' % testcase.pre_condition if testcase.pre_condition is not "" else ""
 
-    content += '\n    </set>\n  </suite>\n</test_definition>'
+            post_condition = '\
+          <post_condition>\n\
+              %s\n\
+          </post_condition>\n' % testcase.post_condition if testcase.post_condition is not "" else ""
+
+            refer_test_script_entry = "          <refer_test_script_entry>%s</refer_test_script_entry>\n" \
+                                      % testcase.post_condition if testcase.post_condition is not "" else ""
+            bdd_test_script_entry = "          <bdd_test_script_entry>%s</bdd_test_script_entry>\n" \
+                                      % testcase.bdd_test_script_entry if testcase.bdd_test_script_entry is not "" else ""
+
+            testcasestr += '\
+      <testcase purpose="%s" component="%s" type="%s" status="%s" execution_type="%s" priority="%s" id="%s"%s%s>\n\
+        <description>\n%s%s\
+          <test_script_entry>%s</test_script_entry>\n%s%s\
+        </description>\n\
+        <specs>\n\
+          <spec>\n\
+            <spec_assertion element_type="%s" element_name="%s" interface="%s" specification="%s" section="%s" category="%s"/>\n\
+            <spec_url>%s</spec_url>\n\
+            <spec_statement/>\n\
+          </spec>\n\
+        </specs>\n\
+      </testcase>\n' % (testcase.purpose, testcase.component, testcase.case_type, testcase.status, testcase.execution_type,\
+                        testcase.priority, testcase.case_id, onload_delay, subcase, pre_condition, post_condition,\
+                        testcase.test_script_entry, refer_test_script_entry, bdd_test_script_entry, testcase.spec_element_type,\
+                        testcase.spec_element_name, testcase.spec_interface, testcase.spec_specification, testcase.spec_section,\
+                        testcase.spec_category, testcase.spec_url)
+        content += testcasestr\
+                 + '    </set>\n'
+
+    content += '  </suite>\n</test_definition>'
     full_test_file.seek(0)
     full_test_file.truncate()
     full_test_file.write(content)
     full_test_file.close()
-
-
-def make_test(csv_content, test_name, suite_name, set_name, category_name):
-    test_file = open(test_name, 'w')
-    content = '<?xml version="1.0" encoding="UTF-8"?>\n<?xml-stylesheet type="text/xsl" href="./testcase.xsl"?>\n<test_definition>\n  <suite name="%s" category="%s" launcher="WRTLauncher">\n    <set name="%s">' % (
-        suite_name, category_name, set_name)
-    for line in csv_content:
-        content += '\n      <testcase component="%s" execution_type="%s" id="%s" purpose="%s">\n        <description>\n          <test_script_entry>%s</test_script_entry>\n        </description>\n      </testcase>' % (line[2],
-                                                                                                                                                                                                                          line[
-                                                                                                                                                                                                                              4],
-                                                                                                                                                                                                                          line[
-                                                                                                                                                                                                                              0],
-                                                                                                                                                                                                                          line[
-                                                                                                                                                                                                                              1],
-                                                                                                                                                                                                                          line[16])
-
-    content += '\n    </set>\n  </suite>\n</test_definition>'
-    test_file.seek(0)
-    test_file.truncate()
-    test_file.write(content)
-    test_file.close()
 
 
 def echo_about():
