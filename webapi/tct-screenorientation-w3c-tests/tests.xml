@@ -1,56 +1,46 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <?xml-stylesheet type="text/xsl" href="./testcase.xsl"?>
 <test_definition>
-  <suite category="W3C/HTML5 APIs" name="tct-screenorientation-w3c-tests">
+  <suite category="W3C_HTML5 APIs" name="tct-screenorientation-w3c-tests">
     <set name="ScreenOrientation" type="js">
-      <testcase component="W3C_HTML5 APIs/Device/The Screen Orientation API" execution_type="auto" id="ScreenOrientation_attributes_existence" purpose="Test that the Screen Orientation API is present">
+      <testcase component="W3C_HTML5 APIs/Device/The Screen Orientation API" execution_type="auto" id="orientation-api" purpose="Test Screen Orientation API" subcase="3">
         <description>
-          <test_script_entry>/opt/tct-screenorientation-w3c-tests/screenorientation/blink/screenorientation-api.html?total_num=3&amp;amp;locator_key=id&amp;amp;value=1</test_script_entry>
+          <test_script_entry>/opt/tct-screenorientation-w3c-tests/screenorientation/w3c/orientation-api.html</test_script_entry>
         </description>
       </testcase>
-      <testcase component="W3C_HTML5 APIs/Device/The Screen Orientation API" execution_type="auto" id="ScreenOrientation_attributes_type" purpose="Test Screen Orientation API property types">
+      <testcase component="W3C_HTML5 APIs/Device/The Screen Orientation API" execution_type="auto" id="orientation-reading" purpose="Test screen.orientation properties reading" subcase="5">
         <description>
-          <test_script_entry>/opt/tct-screenorientation-w3c-tests/screenorientation/blink/screenorientation-api.html?total_num=3&amp;amp;locator_key=id&amp;amp;value=2</test_script_entry>
+          <test_script_entry>/opt/tct-screenorientation-w3c-tests/screenorientation/w3c/orientation-reading.html</test_script_entry>
         </description>
       </testcase>
-      <testcase component="W3C_HTML5 APIs/Device/The Screen Orientation API" execution_type="auto" id="ScreenOrientation_inherit_EventTarget" purpose="Test that screen.orientation is an EventTarget">
+      <testcase component="W3C_HTML5 APIs/Device/The Screen Orientation API" execution_type="auto" id="lock-bad-argument" purpose="Test that orientation.lock() throws exception when the input isn't valid">
         <description>
-          <test_script_entry>/opt/tct-screenorientation-w3c-tests/screenorientation/blink/screenorientation-api.html?total_num=3&amp;amp;locator_key=id&amp;amp;value=3</test_script_entry>
+          <test_script_entry>/opt/tct-screenorientation-w3c-tests/screenorientation/w3c/lock-bad-argument.html</test_script_entry>
         </description>
       </testcase>
-      <testcase component="W3C_HTML5 APIs/Device/The Screen Orientation API" execution_type="auto" id="ScreenOrientation_attributes_reading" purpose="Test screen.orientation properties reading">
+      <testcase component="W3C_HTML5 APIs/Device/The Screen Orientation API" execution_type="manual" id="lock-basic" purpose="Test that orientation.lock returns a pending promise">
         <description>
-          <test_script_entry>/opt/tct-screenorientation-w3c-tests/screenorientation/blink/orientation-reading.html?total_num=5&amp;amp;locator_key=id&amp;amp;value=1</test_script_entry>
+          <test_script_entry>/opt/tct-screenorientation-w3c-tests/screenorientation/w3c/lock-basic-manual.html</test_script_entry>
         </description>
       </testcase>
-      <testcase component="W3C_HTML5 APIs/Device/The Screen Orientation API" execution_type="auto" id="ScreenOrientation_attributes_defaultvalue" purpose="Test screen.orientation default values">
+      <testcase component="W3C_HTML5 APIs/Device/The Screen Orientation API" execution_type="manual" id="lock-sandboxed-iframe" purpose="Test orientation.lock in sandbox">
         <description>
-          <test_script_entry>/opt/tct-screenorientation-w3c-tests/screenorientation/blink/orientation-reading.html?total_num=5&amp;amp;locator_key=id&amp;amp;value=2</test_script_entry>
+          <test_script_entry>/opt/tct-screenorientation-w3c-tests/screenorientation/w3c/lock-sandboxed-iframe-manual.html</test_script_entry>
         </description>
       </testcase>
-      <testcase component="W3C_HTML5 APIs/Device/The Screen Orientation API" execution_type="auto" id="ScreenOrientation_attributes_readonly" purpose="Test that screen.orientation properties are not writable">
+      <testcase component="W3C_HTML5 APIs/Device/The Screen Orientation API" execution_type="manual" id="onchange-event" purpose="Test onchange event">
         <description>
-          <test_script_entry>/opt/tct-screenorientation-w3c-tests/screenorientation/blink/orientation-reading.html?total_num=5&amp;amp;locator_key=id&amp;amp;value=3</test_script_entry>
+          <test_script_entry>/opt/tct-screenorientation-w3c-tests/screenorientation/w3c/onchange-event-manual.html</test_script_entry>
         </description>
       </testcase>
-      <testcase component="W3C_HTML5 APIs/Device/The Screen Orientation API" execution_type="auto" id="ScreenOrientation_singleton_object" purpose="Test that screen.orientation is always the same object">
+      <testcase component="W3C_HTML5 APIs/Device/The Screen Orientation API" execution_type="manual" id="onchange-event-subframe" purpose="Test subframes receive orientation change events">
         <description>
-          <test_script_entry>/opt/tct-screenorientation-w3c-tests/screenorientation/blink/orientation-reading.html?total_num=5&amp;amp;locator_key=id&amp;amp;value=4</test_script_entry>
+          <test_script_entry>/opt/tct-screenorientation-w3c-tests/screenorientation/w3c/onchange-event-subframe-manual.html</test_script_entry>
         </description>
       </testcase>
-      <testcase component="W3C_HTML5 APIs/Device/The Screen Orientation API" execution_type="auto" id="lockOrientation-bad-argument" purpose="Test that screen.orientation.lock() throws exception when the input isn't valid">
+      <testcase component="W3C_HTML5 APIs/Device/The Screen Orientation API" execution_type="manual" id="page-visibility" purpose="Test onchange event with page visibility">
         <description>
-          <test_script_entry>/opt/tct-screenorientation-w3c-tests/screenorientation/blink/lockOrientation-bad-argument.html</test_script_entry>
-        </description>
-      </testcase>
-      <testcase component="W3C_HTML5 APIs/Device/The Screen Orientation API" execution_type="manual" id="lockOrientation-basic" purpose="Test that screen.orientation.lock returns a pending promise">
-        <description>
-          <test_script_entry>/opt/tct-screenorientation-w3c-tests/screenorientation/blink/lockOrientation-basic-manual.html</test_script_entry>
-        </description>
-      </testcase>
-      <testcase component="W3C_HTML5 APIs/Device/The Screen Orientation API" execution_type="manual" id="orientationchange-event" purpose="Test that orientationchange event is fired when the orientation changes">
-        <description>
-          <test_script_entry>/opt/tct-screenorientation-w3c-tests/screenorientation/blink/orientationchange-event-manual.html</test_script_entry>
+          <test_script_entry>/opt/tct-screenorientation-w3c-tests/screenorientation/w3c/page-visibility-manual.html</test_script_entry>
         </description>
       </testcase>
     </set>
