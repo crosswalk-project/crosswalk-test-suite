@@ -62,210 +62,101 @@ def register_watcher_when2(context, watcher_name, when_text1, when_text2, click_
     context.android.registerWatcher(watcher_name, when_text1, click_text, when_text2)
 
 
-@step(u'I should see text "{text_name}"')
-def select_text_object(context, text_name):
-    assert context.android.selectTvObjectBy(text_name).exists
-
-
-@step(u'I should see image "{image_name}"')
-def select_image_object(context, image_name):
-    assert context.android.selectImageViewObjectBy(image_name).exists
-
-
-@step(u'I should see web "{web_desc}"')
-def select_web_object(context, web_desc):
-    assert context.android.selectWebObjectBy(web_desc).exists
-
-
-@step(u'I should see view "{view_desc}"')
-def select_view_object(context, view_desc):
-    assert context.android.selectViewObjectBy(view_desc).exists
-
-
-@step(u'I should see class "{class_name}" on the "{relative}" side of text "{text_name}"')
-def select_relative_text_object(context, class_name, relative, text_name):
-    ob = context.android.selectTvObjectBy(text_name)
+@step(u'I should see view "{params_kw}"')
+def select_view_by(context, params_kw):
+    ob = context.android.selectObjectBy(params_kw)
     assert ob.exists
-    assert context.android.selectRelativeObjectBy(ob, relative, class_name).exists
 
 
-@step(u'I should see class "{class_name}" on the "{relative}" side of view "{view_desc}"')
-def select_relative_view_object(context, class_name, relative, view_desc):
-    ob = context.android.selectViewObjectBy(view_desc)
+@step(u'I should see relative view "{params_kw1}" on the "{position}" side of view "{params_kw2}"')
+def select_relative_object(context, params_kw1, position, params_kw2):
+    ob = context.android.selectObjectBy(params_kw2)
     assert ob.exists
-    assert context.android.selectRelativeObjectBy(ob, relative, class_name).exists
+    assert context.android.selectRelativeObjectBy(ob, position, params_kw1).exists
 
 
-@step(u'I should see class "{class_target}" on the "{relative}" side of any "{class_name}" "{value_name}"')
-def select_relative_any_object(context, class_target, relative, class_name, view_desc):
-    ob = context.android.selectAnyObjectBy(value_name, class_name)
+@step(u'I should not see view "{params_kw}"')
+def select_noneview_by(context, params_kw):
+    ob = context.android.selectObjectBy(params_kw)
+    assert not ob.exists
+
+
+@step(u'I should not see relative view "{params_kw1}" on the "{position}" side of view "{params_kw2}"')
+def select_relative_noneobject(context, params_kw1, position, params_kw2):
+    ob = context.android.selectObjectBy(params_kw2)
+    assert not ob.exists
+    assert not context.android.selectRelativeObjectBy(ob, position, params_kw1).exists
+
+
+@step(u'I click view "{params_kw}"')
+def click_view(context, params_kw):
+    ob = context.android.selectObjectBy(params_kw)
     assert ob.exists
-    assert context.android.selectRelativeObjectBy(ob, relative, class_target).exists
-
-
-@step(u'I should not see text "{text_name}"')
-def select_text_object(context, text_name):
-    assert not context.android.selectTvObjectBy(text_name).exists
-
-
-@step(u'I should not see image "{image_name}"')
-def select_image_object(context, image_name):
-    assert not context.android.selectImageViewObjectBy(image_name).exists
-
-
-@step(u'I should not see web "{web_desc}"')
-def select_web_object(context, web_desc):
-    assert not context.android.selectWebObjectBy(web_desc).exists
-
-
-@step(u'I should not see view "{view_desc}"')
-def select_view_object(context, view_desc):
-    assert not context.android.selectViewObjectBy(view_desc).exists
-
-
-@step(u'I should not see class "{class_name}" on the "{relative}" side of text "{text_name}"')
-def select_relative_text_object(context, class_name, relative, text_name):
-    ob = context.android.selectTvObjectBy(text_name)
-    assert not ob.exists
-    assert not context.android.selectRelativeObjectBy(ob, relative, class_name).exists
-
-
-@step(u'I should not see class "{class_name}" on the "{relative}" side of view "{view_desc}"')
-def select_relative_view_object(context, class_name, relative, view_desc):
-    ob = context.android.selectViewObjectBy(view_desc)
-    assert not ob.exists
-    assert not context.android.selectRelativeObjectBy(ob, relative, class_name).exists
-
-
-@step(u'I should not see class "{class_target}" on the "{relative}" side of any "{class_name}" "{value_name}"')
-def select_relative_any_object(context, class_target, relative, class_name, view_desc):
-    ob = context.android.selectAnyObjectBy(value_name, class_name)
-    assert not ob.exists
-    assert not context.android.selectRelativeObjectBy(ob, relative, class_target).exists
-
-
-@step(u'I click button "{button_name}"')
-def click_button_object(context, button_name):
-    ob = context.android.selectBtnObjectBy(button_name)
-    if ob.exists:
-        assert context.android.clickObject(ob)
-    else:
-        ob = context.android.selectImageBtnObjectBy(button_name)
-        assert ob.exists
-        assert context.android.clickObject(ob)
-
-
-@step(u'I click other "{class_name}" by "{which_key}" "{which_value}"')
-def click_other_view(context, class_name, which_key, which_value):
-    ob = context.android.selcetObjectBy(which_key, which_value, class_name)
-    assert context.android.waitObjectShow(ob)
     assert context.android.clickObject(ob)
 
 
-@step(u'I click object "{key}"')
-def click_any_object(context, key):
+@step(u'I click saved object "{key}"')
+def click_object(context, key):
     ob = context.android.get2InfoTemp(key)
     assert ob.exists
     assert context.android.clickObject(ob)
 
 
-@step(u'I edit text "{edit_text}" to input "{text}"')
-def set_edittext_object(context, edit_text, text):
-    ob = context.android.selectEdtObjectBy(edit_text)
+@step(u'I edit view "{params_kw}" to input "{text}"')
+def set_edittext_object(context, params_kw, text):
+    ob = context.android.selectObjectBy(params_kw)
     assert ob.exists
     assert context.android.setEditText(ob, text)
 
 
-@step(u'I edit index {n:d} text to input "{text}"')
+@step(u'I edit index {n:d} EditText to input "{text}"')
 def set_index_edittext_object(context, n, text):
-    ob = context.android.selectEdtObjectBy("")[n]
+    ob = context.android.selectObjectBy("className=android.widget.EditText")[n]
     assert ob.exists
     assert context.android.setEditText(ob, text)
 
 
-@step(u'I compare text "{text_name}" info "{what}" with "{except_result}"')
-def compare_text_with_result(context, text_name, what, except_result):
-    ob = context.android.selectTvObjectBy(text_name)
+@step(u'I save view "{params_kw}" to object "{key}"')
+def save_view_to_object(context, params_kw, key):
+    ob = context.android.selectObjectBy(params_kw)
     assert ob.exists
-    if context.android.getObjectInfo(ob, what) == except_result:
+    assert context.android.save2InfoTemp(ob, key)
+
+
+@step(u'I save relative view "{params_kw1}" on the "{position}" side of view "{params_kw2}" to object "{key}"')
+def save_relativeview_to_object(context, params_kw1, position, params_kw2, key):
+    ob = context.android.selectObjectBy(params_kw2)
+    assert ob.exists
+    relative_ob = context.android.selectRelativeObjectBy(ob, position, params_kw1)
+    assert relative_ob.exists
+    assert context.android.save2InfoTemp(relative_ob, key)
+
+
+@step(u'I compare view "{params_kw}" info "{info_name}" with "{except_result}"')
+def compare_views(context, params_kw, info_name, except_result):
+    ob = context.android.selectObjectBy(params_kw)
+    assert ob.exists
+    if context.android.getObjectInfo(ob, info_name) == except_result:
         assert True
     else:
         assert False
 
 
-@step(u'I compare view "{view_desc}" info "{what}" with "{except_result}"')
-def compare_view_with_result(context, view_desc, what, except_result):
-    ob = context.android.selectViewObjectBy(view_desc)
-    assert ob.exists
-    if context.android.getObjectInfo(ob, what) == except_result:
-        assert True
-    else:
-        assert False
-
-
-@step(u'I save text object "{text_name}" to temporary value "{key}"')
-def save_text_info_temp(context, text_name, key):
-    ob = context.android.selectTvObjectBy(text_name)
-    assert ob.exists
-    assert context.android.save2InfoTemp(ob, key)
-
-
-@step(u'I save view object "{view_desc}" to temporary value "{key}"')
-def save_view_info_temp(context, view_desc, key):
-    ob = context.android.selectViewObjectBy(view_desc)
-    assert ob.exists
-    assert context.android.save2InfoTemp(ob, key)
-
-
-@step(u'I save any object "{class_name}" "{value_name}" to temporary value "{key}"')
-def save_any_info_temp(context, class_name, value_name, key):
-    ob = context.android.selectAnyObjectBy(value_name, class_name)
-    assert ob.exists
-    assert context.android.save2InfoTemp(ob, key)
-
-
-@step(u'I save "{class_name}" on the "{relative}" side of text "{text_name}" to temporary value "{key}"')
-def save_relative_text_object(context, class_name, relative, text_name, key):
-    ob = context.android.selectTvObjectBy(text_name)
-    assert ob.exists
-    relative_ob = context.android.selectRelativeObjectBy(ob, relative, class_name)
-    assert relative_ob.exists
-    assert context.android.save2InfoTemp(relative_ob, key)
-
-
-@step(u'I save "{class_name}" on the "{relative}" side of view "{view_desc}" to temporary value "{key}"')
-def save_relative_view_object(context, class_name, relative, view_desc, key):
-    ob = context.android.selectViewObjectBy(view_desc)
-    assert ob.exists
-    relative_ob = context.android.selectRelativeObjectBy(ob, relative, class_name)
-    assert relative_ob.exists
-    assert context.android.save2InfoTemp(relative_ob, key)
-
-
-@step(u'I save "{class_target}" on the "{relative}" side of any "{class_name}" "{value_name}" to temporary value "{key}"')
-def save_relative_any_object(context, class_target, relative, class_name, value_name, key):
-    ob = context.android.selectAnyObjectBy(value_name, class_name)
-    assert ob.exists
-    relative_ob = context.android.selectRelativeObjectBy(ob, relative, class_target)
-    assert relative_ob.exists
-    assert context.android.save2InfoTemp(relative_ob, key)
-
-
-@step(u'I compare object "{key1}" equal "{key2}" on info "{what}"')
-def equal_with_keys(context, key1, key2, what):
+@step(u'I compare saved object "{key1}" equal "{key2}" on info "{info_name}"')
+def equal_with_keys(context, key1, key2, info_name):
     ob1 = context.android.get2InfoTemp(key1)
     ob2 = context.android.get2InfoTemp(key2)
-    if context.android.getObjectInfo(ob1, what) == context.android.getObjectInfo(ob2, what):
+    if context.android.getObjectInfo(ob1, info_name) == context.android.getObjectInfo(ob2, info_name):
         assert True
     else:
         assert False
 
 
-@step(u'I compare object "{key1}" unequal "{key2}" on info "{what}"')
-def unequal_with_keys(context, key1, key2, what):
+@step(u'I compare saved object "{key1}" unequal "{key2}" on info "{info_name}"')
+def unequal_with_keys(context, key1, key2, info_name):
     ob1 = context.android.get2InfoTemp(key1)
     ob2 = context.android.get2InfoTemp(key2)
-    if context.android.getObjectInfo(ob1, what) != context.android.getObjectInfo(ob2, what):
+    if context.android.getObjectInfo(ob1, info_name) != context.android.getObjectInfo(ob2, info_name):
         assert True
     else:
         assert False
@@ -281,104 +172,37 @@ def fling_by(context, orientation, direction):
     assert context.android.flingBy(orientation, direction)
 
 
-@step(u'I swipe object "{key}" to "{orientation}"')
+@step(u'I swipe view "{params_kw}" to "{orientation}"')
+def swipe_to(context, key, orientation):
+    ob = context.android.selectObjectBy(params_kw)
+    assert ob.exists
+    assert context.android.swipeTo(ob, orientation)
+
+
+@step(u'I swipe saved object "{key}" to "{orientation}"')
 def swipe_to(context, key, orientation):
     ob = context.android.get2InfoTemp(key)
     assert ob.exists
     assert context.android.swipeTo(ob, orientation)
 
 
-@step(u'I process text object "{text_name}"')
-def process_text_info_temp(context, text_name=""):
-    context.android.process_args['func_name'] = process_text_info_temp
-    if text_name:
-        context.android.process_args["func_args"] = [text_name, ]
+@step(u'I save process of finding view "{params_kw1}" on the "{position}" side of view "{params_kw2}"')
+def process_finding_relative_view(context, params_kw1="", position="", params_kw2=""):
+    context.android.process_args['func_name'] = process_finding_relative_view
+    if params_kw1 and position and params_kw2:
+        context.android.process_args["func_args"] = [params_kw1, position, params_kw2]
     else:
-        text_name = context.android.process_args["func_args"]
+        params_kw1, position, params_kw2 = context.android.process_args["func_args"]
     def save_process():
-        ob = context.android.selectTvObjectBy(text_name)
+        ob = context.android.selectObjectBy(params_kw2)
         assert ob.exists
-        return ob
-    return save_process
-
-
-@step(u'I process view object "{view_desc}"')
-def process_view_info_temp(context, view_desc=""):
-    context.android.process_args['func_name'] = process_view_info_temp
-    if view_desc:
-        context.android.process_args["func_args"] = [view_desc, ]
-    else:
-        view_desc = context.android.process_args["func_args"]
-    def save_process():
-        ob = context.android.selectViewObjectBy(view_desc)
-        assert ob.exists
-        return ob
-    return save_process
-
-
-@step(u'I process any object "{class_name}" "{value_name}"')
-def process_any_info_temp(context, class_name="", value_name=""):
-    context.android.process_args['func_name'] = process_any_info_temp
-    if class_name and value_name:
-        context.android.process_args["func_args"] = [class_name, value_name]
-    else:
-        class_name, value_name = context.android.process_args["func_args"]
-    def save_process():
-        ob = context.android.selectAnyObjectBy(value_name, class_name)
-        assert ob.exists
-        return ob
-    return save_process
-
-
-@step(u'I process "{class_name}" on the "{relative}" side of text "{text_name}"')
-def process_relative_text_object(context, class_name="", relative="", text_name=""):
-    context.android.process_args['func_name'] = process_relative_text_object
-    if class_name and relative and text_name:
-        context.android.process_args["func_args"] = [class_name, relative, text_name]
-    else:
-        class_name, relative, text_name = context.android.process_args["func_args"]
-    def save_process():
-        ob = context.android.selectTvObjectBy(text_name)
-        assert ob.exists
-        relative_ob = context.android.selectRelativeObjectBy(ob, relative, class_name)
+        relative_ob = context.android.selectRelativeObjectBy(ob, position, params_kw1)
         assert relative_ob.exists
         return relative_ob
     return save_process
 
 
-@step(u'I process "{class_name}" on the "{relative}" side of view "{view_desc}"')
-def process_relative_view_object(context, class_name="", relative="", view_desc=""):
-    context.android.process_args['func_name'] = process_relative_view_object
-    if class_name and relative and view_desc:
-        context.android.process_args["func_args"] = [class_name, relative, view_desc]
-    else:
-        class_name, relative, view_desc = context.android.process_args["func_args"]
-    def save_process():
-        ob = context.android.selectViewObjectBy(view_desc)
-        assert ob.exists
-        relative_ob = context.android.selectRelativeObjectBy(ob, relative, class_name)
-        assert relative_ob.exists
-        return relative_ob
-    return save_process
-
-
-@step(u'I process "{class_target}" on the "{relative}" side of any "{class_name}" "{value_name}"')
-def process_relative_any_object(context, class_target="", relative="", class_name="", value_name=""):
-    context.android.process_args['func_name'] = process_relative_any_object
-    if class_target and relative and class_name and value_name:
-        context.android.process_args["func_args"] = [class_target, relative, class_name, value_name]
-    else:
-        class_target, relative, class_name, value_name = context.android.process_args["func_args"]
-    def save_process():
-        ob = context.android.selectAnyObjectBy(value_name, class_name)
-        assert ob.exists
-        relative_ob = context.android.selectRelativeObjectBy(ob, relative, class_target)
-        assert relative_ob.exists
-        return relative_ob
-    return save_process
-
-
-@step(u'I reload process result to temporary value "{key}"')
+@step(u'I reload above process and save result to object "{key}"')
 def reload_process(context, key):
     f = context.android.process_args['func_name'](context)
     ob = f()
@@ -386,14 +210,14 @@ def reload_process(context, key):
     assert context.android.save2InfoTemp(ob, key)
 
 
-@step(u'I wait object "{key}" exist for "{time_out}"')
+@step(u'I wait saved object "{key}" exist in "{time_out}" seconds')
 def wait_object_exist(context, key, time_out):
     ob = context.android.get2InfoTemp(key)
     assert ob
     assert context.android.waitObjectShow(ob, time_out)
 
 
-@step(u'I wait object "{key}" gone for "{time_out}"')
+@step(u'I wait saved object "{key}" gone in "{time_out}" seconds')
 def wait_object_gone(context, key, time_out):
     ob = context.android.get2InfoTemp(key)
     assert ob

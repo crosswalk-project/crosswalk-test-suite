@@ -784,6 +784,9 @@ def launch_webapp_by_name(
         {"android": android.Android(context.bdd_config, app_name, apk_pkg_name, apk_activity_name)})
     context.web = context.apps[app_name]
     context.android = context.apps["android"]
+    context.android.turnOnScreen()
+    context.android.pressKeyBy("home")
+    context.android.setDeviceOrientation("n")
     if not context.web.launch_app():
         assert False
     assert True

@@ -309,39 +309,7 @@ def i_visit_url(context, url):
         </tr>
         <tr>
                 <td></td>
-                <td>Select any object by value and class name</td>
-        </tr>
-        <tr>
-                <td></td>
-                <td>Select TextView object by name</td>
-        </tr>
-        <tr>
-                <td></td>
-                <td>Select Button object by name</td>
-        </tr>
-        <tr>
-                <td></td>
-                <td>Select Edit object by name</td>
-        </tr>
-        <tr>
-                <td></td>
-                <td>Select ImageView object by name</td>
-        </tr>
-        <tr>
-                <td></td>
-                <td>Select ImageButton object by name</td>
-        </tr>
-        <tr>
-                <td></td>
-                <td>Select View object by desc</td>
-        </tr>
-        <tr>
-                <td></td>
-                <td>Select Web object by desc</td>
-        </tr>
-        <tr>
-                <td></td>
-                <td>Select object by direction and class name</td>
+                <td>Select object by relative position</td>
         </tr>
         <tr>
                 <td></td>
@@ -361,16 +329,20 @@ def i_visit_url(context, url):
         </tr>
         <tr>
                 <td></td>
-                <td>Get object info from temp by key</td>
+                <td>Get view info from object by key</td>
         </tr>
         <tr>
                 <td></td>
-                <td>Get object info by text</td>
+                <td>Save view to object</td>
         </tr>
         <tr>
                 <td></td>
-                <td>Save object info to temp</td>
+                <td>Save finding view process</td>
         </tr>
+        <tr>
+                <td></td>
+                <td>Reload above process to get object</td>
+        </tr>        
 </table>
 
 * Functions Category  
@@ -414,49 +386,29 @@ def i_visit_url(context, url):
 @step(u'I launch "{app_name}" with "{apk_pkg_name}" and "{apk_activity_name}" on android')
 @step(u'I scroll to end')
 @step(u'I fling "{orientation}" goto "{direction}"')
-@step(u'I swipe object "{key}" to "{orientation}"')
+@step(u'I swipe view "{params_kw}" to "{orientation}"')
+@step(u'I swipe saved object "{key}" to "{orientation}"')
 @step(u'I force to run all watchers')
 @step(u'I remove all watchers')
 @step(u'I register watcher "{watcher_name}" when "{when_text}" click "{click_text}"')
 @step(u'I register watcher2 "{watcher_name}" when "{when_text1}" and "{when_text2}" click "{click_text}"')
-@step(u'I should see text "{text_name}"')
-@step(u'I should see image "{image_name}"')
-@step(u'I should see web "{web_desc}"')
-@step(u'I should see view "{view_desc}"')
-@step(u'I should see "{class_name}" on the "{relative}" side of text "{text_name}"')
-@step(u'I should see "{class_name}" on the "{relative}" side of view "{view_desc}"')
-@step(u'I should see "{class_target}" on the "{relative}" side of any "{class_name}" "{value_name}"')
-@step(u'I should not see text "{text_name}"')
-@step(u'I should not see image "{image_name}"')
-@step(u'I should not see web "{web_desc}"')
-@step(u'I should not see view "{view_desc}"')
-@step(u'I should not see "{class_name}" on the "{relative}" side of text "{text_name}"')
-@step(u'I should not see "{class_name}" on the "{relative}" side of view "{view_desc}"')
-@step(u'I should not see "{class_target}" on the "{relative}" side of any "{class_name}" "{value_name}"')
-@step(u'I wait object "{key}" exist for "{time_out}"')
-@step(u'I wait object "{key}" gone for "{time_out}"')
-@step(u'I click button "{button_name}"')
-@step(u'I click other "{class_name}" by "{which_key}" "{which_value}"')
-@step(u'I click object "{key}"')
-@step(u'I edit text "{edit_text}" to input "{text}"')
-@step(u'I edit index {n:d} text to input "{text}"')
-@step(u'I compare text "{text_name}" info "{what}" with "{except_result}"')
-@step(u'I compare view "{view_desc}" info "{what}" with "{except_result}"')
-@step(u'I compare object "{key1}" equal "{key2}" on info "{what}"')
-@step(u'I compare object "{key1}" unequal "{key2}" on info "{what}"')
-@step(u'I save text object "{text_name}" to temporary value "{key}"')
-@step(u'I save view object "{view_desc}" to temporary value "{key}"')
-@step(u'I save any object "{class_name}" "{value_name}" to temporary value "{key}"')
-@step(u'I save "{class_name}" on the "{relative}" side of text "{text_name}" to temporary value "{key}"')
-@step(u'I save "{class_name}" on the "{relative}" side of view "{view_desc}" to temporary value "{key}"')
-@step(u'I save "{class_target}" on the "{relative}" side of any "{class_name}" "{value_name}" to temporary value "{key}"')
-@step(u'I process text object "{text_name}"')
-@step(u'I process view object "{view_desc}"')
-@step(u'I process any object "{class_name}" "{value_name}"')
-@step(u'I process "{class_name}" on the "{relative}" side of text "{text_name}"')
-@step(u'I process "{class_name}" on the "{relative}" side of view "{view_desc}"')
-@step(u'I process "{class_target}" on the "{relative}" side of any "{class_name}" "{value_name}"')
-@step(u'I reload process result to temporary value "{key}"')
+@step(u'I should see view "{params_kw}"')
+@step(u'I should see relative view "{params_kw1}" on the "{position}" side of view "{params_kw2}"')
+@step(u'I should not see view "{params_kw}"')
+@step(u'I should not see relative view "{params_kw1}" on the "{position}" side of view "{params_kw2}"')
+@step(u'I click view "{params_kw}"')
+@step(u'I click saved object "{key}"')
+@step(u'I edit view "{params_kw}" to input "{text}"')
+@step(u'I edit index {n:d} EditText to input "{text}"')
+@step(u'I compare view "{params_kw}" info "{info_name}" with "{except_result}"')
+@step(u'I compare saved object "{key1}" equal "{key2}" on info "{info_name}"')
+@step(u'I compare saved object "{key1}" unequal "{key2}" on info "{info_name}"')
+@step(u'I save view "{params_kw}" to object by "{key}"')
+@step(u'I save relative view "{params_kw1}" on the "{position}" side of view "{params_kw2}" to object "{key}"')
+@step(u'I save process of finding view "{params_kw1}" on the "{position}" side of view "{params_kw2}"')
+@step(u'I reload above process and save result to object "{key}"')
+@step(u'I wait saved object "{key}" exist in "{time_out}" seconds')
+@step(u'I wait saved object "{key}" gone in "{time_out}" seconds')
 ```
 
 * "common" steps - done
