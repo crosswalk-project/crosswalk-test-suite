@@ -33,9 +33,9 @@ from atip.common import common
 from uiautomator import *
 reload(sys)
 sys.setdefaultencoding('utf-8')
-DEFAULT_PARAMETER_KEYS = ["text", "textContains", "description", "descriptionContains"
-                "resourceId", "resourceIdMatches"]
-OBJECT_INFO_KEYS = ["contentDescription", "checked", "scrollable", "text", "packageName"
+DEFAULT_PARAMETER_KEYS = ["text", "textContains", "description", "descriptionContains",
+                "resourceId", "resourceIdMatches", "className"]
+OBJECT_INFO_KEYS = ["contentDescription", "checked", "scrollable", "text", "packageName",
                 "selected", "enabled", "className"]
 
 class Android(common.APP):
@@ -304,87 +304,6 @@ class Android(common.APP):
         return ob.wait.gone(timeout=timeout)
 
 
-    def selcetObjectBy(self, key ,value, class_name):
-        if key == "text":
-            return self.d(text=value, className=class_name)
-        elif key == "textContains":
-            return self.d(textContains=value, className=class_name)
-        elif key == "description":
-            return self.d(description=value, className=class_name)
-        elif key == "descriptionContains":
-            return self.d(descriptionContains=value, className=class_name)
-        elif key == "resourceId":
-            return self.d(resourceId=value, className=class_name)
-        elif key == "resourceIdMatches":
-            return self.d(resourceIdMatches=value, className=class_name)
-        else:
-            return self.AutomatorDeviceObject
-
-
-    def selectAnyObjectBy(self, value, class_name):
-        for key in DEFAULT_PARAMETER_KEYS:
-            ob = self.selcetObjectBy(key, value, class_name)
-            if self.waitObjectShow(ob):
-                return ob
-        return self.AutomatorDeviceObject
-
-
-    def selectTvObjectBy(self, text_name):
-        for key in DEFAULT_PARAMETER_KEYS:
-            ob = self.selcetObjectBy(key, text_name, "android.widget.TextView")
-            if self.waitObjectShow(ob):
-                return ob
-        return self.AutomatorDeviceObject
-
-
-    def selectBtnObjectBy(self, button_name):
-        for key in DEFAULT_PARAMETER_KEYS:
-            ob = self.selcetObjectBy(key, button_name, "android.widget.Button")
-            if self.waitObjectShow(ob):
-                return ob
-        return self.AutomatorDeviceObject
-
-
-    def selectEdtObjectBy(self, edittext_name):
-        for key in DEFAULT_PARAMETER_KEYS:
-            ob = self.selcetObjectBy(key, edittext_name, "android.widget.EditText")
-            if self.waitObjectShow(ob):
-                return ob
-        return self.AutomatorDeviceObject
-
-
-    def selectImageViewObjectBy(self, imageview_name):
-        for key in DEFAULT_PARAMETER_KEYS:
-            ob = self.selcetObjectBy(key, imageview_name, "android.widget.ImageView")
-            if self.waitObjectShow(ob):
-                return ob
-        return self.AutomatorDeviceObject
-
-
-    def selectImageBtnObjectBy(self, imagebtn_name):
-        for key in DEFAULT_PARAMETER_KEYS:
-            ob = self.selcetObjectBy(key, imagebtn_name, "android.widget.ImageButton")
-            if self.waitObjectShow(ob):
-                return ob
-        return self.AutomatorDeviceObject
-
-
-    def selectViewObjectBy(self, view_desc):
-        for key in ["description", "descriptionContains"]:
-            ob = self.selcetObjectBy(key, view_desc, "android.view.View")
-            if self.waitObjectShow(ob, 3000):
-                return ob
-        return self.AutomatorDeviceObject
-
-
-    def selectWebObjectBy(self, web_desc):
-        for key in ["description", "descriptionContains"]:
-            ob = self.selcetObjectBy(key, web_desc, "android.webkit.WebView")
-            if self.waitObjectShow(ob, 3000):
-                return ob
-        return self.AutomatorDeviceObject
-
-
     def getObjectInfo(self, ob, str_key="text"):
         if ob.exists and str_key in OBJECT_INFO_KEYS:
             return ob.info[str_key]
@@ -418,16 +337,45 @@ class Android(common.APP):
         return False
 
 
-    def selectRelativeObjectBy(self, ob, direction, class_name):
-        if ob.exists:
+    def selectObjectBy(self, params_str):
+        params_kw = self.paramToDict(params_str)
+        if params_kw:
+            ob = self.d(**params_kw)
+            if self.waitObjectShow(ob):
+                return ob
+        return self.AutomatorDeviceObject
+
+
+    def paramToDict(self, params_str):
+        return_dict = {}
+        params = params_str.strip()
+        params_list = params.split("^^^")
+        for one in params_list:
+            two_params = one.strip().split("=")
+            if len(two_params) == 2:
+                key = two_params[0]
+                value = two_params[1]
+                if key not in DEFAULT_PARAMETER_KEYS:
+                    return None
+                return_dict.update({key: value})
+            else:
+                return None
+        return return_dict
+
+
+    def selectRelativeObjectBy(self, ob, direction, params_str):
+        params_kw = self.paramToDict(params_str)
+        if ob.exists and params_kw:
             if direction == "left":
-                return ob.left(className=class_name)
+                relative_ob = ob.left(**params_kw)
             elif direction == "right":
-                return ob.right(className=class_name)
+                relative_ob = ob.right(**params_kw)
             elif direction == "up":
-                return ob.up(className=class_name)
+                relative_ob = ob.up(**params_kw)
             elif direction == "down":
-                return ob.down(className=class_name)
+                relative_ob = ob.down(**params_kw)
+            if relative_ob:
+                return relative_ob
         return self.AutomatorDeviceObject
 
 
