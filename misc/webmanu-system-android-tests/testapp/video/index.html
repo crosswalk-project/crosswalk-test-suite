@@ -33,27 +33,41 @@ Authors:
 <html>
   <head>
     <meta charset='utf-8'>
-    <title>Crosswalk_FileWriter_FileReader_reboot</title>
+    <title>Crosswalk_Video</title>
     <link rel="author" title="Intel" href="http://www.intel.com">
+    <script src="resources/jquery-2.1.3.min.js"></script>
+    <script src="resources/video.js"></script>
+    <style>
+      #contentdiv {
+        margin: 0px auto;
+        width: 300px;
+      }
+
+      #buttondiv {
+        margin: 0px auto;
+        width: 320px;
+      }
+
+      button {
+        width: 150px;
+        padding-left: 10px;
+        height: 30px;
+        font-size: 20px;
+      }
+    </style>
   </head>
   <body>
-    <p>
-      <strong>Test steps:</strong>
-    </p>
-    <ol>
-      <li>Use command "adb install filereader.apk" to install filereader.apk and open FileReader app on device.</li>
-      <li>Click "select file" and select a text file.</li>
-      <li>Click "write file"</li>
-      <li>Reboot system and open app again.</li>
-      <li>Click "read written file".</li>
-    </ol>
-    <p>
-      <strong>Expected Output:</strong>
-    </p>
-    <ol>
-      <li>The file content display correctly after selecting file.</li>
-      <li>"This new content comes from FileWriter" display in textarea after clicking "write file".</li>
-      <li>"WRITTEN FILE: This new content comes from FileWriter" display in textarea after clicking "read written file".</li>
-    </ol>
+    <div>
+      <div id="contentdiv">
+        <video id="MediaPlayback" autoplay loop controls width="300px">
+        <source src="resources/w3c/movie_300.mp4" type="video/mp4">
+        Not Support ...
+        </video>
+      </div>
+      <div id="buttondiv">
+        <button onclick="javascript:play()" id="play" type="button">Play</button>
+        <button onclick="javascript:pause()" id="pause" type="button">Pause</button>
+      </div>
+    </div>
   </body>
 </html>

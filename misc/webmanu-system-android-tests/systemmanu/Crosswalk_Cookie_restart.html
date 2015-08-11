@@ -33,7 +33,7 @@ Authors:
 <html>
   <head>
     <meta charset='utf-8'>
-    <title>Crosswalk_FileWriter_FileReader_reboot</title>
+    <title>Crosswalk_Cookie_restart</title>
     <link rel="author" title="Intel" href="http://www.intel.com">
   </head>
   <body>
@@ -41,19 +41,20 @@ Authors:
       <strong>Test steps:</strong>
     </p>
     <ol>
-      <li>Use command "adb install filereader.apk" to install filereader.apk and open FileReader app on device.</li>
-      <li>Click "select file" and select a text file.</li>
-      <li>Click "write file"</li>
-      <li>Reboot system and open app again.</li>
-      <li>Click "read written file".</li>
+      <li>Use command "adb install cookie.apk" to install cookie.apk and open Cookie app on device.</li>
+      <li>Click "Add Cookie" button.</li>
+      <li>Click "Delete Cookie" button.</li>
+      <li>Click "Add Cookie" button again.</li>
+      <li>Restart app normally.</li>
+      <li>Check "Result" area.
     </ol>
     <p>
       <strong>Expected Output:</strong>
     </p>
     <ol>
-      <li>The file content display correctly after selecting file.</li>
-      <li>"This new content comes from FileWriter" display in textarea after clicking "write file".</li>
-      <li>"WRITTEN FILE: This new content comes from FileWriter" display in textarea after clicking "read written file".</li>
+      <li>"Crosswalk_Cookie" should be displayed in "Result" area after clicking button "Add Cookie".</li>
+      <li>"No Result" should be displayed in "Result" area after clicking button "Delete Cookie".</li>
+      <li>"Crosswalk_Cookie" should be displayed in "Result" area after restarting app.</li>
     </ol>
   </body>
 </html>

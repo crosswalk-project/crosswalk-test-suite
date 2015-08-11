@@ -1,5 +1,4 @@
-<!DOCTYPE html>
-<!--
+/*
 Copyright (c) 2015 Intel Corporation.
 
 Redistribution and use in source and binary forms, with or without modification,
@@ -26,34 +25,22 @@ NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE,
 EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
 Authors:
-    Xu,Jianfeng <jianfengx.xu@intel.com>
+        Cui,Jieqiong <jieqiongx.cui@intel.com>
 
--->
+*/
 
-<html>
-  <head>
-    <meta charset='utf-8'>
-    <title>Crosswalk_FileWriter_FileReader_reboot</title>
-    <link rel="author" title="Intel" href="http://www.intel.com">
-  </head>
-  <body>
-    <p>
-      <strong>Test steps:</strong>
-    </p>
-    <ol>
-      <li>Use command "adb install filereader.apk" to install filereader.apk and open FileReader app on device.</li>
-      <li>Click "select file" and select a text file.</li>
-      <li>Click "write file"</li>
-      <li>Reboot system and open app again.</li>
-      <li>Click "read written file".</li>
-    </ol>
-    <p>
-      <strong>Expected Output:</strong>
-    </p>
-    <ol>
-      <li>The file content display correctly after selecting file.</li>
-      <li>"This new content comes from FileWriter" display in textarea after clicking "write file".</li>
-      <li>"WRITTEN FILE: This new content comes from FileWriter" display in textarea after clicking "read written file".</li>
-    </ol>
-  </body>
-</html>
+var testTarget;
+
+$(document).ready(function(){
+    pause();
+});
+
+function play() {
+    testTarget=document.getElementById("MediaPlayback");
+    testTarget.play();
+}
+
+function pause() {
+    testTarget=document.getElementById("MediaPlayback");
+    testTarget.pause();
+}

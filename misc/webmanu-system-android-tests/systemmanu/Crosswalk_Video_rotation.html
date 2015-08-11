@@ -33,27 +33,34 @@ Authors:
 <html>
   <head>
     <meta charset='utf-8'>
-    <title>Crosswalk_FileWriter_FileReader_reboot</title>
+    <title>Crosswalk_Video_rotation</title>
     <link rel="author" title="Intel" href="http://www.intel.com">
   </head>
   <body>
     <p>
+      <strong>Precondition:</strong>
+    </p>
+    <ol>
+      <li>Confirmed gravity sensing function is enabled.</li>
+    </ol>
+    <p>
       <strong>Test steps:</strong>
     </p>
     <ol>
-      <li>Use command "adb install filereader.apk" to install filereader.apk and open FileReader app on device.</li>
-      <li>Click "select file" and select a text file.</li>
-      <li>Click "write file"</li>
-      <li>Reboot system and open app again.</li>
-      <li>Click "read written file".</li>
+      <li>Use command "adb install video.apk" to install video.apk and open Video app on device.</li>
+      <li>Click "Play" button.</li>
+      <li>Rotation device to change screen orientation.</li>
+      <li>Click "Pause" button.</li>
+      <li>Rotation device to change screen orientation.</li>
     </ol>
     <p>
       <strong>Expected Output:</strong>
     </p>
     <ol>
-      <li>The file content display correctly after selecting file.</li>
-      <li>"This new content comes from FileWriter" display in textarea after clicking "write file".</li>
-      <li>"WRITTEN FILE: This new content comes from FileWriter" display in textarea after clicking "read written file".</li>
+      <li>Video should be played after clicking "Play" button.</li>
+      <li>Video is still playing after rotating device.</li>
+      <li>Video should be paused after clicking "Pause" button.</li>
+      <li>Video is still paused after rotating device.</li>
     </ol>
   </body>
 </html>
