@@ -132,7 +132,14 @@ def save_relativeview_to_object(context, params_kw1, position, params_kw2, key):
     assert context.android.save2InfoTemp(relative_ob, key)
 
 
-@step(u'I compare view "{params_kw}" info "{info_name}" with "{except_result}"')
+@step(u'I save object "{key}" info "{info_name}" to temp "{info_key}"')
+def save_info_temp(context, key, info_name, info_key):
+    ob = context.android.get2InfoTemp(key)
+    info = context.android.getObjectInfo(ob, info_name)
+    assert context.android.save2InfoTemp(info, info_key)
+
+
+@step(u'The view "{params_kw}" info "{info_name}" should be "{except_result}"')
 def compare_views(context, params_kw, info_name, except_result):
     ob = context.android.selectObjectBy(params_kw)
     assert ob.exists
@@ -142,21 +149,21 @@ def compare_views(context, params_kw, info_name, except_result):
         assert False
 
 
-@step(u'I compare saved object "{key1}" equal "{key2}" on info "{info_name}"')
-def equal_with_keys(context, key1, key2, info_name):
-    ob1 = context.android.get2InfoTemp(key1)
-    ob2 = context.android.get2InfoTemp(key2)
-    if context.android.getObjectInfo(ob1, info_name) == context.android.getObjectInfo(ob2, info_name):
+@step(u'The saved info "{key1}" is equal to "{key2}"')
+def equal_with_keys(context, key1, key2):
+    info1 = context.android.get2InfoTemp(key1)
+    info2 = context.android.get2InfoTemp(key2)
+    if info1 == info2:
         assert True
     else:
         assert False
 
 
-@step(u'I compare saved object "{key1}" unequal "{key2}" on info "{info_name}"')
-def unequal_with_keys(context, key1, key2, info_name):
-    ob1 = context.android.get2InfoTemp(key1)
-    ob2 = context.android.get2InfoTemp(key2)
-    if context.android.getObjectInfo(ob1, info_name) != context.android.getObjectInfo(ob2, info_name):
+@step(u'The saved info "{key1}" is unequal to "{key2}"')
+def unequal_with_keys(context, key1, key2):
+    info1 = context.android.get2InfoTemp(key1)
+    info2 = context.android.get2InfoTemp(key2)
+    if info1 != info2:
         assert True
     else:
         assert False

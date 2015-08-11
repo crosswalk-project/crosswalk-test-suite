@@ -305,7 +305,7 @@ class Android(common.APP):
 
 
     def getObjectInfo(self, ob, str_key="text"):
-        if ob.exists and str_key in OBJECT_INFO_KEYS:
+        if ob and ob.exists and str_key in OBJECT_INFO_KEYS:
             return ob.info[str_key]
         return None
 
