@@ -6,6 +6,7 @@
 <meta name='flags' content='interact'>
 <meta name="timeout" content="long">
 <p>Switch the page to background, then switch back in a minute.</p>
+<script src="../support/fullscreen.js"></script>
 <iframe src='about:blank'></iframe>
 <script>
 
@@ -103,7 +104,12 @@ function runFrameEventsTest() {
     frameEventsTest.done();
 }
 
-runEventVisibleTest();
+// https://w3c.github.io/screen-orientation/#locking-the-screen-orientation
+// a user agent might require a document's top-level browsing context to be fullscreen
+// (see Interaction with FullScreen API) in order to allow an orientation lock.
+function runTestRequireFullScreen() {
+    runEventVisibleTest();
+}
 
 </script>
 </body>

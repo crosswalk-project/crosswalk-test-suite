@@ -3,6 +3,7 @@
 <body>
 <script src="../../resources/testharness.js"></script>
 <script src="../../resources/testharnessreport.js"></script>
+<script src="../support/fullscreen.js"></script>
 
 <iframe id="testIframe" sandbox="allow-scripts allow-same-origin" style="display:none">
 </iframe>
@@ -38,9 +39,15 @@
             test.done();
     });
 
-    var testIframe = document.getElementById("testIframe");
-    testIframe.src = "resources/iframe-listen-orientation-change.html";
-    testIframe.onload = changeOrientation;
+
+    // https://w3c.github.io/screen-orientation/#locking-the-screen-orientation
+    // a user agent might require a document's top-level browsing context to be fullscreen
+    // (see Interaction with FullScreen API) in order to allow an orientation lock.
+    function runTestRequireFullScreen() {
+        var testIframe = document.getElementById("testIframe");
+        testIframe.src = "resources/iframe-listen-orientation-change.html";
+        testIframe.onload = changeOrientation;
+    }
 </script>
 </body>
 </html>

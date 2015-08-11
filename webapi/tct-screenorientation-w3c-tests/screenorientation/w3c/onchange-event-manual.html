@@ -3,6 +3,7 @@
 <body>
 <script src="../../resources/testharness.js"></script>
 <script src="../../resources/testharnessreport.js"></script>
+<script src="../support/fullscreen.js"></script>
 <script>
 
 var changeTest = async_test("Test that orientationchange event is fired when the orientation changes.");
@@ -73,7 +74,12 @@ function runChangeTest() {
   };
 }
 
-runChangeTest();
+// https://w3c.github.io/screen-orientation/#locking-the-screen-orientation
+// a user agent might require a document's top-level browsing context to be fullscreen
+// (see Interaction with FullScreen API) in order to allow an orientation lock.
+function runTestRequireFullScreen() {
+    runChangeTest();
+}
 
 </script>
 </body>
