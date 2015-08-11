@@ -133,9 +133,12 @@ def build(self, cmd):
     for i in range(len(apks)):
         if apks[i].endswith(".apk") and "x86" in apks[i]:
             apkLength = apkLength + 1
+            appVersion = apks[i].split('-')[1]
         if apks[i].endswith(".apk") and "arm" in apks[i]:
             apkLength = apkLength + 1
+            appVersion = apks[i].split('-')[1]
     self.assertEquals(apkLength, 2)
+    return appVersion
 
 
 def update(self, cmd):
