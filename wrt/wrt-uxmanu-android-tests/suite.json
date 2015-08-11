@@ -19,7 +19,11 @@
                 "tests.full.xml": "tests.full.xml",
                 "tests.xml": "tests.xml",
                 "testapp": "testapp",
-                "PACK-TOOL-ROOT/resources/xsl": "."
+                "PACK-TOOL-ROOT/resources/xsl": ".",
+                "wrt-ux-app/testscripts": "wrt-ux-app/testscripts",
+                "PACK-TOOL-ROOT/resources/bdd/bddrunner": "bddrunner",
+                "PACK-TOOL-ROOT/resources/bdd/data.conf": "data.conf",
+                "PACK-TOOL-ROOT/atip/tests/environment.py": "wrt-ux-app/testscripts/environment.py"
             },
             "pkg-app": {
                 "copylist": {
@@ -29,7 +33,22 @@
             "subapp-list": {
                 "testapp": {
                     "all-apps": "true",
-                    "apk-icon-opt": ""
+                    "apk-icon-opt": "",
+                    "apk-common-opts": "--enable-remote-debugging"
+                },
+                "wrt-ux-app": {
+                "apk-common-opts": "--enable-remote-debugging",
+                "apk-icon-opt": "",
+                "copylist": {
+                    "../uxmanu/bdd": "ux"
+                }
+                },
+                "": {
+                    "apk-type": "HOSTEDAPP",
+                    "apk-common-opts": "--enable-remote-debugging",
+                    "apk-url-opt": "http://www.w3.org",
+                    "app-name": "touch_gesture_click",
+                    "install-path": "."
                 }
             }
         },

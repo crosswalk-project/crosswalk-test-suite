@@ -1,6 +1,7 @@
 #!/usr/bin/env python
 
 import os
+import commands
 import shutil
 import glob
 import time
@@ -11,8 +12,6 @@ from optparse import OptionParser, make_option
 
 SCRIPT_DIR = os.path.dirname(os.path.abspath(__file__))
 PARAMETERS = None
-PKG_NAME_DIR = os.path.basename(SCRIPT_DIR)
-PKG_NAME = PKG_NAME_DIR.replace('-', '_')
 ADB_CMD = "adb"
 
 
@@ -40,7 +39,7 @@ def uninstPKGs():
     action_status = True
     for root, dirs, files in os.walk(SCRIPT_DIR):
         for file in files:
-            if file.endswith("%s.apk" % PKG_NAME):
+            if file.endswith(".apk"):
                 cmd = "%s -s %s uninstall org.xwalk.%s" % (
                     ADB_CMD, PARAMETERS.device, os.path.basename(os.path.splitext(file)[0]))
                 (return_code, output) = doCMD(cmd)
@@ -55,7 +54,7 @@ def instPKGs():
     action_status = True
     for root, dirs, files in os.walk(SCRIPT_DIR):
         for file in files:
-            if file.endswith("%s.apk" % PKG_NAME):
+            if file.endswith(".apk"):
                 cmd = "%s -s %s install %s" % (ADB_CMD,
                                                PARAMETERS.device, os.path.join(root, file))
                 (return_code, output) = doCMD(cmd)
