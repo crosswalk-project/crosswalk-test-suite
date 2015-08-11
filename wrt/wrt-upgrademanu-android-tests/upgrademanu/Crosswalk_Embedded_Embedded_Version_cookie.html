@@ -37,12 +37,21 @@ Authors:
   <div>
     <h4>Test Steps</h4>
     <ol>
-      <li>Install the app named like "cookie_embedded.apk" and launch it, then type text as Cookie value in "The value of the cookie should be" input box in "Example" section, then click link "Create cookie 1"</li>
-      <li>Install the app "cookie_eev.apk" (use "adb install -r *apk" to force install), then click link "Read cookie 1" in "Example" section (Please don't click "Erase cookie 1")</li>
+      <li>Install the app named like "cookie_embedded.apk" and launch it</li>
+      <li>Type text as Cookie value in "The value of the cookie should be" input box in "Example" section, then click link "Create cookie 1"</li>
+      <li>Install the app "cookie_eev.apk" (use "adb install -r *apk" to force install) and launch it</li>
+      <li>Click link "Read cookie 1" in "Example" section (Please don't click "Erase cookie 1")</li>
     </ol>
+    <h4>Note</h4>
+    <ul>
+      <li>The app "cookie_eev" is an upgrade of embedded app ("cookie_embedded") that change the app version from lower version to higher version for testing cookie</li>
+      <li>The app "cookie_embedded" is the lower version embeded app</li>
+    </ul>
     <h4>Expected Results</h4>
     <ol>
+      <li>Launch the app successfully</li>
       <li>Display "Cookie created"</li>
+      <li>Launch the app successfully</li>
       <li>Display "The value of the cookie is " add input content in the box</li>
     </ol>
   </div>

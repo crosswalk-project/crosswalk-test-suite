@@ -30,30 +30,38 @@ Authors:
 
 -->
 
-<meta charset="utf-8">
-<title>Crosswalk_Embedded_Embedded_Version_other</title>
-<link rel="author" title="Intel" href="http://www.intel.com">
-<body>
-  <div>
+<meta charset="utf-8" />
+<meta name="viewport" content="initial-scale=1.0, maximum-scale=1.0, width=device-width">
+<link rel="stylesheet" type="text/css" href="../../../../css/bootstrap.css">
+<link rel="stylesheet" type="text/css" href="../../../../css/main.css">
+<script src="../../../../js/jquery-2.1.3.min.js"></script>
+<script src="../../../../js/bootstrap.min.js"></script>
+<script src="../../../../js/common.js"></script>
+<script src="../../../../js/tests.js"></script>
+<div id="header">
+  <h3 id="main_page_title"></h3>
+</div>
+<div class="content">
+  <h4>Pre-condition</h4>
+    <ul>
+      <li>Pack test app with lower version (than current) of Crosswalk binary at first</li>
+      <li>Install the XWalkRuntimeLib.apk (lower crosswalk version than current, can be same to step 1) on test device</li>
+    </ul>
     <h4>Test Steps</h4>
     <ol>
-      <li>Install the app named like "example_embedded.apk" and launch it</li>
-      <li>Input value and click "Set localStorage", "Set IndexDB" and "Set Web SQL Database"</li>
-      <li>Install the app "example_eev.apk" (use "adb install -r *apk" to force install) and launch it</li>
+      <li>Install the app named like "example_shared.apk" and launch it</li>
+      <li>Type value and click "Set localStorage", "Set IndexDB" and "Set Web SQL Database"</li>
+      <li>Install the app "example_ssbl.apk" build with current Crosswalk binary and runtime lib (use "adb install -r *apk" to force upgrading) and launch it</li>
       <li>Click "Get localStorage", "Get IndexDB" and "Get Web SQL Database"</li>
     </ol>
     <h4>Note</h4>
     <ul>
-      <li>The app "example_eev" is an upgrade of embedded app ("example_embedded") that change the app version from lower version to higher version for testing localStorage, indexDB and Web SQL Database</li>
-      <li>The app "example_eev" is the lower version embedded app/li>
+      <li>The app "example_ssbl" is an upgrade of shared app ("example_shared") that build with current Crosswalk binary and runtime lib for testing localStorage indexDB and Web SQL Database</li>
+      <li>The app "example_shared" is the lower version shared app</li>
     </ul>
-    <h4>Expected Results</h4>
-    <ol>
-      <li>Launch the app successfully</li>
-      <li>Display "Save localStorage/IndexDB/Web SQL Database value successfully: " add input content in the box</li>
-      <li>Launch the app successfully</li>
-      <li>Display "Get localStorage/IndexDB/Web SQL Database value: " add input content in the box</li>
-    </ol>
   </div>
-</body>
-
+<div class="footer">
+  <div id="footer"></div>
+</div>
+<div class="modal fade" id="popup_info">
+</div>
