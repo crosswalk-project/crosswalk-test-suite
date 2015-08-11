@@ -87,12 +87,12 @@ def setUp():
         CORDOVA_VERSION = "3.6"
     f_version.close()
 
-    with open(const_path + "/../VERSION", "rt") as pkg_version_file:
-        pkg_version_raw = pkg_version_file.read()
-        pkg_version_file.close()
-        pkg_version_json = json.loads(pkg_version_raw)
-        CROSSWALK_VERSION = pkg_version_json["main-version"]
-
+    if CORDOVA_VERSION == "4.0":
+        with open(const_path + "/../VERSION", "rt") as pkg_version_file:
+            pkg_version_raw = pkg_version_file.read()
+            pkg_version_file.close()
+            pkg_version_json = json.loads(pkg_version_raw)
+            CROSSWALK_VERSION = pkg_version_json["main-version"]
 
 
 def create(appname, pkgname, mode, sourcecodepath, replace_index_list, self):
