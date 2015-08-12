@@ -27,7 +27,7 @@ EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 -->
 
 <meta charset="utf-8">
-<title>NativeFileAPI Test: Getting real path of virtual root API has been exposed to native file system</title>
+<title>Getting real path of virtual root API has been exposed to native file system</title>
 <link rel="author" title="Intel" href="http://www.intel.com">
 <link rel="author" title="Chunyan Wang" href="mailto:chunyanx.wang@intel.com">
 <link rel="help" href="https://crosswalk-project.org/jira/browse/XWALK-2455">
@@ -36,8 +36,10 @@ EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 <div id="log"></div>
 <script>
   test(function() {
+    assert_true("native_file_system" in xwalk.experimental,
+      "xwalk.experimental should implement native_file_system");
     assert_true("getRealPath" in xwalk.experimental.native_file_system,
-    "xwalk.experimental.native_file_system.getRealPath exists");
+      "xwalk.experimental.native_file_system should implement getRealPath");
 
     test(function() {
       var realPath = xwalk.experimental.native_file_system.getRealPath("DOWNLOADS");
