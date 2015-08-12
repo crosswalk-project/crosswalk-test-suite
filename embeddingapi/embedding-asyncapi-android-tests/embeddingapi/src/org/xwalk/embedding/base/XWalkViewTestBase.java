@@ -9,12 +9,17 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.lang.reflect.Method;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Date;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 import java.util.concurrent.Callable;
 import java.util.concurrent.FutureTask;
 import java.util.concurrent.TimeUnit;
 import java.util.concurrent.atomic.AtomicBoolean;
+import java.util.Timer;
+import java.util.TimerTask;
 
 import junit.framework.Assert;
 
@@ -24,6 +29,7 @@ import org.chromium.content.browser.test.util.CriteriaHelper;
 import org.chromium.net.test.util.TestWebServer;
 import org.chromium.ui.gfx.DeviceDisplayInfo;
 import org.xwalk.core.JavascriptInterface;
+import org.xwalk.core.XWalkCookieManager;
 import org.xwalk.core.XWalkDownloadListener;
 import org.xwalk.core.XWalkNavigationHistory;
 import org.xwalk.core.XWalkNavigationItem;
@@ -35,6 +41,7 @@ import com.test.server.ActivityInstrumentationTestCase2;
 import android.content.Context;
 import android.content.res.AssetManager;
 import android.os.Bundle;
+import android.test.MoreAsserts;
 import android.util.Log;
 import android.util.Pair;
 import android.webkit.WebResourceResponse;
@@ -72,6 +79,7 @@ public class XWalkViewTestBase extends ActivityInstrumentationTestCase2<MainActi
     protected XWalkView mRestoreXWalkView;
     protected MainActivity mainActivity;
     protected TestWebServer mWebServer;
+    protected XWalkCookieManager mCookieManager;
     protected final TestHelperBridge mTestHelperBridge = new TestHelperBridge();
 
     private String mUrls[]=new String[3];
@@ -906,6 +914,35 @@ public class XWalkViewTestBase extends ActivityInstrumentationTestCase2<MainActi
 	        }
 	    });
 	}    
+	
+    protected void setCookie(final String name, final String value) throws Exception {
+        String jsCommand = "javascript:void((function(){" +
+                "var expirationDate = new Date();" +
+                "expirationDate.setDate(expirationDate.getDate() + 5);" +
+                "document.cookie='" + name + "=" + value +
+                        "; expires=' + expirationDate.toUTCString();" +
+                "})())";
+        loadJavaScriptUrl(jsCommand);
+    }
+
+    protected void waitForCookie(final String url) throws InterruptedException {
+        assertTrue(CriteriaHelper.pollForCriteria(new Criteria() {
+            @Override
+            public boolean isSatisfied() {
+                return mCookieManager.getCookie(url) != null;
+            }
+        }, 6000, 50));
+    }
+
+    protected void validateCookies(String responseCookie, String... expectedCookieNames) {
+        String[] cookies = responseCookie.split(";");
+        Set<String> foundCookieNames = new HashSet<String>();
+        for (String cookie : cookies) {
+            foundCookieNames.add(cookie.substring(0, cookie.indexOf("=")).trim());
+        }
+        MoreAsserts.assertEquals(
+                foundCookieNames, new HashSet<String>(Arrays.asList(expectedCookieNames)));
+    }    	
 
     public static final String ABOUT_TITLE = "About the Google";
 
