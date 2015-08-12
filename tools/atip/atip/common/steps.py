@@ -140,3 +140,14 @@ def open_airplane_mode(context):
 def close_airplane_mode(context):
     if get_test_platform(context) == "android":
         assert context.android.airplaneModeOperate(False)
+
+
+# execute android adb command
+@step(u'I execute command "{command_line}"')
+def execute_command(context, command_line):
+    if get_test_platform(context) == "android":
+        (return_code, output) = context.android.doCMD(command_line)
+        if return_code == 0:
+            assert True
+        else:
+            assert False

@@ -429,6 +429,7 @@ def i_visit_url(context, url):
 @step(u'I close wifi')
 @step(u'I open airplane mode')
 @step(u'I close airplane mode')
+@step(u'I execute command "{command_line}"')
 ```
 
 ## Run Tests 
