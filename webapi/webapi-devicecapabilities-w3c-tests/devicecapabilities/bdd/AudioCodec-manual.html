@@ -43,7 +43,7 @@ Authors:
 try {
   system.getAVCodecs().then(
     function (info) {
-      document.getElementById("avcodecs").innerHTML = "AudioCodec format: " + info.audioCodecs[0].format;
+      document.getElementById("avcodecs").innerHTML = "AudioCodec format: <div id='format'>" + info.audioCodecs[0].format +"</div>";
     },
     function (error) {
       document.getElementById("avcodecs").innerHTML = "Failed - error occurred: " + error.message;

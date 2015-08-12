@@ -31,27 +31,29 @@ Authors:
 -->
 
 <meta charset='utf-8'>
-<title>DeviceCapabilities Test: SystemCPU_m</title>
+<title>DeviceCapabilities Test: StorageUnit_m</title>
 <link rel="author" title="Intel" href="http://www.intel.com/">
 <link rel="help" href="http://www.w3.org/2012/sysapps/device-capabilities/">
 <script src="./support/support.js"></script>
 <meta name="flags" content="">
-<meta name="assert" content="Test checks if the information of SystemCPU is valid according to the test device">
-<p>Test passes if the information of SystemCPU meet the real cpu of test device</p>
-<div id="cpu"></div>
+<meta name="assert" content="Test checks if the information of StorageUnit is valid according to the test device">
+<p>Test passes if the information of StorageUnit meet the real storage of test device</p>
+<div id="storage"></div>
 <script>
 try {
-  system.getCPUInfo().then(
+  system.getStorageInfo().then(
     function (info) {
-      document.getElementById("cpu").innerHTML = "SystemCPU numOfProcessors: " + info.numOfProcessors +"</br>" +
-                                                 "SystemCPU archName: " + info.archName + "</br>" +
-                                                 "SystemCPU load: " + info.load;
+      var storage = info.storages[0];
+      document.getElementById("storage").innerHTML = "StorageUnit id: <div id='id'>" + storage.id + "</div></br>" +
+                                                     "StorageUnit name: <div id='name'>" + storage.name + "</div></br>" +
+                                                     "StorageUnit type: <div id='type'>" + storage.type + "</div></br>" +
+                                                     "StorageUnit capacity: <div id='capacity'>" + storage.capacity + "</div>";
     },
     function (error) {
-      document.getElementById("cpu").innerHTML = "Failed - error occurred: " + error.message;
+      document.getElementById("storage").innerHTML = "Failed - error occurred: " + error.message;
     }
   );
 } catch (error) {
-  document.getElementById("cpu").innerHTML = "Failed - error occurred: " + error.message;
+  document.getElementById("storage").innerHTML = "Failed - error occurred: " + error.message;
 }
 </script>

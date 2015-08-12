@@ -31,27 +31,26 @@ Authors:
 -->
 
 <meta charset='utf-8'>
-<title>DeviceCapabilities Test: VideoCodec_m</title>
+<title>DeviceCapabilities Test: SystemMemory_m</title>
 <link rel="author" title="Intel" href="http://www.intel.com/">
 <link rel="help" href="http://www.w3.org/2012/sysapps/device-capabilities/">
 <script src="./support/support.js"></script>
 <meta name="flags" content="">
-<meta name="assert" content="Test checks if the information of VideoCodec is valid according to the test device">
-<p>Test passes if the information of VideoCodec meet the video codec of test device</p>
-<div id="videocodecs"></div>
+<meta name="assert" content="Test checks if the information of SystemMemory is valid according to the test device">
+<p>Test passes if the information of SystemMemory meet the real memory of test device</p>
+<div id="memory"></div>
 <script>
 try {
-  system.getAVCodecs().then(
+  system.getMemoryInfo().then(
     function (info) {
-      document.getElementById("videocodecs").innerHTML = "VideoCodec format: " + info.videoCodecs[0].format + "</br>" +
-                                                         "VideoCodec hwAccel: " + info.videoCodecs[0].hwAccel + "</br>" +
-                                                         "VideoCodec encode: " + info.videoCodecs[0].encode;
+      document.getElementById("memory").innerHTML = "SystemMemory capacity: <div id='capacity'>" + info.capacity + "</div></br>" +
+                                                    "SystemMemory availCapacity: <div id='availCapacity'>" + info.availCapacity + "</div>";
     },
     function (error) {
-      document.getElementById("videocodecs").innerHTML = "error occurred: " + error.message;
+      document.getElementById("memory").innerHTML = "error occurred: " + error.message;
     }
   );
 } catch (error) {
-  document.getElementById("videocodecs").innerHTML = "Failed - error occurred: " + error.message;
+  document.getElementById("memory").innerHTML = "Failed - error occurred: " + error.message;
 }
 </script>

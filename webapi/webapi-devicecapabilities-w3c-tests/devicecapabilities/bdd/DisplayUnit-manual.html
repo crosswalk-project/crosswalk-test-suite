@@ -44,18 +44,18 @@ try {
   system.getDisplayInfo().then(
     function (info) {
       var display = info.displays[0];
-      document.getElementById("displays").innerHTML = "DisplayUnit id: " + display.id + "</br>" +
-                                                      "DisplayUnit name: " + display.name + "</br>" +
-                                                      "DisplayUnit primary: " + display.primary + "</br>" +
-                                                      "DisplayUnit external: " + display.external + "</br>" +
-                                                      "DisplayUnit deviceXDPI: " + display.deviceXDPI + "</br>" +
-                                                      "DisplayUnit deviceYDPI: " + display.deviceYDPI + "</br>" +
-                                                      "DisplayUnit availWidth: " + display.availWidth + "</br>" +
-                                                      "DisplayUnit availHeight: " + display.availHeight + "</br>" +
-                                                      "DisplayUnit width: " + display.width + "</br>" +
-                                                      "DisplayUnit height: " + display.height + "</br>" +
-                                                      "DisplayUnit colorDepth: " + display.colorDepth + "</br>" +
-                                                      "DisplayUnit pixelDepth: " + display.pixelDepth;
+      document.getElementById("displays").innerHTML = "DisplayUnit id: <div id='id'>" + display.id + "</div></br>" +
+                                                      "DisplayUnit name: <div id='name'>" + display.name + "</div></br>" +
+                                                      "DisplayUnit primary:  <div id='primary'>" + display.primary + "</div></br>" +
+                                                      "DisplayUnit external:  <div id='external'>" + display.external + "</div></br>" +
+                                                      "DisplayUnit deviceXDPI:  <div id='deviceXDPI'>" + display.deviceXDPI + "</div></br>" +
+                                                      "DisplayUnit deviceYDPI: <div id='deviceYDPI'>" + display.deviceYDPI + "</div></br>" +
+                                                      "DisplayUnit availWidth: <div id='availWidth'>" + display.availWidth + "</div></br>" +
+                                                      "DisplayUnit availHeight: <div id='availHeight'>" + display.availHeight + "</div></br>" +
+                                                      "DisplayUnit width: <div id='width'>" + display.width + "</div></br>" +
+                                                      "DisplayUnit height: <div id='height'>" + display.height + "</div></br>" +
+                                                      "DisplayUnit colorDepth: <div id='colorDepth'>" + display.colorDepth + "</div></br>" +
+                                                      "DisplayUnit pixelDepth: <div id='pixelDepth'>" + display.pixelDepth + "</div>";
     },
     function (error) {
       document.getElementById("displays").innerHTML= "Failed - error occurred: " + error.message;
