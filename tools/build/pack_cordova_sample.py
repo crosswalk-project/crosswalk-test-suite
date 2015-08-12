@@ -53,7 +53,7 @@ sys.setdefaultencoding('utf8')
 TOOL_VERSION = "v0.1"
 VERSION_FILE = "VERSION"
 DEFAULT_CMD_TIMEOUT = 600
-PKG_NAMES = ["gallery", "helloworld", "remotedebugging", "mobilespec", "CIRC", "Eh", "statusbar", "renamePkg"]
+PKG_NAMES = ["gallery", "helloworld", "remotedebugging", "mobilespec", "CIRC", "Eh", "statusbar", "renamePkg", "xwalkCommandLine"]
 CORDOVA_VERSIONS = ["3.6", "4.0"]
 PKG_MODES = ["shared", "embedded"]
 PKG_ARCHS = ["x86", "arm"]
@@ -998,6 +998,20 @@ def packSampleApp_cli(app_name=None):
         if not replaceKey(os.path.join(project_root, "config.xml"),
                           "id=\"com.test.renamePkg\"",
                           "id=\"com.example.renamePkg\""):
+            os.chdir(orig_dir)
+            return False
+
+    if checkContains(app_name, "xwalkCommandLine"):
+        if not replaceKey(os.path.join(project_root, "config.xml"),
+                          "value=\"--disable-pull-to-refresh-effect --disable-webrtc" \
+                          "--disable-webgl\"",
+                          "value=\"--disable-pull-to-refresh-effect\""):
+            os.chdir(orig_dir)
+            return False
+        if not doCopy(os.path.join(BUILD_PARAMETERS.pkgpacktools,
+                "..", "usecase", "usecase-cordova-android-tests",
+                "samples", "XwalkCommandLine", "res", "index.html"),
+                os.path.join(project_root, "www", "index.html")):
             os.chdir(orig_dir)
             return False
 
