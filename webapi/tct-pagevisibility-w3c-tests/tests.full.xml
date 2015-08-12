@@ -3,226 +3,58 @@
 <test_definition>
   <suite category="W3C/HTML5 APIs" name="tct-pagevisibility-w3c-tests">
     <set name="PageVisibility" type="js">
-      <testcase component="W3C_HTML5 APIs/Performance and Optimization/Page Visibility" execution_type="auto" id="test_attributes_exist_1" priority="P1" purpose="Check if document.hidden is defined and not null" status="approved" type="compliance">
+      <testcase component="W3C_HTML5 APIs/Performance and Optimization/Page Visibility" execution_type="auto" id="test_attributes_exist" priority="P1" purpose="Page Visibility API Test" status="approved" type="compliance" subcase="4">
         <description>
-          <test_script_entry>/opt/tct-pagevisibility-w3c-tests/pagevisibility/w3c/test_attributes_exist.html?total_num=4&amp;amp;locator_key=id&amp;amp;value=1</test_script_entry>
+          <test_script_entry>/opt/tct-pagevisibility-w3c-tests/pagevisibility/w3c/test_attributes_exist.html</test_script_entry>
         </description>
         <specs>
           <spec>
-            <spec_assertion category="Tizen W3C API Specifications" element_name="hidden" element_type="attribute" interface="DocumentVisibility" section="Performance and Optimization" specification="Page Visibility" />
+            <spec_assertion category="Tizen W3C API Specifications" element_name="hidden" element_type="attribute" interface="DocumentVisibility" section="Performance and Optimization" specification="Page Visibility"/>
             <spec_url>http://www.w3.org/TR/page-visibility/#sec-document-interface</spec_url>
-            <spec_statement />
+            <spec_statement/>
           </spec>
         </specs>
       </testcase>
-      <testcase component="W3C_HTML5 APIs/Performance and Optimization/Page Visibility" execution_type="auto" id="test_attributes_exist_2" priority="P1" purpose="Check if document.visibilityState is defined and not null" status="approved" type="compliance">
+      <testcase component="W3C_HTML5 APIs/Performance and Optimization/Page Visibility" execution_type="auto" id="test_child_document" priority="P2" purpose="Page Visibility API Child Document Test" status="approved" type="compliance" subcase="14">
         <description>
-          <test_script_entry>/opt/tct-pagevisibility-w3c-tests/pagevisibility/w3c/test_attributes_exist.html?total_num=4&amp;amp;locator_key=id&amp;amp;value=2</test_script_entry>
+          <test_script_entry>/opt/tct-pagevisibility-w3c-tests/pagevisibility/w3c/test_child_document.html</test_script_entry>
         </description>
         <specs>
           <spec>
-            <spec_assertion category="Tizen W3C API Specifications" element_name="visibilityState" element_type="attribute" interface="DocumentVisibility" section="Performance and Optimization" specification="Page Visibility" />
+            <spec_assertion category="Tizen W3C API Specifications" element_name="hidden" element_type="attribute" interface="DocumentVisibility" section="Performance and Optimization" specification="Page Visibility"/>
             <spec_url>http://www.w3.org/TR/page-visibility/#sec-document-interface</spec_url>
-            <spec_statement />
+            <spec_statement/>
           </spec>
         </specs>
       </testcase>
-      <testcase component="W3C_HTML5 APIs/Performance and Optimization/Page Visibility" execution_type="auto" id="test_child_document_4" priority="P2" purpose="Check if document.hidden is defined for frame with no style attribute" status="approved" type="compliance">
+      <testcase component="W3C_HTML5 APIs/Performance and Optimization/Page Visibility" execution_type="auto" id="test_default_view" priority="P2" purpose="Page Visibility Null Default View Test" status="approved" type="compliance" subcase="7">
         <description>
-          <test_script_entry>/opt/tct-pagevisibility-w3c-tests/pagevisibility/w3c/test_child_document.html?total_num=14&amp;amp;locator_key=id&amp;amp;value=4</test_script_entry>
+          <test_script_entry>/opt/tct-pagevisibility-w3c-tests/pagevisibility/w3c/test_default_view.html</test_script_entry>
         </description>
         <specs>
           <spec>
-            <spec_assertion category="Tizen W3C API Specifications" element_name="hidden" element_type="attribute" interface="DocumentVisibility" section="Performance and Optimization" specification="Page Visibility" />
+            <spec_assertion category="Tizen W3C API Specifications" element_name="hidden" element_type="attribute" interface="DocumentVisibility" section="Performance and Optimization" specification="Page Visibility"/>
             <spec_url>http://www.w3.org/TR/page-visibility/#sec-document-interface</spec_url>
-            <spec_statement />
+            <spec_statement/>
           </spec>
         </specs>
       </testcase>
-      <testcase component="W3C_HTML5 APIs/Performance and Optimization/Page Visibility" execution_type="auto" id="test_child_document_5" priority="P2" purpose="Check if document.visibilityState is defined for frame with no style attribute" status="approved" type="compliance">
+      <testcase component="W3C_HTML5 APIs/Performance and Optimization/Page Visibility" execution_type="auto" id="test_read_only" priority="P2" purpose="Page Visibility API is Read Only Test" status="approved" type="compliance" subcase="4">
         <description>
-          <test_script_entry>/opt/tct-pagevisibility-w3c-tests/pagevisibility/w3c/test_child_document.html?total_num=14&amp;amp;locator_key=id&amp;amp;value=5</test_script_entry>
+          <test_script_entry>/opt/tct-pagevisibility-w3c-tests/pagevisibility/w3c/test_read_only.html</test_script_entry>
         </description>
         <specs>
           <spec>
-            <spec_assertion category="Tizen W3C API Specifications" element_name="visibilityState" element_type="attribute" interface="DocumentVisibility" section="Performance and Optimization" specification="Page Visibility" />
+            <spec_assertion category="Tizen W3C API Specifications" element_name="hidden" element_type="attribute" interface="DocumentVisibility" section="Performance and Optimization" specification="Page Visibility"/>
             <spec_url>http://www.w3.org/TR/page-visibility/#sec-document-interface</spec_url>
-            <spec_statement />
-          </spec>
-        </specs>
-      </testcase>
-      <testcase component="W3C_HTML5 APIs/Performance and Optimization/Page Visibility" execution_type="auto" id="test_child_document_6" priority="P2" purpose="Check if document.visibilityState for frame with no style attribute that is equals to visible" status="approved" type="compliance">
-        <description>
-          <test_script_entry>/opt/tct-pagevisibility-w3c-tests/pagevisibility/w3c/test_child_document.html?total_num=14&amp;amp;locator_key=id&amp;amp;value=6</test_script_entry>
-        </description>
-        <specs>
-          <spec>
-            <spec_assertion category="Tizen W3C API Specifications" element_name="visibilityState" element_type="attribute" interface="DocumentVisibility" section="Performance and Optimization" specification="Page Visibility" />
-            <spec_url>http://www.w3.org/TR/page-visibility/#sec-document-interface</spec_url>
-            <spec_statement />
-          </spec>
-        </specs>
-      </testcase>
-      <testcase component="W3C_HTML5 APIs/Performance and Optimization/Page Visibility" execution_type="auto" id="test_child_document_8" priority="P2" purpose="Check if document.hidden is defined for frame with 'display:none' style" status="approved" type="compliance">
-        <description>
-          <test_script_entry>/opt/tct-pagevisibility-w3c-tests/pagevisibility/w3c/test_child_document.html?total_num=14&amp;amp;locator_key=id&amp;amp;value=8</test_script_entry>
-        </description>
-        <specs>
-          <spec>
-            <spec_assertion category="Tizen W3C API Specifications" element_name="hidden" element_type="attribute" interface="DocumentVisibility" section="Performance and Optimization" specification="Page Visibility" />
-            <spec_url>http://www.w3.org/TR/page-visibility/#sec-document-interface</spec_url>
-            <spec_statement />
-          </spec>
-        </specs>
-      </testcase>
-      <testcase component="W3C_HTML5 APIs/Performance and Optimization/Page Visibility" execution_type="auto" id="test_child_document_9" priority="P2" purpose="Check if document.visibilityState is defined for frame with 'display:none' style" status="approved" type="compliance">
-        <description>
-          <test_script_entry>/opt/tct-pagevisibility-w3c-tests/pagevisibility/w3c/test_child_document.html?total_num=14&amp;amp;locator_key=id&amp;amp;value=9</test_script_entry>
-        </description>
-        <specs>
-          <spec>
-            <spec_assertion category="Tizen W3C API Specifications" element_name="visibilityState" element_type="attribute" interface="DocumentVisibility" section="Performance and Optimization" specification="Page Visibility" />
-            <spec_url>http://www.w3.org/TR/page-visibility/#sec-document-interface</spec_url>
-            <spec_statement />
-          </spec>
-        </specs>
-      </testcase>
-      <testcase component="W3C_HTML5 APIs/Performance and Optimization/Page Visibility" execution_type="auto" id="test_child_document_10" priority="P2" purpose="Check if document.visibilityState for frame with 'display:none' style that is equals to visible" status="approved" type="compliance">
-        <description>
-          <test_script_entry>/opt/tct-pagevisibility-w3c-tests/pagevisibility/w3c/test_child_document.html?total_num=14&amp;amp;locator_key=id&amp;amp;value=10</test_script_entry>
-        </description>
-        <specs>
-          <spec>
-            <spec_assertion category="Tizen W3C API Specifications" element_name="visibilityState" element_type="attribute" interface="DocumentVisibility" section="Performance and Optimization" specification="Page Visibility" />
-            <spec_url>http://www.w3.org/TR/page-visibility/#sec-document-interface</spec_url>
-            <spec_statement />
-          </spec>
-        </specs>
-      </testcase>
-      <testcase component="W3C_HTML5 APIs/Performance and Optimization/Page Visibility" execution_type="auto" id="test_child_document_12" priority="P2" purpose="Check if document.hidden is defined for frame with 'visibility:hidden' style" status="approved" type="compliance">
-        <description>
-          <test_script_entry>/opt/tct-pagevisibility-w3c-tests/pagevisibility/w3c/test_child_document.html?total_num=14&amp;amp;locator_key=id&amp;amp;value=12</test_script_entry>
-        </description>
-        <specs>
-          <spec>
-            <spec_assertion category="Tizen W3C API Specifications" element_name="hidden" element_type="attribute" interface="DocumentVisibility" section="Performance and Optimization" specification="Page Visibility" />
-            <spec_url>http://www.w3.org/TR/page-visibility/#sec-document-interface</spec_url>
-            <spec_statement />
-          </spec>
-        </specs>
-      </testcase>
-      <testcase component="W3C_HTML5 APIs/Performance and Optimization/Page Visibility" execution_type="auto" id="test_child_document_13" priority="P2" purpose="Check if document.visibilityState is defined for frame with 'visibility:hidden' style" status="approved" type="compliance">
-        <description>
-          <test_script_entry>/opt/tct-pagevisibility-w3c-tests/pagevisibility/w3c/test_child_document.html?total_num=14&amp;amp;locator_key=id&amp;amp;value=13</test_script_entry>
-        </description>
-        <specs>
-          <spec>
-            <spec_assertion category="Tizen W3C API Specifications" element_name="visibilityState" element_type="attribute" interface="DocumentVisibility" section="Performance and Optimization" specification="Page Visibility" />
-            <spec_url>http://www.w3.org/TR/page-visibility/#sec-document-interface</spec_url>
-            <spec_statement />
-          </spec>
-        </specs>
-      </testcase>
-      <testcase component="W3C_HTML5 APIs/Performance and Optimization/Page Visibility" execution_type="auto" id="test_child_document_14" priority="P2" purpose="Check if document.visibilityState for frame with 'visibility:hidden' style that is equals to visible" status="approved" type="compliance">
-        <description>
-          <test_script_entry>/opt/tct-pagevisibility-w3c-tests/pagevisibility/w3c/test_child_document.html?total_num=14&amp;amp;locator_key=id&amp;amp;value=14</test_script_entry>
-        </description>
-        <specs>
-          <spec>
-            <spec_assertion category="Tizen W3C API Specifications" element_name="visibilityState" element_type="attribute" interface="DocumentVisibility" section="Performance and Optimization" specification="Page Visibility" />
-            <spec_url>http://www.w3.org/TR/page-visibility/#sec-document-interface</spec_url>
-            <spec_statement />
-          </spec>
-        </specs>
-      </testcase>
-      <testcase component="W3C_HTML5 APIs/Performance and Optimization/Page Visibility" execution_type="auto" id="test_default_view_3" priority="P2" purpose="Check if windowless subdocument generated for test has a null default view" status="approved" type="compliance">
-        <description>
-          <test_script_entry>/opt/tct-pagevisibility-w3c-tests/pagevisibility/w3c/test_default_view.html?total_num=7&amp;amp;locator_key=id&amp;amp;value=3</test_script_entry>
-        </description>
-        <specs>
-          <spec>
-            <spec_assertion category="Tizen W3C API Specifications" element_name="hidden" element_type="attribute" interface="DocumentVisibility" section="Performance and Optimization" specification="Page Visibility" />
-            <spec_url>http://www.w3.org/TR/page-visibility/#sec-document-interface</spec_url>
-            <spec_statement />
-          </spec>
-        </specs>
-      </testcase>
-      <testcase component="W3C_HTML5 APIs/Performance and Optimization/Page Visibility" execution_type="auto" id="test_default_view_4" priority="P2" purpose="Check if document.hidden is definedwindowless subdocument" status="approved" type="compliance">
-        <description>
-          <test_script_entry>/opt/tct-pagevisibility-w3c-tests/pagevisibility/w3c/test_default_view.html?total_num=7&amp;amp;locator_key=id&amp;amp;value=4</test_script_entry>
-        </description>
-        <specs>
-          <spec>
-            <spec_assertion category="Tizen W3C API Specifications" element_name="hidden" element_type="attribute" interface="DocumentVisibility" section="Performance and Optimization" specification="Page Visibility" />
-            <spec_url>http://www.w3.org/TR/page-visibility/#sec-document-interface</spec_url>
-            <spec_statement />
-          </spec>
-        </specs>
-      </testcase>
-      <testcase component="W3C_HTML5 APIs/Performance and Optimization/Page Visibility" execution_type="auto" id="test_default_view_5" priority="P2" purpose="Check if document.visibilityState is definedwindowless subdocument" status="approved" type="compliance">
-        <description>
-          <test_script_entry>/opt/tct-pagevisibility-w3c-tests/pagevisibility/w3c/test_default_view.html?total_num=7&amp;amp;locator_key=id&amp;amp;value=5</test_script_entry>
-        </description>
-        <specs>
-          <spec>
-            <spec_assertion category="Tizen W3C API Specifications" element_name="visibilityState" element_type="attribute" interface="DocumentVisibility" section="Performance and Optimization" specification="Page Visibility" />
-            <spec_url>http://www.w3.org/TR/page-visibility/#sec-document-interface</spec_url>
-            <spec_statement />
-          </spec>
-        </specs>
-      </testcase>
-      <testcase component="W3C_HTML5 APIs/Performance and Optimization/Page Visibility" execution_type="auto" id="test_default_view_6" priority="P2" purpose="Check if hidden is equals to true for windowless subdocuments with a null default view" status="approved" type="compliance">
-        <description>
-          <test_script_entry>/opt/tct-pagevisibility-w3c-tests/pagevisibility/w3c/test_default_view.html?total_num=7&amp;amp;locator_key=id&amp;amp;value=6</test_script_entry>
-        </description>
-        <specs>
-          <spec>
-            <spec_assertion category="Tizen W3C API Specifications" element_name="hidden" element_type="attribute" interface="DocumentVisibility" section="Performance and Optimization" specification="Page Visibility" />
-            <spec_url>http://www.w3.org/TR/page-visibility/#sec-document-interface</spec_url>
-            <spec_statement />
-          </spec>
-        </specs>
-      </testcase>
-      <testcase component="W3C_HTML5 APIs/Performance and Optimization/Page Visibility" execution_type="auto" id="test_default_view_7" priority="P2" purpose="Check if visibilityState is equals to hidden for windowless subdocuments with a null default view" status="approved" type="compliance">
-        <description>
-          <test_script_entry>/opt/tct-pagevisibility-w3c-tests/pagevisibility/w3c/test_default_view.html?total_num=7&amp;amp;locator_key=id&amp;amp;value=7</test_script_entry>
-        </description>
-        <specs>
-          <spec>
-            <spec_assertion category="Tizen W3C API Specifications" element_name="visibilityState" element_type="attribute" interface="DocumentVisibility" section="Performance and Optimization" specification="Page Visibility" />
-            <spec_url>http://www.w3.org/TR/page-visibility/#sec-document-interface</spec_url>
-            <spec_statement />
-          </spec>
-        </specs>
-      </testcase>
-      <testcase component="W3C_HTML5 APIs/Performance and Optimization/Page Visibility" execution_type="auto" id="test_read_only_3" priority="P2" purpose="Check if document.hidden is readonly" status="approved" type="compliance">
-        <description>
-          <test_script_entry>/opt/tct-pagevisibility-w3c-tests/pagevisibility/w3c/test_read_only.html?total_num=4&amp;amp;locator_key=id&amp;amp;value=3</test_script_entry>
-        </description>
-        <specs>
-          <spec>
-            <spec_assertion category="Tizen W3C API Specifications" element_name="hidden" element_type="attribute" interface="DocumentVisibility" section="Performance and Optimization" specification="Page Visibility" />
-            <spec_url>http://www.w3.org/TR/page-visibility/#sec-document-interface</spec_url>
-            <spec_statement />
-          </spec>
-        </specs>
-      </testcase>
-      <testcase component="W3C_HTML5 APIs/Performance and Optimization/Page Visibility" execution_type="auto" id="test_read_only_4" priority="P2" purpose="Check if document.visibilityState is readonly" status="approved" type="compliance">
-        <description>
-          <test_script_entry>/opt/tct-pagevisibility-w3c-tests/pagevisibility/w3c/test_read_only.html?total_num=4&amp;amp;locator_key=id&amp;amp;value=4</test_script_entry>
-        </description>
-        <specs>
-          <spec>
-            <spec_assertion category="Tizen W3C API Specifications" element_name="visibilityState" element_type="attribute" interface="DocumentVisibility" section="Performance and Optimization" specification="Page Visibility" />
-            <spec_url>http://www.w3.org/TR/page-visibility/#sec-document-interface</spec_url>
-            <spec_statement />
+            <spec_statement/>
           </spec>
         </specs>
       </testcase>
       <testcase component="W3C_HTML5 APIs/Performance and Optimization/Page Visibility" execution_type="manual" id="pagevisibility_DocumentVisibility_Hidden_lockScreen" priority="P3" purpose="Check if hidden attribute is false while the webpage from lock screen change to visible" status="approved" type="compliance">
         <description>
-          <pre_condition />
-          <post_condition />
+          <pre_condition/>
+          <post_condition/>
           <steps>
             <step order="1">
               <step_desc>lock screen and then open the webpage after two seconds</step_desc>
@@ -233,15 +65,15 @@
         </description>
         <specs>
           <spec>
-            <spec_assertion category="Tizen W3C API Specifications" interface="DocumentVisibility" section="Performance and Optimization" specification="Page Visibility" usage="true" />
+            <spec_assertion category="Tizen W3C API Specifications" interface="DocumentVisibility" section="Performance and Optimization" specification="Page Visibility" usage="true"/>
             <spec_url>http://www.w3.org/TR/page-visibility/</spec_url>
           </spec>
         </specs>
       </testcase>
       <testcase component="W3C_HTML5 APIs/Performance and Optimization/Page Visibility" execution_type="manual" id="pagevisibility_DocumentVisibility_Hidden_minimize" priority="P3" purpose="Check if hidden attribute is false while the webpage from minimize change to visible" status="approved" type="compliance">
         <description>
-          <pre_condition />
-          <post_condition />
+          <pre_condition/>
+          <post_condition/>
           <steps>
             <step order="1">
               <step_desc>change to minimize and then open the webpage after two seconds</step_desc>
@@ -252,7 +84,7 @@
         </description>
         <specs>
           <spec>
-            <spec_assertion category="Tizen W3C API Specifications" interface="DocumentVisibility" section="Performance and Optimization" specification="Page Visibility" usage="true" />
+            <spec_assertion category="Tizen W3C API Specifications" interface="DocumentVisibility" section="Performance and Optimization" specification="Page Visibility" usage="true"/>
             <spec_url>http://www.w3.org/TR/page-visibility/</spec_url>
           </spec>
         </specs>
