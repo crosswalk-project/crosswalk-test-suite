@@ -31,29 +31,43 @@ Authors:
 -->
 
 <meta charset="utf-8">
-<title>Crosswalk_Embedded_Embedded_Version_other</title>
+<title>LocalStorage_IndexDB_WebSQLDatabase</title>
 <link rel="author" title="Intel" href="http://www.intel.com">
+<script src="js/jquery.js"></script>
+<script src="js/main.js" defer></script>
+<style>
+  #content {
+    text-align: center;
+    margin-top:50px;
+    height: 300px;
+  }
+  .content{
+    border: 1px solid #000;
+    height: 200px;
+    margin: 10px auto;
+    width: 80%;
+  }
+  button {
+    width: 80%;
+    height: 30px;
+    margin: 5px auto;
+  }
+  input {
+    width: 80%;
+    height: 30px;
+    margin: 5px auto;
+  }
+</style>
 <body>
-  <div>
-    <h4>Test Steps</h4>
-    <ol>
-      <li>Install the app named like "example_embedded.apk" and launch it</li>
-      <li>Input value and click "Set localStorage", "Set IndexDB" and "Set Web SQL Database"</li>
-      <li>Install the app "example_eev.apk" (use "adb install -r *apk" to force install) and launch it</li>
-      <li>Click "Get localStorage", "Get IndexDB" and "Get Web SQL Database"</li>
-    </ol>
-    <h4>Note</h4>
-    <ul>
-      <li>The app "example_eev" is an upgrade of embedded app ("example_embedded") that change the app version from lower version to higher version for testing localStorage, indexDB and Web SQL Database</li>
-      <li>The app "example_eev" is the lower version embedded app/li>
-    </ul>
-    <h4>Expected Results</h4>
-    <ol>
-      <li>Launch the app successfully</li>
-      <li>Display "Save localStorage/IndexDB/Web SQL Database value successfully: " add input content in the box</li>
-      <li>Launch the app successfully</li>
-      <li>Display "Get localStorage/IndexDB/Web SQL Database value: " add input content in the box</li>
-    </ol>
+  <div id="content">
+    <input id="msg" type="text"/><br>
+    <button id="setLocalstorage">Set LocalStorage</button>
+    <button id="getLocalstorage">Get LocalStorage</button>
+    <button id="setIndexdb">Set IndexDB</button>
+    <button id="getIndexdb">Get IndexDB</button>
+    <button id="setWebsql">Set Web SQL Database</button>
+    <button id="getWebsql">Get Web SQL Database</button>
+    <textarea class="content" id="testDiv" readonly="readonly"></textarea>
   </div>
 </body>
 

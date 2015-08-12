@@ -1,10 +1,6 @@
-var step = '<p>Purpose:</p>'
-            +'<p>Verifies that the Crosswalk Runtime Library can upgrade from goolgeplay</p>'
-            +'<p>Expected Results:</p>'
-            +'<ol>'
-            +'<li>There has a upgrade notification in Google Play Store about Crosswalk Runtime Library</li>'
-            +'<li>Display the name, app version, new function, update date, apk size etc normally</li>'
-            +'<li>Able to upgrade to the new version in Google Play</li>'
-            +'<li>The all messages are correct</li>'
-            +'<li>The app works well with the upgraded runtime library</li>'
-            +'</ol>';
+var step = '<p>Test Note: </p>'
+            +'<p>Verifies the all download Crosswalk Runtime Library disturb can work well.</p>'
+            +'<p>Test Purpose: </p>'
+            +'<p>Verifies the all download Crosswalk Runtime Library disturb can work well.</p>'
+            +'<p>Expected Result: </p>'
+            +'<p>Test passes if all sub-tests pass.</p>';

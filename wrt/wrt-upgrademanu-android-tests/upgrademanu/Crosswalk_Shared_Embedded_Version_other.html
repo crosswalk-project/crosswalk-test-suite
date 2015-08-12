@@ -41,12 +41,21 @@ Authors:
     </ul>
     <h4>Test Steps</h4>
     <ol>
-      <li>Install the app named like "example_shared.apk" and launch it, then input value and click "Set localStorage", "Set IndexDB" and "Set Web SQL Database"</li>
-      <li>Install the app "example_sev.apk" (use "adb install -r *apk" to force install), then click "Get localStorage", "Get IndexDB" and "Get Web SQL Database"</li>
+      <li>Install the app named like "example_shared.apk" and launch it</li>
+      <li>Type value and click "Set localStorage", "Set IndexDB" and "Set Web SQL Database"</li>
+      <li>Install the app "example_sev.apk" (use "adb install -r *apk" to force install) and launch it</li>
+      <li>Click "Get localStorage", "Get IndexDB" and "Get Web SQL Database"</li>
     </ol>
+    <h4>Note</h4>
+    <ul>
+      <li>The app "example_sev" is an upgrade of shared app ("example_shared") that change the app version from lower version to higher version with embedded mode for testing localStorage, indexDB and Web SQL Database</li>
+      <li>The app "example_shared" is the lower version shared app</li>
+    </ul>
     <h4>Expected Results</h4>
     <ol>
+      <li>Launch the app successfully</li>
       <li>Display "Save localStorage/IndexDB/Web SQL Database value successfully: " add input content in the box</li>
+      <li>Launch the app successfully</li>
       <li>Display "Get localStorage/IndexDB/Web SQL Database value: " add input content in the box</li>
     </ol>
   </div>
