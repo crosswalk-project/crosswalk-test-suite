@@ -145,9 +145,27 @@ def close_airplane_mode(context):
 # execute android adb command
 @step(u'I execute command "{command_line}"')
 def execute_command(context, command_line):
+    (return_code, output) = context.android.doCMD(command_line)
+    if return_code == 0:
+        assert True
+    else:
+        assert False
+
+
+# save execute android adb command result
+@step(u'I save command "{command_line}" result "{result_key}"')
+def execute_command_with_result(context, command_line, result_key):
     if get_test_platform(context) == "android":
         (return_code, output) = context.android.doCMD(command_line)
         if return_code == 0:
-            assert True
+            assert context.android.save2InfoTemp(output, result_key)
         else:
             assert False
+
+
+# check android adb command result
+@step(u'The value "{expected_value}" should be in result "{result_key}"')
+def compare_command_result(context, expected_value, result_key):
+    if get_test_platform(context) == "android":
+        cmd_result = context.android.get2InfoTemp(result_key)
+        assert expected_value in "".join(cmd_result)
