@@ -1,0 +1,142 @@
+{
+    "pkg-blacklist": [
+        "config.xml",
+        "pack.py",
+        "testcase.xsl",
+        "testresult.xsl",
+        "tests.css",
+        "icon.png",
+        "manifest.json",
+        "suite.json",
+        "inst.*"
+    ],
+    "pkg-list": {
+        "apk,cordova": {
+            "blacklist": [
+                "*"
+            ],
+            "copylist": {
+                "inst.apk.py": "inst.py",
+                "tests.full.xml": "tests.full.xml",
+                "tests.xml": "tests.xml"
+            },
+            "pkg-app": {
+                "apk-common-opts":"--enable-remote-debugging",
+                "copylist": {
+                    "PACK-TOOL-ROOT/resources/testharness": "resources",
+                    "PACK-TOOL-ROOT/resources/webrunner": "webrunner"
+                }
+            },
+            "subapp-list": {
+                "testapp/filereader_upgrade": {
+                    "app-name": "filereader_upgrade",
+                    "apk-pkg-opt":"filereader",
+                    "apk-version-opt": "1.1.0.",
+                    "apk-mode-opt": "embedded",
+                    "apk-type":"MANIFEST",
+                    "copylist": {
+                        "PACK-TOOL-ROOT/bootstrap-fw/js/jquery-2.1.3.min.js": "resources/jquery-2.1.3.min.js"
+                    }
+                },
+                "testapp/filereader": {
+                    "app-name": "filereader",
+                    "apk-pkg-opt":"filereader",
+                    "apk-version-opt": "1.0.0.",
+                    "apk-mode-opt": "embedded",
+                    "apk-type":"MANIFEST",
+                    "copylist": {
+                        "PACK-TOOL-ROOT/bootstrap-fw/js/jquery-2.1.3.min.js": "resources/jquery-2.1.3.min.js"
+                    }
+                },
+                "testapp/filepicker": {
+                    "app-name": "filepicker",
+                    "apk-pkg-opt":"filepicker",
+                    "apk-version-opt": "1.0.0.",
+                    "apk-mode-opt": "embedded",
+                    "apk-type":"MANIFEST"
+                },
+                "testapp/fullscreen": {
+                    "app-name": "fullscreen",
+                    "apk-pkg-opt":"fullscreen",
+                    "apk-version-opt": "1.0.0.",
+                    "apk-mode-opt": "embedded",
+                    "apk-type":"MANIFEST",
+                    "copylist": {
+                        "PACK-TOOL-ROOT/bootstrap-fw/js/jquery-2.1.3.min.js": "resources/jquery-2.1.3.min.js"
+                    }
+                },
+                "testapp/localstorage_upgrade": {
+                    "app-name": "localstorage_upgrade",
+                    "apk-pkg-opt":"localstorage",
+                    "apk-version-opt": "1.1.0.",
+                    "apk-mode-opt": "embedded",
+                    "apk-type":"MANIFEST",
+                    "copylist": {
+                        "PACK-TOOL-ROOT/bootstrap-fw/js/jquery-2.1.3.min.js": "resources/jquery-2.1.3.min.js"
+                    }
+                },
+                "testapp/localstorage": {
+                    "app-name": "localstorage",
+                    "apk-pkg-opt":"localstorage",
+                    "apk-version-opt": "1.0.0.",
+                    "apk-mode-opt": "embedded",
+                    "apk-type":"MANIFEST",
+                    "copylist": {
+                        "PACK-TOOL-ROOT/bootstrap-fw/js/jquery-2.1.3.min.js": "resources/jquery-2.1.3.min.js"
+                    }
+                },
+                "testapp/indexdb_upgrade": {
+                    "app-name": "indexdb_upgrade",
+                    "apk-pkg-opt":"indexdb",
+                    "apk-version-opt": "1.1.0.",
+                    "apk-mode-opt": "embedded",
+                    "apk-type":"MANIFEST",
+                    "copylist": {
+                        "PACK-TOOL-ROOT/bootstrap-fw/js/jquery-2.1.3.min.js": "resources/jquery-2.1.3.min.js"
+                    }
+                },
+                "testapp/indexdb": {
+                    "app-name": "indexdb",
+                    "apk-pkg-opt":"indexdb",
+                    "apk-version-opt": "1.0.0.",
+                    "apk-mode-opt": "embedded",
+                    "apk-type":"MANIFEST",
+                    "copylist": {
+                        "PACK-TOOL-ROOT/bootstrap-fw/js/jquery-2.1.3.min.js": "resources/jquery-2.1.3.min.js"
+                    }
+                },
+                "testapp/cookie_upgrade": {
+                    "app-name": "cookie_upgrade",
+                    "apk-pkg-opt":"cookie",
+                    "apk-version-opt": "1.1.0.",
+                    "apk-mode-opt": "embedded",
+                    "apk-type":"MANIFEST",
+                    "copylist": {
+                        "PACK-TOOL-ROOT/bootstrap-fw/js/jquery-2.1.3.min.js": "resources/jquery-2.1.3.min.js"
+                    }
+                },
+                "testapp/cookie": {
+                    "app-name": "cookie",
+                    "apk-pkg-opt":"cookie",
+                    "apk-version-opt": "1.0.0.",
+                    "apk-mode-opt": "embedded",
+                    "apk-type":"MANIFEST",
+                    "copylist": {
+                        "PACK-TOOL-ROOT/bootstrap-fw/js/jquery-2.1.3.min.js": "resources/jquery-2.1.3.min.js"
+                    }
+                },
+                "testapp/video": {
+                    "app-name": "video",
+                    "apk-pkg-opt":"video",
+                    "apk-version-opt": "1.0.0.",
+                    "apk-mode-opt": "embedded",
+                    "apk-type":"MANIFEST",
+                    "copylist": {
+                        "PACK-TOOL-ROOT/bootstrap-fw/js/jquery-2.1.3.min.js": "resources/jquery-2.1.3.min.js"
+                    }
+                }
+            }
+        }
+    },
+    "pkg-name": "webmanu-system-android-tests"
+}
