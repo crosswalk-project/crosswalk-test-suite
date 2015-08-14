@@ -3,107 +3,47 @@
 <test_definition>
   <suite category="W3C/HTML5 APIs" name="webapi-usertiming-w3c-tests">
     <set name="usertiming" type="js">
-      <testcase component="W3C_HTML5 APIs/Performance and Optimization/User Timing" execution_type="auto" id="test_user_timing_clear_marks_003" purpose="Check if the performance.clearMarks() is called with a non-existent mark which shouldn't change the state of the Performance Timeline">
+      <testcase component="W3C_HTML5 APIs/Performance and Optimization/User Timing" execution_type="auto" id="test_user_timing_clear_marks" purpose="Test user timing clear marks" subcase="7">
         <description>
-          <test_script_entry>/opt/webapi-usertiming-w3c-tests/usertiming/w3c/test_user_timing_clear_marks.html?total_num=7&amp;amp;locator_key=id&amp;amp;value=3</test_script_entry>
+          <test_script_entry>/opt/webapi-usertiming-w3c-tests/usertiming/w3c/test_user_timing_clear_marks.html</test_script_entry>
         </description>
       </testcase>
-      <testcase component="W3C_HTML5 APIs/Performance and Optimization/User Timing" execution_type="auto" id="test_user_timing_clear_marks_005" purpose="Check if the performance.clearMarks() is called with a existed mark which should no longer be present in the Performance Timeline">
+      <testcase component="W3C_HTML5 APIs/Performance and Optimization/User Timing" execution_type="auto" id="test_user_timing_clear_measures" purpose="Test user timing clear measures" subcase="7">
         <description>
-          <test_script_entry>/opt/webapi-usertiming-w3c-tests/usertiming/w3c/test_user_timing_clear_marks.html?total_num=7&amp;amp;locator_key=id&amp;amp;value=5</test_script_entry>
+          <test_script_entry>/opt/webapi-usertiming-w3c-tests/usertiming/w3c/test_user_timing_clear_measures.html</test_script_entry>
         </description>
       </testcase>
-      <testcase component="W3C_HTML5 APIs/Performance and Optimization/User Timing" execution_type="auto" id="test_user_timing_clear_marks_007" purpose="Check if the performance.clearMarks() is called that clear all marks then window.performance.getEntriesByType('mark') returns an empty object">
-        <description>
-          <test_script_entry>/opt/webapi-usertiming-w3c-tests/usertiming/w3c/test_user_timing_clear_marks.html?total_num=7&amp;amp;locator_key=id&amp;amp;value=7</test_script_entry>
-        </description>
-      </testcase>
-      <testcase component="W3C_HTML5 APIs/Performance and Optimization/User Timing" execution_type="auto" id="test_user_timing_clear_measures_003" purpose="Check if the performance.clearMeasures() is called with a non-existent measure which shouldn't change the state of the Performance Timeline">
-        <description>
-          <test_script_entry>/opt/webapi-usertiming-w3c-tests/usertiming/w3c/test_user_timing_clear_measures.html?total_num=7&amp;amp;locator_key=id&amp;amp;value=3</test_script_entry>
-        </description>
-      </testcase>
-      <testcase component="W3C_HTML5 APIs/Performance and Optimization/User Timing" execution_type="auto" id="test_user_timing_clear_measures_005" purpose="Check if the performance.clearMeasures() is called with a existed measure which should no longer be present in the Performance Timeline">
-        <description>
-          <test_script_entry>/opt/webapi-usertiming-w3c-tests/usertiming/w3c/test_user_timing_clear_measures.html?total_num=7&amp;amp;locator_key=id&amp;amp;value=5</test_script_entry>
-        </description>
-      </testcase>
-      <testcase component="W3C_HTML5 APIs/Performance and Optimization/User Timing" execution_type="auto" id="test_user_timing_clear_measures_007" purpose="Check if the performance.clearMeasures() is called that clear all measures then window.performance.getEntriesByType('measure') returns an empty object">
-        <description>
-          <test_script_entry>/opt/webapi-usertiming-w3c-tests/usertiming/w3c/test_user_timing_clear_measures.html?total_num=7&amp;amp;locator_key=id&amp;amp;value=7</test_script_entry>
-        </description>
-      </testcase>
-      <testcase component="W3C_HTML5 APIs/Performance and Optimization/User Timing" execution_type="auto" id="test_user_timing_mark" purpose="Check if this test validates that the performance.mark() method is working properly">
+      <testcase component="W3C_HTML5 APIs/Performance and Optimization/User Timing" execution_type="auto" id="test_user_timing_mark" purpose="Test user timing mark" subcase="21">
         <description>
           <test_script_entry>/opt/webapi-usertiming-w3c-tests/usertiming/w3c/test_user_timing_mark.html</test_script_entry>
         </description>
       </testcase>
-      <testcase component="W3C_HTML5 APIs/Performance and Optimization/User Timing" execution_type="auto" id="usertiming_mark_without_parameter" purpose="Check if the window.performance.mark() threw a TYPE_ERR exception when invoke without a parameter">
+      <testcase component="W3C_HTML5 APIs/Performance and Optimization/User Timing" execution_type="auto" id="test_user_timing_mark_and_measure_exception_without_parameter" purpose="Test user timing mark and measure exception without parameter" subcase="5">
         <description>
-          <test_script_entry>/opt/webapi-usertiming-w3c-tests/usertiming/w3c/test_user_timing_mark_and_measure_exception_when_invoke_without_parameter.html?total_num=5&amp;amp;locator_key=id&amp;amp;value=3</test_script_entry>
+          <test_script_entry>/opt/webapi-usertiming-w3c-tests/usertiming/w3c/test_user_timing_mark_and_measure_exception_when_invoke_without_parameter.html</test_script_entry>
         </description>
       </testcase>
-      <testcase component="W3C_HTML5 APIs/Performance and Optimization/User Timing" execution_type="auto" id="usertiming_measure_without_parameter" purpose="Check if the window.performance.measure() threw a TYPE_ERR exception when invoke without a parameter">
-        <description>
-          <test_script_entry>/opt/webapi-usertiming-w3c-tests/usertiming/w3c/test_user_timing_mark_and_measure_exception_when_invoke_without_parameter.html?total_num=5&amp;amp;locator_key=id&amp;amp;value=5</test_script_entry>
-        </description>
-      </testcase>
-      <testcase component="W3C_HTML5 APIs/Performance and Optimization/User Timing" execution_type="auto" id="test_user_timing_mark_exceptions" purpose="Check if throws a SYNTAX_ERR exception if the markName argument is the same name as an attribute in the PerformanceTiming interface">
+      <testcase component="W3C_HTML5 APIs/Performance and Optimization/User Timing" execution_type="auto" id="test_user_timing_mark_exceptions" purpose="Test user timing mark exceptions" subcase="41">
         <description>
           <test_script_entry>/opt/webapi-usertiming-w3c-tests/usertiming/w3c/test_user_timing_mark_exceptions.html</test_script_entry>
         </description>
       </testcase>
-      <testcase component="W3C_HTML5 APIs/Performance and Optimization/User Timing" execution_type="auto" id="usertiming_mark_with_name_optional_attribute" purpose="Check if this test validates exception scenarios of invoking performance.mark() with param of 'secureConnectionStart'">
+      <testcase component="W3C_HTML5 APIs/Performance and Optimization/User Timing" execution_type="auto" id="usertiming_mark_with_name_optional_attribute" purpose="Test user timing mark with name of navigation timing optional attribute" subcase="3">
         <description>
           <test_script_entry>/opt/webapi-usertiming-w3c-tests/usertiming/w3c/test_user_timing_mark_with_name_of_navigation_timing_optional_attribute.html</test_script_entry>
         </description>
       </testcase>
-      <testcase component="W3C_HTML5 APIs/Performance and Optimization/User Timing" execution_type="auto" id="test_user_timing_measure" purpose="Check if this test validates that the performance.measure() method is working properly">
+      <testcase component="W3C_HTML5 APIs/Performance and Optimization/User Timing" execution_type="auto" id="test_user_timing_measure" purpose="Test user timing measure" subcase="31">
         <description>
           <test_script_entry>/opt/webapi-usertiming-w3c-tests/usertiming/w3c/test_user_timing_measure.html</test_script_entry>
         </description>
       </testcase>
-      <testcase component="W3C_HTML5 APIs/Performance and Optimization/User Timing" execution_type="auto" id="test_user_timing_measure_exceptions_003" purpose="Check if the window.performance.measure() throws a SYNTAX_ERR exception whenever a non-existent mark is provided as the startMark or endMark">
+      <testcase component="W3C_HTML5 APIs/Performance and Optimization/User Timing" execution_type="auto" id="test_user_timing_measure_exceptions" purpose="Test user timing measure exceptions" subcase="17">
         <description>
-          <test_script_entry>/opt/webapi-usertiming-w3c-tests/usertiming/w3c/test_user_timing_measure_exceptions.html?total_num=17&amp;amp;locator_key=id&amp;amp;value=3</test_script_entry>
+          <test_script_entry>/opt/webapi-usertiming-w3c-tests/usertiming/w3c/test_user_timing_measure_exceptions.html</test_script_entry>
         </description>
       </testcase>
-      <testcase component="W3C_HTML5 APIs/Performance and Optimization/User Timing" execution_type="auto" id="test_user_timing_measure_exceptions_005" purpose="Check if the window.performance.measure() throws a SYNTAX_ERR exception whenever a non-existent mark is provided as the startMark">
-        <description>
-          <test_script_entry>/opt/webapi-usertiming-w3c-tests/usertiming/w3c/test_user_timing_measure_exceptions.html?total_num=17&amp;amp;locator_key=id&amp;amp;value=5</test_script_entry>
-        </description>
-      </testcase>
-      <testcase component="W3C_HTML5 APIs/Performance and Optimization/User Timing" execution_type="auto" id="test_user_timing_measure_exceptions_007" purpose="Check if the window.performance.measure() throws a SYNTAX_ERR exception whenever a non-existent mark is provided as the endMark">
-        <description>
-          <test_script_entry>/opt/webapi-usertiming-w3c-tests/usertiming/w3c/test_user_timing_measure_exceptions.html?total_num=17&amp;amp;locator_key=id&amp;amp;value=7</test_script_entry>
-        </description>
-      </testcase>
-      <testcase component="W3C_HTML5 APIs/Performance and Optimization/User Timing" execution_type="auto" id="test_user_timing_measure_exceptions_009" purpose="Check if the window.performance.measure() throws a SYNTAX_ERR exception whenever a non-existent marks are provided as the startMark and endMark">
-        <description>
-          <test_script_entry>/opt/webapi-usertiming-w3c-tests/usertiming/w3c/test_user_timing_measure_exceptions.html?total_num=17&amp;amp;locator_key=id&amp;amp;value=9</test_script_entry>
-        </description>
-      </testcase>
-      <testcase component="W3C_HTML5 APIs/Performance and Optimization/User Timing" execution_type="auto" id="test_user_timing_measure_exceptions_011" purpose="Check if the window.performance.measure() throws a INVALID_ACCESS_ERR whenever a navigation timing attribute with a value of zero is provided as the startMark or endMark">
-        <description>
-          <test_script_entry>/opt/webapi-usertiming-w3c-tests/usertiming/w3c/test_user_timing_measure_exceptions.html?total_num=17&amp;amp;locator_key=id&amp;amp;value=11</test_script_entry>
-        </description>
-      </testcase>
-      <testcase component="W3C_HTML5 APIs/Performance and Optimization/User Timing" execution_type="auto" id="test_user_timing_measure_exceptions_013" purpose="Check if the window.performance.measure() throws a INVALID_ACCESS_ERR whenever a navigation timing attribute with a value of zero is provided as the startMark">
-        <description>
-          <test_script_entry>/opt/webapi-usertiming-w3c-tests/usertiming/w3c/test_user_timing_measure_exceptions.html?total_num=17&amp;amp;locator_key=id&amp;amp;value=13</test_script_entry>
-        </description>
-      </testcase>
-      <testcase component="W3C_HTML5 APIs/Performance and Optimization/User Timing" execution_type="auto" id="test_user_timing_measure_exceptions_015" purpose="Check if the window.performance.measure() throws a INVALID_ACCESS_ERR whenever a navigation timing attribute with a value of zero is provided as the endMark">
-        <description>
-          <test_script_entry>/opt/webapi-usertiming-w3c-tests/usertiming/w3c/test_user_timing_measure_exceptions.html?total_num=17&amp;amp;locator_key=id&amp;amp;value=15</test_script_entry>
-        </description>
-      </testcase>
-      <testcase component="W3C_HTML5 APIs/Performance and Optimization/User Timing" execution_type="auto" id="test_user_timing_measure_exceptions_017" purpose="Check if the window.performance.measure() throws a INVALID_ACCESS_ERR whenever a navigation timing attribute with a value of zero is provided as the startMark and endMark">
-        <description>
-          <test_script_entry>/opt/webapi-usertiming-w3c-tests/usertiming/w3c/test_user_timing_measure_exceptions.html?total_num=17&amp;amp;locator_key=id&amp;amp;value=17</test_script_entry>
-        </description>
-      </testcase>
-      <testcase component="W3C_HTML5 APIs/Performance and Optimization/User Timing" execution_type="auto" id="test_user_timing_measure_navigation_timing" purpose="Check if the performance.measure() method is working properly when navigation timing attributes are used in place of mark names">
+      <testcase component="W3C_HTML5 APIs/Performance and Optimization/User Timing" execution_type="auto" id="test_user_timing_measure_navigation_timing" purpose="Test user timing measure navigation timing" subcase="17">
         <description>
           <test_script_entry>/opt/webapi-usertiming-w3c-tests/usertiming/w3c/test_user_timing_measure_navigation_timing.html</test_script_entry>
         </description>
