@@ -203,7 +203,7 @@ Test case created should be classified by the following rules:
 
 **Example**
 
-<testcase purpose="Check if the Touch.screenY attribute exists" type="compliance" status="approved" component="WebAPI/Device/Touch Events version 1 (Partial)" execution_type="auto" priority="P1" id="Touch_screenY_exist"\>
+<testcase purpose="Check if the Touch.screenY attribute exists" type="compliance" status="approved" component="WebAPI/Device/Touch Events version 1" execution_type="auto" priority="P1" id="Touch_screenY_exist"\>
 
 ## 7. Spec Coverage Assertion Rules (<specs\> field in tests.full.xml)
 
@@ -258,7 +258,7 @@ Spec coverage assertion should obey the following rules:
 
     <specs>
       <spec>
-        <spec_assertion element_type="attribute" element_name="screenY" interface="Touch" specification="Touch Events version 1 (Partial)" section="Device" category="Tizen W3C API Specifications"/>
+        <spec_assertion element_type="attribute" element_name="screenY" interface="Touch" specification="Touch Events version 1" section="Device" category="Tizen W3C API Specifications"/>
         <spec_url>http://www.w3.org/TR/2013/WD-touch-events-20130124/#idl-def-Touch</spec_url>
         <spec_statement/>
       </spec>
@@ -266,7 +266,7 @@ Spec coverage assertion should obey the following rules:
 
     <specs>
       <spec>
-        <spec_assertion element_type="attribute" element_name="clientY" interface="Touch" specification="Touch Events version 1 (Partial)" section="Device" category="Tizen W3C API Specifications"/>
+        <spec_assertion element_type="attribute" element_name="clientY" interface="Touch" specification="Touch Events version 1" section="Device" category="Tizen W3C API Specifications"/>
         <spec_url>http://www.w3.org/TR/2013/WD-touch-events-20130124/#idl-def-Touch</spec_url>
         <spec_statement/>
       </spec>
@@ -540,10 +540,10 @@ Tests.xml Example.
 - Tizen Device API Specifications:Tizen:Web Setting
 - W3C API Specifications:DOM Forms:HTML5 Forms
 - W3C API Specifications:DOM Forms:Selectors API Level 1
-- W3C API Specifications:DOM Forms:Selectors API Level 2 (Partial)
+- W3C API Specifications:DOM Forms:Selectors API Level 2
 - W3C API Specifications:DOM Forms:WOFF File Format 1.0
 - W3C API Specifications:DOM Forms:DOM/JS related HTML5 Enhancements
-- W3C API Specifications:CSS3:Media Queries (Partial)
+- W3C API Specifications:CSS3:Media Queries
 - W3C API Specifications:CSS3:CSS 2D Transforms
 - W3C API Specifications:CSS3:CSS 3D Transforms Module Level 3
 - W3C API Specifications:CSS3:CSS Animations Module Level 3
@@ -552,11 +552,11 @@ Tests.xml Example.
 - W3C API Specifications:CSS3:CSS Backgrounds and Borders Module Level 3
 - W3C API Specifications:CSS3:CSS Flexible Box Layout Module
 - W3C API Specifications:CSS3:CSS Multi-column Layout Module
-- W3C API Specifications:CSS3:CSS Text Module Level 3 (Partial)
+- W3C API Specifications:CSS3:CSS Text Module Level 3
 - W3C API Specifications:CSS3:CSS Basic User Interface Module Level 3
-- W3C API Specifications:CSS3:CSS Fonts Module Level 3 (Partial)
-- W3C API Specifications:Device:Touch Events version 1 (Partial)
-- W3C API Specifications:Device:DeviceOrientation Event (Partial)
+- W3C API Specifications:CSS3:CSS Fonts Module Level 3
+- W3C API Specifications:Device:Touch Events version 1
+- W3C API Specifications:Device:DeviceOrientation Event
 - W3C API Specifications:Device:Battery Status API
 - W3C API Specifications:Device:Vibration API
 - W3C API Specifications:Device:HTML5 Browser state
@@ -568,7 +568,7 @@ Tests.xml Example.
 - W3C API Specifications:Media:HTML5 Audio Element
 - W3C API Specifications:Media:HTML5 Video Element
 - W3C API Specifications:Media:getUserMedia
-- W3C API Specifications:Media:Web Audio API (Partial)
+- W3C API Specifications:Media:Web Audio API
 - W3C API Specifications:Media:HTML Media Capture
 - W3C API Specifications:Communication:The WebSocket API
 - W3C API Specifications:Communication:XMLHttpRequest Level 2
@@ -587,7 +587,7 @@ Tests.xml Example.
 - W3C API Specifications:Security:Content Security Policy 1.0
 - W3C API Specifications:UI:Clipboard API and events
 - W3C API Specifications:UI:HTML5 Drag and drop
-- W3C API Specifications:Performance:Web Workers (Partial)
+- W3C API Specifications:Performance:Web Workers
 - W3C API Specifications:Performance:Page Visibility
 - W3C API Specifications:Performance:Animation Timing Control
 - W3C API Specifications:Performance:Navigation Timing
@@ -596,10 +596,10 @@ Tests.xml Example.
 - W3C API Specifications:Widget:Widget Interface
 - W3C API Specifications:Widget:XML Digital Signatures for Widgets
 - W3C API Specifications:Widget:Widgets Access Request Policy
-- Supplementary API Specifications:Typed Arrays - Khronos (Partial)
-- Supplementary API Specifications:WebGL - Khronos (Partial)
-- Supplementary API Specifications:Fullscreen API - Mozilla (Partial)
-- Supplementary API Specifications:viewport Metatag - Apple (Partial)
+- Supplementary API Specifications:Typed Arrays - Khronos
+- Supplementary API Specifications:WebGL - Khronos
+- Supplementary API Specifications:Fullscreen API - Mozilla
+- Supplementary API Specifications:viewport Metatag - Apple
 
 ## Appendix 3 WebAPI Component Name List
 
@@ -631,33 +631,33 @@ Used by "Component" field in tests.full.xml and tests.xml
 - TizenAPI/System/Websetting
 - TizenAPI/Tizen Common/Tizen
 - TizenAPI/UI/Notification
-- WebAPI/Communication/HTML5 The session history of browsing contexts (Partial)
+- WebAPI/Communication/HTML5 The session history of browsing contexts
 - WebAPI/Communication/HTML5 Web Messaging
 - WebAPI/Communication/Server-Sent Events
 - WebAPI/Communication/The WebSocket API
-- WebAPI/Communication/XMLHttpRequest Level 2 (Partial)
+- WebAPI/Communication/XMLHttpRequest Level 2
 - WebAPI/Device/Battery Status API
-- WebAPI/Device/Device Orientation Event Specification (Partial)
+- WebAPI/Device/Device Orientation Event Specification
 - WebAPI/Device/HTML5 Browser state
 - WebAPI/Device/The Network Information API
 - WebAPI/Device/The Screen Orientation API
-- WebAPI/Device/Touch Events version 1 (Partial)
+- WebAPI/Device/Touch Events version 1
 - WebAPI/Device/Vibration API
 - WebAPI/DOM, Forms and Styles/CSS 2D Transforms
-- WebAPI/DOM, Forms and Styles/CSS 3D Transforms Module Level 3 (Partial) - WebAPI/DOM, Forms and Styles/CSS Animations Module Level 3
-- WebAPI/DOM, Forms and Styles/CSS Backgrounds and Borders Module Level 3 (Partial)
-- WebAPI/DOM, Forms and Styles/CSS Basic User Interface Module Level 3 (CSS3 UI) (Partial)
+- WebAPI/DOM, Forms and Styles/CSS 3D Transforms Module Level 3 - WebAPI/DOM, Forms and Styles/CSS Animations Module Level 3
+- WebAPI/DOM, Forms and Styles/CSS Backgrounds and Borders Module Level 3
+- WebAPI/DOM, Forms and Styles/CSS Basic User Interface Module Level 3 (CSS3 UI)
 - WebAPI/DOM, Forms and Styles/CSS Color Module Level 3
-- WebAPI/DOM, Forms and Styles/CSS Flexible Box Layout Module (Partial) - WebAPI/DOM, Forms and Styles/CSS Fonts Module Level 3 (Partial)
-- WebAPI/DOM, Forms and Styles/CSS Multi-column Layout Module (Partial) - WebAPI/DOM, Forms and Styles/CSS Style Attribute
-- WebAPI/DOM, Forms and Styles/CSS Text Module Level 3 (Partial) - WebAPI/DOM, Forms and Styles/CSS Transforms Module Level 1
+- WebAPI/DOM, Forms and Styles/CSS Flexible Box Layout Module - WebAPI/DOM, Forms and Styles/CSS Fonts Module Level 3
+- WebAPI/DOM, Forms and Styles/CSS Multi-column Layout Module - WebAPI/DOM, Forms and Styles/CSS Style Attribute
+- WebAPI/DOM, Forms and Styles/CSS Text Module Level 3 - WebAPI/DOM, Forms and Styles/CSS Transforms Module Level 1
 - WebAPI/DOM, Forms and Styles/CSS Transitions Module Level 3
-- WebAPI/DOM, Forms and Styles/DOM/JavaScript related HTML5 Enhancements - WebAPI/DOM, Forms and Styles/HTML5 Forms (Partial)
-- WebAPI/DOM, Forms and Styles/Media Queries (Partial)
+- WebAPI/DOM, Forms and Styles/DOM/JavaScript related HTML5 Enhancements - WebAPI/DOM, Forms and Styles/HTML5 Forms
+- WebAPI/DOM, Forms and Styles/Media Queries
 - WebAPI/DOM, Forms and Styles/Selectors API Level 1
 - WebAPI/DOM, Forms and Styles/Selectors API Level 2
-- WebAPI/DOM, Forms and Styles/Selectors API Level 2 (Partial)
-- WebAPI/Graphics/HTML5 SVG - WebAPI/Graphics/HTML5 The canvas element (Partial)
+- WebAPI/DOM, Forms and Styles/Selectors API Level 2
+- WebAPI/Graphics/HTML5 SVG - WebAPI/Graphics/HTML5 The canvas element
 - WebAPI/IVI/CSS
 - WebAPI/IVI/DLNA
 - WebAPI/IVI/Locale
@@ -667,9 +667,9 @@ Used by "Component" field in tests.full.xml and tests.xml
 - WebAPI/IVI/Vehicle
 - WebAPI/JavaScript/Promises
 - WebAPI/Location/Geolocation API Specification
-- WebAPI/Media/getUserMedia (Partial)
-- WebAPI/Media/HTML5 The audio element (Partial)
-- WebAPI/Media/HTML5 The video element (Partial)
+- WebAPI/Media/getUserMedia
+- WebAPI/Media/HTML5 The audio element
+- WebAPI/Media/HTML5 The video element
 - WebAPI/Media/HTML Media Capture
 - WebAPI/Media/Web Audio API
 - WebAPI/Networking/WebRTC
@@ -679,7 +679,7 @@ Used by "Component" field in tests.full.xml and tests.xml
 - WebAPI/Performance and Optimization/Resource Timing
 - WebAPI/Performance and Optimization/Timing control for script-based animations
 - WebAPI/Performance and Optimization/User Timing
-- WebAPI/Performance and Optimization/Web Workers (Partial)
+- WebAPI/Performance and Optimization/Web Workers
 - WebAPI/Responsive Design/CSS Device Adaptation
 - WebAPI/Runtime(short-term)/App URI
 - WebAPI/Runtime(short-term)/Runtime
@@ -688,15 +688,15 @@ Used by "Component" field in tests.full.xml and tests.xml
 - WebAPI/Security/Cross-Origin Resource Sharing
 - WebAPI/Security/HTML5 The iframe element
 - WebAPI/Storage/File API
-- WebAPI/Storage/File API: Directories and System (Partial)
-- WebAPI/Storage/File API: Writer (Partial)
+- WebAPI/Storage/File API: Directories and System
+- WebAPI/Storage/File API: Writer
 - WebAPI/Storage/HTML5 Application caches
-- WebAPI/Storage/Indexed Database API (Partial)
+- WebAPI/Storage/Indexed Database API
 - WebAPI/Storage/Web SQL Database
-- WebAPI/Storage/Web Storage (Partial)
-- WebAPI/Supplementary API Reference/Fullscreen APIMozilla (Partial) - WebAPI/Supplementary API Reference/SIMD
-- WebAPI/Supplementary API Reference/Typed Arrays - Khronos (Partial)
-- WebAPI/Supplementary API Reference/WebGL - Khronos (Partial)
+- WebAPI/Storage/Web Storage
+- WebAPI/Supplementary API Reference/Fullscreen APIMozilla - WebAPI/Supplementary API Reference/SIMD
+- WebAPI/Supplementary API Reference/Typed Arrays - Khronos
+- WebAPI/Supplementary API Reference/WebGL - Khronos
 - WebAPI/Supplementary API Reference/WebGL Specification
 - WebAPI/System-level APIs/Contacts Manager
 - WebAPI/System-level APIs/Device Capabilities
@@ -705,7 +705,7 @@ Used by "Component" field in tests.full.xml and tests.xml
 - WebAPI/Tizen/Configuration
 - WebAPI/UI/HTML5 Drag and drop
 - WebAPI/UI/HTML5 telephone, email and URL state of input element
-- WebAPI/UI/Web Notifications (Partial)
+- WebAPI/UI/Web Notifications
 - WebAPI/UI/Web Speech - WebAPI/W3C\_EXTRAHTML5/Attributes
 - WebAPI/W3C\_EXTRAHTML5/Base64
 - WebAPI/W3C\_EXTRAHTML5/Browsers
