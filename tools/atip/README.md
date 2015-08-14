@@ -394,6 +394,8 @@ def i_visit_url(context, url):
 @step(u'I register watcher2 "{watcher_name}" when "{when_text1}" and "{when_text2}" click "{click_text}"')
 @step(u'I should see view "{params_kw}"')
 @step(u'I should see relative view "{params_kw1}" on the "{position}" side of view "{params_kw2}"')
+@step(u'I should see view "{params_kw}" in {time_out:d} seconds')
+@step(u'I should see relative view "{params_kw1}" on the "{position}" side of view "{params_kw2}" in {time_out:d} seconds')
 @step(u'I should not see view "{params_kw}"')
 @step(u'I should not see relative view "{params_kw1}" on the "{position}" side of view "{params_kw2}"')
 @step(u'I click view "{params_kw}"')
@@ -408,8 +410,7 @@ def i_visit_url(context, url):
 @step(u'I save object "{key}" info "{info_name}" to temp "{info_key}"')
 @step(u'I save process of finding view "{params_kw1}" on the "{position}" side of view "{params_kw2}"')
 @step(u'I reload above process and save result to object "{key}"')
-@step(u'I wait saved object "{key}" exist in "{time_out}" seconds')
-@step(u'I wait saved object "{key}" gone in "{time_out}" seconds')
+@step(u'I wait saved object "{key}" gone in {time_out:d} seconds')
 ```
 
 * "common" steps - done
@@ -430,6 +431,8 @@ def i_visit_url(context, url):
 @step(u'I open airplane mode')
 @step(u'I close airplane mode')
 @step(u'I execute command "{command_line}"')
+@step(u'I save command "{command_line}" result "{result_key}"')
+@step(u'The value "{expected_value}" should be in result "{result_key}"')
 ```
 
 ## Run Tests 

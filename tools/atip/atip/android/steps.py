@@ -75,6 +75,20 @@ def select_relative_object(context, params_kw1, position, params_kw2):
     assert context.android.selectRelativeObjectBy(ob, position, params_kw1).exists
 
 
+@step(u'I should see view "{params_kw}" in {time_out:d} seconds')
+def select_view_by_intime(context, params_kw, time_out):
+    ob = context.android.selectObjectBy(params_kw, time_out)
+    assert ob.exists
+
+
+@step(u'I should see relative view "{params_kw1}" on the "{position}" side of view "{params_kw2}" in {time_out:d} seconds')
+def select_relative_object_intime(context, params_kw1, position, params_kw2, time_out):
+    ob = context.android.selectObjectBy(params_kw2, time_out)
+    assert ob.exists
+    relative_ob = context.android.selectRelativeObjectBy(ob, position, params_kw1, time_out)
+    assert relative_ob.exists
+
+
 @step(u'I should not see view "{params_kw}"')
 def select_noneview_by(context, params_kw):
     ob = context.android.selectObjectBy(params_kw)
@@ -217,14 +231,7 @@ def reload_process(context, key):
     assert context.android.save2InfoTemp(ob, key)
 
 
-@step(u'I wait saved object "{key}" exist in "{time_out}" seconds')
-def wait_object_exist(context, key, time_out):
-    ob = context.android.get2InfoTemp(key)
-    assert ob
-    assert context.android.waitObjectShow(ob, time_out)
-
-
-@step(u'I wait saved object "{key}" gone in "{time_out}" seconds')
+@step(u'I wait saved object "{key}" gone in {time_out:d} seconds')
 def wait_object_gone(context, key, time_out):
     ob = context.android.get2InfoTemp(key)
     assert ob

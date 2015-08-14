@@ -29,6 +29,7 @@
 import os
 import sys
 import json
+import time
 from atip.common import common
 from uiautomator import *
 reload(sys)
@@ -296,12 +297,12 @@ class Android(common.APP):
         return self.d.open.quick_settings()
 
 
-    def waitObjectShow(self, ob, timeout=1000):
-        return ob.wait.exists(timeout=timeout)
+    def waitObjectShow(self, ob, timeout=1):
+        return ob.wait.exists(timeout=timeout*1000)
 
 
-    def waitObjectGone(self, ob, timeout=1000):
-        return ob.wait.gone(timeout=timeout)
+    def waitObjectGone(self, ob, timeout=1):
+        return ob.wait.gone(timeout=timeout*1000)
 
 
     def getObjectInfo(self, ob, str_key="text"):
@@ -337,11 +338,11 @@ class Android(common.APP):
         return False
 
 
-    def selectObjectBy(self, params_str):
+    def selectObjectBy(self, params_str, timeout=1):
         params_kw = self.paramToDict(params_str)
         if params_kw:
             ob = self.d(**params_kw)
-            if self.waitObjectShow(ob):
+            if self.waitObjectShow(ob, timeout):
                 return ob
         return self.AutomatorDeviceObject
 
@@ -363,19 +364,24 @@ class Android(common.APP):
         return return_dict
 
 
-    def selectRelativeObjectBy(self, ob, direction, params_str):
+    def selectRelativeObjectBy(self, ob, direction, params_str, timeout=1):
         params_kw = self.paramToDict(params_str)
         if ob.exists and params_kw:
-            if direction == "left":
-                relative_ob = ob.left(**params_kw)
-            elif direction == "right":
-                relative_ob = ob.right(**params_kw)
-            elif direction == "up":
-                relative_ob = ob.up(**params_kw)
-            elif direction == "down":
-                relative_ob = ob.down(**params_kw)
-            if relative_ob:
-                return relative_ob
+            pre_time = time.time()
+            while True:
+                if direction == "left":
+                    relative_ob = ob.left(**params_kw)
+                elif direction == "right":
+                    relative_ob = ob.right(**params_kw)
+                elif direction == "up":
+                    relative_ob = ob.up(**params_kw)
+                elif direction == "down":
+                    relative_ob = ob.down(**params_kw)
+                if relative_ob:
+                    return relative_ob
+                elapsed_time = time.time() - pre_time
+                if elapsed_time >= timeout:
+                    return self.AutomatorDeviceObject
         return self.AutomatorDeviceObject
 
 
