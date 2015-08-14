@@ -7,20 +7,22 @@ ATIP(Application Test in Python), a "behave" binding library as the bridge betwe
 
 ## Configuration
 
-Environmental controls. In ATIP usage, you can write the environment initial processes in config file - environment.py. ATIP provides a template of "environment.py" for tests developers. This template supports running tests independently by "behave" tool.
+Environmental controls. In ATIP usage, you can write the environment initial processes on this file. ATIP provides two templates of "environment.py" for tests developers. One is for WebDriver backend, the other is for uiautomator backend. These templates support running tests independently by "behave" tool.
 
-In Crosswalk testing, the template need to know the some test vars, e.g. which device be tested? which test platform? Some WebDriver vars. the vars can be got by following ways:  
+In WebDriver testing, the template need to know the some test variables, e.g. which device be tested? which test platform? Some WebDriver variables. These variables can be got by following ways:
 
-* By environment vars:  
+* By environment variables:  
   TEST_PLATFORM: android, tizen, chrome_ubuntu, others(if have)   
   DEVICE_ID    
   CONNECT_TYPE: adb, sdb   
   WEBDRIVER_VARS: webdriver_url, desired_capabilities, others  
   LAUNCHER: XWalkLauncher, CordovaLauncher
 
-ATIP source provides a script "tools/set_env.sh" which can help you to setup those environment vars. Especially, the environment.py template can get those environment vars from Testkit-lite tool automatically:
+In uiautomator testing, only two environment variables are required, "TEST_PLATFORM" and "DEVICE_ID". This allows running uiautomator tests independently without WebDriver.
 
-A JSON config file which named "bdd.json for environment vars sharing, a template provided for reference: "atip/tools/bdd.*.json"  
+ATIP source provides a script "tools/set_env.sh" which can help you to setup those environment variables. Especially, the environment.py template can get those environment variables from Testkit-lite tool automatically:
+
+A JSON config file which named "bdd.json for environment variables sharing, a template provided for reference: "atip/tools/bdd.*.json"  
 
 * Configuration source layout
 ```
