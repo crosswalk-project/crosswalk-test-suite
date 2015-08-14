@@ -45,20 +45,24 @@ Authors:
 <div class="content">
   <h4>Precondition</h4>
   <ol>
-    <li>Remove environment PATH with 'crosswalk-app-tools/src/crosswalk-app'. Install crosswalk-app by run command: $ sudo npm install crosswalk-app-tools -g</li>
+    <li>
+      On Android:<br/>
+      &nbsp; &nbsp; Remove environment PATH with 'crosswalk-app-tools/src/crosswalk-app'.</br>
+      &nbsp; &nbsp; Install crosswalk-app by run command:</br>
+      &nbsp; &nbsp; $ sudo npm install -g crosswalk-app-tools</br>
+      On Windows:<br/>
+      &nbsp; &nbsp; Remove crosswalk-app environment.</br>
+      &nbsp; &nbsp; Install crosswalk-app by run command:</br>
+      &nbsp; &nbsp; $ npm install -g crosswalk-app-tools
+    </li>
   </ol>
   <h4>Test Steps</h4>
   <ol>
     <li>If org.test.foo exists in usecase-apptools-tests/tools/ directory, remove it</br>
       Then run below commands under usecase-apptools-tests/tools/ directory:</br>
-      On Android:<br/>
-      &nbsp; &nbsp; $ crosswalk-app create org.test.foo</br>
-      &nbsp; &nbsp; $ cd org.test.foo</br>
-      &nbsp; &nbsp; $ crosswalk-app build</br>
-      On Windows:<br/>
-      &nbsp; &nbsp; $ node crosswalk-app create org.test.foo</br>
-      &nbsp; &nbsp; $ cd org.test.foo</br>
-      &nbsp; &nbsp; $ node crosswalk-app build
+      $ crosswalk-app create org.test.foo</br>
+      $ cd org.test.foo</br>
+      $ crosswalk-app build
     </li>
     <li>Install x86 foo app on your android device which is "x86" architecture</li>
     <li>Check icon of foo app in your android device</li>
@@ -67,6 +71,14 @@ Authors:
     <li>Uninstall the app when it is running</li>
     <li>Install and launch the foo app again. Close foo app via clicking the home button, and kill foo app from Task Manager</li>
     <li>Long press the icon of foo app to uninstall it</li>
+    <li>
+      On Android:<br/>
+      &nbsp; &nbsp; Uninstall crosswalk-app by run command: $ sudo npm uninstall -g crosswalk-app-tools<br/>
+      &nbsp; &nbsp; Set environment PATH or invoke with "crosswalk-app-tools/src/crosswalk-app" directory<br/>
+      On Windows:<br/>
+      &nbsp; &nbsp; Uninstall crosswalk-app by run command: $ npm uninstall -g crosswalk-app-tools<br/>
+      &nbsp; &nbsp; Create 'crosswalk-app' env, invoke with 'crosswalk-app-tools/src/crosswalk-app' directory
+    </li>
   </ol>
 </div>
 <div class="footer">
@@ -85,5 +97,6 @@ Authors:
     <li>Unistall the foo app successfully when the app running</li>
     <li>Stop the foo app successfully</li>
     <li>Unistall the foo app successfully</li>
+    <li>Uninstall crosswalk-app and set the env successfully</li>
   </ol>
 </div>
