@@ -28,6 +28,7 @@
 #
 # Authors:
 #         Liu, xin <xinx.liu@intel.com>
+#         Li, Hao <haox.li@intel.com>
 
 import os
 import csv
@@ -87,17 +88,19 @@ def xml2csv(xml_path, split_sign):
 
 def make_csv(xml_path, csv_path):
     root_node = ElementTree.parse(xml_path)
-    set_node = root_node.find('suite/set')
-    csv_file_name = set_node.attrib['name']
-    csv_path += csv_file_name + '.csv'
+    suite_node = root_node.find('suite')
+    suite_name = suite_node.attrib['name']
+    csv_path += suite_name + '.csv'
     LOG.info("General: %s" % csv_path)
     writer = csv.writer(file(csv_path, 'wb'))
-    writer.writerow(['Name',
+    writer.writerow(['Set',
+                     'SetType',
+                     'UIAuto',
+                     'Name',
                      'Description',
                      'Component',
                      'Onload_Delay',
                      'Execution_Type',
-                     'Package',
                      'Priority',
                      'ElementType',
                      'ElementName',
@@ -109,46 +112,64 @@ def make_csv(xml_path, csv_path):
                      'SpecStatement',
                      'Status',
                      'Test_Script_Entry',
+                     'Refer_Test_Script_Entry',
+                     'BDD_Test_Script_Entry',
+                     'Subcase',
                      'Type',
                      'PreCondition',
                      'PostCondition',
                      'StepNumber',
                      'StepDescription',
                      'StepExpectedResult'])
-    case_nodes = set_node.findall('testcase')
-    for case_node in case_nodes:
-        spec_assertion = case_node.find('specs/spec/spec_assertion')
-        element_type = ''
-        if 'element_type' in spec_assertion.attrib:
-            element_type = spec_assertion.attrib['element_type']
-        else:
-            element_type = 'true'
-        element_name = ''
-        if 'element_name' in spec_assertion.attrib:
-            element_name = spec_assertion.attrib['element_name']
-        writer.writerow([case_node.attrib['id'],
-                         case_node.attrib['purpose'],
-                         case_node.attrib['component'],
-                         '',
-                         case_node.attrib['execution_type'],
-                         '',
-                         case_node.attrib['priority'],
-                         element_type,
-                         element_name,
-                         spec_assertion.attrib['interface'],
-                         spec_assertion.attrib['specification'],
-                         spec_assertion.attrib['section'],
-                         spec_assertion.attrib['category'],
-                         case_node.find('specs/spec/spec_url').text,
-                         '',
-                         case_node.attrib['status'],
-                         case_node.find('description/test_script_entry').text,
-                         case_node.attrib['type'],
-                         '',
-                         '',
-                         '1',
-                         '',
-                         'pass'])
+    set_nodes = suite_node.findall('set')
+    for set_node in set_nodes:
+        case_nodes = set_node.findall('testcase')
+        ui_auto = set_node.attrib['ui-auto'] if 'ui-auto' in set_node.attrib else ""
+        for case_node in case_nodes:
+            onload_delay = case_node.attrib['onload_delay'] if 'onload_delay' in case_node.attrib else ""
+            spec_assertion = case_node.find('specs/spec/spec_assertion')
+            element_type = ''
+            if 'element_type' in spec_assertion.attrib:
+                element_type = spec_assertion.attrib['element_type']
+            else:
+                element_type = 'true'
+            element_name = ''
+            if 'element_name' in spec_assertion.attrib:
+                element_name = spec_assertion.attrib['element_name']
+            refer_test_script_entry = case_node.find('description/refer_test_script_entry').text if \
+                                      case_node.find('description/refer_test_script_entry') is not None else ""
+            bdd_test_script_entry = case_node.find('description/bdd_test_script_entry').text if \
+                                      case_node.find('description/bdd_test_script_entry') is not None else ""
+            subcase = case_node.attrib['subcase'] if 'subcase' in case_node.attrib else ""
+
+            writer.writerow([set_node.attrib['name'],
+                             set_node.attrib['type'],
+                             ui_auto,
+                             case_node.attrib['id'],
+                             case_node.attrib['purpose'],
+                             case_node.attrib['component'],
+                             onload_delay,
+                             case_node.attrib['execution_type'],
+                             case_node.attrib['priority'],
+                             element_type,
+                             element_name,
+                             spec_assertion.attrib['interface'],
+                             spec_assertion.attrib['specification'],
+                             spec_assertion.attrib['section'],
+                             spec_assertion.attrib['category'],
+                             case_node.find('specs/spec/spec_url').text,
+                             '',
+                             case_node.attrib['status'],
+                             case_node.find('description/test_script_entry').text,
+                              refer_test_script_entry,
+                             bdd_test_script_entry,
+                             subcase,
+                             case_node.attrib['type'],
+                             '',
+                             '',
+                             '',
+                             '',
+                             ''])
 
 
 def echo_about():
