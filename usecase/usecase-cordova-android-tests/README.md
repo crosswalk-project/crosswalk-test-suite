@@ -15,17 +15,17 @@ It has these features:
 
 There are third-party plugins needed for cordova usecase:
 * AdMob3.6: https://github.com/floatinghotpot/cordova-plugin-admob
-* AdMob4.0: https://github.com/floatinghotpot/cordova-admob-pro
-* Screenshot4.0: https://github.com/gitawego/cordova-screenshot
+* AdMob4.x: https://github.com/floatinghotpot/cordova-admob-pro
+* Screenshot4.x: https://github.com/gitawego/cordova-screenshot
 * Screenshot3.6: Get https://github.com/gitawego/cordova-screenshot and return to commit:6ac9f15316b680110f6c448798fabdb978698b44
 
 Make a directory named "thirdparty_plugins", and git clone these plugins in it.
 
 For easy to be used in suite.json, need rename the plugins:
 * cordova-plugin-admob -> cordova-admob-3.6
-* cordova-admob-pro -> cordova-admob-4.0
+* cordova-admob-pro -> cordova-admob-4.x
 * For Cordova 3.6: cordova-screenshot -> cordova-screenshot-3.6
-* For Cordova 4.0: cordova-screenshot -> cordova-screenshot-4.0
+* For Cordova 4.x: cordova-screenshot -> cordova-screenshot-4.x
 
 ## LICENSE
 
