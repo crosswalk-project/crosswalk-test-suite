@@ -3,7 +3,7 @@
 <test_definition>
   <suite category="Supplementary APIs" name="tct-webgl-nonw3c-tests">
     <set name="WebGL1" type="js">
-      <testcase component="Supplementary APIs/Supplementary/WebGL - Khronos" execution_type="auto" id="getContext" priority="P1" purpose="Check if getContext function works" status="approved" type="compliance">
+      <testcase component="Supplementary APIs/Supplementary/WebGL - Khronos" execution_type="auto" id="getContext" priority="P1" purpose="Check if getContext function works" status="approved" type="compliance" subcase="7">
         <description>
           <test_script_entry test_script_expected_result="0">/opt/tct-webgl-nonw3c-tests/webgl/khronos/getContext.html</test_script_entry>
         </description>
@@ -14,7 +14,7 @@
           </spec>
         </specs>
       </testcase>
-      <testcase component="Supplementary APIs/Supplementary/WebGL - Khronos" execution_type="auto" id="copyTexImage2D" priority="P1" purpose="Check if copyTextImage2D function works" status="approved" type="compliance">
+      <testcase component="Supplementary APIs/Supplementary/WebGL - Khronos" execution_type="auto" id="copyTexImage2D" priority="P1" purpose="Check if copyTextImage2D function works" status="approved" type="compliance" subcase="10">
         <description>
           <test_script_entry test_script_expected_result="0">/opt/tct-webgl-nonw3c-tests/webgl/khronos/copyTexImage2D.html</test_script_entry>
         </description>
@@ -27,7 +27,7 @@
       </testcase>
     </set>
     <set name="WebGL2" type="js">
-      <testcase component="Supplementary APIs/Supplementary/WebGL - Khronos" execution_type="auto" id="bindBuffer" priority="P1" purpose="Check if bindBuffer works" status="approved" type="compliance">
+      <testcase component="Supplementary APIs/Supplementary/WebGL - Khronos" execution_type="auto" id="bindBuffer" priority="P1" purpose="Test bindBuffer" status="approved" type="compliance" subcase="8">
         <description>
           <test_script_entry test_script_expected_result="0">/opt/tct-webgl-nonw3c-tests/webgl/khronos/bindBuffer.html</test_script_entry>
         </description>
@@ -38,7 +38,7 @@
           </spec>
         </specs>
       </testcase>
-      <testcase component="Supplementary APIs/Supplementary/WebGL - Khronos" execution_type="auto" id="drawElements" priority="P1" purpose="Check if drawElements function works" status="approved" type="compliance">
+      <testcase component="Supplementary APIs/Supplementary/WebGL - Khronos" execution_type="auto" id="drawElements" priority="P1" purpose="Check if drawElements function works" status="approved" type="compliance" subcase="18">
         <description>
           <test_script_entry test_script_expected_result="0">/opt/tct-webgl-nonw3c-tests/webgl/khronos/drawElements.html</test_script_entry>
         </description>
@@ -51,7 +51,7 @@
       </testcase>
     </set>
     <set name="WebGL3" type="js">
-      <testcase component="Supplementary APIs/Supplementary/WebGL - Khronos" execution_type="auto" id="gl-getshadersource" priority="P1" purpose="Check if WebGL getshadersource method works" status="approved" type="compliance">
+      <testcase component="Supplementary APIs/Supplementary/WebGL - Khronos" execution_type="auto" id="gl-getshadersource" priority="P1" purpose="Check if WebGL getshadersource method works" status="approved" type="compliance" subcase="2">
         <description>
           <test_script_entry test_script_expected_result="0">/opt/tct-webgl-nonw3c-tests/webgl/khronos/gl-getshadersource.html</test_script_entry>
         </description>
@@ -64,7 +64,7 @@
       </testcase>
     </set>
     <set name="WebGL4" type="js">
-      <testcase component="Supplementary APIs/Supplementary/WebGL - Khronos" execution_type="auto" id="bufferData" priority="P1" purpose="Check if GLSL bufferData function works" status="approved" type="compliance">
+      <testcase component="Supplementary APIs/Supplementary/WebGL - Khronos" execution_type="auto" id="bufferData" priority="P1" purpose="Check if GLSL bufferData function works" status="approved" type="compliance" subcase="11">
         <description>
           <test_script_entry test_script_expected_result="0">/opt/tct-webgl-nonw3c-tests/webgl/khronos/bufferData.html</test_script_entry>
         </description>
@@ -10713,9 +10713,9 @@
           </spec>
         </specs>
       </testcase>
-      <testcase component="Supplementary APIs/Supplementary/WebGL - Khronos" execution_type="auto" id="webgl_compressedTexSubImage2D_2" priority="P2" purpose="Check if compressedTexSubImage2D methods with 8 parameters generate an INVALID_ENUM error when the core WebGL specification does not define any supported compressed texture formats" status="ready" type="compliance">
+      <testcase component="Supplementary APIs/Supplementary/WebGL - Khronos" execution_type="auto" id="webgl_compressedTexSubImage2D" priority="P2" purpose="Test compressedTexSubImage2D method" status="ready" type="compliance" subcase="4">
         <description>
-          <test_script_entry>/opt/tct-webgl-nonw3c-tests/webgl/w3c/compressedTexSubImage2D.html?total_num=4&amp;amp;locator_key=id&amp;amp;value=2</test_script_entry>
+          <test_script_entry>/opt/tct-webgl-nonw3c-tests/webgl/w3c/compressedTexSubImage2D.html</test_script_entry>
         </description>
         <specs>
           <spec>
@@ -10725,33 +10725,9 @@
           </spec>
         </specs>
       </testcase>
-      <testcase component="Supplementary APIs/Supplementary/WebGL - Khronos" execution_type="auto" id="webgl_compressedTexSubImage2D_3" priority="P2" purpose="Check if compressedTexSubImage2D methods with 9 parameters generate an INVALID_ENUM error when the core WebGL specification does not define any supported compressed texture formats" status="ready" type="compliance">
+      <testcase component="Supplementary APIs/Supplementary/WebGL - Khronos" execution_type="auto" id="webgl_compressedTexImage2D" priority="P2" purpose="Test compressedTexImage2D method" status="ready" type="compliance" subcase="4">
         <description>
-          <test_script_entry>/opt/tct-webgl-nonw3c-tests/webgl/w3c/compressedTexSubImage2D.html?total_num=4&amp;amp;locator_key=id&amp;amp;value=3</test_script_entry>
-        </description>
-        <specs>
-          <spec>
-            <spec_assertion category="Tizen Supplementary API Specifications" element_name="compressedTexSubImage2D" element_type="method" interface="WebGLRenderingContextBase" section="N/A" specification="WebGL Specification" />
-            <spec_url>http://www.khronos.org/registry/webgl/specs/latest/1.0/</spec_url>
-            <spec_statement />
-          </spec>
-        </specs>
-      </testcase>
-      <testcase component="Supplementary APIs/Supplementary/WebGL - Khronos" execution_type="auto" id="webgl_compressedTexSubImage2D_4" priority="P2" purpose="Check if it should throw a TypeError when passing too few arguments in compressedTexSubImage2D method" status="ready" type="compliance">
-        <description>
-          <test_script_entry>/opt/tct-webgl-nonw3c-tests/webgl/w3c/compressedTexSubImage2D.html?total_num=4&amp;amp;locator_key=id&amp;amp;value=4</test_script_entry>
-        </description>
-        <specs>
-          <spec>
-            <spec_assertion category="Tizen Supplementary API Specifications" element_name="compressedTexSubImage2D" element_type="method" interface="WebGLRenderingContextBase" section="N/A" specification="WebGL Specification" />
-            <spec_url>http://www.khronos.org/registry/webgl/specs/latest/1.0/</spec_url>
-            <spec_statement />
-          </spec>
-        </specs>
-      </testcase>
-      <testcase component="Supplementary APIs/Supplementary/WebGL - Khronos" execution_type="auto" id="webgl_compressedTexImage2D_2" priority="P2" purpose="Check if compressedTexImage2D methods with 7 parameters generate an INVALID_ENUM error when the core WebGL specification does not define any supported compressed texture formats" status="ready" type="compliance">
-        <description>
-          <test_script_entry>/opt/tct-webgl-nonw3c-tests/webgl/w3c/compressedTexImage2D.html?total_num=4&amp;amp;locator_key=id&amp;amp;value=2</test_script_entry>
+          <test_script_entry>/opt/tct-webgl-nonw3c-tests/webgl/w3c/compressedTexImage2D.html</test_script_entry>
         </description>
         <specs>
           <spec>
@@ -10761,31 +10737,7 @@
           </spec>
         </specs>
       </testcase>
-      <testcase component="Supplementary APIs/Supplementary/WebGL - Khronos" execution_type="auto" id="webgl_compressedTexImage2D_3" priority="P2" purpose="Check if compressedTexImage2D methods with 8 parameters generate an INVALID_ENUM error when the core WebGL specification does not define any supported compressed texture formats" status="ready" type="compliance">
-        <description>
-          <test_script_entry>/opt/tct-webgl-nonw3c-tests/webgl/w3c/compressedTexImage2D.html?total_num=4&amp;amp;locator_key=id&amp;amp;value=3</test_script_entry>
-        </description>
-        <specs>
-          <spec>
-            <spec_assertion category="Tizen Supplementary API Specifications" element_name="compressedTexImage2D" element_type="method" interface="WebGLRenderingContextBase" section="N/A" specification="WebGL Specification" />
-            <spec_url>http://www.khronos.org/registry/webgl/specs/latest/1.0/</spec_url>
-            <spec_statement />
-          </spec>
-        </specs>
-      </testcase>
-      <testcase component="Supplementary APIs/Supplementary/WebGL - Khronos" execution_type="auto" id="webgl_compressedTexImage2D_4" priority="P2" purpose="Check if it should throw a TypeError when passing too few arguments in compressedTexImage2D method" status="ready" type="compliance">
-        <description>
-          <test_script_entry>/opt/tct-webgl-nonw3c-tests/webgl/w3c/compressedTexImage2D.html?total_num=4&amp;amp;locator_key=id&amp;amp;value=4</test_script_entry>
-        </description>
-        <specs>
-          <spec>
-            <spec_assertion category="Tizen Supplementary API Specifications" element_name="compressedTexImage2D" element_type="method" interface="WebGLRenderingContextBase" section="N/A" specification="WebGL Specification" />
-            <spec_url>http://www.khronos.org/registry/webgl/specs/latest/1.0/</spec_url>
-            <spec_statement />
-          </spec>
-        </specs>
-      </testcase>
-      <testcase component="Supplementary APIs/Supplementary/WebGL - Khronos" execution_type="auto" id="get-extension" priority="P2" purpose="Check if calling getExtension twice for the same extension returns the same object" status="ready" type="compliance">
+      <testcase component="Supplementary APIs/Supplementary/WebGL - Khronos" execution_type="auto" id="get-extension" priority="P2" purpose="Check if calling getExtension twice for the same extension returns the same object" status="ready" type="compliance" subcase="63">
         <description>
           <test_script_entry>/opt/tct-webgl-nonw3c-tests/webgl/khronos/get-extension.html</test_script_entry>
         </description>
@@ -10810,7 +10762,7 @@
           </spec>
         </specs>
       </testcase>
-      <testcase component="Supplementary APIs/Supplementary/WebGL - Khronos" execution_type="auto" id="readPixelsBadArgs" priority="P2" purpose="Check if WebGLRenderingContext readPixels method works properly with bad args" status="approved" type="compliance">
+      <testcase component="Supplementary APIs/Supplementary/WebGL - Khronos" execution_type="auto" id="readPixelsBadArgs" priority="P2" purpose="Check if WebGLRenderingContext readPixels method works properly with bad args" status="approved" type="compliance" subcase="7">
         <description>
           <test_script_entry>/opt/tct-webgl-nonw3c-tests/webgl/khronos/readPixelsBadArgs.html</test_script_entry>
         </description>
@@ -10821,7 +10773,7 @@
           </spec>
         </specs>
       </testcase>
-      <testcase component="Supplementary APIs/Supplementary/WebGL - Khronos" execution_type="auto" id="framebuffer-object-attachment" priority="P2" purpose="Test framebuffer object attachment behaviors" status="approved" type="compliance">
+      <testcase component="Supplementary APIs/Supplementary/WebGL - Khronos" execution_type="auto" id="framebuffer-object-attachment" priority="P2" purpose="Test framebuffer object attachment behaviors" status="approved" type="compliance" subcase="542">
         <description>
           <test_script_entry>/opt/tct-webgl-nonw3c-tests/webgl/khronos/framebuffer-object-attachment.html</test_script_entry>
         </description>
@@ -10833,7 +10785,7 @@
           </spec>
         </specs>
       </testcase>
-      <testcase component="Supplementary APIs/Supplementary/WebGL - Khronos" execution_type="auto" id="gl-enable-enum-test" priority="P2" purpose="This test ensures WebGL implementations allow OpenGL ES 2.0 features to be turned on but not non OpenGL ES 2.0 features" status="approved" type="compliance">
+      <testcase component="Supplementary APIs/Supplementary/WebGL - Khronos" execution_type="auto" id="gl-enable-enum-test" priority="P2" purpose="Test WebGL implementations allow OpenGL ES 2.0 features to be turned on" status="approved" type="compliance" subcase="86">
         <description>
           <test_script_entry>/opt/tct-webgl-nonw3c-tests/webgl/khronos/gl-enable-enum-test.html</test_script_entry>
         </description>
@@ -10845,7 +10797,7 @@
           </spec>
         </specs>
       </testcase>
-      <testcase component="Supplementary APIs/Supplementary/WebGL - Khronos" execution_type="auto" id="buffer-preserve-test" priority="P2" purpose="WebGL required buffer clear behaviour test" status="approved" type="compliance">
+      <testcase component="Supplementary APIs/Supplementary/WebGL - Khronos" execution_type="auto" id="buffer-preserve-test" priority="P2" purpose="WebGL required buffer clear behaviour test" status="approved" type="compliance" subcase="4">
         <description>
           <test_script_entry>/opt/tct-webgl-nonw3c-tests/webgl/khronos/buffer-preserve-test.html</test_script_entry>
         </description>
@@ -10869,7 +10821,7 @@
           </spec>
         </specs>
       </testcase>
-      <testcase component="Supplementary APIs/Supplementary/WebGL - Khronos" execution_type="auto" id="premultiplyalpha-test" priority="P2" purpose="Check WebGL premultipliedAlpha context creation flag" status="approved" type="compliance">
+      <testcase component="Supplementary APIs/Supplementary/WebGL - Khronos" execution_type="auto" id="premultiplyalpha-test" priority="P2" purpose="Check WebGL premultipliedAlpha context creation flag" status="approved" type="compliance" subcase="42">
         <description>
           <test_script_entry>/opt/tct-webgl-nonw3c-tests/webgl/khronos/premultiplyalpha-test.html</test_script_entry>
         </description>
@@ -10881,7 +10833,7 @@
           </spec>
         </specs>
       </testcase>
-      <testcase component="Supplementary APIs/Supplementary/WebGL - Khronos" execution_type="auto" id="gl-clear" priority="P2" purpose="Test depth and stencil clearing" status="approved" type="compliance">
+      <testcase component="Supplementary APIs/Supplementary/WebGL - Khronos" execution_type="auto" id="gl-clear" priority="P2" purpose="Test depth and stencil clearing" status="approved" type="compliance" subcase="7">
         <description>
           <test_script_entry>/opt/tct-webgl-nonw3c-tests/webgl/khronos/gl-clear.html</test_script_entry>
         </description>
@@ -10893,7 +10845,7 @@
           </spec>
         </specs>
       </testcase>
-      <testcase component="Supplementary APIs/Supplementary/WebGL - Khronos" execution_type="auto" id="gl-scissor-test" priority="P2" purpose="Check WebGL scissor method works" status="approved" type="compliance">
+      <testcase component="Supplementary APIs/Supplementary/WebGL - Khronos" execution_type="auto" id="gl-scissor-test" priority="P2" purpose="Check WebGL scissor method works" status="approved" type="compliance" subcase="196">
         <description>
           <test_script_entry>/opt/tct-webgl-nonw3c-tests/webgl/khronos/gl-scissor-test.html</test_script_entry>
         </description>
@@ -10905,7 +10857,7 @@
           </spec>
         </specs>
       </testcase>
-      <testcase component="Supplementary APIs/Supplementary/WebGL - Khronos" execution_type="auto" id="bindBufferBadArgs" priority="P2" purpose="Check bindBuffer function with bad arguments" status="approved" type="compliance">
+      <testcase component="Supplementary APIs/Supplementary/WebGL - Khronos" execution_type="auto" id="bindBufferBadArgs" priority="P2" purpose="Check bindBuffer function with bad arguments" status="approved" type="compliance" subcase="13">
         <description>
           <test_script_entry>/opt/tct-webgl-nonw3c-tests/webgl/khronos/bindBufferBadArgs.html</test_script_entry>
         </description>
@@ -10917,7 +10869,7 @@
           </spec>
         </specs>
       </testcase>
-      <testcase component="Supplementary APIs/Supplementary/WebGL - Khronos" execution_type="auto" id="arrayOutOfBounds" priority="P2" purpose="Check array out of bounds" status="approved" type="compliance">
+      <testcase component="Supplementary APIs/Supplementary/WebGL - Khronos" execution_type="auto" id="arrayOutOfBounds" priority="P2" purpose="Test array out of bounds" status="approved" type="compliance" subcase="11">
         <description>
           <test_script_entry>/opt/tct-webgl-nonw3c-tests/webgl/khronos/arrayOutOfBounds.html</test_script_entry>
         </description>
@@ -10929,7 +10881,7 @@
           </spec>
         </specs>
       </testcase>
-      <testcase component="Supplementary APIs/Supplementary/WebGL - Khronos" execution_type="auto" id="gl-frontfacing" priority="P2" purpose="Check WebGL frontFacing works" status="approved" type="compliance">
+      <testcase component="Supplementary APIs/Supplementary/WebGL - Khronos" execution_type="auto" id="gl-frontfacing" priority="P2" purpose="Check WebGL frontFacing works" status="approved" type="compliance" subcase="33">
         <description>
           <test_script_entry>/opt/tct-webgl-nonw3c-tests/webgl/khronos/gl-frontfacing.html</test_script_entry>
         </description>
@@ -10941,7 +10893,7 @@
           </spec>
         </specs>
       </testcase>
-      <testcase component="Supplementary APIs/Supplementary/WebGL - Khronos" execution_type="auto" id="glsl-function-clamp-float" priority="P3" purpose="check GLSL clamp-gentype function test" status="approved" type="compliance">
+      <testcase component="Supplementary APIs/Supplementary/WebGL - Khronos" execution_type="auto" id="glsl-function-clamp-float" priority="P3" purpose="check GLSL clamp-gentype function test" status="approved" type="compliance" subcase="24">
         <description>
           <test_script_entry>/opt/tct-webgl-nonw3c-tests/webgl/khronos/glsl-function-clamp-float.html</test_script_entry>
         </description>
@@ -10953,7 +10905,7 @@
           </spec>
         </specs>
       </testcase>
-      <testcase component="Supplementary APIs/Supplementary/WebGL - Khronos" execution_type="auto" id="glsl-function-mod-float" priority="P3" purpose="Check GLSL mod-float function works" status="approved" type="compliance">
+      <testcase component="Supplementary APIs/Supplementary/WebGL - Khronos" execution_type="auto" id="glsl-function-mod-float" priority="P3" purpose="Check GLSL mod-float function works" status="approved" type="compliance" subcase="24">
         <description>
           <test_script_entry>/opt/tct-webgl-nonw3c-tests/webgl/khronos/glsl-function-mod-float.html</test_script_entry>
         </description>
@@ -10977,7 +10929,7 @@
           </spec>
         </specs>
       </testcase>
-      <testcase component="Supplementary APIs/Supplementary/WebGL - Khronos" execution_type="auto" id="uniformfArrayLen1" priority="P3" purpose="Check uniformfArray works" status="approved" type="compliance">
+      <testcase component="Supplementary APIs/Supplementary/WebGL - Khronos" execution_type="auto" id="uniformfArrayLen1" priority="P3" purpose="Check uniformfArray works" status="approved" type="compliance" subcase="12">
         <description>
           <test_script_entry>/opt/tct-webgl-nonw3c-tests/webgl/khronos/uniformfArrayLen1.html</test_script_entry>
         </description>
@@ -10989,7 +10941,7 @@
           </spec>
         </specs>
       </testcase>
-      <testcase component="Supplementary APIs/Supplementary/WebGL - Khronos" execution_type="auto" id="canvas-zero-size" priority="P3" purpose="Tests that a zero size canvas does not fail" status="approved" type="compliance">
+      <testcase component="Supplementary APIs/Supplementary/WebGL - Khronos" execution_type="auto" id="canvas-zero-size" priority="P3" purpose="Tests that a zero size canvas does not fail" status="approved" type="compliance" subcase="2">
         <description>
           <test_script_entry>/opt/tct-webgl-nonw3c-tests/webgl/khronos/canvas-zero-size.html</test_script_entry>
         </description>
@@ -11025,7 +10977,7 @@
           </spec>
         </specs>
       </testcase>
-      <testcase component="Supplementary APIs/Supplementary/WebGL - Khronos" execution_type="auto" id="renderbuffer-initialization" priority="P3" purpose="Verify renderbuffers are initialized to 0 before being read in WebGL" status="approved" type="compliance">
+      <testcase component="Supplementary APIs/Supplementary/WebGL - Khronos" execution_type="auto" id="renderbuffer-initialization" priority="P3" purpose="Verify renderbuffers are initialized to 0 before being read in WebGL" status="approved" type="compliance" subcase="14">
         <description>
           <test_script_entry>/opt/tct-webgl-nonw3c-tests/webgl/khronos/renderbuffer-initialization.html</test_script_entry>
         </description>
@@ -11049,7 +11001,7 @@
           </spec>
         </specs>
       </testcase>
-      <testcase component="Supplementary APIs/Supplementary/WebGL - Khronos" execution_type="auto" id="webgl-debug-shaders" priority="P3" purpose="This test verifies the functionality of the  webGL_debug_shaders extension, if it is available" status="approved" type="compliance">
+      <testcase component="Supplementary APIs/Supplementary/WebGL - Khronos" execution_type="auto" id="webgl-debug-shaders" priority="P3" purpose="This test verifies the functionality of the  webGL_debug_shaders extension, if it is available" status="approved" type="compliance" subcase="27">
         <description>
           <test_script_entry>/opt/tct-webgl-nonw3c-tests/webgl/khronos/webgl-debug-shaders.html</test_script_entry>
         </description>
@@ -11097,7 +11049,7 @@
           </spec>
         </specs>
       </testcase>
-      <testcase component="Supplementary APIs/Supplementary/WebGL - Khronos" execution_type="auto" id="gl-fragcoord" priority="P3" purpose="Tests gl_FragCoord" status="approved" type="compliance">
+      <testcase component="Supplementary APIs/Supplementary/WebGL - Khronos" execution_type="auto" id="gl-fragcoord" priority="P3" purpose="Tests gl_FragCoord" status="approved" type="compliance" subcase="65">
         <description>
           <test_script_entry>/opt/tct-webgl-nonw3c-tests/webgl/khronos/gl-fragcoord.html</test_script_entry>
         </description>
@@ -11109,7 +11061,7 @@
           </spec>
         </specs>
       </testcase>
-      <testcase component="Supplementary APIs/Supplementary/WebGL - Khronos" execution_type="auto" id="glsl-function-step-float" priority="P3" purpose="check GLSL step-float function test" status="approved" type="compliance">
+      <testcase component="Supplementary APIs/Supplementary/WebGL - Khronos" execution_type="auto" id="glsl-function-step-float" priority="P3" purpose="check GLSL step-float function test" status="approved" type="compliance" subcase="24">
         <description>
           <test_script_entry>/opt/tct-webgl-nonw3c-tests/webgl/khronos/glsl-function-step-float.html</test_script_entry>
         </description>
@@ -11121,7 +11073,7 @@
           </spec>
         </specs>
       </testcase>
-      <testcase component="Supplementary APIs/Supplementary/WebGL - Khronos" execution_type="auto" id="glsl-function-asin" priority="P3" purpose="Check if GLSL asin function works" status="approved" type="compliance">
+      <testcase component="Supplementary APIs/Supplementary/WebGL - Khronos" execution_type="auto" id="glsl-function-asin" priority="P3" purpose="Check if GLSL asin function works" status="approved" type="compliance" subcase="24">
         <description>
           <test_script_entry>/opt/tct-webgl-nonw3c-tests/webgl/khronos/glsl-function-asin.html</test_script_entry>
         </description>
@@ -11157,7 +11109,7 @@
           </spec>
         </specs>
       </testcase>
-      <testcase component="Supplementary APIs/Supplementary/WebGL - Khronos" execution_type="auto" id="isTests" priority="P3" purpose="Check testIs function works" status="approved" type="compliance">
+      <testcase component="Supplementary APIs/Supplementary/WebGL - Khronos" execution_type="auto" id="isTests" priority="P3" purpose="Check testIs function works" status="approved" type="compliance" subcase="14">
         <description>
           <test_script_entry>/opt/tct-webgl-nonw3c-tests/webgl/khronos/isTests.html</test_script_entry>
         </description>
@@ -11169,7 +11121,7 @@
           </spec>
         </specs>
       </testcase>
-      <testcase component="Supplementary APIs/Supplementary/WebGL - Khronos" execution_type="auto" id="texture-npot-video" priority="P3" purpose="Check WebGL npot video" status="approved" type="compliance">
+      <testcase component="Supplementary APIs/Supplementary/WebGL - Khronos" execution_type="auto" id="texture-npot-video" priority="P3" purpose="Check WebGL npot video" status="approved" type="compliance" subcase="18">
         <description>
           <test_script_entry>/opt/tct-webgl-nonw3c-tests/webgl/khronos/texture-npot-video.html</test_script_entry>
         </description>
@@ -11181,7 +11133,7 @@
           </spec>
         </specs>
       </testcase>
-      <testcase component="Supplementary APIs/Supplementary/WebGL - Khronos" execution_type="auto" id="glsl-function-mix-gentype" priority="P3" purpose="check GLSL mix-gentype function test" status="approved" type="compliance">
+      <testcase component="Supplementary APIs/Supplementary/WebGL - Khronos" execution_type="auto" id="glsl-function-mix-gentype" priority="P3" purpose="check GLSL mix-gentype function test" status="approved" type="compliance" subcase="24">
         <description>
           <test_script_entry>/opt/tct-webgl-nonw3c-tests/webgl/khronos/glsl-function-mix-gentype.html</test_script_entry>
         </description>
@@ -11205,7 +11157,7 @@
           </spec>
         </specs>
       </testcase>
-      <testcase component="Supplementary APIs/Supplementary/WebGL - Khronos" execution_type="auto" id="gl-min-attribs" priority="P3" purpose="Check if WEBGL the minimum number of attributes are supported" status="approved" type="compliance">
+      <testcase component="Supplementary APIs/Supplementary/WebGL - Khronos" execution_type="auto" id="gl-min-attribs" priority="P3" purpose="Check if WEBGL the minimum number of attributes are supported" status="approved" type="compliance" subcase="2">
         <description>
           <test_script_entry>/opt/tct-webgl-nonw3c-tests/webgl/khronos/gl-min-attribs.html</test_script_entry>
         </description>
@@ -11217,7 +11169,7 @@
           </spec>
         </specs>
       </testcase>
-      <testcase component="Supplementary APIs/Supplementary/WebGL - Khronos" execution_type="auto" id="context-type-test" priority="P3" purpose="This test ensures WebGL implementations interact correctly with the context tag" status="approved" type="compliance">
+      <testcase component="Supplementary APIs/Supplementary/WebGL - Khronos" execution_type="auto" id="context-type-test" priority="P3" purpose="This test ensures WebGL implementations interact correctly with the context tag" status="approved" type="compliance" subcase="4">
         <description>
           <test_script_entry>/opt/tct-webgl-nonw3c-tests/webgl/khronos/context-type-test.html</test_script_entry>
         </description>
@@ -11229,7 +11181,7 @@
           </spec>
         </specs>
       </testcase>
-      <testcase component="Supplementary APIs/Supplementary/WebGL - Khronos" execution_type="auto" id="read-pixels-test" priority="P3" purpose="Checks that ReadPixels works as expected" status="approved" type="compliance">
+      <testcase component="Supplementary APIs/Supplementary/WebGL - Khronos" execution_type="auto" id="read-pixels-test" priority="P3" purpose="Checks that ReadPixels works as expected" status="approved" type="compliance" subcase="124">
         <description>
           <test_script_entry>/opt/tct-webgl-nonw3c-tests/webgl/khronos/read-pixels-test.html</test_script_entry>
         </description>
@@ -11241,7 +11193,7 @@
           </spec>
         </specs>
       </testcase>
-      <testcase component="Supplementary APIs/Supplementary/WebGL - Khronos" execution_type="auto" id="gl-unknown-uniform" priority="P3" purpose="Tests that unknown uniforms don't cause errors" status="approved" type="compliance">
+      <testcase component="Supplementary APIs/Supplementary/WebGL - Khronos" execution_type="auto" id="gl-unknown-uniform" priority="P3" purpose="Tests that unknown uniforms don't cause errors" status="approved" type="compliance" subcase="4">
         <description>
           <test_script_entry>/opt/tct-webgl-nonw3c-tests/webgl/khronos/gl-unknown-uniform.html</test_script_entry>
         </description>
@@ -11265,7 +11217,7 @@
           </spec>
         </specs>
       </testcase>
-      <testcase component="Supplementary APIs/Supplementary/WebGL - Khronos" execution_type="auto" id="canvas-test" priority="P3" purpose="This test ensures WebGL implementations interact correctly with the canvas tag" status="approved" type="compliance">
+      <testcase component="Supplementary APIs/Supplementary/WebGL - Khronos" execution_type="auto" id="canvas-test" priority="P3" purpose="This test ensures WebGL implementations interact correctly with the canvas tag" status="approved" type="compliance" subcase="15">
         <description>
           <test_script_entry>/opt/tct-webgl-nonw3c-tests/webgl/khronos/canvas-test.html</test_script_entry>
         </description>
@@ -11277,7 +11229,7 @@
           </spec>
         </specs>
       </testcase>
-      <testcase component="Supplementary APIs/Supplementary/WebGL - Khronos" execution_type="auto" id="triangle" priority="P3" purpose="Check Rendering Test" status="approved" type="compliance">
+      <testcase component="Supplementary APIs/Supplementary/WebGL - Khronos" execution_type="auto" id="triangle" priority="P3" purpose="Check Rendering Test" status="approved" type="compliance" subcase="3">
         <description>
           <test_script_entry>/opt/tct-webgl-nonw3c-tests/webgl/khronos/triangle.html</test_script_entry>
         </description>
@@ -11349,7 +11301,7 @@
           </spec>
         </specs>
       </testcase>
-      <testcase component="Supplementary APIs/Supplementary/WebGL - Khronos" execution_type="auto" id="oes-texture-float" priority="P3" purpose="Check shaders for testing floating-point" status="approved" type="compliance">
+      <testcase component="Supplementary APIs/Supplementary/WebGL - Khronos" execution_type="auto" id="oes-texture-float" priority="P3" purpose="Check shaders for testing floating-point" status="approved" type="compliance" subcase="25">
         <description>
           <test_script_entry>/opt/tct-webgl-nonw3c-tests/webgl/khronos/oes-texture-float.html</test_script_entry>
         </description>
@@ -11361,7 +11313,7 @@
           </spec>
         </specs>
       </testcase>
-      <testcase component="Supplementary APIs/Supplementary/WebGL - Khronos" execution_type="auto" id="gl-get-active-uniform" priority="P3" purpose="Tests getActiveUniform for various types" status="approved" type="compliance">
+      <testcase component="Supplementary APIs/Supplementary/WebGL - Khronos" execution_type="auto" id="gl-get-active-uniform" priority="P3" purpose="Tests getActiveUniform for various types" status="approved" type="compliance" subcase="60">
         <description>
           <test_script_entry>/opt/tct-webgl-nonw3c-tests/webgl/khronos/gl-get-active-uniform.html</test_script_entry>
         </description>
@@ -11373,7 +11325,7 @@
           </spec>
         </specs>
       </testcase>
-      <testcase component="Supplementary APIs/Supplementary/WebGL - Khronos" execution_type="auto" id="vertexAttribPointerBadArgs" priority="P3" purpose="Check vertexAttribPointer function with bad arguments" status="approved" type="compliance">
+      <testcase component="Supplementary APIs/Supplementary/WebGL - Khronos" execution_type="auto" id="vertexAttribPointerBadArgs" priority="P3" purpose="Check vertexAttribPointer function with bad arguments" status="approved" type="compliance" subcase="12">
         <description>
           <test_script_entry>/opt/tct-webgl-nonw3c-tests/webgl/khronos/vertexAttribPointerBadArgs.html</test_script_entry>
         </description>
@@ -11409,7 +11361,7 @@
           </spec>
         </specs>
       </testcase>
-      <testcase component="Supplementary APIs/Supplementary/WebGL - Khronos" execution_type="auto" id="glsl-function-max-float" priority="P3" purpose="Check GLSL max-float function test" status="approved" type="compliance">
+      <testcase component="Supplementary APIs/Supplementary/WebGL - Khronos" execution_type="auto" id="glsl-function-max-float" priority="P3" purpose="Check GLSL max-float function test" status="approved" type="compliance" subcase="24">
         <description>
           <test_script_entry>/opt/tct-webgl-nonw3c-tests/webgl/khronos/glsl-function-max-float.html</test_script_entry>
         </description>
@@ -11505,7 +11457,7 @@
           </spec>
         </specs>
       </testcase>
-      <testcase component="Supplementary APIs/Supplementary/WebGL - Khronos" execution_type="auto" id="quickCheckAPI-A" priority="P3" purpose="Test that all A functions specified in ArgGenerators work when called with randomly generated valid arguments" status="approved" type="compliance">
+      <testcase component="Supplementary APIs/Supplementary/WebGL - Khronos" execution_type="auto" id="quickCheckAPI-A" priority="P3" purpose="Test that all A functions specified in ArgGenerators work when called with randomly generated valid arguments" status="approved" type="compliance" subcase="34">
         <description>
           <test_script_entry>/opt/tct-webgl-nonw3c-tests/webgl/khronos/quickCheckAPI-A.html</test_script_entry>
         </description>
@@ -11517,7 +11469,7 @@
           </spec>
         </specs>
       </testcase>
-      <testcase component="Supplementary APIs/Supplementary/WebGL - Khronos" execution_type="auto" id="uninitialized-test" priority="P3" purpose="Tests to check user code cannot access uninitialized data from GL resources" status="approved" type="compliance">
+      <testcase component="Supplementary APIs/Supplementary/WebGL - Khronos" execution_type="auto" id="uninitialized-test" priority="P3" purpose="Tests to check user code cannot access uninitialized data from GL resources" status="approved" type="compliance" subcase="18">
         <description>
           <test_script_entry>/opt/tct-webgl-nonw3c-tests/webgl/khronos/uninitialized-test.html</test_script_entry>
         </description>
@@ -11529,7 +11481,7 @@
           </spec>
         </specs>
       </testcase>
-      <testcase component="Supplementary APIs/Supplementary/WebGL - Khronos" execution_type="auto" id="tex-image-and-sub-image-2d-with-image" priority="P3" purpose="Verify texImage2D and texSubImage2D code paths taking Images" status="approved" type="compliance">
+      <testcase component="Supplementary APIs/Supplementary/WebGL - Khronos" execution_type="auto" id="tex-image-and-sub-image-2d-with-image" priority="P3" purpose="Verify texImage2D and texSubImage2D code paths taking Images" status="approved" type="compliance" subcase="25">
         <description>
           <test_script_entry>/opt/tct-webgl-nonw3c-tests/webgl/khronos/tex-image-and-sub-image-2d-with-image.html</test_script_entry>
         </description>
@@ -11541,7 +11493,7 @@
           </spec>
         </specs>
       </testcase>
-      <testcase component="Supplementary APIs/Supplementary/WebGL - Khronos" execution_type="auto" id="quickCheckAPI-B1" priority="P3" purpose="Test that all B1 functions specified in ArgGenerators work when called with randomly generated valid arguments" status="approved" type="compliance">
+      <testcase component="Supplementary APIs/Supplementary/WebGL - Khronos" execution_type="auto" id="quickCheckAPI-B1" priority="P3" purpose="Test that all B1 functions specified in ArgGenerators work when called with randomly generated valid arguments" status="approved" type="compliance" subcase="200">
         <description>
           <test_script_entry>/opt/tct-webgl-nonw3c-tests/webgl/khronos/quickCheckAPI-B1.html</test_script_entry>
         </description>
@@ -11625,7 +11577,7 @@
           </spec>
         </specs>
       </testcase>
-      <testcase component="Supplementary APIs/Supplementary/WebGL - Khronos" execution_type="auto" id="glsl-function-faceforward" priority="P3" purpose="check GLSL faceforward function test" status="approved" type="compliance">
+      <testcase component="Supplementary APIs/Supplementary/WebGL - Khronos" execution_type="auto" id="glsl-function-faceforward" priority="P3" purpose="check GLSL faceforward function test" status="approved" type="compliance" subcase="24">
         <description>
           <test_script_entry>/opt/tct-webgl-nonw3c-tests/webgl/khronos/glsl-function-faceforward.html</test_script_entry>
         </description>
@@ -11637,7 +11589,7 @@
           </spec>
         </specs>
       </testcase>
-      <testcase component="Supplementary APIs/Supplementary/WebGL - Khronos" execution_type="auto" id="gl-min-uniforms" priority="P3" purpose="Check WebGL the minimum number of uniforms are supported" status="approved" type="compliance">
+      <testcase component="Supplementary APIs/Supplementary/WebGL - Khronos" execution_type="auto" id="gl-min-uniforms" priority="P3" purpose="Check WebGL the minimum number of uniforms are supported" status="approved" type="compliance" subcase="5">
         <description>
           <test_script_entry>/opt/tct-webgl-nonw3c-tests/webgl/khronos/gl-min-uniforms.html</test_script_entry>
         </description>
@@ -11661,7 +11613,7 @@
           </spec>
         </specs>
       </testcase>
-      <testcase component="Supplementary APIs/Supplementary/WebGL - Khronos" execution_type="auto" id="gl-pointcoord" priority="P3" purpose="Check WebGL PointCoord and PointSize" status="approved" type="compliance">
+      <testcase component="Supplementary APIs/Supplementary/WebGL - Khronos" execution_type="auto" id="gl-pointcoord" priority="P3" purpose="Check WebGL PointCoord and PointSize" status="approved" type="compliance" subcase="71">
         <description>
           <test_script_entry>/opt/tct-webgl-nonw3c-tests/webgl/khronos/gl-pointcoord.html</test_script_entry>
         </description>
@@ -11685,7 +11637,7 @@
           </spec>
         </specs>
       </testcase>
-      <testcase component="Supplementary APIs/Supplementary/WebGL - Khronos" execution_type="auto" id="read-pixels-pack-alignment" priority="P3" purpose="Check readPixels method works fine with various PACK_ALIGNMENT values" status="approved" type="compliance">
+      <testcase component="Supplementary APIs/Supplementary/WebGL - Khronos" execution_type="auto" id="read-pixels-pack-alignment" priority="P3" purpose="Check readPixels method works fine with various PACK_ALIGNMENT values" status="approved" type="compliance" subcase="82">
         <description>
           <test_script_entry>/opt/tct-webgl-nonw3c-tests/webgl/khronos/read-pixels-pack-alignment.html</test_script_entry>
         </description>
@@ -11697,7 +11649,7 @@
           </spec>
         </specs>
       </testcase>
-      <testcase component="Supplementary APIs/Supplementary/WebGL - Khronos" execution_type="auto" id="gl-vertex-attrib-zero-issues" priority="P3" purpose="Test some of the issues of the difference between attrib 0 on OpenGL vs WebGL" status="approved" type="compliance">
+      <testcase component="Supplementary APIs/Supplementary/WebGL - Khronos" execution_type="auto" id="gl-vertex-attrib-zero-issues" priority="P3" purpose="Test some of the issues of the difference between attrib 0 on OpenGL vs WebGL" status="approved" type="compliance" subcase="32">
         <description>
           <test_script_entry>/opt/tct-webgl-nonw3c-tests/webgl/khronos/gl-vertex-attrib-zero-issues.html</test_script_entry>
         </description>
@@ -11709,7 +11661,7 @@
           </spec>
         </specs>
       </testcase>
-      <testcase component="Supplementary APIs/Supplementary/WebGL - Khronos" execution_type="auto" id="array-unit-tests" priority="P3" purpose="check the functionality of the new array-like objects in the TypedArray spec" status="approved" type="compliance">
+      <testcase component="Supplementary APIs/Supplementary/WebGL - Khronos" execution_type="auto" id="array-unit-tests" priority="P3" purpose="Test array-like objects in TypedArray" status="approved" type="compliance" subcase="472">
         <description>
           <test_script_entry>/opt/tct-webgl-nonw3c-tests/webgl/khronos/array-unit-tests.html</test_script_entry>
         </description>
@@ -11721,7 +11673,7 @@
           </spec>
         </specs>
       </testcase>
-      <testcase component="Supplementary APIs/Supplementary/WebGL - Khronos" execution_type="auto" id="oes-vertex-array-object" priority="P3" purpose="Check the functionality of the OES_vertex_array_object extension, if it is available" status="approved" type="compliance">
+      <testcase component="Supplementary APIs/Supplementary/WebGL - Khronos" execution_type="auto" id="oes-vertex-array-object" priority="P3" purpose="Check the functionality of the OES_vertex_array_object extension, if it is available" status="approved" type="compliance" subcase="34">
         <description>
           <test_script_entry>/opt/tct-webgl-nonw3c-tests/webgl/khronos/oes-vertex-array-object.html</test_script_entry>
         </description>
@@ -11769,7 +11721,7 @@
           </spec>
         </specs>
       </testcase>
-      <testcase component="Supplementary APIs/Supplementary/WebGL - Khronos" execution_type="auto" id="texSubImage2DHTMLBadArgs" priority="P3" purpose="Check texSubImage2DHTML with bad arguments" status="approved" type="compliance">
+      <testcase component="Supplementary APIs/Supplementary/WebGL - Khronos" execution_type="auto" id="texSubImage2DHTMLBadArgs" priority="P3" purpose="Check texSubImage2DHTML with bad arguments" status="approved" type="compliance" subcase="10">
         <description>
           <test_script_entry>/opt/tct-webgl-nonw3c-tests/webgl/khronos/texSubImage2DHTMLBadArgs.html</test_script_entry>
         </description>
@@ -11781,7 +11733,7 @@
           </spec>
         </specs>
       </testcase>
-      <testcase component="Supplementary APIs/Supplementary/WebGL - Khronos" execution_type="auto" id="vertexAttrib" priority="P3" purpose="Check vertexAttrib function works" status="approved" type="compliance">
+      <testcase component="Supplementary APIs/Supplementary/WebGL - Khronos" execution_type="auto" id="vertexAttrib" priority="P3" purpose="Check vertexAttrib function works" status="approved" type="compliance" subcase="7">
         <description>
           <test_script_entry>/opt/tct-webgl-nonw3c-tests/webgl/khronos/vertexAttrib.html</test_script_entry>
         </description>
@@ -11793,7 +11745,7 @@
           </spec>
         </specs>
       </testcase>
-      <testcase component="Supplementary APIs/Supplementary/WebGL - Khronos" execution_type="auto" id="glsl-function-fract" priority="P3" purpose="check GLSL fract function test" status="approved" type="compliance">
+      <testcase component="Supplementary APIs/Supplementary/WebGL - Khronos" execution_type="auto" id="glsl-function-fract" priority="P3" purpose="check GLSL fract function test" status="approved" type="compliance" subcase="24">
         <description>
           <test_script_entry>/opt/tct-webgl-nonw3c-tests/webgl/khronos/glsl-function-fract.html</test_script_entry>
         </description>
@@ -11805,7 +11757,7 @@
           </spec>
         </specs>
       </testcase>
-      <testcase component="Supplementary APIs/Supplementary/WebGL - Khronos" execution_type="auto" id="quickCheckAPI-B2" priority="P3" purpose="Test that all B2 functions specified in ArgGenerators work when called with randomly generated valid arguments" status="approved" type="compliance">
+      <testcase component="Supplementary APIs/Supplementary/WebGL - Khronos" execution_type="auto" id="quickCheckAPI-B2" priority="P3" purpose="Test that all B2 functions specified in ArgGenerators work when called with randomly generated valid arguments" status="approved" type="compliance" subcase="494">
         <description>
           <test_script_entry>/opt/tct-webgl-nonw3c-tests/webgl/khronos/quickCheckAPI-B2.html</test_script_entry>
         </description>
@@ -11829,7 +11781,7 @@
           </spec>
         </specs>
       </testcase>
-      <testcase component="Supplementary APIs/Supplementary/WebGL - Khronos" execution_type="auto" id="glsl-function-step-gentype" priority="P3" purpose="check GLSL step-gentype function test" status="approved" type="compliance">
+      <testcase component="Supplementary APIs/Supplementary/WebGL - Khronos" execution_type="auto" id="glsl-function-step-gentype" priority="P3" purpose="check GLSL step-gentype function test" status="approved" type="compliance" subcase="24">
         <description>
           <test_script_entry>/opt/tct-webgl-nonw3c-tests/webgl/khronos/glsl-function-step-gentype.html</test_script_entry>
         </description>
@@ -11901,7 +11853,7 @@
           </spec>
         </specs>
       </testcase>
-      <testcase component="Supplementary APIs/Supplementary/WebGL - Khronos" execution_type="auto" id="drawingbuffer-test" priority="P2" purpose="Check WebGL implementations correctly implement drawingbufferWidth/Height" status="approved" type="compliance">
+      <testcase component="Supplementary APIs/Supplementary/WebGL - Khronos" execution_type="auto" id="drawingbuffer-test" priority="P2" purpose="Test WebGL implement drawingbufferWidth/Height" status="approved" type="compliance" subcase="29">
         <description>
           <test_script_entry>/opt/tct-webgl-nonw3c-tests/webgl/khronos/drawingbuffer-test.html</test_script_entry>
         </description>
@@ -11913,7 +11865,7 @@
           </spec>
         </specs>
       </testcase>
-      <testcase component="Supplementary APIs/Supplementary/WebGL - Khronos" execution_type="auto" id="bufferDataBadArgs" priority="P2" purpose="Check buffer data with bad arguments" status="approved" type="compliance">
+      <testcase component="Supplementary APIs/Supplementary/WebGL - Khronos" execution_type="auto" id="bufferDataBadArgs" priority="P2" purpose="Check buffer data with bad arguments" status="approved" type="compliance" subcase="6">
         <description>
           <test_script_entry>/opt/tct-webgl-nonw3c-tests/webgl/khronos/bufferDataBadArgs.html</test_script_entry>
         </description>
@@ -11925,7 +11877,7 @@
           </spec>
         </specs>
       </testcase>
-      <testcase component="Supplementary APIs/Supplementary/WebGL - Khronos" execution_type="auto" id="framebuffer-test" priority="P2" purpose="This tests framebuffer/renderbuffer-related functions" status="approved" type="compliance">
+      <testcase component="Supplementary APIs/Supplementary/WebGL - Khronos" execution_type="auto" id="framebuffer-test" priority="P2" purpose="This tests framebuffer/renderbuffer-related functions" status="approved" type="compliance" subcase="25">
         <description>
           <test_script_entry>/opt/tct-webgl-nonw3c-tests/webgl/khronos/framebuffer-test.html</test_script_entry>
         </description>
@@ -11937,7 +11889,7 @@
           </spec>
         </specs>
       </testcase>
-      <testcase component="Supplementary APIs/Supplementary/WebGL - Khronos" execution_type="auto" id="gl-get-active-attribute" priority="P2" purpose="Check WebGL getActiveAttribute for various types" status="approved" type="compliance">
+      <testcase component="Supplementary APIs/Supplementary/WebGL - Khronos" execution_type="auto" id="gl-get-active-attribute" priority="P2" purpose="Check WebGL getActiveAttribute for various types" status="approved" type="compliance" subcase="21">
         <description>
           <test_script_entry>/opt/tct-webgl-nonw3c-tests/webgl/khronos/gl-get-active-attribute.html</test_script_entry>
         </description>
@@ -11949,7 +11901,7 @@
           </spec>
         </specs>
       </testcase>
-      <testcase component="Supplementary APIs/Supplementary/WebGL - Khronos" execution_type="auto" id="copyTexSubImage2D" priority="P2" purpose="Check copyTexSubImage2D function works" status="approved" type="compliance">
+      <testcase component="Supplementary APIs/Supplementary/WebGL - Khronos" execution_type="auto" id="copyTexSubImage2D" priority="P2" purpose="Check copyTexSubImage2D function works" status="approved" type="compliance" subcase="10">
         <description>
           <test_script_entry>/opt/tct-webgl-nonw3c-tests/webgl/khronos/copyTexSubImage2D.html</test_script_entry>
         </description>
@@ -11961,7 +11913,7 @@
           </spec>
         </specs>
       </testcase>
-      <testcase component="Supplementary APIs/Supplementary/WebGL - Khronos" execution_type="auto" id="drawArrays" priority="P2" purpose="Check drawArrays function works" status="approved" type="compliance">
+      <testcase component="Supplementary APIs/Supplementary/WebGL - Khronos" execution_type="auto" id="drawArrays" priority="P2" purpose="Check drawArrays function works" status="approved" type="compliance" subcase="22">
         <description>
           <test_script_entry>/opt/tct-webgl-nonw3c-tests/webgl/khronos/drawArrays.html</test_script_entry>
         </description>
@@ -11973,7 +11925,7 @@
           </spec>
         </specs>
       </testcase>
-      <testcase component="Supplementary APIs/Supplementary/WebGL - Khronos" execution_type="auto" id="gl-enable-vertex-attrib" priority="P2" purpose="Tests that turning on attribs that have no buffer bound fails to draw" status="approved" type="compliance">
+      <testcase component="Supplementary APIs/Supplementary/WebGL - Khronos" execution_type="auto" id="gl-enable-vertex-attrib" priority="P2" purpose="Tests that turning on attribs that have no buffer bound fails to draw" status="approved" type="compliance" subcase="2">
         <description>
           <test_script_entry>/opt/tct-webgl-nonw3c-tests/webgl/khronos/gl-enable-vertex-attrib.html</test_script_entry>
         </description>
@@ -11985,7 +11937,7 @@
           </spec>
         </specs>
       </testcase>
-      <testcase component="Supplementary APIs/Supplementary/WebGL - Khronos" execution_type="auto" id="buffer-data-array-buffer" priority="P2" purpose="Test bufferData/bufferSubData with ArrayBuffer input" status="approved" type="compliance">
+      <testcase component="Supplementary APIs/Supplementary/WebGL - Khronos" execution_type="auto" id="buffer-data-array-buffer" priority="P2" purpose="Test bufferData/bufferSubData with ArrayBuffer input" status="approved" type="compliance" subcase="12">
         <description>
           <test_script_entry>/opt/tct-webgl-nonw3c-tests/webgl/khronos/buffer-data-array-buffer.html</test_script_entry>
         </description>
@@ -11997,7 +11949,7 @@
           </spec>
         </specs>
       </testcase>
-      <testcase component="Supplementary APIs/Supplementary/WebGL - Khronos" execution_type="auto" id="drawElementsBadArgs" priority="P2" purpose="Check if drawElements with bad arguments" status="approved" type="compliance">
+      <testcase component="Supplementary APIs/Supplementary/WebGL - Khronos" execution_type="auto" id="drawElementsBadArgs" priority="P2" purpose="Check if drawElements with bad arguments" status="approved" type="compliance" subcase="61">
         <description>
           <test_script_entry>/opt/tct-webgl-nonw3c-tests/webgl/khronos/drawElementsBadArgs.html</test_script_entry>
         </description>
@@ -12009,7 +11961,7 @@
           </spec>
         </specs>
       </testcase>
-      <testcase component="Supplementary APIs/Supplementary/WebGL - Khronos" execution_type="auto" id="buffer-offscreen-test" priority="P2" purpose="Check WebGL required buffer clear behaviour" status="approved" type="compliance">
+      <testcase component="Supplementary APIs/Supplementary/WebGL - Khronos" execution_type="auto" id="buffer-offscreen-test" priority="P2" purpose="Check WebGL required buffer clear behaviour" status="approved" type="compliance" subcase="8">
         <description>
           <test_script_entry>/opt/tct-webgl-nonw3c-tests/webgl/khronos/buffer-offscreen-test.html</test_script_entry>
         </description>
@@ -12021,7 +11973,7 @@
           </spec>
         </specs>
       </testcase>
-      <testcase component="Supplementary APIs/Supplementary/WebGL - Khronos" execution_type="auto" id="gl-enum-tests" priority="P2" purpose="This test ensures various WebGL functions fail when passed non OpenGL ES 2.0 enums" status="approved" type="compliance">
+      <testcase component="Supplementary APIs/Supplementary/WebGL - Khronos" execution_type="auto" id="gl-enum-tests" priority="P2" purpose="This test ensures various WebGL functions fail when passed non OpenGL ES 2.0 enums" status="approved" type="compliance" subcase="21">
         <description>
           <test_script_entry>/opt/tct-webgl-nonw3c-tests/webgl/khronos/gl-enum-tests.html</test_script_entry>
         </description>
@@ -12045,7 +11997,7 @@
           </spec>
         </specs>
       </testcase>
-      <testcase component="Supplementary APIs/Supplementary/WebGL - Khronos" execution_type="auto" id="tex-image-and-sub-image-2d-with-array-buffer-view" priority="P3" purpose="Verifies texImage2D and texSubImage2D code paths taking ArrayBufferView" status="approved" type="compliance">
+      <testcase component="Supplementary APIs/Supplementary/WebGL - Khronos" execution_type="auto" id="tex-image-and-sub-image-2d-with-array-buffer-view" priority="P3" purpose="Verifies texImage2D and texSubImage2D code paths taking ArrayBufferView" status="approved" type="compliance" subcase="1153">
         <description>
           <test_script_entry>/opt/tct-webgl-nonw3c-tests/webgl/khronos/tex-image-and-sub-image-2d-with-array-buffer-view.html</test_script_entry>
         </description>
@@ -12057,7 +12009,7 @@
           </spec>
         </specs>
       </testcase>
-      <testcase component="Supplementary APIs/Supplementary/WebGL - Khronos" execution_type="auto" id="vertexAttribBadArgs" priority="P3" purpose="Check vertexAttrib with bad arguments" status="approved" type="compliance">
+      <testcase component="Supplementary APIs/Supplementary/WebGL - Khronos" execution_type="auto" id="vertexAttribBadArgs" priority="P3" purpose="Check vertexAttrib with bad arguments" status="approved" type="compliance" subcase="7">
         <description>
           <test_script_entry>/opt/tct-webgl-nonw3c-tests/webgl/khronos/vertexAttribBadArgs.html</test_script_entry>
         </description>
@@ -12117,7 +12069,7 @@
           </spec>
         </specs>
       </testcase>
-      <testcase component="Supplementary APIs/Supplementary/WebGL - Khronos" execution_type="auto" id="uniformMatrixBadArgs" priority="P3" purpose="Check if uniformMatrix with bad arguments" status="approved" type="compliance">
+      <testcase component="Supplementary APIs/Supplementary/WebGL - Khronos" execution_type="auto" id="uniformMatrixBadArgs" priority="P3" purpose="Check if uniformMatrix with bad arguments" status="approved" type="compliance" subcase="34">
         <description>
           <test_script_entry>/opt/tct-webgl-nonw3c-tests/webgl/khronos/uniformMatrixBadArgs.html</test_script_entry>
         </description>
@@ -12129,7 +12081,7 @@
           </spec>
         </specs>
       </testcase>
-      <testcase component="Supplementary APIs/Supplementary/WebGL - Khronos" execution_type="auto" id="glsl-function-dot" priority="P3" purpose="check GLSL dot function test" status="approved" type="compliance">
+      <testcase component="Supplementary APIs/Supplementary/WebGL - Khronos" execution_type="auto" id="glsl-function-dot" priority="P3" purpose="check GLSL dot function test" status="approved" type="compliance" subcase="24">
         <description>
           <test_script_entry>/opt/tct-webgl-nonw3c-tests/webgl/khronos/glsl-function-dot.html</test_script_entry>
         </description>
@@ -12189,7 +12141,7 @@
           </spec>
         </specs>
       </testcase>
-      <testcase component="Supplementary APIs/Supplementary/WebGL - Khronos" execution_type="auto" id="glsl-function" priority="P3" purpose="GLSL function test test" status="approved" type="compliance">
+      <testcase component="Supplementary APIs/Supplementary/WebGL - Khronos" execution_type="auto" id="glsl-function" priority="P3" purpose="GLSL function test test" status="approved" type="compliance" subcase="24">
         <description>
           <test_script_entry>/opt/tct-webgl-nonw3c-tests/webgl/khronos/glsl-function.html</test_script_entry>
         </description>
@@ -12225,7 +12177,7 @@
           </spec>
         </specs>
       </testcase>
-      <testcase component="Supplementary APIs/Supplementary/WebGL - Khronos" execution_type="auto" id="is-object" priority="P3" purpose="Tests 'is' calls against non-bound and deleted objects" status="approved" type="compliance">
+      <testcase component="Supplementary APIs/Supplementary/WebGL - Khronos" execution_type="auto" id="is-object" priority="P3" purpose="Tests 'is' calls against non-bound and deleted objects" status="approved" type="compliance" subcase="24">
         <description>
           <test_script_entry>/opt/tct-webgl-nonw3c-tests/webgl/khronos/is-object.html</test_script_entry>
         </description>
@@ -12249,7 +12201,7 @@
           </spec>
         </specs>
       </testcase>
-      <testcase component="Supplementary APIs/Supplementary/WebGL - Khronos" execution_type="auto" id="glsl-function-reflect" priority="P3" purpose="check GLSL reflect function test" status="approved" type="compliance">
+      <testcase component="Supplementary APIs/Supplementary/WebGL - Khronos" execution_type="auto" id="glsl-function-reflect" priority="P3" purpose="check GLSL reflect function test" status="approved" type="compliance" subcase="24">
         <description>
           <test_script_entry>/opt/tct-webgl-nonw3c-tests/webgl/khronos/glsl-function-reflect.html</test_script_entry>
         </description>
@@ -12285,7 +12237,7 @@
           </spec>
         </specs>
       </testcase>
-      <testcase component="Supplementary APIs/Supplementary/WebGL - Khronos" execution_type="auto" id="conformance.more.context.methods" priority="P3" purpose="Check methods conformance of context" status="approved" type="compliance">
+      <testcase component="Supplementary APIs/Supplementary/WebGL - Khronos" execution_type="auto" id="conformance.more.context.methods" priority="P3" purpose="Check methods conformance of context" status="approved" type="compliance" subcase="130">
         <description>
           <test_script_entry>/opt/tct-webgl-nonw3c-tests/webgl/khronos/conformance.more.context.methods.html</test_script_entry>
         </description>
@@ -12297,7 +12249,7 @@
           </spec>
         </specs>
       </testcase>
-      <testcase component="Supplementary APIs/Supplementary/WebGL - Khronos" execution_type="auto" id="gl-max-texture-dimensions" priority="P3" purpose="Check that webGL the max advertized texture size is supported" status="approved" type="compliance">
+      <testcase component="Supplementary APIs/Supplementary/WebGL - Khronos" execution_type="auto" id="gl-max-texture-dimensions" priority="P3" purpose="Check that webGL the max advertized texture size is supported" status="approved" type="compliance" subcase="3">
         <description>
           <test_script_entry>/opt/tct-webgl-nonw3c-tests/webgl/khronos/gl-max-texture-dimensions.html</test_script_entry>
         </description>
@@ -12321,7 +12273,7 @@
           </spec>
         </specs>
       </testcase>
-      <testcase component="Supplementary APIs/Supplementary/WebGL - Khronos" execution_type="auto" id="gl-teximage" priority="P3" purpose="Test texImage2D conversions" status="approved" type="compliance">
+      <testcase component="Supplementary APIs/Supplementary/WebGL - Khronos" execution_type="auto" id="gl-teximage" priority="P3" purpose="Test texImage2D conversions" status="approved" type="compliance" subcase="96">
         <description>
           <test_script_entry>/opt/tct-webgl-nonw3c-tests/webgl/khronos/gl-teximage.html</test_script_entry>
         </description>
@@ -12333,7 +12285,7 @@
           </spec>
         </specs>
       </testcase>
-      <testcase component="Supplementary APIs/Supplementary/WebGL - Khronos" execution_type="auto" id="quickCheckAPI-B3" priority="P3" purpose="Test that all B3 functions specified in ArgGenerators work when called with randomly generated valid arguments" status="approved" type="compliance">
+      <testcase component="Supplementary APIs/Supplementary/WebGL - Khronos" execution_type="auto" id="quickCheckAPI-B3" priority="P3" purpose="Test that all B3 functions specified in ArgGenerators work when called with randomly generated valid arguments" status="approved" type="compliance" subcase="146">
         <description>
           <test_script_entry>/opt/tct-webgl-nonw3c-tests/webgl/khronos/quickCheckAPI-B3.html</test_script_entry>
         </description>
@@ -12345,7 +12297,7 @@
           </spec>
         </specs>
       </testcase>
-      <testcase component="Supplementary APIs/Supplementary/WebGL - Khronos" execution_type="auto" id="texture-transparent-pixels-initialized" priority="P3" purpose="Tests there is no garbage in transparent regions of images uploaded as textures" status="approved" type="compliance">
+      <testcase component="Supplementary APIs/Supplementary/WebGL - Khronos" execution_type="auto" id="texture-transparent-pixels-initialized" priority="P3" purpose="Tests there is no garbage in transparent regions of images uploaded as textures" status="approved" type="compliance" subcase="2">
         <description>
           <test_script_entry>/opt/tct-webgl-nonw3c-tests/webgl/khronos/texture-transparent-pixels-initialized.html</test_script_entry>
         </description>
@@ -12393,7 +12345,7 @@
           </spec>
         </specs>
       </testcase>
-      <testcase component="Supplementary APIs/Supplementary/WebGL - Khronos" execution_type="auto" id="point-size" priority="P3" purpose="Verify GL_VERTEX_PROGRAM_POINT_SIZE is enabled in WebGL" status="approved" type="compliance">
+      <testcase component="Supplementary APIs/Supplementary/WebGL - Khronos" execution_type="auto" id="point-size" priority="P3" purpose="Verify GL_VERTEX_PROGRAM_POINT_SIZE is enabled in WebGL" status="approved" type="compliance" subcase="19">
         <description>
           <test_script_entry>/opt/tct-webgl-nonw3c-tests/webgl/khronos/point-size.html</test_script_entry>
         </description>
@@ -12405,7 +12357,7 @@
           </spec>
         </specs>
       </testcase>
-      <testcase component="Supplementary APIs/Supplementary/WebGL - Khronos" execution_type="auto" id="quickCheckAPI-D_G" priority="P3" purpose="Test that all DG functions specified in ArgGenerators work when called with randomly generated valid arguments" status="approved" type="compliance">
+      <testcase component="Supplementary APIs/Supplementary/WebGL - Khronos" execution_type="auto" id="quickCheckAPI-D_G" priority="P3" purpose="Test that all DG functions specified in ArgGenerators work when called with randomly generated valid arguments" status="approved" type="compliance" subcase="244">
         <description>
           <test_script_entry>/opt/tct-webgl-nonw3c-tests/webgl/khronos/quickCheckAPI-D_G.html</test_script_entry>
         </description>
@@ -12417,7 +12369,7 @@
           </spec>
         </specs>
       </testcase>
-      <testcase component="Supplementary APIs/Supplementary/WebGL - Khronos" execution_type="auto" id="texture-active-bind" priority="P3" purpose="Tests that glActiveTexture and glBindTexture work as expected specifically texture targets are per active texture unit" status="approved" type="compliance">
+      <testcase component="Supplementary APIs/Supplementary/WebGL - Khronos" execution_type="auto" id="texture-active-bind" priority="P3" purpose="Tests that glActiveTexture and glBindTexture work as expected specifically texture targets are per active texture unit" status="approved" type="compliance" subcase="9">
         <description>
           <test_script_entry>/opt/tct-webgl-nonw3c-tests/webgl/khronos/texture-active-bind.html</test_script_entry>
         </description>
@@ -12441,7 +12393,7 @@
           </spec>
         </specs>
       </testcase>
-      <testcase component="Supplementary APIs/Supplementary/WebGL - Khronos" execution_type="auto" id="shader-precision-format" priority="P3" purpose="Tests that WebGLShaderPrecisionFormat class and getShaderPrecisionFormat work" status="approved" type="compliance">
+      <testcase component="Supplementary APIs/Supplementary/WebGL - Khronos" execution_type="auto" id="shader-precision-format" priority="P3" purpose="Tests that WebGLShaderPrecisionFormat class and getShaderPrecisionFormat work" status="approved" type="compliance" subcase="34">
         <description>
           <test_script_entry>/opt/tct-webgl-nonw3c-tests/webgl/khronos/shader-precision-format.html</test_script_entry>
         </description>
@@ -12453,7 +12405,7 @@
           </spec>
         </specs>
       </testcase>
-      <testcase component="Supplementary APIs/Supplementary/WebGL - Khronos" execution_type="auto" id="line-loop-tri-fan" priority="P3" purpose="Verify that LINE_LOOP and TRIANGLE_FAN works correctly" status="approved" type="compliance">
+      <testcase component="Supplementary APIs/Supplementary/WebGL - Khronos" execution_type="auto" id="line-loop-tri-fan" priority="P3" purpose="Verify that LINE_LOOP and TRIANGLE_FAN works correctly" status="approved" type="compliance" subcase="9">
         <description>
           <test_script_entry>/opt/tct-webgl-nonw3c-tests/webgl/khronos/line-loop-tri-fan.html</test_script_entry>
         </description>
@@ -12477,7 +12429,7 @@
           </spec>
         </specs>
       </testcase>
-      <testcase component="Supplementary APIs/Supplementary/WebGL - Khronos" execution_type="auto" id="functions-returning-strings" priority="P3" purpose="Test that functions returning strings really do return strings (and not e.g. null)" status="approved" type="compliance">
+      <testcase component="Supplementary APIs/Supplementary/WebGL - Khronos" execution_type="auto" id="functions-returning-strings" priority="P3" purpose="Test that functions returning strings" status="approved" type="compliance" subcase="15">
         <description>
           <test_script_entry>/opt/tct-webgl-nonw3c-tests/webgl/khronos/functions-returning-strings.html</test_script_entry>
         </description>
@@ -12501,7 +12453,7 @@
           </spec>
         </specs>
       </testcase>
-      <testcase component="Supplementary APIs/Supplementary/WebGL - Khronos" execution_type="auto" id="texture-npot" priority="P3" purpose="check WebGL Non-Power of 2 texture conformance test" status="approved" type="compliance">
+      <testcase component="Supplementary APIs/Supplementary/WebGL - Khronos" execution_type="auto" id="texture-npot" priority="P3" purpose="check WebGL Non-Power of 2 texture conformance test" status="approved" type="compliance" subcase="25">
         <description>
           <test_script_entry>/opt/tct-webgl-nonw3c-tests/webgl/khronos/texture-npot.html</test_script_entry>
         </description>
@@ -12525,7 +12477,7 @@
           </spec>
         </specs>
       </testcase>
-      <testcase component="Supplementary APIs/Supplementary/WebGL - Khronos" execution_type="auto" id="glsl-function-cos" priority="P3" purpose="Check GLSL cos function works" status="approved" type="compliance">
+      <testcase component="Supplementary APIs/Supplementary/WebGL - Khronos" execution_type="auto" id="glsl-function-cos" priority="P3" purpose="Check GLSL cos function works" status="approved" type="compliance" subcase="24">
         <description>
           <test_script_entry>/opt/tct-webgl-nonw3c-tests/webgl/khronos/glsl-function-cos.html</test_script_entry>
         </description>
@@ -12537,7 +12489,7 @@
           </spec>
         </specs>
       </testcase>
-      <testcase component="Supplementary APIs/Supplementary/WebGL - Khronos" execution_type="auto" id="tex-image-and-uniform-binding-bugs" priority="P3" purpose="Tests passing a vec4 to a uniform and a canvas to texImage2D" status="approved" type="compliance">
+      <testcase component="Supplementary APIs/Supplementary/WebGL - Khronos" execution_type="auto" id="tex-image-and-uniform-binding-bugs" priority="P3" purpose="Tests passing a vec4 to a uniform and a canvas to texImage2D" status="approved" type="compliance" subcase="5">
         <description>
           <test_script_entry>/opt/tct-webgl-nonw3c-tests/webgl/khronos/tex-image-and-uniform-binding-bugs.html</test_script_entry>
         </description>
@@ -12561,7 +12513,7 @@
           </spec>
         </specs>
       </testcase>
-      <testcase component="Supplementary APIs/Supplementary/WebGL - Khronos" execution_type="auto" id="texture-size-cube-maps" priority="P3" purpose="Checks issues with size of cube map textures" status="approved" type="compliance">
+      <testcase component="Supplementary APIs/Supplementary/WebGL - Khronos" execution_type="auto" id="texture-size-cube-maps" priority="P3" purpose="Checks issues with size of cube map textures" status="approved" type="compliance" subcase="361">
         <description>
           <test_script_entry>/opt/tct-webgl-nonw3c-tests/webgl/khronos/texture-size-cube-maps.html</test_script_entry>
         </description>
@@ -12585,7 +12537,7 @@
           </spec>
         </specs>
       </testcase>
-      <testcase component="Supplementary APIs/Supplementary/WebGL - Khronos" execution_type="auto" id="gl-vertexattribpointer-offsets" priority="P3" purpose="Test vertexattribpointer offsets work" status="approved" type="compliance">
+      <testcase component="Supplementary APIs/Supplementary/WebGL - Khronos" execution_type="auto" id="gl-vertexattribpointer-offsets" priority="P3" purpose="Test vertexattribpointer offsets work" status="approved" type="compliance" subcase="450">
         <description>
           <test_script_entry>/opt/tct-webgl-nonw3c-tests/webgl/khronos/gl-vertexattribpointer-offsets.html</test_script_entry>
         </description>
@@ -12597,7 +12549,7 @@
           </spec>
         </specs>
       </testcase>
-      <testcase component="Supplementary APIs/Supplementary/WebGL - Khronos" execution_type="auto" id="webGLArrays" priority="P3" purpose="Check webGL arrays works" status="approved" type="compliance">
+      <testcase component="Supplementary APIs/Supplementary/WebGL - Khronos" execution_type="auto" id="webGLArrays" priority="P3" purpose="Check webGL arrays works" status="approved" type="compliance" subcase="202">
         <description>
           <test_script_entry>/opt/tct-webgl-nonw3c-tests/webgl/khronos/webGLArrays.html</test_script_entry>
         </description>
@@ -12633,7 +12585,7 @@
           </spec>
         </specs>
       </testcase>
-      <testcase component="Supplementary APIs/Supplementary/WebGL - Khronos" execution_type="auto" id="context-lost-restored" priority="P3" purpose="Check the context restored" status="approved" type="compliance">
+      <testcase component="Supplementary APIs/Supplementary/WebGL - Khronos" execution_type="auto" id="context-lost-restored" priority="P3" purpose="Check the context restored" status="approved" type="compliance" subcase="40">
         <description>
           <test_script_entry>/opt/tct-webgl-nonw3c-tests/webgl/khronos/context-lost-restored.html</test_script_entry>
         </description>
@@ -12645,7 +12597,7 @@
           </spec>
         </specs>
       </testcase>
-      <testcase component="Supplementary APIs/Supplementary/WebGL - Khronos" execution_type="auto" id="glsl-function-cross" priority="P3" purpose="Check WebGL cross method works" status="approved" type="compliance">
+      <testcase component="Supplementary APIs/Supplementary/WebGL - Khronos" execution_type="auto" id="glsl-function-cross" priority="P3" purpose="Check WebGL cross method works" status="approved" type="compliance" subcase="6">
         <description>
           <test_script_entry>/opt/tct-webgl-nonw3c-tests/webgl/khronos/glsl-function-cross.html</test_script_entry>
         </description>
@@ -12657,7 +12609,7 @@
           </spec>
         </specs>
       </testcase>
-      <testcase component="Supplementary APIs/Supplementary/WebGL - Khronos" execution_type="auto" id="glsl-function-distance" priority="P3" purpose="Check WebGL distance method works" status="approved" type="compliance">
+      <testcase component="Supplementary APIs/Supplementary/WebGL - Khronos" execution_type="auto" id="glsl-function-distance" priority="P3" purpose="Check WebGL distance method works" status="approved" type="compliance" subcase="24">
         <description>
           <test_script_entry>/opt/tct-webgl-nonw3c-tests/webgl/khronos/glsl-function-distance.html</test_script_entry>
         </description>
@@ -12693,7 +12645,7 @@
           </spec>
         </specs>
       </testcase>
-      <testcase component="Supplementary APIs/Supplementary/WebGL - Khronos" execution_type="auto" id="uniformOutOfBounds" priority="P3" purpose="Check uniform out of bounds" status="approved" type="compliance">
+      <testcase component="Supplementary APIs/Supplementary/WebGL - Khronos" execution_type="auto" id="uniformOutOfBounds" priority="P3" purpose="Check uniform out of bounds" status="approved" type="compliance" subcase="10">
         <description>
           <test_script_entry>/opt/tct-webgl-nonw3c-tests/webgl/khronos/uniformOutOfBounds.html</test_script_entry>
         </description>
@@ -12705,7 +12657,7 @@
           </spec>
         </specs>
       </testcase>
-      <testcase component="Supplementary APIs/Supplementary/WebGL - Khronos" execution_type="auto" id="webgl-debug-renderer-info" priority="P3" purpose="This test verifies the functionality of the [Spec]Tizen Web API_W3C/HTML5 Specifications_Content related specifications (documents, graphics, multimedia, etc.)_WebGL (Khronos Spec)_debug_renderer_info extension, if it is available" status="approved" type="compliance">
+      <testcase component="Supplementary APIs/Supplementary/WebGL - Khronos" execution_type="auto" id="webgl-debug-renderer-info" priority="P3" purpose="This test verifies the functionality of the [Spec]Tizen Web API_W3C/HTML5 Specifications_Content related specifications (documents, graphics, multimedia, etc.)_WebGL (Khronos Spec)_debug_renderer_info extension, if it is available" status="approved" type="compliance" subcase="9">
         <description>
           <test_script_entry>/opt/tct-webgl-nonw3c-tests/webgl/khronos/webgl-debug-renderer-info.html</test_script_entry>
         </description>
@@ -12717,7 +12669,7 @@
           </spec>
         </specs>
       </testcase>
-      <testcase component="Supplementary APIs/Supplementary/WebGL - Khronos" execution_type="auto" id="instanceof-test" priority="P3" purpose="Instanceof test" status="approved" type="compliance">
+      <testcase component="Supplementary APIs/Supplementary/WebGL - Khronos" execution_type="auto" id="instanceof-test" priority="P3" purpose="Instanceof test" status="approved" type="compliance" subcase="20">
         <description>
           <test_script_entry>/opt/tct-webgl-nonw3c-tests/webgl/khronos/instanceof-test.html</test_script_entry>
         </description>
@@ -12729,7 +12681,7 @@
           </spec>
         </specs>
       </testcase>
-      <testcase component="Supplementary APIs/Supplementary/WebGL - Khronos" execution_type="auto" id="tex-sub-image-2d-bad-args" priority="P3" purpose="Check tex-sub-image-2d with bad arguments" status="approved" type="compliance">
+      <testcase component="Supplementary APIs/Supplementary/WebGL - Khronos" execution_type="auto" id="tex-sub-image-2d-bad-args" priority="P3" purpose="Check tex-sub-image-2d with bad arguments" status="approved" type="compliance" subcase="18">
         <description>
           <test_script_entry>/opt/tct-webgl-nonw3c-tests/webgl/khronos/tex-sub-image-2d-bad-args.html</test_script_entry>
         </description>
@@ -12741,7 +12693,7 @@
           </spec>
         </specs>
       </testcase>
-      <testcase component="Supplementary APIs/Supplementary/WebGL - Khronos" execution_type="auto" id="glsl-long-variable-names" priority="P3" purpose="check that shader long variable names works fine if they are within 256 characters" status="approved" type="compliance">
+      <testcase component="Supplementary APIs/Supplementary/WebGL - Khronos" execution_type="auto" id="glsl-long-variable-names" priority="P3" purpose="check that shader long variable names works fine if they are within 256 characters" status="approved" type="compliance" subcase="53">
         <description>
           <test_script_entry>/opt/tct-webgl-nonw3c-tests/webgl/khronos/glsl-long-variable-names.html</test_script_entry>
         </description>
@@ -12777,7 +12729,7 @@
           </spec>
         </specs>
       </testcase>
-      <testcase component="Supplementary APIs/Supplementary/WebGL - Khronos" execution_type="auto" id="texImage2D" priority="P3" purpose="Check if texImage2D function works" status="approved" type="compliance">
+      <testcase component="Supplementary APIs/Supplementary/WebGL - Khronos" execution_type="auto" id="texImage2D" priority="P3" purpose="Check if texImage2D function works" status="approved" type="compliance" subcase="7">
         <description>
           <test_script_entry>/opt/tct-webgl-nonw3c-tests/webgl/khronos/texImage2D.html</test_script_entry>
         </description>
@@ -12789,7 +12741,7 @@
           </spec>
         </specs>
       </testcase>
-      <testcase component="Supplementary APIs/Supplementary/WebGL - Khronos" execution_type="auto" id="shared" priority="P3" purpose="Check if shared vertex shader should succeed" status="approved" type="compliance">
+      <testcase component="Supplementary APIs/Supplementary/WebGL - Khronos" execution_type="auto" id="shared" priority="P3" purpose="Check if shared vertex shader should succeed" status="approved" type="compliance" subcase="2">
         <description>
           <test_script_entry>/opt/tct-webgl-nonw3c-tests/webgl/khronos/shared.html</test_script_entry>
         </description>
@@ -12813,7 +12765,7 @@
           </spec>
         </specs>
       </testcase>
-      <testcase component="Supplementary APIs/Supplementary/WebGL - Khronos" execution_type="auto" id="uniformf" priority="P3" purpose="Check if uniformf function works" status="approved" type="compliance">
+      <testcase component="Supplementary APIs/Supplementary/WebGL - Khronos" execution_type="auto" id="uniformf" priority="P3" purpose="Check if uniformf function works" status="approved" type="compliance" subcase="2">
         <description>
           <test_script_entry>/opt/tct-webgl-nonw3c-tests/webgl/khronos/uniformf.html</test_script_entry>
         </description>
@@ -12825,7 +12777,7 @@
           </spec>
         </specs>
       </testcase>
-      <testcase component="Supplementary APIs/Supplementary/WebGL - Khronos" execution_type="auto" id="gl-uniform-arrays" priority="P3" purpose="Check if WebGL implementations handle uniform arrays correctly" status="approved" type="compliance">
+      <testcase component="Supplementary APIs/Supplementary/WebGL - Khronos" execution_type="auto" id="gl-uniform-arrays" priority="P3" purpose="Check if WebGL implementations handle uniform arrays correctly" status="approved" type="compliance" subcase="141">
         <description>
           <test_script_entry>/opt/tct-webgl-nonw3c-tests/webgl/khronos/gl-uniform-arrays.html</test_script_entry>
         </description>
@@ -12873,7 +12825,7 @@
           </spec>
         </specs>
       </testcase>
-      <testcase component="Supplementary APIs/Supplementary/WebGL - Khronos" execution_type="auto" id="texture-size" priority="P3" purpose="Checks that various sizes of textures render" status="approved" type="compliance">
+      <testcase component="Supplementary APIs/Supplementary/WebGL - Khronos" execution_type="auto" id="texture-size" priority="P3" purpose="Checks that various sizes of textures render" status="approved" type="compliance" subcase="204">
         <description>
           <test_script_entry>/opt/tct-webgl-nonw3c-tests/webgl/khronos/texture-size.html</test_script_entry>
         </description>
@@ -12885,7 +12837,7 @@
           </spec>
         </specs>
       </testcase>
-      <testcase component="Supplementary APIs/Supplementary/WebGL - Khronos" execution_type="auto" id="tex-input-validation" priority="P3" purpose="Validate text functions input parameters" status="approved" type="compliance">
+      <testcase component="Supplementary APIs/Supplementary/WebGL - Khronos" execution_type="auto" id="tex-input-validation" priority="P3" purpose="Validate text functions input parameters" status="approved" type="compliance" subcase="62">
         <description>
           <test_script_entry>/opt/tct-webgl-nonw3c-tests/webgl/khronos/tex-input-validation.html</test_script_entry>
         </description>
@@ -12897,7 +12849,7 @@
           </spec>
         </specs>
       </testcase>
-      <testcase component="Supplementary APIs/Supplementary/WebGL - Khronos" execution_type="auto" id="glsl-function-floor" priority="P3" purpose="Check WebGL floor method works" status="approved" type="compliance">
+      <testcase component="Supplementary APIs/Supplementary/WebGL - Khronos" execution_type="auto" id="glsl-function-floor" priority="P3" purpose="Check WebGL floor method works" status="approved" type="compliance" subcase="24">
         <description>
           <test_script_entry>/opt/tct-webgl-nonw3c-tests/webgl/khronos/glsl-function-floor.html</test_script_entry>
         </description>
@@ -12909,7 +12861,7 @@
           </spec>
         </specs>
       </testcase>
-      <testcase component="Supplementary APIs/Supplementary/WebGL - Khronos" execution_type="auto" id="gl-vertexattribpointer" priority="P3" purpose="This test checks vertexAttribPointer behaviors in WebGL" status="approved" type="compliance">
+      <testcase component="Supplementary APIs/Supplementary/WebGL - Khronos" execution_type="auto" id="gl-vertexattribpointer" priority="P3" purpose="This test checks vertexAttribPointer behaviors in WebGL" status="approved" type="compliance" subcase="781">
         <description>
           <test_script_entry>/opt/tct-webgl-nonw3c-tests/webgl/khronos/gl-vertexattribpointer.html</test_script_entry>
         </description>
@@ -12921,7 +12873,7 @@
           </spec>
         </specs>
       </testcase>
-      <testcase component="Supplementary APIs/Supplementary/WebGL - Khronos" execution_type="auto" id="quickCheckAPI-C" priority="P3" purpose="Test that all C functions specified in ArgGenerators work when called with randomly generated valid arguments" status="approved" type="compliance">
+      <testcase component="Supplementary APIs/Supplementary/WebGL - Khronos" execution_type="auto" id="quickCheckAPI-C" priority="P3" purpose="Test that all C functions specified in ArgGenerators work when called with randomly generated valid arguments" status="approved" type="compliance" subcase="259">
         <description>
           <test_script_entry>/opt/tct-webgl-nonw3c-tests/webgl/khronos/quickCheckAPI-C.html</test_script_entry>
         </description>
@@ -12945,7 +12897,7 @@
           </spec>
         </specs>
       </testcase>
-      <testcase component="Supplementary APIs/Supplementary/WebGL - Khronos" execution_type="auto" id="uniform-location-length-limits" priority="P3" purpose="Verify limits on the lengths of uniform locations per WebGL spec, Maximum Uniform and Attribute Location Lengths" status="approved" type="compliance">
+      <testcase component="Supplementary APIs/Supplementary/WebGL - Khronos" execution_type="auto" id="uniform-location-length-limits" priority="P3" purpose="Verify limits on the lengths of uniform locations per WebGL spec, Maximum Uniform and Attribute Location Lengths" status="approved" type="compliance" subcase="7">
         <description>
           <test_script_entry>/opt/tct-webgl-nonw3c-tests/webgl/khronos/uniform-location-length-limits.html</test_script_entry>
         </description>
@@ -12957,7 +12909,7 @@
           </spec>
         </specs>
       </testcase>
-      <testcase component="Supplementary APIs/Supplementary/WebGL - Khronos" execution_type="auto" id="quickCheckAPI-S_V" priority="P3" purpose="Test that all SV functions specified in ArgGenerators work when called with randomly generated valid arguments" status="approved" type="compliance">
+      <testcase component="Supplementary APIs/Supplementary/WebGL - Khronos" execution_type="auto" id="quickCheckAPI-S_V" priority="P3" purpose="Test that all SV functions specified in ArgGenerators work when called with randomly generated valid arguments" status="approved" type="compliance" subcase="1078">
         <description>
           <test_script_entry>/opt/tct-webgl-nonw3c-tests/webgl/khronos/quickCheckAPI-S_V.html</test_script_entry>
         </description>
@@ -12969,7 +12921,7 @@
           </spec>
         </specs>
       </testcase>
-      <testcase component="Supplementary APIs/Supplementary/WebGL - Khronos" execution_type="auto" id="texture-active-bind-2" priority="P3" purpose="Tests that binding both TEXTURE_2D and TEXTURE_CUBE_MAP to the same active texture unit works as long as they are not used simultaneously in the same shader program" status="approved" type="compliance">
+      <testcase component="Supplementary APIs/Supplementary/WebGL - Khronos" execution_type="auto" id="texture-active-bind-2" priority="P3" purpose="Tests that binding both TEXTURE_2D and TEXTURE_CUBE_MAP to the same active texture unit works as long as they are not used simultaneously in the same shader program" status="approved" type="compliance" subcase="4">
         <description>
           <test_script_entry>/opt/tct-webgl-nonw3c-tests/webgl/khronos/texture-active-bind-2.html</test_script_entry>
         </description>
@@ -12981,7 +12933,7 @@
           </spec>
         </specs>
       </testcase>
-      <testcase component="Supplementary APIs/Supplementary/WebGL - Khronos" execution_type="auto" id="bufferSubDataBadArgs" priority="P2" purpose="Check bufferSubData with bad arguments" status="approved" type="compliance">
+      <testcase component="Supplementary APIs/Supplementary/WebGL - Khronos" execution_type="auto" id="bufferSubDataBadArgs" priority="P2" purpose="Check bufferSubData with bad arguments" status="approved" type="compliance" subcase="14">
         <description>
           <test_script_entry>/opt/tct-webgl-nonw3c-tests/webgl/khronos/bufferSubDataBadArgs.html</test_script_entry>
         </description>
@@ -12993,7 +12945,7 @@
           </spec>
         </specs>
       </testcase>
-      <testcase component="Supplementary APIs/Supplementary/WebGL - Khronos" execution_type="auto" id="buffer-bind-test" priority="P2" purpose="Check a buffer can only be bound to 1 target" status="approved" type="compliance">
+      <testcase component="Supplementary APIs/Supplementary/WebGL - Khronos" execution_type="auto" id="buffer-bind-test" priority="P2" purpose="Check a buffer can only be bound to 1 target" status="approved" type="compliance" subcase="7">
         <description>
           <test_script_entry>/opt/tct-webgl-nonw3c-tests/webgl/khronos/buffer-bind-test.html</test_script_entry>
         </description>
@@ -13005,7 +12957,7 @@
           </spec>
         </specs>
       </testcase>
-      <testcase component="Supplementary APIs/Supplementary/WebGL - Khronos" execution_type="auto" id="bufferSubData" priority="P2" purpose="Check if bufferSubData function works" status="approved" type="compliance">
+      <testcase component="Supplementary APIs/Supplementary/WebGL - Khronos" execution_type="auto" id="bufferSubData" priority="P2" purpose="Check if bufferSubData function works" status="approved" type="compliance" subcase="17">
         <description>
           <test_script_entry>/opt/tct-webgl-nonw3c-tests/webgl/khronos/bufferSubData.html</test_script_entry>
         </description>
@@ -13017,7 +12969,7 @@
           </spec>
         </specs>
       </testcase>
-      <testcase component="Supplementary APIs/Supplementary/WebGL - Khronos" execution_type="auto" id="gl-bind-attrib-location-test" priority="P2" purpose="Check WebGL implementations don't allow names that start with 'gl_' when calling bindAttribLocation" status="approved" type="compliance">
+      <testcase component="Supplementary APIs/Supplementary/WebGL - Khronos" execution_type="auto" id="gl-bind-attrib-location-test" priority="P2" purpose="Check WebGL implementations don't allow names that start with 'gl_' when calling bindAttribLocation" status="approved" type="compliance" subcase="12">
         <description>
           <test_script_entry>/opt/tct-webgl-nonw3c-tests/webgl/khronos/gl-bind-attrib-location-test.html</test_script_entry>
         </description>
@@ -13041,7 +12993,7 @@
           </spec>
         </specs>
       </testcase>
-      <testcase component="Supplementary APIs/Supplementary/WebGL - Khronos" execution_type="auto" id="deleteBufferBadArgs" priority="P2" purpose="Check deleteBuffer function with bad arguments" status="approved" type="compliance">
+      <testcase component="Supplementary APIs/Supplementary/WebGL - Khronos" execution_type="auto" id="deleteBufferBadArgs" priority="P2" purpose="Check deleteBuffer function with bad arguments" status="approved" type="compliance" subcase="10">
         <description>
           <test_script_entry>/opt/tct-webgl-nonw3c-tests/webgl/khronos/deleteBufferBadArgs.html</test_script_entry>
         </description>
@@ -13053,7 +13005,7 @@
           </spec>
         </specs>
       </testcase>
-      <testcase component="Supplementary APIs/Supplementary/WebGL - Khronos" execution_type="auto" id="copyTexImage2DBadArgs" priority="P2" purpose="Check copyTexImage2D with bad arguments" status="approved" type="compliance">
+      <testcase component="Supplementary APIs/Supplementary/WebGL - Khronos" execution_type="auto" id="copyTexImage2DBadArgs" priority="P2" purpose="Check copyTexImage2D with bad arguments" status="approved" type="compliance" subcase="15">
         <description>
           <test_script_entry>/opt/tct-webgl-nonw3c-tests/webgl/khronos/copyTexImage2DBadArgs.html</test_script_entry>
         </description>
@@ -13089,7 +13041,7 @@
           </spec>
         </specs>
       </testcase>
-      <testcase component="Supplementary APIs/Supplementary/WebGL - Khronos" execution_type="auto" id="quickCheckAPI-B4" priority="P3" purpose="Test that all B4 functions specified in ArgGenerators work when called with randomly generated valid arguments" status="approved" type="compliance">
+      <testcase component="Supplementary APIs/Supplementary/WebGL - Khronos" execution_type="auto" id="quickCheckAPI-B4" priority="P3" purpose="Test that all B4 functions specified in ArgGenerators work when called with randomly generated valid arguments" status="approved" type="compliance" subcase="196">
         <description>
           <test_script_entry>/opt/tct-webgl-nonw3c-tests/webgl/khronos/quickCheckAPI-B4.html</test_script_entry>
         </description>
@@ -13161,7 +13113,7 @@
           </spec>
         </specs>
       </testcase>
-      <testcase component="Supplementary APIs/Supplementary/WebGL - Khronos" execution_type="auto" id="glsl-function-acos" priority="P3" purpose="check GLSL acos function test" status="approved" type="compliance">
+      <testcase component="Supplementary APIs/Supplementary/WebGL - Khronos" execution_type="auto" id="glsl-function-acos" priority="P3" purpose="check GLSL acos function test" status="approved" type="compliance" subcase="24">
         <description>
           <test_script_entry>/opt/tct-webgl-nonw3c-tests/webgl/khronos/glsl-function-acos.html</test_script_entry>
         </description>
@@ -13173,7 +13125,7 @@
           </spec>
         </specs>
       </testcase>
-      <testcase component="Supplementary APIs/Supplementary/WebGL - Khronos" execution_type="auto" id="shader-with-256-character-identifier.frag" priority="P3" purpose="Check if shader that uses 256 character identifier succeeded" status="approved" type="compliance">
+      <testcase component="Supplementary APIs/Supplementary/WebGL - Khronos" execution_type="auto" id="shader-with-256-character-identifier.frag" priority="P3" purpose="Check if shader that uses 256 character identifier succeeded" status="approved" type="compliance" subcase="5">
         <description>
           <test_script_entry>/opt/tct-webgl-nonw3c-tests/webgl/khronos/shader-with-256-character-identifier.frag.html</test_script_entry>
         </description>
@@ -13197,7 +13149,7 @@
           </spec>
         </specs>
       </testcase>
-      <testcase component="Supplementary APIs/Supplementary/WebGL - Khronos" execution_type="auto" id="quickCheckAPI-G_I" priority="P3" purpose="Test that all GI functions specified in ArgGenerators work when called with randomly generated valid arguments" status="approved" type="compliance">
+      <testcase component="Supplementary APIs/Supplementary/WebGL - Khronos" execution_type="auto" id="quickCheckAPI-G_I" priority="P3" purpose="Test that all GI functions specified in ArgGenerators work when called with randomly generated valid arguments" status="approved" type="compliance" subcase="200">
         <description>
           <test_script_entry>/opt/tct-webgl-nonw3c-tests/webgl/khronos/quickCheckAPI-G_I.html</test_script_entry>
         </description>
@@ -13221,7 +13173,7 @@
           </spec>
         </specs>
       </testcase>
-      <testcase component="Supplementary APIs/Supplementary/WebGL - Khronos" execution_type="auto" id="quickCheckAPI-L_S" priority="P3" purpose="Test that all LS functions specified in ArgGenerators work when called with randomly generated valid arguments" status="approved" type="compliance">
+      <testcase component="Supplementary APIs/Supplementary/WebGL - Khronos" execution_type="auto" id="quickCheckAPI-L_S" priority="P3" purpose="Test that all LS functions specified in ArgGenerators work when called with randomly generated valid arguments" status="approved" type="compliance" subcase="910">
         <description>
           <test_script_entry>/opt/tct-webgl-nonw3c-tests/webgl/khronos/quickCheckAPI-L_S.html</test_script_entry>
         </description>
@@ -13233,7 +13185,7 @@
           </spec>
         </specs>
       </testcase>
-      <testcase component="Supplementary APIs/Supplementary/WebGL - Khronos" execution_type="auto" id="texSubImage2D" priority="P3" purpose="Check texSubImage2D function works" status="approved" type="compliance">
+      <testcase component="Supplementary APIs/Supplementary/WebGL - Khronos" execution_type="auto" id="texSubImage2D" priority="P3" purpose="Check texSubImage2D function works" status="approved" type="compliance" subcase="7">
         <description>
           <test_script_entry>/opt/tct-webgl-nonw3c-tests/webgl/khronos/texSubImage2D.html</test_script_entry>
         </description>
@@ -13245,7 +13197,7 @@
           </spec>
         </specs>
       </testcase>
-      <testcase component="Supplementary APIs/Supplementary/WebGL - Khronos" execution_type="auto" id="glsl-function-clamp-gentype" priority="P3" purpose="Check GLSL clamp-gentype function works" status="approved" type="compliance">
+      <testcase component="Supplementary APIs/Supplementary/WebGL - Khronos" execution_type="auto" id="glsl-function-clamp-gentype" priority="P3" purpose="Check GLSL clamp-gentype function works" status="approved" type="compliance" subcase="24">
         <description>
           <test_script_entry>/opt/tct-webgl-nonw3c-tests/webgl/khronos/glsl-function-clamp-gentype.html</test_script_entry>
         </description>
@@ -13257,7 +13209,7 @@
           </spec>
         </specs>
       </testcase>
-      <testcase component="Supplementary APIs/Supplementary/WebGL - Khronos" execution_type="auto" id="tex-image-with-invalid-data" priority="P3" purpose="TexImage2D and texSubImage2D tests with invalid data" status="approved" type="compliance">
+      <testcase component="Supplementary APIs/Supplementary/WebGL - Khronos" execution_type="auto" id="tex-image-with-invalid-data" priority="P3" purpose="TexImage2D and texSubImage2D tests with invalid data" status="approved" type="compliance" subcase="7">
         <description>
           <test_script_entry>/opt/tct-webgl-nonw3c-tests/webgl/khronos/tex-image-with-invalid-data.html</test_script_entry>
         </description>
@@ -13269,7 +13221,7 @@
           </spec>
         </specs>
       </testcase>
-      <testcase component="Supplementary APIs/Supplementary/WebGL - Khronos" execution_type="auto" id="glsl-function-ceil" priority="P3" purpose="check GLSL ceil function test" status="approved" type="compliance">
+      <testcase component="Supplementary APIs/Supplementary/WebGL - Khronos" execution_type="auto" id="glsl-function-ceil" priority="P3" purpose="check GLSL ceil function test" status="approved" type="compliance" subcase="24">
         <description>
           <test_script_entry>/opt/tct-webgl-nonw3c-tests/webgl/khronos/glsl-function-ceil.html</test_script_entry>
         </description>
@@ -13281,7 +13233,7 @@
           </spec>
         </specs>
       </testcase>
-      <testcase component="Supplementary APIs/Supplementary/WebGL - Khronos" execution_type="auto" id="tex-image-and-sub-image-2d-with-image-data" priority="P3" purpose="Verify texImage2D and texSubImage2D code paths taking ImageData" status="approved" type="compliance">
+      <testcase component="Supplementary APIs/Supplementary/WebGL - Khronos" execution_type="auto" id="tex-image-and-sub-image-2d-with-image-data" priority="P3" purpose="Verify texImage2D and texSubImage2D code paths taking ImageData" status="approved" type="compliance" subcase="17">
         <description>
           <test_script_entry>/opt/tct-webgl-nonw3c-tests/webgl/khronos/tex-image-and-sub-image-2d-with-image-data.html</test_script_entry>
         </description>
@@ -13293,7 +13245,7 @@
           </spec>
         </specs>
       </testcase>
-      <testcase component="Supplementary APIs/Supplementary/WebGL - Khronos" execution_type="auto" id="invalid-passed-params" priority="P3" purpose="Test for invalid passed parameters" status="approved" type="compliance">
+      <testcase component="Supplementary APIs/Supplementary/WebGL - Khronos" execution_type="auto" id="invalid-passed-params" priority="P3" purpose="Test for invalid passed parameters" status="approved" type="compliance" subcase="73">
         <description>
           <test_script_entry>/opt/tct-webgl-nonw3c-tests/webgl/khronos/invalid-passed-params.html</test_script_entry>
         </description>
@@ -13305,7 +13257,7 @@
           </spec>
         </specs>
       </testcase>
-      <testcase component="Supplementary APIs/Supplementary/WebGL - Khronos" execution_type="auto" id="context-lost" priority="P3" purpose="Tests behavior under a lost context" status="approved" type="compliance">
+      <testcase component="Supplementary APIs/Supplementary/WebGL - Khronos" execution_type="auto" id="context-lost" priority="P3" purpose="Tests behavior under a lost context" status="approved" type="compliance" subcase="171">
         <description>
           <test_script_entry>/opt/tct-webgl-nonw3c-tests/webgl/khronos/context-lost.html</test_script_entry>
         </description>
@@ -13329,7 +13281,7 @@
           </spec>
         </specs>
       </testcase>
-      <testcase component="Supplementary APIs/Supplementary/WebGL - Khronos" execution_type="auto" id="texture-formats-test" priority="P3" purpose="Check WebGL implementations allow the OpenGL ES 2.0 texture formats and do not allow DesktopGL texture formats" status="approved" type="compliance">
+      <testcase component="Supplementary APIs/Supplementary/WebGL - Khronos" execution_type="auto" id="texture-formats-test" priority="P3" purpose="Check WebGL implementations allow the OpenGL ES 2.0 texture formats and do not allow DesktopGL texture formats" status="approved" type="compliance" subcase="89">
         <description>
           <test_script_entry>/opt/tct-webgl-nonw3c-tests/webgl/khronos/texture-formats-test.html</test_script_entry>
         </description>
@@ -13353,7 +13305,7 @@
           </spec>
         </specs>
       </testcase>
-      <testcase component="Supplementary APIs/Supplementary/WebGL - Khronos" execution_type="auto" id="index-validation-with-resized-buffer" priority="P3" purpose="Test that updating the size of a vertex buffer is properly noticed by the WebGL implementation" status="approved" type="compliance">
+      <testcase component="Supplementary APIs/Supplementary/WebGL - Khronos" execution_type="auto" id="index-validation-with-resized-buffer" priority="P3" purpose="Test that updating the size of a vertex buffer is properly noticed by the WebGL implementation" status="approved" type="compliance" subcase="7">
         <description>
           <test_script_entry>/opt/tct-webgl-nonw3c-tests/webgl/khronos/index-validation-with-resized-buffer.html</test_script_entry>
         </description>
@@ -13365,7 +13317,7 @@
           </spec>
         </specs>
       </testcase>
-      <testcase component="Supplementary APIs/Supplementary/WebGL - Khronos" execution_type="auto" id="uniformiBadArgs" priority="P3" purpose="Check if uniformi with bad arguments" status="approved" type="compliance">
+      <testcase component="Supplementary APIs/Supplementary/WebGL - Khronos" execution_type="auto" id="uniformiBadArgs" priority="P3" purpose="Check if uniformi with bad arguments" status="approved" type="compliance" subcase="4">
         <description>
           <test_script_entry>/opt/tct-webgl-nonw3c-tests/webgl/khronos/uniformiBadArgs.html</test_script_entry>
         </description>
@@ -13377,7 +13329,7 @@
           </spec>
         </specs>
       </testcase>
-      <testcase component="Supplementary APIs/Supplementary/WebGL - Khronos" execution_type="auto" id="glsl-function-sign" priority="P3" purpose="check GLSL sign function test" status="approved" type="compliance">
+      <testcase component="Supplementary APIs/Supplementary/WebGL - Khronos" execution_type="auto" id="glsl-function-sign" priority="P3" purpose="check GLSL sign function test" status="approved" type="compliance" subcase="24">
         <description>
           <test_script_entry>/opt/tct-webgl-nonw3c-tests/webgl/khronos/glsl-function-sign.html</test_script_entry>
         </description>
@@ -13389,7 +13341,7 @@
           </spec>
         </specs>
       </testcase>
-      <testcase component="Supplementary APIs/Supplementary/WebGL - Khronos" execution_type="auto" id="context-attributes-alpha-depth-stencil-antialias" priority="P3" purpose="Verify WebGLContextAttributes are working as specified, including alpha, depth, stencil, antialias, but not premultipliedAlpha" status="approved" type="compliance">
+      <testcase component="Supplementary APIs/Supplementary/WebGL - Khronos" execution_type="auto" id="context-attributes-alpha-depth-stencil-antialias" priority="P3" purpose="Test context attributes alpha depth stencil antialias" status="approved" type="compliance" subcase="96">
         <description>
           <test_script_entry>/opt/tct-webgl-nonw3c-tests/webgl/khronos/context-attributes-alpha-depth-stencil-antialias.html</test_script_entry>
         </description>
@@ -13401,7 +13353,7 @@
           </spec>
         </specs>
       </testcase>
-      <testcase component="Supplementary APIs/Supplementary/WebGL - Khronos" execution_type="auto" id="program-test" priority="P3" purpose="Tests that program compiling/linking/using works correctly" status="approved" type="compliance">
+      <testcase component="Supplementary APIs/Supplementary/WebGL - Khronos" execution_type="auto" id="program-test" priority="P3" purpose="Tests that program compiling/linking/using works correctly" status="approved" type="compliance" subcase="76">
         <description>
           <test_script_entry>/opt/tct-webgl-nonw3c-tests/webgl/khronos/program-test.html</test_script_entry>
         </description>
@@ -13413,7 +13365,7 @@
           </spec>
         </specs>
       </testcase>
-      <testcase component="Supplementary APIs/Supplementary/WebGL - Khronos" execution_type="auto" id="glsl-function-normalize" priority="P3" purpose="Check GLSL normalize function works" status="approved" type="compliance">
+      <testcase component="Supplementary APIs/Supplementary/WebGL - Khronos" execution_type="auto" id="glsl-function-normalize" priority="P3" purpose="Check GLSL normalize function works" status="approved" type="compliance" subcase="24">
         <description>
           <test_script_entry>/opt/tct-webgl-nonw3c-tests/webgl/khronos/glsl-function-normalize.html</test_script_entry>
         </description>
@@ -13425,7 +13377,7 @@
           </spec>
         </specs>
       </testcase>
-      <testcase component="Supplementary APIs/Supplementary/WebGL - Khronos" execution_type="auto" id="gl-get-calls" priority="P3" purpose="This test ensures basic functionality of the underlying graphics library" status="approved" type="compliance">
+      <testcase component="Supplementary APIs/Supplementary/WebGL - Khronos" execution_type="auto" id="gl-get-calls" priority="P3" purpose="This test ensures basic functionality of the underlying graphics library" status="approved" type="compliance" subcase="262">
         <description>
           <test_script_entry>/opt/tct-webgl-nonw3c-tests/webgl/khronos/gl-get-calls.html</test_script_entry>
         </description>
@@ -13461,7 +13413,7 @@
           </spec>
         </specs>
       </testcase>
-      <testcase component="Supplementary APIs/Supplementary/WebGL - Khronos" execution_type="auto" id="glsl-function-mix-float" priority="P3" purpose="Check WebGL mix-float method works" status="approved" type="compliance">
+      <testcase component="Supplementary APIs/Supplementary/WebGL - Khronos" execution_type="auto" id="glsl-function-mix-float" priority="P3" purpose="Check WebGL mix-float method works" status="approved" type="compliance" subcase="24">
         <description>
           <test_script_entry>/opt/tct-webgl-nonw3c-tests/webgl/khronos/glsl-function-mix-float.html</test_script_entry>
         </description>
@@ -13485,7 +13437,7 @@
           </spec>
         </specs>
       </testcase>
-      <testcase component="Supplementary APIs/Supplementary/WebGL - Khronos" execution_type="auto" id="gl-pixelstorei" priority="P3" purpose="This test checks that drawImage and readPixels are not effected by gl.Pixelstorei(gl.PACK_ALIGNMENT) and visa versa" status="approved" type="compliance">
+      <testcase component="Supplementary APIs/Supplementary/WebGL - Khronos" execution_type="auto" id="gl-pixelstorei" priority="P3" purpose="This test checks that drawImage and readPixels are not effected by gl.Pixelstorei(gl.PACK_ALIGNMENT) and visa versa" status="approved" type="compliance" subcase="28">
         <description>
           <test_script_entry>/opt/tct-webgl-nonw3c-tests/webgl/khronos/gl-pixelstorei.html</test_script_entry>
         </description>
@@ -13497,7 +13449,7 @@
           </spec>
         </specs>
       </testcase>
-      <testcase component="Supplementary APIs/Supplementary/WebGL - Khronos" execution_type="auto" id="tex-image-and-sub-image-2d-with-video" priority="P3" purpose="Check texImage2D and texSubImage2D code paths taking Video Elements" status="approved" type="compliance">
+      <testcase component="Supplementary APIs/Supplementary/WebGL - Khronos" execution_type="auto" id="tex-image-and-sub-image-2d-with-video" priority="P3" purpose="Check texImage2D and texSubImage2D code paths taking Video Elements" status="approved" type="compliance" subcase="27">
         <description>
           <test_script_entry>/opt/tct-webgl-nonw3c-tests/webgl/khronos/tex-image-and-sub-image-2d-with-video.html</test_script_entry>
         </description>
@@ -13521,7 +13473,7 @@
           </spec>
         </specs>
       </testcase>
-      <testcase component="Supplementary APIs/Supplementary/WebGL - Khronos" execution_type="auto" id="more-than-65536-indices" priority="P3" purpose="Checks that rendering with more than 65536 indices works" status="approved" type="compliance">
+      <testcase component="Supplementary APIs/Supplementary/WebGL - Khronos" execution_type="auto" id="more-than-65536-indices" priority="P3" purpose="Checks that rendering with more than 65536 indices works" status="approved" type="compliance" subcase="18">
         <description>
           <test_script_entry>/opt/tct-webgl-nonw3c-tests/webgl/khronos/more-than-65536-indices.html</test_script_entry>
         </description>
@@ -13533,7 +13485,7 @@
           </spec>
         </specs>
       </testcase>
-      <testcase component="Supplementary APIs/Supplementary/WebGL - Khronos" execution_type="auto" id="glsl-function-smoothstep-gentype" priority="P3" purpose="check  GLSL smoothstep-gentype function test" status="approved" type="compliance">
+      <testcase component="Supplementary APIs/Supplementary/WebGL - Khronos" execution_type="auto" id="glsl-function-smoothstep-gentype" priority="P3" purpose="check  GLSL smoothstep-gentype function test" status="approved" type="compliance" subcase="24">
         <description>
           <test_script_entry>/opt/tct-webgl-nonw3c-tests/webgl/khronos/glsl-function-smoothstep-gentype.html</test_script_entry>
         </description>
@@ -13581,7 +13533,7 @@
           </spec>
         </specs>
       </testcase>
-      <testcase component="Supplementary APIs/Supplementary/WebGL - Khronos" execution_type="auto" id="glsl-function-min-float" priority="P3" purpose="check GLSL min-float function test" status="approved" type="compliance">
+      <testcase component="Supplementary APIs/Supplementary/WebGL - Khronos" execution_type="auto" id="glsl-function-min-float" priority="P3" purpose="check GLSL min-float function test" status="approved" type="compliance" subcase="24">
         <description>
           <test_script_entry>/opt/tct-webgl-nonw3c-tests/webgl/khronos/glsl-function-min-float.html</test_script_entry>
         </description>
@@ -13629,7 +13581,7 @@
           </spec>
         </specs>
       </testcase>
-      <testcase component="Supplementary APIs/Supplementary/WebGL - Khronos" execution_type="auto" id="uniform-samplers-test" priority="P3" purpose="Tests that only Uniform1i and Uniform1iv can be used to set sampler uniforms" status="approved" type="compliance">
+      <testcase component="Supplementary APIs/Supplementary/WebGL - Khronos" execution_type="auto" id="uniform-samplers-test" priority="P3" purpose="Tests that only Uniform1i and Uniform1iv can be used to set sampler uniforms" status="approved" type="compliance" subcase="8">
         <description>
           <test_script_entry>/opt/tct-webgl-nonw3c-tests/webgl/khronos/uniform-samplers-test.html</test_script_entry>
         </description>
@@ -13641,7 +13593,7 @@
           </spec>
         </specs>
       </testcase>
-      <testcase component="Supplementary APIs/Supplementary/WebGL - Khronos" execution_type="auto" id="texture-mips" priority="P3" purpose="Checks mip issues" status="approved" type="compliance">
+      <testcase component="Supplementary APIs/Supplementary/WebGL - Khronos" execution_type="auto" id="texture-mips" priority="P3" purpose="Checks mip issues" status="approved" type="compliance" subcase="28">
         <description>
           <test_script_entry>/opt/tct-webgl-nonw3c-tests/webgl/khronos/texture-mips.html</test_script_entry>
         </description>
@@ -13665,7 +13617,7 @@
           </spec>
         </specs>
       </testcase>
-      <testcase component="Supplementary APIs/Supplementary/WebGL - Khronos" execution_type="auto" id="uniformfBadArgs" priority="P3" purpose="Check uniformf with bad arguments" status="approved" type="compliance">
+      <testcase component="Supplementary APIs/Supplementary/WebGL - Khronos" execution_type="auto" id="uniformfBadArgs" priority="P3" purpose="Check uniformf with bad arguments" status="approved" type="compliance" subcase="5">
         <description>
           <test_script_entry>/opt/tct-webgl-nonw3c-tests/webgl/khronos/uniformfBadArgs.html</test_script_entry>
         </description>
@@ -13677,7 +13629,7 @@
           </spec>
         </specs>
       </testcase>
-      <testcase component="Supplementary APIs/Supplementary/WebGL - Khronos" execution_type="auto" id="glsl-function-mod-gentype" priority="P3" purpose="check GLSL mod-gentype function test" status="approved" type="compliance">
+      <testcase component="Supplementary APIs/Supplementary/WebGL - Khronos" execution_type="auto" id="glsl-function-mod-gentype" priority="P3" purpose="check GLSL mod-gentype function test" status="approved" type="compliance" subcase="24">
         <description>
           <test_script_entry>/opt/tct-webgl-nonw3c-tests/webgl/khronos/glsl-function-mod-gentype.html</test_script_entry>
         </description>
@@ -13713,7 +13665,7 @@
           </spec>
         </specs>
       </testcase>
-      <testcase component="Supplementary APIs/Supplementary/WebGL - Khronos" execution_type="auto" id="gl-geterror" priority="P3" purpose="Test getError" status="approved" type="compliance">
+      <testcase component="Supplementary APIs/Supplementary/WebGL - Khronos" execution_type="auto" id="gl-geterror" priority="P3" purpose="Test getError" status="approved" type="compliance" subcase="5">
         <description>
           <test_script_entry>/opt/tct-webgl-nonw3c-tests/webgl/khronos/gl-geterror.html</test_script_entry>
         </description>
@@ -13725,7 +13677,7 @@
           </spec>
         </specs>
       </testcase>
-      <testcase component="Supplementary APIs/Supplementary/WebGL - Khronos" execution_type="auto" id="gl-vertex-attrib" priority="P3" purpose="This test ensures WebGL implementations vertexAttrib can be set and read" status="approved" type="compliance">
+      <testcase component="Supplementary APIs/Supplementary/WebGL - Khronos" execution_type="auto" id="gl-vertex-attrib" priority="P3" purpose="This test ensures WebGL implementations vertexAttrib can be set and read" status="approved" type="compliance" subcase="514">
         <description>
           <test_script_entry>/opt/tct-webgl-nonw3c-tests/webgl/khronos/gl-vertex-attrib.html</test_script_entry>
         </description>
@@ -13737,7 +13689,7 @@
           </spec>
         </specs>
       </testcase>
-      <testcase component="Supplementary APIs/Supplementary/WebGL - Khronos" execution_type="auto" id="glsl-function-max-gentype" priority="P3" purpose="check GLSL max-gentype function test" status="approved" type="compliance">
+      <testcase component="Supplementary APIs/Supplementary/WebGL - Khronos" execution_type="auto" id="glsl-function-max-gentype" priority="P3" purpose="check GLSL max-gentype function test" status="approved" type="compliance" subcase="24">
         <description>
           <test_script_entry>/opt/tct-webgl-nonw3c-tests/webgl/khronos/glsl-function-max-gentype.html</test_script_entry>
         </description>
@@ -13761,7 +13713,7 @@
           </spec>
         </specs>
       </testcase>
-      <testcase component="Supplementary APIs/Supplementary/WebGL - Khronos" execution_type="auto" id="glsl-function-length" priority="P3" purpose="check GLSL length function test" status="approved" type="compliance">
+      <testcase component="Supplementary APIs/Supplementary/WebGL - Khronos" execution_type="auto" id="glsl-function-length" priority="P3" purpose="check GLSL length function test" status="approved" type="compliance" subcase="24">
         <description>
           <test_script_entry>/opt/tct-webgl-nonw3c-tests/webgl/khronos/glsl-function-length.html</test_script_entry>
         </description>
@@ -13809,7 +13761,7 @@
           </spec>
         </specs>
       </testcase>
-      <testcase component="Supplementary APIs/Supplementary/WebGL - Khronos" execution_type="auto" id="glsl-function-abs" priority="P3" purpose="check GLSL abs function test" status="approved" type="compliance">
+      <testcase component="Supplementary APIs/Supplementary/WebGL - Khronos" execution_type="auto" id="glsl-function-abs" priority="P3" purpose="check GLSL abs function test" status="approved" type="compliance" subcase="24">
         <description>
           <test_script_entry>/opt/tct-webgl-nonw3c-tests/webgl/khronos/glsl-function-abs.html</test_script_entry>
         </description>
@@ -13857,7 +13809,7 @@
           </spec>
         </specs>
       </testcase>
-      <testcase component="Supplementary APIs/Supplementary/WebGL - Khronos" execution_type="auto" id="gl-getstring" priority="P3" purpose="This test checks getParameter returns strings in the correct format" status="approved" type="compliance">
+      <testcase component="Supplementary APIs/Supplementary/WebGL - Khronos" execution_type="auto" id="gl-getstring" priority="P3" purpose="This test checks getParameter returns strings in the correct format" status="approved" type="compliance" subcase="6">
         <description>
           <test_script_entry>/opt/tct-webgl-nonw3c-tests/webgl/khronos/gl-getstring.html</test_script_entry>
         </description>
@@ -13869,7 +13821,7 @@
           </spec>
         </specs>
       </testcase>
-      <testcase component="Supplementary APIs/Supplementary/WebGL - Khronos" execution_type="auto" id="glsl-function-atan" priority="P3" purpose="Check GLSL atan function works" status="approved" type="compliance">
+      <testcase component="Supplementary APIs/Supplementary/WebGL - Khronos" execution_type="auto" id="glsl-function-atan" priority="P3" purpose="Check GLSL atan function works" status="approved" type="compliance" subcase="24">
         <description>
           <test_script_entry>/opt/tct-webgl-nonw3c-tests/webgl/khronos/glsl-function-atan.html</test_script_entry>
         </description>
@@ -13893,7 +13845,7 @@
           </spec>
         </specs>
       </testcase>
-      <testcase component="Supplementary APIs/Supplementary/WebGL - Khronos" execution_type="auto" id="conformance.more.context.constants" priority="P3" purpose="Check constants conformance of context" status="approved" type="compliance">
+      <testcase component="Supplementary APIs/Supplementary/WebGL - Khronos" execution_type="auto" id="conformance.more.context.constants" priority="P3" purpose="Check constants conformance of context" status="approved" type="compliance" subcase="584">
         <description>
           <test_script_entry>/opt/tct-webgl-nonw3c-tests/webgl/khronos/conformance.more.context.constants.html</test_script_entry>
         </description>
@@ -13905,7 +13857,7 @@
           </spec>
         </specs>
       </testcase>
-      <testcase component="Supplementary APIs/Supplementary/WebGL - Khronos" execution_type="auto" id="uniformi" priority="P3" purpose="Check if uniformi function works" status="approved" type="compliance">
+      <testcase component="Supplementary APIs/Supplementary/WebGL - Khronos" execution_type="auto" id="uniformi" priority="P3" purpose="Check if uniformi function works" status="approved" type="compliance" subcase="2">
         <description>
           <test_script_entry>/opt/tct-webgl-nonw3c-tests/webgl/khronos/uniformi.html</test_script_entry>
         </description>
@@ -13929,7 +13881,7 @@
           </spec>
         </specs>
       </testcase>
-      <testcase component="Supplementary APIs/Supplementary/WebGL - Khronos" execution_type="auto" id="readPixels" priority="P3" purpose="Check if readPixels method works" status="approved" type="compliance">
+      <testcase component="Supplementary APIs/Supplementary/WebGL - Khronos" execution_type="auto" id="readPixels" priority="P3" purpose="Check if readPixels method works" status="approved" type="compliance" subcase="4">
         <description>
           <test_script_entry>/opt/tct-webgl-nonw3c-tests/webgl/khronos/readPixels.html</test_script_entry>
         </description>
@@ -13941,7 +13893,7 @@
           </spec>
         </specs>
       </testcase>
-      <testcase component="Supplementary APIs/Supplementary/WebGL - Khronos" execution_type="auto" id="glsl-function-smoothstep-float" priority="P3" purpose="check GLSL smoothstep-gentype function test" status="approved" type="compliance">
+      <testcase component="Supplementary APIs/Supplementary/WebGL - Khronos" execution_type="auto" id="glsl-function-smoothstep-float" priority="P3" purpose="check GLSL smoothstep-gentype function test" status="approved" type="compliance" subcase="24">
         <description>
           <test_script_entry>/opt/tct-webgl-nonw3c-tests/webgl/khronos/glsl-function-smoothstep-float.html</test_script_entry>
         </description>
@@ -14001,7 +13953,7 @@
           </spec>
         </specs>
       </testcase>
-      <testcase component="Supplementary APIs/Supplementary/WebGL - Khronos" execution_type="auto" id="texImage2DHTMLBadArgs" priority="P3" purpose="Check texImage2D function with bad arguments" status="approved" type="compliance">
+      <testcase component="Supplementary APIs/Supplementary/WebGL - Khronos" execution_type="auto" id="texImage2DHTMLBadArgs" priority="P3" purpose="Check texImage2D function with bad arguments" status="approved" type="compliance" subcase="6">
         <description>
           <test_script_entry>/opt/tct-webgl-nonw3c-tests/webgl/khronos/texImage2DHTMLBadArgs.html</test_script_entry>
         </description>
@@ -14061,7 +14013,7 @@
           </spec>
         </specs>
       </testcase>
-      <testcase component="Supplementary APIs/Supplementary/WebGL - Khronos" execution_type="auto" id="viewport-unchanged-upon-resize" priority="P3" purpose="Check WebGL viewport does not change when canvas is resized" status="approved" type="compliance">
+      <testcase component="Supplementary APIs/Supplementary/WebGL - Khronos" execution_type="auto" id="viewport-unchanged-upon-resize" priority="P3" purpose="Check WebGL viewport does not change when canvas is resized" status="approved" type="compliance" subcase="4">
         <description>
           <test_script_entry>/opt/tct-webgl-nonw3c-tests/webgl/khronos/viewport-unchanged-upon-resize.html</test_script_entry>
         </description>
@@ -14073,7 +14025,7 @@
           </spec>
         </specs>
       </testcase>
-      <testcase component="Supplementary APIs/Supplementary/WebGL - Khronos" execution_type="auto" id="tex-image-with-format-and-type" priority="P3" purpose="Verify texImage2D and texSubImage2D code paths taking both HTML and user-specified data with all format/type combinations" status="approved" type="compliance">
+      <testcase component="Supplementary APIs/Supplementary/WebGL - Khronos" execution_type="auto" id="tex-image-with-format-and-type" priority="P3" purpose="Verify texImage2D and texSubImage2D code paths taking both HTML and user-specified data with all format/type combinations" status="approved" type="compliance" subcase="72">
         <description>
           <test_script_entry>/opt/tct-webgl-nonw3c-tests/webgl/khronos/tex-image-with-format-and-type.html</test_script_entry>
         </description>
@@ -14097,7 +14049,7 @@
           </spec>
         </specs>
       </testcase>
-      <testcase component="Supplementary APIs/Supplementary/WebGL - Khronos" execution_type="auto" id="gl-shader-test" priority="P2" purpose="This test checks a few things about WebGL Shaders" status="approved" type="compliance">
+      <testcase component="Supplementary APIs/Supplementary/WebGL - Khronos" execution_type="auto" id="gl-shader-test" priority="P2" purpose="This test checks a few things about WebGL Shaders" status="approved" type="compliance" subcase="3">
         <description>
           <test_script_entry>/opt/tct-webgl-nonw3c-tests/webgl/khronos/gl-shader-test.html</test_script_entry>
         </description>
@@ -14109,7 +14061,7 @@
           </spec>
         </specs>
       </testcase>
-      <testcase component="Supplementary APIs/Supplementary/WebGL - Khronos" execution_type="auto" id="copy-tex-image-and-sub-image-2d" priority="P2" purpose="Verify copyTexImage2D and copyTexSubImage2D" status="approved" type="compliance">
+      <testcase component="Supplementary APIs/Supplementary/WebGL - Khronos" execution_type="auto" id="copy-tex-image-and-sub-image-2d" priority="P2" purpose="Verify copyTexImage2D and copyTexSubImage2D" status="approved" type="compliance" subcase="502">
         <description>
           <test_script_entry>/opt/tct-webgl-nonw3c-tests/webgl/khronos/copy-tex-image-and-sub-image-2d.html</test_script_entry>
         </description>
@@ -14121,7 +14073,7 @@
           </spec>
         </specs>
       </testcase>
-      <testcase component="Supplementary APIs/Supplementary/WebGL - Khronos" execution_type="auto" id="gl-drawelements" priority="P2" purpose="Check WebGL drawElements method works" status="approved" type="compliance">
+      <testcase component="Supplementary APIs/Supplementary/WebGL - Khronos" execution_type="auto" id="gl-drawelements" priority="P2" purpose="Check WebGL drawElements method works" status="approved" type="compliance" subcase="6">
         <description>
           <test_script_entry>/opt/tct-webgl-nonw3c-tests/webgl/khronos/gl-drawelements.html</test_script_entry>
         </description>
@@ -14133,7 +14085,7 @@
           </spec>
         </specs>
       </testcase>
-      <testcase component="Supplementary APIs/Supplementary/WebGL - Khronos" execution_type="auto" id="drawingbuffer-static-canvas-test" priority="P2" purpose="This test ensures WebGL implementations correctly implement drawingbufferWidth/Height with compositing" status="approved" type="compliance">
+      <testcase component="Supplementary APIs/Supplementary/WebGL - Khronos" execution_type="auto" id="drawingbuffer-static-canvas-test" priority="P2" purpose="Test WebGL implement drawingbufferWidth/Height with compositing" status="approved" type="compliance" subcase="16">
         <description>
           <test_script_entry>/opt/tct-webgl-nonw3c-tests/webgl/khronos/drawingbuffer-static-canvas-test.html</test_script_entry>
         </description>
@@ -14157,7 +14109,7 @@
           </spec>
         </specs>
       </testcase>
-      <testcase component="Supplementary APIs/Supplementary/WebGL - Khronos" execution_type="auto" id="drawArraysOutOfBounds" priority="P2" purpose="Check drawArrays out of bounds" status="approved" type="compliance">
+      <testcase component="Supplementary APIs/Supplementary/WebGL - Khronos" execution_type="auto" id="drawArraysOutOfBounds" priority="P2" purpose="Check drawArrays out of bounds" status="approved" type="compliance" subcase="4">
         <description>
           <test_script_entry>/opt/tct-webgl-nonw3c-tests/webgl/khronos/drawArraysOutOfBounds.html</test_script_entry>
         </description>
@@ -14169,7 +14121,7 @@
           </spec>
         </specs>
       </testcase>
-      <testcase component="Supplementary APIs/Supplementary/WebGL - Khronos" execution_type="auto" id="copyTexSubImage2DBadArgs" priority="P2" purpose="Check if copyTexSubImage2D with bad argument" status="approved" type="compliance">
+      <testcase component="Supplementary APIs/Supplementary/WebGL - Khronos" execution_type="auto" id="copyTexSubImage2DBadArgs" priority="P2" purpose="Test copyTexSubImage2D with bad argument" status="approved" type="compliance" subcase="7">
         <description>
           <test_script_entry>/opt/tct-webgl-nonw3c-tests/webgl/khronos/copyTexSubImage2DBadArgs.html</test_script_entry>
         </description>
@@ -14277,7 +14229,7 @@
           </spec>
         </specs>
       </testcase>
-      <testcase component="Supplementary APIs/Supplementary/WebGL - Khronos" execution_type="auto" id="glsl-function-min-gentype" priority="P3" purpose="check GLSL min-gentype function test" status="approved" type="compliance">
+      <testcase component="Supplementary APIs/Supplementary/WebGL - Khronos" execution_type="auto" id="glsl-function-min-gentype" priority="P3" purpose="check GLSL min-gentype function test" status="approved" type="compliance" subcase="24">
         <description>
           <test_script_entry>/opt/tct-webgl-nonw3c-tests/webgl/khronos/glsl-function-min-gentype.html</test_script_entry>
         </description>
@@ -14289,7 +14241,7 @@
           </spec>
         </specs>
       </testcase>
-      <testcase component="Supplementary APIs/Supplementary/WebGL - Khronos" execution_type="auto" id="tex-image-and-sub-image-2d-with-canvas" priority="P3" purpose="Verify texImage2D and texSubImage2D code paths taking canvas" status="approved" type="compliance">
+      <testcase component="Supplementary APIs/Supplementary/WebGL - Khronos" execution_type="auto" id="tex-image-and-sub-image-2d-with-canvas" priority="P3" purpose="Verify texImage2D and texSubImage2D code paths taking canvas" status="approved" type="compliance" subcase="97">
         <description>
           <test_script_entry>/opt/tct-webgl-nonw3c-tests/webgl/khronos/tex-image-and-sub-image-2d-with-canvas.html</test_script_entry>
         </description>
@@ -14313,7 +14265,7 @@
           </spec>
         </specs>
       </testcase>
-      <testcase component="Supplementary APIs/Supplementary/WebGL - Khronos" execution_type="auto" id="gl-uniformmatrix4fv" priority="P3" purpose="Check if WebGL implementations handle uniformMatrix" status="approved" type="compliance">
+      <testcase component="Supplementary APIs/Supplementary/WebGL - Khronos" execution_type="auto" id="gl-uniformmatrix4fv" priority="P3" purpose="Check if WebGL implementations handle uniformMatrix" status="approved" type="compliance" subcase="15">
         <description>
           <test_script_entry>/opt/tct-webgl-nonw3c-tests/webgl/khronos/gl-uniformmatrix4fv.html</test_script_entry>
         </description>
@@ -14349,7 +14301,7 @@
           </spec>
         </specs>
       </testcase>
-      <testcase component="Supplementary APIs/Supplementary/WebGL - Khronos" execution_type="auto" id="glsl-function-sin" priority="P3" purpose="Check GLSL sin function test" status="approved" type="compliance">
+      <testcase component="Supplementary APIs/Supplementary/WebGL - Khronos" execution_type="auto" id="glsl-function-sin" priority="P3" purpose="Check GLSL sin function test" status="approved" type="compliance" subcase="24">
         <description>
           <test_script_entry>/opt/tct-webgl-nonw3c-tests/webgl/khronos/glsl-function-sin.html</test_script_entry>
         </description>
@@ -14397,7 +14349,7 @@
           </spec>
         </specs>
       </testcase>
-      <testcase component="Supplementary APIs/Supplementary/WebGL - Khronos" execution_type="auto" id="gl-min-textures" priority="P3" purpose="Check that WebGL the minimum number of uniforms are supported" status="approved" type="compliance">
+      <testcase component="Supplementary APIs/Supplementary/WebGL - Khronos" execution_type="auto" id="gl-min-textures" priority="P3" purpose="Check that WebGL the minimum number of uniforms are supported" status="approved" type="compliance" subcase="2">
         <description>
           <test_script_entry>/opt/tct-webgl-nonw3c-tests/webgl/khronos/gl-min-textures.html</test_script_entry>
         </description>
@@ -14433,7 +14385,7 @@
           </spec>
         </specs>
       </testcase>
-      <testcase component="Supplementary APIs/Supplementary/WebGL - Khronos" execution_type="auto" id="glsl-function-atan-xy" priority="P3" purpose="check GLSL atan-xy function test" status="approved" type="compliance">
+      <testcase component="Supplementary APIs/Supplementary/WebGL - Khronos" execution_type="auto" id="glsl-function-atan-xy" priority="P3" purpose="check GLSL atan-xy function test" status="approved" type="compliance" subcase="24">
         <description>
           <test_script_entry>/opt/tct-webgl-nonw3c-tests/webgl/khronos/glsl-function-atan-xy.html</test_script_entry>
         </description>

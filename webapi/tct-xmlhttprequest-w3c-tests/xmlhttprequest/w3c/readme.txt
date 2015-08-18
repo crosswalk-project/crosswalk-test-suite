@@ -17,7 +17,7 @@ tests. statusText is tested together with status.
 NOTE: open-url-base* have absolute paths in them. They need to be adjusted
 on a per location basis.
 
-NOTE: open-url-base-inserted-after-open.htm, open-url-base-inserted.htm,
+NOTE: open-url-base-inserted-after-open.htm,
 send-authentication.htm and open-url-base.htm refer to localhost.
 
 
