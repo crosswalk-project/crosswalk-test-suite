@@ -151,6 +151,31 @@ def create(appname, pkgname, mode, sourcecodepath, replace_index_list, self):
         if sourcecodepath is not None:
             do_remove(glob.glob(os.path.join(project_root, "www")))
             do_copy(sourcecodepath, os.path.join(tool_path, appname, "www"))
+
+        if mode == "shared":
+            if not replace_key(os.path.join(project_root, 'config.xml'),
+                           '<preference name="lib_mode" value="shared"', '<preference name="lib_mode" value="embedd"'):
+                print "replace key 'embedd' failed."
+                self.assertTrue(False)
+
+            android_path = os.path.join(project_root, "platforms", "android")
+            if not replace_key(os.path.join(android_path, 'AndroidManifest.xml'),
+                           '<application android:name="org.xwalk.core.XWalkApplication"', '<application'):
+                print "replace key '<application' failed."
+                self.assertTrue(False)
+
+            package_path = pkgname.strip().replace('.', '/')
+            mainActivity_path = os.path.join(android_path, "src", package_path)
+            if not replace_key(os.path.join(mainActivity_path, '%s.java' % appname),
+                           '    }\n\n    @Override\n    protected void onXWalkReady() {\n        super.init();\n        loadUrl', '        loadUrl'):
+                print "replace key '        loadUrl' failed."
+                self.assertTrue(False)
+
+            cordova_path = os.path.join(android_path, "CordovaLib", "src", "org", "apache", "cordova")
+            if not replace_key(os.path.join(cordova_path, 'CordovaActivity.java'), 'import org.xwalk.core.XWalkActivity;\npublic abstract class CordovaActivity extends XWalkActivity implements CordovaInterface {', 'public class CordovaActivity extends Activity {'):
+                print "replace key 'public class CordovaActivity extends Activity {' failed."
+                self.assertTrue(False)
+            
     else:
         if replace_index_list is not None and len(replace_index_list) >= 2:
             index_file_path = os.path.join(
@@ -219,6 +244,34 @@ def buildGoogleApp(appname, sourcecodepath, self):
 
     pluginstatus = commands.getstatusoutput(plugin_install_cmd)
     self.assertEquals(0, pluginstatus[0])
+
+    add_android_cmd = "cca platform add android"
+    addstatus = commands.getstatusoutput(add_android_cmd)
+    self.assertEquals(0, addstatus[0])
+
+    if mode == "shared":
+        if not replace_key(os.path.join(project_root, 'config.xml'),
+                       '<preference name="lib_mode" value="shared"', '<preference name="lib_mode" value="embedd"'):
+            print "replace key 'embedd' failed."
+            self.assertTrue(False)
+
+        android_path = os.path.join(project_root, "platforms", "android")
+        if not replace_key(os.path.join(android_path, 'AndroidManifest.xml'),
+                       '<application android:name="org.xwalk.core.XWalkApplication"', '<application'):
+            print "replace key '<application' failed."
+            self.assertTrue(False)
+
+        package_path = pkgname.strip().replace('.', '/')
+        mainActivity_path = os.path.join(android_path, "src", package_path)
+        if not replace_key(os.path.join(mainActivity_path, '%s.java' % appname),
+                       '    }\n\n    @Override\n    protected void onXWalkReady() {\n        super.init();\n        loadUrl', '        loadUrl'):
+            print "replace key '        loadUrl' failed."
+            self.assertTrue(False)
+
+        cordova_path = os.path.join(android_path, "CordovaLib", "src", "org", "apache", "cordova")
+        if not replace_key(os.path.join(cordova_path, 'CordovaActivity.java'), 'import org.xwalk.core.XWalkActivity;\npublic abstract class CordovaActivity extends XWalkActivity implements CordovaInterface {', 'public class CordovaActivity extends Activity {'):
+            print "replace key 'public class CordovaActivity extends Activity {' failed."
+            self.assertTrue(False)
 
     build_cmd = "cca build android"
     buildstatus = commands.getstatusoutput(build_cmd)
