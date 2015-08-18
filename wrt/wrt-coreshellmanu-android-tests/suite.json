@@ -19,11 +19,24 @@
                 "inst.apk.py": "inst.py",
                 "tests.full.xml": "tests.full.xml",
                 "tests.xml": "tests.xml",
-                "PACK-TOOL-ROOT/resources/xsl": "."
+                "PACK-TOOL-ROOT/resources/xsl": ".",
+                "wrt-coreshell-app/testscripts": "wrt-coreshell-app/testscripts",
+                "PACK-TOOL-ROOT/resources/bdd/bddrunner": "bddrunner",
+                "PACK-TOOL-ROOT/atip/tests/environment.py": "wrt-coreshell-app/testscripts/environment.py",
+                "PACK-TOOL-ROOT/XWalkCoreShell.apk": "resources/XWalkCoreShell.apk"
             },
             "pkg-app": {
                 "copylist": {
                     "PACK-TOOL-ROOT/resources/webrunner": "webrunner"
+                }
+            },
+            "subapp-list": {
+                "wrt-coreshell-app": {
+                "apk-common-opts": "--enable-remote-debugging",
+                "apk-icon-opt": "",
+                "copylist": {
+                    "../coreshellmanu/bdd": "coreshell"
+                }
                 }
             }
         },

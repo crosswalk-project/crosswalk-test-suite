@@ -2,7 +2,7 @@
 <?xml-stylesheet type="text/xsl" href="./testcase.xsl"?>
 <test_definition>
   <suite category="Crosswalk WRT" name="wrt-coreshellmanu-android-tests">
-    <set name="rtcore" type="js">
+    <set name="coreshell-bdd" type="js" ui-auto="bdd">
       <testcase component="Crosswalk WRT/Core Shell" execution_type="manual" id="Crosswalk_Multiple_Tab_SamePages" priority="P1" purpose="Validate Crosswalk enable multiple instances for same pages" status="approved" type="Functional">
         <description>
           <pre_condition>
@@ -10,7 +10,8 @@
             2.Make sure device connected to network.
           </pre_condition>
           <post_condition />
-          <test_script_entry>/opt/wrt-coreshellmanu-android-tests/coreshellmanu/Crosswalk_Multiple_Tab_SamePages.html </test_script_entry>
+          <test_script_entry>/opt/wrt-coreshellmanu-android-tests/coreshellmanu/bdd/Crosswalk_Multiple_Tab_SamePages.html </test_script_entry>
+          <bdd_test_script_entry test_script_expected_result="0">/opt/wrt-coreshellmanu-android-tests/wrt-coreshell-app/testscripts/Crosswalk_Multiple_Tab_SamePages.feature</bdd_test_script_entry>
         </description>
       </testcase>
       <testcase component="Crosswalk WRT/Core Shell" execution_type="manual" id="Crosswalk_Multiple_Tab_DiffPages" priority="P1" purpose="Validate Crosswalk enable multiple instances for different pages" status="approved" type="Functional">
@@ -20,7 +21,8 @@
             2.Make sure device connected to network.
           </pre_condition>
           <post_condition />
-          <test_script_entry>/opt/wrt-coreshellmanu-android-tests/coreshellmanu/Crosswalk_Multiple_Tab_DiffPages.html </test_script_entry>
+          <test_script_entry>/opt/wrt-coreshellmanu-android-tests/coreshellmanu/bdd/Crosswalk_Multiple_Tab_DiffPages.html </test_script_entry>
+          <bdd_test_script_entry test_script_expected_result="0">/opt/wrt-coreshellmanu-android-tests/wrt-coreshell-app/testscripts/Crosswalk_Multiple_Tab_DiffPages.feature</bdd_test_script_entry>
         </description>
       </testcase>
       <testcase component="Crosswalk WRT/Core Shell" execution_type="manual" id="Crosswalk_Multiple_Tab_LocalPages" priority="P2" purpose="Validate Crosswalk enable multiple instances for local pages" status="approved" type="Functional">
@@ -30,7 +32,8 @@
             2.Make sure device connected to network.
           </pre_condition>
           <post_condition />
-          <test_script_entry>/opt/wrt-coreshellmanu-android-tests/coreshellmanu/Crosswalk_Multiple_Tab_LocalPages.html </test_script_entry>
+          <test_script_entry>/opt/wrt-coreshellmanu-android-tests/coreshellmanu/bdd/Crosswalk_Multiple_Tab_LocalPages.html </test_script_entry>
+          <bdd_test_script_entry test_script_expected_result="0">/opt/wrt-coreshellmanu-android-tests/wrt-coreshell-app/testscripts/Crosswalk_Multiple_Tab_LocalPages.feature</bdd_test_script_entry>
         </description>
       </testcase>
       <testcase component="Crosswalk WRT/Core Shell" execution_type="manual" id="Crosswalk_Multiple_Tab_ErrorPages" priority="P3" purpose="Validate Crosswalk enable multiple instances for error pages" status="approved" type="Functional">
@@ -40,7 +43,8 @@
             2.Make sure device connected to network.
           </pre_condition>
           <post_condition />
-          <test_script_entry>/opt/wrt-coreshellmanu-android-tests/coreshellmanu/Crosswalk_Multiple_Tab_ErrorPages.html </test_script_entry>
+          <test_script_entry>/opt/wrt-coreshellmanu-android-tests/coreshellmanu/bdd/Crosswalk_Multiple_Tab_ErrorPages.html </test_script_entry>
+          <bdd_test_script_entry test_script_expected_result="0">/opt/wrt-coreshellmanu-android-tests/wrt-coreshell-app/testscripts/Crosswalk_Multiple_Tab_ErrorPages.feature</bdd_test_script_entry>
         </description>
       </testcase>
       <testcase component="Crosswalk WRT/Core Shell" execution_type="manual" id="Crosswalk_Multiple_Tab_OtherPages" priority="P3" purpose="Validate Crosswalk enable multiple instances for https,ftp pages" status="approved" type="Functional">
@@ -50,7 +54,8 @@
             2.Make sure device connected to network.
           </pre_condition>
           <post_condition />
-          <test_script_entry>/opt/wrt-coreshellmanu-android-tests/coreshellmanu/Crosswalk_Multiple_Tab_OtherPages.html </test_script_entry>
+          <test_script_entry>/opt/wrt-coreshellmanu-android-tests/coreshellmanu/bdd/Crosswalk_Multiple_Tab_OtherPages.html </test_script_entry>
+          <bdd_test_script_entry test_script_expected_result="0">/opt/wrt-coreshellmanu-android-tests/wrt-coreshell-app/testscripts/Crosswalk_Multiple_Tab_OtherPages.feature</bdd_test_script_entry>
         </description>
       </testcase>
     </set>
