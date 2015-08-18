@@ -82,12 +82,12 @@ def setUp():
 
     f_version = open(const_path + "/../cordova-version", 'r')
     if f_version.read().strip("\n\t") != "3.6":
-        CORDOVA_VERSION = "4.0"
+        CORDOVA_VERSION = "4.x"
     else:
         CORDOVA_VERSION = "3.6"
     f_version.close()
 
-    if CORDOVA_VERSION == "4.0":
+    if CORDOVA_VERSION == "4.x":
         with open(const_path + "/../VERSION", "rt") as pkg_version_file:
             pkg_version_raw = pkg_version_file.read()
             pkg_version_file.close()
@@ -101,7 +101,7 @@ def create(appname, pkgname, mode, sourcecodepath, replace_index_list, self):
         print "Existing %s project, try to clean up..." % appname
         do_remove(glob.glob(os.path.join(tool_path, appname)))
     print "Create project %s ----------------> START" % appname
-    if CORDOVA_VERSION == "4.0":
+    if CORDOVA_VERSION == "4.x":
         cmd = "cordova create %s %s %s" % (appname, pkgname, appname)
     else:
         if mode == "shared":
@@ -115,7 +115,7 @@ def create(appname, pkgname, mode, sourcecodepath, replace_index_list, self):
     result = commands.getstatusoutput("ls")
     self.assertIn(appname, result[1])
     project_root = os.path.join(tool_path, appname)
-    if CORDOVA_VERSION == "4.0":
+    if CORDOVA_VERSION == "4.x":
         os.chdir(project_root)
         if not replace_key(os.path.join(project_root, 'config.xml'),
                            '<widget android-activityName="%s"' % appname, '<widget'):
@@ -243,7 +243,7 @@ def buildGoogleApp(appname, sourcecodepath, self):
 def build(appname, isDebug, self):
     os.chdir(os.path.join(tool_path, appname))
     print "Build project %s ----------------> START" % appname
-    if CORDOVA_VERSION == "4.0":
+    if CORDOVA_VERSION == "4.x":
         cmd = "cordova build android"
         if isDebug == True:
             print "build debug app"
@@ -257,7 +257,7 @@ def build(appname, isDebug, self):
     buildstatus = commands.getstatusoutput(cmd)
     self.assertEquals(0, buildstatus[0])
     print "\nBuild project %s ----------------> OK\n" % appname
-    if CORDOVA_VERSION == "4.0":
+    if CORDOVA_VERSION == "4.x":
         os.chdir(
             os.path.join(
                 tool_path,
@@ -281,7 +281,7 @@ def build(appname, isDebug, self):
 def run(appname, self):
     os.chdir(os.path.join(tool_path, appname))
     print "Run project %s ----------------> START" % appname
-    if CORDOVA_VERSION == "4.0":
+    if CORDOVA_VERSION == "4.x":
         cmd = "cordova run android"
     else:
         cmd = "./cordova/run"

@@ -615,7 +615,7 @@ def packCordova_cli(
     output_version = int(output[0])
     if output_version < 5:
         LOG.error(
-            "Cordova 4.0 build requires the latest Cordova CLI, and must >= 5.0.0, install with command: '$ sudo npm install cordova -g'")
+            "Cordova 4.x build requires the latest Cordova CLI, and must >= 5.0.0, install with command: '$ sudo npm install cordova -g'")
         return False
 
     plugin_tool = os.path.join(BUILD_ROOT, "cordova_plugins")
@@ -667,14 +667,8 @@ def packCordova_cli(
     for i_dir in plugin_dirs:
         i_plugin_dir = os.path.join(plugin_tool, i_dir)
         if i_dir == "cordova-plugin-crosswalk-webview":
-            os.chdir(i_plugin_dir)
-            output = commands.getoutput("git pull").strip("\r\n")
-            os.chdir(project_root)
-            plugin_install_webview = "cordova plugin add %s --variable CROSSWALK_ANDROID_VERSION=\"%s\"" % (i_plugin_dir, CROSSWALK_VERSION)
-            if BUILD_PARAMETERS.pkgmode == "shared":
-                plugin_install_cmd = plugin_install_webview + " --variable LIB_MODE=\"shared\""
-            else:
-                plugin_install_cmd = plugin_install_webview + " --variable LIB_MODE=\"embedd\""
+            plugin_install_cmd = "cordova plugin add %s --variable CROSSWALK_ANDROID_VERSION=\"%s\"" \
+                " --variable LIB_MODE=\"%s\""  % (i_plugin_dir, CROSSWALK_VERSION, BUILD_PARAMETERS.pkgmode)
         else:
             plugin_install_cmd = "cordova plugin add %s" % i_plugin_dir
         if not doCMD(plugin_install_cmd, DEFAULT_CMD_TIMEOUT):
@@ -780,7 +774,7 @@ def packCordova(build_json=None, app_src=None, app_dest=None, app_name=None):
     os.environ['ANDROID_HOME'] = commands.getoutput(ANDROID_HOME)
     pack_cmd = "./cordova/build"
 
-    if BUILD_PARAMETERS.subversion == '4.0':
+    if BUILD_PARAMETERS.subversion == '4.x':
         if BUILD_PARAMETERS.pkgarch == "x86":
             cordova_tmp_path = os.path.join(
                 BUILD_ROOT,
@@ -1173,7 +1167,7 @@ def packAPP(build_json=None, app_src=None, app_dest=None, app_name=None):
         if not packAPK(build_json, app_src, app_dest, app_name):
             return False
     elif checkContains(BUILD_PARAMETERS.pkgtype, "CORDOVA"):
-        if BUILD_PARAMETERS.subversion == '4.0':
+        if BUILD_PARAMETERS.subversion == '4.x':
             if not packCordova_cli(build_json, app_src, app_dest, app_name):
                 return False
         else:
@@ -1376,7 +1370,7 @@ def main():
             "-m",
             "--mode",
             dest="pkgmode",
-            help="specify the apk mode, not for embeddingapi, cordova version 4.0, e.g. shared, embedded")
+            help="specify the apk mode, not for embeddingapi, cordova version 4.x, e.g. shared, embedded")
         opts_parser.add_option(
             "-a",
             "--arch",
@@ -1568,7 +1562,7 @@ def main():
     pkg_json = None
     global parameters_type
     parameters_type = None
-    cordova_subv_list = ['4.0', '3.6']
+    cordova_subv_list = ['4.x', '3.6']
 
     if BUILD_PARAMETERS.pkgtype == "cordova" or BUILD_PARAMETERS.pkgtype == "cordova-aio":
 
@@ -1585,7 +1579,7 @@ def main():
         if BUILD_PARAMETERS.subversion:
             if not str(BUILD_PARAMETERS.subversion) in cordova_subv_list:
                 LOG.error(
-                    "The argument of cordova --sub-version can only be '3.6' or '4.0' , exit ...")
+                    "The argument of cordova --sub-version can only be '3.6' or '4.x' , exit ...")
                 sys.exit(1)
             parameters_type = BUILD_PARAMETERS.pkgtype + \
                 BUILD_PARAMETERS.subversion
