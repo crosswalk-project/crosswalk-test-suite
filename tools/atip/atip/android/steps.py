@@ -33,6 +33,7 @@ reload(sys)
 sys.setdefaultencoding('utf-8')
 
 
+# launch android app by its package name and activity name
 @step(u'I launch "{app_name}" with "{apk_pkg_name}" and "{apk_activity_name}" on android')
 def launch_app_by_names(context, app_name, apk_pkg_name, apk_activity_name):
     android.launch_app_by_name(
@@ -42,32 +43,50 @@ def launch_app_by_names(context, app_name, apk_pkg_name, apk_activity_name):
         apk_activity_name)
 
 
+# force to run all registered watchers
 @step(u'I force to run all watchers')
 def force_run_watchers(context):
     context.android.runAllWatchers()
 
 
+# remove all registered watchers
 @step(u'I remove all watchers')
 def clear_all_watchers(context):
     context.android.removeAllWatchers()
 
 
+# When a selector can not find a match, uiautomator will run all registered watchers.
+# watcher(watcher_name) ## creates a new named watcher.
+# when(when_text)  ## the UiSelector condition of the watcher.
+# click(click_text)  ## perform click action on the target UiSelector.
 @step(u'I register watcher "{watcher_name}" when "{when_text}" click "{click_text}"')
 def register_watcher_when(context, watcher_name, when_text, click_text):
     context.android.registerWatcher(watcher_name, when_text, click_text)
 
 
+# the UiSelector condition of the watcher is two conditions
 @step(u'I register watcher2 "{watcher_name}" when "{when_text1}" and "{when_text2}" click "{click_text}"')
 def register_watcher_when2(context, watcher_name, when_text1, when_text2, click_text):
     context.android.registerWatcher(watcher_name, when_text1, click_text, when_text2)
 
 
+# I should see view by its UiSelector
+# e.g.
+# I shoud see view "text=Clock^^^className=android.widget.TextView"
+# Its UiSelector format combine key=value with ^^^, and the selector need at least one key=value
+# the key should be in DEFAULT_PARAMETER_KEYS = ["text", "textContains", "textMatches", "textStartsWith",
+#               "description", "descriptionContains", "descriptionMatches", "descriptionStartsWith",
+#               "resourceId", "resourceIdMatches", "className"]
 @step(u'I should see view "{params_kw}"')
 def select_view_by(context, params_kw):
     ob = context.android.selectObjectBy(params_kw)
     assert ob.exists
 
 
+# the UiSelector format is all the same
+# position means 'left', 'right', 'up', 'down'
+# e.g.
+# B on the left side of A, means selecting B on the left side of A
 @step(u'I should see relative view "{params_kw1}" on the "{position}" side of view "{params_kw2}"')
 def select_relative_object(context, params_kw1, position, params_kw2):
     ob = context.android.selectObjectBy(params_kw2)
@@ -109,6 +128,7 @@ def click_view(context, params_kw):
     assert context.android.clickObject(ob)
 
 
+# get the saved ui object from key and if exists then click it.
 @step(u'I click saved object "{key}"')
 def click_object(context, key):
     ob = context.android.get2InfoTemp(key)
@@ -116,6 +136,7 @@ def click_object(context, key):
     assert context.android.clickObject(ob)
 
 
+# edit the ui object by its UiSelector and input the text
 @step(u'I edit view "{params_kw}" to input "{text}"')
 def set_edittext_object(context, params_kw, text):
     ob = context.android.selectObjectBy(params_kw)
@@ -123,6 +144,7 @@ def set_edittext_object(context, params_kw, text):
     assert context.android.setEditText(ob, text)
 
 
+# edit the index number EditText in current ui display and input the text
 @step(u'I edit index {n:d} EditText to input "{text}"')
 def set_index_edittext_object(context, n, text):
     ob = context.android.selectObjectBy("className=android.widget.EditText")[n]
@@ -130,6 +152,7 @@ def set_index_edittext_object(context, n, text):
     assert context.android.setEditText(ob, text)
 
 
+# save the found ui object to temporary memory with the key
 @step(u'I save view "{params_kw}" to object "{key}"')
 def save_view_to_object(context, params_kw, key):
     ob = context.android.selectObjectBy(params_kw)
@@ -146,6 +169,9 @@ def save_relativeview_to_object(context, params_kw1, position, params_kw2, key):
     assert context.android.save2InfoTemp(relative_ob, key)
 
 
+# save the found ui object(get from its key) info(get from its info_name) to temporary memory with the info_key
+# info_name should be in OBJECT_INFO_KEYS = ["contentDescription", "checked", "scrollable", "text",
+#                                           "packageName", "selected", "enabled", "className"]
 @step(u'I save object "{key}" info "{info_name}" to temp "{info_key}"')
 def save_info_temp(context, key, info_name, info_key):
     ob = context.android.get2InfoTemp(key)
@@ -153,6 +179,8 @@ def save_info_temp(context, key, info_name, info_key):
     assert context.android.save2InfoTemp(info, info_key)
 
 
+# directly get the ui object info by its UiSelector and info_name
+# and compare with except_result
 @step(u'The view "{params_kw}" info "{info_name}" should be "{except_result}"')
 def compare_views(context, params_kw, info_name, except_result):
     ob = context.android.selectObjectBy(params_kw)
@@ -183,16 +211,22 @@ def unequal_with_keys(context, key1, key2):
         assert False
 
 
+# scroll forward(default) to end vertically(default)
 @step(u'I scroll to end')
 def scroll_to_end(context):
     assert context.android.scrollToEnd()
 
 
+# fling forward(default) vertically(default)
+# orientation should be in 'horiz' or 'vert'
+# direction should be in 'forward' or 'backward'
 @step(u'I fling "{orientation}" goto "{direction}"')
 def fling_by(context, orientation, direction):
     assert context.android.flingBy(orientation, direction)
 
 
+# swipe from the center of the ui object to its edge
+# orientation should be in 'left', 'right', 'up' or 'down'
 @step(u'I swipe view "{params_kw}" to "{orientation}"')
 def swipe_to(context, key, orientation):
     ob = context.android.selectObjectBy(params_kw)
@@ -200,6 +234,7 @@ def swipe_to(context, key, orientation):
     assert context.android.swipeTo(ob, orientation)
 
 
+# swipe the saved ui object by the key to its edge
 @step(u'I swipe saved object "{key}" to "{orientation}"')
 def swipe_to(context, key, orientation):
     ob = context.android.get2InfoTemp(key)
@@ -207,6 +242,7 @@ def swipe_to(context, key, orientation):
     assert context.android.swipeTo(ob, orientation)
 
 
+# save the finding ui object process with its UiSelector
 @step(u'I save process of finding view "{params_kw1}" on the "{position}" side of view "{params_kw2}"')
 def process_finding_relative_view(context, params_kw1="", position="", params_kw2=""):
     context.android.process_args['func_name'] = process_finding_relative_view
@@ -223,6 +259,7 @@ def process_finding_relative_view(context, params_kw1="", position="", params_kw
     return save_process
 
 
+# reload the saved process and get its result found object and save with the key
 @step(u'I reload above process and save result to object "{key}"')
 def reload_process(context, key):
     f = context.android.process_args['func_name'](context)
@@ -231,6 +268,7 @@ def reload_process(context, key):
     assert context.android.save2InfoTemp(ob, key)
 
 
+# wait until the ui object gone
 @step(u'I wait saved object "{key}" gone in {time_out:d} seconds')
 def wait_object_gone(context, key, time_out):
     ob = context.android.get2InfoTemp(key)
