@@ -7,4 +7,3 @@ This sample demonstrates SharedModeLibraryDownload feature basic functionalities
 This usecase covers following method:
 
 * $ ./bin/create SharedModeLibraryDownload com.example.sharedModeLibraryDownload SharedModeLibraryDownload --xwalk-apk-url=[http://host/XWalkRuntimeLib.apk] --xwalk-shared-library
-* $ ./cordova/build
