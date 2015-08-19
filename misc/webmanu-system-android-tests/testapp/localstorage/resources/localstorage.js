@@ -25,87 +25,27 @@ NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE,
 EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
 Authors:
-       Yao,Yi <yix.yao@intel.com>
-       Xu,Jianfeng <jianfengx.xu@intel.com>
+        Wang, Hongjuan <hongjuanx.wang@intel.com>
 
 */
 
-Array.prototype.indexof = function(key){
-  for(var i=0; i<this.length; i++){
-    if(this[i] == key){
-      return i;
-    }
-  }
-  return -1;
-}
-
-Array.prototype.remove = function(key){
-  var index = this.indexof(key);
-  if( index !== -1){
-    this.splice(index,1)
-  }
-}
-
-Array.prototype.push = function(key){
-  var index = this.indexof(key);
-  if(index == -1){
-    this[this.length] = key;
-  }
-}
-
-localKeyArray = new Array();
-
-function status(){
-  $("#tableList").empty();
-  var table = document.querySelector("table");
-  table.insertRow(0)
-  table.rows[0].insertCell(0).innerHTML = "Storage Type";
-  table.rows[0].insertCell(1).innerHTML = "Key";
-  table.rows[0].insertCell(2).innerHTML = "Value";
-
-  var storages = "localStorage";
-  var arrays = "localKeyArray";
-    var storage = window[storages];
-    var keyArray = window[arrays];
-    for(var j=0; j<keyArray.length; j++){
-      var len = table.rows.length;
-      var key = keyArray[j];
-      var value = storage.getItem(key);
-      if(value !== null){
-        table.insertRow(len);
-        table.rows[len].insertCell(0).innerHTML = storages;
-        table.rows[len].insertCell(1).innerHTML = key;
-        table.rows[len].insertCell(2).innerHTML = value;
-      }
-    }
-}
-
-function onAdd(){
-  var local = $("#local").val();
-
-  if (local !== "") {
-    localStorage.setItem(local, local);
-    localKeyArray.push(local);
-  }
-
-  status();
-  $("#status").text('Data Stored');
-}
-
-function onRemove(){
-  var local = $("#local").val();
-
-  if (local !== "") {
-    localStorage.removeItem(local);
-    localKeyArray.remove(local);
-  }
-
-  status();
-  $("#status").text('Left Data');
-}
-
 $(document).ready(function () {
-    $("#add").click(onAdd);
-    $("#remove").click(onRemove);
-    status();
-});
+
+  //LocalStorage
+  $("#setLocalstorage").click(function(){
+    msg = "test";
+    localStorage.setItem("1", msg);
+    $('#testDiv').text($('#testDiv').text() + '\nSave localStorage value successfully: ' + msg);
+  })
+
+  $("#getLocalstorage").click(function(){
+    var msg = localStorage.getItem("1");
+    if(msg == null){
+      $('#testDiv').text($('#testDiv').text() + '\nPlease click "Set localStorage" at first');
+    }
+    else{
+      $('#testDiv').text($('#testDiv').text() + '\nGet localStorage value: ' + msg);
+    }
+      
+  })
+})
