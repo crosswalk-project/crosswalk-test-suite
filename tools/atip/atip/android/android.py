@@ -34,7 +34,8 @@ from atip.common import common
 from uiautomator import *
 reload(sys)
 sys.setdefaultencoding('utf-8')
-DEFAULT_PARAMETER_KEYS = ["text", "textContains", "description", "descriptionContains",
+DEFAULT_PARAMETER_KEYS = ["text", "textContains", "textMatches", "textStartsWith",
+                "description", "descriptionContains", "descriptionMatches", "descriptionStartsWith",
                 "resourceId", "resourceIdMatches", "className"]
 OBJECT_INFO_KEYS = ["contentDescription", "checked", "scrollable", "text", "packageName",
                 "selected", "enabled", "className"]

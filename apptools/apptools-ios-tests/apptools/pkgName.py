@@ -152,5 +152,12 @@ class TestCaseUnit(unittest.TestCase):
                 "negative16",
                 "crosswalk-app create _org.example.xwalk"))
 
+    def test_pkgName_negative17(self):
+        self.assertEqual(
+            "PASS",
+            allpairs.tryRunApp(
+                "negative17",
+                "crosswalk-app create org.xwalk.www"))
+
 if __name__ == '__main__':
     unittest.main()

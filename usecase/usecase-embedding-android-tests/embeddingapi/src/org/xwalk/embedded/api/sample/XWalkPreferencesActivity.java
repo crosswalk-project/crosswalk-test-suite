@@ -40,10 +40,12 @@ public class XWalkPreferencesActivity extends XWalkActivity {
         XWalkPreferences.setValue(XWalkPreferences.JAVASCRIPT_CAN_OPEN_WINDOW, true);
         XWalkPreferences.setValue(XWalkPreferences.SUPPORT_MULTIPLE_WINDOWS, 3);
         XWalkPreferences.setValue(XWalkPreferences.ALLOW_UNIVERSAL_ACCESS_FROM_FILE, "testSetValue_String");
+        XWalkPreferences.setValue(XWalkPreferences.PROFILE_NAME, "MyDefault");
         XWalkPreferences.getBooleanValue(XWalkPreferences.REMOTE_DEBUGGING);
         XWalkPreferences.getBooleanValue(XWalkPreferences.JAVASCRIPT_CAN_OPEN_WINDOW);
         XWalkPreferences.getIntegerValue(XWalkPreferences.SUPPORT_MULTIPLE_WINDOWS);
         XWalkPreferences.getStringValue(XWalkPreferences.ALLOW_UNIVERSAL_ACCESS_FROM_FILE);
+        XWalkPreferences.getStringValue(XWalkPreferences.PROFILE_NAME);
         mXWalkView.load("http://www.baidu.com/", null);
     }
 }

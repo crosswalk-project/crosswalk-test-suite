@@ -1,0 +1,99 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+     Copyright (c) 2014 Intel Corporation. All rights reserved.
+
+     Use of this source code is governed by a BSD-style license that can be
+     found in the LICENSE file.
+-->
+
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical" >
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal" >
+        
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Cookie Name: " />
+        
+        <EditText
+            android:id="@+id/cookie_name"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1" />
+        
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Expired Time: " />
+        
+        <EditText
+            android:id="@+id/cookie_time"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="** seconds" 
+            android:numeric="integer"
+            android:layout_weight="1" /> 
+            
+        <Button
+            android:id="@+id/add_cookie"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Add Cookie"
+            android:layout_weight="1" />
+        
+    </LinearLayout>    
+
+    <LinearLayout
+        android:id="@+id/toolbar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center_vertical"        
+        android:orientation="horizontal" >
+        
+        <Button
+            android:id="@+id/remove_session_cookie"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:layout_margin="2dp"
+            android:text="removeSessionCookie" />
+        
+        <Button
+            android:id="@+id/remove_expired_cookie"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:layout_margin="2dp"
+            android:text="removeExpiredCookie" />
+                
+        <Button
+            android:id="@+id/remove_all_cookie"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:layout_margin="2dp"
+            android:text="removeAllCookie" />        
+
+    </LinearLayout>
+    
+    <TextView  
+        android:id="@+id/getcookie"  
+    	android:layout_width="match_parent"  
+    	android:layout_height="wrap_content"
+    	android:textSize="16sp"
+    	android:textColor="#FDF5E6"   />      
+
+    <org.xwalk.core.XWalkView
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        android:id="@+id/xwalkview"
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent" >
+    </org.xwalk.core.XWalkView>
+
+</LinearLayout>
