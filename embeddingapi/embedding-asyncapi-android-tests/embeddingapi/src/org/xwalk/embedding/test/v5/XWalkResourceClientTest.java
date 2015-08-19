@@ -17,7 +17,7 @@ import android.test.suitebuilder.annotation.SmallTest;
 public class XWalkResourceClientTest extends XWalkViewTestBase {
 
     @SmallTest
-    public void testOnDocumentLoadedInFrame() throws Throwable {
+    public void testAOnDocumentLoadedInFrame() throws Throwable {
         OnDocumentLoadedInFrameHelper mOnDocumentLoadedInFrameHelper = mTestHelperBridge.getOnDocumentLoadedInFrameHelper();
         String path = "/test.html";
         String pageContent = CommonResources.makeHtmlPageFrom("<title>Test</title>",
