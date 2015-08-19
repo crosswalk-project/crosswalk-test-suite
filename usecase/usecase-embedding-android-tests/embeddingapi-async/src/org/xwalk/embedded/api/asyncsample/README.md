@@ -315,3 +315,12 @@ This usecase covers following interface and methods:
 
 * XWalkView interface: dispatchDraw methods
 
+
+### 30. The [XWalkViewWithOnDrawAsync](XWalkViewWithOnDrawAsync.java) sample check whether onDraw method work as same as WebView, include:
+
+* onDraw can be override
+
+This usecase covers following interface and methods:
+
+* XWalkView interface: onDraw methods
+
