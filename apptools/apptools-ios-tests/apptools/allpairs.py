@@ -54,7 +54,8 @@ def generate_cmd():
         'org.123example.xwalk',
         'org.example._xwalk',
         'org.xwalk.Tests',
-        '_org.example.xwalk']
+        '_org.example.xwalk',
+        'org.xwalk.www']
     flag = ''
     num = 0
     os.chdir(comm.ConstPath + '/../')
