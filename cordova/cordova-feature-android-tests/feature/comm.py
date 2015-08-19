@@ -136,7 +136,7 @@ def create(appname, pkgname, mode, sourcecodepath, replace_index_list, self):
         if mode == "shared":
             plugin_install_cmd = plugin_install_webview + " --variable LIB_MODE=\"shared\""
         else:
-            plugin_install_cmd = plugin_install_webview + " --variable LIB_MODE=\"embedd\""
+            plugin_install_cmd = plugin_install_webview + " --variable LIB_MODE=\"embedded\""
 
         pluginstatus = commands.getstatusoutput(plugin_install_cmd)
         self.assertEquals(0, pluginstatus[0])
@@ -215,7 +215,7 @@ def buildGoogleApp(appname, sourcecodepath, self):
     if MODE == "shared":
         plugin_install_cmd = plugin_install_webview + " --variable LIB_MODE=\"shared\""
     else:
-        plugin_install_cmd = plugin_install_webview + " --variable LIB_MODE=\"embedd\""
+        plugin_install_cmd = plugin_install_webview + " --variable LIB_MODE=\"embedded\""
 
     pluginstatus = commands.getstatusoutput(plugin_install_cmd)
     self.assertEquals(0, pluginstatus[0])
