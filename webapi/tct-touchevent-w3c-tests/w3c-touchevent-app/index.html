@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <!--
-Copyright (c) 2012 Intel Corporation.
+Copyright (c) 2015 Intel Corporation.
 
 Redistribution and use in source and binary forms, with or without modification,
 are permitted provided that the following conditions are met:
@@ -26,36 +26,15 @@ NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE,
 EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
 Authors:
-        Cui,Jieqiong <jieqiongx.cui@intel.com>
-        Wang, Hongjuan <hongjuanx.wang@intel.com>
+        Fan, Yugang < yugang.fan@intel.com>
 
 -->
 
 <html>
   <head>
-    <title>TouchEvent Test: TouchEvent_ctrlKey_exist</title>
-    <link rel="author" title="Intel" href="http://www.intel.com/" />
-    <link rel="help" href="http://www.w3.org/TR/2013/WD-touch-events-20130124/#touchevent-interface" />
-    <meta name="flags" content="interact" />
-    <meta name="assert" content="Check if the attribute ctrlKey exists" />
-    <script src="../resources/testharness.js"></script>
-    <script src="../resources/testharnessreport.js"></script>
+    <title>test</title>
   </head>
   <body>
-    <h1>Please touch the "Touch" button</h1>
-    <button id="touchdiv">Touch</button>
-    <div id="log"></div>
-    <script>
-      t = async_test("Check if the attribute ctrlKey exists", { timeout: 20000});
-
-      function listener(ev) {
-        t.step(function() {
-          assert_true("ctrlKey" in ev, "the attribute ctrlKey exists");
-        });
-        t.done();
-      }
-
-      document.getElementById('touchdiv').addEventListener('touchstart', listener, false);
-    </script>
+  hello
   </body>
 </html>
