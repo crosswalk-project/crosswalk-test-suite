@@ -1,7 +1,7 @@
 #!/bin/bash
 source $(dirname $0)/webapi-noneservice-tests.spec
 
-usage="Usage: ./pack.sh [-t <package type: apk | cordova>] [-a <apk runtime arch: x86 | arm>] [-m <package mode: embedded | shared>] [-v <sub version: 3.6 | 4.0>]
+usage="Usage: ./pack.sh [-t <package type: apk | cordova>] [-a <apk runtime arch: x86 | arm>] [-m <package mode: embedded | shared>] [-v <sub version: 3.6 | 4.x>]
 [-t apk] option was set as default.
 [-a x86] option was set as default.
 [-m embedded] option was set as default.
@@ -17,6 +17,7 @@ pack_type="apk"
 arch="x86"
 pack_mode="embedded"
 sub_version="3.6"
+crosswalk_version=""
 while getopts a:t:m:d:v: o
 do
     case "$o" in
@@ -28,6 +29,12 @@ do
     *) echo "$usage"
        exit 1;;
     esac
+done
+
+main_version=$(cat ../../VERSION | awk 'NR==2')
+for((i=1;i<=4;i++)) 
+do
+    crosswalk_version=$(echo $main_version|cut -d "\"" -f$i)
 done
 
 # clean
@@ -63,12 +70,12 @@ echo "        ]
 if [ $pack_type == "cordova" ]; then
     for suite in $LIST;do
         suitename=`basename $suite`
-        if [ $sub_version == "4.0" ]; then
-            python $SRC_ROOT/../../tools/build/pack.py -t ${pack_type}-aio -a $arch -d $BUILD_DEST --sub-version $sub_version -s $SRC_ROOT/../../webapi/$suitename
+        if [ $sub_version == "4.x" ]; then
+            python $SRC_ROOT/../../tools/build/pack.py -t ${pack_type}-aio -m $pack_mode -a $arch -d $BUILD_DEST --sub-version $sub_version -s $SRC_ROOT/../../webapi/$suitename
         elif [ $sub_version == "3.6" ]; then
             python $SRC_ROOT/../../tools/build/pack.py -t ${pack_type}-aio -m $pack_mode -d $BUILD_DEST --sub-version $sub_version -s $SRC_ROOT/../../webapi/$suitename
         else
-            echo "package sub version can only be 3.6 or 4.0, now exit.... >>>>>>>>>>>>>>>>>>>>>>>>>"
+            echo "package sub version can only be 3.6 or 4.x, now exit.... >>>>>>>>>>>>>>>>>>>>>>>>>"
             clean_workspace
             exit 1
         fi
@@ -125,7 +132,7 @@ if [ $pack_type == "apk" ]; then
         mv $BUILD_DEST/opt/$name/WebapiNoneserviceTests*.apk $BUILD_DEST/opt/$name/$appname.apk
     fi
 elif [ $pack_type == "cordova" ]; then
-    if [ $sub_version == "4.0" ]; then
+    if [ $sub_version == "4.x" ]; then
         cp -ar $SRC_ROOT/../../tools/cordova_plugins $BUILD_ROOT/cordova_plugins
         cd $BUILD_ROOT
         cordova create $appname org.xwalk.$appname $appname
@@ -144,7 +151,11 @@ elif [ $pack_type == "cordova" ]; then
 
         for plugin in `ls $BUILD_ROOT/cordova_plugins`
         do
-            cordova plugin add $BUILD_ROOT/cordova_plugins/$plugin
+            if [ $plugin == "cordova-plugin-crosswalk-webview" ]; then
+                cordova plugin add $BUILD_ROOT/cordova_plugins/$plugin --variable CROSSWALK_ANDROID_VERSION="$crosswalk_version" --variable LIB_MODE="$pack_mode"
+            else
+                cordova plugin add $BUILD_ROOT/cordova_plugins/$plugin
+            fi
         done
 
         cordova build android
@@ -208,7 +219,7 @@ elif [ $pack_type == "cordova" ]; then
             mv $BUILD_ROOT/cordova/$appname/bin/$appname-debug.apk $BUILD_DEST/opt/$name/$appname.apk
         fi
     else
-        echo "package sub version can only be 3.6 or 4.0, now exit.... >>>>>>>>>>>>>>>>>>>>>>>>>"
+        echo "package sub version can only be 3.6 or 4.x, now exit.... >>>>>>>>>>>>>>>>>>>>>>>>>"
         clean_workspace
         exit 1
     fi
