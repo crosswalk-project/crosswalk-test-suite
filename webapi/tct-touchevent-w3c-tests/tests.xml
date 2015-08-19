@@ -13,50 +13,6 @@
           <test_script_entry>/opt/tct-touchevent-w3c-tests/touchevent/document_createTouchList_exist.html</test_script_entry>
         </description>
       </testcase>
-      <testcase component="W3C_HTML5 APIs/Device/Touch Events version 1" execution_type="manual" id="TouchEvent_altKey_exist" purpose="Check if touchEvent.altKey attribute is defined.">
-        <description>
-          <steps>
-            <step order="1">
-              <step_desc>Use WRT to visit the "touchEvent_touchEvent_altKey" Check if touchEvent.altKey attribute is defined.</step_desc>
-              <expected>Pass</expected>
-            </step>
-          </steps>
-          <test_script_entry>/opt/tct-touchevent-w3c-tests/touchevent/TouchEvent_altKey_exist-manual.html</test_script_entry>
-        </description>
-      </testcase>
-      <testcase component="W3C_HTML5 APIs/Device/Touch Events version 1" execution_type="manual" id="TouchEvent_ctrlKey_exist" purpose="Check if touchEvent.ctrlKey attribute is defined.">
-        <description>
-          <steps>
-            <step order="1">
-              <step_desc>Use WRT to visit the "touchEvent_touchEvent_ctrlKey" Check if touchEvent.ctrlKey attribute is defined.</step_desc>
-              <expected>Pass</expected>
-            </step>
-          </steps>
-          <test_script_entry>/opt/tct-touchevent-w3c-tests/touchevent/TouchEvent_ctrlKey_exist-manual.html</test_script_entry>
-        </description>
-      </testcase>
-      <testcase component="W3C_HTML5 APIs/Device/Touch Events version 1" execution_type="manual" id="TouchEvent_metaKey_exist" purpose="Check if touchEvent.metaKey attribute is defined.">
-        <description>
-          <steps>
-            <step order="1">
-              <step_desc>Use WRT to visit the "touchEvent_touchEvent_metaKey" Check if touchEvent.metaKey attribute is defined.</step_desc>
-              <expected>Pass</expected>
-            </step>
-          </steps>
-          <test_script_entry>/opt/tct-touchevent-w3c-tests/touchevent/TouchEvent_metaKey_exist-manual.html</test_script_entry>
-        </description>
-      </testcase>
-      <testcase component="W3C_HTML5 APIs/Device/Touch Events version 1" execution_type="manual" id="TouchEvent_shiftKey_exist" purpose="Check if touchEvent.shiftKey attribute is defined.">
-        <description>
-          <steps>
-            <step order="1">
-              <step_desc>Use WRT to visit the "touchEvent_touchEvent_shiftKey" Check if touchEvent.shiftKey attribute is defined.</step_desc>
-              <expected>Pass</expected>
-            </step>
-          </steps>
-          <test_script_entry>/opt/tct-touchevent-w3c-tests/touchevent/TouchEvent_shiftKey_exist-manual.html</test_script_entry>
-        </description>
-      </testcase>
       <testcase component="W3C_HTML5 APIs/Device/Touch Events version 1" execution_type="manual" id="multi_touchstart_event_received" purpose="Check if touchstart event is received during multiple touches">
         <description>
           <pre_condition>Test device supports touch.</pre_condition>
@@ -667,6 +623,56 @@
       <testcase component="W3C_HTML5 APIs/Device/Touch Events version 1" execution_type="auto" id="document_createTouchList_two_arguments" purpose="Check if createTouchList length is two, when parameter be set to two Touch">
         <description>
           <test_script_entry>/opt/tct-touchevent-w3c-tests/touchevent/w3c/create-touch-touchlist.html?total_num=73&amp;locator_key=id&amp;value=33</test_script_entry>
+        </description>
+      </testcase>
+    </set>
+    <set name="TouchEvent-bdd" type="js" ui-auto="bdd">
+      <testcase component="W3C_HTML5 APIs/Device/Touch Events version 1" execution_type="manual" id="TouchEvent_altKey_exist" purpose="Check if touchEvent.altKey attribute is defined.">
+        <description>
+          <steps>
+            <step order="1">
+              <step_desc>Use WRT to visit the "touchEvent_touchEvent_altKey" Check if touchEvent.altKey attribute is defined.</step_desc>
+              <expected>Pass</expected>
+            </step>
+          </steps>
+          <test_script_entry>/opt/tct-touchevent-w3c-tests/touchevent/bdd/TouchEvent_altKey_exist-manual.html</test_script_entry>
+          <bdd_test_script_entry test_script_expected_result="0">/opt/tct-touchevent-w3c-tests/w3c-touchevent-app/testscripts/TouchEvent_altKey_exist.feature</bdd_test_script_entry>
+        </description>
+      </testcase>
+      <testcase component="W3C_HTML5 APIs/Device/Touch Events version 1" execution_type="manual" id="TouchEvent_ctrlKey_exist" purpose="Check if touchEvent.ctrlKey attribute is defined.">
+        <description>
+          <steps>
+            <step order="1">
+              <step_desc>Use WRT to visit the "touchEvent_touchEvent_ctrlKey" Check if touchEvent.ctrlKey attribute is defined.</step_desc>
+              <expected>Pass</expected>
+            </step>
+          </steps>
+          <test_script_entry>/opt/tct-touchevent-w3c-tests/touchevent/bdd/TouchEvent_ctrlKey_exist-manual.html</test_script_entry>
+          <bdd_test_script_entry test_script_expected_result="0">/opt/tct-touchevent-w3c-tests/w3c-touchevent-app/testscripts/TouchEvent_ctrlKey_exist.feature</bdd_test_script_entry>
+        </description>
+      </testcase>
+      <testcase component="W3C_HTML5 APIs/Device/Touch Events version 1" execution_type="manual" id="TouchEvent_metaKey_exist" purpose="Check if touchEvent.metaKey attribute is defined.">
+        <description>
+          <steps>
+            <step order="1">
+              <step_desc>Use WRT to visit the "touchEvent_touchEvent_metaKey" Check if touchEvent.metaKey attribute is defined.</step_desc>
+              <expected>Pass</expected>
+            </step>
+          </steps>
+          <test_script_entry>/opt/tct-touchevent-w3c-tests/touchevent/bdd/TouchEvent_metaKey_exist-manual.html</test_script_entry>
+          <bdd_test_script_entry test_script_expected_result="0">/opt/tct-touchevent-w3c-tests/w3c-touchevent-app/testscripts/TouchEvent_metaKey_exist.feature</bdd_test_script_entry>
+        </description>
+      </testcase>
+      <testcase component="W3C_HTML5 APIs/Device/Touch Events version 1" execution_type="manual" id="TouchEvent_shiftKey_exist" purpose="Check if touchEvent.shiftKey attribute is defined.">
+        <description>
+          <steps>
+            <step order="1">
+              <step_desc>Use WRT to visit the "touchEvent_touchEvent_shiftKey" Check if touchEvent.shiftKey attribute is defined.</step_desc>
+              <expected>Pass</expected>
+            </step>
+          </steps>
+          <test_script_entry>/opt/tct-touchevent-w3c-tests/touchevent/bdd/TouchEvent_shiftKey_exist-manual.html</test_script_entry>
+          <bdd_test_script_entry test_script_expected_result="0">/opt/tct-touchevent-w3c-tests/w3c-touchevent-app/testscripts/TouchEvent_shiftKey_exist.feature</bdd_test_script_entry>
         </description>
       </testcase>
     </set>

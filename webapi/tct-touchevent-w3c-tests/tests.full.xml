@@ -27,78 +27,6 @@
           </spec>
         </specs>
       </testcase>
-      <testcase component="W3C_HTML5 APIs/Device/Touch Events version 1" execution_type="manual" id="TouchEvent_altKey_exist" priority="P1" purpose="Check if touchEvent.altKey attribute is defined." status="approved" type="compliance">
-        <description>
-          <steps>
-            <step order="1">
-              <step_desc>Use WRT to visit the "touchEvent_touchEvent_altKey" Check if touchEvent.altKey attribute is defined.</step_desc>
-              <expected>Pass</expected>
-            </step>
-          </steps>
-          <test_script_entry>/opt/tct-touchevent-w3c-tests/touchevent/TouchEvent_altKey_exist-manual.html</test_script_entry>
-        </description>
-        <specs>
-          <spec>
-            <spec_assertion category="Tizen W3C API Specifications" element_name="altKey" element_type="attribute" interface="TouchEvent" section="Device" specification="Touch Events version 1" />
-            <spec_url>http://www.w3.org/TR/2013/WD-touch-events-20130124/#touchevent-interface</spec_url>
-            <spec_statement />
-          </spec>
-        </specs>
-      </testcase>
-      <testcase component="W3C_HTML5 APIs/Device/Touch Events version 1" execution_type="manual" id="TouchEvent_ctrlKey_exist" priority="P1" purpose="Check if touchEvent.ctrlKey attribute is defined." status="approved" type="compliance">
-        <description>
-          <steps>
-            <step order="1">
-              <step_desc>Use WRT to visit the "touchEvent_touchEvent_ctrlKey" Check if touchEvent.ctrlKey attribute is defined.</step_desc>
-              <expected>Pass</expected>
-            </step>
-          </steps>
-          <test_script_entry>/opt/tct-touchevent-w3c-tests/touchevent/TouchEvent_ctrlKey_exist-manual.html</test_script_entry>
-        </description>
-        <specs>
-          <spec>
-            <spec_assertion category="Tizen W3C API Specifications" element_name="ctrlKey" element_type="attribute" interface="TouchEvent" section="Device" specification="Touch Events version 1" />
-            <spec_url>http://www.w3.org/TR/2013/WD-touch-events-20130124/#touchevent-interface</spec_url>
-            <spec_statement />
-          </spec>
-        </specs>
-      </testcase>
-      <testcase component="W3C_HTML5 APIs/Device/Touch Events version 1" execution_type="manual" id="TouchEvent_metaKey_exist" priority="P1" purpose="Check if touchEvent.metaKey attribute is defined." status="approved" type="compliance">
-        <description>
-          <steps>
-            <step order="1">
-              <step_desc>Use WRT to visit the "touchEvent_touchEvent_metaKey" Check if touchEvent.metaKey attribute is defined.</step_desc>
-              <expected>Pass</expected>
-            </step>
-          </steps>
-          <test_script_entry>/opt/tct-touchevent-w3c-tests/touchevent/TouchEvent_metaKey_exist-manual.html</test_script_entry>
-        </description>
-        <specs>
-          <spec>
-            <spec_assertion category="Tizen W3C API Specifications" element_name="metaKey" element_type="attribute" interface="TouchEvent" section="Device" specification="Touch Events version 1" />
-            <spec_url>http://www.w3.org/TR/2013/WD-touch-events-20130124/#touchevent-interface</spec_url>
-            <spec_statement />
-          </spec>
-        </specs>
-      </testcase>
-      <testcase component="W3C_HTML5 APIs/Device/Touch Events version 1" execution_type="manual" id="TouchEvent_shiftKey_exist" priority="P1" purpose="Check if touchEvent.shiftKey attribute is defined." status="approved" type="compliance">
-        <description>
-          <steps>
-            <step order="1">
-              <step_desc>Use WRT to visit the "touchEvent_touchEvent_shiftKey" Check if touchEvent.shiftKey attribute is defined.</step_desc>
-              <expected>Pass</expected>
-            </step>
-          </steps>
-          <test_script_entry>/opt/tct-touchevent-w3c-tests/touchevent/TouchEvent_shiftKey_exist-manual.html</test_script_entry>
-        </description>
-        <specs>
-          <spec>
-            <spec_assertion category="Tizen W3C API Specifications" element_name="shiftKey" element_type="attribute" interface="TouchEvent" section="Device" specification="Touch Events version 1" />
-            <spec_url>http://www.w3.org/TR/2013/WD-touch-events-20130124/#touchevent-interface</spec_url>
-            <spec_statement />
-          </spec>
-        </specs>
-      </testcase>
       <testcase component="W3C_HTML5 APIs/Device/Touch Events version 1" execution_type="manual" id="multi_touchstart_event_received" priority="P3" purpose="Check if touchstart event is received during multiple touches" status="approved" type="compliance">
         <description>
           <pre_condition>Test device supports touch.</pre_condition>
@@ -1031,6 +959,84 @@
           <spec>
             <spec_assertion category="Tizen W3C API Specifications" element_name="createTouchList" interface="Document" lement_type="method" section="Device" specification="Touch Events version 1" />
             <spec_url>http://www.w3.org/TR/2013/WD-touch-events-20130124/#widl-Document-createTouchList-TouchList-Touch-touches</spec_url>
+            <spec_statement />
+          </spec>
+        </specs>
+      </testcase>
+    </set>
+    <set name="TouchEvent-bdd" type="js" ui-auto="bdd">
+      <testcase component="W3C_HTML5 APIs/Device/Touch Events version 1" execution_type="manual" id="TouchEvent_altKey_exist" priority="P1" purpose="Check if touchEvent.altKey attribute is defined." status="approved" type="compliance">
+        <description>
+          <steps>
+            <step order="1">
+              <step_desc>Use WRT to visit the "touchEvent_touchEvent_altKey" Check if touchEvent.altKey attribute is defined.</step_desc>
+              <expected>Pass</expected>
+            </step>
+          </steps>
+          <test_script_entry>/opt/tct-touchevent-w3c-tests/touchevent/bdd/TouchEvent_altKey_exist-manual.html</test_script_entry>
+          <bdd_test_script_entry test_script_expected_result="0">/opt/tct-touchevent-w3c-tests/w3c-touchevent-app/testscripts/TouchEvent_altKey_exist.feature</bdd_test_script_entry>
+        </description>
+        <specs>
+          <spec>
+            <spec_assertion category="Tizen W3C API Specifications" element_name="altKey" element_type="attribute" interface="TouchEvent" section="Device" specification="Touch Events version 1" />
+            <spec_url>http://www.w3.org/TR/2013/WD-touch-events-20130124/#touchevent-interface</spec_url>
+            <spec_statement />
+          </spec>
+        </specs>
+      </testcase>
+      <testcase component="W3C_HTML5 APIs/Device/Touch Events version 1" execution_type="manual" id="TouchEvent_ctrlKey_exist" priority="P1" purpose="Check if touchEvent.ctrlKey attribute is defined." status="approved" type="compliance">
+        <description>
+          <steps>
+            <step order="1">
+              <step_desc>Use WRT to visit the "touchEvent_touchEvent_ctrlKey" Check if touchEvent.ctrlKey attribute is defined.</step_desc>
+              <expected>Pass</expected>
+            </step>
+          </steps>
+          <test_script_entry>/opt/tct-touchevent-w3c-tests/touchevent/bdd/TouchEvent_ctrlKey_exist-manual.html</test_script_entry>
+          <bdd_test_script_entry test_script_expected_result="0">/opt/tct-touchevent-w3c-tests/w3c-touchevent-app/testscripts/TouchEvent_ctrlKey_exist.feature</bdd_test_script_entry>
+        </description>
+        <specs>
+          <spec>
+            <spec_assertion category="Tizen W3C API Specifications" element_name="ctrlKey" element_type="attribute" interface="TouchEvent" section="Device" specification="Touch Events version 1" />
+            <spec_url>http://www.w3.org/TR/2013/WD-touch-events-20130124/#touchevent-interface</spec_url>
+            <spec_statement />
+          </spec>
+        </specs>
+      </testcase>
+      <testcase component="W3C_HTML5 APIs/Device/Touch Events version 1" execution_type="manual" id="TouchEvent_metaKey_exist" priority="P1" purpose="Check if touchEvent.metaKey attribute is defined." status="approved" type="compliance">
+        <description>
+          <steps>
+            <step order="1">
+              <step_desc>Use WRT to visit the "touchEvent_touchEvent_metaKey" Check if touchEvent.metaKey attribute is defined.</step_desc>
+              <expected>Pass</expected>
+            </step>
+          </steps>
+          <test_script_entry>/opt/tct-touchevent-w3c-tests/touchevent/bdd/TouchEvent_metaKey_exist-manual.html</test_script_entry>
+          <bdd_test_script_entry test_script_expected_result="0">/opt/tct-touchevent-w3c-tests/w3c-touchevent-app/testscripts/TouchEvent_metaKey_exist.feature</bdd_test_script_entry>
+        </description>
+        <specs>
+          <spec>
+            <spec_assertion category="Tizen W3C API Specifications" element_name="metaKey" element_type="attribute" interface="TouchEvent" section="Device" specification="Touch Events version 1" />
+            <spec_url>http://www.w3.org/TR/2013/WD-touch-events-20130124/#touchevent-interface</spec_url>
+            <spec_statement />
+          </spec>
+        </specs>
+      </testcase>
+      <testcase component="W3C_HTML5 APIs/Device/Touch Events version 1" execution_type="manual" id="TouchEvent_shiftKey_exist" priority="P1" purpose="Check if touchEvent.shiftKey attribute is defined." status="approved" type="compliance">
+        <description>
+          <steps>
+            <step order="1">
+              <step_desc>Use WRT to visit the "touchEvent_touchEvent_shiftKey" Check if touchEvent.shiftKey attribute is defined.</step_desc>
+              <expected>Pass</expected>
+            </step>
+          </steps>
+          <test_script_entry>/opt/tct-touchevent-w3c-tests/touchevent/bdd/TouchEvent_shiftKey_exist-manual.html</test_script_entry>
+          <bdd_test_script_entry test_script_expected_result="0">/opt/tct-touchevent-w3c-tests/w3c-touchevent-app/testscripts/TouchEvent_shiftKey_exist.feature</bdd_test_script_entry>
+        </description>
+        <specs>
+          <spec>
+            <spec_assertion category="Tizen W3C API Specifications" element_name="shiftKey" element_type="attribute" interface="TouchEvent" section="Device" specification="Touch Events version 1" />
+            <spec_url>http://www.w3.org/TR/2013/WD-touch-events-20130124/#touchevent-interface</spec_url>
             <spec_statement />
           </spec>
         </specs>
