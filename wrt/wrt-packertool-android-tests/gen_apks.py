@@ -98,78 +98,78 @@ def init_env(arch_arg):
 
 def ge_apks(suite_dir, arch_arg, res_arch_dir):
 
-    max_num.acquire()
+    if max_num.acquire():
 
-    suite_name = suite_dir.split('/')[-1]
-    suitename_without_flag = suite_name.split('-')[0]
-    flag = suite_name.split('-')[-1]
+        suite_name = suite_dir.split('/')[-1]
+        suitename_without_flag = suite_name.split('-')[0]
+        flag = suite_name.split('-')[-1]
 
-    #cmd ="python " + os.path.join(BUILD_PARAMETERS.pkgpacktools, 'crosswalk', 'make_apk.py') +" --package=org.xwalk.test --app-versionCode=123 --arch=" + arch_arg + " --manifest="
-    with open(suite_dir + '/cmd.txt') as cmdfile:
-        cmd_origin = cmdfile.read()
-    cmd = cmd_origin.replace('make_apk.py', pkg_script)
-    #manifest_path = os.path.join(suite_dir, "manifest.json")
-    res_suite_dir = os.path.join(res_arch_dir, suite_name)
+        #cmd ="python " + os.path.join(BUILD_PARAMETERS.pkgpacktools, 'crosswalk', 'make_apk.py') +" --package=org.xwalk.test --app-versionCode=123 --arch=" + arch_arg + " --manifest="
+        with open(suite_dir + '/cmd.txt') as cmdfile:
+            cmd_origin = cmdfile.read()
+        cmd = cmd_origin.replace('make_apk.py', pkg_script)
+        #manifest_path = os.path.join(suite_dir, "manifest.json")
+        res_suite_dir = os.path.join(res_arch_dir, suite_name)
 
-    # if not os.path.exists(manifest_path):
-    #    LOG.error("%s not exists !!!" % manifest_path)
-    #    ores_file.write(suitename_without_flag + "\t" + flag + "\t" + "Manifest not exists !!!" + "\n")
-    #    return
-    if os.path.exists(res_suite_dir):
-        shutil.rmtree(res_suite_dir)
-    os.makedirs(res_suite_dir)
+        # if not os.path.exists(manifest_path):
+        #    LOG.error("%s not exists !!!" % manifest_path)
+        #    ores_file.write(suitename_without_flag + "\t" + flag + "\t" + "Manifest not exists !!!" + "\n")
+        #    return
+        if os.path.exists(res_suite_dir):
+            shutil.rmtree(res_suite_dir)
+        os.makedirs(res_suite_dir)
 
-    os.chdir(res_suite_dir)
+        os.chdir(res_suite_dir)
 
-    resdir_name = None
-    if 'target-dir' in cmd_origin:
-        for command in cmd_origin.split():
-            if 'target-dir' in command:
-                resdir_name = command.split('"')[-2]
+        resdir_name = None
+        if 'target-dir' in cmd_origin:
+            for command in cmd_origin.split():
+                if 'target-dir' in command:
+                    resdir_name = command.split('"')[-2]
 
-    if resdir_name is not None and resdir_name != './' and os.path.exists(
-            resdir_name + "/Intel_" + BUILD_PARAMETERS.pkgarch + ".apk"):
-        # for eapk in glob.glob(resdir_name + "/*.apk"):
-        os.remove(resdir_name + "/Intel_" + BUILD_PARAMETERS.pkgarch + ".apk")
-
-    status, info = doCMDWithOutput(cmd)
-
-    if (status == 0 and flag == 'positive') or (
-            status != 0 and flag == 'negative'):
-        result = "PASS"
-    else:
-        result = "FAIL"
-
-    if status != 0:
-        shutil.rmtree(res_suite_dir)
-    else:
         if resdir_name is not None and resdir_name != './' and os.path.exists(
                 resdir_name + "/Intel_" + BUILD_PARAMETERS.pkgarch + ".apk"):
-            shutil.move(
-                resdir_name +
-                "/Intel_" +
-                BUILD_PARAMETERS.pkgarch +
-                ".apk",
-                res_suite_dir)
+            # for eapk in glob.glob(resdir_name + "/*.apk"):
+            os.remove(resdir_name + "/Intel_" + BUILD_PARAMETERS.pkgarch + ".apk")
 
-    ores_file.write(
-        suite_name +
-        "-" +
-        flag +
-        "\t" +
-        result +
-        "\n")
+        status, info = doCMDWithOutput(cmd)
 
-    if result == "PASS":
-        LOG.info(
-            "Built Done: [ %s %s %s %s ] !!! " %
-            (suitename_without_flag, flag, result, status))
-    else:
-        LOG.error(
-            "Built Done: [ %s %s %s %s ] !!! " %
-            (suitename_without_flag, flag, result, status))
+        if (status == 0 and flag == 'positive') or (
+                status != 0 and flag == 'negative'):
+            result = "PASS"
+        else:
+            result = "FAIL"
 
-    if threading.activeCount() >= MAX_RUNNING_THREAD_NUM:
+        if status != 0:
+            shutil.rmtree(res_suite_dir)
+        else:
+            if resdir_name is not None and resdir_name != './' and os.path.exists(
+                    resdir_name + "/Intel_" + BUILD_PARAMETERS.pkgarch + ".apk"):
+                shutil.move(
+                    resdir_name +
+                    "/Intel_" +
+                    BUILD_PARAMETERS.pkgarch +
+                    ".apk",
+                    res_suite_dir)
+
+        ores_file.write(
+            suite_name +
+            "-" +
+            flag +
+            "\t" +
+            result +
+            "\n")
+
+        if result == "PASS":
+            LOG.info(
+                "Built Done: [ %s %s %s %s ] !!! " %
+                (suitename_without_flag, flag, result, status))
+        else:
+            LOG.error(
+                "Built Done: [ %s %s %s %s ] !!! " %
+                (suitename_without_flag, flag, result, status))
+
+        #if threading.activeCount() >= MAX_RUNNING_THREAD_NUM:
         max_num.release()
 
 
@@ -245,7 +245,7 @@ if __name__ == "__main__":
 
     for sthread in pack_threads:
         # if max_num.acquire():
-        sthread.daemon = True
+        #sthread.daemon = True
         time.sleep(2)
         sthread.start()
         # if len(threading.enumerate()) < 3:
