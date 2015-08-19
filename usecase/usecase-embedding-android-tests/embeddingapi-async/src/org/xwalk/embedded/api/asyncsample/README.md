@@ -317,7 +317,6 @@ This usecase covers following interface and methods:
 * XWalkView interface: dispatchDraw methods
 
 
-
 ### 30. The [CookieManagerTestActivityAsync](CookieManagerTestActivityAsync.java) sample check whether XWalkCookieManager apis can work, include:
 
 * XWalkCookieManager apis can work
@@ -326,3 +325,12 @@ This usecase covers following interface and methods:
 
 * XWalkView interface: load method
 * XWalkCookieManager interface: setAcceptCookie, acceptCookie, setCookie, getCookie, removeSessionCookie, removeAllCookie, hasCookies, removeExpiredCookie, flushCookieStore
+
+
+### 30. The [XWalkViewWithOnDrawAsync](XWalkViewWithOnDrawAsync.java) sample check whether onDraw method work as same as WebView, include:
+
+* onDraw can be override
+
+This usecase covers following interface and methods:
+
+* XWalkView interface: onDraw methods
