@@ -43,51 +43,37 @@ Authors:
   <h3 id="main_page_title"></h3>
 </div>
 <div class="content">
-  <h4>Note</h4>
-  <ol>
-    <li>It's only for Cordova version 3.6</li>
-  </ol>
   <h4>Precondition</h4>
   <ol>
     <li>Put XWalkRuntimeLib.apk in a server and make sure the test device can access it using [http://host/XWalkRuntimeLib.apk]</li>
     <li>Make sure the test device has not install XWalkRuntimeLib.apk</li>
+    <li>Require npm</li>
+    <li>Require the latest Cordova CLI, and must >= 5.0.0
+      <div>
+        $ sudo npm install cordova -g
+      </div>
+    </li>
+    <li>Require maven tool, you may need to set up maven proxy: export MAVEN_OPTS="-DsocksProxyHost=[proxy] –DsocksProxyPort=[port]</li>
+    <li>Connect the android device to the host</li>
   </ol>
   <h4>Test Steps</h4>
   <ol>
-    <li>Download crosswalk-cordova-&lt;version&gt;-arm.zip and unzip it</li>
-    <li>Create shared mode test suite using --xwalk-apk-url parameter: 
+    <li>Enter 'usecase-cordova-android-tests/res/SharedModeLibraryDownload' directory</li>
+    <li>Run the python script:<br/>
       <div>
-        $ cd /localpath/crosswalk-cordova-&lt;version&gt;-arm<br/>
-        $ ./bin/create SharedModeLibraryDownload com.example.sharedModeLibraryDownload SharedModeLibraryDownload --xwalk-apk-url=[http://host/XWalkRuntimeLib.apk] --xwalk-shared-library<br/>
+        $ python test.py -u [http://host/XWalkRuntimeLib.apk]<br/>
       </div>
     </li>
-    <li>Build Cordova example app:
-      <div>
-        $ cd SharedModeLibraryDownload<br/>
-        $ ./cordova/build<br/>
-      </div>
-    </li>
-    <li>Check the apk file generated in SharedModeLibraryDownload/bin directory</li>
-    <li>Install and launch the app</li>
-    <li>Click "Get Crosswalk" button, check the screen</li>
+    <li>Check the command output</li>
+    <li>Check the app on the device and click "Get Crosswalk" button, check the screen</li>
     <li>Click "Install", then check the screen</li>
     <li>Click "Done", then check the screen</li>
+    <li>Quick press back button to exit 'CordovaPackage' app after the app launch</li>
+    <li>Uninstall the app</li>
   </ol>
 </div>
 <div class="footer">
   <div id="footer"></div>
 </div>
 <div class="modal fade" id="popup_info">
-  <p>Expected Results:</p>
-  <ol>
-    <li>Create test suite(SharedModeLibraryDownload) successfully</li>
-    <li>Build the apk successfully</li>
-    <li>The app can be installed successfully</li>
-    <li>The app can launch successfully</li>
-    <li>Display message "Please get Crosswalk Runtime Library"</li>
-    <li>Start to download the XWalkRuntimeLib.apk</li>
-    <li>Display "App installed"</li>
-    <li>The app can run successfully</li>
-    <li>The app can exit successfully</li>
-  </ol>
 </div>

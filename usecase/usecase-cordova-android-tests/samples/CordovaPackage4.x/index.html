@@ -52,48 +52,27 @@ Authors:
         Please make sure the version of plugman is >= 0.22.17, Use "plugman ­-v" common to check it<br/>
       </div>
     </li>
+    <li>Require maven tool, you may need to set up maven proxy: export MAVEN_OPTS="-DsocksProxyHost=[proxy] –DsocksProxyPort=[port]</li>
+    <li>Connect the android device to the host</li>
   </ol>
 
   <h4>Test Steps</h4>
   <ol>
-    <li>Get cordova-android:
+    <li>Enter 'usecase-cordova-android-tests/res/CordovaPackage' directory</li>
+    <li>Run the python script:<br/>
       <div>
-        $ git clone https://github.com/apache/cordova-android.git<br/>
+        For embedded mode: $ python test.py -m embedded<br/>
+        For shared mode: $ python test.py -m shared<br/>
       </div>
     </li>
-    <li>Get cordova-plugin-crosswalk-webview:
-      <div>
-        $ git clone https://github.com/crosswalk-project/cordova-plugin-crosswalk-webview.git<br/>
-      </div>
-    </li>
-    <li>Create Cordova example app, e.g. “hello”:
-      <div>
-        $ cordova-android/bin/create hello com.example.hello HelloWorld<br/>
-      </div>
-    </li>
-    <li>Build Cordova example app:
-      <div>
-        $ cd hello<br/>
-        $ plugman install --platform android --plugin ../cordova-plugin-crosswalk-webview/ --project .<br/>
-        $ ./cordova/build<br/>
-      </div>
-    </li>
-    <li>Check the apk file generated in hello/build/outputs/apk directory</li>
-    <li>Install, Launch, Run, and Exit the app</li>
+    <li>Check the command output</li>
+    <li>Check the app on the device</li>
+    <li>Quick press back button to exit 'hello' app after the app launch</li>
+    <li>Uninstall the app</li>
   </ol>
 </div>
 <div class="footer">
   <div id="footer"></div>
 </div>
 <div class="modal fade" id="popup_info">
-  <p>Purpose:</p>
-  <p>Verify the Cordova package can build, install and launch successfully</p>
-  <p>Expected Results:</p>
-  <ol>
-    <li>There are arm and x86 apk files generated in hello/build/outputs/apk directory</li>
-    <li>The app can be installed successfully</li>
-    <li>The app can launch successfully</li>
-    <li>The app can run successfully</li>
-    <li>The app can exit successfully</li>
-  </ol>
 </div>
