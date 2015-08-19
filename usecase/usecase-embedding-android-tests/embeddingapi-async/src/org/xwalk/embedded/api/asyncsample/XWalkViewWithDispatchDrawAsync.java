@@ -41,9 +41,9 @@ public class XWalkViewWithDispatchDrawAsync extends Activity implements XWalkIni
         setContentView(R.layout.activity_xwalk_view_with_dispatch_draw_async);
         StringBuffer mess = new StringBuffer();
         mess.append("Test Purpose: \n\n")
-                .append("Verifies XWalkView can disable back button.\n\n")
+                .append("Verifies dispatchDraw work in XWalkView\n\n")
                 .append("Expected Result:\n\n")
-                .append("Test passes if case can't backwards by pressing back key.");
+                .append("Test passes if the image of Android Robot is shown on left-top.");
         new  AlertDialog.Builder(this)
                 .setTitle("Info" )
                 .setMessage(mess.toString())
