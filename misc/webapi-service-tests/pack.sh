@@ -96,7 +96,7 @@ elif [ $pack_type == "cordova" ];then
         for plugin in `ls $BUILD_ROOT/cordova_plugins`
         do
             if [ $plugin == "cordova-plugin-crosswalk-webview" ]; then
-                cordova plugin add $BUILD_ROOT/cordova_plugins/$plugin --variable CROSSWALK_ANDROID_VERSION="$crosswalk_version" --variable LIB_MODE="$pack_mode"
+                cordova plugin add $BUILD_ROOT/cordova_plugins/$plugin --variable XWALK_VERSION="$crosswalk_version" --variable XWALK_MODE="$pack_mode"
             else
                 cordova plugin add $BUILD_ROOT/cordova_plugins/$plugin
             fi
