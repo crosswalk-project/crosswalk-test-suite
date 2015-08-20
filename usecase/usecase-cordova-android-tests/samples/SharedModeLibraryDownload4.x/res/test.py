@@ -63,7 +63,7 @@ os.system('sed -i "s/<widget/<widget android-activityName=\\"SharedModeLibraryDo
 os.system('sed -i "s/<\/widget>/    <allow-navigation href=\\"*\\" \/>\\n<\/widget>/g" config.xml')
 os.system("cordova platform add android")
 add_plugin_cmd = "cordova plugin add ../../../tools/cordova-plugin-crosswalk-webview" \
-    " --variable CROSSWALK_ANDROID_VERSION=\"%s\" --variable LIB_MODE=\"shared\"" % CROSSWALK_VERSION
+    " --variable XWALK_VERSION=\"%s\" --variable XWALK_MODE=\"shared\"" % CROSSWALK_VERSION
 print add_plugin_cmd
 os.system(add_plugin_cmd)
 os.system('sed -i "s/android:supportsRtl=\\"true\\">/android:supportsRtl=\\"true\\">\\n        <meta-data android:name=\\"xwalk_apk_url\\" android:value=\\"' + library_url + '\\" \\/>/g" platforms/android/AndroidManifest.xml')

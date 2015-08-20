@@ -132,11 +132,11 @@ def create(appname, pkgname, mode, sourcecodepath, replace_index_list, self):
         self.assertEquals(0, platformstatus[0])
 
         print "Install Crosswalk WebView Plugin --------------> START"
-        plugin_install_webview = "cordova plugin add %s --variable CROSSWALK_ANDROID_VERSION=\"%s\"" % (plugin_tool, CROSSWALK_VERSION)
+        plugin_install_webview = "cordova plugin add %s --variable XWALK_VERSION=\"%s\"" % (plugin_tool, CROSSWALK_VERSION)
         if mode == "shared":
-            plugin_install_cmd = plugin_install_webview + " --variable LIB_MODE=\"shared\""
+            plugin_install_cmd = plugin_install_webview + " --variable XWALK_MODE=\"shared\""
         else:
-            plugin_install_cmd = plugin_install_webview + " --variable LIB_MODE=\"embedded\""
+            plugin_install_cmd = plugin_install_webview + " --variable XWALK_MODE=\"embedded\""
 
         pluginstatus = commands.getstatusoutput(plugin_install_cmd)
         self.assertEquals(0, pluginstatus[0])
@@ -211,11 +211,11 @@ def buildGoogleApp(appname, sourcecodepath, self):
     self.assertEquals(0, uninstallStatus[0])
 
     print "Install Crosswalk WebView Plugin --------------> START"
-    plugin_install_webview = "cordova plugin add %s --variable CROSSWALK_ANDROID_VERSION=\"%s\"" % (plugin_tool, CROSSWALK_VERSION)
+    plugin_install_webview = "cordova plugin add %s --variable XWALK_VERSION=\"%s\"" % (plugin_tool, CROSSWALK_VERSION)
     if MODE == "shared":
-        plugin_install_cmd = plugin_install_webview + " --variable LIB_MODE=\"shared\""
+        plugin_install_cmd = plugin_install_webview + " --variable XWALK_MODE=\"shared\""
     else:
-        plugin_install_cmd = plugin_install_webview + " --variable LIB_MODE=\"embedded\""
+        plugin_install_cmd = plugin_install_webview + " --variable XWALK_MODE=\"embedded\""
 
     pluginstatus = commands.getstatusoutput(plugin_install_cmd)
     self.assertEquals(0, pluginstatus[0])

@@ -667,8 +667,8 @@ def packCordova_cli(
     for i_dir in plugin_dirs:
         i_plugin_dir = os.path.join(plugin_tool, i_dir)
         if i_dir == "cordova-plugin-crosswalk-webview":
-            plugin_install_cmd = "cordova plugin add %s --variable CROSSWALK_ANDROID_VERSION=\"%s\"" \
-                " --variable LIB_MODE=\"%s\""  % (i_plugin_dir, CROSSWALK_VERSION, BUILD_PARAMETERS.pkgmode)
+            plugin_install_cmd = "cordova plugin add %s --variable XWALK_VERSION=\"%s\"" \
+                " --variable XWALK_MODE=\"%s\""  % (i_plugin_dir, CROSSWALK_VERSION, BUILD_PARAMETERS.pkgmode)
         else:
             plugin_install_cmd = "cordova plugin add %s" % i_plugin_dir
         if not doCMD(plugin_install_cmd, DEFAULT_CMD_TIMEOUT):
@@ -1370,7 +1370,7 @@ def main():
             "-m",
             "--mode",
             dest="pkgmode",
-            help="specify the apk mode, not for embeddingapi, cordova version 4.x, e.g. shared, embedded")
+            help="specify the apk mode, not for embeddingapi, e.g. shared, embedded")
         opts_parser.add_option(
             "-a",
             "--arch",
