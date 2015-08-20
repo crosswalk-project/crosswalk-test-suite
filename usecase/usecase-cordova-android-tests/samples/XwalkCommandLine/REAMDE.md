@@ -1,6 +1,5 @@
 ## Usecase Design
 
-This sample demonstrates CROSSWALK_ANDROID_COMMANDLINE config feature basic functionalities, include:
+This sample demonstrates XWALK_COMMANDLINE variable feature basic functionalities, include:
 
-* <preference name="CROSSWALK_ANDROID_COMMANDLINE" value="--disable-pull-to-refresh-effect --disable-webrtc --disable-webgl" />
-
+* cordova plugin add ../cordova-plugin-crosswalk-webview --variable XWALK_COMMANDLINE="--disable-pull-to-refresh-effect --disable-webrtc --disable-webgl "

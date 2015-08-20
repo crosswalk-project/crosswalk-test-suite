@@ -81,9 +81,9 @@ if os.path.exists("cordovaPackage"):
 os.system("cordova-android/bin/create cordovaPackage com.example.cordovaPackage2 CordovaPackage")
 os.chdir("./cordovaPackage")
 os.system("plugman install --platform android --plugin ../../../tools/cordova-plugin-crosswalk-webview/ --project .")
-os.system('sed -i "s/<preference default=\\".*\\" name=\\"CROSSWALK_ANDROID_VERSION\\"/<preference default=\\"%s\\" name=\\"CROSSWALK_ANDROID_VERSION\\"/g" res/xml/config.xml' % CROSSWALK_VERSION)
+os.system('sed -i "s/<preference default=\\".*\\" name=\\"XWALK_VERSION\\"/<preference default=\\"%s\\" name=\\"XWALK_VERSION\\"/g" res/xml/config.xml' % CROSSWALK_VERSION)
 if BUILD_PARAMETERS.pkgmode == "shared":
-    os.system('sed -i "s/<preference default=\\"embedded\\" name=\\"LIB_MODE\\"/<preference default=\\"shared\\" name=\\"LIB_MODE\\"/g" res/xml/config.xml')
+    os.system('sed -i "s/<preference default=\\"embedded\\" name=\\"XWALK_MODE\\"/<preference default=\\"shared\\" name=\\"XWALK_MODE\\"/g" res/xml/config.xml')
 os.system("./cordova/build")
 os.system("./cordova/run")
 lsstatus = commands.getstatusoutput("ls ./build/outputs/apk/*.apk")

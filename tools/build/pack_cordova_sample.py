@@ -628,8 +628,8 @@ def packGoogleApp(app_name=None):
     for i_dir in plugin_dirs:
         i_plugin_dir = os.path.join(plugin_tool, i_dir)
         if i_dir == "cordova-plugin-crosswalk-webview":
-            plugin_install_cmd = "cordova plugin add %s --variable CROSSWALK_ANDROID_VERSION=\"%s\"" \
-                    " --variable LIB_MODE=\"%s\""  % (i_plugin_dir, CROSSWALK_VERSION, BUILD_PARAMETERS.pkgmode)
+            plugin_install_cmd = "cordova plugin add %s --variable XWALK_VERSION=\"%s\"" \
+                    " --variable XWALK_MODE=\"%s\""  % (i_plugin_dir, CROSSWALK_VERSION, BUILD_PARAMETERS.pkgmode)
         else:
             plugin_install_cmd = "cordova plugin add %s" % i_plugin_dir
         if not doCMD(plugin_install_cmd, DEFAULT_CMD_TIMEOUT):
@@ -806,8 +806,8 @@ def packMobileSpec_cli(app_name=None):
         for i_dir in plugin_dirs:
             i_plugin_dir = os.path.join(plugin_tool, i_dir)
             if i_dir == "cordova-plugin-crosswalk-webview":
-                plugin_install_cmd = "cordova plugin add %s --variable CROSSWALK_ANDROID_VERSION=\"%s\"" \
-                    " --variable LIB_MODE=\"%s\""  % (i_plugin_dir, CROSSWALK_VERSION, BUILD_PARAMETERS.pkgmode)
+                plugin_install_cmd = "cordova plugin add %s --variable XWALK_VERSION=\"%s\"" \
+                    " --variable XWALK_MODE=\"%s\""  % (i_plugin_dir, CROSSWALK_VERSION, BUILD_PARAMETERS.pkgmode)
             else:
                 plugin_install_cmd = "cordova plugin add %s" % i_plugin_dir
             if not doCMD(plugin_install_cmd, DEFAULT_CMD_TIMEOUT):
@@ -967,8 +967,17 @@ def packSampleApp_cli(app_name=None):
     for i_dir in plugin_dirs:
         i_plugin_dir = os.path.join(plugin_tool, i_dir)
         if i_dir == "cordova-plugin-crosswalk-webview":
-            plugin_install_cmd = "cordova plugin add %s --variable CROSSWALK_ANDROID_VERSION=\"%s\"" \
-                " --variable LIB_MODE=\"%s\""  % (i_plugin_dir, CROSSWALK_VERSION, BUILD_PARAMETERS.pkgmode)
+            plugin_install_cmd = "cordova plugin add %s --variable XWALK_VERSION=\"%s\"" \
+                " --variable XWALK_MODE=\"%s\""  % (i_plugin_dir, CROSSWALK_VERSION, BUILD_PARAMETERS.pkgmode)
+            if checkContains(app_name, "xwalkCommandLine"):
+                plugin_install_cmd = plugin_install_cmd + " --variable XWALK_COMMANDLINE" \
+                    "=\"--disable-pull-to-refresh-effect --disable-webrtc --disable-webgl\""
+                if not doCopy(os.path.join(BUILD_PARAMETERS.pkgpacktools,
+                        "..", "usecase", "usecase-cordova-android-tests",
+                        "samples", "XwalkCommandLine", "res", "index.html"),
+                        os.path.join(project_root, "www", "index.html")):
+                    os.chdir(orig_dir)
+                    return False
         else:
             plugin_install_cmd = "cordova plugin add %s" % i_plugin_dir
         if not doCMD(plugin_install_cmd, DEFAULT_CMD_TIMEOUT):
@@ -979,20 +988,6 @@ def packSampleApp_cli(app_name=None):
         if not replaceKey(os.path.join(project_root, "config.xml"),
                           "id=\"com.test.renamePkg\"",
                           "id=\"com.example.renamePkg\""):
-            os.chdir(orig_dir)
-            return False
-
-    if checkContains(app_name, "xwalkCommandLine"):
-        if not replaceKey(os.path.join(project_root, "config.xml"),
-                          "value=\"--disable-pull-to-refresh-effect --disable-webrtc" \
-                          "--disable-webgl\"",
-                          "value=\"--disable-pull-to-refresh-effect\""):
-            os.chdir(orig_dir)
-            return False
-        if not doCopy(os.path.join(BUILD_PARAMETERS.pkgpacktools,
-                "..", "usecase", "usecase-cordova-android-tests",
-                "samples", "XwalkCommandLine", "res", "index.html"),
-                os.path.join(project_root, "www", "index.html")):
             os.chdir(orig_dir)
             return False
 
@@ -1112,7 +1107,7 @@ def main():
     LOG.addHandler(stream_handler)
 
     try:
-        usage = "Usage: ./pack.py -t apk -m shared -a x86"
+        usage = "Usage: ./pack_cordova_sample.py -n helloworld -m shared -a x86 --cordova-version 4.x"
         opts_parser = OptionParser(usage=usage)
         opts_parser.add_option(
             "-n",
@@ -1142,7 +1137,7 @@ def main():
             "-m",
             "--mode",
             dest="pkgmode",
-            help="specify the apk mode, not for cordova version 4.x, e.g. shared, embedded")
+            help="specify the apk mode, e.g. shared, embedded")
         opts_parser.add_option(
             "-a",
             "--arch",
