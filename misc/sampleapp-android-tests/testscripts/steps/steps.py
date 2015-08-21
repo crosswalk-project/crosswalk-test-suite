@@ -2,6 +2,7 @@
 
 from atip.common.steps import *
 from atip.web.steps import *
+from atip.android.steps import *
 import time
 import datetime
 import md5
@@ -94,8 +95,8 @@ def i_check_screenshot_base64_md5(context, exp_md5):
     pic_base64 = context.web.driver.get_screenshot_as_base64()
     # context.web.driver.get_screenshot_as_file("/home/cici/webdriver/auto/wrt-sampleapp-android-tests/testscripts/pic.png")
     pic_md5 = get_string_md5(pic_base64)
-    print "pic_md5", pic_md5
-    print "exp_md5", exp_md5
+    #print "pic_md5", pic_md5
+    #print "exp_md5", exp_md5
     if pic_md5 == exp_md5:
         assert True
     else:
@@ -109,9 +110,9 @@ def i_check_screenshot(context, img, baseline_img, percent):
     # print "screenshot:", img
     # print "baseline img:", baseline_img
     similarity = cal_images_similar(img, baseline_img)
-    print "similarity:", similarity
+    #print "similarity:", similarity
     if similarity > percent:
-        print "similarity:", similarity
+        #print "similarity:", similarity
         assert True
     else:
         assert False
