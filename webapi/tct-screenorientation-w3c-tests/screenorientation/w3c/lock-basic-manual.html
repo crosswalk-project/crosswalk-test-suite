@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+<body>
+<script src="../../resources/testharness.js"></script>
+<script src="../../resources/testharnessreport.js"></script>
+<script src="../support/fullscreen.js"></script>
+<script>
+
+var previousOrientation = screen.orientation;
+
+async_test(function(t) {
+    var orientations = ['any', 'portrait', 'landscape', 'portrait-secondary',
+                        'landscape-primary', 'landscape-secondary', 'portrait-primary'];
+
+    screen.orientation.unlock();
+
+    setOrientation = function(idx) {
+        if( idx == orientations.length) {
+            screen.orientation.unlock();
+            t.done();
+            return;
+        }
+        (function(i) {
+            screen.orientation.lock(orientations[i]).then(function() {
+                setOrientation(i+1);
+                assert_equals(screen.orientation, previousOrientation);
+            },function() { });
+        })(idx);
+    };
+}, "Test that screen.orientation.lock returns a pending promise.");
+
+// https://w3c.github.io/screen-orientation/#locking-the-screen-orientation
+// a user agent might require a document's top-level browsing context to be fullscreen
+// (see Interaction with FullScreen API) in order to allow an orientation lock.
+function runTestRequireFullScreen() {
+    setOrientation(0);
+}
+
+</script>
+</body>
+</html>

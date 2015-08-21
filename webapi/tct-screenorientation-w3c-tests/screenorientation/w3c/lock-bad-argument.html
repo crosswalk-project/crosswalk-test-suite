@@ -1,12 +1,4 @@
 <!DOCTYPE html>
-<!--
-Test convert from Blink:
-https://github.com/crosswalk-project/blink-crosswalk/blob/master/LayoutTests/screen_orientation/lockOrientation-bad-argument.html
-
-Use of this source code is governed by a BSD-style license:
-https://chromium.googlesource.com/chromium/blink/+/master/LICENSE
--->
-
 <html>
 <body>
 <script src="../../resources/testharness.js"></script>
@@ -23,47 +15,47 @@ window.screen.orientation.addEventListener('change', test.step_func(onOrientatio
 
 test.step(function() {
     assert_equals(screen.orientation.type, 'portrait-primary');
-    assert_throws({ name: 'TypeError' }, function() {
+    assert_throws(new TypeError(), function() {
         screen.orientation.lock('invalid-orientation');
     });
 
     assert_equals(screen.orientation.type, 'portrait-primary');
-    assert_throws({ name: 'TypeError' }, function() {
+    assert_throws(new TypeError(), function() {
         screen.orientation.lock(null);
     });
 
     assert_equals(screen.orientation.type, 'portrait-primary');
-    assert_throws({ name: 'TypeError' }, function() {
+    assert_throws(new TypeError(), function() {
         screen.orientation.lock(undefined);
     });
 
     assert_equals(screen.orientation.type, 'portrait-primary');
-    assert_throws({ name: 'TypeError' }, function() {
+    assert_throws(new TypeError(), function() {
         screen.orientation.lock(undefined);
     });
 
     assert_equals(screen.orientation.type, 'portrait-primary');
-    assert_throws({ name: 'TypeError' }, function() {
+    assert_throws(new TypeError(), function() {
         screen.orientation.lock(123);
     });
 
     assert_equals(screen.orientation.type, 'portrait-primary');
-    assert_throws({ name: 'TypeError' }, function() {
+    assert_throws(new TypeError(), function() {
         screen.orientation.lock(window);
     });
 
     assert_equals(screen.orientation.type, 'portrait-primary');
-    assert_throws({ name: 'TypeError' }, function() {
+    assert_throws(new TypeError(), function() {
         screen.orientation.lock(['portrait-primary']);
     });
 
     assert_equals(screen.orientation.type, 'portrait-primary');
-    assert_throws({ name: 'TypeError' }, function() {
+    assert_throws(new TypeError(), function() {
         screen.orientation.lock(['portrait-primary', 'landscape-primary']);
     });
 
     assert_equals(screen.orientation.type, 'portrait-primary');
-    assert_throws({ name: 'TypeError' }, function() {
+    assert_throws(new TypeError(), function() {
         screen.orientation.lock();
     });
 });
