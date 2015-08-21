@@ -42,19 +42,19 @@ Authors:
     </p>
     <ol>
       <li>Use command "adb install cookie.apk" to install cookie.apk and open Cookie app on device.</li>
-      <li>Click "Add Cookie" button.</li>
-      <li>Click "Delete Cookie" button.</li>
-      <li>Click "Add Cookie" button again.</li>
+      <li>Find example category and write value in input box.</li>
+      <li>Click "Create cookie 1" button.</li>
+      <li>Click "Read cookie 1" button.</li>
       <li>Use command "adb install -r cookie_upgrade.apk" to upgrade Cookie app.</li>
-      <li>Check "Result" area.
+      <li>Wait until the page is loaded</li>
     </ol>
     <p>
       <strong>Expected Output:</strong>
     </p>
     <ol>
-      <li>"Crosswalk_Cookie" should be displayed in "Result" area after clicking button "Add Cookie".</li>
-      <li>"No Result" should be displayed in "Result" area after clicking button "Delete Cookie".</li>
-      <li>"Crosswalk_Cookie" should be displayed in "Result" area after upgrading app.</li>
+      <li>"Cookie created" should be displayed after clicking button "Create cookie 1".</li>
+      <li>The Cookie value which you set should be displayed after clicking button "Read cookie 1".</li>
+      <li>The Cookie value should be displayed after upgrading app.</li>
     </ol>
   </body>
 </html>

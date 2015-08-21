@@ -1,0 +1,27 @@
+The slider.tooltip.js comes from
+https://github.com/seiyria/bootstrap-slider/blob/master/js/bootstrap-slider.js
+with some modifications.
+
+	setValue: function(val, triggerSlideEvent) {
++   var ID = this.element.id;
++   if (ID == "slider-1") {
++     var value = 7 + 23*(4 - (parseInt(newValue, 10) - 1))/5;
++     setSize(value);
++     if (parseInt(newValue, 10) != 3) {
++       testFlag.size = true;
++       checkEnable();
++     }
++   } else if (ID == "speed-1") {
++     setSpeed(parseInt(newValue, 10));
++     if (parseInt(newValue, 10) != 5) {
++       testFlag.speed = true;
++       checkEnable();
++     }
++   }
+
+jQuery Mobile v@VERSION
+http://jquerymobile.com
+
+Copyright 2010, 2014 jQuery Foundation, Inc. and other contributors
+Released under the MIT license.
+http://jquery.org/license

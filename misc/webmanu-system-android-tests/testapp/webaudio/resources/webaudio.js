@@ -25,48 +25,43 @@ NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE,
 EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
 Authors:
-        Xu,Jianfeng <jianfengx.xu@intel.com>
+        Xu, Jianfeng <jianfengx.xu@intel.com>
 
 */
 
-var flag;
 
-function addCookie() {
-  var oDate = new Date();        
-  document.cookie = 'CookieName=Crosswalk_Cookie'+';max-age=' + 60*10;
-  showResult();
+var context = new AudioContext();
+var source = null;
+var audioBuffer = null;
+
+function playSound() {
+  loadAudioFile('resources/w3c/sound_5.oga');
 }
 
-function delCookie() {
-  var str = "CookieName=Crosswalk_Cookie";
-  str += ";max-age="+0;
-  document.cookie = str;
-  showResult();
+function stopSound() {
+  source.stop(0);
+  document.getElementById("start").disabled = false;
 }
 
-function showResult() {
-  flag = false;
-  var arr = document.cookie.split('; ');  
-  for (var i = 0; i < arr.length; i++) {
-    var arr2 = arr[i].split('=');               
-    if (arr2[0] == "CookieName"){           
-      $("#message").text(arr2[1]);
-      flag = true;       
-    }   
-  }
-  if (!flag) {
-    $("#message").text("No Result");    
-  }        
-  
+function initSound(arrayBuffer) {
+  context.decodeAudioData(arrayBuffer, function(buffer) {
+    audioBuffer = buffer;
+    source = context.createBufferSource();
+    source.buffer = audioBuffer;
+    source.loop = true;
+    source.connect(context.destination);
+    source.start(0);
+  }, function(e) {
+    console.log('Error decoding file', e);
+  });
 }
 
-$(function(){
-    $("#btnAdd").click(function(){
-        addCookie();
-    });
-    $("#btnDelete").click(function(){
-        delCookie();
-    });
-    showResult();
-});
-
+function loadAudioFile(url) {
+  var xhr = new XMLHttpRequest();
+  xhr.open('GET', url, true);
+  xhr.responseType = 'arraybuffer';
+  xhr.onload = function(e) {
+    initSound(this.response);
+  };
+  xhr.send();
+}

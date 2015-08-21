@@ -1,4 +1,5 @@
-/*
+<!DOCTYPE html>
+<!--
 Copyright (c) 2015 Intel Corporation.
 
 Redistribution and use in source and binary forms, with or without modification,
@@ -25,48 +26,37 @@ NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE,
 EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
 Authors:
-        Xu,Jianfeng <jianfengx.xu@intel.com>
+    Xu,Jianfeng <jianfengx.xu@intel.com>
 
-*/
+-->
 
-var flag;
-
-function addCookie() {
-  var oDate = new Date();        
-  document.cookie = 'CookieName=Crosswalk_Cookie'+';max-age=' + 60*10;
-  showResult();
-}
-
-function delCookie() {
-  var str = "CookieName=Crosswalk_Cookie";
-  str += ";max-age="+0;
-  document.cookie = str;
-  showResult();
-}
-
-function showResult() {
-  flag = false;
-  var arr = document.cookie.split('; ');  
-  for (var i = 0; i < arr.length; i++) {
-    var arr2 = arr[i].split('=');               
-    if (arr2[0] == "CookieName"){           
-      $("#message").text(arr2[1]);
-      flag = true;       
-    }   
-  }
-  if (!flag) {
-    $("#message").text("No Result");    
-  }        
-  
-}
-
-$(function(){
-    $("#btnAdd").click(function(){
-        addCookie();
-    });
-    $("#btnDelete").click(function(){
-        delCookie();
-    });
-    showResult();
-});
-
+<html>
+  <head>
+    <meta charset='utf-8'>
+    <title>Crosswalk_WebAudio_reopen</title>
+    <link rel="author" title="Intel" href="http://www.intel.com">
+  </head>
+  <body>
+    <p>
+      <strong>Test steps:</strong>
+    </p>
+    <ol>
+      <li>Use command "adb install webaudio.apk" to install webaudio.apk and open WebAudio app on device.</li>
+      <li>Click "Start" button.</li>
+      <li>Press Home key or Back key to leave this page.</li>
+      <li>Press Menu key and select this app to reopen app.</li>
+      <li>Click "Stop" button.</li>
+      <li>Press Home key or Back key to leave this page.</li>
+      <li>Press Menu key and select this app to reopen app.</li>
+    </ol>
+    <p>
+      <strong>Expected Output:</strong>
+    </p>
+    <ol>
+      <li>"dadada..." should be heard after clicking "Start" button.</li>
+      <li>Sound is still playing when reopening app.</li>
+      <li>Sound should be paused after clicking "Stop" button.</li>
+      <li>Sound is still paused after reopening app.</li>
+    </ol>
+  </body>
+</html>
