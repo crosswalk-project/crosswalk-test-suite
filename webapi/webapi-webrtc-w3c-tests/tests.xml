@@ -2,157 +2,10 @@
 <?xml-stylesheet type="text/xsl" href="./testcase.xsl"?>
 <test_definition>
   <suite category="W3C/HTML5 APIs" name="webapi-webrtc-w3c-tests">
-    <set name="idlharness" type="js">
-      </set>
     <set name="webRTC_basic" type="js">
-      <testcase component="W3C_HTML5 APIs/Communication/WebRTC" execution_type="auto" id="RTCPeerConnection_localDescription_basic" purpose="Check if readonly RTCPeerConnection.localDescription exists and type of object">
+      <testcase component="W3C_HTML5 APIs/Communication/WebRTC" execution_type="auto" id="RTCPeerConnection_basic" purpose="Test RTCPeerConnection interface" subcase="30">
         <description>
-          <test_script_entry>/opt/webapi-webrtc-w3c-tests/webrtc/RTCPeerConnection_basic.html?total_num=30&amp;amp;locator_key=id&amp;amp;value=1</test_script_entry>
-        </description>
-      </testcase>
-      <testcase component="W3C_HTML5 APIs/Communication/WebRTC" execution_type="auto" id="RTCPeerConnection_remoteDescription_basic" purpose="Check if readonly RTCPeerConnection.remoteDescription exists and type of object">
-        <description>
-          <test_script_entry>/opt/webapi-webrtc-w3c-tests/webrtc/RTCPeerConnection_basic.html?total_num=30&amp;amp;locator_key=id&amp;amp;value=2</test_script_entry>
-        </description>
-      </testcase>
-      <testcase component="W3C_HTML5 APIs/Communication/WebRTC" execution_type="auto" id="RTCPeerConnection_signalingState_basic" purpose="Check if readonly RTCPeerConnection.signalingState exists and type of string">
-        <description>
-          <test_script_entry>/opt/webapi-webrtc-w3c-tests/webrtc/RTCPeerConnection_basic.html?total_num=30&amp;amp;locator_key=id&amp;amp;value=3</test_script_entry>
-        </description>
-      </testcase>
-      <testcase component="W3C_HTML5 APIs/Communication/WebRTC" execution_type="auto" id="RTCPeerConnection_iceGatheringState_basic" purpose="Check if readonly RTCPeerConnection.iceGatheringState exists and type of string">
-        <description>
-          <test_script_entry>/opt/webapi-webrtc-w3c-tests/webrtc/RTCPeerConnection_basic.html?total_num=30&amp;amp;locator_key=id&amp;amp;value=4</test_script_entry>
-        </description>
-      </testcase>
-      <testcase component="W3C_HTML5 APIs/Communication/WebRTC" execution_type="auto" id="RTCPeerConnection_iceConnectionState_basic" purpose="Check if readonly RTCPeerConnection.iceConnectionState exists and type of string">
-        <description>
-          <test_script_entry>/opt/webapi-webrtc-w3c-tests/webrtc/RTCPeerConnection_basic.html?total_num=30&amp;amp;locator_key=id&amp;amp;value=5</test_script_entry>
-        </description>
-      </testcase>
-      <testcase component="W3C_HTML5 APIs/Communication/WebRTC" execution_type="auto" id="RTCPeerConnection_onnegotiationneeded_basic" purpose="Check if RTCPeerConnection.onnegotiationneeded exists">
-        <description>
-          <test_script_entry>/opt/webapi-webrtc-w3c-tests/webrtc/RTCPeerConnection_basic.html?total_num=30&amp;amp;locator_key=id&amp;amp;value=6</test_script_entry>
-        </description>
-      </testcase>
-      <testcase component="W3C_HTML5 APIs/Communication/WebRTC" execution_type="auto" id="RTCPeerConnection_onicecandidate_basic" purpose="Check if RTCPeerConnection.onicecandidate exists">
-        <description>
-          <test_script_entry>/opt/webapi-webrtc-w3c-tests/webrtc/RTCPeerConnection_basic.html?total_num=30&amp;amp;locator_key=id&amp;amp;value=7</test_script_entry>
-        </description>
-      </testcase>
-      <testcase component="W3C_HTML5 APIs/Communication/WebRTC" execution_type="auto" id="RTCPeerConnection_onsignalingstatechange_basic" purpose="Check if RTCPeerConnection.onsignalingstatechange exists">
-        <description>
-          <test_script_entry>/opt/webapi-webrtc-w3c-tests/webrtc/RTCPeerConnection_basic.html?total_num=30&amp;amp;locator_key=id&amp;amp;value=8</test_script_entry>
-        </description>
-      </testcase>
-      <testcase component="W3C_HTML5 APIs/Communication/WebRTC" execution_type="auto" id="RTCPeerConnection_onaddstream_basic" purpose="Check if RTCPeerConnection.onaddstream exists">
-        <description>
-          <test_script_entry>/opt/webapi-webrtc-w3c-tests/webrtc/RTCPeerConnection_basic.html?total_num=30&amp;amp;locator_key=id&amp;amp;value=9</test_script_entry>
-        </description>
-      </testcase>
-      <testcase component="W3C_HTML5 APIs/Communication/WebRTC" execution_type="auto" id="RTCPeerConnection_onremovestream_basic" purpose="Check if RTCPeerConnection.onremovestream exists">
-        <description>
-          <test_script_entry>/opt/webapi-webrtc-w3c-tests/webrtc/RTCPeerConnection_basic.html?total_num=30&amp;amp;locator_key=id&amp;amp;value=10</test_script_entry>
-        </description>
-      </testcase>
-      <testcase component="W3C_HTML5 APIs/Communication/WebRTC" execution_type="auto" id="RTCPeerConnection_oniceconnectionstatechange_basic" purpose="Check if RTCPeerConnection.oniceconnectionstatechange exists">
-        <description>
-          <test_script_entry>/opt/webapi-webrtc-w3c-tests/webrtc/RTCPeerConnection_basic.html?total_num=30&amp;amp;locator_key=id&amp;amp;value=11</test_script_entry>
-        </description>
-      </testcase>
-      <testcase component="W3C_HTML5 APIs/Communication/WebRTC" execution_type="auto" id="RTCPeerConnection_ondatachannel_basic" purpose="Check if RTCPeerConnection.ondatachannel exists">
-        <description>
-          <test_script_entry>/opt/webapi-webrtc-w3c-tests/webrtc/RTCPeerConnection_basic.html?total_num=30&amp;amp;locator_key=id&amp;amp;value=12</test_script_entry>
-        </description>
-      </testcase>
-      <testcase component="W3C_HTML5 APIs/Communication/WebRTC" execution_type="auto" id="RTCPeerConnection_createOffer_basic" purpose="Check if RTCPeerConnection.createOffer exists and type of function">
-        <description>
-          <test_script_entry>/opt/webapi-webrtc-w3c-tests/webrtc/RTCPeerConnection_basic.html?total_num=30&amp;amp;locator_key=id&amp;amp;value=13</test_script_entry>
-        </description>
-      </testcase>
-      <testcase component="W3C_HTML5 APIs/Communication/WebRTC" execution_type="auto" id="RTCPeerConnection_createAnswer_basic" purpose="Check if RTCPeerConnection.createAnswer exists and type of function">
-        <description>
-          <test_script_entry>/opt/webapi-webrtc-w3c-tests/webrtc/RTCPeerConnection_basic.html?total_num=30&amp;amp;locator_key=id&amp;amp;value=14</test_script_entry>
-        </description>
-      </testcase>
-      <testcase component="W3C_HTML5 APIs/Communication/WebRTC" execution_type="auto" id="RTCPeerConnection_setLocalDescription_basic" purpose="Check if RTCPeerConnection.setLocalDescription exists and type of function">
-        <description>
-          <test_script_entry>/opt/webapi-webrtc-w3c-tests/webrtc/RTCPeerConnection_basic.html?total_num=30&amp;amp;locator_key=id&amp;amp;value=15</test_script_entry>
-        </description>
-      </testcase>
-      <testcase component="W3C_HTML5 APIs/Communication/WebRTC" execution_type="auto" id="RTCPeerConnection_setRemoteDescription_basic" purpose="Check if RTCPeerConnection.setRemoteDescription exists and type of function">
-        <description>
-          <test_script_entry>/opt/webapi-webrtc-w3c-tests/webrtc/RTCPeerConnection_basic.html?total_num=30&amp;amp;locator_key=id&amp;amp;value=16</test_script_entry>
-        </description>
-      </testcase>
-      <testcase component="W3C_HTML5 APIs/Communication/WebRTC" execution_type="auto" id="RTCPeerConnection_updateIce_basic" purpose="Check if RTCPeerConnection.updateIce exists and type of function">
-        <description>
-          <test_script_entry>/opt/webapi-webrtc-w3c-tests/webrtc/RTCPeerConnection_basic.html?total_num=30&amp;amp;locator_key=id&amp;amp;value=17</test_script_entry>
-        </description>
-      </testcase>
-      <testcase component="W3C_HTML5 APIs/Communication/WebRTC" execution_type="auto" id="RTCPeerConnection_addIceCandidate_basic" purpose="Check if RTCPeerConnection.addIceCandidate exists and type of function">
-        <description>
-          <test_script_entry>/opt/webapi-webrtc-w3c-tests/webrtc/RTCPeerConnection_basic.html?total_num=30&amp;amp;locator_key=id&amp;amp;value=18</test_script_entry>
-        </description>
-      </testcase>
-      <testcase component="W3C_HTML5 APIs/Communication/WebRTC" execution_type="auto" id="RTCPeerConnection_getLocalStreams_basic" purpose="Check if RTCPeerConnection.getLocalStreams exists and type of function">
-        <description>
-          <test_script_entry>/opt/webapi-webrtc-w3c-tests/webrtc/RTCPeerConnection_basic.html?total_num=30&amp;amp;locator_key=id&amp;amp;value=19</test_script_entry>
-        </description>
-      </testcase>
-      <testcase component="W3C_HTML5 APIs/Communication/WebRTC" execution_type="auto" id="RTCPeerConnection_getRemoteStreams_basic" purpose="Check if RTCPeerConnection.getRemoteStreams exists and type of function">
-        <description>
-          <test_script_entry>/opt/webapi-webrtc-w3c-tests/webrtc/RTCPeerConnection_basic.html?total_num=30&amp;amp;locator_key=id&amp;amp;value=20</test_script_entry>
-        </description>
-      </testcase>
-      <testcase component="W3C_HTML5 APIs/Communication/WebRTC" execution_type="auto" id="RTCPeerConnection_getStreamById_basic" purpose="Check if RTCPeerConnection.getStreamById exists and type of function">
-        <description>
-          <test_script_entry>/opt/webapi-webrtc-w3c-tests/webrtc/RTCPeerConnection_basic.html?total_num=30&amp;amp;locator_key=id&amp;amp;value=21</test_script_entry>
-        </description>
-      </testcase>
-      <testcase component="W3C_HTML5 APIs/Communication/WebRTC" execution_type="auto" id="RTCPeerConnection_addStream_basic" purpose="Check if RTCPeerConnection.addStream exists and type of function">
-        <description>
-          <test_script_entry>/opt/webapi-webrtc-w3c-tests/webrtc/RTCPeerConnection_basic.html?total_num=30&amp;amp;locator_key=id&amp;amp;value=22</test_script_entry>
-        </description>
-      </testcase>
-      <testcase component="W3C_HTML5 APIs/Communication/WebRTC" execution_type="auto" id="RTCPeerConnection_removeStream_basic" purpose="Check if RTCPeerConnection.removeStream exists and type of function">
-        <description>
-          <test_script_entry>/opt/webapi-webrtc-w3c-tests/webrtc/RTCPeerConnection_basic.html?total_num=30&amp;amp;locator_key=id&amp;amp;value=23</test_script_entry>
-        </description>
-      </testcase>
-      <testcase component="W3C_HTML5 APIs/Communication/WebRTC" execution_type="auto" id="RTCPeerConnection_close_basic" purpose="Check if RTCPeerConnection.close exists and type of function">
-        <description>
-          <test_script_entry>/opt/webapi-webrtc-w3c-tests/webrtc/RTCPeerConnection_basic.html?total_num=30&amp;amp;locator_key=id&amp;amp;value=24</test_script_entry>
-        </description>
-      </testcase>
-      <testcase component="W3C_HTML5 APIs/Communication/WebRTC" execution_type="auto" id="RTCPeerConnection_createDataChannel_basic" purpose="Check if RTCPeerConnection.createDataChannel exists and type of function">
-        <description>
-          <test_script_entry>/opt/webapi-webrtc-w3c-tests/webrtc/RTCPeerConnection_basic.html?total_num=30&amp;amp;locator_key=id&amp;amp;value=25</test_script_entry>
-        </description>
-      </testcase>
-      <testcase component="W3C_HTML5 APIs/Communication/WebRTC" execution_type="auto" id="RTCPeerConnection_getStats_basic" purpose="Check if RTCPeerConnection.getStats exists and type of function">
-        <description>
-          <test_script_entry>/opt/webapi-webrtc-w3c-tests/webrtc/RTCPeerConnection_basic.html?total_num=30&amp;amp;locator_key=id&amp;amp;value=26</test_script_entry>
-        </description>
-      </testcase>
-      <testcase component="W3C_HTML5 APIs/Communication/WebRTC" execution_type="auto" id="RTCPeerConnection_peerIdentity_basic" purpose="Check if the readonly attribute peerIdentity of RTCPeerConnection exists and type of RTCIdentityAssertion">
-        <description>
-          <test_script_entry>/opt/webapi-webrtc-w3c-tests/webrtc/RTCPeerConnection_basic.html?total_num=30&amp;amp;locator_key=id&amp;amp;value=27</test_script_entry>
-        </description>
-      </testcase>
-      <testcase component="W3C_HTML5 APIs/Communication/WebRTC" execution_type="auto" id="RTCPeerConnection_onidentityresult_basic" purpose="Check if RTCPeerConnection.onidentityresult exists">
-        <description>
-          <test_script_entry>/opt/webapi-webrtc-w3c-tests/webrtc/RTCPeerConnection_basic.html?total_num=30&amp;amp;locator_key=id&amp;amp;value=28</test_script_entry>
-        </description>
-      </testcase>
-      <testcase component="W3C_HTML5 APIs/Communication/WebRTC" execution_type="auto" id="RTCPeerConnection_setIdentityProvider_basic" purpose="Check if RTCPeerConnection.setIdentityProvider exists and type of function">
-        <description>
-          <test_script_entry>/opt/webapi-webrtc-w3c-tests/webrtc/RTCPeerConnection_basic.html?total_num=30&amp;amp;locator_key=id&amp;amp;value=29</test_script_entry>
-        </description>
-      </testcase>
-      <testcase component="W3C_HTML5 APIs/Communication/WebRTC" execution_type="auto" id="RTCPeerConnection_getIdentityAssertion_basic" purpose="Check if RTCPeerConnection.getIdentityAssertion exists and type of function">
-        <description>
-          <test_script_entry>/opt/webapi-webrtc-w3c-tests/webrtc/RTCPeerConnection_basic.html?total_num=30&amp;amp;locator_key=id&amp;amp;value=30</test_script_entry>
+          <test_script_entry>/opt/webapi-webrtc-w3c-tests/webrtc/RTCPeerConnection_basic.html</test_script_entry>
         </description>
       </testcase>
       <testcase component="W3C_HTML5 APIs/Communication/WebRTC" execution_type="auto" id="RTCSdpError_sdpLineNumber_basic" purpose="Check if the readonly attribute sdpLineNumber of RTCSdpError exists and type of number">
@@ -160,29 +13,14 @@
           <test_script_entry>/opt/webapi-webrtc-w3c-tests/webrtc/RTCSdpError_sdpLineNumber_basic.html</test_script_entry>
         </description>
       </testcase>
-      <testcase component="W3C_HTML5 APIs/Communication/WebRTC" execution_type="auto" id="RTCSessionDescription_type_basic" purpose="Check if RTCSessionDescription.type exists and type of string">
+      <testcase component="W3C_HTML5 APIs/Communication/WebRTC" execution_type="auto" id="RTCSessionDescription_basic" purpose="Test RTCSessionDescription interface" subcase="2">
         <description>
-          <test_script_entry>/opt/webapi-webrtc-w3c-tests/webrtc/RTCSessionDescription_basic.html?total_num=2&amp;amp;locator_key=id&amp;amp;value=1</test_script_entry>
+          <test_script_entry>/opt/webapi-webrtc-w3c-tests/webrtc/RTCSessionDescription_basic.html</test_script_entry>
         </description>
       </testcase>
-      <testcase component="W3C_HTML5 APIs/Communication/WebRTC" execution_type="auto" id="RTCSessionDescription_sdp_basic" purpose="Check if RTCSessionDescription.sdp exists and type of string">
+      <testcase component="W3C_HTML5 APIs/Communication/WebRTC" execution_type="auto" id="RTCIceCandidate_basic" purpose=" Test RTCIceCandidate interface" subcase="3">
         <description>
-          <test_script_entry>/opt/webapi-webrtc-w3c-tests/webrtc/RTCSessionDescription_basic.html?total_num=2&amp;amp;locator_key=id&amp;amp;value=2</test_script_entry>
-        </description>
-      </testcase>
-      <testcase component="W3C_HTML5 APIs/Communication/WebRTC" execution_type="auto" id="RTCIceCandidate_candidate_basic" purpose="Check if RTCIceCandidate.candidate exists and type of string">
-        <description>
-          <test_script_entry>/opt/webapi-webrtc-w3c-tests/webrtc/RTCIceCandidate_basic.html?total_num=3&amp;amp;locator_key=id&amp;amp;value=1</test_script_entry>
-        </description>
-      </testcase>
-      <testcase component="W3C_HTML5 APIs/Communication/WebRTC" execution_type="auto" id="RTCIceCandidate_sdpMid_basic" purpose="Check if RTCIceCandidate.sdpMid exists and type of string">
-        <description>
-          <test_script_entry>/opt/webapi-webrtc-w3c-tests/webrtc/RTCIceCandidate_basic.html?total_num=3&amp;amp;locator_key=id&amp;amp;value=2</test_script_entry>
-        </description>
-      </testcase>
-      <testcase component="W3C_HTML5 APIs/Communication/WebRTC" execution_type="auto" id="RTCIceCandidate_sdpMLineIndex_basic" purpose="Check if RTCIceCandidate.sdpMLineIndex exists and type of number">
-        <description>
-          <test_script_entry>/opt/webapi-webrtc-w3c-tests/webrtc/RTCIceCandidate_basic.html?total_num=3&amp;amp;locator_key=id&amp;amp;value=3</test_script_entry>
+          <test_script_entry>/opt/webapi-webrtc-w3c-tests/webrtc/RTCIceCandidate_basic.html</test_script_entry>
         </description>
       </testcase>
       <testcase component="W3C_HTML5 APIs/Communication/WebRTC" execution_type="auto" id="RTCPeerConnectionIceEvent_candidate_basic" purpose="Check if the readonly attribute candidate of RTCPeerConnectionIceEvent exists and type of string">
@@ -190,84 +28,9 @@
           <test_script_entry>/opt/webapi-webrtc-w3c-tests/webrtc/RTCPeerConnectionIceEvent_candidate_basic.html</test_script_entry>
         </description>
       </testcase>
-      <testcase component="W3C_HTML5 APIs/Communication/WebRTC" execution_type="auto" id="RTCDataChannel_label_basic" purpose="Check if readonly RTCDataChannel.label exists and type of string">
+      <testcase component="W3C_HTML5 APIs/Communication/WebRTC" execution_type="auto" id="RTCDataChannel_basic" purpose="Test RTCDataChannel interface" subcase="16">
         <description>
-          <test_script_entry>/opt/webapi-webrtc-w3c-tests/webrtc/RTCDataChannel_basic.html?total_num=16&amp;amp;locator_key=id&amp;amp;value=1</test_script_entry>
-        </description>
-      </testcase>
-      <testcase component="W3C_HTML5 APIs/Communication/WebRTC" execution_type="auto" id="RTCDataChannel_ordered_basic" purpose="Check if readonly RTCDataChannel.ordered exists and type of boolean">
-        <description>
-          <test_script_entry>/opt/webapi-webrtc-w3c-tests/webrtc/RTCDataChannel_basic.html?total_num=16&amp;amp;locator_key=id&amp;amp;value=2</test_script_entry>
-        </description>
-      </testcase>
-      <testcase component="W3C_HTML5 APIs/Communication/WebRTC" execution_type="auto" id="RTCDataChannel_maxRetransmitTime_basic" purpose="Check if readonly RTCDataChannel.maxRetransmitTime exists and type of number">
-        <description>
-          <test_script_entry>/opt/webapi-webrtc-w3c-tests/webrtc/RTCDataChannel_basic.html?total_num=16&amp;amp;locator_key=id&amp;amp;value=3</test_script_entry>
-        </description>
-      </testcase>
-      <testcase component="W3C_HTML5 APIs/Communication/WebRTC" execution_type="auto" id="RTCDataChannel_maxRetransmits_basic" purpose="Check if readonly RTCDataChannel.maxRetransmits exists and type of number">
-        <description>
-          <test_script_entry>/opt/webapi-webrtc-w3c-tests/webrtc/RTCDataChannel_basic.html?total_num=16&amp;amp;locator_key=id&amp;amp;value=4</test_script_entry>
-        </description>
-      </testcase>
-      <testcase component="W3C_HTML5 APIs/Communication/WebRTC" execution_type="auto" id="RTCDataChannel_protocol_basic" purpose="Check if readonly RTCDataChannel.protocol exists and type of string">
-        <description>
-          <test_script_entry>/opt/webapi-webrtc-w3c-tests/webrtc/RTCDataChannel_basic.html?total_num=16&amp;amp;locator_key=id&amp;amp;value=5</test_script_entry>
-        </description>
-      </testcase>
-      <testcase component="W3C_HTML5 APIs/Communication/WebRTC" execution_type="auto" id="RTCDataChannel_negotiated_basic" purpose="Check if readonly RTCDataChannel.negotiated exists and type of boolean">
-        <description>
-          <test_script_entry>/opt/webapi-webrtc-w3c-tests/webrtc/RTCDataChannel_basic.html?total_num=16&amp;amp;locator_key=id&amp;amp;value=6</test_script_entry>
-        </description>
-      </testcase>
-      <testcase component="W3C_HTML5 APIs/Communication/WebRTC" execution_type="auto" id="RTCDataChannel_id_basic" purpose="Check if readonly RTCDataChannel.id exists and type of number">
-        <description>
-          <test_script_entry>/opt/webapi-webrtc-w3c-tests/webrtc/RTCDataChannel_basic.html?total_num=16&amp;amp;locator_key=id&amp;amp;value=7</test_script_entry>
-        </description>
-      </testcase>
-      <testcase component="W3C_HTML5 APIs/Communication/WebRTC" execution_type="auto" id="RTCDataChannel_readyState_basic" purpose="Check if readonly RTCDataChannel.readyState exists and type of string">
-        <description>
-          <test_script_entry>/opt/webapi-webrtc-w3c-tests/webrtc/RTCDataChannel_basic.html?total_num=16&amp;amp;locator_key=id&amp;amp;value=8</test_script_entry>
-        </description>
-      </testcase>
-      <testcase component="W3C_HTML5 APIs/Communication/WebRTC" execution_type="auto" id="RTCDataChannel_bufferedAmount_basic" purpose="Check if readonly RTCDataChannel.bufferedAmount exists and type of number">
-        <description>
-          <test_script_entry>/opt/webapi-webrtc-w3c-tests/webrtc/RTCDataChannel_basic.html?total_num=16&amp;amp;locator_key=id&amp;amp;value=9</test_script_entry>
-        </description>
-      </testcase>
-      <testcase component="W3C_HTML5 APIs/Communication/WebRTC" execution_type="auto" id="RTCDataChannel_binaryType_basic" purpose="Check if RTCDataChannel.binaryType exists and type of string">
-        <description>
-          <test_script_entry>/opt/webapi-webrtc-w3c-tests/webrtc/RTCDataChannel_basic.html?total_num=16&amp;amp;locator_key=id&amp;amp;value=10</test_script_entry>
-        </description>
-      </testcase>
-      <testcase component="W3C_HTML5 APIs/Communication/WebRTC" execution_type="auto" id="RTCDataChannel_onopen_basic" purpose="Check if RTCDataChannel.onopen exists">
-        <description>
-          <test_script_entry>/opt/webapi-webrtc-w3c-tests/webrtc/RTCDataChannel_basic.html?total_num=16&amp;amp;locator_key=id&amp;amp;value=11</test_script_entry>
-        </description>
-      </testcase>
-      <testcase component="W3C_HTML5 APIs/Communication/WebRTC" execution_type="auto" id="RTCDataChannel_onerror_basic" purpose="Check if RTCDataChannel.onerror exists">
-        <description>
-          <test_script_entry>/opt/webapi-webrtc-w3c-tests/webrtc/RTCDataChannel_basic.html?total_num=16&amp;amp;locator_key=id&amp;amp;value=12</test_script_entry>
-        </description>
-      </testcase>
-      <testcase component="W3C_HTML5 APIs/Communication/WebRTC" execution_type="auto" id="RTCDataChannel_onclose_basic" purpose="Check if RTCDataChannel.onclose exists">
-        <description>
-          <test_script_entry>/opt/webapi-webrtc-w3c-tests/webrtc/RTCDataChannel_basic.html?total_num=16&amp;amp;locator_key=id&amp;amp;value=13</test_script_entry>
-        </description>
-      </testcase>
-      <testcase component="W3C_HTML5 APIs/Communication/WebRTC" execution_type="auto" id="RTCDataChannel_onmessage_basic" purpose="Check if RTCDataChannel.onmessage exists">
-        <description>
-          <test_script_entry>/opt/webapi-webrtc-w3c-tests/webrtc/RTCDataChannel_basic.html?total_num=16&amp;amp;locator_key=id&amp;amp;value=14</test_script_entry>
-        </description>
-      </testcase>
-      <testcase component="W3C_HTML5 APIs/Communication/WebRTC" execution_type="auto" id="RTCDataChannel_close_basic" purpose="Check if RTCDataChannel.close exists and type of function">
-        <description>
-          <test_script_entry>/opt/webapi-webrtc-w3c-tests/webrtc/RTCDataChannel_basic.html?total_num=16&amp;amp;locator_key=id&amp;amp;value=15</test_script_entry>
-        </description>
-      </testcase>
-      <testcase component="W3C_HTML5 APIs/Communication/WebRTC" execution_type="auto" id="RTCDataChannel_send_basic" purpose="Check if RTCDataChannel.send exists and type of function">
-        <description>
-          <test_script_entry>/opt/webapi-webrtc-w3c-tests/webrtc/RTCDataChannel_basic.html?total_num=16&amp;amp;locator_key=id&amp;amp;value=16</test_script_entry>
+          <test_script_entry>/opt/webapi-webrtc-w3c-tests/webrtc/RTCDataChannel_basic.html</test_script_entry>
         </description>
       </testcase>
       <testcase component="W3C_HTML5 APIs/Communication/WebRTC" execution_type="auto" id="RTCDataChannelEvent_channel_basic" purpose="Check if the readonly attribute channel of RTCDataChannelEvent exists and type of RTCDataChannel">
@@ -280,39 +43,9 @@
           <test_script_entry>/opt/webapi-webrtc-w3c-tests/webrtc/RTCPeerConnection_createDTMFSender_basic.html</test_script_entry>
         </description>
       </testcase>
-      <testcase component="W3C_HTML5 APIs/Communication/WebRTC" execution_type="auto" id="RTCDTMFSender_canInsertDTMF_basic" purpose="Check if readonly RTCDTMFSender.canInsertDTMF exists and type of boolean">
+      <testcase component="W3C_HTML5 APIs/Communication/WebRTC" execution_type="auto" id="RTCDTMFSender_basic" purpose="Test RTCDTMFSender interface" subcase="7">
         <description>
-          <test_script_entry>/opt/webapi-webrtc-w3c-tests/webrtc/RTCDTMFSender_basic.html?total_num=7&amp;amp;locator_key=id&amp;amp;value=1</test_script_entry>
-        </description>
-      </testcase>
-      <testcase component="W3C_HTML5 APIs/Communication/WebRTC" execution_type="auto" id="RTCDTMFSender_track_basic" purpose="Check if readonly RTCDTMFSender.track exists and type of mediaStreamTrack">
-        <description>
-          <test_script_entry>/opt/webapi-webrtc-w3c-tests/webrtc/RTCDTMFSender_basic.html?total_num=7&amp;amp;locator_key=id&amp;amp;value=2</test_script_entry>
-        </description>
-      </testcase>
-      <testcase component="W3C_HTML5 APIs/Communication/WebRTC" execution_type="auto" id="RTCDTMFSender_toneBuffer_basic" purpose="Check if readonly RTCDTMFSender.toneBuffer exists and type of string">
-        <description>
-          <test_script_entry>/opt/webapi-webrtc-w3c-tests/webrtc/RTCDTMFSender_basic.html?total_num=7&amp;amp;locator_key=id&amp;amp;value=3</test_script_entry>
-        </description>
-      </testcase>
-      <testcase component="W3C_HTML5 APIs/Communication/WebRTC" execution_type="auto" id="RTCDTMFSender_duration_basic" purpose="Check if readonly RTCDTMFSender.duration exists and type of number">
-        <description>
-          <test_script_entry>/opt/webapi-webrtc-w3c-tests/webrtc/RTCDTMFSender_basic.html?total_num=7&amp;amp;locator_key=id&amp;amp;value=4</test_script_entry>
-        </description>
-      </testcase>
-      <testcase component="W3C_HTML5 APIs/Communication/WebRTC" execution_type="auto" id="RTCDTMFSender_interToneGap_basic" purpose="Check if readonly RTCDTMFSender.interToneGap exists and type of number">
-        <description>
-          <test_script_entry>/opt/webapi-webrtc-w3c-tests/webrtc/RTCDTMFSender_basic.html?total_num=7&amp;amp;locator_key=id&amp;amp;value=5</test_script_entry>
-        </description>
-      </testcase>
-      <testcase component="W3C_HTML5 APIs/Communication/WebRTC" execution_type="auto" id="RTCDTMFSender_ontonechange_basic" purpose="Check if RTCDTMFSender.ontonechange exists">
-        <description>
-          <test_script_entry>/opt/webapi-webrtc-w3c-tests/webrtc/RTCDTMFSender_basic.html?total_num=7&amp;amp;locator_key=id&amp;amp;value=6</test_script_entry>
-        </description>
-      </testcase>
-      <testcase component="W3C_HTML5 APIs/Communication/WebRTC" execution_type="auto" id="RTCDTMFSender_insertDTMF_basic" purpose="Check if RTCDTMFSender.insertDTMF exists and type of function">
-        <description>
-          <test_script_entry>/opt/webapi-webrtc-w3c-tests/webrtc/RTCDTMFSender_basic.html?total_num=7&amp;amp;locator_key=id&amp;amp;value=7</test_script_entry>
+          <test_script_entry>/opt/webapi-webrtc-w3c-tests/webrtc/RTCDTMFSender_basic.html</test_script_entry>
         </description>
       </testcase>
       <testcase component="W3C_HTML5 APIs/Communication/WebRTC" execution_type="auto" id="RTCDTMFToneChangeEvent_tone_basic" purpose="Check if the readonly attribute tone of RTCDTMFToneChangeEvent exists and type of string">
@@ -337,109 +70,14 @@
       </testcase>
     </set>
     <set name="WebRTC" type="js">
-      <testcase component="W3C_HTML5 APIs/Communication/WebRTC" execution_type="auto" id="RTCDataChannel_binaryType_init_value" purpose="Check if the setting of RTCDataChannel.binaryType is normally">
+      <testcase component="W3C_HTML5 APIs/Communication/WebRTC" execution_type="auto" id="RTCDataChannel" purpose="Test RTCDataChannel interface" subcase="10">
         <description>
-          <test_script_entry>/opt/webapi-webrtc-w3c-tests/webrtc/RTCDataChannel.html?total_num=10&amp;amp;locator_key=id&amp;amp;value=1</test_script_entry>
+          <test_script_entry>/opt/webapi-webrtc-w3c-tests/webrtc/RTCDataChannel.html</test_script_entry>
         </description>
       </testcase>
-      <testcase component="W3C_HTML5 APIs/Communication/WebRTC" execution_type="auto" id="RTCDataChannel_bufferedAmount_init_value" purpose="Check if the RTCDataChannel.bufferedAmount init value is 0">
+      <testcase component="W3C_HTML5 APIs/Communication/WebRTC" execution_type="auto" id="RTCPeerConnection" purpose="Check if the method of addIceCandidate is valid" subcase="11">
         <description>
-          <test_script_entry>/opt/webapi-webrtc-w3c-tests/webrtc/RTCDataChannel.html?total_num=10&amp;amp;locator_key=id&amp;amp;value=2</test_script_entry>
-        </description>
-      </testcase>
-      <testcase component="W3C_HTML5 APIs/Communication/WebRTC" execution_type="auto" id="RTCDataChannel_id" purpose="Check if the setting of RTCDataChannel.id is normally">
-        <description>
-          <test_script_entry>/opt/webapi-webrtc-w3c-tests/webrtc/RTCDataChannel.html?total_num=10&amp;amp;locator_key=id&amp;amp;value=3</test_script_entry>
-        </description>
-      </testcase>
-      <testcase component="W3C_HTML5 APIs/Communication/WebRTC" execution_type="auto" id="RTCDataChannel_label" purpose="Check if the setting of RTCDataChannel.label is normally">
-        <description>
-          <test_script_entry>/opt/webapi-webrtc-w3c-tests/webrtc/RTCDataChannel.html?total_num=10&amp;amp;locator_key=id&amp;amp;value=4</test_script_entry>
-        </description>
-      </testcase>
-      <testcase component="W3C_HTML5 APIs/Communication/WebRTC" execution_type="auto" id="RTCDataChannel_maxRetransmits" purpose="Check if the setting of RTCDataChannel.maxRetransmits is normally">
-        <description>
-          <test_script_entry>/opt/webapi-webrtc-w3c-tests/webrtc/RTCDataChannel.html?total_num=10&amp;amp;locator_key=id&amp;amp;value=5</test_script_entry>
-        </description>
-      </testcase>
-      <testcase component="W3C_HTML5 APIs/Communication/WebRTC" execution_type="auto" id="RTCDataChannel_maxRetransmitTime" purpose="Check if the setting of RTCDataChannel.maxRetransmitTime is normally">
-        <description>
-          <test_script_entry>/opt/webapi-webrtc-w3c-tests/webrtc/RTCDataChannel.html?total_num=10&amp;amp;locator_key=id&amp;amp;value=6</test_script_entry>
-        </description>
-      </testcase>
-      <testcase component="W3C_HTML5 APIs/Communication/WebRTC" execution_type="auto" id="RTCDataChannel_negotiated" purpose="Check if the setting of RTCDataChannel.negotiated is normally">
-        <description>
-          <test_script_entry>/opt/webapi-webrtc-w3c-tests/webrtc/RTCDataChannel.html?total_num=10&amp;amp;locator_key=id&amp;amp;value=7</test_script_entry>
-        </description>
-      </testcase>
-      <testcase component="W3C_HTML5 APIs/Communication/WebRTC" execution_type="auto" id="RTCDataChannel_ordered" purpose="Check if the setting of RTCDataChannel.ordered is normally">
-        <description>
-          <test_script_entry>/opt/webapi-webrtc-w3c-tests/webrtc/RTCDataChannel.html?total_num=10&amp;amp;locator_key=id&amp;amp;value=8</test_script_entry>
-        </description>
-      </testcase>
-      <testcase component="W3C_HTML5 APIs/Communication/WebRTC" execution_type="auto" id="RTCDataChannel_protocol" purpose="Check if the setting of RTCDataChannel.protocol is normally">
-        <description>
-          <test_script_entry>/opt/webapi-webrtc-w3c-tests/webrtc/RTCDataChannel.html?total_num=10&amp;amp;locator_key=id&amp;amp;value=9</test_script_entry>
-        </description>
-      </testcase>
-      <testcase component="W3C_HTML5 APIs/Communication/WebRTC" execution_type="auto" id="RTCDataChannel_readyState" purpose="Check if the setting of RTCDataChannel.readyState is normally">
-        <description>
-          <test_script_entry>/opt/webapi-webrtc-w3c-tests/webrtc/RTCDataChannel.html?total_num=10&amp;amp;locator_key=id&amp;amp;value=10</test_script_entry>
-        </description>
-      </testcase>
-      <testcase component="W3C_HTML5 APIs/Communication/WebRTC" execution_type="auto" id="RTCPeerConnection_addIceCandidate_method" purpose="Check if the method of addIceCandidate is valid">
-        <description>
-          <test_script_entry>/opt/webapi-webrtc-w3c-tests/webrtc/RTCPeerConnection.html?total_num=11&amp;amp;locator_key=id&amp;amp;value=1</test_script_entry>
-        </description>
-      </testcase>
-      <testcase component="W3C_HTML5 APIs/Communication/WebRTC" execution_type="auto" id="RTCPeerConnection_createDTMFSender" purpose="Check if the setting of RTCPeerConnection.createDTMFSender is normally">
-        <description>
-          <test_script_entry>/opt/webapi-webrtc-w3c-tests/webrtc/RTCPeerConnection.html?total_num=11&amp;amp;locator_key=id&amp;amp;value=2</test_script_entry>
-        </description>
-      </testcase>
-      <testcase component="W3C_HTML5 APIs/Communication/WebRTC" execution_type="auto" id="RTCPeerConnection_close_method" purpose="Check if the method of close is valid">
-        <description>
-          <test_script_entry>/opt/webapi-webrtc-w3c-tests/webrtc/RTCPeerConnection.html?total_num=11&amp;amp;locator_key=id&amp;amp;value=3</test_script_entry>
-        </description>
-      </testcase>
-      <testcase component="W3C_HTML5 APIs/Communication/WebRTC" execution_type="auto" id="RTCPeerConnection_createDataChannel_method" purpose="Check if the method of RTCPeerConnection.createDataChannel is valid">
-        <description>
-          <test_script_entry>/opt/webapi-webrtc-w3c-tests/webrtc/RTCPeerConnection.html?total_num=11&amp;amp;locator_key=id&amp;amp;value=4</test_script_entry>
-        </description>
-      </testcase>
-      <testcase component="W3C_HTML5 APIs/Communication/WebRTC" execution_type="auto" id="RTCPeerConnection_getLocalStreams_method" purpose="Check if the method of setLocalDescription is valid">
-        <description>
-          <test_script_entry>/opt/webapi-webrtc-w3c-tests/webrtc/RTCPeerConnection.html?total_num=11&amp;amp;locator_key=id&amp;amp;value=5</test_script_entry>
-        </description>
-      </testcase>
-      <testcase component="W3C_HTML5 APIs/Communication/WebRTC" execution_type="auto" id="RTCPeerConnection_iceConnectionState_init_value" purpose="Check if the init value of RTCPeerConnection.iceConnectionState is new">
-        <description>
-          <test_script_entry>/opt/webapi-webrtc-w3c-tests/webrtc/RTCPeerConnection.html?total_num=11&amp;amp;locator_key=id&amp;amp;value=6</test_script_entry>
-        </description>
-      </testcase>
-      <testcase component="W3C_HTML5 APIs/Communication/WebRTC" execution_type="auto" id="RTCPeerConnection_iceGatheringState_init_value" purpose="Check if the init value of RTCPeerConnection.iceGatheringState is new">
-        <description>
-          <test_script_entry>/opt/webapi-webrtc-w3c-tests/webrtc/RTCPeerConnection.html?total_num=11&amp;amp;locator_key=id&amp;amp;value=7</test_script_entry>
-        </description>
-      </testcase>
-      <testcase component="W3C_HTML5 APIs/Communication/WebRTC" execution_type="auto" id="RTCPeerConnection_localDescription_init_value" purpose="Check if the init value of RTCPeerConnection.localDescription is null">
-        <description>
-          <test_script_entry>/opt/webapi-webrtc-w3c-tests/webrtc/RTCPeerConnection.html?total_num=11&amp;amp;locator_key=id&amp;amp;value=8</test_script_entry>
-        </description>
-      </testcase>
-      <testcase component="W3C_HTML5 APIs/Communication/WebRTC" execution_type="auto" id="RTCPeerConnection_remoteDescription_init_value" purpose="Check if the init value of RTCPeerConnection.remoteDescription is null">
-        <description>
-          <test_script_entry>/opt/webapi-webrtc-w3c-tests/webrtc/RTCPeerConnection.html?total_num=11&amp;amp;locator_key=id&amp;amp;value=9</test_script_entry>
-        </description>
-      </testcase>
-      <testcase component="W3C_HTML5 APIs/Communication/WebRTC" execution_type="auto" id="RTCPeerConnection_signalingState_init_value" purpose="Check if the init value of RTCPeerConnection.signalingState is stable">
-        <description>
-          <test_script_entry>/opt/webapi-webrtc-w3c-tests/webrtc/RTCPeerConnection.html?total_num=11&amp;amp;locator_key=id&amp;amp;value=10</test_script_entry>
-        </description>
-      </testcase>
-      <testcase component="W3C_HTML5 APIs/Communication/WebRTC" execution_type="auto" id="RTCPeerConnection_signalingState_closed_value" purpose="Check if when the close() method is invoked, the signalingState value is closed">
-        <description>
-          <test_script_entry>/opt/webapi-webrtc-w3c-tests/webrtc/RTCPeerConnection.html?total_num=11&amp;amp;locator_key=id&amp;amp;value=11</test_script_entry>
+          <test_script_entry>/opt/webapi-webrtc-w3c-tests/webrtc/RTCPeerConnection.html</test_script_entry>
         </description>
       </testcase>
       <testcase component="W3C_HTML5 APIs/Communication/WebRTC" execution_type="auto" id="RTCPeerConnection_updateIce_method" purpose="Check if the method of updateIce is valid">
@@ -447,14 +85,9 @@
           <test_script_entry>/opt/webapi-webrtc-w3c-tests/webrtc/RTCPeerConnection_updateIce_method.html</test_script_entry>
         </description>
       </testcase>
-      <testcase component="W3C_HTML5 APIs/Communication/WebRTC" execution_type="auto" id="RTCSessionDescription_sdp" purpose="Check if the the setting of RTCSessionDescription.sdp is normally">
+      <testcase component="W3C_HTML5 APIs/Communication/WebRTC" execution_type="auto" id="RTCSessionDescription" purpose="Test RTCSessionDescription interface" subcase="2">
         <description>
-          <test_script_entry>/opt/webapi-webrtc-w3c-tests/webrtc/RTCSessionDescription.html?total_num=2&amp;amp;locator_key=id&amp;amp;value=1</test_script_entry>
-        </description>
-      </testcase>
-      <testcase component="W3C_HTML5 APIs/Communication/WebRTC" execution_type="auto" id="RTCSessionDescription_type" purpose="Check if the the setting of RTCSessionDescription.type is normally">
-        <description>
-          <test_script_entry>/opt/webapi-webrtc-w3c-tests/webrtc/RTCSessionDescription.html?total_num=2&amp;amp;locator_key=id&amp;amp;value=2</test_script_entry>
+          <test_script_entry>/opt/webapi-webrtc-w3c-tests/webrtc/RTCSessionDescription.html</test_script_entry>
         </description>
       </testcase>
       <testcase component="W3C_HTML5 APIs/Communication/WebRTC" execution_type="auto" id="RTCPeerConnection_datachannel_event" purpose="Check if the event of datachannel is valid">
@@ -492,34 +125,9 @@
           <test_script_entry>/opt/webapi-webrtc-w3c-tests/webrtc/RTCPeerConnection_getRemoteStreams.html</test_script_entry>
         </description>
       </testcase>
-      <testcase component="W3C_HTML5 APIs/Communication/WebRTC" execution_type="auto" id="RTCPeerConnection_EventHandler_1" purpose="Check if the RTCPeerConnection.onnegotiationneeded is valid">
+      <testcase component="W3C_HTML5 APIs/Communication/WebRTC" execution_type="auto" id="RTCPeerConnection_EventHandler" purpose="Test RTCPeerConnection EventHandler" subcase="6">
         <description>
-          <test_script_entry>/opt/webapi-webrtc-w3c-tests/webrtc/RTCPeerConnection_EventHandler.html?total_num=6&amp;amp;locator_key=id&amp;amp;value=1</test_script_entry>
-        </description>
-      </testcase>
-      <testcase component="W3C_HTML5 APIs/Communication/WebRTC" execution_type="auto" id="RTCPeerConnection_EventHandler_2" purpose="Check if the RTCPeerConnection.onicecandidate is valid">
-        <description>
-          <test_script_entry>/opt/webapi-webrtc-w3c-tests/webrtc/RTCPeerConnection_EventHandler.html?total_num=6&amp;amp;locator_key=id&amp;amp;value=2</test_script_entry>
-        </description>
-      </testcase>
-      <testcase component="W3C_HTML5 APIs/Communication/WebRTC" execution_type="auto" id="RTCPeerConnection_EventHandler_3" purpose="Check if the RTCPeerConnection.onsignalingstatechange is valid">
-        <description>
-          <test_script_entry>/opt/webapi-webrtc-w3c-tests/webrtc/RTCPeerConnection_EventHandler.html?total_num=6&amp;amp;locator_key=id&amp;amp;value=3</test_script_entry>
-        </description>
-      </testcase>
-      <testcase component="W3C_HTML5 APIs/Communication/WebRTC" execution_type="auto" id="RTCPeerConnection_EventHandler_4" purpose="Check if the RTCPeerConnection.onaddstream is valid">
-        <description>
-          <test_script_entry>/opt/webapi-webrtc-w3c-tests/webrtc/RTCPeerConnection_EventHandler.html?total_num=6&amp;amp;locator_key=id&amp;amp;value=4</test_script_entry>
-        </description>
-      </testcase>
-      <testcase component="W3C_HTML5 APIs/Communication/WebRTC" execution_type="auto" id="RTCPeerConnection_EventHandler_5" purpose="Check if the RTCPeerConnection.onremovestream is valid">
-        <description>
-          <test_script_entry>/opt/webapi-webrtc-w3c-tests/webrtc/RTCPeerConnection_EventHandler.html?total_num=6&amp;amp;locator_key=id&amp;amp;value=5</test_script_entry>
-        </description>
-      </testcase>
-      <testcase component="W3C_HTML5 APIs/Communication/WebRTC" execution_type="auto" id="RTCPeerConnection_EventHandler_6" purpose="Check if the RTCPeerConnection.oniceconnectionstatechange is valid">
-        <description>
-          <test_script_entry>/opt/webapi-webrtc-w3c-tests/webrtc/RTCPeerConnection_EventHandler.html?total_num=6&amp;amp;locator_key=id&amp;amp;value=6</test_script_entry>
+          <test_script_entry>/opt/webapi-webrtc-w3c-tests/webrtc/RTCPeerConnection_EventHandler.html</test_script_entry>
         </description>
       </testcase>
       <testcase component="W3C_HTML5 APIs/Communication/WebRTC" execution_type="auto" id="RTCPeerConnection_setIdentityProvider" purpose="Check if the RTCPeerConnection.setIdentityProvider is valid">
@@ -537,69 +145,9 @@
           <test_script_entry>/opt/webapi-webrtc-w3c-tests/webrtc/RTCPeerConnection_close.html</test_script_entry>
         </description>
       </testcase>
-      <testcase component="W3C_HTML5 APIs/Communication/WebRTC" execution_type="auto" id="RTCIceCandidate_1" purpose="Test new RTCIceCandidate">
+      <testcase component="W3C_HTML5 APIs/Communication/WebRTC" execution_type="auto" id="RTCIceCandidate" purpose="Test RTCIceCandidate interface" subcase="13">
         <description>
-          <test_script_entry>/opt/webapi-webrtc-w3c-tests/webrtc/blink/RTCIceCandidate.html?total_num=13&amp;amp;locator_key=id&amp;amp;value=1</test_script_entry>
-        </description>
-      </testcase>
-      <testcase component="W3C_HTML5 APIs/Communication/WebRTC" execution_type="auto" id="RTCIceCandidate_2" purpose="Test candidate">
-        <description>
-          <test_script_entry>/opt/webapi-webrtc-w3c-tests/webrtc/blink/RTCIceCandidate.html?total_num=13&amp;amp;locator_key=id&amp;amp;value=2</test_script_entry>
-        </description>
-      </testcase>
-      <testcase component="W3C_HTML5 APIs/Communication/WebRTC" execution_type="auto" id="RTCIceCandidate_3" purpose="Test sdpMid">
-        <description>
-          <test_script_entry>/opt/webapi-webrtc-w3c-tests/webrtc/blink/RTCIceCandidate.html?total_num=13&amp;amp;locator_key=id&amp;amp;value=3</test_script_entry>
-        </description>
-      </testcase>
-      <testcase component="W3C_HTML5 APIs/Communication/WebRTC" execution_type="auto" id="RTCIceCandidate_4" purpose="Test sdpMLineIndex">
-        <description>
-          <test_script_entry>/opt/webapi-webrtc-w3c-tests/webrtc/blink/RTCIceCandidate.html?total_num=13&amp;amp;locator_key=id&amp;amp;value=4</test_script_entry>
-        </description>
-      </testcase>
-      <testcase component="W3C_HTML5 APIs/Communication/WebRTC" execution_type="auto" id="RTCIceCandidate_5" purpose="Test initializer">
-        <description>
-          <test_script_entry>/opt/webapi-webrtc-w3c-tests/webrtc/blink/RTCIceCandidate.html?total_num=13&amp;amp;locator_key=id&amp;amp;value=5</test_script_entry>
-        </description>
-      </testcase>
-      <testcase component="W3C_HTML5 APIs/Communication/WebRTC" execution_type="auto" id="RTCIceCandidate_6" purpose="Test new RTCIceCandidate(initializer)">
-        <description>
-          <test_script_entry>/opt/webapi-webrtc-w3c-tests/webrtc/blink/RTCIceCandidate.html?total_num=13&amp;amp;locator_key=id&amp;amp;value=6</test_script_entry>
-        </description>
-      </testcase>
-      <testcase component="W3C_HTML5 APIs/Communication/WebRTC" execution_type="auto" id="RTCIceCandidate_7" purpose="Test initializer candidate">
-        <description>
-          <test_script_entry>/opt/webapi-webrtc-w3c-tests/webrtc/blink/RTCIceCandidate.html?total_num=13&amp;amp;locator_key=id&amp;amp;value=7</test_script_entry>
-        </description>
-      </testcase>
-      <testcase component="W3C_HTML5 APIs/Communication/WebRTC" execution_type="auto" id="RTCIceCandidate_8" purpose="Test initializer sdpMid">
-        <description>
-          <test_script_entry>/opt/webapi-webrtc-w3c-tests/webrtc/blink/RTCIceCandidate.html?total_num=13&amp;amp;locator_key=id&amp;amp;value=8</test_script_entry>
-        </description>
-      </testcase>
-      <testcase component="W3C_HTML5 APIs/Communication/WebRTC" execution_type="auto" id="RTCIceCandidate_9" purpose="Test initializer sdpMLineIndex">
-        <description>
-          <test_script_entry>/opt/webapi-webrtc-w3c-tests/webrtc/blink/RTCIceCandidate.html?total_num=13&amp;amp;locator_key=id&amp;amp;value=9</test_script_entry>
-        </description>
-      </testcase>
-      <testcase component="W3C_HTML5 APIs/Communication/WebRTC" execution_type="auto" id="RTCIceCandidate_10" purpose="Test RTCIceCandidate({})">
-        <description>
-          <test_script_entry>/opt/webapi-webrtc-w3c-tests/webrtc/blink/RTCIceCandidate.html?total_num=13&amp;amp;locator_key=id&amp;amp;value=10</test_script_entry>
-        </description>
-      </testcase>
-      <testcase component="W3C_HTML5 APIs/Communication/WebRTC" execution_type="auto" id="RTCIceCandidate_11" purpose="Test RTCIceCandidate(5)">
-        <description>
-          <test_script_entry>/opt/webapi-webrtc-w3c-tests/webrtc/blink/RTCIceCandidate.html?total_num=13&amp;amp;locator_key=id&amp;amp;value=11</test_script_entry>
-        </description>
-      </testcase>
-      <testcase component="W3C_HTML5 APIs/Communication/WebRTC" execution_type="auto" id="RTCIceCandidate_12" purpose="Test RTCIceCandidate('foobar')">
-        <description>
-          <test_script_entry>/opt/webapi-webrtc-w3c-tests/webrtc/blink/RTCIceCandidate.html?total_num=13&amp;amp;locator_key=id&amp;amp;value=12</test_script_entry>
-        </description>
-      </testcase>
-      <testcase component="W3C_HTML5 APIs/Communication/WebRTC" execution_type="auto" id="RTCIceCandidate_13" purpose="Test new RTCIceCandidate()">
-        <description>
-          <test_script_entry>/opt/webapi-webrtc-w3c-tests/webrtc/blink/RTCIceCandidate.html?total_num=13&amp;amp;locator_key=id&amp;amp;value=13</test_script_entry>
+          <test_script_entry>/opt/webapi-webrtc-w3c-tests/webrtc/blink/RTCIceCandidate.html</test_script_entry>
         </description>
       </testcase>
       <testcase component="W3C_HTML5 APIs/Communication/WebRTC" execution_type="auto" id="RTCPeerConnection-AddRemoveStream" purpose="Check if RTCPeerConnection [add|remove]Stream">
@@ -617,39 +165,9 @@
           <test_script_entry>/opt/webapi-webrtc-w3c-tests/webrtc/blink/RTCPeerConnection-createOffer.html</test_script_entry>
         </description>
       </testcase>
-      <testcase component="W3C_HTML5 APIs/Communication/WebRTC" execution_type="auto" id="RTCPeerConnection-datachannel-1" purpose="Check that connecting is the initial state of a RTCDataChannel object created with createDataChannel()" onload_delay="10">
+      <testcase component="W3C_HTML5 APIs/Communication/WebRTC" execution_type="auto" id="RTCPeerConnection-datachannel" onload_delay="10" purpose="Test RTCPeerConnection datachannel" subcase="7">
         <description>
-          <test_script_entry>/opt/webapi-webrtc-w3c-tests/webrtc/blink/RTCPeerConnection-datachannel.html?total_num=7&amp;amp;locator_key=id&amp;amp;value=1</test_script_entry>
-        </description>
-      </testcase>
-      <testcase component="W3C_HTML5 APIs/Communication/WebRTC" execution_type="auto" id="RTCPeerConnection-datachannel-2" purpose="Check that RTCPeerConnection.createDataChannel('label1') creates an ordered datachannel" onload_delay="10">
-        <description>
-          <test_script_entry>/opt/webapi-webrtc-w3c-tests/webrtc/blink/RTCPeerConnection-datachannel.html?total_num=7&amp;amp;locator_key=id&amp;amp;value=2</test_script_entry>
-        </description>
-      </testcase>
-      <testcase component="W3C_HTML5 APIs/Communication/WebRTC" execution_type="auto" id="RTCPeerConnection-datachannel-3" purpose="Check that RTCPeerConnection.createDataChannel('label2', {}) creates an ordered datachannel" onload_delay="10">
-        <description>
-          <test_script_entry>/opt/webapi-webrtc-w3c-tests/webrtc/blink/RTCPeerConnection-datachannel.html?total_num=7&amp;amp;locator_key=id&amp;amp;value=3</test_script_entry>
-        </description>
-      </testcase>
-      <testcase component="W3C_HTML5 APIs/Communication/WebRTC" execution_type="auto" id="RTCPeerConnection-datachannel-4" purpose="Check that RTCPeerConnection.createDataChannel('label3', {ordered:true}) creates an ordered datachannel" onload_delay="10">
-        <description>
-          <test_script_entry>/opt/webapi-webrtc-w3c-tests/webrtc/blink/RTCPeerConnection-datachannel.html?total_num=7&amp;amp;locator_key=id&amp;amp;value=4</test_script_entry>
-        </description>
-      </testcase>
-      <testcase component="W3C_HTML5 APIs/Communication/WebRTC" execution_type="auto" id="RTCPeerConnection-datachannel-5" purpose="Check that RTCPeerConnection.createDataChannel('label3', {ordered:false}) creates a non-ordered datachannel" onload_delay="10">
-        <description>
-          <test_script_entry>/opt/webapi-webrtc-w3c-tests/webrtc/blink/RTCPeerConnection-datachannel.html?total_num=7&amp;amp;locator_key=id&amp;amp;value=5</test_script_entry>
-        </description>
-      </testcase>
-      <testcase component="W3C_HTML5 APIs/Communication/WebRTC" execution_type="auto" id="RTCPeerConnection-datachannel-6" purpose="Check that RTCPeerConnection.createDataChannel('label3', {maxRetransmits:0}) creates a non-ordered datachannel" onload_delay="10">
-        <description>
-          <test_script_entry>/opt/webapi-webrtc-w3c-tests/webrtc/blink/RTCPeerConnection-datachannel.html?total_num=7&amp;amp;locator_key=id&amp;amp;value=6</test_script_entry>
-        </description>
-      </testcase>
-      <testcase component="W3C_HTML5 APIs/Communication/WebRTC" execution_type="auto" id="RTCPeerConnection-datachannel-7" purpose="Check that RTCPeerConnection.createDataChannel('label3', {maxRetransmitTime:0}) creates a non-ordered datachannel" onload_delay="10">
-        <description>
-          <test_script_entry>/opt/webapi-webrtc-w3c-tests/webrtc/blink/RTCPeerConnection-datachannel.html?total_num=7&amp;amp;locator_key=id&amp;amp;value=7</test_script_entry>
+          <test_script_entry>/opt/webapi-webrtc-w3c-tests/webrtc/blink/RTCPeerConnection-datachannel.html</test_script_entry>
         </description>
       </testcase>
       <testcase component="W3C_HTML5 APIs/Communication/WebRTC" execution_type="auto" id="RTCPeerConnection-dtmf" purpose="Check if the method RTCDTMFSender of RTCPeerConnection">
@@ -682,9 +200,9 @@
           <test_script_entry>/opt/webapi-webrtc-w3c-tests/webrtc/blink/RTCPeerConnection-state.html</test_script_entry>
         </description>
       </testcase>
-      <testcase component="W3C_HTML5 APIs/Communication/WebRTC" execution_type="auto" id="RTCPeerConnection-stats_1" purpose="Check if the constructor of RTCPeerConnection">
+      <testcase component="W3C_HTML5 APIs/Communication/WebRTC" execution_type="auto" id="RTCPeerConnection-stats" purpose="Test RTCPeerConnection stats" subcase="2">
         <description>
-          <test_script_entry>/opt/webapi-webrtc-w3c-tests/webrtc/blink/RTCPeerConnection-stats.html?total_num=2&amp;amp;locator_key=id&amp;amp;value=1</test_script_entry>
+          <test_script_entry>/opt/webapi-webrtc-w3c-tests/webrtc/blink/RTCPeerConnection-stats.html</test_script_entry>
         </description>
       </testcase>
     </set>

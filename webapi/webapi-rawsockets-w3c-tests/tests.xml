@@ -3,263 +3,31 @@
 <test_definition>
   <suite category="W3C/HTML5 APIs" name="webapi-rawsockets-w3c-tests">
     <set name="idlharness" type="js">
-      <testcase component="W3C_HTML5 APIs/Experimental/Raw Sockets" execution_type="auto" id="RawSockets_interface_basic_UDPSocket" purpose="This test validates the UDPSocket exists">
+      <testcase component="W3C_HTML5 APIs/Experimental/Raw Sockets" execution_type="auto" id="RawSockets_interface_basic" purpose="Test RawSockets interface" subcase="3">
         <description>
-          <test_script_entry>/opt/webapi-rawsockets-w3c-tests/rawsockets/RawSockets_interface_basic.html?total_num=3&amp;amp;locator_key=id&amp;amp;value=1</test_script_entry>
+          <test_script_entry>/opt/webapi-rawsockets-w3c-tests/rawsockets/RawSockets_interface_basic.html</test_script_entry>
         </description>
       </testcase>
-      <testcase component="W3C_HTML5 APIs/Experimental/Raw Sockets" execution_type="auto" id="RawSockets_interface_basic_TCPSocket" purpose="This test validates the TCPSocket exists">
+      <testcase component="W3C_HTML5 APIs/Experimental/Raw Sockets" execution_type="auto" id="TCPServerSocket_interface_basic" purpose="Test TCPServerSocket interface" subcase="8">
         <description>
-          <test_script_entry>/opt/webapi-rawsockets-w3c-tests/rawsockets/RawSockets_interface_basic.html?total_num=3&amp;amp;locator_key=id&amp;amp;value=2</test_script_entry>
+          <test_script_entry>/opt/webapi-rawsockets-w3c-tests/rawsockets/TCPServerSocket_interface_basic.html</test_script_entry>
         </description>
       </testcase>
-      <testcase component="W3C_HTML5 APIs/Experimental/Raw Sockets" execution_type="auto" id="RawSockets_interface_basic_TCPServerSocket" purpose="This test validates the TCPServerSocket exists">
+      <testcase component="W3C_HTML5 APIs/Experimental/Raw Sockets" execution_type="auto" id="TCPSocket_interface_basic" purpose="Test TCPSocket interface" subcase="17">
         <description>
-          <test_script_entry>/opt/webapi-rawsockets-w3c-tests/rawsockets/RawSockets_interface_basic.html?total_num=3&amp;amp;locator_key=id&amp;amp;value=3</test_script_entry>
+          <test_script_entry>/opt/webapi-rawsockets-w3c-tests/rawsockets/TCPSocket_interface_basic.html</test_script_entry>
         </description>
       </testcase>
-      <testcase component="W3C_HTML5 APIs/Experimental/Raw Sockets" execution_type="auto" id="TCPServerSocket_localAddress_basic" purpose="Check if readonly TCPServerSocket.localAddress exists and type of DOMString">
+      <testcase component="W3C_HTML5 APIs/Experimental/Raw Sockets" execution_type="auto" id="UDPSocket_interface_basic" purpose="Test UDPSocket interface" subcase="17">
         <description>
-          <test_script_entry>/opt/webapi-rawsockets-w3c-tests/rawsockets/TCPServerSocket_interface_basic.html?total_num=8&amp;amp;locator_key=id&amp;amp;value=1</test_script_entry>
+          <test_script_entry>/opt/webapi-rawsockets-w3c-tests/rawsockets/UDPSocket_interface_basic.html</test_script_entry>
         </description>
       </testcase>
-      <testcase component="W3C_HTML5 APIs/Experimental/Raw Sockets" execution_type="auto" id="TCPServerSocket_localPort_basic" purpose="Check if readonly TCPServerSocket.localPort exists and type of unsigned short">
-        <description>
-          <test_script_entry>/opt/webapi-rawsockets-w3c-tests/rawsockets/TCPServerSocket_interface_basic.html?total_num=8&amp;amp;locator_key=id&amp;amp;value=2</test_script_entry>
-        </description>
-      </testcase>
-      <testcase component="W3C_HTML5 APIs/Experimental/Raw Sockets" execution_type="auto" id="TCPServerSocket_readyState_basic" purpose="Check if readonly TCPServerSocket.readyState exists and type of enum">
-        <description>
-          <test_script_entry>/opt/webapi-rawsockets-w3c-tests/rawsockets/TCPServerSocket_interface_basic.html?total_num=8&amp;amp;locator_key=id&amp;amp;value=3</test_script_entry>
-        </description>
-      </testcase>
-      <testcase component="W3C_HTML5 APIs/Experimental/Raw Sockets" execution_type="auto" id="TCPServerSocket_onconnect_basic" purpose="Check if TCPServerSocket.onconnect exists and type of event">
-        <description>
-          <test_script_entry>/opt/webapi-rawsockets-w3c-tests/rawsockets/TCPServerSocket_interface_basic.html?total_num=8&amp;amp;locator_key=id&amp;amp;value=4</test_script_entry>
-        </description>
-      </testcase>
-      <testcase component="W3C_HTML5 APIs/Experimental/Raw Sockets" execution_type="auto" id="TCPServerSocket_onerror_basic" purpose="Check if TCPServerSocket.onerror exists and type of event">
-        <description>
-          <test_script_entry>/opt/webapi-rawsockets-w3c-tests/rawsockets/TCPServerSocket_interface_basic.html?total_num=8&amp;amp;locator_key=id&amp;amp;value=5</test_script_entry>
-        </description>
-      </testcase>
-      <testcase component="W3C_HTML5 APIs/Experimental/Raw Sockets" execution_type="auto" id="TCPServerSocket_close_basic" purpose="Check if TCPServerSocket.close exists and type of function">
-        <description>
-          <test_script_entry>/opt/webapi-rawsockets-w3c-tests/rawsockets/TCPServerSocket_interface_basic.html?total_num=8&amp;amp;locator_key=id&amp;amp;value=6</test_script_entry>
-        </description>
-      </testcase>
-      <testcase component="W3C_HTML5 APIs/Experimental/Raw Sockets" execution_type="auto" id="TCPServerSocket_suspend_basic" purpose="Check if TCPServerSocket.suspend exists and type of function">
-        <description>
-          <test_script_entry>/opt/webapi-rawsockets-w3c-tests/rawsockets/TCPServerSocket_interface_basic.html?total_num=8&amp;amp;locator_key=id&amp;amp;value=7</test_script_entry>
-        </description>
-      </testcase>
-      <testcase component="W3C_HTML5 APIs/Experimental/Raw Sockets" execution_type="auto" id="TCPServerSocket_resume_basic" purpose="Check if TCPServerSocket.resume exists and type of function">
-        <description>
-          <test_script_entry>/opt/webapi-rawsockets-w3c-tests/rawsockets/TCPServerSocket_interface_basic.html?total_num=8&amp;amp;locator_key=id&amp;amp;value=8</test_script_entry>
-        </description>
-      </testcase>
-      <testcase component="W3C_HTML5 APIs/Experimental/Raw Sockets" execution_type="auto" id="TCPSocket_remoteAddress_basic" purpose="Check if readonly TCPSocket.remoteAddress exists and type of DOMString">
-        <description>
-          <test_script_entry>/opt/webapi-rawsockets-w3c-tests/rawsockets/TCPSocket_interface_basic.html?total_num=17&amp;amp;locator_key=id&amp;amp;value=1</test_script_entry>
-        </description>
-      </testcase>
-      <testcase component="W3C_HTML5 APIs/Experimental/Raw Sockets" execution_type="auto" id="TCPSocket_remotePort_basic" purpose="Check if readonly TCPSocket.remotePort exists and type of DOMString">
-        <description>
-          <test_script_entry>/opt/webapi-rawsockets-w3c-tests/rawsockets/TCPSocket_interface_basic.html?total_num=17&amp;amp;locator_key=id&amp;amp;value=2</test_script_entry>
-        </description>
-      </testcase>
-      <testcase component="W3C_HTML5 APIs/Experimental/Raw Sockets" execution_type="auto" id="TCPSocket_localAddress_basic" purpose="Check if readonly TCPSocket.localAddress exists and type of DOMString">
-        <description>
-          <test_script_entry>/opt/webapi-rawsockets-w3c-tests/rawsockets/TCPSocket_interface_basic.html?total_num=17&amp;amp;locator_key=id&amp;amp;value=3</test_script_entry>
-        </description>
-      </testcase>
-      <testcase component="W3C_HTML5 APIs/Experimental/Raw Sockets" execution_type="auto" id="TCPSocket_localPort_basic" purpose="Check if readonly TCPSocket.localPort exists and type of unsigned short">
-        <description>
-          <test_script_entry>/opt/webapi-rawsockets-w3c-tests/rawsockets/TCPSocket_interface_basic.html?total_num=17&amp;amp;locator_key=id&amp;amp;value=4</test_script_entry>
-        </description>
-      </testcase>
-      <testcase component="W3C_HTML5 APIs/Experimental/Raw Sockets" execution_type="auto" id="TCPSocket_bufferedAmount_basic" purpose="Check if readonly TCPSocket.bufferedAmount exists and type of unsigned long">
-        <description>
-          <test_script_entry>/opt/webapi-rawsockets-w3c-tests/rawsockets/TCPSocket_interface_basic.html?total_num=17&amp;amp;locator_key=id&amp;amp;value=5</test_script_entry>
-        </description>
-      </testcase>
-      <testcase component="W3C_HTML5 APIs/Experimental/Raw Sockets" execution_type="auto" id="TCPSocket_readyState_basic" purpose="Check if readonly TCPSocket.readyState exists and type of enum">
-        <description>
-          <test_script_entry>/opt/webapi-rawsockets-w3c-tests/rawsockets/TCPSocket_interface_basic.html?total_num=17&amp;amp;locator_key=id&amp;amp;value=6</test_script_entry>
-        </description>
-      </testcase>
-      <testcase component="W3C_HTML5 APIs/Experimental/Raw Sockets" execution_type="auto" id="TCPSocket_ondrain_basic" purpose="Check if TCPSocket.ondrain exists and type of event">
-        <description>
-          <test_script_entry>/opt/webapi-rawsockets-w3c-tests/rawsockets/TCPSocket_interface_basic.html?total_num=17&amp;amp;locator_key=id&amp;amp;value=7</test_script_entry>
-        </description>
-      </testcase>
-      <testcase component="W3C_HTML5 APIs/Experimental/Raw Sockets" execution_type="auto" id="TCPSocket_onopen_basic" purpose="Check if TCPSocket.onopen exists and type of event">
-        <description>
-          <test_script_entry>/opt/webapi-rawsockets-w3c-tests/rawsockets/TCPSocket_interface_basic.html?total_num=17&amp;amp;locator_key=id&amp;amp;value=8</test_script_entry>
-        </description>
-      </testcase>
-      <testcase component="W3C_HTML5 APIs/Experimental/Raw Sockets" execution_type="auto" id="TCPSocket_onclose_basic" purpose="Check if TCPSocket.onclose exists and type of event">
-        <description>
-          <test_script_entry>/opt/webapi-rawsockets-w3c-tests/rawsockets/TCPSocket_interface_basic.html?total_num=17&amp;amp;locator_key=id&amp;amp;value=9</test_script_entry>
-        </description>
-      </testcase>
-      <testcase component="W3C_HTML5 APIs/Experimental/Raw Sockets" execution_type="auto" id="TCPSocket_onerror_basic" purpose="Check if TCPSocket.onerror exists and type of event">
-        <description>
-          <test_script_entry>/opt/webapi-rawsockets-w3c-tests/rawsockets/TCPSocket_interface_basic.html?total_num=17&amp;amp;locator_key=id&amp;amp;value=11</test_script_entry>
-        </description>
-      </testcase>
-      <testcase component="W3C_HTML5 APIs/Experimental/Raw Sockets" execution_type="auto" id="TCPSocket_close_basic" purpose="Check if TCPSocket.close exists and type of function">
-        <description>
-          <test_script_entry>/opt/webapi-rawsockets-w3c-tests/rawsockets/TCPSocket_interface_basic.html?total_num=17&amp;amp;locator_key=id&amp;amp;value=13</test_script_entry>
-        </description>
-      </testcase>
-      <testcase component="W3C_HTML5 APIs/Experimental/Raw Sockets" execution_type="auto" id="TCPSocket_halfclose_basic" purpose="Check if TCPSocket.halfclose exists and type of function">
-        <description>
-          <test_script_entry>/opt/webapi-rawsockets-w3c-tests/rawsockets/TCPSocket_interface_basic.html?total_num=17&amp;amp;locator_key=id&amp;amp;value=14</test_script_entry>
-        </description>
-      </testcase>
-      <testcase component="W3C_HTML5 APIs/Experimental/Raw Sockets" execution_type="auto" id="TCPSocket_suspend_basic" purpose="Check if TCPSocket.suspend exists and type of function">
-        <description>
-          <test_script_entry>/opt/webapi-rawsockets-w3c-tests/rawsockets/TCPSocket_interface_basic.html?total_num=17&amp;amp;locator_key=id&amp;amp;value=15</test_script_entry>
-        </description>
-      </testcase>
-      <testcase component="W3C_HTML5 APIs/Experimental/Raw Sockets" execution_type="auto" id="TCPSocket_resume_basic" purpose="Check if TCPSocket.resume exists and type of function">
-        <description>
-          <test_script_entry>/opt/webapi-rawsockets-w3c-tests/rawsockets/TCPSocket_interface_basic.html?total_num=17&amp;amp;locator_key=id&amp;amp;value=16</test_script_entry>
-        </description>
-      </testcase>
-      <testcase component="W3C_HTML5 APIs/Experimental/Raw Sockets" execution_type="auto" id="TCPSocket_send_basic" purpose="Check if TCPSocket.send exists and type of function">
-        <description>
-          <test_script_entry>/opt/webapi-rawsockets-w3c-tests/rawsockets/TCPSocket_interface_basic.html?total_num=17&amp;amp;locator_key=id&amp;amp;value=17</test_script_entry>
-        </description>
-      </testcase>
-      <testcase component="W3C_HTML5 APIs/Experimental/Raw Sockets" execution_type="auto" id="UDPSocket_localAddress_basic" purpose="Check if readonly UDPSocket.localAddress exists and type of DOMString">
-        <description>
-          <test_script_entry>/opt/webapi-rawsockets-w3c-tests/rawsockets/UDPSocket_interface_basic.html?total_num=17&amp;amp;locator_key=id&amp;amp;value=1</test_script_entry>
-        </description>
-      </testcase>
-      <testcase component="W3C_HTML5 APIs/Experimental/Raw Sockets" execution_type="auto" id="UDPSocket_localPort_basic" purpose="Check if readonly UDPSocket.localPort exists and type of unsigned short">
-        <description>
-          <test_script_entry>/opt/webapi-rawsockets-w3c-tests/rawsockets/UDPSocket_interface_basic.html?total_num=17&amp;amp;locator_key=id&amp;amp;value=2</test_script_entry>
-        </description>
-      </testcase>
-      <testcase component="W3C_HTML5 APIs/Experimental/Raw Sockets" execution_type="auto" id="UDPSocket_remoteAddress_basic" purpose="Check if readonly UDPSocket.remoteAddress exists and type of DOMString">
-        <description>
-          <test_script_entry>/opt/webapi-rawsockets-w3c-tests/rawsockets/UDPSocket_interface_basic.html?total_num=17&amp;amp;locator_key=id&amp;amp;value=3</test_script_entry>
-        </description>
-      </testcase>
-      <testcase component="W3C_HTML5 APIs/Experimental/Raw Sockets" execution_type="auto" id="UDPSocket_remotePort_basic" purpose="Check if readonly UDPSocket.remotePort exists and type of unsigned short">
-        <description>
-          <test_script_entry>/opt/webapi-rawsockets-w3c-tests/rawsockets/UDPSocket_interface_basic.html?total_num=17&amp;amp;locator_key=id&amp;amp;value=4</test_script_entry>
-        </description>
-      </testcase>
-      <testcase component="W3C_HTML5 APIs/Experimental/Raw Sockets" execution_type="auto" id="UDPSocket_addressReuse_basic" purpose="Check if readonly UDPSocket.addressReuse exists and type of boolean">
-        <description>
-          <test_script_entry>/opt/webapi-rawsockets-w3c-tests/rawsockets/UDPSocket_interface_basic.html?total_num=17&amp;amp;locator_key=id&amp;amp;value=5</test_script_entry>
-        </description>
-      </testcase>
-      <testcase component="W3C_HTML5 APIs/Experimental/Raw Sockets" execution_type="auto" id="UDPSocket_loopback_basic" purpose="Check if readonly UDPSocket.loopback exists and type of boolean">
-        <description>
-          <test_script_entry>/opt/webapi-rawsockets-w3c-tests/rawsockets/UDPSocket_interface_basic.html?total_num=17&amp;amp;locator_key=id&amp;amp;value=6</test_script_entry>
-        </description>
-      </testcase>
-      <testcase component="W3C_HTML5 APIs/Experimental/Raw Sockets" execution_type="auto" id="UDPSocket_bufferedAmount_basic" purpose="Check if readonly UDPSocket.bufferedAmount exists and type of unsigned long">
-        <description>
-          <test_script_entry>/opt/webapi-rawsockets-w3c-tests/rawsockets/UDPSocket_interface_basic.html?total_num=17&amp;amp;locator_key=id&amp;amp;value=7</test_script_entry>
-        </description>
-      </testcase>
-      <testcase component="W3C_HTML5 APIs/Experimental/Raw Sockets" execution_type="auto" id="UDPSocket_readyState_basic" purpose="Check if readonly UDPSocket.readyState exists and type of enum">
-        <description>
-          <test_script_entry>/opt/webapi-rawsockets-w3c-tests/rawsockets/UDPSocket_interface_basic.html?total_num=17&amp;amp;locator_key=id&amp;amp;value=8</test_script_entry>
-        </description>
-      </testcase>
-      <testcase component="W3C_HTML5 APIs/Experimental/Raw Sockets" execution_type="auto" id="UDPSocket_ondrain_basic" purpose="Check if UDPSocket.ondrain exists and type of event">
-        <description>
-          <test_script_entry>/opt/webapi-rawsockets-w3c-tests/rawsockets/UDPSocket_interface_basic.html?total_num=17&amp;amp;locator_key=id&amp;amp;value=9</test_script_entry>
-        </description>
-      </testcase>
-      <testcase component="W3C_HTML5 APIs/Experimental/Raw Sockets" execution_type="auto" id="UDPSocket_onerror_basic" purpose="Check if UDPSocket.onerror exists and type of event">
-        <description>
-          <test_script_entry>/opt/webapi-rawsockets-w3c-tests/rawsockets/UDPSocket_interface_basic.html?total_num=17&amp;amp;locator_key=id&amp;amp;value=10</test_script_entry>
-        </description>
-      </testcase>
-      <testcase component="W3C_HTML5 APIs/Experimental/Raw Sockets" execution_type="auto" id="UDPSocket_onmessage_basic" purpose="Check if UDPSocket.onmessage exists and type of event">
-        <description>
-          <test_script_entry>/opt/webapi-rawsockets-w3c-tests/rawsockets/UDPSocket_interface_basic.html?total_num=17&amp;amp;locator_key=id&amp;amp;value=11</test_script_entry>
-        </description>
-      </testcase>
-      <testcase component="W3C_HTML5 APIs/Experimental/Raw Sockets" execution_type="auto" id="UDPSocket_close_basic" purpose="Check if UDPSocket.close exists and type of function">
-        <description>
-          <test_script_entry>/opt/webapi-rawsockets-w3c-tests/rawsockets/UDPSocket_interface_basic.html?total_num=17&amp;amp;locator_key=id&amp;amp;value=12</test_script_entry>
-        </description>
-      </testcase>
-      <testcase component="W3C_HTML5 APIs/Experimental/Raw Sockets" execution_type="auto" id="UDPSocket_suspend_basic" purpose="Check if UDPSocket.suspend exists and type of function">
-        <description>
-          <test_script_entry>/opt/webapi-rawsockets-w3c-tests/rawsockets/UDPSocket_interface_basic.html?total_num=17&amp;amp;locator_key=id&amp;amp;value=13</test_script_entry>
-        </description>
-      </testcase>
-      <testcase component="W3C_HTML5 APIs/Experimental/Raw Sockets" execution_type="auto" id="UDPSocket_resume_basic" purpose="Check if UDPSocket.resume exists and type of function">
-        <description>
-          <test_script_entry>/opt/webapi-rawsockets-w3c-tests/rawsockets/UDPSocket_interface_basic.html?total_num=17&amp;amp;locator_key=id&amp;amp;value=14</test_script_entry>
-        </description>
-      </testcase>
-      <testcase component="W3C_HTML5 APIs/Experimental/Raw Sockets" execution_type="auto" id="UDPSocket_joinMulticastGroup_basic" purpose="Check if UDPSocket.joinMulticastGroup exists and type of function">
-        <description>
-          <test_script_entry>/opt/webapi-rawsockets-w3c-tests/rawsockets/UDPSocket_interface_basic.html?total_num=17&amp;amp;locator_key=id&amp;amp;value=15</test_script_entry>
-        </description>
-      </testcase>
-      <testcase component="W3C_HTML5 APIs/Experimental/Raw Sockets" execution_type="auto" id="UDPSocket_leaveMulticastGroup_basic" purpose="Check if UDPSocket.leaveMulticastGroup exists and type of function">
-        <description>
-          <test_script_entry>/opt/webapi-rawsockets-w3c-tests/rawsockets/UDPSocket_interface_basic.html?total_num=17&amp;amp;locator_key=id&amp;amp;value=16</test_script_entry>
-        </description>
-      </testcase>
-      <testcase component="W3C_HTML5 APIs/Experimental/Raw Sockets" execution_type="auto" id="UDPSocket_send_basic" purpose="Check if UDPSocket.send exists and type of function">
-        <description>
-          <test_script_entry>/opt/webapi-rawsockets-w3c-tests/rawsockets/UDPSocket_interface_basic.html?total_num=17&amp;amp;locator_key=id&amp;amp;value=17</test_script_entry>
-        </description>
-      </testcase>
-    </set>
-    <set name="UDPSocket" type="js">
     </set>
     <set name="TCPSocket1" type="js">
-      <testcase component="W3C_HTML5 APIs/Experimental/Raw Sockets" execution_type="auto" id="TCPSocket_addressReuse_default" purpose="Check if the default value of TCPSocket.addressReuse is true">
+      <testcase component="W3C_HTML5 APIs/Experimental/Raw Sockets" execution_type="auto" id="TCPSocket_attribute" purpose="Test TCPSocket attribute" subcase="8">
         <description>
-          <test_script_entry>/opt/webapi-rawsockets-w3c-tests/rawsockets/TCPSocket_attribute.html?total_num=8&amp;amp;locator_key=id&amp;amp;value=1</test_script_entry>
-        </description>
-      </testcase>
-      <testcase component="W3C_HTML5 APIs/Experimental/Raw Sockets" execution_type="auto" id="TCPSocket_addressReuse_false" purpose="Check if the value of TCPSocket.addressReuse can be set by the options argument in the constructor">
-        <description>
-          <test_script_entry>/opt/webapi-rawsockets-w3c-tests/rawsockets/TCPSocket_attribute.html?total_num=8&amp;amp;locator_key=id&amp;amp;value=2</test_script_entry>
-        </description>
-      </testcase>
-      <testcase component="W3C_HTML5 APIs/Experimental/Raw Sockets" execution_type="auto" id="TCPSocket_set_valid_localAddress" purpose="Check if TCPSocket.localAddress can be set by the constructors options argument s valid localAddress member">
-        <description>
-          <test_script_entry>/opt/webapi-rawsockets-w3c-tests/rawsockets/TCPSocket_attribute.html?total_num=8&amp;amp;locator_key=id&amp;amp;value=3</test_script_entry>
-        </description>
-      </testcase>
-      <testcase component="W3C_HTML5 APIs/Experimental/Raw Sockets" execution_type="auto" id="TCPSocket_set_valid_localPort" purpose="Check if TCPSocket.localPort can be set by the constructors options arguments valid localPort member">
-        <description>
-          <test_script_entry>/opt/webapi-rawsockets-w3c-tests/rawsockets/TCPSocket_attribute.html?total_num=8&amp;amp;locator_key=id&amp;amp;value=4</test_script_entry>
-        </description>
-      </testcase>
-      <testcase component="W3C_HTML5 APIs/Experimental/Raw Sockets" execution_type="auto" id="TCPSocket_noDelay_default" purpose="Check if the default value of TCPSocket.noDelay is true">
-        <description>
-          <test_script_entry>/opt/webapi-rawsockets-w3c-tests/rawsockets/TCPSocket_attribute.html?total_num=8&amp;amp;locator_key=id&amp;amp;value=5</test_script_entry>
-        </description>
-      </testcase>
-      <testcase component="W3C_HTML5 APIs/Experimental/Raw Sockets" execution_type="auto" id="TCPSocket_set_noDelay" purpose="Check if TCPSocket.noDelay can be set to false">
-        <description>
-          <test_script_entry>/opt/webapi-rawsockets-w3c-tests/rawsockets/TCPSocket_attribute.html?total_num=8&amp;amp;locator_key=id&amp;amp;value=6</test_script_entry>
-        </description>
-      </testcase>
-      <testcase component="W3C_HTML5 APIs/Experimental/Raw Sockets" execution_type="auto" id="TCPSocket_localAddress_exception" purpose="Check if TCPSocket throw a DOM exception invoked with the constructors options arguments invalid localAddress member">
-        <description>
-          <test_script_entry>/opt/webapi-rawsockets-w3c-tests/rawsockets/TCPSocket_attribute.html?total_num=8&amp;amp;locator_key=id&amp;amp;value=7</test_script_entry>
-        </description>
-      </testcase>
-      <testcase component="W3C_HTML5 APIs/Experimental/Raw Sockets" execution_type="auto" id="TCPSocket_remoteAddress_exception" purpose="Check if TCPSocket throw a DOM exception invoked with the constructors options arguments invalid remoteAddress member">
-        <description>
-          <test_script_entry>/opt/webapi-rawsockets-w3c-tests/rawsockets/TCPSocket_attribute.html?total_num=8&amp;amp;locator_key=id&amp;amp;value=8</test_script_entry>
+          <test_script_entry>/opt/webapi-rawsockets-w3c-tests/rawsockets/TCPSocket_attribute.html</test_script_entry>
         </description>
       </testcase>
     </set>
@@ -401,24 +169,9 @@
       </testcase>
     </set>
     <set name="TCPServerSocket" type="js">
-      <testcase component="W3C_HTML5 APIs/Experimental/Raw Sockets" execution_type="auto" id="TCPServerSocket_addressReuse_default" purpose="Check if the default value of TCPServerSocket.addressReuse is true">
+      <testcase component="W3C_HTML5 APIs/Experimental/Raw Sockets" execution_type="auto" id="TCPServerSocket_attribute" purpose="Test TCPServerSocket attribute" subcase="4">
         <description>
-          <test_script_entry>/opt/webapi-rawsockets-w3c-tests/rawsockets/TCPServerSocket_attribute.html?total_num=4&amp;amp;locator_key=id&amp;amp;value=1</test_script_entry>
-        </description>
-      </testcase>
-      <testcase component="W3C_HTML5 APIs/Experimental/Raw Sockets" execution_type="auto" id="TCPServerSocket_addressReuse_false" purpose="Check if the value of TCPServerSocket.addressReuse can be set by the options argument in the constructor">
-        <description>
-          <test_script_entry>/opt/webapi-rawsockets-w3c-tests/rawsockets/TCPServerSocket_attribute.html?total_num=4&amp;amp;locator_key=id&amp;amp;value=2</test_script_entry>
-        </description>
-      </testcase>
-      <testcase component="W3C_HTML5 APIs/Experimental/Raw Sockets" execution_type="auto" id="TCPServerSocket_set_valid_localAddress" purpose="Check if TCPServerSocket.localAddress can be set by the constructors options arguments valid localAddress member">
-        <description>
-          <test_script_entry>/opt/webapi-rawsockets-w3c-tests/rawsockets/TCPServerSocket_attribute.html?total_num=4&amp;amp;locator_key=id&amp;amp;value=3</test_script_entry>
-        </description>
-      </testcase>
-      <testcase component="W3C_HTML5 APIs/Experimental/Raw Sockets" execution_type="auto" id="TCPServerSocket_set_valid_localPort" purpose="Check if TCPServerSocket.localPort can be set by the constructors options arguments valid localPort member">
-        <description>
-          <test_script_entry>/opt/webapi-rawsockets-w3c-tests/rawsockets/TCPServerSocket_attribute.html?total_num=4&amp;amp;locator_key=id&amp;amp;value=4</test_script_entry>
+          <test_script_entry>/opt/webapi-rawsockets-w3c-tests/rawsockets/TCPServerSocket_attribute.html</test_script_entry>
         </description>
       </testcase>
       <testcase component="W3C_HTML5 APIs/Experimental/Raw Sockets" execution_type="auto" id="TCPServerSocket_onconnect_with_connect" purpose="Check if set up the onconnect event successful for TCPServerSocket using the type connect">
