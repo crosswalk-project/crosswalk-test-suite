@@ -19,7 +19,9 @@ import java.io.IOException;
  */
 public class MyXWalkView extends XWalkView {
 
-    public static String TAG = "MyXWalkView";
+    public final static String TAG = "MyXWalkView";
+
+    private ScrollOverListener mListener;
 
     public MyXWalkView(Context context) {
         super(context);
@@ -47,5 +49,23 @@ public class MyXWalkView extends XWalkView {
         }catch (IOException e){
             Log.e(TAG, "the bitmap is not found!");
         }
+    }
+
+    @Override
+    protected void onOverScrolled(int scrollX, int scrollY, boolean clampedX, boolean clampedY) {
+        super.onOverScrolled(scrollX, scrollY, clampedX, clampedY);
+        if(null != mListener){
+            Log.i(TAG, "onOverScrolled is invoked. Parameter: scrollX=" + scrollX + "; scrollY=" + scrollY + "; clampedX=" + clampedX + "; clampedY=" + clampedY);
+            mListener.onScrollOver("onOverScrolled is invoked. Parameter: scrollX=" + scrollX + "; scrollY=" + scrollY + "; clampedX=" + clampedX + "; clampedY=" + clampedY);
+        }
+    }
+
+    public void setScrollOverListener(ScrollOverListener listener){
+        this.mListener = listener;
+    }
+
+    public interface ScrollOverListener{
+
+        public void onScrollOver(String msg);
     }
 }
