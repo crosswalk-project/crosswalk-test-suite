@@ -191,6 +191,18 @@ def compare_views(context, params_kw, info_name, except_result):
         assert False
 
 
+#Expect saved info increase given number than another
+@step(u'The saved info "{key1}" increase {expected_number:d} compared with "{key2}"')
+def equal_with_keys(context, key1, expected_number, key2):
+    info1 = context.android.get2InfoTemp(key1)
+    info2 = context.android.get2InfoTemp(key2)
+    gap = info1 - info2
+    if gap == expected_number:
+        assert True
+    else:
+        assert False
+
+
 @step(u'The saved info "{key1}" is equal to "{key2}"')
 def equal_with_keys(context, key1, key2):
     info1 = context.android.get2InfoTemp(key1)
@@ -274,3 +286,10 @@ def wait_object_gone(context, key, time_out):
     ob = context.android.get2InfoTemp(key)
     assert ob
     assert context.android.waitObjectGone(ob, time_out)
+
+
+#save the element number with given text
+@step(u'I count the elements with text "{element_text}" and save result to object "{key}"')
+def open_notification(context, element_text, key):
+    elecount = context.android.d(text=element_text).count
+    assert context.android.save2InfoTemp(elecount, key)
