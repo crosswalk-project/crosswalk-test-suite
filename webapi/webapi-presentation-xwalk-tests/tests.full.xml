@@ -3,309 +3,196 @@
 <test_definition>
   <suite category="W3C/HTML5 APIs" name="webapi-presentation-xwalk-tests">
     <set name="presentation" type="js">
-      <testcase component="Crosswalk APIs/Experimental/Screen Presentation APIs" execution_type="auto" id="Presentation_attributes_basic" priority="P1" purpose="Test Presentation interface" status="approved" type="compliance" subcase="3">
+      <testcase component="Crosswalk APIs/Experimental/Screen Presentation APIs" execution_type="auto" id="NavigatorPresentation_attributes_basic" priority="P1" purpose="Test checks that NavigatorPresentation interface basic attributes" status="approved" type="compliance" subcase="8">
         <description>
-          <test_script_entry>/opt/webapi-presentation-xwalk-tests/presentation/Presentation_attributes_basic.html</test_script_entry>
+          <test_script_entry>/opt/webapi-presentation-xwalk-tests/presentation/NavigatorPresentation_attributes_basic.html</test_script_entry>
         </description>
         <specs>
           <spec>
-            <spec_assertion category="W3C API Specifications" element_name="requestShow" element_type="method" interface="Presentation" section="Screen Presentation APIs" specification="Screen Presentation"/>
-            <spec_url>http://webscreens.github.io/presentation-api/</spec_url>
-            <spec_statement/>
+            <spec_assertion category="W3C API Specifications" element_name="startSession" element_type="method" interface="NavigatorPresentation" section="Screen Presentation APIs" specification="Screen Presentation"/>
+            <spec_url>http://www.w3.org/TR/2015/WD-presentation-api-20150701/#interface-navigatorpresentation</spec_url>
+            <spec_statement />
           </spec>
         </specs>
       </testcase>
-      <testcase component="Crosswalk APIs/Experimental/Screen Presentation APIs" execution_type="manual" id="presentation_image" priority="P3" purpose="Test checks that display a cat picture after clicking the below button" status="approved" type="compliance">
+      <testcase component="Crosswalk APIs/Experimental/Screen Presentation APIs" execution_type="manual" id="Availability_basic" priority="P1" purpose="Test checks that Availability basic attribute" status="approved" type="compliance">
         <description>
           <pre_condition>
-            1. Connect to an available network;
-            2. Android 4.2 or above; 3. Turn on 'Simulate Secondary Display' by 'Setting' app.
+            Turn on 'Simulate Secondary Display' by 'Setting' app.
           </pre_condition>
-          <post_condition/>
-          <test_script_entry>/opt/webapi-presentation-xwalk-tests/presentation/presentation_image-manual.html</test_script_entry>
+          <test_script_entry>/opt/webapi-presentation-xwalk-tests/presentation/Availability_basic-manual.html</test_script_entry>
         </description>
         <specs>
           <spec>
-            <spec_assertion category="W3C API Specifications" element_name="postMessage" element_type="method" interface="Presentation" section="Screen Presentation APIs" specification="Screen Presentation"/>
-            <spec_url>http://webscreens.github.io/presentation-api/</spec_url>
+            <spec_assertion category="W3C API Specifications" element_name="onchange" element_type="method" interface="Availability" section="Screen Presentation APIs" specification="Screen Presentation"/>
+            <spec_url>http://www.w3.org/TR/2015/WD-presentation-api-20150701/#interface-availability</spec_url>
             <spec_statement/>
           </spec>
         </specs>
       </testcase>
-      <testcase component="Crosswalk APIs/Experimental/Screen Presentation APIs" execution_type="manual" id="presentation_message" priority="P1" purpose="Test checks that the presentation secondary page can open" status="approved" type="compliance">
+      <testcase component="Crosswalk APIs/Experimental/Screen Presentation APIs" execution_type="manual" id="NavigatorPresentation_availability" priority="P3" purpose="Test checks that the value property of an Availability object to offer presentation only when there are available displays" status="approved" type="compliance">
         <description>
           <pre_condition>
-            1. Android 4.2 or above;
-            2. Turn on 'Simulate Secondary Display' by 'Setting' app.
+            Turn on 'Simulate Secondary Display' by 'Setting' app.
           </pre_condition>
-          <post_condition/>
-          <test_script_entry>/opt/webapi-presentation-xwalk-tests/presentation/presentation_message-manual.html</test_script_entry>
+          <test_script_entry>/opt/webapi-presentation-xwalk-tests/presentation/NavigatorPresentation_availability-manual.html</test_script_entry>
         </description>
         <specs>
           <spec>
-            <spec_assertion category="W3C API Specifications" element_name="requestShow" element_type="method" interface="Presentation" section="Screen Presentation APIs" specification="Screen Presentation"/>
-            <spec_url>http://webscreens.github.io/presentation-api/</spec_url>
+            <spec_assertion category="W3C API Specifications" element_name="getAvailability" element_type="method" interface="NavigatorPresentation" section="Screen Presentation APIs" specification="Screen Presentation"/>
+            <spec_url>http://www.w3.org/TR/2015/WD-presentation-api-20150701/#interface-navigatorpresentation</spec_url>
             <spec_statement/>
           </spec>
         </specs>
       </testcase>
-      <testcase component="Crosswalk APIs/Experimental/Screen Presentation APIs" execution_type="manual" id="presentation_video" priority="P1" purpose="Test checks that the presentation secondary page can play video" status="approved" type="compliance">
+      <testcase component="Crosswalk APIs/Experimental/Screen Presentation APIs" execution_type="manual" id="NavigatorPresentation_getAvailability_basic" priority="P1" purpose="Test checks that navigator.presentation.getAvailability should return Availability Object" status="approved" type="compliance">
         <description>
           <pre_condition>
-            1. Connect to an available network;
-            2. Android 4.2 or above; 3. Turn on 'Simulate Secondary Display' by 'Setting' app.
+            Turn on 'Simulate Secondary Display' by 'Setting' app.
           </pre_condition>
-          <post_condition/>
-          <test_script_entry>/opt/webapi-presentation-xwalk-tests/presentation/presentation_video-manual.html</test_script_entry>
+          <test_script_entry>/opt/webapi-presentation-xwalk-tests/presentation/NavigatorPresentation_getAvailability_basic-manual.html</test_script_entry>
         </description>
         <specs>
           <spec>
-            <spec_assertion category="W3C API Specifications" element_name="requestShow" element_type="method" interface="Presentation" section="Screen Presentation APIs" specification="Screen Presentation"/>
-            <spec_url>http://webscreens.github.io/presentation-api/</spec_url>
+            <spec_assertion category="W3C API Specifications" element_name="getAvailability" element_type="method" interface="NavigatorPresentation" section="Screen Presentation APIs" specification="Screen Presentation"/>
+            <spec_url>http://www.w3.org/TR/2015/WD-presentation-api-20150701/#interface-navigatorpresentation</spec_url>
             <spec_statement/>
           </spec>
         </specs>
       </testcase>
-      <testcase component="Crosswalk APIs/Experimental/Screen Presentation APIs" execution_type="manual" id="presentation_displayAvailable_true" priority="P1" purpose="Test checks that the attribute displayAvailable of presentation value can be true" status="approved" type="compliance">
+      <testcase component="Crosswalk APIs/Experimental/Screen Presentation APIs" execution_type="manual" id="NavigatorPresentation_joinSession" priority="P3" purpose="Test checks that we can call joinSession method for known session in the set of presentation" status="approved" type="compliance">
         <description>
           <pre_condition>
-            1. Android 4.2 or above;
-            2. Turn on 'Simulate Secondary Display' by 'Setting' app.
+            Turn on 'Simulate Secondary Display' by 'Setting' app.
           </pre_condition>
-          <post_condition/>
-          <test_script_entry>/opt/webapi-presentation-xwalk-tests/presentation/presentation_displayAvailable_true-manual.html</test_script_entry>
+          <test_script_entry>/opt/webapi-presentation-xwalk-tests/presentation/NavigatorPresentation_joinSession-manual.html</test_script_entry>
         </description>
         <specs>
           <spec>
-            <spec_assertion category="W3C API Specifications" element_name="displayAvailable" element_type="attribute" interface="Presentation" section="Screen Presentation APIs" specification="Screen Presentation"/>
-            <spec_url>http://webscreens.github.io/presentation-api/</spec_url>
+            <spec_assertion category="W3C API Specifications" element_name="joinSession" element_type="method" interface="NavigatorPresentation" section="Screen Presentation APIs" specification="Screen Presentation"/>
+            <spec_url>http://www.w3.org/TR/2015/WD-presentation-api-20150701/#interface-navigatorpresentation</spec_url>
             <spec_statement/>
           </spec>
         </specs>
       </testcase>
-      <testcase component="Crosswalk APIs/Experimental/Screen Presentation APIs" execution_type="manual" id="presentation_requestShow_open" priority="P1" purpose="Test checks that the method requestShow of presentation can work, when simulate secondary display open" status="approved" type="compliance">
+      <testcase component="Crosswalk APIs/Experimental/Screen Presentation APIs" execution_type="manual" id="NavigatorPresentation_noavailable_presentationdisplay" priority="P3" purpose="Test checks that No available presentation displays will throw a DOMException named 'NotFoundError'" status="approved" type="compliance">
         <description>
           <pre_condition>
-            1. Android 4.2 or above;
-            2. Turn on 'Simulate Secondary Display' by 'Setting' app.
+            Turn off 'Simulate Secondary Display' by 'Setting' app.
           </pre_condition>
-          <post_condition/>
-          <steps>
-            <step order="1">
-              <step_desc>Press 'Request Show Presentation' Button, check the device.</step_desc>
-              <expected>
-                1. The 'Result'should be 'Ok';
-                2. The 'Received message' should be 'I am from presentation window';
-                3. The secondary display should display: 'Presentation Window showed on Wireless Display' 'Received message: I am from opener window'.
-              </expected>
-            </step>
-            <step order="2">
-              <step_desc>Press 'Close Presentation' Button, check the device.</step_desc>
-              <expected>
-                1. The 'Result' and 'Received message' should be 'N/A';
-                2. The secondary display should display mirror screen.
-              </expected>
-            </step>
-          </steps>
-          <test_script_entry>/opt/webapi-presentation-xwalk-tests/presentation/presentation_requestShow_open-manual.html</test_script_entry>
+          <test_script_entry>/opt/webapi-presentation-xwalk-tests/presentation/NavigatorPresentation_noavailable_presentationdisplay-manual.html</test_script_entry>
         </description>
         <specs>
           <spec>
-            <spec_assertion category="W3C API Specifications" element_name="requestShow" element_type="method" interface="Presentation" section="Screen Presentation APIs" specification="Screen Presentation"/>
-            <spec_url>http://webscreens.github.io/presentation-api/</spec_url>
+            <spec_assertion category="W3C API Specifications" element_name="startSession" element_type="method" interface="NavigatorPresentation" section="Screen Presentation APIs" specification="Screen Presentation"/>
+            <spec_url>http://www.w3.org/TR/2015/WD-presentation-api-20150701/#starting-a-presentation-session</spec_url>
             <spec_statement/>
           </spec>
         </specs>
       </testcase>
-      <testcase component="Crosswalk APIs/Experimental/Screen Presentation APIs" execution_type="manual" id="presentation_displayAvailable_false" priority="P1" purpose="Test checks that the attribute displayAvailable of presentation value can be false" status="approved" type="compliance">
+      <testcase component="Crosswalk APIs/Experimental/Screen Presentation APIs" execution_type="manual" id="NavigatorPresentation_ondefaultsessionstart" priority="P1" purpose="Test checks that Event defaultsessionstart is fired when the UA initiates a presentation on behalf of the page" status="approved" type="compliance">
         <description>
           <pre_condition>
-            1. Android 4.2 or above;
-            2. Turn off 'Simulate Secondary Display' by 'Setting' app.
+            1.Turn on 'Simulate Secondary Display' by 'Setting' app.
+            2. Connect to an available network;
           </pre_condition>
-          <post_condition/>
-          <test_script_entry>/opt/webapi-presentation-xwalk-tests/presentation/presentation_displayAvailable_false-manual.html</test_script_entry>
+          <test_script_entry>/opt/webapi-presentation-xwalk-tests/presentation/NavigatorPresentation_ondefaultsessionstart-manual.html</test_script_entry>
         </description>
         <specs>
           <spec>
-            <spec_assertion category="W3C API Specifications" element_name="displayAvailable" element_type="attribute" interface="Presentation" section="Screen Presentation APIs" specification="Screen Presentation"/>
-            <spec_url>http://webscreens.github.io/presentation-api/</spec_url>
+            <spec_assertion category="W3C API Specifications" element_name="ondefaultsessionstart" element_type="method" interface="NavigatorPresentation" section="Screen Presentation APIs" specification="Screen Presentation"/>
+            <spec_url>http://www.w3.org/TR/2015/WD-presentation-api-20150701/#ondefaultsessionstart</spec_url>
             <spec_statement/>
           </spec>
         </specs>
       </testcase>
-      <testcase component="Crosswalk APIs/Experimental/Screen Presentation APIs" execution_type="manual" id="presentation_requestShow_close" priority="P1" purpose="Test checks that the method requestShow of presentation can work, when simulate secondary display close" status="approved" type="compliance">
+      <testcase component="Crosswalk APIs/Experimental/Screen Presentation APIs" execution_type="manual" id="PresentationSession_state" priority="P3" purpose="Test checks that Session state value is 'connected' or 'disconnected'" status="approved" type="compliance">
         <description>
           <pre_condition>
-            1. Android 4.2 or above;
-            2. Turn off 'Simulate Secondary Display' by 'Setting' app.
+            Turn on 'Simulate Secondary Display' by 'Setting' app.
           </pre_condition>
-          <post_condition/>
-          <steps>
-            <step order="1">
-              <step_desc>Press 'Request Show Presentation' Button, check the device.</step_desc>
-              <expected>
-                The 'Result'should be 'NotFoundError';
-                The 'Received message' should be 'N/A'.
-              </expected>
-            </step>
-          </steps>
-          <test_script_entry>/opt/webapi-presentation-xwalk-tests/presentation/presentation_requestShow_close-manual.html</test_script_entry>
+          <test_script_entry>/opt/webapi-presentation-xwalk-tests/presentation/PresentationSession_state-manual.html</test_script_entry>
         </description>
         <specs>
           <spec>
-            <spec_assertion category="W3C API Specifications" element_name="requestShow" element_type="method" interface="Presentation" section="Screen Presentation APIs" specification="Screen Presentation"/>
-            <spec_url>http://webscreens.github.io/presentation-api/</spec_url>
+            <spec_assertion category="W3C API Specifications" element_name="state" element_type="attribute" interface="PresentationSession" section="Screen Presentation APIs" specification="Screen Presentation"/>
+            <spec_url>http://www.w3.org/TR/2015/WD-presentation-api-20150701/#interface-presentationsession</spec_url>
             <spec_statement/>
           </spec>
         </specs>
       </testcase>
-      <testcase component="Crosswalk APIs/Experimental/Screen Presentation APIs" execution_type="manual" id="presentation_lifecycle_open" priority="P1" purpose="Test checks that the presentation lifecycle, when simulate secondary display open" status="approved" type="compliance">
+      <testcase component="Crosswalk APIs/Experimental/Screen Presentation APIs" execution_type="manual" id="NavigatorPresentation_startSession" priority="P1" purpose="Test checks that navigator.presentation.startSession should return PresentationSession Object" status="approved" type="compliance">
         <description>
           <pre_condition>
-            1. Android 4.2 or above;
-            2. Turn on 'Simulate Secondary Display' by 'Setting' app.
+            Turn on 'Simulate Secondary Display' by 'Setting' app.
           </pre_condition>
-          <post_condition/>
-          <steps>
-            <step order="1">
-              <step_desc>Press 'Request Show Presentation' Button, check the device.</step_desc>
-              <expected>Everything should displayed right.</expected>
-            </step>
-            <step order="2">
-              <step_desc>Press Home button on the device, check the device.</step_desc>
-              <expected>The 'Simulate Secondary Display' should display mirror screen.</expected>
-            </step>
-            <step order="3">
-              <step_desc>Re-open the page, check the device.</step_desc>
-              <expected> The 'Simulate Secondary Display' should display as step 2.</expected>
-            </step>
-          </steps>
-          <test_script_entry>/opt/webapi-presentation-xwalk-tests/presentation/presentation_lifecycle_open-manual.html</test_script_entry>
+          <test_script_entry>/opt/webapi-presentation-xwalk-tests/presentation/NavigatorPresentation_startSession-manual.html</test_script_entry>
         </description>
         <specs>
           <spec>
-            <spec_assertion category="W3C API Specifications" element_name="requestShow" element_type="method" interface="Presentation" section="Screen Presentation APIs" specification="Screen Presentation"/>
-            <spec_url>http://webscreens.github.io/presentation-api/</spec_url>
+            <spec_assertion category="W3C API Specifications" element_name="startSession" element_type="method" interface="NavigatorPresentation" section="Screen Presentation APIs" specification="Screen Presentation"/>
+            <spec_url>http://www.w3.org/TR/2015/WD-presentation-api-20150701/#interface-navigatorpresentation</spec_url>
             <spec_statement/>
           </spec>
         </specs>
       </testcase>
-      <testcase component="Crosswalk APIs/Experimental/Screen Presentation APIs" execution_type="manual" id="presentation_lifecycle_close" priority="P1" purpose="Test checks that the presentation lifecycle, when simulate secondary display close" status="approved" type="compliance">
+      <testcase component="Crosswalk APIs/Experimental/Screen Presentation APIs" execution_type="manual" id="PresentationSession_basic" priority="P1" purpose="Test checks that PresentationSession basic attributes" status="approved" type="compliance">
         <description>
           <pre_condition>
-            1. Android 4.2 or above;
-            2. Turn off 'Simulate Secondary Display' by 'Setting' app.
+            Turn on 'Simulate Secondary Display' by 'Setting' app.
           </pre_condition>
-          <post_condition/>
-          <steps>
-            <step order="1">
-              <step_desc>Press 'Request Show Presentation' Button, check the device.</step_desc>
-              <expected>The 'Display Available' should be 'false'.</expected>
-            </step>
-            <step order="2">
-              <step_desc>
-                1. Press Home button on the device;
-                2. Go to Settings, turn on 'Simulate Secondary Display'; Re-open the page, check the device.
-              </step_desc>
-              <expected>The 'Display Available' should be 'true'.</expected>
-            </step>
-          </steps>
-          <test_script_entry>/opt/webapi-presentation-xwalk-tests/presentation/presentation_lifecycle_close-manual.html</test_script_entry>
+          <test_script_entry>/opt/webapi-presentation-xwalk-tests/presentation/PresentationSession_basic-manual.html</test_script_entry>
         </description>
         <specs>
           <spec>
-            <spec_assertion category="W3C API Specifications" element_name="requestShow" element_type="method" interface="Presentation" section="Screen Presentation APIs" specification="Screen Presentation"/>
-            <spec_url>http://webscreens.github.io/presentation-api/</spec_url>
+            <spec_assertion category="W3C API Specifications" element_name="id" element_type="attribute" interface="PresentationSession" section="Screen Presentation APIs" specification="Screen Presentation"/>
+            <spec_url>http://www.w3.org/TR/2015/WD-presentation-api-20150701/#interface-presentationsession</spec_url>
             <spec_statement/>
           </spec>
         </specs>
       </testcase>
-      <testcase component="Crosswalk APIs/Experimental/Screen Presentation APIs" execution_type="manual" id="presentation_on_widi_adapter" priority="P1" purpose="Test checks that the presentation works well on Widi Adapter" status="approved" type="compliance">
+      <testcase component="Crosswalk APIs/Experimental/Screen Presentation APIs" execution_type="manual" id="PresentationSession_send_arraybuffer" priority="P3" purpose="Test checks that when send message with type arraybuffer, then initialise event's data attribute to a new ArrayBuffer object whose contents are presentation message data" status="approved" type="compliance">
         <description>
           <pre_condition>
-            1. Android 4.2 or above;
-            2. Widi adapter should be successfully connected with the device, and display mirror screen on the monitor.
+            Turn on 'Simulate Secondary Display' by 'Setting' app.
           </pre_condition>
-          <post_condition/>
-          <steps>
-            <step order="1">
-              <step_desc>Press 'Request Show Presentation' Button, check the device.</step_desc>
-              <expected>
-                1. The 'Result' should be 'Ok';
-                2. The 'Received message' should be 'I am from presentation window';
-                3. The secondary display should display: 'Presentation Window showed on Wireless Display' 'Received message: I am from opener window'.
-              </expected>
-            </step>
-            <step order="2">
-              <step_desc>Press 'Close Presentation' Button, check the device</step_desc>
-              <expected>
-                1. The 'Result' and 'Received message' should be 'N/A';
-                2. The secondary display should display mirror screen.
-              </expected>
-            </step>
-          </steps>
-          <test_script_entry>/opt/webapi-presentation-xwalk-tests/presentation/presentation_on_widi_adapter-manual.html</test_script_entry>
+          <test_script_entry>/opt/webapi-presentation-xwalk-tests/presentation/PresentationSession_send_arraybuffer-manual.html</test_script_entry>
         </description>
         <specs>
           <spec>
-            <spec_assertion category="W3C API Specifications" element_name="requestShow" element_type="method" interface="Presentation" section="Screen Presentation APIs" specification="Screen Presentation"/>
-            <spec_url>http://webscreens.github.io/presentation-api/</spec_url>
+            <spec_assertion category="W3C API Specifications" element_name="send" element_type="method" interface="PresentationSession" section="Screen Presentation APIs" specification="Screen Presentation"/>
+            <spec_url>http://www.w3.org/TR/2015/WD-presentation-api-20150701/#interface-presentationsession</spec_url>
             <spec_statement/>
           </spec>
         </specs>
       </testcase>
-      <testcase component="Crosswalk APIs/Experimental/Screen Presentation APIs" execution_type="manual" id="presentation_displayavailablechange_on_widi_adapter" priority="P1" purpose="Test checks that the presentation displayavailablechange event on Widi Adapter" status="approved" type="compliance">
+      <testcase component="Crosswalk APIs/Experimental/Screen Presentation APIs" execution_type="manual" id="PresentationSession_send_blob" priority="P3" purpose="Test checks that when send message with type blob, then initialise event's data attribute to a new Blob object that represents presentation message data as its raw data" status="approved" type="compliance">
         <description>
-          <pre_condition>1. Android 4.2 or above; 2. Widi adapter should be successfully connected with the device, and display mirror screen on the monitor.</pre_condition>
-          <post_condition/>
-          <steps>
-            <step order="1">
-              <step_desc>Press 'Request Show Presentation' Button, check the device.</step_desc>
-              <expected>Everything should displayed right.</expected>
-            </step>
-            <step order="2">
-              <step_desc>Disconnect Widi adapter (Powser off).</step_desc>
-              <expected>'Display Available' should be changed to 'false'.</expected>
-            </step>
-            <step order="3">
-              <step_desc>Reconnect Widi adapter.</step_desc>
-              <expected>'Display Available' should be changed to 'true'.</expected>
-            </step>
-          </steps>
-          <test_script_entry>/opt/webapi-presentation-xwalk-tests/presentation/presentation_displayavailablechange_on_widi_adapter-manual.html</test_script_entry>
+          <pre_condition>
+            Turn on 'Simulate Secondary Display' by 'Setting' app.
+          </pre_condition>
+          <test_script_entry>/opt/webapi-presentation-xwalk-tests/presentation/PresentationSession_send_blob-manual.html</test_script_entry>
         </description>
         <specs>
           <spec>
-            <spec_assertion category="W3C API Specifications" element_name="requestShow" element_type="method" interface="Presentation" section="Screen Presentation APIs" specification="Screen Presentation"/>
-            <spec_url>http://webscreens.github.io/presentation-api/</spec_url>
+            <spec_assertion category="W3C API Specifications" element_name="send" element_type="method" interface="PresentationSession" section="Screen Presentation APIs" specification="Screen Presentation"/>
+            <spec_url>http://www.w3.org/TR/2015/WD-presentation-api-20150701/#interface-presentationsession</spec_url>
             <spec_statement/>
           </spec>
         </specs>
       </testcase>
-      <testcase component="Crosswalk APIs/Experimental/Screen Presentation APIs" execution_type="manual" id="presentation_requestShow_old_version_android" priority="P1" purpose="Test checks that the presentation requestShow on older version of Android" status="approved" type="compliance">
+      <testcase component="Crosswalk APIs/Experimental/Screen Presentation APIs" execution_type="manual" id="Presentation_video" priority="P3" purpose="Test checks that an example of playing video on presentation displays" status="approved" type="compliance">
         <description>
-          <pre_condition>Older version of Android (less than 4.2).</pre_condition>
-          <post_condition/>
-          <steps>
-            <step order="1">
-              <step_desc>Open the page.</step_desc>
-              <expected>The 'Display Available' should be 'false'.</expected>
-            </step>
-            <step order="2">
-              <step_desc>Press 'Request Show Presentation' Button, check the device.</step_desc>
-              <expected>
-                The 'Result'should be 'NotSupportedError';
-                The 'Received message' should be 'N/A'.
-              </expected>
-            </step>
-          </steps>
-          <test_script_entry>/opt/webapi-presentation-xwalk-tests/presentation/presentation_requestShow_old_version_android-manual.html</test_script_entry>
+          <pre_condition>
+            1.Turn on 'Simulate Secondary Display' by 'Setting' app.
+            2.Connect to an available network.
+          </pre_condition>
+          <test_script_entry>/opt/webapi-presentation-xwalk-tests/presentation/Presentation_video-manual.html</test_script_entry>
         </description>
         <specs>
           <spec>
-            <spec_assertion category="W3C API Specifications" element_name="requestShow" element_type="method" interface="Presentation" section="Screen Presentation APIs" specification="Screen Presentation"/>
-            <spec_url>http://webscreens.github.io/presentation-api/</spec_url>
+            <spec_assertion category="W3C API Specifications" element_name="startSession" element_type="method" interface="PresentationSession" section="Screen Presentation APIs" specification="Screen Presentation"/>
+            <spec_url>http://www.w3.org/TR/2015/WD-presentation-api-20150701/#interface-navigatorpresentation</spec_url>
             <spec_statement/>
           </spec>
         </specs>
