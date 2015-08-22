@@ -243,26 +243,6 @@
           </spec>
         </specs>
       </testcase>
-      <testcase component="W3C_HTML5 APIs/Communication/HTML5 The session history of browsing contexts" execution_type="manual" id="history_forward_basic" priority="P1" purpose="Check if the history.forward method works well." status="approved" type="compliance">
-        <description>
-          <pre_condition/>
-          <post_condition/>
-          <steps>
-            <step order="1">
-              <step_desc>Click the forward button</step_desc>
-              <expected>The page is redirected to 002.html</expected>
-            </step>
-          </steps>
-          <test_script_entry>/opt/tct-sessionhistory-html5-tests/sessionhistory/history_forward_basic-manual.html</test_script_entry>
-        </description>
-        <specs>
-          <spec>
-            <spec_assertion category="Tizen W3C API Specifications" element_name="forward" element_type="method" interface="History" section="Communication" specification="HTML5 The session history of browsing contexts"/>
-            <spec_url>http://www.w3.org/TR/2012/WD-html5-20121025/history.html#the-history-interface</spec_url>
-            <spec_statement/>
-          </spec>
-        </specs>
-      </testcase>
       <testcase component="W3C_HTML5 APIs/Communication/HTML5 The session history of browsing contexts" execution_type="auto" id="history_pushState" priority="P2" purpose="history.pushState Test" status="approved" type="compliance" subcase="40">
         <description>
           <test_script_entry>/opt/tct-sessionhistory-html5-tests/sessionhistory/w3c/001.html</test_script_entry>
@@ -1269,6 +1249,21 @@
           <spec>
             <spec_assertion category="Tizen W3C API Specifications" element_name="hash" element_type="attribute" interface="Location" section="Communication" specification="HTML5 The session history of browsing contexts"/>
             <spec_url>http://www.w3.org/TR/2012/WD-html5-20121025/history.html#the-location-interface</spec_url>
+            <spec_statement/>
+          </spec>
+        </specs>
+      </testcase>
+    </set>
+    <set name="sessionhistory-bdd" type="js" ui-auto="bdd">
+      <testcase component="W3C_HTML5 APIs/Communication/HTML5 The session history of browsing contexts" execution_type="manual" id="history_forward_basic" priority="P1" purpose="Check if the history.forward method works well." status="approved" type="compliance">
+        <description>
+          <test_script_entry>/opt/tct-sessionhistory-html5-tests/sessionhistory/bdd/history_forward_basic-manual.html</test_script_entry>
+          <bdd_test_script_entry test_script_expected_result="0">/opt/tct-sessionhistory-html5-tests/html5-sessionhistory-app/testscripts/history_forward_basic.feature</bdd_test_script_entry>
+        </description>
+        <specs>
+          <spec>
+            <spec_assertion category="Tizen W3C API Specifications" element_name="forward" element_type="method" interface="History" section="Communication" specification="HTML5 The session history of browsing contexts"/>
+            <spec_url>http://www.w3.org/TR/2012/WD-html5-20121025/history.html#the-history-interface</spec_url>
             <spec_statement/>
           </spec>
         </specs>
