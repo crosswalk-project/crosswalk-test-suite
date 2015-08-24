@@ -3,34 +3,14 @@
 <test_definition>
   <suite category="W3C/HTML5 APIs" name="webapi-hrtime-w3c-tests">
     <set name="hrtime" type="js">
-      <testcase component="W3C_HTML5 APIs/Performance and Optimization/High Resolution Time" execution_type="auto" id="Performance_monotonic-clock_001" purpose="Check if the window.performance.now() returns a positive number">
+      <testcase component="W3C_HTML5 APIs/Performance and Optimization/High Resolution Time" execution_type="auto" id="monotonic-clock" purpose="Test Performance monotonic clock" subcase="2">
         <description>
-          <test_script_entry>/opt/webapi-hrtime-w3c-tests/hrtime/w3c/monotonic-clock.html?total_num=2&amp;amp;locator_key=id&amp;amp;value=1</test_script_entry>
+          <test_script_entry>/opt/webapi-hrtime-w3c-tests/hrtime/w3c/monotonic-clock.html</test_script_entry>
         </description>
       </testcase>
-      <testcase component="W3C_HTML5 APIs/Performance and Optimization/High Resolution Time" execution_type="auto" id="Performance_monotonic-clock_002" purpose="Check if the window.performance.now() difference is not negative">
+      <testcase component="W3C_HTML5 APIs/Performance and Optimization/High Resolution Time" execution_type="auto" id="test_cross_frame_start" onload_delay="5" purpose="Test Performance cross frame start" subcase="4">
         <description>
-          <test_script_entry>/opt/webapi-hrtime-w3c-tests/hrtime/w3c/monotonic-clock.html?total_num=2&amp;amp;locator_key=id&amp;amp;value=2</test_script_entry>
-        </description>
-      </testcase>
-      <testcase component="W3C_HTML5 APIs/Performance and Optimization/High Resolution Time" execution_type="auto" id="Performance_test_cross_frame_start_001" purpose="Check if the parent performance.now() is greater than 0">
-        <description>
-          <test_script_entry>/opt/webapi-hrtime-w3c-tests/hrtime/w3c/test_cross_frame_start.html?total_num=4&amp;amp;locator_key=id&amp;amp;value=1</test_script_entry>
-        </description>
-      </testcase>
-      <testcase component="W3C_HTML5 APIs/Performance and Optimization/High Resolution Time" execution_type="auto" id="Performance_test_cross_frame_start_002" purpose="Check if the child performance.now() is greater than 0">
-        <description>
-          <test_script_entry>/opt/webapi-hrtime-w3c-tests/hrtime/w3c/test_cross_frame_start.html?total_num=4&amp;amp;locator_key=id&amp;amp;value=2</test_script_entry>
-        </description>
-      </testcase>
-      <testcase component="W3C_HTML5 APIs/Performance and Optimization/High Resolution Time" execution_type="auto" id="Performance_test_cross_frame_start_003" purpose="Check if the child performance.now() created at least 1 second after parent performance.now()">
-        <description>
-          <test_script_entry>/opt/webapi-hrtime-w3c-tests/hrtime/w3c/test_cross_frame_start.html?total_num=4&amp;amp;locator_key=id&amp;amp;value=3</test_script_entry>
-        </description>
-      </testcase>
-      <testcase component="W3C_HTML5 APIs/Performance and Optimization/High Resolution Time" execution_type="auto" id="Performance_test_cross_frame_start_004" purpose="Check if the values of the window.performance.now() are based on the current document's navigationStart">
-        <description>
-          <test_script_entry>/opt/webapi-hrtime-w3c-tests/hrtime/w3c/test_cross_frame_start.html?total_num=4&amp;amp;locator_key=id&amp;amp;value=4</test_script_entry>
+          <test_script_entry>/opt/webapi-hrtime-w3c-tests/hrtime/w3c/test_cross_frame_start.html</test_script_entry>
         </description>
       </testcase>
     </set>
