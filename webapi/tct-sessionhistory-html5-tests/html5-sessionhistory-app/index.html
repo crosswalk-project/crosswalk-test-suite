@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <!--
-Copyright (c) 2013 Intel Corporation.
+Copyright (c) 2015 Intel Corporation.
 
 Redistribution and use in source and binary forms, with or without modification,
 are permitted provided that the following conditions are met:
@@ -26,38 +26,15 @@ NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE,
 EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
 Authors:
-        Fan,Yugang <yugang.fan@intel.com>
-        Ge, Qing <qingx.ge@intel.com>
-        Cui, Jieqiong <jieqiongx.cui@intel.com>
+        Fan, Yugang < yugang.fan@intel.com>
 
- -->
+-->
 
 <html>
   <head>
-    <title>Session History Test: history_forward_basic</title>
-    <link rel="author" title="Intel" href="http://www.intel.com/" />
-    <link rel="help" href="http://www.w3.org/TR/2012/WD-html5-20121025/history.html#the-history-interface" />
-    <meta name="flags" content="interact" />
-    <meta name="assert" content="Check if the history.forward method works well." />
+    <title>test</title>
   </head>
   <body>
-    <div id="log"></div>
-    <iframe id="testIframe" name="testIframe" width="200" height="100" src="support/001.html">
-    </iframe>
-    <br>
-    <input type="button" value="forward" onclick="forward_click()" />
-    <p>
-      Assertion: When click the button "forward", the iframe in the top of page will be changed from "001" to "002".
-    </p>
-    <ul>
-      <li>Test passes if the iframe in the top of page is changed to "002"</li>
-    </ul>
-    <script>
-        window.setTimeout(function () { document.getElementById("testIframe").src = "support/002.html"; }, 100);
-        window.setTimeout(function () { window.history.back(); }, 200);
-        function forward_click() {
-            document.getElementById("testIframe").contentWindow.history.forward();
-        }
-    </script>
+  hello
   </body>
 </html>
