@@ -336,6 +336,7 @@ This usecase covers following interface and methods:
 * XWalkView interface: onDraw methods
 
 
+
 ### 32. The [XWalkViewWithOverScrollAsync](XWalkViewWithOverScrollAsync.java) sample check whether onOverScrolled method work as same as WebView, include:
 
 * onOverScrolled can be override
@@ -343,3 +344,14 @@ This usecase covers following interface and methods:
 This usecase covers following interface and methods:
 
 * XWalkView interface: onOverScrolled methods
+
+
+
+### 33. The [AcceptFileSchemeCookiesActivityAsync](AcceptFileSchemeCookiesActivityAsync.java) sample check whether XWalkCookieManager can set AcceptFileSchemeCookies, include:
+
+* XWalkCookieManager apis can work
+
+This usecase covers following interface and methods:
+
+* XWalkView interface: onDraw method
+* XWalkCookieManager interface: setAcceptFileSchemeCookies, allowFileSchemeCookies methods
