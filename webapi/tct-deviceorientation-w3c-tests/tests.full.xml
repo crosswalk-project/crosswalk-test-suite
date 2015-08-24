@@ -6,9 +6,9 @@
       <capabilities>
         <capability name="accelerometer" />
       </capabilities>
-      <testcase component="W3C_HTML5 APIs/Device/DeviceOrientation Event Specification" execution_type="auto" id="DeviceAcceleration_x_entry" priority="P1" purpose="Check if the DeviceAccelerationt.x attribute exists" status="approved" type="compliance">
+      <testcase component="W3C_HTML5 APIs/Device/DeviceOrientation Event Specification" execution_type="auto" id="DeviceAcceleration_attributes_test" priority="P1" purpose="Test DeviceAcceleration attributes existence and type" status="approved" type="compliance" subcase="6">
         <description>
-          <test_script_entry>/opt/tct-deviceorientation-w3c-tests/deviceorientation/DeviceAcceleration_attributes_test.html?total_num=6&amp;locator_key=id&amp;value=1</test_script_entry>
+          <test_script_entry>/opt/tct-deviceorientation-w3c-tests/deviceorientation/DeviceAcceleration_attributes_test.html</test_script_entry>
         </description>
         <specs>
           <spec>
@@ -18,9 +18,45 @@
           </spec>
         </specs>
       </testcase>
-      <testcase component="W3C_HTML5 APIs/Device/DeviceOrientation Event Specification" execution_type="auto" id="DeviceAcceleration_x_type" priority="P2" purpose="Check if DeviceAcceleration.x is type of double" status="approved" type="compliance">
+      <testcase component="W3C_HTML5 APIs/Device/DeviceOrientation Event Specification" execution_type="auto" id="DeviceMotionEvent_attributes_test" priority="P1" purpose="Test DeviceMotionEvent attributes existence and type" status="approved" type="compliance" subcase="7">
         <description>
-          <test_script_entry>/opt/tct-deviceorientation-w3c-tests/deviceorientation/DeviceAcceleration_attributes_test.html?total_num=6&amp;locator_key=id&amp;value=2</test_script_entry>
+          <test_script_entry>/opt/tct-deviceorientation-w3c-tests/deviceorientation/DeviceMotionEvent_attributes_test.html</test_script_entry>
+        </description>
+        <specs>
+          <spec>
+            <spec_assertion category="Tizen W3C API Specifications" element_name="acceleration" element_type="attribute" interface="DeviceMotionEvent" section="Device" specification="Device Orientation Event Specification" />
+            <spec_url>http://www.w3.org/TR/2011/WD-orientation-event-20111201/#devicemotion</spec_url>
+            <spec_statement />
+          </spec>
+        </specs>
+      </testcase>
+      <testcase component="W3C_HTML5 APIs/Device/DeviceOrientation Event Specification" execution_type="auto" id="DeviceOrientationEvent_attributes_test" priority="P1" purpose="Test DeviceOrientationEvent attributes existence and type" status="approved" type="compliance" subcase="8">
+        <description>
+          <test_script_entry>/opt/tct-deviceorientation-w3c-tests/deviceorientation/DeviceOrientationEvent_attributes_test.html</test_script_entry>
+        </description>
+        <specs>
+          <spec>
+            <spec_assertion category="Tizen W3C API Specifications" element_name="absolute" element_type="attribute" interface="DeviceOrientationEvent" section="Device" specification="Device Orientation Event Specification" />
+            <spec_url>http://www.w3.org/TR/2011/WD-orientation-event-20111201/#deviceorientation</spec_url>
+            <spec_statement />
+          </spec>
+        </specs>
+      </testcase>
+      <testcase component="W3C_HTML5 APIs/Device/DeviceOrientation Event Specification" execution_type="auto" id="DeviceRotationRate_attributes_test" priority="P1" purpose="Test DeviceRotationRate attributes existence and type" status="approved" type="compliance" subcase="4">
+        <description>
+          <test_script_entry>/opt/tct-deviceorientation-w3c-tests/deviceorientation/DeviceRotationRate_attributes_test.html</test_script_entry>
+        </description>
+        <specs>
+          <spec>
+            <spec_assertion category="Tizen W3C API Specifications" element_name="alpha" element_type="attribute" interface="DeviceRotationRate" section="Device" specification="Device Orientation Event Specification" />
+            <spec_url>http://www.w3.org/TR/2011/WD-orientation-event-20111201/#devicemotion</spec_url>
+            <spec_statement />
+          </spec>
+        </specs>
+      </testcase>
+      <testcase component="W3C_HTML5 APIs/Device/DeviceOrientation Event Specification" execution_type="auto" id="DeviceAcceleration_attributes_readonly" priority="P2" purpose="Test DeviceAcceleration attributes readonly" status="approved" type="compliance" subcase="3">
+        <description>
+          <test_script_entry>/opt/tct-deviceorientation-w3c-tests/deviceorientation/DeviceAcceleration_attributes_readonly.html</test_script_entry>
         </description>
         <specs>
           <spec>
@@ -30,81 +66,9 @@
           </spec>
         </specs>
       </testcase>
-      <testcase component="W3C_HTML5 APIs/Device/DeviceOrientation Event Specification" execution_type="auto" id="DeviceAcceleration_y_entry" priority="P1" purpose="Check if the DeviceAccelerationt.y attribute exists" status="approved" type="compliance">
+      <testcase component="W3C_HTML5 APIs/Device/DeviceOrientation Event Specification" execution_type="auto" id="DeviceMotionEvent_attributes_readonly" priority="P2" purpose="Test DeviceMotionEvent attributes readonly" status="approved" type="compliance" subcase="3">
         <description>
-          <test_script_entry>/opt/tct-deviceorientation-w3c-tests/deviceorientation/DeviceAcceleration_attributes_test.html?total_num=6&amp;locator_key=id&amp;value=3</test_script_entry>
-        </description>
-        <specs>
-          <spec>
-            <spec_assertion category="Tizen W3C API Specifications" element_name="y" element_type="attribute" interface="DeviceAcceleration" section="Device" specification="Device Orientation Event Specification" />
-            <spec_url>http://www.w3.org/TR/2011/WD-orientation-event-20111201/#devicemotion</spec_url>
-            <spec_statement />
-          </spec>
-        </specs>
-      </testcase>
-      <testcase component="W3C_HTML5 APIs/Device/DeviceOrientation Event Specification" execution_type="auto" id="DeviceAcceleration_y_type" priority="P2" purpose="Check if DeviceAcceleration.y is type of double" status="approved" type="compliance">
-        <description>
-          <test_script_entry>/opt/tct-deviceorientation-w3c-tests/deviceorientation/DeviceAcceleration_attributes_test.html?total_num=6&amp;locator_key=id&amp;value=4</test_script_entry>
-        </description>
-        <specs>
-          <spec>
-            <spec_assertion category="Tizen W3C API Specifications" element_name="y" element_type="attribute" interface="DeviceAcceleration" section="Device" specification="Device Orientation Event Specification" />
-            <spec_url>http://www.w3.org/TR/2011/WD-orientation-event-20111201/#devicemotion</spec_url>
-            <spec_statement />
-          </spec>
-        </specs>
-      </testcase>
-      <testcase component="W3C_HTML5 APIs/Device/DeviceOrientation Event Specification" execution_type="auto" id="DeviceAcceleration_z_entry" priority="P1" purpose="Check if the DeviceAccelerationt.z attribute exists" status="approved" type="compliance">
-        <description>
-          <test_script_entry>/opt/tct-deviceorientation-w3c-tests/deviceorientation/DeviceAcceleration_attributes_test.html?total_num=6&amp;locator_key=id&amp;value=5</test_script_entry>
-        </description>
-        <specs>
-          <spec>
-            <spec_assertion category="Tizen W3C API Specifications" element_name="z" element_type="attribute" interface="DeviceAcceleration" section="Device" specification="Device Orientation Event Specification" />
-            <spec_url>http://www.w3.org/TR/2011/WD-orientation-event-20111201/#devicemotion</spec_url>
-            <spec_statement />
-          </spec>
-        </specs>
-      </testcase>
-      <testcase component="W3C_HTML5 APIs/Device/DeviceOrientation Event Specification" execution_type="auto" id="DeviceAcceleration_z_type" priority="P2" purpose="Check if DeviceAcceleration.z is type of double" status="approved" type="compliance">
-        <description>
-          <test_script_entry>/opt/tct-deviceorientation-w3c-tests/deviceorientation/DeviceAcceleration_attributes_test.html?total_num=6&amp;locator_key=id&amp;value=6</test_script_entry>
-        </description>
-        <specs>
-          <spec>
-            <spec_assertion category="Tizen W3C API Specifications" element_name="z" element_type="attribute" interface="DeviceAcceleration" section="Device" specification="Device Orientation Event Specification" />
-            <spec_url>http://www.w3.org/TR/2011/WD-orientation-event-20111201/#devicemotion</spec_url>
-            <spec_statement />
-          </spec>
-        </specs>
-      </testcase>
-      <testcase component="W3C_HTML5 APIs/Device/DeviceOrientation Event Specification" execution_type="auto" id="DeviceMotionEvent_acceleration_entry" priority="P1" purpose="Check if the DeviceMotionEvent.acceleration method exists" status="approved" type="compliance">
-        <description>
-          <test_script_entry>/opt/tct-deviceorientation-w3c-tests/deviceorientation/DeviceMotionEvent_attributes_test.html?total_num=7&amp;locator_key=id&amp;value=1</test_script_entry>
-        </description>
-        <specs>
-          <spec>
-            <spec_assertion category="Tizen W3C API Specifications" element_name="acceleration" element_type="attribute" interface="DeviceMotionEvent" section="Device" specification="Device Orientation Event Specification" />
-            <spec_url>http://www.w3.org/TR/2011/WD-orientation-event-20111201/#devicemotion</spec_url>
-            <spec_statement />
-          </spec>
-        </specs>
-      </testcase>
-      <testcase component="W3C_HTML5 APIs/Device/DeviceOrientation Event Specification" execution_type="auto" id="DeviceMotionEvent_acceleration_type" priority="P2" purpose="Check if DeviceMotionEvent.acceleration is type of DeviceAcceleration" status="approved" type="compliance">
-        <description>
-          <test_script_entry>/opt/tct-deviceorientation-w3c-tests/deviceorientation/DeviceMotionEvent_attributes_test.html?total_num=7&amp;locator_key=id&amp;value=2</test_script_entry>
-        </description>
-        <specs>
-          <spec>
-            <spec_assertion category="Tizen W3C API Specifications" element_name="acceleration" element_type="attribute" interface="DeviceMotionEvent" section="Device" specification="Device Orientation Event Specification" />
-            <spec_url>http://www.w3.org/TR/2011/WD-orientation-event-20111201/#devicemotion</spec_url>
-            <spec_statement />
-          </spec>
-        </specs>
-      </testcase>
-      <testcase component="W3C_HTML5 APIs/Device/DeviceOrientation Event Specification" execution_type="auto" id="DeviceMotionEvent_accelerationincludinggravity_entry" priority="P1" purpose="Check if the DeviceMotionEvent.accelerationincludinggravity method exists" status="approved" type="compliance">
-        <description>
-          <test_script_entry>/opt/tct-deviceorientation-w3c-tests/deviceorientation/DeviceMotionEvent_attributes_test.html?total_num=7&amp;locator_key=id&amp;value=3</test_script_entry>
+          <test_script_entry>/opt/tct-deviceorientation-w3c-tests/deviceorientation/DeviceMotionEvent_attributes_readonly.html</test_script_entry>
         </description>
         <specs>
           <spec>
@@ -114,153 +78,9 @@
           </spec>
         </specs>
       </testcase>
-      <testcase component="W3C_HTML5 APIs/Device/DeviceOrientation Event Specification" execution_type="auto" id="DeviceMotionEvent_accelerationIncludingGravity_type" priority="P2" purpose="Check if DeviceMotionEvent.accelerationIncludingGravity is type of DeviceAcceleration" status="approved" type="compliance">
+      <testcase component="W3C_HTML5 APIs/Device/DeviceOrientation Event Specification" execution_type="auto" id="DeviceRotationRate_attributes_basic" priority="P2" purpose="Test DeviceRotationRate attributes readonly" status="approved" type="compliance" subcase="5">
         <description>
-          <test_script_entry>/opt/tct-deviceorientation-w3c-tests/deviceorientation/DeviceMotionEvent_attributes_test.html?total_num=7&amp;locator_key=id&amp;value=4</test_script_entry>
-        </description>
-        <specs>
-          <spec>
-            <spec_assertion category="Tizen W3C API Specifications" element_name="accelerationIncludingGravity" element_type="attribute" interface="DeviceMotionEvent" section="Device" specification="Device Orientation Event Specification" />
-            <spec_url>http://www.w3.org/TR/2011/WD-orientation-event-20111201/#devicemotion</spec_url>
-            <spec_statement />
-          </spec>
-        </specs>
-      </testcase>
-      <testcase component="W3C_HTML5 APIs/Device/DeviceOrientation Event Specification" execution_type="auto" id="DeviceMotionEvent_interval_entry" priority="P1" purpose="Check if the DeviceMotionEvent.interval attribute exists" status="approved" type="compliance">
-        <description>
-          <test_script_entry>/opt/tct-deviceorientation-w3c-tests/deviceorientation/DeviceMotionEvent_attributes_test.html?total_num=7&amp;locator_key=id&amp;value=5</test_script_entry>
-        </description>
-        <specs>
-          <spec>
-            <spec_assertion category="Tizen W3C API Specifications" element_name="interval" element_type="attribute" interface="DeviceMotionEvent" section="Device" specification="Device Orientation Event Specification" />
-            <spec_url>http://www.w3.org/TR/2011/WD-orientation-event-20111201/#devicemotion</spec_url>
-            <spec_statement />
-          </spec>
-        </specs>
-      </testcase>
-      <testcase component="W3C_HTML5 APIs/Device/DeviceOrientation Event Specification" execution_type="auto" id="DeviceMotionEvent_rotationrate_entry" priority="P1" purpose="Check if the DeviceMotionEvent.rotationRate attribute exists" status="approved" type="compliance">
-        <description>
-          <test_script_entry>/opt/tct-deviceorientation-w3c-tests/deviceorientation/DeviceMotionEvent_attributes_test.html?total_num=7&amp;locator_key=id&amp;value=6</test_script_entry>
-        </description>
-        <specs>
-          <spec>
-            <spec_assertion category="Tizen W3C API Specifications" element_name="rotationRate" element_type="attribute" interface="DeviceMotionEvent" section="Device" specification="Device Orientation Event Specification" />
-            <spec_url>http://www.w3.org/TR/2011/WD-orientation-event-20111201/#devicemotion</spec_url>
-            <spec_statement />
-          </spec>
-        </specs>
-      </testcase>
-      <testcase component="W3C_HTML5 APIs/Device/DeviceOrientation Event Specification" execution_type="auto" id="DeviceMotionEvent_rotationRate_type" priority="P2" purpose="Check if DeviceMotionEvent.rotationRate is type of DeviceRotationRate" status="approved" type="compliance">
-        <description>
-          <test_script_entry>/opt/tct-deviceorientation-w3c-tests/deviceorientation/DeviceMotionEvent_attributes_test.html?total_num=7&amp;locator_key=id&amp;value=7</test_script_entry>
-        </description>
-        <specs>
-          <spec>
-            <spec_assertion category="Tizen W3C API Specifications" element_name="rotationRate" element_type="attribute" interface="DeviceMotionEvent" section="Device" specification="Device Orientation Event Specification" />
-            <spec_url>http://www.w3.org/TR/2011/WD-orientation-event-20111201/#devicemotion</spec_url>
-            <spec_statement />
-          </spec>
-        </specs>
-      </testcase>
-      <testcase component="W3C_HTML5 APIs/Device/DeviceOrientation Event Specification" execution_type="auto" id="DeviceOrientationEvent_absolute_entry" priority="P1" purpose="Check if the DeviceOrientationEvent.absolute attribute exists" status="approved" type="compliance">
-        <description>
-          <test_script_entry>/opt/tct-deviceorientation-w3c-tests/deviceorientation/DeviceOrientationEvent_attributes_test.html?total_num=8&amp;locator_key=id&amp;value=1</test_script_entry>
-        </description>
-        <specs>
-          <spec>
-            <spec_assertion category="Tizen W3C API Specifications" element_name="absolute" element_type="attribute" interface="DeviceOrientationEvent" section="Device" specification="Device Orientation Event Specification" />
-            <spec_url>http://www.w3.org/TR/2011/WD-orientation-event-20111201/#deviceorientation</spec_url>
-            <spec_statement />
-          </spec>
-        </specs>
-      </testcase>
-      <testcase component="W3C_HTML5 APIs/Device/DeviceOrientation Event Specification" execution_type="auto" id="DeviceOrientationEvent_absolute_type" priority="P2" purpose="Check if DeviceOrientationEvent.absolute is type of boolean" status="approved" type="compliance">
-        <description>
-          <test_script_entry>/opt/tct-deviceorientation-w3c-tests/deviceorientation/DeviceOrientationEvent_attributes_test.html?total_num=8&amp;locator_key=id&amp;value=2</test_script_entry>
-        </description>
-        <specs>
-          <spec>
-            <spec_assertion category="Tizen W3C API Specifications" element_name="absolute" element_type="attribute" interface="DeviceOrientationEvent" section="Device" specification="Device Orientation Event Specification" />
-            <spec_url>http://www.w3.org/TR/2011/WD-orientation-event-20111201/#deviceorientation</spec_url>
-            <spec_statement />
-          </spec>
-        </specs>
-      </testcase>
-      <testcase component="W3C_HTML5 APIs/Device/DeviceOrientation Event Specification" execution_type="auto" id="DeviceOrientationEvent_alpha_entry" priority="P1" purpose="Check if the DeviceOrientationEvent.alpha attribute exists" status="approved" type="compliance">
-        <description>
-          <test_script_entry>/opt/tct-deviceorientation-w3c-tests/deviceorientation/DeviceOrientationEvent_attributes_test.html?total_num=8&amp;locator_key=id&amp;value=3</test_script_entry>
-        </description>
-        <specs>
-          <spec>
-            <spec_assertion category="Tizen W3C API Specifications" element_name="alpha" element_type="attribute" interface="DeviceOrientationEvent" section="Device" specification="Device Orientation Event Specification" />
-            <spec_url>http://www.w3.org/TR/2011/WD-orientation-event-20111201/#deviceorientation</spec_url>
-            <spec_statement />
-          </spec>
-        </specs>
-      </testcase>
-      <testcase component="W3C_HTML5 APIs/Device/DeviceOrientation Event Specification" execution_type="auto" id="DeviceOrientationEvent_alpha_type" priority="P2" purpose="Check if DeviceOrientationEvent.alpha is type of double" status="approved" type="compliance">
-        <description>
-          <test_script_entry>/opt/tct-deviceorientation-w3c-tests/deviceorientation/DeviceOrientationEvent_attributes_test.html?total_num=8&amp;locator_key=id&amp;value=4</test_script_entry>
-        </description>
-        <specs>
-          <spec>
-            <spec_assertion category="Tizen W3C API Specifications" element_name="alpha" element_type="attribute" interface="DeviceOrientationEvent" section="Device" specification="Device Orientation Event Specification" />
-            <spec_url>http://www.w3.org/TR/2011/WD-orientation-event-20111201/#deviceorientation</spec_url>
-            <spec_statement />
-          </spec>
-        </specs>
-      </testcase>
-      <testcase component="W3C_HTML5 APIs/Device/DeviceOrientation Event Specification" execution_type="auto" id="DeviceOrientationEvent_beta_entry" priority="P1" purpose="Check if the DeviceOrientationEvent.beta attribute exists" status="approved" type="compliance">
-        <description>
-          <test_script_entry>/opt/tct-deviceorientation-w3c-tests/deviceorientation/DeviceOrientationEvent_attributes_test.html?total_num=8&amp;locator_key=id&amp;value=5</test_script_entry>
-        </description>
-        <specs>
-          <spec>
-            <spec_assertion category="Tizen W3C API Specifications" element_name="beta" element_type="attribute" interface="DeviceOrientationEvent" section="Device" specification="Device Orientation Event Specification" />
-            <spec_url>http://www.w3.org/TR/2011/WD-orientation-event-20111201/#deviceorientation</spec_url>
-            <spec_statement />
-          </spec>
-        </specs>
-      </testcase>
-      <testcase component="W3C_HTML5 APIs/Device/DeviceOrientation Event Specification" execution_type="auto" id="DeviceOrientationEvent_beta_type" priority="P2" purpose="Check if DeviceOrientationEvent.beta is type of double" status="approved" type="compliance">
-        <description>
-          <test_script_entry>/opt/tct-deviceorientation-w3c-tests/deviceorientation/DeviceOrientationEvent_attributes_test.html?total_num=8&amp;locator_key=id&amp;value=6</test_script_entry>
-        </description>
-        <specs>
-          <spec>
-            <spec_assertion category="Tizen W3C API Specifications" element_name="beta" element_type="attribute" interface="DeviceOrientationEvent" section="Device" specification="Device Orientation Event Specification" />
-            <spec_url>http://www.w3.org/TR/2011/WD-orientation-event-20111201/#deviceorientation</spec_url>
-            <spec_statement />
-          </spec>
-        </specs>
-      </testcase>
-      <testcase component="W3C_HTML5 APIs/Device/DeviceOrientation Event Specification" execution_type="auto" id="DeviceOrientationEvent_gamma_entry" priority="P1" purpose="Check if the DeviceOrientationEvent.gamma attribute exists" status="approved" type="compliance">
-        <description>
-          <test_script_entry>/opt/tct-deviceorientation-w3c-tests/deviceorientation/DeviceOrientationEvent_attributes_test.html?total_num=8&amp;locator_key=id&amp;value=7</test_script_entry>
-        </description>
-        <specs>
-          <spec>
-            <spec_assertion category="Tizen W3C API Specifications" element_name="gamma" element_type="attribute" interface="DeviceOrientationEvent" section="Device" specification="Device Orientation Event Specification" />
-            <spec_url>http://www.w3.org/TR/2011/WD-orientation-event-20111201/#deviceorientation</spec_url>
-            <spec_statement />
-          </spec>
-        </specs>
-      </testcase>
-      <testcase component="W3C_HTML5 APIs/Device/DeviceOrientation Event Specification" execution_type="auto" id="DeviceOrientationEvent_gamma_type" priority="P2" purpose="Check if DeviceOrientationEvent.gamma is type of double" status="approved" type="compliance">
-        <description>
-          <test_script_entry>/opt/tct-deviceorientation-w3c-tests/deviceorientation/DeviceOrientationEvent_attributes_test.html?total_num=8&amp;locator_key=id&amp;value=8</test_script_entry>
-        </description>
-        <specs>
-          <spec>
-            <spec_assertion category="Tizen W3C API Specifications" element_name="gamma" element_type="attribute" interface="DeviceOrientationEvent" section="Device" specification="Device Orientation Event Specification" />
-            <spec_url>http://www.w3.org/TR/2011/WD-orientation-event-20111201/#deviceorientation</spec_url>
-            <spec_statement />
-          </spec>
-        </specs>
-      </testcase>
-      <testcase component="W3C_HTML5 APIs/Device/DeviceOrientation Event Specification" execution_type="auto" id="DeviceRotationRate_alpha_entry" priority="P1" purpose="Check if the DeviceRotationRate.alpha attribute exists" status="approved" type="compliance">
-        <description>
-          <test_script_entry>/opt/tct-deviceorientation-w3c-tests/deviceorientation/DeviceRotationRate_attributes_test.html?total_num=4&amp;locator_key=id&amp;value=1</test_script_entry>
+          <test_script_entry>/opt/tct-deviceorientation-w3c-tests/deviceorientation/DeviceRotationRate_attributes_basic.html</test_script_entry>
         </description>
         <specs>
           <spec>
@@ -270,217 +90,13 @@
           </spec>
         </specs>
       </testcase>
-      <testcase component="W3C_HTML5 APIs/Device/DeviceOrientation Event Specification" execution_type="auto" id="DeviceRotationRate_alpha_type" priority="P2" purpose="Check if DeviceRotationRate.alpha is type of double" status="approved" type="compliance">
+      <testcase component="W3C_HTML5 APIs/Device/DeviceOrientation Event Specification" execution_type="auto" id="DeviceOrientationEvent_attributes_readonly" priority="P2" purpose="Test DeviceOrientationEvent attributes readonly" status="approved" type="compliance" subcase="4">
         <description>
-          <test_script_entry>/opt/tct-deviceorientation-w3c-tests/deviceorientation/DeviceRotationRate_attributes_test.html?total_num=4&amp;locator_key=id&amp;value=2</test_script_entry>
-        </description>
-        <specs>
-          <spec>
-            <spec_assertion category="Tizen W3C API Specifications" element_name="alpha" element_type="attribute" interface="DeviceRotationRate" section="Device" specification="Device Orientation Event Specification" />
-            <spec_url>http://www.w3.org/TR/2011/WD-orientation-event-20111201/#devicemotion</spec_url>
-            <spec_statement />
-          </spec>
-        </specs>
-      </testcase>
-      <testcase component="W3C_HTML5 APIs/Device/DeviceOrientation Event Specification" execution_type="auto" id="DeviceRotationRate_beta_entry" priority="P1" purpose="Check if the DeviceRotationRate.beta attribute exists" status="approved" type="compliance">
-        <description>
-          <test_script_entry>/opt/tct-deviceorientation-w3c-tests/deviceorientation/DeviceRotationRate_attributes_test.html?total_num=4&amp;locator_key=id&amp;value=3</test_script_entry>
-        </description>
-        <specs>
-          <spec>
-            <spec_assertion category="Tizen W3C API Specifications" element_name="beta" element_type="attribute" interface="DeviceRotationRate" section="Device" specification="Device Orientation Event Specification" />
-            <spec_url>http://www.w3.org/TR/2011/WD-orientation-event-20111201/#devicemotion</spec_url>
-            <spec_statement />
-          </spec>
-        </specs>
-      </testcase>
-      <testcase component="W3C_HTML5 APIs/Device/DeviceOrientation Event Specification" execution_type="auto" id="DeviceRotationRate_gamma_entry" priority="P1" purpose="Check if the DeviceRotationRate.gamma attribute exists" status="approved" type="compliance">
-        <description>
-          <test_script_entry>/opt/tct-deviceorientation-w3c-tests/deviceorientation/DeviceRotationRate_attributes_test.html?total_num=4&amp;locator_key=id&amp;value=4</test_script_entry>
-        </description>
-        <specs>
-          <spec>
-            <spec_assertion category="Tizen W3C API Specifications" element_name="gamma" element_type="attribute" interface="DeviceRotationRate" section="Device" specification="Device Orientation Event Specification" />
-            <spec_url>http://www.w3.org/TR/2011/WD-orientation-event-20111201/#devicemotion</spec_url>
-            <spec_statement />
-          </spec>
-        </specs>
-      </testcase>
-      <testcase component="W3C_HTML5 APIs/Device/DeviceOrientation Event Specification" execution_type="auto" id="DeviceAcceleration_x_readonly" priority="P2" purpose="Check if DeviceAcceleration.x is readonly" status="approved" type="compliance">
-        <description>
-          <test_script_entry>/opt/tct-deviceorientation-w3c-tests/deviceorientation/DeviceAcceleration_attributes_readonly.html?total_num=3&amp;locator_key=id&amp;value=1</test_script_entry>
-        </description>
-        <specs>
-          <spec>
-            <spec_assertion category="Tizen W3C API Specifications" element_name="x" element_type="attribute" interface="DeviceAcceleration" section="Device" specification="Device Orientation Event Specification" />
-            <spec_url>http://www.w3.org/TR/2011/WD-orientation-event-20111201/#devicemotion</spec_url>
-            <spec_statement />
-          </spec>
-        </specs>
-      </testcase>
-      <testcase component="W3C_HTML5 APIs/Device/DeviceOrientation Event Specification" execution_type="auto" id="DeviceAcceleration_y_readonly" priority="P2" purpose="Check if DeviceAcceleration.y is readonly" status="approved" type="compliance">
-        <description>
-          <test_script_entry>/opt/tct-deviceorientation-w3c-tests/deviceorientation/DeviceAcceleration_attributes_readonly.html?total_num=3&amp;locator_key=id&amp;value=2</test_script_entry>
-        </description>
-        <specs>
-          <spec>
-            <spec_assertion category="Tizen W3C API Specifications" element_name="y" element_type="attribute" interface="DeviceAcceleration" section="Device" specification="Device Orientation Event Specification" />
-            <spec_url>http://www.w3.org/TR/2011/WD-orientation-event-20111201/#devicemotion</spec_url>
-            <spec_statement />
-          </spec>
-        </specs>
-      </testcase>
-      <testcase component="W3C_HTML5 APIs/Device/DeviceOrientation Event Specification" execution_type="auto" id="DeviceAcceleration_z_readonly" priority="P2" purpose="Check if DeviceAcceleration.z is readonly" status="approved" type="compliance">
-        <description>
-          <test_script_entry>/opt/tct-deviceorientation-w3c-tests/deviceorientation/DeviceAcceleration_attributes_readonly.html?total_num=3&amp;locator_key=id&amp;value=3</test_script_entry>
-        </description>
-        <specs>
-          <spec>
-            <spec_assertion category="Tizen W3C API Specifications" element_name="z" element_type="attribute" interface="DeviceAcceleration" section="Device" specification="Device Orientation Event Specification" />
-            <spec_url>http://www.w3.org/TR/2011/WD-orientation-event-20111201/#devicemotion</spec_url>
-            <spec_statement />
-          </spec>
-        </specs>
-      </testcase>
-      <testcase component="W3C_HTML5 APIs/Device/DeviceOrientation Event Specification" execution_type="auto" id="DeviceMotionEvent_accelerationIncludingGravity_readonly" priority="P2" purpose="Check if DeviceMotionEvent.accelerationIncludingGravity is readonly" status="approved" type="compliance">
-        <description>
-          <test_script_entry>/opt/tct-deviceorientation-w3c-tests/deviceorientation/DeviceMotionEvent_attributes_readonly.html?total_num=3&amp;locator_key=id&amp;value=1</test_script_entry>
-        </description>
-        <specs>
-          <spec>
-            <spec_assertion category="Tizen W3C API Specifications" element_name="accelerationIncludingGravity" element_type="attribute" interface="DeviceMotionEvent" section="Device" specification="Device Orientation Event Specification" />
-            <spec_url>http://www.w3.org/TR/2011/WD-orientation-event-20111201/#devicemotion</spec_url>
-            <spec_statement />
-          </spec>
-        </specs>
-      </testcase>
-      <testcase component="W3C_HTML5 APIs/Device/DeviceOrientation Event Specification" execution_type="auto" id="DeviceMotionEvent_acceleration_readonly" priority="P2" purpose="Check if DeviceMotionEvent.acceleration is readonly" status="approved" type="compliance">
-        <description>
-          <test_script_entry>/opt/tct-deviceorientation-w3c-tests/deviceorientation/DeviceMotionEvent_attributes_readonly.html?total_num=3&amp;locator_key=id&amp;value=2</test_script_entry>
-        </description>
-        <specs>
-          <spec>
-            <spec_assertion category="Tizen W3C API Specifications" element_name="acceleration" element_type="attribute" interface="DeviceMotionEvent" section="Device" specification="Device Orientation Event Specification" />
-            <spec_url>http://www.w3.org/TR/2011/WD-orientation-event-20111201/#devicemotion</spec_url>
-            <spec_statement />
-          </spec>
-        </specs>
-      </testcase>
-      <testcase component="W3C_HTML5 APIs/Device/DeviceOrientation Event Specification" execution_type="auto" id="DeviceMotionEvent_rotationRate_readonly" priority="P2" purpose="Check if DeviceMotionEvent.rotationRate is readonly" status="approved" type="compliance">
-        <description>
-          <test_script_entry>/opt/tct-deviceorientation-w3c-tests/deviceorientation/DeviceMotionEvent_attributes_readonly.html?total_num=3&amp;locator_key=id&amp;value=3</test_script_entry>
-        </description>
-        <specs>
-          <spec>
-            <spec_assertion category="Tizen W3C API Specifications" element_name="rotationRate" element_type="attribute" interface="DeviceMotionEvent" section="Device" specification="Device Orientation Event Specification" />
-            <spec_url>http://www.w3.org/TR/2011/WD-orientation-event-20111201/#devicemotion</spec_url>
-            <spec_statement />
-          </spec>
-        </specs>
-      </testcase>
-      <testcase component="W3C_HTML5 APIs/Device/DeviceOrientation Event Specification" execution_type="auto" id="DeviceRotationRate_alpha_readonly" priority="P2" purpose="Check if DeviceRotationRate.alpha is readonly" status="approved" type="compliance">
-        <description>
-          <test_script_entry>/opt/tct-deviceorientation-w3c-tests/deviceorientation/DeviceRotationRate_attributes_basic.html?total_num=5&amp;locator_key=id&amp;value=1</test_script_entry>
-        </description>
-        <specs>
-          <spec>
-            <spec_assertion category="Tizen W3C API Specifications" element_name="alpha" element_type="attribute" interface="DeviceRotationRate" section="Device" specification="Device Orientation Event Specification" />
-            <spec_url>http://www.w3.org/TR/2011/WD-orientation-event-20111201/#devicemotion</spec_url>
-            <spec_statement />
-          </spec>
-        </specs>
-      </testcase>
-      <testcase component="W3C_HTML5 APIs/Device/DeviceOrientation Event Specification" execution_type="auto" id="DeviceRotationRate_beta_type" priority="P2" purpose="Check if DeviceRotationRate.beta is type of double" status="approved" type="compliance">
-        <description>
-          <test_script_entry>/opt/tct-deviceorientation-w3c-tests/deviceorientation/DeviceRotationRate_attributes_basic.html?total_num=5&amp;locator_key=id&amp;value=2</test_script_entry>
-        </description>
-        <specs>
-          <spec>
-            <spec_assertion category="Tizen W3C API Specifications" element_name="beta" element_type="attribute" interface="DeviceRotationRate" section="Device" specification="Device Orientation Event Specification" />
-            <spec_url>http://www.w3.org/TR/2011/WD-orientation-event-20111201/#devicemotion</spec_url>
-            <spec_statement />
-          </spec>
-        </specs>
-      </testcase>
-      <testcase component="W3C_HTML5 APIs/Device/DeviceOrientation Event Specification" execution_type="auto" id="DeviceRotationRate_beta_readonly" priority="P2" purpose="Check if DeviceRotationRate.beta is readonly" status="approved" type="compliance">
-        <description>
-          <test_script_entry>/opt/tct-deviceorientation-w3c-tests/deviceorientation/DeviceRotationRate_attributes_basic.html?total_num=5&amp;locator_key=id&amp;value=3</test_script_entry>
-        </description>
-        <specs>
-          <spec>
-            <spec_assertion category="Tizen W3C API Specifications" element_name="beta" element_type="attribute" interface="DeviceRotationRate" section="Device" specification="Device Orientation Event Specification" />
-            <spec_url>http://www.w3.org/TR/2011/WD-orientation-event-20111201/#devicemotion</spec_url>
-            <spec_statement />
-          </spec>
-        </specs>
-      </testcase>
-      <testcase component="W3C_HTML5 APIs/Device/DeviceOrientation Event Specification" execution_type="auto" id="DeviceRotationRate_gamma_type" priority="P2" purpose="Check if DeviceRotationRate.gamma is type of double" status="approved" type="compliance">
-        <description>
-          <test_script_entry>/opt/tct-deviceorientation-w3c-tests/deviceorientation/DeviceRotationRate_attributes_basic.html?total_num=5&amp;locator_key=id&amp;value=4</test_script_entry>
-        </description>
-        <specs>
-          <spec>
-            <spec_assertion category="Tizen W3C API Specifications" element_name="gamma" element_type="attribute" interface="DeviceRotationRate" section="Device" specification="Device Orientation Event Specification" />
-            <spec_url>http://www.w3.org/TR/2011/WD-orientation-event-20111201/#devicemotion</spec_url>
-            <spec_statement />
-          </spec>
-        </specs>
-      </testcase>
-      <testcase component="W3C_HTML5 APIs/Device/DeviceOrientation Event Specification" execution_type="auto" id="DeviceRotationRate_gamma_readonly" priority="P2" purpose="Check if DeviceRotationRate.gamma is readonly" status="approved" type="compliance">
-        <description>
-          <test_script_entry>/opt/tct-deviceorientation-w3c-tests/deviceorientation/DeviceRotationRate_attributes_basic.html?total_num=5&amp;locator_key=id&amp;value=5</test_script_entry>
-        </description>
-        <specs>
-          <spec>
-            <spec_assertion category="Tizen W3C API Specifications" element_name="gamma" element_type="attribute" interface="DeviceRotationRate" section="Device" specification="Device Orientation Event Specification" />
-            <spec_url>http://www.w3.org/TR/2011/WD-orientation-event-20111201/#devicemotion</spec_url>
-            <spec_statement />
-          </spec>
-        </specs>
-      </testcase>
-      <testcase component="W3C_HTML5 APIs/Device/DeviceOrientation Event Specification" execution_type="auto" id="DeviceOrientationEvent_absolute_readonly" priority="P2" purpose="Check if DeviceOrientationEvent.absolute is readonly" status="approved" type="compliance">
-        <description>
-          <test_script_entry>/opt/tct-deviceorientation-w3c-tests/deviceorientation/DeviceOrientationEvent_attributes_readonly.html?total_num=4&amp;locator_key=id&amp;value=1</test_script_entry>
+          <test_script_entry>/opt/tct-deviceorientation-w3c-tests/deviceorientation/DeviceOrientationEvent_attributes_readonly.html</test_script_entry>
         </description>
         <specs>
           <spec>
             <spec_assertion category="Tizen W3C API Specifications" element_name="absolute" element_type="attribute" interface="DeviceOrientationEvent" section="Device" specification="Device Orientation Event Specification" />
-            <spec_url>http://www.w3.org/TR/2011/WD-orientation-event-20111201/#deviceorientation</spec_url>
-            <spec_statement />
-          </spec>
-        </specs>
-      </testcase>
-      <testcase component="W3C_HTML5 APIs/Device/DeviceOrientation Event Specification" execution_type="auto" id="DeviceOrientationEvent_alpha_readonly" priority="P2" purpose="Check if DeviceOrientationEvent.alpha is readonly" status="approved" type="compliance">
-        <description>
-          <test_script_entry>/opt/tct-deviceorientation-w3c-tests/deviceorientation/DeviceOrientationEvent_attributes_readonly.html?total_num=4&amp;locator_key=id&amp;value=2</test_script_entry>
-        </description>
-        <specs>
-          <spec>
-            <spec_assertion category="Tizen W3C API Specifications" element_name="alpha" element_type="attribute" interface="DeviceOrientationEvent" section="Device" specification="Device Orientation Event Specification" />
-            <spec_url>http://www.w3.org/TR/2011/WD-orientation-event-20111201/#deviceorientation</spec_url>
-            <spec_statement />
-          </spec>
-        </specs>
-      </testcase>
-      <testcase component="W3C_HTML5 APIs/Device/DeviceOrientation Event Specification" execution_type="auto" id="DeviceOrientationEvent_beta_readonly" priority="P2" purpose="Check if DeviceOrientationEvent.beta is readonly" status="approved" type="compliance">
-        <description>
-          <test_script_entry>/opt/tct-deviceorientation-w3c-tests/deviceorientation/DeviceOrientationEvent_attributes_readonly.html?total_num=4&amp;locator_key=id&amp;value=3</test_script_entry>
-        </description>
-        <specs>
-          <spec>
-            <spec_assertion category="Tizen W3C API Specifications" element_name="beta" element_type="attribute" interface="DeviceOrientationEvent" section="Device" specification="Device Orientation Event Specification" />
-            <spec_url>http://www.w3.org/TR/2011/WD-orientation-event-20111201/#deviceorientation</spec_url>
-            <spec_statement />
-          </spec>
-        </specs>
-      </testcase>
-      <testcase component="W3C_HTML5 APIs/Device/DeviceOrientation Event Specification" execution_type="auto" id="DeviceOrientationEvent_gamma_readonly" priority="P2" purpose="Check if DeviceOrientationEvent.gamma is readonly" status="approved" type="compliance">
-        <description>
-          <test_script_entry>/opt/tct-deviceorientation-w3c-tests/deviceorientation/DeviceOrientationEvent_attributes_readonly.html?total_num=4&amp;locator_key=id&amp;value=4</test_script_entry>
-        </description>
-        <specs>
-          <spec>
-            <spec_assertion category="Tizen W3C API Specifications" element_name="gamma" element_type="attribute" interface="DeviceOrientationEvent" section="Device" specification="Device Orientation Event Specification" />
             <spec_url>http://www.w3.org/TR/2011/WD-orientation-event-20111201/#deviceorientation</spec_url>
             <spec_statement />
           </spec>

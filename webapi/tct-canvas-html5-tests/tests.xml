@@ -4169,14 +4169,9 @@
           <test_script_entry test_script_expected_result="0">/opt/tct-canvas-html5-tests/canvas/canvas_getContext_type.html</test_script_entry>
         </description>
       </testcase>
-      <testcase component="W3C_HTML5 APIs/Graphics/HTML Canvas 2D Context" execution_type="auto" id="canvas_ellipse_exist" purpose="Check if the method ellipse exists">
+      <testcase component="W3C_HTML5 APIs/Graphics/HTML Canvas 2D Context" execution_type="auto" id="canvas_attributes" purpose="Test CanvasRenderingContext interface" subcase="2">
         <description>
-          <test_script_entry test_script_expected_result="0">/opt/tct-canvas-html5-tests/canvas/canvas_attributes.html?total_num=2&amp;amp;locator_key=id&amp;amp;value=1</test_script_entry>
-        </description>
-      </testcase>
-      <testcase component="W3C_HTML5 APIs/Graphics/HTML Canvas 2D Context" execution_type="auto" id="canvas_setLineDash_exist" purpose="Check if the method setLineDash exists">
-        <description>
-          <test_script_entry test_script_expected_result="0">/opt/tct-canvas-html5-tests/canvas/canvas_attributes.html?total_num=2&amp;amp;locator_key=id&amp;amp;value=2</test_script_entry>
+          <test_script_entry test_script_expected_result="0">/opt/tct-canvas-html5-tests/canvas/canvas_attributes.html</test_script_entry>
         </description>
       </testcase>
       <testcase component="W3C_HTML5 APIs/Graphics/HTML Canvas 2D Context" execution_type="auto" id="canvas_globalCompositeOperation_modes" purpose="Check if the canvas supports the blending modes">
@@ -4229,7 +4224,7 @@
           <test_script_entry>/opt/tct-canvas-html5-tests/canvas/canvas_width_type.html</test_script_entry>
         </description>
       </testcase>
-      <testcase component="W3C_HTML5 APIs/Graphics/HTML Canvas 2D Context" execution_type="auto" id="canvasgradient_addColorStop_INDEX_SIZE_ERR" purpose="Check if the offset is less than 0, greater than 1, infinite, or NaN, then an INDEX_SIZE_ERR exception must be raised">
+      <testcase component="W3C_HTML5 APIs/Graphics/HTML Canvas 2D Context" execution_type="auto" id="canvasgradient_addColorStop_INDEX_SIZE_ERR" purpose="Test CanvasGradient.addColorStop() INDEX_SIZE_ERR" subcase="4">
         <description>
           <test_script_entry>/opt/tct-canvas-html5-tests/canvas/canvasgradient_addColorStop_INDEX_SIZE_ERR.html</test_script_entry>
         </description>
@@ -4320,36 +4315,72 @@
     <set name="Canvas-ref" type="ref" ui-auto="wd">
       <testcase component="W3C_HTML5 APIs/Graphics/HTML Canvas 2D Context" execution_type="manual" id="canvas_complexshapes_arcto_001" purpose="Check the arcTo method of CanvasRenderingContext2D interface.">
         <description>
+          <steps>
+            <step order="1">
+              <step_desc>Launch the test.</step_desc>
+              <expected>Test passes if there is a straight line.</expected>
+            </step>
+          </steps>
           <test_script_entry test_script_expected_result="0">/opt/tct-canvas-html5-tests/canvas/w3c/canvas_complexshapes_arcto_001-manual.htm</test_script_entry>
           <refer_test_script_entry timeout="90">/opt/tct-canvas-html5-tests/canvas/w3c/canvas_complexshapes_arcto_001-ref.htm</refer_test_script_entry>
         </description>
       </testcase>
       <testcase component="W3C_HTML5 APIs/Graphics/HTML Canvas 2D Context" execution_type="manual" id="canvas_complexshapes_beziercurveto_001" purpose="Check the bezierCurveTo method of CanvasRenderingContext2D interface.">
         <description>
+          <steps>
+            <step order="1">
+              <step_desc>Launch the test.</step_desc>
+              <expected>Test passes if there is a smiling face.</expected>
+            </step>
+          </steps>
           <test_script_entry test_script_expected_result="0">/opt/tct-canvas-html5-tests/canvas/w3c/canvas_complexshapes_beziercurveto_001-manual.htm</test_script_entry>
           <refer_test_script_entry timeout="90">/opt/tct-canvas-html5-tests/canvas/w3c/canvas_complexshapes_beziercurveto_001-ref.htm</refer_test_script_entry>
         </description>
       </testcase>
       <testcase component="W3C_HTML5 APIs/Graphics/HTML Canvas 2D Context" execution_type="manual" id="canvas_compositing_globalcompositeoperation_001" purpose="Check the globalCompositeOperation attribute of CanvasRenderingContext2D interface.">
         <description>
+          <steps>
+            <step order="1">
+              <step_desc>Launch the test.</step_desc>
+              <expected>Test passes if there is a black rectangle and no red.</expected>
+            </step>
+          </steps>
           <test_script_entry test_script_expected_result="0">/opt/tct-canvas-html5-tests/canvas/w3c/canvas_compositing_globalcompositeoperation_001-manual.htm</test_script_entry>
           <refer_test_script_entry timeout="90">/opt/tct-canvas-html5-tests/canvas/w3c/canvas_compositing_globalcompositeoperation_001-ref.htm</refer_test_script_entry>
         </description>
       </testcase>
       <testcase component="W3C_HTML5 APIs/Graphics/HTML Canvas 2D Context" execution_type="manual" id="canvas_linestyles_linecap_001" purpose="Check if the square value of lineCap means that a rectangle with the length of the line width and the width of half the line width, placed flat against the edge perpendicular to the direction of the line, must be added at the end of each line.">
         <description>
+          <steps>
+            <step order="1">
+              <step_desc>Launch the test.</step_desc>
+              <expected>Test passes if there is a black rectangle and no red.</expected>
+            </step>
+          </steps>
           <test_script_entry test_script_expected_result="0">/opt/tct-canvas-html5-tests/canvas/w3c/canvas_linestyles_linecap_001-manual.htm</test_script_entry>
           <refer_test_script_entry timeout="90">/opt/tct-canvas-html5-tests/canvas/w3c/canvas_linestyles_linecap_001-ref.htm</refer_test_script_entry>
         </description>
       </testcase>
       <testcase component="W3C_HTML5 APIs/Graphics/HTML Canvas 2D Context" execution_type="manual" id="canvas_state_restore_001" purpose="Check the restore method of CanvasRenderingContext2D interface.">
         <description>
+          <steps>
+            <step order="1">
+              <step_desc>Launch the test.</step_desc>
+              <expected>Test passes if a rectangle is devided into three parts, and the colors are yellow, blue and green.</expected>
+            </step>
+          </steps>
           <test_script_entry test_script_expected_result="0">/opt/tct-canvas-html5-tests/canvas/w3c/canvas_state_restore_001-manual.htm</test_script_entry>
           <refer_test_script_entry timeout="90">/opt/tct-canvas-html5-tests/canvas/w3c/canvas_state_restore_001-ref.htm</refer_test_script_entry>
         </description>
       </testcase>
       <testcase component="W3C_HTML5 APIs/Graphics/HTML Canvas 2D Context" execution_type="manual" id="canvas_transformations_scale_001" purpose="Check the scale method of CanvasRenderingContext2D interface.">
         <description>
+          <steps>
+            <step order="1">
+              <step_desc>Launch the test.</step_desc>
+              <expected>Test passes if there is a black rectangle and no red.</expected>
+            </step>
+          </steps>
           <test_script_entry test_script_expected_result="0">/opt/tct-canvas-html5-tests/canvas/w3c/canvas_transformations_scale_001-manual.htm</test_script_entry>
           <refer_test_script_entry timeout="90">/opt/tct-canvas-html5-tests/canvas/w3c/canvas_transformations_scale_001-ref.htm</refer_test_script_entry>
         </description>
