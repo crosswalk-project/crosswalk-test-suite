@@ -975,6 +975,25 @@ public class XWalkViewTestBase extends ActivityInstrumentationTestCase2<MainActi
                 foundCookieNames, new HashSet<String>(Arrays.asList(expectedCookieNames)));
     }    	
 
+    protected String makeExpiringCookie(String cookie, int secondsTillExpiry) {
+        return makeExpiringCookieMs(cookie, secondsTillExpiry * 1000);
+    }
+
+    @SuppressWarnings("deprecation")
+    protected String makeExpiringCookieMs(String cookie, int millisecondsTillExpiry) {
+        Date date = new Date();
+        date.setTime(date.getTime() + millisecondsTillExpiry);
+        return cookie + "; expires=" + date.toGMTString();
+    }
+    
+    protected boolean fileURLCanSetCookie(String suffix) throws Throwable {
+        String value = "value" + suffix;
+        String url = "file:///android_asset/cookie_test.html?value=" + value;
+        loadUrlSync(url);
+        String cookie = mCookieManager.getCookie(url);
+        return cookie != null && cookie.contains("test=" + value);
+    }   
+
     public static final String ABOUT_TITLE = "About the Google";
 
     protected String addAboutPageToTestServer(TestWebServer webServer) {
