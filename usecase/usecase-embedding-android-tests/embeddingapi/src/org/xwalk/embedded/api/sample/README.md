@@ -327,6 +327,7 @@ This usecase covers following interface and methods:
 * XWalkCookieManager interface: setAcceptCookie, acceptCookie, setCookie, getCookie, removeSessionCookie, removeAllCookie, hasCookies, removeExpiredCookie, flushCookieStore
 
 
+
 ### 31. The [XWalkViewWithOnDraw](XWalkViewWithOnDraw.java) sample check whether onDraw method work as same as WebView, include:
 
 * onDraw can be override
@@ -334,6 +335,7 @@ This usecase covers following interface and methods:
 This usecase covers following interface and methods:
 
 * XWalkView interface: onDraw method
+
 
 
 ### 32. The [XWalkViewWithOverScroll](XWalkViewWithOverScroll.java) sample check whether onOverScrolled method work as same as WebView, include:
@@ -345,10 +347,21 @@ This usecase covers following interface and methods:
 * XWalkView interface: onOverScrolled method
 
 
-### 33. The [XWalkViewWithOnTouchEvent](XWalkViewWithOnTouchEvent.java) sample check whether onTouchEvent method work as same as WebView, include:
+### 33. The [AcceptFileSchemeCookiesActivity](AcceptFileSchemeCookiesActivity.java) sample check whether XWalkCookieManager can set AcceptFileSchemeCookies, include:
+
+* XWalkCookieManager apis can work
+
+This usecase covers following interface and methods:
+
+* XWalkView interface: onDraw method
+* XWalkCookieManager interface: setAcceptFileSchemeCookies, allowFileSchemeCookies methods
+
+
+### 34. The [XWalkViewWithOnTouchEvent](XWalkViewWithOnTouchEvent.java) sample check whether onTouchEvent method work as same as WebView, include:
 
 * onTouchEvent can be override
 
 This usecase covers following interface and methods:
 
 * XWalkView interface: onTouchEvent method
+
