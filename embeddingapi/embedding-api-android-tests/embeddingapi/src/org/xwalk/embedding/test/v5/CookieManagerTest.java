@@ -26,10 +26,9 @@ public class CookieManagerTest extends XWalkViewTestBase {
 
         mCookieManager = new XWalkCookieManager();
     }
-
+    
     @SmallTest
     public void testAllowFileSchemeCookies() throws Throwable {
-        assertFalse(mCookieManager.allowFileSchemeCookies());
         mCookieManager.setAcceptFileSchemeCookies(true);
         assertTrue(mCookieManager.allowFileSchemeCookies());
         mCookieManager.setAcceptFileSchemeCookies(false);
@@ -84,7 +83,7 @@ public class CookieManagerTest extends XWalkViewTestBase {
 
             // Clean up all cookies.
             mCookieManager.removeAllCookie();
-        } finally {
+        } finally { 
         }
     }
 
@@ -183,4 +182,110 @@ public class CookieManagerTest extends XWalkViewTestBase {
             }
         }));
     }
+    
+    @MediumTest
+    public void testSetCookie() throws Exception {
+        // Enable cookie.
+        mCookieManager.setAcceptCookie(true);
+        assertTrue(mCookieManager.acceptCookie());
+        mCookieManager.removeAllCookie();
+        assertFalse(mCookieManager.hasCookies());
+        
+        String url = "http://www.example.com";
+        String cookie = "name=test";
+        mCookieManager.setCookie(url, cookie);
+        assertEquals(cookie, mCookieManager.getCookie(url));
+        assertTrue(mCookieManager.hasCookies());
+    }    
+    
+    @MediumTest
+    public void testRemoveAllCookies() throws Exception {
+        // Enable cookie.
+        mCookieManager.setAcceptCookie(true);
+        assertTrue(mCookieManager.acceptCookie());
+        mCookieManager.removeAllCookie();
+        assertFalse(mCookieManager.hasCookies());
+        
+        String url = "http://www.example.com";
+        String cookie = "name=test";
+        mCookieManager.setCookie(url, cookie);
+        assertTrue(mCookieManager.hasCookies());
+        mCookieManager.removeAllCookie();
+        assertFalse(mCookieManager.hasCookies());
+    }    
+    
+    @MediumTest
+    public void testRemoveSessionCookies() throws Exception {
+        // Enable cookie.
+        mCookieManager.setAcceptCookie(true);
+        assertTrue(mCookieManager.acceptCookie());
+        mCookieManager.removeAllCookie();
+        assertFalse(mCookieManager.hasCookies());
+    	
+        final String url = "http://www.example.com";
+        final String sessionCookie = "cookie1=peter";
+        final String normalCookie = "cookie2=sue";
+
+        mCookieManager.setCookie(url, sessionCookie);
+        mCookieManager.setCookie(url, makeExpiringCookie(normalCookie, 600));
+
+        mCookieManager.removeSessionCookie();
+
+        String allCookies = mCookieManager.getCookie(url);
+        assertFalse(allCookies.contains(sessionCookie));
+        assertTrue(allCookies.contains(normalCookie));
+    }    
+    
+    @MediumTest
+    public void testExpiredCookiesAreNotSet() throws Exception {
+        // Enable cookie.
+        mCookieManager.setAcceptCookie(true);
+        assertTrue(mCookieManager.acceptCookie());
+        mCookieManager.removeAllCookie();
+        assertFalse(mCookieManager.hasCookies());
+    	
+        final String url = "http://www.example.com";
+        final String cookie = "cookie1=peter";
+
+        mCookieManager.setCookie(url, makeExpiringCookie(cookie, -1));
+        assertNull(mCookieManager.getCookie(url));
+    }    
+    
+    @MediumTest
+    public void testCookiesExpire() throws Exception {
+        // Enable cookie.
+        mCookieManager.setAcceptCookie(true);
+        assertTrue(mCookieManager.acceptCookie());
+        mCookieManager.removeAllCookie();
+        assertFalse(mCookieManager.hasCookies());
+    	
+        final String url = "http://www.example.com";
+        final String cookie = "cookie1=peter";
+
+        mCookieManager.setCookie(url, makeExpiringCookieMs(cookie, 1200));
+
+        // The cookie exists:
+        assertTrue(mCookieManager.hasCookies());
+
+        // But eventually expires:
+        assertTrue(CriteriaHelper.pollForCriteria(new Criteria() {
+            @Override
+            public boolean isSatisfied() {
+                return !mCookieManager.hasCookies();
+            }
+        }));        
+    }    
+    
+    @MediumTest
+    public void testAcceptFileSchemeCookies() throws Throwable {
+        mCookieManager.setAcceptFileSchemeCookies(true);
+        assertTrue(fileURLCanSetCookie("1"));
+    }
+
+    @MediumTest
+    public void testRejectFileSchemeCookies() throws Throwable {
+        mCookieManager.setAcceptFileSchemeCookies(false);
+        assertFalse(fileURLCanSetCookie("2"));
+    }    
+ 
 }
