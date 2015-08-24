@@ -1649,6 +1649,18 @@ def main():
         LOG.info("pkg_file: %s" % pkg_file)
         if not zipDir(os.path.join(BUILD_ROOT, "pkg"), pkg_file):
             exitHandler(1)
+    elif BUILD_PARAMETERS.pkgtype.startswith("embeddingapi") and BUILD_PARAMETERS.packtype: 
+        pkg_file = os.path.join(
+            BUILD_PARAMETERS.destdir,
+            "%s-%s-%s.%s-%s.zip" %
+            (PKG_NAME,
+             pkg_main_version,
+             pkg_release_version,
+             BUILD_PARAMETERS.pkgtype,
+             BUILD_PARAMETERS.packtype))
+
+        if not zipDir(os.path.join(BUILD_ROOT, "pkg"), pkg_file):
+            exitHandler(1)
     else:
         pkg_file = os.path.join(
             BUILD_PARAMETERS.destdir,
