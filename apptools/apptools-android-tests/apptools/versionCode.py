@@ -58,7 +58,7 @@ class TestCrosswalkApptoolsFunctions(unittest.TestCase):
         comm.clear("org.xwalk.test")
         self.assertEquals(versionCode, versionCode_xml)
 
-    def test_update_app_version_onedot(self):
+    def test_update_app_version(self):
         comm.setUp()
         comm.create(self)
         os.chdir('org.xwalk.test')
@@ -66,7 +66,7 @@ class TestCrosswalkApptoolsFunctions(unittest.TestCase):
         jsons = jsonfile.read()
         jsonfile.close()
         jsonDict = json.loads(jsons)
-        jsonDict["xwalk_app_version"] = "0.1"
+        jsonDict["xwalk_app_version"] = "1"
         json.dump(jsonDict, open(comm.ConstPath + "/../tools/org.xwalk.test/app/manifest.json", "w"))
         with open(comm.ConstPath + "/../tools/org.xwalk.test/app/manifest.json") as json_file:
             data = json.load(json_file)
@@ -85,7 +85,7 @@ class TestCrosswalkApptoolsFunctions(unittest.TestCase):
                 versionCode_xml = attributes[x]
                 break
         comm.clear("org.xwalk.test")
-        self.assertEquals(data['xwalk_app_version'].strip(os.linesep), "0.1")
+        self.assertEquals(data['xwalk_app_version'].strip(os.linesep), "1")
         self.assertEquals(versionCode, versionCode_xml)
 
     def test_update_app_version_twodot(self):
