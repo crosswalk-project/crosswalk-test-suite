@@ -304,6 +304,16 @@ class WebAPP(common.APP):
             print "Failed to compare these two param: %s" % e
         return False
 
+    def judge_saved_value(self, value=None, result=None):
+        try:
+            if self.text_value[value] == result:
+                return True
+            else:
+                return False
+        except Exception as e:
+            print "Failed to judge saved vaule: %s" % e
+        return False
+
     def compare_two_values_range(self, first=None, second=None, value=None):
         try:
             result = eval(self.text_value[second]) - eval(self.text_value[first])
