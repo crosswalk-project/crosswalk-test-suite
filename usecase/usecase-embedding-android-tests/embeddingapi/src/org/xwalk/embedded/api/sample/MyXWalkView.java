@@ -9,6 +9,7 @@ import android.graphics.Canvas;
 import android.graphics.Paint;
 import android.util.AttributeSet;
 import android.util.Log;
+import android.view.MotionEvent;
 
 import org.xwalk.core.XWalkView;
 
@@ -22,6 +23,8 @@ public class MyXWalkView extends XWalkView {
     public final static String TAG = "MyXWalkView";
 
     private ScrollOverListener mListener;
+
+    private TouchEventListener mTouchEventListener;
 
     public MyXWalkView(Context context) {
         super(context);
@@ -67,5 +70,50 @@ public class MyXWalkView extends XWalkView {
     public interface ScrollOverListener{
 
         public void onScrollOver(String msg);
+
+    }
+
+    public void setTouchEventListener(TouchEventListener listener){
+        this.mTouchEventListener = listener;
+    }
+
+    public interface TouchEventListener{
+
+        public void onTouchEventInvoked(String msg);
+
+    }
+
+    @Override
+    public boolean onTouchEvent(MotionEvent event) {
+        Log.i(TAG, "onTouchEvent is invoked");
+        float initialX, initialY;
+        int action = event.getActionMasked();
+        initialX = event.getX();
+        initialY = event.getY();
+        switch(action){
+            case MotionEvent.ACTION_DOWN:
+                Log.i(TAG, "onTouchEvent is invoked; Action was DOWN");
+                this.mTouchEventListener.onTouchEventInvoked("onTouchEvent is invoked; Action was DOWN");
+                break;
+            case MotionEvent.ACTION_MOVE:
+                Log.i(TAG, "onTouchEvent is invoked; Action was MOVE");
+                this.mTouchEventListener.onTouchEventInvoked("onTouchEvent is invoked; Action was MOVE");
+                break;
+            case MotionEvent.ACTION_UP:
+                Log.i(TAG, "onTouchEvent is invoked; Action was UP");
+                this.mTouchEventListener.onTouchEventInvoked("onTouchEvent is invoked; Action was UP");
+                break;
+
+            case MotionEvent.ACTION_CANCEL:
+                Log.i(TAG, "onTouchEvent is invoked; Action was CANCEL");
+                this.mTouchEventListener.onTouchEventInvoked("onTouchEvent is invoked; Action was CANCEL");
+                break;
+
+            case MotionEvent.ACTION_OUTSIDE:
+                Log.i(TAG, "onTouchEvent is invoked; Movement occurred outside bounds of current screen element");
+                this.mTouchEventListener.onTouchEventInvoked("onTouchEvent is invoked; Movement occurred outside bounds of current screen element");
+                break;
+        }
+        return super.onTouchEvent(event);
     }
 }

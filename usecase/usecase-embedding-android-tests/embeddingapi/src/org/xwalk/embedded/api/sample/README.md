@@ -343,3 +343,12 @@ This usecase covers following interface and methods:
 This usecase covers following interface and methods:
 
 * XWalkView interface: onOverScrolled method
+
+
+### 33. The [XWalkViewWithOnTouchEvent](XWalkViewWithOnTouchEvent.java) sample check whether onTouchEvent method work as same as WebView, include:
+
+* onTouchEvent can be override
+
+This usecase covers following interface and methods:
+
+* XWalkView interface: onTouchEvent method
