@@ -2,7 +2,7 @@
 <?xml-stylesheet type="text/xsl" href="./testcase.xsl"?>
 <test_definition>
   <suite name="usecase-embedding-android-tests">
-    <set name="XWalkView" type="js" ui-auto="bdd">
+    <set name="XWalkView">
       <testcase component="Crosswalk Use Cases/Embedding API" execution_type="manual" id="XWalkViewUIInflation" purpose="XWalkView UI inflation Test With XWalkActivity">
         <description>
           <pre_condition />
@@ -75,9 +75,16 @@
           <test_script_entry test_script_expected_result="0" />
         </description>
       </testcase>
-      <testcase component="Crosswalk Use Cases/Embedding API" execution_type="auto" id="PauseJsTimers" purpose="Pause js timers Test With XWalkActivity">
+      <testcase component="Crosswalk Use Cases/Embedding API" execution_type="manual" id="PauseJsTimers" purpose="Pause js timers Test With XWalkActivity">
         <description>
-          <bdd_test_script_entry test_script_expected_result="0">/opt/usecase-embedding-android-tests/testscripts/PauseJsTimers.feature</bdd_test_script_entry>
+          <pre_condition />
+          <steps>
+            <step order="1">
+              <step_desc>0</step_desc>
+              <expected>0</expected>
+            </step>
+          </steps>
+          <test_script_entry test_script_expected_result="0" />
         </description>
       </testcase>
       <testcase component="Crosswalk Use Cases/Embedding API" execution_type="manual" id="OnHideOnShow" purpose="onHide onShow Test With XWalkActivity">
@@ -408,7 +415,7 @@
         </description>
       </testcase>
     </set>
-    <set name="XWalkView-Async" type="js" ui-auto="bdd">
+    <set name="XWalkView-Async">
       <testcase component="Crosswalk Use Cases/Embedding API" execution_type="manual" id="XWalkViewUIInflationAsync" purpose="XWalkView UI inflation Test With XWalkInitializer">
         <description>
           <pre_condition />
@@ -481,9 +488,16 @@
           <test_script_entry test_script_expected_result="0" />
         </description>
       </testcase>
-      <testcase component="Crosswalk Use Cases/Embedding API" execution_type="auto" id="PauseJsTimersAsync" purpose="Pause js timers Test With XWalkInitializer">
+      <testcase component="Crosswalk Use Cases/Embedding API" execution_type="manual" id="PauseJsTimersAsync" purpose="Pause js timers Test With XWalkInitializer">
         <description>
-          <bdd_test_script_entry test_script_expected_result="0">/opt/usecase-embedding-android-tests/testscripts/PauseJsTimersAsync.feature</bdd_test_script_entry>
+          <pre_condition />
+          <steps>
+            <step order="1">
+              <step_desc>0</step_desc>
+              <expected>0</expected>
+            </step>
+          </steps>
+          <test_script_entry test_script_expected_result="0" />
         </description>
       </testcase>
       <testcase component="Crosswalk Use Cases/Embedding API" execution_type="manual" id="OnHideOnShowAsync" purpose="onHide onShow Test With XWalkInitializer">
@@ -811,6 +825,78 @@
             </step>
           </steps>
           <test_script_entry test_script_expected_result="0" />
+        </description>
+      </testcase>
+    </set>
+    <set name="XWalkView-Auto" type="js" ui-auto="bdd">
+      <testcase component="Crosswalk Use Cases/Embedding API" execution_type="auto" id="PauseJsTimers" purpose="Pause js timers Test With XWalkActivity">
+        <description>
+          <bdd_test_script_entry test_script_expected_result="0">/opt/usecase-embedding-android-tests/testscripts/PauseJsTimers.feature</bdd_test_script_entry>
+        </description>
+      </testcase>
+      <testcase component="Crosswalk Use Cases/Embedding API" execution_type="auto" id="PauseJsTimersAsync" purpose="Pause js timers Test With XWalkInitializer">
+        <description>
+          <bdd_test_script_entry test_script_expected_result="0">/opt/usecase-embedding-android-tests/testscripts/PauseJsTimersAsync.feature</bdd_test_script_entry>
+        </description>
+      </testcase>
+      <testcase component="Crosswalk Use Cases/Embedding API" execution_type="auto" id="EchoExtension" purpose="Extension Test With XWalkActivity">
+        <description>
+          <bdd_test_script_entry test_script_expected_result="0">/opt/usecase-embedding-android-tests/testscripts/Extension.feature</bdd_test_script_entry>
+        </description>
+      </testcase>
+      <testcase component="Crosswalk Use Cases/Embedding API" execution_type="auto" id="EchoExtensionAsync" purpose="Extension Test With XWalkInitializer">
+        <description>
+          <bdd_test_script_entry test_script_expected_result="0">/opt/usecase-embedding-android-tests/testscripts/ExtensionAsync.feature</bdd_test_script_entry>
+        </description>
+      </testcase>
+      <testcase component="Crosswalk Use Cases/Embedding API" execution_type="auto" id="ContactExtension" purpose="Extension with permission Test With XWalkActivity">
+        <description>
+          <bdd_test_script_entry test_script_expected_result="0">/opt/usecase-embedding-android-tests/testscripts/ContactExtension.feature</bdd_test_script_entry>
+        </description>
+      </testcase>
+      <testcase component="Crosswalk Use Cases/Embedding API" execution_type="auto" id="ContactExtensionAsync" purpose="Extension with permission Test With XWalkInitializer">
+        <description>
+          <bdd_test_script_entry test_script_expected_result="0">/opt/usecase-embedding-android-tests/testscripts/ContactExtensionAsync.feature</bdd_test_script_entry>
+        </description>
+      </testcase>
+      <testcase component="Crosswalk Use Cases/Embedding API" execution_type="auto" id="LoadAppFromManifest" purpose="Load app from manifest Test With XWalkActivity">
+        <description>
+          <bdd_test_script_entry test_script_expected_result="0">/opt/usecase-embedding-android-tests/testscripts/LoadAppFromManifest.feature</bdd_test_script_entry>
+        </description>
+      </testcase>
+      <testcase component="Crosswalk Use Cases/Embedding API" execution_type="auto" id="LoadAppFromManifestAsync" purpose="Load app from manifest Test With XWalkInitializer">
+        <description>
+          <bdd_test_script_entry test_script_expected_result="0">/opt/usecase-embedding-android-tests/testscripts/LoadAppFromManifestAsync.feature</bdd_test_script_entry>
+        </description>
+      </testcase>
+      <testcase component="Crosswalk Use Cases/Embedding API" execution_type="auto" id="OnCreateWindowRequested" purpose="OnCreateWindowRequested Test With XWalkActivity">
+        <description>
+          <bdd_test_script_entry test_script_expected_result="0">/opt/usecase-embedding-android-tests/testscripts/OnCreateWindowRequested.feature</bdd_test_script_entry>
+        </description>
+      </testcase>
+      <testcase component="Crosswalk Use Cases/Embedding API" execution_type="auto" id="OnCreateWindowRequestedAsync" purpose="OnCreateWindowRequested Test With XWalkInitializer">
+        <description>
+          <bdd_test_script_entry test_script_expected_result="0">/opt/usecase-embedding-android-tests/testscripts/OnCreateWindowRequestedAsync.feature</bdd_test_script_entry>
+        </description>
+      </testcase>
+      <testcase component="Crosswalk Use Cases/Embedding API" execution_type="auto" id="OnIconAvailableOnReceivedIcon" purpose="onIconAvailable onReceivedIcon Test With XWalkActivity">
+        <description>
+          <bdd_test_script_entry test_script_expected_result="0">/opt/usecase-embedding-android-tests/testscripts/onIconAvailableOnReceivedIcon.feature</bdd_test_script_entry>
+        </description>
+      </testcase>
+      <testcase component="Crosswalk Use Cases/Embedding API" execution_type="auto" id="OnIconAvailableOnReceivedIconAsync" purpose="onIconAvailable onReceivedIcon Test With XWalkInitializer">
+        <description>
+          <bdd_test_script_entry test_script_expected_result="0">/opt/usecase-embedding-android-tests/testscripts/onIconAvailableOnReceivedIconAsync.feature</bdd_test_script_entry>
+        </description>
+      </testcase>
+      <testcase component="Crosswalk Use Cases/Embedding API" execution_type="auto" id="Versions" purpose="Versions Test With XWalkActivity">
+        <description>
+          <bdd_test_script_entry test_script_expected_result="0">/opt/usecase-embedding-android-tests/testscripts/Versions.feature</bdd_test_script_entry>
+        </description>
+      </testcase>
+      <testcase component="Crosswalk Use Cases/Embedding API" execution_type="auto" id="VersionsAsync" purpose="Versions Test With XWalkInitializer">
+        <description>
+          <bdd_test_script_entry test_script_expected_result="0">/opt/usecase-embedding-android-tests/testscripts/VersionsAsync.feature</bdd_test_script_entry>
         </description>
       </testcase>
     </set>
