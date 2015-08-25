@@ -230,6 +230,43 @@ class Android(common.APP):
         return False
 
 
+    def gpsOperate(self, turnon):
+        self.doCMD(self.adb + " am force-stop com.android.settings")
+        gps_name_list = [u'Location',]
+        settings_cmd = self.adb + \
+                    " am start -n " + \
+                    "com.android.settings/.Settings"
+        try:
+            (return_code, output) = self.doCMD(settings_cmd)
+            if return_code == 0:
+                pass
+            else:
+                print("\n".join(output))
+                return False
+        except Exception as e:
+            return False
+        if self.d.info["currentPackageName"] == "com.android.settings":
+            for gps_name in gps_name_list:
+                gps = self.selectObjectBy("textContains=%s"%gps_name)
+                if gps.exists:
+                    self.clickObject(gps)
+                    self.registerWatcher("gps", "Location consent", "Agree")
+                    gps_switch = self.selectObjectBy("className=android.widget.Switch")
+                    if gps_switch.exists:
+                        for g in gps_switch:
+                            state = self.getObjectInfo(g, "checked")
+                            if (not state and turnon) or (state and not turnon):
+                                self.clickObject(g)
+                    gps_checkbox = self.selectObjectBy("className=android.widget.CheckBox")
+                    if gps_checkbox.exists:
+                        for g in gps_checkbox:
+                            state = self.getObjectInfo(g, "checked")
+                            if (not state and turnon) or (state and not turnon):
+                                self.clickObject(g)
+                        return True
+        return False
+
+
     def checkCurrentApp(self):
         currentPackageName = self.d.info["currentPackageName"]
         if currentPackageName == self.package_name:
