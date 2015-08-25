@@ -353,7 +353,6 @@ This usecase covers following interface and methods:
 
 This usecase covers following interface and methods:
 
-* XWalkView interface: onDraw method
 * XWalkCookieManager interface: setAcceptFileSchemeCookies, allowFileSchemeCookies methods
 
 
@@ -364,4 +363,14 @@ This usecase covers following interface and methods:
 This usecase covers following interface and methods:
 
 * XWalkView interface: onTouchEvent method
+
+
+### 35. The [XWalkViewWithOverScrollBy](XWalkViewWithOverScrollBy.java) sample check whether overScrollBy method work as same as WebView, include:
+
+* overScrollBy can be override
+
+This usecase covers following interface and methods:
+
+* XWalkView interface: overScrollBy method
+
 
