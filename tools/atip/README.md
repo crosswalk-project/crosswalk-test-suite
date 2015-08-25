@@ -432,6 +432,8 @@ def i_visit_url(context, url):
 @step(u'I close wifi')
 @step(u'I open airplane mode')
 @step(u'I close airplane mode')
+@step(u'I open GPS')
+@step(u'I close GPS')
 @step(u'I execute command "{command_line}"')
 @step(u'I save command "{command_line}" result "{result_key}"')
 @step(u'The value "{expected_value}" should be in result "{result_key}"')

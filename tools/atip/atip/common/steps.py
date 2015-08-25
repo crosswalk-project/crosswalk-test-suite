@@ -142,6 +142,20 @@ def close_airplane_mode(context):
         assert context.android.airplaneModeOperate(False)
 
 
+# open android system GPS
+@step(u'I open GPS')
+def open_gps(context):
+    if get_test_platform(context) == "android":
+        assert context.android.gpsOperate(True)
+
+
+# close android system GPS
+@step(u'I close GPS')
+def close_gps(context):
+    if get_test_platform(context) == "android":
+        assert context.android.gpsOperate(False)
+
+
 # execute android adb command
 @step(u'I execute command "{command_line}"')
 def execute_command(context, command_line):
