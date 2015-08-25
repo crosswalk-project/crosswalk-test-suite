@@ -365,3 +365,12 @@ This usecase covers following interface and methods:
 
 * XWalkView interface: onTouchEvent method
 
+
+
+### 36. The [XWalkViewWithFocusChanged](XWalkViewWithFocusChanged.java) sample check whether onFocusChanged method work as same as WebView, include:
+
+* onFocusChanged can be override
+
+This usecase covers following interface and methods:
+
+* XWalkView interface: onFocusChanged method
