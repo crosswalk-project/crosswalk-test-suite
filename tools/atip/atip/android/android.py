@@ -36,7 +36,7 @@ reload(sys)
 sys.setdefaultencoding('utf-8')
 DEFAULT_PARAMETER_KEYS = ["text", "textContains", "textMatches", "textStartsWith",
                 "description", "descriptionContains", "descriptionMatches", "descriptionStartsWith",
-                "resourceId", "resourceIdMatches", "className"]
+                "resourceId", "resourceIdMatches", "className", "packageName", "index"]
 OBJECT_INFO_KEYS = ["contentDescription", "checked", "scrollable", "text", "packageName",
                 "selected", "enabled", "className"]
 
@@ -428,6 +428,24 @@ class Android(common.APP):
                 return ob.swipe.up()
             elif direction == "down":
                 return ob.swipe.down()
+        return False
+
+
+    def selectAppIconInAllApps(self, params_str):
+        max_fling_num = 5
+        self.d.orientation = "n"
+        self.d.press.home()
+        all_apps = self.selectObjectBy("description=Apps^^^packageName=com.android.launcher")
+        if all_apps.exists:
+            self.clickObject(all_apps)
+            if self.d(scrollable=True).fling.horiz.toBeginning() \
+                    and self.d(scrollable=True).fling.horiz.toBeginning():
+                for i in range(max_fling_num):
+                    app = self.selectObjectBy(params_str)
+                    if app.exists:
+                        self.clickObject(app)
+                        return True
+                    self.d(scrollable=True).fling.horiz.forward()
         return False
 
 

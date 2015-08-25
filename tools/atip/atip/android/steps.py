@@ -43,6 +43,12 @@ def launch_app_by_names(context, app_name, apk_pkg_name, apk_activity_name):
         apk_activity_name)
 
 
+# select one app in android all apps and get in by click app icon
+@step(u'I click app icon "{params_kw}" in all apps')
+def select_app_icon(context, params_kw):
+    assert context.android.selectAppIconInAllApps(params_kw)
+
+
 # force to run all registered watchers
 @step(u'I force to run all watchers')
 def force_run_watchers(context):
@@ -76,7 +82,7 @@ def register_watcher_when2(context, watcher_name, when_text1, when_text2, click_
 # Its UiSelector format combine key=value with ^^^, and the selector need at least one key=value
 # the key should be in DEFAULT_PARAMETER_KEYS = ["text", "textContains", "textMatches", "textStartsWith",
 #               "description", "descriptionContains", "descriptionMatches", "descriptionStartsWith",
-#               "resourceId", "resourceIdMatches", "className"]
+#               "resourceId", "resourceIdMatches", "className", "packageName", "index"]
 @step(u'I should see view "{params_kw}"')
 def select_view_by(context, params_kw):
     ob = context.android.selectObjectBy(params_kw)
