@@ -390,3 +390,12 @@ This usecase covers following interface and methods:
 This usecase covers following interface and methods:
 
 * XWalkView interface: onScrollChanged method
+
+
+### 38. The [XWalkViewWithSizeChanged](XWalkViewWithSizeChanged.java) sample check whether onSizeChanged method work as same as WebView, include:
+
+* onSizeChanged can be override
+
+This usecase covers following interface and methods:
+
+* XWalkView interface: onSizeChanged method
