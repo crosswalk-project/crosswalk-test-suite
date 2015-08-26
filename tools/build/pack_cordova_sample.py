@@ -58,6 +58,7 @@ CORDOVA_VERSIONS = ["3.6", "4.x"]
 PKG_MODES = ["shared", "embedded"]
 PKG_ARCHS = ["x86", "arm"]
 CROSSWALK_VERSION = ""
+CROSSWALK_BRANCH = ""
 BUILD_PARAMETERS = None
 BUILD_ROOT = None
 LOG = None
@@ -623,13 +624,19 @@ def packGoogleApp(app_name=None):
         os.chdir(orig_dir)
         return False
 
+    version_cmd = ""
+    if CROSSWALK_BRANCH == "beta":
+        version_cmd = "--variable XWALK_VERSION=\"org.xwalk:xwalk_core_library_beta:%s\"" % CROSSWALK_VERSION
+    else:
+        version_cmd = "--variable XWALK_VERSION=\"%s\"" % CROSSWALK_VERSION
+
     plugin_tool = os.path.join(BUILD_ROOT, "cordova_plugins")
     plugin_dirs = os.listdir(plugin_tool)
     for i_dir in plugin_dirs:
         i_plugin_dir = os.path.join(plugin_tool, i_dir)
         if i_dir == "cordova-plugin-crosswalk-webview":
-            plugin_install_cmd = "cordova plugin add %s --variable XWALK_VERSION=\"%s\"" \
-                    " --variable XWALK_MODE=\"%s\""  % (i_plugin_dir, CROSSWALK_VERSION, BUILD_PARAMETERS.pkgmode)
+            plugin_install_cmd = "cordova plugin add %s %s --variable XWALK_MODE=\"%s\"" \
+                % (i_plugin_dir, version_cmd, BUILD_PARAMETERS.pkgmode)
         else:
             plugin_install_cmd = "cordova plugin add %s" % i_plugin_dir
         if not doCMD(plugin_install_cmd, DEFAULT_CMD_TIMEOUT):
@@ -801,13 +808,19 @@ def packMobileSpec_cli(app_name=None):
 
     os.chdir(project_root)
 
+    version_cmd = ""
+    if CROSSWALK_BRANCH == "beta":
+        version_cmd = "--variable XWALK_VERSION=\"org.xwalk:xwalk_core_library_beta:%s\"" % CROSSWALK_VERSION
+    else:
+        version_cmd = "--variable XWALK_VERSION=\"%s\"" % CROSSWALK_VERSION
+
     if os.path.exists(plugin_tool): 
         plugin_dirs = os.listdir(plugin_tool)
         for i_dir in plugin_dirs:
             i_plugin_dir = os.path.join(plugin_tool, i_dir)
             if i_dir == "cordova-plugin-crosswalk-webview":
-                plugin_install_cmd = "cordova plugin add %s --variable XWALK_VERSION=\"%s\"" \
-                    " --variable XWALK_MODE=\"%s\""  % (i_plugin_dir, CROSSWALK_VERSION, BUILD_PARAMETERS.pkgmode)
+                plugin_install_cmd = "cordova plugin add %s %s --variable XWALK_MODE=\"%s\"" \
+                    % (i_plugin_dir, version_cmd, BUILD_PARAMETERS.pkgmode)
             else:
                 plugin_install_cmd = "cordova plugin add %s" % i_plugin_dir
             if not doCMD(plugin_install_cmd, DEFAULT_CMD_TIMEOUT):
@@ -963,12 +976,18 @@ def packSampleApp_cli(app_name=None):
             os.chdir(orig_dir)
             return False
 
+    version_cmd = ""
+    if CROSSWALK_BRANCH == "beta":
+        version_cmd = "--variable XWALK_VERSION=\"org.xwalk:xwalk_core_library_beta:%s\"" % CROSSWALK_VERSION
+    else:
+        version_cmd = "--variable XWALK_VERSION=\"%s\"" % CROSSWALK_VERSION
+
     plugin_dirs = os.listdir(plugin_tool)
     for i_dir in plugin_dirs:
         i_plugin_dir = os.path.join(plugin_tool, i_dir)
         if i_dir == "cordova-plugin-crosswalk-webview":
-            plugin_install_cmd = "cordova plugin add %s --variable XWALK_VERSION=\"%s\"" \
-                " --variable XWALK_MODE=\"%s\""  % (i_plugin_dir, CROSSWALK_VERSION, BUILD_PARAMETERS.pkgmode)
+            plugin_install_cmd = "cordova plugin add %s %s --variable XWALK_MODE=\"%s\"" \
+                % (i_plugin_dir, version_cmd, BUILD_PARAMETERS.pkgmode)
             if checkContains(app_name, "xwalkCommandLine"):
                 plugin_install_cmd = plugin_install_cmd + " --variable XWALK_COMMANDLINE" \
                     "=\"--disable-pull-to-refresh-effect --disable-webrtc --disable-webgl\""
@@ -1098,6 +1117,7 @@ def packAPP(app_name=None):
 def main():
     global LOG
     global CROSSWALK_VERSION
+    global CROSSWALK_BRANCH
     LOG = logging.getLogger("pack-tool")
     LOG.setLevel(LOG_LEVEL)
     stream_handler = logging.StreamHandler()
@@ -1177,6 +1197,7 @@ def main():
                 pkg_version_file.close()
                 pkg_version_json = json.loads(pkg_version_raw)
                 pkg_main_version = pkg_version_json["main-version"]
+                CROSSWALK_BRANCH = pkg_version_json["crosswalk-branch"]
     except Exception as e:
         LOG.error("Fail to read pkg version file: %s, exit ..." % e)
         sys.exit(1)
