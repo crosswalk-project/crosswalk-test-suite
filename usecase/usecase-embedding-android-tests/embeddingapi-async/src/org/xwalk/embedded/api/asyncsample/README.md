@@ -355,14 +355,13 @@ This usecase covers following interface and methods:
 * XWalkView interface: onDraw method
 * XWalkCookieManager interface: setAcceptFileSchemeCookies, allowFileSchemeCookies methods
 
-### 34. The [XWalkViewWithOnTouchEventAsyc](XWalkViewWithOnTouchEventAsyc.java) sample check whether onTouchEvent method work as same as WebView, include:
+### 34. The [XWalkViewWithOnTouchEventAsync](XWalkViewWithOnTouchEventAsyc.java) sample check whether onTouchEvent method work as same as WebView, include:
 
 * onTouchEvent can be override
 
 This usecase covers following interface and methods:
 
 * XWalkView interface: onTouchEvent method
-
 
 
 ### 35. The [XWalkViewWithOverScrollByAsync](XWalkViewWithOverScrollByAsync.java) sample check whether overScrollBy method work as same as WebView, include:
@@ -372,3 +371,13 @@ This usecase covers following interface and methods:
 This usecase covers following interface and methods:
 
 * XWalkView interface: overScrollBy method
+
+
+### 36. The [XWalkViewWithFocusChangedAsync](XWalkViewWithFocusChangedAsync.java) sample check whether onFocusChanged method work as same as WebView, include:
+
+* onFocusChanged can be override
+
+This usecase covers following interface and methods:
+
+* XWalkView interface: onFocusChanged method
+
