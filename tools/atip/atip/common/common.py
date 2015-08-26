@@ -108,7 +108,7 @@ class APP():
         index = out.find(match)
         if index < 0:
             print("adb is not working.")
-        return dict([s.split("\t") for s in out[index + len(match):].strip().splitlines() if s.strip()])        
+        return dict([s.split("\t") for s in out[index + len(match):].strip().splitlines() if s.strip()])
 
 
     def doCMD(self, cmd, time_out=DEFAULT_CMD_TIMEOUT):
@@ -135,6 +135,33 @@ class APP():
 
         return (cmd_return_code, output)
 
+    def install_app_by_cmd(self, device_id, app_path):
+        action_status = False
+        try:
+            if not device_id:
+                device_id = list(self.devices().keys())[0]
+            cmd = "adb -s %s install %s" % (device_id, app_path)
+            (return_code, output) = self.doCMD(cmd)
+            if "Success" in output:
+                action_status = True
+            else:
+                print("-->> Invalid apk path: %s " % app_path)
+        except Exception as e:
+            print("Failed to install %s: %s" % (app_path, e))
+        return action_status
+
+    def uninstall_app_by_cmd(self, device_id, package_name):
+        action_status = False
+        try:
+            if not device_id:
+                device_id = list(self.devices().keys())[0]
+            cmd = "adb -s %s uninstall %s" % (device_id, package_name)
+            (return_code, output) = self.doCMD(cmd)
+            if "Success" in output:
+                action_status = True
+        except Exception as e:
+            print("Failed to uninstall %s: %s" % (package_name, e))
+        return action_status
 
     def killProcesses(self, ppid=None):
         ppid = str(ppid)
