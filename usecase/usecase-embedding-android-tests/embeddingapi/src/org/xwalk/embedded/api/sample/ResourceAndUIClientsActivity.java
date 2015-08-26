@@ -17,9 +17,11 @@ import android.os.Bundle;
 import android.util.Log;
 import android.webkit.ValueCallback;
 import android.webkit.WebResourceResponse;
+import android.widget.EditText;
 
 public class ResourceAndUIClientsActivity extends XWalkActivity {
     private XWalkView mXWalkView;
+    private EditText mText;
     private static final String TAG = ResourceAndUIClientsActivity.class.getName();
 
     class ResourceClient extends XWalkResourceClient {
@@ -31,20 +33,23 @@ public class ResourceAndUIClientsActivity extends XWalkActivity {
         public void onLoadStarted(XWalkView view, String url) {
             super.onLoadStarted(view, url);
             Log.d(TAG, "Load Started:" + url);
+            mText.append("Load Started: " + url + "\n");
         }
 
         public void onLoadFinished(XWalkView view, String url) {
             super.onLoadFinished(view, url);
             Log.d(TAG, "Load Finished:" + url);
+            mText.append("Load Finished: " + url + "\n");
         }
 
         public void onProgressChanged(XWalkView view, int progressInPercent) {
             super.onProgressChanged(view, progressInPercent);
             Log.d(TAG, "Loading Progress:" + progressInPercent);
+            mText.append("Loading Progress: " + progressInPercent + "\n");
         }
 
         public WebResourceResponse shouldInterceptLoadRequest(XWalkView view, String url) {
-            Log.d(TAG, "Intercept load request");
+            Log.d(TAG, "Intercept load request");        
             return super.shouldInterceptLoadRequest(view, url);
         }
 
@@ -52,19 +57,22 @@ public class ResourceAndUIClientsActivity extends XWalkActivity {
                 String failingUrl) {
             Log.d(TAG, "Load Failed:" + description);
             super.onReceivedLoadError(view, errorCode, description, failingUrl);
+            mText.append("Load Failed: " + description + "\n");
         }
 
         public void onDocumentLoadedInFrame(XWalkView view, long frameId) {
         // TODO Auto-generated method stub
             super.onDocumentLoadedInFrame(view, frameId);
             Log.d(TAG, "onDocumentLoadedInFrame frameId: " + frameId);
+            mText.append("onDocumentLoadedInFrame frameId: " + frameId + "\n");
         }
 
-        public void onReceivedClientCertRequest(XWalkView view,
-                ClientCertRequest handler) {
+        public void doUpdateVisitedHistory(XWalkView view, String url,
+                boolean isReload) {
             // TODO Auto-generated method stub
-            Log.d(TAG, "ClientCert Request:" + handler);
-            super.onReceivedClientCertRequest(view, handler);
+            Log.d(TAG, "doUpdateVisitedHistory url: " + url + "isReload: "+isReload);
+            super.doUpdateVisitedHistory(view, url, isReload);
+            mText.append("doUpdateVisitedHistory url: " + url + " isReload: " + isReload + "\n");
         }
     }
 
@@ -104,14 +112,16 @@ public class ResourceAndUIClientsActivity extends XWalkActivity {
         public void onScaleChanged(XWalkView view, float oldScale, float newScale) {
             super.onScaleChanged(view, oldScale, newScale);
             Log.d(TAG, "Scale changed.");
+            mText.append("Scale changed from " + oldScale + " to " + newScale + "\n");
         }
     }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.xwview_layout);
+        setContentView(R.layout.client_layout);
         mXWalkView = (XWalkView) findViewById(R.id.xwalkview);
+        mText = (EditText) findViewById(R.id.text1);
     }
 
     @Override
@@ -120,7 +130,7 @@ public class ResourceAndUIClientsActivity extends XWalkActivity {
         mess.append("Test Purpose: \n\n")
         .append("Verifies XWalkView can set resource client and UI client.\n\n")
         .append("Expected Result:\n\n")
-        .append("Test passes if app get toast attention \"Bad SSL client authentication certificate\".");
+        .append("Test passes if resource and UI client methods triggered when xwalk load a url.");
         new  AlertDialog.Builder(this)
         .setTitle("Info" )
         .setMessage(mess.toString())
@@ -129,6 +139,6 @@ public class ResourceAndUIClientsActivity extends XWalkActivity {
 
         mXWalkView.setResourceClient(new ResourceClient(mXWalkView));
         mXWalkView.setUIClient(new UIClient(mXWalkView));
-        mXWalkView.load("https://egov.privasphere.com/", null);
-    }
+        mXWalkView.load("http://www.baidu.com/", null);
+    }  
 }
