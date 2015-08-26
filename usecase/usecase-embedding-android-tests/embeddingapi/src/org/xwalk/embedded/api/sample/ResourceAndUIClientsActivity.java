@@ -120,7 +120,7 @@ public class ResourceAndUIClientsActivity extends XWalkActivity {
         mess.append("Test Purpose: \n\n")
         .append("Verifies XWalkView can set resource client and UI client.\n\n")
         .append("Expected Result:\n\n")
-        .append("Test passes if app get attention \"Bad SSL client authentication certificate\".");
+        .append("Test passes if app get toast attention \"Bad SSL client authentication certificate\".");
         new  AlertDialog.Builder(this)
         .setTitle("Info" )
         .setMessage(mess.toString())
