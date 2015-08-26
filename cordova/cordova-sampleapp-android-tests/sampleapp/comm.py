@@ -48,7 +48,7 @@ testapp_path = "/tmp/cordova-sampleapp/"
 
 
 def setUp():
-    global ARCH, MODE, CORDOVA_VERSION, device, CROSSWALK_VERSION
+    global ARCH, MODE, CORDOVA_VERSION, device, CROSSWALK_VERSION, CROSSWALK_BRANCH
 
     device = os.environ.get('DEVICE_ID')
 
@@ -93,6 +93,7 @@ def setUp():
             pkg_version_file.close()
             pkg_version_json = json.loads(pkg_version_raw)
             CROSSWALK_VERSION = pkg_version_json["main-version"]
+            CROSSWALK_BRANCH = pkg_version_json["crosswalk-branch"]
 
 
 def create(appname, pkgname, mode, sourcecodepath, replace_index_list, self):
@@ -132,11 +133,14 @@ def create(appname, pkgname, mode, sourcecodepath, replace_index_list, self):
         self.assertEquals(0, platformstatus[0])
 
         print "Install Crosswalk WebView Plugin --------------> START"
-        plugin_install_webview = "cordova plugin add %s --variable XWALK_VERSION=\"%s\"" % (plugin_tool, CROSSWALK_VERSION)
-        if mode == "shared":
-            plugin_install_cmd = plugin_install_webview + " --variable XWALK_MODE=\"shared\""
+        version_cmd = ""
+        if CROSSWALK_BRANCH == "beta":
+            version_cmd = "--variable XWALK_VERSION=\"org.xwalk:xwalk_core_library_beta:%s\"" % CROSSWALK_VERSION
         else:
-            plugin_install_cmd = plugin_install_webview + " --variable XWALK_MODE=\"embedded\""
+            version_cmd = "--variable XWALK_VERSION=\"%s\"" % CROSSWALK_VERSION
+
+        plugin_install_cmd = "cordova plugin add %s %s --variable XWALK_MODE=\"%s\"" \
+                % (plugin_tool, version_cmd, mode)
 
         pluginstatus = commands.getstatusoutput(plugin_install_cmd)
         self.assertEquals(0, pluginstatus[0])
@@ -211,11 +215,14 @@ def buildGoogleApp(appname, sourcecodepath, self):
     self.assertEquals(0, uninstallStatus[0])
 
     print "Install Crosswalk WebView Plugin --------------> START"
-    plugin_install_webview = "cordova plugin add %s --variable XWALK_VERSION=\"%s\"" % (plugin_tool, CROSSWALK_VERSION)
-    if MODE == "shared":
-        plugin_install_cmd = plugin_install_webview + " --variable XWALK_MODE=\"shared\""
+    version_cmd = ""
+    if CROSSWALK_BRANCH == "beta":
+        version_cmd = "--variable XWALK_VERSION=\"org.xwalk:xwalk_core_library_beta:%s\"" % CROSSWALK_VERSION
     else:
-        plugin_install_cmd = plugin_install_webview + " --variable XWALK_MODE=\"embedded\""
+        version_cmd = "--variable XWALK_VERSION=\"%s\"" % CROSSWALK_VERSION
+
+    plugin_install_cmd = "cordova plugin add %s %s --variable XWALK_MODE=\"%s\"" \
+            % (plugin_tool, version_cmd, mode)
 
     pluginstatus = commands.getstatusoutput(plugin_install_cmd)
     self.assertEquals(0, pluginstatus[0])
