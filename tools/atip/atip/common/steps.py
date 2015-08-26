@@ -27,6 +27,7 @@
 #         Fan, Yugang <yugang.fan@intel.com>
 
 import sys
+import os
 import time
 from behave import step
 from atip.web import web
@@ -183,3 +184,22 @@ def compare_command_result(context, expected_value, result_key):
     if get_test_platform(context) == "android":
         cmd_result = context.android.get2InfoTemp(result_key)
         assert expected_value in "".join(cmd_result)
+
+# install android app by commend line
+@step(u'install "{app_path}"')
+def install_app_by_cmd(context, app_path):
+    app_path = context.bdd_config["test-url"] + "/" + app_path
+    if app_path.endswith(".apk") and os.path.exists(app_path):
+        device_id = ""
+        if "platform" in context.bdd_config and "device" in context.bdd_config["platform"]:
+            device_id = context.bdd_config["platform"]["device"]
+        assert context.web.install_app_by_cmd(device_id, app_path)
+
+# uninstall android app by commend line
+@step(u'uninstall "{package_name}"')
+def uninstall_app_by_cmd(context, package_name):
+    device_id = ""
+    if "platform" in context.bdd_config and "device" in context.bdd_config["platform"]:
+        device_id = context.bdd_config["platform"]["device"]
+    print "device_id: %s" % device_id
+    assert context.web.uninstall_app_by_cmd(device_id, package_name)
