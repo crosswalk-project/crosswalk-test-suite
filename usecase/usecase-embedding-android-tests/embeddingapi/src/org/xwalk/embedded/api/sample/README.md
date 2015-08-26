@@ -382,3 +382,11 @@ This usecase covers following interface and methods:
 
 * XWalkView interface: onFocusChanged method
 
+
+### 37. The [XWalkViewWithScrollChanged](XWalkViewWithScrollChanged.java) sample check whether onScrollChanged method work as same as WebView, include:
+
+* onScrollChanged can be override
+
+This usecase covers following interface and methods:
+
+* XWalkView interface: onScrollChanged method
