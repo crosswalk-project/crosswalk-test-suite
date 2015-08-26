@@ -364,6 +364,14 @@ This usecase covers following interface and methods:
 * XWalkView interface: onTouchEvent method
 
 
+### 35. The [XWalkViewWithOverScrollByAsync](XWalkViewWithOverScrollByAsync.java) sample check whether overScrollBy method work as same as WebView, include:
+
+* overScrollBy can be override
+
+This usecase covers following interface and methods:
+
+* XWalkView interface: overScrollBy method
+
 
 ### 36. The [XWalkViewWithFocusChangedAsync](XWalkViewWithFocusChangedAsync.java) sample check whether onFocusChanged method work as same as WebView, include:
 
@@ -372,3 +380,4 @@ This usecase covers following interface and methods:
 This usecase covers following interface and methods:
 
 * XWalkView interface: onFocusChanged method
+

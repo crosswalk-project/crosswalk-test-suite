@@ -5,39 +5,41 @@ import android.os.Bundle;
 import android.widget.TextView;
 
 import org.xwalk.core.XWalkActivity;
+import org.xwalk.core.XWalkView;
 
-public class XWalkViewWithFocusChanged  extends XWalkActivity implements MyXWalkView.FocusChangedListener {
+public class XWalkViewWithOverScrollBy extends XWalkActivity implements OverScrollXWalkView.ScrollOverListener {
 
     private TextView tv;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_xwalk_view_with_focus_changed);
+        setContentView(R.layout.activity_xwalk_view_with_over_scroll_by);
     }
 
     @Override
     protected void onXWalkReady() {
         StringBuffer mess = new StringBuffer();
         mess.append("Test Purpose: \n\n")
-                .append("Verifies onFocusChanged work in XWalkView.\n\n")
+                .append("Verifies overScrollBy work in XWalkView.\n\n")
                 .append("Expected Result:\n\n")
-                .append("Test passes if the msg 'onFocusChanged is invoked' and it's parameter list is shown\n\n")
-                .append(" after user clicked the text field and XWalkView.");
+                .append("Test passes if the message \n\n" +
+                        "'onOverScrolled is invoked. Parameter: ' \n\n" +
+                        "is shown with parameter list after touching screen.");
         new  AlertDialog.Builder(this)
                 .setTitle("Info")
                 .setMessage(mess.toString())
                 .setPositiveButton("confirm", null)
                 .show();
-        MyXWalkView mXWalkView = (MyXWalkView) findViewById(R.id.focus_xwalk_view);
-        mXWalkView.setFocuseChangedListener(this);
+        OverScrollXWalkView mXWalkView = (OverScrollXWalkView) findViewById(R.id.scroll_by_xwalk_view);
+        mXWalkView.setScrollOverListener(this);
         mXWalkView.load("http://www.baidu.com", null);
-        tv = (TextView)findViewById(R.id.focus_tip_label);
+        tv = (TextView)findViewById(R.id.scroll_by_label);
     }
 
     @Override
-    public void informFocuseChanged(String msg){
-        if(null != tv){
+    public void onScrollOver(String msg){
+        if(null != tv) {
             tv.setText(msg);
         }
     }
