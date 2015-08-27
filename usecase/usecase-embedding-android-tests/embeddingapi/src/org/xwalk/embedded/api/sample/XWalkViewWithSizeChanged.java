@@ -1,16 +1,12 @@
 package org.xwalk.embedded.api.sample;
 
 import android.app.AlertDialog;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.view.Menu;
-import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
 
 import org.xwalk.core.XWalkActivity;
-import org.xwalk.core.XWalkView;
 
 public class XWalkViewWithSizeChanged extends XWalkActivity implements SizeChangedXWalkView.SizeChangedListener{
 
