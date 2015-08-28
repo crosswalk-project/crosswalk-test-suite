@@ -12,15 +12,6 @@
           <test_script_entry>/opt/wrt-packagemgtmanu-android-tests/packagemgtmanu/Crosswalk_WebApp_Icon.html</test_script_entry>
         </description>
       </testcase>
-      <testcase component="Crosswalk WRT/Package Management" execution_type="manual" id="Crosswalk_WebApp_Icon_Launcher" purpose="Validate if Crosswalk support that web app could be launched from app launcher successfully">
-        <description>
-          <pre_condition>
-            1.Make sure Crosswalk is installed
-            2.Make sure there some webapps are available
-          </pre_condition>
-          <test_script_entry>/opt/wrt-packagemgtmanu-android-tests/packagemgtmanu/Crosswalk_WebApp_Icon_Launcher.html</test_script_entry>
-        </description>
-      </testcase>
       <testcase component="Crosswalk WRT/Package Management" execution_type="manual" id="Crosswalk_Eclipse_Create_WebApp" purpose="Validate if enable create Crosswalk project in Eclipse">
         <description>
           <pre_condition>
@@ -83,6 +74,18 @@
             1. Make sure Crosswalk application is launched.
           </pre_condition>
           <test_script_entry>/opt/wrt-packagemgtmanu-android-tests/packagemgtmanu/Crosswalk_MultiApps_Memory.html</test_script_entry>
+        </description>
+      </testcase>
+    </set>
+    <set name="packagemgt-bdd" type="js" ui-auto="bdd">
+      <testcase component="Crosswalk WRT/Package Management" execution_type="manual" id="Crosswalk_WebApp_Icon_Launcher" purpose="Validate if Crosswalk support that web app could be launched from app launcher successfully">
+        <description>
+          <pre_condition>
+            1.Make sure Crosswalk is installed
+            2.Make sure there some webapps are available
+          </pre_condition>
+          <test_script_entry>/opt/wrt-packagemgtmanu-android-tests/packagemgtmanu/bdd/Crosswalk_WebApp_Icon_Launcher.html</test_script_entry>
+          <bdd_test_script_entry test_script_expected_result="0">/opt/wrt-packagemgtmanu-android-tests/wrt-packagemgt-app/testscripts/Crosswalk_WebApp_Icon_Launcher.feature</bdd_test_script_entry>
         </description>
       </testcase>
     </set>

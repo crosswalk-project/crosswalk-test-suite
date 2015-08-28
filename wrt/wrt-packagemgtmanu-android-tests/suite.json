@@ -19,18 +19,29 @@
                 "tests.full.xml": "tests.full.xml",
                 "tests.xml": "tests.xml",
                 "testapp": "testapp",
-                "PACK-TOOL-ROOT/resources/xsl": "."
+                "PACK-TOOL-ROOT/resources/xsl": ".",
+                "wrt-packagemgt-app/testscripts": "wrt-packagemgt-app/testscripts",
+                "PACK-TOOL-ROOT/resources/bdd/bddrunner": "bddrunner",
+                "PACK-TOOL-ROOT/atip/tests/environment.py": "wrt-packagemgt-app/testscripts/environment.py"
             },
             "pkg-app": {
                 "copylist": {
                     "PACK-TOOL-ROOT/resources/webrunner": "webrunner"
-                }
+                },
+                "apk-common-opts": "--enable-remote-debugging"
             },
             "subapp-list": {
                 "testapp": {
                     "all-apps": "true",
                     "apk-icon-opt": "",
                     "install-path": "."
+                },
+                "wrt-packagemgt-app": {
+                    "apk-common-opts": "--enable-remote-debugging",
+                    "apk-icon-opt": "",
+                    "copylist": {
+                        "../packagemgtmanu/bdd": "packagemgt"
+                    }
                 }
             }
         },
