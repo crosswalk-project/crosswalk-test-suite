@@ -23,16 +23,19 @@
           <test_script_entry>/opt/tct-pagevisibility-w3c-tests/pagevisibility/w3c/test_read_only.html</test_script_entry>
         </description>
       </testcase>
+    </set>
+    <set name="pagevisibility-bdd" type="js" ui-auto="bdd">
       <testcase component="W3C_HTML5 APIs/Performance and Optimization/Page Visibility" execution_type="manual" id="pagevisibility_DocumentVisibility_Hidden_lockScreen" purpose="Check if hidden attribute is false while the webpage from lock screen change to visible">
-        <description>
           <pre_condition/>
           <steps>
             <step order="1">
-              <step_desc>lock screen and then open the webpage after two seconds</step_desc>
+              <step_desc>lock screen and then open the webpage after five seconds</step_desc>
               <expected>PASS</expected>
             </step>
           </steps>
-          <test_script_entry timeout="90">/opt/tct-pagevisibility-w3c-tests/pagevisibility/pagevisibility_DocumentVisibility_hidden_lockScreen-manual.html</test_script_entry>
+        <description>
+          <test_script_entry timeout="90">/opt/tct-pagevisibility-w3c-tests/pagevisibility/bdd/pagevisibility_DocumentVisibility_hidden_lockScreen-manual.html</test_script_entry>
+          <bdd_test_script_entry test_script_expected_result="0">/opt/tct-pagevisibility-w3c-tests/w3c-pagevisibility-app/testscripts/pagevisibility_DocumentVisibility_hidden_lockScreen.feature</bdd_test_script_entry>
         </description>
       </testcase>
       <testcase component="W3C_HTML5 APIs/Performance and Optimization/Page Visibility" execution_type="manual" id="pagevisibility_DocumentVisibility_Hidden_minimize" purpose="Check if hidden attribute is false while the webpage from minimize change to visible">
@@ -40,13 +43,14 @@
           <pre_condition/>
           <steps>
             <step order="1">
-              <step_desc>change to minimize and then open the webpage after two seconds</step_desc>
+              <step_desc>change to minimize and then open the webpage after five seconds</step_desc>
               <expected>PASS</expected>
             </step>
           </steps>
-          <test_script_entry timeout="90">/opt/tct-pagevisibility-w3c-tests/pagevisibility/pagevisibility_DocumentVisibility_hidden_minimize-manual.html</test_script_entry>
+          <test_script_entry timeout="90">/opt/tct-pagevisibility-w3c-tests/pagevisibility/bdd/pagevisibility_DocumentVisibility_hidden_minimize-manual.html</test_script_entry>
+          <bdd_test_script_entry test_script_expected_result="0">/opt/tct-pagevisibility-w3c-tests/w3c-pagevisibility-app/testscripts/pagevisibility_DocumentVisibility_hidden_minimize.feature</bdd_test_script_entry>
         </description>
-      </testcase>
+      </testcase>      
     </set>
   </suite>
 </test_definition>
