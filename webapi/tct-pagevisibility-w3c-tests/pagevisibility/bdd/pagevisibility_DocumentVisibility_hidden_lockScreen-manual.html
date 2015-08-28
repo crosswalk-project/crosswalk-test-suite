@@ -34,18 +34,18 @@ Authors:
     <head>
         <meta content="text/html; charset=utf-8" http-equiv="Content-Type" />
         <title>Check if hidden attribute is false while the webpage from lock screen change to visible</title>
-        <SCRIPT src="../resources/testharness.js"></SCRIPT>
-        <script src="../resources/testharnessreport.js"></script>
-        <link rel="stylesheet" href="../resources/testharness.css" />
+        <SCRIPT src="../../resources/testharness.js"></SCRIPT>
+        <script src="../../resources/testharnessreport.js"></script>
+        <link rel="stylesheet" href="../../resources/testharness.css" />
     </head>
     <body>
         <div id="log"></div>
         <script>
-            setTimeout(hiddenTest,2000);
+            setTimeout(hiddenTest,4000);
             var t=async_test("Check if hidden attribute is false while the webpage from lock screen change to visible");
-            var hidden = document.hidden;
 
             function hiddenTest(){
+                var hidden = document.hidden;
                 t.step(function(){
                     assert_true(!hidden,"expects hidden attribute is false");
                 });
